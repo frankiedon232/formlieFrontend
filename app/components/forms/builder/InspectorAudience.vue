@@ -1,6 +1,8 @@
 <!--
   Field access (owner, 2026-10-03): who the field is for. Everyone (default) overrides everything;
-  otherwise pick departments, roles or people, all of them, or some from the list. A restricted
+  otherwise pick departments, job titles, roles or people, all of them, or some from the list. The
+  departments and job titles are the workspace's own (Settings → Organisation, F14 M2): with none yet,
+  a link to set them up; archived or removed ones a form still uses are marked. A restricted
   field is never required (people it isn't meant for must still be able to submit), and its
   answers are later shown only to the same audience (F11).
 -->
@@ -35,19 +37,23 @@ const audience = computed(() => props.field.audience ?? { mode: 'everyone' as Mo
 const mode = computed(() => audience.value.mode)
 watch(mode, value => value !== 'everyone' && load(), { immediate: true })
 
+const ICONS: Record<Mode, string> = { everyone: 'i-lucide-users-round', department: 'i-lucide-network', job_title: 'i-lucide-id-card', role: 'i-lucide-shield', user: 'i-lucide-user-round' }
 const modes = computed(() =>
-  (['everyone', 'department', 'role', 'user'] as const).map(value => ({ value, label: t(`builder.audience.mode.${value}`) })),
+  (['everyone', 'department', 'job_title', 'role', 'user'] as const).map(value => ({ value, label: t(`builder.audience.mode.${value}`), icon: ICONS[value] })),
 )
-const LIST: Record<Exclude<Mode, 'everyone'>, keyof Directory> = { department: 'departments', role: 'roles', user: 'users' }
+const LIST: Record<Exclude<Mode, 'everyone'>, Exclude<keyof Directory, never>> = { department: 'departments', job_title: 'job_titles', role: 'roles', user: 'users' }
+const SETTINGS: Partial<Record<Mode, string>> = { department: '/settings/departments', job_title: '/settings/job-titles' }
+const listed = computed<DirectoryItem[]>(() => (mode.value === 'everyone' ? [] : (directory.value?.[LIST[mode.value]] ?? [])))
+// Active entries to choose from; archived ones only while chosen (marked)
 const items = computed(() =>
-  mode.value === 'everyone'
-    ? []
-    : (directory.value?.[LIST[mode.value]] ?? []).map((item: DirectoryItem) => ({
-        value: item.id,
-        label: item.name,
-        description: item.detail,
-      })),
+  listed.value
+    .filter(item => !item.archived || audience.value.ids?.includes(item.id))
+    .map(item => ({ value: item.id, label: item.archived ? `${item.name} (${t('builder.audience.archived')})` : item.name, description: item.detail })),
 )
+/** The workspace has none of this kind yet (departments, job titles). */
+const noneYet = computed(() => !!directory.value && !!SETTINGS[mode.value] && !listed.value.some(item => !item.archived))
+/** Chosen entries that are archived or no longer exist. */
+const stale = computed(() => (audience.value.ids ?? []).filter(id => { const item = listed.value.find(entry => entry.id === id); return !item || item.archived }).length)
 
 /** One undo step per change; switching away from "everyone" also switches "required" off. */
 function write(next: FormField['audience']) {
@@ -72,19 +78,11 @@ const summary = computed(() => {
   <section class="flex flex-col gap-3">
     <h3 class="text-xs font-medium text-muted uppercase">{{ t('builder.audience.title') }}</h3>
     <UFormField :label="t('builder.audience.label')" :description="summary">
-      <UTabs
-        :model-value="mode"
-        :items="modes"
-        :content="false"
-        color="neutral"
-        size="xs"
-        :ui="{ ...SEGMENTED_UI, trigger: `${SEGMENTED_UI.trigger} flex-1 px-1.5`, label: 'truncate' }"
-        class="w-full"
-        @update:model-value="setMode"
-      />
+      <USelect :model-value="mode" :items="modes" :icon="ICONS[mode]" class="w-full" @update:model-value="setMode" />
     </UFormField>
 
-    <template v-if="mode !== 'everyone'">
+    <AppEmpty v-if="noneYet" size="xs" icon="i-lucide-network" :title="t(`builder.audience.none.${mode}`)" :description="t('builder.audience.noneDesc')" :actions="[{ label: t('builder.audience.setUp'), icon: 'i-lucide-settings', color: 'neutral', variant: 'outline', to: SETTINGS[mode], target: '_blank' }]" />
+    <template v-else-if="mode !== 'everyone'">
       <USwitch
         :model-value="!!audience.all"
         :label="t(`builder.audience.all.${mode}`)"
@@ -104,6 +102,7 @@ const summary = computed(() => {
           @update:model-value="v => setIds(v as string[])"
         />
       </UFormField>
+      <UAlert v-if="stale" icon="i-lucide-archive" color="warning" variant="subtle" :description="t('builder.audience.stale', { n: stale }, stale)" :ui="{ description: 'text-xs' }" />
       <UAlert
         icon="i-lucide-lock"
         color="neutral"

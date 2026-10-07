@@ -600,7 +600,9 @@
     "FRM-API-1017": "Envie o corpo como JSON com Content-Type: application/json.",
     "FRM-API-1018": "O corpo é grande demais (máximo de 1 MB; envie arquivos pela etapa de upload).",
     "FRM-API-1019": "Este formulário não está aberto ao serviço de API. Ative a API nas configurações de Compartilhar.",
-    "FRM-API-1020": "Esta Formalie-Key já foi usada noutro pedido. Envie uma nova chave para cada novo registo."
+    "FRM-API-1020": "Esta Formalie-Key já foi usada noutro pedido. Envie uma nova chave para cada novo registo.",
+    "FRM-ORG-1001": "Já existe uma entrada com este nome.",
+    "FRM-ORG-1002": "Ainda há formulários que a usam. Arquive-a ou una-a a outra."
   },
   "errorUi": {
     "reference": "Referência: {id}",
@@ -1047,7 +1049,14 @@
       "integrations_api_key_deleted": "Chave de API excluída",
       "api_token_revealed": "Token de API visualizado",
       "integrations_webhook_secret_revealed": "Segredo de webhook visualizado",
-      "integrations_api_key_revealed": "Chave de API visualizada"
+      "integrations_api_key_revealed": "Chave de API visualizada",
+      "settings_org_created": "Entrada da organização adicionada",
+      "settings_org_updated": "Entrada da organização alterada",
+      "settings_org_archived": "Entrada da organização arquivada",
+      "settings_org_restored": "Entrada da organização restaurada",
+      "settings_org_merged": "Entradas da organização unidas",
+      "settings_org_imported": "Entradas da organização importadas",
+      "settings_org_deleted": "Entrada da organização excluída"
     },
     "detail": {
       "who": "Quem",
@@ -2115,22 +2124,33 @@
         "everyone": "Todos",
         "department": "Departamentos",
         "role": "Funções",
-        "user": "Pessoas"
+        "user": "Pessoas",
+        "job_title": "Cargos"
       },
       "everyoneHint": "Todos que preenchem o formulário veem este campo.",
       "all": {
         "department": "Todos os departamentos",
         "role": "Todas as funções",
-        "user": "Todas as pessoas do espaço de trabalho"
+        "user": "Todas as pessoas do espaço de trabalho",
+        "job_title": "Todos os cargos"
       },
       "pick": {
         "department": "Escolher departamentos",
         "role": "Escolher funções",
-        "user": "Escolher pessoas"
+        "user": "Escolher pessoas",
+        "job_title": "Escolher cargos"
       },
       "placeholder": "Escolha na lista…",
       "selected": "Somente os {n} selecionados podem ver e preencher este campo.",
-      "noRequired": "Campos restritos não podem ser obrigatórios. Pessoas a quem o campo não se destina ainda precisam conseguir enviar. As respostas são mostradas somente a essas mesmas pessoas."
+      "noRequired": "Campos restritos não podem ser obrigatórios. Pessoas a quem o campo não se destina ainda precisam conseguir enviar. As respostas são mostradas somente a essas mesmas pessoas.",
+      "none": {
+        "department": "Ainda não há departamentos",
+        "job_title": "Ainda não há cargos"
+      },
+      "noneDesc": "Configure-os primeiro em Configurações e eles aparecem aqui na hora.",
+      "setUp": "Configurar em Configurações",
+      "archived": "arquivado",
+      "stale": "{n} entrada escolhida foi arquivada ou removida. Escolha de novo se precisar. | {n} entradas escolhidas foram arquivadas ou removidas. Escolha de novo se precisar."
     },
     "language": {
       "title": "Idioma do formulário",
@@ -6413,6 +6433,150 @@
         "time": "Hora atual",
         "number": "Número",
         "money": "Valor"
+      }
+    },
+    "org": {
+      "kind": {
+        "departments": {
+          "many": "Departamentos",
+          "new": "Novo departamento",
+          "create": "Criar departamento",
+          "import": "Importar departamentos",
+          "hint": "Os departamentos que seus formulários e regras de acesso podem usar, com as pessoas de cada um.",
+          "empty": "Ainda não há departamentos",
+          "emptyDesc": "Adicione os departamentos da sua organização ou importe-os de uma lista. Os formulários poderão mostrar campos só para alguns.",
+          "search": "Pesquisar departamentos",
+          "placeholder": "ex.: Finanças",
+          "examples": "Finanças\nOperações\nPessoas",
+          "peopleHint": "Quem pertence a um departamento"
+        },
+        "job_titles": {
+          "many": "Cargos",
+          "new": "Novo cargo",
+          "create": "Criar cargo",
+          "import": "Importar cargos",
+          "hint": "O que as pessoas fazem na sua organização. Separado das funções de permissão.",
+          "empty": "Ainda não há cargos",
+          "emptyDesc": "Adicione os cargos que as pessoas ocupam ou importe-os de uma lista. Os formulários poderão mostrar campos só para alguns.",
+          "search": "Pesquisar cargos",
+          "placeholder": "ex.: Líder de equipe",
+          "examples": "Gerente\nLíder de equipe\nAnalista",
+          "peopleHint": "Quem ocupa um cargo"
+        },
+        "teams": {
+          "many": "Equipes",
+          "new": "Nova equipe",
+          "create": "Criar equipe",
+          "import": "Importar equipes",
+          "hint": "Grupos opcionais de pessoas entre departamentos.",
+          "empty": "Ainda não há equipes",
+          "emptyDesc": "Adicione equipes se sua organização trabalha assim, ou importe-as de uma lista.",
+          "search": "Pesquisar equipes",
+          "placeholder": "ex.: Sucesso do cliente",
+          "examples": "Sucesso do cliente\nIntegração\nEquipe de campo",
+          "peopleHint": "Quem está em uma equipe"
+        },
+        "locations": {
+          "many": "Locais",
+          "new": "Novo local",
+          "create": "Criar local",
+          "import": "Importar locais",
+          "hint": "Unidades, escritórios ou filiais opcionais.",
+          "empty": "Ainda não há locais",
+          "emptyDesc": "Adicione as unidades, escritórios ou filiais onde as pessoas trabalham, ou importe-os de uma lista.",
+          "search": "Pesquisar locais",
+          "placeholder": "ex.: Sede",
+          "examples": "Sede\nFilial norte\nArmazém",
+          "peopleHint": "Quem trabalha em um local"
+        },
+        "cost_centres": {
+          "many": "Centros de custo",
+          "new": "Novo centro de custo",
+          "create": "Criar centro de custo",
+          "import": "Importar centros de custo",
+          "hint": "Centros de custo opcionais para orçamentos e aprovações.",
+          "empty": "Ainda não há centros de custo",
+          "emptyDesc": "Adicione centros de custo se seus formulários precisarem, ou importe-os de uma lista.",
+          "search": "Pesquisar centros de custo",
+          "placeholder": "ex.: CC-100 Marketing",
+          "examples": "CC-100 Marketing\nCC-200 Operações",
+          "peopleHint": "Quem é cobrado em um centro de custo"
+        }
+      },
+      "col": {
+        "name": "Nome",
+        "code": "Código",
+        "state": "Estado",
+        "people": "Pessoas",
+        "forms": "Formulários",
+        "created": "Criado",
+        "updated": "Atualizado"
+      },
+      "people": "Pessoas",
+      "ofPeople": "de {n} pessoas",
+      "peopleCount": "{n} pessoa | {n} pessoas",
+      "formsCount": "{n} formulário | {n} formulários",
+      "byState": "Por estado",
+      "total": "{n} no total",
+      "inUse": "Em uso",
+      "empty": "Vazio",
+      "archived": "Arquivado",
+      "nobody": "Ninguém ainda",
+      "noDescription": "Sem descrição",
+      "updated": "Atualizado {when}",
+      "shareOfPeople": "Parcela de pessoas",
+      "description": "Descrição",
+      "peopleHelp": "Uma pessoa pode estar em vários.",
+      "pickPeople": "Escolher pessoas…",
+      "addPeople": "Adicionar pessoas",
+      "editTitle": "Editar {name}",
+      "nameTaken": "Este nome já está em uso. Escolha outro.",
+      "importShort": "Importar",
+      "archive": "Arquivar",
+      "restore": "Restaurar",
+      "archivedTitle": "Arquivado",
+      "archivedDesc": "Não é mais oferecido para novos campos. Formulários que já o usam o mantêm, marcado como arquivado no construtor.",
+      "usedBy": "Formulários com campos só para isto",
+      "notUsed": "Nenhum formulário restringe um campo a isto ainda.",
+      "inUseBy": "{n} formulário restringe um campo a isto. | {n} formulários restringem campos a isto.",
+      "deleteTitle": "Excluir {name}?",
+      "deleteDesc": "Ele é removido para sempre e as pessoas continuam no espaço de trabalho.",
+      "sort": {
+        "people": "Mais pessoas",
+        "updated": "Atualizados recentemente",
+        "created": "Mais recentes"
+      },
+      "merge": {
+        "title": "Unir {n} entrada | Unir {n} entradas",
+        "desc": "Elas vão para a que você escolher e as demais desaparecem.",
+        "into": "Unir em",
+        "people": "{n} pessoa passa para {into}. | {n} pessoas passam para {into}.",
+        "forms": "{n} restrição de formulário acompanha, então nenhum formulário perde suas regras de acesso. | {n} restrições de formulário acompanham, então nenhum formulário perde suas regras de acesso.",
+        "gone": "A entrada unida é removida. | As {n} entradas unidas são removidas.",
+        "action": "Unir"
+      },
+      "import": {
+        "desc": "Um nome por linha, ou um arquivo CSV (a primeira coluna é usada). Nada é adicionado até você confirmar.",
+        "drop": "Solte um arquivo CSV ou de texto aqui ou clique para procurar",
+        "types": "CSV ou TXT, um nome por linha",
+        "paste": "Ou cole os nomes",
+        "summary": "{n} de {total} serão adicionados",
+        "state": {
+          "new": "Novo",
+          "duplicate": "Já existe",
+          "too_long": "Longo demais"
+        },
+        "action": "Importar {n} | Importar {n}"
+      },
+      "toast": {
+        "created": "{name} criado",
+        "saved": "{name} salvo",
+        "archived": "{name} arquivado",
+        "restored": "{name} restaurado",
+        "deleted": "{name} excluído",
+        "merged": "Unido em {name}",
+        "imported": "{n} adicionado | {n} adicionados",
+        "skipped": "{n} ignorado (já existe ou é longo demais) | {n} ignorados (já existem ou são longos demais)"
       }
     }
   }

@@ -600,7 +600,9 @@
     "FRM-API-1017": "Send the body as JSON with Content-Type: application/json.",
     "FRM-API-1018": "The body is too large (1 MB at most; send files through the upload step).",
     "FRM-API-1019": "This form is not open to the API service. Turn the API on in its Share settings.",
-    "FRM-API-1020": "This Formalie-Key was already used for a different request. Send a new key for every new record."
+    "FRM-API-1020": "This Formalie-Key was already used for a different request. Send a new key for every new record.",
+    "FRM-ORG-1001": "An entry with this name already exists.",
+    "FRM-ORG-1002": "Forms still use it. Archive it, or merge it into another one."
   },
   "errorUi": {
     "reference": "Reference: {id}",
@@ -1047,7 +1049,14 @@
       "integrations_api_key_deleted": "API key deleted",
       "api_token_revealed": "API token viewed",
       "integrations_webhook_secret_revealed": "Webhook secret viewed",
-      "integrations_api_key_revealed": "API key viewed"
+      "integrations_api_key_revealed": "API key viewed",
+      "settings_org_created": "Organisation entry added",
+      "settings_org_updated": "Organisation entry changed",
+      "settings_org_archived": "Organisation entry archived",
+      "settings_org_restored": "Organisation entry restored",
+      "settings_org_merged": "Organisation entries merged",
+      "settings_org_imported": "Organisation entries imported",
+      "settings_org_deleted": "Organisation entry deleted"
     },
     "detail": {
       "who": "Who",
@@ -2115,22 +2124,33 @@
         "everyone": "Everyone",
         "department": "Departments",
         "role": "Roles",
-        "user": "People"
+        "user": "People",
+        "job_title": "Job titles"
       },
       "everyoneHint": "Everyone filling in the form sees this field.",
       "all": {
         "department": "All departments",
         "role": "All roles",
-        "user": "All people in the workspace"
+        "user": "All people in the workspace",
+        "job_title": "All job titles"
       },
       "pick": {
         "department": "Choose departments",
         "role": "Choose roles",
-        "user": "Choose people"
+        "user": "Choose people",
+        "job_title": "Choose job titles"
       },
       "placeholder": "Choose from the list…",
       "selected": "Only the {n} selected can see and fill this field.",
-      "noRequired": "Restricted fields can't be required. People the field isn't meant for must still be able to submit. Their answers are shown only to the same people."
+      "noRequired": "Restricted fields can't be required. People the field isn't meant for must still be able to submit. Their answers are shown only to the same people.",
+      "none": {
+        "department": "No departments yet",
+        "job_title": "No job titles yet"
+      },
+      "noneDesc": "Set them up in Settings first; they show here straight away.",
+      "setUp": "Set up in Settings",
+      "archived": "archived",
+      "stale": "{n} chosen entry was archived or removed. Choose again if needed. | {n} chosen entries were archived or removed. Choose again if needed."
     },
     "language": {
       "title": "Form language",
@@ -6413,6 +6433,150 @@
         "time": "Time now",
         "number": "Number",
         "money": "Amount"
+      }
+    },
+    "org": {
+      "kind": {
+        "departments": {
+          "many": "Departments",
+          "new": "New department",
+          "create": "Create department",
+          "import": "Import departments",
+          "hint": "The departments your forms and access rules can use, with the people in each.",
+          "empty": "No departments yet",
+          "emptyDesc": "Add the departments of your organisation, or import them from a list. Forms can then show fields only to some of them.",
+          "search": "Search departments",
+          "placeholder": "e.g. Finance",
+          "examples": "Finance\nOperations\nPeople",
+          "peopleHint": "Who belongs to a department"
+        },
+        "job_titles": {
+          "many": "Job titles",
+          "new": "New job title",
+          "create": "Create job title",
+          "import": "Import job titles",
+          "hint": "What people do in your organisation. Separate from permission roles.",
+          "empty": "No job titles yet",
+          "emptyDesc": "Add the job titles people hold, or import them from a list. Forms can then show fields only to some of them.",
+          "search": "Search job titles",
+          "placeholder": "e.g. Team lead",
+          "examples": "Manager\nTeam lead\nAnalyst",
+          "peopleHint": "Who holds a job title"
+        },
+        "teams": {
+          "many": "Teams",
+          "new": "New team",
+          "create": "Create team",
+          "import": "Import teams",
+          "hint": "Optional groups of people across departments.",
+          "empty": "No teams yet",
+          "emptyDesc": "Add teams if your organisation works in them, or import them from a list.",
+          "search": "Search teams",
+          "placeholder": "e.g. Customer success",
+          "examples": "Customer success\nOnboarding\nField team",
+          "peopleHint": "Who is in a team"
+        },
+        "locations": {
+          "many": "Locations",
+          "new": "New location",
+          "create": "Create location",
+          "import": "Import locations",
+          "hint": "Optional sites, offices or branches.",
+          "empty": "No locations yet",
+          "emptyDesc": "Add the sites, offices or branches people work at, or import them from a list.",
+          "search": "Search locations",
+          "placeholder": "e.g. Head office",
+          "examples": "Head office\nNorth branch\nWarehouse",
+          "peopleHint": "Who works at a location"
+        },
+        "cost_centres": {
+          "many": "Cost centres",
+          "new": "New cost centre",
+          "create": "Create cost centre",
+          "import": "Import cost centres",
+          "hint": "Optional cost centres for budgets and approvals.",
+          "empty": "No cost centres yet",
+          "emptyDesc": "Add cost centres if your forms need them, or import them from a list.",
+          "search": "Search cost centres",
+          "placeholder": "e.g. CC-100 Marketing",
+          "examples": "CC-100 Marketing\nCC-200 Operations",
+          "peopleHint": "Who is charged to a cost centre"
+        }
+      },
+      "col": {
+        "name": "Name",
+        "code": "Code",
+        "state": "State",
+        "people": "People",
+        "forms": "Forms",
+        "created": "Created",
+        "updated": "Updated"
+      },
+      "people": "People",
+      "ofPeople": "of {n} people",
+      "peopleCount": "{n} person | {n} people",
+      "formsCount": "{n} form | {n} forms",
+      "byState": "By state",
+      "total": "{n} in all",
+      "inUse": "In use",
+      "empty": "Empty",
+      "archived": "Archived",
+      "nobody": "Nobody in it yet",
+      "noDescription": "No description",
+      "updated": "Updated {when}",
+      "shareOfPeople": "Share of people",
+      "description": "Description",
+      "peopleHelp": "A person can be in several.",
+      "pickPeople": "Choose people…",
+      "addPeople": "Add people",
+      "editTitle": "Edit {name}",
+      "nameTaken": "This name is already used. Choose another one.",
+      "importShort": "Import",
+      "archive": "Archive",
+      "restore": "Restore",
+      "archivedTitle": "Archived",
+      "archivedDesc": "It is no longer offered for new fields. Forms that already use it keep it, marked as archived in the builder.",
+      "usedBy": "Forms with fields only for it",
+      "notUsed": "No form restricts a field to it yet.",
+      "inUseBy": "{n} form restricts a field to it. | {n} forms restrict fields to it.",
+      "deleteTitle": "Delete {name}?",
+      "deleteDesc": "It is removed for good, and its people stay in the workspace.",
+      "sort": {
+        "people": "Most people",
+        "updated": "Recently updated",
+        "created": "Newest"
+      },
+      "merge": {
+        "title": "Merge {n} entry | Merge {n} entries",
+        "desc": "They go into the one you choose, and the rest disappear.",
+        "into": "Merge into",
+        "people": "{n} person joins {into}. | {n} people join {into}.",
+        "forms": "{n} form restriction moves along, so no form loses its access rules. | {n} form restrictions move along, so no form loses its access rules.",
+        "gone": "The merged one is removed. | The {n} merged ones are removed.",
+        "action": "Merge"
+      },
+      "import": {
+        "desc": "One name per line, or a CSV file (the first column is used). Nothing is added until you confirm.",
+        "drop": "Drop a CSV or text file here or click to browse",
+        "types": "CSV or TXT, one name per line",
+        "paste": "Or paste names",
+        "summary": "{n} of {total} will be added",
+        "state": {
+          "new": "New",
+          "duplicate": "Already there",
+          "too_long": "Too long"
+        },
+        "action": "Import {n} | Import {n}"
+      },
+      "toast": {
+        "created": "{name} created",
+        "saved": "{name} saved",
+        "archived": "{name} archived",
+        "restored": "{name} restored",
+        "deleted": "{name} deleted",
+        "merged": "Merged into {name}",
+        "imported": "{n} added | {n} added",
+        "skipped": "{n} skipped (already there or too long) | {n} skipped (already there or too long)"
       }
     }
   }

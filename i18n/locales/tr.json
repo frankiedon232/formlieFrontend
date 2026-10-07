@@ -600,7 +600,9 @@
     "FRM-API-1017": "Gövdeyi JSON olarak ve Content-Type: application/json ile gönderin.",
     "FRM-API-1018": "Gövde çok büyük (en fazla 1 MB; dosyaları yükleme adımıyla gönderin).",
     "FRM-API-1019": "Bu form API hizmetine açık değil. Paylaş ayarlarından API’yi açın.",
-    "FRM-API-1020": "Bu Formalie-Key daha önce farklı bir istek için kullanıldı. Her yeni kayıt için yeni bir anahtar gönderin."
+    "FRM-API-1020": "Bu Formalie-Key daha önce farklı bir istek için kullanıldı. Her yeni kayıt için yeni bir anahtar gönderin.",
+    "FRM-ORG-1001": "Bu ada sahip bir kayıt zaten var.",
+    "FRM-ORG-1002": "Formlar hâlâ bunu kullanıyor. Arşivleyin ya da başka bir kayıtla birleştirin."
   },
   "errorUi": {
     "reference": "Referans: {id}",
@@ -1047,7 +1049,14 @@
       "integrations_api_key_deleted": "API anahtarı silindi",
       "api_token_revealed": "API belirteci görüntülendi",
       "integrations_webhook_secret_revealed": "Webhook gizli anahtarı görüntülendi",
-      "integrations_api_key_revealed": "API anahtarı görüntülendi"
+      "integrations_api_key_revealed": "API anahtarı görüntülendi",
+      "settings_org_created": "Kuruluş kaydı eklendi",
+      "settings_org_updated": "Kuruluş kaydı değiştirildi",
+      "settings_org_archived": "Kuruluş kaydı arşivlendi",
+      "settings_org_restored": "Kuruluş kaydı geri yüklendi",
+      "settings_org_merged": "Kuruluş kayıtları birleştirildi",
+      "settings_org_imported": "Kuruluş kayıtları içe aktarıldı",
+      "settings_org_deleted": "Kuruluş kaydı silindi"
     },
     "detail": {
       "who": "Kim",
@@ -2115,22 +2124,33 @@
         "everyone": "Herkes",
         "department": "Departmanlar",
         "role": "Roller",
-        "user": "Kişiler"
+        "user": "Kişiler",
+        "job_title": "Unvanlar"
       },
       "everyoneHint": "Formu dolduran herkes bu alanı görür.",
       "all": {
         "department": "Tüm departmanlar",
         "role": "Tüm roller",
-        "user": "Çalışma alanındaki tüm kişiler"
+        "user": "Çalışma alanındaki tüm kişiler",
+        "job_title": "Tüm unvanlar"
       },
       "pick": {
         "department": "Departman seçin",
         "role": "Rol seçin",
-        "user": "Kişi seçin"
+        "user": "Kişi seçin",
+        "job_title": "Unvan seç"
       },
       "placeholder": "Listeden seçin…",
       "selected": "Bu alanı yalnızca seçilen {n} kişi/grup görebilir ve doldurabilir.",
-      "noRequired": "Kısıtlı alanlar zorunlu olamaz. Alanın hitap etmediği kişiler de formu gönderebilmelidir. Yanıtlar yalnızca aynı kişilere gösterilir."
+      "noRequired": "Kısıtlı alanlar zorunlu olamaz. Alanın hitap etmediği kişiler de formu gönderebilmelidir. Yanıtlar yalnızca aynı kişilere gösterilir.",
+      "none": {
+        "department": "Henüz departman yok",
+        "job_title": "Henüz unvan yok"
+      },
+      "noneDesc": "Önce Ayarlar'da oluşturun, burada hemen görünürler.",
+      "setUp": "Ayarlar'da oluştur",
+      "archived": "arşivlendi",
+      "stale": "{n} seçili kayıt arşivlendi veya kaldırıldı. Gerekirse yeniden seçin. | {n} seçili kayıt arşivlendi veya kaldırıldı. Gerekirse yeniden seçin."
     },
     "language": {
       "title": "Form dili",
@@ -6413,6 +6433,150 @@
         "time": "Şimdiki saat",
         "number": "Sayı",
         "money": "Tutar"
+      }
+    },
+    "org": {
+      "kind": {
+        "departments": {
+          "many": "Departmanlar",
+          "new": "Yeni departman",
+          "create": "Departman oluştur",
+          "import": "Departmanları içe aktar",
+          "hint": "Formlarınızın ve erişim kurallarınızın kullanabileceği departmanlar ve her birindeki kişiler.",
+          "empty": "Henüz departman yok",
+          "emptyDesc": "Kuruluşunuzun departmanlarını ekleyin veya bir listeden içe aktarın. Formlar da alanları yalnızca bazılarına gösterebilir.",
+          "search": "Departman ara",
+          "placeholder": "örn. Finans",
+          "examples": "Finans\nOperasyon\nİnsan Kaynakları",
+          "peopleHint": "Bir departmana kimler ait"
+        },
+        "job_titles": {
+          "many": "Unvanlar",
+          "new": "Yeni unvan",
+          "create": "Unvan oluştur",
+          "import": "Unvanları içe aktar",
+          "hint": "İnsanların kuruluşunuzda yaptığı iş. İzin rollerinden ayrıdır.",
+          "empty": "Henüz unvan yok",
+          "emptyDesc": "İnsanların taşıdığı unvanları ekleyin veya bir listeden içe aktarın. Formlar da alanları yalnızca bazılarına gösterebilir.",
+          "search": "Unvan ara",
+          "placeholder": "örn. Ekip lideri",
+          "examples": "Müdür\nEkip lideri\nAnalist",
+          "peopleHint": "Bir unvanı kimler taşıyor"
+        },
+        "teams": {
+          "many": "Ekipler",
+          "new": "Yeni ekip",
+          "create": "Ekip oluştur",
+          "import": "Ekipleri içe aktar",
+          "hint": "Departmanlar arasında isteğe bağlı kişi grupları.",
+          "empty": "Henüz ekip yok",
+          "emptyDesc": "Kuruluşunuz ekiplerle çalışıyorsa ekip ekleyin veya bir listeden içe aktarın.",
+          "search": "Ekip ara",
+          "placeholder": "örn. Müşteri başarısı",
+          "examples": "Müşteri başarısı\nBaşlangıç eğitimi\nSaha ekibi",
+          "peopleHint": "Bir ekipte kimler var"
+        },
+        "locations": {
+          "many": "Konumlar",
+          "new": "Yeni konum",
+          "create": "Konum oluştur",
+          "import": "Konumları içe aktar",
+          "hint": "İsteğe bağlı tesisler, ofisler veya şubeler.",
+          "empty": "Henüz konum yok",
+          "emptyDesc": "İnsanların çalıştığı tesisleri, ofisleri veya şubeleri ekleyin ya da bir listeden içe aktarın.",
+          "search": "Konum ara",
+          "placeholder": "örn. Genel merkez",
+          "examples": "Genel merkez\nKuzey şubesi\nDepo",
+          "peopleHint": "Bir konumda kimler çalışıyor"
+        },
+        "cost_centres": {
+          "many": "Maliyet merkezleri",
+          "new": "Yeni maliyet merkezi",
+          "create": "Maliyet merkezi oluştur",
+          "import": "Maliyet merkezlerini içe aktar",
+          "hint": "Bütçeler ve onaylar için isteğe bağlı maliyet merkezleri.",
+          "empty": "Henüz maliyet merkezi yok",
+          "emptyDesc": "Formlarınızın ihtiyacı varsa maliyet merkezi ekleyin veya bir listeden içe aktarın.",
+          "search": "Maliyet merkezi ara",
+          "placeholder": "örn. CC-100 Pazarlama",
+          "examples": "CC-100 Pazarlama\nCC-200 Operasyon",
+          "peopleHint": "Bir maliyet merkezine kimler bağlı"
+        }
+      },
+      "col": {
+        "name": "Ad",
+        "code": "Kod",
+        "state": "Durum",
+        "people": "Kişiler",
+        "forms": "Formlar",
+        "created": "Oluşturulma",
+        "updated": "Güncellenme"
+      },
+      "people": "Kişiler",
+      "ofPeople": "{n} kişiden",
+      "peopleCount": "{n} kişi | {n} kişi",
+      "formsCount": "{n} form | {n} form",
+      "byState": "Duruma göre",
+      "total": "Toplam {n}",
+      "inUse": "Kullanımda",
+      "empty": "Boş",
+      "archived": "Arşivlendi",
+      "nobody": "Henüz kimse yok",
+      "noDescription": "Açıklama yok",
+      "updated": "Güncellendi: {when}",
+      "shareOfPeople": "Kişi payı",
+      "description": "Açıklama",
+      "peopleHelp": "Bir kişi birden fazlasında olabilir.",
+      "pickPeople": "Kişi seç…",
+      "addPeople": "Kişi ekle",
+      "editTitle": "{name} düzenle",
+      "nameTaken": "Bu ad zaten kullanılıyor. Başka bir ad seçin.",
+      "importShort": "İçe aktar",
+      "archive": "Arşivle",
+      "restore": "Geri yükle",
+      "archivedTitle": "Arşivlendi",
+      "archivedDesc": "Yeni alanlar için artık sunulmaz. Bunu zaten kullanan formlar korur, oluşturucuda arşivlendi olarak işaretlenir.",
+      "usedBy": "Yalnızca buna özel alanı olan formlar",
+      "notUsed": "Henüz hiçbir form bir alanı buna kısıtlamıyor.",
+      "inUseBy": "{n} form bir alanı buna kısıtlıyor. | {n} form alanları buna kısıtlıyor.",
+      "deleteTitle": "{name} silinsin mi?",
+      "deleteDesc": "Kalıcı olarak kaldırılır, kişileri çalışma alanında kalır.",
+      "sort": {
+        "people": "En çok kişi",
+        "updated": "Son güncellenen",
+        "created": "En yeni"
+      },
+      "merge": {
+        "title": "{n} kaydı birleştir | {n} kaydı birleştir",
+        "desc": "Seçtiğiniz kayda geçerler, diğerleri kaybolur.",
+        "into": "Şuna birleştir",
+        "people": "{n} kişi {into} kaydına geçer. | {n} kişi {into} kaydına geçer.",
+        "forms": "{n} form kısıtlaması da taşınır, böylece hiçbir form erişim kurallarını kaybetmez. | {n} form kısıtlaması da taşınır, böylece hiçbir form erişim kurallarını kaybetmez.",
+        "gone": "Birleştirilen kayıt kaldırılır. | Birleştirilen {n} kayıt kaldırılır.",
+        "action": "Birleştir"
+      },
+      "import": {
+        "desc": "Satır başına bir ad veya bir CSV dosyası (ilk sütun kullanılır). Onaylayana kadar hiçbir şey eklenmez.",
+        "drop": "CSV veya metin dosyasını buraya bırakın ya da göz atmak için tıklayın",
+        "types": "CSV veya TXT, satır başına bir ad",
+        "paste": "Ya da adları yapıştırın",
+        "summary": "{total} kayıttan {n} tanesi eklenecek",
+        "state": {
+          "new": "Yeni",
+          "duplicate": "Zaten var",
+          "too_long": "Çok uzun"
+        },
+        "action": "{n} kaydı içe aktar | {n} kaydı içe aktar"
+      },
+      "toast": {
+        "created": "{name} oluşturuldu",
+        "saved": "{name} kaydedildi",
+        "archived": "{name} arşivlendi",
+        "restored": "{name} geri yüklendi",
+        "deleted": "{name} silindi",
+        "merged": "{name} kaydına birleştirildi",
+        "imported": "{n} eklendi | {n} eklendi",
+        "skipped": "{n} atlandı (zaten var veya çok uzun) | {n} atlandı (zaten var veya çok uzun)"
       }
     }
   }

@@ -600,7 +600,9 @@
     "FRM-API-1017": "Gửi nội dung dưới dạng JSON với Content-Type: application/json.",
     "FRM-API-1018": "Nội dung quá lớn (tối đa 1 MB; hãy gửi tệp qua bước tải lên).",
     "FRM-API-1019": "Biểu mẫu này chưa mở cho dịch vụ API. Hãy bật API trong cài đặt Chia sẻ.",
-    "FRM-API-1020": "Formalie-Key này đã được dùng cho một yêu cầu khác. Hãy gửi key mới cho mỗi bản ghi mới."
+    "FRM-API-1020": "Formalie-Key này đã được dùng cho một yêu cầu khác. Hãy gửi key mới cho mỗi bản ghi mới.",
+    "FRM-ORG-1001": "Mục có tên này đã tồn tại.",
+    "FRM-ORG-1002": "Vẫn còn biểu mẫu đang dùng mục này. Hãy lưu trữ hoặc gộp nó vào mục khác."
   },
   "errorUi": {
     "reference": "Mã tham chiếu: {id}",
@@ -1047,7 +1049,14 @@
       "integrations_api_key_deleted": "Đã xóa khóa API",
       "api_token_revealed": "Đã xem token API",
       "integrations_webhook_secret_revealed": "Đã xem bí mật webhook",
-      "integrations_api_key_revealed": "Đã xem khóa API"
+      "integrations_api_key_revealed": "Đã xem khóa API",
+      "settings_org_created": "Đã thêm mục tổ chức",
+      "settings_org_updated": "Đã thay đổi mục tổ chức",
+      "settings_org_archived": "Đã lưu trữ mục tổ chức",
+      "settings_org_restored": "Đã khôi phục mục tổ chức",
+      "settings_org_merged": "Đã gộp các mục tổ chức",
+      "settings_org_imported": "Đã nhập các mục tổ chức",
+      "settings_org_deleted": "Đã xóa mục tổ chức"
     },
     "detail": {
       "who": "Ai",
@@ -2115,22 +2124,33 @@
         "everyone": "Mọi người",
         "department": "Phòng ban",
         "role": "Vai trò",
-        "user": "Người dùng"
+        "user": "Người dùng",
+        "job_title": "Chức danh"
       },
       "everyoneHint": "Mọi người điền biểu mẫu đều thấy trường này.",
       "all": {
         "department": "Tất cả phòng ban",
         "role": "Tất cả vai trò",
-        "user": "Tất cả mọi người trong không gian làm việc"
+        "user": "Tất cả mọi người trong không gian làm việc",
+        "job_title": "Tất cả chức danh"
       },
       "pick": {
         "department": "Chọn phòng ban",
         "role": "Chọn vai trò",
-        "user": "Chọn người dùng"
+        "user": "Chọn người dùng",
+        "job_title": "Chọn chức danh"
       },
       "placeholder": "Chọn từ danh sách…",
       "selected": "Chỉ {n} mục đã chọn mới có thể xem và điền trường này.",
-      "noRequired": "Trường bị giới hạn không thể bắt buộc. Những người không thuộc đối tượng của trường vẫn phải gửi được biểu mẫu. Câu trả lời chỉ hiển thị với chính những người đó."
+      "noRequired": "Trường bị giới hạn không thể bắt buộc. Những người không thuộc đối tượng của trường vẫn phải gửi được biểu mẫu. Câu trả lời chỉ hiển thị với chính những người đó.",
+      "none": {
+        "department": "Chưa có phòng ban",
+        "job_title": "Chưa có chức danh"
+      },
+      "noneDesc": "Hãy thiết lập trong Cài đặt trước, chúng sẽ hiện ở đây ngay.",
+      "setUp": "Thiết lập trong Cài đặt",
+      "archived": "đã lưu trữ",
+      "stale": "{n} mục đã chọn đã được lưu trữ hoặc gỡ bỏ. Hãy chọn lại nếu cần. | {n} mục đã chọn đã được lưu trữ hoặc gỡ bỏ. Hãy chọn lại nếu cần."
     },
     "language": {
       "title": "Ngôn ngữ biểu mẫu",
@@ -6413,6 +6433,150 @@
         "time": "Giờ hiện tại",
         "number": "Số",
         "money": "Số tiền"
+      }
+    },
+    "org": {
+      "kind": {
+        "departments": {
+          "many": "Phòng ban",
+          "new": "Phòng ban mới",
+          "create": "Tạo phòng ban",
+          "import": "Nhập phòng ban",
+          "hint": "Các phòng ban mà biểu mẫu và quy tắc truy cập của bạn có thể dùng, cùng những người trong mỗi phòng.",
+          "empty": "Chưa có phòng ban",
+          "emptyDesc": "Thêm các phòng ban của tổ chức hoặc nhập từ danh sách. Khi đó biểu mẫu có thể chỉ hiện trường cho một số phòng ban.",
+          "search": "Tìm phòng ban",
+          "placeholder": "vd. Tài chính",
+          "examples": "Tài chính\nVận hành\nNhân sự",
+          "peopleHint": "Ai thuộc một phòng ban"
+        },
+        "job_titles": {
+          "many": "Chức danh",
+          "new": "Chức danh mới",
+          "create": "Tạo chức danh",
+          "import": "Nhập chức danh",
+          "hint": "Việc mọi người làm trong tổ chức của bạn. Tách biệt với vai trò phân quyền.",
+          "empty": "Chưa có chức danh",
+          "emptyDesc": "Thêm các chức danh mà mọi người đảm nhiệm hoặc nhập từ danh sách. Khi đó biểu mẫu có thể chỉ hiện trường cho một số chức danh.",
+          "search": "Tìm chức danh",
+          "placeholder": "vd. Trưởng nhóm",
+          "examples": "Quản lý\nTrưởng nhóm\nChuyên viên phân tích",
+          "peopleHint": "Ai giữ một chức danh"
+        },
+        "teams": {
+          "many": "Nhóm",
+          "new": "Nhóm mới",
+          "create": "Tạo nhóm",
+          "import": "Nhập nhóm",
+          "hint": "Các nhóm người tùy chọn, xuyên các phòng ban.",
+          "empty": "Chưa có nhóm",
+          "emptyDesc": "Thêm nhóm nếu tổ chức của bạn làm việc theo nhóm, hoặc nhập từ danh sách.",
+          "search": "Tìm nhóm",
+          "placeholder": "vd. Chăm sóc khách hàng",
+          "examples": "Chăm sóc khách hàng\nHướng dẫn nhân viên mới\nNhóm hiện trường",
+          "peopleHint": "Ai thuộc một nhóm"
+        },
+        "locations": {
+          "many": "Địa điểm",
+          "new": "Địa điểm mới",
+          "create": "Tạo địa điểm",
+          "import": "Nhập địa điểm",
+          "hint": "Các cơ sở, văn phòng hoặc chi nhánh tùy chọn.",
+          "empty": "Chưa có địa điểm",
+          "emptyDesc": "Thêm các cơ sở, văn phòng hoặc chi nhánh nơi mọi người làm việc, hoặc nhập từ danh sách.",
+          "search": "Tìm địa điểm",
+          "placeholder": "vd. Trụ sở chính",
+          "examples": "Trụ sở chính\nChi nhánh phía Bắc\nKho",
+          "peopleHint": "Ai làm việc tại một địa điểm"
+        },
+        "cost_centres": {
+          "many": "Trung tâm chi phí",
+          "new": "Trung tâm chi phí mới",
+          "create": "Tạo trung tâm chi phí",
+          "import": "Nhập trung tâm chi phí",
+          "hint": "Các trung tâm chi phí tùy chọn cho ngân sách và phê duyệt.",
+          "empty": "Chưa có trung tâm chi phí",
+          "emptyDesc": "Thêm trung tâm chi phí nếu biểu mẫu của bạn cần, hoặc nhập từ danh sách.",
+          "search": "Tìm trung tâm chi phí",
+          "placeholder": "vd. CC-100 Tiếp thị",
+          "examples": "CC-100 Tiếp thị\nCC-200 Vận hành",
+          "peopleHint": "Ai được tính vào một trung tâm chi phí"
+        }
+      },
+      "col": {
+        "name": "Tên",
+        "code": "Mã",
+        "state": "Trạng thái",
+        "people": "Người",
+        "forms": "Biểu mẫu",
+        "created": "Đã tạo",
+        "updated": "Đã cập nhật"
+      },
+      "people": "Người",
+      "ofPeople": "trong {n} người",
+      "peopleCount": "{n} người | {n} người",
+      "formsCount": "{n} biểu mẫu | {n} biểu mẫu",
+      "byState": "Theo trạng thái",
+      "total": "Tổng {n}",
+      "inUse": "Đang dùng",
+      "empty": "Trống",
+      "archived": "Đã lưu trữ",
+      "nobody": "Chưa có ai",
+      "noDescription": "Không có mô tả",
+      "updated": "Cập nhật {when}",
+      "shareOfPeople": "Tỷ lệ người",
+      "description": "Mô tả",
+      "peopleHelp": "Một người có thể thuộc nhiều mục.",
+      "pickPeople": "Chọn người…",
+      "addPeople": "Thêm người",
+      "editTitle": "Sửa {name}",
+      "nameTaken": "Tên này đã được dùng. Hãy chọn tên khác.",
+      "importShort": "Nhập",
+      "archive": "Lưu trữ",
+      "restore": "Khôi phục",
+      "archivedTitle": "Đã lưu trữ",
+      "archivedDesc": "Mục này không còn được đề xuất cho trường mới. Biểu mẫu đã dùng vẫn giữ nó, đánh dấu là đã lưu trữ trong trình tạo.",
+      "usedBy": "Biểu mẫu có trường chỉ dành cho mục này",
+      "notUsed": "Chưa có biểu mẫu nào giới hạn trường cho mục này.",
+      "inUseBy": "{n} biểu mẫu giới hạn trường cho mục này. | {n} biểu mẫu giới hạn trường cho mục này.",
+      "deleteTitle": "Xóa {name}?",
+      "deleteDesc": "Mục sẽ bị xóa vĩnh viễn, còn những người trong đó vẫn ở lại không gian làm việc.",
+      "sort": {
+        "people": "Nhiều người nhất",
+        "updated": "Mới cập nhật",
+        "created": "Mới nhất"
+      },
+      "merge": {
+        "title": "Gộp {n} mục | Gộp {n} mục",
+        "desc": "Chúng sẽ vào mục bạn chọn, các mục còn lại biến mất.",
+        "into": "Gộp vào",
+        "people": "{n} người chuyển sang {into}. | {n} người chuyển sang {into}.",
+        "forms": "{n} giới hạn biểu mẫu được chuyển theo, nên không biểu mẫu nào mất quy tắc truy cập. | {n} giới hạn biểu mẫu được chuyển theo, nên không biểu mẫu nào mất quy tắc truy cập.",
+        "gone": "Mục đã gộp sẽ bị xóa. | {n} mục đã gộp sẽ bị xóa.",
+        "action": "Gộp"
+      },
+      "import": {
+        "desc": "Mỗi dòng một tên, hoặc một tệp CSV (dùng cột đầu tiên). Không có gì được thêm cho đến khi bạn xác nhận.",
+        "drop": "Thả tệp CSV hoặc văn bản vào đây hoặc bấm để chọn",
+        "types": "CSV hoặc TXT, mỗi dòng một tên",
+        "paste": "Hoặc dán tên",
+        "summary": "Sẽ thêm {n} trong {total}",
+        "state": {
+          "new": "Mới",
+          "duplicate": "Đã có",
+          "too_long": "Quá dài"
+        },
+        "action": "Nhập {n} | Nhập {n}"
+      },
+      "toast": {
+        "created": "Đã tạo {name}",
+        "saved": "Đã lưu {name}",
+        "archived": "Đã lưu trữ {name}",
+        "restored": "Đã khôi phục {name}",
+        "deleted": "Đã xóa {name}",
+        "merged": "Đã gộp vào {name}",
+        "imported": "Đã thêm {n} | Đã thêm {n}",
+        "skipped": "Bỏ qua {n} (đã có hoặc quá dài) | Bỏ qua {n} (đã có hoặc quá dài)"
       }
     }
   }

@@ -600,7 +600,9 @@
     "FRM-API-1017": "Tuma mwili wa ombi kama JSON ukiwa na Content-Type: application/json.",
     "FRM-API-1018": "Mwili wa ombi ni mkubwa mno (upeo wa 1 MB; tuma faili kupitia hatua ya upakiaji).",
     "FRM-API-1019": "Fomu hii haijafunguliwa kwa huduma ya API. Washa API kwenye mipangilio ya Shiriki.",
-    "FRM-API-1020": "Formalie-Key hii imeshatumika kwa ombi tofauti. Tuma ufunguo mpya kwa kila rekodi mpya."
+    "FRM-API-1020": "Formalie-Key hii imeshatumika kwa ombi tofauti. Tuma ufunguo mpya kwa kila rekodi mpya.",
+    "FRM-ORG-1001": "Kipengee chenye jina hili tayari kipo.",
+    "FRM-ORG-1002": "Fomu bado zinakitumia. Kihifadhi kwenye kumbukumbu au kiunganishe na kingine."
   },
   "errorUi": {
     "reference": "Kumbukumbu: {id}",
@@ -1047,7 +1049,14 @@
       "integrations_api_key_deleted": "Ufunguo wa API umefutwa",
       "api_token_revealed": "Tokeni ya API imetazamwa",
       "integrations_webhook_secret_revealed": "Siri ya webhook imetazamwa",
-      "integrations_api_key_revealed": "Ufunguo wa API umetazamwa"
+      "integrations_api_key_revealed": "Ufunguo wa API umetazamwa",
+      "settings_org_created": "Kipengee cha shirika kimeongezwa",
+      "settings_org_updated": "Kipengee cha shirika kimebadilishwa",
+      "settings_org_archived": "Kipengee cha shirika kimehifadhiwa kwenye kumbukumbu",
+      "settings_org_restored": "Kipengee cha shirika kimerejeshwa",
+      "settings_org_merged": "Vipengee vya shirika vimeunganishwa",
+      "settings_org_imported": "Vipengee vya shirika vimeingizwa",
+      "settings_org_deleted": "Kipengee cha shirika kimefutwa"
     },
     "detail": {
       "who": "Nani",
@@ -2115,22 +2124,33 @@
         "everyone": "Kila mtu",
         "department": "Idara",
         "role": "Majukumu",
-        "user": "Watu"
+        "user": "Watu",
+        "job_title": "Vyeo vya kazi"
       },
       "everyoneHint": "Kila mtu anayejaza fomu huona sehemu hii.",
       "all": {
         "department": "Idara zote",
         "role": "Majukumu yote",
-        "user": "Watu wote kwenye eneo la kazi"
+        "user": "Watu wote kwenye eneo la kazi",
+        "job_title": "Vyeo vyote vya kazi"
       },
       "pick": {
         "department": "Chagua idara",
         "role": "Chagua majukumu",
-        "user": "Chagua watu"
+        "user": "Chagua watu",
+        "job_title": "Chagua vyeo vya kazi"
       },
       "placeholder": "Chagua kutoka kwenye orodha…",
       "selected": "Ni {n} waliochaguliwa pekee wanaoweza kuona na kujaza sehemu hii.",
-      "noRequired": "Sehemu zenye vikwazo haziwezi kuwa za lazima. Watu ambao sehemu hii si yao lazima bado waweze kuwasilisha. Majibu yao yanaonyeshwa kwa watu hao hao pekee."
+      "noRequired": "Sehemu zenye vikwazo haziwezi kuwa za lazima. Watu ambao sehemu hii si yao lazima bado waweze kuwasilisha. Majibu yao yanaonyeshwa kwa watu hao hao pekee.",
+      "none": {
+        "department": "Bado hakuna idara",
+        "job_title": "Bado hakuna vyeo vya kazi"
+      },
+      "noneDesc": "Viweke kwanza kwenye Mipangilio, vitaonekana hapa mara moja.",
+      "setUp": "Weka kwenye Mipangilio",
+      "archived": "imehifadhiwa kwenye kumbukumbu",
+      "stale": "Kipengee {n} ulichochagua kimehifadhiwa kwenye kumbukumbu au kimeondolewa. Chagua tena ukihitaji. | Vipengee {n} ulivyochagua vimehifadhiwa kwenye kumbukumbu au vimeondolewa. Chagua tena ukihitaji."
     },
     "language": {
       "title": "Lugha ya fomu",
@@ -6413,6 +6433,150 @@
         "time": "Saa sasa",
         "number": "Nambari",
         "money": "Kiasi"
+      }
+    },
+    "org": {
+      "kind": {
+        "departments": {
+          "many": "Idara",
+          "new": "Idara mpya",
+          "create": "Unda idara",
+          "import": "Ingiza idara",
+          "hint": "Idara ambazo fomu na kanuni zako za ufikiaji zinaweza kutumia, pamoja na watu wa kila idara.",
+          "empty": "Bado hakuna idara",
+          "emptyDesc": "Ongeza idara za shirika lako au ziingize kutoka kwenye orodha. Fomu zinaweza kuonyesha sehemu kwa baadhi tu.",
+          "search": "Tafuta idara",
+          "placeholder": "mf. Fedha",
+          "examples": "Fedha\nUendeshaji\nWatu",
+          "peopleHint": "Nani ni wa idara"
+        },
+        "job_titles": {
+          "many": "Vyeo vya kazi",
+          "new": "Cheo kipya cha kazi",
+          "create": "Unda cheo cha kazi",
+          "import": "Ingiza vyeo vya kazi",
+          "hint": "Kile watu wanachofanya katika shirika lako. Tofauti na majukumu ya ruhusa.",
+          "empty": "Bado hakuna vyeo vya kazi",
+          "emptyDesc": "Ongeza vyeo vya kazi wanavyoshikilia watu au viingize kutoka kwenye orodha. Fomu zinaweza kuonyesha sehemu kwa baadhi tu.",
+          "search": "Tafuta vyeo vya kazi",
+          "placeholder": "mf. Kiongozi wa timu",
+          "examples": "Meneja\nKiongozi wa timu\nMchambuzi",
+          "peopleHint": "Nani ana cheo cha kazi"
+        },
+        "teams": {
+          "many": "Timu",
+          "new": "Timu mpya",
+          "create": "Unda timu",
+          "import": "Ingiza timu",
+          "hint": "Vikundi vya watu vya hiari vinavyovuka idara.",
+          "empty": "Bado hakuna timu",
+          "emptyDesc": "Ongeza timu kama shirika lako linafanya kazi kwa timu, au ziingize kutoka kwenye orodha.",
+          "search": "Tafuta timu",
+          "placeholder": "mf. Mafanikio ya wateja",
+          "examples": "Mafanikio ya wateja\nKuwapokea wapya\nTimu ya uwandani",
+          "peopleHint": "Nani yuko kwenye timu"
+        },
+        "locations": {
+          "many": "Maeneo",
+          "new": "Eneo jipya",
+          "create": "Unda eneo",
+          "import": "Ingiza maeneo",
+          "hint": "Maeneo, ofisi au matawi ya hiari.",
+          "empty": "Bado hakuna maeneo",
+          "emptyDesc": "Ongeza maeneo, ofisi au matawi wanakofanyia kazi watu, au yaingize kutoka kwenye orodha.",
+          "search": "Tafuta maeneo",
+          "placeholder": "mf. Ofisi kuu",
+          "examples": "Ofisi kuu\nTawi la kaskazini\nGhala",
+          "peopleHint": "Nani anafanya kazi katika eneo"
+        },
+        "cost_centres": {
+          "many": "Vituo vya gharama",
+          "new": "Kituo kipya cha gharama",
+          "create": "Unda kituo cha gharama",
+          "import": "Ingiza vituo vya gharama",
+          "hint": "Vituo vya gharama vya hiari kwa bajeti na idhini.",
+          "empty": "Bado hakuna vituo vya gharama",
+          "emptyDesc": "Ongeza vituo vya gharama kama fomu zako zinavihitaji, au viingize kutoka kwenye orodha.",
+          "search": "Tafuta vituo vya gharama",
+          "placeholder": "mf. CC-100 Masoko",
+          "examples": "CC-100 Masoko\nCC-200 Uendeshaji",
+          "peopleHint": "Nani anatozwa kwenye kituo cha gharama"
+        }
+      },
+      "col": {
+        "name": "Jina",
+        "code": "Msimbo",
+        "state": "Hali",
+        "people": "Watu",
+        "forms": "Fomu",
+        "created": "Imeundwa",
+        "updated": "Imesasishwa"
+      },
+      "people": "Watu",
+      "ofPeople": "kati ya watu {n}",
+      "peopleCount": "Mtu {n} | Watu {n}",
+      "formsCount": "Fomu {n} | Fomu {n}",
+      "byState": "Kwa hali",
+      "total": "Jumla {n}",
+      "inUse": "Inatumika",
+      "empty": "Tupu",
+      "archived": "Imehifadhiwa kwenye kumbukumbu",
+      "nobody": "Bado hakuna mtu",
+      "noDescription": "Hakuna maelezo",
+      "updated": "Imesasishwa {when}",
+      "shareOfPeople": "Sehemu ya watu",
+      "description": "Maelezo",
+      "peopleHelp": "Mtu anaweza kuwa katika zaidi ya kimoja.",
+      "pickPeople": "Chagua watu…",
+      "addPeople": "Ongeza watu",
+      "editTitle": "Hariri {name}",
+      "nameTaken": "Jina hili linatumika tayari. Chagua lingine.",
+      "importShort": "Ingiza",
+      "archive": "Hifadhi kwenye kumbukumbu",
+      "restore": "Rejesha",
+      "archivedTitle": "Imehifadhiwa kwenye kumbukumbu",
+      "archivedDesc": "Halitolewi tena kwa sehemu mpya. Fomu zinazolitumia tayari zinaendelea kulitunza, likiwa limewekwa alama ya kumbukumbu kwenye kijenzi.",
+      "usedBy": "Fomu zenye sehemu kwa ajili yake pekee",
+      "notUsed": "Hakuna fomu inayozuia sehemu kwake bado.",
+      "inUseBy": "Fomu {n} inazuia sehemu kwake. | Fomu {n} zinazuia sehemu kwake.",
+      "deleteTitle": "Futa {name}?",
+      "deleteDesc": "Kinaondolewa kabisa, na watu wake wanabaki kwenye eneo la kazi.",
+      "sort": {
+        "people": "Watu wengi zaidi",
+        "updated": "Zilizosasishwa hivi karibuni",
+        "created": "Mpya zaidi"
+      },
+      "merge": {
+        "title": "Unganisha kipengee {n} | Unganisha vipengee {n}",
+        "desc": "Vinaingia kwenye kile unachochagua, na vingine vinatoweka.",
+        "into": "Unganisha kwenye",
+        "people": "Mtu {n} anahamia {into}. | Watu {n} wanahamia {into}.",
+        "forms": "Kizuizi {n} cha fomu kinahamia pamoja, hivyo hakuna fomu inayopoteza kanuni zake za ufikiaji. | Vizuizi {n} vya fomu vinahamia pamoja, hivyo hakuna fomu inayopoteza kanuni zake za ufikiaji.",
+        "gone": "Kipengee kilichounganishwa kinaondolewa. | Vipengee {n} vilivyounganishwa vinaondolewa.",
+        "action": "Unganisha"
+      },
+      "import": {
+        "desc": "Jina moja kwa kila mstari, au faili ya CSV (safu wima ya kwanza inatumika). Hakuna kinachoongezwa hadi uthibitishe.",
+        "drop": "Dondosha faili ya CSV au maandishi hapa au bofya kuvinjari",
+        "types": "CSV au TXT, jina moja kwa kila mstari",
+        "paste": "Au bandika majina",
+        "summary": "{n} kati ya {total} vitaongezwa",
+        "state": {
+          "new": "Kipya",
+          "duplicate": "Tayari lipo",
+          "too_long": "Refu mno"
+        },
+        "action": "Ingiza {n} | Ingiza {n}"
+      },
+      "toast": {
+        "created": "{name} imeundwa",
+        "saved": "{name} imehifadhiwa",
+        "archived": "{name} imehifadhiwa kwenye kumbukumbu",
+        "restored": "{name} imerejeshwa",
+        "deleted": "{name} imefutwa",
+        "merged": "Imeunganishwa kwenye {name}",
+        "imported": "{n} imeongezwa | {n} zimeongezwa",
+        "skipped": "{n} imerukwa (tayari ipo au ni ndefu mno) | {n} zimerukwa (tayari zipo au ni ndefu mno)"
       }
     }
   }

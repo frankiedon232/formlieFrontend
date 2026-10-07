@@ -600,7 +600,9 @@
     "FRM-API-1017": "Invia il corpo come JSON con Content-Type: application/json.",
     "FRM-API-1018": "Il corpo è troppo grande (massimo 1 MB; invia i file tramite il passaggio di caricamento).",
     "FRM-API-1019": "Questo modulo non è aperto al servizio API. Attiva l’API nelle sue impostazioni di Condivisione.",
-    "FRM-API-1020": "Questa Formalie-Key è già stata usata per una richiesta diversa. Invia una nuova chiave per ogni nuovo record."
+    "FRM-API-1020": "Questa Formalie-Key è già stata usata per una richiesta diversa. Invia una nuova chiave per ogni nuovo record.",
+    "FRM-ORG-1001": "Esiste già una voce con questo nome.",
+    "FRM-ORG-1002": "Dei moduli la usano ancora. Archiviala o uniscila a un'altra."
   },
   "errorUi": {
     "reference": "Riferimento: {id}",
@@ -1047,7 +1049,14 @@
       "integrations_api_key_deleted": "Chiave API eliminata",
       "api_token_revealed": "Token API visualizzato",
       "integrations_webhook_secret_revealed": "Segreto del webhook visualizzato",
-      "integrations_api_key_revealed": "Chiave API visualizzata"
+      "integrations_api_key_revealed": "Chiave API visualizzata",
+      "settings_org_created": "Voce dell'organizzazione aggiunta",
+      "settings_org_updated": "Voce dell'organizzazione modificata",
+      "settings_org_archived": "Voce dell'organizzazione archiviata",
+      "settings_org_restored": "Voce dell'organizzazione ripristinata",
+      "settings_org_merged": "Voci dell'organizzazione unite",
+      "settings_org_imported": "Voci dell'organizzazione importate",
+      "settings_org_deleted": "Voce dell'organizzazione eliminata"
     },
     "detail": {
       "who": "Chi",
@@ -2115,22 +2124,33 @@
         "everyone": "Tutti",
         "department": "Reparti",
         "role": "Ruoli",
-        "user": "Persone"
+        "user": "Persone",
+        "job_title": "Ruoli professionali"
       },
       "everyoneHint": "Tutti coloro che compilano il modulo vedono questo campo.",
       "all": {
         "department": "Tutti i reparti",
         "role": "Tutti i ruoli",
-        "user": "Tutte le persone dello spazio di lavoro"
+        "user": "Tutte le persone dello spazio di lavoro",
+        "job_title": "Tutti i ruoli professionali"
       },
       "pick": {
         "department": "Scegli i reparti",
         "role": "Scegli i ruoli",
-        "user": "Scegli le persone"
+        "user": "Scegli le persone",
+        "job_title": "Scegli ruoli professionali"
       },
       "placeholder": "Scegli dall'elenco…",
       "selected": "Solo i {n} selezionati possono vedere e compilare questo campo.",
-      "noRequired": "I campi riservati non possono essere obbligatori: chi non è destinatario del campo deve comunque poter inviare il modulo. Le risposte sono mostrate solo a quelle stesse persone."
+      "noRequired": "I campi riservati non possono essere obbligatori: chi non è destinatario del campo deve comunque poter inviare il modulo. Le risposte sono mostrate solo a quelle stesse persone.",
+      "none": {
+        "department": "Ancora nessun reparto",
+        "job_title": "Ancora nessun ruolo professionale"
+      },
+      "noneDesc": "Configurali prima nelle Impostazioni e compariranno subito qui.",
+      "setUp": "Configura nelle Impostazioni",
+      "archived": "archiviato",
+      "stale": "{n} voce scelta è stata archiviata o rimossa. Scegli di nuovo se serve. | {n} voci scelte sono state archiviate o rimosse. Scegli di nuovo se serve."
     },
     "language": {
       "title": "Lingua del modulo",
@@ -6413,6 +6433,150 @@
         "time": "Ora attuale",
         "number": "Numero",
         "money": "Importo"
+      }
+    },
+    "org": {
+      "kind": {
+        "departments": {
+          "many": "Reparti",
+          "new": "Nuovo reparto",
+          "create": "Crea reparto",
+          "import": "Importa reparti",
+          "hint": "I reparti che i tuoi moduli e le regole di accesso possono usare, con le persone di ciascuno.",
+          "empty": "Ancora nessun reparto",
+          "emptyDesc": "Aggiungi i reparti della tua organizzazione o importali da un elenco. I moduli potranno mostrare campi solo ad alcuni.",
+          "search": "Cerca reparti",
+          "placeholder": "es. Finanza",
+          "examples": "Finanza\nOperazioni\nPersone",
+          "peopleHint": "Chi appartiene a un reparto"
+        },
+        "job_titles": {
+          "many": "Ruoli professionali",
+          "new": "Nuovo ruolo professionale",
+          "create": "Crea ruolo professionale",
+          "import": "Importa ruoli professionali",
+          "hint": "Ciò che le persone fanno nella tua organizzazione. Separato dai ruoli di autorizzazione.",
+          "empty": "Ancora nessun ruolo professionale",
+          "emptyDesc": "Aggiungi i ruoli professionali ricoperti dalle persone o importali da un elenco. I moduli potranno mostrare campi solo ad alcuni.",
+          "search": "Cerca ruoli professionali",
+          "placeholder": "es. Responsabile di team",
+          "examples": "Manager\nResponsabile di team\nAnalista",
+          "peopleHint": "Chi ricopre un ruolo professionale"
+        },
+        "teams": {
+          "many": "Team",
+          "new": "Nuovo team",
+          "create": "Crea team",
+          "import": "Importa team",
+          "hint": "Gruppi di persone facoltativi che attraversano i reparti.",
+          "empty": "Ancora nessun team",
+          "emptyDesc": "Aggiungi team se la tua organizzazione lavora così, oppure importali da un elenco.",
+          "search": "Cerca team",
+          "placeholder": "es. Customer success",
+          "examples": "Customer success\nAccoglienza\nSquadra sul campo",
+          "peopleHint": "Chi fa parte di un team"
+        },
+        "locations": {
+          "many": "Sedi",
+          "new": "Nuova sede",
+          "create": "Crea sede",
+          "import": "Importa sedi",
+          "hint": "Sedi, uffici o filiali facoltativi.",
+          "empty": "Ancora nessuna sede",
+          "emptyDesc": "Aggiungi le sedi, gli uffici o le filiali dove lavorano le persone, oppure importali da un elenco.",
+          "search": "Cerca sedi",
+          "placeholder": "es. Sede centrale",
+          "examples": "Sede centrale\nFiliale nord\nMagazzino",
+          "peopleHint": "Chi lavora in una sede"
+        },
+        "cost_centres": {
+          "many": "Centri di costo",
+          "new": "Nuovo centro di costo",
+          "create": "Crea centro di costo",
+          "import": "Importa centri di costo",
+          "hint": "Centri di costo facoltativi per budget e approvazioni.",
+          "empty": "Ancora nessun centro di costo",
+          "emptyDesc": "Aggiungi centri di costo se i tuoi moduli ne hanno bisogno, oppure importali da un elenco.",
+          "search": "Cerca centri di costo",
+          "placeholder": "es. CC-100 Marketing",
+          "examples": "CC-100 Marketing\nCC-200 Operazioni",
+          "peopleHint": "Chi è addebitato a un centro di costo"
+        }
+      },
+      "col": {
+        "name": "Nome",
+        "code": "Codice",
+        "state": "Stato",
+        "people": "Persone",
+        "forms": "Moduli",
+        "created": "Creato",
+        "updated": "Aggiornato"
+      },
+      "people": "Persone",
+      "ofPeople": "su {n} persone",
+      "peopleCount": "{n} persona | {n} persone",
+      "formsCount": "{n} modulo | {n} moduli",
+      "byState": "Per stato",
+      "total": "{n} in tutto",
+      "inUse": "In uso",
+      "empty": "Vuoto",
+      "archived": "Archiviato",
+      "nobody": "Ancora nessuno",
+      "noDescription": "Nessuna descrizione",
+      "updated": "Aggiornato {when}",
+      "shareOfPeople": "Quota di persone",
+      "description": "Descrizione",
+      "peopleHelp": "Una persona può essere in più voci.",
+      "pickPeople": "Scegli persone…",
+      "addPeople": "Aggiungi persone",
+      "editTitle": "Modifica {name}",
+      "nameTaken": "Questo nome è già usato. Scegline un altro.",
+      "importShort": "Importa",
+      "archive": "Archivia",
+      "restore": "Ripristina",
+      "archivedTitle": "Archiviato",
+      "archivedDesc": "Non viene più offerto per nuovi campi. I moduli che già lo usano lo mantengono, segnato come archiviato nel builder.",
+      "usedBy": "Moduli con campi solo per questo",
+      "notUsed": "Nessun modulo limita ancora un campo a questo.",
+      "inUseBy": "{n} modulo limita un campo a questo. | {n} moduli limitano campi a questo.",
+      "deleteTitle": "Eliminare {name}?",
+      "deleteDesc": "Viene rimosso per sempre e le sue persone restano nello spazio di lavoro.",
+      "sort": {
+        "people": "Più persone",
+        "updated": "Aggiornati di recente",
+        "created": "Più recenti"
+      },
+      "merge": {
+        "title": "Unisci {n} voce | Unisci {n} voci",
+        "desc": "Confluiscono in quella che scegli e le altre scompaiono.",
+        "into": "Unisci in",
+        "people": "{n} persona passa a {into}. | {n} persone passano a {into}.",
+        "forms": "{n} limitazione di modulo si sposta, così nessun modulo perde le sue regole di accesso. | {n} limitazioni di modulo si spostano, così nessun modulo perde le sue regole di accesso.",
+        "gone": "La voce unita viene rimossa. | Le {n} voci unite vengono rimosse.",
+        "action": "Unisci"
+      },
+      "import": {
+        "desc": "Un nome per riga, oppure un file CSV (si usa la prima colonna). Non viene aggiunto nulla finché non confermi.",
+        "drop": "Trascina qui un file CSV o di testo, oppure clicca per sfogliare",
+        "types": "CSV o TXT, un nome per riga",
+        "paste": "Oppure incolla i nomi",
+        "summary": "{n} su {total} verranno aggiunti",
+        "state": {
+          "new": "Nuovo",
+          "duplicate": "Già presente",
+          "too_long": "Troppo lungo"
+        },
+        "action": "Importa {n} | Importa {n}"
+      },
+      "toast": {
+        "created": "{name} creato",
+        "saved": "{name} salvato",
+        "archived": "{name} archiviato",
+        "restored": "{name} ripristinato",
+        "deleted": "{name} eliminato",
+        "merged": "Unito in {name}",
+        "imported": "{n} aggiunto | {n} aggiunti",
+        "skipped": "{n} saltato (già presente o troppo lungo) | {n} saltati (già presenti o troppo lunghi)"
       }
     }
   }

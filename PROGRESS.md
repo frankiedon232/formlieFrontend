@@ -24,7 +24,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F11   | Responses                                         | ✅     | 100% |
 | F12   | Data sources & databases                          | ✅     | 100% |
 | F13   | API service & integrations                        | ✅     | 100% (owner-tested 2026-10-06) |
-| F14   | Settings                                          | 🟡     | ~15% (M1 ✅) |
+| F14   | Settings                                          | 🟡     | ~30% (M1, M2 ✅) |
 | F15   | Option sets & payments                            | ⬜     | 0%   |
 | F16   | Profile                                           | ⬜     | 0%   |
 | F17   | Users                                             | ⬜     | 0%   |
@@ -715,7 +715,7 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 
 **Goal:** one place where workspace admins control everything about their workspace. Each section is its own page under `/settings/*`, with a section menu (sidebar list on desktop, select on phones), unsaved-changes warning and a save bar.
 
-**Plan (2026-10-06, milestones):** **M1** ✅ Settings frame, Company, Branding, Language and region. **M2** Organisation data (departments, job titles, teams and locations; builder reads them). **M3** Sign-in and security. **M4** Notifications and emails (incl. emailing responses to the team and outside addresses). **M5** Privacy, data and form defaults. **M6** Appearance. **M7** Address, domain and organisations. Billing moved to F23.
+**Plan (2026-10-06, milestones):** **M1** ✅ Settings frame, Company, Branding, Language and region. **M2** ✅ Organisation data (departments, job titles, teams and locations; builder reads them). **M3** Sign-in and security. **M4** Notifications and emails (incl. emailing responses to the team and outside addresses). **M5** Privacy, data and form defaults. **M6** Appearance. **M7** Address, domain and organisations. Billing moved to F23.
 
 ### Settings shell
 
@@ -748,12 +748,12 @@ Organisations run on different brand colours, so each workspace can change the l
 
 Every workspace sets up its own reference data here; the builder, field access and logic only ever offer what the workspace has (no built-in samples once Settings exist), with an empty state that links straight to the right settings page.
 
-- ⬜ **Departments:** create, rename, merge, archive (forms keep their history); members per department; import from CSV
-- ⬜ **Roles / job titles:** the workspace's own list (separate from the permission roles of F22); people can hold several
-- ⬜ **Teams, locations / sites, cost centres** (optional lists, same pattern)
-- ⬜ **Lists (option sets):** reachable from Settings as well as Resources → Option sets (F15), every list and its kinds (simple, large / searchable, cascading, with details, dynamic)
-- ⬜ Builder pickers read these live: field access (departments, roles, people), choice fields "from a list", logic conditions; removed / archived entries are flagged on forms that still use them
-- ⬜ Mock: replace the fixed sample departments / roles in `server/mock/routes/directory.ts` with per-workspace data managed here
+- ✅ **Departments:** create, rename, merge (people and field restrictions move), archive / restore (forms keep them, flagged), delete when unused; members per department; import from CSV or pasted names with a preview
+- ✅ **Job titles:** the workspace's own list (separate from the permission roles of F22); people can hold several; a Field access choice of their own
+- ✅ **Teams, locations / sites, cost centres** (optional lists, same pattern, one page with a switch)
+- ✅ **Lists (option sets):** reachable from Settings (navigator link) as well as Resources → Option sets; their kinds stay F15
+- ✅ Builder pickers read these live: field access (departments, job titles, roles, people) with an empty state linking to Settings; removed / archived entries are flagged on forms that still use them (choice fields "from a list" and logic conditions on people's departments come with F15 / F22)
+- ✅ Mock: `/directory` serves the workspace's own departments and job titles (`orgStore`), no fixed samples
 
 ### Domain & workspace address
 
@@ -1352,3 +1352,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-06 | F13 | Webhooks, owner review: the local receiver now requires `WEBHOOK_TOKEN` (will not start without it), refuses a missing or wrong token with 401 before reading the body, answers a repeated Formalie-Key without handling it again; webhook answers use the clean API names (the form's endpoint names, else from the labels; masking follows), never internal keys. Checked: no token 401, wrong 401, right 200, retry not handled twice; a real response.created arrived with token valid and clean names. |
 | 2026-10-06 | F13 | Owner tested the whole API service end to end (services, endpoints, tokens of all three kinds, access rules, API Documentation, Postman, duplicates and Formalie-Key, webhooks with the local receiver): phase closed. Stale open items ticked; left for the backend: TLS only and CORS for browser callers; dashboard and roles stay in F21 / F22. |
 | 2026-10-06 | F14 | M1 Settings frame and basics: one saved settings record per workspace (`settingsStore`, onboarding reads and writes it), `/settings` routes with shared validation (`shared/utils/settings/schemas.ts`) and field-by-field audit; Settings navigator in the menu column (takeover) or a Sections panel, overview with setup ring, next step and section statuses, search (navigator and Ctrl+K); Company (with a receipt-style preview), Branding (pictures upload at once; live sign-in preview; the sign-in page, its showcase and the browser tab icon use the branding), Language and region (live preview; useFormat applies time zone, short date format, number signs and currency everywhere; form language pickers follow form languages). Checked in the browser: overview statuses, Company save with a field error refused then saved, Branding uploads and preview, tab icon after reload, number format applied on another page (13.735), leave warning, phone layout; test edits undone. Tests: settings rules. |
+| 2026-10-07 | F14 | M2 Organisation data: `orgStore` (per workspace, demo workspaces keep their sample departments' ids, new ones start empty), `/org/{kind}` routes (list, insights, CRUD, archive / restore, merge with field restrictions moved, import, usage, delete only when unused; FRM-ORG-1001 / 1002; audit `settings.org_*`), `/directory` reads it; Settings pages Departments, Job titles, Teams and locations (switch: teams, locations, cost centres) in the locked list format with Import (paste or CSV, preview) and Merge (also for selected rows); builder Field access gains Job titles (dropdown), an empty state linking to Settings and stale-entry marks. Checked in the browser: departments overview and cards, import preview (header, duplicates, too long) and import, merge into Finance with the panel opening, the builder listing the job titles; test entries removed and the form field put back. |

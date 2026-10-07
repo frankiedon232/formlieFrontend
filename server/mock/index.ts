@@ -35,6 +35,7 @@ import * as forms from './routes/forms'
 import { navigationCounts } from './routes/navigation'
 import * as onboarding from './routes/onboarding'
 import * as settings from './routes/settings'
+import * as org from './routes/org'
 import * as uploads from './routes/uploads'
 import { csrf, handshake, health } from './routes/system'
 import * as tenants from './routes/tenants'
@@ -272,6 +273,17 @@ const router = createRouter()
   .get('/navigation/counts', navigationCounts)
   // onboarding + uploads
   // workspace settings (F14)
+  .get('/org/:kind', org.listOrg)
+  .get('/org/:kind/insights', org.orgInsights)
+  .post('/org/:kind', org.createOrgItem)
+  .post('/org/:kind/merge', org.mergeOrgItems)
+  .post('/org/:kind/import', org.importOrgItems)
+  .get('/org/:kind/:id', org.getOrgItem)
+  .get('/org/:kind/:id/usage', org.orgUsage)
+  .patch('/org/:kind/:id', org.updateOrgItem)
+  .post('/org/:kind/:id/archive', org.archiveOrgItem)
+  .post('/org/:kind/:id/restore', org.restoreOrgItem)
+  .delete('/org/:kind/:id', org.deleteOrgItem)
   .get('/settings', settings.getSettings)
   .get('/settings/localisation', settings.getLocalisation)
   // The exact address wins over /settings/:section in the router, so saving it needs its own line

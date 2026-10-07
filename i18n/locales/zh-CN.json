@@ -600,7 +600,9 @@
     "FRM-API-1017": "请以 JSON 格式发送请求体，并设置 Content-Type: application/json。",
     "FRM-API-1018": "请求体过大（最多 1 MB；文件请通过上传步骤发送）。",
     "FRM-API-1019": "此表单未向 API 服务开放。请在分享设置中开启 API。",
-    "FRM-API-1020": "这个 Formalie-Key 已用于另一个不同的请求。每条新记录都请发送新的密钥。"
+    "FRM-API-1020": "这个 Formalie-Key 已用于另一个不同的请求。每条新记录都请发送新的密钥。",
+    "FRM-ORG-1001": "已存在同名条目。",
+    "FRM-ORG-1002": "仍有表单在使用它。请先归档，或将它合并到其他条目。"
   },
   "errorUi": {
     "reference": "参考编号：{id}",
@@ -1047,7 +1049,14 @@
       "integrations_api_key_deleted": "API 密钥已删除",
       "api_token_revealed": "已查看 API 令牌",
       "integrations_webhook_secret_revealed": "已查看 Webhook 密钥",
-      "integrations_api_key_revealed": "已查看 API 密钥"
+      "integrations_api_key_revealed": "已查看 API 密钥",
+      "settings_org_created": "已添加组织条目",
+      "settings_org_updated": "已修改组织条目",
+      "settings_org_archived": "已归档组织条目",
+      "settings_org_restored": "已恢复组织条目",
+      "settings_org_merged": "已合并组织条目",
+      "settings_org_imported": "已导入组织条目",
+      "settings_org_deleted": "已删除组织条目"
     },
     "detail": {
       "who": "谁",
@@ -2115,22 +2124,33 @@
         "everyone": "所有人",
         "department": "部门",
         "role": "角色",
-        "user": "人员"
+        "user": "人员",
+        "job_title": "职位"
       },
       "everyoneHint": "所有填写表单的人都能看到此字段。",
       "all": {
         "department": "所有部门",
         "role": "所有角色",
-        "user": "工作区中的所有人员"
+        "user": "工作区中的所有人员",
+        "job_title": "所有职位"
       },
       "pick": {
         "department": "选择部门",
         "role": "选择角色",
-        "user": "选择人员"
+        "user": "选择人员",
+        "job_title": "选择职位"
       },
       "placeholder": "从列表中选择…",
       "selected": "仅选中的 {n} 项可以查看和填写此字段。",
-      "noRequired": "受限字段不能设为必填，因为字段不面向的人员也必须能够提交。其答案仅对相同人员可见。"
+      "noRequired": "受限字段不能设为必填，因为字段不面向的人员也必须能够提交。其答案仅对相同人员可见。",
+      "none": {
+        "department": "还没有部门",
+        "job_title": "还没有职位"
+      },
+      "noneDesc": "请先在设置中创建，它们会立即显示在这里。",
+      "setUp": "在设置中创建",
+      "archived": "已归档",
+      "stale": "所选的 {n} 个条目已被归档或移除。如有需要请重新选择。 | 所选的 {n} 个条目已被归档或移除。如有需要请重新选择。"
     },
     "language": {
       "title": "表单语言",
@@ -6413,6 +6433,150 @@
         "time": "当前时间",
         "number": "数字",
         "money": "金额"
+      }
+    },
+    "org": {
+      "kind": {
+        "departments": {
+          "many": "部门",
+          "new": "新建部门",
+          "create": "创建部门",
+          "import": "导入部门",
+          "hint": "表单和访问规则可以使用的部门，以及每个部门的成员。",
+          "empty": "还没有部门",
+          "emptyDesc": "添加你所在组织的部门，或从列表导入。之后表单可以只对部分部门显示字段。",
+          "search": "搜索部门",
+          "placeholder": "例如：财务",
+          "examples": "财务\n运营\n人事",
+          "peopleHint": "谁属于某个部门"
+        },
+        "job_titles": {
+          "many": "职位",
+          "new": "新建职位",
+          "create": "创建职位",
+          "import": "导入职位",
+          "hint": "人们在组织中所做的工作。与权限角色分开。",
+          "empty": "还没有职位",
+          "emptyDesc": "添加人们担任的职位，或从列表导入。之后表单可以只对部分职位显示字段。",
+          "search": "搜索职位",
+          "placeholder": "例如：团队负责人",
+          "examples": "经理\n团队负责人\n分析师",
+          "peopleHint": "谁担任某个职位"
+        },
+        "teams": {
+          "many": "团队",
+          "new": "新建团队",
+          "create": "创建团队",
+          "import": "导入团队",
+          "hint": "可选的跨部门人员分组。",
+          "empty": "还没有团队",
+          "emptyDesc": "如果你的组织按团队工作，请添加团队，或从列表导入。",
+          "search": "搜索团队",
+          "placeholder": "例如：客户成功",
+          "examples": "客户成功\n新人入职\n现场团队",
+          "peopleHint": "谁在某个团队中"
+        },
+        "locations": {
+          "many": "地点",
+          "new": "新建地点",
+          "create": "创建地点",
+          "import": "导入地点",
+          "hint": "可选的场所、办公室或分支机构。",
+          "empty": "还没有地点",
+          "emptyDesc": "添加人们工作的场所、办公室或分支机构，或从列表导入。",
+          "search": "搜索地点",
+          "placeholder": "例如：总部",
+          "examples": "总部\n北部分部\n仓库",
+          "peopleHint": "谁在某个地点工作"
+        },
+        "cost_centres": {
+          "many": "成本中心",
+          "new": "新建成本中心",
+          "create": "创建成本中心",
+          "import": "导入成本中心",
+          "hint": "用于预算和审批的可选成本中心。",
+          "empty": "还没有成本中心",
+          "emptyDesc": "如果表单需要，请添加成本中心，或从列表导入。",
+          "search": "搜索成本中心",
+          "placeholder": "例如：CC-100 市场",
+          "examples": "CC-100 市场\nCC-200 运营",
+          "peopleHint": "谁计入某个成本中心"
+        }
+      },
+      "col": {
+        "name": "名称",
+        "code": "代码",
+        "state": "状态",
+        "people": "成员",
+        "forms": "表单",
+        "created": "创建时间",
+        "updated": "更新时间"
+      },
+      "people": "成员",
+      "ofPeople": "共 {n} 人",
+      "peopleCount": "{n} 人 | {n} 人",
+      "formsCount": "{n} 个表单 | {n} 个表单",
+      "byState": "按状态",
+      "total": "共 {n} 个",
+      "inUse": "使用中",
+      "empty": "空",
+      "archived": "已归档",
+      "nobody": "还没有任何人",
+      "noDescription": "无描述",
+      "updated": "{when}更新",
+      "shareOfPeople": "成员占比",
+      "description": "描述",
+      "peopleHelp": "一个人可以属于多个。",
+      "pickPeople": "选择成员…",
+      "addPeople": "添加成员",
+      "editTitle": "编辑 {name}",
+      "nameTaken": "该名称已被使用，请换一个。",
+      "importShort": "导入",
+      "archive": "归档",
+      "restore": "恢复",
+      "archivedTitle": "已归档",
+      "archivedDesc": "新字段不再提供它。已使用它的表单会保留，并在构建器中标记为已归档。",
+      "usedBy": "仅为它显示字段的表单",
+      "notUsed": "还没有表单把字段限定给它。",
+      "inUseBy": "{n} 个表单把字段限定给它。 | {n} 个表单把字段限定给它。",
+      "deleteTitle": "删除 {name}？",
+      "deleteDesc": "将被永久删除，其中的成员仍保留在工作区。",
+      "sort": {
+        "people": "成员最多",
+        "updated": "最近更新",
+        "created": "最新"
+      },
+      "merge": {
+        "title": "合并 {n} 个条目 | 合并 {n} 个条目",
+        "desc": "它们会并入你选择的条目，其余的会消失。",
+        "into": "合并到",
+        "people": "{n} 人加入 {into}。 | {n} 人加入 {into}。",
+        "forms": "{n} 项表单限制会一并迁移，所以没有表单会丢失访问规则。 | {n} 项表单限制会一并迁移，所以没有表单会丢失访问规则。",
+        "gone": "被合并的条目将被移除。 | {n} 个被合并的条目将被移除。",
+        "action": "合并"
+      },
+      "import": {
+        "desc": "每行一个名称，或上传 CSV 文件（使用第一列）。确认之前不会添加任何内容。",
+        "drop": "将 CSV 或文本文件拖到这里，或点击浏览",
+        "types": "CSV 或 TXT，每行一个名称",
+        "paste": "或粘贴名称",
+        "summary": "{total} 个中将添加 {n} 个",
+        "state": {
+          "new": "新增",
+          "duplicate": "已存在",
+          "too_long": "太长"
+        },
+        "action": "导入 {n} 个 | 导入 {n} 个"
+      },
+      "toast": {
+        "created": "已创建 {name}",
+        "saved": "已保存 {name}",
+        "archived": "已归档 {name}",
+        "restored": "已恢复 {name}",
+        "deleted": "已删除 {name}",
+        "merged": "已合并到 {name}",
+        "imported": "已添加 {n} 个 | 已添加 {n} 个",
+        "skipped": "已跳过 {n} 个（已存在或太长） | 已跳过 {n} 个（已存在或太长）"
       }
     }
   }

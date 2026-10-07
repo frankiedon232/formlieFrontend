@@ -600,7 +600,9 @@
     "FRM-API-1017": "Envía el cuerpo como JSON con Content-Type: application/json.",
     "FRM-API-1018": "El cuerpo es demasiado grande (máximo 1 MB; envía los archivos mediante el paso de carga).",
     "FRM-API-1019": "Este formulario no está abierto al servicio de API. Activa la API en sus ajustes de Compartir.",
-    "FRM-API-1020": "Esta Formalie-Key ya se usó en otra solicitud distinta. Envía una clave nueva con cada registro nuevo."
+    "FRM-API-1020": "Esta Formalie-Key ya se usó en otra solicitud distinta. Envía una clave nueva con cada registro nuevo.",
+    "FRM-ORG-1001": "Ya existe una entrada con este nombre.",
+    "FRM-ORG-1002": "Aún hay formularios que la usan. Archívala o combínala con otra."
   },
   "errorUi": {
     "reference": "Referencia: {id}",
@@ -1047,7 +1049,14 @@
       "integrations_api_key_deleted": "Clave de API eliminada",
       "api_token_revealed": "Token de API visto",
       "integrations_webhook_secret_revealed": "Secreto de webhook visto",
-      "integrations_api_key_revealed": "Clave de API vista"
+      "integrations_api_key_revealed": "Clave de API vista",
+      "settings_org_created": "Entrada de organización añadida",
+      "settings_org_updated": "Entrada de organización modificada",
+      "settings_org_archived": "Entrada de organización archivada",
+      "settings_org_restored": "Entrada de organización restaurada",
+      "settings_org_merged": "Entradas de organización combinadas",
+      "settings_org_imported": "Entradas de organización importadas",
+      "settings_org_deleted": "Entrada de organización eliminada"
     },
     "detail": {
       "who": "Quién",
@@ -2115,22 +2124,33 @@
         "everyone": "Todos",
         "department": "Departamentos",
         "role": "Roles",
-        "user": "Personas"
+        "user": "Personas",
+        "job_title": "Puestos"
       },
       "everyoneHint": "Todas las personas que rellenan el formulario ven este campo.",
       "all": {
         "department": "Todos los departamentos",
         "role": "Todos los roles",
-        "user": "Todas las personas del espacio de trabajo"
+        "user": "Todas las personas del espacio de trabajo",
+        "job_title": "Todos los puestos"
       },
       "pick": {
         "department": "Elegir departamentos",
         "role": "Elegir roles",
-        "user": "Elegir personas"
+        "user": "Elegir personas",
+        "job_title": "Elegir puestos"
       },
       "placeholder": "Elige de la lista…",
       "selected": "Solo los {n} seleccionados pueden ver y rellenar este campo.",
-      "noRequired": "Los campos restringidos no pueden ser obligatorios: las personas a las que no va dirigido el campo deben poder enviar igualmente. Sus respuestas solo se muestran a esas mismas personas."
+      "noRequired": "Los campos restringidos no pueden ser obligatorios: las personas a las que no va dirigido el campo deben poder enviar igualmente. Sus respuestas solo se muestran a esas mismas personas.",
+      "none": {
+        "department": "Aún no hay departamentos",
+        "job_title": "Aún no hay puestos"
+      },
+      "noneDesc": "Configúralos primero en Ajustes y aparecerán aquí al instante.",
+      "setUp": "Configurar en Ajustes",
+      "archived": "archivado",
+      "stale": "{n} entrada elegida se archivó o se quitó. Elige de nuevo si hace falta. | {n} entradas elegidas se archivaron o se quitaron. Elige de nuevo si hace falta."
     },
     "language": {
       "title": "Idioma del formulario",
@@ -6413,6 +6433,150 @@
         "time": "Hora actual",
         "number": "Número",
         "money": "Importe"
+      }
+    },
+    "org": {
+      "kind": {
+        "departments": {
+          "many": "Departamentos",
+          "new": "Nuevo departamento",
+          "create": "Crear departamento",
+          "import": "Importar departamentos",
+          "hint": "Los departamentos que pueden usar tus formularios y reglas de acceso, con las personas de cada uno.",
+          "empty": "Aún no hay departamentos",
+          "emptyDesc": "Añade los departamentos de tu organización o impórtalos desde una lista. Los formularios podrán mostrar campos solo a algunos.",
+          "search": "Buscar departamentos",
+          "placeholder": "p. ej. Finanzas",
+          "examples": "Finanzas\nOperaciones\nPersonal",
+          "peopleHint": "Quién pertenece a un departamento"
+        },
+        "job_titles": {
+          "many": "Puestos",
+          "new": "Nuevo puesto",
+          "create": "Crear puesto",
+          "import": "Importar puestos",
+          "hint": "Lo que hace la gente en tu organización. Distinto de los roles de permisos.",
+          "empty": "Aún no hay puestos",
+          "emptyDesc": "Añade los puestos que ocupan las personas o impórtalos desde una lista. Los formularios podrán mostrar campos solo a algunos.",
+          "search": "Buscar puestos",
+          "placeholder": "p. ej. Jefe de equipo",
+          "examples": "Gerente\nJefe de equipo\nAnalista",
+          "peopleHint": "Quién ocupa un puesto"
+        },
+        "teams": {
+          "many": "Equipos",
+          "new": "Nuevo equipo",
+          "create": "Crear equipo",
+          "import": "Importar equipos",
+          "hint": "Grupos de personas opcionales que cruzan departamentos.",
+          "empty": "Aún no hay equipos",
+          "emptyDesc": "Añade equipos si tu organización trabaja con ellos, o impórtalos desde una lista.",
+          "search": "Buscar equipos",
+          "placeholder": "p. ej. Éxito del cliente",
+          "examples": "Éxito del cliente\nIncorporación\nEquipo de campo",
+          "peopleHint": "Quién está en un equipo"
+        },
+        "locations": {
+          "many": "Ubicaciones",
+          "new": "Nueva ubicación",
+          "create": "Crear ubicación",
+          "import": "Importar ubicaciones",
+          "hint": "Sedes, oficinas o sucursales opcionales.",
+          "empty": "Aún no hay ubicaciones",
+          "emptyDesc": "Añade las sedes, oficinas o sucursales donde trabaja la gente, o impórtalas desde una lista.",
+          "search": "Buscar ubicaciones",
+          "placeholder": "p. ej. Oficina central",
+          "examples": "Oficina central\nSucursal norte\nAlmacén",
+          "peopleHint": "Quién trabaja en una ubicación"
+        },
+        "cost_centres": {
+          "many": "Centros de coste",
+          "new": "Nuevo centro de coste",
+          "create": "Crear centro de coste",
+          "import": "Importar centros de coste",
+          "hint": "Centros de coste opcionales para presupuestos y aprobaciones.",
+          "empty": "Aún no hay centros de coste",
+          "emptyDesc": "Añade centros de coste si tus formularios los necesitan, o impórtalos desde una lista.",
+          "search": "Buscar centros de coste",
+          "placeholder": "p. ej. CC-100 Marketing",
+          "examples": "CC-100 Marketing\nCC-200 Operaciones",
+          "peopleHint": "Quién se carga a un centro de coste"
+        }
+      },
+      "col": {
+        "name": "Nombre",
+        "code": "Código",
+        "state": "Estado",
+        "people": "Personas",
+        "forms": "Formularios",
+        "created": "Creado",
+        "updated": "Actualizado"
+      },
+      "people": "Personas",
+      "ofPeople": "de {n} personas",
+      "peopleCount": "{n} persona | {n} personas",
+      "formsCount": "{n} formulario | {n} formularios",
+      "byState": "Por estado",
+      "total": "{n} en total",
+      "inUse": "En uso",
+      "empty": "Vacío",
+      "archived": "Archivado",
+      "nobody": "Aún no hay nadie",
+      "noDescription": "Sin descripción",
+      "updated": "Actualizado {when}",
+      "shareOfPeople": "Proporción de personas",
+      "description": "Descripción",
+      "peopleHelp": "Una persona puede estar en varios.",
+      "pickPeople": "Elegir personas…",
+      "addPeople": "Añadir personas",
+      "editTitle": "Editar {name}",
+      "nameTaken": "Este nombre ya está en uso. Elige otro.",
+      "importShort": "Importar",
+      "archive": "Archivar",
+      "restore": "Restaurar",
+      "archivedTitle": "Archivado",
+      "archivedDesc": "Ya no se ofrece para campos nuevos. Los formularios que ya lo usan lo conservan, marcado como archivado en el constructor.",
+      "usedBy": "Formularios con campos solo para esto",
+      "notUsed": "Ningún formulario limita aún un campo a esto.",
+      "inUseBy": "{n} formulario limita un campo a esto. | {n} formularios limitan campos a esto.",
+      "deleteTitle": "¿Eliminar {name}?",
+      "deleteDesc": "Se elimina para siempre y sus personas siguen en el espacio de trabajo.",
+      "sort": {
+        "people": "Más personas",
+        "updated": "Actualizados recientemente",
+        "created": "Más recientes"
+      },
+      "merge": {
+        "title": "Combinar {n} entrada | Combinar {n} entradas",
+        "desc": "Pasan a la que elijas y las demás desaparecen.",
+        "into": "Combinar en",
+        "people": "{n} persona pasa a {into}. | {n} personas pasan a {into}.",
+        "forms": "{n} restricción de formulario se traslada, así ningún formulario pierde sus reglas de acceso. | {n} restricciones de formulario se trasladan, así ningún formulario pierde sus reglas de acceso.",
+        "gone": "La entrada combinada se elimina. | Las {n} entradas combinadas se eliminan.",
+        "action": "Combinar"
+      },
+      "import": {
+        "desc": "Un nombre por línea, o un archivo CSV (se usa la primera columna). No se añade nada hasta que confirmes.",
+        "drop": "Suelta aquí un archivo CSV o de texto, o haz clic para buscarlo",
+        "types": "CSV o TXT, un nombre por línea",
+        "paste": "O pega nombres",
+        "summary": "Se añadirán {n} de {total}",
+        "state": {
+          "new": "Nuevo",
+          "duplicate": "Ya existe",
+          "too_long": "Demasiado largo"
+        },
+        "action": "Importar {n} | Importar {n}"
+      },
+      "toast": {
+        "created": "{name} creado",
+        "saved": "{name} guardado",
+        "archived": "{name} archivado",
+        "restored": "{name} restaurado",
+        "deleted": "{name} eliminado",
+        "merged": "Combinado en {name}",
+        "imported": "{n} añadido | {n} añadidos",
+        "skipped": "{n} omitido (ya existe o es demasiado largo) | {n} omitidos (ya existen o son demasiado largos)"
       }
     }
   }

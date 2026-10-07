@@ -600,7 +600,9 @@
     "FRM-API-1017": "Stuur de body als JSON met Content-Type: application/json.",
     "FRM-API-1018": "De body is te groot (maximaal 1 MB; stuur bestanden via de uploadstap).",
     "FRM-API-1019": "Dit formulier staat niet open voor de API-service. Zet de API aan in de instellingen van Delen.",
-    "FRM-API-1020": "Deze Formalie-Key is al gebruikt voor een ander verzoek. Stuur voor elk nieuw record een nieuwe key mee."
+    "FRM-API-1020": "Deze Formalie-Key is al gebruikt voor een ander verzoek. Stuur voor elk nieuw record een nieuwe key mee.",
+    "FRM-ORG-1001": "Er bestaat al een item met deze naam.",
+    "FRM-ORG-1002": "Er zijn nog formulieren die het gebruiken. Archiveer het of voeg het samen met een ander."
   },
   "errorUi": {
     "reference": "Referentie: {id}",
@@ -1047,7 +1049,14 @@
       "integrations_api_key_deleted": "API-sleutel verwijderd",
       "api_token_revealed": "API-token bekeken",
       "integrations_webhook_secret_revealed": "Webhookgeheim bekeken",
-      "integrations_api_key_revealed": "API-sleutel bekeken"
+      "integrations_api_key_revealed": "API-sleutel bekeken",
+      "settings_org_created": "Organisatie-item toegevoegd",
+      "settings_org_updated": "Organisatie-item gewijzigd",
+      "settings_org_archived": "Organisatie-item gearchiveerd",
+      "settings_org_restored": "Organisatie-item hersteld",
+      "settings_org_merged": "Organisatie-items samengevoegd",
+      "settings_org_imported": "Organisatie-items geïmporteerd",
+      "settings_org_deleted": "Organisatie-item verwijderd"
     },
     "detail": {
       "who": "Wie",
@@ -2115,22 +2124,33 @@
         "everyone": "Iedereen",
         "department": "Afdelingen",
         "role": "Rollen",
-        "user": "Personen"
+        "user": "Personen",
+        "job_title": "Functies"
       },
       "everyoneHint": "Iedereen die het formulier invult, ziet dit veld.",
       "all": {
         "department": "Alle afdelingen",
         "role": "Alle rollen",
-        "user": "Alle personen in de werkruimte"
+        "user": "Alle personen in de werkruimte",
+        "job_title": "Alle functies"
       },
       "pick": {
         "department": "Afdelingen kiezen",
         "role": "Rollen kiezen",
-        "user": "Personen kiezen"
+        "user": "Personen kiezen",
+        "job_title": "Functies kiezen"
       },
       "placeholder": "Kies uit de lijst…",
       "selected": "Alleen de {n} geselecteerde kunnen dit veld zien en invullen.",
-      "noRequired": "Beperkte velden kunnen niet verplicht zijn. Personen voor wie het veld niet bedoeld is, moeten het formulier nog steeds kunnen verzenden. Hun antwoorden zijn alleen zichtbaar voor dezelfde personen."
+      "noRequired": "Beperkte velden kunnen niet verplicht zijn. Personen voor wie het veld niet bedoeld is, moeten het formulier nog steeds kunnen verzenden. Hun antwoorden zijn alleen zichtbaar voor dezelfde personen.",
+      "none": {
+        "department": "Nog geen afdelingen",
+        "job_title": "Nog geen functies"
+      },
+      "noneDesc": "Stel ze eerst in bij Instellingen, dan verschijnen ze hier meteen.",
+      "setUp": "Instellen in Instellingen",
+      "archived": "gearchiveerd",
+      "stale": "{n} gekozen item is gearchiveerd of verwijderd. Kies opnieuw indien nodig. | {n} gekozen items zijn gearchiveerd of verwijderd. Kies opnieuw indien nodig."
     },
     "language": {
       "title": "Formuliertaal",
@@ -6413,6 +6433,150 @@
         "time": "Tijd nu",
         "number": "Getal",
         "money": "Bedrag"
+      }
+    },
+    "org": {
+      "kind": {
+        "departments": {
+          "many": "Afdelingen",
+          "new": "Nieuwe afdeling",
+          "create": "Afdeling maken",
+          "import": "Afdelingen importeren",
+          "hint": "De afdelingen die je formulieren en toegangsregels kunnen gebruiken, met de mensen in elke afdeling.",
+          "empty": "Nog geen afdelingen",
+          "emptyDesc": "Voeg de afdelingen van je organisatie toe of importeer ze uit een lijst. Formulieren kunnen dan velden alleen aan sommige tonen.",
+          "search": "Afdelingen zoeken",
+          "placeholder": "bijv. Financiën",
+          "examples": "Financiën\nOperatie\nPersoneel",
+          "peopleHint": "Wie bij een afdeling hoort"
+        },
+        "job_titles": {
+          "many": "Functies",
+          "new": "Nieuwe functie",
+          "create": "Functie maken",
+          "import": "Functies importeren",
+          "hint": "Wat mensen doen in je organisatie. Los van toegangsrollen.",
+          "empty": "Nog geen functies",
+          "emptyDesc": "Voeg de functies toe die mensen hebben of importeer ze uit een lijst. Formulieren kunnen dan velden alleen aan sommige tonen.",
+          "search": "Functies zoeken",
+          "placeholder": "bijv. Teamleider",
+          "examples": "Manager\nTeamleider\nAnalist",
+          "peopleHint": "Wie een functie heeft"
+        },
+        "teams": {
+          "many": "Teams",
+          "new": "Nieuw team",
+          "create": "Team maken",
+          "import": "Teams importeren",
+          "hint": "Optionele groepen mensen over afdelingen heen.",
+          "empty": "Nog geen teams",
+          "emptyDesc": "Voeg teams toe als je organisatie zo werkt, of importeer ze uit een lijst.",
+          "search": "Teams zoeken",
+          "placeholder": "bijv. Klantsucces",
+          "examples": "Klantsucces\nOnboarding\nBuitendienst",
+          "peopleHint": "Wie in een team zit"
+        },
+        "locations": {
+          "many": "Locaties",
+          "new": "Nieuwe locatie",
+          "create": "Locatie maken",
+          "import": "Locaties importeren",
+          "hint": "Optionele vestigingen, kantoren of filialen.",
+          "empty": "Nog geen locaties",
+          "emptyDesc": "Voeg de vestigingen, kantoren of filialen toe waar mensen werken, of importeer ze uit een lijst.",
+          "search": "Locaties zoeken",
+          "placeholder": "bijv. Hoofdkantoor",
+          "examples": "Hoofdkantoor\nFiliaal noord\nMagazijn",
+          "peopleHint": "Wie op een locatie werkt"
+        },
+        "cost_centres": {
+          "many": "Kostenplaatsen",
+          "new": "Nieuwe kostenplaats",
+          "create": "Kostenplaats maken",
+          "import": "Kostenplaatsen importeren",
+          "hint": "Optionele kostenplaatsen voor budgetten en goedkeuringen.",
+          "empty": "Nog geen kostenplaatsen",
+          "emptyDesc": "Voeg kostenplaatsen toe als je formulieren ze nodig hebben, of importeer ze uit een lijst.",
+          "search": "Kostenplaatsen zoeken",
+          "placeholder": "bijv. CC-100 Marketing",
+          "examples": "CC-100 Marketing\nCC-200 Operatie",
+          "peopleHint": "Wie op een kostenplaats wordt geboekt"
+        }
+      },
+      "col": {
+        "name": "Naam",
+        "code": "Code",
+        "state": "Status",
+        "people": "Mensen",
+        "forms": "Formulieren",
+        "created": "Aangemaakt",
+        "updated": "Bijgewerkt"
+      },
+      "people": "Mensen",
+      "ofPeople": "van {n} mensen",
+      "peopleCount": "{n} persoon | {n} mensen",
+      "formsCount": "{n} formulier | {n} formulieren",
+      "byState": "Per status",
+      "total": "{n} in totaal",
+      "inUse": "In gebruik",
+      "empty": "Leeg",
+      "archived": "Gearchiveerd",
+      "nobody": "Nog niemand erin",
+      "noDescription": "Geen beschrijving",
+      "updated": "Bijgewerkt {when}",
+      "shareOfPeople": "Aandeel van mensen",
+      "description": "Beschrijving",
+      "peopleHelp": "Een persoon kan in meerdere zitten.",
+      "pickPeople": "Mensen kiezen…",
+      "addPeople": "Mensen toevoegen",
+      "editTitle": "{name} bewerken",
+      "nameTaken": "Deze naam is al in gebruik. Kies een andere.",
+      "importShort": "Importeren",
+      "archive": "Archiveren",
+      "restore": "Herstellen",
+      "archivedTitle": "Gearchiveerd",
+      "archivedDesc": "Het wordt niet meer aangeboden voor nieuwe velden. Formulieren die het al gebruiken houden het, gemarkeerd als gearchiveerd in de builder.",
+      "usedBy": "Formulieren met velden alleen hiervoor",
+      "notUsed": "Nog geen formulier beperkt een veld hiertoe.",
+      "inUseBy": "{n} formulier beperkt een veld hiertoe. | {n} formulieren beperken velden hiertoe.",
+      "deleteTitle": "{name} verwijderen?",
+      "deleteDesc": "Het wordt definitief verwijderd; de mensen blijven in de werkruimte.",
+      "sort": {
+        "people": "Meeste mensen",
+        "updated": "Recent bijgewerkt",
+        "created": "Nieuwste"
+      },
+      "merge": {
+        "title": "{n} item samenvoegen | {n} items samenvoegen",
+        "desc": "Ze gaan naar het item dat je kiest en de rest verdwijnt.",
+        "into": "Samenvoegen met",
+        "people": "{n} persoon gaat naar {into}. | {n} mensen gaan naar {into}.",
+        "forms": "{n} formulierbeperking gaat mee, zodat geen formulier zijn toegangsregels verliest. | {n} formulierbeperkingen gaan mee, zodat geen formulier zijn toegangsregels verliest.",
+        "gone": "Het samengevoegde item wordt verwijderd. | De {n} samengevoegde items worden verwijderd.",
+        "action": "Samenvoegen"
+      },
+      "import": {
+        "desc": "Eén naam per regel, of een CSV-bestand (de eerste kolom wordt gebruikt). Er wordt niets toegevoegd voordat je bevestigt.",
+        "drop": "Sleep een CSV- of tekstbestand hierheen of klik om te bladeren",
+        "types": "CSV of TXT, één naam per regel",
+        "paste": "Of plak namen",
+        "summary": "{n} van {total} worden toegevoegd",
+        "state": {
+          "new": "Nieuw",
+          "duplicate": "Bestaat al",
+          "too_long": "Te lang"
+        },
+        "action": "{n} importeren | {n} importeren"
+      },
+      "toast": {
+        "created": "{name} aangemaakt",
+        "saved": "{name} opgeslagen",
+        "archived": "{name} gearchiveerd",
+        "restored": "{name} hersteld",
+        "deleted": "{name} verwijderd",
+        "merged": "Samengevoegd met {name}",
+        "imported": "{n} toegevoegd | {n} toegevoegd",
+        "skipped": "{n} overgeslagen (bestaat al of te lang) | {n} overgeslagen (bestaan al of te lang)"
       }
     }
   }

@@ -600,7 +600,9 @@
     "FRM-API-1017": "Envoyez le corps en JSON avec Content-Type: application/json.",
     "FRM-API-1018": "Le corps est trop volumineux (1 MB au maximum ; envoyez les fichiers via l'étape de téléversement).",
     "FRM-API-1019": "Ce formulaire n’est pas ouvert au service d’API. Activez l’API dans ses paramètres de Partage.",
-    "FRM-API-1020": "Cette Formalie-Key a déjà été utilisée pour une autre requête. Envoyez une nouvelle clé pour chaque nouvel enregistrement."
+    "FRM-API-1020": "Cette Formalie-Key a déjà été utilisée pour une autre requête. Envoyez une nouvelle clé pour chaque nouvel enregistrement.",
+    "FRM-ORG-1001": "Une entrée portant ce nom existe déjà.",
+    "FRM-ORG-1002": "Des formulaires l'utilisent encore. Archivez-le ou fusionnez-le avec un autre."
   },
   "errorUi": {
     "reference": "Référence : {id}",
@@ -1047,7 +1049,14 @@
       "integrations_api_key_deleted": "Clé API supprimée",
       "api_token_revealed": "Jeton d’API consulté",
       "integrations_webhook_secret_revealed": "Secret de webhook consulté",
-      "integrations_api_key_revealed": "Clé d’API consultée"
+      "integrations_api_key_revealed": "Clé d’API consultée",
+      "settings_org_created": "Entrée d'organisation ajoutée",
+      "settings_org_updated": "Entrée d'organisation modifiée",
+      "settings_org_archived": "Entrée d'organisation archivée",
+      "settings_org_restored": "Entrée d'organisation restaurée",
+      "settings_org_merged": "Entrées d'organisation fusionnées",
+      "settings_org_imported": "Entrées d'organisation importées",
+      "settings_org_deleted": "Entrée d'organisation supprimée"
     },
     "detail": {
       "who": "Qui",
@@ -2115,22 +2124,33 @@
         "everyone": "Tout le monde",
         "department": "Services",
         "role": "Rôles",
-        "user": "Personnes"
+        "user": "Personnes",
+        "job_title": "Intitulés de poste"
       },
       "everyoneHint": "Toutes les personnes qui remplissent le formulaire voient ce champ.",
       "all": {
         "department": "Tous les services",
         "role": "Tous les rôles",
-        "user": "Toutes les personnes de l'espace de travail"
+        "user": "Toutes les personnes de l'espace de travail",
+        "job_title": "Tous les intitulés de poste"
       },
       "pick": {
         "department": "Choisir des services",
         "role": "Choisir des rôles",
-        "user": "Choisir des personnes"
+        "user": "Choisir des personnes",
+        "job_title": "Choisir des intitulés de poste"
       },
       "placeholder": "Choisissez dans la liste…",
       "selected": "Seuls les {n} sélectionnés peuvent voir et remplir ce champ.",
-      "noRequired": "Les champs restreints ne peuvent pas être obligatoires : les personnes auxquelles le champ n'est pas destiné doivent tout de même pouvoir envoyer le formulaire. Leurs réponses ne sont visibles que par ces mêmes personnes."
+      "noRequired": "Les champs restreints ne peuvent pas être obligatoires : les personnes auxquelles le champ n'est pas destiné doivent tout de même pouvoir envoyer le formulaire. Leurs réponses ne sont visibles que par ces mêmes personnes.",
+      "none": {
+        "department": "Aucun service pour le moment",
+        "job_title": "Aucun intitulé de poste pour le moment"
+      },
+      "noneDesc": "Configurez-les d'abord dans les Paramètres, ils apparaîtront ici aussitôt.",
+      "setUp": "Configurer dans les Paramètres",
+      "archived": "archivé",
+      "stale": "{n} entrée choisie a été archivée ou supprimée. Choisissez à nouveau si besoin. | {n} entrées choisies ont été archivées ou supprimées. Choisissez à nouveau si besoin."
     },
     "language": {
       "title": "Langue du formulaire",
@@ -6413,6 +6433,150 @@
         "time": "Heure actuelle",
         "number": "Nombre",
         "money": "Montant"
+      }
+    },
+    "org": {
+      "kind": {
+        "departments": {
+          "many": "Services",
+          "new": "Nouveau service",
+          "create": "Créer un service",
+          "import": "Importer des services",
+          "hint": "Les services que vos formulaires et règles d'accès peuvent utiliser, avec les personnes de chacun.",
+          "empty": "Aucun service pour le moment",
+          "emptyDesc": "Ajoutez les services de votre organisation ou importez-les depuis une liste. Les formulaires peuvent alors afficher des champs seulement pour certains.",
+          "search": "Rechercher des services",
+          "placeholder": "p. ex. Finance",
+          "examples": "Finance\nOpérations\nPersonnel",
+          "peopleHint": "Qui appartient à un service"
+        },
+        "job_titles": {
+          "many": "Intitulés de poste",
+          "new": "Nouvel intitulé de poste",
+          "create": "Créer un intitulé de poste",
+          "import": "Importer des intitulés de poste",
+          "hint": "Ce que les gens font dans votre organisation. Distinct des rôles d'autorisation.",
+          "empty": "Aucun intitulé de poste pour le moment",
+          "emptyDesc": "Ajoutez les intitulés de poste que les gens occupent ou importez-les depuis une liste. Les formulaires peuvent alors afficher des champs seulement pour certains.",
+          "search": "Rechercher des intitulés de poste",
+          "placeholder": "p. ex. Chef d'équipe",
+          "examples": "Responsable\nChef d'équipe\nAnalyste",
+          "peopleHint": "Qui occupe un intitulé de poste"
+        },
+        "teams": {
+          "many": "Équipes",
+          "new": "Nouvelle équipe",
+          "create": "Créer une équipe",
+          "import": "Importer des équipes",
+          "hint": "Groupes de personnes facultatifs, à travers les services.",
+          "empty": "Aucune équipe pour le moment",
+          "emptyDesc": "Ajoutez des équipes si votre organisation fonctionne ainsi, ou importez-les depuis une liste.",
+          "search": "Rechercher des équipes",
+          "placeholder": "p. ex. Réussite client",
+          "examples": "Réussite client\nAccueil des nouveaux\nÉquipe terrain",
+          "peopleHint": "Qui fait partie d'une équipe"
+        },
+        "locations": {
+          "many": "Sites",
+          "new": "Nouveau site",
+          "create": "Créer un site",
+          "import": "Importer des sites",
+          "hint": "Sites, bureaux ou agences facultatifs.",
+          "empty": "Aucun site pour le moment",
+          "emptyDesc": "Ajoutez les sites, bureaux ou agences où les gens travaillent, ou importez-les depuis une liste.",
+          "search": "Rechercher des sites",
+          "placeholder": "p. ex. Siège",
+          "examples": "Siège\nAgence nord\nEntrepôt",
+          "peopleHint": "Qui travaille sur un site"
+        },
+        "cost_centres": {
+          "many": "Centres de coûts",
+          "new": "Nouveau centre de coûts",
+          "create": "Créer un centre de coûts",
+          "import": "Importer des centres de coûts",
+          "hint": "Centres de coûts facultatifs pour les budgets et les validations.",
+          "empty": "Aucun centre de coûts pour le moment",
+          "emptyDesc": "Ajoutez des centres de coûts si vos formulaires en ont besoin, ou importez-les depuis une liste.",
+          "search": "Rechercher des centres de coûts",
+          "placeholder": "p. ex. CC-100 Marketing",
+          "examples": "CC-100 Marketing\nCC-200 Opérations",
+          "peopleHint": "Qui est rattaché à un centre de coûts"
+        }
+      },
+      "col": {
+        "name": "Nom",
+        "code": "Code",
+        "state": "État",
+        "people": "Personnes",
+        "forms": "Formulaires",
+        "created": "Créé",
+        "updated": "Mis à jour"
+      },
+      "people": "Personnes",
+      "ofPeople": "sur {n} personnes",
+      "peopleCount": "{n} personne | {n} personnes",
+      "formsCount": "{n} formulaire | {n} formulaires",
+      "byState": "Par état",
+      "total": "{n} au total",
+      "inUse": "Utilisé",
+      "empty": "Vide",
+      "archived": "Archivé",
+      "nobody": "Personne pour le moment",
+      "noDescription": "Aucune description",
+      "updated": "Mis à jour {when}",
+      "shareOfPeople": "Part des personnes",
+      "description": "Description",
+      "peopleHelp": "Une personne peut être dans plusieurs.",
+      "pickPeople": "Choisir des personnes…",
+      "addPeople": "Ajouter des personnes",
+      "editTitle": "Modifier {name}",
+      "nameTaken": "Ce nom est déjà utilisé. Choisissez-en un autre.",
+      "importShort": "Importer",
+      "archive": "Archiver",
+      "restore": "Restaurer",
+      "archivedTitle": "Archivé",
+      "archivedDesc": "Il n'est plus proposé pour les nouveaux champs. Les formulaires qui l'utilisent déjà le gardent, marqué comme archivé dans le builder.",
+      "usedBy": "Formulaires avec des champs réservés",
+      "notUsed": "Aucun formulaire ne lui réserve encore de champ.",
+      "inUseBy": "{n} formulaire lui réserve un champ. | {n} formulaires lui réservent des champs.",
+      "deleteTitle": "Supprimer {name} ?",
+      "deleteDesc": "Il est supprimé définitivement, et ses personnes restent dans l'espace de travail.",
+      "sort": {
+        "people": "Plus de personnes",
+        "updated": "Récemment mis à jour",
+        "created": "Plus récents"
+      },
+      "merge": {
+        "title": "Fusionner {n} entrée | Fusionner {n} entrées",
+        "desc": "Elles vont dans celle que vous choisissez, et les autres disparaissent.",
+        "into": "Fusionner dans",
+        "people": "{n} personne rejoint {into}. | {n} personnes rejoignent {into}.",
+        "forms": "{n} restriction de formulaire suit, aucun formulaire ne perd donc ses règles d'accès. | {n} restrictions de formulaire suivent, aucun formulaire ne perd donc ses règles d'accès.",
+        "gone": "L'entrée fusionnée est supprimée. | Les {n} entrées fusionnées sont supprimées.",
+        "action": "Fusionner"
+      },
+      "import": {
+        "desc": "Un nom par ligne, ou un fichier CSV (la première colonne est utilisée). Rien n'est ajouté avant votre confirmation.",
+        "drop": "Déposez un fichier CSV ou texte ici ou cliquez pour parcourir",
+        "types": "CSV ou TXT, un nom par ligne",
+        "paste": "Ou collez des noms",
+        "summary": "{n} sur {total} seront ajoutés",
+        "state": {
+          "new": "Nouveau",
+          "duplicate": "Déjà présent",
+          "too_long": "Trop long"
+        },
+        "action": "Importer {n} | Importer {n}"
+      },
+      "toast": {
+        "created": "{name} créé",
+        "saved": "{name} enregistré",
+        "archived": "{name} archivé",
+        "restored": "{name} restauré",
+        "deleted": "{name} supprimé",
+        "merged": "Fusionné dans {name}",
+        "imported": "{n} ajouté | {n} ajoutés",
+        "skipped": "{n} ignoré (déjà présent ou trop long) | {n} ignorés (déjà présents ou trop longs)"
       }
     }
   }

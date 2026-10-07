@@ -80,6 +80,13 @@ export const AUDIT_EVENTS = {
   'responses.deleted': { area: 'responses', icon: 'i-lucide-trash' },
   // Settings
   'settings.updated': { area: 'settings', icon: 'i-lucide-settings-2' },
+  'settings.org_created': { area: 'settings', icon: 'i-lucide-network' },
+  'settings.org_updated': { area: 'settings', icon: 'i-lucide-pencil' },
+  'settings.org_archived': { area: 'settings', icon: 'i-lucide-archive' },
+  'settings.org_restored': { area: 'settings', icon: 'i-lucide-archive-restore' },
+  'settings.org_merged': { area: 'settings', icon: 'i-lucide-merge' },
+  'settings.org_imported': { area: 'settings', icon: 'i-lucide-file-up' },
+  'settings.org_deleted': { area: 'settings', icon: 'i-lucide-trash-2' },
   // Users
   'users.invited': { area: 'users', icon: 'i-lucide-user-plus' },
   'users.role_changed': { area: 'users', icon: 'i-lucide-user-cog' },

@@ -600,7 +600,9 @@
     "FRM-API-1017": "Senden Sie den Body als JSON mit Content-Type: application/json.",
     "FRM-API-1018": "Der Body ist zu groß (maximal 1 MB; Dateien über den Upload-Schritt senden).",
     "FRM-API-1019": "Dieses Formular ist für den API-Dienst nicht geöffnet. Schalte die API in den Teilen-Einstellungen ein.",
-    "FRM-API-1020": "Dieser Formalie-Key wurde schon für eine andere Anfrage verwendet. Senden Sie für jeden neuen Datensatz einen neuen Key."
+    "FRM-API-1020": "Dieser Formalie-Key wurde schon für eine andere Anfrage verwendet. Senden Sie für jeden neuen Datensatz einen neuen Key.",
+    "FRM-ORG-1001": "Ein Eintrag mit diesem Namen gibt es bereits.",
+    "FRM-ORG-1002": "Formulare nutzen ihn noch. Archiviere ihn oder führe ihn mit einem anderen zusammen."
   },
   "errorUi": {
     "reference": "Referenz: {id}",
@@ -1047,7 +1049,14 @@
       "integrations_api_key_deleted": "API-Schlüssel gelöscht",
       "api_token_revealed": "API-Token angesehen",
       "integrations_webhook_secret_revealed": "Webhook-Geheimnis angesehen",
-      "integrations_api_key_revealed": "API-Schlüssel angesehen"
+      "integrations_api_key_revealed": "API-Schlüssel angesehen",
+      "settings_org_created": "Organisationseintrag hinzugefügt",
+      "settings_org_updated": "Organisationseintrag geändert",
+      "settings_org_archived": "Organisationseintrag archiviert",
+      "settings_org_restored": "Organisationseintrag wiederhergestellt",
+      "settings_org_merged": "Organisationseinträge zusammengeführt",
+      "settings_org_imported": "Organisationseinträge importiert",
+      "settings_org_deleted": "Organisationseintrag gelöscht"
     },
     "detail": {
       "who": "Wer",
@@ -2115,22 +2124,33 @@
         "everyone": "Alle",
         "department": "Abteilungen",
         "role": "Rollen",
-        "user": "Personen"
+        "user": "Personen",
+        "job_title": "Jobtitel"
       },
       "everyoneHint": "Alle, die das Formular ausfüllen, sehen dieses Feld.",
       "all": {
         "department": "Alle Abteilungen",
         "role": "Alle Rollen",
-        "user": "Alle Personen im Workspace"
+        "user": "Alle Personen im Workspace",
+        "job_title": "Alle Jobtitel"
       },
       "pick": {
         "department": "Abteilungen auswählen",
         "role": "Rollen auswählen",
-        "user": "Personen auswählen"
+        "user": "Personen auswählen",
+        "job_title": "Jobtitel auswählen"
       },
       "placeholder": "Aus der Liste auswählen…",
       "selected": "Nur die {n} ausgewählten können dieses Feld sehen und ausfüllen.",
-      "noRequired": "Eingeschränkte Felder können keine Pflichtfelder sein. Personen, für die das Feld nicht gedacht ist, müssen trotzdem absenden können. Ihre Antworten sind nur für dieselben Personen sichtbar."
+      "noRequired": "Eingeschränkte Felder können keine Pflichtfelder sein. Personen, für die das Feld nicht gedacht ist, müssen trotzdem absenden können. Ihre Antworten sind nur für dieselben Personen sichtbar.",
+      "none": {
+        "department": "Noch keine Abteilungen",
+        "job_title": "Noch keine Jobtitel"
+      },
+      "noneDesc": "Richte sie zuerst in den Einstellungen ein, dann erscheinen sie sofort hier.",
+      "setUp": "In den Einstellungen einrichten",
+      "archived": "archiviert",
+      "stale": "{n} ausgewählter Eintrag wurde archiviert oder entfernt. Wähle bei Bedarf neu. | {n} ausgewählte Einträge wurden archiviert oder entfernt. Wähle bei Bedarf neu."
     },
     "language": {
       "title": "Formularsprache",
@@ -6413,6 +6433,150 @@
         "time": "Uhrzeit jetzt",
         "number": "Zahl",
         "money": "Betrag"
+      }
+    },
+    "org": {
+      "kind": {
+        "departments": {
+          "many": "Abteilungen",
+          "new": "Neue Abteilung",
+          "create": "Abteilung erstellen",
+          "import": "Abteilungen importieren",
+          "hint": "Die Abteilungen, die deine Formulare und Zugriffsregeln nutzen können, mit den Personen darin.",
+          "empty": "Noch keine Abteilungen",
+          "emptyDesc": "Füge die Abteilungen deiner Organisation hinzu oder importiere sie aus einer Liste. Formulare können Felder dann nur für einige davon zeigen.",
+          "search": "Abteilungen suchen",
+          "placeholder": "z. B. Finanzen",
+          "examples": "Finanzen\nBetrieb\nPersonal",
+          "peopleHint": "Wer zu einer Abteilung gehört"
+        },
+        "job_titles": {
+          "many": "Jobtitel",
+          "new": "Neuer Jobtitel",
+          "create": "Jobtitel erstellen",
+          "import": "Jobtitel importieren",
+          "hint": "Was Personen in deiner Organisation tun. Getrennt von Berechtigungsrollen.",
+          "empty": "Noch keine Jobtitel",
+          "emptyDesc": "Füge die Jobtitel hinzu, die Personen innehaben, oder importiere sie aus einer Liste. Formulare können Felder dann nur für einige davon zeigen.",
+          "search": "Jobtitel suchen",
+          "placeholder": "z. B. Teamleitung",
+          "examples": "Manager\nTeamleitung\nAnalyst",
+          "peopleHint": "Wer einen Jobtitel hat"
+        },
+        "teams": {
+          "many": "Teams",
+          "new": "Neues Team",
+          "create": "Team erstellen",
+          "import": "Teams importieren",
+          "hint": "Optionale Gruppen von Personen über Abteilungen hinweg.",
+          "empty": "Noch keine Teams",
+          "emptyDesc": "Füge Teams hinzu, wenn deine Organisation in Teams arbeitet, oder importiere sie aus einer Liste.",
+          "search": "Teams suchen",
+          "placeholder": "z. B. Kundenerfolg",
+          "examples": "Kundenerfolg\nOnboarding\nAußendienst",
+          "peopleHint": "Wer in einem Team ist"
+        },
+        "locations": {
+          "many": "Standorte",
+          "new": "Neuer Standort",
+          "create": "Standort erstellen",
+          "import": "Standorte importieren",
+          "hint": "Optionale Standorte, Büros oder Filialen.",
+          "empty": "Noch keine Standorte",
+          "emptyDesc": "Füge die Standorte, Büros oder Filialen hinzu, an denen Personen arbeiten, oder importiere sie aus einer Liste.",
+          "search": "Standorte suchen",
+          "placeholder": "z. B. Hauptsitz",
+          "examples": "Hauptsitz\nFiliale Nord\nLager",
+          "peopleHint": "Wer an einem Standort arbeitet"
+        },
+        "cost_centres": {
+          "many": "Kostenstellen",
+          "new": "Neue Kostenstelle",
+          "create": "Kostenstelle erstellen",
+          "import": "Kostenstellen importieren",
+          "hint": "Optionale Kostenstellen für Budgets und Freigaben.",
+          "empty": "Noch keine Kostenstellen",
+          "emptyDesc": "Füge Kostenstellen hinzu, wenn deine Formulare sie brauchen, oder importiere sie aus einer Liste.",
+          "search": "Kostenstellen suchen",
+          "placeholder": "z. B. CC-100 Marketing",
+          "examples": "CC-100 Marketing\nCC-200 Betrieb",
+          "peopleHint": "Wer einer Kostenstelle zugeordnet ist"
+        }
+      },
+      "col": {
+        "name": "Name",
+        "code": "Code",
+        "state": "Status",
+        "people": "Personen",
+        "forms": "Formulare",
+        "created": "Erstellt",
+        "updated": "Aktualisiert"
+      },
+      "people": "Personen",
+      "ofPeople": "von {n} Personen",
+      "peopleCount": "{n} Person | {n} Personen",
+      "formsCount": "{n} Formular | {n} Formulare",
+      "byState": "Nach Status",
+      "total": "{n} insgesamt",
+      "inUse": "In Verwendung",
+      "empty": "Leer",
+      "archived": "Archiviert",
+      "nobody": "Noch niemand darin",
+      "noDescription": "Keine Beschreibung",
+      "updated": "Aktualisiert {when}",
+      "shareOfPeople": "Anteil der Personen",
+      "description": "Beschreibung",
+      "peopleHelp": "Eine Person kann in mehreren sein.",
+      "pickPeople": "Personen auswählen…",
+      "addPeople": "Personen hinzufügen",
+      "editTitle": "{name} bearbeiten",
+      "nameTaken": "Dieser Name wird schon verwendet. Wähle einen anderen.",
+      "importShort": "Importieren",
+      "archive": "Archivieren",
+      "restore": "Wiederherstellen",
+      "archivedTitle": "Archiviert",
+      "archivedDesc": "Er wird für neue Felder nicht mehr angeboten. Formulare, die ihn schon nutzen, behalten ihn, im Builder als archiviert markiert.",
+      "usedBy": "Formulare mit Feldern nur dafür",
+      "notUsed": "Noch kein Formular beschränkt ein Feld darauf.",
+      "inUseBy": "{n} Formular beschränkt ein Feld darauf. | {n} Formulare beschränken Felder darauf.",
+      "deleteTitle": "{name} löschen?",
+      "deleteDesc": "Er wird endgültig entfernt. Die Personen darin bleiben im Arbeitsbereich.",
+      "sort": {
+        "people": "Meiste Personen",
+        "updated": "Zuletzt aktualisiert",
+        "created": "Neueste"
+      },
+      "merge": {
+        "title": "{n} Eintrag zusammenführen | {n} Einträge zusammenführen",
+        "desc": "Sie gehen in den, den du wählst, und die übrigen verschwinden.",
+        "into": "Zusammenführen in",
+        "people": "{n} Person wechselt zu {into}. | {n} Personen wechseln zu {into}.",
+        "forms": "{n} Formularbeschränkung zieht mit um, sodass kein Formular seine Zugriffsregeln verliert. | {n} Formularbeschränkungen ziehen mit um, sodass kein Formular seine Zugriffsregeln verliert.",
+        "gone": "Der zusammengeführte Eintrag wird entfernt. | Die {n} zusammengeführten Einträge werden entfernt.",
+        "action": "Zusammenführen"
+      },
+      "import": {
+        "desc": "Ein Name pro Zeile oder eine CSV-Datei (die erste Spalte wird genutzt). Nichts wird hinzugefügt, bevor du bestätigst.",
+        "drop": "CSV- oder Textdatei hier ablegen oder klicken zum Auswählen",
+        "types": "CSV oder TXT, ein Name pro Zeile",
+        "paste": "Oder Namen einfügen",
+        "summary": "{n} von {total} werden hinzugefügt",
+        "state": {
+          "new": "Neu",
+          "duplicate": "Schon vorhanden",
+          "too_long": "Zu lang"
+        },
+        "action": "{n} importieren | {n} importieren"
+      },
+      "toast": {
+        "created": "{name} erstellt",
+        "saved": "{name} gespeichert",
+        "archived": "{name} archiviert",
+        "restored": "{name} wiederhergestellt",
+        "deleted": "{name} gelöscht",
+        "merged": "Zusammengeführt in {name}",
+        "imported": "{n} hinzugefügt | {n} hinzugefügt",
+        "skipped": "{n} übersprungen (schon vorhanden oder zu lang) | {n} übersprungen (schon vorhanden oder zu lang)"
       }
     }
   }

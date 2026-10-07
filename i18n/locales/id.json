@@ -600,7 +600,9 @@
     "FRM-API-1017": "Kirim isi permintaan sebagai JSON dengan Content-Type: application/json.",
     "FRM-API-1018": "Isi permintaan terlalu besar (maksimal 1 MB; kirim file melalui langkah unggah).",
     "FRM-API-1019": "Formulir ini tidak terbuka untuk layanan API. Aktifkan API di pengaturan Bagikan.",
-    "FRM-API-1020": "Formalie-Key ini sudah dipakai untuk permintaan yang berbeda. Kirim key baru untuk setiap data baru."
+    "FRM-API-1020": "Formalie-Key ini sudah dipakai untuk permintaan yang berbeda. Kirim key baru untuk setiap data baru.",
+    "FRM-ORG-1001": "Entri dengan nama ini sudah ada.",
+    "FRM-ORG-1002": "Masih ada formulir yang memakainya. Arsipkan atau gabungkan dengan entri lain."
   },
   "errorUi": {
     "reference": "Referensi: {id}",
@@ -1047,7 +1049,14 @@
       "integrations_api_key_deleted": "Kunci API dihapus",
       "api_token_revealed": "Token API dilihat",
       "integrations_webhook_secret_revealed": "Rahasia webhook dilihat",
-      "integrations_api_key_revealed": "Kunci API dilihat"
+      "integrations_api_key_revealed": "Kunci API dilihat",
+      "settings_org_created": "Entri organisasi ditambahkan",
+      "settings_org_updated": "Entri organisasi diubah",
+      "settings_org_archived": "Entri organisasi diarsipkan",
+      "settings_org_restored": "Entri organisasi dipulihkan",
+      "settings_org_merged": "Entri organisasi digabungkan",
+      "settings_org_imported": "Entri organisasi diimpor",
+      "settings_org_deleted": "Entri organisasi dihapus"
     },
     "detail": {
       "who": "Siapa",
@@ -2115,22 +2124,33 @@
         "everyone": "Semua orang",
         "department": "Departemen",
         "role": "Peran",
-        "user": "Orang"
+        "user": "Orang",
+        "job_title": "Jabatan"
       },
       "everyoneHint": "Semua orang yang mengisi formulir melihat kolom ini.",
       "all": {
         "department": "Semua departemen",
         "role": "Semua peran",
-        "user": "Semua orang di ruang kerja"
+        "user": "Semua orang di ruang kerja",
+        "job_title": "Semua jabatan"
       },
       "pick": {
         "department": "Pilih departemen",
         "role": "Pilih peran",
-        "user": "Pilih orang"
+        "user": "Pilih orang",
+        "job_title": "Pilih jabatan"
       },
       "placeholder": "Pilih dari daftar…",
       "selected": "Hanya {n} yang dipilih yang dapat melihat dan mengisi kolom ini.",
-      "noRequired": "Kolom terbatas tidak dapat diwajibkan. Orang yang tidak dituju oleh kolom ini tetap harus dapat mengirim. Jawaban mereka hanya ditampilkan kepada orang yang sama."
+      "noRequired": "Kolom terbatas tidak dapat diwajibkan. Orang yang tidak dituju oleh kolom ini tetap harus dapat mengirim. Jawaban mereka hanya ditampilkan kepada orang yang sama.",
+      "none": {
+        "department": "Belum ada departemen",
+        "job_title": "Belum ada jabatan"
+      },
+      "noneDesc": "Atur dulu di Pengaturan, lalu langsung muncul di sini.",
+      "setUp": "Atur di Pengaturan",
+      "archived": "diarsipkan",
+      "stale": "{n} entri terpilih telah diarsipkan atau dihapus. Pilih lagi jika perlu. | {n} entri terpilih telah diarsipkan atau dihapus. Pilih lagi jika perlu."
     },
     "language": {
       "title": "Bahasa formulir",
@@ -6413,6 +6433,150 @@
         "time": "Waktu sekarang",
         "number": "Angka",
         "money": "Jumlah"
+      }
+    },
+    "org": {
+      "kind": {
+        "departments": {
+          "many": "Departemen",
+          "new": "Departemen baru",
+          "create": "Buat departemen",
+          "import": "Impor departemen",
+          "hint": "Departemen yang dapat dipakai formulir dan aturan akses Anda, beserta orang di setiap departemen.",
+          "empty": "Belum ada departemen",
+          "emptyDesc": "Tambahkan departemen organisasi Anda atau impor dari daftar. Formulir lalu bisa menampilkan kolom hanya untuk sebagian.",
+          "search": "Cari departemen",
+          "placeholder": "mis. Keuangan",
+          "examples": "Keuangan\nOperasional\nSDM",
+          "peopleHint": "Siapa yang termasuk dalam departemen"
+        },
+        "job_titles": {
+          "many": "Jabatan",
+          "new": "Jabatan baru",
+          "create": "Buat jabatan",
+          "import": "Impor jabatan",
+          "hint": "Apa yang dikerjakan orang di organisasi Anda. Terpisah dari peran izin.",
+          "empty": "Belum ada jabatan",
+          "emptyDesc": "Tambahkan jabatan yang dipegang orang atau impor dari daftar. Formulir lalu bisa menampilkan kolom hanya untuk sebagian.",
+          "search": "Cari jabatan",
+          "placeholder": "mis. Ketua tim",
+          "examples": "Manajer\nKetua tim\nAnalis",
+          "peopleHint": "Siapa yang memegang jabatan"
+        },
+        "teams": {
+          "many": "Tim",
+          "new": "Tim baru",
+          "create": "Buat tim",
+          "import": "Impor tim",
+          "hint": "Kelompok orang opsional lintas departemen.",
+          "empty": "Belum ada tim",
+          "emptyDesc": "Tambahkan tim jika organisasi Anda bekerja dalam tim, atau impor dari daftar.",
+          "search": "Cari tim",
+          "placeholder": "mis. Keberhasilan pelanggan",
+          "examples": "Keberhasilan pelanggan\nOrientasi\nTim lapangan",
+          "peopleHint": "Siapa yang ada di tim"
+        },
+        "locations": {
+          "many": "Lokasi",
+          "new": "Lokasi baru",
+          "create": "Buat lokasi",
+          "import": "Impor lokasi",
+          "hint": "Lokasi, kantor, atau cabang opsional.",
+          "empty": "Belum ada lokasi",
+          "emptyDesc": "Tambahkan lokasi, kantor, atau cabang tempat orang bekerja, atau impor dari daftar.",
+          "search": "Cari lokasi",
+          "placeholder": "mis. Kantor pusat",
+          "examples": "Kantor pusat\nCabang utara\nGudang",
+          "peopleHint": "Siapa yang bekerja di lokasi"
+        },
+        "cost_centres": {
+          "many": "Pusat biaya",
+          "new": "Pusat biaya baru",
+          "create": "Buat pusat biaya",
+          "import": "Impor pusat biaya",
+          "hint": "Pusat biaya opsional untuk anggaran dan persetujuan.",
+          "empty": "Belum ada pusat biaya",
+          "emptyDesc": "Tambahkan pusat biaya jika formulir Anda membutuhkannya, atau impor dari daftar.",
+          "search": "Cari pusat biaya",
+          "placeholder": "mis. CC-100 Pemasaran",
+          "examples": "CC-100 Pemasaran\nCC-200 Operasional",
+          "peopleHint": "Siapa yang dibebankan ke pusat biaya"
+        }
+      },
+      "col": {
+        "name": "Nama",
+        "code": "Kode",
+        "state": "Status",
+        "people": "Orang",
+        "forms": "Formulir",
+        "created": "Dibuat",
+        "updated": "Diperbarui"
+      },
+      "people": "Orang",
+      "ofPeople": "dari {n} orang",
+      "peopleCount": "{n} orang | {n} orang",
+      "formsCount": "{n} formulir | {n} formulir",
+      "byState": "Menurut status",
+      "total": "Total {n}",
+      "inUse": "Dipakai",
+      "empty": "Kosong",
+      "archived": "Diarsipkan",
+      "nobody": "Belum ada siapa pun",
+      "noDescription": "Tanpa deskripsi",
+      "updated": "Diperbarui {when}",
+      "shareOfPeople": "Porsi orang",
+      "description": "Deskripsi",
+      "peopleHelp": "Satu orang bisa ada di beberapa.",
+      "pickPeople": "Pilih orang…",
+      "addPeople": "Tambah orang",
+      "editTitle": "Ubah {name}",
+      "nameTaken": "Nama ini sudah dipakai. Pilih yang lain.",
+      "importShort": "Impor",
+      "archive": "Arsipkan",
+      "restore": "Pulihkan",
+      "archivedTitle": "Diarsipkan",
+      "archivedDesc": "Tidak lagi ditawarkan untuk kolom baru. Formulir yang sudah memakainya tetap menyimpannya, ditandai diarsipkan di pembuat formulir.",
+      "usedBy": "Formulir dengan kolom khusus untuk ini",
+      "notUsed": "Belum ada formulir yang membatasi kolom ke ini.",
+      "inUseBy": "{n} formulir membatasi kolom ke ini. | {n} formulir membatasi kolom ke ini.",
+      "deleteTitle": "Hapus {name}?",
+      "deleteDesc": "Dihapus permanen, dan orang di dalamnya tetap ada di ruang kerja.",
+      "sort": {
+        "people": "Orang terbanyak",
+        "updated": "Baru diperbarui",
+        "created": "Terbaru"
+      },
+      "merge": {
+        "title": "Gabungkan {n} entri | Gabungkan {n} entri",
+        "desc": "Semuanya masuk ke entri yang Anda pilih, sisanya hilang.",
+        "into": "Gabungkan ke",
+        "people": "{n} orang pindah ke {into}. | {n} orang pindah ke {into}.",
+        "forms": "{n} pembatasan formulir ikut pindah, jadi tidak ada formulir yang kehilangan aturan aksesnya. | {n} pembatasan formulir ikut pindah, jadi tidak ada formulir yang kehilangan aturan aksesnya.",
+        "gone": "Entri yang digabung dihapus. | {n} entri yang digabung dihapus.",
+        "action": "Gabungkan"
+      },
+      "import": {
+        "desc": "Satu nama per baris, atau file CSV (kolom pertama dipakai). Tidak ada yang ditambahkan sebelum Anda konfirmasi.",
+        "drop": "Letakkan file CSV atau teks di sini atau klik untuk memilih",
+        "types": "CSV atau TXT, satu nama per baris",
+        "paste": "Atau tempel nama",
+        "summary": "{n} dari {total} akan ditambahkan",
+        "state": {
+          "new": "Baru",
+          "duplicate": "Sudah ada",
+          "too_long": "Terlalu panjang"
+        },
+        "action": "Impor {n} | Impor {n}"
+      },
+      "toast": {
+        "created": "{name} dibuat",
+        "saved": "{name} disimpan",
+        "archived": "{name} diarsipkan",
+        "restored": "{name} dipulihkan",
+        "deleted": "{name} dihapus",
+        "merged": "Digabung ke {name}",
+        "imported": "{n} ditambahkan | {n} ditambahkan",
+        "skipped": "{n} dilewati (sudah ada atau terlalu panjang) | {n} dilewati (sudah ada atau terlalu panjang)"
       }
     }
   }

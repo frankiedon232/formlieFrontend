@@ -600,7 +600,9 @@
     "FRM-API-1017": "Wyślij treść jako JSON z nagłówkiem Content-Type: application/json.",
     "FRM-API-1018": "Treść jest zbyt duża (maksymalnie 1 MB; pliki wysyłaj w kroku przesyłania).",
     "FRM-API-1019": "Ten formularz nie jest otwarty dla usługi API. Włącz API w ustawieniach Udostępniania.",
-    "FRM-API-1020": "Ten Formalie-Key został już użyty w innym żądaniu. Wysyłaj nowy klucz dla każdego nowego rekordu."
+    "FRM-API-1020": "Ten Formalie-Key został już użyty w innym żądaniu. Wysyłaj nowy klucz dla każdego nowego rekordu.",
+    "FRM-ORG-1001": "Wpis o tej nazwie już istnieje.",
+    "FRM-ORG-1002": "Formularze wciąż go używają. Zarchiwizuj go lub scal z innym."
   },
   "errorUi": {
     "reference": "Identyfikator: {id}",
@@ -1047,7 +1049,14 @@
       "integrations_api_key_deleted": "Klucz API usunięty",
       "api_token_revealed": "Wyświetlono token API",
       "integrations_webhook_secret_revealed": "Wyświetlono sekret webhooka",
-      "integrations_api_key_revealed": "Wyświetlono klucz API"
+      "integrations_api_key_revealed": "Wyświetlono klucz API",
+      "settings_org_created": "Dodano wpis organizacji",
+      "settings_org_updated": "Zmieniono wpis organizacji",
+      "settings_org_archived": "Zarchiwizowano wpis organizacji",
+      "settings_org_restored": "Przywrócono wpis organizacji",
+      "settings_org_merged": "Scalono wpisy organizacji",
+      "settings_org_imported": "Zaimportowano wpisy organizacji",
+      "settings_org_deleted": "Usunięto wpis organizacji"
     },
     "detail": {
       "who": "Kto",
@@ -2115,22 +2124,33 @@
         "everyone": "Wszyscy",
         "department": "Działy",
         "role": "Role",
-        "user": "Osoby"
+        "user": "Osoby",
+        "job_title": "Stanowiska"
       },
       "everyoneHint": "Wszyscy wypełniający formularz widzą to pole.",
       "all": {
         "department": "Wszystkie działy",
         "role": "Wszystkie role",
-        "user": "Wszystkie osoby w obszarze roboczym"
+        "user": "Wszystkie osoby w obszarze roboczym",
+        "job_title": "Wszystkie stanowiska"
       },
       "pick": {
         "department": "Wybierz działy",
         "role": "Wybierz role",
-        "user": "Wybierz osoby"
+        "user": "Wybierz osoby",
+        "job_title": "Wybierz stanowiska"
       },
       "placeholder": "Wybierz z listy…",
       "selected": "Tylko wybrane ({n}) mogą widzieć i wypełniać to pole.",
-      "noRequired": "Pola z ograniczonym dostępem nie mogą być wymagane. Osoby, dla których pole nie jest przeznaczone, nadal muszą móc wysłać formularz. Ich odpowiedzi są widoczne tylko dla tych samych osób."
+      "noRequired": "Pola z ograniczonym dostępem nie mogą być wymagane. Osoby, dla których pole nie jest przeznaczone, nadal muszą móc wysłać formularz. Ich odpowiedzi są widoczne tylko dla tych samych osób.",
+      "none": {
+        "department": "Brak działów",
+        "job_title": "Brak stanowisk"
+      },
+      "noneDesc": "Najpierw skonfiguruj je w Ustawieniach, a od razu pojawią się tutaj.",
+      "setUp": "Skonfiguruj w Ustawieniach",
+      "archived": "zarchiwizowano",
+      "stale": "{n} wybrany wpis został zarchiwizowany lub usunięty. W razie potrzeby wybierz ponownie. | {n} wybranych wpisów zostało zarchiwizowanych lub usuniętych. W razie potrzeby wybierz ponownie."
     },
     "language": {
       "title": "Język formularza",
@@ -6413,6 +6433,150 @@
         "time": "Godzina teraz",
         "number": "Liczba",
         "money": "Kwota"
+      }
+    },
+    "org": {
+      "kind": {
+        "departments": {
+          "many": "Działy",
+          "new": "Nowy dział",
+          "create": "Utwórz dział",
+          "import": "Importuj działy",
+          "hint": "Działy, z których mogą korzystać Twoje formularze i reguły dostępu, wraz z ich osobami.",
+          "empty": "Brak działów",
+          "emptyDesc": "Dodaj działy swojej organizacji lub zaimportuj je z listy. Formularze mogą wtedy pokazywać pola tylko niektórym.",
+          "search": "Szukaj działów",
+          "placeholder": "np. Finanse",
+          "examples": "Finanse\nOperacje\nKadry",
+          "peopleHint": "Kto należy do działu"
+        },
+        "job_titles": {
+          "many": "Stanowiska",
+          "new": "Nowe stanowisko",
+          "create": "Utwórz stanowisko",
+          "import": "Importuj stanowiska",
+          "hint": "Czym ludzie zajmują się w Twojej organizacji. Oddzielne od ról uprawnień.",
+          "empty": "Brak stanowisk",
+          "emptyDesc": "Dodaj stanowiska, które zajmują osoby, lub zaimportuj je z listy. Formularze mogą wtedy pokazywać pola tylko niektórym.",
+          "search": "Szukaj stanowisk",
+          "placeholder": "np. Kierownik zespołu",
+          "examples": "Menedżer\nKierownik zespołu\nAnalityk",
+          "peopleHint": "Kto zajmuje stanowisko"
+        },
+        "teams": {
+          "many": "Zespoły",
+          "new": "Nowy zespół",
+          "create": "Utwórz zespół",
+          "import": "Importuj zespoły",
+          "hint": "Opcjonalne grupy osób ponad działami.",
+          "empty": "Brak zespołów",
+          "emptyDesc": "Dodaj zespoły, jeśli Twoja organizacja tak pracuje, lub zaimportuj je z listy.",
+          "search": "Szukaj zespołów",
+          "placeholder": "np. Obsługa klienta",
+          "examples": "Obsługa klienta\nWdrożenie\nZespół terenowy",
+          "peopleHint": "Kto jest w zespole"
+        },
+        "locations": {
+          "many": "Lokalizacje",
+          "new": "Nowa lokalizacja",
+          "create": "Utwórz lokalizację",
+          "import": "Importuj lokalizacje",
+          "hint": "Opcjonalne miejsca, biura lub oddziały.",
+          "empty": "Brak lokalizacji",
+          "emptyDesc": "Dodaj miejsca, biura lub oddziały, w których pracują ludzie, lub zaimportuj je z listy.",
+          "search": "Szukaj lokalizacji",
+          "placeholder": "np. Siedziba główna",
+          "examples": "Siedziba główna\nOddział północ\nMagazyn",
+          "peopleHint": "Kto pracuje w lokalizacji"
+        },
+        "cost_centres": {
+          "many": "Centra kosztów",
+          "new": "Nowe centrum kosztów",
+          "create": "Utwórz centrum kosztów",
+          "import": "Importuj centra kosztów",
+          "hint": "Opcjonalne centra kosztów dla budżetów i akceptacji.",
+          "empty": "Brak centrów kosztów",
+          "emptyDesc": "Dodaj centra kosztów, jeśli Twoje formularze ich potrzebują, lub zaimportuj je z listy.",
+          "search": "Szukaj centrów kosztów",
+          "placeholder": "np. CC-100 Marketing",
+          "examples": "CC-100 Marketing\nCC-200 Operacje",
+          "peopleHint": "Kto jest obciążany na centrum kosztów"
+        }
+      },
+      "col": {
+        "name": "Nazwa",
+        "code": "Kod",
+        "state": "Stan",
+        "people": "Osoby",
+        "forms": "Formularze",
+        "created": "Utworzono",
+        "updated": "Zaktualizowano"
+      },
+      "people": "Osoby",
+      "ofPeople": "z {n} osób",
+      "peopleCount": "{n} osoba | {n} osób",
+      "formsCount": "{n} formularz | {n} formularzy",
+      "byState": "Według stanu",
+      "total": "Łącznie {n}",
+      "inUse": "W użyciu",
+      "empty": "Puste",
+      "archived": "Zarchiwizowane",
+      "nobody": "Nikogo jeszcze nie ma",
+      "noDescription": "Brak opisu",
+      "updated": "Zaktualizowano {when}",
+      "shareOfPeople": "Udział osób",
+      "description": "Opis",
+      "peopleHelp": "Osoba może być w kilku.",
+      "pickPeople": "Wybierz osoby…",
+      "addPeople": "Dodaj osoby",
+      "editTitle": "Edytuj {name}",
+      "nameTaken": "Ta nazwa jest już używana. Wybierz inną.",
+      "importShort": "Importuj",
+      "archive": "Archiwizuj",
+      "restore": "Przywróć",
+      "archivedTitle": "Zarchiwizowane",
+      "archivedDesc": "Nie jest już oferowany dla nowych pól. Formularze, które już go używają, zachowują go, oznaczonego w kreatorze jako zarchiwizowany.",
+      "usedBy": "Formularze z polami tylko dla niego",
+      "notUsed": "Żaden formularz nie ogranicza jeszcze do niego pola.",
+      "inUseBy": "{n} formularz ogranicza do niego pole. | {n} formularzy ogranicza do niego pola.",
+      "deleteTitle": "Usunąć {name}?",
+      "deleteDesc": "Zostanie usunięty na stałe, a jego osoby pozostaną w przestrzeni roboczej.",
+      "sort": {
+        "people": "Najwięcej osób",
+        "updated": "Ostatnio zaktualizowane",
+        "created": "Najnowsze"
+      },
+      "merge": {
+        "title": "Scal {n} wpis | Scal {n} wpisów",
+        "desc": "Trafią do wybranego, a pozostałe znikną.",
+        "into": "Scal z",
+        "people": "{n} osoba przechodzi do {into}. | {n} osób przechodzi do {into}.",
+        "forms": "{n} ograniczenie formularza przechodzi razem z nimi, więc żaden formularz nie traci reguł dostępu. | {n} ograniczeń formularzy przechodzi razem z nimi, więc żaden formularz nie traci reguł dostępu.",
+        "gone": "Scalony wpis zostanie usunięty. | {n} scalonych wpisów zostanie usuniętych.",
+        "action": "Scal"
+      },
+      "import": {
+        "desc": "Jedna nazwa w wierszu lub plik CSV (używana jest pierwsza kolumna). Nic nie zostanie dodane, dopóki nie potwierdzisz.",
+        "drop": "Upuść tu plik CSV lub tekstowy albo kliknij, aby wybrać",
+        "types": "CSV lub TXT, jedna nazwa w wierszu",
+        "paste": "Lub wklej nazwy",
+        "summary": "Zostanie dodanych {n} z {total}",
+        "state": {
+          "new": "Nowy",
+          "duplicate": "Już istnieje",
+          "too_long": "Za długi"
+        },
+        "action": "Importuj {n} | Importuj {n}"
+      },
+      "toast": {
+        "created": "Utworzono {name}",
+        "saved": "Zapisano {name}",
+        "archived": "Zarchiwizowano {name}",
+        "restored": "Przywrócono {name}",
+        "deleted": "Usunięto {name}",
+        "merged": "Scalono z {name}",
+        "imported": "Dodano {n} | Dodano {n}",
+        "skipped": "Pominięto {n} (już istnieje lub za długi) | Pominięto {n} (już istnieją lub za długie)"
       }
     }
   }

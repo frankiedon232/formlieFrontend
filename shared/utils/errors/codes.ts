@@ -141,6 +141,8 @@ export const ERROR_CODES = {
   'FRM-API-1020': { status: 409, message: 'This Formalie-Key was already used for a different request. Send a new key for every new record.' },
   'FRM-API-1019': { status: 422, message: 'This form is not open to the API service. Turn the API on in its Share settings.' },
   'FRM-API-1016': { status: 409, message: 'This secret can not be shown: it was made before secrets could be viewed again. Rotate it for a new one.' },
+  'FRM-ORG-1001': { status: 409, message: 'An entry with this name already exists.' },
+  'FRM-ORG-1002': { status: 409, message: 'Forms still use it. Archive it, or merge it into another one.' },
   'FRM-PLAN-1001': { status: 402, message: 'Your plan limit has been reached. Upgrade to continue.' },
   'FRM-PLAN-1002': { status: 402, message: 'This feature is not included in your plan.' },
 } as const satisfies Record<string, ErrorCodeDefinition>

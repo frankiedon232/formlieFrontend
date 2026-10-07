@@ -600,7 +600,9 @@
     "FRM-API-1017": "本文を JSON で送信し、Content-Type: application/json を指定してください。",
     "FRM-API-1018": "本文が大きすぎます（最大 1 MB。ファイルはアップロード手順で送信してください）。",
     "FRM-API-1019": "このフォームは API サービスに公開されていません。共有設定で API をオンにしてください。",
-    "FRM-API-1020": "この Formalie-Key はすでに別のリクエストで使われています。新しいレコードごとに新しいキーを送ってください。"
+    "FRM-API-1020": "この Formalie-Key はすでに別のリクエストで使われています。新しいレコードごとに新しいキーを送ってください。",
+    "FRM-ORG-1001": "この名前のエントリはすでにあります。",
+    "FRM-ORG-1002": "フォームがまだ使っています。アーカイブするか、別のエントリに統合してください。"
   },
   "errorUi": {
     "reference": "参照番号：{id}",
@@ -1047,7 +1049,14 @@
       "integrations_api_key_deleted": "APIキーを削除しました",
       "api_token_revealed": "APIトークンを表示しました",
       "integrations_webhook_secret_revealed": "Webhookシークレットを表示しました",
-      "integrations_api_key_revealed": "APIキーを表示しました"
+      "integrations_api_key_revealed": "APIキーを表示しました",
+      "settings_org_created": "組織エントリを追加しました",
+      "settings_org_updated": "組織エントリを変更しました",
+      "settings_org_archived": "組織エントリをアーカイブしました",
+      "settings_org_restored": "組織エントリを復元しました",
+      "settings_org_merged": "組織エントリを統合しました",
+      "settings_org_imported": "組織エントリをインポートしました",
+      "settings_org_deleted": "組織エントリを削除しました"
     },
     "detail": {
       "who": "誰が",
@@ -2115,22 +2124,33 @@
         "everyone": "全員",
         "department": "部署",
         "role": "ロール",
-        "user": "ユーザー"
+        "user": "ユーザー",
+        "job_title": "役職"
       },
       "everyoneHint": "フォームに回答する全員にこのフィールドが表示されます。",
       "all": {
         "department": "すべての部署",
         "role": "すべてのロール",
-        "user": "ワークスペースの全ユーザー"
+        "user": "ワークスペースの全ユーザー",
+        "job_title": "すべての役職"
       },
       "pick": {
         "department": "部署を選択",
         "role": "ロールを選択",
-        "user": "ユーザーを選択"
+        "user": "ユーザーを選択",
+        "job_title": "役職を選択"
       },
       "placeholder": "リストから選択…",
       "selected": "選択した {n} 件の対象のみがこのフィールドを表示・入力できます。",
-      "noRequired": "制限付きフィールドは必須にできません。対象外のユーザーも送信できる必要があるためです。回答は同じ対象者にのみ表示されます。"
+      "noRequired": "制限付きフィールドは必須にできません。対象外のユーザーも送信できる必要があるためです。回答は同じ対象者にのみ表示されます。",
+      "none": {
+        "department": "部署はまだありません",
+        "job_title": "役職はまだありません"
+      },
+      "noneDesc": "先に設定で登録すると、すぐここに表示されます。",
+      "setUp": "設定で登録",
+      "archived": "アーカイブ済み",
+      "stale": "選択した{n}件のエントリがアーカイブまたは削除されました。必要なら選び直してください。 | 選択した{n}件のエントリがアーカイブまたは削除されました。必要なら選び直してください。"
     },
     "language": {
       "title": "フォームの言語",
@@ -6413,6 +6433,150 @@
         "time": "現在の時刻",
         "number": "数値",
         "money": "金額"
+      }
+    },
+    "org": {
+      "kind": {
+        "departments": {
+          "many": "部署",
+          "new": "新しい部署",
+          "create": "部署を作成",
+          "import": "部署をインポート",
+          "hint": "フォームやアクセスルールで使える部署と、各部署に属する人です。",
+          "empty": "部署はまだありません",
+          "emptyDesc": "組織の部署を追加するか、リストからインポートします。フォームの項目を一部の部署にだけ表示できます。",
+          "search": "部署を検索",
+          "placeholder": "例: 経理",
+          "examples": "経理\n運用\n人事",
+          "peopleHint": "部署に属する人"
+        },
+        "job_titles": {
+          "many": "役職",
+          "new": "新しい役職",
+          "create": "役職を作成",
+          "import": "役職をインポート",
+          "hint": "組織での仕事上の役割です。権限ロールとは別です。",
+          "empty": "役職はまだありません",
+          "emptyDesc": "人が就いている役職を追加するか、リストからインポートします。フォームの項目を一部の役職にだけ表示できます。",
+          "search": "役職を検索",
+          "placeholder": "例: チームリーダー",
+          "examples": "マネージャー\nチームリーダー\nアナリスト",
+          "peopleHint": "役職に就いている人"
+        },
+        "teams": {
+          "many": "チーム",
+          "new": "新しいチーム",
+          "create": "チームを作成",
+          "import": "チームをインポート",
+          "hint": "部署をまたぐ任意の人のグループです。",
+          "empty": "チームはまだありません",
+          "emptyDesc": "チームで動く組織ならチームを追加するか、リストからインポートします。",
+          "search": "チームを検索",
+          "placeholder": "例: カスタマーサクセス",
+          "examples": "カスタマーサクセス\n新人受け入れ\n現場チーム",
+          "peopleHint": "チームに所属する人"
+        },
+        "locations": {
+          "many": "拠点",
+          "new": "新しい拠点",
+          "create": "拠点を作成",
+          "import": "拠点をインポート",
+          "hint": "任意の拠点、オフィス、支店です。",
+          "empty": "拠点はまだありません",
+          "emptyDesc": "人が働く拠点、オフィス、支店を追加するか、リストからインポートします。",
+          "search": "拠点を検索",
+          "placeholder": "例: 本社",
+          "examples": "本社\n北支店\n倉庫",
+          "peopleHint": "拠点で働く人"
+        },
+        "cost_centres": {
+          "many": "コストセンター",
+          "new": "新しいコストセンター",
+          "create": "コストセンターを作成",
+          "import": "コストセンターをインポート",
+          "hint": "予算や承認のための任意のコストセンターです。",
+          "empty": "コストセンターはまだありません",
+          "emptyDesc": "フォームで必要なら、コストセンターを追加するか、リストからインポートします。",
+          "search": "コストセンターを検索",
+          "placeholder": "例: CC-100 マーケティング",
+          "examples": "CC-100 マーケティング\nCC-200 運用",
+          "peopleHint": "コストセンターに計上される人"
+        }
+      },
+      "col": {
+        "name": "名前",
+        "code": "コード",
+        "state": "状態",
+        "people": "人",
+        "forms": "フォーム",
+        "created": "作成日",
+        "updated": "更新日"
+      },
+      "people": "人",
+      "ofPeople": "{n}人中",
+      "peopleCount": "{n}人 | {n}人",
+      "formsCount": "{n}件のフォーム | {n}件のフォーム",
+      "byState": "状態別",
+      "total": "合計 {n}",
+      "inUse": "使用中",
+      "empty": "空",
+      "archived": "アーカイブ済み",
+      "nobody": "まだ誰もいません",
+      "noDescription": "説明なし",
+      "updated": "{when}に更新",
+      "shareOfPeople": "人の割合",
+      "description": "説明",
+      "peopleHelp": "1人が複数に所属できます。",
+      "pickPeople": "人を選択…",
+      "addPeople": "人を追加",
+      "editTitle": "{name}を編集",
+      "nameTaken": "この名前はすでに使われています。別の名前を選んでください。",
+      "importShort": "インポート",
+      "archive": "アーカイブ",
+      "restore": "復元",
+      "archivedTitle": "アーカイブ済み",
+      "archivedDesc": "新しい項目には表示されなくなります。すでに使っているフォームでは残り、ビルダーではアーカイブ済みと表示されます。",
+      "usedBy": "これだけに表示する項目があるフォーム",
+      "notUsed": "これに限定した項目があるフォームはまだありません。",
+      "inUseBy": "{n}件のフォームがこれに項目を限定しています。 | {n}件のフォームがこれに項目を限定しています。",
+      "deleteTitle": "{name}を削除しますか?",
+      "deleteDesc": "完全に削除されます。所属していた人はワークスペースに残ります。",
+      "sort": {
+        "people": "人数が多い順",
+        "updated": "最近更新",
+        "created": "新しい順"
+      },
+      "merge": {
+        "title": "{n}件のエントリを統合 | {n}件のエントリを統合",
+        "desc": "選んだエントリに集約され、残りは消えます。",
+        "into": "統合先",
+        "people": "{n}人が{into}に移ります。 | {n}人が{into}に移ります。",
+        "forms": "フォームの限定{n}件も引き継がれるので、アクセスルールが失われるフォームはありません。 | フォームの限定{n}件も引き継がれるので、アクセスルールが失われるフォームはありません。",
+        "gone": "統合したエントリは削除されます。 | 統合した{n}件のエントリは削除されます。",
+        "action": "統合"
+      },
+      "import": {
+        "desc": "1行に1つの名前、またはCSVファイル(最初の列を使用)。確認するまで何も追加されません。",
+        "drop": "CSVまたはテキストファイルをここにドロップ、またはクリックして選択",
+        "types": "CSVまたはTXT、1行に1つの名前",
+        "paste": "または名前を貼り付け",
+        "summary": "{total}件中{n}件を追加します",
+        "state": {
+          "new": "新規",
+          "duplicate": "登録済み",
+          "too_long": "長すぎます"
+        },
+        "action": "{n}件をインポート | {n}件をインポート"
+      },
+      "toast": {
+        "created": "{name}を作成しました",
+        "saved": "{name}を保存しました",
+        "archived": "{name}をアーカイブしました",
+        "restored": "{name}を復元しました",
+        "deleted": "{name}を削除しました",
+        "merged": "{name}に統合しました",
+        "imported": "{n}件を追加 | {n}件を追加",
+        "skipped": "{n}件をスキップ(登録済みまたは長すぎ) | {n}件をスキップ(登録済みまたは長すぎ)"
       }
     }
   }
