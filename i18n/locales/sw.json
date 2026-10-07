@@ -2507,7 +2507,8 @@
     },
     "language": "Lugha",
     "consentLine": "Kwa kutuma, unakubali kwamba {org} inaweza kutumia majibu yako kwa fomu hii.",
-    "privacyNotice": "Notisi ya faragha"
+    "privacyNotice": "Notisi ya faragha",
+    "opensAfterAbove": "Imefichwa hadi kitu kichaguliwe katika ngazi ya juu; kisha huonyesha tu kilicho chini yake."
   },
   "logic": {
     "crumb": "Mantiki",
@@ -2789,7 +2790,6 @@
     "optionCount": "Chaguo {count} | Chaguo {count}",
     "listsEmptyTitle": "Bado hakuna orodha",
     "listsEmptyDesc": "Unda orodha mara moja na uitumie katika sehemu yoyote ya menyu kunjuzi, redio au kisanduku cha kuteua.",
-    "addList": "Ongeza {name} kama menyu kunjuzi",
     "addAs": "Ongeza kama {type}",
     "listMenu": "Vitendo vya {name}",
     "useList": "Jaza kutoka kwenye orodha…",
@@ -2806,7 +2806,9 @@
     "oneChoice": "Chaguo moja",
     "severalChoices": "Chaguo kadhaa",
     "levels": "Ngazi {n}",
-    "openInListOption": "Fungua katika Orodha ya Chaguo"
+    "openInListOption": "Fungua katika Orodha ya Chaguo",
+    "perLevel": "Chagua kwa kila ngazi: chaguo moja au chaguo kadhaa.",
+    "addLevels": "Ongeza sehemu {n}"
   },
   "designer": {
     "crumb": "Muundo",

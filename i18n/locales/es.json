@@ -2507,7 +2507,8 @@
     },
     "language": "Idioma",
     "consentLine": "Al enviar, aceptas que {org} pueda usar tus respuestas para este formulario.",
-    "privacyNotice": "Aviso de privacidad"
+    "privacyNotice": "Aviso de privacidad",
+    "opensAfterAbove": "Oculto hasta que se elija algo en el nivel superior; entonces muestra solo lo que hay debajo."
   },
   "logic": {
     "crumb": "Lógica",
@@ -2789,7 +2790,6 @@
     "optionCount": "{count} opción | {count} opciones",
     "listsEmptyTitle": "Aún no hay listas",
     "listsEmptyDesc": "Crea una lista una vez y úsala en cualquier campo desplegable, de opción única o de casillas.",
-    "addList": "Añadir {name} como desplegable",
     "addAs": "Añadir como {type}",
     "listMenu": "Opciones de {name}",
     "useList": "Rellenar desde una lista…",
@@ -2806,7 +2806,9 @@
     "oneChoice": "Una opción",
     "severalChoices": "Varias opciones",
     "levels": "{n} niveles",
-    "openInListOption": "Abrir en Lista de opciones"
+    "openInListOption": "Abrir en Lista de opciones",
+    "perLevel": "Elija para cada nivel: una opción o varias opciones.",
+    "addLevels": "Añadir {n} campos"
   },
   "designer": {
     "crumb": "Diseño",

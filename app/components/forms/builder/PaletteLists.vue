@@ -1,8 +1,9 @@
 <!--
   "Lists" palette tab: reusable option lists (countries, regions, products …), each marked plain or
   with its levels (Country → Region → City). Click opens the ways to add it: one choice or several
-  (plain lists also as radio buttons / checkboxes); a list with levels becomes one linked field per
-  level, side by side, each narrowing the next. Dragging a plain list adds a dropdown. ⋯ edits /
+  (plain lists also as radio buttons / checkboxes); a list with levels shows each level with its own
+  One / Several switch (owner 2026-10-07: decided per level), then adds one linked field per level,
+  side by side, each narrowing the next. Dragging a plain list adds a dropdown. ⋯ edits /
   deletes the list or opens it in List Option. "New list" creates one.
 -->
 <script setup lang="ts">
@@ -30,10 +31,18 @@ function openEditor(list: OptionList | null) {
   modalOpen.value = true
 }
 
-function add(list: OptionList, type: FieldType = 'dropdown') {
+function add(list: OptionList, type: FieldType | FieldType[] = 'dropdown') {
   expanded.value = null
   if (builder.placeRow(builder.createListFields(list, type))) emit('added')
 }
+// Lists with levels: one choice or several, per level (one choice by default)
+const perLevel = ref<Record<string, FieldType[]>>({})
+const levelTypes = (list: OptionList) => (perLevel.value[list.id] ??= (levelsOf(list) ?? []).map(() => 'dropdown'))
+const setLevelType = (list: OptionList, index: number, value: unknown) => (levelTypes(list)[index] = value === 'multi_select' ? 'multi_select' : 'dropdown')
+const choiceItems = computed(() => [
+  { value: 'dropdown', label: t('library.oneChoice') },
+  { value: 'multi_select', label: t('library.severalChoices') },
+])
 // Click shows the ways to add a list (one choice, several …)
 const expanded = ref<string | null>(null)
 const ways = (list: OptionList): { type: FieldType; label: string; icon: string }[] => [
@@ -116,7 +125,6 @@ const menu = (list: OptionList): DropdownMenuItem[][] => [
             :class="levelsOf(list) ? '' : 'cursor-grab active:cursor-grabbing'"
             :data-no-drag="levelsOf(list) ? '' : undefined"
             :aria-expanded="expanded === list.id"
-            :aria-label="t('library.addList', { name: list.name })"
             @click="expanded = expanded === list.id ? null : list.id"
           >
             <span class="flex min-w-0 flex-col items-start">
@@ -137,7 +145,15 @@ const menu = (list: OptionList): DropdownMenuItem[][] => [
             />
           </UDropdownMenu>
           </div>
-          <div v-if="expanded === list.id" data-no-drag class="grid grid-cols-2 gap-1 px-1.5 pb-1.5">
+          <div v-if="expanded === list.id && levelsOf(list)" data-no-drag class="flex flex-col gap-1.5 px-1.5 pb-1.5">
+            <p class="text-[11px] text-muted">{{ t('library.perLevel') }}</p>
+            <div v-for="(level, index) in levelsOf(list)!" :key="level.key" class="flex items-center gap-2">
+              <span class="flex min-w-0 flex-1 items-center gap-1 text-xs text-default"><span class="text-muted tabular-nums">{{ index + 1 }}.</span><span class="truncate">{{ level.label }}</span></span>
+              <UTabs :model-value="levelTypes(list)[index]" :items="choiceItems" :content="false" color="neutral" size="xs" :ui="SEGMENTED_UI" class="w-fit shrink-0" :aria-label="level.label" @update:model-value="value => setLevelType(list, index, value)" />
+            </div>
+            <UButton :label="t('library.addLevels', { n: levelsOf(list)!.length })" icon="i-lucide-plus" color="neutral" size="xs" block @click="add(list, [...levelTypes(list)])" />
+          </div>
+          <div v-else-if="expanded === list.id" data-no-drag class="grid grid-cols-2 gap-1 px-1.5 pb-1.5">
             <UButton v-for="way in ways(list)" :key="way.type" :label="way.label" :icon="way.icon" color="neutral" variant="outline" size="xs" class="justify-start" @click="add(list, way.type)" />
           </div>
         </div>

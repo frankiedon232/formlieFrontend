@@ -2507,7 +2507,8 @@
     },
     "language": "Język",
     "consentLine": "Wysyłając, zgadzasz się, aby {org} mogła wykorzystać Twoje odpowiedzi w tym formularzu.",
-    "privacyNotice": "Informacja o prywatności"
+    "privacyNotice": "Informacja o prywatności",
+    "opensAfterAbove": "Ukryte, dopóki nie wybierzesz czegoś na poziomie wyżej; potem pokazuje tylko to, co jest pod nim."
   },
   "logic": {
     "crumb": "Logika",
@@ -2789,7 +2790,6 @@
     "optionCount": "Opcje: {count} | Opcje: {count}",
     "listsEmptyTitle": "Brak list",
     "listsEmptyDesc": "Utwórz listę raz i używaj jej w dowolnym polu listy rozwijanej, jednokrotnego lub wielokrotnego wyboru.",
-    "addList": "Dodaj {name} jako listę rozwijaną",
     "addAs": "Dodaj jako {type}",
     "listMenu": "Opcje dla {name}",
     "useList": "Wypełnij z listy…",
@@ -2806,7 +2806,9 @@
     "oneChoice": "Jeden wybór",
     "severalChoices": "Kilka wyborów",
     "levels": "Poziomy: {n}",
-    "openInListOption": "Otwórz w Liście opcji"
+    "openInListOption": "Otwórz w Liście opcji",
+    "perLevel": "Wybierz dla każdego poziomu: jeden wybór lub kilka wyborów.",
+    "addLevels": "Dodaj pola: {n}"
   },
   "designer": {
     "crumb": "Wygląd",

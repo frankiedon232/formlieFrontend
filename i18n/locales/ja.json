@@ -2507,7 +2507,8 @@
     },
     "language": "言語",
     "consentLine": "送信すると、{org}がこのフォームの回答を利用することに同意したものとみなされます。",
-    "privacyNotice": "プライバシー通知"
+    "privacyNotice": "プライバシー通知",
+    "opensAfterAbove": "上のレベルで何かが選択されるまで非表示になり、選択後はその下にある項目だけを表示します。"
   },
   "logic": {
     "crumb": "ロジック",
@@ -2789,7 +2790,6 @@
     "optionCount": "選択肢 {count} 件 | 選択肢 {count} 件",
     "listsEmptyTitle": "リストはまだありません",
     "listsEmptyDesc": "リストを一度作れば、ドロップダウン、ラジオボタン、チェックボックスの項目で使えます。",
-    "addList": "{name}をドロップダウンとして追加",
     "addAs": "{type}として追加",
     "listMenu": "{name}の操作",
     "useList": "リストから入力…",
@@ -2806,7 +2806,9 @@
     "oneChoice": "1つ選択",
     "severalChoices": "複数選択",
     "levels": "{n}階層",
-    "openInListOption": "選択肢リストで開く"
+    "openInListOption": "選択肢リストで開く",
+    "perLevel": "レベルごとに選択してください：1つ選択または複数選択。",
+    "addLevels": "{n}個のフィールドを追加"
   },
   "designer": {
     "crumb": "デザイン",

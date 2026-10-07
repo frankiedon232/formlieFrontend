@@ -2507,7 +2507,8 @@
     },
     "language": "Ngôn ngữ",
     "consentLine": "Khi gửi, bạn đồng ý để {org} có thể sử dụng câu trả lời của bạn cho biểu mẫu này.",
-    "privacyNotice": "Thông báo quyền riêng tư"
+    "privacyNotice": "Thông báo quyền riêng tư",
+    "opensAfterAbove": "Ẩn cho đến khi chọn một mục ở cấp trên; sau đó chỉ hiển thị những mục nằm dưới nó."
   },
   "logic": {
     "crumb": "Logic",
@@ -2789,7 +2790,6 @@
     "optionCount": "{count} lựa chọn | {count} lựa chọn",
     "listsEmptyTitle": "Chưa có danh sách",
     "listsEmptyDesc": "Tạo danh sách một lần và dùng trong mọi trường danh sách thả xuống, nút chọn hoặc hộp kiểm.",
-    "addList": "Thêm {name} dạng danh sách thả xuống",
     "addAs": "Thêm dạng {type}",
     "listMenu": "Thao tác cho {name}",
     "useList": "Điền từ danh sách…",
@@ -2806,7 +2806,9 @@
     "oneChoice": "Một lựa chọn",
     "severalChoices": "Nhiều lựa chọn",
     "levels": "{n} cấp",
-    "openInListOption": "Mở trong Danh sách tùy chọn"
+    "openInListOption": "Mở trong Danh sách tùy chọn",
+    "perLevel": "Chọn cho từng cấp: một lựa chọn hoặc nhiều lựa chọn.",
+    "addLevels": "Thêm {n} trường"
   },
   "designer": {
     "crumb": "Thiết kế",

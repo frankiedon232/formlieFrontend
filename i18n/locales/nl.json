@@ -2507,7 +2507,8 @@
     },
     "language": "Taal",
     "consentLine": "Door te verzenden ga je ermee akkoord dat {org} je antwoorden voor dit formulier mag gebruiken.",
-    "privacyNotice": "Privacyverklaring"
+    "privacyNotice": "Privacyverklaring",
+    "opensAfterAbove": "Verborgen totdat er in het niveau erboven iets is gekozen; toont dan alleen wat daaronder valt."
   },
   "logic": {
     "crumb": "Logica",
@@ -2789,7 +2790,6 @@
     "optionCount": "{count} optie | {count} opties",
     "listsEmptyTitle": "Nog geen lijsten",
     "listsEmptyDesc": "Maak een lijst één keer en gebruik hem in elk keuzemenu-, keuzerondje- of selectievakjeveld.",
-    "addList": "{name} toevoegen als keuzemenu",
     "addAs": "Toevoegen als {type}",
     "listMenu": "Opties voor {name}",
     "useList": "Vullen uit een lijst…",
@@ -2806,7 +2806,9 @@
     "oneChoice": "Eén keuze",
     "severalChoices": "Meerdere keuzes",
     "levels": "{n} niveaus",
-    "openInListOption": "Openen in Optielijst"
+    "openInListOption": "Openen in Optielijst",
+    "perLevel": "Kies per niveau: één keuze of meerdere keuzes.",
+    "addLevels": "{n} velden toevoegen"
   },
   "designer": {
     "crumb": "Ontwerp",

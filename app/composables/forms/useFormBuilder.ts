@@ -115,13 +115,15 @@ export function useFormBuilder() {
    * (Country → Region → City), each offering its level and linked to the one above, so each choice
    * narrows the next. `type` = dropdown (one choice) or multi_select (several) for every level.
    */
-  function createListFields(list: OptionList, type: FieldType = 'dropdown'): FormField[] {
+  /** One field per level; `type` may differ per level (one choice here, several there, owner 2026-10-07). */
+  function createListFields(list: OptionList, type: FieldType | FieldType[] = 'dropdown'): FormField[] {
     const levels = levelsOf(list)
-    if (!levels) return [createFromList(list, type)]
+    const typeAt = (index: number) => (Array.isArray(type) ? (type[index] ?? 'dropdown') : type)
+    if (!levels) return [createFromList(list, typeAt(0))]
     const fields: FormField[] = []
     const taken: string[] = []
     levels.forEach((level, index) => {
-      const field = createField(type)
+      const field = createField(typeAt(index))
       field.label = level.label
       field.key = keyFromLabel(level.label, [...allFields(schema.value!).map(item => item.key), ...taken])
       taken.push(field.key)

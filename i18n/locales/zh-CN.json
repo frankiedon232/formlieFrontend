@@ -2507,7 +2507,8 @@
     },
     "language": "语言",
     "consentLine": "提交即表示你同意{org}可将你的回答用于此表单。",
-    "privacyNotice": "隐私声明"
+    "privacyNotice": "隐私声明",
+    "opensAfterAbove": "在上一级选择内容之前保持隐藏；选择后仅显示其下的内容。"
   },
   "logic": {
     "crumb": "逻辑",
@@ -2789,7 +2790,6 @@
     "optionCount": "{count} 个选项 | {count} 个选项",
     "listsEmptyTitle": "还没有列表",
     "listsEmptyDesc": "只需创建一次列表，即可在任何下拉、单选或复选字段中使用。",
-    "addList": "将 {name} 添加为下拉列表",
     "addAs": "添加为{type}",
     "listMenu": "{name} 的操作",
     "useList": "从列表填充…",
@@ -2806,7 +2806,9 @@
     "oneChoice": "单选",
     "severalChoices": "多选",
     "levels": "{n}个层级",
-    "openInListOption": "在选项列表中打开"
+    "openInListOption": "在选项列表中打开",
+    "perLevel": "为每一级选择：单选或多选。",
+    "addLevels": "添加 {n} 个字段"
   },
   "designer": {
     "crumb": "设计",

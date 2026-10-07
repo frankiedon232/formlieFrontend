@@ -197,6 +197,10 @@ const left = computed(() => props.labelPosition === 'left' && showLabel.value &&
       <template v-if="$slots.description" #description><slot name="description" /></template>
     </FormsRendererLayout>
 
+    <!-- Builder only: a lower level of a list with levels stays hidden until something is chosen above (F15 M2) -->
+    <p v-if="mode === 'builder' && field.option_parent" class="flex items-center gap-1 text-xs text-muted">
+      <UIcon name="i-lucide-corner-down-right" class="size-3.5 shrink-0 rtl:-scale-x-100" />{{ t('renderer.opensAfterAbove') }}
+    </p>
     <p v-if="error && !inline" class="text-xs text-error" role="alert">{{ error }}</p>
     </div>
     <p v-if="error && inline" class="order-3 basis-full text-xs text-error" role="alert">{{ error }}</p>

@@ -2507,7 +2507,8 @@
     },
     "language": "Lingua",
     "consentLine": "Inviando, accetti che {org} possa usare le tue risposte per questo modulo.",
-    "privacyNotice": "Informativa sulla privacy"
+    "privacyNotice": "Informativa sulla privacy",
+    "opensAfterAbove": "Nascosto finché non si sceglie qualcosa nel livello superiore; poi mostra solo ciò che si trova sotto."
   },
   "logic": {
     "crumb": "Logica",
@@ -2789,7 +2790,6 @@
     "optionCount": "{count} opzione | {count} opzioni",
     "listsEmptyTitle": "Ancora nessun elenco",
     "listsEmptyDesc": "Crea un elenco una volta e usalo in qualsiasi campo a discesa, a scelta singola o a caselle.",
-    "addList": "Aggiungi {name} come menu a discesa",
     "addAs": "Aggiungi come {type}",
     "listMenu": "Opzioni per {name}",
     "useList": "Compila da un elenco…",
@@ -2806,7 +2806,9 @@
     "oneChoice": "Una scelta",
     "severalChoices": "Più scelte",
     "levels": "{n} livelli",
-    "openInListOption": "Apri in Elenco opzioni"
+    "openInListOption": "Apri in Elenco opzioni",
+    "perLevel": "Scegli per ogni livello: una scelta o più scelte.",
+    "addLevels": "Aggiungi {n} campi"
   },
   "designer": {
     "crumb": "Design",

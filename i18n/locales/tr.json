@@ -2507,7 +2507,8 @@
     },
     "language": "Dil",
     "consentLine": "Göndererek, {org} kuruluşunun yanıtlarınızı bu form için kullanabilmesini kabul etmiş olursunuz.",
-    "privacyNotice": "Gizlilik bildirimi"
+    "privacyNotice": "Gizlilik bildirimi",
+    "opensAfterAbove": "Üstteki düzeyde bir şey seçilene kadar gizli kalır; sonra yalnızca altındakileri gösterir."
   },
   "logic": {
     "crumb": "Mantık",
@@ -2789,7 +2790,6 @@
     "optionCount": "{count} seçenek | {count} seçenek",
     "listsEmptyTitle": "Henüz liste yok",
     "listsEmptyDesc": "Bir listeyi bir kez oluşturun ve her açılır liste, radyo düğmesi veya onay kutusu alanında kullanın.",
-    "addList": "{name} listesini açılır liste olarak ekle",
     "addAs": "{type} olarak ekle",
     "listMenu": "{name} için işlemler",
     "useList": "Listeden doldur…",
@@ -2806,7 +2806,9 @@
     "oneChoice": "Tek seçim",
     "severalChoices": "Birden çok seçim",
     "levels": "{n} düzey",
-    "openInListOption": "Seçenek Listesi’nde aç"
+    "openInListOption": "Seçenek Listesi’nde aç",
+    "perLevel": "Her düzey için seçin: tek seçim veya birden çok seçim.",
+    "addLevels": "{n} alan ekle"
   },
   "designer": {
     "crumb": "Tasarım",

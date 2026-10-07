@@ -2507,7 +2507,8 @@
     },
     "language": "Sprache",
     "consentLine": "Mit dem Absenden stimmen Sie zu, dass {org} Ihre Antworten für dieses Formular verwenden darf.",
-    "privacyNotice": "Datenschutzhinweis"
+    "privacyNotice": "Datenschutzhinweis",
+    "opensAfterAbove": "Ausgeblendet, bis in der Ebene darüber etwas ausgewählt wird; zeigt dann nur, was darunter liegt."
   },
   "logic": {
     "crumb": "Logik",
@@ -2789,7 +2790,6 @@
     "optionCount": "{count} Option | {count} Optionen",
     "listsEmptyTitle": "Noch keine Listen",
     "listsEmptyDesc": "Erstellen Sie eine Liste einmal und nutzen Sie sie in jedem Dropdown-, Radio- oder Checkbox-Feld.",
-    "addList": "{name} als Dropdown hinzufügen",
     "addAs": "Als {type} hinzufügen",
     "listMenu": "Optionen für {name}",
     "useList": "Aus einer Liste füllen…",
@@ -2806,7 +2806,9 @@
     "oneChoice": "Eine Auswahl",
     "severalChoices": "Mehrere Auswahlmöglichkeiten",
     "levels": "{n} Ebenen",
-    "openInListOption": "In Optionsliste öffnen"
+    "openInListOption": "In Optionsliste öffnen",
+    "perLevel": "Wählen Sie für jede Ebene: Eine Auswahl oder Mehrere Auswahlmöglichkeiten.",
+    "addLevels": "{n} Felder hinzufügen"
   },
   "designer": {
     "crumb": "Design",

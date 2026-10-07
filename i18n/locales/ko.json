@@ -2507,7 +2507,8 @@
     },
     "language": "언어",
     "consentLine": "제출하면 {org}이(가) 이 양식의 답변을 사용할 수 있다는 데 동의하게 됩니다.",
-    "privacyNotice": "개인정보 안내"
+    "privacyNotice": "개인정보 안내",
+    "opensAfterAbove": "위 수준에서 무언가를 선택할 때까지 숨겨지며, 선택하면 그 아래에 있는 항목만 표시됩니다."
   },
   "logic": {
     "crumb": "로직",
@@ -2789,7 +2790,6 @@
     "optionCount": "옵션 {count}개 | 옵션 {count}개",
     "listsEmptyTitle": "목록이 아직 없습니다",
     "listsEmptyDesc": "목록을 한 번 만들면 드롭다운, 라디오, 체크박스 항목에서 사용할 수 있습니다.",
-    "addList": "{name}을(를) 드롭다운으로 추가",
     "addAs": "{type}(으)로 추가",
     "listMenu": "{name} 옵션",
     "useList": "목록에서 채우기…",
@@ -2806,7 +2806,9 @@
     "oneChoice": "하나 선택",
     "severalChoices": "여러 개 선택",
     "levels": "{n}단계",
-    "openInListOption": "옵션 목록에서 열기"
+    "openInListOption": "옵션 목록에서 열기",
+    "perLevel": "각 수준마다 선택하세요: 하나 선택 또는 여러 개 선택.",
+    "addLevels": "필드 {n}개 추가"
   },
   "designer": {
     "crumb": "디자인",

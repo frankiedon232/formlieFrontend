@@ -2507,7 +2507,8 @@
     },
     "language": "Bahasa",
     "consentLine": "Dengan mengirim, Anda setuju bahwa {org} boleh menggunakan jawaban Anda untuk formulir ini.",
-    "privacyNotice": "Pemberitahuan privasi"
+    "privacyNotice": "Pemberitahuan privasi",
+    "opensAfterAbove": "Tersembunyi sampai ada yang dipilih di level di atasnya; lalu hanya menampilkan yang ada di bawahnya."
   },
   "logic": {
     "crumb": "Logika",
@@ -2789,7 +2790,6 @@
     "optionCount": "{count} opsi | {count} opsi",
     "listsEmptyTitle": "Belum ada daftar",
     "listsEmptyDesc": "Buat daftar sekali dan pakai di kolom dropdown, radio, atau kotak centang mana pun.",
-    "addList": "Tambahkan {name} sebagai dropdown",
     "addAs": "Tambahkan sebagai {type}",
     "listMenu": "Opsi untuk {name}",
     "useList": "Isi dari daftar…",
@@ -2806,7 +2806,9 @@
     "oneChoice": "Satu pilihan",
     "severalChoices": "Beberapa pilihan",
     "levels": "{n} tingkat",
-    "openInListOption": "Buka di Daftar Opsi"
+    "openInListOption": "Buka di Daftar Opsi",
+    "perLevel": "Pilih untuk setiap level: satu pilihan atau beberapa pilihan.",
+    "addLevels": "Tambahkan {n} bidang"
   },
   "designer": {
     "crumb": "Desain",
