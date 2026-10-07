@@ -34,7 +34,9 @@ import * as formInvites from './routes/formInvites'
 import * as forms from './routes/forms'
 import { navigationCounts } from './routes/navigation'
 import * as onboarding from './routes/onboarding'
+import * as address from './routes/address'
 import * as emails from './routes/emails'
+import * as organisations from './routes/organisations'
 import * as notifications from './routes/notifications'
 import * as privacy from './routes/dataPrivacy'
 import * as settings from './routes/settings'
@@ -303,6 +305,17 @@ const router = createRouter()
   .post('/settings/emails/test', emails.testEmail)
   .get('/settings/emails/sent', emails.listSent)
   .get('/settings/emails/sent/:id', emails.getSent)
+  .get('/organisations', organisations.listOrganisations)
+  .post('/organisations', organisations.createOrganisation)
+  .patch('/organisations/:id', organisations.updateOrganisation)
+  .post('/organisations/:id/archive', organisations.archiveOrganisation)
+  .post('/organisations/:id/restore', organisations.restoreOrganisation)
+  .patch('/forms/:id/organisation', organisations.moveForm)
+  .get('/settings/address', address.getAddress)
+  .post('/settings/address/subdomain', address.changeWorkspaceSubdomain)
+  .put('/settings/address/domain', address.addDomain)
+  .post('/settings/address/domain/check', address.checkDomain)
+  .delete('/settings/address/domain', address.removeDomain)
   .get('/settings/appearance', settings.getAppearance)
   .patch('/settings/appearance', settings.patchSection)
   .get('/settings/privacy', settings.getSection)

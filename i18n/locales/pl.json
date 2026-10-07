@@ -607,7 +607,8 @@
     "FRM-AUTH-1015": "Twoje hasło wygasło. Ustaw nowe.",
     "FRM-AUTH-1016": "Logowanie z tej sieci jest niedozwolone.",
     "FRM-AUTH-1017": "Ta zmiana zablokowałaby Ci dostęp. Sprawdź własną domenę i adres e-mail.",
-    "FRM-AUTH-1018": "Niedawno używasz tego hasła. Wybierz inne."
+    "FRM-AUTH-1018": "Niedawno używasz tego hasła. Wybierz inne.",
+    "FRM-ORG-1003": "Głównej organizacji nie można zarchiwizować."
   },
   "errorUi": {
     "reference": "Identyfikator: {id}",
@@ -6346,7 +6347,8 @@
       "privacy": "Prywatność i dane",
       "formDefaults": "Domyślne ustawienia formularzy",
       "themes": "Motywy",
-      "landingPages": "Strony docelowe"
+      "landingPages": "Strony docelowe",
+      "organisations": "Organizacje"
     },
     "desc": {
       "overview": "Wszystko o Twoim obszarze roboczym w jednym miejscu.",
@@ -6366,7 +6368,8 @@
       "privacy": "Jak długo przechowywane są odpowiedzi, teksty zgód i wnioski o dane.",
       "formDefaults": "Ustawienia, z którymi startują nowe formularze, oraz domyślne wartości osadzania.",
       "themes": "Projekty formularzy, z których może korzystać Twój obszar roboczy.",
-      "landingPages": "Projekty stron publicznych Twoich formularzy."
+      "landingPages": "Projekty stron publicznych Twoich formularzy.",
+      "organisations": "Spółki zależne lub oddziały: każdy formularz należy do jednej, a pasek boczny przełącza między nimi."
     },
     "status": {
       "complete": "Kompletne",
@@ -6386,7 +6389,8 @@
       "notice": "ustawiono informację o prywatności",
       "withTheme": "Nowe formularze zaczynają z motywem",
       "workspaceLook": "Nowe formularze używają wyglądu przestrzeni roboczej",
-      "customLook": "Własny wygląd"
+      "customLook": "Własny wygląd",
+      "organisations": "{n} organizacja | {n} organizacji"
     },
     "next": {
       "title": "Następny krok",
@@ -7056,6 +7060,56 @@
       },
       "preview": "Podgląd",
       "previewHint": "Cały portal wokół tej strony również pokazuje ten wygląd. Twoje publiczne formularze zachowują własne motywy."
+    },
+    "address": {
+      "workspace": "Adres przestrzeni roboczej",
+      "workspaceHint": "Tu loguje się Twój zespół i tu znajdują się Twoje formularze.",
+      "current": "Obecny adres",
+      "newLabel": "Nowy adres",
+      "rules": "Od 3 do 63 małych liter, cyfr lub myślników.",
+      "change": "Zmień adres",
+      "checking": "Sprawdzanie…",
+      "free": "{url} jest wolny.",
+      "reason": {
+        "taken": "Ten adres jest zajęty.",
+        "reserved": "Ten adres jest zarezerwowany.",
+        "invalid": "Użyj tylko małych liter, cyfr i myślników."
+      },
+      "previous": "Stare adresy nadal tu prowadzą",
+      "until": "do {when}",
+      "confirmTitle": "Zmienić adres przestrzeni roboczej?",
+      "confirmDesc": "{old} zmieni się w {url}. Wszyscy logują się pod nowym adresem; stary przez 90 dni nadal tu prowadzi, więc udostępnione linki działają.",
+      "typeNew": "Wpisz {name}, aby potwierdzić",
+      "changed": "Przestrzeń robocza jest teraz pod adresem {url}",
+      "domain": "Twoja własna domena",
+      "domainHint": "Pokazuj formularze pod własnym adresem, takim jak forms.example.com.",
+      "addDomain": "Dodaj domenę",
+      "addRecords": "Dodaj te dwa rekordy u swojego dostawcy domeny, a potem sprawdź. Ich pojawienie się może potrwać kilka godzin.",
+      "verifiedDesc": "Zweryfikowano. Formularze używają tego adresu, a HTTPS jest ustawiany automatycznie.",
+      "type": "Typ",
+      "name": "Nazwa",
+      "value": "Wartość",
+      "found": "Znaleziono",
+      "missing": "Jeszcze nie znaleziono",
+      "check": "Sprawdź teraz",
+      "checked": "Sprawdzono {when}",
+      "remove": "Usuń domenę",
+      "removeTitle": "Usunąć {domain}?",
+      "removeDesc": "Formularze wracają do adresu przestrzeni roboczej. Linki z Twoją domeną przestaną działać.",
+      "status": {
+        "pending": "Oczekiwanie na DNS",
+        "verified": "Zweryfikowano",
+        "failed": "Wskazuje gdzie indziej"
+      },
+      "problem": {
+        "not_found": "Rekordów jeszcze nie znaleziono. Zmiany u dostawcy domeny mogą potrwać kilka godzin.",
+        "wrong_target": "Rekord CNAME wskazuje gdzie indziej. Zmień go na wartość powyżej.",
+        "dns_error": "DNS jest teraz niedostępny. Spróbuj ponownie za chwilę."
+      },
+      "formsAt": "Twoje formularze są pod adresem https://{host}",
+      "short": "Krótkie linki",
+      "shortHint": "Twoja własna domena dla krótkich linków do formularzy.",
+      "shortLater": "Wkrótce. Do tego czasu krótkie linki używają adresu Formalie."
     }
   },
   "notifications": {
@@ -7105,5 +7159,54 @@
       "account_disabled": "konto jest wyłączone",
       "password_expired": "hasło wygasło"
     }
+  },
+  "organisations": {
+    "title": "Organizacje",
+    "all": "Wszystkie organizacje",
+    "switch": "Organizacja: {name}",
+    "manage": "Zarządzaj organizacjami",
+    "new": "Nowa organizacja",
+    "create": "Utwórz organizację",
+    "editTitle": "Edytuj {name}",
+    "editDesc": "Jej nazwa i logo pojawiają się na publicznych stronach jej formularzy.",
+    "name": "Nazwa",
+    "namePlaceholder": "np. Example Sp. z o.o.",
+    "nameTaken": "Organizacja o tej nazwie już istnieje.",
+    "shortName": "Krótka nazwa",
+    "shortNameHelp": "Do ciasnych miejsc, np. paska bocznego.",
+    "website": "Strona internetowa",
+    "logo": "Logo",
+    "logoHint": "PNG, JPEG lub WebP, do 2 MB.",
+    "state": "Stan",
+    "active": "Aktywna",
+    "archived": "Zarchiwizowana",
+    "forms": "Formularze",
+    "responses": "Odpowiedzi",
+    "updated": "Zaktualizowano",
+    "formsCount": "{n} formularz | {n} formularzy",
+    "activeCount": "aktywna | aktywne",
+    "shareOfForms": "Udział formularzy",
+    "noWebsite": "Brak strony internetowej",
+    "main": "Główna",
+    "formsBy": "Formularze według organizacji",
+    "formsByHint": "Do kogo należą formularze przestrzeni roboczej.",
+    "oneOnly": "Dodaj organizację, aby podzielić formularze między nie.",
+    "byState": "Według stanu",
+    "sortForms": "Najwięcej formularzy",
+    "sortResponses": "Najwięcej odpowiedzi",
+    "sortUpdated": "Ostatnio zaktualizowane",
+    "search": "Szukaj organizacji",
+    "empty": "Brak pasujących organizacji",
+    "emptyDesc": "Wyczyść filtry lub dodaj organizację.",
+    "saved": "Zapisano {name}",
+    "created": "Utworzono {name}",
+    "archive": "Archiwizuj",
+    "restore": "Przywróć",
+    "archivedToast": "Zarchiwizowano {name}",
+    "restoredToast": "Przywrócono {name}",
+    "showForms": "Pokaż jej formularze",
+    "formSetting": "Organizacja",
+    "formSettingHint": "Jej nazwa i logo pojawiają się na publicznych stronach tego formularza. Zapisywane od razu.",
+    "moved": "Formularz należy teraz do {name}"
   }
 }

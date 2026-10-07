@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-07 (F14 M6 appearance)
+**Last updated:** 2026-10-07 (F14 M7 address, domain and organisations; F14 done, ready for review)
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend
 
@@ -24,7 +24,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F11   | Responses                                         | ✅     | 100% |
 | F12   | Data sources & databases                          | ✅     | 100% |
 | F13   | API service & integrations                        | ✅     | 100% (owner-tested 2026-10-06) |
-| F14   | Settings                                          | 🟡     | ~90% (M1 to M6 ✅) |
+| F14   | Settings                                          | ✅     | 100% (M1 to M7 ✅; billing in F23) |
 | F15   | Option sets & payments                            | ⬜     | 0%   |
 | F16   | Profile                                           | ⬜     | 0%   |
 | F17   | Users                                             | ⬜     | 0%   |
@@ -715,7 +715,7 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 
 **Goal:** one place where workspace admins control everything about their workspace. Each section is its own page under `/settings/*`, with a section menu (sidebar list on desktop, select on phones), unsaved-changes warning and a save bar.
 
-**Plan (2026-10-06, milestones):** **M1** ✅ Settings frame, Company, Branding, Language and region. **M2** ✅ Organisation data (departments, job titles, teams and locations; builder reads them). **M3** ✅ Sign-in and security. **M4** ✅ Notifications and emails (incl. emailing responses to the team and outside addresses). **M5** ✅ Privacy, data and form defaults. **M6** ✅ Appearance. **M7** Address, domain and organisations. Billing moved to F23.
+**Plan (2026-10-06, milestones):** **M1** ✅ Settings frame, Company, Branding, Language and region. **M2** ✅ Organisation data (departments, job titles, teams and locations; builder reads them). **M3** ✅ Sign-in and security. **M4** ✅ Notifications and emails (incl. emailing responses to the team and outside addresses). **M5** ✅ Privacy, data and form defaults. **M6** ✅ Appearance. **M7** ✅ Address, domain and organisations. Billing moved to F23.
 
 ### Settings shell
 
@@ -757,14 +757,14 @@ Every workspace sets up its own reference data here; the builder, field access a
 
 ### Domain & workspace address
 
-- ⬜ Workspace subdomain (change with availability check, redirect from the old one)
-- ⬜ Custom domain (DNS records to add, verification status, HTTPS status)
+- ✅ Workspace subdomain (change with availability check and typed confirmation; the old one keeps leading here for 90 days)
+- ✅ Custom domain (CNAME + TXT records to add, real DNS check, status and reason; HTTPS issued by the backend once verified)
 - ⬜ Custom short-link domain (later)
 
 ### Organisations
 
-- ⬜ Several organisations per workspace (subsidiaries, branches): create, rename, archive
-- ⬜ Organisation switcher in the rail (design: workspace avatars)
+- ✅ Several organisations per workspace (subsidiaries, branches; owner's choice: shared team): create, edit (name, short name, website, logo), archive / restore; each form belongs to one (builder setting), its name and logo on the form's public pages
+- ✅ Organisation switcher in the rail (with two or more): All or one, every list follows it, new forms go to it
 
 ### Authentication
 
@@ -1358,3 +1358,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-07 | F14 | M4 Notifications and emails: sections `notifications` and `emails`; mock notification store (`notify()` follows the rules: in-app feed per person, emails or the daily summary) hooked into responses (form page and API: new, possible duplicate, form full), blocked sign-ins and locked codes, paused webhooks, and (when the feed is read) forms closing within a day and finished exports; `/notifications` feed routes; bell with unread count and a real panel (Today / Earlier, open goes to the item). Emails: renderer with the workspace's look, default texts per language (`server/mock/data/emailDefaults/`), sent log (codes never stored), template editor with placeholders, live preview, test send; sign-in and reset code emails go to the log. Per-form response emails in the builder (team, outside addresses with masked personal answers, respondent copy). Checked in the browser: settings pages, a real response showing in the bell and opening the exact response, a test email and its preview, a form published with team + outside + copy (three correct emails: link only for the team, email masked for the outside address, copy to the respondent), then switched off and republished. |
 | 2026-10-07 | F14 | M5 Privacy, data and form defaults: sections `privacy` and `form_defaults`; retention (`retentionStore`: per-form or workspace limit, preview, removal on save and daily, audited), Keep responses in the builder's form settings; privacy notice link and consent line on public forms; data requests (find, export JSON, delete with typed confirmation, audited with masked address); form defaults applied to new blank and template forms and preselected in the new-form dialog. Checked in the browser: retention preview (30 days → 47,717 sample responses) and the confirmation on Ctrl+S, not saved; data request search for a test respondent; notice and consent on a live form, then turned off; defaults set, a new form starting with them (then moved to Trash), defaults put back. |
 | 2026-10-07 | F14 | M6 Appearance: section `appearance` (presets, primary incl. brand with contrast check, greys, background, corners, font, text size, dark rail / menu, menu counts, breadcrumbs, search, footer, width, spacing); `useAppearance` applies it for everyone (Nuxt UI colours + CSS variables, the primary also takes the design's inverted accent), the shell reads the rest; the Appearance page makes the real portal the live preview while editing. Checked in the browser: Midnight (dark rail and menu in light mode), Ocean saved with centred and compact, the Forms page in light and dark wearing it, then Reset to Formalie saved. |
+| 2026-10-07 | F14 | M7 Address, domain and organisations: `addressStore` (subdomain change with 90-day redirect via the host resolver, own domain with CNAME / TXT and a real DNS check, verified domains resolve to the workspace), Settings → Address and domain; organisations (`organisationStore`, `/organisations` routes, archive / restore, form move), request scope (`core/scope.ts`, header `x-formalie-organisation`) narrowing every list, new forms in the chosen organisation, public pages with the form's organisation; Settings → Organisations in the list format, the rail switcher, the builder's Organisation setting. Checked in the browser: availability (taken / free), a real change to remedylegal-uk and back (still signed in, old address listed), a test domain with a DNS check (not found) then removed, a second organisation created, the switcher narrowing Forms to it (empty), Visitor sign-in moved there (public page shows its name) and back, the test organisation archived. F14 complete; stopped for review. |

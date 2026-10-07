@@ -13,6 +13,8 @@ import { MOCK_FOLDERS, MOCK_FORMS, SEED_TEMPLATES, seedBaseName } from './forms'
 import { SEEDED_TENANT_IDS, type MockTenant } from './tenants'
 
 export interface StoredForm extends FormSummary {
+  /** The organisation it belongs to (F14 M7); null / missing = the workspace's main one. */
+  organisation_id?: string | null
   /** Status before archiving, so unarchive puts it back. */
   previous_status: FormStatus | null
   schema: FormSchemaV1 | null

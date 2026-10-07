@@ -607,7 +607,8 @@
     "FRM-AUTH-1015": "Kata sandi Anda sudah kedaluwarsa. Atur yang baru.",
     "FRM-AUTH-1016": "Masuk dari jaringan ini tidak diizinkan.",
     "FRM-AUTH-1017": "Perubahan ini akan mengunci Anda. Periksa domain dan alamat email Anda sendiri.",
-    "FRM-AUTH-1018": "Anda baru saja memakai kata sandi ini. Pilih yang lain."
+    "FRM-AUTH-1018": "Anda baru saja memakai kata sandi ini. Pilih yang lain.",
+    "FRM-ORG-1003": "Organisasi utama tidak dapat diarsipkan."
   },
   "errorUi": {
     "reference": "Referensi: {id}",
@@ -6346,7 +6347,8 @@
       "privacy": "Privasi dan data",
       "formDefaults": "Bawaan formulir",
       "themes": "Tema",
-      "landingPages": "Halaman arahan"
+      "landingPages": "Halaman arahan",
+      "organisations": "Organisasi"
     },
     "desc": {
       "overview": "Semua tentang ruang kerja Anda di satu tempat.",
@@ -6366,7 +6368,8 @@
       "privacy": "Berapa lama respons disimpan, teks persetujuan, dan permintaan data.",
       "formDefaults": "Pengaturan awal untuk formulir baru, dan bawaan penyematan.",
       "themes": "Desain formulir yang dapat dipakai ruang kerja Anda.",
-      "landingPages": "Desain halaman untuk halaman publik formulir Anda."
+      "landingPages": "Desain halaman untuk halaman publik formulir Anda.",
+      "organisations": "Anak perusahaan atau cabang: setiap formulir dimiliki satu organisasi, dan bilah samping berpindah di antaranya."
     },
     "status": {
       "complete": "Lengkap",
@@ -6386,7 +6389,8 @@
       "notice": "pemberitahuan privasi diatur",
       "withTheme": "Formulir baru dimulai dengan tema",
       "workspaceLook": "Formulir baru memakai tampilan ruang kerja",
-      "customLook": "Tampilan Anda sendiri"
+      "customLook": "Tampilan Anda sendiri",
+      "organisations": "{n} organisasi | {n} organisasi"
     },
     "next": {
       "title": "Langkah berikutnya",
@@ -7056,6 +7060,56 @@
       },
       "preview": "Pratinjau",
       "previewHint": "Seluruh portal di sekitar halaman ini juga menampilkan tampilannya. Formulir publik Anda tetap memakai tema sendiri."
+    },
+    "address": {
+      "workspace": "Alamat ruang kerja",
+      "workspaceHint": "Tempat tim Anda masuk dan tempat formulir Anda berada.",
+      "current": "Alamat saat ini",
+      "newLabel": "Alamat baru",
+      "rules": "3 sampai 63 huruf kecil, angka, atau tanda hubung.",
+      "change": "Ubah alamat",
+      "checking": "Memeriksa…",
+      "free": "{url} tersedia.",
+      "reason": {
+        "taken": "Alamat ini sudah dipakai.",
+        "reserved": "Alamat ini dicadangkan.",
+        "invalid": "Gunakan hanya huruf kecil, angka, dan tanda hubung."
+      },
+      "previous": "Alamat lama masih mengarah ke sini",
+      "until": "sampai {when}",
+      "confirmTitle": "Ubah alamat ruang kerja?",
+      "confirmDesc": "{old} menjadi {url}. Semua orang masuk di alamat baru; alamat lama tetap mengarah ke sini selama 90 hari, sehingga tautan yang dibagikan tetap berfungsi.",
+      "typeNew": "Ketik {name} untuk mengonfirmasi",
+      "changed": "Ruang kerja sekarang berada di {url}",
+      "domain": "Domain Anda sendiri",
+      "domainHint": "Tampilkan formulir Anda di alamat Anda sendiri, seperti forms.example.com.",
+      "addDomain": "Tambah domain",
+      "addRecords": "Tambahkan kedua rekaman ini di penyedia domain Anda, lalu periksa. Mungkin perlu beberapa jam sebelum terlihat.",
+      "verifiedDesc": "Terverifikasi. Formulir memakai alamat ini, dengan HTTPS yang disiapkan otomatis.",
+      "type": "Jenis",
+      "name": "Nama",
+      "value": "Nilai",
+      "found": "Ditemukan",
+      "missing": "Belum ditemukan",
+      "check": "Periksa sekarang",
+      "checked": "Diperiksa {when}",
+      "remove": "Hapus domain",
+      "removeTitle": "Hapus {domain}?",
+      "removeDesc": "Formulir kembali ke alamat ruang kerja Anda. Tautan dengan domain Anda berhenti berfungsi.",
+      "status": {
+        "pending": "Menunggu DNS",
+        "verified": "Terverifikasi",
+        "failed": "Mengarah ke tempat lain"
+      },
+      "problem": {
+        "not_found": "Rekaman belum ditemukan. Perubahan di penyedia domain Anda bisa memakan waktu beberapa jam.",
+        "wrong_target": "Rekaman CNAME mengarah ke tempat lain. Ubah ke nilai di atas.",
+        "dns_error": "DNS tidak dapat dijangkau saat ini. Coba lagi sebentar lagi."
+      },
+      "formsAt": "Formulir Anda ada di https://{host}",
+      "short": "Tautan pendek",
+      "shortHint": "Domain Anda sendiri untuk tautan pendek formulir.",
+      "shortLater": "Segera hadir. Sampai saat itu, tautan pendek memakai alamat Formalie."
     }
   },
   "notifications": {
@@ -7105,5 +7159,54 @@
       "account_disabled": "akun dinonaktifkan",
       "password_expired": "kata sandi sudah kedaluwarsa"
     }
+  },
+  "organisations": {
+    "title": "Organisasi",
+    "all": "Semua organisasi",
+    "switch": "Organisasi: {name}",
+    "manage": "Kelola organisasi",
+    "new": "Organisasi baru",
+    "create": "Buat organisasi",
+    "editTitle": "Ubah {name}",
+    "editDesc": "Nama dan logonya tampil di halaman publik formulirnya.",
+    "name": "Nama",
+    "namePlaceholder": "mis. Example Ltd UK",
+    "nameTaken": "Organisasi dengan nama ini sudah ada.",
+    "shortName": "Nama singkat",
+    "shortNameHelp": "Untuk tempat sempit, mis. bilah samping.",
+    "website": "Situs web",
+    "logo": "Logo",
+    "logoHint": "PNG, JPEG, atau WebP, hingga 2 MB.",
+    "state": "Status",
+    "active": "Aktif",
+    "archived": "Diarsipkan",
+    "forms": "Formulir",
+    "responses": "Respons",
+    "updated": "Diperbarui",
+    "formsCount": "{n} formulir | {n} formulir",
+    "activeCount": "aktif | aktif",
+    "shareOfForms": "Porsi formulir",
+    "noWebsite": "Tanpa situs web",
+    "main": "Utama",
+    "formsBy": "Formulir per organisasi",
+    "formsByHint": "Ke organisasi mana formulir ruang kerja berada.",
+    "oneOnly": "Tambahkan organisasi untuk membagi formulir di antaranya.",
+    "byState": "Menurut status",
+    "sortForms": "Formulir terbanyak",
+    "sortResponses": "Respons terbanyak",
+    "sortUpdated": "Baru diperbarui",
+    "search": "Cari organisasi",
+    "empty": "Tidak ada organisasi yang cocok",
+    "emptyDesc": "Hapus filter, atau tambahkan organisasi.",
+    "saved": "{name} disimpan",
+    "created": "{name} dibuat",
+    "archive": "Arsipkan",
+    "restore": "Pulihkan",
+    "archivedToast": "{name} diarsipkan",
+    "restoredToast": "{name} dipulihkan",
+    "showForms": "Tampilkan formulirnya",
+    "formSetting": "Organisasi",
+    "formSettingHint": "Nama dan logonya tampil di halaman publik formulir ini. Langsung disimpan.",
+    "moved": "Formulir sekarang milik {name}"
   }
 }

@@ -83,7 +83,7 @@ async function deleteAll() {
   <AppModal v-model:open="deleteOpen" :title="t('settings.privacy.deleteTitle')" :description="t('settings.privacy.deleteDesc', { n: match?.total ?? 0, forms: match?.forms.length ?? 0 }, match?.total ?? 0)" keep-open>
     <template #body>
       <UFormField :label="t('settings.privacy.typeEmail', { email: match?.email ?? '' })">
-        <UInput v-model="typed" autocomplete="off" class="w-full" @keydown.enter="deleteAll" />
+        <UInput v-model="typed" autocomplete="off" autofocus class="w-full" @keydown.enter="deleteAll" />
       </UFormField>
     </template>
     <template #footer>

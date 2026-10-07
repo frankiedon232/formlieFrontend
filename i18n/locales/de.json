@@ -607,7 +607,8 @@
     "FRM-AUTH-1015": "Ihr Passwort ist abgelaufen. Legen Sie ein neues fest.",
     "FRM-AUTH-1016": "Von diesem Netzwerk aus ist die Anmeldung nicht erlaubt.",
     "FRM-AUTH-1017": "Diese Änderung würde Sie aussperren. Prüfen Sie Ihre eigene E-Mail-Domain und -Adresse.",
-    "FRM-AUTH-1018": "Sie haben dieses Passwort kürzlich verwendet. Wählen Sie ein anderes."
+    "FRM-AUTH-1018": "Sie haben dieses Passwort kürzlich verwendet. Wählen Sie ein anderes.",
+    "FRM-ORG-1003": "Die Hauptorganisation kann nicht archiviert werden."
   },
   "errorUi": {
     "reference": "Referenz: {id}",
@@ -6346,7 +6347,8 @@
       "privacy": "Datenschutz und Daten",
       "formDefaults": "Formularstandards",
       "themes": "Designs",
-      "landingPages": "Landingpages"
+      "landingPages": "Landingpages",
+      "organisations": "Organisationen"
     },
     "desc": {
       "overview": "Alles zu Ihrem Arbeitsbereich an einem Ort.",
@@ -6366,7 +6368,8 @@
       "privacy": "Wie lange Antworten gespeichert werden, Einwilligungstexte und Datenanfragen.",
       "formDefaults": "Die Einstellungen, mit denen neue Formulare starten, und Standards für Einbettungen.",
       "themes": "Formulardesigns, die Ihr Arbeitsbereich nutzen kann.",
-      "landingPages": "Seitendesigns für die öffentlichen Seiten Ihrer Formulare."
+      "landingPages": "Seitendesigns für die öffentlichen Seiten Ihrer Formulare.",
+      "organisations": "Tochtergesellschaften oder Filialen: Jedes Formular gehört zu einer, und die Leiste wechselt zwischen ihnen."
     },
     "status": {
       "complete": "Vollständig",
@@ -6386,7 +6389,8 @@
       "notice": "Datenschutzhinweis hinterlegt",
       "withTheme": "Neue Formulare starten mit einem Design",
       "workspaceLook": "Neue Formulare nutzen den Look des Arbeitsbereichs",
-      "customLook": "Eigener Look"
+      "customLook": "Eigener Look",
+      "organisations": "{n} Organisation | {n} Organisationen"
     },
     "next": {
       "title": "Nächster Schritt",
@@ -7056,6 +7060,56 @@
       },
       "preview": "Vorschau",
       "previewHint": "Das ganze Portal um diese Seite zeigt den Look ebenfalls. Ihre öffentlichen Formulare behalten ihre eigenen Designs."
+    },
+    "address": {
+      "workspace": "Workspace-Adresse",
+      "workspaceHint": "Hier melden sich Ihre Teammitglieder an und hier liegen Ihre Formulare.",
+      "current": "Aktuelle Adresse",
+      "newLabel": "Neue Adresse",
+      "rules": "3 bis 63 Kleinbuchstaben, Zahlen oder Bindestriche.",
+      "change": "Adresse ändern",
+      "checking": "Wird geprüft…",
+      "free": "{url} ist frei.",
+      "reason": {
+        "taken": "Diese Adresse ist vergeben.",
+        "reserved": "Diese Adresse ist reserviert.",
+        "invalid": "Verwenden Sie nur Kleinbuchstaben, Zahlen und Bindestriche."
+      },
+      "previous": "Alte Adressen führen weiterhin hierher",
+      "until": "bis {when}",
+      "confirmTitle": "Workspace-Adresse ändern?",
+      "confirmDesc": "{old} wird zu {url}. Alle melden sich unter der neuen Adresse an; die alte führt 90 Tage lang weiter hierher, damit geteilte Links weiter funktionieren.",
+      "typeNew": "Geben Sie {name} zur Bestätigung ein",
+      "changed": "Der Workspace ist jetzt unter {url} erreichbar",
+      "domain": "Ihre eigene Domain",
+      "domainHint": "Zeigen Sie Ihre Formulare unter Ihrer eigenen Adresse an, zum Beispiel forms.example.com.",
+      "addDomain": "Domain hinzufügen",
+      "addRecords": "Fügen Sie diese beiden Einträge bei Ihrem Domain-Anbieter hinzu und prüfen Sie dann. Es kann einige Stunden dauern, bis sie sichtbar sind.",
+      "verifiedDesc": "Verifiziert. Formulare verwenden diese Adresse, HTTPS wird automatisch eingerichtet.",
+      "type": "Typ",
+      "name": "Name",
+      "value": "Wert",
+      "found": "Gefunden",
+      "missing": "Noch nicht gefunden",
+      "check": "Jetzt prüfen",
+      "checked": "Geprüft {when}",
+      "remove": "Domain entfernen",
+      "removeTitle": "{domain} entfernen?",
+      "removeDesc": "Formulare kehren zu Ihrer Workspace-Adresse zurück. Links mit Ihrer Domain funktionieren nicht mehr.",
+      "status": {
+        "pending": "Warten auf DNS",
+        "verified": "Verifiziert",
+        "failed": "Verweist woanders hin"
+      },
+      "problem": {
+        "not_found": "Die Einträge wurden noch nicht gefunden. Änderungen bei Ihrem Domain-Anbieter können einige Stunden dauern.",
+        "wrong_target": "Der CNAME-Eintrag verweist woandershin. Ändern Sie ihn auf den oben genannten Wert.",
+        "dns_error": "DNS ist gerade nicht erreichbar. Versuchen Sie es gleich noch einmal."
+      },
+      "formsAt": "Ihre Formulare sind unter https://{host} erreichbar",
+      "short": "Kurzlinks",
+      "shortHint": "Ihre eigene Domain für kurze Formularlinks.",
+      "shortLater": "Kommt später. Bis dahin verwenden Kurzlinks die Adresse von Formalie."
     }
   },
   "notifications": {
@@ -7105,5 +7159,54 @@
       "account_disabled": "das Konto ist deaktiviert",
       "password_expired": "das Passwort ist abgelaufen"
     }
+  },
+  "organisations": {
+    "title": "Organisationen",
+    "all": "Alle Organisationen",
+    "switch": "Organisation: {name}",
+    "manage": "Organisationen verwalten",
+    "new": "Neue Organisation",
+    "create": "Organisation erstellen",
+    "editTitle": "{name} bearbeiten",
+    "editDesc": "Name und Logo erscheinen auf den öffentlichen Seiten der zugehörigen Formulare.",
+    "name": "Name",
+    "namePlaceholder": "z. B. Example GmbH",
+    "nameTaken": "Eine Organisation mit diesem Namen gibt es bereits.",
+    "shortName": "Kurzname",
+    "shortNameHelp": "Für enge Stellen, z. B. die Leiste.",
+    "website": "Website",
+    "logo": "Logo",
+    "logoHint": "PNG, JPEG oder WebP, bis zu 2 MB.",
+    "state": "Status",
+    "active": "Aktiv",
+    "archived": "Archiviert",
+    "forms": "Formulare",
+    "responses": "Antworten",
+    "updated": "Aktualisiert",
+    "formsCount": "{n} Formular | {n} Formulare",
+    "activeCount": "aktiv | aktiv",
+    "shareOfForms": "Anteil der Formulare",
+    "noWebsite": "Keine Website",
+    "main": "Haupt",
+    "formsBy": "Formulare nach Organisation",
+    "formsByHint": "Wo die Formulare des Workspace hingehören.",
+    "oneOnly": "Fügen Sie eine Organisation hinzu, um Formulare aufzuteilen.",
+    "byState": "Nach Status",
+    "sortForms": "Meiste Formulare",
+    "sortResponses": "Meiste Antworten",
+    "sortUpdated": "Zuletzt aktualisiert",
+    "search": "Organisationen suchen",
+    "empty": "Keine Organisationen gefunden",
+    "emptyDesc": "Löschen Sie die Filter oder fügen Sie eine Organisation hinzu.",
+    "saved": "{name} gespeichert",
+    "created": "{name} erstellt",
+    "archive": "Archivieren",
+    "restore": "Wiederherstellen",
+    "archivedToast": "{name} archiviert",
+    "restoredToast": "{name} wiederhergestellt",
+    "showForms": "Formulare anzeigen",
+    "formSetting": "Organisation",
+    "formSettingHint": "Name und Logo erscheinen auf den öffentlichen Seiten dieses Formulars. Wird sofort gespeichert.",
+    "moved": "Das Formular gehört jetzt zu {name}"
   }
 }

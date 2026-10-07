@@ -4,6 +4,7 @@
  * access): forms by status, responses all time and in the last 30 days (day by day, and the 30
  * days before for the change), average completion of its published forms, last activity, owners.
  */
+import { inScope } from '../data/organisationStore'
 import type { FolderRow, FormFolder } from '#shared/types/forms'
 import { requireAuth } from '../core/auth'
 import { MockError, ok, paginate } from '../core/respond'
@@ -54,7 +55,7 @@ function rowOf(tenant: MockTenant, folder: FormFolder, forms: StoredForm[]): Fol
   }
 }
 
-const formsIn = (tenant: MockTenant, user: MockUser, folderId: string) => formsOf(tenant).forms.filter(form => !form.deleted_at && form.folder?.id === folderId && canSee(form, user))
+const formsIn = (tenant: MockTenant, user: MockUser, folderId: string) => formsOf(tenant).forms.filter(form => !form.deleted_at && inScope(tenant, form) && form.folder?.id === folderId && canSee(form, user))
 
 /** GET /folders/overview, every folder with its numbers; q (name), sort, paged. */
 export const folderOverview = defineMockRoute(({ event, query }) => {

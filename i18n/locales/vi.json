@@ -607,7 +607,8 @@
     "FRM-AUTH-1015": "Mật khẩu của bạn đã hết hạn. Hãy đặt mật khẩu mới.",
     "FRM-AUTH-1016": "Không cho phép đăng nhập từ mạng này.",
     "FRM-AUTH-1017": "Thay đổi này sẽ khóa bạn ở ngoài. Hãy kiểm tra tên miền và địa chỉ email của chính bạn.",
-    "FRM-AUTH-1018": "Bạn đã dùng mật khẩu này gần đây. Hãy chọn mật khẩu khác."
+    "FRM-AUTH-1018": "Bạn đã dùng mật khẩu này gần đây. Hãy chọn mật khẩu khác.",
+    "FRM-ORG-1003": "Không thể lưu trữ tổ chức chính."
   },
   "errorUi": {
     "reference": "Mã tham chiếu: {id}",
@@ -6346,7 +6347,8 @@
       "privacy": "Quyền riêng tư và dữ liệu",
       "formDefaults": "Mặc định của biểu mẫu",
       "themes": "Giao diện biểu mẫu",
-      "landingPages": "Trang đích"
+      "landingPages": "Trang đích",
+      "organisations": "Tổ chức"
     },
     "desc": {
       "overview": "Mọi thứ về không gian làm việc của bạn ở một nơi.",
@@ -6366,7 +6368,8 @@
       "privacy": "Phản hồi được giữ bao lâu, nội dung đồng ý và yêu cầu dữ liệu.",
       "formDefaults": "Cài đặt mà biểu mẫu mới bắt đầu với, và mặc định khi nhúng.",
       "themes": "Thiết kế biểu mẫu mà không gian làm việc của bạn có thể dùng.",
-      "landingPages": "Thiết kế trang cho các trang công khai của biểu mẫu."
+      "landingPages": "Thiết kế trang cho các trang công khai của biểu mẫu.",
+      "organisations": "Công ty con hoặc chi nhánh: mỗi biểu mẫu thuộc về một tổ chức, và thanh bên chuyển đổi giữa chúng."
     },
     "status": {
       "complete": "Hoàn tất",
@@ -6386,7 +6389,8 @@
       "notice": "đã đặt thông báo quyền riêng tư",
       "withTheme": "Biểu mẫu mới bắt đầu với một giao diện",
       "workspaceLook": "Biểu mẫu mới dùng giao diện của không gian làm việc",
-      "customLook": "Giao diện riêng của bạn"
+      "customLook": "Giao diện riêng của bạn",
+      "organisations": "{n} tổ chức | {n} tổ chức"
     },
     "next": {
       "title": "Bước tiếp theo",
@@ -7056,6 +7060,56 @@
       },
       "preview": "Xem trước",
       "previewHint": "Toàn bộ cổng quanh trang này cũng hiển thị giao diện. Biểu mẫu công khai của bạn giữ giao diện riêng."
+    },
+    "address": {
+      "workspace": "Địa chỉ không gian làm việc",
+      "workspaceHint": "Nơi nhóm của bạn đăng nhập và nơi các biểu mẫu của bạn nằm.",
+      "current": "Địa chỉ hiện tại",
+      "newLabel": "Địa chỉ mới",
+      "rules": "3 đến 63 chữ thường, số hoặc dấu gạch nối.",
+      "change": "Đổi địa chỉ",
+      "checking": "Đang kiểm tra…",
+      "free": "{url} còn trống.",
+      "reason": {
+        "taken": "Địa chỉ này đã có người dùng.",
+        "reserved": "Địa chỉ này đã được dành riêng.",
+        "invalid": "Chỉ dùng chữ thường, số và dấu gạch nối."
+      },
+      "previous": "Các địa chỉ cũ vẫn dẫn về đây",
+      "until": "đến {when}",
+      "confirmTitle": "Đổi địa chỉ không gian làm việc?",
+      "confirmDesc": "{old} sẽ thành {url}. Mọi người đăng nhập ở địa chỉ mới; địa chỉ cũ vẫn dẫn về đây trong 90 ngày, nên các liên kết đã chia sẻ vẫn hoạt động.",
+      "typeNew": "Nhập {name} để xác nhận",
+      "changed": "Không gian làm việc hiện ở {url}",
+      "domain": "Tên miền riêng của bạn",
+      "domainHint": "Hiển thị biểu mẫu tại địa chỉ riêng của bạn, như forms.example.com.",
+      "addDomain": "Thêm tên miền",
+      "addRecords": "Thêm hai bản ghi này tại nhà cung cấp tên miền của bạn, rồi kiểm tra. Có thể mất vài giờ để chúng hiển thị.",
+      "verifiedDesc": "Đã xác minh. Biểu mẫu dùng địa chỉ này, HTTPS được thiết lập tự động.",
+      "type": "Loại",
+      "name": "Tên",
+      "value": "Giá trị",
+      "found": "Đã tìm thấy",
+      "missing": "Chưa tìm thấy",
+      "check": "Kiểm tra ngay",
+      "checked": "Đã kiểm tra {when}",
+      "remove": "Xóa tên miền",
+      "removeTitle": "Xóa {domain}?",
+      "removeDesc": "Biểu mẫu quay về địa chỉ không gian làm việc của bạn. Các liên kết dùng tên miền của bạn sẽ ngừng hoạt động.",
+      "status": {
+        "pending": "Đang chờ DNS",
+        "verified": "Đã xác minh",
+        "failed": "Trỏ đến nơi khác"
+      },
+      "problem": {
+        "not_found": "Chưa tìm thấy các bản ghi. Thay đổi tại nhà cung cấp tên miền có thể mất vài giờ.",
+        "wrong_target": "Bản ghi CNAME đang trỏ đến nơi khác. Hãy đổi thành giá trị ở trên.",
+        "dns_error": "Hiện không thể kết nối DNS. Hãy thử lại sau ít phút."
+      },
+      "formsAt": "Biểu mẫu của bạn ở https://{host}",
+      "short": "Liên kết rút gọn",
+      "shortHint": "Tên miền riêng cho liên kết rút gọn của biểu mẫu.",
+      "shortLater": "Sẽ có sau. Cho đến lúc đó, liên kết rút gọn dùng địa chỉ của Formalie."
     }
   },
   "notifications": {
@@ -7105,5 +7159,54 @@
       "account_disabled": "tài khoản đã bị vô hiệu hóa",
       "password_expired": "mật khẩu đã hết hạn"
     }
+  },
+  "organisations": {
+    "title": "Tổ chức",
+    "all": "Tất cả tổ chức",
+    "switch": "Tổ chức: {name}",
+    "manage": "Quản lý tổ chức",
+    "new": "Tổ chức mới",
+    "create": "Tạo tổ chức",
+    "editTitle": "Sửa {name}",
+    "editDesc": "Tên và logo hiển thị trên các trang công khai của biểu mẫu thuộc tổ chức.",
+    "name": "Tên",
+    "namePlaceholder": "vd. Example Ltd UK",
+    "nameTaken": "Đã có tổ chức với tên này.",
+    "shortName": "Tên ngắn",
+    "shortNameHelp": "Dùng cho chỗ chật, vd. thanh bên.",
+    "website": "Trang web",
+    "logo": "Logo",
+    "logoHint": "PNG, JPEG hoặc WebP, tối đa 2 MB.",
+    "state": "Trạng thái",
+    "active": "Đang hoạt động",
+    "archived": "Đã lưu trữ",
+    "forms": "Biểu mẫu",
+    "responses": "Phản hồi",
+    "updated": "Cập nhật",
+    "formsCount": "{n} biểu mẫu | {n} biểu mẫu",
+    "activeCount": "hoạt động | hoạt động",
+    "shareOfForms": "Tỷ lệ biểu mẫu",
+    "noWebsite": "Không có trang web",
+    "main": "Chính",
+    "formsBy": "Biểu mẫu theo tổ chức",
+    "formsByHint": "Các biểu mẫu của không gian làm việc thuộc về tổ chức nào.",
+    "oneOnly": "Thêm một tổ chức để chia biểu mẫu giữa chúng.",
+    "byState": "Theo trạng thái",
+    "sortForms": "Nhiều biểu mẫu nhất",
+    "sortResponses": "Nhiều phản hồi nhất",
+    "sortUpdated": "Mới cập nhật",
+    "search": "Tìm tổ chức",
+    "empty": "Không có tổ chức phù hợp",
+    "emptyDesc": "Xóa bộ lọc, hoặc thêm một tổ chức.",
+    "saved": "Đã lưu {name}",
+    "created": "Đã tạo {name}",
+    "archive": "Lưu trữ",
+    "restore": "Khôi phục",
+    "archivedToast": "Đã lưu trữ {name}",
+    "restoredToast": "Đã khôi phục {name}",
+    "showForms": "Hiện biểu mẫu của tổ chức",
+    "formSetting": "Tổ chức",
+    "formSettingHint": "Tên và logo hiển thị trên các trang công khai của biểu mẫu này. Được lưu ngay.",
+    "moved": "Biểu mẫu hiện thuộc về {name}"
   }
 }

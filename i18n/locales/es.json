@@ -607,7 +607,8 @@
     "FRM-AUTH-1015": "Tu contraseña ha caducado. Establece una nueva.",
     "FRM-AUTH-1016": "No se permite iniciar sesión desde esta red.",
     "FRM-AUTH-1017": "Este cambio te dejaría fuera. Revisa tu propio dominio y dirección de correo.",
-    "FRM-AUTH-1018": "Usaste esta contraseña hace poco. Elige otra."
+    "FRM-AUTH-1018": "Usaste esta contraseña hace poco. Elige otra.",
+    "FRM-ORG-1003": "La organización principal no se puede archivar."
   },
   "errorUi": {
     "reference": "Referencia: {id}",
@@ -6346,7 +6347,8 @@
       "privacy": "Privacidad y datos",
       "formDefaults": "Valores predeterminados de formularios",
       "themes": "Temas",
-      "landingPages": "Páginas de destino"
+      "landingPages": "Páginas de destino",
+      "organisations": "Organizaciones"
     },
     "desc": {
       "overview": "Todo sobre tu espacio de trabajo en un solo lugar.",
@@ -6366,7 +6368,8 @@
       "privacy": "Cuánto se conservan las respuestas, textos de consentimiento y solicitudes de datos.",
       "formDefaults": "Los ajustes con los que empiezan los formularios nuevos y los valores de inserción.",
       "themes": "Diseños de formulario que tu espacio de trabajo puede usar.",
-      "landingPages": "Diseños de página para las páginas públicas de tus formularios."
+      "landingPages": "Diseños de página para las páginas públicas de tus formularios.",
+      "organisations": "Filiales o sucursales: cada formulario pertenece a una, y la barra lateral permite cambiar entre ellas."
     },
     "status": {
       "complete": "Completo",
@@ -6386,7 +6389,8 @@
       "notice": "aviso de privacidad definido",
       "withTheme": "Los formularios nuevos empiezan con un tema",
       "workspaceLook": "Los formularios nuevos usan el aspecto del espacio de trabajo",
-      "customLook": "Tu propio estilo"
+      "customLook": "Tu propio estilo",
+      "organisations": "{n} organización | {n} organizaciones"
     },
     "next": {
       "title": "Siguiente paso",
@@ -7056,6 +7060,56 @@
       },
       "preview": "Vista previa",
       "previewHint": "Todo el portal alrededor de esta página también muestra el estilo. Tus formularios públicos conservan sus propios temas."
+    },
+    "address": {
+      "workspace": "Dirección del espacio de trabajo",
+      "workspaceHint": "Donde tu equipo inicia sesión y donde viven tus formularios.",
+      "current": "Dirección actual",
+      "newLabel": "Nueva dirección",
+      "rules": "De 3 a 63 letras minúsculas, números o guiones.",
+      "change": "Cambiar dirección",
+      "checking": "Comprobando…",
+      "free": "{url} está libre.",
+      "reason": {
+        "taken": "Esta dirección ya está en uso.",
+        "reserved": "Esta dirección está reservada.",
+        "invalid": "Usa solo letras minúsculas, números y guiones."
+      },
+      "previous": "Las direcciones antiguas siguen llevando aquí",
+      "until": "hasta el {when}",
+      "confirmTitle": "¿Cambiar la dirección del espacio de trabajo?",
+      "confirmDesc": "{old} pasa a ser {url}. Todos inician sesión en la nueva dirección; la antigua sigue llevando aquí durante 90 días, así que los enlaces compartidos siguen funcionando.",
+      "typeNew": "Escribe {name} para confirmar",
+      "changed": "El espacio de trabajo ahora está en {url}",
+      "domain": "Tu propio dominio",
+      "domainHint": "Muestra tus formularios en tu propia dirección, como forms.example.com.",
+      "addDomain": "Añadir dominio",
+      "addRecords": "Añade estos dos registros en tu proveedor de dominio y luego comprueba. Pueden pasar unas horas hasta que sean visibles.",
+      "verifiedDesc": "Verificado. Los formularios usan esta dirección, con HTTPS configurado automáticamente.",
+      "type": "Tipo",
+      "name": "Nombre",
+      "value": "Valor",
+      "found": "Encontrado",
+      "missing": "Aún no encontrado",
+      "check": "Comprobar ahora",
+      "checked": "Comprobado {when}",
+      "remove": "Quitar dominio",
+      "removeTitle": "¿Quitar {domain}?",
+      "removeDesc": "Los formularios vuelven a la dirección de tu espacio de trabajo. Los enlaces con tu dominio dejan de funcionar.",
+      "status": {
+        "pending": "Esperando al DNS",
+        "verified": "Verificado",
+        "failed": "Apunta a otro sitio"
+      },
+      "problem": {
+        "not_found": "Aún no se encontraron los registros. Los cambios en tu proveedor de dominio pueden tardar unas horas.",
+        "wrong_target": "El registro CNAME apunta a otro sitio. Cámbialo al valor de arriba.",
+        "dns_error": "No se pudo acceder al DNS en este momento. Inténtalo de nuevo en un momento."
+      },
+      "formsAt": "Tus formularios están en https://{host}",
+      "short": "Enlaces cortos",
+      "shortHint": "Tu propio dominio para enlaces cortos de formularios.",
+      "shortLater": "Llegará más adelante. Mientras tanto, los enlaces cortos usan la dirección de Formalie."
     }
   },
   "notifications": {
@@ -7105,5 +7159,54 @@
       "account_disabled": "la cuenta está desactivada",
       "password_expired": "la contraseña ha caducado"
     }
+  },
+  "organisations": {
+    "title": "Organizaciones",
+    "all": "Todas las organizaciones",
+    "switch": "Organización: {name}",
+    "manage": "Gestionar organizaciones",
+    "new": "Nueva organización",
+    "create": "Crear organización",
+    "editTitle": "Editar {name}",
+    "editDesc": "Su nombre y logotipo se muestran en las páginas públicas de sus formularios.",
+    "name": "Nombre",
+    "namePlaceholder": "p. ej. Example Ltd UK",
+    "nameTaken": "Ya existe una organización con este nombre.",
+    "shortName": "Nombre corto",
+    "shortNameHelp": "Para espacios reducidos, p. ej. la barra lateral.",
+    "website": "Sitio web",
+    "logo": "Logotipo",
+    "logoHint": "PNG, JPEG o WebP, hasta 2 MB.",
+    "state": "Estado",
+    "active": "Activa",
+    "archived": "Archivada",
+    "forms": "Formularios",
+    "responses": "Respuestas",
+    "updated": "Actualizada",
+    "formsCount": "{n} formulario | {n} formularios",
+    "activeCount": "activa | activas",
+    "shareOfForms": "Porcentaje de formularios",
+    "noWebsite": "Sin sitio web",
+    "main": "Principal",
+    "formsBy": "Formularios por organización",
+    "formsByHint": "A qué organización pertenecen los formularios del espacio de trabajo.",
+    "oneOnly": "Añade una organización para repartir los formularios entre ellas.",
+    "byState": "Por estado",
+    "sortForms": "Más formularios",
+    "sortResponses": "Más respuestas",
+    "sortUpdated": "Actualizadas recientemente",
+    "search": "Buscar organizaciones",
+    "empty": "Ninguna organización coincide",
+    "emptyDesc": "Borra los filtros o añade una organización.",
+    "saved": "{name} guardada",
+    "created": "{name} creada",
+    "archive": "Archivar",
+    "restore": "Restaurar",
+    "archivedToast": "{name} archivada",
+    "restoredToast": "{name} restaurada",
+    "showForms": "Mostrar sus formularios",
+    "formSetting": "Organización",
+    "formSettingHint": "Su nombre y logotipo se muestran en las páginas públicas de este formulario. Se guarda al instante.",
+    "moved": "El formulario ahora pertenece a {name}"
   }
 }

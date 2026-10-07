@@ -15,6 +15,7 @@ import { parseBody } from '../core/validate'
 import { MOCK_TENANTS, MOCK_USERS } from '../data/tenants'
 import { websiteOf } from './onboarding'
 import { settingsOf } from '../data/settingsStore'
+import { subdomainTaken } from '../data/addressStore'
 
 /** GET /tenants/public, branding + enabled sign-in methods for this host. */
 export const publicProfile = defineMockRoute(({ event }) => {
@@ -59,7 +60,7 @@ export const subdomainAvailability = defineMockRoute(({ query }) => {
   let reason: SubdomainAvailability['reason'] = null
   if (RESERVED_SUBDOMAINS.includes(value)) reason = 'reserved'
   else if (!isValidSubdomain(value) || value.length < 3) reason = 'invalid'
-  else if (MOCK_TENANTS.some(t => t.subdomain === value)) reason = 'taken'
+  else if (subdomainTaken(value)) reason = 'taken'
   return ok<SubdomainAvailability>({ available: reason === null, reason })
 })
 

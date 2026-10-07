@@ -25,12 +25,13 @@ const GROUPS: SettingsGroup[] = [
       { key: 'branding', icon: 'i-lucide-badge-check', to: '/settings/branding' },
       { key: 'language', icon: 'i-lucide-languages', to: '/settings/language' },
       { key: 'appearance', icon: 'i-lucide-palette', to: '/settings/appearance' },
-      { key: 'address', icon: 'i-lucide-globe', soon: 'M7' },
+      { key: 'address', icon: 'i-lucide-globe', to: '/settings/address' },
     ],
   },
   {
     key: 'organisation',
     items: [
+      { key: 'organisations', icon: 'i-lucide-building', to: '/settings/organisations' },
       { key: 'departments', icon: 'i-lucide-network', to: '/settings/departments' },
       { key: 'jobTitles', icon: 'i-lucide-id-card', to: '/settings/job-titles' },
       { key: 'places', icon: 'i-lucide-map-pin', to: '/settings/places' },

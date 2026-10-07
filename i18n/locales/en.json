@@ -607,7 +607,8 @@
     "FRM-AUTH-1015": "Your password has expired. Set a new one.",
     "FRM-AUTH-1016": "Sign-in isn't allowed from this network.",
     "FRM-AUTH-1017": "This change would lock you out. Check your own email domain and address.",
-    "FRM-AUTH-1018": "You used this password recently. Choose another one."
+    "FRM-AUTH-1018": "You used this password recently. Choose another one.",
+    "FRM-ORG-1003": "The main organisation can't be archived."
   },
   "errorUi": {
     "reference": "Reference: {id}",
@@ -6346,7 +6347,8 @@
       "privacy": "Privacy and data",
       "formDefaults": "Form defaults",
       "themes": "Themes",
-      "landingPages": "Landing pages"
+      "landingPages": "Landing pages",
+      "organisations": "Organisations"
     },
     "desc": {
       "overview": "Everything about your workspace in one place.",
@@ -6366,7 +6368,8 @@
       "privacy": "How long responses are kept, consent texts and data requests.",
       "formDefaults": "The settings new forms start with, and embed defaults.",
       "themes": "Form designs your workspace can use.",
-      "landingPages": "Page designs for your forms' public pages."
+      "landingPages": "Page designs for your forms' public pages.",
+      "organisations": "Subsidiaries or branches: each form belongs to one, and the rail switches between them."
     },
     "status": {
       "complete": "Complete",
@@ -6386,7 +6389,8 @@
       "notice": "privacy notice set",
       "withTheme": "New forms start with a theme",
       "workspaceLook": "New forms use the workspace look",
-      "customLook": "Your own look"
+      "customLook": "Your own look",
+      "organisations": "{n} organisation | {n} organisations"
     },
     "next": {
       "title": "Next step",
@@ -7056,6 +7060,56 @@
       },
       "preview": "Preview",
       "previewHint": "The whole portal around this page shows the look too. Your public forms keep their own themes."
+    },
+    "address": {
+      "workspace": "Workspace address",
+      "workspaceHint": "Where your team signs in and where your forms live.",
+      "current": "Current address",
+      "newLabel": "New address",
+      "rules": "3 to 63 lowercase letters, numbers or hyphens.",
+      "change": "Change address",
+      "checking": "Checking…",
+      "free": "{url} is free.",
+      "reason": {
+        "taken": "This address is taken.",
+        "reserved": "This address is reserved.",
+        "invalid": "Use lowercase letters, numbers and hyphens only."
+      },
+      "previous": "Old addresses still lead here",
+      "until": "until {when}",
+      "confirmTitle": "Change the workspace address?",
+      "confirmDesc": "{old} becomes {url}. Everyone signs in at the new address; the old one keeps leading here for 90 days, so shared links keep working.",
+      "typeNew": "Type {name} to confirm",
+      "changed": "The workspace now lives at {url}",
+      "domain": "Your own domain",
+      "domainHint": "Show your forms at your own address, such as forms.example.com.",
+      "addDomain": "Add domain",
+      "addRecords": "Add these two records at your domain provider, then check. It can take a few hours before they are visible.",
+      "verifiedDesc": "Verified. Forms use this address, with HTTPS set up automatically.",
+      "type": "Type",
+      "name": "Name",
+      "value": "Value",
+      "found": "Found",
+      "missing": "Not found yet",
+      "check": "Check now",
+      "checked": "Checked {when}",
+      "remove": "Remove domain",
+      "removeTitle": "Remove {domain}?",
+      "removeDesc": "Forms go back to your workspace address. Links with your domain stop working.",
+      "status": {
+        "pending": "Waiting for DNS",
+        "verified": "Verified",
+        "failed": "Points elsewhere"
+      },
+      "problem": {
+        "not_found": "The records were not found yet. Changes at your domain provider can take a few hours.",
+        "wrong_target": "The CNAME record points somewhere else. Change it to the value above.",
+        "dns_error": "DNS could not be reached just now. Try again in a moment."
+      },
+      "formsAt": "Your forms are at https://{host}",
+      "short": "Short links",
+      "shortHint": "Your own domain for short form links.",
+      "shortLater": "Coming later. Short links use Formalie's address until then."
     }
   },
   "notifications": {
@@ -7105,5 +7159,54 @@
       "account_disabled": "the account is disabled",
       "password_expired": "the password has expired"
     }
+  },
+  "organisations": {
+    "title": "Organisations",
+    "all": "All organisations",
+    "switch": "Organisation: {name}",
+    "manage": "Manage organisations",
+    "new": "New organisation",
+    "create": "Create organisation",
+    "editTitle": "Edit {name}",
+    "editDesc": "Its name and logo show on its forms' public pages.",
+    "name": "Name",
+    "namePlaceholder": "e.g. Example Ltd UK",
+    "nameTaken": "An organisation with this name already exists.",
+    "shortName": "Short name",
+    "shortNameHelp": "For tight places, e.g. the rail.",
+    "website": "Website",
+    "logo": "Logo",
+    "logoHint": "PNG, JPEG or WebP, up to 2 MB.",
+    "state": "State",
+    "active": "Active",
+    "archived": "Archived",
+    "forms": "Forms",
+    "responses": "Responses",
+    "updated": "Updated",
+    "formsCount": "{n} form | {n} forms",
+    "activeCount": "active | active",
+    "shareOfForms": "Share of forms",
+    "noWebsite": "No website",
+    "main": "Main",
+    "formsBy": "Forms by organisation",
+    "formsByHint": "Where the workspace's forms belong.",
+    "oneOnly": "Add an organisation to split forms between them.",
+    "byState": "By state",
+    "sortForms": "Most forms",
+    "sortResponses": "Most responses",
+    "sortUpdated": "Recently updated",
+    "search": "Search organisations",
+    "empty": "No organisations match",
+    "emptyDesc": "Clear the filters, or add an organisation.",
+    "saved": "{name} saved",
+    "created": "{name} created",
+    "archive": "Archive",
+    "restore": "Restore",
+    "archivedToast": "{name} archived",
+    "restoredToast": "{name} restored",
+    "showForms": "Show its forms",
+    "formSetting": "Organisation",
+    "formSettingHint": "Its name and logo show on this form's public pages. Saved straight away.",
+    "moved": "The form now belongs to {name}"
   }
 }

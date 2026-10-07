@@ -607,7 +607,8 @@
     "FRM-AUTH-1015": "Parolanızın süresi doldu. Yeni bir parola belirleyin.",
     "FRM-AUTH-1016": "Bu ağdan oturum açmaya izin verilmiyor.",
     "FRM-AUTH-1017": "Bu değişiklik sizi dışarıda bırakır. Kendi e-posta alan adınızı ve adresinizi kontrol edin.",
-    "FRM-AUTH-1018": "Bu parolayı yakın zamanda kullandınız. Başka bir parola seçin."
+    "FRM-AUTH-1018": "Bu parolayı yakın zamanda kullandınız. Başka bir parola seçin.",
+    "FRM-ORG-1003": "Ana kuruluş arşivlenemez."
   },
   "errorUi": {
     "reference": "Referans: {id}",
@@ -6346,7 +6347,8 @@
       "privacy": "Gizlilik ve veriler",
       "formDefaults": "Form varsayılanları",
       "themes": "Temalar",
-      "landingPages": "Açılış sayfaları"
+      "landingPages": "Açılış sayfaları",
+      "organisations": "Kuruluşlar"
     },
     "desc": {
       "overview": "Çalışma alanınızla ilgili her şey tek yerde.",
@@ -6366,7 +6368,8 @@
       "privacy": "Yanıtların ne kadar saklanacağı, onay metinleri ve veri talepleri.",
       "formDefaults": "Yeni formların başladığı ayarlar ve gömme varsayılanları.",
       "themes": "Çalışma alanınızın kullanabileceği form tasarımları.",
-      "landingPages": "Formlarınızın herkese açık sayfaları için sayfa tasarımları."
+      "landingPages": "Formlarınızın herkese açık sayfaları için sayfa tasarımları.",
+      "organisations": "İştirakler veya şubeler: her form birine aittir ve kenar çubuğu aralarında geçiş yapar."
     },
     "status": {
       "complete": "Tamam",
@@ -6386,7 +6389,8 @@
       "notice": "gizlilik bildirimi ayarlandı",
       "withTheme": "Yeni formlar bir temayla başlar",
       "workspaceLook": "Yeni formlar çalışma alanının görünümünü kullanır",
-      "customLook": "Kendi görünümünüz"
+      "customLook": "Kendi görünümünüz",
+      "organisations": "{n} kuruluş | {n} kuruluş"
     },
     "next": {
       "title": "Sonraki adım",
@@ -7056,6 +7060,56 @@
       },
       "preview": "Önizleme",
       "previewHint": "Bu sayfanın çevresindeki tüm portal da görünümü gösterir. Herkese açık formlarınız kendi temalarını korur."
+    },
+    "address": {
+      "workspace": "Çalışma alanı adresi",
+      "workspaceHint": "Ekibinizin giriş yaptığı ve formlarınızın bulunduğu yer.",
+      "current": "Geçerli adres",
+      "newLabel": "Yeni adres",
+      "rules": "3 ila 63 küçük harf, rakam veya tire.",
+      "change": "Adresi değiştir",
+      "checking": "Denetleniyor…",
+      "free": "{url} boşta.",
+      "reason": {
+        "taken": "Bu adres alınmış.",
+        "reserved": "Bu adres ayrılmış.",
+        "invalid": "Yalnızca küçük harf, rakam ve tire kullanın."
+      },
+      "previous": "Eski adresler hâlâ buraya yönlendirir",
+      "until": "{when} tarihine kadar",
+      "confirmTitle": "Çalışma alanı adresi değiştirilsin mi?",
+      "confirmDesc": "{old} adresi {url} olur. Herkes yeni adresten giriş yapar; eski adres 90 gün boyunca buraya yönlendirmeye devam eder, böylece paylaşılan bağlantılar çalışır.",
+      "typeNew": "Onaylamak için {name} yazın",
+      "changed": "Çalışma alanı artık {url} adresinde",
+      "domain": "Kendi alan adınız",
+      "domainHint": "Formlarınızı forms.example.com gibi kendi adresinizde gösterin.",
+      "addDomain": "Alan adı ekle",
+      "addRecords": "Bu iki kaydı alan adı sağlayıcınızda ekleyin, sonra denetleyin. Görünür olması birkaç saat sürebilir.",
+      "verifiedDesc": "Doğrulandı. Formlar bu adresi kullanır, HTTPS otomatik kurulur.",
+      "type": "Tür",
+      "name": "Ad",
+      "value": "Değer",
+      "found": "Bulundu",
+      "missing": "Henüz bulunamadı",
+      "check": "Şimdi denetle",
+      "checked": "{when} denetlendi",
+      "remove": "Alan adını kaldır",
+      "removeTitle": "{domain} kaldırılsın mı?",
+      "removeDesc": "Formlar çalışma alanı adresinize döner. Alan adınızla verilen bağlantılar çalışmaz.",
+      "status": {
+        "pending": "DNS bekleniyor",
+        "verified": "Doğrulandı",
+        "failed": "Başka yere işaret ediyor"
+      },
+      "problem": {
+        "not_found": "Kayıtlar henüz bulunamadı. Alan adı sağlayıcınızdaki değişiklikler birkaç saat sürebilir.",
+        "wrong_target": "CNAME kaydı başka yere işaret ediyor. Yukarıdaki değere değiştirin.",
+        "dns_error": "DNS şu anda erişilemiyor. Birazdan tekrar deneyin."
+      },
+      "formsAt": "Formlarınız https://{host} adresinde",
+      "short": "Kısa bağlantılar",
+      "shortHint": "Kısa form bağlantıları için kendi alan adınız.",
+      "shortLater": "Daha sonra gelecek. O zamana kadar kısa bağlantılar Formalie adresini kullanır."
     }
   },
   "notifications": {
@@ -7105,5 +7159,54 @@
       "account_disabled": "hesap devre dışı",
       "password_expired": "parolanın süresi doldu"
     }
+  },
+  "organisations": {
+    "title": "Kuruluşlar",
+    "all": "Tüm kuruluşlar",
+    "switch": "Kuruluş: {name}",
+    "manage": "Kuruluşları yönet",
+    "new": "Yeni kuruluş",
+    "create": "Kuruluş oluştur",
+    "editTitle": "{name} düzenle",
+    "editDesc": "Adı ve logosu, formlarının herkese açık sayfalarında görünür.",
+    "name": "Ad",
+    "namePlaceholder": "örn. Example Ltd UK",
+    "nameTaken": "Bu ada sahip bir kuruluş zaten var.",
+    "shortName": "Kısa ad",
+    "shortNameHelp": "Dar yerler için, örn. kenar çubuğu.",
+    "website": "Web sitesi",
+    "logo": "Logo",
+    "logoHint": "PNG, JPEG veya WebP, en fazla 2 MB.",
+    "state": "Durum",
+    "active": "Etkin",
+    "archived": "Arşivlendi",
+    "forms": "Formlar",
+    "responses": "Yanıtlar",
+    "updated": "Güncellendi",
+    "formsCount": "{n} form | {n} form",
+    "activeCount": "etkin | etkin",
+    "shareOfForms": "Formların payı",
+    "noWebsite": "Web sitesi yok",
+    "main": "Ana",
+    "formsBy": "Kuruluşa göre formlar",
+    "formsByHint": "Çalışma alanındaki formların ait olduğu yer.",
+    "oneOnly": "Formları aralarında bölmek için bir kuruluş ekleyin.",
+    "byState": "Duruma göre",
+    "sortForms": "En çok form",
+    "sortResponses": "En çok yanıt",
+    "sortUpdated": "Son güncellenen",
+    "search": "Kuruluşlarda ara",
+    "empty": "Eşleşen kuruluş yok",
+    "emptyDesc": "Filtreleri temizleyin veya bir kuruluş ekleyin.",
+    "saved": "{name} kaydedildi",
+    "created": "{name} oluşturuldu",
+    "archive": "Arşivle",
+    "restore": "Geri yükle",
+    "archivedToast": "{name} arşivlendi",
+    "restoredToast": "{name} geri yüklendi",
+    "showForms": "Formlarını göster",
+    "formSetting": "Kuruluş",
+    "formSettingHint": "Adı ve logosu bu formun herkese açık sayfalarında görünür. Hemen kaydedilir.",
+    "moved": "Form artık {name} kuruluşuna ait"
   }
 }

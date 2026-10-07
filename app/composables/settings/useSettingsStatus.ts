@@ -14,6 +14,10 @@ export interface SectionStatus {
 export function useSettingsStatus(settings: Ref<WorkspaceSettings | null>) {
   const { t } = useI18n()
   const { counts } = useNavCounts()
+  const tenant = useTenant()
+  const config = useRuntimeConfig()
+  const organisations = useOrganisations()
+  onMounted(() => void organisations.load())
 
   const company = computed(() => {
     const c = settings.value?.company
@@ -50,6 +54,8 @@ export function useSettingsStatus(settings: Ref<WorkspaceSettings | null>) {
       const text = idle < 60 ? t('settings.status.idleMinutes', { n: idle }) : t('settings.status.idleHours', { n: idle / 60 }, idle / 60)
       return { text: s.security.ip_allowlist.enabled ? `${text} · ${t('settings.status.allowlist')}` : text, tone: 'info' }
     }
+    if (key === 'address') return { text: `${tenant.profile.value?.subdomain ?? ''}.${config.public.rootDomain}`, tone: 'info' }
+    if (key === 'organisations' && organisations.list.value) return { text: t('settings.status.organisations', { n: organisations.active.value.length }, organisations.active.value.length), tone: 'info' }
     if (key === 'appearance') return { text: s.appearance.preset === 'custom' ? t('settings.status.customLook') : t(`settings.appearance.preset.${s.appearance.preset}`), tone: 'info' }
     if (key === 'privacy') {
       const days = s.privacy.retention_days

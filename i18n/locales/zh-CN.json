@@ -607,7 +607,8 @@
     "FRM-AUTH-1015": "你的密码已过期。请设置新密码。",
     "FRM-AUTH-1016": "不允许从此网络登录。",
     "FRM-AUTH-1017": "此更改会让你自己无法登录。请检查你自己的邮箱域名和地址。",
-    "FRM-AUTH-1018": "你最近用过这个密码。请换一个。"
+    "FRM-AUTH-1018": "你最近用过这个密码。请换一个。",
+    "FRM-ORG-1003": "主组织无法归档。"
   },
   "errorUi": {
     "reference": "参考编号：{id}",
@@ -6346,7 +6347,8 @@
       "privacy": "隐私与数据",
       "formDefaults": "表单默认值",
       "themes": "主题",
-      "landingPages": "落地页"
+      "landingPages": "落地页",
+      "organisations": "组织"
     },
     "desc": {
       "overview": "关于工作区的一切，集中在一处。",
@@ -6366,7 +6368,8 @@
       "privacy": "回复保留多久、同意声明文本和数据请求。",
       "formDefaults": "新表单的初始设置和嵌入默认值。",
       "themes": "工作区可使用的表单设计。",
-      "landingPages": "表单公开页面的页面设计。"
+      "landingPages": "表单公开页面的页面设计。",
+      "organisations": "子公司或分支机构：每个表单属于其中一个，侧边栏可在它们之间切换。"
     },
     "status": {
       "complete": "已完成",
@@ -6386,7 +6389,8 @@
       "notice": "已设置隐私声明",
       "withTheme": "新表单以主题开始",
       "workspaceLook": "新表单使用工作区外观",
-      "customLook": "自定义外观"
+      "customLook": "自定义外观",
+      "organisations": "{n} 个组织 | {n} 个组织"
     },
     "next": {
       "title": "下一步",
@@ -7056,6 +7060,56 @@
       },
       "preview": "预览",
       "previewHint": "此页面周围的整个门户也会显示该外观。你的公开表单保留各自的主题。"
+    },
+    "address": {
+      "workspace": "工作区地址",
+      "workspaceHint": "团队登录的地方，也是表单所在的地方。",
+      "current": "当前地址",
+      "newLabel": "新地址",
+      "rules": "3 到 63 个小写字母、数字或连字符。",
+      "change": "更改地址",
+      "checking": "正在检查…",
+      "free": "{url} 可用。",
+      "reason": {
+        "taken": "该地址已被占用。",
+        "reserved": "该地址为保留地址。",
+        "invalid": "只能使用小写字母、数字和连字符。"
+      },
+      "previous": "旧地址仍会指向这里",
+      "until": "至 {when}",
+      "confirmTitle": "更改工作区地址？",
+      "confirmDesc": "{old} 将变为 {url}。所有人用新地址登录；旧地址会在 90 天内继续指向这里，已分享的链接仍然有效。",
+      "typeNew": "输入 {name} 以确认",
+      "changed": "工作区现在位于 {url}",
+      "domain": "你自己的域名",
+      "domainHint": "用你自己的地址展示表单，例如 forms.example.com。",
+      "addDomain": "添加域名",
+      "addRecords": "请在域名服务商处添加这两条记录，然后检查。可能需要几个小时才会生效。",
+      "verifiedDesc": "已验证。表单使用此地址，并自动设置 HTTPS。",
+      "type": "类型",
+      "name": "名称",
+      "value": "值",
+      "found": "已找到",
+      "missing": "尚未找到",
+      "check": "立即检查",
+      "checked": "{when} 已检查",
+      "remove": "移除域名",
+      "removeTitle": "移除 {domain}？",
+      "removeDesc": "表单将回到工作区地址。使用你域名的链接将失效。",
+      "status": {
+        "pending": "等待 DNS",
+        "verified": "已验证",
+        "failed": "指向其他位置"
+      },
+      "problem": {
+        "not_found": "尚未找到这些记录。在域名服务商处的更改可能需要几个小时。",
+        "wrong_target": "CNAME 记录指向了其他位置。请改为上面的值。",
+        "dns_error": "暂时无法连接 DNS。请稍后再试。"
+      },
+      "formsAt": "你的表单位于 https://{host}",
+      "short": "短链接",
+      "shortHint": "用于表单短链接的你自己的域名。",
+      "shortLater": "稍后推出。在此之前，短链接使用 Formalie 的地址。"
     }
   },
   "notifications": {
@@ -7105,5 +7159,54 @@
       "account_disabled": "账号已停用",
       "password_expired": "密码已过期"
     }
+  },
+  "organisations": {
+    "title": "组织",
+    "all": "所有组织",
+    "switch": "组织：{name}",
+    "manage": "管理组织",
+    "new": "新建组织",
+    "create": "创建组织",
+    "editTitle": "编辑 {name}",
+    "editDesc": "其名称和徽标会显示在该组织表单的公开页面上。",
+    "name": "名称",
+    "namePlaceholder": "例如 Example Ltd UK",
+    "nameTaken": "已存在同名组织。",
+    "shortName": "简称",
+    "shortNameHelp": "用于空间紧凑的位置，例如侧边栏。",
+    "website": "网站",
+    "logo": "徽标",
+    "logoHint": "PNG、JPEG 或 WebP，最大 2 MB。",
+    "state": "状态",
+    "active": "活跃",
+    "archived": "已归档",
+    "forms": "表单",
+    "responses": "回复",
+    "updated": "更新时间",
+    "formsCount": "{n} 个表单 | {n} 个表单",
+    "activeCount": "活跃 | 活跃",
+    "shareOfForms": "表单占比",
+    "noWebsite": "无网站",
+    "main": "主组织",
+    "formsBy": "按组织统计表单",
+    "formsByHint": "工作区的表单属于哪个组织。",
+    "oneOnly": "添加组织即可在它们之间分配表单。",
+    "byState": "按状态",
+    "sortForms": "表单最多",
+    "sortResponses": "回复最多",
+    "sortUpdated": "最近更新",
+    "search": "搜索组织",
+    "empty": "没有匹配的组织",
+    "emptyDesc": "清除筛选，或添加一个组织。",
+    "saved": "已保存 {name}",
+    "created": "已创建 {name}",
+    "archive": "归档",
+    "restore": "恢复",
+    "archivedToast": "已归档 {name}",
+    "restoredToast": "已恢复 {name}",
+    "showForms": "显示其表单",
+    "formSetting": "组织",
+    "formSettingHint": "其名称和徽标会显示在此表单的公开页面上。立即保存。",
+    "moved": "该表单现在属于 {name}"
   }
 }

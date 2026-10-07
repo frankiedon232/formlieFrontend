@@ -607,7 +607,8 @@
     "FRM-AUTH-1015": "비밀번호가 만료되었습니다. 새 비밀번호를 설정하세요.",
     "FRM-AUTH-1016": "이 네트워크에서는 로그인할 수 없습니다.",
     "FRM-AUTH-1017": "이 변경으로 본인이 로그인할 수 없게 됩니다. 본인의 이메일 도메인과 주소를 확인하세요.",
-    "FRM-AUTH-1018": "최근에 사용한 비밀번호입니다. 다른 비밀번호를 선택하세요."
+    "FRM-AUTH-1018": "최근에 사용한 비밀번호입니다. 다른 비밀번호를 선택하세요.",
+    "FRM-ORG-1003": "기본 조직은 보관할 수 없습니다."
   },
   "errorUi": {
     "reference": "참조 번호: {id}",
@@ -6346,7 +6347,8 @@
       "privacy": "개인정보 및 데이터",
       "formDefaults": "양식 기본값",
       "themes": "테마",
-      "landingPages": "랜딩 페이지"
+      "landingPages": "랜딩 페이지",
+      "organisations": "조직"
     },
     "desc": {
       "overview": "워크스페이스에 관한 모든 것을 한곳에서 확인하세요.",
@@ -6366,7 +6368,8 @@
       "privacy": "응답 보관 기간, 동의 문구, 데이터 요청.",
       "formDefaults": "새 양식의 시작 설정과 삽입 기본값.",
       "themes": "워크스페이스에서 사용할 수 있는 양식 디자인.",
-      "landingPages": "양식 공개 페이지용 페이지 디자인."
+      "landingPages": "양식 공개 페이지용 페이지 디자인.",
+      "organisations": "자회사 또는 지점: 각 양식은 하나의 조직에 속하며, 사이드바에서 조직을 전환합니다."
     },
     "status": {
       "complete": "완료",
@@ -6386,7 +6389,8 @@
       "notice": "개인정보 안내 설정됨",
       "withTheme": "새 양식은 테마와 함께 시작",
       "workspaceLook": "새 양식은 워크스페이스 디자인 사용",
-      "customLook": "나만의 스타일"
+      "customLook": "나만의 스타일",
+      "organisations": "조직 {n}개 | 조직 {n}개"
     },
     "next": {
       "title": "다음 단계",
@@ -7056,6 +7060,56 @@
       },
       "preview": "미리보기",
       "previewHint": "이 페이지를 둘러싼 포털 전체에도 스타일이 표시됩니다. 공개 양식은 자체 테마를 유지합니다."
+    },
+    "address": {
+      "workspace": "워크스페이스 주소",
+      "workspaceHint": "팀이 로그인하는 곳이자 양식이 있는 곳입니다.",
+      "current": "현재 주소",
+      "newLabel": "새 주소",
+      "rules": "소문자, 숫자, 하이픈 3~63자.",
+      "change": "주소 변경",
+      "checking": "확인 중…",
+      "free": "{url} 주소를 사용할 수 있습니다.",
+      "reason": {
+        "taken": "이미 사용 중인 주소입니다.",
+        "reserved": "예약된 주소입니다.",
+        "invalid": "소문자, 숫자, 하이픈만 사용하세요."
+      },
+      "previous": "이전 주소도 계속 이곳으로 연결됩니다",
+      "until": "{when}까지",
+      "confirmTitle": "워크스페이스 주소를 변경할까요?",
+      "confirmDesc": "{old} 주소가 {url}(으)로 바뀝니다. 모두 새 주소로 로그인하며, 이전 주소는 90일 동안 이곳으로 연결되어 공유된 링크도 계속 작동합니다.",
+      "typeNew": "확인하려면 {name}을(를) 입력하세요",
+      "changed": "워크스페이스가 이제 {url}에 있습니다",
+      "domain": "내 도메인",
+      "domainHint": "forms.example.com처럼 내 주소로 양식을 표시하세요.",
+      "addDomain": "도메인 추가",
+      "addRecords": "도메인 제공업체에서 이 두 레코드를 추가한 다음 확인하세요. 반영되기까지 몇 시간이 걸릴 수 있습니다.",
+      "verifiedDesc": "확인됨. 양식이 이 주소를 사용하며 HTTPS는 자동으로 설정됩니다.",
+      "type": "유형",
+      "name": "이름",
+      "value": "값",
+      "found": "찾음",
+      "missing": "아직 찾지 못함",
+      "check": "지금 확인",
+      "checked": "{when} 확인함",
+      "remove": "도메인 제거",
+      "removeTitle": "{domain}을(를) 제거할까요?",
+      "removeDesc": "양식이 워크스페이스 주소로 돌아갑니다. 내 도메인을 쓰는 링크는 작동하지 않게 됩니다.",
+      "status": {
+        "pending": "DNS 대기 중",
+        "verified": "확인됨",
+        "failed": "다른 곳을 가리킴"
+      },
+      "problem": {
+        "not_found": "레코드를 아직 찾지 못했습니다. 도메인 제공업체에서의 변경은 몇 시간이 걸릴 수 있습니다.",
+        "wrong_target": "CNAME 레코드가 다른 곳을 가리키고 있습니다. 위의 값으로 바꾸세요.",
+        "dns_error": "지금은 DNS에 연결할 수 없습니다. 잠시 후 다시 시도하세요."
+      },
+      "formsAt": "양식은 https://{host}에 있습니다",
+      "short": "짧은 링크",
+      "shortHint": "양식 짧은 링크에 쓸 내 도메인입니다.",
+      "shortLater": "나중에 제공됩니다. 그때까지 짧은 링크는 Formalie 주소를 사용합니다."
     }
   },
   "notifications": {
@@ -7105,5 +7159,54 @@
       "account_disabled": "계정이 비활성화되었습니다",
       "password_expired": "비밀번호가 만료되었습니다"
     }
+  },
+  "organisations": {
+    "title": "조직",
+    "all": "모든 조직",
+    "switch": "조직: {name}",
+    "manage": "조직 관리",
+    "new": "새 조직",
+    "create": "조직 만들기",
+    "editTitle": "{name} 편집",
+    "editDesc": "이름과 로고는 해당 조직 양식의 공개 페이지에 표시됩니다.",
+    "name": "이름",
+    "namePlaceholder": "예: Example Ltd UK",
+    "nameTaken": "이 이름의 조직이 이미 있습니다.",
+    "shortName": "짧은 이름",
+    "shortNameHelp": "사이드바처럼 좁은 곳에 쓰입니다.",
+    "website": "웹사이트",
+    "logo": "로고",
+    "logoHint": "PNG, JPEG 또는 WebP, 최대 2 MB.",
+    "state": "상태",
+    "active": "활성",
+    "archived": "보관됨",
+    "forms": "양식",
+    "responses": "응답",
+    "updated": "업데이트",
+    "formsCount": "양식 {n}개 | 양식 {n}개",
+    "activeCount": "활성 | 활성",
+    "shareOfForms": "양식 비율",
+    "noWebsite": "웹사이트 없음",
+    "main": "기본",
+    "formsBy": "조직별 양식",
+    "formsByHint": "워크스페이스의 양식이 어느 조직에 속하는지 보여 줍니다.",
+    "oneOnly": "조직을 추가하면 양식을 나눌 수 있습니다.",
+    "byState": "상태별",
+    "sortForms": "양식 많은 순",
+    "sortResponses": "응답 많은 순",
+    "sortUpdated": "최근 업데이트순",
+    "search": "조직 검색",
+    "empty": "일치하는 조직이 없습니다",
+    "emptyDesc": "필터를 지우거나 조직을 추가하세요.",
+    "saved": "{name} 저장됨",
+    "created": "{name} 생성됨",
+    "archive": "보관",
+    "restore": "복원",
+    "archivedToast": "{name} 보관됨",
+    "restoredToast": "{name} 복원됨",
+    "showForms": "양식 보기",
+    "formSetting": "조직",
+    "formSettingHint": "이름과 로고는 이 양식의 공개 페이지에 표시됩니다. 바로 저장됩니다.",
+    "moved": "이제 양식이 {name}에 속합니다"
   }
 }

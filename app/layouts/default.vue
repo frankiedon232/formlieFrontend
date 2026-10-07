@@ -17,6 +17,10 @@ const peek = ref<{ focusEdge: (edge: 'first' | 'last') => void } | null>(null)
 const appearance = useAppearance()
 appearance.apply()
 onMounted(() => void appearance.load())
+// The organisation chosen in the rail: restored before the page asks for its lists (F14 M7)
+const organisations = useOrganisations()
+organisations.restore()
+onMounted(() => void organisations.load())
 
 // `?` opens the shortcuts help; `g` then a letter jumps to a section (see useNavigation).
 const goTo = Object.fromEntries(

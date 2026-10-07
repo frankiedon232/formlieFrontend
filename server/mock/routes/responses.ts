@@ -4,6 +4,7 @@
  * is the job of people given responses); changing answers and deleting need "Can edit".
  * Every change is recorded in the response's history and the audit trail.
  */
+import { inScope } from '../data/organisationStore'
 import { z } from 'zod'
 import { emitResponse } from '../data/integrationStore'
 import { RESPONSE_STATUSES, type ResponseDetail, type ResponseFormRow, type ResponseRow, type ResponseStatus } from '#shared/types/responses'
@@ -161,7 +162,7 @@ export const formInsights = defineMockRoute(({ event, query }) => {
 /** GET /responses, the inbox: every form this person may see. */
 export const listResponses = defineMockRoute(({ event, query }) => {
   const { tenant, user } = requireAuth(event)
-  const { data, meta } = pageOf(workspaceResponses(tenant, form => levelOf(form, user) !== 'none'), query, false)
+  const { data, meta } = pageOf(workspaceResponses(tenant, form => levelOf(form, user) !== 'none' && inScope(tenant, form)), query, false)
   return ok(data.map(({ form, entry }) => rowOf(form, entry, false)), meta)
 })
 
@@ -186,7 +187,7 @@ export const listResponseForms = defineMockRoute(({ event, query }) => {
   const today = Date.parse(new Date().toISOString().slice(0, 10))
   const rows: ResponseFormRow[] = []
   for (const form of formsOf(tenant).forms) {
-    if (form.deleted_at || levelOf(form, user) === 'none') continue
+    if (form.deleted_at || levelOf(form, user) === 'none' || !inScope(tenant, form)) continue
     if ((formStatus && !formStatus.includes(form.status)) || (folder && !folder.includes(form.folder?.id ?? 'none')) || (q && !form.name.toLowerCase().includes(q))) continue
     const entries = formResponses(tenant, form).filter(entry => (from === null || entry.at >= from) && (to === null || entry.at <= to))
     if (!entries.length) continue
@@ -233,7 +234,7 @@ export const listResponseForms = defineMockRoute(({ event, query }) => {
 /** GET /responses/insights, the inbox numbers. */
 export const inboxInsights = defineMockRoute(({ event, query }) => {
   const { tenant, user } = requireAuth(event)
-  return ok(insightsOf(workspaceResponses(tenant, form => canSee(form, user)), query))
+  return ok(insightsOf(workspaceResponses(tenant, form => canSee(form, user) && inScope(tenant, form)), query))
 })
 
 export function responseFor(tenant: MockTenant, user: MockUser, id: string | undefined, need: 'responses' | 'edit') {

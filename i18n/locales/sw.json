@@ -607,7 +607,8 @@
     "FRM-AUTH-1015": "Nenosiri lako limeisha muda. Weka jipya.",
     "FRM-AUTH-1016": "Kuingia hakuruhusiwi kutoka mtandao huu.",
     "FRM-AUTH-1017": "Mabadiliko haya yangekufungia nje. Angalia kikoa na anwani yako ya barua pepe.",
-    "FRM-AUTH-1018": "Ulitumia nenosiri hili hivi karibuni. Chagua lingine."
+    "FRM-AUTH-1018": "Ulitumia nenosiri hili hivi karibuni. Chagua lingine.",
+    "FRM-ORG-1003": "Shirika kuu haliwezi kuhifadhiwa kwenye kumbukumbu."
   },
   "errorUi": {
     "reference": "Kumbukumbu: {id}",
@@ -6346,7 +6347,8 @@
       "privacy": "Faragha na data",
       "formDefaults": "Chaguo-msingi za fomu",
       "themes": "Mandhari",
-      "landingPages": "Kurasa za kutua"
+      "landingPages": "Kurasa za kutua",
+      "organisations": "Mashirika"
     },
     "desc": {
       "overview": "Kila kitu kuhusu eneo lako la kazi mahali pamoja.",
@@ -6366,7 +6368,8 @@
       "privacy": "Majibu huhifadhiwa kwa muda gani, maandishi ya idhini na maombi ya data.",
       "formDefaults": "Mipangilio ambayo fomu mpya huanza nayo, na chaguo-msingi za kupachika.",
       "themes": "Miundo ya fomu ambayo eneo lako la kazi linaweza kutumia.",
-      "landingPages": "Miundo ya kurasa za umma za fomu zako."
+      "landingPages": "Miundo ya kurasa za umma za fomu zako.",
+      "organisations": "Kampuni tanzu au matawi: kila fomu ni ya moja, na upau wa pembeni hubadilisha kati yao."
     },
     "status": {
       "complete": "Imekamilika",
@@ -6386,7 +6389,8 @@
       "notice": "notisi ya faragha imewekwa",
       "withTheme": "Fomu mpya huanza na mandhari",
       "workspaceLook": "Fomu mpya hutumia mwonekano wa eneo la kazi",
-      "customLook": "Mwonekano wako mwenyewe"
+      "customLook": "Mwonekano wako mwenyewe",
+      "organisations": "Shirika {n} | Mashirika {n}"
     },
     "next": {
       "title": "Hatua inayofuata",
@@ -7056,6 +7060,56 @@
       },
       "preview": "Hakiki",
       "previewHint": "Lango lote linalozunguka ukurasa huu pia linaonyesha mwonekano. Fomu zako za umma hubaki na mandhari yake."
+    },
+    "address": {
+      "workspace": "Anwani ya nafasi ya kazi",
+      "workspaceHint": "Mahali timu yako inapoingia na mahali fomu zako zilipo.",
+      "current": "Anwani ya sasa",
+      "newLabel": "Anwani mpya",
+      "rules": "Herufi ndogo, nambari au vistari 3 hadi 63.",
+      "change": "Badilisha anwani",
+      "checking": "Inakagua…",
+      "free": "{url} iko huru.",
+      "reason": {
+        "taken": "Anwani hii imechukuliwa.",
+        "reserved": "Anwani hii imehifadhiwa.",
+        "invalid": "Tumia herufi ndogo, nambari na vistari pekee."
+      },
+      "previous": "Anwani za zamani bado zinaleta hapa",
+      "until": "hadi {when}",
+      "confirmTitle": "Kubadilisha anwani ya nafasi ya kazi?",
+      "confirmDesc": "{old} inakuwa {url}. Kila mtu anaingia kwenye anwani mpya; ya zamani inaendelea kuleta hapa kwa siku 90, ili viungo vilivyoshirikiwa viendelee kufanya kazi.",
+      "typeNew": "Andika {name} ili kuthibitisha",
+      "changed": "Nafasi ya kazi sasa iko {url}",
+      "domain": "Kikoa chako mwenyewe",
+      "domainHint": "Onyesha fomu zako kwenye anwani yako mwenyewe, kama forms.example.com.",
+      "addDomain": "Ongeza kikoa",
+      "addRecords": "Ongeza rekodi hizi mbili kwa mtoa huduma wa kikoa chako, kisha kagua. Inaweza kuchukua saa chache kabla zionekane.",
+      "verifiedDesc": "Imethibitishwa. Fomu zinatumia anwani hii, na HTTPS imewekwa kiotomatiki.",
+      "type": "Aina",
+      "name": "Jina",
+      "value": "Thamani",
+      "found": "Imepatikana",
+      "missing": "Haijapatikana bado",
+      "check": "Kagua sasa",
+      "checked": "Ilikaguliwa {when}",
+      "remove": "Ondoa kikoa",
+      "removeTitle": "Kuondoa {domain}?",
+      "removeDesc": "Fomu zinarudi kwenye anwani ya nafasi yako ya kazi. Viungo vyenye kikoa chako vinaacha kufanya kazi.",
+      "status": {
+        "pending": "Inasubiri DNS",
+        "verified": "Imethibitishwa",
+        "failed": "Inaelekeza kwingine"
+      },
+      "problem": {
+        "not_found": "Rekodi hazijapatikana bado. Mabadiliko kwa mtoa huduma wa kikoa yanaweza kuchukua saa chache.",
+        "wrong_target": "Rekodi ya CNAME inaelekeza kwingine. Ibadilishe iwe thamani iliyo juu.",
+        "dns_error": "DNS haikufikiwa kwa sasa. Jaribu tena baada ya muda mfupi."
+      },
+      "formsAt": "Fomu zako ziko https://{host}",
+      "short": "Viungo vifupi",
+      "shortHint": "Kikoa chako mwenyewe kwa viungo vifupi vya fomu.",
+      "shortLater": "Inakuja baadaye. Hadi hapo viungo vifupi vinatumia anwani ya Formalie."
     }
   },
   "notifications": {
@@ -7105,5 +7159,54 @@
       "account_disabled": "akaunti imezimwa",
       "password_expired": "nenosiri limeisha muda"
     }
+  },
+  "organisations": {
+    "title": "Mashirika",
+    "all": "Mashirika yote",
+    "switch": "Shirika: {name}",
+    "manage": "Simamia mashirika",
+    "new": "Shirika jipya",
+    "create": "Unda shirika",
+    "editTitle": "Hariri {name}",
+    "editDesc": "Jina na nembo yake huonekana kwenye kurasa za umma za fomu zake.",
+    "name": "Jina",
+    "namePlaceholder": "mf. Example Ltd UK",
+    "nameTaken": "Shirika lenye jina hili tayari lipo.",
+    "shortName": "Jina fupi",
+    "shortNameHelp": "Kwa sehemu finyu, mf. upau wa pembeni.",
+    "website": "Tovuti",
+    "logo": "Nembo",
+    "logoHint": "PNG, JPEG au WebP, hadi 2 MB.",
+    "state": "Hali",
+    "active": "Linatumika",
+    "archived": "Limehifadhiwa kwenye kumbukumbu",
+    "forms": "Fomu",
+    "responses": "Majibu",
+    "updated": "Imesasishwa",
+    "formsCount": "Fomu {n} | Fomu {n}",
+    "activeCount": "linatumika | yanatumika",
+    "shareOfForms": "Sehemu ya fomu",
+    "noWebsite": "Hakuna tovuti",
+    "main": "Kuu",
+    "formsBy": "Fomu kwa shirika",
+    "formsByHint": "Fomu za nafasi ya kazi ni za shirika gani.",
+    "oneOnly": "Ongeza shirika ili kugawanya fomu kati yao.",
+    "byState": "Kwa hali",
+    "sortForms": "Fomu nyingi zaidi",
+    "sortResponses": "Majibu mengi zaidi",
+    "sortUpdated": "Zilizosasishwa hivi karibuni",
+    "search": "Tafuta mashirika",
+    "empty": "Hakuna shirika linalolingana",
+    "emptyDesc": "Futa vichujio, au ongeza shirika.",
+    "saved": "{name} imehifadhiwa",
+    "created": "{name} imeundwa",
+    "archive": "Hifadhi kwenye kumbukumbu",
+    "restore": "Rejesha",
+    "archivedToast": "{name} imehifadhiwa kwenye kumbukumbu",
+    "restoredToast": "{name} imerejeshwa",
+    "showForms": "Onyesha fomu zake",
+    "formSetting": "Shirika",
+    "formSettingHint": "Jina na nembo yake huonekana kwenye kurasa za umma za fomu hii. Huhifadhiwa papo hapo.",
+    "moved": "Fomu sasa ni ya {name}"
   }
 }

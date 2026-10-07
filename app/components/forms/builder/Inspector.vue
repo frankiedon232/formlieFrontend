@@ -184,6 +184,7 @@ function setThankYou(key: 'title' | 'message', value: string) {
             />
           </UFormField>
         </section>
+        <FormsBuilderOrganisationSetting />
         <FormsBuilderLanguageSetting />
         <FormsBuilderLanguagesSetting />
         <section class="flex flex-col gap-3">
