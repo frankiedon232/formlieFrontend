@@ -1,0 +1,24 @@
+<!--
+  Field settings → Show as (owner 2026-10-07: settings live in the right panel, not while adding): a
+  choice field switches between dropdown, multi-select, single choice (radio) and checkboxes, keeping
+  its options. A level of a list with levels uses its own One / Several switch (InspectorLevel).
+-->
+<script setup lang="ts">
+import type { FormField } from '#shared/utils/forms/build'
+import type { FieldType } from '#shared/utils/forms/fields'
+
+const props = defineProps<{ field: FormField }>()
+const { t } = useI18n()
+const builder = useBuilder()
+
+const STYLES: FieldType[] = ['dropdown', 'multi_select', 'radio', 'checkbox']
+const items = computed(() => STYLES.map(type => ({ value: type, label: t(`builder.field.${type}`), icon: fieldIcon(type) })))
+const pick = (value: unknown) => STYLES.includes(value as FieldType) && value !== props.field.type && builder.updateField(props.field.id, { type: value as FieldType })
+</script>
+
+<template>
+  <section class="flex flex-col gap-2">
+    <h3 class="text-xs font-medium text-muted uppercase">{{ t('builder.inspector.showAs') }}</h3>
+    <USelect :model-value="(field.type as FieldType)" :items="items" value-key="value" size="sm" class="w-full" :aria-label="t('builder.inspector.showAs')" @update:model-value="pick" />
+  </section>
+</template>

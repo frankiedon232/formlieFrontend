@@ -7,10 +7,13 @@ import type { FormField } from '#shared/utils/forms/build'
  */
 export function usePaletteDrag(onPlaced: () => void) {
   const builder = useBuilder()
-  let dragged: string | null = null
+  let dragged: FormField | null = null
+  // A list with levels: the levels below the dragged top one, added beside it on drop
+  let rest: FormField[] = []
 
-  function track(field: FormField): FormField {
-    dragged = field.id
+  function track(field: FormField, others: FormField[] = []): FormField {
+    dragged = field
+    rest = others
     return field
   }
   function start() {
@@ -19,11 +22,13 @@ export function usePaletteDrag(onPlaced: () => void) {
   }
   function end() {
     builder.dragging.value = false
-    if (dragged && builder.findField(dragged)) {
-      builder.select(dragged)
+    if (dragged && builder.findField(dragged.id)) {
+      if (rest.length) builder.attachChain(dragged, rest)
+      builder.select(dragged.id)
       onPlaced()
     }
     dragged = null
+    rest = []
   }
   return { start, track, end }
 }

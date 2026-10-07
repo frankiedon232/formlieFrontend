@@ -2006,7 +2006,8 @@
       "consentLink": "Enlace a los términos (opcional)",
       "consentLinkLabel": "Texto del enlace",
       "showResult": "Mostrar el resultado a quienes responden",
-      "internalHint": "Se calcula y se guarda con cada respuesta, pero solo lo ve tu equipo (p. ej., un nivel de riesgo o un grupo de lealtad)."
+      "internalHint": "Se calcula y se guarda con cada respuesta, pero solo lo ve tu equipo (p. ej., un nivel de riesgo o un grupo de lealtad).",
+      "showAs": "Mostrar como"
     },
     "shortcuts": {
       "title": "Atajos",
@@ -2803,12 +2804,8 @@
     },
     "listChanged": "{name} ha cambiado desde que se rellenaron estas opciones.",
     "updateFromList": "Actualizar desde la lista",
-    "oneChoice": "Una opción",
-    "severalChoices": "Varias opciones",
     "levels": "{n} niveles",
-    "openInListOption": "Abrir en Lista de opciones",
-    "addLevels": "Añadir {n} campos",
-    "perLevelRequired": "Para cada nivel: obligatorio o no, y una opción o varias opciones. Un nivel solo se abre cuando hay algo bajo la opción superior."
+    "openInListOption": "Abrir en Lista de opciones"
   },
   "designer": {
     "crumb": "Diseño",

@@ -2006,7 +2006,8 @@
       "consentLink": "Koşulların bağlantısı (isteğe bağlı)",
       "consentLinkLabel": "Bağlantı metni",
       "showResult": "Sonucu yanıtlayanlara göster",
-      "internalHint": "Her yanıtla hesaplanır ve kaydedilir, ancak yalnızca ekibiniz görür (ör. bir risk düzeyi veya sadakat grubu)."
+      "internalHint": "Her yanıtla hesaplanır ve kaydedilir, ancak yalnızca ekibiniz görür (ör. bir risk düzeyi veya sadakat grubu).",
+      "showAs": "Görünüm biçimi"
     },
     "shortcuts": {
       "title": "Kısayollar",
@@ -2803,12 +2804,8 @@
     },
     "listChanged": "Bu seçenekler doldurulduktan sonra {name} değişti.",
     "updateFromList": "Listeden güncelle",
-    "oneChoice": "Tek seçim",
-    "severalChoices": "Birden çok seçim",
     "levels": "{n} düzey",
-    "openInListOption": "Seçenek Listesi’nde aç",
-    "addLevels": "{n} alan ekle",
-    "perLevelRequired": "Her düzey için: zorunlu olup olmadığı ve tek seçim ya da birden çok seçim. Bir düzey yalnızca üstteki seçimin altında bir şey varsa açılır."
+    "openInListOption": "Seçenek Listesi’nde aç"
   },
   "designer": {
     "crumb": "Tasarım",

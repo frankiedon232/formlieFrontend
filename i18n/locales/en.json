@@ -2014,7 +2014,8 @@
       "consentLink": "Link to the terms (optional)",
       "consentLinkLabel": "Link text",
       "showResult": "Show the result to respondents",
-      "internalHint": "Worked out and saved with each response, but only your team sees it (e.g. a risk level or loyalty group)."
+      "internalHint": "Worked out and saved with each response, but only your team sees it (e.g. a risk level or loyalty group).",
+      "showAs": "Show as"
     },
     "shortcuts": {
       "title": "Shortcuts",
@@ -2803,12 +2804,8 @@
     },
     "listChanged": "{name} changed since these options were filled in.",
     "updateFromList": "Update from the list",
-    "oneChoice": "One choice",
-    "severalChoices": "Several choices",
     "levels": "{n} levels",
-    "openInListOption": "Open in List Option",
-    "addLevels": "Add {n} fields",
-    "perLevelRequired": "For each level: required or not, and one choice or several. A level only opens when something is under the choice above."
+    "openInListOption": "Open in List Option"
   },
   "designer": {
     "crumb": "Design",

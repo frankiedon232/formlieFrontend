@@ -2006,7 +2006,8 @@
       "consentLink": "Lien vers les conditions (facultatif)",
       "consentLinkLabel": "Texte du lien",
       "showResult": "Afficher le résultat aux répondants",
-      "internalHint": "Calculé et enregistré avec chaque réponse, mais visible uniquement par votre équipe (p. ex. un niveau de risque ou un groupe de fidélité)."
+      "internalHint": "Calculé et enregistré avec chaque réponse, mais visible uniquement par votre équipe (p. ex. un niveau de risque ou un groupe de fidélité).",
+      "showAs": "Afficher comme"
     },
     "shortcuts": {
       "title": "Raccourcis",
@@ -2803,12 +2804,8 @@
     },
     "listChanged": "{name} a changé depuis le remplissage de ces options.",
     "updateFromList": "Mettre à jour depuis la liste",
-    "oneChoice": "Un choix",
-    "severalChoices": "Plusieurs choix",
     "levels": "{n} niveaux",
-    "openInListOption": "Ouvrir dans Liste d’options",
-    "addLevels": "Ajouter {n} champs",
-    "perLevelRequired": "Pour chaque niveau : obligatoire ou non, et un choix ou plusieurs choix. Un niveau ne s'ouvre que s'il y a quelque chose sous le choix du dessus."
+    "openInListOption": "Ouvrir dans Liste d’options"
   },
   "designer": {
     "crumb": "Design",

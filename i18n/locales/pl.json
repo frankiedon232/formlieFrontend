@@ -2006,7 +2006,8 @@
       "consentLink": "Link do regulaminu (opcjonalnie)",
       "consentLinkLabel": "Tekst linku",
       "showResult": "Pokaż wynik respondentom",
-      "internalHint": "Obliczany i zapisywany z każdą odpowiedzią, ale widoczny tylko dla Twojego zespołu (np. poziom ryzyka lub grupa lojalności)."
+      "internalHint": "Obliczany i zapisywany z każdą odpowiedzią, ale widoczny tylko dla Twojego zespołu (np. poziom ryzyka lub grupa lojalności).",
+      "showAs": "Wyświetl jako"
     },
     "shortcuts": {
       "title": "Skróty",
@@ -2803,12 +2804,8 @@
     },
     "listChanged": "Lista {name} zmieniła się od czasu wypełnienia tych opcji.",
     "updateFromList": "Zaktualizuj z listy",
-    "oneChoice": "Jeden wybór",
-    "severalChoices": "Kilka wyborów",
     "levels": "Poziomy: {n}",
-    "openInListOption": "Otwórz w Liście opcji",
-    "addLevels": "Dodaj pola: {n}",
-    "perLevelRequired": "Dla każdego poziomu: wymagane lub nie oraz jeden wybór lub kilka wyborów. Poziom otwiera się tylko wtedy, gdy pod wyborem powyżej coś jest."
+    "openInListOption": "Otwórz w Liście opcji"
   },
   "designer": {
     "crumb": "Wygląd",

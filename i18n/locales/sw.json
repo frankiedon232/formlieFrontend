@@ -2006,7 +2006,8 @@
       "consentLink": "Kiungo cha masharti (si lazima)",
       "consentLinkLabel": "Maandishi ya kiungo",
       "showResult": "Waonyeshe wajibuji matokeo",
-      "internalHint": "Hukokotolewa na kuhifadhiwa pamoja na kila jibu, lakini timu yako pekee ndiyo huona (k.m. kiwango cha hatari au kundi la uaminifu)."
+      "internalHint": "Hukokotolewa na kuhifadhiwa pamoja na kila jibu, lakini timu yako pekee ndiyo huona (k.m. kiwango cha hatari au kundi la uaminifu).",
+      "showAs": "Onyesha kama"
     },
     "shortcuts": {
       "title": "Njia za mkato",
@@ -2803,12 +2804,8 @@
     },
     "listChanged": "{name} imebadilika tangu chaguo hizi zilipojazwa.",
     "updateFromList": "Sasisha kutoka orodha",
-    "oneChoice": "Chaguo moja",
-    "severalChoices": "Chaguo kadhaa",
     "levels": "Ngazi {n}",
-    "openInListOption": "Fungua katika Orodha ya Chaguo",
-    "addLevels": "Ongeza sehemu {n}",
-    "perLevelRequired": "Kwa kila ngazi: lazima au la, na chaguo moja au chaguo kadhaa. Ngazi hufunguka tu kukiwa na kitu chini ya chaguo la juu."
+    "openInListOption": "Fungua katika Orodha ya Chaguo"
   },
   "designer": {
     "crumb": "Muundo",

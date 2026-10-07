@@ -2006,7 +2006,8 @@
       "consentLink": "Tautan ke ketentuan (opsional)",
       "consentLinkLabel": "Teks tautan",
       "showResult": "Tampilkan hasil kepada responden",
-      "internalHint": "Dihitung dan disimpan bersama setiap tanggapan, tetapi hanya tim Anda yang dapat melihatnya (mis. tingkat risiko atau kelompok loyalitas)."
+      "internalHint": "Dihitung dan disimpan bersama setiap tanggapan, tetapi hanya tim Anda yang dapat melihatnya (mis. tingkat risiko atau kelompok loyalitas).",
+      "showAs": "Tampilkan sebagai"
     },
     "shortcuts": {
       "title": "Pintasan",
@@ -2803,12 +2804,8 @@
     },
     "listChanged": "{name} telah berubah sejak opsi ini diisi.",
     "updateFromList": "Perbarui dari daftar",
-    "oneChoice": "Satu pilihan",
-    "severalChoices": "Beberapa pilihan",
     "levels": "{n} tingkat",
-    "openInListOption": "Buka di Daftar Opsi",
-    "addLevels": "Tambahkan {n} bidang",
-    "perLevelRequired": "Untuk setiap level: wajib atau tidak, dan satu pilihan atau beberapa pilihan. Sebuah level hanya terbuka jika ada isi di bawah pilihan di atasnya."
+    "openInListOption": "Buka di Daftar Opsi"
   },
   "designer": {
     "crumb": "Desain",

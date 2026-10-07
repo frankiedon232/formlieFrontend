@@ -2006,7 +2006,8 @@
       "consentLink": "Liên kết đến điều khoản (không bắt buộc)",
       "consentLinkLabel": "Văn bản liên kết",
       "showResult": "Hiển thị kết quả cho người trả lời",
-      "internalHint": "Được tính và lưu cùng mỗi phản hồi, nhưng chỉ nhóm của bạn thấy (ví dụ: mức rủi ro hoặc nhóm trung thành)."
+      "internalHint": "Được tính và lưu cùng mỗi phản hồi, nhưng chỉ nhóm của bạn thấy (ví dụ: mức rủi ro hoặc nhóm trung thành).",
+      "showAs": "Hiển thị dạng"
     },
     "shortcuts": {
       "title": "Phím tắt",
@@ -2803,12 +2804,8 @@
     },
     "listChanged": "{name} đã thay đổi kể từ khi các tùy chọn này được điền.",
     "updateFromList": "Cập nhật từ danh sách",
-    "oneChoice": "Một lựa chọn",
-    "severalChoices": "Nhiều lựa chọn",
     "levels": "{n} cấp",
-    "openInListOption": "Mở trong Danh sách tùy chọn",
-    "addLevels": "Thêm {n} trường",
-    "perLevelRequired": "Với mỗi cấp: bắt buộc hay không, và một lựa chọn hay nhiều lựa chọn. Một cấp chỉ mở khi có nội dung bên dưới lựa chọn ở trên."
+    "openInListOption": "Mở trong Danh sách tùy chọn"
   },
   "designer": {
     "crumb": "Thiết kế",

@@ -2006,7 +2006,8 @@
       "consentLink": "条款链接（可选）",
       "consentLinkLabel": "链接文本",
       "showResult": "向填写者显示结果",
-      "internalHint": "随每条回复计算并保存，但仅您的团队可见（例如风险等级或忠诚度分组）。"
+      "internalHint": "随每条回复计算并保存，但仅您的团队可见（例如风险等级或忠诚度分组）。",
+      "showAs": "显示为"
     },
     "shortcuts": {
       "title": "快捷键",
@@ -2803,12 +2804,8 @@
     },
     "listChanged": "自填充这些选项以来，{name}已更改。",
     "updateFromList": "从列表更新",
-    "oneChoice": "单选",
-    "severalChoices": "多选",
     "levels": "{n}个层级",
-    "openInListOption": "在选项列表中打开",
-    "addLevels": "添加 {n} 个字段",
-    "perLevelRequired": "为每个层级设置：必填或不必填，以及单选或多选。只有上一级的选项下有内容时，该层级才会打开。"
+    "openInListOption": "在选项列表中打开"
   },
   "designer": {
     "crumb": "设计",

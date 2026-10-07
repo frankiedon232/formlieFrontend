@@ -2006,7 +2006,8 @@
       "consentLink": "Ligação para os termos (opcional)",
       "consentLinkLabel": "Texto da ligação",
       "showResult": "Mostrar o resultado a quem responde",
-      "internalHint": "Calculado e salvo com cada resposta, mas visível apenas para sua equipe (por exemplo, um nível de risco ou grupo de lealdade)."
+      "internalHint": "Calculado e salvo com cada resposta, mas visível apenas para sua equipe (por exemplo, um nível de risco ou grupo de lealdade).",
+      "showAs": "Mostrar como"
     },
     "shortcuts": {
       "title": "Atalhos",
@@ -2803,12 +2804,8 @@
     },
     "listChanged": "{name} mudou desde que estas opções foram preenchidas.",
     "updateFromList": "Atualizar a partir da lista",
-    "oneChoice": "Uma escolha",
-    "severalChoices": "Várias escolhas",
     "levels": "{n} níveis",
-    "openInListOption": "Abrir em Lista de opções",
-    "addLevels": "Adicionar {n} campos",
-    "perLevelRequired": "Para cada nível: obrigatório ou não, e uma escolha ou várias escolhas. Um nível só abre quando há algo sob a escolha acima."
+    "openInListOption": "Abrir em Lista de opções"
   },
   "designer": {
     "crumb": "Design",

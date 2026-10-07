@@ -2006,7 +2006,8 @@
       "consentLink": "Link naar de voorwaarden (optioneel)",
       "consentLinkLabel": "Linktekst",
       "showResult": "Resultaat tonen aan respondenten",
-      "internalHint": "Berekend en opgeslagen bij elke reactie, maar alleen zichtbaar voor je team (bijv. een risiconiveau of loyaliteitsgroep)."
+      "internalHint": "Berekend en opgeslagen bij elke reactie, maar alleen zichtbaar voor je team (bijv. een risiconiveau of loyaliteitsgroep).",
+      "showAs": "Weergeven als"
     },
     "shortcuts": {
       "title": "Sneltoetsen",
@@ -2803,12 +2804,8 @@
     },
     "listChanged": "{name} is veranderd sinds deze opties zijn ingevuld.",
     "updateFromList": "Bijwerken vanuit de lijst",
-    "oneChoice": "Eén keuze",
-    "severalChoices": "Meerdere keuzes",
     "levels": "{n} niveaus",
-    "openInListOption": "Openen in Optielijst",
-    "addLevels": "{n} velden toevoegen",
-    "perLevelRequired": "Per niveau: verplicht of niet, en één keuze of meerdere keuzes. Een niveau opent pas als er iets onder de keuze erboven staat."
+    "openInListOption": "Openen in Optielijst"
   },
   "designer": {
     "crumb": "Ontwerp",

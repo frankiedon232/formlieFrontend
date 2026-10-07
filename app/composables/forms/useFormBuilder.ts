@@ -113,10 +113,10 @@ export function useFormBuilder() {
 
   /**
    * Fields for a list (F15 M2): one field for a plain list; for a list with levels one field per level
-   * (Country → Region → City), each offering its level and linked to the one above, so each choice
-   * narrows the next. `type` = dropdown (one choice) or multi_select (several) for every level.
+   * (Country → Region → City) in one row, each offering its level and linked to the one above, so each
+   * choice narrows the next. They start as one choice, not required; each level is set in the right
+   * panel (owner 2026-10-07).
    */
-  /** One field per level; `type` may differ per level (one choice here, several there, owner 2026-10-07). */
   function createListFields(list: OptionList, type: FieldType | FieldType[] = 'dropdown', required: boolean[] = []): FormField[] {
     const levels = levelsOf(list)
     const typeAt = (index: number) => (Array.isArray(type) ? (type[index] ?? 'dropdown') : type)
@@ -131,6 +131,7 @@ export function useFormBuilder() {
       field.options = offeredOptions(toRaw(list), index)
       field.option_set_id = list.id
       field.option_level = index
+      field.width = 12 / levels.length
       if (required[index]) field.required = true
       if (index > 0) field.option_parent = fields[index - 1]!.id
       fields.push(field)
@@ -148,6 +149,21 @@ export function useFormBuilder() {
     pageId.value = destPage.id
     selected.value = [fields[0]!.id]
     return fields[0]!
+  }
+
+  /**
+   * A list with levels dragged onto the canvas lands as its top level; the rest of the chain joins it:
+   * the whole chain in its own row where it was dropped (after the row it was dropped into).
+   */
+  function attachChain(first: FormField, rest: FormField[]) {
+    const found = findField(first.id)
+    if (!found || !rest.length) return
+    const chain = [found.field, ...rest]
+    for (const field of chain) field.width = 12 / chain.length
+    found.row.fields.splice(found.fieldIndex, 1)
+    found.page.rows.splice(found.row.fields.length ? found.rowIndex + 1 : found.rowIndex, 0, { id: newId('row'), fields: chain })
+    dropEmptyRows()
+    selected.value = [first.id]
   }
 
   /** Puts a field in its own row, after the selected field, else at the end of the page. */
@@ -426,6 +442,7 @@ export function useFormBuilder() {
     createFromSaved,
     createFromList,
     createListFields,
+    attachChain,
     placeRow,
     place,
     addField,

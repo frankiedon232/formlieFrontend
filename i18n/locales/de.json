@@ -2006,7 +2006,8 @@
       "consentLink": "Link zu den Bedingungen (optional)",
       "consentLinkLabel": "Linktext",
       "showResult": "Ergebnis den Antwortenden anzeigen",
-      "internalHint": "Wird mit jeder Antwort berechnet und gespeichert, ist aber nur für Ihr Team sichtbar (z. B. eine Risikostufe oder Loyalitätsgruppe)."
+      "internalHint": "Wird mit jeder Antwort berechnet und gespeichert, ist aber nur für Ihr Team sichtbar (z. B. eine Risikostufe oder Loyalitätsgruppe).",
+      "showAs": "Anzeigen als"
     },
     "shortcuts": {
       "title": "Tastenkürzel",
@@ -2803,12 +2804,8 @@
     },
     "listChanged": "{name} hat sich geändert, seit diese Optionen ausgefüllt wurden.",
     "updateFromList": "Aus der Liste aktualisieren",
-    "oneChoice": "Eine Auswahl",
-    "severalChoices": "Mehrere Auswahlmöglichkeiten",
     "levels": "{n} Ebenen",
-    "openInListOption": "In Optionsliste öffnen",
-    "addLevels": "{n} Felder hinzufügen",
-    "perLevelRequired": "Für jede Ebene: Pflichtfeld oder nicht, und eine Auswahl oder mehrere Auswahlmöglichkeiten. Eine Ebene öffnet sich nur, wenn unter der Auswahl darüber etwas vorhanden ist."
+    "openInListOption": "In Optionsliste öffnen"
   },
   "designer": {
     "crumb": "Design",

@@ -2006,7 +2006,8 @@
       "consentLink": "Link ai termini (facoltativo)",
       "consentLinkLabel": "Testo del link",
       "showResult": "Mostra il risultato a chi risponde",
-      "internalHint": "Calcolato e salvato con ogni risposta, ma visibile solo al tuo team (ad es. un livello di rischio o un gruppo di fedeltà)."
+      "internalHint": "Calcolato e salvato con ogni risposta, ma visibile solo al tuo team (ad es. un livello di rischio o un gruppo di fedeltà).",
+      "showAs": "Mostra come"
     },
     "shortcuts": {
       "title": "Scorciatoie",
@@ -2803,12 +2804,8 @@
     },
     "listChanged": "{name} è cambiato da quando queste opzioni sono state compilate.",
     "updateFromList": "Aggiorna dall’elenco",
-    "oneChoice": "Una scelta",
-    "severalChoices": "Più scelte",
     "levels": "{n} livelli",
-    "openInListOption": "Apri in Elenco opzioni",
-    "addLevels": "Aggiungi {n} campi",
-    "perLevelRequired": "Per ogni livello: obbligatorio o no, e una scelta o più scelte. Un livello si apre solo se c'è qualcosa sotto la scelta superiore."
+    "openInListOption": "Apri in Elenco opzioni"
   },
   "designer": {
     "crumb": "Design",

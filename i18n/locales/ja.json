@@ -2006,7 +2006,8 @@
       "consentLink": "利用規約へのリンク（任意）",
       "consentLinkLabel": "リンクのテキスト",
       "showResult": "回答者に結果を表示",
-      "internalHint": "回答ごとに計算・保存されますが、表示されるのはチームのみです（例：リスクレベルやロイヤルティグループ）。"
+      "internalHint": "回答ごとに計算・保存されますが、表示されるのはチームのみです（例：リスクレベルやロイヤルティグループ）。",
+      "showAs": "表示形式"
     },
     "shortcuts": {
       "title": "ショートカット",
@@ -2803,12 +2804,8 @@
     },
     "listChanged": "これらの選択肢が入力されてから、{name}が変更されました。",
     "updateFromList": "リストから更新",
-    "oneChoice": "1つ選択",
-    "severalChoices": "複数選択",
     "levels": "{n}階層",
-    "openInListOption": "選択肢リストで開く",
-    "addLevels": "{n}個のフィールドを追加",
-    "perLevelRequired": "レベルごとに、必須かどうかと、1つ選択か複数選択かを設定します。上の選択の下に項目がある場合にのみ、そのレベルが開きます。"
+    "openInListOption": "選択肢リストで開く"
   },
   "designer": {
     "crumb": "デザイン",
