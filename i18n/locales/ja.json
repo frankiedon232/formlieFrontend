@@ -2508,7 +2508,7 @@
     "language": "言語",
     "consentLine": "送信すると、{org}がこのフォームの回答を利用することに同意したものとみなされます。",
     "privacyNotice": "プライバシー通知",
-    "opensAfterAbove": "上のレベルで何かが選択されるまで非表示になり、選択後はその下にある項目だけを表示します。"
+    "chooseAboveFirst": "先に{name}を選択してください"
   },
   "logic": {
     "crumb": "ロジック",
@@ -2807,8 +2807,8 @@
     "severalChoices": "複数選択",
     "levels": "{n}階層",
     "openInListOption": "選択肢リストで開く",
-    "perLevel": "レベルごとに選択してください：1つ選択または複数選択。",
-    "addLevels": "{n}個のフィールドを追加"
+    "addLevels": "{n}個のフィールドを追加",
+    "perLevelRequired": "レベルごとに、必須かどうかと、1つ選択か複数選択かを設定します。上の選択の下に項目がある場合にのみ、そのレベルが開きます。"
   },
   "designer": {
     "crumb": "デザイン",

@@ -2508,7 +2508,7 @@
     "language": "언어",
     "consentLine": "제출하면 {org}이(가) 이 양식의 답변을 사용할 수 있다는 데 동의하게 됩니다.",
     "privacyNotice": "개인정보 안내",
-    "opensAfterAbove": "위 수준에서 무언가를 선택할 때까지 숨겨지며, 선택하면 그 아래에 있는 항목만 표시됩니다."
+    "chooseAboveFirst": "먼저 {name} 항목을 선택하세요"
   },
   "logic": {
     "crumb": "로직",
@@ -2807,8 +2807,8 @@
     "severalChoices": "여러 개 선택",
     "levels": "{n}단계",
     "openInListOption": "옵션 목록에서 열기",
-    "perLevel": "각 수준마다 선택하세요: 하나 선택 또는 여러 개 선택.",
-    "addLevels": "필드 {n}개 추가"
+    "addLevels": "필드 {n}개 추가",
+    "perLevelRequired": "각 수준마다 필수 여부와 하나 선택 또는 여러 개 선택을 정합니다. 위 선택 아래에 항목이 있을 때만 해당 수준이 열립니다."
   },
   "designer": {
     "crumb": "디자인",

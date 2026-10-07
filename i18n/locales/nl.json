@@ -2508,7 +2508,7 @@
     "language": "Taal",
     "consentLine": "Door te verzenden ga je ermee akkoord dat {org} je antwoorden voor dit formulier mag gebruiken.",
     "privacyNotice": "Privacyverklaring",
-    "opensAfterAbove": "Verborgen totdat er in het niveau erboven iets is gekozen; toont dan alleen wat daaronder valt."
+    "chooseAboveFirst": "Kies eerst {name}"
   },
   "logic": {
     "crumb": "Logica",
@@ -2807,8 +2807,8 @@
     "severalChoices": "Meerdere keuzes",
     "levels": "{n} niveaus",
     "openInListOption": "Openen in Optielijst",
-    "perLevel": "Kies per niveau: één keuze of meerdere keuzes.",
-    "addLevels": "{n} velden toevoegen"
+    "addLevels": "{n} velden toevoegen",
+    "perLevelRequired": "Per niveau: verplicht of niet, en één keuze of meerdere keuzes. Een niveau opent pas als er iets onder de keuze erboven staat."
   },
   "designer": {
     "crumb": "Ontwerp",

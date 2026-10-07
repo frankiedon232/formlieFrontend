@@ -2508,7 +2508,7 @@
     "language": "Idioma",
     "consentLine": "Al enviar, aceptas que {org} pueda usar tus respuestas para este formulario.",
     "privacyNotice": "Aviso de privacidad",
-    "opensAfterAbove": "Oculto hasta que se elija algo en el nivel superior; entonces muestra solo lo que hay debajo."
+    "chooseAboveFirst": "Elige primero {name}"
   },
   "logic": {
     "crumb": "Lógica",
@@ -2807,8 +2807,8 @@
     "severalChoices": "Varias opciones",
     "levels": "{n} niveles",
     "openInListOption": "Abrir en Lista de opciones",
-    "perLevel": "Elija para cada nivel: una opción o varias opciones.",
-    "addLevels": "Añadir {n} campos"
+    "addLevels": "Añadir {n} campos",
+    "perLevelRequired": "Para cada nivel: obligatorio o no, y una opción o varias opciones. Un nivel solo se abre cuando hay algo bajo la opción superior."
   },
   "designer": {
     "crumb": "Diseño",

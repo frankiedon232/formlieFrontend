@@ -26,8 +26,15 @@ function onSelect(event: MouseEvent | KeyboardEvent) {
   )
 }
 
-// Trying the field out: a local answer only, reset when the field type changes.
-const trial = ref<unknown>(props.field.default ?? null)
+// Trying the field out: a local answer only, reset when the field type changes. Fields from a list
+// share theirs with the canvas, so a level narrows the next as in the form (F15 M2).
+const local = ref<unknown>(props.field.default ?? null)
+const canvas = inject(RENDERER_ANSWERS, null)
+const shared = computed(() => !!canvas && !!props.field.option_set_id)
+const trial = computed({
+  get: () => (shared.value ? (canvas!.answers.value[props.field.key] ?? null) : local.value),
+  set: value => (shared.value ? (canvas!.answers.value = { ...canvas!.answers.value, [props.field.key]: value }) : (local.value = value)),
+})
 watch(
   () => props.field.type,
   () => (trial.value = null),

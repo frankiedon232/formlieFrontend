@@ -7,6 +7,8 @@
 import type { DropdownMenuItem } from '@nuxt/ui'
 import { VueDraggable } from 'vue-draggable-plus'
 import type { FieldType } from '#shared/utils/forms/fields'
+import { allFields } from '#shared/utils/forms/build'
+import { fitAnswer } from '#shared/utils/forms/cascade'
 
 defineProps<{ issues?: Record<string, string> }>()
 /** Ask the page to show the field list (drawer on phones / tablets, palette search on laptops). */
@@ -20,6 +22,18 @@ const labelPosition = computed(() => builder.schema.value?.settings?.label_posit
 // Field icons (Form settings), shown on the canvas as respondents will see them
 provide(RENDERER_ICONS, computed(() => builder.schema.value?.settings?.field_icons !== false))
 const labelWidth = computed(() => labelColumnWidth(builder.fields.value))
+// Lists with levels behave on the canvas as in the form (owner 2026-10-07): what you try in a level
+// narrows the next, and a changed choice clears what no longer fits (nothing is stored)
+const trials = ref<Record<string, unknown>>({})
+const fieldsById = computed(() => new Map((builder.schema.value ? allFields(builder.schema.value) : []).map(field => [field.id, field])))
+provide(RENDERER_ANSWERS, { answers: trials, fieldsById })
+watchEffect(() => {
+  for (const field of fieldsById.value.values()) {
+    if (!field.option_parent || trials.value[field.key] == null) continue
+    const fitted = fitAnswer(field, fieldsById.value, trials.value)
+    if (JSON.stringify(fitted ?? null) !== JSON.stringify(trials.value[field.key] ?? null)) trials.value[field.key] = fitted ?? null
+  }
+})
 // Drop placeholder labels (CSS `content` needs a quoted string).
 const dropNewRow = computed(() => JSON.stringify(`↓ ${t('builder.drop.newRow')}`))
 const dropBeside = computed(() => JSON.stringify(`→ ${t('builder.drop.beside')}`))

@@ -2508,7 +2508,7 @@
     "language": "Dil",
     "consentLine": "Göndererek, {org} kuruluşunun yanıtlarınızı bu form için kullanabilmesini kabul etmiş olursunuz.",
     "privacyNotice": "Gizlilik bildirimi",
-    "opensAfterAbove": "Üstteki düzeyde bir şey seçilene kadar gizli kalır; sonra yalnızca altındakileri gösterir."
+    "chooseAboveFirst": "Önce {name} seçin"
   },
   "logic": {
     "crumb": "Mantık",
@@ -2807,8 +2807,8 @@
     "severalChoices": "Birden çok seçim",
     "levels": "{n} düzey",
     "openInListOption": "Seçenek Listesi’nde aç",
-    "perLevel": "Her düzey için seçin: tek seçim veya birden çok seçim.",
-    "addLevels": "{n} alan ekle"
+    "addLevels": "{n} alan ekle",
+    "perLevelRequired": "Her düzey için: zorunlu olup olmadığı ve tek seçim ya da birden çok seçim. Bir düzey yalnızca üstteki seçimin altında bir şey varsa açılır."
   },
   "designer": {
     "crumb": "Tasarım",

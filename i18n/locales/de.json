@@ -2508,7 +2508,7 @@
     "language": "Sprache",
     "consentLine": "Mit dem Absenden stimmen Sie zu, dass {org} Ihre Antworten für dieses Formular verwenden darf.",
     "privacyNotice": "Datenschutzhinweis",
-    "opensAfterAbove": "Ausgeblendet, bis in der Ebene darüber etwas ausgewählt wird; zeigt dann nur, was darunter liegt."
+    "chooseAboveFirst": "Wählen Sie zuerst {name}"
   },
   "logic": {
     "crumb": "Logik",
@@ -2807,8 +2807,8 @@
     "severalChoices": "Mehrere Auswahlmöglichkeiten",
     "levels": "{n} Ebenen",
     "openInListOption": "In Optionsliste öffnen",
-    "perLevel": "Wählen Sie für jede Ebene: Eine Auswahl oder Mehrere Auswahlmöglichkeiten.",
-    "addLevels": "{n} Felder hinzufügen"
+    "addLevels": "{n} Felder hinzufügen",
+    "perLevelRequired": "Für jede Ebene: Pflichtfeld oder nicht, und eine Auswahl oder mehrere Auswahlmöglichkeiten. Eine Ebene öffnet sich nur, wenn unter der Auswahl darüber etwas vorhanden ist."
   },
   "designer": {
     "crumb": "Design",

@@ -2508,7 +2508,7 @@
     "language": "Ngôn ngữ",
     "consentLine": "Khi gửi, bạn đồng ý để {org} có thể sử dụng câu trả lời của bạn cho biểu mẫu này.",
     "privacyNotice": "Thông báo quyền riêng tư",
-    "opensAfterAbove": "Ẩn cho đến khi chọn một mục ở cấp trên; sau đó chỉ hiển thị những mục nằm dưới nó."
+    "chooseAboveFirst": "Hãy chọn {name} trước"
   },
   "logic": {
     "crumb": "Logic",
@@ -2807,8 +2807,8 @@
     "severalChoices": "Nhiều lựa chọn",
     "levels": "{n} cấp",
     "openInListOption": "Mở trong Danh sách tùy chọn",
-    "perLevel": "Chọn cho từng cấp: một lựa chọn hoặc nhiều lựa chọn.",
-    "addLevels": "Thêm {n} trường"
+    "addLevels": "Thêm {n} trường",
+    "perLevelRequired": "Với mỗi cấp: bắt buộc hay không, và một lựa chọn hay nhiều lựa chọn. Một cấp chỉ mở khi có nội dung bên dưới lựa chọn ở trên."
   },
   "designer": {
     "crumb": "Thiết kế",

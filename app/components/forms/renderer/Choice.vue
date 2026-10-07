@@ -10,10 +10,15 @@ const { t } = useI18n()
 const control = useControlStyle()
 
 // A level of a list with levels offers only what sits under the choice above (F15 M2)
+// (the form hides a level with nothing to offer; the builder canvas keeps it, locked, saying what to choose first)
 const live = inject(RENDERER_ANSWERS, null)
+const cascading = computed(() => !!live && !!props.field.option_parent)
 const items = computed(() =>
-  (props.mode === 'live' && live && props.field.option_parent ? cascadeOptions(props.field, live.fieldsById.value, live.answers.value) : (props.field.options ?? [])).map(option => ({ value: option.value, label: option.label })),
+  (cascading.value ? cascadeOptions(props.field, live!.fieldsById.value, live!.answers.value) : (props.field.options ?? [])).map(option => ({ value: option.value, label: option.label })),
 )
+const closed = computed(() => cascading.value && !items.value.length)
+const above = computed(() => (props.field.option_parent ? live?.fieldsById.value.get(props.field.option_parent)?.label : '') || t('builder.untitled'))
+const placeholder = (fallback: string) => (closed.value ? t('renderer.chooseAboveFirst', { name: above.value }) : props.field.placeholder || fallback)
 const one = computed({
   get: () => (typeof value.value === 'string' ? value.value : undefined),
   set: next => (value.value = next),
@@ -28,7 +33,7 @@ const on = computed({
 })
 const icon = useFieldIcon(() => props.field)
 // Read-only and disabled both block changes here (Nuxt UI choice controls have no read-only state).
-const disabled = computed(() => isLocked(props.field))
+const disabled = computed(() => isLocked(props.field) || closed.value)
 </script>
 
 <template>
@@ -39,7 +44,7 @@ const disabled = computed(() => isLocked(props.field))
     v-model="one"
     :items="items"
     value-key="value"
-    :placeholder="field.placeholder || t('renderer.choose')"
+    :placeholder="placeholder(t('renderer.choose'))"
     :icon="icon"
     :disabled="disabled"
     class="w-full"
@@ -52,7 +57,7 @@ const disabled = computed(() => isLocked(props.field))
     :items="items"
     value-key="value"
     multiple
-    :placeholder="field.placeholder || t('renderer.chooseMany')"
+    :placeholder="placeholder(t('renderer.chooseMany'))"
     :icon="icon"
     :disabled="disabled"
     class="w-full"

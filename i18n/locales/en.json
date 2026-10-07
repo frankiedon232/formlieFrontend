@@ -2508,7 +2508,7 @@
     "language": "Language",
     "consentLine": "By submitting, you agree that {org} may use your answers for this form.",
     "privacyNotice": "Privacy notice",
-    "opensAfterAbove": "Hidden until something is chosen in the level above; then shows only what is under it."
+    "chooseAboveFirst": "Choose {name} first"
   },
   "logic": {
     "crumb": "Logic",
@@ -2807,8 +2807,8 @@
     "severalChoices": "Several choices",
     "levels": "{n} levels",
     "openInListOption": "Open in List Option",
-    "perLevel": "Choose for each level: one choice or several.",
-    "addLevels": "Add {n} fields"
+    "addLevels": "Add {n} fields",
+    "perLevelRequired": "For each level: required or not, and one choice or several. A level only opens when something is under the choice above."
   },
   "designer": {
     "crumb": "Design",

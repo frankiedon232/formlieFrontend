@@ -1,7 +1,7 @@
 /**
  * Lists with levels in the renderer (F15 M2): the form shares its live answers and fields so a level
  * field can offer only the options under what was chosen above (shared/utils/forms/cascade.ts).
- * Absent (builder canvas) = every option shows.
+ * The builder canvas provides its try-out answers the same way, so levels behave there as in the form.
  */
 import type { InjectionKey, Ref } from 'vue'
 import type { FormField } from '#shared/utils/forms/build'

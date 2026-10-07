@@ -2508,7 +2508,7 @@
     "language": "Lingua",
     "consentLine": "Inviando, accetti che {org} possa usare le tue risposte per questo modulo.",
     "privacyNotice": "Informativa sulla privacy",
-    "opensAfterAbove": "Nascosto finché non si sceglie qualcosa nel livello superiore; poi mostra solo ciò che si trova sotto."
+    "chooseAboveFirst": "Scegli prima {name}"
   },
   "logic": {
     "crumb": "Logica",
@@ -2807,8 +2807,8 @@
     "severalChoices": "Più scelte",
     "levels": "{n} livelli",
     "openInListOption": "Apri in Elenco opzioni",
-    "perLevel": "Scegli per ogni livello: una scelta o più scelte.",
-    "addLevels": "Aggiungi {n} campi"
+    "addLevels": "Aggiungi {n} campi",
+    "perLevelRequired": "Per ogni livello: obbligatorio o no, e una scelta o più scelte. Un livello si apre solo se c'è qualcosa sotto la scelta superiore."
   },
   "designer": {
     "crumb": "Design",

@@ -2508,7 +2508,7 @@
     "language": "Bahasa",
     "consentLine": "Dengan mengirim, Anda setuju bahwa {org} boleh menggunakan jawaban Anda untuk formulir ini.",
     "privacyNotice": "Pemberitahuan privasi",
-    "opensAfterAbove": "Tersembunyi sampai ada yang dipilih di level di atasnya; lalu hanya menampilkan yang ada di bawahnya."
+    "chooseAboveFirst": "Pilih {name} terlebih dahulu"
   },
   "logic": {
     "crumb": "Logika",
@@ -2807,8 +2807,8 @@
     "severalChoices": "Beberapa pilihan",
     "levels": "{n} tingkat",
     "openInListOption": "Buka di Daftar Opsi",
-    "perLevel": "Pilih untuk setiap level: satu pilihan atau beberapa pilihan.",
-    "addLevels": "Tambahkan {n} bidang"
+    "addLevels": "Tambahkan {n} bidang",
+    "perLevelRequired": "Untuk setiap level: wajib atau tidak, dan satu pilihan atau beberapa pilihan. Sebuah level hanya terbuka jika ada isi di bawah pilihan di atasnya."
   },
   "designer": {
     "crumb": "Desain",

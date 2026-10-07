@@ -1,4 +1,5 @@
 import { levelsOf, offeredOptions } from '#shared/utils/forms/options'
+import { cascadeChain } from '#shared/utils/forms/cascade'
 import type { InjectionKey } from 'vue'
 import { newId, keyFromLabel, fieldKey, allFields, type FormField, type FormPage } from '#shared/utils/forms/build'
 import type { OptionList, SavedField } from '#shared/types/forms'
@@ -116,7 +117,7 @@ export function useFormBuilder() {
    * narrows the next. `type` = dropdown (one choice) or multi_select (several) for every level.
    */
   /** One field per level; `type` may differ per level (one choice here, several there, owner 2026-10-07). */
-  function createListFields(list: OptionList, type: FieldType | FieldType[] = 'dropdown'): FormField[] {
+  function createListFields(list: OptionList, type: FieldType | FieldType[] = 'dropdown', required: boolean[] = []): FormField[] {
     const levels = levelsOf(list)
     const typeAt = (index: number) => (Array.isArray(type) ? (type[index] ?? 'dropdown') : type)
     if (!levels) return [createFromList(list, typeAt(0))]
@@ -130,6 +131,7 @@ export function useFormBuilder() {
       field.options = offeredOptions(toRaw(list), index)
       field.option_set_id = list.id
       field.option_level = index
+      if (required[index]) field.required = true
       if (index > 0) field.option_parent = fields[index - 1]!.id
       fields.push(field)
     })
@@ -206,11 +208,47 @@ export function useFormBuilder() {
     }
   }
 
+  /** A level of a list with levels never goes alone (owner 2026-10-07): the ids grown to whole chains, top first. */
+  function withChains(ids: string[]): string[] {
+    if (!schema.value) return ids
+    const fields = allFields(schema.value)
+    const out: string[] = []
+    for (const id of ids) {
+      const field = fields.find(item => item.id === id)
+      const linked = field && (field.option_parent || fields.some(item => item.option_parent === field.id))
+      for (const item of linked ? cascadeChain(field, fields) : [{ id }]) if (!out.includes(item.id)) out.push(item.id)
+    }
+    return out
+  }
+  /** Copies a whole chain into a new row, the copies linked to each other. */
+  function duplicateChain(chain: FormField[]): string[] {
+    const first = findField(chain[0]!.id)
+    if (!first) return []
+    const ids = new Map(chain.map(field => [field.id, newId('fld')]))
+    const copies = chain.map(field => ({
+      ...structuredClone(toRaw(field)),
+      id: ids.get(field.id)!,
+      key: newKey(field.label || field.type),
+      ...(field.option_parent ? { option_parent: ids.get(field.option_parent) ?? field.option_parent } : {}),
+    }))
+    const last = findField(chain.at(-1)!.id) ?? first
+    last.page.rows.splice(last.rowIndex + 1, 0, { id: newId('row'), fields: copies })
+    return copies.map(copy => copy.id)
+  }
+
   function duplicate(ids = selected.value) {
     if (!ids.length) return
     history.record()
     const copies: string[] = []
+    const done = new Set<string>()
     for (const id of ids) {
+      if (done.has(id)) continue
+      const chain = withChains([id])
+      if (chain.length > 1) {
+        chain.forEach(item => done.add(item))
+        copies.push(...duplicateChain(chain.map(item => findField(item)!.field)))
+        continue
+      }
       const found = findField(id)
       if (!found) continue
       const copyId = newId('fld')
@@ -227,7 +265,7 @@ export function useFormBuilder() {
 
   /** Removes fields; resolves the undo step so the caller can offer "Undo" in a toast. */
   function remove(ids = selected.value): number {
-    const targets = ids.filter(id => findField(id))
+    const targets = withChains(ids).filter(id => findField(id))
     if (!targets.length) return 0
     history.record()
     for (const id of targets) {
