@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { brandingSchema, companySchema, isTimeZone, localisationSchema } from '../../shared/utils/settings/schemas'
+import { brandingSchema, companySchema, isTimeZone, localisationSchema, securitySchema, signinSchema } from '../../shared/utils/settings/schemas'
 
 const company = {
   legal_name: 'Northwind Trading Ltd.',
@@ -62,5 +62,45 @@ describe('language and region', () => {
   it('refuse an unknown currency or time zone', () => {
     expect(localisationSchema.safeParse({ ...localisation, currency: 'XYZ' }).success).toBe(false)
     expect(localisationSchema.safeParse({ ...localisation, timezone: 'Nowhere/Town' }).success).toBe(false)
+  })
+})
+
+describe('sign-in settings', () => {
+  const signin = { methods: ['google', 'password'], code: { sms: true, expiry_minutes: 10, max_attempts: 5 }, allowed_domains: [' @Example.com ', 'example.com', 'Branch.Example.co.uk'] }
+
+  it('keep the sign-in page order and tidy the domains', () => {
+    const result = signinSchema.parse(signin)
+    expect(result.methods).toEqual(['password', 'google'])
+    expect(result.allowed_domains).toEqual(['example.com', 'branch.example.co.uk'])
+  })
+
+  it('need one way to sign in, known code rules and real domains', () => {
+    const result = signinSchema.safeParse({ ...signin, methods: [], code: { ...signin.code, expiry_minutes: 7 }, allowed_domains: ['not a domain'] })
+    expect(result.success).toBe(false)
+    const fields = (result.error?.issues ?? []).map(issue => issue.path.join('.'))
+    expect(fields).toEqual(expect.arrayContaining(['methods', 'code.expiry_minutes', 'allowed_domains.0']))
+  })
+})
+
+describe('security settings', () => {
+  const security = {
+    password: { min_length: 12, lower: true, upper: true, number: true, symbol: false, reuse_last: 5, expiry_days: 0 },
+    sessions: { idle_minutes: 60, max_hours: 168 },
+    ip_allowlist: { enabled: true, entries: [{ value: '203.0.113.0/24', label: 'Head office' }, { value: ' ', label: null }, { value: '2001:db8::/32', label: '' }] },
+  }
+
+  it('drop blank address rows and accept IPv4 and IPv6 ranges', () => {
+    const result = securitySchema.parse(security)
+    expect(result.ip_allowlist.entries).toEqual([
+      { value: '203.0.113.0/24', label: 'Head office' },
+      { value: '2001:db8::/32', label: null },
+    ])
+  })
+
+  it('refuse bad addresses, an empty list that is on, and unknown session lengths', () => {
+    expect(securitySchema.safeParse({ ...security, ip_allowlist: { enabled: true, entries: [] } }).error?.issues[0]?.message).toBe('ip_empty')
+    expect(securitySchema.safeParse({ ...security, ip_allowlist: { enabled: false, entries: [{ value: '300.1.1.1', label: null }] } }).success).toBe(false)
+    expect(securitySchema.safeParse({ ...security, sessions: { idle_minutes: 61, max_hours: 168 } }).success).toBe(false)
+    expect(securitySchema.safeParse({ ...security, password: { ...security.password, min_length: 6 } }).success).toBe(false)
   })
 })

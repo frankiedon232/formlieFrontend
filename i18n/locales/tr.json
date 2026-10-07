@@ -602,7 +602,12 @@
     "FRM-API-1019": "Bu form API hizmetine açık değil. Paylaş ayarlarından API’yi açın.",
     "FRM-API-1020": "Bu Formalie-Key daha önce farklı bir istek için kullanıldı. Her yeni kayıt için yeni bir anahtar gönderin.",
     "FRM-ORG-1001": "Bu ada sahip bir kayıt zaten var.",
-    "FRM-ORG-1002": "Formlar hâlâ bunu kullanıyor. Arşivleyin ya da başka bir kayıtla birleştirin."
+    "FRM-ORG-1002": "Formlar hâlâ bunu kullanıyor. Arşivleyin ya da başka bir kayıtla birleştirin.",
+    "FRM-AUTH-1014": "Bu e-posta adresi bu çalışma alanında oturum açamaz.",
+    "FRM-AUTH-1015": "Parolanızın süresi doldu. Yeni bir parola belirleyin.",
+    "FRM-AUTH-1016": "Bu ağdan oturum açmaya izin verilmiyor.",
+    "FRM-AUTH-1017": "Bu değişiklik sizi dışarıda bırakır. Kendi e-posta alan adınızı ve adresinizi kontrol edin.",
+    "FRM-AUTH-1018": "Bu parolayı yakın zamanda kullandınız. Başka bir parola seçin."
   },
   "errorUi": {
     "reference": "Referans: {id}",
@@ -715,7 +720,8 @@
       "passwordPolicy": "Büyük ve küçük harf ile rakam içeren en az {min} karakter kullanın.",
       "companyName": "Şirket adınızı girin.",
       "subdomain": "3–63 küçük harf, rakam veya tire kullanın.",
-      "passwordMatch": "Şifreler eşleşmiyor."
+      "passwordMatch": "Şifreler eşleşmiyor.",
+      "passwordRules": "En az {min} karakter ve aşağıda işaretlenen her şeyi kullanın."
     },
     "login": {
       "title": "Giriş yap",
@@ -762,7 +768,8 @@
         "lower": "Küçük harf",
         "upper": "Büyük harf",
         "number": "Rakam",
-        "symbol": "Sembol (isteğe bağlı)"
+        "symbol": "Sembol (isteğe bağlı)",
+        "symbolRequired": "Simge"
       }
     },
     "providers": {
@@ -809,7 +816,9 @@
       "desc": "E-postanızı girin, yeni şifre belirlemeniz için bir kod gönderelim.",
       "back": "Girişe dön",
       "send": "Kod gönder",
-      "save": "Yeni şifreyi kaydet"
+      "save": "Yeni şifreyi kaydet",
+      "expired": "Parolanızın süresi doldu",
+      "expiredDesc": "Çalışma alanınız zaman zaman yeni bir parola ister. Bir kod alın ve yeni bir parola seçin."
     },
     "welcome": {
       "title": "Çalışma alanınız hazırlanıyor",
@@ -6328,7 +6337,11 @@
       "details": "{total} ayrıntıdan {n} tanesi dolduruldu",
       "set": "{total} içinden {n} tanesi ayarlandı",
       "themes": "{n} tema | {n} tema",
-      "pages": "{n} sayfa tasarımı | {n} sayfa tasarımı"
+      "pages": "{n} sayfa tasarımı | {n} sayfa tasarımı",
+      "signin": "{n} oturum açma yöntemi | {n} oturum açma yöntemi",
+      "idleMinutes": "{n} dk işlem yapılmazsa oturum kapatılır",
+      "idleHours": "{n} saat işlem yapılmazsa oturum kapatılır | {n} saat işlem yapılmazsa oturum kapatılır",
+      "allowlist": "IP izin listesi açık"
     },
     "next": {
       "title": "Sonraki adım",
@@ -6352,7 +6365,11 @@
       "color": "#2563EB gibi bir renk kullanın.",
       "timezone": "Listeden bir saat dilimi seçin.",
       "currency": "Listeden bir para birimi seçin.",
-      "form_languages": "Formlar için en az bir dil bırakın."
+      "form_languages": "Formlar için en az bir dil bırakın.",
+      "methods": "En az bir oturum açma yöntemini açık tutun.",
+      "domain": "example.com gibi bir alan adı girin.",
+      "ip": "203.0.113.0/24 gibi bir adres veya aralık girin.",
+      "ip_empty": "En az bir adres ekleyin veya izin listesini kapatın."
     },
     "company": {
       "names": "Adlar",
@@ -6578,6 +6595,120 @@
         "imported": "{n} eklendi | {n} eklendi",
         "skipped": "{n} atlandı (zaten var veya çok uzun) | {n} atlandı (zaten var veya çok uzun)"
       }
+    },
+    "signin": {
+      "methods": "Oturum açma yöntemleri",
+      "methodsHint": "Oturum açma sayfanızda yalnızca bunlar görünür. En az biri açık kalır.",
+      "password": "E-posta ve parola",
+      "passwordHint": "Kişiler iş e-postaları ve bir parolayla, ardından bir kodla oturum açar.",
+      "providerHint": "Kişiler {name} hesaplarıyla, ardından bir kodla oturum açar.",
+      "onlyOne": "Yalnızca biri kaldı",
+      "providersNote": "Sağlayıcı kişiyi bu çalışma alanındaki e-posta adresiyle tanımalıdır.",
+      "passwordOffTitle": "E-posta ve parola kapatılsın mı?",
+      "passwordOffDesc": "Bu durumda kişiler yalnızca açık kalan sağlayıcılarla oturum açabilir. Bu hesaplardan birine sahip olmayanlar artık oturum açamaz.",
+      "passwordOff": "Kapat",
+      "codes": "Oturum açma kodları",
+      "codesHint": "Gerçekten kendileri olduğunu kanıtlayan tek kullanımlık kod.",
+      "always": "Her oturum açma bir kod ister",
+      "alwaysHint": "İki adımlı oturum açma herkes için açık, bu yüzden çalınan bir parola yeterli olmaz.",
+      "alwaysOn": "Her zaman açık",
+      "email": "E-posta",
+      "emailHint": "Her zaman sunulur, kişilerin oturum açtığı adrese.",
+      "sms": "SMS",
+      "smsHint": "Hesabında cep telefonu numarası olan kişilere sunulur.",
+      "app": "Kimlik doğrulama uygulaması",
+      "appHint": "Telefonlarındaki bir uygulamadan gelen kodlar.",
+      "expiry": "Bir kod şu kadar geçerlidir",
+      "expiryHint": "Sonrasında kişiler yeni bir kod ister.",
+      "attempts": "İzin verilen hatalı deneme",
+      "attemptsHint": "Sonrasında kod çalışmayı durdurur.",
+      "minutes": "{n} dakika | {n} dakika",
+      "tries": "{n} deneme | {n} deneme",
+      "domains": "İzin verilen e-posta alan adları",
+      "domainsHint": "Yalnızca bu alan adlarında e-posta adresi olan kişiler oturum açabilir veya davet edilebilir.",
+      "domainsLabel": "Alan adları",
+      "domainPlaceholder": "example.com, ardından Enter",
+      "anyDomain": "Her e-posta adresi oturum açabilir.",
+      "badDomain": "Alan adı değil: {list}",
+      "ownMissing": "Kendi alan adınız {domain} listede yok",
+      "ownMissingDesc": "Tekrar oturum açamazsınız, bu yüzden listeye eklenene kadar kaydetme reddedilir.",
+      "addOwn": "{domain} ekle",
+      "sumMethods": "Oturum açma sayfanızda {n} oturum açma yöntemi | Oturum açma sayfanızda {n} oturum açma yöntemi",
+      "sumCode": "Kodlar {minutes} dk geçerli, {tries} hatalı deneme",
+      "sumDomains": "Yalnızca {list}"
+    },
+    "security": {
+      "signins": "Oturum açmalar, son 14 gün",
+      "openAudit": "Denetim kaydı",
+      "stat": {
+        "failed": "Başarısız",
+        "blocked": "Engellendi",
+        "locked": "Kodlar kilitlendi"
+      },
+      "recent": "Son oturum açma denemeleri",
+      "onlyProblems": "Yalnızca sorunlar",
+      "noRecent": "Son 14 günde oturum açma denemesi yok",
+      "activityFailed": "Oturum açma etkinliği yüklenemedi",
+      "password": "Parola kuralları",
+      "passwordHint": "Yeni bir parolanın neye ihtiyacı olduğu. Biri bir sonraki sefer parola belirlediğinde geçerli olur.",
+      "minLength": "En az",
+      "mustHave": "İçermeli",
+      "kind": {
+        "lower": "Küçük harf",
+        "upper": "Büyük harf",
+        "number": "Rakam",
+        "symbol": "Simge"
+      },
+      "weakRules": "Bu kurallar zayıf parolalara izin veriyor. En az 10 karakter veya daha fazla karakter türü isteyin.",
+      "reuse": "Yeniden kullanım yok",
+      "reuseHint": "Yakın zamanda kullanılan parolaları reddet.",
+      "reuseOff": "Yeniden kullanıma izin ver",
+      "reuseLast": "Son {n} olmasın",
+      "expiry": "Yeni parola iste",
+      "expiryHint": "Kişiler bir sonraki oturum açışlarında yeni bir parola belirler.",
+      "never": "Asla",
+      "days": "{n} gün | {n} gün",
+      "hours": "{n} saat | {n} saat",
+      "try": "Bir parola dene",
+      "tryHint": "Bu kurallara göre nasıl denetlendiğini görmek için bir parola yazın. Kaydedilmez.",
+      "sessions": "Oturumlar",
+      "sessionsHint": "Kişilerin ne kadar süre oturum açık kaldığı ve şu an kimlerin açık olduğu.",
+      "idle": "Şu süre işlem yapılmazsa oturumu kapat",
+      "idleHint": "Yaptıkları son işlemden itibaren sayılır.",
+      "max": "En geç şu süre sonra oturumu kapat",
+      "maxHint": "Çalışmaya devam etseler bile.",
+      "idleShort": "1 saatten kısa",
+      "idleShortDesc": "Kişiler form oluşturucuda kaydedilmemiş işlerini kaybedebilir. 1 saat veya daha fazlası önerilir.",
+      "active": "{n} kişi şu an oturum açık | {n} kişi şu an oturum açık",
+      "allTitle": "Diğer herkesin oturumu kapatılsın mı?",
+      "allDesc": "{n} oturum hemen sona erer. Bu kişi bir sonraki sefer yeniden oturum açar. | {n} oturum hemen sona erer. Bu kişiler bir sonraki sefer yeniden oturum açar.",
+      "allConfirm": "Diğer herkesin oturumunu kapat",
+      "signedOut": "{n} oturum sonlandırıldı | {n} oturum sonlandırıldı",
+      "signOutOne": "{name} oturumunu kapat",
+      "thisDevice": "Siz",
+      "since": "Oturum açıldı: {when}",
+      "unknownDevice": "Bilinmeyen cihaz",
+      "sessionsFailed": "Oturumlar yüklenemedi",
+      "network": "İzin verilen ağlar",
+      "networkHint": "Oturum açmayı ve portal kullanımını ofislerinizle veya VPN ile sınırlayın.",
+      "allowlist": "IP izin listesi",
+      "allowlistHint": "Açıkken kişiler yalnızca aşağıdaki adreslerden oturum açabilir ve çalışabilir.",
+      "myIp": "Adresiniz",
+      "onList": "Listede",
+      "notOnList": "Listede değil",
+      "addMine": "Adresimi ekle",
+      "mine": "Adresim",
+      "address": "Adres veya aralık",
+      "label": "Etiket",
+      "ipPlaceholder": "ör. 203.0.113.0/24",
+      "labelPlaceholder": "ör. Genel merkez",
+      "removeIp": "Adresi kaldır",
+      "noIps": "Henüz adres yok",
+      "noIpsDesc": "Ofislerinizin veya VPN'inizin adreslerini ya da kendi adresinizi ekleyin.",
+      "addIp": "Adres ekle",
+      "ipExamples": "Tek bir adres (198.51.100.7) veya bir aralık (203.0.113.0/24, 2001:db8::/32).",
+      "lockout": "Kendinizi dışarıda bırakırsınız",
+      "lockoutDesc": "Kendi adresiniz listede yok, bu yüzden kaydetme reddedilir. Önce onu ekleyin."
     }
   }
 }

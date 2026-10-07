@@ -34,6 +34,10 @@ export interface MockUser {
   phone: string | null
   disabled: boolean
   role: WorkspaceRole
+  /** When the password was last set (Settings → Security: expiry); unknown for the sample accounts. */
+  password_changed_at?: string
+  /** Hashes of earlier passwords, newest first (Settings → Security: no reuse). */
+  password_history?: string[]
 }
 
 export const MOCK_TENANTS: MockTenant[] = [

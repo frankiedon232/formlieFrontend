@@ -30,6 +30,11 @@ Format: `FRM-<DOMAIN>-<NNNN>`. Ranges: 1000–1999 client/validation, 5000–599
 | FRM-AUTH-1011 | 401  | Session revoked.                                                  | INFO     |
 | FRM-AUTH-1012 | 401  | Session ended for security reasons. (refresh reuse)               | CRITICAL |
 | FRM-AUTH-1013 | 422  | That password is not right. (confirming before a secret is shown) | WARNING  |
+| FRM-AUTH-1014 | 403  | This email address can't sign in to this workspace. (allowed domains) | NOTICE   |
+| FRM-AUTH-1015 | 403  | Your password has expired. Set a new one. (sign-in opens the reset) | NOTICE   |
+| FRM-AUTH-1016 | 403  | Sign-in isn't allowed from this network. (IP allowlist, sign-in and every request) | WARNING  |
+| FRM-AUTH-1017 | 409  | This change would lock you out. (`own_domain` / `own_ip`)        | INFO     |
+| FRM-AUTH-1018 | 422  | You used this password recently. Choose another one.             | INFO     |
 | FRM-PERM-1001 | 403  | You don't have access to this.                                    | WARNING  |
 | FRM-TEN-1001  | 404  | Workspace not found.                                              | INFO     |
 | FRM-TEN-1002  | 403  | Workspace suspended.                                              | WARNING  |

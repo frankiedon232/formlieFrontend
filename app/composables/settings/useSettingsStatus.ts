@@ -41,6 +41,15 @@ export function useSettingsStatus(settings: Ref<WorkspaceSettings | null>) {
       const name = APP_LOCALES.find(item => item.code === s.localisation.language)?.name ?? s.localisation.language
       return { text: `${name} · ${s.localisation.timezone} · ${s.localisation.currency}`, tone: languageChecked.value ? 'done' : 'partial' }
     }
+    if (key === 'signin') {
+      const ways = s.signin.methods.length
+      return { text: t('settings.status.signin', { n: ways }, ways) + (s.signin.allowed_domains.length ? ` · ${s.signin.allowed_domains.join(', ')}` : ''), tone: 'info' }
+    }
+    if (key === 'security') {
+      const idle = s.security.sessions.idle_minutes
+      const text = idle < 60 ? t('settings.status.idleMinutes', { n: idle }) : t('settings.status.idleHours', { n: idle / 60 }, idle / 60)
+      return { text: s.security.ip_allowlist.enabled ? `${text} · ${t('settings.status.allowlist')}` : text, tone: 'info' }
+    }
     if (key === 'themes' && counts.value) return { text: t('settings.status.themes', { n: counts.value.themes.total }, counts.value.themes.total), tone: 'info' }
     if (key === 'landingPages' && counts.value) return { text: t('settings.status.pages', { n: counts.value.pages.total }, counts.value.pages.total), tone: 'info' }
     return null

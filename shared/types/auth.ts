@@ -22,7 +22,18 @@ export interface TenantPublicProfile {
   /** The organisation's own website (public form pages link to it); null on manage.*. */
   website?: string | null
   auth_providers: AuthProvider[]
+  /** The workspace's password rules, for new passwords (reset); absent = the default. */
+  password_policy?: PasswordPolicy
   status: TenantStatus
+}
+
+/** A workspace's password rules (Settings → Security; manage.* uses the default). */
+export interface PasswordPolicy {
+  min_length: number
+  lower: boolean
+  upper: boolean
+  number: boolean
+  symbol: boolean
 }
 
 export interface LoginChallenge {

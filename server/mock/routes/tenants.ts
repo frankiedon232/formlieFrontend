@@ -33,7 +33,7 @@ export const publicProfile = defineMockRoute(({ event }) => {
   }
   if (!tenant) throw new MockError('FRM-TEN-1001')
   // The workspace's own name and branding from Settings (F14)
-  const { company, branding } = settingsOf(tenant)
+  const { company, branding, signin, security } = settingsOf(tenant)
   return ok<TenantPublicProfile>({
     mode: 'tenant',
     name: company.display_name || tenant.name,
@@ -45,7 +45,8 @@ export const publicProfile = defineMockRoute(({ event }) => {
     signin_message: branding.signin_message,
     colors: { primary: branding.brand_color },
     website: websiteOf(tenant),
-    auth_providers: tenant.auth_providers,
+    auth_providers: signin.methods,
+    password_policy: { min_length: security.password.min_length, lower: security.password.lower, upper: security.password.upper, number: security.password.number, symbol: security.password.symbol },
     status: tenant.status,
   })
 })

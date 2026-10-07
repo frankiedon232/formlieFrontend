@@ -19,3 +19,21 @@ describe('password policy', () => {
     expect(checkPassword('x').find(c => c.key === 'symbol')?.required).toBe(false)
   })
 })
+
+describe('workspace password rules', () => {
+  const strict = { min_length: 14, lower: true, upper: true, number: true, symbol: true }
+  const relaxed = { min_length: 8, lower: true, upper: false, number: false, symbol: false }
+
+  it('follow the workspace rules', () => {
+    expect(meetsPasswordPolicy('Abcdefghij1', strict)).toBe(false)
+    expect(meetsPasswordPolicy('Abcdefghijkl1!', strict)).toBe(true)
+    expect(meetsPasswordPolicy('lowercase', relaxed)).toBe(true)
+    expect(checkPassword('Abcdefghijkl1', strict).find(check => check.key === 'symbol')).toMatchObject({ required: true, passed: false })
+  })
+
+  it('score against the same rules', () => {
+    expect(passwordScore('Abcdefghijkl1', strict)).toBe(1)
+    expect(passwordScore('Abcdefghijklm1', strict)).toBe(2)
+    expect(passwordScore('Abcdefghijkl1!', strict)).toBe(4)
+  })
+})

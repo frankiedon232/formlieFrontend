@@ -602,7 +602,12 @@
     "FRM-API-1019": "Ce formulaire n’est pas ouvert au service d’API. Activez l’API dans ses paramètres de Partage.",
     "FRM-API-1020": "Cette Formalie-Key a déjà été utilisée pour une autre requête. Envoyez une nouvelle clé pour chaque nouvel enregistrement.",
     "FRM-ORG-1001": "Une entrée portant ce nom existe déjà.",
-    "FRM-ORG-1002": "Des formulaires l'utilisent encore. Archivez-le ou fusionnez-le avec un autre."
+    "FRM-ORG-1002": "Des formulaires l'utilisent encore. Archivez-le ou fusionnez-le avec un autre.",
+    "FRM-AUTH-1014": "Cette adresse e-mail ne peut pas se connecter à cet espace de travail.",
+    "FRM-AUTH-1015": "Votre mot de passe a expiré. Définissez-en un nouveau.",
+    "FRM-AUTH-1016": "La connexion n'est pas autorisée depuis ce réseau.",
+    "FRM-AUTH-1017": "Ce changement vous bloquerait l'accès. Vérifiez votre propre domaine et adresse e-mail.",
+    "FRM-AUTH-1018": "Vous avez utilisé ce mot de passe récemment. Choisissez-en un autre."
   },
   "errorUi": {
     "reference": "Référence : {id}",
@@ -715,7 +720,8 @@
       "passwordPolicy": "Au moins {min} caractères, avec majuscules, minuscules et un chiffre.",
       "companyName": "Saisissez le nom de votre entreprise.",
       "subdomain": "3 à 63 lettres minuscules, chiffres ou tirets.",
-      "passwordMatch": "Les mots de passe ne correspondent pas."
+      "passwordMatch": "Les mots de passe ne correspondent pas.",
+      "passwordRules": "Utilisez au moins {min} caractères et tout ce qui est coché ci-dessous."
     },
     "login": {
       "title": "Se connecter",
@@ -762,7 +768,8 @@
         "lower": "Une minuscule",
         "upper": "Une majuscule",
         "number": "Un chiffre",
-        "symbol": "Un symbole (facultatif)"
+        "symbol": "Un symbole (facultatif)",
+        "symbolRequired": "Symbole"
       }
     },
     "providers": {
@@ -809,7 +816,9 @@
       "desc": "Saisissez votre e-mail, nous vous enverrons un code pour choisir un nouveau mot de passe.",
       "back": "Retour à la connexion",
       "send": "Envoyer le code",
-      "save": "Enregistrer le mot de passe"
+      "save": "Enregistrer le mot de passe",
+      "expired": "Votre mot de passe a expiré",
+      "expiredDesc": "Votre espace de travail demande un nouveau mot de passe de temps en temps. Recevez un code et choisissez-en un nouveau."
     },
     "welcome": {
       "title": "Préparation de votre espace",
@@ -6328,7 +6337,11 @@
       "details": "{n} détails sur {total} renseignés",
       "set": "{n} sur {total} définis",
       "themes": "{n} thème | {n} thèmes",
-      "pages": "{n} design de page | {n} designs de page"
+      "pages": "{n} design de page | {n} designs de page",
+      "signin": "{n} moyen de connexion | {n} moyens de connexion",
+      "idleMinutes": "Déconnexion après {n} min d'inactivité",
+      "idleHours": "Déconnexion après {n} heure d'inactivité | Déconnexion après {n} heures d'inactivité",
+      "allowlist": "Liste d'autorisation IP activée"
     },
     "next": {
       "title": "Étape suivante",
@@ -6352,7 +6365,11 @@
       "color": "Utilisez une couleur comme #2563EB.",
       "timezone": "Choisissez un fuseau horaire dans la liste.",
       "currency": "Choisissez une devise dans la liste.",
-      "form_languages": "Gardez au moins une langue pour les formulaires."
+      "form_languages": "Gardez au moins une langue pour les formulaires.",
+      "methods": "Gardez au moins un moyen de vous connecter.",
+      "domain": "Saisissez un domaine tel que example.com.",
+      "ip": "Saisissez une adresse ou une plage telle que 203.0.113.0/24.",
+      "ip_empty": "Ajoutez au moins une adresse ou désactivez la liste d'autorisation."
     },
     "company": {
       "names": "Noms",
@@ -6578,6 +6595,120 @@
         "imported": "{n} ajouté | {n} ajoutés",
         "skipped": "{n} ignoré (déjà présent ou trop long) | {n} ignorés (déjà présents ou trop longs)"
       }
+    },
+    "signin": {
+      "methods": "Moyens de connexion",
+      "methodsHint": "Seuls ceux-ci apparaissent sur votre page de connexion. Au moins un reste activé.",
+      "password": "E-mail et mot de passe",
+      "passwordHint": "Les personnes se connectent avec leur e-mail professionnel et un mot de passe, puis un code.",
+      "providerHint": "Les personnes se connectent avec leur compte {name}, puis un code.",
+      "onlyOne": "Plus qu'un seul",
+      "providersNote": "Le fournisseur doit connaître la personne par la même adresse e-mail que dans cet espace de travail.",
+      "passwordOffTitle": "Désactiver l'e-mail et le mot de passe ?",
+      "passwordOffDesc": "Les personnes pourront alors se connecter uniquement avec les fournisseurs qui restent activés. Celles qui n'ont aucun de ces comptes ne pourront plus se connecter.",
+      "passwordOff": "Désactiver",
+      "codes": "Codes de connexion",
+      "codesHint": "Le code à usage unique qui prouve que c'est bien la bonne personne.",
+      "always": "Chaque connexion demande un code",
+      "alwaysHint": "La connexion en deux étapes est activée pour tout le monde, un mot de passe volé ne suffit donc pas.",
+      "alwaysOn": "Toujours activé",
+      "email": "E-mail",
+      "emailHint": "Toujours proposé, à l'adresse avec laquelle les personnes se connectent.",
+      "sms": "SMS",
+      "smsHint": "Proposé aux personnes dont le compte contient un numéro de mobile.",
+      "app": "Application d'authentification",
+      "appHint": "Des codes générés par une application sur leur téléphone.",
+      "expiry": "Un code dure",
+      "expiryHint": "Ensuite, les personnes en demandent un nouveau.",
+      "attempts": "Essais erronés autorisés",
+      "attemptsHint": "Ensuite, le code ne fonctionne plus.",
+      "minutes": "{n} minute | {n} minutes",
+      "tries": "{n} essai | {n} essais",
+      "domains": "Domaines e-mail autorisés",
+      "domainsHint": "Seules les personnes ayant une adresse e-mail sur ces domaines peuvent se connecter ou être invitées.",
+      "domainsLabel": "Domaines",
+      "domainPlaceholder": "example.com, puis Entrée",
+      "anyDomain": "N'importe quelle adresse e-mail peut se connecter.",
+      "badDomain": "Ce n'est pas un domaine : {list}",
+      "ownMissing": "Votre propre domaine {domain} n'est pas dans la liste",
+      "ownMissingDesc": "Vous ne pourriez plus vous reconnecter, l'enregistrement est donc refusé tant qu'il n'y est pas.",
+      "addOwn": "Ajouter {domain}",
+      "sumMethods": "{n} moyen de connexion sur votre page de connexion | {n} moyens de connexion sur votre page de connexion",
+      "sumCode": "Les codes durent {minutes} min, {tries} essais erronés",
+      "sumDomains": "Uniquement {list}"
+    },
+    "security": {
+      "signins": "Connexions, 14 derniers jours",
+      "openAudit": "Journal d'audit",
+      "stat": {
+        "failed": "Échecs",
+        "blocked": "Bloquées",
+        "locked": "Codes verrouillés"
+      },
+      "recent": "Dernières tentatives de connexion",
+      "onlyProblems": "Problèmes uniquement",
+      "noRecent": "Aucune tentative de connexion au cours des 14 derniers jours",
+      "activityFailed": "Impossible de charger l'activité de connexion",
+      "password": "Règles de mot de passe",
+      "passwordHint": "Ce dont un nouveau mot de passe a besoin. S'applique la prochaine fois que quelqu'un en définit un.",
+      "minLength": "Au moins",
+      "mustHave": "Doit contenir",
+      "kind": {
+        "lower": "Minuscule",
+        "upper": "Majuscule",
+        "number": "Chiffre",
+        "symbol": "Symbole"
+      },
+      "weakRules": "Ces règles autorisent des mots de passe faibles. Exigez au moins 10 caractères ou davantage de types de caractères.",
+      "reuse": "Pas de réutilisation",
+      "reuseHint": "Refuser les mots de passe utilisés récemment.",
+      "reuseOff": "Autoriser la réutilisation",
+      "reuseLast": "Pas les {n} derniers",
+      "expiry": "Demander un nouveau mot de passe",
+      "expiryHint": "Les personnes en définissent un nouveau à leur prochaine connexion.",
+      "never": "Jamais",
+      "days": "{n} jour | {n} jours",
+      "hours": "{n} heure | {n} heures",
+      "try": "Essayer un mot de passe",
+      "tryHint": "Saisissez-en un pour le voir vérifié selon ces règles. Il n'est pas enregistré.",
+      "sessions": "Sessions",
+      "sessionsHint": "Combien de temps les personnes restent connectées, et qui est connecté en ce moment.",
+      "idle": "Déconnecter après une inactivité de",
+      "idleHint": "Compte à partir de la dernière action.",
+      "max": "Déconnecter au plus tard après",
+      "maxHint": "Même lorsqu'elles continuent à travailler.",
+      "idleShort": "Moins d'1 heure",
+      "idleShortDesc": "Les personnes peuvent perdre un travail non enregistré dans le générateur de formulaires. 1 heure ou plus est recommandé.",
+      "active": "{n} connecté en ce moment | {n} connectés en ce moment",
+      "allTitle": "Déconnecter tous les autres ?",
+      "allDesc": "{n} session se termine immédiatement. Ces personnes se reconnecteront la prochaine fois. | {n} sessions se terminent immédiatement. Ces personnes se reconnecteront la prochaine fois.",
+      "allConfirm": "Déconnecter tous les autres",
+      "signedOut": "{n} session terminée | {n} sessions terminées",
+      "signOutOne": "Déconnecter {name}",
+      "thisDevice": "Vous",
+      "since": "Connecté {when}",
+      "unknownDevice": "Appareil inconnu",
+      "sessionsFailed": "Impossible de charger les sessions",
+      "network": "Réseaux autorisés",
+      "networkHint": "Limitez la connexion et l'utilisation du portail à vos bureaux ou à votre VPN.",
+      "allowlist": "Liste d'autorisation IP",
+      "allowlistHint": "Si activée, les personnes ne peuvent se connecter et travailler que depuis les adresses ci-dessous.",
+      "myIp": "Votre adresse",
+      "onList": "Dans la liste",
+      "notOnList": "Pas dans la liste",
+      "addMine": "Ajouter mon adresse",
+      "mine": "Mon adresse",
+      "address": "Adresse ou plage",
+      "label": "Libellé",
+      "ipPlaceholder": "p. ex. 203.0.113.0/24",
+      "labelPlaceholder": "p. ex. Siège",
+      "removeIp": "Supprimer l'adresse",
+      "noIps": "Aucune adresse pour l'instant",
+      "noIpsDesc": "Ajoutez les adresses de vos bureaux ou de votre VPN, ou la vôtre.",
+      "addIp": "Ajouter une adresse",
+      "ipExamples": "Une adresse (198.51.100.7) ou une plage (203.0.113.0/24, 2001:db8::/32).",
+      "lockout": "Vous vous bloqueriez l'accès",
+      "lockoutDesc": "Votre propre adresse n'est pas dans la liste, l'enregistrement est donc refusé. Ajoutez-la d'abord."
     }
   }
 }

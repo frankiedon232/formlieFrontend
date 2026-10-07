@@ -288,6 +288,12 @@ const router = createRouter()
   .get('/settings/localisation', settings.getLocalisation)
   // The exact address wins over /settings/:section in the router, so saving it needs its own line
   .patch('/settings/localisation', settings.patchSection)
+  // Like localisation: the deeper security addresses shadow /settings/:section for "security"
+  .get('/settings/security', settings.getSection)
+  .patch('/settings/security', settings.patchSection)
+  .get('/settings/security/sessions', settings.listSessions)
+  .post('/settings/security/sessions/sign-out', settings.signOutSessions)
+  .get('/settings/security/activity', settings.securityActivity)
   .get('/settings/:section', settings.getSection)
   .patch('/settings/:section', settings.patchSection)
   .get('/onboarding', onboarding.getOnboarding)

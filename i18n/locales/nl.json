@@ -602,7 +602,12 @@
     "FRM-API-1019": "Dit formulier staat niet open voor de API-service. Zet de API aan in de instellingen van Delen.",
     "FRM-API-1020": "Deze Formalie-Key is al gebruikt voor een ander verzoek. Stuur voor elk nieuw record een nieuwe key mee.",
     "FRM-ORG-1001": "Er bestaat al een item met deze naam.",
-    "FRM-ORG-1002": "Er zijn nog formulieren die het gebruiken. Archiveer het of voeg het samen met een ander."
+    "FRM-ORG-1002": "Er zijn nog formulieren die het gebruiken. Archiveer het of voeg het samen met een ander.",
+    "FRM-AUTH-1014": "Dit e-mailadres kan niet inloggen in deze werkruimte.",
+    "FRM-AUTH-1015": "Je wachtwoord is verlopen. Stel een nieuw wachtwoord in.",
+    "FRM-AUTH-1016": "Inloggen vanaf dit netwerk is niet toegestaan.",
+    "FRM-AUTH-1017": "Met deze wijziging sluit je jezelf buiten. Controleer je eigen e-maildomein en -adres.",
+    "FRM-AUTH-1018": "Je hebt dit wachtwoord onlangs gebruikt. Kies een ander wachtwoord."
   },
   "errorUi": {
     "reference": "Referentie: {id}",
@@ -715,7 +720,8 @@
       "passwordPolicy": "Minstens {min} tekens met hoofdletters, kleine letters en een cijfer.",
       "companyName": "Voer je bedrijfsnaam in.",
       "subdomain": "3–63 kleine letters, cijfers of streepjes.",
-      "passwordMatch": "Wachtwoorden komen niet overeen."
+      "passwordMatch": "Wachtwoorden komen niet overeen.",
+      "passwordRules": "Gebruik minimaal {min} tekens en alles wat hieronder is aangevinkt."
     },
     "login": {
       "title": "Inloggen",
@@ -762,7 +768,8 @@
         "lower": "Kleine letter",
         "upper": "Hoofdletter",
         "number": "Cijfer",
-        "symbol": "Symbool (optioneel)"
+        "symbol": "Symbool (optioneel)",
+        "symbolRequired": "Symbool"
       }
     },
     "providers": {
@@ -809,7 +816,9 @@
       "desc": "Voer je e-mail in, dan sturen we een code om een nieuw wachtwoord in te stellen.",
       "back": "Terug naar inloggen",
       "send": "Code sturen",
-      "save": "Nieuw wachtwoord opslaan"
+      "save": "Nieuw wachtwoord opslaan",
+      "expired": "Je wachtwoord is verlopen",
+      "expiredDesc": "Je werkruimte vraagt af en toe om een nieuw wachtwoord. Vraag een code aan en kies een nieuw wachtwoord."
     },
     "welcome": {
       "title": "Je werkruimte wordt ingericht",
@@ -6328,7 +6337,11 @@
       "details": "{n} van {total} gegevens ingevuld",
       "set": "{n} van {total} ingesteld",
       "themes": "{n} thema | {n} thema's",
-      "pages": "{n} paginaontwerp | {n} paginaontwerpen"
+      "pages": "{n} paginaontwerp | {n} paginaontwerpen",
+      "signin": "{n} manier om in te loggen | {n} manieren om in te loggen",
+      "idleMinutes": "Uitgelogd na {n} min inactiviteit",
+      "idleHours": "Uitgelogd na {n} uur inactiviteit | Uitgelogd na {n} uur inactiviteit",
+      "allowlist": "IP-toelatingslijst aan"
     },
     "next": {
       "title": "Volgende stap",
@@ -6352,7 +6365,11 @@
       "color": "Gebruik een kleur zoals #2563EB.",
       "timezone": "Kies een tijdzone uit de lijst.",
       "currency": "Kies een valuta uit de lijst.",
-      "form_languages": "Houd minstens één taal over voor formulieren."
+      "form_languages": "Houd minstens één taal over voor formulieren.",
+      "methods": "Houd minstens één manier om in te loggen.",
+      "domain": "Voer een domein in zoals example.com.",
+      "ip": "Voer een adres of bereik in zoals 203.0.113.0/24.",
+      "ip_empty": "Voeg minstens één adres toe of zet de toelatingslijst uit."
     },
     "company": {
       "names": "Namen",
@@ -6578,6 +6595,120 @@
         "imported": "{n} toegevoegd | {n} toegevoegd",
         "skipped": "{n} overgeslagen (bestaat al of te lang) | {n} overgeslagen (bestaan al of te lang)"
       }
+    },
+    "signin": {
+      "methods": "Manieren om in te loggen",
+      "methodsHint": "Alleen deze verschijnen op je inlogpagina. Minstens één blijft aan.",
+      "password": "E-mail en wachtwoord",
+      "passwordHint": "Mensen loggen in met hun werk-e-mail en een wachtwoord, daarna met een code.",
+      "providerHint": "Mensen loggen in met hun {name}-account, daarna met een code.",
+      "onlyOne": "Nog maar één over",
+      "providersNote": "De aanbieder moet de persoon kennen onder hetzelfde e-mailadres als in deze werkruimte.",
+      "passwordOffTitle": "E-mail en wachtwoord uitzetten?",
+      "passwordOffDesc": "Mensen kunnen dan alleen nog inloggen met de aanbieders die aan blijven. Wie geen van die accounts heeft, kan niet meer inloggen.",
+      "passwordOff": "Uitzetten",
+      "codes": "Inlogcodes",
+      "codesHint": "De eenmalige code die bewijst dat zij het echt zijn.",
+      "always": "Elke inlog vraagt om een code",
+      "alwaysHint": "Tweestapsverificatie staat voor iedereen aan, dus een gestolen wachtwoord is niet genoeg.",
+      "alwaysOn": "Altijd aan",
+      "email": "E-mail",
+      "emailHint": "Altijd beschikbaar, op het adres waarmee mensen inloggen.",
+      "sms": "Sms",
+      "smsHint": "Aangeboden aan mensen met een mobiel nummer in hun account.",
+      "app": "Authenticator-app",
+      "appHint": "Codes uit een app op hun telefoon.",
+      "expiry": "Een code is geldig",
+      "expiryHint": "Daarna vragen mensen een nieuwe aan.",
+      "attempts": "Toegestane foute pogingen",
+      "attemptsHint": "Daarna werkt de code niet meer.",
+      "minutes": "{n} minuut | {n} minuten",
+      "tries": "{n} poging | {n} pogingen",
+      "domains": "Toegestane e-maildomeinen",
+      "domainsHint": "Alleen mensen met een e-mailadres bij deze domeinen kunnen inloggen of worden uitgenodigd.",
+      "domainsLabel": "Domeinen",
+      "domainPlaceholder": "example.com, dan Enter",
+      "anyDomain": "Elk e-mailadres kan inloggen.",
+      "badDomain": "Geen domein: {list}",
+      "ownMissing": "Je eigen domein {domain} staat niet op de lijst",
+      "ownMissingDesc": "Je zou niet meer kunnen inloggen, dus opslaan wordt geweigerd totdat het erop staat.",
+      "addOwn": "{domain} toevoegen",
+      "sumMethods": "{n} manier om in te loggen op je inlogpagina | {n} manieren om in te loggen op je inlogpagina",
+      "sumCode": "Codes zijn {minutes} min geldig, {tries} foute pogingen",
+      "sumDomains": "Alleen {list}"
+    },
+    "security": {
+      "signins": "Inlogs, laatste 14 dagen",
+      "openAudit": "Auditlog",
+      "stat": {
+        "failed": "Mislukt",
+        "blocked": "Geblokkeerd",
+        "locked": "Codes vergrendeld"
+      },
+      "recent": "Laatste inlogpogingen",
+      "onlyProblems": "Alleen problemen",
+      "noRecent": "Geen inlogpogingen in de afgelopen 14 dagen",
+      "activityFailed": "De inlogactiviteit kon niet worden geladen",
+      "password": "Wachtwoordregels",
+      "passwordHint": "Wat een nieuw wachtwoord nodig heeft. Geldt de volgende keer dat iemand er een instelt.",
+      "minLength": "Minstens",
+      "mustHave": "Moet bevatten",
+      "kind": {
+        "lower": "Kleine letter",
+        "upper": "Hoofdletter",
+        "number": "Cijfer",
+        "symbol": "Symbool"
+      },
+      "weakRules": "Deze regels staan zwakke wachtwoorden toe. Vraag minstens 10 tekens of meer soorten tekens.",
+      "reuse": "Geen hergebruik",
+      "reuseHint": "Weiger onlangs gebruikte wachtwoorden.",
+      "reuseOff": "Hergebruik toestaan",
+      "reuseLast": "Niet de laatste {n}",
+      "expiry": "Om een nieuw wachtwoord vragen",
+      "expiryHint": "Mensen stellen een nieuw wachtwoord in bij hun volgende inlog.",
+      "never": "Nooit",
+      "days": "{n} dag | {n} dagen",
+      "hours": "{n} uur | {n} uur",
+      "try": "Probeer een wachtwoord",
+      "tryHint": "Typ er een om te zien hoe het wordt gecontroleerd op deze regels. Het wordt niet opgeslagen.",
+      "sessions": "Sessies",
+      "sessionsHint": "Hoe lang mensen ingelogd blijven en wie nu is ingelogd.",
+      "idle": "Uitloggen na geen activiteit gedurende",
+      "idleHint": "Telt vanaf het laatste wat ze deden.",
+      "max": "Uiterlijk uitloggen na",
+      "maxHint": "Ook als ze blijven werken.",
+      "idleShort": "Korter dan 1 uur",
+      "idleShortDesc": "Mensen kunnen niet-opgeslagen werk in de formulierbouwer kwijtraken. 1 uur of meer wordt aanbevolen.",
+      "active": "{n} nu ingelogd | {n} nu ingelogd",
+      "allTitle": "Iedereen behalve jezelf uitloggen?",
+      "allDesc": "{n} sessie eindigt direct. Die persoon logt de volgende keer opnieuw in. | {n} sessies eindigen direct. Die mensen loggen de volgende keer opnieuw in.",
+      "allConfirm": "Alle anderen uitloggen",
+      "signedOut": "{n} sessie beëindigd | {n} sessies beëindigd",
+      "signOutOne": "{name} uitloggen",
+      "thisDevice": "Jij",
+      "since": "Ingelogd {when}",
+      "unknownDevice": "Onbekend apparaat",
+      "sessionsFailed": "De sessies konden niet worden geladen",
+      "network": "Toegestane netwerken",
+      "networkHint": "Beperk inloggen en gebruik van het portaal tot je kantoren of VPN.",
+      "allowlist": "IP-toelatingslijst",
+      "allowlistHint": "Indien aan kunnen mensen alleen inloggen en werken vanaf de onderstaande adressen.",
+      "myIp": "Jouw adres",
+      "onList": "Op de lijst",
+      "notOnList": "Niet op de lijst",
+      "addMine": "Mijn adres toevoegen",
+      "mine": "Mijn adres",
+      "address": "Adres of bereik",
+      "label": "Label",
+      "ipPlaceholder": "bijv. 203.0.113.0/24",
+      "labelPlaceholder": "bijv. Hoofdkantoor",
+      "removeIp": "Adres verwijderen",
+      "noIps": "Nog geen adressen",
+      "noIpsDesc": "Voeg de adressen van je kantoren of VPN toe, of je eigen adres.",
+      "addIp": "Adres toevoegen",
+      "ipExamples": "Eén adres (198.51.100.7) of een bereik (203.0.113.0/24, 2001:db8::/32).",
+      "lockout": "Je zou jezelf buitensluiten",
+      "lockoutDesc": "Je eigen adres staat niet op de lijst, dus opslaan wordt geweigerd. Voeg het eerst toe."
     }
   }
 }

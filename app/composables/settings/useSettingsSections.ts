@@ -40,8 +40,8 @@ const GROUPS: SettingsGroup[] = [
   {
     key: 'access',
     items: [
-      { key: 'signin', icon: 'i-lucide-log-in', soon: 'M3' },
-      { key: 'security', icon: 'i-lucide-shield-check', soon: 'M3' },
+      { key: 'signin', icon: 'i-lucide-log-in', to: '/settings/signin' },
+      { key: 'security', icon: 'i-lucide-shield-check', to: '/settings/security' },
     ],
   },
   {

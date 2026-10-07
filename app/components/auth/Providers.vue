@@ -18,24 +18,11 @@ const props = withDefaults(
 const { t } = useI18n()
 const config = useRuntimeConfig()
 
-const ICONS: Record<Exclude<AuthProvider, 'password'>, string> = {
-  google: 'i-simple-icons-google',
-  microsoft: 'i-simple-icons-microsoft',
-  apple: 'i-simple-icons-apple',
-  facebook: 'i-simple-icons-facebook',
-}
-
 const social = computed(() =>
   props.providers.filter((p): p is Exclude<AuthProvider, 'password'> => p !== 'password'),
 )
 
-// Brand names (not translated). One row: name + logo for up to 2, logo only (with tooltip) for 3+.
-const NAMES: Record<Exclude<AuthProvider, 'password'>, string> = {
-  google: 'Google',
-  microsoft: 'Microsoft',
-  apple: 'Apple',
-  facebook: 'Facebook',
-}
+// One row: name + logo for up to 2, logo only (with tooltip) for 3+.
 const compact = computed(() => social.value.length > 2)
 const columns = computed(
   () => ({ 1: 'grid-cols-1', 2: 'grid-cols-2', 3: 'grid-cols-3' })[social.value.length] ?? 'grid-cols-4',
@@ -55,8 +42,8 @@ const columns = computed(
         :disabled="!compact"
       >
         <UButton
-          :icon="ICONS[provider]"
-          :label="compact ? undefined : NAMES[provider]"
+          :icon="PROVIDER_ICONS[provider]"
+          :label="compact ? undefined : PROVIDER_NAMES[provider]"
           :aria-label="t(`auth.providers.${provider}`)"
           :to="`${config.public.apiBase}/auth/oauth/${provider}/start?intent=${props.intent}`"
           external

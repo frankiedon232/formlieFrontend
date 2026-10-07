@@ -602,7 +602,12 @@
     "FRM-API-1019": "此表单未向 API 服务开放。请在分享设置中开启 API。",
     "FRM-API-1020": "这个 Formalie-Key 已用于另一个不同的请求。每条新记录都请发送新的密钥。",
     "FRM-ORG-1001": "已存在同名条目。",
-    "FRM-ORG-1002": "仍有表单在使用它。请先归档，或将它合并到其他条目。"
+    "FRM-ORG-1002": "仍有表单在使用它。请先归档，或将它合并到其他条目。",
+    "FRM-AUTH-1014": "此邮箱地址无法登录该工作区。",
+    "FRM-AUTH-1015": "你的密码已过期。请设置新密码。",
+    "FRM-AUTH-1016": "不允许从此网络登录。",
+    "FRM-AUTH-1017": "此更改会让你自己无法登录。请检查你自己的邮箱域名和地址。",
+    "FRM-AUTH-1018": "你最近用过这个密码。请换一个。"
   },
   "errorUi": {
     "reference": "参考编号：{id}",
@@ -715,7 +720,8 @@
       "passwordPolicy": "至少 {min} 个字符，包含大小写字母和数字。",
       "companyName": "请输入公司名称。",
       "subdomain": "使用 3–63 个小写字母、数字或连字符。",
-      "passwordMatch": "两次输入的密码不一致。"
+      "passwordMatch": "两次输入的密码不一致。",
+      "passwordRules": "至少使用 {min} 个字符，并满足下方勾选的全部要求。"
     },
     "login": {
       "title": "登录",
@@ -762,7 +768,8 @@
         "lower": "小写字母",
         "upper": "大写字母",
         "number": "数字",
-        "symbol": "符号（可选）"
+        "symbol": "符号（可选）",
+        "symbolRequired": "符号"
       }
     },
     "providers": {
@@ -809,7 +816,9 @@
       "desc": "输入邮箱，我们会发送验证码以设置新密码。",
       "back": "返回登录",
       "send": "发送验证码",
-      "save": "保存新密码"
+      "save": "保存新密码",
+      "expired": "你的密码已过期",
+      "expiredDesc": "你的工作区会不定期要求更换密码。获取验证码并设置新密码。"
     },
     "welcome": {
       "title": "正在准备您的工作区",
@@ -6328,7 +6337,11 @@
       "details": "已填写 {total} 项中的 {n} 项",
       "set": "已设置 {total} 项中的 {n} 项",
       "themes": "{n} 个主题 | {n} 个主题",
-      "pages": "{n} 个页面设计 | {n} 个页面设计"
+      "pages": "{n} 个页面设计 | {n} 个页面设计",
+      "signin": "{n} 种登录方式 | {n} 种登录方式",
+      "idleMinutes": "闲置 {n} 分钟后退出登录",
+      "idleHours": "闲置 {n} 小时后退出登录 | 闲置 {n} 小时后退出登录",
+      "allowlist": "IP 允许列表已开启"
     },
     "next": {
       "title": "下一步",
@@ -6352,7 +6365,11 @@
       "color": "请使用类似 #2563EB 的颜色。",
       "timezone": "请从列表中选择一个时区。",
       "currency": "请从列表中选择一种货币。",
-      "form_languages": "表单至少保留一种语言。"
+      "form_languages": "表单至少保留一种语言。",
+      "methods": "请至少保留一种登录方式。",
+      "domain": "请输入域名，例如 example.com。",
+      "ip": "请输入地址或范围，例如 203.0.113.0/24。",
+      "ip_empty": "请至少添加一个地址，或关闭允许列表。"
     },
     "company": {
       "names": "名称",
@@ -6578,6 +6595,120 @@
         "imported": "已添加 {n} 个 | 已添加 {n} 个",
         "skipped": "已跳过 {n} 个（已存在或太长） | 已跳过 {n} 个（已存在或太长）"
       }
+    },
+    "signin": {
+      "methods": "登录方式",
+      "methodsHint": "登录页面只会显示这些方式。至少保持开启一种。",
+      "password": "邮箱和密码",
+      "passwordHint": "用户使用工作邮箱和密码登录，然后输入验证码。",
+      "providerHint": "用户使用其 {name} 账号登录，然后输入验证码。",
+      "onlyOne": "仅剩一种",
+      "providersNote": "提供商必须以与此工作区相同的邮箱地址识别该用户。",
+      "passwordOffTitle": "关闭邮箱和密码登录？",
+      "passwordOffDesc": "之后用户只能通过仍开启的提供商登录。没有这些账号的用户将无法再登录。",
+      "passwordOff": "关闭",
+      "codes": "登录验证码",
+      "codesHint": "一次性验证码，用于证明确实是本人。",
+      "always": "每次登录都需要验证码",
+      "alwaysHint": "已为所有人开启两步登录，所以仅靠被盗的密码无法登录。",
+      "alwaysOn": "始终开启",
+      "email": "邮箱",
+      "emailHint": "始终可用，发送到用户登录所用的地址。",
+      "sms": "短信",
+      "smsHint": "提供给账号中有手机号码的用户。",
+      "app": "验证器应用",
+      "appHint": "来自手机应用的验证码。",
+      "expiry": "验证码有效期",
+      "expiryHint": "之后用户需要获取新的验证码。",
+      "attempts": "允许的错误次数",
+      "attemptsHint": "超过后验证码将失效。",
+      "minutes": "{n} 分钟 | {n} 分钟",
+      "tries": "{n} 次 | {n} 次",
+      "domains": "允许的邮箱域名",
+      "domainsHint": "只有使用这些域名邮箱地址的用户才能登录或被邀请。",
+      "domainsLabel": "域名",
+      "domainPlaceholder": "输入 example.com，然后按 Enter",
+      "anyDomain": "任何邮箱地址都可以登录。",
+      "badDomain": "不是有效域名：{list}",
+      "ownMissing": "你自己的域名 {domain} 不在列表中",
+      "ownMissingDesc": "你将无法再次登录，因此在添加之前无法保存。",
+      "addOwn": "添加 {domain}",
+      "sumMethods": "登录页面上的 {n} 种登录方式 | 登录页面上的 {n} 种登录方式",
+      "sumCode": "验证码有效 {minutes} 分钟，最多错误 {tries} 次",
+      "sumDomains": "仅限 {list}"
+    },
+    "security": {
+      "signins": "登录情况，最近 14 天",
+      "openAudit": "审计记录",
+      "stat": {
+        "failed": "失败",
+        "blocked": "已拦截",
+        "locked": "验证码已锁定"
+      },
+      "recent": "最近的登录尝试",
+      "onlyProblems": "仅看问题",
+      "noRecent": "最近 14 天没有登录尝试",
+      "activityFailed": "无法加载登录活动",
+      "password": "密码规则",
+      "passwordHint": "新密码需要满足的条件。下次有人设置密码时生效。",
+      "minLength": "至少",
+      "mustHave": "必须包含",
+      "kind": {
+        "lower": "小写字母",
+        "upper": "大写字母",
+        "number": "数字",
+        "symbol": "符号"
+      },
+      "weakRules": "这些规则允许弱密码。请要求至少 10 个字符或更多字符类型。",
+      "reuse": "禁止重复使用",
+      "reuseHint": "拒绝最近用过的密码。",
+      "reuseOff": "允许重复使用",
+      "reuseLast": "不能与最近 {n} 个相同",
+      "expiry": "要求更换密码",
+      "expiryHint": "用户下次登录时需要设置新密码。",
+      "never": "从不",
+      "days": "{n} 天 | {n} 天",
+      "hours": "{n} 小时 | {n} 小时",
+      "try": "试试密码",
+      "tryHint": "输入一个密码，查看它是否符合这些规则。不会被保存。",
+      "sessions": "会话",
+      "sessionsHint": "用户保持登录的时长，以及当前登录的人。",
+      "idle": "无操作多久后退出登录",
+      "idleHint": "从他们最后一次操作开始计算。",
+      "max": "最迟多久后退出登录",
+      "maxHint": "即使他们仍在工作。",
+      "idleShort": "短于 1 小时",
+      "idleShortDesc": "用户可能会丢失表单构建器中未保存的内容。建议设置为 1 小时或更长。",
+      "active": "当前 {n} 人已登录 | 当前 {n} 人已登录",
+      "allTitle": "让其他所有人退出登录？",
+      "allDesc": "{n} 个会话将立即结束。这些用户下次需要重新登录。 | {n} 个会话将立即结束。这些用户下次需要重新登录。",
+      "allConfirm": "让其他所有人退出登录",
+      "signedOut": "已结束 {n} 个会话 | 已结束 {n} 个会话",
+      "signOutOne": "让 {name} 退出登录",
+      "thisDevice": "你",
+      "since": "登录于 {when}",
+      "unknownDevice": "未知设备",
+      "sessionsFailed": "无法加载会话",
+      "network": "允许的网络",
+      "networkHint": "将登录和门户使用限制在你的办公室或 VPN 内。",
+      "allowlist": "IP 允许列表",
+      "allowlistHint": "开启后，用户只能从下方地址登录和工作。",
+      "myIp": "你的地址",
+      "onList": "在列表中",
+      "notOnList": "不在列表中",
+      "addMine": "添加我的地址",
+      "mine": "我的地址",
+      "address": "地址或范围",
+      "label": "标签",
+      "ipPlaceholder": "例如：203.0.113.0/24",
+      "labelPlaceholder": "例如 总部",
+      "removeIp": "移除地址",
+      "noIps": "还没有地址",
+      "noIpsDesc": "添加你办公室或 VPN 的地址，或你自己的地址。",
+      "addIp": "添加地址",
+      "ipExamples": "单个地址 (198.51.100.7) 或范围 (203.0.113.0/24, 2001:db8::/32)。",
+      "lockout": "你将无法登录",
+      "lockoutDesc": "你自己的地址不在列表中，因此无法保存。请先添加。"
     }
   }
 }

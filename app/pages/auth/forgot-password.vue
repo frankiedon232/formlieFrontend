@@ -1,4 +1,4 @@
-<!-- Workspace host: email → code + new password (same policy as signup) → back to sign in. -->
+<!-- Workspace host: email → code + new password (the workspace's password rules) → back to sign in. `?expired=1` when sign-in said the password expired. -->
 <script setup lang="ts">
 import type { FormSubmitEvent } from '@nuxt/ui'
 import type { OtpChannel } from '#shared/types/auth'
@@ -6,14 +6,18 @@ import type { OtpChannel } from '#shared/types/auth'
 definePageMeta({ layout: 'auth', auth: 'guest' })
 
 const { t } = useI18n()
+const route = useRoute()
 const auth = useAuth()
+const policy = computed(() => useTenant().profile.value?.password_policy)
 const { handle } = useErrorHandler()
 const { busy, run } = useBusy()
 useHead({ title: () => t('auth.forgot.title') })
 
 const emailSchema = computed(() => emailOnlySchema(t))
-const emailState = reactive({ email: '' })
-const passwordSchema = computed(() => resetSchema(t))
+// Sign-in said the password expired: the email comes along (app state, never the address bar)
+const emailState = reactive({ email: route.query.expired ? (useState<string>('auth:reset-email').value ?? '') : '' })
+const expired = computed(() => !!route.query.expired)
+const passwordSchema = computed(() => resetSchema(t, policy.value))
 const passwordState = reactive({ password: '', confirm: '' })
 const code = ref('')
 const attemptsLeft = ref<number | null>(null)
@@ -75,6 +79,8 @@ async function resend(channel?: OtpChannel) {
       @back="leave"
     />
 
+    <UAlert v-if="expired && !inReset" color="warning" variant="subtle" icon="i-lucide-clock-alert" :title="t('auth.forgot.expired')" :description="t('auth.forgot.expiredDesc')" />
+
     <UForm
       v-if="!inReset"
       :schema="emailSchema"
@@ -122,7 +128,7 @@ async function resend(channel?: OtpChannel) {
             size="xl"
             icon="i-lucide-lock-keyhole"
           />
-          <AuthPasswordStrength :value="passwordState.password" />
+          <AuthPasswordStrength :value="passwordState.password" :policy="policy" />
         </UFormField>
         <UFormField :label="t('auth.fields.confirmPassword')" name="confirm" required>
           <AuthPasswordInput

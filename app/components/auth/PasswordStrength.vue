@@ -1,10 +1,12 @@
-<!-- Strength meter + policy checklist under a password field (shared policy: shared/utils/auth/password.ts). -->
+<!-- Strength meter + policy checklist under a password field (shared policy: shared/utils/auth/password.ts; a workspace's own rules via `policy`). -->
 <script setup lang="ts">
-const props = defineProps<{ value: string }>()
+import type { PasswordPolicy } from '#shared/types/auth'
+
+const props = defineProps<{ value: string; policy?: PasswordPolicy }>()
 const { t } = useI18n()
 
-const score = computed(() => passwordScore(props.value))
-const checks = computed(() => checkPassword(props.value))
+const score = computed(() => passwordScore(props.value, props.policy))
+const checks = computed(() => checkPassword(props.value, props.policy))
 const COLORS = ['neutral', 'error', 'warning', 'success', 'success'] as const
 const LABELS = ['', 'weak', 'fair', 'good', 'strong'] as const
 </script>
@@ -28,7 +30,7 @@ const LABELS = ['', 'weak', 'fair', 'good', 'strong'] as const
           :name="check.passed ? 'i-lucide-check' : check.required ? 'i-lucide-circle' : 'i-lucide-plus'"
           class="size-3.5 shrink-0"
         />
-        {{ t(`auth.password.rule.${check.key}`, { min: PASSWORD_MIN_LENGTH }) }}
+        {{ t(`auth.password.rule.${check.key === 'symbol' && check.required ? 'symbolRequired' : check.key}`, { min: policy?.min_length ?? PASSWORD_MIN_LENGTH }) }}
       </li>
     </ul>
   </div>

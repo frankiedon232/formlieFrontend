@@ -4,6 +4,8 @@
  */
 import { z } from 'zod'
 import { COMPANY_SIZES, DATE_FORMATS, INDUSTRIES, NUMBER_FORMATS } from '../../types/onboarding'
+import { parseCidr } from '../apiService/access'
+import { PASSWORD_LENGTH_RANGE } from '../auth/password'
 import { APP_LOCALES } from '../i18n/locales'
 import { CURRENCY_CODES, isCountryCode } from '../platform/countries'
 
@@ -73,4 +75,67 @@ export const localisationSchema = z.object({
   number_format: z.enum(NUMBER_FORMATS),
   week_start: z.enum(['monday', 'sunday', 'saturday']),
   form_languages: z.array(z.enum(LOCALE_CODES)).min(1, 'form_languages').max(LOCALE_CODES.length),
+})
+
+/** Sign-in methods, in the order the sign-in page shows them. */
+export const SIGNIN_METHODS = ['password', 'google', 'microsoft', 'apple', 'facebook'] as const
+/** example.com, sub.example.co.uk (no scheme, no @). */
+export const isEmailDomain = (value: string) => /^(?=.{3,253}$)([a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,63}$/.test(value)
+/** An IPv4 / IPv6 address or CIDR range. */
+export const isIpOrRange = (value: string) => !!parseCidr(value)
+export const IDLE_MINUTES = [15, 30, 60, 120, 240, 480, 720] as const
+/** The owner's minimum (2026-10-02); shorter asks for confirmation in Settings. */
+export const IDLE_MINUTES_SAFE = 60
+export const MAX_SESSION_HOURS = [8, 12, 24, 72, 168] as const
+
+export const signinSchema = z.object({
+  methods: z
+    .array(z.enum(SIGNIN_METHODS))
+    .min(1, 'methods')
+    .transform(list => SIGNIN_METHODS.filter(method => list.includes(method))),
+  code: z.object({
+    sms: z.boolean(),
+    expiry_minutes: z.union([z.literal(5), z.literal(10), z.literal(15)]),
+    max_attempts: z.union([z.literal(3), z.literal(5), z.literal(10)]),
+  }),
+  allowed_domains: z
+    .array(
+      z
+        .string()
+        .trim()
+        .toLowerCase()
+        .transform(value => value.replace(/^@/, ''))
+        .refine(isEmailDomain, 'domain'),
+    )
+    .max(50)
+    .transform(list => [...new Set(list)]),
+})
+
+export const securitySchema = z.object({
+  password: z.object({
+    min_length: z.number().int().min(PASSWORD_LENGTH_RANGE.min).max(PASSWORD_LENGTH_RANGE.max),
+    lower: z.boolean(),
+    upper: z.boolean(),
+    number: z.boolean(),
+    symbol: z.boolean(),
+    reuse_last: z.union([z.literal(0), z.literal(3), z.literal(5), z.literal(10)]),
+    expiry_days: z.union([z.literal(0), z.literal(90), z.literal(180), z.literal(365)]),
+  }),
+  sessions: z.object({
+    idle_minutes: z.number().refine(value => (IDLE_MINUTES as readonly number[]).includes(value)),
+    max_hours: z.number().refine(value => (MAX_SESSION_HOURS as readonly number[]).includes(value)),
+  }),
+  ip_allowlist: z.object({
+    enabled: z.boolean(),
+    // Empty rows (an added line left blank) are dropped
+    entries: z.preprocess(
+      list => (Array.isArray(list) ? list.filter(entry => String((entry as { value?: unknown } | null)?.value ?? '').trim()) : list),
+      z.array(
+        z.object({
+          value: z.string().trim().refine(isIpOrRange, 'ip'),
+          label: optional(60),
+        }),
+      ).max(100),
+    ),
+  }).refine(list => !list.enabled || list.entries.length > 0, { message: 'ip_empty', path: ['entries'] }),
 })

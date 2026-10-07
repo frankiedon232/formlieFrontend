@@ -602,7 +602,12 @@
     "FRM-API-1019": "Dieses Formular ist für den API-Dienst nicht geöffnet. Schalte die API in den Teilen-Einstellungen ein.",
     "FRM-API-1020": "Dieser Formalie-Key wurde schon für eine andere Anfrage verwendet. Senden Sie für jeden neuen Datensatz einen neuen Key.",
     "FRM-ORG-1001": "Ein Eintrag mit diesem Namen gibt es bereits.",
-    "FRM-ORG-1002": "Formulare nutzen ihn noch. Archiviere ihn oder führe ihn mit einem anderen zusammen."
+    "FRM-ORG-1002": "Formulare nutzen ihn noch. Archiviere ihn oder führe ihn mit einem anderen zusammen.",
+    "FRM-AUTH-1014": "Mit dieser E-Mail-Adresse ist die Anmeldung in diesem Workspace nicht möglich.",
+    "FRM-AUTH-1015": "Dein Passwort ist abgelaufen. Lege ein neues fest.",
+    "FRM-AUTH-1016": "Von diesem Netzwerk aus ist die Anmeldung nicht erlaubt.",
+    "FRM-AUTH-1017": "Diese Änderung würde dich aussperren. Prüfe deine eigene E-Mail-Domain und -Adresse.",
+    "FRM-AUTH-1018": "Du hast dieses Passwort kürzlich verwendet. Wähle ein anderes."
   },
   "errorUi": {
     "reference": "Referenz: {id}",
@@ -715,7 +720,8 @@
       "passwordPolicy": "Mindestens {min} Zeichen mit Groß- und Kleinbuchstaben und einer Zahl.",
       "companyName": "Geben Sie Ihren Firmennamen ein.",
       "subdomain": "3–63 Kleinbuchstaben, Ziffern oder Bindestriche.",
-      "passwordMatch": "Die Passwörter stimmen nicht überein."
+      "passwordMatch": "Die Passwörter stimmen nicht überein.",
+      "passwordRules": "Verwende mindestens {min} Zeichen und alles, was unten abgehakt ist."
     },
     "login": {
       "title": "Anmelden",
@@ -762,7 +768,8 @@
         "lower": "Kleinbuchstabe",
         "upper": "Großbuchstabe",
         "number": "Zahl",
-        "symbol": "Sonderzeichen (optional)"
+        "symbol": "Sonderzeichen (optional)",
+        "symbolRequired": "Sonderzeichen"
       }
     },
     "providers": {
@@ -809,7 +816,9 @@
       "desc": "Geben Sie Ihre E-Mail ein, wir senden Ihnen einen Code für ein neues Passwort.",
       "back": "Zurück zur Anmeldung",
       "send": "Code senden",
-      "save": "Neues Passwort speichern"
+      "save": "Neues Passwort speichern",
+      "expired": "Dein Passwort ist abgelaufen",
+      "expiredDesc": "Dein Workspace verlangt von Zeit zu Zeit ein neues Passwort. Fordere einen Code an und wähle ein neues."
     },
     "welcome": {
       "title": "Ihr Arbeitsbereich wird eingerichtet",
@@ -6328,7 +6337,11 @@
       "details": "{n} von {total} Angaben ausgefüllt",
       "set": "{n} von {total} festgelegt",
       "themes": "{n} Design | {n} Designs",
-      "pages": "{n} Seitendesign | {n} Seitendesigns"
+      "pages": "{n} Seitendesign | {n} Seitendesigns",
+      "signin": "{n} Anmeldemethode | {n} Anmeldemethoden",
+      "idleMinutes": "Abmeldung nach {n} Min. Inaktivität",
+      "idleHours": "Abmeldung nach {n} Stunde Inaktivität | Abmeldung nach {n} Stunden Inaktivität",
+      "allowlist": "IP-Zulassungsliste aktiv"
     },
     "next": {
       "title": "Nächster Schritt",
@@ -6352,7 +6365,11 @@
       "color": "Verwenden Sie eine Farbe wie #2563EB.",
       "timezone": "Wählen Sie eine Zeitzone aus der Liste.",
       "currency": "Wählen Sie eine Währung aus der Liste.",
-      "form_languages": "Behalten Sie mindestens eine Sprache für Formulare."
+      "form_languages": "Behalten Sie mindestens eine Sprache für Formulare.",
+      "methods": "Mindestens eine Anmeldemethode muss aktiv bleiben.",
+      "domain": "Gib eine Domain wie example.com ein.",
+      "ip": "Gib eine Adresse oder einen Bereich wie 203.0.113.0/24 ein.",
+      "ip_empty": "Füge mindestens eine Adresse hinzu oder schalte die Zulassungsliste aus."
     },
     "company": {
       "names": "Namen",
@@ -6578,6 +6595,120 @@
         "imported": "{n} hinzugefügt | {n} hinzugefügt",
         "skipped": "{n} übersprungen (schon vorhanden oder zu lang) | {n} übersprungen (schon vorhanden oder zu lang)"
       }
+    },
+    "signin": {
+      "methods": "Anmeldemethoden",
+      "methodsHint": "Nur diese erscheinen auf deiner Anmeldeseite. Mindestens eine bleibt aktiv.",
+      "password": "E-Mail und Passwort",
+      "passwordHint": "Personen melden sich mit ihrer Arbeits-E-Mail und einem Passwort an, danach mit einem Code.",
+      "providerHint": "Personen melden sich mit ihrem {name}-Konto an, danach mit einem Code.",
+      "onlyOne": "Nur noch eine übrig",
+      "providersNote": "Der Anbieter muss die Person unter derselben E-Mail-Adresse kennen wie in diesem Workspace.",
+      "passwordOffTitle": "E-Mail und Passwort ausschalten?",
+      "passwordOffDesc": "Dann können sich Personen nur noch mit den aktiven Anbietern anmelden. Wer kein solches Konto hat, kann sich nicht mehr anmelden.",
+      "passwordOff": "Ausschalten",
+      "codes": "Anmeldecodes",
+      "codesHint": "Der Einmalcode, der beweist, dass sie es wirklich sind.",
+      "always": "Jede Anmeldung verlangt einen Code",
+      "alwaysHint": "Die Bestätigung in zwei Schritten ist für alle aktiv, ein gestohlenes Passwort reicht also nicht.",
+      "alwaysOn": "Immer aktiv",
+      "email": "E-Mail",
+      "emailHint": "Wird immer angeboten, an die Adresse, mit der sich Personen anmelden.",
+      "sms": "SMS",
+      "smsHint": "Wird Personen mit einer Handynummer im Konto angeboten.",
+      "app": "Authenticator-App",
+      "appHint": "Codes aus einer App auf dem Smartphone.",
+      "expiry": "Ein Code gilt",
+      "expiryHint": "Danach fordern Personen einen neuen an.",
+      "attempts": "Erlaubte Fehlversuche",
+      "attemptsHint": "Danach funktioniert der Code nicht mehr.",
+      "minutes": "{n} Minute | {n} Minuten",
+      "tries": "{n} Versuch | {n} Versuche",
+      "domains": "Erlaubte E-Mail-Domains",
+      "domainsHint": "Nur Personen mit einer E-Mail-Adresse bei diesen Domains können sich anmelden oder eingeladen werden.",
+      "domainsLabel": "Domains",
+      "domainPlaceholder": "example.com, dann Enter",
+      "anyDomain": "Jede E-Mail-Adresse kann sich anmelden.",
+      "badDomain": "Keine Domain: {list}",
+      "ownMissing": "Deine eigene Domain {domain} steht nicht auf der Liste",
+      "ownMissingDesc": "Du könntest dich nicht mehr anmelden, deshalb wird das Speichern abgelehnt, bis sie drauf steht.",
+      "addOwn": "{domain} hinzufügen",
+      "sumMethods": "{n} Anmeldemethode auf deiner Anmeldeseite | {n} Anmeldemethoden auf deiner Anmeldeseite",
+      "sumCode": "Codes gelten {minutes} Min., {tries} Fehlversuche",
+      "sumDomains": "Nur {list}"
+    },
+    "security": {
+      "signins": "Anmeldungen, letzte 14 Tage",
+      "openAudit": "Audit-Protokoll",
+      "stat": {
+        "failed": "Fehlgeschlagen",
+        "blocked": "Blockiert",
+        "locked": "Codes gesperrt"
+      },
+      "recent": "Letzte Anmeldeversuche",
+      "onlyProblems": "Nur Probleme",
+      "noRecent": "Keine Anmeldeversuche in den letzten 14 Tagen",
+      "activityFailed": "Die Anmeldeaktivität konnte nicht geladen werden",
+      "password": "Passwortregeln",
+      "passwordHint": "Was ein neues Passwort braucht. Gilt, sobald jemand das nächste Mal eines festlegt.",
+      "minLength": "Mindestens",
+      "mustHave": "Muss enthalten",
+      "kind": {
+        "lower": "Kleinbuchstaben",
+        "upper": "Großbuchstaben",
+        "number": "Zahl",
+        "symbol": "Sonderzeichen"
+      },
+      "weakRules": "Diese Regeln erlauben schwache Passwörter. Verlange mindestens 10 Zeichen oder mehr Zeichenarten.",
+      "reuse": "Keine Wiederverwendung",
+      "reuseHint": "Kürzlich verwendete Passwörter ablehnen.",
+      "reuseOff": "Wiederverwendung erlauben",
+      "reuseLast": "Nicht die letzten {n}",
+      "expiry": "Neues Passwort verlangen",
+      "expiryHint": "Personen legen bei der nächsten Anmeldung ein neues fest.",
+      "never": "Nie",
+      "days": "{n} Tag | {n} Tage",
+      "hours": "{n} Stunde | {n} Stunden",
+      "try": "Passwort ausprobieren",
+      "tryHint": "Gib eines ein und sieh, wie es gegen diese Regeln geprüft wird. Es wird nicht gespeichert.",
+      "sessions": "Sitzungen",
+      "sessionsHint": "Wie lange Personen angemeldet bleiben und wer gerade angemeldet ist.",
+      "idle": "Abmelden nach Inaktivität von",
+      "idleHint": "Zählt ab der letzten Aktion.",
+      "max": "Spätestens abmelden nach",
+      "maxHint": "Auch wenn sie weiterarbeiten.",
+      "idleShort": "Kürzer als 1 Stunde",
+      "idleShortDesc": "Im Formular-Builder kann nicht gespeicherte Arbeit verloren gehen. Empfohlen sind 1 Stunde oder mehr.",
+      "active": "{n} gerade angemeldet | {n} gerade angemeldet",
+      "allTitle": "Alle anderen abmelden?",
+      "allDesc": "{n} Sitzung endet sofort. Diese Personen melden sich beim nächsten Mal neu an. | {n} Sitzungen enden sofort. Diese Personen melden sich beim nächsten Mal neu an.",
+      "allConfirm": "Alle anderen abmelden",
+      "signedOut": "{n} Sitzung beendet | {n} Sitzungen beendet",
+      "signOutOne": "{name} abmelden",
+      "thisDevice": "Du",
+      "since": "Angemeldet {when}",
+      "unknownDevice": "Unbekanntes Gerät",
+      "sessionsFailed": "Die Sitzungen konnten nicht geladen werden",
+      "network": "Erlaubte Netzwerke",
+      "networkHint": "Beschränke Anmeldung und Nutzung des Portals auf deine Büros oder dein VPN.",
+      "allowlist": "IP-Zulassungsliste",
+      "allowlistHint": "Wenn aktiv, können sich Personen nur von den unten stehenden Adressen anmelden und arbeiten.",
+      "myIp": "Deine Adresse",
+      "onList": "Auf der Liste",
+      "notOnList": "Nicht auf der Liste",
+      "addMine": "Meine Adresse hinzufügen",
+      "mine": "Meine Adresse",
+      "address": "Adresse oder Bereich",
+      "label": "Bezeichnung",
+      "ipPlaceholder": "z. B. 203.0.113.0/24",
+      "labelPlaceholder": "z. B. Hauptsitz",
+      "removeIp": "Adresse entfernen",
+      "noIps": "Noch keine Adressen",
+      "noIpsDesc": "Füge die Adressen deiner Büros oder deines VPN hinzu, oder deine eigene.",
+      "addIp": "Adresse hinzufügen",
+      "ipExamples": "Eine Adresse (198.51.100.7) oder ein Bereich (203.0.113.0/24, 2001:db8::/32).",
+      "lockout": "Du würdest dich selbst aussperren",
+      "lockoutDesc": "Deine eigene Adresse steht nicht auf der Liste, deshalb wird das Speichern abgelehnt. Füge sie zuerst hinzu."
     }
   }
 }

@@ -602,7 +602,12 @@
     "FRM-API-1019": "Este formulário não está aberto ao serviço de API. Ative a API nas configurações de Compartilhar.",
     "FRM-API-1020": "Esta Formalie-Key já foi usada noutro pedido. Envie uma nova chave para cada novo registo.",
     "FRM-ORG-1001": "Já existe uma entrada com este nome.",
-    "FRM-ORG-1002": "Ainda há formulários que a usam. Arquive-a ou una-a a outra."
+    "FRM-ORG-1002": "Ainda há formulários que a usam. Arquive-a ou una-a a outra.",
+    "FRM-AUTH-1014": "Este endereço de email não pode entrar neste espaço de trabalho.",
+    "FRM-AUTH-1015": "A sua senha expirou. Defina uma nova.",
+    "FRM-AUTH-1016": "Não é permitido entrar a partir desta rede.",
+    "FRM-AUTH-1017": "Esta alteração bloquearia o seu acesso. Verifique o seu próprio domínio e endereço de email.",
+    "FRM-AUTH-1018": "Usou esta senha recentemente. Escolha outra."
   },
   "errorUi": {
     "reference": "Referência: {id}",
@@ -715,7 +720,8 @@
       "passwordPolicy": "Use pelo menos {min} caracteres com letras maiúsculas, minúsculas e um número.",
       "companyName": "Informe o nome da empresa.",
       "subdomain": "De 3 a 63 letras minúsculas, números ou hifens.",
-      "passwordMatch": "As senhas não coincidem."
+      "passwordMatch": "As senhas não coincidem.",
+      "passwordRules": "Use pelo menos {min} caracteres e tudo o que está marcado abaixo."
     },
     "login": {
       "title": "Entrar",
@@ -762,7 +768,8 @@
         "lower": "Letra minúscula",
         "upper": "Letra maiúscula",
         "number": "Número",
-        "symbol": "Símbolo (opcional)"
+        "symbol": "Símbolo (opcional)",
+        "symbolRequired": "Símbolo"
       }
     },
     "providers": {
@@ -809,7 +816,9 @@
       "desc": "Informe seu e-mail e enviaremos um código para criar uma nova senha.",
       "back": "Voltar ao login",
       "send": "Enviar código",
-      "save": "Salvar nova senha"
+      "save": "Salvar nova senha",
+      "expired": "A sua senha expirou",
+      "expiredDesc": "O seu espaço de trabalho pede uma senha nova de vez em quando. Receba um código e escolha uma nova."
     },
     "welcome": {
       "title": "Preparando seu espaço",
@@ -6328,7 +6337,11 @@
       "details": "{n} de {total} detalhes preenchidos",
       "set": "{n} de {total} definidos",
       "themes": "{n} tema | {n} temas",
-      "pages": "{n} design de página | {n} designs de página"
+      "pages": "{n} design de página | {n} designs de página",
+      "signin": "{n} forma de entrar | {n} formas de entrar",
+      "idleMinutes": "Sessão terminada após {n} min de inatividade",
+      "idleHours": "Sessão terminada após {n} hora de inatividade | Sessão terminada após {n} horas de inatividade",
+      "allowlist": "Lista de IPs permitidos ativa"
     },
     "next": {
       "title": "Próximo passo",
@@ -6352,7 +6365,11 @@
       "color": "Use uma cor como #2563EB.",
       "timezone": "Escolha um fuso horário da lista.",
       "currency": "Escolha uma moeda da lista.",
-      "form_languages": "Mantenha pelo menos um idioma para os formulários."
+      "form_languages": "Mantenha pelo menos um idioma para os formulários.",
+      "methods": "Mantenha pelo menos uma forma de entrar.",
+      "domain": "Introduza um domínio como example.com.",
+      "ip": "Introduza um endereço ou um intervalo como 203.0.113.0/24.",
+      "ip_empty": "Adicione pelo menos um endereço ou desative a lista de permitidos."
     },
     "company": {
       "names": "Nomes",
@@ -6578,6 +6595,120 @@
         "imported": "{n} adicionado | {n} adicionados",
         "skipped": "{n} ignorado (já existe ou é longo demais) | {n} ignorados (já existem ou são longos demais)"
       }
+    },
+    "signin": {
+      "methods": "Formas de entrar",
+      "methodsHint": "Só estas aparecem na sua página de entrada. Pelo menos uma fica ativa.",
+      "password": "Email e senha",
+      "passwordHint": "As pessoas entram com o email de trabalho e uma senha, e depois um código.",
+      "providerHint": "As pessoas entram com a conta {name}, e depois um código.",
+      "onlyOne": "Só resta uma",
+      "providersNote": "O fornecedor tem de conhecer a pessoa pelo mesmo email que neste espaço de trabalho.",
+      "passwordOffTitle": "Desativar email e senha?",
+      "passwordOffDesc": "As pessoas só poderão entrar com os fornecedores que ficarem ativos. Quem não tiver uma dessas contas deixa de poder entrar.",
+      "passwordOff": "Desativar",
+      "codes": "Códigos de entrada",
+      "codesHint": "O código de uso único que prova que são mesmo elas.",
+      "always": "Cada entrada pede um código",
+      "alwaysHint": "A verificação em dois passos está ativa para todos, por isso uma senha roubada não chega.",
+      "alwaysOn": "Sempre ativo",
+      "email": "Email",
+      "emailHint": "Sempre oferecido, para o endereço com que as pessoas entram.",
+      "sms": "SMS",
+      "smsHint": "Oferecido a quem tem um número de telemóvel na conta.",
+      "app": "App de autenticação",
+      "appHint": "Códigos de uma app no telemóvel.",
+      "expiry": "Um código dura",
+      "expiryHint": "Depois, as pessoas pedem um novo.",
+      "attempts": "Tentativas erradas permitidas",
+      "attemptsHint": "Depois, o código deixa de funcionar.",
+      "minutes": "{n} minuto | {n} minutos",
+      "tries": "{n} tentativa | {n} tentativas",
+      "domains": "Domínios de email permitidos",
+      "domainsHint": "Só as pessoas com um email nestes domínios podem entrar ou ser convidadas.",
+      "domainsLabel": "Domínios",
+      "domainPlaceholder": "example.com, depois Enter",
+      "anyDomain": "Qualquer endereço de email pode entrar.",
+      "badDomain": "Não é um domínio: {list}",
+      "ownMissing": "O seu próprio domínio {domain} não está na lista",
+      "ownMissingDesc": "Não conseguiria voltar a entrar, por isso a gravação é recusada até estar.",
+      "addOwn": "Adicionar {domain}",
+      "sumMethods": "{n} forma de entrar na sua página de entrada | {n} formas de entrar na sua página de entrada",
+      "sumCode": "Os códigos duram {minutes} min, {tries} tentativas erradas",
+      "sumDomains": "Só {list}"
+    },
+    "security": {
+      "signins": "Entradas, últimos 14 dias",
+      "openAudit": "Registo de auditoria",
+      "stat": {
+        "failed": "Falhadas",
+        "blocked": "Bloqueadas",
+        "locked": "Códigos bloqueados"
+      },
+      "recent": "Últimas tentativas de entrada",
+      "onlyProblems": "Só problemas",
+      "noRecent": "Sem tentativas de entrada nos últimos 14 dias",
+      "activityFailed": "Não foi possível carregar a atividade de entrada",
+      "password": "Regras de senha",
+      "passwordHint": "O que uma senha nova precisa. Aplica-se da próxima vez que alguém definir uma.",
+      "minLength": "Pelo menos",
+      "mustHave": "Tem de ter",
+      "kind": {
+        "lower": "Minúscula",
+        "upper": "Maiúscula",
+        "number": "Número",
+        "symbol": "Símbolo"
+      },
+      "weakRules": "Estas regras permitem senhas fracas. Peça pelo menos 10 caracteres ou mais tipos de caracteres.",
+      "reuse": "Sem reutilização",
+      "reuseHint": "Recusar senhas usadas recentemente.",
+      "reuseOff": "Permitir reutilização",
+      "reuseLast": "Não as últimas {n}",
+      "expiry": "Pedir uma senha nova",
+      "expiryHint": "As pessoas definem uma nova na próxima vez que entrarem.",
+      "never": "Nunca",
+      "days": "{n} dia | {n} dias",
+      "hours": "{n} hora | {n} horas",
+      "try": "Experimentar uma senha",
+      "tryHint": "Escreva uma para ver como é verificada com estas regras. Não é guardada.",
+      "sessions": "Sessões",
+      "sessionsHint": "Quanto tempo as pessoas ficam com sessão iniciada e quem está ligado agora.",
+      "idle": "Terminar sessão após inatividade de",
+      "idleHint": "Conta desde a última ação.",
+      "max": "Terminar sessão no máximo após",
+      "maxHint": "Mesmo quando continuam a trabalhar.",
+      "idleShort": "Menos de 1 hora",
+      "idleShortDesc": "As pessoas podem perder trabalho não guardado no criador de formulários. Recomenda-se 1 hora ou mais.",
+      "active": "{n} ligada agora | {n} ligadas agora",
+      "allTitle": "Terminar a sessão de todos os outros?",
+      "allDesc": "{n} sessão termina de imediato. Essas pessoas voltam a entrar da próxima vez. | {n} sessões terminam de imediato. Essas pessoas voltam a entrar da próxima vez.",
+      "allConfirm": "Terminar a sessão de todos os outros",
+      "signedOut": "{n} sessão terminada | {n} sessões terminadas",
+      "signOutOne": "Terminar a sessão de {name}",
+      "thisDevice": "Você",
+      "since": "Sessão iniciada {when}",
+      "unknownDevice": "Dispositivo desconhecido",
+      "sessionsFailed": "Não foi possível carregar as sessões",
+      "network": "Redes permitidas",
+      "networkHint": "Limite a entrada e o uso do portal aos seus escritórios ou VPN.",
+      "allowlist": "Lista de IPs permitidos",
+      "allowlistHint": "Quando ativa, as pessoas só podem entrar e trabalhar a partir dos endereços abaixo.",
+      "myIp": "O seu endereço",
+      "onList": "Na lista",
+      "notOnList": "Fora da lista",
+      "addMine": "Adicionar o meu endereço",
+      "mine": "O meu endereço",
+      "address": "Endereço ou intervalo",
+      "label": "Etiqueta",
+      "ipPlaceholder": "ex. 203.0.113.0/24",
+      "labelPlaceholder": "ex. Sede",
+      "removeIp": "Remover endereço",
+      "noIps": "Ainda sem endereços",
+      "noIpsDesc": "Adicione os endereços dos seus escritórios ou VPN, ou o seu.",
+      "addIp": "Adicionar endereço",
+      "ipExamples": "Um endereço (198.51.100.7) ou um intervalo (203.0.113.0/24, 2001:db8::/32).",
+      "lockout": "Ficaria sem acesso",
+      "lockoutDesc": "O seu próprio endereço não está na lista, por isso a gravação é recusada. Adicione-o primeiro."
     }
   }
 }

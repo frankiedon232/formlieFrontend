@@ -602,7 +602,12 @@
     "FRM-API-1019": "Este formulario no está abierto al servicio de API. Activa la API en sus ajustes de Compartir.",
     "FRM-API-1020": "Esta Formalie-Key ya se usó en otra solicitud distinta. Envía una clave nueva con cada registro nuevo.",
     "FRM-ORG-1001": "Ya existe una entrada con este nombre.",
-    "FRM-ORG-1002": "Aún hay formularios que la usan. Archívala o combínala con otra."
+    "FRM-ORG-1002": "Aún hay formularios que la usan. Archívala o combínala con otra.",
+    "FRM-AUTH-1014": "Esta dirección de correo no puede iniciar sesión en este espacio de trabajo.",
+    "FRM-AUTH-1015": "Tu contraseña ha caducado. Establece una nueva.",
+    "FRM-AUTH-1016": "No se permite iniciar sesión desde esta red.",
+    "FRM-AUTH-1017": "Este cambio te dejaría fuera. Revisa tu propio dominio y dirección de correo.",
+    "FRM-AUTH-1018": "Usaste esta contraseña hace poco. Elige otra."
   },
   "errorUi": {
     "reference": "Referencia: {id}",
@@ -715,7 +720,8 @@
       "passwordPolicy": "Usa al menos {min} caracteres con mayúsculas, minúsculas y un número.",
       "companyName": "Introduce el nombre de tu empresa.",
       "subdomain": "De 3 a 63 letras minúsculas, números o guiones.",
-      "passwordMatch": "Las contraseñas no coinciden."
+      "passwordMatch": "Las contraseñas no coinciden.",
+      "passwordRules": "Usa al menos {min} caracteres y todo lo marcado abajo."
     },
     "login": {
       "title": "Iniciar sesión",
@@ -762,7 +768,8 @@
         "lower": "Letra minúscula",
         "upper": "Letra mayúscula",
         "number": "Número",
-        "symbol": "Símbolo (opcional)"
+        "symbol": "Símbolo (opcional)",
+        "symbolRequired": "Símbolo"
       }
     },
     "providers": {
@@ -809,7 +816,9 @@
       "desc": "Introduce tu correo y te enviaremos un código para crear una nueva contraseña.",
       "back": "Volver a iniciar sesión",
       "send": "Enviar código",
-      "save": "Guardar nueva contraseña"
+      "save": "Guardar nueva contraseña",
+      "expired": "Tu contraseña ha caducado",
+      "expiredDesc": "Tu espacio de trabajo pide una contraseña nueva de vez en cuando. Recibe un código y elige una nueva."
     },
     "welcome": {
       "title": "Preparando tu espacio",
@@ -6328,7 +6337,11 @@
       "details": "{n} de {total} datos rellenados",
       "set": "{n} de {total} definidos",
       "themes": "{n} tema | {n} temas",
-      "pages": "{n} diseño de página | {n} diseños de página"
+      "pages": "{n} diseño de página | {n} diseños de página",
+      "signin": "{n} forma de iniciar sesión | {n} formas de iniciar sesión",
+      "idleMinutes": "Cierre de sesión tras {n} min de inactividad",
+      "idleHours": "Cierre de sesión tras {n} hora de inactividad | Cierre de sesión tras {n} horas de inactividad",
+      "allowlist": "Lista de IP permitidas activada"
     },
     "next": {
       "title": "Siguiente paso",
@@ -6352,7 +6365,11 @@
       "color": "Usa un color como #2563EB.",
       "timezone": "Elige una zona horaria de la lista.",
       "currency": "Elige una moneda de la lista.",
-      "form_languages": "Mantén al menos un idioma para los formularios."
+      "form_languages": "Mantén al menos un idioma para los formularios.",
+      "methods": "Mantén al menos una forma de iniciar sesión.",
+      "domain": "Introduce un dominio como example.com.",
+      "ip": "Introduce una dirección o un rango como 203.0.113.0/24.",
+      "ip_empty": "Añade al menos una dirección o desactiva la lista de permitidas."
     },
     "company": {
       "names": "Nombres",
@@ -6578,6 +6595,120 @@
         "imported": "{n} añadido | {n} añadidos",
         "skipped": "{n} omitido (ya existe o es demasiado largo) | {n} omitidos (ya existen o son demasiado largos)"
       }
+    },
+    "signin": {
+      "methods": "Formas de iniciar sesión",
+      "methodsHint": "Solo estas aparecen en tu página de inicio de sesión. Al menos una sigue activa.",
+      "password": "Correo y contraseña",
+      "passwordHint": "Las personas inician sesión con su correo de trabajo y una contraseña, y luego un código.",
+      "providerHint": "Las personas inician sesión con su cuenta de {name}, y luego un código.",
+      "onlyOne": "Solo queda una",
+      "providersNote": "El proveedor debe conocer a la persona por el mismo correo que en este espacio de trabajo.",
+      "passwordOffTitle": "¿Desactivar correo y contraseña?",
+      "passwordOffDesc": "Entonces las personas solo podrán iniciar sesión con los proveedores que sigan activos. Quien no tenga una de esas cuentas ya no podrá iniciar sesión.",
+      "passwordOff": "Desactivar",
+      "codes": "Códigos de inicio de sesión",
+      "codesHint": "El código de un solo uso que demuestra que realmente son ellos.",
+      "always": "Cada inicio de sesión pide un código",
+      "alwaysHint": "La verificación en dos pasos está activada para todos, así que una contraseña robada no basta.",
+      "alwaysOn": "Siempre activo",
+      "email": "Correo",
+      "emailHint": "Siempre disponible, en la dirección con la que inician sesión.",
+      "sms": "SMS",
+      "smsHint": "Se ofrece a las personas con un número móvil en su cuenta.",
+      "app": "App de autenticación",
+      "appHint": "Códigos de una aplicación en su teléfono.",
+      "expiry": "Un código dura",
+      "expiryHint": "Después, las personas piden uno nuevo.",
+      "attempts": "Intentos fallidos permitidos",
+      "attemptsHint": "Después, el código deja de funcionar.",
+      "minutes": "{n} minuto | {n} minutos",
+      "tries": "{n} intento | {n} intentos",
+      "domains": "Dominios de correo permitidos",
+      "domainsHint": "Solo las personas con una dirección de correo en estos dominios pueden iniciar sesión o ser invitadas.",
+      "domainsLabel": "Dominios",
+      "domainPlaceholder": "example.com, luego Intro",
+      "anyDomain": "Cualquier dirección de correo puede iniciar sesión.",
+      "badDomain": "No es un dominio: {list}",
+      "ownMissing": "Tu propio dominio {domain} no está en la lista",
+      "ownMissingDesc": "No podrías volver a iniciar sesión, por eso no se puede guardar hasta que esté.",
+      "addOwn": "Añadir {domain}",
+      "sumMethods": "{n} forma de iniciar sesión en tu página de acceso | {n} formas de iniciar sesión en tu página de acceso",
+      "sumCode": "Los códigos duran {minutes} min, {tries} intentos fallidos",
+      "sumDomains": "Solo {list}"
+    },
+    "security": {
+      "signins": "Inicios de sesión, últimos 14 días",
+      "openAudit": "Registro de auditoría",
+      "stat": {
+        "failed": "Fallidos",
+        "blocked": "Bloqueados",
+        "locked": "Códigos bloqueados"
+      },
+      "recent": "Últimos intentos de inicio de sesión",
+      "onlyProblems": "Solo problemas",
+      "noRecent": "Sin intentos de inicio de sesión en los últimos 14 días",
+      "activityFailed": "No se pudo cargar la actividad de inicio de sesión",
+      "password": "Reglas de contraseña",
+      "passwordHint": "Lo que necesita una contraseña nueva. Se aplica la próxima vez que alguien establezca una.",
+      "minLength": "Al menos",
+      "mustHave": "Debe tener",
+      "kind": {
+        "lower": "Minúscula",
+        "upper": "Mayúscula",
+        "number": "Número",
+        "symbol": "Símbolo"
+      },
+      "weakRules": "Estas reglas permiten contraseñas débiles. Pide al menos 10 caracteres o más tipos de caracteres.",
+      "reuse": "Sin reutilización",
+      "reuseHint": "Rechazar contraseñas usadas hace poco.",
+      "reuseOff": "Permitir reutilización",
+      "reuseLast": "No las últimas {n}",
+      "expiry": "Pedir una contraseña nueva",
+      "expiryHint": "Las personas establecen una nueva la próxima vez que inicien sesión.",
+      "never": "Nunca",
+      "days": "{n} día | {n} días",
+      "hours": "{n} hora | {n} horas",
+      "try": "Probar una contraseña",
+      "tryHint": "Escribe una para ver cómo se comprueba con estas reglas. No se guarda.",
+      "sessions": "Sesiones",
+      "sessionsHint": "Cuánto tiempo permanecen conectadas las personas y quién está conectado ahora.",
+      "idle": "Cerrar sesión tras inactividad de",
+      "idleHint": "Cuenta desde lo último que hicieron.",
+      "max": "Cerrar sesión como máximo tras",
+      "maxHint": "Incluso cuando siguen trabajando.",
+      "idleShort": "Menos de 1 hora",
+      "idleShortDesc": "Las personas pueden perder trabajo sin guardar en el creador de formularios. Se recomienda 1 hora o más.",
+      "active": "{n} conectada ahora | {n} conectadas ahora",
+      "allTitle": "¿Cerrar la sesión de todos los demás?",
+      "allDesc": "{n} sesión termina de inmediato. Esas personas volverán a iniciar sesión la próxima vez. | {n} sesiones terminan de inmediato. Esas personas volverán a iniciar sesión la próxima vez.",
+      "allConfirm": "Cerrar la sesión de todos los demás",
+      "signedOut": "{n} sesión cerrada | {n} sesiones cerradas",
+      "signOutOne": "Cerrar la sesión de {name}",
+      "thisDevice": "Tú",
+      "since": "Conectado {when}",
+      "unknownDevice": "Dispositivo desconocido",
+      "sessionsFailed": "No se pudieron cargar las sesiones",
+      "network": "Redes permitidas",
+      "networkHint": "Limita el inicio de sesión y el uso del portal a tus oficinas o tu VPN.",
+      "allowlist": "Lista de IP permitidas",
+      "allowlistHint": "Si está activa, las personas solo pueden iniciar sesión y trabajar desde las direcciones de abajo.",
+      "myIp": "Tu dirección",
+      "onList": "En la lista",
+      "notOnList": "No está en la lista",
+      "addMine": "Añadir mi dirección",
+      "mine": "Mi dirección",
+      "address": "Dirección o rango",
+      "label": "Etiqueta",
+      "ipPlaceholder": "p. ej. 203.0.113.0/24",
+      "labelPlaceholder": "p. ej. Oficina central",
+      "removeIp": "Quitar dirección",
+      "noIps": "Aún no hay direcciones",
+      "noIpsDesc": "Añade las direcciones de tus oficinas o tu VPN, o la tuya.",
+      "addIp": "Añadir dirección",
+      "ipExamples": "Una dirección (198.51.100.7) o un rango (203.0.113.0/24, 2001:db8::/32).",
+      "lockout": "Te quedarías sin acceso",
+      "lockoutDesc": "Tu propia dirección no está en la lista, por eso no se puede guardar. Añádela primero."
     }
   }
 }

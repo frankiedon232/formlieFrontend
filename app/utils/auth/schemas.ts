@@ -3,16 +3,17 @@
  * messages translated. Usage: `const schema = computed(() => loginSchema(t))`.
  */
 import { z } from 'zod'
+import type { PasswordPolicy } from '#shared/types/auth'
 
 type T = (key: string, params?: Record<string, unknown>) => string
 
 const email = (t: T) => z.email(t('auth.validation.email'))
 
-const strongPassword = (t: T) =>
+/** Meets the workspace's password rules (the default on manage.*); the meter lists what is missing. */
+const strongPassword = (t: T, policy: PasswordPolicy = DEFAULT_PASSWORD_POLICY) =>
   z
     .string()
-    .min(PASSWORD_MIN_LENGTH, t('auth.validation.passwordPolicy', { min: PASSWORD_MIN_LENGTH }))
-    .refine(meetsPasswordPolicy, t('auth.validation.passwordPolicy', { min: PASSWORD_MIN_LENGTH }))
+    .refine(value => meetsPasswordPolicy(value, policy), t('auth.validation.passwordRules', { min: policy.min_length }))
 
 export const loginSchema = (t: T) =>
   z.object({ email: email(t), password: z.string().min(1, t('auth.validation.password')) })
@@ -38,9 +39,9 @@ export const workspaceSchema = (t: T) =>
       .refine(isValidSubdomain, t('auth.validation.subdomain')),
   })
 
-export const resetSchema = (t: T) =>
+export const resetSchema = (t: T, policy?: PasswordPolicy) =>
   z
-    .object({ password: strongPassword(t), confirm: z.string() })
+    .object({ password: strongPassword(t, policy), confirm: z.string() })
     .refine(value => value.password === value.confirm, {
       message: t('auth.validation.passwordMatch'),
       path: ['confirm'],

@@ -602,7 +602,12 @@
     "FRM-API-1019": "Formulir ini tidak terbuka untuk layanan API. Aktifkan API di pengaturan Bagikan.",
     "FRM-API-1020": "Formalie-Key ini sudah dipakai untuk permintaan yang berbeda. Kirim key baru untuk setiap data baru.",
     "FRM-ORG-1001": "Entri dengan nama ini sudah ada.",
-    "FRM-ORG-1002": "Masih ada formulir yang memakainya. Arsipkan atau gabungkan dengan entri lain."
+    "FRM-ORG-1002": "Masih ada formulir yang memakainya. Arsipkan atau gabungkan dengan entri lain.",
+    "FRM-AUTH-1014": "Alamat email ini tidak dapat masuk ke ruang kerja ini.",
+    "FRM-AUTH-1015": "Kata sandi Anda sudah kedaluwarsa. Atur yang baru.",
+    "FRM-AUTH-1016": "Masuk dari jaringan ini tidak diizinkan.",
+    "FRM-AUTH-1017": "Perubahan ini akan mengunci Anda. Periksa domain dan alamat email Anda sendiri.",
+    "FRM-AUTH-1018": "Anda baru saja memakai kata sandi ini. Pilih yang lain."
   },
   "errorUi": {
     "reference": "Referensi: {id}",
@@ -715,7 +720,8 @@
       "passwordPolicy": "Minimal {min} karakter dengan huruf besar, huruf kecil, dan angka.",
       "companyName": "Masukkan nama perusahaan Anda.",
       "subdomain": "Gunakan 3–63 huruf kecil, angka, atau tanda hubung.",
-      "passwordMatch": "Kata sandi tidak cocok."
+      "passwordMatch": "Kata sandi tidak cocok.",
+      "passwordRules": "Gunakan minimal {min} karakter dan semua yang dicentang di bawah."
     },
     "login": {
       "title": "Masuk",
@@ -762,7 +768,8 @@
         "lower": "Huruf kecil",
         "upper": "Huruf besar",
         "number": "Angka",
-        "symbol": "Simbol (opsional)"
+        "symbol": "Simbol (opsional)",
+        "symbolRequired": "Simbol"
       }
     },
     "providers": {
@@ -809,7 +816,9 @@
       "desc": "Masukkan email Anda, kami akan mengirim kode untuk mengatur kata sandi baru.",
       "back": "Kembali ke halaman masuk",
       "send": "Kirim kode",
-      "save": "Simpan kata sandi baru"
+      "save": "Simpan kata sandi baru",
+      "expired": "Kata sandi Anda sudah kedaluwarsa",
+      "expiredDesc": "Ruang kerja Anda sesekali meminta kata sandi baru. Dapatkan kode dan pilih yang baru."
     },
     "welcome": {
       "title": "Menyiapkan ruang kerja Anda",
@@ -6328,7 +6337,11 @@
       "details": "{n} dari {total} detail terisi",
       "set": "{n} dari {total} diatur",
       "themes": "{n} tema | {n} tema",
-      "pages": "{n} desain halaman | {n} desain halaman"
+      "pages": "{n} desain halaman | {n} desain halaman",
+      "signin": "{n} cara masuk | {n} cara masuk",
+      "idleMinutes": "Keluar otomatis setelah {n} mnt tidak aktif",
+      "idleHours": "Keluar otomatis setelah {n} jam tidak aktif | Keluar otomatis setelah {n} jam tidak aktif",
+      "allowlist": "Daftar IP yang diizinkan aktif"
     },
     "next": {
       "title": "Langkah berikutnya",
@@ -6352,7 +6365,11 @@
       "color": "Gunakan warna seperti #2563EB.",
       "timezone": "Pilih zona waktu dari daftar.",
       "currency": "Pilih mata uang dari daftar.",
-      "form_languages": "Sisakan setidaknya satu bahasa untuk formulir."
+      "form_languages": "Sisakan setidaknya satu bahasa untuk formulir.",
+      "methods": "Sisakan setidaknya satu cara untuk masuk.",
+      "domain": "Masukkan domain seperti example.com.",
+      "ip": "Masukkan alamat atau rentang seperti 203.0.113.0/24.",
+      "ip_empty": "Tambahkan setidaknya satu alamat, atau matikan daftar yang diizinkan."
     },
     "company": {
       "names": "Nama",
@@ -6578,6 +6595,120 @@
         "imported": "{n} ditambahkan | {n} ditambahkan",
         "skipped": "{n} dilewati (sudah ada atau terlalu panjang) | {n} dilewati (sudah ada atau terlalu panjang)"
       }
+    },
+    "signin": {
+      "methods": "Cara masuk",
+      "methodsHint": "Hanya ini yang muncul di halaman masuk Anda. Setidaknya satu tetap aktif.",
+      "password": "Email dan kata sandi",
+      "passwordHint": "Orang masuk dengan email kerja dan kata sandi, lalu kode.",
+      "providerHint": "Orang masuk dengan akun {name} mereka, lalu kode.",
+      "onlyOne": "Tinggal satu",
+      "providersNote": "Penyedia harus mengenal orang tersebut dengan alamat email yang sama seperti di ruang kerja ini.",
+      "passwordOffTitle": "Matikan email dan kata sandi?",
+      "passwordOffDesc": "Orang hanya bisa masuk dengan penyedia yang tetap aktif. Siapa pun yang tidak punya salah satu akun itu tidak bisa masuk lagi.",
+      "passwordOff": "Matikan",
+      "codes": "Kode masuk",
+      "codesHint": "Kode sekali pakai yang membuktikan bahwa itu benar-benar mereka.",
+      "always": "Setiap masuk meminta kode",
+      "alwaysHint": "Masuk dua langkah aktif untuk semua orang, jadi kata sandi yang dicuri tidak cukup.",
+      "alwaysOn": "Selalu aktif",
+      "email": "Email",
+      "emailHint": "Selalu tersedia, ke alamat yang dipakai orang untuk masuk.",
+      "sms": "Pesan teks",
+      "smsHint": "Ditawarkan kepada orang yang punya nomor ponsel di akunnya.",
+      "app": "Aplikasi autentikator",
+      "appHint": "Kode dari aplikasi di ponsel mereka.",
+      "expiry": "Sebuah kode berlaku selama",
+      "expiryHint": "Setelah itu, orang meminta kode baru.",
+      "attempts": "Percobaan salah yang diizinkan",
+      "attemptsHint": "Setelah itu kode berhenti berfungsi.",
+      "minutes": "{n} menit | {n} menit",
+      "tries": "{n} percobaan | {n} percobaan",
+      "domains": "Domain email yang diizinkan",
+      "domainsHint": "Hanya orang dengan alamat email di domain ini yang bisa masuk atau diundang.",
+      "domainsLabel": "Domain",
+      "domainPlaceholder": "example.com, lalu Enter",
+      "anyDomain": "Alamat email apa pun bisa masuk.",
+      "badDomain": "Bukan domain: {list}",
+      "ownMissing": "Domain Anda sendiri {domain} tidak ada di daftar",
+      "ownMissingDesc": "Anda tidak akan bisa masuk lagi, jadi penyimpanan ditolak sampai domain itu ditambahkan.",
+      "addOwn": "Tambahkan {domain}",
+      "sumMethods": "{n} cara masuk di halaman masuk Anda | {n} cara masuk di halaman masuk Anda",
+      "sumCode": "Kode berlaku {minutes} mnt, {tries} percobaan salah",
+      "sumDomains": "Hanya {list}"
+    },
+    "security": {
+      "signins": "Aktivitas masuk, 14 hari terakhir",
+      "openAudit": "Jejak audit",
+      "stat": {
+        "failed": "Gagal",
+        "blocked": "Diblokir",
+        "locked": "Kode terkunci"
+      },
+      "recent": "Percobaan masuk terbaru",
+      "onlyProblems": "Hanya masalah",
+      "noRecent": "Tidak ada percobaan masuk dalam 14 hari terakhir",
+      "activityFailed": "Aktivitas masuk tidak dapat dimuat",
+      "password": "Aturan kata sandi",
+      "passwordHint": "Apa yang dibutuhkan kata sandi baru. Berlaku saat seseorang menetapkan kata sandi berikutnya.",
+      "minLength": "Minimal",
+      "mustHave": "Harus memiliki",
+      "kind": {
+        "lower": "Huruf kecil",
+        "upper": "Huruf besar",
+        "number": "Angka",
+        "symbol": "Simbol"
+      },
+      "weakRules": "Aturan ini mengizinkan kata sandi lemah. Minta minimal 10 karakter atau lebih banyak jenis karakter.",
+      "reuse": "Tanpa pemakaian ulang",
+      "reuseHint": "Tolak kata sandi yang baru dipakai.",
+      "reuseOff": "Izinkan pemakaian ulang",
+      "reuseLast": "Bukan {n} terakhir",
+      "expiry": "Minta kata sandi baru",
+      "expiryHint": "Orang menetapkan yang baru saat masuk berikutnya.",
+      "never": "Tidak pernah",
+      "days": "{n} hari | {n} hari",
+      "hours": "{n} jam | {n} jam",
+      "try": "Coba kata sandi",
+      "tryHint": "Ketik satu untuk melihatnya diperiksa dengan aturan ini. Tidak disimpan.",
+      "sessions": "Sesi",
+      "sessionsHint": "Berapa lama orang tetap masuk, dan siapa yang sedang masuk sekarang.",
+      "idle": "Keluarkan setelah tidak aktif selama",
+      "idleHint": "Dihitung dari aktivitas terakhir mereka.",
+      "max": "Keluarkan paling lambat setelah",
+      "maxHint": "Meskipun mereka terus bekerja.",
+      "idleShort": "Kurang dari 1 jam",
+      "idleShortDesc": "Orang bisa kehilangan pekerjaan yang belum disimpan di pembuat formulir. Disarankan 1 jam atau lebih.",
+      "active": "{n} sedang masuk | {n} sedang masuk",
+      "allTitle": "Keluarkan semua orang lain?",
+      "allDesc": "{n} sesi berakhir seketika. Orang itu masuk lagi lain kali. | {n} sesi berakhir seketika. Orang-orang itu masuk lagi lain kali.",
+      "allConfirm": "Keluarkan semua orang lain",
+      "signedOut": "{n} sesi berakhir | {n} sesi berakhir",
+      "signOutOne": "Keluarkan {name}",
+      "thisDevice": "Anda",
+      "since": "Masuk {when}",
+      "unknownDevice": "Perangkat tidak dikenal",
+      "sessionsFailed": "Sesi tidak dapat dimuat",
+      "network": "Jaringan yang diizinkan",
+      "networkHint": "Batasi masuk dan penggunaan portal ke kantor atau VPN Anda.",
+      "allowlist": "Daftar IP yang diizinkan",
+      "allowlistHint": "Saat aktif, orang hanya bisa masuk dan bekerja dari alamat di bawah.",
+      "myIp": "Alamat Anda",
+      "onList": "Ada di daftar",
+      "notOnList": "Tidak ada di daftar",
+      "addMine": "Tambahkan alamat saya",
+      "mine": "Alamat saya",
+      "address": "Alamat atau rentang",
+      "label": "Label",
+      "ipPlaceholder": "mis. 203.0.113.0/24",
+      "labelPlaceholder": "mis. Kantor pusat",
+      "removeIp": "Hapus alamat",
+      "noIps": "Belum ada alamat",
+      "noIpsDesc": "Tambahkan alamat kantor atau VPN Anda, atau alamat Anda sendiri.",
+      "addIp": "Tambah alamat",
+      "ipExamples": "Satu alamat (198.51.100.7) atau satu rentang (203.0.113.0/24, 2001:db8::/32).",
+      "lockout": "Anda akan mengunci diri sendiri",
+      "lockoutDesc": "Alamat Anda sendiri tidak ada di daftar, jadi penyimpanan ditolak. Tambahkan dulu."
     }
   }
 }

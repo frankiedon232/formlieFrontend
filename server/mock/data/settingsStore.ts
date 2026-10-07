@@ -3,13 +3,22 @@
  * with company, branding and localisation. Onboarding reads and writes the same record, and the
  * workspace's public profile (sign-in page, public forms) is built from it.
  */
-import type { SettingsChange, SettingsSection, WorkspaceSettings } from '#shared/types/settings'
+import type { SecuritySettings, SettingsChange, SettingsSection, SigninSettings, WorkspaceSettings } from '#shared/types/settings'
+import { DEFAULT_PASSWORD_POLICY } from '#shared/utils/auth/password'
 import { APP_LOCALES } from '#shared/utils/i18n/locales'
 import { loadPersisted, savePersisted } from '../core/persist'
 import type { MockTenant } from './tenants'
 
 const stores = new Map<string, WorkspaceSettings>(Object.entries(loadPersisted<Record<string, WorkspaceSettings>>('settings', {})))
 export const saveSettings = () => savePersisted('settings', () => Object.fromEntries(stores))
+
+/** Sign-in and security start from the workspace's methods and Formalie's defaults (F14 M3). */
+const seedSignin = (tenant: MockTenant): SigninSettings => ({ methods: [...tenant.auth_providers], code: { sms: true, expiry_minutes: 5, max_attempts: 5 }, allowed_domains: [] })
+const seedSecurity = (): SecuritySettings => ({
+  password: { ...DEFAULT_PASSWORD_POLICY, reuse_last: 0, expiry_days: 0 },
+  sessions: { idle_minutes: 60, max_hours: 168 },
+  ip_allowlist: { enabled: false, entries: [] },
+})
 
 function seed(tenant: MockTenant): WorkspaceSettings {
   return {
@@ -27,7 +36,9 @@ function seed(tenant: MockTenant): WorkspaceSettings {
     },
     branding: { logo_url: tenant.logo_url ?? null, logo_dark_url: null, favicon_url: null, brand_color: tenant.brand_color ?? null, signin_image_url: null, signin_message: null },
     localisation: { language: 'en', timezone: 'UTC', currency: 'USD', date_format: 'DD/MM/YYYY', number_format: '1,234.56', week_start: 'monday', form_languages: APP_LOCALES.map(item => item.code) },
-    updated: { company: null, branding: null, localisation: null },
+    signin: seedSignin(tenant),
+    security: seedSecurity(),
+    updated: { company: null, branding: null, localisation: null, signin: null, security: null },
   }
 }
 
@@ -37,7 +48,16 @@ export function settingsOf(tenant: MockTenant): WorkspaceSettings {
     settings = seed(tenant)
     stores.set(tenant.id, settings)
     saveSettings()
+  } else if (!settings.signin || !settings.security) {
+    // Saved before sign-in and security existed (F14 M3)
+    settings.signin ??= seedSignin(tenant)
+    settings.security ??= seedSecurity()
+    settings.updated.signin ??= null
+    settings.updated.security ??= null
+    saveSettings()
   }
+  // The sign-in methods live here; the workspace record follows them
+  tenant.auth_providers = [...settings.signin.methods]
   return settings
 }
 

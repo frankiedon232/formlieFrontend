@@ -19,14 +19,7 @@ const oauthNotice = computed(() =>
     : null,
 )
 const { handle } = useErrorHandler()
-// Brand names (not translated).
-const PROVIDER_NAMES: Record<string, string> = {
-  google: 'Google',
-  microsoft: 'Microsoft',
-  apple: 'Apple',
-  facebook: 'Facebook',
-}
-const providerName = (value: unknown) => PROVIDER_NAMES[String(value ?? '')] ?? String(value ?? '')
+const providerName = (value: unknown) => PROVIDER_NAMES[String(value ?? '') as SocialProvider] ?? String(value ?? '')
 
 useHead({ title: () => t('auth.signup.title') })
 

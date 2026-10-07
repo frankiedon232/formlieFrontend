@@ -85,7 +85,7 @@ const name = computed(() => store.settings.value?.company.display_name ?? tenant
         </SettingsBlock>
       </div>
       <aside class="order-first max-w-xl 2xl:sticky 2xl:top-0 2xl:order-none 2xl:max-w-none 2xl:self-start">
-        <SettingsSigninPreview :name="name" :logo="draft.logo_url" :logo-dark="draft.logo_dark_url" :image="draft.signin_image_url" :message="draft.signin_message" :color="draft.brand_color" :favicon="draft.favicon_url" />
+        <SettingsSigninPreview :name="name" :logo="draft.logo_url" :logo-dark="draft.logo_dark_url" :image="draft.signin_image_url" :message="draft.signin_message" :color="draft.brand_color" :favicon="draft.favicon_url" :methods="store.settings.value?.signin.methods" />
       </aside>
     </div>
   </SettingsPage>

@@ -602,7 +602,12 @@
     "FRM-API-1019": "Fomu hii haijafunguliwa kwa huduma ya API. Washa API kwenye mipangilio ya Shiriki.",
     "FRM-API-1020": "Formalie-Key hii imeshatumika kwa ombi tofauti. Tuma ufunguo mpya kwa kila rekodi mpya.",
     "FRM-ORG-1001": "Kipengee chenye jina hili tayari kipo.",
-    "FRM-ORG-1002": "Fomu bado zinakitumia. Kihifadhi kwenye kumbukumbu au kiunganishe na kingine."
+    "FRM-ORG-1002": "Fomu bado zinakitumia. Kihifadhi kwenye kumbukumbu au kiunganishe na kingine.",
+    "FRM-AUTH-1014": "Anwani hii ya barua pepe haiwezi kuingia katika eneo hili la kazi.",
+    "FRM-AUTH-1015": "Nenosiri lako limeisha muda. Weka jipya.",
+    "FRM-AUTH-1016": "Kuingia hakuruhusiwi kutoka mtandao huu.",
+    "FRM-AUTH-1017": "Mabadiliko haya yangekufungia nje. Angalia kikoa na anwani yako ya barua pepe.",
+    "FRM-AUTH-1018": "Ulitumia nenosiri hili hivi karibuni. Chagua lingine."
   },
   "errorUi": {
     "reference": "Kumbukumbu: {id}",
@@ -715,7 +720,8 @@
       "passwordPolicy": "Tumia angalau herufi {min} zenye herufi kubwa, ndogo na namba.",
       "companyName": "Weka jina la kampuni yako.",
       "subdomain": "Tumia herufi ndogo, namba au vistari 3–63.",
-      "passwordMatch": "Manenosiri hayalingani."
+      "passwordMatch": "Manenosiri hayalingani.",
+      "passwordRules": "Tumia angalau herufi {min} na kila kitu kilichotiwa alama hapa chini."
     },
     "login": {
       "title": "Ingia",
@@ -762,7 +768,8 @@
         "lower": "Herufi ndogo",
         "upper": "Herufi kubwa",
         "number": "Namba",
-        "symbol": "Alama (si lazima)"
+        "symbol": "Alama (si lazima)",
+        "symbolRequired": "Alama"
       }
     },
     "providers": {
@@ -809,7 +816,9 @@
       "desc": "Weka barua pepe yako, tutakutumia msimbo wa kuweka nenosiri jipya.",
       "back": "Rudi kwenye kuingia",
       "send": "Tuma msimbo",
-      "save": "Hifadhi nenosiri jipya"
+      "save": "Hifadhi nenosiri jipya",
+      "expired": "Nenosiri lako limeisha muda",
+      "expiredDesc": "Eneo lako la kazi huomba nenosiri jipya mara kwa mara. Pata msimbo na uchague jipya."
     },
     "welcome": {
       "title": "Tunaandaa eneo lako la kazi",
@@ -6328,7 +6337,11 @@
       "details": "Maelezo {n} kati ya {total} yamejazwa",
       "set": "{n} kati ya {total} yamewekwa",
       "themes": "Mandhari {n} | Mandhari {n}",
-      "pages": "Muundo wa ukurasa {n} | Miundo ya kurasa {n}"
+      "pages": "Muundo wa ukurasa {n} | Miundo ya kurasa {n}",
+      "signin": "Njia {n} ya kuingia | Njia {n} za kuingia",
+      "idleMinutes": "Kutoka baada ya dakika {n} bila shughuli",
+      "idleHours": "Kutoka baada ya saa {n} bila shughuli | Kutoka baada ya saa {n} bila shughuli",
+      "allowlist": "Orodha ya IP zinazoruhusiwa imewashwa"
     },
     "next": {
       "title": "Hatua inayofuata",
@@ -6352,7 +6365,11 @@
       "color": "Tumia rangi kama #2563EB.",
       "timezone": "Chagua saa za eneo kutoka kwenye orodha.",
       "currency": "Chagua sarafu kutoka kwenye orodha.",
-      "form_languages": "Weka angalau lugha moja kwa fomu."
+      "form_languages": "Weka angalau lugha moja kwa fomu.",
+      "methods": "Acha angalau njia moja ya kuingia.",
+      "domain": "Weka kikoa kama example.com.",
+      "ip": "Weka anwani au safu kama 203.0.113.0/24.",
+      "ip_empty": "Ongeza angalau anwani moja, au zima orodha ya kuruhusiwa."
     },
     "company": {
       "names": "Majina",
@@ -6578,6 +6595,120 @@
         "imported": "{n} imeongezwa | {n} zimeongezwa",
         "skipped": "{n} imerukwa (tayari ipo au ni ndefu mno) | {n} zimerukwa (tayari zipo au ni ndefu mno)"
       }
+    },
+    "signin": {
+      "methods": "Njia za kuingia",
+      "methodsHint": "Hizi pekee huonekana kwenye ukurasa wako wa kuingia. Angalau moja hubaki imewashwa.",
+      "password": "Barua pepe na nenosiri",
+      "passwordHint": "Watu huingia kwa barua pepe ya kazi na nenosiri, kisha msimbo.",
+      "providerHint": "Watu huingia kwa akaunti yao ya {name}, kisha msimbo.",
+      "onlyOne": "Imebaki moja tu",
+      "providersNote": "Mtoa huduma lazima amjue mtu kwa anwani ile ile ya barua pepe kama katika eneo hili la kazi.",
+      "passwordOffTitle": "Zima barua pepe na nenosiri?",
+      "passwordOffDesc": "Watu wataweza kuingia tu kwa watoa huduma wanaobaki wamewashwa. Yeyote asiye na akaunti hizo hataweza kuingia tena.",
+      "passwordOff": "Zima",
+      "codes": "Misimbo ya kuingia",
+      "codesHint": "Msimbo wa mara moja unaothibitisha kuwa ni wao kweli.",
+      "always": "Kila kuingia huomba msimbo",
+      "alwaysHint": "Kuingia kwa hatua mbili kumewashwa kwa kila mtu, kwa hivyo nenosiri lililoibwa halitoshi.",
+      "alwaysOn": "Imewashwa kila wakati",
+      "email": "Barua pepe",
+      "emailHint": "Hutolewa kila wakati, kwa anwani ambayo watu huingia nayo.",
+      "sms": "Ujumbe mfupi",
+      "smsHint": "Hutolewa kwa watu wenye namba ya simu ya mkononi kwenye akaunti yao.",
+      "app": "Programu ya uthibitishaji",
+      "appHint": "Misimbo kutoka programu kwenye simu yao.",
+      "expiry": "Msimbo hudumu kwa",
+      "expiryHint": "Baada ya hapo, watu huomba mpya.",
+      "attempts": "Majaribio mabaya yanayoruhusiwa",
+      "attemptsHint": "Kisha msimbo huacha kufanya kazi.",
+      "minutes": "Dakika {n} | Dakika {n}",
+      "tries": "Jaribio {n} | Majaribio {n}",
+      "domains": "Vikoa vya barua pepe vinavyoruhusiwa",
+      "domainsHint": "Ni watu tu wenye anwani ya barua pepe katika vikoa hivi wanaoweza kuingia au kualikwa.",
+      "domainsLabel": "Vikoa",
+      "domainPlaceholder": "example.com, kisha Enter",
+      "anyDomain": "Anwani yoyote ya barua pepe inaweza kuingia.",
+      "badDomain": "Si kikoa: {list}",
+      "ownMissing": "Kikoa chako mwenyewe {domain} hakipo kwenye orodha",
+      "ownMissingDesc": "Hungeweza kuingia tena, kwa hivyo kuhifadhi kunakataliwa hadi kiongezwe.",
+      "addOwn": "Ongeza {domain}",
+      "sumMethods": "Njia {n} ya kuingia kwenye ukurasa wako wa kuingia | Njia {n} za kuingia kwenye ukurasa wako wa kuingia",
+      "sumCode": "Misimbo hudumu dakika {minutes}, majaribio mabaya {tries}",
+      "sumDomains": "{list} pekee"
+    },
+    "security": {
+      "signins": "Kuingia, siku 14 zilizopita",
+      "openAudit": "Kumbukumbu ya ukaguzi",
+      "stat": {
+        "failed": "Yaliyoshindwa",
+        "blocked": "Yaliyozuiwa",
+        "locked": "Misimbo iliyofungwa"
+      },
+      "recent": "Majaribio ya hivi karibuni ya kuingia",
+      "onlyProblems": "Matatizo pekee",
+      "noRecent": "Hakuna majaribio ya kuingia katika siku 14 zilizopita",
+      "activityFailed": "Shughuli za kuingia hazikuweza kupakiwa",
+      "password": "Kanuni za nenosiri",
+      "passwordHint": "Kinachohitajika na nenosiri jipya. Hutumika mara nyingine mtu atakapoweka nenosiri.",
+      "minLength": "Angalau",
+      "mustHave": "Lazima liwe na",
+      "kind": {
+        "lower": "Herufi ndogo",
+        "upper": "Herufi kubwa",
+        "number": "Nambari",
+        "symbol": "Alama"
+      },
+      "weakRules": "Kanuni hizi zinaruhusu manenosiri dhaifu. Omba angalau herufi 10 au aina nyingi zaidi za herufi.",
+      "reuse": "Kutotumia tena",
+      "reuseHint": "Kataa manenosiri yaliyotumika hivi karibuni.",
+      "reuseOff": "Ruhusu kutumia tena",
+      "reuseLast": "Si {n} za mwisho",
+      "expiry": "Omba nenosiri jipya",
+      "expiryHint": "Watu huweka jipya watakapoingia tena.",
+      "never": "Kamwe",
+      "days": "Siku {n} | Siku {n}",
+      "hours": "Saa {n} | Saa {n}",
+      "try": "Jaribu nenosiri",
+      "tryHint": "Andika moja uone jinsi linavyokaguliwa kwa kanuni hizi. Halihifadhiwi.",
+      "sessions": "Vipindi",
+      "sessionsHint": "Muda ambao watu hubaki wameingia, na nani ameingia sasa.",
+      "idle": "Toka baada ya kutokuwa na shughuli kwa",
+      "idleHint": "Huhesabiwa tangu jambo la mwisho walilofanya.",
+      "max": "Toka kwa kuchelewa zaidi baada ya",
+      "maxHint": "Hata wanapoendelea kufanya kazi.",
+      "idleShort": "Chini ya saa 1",
+      "idleShortDesc": "Watu wanaweza kupoteza kazi isiyohifadhiwa katika kijenzi cha fomu. Saa 1 au zaidi inapendekezwa.",
+      "active": "{n} ameingia sasa | {n} wameingia sasa",
+      "allTitle": "Watoe wengine wote?",
+      "allDesc": "Kipindi {n} kinaisha mara moja. Watu hao wataingia tena wakati ujao. | Vipindi {n} vinaisha mara moja. Watu hao wataingia tena wakati ujao.",
+      "allConfirm": "Watoe wengine wote",
+      "signedOut": "Kipindi {n} kimeisha | Vipindi {n} vimeisha",
+      "signOutOne": "Mtoe {name}",
+      "thisDevice": "Wewe",
+      "since": "Aliingia {when}",
+      "unknownDevice": "Kifaa kisichojulikana",
+      "sessionsFailed": "Vipindi havikuweza kupakiwa",
+      "network": "Mitandao inayoruhusiwa",
+      "networkHint": "Weka kikomo cha kuingia na kutumia lango kwenye ofisi zako au VPN.",
+      "allowlist": "Orodha ya IP zinazoruhusiwa",
+      "allowlistHint": "Ikiwa imewashwa, watu wanaweza kuingia na kufanya kazi tu kutoka anwani zilizo hapa chini.",
+      "myIp": "Anwani yako",
+      "onList": "Ipo kwenye orodha",
+      "notOnList": "Haipo kwenye orodha",
+      "addMine": "Ongeza anwani yangu",
+      "mine": "Anwani yangu",
+      "address": "Anwani au safu",
+      "label": "Lebo",
+      "ipPlaceholder": "k.m. 203.0.113.0/24",
+      "labelPlaceholder": "k.m. Ofisi kuu",
+      "removeIp": "Ondoa anwani",
+      "noIps": "Bado hakuna anwani",
+      "noIpsDesc": "Ongeza anwani za ofisi zako au VPN, au yako mwenyewe.",
+      "addIp": "Ongeza anwani",
+      "ipExamples": "Anwani moja (198.51.100.7) au safu (203.0.113.0/24, 2001:db8::/32).",
+      "lockout": "Ungejifungia nje",
+      "lockoutDesc": "Anwani yako haipo kwenye orodha, kwa hivyo kuhifadhi kunakataliwa. Iongeze kwanza."
     }
   }
 }

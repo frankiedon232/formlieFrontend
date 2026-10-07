@@ -602,7 +602,12 @@
     "FRM-API-1019": "Questo modulo non è aperto al servizio API. Attiva l’API nelle sue impostazioni di Condivisione.",
     "FRM-API-1020": "Questa Formalie-Key è già stata usata per una richiesta diversa. Invia una nuova chiave per ogni nuovo record.",
     "FRM-ORG-1001": "Esiste già una voce con questo nome.",
-    "FRM-ORG-1002": "Dei moduli la usano ancora. Archiviala o uniscila a un'altra."
+    "FRM-ORG-1002": "Dei moduli la usano ancora. Archiviala o uniscila a un'altra.",
+    "FRM-AUTH-1014": "Questo indirizzo email non può accedere a questo spazio di lavoro.",
+    "FRM-AUTH-1015": "La tua password è scaduta. Imposta una nuova password.",
+    "FRM-AUTH-1016": "L'accesso non è consentito da questa rete.",
+    "FRM-AUTH-1017": "Questa modifica ti bloccherebbe l'accesso. Controlla il tuo dominio e il tuo indirizzo email.",
+    "FRM-AUTH-1018": "Hai usato questa password di recente. Scegline un'altra."
   },
   "errorUi": {
     "reference": "Riferimento: {id}",
@@ -715,7 +720,8 @@
       "passwordPolicy": "Almeno {min} caratteri con maiuscole, minuscole e un numero.",
       "companyName": "Inserisci il nome dell’azienda.",
       "subdomain": "Da 3 a 63 lettere minuscole, numeri o trattini.",
-      "passwordMatch": "Le password non coincidono."
+      "passwordMatch": "Le password non coincidono.",
+      "passwordRules": "Usa almeno {min} caratteri e tutto ciò che è spuntato qui sotto."
     },
     "login": {
       "title": "Accedi",
@@ -762,7 +768,8 @@
         "lower": "Lettera minuscola",
         "upper": "Lettera maiuscola",
         "number": "Numero",
-        "symbol": "Simbolo (facoltativo)"
+        "symbol": "Simbolo (facoltativo)",
+        "symbolRequired": "Simbolo"
       }
     },
     "providers": {
@@ -809,7 +816,9 @@
       "desc": "Inserisci la tua email: ti invieremo un codice per impostare una nuova password.",
       "back": "Torna all’accesso",
       "send": "Invia codice",
-      "save": "Salva la nuova password"
+      "save": "Salva la nuova password",
+      "expired": "La tua password è scaduta",
+      "expiredDesc": "Il tuo spazio di lavoro chiede ogni tanto una nuova password. Ricevi un codice e scegline una nuova."
     },
     "welcome": {
       "title": "Preparazione del tuo spazio",
@@ -6328,7 +6337,11 @@
       "details": "{n} dettagli su {total} compilati",
       "set": "{n} su {total} impostati",
       "themes": "{n} tema | {n} temi",
-      "pages": "{n} design di pagina | {n} design di pagina"
+      "pages": "{n} design di pagina | {n} design di pagina",
+      "signin": "{n} modo di accedere | {n} modi di accedere",
+      "idleMinutes": "Disconnessione dopo {n} min di inattività",
+      "idleHours": "Disconnessione dopo {n} ora di inattività | Disconnessione dopo {n} ore di inattività",
+      "allowlist": "Lista IP consentiti attiva"
     },
     "next": {
       "title": "Prossimo passo",
@@ -6352,7 +6365,11 @@
       "color": "Usa un colore come #2563EB.",
       "timezone": "Scegli un fuso orario dall’elenco.",
       "currency": "Scegli una valuta dall’elenco.",
-      "form_languages": "Mantieni almeno una lingua per i moduli."
+      "form_languages": "Mantieni almeno una lingua per i moduli.",
+      "methods": "Mantieni almeno un modo per accedere.",
+      "domain": "Inserisci un dominio come example.com.",
+      "ip": "Inserisci un indirizzo o un intervallo come 203.0.113.0/24.",
+      "ip_empty": "Aggiungi almeno un indirizzo oppure disattiva la lista consentiti."
     },
     "company": {
       "names": "Nomi",
@@ -6578,6 +6595,120 @@
         "imported": "{n} aggiunto | {n} aggiunti",
         "skipped": "{n} saltato (già presente o troppo lungo) | {n} saltati (già presenti o troppo lunghi)"
       }
+    },
+    "signin": {
+      "methods": "Modi di accedere",
+      "methodsHint": "Solo questi compaiono nella tua pagina di accesso. Almeno uno resta attivo.",
+      "password": "Email e password",
+      "passwordHint": "Le persone accedono con la loro email di lavoro e una password, poi un codice.",
+      "providerHint": "Le persone accedono con il loro account {name}, poi un codice.",
+      "onlyOne": "Ne resta solo uno",
+      "providersNote": "Il provider deve conoscere la persona con lo stesso indirizzo email di questo spazio di lavoro.",
+      "passwordOffTitle": "Disattivare email e password?",
+      "passwordOffDesc": "Le persone potranno accedere solo con i provider che restano attivi. Chi non ha uno di quegli account non potrà più accedere.",
+      "passwordOff": "Disattiva",
+      "codes": "Codici di accesso",
+      "codesHint": "Il codice monouso che dimostra che sono davvero loro.",
+      "always": "Ogni accesso richiede un codice",
+      "alwaysHint": "La verifica in due passaggi è attiva per tutti, quindi una password rubata non basta.",
+      "alwaysOn": "Sempre attivo",
+      "email": "Email",
+      "emailHint": "Sempre offerto, all'indirizzo con cui le persone accedono.",
+      "sms": "SMS",
+      "smsHint": "Offerto alle persone con un numero di cellulare nel loro account.",
+      "app": "App di autenticazione",
+      "appHint": "Codici da un'app sul telefono.",
+      "expiry": "Un codice dura",
+      "expiryHint": "Dopo, le persone ne chiedono uno nuovo.",
+      "attempts": "Tentativi errati consentiti",
+      "attemptsHint": "Poi il codice smette di funzionare.",
+      "minutes": "{n} minuto | {n} minuti",
+      "tries": "{n} tentativo | {n} tentativi",
+      "domains": "Domini email consentiti",
+      "domainsHint": "Solo le persone con un indirizzo email in questi domini possono accedere o essere invitate.",
+      "domainsLabel": "Domini",
+      "domainPlaceholder": "example.com, poi Invio",
+      "anyDomain": "Qualsiasi indirizzo email può accedere.",
+      "badDomain": "Non è un dominio: {list}",
+      "ownMissing": "Il tuo dominio {domain} non è nella lista",
+      "ownMissingDesc": "Non potresti più accedere, quindi il salvataggio viene rifiutato finché non c'è.",
+      "addOwn": "Aggiungi {domain}",
+      "sumMethods": "{n} modo di accedere nella tua pagina di accesso | {n} modi di accedere nella tua pagina di accesso",
+      "sumCode": "I codici durano {minutes} min, {tries} tentativi errati",
+      "sumDomains": "Solo {list}"
+    },
+    "security": {
+      "signins": "Accessi, ultimi 14 giorni",
+      "openAudit": "Registro di controllo",
+      "stat": {
+        "failed": "Falliti",
+        "blocked": "Bloccati",
+        "locked": "Codici bloccati"
+      },
+      "recent": "Ultimi tentativi di accesso",
+      "onlyProblems": "Solo problemi",
+      "noRecent": "Nessun tentativo di accesso negli ultimi 14 giorni",
+      "activityFailed": "Impossibile caricare l'attività di accesso",
+      "password": "Regole della password",
+      "passwordHint": "Cosa serve a una nuova password. Si applica la prossima volta che qualcuno ne imposta una.",
+      "minLength": "Almeno",
+      "mustHave": "Deve avere",
+      "kind": {
+        "lower": "Minuscola",
+        "upper": "Maiuscola",
+        "number": "Numero",
+        "symbol": "Simbolo"
+      },
+      "weakRules": "Queste regole permettono password deboli. Chiedi almeno 10 caratteri o più tipi di caratteri.",
+      "reuse": "Nessun riutilizzo",
+      "reuseHint": "Rifiuta le password usate di recente.",
+      "reuseOff": "Consenti il riutilizzo",
+      "reuseLast": "Non le ultime {n}",
+      "expiry": "Chiedi una nuova password",
+      "expiryHint": "Le persone ne impostano una nuova al prossimo accesso.",
+      "never": "Mai",
+      "days": "{n} giorno | {n} giorni",
+      "hours": "{n} ora | {n} ore",
+      "try": "Prova una password",
+      "tryHint": "Scrivine una per vedere come viene verificata con queste regole. Non viene salvata.",
+      "sessions": "Sessioni",
+      "sessionsHint": "Quanto a lungo le persone restano connesse e chi è connesso ora.",
+      "idle": "Disconnetti dopo un'inattività di",
+      "idleHint": "Conta dall'ultima azione.",
+      "max": "Disconnetti al più tardi dopo",
+      "maxHint": "Anche se continuano a lavorare.",
+      "idleShort": "Meno di 1 ora",
+      "idleShortDesc": "Le persone possono perdere il lavoro non salvato nel costruttore di moduli. Si consiglia 1 ora o più.",
+      "active": "{n} connessa ora | {n} connesse ora",
+      "allTitle": "Disconnettere tutti gli altri?",
+      "allDesc": "{n} sessione termina subito. Quelle persone accederanno di nuovo la prossima volta. | {n} sessioni terminano subito. Quelle persone accederanno di nuovo la prossima volta.",
+      "allConfirm": "Disconnetti tutti gli altri",
+      "signedOut": "{n} sessione terminata | {n} sessioni terminate",
+      "signOutOne": "Disconnetti {name}",
+      "thisDevice": "Tu",
+      "since": "Accesso {when}",
+      "unknownDevice": "Dispositivo sconosciuto",
+      "sessionsFailed": "Impossibile caricare le sessioni",
+      "network": "Reti consentite",
+      "networkHint": "Limita l'accesso e l'uso del portale ai tuoi uffici o alla tua VPN.",
+      "allowlist": "Lista IP consentiti",
+      "allowlistHint": "Se attiva, le persone possono accedere e lavorare solo dagli indirizzi qui sotto.",
+      "myIp": "Il tuo indirizzo",
+      "onList": "Nella lista",
+      "notOnList": "Non nella lista",
+      "addMine": "Aggiungi il mio indirizzo",
+      "mine": "Il mio indirizzo",
+      "address": "Indirizzo o intervallo",
+      "label": "Etichetta",
+      "ipPlaceholder": "es. 203.0.113.0/24",
+      "labelPlaceholder": "es. Sede centrale",
+      "removeIp": "Rimuovi indirizzo",
+      "noIps": "Ancora nessun indirizzo",
+      "noIpsDesc": "Aggiungi gli indirizzi dei tuoi uffici o della tua VPN, oppure il tuo.",
+      "addIp": "Aggiungi indirizzo",
+      "ipExamples": "Un indirizzo (198.51.100.7) o un intervallo (203.0.113.0/24, 2001:db8::/32).",
+      "lockout": "Ti bloccheresti l'accesso",
+      "lockoutDesc": "Il tuo indirizzo non è nella lista, quindi il salvataggio viene rifiutato. Aggiungilo prima."
     }
   }
 }

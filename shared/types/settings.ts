@@ -2,10 +2,12 @@
  * Workspace settings (F14, docs/API-CONTRACT.md → Settings): one shape per section, read and saved with
  * GET / PATCH /settings/{section}. Onboarding writes the same company, branding and localisation data.
  */
+import type { AuditDevice } from './audit'
+import type { AuthProvider, PasswordPolicy } from './auth'
 import type { CompanySize, DateFormat, Industry, NumberFormat, WeekStart } from './onboarding'
 
 /** Sections that exist (the rest of F14 arrives milestone by milestone). */
-export const SETTINGS_SECTIONS = ['company', 'branding', 'localisation'] as const
+export const SETTINGS_SECTIONS = ['company', 'branding', 'localisation', 'signin', 'security'] as const
 export type SettingsSection = (typeof SETTINGS_SECTIONS)[number]
 
 export interface CompanyAddress {
@@ -67,6 +69,44 @@ export interface LocalisationSettings {
   form_languages: string[]
 }
 
+/** Settings → Sign-in (F14 M3): how people sign in to the workspace. */
+export interface SigninSettings {
+  /** Shown on the workspace sign-in page; at least one. */
+  methods: AuthProvider[]
+  /** The one-time code every sign-in asks for (always on; email always offered). */
+  code: {
+    /** Also offer a text message to people with a phone number. */
+    sms: boolean
+    expiry_minutes: 5 | 10 | 15
+    max_attempts: 3 | 5 | 10
+  }
+  /** Only these email domains may sign in (and be invited); empty = any. */
+  allowed_domains: string[]
+}
+
+export interface IpAllowEntry {
+  /** An address or a CIDR range (IPv4 or IPv6). */
+  value: string
+  label: string | null
+}
+
+/** Settings → Security (F14 M3). */
+export interface SecuritySettings {
+  password: PasswordPolicy & {
+    /** Refuse the last N passwords again (0 = off). */
+    reuse_last: 0 | 3 | 5 | 10
+    /** Ask for a new password after N days (0 = never). */
+    expiry_days: 0 | 90 | 180 | 365
+  }
+  sessions: {
+    /** Signed out after this long without activity. */
+    idle_minutes: number
+    /** Signed out after this long whatever happens. */
+    max_hours: number
+  }
+  ip_allowlist: { enabled: boolean; entries: IpAllowEntry[] }
+}
+
 export interface SettingsChange {
   at: string
   by: string
@@ -77,7 +117,28 @@ export interface WorkspaceSettings {
   company: CompanySettings
   branding: BrandingSettings
   localisation: LocalisationSettings
+  signin: SigninSettings
+  security: SecuritySettings
   updated: Record<SettingsSection, SettingsChange | null>
 }
 
 export type SettingsOf<S extends SettingsSection> = WorkspaceSettings[S]
+
+/** A signed-in session (Settings → Security). */
+export interface ActiveSession {
+  id: string
+  user: { name: string; email: string }
+  current: boolean
+  started_at: string
+  last_active_at: string
+  ip: string
+  device: AuditDevice
+}
+
+/** GET /settings/security/activity: sign-in activity of the last 14 days, and the caller's address. */
+export interface SecurityActivity {
+  my_ip: string
+  days: { date: string; succeeded: number; failed: number }[]
+  totals: { succeeded: number; failed: number; blocked: number; locked: number }
+  recent: { id: string; at: string; action: string; outcome: 'success' | 'failure' | 'blocked'; name: string; email: string | null; ip: string; reason: string | null }[]
+}

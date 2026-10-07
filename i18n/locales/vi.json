@@ -602,7 +602,12 @@
     "FRM-API-1019": "Biểu mẫu này chưa mở cho dịch vụ API. Hãy bật API trong cài đặt Chia sẻ.",
     "FRM-API-1020": "Formalie-Key này đã được dùng cho một yêu cầu khác. Hãy gửi key mới cho mỗi bản ghi mới.",
     "FRM-ORG-1001": "Mục có tên này đã tồn tại.",
-    "FRM-ORG-1002": "Vẫn còn biểu mẫu đang dùng mục này. Hãy lưu trữ hoặc gộp nó vào mục khác."
+    "FRM-ORG-1002": "Vẫn còn biểu mẫu đang dùng mục này. Hãy lưu trữ hoặc gộp nó vào mục khác.",
+    "FRM-AUTH-1014": "Địa chỉ email này không thể đăng nhập vào không gian làm việc này.",
+    "FRM-AUTH-1015": "Mật khẩu của bạn đã hết hạn. Hãy đặt mật khẩu mới.",
+    "FRM-AUTH-1016": "Không cho phép đăng nhập từ mạng này.",
+    "FRM-AUTH-1017": "Thay đổi này sẽ khóa bạn ở ngoài. Hãy kiểm tra tên miền và địa chỉ email của chính bạn.",
+    "FRM-AUTH-1018": "Bạn đã dùng mật khẩu này gần đây. Hãy chọn mật khẩu khác."
   },
   "errorUi": {
     "reference": "Mã tham chiếu: {id}",
@@ -715,7 +720,8 @@
       "passwordPolicy": "Tối thiểu {min} ký tự gồm chữ hoa, chữ thường và số.",
       "companyName": "Nhập tên công ty của bạn.",
       "subdomain": "Dùng 3–63 chữ thường, số hoặc dấu gạch nối.",
-      "passwordMatch": "Mật khẩu không khớp."
+      "passwordMatch": "Mật khẩu không khớp.",
+      "passwordRules": "Dùng ít nhất {min} ký tự và mọi mục được đánh dấu bên dưới."
     },
     "login": {
       "title": "Đăng nhập",
@@ -762,7 +768,8 @@
         "lower": "Chữ thường",
         "upper": "Chữ hoa",
         "number": "Số",
-        "symbol": "Ký hiệu (tùy chọn)"
+        "symbol": "Ký hiệu (tùy chọn)",
+        "symbolRequired": "Ký hiệu"
       }
     },
     "providers": {
@@ -809,7 +816,9 @@
       "desc": "Nhập email, chúng tôi sẽ gửi mã để đặt mật khẩu mới.",
       "back": "Quay lại đăng nhập",
       "send": "Gửi mã",
-      "save": "Lưu mật khẩu mới"
+      "save": "Lưu mật khẩu mới",
+      "expired": "Mật khẩu của bạn đã hết hạn",
+      "expiredDesc": "Không gian làm việc của bạn thỉnh thoảng yêu cầu mật khẩu mới. Nhận mã và chọn mật khẩu mới."
     },
     "welcome": {
       "title": "Đang chuẩn bị không gian làm việc",
@@ -6328,7 +6337,11 @@
       "details": "Đã điền {n} trên {total} thông tin",
       "set": "Đã đặt {n} trên {total}",
       "themes": "{n} giao diện | {n} giao diện",
-      "pages": "{n} thiết kế trang | {n} thiết kế trang"
+      "pages": "{n} thiết kế trang | {n} thiết kế trang",
+      "signin": "{n} cách đăng nhập | {n} cách đăng nhập",
+      "idleMinutes": "Đăng xuất sau {n} phút không hoạt động",
+      "idleHours": "Đăng xuất sau {n} giờ không hoạt động | Đăng xuất sau {n} giờ không hoạt động",
+      "allowlist": "Danh sách IP cho phép đang bật"
     },
     "next": {
       "title": "Bước tiếp theo",
@@ -6352,7 +6365,11 @@
       "color": "Dùng màu như #2563EB.",
       "timezone": "Chọn một múi giờ trong danh sách.",
       "currency": "Chọn một loại tiền tệ trong danh sách.",
-      "form_languages": "Giữ ít nhất một ngôn ngữ cho biểu mẫu."
+      "form_languages": "Giữ ít nhất một ngôn ngữ cho biểu mẫu.",
+      "methods": "Giữ ít nhất một cách đăng nhập.",
+      "domain": "Nhập một tên miền như example.com.",
+      "ip": "Nhập một địa chỉ hoặc dải như 203.0.113.0/24.",
+      "ip_empty": "Thêm ít nhất một địa chỉ, hoặc tắt danh sách cho phép."
     },
     "company": {
       "names": "Tên",
@@ -6578,6 +6595,120 @@
         "imported": "Đã thêm {n} | Đã thêm {n}",
         "skipped": "Bỏ qua {n} (đã có hoặc quá dài) | Bỏ qua {n} (đã có hoặc quá dài)"
       }
+    },
+    "signin": {
+      "methods": "Cách đăng nhập",
+      "methodsHint": "Chỉ những cách này xuất hiện trên trang đăng nhập của bạn. Luôn giữ ít nhất một cách.",
+      "password": "Email và mật khẩu",
+      "passwordHint": "Mọi người đăng nhập bằng email công việc và mật khẩu, rồi nhập mã.",
+      "providerHint": "Mọi người đăng nhập bằng tài khoản {name}, rồi nhập mã.",
+      "onlyOne": "Chỉ còn một",
+      "providersNote": "Nhà cung cấp phải nhận ra người đó bằng cùng địa chỉ email như trong không gian làm việc này.",
+      "passwordOffTitle": "Tắt email và mật khẩu?",
+      "passwordOffDesc": "Khi đó mọi người chỉ đăng nhập được bằng các nhà cung cấp còn bật. Ai không có tài khoản nào trong số đó sẽ không thể đăng nhập nữa.",
+      "passwordOff": "Tắt",
+      "codes": "Mã đăng nhập",
+      "codesHint": "Mã dùng một lần chứng minh đúng là họ.",
+      "always": "Mỗi lần đăng nhập đều hỏi mã",
+      "alwaysHint": "Đăng nhập hai bước được bật cho mọi người, nên mật khẩu bị đánh cắp là chưa đủ.",
+      "alwaysOn": "Luôn bật",
+      "email": "Email",
+      "emailHint": "Luôn có sẵn, gửi đến địa chỉ mà mọi người dùng để đăng nhập.",
+      "sms": "Tin nhắn SMS",
+      "smsHint": "Dành cho người có số điện thoại di động trong tài khoản.",
+      "app": "Ứng dụng xác thực",
+      "appHint": "Mã từ một ứng dụng trên điện thoại của họ.",
+      "expiry": "Một mã có hiệu lực trong",
+      "expiryHint": "Sau đó, mọi người yêu cầu mã mới.",
+      "attempts": "Số lần nhập sai cho phép",
+      "attemptsHint": "Sau đó mã ngừng hoạt động.",
+      "minutes": "{n} phút | {n} phút",
+      "tries": "{n} lần thử | {n} lần thử",
+      "domains": "Tên miền email được phép",
+      "domainsHint": "Chỉ những người có địa chỉ email thuộc các tên miền này mới đăng nhập hoặc được mời.",
+      "domainsLabel": "Tên miền",
+      "domainPlaceholder": "example.com, rồi nhấn Enter",
+      "anyDomain": "Bất kỳ địa chỉ email nào cũng có thể đăng nhập.",
+      "badDomain": "Không phải tên miền: {list}",
+      "ownMissing": "Tên miền của chính bạn {domain} không có trong danh sách",
+      "ownMissingDesc": "Bạn sẽ không thể đăng nhập lại, nên việc lưu bị từ chối cho đến khi nó được thêm.",
+      "addOwn": "Thêm {domain}",
+      "sumMethods": "{n} cách đăng nhập trên trang đăng nhập của bạn | {n} cách đăng nhập trên trang đăng nhập của bạn",
+      "sumCode": "Mã có hiệu lực {minutes} phút, {tries} lần nhập sai",
+      "sumDomains": "Chỉ {list}"
+    },
+    "security": {
+      "signins": "Đăng nhập, 14 ngày qua",
+      "openAudit": "Nhật ký kiểm tra",
+      "stat": {
+        "failed": "Thất bại",
+        "blocked": "Bị chặn",
+        "locked": "Mã bị khóa"
+      },
+      "recent": "Các lần thử đăng nhập gần đây",
+      "onlyProblems": "Chỉ sự cố",
+      "noRecent": "Không có lần thử đăng nhập nào trong 14 ngày qua",
+      "activityFailed": "Không thể tải hoạt động đăng nhập",
+      "password": "Quy tắc mật khẩu",
+      "passwordHint": "Mật khẩu mới cần gì. Áp dụng vào lần tiếp theo có người đặt mật khẩu.",
+      "minLength": "Ít nhất",
+      "mustHave": "Phải có",
+      "kind": {
+        "lower": "Chữ thường",
+        "upper": "Chữ hoa",
+        "number": "Số",
+        "symbol": "Ký hiệu"
+      },
+      "weakRules": "Các quy tắc này cho phép mật khẩu yếu. Hãy yêu cầu ít nhất 10 ký tự hoặc nhiều loại ký tự hơn.",
+      "reuse": "Không dùng lại",
+      "reuseHint": "Từ chối mật khẩu đã dùng gần đây.",
+      "reuseOff": "Cho phép dùng lại",
+      "reuseLast": "Không trùng {n} mật khẩu gần nhất",
+      "expiry": "Yêu cầu mật khẩu mới",
+      "expiryHint": "Mọi người đặt mật khẩu mới vào lần đăng nhập tiếp theo.",
+      "never": "Không bao giờ",
+      "days": "{n} ngày | {n} ngày",
+      "hours": "{n} giờ | {n} giờ",
+      "try": "Thử một mật khẩu",
+      "tryHint": "Nhập một mật khẩu để xem nó được kiểm tra theo các quy tắc này. Nó không được lưu.",
+      "sessions": "Phiên đăng nhập",
+      "sessionsHint": "Mọi người đăng nhập được bao lâu, và ai đang đăng nhập.",
+      "idle": "Đăng xuất sau khi không hoạt động trong",
+      "idleHint": "Tính từ thao tác cuối cùng của họ.",
+      "max": "Đăng xuất chậm nhất sau",
+      "maxHint": "Kể cả khi họ vẫn đang làm việc.",
+      "idleShort": "Ngắn hơn 1 giờ",
+      "idleShortDesc": "Mọi người có thể mất công việc chưa lưu trong trình tạo biểu mẫu. Nên đặt từ 1 giờ trở lên.",
+      "active": "{n} đang đăng nhập | {n} đang đăng nhập",
+      "allTitle": "Đăng xuất mọi người khác?",
+      "allDesc": "{n} phiên kết thúc ngay. Những người đó sẽ đăng nhập lại lần sau. | {n} phiên kết thúc ngay. Những người đó sẽ đăng nhập lại lần sau.",
+      "allConfirm": "Đăng xuất mọi người khác",
+      "signedOut": "Đã kết thúc {n} phiên | Đã kết thúc {n} phiên",
+      "signOutOne": "Đăng xuất {name}",
+      "thisDevice": "Bạn",
+      "since": "Đăng nhập {when}",
+      "unknownDevice": "Thiết bị không xác định",
+      "sessionsFailed": "Không thể tải các phiên",
+      "network": "Mạng được phép",
+      "networkHint": "Giới hạn việc đăng nhập và sử dụng cổng thông tin trong văn phòng hoặc VPN của bạn.",
+      "allowlist": "Danh sách IP cho phép",
+      "allowlistHint": "Khi bật, mọi người chỉ có thể đăng nhập và làm việc từ các địa chỉ bên dưới.",
+      "myIp": "Địa chỉ của bạn",
+      "onList": "Có trong danh sách",
+      "notOnList": "Không có trong danh sách",
+      "addMine": "Thêm địa chỉ của tôi",
+      "mine": "Địa chỉ của tôi",
+      "address": "Địa chỉ hoặc dải",
+      "label": "Nhãn",
+      "ipPlaceholder": "vd. 203.0.113.0/24",
+      "labelPlaceholder": "vd. Trụ sở chính",
+      "removeIp": "Xóa địa chỉ",
+      "noIps": "Chưa có địa chỉ nào",
+      "noIpsDesc": "Thêm địa chỉ văn phòng hoặc VPN của bạn, hoặc địa chỉ của chính bạn.",
+      "addIp": "Thêm địa chỉ",
+      "ipExamples": "Một địa chỉ (198.51.100.7) hoặc một dải (203.0.113.0/24, 2001:db8::/32).",
+      "lockout": "Bạn sẽ tự khóa mình ở ngoài",
+      "lockoutDesc": "Địa chỉ của chính bạn không có trong danh sách, nên việc lưu bị từ chối. Hãy thêm nó trước."
     }
   }
 }

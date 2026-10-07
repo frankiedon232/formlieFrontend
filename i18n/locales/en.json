@@ -602,7 +602,12 @@
     "FRM-API-1019": "This form is not open to the API service. Turn the API on in its Share settings.",
     "FRM-API-1020": "This Formalie-Key was already used for a different request. Send a new key for every new record.",
     "FRM-ORG-1001": "An entry with this name already exists.",
-    "FRM-ORG-1002": "Forms still use it. Archive it, or merge it into another one."
+    "FRM-ORG-1002": "Forms still use it. Archive it, or merge it into another one.",
+    "FRM-AUTH-1014": "This email address can't sign in to this workspace.",
+    "FRM-AUTH-1015": "Your password has expired. Set a new one.",
+    "FRM-AUTH-1016": "Sign-in isn't allowed from this network.",
+    "FRM-AUTH-1017": "This change would lock you out. Check your own email domain and address.",
+    "FRM-AUTH-1018": "You used this password recently. Choose another one."
   },
   "errorUi": {
     "reference": "Reference: {id}",
@@ -715,7 +720,8 @@
       "passwordPolicy": "Use at least {min} characters with upper and lower case letters and a number.",
       "companyName": "Enter your company name.",
       "subdomain": "Use 3–63 lowercase letters, numbers or hyphens.",
-      "passwordMatch": "Passwords don't match."
+      "passwordMatch": "Passwords don't match.",
+      "passwordRules": "Use at least {min} characters and everything ticked below."
     },
     "login": {
       "title": "Sign in",
@@ -762,7 +768,8 @@
         "lower": "Lowercase letter",
         "upper": "Uppercase letter",
         "number": "Number",
-        "symbol": "Symbol (optional)"
+        "symbol": "Symbol (optional)",
+        "symbolRequired": "Symbol"
       }
     },
     "providers": {
@@ -809,7 +816,9 @@
       "desc": "Enter your email and we'll send you a code to set a new password.",
       "back": "Back to sign in",
       "send": "Send code",
-      "save": "Save new password"
+      "save": "Save new password",
+      "expired": "Your password has expired",
+      "expiredDesc": "Your workspace asks for a new password from time to time. Get a code and choose a new one."
     },
     "welcome": {
       "title": "Setting up your workspace",
@@ -6328,7 +6337,11 @@
       "details": "{n} of {total} details filled in",
       "set": "{n} of {total} set",
       "themes": "{n} theme | {n} themes",
-      "pages": "{n} page design | {n} page designs"
+      "pages": "{n} page design | {n} page designs",
+      "signin": "{n} way to sign in | {n} ways to sign in",
+      "idleMinutes": "Signed out after {n} min idle",
+      "idleHours": "Signed out after {n} hour idle | Signed out after {n} hours idle",
+      "allowlist": "IP allowlist on"
     },
     "next": {
       "title": "Next step",
@@ -6352,7 +6365,11 @@
       "color": "Use a colour like #2563EB.",
       "timezone": "Choose a time zone from the list.",
       "currency": "Choose a currency from the list.",
-      "form_languages": "Keep at least one language for forms."
+      "form_languages": "Keep at least one language for forms.",
+      "methods": "Keep at least one way to sign in.",
+      "domain": "Enter a domain such as example.com.",
+      "ip": "Enter an address or a range such as 203.0.113.0/24.",
+      "ip_empty": "Add at least one address, or turn the allowlist off."
     },
     "company": {
       "names": "Names",
@@ -6578,6 +6595,120 @@
         "imported": "{n} added | {n} added",
         "skipped": "{n} skipped (already there or too long) | {n} skipped (already there or too long)"
       }
+    },
+    "signin": {
+      "methods": "Ways to sign in",
+      "methodsHint": "Only these appear on your sign-in page. At least one stays on.",
+      "password": "Email and password",
+      "passwordHint": "People sign in with their work email and a password, then a code.",
+      "providerHint": "People sign in with their {name} account, then a code.",
+      "onlyOne": "Only one left",
+      "providersNote": "The provider must know the person by the same email address as in this workspace.",
+      "passwordOffTitle": "Turn off email and password?",
+      "passwordOffDesc": "People can then only sign in with the providers that stay on. Anyone without one of those accounts can no longer sign in.",
+      "passwordOff": "Turn off",
+      "codes": "Sign-in codes",
+      "codesHint": "The one-time code that proves it is really them.",
+      "always": "Every sign-in asks for a code",
+      "alwaysHint": "Two-step sign-in is on for everyone, so a stolen password is not enough.",
+      "alwaysOn": "Always on",
+      "email": "Email",
+      "emailHint": "Always offered, to the address people sign in with.",
+      "sms": "Text message",
+      "smsHint": "Offered to people with a mobile number on their account.",
+      "app": "Authenticator app",
+      "appHint": "Codes from an app on their phone.",
+      "expiry": "A code lasts",
+      "expiryHint": "After that, people ask for a new one.",
+      "attempts": "Wrong tries allowed",
+      "attemptsHint": "Then the code stops working.",
+      "minutes": "{n} minute | {n} minutes",
+      "tries": "{n} try | {n} tries",
+      "domains": "Allowed email domains",
+      "domainsHint": "Only people with an email address at these domains can sign in or be invited.",
+      "domainsLabel": "Domains",
+      "domainPlaceholder": "example.com, then Enter",
+      "anyDomain": "Any email address can sign in.",
+      "badDomain": "Not a domain: {list}",
+      "ownMissing": "Your own domain {domain} is not on the list",
+      "ownMissingDesc": "You would not be able to sign in again, so saving is refused until it is.",
+      "addOwn": "Add {domain}",
+      "sumMethods": "{n} way to sign in on your sign-in page | {n} ways to sign in on your sign-in page",
+      "sumCode": "Codes last {minutes} min, {tries} wrong tries",
+      "sumDomains": "Only {list}"
+    },
+    "security": {
+      "signins": "Sign-ins, last 14 days",
+      "openAudit": "Audit trail",
+      "stat": {
+        "failed": "Failed",
+        "blocked": "Blocked",
+        "locked": "Codes locked"
+      },
+      "recent": "Latest sign-in attempts",
+      "onlyProblems": "Only problems",
+      "noRecent": "No sign-in attempts in the last 14 days",
+      "activityFailed": "Sign-in activity could not be loaded",
+      "password": "Password rules",
+      "passwordHint": "What a new password needs. Applies the next time someone sets one.",
+      "minLength": "At least",
+      "mustHave": "Must have",
+      "kind": {
+        "lower": "Lowercase",
+        "upper": "Uppercase",
+        "number": "Number",
+        "symbol": "Symbol"
+      },
+      "weakRules": "These rules allow weak passwords. Ask for at least 10 characters or more kinds of characters.",
+      "reuse": "No reuse",
+      "reuseHint": "Refuse passwords used recently.",
+      "reuseOff": "Allow reuse",
+      "reuseLast": "Not the last {n}",
+      "expiry": "Ask for a new password",
+      "expiryHint": "People set a new one when they next sign in.",
+      "never": "Never",
+      "days": "{n} day | {n} days",
+      "hours": "{n} hour | {n} hours",
+      "try": "Try a password",
+      "tryHint": "Type one to see it checked against these rules. It is not saved.",
+      "sessions": "Sessions",
+      "sessionsHint": "How long people stay signed in, and who is signed in now.",
+      "idle": "Sign out after no activity for",
+      "idleHint": "Counts from the last thing they did.",
+      "max": "Sign out at the latest after",
+      "maxHint": "Even when they keep working.",
+      "idleShort": "Shorter than 1 hour",
+      "idleShortDesc": "People may lose unsaved work in the form builder. 1 hour or more is recommended.",
+      "active": "{n} signed in now | {n} signed in now",
+      "allTitle": "Sign out everyone else?",
+      "allDesc": "{n} session ends at once. Those people sign in again next time. | {n} sessions end at once. Those people sign in again next time.",
+      "allConfirm": "Sign out everyone else",
+      "signedOut": "{n} session ended | {n} sessions ended",
+      "signOutOne": "Sign out {name}",
+      "thisDevice": "You",
+      "since": "Signed in {when}",
+      "unknownDevice": "Unknown device",
+      "sessionsFailed": "Sessions could not be loaded",
+      "network": "Allowed networks",
+      "networkHint": "Limit sign-in and use of the portal to your offices or VPN.",
+      "allowlist": "IP allowlist",
+      "allowlistHint": "When on, people can only sign in and work from the addresses below.",
+      "myIp": "Your address",
+      "onList": "On the list",
+      "notOnList": "Not on the list",
+      "addMine": "Add my address",
+      "mine": "My address",
+      "address": "Address or range",
+      "label": "Label",
+      "ipPlaceholder": "e.g. 203.0.113.0/24",
+      "labelPlaceholder": "e.g. Head office",
+      "removeIp": "Remove address",
+      "noIps": "No addresses yet",
+      "noIpsDesc": "Add the addresses of your offices or VPN, or your own.",
+      "addIp": "Add address",
+      "ipExamples": "One address (198.51.100.7) or a range (203.0.113.0/24, 2001:db8::/32).",
+      "lockout": "You would lock yourself out",
+      "lockoutDesc": "Your own address is not on the list, so saving is refused. Add it first."
     }
   }
 }

@@ -602,7 +602,12 @@
     "FRM-API-1019": "Ten formularz nie jest otwarty dla usługi API. Włącz API w ustawieniach Udostępniania.",
     "FRM-API-1020": "Ten Formalie-Key został już użyty w innym żądaniu. Wysyłaj nowy klucz dla każdego nowego rekordu.",
     "FRM-ORG-1001": "Wpis o tej nazwie już istnieje.",
-    "FRM-ORG-1002": "Formularze wciąż go używają. Zarchiwizuj go lub scal z innym."
+    "FRM-ORG-1002": "Formularze wciąż go używają. Zarchiwizuj go lub scal z innym.",
+    "FRM-AUTH-1014": "Ten adres e-mail nie może logować się do tego obszaru roboczego.",
+    "FRM-AUTH-1015": "Twoje hasło wygasło. Ustaw nowe.",
+    "FRM-AUTH-1016": "Logowanie z tej sieci jest niedozwolone.",
+    "FRM-AUTH-1017": "Ta zmiana zablokowałaby Ci dostęp. Sprawdź własną domenę i adres e-mail.",
+    "FRM-AUTH-1018": "Niedawno używasz tego hasła. Wybierz inne."
   },
   "errorUi": {
     "reference": "Identyfikator: {id}",
@@ -715,7 +720,8 @@
       "passwordPolicy": "Co najmniej {min} znaków, wielkie i małe litery oraz cyfra.",
       "companyName": "Podaj nazwę firmy.",
       "subdomain": "Od 3 do 63 małych liter, cyfr lub łączników.",
-      "passwordMatch": "Hasła się różnią."
+      "passwordMatch": "Hasła się różnią.",
+      "passwordRules": "Użyj co najmniej {min} znaków i wszystkiego, co zaznaczono poniżej."
     },
     "login": {
       "title": "Zaloguj się",
@@ -762,7 +768,8 @@
         "lower": "Mała litera",
         "upper": "Wielka litera",
         "number": "Cyfra",
-        "symbol": "Symbol (opcjonalnie)"
+        "symbol": "Symbol (opcjonalnie)",
+        "symbolRequired": "Symbol"
       }
     },
     "providers": {
@@ -809,7 +816,9 @@
       "desc": "Podaj e-mail, a wyślemy kod do ustawienia nowego hasła.",
       "back": "Wróć do logowania",
       "send": "Wyślij kod",
-      "save": "Zapisz nowe hasło"
+      "save": "Zapisz nowe hasło",
+      "expired": "Twoje hasło wygasło",
+      "expiredDesc": "Twój obszar roboczy co jakiś czas prosi o nowe hasło. Odbierz kod i wybierz nowe hasło."
     },
     "welcome": {
       "title": "Przygotowujemy Twój obszar roboczy",
@@ -6328,7 +6337,11 @@
       "details": "Wypełniono {n} z {total} danych",
       "set": "Ustawiono {n} z {total}",
       "themes": "{n} motyw | {n} motywów",
-      "pages": "{n} projekt strony | {n} projektów stron"
+      "pages": "{n} projekt strony | {n} projektów stron",
+      "signin": "{n} sposób logowania | {n} sposoby logowania",
+      "idleMinutes": "Wylogowanie po {n} min bezczynności",
+      "idleHours": "Wylogowanie po {n} godzinie bezczynności | Wylogowanie po {n} godzinach bezczynności",
+      "allowlist": "Lista dozwolonych adresów IP włączona"
     },
     "next": {
       "title": "Następny krok",
@@ -6352,7 +6365,11 @@
       "color": "Użyj koloru, np. #2563EB.",
       "timezone": "Wybierz strefę czasową z listy.",
       "currency": "Wybierz walutę z listy.",
-      "form_languages": "Zachowaj co najmniej jeden język formularzy."
+      "form_languages": "Zachowaj co najmniej jeden język formularzy.",
+      "methods": "Zostaw co najmniej jeden sposób logowania.",
+      "domain": "Wpisz domenę, na przykład example.com.",
+      "ip": "Wpisz adres lub zakres, na przykład 203.0.113.0/24.",
+      "ip_empty": "Dodaj co najmniej jeden adres albo wyłącz listę dozwolonych."
     },
     "company": {
       "names": "Nazwy",
@@ -6578,6 +6595,120 @@
         "imported": "Dodano {n} | Dodano {n}",
         "skipped": "Pominięto {n} (już istnieje lub za długi) | Pominięto {n} (już istnieją lub za długie)"
       }
+    },
+    "signin": {
+      "methods": "Sposoby logowania",
+      "methodsHint": "Tylko te pojawiają się na Twojej stronie logowania. Co najmniej jeden pozostaje włączony.",
+      "password": "E-mail i hasło",
+      "passwordHint": "Osoby logują się służbowym e-mailem i hasłem, a potem kodem.",
+      "providerHint": "Osoby logują się kontem {name}, a potem kodem.",
+      "onlyOne": "Został tylko jeden",
+      "providersNote": "Dostawca musi znać osobę pod tym samym adresem e-mail, co w tym obszarze roboczym.",
+      "passwordOffTitle": "Wyłączyć e-mail i hasło?",
+      "passwordOffDesc": "Osoby będą mogły się logować tylko przez dostawców, którzy pozostają włączeni. Kto nie ma takiego konta, nie zaloguje się już.",
+      "passwordOff": "Wyłącz",
+      "codes": "Kody logowania",
+      "codesHint": "Jednorazowy kod, który potwierdza, że to naprawdę ta osoba.",
+      "always": "Każde logowanie wymaga kodu",
+      "alwaysHint": "Dwuetapowe logowanie jest włączone dla wszystkich, więc skradzione hasło nie wystarczy.",
+      "alwaysOn": "Zawsze włączone",
+      "email": "E-mail",
+      "emailHint": "Zawsze dostępne, na adres, którym osoby się logują.",
+      "sms": "SMS",
+      "smsHint": "Dostępne dla osób z numerem komórkowym na koncie.",
+      "app": "Aplikacja uwierzytelniająca",
+      "appHint": "Kody z aplikacji w telefonie.",
+      "expiry": "Kod ważny przez",
+      "expiryHint": "Potem osoby proszą o nowy.",
+      "attempts": "Dozwolone błędne próby",
+      "attemptsHint": "Potem kod przestaje działać.",
+      "minutes": "{n} minuta | {n} minut",
+      "tries": "{n} próba | {n} prób",
+      "domains": "Dozwolone domeny e-mail",
+      "domainsHint": "Tylko osoby z adresem e-mail w tych domenach mogą się logować lub być zapraszane.",
+      "domainsLabel": "Domeny",
+      "domainPlaceholder": "example.com, potem Enter",
+      "anyDomain": "Każdy adres e-mail może się zalogować.",
+      "badDomain": "To nie jest domena: {list}",
+      "ownMissing": "Twojej własnej domeny {domain} nie ma na liście",
+      "ownMissingDesc": "Nie mógłbyś się ponownie zalogować, więc zapis jest odrzucany, dopóki jej nie dodasz.",
+      "addOwn": "Dodaj {domain}",
+      "sumMethods": "{n} sposób logowania na Twojej stronie logowania | {n} sposoby logowania na Twojej stronie logowania",
+      "sumCode": "Kody ważne {minutes} min, {tries} błędnych prób",
+      "sumDomains": "Tylko {list}"
+    },
+    "security": {
+      "signins": "Logowania z ostatnich 14 dni",
+      "openAudit": "Dziennik audytu",
+      "stat": {
+        "failed": "Nieudane",
+        "blocked": "Zablokowane",
+        "locked": "Kody zablokowane"
+      },
+      "recent": "Ostatnie próby logowania",
+      "onlyProblems": "Tylko problemy",
+      "noRecent": "Brak prób logowania w ciągu ostatnich 14 dni",
+      "activityFailed": "Nie udało się wczytać aktywności logowania",
+      "password": "Zasady haseł",
+      "passwordHint": "Czego potrzebuje nowe hasło. Obowiązuje przy następnym ustawianiu hasła.",
+      "minLength": "Co najmniej",
+      "mustHave": "Musi zawierać",
+      "kind": {
+        "lower": "Mała litera",
+        "upper": "Wielka litera",
+        "number": "Cyfra",
+        "symbol": "Symbol"
+      },
+      "weakRules": "Te zasady dopuszczają słabe hasła. Wymagaj co najmniej 10 znaków lub więcej rodzajów znaków.",
+      "reuse": "Bez ponownego użycia",
+      "reuseHint": "Odrzucaj niedawno używane hasła.",
+      "reuseOff": "Zezwól na ponowne użycie",
+      "reuseLast": "Nie ostatnich {n}",
+      "expiry": "Wymagaj nowego hasła",
+      "expiryHint": "Osoby ustawiają nowe hasło przy następnym logowaniu.",
+      "never": "Nigdy",
+      "days": "{n} dzień | {n} dni",
+      "hours": "{n} godzina | {n} godzin",
+      "try": "Wypróbuj hasło",
+      "tryHint": "Wpisz hasło, aby zobaczyć, jak jest sprawdzane według tych zasad. Nie jest zapisywane.",
+      "sessions": "Sesje",
+      "sessionsHint": "Jak długo osoby pozostają zalogowane i kto jest teraz zalogowany.",
+      "idle": "Wyloguj po braku aktywności przez",
+      "idleHint": "Liczone od ostatniej czynności.",
+      "max": "Wyloguj najpóźniej po",
+      "maxHint": "Nawet gdy dalej pracują.",
+      "idleShort": "Krócej niż 1 godzina",
+      "idleShortDesc": "Osoby mogą stracić niezapisaną pracę w kreatorze formularzy. Zalecana jest 1 godzina lub więcej.",
+      "active": "{n} zalogowana teraz | {n} zalogowanych teraz",
+      "allTitle": "Wylogować wszystkich pozostałych?",
+      "allDesc": "{n} sesja kończy się od razu. Ta osoba zaloguje się ponownie następnym razem. | {n} sesji kończy się od razu. Te osoby zalogują się ponownie następnym razem.",
+      "allConfirm": "Wyloguj wszystkich pozostałych",
+      "signedOut": "{n} sesja zakończona | {n} sesji zakończonych",
+      "signOutOne": "Wyloguj: {name}",
+      "thisDevice": "Ty",
+      "since": "Zalogowano {when}",
+      "unknownDevice": "Nieznane urządzenie",
+      "sessionsFailed": "Nie udało się wczytać sesji",
+      "network": "Dozwolone sieci",
+      "networkHint": "Ogranicz logowanie i korzystanie z portalu do swoich biur lub VPN.",
+      "allowlist": "Lista dozwolonych adresów IP",
+      "allowlistHint": "Gdy włączona, osoby mogą się logować i pracować tylko z poniższych adresów.",
+      "myIp": "Twój adres",
+      "onList": "Na liście",
+      "notOnList": "Nie ma na liście",
+      "addMine": "Dodaj mój adres",
+      "mine": "Mój adres",
+      "address": "Adres lub zakres",
+      "label": "Etykieta",
+      "ipPlaceholder": "np. 203.0.113.0/24",
+      "labelPlaceholder": "np. Biuro główne",
+      "removeIp": "Usuń adres",
+      "noIps": "Brak adresów",
+      "noIpsDesc": "Dodaj adresy swoich biur lub VPN albo własny.",
+      "addIp": "Dodaj adres",
+      "ipExamples": "Jeden adres (198.51.100.7) lub zakres (203.0.113.0/24, 2001:db8::/32).",
+      "lockout": "Zablokowałbyś sobie dostęp",
+      "lockoutDesc": "Twojego adresu nie ma na liście, więc zapis jest odrzucany. Najpierw go dodaj."
     }
   }
 }

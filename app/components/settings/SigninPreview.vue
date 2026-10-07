@@ -1,11 +1,15 @@
 <!--
-  A live miniature of the workspace sign-in page (F14 M1, Settings → Branding), drawn from the draft:
+  A live miniature of the workspace sign-in page (F14 M1 Branding, M3 Sign-in), drawn from the draft:
   on the left the picture with the welcome (or the dark showcase with the logo for dark backgrounds,
   lit in the brand colour); on the right the logo, "Sign in to …" and the form. Light or dark, like
   people will see it. Decorative: hidden from assistive tech.
 -->
 <script setup lang="ts">
-const props = defineProps<{ name: string; logo: string | null; logoDark: string | null; image: string | null; message: string | null; color: string | null; favicon: string | null }>()
+import type { AuthProvider } from '#shared/types/auth'
+
+const props = defineProps<{ name: string; logo: string | null; logoDark: string | null; image: string | null; message: string | null; color: string | null; favicon: string | null; methods?: AuthProvider[] }>()
+const social = computed(() => (props.methods ?? []).filter((item): item is SocialProvider => item !== 'password'))
+const password = computed(() => !props.methods || props.methods.includes('password'))
 const { t } = useI18n()
 const mode = ref<'light' | 'dark'>('light')
 const modes = computed(() => [
@@ -49,9 +53,15 @@ const formLogo = computed(() => (mode.value === 'dark' ? (props.logoDark ?? prop
         <div class="flex flex-col justify-center gap-2 px-4">
           <span v-if="formLogo" class="flex size-6 items-center justify-center overflow-hidden rounded-md"><img :src="formLogo" alt="" class="max-h-full max-w-full object-contain"></span>
           <span class="text-[11px] font-semibold">{{ t('settings.branding.signinTo', { name }) }}</span>
-          <span class="h-4 rounded border" :class="mode === 'dark' ? 'border-white/15 bg-white/5' : 'border-neutral-200 bg-white'" />
-          <span class="h-4 rounded border" :class="mode === 'dark' ? 'border-white/15 bg-white/5' : 'border-neutral-200 bg-white'" />
-          <span class="h-4 rounded" :class="mode === 'dark' ? 'bg-white' : 'bg-neutral-900'" />
+          <div v-if="social.length" class="flex gap-1">
+            <span v-for="item in social" :key="item" class="flex h-4 flex-1 items-center justify-center rounded border" :class="mode === 'dark' ? 'border-white/15' : 'border-neutral-200'"><UIcon :name="PROVIDER_ICONS[item]" class="size-2.5" /></span>
+          </div>
+          <span v-if="social.length && password" class="h-px" :class="mode === 'dark' ? 'bg-white/15' : 'bg-neutral-200'" />
+          <template v-if="password">
+            <span class="h-4 rounded border" :class="mode === 'dark' ? 'border-white/15 bg-white/5' : 'border-neutral-200 bg-white'" />
+            <span class="h-4 rounded border" :class="mode === 'dark' ? 'border-white/15 bg-white/5' : 'border-neutral-200 bg-white'" />
+            <span class="h-4 rounded" :class="mode === 'dark' ? 'bg-white' : 'bg-neutral-900'" />
+          </template>
           <span class="h-0.5 w-8 rounded-full" :style="{ backgroundColor: accent }" />
         </div>
       </div>

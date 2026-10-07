@@ -1,6 +1,8 @@
 import { z } from 'zod'
 import type { SignupComplete } from '#shared/types/auth'
+import { meetsPasswordPolicy, checkPassword } from '#shared/utils/auth/password'
 import {
+  callerIp,
   consumeChallenge,
   createChallenge,
   describeChallenge,
@@ -8,6 +10,7 @@ import {
   endSession,
   findUser,
   getChallenge,
+  ipAllowed,
   issueTicket,
   redeemTicket,
   requireAuth,
@@ -22,12 +25,15 @@ import { actorOf, anonymousActor, recordAudit } from '../core/audit'
 import { MockError, ok } from '../core/respond'
 import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
+import { settingsOf } from '../data/settingsStore'
 import {
+  hashPassword,
   MOCK_TENANTS,
   MOCK_USERS,
   passwordMatches,
   saveCreatedWorkspaces,
   type MockTenant,
+  type MockUser,
 } from '../data/tenants'
 import type { H3Event } from 'h3'
 import type { Challenge, ChallengePurpose } from '../core/auth'
@@ -66,11 +72,30 @@ const code = z.string().regex(/^\d{6}$/, 'Enter the 6-digit code.')
 
 const loginSchema = z.object({ email: z.email(), password: z.string().min(1) })
 
+/** Settings → Sign-in: an allowed email domain (or no list). */
+function domainAllowed(tenant: MockTenant, email: string) {
+  const domains = settingsOf(tenant).signin.allowed_domains
+  const domain = email.split('@').pop()?.toLowerCase() ?? ''
+  return !domains.length || domains.some(item => domain === item || domain.endsWith(`.${item}`))
+}
+
+/** Settings → Security: the password is older than the workspace allows. */
+function passwordExpired(tenant: MockTenant, user: MockUser) {
+  const days = settingsOf(tenant).security.password.expiry_days
+  return !!days && !!user.password_changed_at && Date.now() - Date.parse(user.password_changed_at) > days * 86_400_000
+}
+
 /** POST /auth/login → OTP challenge (no tokens yet, SECURITY-PROTOCOL §7). */
 export const login = defineMockRoute(({ event, body }) => {
   const tenant = requireTenant(event)
-  if (!tenant.auth_providers.includes('password')) throw new MockError('FRM-AUTH-1008')
+  const { signin } = settingsOf(tenant)
+  if (!signin.methods.includes('password')) throw new MockError('FRM-AUTH-1008')
   const input = parseBody(loginSchema, body)
+  // Settings → Security: only from the allowed networks (checked first, says nothing about the account)
+  if (!ipAllowed(tenant, callerIp(event))) {
+    recordAudit(event, tenant, { action: 'auth.login.blocked', actor: anonymousActor(input.email), outcome: 'blocked', reason: 'FRM-AUTH-1016', metadata: { method: 'password', cause: 'ip_not_allowed' } })
+    throw new MockError('FRM-AUTH-1016')
+  }
   const user = findUser(input.email, tenant.id)
   if (!user || !passwordMatches(user, input.password)) {
     recordAudit(event, tenant, {
@@ -93,13 +118,22 @@ export const login = defineMockRoute(({ event, body }) => {
     })
     throw new MockError('FRM-AUTH-1005')
   }
+  if (!domainAllowed(tenant, user.email)) {
+    recordAudit(event, tenant, { action: 'auth.login.blocked', actor: actorOf(user), outcome: 'blocked', severity: 'notice', reason: 'FRM-AUTH-1014', metadata: { method: 'password', cause: 'email_domain' } })
+    throw new MockError('FRM-AUTH-1014')
+  }
+  if (passwordExpired(tenant, user)) {
+    recordAudit(event, tenant, { action: 'auth.login.blocked', actor: actorOf(user), outcome: 'blocked', severity: 'notice', reason: 'FRM-AUTH-1015', metadata: { method: 'password', cause: 'password_expired' } })
+    throw new MockError('FRM-AUTH-1015')
+  }
   const challenge = createChallenge({
     purpose: 'login',
     email: user.email,
     user,
     tenant,
     channel: 'email',
-    channels: user.phone ? ['email', 'sms'] : ['email'],
+    // Text messages only when the workspace allows them (Settings → Sign-in)
+    channels: user.phone && signin.code.sms ? ['email', 'sms'] : ['email'],
   })
   recordAudit(event, tenant, {
     action: 'auth.otp.sent',
@@ -288,14 +322,33 @@ export const forgotPassword = defineMockRoute(({ event, body }) => {
   return ok(describeChallenge(challenge), devMeta(challenge))
 })
 
-const resetSchema = z.object({ challenge_id: z.string(), code, password })
+const resetSchema = z.object({ challenge_id: z.string(), code, password: z.string().min(1).max(200) })
+
+/** The workspace's password rules (Settings → Security): FRM-AUTH-1007 names what is missing, 1018 a recent one. */
+function checkNewPassword(tenant: MockTenant, user: MockUser | null, value: string) {
+  const rules = settingsOf(tenant).security.password
+  if (!meetsPasswordPolicy(value, rules)) {
+    const missing = checkPassword(value, rules).filter(check => check.required && !check.passed)
+    throw new MockError('FRM-AUTH-1007', missing.map(check => ({ field: 'password', message: check.key === 'length' ? `min_length:${rules.min_length}` : check.key })))
+  }
+  if (user && rules.reuse_last) {
+    const hash = hashPassword(value)
+    if (passwordMatches(user, value) || (user.password_history ?? []).slice(0, rules.reuse_last - 1).includes(hash)) throw new MockError('FRM-AUTH-1018', [{ field: 'password', message: `last_${rules.reuse_last}` }])
+  }
+}
 
 export const resetPassword = defineMockRoute(({ event, body }) => {
   const input = parseBody(resetSchema, body)
+  const pending = getChallenge(input.challenge_id)
+  // The rules first, so a refused password doesn't use up the code
+  if (pending?.purpose === 'reset' && pending.tenant) checkNewPassword(pending.tenant, pending.user, input.password)
   const challenge = verifyAudited(event, input.challenge_id, input.code, 'reset')
   consumeChallenge(challenge.id)
   if (challenge.user) {
+    const old = challenge.user.password.startsWith('sha256:') ? challenge.user.password : hashPassword(challenge.user.password)
+    challenge.user.password_history = [old, ...(challenge.user.password_history ?? [])].slice(0, 10)
     challenge.user.password = input.password
+    challenge.user.password_changed_at = new Date().toISOString()
     saveCreatedWorkspaces()
     recordAudit(event, challenge.tenant!, { action: 'auth.password.reset', actor: actorOf(challenge.user) })
   }

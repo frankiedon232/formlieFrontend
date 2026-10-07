@@ -11,15 +11,8 @@ const { t } = useI18n()
 const route = useRoute()
 const tenant = useTenant()
 const auth = useAuth()
-const { busy, run } = useBusy()
-// Brand names (not translated).
-const PROVIDER_NAMES: Record<string, string> = {
-  google: 'Google',
-  microsoft: 'Microsoft',
-  apple: 'Apple',
-  facebook: 'Facebook',
-}
-const providerName = (value: unknown) => PROVIDER_NAMES[String(value ?? '')] ?? String(value ?? '')
+const { busy, run, error } = useBusy()
+const providerName = (value: unknown) => PROVIDER_NAMES[String(value ?? '') as SocialProvider] ?? String(value ?? '')
 
 useHead({ title: () => t('auth.login.title') })
 
@@ -64,6 +57,11 @@ async function onSubmit(event: FormSubmitEvent<{ email: string; password?: strin
     return true
   })
   if (ok) await navigateTo('/auth/otp')
+  // The workspace's password rules ask for a new one (Settings → Security): straight to setting it
+  else if (error.value?.code === 'FRM-AUTH-1015') {
+    useState<string>('auth:reset-email').value = event.data.email
+    await navigateTo({ path: '/auth/forgot-password', query: { expired: '1' } })
+  }
 }
 </script>
 

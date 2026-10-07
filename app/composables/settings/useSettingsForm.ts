@@ -6,7 +6,7 @@
 import type { ZodType } from 'zod'
 import type { SettingsSection, WorkspaceSettings } from '#shared/types/settings'
 
-const KNOWN = new Set(['website', 'email', 'phone', 'country', 'color', 'timezone', 'currency', 'form_languages'])
+const KNOWN = new Set(['website', 'email', 'phone', 'country', 'color', 'timezone', 'currency', 'form_languages', 'methods', 'domain', 'ip', 'ip_empty'])
 
 export function useSettingsForm<S extends SettingsSection>(section: S, options: { schema?: ZodType; body?: (draft: WorkspaceSettings[S]) => unknown } = {}) {
   const { t } = useI18n()
