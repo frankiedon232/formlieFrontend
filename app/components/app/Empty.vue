@@ -2,7 +2,8 @@
   The one empty / not-found / error state for the portal (owner 2026-10-05): evenly centred in the
   space it has, a layered icon tile (soft frame, solid card) inside a softly framed area with smooth corners, a clear title, a short muted
   description and the next step as buttons. Same props and slots as Nuxt UI's UEmpty, plus `tone`
-  (error tints the icon). Use instead of UEmpty everywhere.
+  (error tints the icon). Use instead of UEmpty everywhere. The icon tile follows the workspace's
+  Appearance colour (primary; black and white keeps it monochrome).
 -->
 <script setup lang="ts">
 import type { ButtonProps } from '@nuxt/ui'
@@ -60,7 +61,7 @@ const ui = computed(() => ({
 const ERROR_ICONS = /cloud-alert|plug-zap|circle-x|octagon-alert|server-crash|wifi-off|shield-alert/
 const tone = computed(() => props.tone ?? (ERROR_ICONS.test(props.icon) ? 'error' : 'neutral'))
 const toneClass = computed(
-  () => ({ neutral: 'text-highlighted', error: 'text-error', warning: 'text-warning' })[tone.value],
+  () => ({ neutral: 'text-primary', error: 'text-error', warning: 'text-warning' })[tone.value],
 )
 const forwarded = computed(() => Object.keys(slots).filter(name => name !== 'leading'))
 </script>
@@ -79,12 +80,12 @@ const forwarded = computed(() => Object.keys(slots).filter(name => name !== 'lea
         <slot name="leading">
           <!-- Layered tile: a soft frame around a solid card holding the icon -->
           <span
-            class="relative flex items-center justify-center border border-default bg-elevated/40"
+            class="relative flex items-center justify-center border border-primary/15 bg-primary/5"
             :class="tiny ? 'size-10 rounded-xl' : compact ? 'size-14 rounded-2xl' : 'size-18 rounded-2xl'"
             aria-hidden="true"
           >
             <span
-              class="flex items-center justify-center border border-default bg-default shadow-sm"
+              class="flex items-center justify-center border border-primary/25 bg-primary/10 shadow-sm"
               :class="tiny ? 'size-7 rounded-lg' : compact ? 'size-10 rounded-xl' : 'size-12 rounded-xl'"
             >
               <UIcon :name="icon" :class="[tiny ? 'size-4' : compact ? 'size-5' : 'size-6', toneClass]" />
