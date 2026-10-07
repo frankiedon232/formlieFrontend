@@ -1,5 +1,5 @@
 <!--
-  Top of Option sets (F15 M1; locked list format, rule 21): two equal chart cards. Options: how many
+  Top of List Option (F15 M1; locked list format, rule 21): two equal chart cards. Options: how many
   options all lists hold (with lists and retired ones) and the biggest lists as slim bars. By state:
   in use · not used yet · with retired options as thin lines; the legend filters the list.
 -->

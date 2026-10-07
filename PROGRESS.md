@@ -1140,6 +1140,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-07 | No teams, locations, cost centres (not collaborative; access per form) | F14 M2 | ✅ removed |
 | 2026-10-07 | Sign-in codes: no authenticator app; text messages optional, email is the standard | F14 M3 | ✅ |
 | 2026-10-07 | Form defaults: show a picture of the selected theme | F14 M5 | ✅ |
+| 2026-10-07 | Rename "Option sets" to "List Option" (menu, Settings navigator, page title; the address stays /option-sets) | F15 | ✅ |
 | 2026-10-06 | Menu "Docs & testing" renamed "API Documentation" (menu, page title, breadcrumbs and the guidance that points to it) | F13 | ✅ |
 | 2026-10-06 | Webhooks send a webhook token from Tokens & headers (new type For webhooks; Authorization: Bearer, Content-Type, Formalie-Key = delivery id), no separate secrets or signatures; clean FRM-RESP-1006 details | F13 | ✅ |
 | 2026-10-06 | API POST follows the form's duplicate rules (same answers 409 whatever the key; identity email same person 409, typo-close flagged); deleted responses no longer block re-sending | F13 | ✅ |

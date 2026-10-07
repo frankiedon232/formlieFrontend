@@ -1,5 +1,5 @@
 <!--
-  Option sets (F15 M1; locked list format, rule 21): every reusable choice list of the workspace. Two
+  List Option (F15 M1; locked list format, rule 21): every reusable choice list of the workspace. Two
   chart cards (options in all lists; by state, legend filters), then table / cards with search, state
   filter and sort. A row or card opens the list's editor; ⋯ / right-click: open, duplicate, delete
   (forms keep their copies; asks first, says how many forms use it). New list (N).

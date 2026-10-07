@@ -1,5 +1,5 @@
 <!--
-  Option sets, grid card (locked card format, rule 21): pill with when it changed, state and ⋯ on top;
+  List Option, grid card (locked card format, rule 21): pill with when it changed, state and ⋯ on top;
   name (red flag = retired options to look at) and description; options and forms; the first options
   as chips; languages fully translated; who made it. The whole card opens the list.
 -->
