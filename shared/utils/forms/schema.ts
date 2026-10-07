@@ -63,6 +63,8 @@ export const formSchemaV1 = z.object({
       identity: z
         .object({ email: text(64).nullable(), verify: z.boolean() })
         .optional(),
+      /** Keep responses for N days (F14 M5); missing = the workspace's default, 0 = keep them. */
+      retention_days: z.number().int().min(0).max(3650).nullable().optional(),
       /** Response emails (F14 M4, shared/utils/forms/emails.ts): to team members, outside addresses, a copy for the respondent. */
       emails: z
         .object({

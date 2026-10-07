@@ -41,6 +41,8 @@ export interface PublicForm {
   seo: PublicFormSeo
   /** Formalie's legal pages for the footer, platform settings (super admin, F23), config as fallback. */
   legal: { terms_url: string; privacy_url: string }
+  /** The organisation's own privacy notice and consent line (Settings → Privacy and data, F14 M5). */
+  privacy: { notice_url: string | null; consent: boolean; consent_text: string | null }
   /** Languages the form offers (its main language first) and the one served. */
   languages: string[]
   language: string

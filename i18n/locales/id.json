@@ -1065,7 +1065,10 @@
       "settings_org_restored": "Entri organisasi dipulihkan",
       "settings_org_merged": "Entri organisasi digabungkan",
       "settings_org_imported": "Entri organisasi diimpor",
-      "settings_org_deleted": "Entri organisasi dihapus"
+      "settings_org_deleted": "Entri organisasi dihapus",
+      "settings_retention_applied": "Respons lama dihapus (retensi)",
+      "settings_data_exported": "Data seseorang diekspor",
+      "settings_data_deleted": "Data seseorang dihapus"
     },
     "detail": {
       "who": "Siapa",
@@ -2289,6 +2292,14 @@
       "receiptField": "Kirim salinan ke",
       "receiptLost": "Pertanyaan email untuk salinan telah dihapus. Pilih yang lain atau matikan salinan.",
       "templates": "Ubah teks email"
+    },
+    "retention": {
+      "title": "Simpan respons",
+      "hint": "Respons yang lebih lama dari ini dihapus permanen. Berlaku saat Anda memublikasikan.",
+      "workspace": "Pilihan ruang kerja",
+      "workspaceIs": "Pilihan ruang kerja ({value})",
+      "keep": "Sampai seseorang menghapusnya",
+      "days": "{n} hari | {n} hari"
     }
   },
   "renderer": {
@@ -2479,7 +2490,9 @@
       "copied": "Tautan disalin",
       "keepGoing": "Lanjutkan mengisi"
     },
-    "language": "Bahasa"
+    "language": "Bahasa",
+    "consentLine": "Dengan mengirim, Anda setuju bahwa {org} boleh menggunakan jawaban Anda untuk formulir ini.",
+    "privacyNotice": "Pemberitahuan privasi"
   },
   "logic": {
     "crumb": "Logika",
@@ -4617,7 +4630,8 @@
       "websiteOf": "Kunjungi situs web {name}",
       "secured": "{icon} Terenkripsi · Diamankan oleh {brand}",
       "terms": "Ketentuan",
-      "privacy": "Kebijakan Privasi Data"
+      "privacy": "Kebijakan Privasi Data",
+      "orgPrivacy": "Pemberitahuan privasi {org}"
     },
     "browser": {
       "reload": "Muat ulang",
@@ -6366,7 +6380,12 @@
       "allowlist": "Daftar IP yang diizinkan aktif",
       "notifications": "{n} dari {total} peristiwa aktif",
       "digest": "ringkasan harian",
-      "ownTexts": "{n} teks sendiri | {n} teks sendiri"
+      "ownTexts": "{n} teks sendiri | {n} teks sendiri",
+      "keepAll": "Respons disimpan",
+      "keepDays": "Respons disimpan {n} hari | Respons disimpan {n} hari",
+      "notice": "pemberitahuan privasi diatur",
+      "withTheme": "Formulir baru dimulai dengan tema",
+      "workspaceLook": "Formulir baru memakai tampilan ruang kerja"
     },
     "next": {
       "title": "Langkah berikutnya",
@@ -6397,7 +6416,10 @@
       "ip_empty": "Tambahkan setidaknya satu alamat, atau matikan daftar yang diizinkan.",
       "people": "Pilih setidaknya satu orang.",
       "subject": "Tambahkan subjek.",
-      "body": "Tambahkan isi email."
+      "body": "Tambahkan isi email.",
+      "https": "Gunakan alamat https://.",
+      "retention": "Pilih salah satu periode.",
+      "theme": "Tema itu sudah tidak ada."
     },
     "company": {
       "names": "Nama",
@@ -6856,6 +6878,78 @@
       "noMatch": "Tidak ada email yang cocok",
       "test": "tes",
       "sentTo": "Ke {to} · {when}"
+    },
+    "privacy": {
+      "retention": "Simpan respons",
+      "retentionHint": "Menghapus respons lama membantu Anda menyimpan hanya yang perlu.",
+      "keep": "Simpan respons selama",
+      "keepAll": "Sampai seseorang menghapusnya",
+      "keepFor": "{n} hari | {n} hari",
+      "perForm": "Setiap formulir dapat mengatur sendiri di pengaturannya.",
+      "wouldRemove": "{n} respons di {forms} formulir akan dihapus saat Anda menyimpan. | {n} respons di {forms} formulir akan dihapus saat Anda menyimpan.",
+      "newestRemoved": "Yang terbaru dari {when}. Setelah itu, berjalan setiap hari.",
+      "nothingNow": "Tidak ada yang cukup lama untuk dihapus sekarang. Berjalan setiap hari.",
+      "confirmTitle": "Hapus {n} respons secara permanen? | Hapus {n} respons secara permanen?",
+      "confirmDesc": "Respons ini lebih lama dari batas baru. Langsung dihapus dan tidak dapat dikembalikan.",
+      "confirm": "Simpan dan hapus",
+      "notice": "Pemberitahuan privasi dan persetujuan",
+      "noticeHint": "Yang dilihat responden tentang cara Anda menggunakan jawaban mereka.",
+      "noticeUrl": "Pemberitahuan privasi Anda",
+      "consent": "Tampilkan baris persetujuan di atas Kirim",
+      "consentHint": "Di setiap formulir publik, dengan tautan ke pemberitahuan privasi Anda.",
+      "consentText": "Baris persetujuan",
+      "consentTextHelp": "Kosong: baris dari Formalie, dalam bahasa responden.",
+      "sample": "Tampilannya",
+      "requests": "Permintaan data",
+      "requestsHint": "Saat seseorang bertanya apa yang Anda simpan tentang mereka, atau meminta dilupakan.",
+      "requestEmail": "Alamat email mereka",
+      "requestPlaceholder": "name{'@'}example.com",
+      "find": "Cari respons mereka",
+      "found": "{n} respons dari {email} | {n} respons dari {email}",
+      "responses": "{n} respons | {n} respons",
+      "none": "Tidak ada yang ditemukan",
+      "noneDesc": "Tidak ada respons di formulir mana pun dengan alamat email ini.",
+      "export": "Ekspor",
+      "exported": "Data mereka telah diekspor",
+      "deleteAll": "Hapus semua",
+      "deleteTitle": "Hapus semua dari orang ini?",
+      "deleteDesc": "{n} respons di {forms} formulir dihapus permanen. | {n} respons di {forms} formulir dihapus permanen.",
+      "typeEmail": "Ketik {email} untuk mengonfirmasi",
+      "deleted": "{n} respons dihapus | {n} respons dihapus",
+      "residency": "Tempat data disimpan",
+      "residencyHint": "Wilayah tempat respons dan file Anda disimpan.",
+      "residencyLater": "Dipilih bersama paket Anda. Paket hadir bersama konsol platform."
+    },
+    "formDefaults": {
+      "note": "Formulir baru dimulai dengan pengaturan ini. Formulir yang sudah ada tetap memakai pengaturannya sendiri, dan setiap formulir tetap bisa mengubahnya.",
+      "experience": "Pengisian",
+      "experienceHint": "Cara formulir baru berperilaku bagi responden.",
+      "progress_bar": "Bilah kemajuan",
+      "progress_barHint": "Menunjukkan sejauh mana responden mengisi.",
+      "save_resume": "Simpan dan lanjutkan nanti",
+      "save_resumeHint": "Responden dapat kembali ke formulir yang belum selesai.",
+      "field_icons": "Ikon di kolom",
+      "field_iconsHint": "Ikon kecil di setiap kotak jawaban.",
+      "labels": "Label pertanyaan",
+      "labelTop": "Di atas jawaban",
+      "labelLeft": "Di samping jawaban",
+      "design": "Desain",
+      "designHint": "Tampilan awal formulir baru.",
+      "theme": "Tema",
+      "themeHelp": "Templat mempertahankan desainnya sendiri.",
+      "workspaceLook": "Tampilan ruang kerja Anda",
+      "themeGone": "Tema ini sudah tidak ada. Pilih yang lain.",
+      "thankYou": "Halaman terima kasih",
+      "thankYouHint": "Yang dilihat responden setelah Kirim.",
+      "thankYouTitle": "Judul",
+      "thankYouMessage": "Pesan",
+      "sharing": "Respons dan berbagi",
+      "sharingHint": "Siapa yang diberi tahu tentang respons baru, dan di mana formulir boleh disematkan.",
+      "team": "Kirim email respons baru ke",
+      "teamHelp": "Anggota tim yang ditambahkan ke email respons setiap formulir baru.",
+      "embed": "Situs web yang boleh menyematkan",
+      "embedAny": "Situs web mana pun boleh menyematkan formulir baru.",
+      "embedPlaceholder": "www.example.com, lalu Enter"
     }
   },
   "notifications": {

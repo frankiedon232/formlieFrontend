@@ -22,6 +22,8 @@ export async function usePublicForm(key: string, channel: 'link' | 'embed' = 'li
   const profile = useState<import('#shared/types/auth').TenantPublicProfile | null>('tenant:profile')
   // Footer legal links from the platform settings (super admin), shared with the page frame.
   const legal = useState<PublicForm['legal'] | null>('public:legal', () => null)
+  // The organisation's privacy notice and consent line (Settings → Privacy and data), for the footer and Submit.
+  const privacy = useState<(PublicForm['privacy'] & { org: string }) | null>('public:privacy', () => null)
 
   // Not awaited yet: the watchers below are set up first, so they belong to the page (and stop with it).
   const loading = useAsyncData(`public-form:${channel}:${key}`, async () => {
@@ -44,6 +46,7 @@ export async function usePublicForm(key: string, channel: 'link' | 'embed' = 'li
 
   watchEffect(() => {
     if (form.value?.legal) legal.value = form.value.legal
+    if (form.value?.privacy) privacy.value = { ...form.value.privacy, org: form.value.workspace.name }
   })
   watchEffect(() => {
     const workspace = form.value?.workspace

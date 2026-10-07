@@ -1065,7 +1065,10 @@
       "settings_org_restored": "已恢复组织条目",
       "settings_org_merged": "已合并组织条目",
       "settings_org_imported": "已导入组织条目",
-      "settings_org_deleted": "已删除组织条目"
+      "settings_org_deleted": "已删除组织条目",
+      "settings_retention_applied": "已删除旧回复(保留期限)",
+      "settings_data_exported": "已导出某人的数据",
+      "settings_data_deleted": "已删除某人的数据"
     },
     "detail": {
       "who": "谁",
@@ -2289,6 +2292,14 @@
       "receiptField": "副本发送至",
       "receiptLost": "用于副本的邮箱问题已被删除。请选择另一个,或关闭副本。",
       "templates": "编辑邮件文本"
+    },
+    "retention": {
+      "title": "保留回复",
+      "hint": "早于此期限的回复将被永久删除。发布后生效。",
+      "workspace": "工作区的选择",
+      "workspaceIs": "工作区的选择({value})",
+      "keep": "直到有人删除",
+      "days": "{n} 天 | {n} 天"
     }
   },
   "renderer": {
@@ -2479,7 +2490,9 @@
       "copied": "链接已复制",
       "keepGoing": "继续填写"
     },
-    "language": "语言"
+    "language": "语言",
+    "consentLine": "提交即表示你同意{org}可将你的回答用于此表单。",
+    "privacyNotice": "隐私声明"
   },
   "logic": {
     "crumb": "逻辑",
@@ -4617,7 +4630,8 @@
       "websiteOf": "访问 {name} 网站",
       "secured": "{icon} 已加密 · 由 {brand} 提供安全保护",
       "terms": "条款",
-      "privacy": "数据隐私政策"
+      "privacy": "数据隐私政策",
+      "orgPrivacy": "{org}隐私声明"
     },
     "browser": {
       "reload": "重新加载",
@@ -6366,7 +6380,12 @@
       "allowlist": "IP 允许列表已开启",
       "notifications": "已开启 {n} / {total} 个事件",
       "digest": "每日摘要",
-      "ownTexts": "{n} 条自定义文本 | {n} 条自定义文本"
+      "ownTexts": "{n} 条自定义文本 | {n} 条自定义文本",
+      "keepAll": "回复已保留",
+      "keepDays": "回复保留 {n} 天 | 回复保留 {n} 天",
+      "notice": "已设置隐私声明",
+      "withTheme": "新表单以主题开始",
+      "workspaceLook": "新表单使用工作区外观"
     },
     "next": {
       "title": "下一步",
@@ -6397,7 +6416,10 @@
       "ip_empty": "请至少添加一个地址，或关闭允许列表。",
       "people": "请至少选择一人。",
       "subject": "请添加主题。",
-      "body": "请添加邮件正文。"
+      "body": "请添加邮件正文。",
+      "https": "请使用 https:// 地址。",
+      "retention": "请选择其中一个期限。",
+      "theme": "该主题已不存在。"
     },
     "company": {
       "names": "名称",
@@ -6856,6 +6878,78 @@
       "noMatch": "没有匹配的邮件",
       "test": "测试",
       "sentTo": "收件人 {to} · {when}"
+    },
+    "privacy": {
+      "retention": "保留回复",
+      "retentionHint": "删除旧回复,只保留你需要的内容。",
+      "keep": "回复保留时长",
+      "keepAll": "直到有人删除",
+      "keepFor": "{n} 天 | {n} 天",
+      "perForm": "每个表单可在自己的设置中单独指定。",
+      "wouldRemove": "保存时将删除 {forms} 个表单中的 {n} 条回复。 | 保存时将删除 {forms} 个表单中的 {n} 条回复。",
+      "newestRemoved": "其中最新的一条来自 {when}。之后每天自动执行。",
+      "nothingNow": "目前没有足够旧、可删除的回复。每天自动执行。",
+      "confirmTitle": "永久删除 {n} 条回复? | 永久删除 {n} 条回复?",
+      "confirmDesc": "它们早于新的期限。将立即删除,且无法恢复。",
+      "confirm": "保存并删除",
+      "notice": "隐私声明与同意",
+      "noticeHint": "回复者会看到你如何使用他们的回答。",
+      "noticeUrl": "你的隐私声明",
+      "consent": "在“提交”上方显示同意说明",
+      "consentHint": "显示在每个公开表单上,并附带你的隐私声明链接。",
+      "consentText": "同意说明",
+      "consentTextHelp": "留空:使用 Formalie 的默认说明,语言与回复者一致。",
+      "sample": "预览效果",
+      "requests": "数据请求",
+      "requestsHint": "当有人询问你保存了关于他们的哪些信息,或要求被遗忘时。",
+      "requestEmail": "对方的电子邮件地址",
+      "requestPlaceholder": "name{'@'}example.com",
+      "find": "查找其回复",
+      "found": "来自 {email} 的 {n} 条回复 | 来自 {email} 的 {n} 条回复",
+      "responses": "{n} 条回复 | {n} 条回复",
+      "none": "未找到任何内容",
+      "noneDesc": "所有表单中都没有使用此电子邮件地址的回复。",
+      "export": "导出",
+      "exported": "已导出其数据",
+      "deleteAll": "全部删除",
+      "deleteTitle": "删除此人的所有内容?",
+      "deleteDesc": "将永久删除 {forms} 个表单中的 {n} 条回复。 | 将永久删除 {forms} 个表单中的 {n} 条回复。",
+      "typeEmail": "输入 {email} 以确认",
+      "deleted": "已删除 {n} 条回复 | 已删除 {n} 条回复",
+      "residency": "数据存储位置",
+      "residencyHint": "保存你的回复和文件的区域。",
+      "residencyLater": "随套餐选择。套餐将随平台控制台一同推出。"
+    },
+    "formDefaults": {
+      "note": "新表单将以这些设置开始。已有的表单保留自己的设置,每个表单仍可修改。",
+      "experience": "填写",
+      "experienceHint": "新表单对回复者的行为方式。",
+      "progress_bar": "进度条",
+      "progress_barHint": "显示回复者已完成多少。",
+      "save_resume": "保存并稍后继续",
+      "save_resumeHint": "回复者可以回到填写到一半的表单。",
+      "field_icons": "字段图标",
+      "field_iconsHint": "在每个回答框中显示一个小图标。",
+      "labels": "问题标签",
+      "labelTop": "在回答上方",
+      "labelLeft": "在回答旁边",
+      "design": "设计",
+      "designHint": "新表单起始的外观。",
+      "theme": "主题",
+      "themeHelp": "模板保留自己的设计。",
+      "workspaceLook": "你的工作区外观",
+      "themeGone": "该主题已不存在。请选择其他主题。",
+      "thankYou": "感谢页",
+      "thankYouHint": "提交后回复者看到的内容。",
+      "thankYouTitle": "标题",
+      "thankYouMessage": "消息",
+      "sharing": "回复与分享",
+      "sharingHint": "谁会收到新回复的通知,以及表单可嵌入的位置。",
+      "team": "将新回复通过电子邮件发送给",
+      "teamHelp": "添加到每个新表单回复邮件中的团队成员。",
+      "embed": "允许嵌入的网站",
+      "embedAny": "任何网站都可以嵌入新表单。",
+      "embedPlaceholder": "www.example.com,然后按 Enter"
     }
   },
   "notifications": {

@@ -50,6 +50,11 @@ export function useSettingsStatus(settings: Ref<WorkspaceSettings | null>) {
       const text = idle < 60 ? t('settings.status.idleMinutes', { n: idle }) : t('settings.status.idleHours', { n: idle / 60 }, idle / 60)
       return { text: s.security.ip_allowlist.enabled ? `${text} · ${t('settings.status.allowlist')}` : text, tone: 'info' }
     }
+    if (key === 'privacy') {
+      const days = s.privacy.retention_days
+      return { text: (days ? t('settings.status.keepDays', { n: days }, days) : t('settings.status.keepAll')) + (s.privacy.notice_url ? ` · ${t('settings.status.notice')}` : ''), tone: s.privacy.notice_url ? 'done' : 'partial' }
+    }
+    if (key === 'formDefaults') return { text: s.form_defaults.theme_id ? t('settings.status.withTheme') : t('settings.status.workspaceLook'), tone: 'info' }
     if (key === 'emails') {
       const own = Object.values(s.emails.custom).reduce((sum, langs) => sum + Object.keys(langs ?? {}).length, 0)
       return { text: (s.emails.sender_name || s.company.display_name) + (own ? ` · ${t('settings.status.ownTexts', { n: own }, own)}` : ''), tone: 'info' }

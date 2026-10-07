@@ -1065,7 +1065,10 @@
       "settings_org_restored": "Kuruluş kaydı geri yüklendi",
       "settings_org_merged": "Kuruluş kayıtları birleştirildi",
       "settings_org_imported": "Kuruluş kayıtları içe aktarıldı",
-      "settings_org_deleted": "Kuruluş kaydı silindi"
+      "settings_org_deleted": "Kuruluş kaydı silindi",
+      "settings_retention_applied": "Eski yanıtlar kaldırıldı (saklama)",
+      "settings_data_exported": "Bir kişinin verileri dışa aktarıldı",
+      "settings_data_deleted": "Bir kişinin verileri silindi"
     },
     "detail": {
       "who": "Kim",
@@ -2289,6 +2292,14 @@
       "receiptField": "Kopyanın gönderileceği yer",
       "receiptLost": "Kopya için e-posta sorusu kaldırıldı. Başka birini seçin ya da kopyayı kapatın.",
       "templates": "E-posta metinlerini düzenle"
+    },
+    "retention": {
+      "title": "Yanıtları sakla",
+      "hint": "Bundan eski yanıtlar kalıcı olarak kaldırılır. Yayınladığınızda geçerli olur.",
+      "workspace": "Çalışma alanının seçimi",
+      "workspaceIs": "Çalışma alanının seçimi ({value})",
+      "keep": "Biri silene kadar",
+      "days": "{n} gün | {n} gün"
     }
   },
   "renderer": {
@@ -2479,7 +2490,9 @@
       "copied": "Bağlantı kopyalandı",
       "keepGoing": "Doldurmaya devam et"
     },
-    "language": "Dil"
+    "language": "Dil",
+    "consentLine": "Göndererek, {org} kuruluşunun yanıtlarınızı bu form için kullanabilmesini kabul etmiş olursunuz.",
+    "privacyNotice": "Gizlilik bildirimi"
   },
   "logic": {
     "crumb": "Mantık",
@@ -4617,7 +4630,8 @@
       "websiteOf": "{name} web sitesini ziyaret et",
       "secured": "{icon} Şifreli · {brand} ile güvende",
       "terms": "Koşullar",
-      "privacy": "Veri Gizliliği Politikası"
+      "privacy": "Veri Gizliliği Politikası",
+      "orgPrivacy": "{org} gizlilik bildirimi"
     },
     "browser": {
       "reload": "Yeniden yükle",
@@ -6366,7 +6380,12 @@
       "allowlist": "IP izin listesi açık",
       "notifications": "{total} olaydan {n} tanesi açık",
       "digest": "günlük özet",
-      "ownTexts": "{n} özel metin | {n} özel metin"
+      "ownTexts": "{n} özel metin | {n} özel metin",
+      "keepAll": "Yanıtlar saklanıyor",
+      "keepDays": "Yanıtlar {n} gün saklanıyor | Yanıtlar {n} gün saklanıyor",
+      "notice": "gizlilik bildirimi ayarlandı",
+      "withTheme": "Yeni formlar bir temayla başlar",
+      "workspaceLook": "Yeni formlar çalışma alanının görünümünü kullanır"
     },
     "next": {
       "title": "Sonraki adım",
@@ -6397,7 +6416,10 @@
       "ip_empty": "En az bir adres ekleyin veya izin listesini kapatın.",
       "people": "En az bir kişi seç.",
       "subject": "Bir konu ekle.",
-      "body": "E-postanın metnini ekle."
+      "body": "E-postanın metnini ekle.",
+      "https": "https:// ile başlayan bir adres kullanın.",
+      "retention": "Sürelerden birini seçin.",
+      "theme": "Bu tema artık yok."
     },
     "company": {
       "names": "Adlar",
@@ -6856,6 +6878,78 @@
       "noMatch": "Eşleşen e-posta yok",
       "test": "test",
       "sentTo": "Alıcı: {to} · {when}"
+    },
+    "privacy": {
+      "retention": "Yanıtları sakla",
+      "retentionHint": "Eski yanıtları kaldırmak yalnızca ihtiyacınız olanı tutmanızı sağlar.",
+      "keep": "Yanıtları şu süre sakla",
+      "keepAll": "Biri silene kadar",
+      "keepFor": "{n} gün | {n} gün",
+      "perForm": "Her form kendi ayarlarında kendi süresini belirleyebilir.",
+      "wouldRemove": "{forms} formdaki {n} yanıt kaydettiğinizde kaldırılır. | {forms} formdaki {n} yanıt kaydettiğinizde kaldırılır.",
+      "newestRemoved": "Bunların en yenisi {when} tarihli. Ondan sonra her gün çalışır.",
+      "nothingNow": "Şu an kaldırılacak kadar eski yanıt yok. Her gün çalışır.",
+      "confirmTitle": "{n} yanıt kalıcı olarak kaldırılsın mı? | {n} yanıt kalıcı olarak kaldırılsın mı?",
+      "confirmDesc": "Yeni sınırdan daha eskiler. Hemen kaldırılırlar ve geri getirilemezler.",
+      "confirm": "Kaydet ve kaldır",
+      "notice": "Gizlilik bildirimi ve onay",
+      "noticeHint": "Yanıtlayanların, yanıtlarını nasıl kullandığınız hakkında gördükleri.",
+      "noticeUrl": "Gizlilik bildiriminiz",
+      "consent": "Gönder düğmesinin üstünde onay satırı göster",
+      "consentHint": "Her herkese açık formda, gizlilik bildiriminize bağlantıyla.",
+      "consentText": "Onay satırı",
+      "consentTextHelp": "Boş: Formalie'nin satırı, yanıtlayanın dilinde.",
+      "sample": "Nasıl görünür",
+      "requests": "Veri talepleri",
+      "requestsHint": "Biri hakkında ne sakladığınızı sorduğunda ya da unutulmak istediğinde.",
+      "requestEmail": "E-posta adresi",
+      "requestPlaceholder": "name{'@'}example.com",
+      "find": "Yanıtlarını bul",
+      "found": "{email} adresinden {n} yanıt | {email} adresinden {n} yanıt",
+      "responses": "{n} yanıt | {n} yanıt",
+      "none": "Hiçbir şey bulunamadı",
+      "noneDesc": "Hiçbir formda bu e-posta adresine ait yanıt yok.",
+      "export": "Dışa aktar",
+      "exported": "Veriler dışa aktarıldı",
+      "deleteAll": "Tümünü sil",
+      "deleteTitle": "Bu kişiye ait her şey silinsin mi?",
+      "deleteDesc": "{forms} formdaki {n} yanıt kalıcı olarak kaldırılır. | {forms} formdaki {n} yanıt kalıcı olarak kaldırılır.",
+      "typeEmail": "Onaylamak için {email} yazın",
+      "deleted": "{n} yanıt silindi | {n} yanıt silindi",
+      "residency": "Verilerin saklandığı yer",
+      "residencyHint": "Yanıtlarınızın ve dosyalarınızın saklandığı bölge.",
+      "residencyLater": "Planınızla birlikte seçilir. Planlar platform konsoluyla gelir."
+    },
+    "formDefaults": {
+      "note": "Yeni formlar bu ayarlarla başlar. Mevcut formlar kendi ayarlarını korur ve her form bunları yine değiştirebilir.",
+      "experience": "Doldurma",
+      "experienceHint": "Yeni formların yanıtlayanlar için nasıl davrandığı.",
+      "progress_bar": "İlerleme çubuğu",
+      "progress_barHint": "Yanıtlayanların ne kadar ilerlediğini gösterir.",
+      "save_resume": "Kaydet ve sonra devam et",
+      "save_resumeHint": "Yanıtlayanlar yarım kalan forma geri dönebilir.",
+      "field_icons": "Alanlarda simgeler",
+      "field_iconsHint": "Her yanıt kutusunda küçük bir simge.",
+      "labels": "Soru etiketleri",
+      "labelTop": "Yanıtın üstünde",
+      "labelLeft": "Yanıtın yanında",
+      "design": "Tasarım",
+      "designHint": "Yeni formların başladığı görünüm.",
+      "theme": "Tema",
+      "themeHelp": "Şablonlar kendi tasarımını korur.",
+      "workspaceLook": "Çalışma alanınızın görünümü",
+      "themeGone": "Bu tema artık yok. Başka bir tane seçin.",
+      "thankYou": "Teşekkür sayfası",
+      "thankYouHint": "Gönderdikten sonra yanıtlayanların gördüğü.",
+      "thankYouTitle": "Başlık",
+      "thankYouMessage": "Mesaj",
+      "sharing": "Yanıtlar ve paylaşım",
+      "sharingHint": "Yeni yanıtlardan kimin haberi olur ve formlar nerelere gömülebilir.",
+      "team": "Yeni yanıtları şuraya e-postayla gönder",
+      "teamHelp": "Her yeni formun yanıt e-postalarına eklenen ekip üyeleri.",
+      "embed": "Gömmeye izin verilen web siteleri",
+      "embedAny": "Her web sitesi yeni formları gömebilir.",
+      "embedPlaceholder": "www.example.com, ardından Enter"
     }
   },
   "notifications": {

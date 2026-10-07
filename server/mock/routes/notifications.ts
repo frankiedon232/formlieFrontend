@@ -7,7 +7,7 @@
  *   POST   /notifications/digest/send     admins: send the waiting daily summaries now
  *
  * Due events are found when the feed is read (the mock has no scheduler): forms closing within a day,
- * exports that finished.
+ * exports that finished, and the daily retention run (Settings → Privacy and data).
  */
 import { z } from 'zod'
 import type { NotificationFeed } from '#shared/types/notifications'
@@ -18,6 +18,7 @@ import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
 import { formsOf } from '../data/formStore'
 import { announceOnce, clearRead, feedOf, flushDigest, markRead, notify } from '../data/notificationStore'
+import { applyRetentionDaily } from '../data/retentionStore'
 import type { MockTenant } from '../data/tenants'
 import type { H3Event } from 'h3'
 import { readyExports } from './responseExports'
@@ -34,6 +35,7 @@ function announceDue(event: H3Event, tenant: MockTenant) {
   for (const item of readyExports(tenant.id))
     if (announceOnce(tenant, `export:${item.id}`)) notify(event, tenant, 'export_ready', { file: item.file_name, form: item.form.name }, '/responses/exports', { only: [item.created_by.id] })
   flushDigest(event, tenant)
+  applyRetentionDaily(event, tenant)
 }
 
 export const getFeed = defineMockRoute(({ event }) => {

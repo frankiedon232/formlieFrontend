@@ -8,7 +8,7 @@ import type { SettingsSection, WorkspaceSettings } from '#shared/types/settings'
 
 const KNOWN = new Set(['website', 'email', 'phone', 'country', 'color', 'timezone', 'currency', 'form_languages', 'methods', 'domain', 'ip', 'ip_empty', 'people', 'subject', 'body'])
 
-export function useSettingsForm<S extends SettingsSection>(section: S, options: { schema?: ZodType; body?: (draft: WorkspaceSettings[S]) => unknown } = {}) {
+export function useSettingsForm<S extends SettingsSection>(section: S, options: { schema?: ZodType; body?: (draft: WorkspaceSettings[S]) => unknown; beforeSave?: () => Promise<boolean> } = {}) {
   const { t } = useI18n()
   const api = useApi()
   const toast = useToast()
@@ -43,6 +43,8 @@ export function useSettingsForm<S extends SettingsSection>(section: S, options: 
       toast.add({ title: t('settings.fixErrors'), color: 'warning', icon: 'i-lucide-triangle-alert' })
       return false
     }
+    // A last question before saving (e.g. Privacy: responses a shorter limit removes)
+    if (options.beforeSave && !(await options.beforeSave())) return false
     saving.value = true
     try {
       const { data } = await api.patch<WorkspaceSettings[S]>(`/settings/${section}`, options.body ? options.body(draft.value) : draft.value)

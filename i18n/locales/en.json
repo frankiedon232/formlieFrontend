@@ -1065,7 +1065,10 @@
       "settings_org_restored": "Organisation entry restored",
       "settings_org_merged": "Organisation entries merged",
       "settings_org_imported": "Organisation entries imported",
-      "settings_org_deleted": "Organisation entry deleted"
+      "settings_org_deleted": "Organisation entry deleted",
+      "settings_retention_applied": "Old responses removed (retention)",
+      "settings_data_exported": "A person's data exported",
+      "settings_data_deleted": "A person's data deleted"
     },
     "detail": {
       "who": "Who",
@@ -2289,6 +2292,14 @@
       "receiptField": "Send the copy to",
       "receiptLost": "The email question for the copy was removed. Choose another one or turn the copy off.",
       "templates": "Edit the email texts"
+    },
+    "retention": {
+      "title": "Keep responses",
+      "hint": "Responses older than this are removed for good. Takes effect when you publish.",
+      "workspace": "The workspace's choice",
+      "workspaceIs": "The workspace's choice ({value})",
+      "keep": "Until someone deletes them",
+      "days": "{n} day | {n} days"
     }
   },
   "renderer": {
@@ -2479,7 +2490,9 @@
       "copied": "Link copied",
       "keepGoing": "Keep filling in"
     },
-    "language": "Language"
+    "language": "Language",
+    "consentLine": "By submitting, you agree that {org} may use your answers for this form.",
+    "privacyNotice": "Privacy notice"
   },
   "logic": {
     "crumb": "Logic",
@@ -4617,7 +4630,8 @@
       "websiteOf": "Visit the {name} website",
       "secured": "{icon} Encrypted · Secured by {brand}",
       "terms": "Terms",
-      "privacy": "Data Privacy Policy"
+      "privacy": "Data Privacy Policy",
+      "orgPrivacy": "{org} privacy notice"
     },
     "browser": {
       "reload": "Reload",
@@ -6366,7 +6380,12 @@
       "allowlist": "IP allowlist on",
       "notifications": "{n} of {total} events on",
       "digest": "daily summary",
-      "ownTexts": "{n} own text | {n} own texts"
+      "ownTexts": "{n} own text | {n} own texts",
+      "keepAll": "Responses kept",
+      "keepDays": "Responses kept {n} day | Responses kept {n} days",
+      "notice": "privacy notice set",
+      "withTheme": "New forms start with a theme",
+      "workspaceLook": "New forms use the workspace look"
     },
     "next": {
       "title": "Next step",
@@ -6397,7 +6416,10 @@
       "ip_empty": "Add at least one address, or turn the allowlist off.",
       "people": "Choose at least one person.",
       "subject": "Add a subject.",
-      "body": "Add the text of the email."
+      "body": "Add the text of the email.",
+      "https": "Use an https:// address.",
+      "retention": "Choose one of the periods.",
+      "theme": "That theme no longer exists."
     },
     "company": {
       "names": "Names",
@@ -6856,6 +6878,78 @@
       "noMatch": "No emails match",
       "test": "test",
       "sentTo": "To {to} · {when}"
+    },
+    "privacy": {
+      "retention": "Keep responses",
+      "retentionHint": "Removing old responses keeps only what you need.",
+      "keep": "Keep responses for",
+      "keepAll": "Until someone deletes them",
+      "keepFor": "{n} day | {n} days",
+      "perForm": "Each form can set its own in its settings.",
+      "wouldRemove": "{n} response in {forms} forms would be removed when you save. | {n} responses in {forms} forms would be removed when you save.",
+      "newestRemoved": "The newest of them is from {when}. After that, it runs every day.",
+      "nothingNow": "Nothing is old enough to be removed now. It runs every day.",
+      "confirmTitle": "Remove {n} response for good? | Remove {n} responses for good?",
+      "confirmDesc": "They are older than the new limit. They are removed straight away and can't be brought back.",
+      "confirm": "Save and remove",
+      "notice": "Privacy notice and consent",
+      "noticeHint": "What respondents see about how you use their answers.",
+      "noticeUrl": "Your privacy notice",
+      "consent": "Show a consent line above Submit",
+      "consentHint": "On every public form, with a link to your privacy notice.",
+      "consentText": "Consent line",
+      "consentTextHelp": "Empty: Formalie's line, in the respondent's language.",
+      "sample": "How it looks",
+      "requests": "Data requests",
+      "requestsHint": "When someone asks what you hold about them, or to be forgotten.",
+      "requestEmail": "Their email address",
+      "requestPlaceholder": "name{'@'}example.com",
+      "find": "Find their responses",
+      "found": "{n} response from {email} | {n} responses from {email}",
+      "responses": "{n} response | {n} responses",
+      "none": "Nothing found",
+      "noneDesc": "No response in any form has this email address.",
+      "export": "Export",
+      "exported": "Their data was exported",
+      "deleteAll": "Delete all",
+      "deleteTitle": "Delete everything from this person?",
+      "deleteDesc": "{n} response in {forms} forms is removed for good. | {n} responses in {forms} forms are removed for good.",
+      "typeEmail": "Type {email} to confirm",
+      "deleted": "{n} response deleted | {n} responses deleted",
+      "residency": "Where data is stored",
+      "residencyHint": "The region your responses and files are kept in.",
+      "residencyLater": "Chosen with your plan. Plans come with the platform console."
+    },
+    "formDefaults": {
+      "note": "New forms start with these. Forms you already have keep their own settings, and every form can still change them.",
+      "experience": "Filling in",
+      "experienceHint": "How new forms behave for respondents.",
+      "progress_bar": "Progress bar",
+      "progress_barHint": "Shows how far along respondents are.",
+      "save_resume": "Save and continue later",
+      "save_resumeHint": "Respondents can come back to a half-finished form.",
+      "field_icons": "Icons in fields",
+      "field_iconsHint": "A small icon in each answer box.",
+      "labels": "Question labels",
+      "labelTop": "Above the answer",
+      "labelLeft": "Beside the answer",
+      "design": "Design",
+      "designHint": "The look new forms start with.",
+      "theme": "Theme",
+      "themeHelp": "Templates keep their own design.",
+      "workspaceLook": "Your workspace look",
+      "themeGone": "This theme no longer exists. Choose another one.",
+      "thankYou": "Thank-you page",
+      "thankYouHint": "What respondents see after Submit.",
+      "thankYouTitle": "Title",
+      "thankYouMessage": "Message",
+      "sharing": "Responses and sharing",
+      "sharingHint": "Who hears about new responses, and where forms can be embedded.",
+      "team": "Email new responses to",
+      "teamHelp": "Team members added to every new form's response emails.",
+      "embed": "Websites allowed to embed",
+      "embedAny": "Any website can embed new forms.",
+      "embedPlaceholder": "www.example.com, then Enter"
     }
   },
   "notifications": {

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { brandingSchema, companySchema, isTimeZone, emailsSchema, localisationSchema, notificationsSchema, securitySchema, signinSchema } from '../../shared/utils/settings/schemas'
+import { brandingSchema, companySchema, emailsSchema, formDefaultsSchema, isTimeZone, localisationSchema, notificationsSchema, privacySchema, securitySchema, signinSchema } from '../../shared/utils/settings/schemas'
 
 const company = {
   legal_name: 'Northwind Trading Ltd.',
@@ -132,5 +132,31 @@ describe('email settings', () => {
     expect(emailsSchema.safeParse({ sender_name: null, reply_to: null, footer: null, custom: { invitation: { en: { subject: '', body: 'x' } } } }).success).toBe(false)
     expect(emailsSchema.safeParse({ sender_name: null, reply_to: null, footer: null, custom: { unknown: { en: { subject: 'a', body: 'b' } } } }).success).toBe(false)
     expect(emailsSchema.safeParse({ sender_name: null, reply_to: 'nobody', footer: null, custom: {} }).success).toBe(false)
+  })
+})
+
+describe('privacy settings', () => {
+  it('take a known period, an https notice and empty texts as null', () => {
+    const result = privacySchema.parse({ retention_days: 365, notice_url: 'https://www.example.com/privacy', consent: true, consent_text: ' ' })
+    expect(result.consent_text).toBeNull()
+  })
+
+  it('refuse other periods and plain http', () => {
+    expect(privacySchema.safeParse({ retention_days: 45, notice_url: null, consent: false, consent_text: null }).success).toBe(false)
+    expect(privacySchema.safeParse({ retention_days: 0, notice_url: 'http://example.com/privacy', consent: false, consent_text: null }).error?.issues[0]?.message).toBe('https')
+  })
+})
+
+describe('form defaults', () => {
+  const defaults = { settings: { progress_bar: true, save_resume: false, field_icons: true, label_position: 'top' }, theme_id: null, thank_you: { title: '', message: null }, team_emails: [], embed_domains: ['https://www.Example.com/forms', '*.example.org'] }
+
+  it('tidy embed websites to host names', () => {
+    const result = formDefaultsSchema.parse(defaults)
+    expect(result.embed_domains).toEqual(['www.example.com', '*.example.org'])
+    expect(result.thank_you.title).toBeNull()
+  })
+
+  it('refuse a website that is not a host name', () => {
+    expect(formDefaultsSchema.safeParse({ ...defaults, embed_domains: ['not a site'] }).success).toBe(false)
   })
 })

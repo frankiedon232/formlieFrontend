@@ -6,6 +6,7 @@ import { z } from 'zod'
 import { COMPANY_SIZES, DATE_FORMATS, INDUSTRIES, NUMBER_FORMATS } from '../../types/onboarding'
 import { EMAIL_TEMPLATES, type EmailTemplateKey } from '../../types/emails'
 import { NOTIFICATION_EVENTS, type NotificationEvent } from '../../types/notifications'
+import { RETENTION_DAYS, type RetentionDays } from '../../types/privacy'
 import { parseCidr } from '../apiService/access'
 import { PASSWORD_LENGTH_RANGE } from '../auth/password'
 import { APP_LOCALES } from '../i18n/locales'
@@ -161,4 +162,34 @@ export const emailsSchema = z.object({
   reply_to: optional(200).refine(value => !value || z.email().safeParse(value).success, 'email'),
   footer: optional(300),
   custom: z.partialRecord(z.enum(EMAIL_TEMPLATES), z.partialRecord(z.enum(LOCALE_CODES), emailTextSchema)) as unknown as z.ZodType<Partial<Record<EmailTemplateKey, Record<string, z.infer<typeof emailTextSchema>>>>>,
+})
+
+const retention = z.number().refine((value): value is RetentionDays => (RETENTION_DAYS as readonly number[]).includes(value), 'retention')
+
+export const privacySchema = z.object({
+  retention_days: retention,
+  notice_url: optional(300).refine(value => !value || /^https:\/\/[^\s.]+\.[^\s]+$/i.test(value), 'https'),
+  consent: z.boolean(),
+  consent_text: optional(400),
+})
+
+/** A website for embeds: a host name, optionally `*.` for its subdomains. */
+export const isEmbedDomain = (value: string) => /^(\*\.)?(?=.{1,253}$)([a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,63}$/.test(value)
+
+export const formDefaultsSchema = z.object({
+  settings: z.object({ progress_bar: z.boolean(), save_resume: z.boolean(), field_icons: z.boolean(), label_position: z.enum(['top', 'left']) }),
+  theme_id: z.string().max(64).nullable(),
+  thank_you: z.object({ title: optional(200), message: optional(2000) }),
+  team_emails: z.array(z.string().max(64)).max(50),
+  embed_domains: z
+    .array(
+      z
+        .string()
+        .trim()
+        .toLowerCase()
+        .transform(value => value.replace(/^https?:\/\//, '').replace(/\/.*$/, ''))
+        .refine(isEmbedDomain, 'domain'),
+    )
+    .max(50)
+    .transform(list => [...new Set(list)]),
 })

@@ -193,3 +193,9 @@ export const deleteTheme = defineMockRoute(({ event }) => {
 })
 
 export const SYSTEM_THEME_COUNT = THEME_PRESETS.length - 1 + TEMPLATE_CATEGORIES.length
+
+/** A theme's design for a new form (Settings → Form defaults), or null when it no longer exists. */
+export function themeForNewForm(tenant: MockTenant, id: string | null): { id: string; tokens: StoredTheme['tokens'] } | null {
+  const theme = id ? allThemes(tenant).find(item => item.id === id) : null
+  return theme ? { id: theme.id, tokens: structuredClone(theme.tokens) } : null
+}

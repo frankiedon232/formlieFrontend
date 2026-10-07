@@ -6,10 +6,11 @@ import type { AuditDevice } from './audit'
 import type { AuthProvider, PasswordPolicy } from './auth'
 import type { EmailSettings } from './emails'
 import type { NotificationSettings } from './notifications'
+import type { FormDefaults, PrivacySettings } from './privacy'
 import type { CompanySize, DateFormat, Industry, NumberFormat, WeekStart } from './onboarding'
 
 /** Sections that exist (the rest of F14 arrives milestone by milestone). */
-export const SETTINGS_SECTIONS = ['company', 'branding', 'localisation', 'signin', 'security', 'notifications', 'emails'] as const
+export const SETTINGS_SECTIONS = ['company', 'branding', 'localisation', 'signin', 'security', 'notifications', 'emails', 'privacy', 'form_defaults'] as const
 export type SettingsSection = (typeof SETTINGS_SECTIONS)[number]
 
 export interface CompanyAddress {
@@ -123,6 +124,8 @@ export interface WorkspaceSettings {
   security: SecuritySettings
   notifications: NotificationSettings
   emails: EmailSettings
+  privacy: PrivacySettings
+  form_defaults: FormDefaults
   updated: Record<SettingsSection, SettingsChange | null>
 }
 

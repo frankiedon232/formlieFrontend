@@ -1065,7 +1065,10 @@
       "settings_org_restored": "Entrada da organização restaurada",
       "settings_org_merged": "Entradas da organização unidas",
       "settings_org_imported": "Entradas da organização importadas",
-      "settings_org_deleted": "Entrada da organização excluída"
+      "settings_org_deleted": "Entrada da organização excluída",
+      "settings_retention_applied": "Respostas antigas removidas (retenção)",
+      "settings_data_exported": "Dados de uma pessoa exportados",
+      "settings_data_deleted": "Dados de uma pessoa excluídos"
     },
     "detail": {
       "who": "Quem",
@@ -2289,6 +2292,14 @@
       "receiptField": "Enviar a cópia para",
       "receiptLost": "A pergunta de e-mail da cópia foi removida. Escolha outra ou desative a cópia.",
       "templates": "Editar os textos dos e-mails"
+    },
+    "retention": {
+      "title": "Manter respostas",
+      "hint": "Respostas mais antigas que isso são removidas de forma definitiva. Vale a partir da publicação.",
+      "workspace": "A escolha do espaço de trabalho",
+      "workspaceIs": "A escolha do espaço de trabalho ({value})",
+      "keep": "Até alguém excluir",
+      "days": "{n} dia | {n} dias"
     }
   },
   "renderer": {
@@ -2479,7 +2490,9 @@
       "copied": "Link copiado",
       "keepGoing": "Continuar preenchendo"
     },
-    "language": "Idioma"
+    "language": "Idioma",
+    "consentLine": "Ao enviar, você concorda que {org} possa usar suas respostas para este formulário.",
+    "privacyNotice": "Aviso de privacidade"
   },
   "logic": {
     "crumb": "Lógica",
@@ -4617,7 +4630,8 @@
       "websiteOf": "Visitar o site de {name}",
       "secured": "{icon} Criptografado · Protegido por {brand}",
       "terms": "Termos",
-      "privacy": "Política de Privacidade de Dados"
+      "privacy": "Política de Privacidade de Dados",
+      "orgPrivacy": "Aviso de privacidade de {org}"
     },
     "browser": {
       "reload": "Recarregar",
@@ -6366,7 +6380,12 @@
       "allowlist": "Lista de IPs permitidos ativa",
       "notifications": "{n} de {total} eventos ativados",
       "digest": "resumo diário",
-      "ownTexts": "{n} texto próprio | {n} textos próprios"
+      "ownTexts": "{n} texto próprio | {n} textos próprios",
+      "keepAll": "Respostas mantidas",
+      "keepDays": "Respostas mantidas por {n} dia | Respostas mantidas por {n} dias",
+      "notice": "aviso de privacidade definido",
+      "withTheme": "Novos formulários começam com um tema",
+      "workspaceLook": "Novos formulários usam o visual do espaço de trabalho"
     },
     "next": {
       "title": "Próximo passo",
@@ -6397,7 +6416,10 @@
       "ip_empty": "Adicione pelo menos um endereço ou desative a lista de permitidos.",
       "people": "Escolha pelo menos uma pessoa.",
       "subject": "Adicione um assunto.",
-      "body": "Adicione o texto do e-mail."
+      "body": "Adicione o texto do e-mail.",
+      "https": "Use um endereço https://.",
+      "retention": "Escolha um dos períodos.",
+      "theme": "Esse tema não existe mais."
     },
     "company": {
       "names": "Nomes",
@@ -6856,6 +6878,78 @@
       "noMatch": "Nenhum e-mail corresponde",
       "test": "teste",
       "sentTo": "Para {to} · {when}"
+    },
+    "privacy": {
+      "retention": "Manter respostas",
+      "retentionHint": "Remover respostas antigas mantém apenas o que você precisa.",
+      "keep": "Manter respostas por",
+      "keepAll": "Até alguém excluir",
+      "keepFor": "{n} dia | {n} dias",
+      "perForm": "Cada formulário pode definir o seu nas configurações.",
+      "wouldRemove": "{n} resposta em {forms} formulários seria removida ao salvar. | {n} respostas em {forms} formulários seriam removidas ao salvar.",
+      "newestRemoved": "A mais recente é de {when}. Depois disso, a limpeza roda todo dia.",
+      "nothingNow": "Nada é antigo o bastante para ser removido agora. A limpeza roda todo dia.",
+      "confirmTitle": "Remover {n} resposta de forma definitiva? | Remover {n} respostas de forma definitiva?",
+      "confirmDesc": "Elas são mais antigas que o novo limite. São removidas na hora e não podem ser recuperadas.",
+      "confirm": "Salvar e remover",
+      "notice": "Aviso de privacidade e consentimento",
+      "noticeHint": "O que os respondentes veem sobre como você usa as respostas deles.",
+      "noticeUrl": "Seu aviso de privacidade",
+      "consent": "Mostrar uma linha de consentimento acima de Enviar",
+      "consentHint": "Em todo formulário público, com link para o seu aviso de privacidade.",
+      "consentText": "Linha de consentimento",
+      "consentTextHelp": "Vazio: a linha da Formalie, no idioma do respondente.",
+      "sample": "Como fica",
+      "requests": "Solicitações de dados",
+      "requestsHint": "Quando alguém pergunta o que você guarda sobre a pessoa, ou pede para ser esquecido.",
+      "requestEmail": "E-mail da pessoa",
+      "requestPlaceholder": "name{'@'}example.com",
+      "find": "Encontrar as respostas",
+      "found": "{n} resposta de {email} | {n} respostas de {email}",
+      "responses": "{n} resposta | {n} respostas",
+      "none": "Nada encontrado",
+      "noneDesc": "Nenhuma resposta em nenhum formulário tem este e-mail.",
+      "export": "Exportar",
+      "exported": "Os dados foram exportados",
+      "deleteAll": "Excluir tudo",
+      "deleteTitle": "Excluir tudo desta pessoa?",
+      "deleteDesc": "{n} resposta em {forms} formulários é removida de forma definitiva. | {n} respostas em {forms} formulários são removidas de forma definitiva.",
+      "typeEmail": "Digite {email} para confirmar",
+      "deleted": "{n} resposta excluída | {n} respostas excluídas",
+      "residency": "Onde os dados ficam armazenados",
+      "residencyHint": "A região em que suas respostas e arquivos são mantidos.",
+      "residencyLater": "Escolhida com o seu plano. Os planos chegam com o console da plataforma."
+    },
+    "formDefaults": {
+      "note": "Novos formulários começam com estas opções. Os formulários que você já tem mantêm as suas, e cada formulário ainda pode alterá-las.",
+      "experience": "Preenchimento",
+      "experienceHint": "Como os novos formulários se comportam para os respondentes.",
+      "progress_bar": "Barra de progresso",
+      "progress_barHint": "Mostra até onde os respondentes já foram.",
+      "save_resume": "Salvar e continuar depois",
+      "save_resumeHint": "Os respondentes podem voltar a um formulário pela metade.",
+      "field_icons": "Ícones nos campos",
+      "field_iconsHint": "Um pequeno ícone em cada caixa de resposta.",
+      "labels": "Rótulos das perguntas",
+      "labelTop": "Acima da resposta",
+      "labelLeft": "Ao lado da resposta",
+      "design": "Design",
+      "designHint": "O visual com que os novos formulários começam.",
+      "theme": "Tema",
+      "themeHelp": "Os modelos mantêm o próprio design.",
+      "workspaceLook": "O visual do seu espaço de trabalho",
+      "themeGone": "Esse tema não existe mais. Escolha outro.",
+      "thankYou": "Página de agradecimento",
+      "thankYouHint": "O que os respondentes veem depois de Enviar.",
+      "thankYouTitle": "Título",
+      "thankYouMessage": "Mensagem",
+      "sharing": "Respostas e compartilhamento",
+      "sharingHint": "Quem fica sabendo das novas respostas e onde os formulários podem ser incorporados.",
+      "team": "Enviar novas respostas por e-mail para",
+      "teamHelp": "Membros da equipe adicionados aos e-mails de resposta de cada novo formulário.",
+      "embed": "Sites autorizados a incorporar",
+      "embedAny": "Qualquer site pode incorporar novos formulários.",
+      "embedPlaceholder": "www.example.com, depois Enter"
     }
   },
   "notifications": {

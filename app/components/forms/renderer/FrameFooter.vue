@@ -1,5 +1,6 @@
 <!--
   Public form page footer: © organisation · Terms · Data Privacy Policy (Formalie's legal pages,
+  plus the organisation's own privacy notice when it set one,
   runtimeConfig.public.legal), and the secure-by-Formalie line. Links open in the in-app browser
   so the form stays.
 -->
@@ -18,6 +19,8 @@ const legal = computed(() => ({
   termsUrl: fromPlatform.value?.terms_url || config.termsUrl,
   privacyUrl: fromPlatform.value?.privacy_url || config.privacyUrl,
 }))
+// The organisation's own privacy notice (Settings → Privacy and data), beside Formalie's pages.
+const privacy = useState<{ notice_url: string | null; org: string } | null>('public:privacy', () => null)
 const linkClass = 'font-medium text-(--ui-text) underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-(--ui-primary)'
 </script>
 
@@ -33,6 +36,10 @@ const linkClass = 'font-medium text-(--ui-text) underline-offset-4 hover:underli
         <FormsRendererFrameLink :href="legal.termsUrl" :title="t('public.frame.terms')" :class="linkClass">{{ t('public.frame.terms') }}</FormsRendererFrameLink>
         <span aria-hidden="true">·</span>
         <FormsRendererFrameLink :href="legal.privacyUrl" :title="t('public.frame.privacy')" :class="linkClass">{{ t('public.frame.privacy') }}</FormsRendererFrameLink>
+        <template v-if="privacy?.notice_url">
+          <span aria-hidden="true">·</span>
+          <FormsRendererFrameLink :href="privacy.notice_url" :title="t('public.frame.orgPrivacy', { org: privacy.org })" :class="linkClass">{{ t('public.frame.orgPrivacy', { org: privacy.org }) }}</FormsRendererFrameLink>
+        </template>
       </p>
       <FormsRendererFrameSecured />
     </div>

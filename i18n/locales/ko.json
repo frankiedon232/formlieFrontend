@@ -1065,7 +1065,10 @@
       "settings_org_restored": "조직 항목을 복원했습니다",
       "settings_org_merged": "조직 항목을 병합했습니다",
       "settings_org_imported": "조직 항목을 가져왔습니다",
-      "settings_org_deleted": "조직 항목을 삭제했습니다"
+      "settings_org_deleted": "조직 항목을 삭제했습니다",
+      "settings_retention_applied": "오래된 응답을 삭제했습니다(보관)",
+      "settings_data_exported": "한 사람의 데이터를 내보냈습니다",
+      "settings_data_deleted": "한 사람의 데이터를 삭제했습니다"
     },
     "detail": {
       "who": "누가",
@@ -2289,6 +2292,14 @@
       "receiptField": "사본 받는 곳",
       "receiptLost": "사본에 사용할 이메일 질문이 삭제되었습니다. 다른 질문을 선택하거나 사본을 끄세요.",
       "templates": "이메일 문구 편집"
+    },
+    "retention": {
+      "title": "응답 보관",
+      "hint": "이 기간보다 오래된 응답은 영구 삭제됩니다. 게시할 때 적용됩니다.",
+      "workspace": "워크스페이스 설정",
+      "workspaceIs": "워크스페이스 설정({value})",
+      "keep": "누군가 삭제할 때까지",
+      "days": "{n}일 | {n}일"
     }
   },
   "renderer": {
@@ -2479,7 +2490,9 @@
       "copied": "링크가 복사되었습니다",
       "keepGoing": "계속 작성하기"
     },
-    "language": "언어"
+    "language": "언어",
+    "consentLine": "제출하면 {org}이(가) 이 양식의 답변을 사용할 수 있다는 데 동의하게 됩니다.",
+    "privacyNotice": "개인정보 안내"
   },
   "logic": {
     "crumb": "로직",
@@ -4617,7 +4630,8 @@
       "websiteOf": "{name} 웹사이트 방문",
       "secured": "{icon} 암호화됨 · {brand} 보안",
       "terms": "이용약관",
-      "privacy": "개인정보 처리방침"
+      "privacy": "개인정보 처리방침",
+      "orgPrivacy": "{org} 개인정보 안내"
     },
     "browser": {
       "reload": "새로고침",
@@ -6366,7 +6380,12 @@
       "allowlist": "IP 허용 목록 켜짐",
       "notifications": "이벤트 {total}개 중 {n}개 켜짐",
       "digest": "일일 요약",
-      "ownTexts": "자체 텍스트 {n}개 | 자체 텍스트 {n}개"
+      "ownTexts": "자체 텍스트 {n}개 | 자체 텍스트 {n}개",
+      "keepAll": "응답 보관 중",
+      "keepDays": "응답 {n}일 보관 | 응답 {n}일 보관",
+      "notice": "개인정보 안내 설정됨",
+      "withTheme": "새 양식은 테마와 함께 시작",
+      "workspaceLook": "새 양식은 워크스페이스 디자인 사용"
     },
     "next": {
       "title": "다음 단계",
@@ -6397,7 +6416,10 @@
       "ip_empty": "주소를 하나 이상 추가하거나 허용 목록을 끄세요.",
       "people": "한 명 이상 선택하세요.",
       "subject": "제목을 입력하세요.",
-      "body": "이메일 내용을 입력하세요."
+      "body": "이메일 내용을 입력하세요.",
+      "https": "https:// 주소를 사용하세요.",
+      "retention": "기간 중 하나를 선택하세요.",
+      "theme": "해당 테마는 더 이상 없습니다."
     },
     "company": {
       "names": "이름",
@@ -6856,6 +6878,78 @@
       "noMatch": "일치하는 이메일이 없습니다",
       "test": "테스트",
       "sentTo": "받는 사람 {to} · {when}"
+    },
+    "privacy": {
+      "retention": "응답 보관",
+      "retentionHint": "오래된 응답을 삭제하면 필요한 것만 보관할 수 있습니다.",
+      "keep": "응답 보관 기간",
+      "keepAll": "누군가 삭제할 때까지",
+      "keepFor": "{n}일 | {n}일",
+      "perForm": "각 양식은 설정에서 자체 기간을 정할 수 있습니다.",
+      "wouldRemove": "저장하면 양식 {forms}개의 응답 {n}개가 삭제됩니다. | 저장하면 양식 {forms}개의 응답 {n}개가 삭제됩니다.",
+      "newestRemoved": "가장 최근 응답은 {when}입니다. 이후에는 매일 실행됩니다.",
+      "nothingNow": "지금은 삭제할 만큼 오래된 응답이 없습니다. 매일 실행됩니다.",
+      "confirmTitle": "응답 {n}개를 영구 삭제할까요? | 응답 {n}개를 영구 삭제할까요?",
+      "confirmDesc": "새 기준보다 오래된 응답입니다. 바로 삭제되며 복구할 수 없습니다.",
+      "confirm": "저장 및 삭제",
+      "notice": "개인정보 안내 및 동의",
+      "noticeHint": "응답자가 답변이 어떻게 사용되는지에 대해 보는 내용입니다.",
+      "noticeUrl": "개인정보 안내 주소",
+      "consent": "제출 위에 동의 문구 표시",
+      "consentHint": "모든 공개 양식에 개인정보 안내 링크와 함께 표시됩니다.",
+      "consentText": "동의 문구",
+      "consentTextHelp": "비워 두면 응답자 언어의 Formalie 기본 문구를 사용합니다.",
+      "sample": "미리보기",
+      "requests": "데이터 요청",
+      "requestsHint": "누군가 보유한 정보를 묻거나 삭제를 요청할 때.",
+      "requestEmail": "해당 이메일 주소",
+      "requestPlaceholder": "name{'@'}example.com",
+      "find": "응답 찾기",
+      "found": "{email}의 응답 {n}개 | {email}의 응답 {n}개",
+      "responses": "응답 {n}개 | 응답 {n}개",
+      "none": "찾을 수 없음",
+      "noneDesc": "어떤 양식에도 이 이메일 주소의 응답이 없습니다.",
+      "export": "내보내기",
+      "exported": "데이터를 내보냈습니다",
+      "deleteAll": "모두 삭제",
+      "deleteTitle": "이 사람의 모든 데이터를 삭제할까요?",
+      "deleteDesc": "양식 {forms}개의 응답 {n}개가 영구 삭제됩니다. | 양식 {forms}개의 응답 {n}개가 영구 삭제됩니다.",
+      "typeEmail": "확인하려면 {email}을(를) 입력하세요",
+      "deleted": "응답 {n}개 삭제됨 | 응답 {n}개 삭제됨",
+      "residency": "데이터 저장 위치",
+      "residencyHint": "응답과 파일이 보관되는 지역입니다.",
+      "residencyLater": "요금제와 함께 선택됩니다. 요금제는 플랫폼 콘솔과 함께 제공됩니다."
+    },
+    "formDefaults": {
+      "note": "새 양식은 이 설정으로 시작합니다. 이미 있는 양식은 자체 설정을 유지하며, 모든 양식에서 변경할 수 있습니다.",
+      "experience": "응답 작성",
+      "experienceHint": "새 양식이 응답자에게 동작하는 방식입니다.",
+      "progress_bar": "진행률 표시줄",
+      "progress_barHint": "응답자가 얼마나 진행했는지 보여 줍니다.",
+      "save_resume": "저장하고 나중에 계속",
+      "save_resumeHint": "응답자가 작성 중인 양식으로 돌아올 수 있습니다.",
+      "field_icons": "입력란 아이콘",
+      "field_iconsHint": "각 답변 입력란에 작은 아이콘을 표시합니다.",
+      "labels": "질문 라벨",
+      "labelTop": "답변 위",
+      "labelLeft": "답변 옆",
+      "design": "디자인",
+      "designHint": "새 양식이 시작하는 디자인입니다.",
+      "theme": "테마",
+      "themeHelp": "템플릿은 자체 디자인을 유지합니다.",
+      "workspaceLook": "워크스페이스 디자인",
+      "themeGone": "이 테마는 더 이상 없습니다. 다른 테마를 선택하세요.",
+      "thankYou": "감사 페이지",
+      "thankYouHint": "제출 후 응답자에게 보이는 내용입니다.",
+      "thankYouTitle": "제목",
+      "thankYouMessage": "메시지",
+      "sharing": "응답 및 공유",
+      "sharingHint": "새 응답을 누가 받아보고, 양식을 어디에 삽입할 수 있는지 설정합니다.",
+      "team": "새 응답을 이메일로 보낼 대상",
+      "teamHelp": "모든 새 양식의 응답 이메일에 추가되는 팀원입니다.",
+      "embed": "삽입을 허용하는 웹사이트",
+      "embedAny": "모든 웹사이트가 새 양식을 삽입할 수 있습니다.",
+      "embedPlaceholder": "www.example.com 입력 후 Enter"
     }
   },
   "notifications": {

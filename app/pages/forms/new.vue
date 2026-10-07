@@ -72,6 +72,14 @@ watchEffect(() => {
 
 // Where labels sit, a form-wide choice made up front (changeable later in Form settings).
 const labelPosition = ref<'top' | 'left'>('top')
+// The workspace's default for new forms (Settings → Form defaults)
+onMounted(async () => {
+  try {
+    labelPosition.value = (await api.get<{ settings: { label_position: 'top' | 'left' } }>('/settings/form_defaults', undefined, { background: true })).data.settings.label_position
+  } catch {
+    // keep "top"
+  }
+})
 const labelItems = computed(() => [
   { value: 'top', label: t('builder.labels.top'), icon: 'i-lucide-panel-top' },
   { value: 'left', label: t('builder.labels.left'), icon: 'i-lucide-panel-left' },

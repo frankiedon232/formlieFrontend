@@ -1065,7 +1065,10 @@
       "settings_org_restored": "Organisatie-item hersteld",
       "settings_org_merged": "Organisatie-items samengevoegd",
       "settings_org_imported": "Organisatie-items geïmporteerd",
-      "settings_org_deleted": "Organisatie-item verwijderd"
+      "settings_org_deleted": "Organisatie-item verwijderd",
+      "settings_retention_applied": "Oude antwoorden verwijderd (bewaartermijn)",
+      "settings_data_exported": "Gegevens van een persoon geëxporteerd",
+      "settings_data_deleted": "Gegevens van een persoon verwijderd"
     },
     "detail": {
       "who": "Wie",
@@ -2289,6 +2292,14 @@
       "receiptField": "Kopie sturen naar",
       "receiptLost": "De e-mailvraag voor de kopie is verwijderd. Kies een andere of zet de kopie uit.",
       "templates": "E-mailteksten bewerken"
+    },
+    "retention": {
+      "title": "Antwoorden bewaren",
+      "hint": "Oudere antwoorden worden definitief verwijderd. Gaat in bij publiceren.",
+      "workspace": "De keuze van de werkruimte",
+      "workspaceIs": "De keuze van de werkruimte ({value})",
+      "keep": "Tot iemand ze verwijdert",
+      "days": "{n} dag | {n} dagen"
     }
   },
   "renderer": {
@@ -2479,7 +2490,9 @@
       "copied": "Link gekopieerd",
       "keepGoing": "Verder invullen"
     },
-    "language": "Taal"
+    "language": "Taal",
+    "consentLine": "Door te verzenden ga je ermee akkoord dat {org} je antwoorden voor dit formulier mag gebruiken.",
+    "privacyNotice": "Privacyverklaring"
   },
   "logic": {
     "crumb": "Logica",
@@ -4617,7 +4630,8 @@
       "websiteOf": "Website van {name} bezoeken",
       "secured": "{icon} Versleuteld · Beveiligd door {brand}",
       "terms": "Voorwaarden",
-      "privacy": "Privacybeleid"
+      "privacy": "Privacybeleid",
+      "orgPrivacy": "Privacyverklaring van {org}"
     },
     "browser": {
       "reload": "Opnieuw laden",
@@ -6366,7 +6380,12 @@
       "allowlist": "IP-toelatingslijst aan",
       "notifications": "{n} van {total} gebeurtenissen aan",
       "digest": "dagelijks overzicht",
-      "ownTexts": "{n} eigen tekst | {n} eigen teksten"
+      "ownTexts": "{n} eigen tekst | {n} eigen teksten",
+      "keepAll": "Antwoorden bewaard",
+      "keepDays": "Antwoorden {n} dag bewaard | Antwoorden {n} dagen bewaard",
+      "notice": "privacyverklaring ingesteld",
+      "withTheme": "Nieuwe formulieren starten met een thema",
+      "workspaceLook": "Nieuwe formulieren gebruiken de look van de werkruimte"
     },
     "next": {
       "title": "Volgende stap",
@@ -6397,7 +6416,10 @@
       "ip_empty": "Voeg minstens één adres toe of zet de toelatingslijst uit.",
       "people": "Kies minstens één persoon.",
       "subject": "Voeg een onderwerp toe.",
-      "body": "Voeg de tekst van de e-mail toe."
+      "body": "Voeg de tekst van de e-mail toe.",
+      "https": "Gebruik een https://-adres.",
+      "retention": "Kies een van de periodes.",
+      "theme": "Dat thema bestaat niet meer."
     },
     "company": {
       "names": "Namen",
@@ -6856,6 +6878,78 @@
       "noMatch": "Geen e-mails gevonden",
       "test": "test",
       "sentTo": "Aan {to} · {when}"
+    },
+    "privacy": {
+      "retention": "Antwoorden bewaren",
+      "retentionHint": "Oude antwoorden verwijderen helpt je alleen te bewaren wat nodig is.",
+      "keep": "Antwoorden bewaren gedurende",
+      "keepAll": "Tot iemand ze verwijdert",
+      "keepFor": "{n} dag | {n} dagen",
+      "perForm": "Elk formulier kan in de instellingen een eigen termijn kiezen.",
+      "wouldRemove": "{n} antwoord in {forms} formulieren zou bij opslaan worden verwijderd. | {n} antwoorden in {forms} formulieren zouden bij opslaan worden verwijderd.",
+      "newestRemoved": "Het nieuwste is van {when}. Daarna draait het elke dag.",
+      "nothingNow": "Niets is oud genoeg om nu te verwijderen. Het draait elke dag.",
+      "confirmTitle": "{n} antwoord definitief verwijderen? | {n} antwoorden definitief verwijderen?",
+      "confirmDesc": "Ze zijn ouder dan de nieuwe limiet. Ze worden meteen verwijderd en zijn niet terug te halen.",
+      "confirm": "Opslaan en verwijderen",
+      "notice": "Privacyverklaring en toestemming",
+      "noticeHint": "Wat respondenten zien over hoe je hun antwoorden gebruikt.",
+      "noticeUrl": "Je privacyverklaring",
+      "consent": "Toestemmingsregel boven Verzenden tonen",
+      "consentHint": "Op elk openbaar formulier, met een link naar je privacyverklaring.",
+      "consentText": "Toestemmingsregel",
+      "consentTextHelp": "Leeg: de regel van Formalie, in de taal van de respondent.",
+      "sample": "Zo ziet het eruit",
+      "requests": "Gegevensverzoeken",
+      "requestsHint": "Als iemand vraagt wat je over hem of haar bewaart, of om vergeten te worden.",
+      "requestEmail": "E-mailadres van de persoon",
+      "requestPlaceholder": "name{'@'}example.com",
+      "find": "Antwoorden zoeken",
+      "found": "{n} antwoord van {email} | {n} antwoorden van {email}",
+      "responses": "{n} antwoord | {n} antwoorden",
+      "none": "Niets gevonden",
+      "noneDesc": "Geen enkel antwoord in een formulier heeft dit e-mailadres.",
+      "export": "Exporteren",
+      "exported": "De gegevens zijn geëxporteerd",
+      "deleteAll": "Alles verwijderen",
+      "deleteTitle": "Alles van deze persoon verwijderen?",
+      "deleteDesc": "{n} antwoord in {forms} formulieren wordt definitief verwijderd. | {n} antwoorden in {forms} formulieren worden definitief verwijderd.",
+      "typeEmail": "Typ {email} om te bevestigen",
+      "deleted": "{n} antwoord verwijderd | {n} antwoorden verwijderd",
+      "residency": "Waar gegevens worden opgeslagen",
+      "residencyHint": "De regio waar je antwoorden en bestanden worden bewaard.",
+      "residencyLater": "Gekozen met je abonnement. Abonnementen komen met de platformconsole."
+    },
+    "formDefaults": {
+      "note": "Nieuwe formulieren starten hiermee. Bestaande formulieren houden hun eigen instellingen, en elk formulier kan ze nog aanpassen.",
+      "experience": "Invullen",
+      "experienceHint": "Hoe nieuwe formulieren zich gedragen voor respondenten.",
+      "progress_bar": "Voortgangsbalk",
+      "progress_barHint": "Laat zien hoe ver respondenten zijn.",
+      "save_resume": "Opslaan en later verdergaan",
+      "save_resumeHint": "Respondenten kunnen terugkomen naar een half ingevuld formulier.",
+      "field_icons": "Pictogrammen in velden",
+      "field_iconsHint": "Een klein pictogram in elk antwoordvak.",
+      "labels": "Vraaglabels",
+      "labelTop": "Boven het antwoord",
+      "labelLeft": "Naast het antwoord",
+      "design": "Ontwerp",
+      "designHint": "De look waarmee nieuwe formulieren starten.",
+      "theme": "Thema",
+      "themeHelp": "Sjablonen houden hun eigen ontwerp.",
+      "workspaceLook": "De look van je werkruimte",
+      "themeGone": "Dit thema bestaat niet meer. Kies een ander.",
+      "thankYou": "Bedankpagina",
+      "thankYouHint": "Wat respondenten zien na Verzenden.",
+      "thankYouTitle": "Titel",
+      "thankYouMessage": "Bericht",
+      "sharing": "Antwoorden en delen",
+      "sharingHint": "Wie nieuwe antwoorden te horen krijgt en waar formulieren mogen worden ingesloten.",
+      "team": "Nieuwe antwoorden mailen naar",
+      "teamHelp": "Teamleden die worden toegevoegd aan de antwoordmails van elk nieuw formulier.",
+      "embed": "Websites die mogen insluiten",
+      "embedAny": "Elke website mag nieuwe formulieren insluiten.",
+      "embedPlaceholder": "www.example.com, dan Enter"
     }
   },
   "notifications": {

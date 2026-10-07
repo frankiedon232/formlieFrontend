@@ -1065,7 +1065,10 @@
       "settings_org_restored": "Kipengee cha shirika kimerejeshwa",
       "settings_org_merged": "Vipengee vya shirika vimeunganishwa",
       "settings_org_imported": "Vipengee vya shirika vimeingizwa",
-      "settings_org_deleted": "Kipengee cha shirika kimefutwa"
+      "settings_org_deleted": "Kipengee cha shirika kimefutwa",
+      "settings_retention_applied": "Majibu ya zamani yameondolewa (uhifadhi)",
+      "settings_data_exported": "Data ya mtu imehamishwa",
+      "settings_data_deleted": "Data ya mtu imefutwa"
     },
     "detail": {
       "who": "Nani",
@@ -2289,6 +2292,14 @@
       "receiptField": "Tuma nakala kwa",
       "receiptLost": "Swali la barua pepe la nakala limeondolewa. Chagua jingine au zima nakala.",
       "templates": "Hariri maandishi ya barua pepe"
+    },
+    "retention": {
+      "title": "Hifadhi majibu",
+      "hint": "Majibu ya zamani kuliko hii huondolewa kabisa. Inaanza kutumika unapochapisha.",
+      "workspace": "Chaguo la eneo la kazi",
+      "workspaceIs": "Chaguo la eneo la kazi ({value})",
+      "keep": "Hadi mtu ayafute",
+      "days": "Siku {n} | Siku {n}"
     }
   },
   "renderer": {
@@ -2479,7 +2490,9 @@
       "copied": "Kiungo kimenakiliwa",
       "keepGoing": "Endelea kujaza"
     },
-    "language": "Lugha"
+    "language": "Lugha",
+    "consentLine": "Kwa kutuma, unakubali kwamba {org} inaweza kutumia majibu yako kwa fomu hii.",
+    "privacyNotice": "Notisi ya faragha"
   },
   "logic": {
     "crumb": "Mantiki",
@@ -4617,7 +4630,8 @@
       "websiteOf": "Tembelea tovuti ya {name}",
       "secured": "{icon} Imesimbwa · Inalindwa na {brand}",
       "terms": "Masharti",
-      "privacy": "Sera ya Faragha ya Data"
+      "privacy": "Sera ya Faragha ya Data",
+      "orgPrivacy": "Notisi ya faragha ya {org}"
     },
     "browser": {
       "reload": "Pakia upya",
@@ -6366,7 +6380,12 @@
       "allowlist": "Orodha ya IP zinazoruhusiwa imewashwa",
       "notifications": "Matukio {n} kati ya {total} yamewashwa",
       "digest": "muhtasari wa kila siku",
-      "ownTexts": "Maandishi {n} yako mwenyewe | Maandishi {n} yako mwenyewe"
+      "ownTexts": "Maandishi {n} yako mwenyewe | Maandishi {n} yako mwenyewe",
+      "keepAll": "Majibu yanahifadhiwa",
+      "keepDays": "Majibu yanahifadhiwa siku {n} | Majibu yanahifadhiwa siku {n}",
+      "notice": "notisi ya faragha imewekwa",
+      "withTheme": "Fomu mpya huanza na mandhari",
+      "workspaceLook": "Fomu mpya hutumia mwonekano wa eneo la kazi"
     },
     "next": {
       "title": "Hatua inayofuata",
@@ -6397,7 +6416,10 @@
       "ip_empty": "Ongeza angalau anwani moja, au zima orodha ya kuruhusiwa.",
       "people": "Chagua angalau mtu mmoja.",
       "subject": "Ongeza mada.",
-      "body": "Ongeza maandishi ya barua pepe."
+      "body": "Ongeza maandishi ya barua pepe.",
+      "https": "Tumia anwani ya https://.",
+      "retention": "Chagua mojawapo ya vipindi.",
+      "theme": "Mandhari hayo hayapo tena."
     },
     "company": {
       "names": "Majina",
@@ -6856,6 +6878,78 @@
       "noMatch": "Hakuna barua pepe zinazolingana",
       "test": "jaribio",
       "sentTo": "Kwa {to} · {when}"
+    },
+    "privacy": {
+      "retention": "Hifadhi majibu",
+      "retentionHint": "Kuondoa majibu ya zamani hukusaidia kuhifadhi tu unachohitaji.",
+      "keep": "Hifadhi majibu kwa",
+      "keepAll": "Hadi mtu ayafute",
+      "keepFor": "Siku {n} | Siku {n}",
+      "perForm": "Kila fomu inaweza kuweka yake katika mipangilio yake.",
+      "wouldRemove": "Jibu {n} katika fomu {forms} lingeondolewa ukihifadhi. | Majibu {n} katika fomu {forms} yangeondolewa ukihifadhi.",
+      "newestRemoved": "La hivi karibuni zaidi ni la {when}. Baada ya hapo, inaendeshwa kila siku.",
+      "nothingNow": "Hakuna lililo la zamani vya kutosha kuondolewa sasa. Inaendeshwa kila siku.",
+      "confirmTitle": "Ondoa jibu {n} kabisa? | Ondoa majibu {n} kabisa?",
+      "confirmDesc": "Ni ya zamani kuliko kikomo kipya. Yanaondolewa mara moja na hayawezi kurejeshwa.",
+      "confirm": "Hifadhi na uondoe",
+      "notice": "Notisi ya faragha na idhini",
+      "noticeHint": "Kile wanaojibu wanachoona kuhusu jinsi unavyotumia majibu yao.",
+      "noticeUrl": "Notisi yako ya faragha",
+      "consent": "Onyesha mstari wa idhini juu ya Tuma",
+      "consentHint": "Kwenye kila fomu ya umma, na kiungo cha notisi yako ya faragha.",
+      "consentText": "Mstari wa idhini",
+      "consentTextHelp": "Tupu: mstari wa Formalie, kwa lugha ya anayejibu.",
+      "sample": "Inavyoonekana",
+      "requests": "Maombi ya data",
+      "requestsHint": "Mtu anapouliza unachohifadhi kumhusu, au anapoomba kusahaulika.",
+      "requestEmail": "Barua pepe yake",
+      "requestPlaceholder": "name{'@'}example.com",
+      "find": "Tafuta majibu yake",
+      "found": "Jibu {n} kutoka {email} | Majibu {n} kutoka {email}",
+      "responses": "Jibu {n} | Majibu {n}",
+      "none": "Hakuna kilichopatikana",
+      "noneDesc": "Hakuna jibu katika fomu yoyote lenye barua pepe hii.",
+      "export": "Hamisha",
+      "exported": "Data yake imehamishwa",
+      "deleteAll": "Futa yote",
+      "deleteTitle": "Kufuta kila kitu cha mtu huyu?",
+      "deleteDesc": "Jibu {n} katika fomu {forms} litaondolewa kabisa. | Majibu {n} katika fomu {forms} yataondolewa kabisa.",
+      "typeEmail": "Andika {email} ili kuthibitisha",
+      "deleted": "Jibu {n} limefutwa | Majibu {n} yamefutwa",
+      "residency": "Mahali data inapohifadhiwa",
+      "residencyHint": "Eneo ambalo majibu na faili zako zinahifadhiwa.",
+      "residencyLater": "Huchaguliwa na mpango wako. Mipango inakuja na koneso ya jukwaa."
+    },
+    "formDefaults": {
+      "note": "Fomu mpya huanza na mipangilio hii. Fomu ulizo nazo tayari zinabaki na zake, na kila fomu bado inaweza kuibadilisha.",
+      "experience": "Kujaza",
+      "experienceHint": "Jinsi fomu mpya zinavyofanya kazi kwa wanaojibu.",
+      "progress_bar": "Upau wa maendeleo",
+      "progress_barHint": "Unaonyesha wanaojibu wamefika wapi.",
+      "save_resume": "Hifadhi na uendelee baadaye",
+      "save_resumeHint": "Wanaojibu wanaweza kurudi kwenye fomu ambayo haijakamilika.",
+      "field_icons": "Aikoni ndani ya sehemu",
+      "field_iconsHint": "Aikoni ndogo katika kila kisanduku cha jibu.",
+      "labels": "Lebo za maswali",
+      "labelTop": "Juu ya jibu",
+      "labelLeft": "Kando ya jibu",
+      "design": "Muundo",
+      "designHint": "Mwonekano ambao fomu mpya huanza nao.",
+      "theme": "Mandhari",
+      "themeHelp": "Violezo vinabaki na muundo wao.",
+      "workspaceLook": "Mwonekano wa eneo lako la kazi",
+      "themeGone": "Mandhari haya hayapo tena. Chagua mengine.",
+      "thankYou": "Ukurasa wa shukrani",
+      "thankYouHint": "Kile wanaojibu wanachoona baada ya Tuma.",
+      "thankYouTitle": "Kichwa",
+      "thankYouMessage": "Ujumbe",
+      "sharing": "Majibu na kushiriki",
+      "sharingHint": "Nani anajulishwa kuhusu majibu mapya, na wapi fomu zinaweza kupachikwa.",
+      "team": "Tuma majibu mapya kwa barua pepe kwa",
+      "teamHelp": "Washiriki wa timu wanaoongezwa kwenye barua pepe za majibu za kila fomu mpya.",
+      "embed": "Tovuti zinazoruhusiwa kupachika",
+      "embedAny": "Tovuti yoyote inaweza kupachika fomu mpya.",
+      "embedPlaceholder": "www.example.com, kisha Enter"
     }
   },
   "notifications": {

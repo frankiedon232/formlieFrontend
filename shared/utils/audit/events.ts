@@ -87,6 +87,9 @@ export const AUDIT_EVENTS = {
   'settings.org_merged': { area: 'settings', icon: 'i-lucide-merge' },
   'settings.org_imported': { area: 'settings', icon: 'i-lucide-file-up' },
   'settings.org_deleted': { area: 'settings', icon: 'i-lucide-trash-2' },
+  'settings.retention_applied': { area: 'settings', icon: 'i-lucide-calendar-x' },
+  'settings.data_exported': { area: 'settings', icon: 'i-lucide-file-down' },
+  'settings.data_deleted': { area: 'settings', icon: 'i-lucide-user-x' },
   // Users
   'users.invited': { area: 'users', icon: 'i-lucide-user-plus' },
   'users.role_changed': { area: 'users', icon: 'i-lucide-user-cog' },

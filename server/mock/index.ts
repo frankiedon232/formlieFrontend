@@ -36,6 +36,7 @@ import { navigationCounts } from './routes/navigation'
 import * as onboarding from './routes/onboarding'
 import * as emails from './routes/emails'
 import * as notifications from './routes/notifications'
+import * as privacy from './routes/dataPrivacy'
 import * as settings from './routes/settings'
 import * as org from './routes/org'
 import * as uploads from './routes/uploads'
@@ -302,6 +303,14 @@ const router = createRouter()
   .post('/settings/emails/test', emails.testEmail)
   .get('/settings/emails/sent', emails.listSent)
   .get('/settings/emails/sent/:id', emails.getSent)
+  .get('/settings/privacy', settings.getSection)
+  .patch('/settings/privacy', settings.patchSection)
+  .get('/settings/privacy/retention-preview', privacy.retentionPreview)
+  .post('/privacy/requests/search', privacy.searchRequest)
+  .post('/privacy/requests/export', privacy.exportRequest)
+  .post('/privacy/requests/delete', privacy.deleteRequest)
+  .get('/settings/form_defaults', settings.getFormDefaults)
+  .patch('/settings/form_defaults', settings.patchSection)
   .get('/settings/emails', settings.getSection)
   .patch('/settings/emails', settings.patchSection)
   .get('/settings/notifications', settings.getSection)

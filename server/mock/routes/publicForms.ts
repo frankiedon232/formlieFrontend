@@ -42,6 +42,7 @@ import { fileAnswers, isFileField, maxFileBytes } from '#shared/utils/forms/file
 import { checkWork } from '#shared/utils/forms/proof-of-work'
 import type { UploadTicket } from '#shared/types/onboarding'
 import { platformLegal } from '../data/platformStore'
+import { settingsOf } from '../data/settingsStore'
 import { hashPassword } from './formShare'
 import { accessOf, inviteByToken, readPass, unlockCookieName, unlockValue, visitorOf, type Visitor } from '../data/formAccess'
 
@@ -213,6 +214,7 @@ export function publicFormView(event: Parameters<typeof tenantOf>[0], key: strin
       noindex: state !== 'open' || seo.noindex,
     },
     legal: platformLegal(event),
+    privacy: (({ notice_url, consent, consent_text }) => ({ notice_url, consent, consent_text }))(settingsOf(tenant).privacy),
     // Every language the form offers (decision 99); the page picks the respondent's.
     languages,
     language,

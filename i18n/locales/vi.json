@@ -1065,7 +1065,10 @@
       "settings_org_restored": "Đã khôi phục mục tổ chức",
       "settings_org_merged": "Đã gộp các mục tổ chức",
       "settings_org_imported": "Đã nhập các mục tổ chức",
-      "settings_org_deleted": "Đã xóa mục tổ chức"
+      "settings_org_deleted": "Đã xóa mục tổ chức",
+      "settings_retention_applied": "Đã xóa phản hồi cũ (lưu giữ)",
+      "settings_data_exported": "Đã xuất dữ liệu của một người",
+      "settings_data_deleted": "Đã xóa dữ liệu của một người"
     },
     "detail": {
       "who": "Ai",
@@ -2289,6 +2292,14 @@
       "receiptField": "Gửi bản sao đến",
       "receiptLost": "Câu hỏi email dùng cho bản sao đã bị xóa. Hãy chọn câu hỏi khác hoặc tắt bản sao.",
       "templates": "Chỉnh sửa nội dung email"
+    },
+    "retention": {
+      "title": "Lưu giữ phản hồi",
+      "hint": "Phản hồi cũ hơn mức này sẽ bị xóa vĩnh viễn. Có hiệu lực khi bạn xuất bản.",
+      "workspace": "Lựa chọn của không gian làm việc",
+      "workspaceIs": "Lựa chọn của không gian làm việc ({value})",
+      "keep": "Cho đến khi có người xóa",
+      "days": "{n} ngày | {n} ngày"
     }
   },
   "renderer": {
@@ -2479,7 +2490,9 @@
       "copied": "Đã sao chép liên kết",
       "keepGoing": "Tiếp tục điền"
     },
-    "language": "Ngôn ngữ"
+    "language": "Ngôn ngữ",
+    "consentLine": "Khi gửi, bạn đồng ý để {org} có thể sử dụng câu trả lời của bạn cho biểu mẫu này.",
+    "privacyNotice": "Thông báo quyền riêng tư"
   },
   "logic": {
     "crumb": "Logic",
@@ -4617,7 +4630,8 @@
       "websiteOf": "Truy cập trang web của {name}",
       "secured": "{icon} Đã mã hóa · Bảo mật bởi {brand}",
       "terms": "Điều khoản",
-      "privacy": "Chính sách quyền riêng tư dữ liệu"
+      "privacy": "Chính sách quyền riêng tư dữ liệu",
+      "orgPrivacy": "Thông báo quyền riêng tư của {org}"
     },
     "browser": {
       "reload": "Tải lại",
@@ -6366,7 +6380,12 @@
       "allowlist": "Danh sách IP cho phép đang bật",
       "notifications": "{n} trên {total} sự kiện đang bật",
       "digest": "tóm tắt hằng ngày",
-      "ownTexts": "{n} nội dung riêng | {n} nội dung riêng"
+      "ownTexts": "{n} nội dung riêng | {n} nội dung riêng",
+      "keepAll": "Phản hồi được lưu giữ",
+      "keepDays": "Phản hồi được lưu giữ {n} ngày | Phản hồi được lưu giữ {n} ngày",
+      "notice": "đã đặt thông báo quyền riêng tư",
+      "withTheme": "Biểu mẫu mới bắt đầu với một giao diện",
+      "workspaceLook": "Biểu mẫu mới dùng giao diện của không gian làm việc"
     },
     "next": {
       "title": "Bước tiếp theo",
@@ -6397,7 +6416,10 @@
       "ip_empty": "Thêm ít nhất một địa chỉ, hoặc tắt danh sách cho phép.",
       "people": "Chọn ít nhất một người.",
       "subject": "Thêm tiêu đề.",
-      "body": "Thêm nội dung email."
+      "body": "Thêm nội dung email.",
+      "https": "Hãy dùng địa chỉ https://.",
+      "retention": "Hãy chọn một trong các khoảng thời gian.",
+      "theme": "Giao diện đó không còn nữa."
     },
     "company": {
       "names": "Tên",
@@ -6856,6 +6878,78 @@
       "noMatch": "Không có email phù hợp",
       "test": "thử",
       "sentTo": "Đến {to} · {when}"
+    },
+    "privacy": {
+      "retention": "Lưu giữ phản hồi",
+      "retentionHint": "Xóa phản hồi cũ giúp bạn chỉ giữ lại những gì cần thiết.",
+      "keep": "Lưu giữ phản hồi trong",
+      "keepAll": "Cho đến khi có người xóa",
+      "keepFor": "{n} ngày | {n} ngày",
+      "perForm": "Mỗi biểu mẫu có thể đặt thời hạn riêng trong phần cài đặt của nó.",
+      "wouldRemove": "{n} phản hồi trong {forms} biểu mẫu sẽ bị xóa khi bạn lưu. | {n} phản hồi trong {forms} biểu mẫu sẽ bị xóa khi bạn lưu.",
+      "newestRemoved": "Phản hồi mới nhất là từ {when}. Sau đó, việc này chạy mỗi ngày.",
+      "nothingNow": "Hiện chưa có phản hồi nào đủ cũ để xóa. Việc này chạy mỗi ngày.",
+      "confirmTitle": "Xóa vĩnh viễn {n} phản hồi? | Xóa vĩnh viễn {n} phản hồi?",
+      "confirmDesc": "Chúng cũ hơn giới hạn mới. Chúng bị xóa ngay và không thể khôi phục.",
+      "confirm": "Lưu và xóa",
+      "notice": "Thông báo quyền riêng tư và sự đồng ý",
+      "noticeHint": "Những gì người trả lời thấy về cách bạn sử dụng câu trả lời của họ.",
+      "noticeUrl": "Thông báo quyền riêng tư của bạn",
+      "consent": "Hiện dòng đồng ý phía trên nút Gửi",
+      "consentHint": "Trên mọi biểu mẫu công khai, kèm liên kết đến thông báo quyền riêng tư của bạn.",
+      "consentText": "Dòng đồng ý",
+      "consentTextHelp": "Để trống: dùng dòng của Formalie, theo ngôn ngữ của người trả lời.",
+      "sample": "Giao diện hiển thị",
+      "requests": "Yêu cầu về dữ liệu",
+      "requestsHint": "Khi ai đó hỏi bạn đang lưu gì về họ, hoặc yêu cầu được quên.",
+      "requestEmail": "Địa chỉ email của họ",
+      "requestPlaceholder": "name{'@'}example.com",
+      "find": "Tìm phản hồi của họ",
+      "found": "{n} phản hồi từ {email} | {n} phản hồi từ {email}",
+      "responses": "{n} phản hồi | {n} phản hồi",
+      "none": "Không tìm thấy gì",
+      "noneDesc": "Không có phản hồi nào trong bất kỳ biểu mẫu nào dùng địa chỉ email này.",
+      "export": "Xuất",
+      "exported": "Đã xuất dữ liệu của họ",
+      "deleteAll": "Xóa tất cả",
+      "deleteTitle": "Xóa mọi thứ của người này?",
+      "deleteDesc": "{n} phản hồi trong {forms} biểu mẫu sẽ bị xóa vĩnh viễn. | {n} phản hồi trong {forms} biểu mẫu sẽ bị xóa vĩnh viễn.",
+      "typeEmail": "Nhập {email} để xác nhận",
+      "deleted": "Đã xóa {n} phản hồi | Đã xóa {n} phản hồi",
+      "residency": "Nơi lưu trữ dữ liệu",
+      "residencyHint": "Khu vực lưu giữ phản hồi và tệp của bạn.",
+      "residencyLater": "Được chọn cùng gói của bạn. Các gói sẽ có cùng bảng điều khiển nền tảng."
+    },
+    "formDefaults": {
+      "note": "Biểu mẫu mới bắt đầu với các cài đặt này. Biểu mẫu bạn đã có giữ cài đặt riêng, và mỗi biểu mẫu vẫn có thể thay đổi.",
+      "experience": "Khi điền",
+      "experienceHint": "Cách biểu mẫu mới hoạt động với người trả lời.",
+      "progress_bar": "Thanh tiến độ",
+      "progress_barHint": "Cho biết người trả lời đã làm được đến đâu.",
+      "save_resume": "Lưu và tiếp tục sau",
+      "save_resumeHint": "Người trả lời có thể quay lại biểu mẫu đang điền dở.",
+      "field_icons": "Biểu tượng trong ô",
+      "field_iconsHint": "Một biểu tượng nhỏ trong mỗi ô trả lời.",
+      "labels": "Nhãn câu hỏi",
+      "labelTop": "Phía trên câu trả lời",
+      "labelLeft": "Bên cạnh câu trả lời",
+      "design": "Thiết kế",
+      "designHint": "Giao diện mà biểu mẫu mới bắt đầu.",
+      "theme": "Giao diện",
+      "themeHelp": "Mẫu giữ thiết kế riêng của chúng.",
+      "workspaceLook": "Giao diện không gian làm việc của bạn",
+      "themeGone": "Giao diện này không còn nữa. Hãy chọn giao diện khác.",
+      "thankYou": "Trang cảm ơn",
+      "thankYouHint": "Những gì người trả lời thấy sau khi Gửi.",
+      "thankYouTitle": "Tiêu đề",
+      "thankYouMessage": "Lời nhắn",
+      "sharing": "Phản hồi và chia sẻ",
+      "sharingHint": "Ai được báo về phản hồi mới, và biểu mẫu được nhúng ở đâu.",
+      "team": "Gửi email phản hồi mới tới",
+      "teamHelp": "Thành viên nhóm được thêm vào email phản hồi của mọi biểu mẫu mới.",
+      "embed": "Trang web được phép nhúng",
+      "embedAny": "Bất kỳ trang web nào cũng có thể nhúng biểu mẫu mới.",
+      "embedPlaceholder": "www.example.com, rồi nhấn Enter"
     }
   },
   "notifications": {

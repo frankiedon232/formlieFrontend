@@ -1065,7 +1065,10 @@
       "settings_org_restored": "組織エントリを復元しました",
       "settings_org_merged": "組織エントリを統合しました",
       "settings_org_imported": "組織エントリをインポートしました",
-      "settings_org_deleted": "組織エントリを削除しました"
+      "settings_org_deleted": "組織エントリを削除しました",
+      "settings_retention_applied": "古い回答を削除しました(保存期間)",
+      "settings_data_exported": "ある人のデータをエクスポートしました",
+      "settings_data_deleted": "ある人のデータを削除しました"
     },
     "detail": {
       "who": "誰が",
@@ -2289,6 +2292,14 @@
       "receiptField": "コピーの送信先",
       "receiptLost": "コピー用のメールアドレスの質問が削除されました。別の質問を選ぶか、コピーをオフにしてください。",
       "templates": "メールの文面を編集"
+    },
+    "retention": {
+      "title": "回答の保存期間",
+      "hint": "この期間より古い回答は完全に削除されます。公開時に反映されます。",
+      "workspace": "ワークスペースの設定",
+      "workspaceIs": "ワークスペースの設定({value})",
+      "keep": "誰かが削除するまで",
+      "days": "{n}日 | {n}日"
     }
   },
   "renderer": {
@@ -2479,7 +2490,9 @@
       "copied": "リンクをコピーしました",
       "keepGoing": "入力を続ける"
     },
-    "language": "言語"
+    "language": "言語",
+    "consentLine": "送信すると、{org}がこのフォームの回答を利用することに同意したものとみなされます。",
+    "privacyNotice": "プライバシー通知"
   },
   "logic": {
     "crumb": "ロジック",
@@ -4617,7 +4630,8 @@
       "websiteOf": "{name}のウェブサイトを見る",
       "secured": "{icon} 暗号化済み · {brand} で保護",
       "terms": "利用規約",
-      "privacy": "プライバシーポリシー"
+      "privacy": "プライバシーポリシー",
+      "orgPrivacy": "{org}のプライバシー通知"
     },
     "browser": {
       "reload": "再読み込み",
@@ -6366,7 +6380,12 @@
       "allowlist": "IP許可リスト オン",
       "notifications": "{total} 件中 {n} 件のイベントがオン",
       "digest": "毎日のまとめ",
-      "ownTexts": "独自テキスト {n} 件 | 独自テキスト {n} 件"
+      "ownTexts": "独自テキスト {n} 件 | 独自テキスト {n} 件",
+      "keepAll": "回答を保存中",
+      "keepDays": "回答を{n}日間保存 | 回答を{n}日間保存",
+      "notice": "プライバシー通知を設定済み",
+      "withTheme": "新しいフォームはテーマ付きで開始",
+      "workspaceLook": "新しいフォームはワークスペースのデザインを使用"
     },
     "next": {
       "title": "次のステップ",
@@ -6397,7 +6416,10 @@
       "ip_empty": "アドレスを少なくとも1つ追加するか、許可リストをオフにしてください。",
       "people": "1 人以上選んでください。",
       "subject": "件名を入力してください。",
-      "body": "メールの本文を入力してください。"
+      "body": "メールの本文を入力してください。",
+      "https": "https:// で始まるアドレスを入力してください。",
+      "retention": "期間のいずれかを選んでください。",
+      "theme": "そのテーマはもう存在しません。"
     },
     "company": {
       "names": "名称",
@@ -6856,6 +6878,78 @@
       "noMatch": "一致するメールがありません",
       "test": "テスト",
       "sentTo": "宛先 {to} · {when}"
+    },
+    "privacy": {
+      "retention": "回答の保存期間",
+      "retentionHint": "古い回答を削除すると、必要なものだけを残せます。",
+      "keep": "回答の保存期間",
+      "keepAll": "誰かが削除するまで",
+      "keepFor": "{n}日 | {n}日",
+      "perForm": "各フォームは設定で個別に指定できます。",
+      "wouldRemove": "保存すると、{forms}件のフォームにある{n}件の回答が削除されます。 | 保存すると、{forms}件のフォームにある{n}件の回答が削除されます。",
+      "newestRemoved": "最も新しいものは{when}のものです。以降は毎日実行されます。",
+      "nothingNow": "現在、削除できるほど古い回答はありません。毎日実行されます。",
+      "confirmTitle": "{n}件の回答を完全に削除しますか? | {n}件の回答を完全に削除しますか?",
+      "confirmDesc": "新しい期限より古い回答です。すぐに削除され、元に戻せません。",
+      "confirm": "保存して削除",
+      "notice": "プライバシー通知と同意",
+      "noticeHint": "回答者に表示される、回答の利用方法に関する内容です。",
+      "noticeUrl": "プライバシー通知のURL",
+      "consent": "「送信」の上に同意の文を表示",
+      "consentHint": "すべての公開フォームに、プライバシー通知へのリンク付きで表示されます。",
+      "consentText": "同意の文",
+      "consentTextHelp": "空の場合: 回答者の言語の Formalie 標準文を使用します。",
+      "sample": "表示イメージ",
+      "requests": "データに関する請求",
+      "requestsHint": "自分に関して保有している情報の確認や、削除を求められたとき。",
+      "requestEmail": "対象者のメールアドレス",
+      "requestPlaceholder": "name{'@'}example.com",
+      "find": "回答を検索",
+      "found": "{email}からの回答{n}件 | {email}からの回答{n}件",
+      "responses": "{n}件の回答 | {n}件の回答",
+      "none": "見つかりませんでした",
+      "noneDesc": "どのフォームにも、このメールアドレスの回答はありません。",
+      "export": "エクスポート",
+      "exported": "データをエクスポートしました",
+      "deleteAll": "すべて削除",
+      "deleteTitle": "この人のデータをすべて削除しますか?",
+      "deleteDesc": "{forms}件のフォームにある{n}件の回答が完全に削除されます。 | {forms}件のフォームにある{n}件の回答が完全に削除されます。",
+      "typeEmail": "確認のため {email} を入力してください",
+      "deleted": "{n}件の回答を削除しました | {n}件の回答を削除しました",
+      "residency": "データの保管場所",
+      "residencyHint": "回答とファイルが保管されるリージョンです。",
+      "residencyLater": "プランと一緒に選択します。プランはプラットフォームコンソールとともに提供されます。"
+    },
+    "formDefaults": {
+      "note": "新しいフォームはこの設定で開始します。既存のフォームは各自の設定を維持し、各フォームで変更もできます。",
+      "experience": "回答の入力",
+      "experienceHint": "新しいフォームの回答者向けの動作です。",
+      "progress_bar": "進捗バー",
+      "progress_barHint": "回答者の進み具合を表示します。",
+      "save_resume": "保存して後で続ける",
+      "save_resumeHint": "回答者は途中のフォームに戻れます。",
+      "field_icons": "フィールドのアイコン",
+      "field_iconsHint": "各回答欄に小さなアイコンを表示します。",
+      "labels": "質問ラベル",
+      "labelTop": "回答の上",
+      "labelLeft": "回答の横",
+      "design": "デザイン",
+      "designHint": "新しいフォームの初期デザインです。",
+      "theme": "テーマ",
+      "themeHelp": "テンプレートは独自のデザインを維持します。",
+      "workspaceLook": "ワークスペースのデザイン",
+      "themeGone": "このテーマはもう存在しません。別のテーマを選んでください。",
+      "thankYou": "サンクスページ",
+      "thankYouHint": "送信後に回答者に表示される内容です。",
+      "thankYouTitle": "タイトル",
+      "thankYouMessage": "メッセージ",
+      "sharing": "回答と共有",
+      "sharingHint": "新しい回答の通知先と、フォームを埋め込める場所です。",
+      "team": "新しい回答をメールで送る先",
+      "teamHelp": "新しいフォームの回答メールに追加されるチームメンバーです。",
+      "embed": "埋め込みを許可するウェブサイト",
+      "embedAny": "どのウェブサイトでも新しいフォームを埋め込めます。",
+      "embedPlaceholder": "www.example.com と入力して Enter"
     }
   },
   "notifications": {

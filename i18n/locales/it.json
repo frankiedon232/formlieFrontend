@@ -1065,7 +1065,10 @@
       "settings_org_restored": "Voce dell'organizzazione ripristinata",
       "settings_org_merged": "Voci dell'organizzazione unite",
       "settings_org_imported": "Voci dell'organizzazione importate",
-      "settings_org_deleted": "Voce dell'organizzazione eliminata"
+      "settings_org_deleted": "Voce dell'organizzazione eliminata",
+      "settings_retention_applied": "Risposte vecchie rimosse (conservazione)",
+      "settings_data_exported": "Dati di una persona esportati",
+      "settings_data_deleted": "Dati di una persona eliminati"
     },
     "detail": {
       "who": "Chi",
@@ -2289,6 +2292,14 @@
       "receiptField": "Invia la copia a",
       "receiptLost": "La domanda e-mail per la copia è stata rimossa. Scegline un'altra o disattiva la copia.",
       "templates": "Modifica i testi delle e-mail"
+    },
+    "retention": {
+      "title": "Conserva le risposte",
+      "hint": "Le risposte più vecchie vengono rimosse definitivamente. Ha effetto alla pubblicazione.",
+      "workspace": "La scelta dello spazio di lavoro",
+      "workspaceIs": "La scelta dello spazio di lavoro ({value})",
+      "keep": "Finché qualcuno non le elimina",
+      "days": "{n} giorno | {n} giorni"
     }
   },
   "renderer": {
@@ -2479,7 +2490,9 @@
       "copied": "Link copiato",
       "keepGoing": "Continua a compilare"
     },
-    "language": "Lingua"
+    "language": "Lingua",
+    "consentLine": "Inviando, accetti che {org} possa usare le tue risposte per questo modulo.",
+    "privacyNotice": "Informativa sulla privacy"
   },
   "logic": {
     "crumb": "Logica",
@@ -4617,7 +4630,8 @@
       "websiteOf": "Visita il sito di {name}",
       "secured": "{icon} Crittografato · Protetto da {brand}",
       "terms": "Termini",
-      "privacy": "Informativa sulla privacy"
+      "privacy": "Informativa sulla privacy",
+      "orgPrivacy": "Informativa sulla privacy di {org}"
     },
     "browser": {
       "reload": "Ricarica",
@@ -6366,7 +6380,12 @@
       "allowlist": "Lista IP consentiti attiva",
       "notifications": "{n} eventi su {total} attivi",
       "digest": "riepilogo giornaliero",
-      "ownTexts": "{n} testo personalizzato | {n} testi personalizzati"
+      "ownTexts": "{n} testo personalizzato | {n} testi personalizzati",
+      "keepAll": "Risposte conservate",
+      "keepDays": "Risposte conservate {n} giorno | Risposte conservate {n} giorni",
+      "notice": "informativa sulla privacy impostata",
+      "withTheme": "I nuovi moduli partono con un tema",
+      "workspaceLook": "I nuovi moduli usano l'aspetto dello spazio di lavoro"
     },
     "next": {
       "title": "Prossimo passo",
@@ -6397,7 +6416,10 @@
       "ip_empty": "Aggiungi almeno un indirizzo oppure disattiva la lista consentiti.",
       "people": "Scegli almeno una persona.",
       "subject": "Aggiungi un oggetto.",
-      "body": "Aggiungi il testo dell'e-mail."
+      "body": "Aggiungi il testo dell'e-mail.",
+      "https": "Usa un indirizzo https://.",
+      "retention": "Scegli uno dei periodi.",
+      "theme": "Quel tema non esiste più."
     },
     "company": {
       "names": "Nomi",
@@ -6856,6 +6878,78 @@
       "noMatch": "Nessuna e-mail corrisponde",
       "test": "prova",
       "sentTo": "A {to} · {when}"
+    },
+    "privacy": {
+      "retention": "Conserva le risposte",
+      "retentionHint": "Rimuovere le risposte vecchie ti permette di tenere solo ciò che serve.",
+      "keep": "Conserva le risposte per",
+      "keepAll": "Finché qualcuno non le elimina",
+      "keepFor": "{n} giorno | {n} giorni",
+      "perForm": "Ogni modulo può impostare il proprio periodo nelle sue impostazioni.",
+      "wouldRemove": "{n} risposta in {forms} moduli verrebbe rimossa al salvataggio. | {n} risposte in {forms} moduli verrebbero rimosse al salvataggio.",
+      "newestRemoved": "La più recente è del {when}. Dopo, la pulizia viene eseguita ogni giorno.",
+      "nothingNow": "Ora nulla è abbastanza vecchio da essere rimosso. La pulizia viene eseguita ogni giorno.",
+      "confirmTitle": "Rimuovere {n} risposta definitivamente? | Rimuovere {n} risposte definitivamente?",
+      "confirmDesc": "Sono più vecchie del nuovo limite. Vengono rimosse subito e non si possono recuperare.",
+      "confirm": "Salva e rimuovi",
+      "notice": "Informativa sulla privacy e consenso",
+      "noticeHint": "Ciò che chi risponde vede su come usi le sue risposte.",
+      "noticeUrl": "La tua informativa sulla privacy",
+      "consent": "Mostra una riga di consenso sopra Invia",
+      "consentHint": "Su ogni modulo pubblico, con un link alla tua informativa sulla privacy.",
+      "consentText": "Riga di consenso",
+      "consentTextHelp": "Vuoto: la riga di Formalie, nella lingua di chi risponde.",
+      "sample": "Come appare",
+      "requests": "Richieste sui dati",
+      "requestsHint": "Quando qualcuno chiede quali dati hai su di lui, o di essere dimenticato.",
+      "requestEmail": "La sua email",
+      "requestPlaceholder": "name{'@'}example.com",
+      "find": "Trova le sue risposte",
+      "found": "{n} risposta da {email} | {n} risposte da {email}",
+      "responses": "{n} risposta | {n} risposte",
+      "none": "Nessun risultato",
+      "noneDesc": "Nessuna risposta in nessun modulo ha questo indirizzo email.",
+      "export": "Esporta",
+      "exported": "I suoi dati sono stati esportati",
+      "deleteAll": "Elimina tutto",
+      "deleteTitle": "Eliminare tutto di questa persona?",
+      "deleteDesc": "{n} risposta in {forms} moduli viene rimossa definitivamente. | {n} risposte in {forms} moduli vengono rimosse definitivamente.",
+      "typeEmail": "Digita {email} per confermare",
+      "deleted": "{n} risposta eliminata | {n} risposte eliminate",
+      "residency": "Dove sono archiviati i dati",
+      "residencyHint": "La regione in cui sono conservati risposte e file.",
+      "residencyLater": "Si sceglie con il tuo piano. I piani arrivano con la console della piattaforma."
+    },
+    "formDefaults": {
+      "note": "I nuovi moduli partono con queste impostazioni. I moduli che hai già mantengono le proprie, e ogni modulo può comunque cambiarle.",
+      "experience": "Compilazione",
+      "experienceHint": "Come si comportano i nuovi moduli per chi risponde.",
+      "progress_bar": "Barra di avanzamento",
+      "progress_barHint": "Mostra a che punto è chi risponde.",
+      "save_resume": "Salva e continua più tardi",
+      "save_resumeHint": "Chi risponde può riprendere un modulo a metà.",
+      "field_icons": "Icone nei campi",
+      "field_iconsHint": "Una piccola icona in ogni casella di risposta.",
+      "labels": "Etichette delle domande",
+      "labelTop": "Sopra la risposta",
+      "labelLeft": "Accanto alla risposta",
+      "design": "Design",
+      "designHint": "L'aspetto con cui partono i nuovi moduli.",
+      "theme": "Tema",
+      "themeHelp": "I modelli mantengono il proprio design.",
+      "workspaceLook": "L'aspetto del tuo spazio di lavoro",
+      "themeGone": "Questo tema non esiste più. Scegline un altro.",
+      "thankYou": "Pagina di ringraziamento",
+      "thankYouHint": "Ciò che chi risponde vede dopo Invia.",
+      "thankYouTitle": "Titolo",
+      "thankYouMessage": "Messaggio",
+      "sharing": "Risposte e condivisione",
+      "sharingHint": "Chi riceve notizie delle nuove risposte e dove si possono incorporare i moduli.",
+      "team": "Invia le nuove risposte via email a",
+      "teamHelp": "Membri del team aggiunti alle email di risposta di ogni nuovo modulo.",
+      "embed": "Siti web autorizzati a incorporare",
+      "embedAny": "Qualsiasi sito web può incorporare i nuovi moduli.",
+      "embedPlaceholder": "www.example.com, poi Invio"
     }
   },
   "notifications": {

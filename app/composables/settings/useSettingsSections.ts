@@ -54,8 +54,8 @@ const GROUPS: SettingsGroup[] = [
   {
     key: 'data',
     items: [
-      { key: 'privacy', icon: 'i-lucide-lock-keyhole', soon: 'M5' },
-      { key: 'formDefaults', icon: 'i-lucide-file-cog', soon: 'M5' },
+      { key: 'privacy', icon: 'i-lucide-lock-keyhole', to: '/settings/privacy' },
+      { key: 'formDefaults', icon: 'i-lucide-file-cog', to: '/settings/form-defaults' },
       { key: 'themes', icon: 'i-lucide-swatch-book', to: '/settings/themes' },
       { key: 'landingPages', icon: 'i-lucide-layout-template', to: '/settings/landing-pages' },
     ],

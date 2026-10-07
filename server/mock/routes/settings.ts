@@ -18,17 +18,19 @@ import { z } from 'zod'
 import type { BrandingSettings, SecurityActivity, SettingsSection } from '#shared/types/settings'
 import { SETTINGS_SECTIONS } from '#shared/types/settings'
 import { ipInCidr } from '#shared/utils/apiService/access'
-import { brandingSchema, companySchema, emailsSchema, localisationSchema, notificationsSchema, securitySchema, signinSchema } from '#shared/utils/settings/schemas'
+import { brandingSchema, companySchema, emailsSchema, formDefaultsSchema, privacySchema, localisationSchema, notificationsSchema, securitySchema, signinSchema } from '#shared/utils/settings/schemas'
 import { actorOf, auditLogOf, recordAudit } from '../core/audit'
 import { activeSessions, callerIp, currentSessionId, requireAdmin, requireAuth, revokeSessions } from '../core/auth'
 import { MockError, ok } from '../core/respond'
 import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
+import { applyRetention } from '../data/retentionStore'
 import { settingsChanges, settingsOf, writeSettings } from '../data/settingsStore'
 import type { MockTenant } from '../data/tenants'
+import { themeForNewForm } from './themes'
 import { completedUploadUrl } from './uploads'
 
-const LABELS: Record<SettingsSection, string> = { company: 'Company', branding: 'Branding', localisation: 'Language and region', signin: 'Sign-in', security: 'Security', notifications: 'Notifications', emails: 'Email templates' }
+const LABELS: Record<SettingsSection, string> = { company: 'Company', branding: 'Branding', localisation: 'Language and region', signin: 'Sign-in', security: 'Security', notifications: 'Notifications', emails: 'Email templates', privacy: 'Privacy and data', form_defaults: 'Form defaults' }
 const lockedOut = (field: string, message: string) => new MockError('FRM-AUTH-1017', [{ field, message }])
 
 function sectionOf(value: string | undefined): SettingsSection {
@@ -39,6 +41,12 @@ function sectionOf(value: string | undefined): SettingsSection {
 export const getSettings = defineMockRoute(({ event }) => {
   const { tenant } = requireAdmin(event)
   return ok(settingsOf(tenant))
+})
+
+/** Every member's "new form" dialog starts from these (label position). */
+export const getFormDefaults = defineMockRoute(({ event }) => {
+  const { tenant } = requireAuth(event)
+  return ok(settingsOf(tenant).form_defaults)
 })
 
 export const getLocalisation = defineMockRoute(({ event }) => {
@@ -105,6 +113,15 @@ export const patchSection = defineMockRoute(({ event, body }) => {
     const flat = (item: typeof value) => ({ ...item, ip_allowlist: { enabled: item.ip_allowlist.enabled, entries: item.ip_allowlist.entries.map(entry => (entry.label ? `${entry.value} (${entry.label})` : entry.value)) } })
     changes = settingsChanges(flat(settings.security) as unknown as Record<string, unknown>, flat(value) as unknown as Record<string, unknown>)
     next = writeSettings(tenant, 'security', value, by).security
+  } else if (section === 'privacy') {
+    const value = parseBody(privacySchema, body)
+    changes = settingsChanges(settings.privacy as unknown as Record<string, unknown>, value as unknown as Record<string, unknown>)
+    next = writeSettings(tenant, 'privacy', value, by).privacy
+  } else if (section === 'form_defaults') {
+    const value = parseBody(formDefaultsSchema, body)
+    if (value.theme_id && !themeForNewForm(tenant, value.theme_id)) throw new MockError('FRM-GEN-1002', [{ field: 'theme_id', message: 'theme' }])
+    changes = settingsChanges(settings.form_defaults as unknown as Record<string, unknown>, value as unknown as Record<string, unknown>)
+    next = writeSettings(tenant, 'form_defaults', value, by).form_defaults
   } else if (section === 'emails') {
     const value = parseBody(emailsSchema, body)
     // Templates by which ones are the workspace's own, never their whole text
@@ -125,6 +142,7 @@ export const patchSection = defineMockRoute(({ event, body }) => {
     changes = settingsChanges(settings.localisation as unknown as Record<string, unknown>, value as unknown as Record<string, unknown>)
     next = writeSettings(tenant, 'localisation', value, by).localisation
   }
+  if (section === 'privacy') applyRetention(event, tenant, user)
   if (changes.length) recordAudit(event, tenant, { action: 'settings.updated', actor: actorOf(user), resource: { type: 'setting', id: null, name: LABELS[section] }, changes })
   return ok(next)
 })

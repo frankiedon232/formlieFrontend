@@ -24,6 +24,8 @@ import { MockError, ok, paginate } from '../core/respond'
 import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
 import { formsOf, saveForms, summaryOf, uniqueSlug, type StoredForm } from '../data/formStore'
+import { settingsOf } from '../data/settingsStore'
+import { themeForNewForm } from './themes'
 import { retireShortCode } from '../data/shortCodeStore'
 import type { MockTenant, MockUser } from '../data/tenants'
 import { canSee, levelOf, requireLevel } from '../data/formPermissions'
@@ -205,14 +207,41 @@ function newForm(
   return form
 }
 
+/**
+ * Settings → Form defaults (F14 M5): a new blank or template form starts with the workspace's settings,
+ * theme, thank-you text, response emails and allowed websites. What the dialog chose (label position)
+ * and a template's own design win. Imports and copies keep their own.
+ */
+function withFormDefaults(tenant: MockTenant, form: StoredForm, labelPosition?: 'top' | 'left') {
+  const defaults = settingsOf(tenant).form_defaults
+  if (form.schema) {
+    const settings = form.schema.settings ?? {}
+    form.schema.settings = {
+      ...settings,
+      progress_bar: defaults.settings.progress_bar,
+      save_resume: defaults.settings.save_resume,
+      field_icons: defaults.settings.field_icons,
+      label_position: labelPosition ?? defaults.settings.label_position,
+      ...(defaults.team_emails.length ? { emails: { team: [...defaults.team_emails], others: [], others_personal: false, receipt_field: null } } : {}),
+    }
+    const theme = form.template_key ? null : themeForNewForm(tenant, defaults.theme_id)
+    if (theme) {
+      form.schema.theme = theme.tokens
+      form.schema.theme_id = theme.id
+    }
+    if (defaults.thank_you.title || defaults.thank_you.message) form.schema.thank_you = { ...form.schema.thank_you, ...(defaults.thank_you.title ? { title: defaults.thank_you.title } : {}), ...(defaults.thank_you.message ? { message: defaults.thank_you.message } : {}) }
+  }
+  if (defaults.embed_domains.length) form.embed_domains = [...defaults.embed_domains]
+}
+
 export const createForm = defineMockRoute(({ event, body }) => {
   const { user, tenant } = requireAuth(event)
   const input = parseBody(createSchema, body)
   if (input.template_key && !schemaForTemplate(tenant, input.template_key))
     throw new MockError('FRM-GEN-1002', [{ field: 'template_key', message: 'Choose a template from the gallery.' }])
   const form = newForm(tenant, user, { ...input, folder: folderRef(tenant, input.folder_id) })
-  if (input.label_position && form.schema)
-    form.schema.settings = { ...form.schema.settings, label_position: input.label_position }
+  withFormDefaults(tenant, form, input.label_position)
+  saveForms()
   audit(event, tenant, user, 'forms.created', form, [], {
     source: input.template_key ? 'template' : 'blank',
     ...(input.template_key ? { template: input.template_key } : {}),

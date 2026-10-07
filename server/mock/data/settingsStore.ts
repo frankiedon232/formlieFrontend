@@ -4,6 +4,7 @@
  * workspace's public profile (sign-in page, public forms) is built from it.
  */
 import type { NotificationSettings } from '#shared/types/notifications'
+import type { FormDefaults, PrivacySettings } from '#shared/types/privacy'
 import type { SecuritySettings, SettingsChange, SettingsSection, SigninSettings, WorkspaceSettings } from '#shared/types/settings'
 import { DEFAULT_PASSWORD_POLICY } from '#shared/utils/auth/password'
 import { APP_LOCALES } from '#shared/utils/i18n/locales'
@@ -38,6 +39,10 @@ const seedNotifications = (): NotificationSettings => {
   }
 }
 
+/** Privacy and form defaults (F14 M5): keep responses, no notice or consent line until set; forms as they start today. */
+const seedPrivacy = (): PrivacySettings => ({ retention_days: 0, notice_url: null, consent: false, consent_text: null })
+const seedFormDefaults = (): FormDefaults => ({ settings: { progress_bar: true, save_resume: false, field_icons: true, label_position: 'top' }, theme_id: null, thank_you: { title: null, message: null }, team_emails: [], embed_domains: [] })
+
 function seed(tenant: MockTenant): WorkspaceSettings {
   return {
     company: {
@@ -58,7 +63,9 @@ function seed(tenant: MockTenant): WorkspaceSettings {
     security: seedSecurity(),
     notifications: seedNotifications(),
     emails: { sender_name: null, reply_to: null, footer: null, custom: {} },
-    updated: { company: null, branding: null, localisation: null, signin: null, security: null, notifications: null, emails: null },
+    privacy: seedPrivacy(),
+    form_defaults: seedFormDefaults(),
+    updated: { company: null, branding: null, localisation: null, signin: null, security: null, notifications: null, emails: null, privacy: null, form_defaults: null },
   }
 }
 
@@ -68,13 +75,17 @@ export function settingsOf(tenant: MockTenant): WorkspaceSettings {
     settings = seed(tenant)
     stores.set(tenant.id, settings)
     saveSettings()
-  } else if (!settings.signin || !settings.security || !settings.notifications || !settings.emails) {
+  } else if (!settings.signin || !settings.security || !settings.notifications || !settings.emails || !settings.privacy || !settings.form_defaults) {
     // Saved before these sections existed (F14 M3, M4)
     settings.signin ??= seedSignin(tenant)
     settings.security ??= seedSecurity()
     settings.notifications ??= seedNotifications()
     settings.emails ??= { sender_name: null, reply_to: null, footer: null, custom: {} }
     settings.updated.emails ??= null
+    settings.privacy ??= seedPrivacy()
+    settings.form_defaults ??= seedFormDefaults()
+    settings.updated.privacy ??= null
+    settings.updated.form_defaults ??= null
     settings.updated.signin ??= null
     settings.updated.security ??= null
     settings.updated.notifications ??= null
