@@ -4520,7 +4520,8 @@
       "expiry": {
         "title": "토큰 만료",
         "text": "모든 응답에 토큰 만료 정보가 담깁니다. Formalie-Token-Expires 헤더와, 데이터 옆의 meta.token_expires_at 및 meta.token_expires_in_days입니다(만료되지 않는 토큰은 null). 그날이 오기 전에 토큰을 갱신하세요."
-      }
+      },
+      "dependsOn": "{name}에 따라 달라집니다. {name}에 보낸 값의 하위 값만 허용됩니다. 그 아래에 아무것도 없으면 필수가 아닙니다."
     },
     "journey": {
       "title": "API 설정하기",

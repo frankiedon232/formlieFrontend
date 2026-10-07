@@ -4520,7 +4520,8 @@
       "expiry": {
         "title": "トークンの有効期限",
         "text": "すべての応答にトークンの有効期限が含まれます。Formalie-Token-Expires ヘッダーと、データの横の meta.token_expires_at および meta.token_expires_in_days です(期限のないトークンは null)。期限の日が来る前にトークンを更新してください。"
-      }
+      },
+      "dependsOn": "{name} に依存します。{name} に送信した値の下にある値のみ指定できます。その下に何もない場合は必須ではありません。"
     },
     "journey": {
       "title": "API を設定する",

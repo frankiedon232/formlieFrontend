@@ -4520,7 +4520,8 @@
       "expiry": {
         "title": "令牌有效期",
         "text": "每个响应都带有令牌的有效期:Formalie-Token-Expires 请求头,以及数据旁的 meta.token_expires_at 和 meta.token_expires_in_days(永不过期的令牌为 null)。请在到期日之前续期令牌。"
-      }
+      },
+      "dependsOn": "取决于 {name}：只接受 {name} 所发送值之下的值。如果其下没有任何内容，则不是必填。"
     },
     "journey": {
       "title": "设置你的 API",

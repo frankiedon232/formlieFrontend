@@ -58,8 +58,10 @@ export interface ApiEndpointField {
   required: boolean
   returned: boolean
   filter: boolean
-  /** The question's answer values (choices), so examples and docs show real ones (M5). */
-  options?: { value: string; label: string }[]
+  /** The question's answer values (choices), so examples and docs show real ones (M5); `parent` = the value above it (list with levels). */
+  options?: { value: string; label: string; parent?: string }[]
+  /** A level of a list with levels (F15 M2): the key of the question one level up. Only values under what was sent for it are accepted; with nothing under it, it isn't asked (not required). */
+  depends_on?: string
 }
 
 export interface ApiEndpoint extends ApiUsage {

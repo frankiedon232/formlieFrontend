@@ -4520,7 +4520,8 @@
       "expiry": {
         "title": "Token expiry",
         "text": "Every answer carries the token's expiry: the Formalie-Token-Expires header and, next to the data, meta.token_expires_at and meta.token_expires_in_days (null for a token that never expires). Renew the token before the day comes."
-      }
+      },
+      "dependsOn": "Depends on {name}: only values under what is sent for {name}. Not required when nothing is under it."
     },
     "journey": {
       "title": "Set up your API",

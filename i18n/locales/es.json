@@ -4520,7 +4520,8 @@
       "expiry": {
         "title": "Caducidad del token",
         "text": "Cada respuesta incluye la caducidad del token: la cabecera Formalie-Token-Expires y, junto a los datos, meta.token_expires_at y meta.token_expires_in_days (null para un token que nunca caduca). Renueva el token antes de que llegue el día."
-      }
+      },
+      "dependsOn": "Depende de {name}: solo valores que estén bajo lo enviado en {name}. No es obligatorio cuando no hay nada debajo."
     },
     "journey": {
       "title": "Configura tu API",

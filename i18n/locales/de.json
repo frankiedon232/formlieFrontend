@@ -4520,7 +4520,8 @@
       "expiry": {
         "title": "Ablauf des Tokens",
         "text": "Jede Antwort enthält den Ablauf des Tokens: den Header Formalie-Token-Expires und neben den Daten meta.token_expires_at und meta.token_expires_in_days (null bei einem Token, das nie abläuft). Erneuern Sie das Token vor Ablauf."
-      }
+      },
+      "dependsOn": "Hängt von {name} ab: nur Werte unterhalb dessen, was für {name} gesendet wird. Nicht erforderlich, wenn darunter nichts liegt."
     },
     "journey": {
       "title": "Richten Sie Ihre API ein",

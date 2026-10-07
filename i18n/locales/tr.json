@@ -4520,7 +4520,8 @@
       "expiry": {
         "title": "Jeton bitiş zamanı",
         "text": "Her yanıt jetonun bitiş zamanını taşır: Formalie-Token-Expires başlığı ve verinin yanında meta.token_expires_at ile meta.token_expires_in_days (hiç bitmeyen jeton için null). Jetonu o gün gelmeden yenileyin."
-      }
+      },
+      "dependsOn": "{name} alanına bağlıdır: yalnızca {name} için gönderilen değerin altındaki değerler. Altında hiçbir şey yoksa zorunlu değildir."
     },
     "journey": {
       "title": "API'nizi kurun",

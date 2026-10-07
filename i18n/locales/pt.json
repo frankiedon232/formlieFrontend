@@ -4520,7 +4520,8 @@
       "expiry": {
         "title": "Validade do token",
         "text": "Cada resposta traz a validade do token: o cabeçalho Formalie-Token-Expires e, junto aos dados, meta.token_expires_at e meta.token_expires_in_days (null para um token que nunca expira). Renove o token antes de o dia chegar."
-      }
+      },
+      "dependsOn": "Depende de {name}: apenas valores que estejam sob o que foi enviado para {name}. Não é obrigatório quando não há nada abaixo."
     },
     "journey": {
       "title": "Configure sua API",

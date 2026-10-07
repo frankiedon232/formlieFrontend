@@ -4520,7 +4520,8 @@
       "expiry": {
         "title": "Kuisha kwa tokeni",
         "text": "Kila jibu hubeba kuisha kwa tokeni: kichwa Formalie-Token-Expires na, karibu na data, meta.token_expires_at na meta.token_expires_in_days (null kwa tokeni isiyoisha kamwe). Fanya tokeni upya kabla siku haijafika."
-      }
+      },
+      "dependsOn": "Inategemea {name}: ni thamani zilizo chini ya kilichotumwa kwa {name} pekee. Si lazima wakati hakuna kitu chini yake."
     },
     "journey": {
       "title": "Sanidi API yako",

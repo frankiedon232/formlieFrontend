@@ -4520,7 +4520,8 @@
       "expiry": {
         "title": "Hạn của token",
         "text": "Mỗi phản hồi mang hạn của token: header Formalie-Token-Expires và, bên cạnh dữ liệu, meta.token_expires_at và meta.token_expires_in_days (null với token không bao giờ hết hạn). Hãy gia hạn token trước khi đến ngày đó."
-      }
+      },
+      "dependsOn": "Phụ thuộc vào {name}: chỉ nhận các giá trị nằm dưới giá trị đã gửi cho {name}. Không bắt buộc khi bên dưới không có gì."
     },
     "journey": {
       "title": "Thiết lập API của bạn",

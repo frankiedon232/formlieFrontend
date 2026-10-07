@@ -4520,7 +4520,8 @@
       "expiry": {
         "title": "Masa berlaku token",
         "text": "Setiap jawaban membawa masa berlaku token: header Formalie-Token-Expires dan, di samping data, meta.token_expires_at serta meta.token_expires_in_days (null untuk token yang tidak pernah kedaluwarsa). Perbarui token sebelum harinya tiba."
-      }
+      },
+      "dependsOn": "Bergantung pada {name}: hanya nilai di bawah apa yang dikirim untuk {name}. Tidak wajib jika tidak ada apa pun di bawahnya."
     },
     "journey": {
       "title": "Siapkan API-mu",

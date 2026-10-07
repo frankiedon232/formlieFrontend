@@ -4520,7 +4520,8 @@
       "expiry": {
         "title": "Expiration du jeton",
         "text": "Chaque réponse porte l'expiration du jeton : l'en-tête Formalie-Token-Expires et, à côté des données, meta.token_expires_at et meta.token_expires_in_days (null pour un jeton qui n'expire jamais). Renouvelez le jeton avant l'échéance."
-      }
+      },
+      "dependsOn": "Dépend de {name} : uniquement des valeurs situées sous ce qui est envoyé pour {name}. Non obligatoire quand il n'y a rien en dessous."
     },
     "journey": {
       "title": "Configurez votre API",

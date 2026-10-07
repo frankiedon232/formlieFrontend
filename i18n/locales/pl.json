@@ -4520,7 +4520,8 @@
       "expiry": {
         "title": "Wygaśnięcie tokenu",
         "text": "Każda odpowiedź zawiera wygaśnięcie tokenu: nagłówek Formalie-Token-Expires oraz, obok danych, meta.token_expires_at i meta.token_expires_in_days (null dla tokenu, który nigdy nie wygasa). Odnów token, zanim nadejdzie ten dzień."
-      }
+      },
+      "dependsOn": "Zależy od {name}: tylko wartości znajdujące się pod tym, co wysłano dla {name}. Nie jest wymagane, gdy nic się pod tym nie znajduje."
     },
     "journey": {
       "title": "Skonfiguruj swoje API",

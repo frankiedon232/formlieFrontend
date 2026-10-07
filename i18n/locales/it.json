@@ -4520,7 +4520,8 @@
       "expiry": {
         "title": "Scadenza del token",
         "text": "Ogni risposta riporta la scadenza del token: l'header Formalie-Token-Expires e, accanto ai dati, meta.token_expires_at e meta.token_expires_in_days (null per un token che non scade mai). Rinnova il token prima del giorno."
-      }
+      },
+      "dependsOn": "Dipende da {name}: solo valori sotto quanto inviato per {name}. Non obbligatorio quando non c'è nulla sotto."
     },
     "journey": {
       "title": "Configura la tua API",

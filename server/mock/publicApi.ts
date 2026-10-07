@@ -24,6 +24,7 @@ import { emailResponse } from './data/responseEmails'
 import { createHash, timingSafeEqual } from 'node:crypto'
 import type { H3Event } from 'h3'
 import { checkSubmission } from '#shared/utils/forms/submission'
+import { cascadeClosed, fitAnswer } from '#shared/utils/forms/cascade'
 import { allFields } from '#shared/utils/forms/build'
 import { isFileField, maxFileBytes } from '#shared/utils/forms/file-answers'
 import { acceptsFile, looksLikePicture, parseAccept, pictureAccept } from '#shared/utils/forms/file-types'
@@ -392,7 +393,10 @@ async function handle(event: H3Event, path: string, context: CallContext) {
     }
 
     if (method === 'POST') {
-      const required = choices.filter(field => field.required && (body[field.key] == null || body[field.key] === ''))
+      // A level of a list with levels with nothing under the choice above is not asked, so not required (F15 M2)
+      const byId = new Map(allFields(schema).map(field => [field.id, field]))
+      const closed = (key: string) => { const field = fields.get(key); return !!field && cascadeClosed(field, byId, body) }
+      const required = choices.filter(field => field.required && (body[field.key] == null || body[field.key] === '') && !closed(field.key))
       if (required.length) throw new PublicError('FRM-RESP-1001', required.map(field => ({ field: field.key, message: 'required' })))
       const { issues, answers } = checkSubmission(schema, body)
       if (issues.length) throw new PublicError('FRM-RESP-1001', issues.map(issue => ({ field: issue.key, message: issue.code })))
@@ -464,9 +468,21 @@ async function handle(event: H3Event, path: string, context: CallContext) {
       const issue = definition ? validateAnswer(definition, value, !!definition.required) : null
       return issue ? [{ field, message: issue.code }] : []
     })
+    // Lists with levels (F15 M2): a level sent must sit under the record's choice above (after this change);
+    // levels below a changed one that no longer fit are cleared, as in the form
+    const before = entry ? answersOf(form, entry) : {}
+    const byId = new Map(allFields(schema).map(field => [field.id, field]))
+    const merged: Record<string, unknown> = { ...before, ...body }
+    for (const field of byId.values()) {
+      if (!field.option_parent || merged[field.key] == null) continue
+      const fitted = fitAnswer(field, byId, merged)
+      if (JSON.stringify(fitted ?? null) === JSON.stringify(merged[field.key])) continue
+      if (field.key in body) problems.push({ field: field.key, message: 'choice' })
+      else body[field.key] = fitted ?? null
+      merged[field.key] = fitted ?? null
+    }
     if (problems.length) throw new PublicError('FRM-RESP-1001', problems)
     if (test || !entry) return send(event, 200, { data: { id: recordRef, ...body }, meta: { test: true } })
-    const before = answersOf(form, entry)
     attachRespondentFiles(fileIds, entry.id)
     updateReview(form.id, entry.id, review => {
       review.data = { ...review.data, ...body }

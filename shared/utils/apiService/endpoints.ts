@@ -15,6 +15,7 @@ export function endpointFieldsOf(schema: FormSchemaV1, saved?: { key: string; na
   // API names: the saved one when it is valid and free, else a clean one from the label (first_name, first_name_2)
   const taken = new Set<string>()
   const pageOf = new Map(schema.pages.flatMap((page, index) => page.rows.flatMap(row => row.fields.map(field => [field.id, index] as const))))
+  const keyOfId = new Map(allFields(schema).map(field => [field.id, field.key]))
   return allFields(schema)
     .filter(field => !LAYOUT_TYPES.includes(field.type))
     .map(field => {
@@ -39,7 +40,8 @@ export function endpointFieldsOf(schema: FormSchemaV1, saved?: { key: string; na
         required: accept && (formRequired || !!own?.required),
         returned: own ? own.returned : true,
         filter: filterable && !!own?.filter,
-        ...(field.options?.length ? { options: field.options.map(option => ({ value: option.value, label: option.label })) } : {}),
+        ...(field.options?.length ? { options: field.options.map(option => ({ value: option.value, label: option.label, ...(option.parent ? { parent: option.parent } : {}) })) } : {}),
+        ...(field.option_parent && keyOfId.get(field.option_parent) ? { depends_on: keyOfId.get(field.option_parent) } : {}),
       }
     })
 }
@@ -165,9 +167,34 @@ export function sampleValue(field: Pick<ApiEndpointField, 'type' | 'key' | 'labe
   }
 }
 
+/**
+ * Examples for lists with levels (F15 M2): each level's example takes only values under the example
+ * chosen one level up (Brazil → São Paulo → Campinas), so an example body is one the API accepts.
+ */
+export function withLevelSamples(fields: ApiEndpointField[]): ApiEndpointField[] {
+  const chosen = new Map<string, unknown>()
+  const byKey = new Map(fields.map(field => [field.key, field]))
+  const narrowed = new Map<string, ApiEndpointField>()
+  const visit = (field: ApiEndpointField): ApiEndpointField => {
+    if (narrowed.has(field.key)) return narrowed.get(field.key)!
+    let result = field
+    const parent = field.depends_on ? byKey.get(field.depends_on) : undefined
+    if (parent) {
+      visit(parent)
+      const above = chosen.get(parent.key)
+      const values = Array.isArray(above) ? above : above != null ? [above] : []
+      result = { ...field, options: (field.options ?? []).filter(option => option.parent !== undefined && values.includes(option.parent)) }
+    }
+    narrowed.set(field.key, result)
+    chosen.set(field.key, sampleValue(result))
+    return result
+  }
+  return fields.map(visit)
+}
+
 /** The JSON body a POST / PUT sends: every accepted field (required first). */
 export function exampleRequestBody(fields: ApiEndpointField[]) {
-  const sent = fields.filter(field => field.accept).sort((a, b) => Number(b.required) - Number(a.required))
+  const sent = withLevelSamples(fields).filter(field => field.accept).sort((a, b) => Number(b.required) - Number(a.required))
   return Object.fromEntries(sent.map(field => [field.name, sampleValue(field)]))
 }
 
@@ -177,7 +204,7 @@ export function exampleRecord(fields: ApiEndpointField[]) {
     id: 'rsp_9fK2mQ7xLp',
     submitted_at: '2026-10-06T09:30:00Z',
     status: 'new',
-    data: Object.fromEntries(fields.filter(field => field.returned).map(field => [field.name, ['file_upload', 'image_upload'].includes(field.type) ? [{ id: 'f_Hc71mQpZsA', name: 'document.pdf', size: 20480, type: 'application/pdf' }] : sampleValue(field)])),
+    data: Object.fromEntries(withLevelSamples(fields).filter(field => field.returned).map(field => [field.name, ['file_upload', 'image_upload'].includes(field.type) ? [{ id: 'f_Hc71mQpZsA', name: 'document.pdf', size: 20480, type: 'application/pdf' }] : sampleValue(field)])),
   }
 }
 

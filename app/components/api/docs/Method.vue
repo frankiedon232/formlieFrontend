@@ -77,6 +77,7 @@ watch(() => props.method, () => (shownAnswer.value = 0))
                 <UBadge v-if="field.required && method === 'POST'" :label="t('apiService.fields.required')" color="error" variant="soft" size="xs" class="rounded-md" />
               </div>
               <p class="text-xs text-muted">{{ field.label }}</p>
+              <p v-if="field.depends_on" class="flex items-start gap-1 text-xs text-muted"><UIcon name="i-lucide-corner-down-right" class="mt-0.5 size-3.5 shrink-0 rtl:-scale-x-100" /><span>{{ t('apiService.docs.dependsOn', { name: field.depends_on }) }}</span></p>
               <div v-if="field.options?.length" class="flex flex-wrap gap-1">
                 <code v-for="option in field.options.slice(0, 10)" :key="option.value" class="rounded bg-elevated px-1.5 py-0.5 font-mono text-[11px] text-highlighted" :title="option.label" dir="ltr">{{ option.value }}</code>
                 <span v-if="field.options.length > 10" class="text-[11px] text-muted">+{{ field.options.length - 10 }}</span>
