@@ -18,7 +18,7 @@ import { z } from 'zod'
 import type { BrandingSettings, SecurityActivity, SettingsSection } from '#shared/types/settings'
 import { SETTINGS_SECTIONS } from '#shared/types/settings'
 import { ipInCidr } from '#shared/utils/apiService/access'
-import { brandingSchema, companySchema, emailsSchema, formDefaultsSchema, privacySchema, localisationSchema, notificationsSchema, securitySchema, signinSchema } from '#shared/utils/settings/schemas'
+import { appearanceSchema, brandingSchema, companySchema, emailsSchema, formDefaultsSchema, privacySchema, localisationSchema, notificationsSchema, securitySchema, signinSchema } from '#shared/utils/settings/schemas'
 import { actorOf, auditLogOf, recordAudit } from '../core/audit'
 import { activeSessions, callerIp, currentSessionId, requireAdmin, requireAuth, revokeSessions } from '../core/auth'
 import { MockError, ok } from '../core/respond'
@@ -30,7 +30,7 @@ import type { MockTenant } from '../data/tenants'
 import { themeForNewForm } from './themes'
 import { completedUploadUrl } from './uploads'
 
-const LABELS: Record<SettingsSection, string> = { company: 'Company', branding: 'Branding', localisation: 'Language and region', signin: 'Sign-in', security: 'Security', notifications: 'Notifications', emails: 'Email templates', privacy: 'Privacy and data', form_defaults: 'Form defaults' }
+const LABELS: Record<SettingsSection, string> = { company: 'Company', branding: 'Branding', localisation: 'Language and region', signin: 'Sign-in', security: 'Security', notifications: 'Notifications', emails: 'Email templates', privacy: 'Privacy and data', form_defaults: 'Form defaults', appearance: 'Appearance' }
 const lockedOut = (field: string, message: string) => new MockError('FRM-AUTH-1017', [{ field, message }])
 
 function sectionOf(value: string | undefined): SettingsSection {
@@ -41,6 +41,12 @@ function sectionOf(value: string | undefined): SettingsSection {
 export const getSettings = defineMockRoute(({ event }) => {
   const { tenant } = requireAdmin(event)
   return ok(settingsOf(tenant))
+})
+
+/** Everyone's portal wears the workspace's look (Settings → Appearance). */
+export const getAppearance = defineMockRoute(({ event }) => {
+  const { tenant } = requireAuth(event)
+  return ok(settingsOf(tenant).appearance)
 })
 
 /** Every member's "new form" dialog starts from these (label position). */
@@ -113,6 +119,10 @@ export const patchSection = defineMockRoute(({ event, body }) => {
     const flat = (item: typeof value) => ({ ...item, ip_allowlist: { enabled: item.ip_allowlist.enabled, entries: item.ip_allowlist.entries.map(entry => (entry.label ? `${entry.value} (${entry.label})` : entry.value)) } })
     changes = settingsChanges(flat(settings.security) as unknown as Record<string, unknown>, flat(value) as unknown as Record<string, unknown>)
     next = writeSettings(tenant, 'security', value, by).security
+  } else if (section === 'appearance') {
+    const value = parseBody(appearanceSchema, body)
+    changes = settingsChanges(settings.appearance as unknown as Record<string, unknown>, value as unknown as Record<string, unknown>)
+    next = writeSettings(tenant, 'appearance', value, by).appearance
   } else if (section === 'privacy') {
     const value = parseBody(privacySchema, body)
     changes = settingsChanges(settings.privacy as unknown as Record<string, unknown>, value as unknown as Record<string, unknown>)

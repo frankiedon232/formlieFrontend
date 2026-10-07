@@ -6385,7 +6385,8 @@
       "keepDays": "Respostas mantidas por {n} dia | Respostas mantidas por {n} dias",
       "notice": "aviso de privacidade definido",
       "withTheme": "Novos formulários começam com um tema",
-      "workspaceLook": "Novos formulários usam o visual do espaço de trabalho"
+      "workspaceLook": "Novos formulários usam o visual do espaço de trabalho",
+      "customLook": "Seu próprio visual"
     },
     "next": {
       "title": "Próximo passo",
@@ -6950,6 +6951,111 @@
       "embed": "Sites autorizados a incorporar",
       "embedAny": "Qualquer site pode incorporar novos formulários.",
       "embedPlaceholder": "www.example.com, depois Enter"
+    },
+    "appearance": {
+      "reset": "Redefinir para Formalie",
+      "presets": "Comece com um visual",
+      "presetsHint": "Visuais prontos. Tudo abaixo continua ajustável.",
+      "preset": {
+        "formalie": "Formalie",
+        "midnight": "Meia-noite",
+        "ocean": "Oceano",
+        "forest": "Floresta",
+        "sunset": "Pôr do sol",
+        "classic": "Clássico",
+        "brand": "Sua marca"
+      },
+      "live": "Cada alteração aparece na hora em todo o portal, só para você, até você salvar. Ao salvar, vale para todos no espaço de trabalho.",
+      "colours": "Cores",
+      "coloursHint": "Botões, links, anéis de foco e o item ativo do menu usam a cor primária.",
+      "primary": "Cor primária",
+      "primaryHelp": "As cores de status (verde, âmbar, vermelho) não mudam, para manter o significado.",
+      "color": {
+        "mono": "Preto e branco",
+        "brand": "A cor da sua marca",
+        "indigo": "Índigo",
+        "blue": "Azul",
+        "sky": "Azul-celeste",
+        "teal": "Verde-azulado",
+        "emerald": "Esmeralda",
+        "green": "Verde",
+        "amber": "Âmbar",
+        "orange": "Laranja",
+        "red": "Vermelho",
+        "rose": "Rosa-escuro",
+        "pink": "Rosa",
+        "violet": "Violeta",
+        "purple": "Roxo"
+      },
+      "lowContrast": "O texto branco fica difícil de ler na cor da sua marca",
+      "lowContrastDesc": "O contraste é {ratio}:1; recomenda-se pelo menos 4.5:1. Escolha um tom mais escuro em Marca, ou uma cor da paleta aqui.",
+      "neutrals": "Cinzas",
+      "neutralsHelp": "Texto, bordas e superfícies: de frio a quente.",
+      "neutral": {
+        "zinc": "Zinco",
+        "slate": "Ardósia (frio)",
+        "gray": "Cinza",
+        "neutral": "Neutro",
+        "stone": "Pedra (quente)"
+      },
+      "background": "Fundo da página",
+      "bg": {
+        "plain": "Liso",
+        "tinted": "Tom suave"
+      },
+      "shape": "Forma e fonte",
+      "shapeHint": "Cantos, letras e o tamanho de tudo.",
+      "corners": "Cantos",
+      "radius": {
+        "none": "Quadrados",
+        "sm": "Leves",
+        "md": "Suaves",
+        "lg": "Redondos",
+        "xl": "Muito redondos"
+      },
+      "fontLabel": "Fonte",
+      "font": {
+        "manrope": "Manrope (Formalie)",
+        "system": "Sistema",
+        "serif": "Serifada",
+        "rounded": "Arredondada"
+      },
+      "textSize": "Tamanho do texto",
+      "size": {
+        "sm": "Pequeno",
+        "md": "Normal",
+        "lg": "Grande"
+      },
+      "sidebar": "Barra lateral",
+      "sidebarHint": "A barra de ícones e o menu ao lado.",
+      "rail": "Barra de ícones",
+      "menu": "Menu",
+      "tone": {
+        "light": "Claro",
+        "dark": "Escuro"
+      },
+      "badges": "Contagens no menu",
+      "badgesHint": "Números ao lado de Formulários, Respostas e pastas.",
+      "headerFooter": "Cabeçalho e rodapé",
+      "headerFooterHint": "O que a barra acima de cada página mostra.",
+      "breadcrumbs": "Trilha de navegação",
+      "search": "Campo de busca",
+      "searchHint": "A busca continua em Ctrl / ⌘ + K.",
+      "footer": "Rodapé",
+      "page": "Páginas",
+      "pageHint": "Como o conteúdo de cada página é organizado.",
+      "width": "Largura do conteúdo",
+      "widthOption": {
+        "full": "Largura total",
+        "centred": "Centralizado"
+      },
+      "density": "Espaçamento",
+      "densityOption": {
+        "comfortable": "Confortável",
+        "compact": "Compacto"
+      },
+      "preview": "Pré-visualização",
+      "previewHint": "O portal inteiro ao redor desta página também mostra o visual. Seus formulários públicos mantêm seus próprios temas."
     }
   },
   "notifications": {

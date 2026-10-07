@@ -6385,7 +6385,8 @@
       "keepDays": "Respons disimpan {n} hari | Respons disimpan {n} hari",
       "notice": "pemberitahuan privasi diatur",
       "withTheme": "Formulir baru dimulai dengan tema",
-      "workspaceLook": "Formulir baru memakai tampilan ruang kerja"
+      "workspaceLook": "Formulir baru memakai tampilan ruang kerja",
+      "customLook": "Tampilan Anda sendiri"
     },
     "next": {
       "title": "Langkah berikutnya",
@@ -6950,6 +6951,111 @@
       "embed": "Situs web yang boleh menyematkan",
       "embedAny": "Situs web mana pun boleh menyematkan formulir baru.",
       "embedPlaceholder": "www.example.com, lalu Enter"
+    },
+    "appearance": {
+      "reset": "Atur ulang ke Formalie",
+      "presets": "Mulai dari sebuah tampilan",
+      "presetsHint": "Tampilan siap pakai. Semua di bawahnya tetap bisa diatur.",
+      "preset": {
+        "formalie": "Formalie",
+        "midnight": "Tengah malam",
+        "ocean": "Samudra",
+        "forest": "Hutan",
+        "sunset": "Senja",
+        "classic": "Klasik",
+        "brand": "Merek Anda"
+      },
+      "live": "Setiap perubahan langsung terlihat di seluruh portal, hanya untuk Anda, sampai Anda menyimpan. Menyimpan akan menerapkannya untuk semua orang di ruang kerja.",
+      "colours": "Warna",
+      "coloursHint": "Tombol, tautan, cincin fokus, dan item menu aktif memakai warna utama.",
+      "primary": "Warna utama",
+      "primaryHelp": "Warna status (hijau, kuning amber, merah) tetap sama agar maknanya terjaga.",
+      "color": {
+        "mono": "Hitam dan putih",
+        "brand": "Warna merek Anda",
+        "indigo": "Indigo",
+        "blue": "Biru",
+        "sky": "Biru langit",
+        "teal": "Teal",
+        "emerald": "Zamrud",
+        "green": "Hijau",
+        "amber": "Amber",
+        "orange": "Oranye",
+        "red": "Merah",
+        "rose": "Mawar",
+        "pink": "Merah muda",
+        "violet": "Violet",
+        "purple": "Ungu"
+      },
+      "lowContrast": "Teks putih sulit dibaca pada warna merek Anda",
+      "lowContrastDesc": "Kontrasnya {ratio}:1; disarankan minimal 4.5:1. Pilih warna yang lebih gelap di Branding, atau warna palet di sini.",
+      "neutrals": "Abu-abu",
+      "neutralsHelp": "Teks, batas, dan permukaan: dari dingin hingga hangat.",
+      "neutral": {
+        "zinc": "Zinc",
+        "slate": "Slate (dingin)",
+        "gray": "Abu-abu",
+        "neutral": "Netral",
+        "stone": "Stone (hangat)"
+      },
+      "background": "Latar halaman",
+      "bg": {
+        "plain": "Polos",
+        "tinted": "Warna lembut"
+      },
+      "shape": "Bentuk dan huruf",
+      "shapeHint": "Sudut, huruf, dan ukuran semuanya.",
+      "corners": "Sudut",
+      "radius": {
+        "none": "Kotak",
+        "sm": "Sedikit",
+        "md": "Lembut",
+        "lg": "Bulat",
+        "xl": "Sangat bulat"
+      },
+      "fontLabel": "Font",
+      "font": {
+        "manrope": "Manrope (Formalie)",
+        "system": "Sistem",
+        "serif": "Serif",
+        "rounded": "Membulat"
+      },
+      "textSize": "Ukuran teks",
+      "size": {
+        "sm": "Kecil",
+        "md": "Normal",
+        "lg": "Besar"
+      },
+      "sidebar": "Bilah samping",
+      "sidebarHint": "Bilah ikon dan menu di sebelahnya.",
+      "rail": "Bilah ikon",
+      "menu": "Menu",
+      "tone": {
+        "light": "Terang",
+        "dark": "Gelap"
+      },
+      "badges": "Jumlah di menu",
+      "badgesHint": "Angka di samping Formulir, Respons, dan folder.",
+      "headerFooter": "Header dan footer",
+      "headerFooterHint": "Apa yang ditampilkan bilah di atas setiap halaman.",
+      "breadcrumbs": "Breadcrumb",
+      "search": "Kolom pencarian",
+      "searchHint": "Pencarian tetap di Ctrl / ⌘ + K.",
+      "footer": "Footer",
+      "page": "Halaman",
+      "pageHint": "Bagaimana konten setiap halaman ditata.",
+      "width": "Lebar konten",
+      "widthOption": {
+        "full": "Lebar penuh",
+        "centred": "Di tengah"
+      },
+      "density": "Jarak",
+      "densityOption": {
+        "comfortable": "Nyaman",
+        "compact": "Ringkas"
+      },
+      "preview": "Pratinjau",
+      "previewHint": "Seluruh portal di sekitar halaman ini juga menampilkan tampilannya. Formulir publik Anda tetap memakai tema sendiri."
     }
   },
   "notifications": {

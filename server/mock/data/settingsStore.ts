@@ -6,6 +6,7 @@
 import type { NotificationSettings } from '#shared/types/notifications'
 import type { FormDefaults, PrivacySettings } from '#shared/types/privacy'
 import type { SecuritySettings, SettingsChange, SettingsSection, SigninSettings, WorkspaceSettings } from '#shared/types/settings'
+import { FORMALIE_APPEARANCE } from '#shared/types/appearance'
 import { DEFAULT_PASSWORD_POLICY } from '#shared/utils/auth/password'
 import { APP_LOCALES } from '#shared/utils/i18n/locales'
 import { loadPersisted, savePersisted } from '../core/persist'
@@ -65,7 +66,8 @@ function seed(tenant: MockTenant): WorkspaceSettings {
     emails: { sender_name: null, reply_to: null, footer: null, custom: {} },
     privacy: seedPrivacy(),
     form_defaults: seedFormDefaults(),
-    updated: { company: null, branding: null, localisation: null, signin: null, security: null, notifications: null, emails: null, privacy: null, form_defaults: null },
+    appearance: structuredClone(FORMALIE_APPEARANCE),
+    updated: { company: null, branding: null, localisation: null, signin: null, security: null, notifications: null, emails: null, privacy: null, form_defaults: null, appearance: null },
   }
 }
 
@@ -75,7 +77,7 @@ export function settingsOf(tenant: MockTenant): WorkspaceSettings {
     settings = seed(tenant)
     stores.set(tenant.id, settings)
     saveSettings()
-  } else if (!settings.signin || !settings.security || !settings.notifications || !settings.emails || !settings.privacy || !settings.form_defaults) {
+  } else if (!settings.signin || !settings.security || !settings.notifications || !settings.emails || !settings.privacy || !settings.form_defaults || !settings.appearance) {
     // Saved before these sections existed (F14 M3, M4)
     settings.signin ??= seedSignin(tenant)
     settings.security ??= seedSecurity()
@@ -86,6 +88,8 @@ export function settingsOf(tenant: MockTenant): WorkspaceSettings {
     settings.form_defaults ??= seedFormDefaults()
     settings.updated.privacy ??= null
     settings.updated.form_defaults ??= null
+    settings.appearance ??= structuredClone(FORMALIE_APPEARANCE)
+    settings.updated.appearance ??= null
     settings.updated.signin ??= null
     settings.updated.security ??= null
     settings.updated.notifications ??= null

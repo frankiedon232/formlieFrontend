@@ -24,7 +24,7 @@ const GROUPS: SettingsGroup[] = [
       { key: 'company', icon: 'i-lucide-building-2', to: '/settings/company' },
       { key: 'branding', icon: 'i-lucide-badge-check', to: '/settings/branding' },
       { key: 'language', icon: 'i-lucide-languages', to: '/settings/language' },
-      { key: 'appearance', icon: 'i-lucide-palette', soon: 'M6' },
+      { key: 'appearance', icon: 'i-lucide-palette', to: '/settings/appearance' },
       { key: 'address', icon: 'i-lucide-globe', soon: 'M7' },
     ],
   },

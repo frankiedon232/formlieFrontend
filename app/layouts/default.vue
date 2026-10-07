@@ -13,6 +13,10 @@ watch(
 const { destinations } = useNavigation()
 const { shortcutsOpen } = useAppUi()
 const peek = ref<{ focusEdge: (edge: 'first' | 'last') => void } | null>(null)
+// The workspace's look of the portal (Settings → Appearance)
+const appearance = useAppearance()
+appearance.apply()
+onMounted(() => void appearance.load())
 
 // `?` opens the shortcuts help; `g` then a letter jumps to a section (see useNavigation).
 const goTo = Object.fromEntries(

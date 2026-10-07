@@ -50,6 +50,7 @@ export function useSettingsStatus(settings: Ref<WorkspaceSettings | null>) {
       const text = idle < 60 ? t('settings.status.idleMinutes', { n: idle }) : t('settings.status.idleHours', { n: idle / 60 }, idle / 60)
       return { text: s.security.ip_allowlist.enabled ? `${text} · ${t('settings.status.allowlist')}` : text, tone: 'info' }
     }
+    if (key === 'appearance') return { text: s.appearance.preset === 'custom' ? t('settings.status.customLook') : t(`settings.appearance.preset.${s.appearance.preset}`), tone: 'info' }
     if (key === 'privacy') {
       const days = s.privacy.retention_days
       return { text: (days ? t('settings.status.keepDays', { n: days }, days) : t('settings.status.keepAll')) + (s.privacy.notice_url ? ` · ${t('settings.status.notice')}` : ''), tone: s.privacy.notice_url ? 'done' : 'partial' }

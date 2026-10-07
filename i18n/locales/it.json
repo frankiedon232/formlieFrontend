@@ -6385,7 +6385,8 @@
       "keepDays": "Risposte conservate {n} giorno | Risposte conservate {n} giorni",
       "notice": "informativa sulla privacy impostata",
       "withTheme": "I nuovi moduli partono con un tema",
-      "workspaceLook": "I nuovi moduli usano l'aspetto dello spazio di lavoro"
+      "workspaceLook": "I nuovi moduli usano l'aspetto dello spazio di lavoro",
+      "customLook": "Il tuo stile"
     },
     "next": {
       "title": "Prossimo passo",
@@ -6950,6 +6951,111 @@
       "embed": "Siti web autorizzati a incorporare",
       "embedAny": "Qualsiasi sito web può incorporare i nuovi moduli.",
       "embedPlaceholder": "www.example.com, poi Invio"
+    },
+    "appearance": {
+      "reset": "Ripristina Formalie",
+      "presets": "Parti da uno stile",
+      "presetsHint": "Stili già pronti. Tutto quello che segue resta modificabile.",
+      "preset": {
+        "formalie": "Formalie",
+        "midnight": "Mezzanotte",
+        "ocean": "Oceano",
+        "forest": "Foresta",
+        "sunset": "Tramonto",
+        "classic": "Classico",
+        "brand": "Il tuo brand"
+      },
+      "live": "Ogni modifica si vede subito in tutto il portale, solo per te, finché non salvi. Salvando si applica a tutto lo spazio di lavoro.",
+      "colours": "Colori",
+      "coloursHint": "Pulsanti, link, anelli di focus e la voce di menu attiva usano il colore primario.",
+      "primary": "Colore primario",
+      "primaryHelp": "I colori di stato (verde, ambra, rosso) restano invariati, così mantengono il loro significato.",
+      "color": {
+        "mono": "Bianco e nero",
+        "brand": "Il colore del tuo brand",
+        "indigo": "Indaco",
+        "blue": "Blu",
+        "sky": "Azzurro",
+        "teal": "Verde acqua",
+        "emerald": "Smeraldo",
+        "green": "Verde",
+        "amber": "Ambra",
+        "orange": "Arancione",
+        "red": "Rosso",
+        "rose": "Rosa vivo",
+        "pink": "Rosa",
+        "violet": "Viola",
+        "purple": "Porpora"
+      },
+      "lowContrast": "Il testo bianco è difficile da leggere sul colore del tuo brand",
+      "lowContrastDesc": "Il contrasto è {ratio}:1; si consiglia almeno 4.5:1. Scegli una tonalità più scura in Brand, oppure un colore della palette qui.",
+      "neutrals": "Grigi",
+      "neutralsHelp": "Testo, bordi e superfici: da freddo a caldo.",
+      "neutral": {
+        "zinc": "Zinco",
+        "slate": "Ardesia (freddo)",
+        "gray": "Grigio",
+        "neutral": "Neutro",
+        "stone": "Pietra (caldo)"
+      },
+      "background": "Sfondo della pagina",
+      "bg": {
+        "plain": "Semplice",
+        "tinted": "Tinta leggera"
+      },
+      "shape": "Forma e carattere",
+      "shapeHint": "Angoli, lettere e dimensione di tutto.",
+      "corners": "Angoli",
+      "radius": {
+        "none": "Squadrati",
+        "sm": "Leggeri",
+        "md": "Morbidi",
+        "lg": "Arrotondati",
+        "xl": "Molto arrotondati"
+      },
+      "fontLabel": "Carattere",
+      "font": {
+        "manrope": "Manrope (Formalie)",
+        "system": "Sistema",
+        "serif": "Serif",
+        "rounded": "Arrotondato"
+      },
+      "textSize": "Dimensione del testo",
+      "size": {
+        "sm": "Piccola",
+        "md": "Normale",
+        "lg": "Grande"
+      },
+      "sidebar": "Barra laterale",
+      "sidebarHint": "La barra delle icone e il menu accanto.",
+      "rail": "Barra delle icone",
+      "menu": "Menu",
+      "tone": {
+        "light": "Chiaro",
+        "dark": "Scuro"
+      },
+      "badges": "Contatori nel menu",
+      "badgesHint": "Numeri accanto a Moduli, Risposte e cartelle.",
+      "headerFooter": "Intestazione e piè di pagina",
+      "headerFooterHint": "Cosa mostra la barra sopra ogni pagina.",
+      "breadcrumbs": "Breadcrumb",
+      "search": "Campo di ricerca",
+      "searchHint": "La ricerca resta su Ctrl / ⌘ + K.",
+      "footer": "Piè di pagina",
+      "page": "Pagine",
+      "pageHint": "Come è disposto il contenuto di ogni pagina.",
+      "width": "Larghezza del contenuto",
+      "widthOption": {
+        "full": "Larghezza piena",
+        "centred": "Centrato"
+      },
+      "density": "Spaziatura",
+      "densityOption": {
+        "comfortable": "Comoda",
+        "compact": "Compatta"
+      },
+      "preview": "Anteprima",
+      "previewHint": "Anche tutto il portale attorno a questa pagina mostra lo stile. I tuoi moduli pubblici mantengono i propri temi."
     }
   },
   "notifications": {

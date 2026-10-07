@@ -6385,7 +6385,8 @@
       "keepDays": "回复保留 {n} 天 | 回复保留 {n} 天",
       "notice": "已设置隐私声明",
       "withTheme": "新表单以主题开始",
-      "workspaceLook": "新表单使用工作区外观"
+      "workspaceLook": "新表单使用工作区外观",
+      "customLook": "自定义外观"
     },
     "next": {
       "title": "下一步",
@@ -6950,6 +6951,111 @@
       "embed": "允许嵌入的网站",
       "embedAny": "任何网站都可以嵌入新表单。",
       "embedPlaceholder": "www.example.com,然后按 Enter"
+    },
+    "appearance": {
+      "reset": "恢复为 Formalie 默认",
+      "presets": "从一个外观开始",
+      "presetsHint": "现成的外观。下面所有设置仍可调整。",
+      "preset": {
+        "formalie": "Formalie",
+        "midnight": "午夜",
+        "ocean": "海洋",
+        "forest": "森林",
+        "sunset": "日落",
+        "classic": "经典",
+        "brand": "你的品牌"
+      },
+      "live": "每次更改都会立即显示在整个门户中,保存前仅你自己可见。保存后将应用于工作区中的所有人。",
+      "colours": "颜色",
+      "coloursHint": "按钮、链接、焦点框和当前菜单项使用主色。",
+      "primary": "主色",
+      "primaryHelp": "状态颜色(绿色、琥珀色、红色)保持不变,以保留其含义。",
+      "color": {
+        "mono": "黑白",
+        "brand": "你的品牌色",
+        "indigo": "靛蓝",
+        "blue": "蓝色",
+        "sky": "天蓝",
+        "teal": "青绿",
+        "emerald": "祖母绿",
+        "green": "绿色",
+        "amber": "琥珀",
+        "orange": "橙色",
+        "red": "红色",
+        "rose": "玫瑰红",
+        "pink": "粉色",
+        "violet": "紫罗兰",
+        "purple": "紫色"
+      },
+      "lowContrast": "白色文字在你的品牌色上难以阅读",
+      "lowContrastDesc": "对比度为 {ratio}:1,建议至少 4.5:1。请在品牌设置中选择更深的色调,或在此选择调色板颜色。",
+      "neutrals": "灰色",
+      "neutralsHelp": "文字、边框和背景:从冷色到暖色。",
+      "neutral": {
+        "zinc": "锌灰",
+        "slate": "石板灰(冷)",
+        "gray": "灰色",
+        "neutral": "中性灰",
+        "stone": "石色(暖)"
+      },
+      "background": "页面背景",
+      "bg": {
+        "plain": "纯色",
+        "tinted": "柔和色调"
+      },
+      "shape": "形状与字体",
+      "shapeHint": "圆角、文字以及整体大小。",
+      "corners": "圆角",
+      "radius": {
+        "none": "直角",
+        "sm": "微圆",
+        "md": "柔和",
+        "lg": "圆润",
+        "xl": "很圆"
+      },
+      "fontLabel": "字体",
+      "font": {
+        "manrope": "Manrope (Formalie)",
+        "system": "系统",
+        "serif": "衬线",
+        "rounded": "圆体"
+      },
+      "textSize": "文字大小",
+      "size": {
+        "sm": "小",
+        "md": "标准",
+        "lg": "大"
+      },
+      "sidebar": "侧边栏",
+      "sidebarHint": "图标栏及其旁边的菜单。",
+      "rail": "图标栏",
+      "menu": "菜单",
+      "tone": {
+        "light": "浅色",
+        "dark": "深色"
+      },
+      "badges": "菜单中的计数",
+      "badgesHint": "表单、回复和文件夹旁边的数字。",
+      "headerFooter": "页眉和页脚",
+      "headerFooterHint": "每个页面上方栏中显示的内容。",
+      "breadcrumbs": "面包屑导航",
+      "search": "搜索框",
+      "searchHint": "搜索仍使用 Ctrl / ⌘ + K。",
+      "footer": "页脚",
+      "page": "页面",
+      "pageHint": "每个页面内容的排布方式。",
+      "width": "内容宽度",
+      "widthOption": {
+        "full": "全宽",
+        "centred": "居中"
+      },
+      "density": "间距",
+      "densityOption": {
+        "comfortable": "舒适",
+        "compact": "紧凑"
+      },
+      "preview": "预览",
+      "previewHint": "此页面周围的整个门户也会显示该外观。你的公开表单保留各自的主题。"
     }
   },
   "notifications": {

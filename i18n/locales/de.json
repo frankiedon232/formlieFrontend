@@ -6385,7 +6385,8 @@
       "keepDays": "Antworten {n} Tag aufbewahrt | Antworten {n} Tage aufbewahrt",
       "notice": "Datenschutzhinweis hinterlegt",
       "withTheme": "Neue Formulare starten mit einem Design",
-      "workspaceLook": "Neue Formulare nutzen den Look des Arbeitsbereichs"
+      "workspaceLook": "Neue Formulare nutzen den Look des Arbeitsbereichs",
+      "customLook": "Eigener Look"
     },
     "next": {
       "title": "Nächster Schritt",
@@ -6950,6 +6951,111 @@
       "embed": "Websites mit Einbettungserlaubnis",
       "embedAny": "Jede Website darf neue Formulare einbetten.",
       "embedPlaceholder": "www.example.com, dann Enter"
+    },
+    "appearance": {
+      "reset": "Auf Formalie zurücksetzen",
+      "presets": "Mit einem Look starten",
+      "presetsHint": "Fertige Looks. Alles darunter bleibt anpassbar.",
+      "preset": {
+        "formalie": "Formalie",
+        "midnight": "Mitternacht",
+        "ocean": "Ozean",
+        "forest": "Wald",
+        "sunset": "Sonnenuntergang",
+        "classic": "Klassisch",
+        "brand": "Ihre Marke"
+      },
+      "live": "Jede Änderung ist sofort im ganzen Portal zu sehen, nur für Sie, bis Sie speichern. Mit Speichern gilt sie für alle im Arbeitsbereich.",
+      "colours": "Farben",
+      "coloursHint": "Schaltflächen, Links, Fokusrahmen und der aktive Menüpunkt nutzen die Primärfarbe.",
+      "primary": "Primärfarbe",
+      "primaryHelp": "Statusfarben (Grün, Gelb, Rot) bleiben unverändert, damit ihre Bedeutung erhalten bleibt.",
+      "color": {
+        "mono": "Schwarz und Weiß",
+        "brand": "Ihre Markenfarbe",
+        "indigo": "Indigo",
+        "blue": "Blau",
+        "sky": "Himmelblau",
+        "teal": "Petrol",
+        "emerald": "Smaragd",
+        "green": "Grün",
+        "amber": "Bernstein",
+        "orange": "Orange",
+        "red": "Rot",
+        "rose": "Rosé",
+        "pink": "Pink",
+        "violet": "Violett",
+        "purple": "Lila"
+      },
+      "lowContrast": "Weißer Text ist auf Ihrer Markenfarbe schlecht lesbar",
+      "lowContrastDesc": "Der Kontrast beträgt {ratio}:1; empfohlen sind mindestens 4.5:1. Wählen Sie unter Branding einen dunkleren Ton oder hier eine Palettenfarbe.",
+      "neutrals": "Grautöne",
+      "neutralsHelp": "Text, Rahmen und Flächen: von kühl bis warm.",
+      "neutral": {
+        "zinc": "Zink",
+        "slate": "Schiefer (kühl)",
+        "gray": "Grau",
+        "neutral": "Neutral",
+        "stone": "Stein (warm)"
+      },
+      "background": "Seitenhintergrund",
+      "bg": {
+        "plain": "Einfarbig",
+        "tinted": "Leichte Tönung"
+      },
+      "shape": "Form und Schrift",
+      "shapeHint": "Ecken, Buchstaben und wie groß alles ist.",
+      "corners": "Ecken",
+      "radius": {
+        "none": "Eckig",
+        "sm": "Leicht",
+        "md": "Weich",
+        "lg": "Rund",
+        "xl": "Sehr rund"
+      },
+      "fontLabel": "Schrift",
+      "font": {
+        "manrope": "Manrope (Formalie)",
+        "system": "System",
+        "serif": "Serif",
+        "rounded": "Abgerundet"
+      },
+      "textSize": "Textgröße",
+      "size": {
+        "sm": "Klein",
+        "md": "Normal",
+        "lg": "Groß"
+      },
+      "sidebar": "Seitenleiste",
+      "sidebarHint": "Die Symbolleiste und das Menü daneben.",
+      "rail": "Symbolleiste",
+      "menu": "Menü",
+      "tone": {
+        "light": "Hell",
+        "dark": "Dunkel"
+      },
+      "badges": "Zähler im Menü",
+      "badgesHint": "Zahlen neben Formularen, Antworten und Ordnern.",
+      "headerFooter": "Kopf- und Fußzeile",
+      "headerFooterHint": "Was die Leiste über jeder Seite zeigt.",
+      "breadcrumbs": "Brotkrumen-Navigation",
+      "search": "Suchfeld",
+      "searchHint": "Die Suche bleibt auf Ctrl / ⌘ + K.",
+      "footer": "Fußzeile",
+      "page": "Seiten",
+      "pageHint": "Wie der Inhalt jeder Seite angeordnet ist.",
+      "width": "Inhaltsbreite",
+      "widthOption": {
+        "full": "Volle Breite",
+        "centred": "Zentriert"
+      },
+      "density": "Abstände",
+      "densityOption": {
+        "comfortable": "Komfortabel",
+        "compact": "Kompakt"
+      },
+      "preview": "Vorschau",
+      "previewHint": "Das ganze Portal um diese Seite zeigt den Look ebenfalls. Ihre öffentlichen Formulare behalten ihre eigenen Designs."
     }
   },
   "notifications": {

@@ -62,21 +62,23 @@ const dotClass = (item: unknown) => (item as { dot?: string }).dot
 // Shared look for every list, matched to docs/design:
 // clean dark labels and icons; chevron and count badge on the right (owner, 2026-10-02); children on a timeline
 // (vertical line under the parent icon with a small node per row).
-const menuUi = {
+// Settings → Appearance: dark menu, count badges on / off
+const look = useAppearance().current
+const menuUi = computed(() => ({
   link: 'py-2 text-default hover:text-highlighted',
   linkLeadingIcon: 'text-default',
   linkTrailingIcon: 'size-4 text-muted',
-  linkTrailingBadge: 'min-w-5 justify-center px-1 font-normal text-muted',
+  linkTrailingBadge: look.value.menu_badges ? 'min-w-5 justify-center px-1 font-normal text-muted' : 'hidden',
   childList: 'ms-5 border-s border-default',
   childItem: [
     'relative ps-3 -ms-px',
     'before:absolute before:-start-[3px] before:top-1/2 before:size-1.5 before:-translate-y-1/2 before:rounded-full before:bg-(--ui-border-accented)',
   ].join(' '),
-}
+}))
 </script>
 
 <template>
-  <div class="flex min-w-0 flex-1 flex-col">
+  <div class="flex min-w-0 flex-1 flex-col" :class="look.menu === 'dark' ? 'dark bg-default text-default' : ''">
     <div
       class="flex h-(--ui-header-height) shrink-0 items-center justify-between gap-2 border-b border-default px-3"
     >

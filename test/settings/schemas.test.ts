@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { brandingSchema, companySchema, emailsSchema, formDefaultsSchema, isTimeZone, localisationSchema, notificationsSchema, privacySchema, securitySchema, signinSchema } from '../../shared/utils/settings/schemas'
+import { appearanceSchema, brandingSchema, companySchema, emailsSchema, formDefaultsSchema, isTimeZone, localisationSchema, notificationsSchema, privacySchema, securitySchema, signinSchema } from '../../shared/utils/settings/schemas'
+import { APPEARANCE_PRESETS, FORMALIE_APPEARANCE } from '../../shared/types/appearance'
 
 const company = {
   legal_name: 'Northwind Trading Ltd.',
@@ -158,5 +159,17 @@ describe('form defaults', () => {
 
   it('refuse a website that is not a host name', () => {
     expect(formDefaultsSchema.safeParse({ ...defaults, embed_domains: ['not a site'] }).success).toBe(false)
+  })
+})
+
+describe('appearance', () => {
+  it('take Formalie’s look and every preset', () => {
+    expect(appearanceSchema.safeParse(FORMALIE_APPEARANCE).success).toBe(true)
+    for (const [key, preset] of Object.entries(APPEARANCE_PRESETS)) expect(appearanceSchema.safeParse({ ...FORMALIE_APPEARANCE, ...preset, preset: key }).success).toBe(true)
+  })
+
+  it('refuse colours and sizes outside the safe set', () => {
+    expect(appearanceSchema.safeParse({ ...FORMALIE_APPEARANCE, primary: '#ff0000' }).success).toBe(false)
+    expect(appearanceSchema.safeParse({ ...FORMALIE_APPEARANCE, font: 'comic' }).success).toBe(false)
   })
 })

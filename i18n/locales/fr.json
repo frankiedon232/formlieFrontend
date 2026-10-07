@@ -6385,7 +6385,8 @@
       "keepDays": "Réponses conservées {n} jour | Réponses conservées {n} jours",
       "notice": "politique de confidentialité définie",
       "withTheme": "Les nouveaux formulaires démarrent avec un thème",
-      "workspaceLook": "Les nouveaux formulaires utilisent l'apparence de l'espace de travail"
+      "workspaceLook": "Les nouveaux formulaires utilisent l'apparence de l'espace de travail",
+      "customLook": "Votre propre style"
     },
     "next": {
       "title": "Étape suivante",
@@ -6950,6 +6951,111 @@
       "embed": "Sites autorisés à intégrer",
       "embedAny": "N'importe quel site peut intégrer les nouveaux formulaires.",
       "embedPlaceholder": "www.example.com, puis Entrée"
+    },
+    "appearance": {
+      "reset": "Revenir à Formalie",
+      "presets": "Partir d'un style",
+      "presetsHint": "Des styles prêts à l'emploi. Tout ce qui suit reste réglable.",
+      "preset": {
+        "formalie": "Formalie",
+        "midnight": "Minuit",
+        "ocean": "Océan",
+        "forest": "Forêt",
+        "sunset": "Coucher de soleil",
+        "classic": "Classique",
+        "brand": "Votre marque"
+      },
+      "live": "Chaque modification s'affiche tout de suite dans le portail, pour vous seulement, jusqu'à l'enregistrement. Enregistrer l'applique à tout l'espace de travail.",
+      "colours": "Couleurs",
+      "coloursHint": "Les boutons, liens, contours de focus et l'élément de menu actif utilisent la couleur principale.",
+      "primary": "Couleur principale",
+      "primaryHelp": "Les couleurs d'état (vert, ambre, rouge) ne changent pas, pour garder leur sens.",
+      "color": {
+        "mono": "Noir et blanc",
+        "brand": "La couleur de votre marque",
+        "indigo": "Indigo",
+        "blue": "Bleu",
+        "sky": "Bleu ciel",
+        "teal": "Sarcelle",
+        "emerald": "Émeraude",
+        "green": "Vert",
+        "amber": "Ambre",
+        "orange": "Orange",
+        "red": "Rouge",
+        "rose": "Rose vif",
+        "pink": "Rose",
+        "violet": "Violet",
+        "purple": "Pourpre"
+      },
+      "lowContrast": "Le texte blanc est difficile à lire sur la couleur de votre marque",
+      "lowContrastDesc": "Son contraste est de {ratio}:1 ; au moins 4.5:1 est recommandé. Choisissez une teinte plus foncée dans Marque, ou une couleur de la palette ici.",
+      "neutrals": "Gris",
+      "neutralsHelp": "Texte, bordures et surfaces : du froid au chaud.",
+      "neutral": {
+        "zinc": "Zinc",
+        "slate": "Ardoise (froid)",
+        "gray": "Gris",
+        "neutral": "Neutre",
+        "stone": "Pierre (chaud)"
+      },
+      "background": "Arrière-plan de la page",
+      "bg": {
+        "plain": "Uni",
+        "tinted": "Teinte douce"
+      },
+      "shape": "Forme et typographie",
+      "shapeHint": "Les coins, les lettres et la taille de tout.",
+      "corners": "Coins",
+      "radius": {
+        "none": "Carrés",
+        "sm": "Légers",
+        "md": "Doux",
+        "lg": "Arrondis",
+        "xl": "Très arrondis"
+      },
+      "fontLabel": "Police",
+      "font": {
+        "manrope": "Manrope (Formalie)",
+        "system": "Système",
+        "serif": "Serif",
+        "rounded": "Arrondie"
+      },
+      "textSize": "Taille du texte",
+      "size": {
+        "sm": "Petite",
+        "md": "Normale",
+        "lg": "Grande"
+      },
+      "sidebar": "Barre latérale",
+      "sidebarHint": "La barre d'icônes et le menu à côté.",
+      "rail": "Barre d'icônes",
+      "menu": "Menu",
+      "tone": {
+        "light": "Clair",
+        "dark": "Sombre"
+      },
+      "badges": "Compteurs dans le menu",
+      "badgesHint": "Nombres à côté de Formulaires, Réponses et dossiers.",
+      "headerFooter": "En-tête et pied de page",
+      "headerFooterHint": "Ce qu'affiche la barre au-dessus de chaque page.",
+      "breadcrumbs": "Fil d'Ariane",
+      "search": "Champ de recherche",
+      "searchHint": "La recherche reste sur Ctrl / ⌘ + K.",
+      "footer": "Pied de page",
+      "page": "Pages",
+      "pageHint": "La disposition du contenu de chaque page.",
+      "width": "Largeur du contenu",
+      "widthOption": {
+        "full": "Pleine largeur",
+        "centred": "Centré"
+      },
+      "density": "Espacement",
+      "densityOption": {
+        "comfortable": "Confortable",
+        "compact": "Compact"
+      },
+      "preview": "Aperçu",
+      "previewHint": "Tout le portail autour de cette page affiche aussi le style. Vos formulaires publics gardent leurs propres thèmes."
     }
   },
   "notifications": {

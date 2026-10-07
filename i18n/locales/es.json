@@ -6385,7 +6385,8 @@
       "keepDays": "Respuestas conservadas {n} día | Respuestas conservadas {n} días",
       "notice": "aviso de privacidad definido",
       "withTheme": "Los formularios nuevos empiezan con un tema",
-      "workspaceLook": "Los formularios nuevos usan el aspecto del espacio de trabajo"
+      "workspaceLook": "Los formularios nuevos usan el aspecto del espacio de trabajo",
+      "customLook": "Tu propio estilo"
     },
     "next": {
       "title": "Siguiente paso",
@@ -6950,6 +6951,111 @@
       "embed": "Sitios web con permiso para insertar",
       "embedAny": "Cualquier sitio web puede insertar formularios nuevos.",
       "embedPlaceholder": "www.example.com, luego Enter"
+    },
+    "appearance": {
+      "reset": "Restablecer a Formalie",
+      "presets": "Empieza con un estilo",
+      "presetsHint": "Estilos listos para usar. Todo lo de abajo sigue siendo ajustable.",
+      "preset": {
+        "formalie": "Formalie",
+        "midnight": "Medianoche",
+        "ocean": "Océano",
+        "forest": "Bosque",
+        "sunset": "Atardecer",
+        "classic": "Clásico",
+        "brand": "Tu marca"
+      },
+      "live": "Cada cambio se ve al instante en todo el portal, solo para ti, hasta que guardes. Al guardar se aplica a todo el espacio de trabajo.",
+      "colours": "Colores",
+      "coloursHint": "Los botones, enlaces, anillos de foco y el elemento activo del menú usan el color principal.",
+      "primary": "Color principal",
+      "primaryHelp": "Los colores de estado (verde, ámbar, rojo) no cambian, para que conserven su significado.",
+      "color": {
+        "mono": "Blanco y negro",
+        "brand": "El color de tu marca",
+        "indigo": "Índigo",
+        "blue": "Azul",
+        "sky": "Celeste",
+        "teal": "Verde azulado",
+        "emerald": "Esmeralda",
+        "green": "Verde",
+        "amber": "Ámbar",
+        "orange": "Naranja",
+        "red": "Rojo",
+        "rose": "Rosa intenso",
+        "pink": "Rosa",
+        "violet": "Violeta",
+        "purple": "Morado"
+      },
+      "lowContrast": "El texto blanco se lee mal sobre el color de tu marca",
+      "lowContrastDesc": "Su contraste es {ratio}:1; se recomienda al menos 4.5:1. Elige un tono más oscuro en Marca, o un color de la paleta aquí.",
+      "neutrals": "Grises",
+      "neutralsHelp": "Texto, bordes y superficies: de frío a cálido.",
+      "neutral": {
+        "zinc": "Zinc",
+        "slate": "Pizarra (frío)",
+        "gray": "Gris",
+        "neutral": "Neutro",
+        "stone": "Piedra (cálido)"
+      },
+      "background": "Fondo de la página",
+      "bg": {
+        "plain": "Liso",
+        "tinted": "Tinte suave"
+      },
+      "shape": "Forma y tipografía",
+      "shapeHint": "Esquinas, letras y el tamaño de todo.",
+      "corners": "Esquinas",
+      "radius": {
+        "none": "Cuadradas",
+        "sm": "Ligeras",
+        "md": "Suaves",
+        "lg": "Redondas",
+        "xl": "Muy redondas"
+      },
+      "fontLabel": "Fuente",
+      "font": {
+        "manrope": "Manrope (Formalie)",
+        "system": "Sistema",
+        "serif": "Serif",
+        "rounded": "Redondeada"
+      },
+      "textSize": "Tamaño del texto",
+      "size": {
+        "sm": "Pequeño",
+        "md": "Normal",
+        "lg": "Grande"
+      },
+      "sidebar": "Barra lateral",
+      "sidebarHint": "La barra de iconos y el menú junto a ella.",
+      "rail": "Barra de iconos",
+      "menu": "Menú",
+      "tone": {
+        "light": "Claro",
+        "dark": "Oscuro"
+      },
+      "badges": "Contadores en el menú",
+      "badgesHint": "Números junto a Formularios, Respuestas y carpetas.",
+      "headerFooter": "Encabezado y pie de página",
+      "headerFooterHint": "Lo que muestra la barra sobre cada página.",
+      "breadcrumbs": "Migas de pan",
+      "search": "Campo de búsqueda",
+      "searchHint": "La búsqueda sigue en Ctrl / ⌘ + K.",
+      "footer": "Pie de página",
+      "page": "Páginas",
+      "pageHint": "Cómo se coloca el contenido de cada página.",
+      "width": "Ancho del contenido",
+      "widthOption": {
+        "full": "Ancho completo",
+        "centred": "Centrado"
+      },
+      "density": "Espaciado",
+      "densityOption": {
+        "comfortable": "Cómodo",
+        "compact": "Compacto"
+      },
+      "preview": "Vista previa",
+      "previewHint": "Todo el portal alrededor de esta página también muestra el estilo. Tus formularios públicos conservan sus propios temas."
     }
   },
   "notifications": {

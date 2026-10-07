@@ -6385,7 +6385,8 @@
       "keepDays": "Responses kept {n} day | Responses kept {n} days",
       "notice": "privacy notice set",
       "withTheme": "New forms start with a theme",
-      "workspaceLook": "New forms use the workspace look"
+      "workspaceLook": "New forms use the workspace look",
+      "customLook": "Your own look"
     },
     "next": {
       "title": "Next step",
@@ -6950,6 +6951,111 @@
       "embed": "Websites allowed to embed",
       "embedAny": "Any website can embed new forms.",
       "embedPlaceholder": "www.example.com, then Enter"
+    },
+    "appearance": {
+      "reset": "Reset to Formalie",
+      "presets": "Start from a look",
+      "presetsHint": "Ready-made looks. Everything below stays adjustable.",
+      "preset": {
+        "formalie": "Formalie",
+        "midnight": "Midnight",
+        "ocean": "Ocean",
+        "forest": "Forest",
+        "sunset": "Sunset",
+        "classic": "Classic",
+        "brand": "Your brand"
+      },
+      "live": "Every change shows across the portal straight away, for you only, until you save. Saving applies it for everyone in the workspace.",
+      "colours": "Colours",
+      "coloursHint": "Buttons, links, focus rings and the active menu item take the primary colour.",
+      "primary": "Primary colour",
+      "primaryHelp": "Status colours (green, amber, red) stay as they are, so they keep their meaning.",
+      "color": {
+        "mono": "Black and white",
+        "brand": "Your brand colour",
+        "indigo": "Indigo",
+        "blue": "Blue",
+        "sky": "Sky",
+        "teal": "Teal",
+        "emerald": "Emerald",
+        "green": "Green",
+        "amber": "Amber",
+        "orange": "Orange",
+        "red": "Red",
+        "rose": "Rose",
+        "pink": "Pink",
+        "violet": "Violet",
+        "purple": "Purple"
+      },
+      "lowContrast": "White text is hard to read on your brand colour",
+      "lowContrastDesc": "Its contrast is {ratio}:1; at least 4.5:1 is recommended. Choose a darker shade in Branding, or a palette colour here.",
+      "neutrals": "Greys",
+      "neutralsHelp": "Text, borders and surfaces: from cool to warm.",
+      "neutral": {
+        "zinc": "Zinc",
+        "slate": "Slate (cool)",
+        "gray": "Gray",
+        "neutral": "Neutral",
+        "stone": "Stone (warm)"
+      },
+      "background": "Page background",
+      "bg": {
+        "plain": "Plain",
+        "tinted": "Soft tint"
+      },
+      "shape": "Shape and type",
+      "shapeHint": "Corners, letters and how big everything is.",
+      "corners": "Corners",
+      "radius": {
+        "none": "Square",
+        "sm": "Slight",
+        "md": "Soft",
+        "lg": "Round",
+        "xl": "Very round"
+      },
+      "fontLabel": "Font",
+      "font": {
+        "manrope": "Manrope (Formalie)",
+        "system": "System",
+        "serif": "Serif",
+        "rounded": "Rounded"
+      },
+      "textSize": "Text size",
+      "size": {
+        "sm": "Small",
+        "md": "Normal",
+        "lg": "Large"
+      },
+      "sidebar": "Sidebar",
+      "sidebarHint": "The icon rail and the menu beside it.",
+      "rail": "Icon rail",
+      "menu": "Menu",
+      "tone": {
+        "light": "Light",
+        "dark": "Dark"
+      },
+      "badges": "Counts in the menu",
+      "badgesHint": "Numbers beside Forms, Responses and folders.",
+      "headerFooter": "Header and footer",
+      "headerFooterHint": "What the bar above every page shows.",
+      "breadcrumbs": "Breadcrumbs",
+      "search": "Search field",
+      "searchHint": "Search stays on Ctrl / ⌘ + K.",
+      "footer": "Footer",
+      "page": "Pages",
+      "pageHint": "How the content of every page sits.",
+      "width": "Content width",
+      "widthOption": {
+        "full": "Full width",
+        "centred": "Centred"
+      },
+      "density": "Spacing",
+      "densityOption": {
+        "comfortable": "Comfortable",
+        "compact": "Compact"
+      },
+      "preview": "Preview",
+      "previewHint": "The whole portal around this page shows the look too. Your public forms keep their own themes."
     }
   },
   "notifications": {

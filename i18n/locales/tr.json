@@ -6385,7 +6385,8 @@
       "keepDays": "Yanıtlar {n} gün saklanıyor | Yanıtlar {n} gün saklanıyor",
       "notice": "gizlilik bildirimi ayarlandı",
       "withTheme": "Yeni formlar bir temayla başlar",
-      "workspaceLook": "Yeni formlar çalışma alanının görünümünü kullanır"
+      "workspaceLook": "Yeni formlar çalışma alanının görünümünü kullanır",
+      "customLook": "Kendi görünümünüz"
     },
     "next": {
       "title": "Sonraki adım",
@@ -6950,6 +6951,111 @@
       "embed": "Gömmeye izin verilen web siteleri",
       "embedAny": "Her web sitesi yeni formları gömebilir.",
       "embedPlaceholder": "www.example.com, ardından Enter"
+    },
+    "appearance": {
+      "reset": "Formalie'ye sıfırla",
+      "presets": "Bir görünümle başlayın",
+      "presetsHint": "Hazır görünümler. Aşağıdaki her şey ayarlanabilir kalır.",
+      "preset": {
+        "formalie": "Formalie",
+        "midnight": "Gece yarısı",
+        "ocean": "Okyanus",
+        "forest": "Orman",
+        "sunset": "Gün batımı",
+        "classic": "Klasik",
+        "brand": "Markanız"
+      },
+      "live": "Her değişiklik, siz kaydedene kadar yalnızca sizin için portalın her yerinde hemen görünür. Kaydetmek, çalışma alanındaki herkese uygular.",
+      "colours": "Renkler",
+      "coloursHint": "Düğmeler, bağlantılar, odak halkaları ve etkin menü öğesi ana rengi kullanır.",
+      "primary": "Ana renk",
+      "primaryHelp": "Durum renkleri (yeşil, kehribar, kırmızı) anlamlarını korumak için olduğu gibi kalır.",
+      "color": {
+        "mono": "Siyah ve beyaz",
+        "brand": "Marka renginiz",
+        "indigo": "Çivit",
+        "blue": "Mavi",
+        "sky": "Gök mavisi",
+        "teal": "Camgöbeği",
+        "emerald": "Zümrüt",
+        "green": "Yeşil",
+        "amber": "Kehribar",
+        "orange": "Turuncu",
+        "red": "Kırmızı",
+        "rose": "Gül",
+        "pink": "Pembe",
+        "violet": "Menekşe",
+        "purple": "Mor"
+      },
+      "lowContrast": "Beyaz yazı marka renginizde zor okunuyor",
+      "lowContrastDesc": "Kontrastı {ratio}:1; en az 4.5:1 önerilir. Marka bölümünde daha koyu bir ton ya da burada paletten bir renk seçin.",
+      "neutrals": "Griler",
+      "neutralsHelp": "Metin, kenarlıklar ve yüzeyler: soğuktan sıcağa.",
+      "neutral": {
+        "zinc": "Çinko",
+        "slate": "Arduvaz (soğuk)",
+        "gray": "Gri",
+        "neutral": "Nötr",
+        "stone": "Taş (sıcak)"
+      },
+      "background": "Sayfa arka planı",
+      "bg": {
+        "plain": "Düz",
+        "tinted": "Hafif ton"
+      },
+      "shape": "Şekil ve yazı tipi",
+      "shapeHint": "Köşeler, harfler ve her şeyin boyutu.",
+      "corners": "Köşeler",
+      "radius": {
+        "none": "Kare",
+        "sm": "Hafif",
+        "md": "Yumuşak",
+        "lg": "Yuvarlak",
+        "xl": "Çok yuvarlak"
+      },
+      "fontLabel": "Yazı tipi",
+      "font": {
+        "manrope": "Manrope (Formalie)",
+        "system": "Sistem",
+        "serif": "Serif",
+        "rounded": "Yuvarlatılmış"
+      },
+      "textSize": "Metin boyutu",
+      "size": {
+        "sm": "Küçük",
+        "md": "Normal",
+        "lg": "Büyük"
+      },
+      "sidebar": "Kenar çubuğu",
+      "sidebarHint": "Simge çubuğu ve yanındaki menü.",
+      "rail": "Simge çubuğu",
+      "menu": "Menü",
+      "tone": {
+        "light": "Açık",
+        "dark": "Koyu"
+      },
+      "badges": "Menüdeki sayılar",
+      "badgesHint": "Formlar, Yanıtlar ve klasörlerin yanındaki sayılar.",
+      "headerFooter": "Üst ve alt bilgi",
+      "headerFooterHint": "Her sayfanın üstündeki çubuğun gösterdikleri.",
+      "breadcrumbs": "Gezinti yolu",
+      "search": "Arama alanı",
+      "searchHint": "Arama Ctrl / ⌘ + K üzerinde kalır.",
+      "footer": "Alt bilgi",
+      "page": "Sayfalar",
+      "pageHint": "Her sayfanın içeriğinin nasıl yerleştiği.",
+      "width": "İçerik genişliği",
+      "widthOption": {
+        "full": "Tam genişlik",
+        "centred": "Ortalanmış"
+      },
+      "density": "Aralık",
+      "densityOption": {
+        "comfortable": "Rahat",
+        "compact": "Sıkı"
+      },
+      "preview": "Önizleme",
+      "previewHint": "Bu sayfanın çevresindeki tüm portal da görünümü gösterir. Herkese açık formlarınız kendi temalarını korur."
     }
   },
   "notifications": {

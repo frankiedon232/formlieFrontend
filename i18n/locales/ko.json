@@ -6385,7 +6385,8 @@
       "keepDays": "응답 {n}일 보관 | 응답 {n}일 보관",
       "notice": "개인정보 안내 설정됨",
       "withTheme": "새 양식은 테마와 함께 시작",
-      "workspaceLook": "새 양식은 워크스페이스 디자인 사용"
+      "workspaceLook": "새 양식은 워크스페이스 디자인 사용",
+      "customLook": "나만의 스타일"
     },
     "next": {
       "title": "다음 단계",
@@ -6950,6 +6951,111 @@
       "embed": "삽입을 허용하는 웹사이트",
       "embedAny": "모든 웹사이트가 새 양식을 삽입할 수 있습니다.",
       "embedPlaceholder": "www.example.com 입력 후 Enter"
+    },
+    "appearance": {
+      "reset": "Formalie 기본값으로 재설정",
+      "presets": "스타일로 시작하기",
+      "presetsHint": "바로 쓸 수 있는 스타일입니다. 아래 모든 항목은 계속 조정할 수 있습니다.",
+      "preset": {
+        "formalie": "Formalie",
+        "midnight": "미드나이트",
+        "ocean": "오션",
+        "forest": "포레스트",
+        "sunset": "선셋",
+        "classic": "클래식",
+        "brand": "내 브랜드"
+      },
+      "live": "변경 사항은 저장하기 전까지 나에게만 포털 전체에 바로 표시됩니다. 저장하면 워크스페이스의 모든 사람에게 적용됩니다.",
+      "colours": "색상",
+      "coloursHint": "버튼, 링크, 포커스 링, 활성 메뉴 항목에 기본 색상이 사용됩니다.",
+      "primary": "기본 색상",
+      "primaryHelp": "상태 색상(초록, 앰버, 빨강)은 의미를 유지하기 위해 그대로 둡니다.",
+      "color": {
+        "mono": "흑백",
+        "brand": "브랜드 색상",
+        "indigo": "인디고",
+        "blue": "파랑",
+        "sky": "하늘색",
+        "teal": "틸",
+        "emerald": "에메랄드",
+        "green": "초록",
+        "amber": "앰버",
+        "orange": "주황",
+        "red": "빨강",
+        "rose": "로즈",
+        "pink": "분홍",
+        "violet": "보라",
+        "purple": "자주"
+      },
+      "lowContrast": "브랜드 색상 위의 흰색 글자는 읽기 어렵습니다",
+      "lowContrastDesc": "대비는 {ratio}:1입니다. 최소 4.5:1을 권장합니다. 브랜딩에서 더 어두운 색조를 고르거나, 여기서 팔레트 색상을 선택하세요.",
+      "neutrals": "회색",
+      "neutralsHelp": "텍스트, 테두리, 배경: 차가운 톤부터 따뜻한 톤까지.",
+      "neutral": {
+        "zinc": "징크",
+        "slate": "슬레이트(차가움)",
+        "gray": "회색",
+        "neutral": "뉴트럴",
+        "stone": "스톤(따뜻함)"
+      },
+      "background": "페이지 배경",
+      "bg": {
+        "plain": "단색",
+        "tinted": "은은한 색조"
+      },
+      "shape": "모양과 글꼴",
+      "shapeHint": "모서리, 글자, 전체 크기.",
+      "corners": "모서리",
+      "radius": {
+        "none": "각진",
+        "sm": "약간 둥근",
+        "md": "부드러운",
+        "lg": "둥근",
+        "xl": "아주 둥근"
+      },
+      "fontLabel": "글꼴",
+      "font": {
+        "manrope": "Manrope (Formalie)",
+        "system": "시스템",
+        "serif": "세리프",
+        "rounded": "둥근꼴"
+      },
+      "textSize": "글자 크기",
+      "size": {
+        "sm": "작게",
+        "md": "보통",
+        "lg": "크게"
+      },
+      "sidebar": "사이드바",
+      "sidebarHint": "아이콘 바와 그 옆의 메뉴.",
+      "rail": "아이콘 바",
+      "menu": "메뉴",
+      "tone": {
+        "light": "라이트",
+        "dark": "다크"
+      },
+      "badges": "메뉴의 개수",
+      "badgesHint": "양식, 응답, 폴더 옆의 숫자.",
+      "headerFooter": "머리글과 바닥글",
+      "headerFooterHint": "모든 페이지 위 바에 표시되는 내용.",
+      "breadcrumbs": "이동 경로",
+      "search": "검색 필드",
+      "searchHint": "검색은 계속 Ctrl / ⌘ + K입니다.",
+      "footer": "바닥글",
+      "page": "페이지",
+      "pageHint": "모든 페이지의 콘텐츠 배치 방식.",
+      "width": "콘텐츠 너비",
+      "widthOption": {
+        "full": "전체 너비",
+        "centred": "가운데 정렬"
+      },
+      "density": "간격",
+      "densityOption": {
+        "comfortable": "여유롭게",
+        "compact": "촘촘하게"
+      },
+      "preview": "미리보기",
+      "previewHint": "이 페이지를 둘러싼 포털 전체에도 스타일이 표시됩니다. 공개 양식은 자체 테마를 유지합니다."
     }
   },
   "notifications": {

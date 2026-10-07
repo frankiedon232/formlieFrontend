@@ -25,7 +25,9 @@ const { items: crumbs } = useBreadcrumbs()
 const { current, locales, locale, changeLocale } = useAppLocale()
 
 /** On a top-level page the only crumb is the title itself, so show the trail from depth 2. */
-const showCrumbs = computed(() => crumbs.value.length > 1)
+// Settings → Appearance can hide the breadcrumbs and the search field
+const look = useAppearance().current
+const showCrumbs = computed(() => crumbs.value.length > 1 && look.value.header.breadcrumbs)
 
 const languageItems = computed(() =>
   locales.map(item => ({
@@ -67,6 +69,7 @@ const languageItems = computed(() =>
 
     <template #right>
       <UDashboardSearchButton
+        v-if="look.header.search"
         :label="t('search.anything')"
         color="neutral"
         variant="outline"
@@ -75,6 +78,7 @@ const languageItems = computed(() =>
         :ui="{ trailing: 'ms-auto' }"
       />
       <UDashboardSearchButton
+        v-if="look.header.search"
         collapsed
         color="neutral"
         variant="outline"

@@ -10,6 +10,8 @@ import type { DropdownMenuItem } from '@nuxt/ui'
 const props = defineProps<{ collapsed?: boolean; account?: boolean }>()
 const emit = defineEmits<{ expand: [] }>()
 const { t } = useI18n()
+// Settings → Appearance: a dark rail wears Nuxt UI's dark tokens
+const look = useAppearance().current
 const { areaDestinations, area, areas, isActive } = useNavigation()
 const { shortcutsOpen } = useAppUi()
 const railNavId = RAIL_NAV_ID
@@ -55,7 +57,7 @@ const workspaces = computed(() => [
 </script>
 
 <template>
-  <div class="flex w-17 shrink-0 flex-col border-e border-default">
+  <div class="flex w-17 shrink-0 flex-col border-e border-default" :class="look.rail === 'dark' ? 'dark bg-default text-default' : ''">
     <!-- Top: ⋯ · + · workspace · areas (and the area's sections when the menu is folded); scrolls if needed -->
     <div class="flex min-h-0 flex-1 flex-col items-center gap-3 overflow-y-auto py-4">
       <UDropdownMenu :items="moreItems" :content="{ side: 'right', align: 'start' }">

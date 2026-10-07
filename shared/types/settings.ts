@@ -2,6 +2,7 @@
  * Workspace settings (F14, docs/API-CONTRACT.md → Settings): one shape per section, read and saved with
  * GET / PATCH /settings/{section}. Onboarding writes the same company, branding and localisation data.
  */
+import type { AppearanceSettings } from './appearance'
 import type { AuditDevice } from './audit'
 import type { AuthProvider, PasswordPolicy } from './auth'
 import type { EmailSettings } from './emails'
@@ -10,7 +11,7 @@ import type { FormDefaults, PrivacySettings } from './privacy'
 import type { CompanySize, DateFormat, Industry, NumberFormat, WeekStart } from './onboarding'
 
 /** Sections that exist (the rest of F14 arrives milestone by milestone). */
-export const SETTINGS_SECTIONS = ['company', 'branding', 'localisation', 'signin', 'security', 'notifications', 'emails', 'privacy', 'form_defaults'] as const
+export const SETTINGS_SECTIONS = ['company', 'branding', 'localisation', 'signin', 'security', 'notifications', 'emails', 'privacy', 'form_defaults', 'appearance'] as const
 export type SettingsSection = (typeof SETTINGS_SECTIONS)[number]
 
 export interface CompanyAddress {
@@ -126,6 +127,7 @@ export interface WorkspaceSettings {
   emails: EmailSettings
   privacy: PrivacySettings
   form_defaults: FormDefaults
+  appearance: AppearanceSettings
   updated: Record<SettingsSection, SettingsChange | null>
 }
 

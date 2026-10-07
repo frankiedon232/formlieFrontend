@@ -21,11 +21,17 @@ const { busy } = useActivity()
 // In-page sweeping bar under the header while the page navigates or loads (CLAUDE.md rule 5).
 // A short delay keeps very fast requests from flashing it.
 const showBar = refDebounced(busy, 150)
+// Settings → Appearance: density, a centred content column (by padding, so the scrollbar stays at the edge), footer
+const look = useAppearance().current
+const bodyUi = computed(() => {
+  const space = look.value.density === 'compact' ? 'gap-4 sm:gap-4 p-3 sm:p-4' : 'gap-6 sm:gap-6 p-4 sm:p-6'
+  return look.value.content_width === 'centred' ? `${space} sm:px-[max(1.5rem,calc((100%-80rem)/2))]` : space
+})
 const visible = computed(() => busy.value && showBar.value)
 </script>
 
 <template>
-  <UDashboardPanel :id="id" :ui="{ body: 'gap-6 sm:gap-6 p-4 sm:p-6' }">
+  <UDashboardPanel :id="id" :ui="{ body: bodyUi }">
     <template #header>
       <div class="relative">
         <AppNavbar :title="title" :subtitle="subtitle" :subtitle-icon="subtitleIcon" :subtitle-icon-class="subtitleIconClass" :subtitle-icon-style="subtitleIconStyle" :compact-search="compactSearch">
@@ -57,7 +63,7 @@ const visible = computed(() => busy.value && showBar.value)
       <slot />
     </template>
 
-    <template #footer>
+    <template v-if="look.footer" #footer>
       <AppFooter />
     </template>
   </UDashboardPanel>

@@ -6385,7 +6385,8 @@
       "keepDays": "回答を{n}日間保存 | 回答を{n}日間保存",
       "notice": "プライバシー通知を設定済み",
       "withTheme": "新しいフォームはテーマ付きで開始",
-      "workspaceLook": "新しいフォームはワークスペースのデザインを使用"
+      "workspaceLook": "新しいフォームはワークスペースのデザインを使用",
+      "customLook": "独自のデザイン"
     },
     "next": {
       "title": "次のステップ",
@@ -6950,6 +6951,111 @@
       "embed": "埋め込みを許可するウェブサイト",
       "embedAny": "どのウェブサイトでも新しいフォームを埋め込めます。",
       "embedPlaceholder": "www.example.com と入力して Enter"
+    },
+    "appearance": {
+      "reset": "Formalie の初期設定に戻す",
+      "presets": "デザインから始める",
+      "presetsHint": "すぐ使えるデザインです。以下はすべて調整できます。",
+      "preset": {
+        "formalie": "Formalie",
+        "midnight": "ミッドナイト",
+        "ocean": "オーシャン",
+        "forest": "フォレスト",
+        "sunset": "サンセット",
+        "classic": "クラシック",
+        "brand": "あなたのブランド"
+      },
+      "live": "変更はすぐポータル全体に反映されます。保存するまでは自分だけに表示されます。保存すると、ワークスペースの全員に適用されます。",
+      "colours": "色",
+      "coloursHint": "ボタン、リンク、フォーカスリング、選択中のメニュー項目にプライマリカラーが使われます。",
+      "primary": "プライマリカラー",
+      "primaryHelp": "ステータスの色(緑、アンバー、赤)は意味を保つため変わりません。",
+      "color": {
+        "mono": "白黒",
+        "brand": "ブランドカラー",
+        "indigo": "インディゴ",
+        "blue": "ブルー",
+        "sky": "スカイ",
+        "teal": "ティール",
+        "emerald": "エメラルド",
+        "green": "グリーン",
+        "amber": "アンバー",
+        "orange": "オレンジ",
+        "red": "レッド",
+        "rose": "ローズ",
+        "pink": "ピンク",
+        "violet": "バイオレット",
+        "purple": "パープル"
+      },
+      "lowContrast": "ブランドカラーの上では白い文字が読みにくくなります",
+      "lowContrastDesc": "コントラスト比は {ratio}:1 です。4.5:1 以上をおすすめします。ブランディングでより濃い色を選ぶか、ここでパレットの色を選んでください。",
+      "neutrals": "グレー",
+      "neutralsHelp": "文字、枠線、背景:クールからウォームまで。",
+      "neutral": {
+        "zinc": "ジンク",
+        "slate": "スレート(クール)",
+        "gray": "グレー",
+        "neutral": "ニュートラル",
+        "stone": "ストーン(ウォーム)"
+      },
+      "background": "ページの背景",
+      "bg": {
+        "plain": "無地",
+        "tinted": "やわらかい色味"
+      },
+      "shape": "形と書体",
+      "shapeHint": "角、文字、全体の大きさ。",
+      "corners": "角",
+      "radius": {
+        "none": "四角",
+        "sm": "わずかに丸く",
+        "md": "やわらかく",
+        "lg": "丸く",
+        "xl": "とても丸く"
+      },
+      "fontLabel": "フォント",
+      "font": {
+        "manrope": "Manrope (Formalie)",
+        "system": "システム",
+        "serif": "セリフ",
+        "rounded": "丸ゴシック"
+      },
+      "textSize": "文字サイズ",
+      "size": {
+        "sm": "小",
+        "md": "標準",
+        "lg": "大"
+      },
+      "sidebar": "サイドバー",
+      "sidebarHint": "アイコンバーとその横のメニュー。",
+      "rail": "アイコンバー",
+      "menu": "メニュー",
+      "tone": {
+        "light": "ライト",
+        "dark": "ダーク"
+      },
+      "badges": "メニューの件数",
+      "badgesHint": "フォーム、回答、フォルダの横の数字。",
+      "headerFooter": "ヘッダーとフッター",
+      "headerFooterHint": "各ページ上部のバーに表示する内容。",
+      "breadcrumbs": "パンくずリスト",
+      "search": "検索フィールド",
+      "searchHint": "検索は Ctrl / ⌘ + K のままです。",
+      "footer": "フッター",
+      "page": "ページ",
+      "pageHint": "各ページの内容の配置。",
+      "width": "コンテンツの幅",
+      "widthOption": {
+        "full": "全幅",
+        "centred": "中央寄せ"
+      },
+      "density": "余白",
+      "densityOption": {
+        "comfortable": "ゆったり",
+        "compact": "コンパクト"
+      },
+      "preview": "プレビュー",
+      "previewHint": "このページの周りのポータル全体にもデザインが反映されます。公開フォームは独自のテーマのままです。"
     }
   },
   "notifications": {

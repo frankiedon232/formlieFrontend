@@ -6385,7 +6385,8 @@
       "keepDays": "Majibu yanahifadhiwa siku {n} | Majibu yanahifadhiwa siku {n}",
       "notice": "notisi ya faragha imewekwa",
       "withTheme": "Fomu mpya huanza na mandhari",
-      "workspaceLook": "Fomu mpya hutumia mwonekano wa eneo la kazi"
+      "workspaceLook": "Fomu mpya hutumia mwonekano wa eneo la kazi",
+      "customLook": "Mwonekano wako mwenyewe"
     },
     "next": {
       "title": "Hatua inayofuata",
@@ -6950,6 +6951,111 @@
       "embed": "Tovuti zinazoruhusiwa kupachika",
       "embedAny": "Tovuti yoyote inaweza kupachika fomu mpya.",
       "embedPlaceholder": "www.example.com, kisha Enter"
+    },
+    "appearance": {
+      "reset": "Rudisha kwa Formalie",
+      "presets": "Anza na mwonekano",
+      "presetsHint": "Mionekano tayari. Kila kitu kilicho chini bado kinaweza kurekebishwa.",
+      "preset": {
+        "formalie": "Formalie",
+        "midnight": "Usiku wa manane",
+        "ocean": "Bahari",
+        "forest": "Msitu",
+        "sunset": "Machweo",
+        "classic": "Kawaida",
+        "brand": "Chapa yako"
+      },
+      "live": "Kila badiliko linaonekana mara moja kwenye lango lote, kwako tu, hadi uhifadhi. Kuhifadhi kunalitumia kwa kila mtu kwenye nafasi ya kazi.",
+      "colours": "Rangi",
+      "coloursHint": "Vitufe, viungo, pete za umakini na kipengee cha menyu kinachotumika hutumia rangi kuu.",
+      "primary": "Rangi kuu",
+      "primaryHelp": "Rangi za hali (kijani, kaharabu, nyekundu) hubaki kama zilivyo ili zihifadhi maana yake.",
+      "color": {
+        "mono": "Nyeusi na nyeupe",
+        "brand": "Rangi ya chapa yako",
+        "indigo": "Indigo",
+        "blue": "Samawati",
+        "sky": "Anga",
+        "teal": "Teal",
+        "emerald": "Zumaridi",
+        "green": "Kijani",
+        "amber": "Kaharabu",
+        "orange": "Machungwa",
+        "red": "Nyekundu",
+        "rose": "Waridi iliyokolea",
+        "pink": "Waridi",
+        "violet": "Zambarau iliyokolea",
+        "purple": "Zambarau"
+      },
+      "lowContrast": "Maandishi meupe ni vigumu kusoma kwenye rangi ya chapa yako",
+      "lowContrastDesc": "Utofautishaji wake ni {ratio}:1; angalau 4.5:1 inapendekezwa. Chagua kivuli cheusi zaidi katika Chapa, au rangi ya palette hapa.",
+      "neutrals": "Kijivu",
+      "neutralsHelp": "Maandishi, mipaka na nyuso: kutoka baridi hadi joto.",
+      "neutral": {
+        "zinc": "Zinki",
+        "slate": "Slate (baridi)",
+        "gray": "Kijivu",
+        "neutral": "Isiyoegemea",
+        "stone": "Jiwe (joto)"
+      },
+      "background": "Mandharinyuma ya ukurasa",
+      "bg": {
+        "plain": "Sawa",
+        "tinted": "Rangi hafifu"
+      },
+      "shape": "Umbo na fonti",
+      "shapeHint": "Pembe, herufi na ukubwa wa kila kitu.",
+      "corners": "Pembe",
+      "radius": {
+        "none": "Mraba",
+        "sm": "Kidogo",
+        "md": "Laini",
+        "lg": "Mviringo",
+        "xl": "Mviringo sana"
+      },
+      "fontLabel": "Fonti",
+      "font": {
+        "manrope": "Manrope (Formalie)",
+        "system": "Mfumo",
+        "serif": "Serif",
+        "rounded": "Mviringo"
+      },
+      "textSize": "Ukubwa wa maandishi",
+      "size": {
+        "sm": "Mdogo",
+        "md": "Wa kawaida",
+        "lg": "Mkubwa"
+      },
+      "sidebar": "Utepe wa pembeni",
+      "sidebarHint": "Upau wa ikoni na menyu iliyo kando yake.",
+      "rail": "Upau wa ikoni",
+      "menu": "Menyu",
+      "tone": {
+        "light": "Nyepesi",
+        "dark": "Nyeusi"
+      },
+      "badges": "Hesabu kwenye menyu",
+      "badgesHint": "Nambari kando ya Fomu, Majibu na folda.",
+      "headerFooter": "Kichwa na kijachini",
+      "headerFooterHint": "Kile upau ulio juu ya kila ukurasa unaonyesha.",
+      "breadcrumbs": "Njia ya urambazaji",
+      "search": "Sehemu ya utafutaji",
+      "searchHint": "Utafutaji unabaki kwenye Ctrl / ⌘ + K.",
+      "footer": "Kijachini",
+      "page": "Kurasa",
+      "pageHint": "Jinsi maudhui ya kila ukurasa yanavyopangwa.",
+      "width": "Upana wa maudhui",
+      "widthOption": {
+        "full": "Upana kamili",
+        "centred": "Katikati"
+      },
+      "density": "Nafasi",
+      "densityOption": {
+        "comfortable": "Nzuri",
+        "compact": "Fupi"
+      },
+      "preview": "Hakiki",
+      "previewHint": "Lango lote linalozunguka ukurasa huu pia linaonyesha mwonekano. Fomu zako za umma hubaki na mandhari yake."
     }
   },
   "notifications": {

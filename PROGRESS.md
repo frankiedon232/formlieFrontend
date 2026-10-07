@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-07 (F14 M5 privacy and form defaults)
+**Last updated:** 2026-10-07 (F14 M6 appearance)
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend
 
@@ -24,7 +24,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F11   | Responses                                         | ✅     | 100% |
 | F12   | Data sources & databases                          | ✅     | 100% |
 | F13   | API service & integrations                        | ✅     | 100% (owner-tested 2026-10-06) |
-| F14   | Settings                                          | 🟡     | ~75% (M1 to M5 ✅) |
+| F14   | Settings                                          | 🟡     | ~90% (M1 to M6 ✅) |
 | F15   | Option sets & payments                            | ⬜     | 0%   |
 | F16   | Profile                                           | ⬜     | 0%   |
 | F17   | Users                                             | ⬜     | 0%   |
@@ -715,7 +715,7 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 
 **Goal:** one place where workspace admins control everything about their workspace. Each section is its own page under `/settings/*`, with a section menu (sidebar list on desktop, select on phones), unsaved-changes warning and a save bar.
 
-**Plan (2026-10-06, milestones):** **M1** ✅ Settings frame, Company, Branding, Language and region. **M2** ✅ Organisation data (departments, job titles, teams and locations; builder reads them). **M3** ✅ Sign-in and security. **M4** ✅ Notifications and emails (incl. emailing responses to the team and outside addresses). **M5** ✅ Privacy, data and form defaults. **M6** Appearance. **M7** Address, domain and organisations. Billing moved to F23.
+**Plan (2026-10-06, milestones):** **M1** ✅ Settings frame, Company, Branding, Language and region. **M2** ✅ Organisation data (departments, job titles, teams and locations; builder reads them). **M3** ✅ Sign-in and security. **M4** ✅ Notifications and emails (incl. emailing responses to the team and outside addresses). **M5** ✅ Privacy, data and form defaults. **M6** ✅ Appearance. **M7** Address, domain and organisations. Billing moved to F23.
 
 ### Settings shell
 
@@ -732,13 +732,13 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 
 Organisations run on different brand colours, so each workspace can change the look and feel of the whole application (not only its forms). One Appearance page with a live preview of the portal (sidebar, header, a list page, a dialog) on desktop / tablet / phone, ready-made appearance presets plus full control, "Reset to Formalie", and every change in the audit trail.
 
-- ⬜ **Colours:** primary (brand) colour and the neutral palette (zinc, slate, stone, gray…), accent use (buttons, links, focus rings, active menu item), status colours kept readable (contrast checked)
-- ⬜ **Background:** page background (plain, subtle tint, soft gradient), card and panel surfaces, borders (light / none), corner radius (sharp → round)
-- ⬜ **Rail:** colour (light, dark, brand), icon style, active marker
-- ⬜ **Menu (sidebar):** colour (light, dark, brand, transparent), width (compact / comfortable), group labels, active item style (pill, bar, filled), count badges on / off
-- ⬜ **Header (navbar):** colour, height, show / hide breadcrumbs and search, bottom border / shadow
-- ⬜ **Footer:** show / hide, text, links (help, terms), colour
-- ⬜ **Main body:** density (compact / comfortable), content width (full / centred), typography (font family and base size from a safe set)
+- ✅ **Colours:** primary (black and white, brand colour with a contrast check, or a palette colour; it drives buttons, links, rings, charts) and the neutral palette (zinc, slate, gray, neutral, stone); status colours never change
+- ✅ **Background:** page background (plain, soft tint), corner radius (square → very round); gradients and border styles left out to keep the design calm
+- ✅ **Rail:** light or dark (the brand colour shows through the primary accents)
+- ✅ **Menu (sidebar):** light or dark, count badges on / off (its width stays adjustable by dragging)
+- ✅ **Header (navbar):** show / hide breadcrumbs and the search field (search stays on Ctrl / ⌘ + K)
+- ✅ **Footer:** show / hide
+- ✅ **Main body:** spacing (compact / comfortable), content width (full / centred), font family and text size from a safe set; presets, live preview on the real portal and Reset to Formalie
 - ⬜ **Light and dark:** separate colours per mode, the workspace's default mode, people may still switch (rule 9)
 - ⬜ Applied app-wide through Nuxt UI theme tokens (`app.config` / CSS variables at runtime), never per-page styling; loads with the session so the first paint already uses it
 - ⬜ Files and messages follow it too: the PDF export report, email templates, the sign-in page (with Branding above)
@@ -1357,3 +1357,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-07 | F14 | M3 Sign-in and security: sections `signin` and `security` in the settings store (backfilled for existing workspaces), the sign-in methods now come from Settings; mock auth applies everything: code expiry and tries per workspace, SMS on / off, allowed domains (FRM-AUTH-1014), expired passwords (1015, sign-in opens the reset), IP allowlist at sign-in and on every request (1016), password rules and no reuse on reset (1007 / 1018), idle and maximum session length; lock-out guard (1017); sessions list and sign out (one or everyone else); sign-in activity from the audit trail. Pages Sign-in (method cards, code rules, domains, live preview) and Security (activity card, password rules with a try field, sessions, allowlist). Checked in the browser: domain list refused without our own domain then saved, SMS off, IP allowlist refused without our address then saved with it (portal kept working), try-a-password with Symbol required, overview statuses, phone layout; test changes reverted. |
 | 2026-10-07 | F14 | M4 Notifications and emails: sections `notifications` and `emails`; mock notification store (`notify()` follows the rules: in-app feed per person, emails or the daily summary) hooked into responses (form page and API: new, possible duplicate, form full), blocked sign-ins and locked codes, paused webhooks, and (when the feed is read) forms closing within a day and finished exports; `/notifications` feed routes; bell with unread count and a real panel (Today / Earlier, open goes to the item). Emails: renderer with the workspace's look, default texts per language (`server/mock/data/emailDefaults/`), sent log (codes never stored), template editor with placeholders, live preview, test send; sign-in and reset code emails go to the log. Per-form response emails in the builder (team, outside addresses with masked personal answers, respondent copy). Checked in the browser: settings pages, a real response showing in the bell and opening the exact response, a test email and its preview, a form published with team + outside + copy (three correct emails: link only for the team, email masked for the outside address, copy to the respondent), then switched off and republished. |
 | 2026-10-07 | F14 | M5 Privacy, data and form defaults: sections `privacy` and `form_defaults`; retention (`retentionStore`: per-form or workspace limit, preview, removal on save and daily, audited), Keep responses in the builder's form settings; privacy notice link and consent line on public forms; data requests (find, export JSON, delete with typed confirmation, audited with masked address); form defaults applied to new blank and template forms and preselected in the new-form dialog. Checked in the browser: retention preview (30 days → 47,717 sample responses) and the confirmation on Ctrl+S, not saved; data request search for a test respondent; notice and consent on a live form, then turned off; defaults set, a new form starting with them (then moved to Trash), defaults put back. |
+| 2026-10-07 | F14 | M6 Appearance: section `appearance` (presets, primary incl. brand with contrast check, greys, background, corners, font, text size, dark rail / menu, menu counts, breadcrumbs, search, footer, width, spacing); `useAppearance` applies it for everyone (Nuxt UI colours + CSS variables, the primary also takes the design's inverted accent), the shell reads the rest; the Appearance page makes the real portal the live preview while editing. Checked in the browser: Midnight (dark rail and menu in light mode), Ocean saved with centred and compact, the Forms page in light and dark wearing it, then Reset to Formalie saved. |

@@ -6385,7 +6385,8 @@
       "keepDays": "Odpowiedzi przechowywane {n} dzień | Odpowiedzi przechowywane {n} dni",
       "notice": "ustawiono informację o prywatności",
       "withTheme": "Nowe formularze zaczynają z motywem",
-      "workspaceLook": "Nowe formularze używają wyglądu przestrzeni roboczej"
+      "workspaceLook": "Nowe formularze używają wyglądu przestrzeni roboczej",
+      "customLook": "Własny wygląd"
     },
     "next": {
       "title": "Następny krok",
@@ -6950,6 +6951,111 @@
       "embed": "Strony z zezwoleniem na osadzanie",
       "embedAny": "Każda strona może osadzać nowe formularze.",
       "embedPlaceholder": "www.example.com, potem Enter"
+    },
+    "appearance": {
+      "reset": "Przywróć wygląd Formalie",
+      "presets": "Zacznij od gotowego wyglądu",
+      "presetsHint": "Gotowe style. Wszystko poniżej nadal możesz dostosować.",
+      "preset": {
+        "formalie": "Formalie",
+        "midnight": "Północ",
+        "ocean": "Ocean",
+        "forest": "Las",
+        "sunset": "Zachód słońca",
+        "classic": "Klasyczny",
+        "brand": "Twoja marka"
+      },
+      "live": "Każda zmiana jest od razu widoczna w całym portalu, tylko dla Ciebie, do czasu zapisania. Zapis stosuje ją dla wszystkich w przestrzeni roboczej.",
+      "colours": "Kolory",
+      "coloursHint": "Przyciski, linki, obwódki fokusu i aktywna pozycja menu używają koloru głównego.",
+      "primary": "Kolor główny",
+      "primaryHelp": "Kolory statusów (zielony, bursztynowy, czerwony) zostają bez zmian, aby zachować swoje znaczenie.",
+      "color": {
+        "mono": "Czerń i biel",
+        "brand": "Kolor Twojej marki",
+        "indigo": "Indygo",
+        "blue": "Niebieski",
+        "sky": "Błękitny",
+        "teal": "Morski",
+        "emerald": "Szmaragdowy",
+        "green": "Zielony",
+        "amber": "Bursztynowy",
+        "orange": "Pomarańczowy",
+        "red": "Czerwony",
+        "rose": "Różany",
+        "pink": "Różowy",
+        "violet": "Fioletowy",
+        "purple": "Purpurowy"
+      },
+      "lowContrast": "Biały tekst jest słabo czytelny na kolorze Twojej marki",
+      "lowContrastDesc": "Kontrast wynosi {ratio}:1; zalecane jest co najmniej 4.5:1. Wybierz ciemniejszy odcień w Brandingu lub kolor z palety tutaj.",
+      "neutrals": "Szarości",
+      "neutralsHelp": "Tekst, obramowania i powierzchnie: od chłodnych do ciepłych.",
+      "neutral": {
+        "zinc": "Cynkowy",
+        "slate": "Łupkowy (chłodny)",
+        "gray": "Szary",
+        "neutral": "Neutralny",
+        "stone": "Kamienny (ciepły)"
+      },
+      "background": "Tło strony",
+      "bg": {
+        "plain": "Jednolite",
+        "tinted": "Delikatny odcień"
+      },
+      "shape": "Kształt i czcionka",
+      "shapeHint": "Rogi, litery i rozmiar wszystkiego.",
+      "corners": "Rogi",
+      "radius": {
+        "none": "Kwadratowe",
+        "sm": "Lekko zaokrąglone",
+        "md": "Miękkie",
+        "lg": "Okrągłe",
+        "xl": "Bardzo okrągłe"
+      },
+      "fontLabel": "Czcionka",
+      "font": {
+        "manrope": "Manrope (Formalie)",
+        "system": "Systemowa",
+        "serif": "Szeryfowa",
+        "rounded": "Zaokrąglona"
+      },
+      "textSize": "Rozmiar tekstu",
+      "size": {
+        "sm": "Mały",
+        "md": "Normalny",
+        "lg": "Duży"
+      },
+      "sidebar": "Panel boczny",
+      "sidebarHint": "Pasek ikon i menu obok niego.",
+      "rail": "Pasek ikon",
+      "menu": "Menu",
+      "tone": {
+        "light": "Jasny",
+        "dark": "Ciemny"
+      },
+      "badges": "Liczniki w menu",
+      "badgesHint": "Liczby przy Formularzach, Odpowiedziach i folderach.",
+      "headerFooter": "Nagłówek i stopka",
+      "headerFooterHint": "Co pokazuje pasek nad każdą stroną.",
+      "breadcrumbs": "Ścieżka nawigacji",
+      "search": "Pole wyszukiwania",
+      "searchHint": "Wyszukiwanie pozostaje pod Ctrl / ⌘ + K.",
+      "footer": "Stopka",
+      "page": "Strony",
+      "pageHint": "Jak ułożona jest zawartość każdej strony.",
+      "width": "Szerokość treści",
+      "widthOption": {
+        "full": "Pełna szerokość",
+        "centred": "Wyśrodkowana"
+      },
+      "density": "Odstępy",
+      "densityOption": {
+        "comfortable": "Wygodne",
+        "compact": "Zwarte"
+      },
+      "preview": "Podgląd",
+      "previewHint": "Cały portal wokół tej strony również pokazuje ten wygląd. Twoje publiczne formularze zachowują własne motywy."
     }
   },
   "notifications": {

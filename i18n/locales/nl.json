@@ -6385,7 +6385,8 @@
       "keepDays": "Antwoorden {n} dag bewaard | Antwoorden {n} dagen bewaard",
       "notice": "privacyverklaring ingesteld",
       "withTheme": "Nieuwe formulieren starten met een thema",
-      "workspaceLook": "Nieuwe formulieren gebruiken de look van de werkruimte"
+      "workspaceLook": "Nieuwe formulieren gebruiken de look van de werkruimte",
+      "customLook": "Je eigen stijl"
     },
     "next": {
       "title": "Volgende stap",
@@ -6950,6 +6951,111 @@
       "embed": "Websites die mogen insluiten",
       "embedAny": "Elke website mag nieuwe formulieren insluiten.",
       "embedPlaceholder": "www.example.com, dan Enter"
+    },
+    "appearance": {
+      "reset": "Terug naar Formalie",
+      "presets": "Begin met een stijl",
+      "presetsHint": "Kant-en-klare stijlen. Alles hieronder blijft aanpasbaar.",
+      "preset": {
+        "formalie": "Formalie",
+        "midnight": "Middernacht",
+        "ocean": "Oceaan",
+        "forest": "Bos",
+        "sunset": "Zonsondergang",
+        "classic": "Klassiek",
+        "brand": "Jouw merk"
+      },
+      "live": "Elke wijziging is meteen zichtbaar in het hele portaal, alleen voor jou, tot je opslaat. Opslaan past het toe voor iedereen in de werkruimte.",
+      "colours": "Kleuren",
+      "coloursHint": "Knoppen, links, focusranden en het actieve menu-item gebruiken de hoofdkleur.",
+      "primary": "Hoofdkleur",
+      "primaryHelp": "Statuskleuren (groen, amber, rood) blijven zoals ze zijn, zodat ze hun betekenis houden.",
+      "color": {
+        "mono": "Zwart en wit",
+        "brand": "Jouw merkkleur",
+        "indigo": "Indigo",
+        "blue": "Blauw",
+        "sky": "Hemelsblauw",
+        "teal": "Blauwgroen",
+        "emerald": "Smaragd",
+        "green": "Groen",
+        "amber": "Amber",
+        "orange": "Oranje",
+        "red": "Rood",
+        "rose": "Roze-rood",
+        "pink": "Roze",
+        "violet": "Violet",
+        "purple": "Paars"
+      },
+      "lowContrast": "Witte tekst is slecht leesbaar op je merkkleur",
+      "lowContrastDesc": "Het contrast is {ratio}:1; minimaal 4.5:1 wordt aanbevolen. Kies een donkerdere tint in Huisstijl, of hier een kleur uit het palet.",
+      "neutrals": "Grijstinten",
+      "neutralsHelp": "Tekst, randen en vlakken: van koel naar warm.",
+      "neutral": {
+        "zinc": "Zink",
+        "slate": "Leisteen (koel)",
+        "gray": "Grijs",
+        "neutral": "Neutraal",
+        "stone": "Steen (warm)"
+      },
+      "background": "Paginaachtergrond",
+      "bg": {
+        "plain": "Effen",
+        "tinted": "Zachte tint"
+      },
+      "shape": "Vorm en lettertype",
+      "shapeHint": "Hoeken, letters en hoe groot alles is.",
+      "corners": "Hoeken",
+      "radius": {
+        "none": "Vierkant",
+        "sm": "Licht",
+        "md": "Zacht",
+        "lg": "Rond",
+        "xl": "Heel rond"
+      },
+      "fontLabel": "Lettertype",
+      "font": {
+        "manrope": "Manrope (Formalie)",
+        "system": "Systeem",
+        "serif": "Serif",
+        "rounded": "Afgerond"
+      },
+      "textSize": "Tekstgrootte",
+      "size": {
+        "sm": "Klein",
+        "md": "Normaal",
+        "lg": "Groot"
+      },
+      "sidebar": "Zijbalk",
+      "sidebarHint": "De pictogrambalk en het menu ernaast.",
+      "rail": "Pictogrambalk",
+      "menu": "Menu",
+      "tone": {
+        "light": "Licht",
+        "dark": "Donker"
+      },
+      "badges": "Aantallen in het menu",
+      "badgesHint": "Cijfers naast Formulieren, Reacties en mappen.",
+      "headerFooter": "Koptekst en voettekst",
+      "headerFooterHint": "Wat de balk boven elke pagina toont.",
+      "breadcrumbs": "Kruimelpad",
+      "search": "Zoekveld",
+      "searchHint": "Zoeken blijft op Ctrl / ⌘ + K.",
+      "footer": "Voettekst",
+      "page": "Pagina's",
+      "pageHint": "Hoe de inhoud van elke pagina staat.",
+      "width": "Inhoudsbreedte",
+      "widthOption": {
+        "full": "Volledige breedte",
+        "centred": "Gecentreerd"
+      },
+      "density": "Ruimte",
+      "densityOption": {
+        "comfortable": "Comfortabel",
+        "compact": "Compact"
+      },
+      "preview": "Voorbeeld",
+      "previewHint": "Het hele portaal rond deze pagina toont de stijl ook. Je openbare formulieren houden hun eigen thema's."
     }
   },
   "notifications": {

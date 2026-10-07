@@ -6385,7 +6385,8 @@
       "keepDays": "Phản hồi được lưu giữ {n} ngày | Phản hồi được lưu giữ {n} ngày",
       "notice": "đã đặt thông báo quyền riêng tư",
       "withTheme": "Biểu mẫu mới bắt đầu với một giao diện",
-      "workspaceLook": "Biểu mẫu mới dùng giao diện của không gian làm việc"
+      "workspaceLook": "Biểu mẫu mới dùng giao diện của không gian làm việc",
+      "customLook": "Giao diện riêng của bạn"
     },
     "next": {
       "title": "Bước tiếp theo",
@@ -6950,6 +6951,111 @@
       "embed": "Trang web được phép nhúng",
       "embedAny": "Bất kỳ trang web nào cũng có thể nhúng biểu mẫu mới.",
       "embedPlaceholder": "www.example.com, rồi nhấn Enter"
+    },
+    "appearance": {
+      "reset": "Đặt lại về Formalie",
+      "presets": "Bắt đầu từ một giao diện",
+      "presetsHint": "Các giao diện có sẵn. Mọi thứ bên dưới vẫn có thể điều chỉnh.",
+      "preset": {
+        "formalie": "Formalie",
+        "midnight": "Nửa đêm",
+        "ocean": "Đại dương",
+        "forest": "Rừng",
+        "sunset": "Hoàng hôn",
+        "classic": "Cổ điển",
+        "brand": "Thương hiệu của bạn"
+      },
+      "live": "Mọi thay đổi hiện ngay trên toàn cổng, chỉ với bạn, cho đến khi bạn lưu. Lưu sẽ áp dụng cho mọi người trong không gian làm việc.",
+      "colours": "Màu sắc",
+      "coloursHint": "Nút, liên kết, viền tiêu điểm và mục menu đang chọn dùng màu chính.",
+      "primary": "Màu chính",
+      "primaryHelp": "Màu trạng thái (xanh lá, hổ phách, đỏ) được giữ nguyên để giữ đúng ý nghĩa.",
+      "color": {
+        "mono": "Đen trắng",
+        "brand": "Màu thương hiệu của bạn",
+        "indigo": "Chàm",
+        "blue": "Xanh dương",
+        "sky": "Xanh da trời",
+        "teal": "Xanh mòng két",
+        "emerald": "Xanh ngọc lục bảo",
+        "green": "Xanh lá",
+        "amber": "Hổ phách",
+        "orange": "Cam",
+        "red": "Đỏ",
+        "rose": "Hồng đậm",
+        "pink": "Hồng",
+        "violet": "Tím violet",
+        "purple": "Tím"
+      },
+      "lowContrast": "Chữ trắng khó đọc trên màu thương hiệu của bạn",
+      "lowContrastDesc": "Độ tương phản là {ratio}:1; nên đạt ít nhất 4.5:1. Hãy chọn tông đậm hơn trong Thương hiệu, hoặc một màu trong bảng màu tại đây.",
+      "neutrals": "Màu xám",
+      "neutralsHelp": "Văn bản, viền và bề mặt: từ lạnh đến ấm.",
+      "neutral": {
+        "zinc": "Kẽm",
+        "slate": "Đá phiến (lạnh)",
+        "gray": "Xám",
+        "neutral": "Trung tính",
+        "stone": "Đá (ấm)"
+      },
+      "background": "Nền trang",
+      "bg": {
+        "plain": "Trơn",
+        "tinted": "Sắc nhạt"
+      },
+      "shape": "Hình dạng và phông chữ",
+      "shapeHint": "Góc, chữ và kích thước của mọi thứ.",
+      "corners": "Góc",
+      "radius": {
+        "none": "Vuông",
+        "sm": "Nhẹ",
+        "md": "Mềm",
+        "lg": "Tròn",
+        "xl": "Rất tròn"
+      },
+      "fontLabel": "Phông chữ",
+      "font": {
+        "manrope": "Manrope (Formalie)",
+        "system": "Hệ thống",
+        "serif": "Serif",
+        "rounded": "Bo tròn"
+      },
+      "textSize": "Cỡ chữ",
+      "size": {
+        "sm": "Nhỏ",
+        "md": "Vừa",
+        "lg": "Lớn"
+      },
+      "sidebar": "Thanh bên",
+      "sidebarHint": "Thanh biểu tượng và menu bên cạnh.",
+      "rail": "Thanh biểu tượng",
+      "menu": "Menu",
+      "tone": {
+        "light": "Sáng",
+        "dark": "Tối"
+      },
+      "badges": "Số đếm trong menu",
+      "badgesHint": "Số bên cạnh Biểu mẫu, Phản hồi và thư mục.",
+      "headerFooter": "Đầu trang và chân trang",
+      "headerFooterHint": "Những gì thanh phía trên mỗi trang hiển thị.",
+      "breadcrumbs": "Đường dẫn điều hướng",
+      "search": "Ô tìm kiếm",
+      "searchHint": "Tìm kiếm vẫn dùng Ctrl / ⌘ + K.",
+      "footer": "Chân trang",
+      "page": "Trang",
+      "pageHint": "Cách nội dung của mỗi trang được sắp xếp.",
+      "width": "Độ rộng nội dung",
+      "widthOption": {
+        "full": "Toàn chiều rộng",
+        "centred": "Căn giữa"
+      },
+      "density": "Khoảng cách",
+      "densityOption": {
+        "comfortable": "Thoải mái",
+        "compact": "Gọn"
+      },
+      "preview": "Xem trước",
+      "previewHint": "Toàn bộ cổng quanh trang này cũng hiển thị giao diện. Biểu mẫu công khai của bạn giữ giao diện riêng."
     }
   },
   "notifications": {

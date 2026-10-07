@@ -4,6 +4,7 @@
  */
 import { z } from 'zod'
 import { COMPANY_SIZES, DATE_FORMATS, INDUSTRIES, NUMBER_FORMATS } from '../../types/onboarding'
+import { APPEARANCE_FONTS, APPEARANCE_NEUTRALS, APPEARANCE_PRIMARIES, APPEARANCE_RADII } from '../../types/appearance'
 import { EMAIL_TEMPLATES, type EmailTemplateKey } from '../../types/emails'
 import { NOTIFICATION_EVENTS, type NotificationEvent } from '../../types/notifications'
 import { RETENTION_DAYS, type RetentionDays } from '../../types/privacy'
@@ -192,4 +193,21 @@ export const formDefaultsSchema = z.object({
     )
     .max(50)
     .transform(list => [...new Set(list)]),
+})
+
+export const appearanceSchema = z.object({
+  preset: z.string().max(40),
+  primary: z.enum(APPEARANCE_PRIMARIES),
+  neutral: z.enum(APPEARANCE_NEUTRALS),
+  background: z.enum(['plain', 'tinted']),
+  radius: z.enum(APPEARANCE_RADII),
+  font: z.enum(APPEARANCE_FONTS),
+  text_size: z.enum(['sm', 'md', 'lg']),
+  rail: z.enum(['light', 'dark']),
+  menu: z.enum(['light', 'dark']),
+  menu_badges: z.boolean(),
+  header: z.object({ breadcrumbs: z.boolean(), search: z.boolean() }),
+  footer: z.boolean(),
+  content_width: z.enum(['full', 'centred']),
+  density: z.enum(['comfortable', 'compact']),
 })
