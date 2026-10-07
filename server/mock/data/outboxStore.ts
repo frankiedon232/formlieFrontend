@@ -24,13 +24,15 @@ export interface SendInput {
   reason: string
   answers?: EmailAnswer[]
   text?: { subject: string; body: string }
+  /** People without an account (outside addresses, respondents): "because of a form" instead of "your account". */
+  footer?: 'account' | 'form'
 }
 
 /** "Sends" an email: rendered in the workspace's look and put in its sent log. Never throws. */
 export function sendEmail(tenant: MockTenant, input: SendInput): SentEmail | null {
   try {
     const language = emailLanguage(tenant, input.language)
-    const rendered = renderEmail(tenant, input.key, language, input.vars, { answers: input.answers, text: input.text })
+    const rendered = renderEmail(tenant, input.key, language, input.vars, { answers: input.answers, text: input.text, footer: input.footer })
     const email: SentEmail = { id: crypto.randomUUID(), at: new Date().toISOString(), to: input.to, subject: rendered.subject, template: input.key, language, reason: input.reason, html: rendered.html, text: rendered.text }
     stores.set(tenant.id, [email, ...outboxOf(tenant)].slice(0, KEEP))
     save()

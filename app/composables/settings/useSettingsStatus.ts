@@ -50,6 +50,10 @@ export function useSettingsStatus(settings: Ref<WorkspaceSettings | null>) {
       const text = idle < 60 ? t('settings.status.idleMinutes', { n: idle }) : t('settings.status.idleHours', { n: idle / 60 }, idle / 60)
       return { text: s.security.ip_allowlist.enabled ? `${text} · ${t('settings.status.allowlist')}` : text, tone: 'info' }
     }
+    if (key === 'emails') {
+      const own = Object.values(s.emails.custom).reduce((sum, langs) => sum + Object.keys(langs ?? {}).length, 0)
+      return { text: (s.emails.sender_name || s.company.display_name) + (own ? ` · ${t('settings.status.ownTexts', { n: own }, own)}` : ''), tone: 'info' }
+    }
     if (key === 'notifications') {
       const on = Object.values(s.notifications.events).filter(rule => rule.in_app || rule.email).length
       return { text: t('settings.status.notifications', { n: on, total: Object.keys(s.notifications.events).length }) + (s.notifications.digest.enabled ? ` · ${t('settings.status.digest')}` : ''), tone: 'info' }

@@ -204,6 +204,7 @@ function setThankYou(key: 'title' | 'message', value: string) {
           />
         </section>
         <FormsBuilderIdentitySetting />
+        <FormsBuilderEmailsSetting />
         <!-- Spam protection (decision 89): always on and invisible to respondents, shown so creators know. -->
         <section class="flex flex-col gap-2">
           <h3 class="text-xs font-medium text-muted uppercase">{{ t('builder.spam.title') }}</h3>

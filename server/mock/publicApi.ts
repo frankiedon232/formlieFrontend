@@ -20,6 +20,7 @@
  * Test tokens never touch real responses: writes are checked and answered, nothing is stored.
  */
 import { notifyResponse } from './data/notificationStore'
+import { emailResponse } from './data/responseEmails'
 import { createHash, timingSafeEqual } from 'node:crypto'
 import type { H3Event } from 'h3'
 import { checkSubmission } from '#shared/utils/forms/submission'
@@ -441,6 +442,7 @@ async function handle(event: H3Event, path: string, context: CallContext) {
       recordAudit(event, tenant, { action: 'responses.submitted', actor, resource: { type: 'form', id: form.id, name: form.name }, changes: [{ field: 'channel', before: null, after: 'api' }], metadata: { endpoint: endpoint.name } })
       emitResponse(event, tenant, 'response.created', form, stored.id)
       notifyResponse(event, tenant, form, stored.id, !!stored.possible_duplicate)
+      emailResponse(event, tenant, form, schema, stored)
       const entry = formResponses(tenant, form).find(item => item.id === stored.id)!
       return send(event, 201, { data: record(form, entry, choices) })
     }

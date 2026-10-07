@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { brandingSchema, companySchema, isTimeZone, localisationSchema, securitySchema, signinSchema } from '../../shared/utils/settings/schemas'
+import { brandingSchema, companySchema, isTimeZone, emailsSchema, localisationSchema, notificationsSchema, securitySchema, signinSchema } from '../../shared/utils/settings/schemas'
 
 const company = {
   legal_name: 'Northwind Trading Ltd.',
@@ -102,5 +102,35 @@ describe('security settings', () => {
     expect(securitySchema.safeParse({ ...security, ip_allowlist: { enabled: false, entries: [{ value: '300.1.1.1', label: null }] } }).success).toBe(false)
     expect(securitySchema.safeParse({ ...security, sessions: { idle_minutes: 61, max_hours: 168 } }).success).toBe(false)
     expect(securitySchema.safeParse({ ...security, password: { ...security.password, min_length: 6 } }).success).toBe(false)
+  })
+})
+
+describe('notification settings', () => {
+  const rule = { in_app: true, email: false, to: 'admins', people: [] }
+  const events = Object.fromEntries(['response_new', 'response_duplicate', 'form_limit', 'form_closing', 'export_ready', 'webhook_failing', 'security_alert'].map(key => [key, rule]))
+
+  it('take a rule for every event and a summary hour', () => {
+    expect(notificationsSchema.safeParse({ events, digest: { enabled: true, hour: 8 } }).success).toBe(true)
+  })
+
+  it('need people when the rule says chosen people, and a real hour', () => {
+    const result = notificationsSchema.safeParse({ events: { ...events, form_limit: { ...rule, to: 'people', people: [] } }, digest: { enabled: true, hour: 24 } })
+    const fields = (result.error?.issues ?? []).map(issue => issue.path.join('.'))
+    expect(fields).toEqual(expect.arrayContaining(['events.form_limit.people', 'digest.hour']))
+  })
+})
+
+describe('email settings', () => {
+  it('keep own texts per template and language, empty sender values as null', () => {
+    const result = emailsSchema.parse({ sender_name: ' ', reply_to: '', footer: null, custom: { invitation: { de: { subject: 'Einladung', body: 'Hallo {{name}}' } } } })
+    expect(result.sender_name).toBeNull()
+    expect(result.reply_to).toBeNull()
+    expect(result.custom.invitation?.de?.subject).toBe('Einladung')
+  })
+
+  it('refuse an empty subject, an unknown template and a bad reply-to', () => {
+    expect(emailsSchema.safeParse({ sender_name: null, reply_to: null, footer: null, custom: { invitation: { en: { subject: '', body: 'x' } } } }).success).toBe(false)
+    expect(emailsSchema.safeParse({ sender_name: null, reply_to: null, footer: null, custom: { unknown: { en: { subject: 'a', body: 'b' } } } }).success).toBe(false)
+    expect(emailsSchema.safeParse({ sender_name: null, reply_to: 'nobody', footer: null, custom: {} }).success).toBe(false)
   })
 })

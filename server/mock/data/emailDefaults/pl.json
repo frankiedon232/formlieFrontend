@@ -1,0 +1,76 @@
+{
+  "templates": {
+    "signin_code": {
+      "subject": "Twój kod logowania do {{workspace}}",
+      "body": "Cześć {{name}},\n\nTwój kod to {{code}}. Jest ważny przez {{minutes}} minut.\n\nJeśli to nie Ty próbowałeś się zalogować, zmień hasło i powiadom administratora."
+    },
+    "password_reset": {
+      "subject": "Zresetuj hasło do {{workspace}}",
+      "body": "Cześć {{name}},\n\nUżyj kodu {{code}}, aby wybrać nowe hasło. Jest ważny przez {{minutes}} minut.\n\nJeśli o to nie prosiłeś, zignoruj ten e-mail. Twoje hasło pozostaje bez zmian."
+    },
+    "invitation": {
+      "subject": "{{inviter}} zaprasza Cię do {{workspace}}",
+      "body": "Cześć {{name}},\n\n{{inviter}} zaprasza Cię do wspólnej pracy w {{workspace}} w Formalie.\n\nPrzyjmij zaproszenie: {{link}}"
+    },
+    "response_receipt": {
+      "subject": "Twoje odpowiedzi w {{form}}",
+      "body": "Dziękujemy za wypełnienie {{form}}.\n\nOto kopia tego, co wysłano {{date}} (numer referencyjny {{number}}):\n\n{{answers}}\n\nZachowaj ten e-mail do swoich akt."
+    },
+    "response_notification": {
+      "subject": "Nowa odpowiedź w {{form}}",
+      "body": "{{form}} ma nową odpowiedź (numer {{number}}, {{date}}).\n\n{{answers}}\n\nOtwórz w Formalie: {{link}}"
+    },
+    "notification": {
+      "subject": "{{title}}",
+      "body": "{{message}}\n\nOtwórz Formalie: {{link}}"
+    },
+    "daily_digest": {
+      "subject": "Twój dzień w {{workspace}}",
+      "body": "Cześć {{name}},\n\nOto, co wydarzyło się od wczoraj:\n\n{{summary}}\n\nOtwórz Formalie: {{link}}"
+    }
+  },
+  "events": {
+    "response_new": {
+      "title": "Nowa odpowiedź w {{form}}",
+      "message": "{{form}} ma nową odpowiedź."
+    },
+    "response_duplicate": {
+      "title": "Możliwy duplikat w {{form}}",
+      "message": "Nowa odpowiedź w {{form}} wygląda jak wcześniejsza. Sprawdź ją, zanim ją policzysz."
+    },
+    "form_limit": {
+      "title": "{{form}} jest pełny",
+      "message": "{{form}} osiągnął limit {{limit}} odpowiedzi i nie przyjmuje kolejnych."
+    },
+    "form_closing": {
+      "title": "{{form}} wkrótce się zamknie",
+      "message": "{{form}} przestanie przyjmować odpowiedzi {{date}}."
+    },
+    "export_ready": {
+      "title": "Twój eksport jest gotowy",
+      "message": "{{file}} jest gotowy do pobrania."
+    },
+    "webhook_failing": {
+      "title": "Webhook {{name}} nie działa",
+      "message": "Dostarczanie do {{name}} wciąż się nie udaje, więc wstrzymano go. Sprawdź jego adres i token."
+    },
+    "security_alert": {
+      "title": "Zablokowano logowanie w {{workspace}}",
+      "message": "Logowanie użytkownika {{email}} zostało zablokowane: {{reason}}."
+    }
+  },
+  "layout": {
+    "footer": "Dostajesz ten e-mail z powodu Twojego konta w {{workspace}}.",
+    "answers": "Odpowiedzi",
+    "open": "Otwórz",
+    "summary": "{{count}} × {{title}}",
+    "footer_form": "Dostajesz ten e-mail z powodu formularza z {{workspace}}."
+  },
+  "reasons": {
+    "ip_not_allowed": "sieć nie znajduje się na liście dozwolonych",
+    "email_domain": "domena e-mail jest niedozwolona",
+    "code_locked": "zbyt wiele błędnych kodów",
+    "account_disabled": "konto jest wyłączone",
+    "password_expired": "hasło wygasło"
+  }
+}

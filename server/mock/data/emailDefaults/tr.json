@@ -1,0 +1,76 @@
+{
+  "templates": {
+    "signin_code": {
+      "subject": "{{workspace}} için giriş kodunuz",
+      "body": "Merhaba {{name}},\n\nKodunuz {{code}}. {{minutes}} dakika geçerlidir.\n\nGiriş yapmaya çalışmadıysanız parolanızı değiştirin ve yöneticinize haber verin."
+    },
+    "password_reset": {
+      "subject": "{{workspace}} parolanızı sıfırlayın",
+      "body": "Merhaba {{name}},\n\nYeni bir parola seçmek için {{code}} kodunu kullanın. {{minutes}} dakika geçerlidir.\n\nBunu siz istemediyseniz bu e-postayı yok sayabilirsiniz. Parolanız aynı kalır."
+    },
+    "invitation": {
+      "subject": "{{inviter}} sizi {{workspace}} alanına davet etti",
+      "body": "Merhaba {{name}},\n\n{{inviter}} sizi Formalie'de {{workspace}} içinde birlikte çalışmaya davet etti.\n\nDaveti kabul edin: {{link}}"
+    },
+    "response_receipt": {
+      "subject": "{{form}} yanıtlarınız",
+      "body": "{{form}} formunu doldurduğunuz için teşekkürler.\n\n{{date}} tarihinde gönderdiklerinizin bir kopyası burada (referans {{number}}):\n\n{{answers}}\n\nBu e-postayı kayıtlarınız için saklayın."
+    },
+    "response_notification": {
+      "subject": "{{form}} için yeni yanıt",
+      "body": "{{form}} formuna yeni bir yanıt geldi (numara {{number}}, {{date}}).\n\n{{answers}}\n\nFormalie'de açın: {{link}}"
+    },
+    "notification": {
+      "subject": "{{title}}",
+      "body": "{{message}}\n\nFormalie'yi açın: {{link}}"
+    },
+    "daily_digest": {
+      "subject": "{{workspace}} içinde gününüz",
+      "body": "Merhaba {{name}},\n\nDünden bu yana olanlar:\n\n{{summary}}\n\nFormalie'yi açın: {{link}}"
+    }
+  },
+  "events": {
+    "response_new": {
+      "title": "{{form}} için yeni yanıt",
+      "message": "{{form}} formuna yeni bir yanıt geldi."
+    },
+    "response_duplicate": {
+      "title": "{{form}} içinde olası yinelenen kayıt",
+      "message": "{{form}} formuna gelen yeni bir yanıt öncekilerden birine benziyor. Saymadan önce bir göz atın."
+    },
+    "form_limit": {
+      "title": "{{form}} doldu",
+      "message": "{{form}} {{limit}} yanıtlık sınıra ulaştı ve artık yanıt almıyor."
+    },
+    "form_closing": {
+      "title": "{{form}} yakında kapanıyor",
+      "message": "{{form}} {{date}} tarihinde yanıt almayı bırakacak."
+    },
+    "export_ready": {
+      "title": "Dışa aktarmanız hazır",
+      "message": "{{file}} indirilmeye hazır."
+    },
+    "webhook_failing": {
+      "title": "{{name}} webhook'u başarısız oluyor",
+      "message": "{{name}} adresine teslimatlar sürekli başarısız olduğu için duraklatıldı. Adresini ve belirtecini kontrol edin."
+    },
+    "security_alert": {
+      "title": "{{workspace}} içinde giriş engellendi",
+      "message": "{{email}} tarafından yapılan bir giriş engellendi: {{reason}}."
+    }
+  },
+  "layout": {
+    "footer": "Bu e-postayı {{workspace}} içindeki hesabınız nedeniyle alıyorsunuz.",
+    "answers": "Yanıtlar",
+    "open": "Aç",
+    "summary": "{{count}} × {{title}}",
+    "footer_form": "Bu e-postayı {{workspace}} tarafından gönderilen bir form nedeniyle alıyorsunuz."
+  },
+  "reasons": {
+    "ip_not_allowed": "ağ izin verilenler listesinde değil",
+    "email_domain": "e-posta alan adına izin verilmiyor",
+    "code_locked": "çok fazla yanlış kod",
+    "account_disabled": "hesap devre dışı",
+    "password_expired": "parolanın süresi doldu"
+  }
+}

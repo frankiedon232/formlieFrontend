@@ -63,7 +63,8 @@
     "footer": "You get this email because of your account in {{workspace}}.",
     "answers": "Answers",
     "open": "Open",
-    "summary": "{{count}} × {{title}}"
+    "summary": "{{count}} × {{title}}",
+    "footer_form": "You get this email because of a form from {{workspace}}."
   },
   "reasons": {
     "ip_not_allowed": "the network is not on the allowed list",

@@ -26,6 +26,7 @@ import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
 import { findByPublicKey, findByShortCode, formsOf, saveForms, type StoredForm } from '../data/formStore'
 import { notifyResponse } from '../data/notificationStore'
+import { emailResponse } from '../data/responseEmails'
 import { formLink, publicHosts, SHORT_CODE_PATTERN } from '#shared/utils/urls/public'
 import { frameAncestors } from '#shared/utils/urls/embed-domains'
 import { fingerprintOf, responseForSubmission, responsesOf, saveResponses } from '../data/responseStore'
@@ -359,6 +360,7 @@ export const submitPublicForm = defineMockRoute(async ({ event, body }) => {
     saveForms()
     emitResponse(event, tenant, 'response.created', stored, response.id)
     notifyResponse(event, tenant, stored, response.id, !!possibleDuplicate)
+    emailResponse(event, tenant, stored, schema, response)
   }
   recordAudit(event, tenant, {
     action: 'responses.submitted',

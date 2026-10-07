@@ -11,7 +11,7 @@ import { z } from 'zod'
 import { EMAIL_TEMPLATES, EMAIL_VARIABLES, type EmailTemplateKey, type EmailTemplateView, type SentEmail } from '#shared/types/emails'
 import { emailTextSchema } from '#shared/utils/settings/schemas'
 import { requireAdmin } from '../core/auth'
-import { emailDefaults, emailLanguage, renderEmail, templateText, type EmailAnswer } from '../core/email'
+import { emailDate, emailDefaults, emailLanguage, renderEmail, templateText, type EmailAnswer } from '../core/email'
 import { MockError, ok, paginate } from '../core/respond'
 import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
@@ -44,7 +44,7 @@ function sampleValues(event: H3Event, tenant: MockTenant, user: MockUser, key: E
     inviter: `${user.first_name} ${user.last_name}`,
     form,
     number: 128,
-    date: new Intl.DateTimeFormat(language, { dateStyle: 'medium', timeStyle: 'short' }).format(new Date()),
+    date: emailDate(tenant, language),
     link: workspaceUrl(event, tenant, key === 'invitation' ? '/auth/login' : '/'),
     title: texts.events.response_new!.title.replace('{{form}}', form),
     message: texts.events.response_new!.message.replace('{{form}}', form),
@@ -68,7 +68,7 @@ export const previewEmail = defineMockRoute(({ event, body }) => {
   const input = parseBody(previewSchema, body)
   const language = emailLanguage(tenant, input.language)
   const { vars, answers } = sampleValues(event, tenant, user, input.key, language)
-  const rendered = renderEmail(tenant, input.key, language, vars, { answers, text: { subject: input.subject, body: input.body } })
+  const rendered = renderEmail(tenant, input.key, language, vars, { answers, text: { subject: input.subject, body: input.body }, footer: input.key === 'response_receipt' ? 'form' : 'account' })
   return ok({ subject: rendered.subject, html: rendered.html, from: rendered.from, reply_to: rendered.reply_to })
 })
 
@@ -77,7 +77,7 @@ export const testEmail = defineMockRoute(({ event, body }) => {
   const input = parseBody(previewSchema, body)
   const language = emailLanguage(tenant, input.language)
   const { vars, answers } = sampleValues(event, tenant, user, input.key, language)
-  const sent = sendEmail(tenant, { to: user.email, key: input.key, language, vars, answers, reason: 'test', text: { subject: input.subject, body: input.body } })
+  const sent = sendEmail(tenant, { to: user.email, key: input.key, language, vars, answers, reason: 'test', text: { subject: input.subject, body: input.body }, footer: input.key === 'response_receipt' ? 'form' : 'account' })
   if (!sent) throw new MockError('FRM-GEN-5000')
   const { html: _h, text: _t, ...item } = sent
   return ok(item)

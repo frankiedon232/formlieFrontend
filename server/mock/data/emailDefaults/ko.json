@@ -1,0 +1,76 @@
+{
+  "templates": {
+    "signin_code": {
+      "subject": "{{workspace}} 로그인 코드",
+      "body": "{{name}}님, 안녕하세요.\n\n코드는 {{code}}입니다. {{minutes}}분 동안 유효합니다.\n\n로그인을 시도하지 않았다면 비밀번호를 변경하고 관리자에게 알려 주세요."
+    },
+    "password_reset": {
+      "subject": "{{workspace}} 비밀번호 재설정",
+      "body": "{{name}}님, 안녕하세요.\n\n새 비밀번호를 설정하려면 코드 {{code}}을(를) 사용하세요. {{minutes}}분 동안 유효합니다.\n\n요청하지 않았다면 이 이메일을 무시해도 됩니다. 비밀번호는 그대로 유지됩니다."
+    },
+    "invitation": {
+      "subject": "{{inviter}}님이 {{workspace}}에 초대했습니다",
+      "body": "{{name}}님, 안녕하세요.\n\n{{inviter}}님이 Formalie의 {{workspace}}에서 함께 일하도록 초대했습니다.\n\n초대 수락하기: {{link}}"
+    },
+    "response_receipt": {
+      "subject": "{{form}}에 대한 내 답변",
+      "body": "{{form}}을(를) 작성해 주셔서 감사합니다.\n\n{{date}}에 보내신 내용의 사본입니다(참조 번호 {{number}}):\n\n{{answers}}\n\n기록용으로 이 이메일을 보관해 주세요."
+    },
+    "response_notification": {
+      "subject": "{{form}}에 새 응답",
+      "body": "{{form}}에 새 응답이 있습니다(번호 {{number}}, {{date}}).\n\n{{answers}}\n\nFormalie에서 열기: {{link}}"
+    },
+    "notification": {
+      "subject": "{{title}}",
+      "body": "{{message}}\n\nFormalie 열기: {{link}}"
+    },
+    "daily_digest": {
+      "subject": "{{workspace}}의 오늘",
+      "body": "{{name}}님, 안녕하세요.\n\n어제 이후 있었던 일입니다:\n\n{{summary}}\n\nFormalie 열기: {{link}}"
+    }
+  },
+  "events": {
+    "response_new": {
+      "title": "{{form}}에 새 응답",
+      "message": "{{form}}에 새 응답이 있습니다."
+    },
+    "response_duplicate": {
+      "title": "{{form}}에 중복 가능성",
+      "message": "{{form}}의 새 응답이 이전 응답과 비슷해 보입니다. 집계하기 전에 확인해 보세요."
+    },
+    "form_limit": {
+      "title": "{{form}}이(가) 가득 찼습니다",
+      "message": "{{form}}이(가) 응답 한도 {{limit}}개에 도달해 더 이상 받지 않습니다."
+    },
+    "form_closing": {
+      "title": "{{form}}이(가) 곧 마감됩니다",
+      "message": "{{form}}은(는) {{date}}에 응답 접수를 중단합니다."
+    },
+    "export_ready": {
+      "title": "내보내기가 준비되었습니다",
+      "message": "{{file}}을(를) 다운로드할 수 있습니다."
+    },
+    "webhook_failing": {
+      "title": "웹훅 {{name}}에 오류가 발생하고 있습니다",
+      "message": "{{name}}(으)로의 전송이 계속 실패하여 일시 중지되었습니다. 주소와 토큰을 확인하세요."
+    },
+    "security_alert": {
+      "title": "{{workspace}}에서 로그인이 차단되었습니다",
+      "message": "{{email}}의 로그인이 차단되었습니다: {{reason}}."
+    }
+  },
+  "layout": {
+    "footer": "{{workspace}}의 계정 때문에 이 이메일을 받으셨습니다.",
+    "answers": "답변",
+    "open": "열기",
+    "summary": "{{count}} × {{title}}",
+    "footer_form": "{{workspace}}의 양식 때문에 이 이메일을 받으셨습니다."
+  },
+  "reasons": {
+    "ip_not_allowed": "네트워크가 허용 목록에 없습니다",
+    "email_domain": "이메일 도메인이 허용되지 않습니다",
+    "code_locked": "잘못된 코드가 너무 많습니다",
+    "account_disabled": "계정이 비활성화되었습니다",
+    "password_expired": "비밀번호가 만료되었습니다"
+  }
+}

@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-07 (F14 M3 sign-in and security)
+**Last updated:** 2026-10-07 (F14 M4 notifications and emails)
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend
 
@@ -24,7 +24,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F11   | Responses                                         | ✅     | 100% |
 | F12   | Data sources & databases                          | ✅     | 100% |
 | F13   | API service & integrations                        | ✅     | 100% (owner-tested 2026-10-06) |
-| F14   | Settings                                          | 🟡     | ~45% (M1 to M3 ✅) |
+| F14   | Settings                                          | 🟡     | ~60% (M1 to M4 ✅) |
 | F15   | Option sets & payments                            | ⬜     | 0%   |
 | F16   | Profile                                           | ⬜     | 0%   |
 | F17   | Users                                             | ⬜     | 0%   |
@@ -715,7 +715,7 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 
 **Goal:** one place where workspace admins control everything about their workspace. Each section is its own page under `/settings/*`, with a section menu (sidebar list on desktop, select on phones), unsaved-changes warning and a save bar.
 
-**Plan (2026-10-06, milestones):** **M1** ✅ Settings frame, Company, Branding, Language and region. **M2** ✅ Organisation data (departments, job titles, teams and locations; builder reads them). **M3** ✅ Sign-in and security. **M4** Notifications and emails (incl. emailing responses to the team and outside addresses). **M5** Privacy, data and form defaults. **M6** Appearance. **M7** Address, domain and organisations. Billing moved to F23.
+**Plan (2026-10-06, milestones):** **M1** ✅ Settings frame, Company, Branding, Language and region. **M2** ✅ Organisation data (departments, job titles, teams and locations; builder reads them). **M3** ✅ Sign-in and security. **M4** ✅ Notifications and emails (incl. emailing responses to the team and outside addresses). **M5** Privacy, data and form defaults. **M6** Appearance. **M7** Address, domain and organisations. Billing moved to F23.
 
 ### Settings shell
 
@@ -788,9 +788,10 @@ Every workspace sets up its own reference data here; the builder, field access a
 
 ### Notifications & email templates
 
-- ⬜ Which events notify whom (new response, export ready, form closing, security alerts)
-- ⬜ Email templates (sign-in code, invitation, response receipt, notification) with preview and test send, per language
-- ⬜ Sender name and reply-to address (custom sending domain later)
+- ✅ Which events notify whom (new response, possible duplicate, form full, form closing, export ready, webhook failing, sign-in blocked): in the app and / or email, admins / everyone / chosen people, optional daily summary; the bell shows a live feed with unread count
+- ✅ Email templates (sign-in code, password reset, invitation, new response, respondent copy, notification, daily summary) with placeholders, live preview, test send, per language; a sent log until a mail service is connected
+- ✅ Sender name, reply-to address and a footer line (custom sending domain later)
+- ✅ Response emails per form (owner request): new responses to team members and outside addresses (personal answers masked unless allowed), a copy for the respondent
 
 ### Privacy & data
 
@@ -1354,3 +1355,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-06 | F14 | M1 Settings frame and basics: one saved settings record per workspace (`settingsStore`, onboarding reads and writes it), `/settings` routes with shared validation (`shared/utils/settings/schemas.ts`) and field-by-field audit; Settings navigator in the menu column (takeover) or a Sections panel, overview with setup ring, next step and section statuses, search (navigator and Ctrl+K); Company (with a receipt-style preview), Branding (pictures upload at once; live sign-in preview; the sign-in page, its showcase and the browser tab icon use the branding), Language and region (live preview; useFormat applies time zone, short date format, number signs and currency everywhere; form language pickers follow form languages). Checked in the browser: overview statuses, Company save with a field error refused then saved, Branding uploads and preview, tab icon after reload, number format applied on another page (13.735), leave warning, phone layout; test edits undone. Tests: settings rules. |
 | 2026-10-07 | F14 | M2 Organisation data: `orgStore` (per workspace, demo workspaces keep their sample departments' ids, new ones start empty), `/org/{kind}` routes (list, insights, CRUD, archive / restore, merge with field restrictions moved, import, usage, delete only when unused; FRM-ORG-1001 / 1002; audit `settings.org_*`), `/directory` reads it; Settings pages Departments, Job titles, Teams and locations (switch: teams, locations, cost centres) in the locked list format with Import (paste or CSV, preview) and Merge (also for selected rows); builder Field access gains Job titles (dropdown), an empty state linking to Settings and stale-entry marks. Checked in the browser: departments overview and cards, import preview (header, duplicates, too long) and import, merge into Finance with the panel opening, the builder listing the job titles; test entries removed and the form field put back. |
 | 2026-10-07 | F14 | M3 Sign-in and security: sections `signin` and `security` in the settings store (backfilled for existing workspaces), the sign-in methods now come from Settings; mock auth applies everything: code expiry and tries per workspace, SMS on / off, allowed domains (FRM-AUTH-1014), expired passwords (1015, sign-in opens the reset), IP allowlist at sign-in and on every request (1016), password rules and no reuse on reset (1007 / 1018), idle and maximum session length; lock-out guard (1017); sessions list and sign out (one or everyone else); sign-in activity from the audit trail. Pages Sign-in (method cards, code rules, domains, live preview) and Security (activity card, password rules with a try field, sessions, allowlist). Checked in the browser: domain list refused without our own domain then saved, SMS off, IP allowlist refused without our address then saved with it (portal kept working), try-a-password with Symbol required, overview statuses, phone layout; test changes reverted. |
+| 2026-10-07 | F14 | M4 Notifications and emails: sections `notifications` and `emails`; mock notification store (`notify()` follows the rules: in-app feed per person, emails or the daily summary) hooked into responses (form page and API: new, possible duplicate, form full), blocked sign-ins and locked codes, paused webhooks, and (when the feed is read) forms closing within a day and finished exports; `/notifications` feed routes; bell with unread count and a real panel (Today / Earlier, open goes to the item). Emails: renderer with the workspace's look, default texts per language (`server/mock/data/emailDefaults/`), sent log (codes never stored), template editor with placeholders, live preview, test send; sign-in and reset code emails go to the log. Per-form response emails in the builder (team, outside addresses with masked personal answers, respondent copy). Checked in the browser: settings pages, a real response showing in the bell and opening the exact response, a test email and its preview, a form published with team + outside + copy (three correct emails: link only for the team, email masked for the outside address, copy to the respondent), then switched off and republished. |

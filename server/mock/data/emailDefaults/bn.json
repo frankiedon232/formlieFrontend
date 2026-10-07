@@ -1,0 +1,76 @@
+{
+  "templates": {
+    "signin_code": {
+      "subject": "{{workspace}}-এর জন্য আপনার সাইন-ইন কোড",
+      "body": "নমস্কার {{name}},\n\nআপনার কোড {{code}}। এটি {{minutes}} মিনিট কার্যকর থাকবে।\n\nআপনি সাইন ইন করার চেষ্টা না করে থাকলে পাসওয়ার্ড বদলান এবং আপনার অ্যাডমিনকে জানান।"
+    },
+    "password_reset": {
+      "subject": "আপনার {{workspace}} পাসওয়ার্ড রিসেট করুন",
+      "body": "নমস্কার {{name}},\n\nনতুন পাসওয়ার্ড বেছে নিতে কোড {{code}} ব্যবহার করুন। এটি {{minutes}} মিনিট কার্যকর থাকবে।\n\nআপনি এটি না চেয়ে থাকলে এই ইমেল উপেক্ষা করতে পারেন। আপনার পাসওয়ার্ড অপরিবর্তিত থাকবে।"
+    },
+    "invitation": {
+      "subject": "{{inviter}} আপনাকে {{workspace}}-এ আমন্ত্রণ জানিয়েছেন",
+      "body": "নমস্কার {{name}},\n\n{{inviter}} আপনাকে Formalie-তে {{workspace}}-এ একসঙ্গে কাজ করতে আমন্ত্রণ জানিয়েছেন।\n\nআমন্ত্রণ গ্রহণ করুন: {{link}}"
+    },
+    "response_receipt": {
+      "subject": "{{form}}-এ আপনার উত্তর",
+      "body": "{{form}} পূরণ করার জন্য ধন্যবাদ।\n\n{{date}} তারিখে আপনি যা পাঠিয়েছিলেন তার একটি কপি এখানে (রেফারেন্স {{number}}):\n\n{{answers}}\n\nআপনার রেকর্ডের জন্য এই ইমেলটি রেখে দিন।"
+    },
+    "response_notification": {
+      "subject": "{{form}}-এ নতুন উত্তর",
+      "body": "{{form}}-এ একটি নতুন উত্তর এসেছে (নম্বর {{number}}, {{date}})।\n\n{{answers}}\n\nFormalie-তে খুলুন: {{link}}"
+    },
+    "notification": {
+      "subject": "{{title}}",
+      "body": "{{message}}\n\nFormalie খুলুন: {{link}}"
+    },
+    "daily_digest": {
+      "subject": "{{workspace}}-এ আপনার দিন",
+      "body": "নমস্কার {{name}},\n\nগতকাল থেকে যা ঘটেছে:\n\n{{summary}}\n\nFormalie খুলুন: {{link}}"
+    }
+  },
+  "events": {
+    "response_new": {
+      "title": "{{form}}-এ নতুন উত্তর",
+      "message": "{{form}}-এ একটি নতুন উত্তর এসেছে।"
+    },
+    "response_duplicate": {
+      "title": "{{form}}-এ সম্ভাব্য পুনরাবৃত্তি",
+      "message": "{{form}}-এর একটি নতুন উত্তর আগের একটির মতো দেখাচ্ছে। গণনার আগে একবার দেখে নিন।"
+    },
+    "form_limit": {
+      "title": "{{form}} পূর্ণ হয়ে গেছে",
+      "message": "{{form}} তার {{limit}}টি উত্তরের সীমায় পৌঁছেছে এবং আর কোনো উত্তর নেবে না।"
+    },
+    "form_closing": {
+      "title": "{{form}} শীঘ্রই বন্ধ হবে",
+      "message": "{{form}} {{date}} তারিখে উত্তর নেওয়া বন্ধ করবে।"
+    },
+    "export_ready": {
+      "title": "আপনার এক্সপোর্ট প্রস্তুত",
+      "message": "{{file}} ডাউনলোডের জন্য প্রস্তুত।"
+    },
+    "webhook_failing": {
+      "title": "ওয়েবহুক {{name}} ব্যর্থ হচ্ছে",
+      "message": "{{name}}-এ ডেলিভারি বারবার ব্যর্থ হচ্ছে, তাই এটি থামানো হয়েছে। এর ঠিকানা ও টোকেন দেখুন।"
+    },
+    "security_alert": {
+      "title": "{{workspace}}-এ সাইন-ইন আটকানো হয়েছে",
+      "message": "{{email}}-এর একটি সাইন-ইন আটকানো হয়েছে: {{reason}}।"
+    }
+  },
+  "layout": {
+    "footer": "{{workspace}}-এ আপনার অ্যাকাউন্টের কারণে আপনি এই ইমেল পাচ্ছেন।",
+    "answers": "উত্তর",
+    "open": "খুলুন",
+    "summary": "{{count}} × {{title}}",
+    "footer_form": "{{workspace}}-এর একটি ফর্মের কারণে আপনি এই ইমেল পাচ্ছেন।"
+  },
+  "reasons": {
+    "ip_not_allowed": "নেটওয়ার্কটি অনুমোদিত তালিকায় নেই",
+    "email_domain": "ইমেলের ডোমেইন অনুমোদিত নয়",
+    "code_locked": "অনেকগুলো ভুল কোড",
+    "account_disabled": "অ্যাকাউন্ট নিষ্ক্রিয়",
+    "password_expired": "পাসওয়ার্ডের মেয়াদ শেষ হয়েছে"
+  }
+}

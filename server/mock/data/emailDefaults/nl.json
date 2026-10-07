@@ -1,0 +1,76 @@
+{
+  "templates": {
+    "signin_code": {
+      "subject": "Je inlogcode voor {{workspace}}",
+      "body": "Hallo {{name}},\n\nJe code is {{code}}. Hij is {{minutes}} minuten geldig.\n\nAls je niet probeerde in te loggen, wijzig dan je wachtwoord en meld het aan je beheerder."
+    },
+    "password_reset": {
+      "subject": "Reset je wachtwoord voor {{workspace}}",
+      "body": "Hallo {{name}},\n\nGebruik de code {{code}} om een nieuw wachtwoord te kiezen. Hij is {{minutes}} minuten geldig.\n\nAls je dit niet hebt gevraagd, kun je deze e-mail negeren. Je wachtwoord blijft hetzelfde."
+    },
+    "invitation": {
+      "subject": "{{inviter}} heeft je uitgenodigd voor {{workspace}}",
+      "body": "Hallo {{name}},\n\n{{inviter}} heeft je uitgenodigd om samen te werken in {{workspace}} op Formalie.\n\nAccepteer de uitnodiging: {{link}}"
+    },
+    "response_receipt": {
+      "subject": "Je antwoorden op {{form}}",
+      "body": "Bedankt voor het invullen van {{form}}.\n\nHier is een kopie van wat je op {{date}} hebt verstuurd (referentie {{number}}):\n\n{{answers}}\n\nBewaar deze e-mail voor je administratie."
+    },
+    "response_notification": {
+      "subject": "Nieuwe reactie op {{form}}",
+      "body": "{{form}} heeft een nieuwe reactie (nummer {{number}}, {{date}}).\n\n{{answers}}\n\nOpen in Formalie: {{link}}"
+    },
+    "notification": {
+      "subject": "{{title}}",
+      "body": "{{message}}\n\nOpen Formalie: {{link}}"
+    },
+    "daily_digest": {
+      "subject": "Je dag in {{workspace}}",
+      "body": "Hallo {{name}},\n\nDit is er sinds gisteren gebeurd:\n\n{{summary}}\n\nOpen Formalie: {{link}}"
+    }
+  },
+  "events": {
+    "response_new": {
+      "title": "Nieuwe reactie op {{form}}",
+      "message": "{{form}} heeft een nieuwe reactie."
+    },
+    "response_duplicate": {
+      "title": "Mogelijk dubbel in {{form}}",
+      "message": "Een nieuwe reactie op {{form}} lijkt op een eerdere. Kijk ernaar voordat je hem meetelt."
+    },
+    "form_limit": {
+      "title": "{{form}} is vol",
+      "message": "{{form}} heeft de limiet van {{limit}} reacties bereikt en neemt er geen meer aan."
+    },
+    "form_closing": {
+      "title": "{{form}} sluit binnenkort",
+      "message": "{{form}} neemt vanaf {{date}} geen reacties meer aan."
+    },
+    "export_ready": {
+      "title": "Je export is klaar",
+      "message": "{{file}} staat klaar om te downloaden."
+    },
+    "webhook_failing": {
+      "title": "Webhook {{name}} mislukt",
+      "message": "Leveringen aan {{name}} blijven mislukken, daarom is hij gepauzeerd. Controleer het adres en de token."
+    },
+    "security_alert": {
+      "title": "Inloggen geblokkeerd in {{workspace}}",
+      "message": "Een inlogpoging van {{email}} is geblokkeerd: {{reason}}."
+    }
+  },
+  "layout": {
+    "footer": "Je ontvangt deze e-mail vanwege je account in {{workspace}}.",
+    "answers": "Antwoorden",
+    "open": "Openen",
+    "summary": "{{count}} × {{title}}",
+    "footer_form": "Je ontvangt deze e-mail vanwege een formulier van {{workspace}}."
+  },
+  "reasons": {
+    "ip_not_allowed": "het netwerk staat niet op de lijst met toegestane netwerken",
+    "email_domain": "het e-maildomein is niet toegestaan",
+    "code_locked": "te veel foute codes",
+    "account_disabled": "het account is uitgeschakeld",
+    "password_expired": "het wachtwoord is verlopen"
+  }
+}

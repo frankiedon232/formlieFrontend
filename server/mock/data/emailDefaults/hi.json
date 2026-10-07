@@ -1,0 +1,76 @@
+{
+  "templates": {
+    "signin_code": {
+      "subject": "{{workspace}} के लिए आपका साइन-इन कोड",
+      "body": "नमस्ते {{name}},\n\nआपका कोड {{code}} है। यह {{minutes}} मिनट तक मान्य है।\n\nयदि आपने साइन इन करने की कोशिश नहीं की, तो अपना पासवर्ड बदलें और अपने एडमिन को बताएँ।"
+    },
+    "password_reset": {
+      "subject": "अपना {{workspace}} पासवर्ड रीसेट करें",
+      "body": "नमस्ते {{name}},\n\nनया पासवर्ड चुनने के लिए कोड {{code}} इस्तेमाल करें। यह {{minutes}} मिनट तक मान्य है।\n\nयदि आपने यह नहीं माँगा, तो इस ईमेल को अनदेखा कर दें। आपका पासवर्ड वैसा ही रहेगा।"
+    },
+    "invitation": {
+      "subject": "{{inviter}} ने आपको {{workspace}} में आमंत्रित किया",
+      "body": "नमस्ते {{name}},\n\n{{inviter}} ने आपको Formalie पर {{workspace}} में साथ काम करने के लिए आमंत्रित किया है।\n\nआमंत्रण स्वीकार करें: {{link}}"
+    },
+    "response_receipt": {
+      "subject": "{{form}} पर आपके जवाब",
+      "body": "{{form}} भरने के लिए धन्यवाद।\n\nयह {{date}} को आपके भेजे जवाबों की प्रति है (संदर्भ {{number}}):\n\n{{answers}}\n\nअपने रिकॉर्ड के लिए यह ईमेल सँभालकर रखें।"
+    },
+    "response_notification": {
+      "subject": "{{form}} पर नया जवाब",
+      "body": "{{form}} पर एक नया जवाब आया है (संख्या {{number}}, {{date}})।\n\n{{answers}}\n\nFormalie में खोलें: {{link}}"
+    },
+    "notification": {
+      "subject": "{{title}}",
+      "body": "{{message}}\n\nFormalie खोलें: {{link}}"
+    },
+    "daily_digest": {
+      "subject": "{{workspace}} में आपका दिन",
+      "body": "नमस्ते {{name}},\n\nकल से अब तक यह हुआ:\n\n{{summary}}\n\nFormalie खोलें: {{link}}"
+    }
+  },
+  "events": {
+    "response_new": {
+      "title": "{{form}} पर नया जवाब",
+      "message": "{{form}} पर एक नया जवाब आया है।"
+    },
+    "response_duplicate": {
+      "title": "{{form}} में संभावित दोहराव",
+      "message": "{{form}} पर आया नया जवाब पहले के किसी जवाब जैसा लगता है। गिनने से पहले एक नज़र डाल लें।"
+    },
+    "form_limit": {
+      "title": "{{form}} भर गया है",
+      "message": "{{form}} अपनी {{limit}} जवाबों की सीमा तक पहुँच गया है और अब और नहीं लेगा।"
+    },
+    "form_closing": {
+      "title": "{{form}} जल्द बंद होगा",
+      "message": "{{form}} {{date}} को जवाब लेना बंद कर देगा।"
+    },
+    "export_ready": {
+      "title": "आपका एक्सपोर्ट तैयार है",
+      "message": "{{file}} डाउनलोड के लिए तैयार है।"
+    },
+    "webhook_failing": {
+      "title": "वेबहुक {{name}} विफल हो रहा है",
+      "message": "{{name}} को डिलीवरी बार-बार विफल हो रही है, इसलिए इसे रोक दिया गया। इसका पता और टोकन जाँचें।"
+    },
+    "security_alert": {
+      "title": "{{workspace}} में साइन-इन रोका गया",
+      "message": "{{email}} का एक साइन-इन रोका गया: {{reason}}।"
+    }
+  },
+  "layout": {
+    "footer": "आपको यह ईमेल {{workspace}} में आपके खाते के कारण मिला है।",
+    "answers": "जवाब",
+    "open": "खोलें",
+    "summary": "{{count}} × {{title}}",
+    "footer_form": "आपको यह ईमेल {{workspace}} के एक फ़ॉर्म के कारण मिला है।"
+  },
+  "reasons": {
+    "ip_not_allowed": "नेटवर्क अनुमत सूची में नहीं है",
+    "email_domain": "ईमेल डोमेन की अनुमति नहीं है",
+    "code_locked": "बहुत अधिक गलत कोड",
+    "account_disabled": "खाता अक्षम है",
+    "password_expired": "पासवर्ड की अवधि समाप्त हो चुकी है"
+  }
+}

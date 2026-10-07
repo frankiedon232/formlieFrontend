@@ -1,0 +1,76 @@
+{
+  "templates": {
+    "signin_code": {
+      "subject": "رمز تسجيل دخولك إلى {{workspace}}",
+      "body": "مرحباً {{name}}،\n\nرمزك هو {{code}}. وهو صالح لمدة {{minutes}} دقيقة.\n\nإذا لم تحاول تسجيل الدخول، فغيّر كلمة المرور وأبلغ المسؤول."
+    },
+    "password_reset": {
+      "subject": "إعادة تعيين كلمة مرور {{workspace}}",
+      "body": "مرحباً {{name}}،\n\nاستخدم الرمز {{code}} لاختيار كلمة مرور جديدة. وهو صالح لمدة {{minutes}} دقيقة.\n\nإذا لم تطلب ذلك، يمكنك تجاهل هذه الرسالة. ستبقى كلمة مرورك كما هي."
+    },
+    "invitation": {
+      "subject": "{{inviter}} دعاك إلى {{workspace}}",
+      "body": "مرحباً {{name}}،\n\nدعاك {{inviter}} للعمل معه في {{workspace}} على Formalie.\n\nاقبل الدعوة: {{link}}"
+    },
+    "response_receipt": {
+      "subject": "إجاباتك على {{form}}",
+      "body": "شكراً لملء {{form}}.\n\nهذه نسخة مما أرسلته في {{date}} (المرجع {{number}}):\n\n{{answers}}\n\nاحتفظ بهذه الرسالة في سجلاتك."
+    },
+    "response_notification": {
+      "subject": "رد جديد على {{form}}",
+      "body": "وصل رد جديد إلى {{form}} (الرقم {{number}}، {{date}}).\n\n{{answers}}\n\nافتحه في Formalie: {{link}}"
+    },
+    "notification": {
+      "subject": "{{title}}",
+      "body": "{{message}}\n\nافتح Formalie: {{link}}"
+    },
+    "daily_digest": {
+      "subject": "يومك في {{workspace}}",
+      "body": "مرحباً {{name}}،\n\nإليك ما حدث منذ الأمس:\n\n{{summary}}\n\nافتح Formalie: {{link}}"
+    }
+  },
+  "events": {
+    "response_new": {
+      "title": "رد جديد على {{form}}",
+      "message": "وصل رد جديد إلى {{form}}."
+    },
+    "response_duplicate": {
+      "title": "تكرار محتمل في {{form}}",
+      "message": "يشبه رد جديد على {{form}} ردّاً سابقاً. ألقِ نظرة عليه قبل احتسابه."
+    },
+    "form_limit": {
+      "title": "{{form}} ممتلئ",
+      "message": "بلغ {{form}} حدّه البالغ {{limit}} رداً ولم يعد يستقبل المزيد."
+    },
+    "form_closing": {
+      "title": "{{form}} سيُغلق قريباً",
+      "message": "سيتوقف {{form}} عن استقبال الردود في {{date}}."
+    },
+    "export_ready": {
+      "title": "تصديرك جاهز",
+      "message": "{{file}} جاهز للتنزيل."
+    },
+    "webhook_failing": {
+      "title": "الخطاف {{name}} يفشل",
+      "message": "تفشل عمليات التسليم إلى {{name}} باستمرار، لذا جرى إيقافه مؤقتاً. تحقق من عنوانه ورمزه."
+    },
+    "security_alert": {
+      "title": "حُظر تسجيل دخول في {{workspace}}",
+      "message": "حُظر تسجيل دخول من {{email}}: {{reason}}."
+    }
+  },
+  "layout": {
+    "footer": "تصلك هذه الرسالة بسبب حسابك في {{workspace}}.",
+    "answers": "الإجابات",
+    "open": "فتح",
+    "summary": "{{count}} × {{title}}",
+    "footer_form": "تصلك هذه الرسالة بسبب نموذج من {{workspace}}."
+  },
+  "reasons": {
+    "ip_not_allowed": "الشبكة ليست في القائمة المسموح بها",
+    "email_domain": "نطاق البريد الإلكتروني غير مسموح به",
+    "code_locked": "رموز خاطئة كثيرة جداً",
+    "account_disabled": "الحساب معطّل",
+    "password_expired": "انتهت صلاحية كلمة المرور"
+  }
+}

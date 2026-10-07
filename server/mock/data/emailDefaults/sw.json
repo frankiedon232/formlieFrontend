@@ -1,0 +1,76 @@
+{
+  "templates": {
+    "signin_code": {
+      "subject": "Msimbo wako wa kuingia kwa {{workspace}}",
+      "body": "Habari {{name}},\n\nMsimbo wako ni {{code}}. Unafanya kazi kwa dakika {{minutes}}.\n\nKama hukujaribu kuingia, badilisha nenosiri lako na umwambie msimamizi wako."
+    },
+    "password_reset": {
+      "subject": "Weka upya nenosiri lako la {{workspace}}",
+      "body": "Habari {{name}},\n\nTumia msimbo {{code}} kuchagua nenosiri jipya. Unafanya kazi kwa dakika {{minutes}}.\n\nKama hukuomba hili, unaweza kupuuza barua pepe hii. Nenosiri lako linabaki vilevile."
+    },
+    "invitation": {
+      "subject": "{{inviter}} amekualika kwenye {{workspace}}",
+      "body": "Habari {{name}},\n\n{{inviter}} amekualika ufanye kazi pamoja naye katika {{workspace}} kwenye Formalie.\n\nKubali mwaliko: {{link}}"
+    },
+    "response_receipt": {
+      "subject": "Majibu yako kwa {{form}}",
+      "body": "Asante kwa kujaza {{form}}.\n\nHii hapa nakala ya ulichotuma tarehe {{date}} (kumbukumbu {{number}}):\n\n{{answers}}\n\nHifadhi barua pepe hii kwa kumbukumbu zako."
+    },
+    "response_notification": {
+      "subject": "Jibu jipya kwa {{form}}",
+      "body": "{{form}} ina jibu jipya (nambari {{number}}, {{date}}).\n\n{{answers}}\n\nLifungue kwenye Formalie: {{link}}"
+    },
+    "notification": {
+      "subject": "{{title}}",
+      "body": "{{message}}\n\nFungua Formalie: {{link}}"
+    },
+    "daily_digest": {
+      "subject": "Siku yako katika {{workspace}}",
+      "body": "Habari {{name}},\n\nHaya ndiyo yaliyotokea tangu jana:\n\n{{summary}}\n\nFungua Formalie: {{link}}"
+    }
+  },
+  "events": {
+    "response_new": {
+      "title": "Jibu jipya kwa {{form}}",
+      "message": "{{form}} ina jibu jipya."
+    },
+    "response_duplicate": {
+      "title": "Huenda ni nakala rudufu katika {{form}}",
+      "message": "Jibu jipya kwa {{form}} linafanana na la awali. Liangalie kabla ya kulihesabu."
+    },
+    "form_limit": {
+      "title": "{{form}} imejaa",
+      "message": "{{form}} imefikia kikomo cha majibu {{limit}} na haipokei tena."
+    },
+    "form_closing": {
+      "title": "{{form}} inafungwa hivi karibuni",
+      "message": "{{form}} itaacha kupokea majibu tarehe {{date}}."
+    },
+    "export_ready": {
+      "title": "Usafirishaji wako uko tayari",
+      "message": "{{file}} iko tayari kupakuliwa."
+    },
+    "webhook_failing": {
+      "title": "Webhook {{name}} inashindwa",
+      "message": "Uwasilishaji kwa {{name}} unaendelea kushindwa, kwa hiyo imesitishwa. Angalia anwani na tokeni yake."
+    },
+    "security_alert": {
+      "title": "Kuingia kumezuiwa katika {{workspace}}",
+      "message": "Kuingia kwa {{email}} kumezuiwa: {{reason}}."
+    }
+  },
+  "layout": {
+    "footer": "Unapokea barua pepe hii kwa sababu ya akaunti yako katika {{workspace}}.",
+    "answers": "Majibu",
+    "open": "Fungua",
+    "summary": "{{count}} × {{title}}",
+    "footer_form": "Unapokea barua pepe hii kwa sababu ya fomu kutoka {{workspace}}."
+  },
+  "reasons": {
+    "ip_not_allowed": "mtandao hauko kwenye orodha inayoruhusiwa",
+    "email_domain": "kikoa cha barua pepe hakiruhusiwi",
+    "code_locked": "misimbo mingi mno isiyo sahihi",
+    "account_disabled": "akaunti imezimwa",
+    "password_expired": "nenosiri limeisha muda"
+  }
+}

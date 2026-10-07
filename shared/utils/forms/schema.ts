@@ -63,6 +63,15 @@ export const formSchemaV1 = z.object({
       identity: z
         .object({ email: text(64).nullable(), verify: z.boolean() })
         .optional(),
+      /** Response emails (F14 M4, shared/utils/forms/emails.ts): to team members, outside addresses, a copy for the respondent. */
+      emails: z
+        .object({
+          team: z.array(z.string().max(64)).max(50),
+          others: z.array(z.email().max(200)).max(20),
+          others_personal: z.boolean(),
+          receipt_field: text(64).nullable(),
+        })
+        .optional(),
       /** Help guide (F10, owner 2026-10-03): opened from a "?" button on the form; off by default. */
       guide: z.object({ enabled: z.boolean(), title: text(120), html: text(50_000) }).optional(),
     })
