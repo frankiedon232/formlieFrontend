@@ -7,6 +7,7 @@
  * same rules, so what people see is what gets checked.
  */
 import type { FormField } from './build'
+import { MAX_LIST_LEVELS } from './options'
 
 type Option = NonNullable<FormField['options']>[number]
 type FieldsById = Map<string, FormField>
@@ -16,7 +17,7 @@ const chosen = (value: unknown): string[] => (Array.isArray(value) ? value.filte
 /** The options a field offers with these answers (all of them for fields without a level above). */
 export function cascadeOptions(field: FormField, fieldsById: FieldsById, answers: Record<string, unknown>, depth = 0): Option[] {
   const options = field.options ?? []
-  if (!field.option_parent || depth > 5) return options
+  if (!field.option_parent || depth > MAX_LIST_LEVELS) return options
   const parent = fieldsById.get(field.option_parent)
   if (!parent) return options
   // A level above that is closed closes this one too
@@ -45,9 +46,9 @@ export function fitAnswer(field: FormField, fieldsById: FieldsById, answers: Rec
 export function cascadeChain(field: FormField, fields: FormField[]): FormField[] {
   const byId = new Map(fields.map(item => [item.id, item]))
   let top = field
-  for (let i = 0; i < 5 && top.option_parent && byId.get(top.option_parent); i++) top = byId.get(top.option_parent)!
+  for (let i = 0; i < MAX_LIST_LEVELS && top.option_parent && byId.get(top.option_parent); i++) top = byId.get(top.option_parent)!
   const chain = [top]
-  for (let i = 0; i < 5; i++) {
+  for (let i = 1; i < MAX_LIST_LEVELS; i++) {
     const child = fields.find(item => item.option_parent === chain.at(-1)!.id)
     if (!child) break
     chain.push(child)

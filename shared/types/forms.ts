@@ -244,7 +244,7 @@ export interface OptionList {
   id: string
   name: string
   description?: string | null
-  /** Two to five named levels for a list with levels; missing or one = a plain list. */
+  /** Two to four named levels for a list with levels; missing or one = a plain list. */
   levels?: OptionLevel[]
   options: OptionItem[]
   created_by: { id: string; name: string }

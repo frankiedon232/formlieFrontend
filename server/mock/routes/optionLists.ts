@@ -18,7 +18,7 @@ import { z } from 'zod'
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
 import type { OptionItem, OptionList, OptionListInsights, OptionListRow, OptionListUsage } from '#shared/types/forms'
 import { allFields } from '#shared/utils/forms/build'
-import { matchesList, offeredOptions } from '#shared/utils/forms/options'
+import { MAX_LIST_LEVELS, matchesList, offeredOptions } from '#shared/utils/forms/options'
 import { formLanguages, mainLanguage, textHash } from '#shared/utils/forms/translations'
 import { actorOf, recordAudit } from '../core/audit'
 import { requireAuth } from '../core/auth'
@@ -37,11 +37,11 @@ const item = z.object({
   score: z.number().finite().optional(),
   active: z.boolean().optional(),
   translations: z.record(z.string().max(10), z.string().max(500)).optional(),
-  level: z.number().int().min(0).max(4).optional(),
+  level: z.number().int().min(0).max(MAX_LIST_LEVELS - 1).optional(),
   parent: z.string().trim().max(200).optional(),
 })
 const level = z.object({ key: z.string().trim().min(1).max(40), label: z.string().trim().min(1).max(60) })
-const listBody = z.object({ name, description: z.string().trim().max(300).nullable().optional(), levels: z.array(level).max(5).optional(), options: z.array(item).min(1).max(20000) })
+const listBody = z.object({ name, description: z.string().trim().max(300).nullable().optional(), levels: z.array(level).max(MAX_LIST_LEVELS).optional(), options: z.array(item).min(1).max(20000) })
 
 const authorOf = (user: MockUser) => ({ id: user.id, name: `${user.first_name} ${user.last_name}`.trim() })
 const audit = (event: H3Event, tenant: MockTenant, user: MockUser, action: 'forms.list_created' | 'forms.list_updated' | 'forms.list_deleted' | 'forms.list_synced', list: { id: string; name: string }, extra: { changes?: { field: string; before: string | null; after: string | null }[]; metadata?: Record<string, string> } = {}) =>

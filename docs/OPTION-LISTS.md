@@ -22,7 +22,7 @@ Kinds combine: a cascading list can be large, have details on every level, and b
 OptionList {
   id, name, description?
   kind: 'static' | 'tree' | 'dynamic'
-  levels: { key: 'state', label: 'State' }[]        // tree only; 1–5 levels
+  levels: { key: 'state', label: 'State' }[]        // tree only; 1–4 levels
   columns: { key: 'postcode', label: 'Postcode', type: 'text' | 'number' | 'email' | 'phone' }[]
   source?: {                                         // dynamic only
     type: 'form' | 'database' | 'http' | 'csv'
@@ -115,8 +115,8 @@ Deleting or retiring items never breaks old responses.
 
 ## F15c lists with levels, as built (M2, 2026-10-07)
 
-- **Data:** `OptionList.levels?: { key, label }[]` (2 to 5; absent = a plain list); `OptionItem.level?` (0 = top, omitted) and `parent?` (the value of an option on the level above). The server refuses an option below the top without a parent on the level above (`422 FRM-FORM-1021`). Values stay unique across the whole list; imported children get `{parent}_{label}` values.
+- **Data:** `OptionList.levels?: { key, label }[]` (2 to 4, owner 2026-10-07; absent = a plain list); `OptionItem.level?` (0 = top, omitted) and `parent?` (the value of an option on the level above). The server refuses an option below the top without a parent on the level above (`422 FRM-FORM-1021`). Values stay unique across the whole list; imported children get `{parent}_{label}` values.
 - **Fields:** one field per level, `option_set_id`, `option_level` and `option_parent` (the field id one level up); each level is `dropdown` (one choice) or `multi_select` (several), chosen in the form design. Options carry `parent`.
 - **Rules (`shared/utils/forms/cascade.ts`, renderer and server alike):** a level offers only the options under what was chosen above (several chosen above: under any of them); with nothing chosen or nothing under it the level stays closed (hidden, not required); a changed choice drops answers that no longer fit. A retired option hides everything under it.
-- **Editor:** Levels card (name levels, add up to 5, remove the last with its options), Options one level at a time with the option above (searchable), Under filter, "N under it" to go down; Import maps one column per level (rows are paths); Paste only for plain lists.
+- **Editor:** Levels card (name levels, add up to 4, remove the last with its options), Options one level at a time with the option above (searchable), Under filter, "N under it" to go down; Import maps one column per level (rows are paths); Paste only for plain lists.
 - **Builder:** Lists tab shows plain lists with their option count and lists with levels with a badge and the chain; adding offers one choice or several (plain lists also radio and checkboxes); a level's settings show the chain, what it filters by, one / several and Update from the list.

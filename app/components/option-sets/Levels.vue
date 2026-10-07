@@ -1,12 +1,12 @@
 <!--
   Option list editor → Levels (F15 M2): a plain list has one level; a list with levels (Country → Region
-  → City, Product → Category → Type → Brand) names up to five. Each option below the top sits under one
+  → City, Product → Category → Type → Brand) names up to four (owner 2026-10-07). Each option below the top sits under one
   option on the level above, and in a form each level opens with only what is under the choice above.
   Removing a level removes its options (asked first when some were saved).
 -->
 <script setup lang="ts">
 import type { OptionItem, OptionLevel } from '#shared/types/forms'
-import { uniqueValue, valueFromLabel } from '#shared/utils/forms/options'
+import { MAX_LIST_LEVELS as MAX, uniqueValue, valueFromLabel } from '#shared/utils/forms/options'
 
 const levels = defineModel<OptionLevel[] | null>('levels', { required: true })
 const options = defineModel<OptionItem[]>('options', { required: true })
@@ -15,7 +15,6 @@ const { t } = useI18n()
 const { number } = useFormat()
 const confirm = useConfirm()
 
-const MAX = 5
 const countAt = (level: number) => options.value.filter(option => (option.level ?? 0) === level).length
 const keyFor = (label: string) => uniqueValue(valueFromLabel(label) || 'level', (levels.value ?? []).map(item => item.key))
 

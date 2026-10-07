@@ -5,6 +5,9 @@
  * value stays, so old answers keep reading.
  */
 
+/** The most levels a list may have (owner 2026-10-07: four, more becomes a mess). */
+export const MAX_LIST_LEVELS = 4
+
 export function valueFromLabel(label: string): string {
   const base = label
     .normalize('NFKD')
