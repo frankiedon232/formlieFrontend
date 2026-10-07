@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-07 (F14 owner feedback applied)
+**Last updated:** 2026-10-07 (F15 M1 list manager)
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend
 
@@ -25,7 +25,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F12   | Data sources & databases                          | ✅     | 100% |
 | F13   | API service & integrations                        | ✅     | 100% (owner-tested 2026-10-06) |
 | F14   | Settings                                          | ✅     | 100% (M1 to M7 ✅; billing in F23) |
-| F15   | Option sets & payments                            | ⬜     | 0%   |
+| F15   | Option sets & payments                            | 🟡     | ~15% (M1 ✅) |
 | F16   | Profile                                           | ⬜     | 0%   |
 | F17   | Users                                             | ⬜     | 0%   |
 | F18   | Analytics                                         | ✅     | 100% |
@@ -817,11 +817,13 @@ Every workspace sets up its own reference data here; the builder, field access a
 
 ### Option sets (reusable choice lists)
 
+**Plan (2026-10-07, milestones):** **M1** ✅ List manager (F15a: Option sets page in the list format, list editor with items, values, retire, reorder, bulk paste, CSV / Excel import with column mapping, translations, used in, update forms). **M2** Large lists and search as you type (F15b). **M3** Cascading lists (F15c). **M4** Details and auto-fill (F15d). **M5** Dynamic lists (F15e). **M6** Payments.
+
 Full plan: [docs/OPTION-LISTS.md](docs/OPTION-LISTS.md) (owner request 2026-10-02). Simple saved lists already exist (F7).
 
-- ⬜ **F15a List manager:** Option sets page (DataView), create, rename, delete (confirm when used by forms)
-- ⬜ Items: add, edit, retire, bulk paste, import CSV / XLSX with column mapping, reorder (drag + keyboard), values vs labels, translations
-- ⬜ "Used in" list of forms and fields
+- ✅ **F15a List manager:** Option sets page (locked list format), create, rename, duplicate, delete (asks first, says how many forms use it; forms keep their copies)
+- ✅ Items: add, edit, retire, bulk paste, import CSV / XLSX with column mapping and preview, reorder (drag + keyboard), values vs labels, scores, translations
+- ✅ "Used in" list of forms and fields, up-to-date marks, Update forms (drafts, with translations); the builder flags a changed list
 - ⬜ **F15b Large lists + autocomplete:** items on the server, "search as you type" field mode, paging
 - ⬜ **F15c Cascading lists (levels):** tree lists (e.g. State → City → Location, up to 5 levels), "Cascading choice" field group, child opens with the parent's items only, changing the parent clears children
 - ⬜ **F15d Details + auto-fill:** extra columns on items; choosing an item fills other fields (optionally read-only); columns usable in formulas and logic
@@ -1366,3 +1368,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-07 | F14 | M6 Appearance: section `appearance` (presets, primary incl. brand with contrast check, greys, background, corners, font, text size, dark rail / menu, menu counts, breadcrumbs, search, footer, width, spacing); `useAppearance` applies it for everyone (Nuxt UI colours + CSS variables, the primary also takes the design's inverted accent), the shell reads the rest; the Appearance page makes the real portal the live preview while editing. Checked in the browser: Midnight (dark rail and menu in light mode), Ocean saved with centred and compact, the Forms page in light and dark wearing it, then Reset to Formalie saved. |
 | 2026-10-07 | F14 | M7 Address, domain and organisations: `addressStore` (subdomain change with 90-day redirect via the host resolver, own domain with CNAME / TXT and a real DNS check, verified domains resolve to the workspace), Settings → Address and domain; organisations (`organisationStore`, `/organisations` routes, archive / restore, form move), request scope (`core/scope.ts`, header `x-formalie-organisation`) narrowing every list, new forms in the chosen organisation, public pages with the form's organisation; Settings → Organisations in the list format, the rail switcher, the builder's Organisation setting. Checked in the browser: availability (taken / free), a real change to remedylegal-uk and back (still signed in, old address listed), a test domain with a DNS check (not found) then removed, a second organisation created, the switcher narrowing Forms to it (empty), Visitor sign-in moved there (public page shows its name) and back, the test organisation archived. F14 complete; stopped for review. |
 | 2026-10-07 | F14 | Owner feedback: "Powered by Formalie" on the workspace sign-in page, Branding preview and every email; own domain and short-link domain removed (Workspace address keeps the subdomain change); organisations, the rail switcher and the form setting removed; teams, locations and cost centres removed; sign-in codes without an authenticator app, text messages off by default; Form defaults show the chosen theme. Checked in the browser: sign-in page (Samath Tax, Remedy Legal) with the mark in the showcase and under the form, the settings menu, the theme picture changing with the choice, the email preview HTML with the Formalie mark. |
+| 2026-10-07 | F15 | M1 List manager: `/option-lists` paged rows, insights, detail, usage, sync (copies into drafts with translations), duplicate; FRM-FORM-1020 repeated values; Option sets page (chart cards, table / cards), list editor (Options with values, scores, retire, reorder by drag or keyboard, Paste / Import with column mapping and preview, Translations, Used in with Update); CSV / XLSX reader in the browser (`app/utils/files/table.ts`); builder takes active options only and flags a changed list. Checked in the browser: the page, Departments: paste (2 new, 1 updated), retire, values, save, Used in reporting the older form, Update (the form got the new options without the retired one), then put back (Sales offered, the two test options retired, form updated back to its original six); the Excel reader with a compressed workbook and the CSV parser; the Translations tab. |

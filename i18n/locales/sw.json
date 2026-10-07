@@ -608,7 +608,8 @@
     "FRM-AUTH-1015": "Nenosiri lako limeisha muda. Weka jipya.",
     "FRM-AUTH-1016": "Kuingia hakuruhusiwi kutoka mtandao huu.",
     "FRM-AUTH-1017": "Mabadiliko haya yangekufungia nje. Angalia kikoa na anwani yako ya barua pepe.",
-    "FRM-AUTH-1018": "Ulitumia nenosiri hili hivi karibuni. Chagua lingine."
+    "FRM-AUTH-1018": "Ulitumia nenosiri hili hivi karibuni. Chagua lingine.",
+    "FRM-FORM-1020": "Chaguo mbili zina thamani moja. Kila thamani lazima iwe tofauti."
   },
   "errorUi": {
     "reference": "Kumbukumbu: {id}",
@@ -1069,7 +1070,8 @@
       "settings_org_deleted": "Kipengee cha shirika kimefutwa",
       "settings_retention_applied": "Majibu ya zamani yameondolewa (uhifadhi)",
       "settings_data_exported": "Data ya mtu imehamishwa",
-      "settings_data_deleted": "Data ya mtu imefutwa"
+      "settings_data_deleted": "Data ya mtu imefutwa",
+      "forms_list_synced": "Fomu zimesasishwa kutoka orodha ya chaguo"
     },
     "detail": {
       "who": "Nani",
@@ -2786,7 +2788,9 @@
       "listCreated": "Orodha “{name}” imeundwa",
       "listUpdated": "Orodha “{name}” imesasishwa",
       "listDeleted": "Orodha “{name}” imefutwa"
-    }
+    },
+    "listChanged": "{name} imebadilika tangu chaguo hizi zilipojazwa.",
+    "updateFromList": "Sasisha kutoka orodha"
   },
   "designer": {
     "crumb": "Muundo",
@@ -7086,6 +7090,138 @@
       "code_locked": "misimbo mingi isiyo sahihi",
       "account_disabled": "akaunti imezimwa",
       "password_expired": "nenosiri limeisha muda"
+    }
+  },
+  "optionSets": {
+    "subtitle": "Orodha za chaguo zinazoweza kutumika tena kwa fomu zako.",
+    "new": "Orodha mpya",
+    "search": "Tafuta orodha na chaguo",
+    "empty": "Bado hakuna orodha za chaguo",
+    "emptyDesc": "Tengeneza orodha mara moja kisha uitumie katika swali lolote la kuchagua.",
+    "options": "Chaguo",
+    "optionsHint": "Katika orodha zako zote, na orodha kubwa zaidi.",
+    "stat": {
+      "lists": "Orodha",
+      "retired": "Zilizositishwa"
+    },
+    "byState": "Kwa hali",
+    "total": "{n} kwa jumla",
+    "state": {
+      "in_use": "Inatumika",
+      "unused": "Bado haijatumika",
+      "retired": "Yenye chaguo zilizositishwa"
+    },
+    "col": {
+      "name": "Jina",
+      "items": "Chaguo",
+      "forms": "Inatumika katika",
+      "languages": "Imetafsiriwa",
+      "updated": "Imesasishwa",
+      "state": "Hali"
+    },
+    "sort": {
+      "items": "Chaguo nyingi zaidi",
+      "forms": "Zinazotumika zaidi",
+      "updated": "Zilizosasishwa hivi karibuni"
+    },
+    "itemsCount": "Chaguo {n} | Chaguo {n}",
+    "formsCount": "Fomu {n} | Fomu {n}",
+    "retiredCount": "{n} imesitishwa | {n} zimesitishwa",
+    "hasRetired": "Ina chaguo zilizositishwa",
+    "noDescription": "Hakuna maelezo",
+    "oneLanguage": "Lugha moja",
+    "duplicate": "Nakili",
+    "duplicated": "Nakala ya {name} imetengenezwa",
+    "deleteTitle": "Futa {name}?",
+    "deleteDesc": "Orodha itaondolewa kabisa.",
+    "deleteUsed": "Fomu {n} inaitumia. Inabaki na chaguo zake, lakini haiwezi tena kusasishwa kutoka orodha. | Fomu {n} zinaitumia. Zinabaki na chaguo zake, lakini haziwezi tena kusasishwa kutoka orodha.",
+    "deleted": "{name} imefutwa",
+    "notFound": "Orodha hii haipo tena",
+    "updatedBy": "Imesasishwa {when} · imetengenezwa na {name}",
+    "name": "Jina",
+    "description": "Maelezo",
+    "descriptionPlaceholder": "Inatumika kwa nini, mfano maeneo tunayohudumia",
+    "tab": {
+      "items": "Chaguo",
+      "translations": "Tafsiri",
+      "usage": "Inatumika katika"
+    },
+    "saved": "Orodha imehifadhiwa",
+    "savedUsed": "Fomu zinazoitumia zinaweza kusasishwa chini ya Inatumika katika. | Fomu zinazoitumia zinaweza kusasishwa chini ya Inatumika katika.",
+    "emptyLabels": "Chaguo {n} bado halina lebo. | Chaguo {n} bado hazina lebo.",
+    "items": {
+      "search": "Tafuta chaguo",
+      "showValues": "Thamani",
+      "showScores": "Alama",
+      "paste": "Bandika",
+      "import": "Leta",
+      "add": "Ongeza chaguo",
+      "summary": "{active} zinatolewa · {total} kwa jumla",
+      "repeated": "Thamani {n} imerudiwa | Thamani {n} zimerudiwa",
+      "none": "Bado hakuna chaguo",
+      "noneDesc": "Ziongeze moja moja, zibandike, au leta faili.",
+      "noMatch": "Hakuna chaguo zinazolingana",
+      "drag": "Buruta ili kuhamisha",
+      "label": "Lebo",
+      "labelPlaceholder": "Kile ambacho watu wanaona",
+      "value": "Thamani",
+      "score": "Alama",
+      "retired": "Imesitishwa",
+      "up": "Sogeza juu",
+      "down": "Sogeza chini",
+      "retire": "Sitisha: haitolewi tena, majibu ya zamani bado yanasomeka",
+      "bringBack": "Itoe tena",
+      "remove": "Ondoa",
+      "retireInstead": "Chaguo zilizohifadhiwa husitishwa badala ya kuondolewa, ili majibu ya zamani yaendelee kusomeka",
+      "more": "Onyesha {n} zaidi"
+    },
+    "import": {
+      "pasteTitle": "Bandika chaguo",
+      "pasteDesc": "Chaguo moja kwa kila mstari. Safu wima kutoka lahajedwali pia zinafanya kazi: lebo, thamani, alama, tafsiri.",
+      "fileTitle": "Leta chaguo",
+      "fileDesc": "Faili ya CSV au Excel. Chagua kila safu wima ina nini, kisha angalia hakikisho.",
+      "pastePlaceholder": "Kaskazini\nKusini\nMashariki\nMagharibi",
+      "drop": "Weka faili ya CSV au Excel hapa au bofya ili kuvinjari",
+      "types": "CSV, TXT au XLSX (ukurasa wa kwanza)",
+      "unsupported": "Aina hii ya faili haiwezi kusomwa. Tumia CSV, TXT au XLSX.",
+      "unreadable": "Faili haikuweza kusomwa. Ihifadhi tena kama CSV au XLSX.",
+      "header": "Mstari wa kwanza una majina ya safu wima",
+      "merge": "Ongeza na usasishe",
+      "replace": "Badilisha orodha",
+      "column": "Safu wima {n}",
+      "role": {
+        "label": "Lebo",
+        "value": "Thamani",
+        "score": "Alama",
+        "lang": "Lebo kwa {name}",
+        "skip": "Usitumie"
+      },
+      "summary": "Mistari {rows}: mipya {added}, iliyosasishwa {updated}",
+      "skipped": "{n} imerukwa (tupu au imerudiwa)",
+      "retired": "Chaguo {n} ambazo hazimo zitasitishwa",
+      "needLabel": "Chagua safu wima yenye lebo.",
+      "apply": "Tumia"
+    },
+    "translations": {
+      "none": "Fomu zako zinatumia lugha moja",
+      "noneDesc": "Ongeza lugha za fomu kwenye Mipangilio, kisha tafsiri chaguo hapa.",
+      "settings": "Mipangilio ya lugha",
+      "language": "Lugha",
+      "progress": "Imetafsiriwa",
+      "hint": "Fomu hupata tafsiri hizi zinaposasishwa kutoka orodha, kwa lugha wanazotoa.",
+      "for": "Tafsiri ya {label}"
+    },
+    "usage": {
+      "none": "Bado haijatumika",
+      "noneDesc": "Katika fomu, chagua orodha hii chini ya chaguo za swali la kuchagua.",
+      "failed": "Mahali inapotumika haikuweza kupakiwa",
+      "saveFirst": "Hifadhi mabadiliko yako kwanza, kisha usasishe fomu.",
+      "outdated": "Fomu {n} ina chaguo kutoka toleo la zamani la orodha. | Fomu {n} zina chaguo kutoka toleo la zamani la orodha.",
+      "allSynced": "Kila fomu ina orodha jinsi ilivyo sasa.",
+      "updateAll": "Sasisha fomu zote",
+      "update": "Sasisha",
+      "synced": "Fomu {n} imesasishwa | Fomu {n} zimesasishwa",
+      "publishHint": "{n} kati yake imechapishwa: ichapishe ili kuonyesha chaguo mpya. | {n} kati yake zimechapishwa: zichapishe ili kuonyesha chaguo mpya."
     }
   }
 }

@@ -608,7 +608,8 @@
     "FRM-AUTH-1015": "La tua password è scaduta. Imposta una nuova password.",
     "FRM-AUTH-1016": "L'accesso non è consentito da questa rete.",
     "FRM-AUTH-1017": "Questa modifica ti bloccherebbe l'accesso. Controlla il tuo dominio e il tuo indirizzo email.",
-    "FRM-AUTH-1018": "Hai usato questa password di recente. Scegline un'altra."
+    "FRM-AUTH-1018": "Hai usato questa password di recente. Scegline un'altra.",
+    "FRM-FORM-1020": "Due opzioni hanno lo stesso valore. Ogni valore deve essere diverso."
   },
   "errorUi": {
     "reference": "Riferimento: {id}",
@@ -1069,7 +1070,8 @@
       "settings_org_deleted": "Voce dell'organizzazione eliminata",
       "settings_retention_applied": "Risposte vecchie rimosse (conservazione)",
       "settings_data_exported": "Dati di una persona esportati",
-      "settings_data_deleted": "Dati di una persona eliminati"
+      "settings_data_deleted": "Dati di una persona eliminati",
+      "forms_list_synced": "Moduli aggiornati da un elenco di opzioni"
     },
     "detail": {
       "who": "Chi",
@@ -2786,7 +2788,9 @@
       "listCreated": "Elenco “{name}” creato",
       "listUpdated": "Elenco “{name}” aggiornato",
       "listDeleted": "Elenco “{name}” eliminato"
-    }
+    },
+    "listChanged": "{name} è cambiato da quando queste opzioni sono state compilate.",
+    "updateFromList": "Aggiorna dall’elenco"
   },
   "designer": {
     "crumb": "Design",
@@ -7086,6 +7090,138 @@
       "code_locked": "troppi codici errati",
       "account_disabled": "l'account è disattivato",
       "password_expired": "la password è scaduta"
+    }
+  },
+  "optionSets": {
+    "subtitle": "Elenchi di scelte riutilizzabili per i tuoi moduli.",
+    "new": "Nuovo elenco",
+    "search": "Cerca elenchi e opzioni",
+    "empty": "Nessun elenco di opzioni ancora",
+    "emptyDesc": "Crea un elenco una volta e usalo in qualsiasi domanda a scelta.",
+    "options": "Opzioni",
+    "optionsHint": "In tutti i tuoi elenchi e gli elenchi più grandi.",
+    "stat": {
+      "lists": "Elenchi",
+      "retired": "Ritirate"
+    },
+    "byState": "Per stato",
+    "total": "{n} in tutto",
+    "state": {
+      "in_use": "In uso",
+      "unused": "Non ancora usato",
+      "retired": "Con opzioni ritirate"
+    },
+    "col": {
+      "name": "Nome",
+      "items": "Opzioni",
+      "forms": "Usato in",
+      "languages": "Tradotto",
+      "updated": "Aggiornato",
+      "state": "Stato"
+    },
+    "sort": {
+      "items": "Più opzioni",
+      "forms": "Più usati",
+      "updated": "Aggiornati di recente"
+    },
+    "itemsCount": "{n} opzione | {n} opzioni",
+    "formsCount": "{n} modulo | {n} moduli",
+    "retiredCount": "{n} ritirata | {n} ritirate",
+    "hasRetired": "Ha opzioni ritirate",
+    "noDescription": "Nessuna descrizione",
+    "oneLanguage": "Una lingua",
+    "duplicate": "Duplica",
+    "duplicated": "Copia di {name} creata",
+    "deleteTitle": "Eliminare {name}?",
+    "deleteDesc": "L’elenco viene rimosso definitivamente.",
+    "deleteUsed": "{n} modulo lo usa. Mantiene le sue opzioni, ma non può più essere aggiornato dall’elenco. | {n} moduli lo usano. Mantengono le loro opzioni, ma non possono più essere aggiornati dall’elenco.",
+    "deleted": "{name} eliminato",
+    "notFound": "Questo elenco non esiste più",
+    "updatedBy": "Aggiornato {when} · creato da {name}",
+    "name": "Nome",
+    "description": "Descrizione",
+    "descriptionPlaceholder": "A cosa serve, ad es. le regioni che serviamo",
+    "tab": {
+      "items": "Opzioni",
+      "translations": "Traduzioni",
+      "usage": "Usato in"
+    },
+    "saved": "Elenco salvato",
+    "savedUsed": "I moduli che lo usano possono essere aggiornati in Usato in. | I moduli che lo usano possono essere aggiornati in Usato in.",
+    "emptyLabels": "{n} opzione non ha ancora un’etichetta. | {n} opzioni non hanno ancora un’etichetta.",
+    "items": {
+      "search": "Cerca opzioni",
+      "showValues": "Valori",
+      "showScores": "Punteggi",
+      "paste": "Incolla",
+      "import": "Importa",
+      "add": "Aggiungi opzione",
+      "summary": "{active} offerte · {total} in tutto",
+      "repeated": "{n} valore è ripetuto | {n} valori sono ripetuti",
+      "none": "Nessuna opzione ancora",
+      "noneDesc": "Aggiungile una per una, incollale o importa un file.",
+      "noMatch": "Nessuna opzione corrisponde",
+      "drag": "Trascina per spostare",
+      "label": "Etichetta",
+      "labelPlaceholder": "Ciò che vedono le persone",
+      "value": "Valore",
+      "score": "Punteggio",
+      "retired": "Ritirata",
+      "up": "Sposta su",
+      "down": "Sposta giù",
+      "retire": "Ritira: non viene più offerta, le vecchie risposte restano leggibili",
+      "bringBack": "Offrila di nuovo",
+      "remove": "Rimuovi",
+      "retireInstead": "Le opzioni salvate vengono ritirate anziché rimosse, così le vecchie risposte restano leggibili",
+      "more": "Mostra altre {n}"
+    },
+    "import": {
+      "pasteTitle": "Incolla opzioni",
+      "pasteDesc": "Un’opzione per riga. Funzionano anche le colonne di un foglio di calcolo: etichette, valori, punteggi, traduzioni.",
+      "fileTitle": "Importa opzioni",
+      "fileDesc": "Un file CSV o Excel. Scegli cosa contiene ogni colonna, poi controlla l’anteprima.",
+      "pastePlaceholder": "Nord\nSud\nEst\nOvest",
+      "drop": "Trascina qui un file CSV o Excel o fai clic per cercarlo",
+      "types": "CSV, TXT o XLSX (primo foglio)",
+      "unsupported": "Questo tipo di file non può essere letto. Usa CSV, TXT o XLSX.",
+      "unreadable": "Non è stato possibile leggere il file. Salvalo di nuovo come CSV o XLSX.",
+      "header": "La prima riga contiene i nomi delle colonne",
+      "merge": "Aggiungi e aggiorna",
+      "replace": "Sostituisci l’elenco",
+      "column": "Colonna {n}",
+      "role": {
+        "label": "Etichetta",
+        "value": "Valore",
+        "score": "Punteggio",
+        "lang": "Etichetta in {name}",
+        "skip": "Non usare"
+      },
+      "summary": "{rows} righe: {added} nuove, {updated} aggiornate",
+      "skipped": "{n} saltate (vuote o ripetute)",
+      "retired": "{n} opzioni non presenti verranno ritirate",
+      "needLabel": "Scegli la colonna che contiene le etichette.",
+      "apply": "Applica"
+    },
+    "translations": {
+      "none": "I tuoi moduli usano una sola lingua",
+      "noneDesc": "Aggiungi lingue per i moduli nelle Impostazioni, poi traduci qui le opzioni.",
+      "settings": "Impostazioni della lingua",
+      "language": "Lingua",
+      "progress": "Tradotto",
+      "hint": "I moduli le ricevono quando vengono aggiornati dall’elenco, per le lingue che offrono.",
+      "for": "Traduzione di {label}"
+    },
+    "usage": {
+      "none": "Non ancora usato",
+      "noneDesc": "In un modulo, scegli questo elenco tra le opzioni di una domanda a scelta.",
+      "failed": "Non è stato possibile caricare dove viene usato",
+      "saveFirst": "Salva prima le modifiche, poi aggiorna i moduli.",
+      "outdated": "{n} modulo ha opzioni di una versione precedente dell’elenco. | {n} moduli hanno opzioni di una versione precedente dell’elenco.",
+      "allSynced": "Ogni modulo ha l’elenco com’è adesso.",
+      "updateAll": "Aggiorna tutti i moduli",
+      "update": "Aggiorna",
+      "synced": "{n} modulo aggiornato | {n} moduli aggiornati",
+      "publishHint": "{n} di essi è pubblicato: pubblicalo per mostrare le nuove opzioni. | {n} di essi sono pubblicati: pubblicali per mostrare le nuove opzioni."
     }
   }
 }

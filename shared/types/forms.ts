@@ -220,13 +220,51 @@ export interface SavedField {
 }
 
 /** A reusable list of options, countries, regions, products … (GET /option-lists). */
+/** One option of a list (F15): `value` is stored in answers, `label` shown; retired ones stay for old answers. */
+export interface OptionItem {
+  value: string
+  label: string
+  score?: number
+  /** false = retired: no longer offered, old answers still read. Missing = active. */
+  active?: boolean
+  /** The label per language (forms that offer it get it when updated from the list). */
+  translations?: Record<string, string>
+}
+
 export interface OptionList {
   id: string
   name: string
-  options: { value: string; label: string; score?: number }[]
+  description?: string | null
+  options: OptionItem[]
   created_by: { id: string; name: string }
   created_at: string
   updated_at: string
+}
+
+/** A row of the Option sets page (GET /option-lists?page=…). */
+export interface OptionListRow extends OptionList {
+  items_count: number
+  retired_count: number
+  /** Languages with every active label translated. */
+  languages: string[]
+  forms_count: number
+  fields_count: number
+}
+
+/** GET /option-lists/insights */
+export interface OptionListInsights {
+  total: number
+  in_use: number
+  unused: number
+  items: number
+  retired: number
+  largest: { name: string; count: number }[]
+}
+
+/** GET /option-lists/{id}/usage: forms with fields filled from the list, and whether they still match it. */
+export interface OptionListUsage {
+  form: { id: string; name: string; status: FormStatus }
+  fields: { id: string; key: string; label: string; in_sync: boolean }[]
 }
 
 /** A saved design (GET /themes), reusable on any form; forms keep a copy of the tokens. */

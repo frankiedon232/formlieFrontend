@@ -608,7 +608,8 @@
     "FRM-AUTH-1015": "Tu contraseña ha caducado. Establece una nueva.",
     "FRM-AUTH-1016": "No se permite iniciar sesión desde esta red.",
     "FRM-AUTH-1017": "Este cambio te dejaría fuera. Revisa tu propio dominio y dirección de correo.",
-    "FRM-AUTH-1018": "Usaste esta contraseña hace poco. Elige otra."
+    "FRM-AUTH-1018": "Usaste esta contraseña hace poco. Elige otra.",
+    "FRM-FORM-1020": "Dos opciones comparten el mismo valor. Cada valor debe ser distinto."
   },
   "errorUi": {
     "reference": "Referencia: {id}",
@@ -1069,7 +1070,8 @@
       "settings_org_deleted": "Entrada de organización eliminada",
       "settings_retention_applied": "Respuestas antiguas eliminadas (conservación)",
       "settings_data_exported": "Datos de una persona exportados",
-      "settings_data_deleted": "Datos de una persona eliminados"
+      "settings_data_deleted": "Datos de una persona eliminados",
+      "forms_list_synced": "Formularios actualizados desde una lista de opciones"
     },
     "detail": {
       "who": "Quién",
@@ -2786,7 +2788,9 @@
       "listCreated": "Lista “{name}” creada",
       "listUpdated": "Lista “{name}” actualizada",
       "listDeleted": "Lista “{name}” eliminada"
-    }
+    },
+    "listChanged": "{name} ha cambiado desde que se rellenaron estas opciones.",
+    "updateFromList": "Actualizar desde la lista"
   },
   "designer": {
     "crumb": "Diseño",
@@ -7086,6 +7090,138 @@
       "code_locked": "demasiados códigos incorrectos",
       "account_disabled": "la cuenta está desactivada",
       "password_expired": "la contraseña ha caducado"
+    }
+  },
+  "optionSets": {
+    "subtitle": "Listas de opciones reutilizables para tus formularios.",
+    "new": "Nueva lista",
+    "search": "Buscar listas y opciones",
+    "empty": "Aún no hay listas de opciones",
+    "emptyDesc": "Crea una lista una vez y úsala en cualquier pregunta de elección.",
+    "options": "Opciones",
+    "optionsHint": "En todas tus listas y las listas más grandes.",
+    "stat": {
+      "lists": "Listas",
+      "retired": "Retiradas"
+    },
+    "byState": "Por estado",
+    "total": "{n} en total",
+    "state": {
+      "in_use": "En uso",
+      "unused": "Sin usar todavía",
+      "retired": "Con opciones retiradas"
+    },
+    "col": {
+      "name": "Nombre",
+      "items": "Opciones",
+      "forms": "Usada en",
+      "languages": "Traducida",
+      "updated": "Actualizada",
+      "state": "Estado"
+    },
+    "sort": {
+      "items": "Más opciones",
+      "forms": "Más usada",
+      "updated": "Actualizada recientemente"
+    },
+    "itemsCount": "{n} opción | {n} opciones",
+    "formsCount": "{n} formulario | {n} formularios",
+    "retiredCount": "{n} retirada | {n} retiradas",
+    "hasRetired": "Tiene opciones retiradas",
+    "noDescription": "Sin descripción",
+    "oneLanguage": "Un idioma",
+    "duplicate": "Duplicar",
+    "duplicated": "Copia de {name} creada",
+    "deleteTitle": "¿Eliminar {name}?",
+    "deleteDesc": "La lista se elimina definitivamente.",
+    "deleteUsed": "{n} formulario la usa. Conserva sus opciones, pero ya no se puede actualizar desde la lista. | {n} formularios la usan. Conservan sus opciones, pero ya no se pueden actualizar desde la lista.",
+    "deleted": "{name} eliminada",
+    "notFound": "Esta lista ya no existe",
+    "updatedBy": "Actualizada {when} · creada por {name}",
+    "name": "Nombre",
+    "description": "Descripción",
+    "descriptionPlaceholder": "Para qué sirve, p. ej. las regiones donde trabajamos",
+    "tab": {
+      "items": "Opciones",
+      "translations": "Traducciones",
+      "usage": "Usada en"
+    },
+    "saved": "Lista guardada",
+    "savedUsed": "Los formularios que la usan se pueden actualizar en Usada en. | Los formularios que la usan se pueden actualizar en Usada en.",
+    "emptyLabels": "{n} opción aún no tiene etiqueta. | {n} opciones aún no tienen etiqueta.",
+    "items": {
+      "search": "Buscar opciones",
+      "showValues": "Valores",
+      "showScores": "Puntuaciones",
+      "paste": "Pegar",
+      "import": "Importar",
+      "add": "Añadir opción",
+      "summary": "{active} ofrecidas · {total} en total",
+      "repeated": "{n} valor está repetido | {n} valores están repetidos",
+      "none": "Aún no hay opciones",
+      "noneDesc": "Añádelas una a una, pégalas o importa un archivo.",
+      "noMatch": "Ninguna opción coincide",
+      "drag": "Arrastra para mover",
+      "label": "Etiqueta",
+      "labelPlaceholder": "Lo que ve la gente",
+      "value": "Valor",
+      "score": "Puntuación",
+      "retired": "Retirada",
+      "up": "Subir",
+      "down": "Bajar",
+      "retire": "Retirar: ya no se ofrece, las respuestas antiguas se siguen leyendo",
+      "bringBack": "Volver a ofrecerla",
+      "remove": "Quitar",
+      "retireInstead": "Las opciones guardadas se retiran en lugar de quitarse, para que las respuestas antiguas se sigan leyendo",
+      "more": "Mostrar {n} más"
+    },
+    "import": {
+      "pasteTitle": "Pegar opciones",
+      "pasteDesc": "Una opción por línea. También funcionan columnas de una hoja de cálculo: etiquetas, valores, puntuaciones, traducciones.",
+      "fileTitle": "Importar opciones",
+      "fileDesc": "Un archivo CSV o Excel. Elige qué contiene cada columna y revisa la vista previa.",
+      "pastePlaceholder": "Norte\nSur\nEste\nOeste",
+      "drop": "Suelta aquí un archivo CSV o Excel o haz clic para buscarlo",
+      "types": "CSV, TXT o XLSX (primera hoja)",
+      "unsupported": "No se puede leer este tipo de archivo. Usa CSV, TXT o XLSX.",
+      "unreadable": "No se pudo leer el archivo. Guárdalo de nuevo como CSV o XLSX.",
+      "header": "La primera fila contiene los nombres de las columnas",
+      "merge": "Añadir y actualizar",
+      "replace": "Reemplazar la lista",
+      "column": "Columna {n}",
+      "role": {
+        "label": "Etiqueta",
+        "value": "Valor",
+        "score": "Puntuación",
+        "lang": "Etiqueta en {name}",
+        "skip": "No usar"
+      },
+      "summary": "{rows} filas: {added} nuevas, {updated} actualizadas",
+      "skipped": "{n} omitidas (vacías o repetidas)",
+      "retired": "{n} opciones que no están se retirarán",
+      "needLabel": "Elige la columna que contiene las etiquetas.",
+      "apply": "Aplicar"
+    },
+    "translations": {
+      "none": "Tus formularios usan un solo idioma",
+      "noneDesc": "Añade idiomas para los formularios en Ajustes y luego traduce las opciones aquí.",
+      "settings": "Ajustes de idioma",
+      "language": "Idioma",
+      "progress": "Traducido",
+      "hint": "Los formularios las reciben al actualizarse desde la lista, para los idiomas que ofrecen.",
+      "for": "Traducción de {label}"
+    },
+    "usage": {
+      "none": "Aún sin usar",
+      "noneDesc": "En un formulario, elige esta lista en las opciones de una pregunta de elección.",
+      "failed": "No se pudo cargar dónde se usa",
+      "saveFirst": "Guarda primero tus cambios y luego actualiza los formularios.",
+      "outdated": "{n} formulario tiene opciones de una versión anterior de la lista. | {n} formularios tienen opciones de una versión anterior de la lista.",
+      "allSynced": "Todos los formularios tienen la lista actual.",
+      "updateAll": "Actualizar todos los formularios",
+      "update": "Actualizar",
+      "synced": "{n} formulario actualizado | {n} formularios actualizados",
+      "publishHint": "{n} de ellos está publicado: publícalo para mostrar las nuevas opciones. | {n} de ellos están publicados: publícalos para mostrar las nuevas opciones."
     }
   }
 }

@@ -608,7 +608,8 @@
     "FRM-AUTH-1015": "Mật khẩu của bạn đã hết hạn. Hãy đặt mật khẩu mới.",
     "FRM-AUTH-1016": "Không cho phép đăng nhập từ mạng này.",
     "FRM-AUTH-1017": "Thay đổi này sẽ khóa bạn ở ngoài. Hãy kiểm tra tên miền và địa chỉ email của chính bạn.",
-    "FRM-AUTH-1018": "Bạn đã dùng mật khẩu này gần đây. Hãy chọn mật khẩu khác."
+    "FRM-AUTH-1018": "Bạn đã dùng mật khẩu này gần đây. Hãy chọn mật khẩu khác.",
+    "FRM-FORM-1020": "Hai tùy chọn có cùng giá trị. Mỗi giá trị phải khác nhau."
   },
   "errorUi": {
     "reference": "Mã tham chiếu: {id}",
@@ -1069,7 +1070,8 @@
       "settings_org_deleted": "Đã xóa mục tổ chức",
       "settings_retention_applied": "Đã xóa phản hồi cũ (lưu giữ)",
       "settings_data_exported": "Đã xuất dữ liệu của một người",
-      "settings_data_deleted": "Đã xóa dữ liệu của một người"
+      "settings_data_deleted": "Đã xóa dữ liệu của một người",
+      "forms_list_synced": "Biểu mẫu đã được cập nhật từ danh sách tùy chọn"
     },
     "detail": {
       "who": "Ai",
@@ -2786,7 +2788,9 @@
       "listCreated": "Đã tạo danh sách “{name}”",
       "listUpdated": "Đã cập nhật danh sách “{name}”",
       "listDeleted": "Đã xóa danh sách “{name}”"
-    }
+    },
+    "listChanged": "{name} đã thay đổi kể từ khi các tùy chọn này được điền.",
+    "updateFromList": "Cập nhật từ danh sách"
   },
   "designer": {
     "crumb": "Thiết kế",
@@ -7086,6 +7090,138 @@
       "code_locked": "quá nhiều mã sai",
       "account_disabled": "tài khoản đã bị vô hiệu hóa",
       "password_expired": "mật khẩu đã hết hạn"
+    }
+  },
+  "optionSets": {
+    "subtitle": "Danh sách lựa chọn dùng lại được cho biểu mẫu của bạn.",
+    "new": "Danh sách mới",
+    "search": "Tìm danh sách và tùy chọn",
+    "empty": "Chưa có danh sách tùy chọn nào",
+    "emptyDesc": "Tạo danh sách một lần và dùng cho bất kỳ câu hỏi lựa chọn nào.",
+    "options": "Tùy chọn",
+    "optionsHint": "Trong tất cả danh sách của bạn và các danh sách lớn nhất.",
+    "stat": {
+      "lists": "Danh sách",
+      "retired": "Đã ngừng"
+    },
+    "byState": "Theo trạng thái",
+    "total": "Tổng cộng {n}",
+    "state": {
+      "in_use": "Đang dùng",
+      "unused": "Chưa được dùng",
+      "retired": "Có tùy chọn đã ngừng"
+    },
+    "col": {
+      "name": "Tên",
+      "items": "Tùy chọn",
+      "forms": "Được dùng trong",
+      "languages": "Đã dịch",
+      "updated": "Đã cập nhật",
+      "state": "Trạng thái"
+    },
+    "sort": {
+      "items": "Nhiều tùy chọn nhất",
+      "forms": "Dùng nhiều nhất",
+      "updated": "Mới cập nhật"
+    },
+    "itemsCount": "{n} tùy chọn | {n} tùy chọn",
+    "formsCount": "{n} biểu mẫu | {n} biểu mẫu",
+    "retiredCount": "{n} đã ngừng | {n} đã ngừng",
+    "hasRetired": "Có tùy chọn đã ngừng",
+    "noDescription": "Không có mô tả",
+    "oneLanguage": "Một ngôn ngữ",
+    "duplicate": "Nhân bản",
+    "duplicated": "Đã tạo bản sao của {name}",
+    "deleteTitle": "Xóa {name}?",
+    "deleteDesc": "Danh sách sẽ bị xóa vĩnh viễn.",
+    "deleteUsed": "{n} biểu mẫu đang dùng danh sách này. Biểu mẫu giữ nguyên các tùy chọn nhưng không thể cập nhật từ danh sách nữa. | {n} biểu mẫu đang dùng danh sách này. Các biểu mẫu giữ nguyên các tùy chọn nhưng không thể cập nhật từ danh sách nữa.",
+    "deleted": "Đã xóa {name}",
+    "notFound": "Danh sách này không còn tồn tại",
+    "updatedBy": "Cập nhật {when} · tạo bởi {name}",
+    "name": "Tên",
+    "description": "Mô tả",
+    "descriptionPlaceholder": "Dùng để làm gì, ví dụ các khu vực chúng tôi phục vụ",
+    "tab": {
+      "items": "Tùy chọn",
+      "translations": "Bản dịch",
+      "usage": "Được dùng trong"
+    },
+    "saved": "Đã lưu danh sách",
+    "savedUsed": "Có thể cập nhật các biểu mẫu đang dùng danh sách trong mục Được dùng trong. | Có thể cập nhật các biểu mẫu đang dùng danh sách trong mục Được dùng trong.",
+    "emptyLabels": "{n} tùy chọn chưa có nhãn. | {n} tùy chọn chưa có nhãn.",
+    "items": {
+      "search": "Tìm tùy chọn",
+      "showValues": "Giá trị",
+      "showScores": "Điểm",
+      "paste": "Dán",
+      "import": "Nhập",
+      "add": "Thêm tùy chọn",
+      "summary": "{active} đang hiển thị · tổng cộng {total}",
+      "repeated": "{n} giá trị bị lặp | {n} giá trị bị lặp",
+      "none": "Chưa có tùy chọn nào",
+      "noneDesc": "Thêm từng cái một, dán vào hoặc nhập một tệp.",
+      "noMatch": "Không có tùy chọn phù hợp",
+      "drag": "Kéo để di chuyển",
+      "label": "Nhãn",
+      "labelPlaceholder": "Những gì mọi người nhìn thấy",
+      "value": "Giá trị",
+      "score": "Điểm",
+      "retired": "Đã ngừng",
+      "up": "Di chuyển lên",
+      "down": "Di chuyển xuống",
+      "retire": "Ngừng: không còn hiển thị, các câu trả lời cũ vẫn đọc được",
+      "bringBack": "Hiển thị lại",
+      "remove": "Xóa",
+      "retireInstead": "Các tùy chọn đã lưu được ngừng thay vì xóa, để các câu trả lời cũ vẫn đọc được",
+      "more": "Hiện thêm {n}"
+    },
+    "import": {
+      "pasteTitle": "Dán tùy chọn",
+      "pasteDesc": "Mỗi dòng một tùy chọn. Các cột từ bảng tính cũng dùng được: nhãn, giá trị, điểm, bản dịch.",
+      "fileTitle": "Nhập tùy chọn",
+      "fileDesc": "Một tệp CSV hoặc Excel. Chọn nội dung của từng cột, rồi kiểm tra bản xem trước.",
+      "pastePlaceholder": "Bắc\nNam\nĐông\nTây",
+      "drop": "Thả tệp CSV hoặc Excel vào đây hoặc nhấp để duyệt",
+      "types": "CSV, TXT hoặc XLSX (trang tính đầu tiên)",
+      "unsupported": "Không thể đọc loại tệp này. Hãy dùng CSV, TXT hoặc XLSX.",
+      "unreadable": "Không thể đọc tệp. Hãy lưu lại dưới dạng CSV hoặc XLSX.",
+      "header": "Dòng đầu tiên chứa tên cột",
+      "merge": "Thêm và cập nhật",
+      "replace": "Thay thế danh sách",
+      "column": "Cột {n}",
+      "role": {
+        "label": "Nhãn",
+        "value": "Giá trị",
+        "score": "Điểm",
+        "lang": "Nhãn bằng {name}",
+        "skip": "Không dùng"
+      },
+      "summary": "{rows} dòng: {added} mới, {updated} đã cập nhật",
+      "skipped": "Đã bỏ qua {n} (trống hoặc lặp)",
+      "retired": "{n} tùy chọn không có trong đó sẽ bị ngừng",
+      "needLabel": "Hãy chọn cột chứa các nhãn.",
+      "apply": "Áp dụng"
+    },
+    "translations": {
+      "none": "Biểu mẫu của bạn dùng một ngôn ngữ",
+      "noneDesc": "Hãy thêm ngôn ngữ cho biểu mẫu trong Cài đặt, rồi dịch các tùy chọn tại đây.",
+      "settings": "Cài đặt ngôn ngữ",
+      "language": "Ngôn ngữ",
+      "progress": "Đã dịch",
+      "hint": "Biểu mẫu nhận các bản dịch này khi được cập nhật từ danh sách, cho những ngôn ngữ mà biểu mẫu cung cấp.",
+      "for": "Bản dịch của {label}"
+    },
+    "usage": {
+      "none": "Chưa được dùng",
+      "noneDesc": "Trong biểu mẫu, hãy chọn danh sách này ở phần tùy chọn của câu hỏi lựa chọn.",
+      "failed": "Không thể tải nơi danh sách được dùng",
+      "saveFirst": "Hãy lưu thay đổi trước, rồi cập nhật các biểu mẫu.",
+      "outdated": "{n} biểu mẫu có tùy chọn từ phiên bản cũ hơn của danh sách. | {n} biểu mẫu có tùy chọn từ phiên bản cũ hơn của danh sách.",
+      "allSynced": "Mọi biểu mẫu đều có danh sách như hiện tại.",
+      "updateAll": "Cập nhật tất cả biểu mẫu",
+      "update": "Cập nhật",
+      "synced": "Đã cập nhật {n} biểu mẫu | Đã cập nhật {n} biểu mẫu",
+      "publishHint": "{n} trong số đó đã được xuất bản: hãy xuất bản để hiển thị các tùy chọn mới. | {n} trong số đó đã được xuất bản: hãy xuất bản để hiển thị các tùy chọn mới."
     }
   }
 }

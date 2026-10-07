@@ -608,7 +608,8 @@
     "FRM-AUTH-1015": "你的密码已过期。请设置新密码。",
     "FRM-AUTH-1016": "不允许从此网络登录。",
     "FRM-AUTH-1017": "此更改会让你自己无法登录。请检查你自己的邮箱域名和地址。",
-    "FRM-AUTH-1018": "你最近用过这个密码。请换一个。"
+    "FRM-AUTH-1018": "你最近用过这个密码。请换一个。",
+    "FRM-FORM-1020": "有两个选项的值相同。每个值都必须不同。"
   },
   "errorUi": {
     "reference": "参考编号：{id}",
@@ -1069,7 +1070,8 @@
       "settings_org_deleted": "已删除组织条目",
       "settings_retention_applied": "已删除旧回复(保留期限)",
       "settings_data_exported": "已导出某人的数据",
-      "settings_data_deleted": "已删除某人的数据"
+      "settings_data_deleted": "已删除某人的数据",
+      "forms_list_synced": "已根据选项列表更新表单"
     },
     "detail": {
       "who": "谁",
@@ -2786,7 +2788,9 @@
       "listCreated": "列表“{name}”已创建",
       "listUpdated": "列表“{name}”已更新",
       "listDeleted": "列表“{name}”已删除"
-    }
+    },
+    "listChanged": "自填充这些选项以来，{name}已更改。",
+    "updateFromList": "从列表更新"
   },
   "designer": {
     "crumb": "设计",
@@ -7086,6 +7090,138 @@
       "code_locked": "错误验证码过多",
       "account_disabled": "账号已停用",
       "password_expired": "密码已过期"
+    }
+  },
+  "optionSets": {
+    "subtitle": "可在表单中重复使用的选项列表。",
+    "new": "新建列表",
+    "search": "搜索列表和选项",
+    "empty": "还没有选项列表",
+    "emptyDesc": "创建一次列表，即可用于任何选择题。",
+    "options": "选项",
+    "optionsHint": "所有列表中的选项，以及最大的列表。",
+    "stat": {
+      "lists": "列表",
+      "retired": "已停用"
+    },
+    "byState": "按状态",
+    "total": "共 {n} 个",
+    "state": {
+      "in_use": "使用中",
+      "unused": "尚未使用",
+      "retired": "含已停用选项"
+    },
+    "col": {
+      "name": "名称",
+      "items": "选项",
+      "forms": "使用位置",
+      "languages": "已翻译",
+      "updated": "更新时间",
+      "state": "状态"
+    },
+    "sort": {
+      "items": "选项最多",
+      "forms": "使用最多",
+      "updated": "最近更新"
+    },
+    "itemsCount": "{n} 个选项 | {n} 个选项",
+    "formsCount": "{n} 个表单 | {n} 个表单",
+    "retiredCount": "{n} 个已停用 | {n} 个已停用",
+    "hasRetired": "含已停用选项",
+    "noDescription": "无说明",
+    "oneLanguage": "一种语言",
+    "duplicate": "复制",
+    "duplicated": "已创建{name}的副本",
+    "deleteTitle": "删除{name}？",
+    "deleteDesc": "该列表将被永久删除。",
+    "deleteUsed": "有 {n} 个表单正在使用它。这些表单会保留自己的选项，但无法再从列表更新。 | 有 {n} 个表单正在使用它。这些表单会保留自己的选项，但无法再从列表更新。",
+    "deleted": "已删除{name}",
+    "notFound": "该列表已不存在",
+    "updatedBy": "{when}更新 · 创建者：{name}",
+    "name": "名称",
+    "description": "说明",
+    "descriptionPlaceholder": "用途，例如我们服务的地区",
+    "tab": {
+      "items": "选项",
+      "translations": "翻译",
+      "usage": "使用位置"
+    },
+    "saved": "列表已保存",
+    "savedUsed": "使用它的表单可在“使用位置”中更新。 | 使用它的表单可在“使用位置”中更新。",
+    "emptyLabels": "有 {n} 个选项还没有标签。 | 有 {n} 个选项还没有标签。",
+    "items": {
+      "search": "搜索选项",
+      "showValues": "值",
+      "showScores": "分数",
+      "paste": "粘贴",
+      "import": "导入",
+      "add": "添加选项",
+      "summary": "提供 {active} 个 · 共 {total} 个",
+      "repeated": "有 {n} 个值重复 | 有 {n} 个值重复",
+      "none": "还没有选项",
+      "noneDesc": "逐个添加、粘贴，或导入文件。",
+      "noMatch": "没有匹配的选项",
+      "drag": "拖动以移动",
+      "label": "标签",
+      "labelPlaceholder": "用户看到的内容",
+      "value": "值",
+      "score": "分数",
+      "retired": "已停用",
+      "up": "上移",
+      "down": "下移",
+      "retire": "停用：不再提供，旧的回答仍可读取",
+      "bringBack": "重新提供",
+      "remove": "移除",
+      "retireInstead": "已保存的选项会被停用而不是移除，这样旧的回答仍可读取",
+      "more": "再显示 {n} 个"
+    },
+    "import": {
+      "pasteTitle": "粘贴选项",
+      "pasteDesc": "每行一个选项。也可以使用电子表格中的列：标签、值、分数、翻译。",
+      "fileTitle": "导入选项",
+      "fileDesc": "CSV 或 Excel 文件。选择每一列的内容，然后检查预览。",
+      "pastePlaceholder": "北\n南\n东\n西",
+      "drop": "将 CSV 或 Excel 文件拖放到此处，或点击浏览",
+      "types": "CSV、TXT 或 XLSX（第一个工作表）",
+      "unsupported": "无法读取此类文件。请使用 CSV、TXT 或 XLSX。",
+      "unreadable": "无法读取该文件。请重新另存为 CSV 或 XLSX。",
+      "header": "第一行是列名",
+      "merge": "添加并更新",
+      "replace": "替换列表",
+      "column": "第 {n} 列",
+      "role": {
+        "label": "标签",
+        "value": "值",
+        "score": "分数",
+        "lang": "{name}标签",
+        "skip": "不使用"
+      },
+      "summary": "{rows} 行：新增 {added} 个，更新 {updated} 个",
+      "skipped": "已跳过 {n} 个（为空或重复）",
+      "retired": "其中没有的 {n} 个选项将被停用",
+      "needLabel": "请选择包含标签的列。",
+      "apply": "应用"
+    },
+    "translations": {
+      "none": "你的表单使用一种语言",
+      "noneDesc": "在设置中为表单添加语言，然后在此翻译选项。",
+      "settings": "语言设置",
+      "language": "语言",
+      "progress": "已翻译",
+      "hint": "表单从列表更新时，会获得这些翻译，适用于表单提供的语言。",
+      "for": "{label}的翻译"
+    },
+    "usage": {
+      "none": "尚未使用",
+      "noneDesc": "在表单中，请在选择题的选项下选择此列表。",
+      "failed": "无法加载使用位置",
+      "saveFirst": "请先保存更改，然后更新表单。",
+      "outdated": "有 {n} 个表单的选项来自列表的旧版本。 | 有 {n} 个表单的选项来自列表的旧版本。",
+      "allSynced": "每个表单都使用当前的列表。",
+      "updateAll": "更新所有表单",
+      "update": "更新",
+      "synced": "已更新 {n} 个表单 | 已更新 {n} 个表单",
+      "publishHint": "其中 {n} 个已发布：请重新发布以显示新选项。 | 其中 {n} 个已发布：请重新发布以显示新选项。"
     }
   }
 }

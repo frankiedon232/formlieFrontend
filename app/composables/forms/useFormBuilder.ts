@@ -1,3 +1,4 @@
+import { offeredOptions } from '#shared/utils/forms/options'
 import type { InjectionKey } from 'vue'
 import { newId, keyFromLabel, fieldKey, allFields, type FormField, type FormPage } from '#shared/utils/forms/build'
 import type { OptionList, SavedField } from '#shared/types/forms'
@@ -104,7 +105,7 @@ export function useFormBuilder() {
     const field = createField(type)
     field.label = list.name
     field.key = newKey(list.name)
-    field.options = structuredClone(toRaw(list.options))
+    field.options = offeredOptions(toRaw(list))
     field.option_set_id = list.id
     return field
   }

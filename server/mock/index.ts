@@ -37,6 +37,7 @@ import * as onboarding from './routes/onboarding'
 import * as address from './routes/address'
 import * as emails from './routes/emails'
 import * as notifications from './routes/notifications'
+import * as optionLists from './routes/optionLists'
 import * as privacy from './routes/dataPrivacy'
 import * as settings from './routes/settings'
 import * as org from './routes/org'
@@ -231,10 +232,15 @@ const router = createRouter()
   .get('/field-library', library.listSavedFields)
   .post('/field-library', library.saveField)
   .delete('/field-library/:id', library.deleteSavedField)
-  .get('/option-lists', library.listOptionLists)
-  .post('/option-lists', library.createOptionList)
-  .patch('/option-lists/:id', library.updateOptionList)
-  .delete('/option-lists/:id', library.deleteOptionList)
+  .get('/option-lists', optionLists.listOptionLists)
+  .get('/option-lists/insights', optionLists.optionListInsights)
+  .post('/option-lists', optionLists.createOptionList)
+  .get('/option-lists/:id', optionLists.getOptionList)
+  .patch('/option-lists/:id', optionLists.updateOptionList)
+  .delete('/option-lists/:id', optionLists.deleteOptionList)
+  .get('/option-lists/:id/usage', optionLists.optionListUsage)
+  .post('/option-lists/:id/sync', optionLists.syncOptionList)
+  .post('/option-lists/:id/duplicate', optionLists.duplicateOptionList)
   .get('/themes', themes.listThemes)
   .get('/themes/insights', themes.themeInsights)
   .get('/page-designs', pageDesigns.listPageDesigns)

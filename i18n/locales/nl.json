@@ -608,7 +608,8 @@
     "FRM-AUTH-1015": "Je wachtwoord is verlopen. Stel een nieuw wachtwoord in.",
     "FRM-AUTH-1016": "Inloggen vanaf dit netwerk is niet toegestaan.",
     "FRM-AUTH-1017": "Met deze wijziging sluit je jezelf buiten. Controleer je eigen e-maildomein en -adres.",
-    "FRM-AUTH-1018": "Je hebt dit wachtwoord onlangs gebruikt. Kies een ander wachtwoord."
+    "FRM-AUTH-1018": "Je hebt dit wachtwoord onlangs gebruikt. Kies een ander wachtwoord.",
+    "FRM-FORM-1020": "Twee opties hebben dezelfde waarde. Elke waarde moet anders zijn."
   },
   "errorUi": {
     "reference": "Referentie: {id}",
@@ -1069,7 +1070,8 @@
       "settings_org_deleted": "Organisatie-item verwijderd",
       "settings_retention_applied": "Oude antwoorden verwijderd (bewaartermijn)",
       "settings_data_exported": "Gegevens van een persoon geëxporteerd",
-      "settings_data_deleted": "Gegevens van een persoon verwijderd"
+      "settings_data_deleted": "Gegevens van een persoon verwijderd",
+      "forms_list_synced": "Formulieren bijgewerkt vanuit een optielijst"
     },
     "detail": {
       "who": "Wie",
@@ -2786,7 +2788,9 @@
       "listCreated": "Lijst “{name}” aangemaakt",
       "listUpdated": "Lijst “{name}” bijgewerkt",
       "listDeleted": "Lijst “{name}” verwijderd"
-    }
+    },
+    "listChanged": "{name} is veranderd sinds deze opties zijn ingevuld.",
+    "updateFromList": "Bijwerken vanuit de lijst"
   },
   "designer": {
     "crumb": "Ontwerp",
@@ -7086,6 +7090,138 @@
       "code_locked": "te veel foute codes",
       "account_disabled": "het account is uitgeschakeld",
       "password_expired": "het wachtwoord is verlopen"
+    }
+  },
+  "optionSets": {
+    "subtitle": "Herbruikbare keuzelijsten voor je formulieren.",
+    "new": "Nieuwe lijst",
+    "search": "Zoek lijsten en opties",
+    "empty": "Nog geen optielijsten",
+    "emptyDesc": "Maak een lijst één keer en gebruik hem bij elke keuzevraag.",
+    "options": "Opties",
+    "optionsHint": "In al je lijsten en de grootste lijsten.",
+    "stat": {
+      "lists": "Lijsten",
+      "retired": "Ingetrokken"
+    },
+    "byState": "Per status",
+    "total": "{n} in totaal",
+    "state": {
+      "in_use": "In gebruik",
+      "unused": "Nog niet gebruikt",
+      "retired": "Met ingetrokken opties"
+    },
+    "col": {
+      "name": "Naam",
+      "items": "Opties",
+      "forms": "Gebruikt in",
+      "languages": "Vertaald",
+      "updated": "Bijgewerkt",
+      "state": "Status"
+    },
+    "sort": {
+      "items": "Meeste opties",
+      "forms": "Meest gebruikt",
+      "updated": "Recent bijgewerkt"
+    },
+    "itemsCount": "{n} optie | {n} opties",
+    "formsCount": "{n} formulier | {n} formulieren",
+    "retiredCount": "{n} ingetrokken | {n} ingetrokken",
+    "hasRetired": "Heeft ingetrokken opties",
+    "noDescription": "Geen beschrijving",
+    "oneLanguage": "Eén taal",
+    "duplicate": "Dupliceren",
+    "duplicated": "Kopie van {name} gemaakt",
+    "deleteTitle": "{name} verwijderen?",
+    "deleteDesc": "De lijst wordt definitief verwijderd.",
+    "deleteUsed": "{n} formulier gebruikt hem. Het houdt zijn opties, maar kan niet meer vanuit de lijst worden bijgewerkt. | {n} formulieren gebruiken hem. Ze houden hun opties, maar kunnen niet meer vanuit de lijst worden bijgewerkt.",
+    "deleted": "{name} verwijderd",
+    "notFound": "Deze lijst bestaat niet meer",
+    "updatedBy": "Bijgewerkt {when} · gemaakt door {name}",
+    "name": "Naam",
+    "description": "Beschrijving",
+    "descriptionPlaceholder": "Waar hij voor is, bijv. de regio’s die we bedienen",
+    "tab": {
+      "items": "Opties",
+      "translations": "Vertalingen",
+      "usage": "Gebruikt in"
+    },
+    "saved": "Lijst opgeslagen",
+    "savedUsed": "Formulieren die hem gebruiken kun je bijwerken onder Gebruikt in. | Formulieren die hem gebruiken kun je bijwerken onder Gebruikt in.",
+    "emptyLabels": "{n} optie heeft nog geen label. | {n} opties hebben nog geen label.",
+    "items": {
+      "search": "Zoek opties",
+      "showValues": "Waarden",
+      "showScores": "Scores",
+      "paste": "Plakken",
+      "import": "Importeren",
+      "add": "Optie toevoegen",
+      "summary": "{active} aangeboden · {total} in totaal",
+      "repeated": "{n} waarde komt dubbel voor | {n} waarden komen dubbel voor",
+      "none": "Nog geen opties",
+      "noneDesc": "Voeg ze één voor één toe, plak ze of importeer een bestand.",
+      "noMatch": "Geen opties gevonden",
+      "drag": "Sleep om te verplaatsen",
+      "label": "Label",
+      "labelPlaceholder": "Wat mensen zien",
+      "value": "Waarde",
+      "score": "Score",
+      "retired": "Ingetrokken",
+      "up": "Omhoog",
+      "down": "Omlaag",
+      "retire": "Intrekken: wordt niet meer aangeboden, oude antwoorden blijven leesbaar",
+      "bringBack": "Weer aanbieden",
+      "remove": "Verwijderen",
+      "retireInstead": "Opgeslagen opties worden ingetrokken in plaats van verwijderd, zodat oude antwoorden leesbaar blijven",
+      "more": "{n} meer tonen"
+    },
+    "import": {
+      "pasteTitle": "Opties plakken",
+      "pasteDesc": "Eén optie per regel. Kolommen uit een spreadsheet werken ook: labels, waarden, scores, vertalingen.",
+      "fileTitle": "Opties importeren",
+      "fileDesc": "Een CSV- of Excel-bestand. Kies wat elke kolom bevat en controleer dan het voorbeeld.",
+      "pastePlaceholder": "Noord\nZuid\nOost\nWest",
+      "drop": "Zet een CSV- of Excel-bestand hier neer of klik om te bladeren",
+      "types": "CSV, TXT of XLSX (eerste blad)",
+      "unsupported": "Dit soort bestand kan niet worden gelezen. Gebruik CSV, TXT of XLSX.",
+      "unreadable": "Het bestand kon niet worden gelezen. Sla het opnieuw op als CSV of XLSX.",
+      "header": "De eerste rij bevat kolomnamen",
+      "merge": "Toevoegen en bijwerken",
+      "replace": "De lijst vervangen",
+      "column": "Kolom {n}",
+      "role": {
+        "label": "Label",
+        "value": "Waarde",
+        "score": "Score",
+        "lang": "Label in {name}",
+        "skip": "Niet gebruiken"
+      },
+      "summary": "{rows} rijen: {added} nieuw, {updated} bijgewerkt",
+      "skipped": "{n} overgeslagen (leeg of dubbel)",
+      "retired": "{n} opties die er niet in staan worden ingetrokken",
+      "needLabel": "Kies de kolom met de labels.",
+      "apply": "Toepassen"
+    },
+    "translations": {
+      "none": "Je formulieren gebruiken één taal",
+      "noneDesc": "Voeg talen voor formulieren toe in Instellingen en vertaal de opties dan hier.",
+      "settings": "Taalinstellingen",
+      "language": "Taal",
+      "progress": "Vertaald",
+      "hint": "Formulieren krijgen deze als ze vanuit de lijst worden bijgewerkt, voor de talen die ze aanbieden.",
+      "for": "Vertaling van {label}"
+    },
+    "usage": {
+      "none": "Nog niet gebruikt",
+      "noneDesc": "Kies in een formulier deze lijst onder de opties van een keuzevraag.",
+      "failed": "Waar hij wordt gebruikt kon niet worden geladen",
+      "saveFirst": "Sla eerst je wijzigingen op en werk dan de formulieren bij.",
+      "outdated": "{n} formulier heeft opties uit een oudere versie van de lijst. | {n} formulieren hebben opties uit een oudere versie van de lijst.",
+      "allSynced": "Elk formulier heeft de lijst zoals hij nu is.",
+      "updateAll": "Alle formulieren bijwerken",
+      "update": "Bijwerken",
+      "synced": "{n} formulier bijgewerkt | {n} formulieren bijgewerkt",
+      "publishHint": "{n} ervan is gepubliceerd: publiceer het om de nieuwe opties te tonen. | {n} ervan zijn gepubliceerd: publiceer ze om de nieuwe opties te tonen."
     }
   }
 }

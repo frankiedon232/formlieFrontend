@@ -1,6 +1,6 @@
 /**
  * Mock reusable building blocks (docs/API-CONTRACT.md → Field library & option lists):
- * saved fields and option lists, per workspace. Every change is in the audit trail.
+ * saved fields, per workspace (option lists: ./optionLists.ts). Every change is in the audit trail.
  */
 import { z } from 'zod'
 import { formFieldSchema } from '#shared/utils/forms/schema'
@@ -12,12 +12,7 @@ import { parseBody } from '../core/validate'
 import { libraryOf, saveLibrary } from '../data/libraryStore'
 
 const name = z.string().trim().min(1).max(80)
-const options = z
-  .array(z.object({ value: z.string().min(1).max(200), label: z.string().max(500), score: z.number().finite().optional() }))
-  .min(1)
-  .max(2000)
 const savedFieldBody = z.object({ name, field: formFieldSchema.omit({ id: true }) })
-const listBody = z.object({ name, options })
 
 /** Who made it, name only, never the email. */
 const authorOf = (user: Parameters<typeof actorOf>[0]) => {
@@ -61,72 +56,6 @@ export const deleteSavedField = defineMockRoute(({ event }) => {
     action: 'forms.field_removed',
     actor: actorOf(user),
     resource: { type: 'saved_field', id: removed!.id, name: removed!.name },
-  })
-  return ok({ id: removed!.id })
-})
-
-// ── Option lists ──────────────────────────────────────────────────────────────────────
-export const listOptionLists = defineMockRoute(({ event }) => {
-  const { tenant } = requireAuth(event)
-  return ok(byName(libraryOf(tenant).lists))
-})
-
-function assertListName(lists: { id: string; name: string }[], listName: string, except?: string) {
-  if (lists.some(item => item.id !== except && item.name.toLowerCase() === listName.toLowerCase()))
-    throw new MockError('FRM-FORM-1009', [{ field: 'name', message: 'A list with this name exists.' }])
-}
-
-export const createOptionList = defineMockRoute(({ event, body }) => {
-  const { user, tenant } = requireAuth(event)
-  const input = parseBody(listBody, body)
-  const store = libraryOf(tenant)
-  assertListName(store.lists, input.name)
-  const now = new Date().toISOString()
-  const created = { id: crypto.randomUUID(), ...input, created_by: authorOf(user), created_at: now, updated_at: now }
-  store.lists.push(created)
-  saveLibrary()
-  recordAudit(event, tenant, {
-    action: 'forms.list_created',
-    actor: actorOf(user),
-    resource: { type: 'option_list', id: created.id, name: created.name },
-    metadata: { options: String(created.options.length) },
-  })
-  return ok(created, {}, 201)
-})
-
-export const updateOptionList = defineMockRoute(({ event, body }) => {
-  const { user, tenant } = requireAuth(event)
-  const input = parseBody(listBody.partial(), body)
-  const store = libraryOf(tenant)
-  const found = store.lists.find(item => item.id === getRouterParam(event, 'id'))
-  if (!found) throw new MockError('FRM-GEN-1004')
-  if (input.name) assertListName(store.lists, input.name, found.id)
-  const changes = [
-    ...(input.name && input.name !== found.name ? [{ field: 'name', before: found.name, after: input.name }] : []),
-    ...(input.options ? [{ field: 'options', before: String(found.options.length), after: String(input.options.length) }] : []),
-  ]
-  Object.assign(found, input, { updated_at: new Date().toISOString() })
-  saveLibrary()
-  recordAudit(event, tenant, {
-    action: 'forms.list_updated',
-    actor: actorOf(user),
-    resource: { type: 'option_list', id: found.id, name: found.name },
-    changes,
-  })
-  return ok(found)
-})
-
-export const deleteOptionList = defineMockRoute(({ event }) => {
-  const { user, tenant } = requireAuth(event)
-  const store = libraryOf(tenant)
-  const index = store.lists.findIndex(item => item.id === getRouterParam(event, 'id'))
-  if (index < 0) throw new MockError('FRM-GEN-1004')
-  const [removed] = store.lists.splice(index, 1)
-  saveLibrary()
-  recordAudit(event, tenant, {
-    action: 'forms.list_deleted',
-    actor: actorOf(user),
-    resource: { type: 'option_list', id: removed!.id, name: removed!.name },
   })
   return ok({ id: removed!.id })
 })

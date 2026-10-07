@@ -608,7 +608,8 @@
     "FRM-AUTH-1015": "Parolanızın süresi doldu. Yeni bir parola belirleyin.",
     "FRM-AUTH-1016": "Bu ağdan oturum açmaya izin verilmiyor.",
     "FRM-AUTH-1017": "Bu değişiklik sizi dışarıda bırakır. Kendi e-posta alan adınızı ve adresinizi kontrol edin.",
-    "FRM-AUTH-1018": "Bu parolayı yakın zamanda kullandınız. Başka bir parola seçin."
+    "FRM-AUTH-1018": "Bu parolayı yakın zamanda kullandınız. Başka bir parola seçin.",
+    "FRM-FORM-1020": "İki seçenek aynı değere sahip. Her değer farklı olmalı."
   },
   "errorUi": {
     "reference": "Referans: {id}",
@@ -1069,7 +1070,8 @@
       "settings_org_deleted": "Kuruluş kaydı silindi",
       "settings_retention_applied": "Eski yanıtlar kaldırıldı (saklama)",
       "settings_data_exported": "Bir kişinin verileri dışa aktarıldı",
-      "settings_data_deleted": "Bir kişinin verileri silindi"
+      "settings_data_deleted": "Bir kişinin verileri silindi",
+      "forms_list_synced": "Formlar bir seçenek listesinden güncellendi"
     },
     "detail": {
       "who": "Kim",
@@ -2786,7 +2788,9 @@
       "listCreated": "“{name}” listesi oluşturuldu",
       "listUpdated": "“{name}” listesi güncellendi",
       "listDeleted": "“{name}” listesi silindi"
-    }
+    },
+    "listChanged": "Bu seçenekler doldurulduktan sonra {name} değişti.",
+    "updateFromList": "Listeden güncelle"
   },
   "designer": {
     "crumb": "Tasarım",
@@ -7086,6 +7090,138 @@
       "code_locked": "çok fazla yanlış kod",
       "account_disabled": "hesap devre dışı",
       "password_expired": "parolanın süresi doldu"
+    }
+  },
+  "optionSets": {
+    "subtitle": "Formlarınız için yeniden kullanılabilir seçim listeleri.",
+    "new": "Yeni liste",
+    "search": "Listelerde ve seçeneklerde ara",
+    "empty": "Henüz seçenek listesi yok",
+    "emptyDesc": "Bir listeyi bir kez oluşturun ve her seçim sorusunda kullanın.",
+    "options": "Seçenekler",
+    "optionsHint": "Tüm listelerinizde ve en büyük listelerde.",
+    "stat": {
+      "lists": "Listeler",
+      "retired": "Kaldırılan"
+    },
+    "byState": "Duruma göre",
+    "total": "Toplam {n}",
+    "state": {
+      "in_use": "Kullanımda",
+      "unused": "Henüz kullanılmadı",
+      "retired": "Kaldırılmış seçenekli"
+    },
+    "col": {
+      "name": "Ad",
+      "items": "Seçenekler",
+      "forms": "Kullanıldığı yer",
+      "languages": "Çevrilmiş",
+      "updated": "Güncellendi",
+      "state": "Durum"
+    },
+    "sort": {
+      "items": "En çok seçenek",
+      "forms": "En çok kullanılan",
+      "updated": "Son güncellenen"
+    },
+    "itemsCount": "{n} seçenek | {n} seçenek",
+    "formsCount": "{n} form | {n} form",
+    "retiredCount": "{n} kaldırıldı | {n} kaldırıldı",
+    "hasRetired": "Kaldırılmış seçenekleri var",
+    "noDescription": "Açıklama yok",
+    "oneLanguage": "Tek dil",
+    "duplicate": "Çoğalt",
+    "duplicated": "{name} kopyası oluşturuldu",
+    "deleteTitle": "{name} silinsin mi?",
+    "deleteDesc": "Liste kalıcı olarak silinir.",
+    "deleteUsed": "{n} form bunu kullanıyor. Seçeneklerini korur ama artık listeden güncellenemez. | {n} form bunu kullanıyor. Seçeneklerini korurlar ama artık listeden güncellenemezler.",
+    "deleted": "{name} silindi",
+    "notFound": "Bu liste artık yok",
+    "updatedBy": "{when} güncellendi · oluşturan {name}",
+    "name": "Ad",
+    "description": "Açıklama",
+    "descriptionPlaceholder": "Ne için olduğu, örn. hizmet verdiğimiz bölgeler",
+    "tab": {
+      "items": "Seçenekler",
+      "translations": "Çeviriler",
+      "usage": "Kullanıldığı yer"
+    },
+    "saved": "Liste kaydedildi",
+    "savedUsed": "Bunu kullanan formlar Kullanıldığı yer bölümünden güncellenebilir. | Bunu kullanan formlar Kullanıldığı yer bölümünden güncellenebilir.",
+    "emptyLabels": "{n} seçeneğin henüz etiketi yok. | {n} seçeneğin henüz etiketi yok.",
+    "items": {
+      "search": "Seçeneklerde ara",
+      "showValues": "Değerler",
+      "showScores": "Puanlar",
+      "paste": "Yapıştır",
+      "import": "İçe aktar",
+      "add": "Seçenek ekle",
+      "summary": "{active} sunuluyor · toplam {total}",
+      "repeated": "{n} değer tekrar ediyor | {n} değer tekrar ediyor",
+      "none": "Henüz seçenek yok",
+      "noneDesc": "Tek tek ekleyin, yapıştırın veya bir dosya içe aktarın.",
+      "noMatch": "Eşleşen seçenek yok",
+      "drag": "Taşımak için sürükleyin",
+      "label": "Etiket",
+      "labelPlaceholder": "İnsanların gördüğü",
+      "value": "Değer",
+      "score": "Puan",
+      "retired": "Kaldırıldı",
+      "up": "Yukarı taşı",
+      "down": "Aşağı taşı",
+      "retire": "Kaldır: artık sunulmaz, eski yanıtlar okunmaya devam eder",
+      "bringBack": "Yeniden sun",
+      "remove": "Sil",
+      "retireInstead": "Kaydedilmiş seçenekler silinmek yerine kaldırılır, böylece eski yanıtlar okunmaya devam eder",
+      "more": "{n} tane daha göster"
+    },
+    "import": {
+      "pasteTitle": "Seçenekleri yapıştır",
+      "pasteDesc": "Satır başına bir seçenek. Elektronik tablodan sütunlar da çalışır: etiketler, değerler, puanlar, çeviriler.",
+      "fileTitle": "Seçenekleri içe aktar",
+      "fileDesc": "Bir CSV veya Excel dosyası. Her sütunun neyi içerdiğini seçin, sonra önizlemeyi kontrol edin.",
+      "pastePlaceholder": "Kuzey\nGüney\nDoğu\nBatı",
+      "drop": "Bir CSV veya Excel dosyasını buraya bırakın ya da göz atmak için tıklayın",
+      "types": "CSV, TXT veya XLSX (ilk sayfa)",
+      "unsupported": "Bu dosya türü okunamıyor. CSV, TXT veya XLSX kullanın.",
+      "unreadable": "Dosya okunamadı. Dosyayı CSV veya XLSX olarak yeniden kaydedin.",
+      "header": "İlk satır sütun adlarını içeriyor",
+      "merge": "Ekle ve güncelle",
+      "replace": "Listeyi değiştir",
+      "column": "Sütun {n}",
+      "role": {
+        "label": "Etiket",
+        "value": "Değer",
+        "score": "Puan",
+        "lang": "{name} dilinde etiket",
+        "skip": "Kullanma"
+      },
+      "summary": "{rows} satır: {added} yeni, {updated} güncellendi",
+      "skipped": "{n} atlandı (boş veya tekrar eden)",
+      "retired": "İçinde olmayan {n} seçenek kaldırılacak",
+      "needLabel": "Etiketleri içeren sütunu seçin.",
+      "apply": "Uygula"
+    },
+    "translations": {
+      "none": "Formlarınız tek dil kullanıyor",
+      "noneDesc": "Ayarlar bölümünden formlar için diller ekleyin, sonra seçenekleri burada çevirin.",
+      "settings": "Dil ayarları",
+      "language": "Dil",
+      "progress": "Çevrilmiş",
+      "hint": "Formlar bunları, sundukları diller için listeden güncellendiklerinde alır.",
+      "for": "{label} çevirisi"
+    },
+    "usage": {
+      "none": "Henüz kullanılmadı",
+      "noneDesc": "Bir formda, bir seçim sorusunun seçenekleri altında bu listeyi seçin.",
+      "failed": "Nerede kullanıldığı yüklenemedi",
+      "saveFirst": "Önce değişikliklerinizi kaydedin, sonra formları güncelleyin.",
+      "outdated": "{n} formun seçenekleri listenin eski bir sürümünden. | {n} formun seçenekleri listenin eski bir sürümünden.",
+      "allSynced": "Her formda liste şu anki haliyle var.",
+      "updateAll": "Tüm formları güncelle",
+      "update": "Güncelle",
+      "synced": "{n} form güncellendi | {n} form güncellendi",
+      "publishHint": "Bunların {n} tanesi yayında: yeni seçenekleri göstermek için yayınlayın. | Bunların {n} tanesi yayında: yeni seçenekleri göstermek için yayınlayın."
     }
   }
 }

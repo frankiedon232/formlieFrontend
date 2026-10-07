@@ -4,6 +4,7 @@
   edits / deletes the list. "New list" creates one.
 -->
 <script setup lang="ts">
+import { offeredOptions } from '#shared/utils/forms/options'
 import type { DropdownMenuItem } from '@nuxt/ui'
 import { VueDraggable } from 'vue-draggable-plus'
 import type { OptionList } from '#shared/types/forms'
@@ -107,7 +108,7 @@ const menu = (list: OptionList): DropdownMenuItem[][] => [
           >
             <span class="flex min-w-0 flex-col items-start">
               <span class="max-w-full truncate">{{ list.name }}</span>
-              <span class="text-xs font-normal text-muted">{{ t('library.optionCount', { count: list.options.length }, list.options.length) }}</span>
+              <span class="text-xs font-normal text-muted">{{ t('library.optionCount', { count: offeredOptions(list).length }, offeredOptions(list).length) }}</span>
             </span>
           </UButton>
           <UDropdownMenu :items="menu(list)" :content="{ align: 'end' }">

@@ -70,6 +70,7 @@ export const ERROR_CODES = {
   'FRM-FORM-1017': { status: 403, message: 'That password isn’t right.' },
   'FRM-FORM-1018': { status: 403, message: 'This invitation link isn’t valid any more.' },
   'FRM-FORM-1019': { status: 403, message: 'Your sign-in for this form has expired. Sign in again.' },
+  'FRM-FORM-1020': { status: 422, message: 'Two options share the same value. Each value must be different.' },
   'FRM-RESP-1001': { status: 422, message: 'Submission is invalid.' },
   'FRM-RESP-1002': { status: 400, message: 'Verification failed.' },
   'FRM-RESP-1003': { status: 409, message: 'This form was already submitted from this session.' },

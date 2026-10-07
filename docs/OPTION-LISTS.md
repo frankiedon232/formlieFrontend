@@ -1,6 +1,6 @@
 # Option lists, plan (F15)
 
-Status: **planned** (owner request 2026-10-02). Today (F7) a workspace has simple saved lists: the
+Status: **F15a done (2026-10-07)**, the rest planned (owner request 2026-10-02). Today (F7) a workspace has simple saved lists: the
 palette **Lists** tab, "Fill from a list" / "Save as list" in a choice field, `GET/POST/PATCH/DELETE
 /option-lists`. This document is the plan for everything after that, so it can be scheduled later.
 
@@ -106,3 +106,9 @@ Deleting or retiring items never breaks old responses.
 3. **F15c, Cascading lists:** tree lists with levels, "Cascading choice" field group, parent → child loading.
 4. **F15d, Details + auto-fill:** columns on items, "Fill other fields", formulas / logic on columns.
 5. **F15e, Dynamic lists:** sources from forms, connected databases (after F12 Data sources), JSON URL, refreshed CSV; sync log.
+
+## F15a as built (2026-10-07)
+
+- **Option sets page** in the locked list format: chart cards (options in all lists with the biggest lists; in use / not used yet, legend filters), table and cards, search, state filter, sort; ⋯ open, duplicate, delete (forms keep their copies).
+- **List editor** (`/option-sets/{id}`): name and description; **Options** with label, value (shown on demand, made from the label for new options, locked once saved) and score, drag or ↑ / ↓ to reorder, retire / offer again (saved options are never removed, so old answers keep reading), 100 rows at a time with search; **Paste** and **Import** (CSV, TXT, Excel .xlsx first sheet, read in the browser without a library) with column mapping (label, value, score, label per language; guessed from the header) and a preview, add-and-update or replace (missing options are retired); **Translations** per form language with progress; **Used in** with up-to-date marks and Update (all or one form). Save / Discard, Ctrl / ⌘ + S, leave warning.
+- **Builder:** fields filled from a list get its active options only, and say when the list changed since, with "Update from the list".

@@ -3,6 +3,7 @@
   edit their rows here. Values stay stable when labels change (answers keep matching).
 -->
 <script setup lang="ts">
+import { matchesList, offeredOptions } from '#shared/utils/forms/options'
 import { VueDraggable } from 'vue-draggable-plus'
 import type { FormField } from '#shared/utils/forms/build'
 
@@ -91,8 +92,11 @@ onMounted(() => library.load())
 const listItems = computed(() => library.lists.value.map(l => ({ value: l.id, label: l.name, icon: 'i-lucide-list' })))
 function useList(id: string) {
   const list = library.lists.value.find(l => l.id === id)
-  if (list) builder.updateField(props.field.id, { options: structuredClone(toRaw(list.options)), option_set_id: list.id })
+  if (list) builder.updateField(props.field.id, { options: offeredOptions(toRaw(list)), option_set_id: list.id })
 }
+// The list this field came from (F15): say when it changed since, with one click to take it over
+const linked = computed(() => (props.field.option_set_id ? (library.lists.value.find(l => l.id === props.field.option_set_id) ?? null) : null))
+const listChanged = computed(() => !!linked.value && !matchesList(props.field.options, linked.value))
 const saveListOpen = ref(false)
 
 </script>
@@ -113,6 +117,7 @@ const saveListOpen = ref(false)
         @click="pasteOpen = true"
       />
     </div>
+    <UAlert v-if="listChanged && linked" color="warning" variant="subtle" icon="i-lucide-refresh-ccw" :title="t('library.listChanged', { name: linked.name })" :actions="[{ label: t('library.updateFromList'), color: 'neutral', variant: 'outline', size: 'xs', onClick: () => useList(linked!.id) }]" :ui="{ title: 'text-xs' }" />
     <div v-if="field.type !== 'matrix'" class="flex items-center gap-2">
       <USelectMenu
         :model-value="undefined"

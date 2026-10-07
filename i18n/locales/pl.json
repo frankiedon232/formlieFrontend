@@ -608,7 +608,8 @@
     "FRM-AUTH-1015": "Twoje hasło wygasło. Ustaw nowe.",
     "FRM-AUTH-1016": "Logowanie z tej sieci jest niedozwolone.",
     "FRM-AUTH-1017": "Ta zmiana zablokowałaby Ci dostęp. Sprawdź własną domenę i adres e-mail.",
-    "FRM-AUTH-1018": "Niedawno używasz tego hasła. Wybierz inne."
+    "FRM-AUTH-1018": "Niedawno używasz tego hasła. Wybierz inne.",
+    "FRM-FORM-1020": "Dwie opcje mają tę samą wartość. Każda wartość musi być inna."
   },
   "errorUi": {
     "reference": "Identyfikator: {id}",
@@ -1069,7 +1070,8 @@
       "settings_org_deleted": "Usunięto wpis organizacji",
       "settings_retention_applied": "Usunięto stare odpowiedzi (przechowywanie)",
       "settings_data_exported": "Wyeksportowano dane osoby",
-      "settings_data_deleted": "Usunięto dane osoby"
+      "settings_data_deleted": "Usunięto dane osoby",
+      "forms_list_synced": "Formularze zaktualizowane z listy opcji"
     },
     "detail": {
       "who": "Kto",
@@ -2786,7 +2788,9 @@
       "listCreated": "Utworzono listę „{name}”",
       "listUpdated": "Zaktualizowano listę „{name}”",
       "listDeleted": "Usunięto listę „{name}”"
-    }
+    },
+    "listChanged": "Lista {name} zmieniła się od czasu wypełnienia tych opcji.",
+    "updateFromList": "Zaktualizuj z listy"
   },
   "designer": {
     "crumb": "Wygląd",
@@ -7086,6 +7090,138 @@
       "code_locked": "zbyt wiele błędnych kodów",
       "account_disabled": "konto jest wyłączone",
       "password_expired": "hasło wygasło"
+    }
+  },
+  "optionSets": {
+    "subtitle": "Listy wyboru wielokrotnego użytku dla Twoich formularzy.",
+    "new": "Nowa lista",
+    "search": "Szukaj list i opcji",
+    "empty": "Brak list opcji",
+    "emptyDesc": "Utwórz listę raz i używaj jej w każdym pytaniu wyboru.",
+    "options": "Opcje",
+    "optionsHint": "We wszystkich Twoich listach oraz największe listy.",
+    "stat": {
+      "lists": "Listy",
+      "retired": "Wycofane"
+    },
+    "byState": "Według stanu",
+    "total": "Łącznie: {n}",
+    "state": {
+      "in_use": "W użyciu",
+      "unused": "Jeszcze nieużywana",
+      "retired": "Z wycofanymi opcjami"
+    },
+    "col": {
+      "name": "Nazwa",
+      "items": "Opcje",
+      "forms": "Używana w",
+      "languages": "Przetłumaczona",
+      "updated": "Zaktualizowana",
+      "state": "Stan"
+    },
+    "sort": {
+      "items": "Najwięcej opcji",
+      "forms": "Najczęściej używane",
+      "updated": "Ostatnio zaktualizowane"
+    },
+    "itemsCount": "{n} opcja | {n} opcje",
+    "formsCount": "{n} formularz | {n} formularze",
+    "retiredCount": "{n} wycofana | {n} wycofane",
+    "hasRetired": "Ma wycofane opcje",
+    "noDescription": "Brak opisu",
+    "oneLanguage": "Jeden język",
+    "duplicate": "Duplikuj",
+    "duplicated": "Utworzono kopię listy {name}",
+    "deleteTitle": "Usunąć listę {name}?",
+    "deleteDesc": "Lista zostanie usunięta na stałe.",
+    "deleteUsed": "Korzysta z niej {n} formularz. Zachowuje swoje opcje, ale nie można go już aktualizować z listy. | Korzysta z niej {n} formularzy. Zachowują swoje opcje, ale nie można ich już aktualizować z listy.",
+    "deleted": "Usunięto listę {name}",
+    "notFound": "Ta lista już nie istnieje",
+    "updatedBy": "Zaktualizowano {when} · autor: {name}",
+    "name": "Nazwa",
+    "description": "Opis",
+    "descriptionPlaceholder": "Do czego służy, np. regiony, które obsługujemy",
+    "tab": {
+      "items": "Opcje",
+      "translations": "Tłumaczenia",
+      "usage": "Używana w"
+    },
+    "saved": "Lista zapisana",
+    "savedUsed": "Formularze, które z niej korzystają, można zaktualizować w sekcji Używana w. | Formularze, które z niej korzystają, można zaktualizować w sekcji Używana w.",
+    "emptyLabels": "{n} opcja nie ma jeszcze etykiety. | {n} opcje nie mają jeszcze etykiety.",
+    "items": {
+      "search": "Szukaj opcji",
+      "showValues": "Wartości",
+      "showScores": "Punkty",
+      "paste": "Wklej",
+      "import": "Importuj",
+      "add": "Dodaj opcję",
+      "summary": "Oferowane: {active} · łącznie: {total}",
+      "repeated": "{n} wartość się powtarza | {n} wartości się powtarza",
+      "none": "Brak opcji",
+      "noneDesc": "Dodawaj je pojedynczo, wklej je lub zaimportuj plik.",
+      "noMatch": "Brak pasujących opcji",
+      "drag": "Przeciągnij, aby przenieść",
+      "label": "Etykieta",
+      "labelPlaceholder": "To, co widzą ludzie",
+      "value": "Wartość",
+      "score": "Punkty",
+      "retired": "Wycofana",
+      "up": "Przesuń w górę",
+      "down": "Przesuń w dół",
+      "retire": "Wycofaj: nie jest już oferowana, stare odpowiedzi nadal są czytelne",
+      "bringBack": "Oferuj ponownie",
+      "remove": "Usuń",
+      "retireInstead": "Zapisane opcje są wycofywane, a nie usuwane, aby stare odpowiedzi pozostały czytelne",
+      "more": "Pokaż jeszcze {n}"
+    },
+    "import": {
+      "pasteTitle": "Wklej opcje",
+      "pasteDesc": "Jedna opcja w wierszu. Kolumny z arkusza kalkulacyjnego też działają: etykiety, wartości, punkty, tłumaczenia.",
+      "fileTitle": "Importuj opcje",
+      "fileDesc": "Plik CSV lub Excel. Wybierz, co zawiera każda kolumna, a potem sprawdź podgląd.",
+      "pastePlaceholder": "Północ\nPołudnie\nWschód\nZachód",
+      "drop": "Upuść tutaj plik CSV lub Excel albo kliknij, aby przeglądać",
+      "types": "CSV, TXT lub XLSX (pierwszy arkusz)",
+      "unsupported": "Tego rodzaju pliku nie można odczytać. Użyj CSV, TXT lub XLSX.",
+      "unreadable": "Nie udało się odczytać pliku. Zapisz go ponownie jako CSV lub XLSX.",
+      "header": "Pierwszy wiersz zawiera nazwy kolumn",
+      "merge": "Dodaj i zaktualizuj",
+      "replace": "Zastąp listę",
+      "column": "Kolumna {n}",
+      "role": {
+        "label": "Etykieta",
+        "value": "Wartość",
+        "score": "Punkty",
+        "lang": "Etykieta w języku: {name}",
+        "skip": "Nie używaj"
+      },
+      "summary": "Wiersze: {rows}, nowe: {added}, zaktualizowane: {updated}",
+      "skipped": "Pominięto: {n} (puste lub powtórzone)",
+      "retired": "Opcje, których w nim nie ma ({n}), zostaną wycofane",
+      "needLabel": "Wybierz kolumnę z etykietami.",
+      "apply": "Zastosuj"
+    },
+    "translations": {
+      "none": "Twoje formularze używają jednego języka",
+      "noneDesc": "Dodaj języki formularzy w Ustawieniach, a potem przetłumacz opcje tutaj.",
+      "settings": "Ustawienia języka",
+      "language": "Język",
+      "progress": "Przetłumaczono",
+      "hint": "Formularze otrzymują je po aktualizacji z listy, dla języków, które oferują.",
+      "for": "Tłumaczenie: {label}"
+    },
+    "usage": {
+      "none": "Jeszcze nieużywana",
+      "noneDesc": "W formularzu wybierz tę listę w opcjach pytania wyboru.",
+      "failed": "Nie udało się wczytać, gdzie jest używana",
+      "saveFirst": "Najpierw zapisz zmiany, a potem zaktualizuj formularze.",
+      "outdated": "{n} formularz ma opcje ze starszej wersji listy. | {n} formularzy ma opcje ze starszej wersji listy.",
+      "allSynced": "Każdy formularz ma listę w aktualnej wersji.",
+      "updateAll": "Zaktualizuj wszystkie formularze",
+      "update": "Zaktualizuj",
+      "synced": "Zaktualizowano {n} formularz | Zaktualizowano {n} formularzy",
+      "publishHint": "{n} z nich jest opublikowany: opublikuj go, aby pokazać nowe opcje. | {n} z nich jest opublikowanych: opublikuj je, aby pokazać nowe opcje."
     }
   }
 }

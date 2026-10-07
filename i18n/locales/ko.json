@@ -608,7 +608,8 @@
     "FRM-AUTH-1015": "비밀번호가 만료되었습니다. 새 비밀번호를 설정하세요.",
     "FRM-AUTH-1016": "이 네트워크에서는 로그인할 수 없습니다.",
     "FRM-AUTH-1017": "이 변경으로 본인이 로그인할 수 없게 됩니다. 본인의 이메일 도메인과 주소를 확인하세요.",
-    "FRM-AUTH-1018": "최근에 사용한 비밀번호입니다. 다른 비밀번호를 선택하세요."
+    "FRM-AUTH-1018": "최근에 사용한 비밀번호입니다. 다른 비밀번호를 선택하세요.",
+    "FRM-FORM-1020": "두 옵션의 값이 같습니다. 값은 서로 달라야 합니다."
   },
   "errorUi": {
     "reference": "참조 번호: {id}",
@@ -1069,7 +1070,8 @@
       "settings_org_deleted": "조직 항목을 삭제했습니다",
       "settings_retention_applied": "오래된 응답을 삭제했습니다(보관)",
       "settings_data_exported": "한 사람의 데이터를 내보냈습니다",
-      "settings_data_deleted": "한 사람의 데이터를 삭제했습니다"
+      "settings_data_deleted": "한 사람의 데이터를 삭제했습니다",
+      "forms_list_synced": "옵션 목록에서 양식을 업데이트했습니다"
     },
     "detail": {
       "who": "누가",
@@ -2786,7 +2788,9 @@
       "listCreated": "‘{name}’ 목록 생성됨",
       "listUpdated": "‘{name}’ 목록 업데이트됨",
       "listDeleted": "‘{name}’ 목록 삭제됨"
-    }
+    },
+    "listChanged": "이 옵션을 채운 이후 {name}이(가) 변경되었습니다.",
+    "updateFromList": "목록에서 업데이트"
   },
   "designer": {
     "crumb": "디자인",
@@ -7086,6 +7090,138 @@
       "code_locked": "잘못된 코드가 너무 많습니다",
       "account_disabled": "계정이 비활성화되었습니다",
       "password_expired": "비밀번호가 만료되었습니다"
+    }
+  },
+  "optionSets": {
+    "subtitle": "양식에 다시 사용할 수 있는 선택 목록입니다.",
+    "new": "새 목록",
+    "search": "목록과 옵션 검색",
+    "empty": "아직 옵션 목록이 없습니다",
+    "emptyDesc": "목록을 한 번 만들어 두면 모든 선택형 질문에 사용할 수 있습니다.",
+    "options": "옵션",
+    "optionsHint": "모든 목록의 옵션과 가장 큰 목록.",
+    "stat": {
+      "lists": "목록",
+      "retired": "사용 중지"
+    },
+    "byState": "상태별",
+    "total": "총 {n}개",
+    "state": {
+      "in_use": "사용 중",
+      "unused": "아직 사용 안 함",
+      "retired": "사용 중지된 옵션 있음"
+    },
+    "col": {
+      "name": "이름",
+      "items": "옵션",
+      "forms": "사용처",
+      "languages": "번역됨",
+      "updated": "업데이트",
+      "state": "상태"
+    },
+    "sort": {
+      "items": "옵션 많은 순",
+      "forms": "많이 사용된 순",
+      "updated": "최근 업데이트순"
+    },
+    "itemsCount": "옵션 {n}개 | 옵션 {n}개",
+    "formsCount": "양식 {n}개 | 양식 {n}개",
+    "retiredCount": "{n}개 사용 중지 | {n}개 사용 중지",
+    "hasRetired": "사용 중지된 옵션 있음",
+    "noDescription": "설명 없음",
+    "oneLanguage": "언어 1개",
+    "duplicate": "복제",
+    "duplicated": "{name}의 사본을 만들었습니다",
+    "deleteTitle": "{name}을(를) 삭제할까요?",
+    "deleteDesc": "목록이 영구적으로 삭제됩니다.",
+    "deleteUsed": "양식 {n}개가 이 목록을 사용합니다. 옵션은 그대로 유지되지만 더 이상 목록에서 업데이트할 수 없습니다. | 양식 {n}개가 이 목록을 사용합니다. 옵션은 그대로 유지되지만 더 이상 목록에서 업데이트할 수 없습니다.",
+    "deleted": "{name}을(를) 삭제했습니다",
+    "notFound": "이 목록은 더 이상 존재하지 않습니다",
+    "updatedBy": "{when} 업데이트 · 작성자 {name}",
+    "name": "이름",
+    "description": "설명",
+    "descriptionPlaceholder": "용도, 예: 서비스 지역",
+    "tab": {
+      "items": "옵션",
+      "translations": "번역",
+      "usage": "사용처"
+    },
+    "saved": "목록을 저장했습니다",
+    "savedUsed": "이 목록을 사용하는 양식은 사용처에서 업데이트할 수 있습니다. | 이 목록을 사용하는 양식은 사용처에서 업데이트할 수 있습니다.",
+    "emptyLabels": "옵션 {n}개에 아직 레이블이 없습니다. | 옵션 {n}개에 아직 레이블이 없습니다.",
+    "items": {
+      "search": "옵션 검색",
+      "showValues": "값",
+      "showScores": "점수",
+      "paste": "붙여넣기",
+      "import": "가져오기",
+      "add": "옵션 추가",
+      "summary": "{active}개 제공 중 · 총 {total}개",
+      "repeated": "값 {n}개가 중복됩니다 | 값 {n}개가 중복됩니다",
+      "none": "아직 옵션이 없습니다",
+      "noneDesc": "하나씩 추가하거나 붙여넣거나 파일을 가져오세요.",
+      "noMatch": "일치하는 옵션이 없습니다",
+      "drag": "드래그하여 이동",
+      "label": "레이블",
+      "labelPlaceholder": "사람들에게 보이는 내용",
+      "value": "값",
+      "score": "점수",
+      "retired": "사용 중지",
+      "up": "위로 이동",
+      "down": "아래로 이동",
+      "retire": "사용 중지: 더 이상 제공되지 않지만 이전 응답은 계속 읽을 수 있습니다",
+      "bringBack": "다시 제공",
+      "remove": "제거",
+      "retireInstead": "저장된 옵션은 제거되지 않고 사용 중지되므로 이전 응답을 계속 읽을 수 있습니다",
+      "more": "{n}개 더 보기"
+    },
+    "import": {
+      "pasteTitle": "옵션 붙여넣기",
+      "pasteDesc": "한 줄에 옵션 하나씩 입력하세요. 스프레드시트의 열도 사용할 수 있습니다: 레이블, 값, 점수, 번역.",
+      "fileTitle": "옵션 가져오기",
+      "fileDesc": "CSV 또는 Excel 파일입니다. 각 열의 내용을 선택한 다음 미리보기를 확인하세요.",
+      "pastePlaceholder": "북쪽\n남쪽\n동쪽\n서쪽",
+      "drop": "CSV 또는 Excel 파일을 여기에 놓거나 클릭하여 찾아보세요",
+      "types": "CSV, TXT 또는 XLSX(첫 번째 시트)",
+      "unsupported": "이 형식의 파일은 읽을 수 없습니다. CSV, TXT 또는 XLSX를 사용하세요.",
+      "unreadable": "파일을 읽을 수 없습니다. CSV 또는 XLSX로 다시 저장하세요.",
+      "header": "첫 번째 행에 열 이름이 있음",
+      "merge": "추가 및 업데이트",
+      "replace": "목록 바꾸기",
+      "column": "열 {n}",
+      "role": {
+        "label": "레이블",
+        "value": "값",
+        "score": "점수",
+        "lang": "{name} 레이블",
+        "skip": "사용 안 함"
+      },
+      "summary": "{rows}행: 신규 {added}개, 업데이트 {updated}개",
+      "skipped": "{n}개 건너뜀(비어 있거나 중복)",
+      "retired": "포함되지 않은 옵션 {n}개가 사용 중지됩니다",
+      "needLabel": "레이블이 들어 있는 열을 선택하세요.",
+      "apply": "적용"
+    },
+    "translations": {
+      "none": "양식이 한 가지 언어를 사용합니다",
+      "noneDesc": "설정에서 양식 언어를 추가한 다음 여기에서 옵션을 번역하세요.",
+      "settings": "언어 설정",
+      "language": "언어",
+      "progress": "번역됨",
+      "hint": "양식이 목록에서 업데이트될 때 양식이 제공하는 언어에 대해 이 번역을 받습니다.",
+      "for": "{label} 번역"
+    },
+    "usage": {
+      "none": "아직 사용 안 함",
+      "noneDesc": "양식에서 선택형 질문의 옵션 아래에 있는 이 목록을 선택하세요.",
+      "failed": "사용처를 불러오지 못했습니다",
+      "saveFirst": "먼저 변경 사항을 저장한 다음 양식을 업데이트하세요.",
+      "outdated": "양식 {n}개에 목록의 이전 버전 옵션이 있습니다. | 양식 {n}개에 목록의 이전 버전 옵션이 있습니다.",
+      "allSynced": "모든 양식이 현재 목록을 사용하고 있습니다.",
+      "updateAll": "모든 양식 업데이트",
+      "update": "업데이트",
+      "synced": "양식 {n}개를 업데이트했습니다 | 양식 {n}개를 업데이트했습니다",
+      "publishHint": "그중 {n}개가 게시되어 있습니다. 새 옵션을 표시하려면 게시하세요. | 그중 {n}개가 게시되어 있습니다. 새 옵션을 표시하려면 게시하세요."
     }
   }
 }

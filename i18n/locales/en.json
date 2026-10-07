@@ -608,7 +608,8 @@
     "FRM-AUTH-1015": "Your password has expired. Set a new one.",
     "FRM-AUTH-1016": "Sign-in isn't allowed from this network.",
     "FRM-AUTH-1017": "This change would lock you out. Check your own email domain and address.",
-    "FRM-AUTH-1018": "You used this password recently. Choose another one."
+    "FRM-AUTH-1018": "You used this password recently. Choose another one.",
+    "FRM-FORM-1020": "Two options share the same value. Each value must be different."
   },
   "errorUi": {
     "reference": "Reference: {id}",
@@ -1069,7 +1070,8 @@
       "settings_org_deleted": "Organisation entry deleted",
       "settings_retention_applied": "Old responses removed (retention)",
       "settings_data_exported": "A person's data exported",
-      "settings_data_deleted": "A person's data deleted"
+      "settings_data_deleted": "A person's data deleted",
+      "forms_list_synced": "Forms updated from an option list"
     },
     "detail": {
       "who": "Who",
@@ -2786,7 +2788,9 @@
       "listCreated": "List “{name}” created",
       "listUpdated": "List “{name}” updated",
       "listDeleted": "List “{name}” deleted"
-    }
+    },
+    "listChanged": "{name} changed since these options were filled in.",
+    "updateFromList": "Update from the list"
   },
   "designer": {
     "crumb": "Design",
@@ -7086,6 +7090,138 @@
       "code_locked": "too many wrong codes",
       "account_disabled": "the account is disabled",
       "password_expired": "the password has expired"
+    }
+  },
+  "optionSets": {
+    "subtitle": "Reusable choice lists for your forms.",
+    "new": "New list",
+    "search": "Search lists and options",
+    "empty": "No option lists yet",
+    "emptyDesc": "Make a list once and fill any choice question with it.",
+    "options": "Options",
+    "optionsHint": "In all your lists, and the biggest lists.",
+    "stat": {
+      "lists": "Lists",
+      "retired": "Retired"
+    },
+    "byState": "By state",
+    "total": "{n} in all",
+    "state": {
+      "in_use": "In use",
+      "unused": "Not used yet",
+      "retired": "With retired options"
+    },
+    "col": {
+      "name": "Name",
+      "items": "Options",
+      "forms": "Used in",
+      "languages": "Translated",
+      "updated": "Updated",
+      "state": "State"
+    },
+    "sort": {
+      "items": "Most options",
+      "forms": "Most used",
+      "updated": "Recently updated"
+    },
+    "itemsCount": "{n} option | {n} options",
+    "formsCount": "{n} form | {n} forms",
+    "retiredCount": "{n} retired | {n} retired",
+    "hasRetired": "Has retired options",
+    "noDescription": "No description",
+    "oneLanguage": "One language",
+    "duplicate": "Duplicate",
+    "duplicated": "Copy of {name} made",
+    "deleteTitle": "Delete {name}?",
+    "deleteDesc": "The list is removed for good.",
+    "deleteUsed": "{n} form uses it. It keeps its options, it just can’t be updated from the list any more. | {n} forms use it. They keep their options, they just can’t be updated from the list any more.",
+    "deleted": "{name} deleted",
+    "notFound": "This list doesn’t exist any more",
+    "updatedBy": "Updated {when} · made by {name}",
+    "name": "Name",
+    "description": "Description",
+    "descriptionPlaceholder": "What it is for, e.g. the regions we serve",
+    "tab": {
+      "items": "Options",
+      "translations": "Translations",
+      "usage": "Used in"
+    },
+    "saved": "List saved",
+    "savedUsed": "Forms using it can be updated under Used in. | Forms using it can be updated under Used in.",
+    "emptyLabels": "{n} option has no label yet. | {n} options have no label yet.",
+    "items": {
+      "search": "Search options",
+      "showValues": "Values",
+      "showScores": "Scores",
+      "paste": "Paste",
+      "import": "Import",
+      "add": "Add option",
+      "summary": "{active} offered · {total} in all",
+      "repeated": "{n} value is repeated | {n} values are repeated",
+      "none": "No options yet",
+      "noneDesc": "Add them one by one, paste them, or import a file.",
+      "noMatch": "No options match",
+      "drag": "Drag to move",
+      "label": "Label",
+      "labelPlaceholder": "What people see",
+      "value": "Value",
+      "score": "Score",
+      "retired": "Retired",
+      "up": "Move up",
+      "down": "Move down",
+      "retire": "Retire: no longer offered, old answers still read",
+      "bringBack": "Offer it again",
+      "remove": "Remove",
+      "retireInstead": "Saved options are retired rather than removed, so old answers keep reading",
+      "more": "Show {n} more"
+    },
+    "import": {
+      "pasteTitle": "Paste options",
+      "pasteDesc": "One option per line. Columns from a spreadsheet work too: labels, values, scores, translations.",
+      "fileTitle": "Import options",
+      "fileDesc": "A CSV or Excel file. Choose what each column holds, then check the preview.",
+      "pastePlaceholder": "North\nSouth\nEast\nWest",
+      "drop": "Drop a CSV or Excel file here or click to browse",
+      "types": "CSV, TXT or XLSX (first sheet)",
+      "unsupported": "This kind of file can’t be read. Use CSV, TXT or XLSX.",
+      "unreadable": "The file couldn’t be read. Save it again as CSV or XLSX.",
+      "header": "The first row holds column names",
+      "merge": "Add and update",
+      "replace": "Replace the list",
+      "column": "Column {n}",
+      "role": {
+        "label": "Label",
+        "value": "Value",
+        "score": "Score",
+        "lang": "Label in {name}",
+        "skip": "Don’t use"
+      },
+      "summary": "{rows} rows: {added} new, {updated} updated",
+      "skipped": "{n} skipped (empty or repeated)",
+      "retired": "{n} options not in it will be retired",
+      "needLabel": "Choose the column that holds the labels.",
+      "apply": "Apply"
+    },
+    "translations": {
+      "none": "Your forms use one language",
+      "noneDesc": "Add languages for forms in Settings, then translate the options here.",
+      "settings": "Language settings",
+      "language": "Language",
+      "progress": "Translated",
+      "hint": "Forms get these when they are updated from the list, for the languages they offer.",
+      "for": "Translation of {label}"
+    },
+    "usage": {
+      "none": "Not used yet",
+      "noneDesc": "In a form, choose this list under a choice question’s options.",
+      "failed": "Where it is used could not be loaded",
+      "saveFirst": "Save your changes first, then update the forms.",
+      "outdated": "{n} form has options from an older version of the list. | {n} forms have options from an older version of the list.",
+      "allSynced": "Every form has the list as it is now.",
+      "updateAll": "Update all forms",
+      "update": "Update",
+      "synced": "{n} form updated | {n} forms updated",
+      "publishHint": "{n} of them is published: publish it to show the new options. | {n} of them are published: publish them to show the new options."
     }
   }
 }

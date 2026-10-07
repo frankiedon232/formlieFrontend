@@ -608,7 +608,8 @@
     "FRM-AUTH-1015": "Ihr Passwort ist abgelaufen. Legen Sie ein neues fest.",
     "FRM-AUTH-1016": "Von diesem Netzwerk aus ist die Anmeldung nicht erlaubt.",
     "FRM-AUTH-1017": "Diese Änderung würde Sie aussperren. Prüfen Sie Ihre eigene E-Mail-Domain und -Adresse.",
-    "FRM-AUTH-1018": "Sie haben dieses Passwort kürzlich verwendet. Wählen Sie ein anderes."
+    "FRM-AUTH-1018": "Sie haben dieses Passwort kürzlich verwendet. Wählen Sie ein anderes.",
+    "FRM-FORM-1020": "Zwei Optionen haben denselben Wert. Jeder Wert muss unterschiedlich sein."
   },
   "errorUi": {
     "reference": "Referenz: {id}",
@@ -1069,7 +1070,8 @@
       "settings_org_deleted": "Organisationseintrag gelöscht",
       "settings_retention_applied": "Alte Antworten entfernt (Aufbewahrung)",
       "settings_data_exported": "Daten einer Person exportiert",
-      "settings_data_deleted": "Daten einer Person gelöscht"
+      "settings_data_deleted": "Daten einer Person gelöscht",
+      "forms_list_synced": "Formulare aus einer Optionsliste aktualisiert"
     },
     "detail": {
       "who": "Wer",
@@ -2786,7 +2788,9 @@
       "listCreated": "Liste „{name}“ erstellt",
       "listUpdated": "Liste „{name}“ aktualisiert",
       "listDeleted": "Liste „{name}“ gelöscht"
-    }
+    },
+    "listChanged": "{name} hat sich geändert, seit diese Optionen ausgefüllt wurden.",
+    "updateFromList": "Aus der Liste aktualisieren"
   },
   "designer": {
     "crumb": "Design",
@@ -7086,6 +7090,138 @@
       "code_locked": "zu viele falsche Codes",
       "account_disabled": "das Konto ist deaktiviert",
       "password_expired": "das Passwort ist abgelaufen"
+    }
+  },
+  "optionSets": {
+    "subtitle": "Wiederverwendbare Auswahllisten für Ihre Formulare.",
+    "new": "Neue Liste",
+    "search": "Listen und Optionen durchsuchen",
+    "empty": "Noch keine Optionslisten",
+    "emptyDesc": "Erstellen Sie eine Liste einmal und nutzen Sie sie in jeder Auswahlfrage.",
+    "options": "Optionen",
+    "optionsHint": "In allen Ihren Listen und die größten Listen.",
+    "stat": {
+      "lists": "Listen",
+      "retired": "Zurückgezogen"
+    },
+    "byState": "Nach Status",
+    "total": "{n} insgesamt",
+    "state": {
+      "in_use": "In Verwendung",
+      "unused": "Noch nicht verwendet",
+      "retired": "Mit zurückgezogenen Optionen"
+    },
+    "col": {
+      "name": "Name",
+      "items": "Optionen",
+      "forms": "Verwendet in",
+      "languages": "Übersetzt",
+      "updated": "Aktualisiert",
+      "state": "Status"
+    },
+    "sort": {
+      "items": "Meiste Optionen",
+      "forms": "Am häufigsten verwendet",
+      "updated": "Zuletzt aktualisiert"
+    },
+    "itemsCount": "{n} Option | {n} Optionen",
+    "formsCount": "{n} Formular | {n} Formulare",
+    "retiredCount": "{n} zurückgezogen | {n} zurückgezogen",
+    "hasRetired": "Enthält zurückgezogene Optionen",
+    "noDescription": "Keine Beschreibung",
+    "oneLanguage": "Eine Sprache",
+    "duplicate": "Duplizieren",
+    "duplicated": "Kopie von {name} erstellt",
+    "deleteTitle": "{name} löschen?",
+    "deleteDesc": "Die Liste wird endgültig gelöscht.",
+    "deleteUsed": "{n} Formular verwendet sie. Es behält seine Optionen, kann aber nicht mehr aus der Liste aktualisiert werden. | {n} Formulare verwenden sie. Sie behalten ihre Optionen, können aber nicht mehr aus der Liste aktualisiert werden.",
+    "deleted": "{name} gelöscht",
+    "notFound": "Diese Liste existiert nicht mehr",
+    "updatedBy": "Aktualisiert {when} · erstellt von {name}",
+    "name": "Name",
+    "description": "Beschreibung",
+    "descriptionPlaceholder": "Wofür sie gedacht ist, z. B. die Regionen, die wir bedienen",
+    "tab": {
+      "items": "Optionen",
+      "translations": "Übersetzungen",
+      "usage": "Verwendet in"
+    },
+    "saved": "Liste gespeichert",
+    "savedUsed": "Formulare, die sie verwenden, können unter Verwendet in aktualisiert werden. | Formulare, die sie verwenden, können unter Verwendet in aktualisiert werden.",
+    "emptyLabels": "{n} Option hat noch keine Beschriftung. | {n} Optionen haben noch keine Beschriftung.",
+    "items": {
+      "search": "Optionen durchsuchen",
+      "showValues": "Werte",
+      "showScores": "Punktwerte",
+      "paste": "Einfügen",
+      "import": "Importieren",
+      "add": "Option hinzufügen",
+      "summary": "{active} angeboten · {total} insgesamt",
+      "repeated": "{n} Wert wird wiederholt | {n} Werte werden wiederholt",
+      "none": "Noch keine Optionen",
+      "noneDesc": "Fügen Sie sie einzeln hinzu, fügen Sie sie ein oder importieren Sie eine Datei.",
+      "noMatch": "Keine Option passt",
+      "drag": "Zum Verschieben ziehen",
+      "label": "Beschriftung",
+      "labelPlaceholder": "Was Personen sehen",
+      "value": "Wert",
+      "score": "Punktwert",
+      "retired": "Zurückgezogen",
+      "up": "Nach oben",
+      "down": "Nach unten",
+      "retire": "Zurückziehen: wird nicht mehr angeboten, alte Antworten bleiben lesbar",
+      "bringBack": "Wieder anbieten",
+      "remove": "Entfernen",
+      "retireInstead": "Gespeicherte Optionen werden zurückgezogen statt entfernt, damit alte Antworten lesbar bleiben",
+      "more": "{n} weitere anzeigen"
+    },
+    "import": {
+      "pasteTitle": "Optionen einfügen",
+      "pasteDesc": "Eine Option pro Zeile. Spalten aus einer Tabelle funktionieren ebenfalls: Beschriftungen, Werte, Punktwerte, Übersetzungen.",
+      "fileTitle": "Optionen importieren",
+      "fileDesc": "Eine CSV- oder Excel-Datei. Wählen Sie, was jede Spalte enthält, und prüfen Sie dann die Vorschau.",
+      "pastePlaceholder": "Nord\nSüd\nOst\nWest",
+      "drop": "CSV- oder Excel-Datei hier ablegen oder klicken, um zu suchen",
+      "types": "CSV, TXT oder XLSX (erstes Blatt)",
+      "unsupported": "Diese Dateiart kann nicht gelesen werden. Verwenden Sie CSV, TXT oder XLSX.",
+      "unreadable": "Die Datei konnte nicht gelesen werden. Speichern Sie sie erneut als CSV oder XLSX.",
+      "header": "Die erste Zeile enthält die Spaltennamen",
+      "merge": "Hinzufügen und aktualisieren",
+      "replace": "Liste ersetzen",
+      "column": "Spalte {n}",
+      "role": {
+        "label": "Beschriftung",
+        "value": "Wert",
+        "score": "Punktwert",
+        "lang": "Beschriftung in {name}",
+        "skip": "Nicht verwenden"
+      },
+      "summary": "{rows} Zeilen: {added} neu, {updated} aktualisiert",
+      "skipped": "{n} übersprungen (leer oder wiederholt)",
+      "retired": "{n} Optionen, die nicht enthalten sind, werden zurückgezogen",
+      "needLabel": "Wählen Sie die Spalte mit den Beschriftungen.",
+      "apply": "Anwenden"
+    },
+    "translations": {
+      "none": "Ihre Formulare verwenden eine Sprache",
+      "noneDesc": "Fügen Sie in den Einstellungen Sprachen für Formulare hinzu und übersetzen Sie die Optionen dann hier.",
+      "settings": "Spracheinstellungen",
+      "language": "Sprache",
+      "progress": "Übersetzt",
+      "hint": "Formulare erhalten diese bei der Aktualisierung aus der Liste, für die Sprachen, die sie anbieten.",
+      "for": "Übersetzung von {label}"
+    },
+    "usage": {
+      "none": "Noch nicht verwendet",
+      "noneDesc": "Wählen Sie diese Liste in einem Formular unter den Optionen einer Auswahlfrage.",
+      "failed": "Es konnte nicht geladen werden, wo sie verwendet wird",
+      "saveFirst": "Speichern Sie zuerst Ihre Änderungen und aktualisieren Sie dann die Formulare.",
+      "outdated": "{n} Formular hat Optionen aus einer älteren Version der Liste. | {n} Formulare haben Optionen aus einer älteren Version der Liste.",
+      "allSynced": "Jedes Formular hat die Liste in ihrem aktuellen Stand.",
+      "updateAll": "Alle Formulare aktualisieren",
+      "update": "Aktualisieren",
+      "synced": "{n} Formular aktualisiert | {n} Formulare aktualisiert",
+      "publishHint": "{n} davon ist veröffentlicht: Veröffentlichen Sie es, um die neuen Optionen anzuzeigen. | {n} davon sind veröffentlicht: Veröffentlichen Sie sie, um die neuen Optionen anzuzeigen."
     }
   }
 }

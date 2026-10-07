@@ -61,6 +61,7 @@ export const AUDIT_EVENTS = {
   'forms.list_created': { area: 'forms', icon: 'i-lucide-list-plus' },
   'forms.list_updated': { area: 'forms', icon: 'i-lucide-list' },
   'forms.list_deleted': { area: 'forms', icon: 'i-lucide-list-x' },
+  'forms.list_synced': { area: 'forms', icon: 'i-lucide-refresh-ccw' },
   'forms.theme_created': { area: 'forms', icon: 'i-lucide-palette' },
   'forms.theme_updated': { area: 'forms', icon: 'i-lucide-paintbrush' },
   'forms.theme_deleted': { area: 'forms', icon: 'i-lucide-trash-2' },

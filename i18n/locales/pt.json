@@ -608,7 +608,8 @@
     "FRM-AUTH-1015": "A sua senha expirou. Defina uma nova.",
     "FRM-AUTH-1016": "Não é permitido entrar a partir desta rede.",
     "FRM-AUTH-1017": "Esta alteração bloquearia o seu acesso. Verifique o seu próprio domínio e endereço de email.",
-    "FRM-AUTH-1018": "Usou esta senha recentemente. Escolha outra."
+    "FRM-AUTH-1018": "Usou esta senha recentemente. Escolha outra.",
+    "FRM-FORM-1020": "Duas opções têm o mesmo valor. Cada valor deve ser diferente."
   },
   "errorUi": {
     "reference": "Referência: {id}",
@@ -1069,7 +1070,8 @@
       "settings_org_deleted": "Entrada da organização excluída",
       "settings_retention_applied": "Respostas antigas removidas (retenção)",
       "settings_data_exported": "Dados de uma pessoa exportados",
-      "settings_data_deleted": "Dados de uma pessoa excluídos"
+      "settings_data_deleted": "Dados de uma pessoa excluídos",
+      "forms_list_synced": "Formulários atualizados a partir de uma lista de opções"
     },
     "detail": {
       "who": "Quem",
@@ -2786,7 +2788,9 @@
       "listCreated": "Lista “{name}” criada",
       "listUpdated": "Lista “{name}” atualizada",
       "listDeleted": "Lista “{name}” excluída"
-    }
+    },
+    "listChanged": "{name} mudou desde que estas opções foram preenchidas.",
+    "updateFromList": "Atualizar a partir da lista"
   },
   "designer": {
     "crumb": "Design",
@@ -7086,6 +7090,138 @@
       "code_locked": "muitos códigos errados",
       "account_disabled": "a conta está desativada",
       "password_expired": "a senha expirou"
+    }
+  },
+  "optionSets": {
+    "subtitle": "Listas de escolhas reutilizáveis para seus formulários.",
+    "new": "Nova lista",
+    "search": "Buscar listas e opções",
+    "empty": "Ainda não há listas de opções",
+    "emptyDesc": "Crie uma lista uma vez e use em qualquer pergunta de escolha.",
+    "options": "Opções",
+    "optionsHint": "Em todas as suas listas e as maiores listas.",
+    "stat": {
+      "lists": "Listas",
+      "retired": "Retiradas"
+    },
+    "byState": "Por estado",
+    "total": "{n} no total",
+    "state": {
+      "in_use": "Em uso",
+      "unused": "Ainda não usada",
+      "retired": "Com opções retiradas"
+    },
+    "col": {
+      "name": "Nome",
+      "items": "Opções",
+      "forms": "Usada em",
+      "languages": "Traduzida",
+      "updated": "Atualizada",
+      "state": "Estado"
+    },
+    "sort": {
+      "items": "Mais opções",
+      "forms": "Mais usadas",
+      "updated": "Atualizadas recentemente"
+    },
+    "itemsCount": "{n} opção | {n} opções",
+    "formsCount": "{n} formulário | {n} formulários",
+    "retiredCount": "{n} retirada | {n} retiradas",
+    "hasRetired": "Tem opções retiradas",
+    "noDescription": "Sem descrição",
+    "oneLanguage": "Um idioma",
+    "duplicate": "Duplicar",
+    "duplicated": "Cópia de {name} criada",
+    "deleteTitle": "Excluir {name}?",
+    "deleteDesc": "A lista é removida de vez.",
+    "deleteUsed": "{n} formulário a usa. Ele mantém suas opções, mas não pode mais ser atualizado a partir da lista. | {n} formulários a usam. Eles mantêm suas opções, mas não podem mais ser atualizados a partir da lista.",
+    "deleted": "{name} excluída",
+    "notFound": "Esta lista não existe mais",
+    "updatedBy": "Atualizada {when} · criada por {name}",
+    "name": "Nome",
+    "description": "Descrição",
+    "descriptionPlaceholder": "Para que serve, p. ex. as regiões que atendemos",
+    "tab": {
+      "items": "Opções",
+      "translations": "Traduções",
+      "usage": "Usada em"
+    },
+    "saved": "Lista salva",
+    "savedUsed": "Os formulários que a usam podem ser atualizados em Usada em. | Os formulários que a usam podem ser atualizados em Usada em.",
+    "emptyLabels": "{n} opção ainda não tem rótulo. | {n} opções ainda não têm rótulo.",
+    "items": {
+      "search": "Buscar opções",
+      "showValues": "Valores",
+      "showScores": "Pontuações",
+      "paste": "Colar",
+      "import": "Importar",
+      "add": "Adicionar opção",
+      "summary": "{active} oferecidas · {total} no total",
+      "repeated": "{n} valor está repetido | {n} valores estão repetidos",
+      "none": "Ainda não há opções",
+      "noneDesc": "Adicione uma a uma, cole ou importe um arquivo.",
+      "noMatch": "Nenhuma opção corresponde",
+      "drag": "Arraste para mover",
+      "label": "Rótulo",
+      "labelPlaceholder": "O que as pessoas veem",
+      "value": "Valor",
+      "score": "Pontuação",
+      "retired": "Retirada",
+      "up": "Mover para cima",
+      "down": "Mover para baixo",
+      "retire": "Retirar: deixa de ser oferecida, as respostas antigas continuam legíveis",
+      "bringBack": "Oferecer de novo",
+      "remove": "Remover",
+      "retireInstead": "Opções salvas são retiradas em vez de removidas, para que as respostas antigas continuem legíveis",
+      "more": "Mostrar mais {n}"
+    },
+    "import": {
+      "pasteTitle": "Colar opções",
+      "pasteDesc": "Uma opção por linha. Colunas de uma planilha também funcionam: rótulos, valores, pontuações, traduções.",
+      "fileTitle": "Importar opções",
+      "fileDesc": "Um arquivo CSV ou Excel. Escolha o que cada coluna contém e confira a prévia.",
+      "pastePlaceholder": "Norte\nSul\nLeste\nOeste",
+      "drop": "Solte um arquivo CSV ou Excel aqui ou clique para procurar",
+      "types": "CSV, TXT ou XLSX (primeira planilha)",
+      "unsupported": "Este tipo de arquivo não pode ser lido. Use CSV, TXT ou XLSX.",
+      "unreadable": "Não foi possível ler o arquivo. Salve-o novamente como CSV ou XLSX.",
+      "header": "A primeira linha contém os nomes das colunas",
+      "merge": "Adicionar e atualizar",
+      "replace": "Substituir a lista",
+      "column": "Coluna {n}",
+      "role": {
+        "label": "Rótulo",
+        "value": "Valor",
+        "score": "Pontuação",
+        "lang": "Rótulo em {name}",
+        "skip": "Não usar"
+      },
+      "summary": "{rows} linhas: {added} novas, {updated} atualizadas",
+      "skipped": "{n} ignoradas (vazias ou repetidas)",
+      "retired": "{n} opções que não estão nele serão retiradas",
+      "needLabel": "Escolha a coluna que contém os rótulos.",
+      "apply": "Aplicar"
+    },
+    "translations": {
+      "none": "Seus formulários usam um só idioma",
+      "noneDesc": "Adicione idiomas para os formulários em Configurações e depois traduza as opções aqui.",
+      "settings": "Configurações de idioma",
+      "language": "Idioma",
+      "progress": "Traduzido",
+      "hint": "Os formulários recebem estas quando são atualizados a partir da lista, para os idiomas que oferecem.",
+      "for": "Tradução de {label}"
+    },
+    "usage": {
+      "none": "Ainda não usada",
+      "noneDesc": "Em um formulário, escolha esta lista nas opções de uma pergunta de escolha.",
+      "failed": "Não foi possível carregar onde ela é usada",
+      "saveFirst": "Salve suas alterações primeiro e depois atualize os formulários.",
+      "outdated": "{n} formulário tem opções de uma versão mais antiga da lista. | {n} formulários têm opções de uma versão mais antiga da lista.",
+      "allSynced": "Todos os formulários têm a lista como ela está agora.",
+      "updateAll": "Atualizar todos os formulários",
+      "update": "Atualizar",
+      "synced": "{n} formulário atualizado | {n} formulários atualizados",
+      "publishHint": "{n} deles está publicado: publique-o para mostrar as novas opções. | {n} deles estão publicados: publique-os para mostrar as novas opções."
     }
   }
 }

@@ -608,7 +608,8 @@
     "FRM-AUTH-1015": "Votre mot de passe a expiré. Définissez-en un nouveau.",
     "FRM-AUTH-1016": "La connexion n'est pas autorisée depuis ce réseau.",
     "FRM-AUTH-1017": "Ce changement vous bloquerait l'accès. Vérifiez votre propre domaine et adresse e-mail.",
-    "FRM-AUTH-1018": "Vous avez utilisé ce mot de passe récemment. Choisissez-en un autre."
+    "FRM-AUTH-1018": "Vous avez utilisé ce mot de passe récemment. Choisissez-en un autre.",
+    "FRM-FORM-1020": "Deux options ont la même valeur. Chaque valeur doit être différente."
   },
   "errorUi": {
     "reference": "Référence : {id}",
@@ -1069,7 +1070,8 @@
       "settings_org_deleted": "Entrée d'organisation supprimée",
       "settings_retention_applied": "Anciennes réponses supprimées (conservation)",
       "settings_data_exported": "Données d'une personne exportées",
-      "settings_data_deleted": "Données d'une personne supprimées"
+      "settings_data_deleted": "Données d'une personne supprimées",
+      "forms_list_synced": "Formulaires mis à jour depuis une liste d’options"
     },
     "detail": {
       "who": "Qui",
@@ -2786,7 +2788,9 @@
       "listCreated": "Liste « {name} » créée",
       "listUpdated": "Liste « {name} » mise à jour",
       "listDeleted": "Liste « {name} » supprimée"
-    }
+    },
+    "listChanged": "{name} a changé depuis le remplissage de ces options.",
+    "updateFromList": "Mettre à jour depuis la liste"
   },
   "designer": {
     "crumb": "Design",
@@ -7086,6 +7090,138 @@
       "code_locked": "trop de codes erronés",
       "account_disabled": "le compte est désactivé",
       "password_expired": "le mot de passe a expiré"
+    }
+  },
+  "optionSets": {
+    "subtitle": "Des listes de choix réutilisables pour vos formulaires.",
+    "new": "Nouvelle liste",
+    "search": "Rechercher des listes et des options",
+    "empty": "Aucune liste d’options pour le moment",
+    "emptyDesc": "Créez une liste une fois et utilisez-la pour n’importe quelle question à choix.",
+    "options": "Options",
+    "optionsHint": "Dans toutes vos listes, et les plus grandes listes.",
+    "stat": {
+      "lists": "Listes",
+      "retired": "Retirées"
+    },
+    "byState": "Par état",
+    "total": "{n} au total",
+    "state": {
+      "in_use": "Utilisée",
+      "unused": "Pas encore utilisée",
+      "retired": "Avec des options retirées"
+    },
+    "col": {
+      "name": "Nom",
+      "items": "Options",
+      "forms": "Utilisée dans",
+      "languages": "Traduite",
+      "updated": "Mise à jour",
+      "state": "État"
+    },
+    "sort": {
+      "items": "Plus d’options",
+      "forms": "Plus utilisées",
+      "updated": "Récemment mises à jour"
+    },
+    "itemsCount": "{n} option | {n} options",
+    "formsCount": "{n} formulaire | {n} formulaires",
+    "retiredCount": "{n} retirée | {n} retirées",
+    "hasRetired": "Contient des options retirées",
+    "noDescription": "Aucune description",
+    "oneLanguage": "Une langue",
+    "duplicate": "Dupliquer",
+    "duplicated": "Copie de {name} créée",
+    "deleteTitle": "Supprimer {name} ?",
+    "deleteDesc": "La liste est supprimée définitivement.",
+    "deleteUsed": "{n} formulaire l’utilise. Il garde ses options, mais ne peut plus être mis à jour depuis la liste. | {n} formulaires l’utilisent. Ils gardent leurs options, mais ne peuvent plus être mis à jour depuis la liste.",
+    "deleted": "{name} supprimée",
+    "notFound": "Cette liste n’existe plus",
+    "updatedBy": "Mise à jour {when} · créée par {name}",
+    "name": "Nom",
+    "description": "Description",
+    "descriptionPlaceholder": "À quoi elle sert, par ex. les régions que nous couvrons",
+    "tab": {
+      "items": "Options",
+      "translations": "Traductions",
+      "usage": "Utilisée dans"
+    },
+    "saved": "Liste enregistrée",
+    "savedUsed": "Les formulaires qui l’utilisent peuvent être mis à jour dans Utilisée dans. | Les formulaires qui l’utilisent peuvent être mis à jour dans Utilisée dans.",
+    "emptyLabels": "{n} option n’a pas encore de libellé. | {n} options n’ont pas encore de libellé.",
+    "items": {
+      "search": "Rechercher des options",
+      "showValues": "Valeurs",
+      "showScores": "Scores",
+      "paste": "Coller",
+      "import": "Importer",
+      "add": "Ajouter une option",
+      "summary": "{active} proposées · {total} au total",
+      "repeated": "{n} valeur est répétée | {n} valeurs sont répétées",
+      "none": "Aucune option pour le moment",
+      "noneDesc": "Ajoutez-les une par une, collez-les ou importez un fichier.",
+      "noMatch": "Aucune option ne correspond",
+      "drag": "Faites glisser pour déplacer",
+      "label": "Libellé",
+      "labelPlaceholder": "Ce que voient les gens",
+      "value": "Valeur",
+      "score": "Score",
+      "retired": "Retirée",
+      "up": "Monter",
+      "down": "Descendre",
+      "retire": "Retirer : elle n’est plus proposée, les anciennes réponses restent lisibles",
+      "bringBack": "La proposer à nouveau",
+      "remove": "Supprimer",
+      "retireInstead": "Les options enregistrées sont retirées plutôt que supprimées, pour que les anciennes réponses restent lisibles",
+      "more": "Afficher {n} de plus"
+    },
+    "import": {
+      "pasteTitle": "Coller des options",
+      "pasteDesc": "Une option par ligne. Les colonnes d’un tableur fonctionnent aussi : libellés, valeurs, scores, traductions.",
+      "fileTitle": "Importer des options",
+      "fileDesc": "Un fichier CSV ou Excel. Choisissez le contenu de chaque colonne, puis vérifiez l’aperçu.",
+      "pastePlaceholder": "Nord\nSud\nEst\nOuest",
+      "drop": "Déposez un fichier CSV ou Excel ici ou cliquez pour parcourir",
+      "types": "CSV, TXT ou XLSX (première feuille)",
+      "unsupported": "Ce type de fichier ne peut pas être lu. Utilisez CSV, TXT ou XLSX.",
+      "unreadable": "Le fichier n’a pas pu être lu. Enregistrez-le à nouveau en CSV ou XLSX.",
+      "header": "La première ligne contient les noms de colonnes",
+      "merge": "Ajouter et mettre à jour",
+      "replace": "Remplacer la liste",
+      "column": "Colonne {n}",
+      "role": {
+        "label": "Libellé",
+        "value": "Valeur",
+        "score": "Score",
+        "lang": "Libellé en {name}",
+        "skip": "Ne pas utiliser"
+      },
+      "summary": "{rows} lignes : {added} nouvelles, {updated} mises à jour",
+      "skipped": "{n} ignorées (vides ou répétées)",
+      "retired": "{n} options absentes seront retirées",
+      "needLabel": "Choisissez la colonne qui contient les libellés.",
+      "apply": "Appliquer"
+    },
+    "translations": {
+      "none": "Vos formulaires utilisent une seule langue",
+      "noneDesc": "Ajoutez des langues pour les formulaires dans les Paramètres, puis traduisez les options ici.",
+      "settings": "Paramètres de langue",
+      "language": "Langue",
+      "progress": "Traduit",
+      "hint": "Les formulaires les reçoivent lors de leur mise à jour depuis la liste, pour les langues qu’ils proposent.",
+      "for": "Traduction de {label}"
+    },
+    "usage": {
+      "none": "Pas encore utilisée",
+      "noneDesc": "Dans un formulaire, choisissez cette liste dans les options d’une question à choix.",
+      "failed": "Impossible de charger où elle est utilisée",
+      "saveFirst": "Enregistrez d’abord vos modifications, puis mettez à jour les formulaires.",
+      "outdated": "{n} formulaire a des options d’une ancienne version de la liste. | {n} formulaires ont des options d’une ancienne version de la liste.",
+      "allSynced": "Chaque formulaire a la liste dans son état actuel.",
+      "updateAll": "Mettre à jour tous les formulaires",
+      "update": "Mettre à jour",
+      "synced": "{n} formulaire mis à jour | {n} formulaires mis à jour",
+      "publishHint": "{n} d’entre eux est publié : publiez-le pour afficher les nouvelles options. | {n} d’entre eux sont publiés : publiez-les pour afficher les nouvelles options."
     }
   }
 }

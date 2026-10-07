@@ -608,7 +608,8 @@
     "FRM-AUTH-1015": "Kata sandi Anda sudah kedaluwarsa. Atur yang baru.",
     "FRM-AUTH-1016": "Masuk dari jaringan ini tidak diizinkan.",
     "FRM-AUTH-1017": "Perubahan ini akan mengunci Anda. Periksa domain dan alamat email Anda sendiri.",
-    "FRM-AUTH-1018": "Anda baru saja memakai kata sandi ini. Pilih yang lain."
+    "FRM-AUTH-1018": "Anda baru saja memakai kata sandi ini. Pilih yang lain.",
+    "FRM-FORM-1020": "Dua opsi memiliki nilai yang sama. Setiap nilai harus berbeda."
   },
   "errorUi": {
     "reference": "Referensi: {id}",
@@ -1069,7 +1070,8 @@
       "settings_org_deleted": "Entri organisasi dihapus",
       "settings_retention_applied": "Respons lama dihapus (retensi)",
       "settings_data_exported": "Data seseorang diekspor",
-      "settings_data_deleted": "Data seseorang dihapus"
+      "settings_data_deleted": "Data seseorang dihapus",
+      "forms_list_synced": "Formulir diperbarui dari daftar opsi"
     },
     "detail": {
       "who": "Siapa",
@@ -2786,7 +2788,9 @@
       "listCreated": "Daftar “{name}” dibuat",
       "listUpdated": "Daftar “{name}” diperbarui",
       "listDeleted": "Daftar “{name}” dihapus"
-    }
+    },
+    "listChanged": "{name} telah berubah sejak opsi ini diisi.",
+    "updateFromList": "Perbarui dari daftar"
   },
   "designer": {
     "crumb": "Desain",
@@ -7086,6 +7090,138 @@
       "code_locked": "terlalu banyak kode salah",
       "account_disabled": "akun dinonaktifkan",
       "password_expired": "kata sandi sudah kedaluwarsa"
+    }
+  },
+  "optionSets": {
+    "subtitle": "Daftar pilihan yang dapat dipakai ulang untuk formulir Anda.",
+    "new": "Daftar baru",
+    "search": "Cari daftar dan opsi",
+    "empty": "Belum ada daftar opsi",
+    "emptyDesc": "Buat daftar sekali dan pakai di pertanyaan pilihan mana pun.",
+    "options": "Opsi",
+    "optionsHint": "Di semua daftar Anda, dan daftar terbesar.",
+    "stat": {
+      "lists": "Daftar",
+      "retired": "Dinonaktifkan"
+    },
+    "byState": "Menurut status",
+    "total": "{n} secara keseluruhan",
+    "state": {
+      "in_use": "Sedang dipakai",
+      "unused": "Belum dipakai",
+      "retired": "Dengan opsi yang dinonaktifkan"
+    },
+    "col": {
+      "name": "Nama",
+      "items": "Opsi",
+      "forms": "Dipakai di",
+      "languages": "Diterjemahkan",
+      "updated": "Diperbarui",
+      "state": "Status"
+    },
+    "sort": {
+      "items": "Opsi terbanyak",
+      "forms": "Paling banyak dipakai",
+      "updated": "Baru diperbarui"
+    },
+    "itemsCount": "{n} opsi | {n} opsi",
+    "formsCount": "{n} formulir | {n} formulir",
+    "retiredCount": "{n} dinonaktifkan | {n} dinonaktifkan",
+    "hasRetired": "Memiliki opsi yang dinonaktifkan",
+    "noDescription": "Tanpa deskripsi",
+    "oneLanguage": "Satu bahasa",
+    "duplicate": "Gandakan",
+    "duplicated": "Salinan {name} dibuat",
+    "deleteTitle": "Hapus {name}?",
+    "deleteDesc": "Daftar ini dihapus secara permanen.",
+    "deleteUsed": "{n} formulir memakainya. Formulir tetap menyimpan opsinya, tetapi tidak dapat lagi diperbarui dari daftar. | {n} formulir memakainya. Formulir tetap menyimpan opsinya, tetapi tidak dapat lagi diperbarui dari daftar.",
+    "deleted": "{name} dihapus",
+    "notFound": "Daftar ini sudah tidak ada",
+    "updatedBy": "Diperbarui {when} · dibuat oleh {name}",
+    "name": "Nama",
+    "description": "Deskripsi",
+    "descriptionPlaceholder": "Untuk apa daftar ini, mis. wilayah yang kami layani",
+    "tab": {
+      "items": "Opsi",
+      "translations": "Terjemahan",
+      "usage": "Dipakai di"
+    },
+    "saved": "Daftar disimpan",
+    "savedUsed": "Formulir yang memakainya dapat diperbarui di Dipakai di. | Formulir yang memakainya dapat diperbarui di Dipakai di.",
+    "emptyLabels": "{n} opsi belum memiliki label. | {n} opsi belum memiliki label.",
+    "items": {
+      "search": "Cari opsi",
+      "showValues": "Nilai",
+      "showScores": "Skor",
+      "paste": "Tempel",
+      "import": "Impor",
+      "add": "Tambah opsi",
+      "summary": "{active} ditawarkan · {total} secara keseluruhan",
+      "repeated": "{n} nilai berulang | {n} nilai berulang",
+      "none": "Belum ada opsi",
+      "noneDesc": "Tambahkan satu per satu, tempel, atau impor berkas.",
+      "noMatch": "Tidak ada opsi yang cocok",
+      "drag": "Seret untuk memindahkan",
+      "label": "Label",
+      "labelPlaceholder": "Yang dilihat orang",
+      "value": "Nilai",
+      "score": "Skor",
+      "retired": "Dinonaktifkan",
+      "up": "Pindah ke atas",
+      "down": "Pindah ke bawah",
+      "retire": "Nonaktifkan: tidak ditawarkan lagi, jawaban lama tetap terbaca",
+      "bringBack": "Tawarkan lagi",
+      "remove": "Hapus",
+      "retireInstead": "Opsi yang tersimpan dinonaktifkan, bukan dihapus, agar jawaban lama tetap terbaca",
+      "more": "Tampilkan {n} lagi"
+    },
+    "import": {
+      "pasteTitle": "Tempel opsi",
+      "pasteDesc": "Satu opsi per baris. Kolom dari spreadsheet juga bisa: label, nilai, skor, terjemahan.",
+      "fileTitle": "Impor opsi",
+      "fileDesc": "Berkas CSV atau Excel. Pilih isi setiap kolom, lalu periksa pratinjau.",
+      "pastePlaceholder": "Utara\nSelatan\nTimur\nBarat",
+      "drop": "Letakkan berkas CSV atau Excel di sini atau klik untuk memilih",
+      "types": "CSV, TXT, atau XLSX (lembar pertama)",
+      "unsupported": "Jenis berkas ini tidak dapat dibaca. Gunakan CSV, TXT, atau XLSX.",
+      "unreadable": "Berkas tidak dapat dibaca. Simpan ulang sebagai CSV atau XLSX.",
+      "header": "Baris pertama berisi nama kolom",
+      "merge": "Tambah dan perbarui",
+      "replace": "Ganti daftar",
+      "column": "Kolom {n}",
+      "role": {
+        "label": "Label",
+        "value": "Nilai",
+        "score": "Skor",
+        "lang": "Label dalam {name}",
+        "skip": "Jangan dipakai"
+      },
+      "summary": "{rows} baris: {added} baru, {updated} diperbarui",
+      "skipped": "{n} dilewati (kosong atau berulang)",
+      "retired": "{n} opsi yang tidak ada di dalamnya akan dinonaktifkan",
+      "needLabel": "Pilih kolom yang berisi label.",
+      "apply": "Terapkan"
+    },
+    "translations": {
+      "none": "Formulir Anda memakai satu bahasa",
+      "noneDesc": "Tambahkan bahasa untuk formulir di Pengaturan, lalu terjemahkan opsi di sini.",
+      "settings": "Pengaturan bahasa",
+      "language": "Bahasa",
+      "progress": "Diterjemahkan",
+      "hint": "Formulir menerimanya saat diperbarui dari daftar, untuk bahasa yang mereka tawarkan.",
+      "for": "Terjemahan {label}"
+    },
+    "usage": {
+      "none": "Belum dipakai",
+      "noneDesc": "Di formulir, pilih daftar ini pada opsi pertanyaan pilihan.",
+      "failed": "Tempat pemakaiannya tidak dapat dimuat",
+      "saveFirst": "Simpan perubahan Anda terlebih dahulu, lalu perbarui formulir.",
+      "outdated": "{n} formulir memiliki opsi dari versi daftar yang lebih lama. | {n} formulir memiliki opsi dari versi daftar yang lebih lama.",
+      "allSynced": "Setiap formulir memiliki daftar seperti saat ini.",
+      "updateAll": "Perbarui semua formulir",
+      "update": "Perbarui",
+      "synced": "{n} formulir diperbarui | {n} formulir diperbarui",
+      "publishHint": "{n} di antaranya dipublikasikan: publikasikan agar opsi baru tampil. | {n} di antaranya dipublikasikan: publikasikan agar opsi baru tampil."
     }
   }
 }

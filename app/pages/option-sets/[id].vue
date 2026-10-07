@@ -1,0 +1,153 @@
+<!--
+  One option list (F15 M1): name and description, then Options (edit, reorder, retire, paste, import),
+  Translations (labels per language) and Used in (forms using it, "Update forms"). Changes are a draft
+  until Save (Ctrl / ⌘ + S); Discard puts them back; leaving with unsaved changes asks first.
+-->
+<script setup lang="ts">
+import type { DropdownMenuItem } from '@nuxt/ui'
+import type { LocalisationSettings } from '#shared/types/settings'
+import type { OptionItem, OptionListRow } from '#shared/types/forms'
+
+definePageMeta({ breadcrumb: 'nav.optionSets' })
+const { t } = useI18n()
+const route = useRoute()
+const api = useApi()
+const toast = useToast()
+const confirm = useConfirm()
+const { handle } = useErrorHandler()
+const { relative } = useFormat()
+const id = String(route.params.id)
+const breadcrumbs = useBreadcrumbs()
+
+const list = ref<OptionListRow | null>(null)
+const failed = ref(false)
+const draft = ref<{ name: string; description: string | null; options: OptionItem[] } | null>(null)
+function clone<T>(value: T): T {
+  return JSON.parse(JSON.stringify(value)) as T
+}
+async function load() {
+  failed.value = false
+  try {
+    list.value = (await api.get<OptionListRow>(`/option-lists/${id}`)).data
+    draft.value = clone({ name: list.value.name, description: list.value.description ?? null, options: list.value.options })
+    breadcrumbs.setLabel(route.path, list.value.name)
+  } catch (error) {
+    failed.value = true
+    handle(error, { silent: true })
+  }
+}
+// Languages of the workspace's forms other than its own (translations)
+const languages = ref<string[]>([])
+onMounted(async () => {
+  await load()
+  try {
+    const { data } = await api.get<LocalisationSettings>('/settings/localisation', undefined, { background: true })
+    languages.value = data.form_languages.filter(code => code !== data.language)
+  } catch {
+    languages.value = []
+  }
+})
+useHead({ title: () => list.value?.name ?? t('nav.optionSets') })
+
+const saved = computed(() => (list.value ? { name: list.value.name, description: list.value.description ?? null, options: list.value.options } : null))
+const dirty = computed(() => !!draft.value && JSON.stringify(draft.value) !== JSON.stringify(saved.value))
+const savedValues = computed(() => new Set((list.value?.options ?? []).map(option => option.value)))
+const tab = ref<'items' | 'translations' | 'usage'>('items')
+const tabs = computed(() => [
+  { value: 'items', label: t('optionSets.tab.items'), icon: 'i-lucide-list', badge: draft.value?.options.length },
+  { value: 'translations', label: t('optionSets.tab.translations'), icon: 'i-lucide-languages' },
+  { value: 'usage', label: t('optionSets.tab.usage'), icon: 'i-lucide-file-search', badge: list.value?.forms_count },
+])
+
+const saving = ref(false)
+const usageRef = useTemplateRef<{ load: () => Promise<void> }>('usage')
+async function save() {
+  if (!draft.value || !dirty.value || saving.value) return
+  const empty = draft.value.options.filter(option => !option.label.trim())
+  if (empty.length) {
+    toast.add({ title: t('optionSets.emptyLabels', { n: empty.length }, empty.length), color: 'warning', icon: 'i-lucide-triangle-alert' })
+    return
+  }
+  saving.value = true
+  try {
+    list.value = (await api.patch<OptionListRow>(`/option-lists/${id}`, { name: draft.value.name, description: draft.value.description, options: draft.value.options })).data
+    draft.value = clone({ name: list.value.name, description: list.value.description ?? null, options: list.value.options })
+    toast.add({ title: t('optionSets.saved'), description: list.value.forms_count ? t('optionSets.savedUsed', { n: list.value.forms_count }, list.value.forms_count) : undefined, color: 'success', icon: 'i-lucide-circle-check' })
+    void usageRef.value?.load()
+  } catch (error) {
+    handle(error)
+  } finally {
+    saving.value = false
+  }
+}
+const discard = () => saved.value && (draft.value = clone(saved.value))
+defineShortcuts({ meta_s: { usingInput: true, handler: () => void save() } })
+onBeforeRouteLeave(async () => (!dirty.value ? true : await confirm({ title: t('settings.leave.title'), description: t('settings.leave.desc'), confirmLabel: t('settings.leave.confirm'), danger: true })))
+useEventListener(window, 'beforeunload', event => dirty.value && event.preventDefault())
+
+// Paste / import
+const importOpen = ref(false)
+const importSource = ref<'paste' | 'file'>('paste')
+const openImport = (source: 'paste' | 'file') => ((importSource.value = source), (importOpen.value = true))
+const applyImport = (options: OptionItem[]) => draft.value && (draft.value.options = options)
+
+const moreItems = computed<DropdownMenuItem[][]>(() => [
+  [{ label: t('optionSets.duplicate'), icon: 'i-lucide-copy', onSelect: duplicate }],
+  [{ label: t('apiService.actions.delete'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: remove }],
+])
+async function duplicate() {
+  try {
+    const { data } = await api.post<{ id: string; name: string }>(`/option-lists/${id}/duplicate`)
+    toast.add({ title: t('optionSets.duplicated', { name: list.value?.name ?? '' }), color: 'success', icon: 'i-lucide-copy' })
+    await navigateTo(`/option-sets/${data.id}`)
+  } catch (error) {
+    handle(error)
+  }
+}
+async function remove() {
+  if (!list.value) return
+  const ok = await confirm({ title: t('optionSets.deleteTitle', { name: list.value.name }), description: list.value.forms_count ? t('optionSets.deleteUsed', { n: list.value.forms_count }, list.value.forms_count) : t('optionSets.deleteDesc'), confirmLabel: t('apiService.delete.confirm'), danger: true })
+  if (!ok) return
+  try {
+    await api.del(`/option-lists/${id}`)
+    draft.value = saved.value ? clone(saved.value) : null
+    toast.add({ title: t('optionSets.deleted', { name: list.value.name }), color: 'success', icon: 'i-lucide-trash-2' })
+    await navigateTo('/option-sets')
+  } catch (error) {
+    handle(error)
+  }
+}
+</script>
+
+<template>
+  <AppPanel id="option-set" :title="list?.name ?? t('nav.optionSets')" :subtitle="list ? t('optionSets.updatedBy', { when: relative(list.updated_at), name: list.created_by.name }) : undefined">
+    <template #actions>
+      <UButton :label="t('settings.discard')" color="neutral" variant="outline" :disabled="!dirty || saving" class="hidden sm:inline-flex" @click="discard" />
+      <UButton :label="t('common.save')" icon="i-lucide-check" color="neutral" :loading="saving" :disabled="!dirty" @click="save">
+        <template #trailing><UKbd value="meta" size="sm" class="hidden sm:inline-flex" /><UKbd value="S" size="sm" class="hidden sm:inline-flex" /></template>
+      </UButton>
+      <UDropdownMenu :items="moreItems" :content="{ align: 'end' }">
+        <UButton icon="i-lucide-ellipsis" color="neutral" variant="outline" square :aria-label="t('dataView.actions')" />
+      </UDropdownMenu>
+    </template>
+
+    <AppEmpty v-if="failed" icon="i-lucide-list-x" :title="t('optionSets.notFound')" :actions="[{ label: t('nav.optionSets'), icon: 'i-lucide-arrow-left', color: 'neutral', variant: 'outline', to: '/option-sets' }]" />
+    <div v-else-if="!draft" class="flex flex-col gap-4"><USkeleton class="h-24 rounded-lg" /><USkeleton v-for="n in 5" :key="n" class="h-10" /></div>
+    <template v-else>
+      <div class="grid gap-4 sm:grid-cols-[minmax(0,20rem)_minmax(0,1fr)]">
+        <UFormField :label="t('optionSets.name')" required :error="!draft.name.trim() ? t('library.nameRequired') : undefined">
+          <UInput v-model="draft.name" maxlength="80" class="w-full" />
+        </UFormField>
+        <UFormField :label="t('optionSets.description')">
+          <UInput :model-value="draft.description ?? ''" maxlength="300" :placeholder="t('optionSets.descriptionPlaceholder')" class="w-full" @update:model-value="value => draft && (draft.description = String(value) || null)" />
+        </UFormField>
+      </div>
+      <UTabs v-model="tab" :items="tabs" :content="false" color="neutral" variant="link" class="w-full" />
+      <OptionSetsItems v-if="tab === 'items'" v-model="draft.options" :saved-values="savedValues" @paste="openImport('paste')" @import="openImport('file')" />
+      <OptionSetsTranslations v-else-if="tab === 'translations'" v-model="draft.options" :languages="languages" />
+      <OptionSetsUsage v-show="tab === 'usage'" ref="usage" :list-id="id" :dirty="dirty" @synced="load" />
+    </template>
+
+    <OptionSetsImportModal v-if="draft" v-model:open="importOpen" :source="importSource" :options="draft.options" :languages="languages" @apply="applyImport" />
+  </AppPanel>
+</template>
