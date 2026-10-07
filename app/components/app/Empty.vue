@@ -3,7 +3,7 @@
   space it has, a layered icon tile (soft frame, solid card) inside a softly framed area with smooth corners, a clear title, a short muted
   description and the next step as buttons. Same props and slots as Nuxt UI's UEmpty, plus `tone`
   (error tints the icon). Use instead of UEmpty everywhere. The icon tile follows the workspace's
-  Appearance colour (primary; black and white keeps it monochrome).
+  Appearance colour (primary; black and white keeps it monochrome), and so do its neutral buttons.
 -->
 <script setup lang="ts">
 import type { ButtonProps } from '@nuxt/ui'
@@ -64,6 +64,8 @@ const toneClass = computed(
   () => ({ neutral: 'text-primary', error: 'text-error', warning: 'text-warning' })[tone.value],
 )
 const forwarded = computed(() => Object.keys(slots).filter(name => name !== 'leading'))
+// The next step's buttons wear the workspace's colour too (solid or outline as given); red / amber ones keep theirs
+const tinted = computed(() => props.actions?.map(action => (!action.color || action.color === 'neutral' ? { ...action, color: 'primary' as const } : action)))
 </script>
 
 <template>
@@ -71,7 +73,7 @@ const forwarded = computed(() => Object.keys(slots).filter(name => name !== 'lea
     <UEmpty
       :title="title"
       :description="description"
-      :actions="actions"
+      :actions="tinted"
       :size="tiny ? 'xs' : compact ? 'sm' : 'md'"
       variant="naked"
       :ui="ui"
