@@ -184,7 +184,7 @@
       "folderHint": "Ordner halten Ihre Formulare in der Liste und der Seitenleiste geordnet (zum Beispiel nach Team oder Projekt). Sie sind keine Vorlagenkategorien.",
       "templateSubtitle": "Baue sie wie ein Formular und speichere sie dann als Vorlage",
       "templateTitle": "Eine Vorlage beginnt als Formular",
-      "templateHint": "Gib ihr einen Namen und lege sie an. Der Builder öffnet sich in den Formulareinstellungen mit Als Vorlage speichern, damit du die Vorlage für neue Formulare wiederverwenden kannst."
+      "templateHint": "Geben Sie ihr einen Namen und legen Sie sie an. Der Builder öffnet sich in den Formulareinstellungen mit Als Vorlage speichern, damit Sie die Vorlage für neue Formulare wiederverwenden können."
     },
     "detail": {
       "created": "Erstellt",
@@ -332,17 +332,17 @@
     },
     "channels": {
       "title": "Wo Leute antworten können",
-      "desc": "Wähle, wie dieses Formular Antworten annimmt. Schalte aus, was du nicht nutzt.",
+      "desc": "Wählen Sie, wie dieses Formular Antworten annimmt. Schalten Sie aus, was Sie nicht nutzen.",
       "link": "Weblink",
       "embed": "Einbetten",
       "api": "API-Dienst",
       "linkHint": "Eigene Adresse, Kurzlink und QR-Code.",
-      "embedHint": "In deiner Website, in einem Frame.",
+      "embedHint": "In Ihrer Website, in einem Frame.",
       "apiHint": "Andere Apps senden und lesen Antworten über Endpunkte.",
       "makeApiOnly": "Nur API",
       "allThree": "Alle drei",
       "apiOnly": "Nur API",
-      "apiOnlyHint": "Dieses Formular hat keine Webadresse: Link, Kurzlink und Einbettung antworten mit „nicht gefunden“, wie bei einem Formular, das es nicht gibt. Apps erreichen es nur über deine API-Endpunkte.",
+      "apiOnlyHint": "Dieses Formular hat keine Webadresse: Link, Kurzlink und Einbettung antworten mit „nicht gefunden“, wie bei einem Formular, das es nicht gibt. Apps erreichen es nur über Ihre API-Endpunkte.",
       "openShare": "Teilen-Einstellungen öffnen"
     }
   },
@@ -604,10 +604,10 @@
     "FRM-ORG-1001": "Ein Eintrag mit diesem Namen gibt es bereits.",
     "FRM-ORG-1002": "Formulare nutzen ihn noch. Archiviere ihn oder führe ihn mit einem anderen zusammen.",
     "FRM-AUTH-1014": "Mit dieser E-Mail-Adresse ist die Anmeldung in diesem Workspace nicht möglich.",
-    "FRM-AUTH-1015": "Dein Passwort ist abgelaufen. Lege ein neues fest.",
+    "FRM-AUTH-1015": "Ihr Passwort ist abgelaufen. Legen Sie ein neues fest.",
     "FRM-AUTH-1016": "Von diesem Netzwerk aus ist die Anmeldung nicht erlaubt.",
-    "FRM-AUTH-1017": "Diese Änderung würde dich aussperren. Prüfe deine eigene E-Mail-Domain und -Adresse.",
-    "FRM-AUTH-1018": "Du hast dieses Passwort kürzlich verwendet. Wähle ein anderes."
+    "FRM-AUTH-1017": "Diese Änderung würde Sie aussperren. Prüfen Sie Ihre eigene E-Mail-Domain und -Adresse.",
+    "FRM-AUTH-1018": "Sie haben dieses Passwort kürzlich verwendet. Wählen Sie ein anderes."
   },
   "errorUi": {
     "reference": "Referenz: {id}",
@@ -817,8 +817,8 @@
       "back": "Zurück zur Anmeldung",
       "send": "Code senden",
       "save": "Neues Passwort speichern",
-      "expired": "Dein Passwort ist abgelaufen",
-      "expiredDesc": "Dein Workspace verlangt von Zeit zu Zeit ein neues Passwort. Fordere einen Code an und wähle ein neues."
+      "expired": "Ihr Passwort ist abgelaufen",
+      "expiredDesc": "Ihr Workspace verlangt von Zeit zu Zeit ein neues Passwort. Fordern Sie einen Code an und wählen Sie ein neues."
     },
     "welcome": {
       "title": "Ihr Arbeitsbereich wird eingerichtet",
@@ -2491,7 +2491,7 @@
       "keepGoing": "Weiter ausfüllen"
     },
     "language": "Sprache",
-    "consentLine": "Mit dem Absenden stimmst du zu, dass {org} deine Antworten für dieses Formular verwenden darf.",
+    "consentLine": "Mit dem Absenden stimmen Sie zu, dass {org} Ihre Antworten für dieses Formular verwenden darf.",
     "privacyNotice": "Datenschutzhinweis"
   },
   "logic": {
@@ -3827,7 +3827,7 @@
       "active": "Nimmt Aufrufe an",
       "activeHint": "Ausgeschaltet antworten alle Endpoints darin mit einem klaren Fehler.",
       "create": "Service erstellen",
-      "nameHelp": "Benenne ihn nach der App oder dem Partner, die ihn aufrufen, damit du weißt, wessen Aufrufe das sind.",
+      "nameHelp": "Benennen Sie ihn nach der App oder dem Partner, die ihn aufrufen, damit Sie wissen, wessen Aufrufe das sind.",
       "steps": {
         "about": "Info",
         "details": "Details",
@@ -3850,7 +3850,7 @@
         "title": "{name} ist bereit",
         "text": "Der Dienst ist erstellt. Für sich allein tut er noch nichts: Er braucht mindestens einen Endpunkt.",
         "nextTitle": "Als Nächstes: Endpunkt hinzufügen",
-        "nextText": "Ein Endpunkt macht aus einem veröffentlichten Formular eine Adresse in diesem Dienst. Du wählst das Formular, was der Endpunkt darf und welche Antworten er annimmt und liefert.",
+        "nextText": "Ein Endpunkt macht aus einem veröffentlichten Formular eine Adresse in diesem Dienst. Sie wählen das Formular, was der Endpunkt darf und welche Antworten er annimmt und liefert.",
         "later": "Später",
         "endpoint": "Endpunkt erstellen"
       }
@@ -3964,7 +3964,7 @@
         "DELETE": "Eine Antwort per ID entfernen; im Audit-Protokoll festgehalten."
       },
       "afterTitle": "Wie es weitergeht",
-      "afterText": "Der Endpunkt wird nicht live erstellt. Test-Tokens können ihn schon aufrufen, du kannst ihn also gefahrlos ausprobieren. Gib ihm dann ein Live-Token, füge bei Bedarf Zugriffsregeln hinzu und schalte ihn ein."
+      "afterText": "Der Endpunkt wird nicht live erstellt. Test-Tokens können ihn schon aufrufen, Sie können ihn also gefahrlos ausprobieren. Geben Sie ihm dann ein Live-Token, fügen Sie bei Bedarf Zugriffsregeln hinzu und schalten Sie ihn ein."
     },
     "tokens": {
       "title": "Tokens",
@@ -4026,7 +4026,7 @@
       "kindHint": {
         "static": "Ein langlebiges Token, das die App bei jedem Aufruf sendet.",
         "client": "Die App tauscht sie gegen ein kurzlebiges Token ein. Das ist sicherer, falls ein Token durchsickert.",
-        "webhook": "Formalie sendet ihn an deine Webhook-Adresse, damit dein Empfänger erkennt, dass der Aufruf echt ist. Er kann die API nicht aufrufen."
+        "webhook": "Formalie sendet ihn an Ihre Webhook-Adresse, damit Ihr Empfänger erkennt, dass der Aufruf echt ist. Er kann die API nicht aufrufen."
       },
       "scope": {
         "title": "Was aufgerufen werden darf",
@@ -4067,7 +4067,7 @@
       },
       "about": {
         "title": "Was ein Token ist",
-        "text": "Apps senden mit jedem Aufruf ein Token, um sich auszuweisen. Gib jeder App ein eigenes, und nur das, was sie braucht, damit du eine stoppen kannst, ohne die anderen zu berühren."
+        "text": "Apps senden mit jedem Aufruf ein Token, um sich auszuweisen. Geben Sie jeder App ein eigenes, und nur das, was sie braucht, damit Sie eine stoppen können, ohne die anderen zu berühren."
       },
       "nameHelp": "Benenne es nach der App, die es nutzt.",
       "scopeSummary": {
@@ -4075,11 +4075,11 @@
         "services": "Es darf die Endpunkte von {n} Dienst aufrufen. | Es darf die Endpunkte von {n} Diensten aufrufen.",
         "endpoints": "Es darf {n} Endpunkt aufrufen. | Es darf {n} Endpunkte aufrufen."
       },
-      "expiryHelp": "Ein ablaufendes Token ist sicherer: Du bekommst 14 Tage vorher eine Erinnerung.",
-      "viewLater": "Du kannst es später im Token-Panel wieder ansehen, nachdem du dein Passwort bestätigt hast.",
+      "expiryHelp": "Ein ablaufendes Token ist sicherer: Sie bekommen 14 Tage vorher eine Erinnerung.",
+      "viewLater": "Sie können es später im Token-Panel wieder ansehen, nachdem Sie Ihr Passwort bestätigt haben.",
       "next": {
         "title": "Wie es weitergeht",
-        "test": "Nutze dieses Test-Token, um den Endpunkt unter API-Dokumentation auszuprobieren. Nichts wird gespeichert. Erstelle ein Live-Token, wenn du für echte Aufrufe bereit bist.",
+        "test": "Nutzen Sie dieses Test-Token, um den Endpunkt unter API-Dokumentation auszuprobieren. Nichts wird gespeichert. Erstellen Sie ein Live-Token, wenn Sie für echte Aufrufe bereit sind.",
         "live": "Beschränke bei Bedarf mit Zugriffsregeln, wer es nutzen darf, teste es und schalte dann den Endpunkt ein.",
         "rule": "Zugriffsregel hinzufügen"
       },
@@ -4094,9 +4094,9 @@
       "signIn": "So meldet es sich an",
       "signInHelp": "Ein Token ist entweder das eine oder das andere, nie beides. Ein Bearer-Token wird unverändert gesendet; Client-ID und Secret werden bei /token gegen ein kurzlebiges Token getauscht.",
       "kindRequired": "Wähle, wie sich dieses Token anmeldet.",
-      "webhookScope": "Ein Webhook-Token kann die API nicht aufrufen. Formalie sendet ihn als Authorization: Bearer bei jedem Aufruf an die Webhooks, die ihn nutzen, damit dein Empfänger prüfen kann, ob der Aufruf echt ist.",
+      "webhookScope": "Ein Webhook-Token kann die API nicht aufrufen. Formalie sendet ihn als Authorization: Bearer bei jedem Aufruf an die Webhooks, die ihn nutzen, damit Ihr Empfänger prüfen kann, ob der Aufruf echt ist.",
       "webhookShort": "Nur für Webhooks",
-      "webhookUsage": "Dein Empfänger prüft jeden Aufruf:\nAuthorization: Bearer {token}\nContent-Type: application/json\nFormalie-Key: dlv_…   (die Zustell-ID, bei jedem erneuten Versuch gleich)"
+      "webhookUsage": "Ihr Empfänger prüft jeden Aufruf:\nAuthorization: Bearer {token}\nContent-Type: application/json\nFormalie-Key: dlv_…   (die Zustell-ID, bei jedem erneuten Versuch gleich)"
     },
     "rotate": {
       "title": "{name} rotieren",
@@ -4306,7 +4306,7 @@
       "networkNote": "Formalie erkennt diese anhand von Listen bekannter Adressen, die täglich aktualisiert werden. Blockiere VPNs zusammen mit einer Länderregel, wenn das Land stimmen muss.",
       "geo": {
         "title": "Wie das Land ermittelt wird",
-        "text": "Anhand der IP-Adresse des Aufrufers, nachgeschlagen in einer Standortdatenbank: In der großen Mehrheit der Fälle stimmt das Land. Wer ein VPN oder einen Proxy nutzt, erscheint im Land des Servers. Füge daher eine Regel für Anonyme Netzwerke hinzu, wenn du das verhindern willst."
+        "text": "Anhand der IP-Adresse des Aufrufers, nachgeschlagen in einer Standortdatenbank: In der großen Mehrheit der Fälle stimmt das Land. Wer ein VPN oder einen Proxy nutzt, erscheint im Land des Servers. Fügen Sie daher eine Regel für Anonyme Netzwerke hinzu, wenn Sie das verhindern wollen."
       },
       "scopeHelp": "Überall, ein Dienst oder ein Endpunkt.",
       "steps": {
@@ -4417,7 +4417,7 @@
         "values": "Erlaubte Werte"
       },
       "fileValue": "Datei-IDs aus dem Upload-Schritt",
-      "putHint": "Sende nur die Antworten, die du änderst; die anderen bleiben unverändert.",
+      "putHint": "Senden Sie nur die Antworten, die Sie ändern; die anderen bleiben unverändert.",
       "keyHint": "Sende mit jedem neuen Datensatz einen neuen Formalie-Key. Eine Wiederholung mit demselben Key liefert den ersten Datensatz zurück, nie einen zweiten.",
       "query": "Abfrageoptionen",
       "page": "Seitennummer, ab 1",
@@ -4427,16 +4427,16 @@
       "code": "Code",
       "guide": "So funktioniert jeder Aufruf",
       "baseUrl": "Adresse",
-      "baseUrlHint": "Jeder Endpunkt deiner Organisation beginnt mit dieser Adresse. Hänge den Namen des Endpunkts daran an.",
+      "baseUrlHint": "Jeder Endpunkt Ihrer Organisation beginnt mit dieser Adresse. Hängen Sie den Namen des Endpunkts daran an.",
       "auth": {
         "title": "Anmelden: zwei Wege, nie beide",
-        "text": "Jedes Token meldet sich auf einem von zwei Wegen an, festgelegt beim Erstellen (Tokens und Header zeigt, welcher). Nutze den Weg des Tokens, das du bekommen hast.",
+        "text": "Jedes Token meldet sich auf einem von zwei Wegen an, festgelegt beim Erstellen (Tokens und Header zeigt, welcher). Nutzen Sie den Weg des Tokens, das Sie bekommen haben.",
         "static": "Sende das Token selbst bei jedem Aufruf als Authorization: Bearer. Mehr ist nicht nötig.",
-        "client": "Sende Client-ID und Secret per POST an /token. Du bekommst ein kurzlebiges Token (expires_in Sekunden): Sende es mit deinen Aufrufen als Authorization: Bearer und hole ein neues, wenn es abläuft.",
+        "client": "Senden Sie Client-ID und Secret per POST an /token. Sie bekommen ein kurzlebiges Token (expires_in Sekunden): Senden Sie es mit Ihren Aufrufen als Authorization: Bearer und holen Sie ein neues, wenn es abläuft.",
         "never": "Beide Wege nie mischen",
         "neverText": "Eine Client-ID oder ein Secret als Bearer oder ein Bearer-Token an /token wird mit 401 FRM-API-1010 abgelehnt, und die Antwort nennt den richtigen Weg.",
-        "yours": "Wie sich deine Endpunkte anmelden",
-        "both": "Beide Wege funktionieren: Nutze den, den dein Token hat."
+        "yours": "Wie sich Ihre Endpunkte anmelden",
+        "both": "Beide Wege funktionieren: Nutzen Sie den, den Ihr Token hat."
       },
       "key": {
         "title": "Formalie-Key",
@@ -4451,7 +4451,7 @@
       },
       "errors": {
         "title": "Fehler",
-        "text": "Ein fehlgeschlagener Aufruf antwortet mit einem Status und einem JSON-Body mit einem Code, den du hier nachschlagen kannst."
+        "text": "Ein fehlgeschlagener Aufruf antwortet mit einem Status und einem JSON-Body mit einem Code, den Sie hier nachschlagen können."
       },
       "openapi": "OpenAPI herunterladen",
       "downloaded": "OpenAPI-Datei heruntergeladen",
@@ -4503,12 +4503,12 @@
       }
     },
     "journey": {
-      "title": "Richte deine API ein",
+      "title": "Richten Sie Ihre API ein",
       "text": "Fünf Schritte vom Formular zu einer Adresse, die andere Apps aufrufen können.",
       "progress": "{n} von {total} erledigt",
       "service": {
         "title": "Dienst erstellen",
-        "text": "Ein Ordner für die Endpunkte, die eine App oder ein Partner nutzt. Bei Bedarf schaltest du alle auf einmal ab.",
+        "text": "Ein Ordner für die Endpunkte, die eine App oder ein Partner nutzt. Bei Bedarf schalten Sie alle auf einmal ab.",
         "action": "Neuer Dienst"
       },
       "endpoint": {
@@ -4534,12 +4534,12 @@
     },
     "intro": {
       "title": "Was ein Endpunkt ist",
-      "text": "Ein Endpunkt gibt einem veröffentlichten Formular eine eigene Adresse, zum Beispiel /job-applications. Andere Apps senden oder lesen dort Antworten, genau wie auf der Formularseite geprüft. Er gehört zu einem Dienst und bleibt nicht live, bis du ihm ein Token gibst und ihn einschaltest.",
+      "text": "Ein Endpunkt gibt einem veröffentlichten Formular eine eigene Adresse, zum Beispiel /job-applications. Andere Apps senden oder lesen dort Antworten, genau wie auf der Formularseite geprüft. Er gehört zu einem Dienst und bleibt nicht live, bis Sie ihm ein Token geben und ihn einschalten.",
       "hide": "Verstanden"
     },
     "gate": {
       "title": "Erstelle zuerst einen Dienst",
-      "text": "Jeder Endpunkt gehört zu einem Dienst: einer pro App oder Partner, damit du ihre Aufrufe gemeinsam siehst und sie auf einmal abschalten kannst. Du hast noch keinen Dienst, beginne also dort; du kommst direkt hierher zurück.",
+      "text": "Jeder Endpunkt gehört zu einem Dienst: einer pro App oder Partner, damit Sie ihre Aufrufe gemeinsam sehen und sie auf einmal abschalten können. Sie haben noch keinen Dienst, beginnen Sie also dort; Sie kommen direkt hierher zurück.",
       "action": "Neuer Dienst"
     },
     "setup": {
@@ -4548,7 +4548,7 @@
       "notLive": "Nicht live",
       "openEndpoint": "Endpunkt öffnen",
       "createdTitle": "/{name} ist erstellt",
-      "createdText": "Er ist noch nicht live: Test-Tokens können ihn aufrufen, Live-Aufrufe werden abgelehnt, bis du ihn einschaltest. Arbeite die Liste unten ab.",
+      "createdText": "Er ist noch nicht live: Test-Tokens können ihn aufrufen, Live-Aufrufe werden abgelehnt, bis Sie ihn einschalten. Arbeiten Sie die Liste unten ab.",
       "basics": {
         "title": "Dienst und Formular",
         "ok": "In {service}, antwortet mit dem Formular {form}.",
@@ -4574,7 +4574,7 @@
       },
       "live": {
         "title": "Live gehen",
-        "text": "Schalte ihn ein, wenn du bereit bist. Live-Tokens können ihn dann aufrufen.",
+        "text": "Schalten Sie ihn ein, wenn Sie bereit sind. Live-Tokens können ihn dann aufrufen.",
         "on": "Live-Tokens können ihn aufrufen. Schalte ihn aus, um alle Live-Aufrufe auf einmal zu stoppen.",
         "noLiveToken": "Noch kein Live-Token darf ihn aufrufen: Live-Aufrufe würden weiterhin abgelehnt.",
         "action": "Live gehen"
@@ -6171,7 +6171,7 @@
       "noDeliveries": "Noch keine Zustellungen",
       "noDeliveriesDesc": "Zustellungen erscheinen hier, sobald Ereignisse eintreten. Senden Sie jetzt einen Test an die Adresse.",
       "lastDelivery": "Zuletzt {when}",
-      "secretHint": "Bewahre ihn nur auf deinem Server auf. Lehne jeden Aufruf ab, dessen Authorization-Header nicht genau diesem entspricht (siehe Token prüfen im Webhook-Panel).",
+      "secretHint": "Bewahren Sie ihn nur auf Ihrem Server auf. Lehnen Sie jeden Aufruf ab, dessen Authorization-Header nicht genau diesem entspricht (siehe Token prüfen im Webhook-Panel).",
       "deleteTitle": "Diesen Webhook löschen?",
       "deleteDesc": "{name} erhält keine Aufrufe mehr und das Zustellprotokoll wird entfernt. Das kann nicht rückgängig gemacht werden.",
       "sendTest": "Test senden",
@@ -6277,14 +6277,14 @@
       },
       "verify": {
         "title": "Token prüfen",
-        "text": "Jeder Aufruf trägt diese Header. Lehne ihn ab, außer Authorization lautet genau Bearer und dein Webhook-Token (in konstanter Zeit vergleichen). Der Formalie-Key ist die Zustell-ID und bleibt bei Wiederholungen gleich: überspringe, was du schon verarbeitet hast.",
+        "text": "Jeder Aufruf trägt diese Header. Lehnen Sie ihn ab, außer Authorization lautet genau Bearer und Ihr Webhook-Token (in konstanter Zeit vergleichen). Der Formalie-Key ist die Zustell-ID und bleibt bei Wiederholungen gleich: Überspringen Sie, was Sie schon verarbeitet haben.",
         "answer": "Antworten Sie innerhalb von 10 Sekunden mit einem beliebigen 2xx-Status und erledigen Sie die eigentliche Arbeit danach. Alles andere wird wiederholt."
       },
       "token": "Webhook-Token",
       "tokenHelp": "Formalie sendet ihn bei jedem Aufruf als Authorization: Bearer, mit denselben Headern wie die API. Webhook-Tokens werden unter Tokens & Header erstellt und verwaltet.",
       "tokenNew": "Neuer Webhook-Token: {name} · Webhook",
       "tokenTitle": "Webhook-Token {name}",
-      "tokenGone": "Sein Token wurde widerrufen, ist abgelaufen oder wurde gelöscht: Zustellungen schlagen fehl, bis du einen anderen wählst.",
+      "tokenGone": "Sein Token wurde widerrufen, ist abgelaufen oder wurde gelöscht: Zustellungen schlagen fehl, bis Sie einen anderen wählen.",
       "tokenOpen": "Token öffnen"
     },
     "onceDesc": "Kopieren Sie es jetzt. Sie können es später in seinem Bereich wieder ansehen, nach Bestätigung Ihres Passworts."
@@ -6510,9 +6510,9 @@
           "new": "Neue Abteilung",
           "create": "Abteilung erstellen",
           "import": "Abteilungen importieren",
-          "hint": "Die Abteilungen, die deine Formulare und Zugriffsregeln nutzen können, mit den Personen darin.",
+          "hint": "Die Abteilungen, die Ihre Formulare und Zugriffsregeln nutzen können, mit den Personen darin.",
           "empty": "Noch keine Abteilungen",
-          "emptyDesc": "Füge die Abteilungen deiner Organisation hinzu oder importiere sie aus einer Liste. Formulare können Felder dann nur für einige davon zeigen.",
+          "emptyDesc": "Fügen Sie die Abteilungen Ihrer Organisation hinzu oder importieren Sie sie aus einer Liste. Formulare können Felder dann nur für einige davon zeigen.",
           "search": "Abteilungen suchen",
           "placeholder": "z. B. Finanzen",
           "examples": "Finanzen\nBetrieb\nPersonal",
@@ -6523,7 +6523,7 @@
           "new": "Neuer Jobtitel",
           "create": "Jobtitel erstellen",
           "import": "Jobtitel importieren",
-          "hint": "Was Personen in deiner Organisation tun. Getrennt von Berechtigungsrollen.",
+          "hint": "Was Personen in Ihrer Organisation tun. Getrennt von Berechtigungsrollen.",
           "empty": "Noch keine Jobtitel",
           "emptyDesc": "Füge die Jobtitel hinzu, die Personen innehaben, oder importiere sie aus einer Liste. Formulare können Felder dann nur für einige davon zeigen.",
           "search": "Jobtitel suchen",
@@ -6538,7 +6538,7 @@
           "import": "Teams importieren",
           "hint": "Optionale Gruppen von Personen über Abteilungen hinweg.",
           "empty": "Noch keine Teams",
-          "emptyDesc": "Füge Teams hinzu, wenn deine Organisation in Teams arbeitet, oder importiere sie aus einer Liste.",
+          "emptyDesc": "Fügen Sie Teams hinzu, wenn Ihre Organisation in Teams arbeitet, oder importieren Sie sie aus einer Liste.",
           "search": "Teams suchen",
           "placeholder": "z. B. Kundenerfolg",
           "examples": "Kundenerfolg\nOnboarding\nAußendienst",
@@ -6564,7 +6564,7 @@
           "import": "Kostenstellen importieren",
           "hint": "Optionale Kostenstellen für Budgets und Freigaben.",
           "empty": "Noch keine Kostenstellen",
-          "emptyDesc": "Füge Kostenstellen hinzu, wenn deine Formulare sie brauchen, oder importiere sie aus einer Liste.",
+          "emptyDesc": "Fügen Sie Kostenstellen hinzu, wenn Ihre Formulare sie brauchen, oder importieren Sie sie aus einer Liste.",
           "search": "Kostenstellen suchen",
           "placeholder": "z. B. CC-100 Marketing",
           "examples": "CC-100 Marketing\nCC-200 Betrieb",
@@ -6616,7 +6616,7 @@
       },
       "merge": {
         "title": "{n} Eintrag zusammenführen | {n} Einträge zusammenführen",
-        "desc": "Sie gehen in den, den du wählst, und die übrigen verschwinden.",
+        "desc": "Sie gehen in den, den Sie wählen, und die übrigen verschwinden.",
         "into": "Zusammenführen in",
         "people": "{n} Person wechselt zu {into}. | {n} Personen wechseln zu {into}.",
         "forms": "{n} Formularbeschränkung zieht mit um, sodass kein Formular seine Zugriffsregeln verliert. | {n} Formularbeschränkungen ziehen mit um, sodass kein Formular seine Zugriffsregeln verliert.",
@@ -6624,7 +6624,7 @@
         "action": "Zusammenführen"
       },
       "import": {
-        "desc": "Ein Name pro Zeile oder eine CSV-Datei (die erste Spalte wird genutzt). Nichts wird hinzugefügt, bevor du bestätigst.",
+        "desc": "Ein Name pro Zeile oder eine CSV-Datei (die erste Spalte wird genutzt). Nichts wird hinzugefügt, bevor Sie bestätigen.",
         "drop": "CSV- oder Textdatei hier ablegen oder klicken zum Auswählen",
         "types": "CSV oder TXT, ein Name pro Zeile",
         "paste": "Oder Namen einfügen",
@@ -6649,7 +6649,7 @@
     },
     "signin": {
       "methods": "Anmeldemethoden",
-      "methodsHint": "Nur diese erscheinen auf deiner Anmeldeseite. Mindestens eine bleibt aktiv.",
+      "methodsHint": "Nur diese erscheinen auf Ihrer Anmeldeseite. Mindestens eine bleibt aktiv.",
       "password": "E-Mail und Passwort",
       "passwordHint": "Personen melden sich mit ihrer Arbeits-E-Mail und einem Passwort an, danach mit einem Code.",
       "providerHint": "Personen melden sich mit ihrem {name}-Konto an, danach mit einem Code.",
@@ -6681,10 +6681,10 @@
       "domainPlaceholder": "example.com, dann Enter",
       "anyDomain": "Jede E-Mail-Adresse kann sich anmelden.",
       "badDomain": "Keine Domain: {list}",
-      "ownMissing": "Deine eigene Domain {domain} steht nicht auf der Liste",
-      "ownMissingDesc": "Du könntest dich nicht mehr anmelden, deshalb wird das Speichern abgelehnt, bis sie drauf steht.",
+      "ownMissing": "Ihre eigene Domain {domain} steht nicht auf der Liste",
+      "ownMissingDesc": "Sie könnten sich nicht mehr anmelden, deshalb wird das Speichern abgelehnt, bis sie drauf steht.",
       "addOwn": "{domain} hinzufügen",
-      "sumMethods": "{n} Anmeldemethode auf deiner Anmeldeseite | {n} Anmeldemethoden auf deiner Anmeldeseite",
+      "sumMethods": "{n} Anmeldemethode auf Ihrer Anmeldeseite | {n} Anmeldemethoden auf Ihrer Anmeldeseite",
       "sumCode": "Codes gelten {minutes} Min., {tries} Fehlversuche",
       "sumDomains": "Nur {list}"
     },
@@ -6736,15 +6736,15 @@
       "allConfirm": "Alle anderen abmelden",
       "signedOut": "{n} Sitzung beendet | {n} Sitzungen beendet",
       "signOutOne": "{name} abmelden",
-      "thisDevice": "Du",
+      "thisDevice": "Sie",
       "since": "Angemeldet {when}",
       "unknownDevice": "Unbekanntes Gerät",
       "sessionsFailed": "Die Sitzungen konnten nicht geladen werden",
       "network": "Erlaubte Netzwerke",
-      "networkHint": "Beschränke Anmeldung und Nutzung des Portals auf deine Büros oder dein VPN.",
+      "networkHint": "Beschränken Sie Anmeldung und Nutzung des Portals auf Ihre Büros oder Ihr VPN.",
       "allowlist": "IP-Zulassungsliste",
       "allowlistHint": "Wenn aktiv, können sich Personen nur von den unten stehenden Adressen anmelden und arbeiten.",
-      "myIp": "Deine Adresse",
+      "myIp": "Ihre Adresse",
       "onList": "Auf der Liste",
       "notOnList": "Nicht auf der Liste",
       "addMine": "Meine Adresse hinzufügen",
@@ -6755,11 +6755,11 @@
       "labelPlaceholder": "z. B. Hauptsitz",
       "removeIp": "Adresse entfernen",
       "noIps": "Noch keine Adressen",
-      "noIpsDesc": "Füge die Adressen deiner Büros oder deines VPN hinzu, oder deine eigene.",
+      "noIpsDesc": "Fügen Sie die Adressen Ihrer Büros oder Ihres VPN hinzu, oder Ihre eigene.",
       "addIp": "Adresse hinzufügen",
       "ipExamples": "Eine Adresse (198.51.100.7) oder ein Bereich (203.0.113.0/24, 2001:db8::/32).",
-      "lockout": "Du würdest dich selbst aussperren",
-      "lockoutDesc": "Deine eigene Adresse steht nicht auf der Liste, deshalb wird das Speichern abgelehnt. Füge sie zuerst hinzu."
+      "lockout": "Sie würden sich selbst aussperren",
+      "lockoutDesc": "Ihre eigene Adresse steht nicht auf der Liste, deshalb wird das Speichern abgelehnt. Fügen Sie sie zuerst hinzu."
     },
     "notifications": {
       "event": "Ereignis",
@@ -6779,7 +6779,7 @@
         "problems": "Probleme und Sicherheit"
       },
       "groupHint": {
-        "responses": "Wenn Personen deine Formulare beantworten.",
+        "responses": "Wenn Personen Ihre Formulare beantworten.",
         "forms": "Wenn ein Formular voll ist oder schließt und wenn eine Datei fertig ist.",
         "problems": "Dinge, die sich bald jemand ansehen sollte."
       },
@@ -6894,15 +6894,15 @@
       "confirmDesc": "Sie sind älter als die neue Grenze. Sie werden sofort entfernt und können nicht wiederhergestellt werden.",
       "confirm": "Speichern und entfernen",
       "notice": "Datenschutzhinweis und Einwilligung",
-      "noticeHint": "Was Befragte darüber sehen, wie du ihre Antworten verwendest.",
-      "noticeUrl": "Dein Datenschutzhinweis",
+      "noticeHint": "Was Befragte darüber sehen, wie Sie ihre Antworten verwenden.",
+      "noticeUrl": "Ihr Datenschutzhinweis",
       "consent": "Einwilligungszeile über „Absenden“ anzeigen",
-      "consentHint": "Bei jedem öffentlichen Formular, mit Link zu deinem Datenschutzhinweis.",
+      "consentHint": "Bei jedem öffentlichen Formular, mit Link zu Ihrem Datenschutzhinweis.",
       "consentText": "Einwilligungszeile",
       "consentTextHelp": "Leer: die Zeile von Formalie, in der Sprache der befragten Person.",
       "sample": "So sieht es aus",
       "requests": "Datenanfragen",
-      "requestsHint": "Wenn jemand wissen möchte, was du über ihn speicherst, oder vergessen werden will.",
+      "requestsHint": "Wenn jemand wissen möchte, was Sie über ihn speichern, oder vergessen werden will.",
       "requestEmail": "E-Mail-Adresse der Person",
       "requestPlaceholder": "name{'@'}example.com",
       "find": "Antworten finden",
@@ -6918,8 +6918,8 @@
       "typeEmail": "Gib {email} zur Bestätigung ein",
       "deleted": "{n} Antwort gelöscht | {n} Antworten gelöscht",
       "residency": "Speicherort der Daten",
-      "residencyHint": "Die Region, in der deine Antworten und Dateien gespeichert werden.",
-      "residencyLater": "Wird mit deinem Tarif festgelegt. Tarife kommen mit der Plattform-Konsole."
+      "residencyHint": "Die Region, in der Ihre Antworten und Dateien gespeichert werden.",
+      "residencyLater": "Wird mit Ihrem Tarif festgelegt. Tarife kommen mit der Plattform-Konsole."
     },
     "formDefaults": {
       "note": "Neue Formulare starten mit diesen Einstellungen. Bestehende Formulare behalten ihre eigenen, und jedes Formular kann sie weiterhin ändern.",
@@ -7075,7 +7075,7 @@
       },
       "response_duplicate": {
         "title": "Mögliches Duplikat in {form}",
-        "message": "Eine neue Antwort ähnelt einer früheren. Sieh sie dir an, bevor du sie mitzählst."
+        "message": "Eine neue Antwort ähnelt einer früheren. Sehen Sie sie sich an, bevor Sie sie mitzählen."
       },
       "form_limit": {
         "title": "{form} ist voll",
@@ -7086,7 +7086,7 @@
         "message": "Ab {date} werden keine Antworten mehr angenommen."
       },
       "export_ready": {
-        "title": "Dein Export ist fertig",
+        "title": "Ihr Export ist fertig",
         "message": "{file} steht zum Download bereit."
       },
       "webhook_failing": {
