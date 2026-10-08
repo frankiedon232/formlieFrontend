@@ -2009,7 +2009,11 @@
       "consentLinkLabel": "Linktekst",
       "showResult": "Resultaat tonen aan respondenten",
       "internalHint": "Berekend en opgeslagen bij elke reactie, maar alleen zichtbaar voor je team (bijv. een risiconiveau of loyaliteitsgroep).",
-      "showAs": "Weergeven als"
+      "showAs": "Weergeven als",
+      "search": "Zoeken tijdens het typen",
+      "searchHint": "Een zoekvak in plaats van een lange lijst. Gaat vanzelf aan boven {n} opties.",
+      "searchServer": "Boven {n} opties vraagt het openbare formulier de treffers op tijdens het typen, zodat het snel blijft.",
+      "longList": "{n} opties uit {name}. Bewerk ze in Optielijst."
     },
     "shortcuts": {
       "title": "Sneltoetsen",
@@ -2517,7 +2521,10 @@
     "language": "Taal",
     "consentLine": "Door te verzenden ga je ermee akkoord dat {org} je antwoorden voor dit formulier mag gebruiken.",
     "privacyNotice": "Privacyverklaring",
-    "chooseAboveFirst": "Kies eerst {name}"
+    "chooseAboveFirst": "Kies eerst {name}",
+    "typeToSearch": "Typ om te zoeken…",
+    "moreMatches": "{shown} van {total} getoond. Typ meer om te verfijnen.",
+    "searchFailed": "Zoeken lukt nu niet."
   },
   "logic": {
     "crumb": "Logica",

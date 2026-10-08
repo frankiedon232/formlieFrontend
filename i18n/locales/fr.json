@@ -2009,7 +2009,11 @@
       "consentLinkLabel": "Texte du lien",
       "showResult": "Afficher le résultat aux répondants",
       "internalHint": "Calculé et enregistré avec chaque réponse, mais visible uniquement par votre équipe (p. ex. un niveau de risque ou un groupe de fidélité).",
-      "showAs": "Afficher comme"
+      "showAs": "Afficher comme",
+      "search": "Rechercher pendant la saisie",
+      "searchHint": "Un champ de recherche au lieu d’une longue liste. S’active tout seul au-delà de {n} options.",
+      "searchServer": "Au-delà de {n} options, le formulaire public demande les résultats pendant la saisie, pour rester rapide.",
+      "longList": "{n} options issues de {name}. Modifiez-les dans Liste d’options."
     },
     "shortcuts": {
       "title": "Raccourcis",
@@ -2517,7 +2521,10 @@
     "language": "Langue",
     "consentLine": "En envoyant, vous acceptez que {org} puisse utiliser vos réponses pour ce formulaire.",
     "privacyNotice": "Politique de confidentialité",
-    "chooseAboveFirst": "Choisissez d'abord {name}"
+    "chooseAboveFirst": "Choisissez d'abord {name}",
+    "typeToSearch": "Saisissez pour rechercher…",
+    "moreMatches": "{shown} sur {total} affichés. Saisissez davantage pour affiner.",
+    "searchFailed": "Impossible de rechercher pour le moment."
   },
   "logic": {
     "crumb": "Logique",

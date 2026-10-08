@@ -187,6 +187,7 @@ const uploadsPending = ref(0)
 // Field icons for the whole form (Form settings → Field icons; default on)
 provide(RENDERER_ICONS, computed(() => props.schema.settings?.field_icons !== false))
 provide(RENDERER_UPLOADS, { upload: props.preview ? null : (props.respondent?.upload ?? null), pending: uploadsPending })
+provide(RENDERER_LOOKUP, props.respondent?.lookup ?? null)
 
 function next() {
   if (submitting.value || uploadsPending.value) return

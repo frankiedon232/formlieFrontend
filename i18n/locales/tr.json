@@ -2009,7 +2009,11 @@
       "consentLinkLabel": "Bağlantı metni",
       "showResult": "Sonucu yanıtlayanlara göster",
       "internalHint": "Her yanıtla hesaplanır ve kaydedilir, ancak yalnızca ekibiniz görür (ör. bir risk düzeyi veya sadakat grubu).",
-      "showAs": "Görünüm biçimi"
+      "showAs": "Görünüm biçimi",
+      "search": "Yazarken ara",
+      "searchHint": "Uzun bir liste yerine arama kutusu. {n} seçeneğin üzerinde kendiliğinden açılır.",
+      "searchServer": "{n} seçeneğin üzerinde herkese açık form, kişiler yazarken eşleşmeleri ister, böylece hızlı kalır.",
+      "longList": "{name} kaynağından {n} seçenek. Bunları Seçenek Listesi bölümünde düzenleyin."
     },
     "shortcuts": {
       "title": "Kısayollar",
@@ -2517,7 +2521,10 @@
     "language": "Dil",
     "consentLine": "Göndererek, {org} kuruluşunun yanıtlarınızı bu form için kullanabilmesini kabul etmiş olursunuz.",
     "privacyNotice": "Gizlilik bildirimi",
-    "chooseAboveFirst": "Önce {name} seçin"
+    "chooseAboveFirst": "Önce {name} seçin",
+    "typeToSearch": "Aramak için yazın…",
+    "moreMatches": "{total} sonuçtan {shown} tanesi gösteriliyor. Daraltmak için daha fazla yazın.",
+    "searchFailed": "Şu anda arama yapılamıyor."
   },
   "logic": {
     "crumb": "Mantık",

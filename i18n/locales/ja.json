@@ -2009,7 +2009,11 @@
       "consentLinkLabel": "リンクのテキスト",
       "showResult": "回答者に結果を表示",
       "internalHint": "回答ごとに計算・保存されますが、表示されるのはチームのみです（例：リスクレベルやロイヤルティグループ）。",
-      "showAs": "表示形式"
+      "showAs": "表示形式",
+      "search": "入力しながら検索",
+      "searchHint": "長いリストの代わりに検索ボックスを表示します。選択肢が {n} 件を超えると自動でオンになります。",
+      "searchServer": "選択肢が {n} 件を超えると、公開フォームは入力に合わせて候補を取得するため、動作が軽く保たれます。",
+      "longList": "{name} の選択肢 {n} 件。選択肢リストで編集できます。"
     },
     "shortcuts": {
       "title": "ショートカット",
@@ -2517,7 +2521,10 @@
     "language": "言語",
     "consentLine": "送信すると、{org}がこのフォームの回答を利用することに同意したものとみなされます。",
     "privacyNotice": "プライバシー通知",
-    "chooseAboveFirst": "先に{name}を選択してください"
+    "chooseAboveFirst": "先に{name}を選択してください",
+    "typeToSearch": "入力して検索…",
+    "moreMatches": "{total} 件中 {shown} 件を表示しています。さらに入力して絞り込んでください。",
+    "searchFailed": "現在、検索できません。"
   },
   "logic": {
     "crumb": "ロジック",

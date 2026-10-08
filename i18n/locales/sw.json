@@ -2009,7 +2009,11 @@
       "consentLinkLabel": "Maandishi ya kiungo",
       "showResult": "Waonyeshe wajibuji matokeo",
       "internalHint": "Hukokotolewa na kuhifadhiwa pamoja na kila jibu, lakini timu yako pekee ndiyo huona (k.m. kiwango cha hatari au kundi la uaminifu).",
-      "showAs": "Onyesha kama"
+      "showAs": "Onyesha kama",
+      "search": "Tafuta unapoandika",
+      "searchHint": "Kisanduku cha kutafuta badala ya orodha ndefu. Huwaka chenyewe zikizidi chaguo {n}.",
+      "searchServer": "Zikizidi chaguo {n}, fomu ya umma huomba matokeo watu wanapoandika, ili iendelee kuwa haraka.",
+      "longList": "Chaguo {n} kutoka {name}. Zihariri katika Orodha ya Chaguo."
     },
     "shortcuts": {
       "title": "Njia za mkato",
@@ -2517,7 +2521,10 @@
     "language": "Lugha",
     "consentLine": "Kwa kutuma, unakubali kwamba {org} inaweza kutumia majibu yako kwa fomu hii.",
     "privacyNotice": "Notisi ya faragha",
-    "chooseAboveFirst": "Chagua {name} kwanza"
+    "chooseAboveFirst": "Chagua {name} kwanza",
+    "typeToSearch": "Andika ili kutafuta…",
+    "moreMatches": "Inaonyesha {shown} kati ya {total}. Andika zaidi ili kupunguza.",
+    "searchFailed": "Haikuweza kutafuta kwa sasa."
   },
   "logic": {
     "crumb": "Mantiki",

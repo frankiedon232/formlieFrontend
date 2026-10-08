@@ -2009,7 +2009,11 @@
       "consentLinkLabel": "Teks tautan",
       "showResult": "Tampilkan hasil kepada responden",
       "internalHint": "Dihitung dan disimpan bersama setiap tanggapan, tetapi hanya tim Anda yang dapat melihatnya (mis. tingkat risiko atau kelompok loyalitas).",
-      "showAs": "Tampilkan sebagai"
+      "showAs": "Tampilkan sebagai",
+      "search": "Cari saat mengetik",
+      "searchHint": "Kotak pencarian sebagai pengganti daftar panjang. Aktif otomatis jika lebih dari {n} opsi.",
+      "searchServer": "Jika lebih dari {n} opsi, formulir publik meminta hasil yang cocok saat orang mengetik agar tetap cepat.",
+      "longList": "{n} opsi dari {name}. Ubah di Daftar Opsi."
     },
     "shortcuts": {
       "title": "Pintasan",
@@ -2517,7 +2521,10 @@
     "language": "Bahasa",
     "consentLine": "Dengan mengirim, Anda setuju bahwa {org} boleh menggunakan jawaban Anda untuk formulir ini.",
     "privacyNotice": "Pemberitahuan privasi",
-    "chooseAboveFirst": "Pilih {name} terlebih dahulu"
+    "chooseAboveFirst": "Pilih {name} terlebih dahulu",
+    "typeToSearch": "Ketik untuk mencari…",
+    "moreMatches": "Menampilkan {shown} dari {total}. Ketik lebih banyak untuk mempersempit.",
+    "searchFailed": "Tidak dapat mencari saat ini."
   },
   "logic": {
     "crumb": "Logika",

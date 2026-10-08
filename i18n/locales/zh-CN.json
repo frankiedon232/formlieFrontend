@@ -2009,7 +2009,11 @@
       "consentLinkLabel": "链接文本",
       "showResult": "向填写者显示结果",
       "internalHint": "随每条回复计算并保存，但仅您的团队可见（例如风险等级或忠诚度分组）。",
-      "showAs": "显示为"
+      "showAs": "显示为",
+      "search": "边输入边搜索",
+      "searchHint": "用搜索框代替长列表。选项超过 {n} 个时自动开启。",
+      "searchServer": "选项超过 {n} 个时，公开表单会在用户输入时请求匹配项，以保持流畅。",
+      "longList": "来自 {name} 的 {n} 个选项。请在选项列表中编辑。"
     },
     "shortcuts": {
       "title": "快捷键",
@@ -2517,7 +2521,10 @@
     "language": "语言",
     "consentLine": "提交即表示你同意{org}可将你的回答用于此表单。",
     "privacyNotice": "隐私声明",
-    "chooseAboveFirst": "请先选择{name}"
+    "chooseAboveFirst": "请先选择{name}",
+    "typeToSearch": "输入以搜索…",
+    "moreMatches": "显示 {total} 项中的 {shown} 项。继续输入可缩小范围。",
+    "searchFailed": "暂时无法搜索。"
   },
   "logic": {
     "crumb": "逻辑",

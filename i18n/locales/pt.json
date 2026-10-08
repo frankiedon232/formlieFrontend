@@ -2009,7 +2009,11 @@
       "consentLinkLabel": "Texto da ligação",
       "showResult": "Mostrar o resultado a quem responde",
       "internalHint": "Calculado e salvo com cada resposta, mas visível apenas para sua equipe (por exemplo, um nível de risco ou grupo de lealdade).",
-      "showAs": "Mostrar como"
+      "showAs": "Mostrar como",
+      "search": "Pesquisar enquanto digita",
+      "searchHint": "Uma caixa de pesquisa em vez de uma lista longa. Ativa-se sozinha acima de {n} opções.",
+      "searchServer": "Acima de {n} opções, o formulário público busca as correspondências enquanto a pessoa digita, para continuar rápido.",
+      "longList": "{n} opções de {name}. Edite-as em Lista de opções."
     },
     "shortcuts": {
       "title": "Atalhos",
@@ -2517,7 +2521,10 @@
     "language": "Idioma",
     "consentLine": "Ao enviar, você concorda que {org} possa usar suas respostas para este formulário.",
     "privacyNotice": "Aviso de privacidade",
-    "chooseAboveFirst": "Escolha {name} primeiro"
+    "chooseAboveFirst": "Escolha {name} primeiro",
+    "typeToSearch": "Digite para pesquisar…",
+    "moreMatches": "Mostrando {shown} de {total}. Digite mais para refinar.",
+    "searchFailed": "Não foi possível pesquisar agora."
   },
   "logic": {
     "crumb": "Lógica",

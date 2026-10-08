@@ -2009,7 +2009,11 @@
       "consentLinkLabel": "Tekst linku",
       "showResult": "Pokaż wynik respondentom",
       "internalHint": "Obliczany i zapisywany z każdą odpowiedzią, ale widoczny tylko dla Twojego zespołu (np. poziom ryzyka lub grupa lojalności).",
-      "showAs": "Wyświetl jako"
+      "showAs": "Wyświetl jako",
+      "search": "Szukaj podczas pisania",
+      "searchHint": "Pole wyszukiwania zamiast długiej listy. Włącza się samo powyżej {n} opcji.",
+      "searchServer": "Powyżej {n} opcji formularz publiczny pobiera dopasowania w trakcie pisania, dzięki czemu działa szybko.",
+      "longList": "Liczba opcji z {name}: {n}. Edytuj je w Liście opcji."
     },
     "shortcuts": {
       "title": "Skróty",
@@ -2517,7 +2521,10 @@
     "language": "Język",
     "consentLine": "Wysyłając, zgadzasz się, aby {org} mogła wykorzystać Twoje odpowiedzi w tym formularzu.",
     "privacyNotice": "Informacja o prywatności",
-    "chooseAboveFirst": "Najpierw wybierz {name}"
+    "chooseAboveFirst": "Najpierw wybierz {name}",
+    "typeToSearch": "Wpisz, aby wyszukać…",
+    "moreMatches": "Pokazano {shown} z {total}. Wpisz więcej, aby zawęzić wyniki.",
+    "searchFailed": "Nie można teraz wyszukać."
   },
   "logic": {
     "crumb": "Logika",

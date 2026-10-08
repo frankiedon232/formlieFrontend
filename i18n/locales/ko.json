@@ -2009,7 +2009,11 @@
       "consentLinkLabel": "링크 텍스트",
       "showResult": "응답자에게 결과 표시",
       "internalHint": "응답마다 계산되어 저장되지만 팀만 볼 수 있습니다(예: 위험 수준 또는 충성도 그룹).",
-      "showAs": "표시 방식"
+      "showAs": "표시 방식",
+      "search": "입력하면서 검색",
+      "searchHint": "긴 목록 대신 검색 상자를 표시합니다. 옵션이 {n}개를 넘으면 자동으로 켜집니다.",
+      "searchServer": "옵션이 {n}개를 넘으면 공개 양식이 입력하는 동안 일치 항목을 불러와 빠르게 유지됩니다.",
+      "longList": "{name}의 옵션 {n}개. 옵션 목록에서 편집하세요."
     },
     "shortcuts": {
       "title": "단축키",
@@ -2517,7 +2521,10 @@
     "language": "언어",
     "consentLine": "제출하면 {org}이(가) 이 양식의 답변을 사용할 수 있다는 데 동의하게 됩니다.",
     "privacyNotice": "개인정보 안내",
-    "chooseAboveFirst": "먼저 {name} 항목을 선택하세요"
+    "chooseAboveFirst": "먼저 {name} 항목을 선택하세요",
+    "typeToSearch": "입력하여 검색…",
+    "moreMatches": "{total}개 중 {shown}개 표시 중입니다. 더 입력하여 좁혀 보세요.",
+    "searchFailed": "지금은 검색할 수 없습니다."
   },
   "logic": {
     "crumb": "로직",

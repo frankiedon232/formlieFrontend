@@ -2009,7 +2009,11 @@
       "consentLinkLabel": "Testo del link",
       "showResult": "Mostra il risultato a chi risponde",
       "internalHint": "Calcolato e salvato con ogni risposta, ma visibile solo al tuo team (ad es. un livello di rischio o un gruppo di fedeltà).",
-      "showAs": "Mostra come"
+      "showAs": "Mostra come",
+      "search": "Cerca mentre si scrive",
+      "searchHint": "Una casella di ricerca al posto di un lungo elenco. Si attiva da sola oltre {n} opzioni.",
+      "searchServer": "Oltre {n} opzioni, il modulo pubblico richiede le corrispondenze mentre si scrive, così resta veloce.",
+      "longList": "{n} opzioni da {name}. Modificale in Elenco opzioni."
     },
     "shortcuts": {
       "title": "Scorciatoie",
@@ -2517,7 +2521,10 @@
     "language": "Lingua",
     "consentLine": "Inviando, accetti che {org} possa usare le tue risposte per questo modulo.",
     "privacyNotice": "Informativa sulla privacy",
-    "chooseAboveFirst": "Scegli prima {name}"
+    "chooseAboveFirst": "Scegli prima {name}",
+    "typeToSearch": "Scrivi per cercare…",
+    "moreMatches": "Mostrati {shown} di {total}. Scrivi di più per restringere.",
+    "searchFailed": "Impossibile cercare in questo momento."
   },
   "logic": {
     "crumb": "Logica",

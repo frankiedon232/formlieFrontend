@@ -45,5 +45,6 @@ function refresh() {
     <USwitch :model-value="several" :label="t('builder.level.several')" :description="t('builder.level.severalHint')" color="neutral" @update:model-value="value => setSeveral(!!value)" />
     <UAlert v-if="changed && list" color="warning" variant="subtle" icon="i-lucide-refresh-ccw" :title="t('library.listChanged', { name: list.name })" :actions="[{ label: t('library.updateFromList'), color: 'neutral', variant: 'outline', size: 'xs', onClick: refresh }]" :ui="{ title: 'text-xs' }" />
     <UButton :label="t('builder.level.editList')" icon="i-lucide-external-link" color="neutral" variant="link" size="xs" class="w-fit px-0" :to="list ? `/option-sets/${list.id}` : undefined" :disabled="!list" target="_blank" />
+    <FormsBuilderInspectorSearch :field="field" />
   </section>
 </template>

@@ -27,6 +27,9 @@ const respondent = computed(() => ({
   embedded: !!props.embed,
   alreadySent: alreadySent.value,
   upload,
+  // Long lists: their options come from the server as people type (F15 M3)
+  lookup: async (field: string, q: string, values?: string[]) =>
+    (await api.get<{ items: { value: string; label: string }[]; total: number }>(`/public/forms/${encodeURIComponent(props.formKey)}/options`, { field, q, ...(values?.length ? { values: values.join(',') } : {}), language: language.value, channel: props.embed ? 'embed' : 'link' }, { background: true })).data,
   another,
   confirmDifferent,
   sendCode,

@@ -2009,7 +2009,11 @@
       "consentLinkLabel": "Linktext",
       "showResult": "Ergebnis den Antwortenden anzeigen",
       "internalHint": "Wird mit jeder Antwort berechnet und gespeichert, ist aber nur für Ihr Team sichtbar (z. B. eine Risikostufe oder Loyalitätsgruppe).",
-      "showAs": "Anzeigen als"
+      "showAs": "Anzeigen als",
+      "search": "Suche während der Eingabe",
+      "searchHint": "Ein Suchfeld statt einer langen Liste. Schaltet sich ab {n} Optionen automatisch ein.",
+      "searchServer": "Ab {n} Optionen fragt das öffentliche Formular die Treffer während der Eingabe ab, damit es schnell bleibt.",
+      "longList": "{n} Optionen aus {name}. Bearbeiten Sie sie in der Optionsliste."
     },
     "shortcuts": {
       "title": "Tastenkürzel",
@@ -2517,7 +2521,10 @@
     "language": "Sprache",
     "consentLine": "Mit dem Absenden stimmen Sie zu, dass {org} Ihre Antworten für dieses Formular verwenden darf.",
     "privacyNotice": "Datenschutzhinweis",
-    "chooseAboveFirst": "Wählen Sie zuerst {name}"
+    "chooseAboveFirst": "Wählen Sie zuerst {name}",
+    "typeToSearch": "Zum Suchen eingeben…",
+    "moreMatches": "{shown} von {total} werden angezeigt. Geben Sie mehr ein, um die Auswahl einzugrenzen.",
+    "searchFailed": "Die Suche ist gerade nicht möglich."
   },
   "logic": {
     "crumb": "Logik",

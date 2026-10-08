@@ -2009,7 +2009,11 @@
       "consentLinkLabel": "Văn bản liên kết",
       "showResult": "Hiển thị kết quả cho người trả lời",
       "internalHint": "Được tính và lưu cùng mỗi phản hồi, nhưng chỉ nhóm của bạn thấy (ví dụ: mức rủi ro hoặc nhóm trung thành).",
-      "showAs": "Hiển thị dạng"
+      "showAs": "Hiển thị dạng",
+      "search": "Tìm kiếm khi nhập",
+      "searchHint": "Một ô tìm kiếm thay cho danh sách dài. Tự động bật khi có hơn {n} tùy chọn.",
+      "searchServer": "Khi có hơn {n} tùy chọn, biểu mẫu công khai sẽ lấy kết quả khớp khi người dùng nhập để luôn nhanh.",
+      "longList": "{n} tùy chọn từ {name}. Chỉnh sửa trong Danh sách tùy chọn."
     },
     "shortcuts": {
       "title": "Phím tắt",
@@ -2517,7 +2521,10 @@
     "language": "Ngôn ngữ",
     "consentLine": "Khi gửi, bạn đồng ý để {org} có thể sử dụng câu trả lời của bạn cho biểu mẫu này.",
     "privacyNotice": "Thông báo quyền riêng tư",
-    "chooseAboveFirst": "Hãy chọn {name} trước"
+    "chooseAboveFirst": "Hãy chọn {name} trước",
+    "typeToSearch": "Nhập để tìm kiếm…",
+    "moreMatches": "Đang hiển thị {shown} trên {total}. Nhập thêm để thu hẹp.",
+    "searchFailed": "Hiện không thể tìm kiếm."
   },
   "logic": {
     "crumb": "Logic",

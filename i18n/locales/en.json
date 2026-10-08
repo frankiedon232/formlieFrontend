@@ -2017,7 +2017,11 @@
       "consentLinkLabel": "Link text",
       "showResult": "Show the result to respondents",
       "internalHint": "Worked out and saved with each response, but only your team sees it (e.g. a risk level or loyalty group).",
-      "showAs": "Show as"
+      "showAs": "Show as",
+      "search": "Search as you type",
+      "searchHint": "A search box instead of a long list. On by itself above {n} options.",
+      "searchServer": "Above {n} options the public form asks for matches as people type, so it stays fast.",
+      "longList": "{n} options from {name}. Edit them in List Option."
     },
     "shortcuts": {
       "title": "Shortcuts",
@@ -2517,7 +2521,10 @@
     "language": "Language",
     "consentLine": "By submitting, you agree that {org} may use your answers for this form.",
     "privacyNotice": "Privacy notice",
-    "chooseAboveFirst": "Choose {name} first"
+    "chooseAboveFirst": "Choose {name} first",
+    "typeToSearch": "Type to search…",
+    "moreMatches": "Showing {shown} of {total}. Type more to narrow it down.",
+    "searchFailed": "Could not search right now."
   },
   "logic": {
     "crumb": "Logic",

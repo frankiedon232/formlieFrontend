@@ -2009,7 +2009,11 @@
       "consentLinkLabel": "Texto del enlace",
       "showResult": "Mostrar el resultado a quienes responden",
       "internalHint": "Se calcula y se guarda con cada respuesta, pero solo lo ve tu equipo (p. ej., un nivel de riesgo o un grupo de lealtad).",
-      "showAs": "Mostrar como"
+      "showAs": "Mostrar como",
+      "search": "Buscar mientras se escribe",
+      "searchHint": "Un cuadro de búsqueda en lugar de una lista larga. Se activa solo a partir de {n} opciones.",
+      "searchServer": "A partir de {n} opciones, el formulario público pide las coincidencias mientras se escribe, para que siga siendo rápido.",
+      "longList": "{n} opciones de {name}. Edítalas en Lista de opciones."
     },
     "shortcuts": {
       "title": "Atajos",
@@ -2517,7 +2521,10 @@
     "language": "Idioma",
     "consentLine": "Al enviar, aceptas que {org} pueda usar tus respuestas para este formulario.",
     "privacyNotice": "Aviso de privacidad",
-    "chooseAboveFirst": "Elige primero {name}"
+    "chooseAboveFirst": "Elige primero {name}",
+    "typeToSearch": "Escribe para buscar…",
+    "moreMatches": "Mostrando {shown} de {total}. Escribe más para acotar.",
+    "searchFailed": "No se pudo buscar en este momento."
   },
   "logic": {
     "crumb": "Lógica",

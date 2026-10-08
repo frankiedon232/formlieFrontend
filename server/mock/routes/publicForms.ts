@@ -37,6 +37,7 @@ import { draftOf, newResumeToken, putDraft, RESUME_TTL_DAYS } from '../data/resu
 import { attachRespondentFiles, completedUploadUrl, completeRespondentUpload, createRespondentTicket, respondentFile } from './uploads'
 import { seoOf } from '../data/formSeo'
 import { allFields, isLocked } from '#shared/utils/forms/build'
+import { matchOptions, servedRemotely } from '#shared/utils/forms/options'
 import { acceptsFile, looksLikePicture, parseAccept, pictureAccept } from '#shared/utils/forms/file-types'
 import { fileAnswers, isFileField, maxFileBytes } from '#shared/utils/forms/file-answers'
 import { checkWork } from '#shared/utils/forms/proof-of-work'
@@ -190,6 +191,8 @@ export function publicFormView(event: Parameters<typeof tenantOf>[0], key: strin
   const identity = visitorIdentity(visitor)
   const published = state === 'open' ? publishedSchema(tenant, form) : null
   const schema = published ? { ...structuredClone(published), theme: resolveTheme(published.theme, branding(tenant)) as unknown as Record<string, unknown> } : null
+  // Long lists (F15 M3): their options stay on the server; the page asks for matches as people type
+  if (schema) for (const field of allFields(schema).filter(servedRemotely)) Object.assign(field, { options_remote: { total: field.options!.length }, options: [] })
   // The form's language also for full, closed, expired, scheduled and locked pages (no questions are sent then).
   const languages = formLanguages(published ?? form.published_schema ?? form.schema)
   const language = languages[0]!
@@ -606,4 +609,26 @@ export function resolveShortLink(event: Parameters<typeof tenantOf>[0], code: st
 }
 
 /** GET /public/short/:code, `{ target }` (browser fallback; the server-rendered /s/{code} page redirects itself). */
+/**
+ * GET /public/forms/:key/options?field=&q=&values=&language= (F15 M3): a long list's options as people
+ * type, from the published form (open forms only, with the same access as the page): `values` gives the
+ * labels of chosen options (a resumed draft); `q` matches labels without minding case or accents, the ones
+ * that start with it first; at most 50 at a time with the total that match.
+ */
+export const lookupOptions = defineMockRoute(({ event, query }) => {
+  const { tenant, form } = locate(event, getRouterParam(event, 'key') ?? '', channelOf(event))
+  if (stateOf(form) !== 'open') throw new MockError('FRM-GEN-1004')
+  if (!visitorOf(event, form, tenant)) throw new MockError('FRM-PERM-1001')
+  const published = publishedSchema(tenant, form)
+  if (!published) throw new MockError('FRM-GEN-1004')
+  const own = allFields(published).find(item => item.key === String(query.field ?? ''))
+  if (!own || !servedRemotely(own)) throw new MockError('FRM-GEN-1004')
+  const language = typeof query.language === 'string' && formLanguages(published).includes(query.language) ? query.language : null
+  const field = language ? allFields(translateSchema(published, language)).find(item => item.key === own.key)! : own
+  const options = (field.options ?? []).map(option => ({ value: option.value, label: option.label }))
+  const wanted = typeof query.values === 'string' && query.values ? query.values.split(',').slice(0, 100) : null
+  if (wanted) return ok({ items: options.filter(option => wanted.includes(option.value)), total: wanted.length })
+  return ok(matchOptions(options, String(query.q ?? '')))
+})
+
 export const getShortLink = defineMockRoute(({ event }) => ok({ target: resolveShortLink(event, getRouterParam(event, 'code') ?? '') }))

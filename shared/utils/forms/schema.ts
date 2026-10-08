@@ -4,7 +4,7 @@
  * structure, ids and sizes, so an imported file can never smuggle in something unexpected.
  */
 import { z } from 'zod'
-import { MAX_LIST_LEVELS } from './options'
+import { MAX_LIST_LEVELS, MAX_OPTIONS } from './options'
 
 const id = z.string().regex(/^[A-Za-z0-9_-]{1,64}$/)
 const text = (max: number) => z.string().max(max)
@@ -37,9 +37,11 @@ export const formFieldSchema = z.object({
   validation: z.record(z.string(), z.unknown()).optional(),
   options: z
     .array(z.object({ value: text(200), label: text(500), score: z.number().finite().optional(), parent: text(200).optional() }))
-    .max(5000)
+    .max(MAX_OPTIONS)
     .nullable()
     .optional(),
+  /** Public form page only (F15 M3): the options were left out, `total` of them; the page asks the server as people type. */
+  options_remote: z.object({ total: z.number().int().min(0) }).nullable().optional(),
   option_set_id: z.string().nullable().optional(),
   /** Lists with levels (F15 M2, shared/utils/forms/cascade.ts): this field's level (0 = top) and the field one level up. */
   option_level: z.number().int().min(0).max(MAX_LIST_LEVELS - 1).optional(),

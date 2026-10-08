@@ -20,5 +20,6 @@ const pick = (value: unknown) => STYLES.includes(value as FieldType) && value !=
   <section class="flex flex-col gap-2">
     <h3 class="text-xs font-medium text-muted uppercase">{{ t('builder.inspector.showAs') }}</h3>
     <USelect :model-value="(field.type as FieldType)" :items="items" value-key="value" size="sm" class="w-full" :aria-label="t('builder.inspector.showAs')" @update:model-value="pick" />
+    <FormsBuilderInspectorSearch :field="field" />
   </section>
 </template>

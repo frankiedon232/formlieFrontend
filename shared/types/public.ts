@@ -93,6 +93,9 @@ export interface FileAnswer {
 }
 
 /** Uploads one file for a file question, reporting progress (0–100); `onAbort` receives a cancel function. */
+/** A long list's options from the server as people type (F15 M3): matches for `q`, or the labels of chosen `values`. */
+export type RendererLookup = (field: string, q: string, values?: string[]) => Promise<{ items: { value: string; label: string }[]; total: number }>
+
 export type RendererUpload = (field: string, file: File, onProgress: (percent: number) => void, onAbort: (abort: () => void) => void) => Promise<FileAnswer>
 
 /** What the public page lets the renderer do for the respondent (F10). */
@@ -102,6 +105,8 @@ export interface RendererRespondent {
   embedded?: boolean
   /** File questions: upload straight to storage (pre-signed link). */
   upload?: RendererUpload
+  /** Long lists (F15 M3): ask the server for matching options. */
+  lookup?: RendererLookup
   /** This browser already sent the form. */
   alreadySent: boolean
   /** Start a new response for someone else. */

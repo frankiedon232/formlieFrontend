@@ -252,6 +252,7 @@ const router = createRouter()
   .get('/directory', getDirectory)
   // Public form pages (F10), no sign-in.
   .get('/public/forms/:key', publicForms.getPublicForm)
+  .get('/public/forms/:key/options', publicForms.lookupOptions)
   .post('/public/forms/:key/submit', publicForms.submitPublicForm)
   .post('/public/forms/:key/verify', publicForms.sendVerification)
   .post('/public/forms/:key/sessions', publicForms.startDraft)

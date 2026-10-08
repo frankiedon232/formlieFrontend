@@ -3,12 +3,13 @@
   edit their rows here. Values stay stable when labels change (answers keep matching).
 -->
 <script setup lang="ts">
-import { matchesList, offeredOptions } from '#shared/utils/forms/options'
+import { LONG_FROM, matchesList, offeredOptions } from '#shared/utils/forms/options'
 import { VueDraggable } from 'vue-draggable-plus'
 import type { FormField } from '#shared/utils/forms/build'
 
 const props = defineProps<{ field: FormField }>()
 const { t } = useI18n()
+const { number } = useFormat()
 const builder = useBuilder()
 const pasteOpen = ref(false)
 const pasteText = ref('')
@@ -97,6 +98,8 @@ function useList(id: string) {
 // The list this field came from (F15): say when it changed since, with one click to take it over
 const linked = computed(() => (props.field.option_set_id ? (library.lists.value.find(l => l.id === props.field.option_set_id) ?? null) : null))
 const listChanged = computed(() => !!linked.value && !matchesList(props.field.options, linked.value))
+// A long list's options are edited in List Option; here a summary, not hundreds of rows (F15 M3)
+const long = computed(() => !!props.field.option_set_id && options.value.length > LONG_FROM)
 const saveListOpen = ref(false)
 
 </script>
@@ -108,6 +111,7 @@ const saveListOpen = ref(false)
         {{ field.type === 'matrix' ? t('builder.inspector.columns') : t('builder.inspector.options') }}
       </h3>
       <UButton
+        v-if="!long"
         :label="t('builder.inspector.paste')"
         icon="i-lucide-clipboard-paste"
         color="neutral"
@@ -141,7 +145,16 @@ const saveListOpen = ref(false)
         @click="saveListOpen = true"
       />
     </div>
+    <div v-if="long" class="flex flex-col gap-2 rounded-lg border border-default p-3">
+      <p class="text-sm text-highlighted">{{ t('builder.inspector.longList', { n: number(options.length), name: linked?.name ?? '' }) }}</p>
+      <div class="flex flex-wrap gap-1">
+        <UBadge v-for="option in options.slice(0, 6)" :key="option.value" :label="option.label" color="neutral" variant="outline" size="sm" class="max-w-32 truncate" />
+        <UBadge :label="`+${number(options.length - 6)}`" color="neutral" variant="soft" size="sm" />
+      </div>
+      <UButton :label="t('builder.level.editList')" icon="i-lucide-external-link" color="neutral" variant="link" size="xs" class="w-fit px-0" :to="`/option-sets/${field.option_set_id}`" target="_blank" />
+    </div>
     <VueDraggable
+      v-else
       v-model="options"
       handle="[data-option-handle]"
       :animation="150"
@@ -202,6 +215,7 @@ const saveListOpen = ref(false)
       </div>
     </VueDraggable>
     <UButton
+      v-if="!long"
       :label="t('builder.inspector.addOption')"
       icon="i-lucide-plus"
       color="neutral"
