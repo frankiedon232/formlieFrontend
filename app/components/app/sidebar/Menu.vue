@@ -9,7 +9,7 @@ import { folderColor } from '#shared/utils/forms/folders'
 const props = defineProps<{ collapsible?: boolean }>()
 const emit = defineEmits<{ collapse: [] }>()
 const { t } = useI18n()
-const { mainItems, resourceItems, folderItems, systemItems, areaLabel, area } = useNavigation()
+const { mainItems, resourceItems, folderItems, systemItems, helpItems, areaLabel, area } = useNavigation()
 // FOLDERS (F11 M4): + creates a folder and opens its page.
 const folderOpen = ref(false)
 const folderOf = (item: unknown) => (item as { folderColor?: string | null }).folderColor
@@ -190,6 +190,9 @@ const menuUi = computed(() => ({
             />
           </template>
         </UNavigationMenu>
+        <!-- Help & support below Audit, after a line (owner 2026-10-08) -->
+        <USeparator class="my-1" />
+        <UNavigationMenu :items="helpItems" orientation="vertical" color="neutral" :ui="menuUi" />
       </nav>
     </div>
 

@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-08 (lists above 20 options now live in the database: forms keep no copy and load them as people type; F15 complete; next: F16 Users & profiles; payments last, F24)
+**Last updated:** 2026-10-08 (lists above 20 options live in the database; F25 Help centre recorded after F24, Help & support added under Audit in the SYSTEM group; Formalie default data recorded (system lists, default folders); next: F16 Users & profiles)
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend · ➖ dropped or merged
 
@@ -34,9 +34,10 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F21   | Dashboard                                         | ⬜     | 0%   |
 | F22   | Roles & access                                    | ⬜     | 0%   |
 | F23   | Platform admin (super admin, Formalie team)       | ⬜     | 0%   |
-| F24   | Payments & subscriptions (last)                   | ⬜     | 0%   |
+| F24   | Payments & subscriptions                          | ⬜     | 0%   |
+| F25   | Help centre (FAQs, knowledge base, videos)        | ⬜     | 0% (after F24) |
 
-**Order of what is left (owner, 2026-10-08):** F16 Users & profiles (Profile and Users together), F19 AI, F20 collaboration (optional), F21 Dashboard, F22 Roles & access, F23 Platform admin, and **last F24 Payments & subscriptions** (form payments and plans together, once the owner has chosen the payment processor).
+**Order of what is left (owner, 2026-10-08):** F16 Users & profiles (Profile and Users together), F19 AI, F20 collaboration (optional), F21 Dashboard, F22 Roles & access, F23 Platform admin, then **F24 Payments & subscriptions** (form payments and plans together, once the owner has chosen the payment processor), then **F25 Help centre** (built from everything that exists by then). Formalie default data (below) is seeded by the backend and kept in mind in every phase.
 
 **Every phase is only done when:** phone / tablet / desktop checked · keyboard-only checked · light + dark checked · Arabic RTL checked · every new action recorded in the audit trail (from F4 on) · loading feedback complete (first-load screen, top bar on navigation and API calls, skeletons, busy buttons, busy rows, progress bars, CLAUDE.md rule 5) · empty and error states present · every new string in all 20 languages · matches [docs/design](docs/design/README.md) · typecheck, lint and tests green · this file and the docs updated · committed and pushed.
 
@@ -996,7 +997,7 @@ The Formalie team's own console (owner, 2026-10-03: "a place for me to manage ev
 
 ---
 
-## F24, Payments & subscriptions ⬜ (last)
+## F24, Payments & subscriptions ⬜
 
 Owner, 2026-10-08: payments come after the rest of the platform, form payments and subscriptions together. By then the owner will have chosen the payment processor; the mock follows that processor's real interface so the switch to the backend only connects it. Card details never touch Formalie (the processor's checkout or hosted fields); we keep status, reference and amount.
 
@@ -1014,6 +1015,35 @@ Owner, 2026-10-08: payments come after the rest of the platform, form payments a
 - ⬜ Payment providers per workspace (connect with the provider's own sign-in), test / live mode
 - ⬜ Payment field: fixed amount, amount from a choice, or calculated (formula, order totals, fees); currency; optional tax and fee lines; one-off payments first
 - ⬜ Response shows paid / pending / failed / refunded; receipts by email; refunds from the response (audited); the provider's webhooks confirm payment before the response counts as complete
+
+---
+
+## F25, Help centre ⬜ (after F24, owner 2026-10-08)
+
+Owner, 2026-10-08: a Help section, FAQs and knowledge base with everything about the platform, so people can learn and teach themselves and find their way around; with videos and GIFs; built from everything we have built.
+
+- ✅ Entry points: the help icon at the foot of the rail, and **Help & support in the SYSTEM group below Audit trail, after a line** (2026-10-08); `/help` exists as a placeholder
+- ⬜ Help home: search across everything, popular topics, "new here?" path, contact support
+- ⬜ Knowledge base by area (Forms, builder, designer, templates, sharing, responses, analytics, lists, data sources, API service, settings, users, audit, AI, billing): articles with screenshots, GIFs and short videos, step by step
+- ⬜ FAQs (by area, searchable), a glossary (dynamic list, endpoint, token …), keyboard shortcuts
+- ⬜ Guided tours and "show me where" links that open the real page (and highlight the control)
+- ⬜ Help in context: a "?" on each page and panel opens the matching article in a side panel; empty states link to their article
+- ⬜ Every article in all 20 languages; videos with captions; works on phones; RTL
+- ⬜ Articles managed by the Formalie team (F23 platform admin), with "Was this helpful?" feedback and what people searched without finding
+- ⬜ AI assistant (F19) answers from the knowledge base
+
+---
+
+## Formalie default data (seeded by the backend, owner 2026-10-08)
+
+Every new workspace starts with Formalie's own data, so nothing is empty on day one. Keep this in mind in every phase: whatever needs defaults gets them here (the mock seeds the same until the backend exists). Platform admins manage them (F23 → Catalogue).
+
+- ⬜ **System lists, simple:** Countries, Regions (continents / world regions), Cities, Languages, Currencies, Time zones, Nationalities, Genders (inclusive), Titles (Mr, Ms, Mx, Dr …), Days of the week, Months, Yes / No / Not sure, Satisfaction, Priority, Marital status, Education levels, Employment types, Industries, Company sizes, Job levels, Departments (common), Blood groups, Units of measure, Payment methods, Relationship (next of kin), Age ranges, Income ranges, Contact preferences, Rating scales
+- ⬜ **System lists, dynamic (levels):** Countries → States / Provinces → Cities (geo); Countries → Cities → Districts / Areas; Regions → Countries → Cities; Continents → Countries; Industries → Sectors; Product category → Sub-category; Vehicle Make → Model → Year; Faculty → Department → Course; Country → Dialling code / currency as details (auto-fill)
+- ⬜ System lists are read-only in workspaces (like system themes), offered in the builder's Lists tab, copied into the workspace to edit; translated into the 20 languages; kept current by Formalie
+- ⬜ **Default folders:** Operations, Customers, Compliance, Marketing, Leads, Projects (and HR, Finance, Events, Feedback as useful extras)
+- ⬜ Themes, templates and landing pages stay as they are (system themes / templates / pages already ship)
+- ⬜ Others that need defaults as phases come: notification and email templates, response statuses and tags, roles (F22: Owner, Admin, Member, Viewer), plans (F24), help articles (F25)
 
 ---
 
@@ -1226,6 +1256,8 @@ Owner requests added during development, and where they landed.
 | 2026-10-08 | Proper cleanup of PROGRESS.md | All | ✅ |
 | 2026-10-08 | Profile and Users are one phase: people are profiled with department, job title(s) and role (role = access, RBAC; permissions in F22) | F16 (merged with F17) | ⬜ next |
 | 2026-10-08 | Any list bigger than 20 options is loaded from the database, never copied into forms (every form, so the server has no bottleneck) | F15 | ✅ |
+| 2026-10-08 | Help section, FAQs, knowledge base with videos and GIFs, everything about the platform for self-learning and navigation, built from all we have; also in SYSTEM below Audit after a line | F25 (new phase, after F24) | ⬜ planned (menu entry ✅) |
+| 2026-10-08 | Formalie default data: system lists (simple: countries, regions, cities …; dynamic: Countries → States → Cities, Countries → Cities → Regions …), default folders (Operations, Customers, Compliance, Marketing, Leads, Projects); themes, templates, landing pages stay | Backend seeds (Formalie default data) | ⬜ noted |
 
 ---
 
@@ -1472,3 +1504,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-08 | F15 | M5 large dynamic lists: `OptionList.large` (up to 200,000, `MAX_LARGE_OPTIONS`), Size card with Standard / Large and an explanation before switching (also inside the import when a file is over 20,000); the server fills forms from the list (`fillLargeLists`, live forms follow on save) and leaves the options out of every reply (`trimLargeLists` in the route wrapper: `options_large { total, parents }`); lookups `GET /option-lists/{id}/options` (builder, previews) and `parents` on the public lookup; `cascadeClosed` opens a large level only under a choice with options; the page clears a lower answer that no longer fits; responses get answered options only (`keepAnswered`); insights show the most chosen; API docs show 20 examples, no enum; `FRM-FORM-1022`. Fixed: the list Save check was quadratic (froze on 30,000 options). Browser-tested with 30,311 options: paste, explanation, save 2.6 s, builder canvas, public page levels, clearing, submit, response labels |
 | 2026-10-08 | F16 | Owner: Profile (F16) and Users (F17) merged into F16 Users & profiles; plan written: people list, invites with department / job titles / role, admin profile edit, my profile, security, sessions, roles hook until F22 |
 | 2026-10-08 | F15 | Lists above 20 options live in the database: `LIVE_FROM = 20`, `keptOnServer`; the server fills forms from the list and syncs translations on every save, trims options from replies; builder adds them without options; public page loads every level (and hand-typed choice questions above 20) from the server, radios / checkboxes as a searchable menu; lookups return details, the form keeps those of chosen options for auto-fill (`PickedOptions`); one-time move of existing forms (`listsLive`). Browser-checked on the existing Vehicles form (levels load from the server, Category only under the chosen product) |
+| 2026-10-08 | F25 | F25 Help centre planned after F24; Help & support also in the SYSTEM group below Audit trail after a line (`helpItems` in useNavigation, Menu.vue); Formalie default data section (system lists simple and dynamic, default folders, other defaults per phase) |

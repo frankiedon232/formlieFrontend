@@ -332,6 +332,8 @@ export function useNavigation() {
   /** Sidebar heading for the main list: the area's name, or "Main menu" for Forms. */
   const areaLabel = computed(() => NAV_AREAS.find(a => a.key === area.value)?.label ?? 'nav.main')
   const systemItems = computed(() => SYSTEM_NAV.filter(item => allowed(item) && !item.railFoot).map(item => toMenuItem(item)))
+  /** Help & support also in the SYSTEM group, below Audit after a line (owner 2026-10-08). */
+  const helpItems = computed(() => SYSTEM_NAV.filter(item => allowed(item) && item.railFoot).map(item => toMenuItem(item)))
 
   /** Flat list of top-level destinations (children with their own page included), for search, rail and shortcuts. */
   const destinations = computed(() =>
@@ -346,5 +348,5 @@ export function useNavigation() {
       .flatMap(item => (item.children && !item.children[0]?.dot ? item.children : [item])),
   )
 
-  return { mainItems, resourceItems, folderItems, systemItems, destinations, areaDestinations, area, areaLabel, areas: NAV_AREAS, isActive }
+  return { mainItems, resourceItems, folderItems, systemItems, helpItems, destinations, areaDestinations, area, areaLabel, areas: NAV_AREAS, isActive }
 }
