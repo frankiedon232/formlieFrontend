@@ -18,7 +18,7 @@ Kinds combine: a cascading list can be large, have details on every level, and b
 
 ## Data model
 
-> Draft from 2026-10-02. Parts built so far differ, see the "as built" sections at the end: levels are `OptionList.levels` with `OptionItem.level / parent` (the parent's value, not an id), fields carry `option_set_id`, `option_level` and `option_parent`, and a list with levels is added from the Lists tab (no separate palette item). Columns, auto-fill and dynamic sources are still plans.
+> Draft from 2026-10-02. Dynamic lists (`kind: 'dynamic'`, `source`, Source tab) were dropped on 2026-10-08. Parts built so far differ, see the "as built" sections at the end: levels are `OptionList.levels` with `OptionItem.level / parent` (the parent's value, not an id), fields carry `option_set_id`, `option_level` and `option_parent`, and a list with levels is added from the Lists tab (no separate palette item). Columns, auto-fill and dynamic sources are still plans.
 
 ```ts
 OptionList {
@@ -107,7 +107,7 @@ Deleting or retiring items never breaks old responses.
 2. **F15c, Lists with levels (M2, done, brought forward by the owner):** up to 4 levels, linked fields from the Lists tab, each level narrowing the next.
 3. **F15b, Large lists + autocomplete (M3, next):** server-side items, search-as-you-type field mode, paging.
 4. **F15d, Details + auto-fill:** columns on items, "Fill other fields", formulas / logic on columns.
-5. **F15e, Dynamic lists:** sources from forms, connected databases (after F12 Data sources), JSON URL, refreshed CSV; sync log.
+5. ~~**F15e, Dynamic lists**~~: dropped (owner 2026-10-08). Lists are kept up to date by importing a file (Add and update, or Replace the list).
 
 ## F15a as built (2026-10-07)
 
