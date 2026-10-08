@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-08 (lists above 20 options live in the database; F25 Help centre recorded after F24, Help & support added under Audit in the SYSTEM group; Formalie default data recorded (system lists, default folders); next: F16 Users & profiles)
+**Last updated:** 2026-10-08 (F20 Live collaboration removed; F25 Help centre after F24; Formalie default data recorded; next: F16 Users & profiles)
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend · ➖ dropped or merged
 
@@ -30,14 +30,14 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F17   | Users (merged into F16)                           | ➖     | -    |
 | F18   | Analytics                                         | ✅     | 100% (waiting for review) |
 | F19   | AI assistant                                      | 🟡     | ~2%  |
-| F20   | Live collaboration (optional)                     | ⬜     | 0%   |
+| F20   | Live collaboration (removed)                      | ➖     | -    |
 | F21   | Dashboard                                         | ⬜     | 0%   |
 | F22   | Roles & access                                    | ⬜     | 0%   |
 | F23   | Platform admin (super admin, Formalie team)       | ⬜     | 0%   |
 | F24   | Payments & subscriptions                          | ⬜     | 0%   |
 | F25   | Help centre (FAQs, knowledge base, videos)        | ⬜     | 0% (after F24) |
 
-**Order of what is left (owner, 2026-10-08):** F16 Users & profiles (Profile and Users together), F19 AI, F20 collaboration (optional), F21 Dashboard, F22 Roles & access, F23 Platform admin, then **F24 Payments & subscriptions** (form payments and plans together, once the owner has chosen the payment processor), then **F25 Help centre** (built from everything that exists by then). Formalie default data (below) is seeded by the backend and kept in mind in every phase.
+**Order of what is left (owner, 2026-10-08):** F16 Users & profiles (Profile and Users together), F19 AI, F21 Dashboard, F22 Roles & access, F23 Platform admin, then **F24 Payments & subscriptions** (form payments and plans together, once the owner has chosen the payment processor), then **F25 Help centre** (built from everything that exists by then). Formalie default data (below) is seeded by the backend and kept in mind in every phase.
 
 **Every phase is only done when:** phone / tablet / desktop checked · keyboard-only checked · light + dark checked · Arabic RTL checked · every new action recorded in the audit trail (from F4 on) · loading feedback complete (first-load screen, top bar on navigation and API calls, skeletons, busy buttons, busy rows, progress bars, CLAUDE.md rule 5) · empty and error states present · every new string in all 20 languages · matches [docs/design](docs/design/README.md) · typecheck, lint and tests green · this file and the docs updated · committed and pushed.
 
@@ -939,11 +939,9 @@ Owner, 2026-10-08: "profiling and users are the same thing". One phase builds th
 
 ---
 
-## F20, Live collaboration (optional) ⬜
+## F20, Live collaboration ➖ (removed by the owner, 2026-10-08)
 
-- ⬜ Presence, cursors and selections in the builder
-- ⬜ Conflict-free editing
-- ⬜ Comments on fields (later)
+- Removed from the plan: no presence, cursors or shared live editing in the builder. Forms keep one editor at a time with draft saves and version checks (`row_version`), as built.
 
 ---
 
@@ -1258,6 +1256,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-08 | Any list bigger than 20 options is loaded from the database, never copied into forms (every form, so the server has no bottleneck) | F15 | ✅ |
 | 2026-10-08 | Help section, FAQs, knowledge base with videos and GIFs, everything about the platform for self-learning and navigation, built from all we have; also in SYSTEM below Audit after a line | F25 (new phase, after F24) | ⬜ planned (menu entry ✅) |
 | 2026-10-08 | Formalie default data: system lists (simple: countries, regions, cities …; dynamic: Countries → States → Cities, Countries → Cities → Regions …), default folders (Operations, Customers, Compliance, Marketing, Leads, Projects); themes, templates, landing pages stay | Backend seeds (Formalie default data) | ⬜ noted |
+| 2026-10-08 | Remove F20 Live collaboration (optional) | F20 | ✅ removed |
 
 ---
 
@@ -1505,3 +1504,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-08 | F16 | Owner: Profile (F16) and Users (F17) merged into F16 Users & profiles; plan written: people list, invites with department / job titles / role, admin profile edit, my profile, security, sessions, roles hook until F22 |
 | 2026-10-08 | F15 | Lists above 20 options live in the database: `LIVE_FROM = 20`, `keptOnServer`; the server fills forms from the list and syncs translations on every save, trims options from replies; builder adds them without options; public page loads every level (and hand-typed choice questions above 20) from the server, radios / checkboxes as a searchable menu; lookups return details, the form keeps those of chosen options for auto-fill (`PickedOptions`); one-time move of existing forms (`listsLive`). Browser-checked on the existing Vehicles form (levels load from the server, Category only under the chosen product) |
 | 2026-10-08 | F25 | F25 Help centre planned after F24; Help & support also in the SYSTEM group below Audit trail after a line (`helpItems` in useNavigation, Menu.vue); Formalie default data section (system lists simple and dynamic, default folders, other defaults per phase) |
+| 2026-10-08 | F20 | Owner: F20 Live collaboration removed from the plan (kept as a removed row so numbers stay) |
