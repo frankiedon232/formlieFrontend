@@ -9,6 +9,7 @@ import { getFormOverview } from './routes/formOverview'
 import * as responses from './routes/responses'
 import * as analytics from './routes/analytics'
 import * as apiService from './routes/apiService'
+import * as apiConnections from './routes/apiConnections'
 import * as apiAccess from './routes/apiAccess'
 import * as apiTraffic from './routes/apiTraffic'
 import * as apiDocs from './routes/apiDocs'
@@ -100,6 +101,7 @@ const router = createRouter()
   .get('/analytics/overview', analytics.analyticsOverview)
   .get('/api-service/settings', apiService.apiSettings)
   .get('/api-service/setup', apiService.apiSetup)
+  .get('/api-service/connections', apiConnections.apiConnections)
   .post('/api-service/key/rotate', apiService.rotateApiKey)
   .get('/api-service/limits', apiAccess.getRateLimits)
   .get('/api-logs', apiTraffic.listApiLogs)

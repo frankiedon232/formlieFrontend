@@ -4153,7 +4153,6 @@
         "text": "Diese wurden gelöscht, daher kann dieses Token sie nicht aufrufen. Es wird nie auf alles erweitert; bearbeiten Sie, was es aufrufen darf, um es auf den richtigen Dienst zu richten."
       },
       "autoName": {
-        "endpoint": "{service} · /{name}",
         "service": "{service}-Token"
       },
       "signIn": "So meldet es sich an",
@@ -4626,7 +4625,8 @@
         "title": "Ein Token, das ihn aufrufen darf",
         "text": "Noch kein Token darf ihn aufrufen. Erstelle eines nur für diesen Endpunkt: Test zum Ausprobieren, Live für echte Aufrufe.",
         "ok": "{live} Live- und {test} Test-Tokens dürfen ihn aufrufen.",
-        "action": "Neues Token für diesen Endpunkt"
+        "action": "Neues Token für diesen Endpunkt",
+        "alsoAll": "{n} Token für alle Endpunkte kann ihn ebenfalls aufrufen. | {n} Tokens für alle Endpunkte können ihn ebenfalls aufrufen."
       },
       "access": {
         "title": "Wer aufrufen darf",
@@ -4648,6 +4648,23 @@
       "toast": {
         "live": "Der Endpunkt ist live",
         "notLive": "Der Endpunkt ist nicht live"
+      }
+    },
+    "connections": {
+      "title": "Verknüpfungen",
+      "failed": "Verknüpfungen konnten nicht geladen werden",
+      "service": "Service",
+      "form": "Formular",
+      "endpoints": "Endpunkte ({n})",
+      "tokens": "Tokens ({n})",
+      "rules": "Zugriffsregeln ({n})",
+      "none": "Noch keine",
+      "noRules": "Keine: jede Adresse darf aufrufen",
+      "newToken": "Neues Token für diesen Service",
+      "reach": {
+        "endpoint": "Für diesen Endpunkt erstellt",
+        "service": "Für diesen Service erstellt",
+        "all": "Ein Token für alle Endpunkte"
       }
     }
   },

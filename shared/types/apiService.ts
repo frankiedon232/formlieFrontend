@@ -109,14 +109,29 @@ export interface ApiSetupSummary {
   rules: number
 }
 
+/** How a token or access rule reaches an item: made for this endpoint, for its whole service, or for everything. */
+export type ApiReach = 'endpoint' | 'service' | 'all'
+
+/** What an API item is connected to (detail panels, owner 2026-10-08): GET /api-service/connections?type=&id= */
+export interface ApiConnections {
+  service: { id: string; name: string; status: string } | null
+  form: { id: string; name: string; status: string } | null
+  endpoints: { id: string; name: string; status: string; service: string }[]
+  tokens: { id: string; name: string; mode: 'live' | 'test'; status: string; reach: ApiReach }[]
+  rules: { id: string; action: 'allow' | 'block'; kind: string; values: string[]; enabled: boolean; reach: ApiReach }[]
+}
+
 export interface ApiEndpointSetup {
   service_active: boolean
   form_published: boolean
   /** The form is open to the API service (its channels, owner 2026-10-06). */
   form_api: boolean
-  /** Tokens (not revoked or expired) whose scope covers it. */
+  /** Tokens (not revoked or expired) made for it: scoped to this endpoint or to its service (owner 2026-10-08). */
   tokens_live: number
   tokens_test: number
+  /** Tokens for every endpoint (no service or endpoint chosen) that can call it too, counted apart so none look assigned. */
+  tokens_all_live: number
+  tokens_all_test: number
   /** Of those, tokens with signed calls on: their calls also need X-Formalie-Timestamp and X-Formalie-Signature. */
   signing_tokens: number
   /** Switched-on access rules that apply to it. */

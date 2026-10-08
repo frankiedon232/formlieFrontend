@@ -4153,7 +4153,6 @@
         "text": "Zimefutwa, kwa hiyo tokeni hii haiwezi kuzipiga. Haipanuliwi kamwe kwa kila kitu; hariri inachoweza kupiga ili iielekeze kwenye huduma sahihi."
       },
       "autoName": {
-        "endpoint": "{service} · /{name}",
         "service": "Tokeni ya {service}"
       },
       "signIn": "Jinsi unavyoingia",
@@ -4626,7 +4625,8 @@
         "title": "Tokeni inayoweza kuipigia",
         "text": "Hakuna tokeni inayoweza kuipigia bado. Tengeneza moja kwa ajili ya endpoint hii tu: ya majaribio kujaribu, ya live kwa simu halisi.",
         "ok": "Tokeni {live} za live na {test} za majaribio zinaweza kuipigia.",
-        "action": "Tokeni mpya ya endpoint hii"
+        "action": "Tokeni mpya ya endpoint hii",
+        "alsoAll": "Tokeni {n} kwa endpoint zote pia inaweza kuiita. | Tokeni {n} kwa endpoint zote pia zinaweza kuiita."
       },
       "access": {
         "title": "Nani anaweza kupiga",
@@ -4648,6 +4648,23 @@
       "toast": {
         "live": "Endpoint iko live",
         "notLive": "Endpoint si live"
+      }
+    },
+    "connections": {
+      "title": "Miunganisho",
+      "failed": "Miunganisho haikuweza kupakiwa",
+      "service": "Huduma",
+      "form": "Fomu",
+      "endpoints": "Endpoint ({n})",
+      "tokens": "Tokeni ({n})",
+      "rules": "Kanuni za ufikiaji ({n})",
+      "none": "Bado hakuna",
+      "noRules": "Hakuna: anwani yoyote inaweza kuita",
+      "newToken": "Tokeni mpya kwa huduma hii",
+      "reach": {
+        "endpoint": "Imeundwa kwa endpoint hii",
+        "service": "Imeundwa kwa huduma hii",
+        "all": "Tokeni moja kwa endpoint zote"
       }
     }
   },

@@ -4153,7 +4153,6 @@
         "text": "Die zijn verwijderd, dus deze token kan ze niet aanroepen. Hij wordt nooit uitgebreid naar alles; pas aan wat hij mag aanroepen om hem naar de juiste service te laten wijzen."
       },
       "autoName": {
-        "endpoint": "{service} · /{name}",
         "service": "{service}-token"
       },
       "signIn": "Hoe het zich aanmeldt",
@@ -4626,7 +4625,8 @@
         "title": "Een token dat het mag aanroepen",
         "text": "Nog geen token mag het aanroepen. Maak er een alleen voor dit endpoint: test om het te proberen, live voor echte aanroepen.",
         "ok": "{live} live- en {test} testtokens mogen het aanroepen.",
-        "action": "Nieuw token voor dit endpoint"
+        "action": "Nieuw token voor dit endpoint",
+        "alsoAll": "{n} token voor alle endpoints kan hem ook aanroepen. | {n} tokens voor alle endpoints kunnen hem ook aanroepen."
       },
       "access": {
         "title": "Wie mag aanroepen",
@@ -4648,6 +4648,23 @@
       "toast": {
         "live": "Het endpoint is live",
         "notLive": "Het endpoint is niet live"
+      }
+    },
+    "connections": {
+      "title": "Koppelingen",
+      "failed": "Koppelingen konden niet worden geladen",
+      "service": "Service",
+      "form": "Formulier",
+      "endpoints": "Endpoints ({n})",
+      "tokens": "Tokens ({n})",
+      "rules": "Toegangsregels ({n})",
+      "none": "Nog geen",
+      "noRules": "Geen: elk adres mag aanroepen",
+      "newToken": "Nieuw token voor deze service",
+      "reach": {
+        "endpoint": "Gemaakt voor dit endpoint",
+        "service": "Gemaakt voor deze service",
+        "all": "Een token voor alle endpoints"
       }
     }
   },

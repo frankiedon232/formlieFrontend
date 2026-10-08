@@ -4153,7 +4153,6 @@
         "text": "Fueron eliminados, así que este token no puede llamarlos. Nunca se amplía a todo; edita lo que puede llamar para apuntarlo al servicio correcto."
       },
       "autoName": {
-        "endpoint": "{service} · /{name}",
         "service": "Token de {service}"
       },
       "signIn": "Cómo inicia sesión",
@@ -4626,7 +4625,8 @@
         "title": "Un token que pueda llamarlo",
         "text": "Ningún token puede llamarlo aún. Crea uno solo para este endpoint: de prueba para probarlo, live para llamadas reales.",
         "ok": "{live} tokens live y {test} de prueba pueden llamarlo.",
-        "action": "Nuevo token para este endpoint"
+        "action": "Nuevo token para este endpoint",
+        "alsoAll": "{n} token para todos los endpoints también puede llamarlo. | {n} tokens para todos los endpoints también pueden llamarlo."
       },
       "access": {
         "title": "Quién puede llamar",
@@ -4648,6 +4648,23 @@
       "toast": {
         "live": "El endpoint está activo",
         "notLive": "El endpoint no está activo"
+      }
+    },
+    "connections": {
+      "title": "Conexiones",
+      "failed": "No se pudieron cargar las conexiones",
+      "service": "Servicio",
+      "form": "Formulario",
+      "endpoints": "Endpoints ({n})",
+      "tokens": "Tokens ({n})",
+      "rules": "Reglas de acceso ({n})",
+      "none": "Ninguno todavía",
+      "noRules": "Ninguna: cualquier dirección puede llamarlo",
+      "newToken": "Nuevo token para este servicio",
+      "reach": {
+        "endpoint": "Creado para este endpoint",
+        "service": "Creado para este servicio",
+        "all": "Un token para todos los endpoints"
       }
     }
   },

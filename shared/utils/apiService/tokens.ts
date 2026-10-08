@@ -46,6 +46,13 @@ export function scopeAllows(scopes: ApiTokenScopes, target: { endpoint_id: strin
   return service && endpoint && method
 }
 
+/** How a token's scopes reach an endpoint it may call: named, through its service, or as a token for everything. */
+export function tokenReach(scopes: ApiTokenScopes, endpoint: { id: string; service_id: string }): 'endpoint' | 'service' | 'all' {
+  if (scopes.endpoints.includes(endpoint.id)) return 'endpoint'
+  if (scopes.services.includes(endpoint.service_id)) return 'service'
+  return 'all'
+}
+
 /** Problems with a required header's name: `required`, `pattern` or `reserved` (set by Formalie itself). */
 export function checkHeaderName(name: string): 'required' | 'pattern' | 'reserved' | null {
   if (!name) return 'required'

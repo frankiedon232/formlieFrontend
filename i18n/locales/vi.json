@@ -4153,7 +4153,6 @@
         "text": "Chúng đã bị xóa nên token này không thể gọi. Token không bao giờ được mở rộng ra tất cả; hãy sửa phạm vi gọi để trỏ đến đúng dịch vụ."
       },
       "autoName": {
-        "endpoint": "{service} · /{name}",
         "service": "Token {service}"
       },
       "signIn": "Cách đăng nhập",
@@ -4626,7 +4625,8 @@
         "title": "Một token được phép gọi nó",
         "text": "Chưa có token nào được phép gọi nó. Hãy tạo một token riêng cho endpoint này: thử nghiệm để thử, live cho lệnh gọi thật.",
         "ok": "{live} token live và {test} token thử nghiệm được phép gọi nó.",
-        "action": "Token mới cho endpoint này"
+        "action": "Token mới cho endpoint này",
+        "alsoAll": "{n} token dành cho mọi endpoint cũng có thể gọi nó. | {n} token dành cho mọi endpoint cũng có thể gọi nó."
       },
       "access": {
         "title": "Ai được gọi",
@@ -4648,6 +4648,23 @@
       "toast": {
         "live": "Endpoint đang hoạt động",
         "notLive": "Endpoint chưa hoạt động"
+      }
+    },
+    "connections": {
+      "title": "Liên kết",
+      "failed": "Không thể tải liên kết",
+      "service": "Dịch vụ",
+      "form": "Biểu mẫu",
+      "endpoints": "Endpoint ({n})",
+      "tokens": "Token ({n})",
+      "rules": "Quy tắc truy cập ({n})",
+      "none": "Chưa có",
+      "noRules": "Không có: mọi địa chỉ đều có thể gọi",
+      "newToken": "Token mới cho dịch vụ này",
+      "reach": {
+        "endpoint": "Tạo cho endpoint này",
+        "service": "Tạo cho dịch vụ này",
+        "all": "Một token cho mọi endpoint"
       }
     }
   },

@@ -4153,8 +4153,7 @@
         "text": "Bunlar silindi, bu yüzden bu token onları çağıramaz. Asla her şeye genişletilmez; doğru servise yöneltmek için çağırabileceklerini düzenleyin."
       },
       "autoName": {
-        "endpoint": "{service} · /{name}",
-        "service": "{service} token'ı"
+        "service": "{service} Token'ı"
       },
       "signIn": "Nasıl giriş yapar",
       "signInHelp": "Bir token ya biridir ya ötekidir, asla ikisi birden değil. Bearer token olduğu gibi gönderilir; istemci kimliği ve gizli anahtar /token'da kısa ömürlü bir token ile değiştirilir.",
@@ -4626,7 +4625,8 @@
         "title": "Onu çağırabilen bir token",
         "text": "Henüz hiçbir token onu çağıramaz. Yalnızca bu endpoint için bir tane oluşturun: denemek için test, gerçek çağrılar için live.",
         "ok": "{live} live ve {test} test token'ı onu çağırabilir.",
-        "action": "Bu endpoint için yeni token"
+        "action": "Bu endpoint için yeni token",
+        "alsoAll": "Tüm endpoint'ler için {n} token da bunu çağırabilir. | Tüm endpoint'ler için {n} token da bunu çağırabilir."
       },
       "access": {
         "title": "Kimler çağırabilir",
@@ -4648,6 +4648,23 @@
       "toast": {
         "live": "Endpoint yayında",
         "notLive": "Endpoint yayında değil"
+      }
+    },
+    "connections": {
+      "title": "Bağlantılar",
+      "failed": "Bağlantılar yüklenemedi",
+      "service": "Servis",
+      "form": "Form",
+      "endpoints": "Endpoint'ler ({n})",
+      "tokens": "Token'lar ({n})",
+      "rules": "Erişim kuralları ({n})",
+      "none": "Henüz yok",
+      "noRules": "Yok: her adres çağırabilir",
+      "newToken": "Bu servis için yeni token",
+      "reach": {
+        "endpoint": "Bu endpoint için oluşturuldu",
+        "service": "Bu servis için oluşturuldu",
+        "all": "Tüm endpoint'ler için bir token"
       }
     }
   },

@@ -103,6 +103,7 @@ const menu = computed<DropdownMenuItem[][]>(() => (rule.value ? [[{ label: t('ap
             </div>
           </div>
         </div>
+        <ApiConnections :id="rule.id" type="rule" />
 
         <section class="flex flex-col gap-3">
           <h3 class="text-sm font-semibold text-highlighted">{{ t(`apiService.access.valuesLabel.${rule.kind}`) }} <span class="font-normal text-muted tabular-nums">· {{ rule.values.length }}</span></h3>

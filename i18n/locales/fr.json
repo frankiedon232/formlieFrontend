@@ -4153,7 +4153,6 @@
         "text": "Ils ont été supprimés, donc ce jeton ne peut pas les appeler. Il n'est jamais étendu à tout; modifiez ce qu'il peut appeler pour le diriger vers le bon service."
       },
       "autoName": {
-        "endpoint": "{service} · /{name}",
         "service": "Jeton {service}"
       },
       "signIn": "Comment il se connecte",
@@ -4626,7 +4625,8 @@
         "title": "Un jeton autorisé à l'appeler",
         "text": "Aucun jeton ne peut encore l'appeler. Créez-en un rien que pour cet endpoint : test pour l'essayer, live pour de vrais appels.",
         "ok": "{live} jetons live et {test} jetons de test peuvent l'appeler.",
-        "action": "Nouveau jeton pour cet endpoint"
+        "action": "Nouveau jeton pour cet endpoint",
+        "alsoAll": "{n} jeton pour tous les endpoints peut aussi l'appeler. | {n} jetons pour tous les endpoints peuvent aussi l'appeler."
       },
       "access": {
         "title": "Qui peut appeler",
@@ -4648,6 +4648,23 @@
       "toast": {
         "live": "L'endpoint est en direct",
         "notLive": "L'endpoint n'est pas en direct"
+      }
+    },
+    "connections": {
+      "title": "Liens",
+      "failed": "Impossible de charger les liens",
+      "service": "Service",
+      "form": "Formulaire",
+      "endpoints": "Endpoints ({n})",
+      "tokens": "Jetons ({n})",
+      "rules": "Règles d'accès ({n})",
+      "none": "Aucun pour l'instant",
+      "noRules": "Aucune : toute adresse peut l'appeler",
+      "newToken": "Nouveau jeton pour ce service",
+      "reach": {
+        "endpoint": "Créé pour cet endpoint",
+        "service": "Créé pour ce service",
+        "all": "Un jeton pour tous les endpoints"
       }
     }
   },

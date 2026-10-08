@@ -4153,7 +4153,6 @@
         "text": "Zostały usunięte, więc ten token nie może ich wywołać. Nigdy nie jest rozszerzany na wszystko; zmień, co może wywoływać, aby wskazać właściwą usługę."
       },
       "autoName": {
-        "endpoint": "{service} · /{name}",
         "service": "Token {service}"
       },
       "signIn": "Jak się loguje",
@@ -4626,7 +4625,8 @@
         "title": "Token, który może go wywoływać",
         "text": "Żaden token nie może go jeszcze wywoływać. Utwórz token tylko dla tego endpointu: testowy do wypróbowania, live do prawdziwych wywołań.",
         "ok": "Może go wywoływać {live} tokenów live i {test} testowych.",
-        "action": "Nowy token dla tego endpointu"
+        "action": "Nowy token dla tego endpointu",
+        "alsoAll": "{n} token dla wszystkich endpointów też może go wywołać. | {n} tokeny dla wszystkich endpointów też mogą go wywołać."
       },
       "access": {
         "title": "Kto może wywoływać",
@@ -4648,6 +4648,23 @@
       "toast": {
         "live": "Endpoint jest aktywny",
         "notLive": "Endpoint jest nieaktywny"
+      }
+    },
+    "connections": {
+      "title": "Powiązania",
+      "failed": "Nie udało się wczytać powiązań",
+      "service": "Usługa",
+      "form": "Formularz",
+      "endpoints": "Endpointy ({n})",
+      "tokens": "Tokeny ({n})",
+      "rules": "Reguły dostępu ({n})",
+      "none": "Jeszcze brak",
+      "noRules": "Brak: każdy adres może wywołać",
+      "newToken": "Nowy token dla tej usługi",
+      "reach": {
+        "endpoint": "Utworzony dla tego endpointu",
+        "service": "Utworzony dla tej usługi",
+        "all": "Token dla wszystkich endpointów"
       }
     }
   },

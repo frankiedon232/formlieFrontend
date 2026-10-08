@@ -4153,7 +4153,6 @@
         "text": "Itu sudah dihapus, jadi token ini tidak dapat memanggilnya. Token tidak pernah diperluas ke semuanya; ubah apa yang boleh dipanggil agar mengarah ke layanan yang benar."
       },
       "autoName": {
-        "endpoint": "{service} · /{name}",
         "service": "Token {service}"
       },
       "signIn": "Cara masuknya",
@@ -4626,7 +4625,8 @@
         "title": "Token yang boleh memanggilnya",
         "text": "Belum ada token yang boleh memanggilnya. Buat satu khusus untuk endpoint ini: uji untuk mencoba, live untuk panggilan sungguhan.",
         "ok": "{live} token live dan {test} token uji boleh memanggilnya.",
-        "action": "Token baru untuk endpoint ini"
+        "action": "Token baru untuk endpoint ini",
+        "alsoAll": "{n} token untuk semua endpoint juga dapat memanggilnya. | {n} token untuk semua endpoint juga dapat memanggilnya."
       },
       "access": {
         "title": "Siapa yang boleh memanggil",
@@ -4648,6 +4648,23 @@
       "toast": {
         "live": "Endpoint sudah live",
         "notLive": "Endpoint tidak live"
+      }
+    },
+    "connections": {
+      "title": "Koneksi",
+      "failed": "Koneksi tidak dapat dimuat",
+      "service": "Layanan",
+      "form": "Formulir",
+      "endpoints": "Endpoint ({n})",
+      "tokens": "Token ({n})",
+      "rules": "Aturan akses ({n})",
+      "none": "Belum ada",
+      "noRules": "Tidak ada: semua alamat boleh memanggil",
+      "newToken": "Token baru untuk layanan ini",
+      "reach": {
+        "endpoint": "Dibuat untuk endpoint ini",
+        "service": "Dibuat untuk layanan ini",
+        "all": "Satu token untuk semua endpoint"
       }
     }
   },

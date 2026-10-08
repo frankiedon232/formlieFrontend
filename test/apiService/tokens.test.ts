@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { checkHeaderName, checkHeaderValue, maskValue, scopeAllows, secretPreview, tokenPrefix, tokenStatusOf } from '../../shared/utils/apiService/tokens'
+import { checkHeaderName, checkHeaderValue, maskValue, scopeAllows, secretPreview, tokenPrefix, tokenReach, tokenStatusOf } from '../../shared/utils/apiService/tokens'
 
 const DAY = 86_400_000
 
@@ -63,5 +63,14 @@ describe('required headers', () => {
     expect(checkHeaderValue(' leading')).toBe('chars')
     expect(checkHeaderValue('é')).toBe('chars')
     expect(checkHeaderValue('x'.repeat(201))).toBe('chars')
+  })
+})
+
+describe('how a token reaches an endpoint (owner 2026-10-08)', () => {
+  const endpoint = { id: 'e1', service_id: 's1' }
+  it('is made for it, for its service, or for everything', () => {
+    expect(tokenReach({ services: [], endpoints: ['e1'], methods: [] }, endpoint)).toBe('endpoint')
+    expect(tokenReach({ services: ['s1'], endpoints: [], methods: [] }, endpoint)).toBe('service')
+    expect(tokenReach({ services: [], endpoints: [], methods: [] }, endpoint)).toBe('all')
   })
 })

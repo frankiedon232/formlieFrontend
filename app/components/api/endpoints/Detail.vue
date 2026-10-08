@@ -132,6 +132,7 @@ const menu = computed<DropdownMenuItem[][]>(() => {
             </div>
           </div>
         </div>
+        <ApiConnections :id="endpoint.id" type="endpoint" />
 
         <section class="flex flex-col gap-3">
           <div class="-mx-1 flex gap-1.5 overflow-x-auto px-1 pb-1" role="tablist">

@@ -8,7 +8,7 @@
  */
 import { createHash, randomBytes } from 'node:crypto'
 import type { ApiAccessRule, ApiEndpoint, ApiEndpointDetail, ApiEndpointSetup, ApiRateLimits, ApiRuleAction, ApiRuleKind, ApiService, ApiStatus, ApiToken, ApiTokenKind, ApiTokenMode, ApiTokenScopes, ApiUsage } from '#shared/types/apiService'
-import { maskValue, scopeAllows, secretPreview, tokenPrefix, tokenStatusOf } from '#shared/utils/apiService/tokens'
+import { maskValue, scopeAllows, secretPreview, tokenPrefix, tokenReach, tokenStatusOf } from '#shared/utils/apiService/tokens'
 import { rulesFor } from '#shared/utils/apiService/access'
 import { channelsOf } from '#shared/types/forms'
 import { endpointFieldsOf, endpointNameFrom } from '#shared/utils/apiService/endpoints'
@@ -472,8 +472,11 @@ function endpointSetup(tenant: MockTenant, endpoint: StoredApiEndpoint, form: St
     service_active: api.services.find(item => item.id === endpoint.service_id)?.status === 'active',
     form_published: form?.status === 'published',
     form_api: !!form && channelsOf(form).includes('api'),
-    tokens_live: callers.filter(token => token.mode === 'live').length,
-    tokens_test: callers.filter(token => token.mode === 'test').length,
+    // Made for it (this endpoint, or its whole service) apart from tokens for everything (owner 2026-10-08)
+    tokens_live: callers.filter(token => token.mode === 'live' && tokenReach(token.scopes, endpoint) !== 'all').length,
+    tokens_test: callers.filter(token => token.mode === 'test' && tokenReach(token.scopes, endpoint) !== 'all').length,
+    tokens_all_live: callers.filter(token => token.mode === 'live' && tokenReach(token.scopes, endpoint) === 'all').length,
+    tokens_all_test: callers.filter(token => token.mode === 'test' && tokenReach(token.scopes, endpoint) === 'all').length,
     signing_tokens: callers.filter(token => token.signing).length,
     rules: rulesFor(api.rules, endpoint).filter(rule => rule.enabled).length,
     live: endpoint.status === 'active',

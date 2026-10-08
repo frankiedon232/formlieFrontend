@@ -4153,8 +4153,7 @@
         "text": "Those were deleted, so this token can not call them. It is never widened to everything; edit what it may call to point it at the right service."
       },
       "autoName": {
-        "endpoint": "{service} · /{name}",
-        "service": "{service} token"
+        "service": "{service} Token"
       },
       "signIn": "How it signs in",
       "signInHelp": "A token is one or the other, never both. A bearer token is sent as it is; a client id and secret are traded at /token for a short-lived token.",
@@ -4626,7 +4625,8 @@
         "title": "A token that may call it",
         "text": "No token may call it yet. Make one just for this endpoint: test to try it, live for real calls.",
         "ok": "{live} live and {test} test tokens may call it.",
-        "action": "New token for this endpoint"
+        "action": "New token for this endpoint",
+        "alsoAll": "{n} token for every endpoint can call it too. | {n} tokens for every endpoint can call it too."
       },
       "access": {
         "title": "Who may call",
@@ -4648,6 +4648,23 @@
       "toast": {
         "live": "The endpoint is live",
         "notLive": "The endpoint is not live"
+      }
+    },
+    "connections": {
+      "title": "Connections",
+      "failed": "Connections could not be loaded",
+      "service": "Service",
+      "form": "Form",
+      "endpoints": "Endpoints ({n})",
+      "tokens": "Tokens ({n})",
+      "rules": "Access rules ({n})",
+      "none": "None yet",
+      "noRules": "None: every address may call it",
+      "newToken": "New token for this service",
+      "reach": {
+        "endpoint": "Made for this endpoint",
+        "service": "Made for this service",
+        "all": "A token for every endpoint"
       }
     }
   },

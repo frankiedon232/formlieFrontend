@@ -119,6 +119,7 @@ const menu = computed<DropdownMenuItem[][]>(() => {
             </div>
           </div>
         </div>
+        <ApiConnections :id="token.id" type="token" />
 
         <p v-if="token.kind === 'webhook'" class="flex items-start gap-2 rounded-lg border border-default p-3 text-sm text-muted"><UIcon name="i-lucide-webhook" class="mt-0.5 size-4 shrink-0" />{{ t('apiService.tokens.webhookScope') }}</p>
         <section v-else class="flex flex-col gap-3">

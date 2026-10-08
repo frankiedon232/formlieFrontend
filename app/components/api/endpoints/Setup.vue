@@ -25,7 +25,11 @@ const items = computed(() => [
     icon: 'i-lucide-key-round',
     done: s.value.tokens_live + s.value.tokens_test > 0,
     title: t('apiService.setup.token.title'),
-    text: s.value.tokens_live + s.value.tokens_test > 0 ? t('apiService.setup.token.ok', { live: s.value.tokens_live, test: s.value.tokens_test }) : t('apiService.setup.token.text'),
+    text: [
+      s.value.tokens_live + s.value.tokens_test > 0 ? t('apiService.setup.token.ok', { live: s.value.tokens_live, test: s.value.tokens_test }) : t('apiService.setup.token.text'),
+      // Tokens for every endpoint can call it too: said apart, never counted as made for it (owner 2026-10-08)
+      s.value.tokens_all_live + s.value.tokens_all_test > 0 ? t('apiService.setup.token.alsoAll', { n: s.value.tokens_all_live + s.value.tokens_all_test }, s.value.tokens_all_live + s.value.tokens_all_test) : '',
+    ].filter(Boolean).join(' '),
     action: { label: t('apiService.setup.token.action'), to: { path: '/api-service/auth', query: { new: '1', endpoint: props.endpoint.id } } },
   },
   {
@@ -82,7 +86,7 @@ const ready = computed(() => s.value.service_active && s.value.form_published &&
         <div class="flex min-w-0 flex-1 flex-col gap-1">
           <span class="flex items-center gap-1.5"><UIcon name="i-lucide-rocket" class="size-4 text-muted" /><span class="text-sm font-medium text-highlighted">{{ t('apiService.setup.live.title') }}</span></span>
           <p class="text-xs text-muted">{{ s.live ? t('apiService.setup.live.on') : t('apiService.setup.live.text') }}</p>
-          <p v-if="!s.live && !s.tokens_live" class="text-xs text-warning">{{ t('apiService.setup.live.noLiveToken') }}</p>
+          <p v-if="!s.live && !s.tokens_live && !s.tokens_all_live" class="text-xs text-warning">{{ t('apiService.setup.live.noLiveToken') }}</p>
           <USwitch :model-value="s.live" :label="s.live ? t('apiService.setup.isLive') : t('apiService.setup.live.action')" :disabled="busy || !ready" class="mt-1" @update:model-value="value => emit('live', !!value)" />
         </div>
       </li>

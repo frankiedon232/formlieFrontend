@@ -72,12 +72,12 @@ const expiryItems = computed(() => [...TOKEN_EXPIRY_DAYS.map(days => ({ value: d
 const lifetimeItems = TOKEN_LIFETIMES.map(n => ({ value: n, label: t('apiService.tokens.minutes', { n }) }))
 const toggleMethod = (method: ApiMethod, on: boolean) => (state.methods = on ? API_METHODS.filter(item => item === method || state.methods.includes(item)) : state.methods.filter(item => item !== method))
 watch(() => state.services, list => (state.endpoints = state.endpoints.filter(id => !list.length || endpoints.value.find(item => item.id === id && list.includes(item.service.id)))))
-/** "Account Service · /account", or the service's name, kept unique among the workspace's tokens. */
+/** "Account Validation Token" (owner 2026-10-08: the service's name, for one endpoint or the whole service), kept unique among the workspace's tokens. */
 function autoName() {
   if (props.token || nameTouched.value) return
   const endpoint = state.endpoints.length === 1 ? endpoints.value.find(item => item.id === state.endpoints[0]) : undefined
   const service = endpoint ? endpoint.service : state.services.length === 1 ? services.value.find(item => item.id === state.services[0]) : undefined
-  const base = endpoint ? t('apiService.tokens.autoName.endpoint', { service: endpoint.service.name, name: endpoint.name }) : service ? t('apiService.tokens.autoName.service', { service: service.name }) : ''
+  const base = service ? t('apiService.tokens.autoName.service', { service: service.name }) : ''
   const taken = new Set((callers.tokens.value ?? []).map(item => item.name.toLowerCase()))
   let name = base
   for (let n = 2; base && taken.has(name.toLowerCase()); n++) name = `${base} ${n}`

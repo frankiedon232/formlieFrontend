@@ -115,6 +115,7 @@ const menu = computed<DropdownMenuItem[][]>(() =>
             </div>
           </div>
         </div>
+        <ApiConnections :id="service.id" type="service" />
 
         <section class="flex flex-col gap-3">
           <div class="flex items-center gap-2">
