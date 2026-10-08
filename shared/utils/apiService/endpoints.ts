@@ -170,43 +170,70 @@ export function sampleValue(field: Pick<ApiEndpointField, 'type' | 'key' | 'labe
 
 /**
  * Examples for lists with levels (F15 M2): each level's example takes only values under the example
- * chosen one level up (Brazil → São Paulo → Campinas), so an example body is one the API accepts.
+ * chosen one level up (Brazil → São Paulo → Campinas), so an example body is one the API accepts. A
+ * level prefers options with something under them all the way down (owner 2026-10-08: a top option
+ * with nothing under it left the levels below as made-up "option_1"); a level with nothing to offer
+ * has no options (its example is null).
  */
 export function withLevelSamples(fields: ApiEndpointField[]): ApiEndpointField[] {
   const chosen = new Map<string, unknown>()
   const byKey = new Map(fields.map(field => [field.key, field]))
+  const childOf = new Map(fields.filter(field => field.depends_on).map(field => [field.depends_on!, field]))
+  // Options that lead somewhere on every level below (falls back to all when none do)
+  const deep = new Map<string, NonNullable<ApiEndpointField['options']>>()
+  const deepOf = (field: ApiEndpointField, depth = 0): NonNullable<ApiEndpointField['options']> => {
+    if (deep.has(field.key)) return deep.get(field.key)!
+    let options = field.options ?? []
+    const child = depth < 5 ? childOf.get(field.key) : undefined
+    if (child) {
+      const below = new Set(deepOf(child, depth + 1).map(option => option.parent))
+      const leading = options.filter(option => below.has(option.value))
+      if (leading.length) options = leading
+    }
+    deep.set(field.key, options)
+    return options
+  }
   const narrowed = new Map<string, ApiEndpointField>()
   const visit = (field: ApiEndpointField): ApiEndpointField => {
     if (narrowed.has(field.key)) return narrowed.get(field.key)!
-    let result = field
+    let result: ApiEndpointField = field.options?.length ? { ...field, options: deepOf(field) } : field
     const parent = field.depends_on ? byKey.get(field.depends_on) : undefined
     if (parent) {
       visit(parent)
       const above = chosen.get(parent.key)
       const values = Array.isArray(above) ? above : above != null ? [above] : []
-      result = { ...field, options: (field.options ?? []).filter(option => option.parent !== undefined && values.includes(option.parent)) }
+      const under = (list: NonNullable<ApiEndpointField['options']>) => list.filter(option => option.parent !== undefined && values.includes(option.parent))
+      const leading = under(deepOf(field))
+      result = { ...field, options: leading.length ? leading : under(field.options ?? []) }
     }
     narrowed.set(field.key, result)
-    chosen.set(field.key, sampleValue(result))
+    chosen.set(field.key, sampleOf(result))
     return result
   }
   return fields.map(visit)
 }
 
-/** The JSON body a POST / PUT sends: every accepted field (required first). */
+/** A question's example answer as the API reads it: choices as labels; a level with nothing under the choice above stays empty. */
+function sampleOf(field: ApiEndpointField): unknown {
+  if (field.depends_on && !field.options?.length) return null
+  return sampleValue(field)
+}
+const exampleOf = (field: ApiEndpointField) => (field.depends_on && !field.options?.length ? null : choiceOut(field, sampleValue(field)))
+
+/** The JSON body a POST / PUT sends: every accepted field, in the form's order (owner 2026-10-08). */
 export function exampleRequestBody(fields: ApiEndpointField[]) {
-  const sent = withLevelSamples(fields).filter(field => field.accept).sort((a, b) => Number(b.required) - Number(a.required))
+  const sent = withLevelSamples(fields).filter(field => field.accept)
   // Choices as their labels, as the API reads and returns them (owner 2026-10-08)
-  return Object.fromEntries(sent.map(field => [field.name, choiceOut(field, sampleValue(field))]))
+  return Object.fromEntries(sent.map(field => [field.name, exampleOf(field)]))
 }
 
-/** One record as GET returns it: the reference, when, its status and every returned field. */
+/** One record as GET returns it: the reference, when, its status and every returned field, in the form's order. */
 export function exampleRecord(fields: ApiEndpointField[]) {
   return {
     id: 'rsp_9fK2mQ7xLp',
     submitted_at: '2026-10-06T09:30:00Z',
     status: 'new',
-    data: Object.fromEntries(withLevelSamples(fields).filter(field => field.returned).map(field => [field.name, ['file_upload', 'image_upload'].includes(field.type) ? [{ id: 'f_Hc71mQpZsA', name: 'document.pdf', size: 20480, type: 'application/pdf' }] : choiceOut(field, sampleValue(field))])),
+    data: Object.fromEntries(withLevelSamples(fields).filter(field => field.returned).map(field => [field.name, ['file_upload', 'image_upload'].includes(field.type) ? [{ id: 'f_Hc71mQpZsA', name: 'document.pdf', size: 20480, type: 'application/pdf' }] : exampleOf(field)])),
   }
 }
 

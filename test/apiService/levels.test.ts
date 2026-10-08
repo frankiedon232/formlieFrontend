@@ -43,3 +43,18 @@ describe('choices in the public API, by label (owner 2026-10-08)', () => {
     expect(choicesIn([country], { country: 'Mars' })).toEqual({ country: 'Mars' })
   })
 })
+
+describe('API examples (owner 2026-10-08)', () => {
+  const field = (key: string, extra: Partial<ApiEndpointField> = {}): ApiEndpointField => ({ key, name: key, label: key, type: 'short_text', page: 0, form_required: false, acceptable: true, filterable: false, accept: true, required: false, returned: true, filter: false, ...extra })
+
+  it('follow the form’s order, required or not', () => {
+    const body = exampleRequestBody([field('customer_name'), field('location'), field('phone', { type: 'phone', required: true }), field('email', { type: 'email', required: true })])
+    expect(Object.keys(body)).toEqual(['customer_name', 'location', 'phone', 'email'])
+  })
+
+  it('pick a path that goes all the way down, never a made-up option', () => {
+    const top = field('name', { type: 'dropdown', options: [{ value: 'note', label: 'This is for new products' }, { value: 'shoe', label: 'Running shoes' }] })
+    const below = field('category', { type: 'dropdown', depends_on: 'name', options: [{ value: 'shoe_foot', label: 'Footwear', parent: 'shoe' }] })
+    expect(exampleRequestBody([top, below])).toEqual({ name: 'Running shoes', category: 'Footwear' })
+  })
+})
