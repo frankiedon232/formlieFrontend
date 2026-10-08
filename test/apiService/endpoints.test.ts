@@ -67,7 +67,7 @@ describe('endpoint names', () => {
 describe('examples', () => {
   it('use the form\'s own answer values for choices', () => {
     const withChoices = { ...schema, pages: [{ id: 'p', rows: [{ id: 'r', fields: [field('position', 'dropdown', { options: [{ value: 'designer', label: 'Designer' }, { value: 'engineer', label: 'Engineer' }] }), field('skills', 'checkbox', { options: [{ value: 'vue', label: 'Vue' }, { value: 'ts', label: 'TypeScript' }, { value: 'sql', label: 'SQL' }] })] }] }] } as unknown as FormSchemaV1
-    expect(exampleRequestBody(endpointFieldsOf(withChoices))).toEqual({ position: 'designer', skills: ['vue', 'ts'] })
+    expect(exampleRequestBody(endpointFieldsOf(withChoices))).toEqual({ position: 'Designer', skills: ['Vue', 'TypeScript'] })
   })
 
   it('sends accepted fields (required first) and returns the returned ones', () => {

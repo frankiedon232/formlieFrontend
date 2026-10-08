@@ -8,6 +8,7 @@ import { allFields, keyFromLabel, type FormField } from '#shared/utils/forms/bui
 import { iconFromLabel } from '#shared/utils/forms/label-icons'
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
 import { ENDPOINT_PATTERN } from '#shared/utils/urls/public'
+import { choiceOut } from './choices'
 
 /** One question as an endpoint field, with the defaults for a new endpoint. */
 export function endpointFieldsOf(schema: FormSchemaV1, saved?: { key: string; name?: string; accept: boolean; required: boolean; returned: boolean; filter: boolean }[]): ApiEndpointField[] {
@@ -195,7 +196,8 @@ export function withLevelSamples(fields: ApiEndpointField[]): ApiEndpointField[]
 /** The JSON body a POST / PUT sends: every accepted field (required first). */
 export function exampleRequestBody(fields: ApiEndpointField[]) {
   const sent = withLevelSamples(fields).filter(field => field.accept).sort((a, b) => Number(b.required) - Number(a.required))
-  return Object.fromEntries(sent.map(field => [field.name, sampleValue(field)]))
+  // Choices as their labels, as the API reads and returns them (owner 2026-10-08)
+  return Object.fromEntries(sent.map(field => [field.name, choiceOut(field, sampleValue(field))]))
 }
 
 /** One record as GET returns it: the reference, when, its status and every returned field. */
@@ -204,7 +206,7 @@ export function exampleRecord(fields: ApiEndpointField[]) {
     id: 'rsp_9fK2mQ7xLp',
     submitted_at: '2026-10-06T09:30:00Z',
     status: 'new',
-    data: Object.fromEntries(withLevelSamples(fields).filter(field => field.returned).map(field => [field.name, ['file_upload', 'image_upload'].includes(field.type) ? [{ id: 'f_Hc71mQpZsA', name: 'document.pdf', size: 20480, type: 'application/pdf' }] : sampleValue(field)])),
+    data: Object.fromEntries(withLevelSamples(fields).filter(field => field.returned).map(field => [field.name, ['file_upload', 'image_upload'].includes(field.type) ? [{ id: 'f_Hc71mQpZsA', name: 'document.pdf', size: 20480, type: 'application/pdf' }] : choiceOut(field, sampleValue(field))])),
   }
 }
 

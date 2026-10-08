@@ -27,7 +27,7 @@ describe('calls', () => {
     expect(calls.POST!.headers).toEqual({ Authorization: 'Bearer <token>', 'Content-Type': 'application/json', 'Formalie-Key': NEW_KEY })
     for (const method of ['GET', 'PUT', 'DELETE'] as const) expect(calls[method]!.headers).toEqual({ Authorization: 'Bearer <token>', 'Content-Type': 'application/json' })
     expect(Object.keys(calls.POST!.headers)).toEqual([...CALL_HEADERS])
-    expect(calls.POST!.body).toEqual({ full_name: expect.any(String), position: 'designer', cv: ['FILE_ID_FROM_FILES_UPLOAD'] })
+    expect(calls.POST!.body).toEqual({ full_name: expect.any(String), position: 'Designer', cv: ['FILE_ID_FROM_FILES_UPLOAD'] })
     expect(calls.PUT!.url).toBe(`${endpoint.url}/<record id>`)
     expect(calls.DELETE!.body).toBeUndefined()
   })
@@ -39,7 +39,7 @@ describe('calls', () => {
     expect(snippetFor('python', post)).toContain('"Formalie-Key": str(uuid.uuid4())')
     expect(snippetFor('php', post)).toContain('"Formalie-Key: " . bin2hex(random_bytes(16))')
     expect(snippetFor('csharp', post)).toContain('"Formalie-Key", Guid.NewGuid().ToString()')
-    expect(snippetFor('php', post)).toContain('"position" => "designer"')
+    expect(snippetFor('php', post)).toContain('"position" => "Designer"')
     for (const language of ['curl', 'javascript', 'python', 'php', 'csharp'] as const) expect(snippetFor(language, post)).not.toContain(NEW_KEY)
   })
 
@@ -54,7 +54,7 @@ describe('calls', () => {
 
 describe('OpenAPI', () => {
   it('describes questions with their real values', () => {
-    expect(fieldSchema(endpoint.fields[1]!)).toMatchObject({ type: 'string', enum: ['designer', 'engineer'] })
+    expect(fieldSchema(endpoint.fields[1]!)).toMatchObject({ type: 'string', enum: ['Designer', 'Engineer'] })
     expect(fieldSchema(endpoint.fields[2]!)).toMatchObject({ type: 'array' })
   })
 
