@@ -82,13 +82,18 @@ export const rulesFor = <T extends { scope: { type: string; id: string | null } 
 
 // ── IP addresses ─────────────────────────────────────────────────────────────────────────
 
+// BigInt() calls, not `0n` literals: the build targets ES2019, which has no BigInt literal syntax
+const ZERO = BigInt(0)
+const BITS_8 = BigInt(8)
+const BITS_16 = BigInt(16)
+
 /** An IP address as a number and its family. */
 export function parseIp(text: string): { family: 4 | 6; value: bigint } | null {
   const v4 = /^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$/.exec(text)
   if (v4) {
     const parts = v4.slice(1).map(Number)
     if (parts.some(part => part > 255)) return null
-    return { family: 4, value: parts.reduce((sum, part) => (sum << 8n) + BigInt(part), 0n) }
+    return { family: 4, value: parts.reduce((sum, part) => (sum << BITS_8) + BigInt(part), ZERO) }
   }
   const mapped = /^::ffff:(\d{1,3}(?:\.\d{1,3}){3})$/i.exec(text)
   if (mapped) return parseIp(mapped[1]!)
@@ -98,7 +103,7 @@ export function parseIp(text: string): { family: 4 | 6; value: bigint } | null {
   const right = text.includes('::') ? (tail ? tail.split(':') : []) : []
   const groups = text.includes('::') ? [...left, ...Array(8 - left.length - right.length).fill('0'), ...right] : left
   if (groups.length !== 8 || groups.some(group => !/^[0-9a-f]{1,4}$/i.test(group))) return null
-  return { family: 6, value: groups.reduce((sum, group) => (sum << 16n) + BigInt(parseInt(group, 16)), 0n) }
+  return { family: 6, value: groups.reduce((sum, group) => (sum << BITS_16) + BigInt(parseInt(group, 16)), ZERO) }
 }
 
 /** An address or a range (`203.0.113.0/24`, `2001:db8::/32`). */

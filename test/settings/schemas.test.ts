@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
-import { appearanceSchema, brandingSchema, companySchema, emailsSchema, formDefaultsSchema, isTimeZone, localisationSchema, notificationsSchema, privacySchema, securitySchema, signinSchema } from '../../shared/utils/settings/schemas'
+import { appearanceSchema, brandingSchema, companySchema, emailsSchema, formDefaultsSchema, localisationSchema, notificationsSchema, privacySchema, securitySchema, signinSchema } from '../../shared/utils/settings/schemas'
 import { APPEARANCE_PRESETS, FORMALIE_APPEARANCE } from '../../shared/types/appearance'
+import { isTimeZone } from '../../shared/utils/forms/catalogues'
 
 const company = {
   legal_name: 'Northwind Trading Ltd.',

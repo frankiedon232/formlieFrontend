@@ -12,6 +12,7 @@ import { parseCidr } from '../apiService/access'
 import { PASSWORD_LENGTH_RANGE } from '../auth/password'
 import { APP_LOCALES } from '../i18n/locales'
 import { CURRENCY_CODES, isCountryCode } from '../platform/countries'
+import { isTimeZone } from '../forms/catalogues'
 
 /** Optional text: trimmed, '' → null, at most `max` characters. */
 const optional = (max: number) =>
@@ -23,17 +24,6 @@ const optional = (max: number) =>
     .transform(value => value || null)
 
 const LOCALE_CODES = APP_LOCALES.map(item => item.code) as [string, ...string[]]
-
-/** A real IANA time zone (whatever this runtime knows), or UTC. */
-export function isTimeZone(value: string): boolean {
-  if (value === 'UTC') return true
-  try {
-    new Intl.DateTimeFormat('en', { timeZone: value })
-    return true
-  } catch {
-    return false
-  }
-}
 
 export const companySchema = z.object({
   legal_name: z.string().trim().min(2).max(160),

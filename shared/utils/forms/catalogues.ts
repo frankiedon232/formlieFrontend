@@ -66,6 +66,7 @@ export const timeZoneItems = (): PickItem[] =>
 
 export const isLanguageCode = (value: string) => LANGUAGE_CODES.includes(value)
 export const isTimeZone = (value: string) => {
+  if (value === 'UTC') return true
   try {
     new Intl.DateTimeFormat('en', { timeZone: value })
     return true
