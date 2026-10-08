@@ -2,9 +2,9 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-08 (F15 complete: M5 large dynamic lists built and browser-tested; lists hold 20,000 options, or 200,000 when switched to Large; next: F16 Profile; payments and subscriptions last, F24)
+**Last updated:** 2026-10-08 (F15 complete incl. M5 large dynamic lists; F16 Profile and F17 Users merged into F16 Users & profiles (department, job titles, role per person), next; payments and subscriptions last, F24)
 
-Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend
+Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend · ➖ dropped or merged
 
 ## Overview
 
@@ -26,8 +26,8 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F13   | API service & integrations                        | ✅     | 100% (owner-tested 2026-10-06) |
 | F14   | Settings                                          | ✅     | 100% (M1 to M7 ✅; billing in F24) |
 | F15   | Option sets (lists)                               | ✅     | 100% (M1 to M5 ✅; payments moved to F24) |
-| F16   | Profile                                           | ⬜     | 0%   |
-| F17   | Users                                             | ⬜     | 0%   |
+| F16   | Users & profiles (Profile + Users)                | ⬜     | 0% (next) |
+| F17   | Users (merged into F16)                           | ➖     | -    |
 | F18   | Analytics                                         | ✅     | 100% (waiting for review) |
 | F19   | AI assistant                                      | 🟡     | ~2%  |
 | F20   | Live collaboration (optional)                     | ⬜     | 0%   |
@@ -36,7 +36,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F23   | Platform admin (super admin, Formalie team)       | ⬜     | 0%   |
 | F24   | Payments & subscriptions (last)                   | ⬜     | 0%   |
 
-**Order of what is left (owner, 2026-10-08):** F16 Profile, F17 Users, F19 AI, F20 collaboration (optional), F21 Dashboard, F22 Roles & access, F23 Platform admin, and **last F24 Payments & subscriptions** (form payments and plans together, once the owner has chosen the payment processor).
+**Order of what is left (owner, 2026-10-08):** F16 Users & profiles (Profile and Users together), F19 AI, F20 collaboration (optional), F21 Dashboard, F22 Roles & access, F23 Platform admin, and **last F24 Payments & subscriptions** (form payments and plans together, once the owner has chosen the payment processor).
 
 **Every phase is only done when:** phone / tablet / desktop checked · keyboard-only checked · light + dark checked · Arabic RTL checked · every new action recorded in the audit trail (from F4 on) · loading feedback complete (first-load screen, top bar on navigation and API calls, skeletons, busy buttons, busy rows, progress bars, CLAUDE.md rule 5) · empty and error states present · every new string in all 20 languages · matches [docs/design](docs/design/README.md) · typecheck, lint and tests green · this file and the docs updated · committed and pushed.
 
@@ -223,7 +223,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 - ✅ DataView: table and grid, search, filters (area, result, person, country), date range, sort, server pagination; organisation filter arrives with several organisations per workspace (F14)
 - ✅ Event detail slide-over: shareable link `/audit?event=<id>`; result + reason, who / when / where / device, item, before → after changes side by side, technical details, request id with copy, related activity
 - ✅ Export to Excel / CSV with progress; search, filters and dates carried into the export (mock writes CSV; real .xlsx from the backend)
-- ✅ Links from an event to its item (forms, settings, integrations); user pages follow in F17
+- ✅ Links from an event to its item (forms, settings, integrations); user pages follow in F16
 - ✅ "Audit trail" in the sidebar (SYSTEM), breadcrumbs, header title / subtitle / export button
 - ✅ Empty, loading and error states; phone layout (cards) and keyboard access
 
@@ -261,7 +261,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 - ✅ Shown after signup (welcome hand-off); reachable later from Settings and the user menu (owners / admins); members are sent to Forms
 - ✅ Workspace logo on the sign-in page and in emails (F14 Branding)
 - ⬜ Workspace logo in the rail (the rail still shows the Formalie mark)
-- ⏸ Real invitation emails (F17 Users), real object storage
+- ⏸ Real invitation emails (F16 Users & profiles), real object storage
 
 ---
 
@@ -856,20 +856,38 @@ Moved out of F15: destinations to **F12**, webhooks and integrations to **F13**,
 
 ---
 
-## F16, Profile ⬜
+## F16, Users & profiles ⬜ (Profile and Users together, owner 2026-10-08)
 
-- ⬜ My profile (name, photo, language, timezone)
-- ⬜ Change password
-- ⬜ Authenticator app (QR, recovery codes), SMS number
+Owner, 2026-10-08: "profiling and users are the same thing". One phase builds the people of a workspace and their profiles: who they are, where they sit (department, job title) and what they may do (role). Department and job title lists come from Settings → Organisation data (F14); the role is assigned here and its permissions are defined in F22 (RBAC), so until F22 the role is the built-in Owner / Admin / Member and access follows it.
+
+### People (workspace admins)
+
+- ⬜ Users list in the locked list format (two chart cards, DataView table and grid, the design's person card, detail panel): name, email, department, job title(s), role, status (invited, active, disabled), last active, MFA on / off
+- ⬜ Invite by email with department, job title(s) and role set at invite (one or many at once, CSV / pasted emails); resend, revoke, expiry of invites; the invite link signs people up into the workspace
+- ⬜ Edit a person's profile as an admin: department, job titles (several), role, manager (optional), status
+- ⬜ Enable / disable, sign out everywhere, reset password, reset MFA (all confirmed and audited)
+- ⬜ Bulk actions: change department, job title or role, disable, resend invites
+- ⬜ Filters by department, job title, role, status; a department's members from Settings → Departments open this list filtered
+- ⬜ A profiled person is what Field access (departments, job titles, roles, people), Share settings and the audit trail point to; removing or moving people keeps those links working (form access moves, audit keeps the name)
+- ⬜ Team avatars and "Invite member" in the header (design reference)
+
+### My profile (every person)
+
+- ⬜ Name, photo, phone (fictional example ranges), language, time zone, date format; department, job title and role shown read-only (set by admins)
+- ⬜ Change password; authenticator app (QR, recovery codes), SMS number
 - ⬜ Sessions and devices (see and sign out)
+- ⬜ Notification preferences (which emails, in-app)
+
+### Roles hook (until F22)
+
+- ⬜ Every person has exactly one role (Owner, Admin, Member to start); the role decides what they can open and do (RBAC). F22 adds custom roles and the permission editor without changing how people are assigned
+- ⬜ The last Owner can't be removed, disabled or demoted
 
 ---
 
-## F17, Users ⬜
+## F17, Users (merged into F16)
 
-- ⬜ Users list (DataView), invite by email with role, resend / revoke invites
-- ⬜ Enable / disable, reset password or MFA
-- ⬜ Team avatars + "Invite member" in the header (design reference)
+- Merged into **F16, Users & profiles** (owner, 2026-10-08).
 
 ---
 
@@ -1205,6 +1223,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-08 | Payments and subscriptions come last, together: form payments, plans, sign-up from the site with activation, renewals in the portal, next billing date, expiry; integrate the processor the owner chooses (mock first) | F24 (new phase, last) | ⬜ planned |
 | 2026-10-08 | Large lists: keep the 20,000 limit and also offer large dynamic lists (up to 200,000, loaded level by level from the server), explaining first what choosing it means | F15 M5 | ✅ |
 | 2026-10-08 | Proper cleanup of PROGRESS.md | All | ✅ |
+| 2026-10-08 | Profile and Users are one phase: people are profiled with department, job title(s) and role (role = access, RBAC; permissions in F22) | F16 (merged with F17) | ⬜ next |
 
 ---
 
@@ -1449,3 +1468,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-08 | F15 | Owner: a 4.9 MB CSV (250 countries, 5,283 states, 154,393 cities) hung the import. Causes: matching each row against every option built so far (rows × options), a unique-value helper copying the taken values per row, and `Math.max(...rows)` over 154,000 rows (call stack overflow). Now indexed (one look-up per row), a kept set of taken values, loops instead of spreads, and the dialog's rows in a `shallowRef`. Measured on the owner's file: parse 0.1 s, level detection 0.07 s, building 158,461 options 0.5 s; in the browser a 19,200-row paste is ready in 1.2 s. The import now says before Apply when a file makes more options than a list holds (20,000) and disables Apply, with advice to split the file. Also: "List with levels" renamed "Dynamic list" in the List type switch and the guide (owner's name), all 20 languages. |
 | 2026-10-08 | All | PROGRESS.md cleaned up: F15 renamed "Option sets (lists)"; payments (F15) and billing (F14) moved to a new last phase F24 Payments & subscriptions with plans, site sign-up, activation, renewals, expiry; order of what is left under the overview; F12 / F18 marked waiting for review; moved-out stubs folded into one line; owner chose both list sizes (M5 large dynamic lists added) |
 | 2026-10-08 | F15 | M5 large dynamic lists: `OptionList.large` (up to 200,000, `MAX_LARGE_OPTIONS`), Size card with Standard / Large and an explanation before switching (also inside the import when a file is over 20,000); the server fills forms from the list (`fillLargeLists`, live forms follow on save) and leaves the options out of every reply (`trimLargeLists` in the route wrapper: `options_large { total, parents }`); lookups `GET /option-lists/{id}/options` (builder, previews) and `parents` on the public lookup; `cascadeClosed` opens a large level only under a choice with options; the page clears a lower answer that no longer fits; responses get answered options only (`keepAnswered`); insights show the most chosen; API docs show 20 examples, no enum; `FRM-FORM-1022`. Fixed: the list Save check was quadratic (froze on 30,000 options). Browser-tested with 30,311 options: paste, explanation, save 2.6 s, builder canvas, public page levels, clearing, submit, response labels |
+| 2026-10-08 | F16 | Owner: Profile (F16) and Users (F17) merged into F16 Users & profiles; plan written: people list, invites with department / job titles / role, admin profile edit, my profile, security, sessions, roles hook until F22 |
