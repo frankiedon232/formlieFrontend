@@ -7309,7 +7309,11 @@
       "levelsKept": "Niveles:",
       "levelsMade": "Niveles que se crearán:",
       "needTwoLevels": "Elige al menos dos columnas como niveles, empezando por el Nivel 1.",
-      "existingTop": "La {n} opción que ya está en esta lista se queda en el nivel superior ({name}). Elija Reemplazar la lista para conservar solo lo que hay en el archivo. | Las {n} opciones que ya están en esta lista se quedan en el nivel superior ({name}). Elija Reemplazar la lista para conservar solo lo que hay en el archivo."
+      "existingTop": "La {n} opción que ya está en esta lista se queda en el nivel superior ({name}). Elija Reemplazar la lista para conservar solo lo que hay en el archivo. | Las {n} opciones que ya están en esta lista se quedan en el nivel superior ({name}). Elija Reemplazar la lista para conservar solo lo que hay en el archivo.",
+      "tooMany": {
+        "title": "Esto crea {n} opciones, pero una lista admite hasta {max}.",
+        "text": "Divide el archivo en listas más pequeñas, por ejemplo una lista por región o grupo de países, o conserva solo los niveles que necesitas."
+      }
     },
     "translations": {
       "none": "Tus formularios usan un solo idioma",
@@ -7352,7 +7356,7 @@
       "unnamed": "Dé un nombre a cada nivel.",
       "type": "Tipo de lista",
       "simple": "Lista simple",
-      "withLevels": "Lista con niveles",
+      "withLevels": "Lista dinámica",
       "toSimpleTitle": "¿Convertirla en lista simple?",
       "toSimpleDesc": "Se elimina la {n} opción por debajo del nivel superior. Las respuestas que la usaron conservan su valor. | Se eliminan las {n} opciones por debajo del nivel superior. Las respuestas que las usaron conservan su valor.",
       "toSimple": "Hacerla simple"
@@ -7360,7 +7364,7 @@
     "guide": {
       "title": "Cómo funcionan las listas",
       "typeTitle": "Elige el tipo",
-      "type": "Una lista simple, o una lista con niveles donde cada elección acota la siguiente (País → Región → Ciudad). Hasta 4 niveles.",
+      "type": "Una lista simple, o una lista dinámica donde cada elección acota la siguiente (País → Región → Ciudad). Hasta 4 niveles.",
       "fillTitle": "Añade las opciones",
       "fill": "Una a una, pegándolas desde una hoja de cálculo o importando un archivo CSV o Excel. Para niveles: una columna por nivel, una fila por ruta.",
       "useTitle": "Guarda y úsala",

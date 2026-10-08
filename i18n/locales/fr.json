@@ -7309,7 +7309,11 @@
       "levelsKept": "Niveaux :",
       "levelsMade": "Niveaux à créer :",
       "needTwoLevels": "Choisissez au moins deux colonnes comme niveaux, en commençant par le niveau 1.",
-      "existingTop": "L’{n} option déjà présente dans cette liste reste au niveau supérieur ({name}). Choisissez Remplacer la liste pour ne garder que le contenu du fichier. | Les {n} options déjà présentes dans cette liste restent au niveau supérieur ({name}). Choisissez Remplacer la liste pour ne garder que le contenu du fichier."
+      "existingTop": "L’{n} option déjà présente dans cette liste reste au niveau supérieur ({name}). Choisissez Remplacer la liste pour ne garder que le contenu du fichier. | Les {n} options déjà présentes dans cette liste restent au niveau supérieur ({name}). Choisissez Remplacer la liste pour ne garder que le contenu du fichier.",
+      "tooMany": {
+        "title": "Cela crée {n} options, mais une liste en contient au maximum {max}.",
+        "text": "Divisez le fichier en listes plus petites, par exemple une liste par région ou groupe de pays, ou conservez uniquement les niveaux dont vous avez besoin."
+      }
     },
     "translations": {
       "none": "Vos formulaires utilisent une seule langue",
@@ -7352,7 +7356,7 @@
       "unnamed": "Donnez un nom à chaque niveau.",
       "type": "Type de liste",
       "simple": "Liste simple",
-      "withLevels": "Liste avec niveaux",
+      "withLevels": "Liste dynamique",
       "toSimpleTitle": "En faire une liste simple ?",
       "toSimpleDesc": "L'{n} option sous le niveau supérieur est supprimée. Les réponses qui l'utilisaient conservent leur valeur. | Les {n} options sous le niveau supérieur sont supprimées. Les réponses qui les utilisaient conservent leur valeur.",
       "toSimple": "La rendre simple"
@@ -7360,7 +7364,7 @@
     "guide": {
       "title": "Comment fonctionnent les listes",
       "typeTitle": "Choisissez le type",
-      "type": "Une liste simple, ou une liste avec niveaux où chaque choix restreint le suivant (Pays → Région → Ville). Jusqu'à 4 niveaux.",
+      "type": "Une liste simple, ou une liste dynamique où chaque choix restreint le suivant (Pays → Région → Ville). Jusqu'à 4 niveaux.",
       "fillTitle": "Ajoutez les options",
       "fill": "Une par une, collées depuis un tableur, ou importées depuis un fichier CSV ou Excel. Pour les niveaux : une colonne par niveau, une ligne par chemin.",
       "useTitle": "Enregistrez et utilisez",

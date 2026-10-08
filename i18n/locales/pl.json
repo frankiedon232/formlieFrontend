@@ -7309,7 +7309,11 @@
       "levelsKept": "Poziomy:",
       "levelsMade": "Poziomy do utworzenia:",
       "needTwoLevels": "Wybierz co najmniej dwie kolumny jako poziomy, zaczynając od Poziomu 1.",
-      "existingTop": "{n} opcja, która już jest na tej liście, zostaje na najwyższym poziomie ({name}). Wybierz Zastąp listę, aby zachować tylko to, co jest w pliku. | {n} opcje, które już są na tej liście, zostają na najwyższym poziomie ({name}). Wybierz Zastąp listę, aby zachować tylko to, co jest w pliku."
+      "existingTop": "{n} opcja, która już jest na tej liście, zostaje na najwyższym poziomie ({name}). Wybierz Zastąp listę, aby zachować tylko to, co jest w pliku. | {n} opcje, które już są na tej liście, zostają na najwyższym poziomie ({name}). Wybierz Zastąp listę, aby zachować tylko to, co jest w pliku.",
+      "tooMany": {
+        "title": "Utworzy to {n} opcji, a jedna lista może zawierać ich najwyżej {max}.",
+        "text": "Podziel plik na mniejsze listy, na przykład jedną listę na region lub grupę krajów, albo zachowaj tylko potrzebne poziomy."
+      }
     },
     "translations": {
       "none": "Twoje formularze używają jednego języka",
@@ -7352,7 +7356,7 @@
       "unnamed": "Nadaj nazwę każdemu poziomowi.",
       "type": "Typ listy",
       "simple": "Prosta lista",
-      "withLevels": "Lista z poziomami",
+      "withLevels": "Lista dynamiczna",
       "toSimpleTitle": "Zmienić na prostą listę?",
       "toSimpleDesc": "{n} opcja poniżej najwyższego poziomu zostanie usunięta. Odpowiedzi, które jej użyły, zachowują swoją wartość. | {n} opcje poniżej najwyższego poziomu zostaną usunięte. Odpowiedzi, które ich użyły, zachowują swoją wartość.",
       "toSimple": "Zrób prostą"
@@ -7360,7 +7364,7 @@
     "guide": {
       "title": "Jak działają listy",
       "typeTitle": "Wybierz typ",
-      "type": "Prosta lista albo lista z poziomami, w której każdy wybór zawęża następny (Kraj → Region → Miasto). Do 4 poziomów.",
+      "type": "Prosta lista albo lista dynamiczna, w której każdy wybór zawęża następny (Kraj → Region → Miasto). Do 4 poziomów.",
       "fillTitle": "Dodaj opcje",
       "fill": "Po jednej, wklejając je z arkusza albo importując plik CSV lub Excel. Dla poziomów: jedna kolumna na poziom, jeden wiersz na ścieżkę.",
       "useTitle": "Zapisz i używaj",

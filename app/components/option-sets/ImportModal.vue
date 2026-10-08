@@ -11,7 +11,7 @@
 <script setup lang="ts">
 import type { OptionColumn, OptionItem, OptionLevel } from '#shared/types/forms'
 import { APP_LOCALES } from '#shared/utils/i18n/locales'
-import { MAX_LIST_LEVELS, uniqueValue, valueFromLabel } from '#shared/utils/forms/options'
+import { MAX_LIST_LEVELS, MAX_OPTIONS, uniqueValue, valueFromLabel } from '#shared/utils/forms/options'
 
 const props = defineProps<{ source: 'paste' | 'file'; options: OptionItem[]; languages: string[]; levels?: OptionLevel[] | null; columns?: OptionColumn[] | null }>()
 const open = defineModel<boolean>('open', { required: true })
@@ -21,7 +21,8 @@ const { number } = useFormat()
 
 const text = ref('')
 const file = ref<File | null>(null)
-const rows = ref<string[][]>([])
+// shallowRef: a big file's rows are read, never changed one by one; deep tracking of 150,000 rows made the preview take seconds
+const rows = shallowRef<string[][]>([])
 const failed = ref<string | null>(null)
 const header = ref(false)
 const mode = ref<'merge' | 'replace'>('merge')
@@ -42,7 +43,8 @@ watch(file, async value => {
   }
 })
 const body = computed(() => (header.value ? rows.value.slice(1) : rows.value))
-const width = computed(() => Math.max(0, ...rows.value.map(row => row.length)))
+// A loop, not Math.max(...rows): spreading a big file's rows overflows the call stack
+const width = computed(() => rows.value.reduce((most, row) => Math.max(most, row.length), 0))
 const columnName = (i: number) => (header.value && rows.value[0]?.[i]?.trim()) || t('optionSets.import.column', { n: i + 1 })
 
 // What a row is: one option, or a path through the levels
@@ -117,7 +119,10 @@ const result = computed(() =>
   importRows(props.options, body.value, { label: roles.value.indexOf('label'), value: roles.value.indexOf('value'), score: roles.value.indexOf('score'), languages: roles.value.flatMap((role, i) => (role.startsWith('lang:') ? [[role.slice(5), i] as [string, number]] : [])), details: roles.value.flatMap((role, i) => (role.startsWith('col:') ? [[role.slice(4), i] as [string, number]] : [])) }, replace.value),
 )
 const needsMore = computed(() => (shape.value === 'path' ? usedLevels.value < 2 && !props.levels : !roles.value.includes('label')))
-const canApply = computed(() => !needsMore.value && (paths.value ? paths.value.added > 0 || paths.value.retired > 0 : result.value.added > 0 || result.value.updated > 0))
+// A list holds at most MAX_OPTIONS options (owner 2026-10-08: a 160,000-option file): said before Apply, not on Save
+const total = computed(() => (paths.value ? paths.value.list.length : result.value.list.length))
+const tooMany = computed(() => total.value > MAX_OPTIONS)
+const canApply = computed(() => !needsMore.value && !tooMany.value && (paths.value ? paths.value.added > 0 || paths.value.retired > 0 : result.value.added > 0 || result.value.updated > 0))
 function apply() {
   if (!canApply.value) return
   if (paths.value) emit('apply', paths.value.list, plannedLevels.value.length > 1 ? plannedLevels.value : null)
@@ -185,6 +190,7 @@ const example = computed(() => (shape.value === 'path' ? [['Canada', 'Ontario', 
           <UAlert v-if="paths && !levels && options.length && mode === 'merge'" color="warning" variant="subtle" icon="i-lucide-triangle-alert" :description="t('optionSets.import.existingTop', { n: number(options.length), name: plannedLevels[0]?.label ?? '' }, options.length)" :ui="{ description: 'text-xs' }" />
           <p v-if="paths" class="text-xs text-muted">{{ t('optionSets.import.pathsSummary', { rows: number(body.length), added: number(paths.added), kept: number(paths.kept) }) }}<template v-if="paths.skipped"> · {{ t('optionSets.import.skipped', { n: number(paths.skipped) }) }}</template><template v-if="paths.retired"> · <span class="text-warning">{{ t('optionSets.import.retired', { n: number(paths.retired) }) }}</span></template></p>
           <p v-else class="text-xs text-muted">{{ t('optionSets.import.summary', { rows: number(body.length), added: number(result.added), updated: number(result.updated) }) }}<template v-if="result.skipped"> · {{ t('optionSets.import.skipped', { n: number(result.skipped) }) }}</template><template v-if="result.retired"> · <span class="text-warning">{{ t('optionSets.import.retired', { n: number(result.retired) }) }}</span></template></p>
+          <UAlert v-if="tooMany" color="error" variant="subtle" icon="i-lucide-octagon-alert" :title="t('optionSets.import.tooMany.title', { n: number(total), max: number(MAX_OPTIONS) })" :description="t('optionSets.import.tooMany.text')" :ui="{ title: 'text-xs', description: 'text-xs' }" />
           <p v-if="needsMore" class="text-xs text-error">{{ shape === 'path' ? t('optionSets.import.needTwoLevels') : t('optionSets.import.needLabel') }}</p>
         </template>
       </div>

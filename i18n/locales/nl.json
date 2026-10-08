@@ -7309,7 +7309,11 @@
       "levelsKept": "Niveaus:",
       "levelsMade": "Aan te maken niveaus:",
       "needTwoLevels": "Kies minstens twee kolommen als niveaus, te beginnen met Niveau 1.",
-      "existingTop": "De {n} optie die al in deze lijst staat, blijft op het hoogste niveau ({name}). Kies De lijst vervangen om alleen te bewaren wat in het bestand staat. | De {n} opties die al in deze lijst staan, blijven op het hoogste niveau ({name}). Kies De lijst vervangen om alleen te bewaren wat in het bestand staat."
+      "existingTop": "De {n} optie die al in deze lijst staat, blijft op het hoogste niveau ({name}). Kies De lijst vervangen om alleen te bewaren wat in het bestand staat. | De {n} opties die al in deze lijst staan, blijven op het hoogste niveau ({name}). Kies De lijst vervangen om alleen te bewaren wat in het bestand staat.",
+      "tooMany": {
+        "title": "Dit levert {n} opties op, maar een lijst bevat er maximaal {max}.",
+        "text": "Splits het bestand op in kleinere lijsten, bijvoorbeeld een lijst per regio of landengroep, of houd alleen de niveaus over die je nodig hebt."
+      }
     },
     "translations": {
       "none": "Je formulieren gebruiken één taal",
@@ -7352,7 +7356,7 @@
       "unnamed": "Geef elk niveau een naam.",
       "type": "Lijsttype",
       "simple": "Eenvoudige lijst",
-      "withLevels": "Lijst met niveaus",
+      "withLevels": "Dynamische lijst",
       "toSimpleTitle": "Er een eenvoudige lijst van maken?",
       "toSimpleDesc": "De {n} optie onder het hoogste niveau wordt verwijderd. Antwoorden die deze gebruikten behouden hun waarde. | De {n} opties onder het hoogste niveau worden verwijderd. Antwoorden die deze gebruikten behouden hun waarde.",
       "toSimple": "Eenvoudig maken"
@@ -7360,7 +7364,7 @@
     "guide": {
       "title": "Hoe lijsten werken",
       "typeTitle": "Kies het type",
-      "type": "Een eenvoudige lijst, of een lijst met niveaus waarin elke keuze de volgende beperkt (Land → Regio → Stad). Tot 4 niveaus.",
+      "type": "Een eenvoudige lijst, of een dynamische lijst waarin elke keuze de volgende beperkt (Land → Regio → Stad). Tot 4 niveaus.",
       "fillTitle": "Voeg de opties toe",
       "fill": "Een voor een, geplakt uit een spreadsheet, of via een CSV- of Excel-bestand. Voor niveaus: één kolom per niveau, één rij per pad.",
       "useTitle": "Opslaan en gebruiken",

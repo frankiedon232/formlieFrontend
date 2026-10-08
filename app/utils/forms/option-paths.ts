@@ -8,7 +8,13 @@
  * `looksLikeLevels` spots a path file (owner 2026-10-08: a 3-column file went into a simple list as one column).
  */
 import type { OptionItem } from '#shared/types/forms'
-import { MAX_LIST_LEVELS, uniqueValue, valueFromLabel } from '#shared/utils/forms/options'
+import { MAX_LIST_LEVELS, valueFromLabel } from '#shared/utils/forms/options'
+
+/** A value not taken yet, against a set of taken values (lower case) kept up to date by the caller: one look-up, not a copy of the set per row. */
+function freeValue(wanted: string, taken: Set<string>): string {
+  if (!taken.has(wanted.toLowerCase())) return wanted
+  for (let n = 2; ; n++) if (!taken.has(`${wanted}_${n}`.toLowerCase())) return `${wanted}_${n}`
+}
 
 export interface PathImport {
   list: OptionItem[]
@@ -27,7 +33,9 @@ export interface RowImport {
 
 /** Retired count after "Replace", and the list tidied (no `active: undefined`). */
 function finish(list: OptionItem[], before: OptionItem[], replace: boolean): number {
-  const retired = replace ? list.filter(option => option.active === false && before.find(item => item.value === option.value)?.active !== false).length : 0
+  // Indexed, not searched: big files (150,000 rows) stay quick (owner 2026-10-08: a 5 MB file hung)
+  const wasActive = new Set(before.filter(item => item.active !== false).map(item => item.value))
+  const retired = replace ? list.filter(option => option.active === false && wasActive.has(option.value)).length : 0
   for (const option of list) if (option.active !== false) delete option.active
   return retired
 }
@@ -37,6 +45,9 @@ export function importPaths(options: OptionItem[], rows: string[][], columns: nu
   const list: OptionItem[] = options.map(option => (replace ? { ...option, active: false } : { ...option }))
   const taken = new Set(list.map(option => option.value.toLowerCase()))
   const seen = new Set<OptionItem>()
+  // One look-up per row: level, the option above and the label (without case)
+  const keyOf = (at: number, parent: string | undefined, label: string) => `${at}\u001f${at === 0 ? '' : (parent ?? '')}\u001f${label.toLowerCase()}`
+  const index = new Map(list.map(option => [keyOf(option.level ?? 0, option.parent, option.label), option]))
   let added = 0
   let kept = 0
   let skipped = 0
@@ -47,13 +58,14 @@ export function importPaths(options: OptionItem[], rows: string[][], columns: nu
       const column = columns[at] ?? -1
       const label = column >= 0 ? (row[column] ?? '').trim() : ''
       if (!label) break
-      let match = list.find(option => (option.level ?? 0) === at && (at === 0 || option.parent === parent) && option.label.toLowerCase() === label.toLowerCase())
+      let match = index.get(keyOf(at, parent, label))
       if (!match) {
         const own = valueFromLabel(label) || 'option'
-        const value = uniqueValue(parent ? `${parent}_${own}` : own, taken)
+        const value = freeValue(parent ? `${parent}_${own}` : own, taken)
         taken.add(value.toLowerCase())
         match = { value, label, ...(at > 0 ? { level: at, parent } : {}) }
         list.push(match)
+        index.set(keyOf(at, parent, label), match)
         added++
       } else if (!seen.has(match)) {
         kept++
@@ -76,6 +88,10 @@ export function importRows(options: OptionItem[], rows: string[][], at: { label:
   let skipped = 0
   const seen = new Set<OptionItem>()
   const cell = (row: string[], index: number) => (index >= 0 ? (row[index] ?? '').trim() : '')
+  const byValue = new Map(list.map(option => [option.value.toLowerCase(), option]))
+  const byLabel = new Map<string, OptionItem>()
+  for (const option of list) if (!byLabel.has(option.label.toLowerCase())) byLabel.set(option.label.toLowerCase(), option)
+  const taken = new Set(list.map(option => option.value.toLowerCase()))
   for (const row of rows) {
     const label = cell(row, at.label)
     if (!label) {
@@ -83,7 +99,7 @@ export function importRows(options: OptionItem[], rows: string[][], at: { label:
       continue
     }
     const wanted = cell(row, at.value)
-    const match = list.find(option => (wanted ? option.value.toLowerCase() === wanted.toLowerCase() : option.label.toLowerCase() === label.toLowerCase()))
+    const match = wanted ? byValue.get(wanted.toLowerCase()) : byLabel.get(label.toLowerCase())
     const scoreText = cell(row, at.score)
     const score = scoreText && !Number.isNaN(Number(scoreText)) ? Number(scoreText) : undefined
     const translations = Object.fromEntries(at.languages.map(([code, index]) => [code, cell(row, index)]).filter(([, value]) => value))
@@ -100,9 +116,12 @@ export function importRows(options: OptionItem[], rows: string[][], at: { label:
       delete match.active
       updated++
     } else {
-      const option: OptionItem = { value: uniqueValue(wanted || valueFromLabel(label), list.map(item => item.value)), label, ...(score !== undefined ? { score } : {}), ...(Object.keys(translations).length ? { translations } : {}) }
+      const option: OptionItem = { value: freeValue(wanted || valueFromLabel(label), taken), label, ...(score !== undefined ? { score } : {}), ...(Object.keys(translations).length ? { translations } : {}) }
       Object.assign(option, withDetails(option))
       list.push(option)
+      taken.add(option.value.toLowerCase())
+      byValue.set(option.value.toLowerCase(), option)
+      if (!byLabel.has(label.toLowerCase())) byLabel.set(label.toLowerCase(), option)
       seen.add(option)
       added++
     }
@@ -116,7 +135,8 @@ export function importRows(options: OptionItem[], rows: string[][], at: { label:
  */
 export function looksLikeLevels(rows: string[][]): boolean {
   if (rows.length < 2) return false
-  const width = Math.max(...rows.map(row => row.length))
+  // A loop, not Math.max(...rows): spreading 150,000 rows overflows the call stack
+  const width = rows.reduce((most, row) => Math.max(most, row.length), 0)
   if (width < 2 || width > MAX_LIST_LEVELS) return false
   const filled = (column: number) => rows.filter(row => (row[column] ?? '').trim()).length >= rows.length * 0.8
   if (!filled(0) || !filled(1)) return false

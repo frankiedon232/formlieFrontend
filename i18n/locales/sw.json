@@ -7309,7 +7309,11 @@
       "levelsKept": "Viwango:",
       "levelsMade": "Viwango vya kuundwa:",
       "needTwoLevels": "Chagua angalau safu wima mbili kama viwango, kuanzia Kiwango cha 1.",
-      "existingTop": "Chaguo {n} ambalo tayari lipo kwenye orodha hii linabaki kwenye ngazi ya juu ({name}). Chagua Badilisha orodha ili kubaki na yaliyo kwenye faili tu. | Machaguo {n} ambayo tayari yako kwenye orodha hii yanabaki kwenye ngazi ya juu ({name}). Chagua Badilisha orodha ili kubaki na yaliyo kwenye faili tu."
+      "existingTop": "Chaguo {n} ambalo tayari lipo kwenye orodha hii linabaki kwenye ngazi ya juu ({name}). Chagua Badilisha orodha ili kubaki na yaliyo kwenye faili tu. | Machaguo {n} ambayo tayari yako kwenye orodha hii yanabaki kwenye ngazi ya juu ({name}). Chagua Badilisha orodha ili kubaki na yaliyo kwenye faili tu.",
+      "tooMany": {
+        "title": "Hii itaunda chaguo {n}, lakini orodha moja inabeba hadi {max}.",
+        "text": "Gawanya faili kuwa orodha ndogo zaidi, kwa mfano orodha moja kwa kila eneo au kundi la nchi, au weka ngazi unazohitaji pekee."
+      }
     },
     "translations": {
       "none": "Fomu zako zinatumia lugha moja",
@@ -7352,7 +7356,7 @@
       "unnamed": "Patia kila ngazi jina.",
       "type": "Aina ya orodha",
       "simple": "Orodha rahisi",
-      "withLevels": "Orodha yenye viwango",
+      "withLevels": "Orodha inayobadilika",
       "toSimpleTitle": "Ifanye orodha rahisi?",
       "toSimpleDesc": "Chaguo {n} lililo chini ya kiwango cha juu litaondolewa. Majibu yaliyolitumia yanabaki na thamani yake. | Chaguo {n} zilizo chini ya kiwango cha juu zitaondolewa. Majibu yaliyozitumia yanabaki na thamani yake.",
       "toSimple": "Ifanye rahisi"
@@ -7360,7 +7364,7 @@
     "guide": {
       "title": "Jinsi orodha zinavyofanya kazi",
       "typeTitle": "Chagua aina",
-      "type": "Orodha rahisi, au orodha yenye viwango ambapo kila chaguo hupunguza linalofuata (Nchi → Mkoa → Jiji). Hadi viwango 4.",
+      "type": "Orodha rahisi, au orodha inayobadilika ambapo kila chaguo hupunguza linalofuata (Nchi → Mkoa → Jiji). Hadi viwango 4.",
       "fillTitle": "Ongeza chaguo",
       "fill": "Moja baada ya jingine, kuzibandika kutoka lahajedwali, au kuleta faili ya CSV au Excel. Kwa viwango: safu wima moja kwa kila kiwango, safu moja kwa kila njia.",
       "useTitle": "Hifadhi na utumie",

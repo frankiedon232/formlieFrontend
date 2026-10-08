@@ -7309,7 +7309,11 @@
       "levelsKept": "Níveis:",
       "levelsMade": "Níveis a criar:",
       "needTwoLevels": "Escolha pelo menos duas colunas como níveis, começando pelo Nível 1.",
-      "existingTop": "A {n} opção que já está nesta lista permanece no nível superior ({name}). Escolha Substituir a lista para manter apenas o que está no arquivo. | As {n} opções que já estão nesta lista permanecem no nível superior ({name}). Escolha Substituir a lista para manter apenas o que está no arquivo."
+      "existingTop": "A {n} opção que já está nesta lista permanece no nível superior ({name}). Escolha Substituir a lista para manter apenas o que está no arquivo. | As {n} opções que já estão nesta lista permanecem no nível superior ({name}). Escolha Substituir a lista para manter apenas o que está no arquivo.",
+      "tooMany": {
+        "title": "Isto cria {n} opções, mas uma lista comporta no máximo {max}.",
+        "text": "Divida o arquivo em listas menores, por exemplo uma lista por região ou grupo de países, ou mantenha apenas os níveis de que você precisa."
+      }
     },
     "translations": {
       "none": "Seus formulários usam um só idioma",
@@ -7352,7 +7356,7 @@
       "unnamed": "Dê um nome a cada nível.",
       "type": "Tipo de lista",
       "simple": "Lista simples",
-      "withLevels": "Lista com níveis",
+      "withLevels": "Lista dinâmica",
       "toSimpleTitle": "Transformar em lista simples?",
       "toSimpleDesc": "A {n} opção abaixo do nível superior é removida. As respostas que a usaram mantêm o valor. | As {n} opções abaixo do nível superior são removidas. As respostas que as usaram mantêm o valor.",
       "toSimple": "Tornar simples"
@@ -7360,7 +7364,7 @@
     "guide": {
       "title": "Como as listas funcionam",
       "typeTitle": "Escolha o tipo",
-      "type": "Uma lista simples, ou uma lista com níveis em que cada escolha restringe a seguinte (País → Região → Cidade). Até 4 níveis.",
+      "type": "Uma lista simples, ou uma lista dinâmica em que cada escolha restringe a seguinte (País → Região → Cidade). Até 4 níveis.",
       "fillTitle": "Adicione as opções",
       "fill": "Uma a uma, coladas de uma planilha, ou importando um arquivo CSV ou Excel. Para níveis: uma coluna por nível, uma linha por caminho.",
       "useTitle": "Salve e use",

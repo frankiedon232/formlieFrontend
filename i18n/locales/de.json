@@ -7309,7 +7309,11 @@
       "levelsKept": "Ebenen:",
       "levelsMade": "Zu erstellende Ebenen:",
       "needTwoLevels": "Wählen Sie mindestens zwei Spalten als Ebenen, beginnend mit Ebene 1.",
-      "existingTop": "Die {n} Option, die bereits in dieser Liste ist, bleibt auf der obersten Ebene ({name}). Wählen Sie Liste ersetzen, um nur den Inhalt der Datei zu behalten. | Die {n} Optionen, die bereits in dieser Liste sind, bleiben auf der obersten Ebene ({name}). Wählen Sie Liste ersetzen, um nur den Inhalt der Datei zu behalten."
+      "existingTop": "Die {n} Option, die bereits in dieser Liste ist, bleibt auf der obersten Ebene ({name}). Wählen Sie Liste ersetzen, um nur den Inhalt der Datei zu behalten. | Die {n} Optionen, die bereits in dieser Liste sind, bleiben auf der obersten Ebene ({name}). Wählen Sie Liste ersetzen, um nur den Inhalt der Datei zu behalten.",
+      "tooMany": {
+        "title": "Daraus entstehen {n} Optionen, eine Liste fasst jedoch höchstens {max}.",
+        "text": "Teilen Sie die Datei in kleinere Listen auf, zum Beispiel eine Liste pro Region oder Ländergruppe, oder behalten Sie nur die Ebenen, die Sie benötigen."
+      }
     },
     "translations": {
       "none": "Ihre Formulare verwenden eine Sprache",
@@ -7352,7 +7356,7 @@
       "unnamed": "Geben Sie jeder Ebene einen Namen.",
       "type": "Listentyp",
       "simple": "Einfache Liste",
-      "withLevels": "Liste mit Ebenen",
+      "withLevels": "Dynamische Liste",
       "toSimpleTitle": "Als einfache Liste speichern?",
       "toSimpleDesc": "Die {n} Option unterhalb der obersten Ebene wird entfernt. Antworten, die sie verwendet haben, behalten ihren Wert. | Die {n} Optionen unterhalb der obersten Ebene werden entfernt. Antworten, die sie verwendet haben, behalten ihren Wert.",
       "toSimple": "Einfach machen"
@@ -7360,7 +7364,7 @@
     "guide": {
       "title": "So funktionieren Listen",
       "typeTitle": "Typ wählen",
-      "type": "Eine einfache Liste oder eine Liste mit Ebenen, in der jede Auswahl die nächste eingrenzt (Land → Region → Stadt). Bis zu 4 Ebenen.",
+      "type": "Eine einfache Liste oder eine dynamische Liste, in der jede Auswahl die nächste eingrenzt (Land → Region → Stadt). Bis zu 4 Ebenen.",
       "fillTitle": "Optionen hinzufügen",
       "fill": "Einzeln, aus einer Tabelle eingefügt oder per CSV- oder Excel-Datei importiert. Für Ebenen: eine Spalte pro Ebene, eine Zeile pro Pfad.",
       "useTitle": "Speichern und verwenden",

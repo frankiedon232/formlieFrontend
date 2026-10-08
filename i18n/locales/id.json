@@ -7309,7 +7309,11 @@
       "levelsKept": "Level:",
       "levelsMade": "Level yang akan dibuat:",
       "needTwoLevels": "Pilih setidaknya dua kolom sebagai level, mulai dari Level 1.",
-      "existingTop": "{n} opsi yang sudah ada di daftar ini tetap berada di tingkat teratas ({name}). Pilih Ganti daftar untuk hanya menyimpan isi file. | {n} opsi yang sudah ada di daftar ini tetap berada di tingkat teratas ({name}). Pilih Ganti daftar untuk hanya menyimpan isi file."
+      "existingTop": "{n} opsi yang sudah ada di daftar ini tetap berada di tingkat teratas ({name}). Pilih Ganti daftar untuk hanya menyimpan isi file. | {n} opsi yang sudah ada di daftar ini tetap berada di tingkat teratas ({name}). Pilih Ganti daftar untuk hanya menyimpan isi file.",
+      "tooMany": {
+        "title": "Ini menghasilkan {n} opsi, sedangkan satu daftar maksimal berisi {max}.",
+        "text": "Pisahkan file menjadi daftar yang lebih kecil, misalnya satu daftar per wilayah atau kelompok negara, atau simpan hanya tingkat yang Anda perlukan."
+      }
     },
     "translations": {
       "none": "Formulir Anda memakai satu bahasa",
@@ -7352,7 +7356,7 @@
       "unnamed": "Beri nama setiap tingkat.",
       "type": "Jenis daftar",
       "simple": "Daftar sederhana",
-      "withLevels": "Daftar dengan level",
+      "withLevels": "Daftar dinamis",
       "toSimpleTitle": "Jadikan daftar sederhana?",
       "toSimpleDesc": "{n} opsi di bawah level teratas akan dihapus. Jawaban yang memakainya tetap menyimpan nilainya. | {n} opsi di bawah level teratas akan dihapus. Jawaban yang memakainya tetap menyimpan nilainya.",
       "toSimple": "Jadikan sederhana"
@@ -7360,7 +7364,7 @@
     "guide": {
       "title": "Cara kerja daftar",
       "typeTitle": "Pilih jenisnya",
-      "type": "Daftar sederhana, atau daftar dengan level yang setiap pilihannya mempersempit pilihan berikutnya (Negara → Wilayah → Kota). Hingga 4 level.",
+      "type": "Daftar sederhana, atau daftar dinamis yang setiap pilihannya mempersempit pilihan berikutnya (Negara → Wilayah → Kota). Hingga 4 level.",
       "fillTitle": "Tambahkan opsi",
       "fill": "Satu per satu, tempel dari spreadsheet, atau impor berkas CSV atau Excel. Untuk level: satu kolom per level, satu baris per jalur.",
       "useTitle": "Simpan dan gunakan",

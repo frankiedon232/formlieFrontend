@@ -7309,7 +7309,11 @@
       "levelsKept": "Levels:",
       "levelsMade": "Levels to create:",
       "needTwoLevels": "Choose at least two columns as levels, starting with Level 1.",
-      "existingTop": "The {n} option already in this list stays on the top level ({name}). Choose Replace the list to keep only what is in the file. | The {n} options already in this list stay on the top level ({name}). Choose Replace the list to keep only what is in the file."
+      "existingTop": "The {n} option already in this list stays on the top level ({name}). Choose Replace the list to keep only what is in the file. | The {n} options already in this list stay on the top level ({name}). Choose Replace the list to keep only what is in the file.",
+      "tooMany": {
+        "title": "This makes {n} options; a list holds up to {max}.",
+        "text": "Split the file into smaller lists, for example one list per region or group of countries, or keep only the levels you need."
+      }
     },
     "translations": {
       "none": "Your forms use one language",
@@ -7352,7 +7356,7 @@
       "unnamed": "Give every level a name.",
       "type": "List type",
       "simple": "Simple list",
-      "withLevels": "List with levels",
+      "withLevels": "Dynamic list",
       "toSimpleTitle": "Make it a simple list?",
       "toSimpleDesc": "The {n} option below the top level is removed. Answers that used it keep their value. | The {n} options below the top level are removed. Answers that used them keep their value.",
       "toSimple": "Make it simple"
@@ -7360,7 +7364,7 @@
     "guide": {
       "title": "How lists work",
       "typeTitle": "Choose the type",
-      "type": "A simple list, or a list with levels where each choice narrows the next (Country → Region → City). Up to 4 levels.",
+      "type": "A simple list, or a dynamic list where each choice narrows the next (Country → Region → City). Up to 4 levels.",
       "fillTitle": "Add the options",
       "fill": "One by one, paste them from a spreadsheet, or import a CSV or Excel file. For levels: one column per level, one row per path.",
       "useTitle": "Save and use it",

@@ -7309,7 +7309,11 @@
       "levelsKept": "Các cấp:",
       "levelsMade": "Các cấp sẽ tạo:",
       "needTwoLevels": "Chọn ít nhất hai cột làm cấp, bắt đầu từ Cấp 1.",
-      "existingTop": "{n} tùy chọn đã có trong danh sách này được giữ ở cấp cao nhất ({name}). Chọn Thay thế danh sách để chỉ giữ lại nội dung trong tệp. | {n} tùy chọn đã có trong danh sách này được giữ ở cấp cao nhất ({name}). Chọn Thay thế danh sách để chỉ giữ lại nội dung trong tệp."
+      "existingTop": "{n} tùy chọn đã có trong danh sách này được giữ ở cấp cao nhất ({name}). Chọn Thay thế danh sách để chỉ giữ lại nội dung trong tệp. | {n} tùy chọn đã có trong danh sách này được giữ ở cấp cao nhất ({name}). Chọn Thay thế danh sách để chỉ giữ lại nội dung trong tệp.",
+      "tooMany": {
+        "title": "Thao tác này tạo ra {n} tùy chọn, nhưng một danh sách chỉ chứa tối đa {max}.",
+        "text": "Hãy chia tệp thành các danh sách nhỏ hơn, ví dụ mỗi khu vực hoặc nhóm quốc gia một danh sách, hoặc chỉ giữ các cấp bạn cần."
+      }
     },
     "translations": {
       "none": "Biểu mẫu của bạn dùng một ngôn ngữ",
@@ -7352,7 +7356,7 @@
       "unnamed": "Hãy đặt tên cho mọi cấp.",
       "type": "Loại danh sách",
       "simple": "Danh sách đơn giản",
-      "withLevels": "Danh sách có cấp",
+      "withLevels": "Danh sách động",
       "toSimpleTitle": "Chuyển thành danh sách đơn giản?",
       "toSimpleDesc": "{n} tùy chọn bên dưới cấp cao nhất sẽ bị xóa. Các câu trả lời đã dùng chúng vẫn giữ giá trị. | {n} tùy chọn bên dưới cấp cao nhất sẽ bị xóa. Các câu trả lời đã dùng chúng vẫn giữ giá trị.",
       "toSimple": "Chuyển thành đơn giản"
@@ -7360,7 +7364,7 @@
     "guide": {
       "title": "Cách danh sách hoạt động",
       "typeTitle": "Chọn loại",
-      "type": "Một danh sách đơn giản, hoặc danh sách có cấp trong đó mỗi lựa chọn thu hẹp lựa chọn tiếp theo (Quốc gia → Vùng → Thành phố). Tối đa 4 cấp.",
+      "type": "Một danh sách đơn giản, hoặc danh sách động trong đó mỗi lựa chọn thu hẹp lựa chọn tiếp theo (Quốc gia → Vùng → Thành phố). Tối đa 4 cấp.",
       "fillTitle": "Thêm các tùy chọn",
       "fill": "Từng cái một, dán từ bảng tính, hoặc nhập tệp CSV hoặc Excel. Với các cấp: mỗi cấp một cột, mỗi đường dẫn một hàng.",
       "useTitle": "Lưu và sử dụng",

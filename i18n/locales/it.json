@@ -7309,7 +7309,11 @@
       "levelsKept": "Livelli:",
       "levelsMade": "Livelli da creare:",
       "needTwoLevels": "Scegli almeno due colonne come livelli, a partire dal Livello 1.",
-      "existingTop": "L’{n} opzione già presente in questo elenco resta al livello superiore ({name}). Scegli Sostituisci l’elenco per mantenere solo ciò che c’è nel file. | Le {n} opzioni già presenti in questo elenco restano al livello superiore ({name}). Scegli Sostituisci l’elenco per mantenere solo ciò che c’è nel file."
+      "existingTop": "L’{n} opzione già presente in questo elenco resta al livello superiore ({name}). Scegli Sostituisci l’elenco per mantenere solo ciò che c’è nel file. | Le {n} opzioni già presenti in questo elenco restano al livello superiore ({name}). Scegli Sostituisci l’elenco per mantenere solo ciò che c’è nel file.",
+      "tooMany": {
+        "title": "Questo crea {n} opzioni, ma un elenco ne contiene al massimo {max}.",
+        "text": "Dividi il file in elenchi più piccoli, ad esempio un elenco per regione o gruppo di paesi, oppure mantieni solo i livelli che ti servono."
+      }
     },
     "translations": {
       "none": "I tuoi moduli usano una sola lingua",
@@ -7352,7 +7356,7 @@
       "unnamed": "Dai un nome a ogni livello.",
       "type": "Tipo di elenco",
       "simple": "Elenco semplice",
-      "withLevels": "Elenco con livelli",
+      "withLevels": "Elenco dinamico",
       "toSimpleTitle": "Renderlo un elenco semplice?",
       "toSimpleDesc": "L'{n} opzione sotto il livello superiore viene rimossa. Le risposte che la usavano mantengono il loro valore. | Le {n} opzioni sotto il livello superiore vengono rimosse. Le risposte che le usavano mantengono il loro valore.",
       "toSimple": "Rendilo semplice"
@@ -7360,7 +7364,7 @@
     "guide": {
       "title": "Come funzionano gli elenchi",
       "typeTitle": "Scegli il tipo",
-      "type": "Un elenco semplice, oppure un elenco con livelli in cui ogni scelta restringe la successiva (Paese → Regione → Città). Fino a 4 livelli.",
+      "type": "Un elenco semplice, oppure un elenco dinamico in cui ogni scelta restringe la successiva (Paese → Regione → Città). Fino a 4 livelli.",
       "fillTitle": "Aggiungi le opzioni",
       "fill": "Una alla volta, incollandole da un foglio di calcolo, oppure importando un file CSV o Excel. Per i livelli: una colonna per livello, una riga per percorso.",
       "useTitle": "Salva e usa",

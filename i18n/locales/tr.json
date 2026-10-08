@@ -7309,7 +7309,11 @@
       "levelsKept": "Düzeyler:",
       "levelsMade": "Oluşturulacak düzeyler:",
       "needTwoLevels": "Düzey 1'den başlayarak düzey olarak en az iki sütun seçin.",
-      "existingTop": "Bu listede zaten bulunan {n} seçenek en üst düzeyde ({name}) kalır. Yalnızca dosyadaki içeriği tutmak için Listeyi değiştir seçeneğini seçin. | Bu listede zaten bulunan {n} seçenek en üst düzeyde ({name}) kalır. Yalnızca dosyadaki içeriği tutmak için Listeyi değiştir seçeneğini seçin."
+      "existingTop": "Bu listede zaten bulunan {n} seçenek en üst düzeyde ({name}) kalır. Yalnızca dosyadaki içeriği tutmak için Listeyi değiştir seçeneğini seçin. | Bu listede zaten bulunan {n} seçenek en üst düzeyde ({name}) kalır. Yalnızca dosyadaki içeriği tutmak için Listeyi değiştir seçeneğini seçin.",
+      "tooMany": {
+        "title": "Bu işlem {n} seçenek oluşturur, ancak bir liste en fazla {max} seçenek alabilir.",
+        "text": "Dosyayı daha küçük listelere bölün, örneğin her bölge veya ülke grubu için bir liste yapın ya da yalnızca ihtiyacınız olan düzeyleri tutun."
+      }
     },
     "translations": {
       "none": "Formlarınız tek dil kullanıyor",
@@ -7352,7 +7356,7 @@
       "unnamed": "Her düzeye bir ad verin.",
       "type": "Liste türü",
       "simple": "Basit liste",
-      "withLevels": "Düzeyli liste",
+      "withLevels": "Dinamik liste",
       "toSimpleTitle": "Basit liste yapılsın mı?",
       "toSimpleDesc": "Üst düzeyin altındaki {n} seçenek kaldırılır. Bunu kullanan yanıtlar değerini korur. | Üst düzeyin altındaki {n} seçenek kaldırılır. Bunları kullanan yanıtlar değerini korur.",
       "toSimple": "Basit yap"
@@ -7360,7 +7364,7 @@
     "guide": {
       "title": "Listeler nasıl çalışır",
       "typeTitle": "Türü seçin",
-      "type": "Basit bir liste ya da her seçimin bir sonrakini daralttığı düzeyli bir liste (Ülke → Bölge → Şehir). En çok 4 düzey.",
+      "type": "Basit bir liste ya da her seçimin bir sonrakini daralttığı dinamik bir liste (Ülke → Bölge → Şehir). En çok 4 düzey.",
       "fillTitle": "Seçenekleri ekleyin",
       "fill": "Tek tek, bir elektronik tablodan yapıştırarak veya bir CSV ya da Excel dosyasını içe aktararak. Düzeyler için: düzey başına bir sütun, yol başına bir satır.",
       "useTitle": "Kaydedin ve kullanın",
