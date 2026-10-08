@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-08 (F20 Live collaboration removed; F25 Help centre after F24; Formalie default data recorded; next: F16 Users & profiles)
+**Last updated:** 2026-10-08 (Formalie default data managed in F23 super admin and locked in workspaces: usable, no edit, no delete; F20 removed; next: F16 Users & profiles)
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend · ➖ dropped or merged
 
@@ -993,6 +993,15 @@ The Formalie team's own console (owner, 2026-10-03: "a place for me to manage ev
 - ⬜ System templates and themes (publish, retire), template content languages
 - ⬜ Platform audit trail and security events
 
+### Formalie default data (owner, 2026-10-08)
+
+The owner's super admin portal is where Formalie's default data is made and kept (see "Formalie default data" below for what ships). Workspaces only receive it.
+
+- ⬜ Create and edit system lists here, simple and dynamic (levels, details, translations, import, Large), with the same list editor as List Option
+- ⬜ Default folders and every other default a phase adds (email templates, statuses, roles, plans, help articles), created and edited here
+- ⬜ Publish changes to every workspace (the backend loads them from Formalie); see which workspaces and forms use a default
+- ⬜ Every change audited in the platform audit trail
+
 ---
 
 ## F24, Payments & subscriptions ⬜
@@ -1034,12 +1043,12 @@ Owner, 2026-10-08: a Help section, FAQs and knowledge base with everything about
 
 ## Formalie default data (seeded by the backend, owner 2026-10-08)
 
-Every new workspace starts with Formalie's own data, so nothing is empty on day one. Keep this in mind in every phase: whatever needs defaults gets them here (the mock seeds the same until the backend exists). Platform admins manage them (F23 → Catalogue).
+Every new workspace starts with Formalie's own data, so nothing is empty on day one. Keep this in mind in every phase: whatever needs defaults gets them here (the mock seeds the same until the backend exists). **Loaded from Formalie, managed only in the super admin portal (F23 → Formalie default data).** In workspaces defaults are **usable but locked: no edit, no delete** (owner 2026-10-08), marked as Formalie's.
 
 - ⬜ **System lists, simple:** Countries, Regions (continents / world regions), Cities, Languages, Currencies, Time zones, Nationalities, Genders (inclusive), Titles (Mr, Ms, Mx, Dr …), Days of the week, Months, Yes / No / Not sure, Satisfaction, Priority, Marital status, Education levels, Employment types, Industries, Company sizes, Job levels, Departments (common), Blood groups, Units of measure, Payment methods, Relationship (next of kin), Age ranges, Income ranges, Contact preferences, Rating scales
 - ⬜ **System lists, dynamic (levels):** Countries → States / Provinces → Cities (geo); Countries → Cities → Districts / Areas; Regions → Countries → Cities; Continents → Countries; Industries → Sectors; Product category → Sub-category; Vehicle Make → Model → Year; Faculty → Department → Course; Country → Dialling code / currency as details (auto-fill)
-- ⬜ System lists are read-only in workspaces (like system themes), offered in the builder's Lists tab, copied into the workspace to edit; translated into the 20 languages; kept current by Formalie
-- ⬜ **Default folders:** Operations, Customers, Compliance, Marketing, Leads, Projects (and HR, Finance, Events, Feedback as useful extras)
+- ⬜ System lists are read-only in workspaces (like system themes): offered in the builder's Lists tab and usable in any form, but people can't edit or delete them (no edit, rename, retire or delete buttons; the server refuses it too); translated into the 20 languages; kept current by Formalie from F23
+- ⬜ **Default folders:** Operations, Customers, Compliance, Marketing, Leads, Projects (and HR, Finance, Events, Feedback as useful extras); usable for any form, but not renamed or deleted by workspaces
 - ⬜ Themes, templates and landing pages stay as they are (system themes / templates / pages already ship)
 - ⬜ Others that need defaults as phases come: notification and email templates, response statuses and tags, roles (F22: Owner, Admin, Member, Viewer), plans (F24), help articles (F25)
 
@@ -1257,6 +1266,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-08 | Help section, FAQs, knowledge base with videos and GIFs, everything about the platform for self-learning and navigation, built from all we have; also in SYSTEM below Audit after a line | F25 (new phase, after F24) | ⬜ planned (menu entry ✅) |
 | 2026-10-08 | Formalie default data: system lists (simple: countries, regions, cities …; dynamic: Countries → States → Cities, Countries → Cities → Regions …), default folders (Operations, Customers, Compliance, Marketing, Leads, Projects); themes, templates, landing pages stay | Backend seeds (Formalie default data) | ⬜ noted |
 | 2026-10-08 | Remove F20 Live collaboration (optional) | F20 | ✅ removed |
+| 2026-10-08 | Formalie default data is loaded from Formalie and managed only in the super admin portal (F23: create lists and dynamic lists, other defaults); workspaces can use defaults but not edit or delete them | F23 + Formalie default data | ⬜ noted |
 
 ---
 
@@ -1505,3 +1515,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-08 | F15 | Lists above 20 options live in the database: `LIVE_FROM = 20`, `keptOnServer`; the server fills forms from the list and syncs translations on every save, trims options from replies; builder adds them without options; public page loads every level (and hand-typed choice questions above 20) from the server, radios / checkboxes as a searchable menu; lookups return details, the form keeps those of chosen options for auto-fill (`PickedOptions`); one-time move of existing forms (`listsLive`). Browser-checked on the existing Vehicles form (levels load from the server, Category only under the chosen product) |
 | 2026-10-08 | F25 | F25 Help centre planned after F24; Help & support also in the SYSTEM group below Audit trail after a line (`helpItems` in useNavigation, Menu.vue); Formalie default data section (system lists simple and dynamic, default folders, other defaults per phase) |
 | 2026-10-08 | F20 | Owner: F20 Live collaboration removed from the plan (kept as a removed row so numbers stay) |
+| 2026-10-08 | F23 | Formalie default data: managed in F23 (new section: system lists simple and dynamic, other defaults, publish, audit); locked in workspaces (usable, no edit, no delete) |
