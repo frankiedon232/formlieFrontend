@@ -35,13 +35,17 @@ function valueFor(target: FormField, attr: Attr): string | number {
   return String(attr)
 }
 
-export function applyFills(state: FillState, fields: FormField[], answers: Record<string, unknown>) {
+/** Options the page learned from the server for fields whose list stays there (by field id). */
+export type PickedOptions = Record<string, { value: string; label: string; attrs?: Record<string, Attr> }[]>
+
+export function applyFills(state: FillState, fields: FormField[], answers: Record<string, unknown>, picked?: PickedOptions) {
   const byId = new Map(fields.map(field => [field.id, field]))
   for (const source of fields) {
     const fills = fillsOf(source)
     if (!fills.length) continue
+    const options = source.options?.length ? source.options : (picked?.[source.id] ?? [])
     const chosen = answers[source.key]
-    const option = typeof chosen === 'string' ? (source.options ?? []).find(item => item.value === chosen) : undefined
+    const option = typeof chosen === 'string' ? options.find(item => item.value === chosen) : undefined
     for (const fill of fills) {
       const target = byId.get(fill.target)
       if (!target || target.id === source.id) continue
@@ -54,7 +58,7 @@ export function applyFills(state: FillState, fields: FormField[], answers: Recor
         continue
       }
       const current = answers[target.key]
-      const filled = new Set((source.options ?? []).map(item => attrsOf(item)?.[fill.column]).filter(item => item !== undefined && item !== '').map(String))
+      const filled = new Set(options.map(item => attrsOf(item)?.[fill.column]).filter(item => item !== undefined && item !== '').map(String))
       const untouched = current == null || current === '' || filled.has(String(current))
       if (untouched && (value !== null || filled.has(String(current)))) state.values.set(target.id, value)
     }

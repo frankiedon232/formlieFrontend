@@ -8,13 +8,13 @@
  */
 import type { OptionList } from '#shared/types/forms'
 import { allFields, type FormField } from '#shared/utils/forms/build'
-import { LARGE_LIST_TYPES, offeredOptions } from '#shared/utils/forms/options'
+import { LARGE_LIST_TYPES, keptOnServer, offeredOptions } from '#shared/utils/forms/options'
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
 
 const isLargeType = (type: string) => (LARGE_LIST_TYPES as readonly string[]).includes(type)
 
 /**
- * Fields filled from large lists get the list's current options (and a dropdown / multi-select when they
+ * Fields filled from lists kept on the server (large, or above 20 options) get the list's current options (and a dropdown / multi-select when they
  * were something else); fields whose list is no longer large keep a copy as before. Returns how many changed.
  */
 export function fillLargeLists(schema: FormSchemaV1 | null | undefined, lists: OptionList[], only?: string): number {
@@ -24,7 +24,7 @@ export function fillLargeLists(schema: FormSchemaV1 | null | undefined, lists: O
   for (const field of allFields(schema)) {
     if (!field.option_set_id || (only && field.option_set_id !== only)) continue
     const list = byId.get(field.option_set_id)
-    if (list?.large) {
+    if (list && keptOnServer(list)) {
       field.options = offeredOptions(list, field.option_level ?? 0)
       field.options_large = { total: field.options.length }
       if (!isLargeType(field.type)) field.type = field.type === 'checkbox' ? 'multi_select' : 'dropdown'

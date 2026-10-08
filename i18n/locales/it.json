@@ -2340,7 +2340,7 @@
     },
     "large": {
       "title": "{count} opzione sul server | {count} opzioni sul server",
-      "desc": "Da un elenco grande. Le opzioni si caricano mentre si digita, così il modulo resta veloce. Modificale in List Option."
+      "desc": "Questo elenco resta nel database. Le opzioni si caricano mentre si digita, e il modulo segue l'elenco non appena viene salvato. Modificale in List Option."
     }
   },
   "renderer": {
@@ -7375,7 +7375,7 @@
       "fillTitle": "Aggiungi le opzioni",
       "fill": "Una alla volta, incollandole da un foglio di calcolo, oppure importando un file CSV o Excel. Per i livelli: una colonna per livello, una riga per percorso.",
       "useTitle": "Salva e usa",
-      "use": "In un modulo, apri Aggiungi campo → Elenchi e fai clic sull'elenco o trascinalo. I moduli ne conservano una copia: dopo le modifiche, aggiornali in Usato in."
+      "use": "In un modulo, apri Aggiungi campo → Elenchi e fai clic sull'elenco o trascinalo. Gli elenchi fino a 20 opzioni sono copiati nel modulo: dopo le modifiche, aggiornali in Usato in. Gli elenchi più lunghi restano nel database e i moduli li seguono appena salvi."
     },
     "columns": {
       "title": "Dettagli",
@@ -7395,13 +7395,13 @@
       "size": "Dimensione",
       "standard": "Standard",
       "large": "Grande",
-      "standardHint": "Opzioni: {n}. Un elenco standard contiene fino a {max} ed è copiato in ogni modulo, quindi la scelta è immediata.",
+      "standardHint": "Opzioni: {n}. Un elenco standard contiene fino a {max}. Fino a 20 opzioni è copiato in ogni modulo; oltre resta nel database e i moduli lo caricano mentre si digita.",
       "largeHint": "Opzioni: {n}. Un elenco grande contiene fino a {max} e resta sul server; i moduli caricano ogni livello in base alla scelta sopra.",
       "cannotStandard": "Più di {max} opzioni: rimuovine alcune per tornare a standard.",
       "askTitle": "Rendere questo elenco grande?",
       "askDesc": "Gli elenchi grandi vanno bene per dati molto estesi, come tutte le città del mondo. Ecco cosa cambia:",
       "point": {
-        "server": "Può contenere fino a {max} opzioni. Restano sul server invece di essere copiate in ogni modulo.",
+        "server": "Può contenere fino a {max} opzioni, dieci volte un elenco standard, tutte conservate nel database.",
         "levels": "In un modulo, ogni livello carica solo ciò che sta sotto la scelta sopra: scegli un paese e si caricano le sue regioni.",
         "search": "Le persone digitano per cercare. L'elenco mostra le prime 50 corrispondenze, con una breve attesa durante il caricamento.",
         "live": "I moduli seguono l'elenco appena lo salvi, anche quelli pubblicati. Non c'è il passaggio Aggiorna moduli.",
@@ -7412,8 +7412,9 @@
       "makeLarge": "Rendilo grande",
       "makeLargeQ": "Rendilo un elenco grande",
       "toStandardTitle": "Tornare a un elenco standard?",
-      "toStandardDesc": "I moduli ricevono di nuovo una copia delle opzioni e le offrono tutte insieme. Le modifiche successive li raggiungono con Aggiorna moduli, come per ogni elenco.",
+      "toStandardDesc": "L'elenco torna a un massimo di 20.000 opzioni. I moduli continuano a caricarlo dal database finché ne ha più di 20.",
       "toStandard": "Rendilo standard"
-    }
+    },
+    "savedLive": "I moduli che lo usano lo seguono già, anche quelli attivi."
   }
 }

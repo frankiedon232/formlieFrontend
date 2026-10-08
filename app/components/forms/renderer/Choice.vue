@@ -42,9 +42,11 @@ const searching = computed(() => searchesAsYouType(props.field))
 const server = useRemoteOptions(
   () => props.field,
   () => (one.value ? [one.value] : many.value),
-  values => (value.value = props.field.type === 'multi_select' ? (values.length ? values : undefined) : values[0]),
+  values => (value.value = ['multi_select', 'checkbox'].includes(props.field.type) ? (values.length ? values : undefined) : values[0]),
 )
 const items = computed(() => (server.remote.value ? server.items.value : own.value))
+// Radio buttons and checkboxes whose options stay on the server show as a searchable menu (one or several)
+const several = computed(() => props.field.type === 'multi_select' || props.field.type === 'checkbox')
 const searchInput = computed(() => (searching.value ? { placeholder: t('renderer.typeToSearch'), icon: 'i-lucide-search' } : false))
 const more = computed(() => (server.remote.value && server.total.value > server.items.value.length ? t('renderer.moreMatches', { shown: number(server.items.value.length), total: number(server.total.value) }) : ''))
 
@@ -70,19 +72,19 @@ const disabled = computed(() => isLocked(props.field) || closed.value)
     class="w-full"
   />
   <USelectMenu
-    v-else-if="field.type === 'dropdown' || field.type === 'multi_select'"
+    v-else-if="field.type === 'dropdown' || field.type === 'multi_select' || server.remote.value"
     v-bind="control"
     :id="id"
     v-model:search-term="server.term.value"
-    :model-value="field.type === 'multi_select' ? many : one"
+    :model-value="several ? many : one"
     :items="items"
     value-key="value"
-    :multiple="field.type === 'multi_select'"
+    :multiple="several"
     :search-input="searchInput"
     :ignore-filter="server.remote.value"
     :loading="server.loading.value"
     :virtualize="items.length > 100"
-    :placeholder="placeholder(field.type === 'multi_select' ? t('renderer.chooseMany') : t('renderer.choose'))"
+    :placeholder="placeholder(several ? t('renderer.chooseMany') : t('renderer.choose'))"
     :icon="icon"
     :disabled="disabled"
     class="w-full"

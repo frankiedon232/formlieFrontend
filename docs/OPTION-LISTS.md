@@ -146,3 +146,10 @@ Owner 2026-10-08: "do 1 and 2", keep the 20,000 limit and also offer large lists
 - **Builder:** the Lists tab marks Large lists and adds them like any list (fields hold no options); field settings show "N options on the server" instead of an options editor; Show as offers dropdown / multi-select only; search as you type is always on.
 - **Responses:** the table and detail get only the answered options (`keepAnswered`, `options_large.partial`), so labels read as usual; insights show the most chosen options. API docs show 20 examples and the count, no enum.
 - Size errors: `422 FRM-FORM-1022`. Tested with 30,311 options (10 → 300 → 30,000): save about 2.6 s, every lookup instant.
+
+## Lists above 20 options live in the database (owner 2026-10-08)
+
+- `LIVE_FROM = 20` (shared/utils/forms/options.ts), `keptOnServer(list)` = large or more than 20 active options. Such lists behave as described in F15e for every size: no copy in forms (`options_large` marks the field), lookups as people type, forms follow on save with translations (`syncSchema` + `fillLargeLists`), dropdown / multi-select only.
+- Public page: any dropdown, multi-select, radio or checkbox question with more than 20 options loads from the server; radios and checkboxes then show as a searchable menu (one / several).
+- Auto-fill in the browser: lookups return option details (`attrs`); the form keeps those of chosen options (`picked`, passed to `evaluateLogic` → `applyFills`). The server fills from the stored options on submit as before.
+- Existing forms were converted once when the mock data loads (`listsLive`).

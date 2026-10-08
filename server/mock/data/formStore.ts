@@ -11,6 +11,8 @@ import { newPublicKey } from '#shared/utils/urls/public'
 import { loadPersisted, savePersisted } from '../core/persist'
 import { MOCK_FOLDERS, MOCK_FORMS, SEED_TEMPLATES, seedBaseName } from './forms'
 import { SEEDED_TENANT_IDS, type MockTenant } from './tenants'
+import { fillLargeLists } from './largeLists'
+import { libraryOf } from './libraryStore'
 
 export interface StoredForm extends FormSummary {
   /** Status before archiving, so unarchive puts it back. */
@@ -48,6 +50,8 @@ interface TenantForms {
   folders: FormFolder[]
   /** Sample forms linked to their templates (F9 migration done). */
   templatesSeeded?: boolean
+  /** Forms using lists above 20 options were moved to reading them from the database (owner 2026-10-08). */
+  listsLive?: boolean
   /** Sample forms given their availability dates (F10 migration done). */
   availabilitySeeded?: boolean
 }
@@ -89,6 +93,13 @@ export function formsOf(tenant: MockTenant): TenantForms {
       form.opens_at ??= seeds.get(form.id)?.opens_at ?? null
       form.closes_at ??= seeds.get(form.id)?.closes_at ?? null
     }
+    saveForms()
+  }
+  // Once: forms made before lists above 20 options lived in the database stop keeping copies of them
+  if (!store.listsLive) {
+    const lists = libraryOf(tenant).lists
+    for (const form of store.forms) for (const schema of [form.schema, form.published_schema]) fillLargeLists(schema, lists)
+    store.listsLive = true
     saveForms()
   }
   if (SEEDED_TENANT_IDS.has(tenant.id) && !store.availabilitySeeded) {

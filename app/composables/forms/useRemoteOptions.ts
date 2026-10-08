@@ -9,7 +9,7 @@
 import type { FormField } from '#shared/utils/forms/build'
 import type { RendererLookup } from '#shared/types/public'
 
-type Item = { value: string; label: string }
+type Item = { value: string; label: string; attrs?: Record<string, string | number> }
 
 /** The builder and previews: a large list's options from the list itself (signed in). */
 function useListLookup(): RendererLookup {
@@ -38,6 +38,22 @@ export function useRemoteOptions(field: () => FormField, chosen: () => string[],
   const loading = ref(false)
   const failed = ref(false)
   const labels = ref<Record<string, string>>({})
+  // Details of options seen, for auto-fill (the form keeps those of chosen options)
+  const seen = new Map<string, Item>()
+  const remember = (items: Item[]) => {
+    for (const item of items) {
+      labels.value[item.value] = item.label
+      seen.set(item.value, item)
+    }
+    keepPicked(chosen())
+  }
+  function keepPicked(values: string[]) {
+    if (!live?.picked) return
+    const id = field().id
+    const kept = live.picked.value[id] ?? []
+    const fresh = values.filter(value => seen.has(value) && !kept.some(item => item.value === value)).map(value => seen.get(value)!)
+    if (fresh.length) live.picked.value = { ...live.picked.value, [id]: [...kept, ...fresh] }
+  }
 
   async function search(q: string) {
     if (!remote.value) return
@@ -48,7 +64,7 @@ export function useRemoteOptions(field: () => FormField, chosen: () => string[],
       const result = await lookup(field(), { q: q.trim(), parents: parents.value })
       found.value = result.items
       total.value = result.total
-      for (const item of result.items) labels.value[item.value] = item.label
+      remember(result.items)
     } catch {
       failed.value = true
       found.value = []
@@ -83,11 +99,12 @@ export function useRemoteOptions(field: () => FormField, chosen: () => string[],
   watch(
     chosen,
     async values => {
+      keepPicked(values)
       const missing = values.filter(value => !(value in labels.value))
       if (!remote.value || !missing.length) return
       try {
         const result = await lookup(field(), { q: '', values: missing, parents: parents.value })
-        for (const item of result.items) labels.value[item.value] = item.label
+        remember(result.items)
       } catch {
         // The value shows until the label arrives
       }

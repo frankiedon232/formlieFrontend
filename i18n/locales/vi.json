@@ -2340,7 +2340,7 @@
     },
     "large": {
       "title": "{count} tùy chọn trên máy chủ | {count} tùy chọn trên máy chủ",
-      "desc": "Từ một danh sách lớn. Tùy chọn được tải khi gõ, nên biểu mẫu vẫn nhanh. Chỉnh sửa chúng trong List Option."
+      "desc": "Danh sách này nằm trong cơ sở dữ liệu. Tùy chọn được tải khi gõ, và biểu mẫu theo danh sách ngay khi được lưu. Chỉnh sửa chúng trong List Option."
     }
   },
   "renderer": {
@@ -7375,7 +7375,7 @@
       "fillTitle": "Thêm các tùy chọn",
       "fill": "Từng cái một, dán từ bảng tính, hoặc nhập tệp CSV hoặc Excel. Với các cấp: mỗi cấp một cột, mỗi đường dẫn một hàng.",
       "useTitle": "Lưu và sử dụng",
-      "use": "Trong biểu mẫu, mở Thêm trường → Danh sách rồi nhấp hoặc kéo danh sách. Biểu mẫu giữ một bản sao: sau khi thay đổi, hãy cập nhật chúng trong Được dùng trong."
+      "use": "Trong biểu mẫu, mở Thêm trường → Danh sách rồi nhấp hoặc kéo danh sách. Danh sách tối đa 20 tùy chọn được sao chép vào biểu mẫu: sau khi thay đổi, hãy cập nhật chúng trong Được dùng trong. Danh sách dài hơn nằm trong cơ sở dữ liệu và biểu mẫu theo chúng ngay khi bạn lưu."
     },
     "columns": {
       "title": "Chi tiết",
@@ -7395,13 +7395,13 @@
       "size": "Kích thước",
       "standard": "Tiêu chuẩn",
       "large": "Lớn",
-      "standardHint": "Tùy chọn: {n}. Danh sách tiêu chuẩn chứa tối đa {max} và được sao chép vào từng biểu mẫu, nên việc chọn diễn ra tức thì.",
+      "standardHint": "Tùy chọn: {n}. Danh sách tiêu chuẩn chứa tối đa {max}. Đến 20 tùy chọn thì được sao chép vào từng biểu mẫu; nhiều hơn thì nằm trong cơ sở dữ liệu và biểu mẫu tải khi gõ.",
       "largeHint": "Tùy chọn: {n}. Danh sách lớn chứa tối đa {max} và nằm trên máy chủ; biểu mẫu tải từng cấp theo lựa chọn ở trên.",
       "cannotStandard": "Hơn {max} tùy chọn: hãy xóa bớt để quay lại tiêu chuẩn.",
       "askTitle": "Chuyển danh sách này thành danh sách lớn?",
       "askDesc": "Danh sách lớn phù hợp với dữ liệu rất lớn, chẳng hạn mọi thành phố trên thế giới. Những điều sẽ thay đổi:",
       "point": {
-        "server": "Chứa tối đa {max} tùy chọn. Chúng nằm trên máy chủ thay vì được sao chép vào từng biểu mẫu.",
+        "server": "Chứa tối đa {max} tùy chọn, gấp mười lần danh sách tiêu chuẩn, tất cả lưu trong cơ sở dữ liệu.",
         "levels": "Trong biểu mẫu, mỗi cấp chỉ tải những gì thuộc lựa chọn ở trên: chọn một quốc gia, rồi các vùng của nó được tải.",
         "search": "Mọi người gõ để tìm kiếm. Danh sách hiển thị 50 kết quả đầu tiên, với một chút chờ khi tải.",
         "live": "Biểu mẫu theo danh sách ngay khi bạn lưu, kể cả biểu mẫu đang hoạt động. Không có bước Cập nhật biểu mẫu.",
@@ -7412,8 +7412,9 @@
       "makeLarge": "Chuyển thành lớn",
       "makeLargeQ": "Chuyển thành danh sách lớn",
       "toStandardTitle": "Quay lại danh sách tiêu chuẩn?",
-      "toStandardDesc": "Biểu mẫu lại nhận một bản sao các tùy chọn và hiển thị tất cả cùng lúc. Thay đổi sau đó đến được chúng qua Cập nhật biểu mẫu, như mọi danh sách.",
+      "toStandardDesc": "Danh sách quay về tối đa 20.000 tùy chọn. Biểu mẫu vẫn tải nó từ cơ sở dữ liệu khi có hơn 20.",
       "toStandard": "Chuyển thành tiêu chuẩn"
-    }
+    },
+    "savedLive": "Các biểu mẫu đang dùng nó đã theo nó rồi, kể cả biểu mẫu đang hoạt động."
   }
 }

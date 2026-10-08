@@ -2340,7 +2340,7 @@
     },
     "large": {
       "title": "Chaguo {count} kwenye seva | Chaguo {count} kwenye seva",
-      "desc": "Kutoka kwa orodha kubwa. Chaguo hupakiwa watu wanapoandika, ili fomu iendelee kuwa ya haraka. Zihariri katika List Option."
+      "desc": "Orodha hii hubaki kwenye hifadhidata. Chaguo hupakiwa watu wanapoandika, na fomu hufuata orodha mara tu inapohifadhiwa. Zihariri katika List Option."
     }
   },
   "renderer": {
@@ -7375,7 +7375,7 @@
       "fillTitle": "Ongeza chaguo",
       "fill": "Moja baada ya jingine, kuzibandika kutoka lahajedwali, au kuleta faili ya CSV au Excel. Kwa viwango: safu wima moja kwa kila kiwango, safu moja kwa kila njia.",
       "useTitle": "Hifadhi na utumie",
-      "use": "Katika fomu, fungua Ongeza sehemu → Orodha kisha bofya orodha au iburute. Fomu hubaki na nakala: baada ya mabadiliko, zisasishe chini ya Inatumika katika."
+      "use": "Katika fomu, fungua Ongeza sehemu → Orodha kisha bofya orodha au iburute. Orodha za hadi chaguo 20 hunakiliwa kwenye fomu: baada ya mabadiliko, zisasishe chini ya Inatumika katika. Orodha ndefu zaidi hubaki kwenye hifadhidata na fomu zinazifuata mara tu unapohifadhi."
     },
     "columns": {
       "title": "Maelezo",
@@ -7395,13 +7395,13 @@
       "size": "Ukubwa",
       "standard": "Kawaida",
       "large": "Kubwa",
-      "standardHint": "Chaguo: {n}. Orodha ya kawaida hubeba hadi {max} na hunakiliwa kwenye kila fomu, hivyo kuchagua ni papo hapo.",
+      "standardHint": "Chaguo: {n}. Orodha ya kawaida hubeba hadi {max}. Hadi chaguo 20 hunakiliwa kwenye kila fomu; zaidi ya hapo hubaki kwenye hifadhidata na fomu huipakia watu wanapoandika.",
       "largeHint": "Chaguo: {n}. Orodha kubwa hubeba hadi {max} na hubaki kwenye seva; fomu hupakia kila ngazi kulingana na chaguo la juu.",
       "cannotStandard": "Zaidi ya chaguo {max}: ondoa baadhi ili kurudi kwenye kawaida.",
       "askTitle": "Ifanye orodha hii kuwa kubwa?",
       "askDesc": "Orodha kubwa zinafaa data kubwa sana, kama miji yote duniani. Haya ndiyo yatakayobadilika:",
       "point": {
-        "server": "Inaweza kubeba hadi chaguo {max}. Hubaki kwenye seva badala ya kunakiliwa kwenye kila fomu.",
+        "server": "Inaweza kubeba hadi chaguo {max}, mara kumi ya orodha ya kawaida, zote zikiwa kwenye hifadhidata.",
         "levels": "Kwenye fomu, kila ngazi hupakia tu kilicho chini ya chaguo la juu: chagua nchi, kisha mikoa yake hupakiwa.",
         "search": "Watu huandika ili kutafuta. Orodha huonyesha matokeo 50 ya kwanza, kukiwa na kusubiri kidogo wakati wa kupakia.",
         "live": "Fomu hufuata orodha mara tu unapoihifadhi, pamoja na fomu zilizo hewani. Hakuna hatua ya Sasisha fomu.",
@@ -7412,8 +7412,9 @@
       "makeLarge": "Ifanye kubwa",
       "makeLargeQ": "Ifanye orodha kubwa",
       "toStandardTitle": "Rudi kwenye orodha ya kawaida?",
-      "toStandardDesc": "Fomu hupata nakala ya chaguo tena na kuzitoa zote kwa pamoja. Mabadiliko ya baadaye huzifikia kupitia Sasisha fomu, kama orodha yoyote.",
+      "toStandardDesc": "Orodha inarudi kuwa na chaguo 20,000 kwa wingi. Fomu zinaendelea kuipakia kutoka kwenye hifadhidata ikiwa na zaidi ya 20.",
       "toStandard": "Ifanye kawaida"
-    }
+    },
+    "savedLive": "Fomu zinazoitumia tayari zinaifuata, pamoja na fomu zilizo hewani."
   }
 }

@@ -2340,7 +2340,7 @@
     },
     "large": {
       "title": "Sunucuda {count} seçenek | Sunucuda {count} seçenek",
-      "desc": "Büyük bir listeden. Seçenekler yazarken yüklenir, böylece form hızlı kalır. Bunları List Option sayfasında düzenleyin."
+      "desc": "Bu liste veritabanında kalır. Seçenekler yazarken yüklenir ve form, liste kaydedilir kaydedilmez onu takip eder. Bunları List Option sayfasında düzenleyin."
     }
   },
   "renderer": {
@@ -7375,7 +7375,7 @@
       "fillTitle": "Seçenekleri ekleyin",
       "fill": "Tek tek, bir elektronik tablodan yapıştırarak veya bir CSV ya da Excel dosyasını içe aktararak. Düzeyler için: düzey başına bir sütun, yol başına bir satır.",
       "useTitle": "Kaydedin ve kullanın",
-      "use": "Bir formda Alan ekle → Listeler bölümünü açın ve listeye tıklayın ya da sürükleyin. Formlar bir kopya tutar: değişikliklerden sonra bunları Kullanıldığı yer altında güncelleyin."
+      "use": "Bir formda Alan ekle → Listeler bölümünü açın ve listeye tıklayın ya da sürükleyin. 20 seçeneğe kadar olan listeler forma kopyalanır: değişikliklerden sonra bunları Kullanıldığı yer altında güncelleyin. Daha uzun listeler veritabanında kalır ve formlar, siz kaydeder kaydetmez onları takip eder."
     },
     "columns": {
       "title": "Ayrıntılar",
@@ -7395,13 +7395,13 @@
       "size": "Boyut",
       "standard": "Standart",
       "large": "Büyük",
-      "standardHint": "Seçenekler: {n}. Standart liste {max} seçeneğe kadar alır ve her forma kopyalanır, bu yüzden seçim anlıktır.",
+      "standardHint": "Seçenekler: {n}. Standart liste {max} seçeneğe kadar alır. 20 seçeneğe kadar her forma kopyalanır; üzeri veritabanında kalır ve formlar onu yazarken yükler.",
       "largeHint": "Seçenekler: {n}. Büyük liste {max} seçeneğe kadar alır ve sunucuda kalır; formlar her düzeyi yukarıdaki seçime göre yükler.",
       "cannotStandard": "{max} üzerinde seçenek var: standarda dönmek için bazılarını kaldırın.",
       "askTitle": "Bu liste büyük yapılsın mı?",
       "askDesc": "Büyük listeler, dünyadaki tüm şehirler gibi çok büyük veriler için uygundur. Değişenler şunlar:",
       "point": {
-        "server": "{max} seçeneğe kadar alabilir. Seçenekler her forma kopyalanmak yerine sunucuda kalır.",
+        "server": "{max} seçeneğe kadar alabilir, yani standart listenin on katı, hepsi veritabanında tutulur.",
         "levels": "Bir formda her düzey yalnızca yukarıdaki seçimin altındakileri yükler: bir ülke seçin, ardından bölgeleri yüklenir.",
         "search": "Kişiler aramak için yazar. Liste ilk 50 eşleşmeyi gösterir, yüklenirken kısa bir bekleme olur.",
         "live": "Formlar, listeyi kaydettiğiniz anda onu izler, yayındaki formlar da. Formları güncelle adımı yoktur.",
@@ -7412,8 +7412,9 @@
       "makeLarge": "Büyük yap",
       "makeLargeQ": "Büyük liste yap",
       "toStandardTitle": "Standart listeye dönülsün mü?",
-      "toStandardDesc": "Formlar seçeneklerin kopyasını yeniden alır ve hepsini birden sunar. Sonraki değişiklikler, her listede olduğu gibi Formları güncelle ile onlara ulaşır.",
+      "toStandardDesc": "Liste yeniden en fazla 20.000 seçeneğe iner. 20'den fazla seçeneği olduğu sürece formlar onu veritabanından yüklemeye devam eder.",
       "toStandard": "Standart yap"
-    }
+    },
+    "savedLive": "Onu kullanan formlar, yayındakiler dahil, zaten onu takip eder."
   }
 }

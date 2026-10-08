@@ -2340,7 +2340,7 @@
     },
     "large": {
       "title": "{count} opsi di server | {count} opsi di server",
-      "desc": "Dari daftar besar. Opsi dimuat saat mengetik agar formulir tetap cepat. Edit di List Option."
+      "desc": "Daftar ini tetap di database. Opsi dimuat saat mengetik, dan formulir mengikuti daftar begitu disimpan. Edit di List Option."
     }
   },
   "renderer": {
@@ -7375,7 +7375,7 @@
       "fillTitle": "Tambahkan opsi",
       "fill": "Satu per satu, tempel dari spreadsheet, atau impor berkas CSV atau Excel. Untuk level: satu kolom per level, satu baris per jalur.",
       "useTitle": "Simpan dan gunakan",
-      "use": "Di formulir, buka Tambah kolom → Daftar lalu klik atau seret daftarnya. Formulir menyimpan salinan: setelah ada perubahan, perbarui di Dipakai di."
+      "use": "Di formulir, buka Tambah kolom → Daftar lalu klik atau seret daftarnya. Daftar hingga 20 opsi disalin ke formulir: setelah ada perubahan, perbarui di Dipakai di. Daftar yang lebih panjang tetap di database dan formulir mengikutinya begitu Anda menyimpan."
     },
     "columns": {
       "title": "Detail",
@@ -7395,13 +7395,13 @@
       "size": "Ukuran",
       "standard": "Standar",
       "large": "Besar",
-      "standardHint": "Opsi: {n}. Daftar standar menampung hingga {max} dan disalin ke setiap formulir, jadi memilih instan.",
+      "standardHint": "Opsi: {n}. Daftar standar menampung hingga {max}. Hingga 20 opsi disalin ke setiap formulir; lebih dari itu tetap di database dan formulir memuatnya saat mengetik.",
       "largeHint": "Opsi: {n}. Daftar besar menampung hingga {max} dan tetap di server; formulir memuat tiap tingkat sesuai pilihan di atasnya.",
       "cannotStandard": "Lebih dari {max} opsi: hapus beberapa untuk kembali ke standar.",
       "askTitle": "Jadikan daftar ini besar?",
       "askDesc": "Daftar besar cocok untuk data yang sangat banyak, seperti semua kota di dunia. Ini yang berubah:",
       "point": {
-        "server": "Dapat menampung hingga {max} opsi. Opsi tetap di server, tidak disalin ke setiap formulir.",
+        "server": "Dapat menampung hingga {max} opsi, sepuluh kali daftar standar, semuanya disimpan di database.",
         "levels": "Dalam formulir, tiap tingkat hanya memuat yang ada di bawah pilihan di atasnya: pilih negara, lalu wilayahnya dimuat.",
         "search": "Orang mengetik untuk mencari. Daftar menampilkan 50 hasil pertama, dengan jeda singkat saat dimuat.",
         "live": "Formulir mengikuti daftar begitu Anda menyimpannya, termasuk formulir yang sudah aktif. Tidak ada langkah Perbarui formulir.",
@@ -7412,8 +7412,9 @@
       "makeLarge": "Jadikan besar",
       "makeLargeQ": "Jadikan daftar besar",
       "toStandardTitle": "Kembali ke daftar standar?",
-      "toStandardDesc": "Formulir kembali mendapat salinan opsi dan menampilkan semuanya sekaligus. Perubahan berikutnya sampai ke formulir lewat Perbarui formulir, seperti daftar lainnya.",
+      "toStandardDesc": "Daftar kembali maksimal 20.000 opsi. Formulir tetap memuatnya dari database selama isinya lebih dari 20.",
       "toStandard": "Jadikan standar"
-    }
+    },
+    "savedLive": "Formulir yang memakainya sudah mengikutinya, termasuk formulir yang sedang aktif."
   }
 }

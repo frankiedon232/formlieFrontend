@@ -2340,7 +2340,7 @@
     },
     "large": {
       "title": "{count} option on the server | {count} options on the server",
-      "desc": "From a large list. Options load as people type, so the form stays fast. Edit them in List Option."
+      "desc": "This list stays in the database. Options load as people type, and the form follows the list as soon as it is saved. Edit them in List Option."
     }
   },
   "renderer": {
@@ -7375,7 +7375,7 @@
       "fillTitle": "Add the options",
       "fill": "One by one, paste them from a spreadsheet, or import a CSV or Excel file. For levels: one column per level, one row per path.",
       "useTitle": "Save and use it",
-      "use": "In a form, open Add field → Lists and click or drag the list. Forms keep a copy: after changes, update them under Used in."
+      "use": "In a form, open Add field → Lists and click or drag the list. Lists of up to 20 options are copied into the form: after changes, update them under Used in. Longer lists stay in the database and forms follow them as soon as you save."
     },
     "columns": {
       "title": "Details",
@@ -7395,13 +7395,13 @@
       "size": "Size",
       "standard": "Standard",
       "large": "Large",
-      "standardHint": "Options: {n}. A standard list holds up to {max} and is copied into each form, so choosing is instant.",
+      "standardHint": "Options: {n}. A standard list holds up to {max}. Up to 20 options it is copied into each form; above that it stays in the database and forms load it as people type.",
       "largeHint": "Options: {n}. A large list holds up to {max} and stays on the server; forms load each level for the choice above.",
       "cannotStandard": "Over {max} options: remove some to go back to standard.",
       "askTitle": "Make this a large list?",
       "askDesc": "Large lists suit very big data, such as every city in the world. This is what changes:",
       "point": {
-        "server": "It can hold up to {max} options. They stay on the server instead of being copied into each form.",
+        "server": "It can hold up to {max} options, ten times a standard list, all kept in the database.",
         "levels": "In a form, each level loads only what is under the choice above: pick a country, then its states load.",
         "search": "People type to search. A list shows the first 50 matches, with a short wait while they load.",
         "live": "Forms follow the list as soon as you save it, live forms too. There is no Update forms step.",
@@ -7412,8 +7412,9 @@
       "makeLarge": "Make it large",
       "makeLargeQ": "Make it a large list",
       "toStandardTitle": "Back to a standard list?",
-      "toStandardDesc": "Forms get a copy of the options again and offer them all at once. Later changes reach them with Update forms, as for any list.",
+      "toStandardDesc": "The list goes back to at most 20,000 options. Forms keep loading it from the database while it has more than 20.",
       "toStandard": "Make it standard"
-    }
+    },
+    "savedLive": "Forms using it follow it already, live forms too."
   }
 }

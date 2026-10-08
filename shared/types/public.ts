@@ -100,7 +100,7 @@ export interface FileAnswer {
 export type RendererLookup = (
   field: { key: string; option_set_id?: string | null; option_level?: number },
   query: { q: string; values?: string[]; parents?: string[] },
-) => Promise<{ items: { value: string; label: string }[]; total: number }>
+) => Promise<{ items: { value: string; label: string; attrs?: Record<string, string | number> }[]; total: number }>
 
 export type RendererUpload = (field: string, file: File, onProgress: (percent: number) => void, onAbort: (abort: () => void) => void) => Promise<FileAnswer>
 

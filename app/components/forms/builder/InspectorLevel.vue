@@ -6,7 +6,7 @@
 <script setup lang="ts">
 import { allFields, type FormField } from '#shared/utils/forms/build'
 import { cascadeChain } from '#shared/utils/forms/cascade'
-import { matchesList, offeredOptions } from '#shared/utils/forms/options'
+import { keptOnServer, matchesList, offeredOptions } from '#shared/utils/forms/options'
 
 const props = defineProps<{ field: FormField }>()
 const { t } = useI18n()
@@ -17,8 +17,8 @@ onMounted(() => library.load())
 const chain = computed(() => (builder.schema.value ? cascadeChain(props.field, allFields(builder.schema.value)) : [props.field]))
 const parent = computed(() => chain.value.find(item => item.id === props.field.option_parent) ?? null)
 const list = computed(() => library.lists.value.find(item => item.id === props.field.option_set_id) ?? null)
-// A large list (F15 M5) is never copied into the form, so it can't fall behind
-const changed = computed(() => !!list.value && !list.value.large && !matchesList(props.field.options, list.value, props.field.option_level ?? 0))
+// A list kept on the server (above 20 options, or large) is never copied into the form, so it can't fall behind
+const changed = computed(() => !!list.value && !keptOnServer(list.value) && !matchesList(props.field.options, list.value, props.field.option_level ?? 0))
 const several = computed(() => props.field.type === 'multi_select')
 const setSeveral = (on: boolean) => builder.updateField(props.field.id, { type: on ? 'multi_select' : 'dropdown' })
 /** The whole chain takes the list as it is now. */

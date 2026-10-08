@@ -2,7 +2,8 @@ import { describe, expect, it } from 'vitest'
 import type { OptionList } from '../../shared/types/forms'
 import { blankSchema, allFields, type FormField } from '../../shared/utils/forms/build'
 import { cascadeClosed, fitAnswer } from '../../shared/utils/forms/cascade'
-import { levelCounts, lookupOptions, maxOptionsOf, searchesAsYouType, servedRemotely } from '../../shared/utils/forms/options'
+import { keptOnServer, levelCounts, lookupOptions, maxOptionsOf, searchesAsYouType, servedRemotely } from '../../shared/utils/forms/options'
+import { applyFills } from '../../shared/utils/forms/fills'
 import { fillLargeLists, keepAnswered, trimLargeLists } from '../../server/mock/data/largeLists'
 
 const list: OptionList = {
@@ -81,5 +82,23 @@ describe('large dynamic lists (F15 M5)', () => {
     fillLargeLists(schema, [{ ...list, large: false }])
     expect(allFields(schema)[1]!.options_large).toBeUndefined()
     expect(allFields(schema)[1]!.options).toHaveLength(3)
+  })
+
+  it('keep every list above 20 options in the database, shorter ones are copied (owner 2026-10-08)', () => {
+    const options = (n: number) => Array.from({ length: n }, (_, i) => ({ value: `o${i}`, label: `O ${i}` }))
+    expect(keptOnServer({ options: options(20) })).toBe(false)
+    expect(keptOnServer({ options: options(21) })).toBe(true)
+    expect(keptOnServer({ options: [...options(20), { value: 'x', label: 'X', active: false }] })).toBe(false)
+    const radio: FormField = { id: 'r', key: 'r', type: 'radio', label: 'R', options: options(21) }
+    expect(servedRemotely(radio)).toBe(true)
+    expect(servedRemotely({ ...radio, options: options(20) })).toBe(false)
+  })
+
+  it('auto-fill from options the page picked from the server', () => {
+    const source: FormField = { id: 's', key: 's', type: 'dropdown', label: 'S', options: [], options_large: { total: 40 }, props: { fills: [{ column: 'zip', target: 't', lock: true }] } }
+    const target: FormField = { id: 't', key: 't', type: 'short_text', label: 'T' }
+    const state = { values: new Map(), disabled: new Set<string>(), enabled: new Set<string>() }
+    applyFills(state, [source, target], { s: 'a' }, { s: [{ value: 'a', label: 'A', attrs: { zip: '12345' } }] })
+    expect(state.values.get('t')).toBe('12345')
   })
 })

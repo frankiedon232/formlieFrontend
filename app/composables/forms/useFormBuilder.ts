@@ -1,4 +1,4 @@
-import { levelsOf, offeredOptions } from '#shared/utils/forms/options'
+import { levelsOf, offeredOptions, keptOnServer } from '#shared/utils/forms/options'
 import { cascadeChain } from '#shared/utils/forms/cascade'
 import type { InjectionKey } from 'vue'
 import { newId, keyFromLabel, fieldKey, allFields, type FormField, type FormPage } from '#shared/utils/forms/build'
@@ -110,11 +110,16 @@ export function useFormBuilder() {
     field.option_set_id = list.id
     return field
   }
-  /** A field's options from a list; a large list (F15 M5) stays on the server, the field says how many. */
+  /**
+   * A field's options from a list: lists above 20 options (and large ones) stay in the database, the field
+   * says how many and shows as a dropdown or multi-select (owner 2026-10-08); shorter lists are copied.
+   */
   function fillFromList(field: FormField, list: OptionList, level: number) {
-    if (!list.large) return void (field.options = offeredOptions(toRaw(list), level))
+    if (!keptOnServer(list)) return void (field.options = offeredOptions(toRaw(list), level))
     field.options = []
     field.options_large = { total: list.level_counts?.[level] ?? 0 }
+    if (field.type === 'radio') field.type = 'dropdown'
+    if (field.type === 'checkbox') field.type = 'multi_select'
   }
 
   /**

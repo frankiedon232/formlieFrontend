@@ -36,7 +36,7 @@ function add(list: OptionList) {
 const kindOf = (list: OptionList) => {
   const levels = levelsOf(list)
   if (levels) return levels.map(level => level.label).join(' → ')
-  const count = list.large ? (list.level_counts?.[0] ?? 0) : offeredOptions(list).length
+  const count = list.level_counts ? (list.level_counts[0] ?? 0) : offeredOptions(list).length
   return t('library.optionCount', { count: number(count) }, count)
 }
 const drag = usePaletteDrag(() => emit('added'))
@@ -60,7 +60,7 @@ async function remove(list: OptionList) {
 
 const menu = (list: OptionList): DropdownMenuItem[][] => [
   [
-    { label: t('library.editList'), icon: 'i-lucide-pencil', onSelect: () => (levelsOf(list) || list.large ? void navigateTo(`/option-sets/${list.id}`) : openEditor(list)) },
+    { label: t('library.editList'), icon: 'i-lucide-pencil', onSelect: () => (levelsOf(list) || list.level_counts ? void navigateTo(`/option-sets/${list.id}`) : openEditor(list)) },
     { label: t('library.openInListOption'), icon: 'i-lucide-external-link', onSelect: () => void navigateTo(`/option-sets/${list.id}`) },
     { label: t('library.deleteList'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => void remove(list) },
   ],

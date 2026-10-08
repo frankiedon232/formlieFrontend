@@ -47,10 +47,11 @@ describe('long lists (F15 M3)', () => {
     expect(searchesAsYouType({ type: 'radio', options: many(500) })).toBe(false)
   })
 
-  it('keep very long lists on the server, but not lower levels', () => {
-    expect(servedRemotely({ type: 'dropdown', options: many(301) })).toBe(true)
-    expect(servedRemotely({ type: 'dropdown', options: many(300) })).toBe(false)
-    expect(servedRemotely({ type: 'dropdown', options: many(400), option_parent: 'f1' })).toBe(false)
+  it('load more than 20 options from the server (owner 2026-10-08); a copied lower level stays with the page', () => {
+    expect(servedRemotely({ type: 'dropdown', options: many(21) })).toBe(true)
+    expect(servedRemotely({ type: 'dropdown', options: many(20) })).toBe(false)
+    expect(servedRemotely({ type: 'dropdown', options: many(20), option_parent: 'f1' })).toBe(false)
+    expect(servedRemotely({ type: 'dropdown', options: [], option_parent: 'f1', options_large: { total: 400 } })).toBe(true)
   })
 
   it('match without minding case or accents, starting matches first, 50 at a time', () => {

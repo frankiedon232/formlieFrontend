@@ -2340,7 +2340,7 @@
     },
     "large": {
       "title": "{count} opción en el servidor | {count} opciones en el servidor",
-      "desc": "De una lista grande. Las opciones se cargan mientras se escribe, así el formulario sigue rápido. Edítelas en List Option."
+      "desc": "Esta lista se queda en la base de datos. Las opciones se cargan mientras se escribe, y el formulario sigue la lista en cuanto se guarda. Edítelas en List Option."
     }
   },
   "renderer": {
@@ -7375,7 +7375,7 @@
       "fillTitle": "Añade las opciones",
       "fill": "Una a una, pegándolas desde una hoja de cálculo o importando un archivo CSV o Excel. Para niveles: una columna por nivel, una fila por ruta.",
       "useTitle": "Guarda y úsala",
-      "use": "En un formulario, abre Añadir campo → Listas y haz clic en la lista o arrástrala. Los formularios conservan una copia: tras los cambios, actualízalos en Usada en."
+      "use": "En un formulario, abre Añadir campo → Listas y haz clic en la lista o arrástrala. Las listas de hasta 20 opciones se copian en el formulario: tras los cambios, actualízalas en Usada en. Las listas más largas se quedan en la base de datos y los formularios las siguen en cuanto guardas."
     },
     "columns": {
       "title": "Detalles",
@@ -7395,13 +7395,13 @@
       "size": "Tamaño",
       "standard": "Estándar",
       "large": "Grande",
-      "standardHint": "Opciones: {n}. Una lista estándar admite hasta {max} y se copia en cada formulario, así que elegir es instantáneo.",
+      "standardHint": "Opciones: {n}. Una lista estándar admite hasta {max}. Hasta 20 opciones se copia en cada formulario; por encima se queda en la base de datos y los formularios la cargan mientras se escribe.",
       "largeHint": "Opciones: {n}. Una lista grande admite hasta {max} y se queda en el servidor; los formularios cargan cada nivel según la opción de arriba.",
       "cannotStandard": "Más de {max} opciones: quite algunas para volver a estándar.",
       "askTitle": "¿Convertir en lista grande?",
       "askDesc": "Las listas grandes sirven para datos muy extensos, como todas las ciudades del mundo. Esto es lo que cambia:",
       "point": {
-        "server": "Admite hasta {max} opciones. Se quedan en el servidor en lugar de copiarse en cada formulario.",
+        "server": "Admite hasta {max} opciones, diez veces una lista estándar, todas guardadas en la base de datos.",
         "levels": "En un formulario, cada nivel carga solo lo que hay bajo la opción de arriba: elija un país y se cargan sus regiones.",
         "search": "Las personas escriben para buscar. La lista muestra las primeras 50 coincidencias, con una breve espera mientras cargan.",
         "live": "Los formularios siguen la lista en cuanto la guarda, también los publicados. No hay paso de Actualizar formularios.",
@@ -7412,8 +7412,9 @@
       "makeLarge": "Hacerla grande",
       "makeLargeQ": "Convertir en lista grande",
       "toStandardTitle": "¿Volver a una lista estándar?",
-      "toStandardDesc": "Los formularios vuelven a recibir una copia de las opciones y las ofrecen todas a la vez. Los cambios posteriores les llegan con Actualizar formularios, como en cualquier lista.",
+      "toStandardDesc": "La lista vuelve a un máximo de 20.000 opciones. Los formularios siguen cargándola desde la base de datos mientras tenga más de 20.",
       "toStandard": "Hacerla estándar"
-    }
+    },
+    "savedLive": "Los formularios que la usan ya la siguen, también los que están en vivo."
   }
 }

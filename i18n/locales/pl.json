@@ -2340,7 +2340,7 @@
     },
     "large": {
       "title": "{count} opcja na serwerze | {count} opcji na serwerze",
-      "desc": "Z dużej listy. Opcje ładują się podczas pisania, dzięki czemu formularz działa szybko. Edytuj je w List Option."
+      "desc": "Ta lista zostaje w bazie danych. Opcje ładują się podczas pisania, a formularz podąża za listą, gdy tylko zostanie zapisana. Edytuj je w List Option."
     }
   },
   "renderer": {
@@ -7375,7 +7375,7 @@
       "fillTitle": "Dodaj opcje",
       "fill": "Po jednej, wklejając je z arkusza albo importując plik CSV lub Excel. Dla poziomów: jedna kolumna na poziom, jeden wiersz na ścieżkę.",
       "useTitle": "Zapisz i używaj",
-      "use": "W formularzu otwórz Dodaj pole → Listy i kliknij listę lub przeciągnij ją. Formularze zachowują kopię: po zmianach zaktualizuj je w sekcji Używana w."
+      "use": "W formularzu otwórz Dodaj pole → Listy i kliknij listę lub przeciągnij ją. Listy do 20 opcji są kopiowane do formularza: po zmianach zaktualizuj je w sekcji Używana w. Dłuższe listy zostają w bazie danych, a formularze podążają za nimi zaraz po zapisaniu."
     },
     "columns": {
       "title": "Szczegóły",
@@ -7395,13 +7395,13 @@
       "size": "Rozmiar",
       "standard": "Standardowa",
       "large": "Duża",
-      "standardHint": "Opcje: {n}. Lista standardowa mieści do {max} i jest kopiowana do każdego formularza, więc wybór jest natychmiastowy.",
+      "standardHint": "Opcje: {n}. Lista standardowa mieści do {max}. Do 20 opcji jest kopiowana do każdego formularza; powyżej zostaje w bazie danych, a formularze ładują ją podczas pisania.",
       "largeHint": "Opcje: {n}. Duża lista mieści do {max} i zostaje na serwerze; formularze ładują każdy poziom zależnie od wyboru powyżej.",
       "cannotStandard": "Ponad {max} opcji: usuń część, aby wrócić do standardowej.",
       "askTitle": "Zmienić tę listę na dużą?",
       "askDesc": "Duże listy nadają się do bardzo obszernych danych, np. wszystkich miast świata. Oto, co się zmieni:",
       "point": {
-        "server": "Może pomieścić do {max} opcji. Zostają na serwerze zamiast być kopiowane do każdego formularza.",
+        "server": "Może pomieścić do {max} opcji, dziesięć razy więcej niż lista standardowa, wszystkie w bazie danych.",
         "levels": "W formularzu każdy poziom ładuje tylko to, co jest pod wyborem powyżej: wybierz kraj, a załadują się jego regiony.",
         "search": "Użytkownicy wpisują tekst, aby szukać. Lista pokazuje pierwsze 50 wyników, z krótkim oczekiwaniem na załadowanie.",
         "live": "Formularze podążają za listą od razu po zapisaniu, także te opublikowane. Nie ma kroku Aktualizuj formularze.",
@@ -7412,8 +7412,9 @@
       "makeLarge": "Zmień na dużą",
       "makeLargeQ": "Zmień na dużą listę",
       "toStandardTitle": "Wrócić do listy standardowej?",
-      "toStandardDesc": "Formularze znów dostają kopię opcji i pokazują je wszystkie naraz. Późniejsze zmiany docierają do nich przez Aktualizuj formularze, jak przy każdej liście.",
+      "toStandardDesc": "Lista wraca do najwyżej 20 000 opcji. Formularze nadal ładują ją z bazy danych, dopóki ma więcej niż 20.",
       "toStandard": "Zmień na standardową"
-    }
+    },
+    "savedLive": "Formularze, które jej używają, już za nią podążają, także te opublikowane."
   }
 }

@@ -2340,7 +2340,7 @@
     },
     "large": {
       "title": "{count} Option auf dem Server | {count} Optionen auf dem Server",
-      "desc": "Aus einer großen Liste. Die Optionen werden beim Tippen geladen, damit das Formular schnell bleibt. Bearbeiten Sie sie unter List Option."
+      "desc": "Diese Liste bleibt in der Datenbank. Die Optionen werden beim Tippen geladen, und das Formular folgt der Liste, sobald sie gespeichert ist. Bearbeiten Sie sie unter List Option."
     }
   },
   "renderer": {
@@ -7375,7 +7375,7 @@
       "fillTitle": "Optionen hinzufügen",
       "fill": "Einzeln, aus einer Tabelle eingefügt oder per CSV- oder Excel-Datei importiert. Für Ebenen: eine Spalte pro Ebene, eine Zeile pro Pfad.",
       "useTitle": "Speichern und verwenden",
-      "use": "Öffnen Sie in einem Formular Feld hinzufügen → Listen und klicken Sie auf die Liste oder ziehen Sie sie. Formulare behalten eine Kopie: Aktualisieren Sie sie nach Änderungen unter Verwendet in."
+      "use": "Öffnen Sie in einem Formular Feld hinzufügen → Listen und klicken Sie auf die Liste oder ziehen Sie sie. Listen mit bis zu 20 Optionen werden ins Formular kopiert: Aktualisieren Sie sie nach Änderungen unter Verwendet in. Längere Listen bleiben in der Datenbank, und Formulare folgen ihnen, sobald Sie speichern."
     },
     "columns": {
       "title": "Details",
@@ -7395,13 +7395,13 @@
       "size": "Größe",
       "standard": "Standard",
       "large": "Groß",
-      "standardHint": "Optionen: {n}. Eine Standardliste fasst bis zu {max} und wird in jedes Formular kopiert, daher ist die Auswahl sofort da.",
+      "standardHint": "Optionen: {n}. Eine Standardliste fasst bis zu {max}. Bis zu 20 Optionen werden in jedes Formular kopiert; darüber bleibt die Liste in der Datenbank, und Formulare laden sie beim Tippen.",
       "largeHint": "Optionen: {n}. Eine große Liste fasst bis zu {max} und bleibt auf dem Server; Formulare laden jede Ebene passend zur Auswahl darüber.",
       "cannotStandard": "Über {max} Optionen: Entfernen Sie einige, um zu Standard zurückzukehren.",
       "askTitle": "Diese Liste groß machen?",
       "askDesc": "Große Listen eignen sich für sehr große Datenmengen, etwa alle Städte der Welt. Das ändert sich:",
       "point": {
-        "server": "Sie kann bis zu {max} Optionen fassen. Sie bleiben auf dem Server, statt in jedes Formular kopiert zu werden.",
+        "server": "Sie kann bis zu {max} Optionen fassen, zehnmal so viele wie eine Standardliste, alle in der Datenbank gespeichert.",
         "levels": "In einem Formular lädt jede Ebene nur, was unter der Auswahl darüber liegt: Wählen Sie ein Land, dann werden dessen Bundesländer geladen.",
         "search": "Die Nutzer tippen, um zu suchen. Eine Liste zeigt die ersten 50 Treffer, mit kurzer Wartezeit beim Laden.",
         "live": "Formulare folgen der Liste, sobald Sie sie speichern, auch veröffentlichte. Es gibt keinen Schritt „Formulare aktualisieren“.",
@@ -7412,8 +7412,9 @@
       "makeLarge": "Groß machen",
       "makeLargeQ": "Als große Liste festlegen",
       "toStandardTitle": "Zurück zu einer Standardliste?",
-      "toStandardDesc": "Formulare erhalten wieder eine Kopie der Optionen und bieten alle auf einmal an. Spätere Änderungen erreichen sie mit „Formulare aktualisieren“, wie bei jeder Liste.",
+      "toStandardDesc": "Die Liste fasst wieder höchstens 20.000 Optionen. Formulare laden sie weiter aus der Datenbank, solange sie mehr als 20 hat.",
       "toStandard": "Zu Standard machen"
-    }
+    },
+    "savedLive": "Formulare, die sie verwenden, folgen ihr bereits, auch live geschaltete."
   }
 }

@@ -10,7 +10,7 @@
  */
 import type { FormField } from './build'
 import type { FormSchemaV1 } from './schema'
-import { applyFills } from './fills'
+import { applyFills, type PickedOptions } from './fills'
 
 export type LogicOperator =
   | 'eq' | 'neq' | 'contains' | 'not_contains' | 'starts_with' | 'ends_with'
@@ -189,7 +189,7 @@ export interface LogicState {
  * - "show" (field or page) hides its target until the rule matches; "hide" hides it while it matches.
  * - Jumps and "skip to end" apply on the page that holds the rule's first condition field.
  */
-export function evaluateLogic(schema: FormSchemaV1, answers: Record<string, unknown>): LogicState {
+export function evaluateLogic(schema: FormSchemaV1, answers: Record<string, unknown>, picked?: PickedOptions): LogicState {
   const rules = (schema.logic ?? []) as LogicRule[]
   const fields = new Map<string, { field: FormField; page: string }>()
   for (const page of schema.pages) for (const row of page.rows) for (const field of row.fields) fields.set(field.id, { field, page: page.id })
@@ -225,6 +225,6 @@ export function evaluateLogic(schema: FormSchemaV1, answers: Record<string, unkn
     }
   }
   // Details and auto-fill from a chosen option (F15 M4), after the rules
-  applyFills(state, [...fields.values()].map(item => item.field), answers)
+  applyFills(state, [...fields.values()].map(item => item.field), answers, picked)
   return state
 }

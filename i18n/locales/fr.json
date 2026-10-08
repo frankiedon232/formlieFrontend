@@ -2340,7 +2340,7 @@
     },
     "large": {
       "title": "{count} option sur le serveur | {count} options sur le serveur",
-      "desc": "Issu d'une grande liste. Les options se chargent pendant la saisie, pour garder le formulaire rapide. Modifiez-les dans List Option."
+      "desc": "Cette liste reste dans la base de données. Les options se chargent pendant la saisie, et le formulaire suit la liste dès qu'elle est enregistrée. Modifiez-les dans List Option."
     }
   },
   "renderer": {
@@ -7375,7 +7375,7 @@
       "fillTitle": "Ajoutez les options",
       "fill": "Une par une, collées depuis un tableur, ou importées depuis un fichier CSV ou Excel. Pour les niveaux : une colonne par niveau, une ligne par chemin.",
       "useTitle": "Enregistrez et utilisez",
-      "use": "Dans un formulaire, ouvrez Ajouter un champ → Listes et cliquez sur la liste ou faites-la glisser. Les formulaires gardent une copie : après des modifications, mettez-les à jour sous Utilisée dans."
+      "use": "Dans un formulaire, ouvrez Ajouter un champ → Listes et cliquez sur la liste ou faites-la glisser. Les listes jusqu'à 20 options sont copiées dans le formulaire : après des modifications, mettez-les à jour sous Utilisée dans. Les listes plus longues restent dans la base de données et les formulaires les suivent dès l'enregistrement."
     },
     "columns": {
       "title": "Détails",
@@ -7395,13 +7395,13 @@
       "size": "Taille",
       "standard": "Standard",
       "large": "Grande",
-      "standardHint": "Options : {n}. Une liste standard accepte jusqu'à {max} et est copiée dans chaque formulaire, le choix est donc instantané.",
+      "standardHint": "Options : {n}. Une liste standard accepte jusqu'à {max}. Jusqu'à 20 options, elle est copiée dans chaque formulaire ; au-delà, elle reste dans la base de données et les formulaires la chargent pendant la saisie.",
       "largeHint": "Options : {n}. Une grande liste accepte jusqu'à {max} et reste sur le serveur ; les formulaires chargent chaque niveau selon le choix du dessus.",
       "cannotStandard": "Plus de {max} options : supprimez-en pour revenir à standard.",
       "askTitle": "Passer cette liste en grande liste ?",
       "askDesc": "Les grandes listes conviennent aux très gros volumes, comme toutes les villes du monde. Voici ce qui change :",
       "point": {
-        "server": "Elle peut contenir jusqu'à {max} options. Elles restent sur le serveur au lieu d'être copiées dans chaque formulaire.",
+        "server": "Elle peut contenir jusqu'à {max} options, dix fois une liste standard, toutes conservées dans la base de données.",
         "levels": "Dans un formulaire, chaque niveau charge seulement ce qui dépend du choix du dessus : choisissez un pays, puis ses régions se chargent.",
         "search": "Les gens saisissent pour rechercher. La liste affiche les 50 premiers résultats, avec une courte attente pendant le chargement.",
         "live": "Les formulaires suivent la liste dès son enregistrement, y compris ceux en ligne. Il n'y a pas d'étape Mettre à jour les formulaires.",
@@ -7412,8 +7412,9 @@
       "makeLarge": "La passer en grande",
       "makeLargeQ": "Passer en grande liste",
       "toStandardTitle": "Revenir à une liste standard ?",
-      "toStandardDesc": "Les formulaires reçoivent de nouveau une copie des options et les proposent toutes à la fois. Les changements suivants leur parviennent avec Mettre à jour les formulaires, comme pour toute liste.",
+      "toStandardDesc": "La liste revient à 20 000 options au maximum. Les formulaires continuent de la charger depuis la base de données tant qu'elle en compte plus de 20.",
       "toStandard": "La passer en standard"
-    }
+    },
+    "savedLive": "Les formulaires qui l'utilisent la suivent déjà, y compris ceux en ligne."
   }
 }

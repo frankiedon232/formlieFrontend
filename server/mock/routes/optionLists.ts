@@ -18,7 +18,7 @@ import { z } from 'zod'
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
 import type { OptionItem, OptionList, OptionListInsights, OptionListRow, OptionListUsage } from '#shared/types/forms'
 import { allFields } from '#shared/utils/forms/build'
-import { MAX_LARGE_OPTIONS, MAX_LIST_LEVELS, MAX_OPTIONS, levelCounts, lookupOptions, matchesList, offeredOptions } from '#shared/utils/forms/options'
+import { MAX_LARGE_OPTIONS, MAX_LIST_LEVELS, MAX_OPTIONS, keptOnServer, levelCounts, lookupOptions, matchesList, offeredOptions } from '#shared/utils/forms/options'
 import { formLanguages, mainLanguage, textHash } from '#shared/utils/forms/translations'
 import { actorOf, recordAudit } from '../core/audit'
 import { requireAuth } from '../core/auth'
@@ -100,7 +100,7 @@ function usageOf(tenant: MockTenant, list: OptionList): OptionListUsage[] {
       const schema = form.schema ?? form.published_schema
       const fields = schema ? allFields(schema).filter(field => field.option_set_id === list.id) : []
       // A large list's fields follow it by themselves (F15 M5)
-      return fields.length ? [{ form: { id: form.id, name: form.name, status: form.status }, fields: fields.map(field => ({ id: field.id, key: field.key, label: field.label?.trim() || field.key, in_sync: list.large ? true : matchesList(field.options, list, field.option_level ?? 0) })) }] : []
+      return fields.length ? [{ form: { id: form.id, name: form.name, status: form.status }, fields: fields.map(field => ({ id: field.id, key: field.key, label: field.label?.trim() || field.key, in_sync: keptOnServer(list) ? true : matchesList(field.options, list, field.option_level ?? 0) })) }] : []
     })
 }
 
@@ -125,7 +125,7 @@ export const listOptionLists = defineMockRoute(({ event, query }) => {
   const { tenant } = requireAuth(event)
   const lists = [...libraryOf(tenant).lists].sort((a, b) => a.name.localeCompare(b.name))
   // The builder wants them all (large lists: counts per level instead of their options); the Option sets page pages through rows
-  if (query.page === undefined) return ok(lists.map(list => (list.large ? { ...list, options: [], level_counts: levelCounts(list) } : list)))
+  if (query.page === undefined) return ok(lists.map(list => (keptOnServer(list) ? { ...list, options: [], level_counts: levelCounts(list) } : list)))
   const languages = allLanguages(tenant)
   const status = typeof query['filter[status]'] === 'string' ? query['filter[status]'].split(',') : []
   let rows = lists.map(list => rowOf(tenant, list, languages))
@@ -135,7 +135,7 @@ export const listOptionLists = defineMockRoute(({ event, query }) => {
   rows.sort((a, b) => (sort.startsWith('-') ? -1 : 1) * (typeof a[key] === 'number' ? (a[key] as number) - (b[key] as number) : String(a[key]).localeCompare(String(b[key]))))
   const { data, meta } = paginate(rows, { ...query, sort: undefined }, (row, q) => `${row.name} ${row.description ?? ''} ${row.large ? '' : row.options.map(option => option.label).join(' ')}`.toLowerCase().includes(q))
   // Rows show a few options; a large list's are not all sent
-  return ok(data.map(row => (row.large ? { ...row, options: row.options.slice(0, 20) } : row)), meta)
+  return ok(data.map(row => (keptOnServer(row) ? { ...row, options: row.options.slice(0, 20) } : row)), meta)
 })
 
 export const optionListInsights = defineMockRoute(({ event }) => {
@@ -193,7 +193,7 @@ export const updateOptionList = defineMockRoute(({ event, body }) => {
     ...(options && options.filter(option => option.active === false).length !== retiredBefore ? [{ field: 'retired', before: String(retiredBefore), after: String(options.filter(option => option.active === false).length) }] : []),
   ]
   if (large !== !!found.large) changes.push({ field: 'large', before: String(!!found.large), after: String(large) })
-  const largeBefore = !!found.large
+  const keptBefore = keptOnServer(found)
   if ((levels?.length ?? 1) !== (found.levels?.length ?? 1)) changes.push({ field: 'levels', before: String(found.levels?.length ?? 1), after: String(levels?.length ?? 1) })
   Object.assign(found, { ...(input.name ? { name: input.name } : {}), ...(input.description !== undefined ? { description: input.description ?? null } : {}), ...(options ? { options } : {}), updated_at: new Date().toISOString() })
   if (levels) found.levels = levels
@@ -204,9 +204,13 @@ export const updateOptionList = defineMockRoute(({ event, body }) => {
   else delete found.large
   saveLibrary()
   // Large lists stay on the server: every form using one follows it at once, live forms too (F15 M5)
-  if (large || largeBefore) {
+  // Lists kept on the server (large, or above 20 options): forms follow at once, live forms too, with translations
+  if (keptOnServer(found) || keptBefore) {
     let touched = 0
-    for (const form of formsOf(tenant).forms.filter(item => !item.deleted_at)) touched += fillLargeLists(form.schema, [found], found.id) + fillLargeLists(form.published_schema, [found], found.id)
+    for (const form of formsOf(tenant).forms.filter(item => !item.deleted_at))
+      for (const schema of [form.schema, form.published_schema])
+        if (schema && keptOnServer(found)) touched += (syncSchema(schema, found), fillLargeLists(schema, [found], found.id))
+        else touched += fillLargeLists(schema, [found], found.id)
     if (touched) saveForms()
   }
   audit(event, tenant, user, 'forms.list_updated', found, { changes })

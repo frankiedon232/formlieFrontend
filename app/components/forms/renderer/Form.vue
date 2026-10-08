@@ -8,6 +8,7 @@
 <script setup lang="ts">
 import { allFields, isLocked, type FormField } from '#shared/utils/forms/build'
 import { cascadeClosed, fitAnswer } from '#shared/utils/forms/cascade'
+import type { PickedOptions } from '#shared/utils/forms/fills'
 import { isInputField } from '#shared/utils/forms/fields'
 import { calculateResult } from '#shared/utils/forms/formula'
 import { evaluateLogic } from '#shared/utils/forms/logic'
@@ -67,12 +68,14 @@ watch(
 // Logic, set values and calculated fields follow the answers live. A level of a list with levels that has
 // nothing under the choice above stays closed, like a hidden field (F15 M2).
 const fieldsById = computed(() => new Map(allFields(props.schema).map(f => [f.id, f])))
+// Options chosen from lists that stay on the server, with their details, so auto-fill works here too
+const picked = ref<PickedOptions>({})
 const logic = computed(() => {
-  const state = evaluateLogic(props.schema, answers.value)
+  const state = evaluateLogic(props.schema, answers.value, picked.value)
   for (const field of fieldsById.value.values()) if (cascadeClosed(field, fieldsById.value, answers.value)) state.hidden.add(field.id)
   return state
 })
-provide(RENDERER_ANSWERS, { answers, fieldsById })
+provide(RENDERER_ANSWERS, { answers, fieldsById, picked })
 // A changed choice above clears what no longer fits below
 watchEffect(() => {
   for (const field of fieldsById.value.values()) {

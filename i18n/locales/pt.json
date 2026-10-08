@@ -2340,7 +2340,7 @@
     },
     "large": {
       "title": "{count} opção no servidor | {count} opções no servidor",
-      "desc": "De uma lista grande. As opções são carregadas enquanto se digita, para o formulário continuar rápido. Edite-as em List Option."
+      "desc": "Esta lista fica no banco de dados. As opções são carregadas enquanto se digita, e o formulário acompanha a lista assim que ela é salva. Edite-as em List Option."
     }
   },
   "renderer": {
@@ -7375,7 +7375,7 @@
       "fillTitle": "Adicione as opções",
       "fill": "Uma a uma, coladas de uma planilha, ou importando um arquivo CSV ou Excel. Para níveis: uma coluna por nível, uma linha por caminho.",
       "useTitle": "Salve e use",
-      "use": "Em um formulário, abra Adicionar campo → Listas e clique na lista ou arraste-a. Os formulários guardam uma cópia: após mudanças, atualize-os em Usada em."
+      "use": "Em um formulário, abra Adicionar campo → Listas e clique na lista ou arraste-a. Listas de até 20 opções são copiadas para o formulário: após mudanças, atualize-as em Usada em. Listas mais longas ficam no banco de dados e os formulários as acompanham assim que você salva."
     },
     "columns": {
       "title": "Detalhes",
@@ -7395,13 +7395,13 @@
       "size": "Tamanho",
       "standard": "Padrão",
       "large": "Grande",
-      "standardHint": "Opções: {n}. Uma lista padrão comporta até {max} e é copiada para cada formulário, por isso escolher é instantâneo.",
+      "standardHint": "Opções: {n}. Uma lista padrão comporta até {max}. Até 20 opções, ela é copiada para cada formulário; acima disso, fica no banco de dados e os formulários a carregam enquanto se digita.",
       "largeHint": "Opções: {n}. Uma lista grande comporta até {max} e fica no servidor; os formulários carregam cada nível conforme a escolha acima.",
       "cannotStandard": "Mais de {max} opções: remova algumas para voltar ao padrão.",
       "askTitle": "Tornar esta lista grande?",
       "askDesc": "As listas grandes servem para dados muito extensos, como todas as cidades do mundo. Isto é o que muda:",
       "point": {
-        "server": "Comporta até {max} opções. Elas ficam no servidor em vez de serem copiadas para cada formulário.",
+        "server": "Comporta até {max} opções, dez vezes uma lista padrão, todas guardadas no banco de dados.",
         "levels": "Num formulário, cada nível carrega só o que está sob a escolha acima: escolha um país e as suas regiões são carregadas.",
         "search": "As pessoas digitam para pesquisar. A lista mostra as primeiras 50 correspondências, com uma breve espera durante o carregamento.",
         "live": "Os formulários seguem a lista assim que a guarda, incluindo os publicados. Não há passo de Atualizar formulários.",
@@ -7412,8 +7412,9 @@
       "makeLarge": "Tornar grande",
       "makeLargeQ": "Tornar uma lista grande",
       "toStandardTitle": "Voltar a uma lista padrão?",
-      "toStandardDesc": "Os formulários voltam a receber uma cópia das opções e oferecem-nas todas de uma vez. As alterações seguintes chegam com Atualizar formulários, como em qualquer lista.",
+      "toStandardDesc": "A lista volta a ter no máximo 20.000 opções. Os formulários continuam a carregá-la do banco de dados enquanto tiver mais de 20.",
       "toStandard": "Tornar padrão"
-    }
+    },
+    "savedLive": "Os formulários que a usam já a acompanham, inclusive os ao vivo."
   }
 }

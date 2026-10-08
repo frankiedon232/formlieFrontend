@@ -9,6 +9,7 @@
 import type { DropdownMenuItem } from '@nuxt/ui'
 import type { LocalisationSettings } from '#shared/types/settings'
 import type { OptionColumn, OptionItem, OptionLevel, OptionListRow } from '#shared/types/forms'
+import { keptOnServer } from '#shared/utils/forms/options'
 
 definePageMeta({ breadcrumb: 'nav.optionSets' })
 const { t } = useI18n()
@@ -93,7 +94,7 @@ async function save() {
   try {
     list.value = (await api.patch<OptionListRow>(`/option-lists/${id}`, { name: draft.value.name, description: draft.value.description, levels: draft.value.levels ?? [], columns: draft.value.columns ?? [], large: draft.value.large, options: draft.value.options })).data
     draft.value = draftOf(list.value)
-    toast.add({ title: t('optionSets.saved'), description: list.value.forms_count ? t('optionSets.savedUsed', { n: list.value.forms_count }, list.value.forms_count) : undefined, color: 'success', icon: 'i-lucide-circle-check' })
+    toast.add({ title: t('optionSets.saved'), description: list.value.forms_count ? (keptOnServer(list.value) ? t('optionSets.savedLive') : t('optionSets.savedUsed', { n: list.value.forms_count }, list.value.forms_count)) : undefined, color: 'success', icon: 'i-lucide-circle-check' })
     void usageRef.value?.load()
   } catch (error) {
     handle(error)

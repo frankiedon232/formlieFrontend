@@ -5,9 +5,12 @@
  */
 import type { InjectionKey, Ref } from 'vue'
 import type { FormField } from '#shared/utils/forms/build'
+import type { PickedOptions } from '#shared/utils/forms/fills'
 
 export interface RendererAnswers {
   answers: Ref<Record<string, unknown>>
   fieldsById: Ref<Map<string, FormField>>
+  /** Options chosen from lists kept on the server, with their details (auto-fill in the browser). */
+  picked?: Ref<PickedOptions>
 }
 export const RENDERER_ANSWERS: InjectionKey<RendererAnswers> = Symbol('formalie:renderer-answers')

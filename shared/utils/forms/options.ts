@@ -16,7 +16,15 @@ export const MAX_LIST_LEVELS = 4
  * summary instead of every row from LONG_FROM options of a list.
  */
 export const SEARCH_FROM = 50
-export const REMOTE_FROM = 300
+/**
+ * Lists above LIVE_FROM options live only in the database (owner 2026-10-08: "every form should come from
+ * the DB when its list is bigger than 20, if not the server will have a bottleneck"): forms keep no copy,
+ * follow the list as soon as it is saved, and load its options from the server as people type. Lists of
+ * 20 or fewer are copied into forms (Update forms). Choice fields typed by hand load from the server above
+ * the same count on the public page.
+ */
+export const LIVE_FROM = 20
+export const REMOTE_FROM = LIVE_FROM
 export const LONG_FROM = 100
 /** Lists may hold this many options, and so may a field filled from one. */
 export const MAX_OPTIONS = 20000
@@ -28,19 +36,23 @@ export const MAX_OPTIONS = 20000
  */
 export const MAX_LARGE_OPTIONS = 200000
 export const maxOptionsOf = (list: { large?: boolean }) => (list.large ? MAX_LARGE_OPTIONS : MAX_OPTIONS)
-/** Field types a large list can be shown as. */
+/** A list that lives only in the database (large, or above LIVE_FROM active options; the builder's copy of such a list carries `level_counts`). */
+export const keptOnServer = (list: { large?: boolean; level_counts?: number[]; options: { active?: boolean }[] }) =>
+  !!list.large || !!list.level_counts || list.options.filter(option => option.active !== false).length > LIVE_FROM
+/** Field types a list kept on the server can be shown as. */
 export const LARGE_LIST_TYPES = ['dropdown', 'multi_select'] as const
 
 type SearchField = { type: string; options?: { value: string }[] | null; props?: Record<string, unknown> | null; option_parent?: string | null; options_remote?: { total: number } | null; options_large?: { total: number } | null }
 /** A dropdown / multi-select that searches as you type. */
 export function searchesAsYouType(field: SearchField): boolean {
-  if (field.type !== 'dropdown' && field.type !== 'multi_select') return false
   if (field.options_remote || field.options_large) return true
+  if (field.type !== 'dropdown' && field.type !== 'multi_select') return false
   const set = field.props?.search
   return typeof set === 'boolean' ? set : (field.options?.length ?? 0) > SEARCH_FROM
 }
 /** Options served by the server on the public page (not sent with the form). */
-export const servedRemotely = (field: SearchField) => (field.type === 'dropdown' || field.type === 'multi_select') && (!!field.options_large || (!field.option_parent && (field.options?.length ?? 0) > REMOTE_FROM))
+export const servedRemotely = (field: SearchField) =>
+  ['dropdown', 'multi_select', 'radio', 'checkbox'].includes(field.type) && (!!field.options_large || (!field.option_parent && (field.options?.length ?? 0) > REMOTE_FROM))
 
 export function valueFromLabel(label: string): string {
   const base = label
@@ -126,9 +138,10 @@ export function matchOptions<T extends { label: string }>(options: T[], q: strin
  * A server-side lookup on one field's options (public page and builder, F15 M3 / M5): `values` gives the
  * labels of chosen options, `parents` keeps a lower level to what is under the choices above, `q` searches.
  */
-export function lookupOptions(options: { value: string; label: string; parent?: string }[], query: { q?: string; values?: string[] | null; parents?: string[] | null }) {
+export function lookupOptions(options: { value: string; label: string; parent?: string; attrs?: Attrs }[], query: { q?: string; values?: string[] | null; parents?: string[] | null }) {
   const under = query.parents ? new Set(query.parents) : null
-  const pool = (under ? options.filter(option => option.parent !== undefined && under.has(option.parent)) : options).map(option => ({ value: option.value, label: option.label }))
+  // Details come along, so auto-fill works in the browser too (F15 M4)
+  const pool = (under ? options.filter(option => option.parent !== undefined && under.has(option.parent)) : options).map(option => ({ value: option.value, label: option.label, ...(option.attrs ? { attrs: option.attrs } : {}) }))
   if (query.values) {
     const wanted = new Set(query.values)
     return { items: pool.filter(option => wanted.has(option.value)), total: query.values.length }

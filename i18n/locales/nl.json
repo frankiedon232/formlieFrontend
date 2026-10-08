@@ -2340,7 +2340,7 @@
     },
     "large": {
       "title": "{count} optie op de server | {count} opties op de server",
-      "desc": "Uit een grote lijst. Opties worden tijdens het typen geladen, zodat het formulier snel blijft. Bewerk ze in List Option."
+      "desc": "Deze lijst blijft in de database. Opties worden tijdens het typen geladen en het formulier volgt de lijst zodra die is opgeslagen. Bewerk ze in List Option."
     }
   },
   "renderer": {
@@ -7375,7 +7375,7 @@
       "fillTitle": "Voeg de opties toe",
       "fill": "Een voor een, geplakt uit een spreadsheet, of via een CSV- of Excel-bestand. Voor niveaus: één kolom per niveau, één rij per pad.",
       "useTitle": "Opslaan en gebruiken",
-      "use": "Open in een formulier Veld toevoegen → Lijsten en klik op de lijst of sleep deze. Formulieren bewaren een kopie: werk ze na wijzigingen bij onder Gebruikt in."
+      "use": "Open in een formulier Veld toevoegen → Lijsten en klik op de lijst of sleep deze. Lijsten tot 20 opties worden in het formulier gekopieerd: werk ze na wijzigingen bij onder Gebruikt in. Langere lijsten blijven in de database en formulieren volgen ze zodra u opslaat."
     },
     "columns": {
       "title": "Details",
@@ -7395,13 +7395,13 @@
       "size": "Grootte",
       "standard": "Standaard",
       "large": "Groot",
-      "standardHint": "Opties: {n}. Een standaardlijst bevat tot {max} en wordt in elk formulier gekopieerd, dus kiezen gaat direct.",
+      "standardHint": "Opties: {n}. Een standaardlijst bevat tot {max}. Tot 20 opties wordt ze in elk formulier gekopieerd; daarboven blijft ze in de database en laden formulieren haar tijdens het typen.",
       "largeHint": "Opties: {n}. Een grote lijst bevat tot {max} en blijft op de server; formulieren laden elk niveau bij de keuze erboven.",
       "cannotStandard": "Meer dan {max} opties: verwijder er enkele om terug te gaan naar standaard.",
       "askTitle": "Van deze lijst een grote lijst maken?",
       "askDesc": "Grote lijsten zijn geschikt voor erg veel gegevens, zoals alle steden ter wereld. Dit verandert er:",
       "point": {
-        "server": "Ze kan tot {max} opties bevatten. Ze blijven op de server in plaats van in elk formulier gekopieerd te worden.",
+        "server": "Ze kan tot {max} opties bevatten, tien keer een standaardlijst, allemaal bewaard in de database.",
         "levels": "In een formulier laadt elk niveau alleen wat onder de keuze erboven valt: kies een land en de bijbehorende regio's worden geladen.",
         "search": "Mensen typen om te zoeken. Een lijst toont de eerste 50 resultaten, met een korte wachttijd tijdens het laden.",
         "live": "Formulieren volgen de lijst zodra u die opslaat, ook live formulieren. Er is geen stap Formulieren bijwerken.",
@@ -7412,8 +7412,9 @@
       "makeLarge": "Groot maken",
       "makeLargeQ": "Er een grote lijst van maken",
       "toStandardTitle": "Terug naar een standaardlijst?",
-      "toStandardDesc": "Formulieren krijgen weer een kopie van de opties en bieden ze allemaal tegelijk aan. Latere wijzigingen bereiken ze met Formulieren bijwerken, zoals bij elke lijst.",
+      "toStandardDesc": "De lijst gaat terug naar maximaal 20.000 opties. Formulieren blijven haar uit de database laden zolang ze meer dan 20 heeft.",
       "toStandard": "Standaard maken"
-    }
+    },
+    "savedLive": "Formulieren die haar gebruiken volgen haar al, ook live formulieren."
   }
 }

@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-08 (F15 complete incl. M5 large dynamic lists; F16 Profile and F17 Users merged into F16 Users & profiles (department, job titles, role per person), next; payments and subscriptions last, F24)
+**Last updated:** 2026-10-08 (lists above 20 options now live in the database: forms keep no copy and load them as people type; F15 complete; next: F16 Users & profiles; payments last, F24)
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend · ➖ dropped or merged
 
@@ -850,6 +850,7 @@ Full plan: [docs/OPTION-LISTS.md](docs/OPTION-LISTS.md) (owner request 2026-10-0
 - ✅ **Large dynamic lists (M5, owner 2026-10-08: "do 1 and 2"):** a list stays within 20,000 options by default; a list switched to "Large" holds up to 200,000 and stays on the server: a form loads each level only for the choice above (pick a country, then only its states load), searched as people type
   - ✅ The switch explains first what "Large" means (options load from the server level by level, a short wait as people choose, forms need to be online, the builder shows a summary instead of every option, copies in forms update on Save without "Update forms"), asks before turning it on, and an import above 20,000 offers it
   - ✅ Builder, preview, public form, submission checks, responses, exports and the API service read a large list's options from the server (the server keeps them in the form and leaves them out of every reply; lookups by level; see docs/OPTION-LISTS.md → F15e)
+- ✅ **Lists above 20 options live in the database** (owner 2026-10-08: "if not the server will have a bottleneck"): forms keep no copy, follow the list on save (live forms too, with translations), load options as people type at every level; dropdown / multi-select only; hand-typed choice questions above 20 load from the server too (radios / checkboxes show as a searchable menu); auto-fill works from looked-up details; existing forms moved over once
 - ✅ Public option lookups for respondents (published forms only, M3); answers keep the value, records and exports show the label (API since 2026-10-08)
 
 Moved out of F15: destinations to **F12**, webhooks and integrations to **F13**, payments to **F24**.
@@ -1224,6 +1225,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-08 | Large lists: keep the 20,000 limit and also offer large dynamic lists (up to 200,000, loaded level by level from the server), explaining first what choosing it means | F15 M5 | ✅ |
 | 2026-10-08 | Proper cleanup of PROGRESS.md | All | ✅ |
 | 2026-10-08 | Profile and Users are one phase: people are profiled with department, job title(s) and role (role = access, RBAC; permissions in F22) | F16 (merged with F17) | ⬜ next |
+| 2026-10-08 | Any list bigger than 20 options is loaded from the database, never copied into forms (every form, so the server has no bottleneck) | F15 | ✅ |
 
 ---
 
@@ -1469,3 +1471,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-08 | All | PROGRESS.md cleaned up: F15 renamed "Option sets (lists)"; payments (F15) and billing (F14) moved to a new last phase F24 Payments & subscriptions with plans, site sign-up, activation, renewals, expiry; order of what is left under the overview; F12 / F18 marked waiting for review; moved-out stubs folded into one line; owner chose both list sizes (M5 large dynamic lists added) |
 | 2026-10-08 | F15 | M5 large dynamic lists: `OptionList.large` (up to 200,000, `MAX_LARGE_OPTIONS`), Size card with Standard / Large and an explanation before switching (also inside the import when a file is over 20,000); the server fills forms from the list (`fillLargeLists`, live forms follow on save) and leaves the options out of every reply (`trimLargeLists` in the route wrapper: `options_large { total, parents }`); lookups `GET /option-lists/{id}/options` (builder, previews) and `parents` on the public lookup; `cascadeClosed` opens a large level only under a choice with options; the page clears a lower answer that no longer fits; responses get answered options only (`keepAnswered`); insights show the most chosen; API docs show 20 examples, no enum; `FRM-FORM-1022`. Fixed: the list Save check was quadratic (froze on 30,000 options). Browser-tested with 30,311 options: paste, explanation, save 2.6 s, builder canvas, public page levels, clearing, submit, response labels |
 | 2026-10-08 | F16 | Owner: Profile (F16) and Users (F17) merged into F16 Users & profiles; plan written: people list, invites with department / job titles / role, admin profile edit, my profile, security, sessions, roles hook until F22 |
+| 2026-10-08 | F15 | Lists above 20 options live in the database: `LIVE_FROM = 20`, `keptOnServer`; the server fills forms from the list and syncs translations on every save, trims options from replies; builder adds them without options; public page loads every level (and hand-typed choice questions above 20) from the server, radios / checkboxes as a searchable menu; lookups return details, the form keeps those of chosen options for auto-fill (`PickedOptions`); one-time move of existing forms (`listsLive`). Browser-checked on the existing Vehicles form (levels load from the server, Category only under the chosen product) |
