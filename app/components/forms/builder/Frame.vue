@@ -101,7 +101,12 @@ defineShortcuts({
       <UDropdownMenu :items="phoneMenu" :content="{ align: 'end' }" class="md:hidden">
         <UButton class="md:hidden" icon="i-lucide-ellipsis" color="neutral" variant="outline" square :aria-label="t('builder.actions.more')" />
       </UDropdownMenu>
-      <UButton icon="i-lucide-globe" :label="t('builder.publish.button')" color="neutral" :loading="s.publishing.value" :disabled="!s.canEdit.value" @click="publishOpen = true" />
+      <!-- Nothing new since the last publish: not clickable, and it says why on hover (owner 2026-10-08) -->
+      <UTooltip :text="t('builder.publish.nothing')" :disabled="!s.nothingToPublish.value">
+        <span class="inline-flex" :tabindex="s.nothingToPublish.value ? 0 : undefined" :aria-label="s.nothingToPublish.value ? t('builder.publish.nothing') : undefined">
+          <UButton icon="i-lucide-globe" :label="t('builder.publish.button')" color="neutral" :loading="s.publishing.value" :disabled="!s.canEdit.value || s.nothingToPublish.value" :class="s.nothingToPublish.value ? 'opacity-50!' : ''" @click="publishOpen = true" />
+        </span>
+      </UTooltip>
     </template>
 
     <slot v-if="s.loading.value" name="loading">
@@ -167,7 +172,11 @@ defineShortcuts({
               <UButton icon="i-lucide-undo-2" color="neutral" variant="ghost" size="sm" square :disabled="!builder.history.canUndo.value" :aria-label="t('builder.undo')" @click="builder.history.undo()" />
               <UButton icon="i-lucide-redo-2" color="neutral" variant="ghost" size="sm" square :disabled="!builder.history.canRedo.value" :aria-label="t('builder.redo')" @click="builder.history.redo()" />
               <UButton icon="i-lucide-eye" :label="t('builder.preview.button')" color="neutral" variant="outline" size="sm" class="hidden sm:inline-flex" @click="previewOpen = true" />
-              <UButton icon="i-lucide-globe" :label="t('builder.publish.button')" color="neutral" size="sm" :loading="s.publishing.value" :disabled="!s.canEdit.value" @click="publishOpen = true" />
+              <UTooltip :text="t('builder.publish.nothing')" :disabled="!s.nothingToPublish.value">
+                <span class="inline-flex" :tabindex="s.nothingToPublish.value ? 0 : undefined" :aria-label="s.nothingToPublish.value ? t('builder.publish.nothing') : undefined">
+                  <UButton icon="i-lucide-globe" :label="t('builder.publish.button')" color="neutral" size="sm" :loading="s.publishing.value" :disabled="!s.canEdit.value || s.nothingToPublish.value" :class="s.nothingToPublish.value ? 'opacity-50!' : ''" @click="publishOpen = true" />
+                </span>
+              </UTooltip>
               <UTooltip :text="t('builder.fullscreen.exit')" :kbds="['esc']">
                 <UButton icon="i-lucide-minimize-2" color="neutral" variant="outline" size="sm" square :aria-label="t('builder.fullscreen.exit')" @click="s.toggleFullscreen(false)" />
               </UTooltip>

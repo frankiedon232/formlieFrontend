@@ -25,6 +25,10 @@ export function useBuilderSession(formId: string) {
   const failed = ref<string | null>(null)
   /** May change this form (people access, decision 97). The server refuses the editor to anyone else; this is the backstop. */
   const canEdit = computed(() => !form.value || canEditForm(form.value))
+  /** The version people see now (null = never published). */
+  const publishedVersion = ref<number | null>(null)
+  /** Published and nothing changed since (saved or waiting to save): Publish has nothing to do (owner 2026-10-08). */
+  const nothingToPublish = computed(() => publishedVersion.value !== null && !form.value?.has_unpublished_changes && !autosave.unsaved.value)
 
   const autosave = useBuilderAutosave(formId, builder.schema, rowVersion, saved => {
     if (form.value)
@@ -48,6 +52,7 @@ export function useBuilderSession(formId: string) {
         `/forms/${formId}/builder`,
       )
       apply(data.form, data.schema)
+      publishedVersion.value = data.published_version ?? (data.form.status !== 'draft' ? 1 : null)
       // Keys a published version used stay fixed; the rest follow their labels (clean keys)
       builder.liveFields.value = data.live_fields ?? []
       builder.publishedKeys.value = new Set(data.published_keys ?? (data.form.status !== 'draft' || data.published_version !== null ? allFields(data.schema).map(field => field.key) : []))
@@ -85,6 +90,7 @@ export function useBuilderSession(formId: string) {
     )
     if (!result) return false
     apply(result.data.form)
+    publishedVersion.value = result.data.version.number
     builder.publishedKeys.value = new Set([...builder.publishedKeys.value, ...builder.fields.value.map(field => field.key)])
     builder.liveFields.value = builder.fields.value.filter(field => field.key).map(field => ({ key: field.key, label: field.label ?? '', required: !!field.required, type: field.type }))
     counts.refresh(true)
@@ -138,7 +144,7 @@ export function useBuilderSession(formId: string) {
   onMounted(load)
 
   return {
-    formId, builder, form, rowVersion, loading, failed, autosave, statusText, publishing, canEdit,
+    formId, builder, form, rowVersion, loading, failed, autosave, statusText, publishing, canEdit, nothingToPublish,
     fullscreen, toggleFullscreen, load, rename, publish, replaceDraft,
   }
 }

@@ -1899,7 +1899,8 @@
         "required": "Sekarang wajib: panggilan API tanpa pertanyaan ini akan ditolak.",
         "removed": "Dihapus: panggilan API yang masih mengirimkannya akan ditolak.",
         "pin": "Agar pengembang aplikasi punya waktu, sematkan versi saat ini di endpoint terlebih dahulu, lalu alihkan ke versi terbaru saat mereka siap."
-      }
+      },
+      "nothing": "Tidak ada perubahan baru. Buat perubahan terlebih dahulu."
     },
     "issue": {
       "no_inputs": "Tambahkan setidaknya satu pertanyaan",

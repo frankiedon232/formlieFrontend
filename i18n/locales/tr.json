@@ -1899,7 +1899,8 @@
         "required": "Artık zorunlu: bunlar olmadan yapılan API çağrıları reddedilir.",
         "removed": "Kaldırıldı: bunları hâlâ gönderen API çağrıları reddedilir.",
         "pin": "Uygulama geliştiricilerine zaman tanımak için önce uç noktada mevcut sürümü sabitleyin, hazır olduklarında en son sürüme geçirin."
-      }
+      },
+      "nothing": "Yeni değişiklik yok. Önce değişiklik yapın."
     },
     "issue": {
       "no_inputs": "En az bir soru ekleyin",

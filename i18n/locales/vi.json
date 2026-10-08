@@ -1899,7 +1899,8 @@
         "required": "Nay bắt buộc: các lệnh gọi API thiếu chúng sẽ bị từ chối.",
         "removed": "Đã xóa: các lệnh gọi API vẫn gửi chúng sẽ bị từ chối.",
         "pin": "Để nhà phát triển ứng dụng có thời gian, hãy ghim phiên bản hiện tại trong endpoint trước, rồi chuyển sang phiên bản mới nhất khi họ sẵn sàng."
-      }
+      },
+      "nothing": "Chưa có thay đổi mới. Hãy thực hiện thay đổi trước."
     },
     "issue": {
       "no_inputs": "Thêm ít nhất một câu hỏi",

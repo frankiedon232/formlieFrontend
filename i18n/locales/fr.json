@@ -1899,7 +1899,8 @@
         "required": "Désormais obligatoires : les appels API sans elles seront refusés.",
         "removed": "Supprimées : les appels API qui les envoient encore seront refusés.",
         "pin": "Pour laisser du temps aux développeurs d'applications, épinglez d'abord la version actuelle dans le point de terminaison, puis passez-le à la dernière version quand ils sont prêts."
-      }
+      },
+      "nothing": "Aucune nouvelle modification. Effectuez d'abord des modifications."
     },
     "issue": {
       "no_inputs": "Ajoutez au moins une question",

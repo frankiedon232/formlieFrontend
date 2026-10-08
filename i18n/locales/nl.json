@@ -1899,7 +1899,8 @@
         "required": "Nu verplicht: API-aanroepen zonder deze vragen worden geweigerd.",
         "removed": "Verwijderd: API-aanroepen die ze nog versturen worden geweigerd.",
         "pin": "Om app-ontwikkelaars tijd te geven, zet je eerst de huidige versie vast in het eindpunt en schakel je het daarna over naar de nieuwste als ze klaar zijn."
-      }
+      },
+      "nothing": "Geen nieuwe wijzigingen. Breng eerst wijzigingen aan."
     },
     "issue": {
       "no_inputs": "Voeg minstens één vraag toe",

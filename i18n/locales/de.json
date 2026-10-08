@@ -1899,7 +1899,8 @@
         "required": "Jetzt Pflicht: API-Aufrufe ohne sie werden abgelehnt.",
         "removed": "Entfernt: API-Aufrufe, die sie weiterhin senden, werden abgelehnt.",
         "pin": "Damit App-Entwickler Zeit haben, fixieren Sie zuerst die aktuelle Version im Endpunkt und stellen ihn dann auf die neueste um, wenn sie bereit sind."
-      }
+      },
+      "nothing": "Keine neuen Änderungen. Nehmen Sie zuerst Änderungen vor."
     },
     "issue": {
       "no_inputs": "Fügen Sie mindestens eine Frage hinzu",

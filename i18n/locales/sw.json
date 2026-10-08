@@ -1899,7 +1899,8 @@
         "required": "Sasa ni ya lazima: miito ya API bila hayo itakataliwa.",
         "removed": "Yameondolewa: miito ya API inayoyatuma bado itakataliwa.",
         "pin": "Ili kuwapa wasanidi wa programu muda, bandika kwanza toleo la sasa kwenye endpoint, kisha libadilishe kuwa jipya zaidi wakiwa tayari."
-      }
+      },
+      "nothing": "Hakuna mabadiliko mapya. Fanya mabadiliko kwanza."
     },
     "issue": {
       "no_inputs": "Ongeza angalau swali moja",

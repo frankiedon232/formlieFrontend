@@ -1899,7 +1899,8 @@
         "required": "Ora obbligatorie: le chiamate API senza di esse verranno rifiutate.",
         "removed": "Rimosse: le chiamate API che le inviano ancora verranno rifiutate.",
         "pin": "Per dare tempo agli sviluppatori delle app, blocca prima la versione attuale nell'endpoint, poi passa all'ultima quando sono pronti."
-      }
+      },
+      "nothing": "Nessuna nuova modifica. Apporta prima delle modifiche."
     },
     "issue": {
       "no_inputs": "Aggiungi almeno una domanda",

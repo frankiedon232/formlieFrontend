@@ -1907,7 +1907,8 @@
         "required": "Now required: API calls without them will be refused.",
         "removed": "Removed: API calls that still send them will be refused.",
         "pin": "To give app developers time, pin the current version in the endpoint first, then switch it to the latest when they are ready."
-      }
+      },
+      "nothing": "No new changes. Make changes first."
     },
     "issue": {
       "no_inputs": "Add at least one question",

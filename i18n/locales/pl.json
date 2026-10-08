@@ -1899,7 +1899,8 @@
         "required": "Teraz wymagane: wywołania API bez nich zostaną odrzucone.",
         "removed": "Usunięte: wywołania API, które nadal je wysyłają, zostaną odrzucone.",
         "pin": "Aby dać twórcom aplikacji czas, najpierw przypnij bieżącą wersję w punkcie końcowym, a gdy będą gotowi, przełącz go na najnowszą."
-      }
+      },
+      "nothing": "Brak nowych zmian. Najpierw wprowadź zmiany."
     },
     "issue": {
       "no_inputs": "Dodaj co najmniej jedno pytanie",
