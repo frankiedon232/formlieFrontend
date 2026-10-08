@@ -25,6 +25,7 @@ import { createHash, timingSafeEqual } from 'node:crypto'
 import type { H3Event } from 'h3'
 import { checkSubmission } from '#shared/utils/forms/submission'
 import { choiceFilter, choiceOut, choicesIn } from '#shared/utils/apiService/choices'
+import { libraryOf } from './data/libraryStore'
 import { cascadeClosed, fitAnswer } from '#shared/utils/forms/cascade'
 import { allFields, type FormField } from '#shared/utils/forms/build'
 import { isFileField, maxFileBytes } from '#shared/utils/forms/file-answers'
@@ -338,6 +339,15 @@ async function handle(event: H3Event, path: string, context: CallContext) {
     const fields = new Map(allFields(schema).map(field => [field.key, field]))
     // Choices may be sent by label as records show them (owner 2026-10-08): labels become option values
     body = choicesIn(allFields(schema), body)
+    // Labels for records: the form's options, plus options of its lists the form no longer offers (retired
+    // since), so older answers still read as what was chosen
+    const lists = new Map(libraryOf(tenant).lists.map(list => [list.id, list]))
+    const labelDefs = new Map([...fields].map(([key, field]) => {
+      const list = field.option_set_id ? lists.get(field.option_set_id) : undefined
+      const known = new Set((field.options ?? []).map(option => option.value))
+      const older = list ? list.options.filter(option => !known.has(option.value)).map(option => ({ value: option.value, label: option.label })) : []
+      return [key, older.length ? { ...field, options: [...(field.options ?? []), ...older] } : field]
+    }))
 
     // Files: checked like the form page, stored at once (test tokens: checked only) → an id for the JSON
     if (upload) {
@@ -368,7 +378,7 @@ async function handle(event: H3Event, path: string, context: CallContext) {
         const id = decodeId(recordRef)
         const entry = id ? entries.find(item => item.id === id) : undefined
         if (!entry) throw new PublicError('FRM-API-1013')
-        return send(event, 200, { data: record(form, entry, choices, fields) })
+        return send(event, 200, { data: record(form, entry, choices, labelDefs) })
       }
       const query = getQuery(event)
       const filters = choices.filter(field => field.filter && typeof query[field.name] === 'string')
@@ -376,7 +386,7 @@ async function handle(event: H3Event, path: string, context: CallContext) {
       list = [...list].sort((a, b) => (query.sort === 'submitted_at' ? a.at - b.at : b.at - a.at))
       const perPage = Math.min(endpoint.page_size, Math.max(1, Number(query.per_page) || Math.min(20, endpoint.page_size)))
       const page = Math.max(1, Number(query.page) || 1)
-      return send(event, 200, { data: list.slice((page - 1) * perPage, page * perPage).map(entry => record(form, entry, choices, fields)), meta: { page, per_page: perPage, total: list.length, total_pages: Math.max(1, Math.ceil(list.length / perPage)) } })
+      return send(event, 200, { data: list.slice((page - 1) * perPage, page * perPage).map(entry => record(form, entry, choices, labelDefs)), meta: { page, per_page: perPage, total: list.length, total_pages: Math.max(1, Math.ceil(list.length / perPage)) } })
     }
 
     // Writing: only accepted questions, then the form's own rules
@@ -419,7 +429,7 @@ async function handle(event: H3Event, path: string, context: CallContext) {
         if (earlier.hash !== hash) throw new PublicError('FRM-API-1020', [{ field: 'Formalie-Key', message: 'used_for_another_body' }])
         if (earlier.answer) return send(event, 200, { ...(earlier.answer as object), meta: { replayed: true } })
         const entry = earlier.response_id ? formResponses(tenant, form).find(item => item.id === earlier.response_id) : undefined
-        if (entry) return send(event, 200, { data: record(form, entry, choices, fields), meta: { replayed: true } })
+        if (entry) return send(event, 200, { data: record(form, entry, choices, labelDefs), meta: { replayed: true } })
       }
       // The form's own duplicate rules, exactly as on its web page (owner, 2026-10-06: a new Formalie-Key is no
       // way round them): the same answers twice are refused; with the form's identity email, the same email is
@@ -455,7 +465,7 @@ async function handle(event: H3Event, path: string, context: CallContext) {
       notifyResponse(event, tenant, form, stored.id, !!stored.possible_duplicate)
       emailResponse(event, tenant, form, schema, stored)
       const entry = formResponses(tenant, form).find(item => item.id === stored.id)!
-      return send(event, 201, { data: record(form, entry, choices, fields) })
+      return send(event, 201, { data: record(form, entry, choices, labelDefs) })
     }
 
     // PUT / DELETE on one record
@@ -498,7 +508,7 @@ async function handle(event: H3Event, path: string, context: CallContext) {
     recordAudit(event, tenant, { action: 'responses.updated', actor, resource: { type: 'response', id: entry.id, name: form.name }, changes: Object.keys(body).map(field => ({ field: fields.get(field)?.label ?? field, before: JSON.stringify(before[field] ?? null), after: JSON.stringify(body[field] ?? null) })), metadata: { endpoint: endpoint.name } })
     emitResponse(event, tenant, 'response.updated', form, entry.id)
     const updated = formResponses(tenant, form).find(item => item.id === entry.id)!
-    return send(event, 200, { data: record(form, updated, choices, fields) })
+    return send(event, 200, { data: record(form, updated, choices, labelDefs) })
   } catch (error) {
     if (error instanceof PublicError) {
       // Details name what the app sent: the API name, not the question key
