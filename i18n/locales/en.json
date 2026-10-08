@@ -1855,11 +1855,12 @@
       "deleteTitle": "Delete this page?",
       "deleteDesc": "Its {count} field is deleted too. You can undo this. | Its {count} fields are deleted too. You can undo this.",
       "stepOf": "Step {n} of {total}",
-      "title": "Page title"
+      "title": "Page name",
+      "rename": "Rename page"
     },
     "empty": {
       "title": "This page is empty",
-      "desc": "Drag a field here, or start with one of these:"
+      "desc": "Click anywhere on the page to add a field right there, drag one in, or start with one of these:"
     },
     "paragraphEmpty": "Write the text in the settings on the right.",
     "imageEmpty": "Add an image link in the settings.",
@@ -2316,6 +2317,12 @@
       "several": "Allow several choices",
       "severalHint": "With several chosen, the next level offers what is under any of them.",
       "editList": "Edit the list"
+    },
+    "pane": {
+      "hideFields": "Hide the field list",
+      "showFields": "Show the field list",
+      "hideSettings": "Hide the settings",
+      "showSettings": "Show the settings"
     }
   },
   "renderer": {

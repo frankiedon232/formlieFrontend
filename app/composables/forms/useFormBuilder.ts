@@ -182,6 +182,19 @@ export function useFormBuilder() {
   }
   const addField = (type: FieldType, target?: { pageId: string; rowIndex: number }) =>
     schema.value ? place(createField(type), target) : null
+  /** Click-to-add beside the fields of a row that has room (they share it evenly when it fills up). */
+  function addToRow(type: FieldType, target: { pageId: string; rowIndex: number }): FormField | null {
+    const destPage = schema.value?.pages.find(p => p.id === target.pageId)
+    const row = destPage?.rows[target.rowIndex]
+    if (!destPage || !row) return null
+    history.record()
+    const field = createField(type)
+    row.fields.push(field)
+    normaliseRows(destPage)
+    pageId.value = destPage.id
+    selected.value = [field.id]
+    return field
+  }
 
   // ── Editing ──────────────────────────────────────────────────────────────────────
   function updateField(id: string, patch: Partial<FormField>, group?: string) {
@@ -446,6 +459,7 @@ export function useFormBuilder() {
     placeRow,
     place,
     addField,
+    addToRow,
     updateField,
     renameField,
     updateProps,

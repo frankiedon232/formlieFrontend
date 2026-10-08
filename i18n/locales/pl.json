@@ -1847,11 +1847,12 @@
       "deleteTitle": "Usunąć tę stronę?",
       "deleteDesc": "Jej pola ({count}) też zostaną usunięte. Możesz to cofnąć. | Jej pola ({count}) też zostaną usunięte. Możesz to cofnąć.",
       "stepOf": "Krok {n} z {total}",
-      "title": "Tytuł strony"
+      "title": "Nazwa strony",
+      "rename": "Zmień nazwę strony"
     },
     "empty": {
       "title": "Ta strona jest pusta",
-      "desc": "Przeciągnij tu pole albo zacznij od jednego z tych:"
+      "desc": "Kliknij w dowolnym miejscu strony, aby dodać tam pole, przeciągnij pole lub zacznij od jednego z tych:"
     },
     "paragraphEmpty": "Wpisz tekst w ustawieniach po prawej.",
     "imageEmpty": "Dodaj link do obrazu w ustawieniach.",
@@ -2316,6 +2317,12 @@
       "several": "Zezwalaj na kilka wyborów",
       "severalHint": "Przy kilku wyborach następny poziom pokazuje to, co jest pod którymkolwiek z nich.",
       "editList": "Edytuj listę"
+    },
+    "pane": {
+      "hideFields": "Ukryj listę pól",
+      "showFields": "Pokaż listę pól",
+      "hideSettings": "Ukryj ustawienia",
+      "showSettings": "Pokaż ustawienia"
     }
   },
   "renderer": {

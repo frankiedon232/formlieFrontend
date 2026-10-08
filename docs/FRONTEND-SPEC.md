@@ -99,6 +99,9 @@ Public (SSR, `layouts/public.vue`) on `forms.formalie.*` and workspace subdomain
 Three panes on desktop: **Field palette** (left, searchable; tabs Fields by category · Saved fields · Lists) · **Canvas** (centre, pages as tabs/stack) · **Inspector** (right, field properties, validation, logic shortcut). On tablet: palette and inspector become slide-overs; on phone: canvas with bottom `UDrawer` for palette/inspector (editing works on phone, comfortable on desktop).
 
 - Drag from palette to canvas; reorder fields, rows, sections, pages; drop indicators; auto-scroll; multi-column rows (12-col grid widths: full, 1/2, 1/3, 2/3, 1/4).
+- Click to add (owner 2026-10-08): a click on an empty spot of the page opens a searchable field list at the click; the field lands there (a new row after the row clicked or above the next one; beside the fields of a row with room when clicked to their right). With a field selected, the first click only clears the selection.
+- The page has no title block: the page name lives on its tab (pencil or double-click to rename). The page fills the screen height and grows with its content.
+- Large screens: the Fields and Settings panes collapse and open from the toggles at both ends of the page tabs row (open by default, remembered in the browser); selecting a field opens Settings again.
 - Select (click/Enter), multi-select (Shift/Ctrl), duplicate (`Ctrl+D`), delete (`Del` with undo toast), move up/down (`Alt+↑/↓`), undo/redo (`Ctrl+Z`/`Ctrl+Shift+Z`).
 - Autosave to draft (debounced), "Saved · 2s ago" indicator, conflict detection (version number).
 - Top bar: form name (inline edit), status badge (Draft/Published/Changes not published), Preview, Publish (with change summary), more menu.

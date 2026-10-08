@@ -1847,11 +1847,12 @@
       "deleteTitle": "Bu sayfa silinsin mi?",
       "deleteDesc": "İçindeki {count} alan da silinir. Geri alabilirsiniz. | İçindeki {count} alan da silinir. Geri alabilirsiniz.",
       "stepOf": "Adım {n}/{total}",
-      "title": "Sayfa başlığı"
+      "title": "Sayfa adı",
+      "rename": "Sayfayı yeniden adlandır"
     },
     "empty": {
       "title": "Bu sayfa boş",
-      "desc": "Buraya bir alan sürükleyin veya bunlardan biriyle başlayın:"
+      "desc": "Sayfanın herhangi bir yerine tıklayarak tam oraya bir alan ekleyin, bir alan sürükleyin veya şunlardan biriyle başlayın:"
     },
     "paragraphEmpty": "Metni sağdaki ayarlarda yazın.",
     "imageEmpty": "Ayarlardan bir görsel bağlantısı ekleyin.",
@@ -2316,6 +2317,12 @@
       "several": "Birden çok seçime izin ver",
       "severalHint": "Birden çok seçildiğinde sonraki düzey, bunlardan herhangi birinin altındakileri sunar.",
       "editList": "Listeyi düzenle"
+    },
+    "pane": {
+      "hideFields": "Alan listesini gizle",
+      "showFields": "Alan listesini göster",
+      "hideSettings": "Ayarları gizle",
+      "showSettings": "Ayarları göster"
     }
   },
   "renderer": {

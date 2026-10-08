@@ -1847,11 +1847,12 @@
       "deleteTitle": "Deze pagina verwijderen?",
       "deleteDesc": "Het veld ({count}) wordt ook verwijderd. Je kunt dit ongedaan maken. | De {count} velden worden ook verwijderd. Je kunt dit ongedaan maken.",
       "stepOf": "Stap {n} van {total}",
-      "title": "Paginatitel"
+      "title": "Paginanaam",
+      "rename": "Pagina hernoemen"
     },
     "empty": {
       "title": "Deze pagina is leeg",
-      "desc": "Sleep hier een veld naartoe of begin met een van deze:"
+      "desc": "Klik ergens op de pagina om daar een veld toe te voegen, sleep er een naartoe, of begin met een van deze:"
     },
     "paragraphEmpty": "Schrijf de tekst in de instellingen rechts.",
     "imageEmpty": "Voeg in de instellingen een afbeeldingslink toe.",
@@ -2316,6 +2317,12 @@
       "several": "Meerdere keuzes toestaan",
       "severalHint": "Bij meerdere keuzes biedt het volgende niveau wat onder een van die keuzes valt.",
       "editList": "Lijst bewerken"
+    },
+    "pane": {
+      "hideFields": "Veldenlijst verbergen",
+      "showFields": "Veldenlijst tonen",
+      "hideSettings": "Instellingen verbergen",
+      "showSettings": "Instellingen tonen"
     }
   },
   "renderer": {

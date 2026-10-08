@@ -1847,11 +1847,12 @@
       "deleteTitle": "¿Eliminar esta página?",
       "deleteDesc": "También se elimina su campo ({count}). Puedes deshacerlo. | También se eliminan sus {count} campos. Puedes deshacerlo.",
       "stepOf": "Paso {n} de {total}",
-      "title": "Título de la página"
+      "title": "Nombre de la página",
+      "rename": "Cambiar nombre de la página"
     },
     "empty": {
       "title": "Esta página está vacía",
-      "desc": "Arrastra un campo aquí o empieza con uno de estos:"
+      "desc": "Haz clic en cualquier parte de la página para añadir un campo justo ahí, arrastra uno o empieza con uno de estos:"
     },
     "paragraphEmpty": "Escribe el texto en los ajustes de la derecha.",
     "imageEmpty": "Añade el enlace de una imagen en los ajustes.",
@@ -2316,6 +2317,12 @@
       "several": "Permitir varias opciones",
       "severalHint": "Si se eligen varias, el siguiente nivel ofrece lo que hay bajo cualquiera de ellas.",
       "editList": "Editar la lista"
+    },
+    "pane": {
+      "hideFields": "Ocultar la lista de campos",
+      "showFields": "Mostrar la lista de campos",
+      "hideSettings": "Ocultar los ajustes",
+      "showSettings": "Mostrar los ajustes"
     }
   },
   "renderer": {

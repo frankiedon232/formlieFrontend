@@ -1847,11 +1847,12 @@
       "deleteTitle": "Hapus halaman ini?",
       "deleteDesc": "{count} kolom di dalamnya juga dihapus. Anda bisa mengurungkannya. | {count} kolom di dalamnya juga dihapus. Anda bisa mengurungkannya.",
       "stepOf": "Langkah {n} dari {total}",
-      "title": "Judul halaman"
+      "title": "Nama halaman",
+      "rename": "Ganti nama halaman"
     },
     "empty": {
       "title": "Halaman ini kosong",
-      "desc": "Seret kolom ke sini atau mulai dengan salah satu ini:"
+      "desc": "Klik di mana saja pada halaman untuk menambahkan kolom di tempat itu, seret satu kolom ke sini, atau mulai dengan salah satu ini:"
     },
     "paragraphEmpty": "Tulis teksnya di pengaturan sebelah kanan.",
     "imageEmpty": "Tambahkan tautan gambar di pengaturan.",
@@ -2316,6 +2317,12 @@
       "several": "Izinkan beberapa pilihan",
       "severalHint": "Jika beberapa dipilih, tingkat berikutnya menawarkan isi di bawah salah satunya.",
       "editList": "Edit daftar"
+    },
+    "pane": {
+      "hideFields": "Sembunyikan daftar kolom",
+      "showFields": "Tampilkan daftar kolom",
+      "hideSettings": "Sembunyikan pengaturan",
+      "showSettings": "Tampilkan pengaturan"
     }
   },
   "renderer": {

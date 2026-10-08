@@ -1847,11 +1847,12 @@
       "deleteTitle": "Diese Seite löschen?",
       "deleteDesc": "Ihr Feld ({count}) wird ebenfalls gelöscht. Sie können das rückgängig machen. | Ihre {count} Felder werden ebenfalls gelöscht. Sie können das rückgängig machen.",
       "stepOf": "Schritt {n} von {total}",
-      "title": "Seitentitel"
+      "title": "Seitenname",
+      "rename": "Seite umbenennen"
     },
     "empty": {
       "title": "Diese Seite ist leer",
-      "desc": "Ziehen Sie ein Feld hierher oder beginnen Sie mit einem davon:"
+      "desc": "Klicken Sie irgendwo auf die Seite, um genau dort ein Feld hinzuzufügen, ziehen Sie eines hinein oder beginnen Sie mit einem dieser Felder:"
     },
     "paragraphEmpty": "Schreiben Sie den Text in den Einstellungen rechts.",
     "imageEmpty": "Fügen Sie in den Einstellungen einen Bildlink hinzu.",
@@ -2316,6 +2317,12 @@
       "several": "Mehrfachauswahl erlauben",
       "severalHint": "Bei mehreren Auswahlen zeigt die nächste Ebene, was unter einer davon liegt.",
       "editList": "Liste bearbeiten"
+    },
+    "pane": {
+      "hideFields": "Feldliste ausblenden",
+      "showFields": "Feldliste einblenden",
+      "hideSettings": "Einstellungen ausblenden",
+      "showSettings": "Einstellungen einblenden"
     }
   },
   "renderer": {

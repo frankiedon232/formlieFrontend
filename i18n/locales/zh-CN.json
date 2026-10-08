@@ -1847,11 +1847,12 @@
       "deleteTitle": "删除此页面？",
       "deleteDesc": "其中的 {count} 个字段也会被删除，可以撤销。 | 其中的 {count} 个字段也会被删除，可以撤销。",
       "stepOf": "第 {n} 步，共 {total} 步",
-      "title": "页面标题"
+      "title": "页面名称",
+      "rename": "重命名页面"
     },
     "empty": {
       "title": "此页面为空",
-      "desc": "把字段拖到这里，或从以下字段开始："
+      "desc": "点击页面任意位置即可在该处添加字段，也可以拖入一个字段，或从以下选项开始："
     },
     "paragraphEmpty": "在右侧设置中填写文字。",
     "imageEmpty": "在设置中添加图片链接。",
@@ -2316,6 +2317,12 @@
       "several": "允许多选",
       "severalHint": "选择多项时，下一级会提供其中任意一项下的内容。",
       "editList": "编辑列表"
+    },
+    "pane": {
+      "hideFields": "隐藏字段列表",
+      "showFields": "显示字段列表",
+      "hideSettings": "隐藏设置",
+      "showSettings": "显示设置"
     }
   },
   "renderer": {

@@ -2,6 +2,8 @@
   Form builder (FRONTEND-SPEC §6, PROGRESS F7). Palette | canvas | inspector on large screens;
   below that the canvas with palette / inspector in slide-overs (tablet) or bottom drawers (phone)
   behind a floating bar. Header, saving and publishing come from <FormsBuilderFrame>.
+  Both side panes collapse to a slim bar for a wider canvas (owner 2026-10-08; open by default,
+  remembered in this browser); selecting a field opens the settings pane again.
 -->
 <script setup lang="ts">
 import { publishIssues } from '#shared/utils/forms/build'
@@ -28,10 +30,24 @@ const tablet = useMediaQuery('(min-width: 768px)')
 const paneHeight = computed(() => (session.fullscreen.value ? 'h-[calc(100dvh-5.5rem)]' : 'h-[calc(100dvh-11rem)]'))
 const paletteOpen = ref(false)
 const inspectorOpen = ref(false)
+// Large screens: the side panes, open unless collapsed (a display preference, kept in this browser)
+const { fields: paletteShown, settings: inspectorShown } = useBuilderPanes()
+watch(() => builder.selected.value.join(), ids => ids && (inspectorShown.value = true))
+const columns = computed(() => GRID[`${paletteShown.value ? 'p' : '-'}${inspectorShown.value ? 'i' : '-'}`])
+const GRID: Record<string, string> = {
+  pi: 'lg:grid-cols-[240px_minmax(0,1fr)_300px]',
+  'p-': 'lg:grid-cols-[240px_minmax(0,1fr)]',
+  '-i': 'lg:grid-cols-[minmax(0,1fr)_300px]',
+  '--': 'lg:grid-cols-1',
+}
+// The page fills the height left beside the panes and grows with its content
+const canvasHeight = computed(() => (session.fullscreen.value ? 'min-h-[calc(100dvh-10rem)]' : 'min-h-[calc(100dvh-15.5rem)]'))
 /** "Add field" from the canvas: the drawer / slide-over below laptop width, else the palette search. */
-function showFieldList() {
-  if (large.value) document.querySelector<HTMLInputElement>('#builder-palette input')?.focus()
-  else paletteOpen.value = true
+async function showFieldList() {
+  if (!large.value) return void (paletteOpen.value = true)
+  paletteShown.value = true
+  await nextTick()
+  document.querySelector<HTMLInputElement>('#builder-palette input')?.focus()
 }
 
 defineShortcuts({
@@ -58,16 +74,20 @@ defineShortcuts({
       </div>
     </template>
 
-    <div class="grid items-start gap-4 lg:grid-cols-[240px_minmax(0,1fr)_300px]">
-      <UCard v-if="large" class="sticky top-0" :ui="{ body: `p-3 sm:p-3 ${paneHeight}` }">
-        <FormsBuilderPalette id="builder-palette" />
-      </UCard>
+    <div class="grid items-start gap-4" :class="columns">
+      <template v-if="large">
+        <UCard v-if="paletteShown" class="sticky top-0" :ui="{ body: `p-3 sm:p-3 ${paneHeight}` }">
+          <FormsBuilderPalette id="builder-palette" />
+        </UCard>
+      </template>
       <div class="min-w-0 rounded-xl bg-elevated/40 p-2 sm:p-3">
-        <FormsBuilderCanvas :issues="issues" @add-field="showFieldList" />
+        <FormsBuilderCanvas :issues="issues" :min-height="canvasHeight" @add-field="showFieldList" />
       </div>
-      <UCard v-if="large" class="sticky top-0" :ui="{ body: `p-4 sm:p-4 ${paneHeight}` }">
-        <FormsBuilderInspector />
-      </UCard>
+      <template v-if="large">
+        <UCard v-if="inspectorShown" class="sticky top-0" :ui="{ body: `p-4 sm:p-4 ${paneHeight}` }">
+          <FormsBuilderInspector />
+        </UCard>
+      </template>
     </div>
 
     <template v-if="!large">

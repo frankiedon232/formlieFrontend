@@ -1847,11 +1847,12 @@
       "deleteTitle": "Futa ukurasa huu?",
       "deleteDesc": "Sehemu yake {count} pia itafutwa. Unaweza kutendua. | Sehemu zake {count} pia zitafutwa. Unaweza kutendua.",
       "stepOf": "Hatua {n} kati ya {total}",
-      "title": "Kichwa cha ukurasa"
+      "title": "Jina la ukurasa",
+      "rename": "Badilisha jina la ukurasa"
     },
     "empty": {
       "title": "Ukurasa huu ni tupu",
-      "desc": "Buruta sehemu hapa au anza na mojawapo ya hizi:"
+      "desc": "Bofya popote kwenye ukurasa kuongeza sehemu papo hapo, buruta sehemu moja, au anza na mojawapo ya hizi:"
     },
     "paragraphEmpty": "Andika maandishi kwenye mipangilio upande wa kulia.",
     "imageEmpty": "Ongeza kiungo cha picha kwenye mipangilio.",
@@ -2316,6 +2317,12 @@
       "several": "Ruhusu chaguo kadhaa",
       "severalHint": "Zikichaguliwa kadhaa, ngazi inayofuata hutoa kilicho chini ya yoyote kati yake.",
       "editList": "Hariri orodha"
+    },
+    "pane": {
+      "hideFields": "Ficha orodha ya sehemu",
+      "showFields": "Onyesha orodha ya sehemu",
+      "hideSettings": "Ficha mipangilio",
+      "showSettings": "Onyesha mipangilio"
     }
   },
   "renderer": {

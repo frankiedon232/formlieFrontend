@@ -1847,11 +1847,12 @@
       "deleteTitle": "Xóa trang này?",
       "deleteDesc": "{count} trường trong trang cũng bị xóa. Bạn có thể hoàn tác. | {count} trường trong trang cũng bị xóa. Bạn có thể hoàn tác.",
       "stepOf": "Bước {n}/{total}",
-      "title": "Tiêu đề trang"
+      "title": "Tên trang",
+      "rename": "Đổi tên trang"
     },
     "empty": {
       "title": "Trang này đang trống",
-      "desc": "Kéo một trường vào đây hoặc bắt đầu với một trong số này:"
+      "desc": "Nhấp vào bất kỳ đâu trên trang để thêm trường ngay tại đó, kéo một trường vào, hoặc bắt đầu với một trong các trường này:"
     },
     "paragraphEmpty": "Viết nội dung trong phần cài đặt bên phải.",
     "imageEmpty": "Thêm liên kết ảnh trong phần cài đặt.",
@@ -2316,6 +2317,12 @@
       "several": "Cho phép nhiều lựa chọn",
       "severalHint": "Khi chọn nhiều, cấp tiếp theo hiển thị những gì nằm dưới bất kỳ lựa chọn nào trong số đó.",
       "editList": "Chỉnh sửa danh sách"
+    },
+    "pane": {
+      "hideFields": "Ẩn danh sách trường",
+      "showFields": "Hiện danh sách trường",
+      "hideSettings": "Ẩn cài đặt",
+      "showSettings": "Hiện cài đặt"
     }
   },
   "renderer": {
