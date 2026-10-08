@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-08 (lists with levels refined, builder click-to-add and panes, theme block styles, form and page names outside the form body, API connections, Publish only with changes)
+**Last updated:** 2026-10-08 (owner's general test done: lists with levels, builder click-to-add and panes, theme block styles, names outside the form body, API labels / order / connections, Publish only with changes; next: F15 M3 search for large lists)
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend
 
@@ -1171,6 +1171,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-08 | Themes style sections, dividers, paragraphs and images too (various designs; themes, starting points and templates) | F8 | ✅ |
 | 2026-10-08 | API: a new endpoint looked assigned a token nobody made for it; wizard tokens named "{service} · /endpoint" instead of "{Service} Token"; visible connections in every API detail panel | F13 | ✅ |
 | 2026-10-08 | Publish only clickable when there are new changes; otherwise "No new changes. Make changes first." | F7 | ✅ |
+| 2026-10-08 | A general token (no service or endpoint) may call every endpoint, also ones made later: kept as is (owner, after a POST to /vehicles with the sample token "Mobile app") | F13 | ✅ decided |
 | 2026-10-08 | API records showed list answers as value codes (running_shoes_air_footwear) instead of what was chosen | F13 / F15 | ✅ |
 | 2026-10-08 | API examples (docs, endpoint example, console, code, test tokens) in the form's order; no made-up values for lists with levels | F13 | ✅ |
 | 2026-10-06 | Menu "Docs & testing" renamed "API Documentation" (menu, page title, breadcrumbs and the guidance that points to it) | F13 | ✅ |
@@ -1422,3 +1423,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-08 | F13 / F15 | Owner tested the API with plain lists and lists with levels: records gave value codes ("running_shoes_air_footwear"). Now records give option labels (one choice: the label; several: a list of labels; every level of a list with levels); POST, PUT and GET filters take a label (any case) or a value, labels become values before the form's checks, a label shared by two options of a level is settled by the choice above (`choiceOut`, `choicesIn`, `choiceFilter`). Docs list labels (value on hover), examples and the OpenAPI enum use labels. Tests updated and added (538). |
 | 2026-10-08 | F13 | Owner: example bodies were not in the form's order (required questions were put first) and a list with levels showed "option_1" under a top option with nothing under it. Examples (`exampleRequestBody`, `exampleRecord`, used by the Docs page, an endpoint's Example call, the test console, the code snippets and test-token answers) now follow the form's order; each level picks an option with something under it all the way down, and a level with nothing to offer is null, never made up. Checked in the browser on /account (GET and POST examples in form order); tests added (540). |
 | 2026-10-08 | F13 / F15 | Owner asked that the API fixes hold for every endpoint and list, not just the tested form: confirmed (examples, labels and level paths are worked out from each form's questions every time; any endpoint, any list, up to 4 levels, any question with options). One gap closed: an answer whose option was later removed from the form now still reads as its label, looked up in the form's List Option list (retired options keep their labels). |
+| 2026-10-08 | All | Owner's general test done. Decision: general tokens stay general (they may call every endpoint, also ones made later; shown with a globe in Connections). Docs tidied: OPTION-LISTS marks its draft model as superseded where built differently and its phasing shows M1, M2 done and M3 search next. |

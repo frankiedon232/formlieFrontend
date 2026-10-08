@@ -18,6 +18,8 @@ Kinds combine: a cascading list can be large, have details on every level, and b
 
 ## Data model
 
+> Draft from 2026-10-02. Parts built so far differ, see the "as built" sections at the end: levels are `OptionList.levels` with `OptionItem.level / parent` (the parent's value, not an id), fields carry `option_set_id`, `option_level` and `option_parent`, and a list with levels is added from the Lists tab (no separate palette item). Columns, auto-fill and dynamic sources are still plans.
+
 ```ts
 OptionList {
   id, name, description?
@@ -35,7 +37,7 @@ OptionList {
 
 OptionItem {
   id, list_id, value, label
-  level: 0 | 1 | …, parent_id: string | null         // tree: parent on the level above
+  level: 0 | 1 | …, parent: string | null           // tree: the option above (its value; built as `parent`)
   attrs: Record<column key, string | number>         // details for auto-fill
   translations?: Record<locale, string>              // label per language
   active: boolean                                    // retire without breaking old answers
@@ -52,7 +54,7 @@ Small static lists may still be copied into the field as today.
 field.option_source = {
   list_id: 'lst_…',
   level?: 1,                       // tree: which level this field shows
-  parent_field?: 'fld_…',          // tree: the field holding the level above
+  parent_field?: 'fld_…',          // tree: the field holding the level above (built as `option_parent`)
   search?: boolean,                // autocomplete; on automatically above ~200 items
   min_chars?: 1, show_inactive?: false,
 }
@@ -61,8 +63,8 @@ field.props.fills = [              // auto-fill from the chosen item's columns
 ]
 ```
 
-- **Builder:** a **Cascading choice** palette item asks for the list and adds one field per level,
-  side by side (½ / ⅓) and already linked. The inspector shows the chain (State → City → Location)
+- **Builder** (as built: the Lists tab, click or drag; see below): one field per level,
+  side by side and already linked. The inspector shows the chain (State → City → Location)
   and lets you drop levels or change each field's label. "Fill other fields" lists the columns and a
   target field for each.
 - **Respondents:** a child field stays disabled until its parent has an answer; changing the parent
@@ -101,9 +103,9 @@ Deleting or retiring items never breaks old responses.
 
 ## Phasing
 
-1. **F15a, List manager:** the Option sets page (DataView), items editor, bulk paste, CSV import, translations, "used in".
-2. **F15b, Large lists + autocomplete:** server-side items, search-as-you-type field mode, paging.
-3. **F15c, Cascading lists:** tree lists with levels, "Cascading choice" field group, parent → child loading.
+1. **F15a, List manager (M1, done):** the List Option page (DataView), items editor, bulk paste, CSV / Excel import, translations, "used in".
+2. **F15c, Lists with levels (M2, done, brought forward by the owner):** up to 4 levels, linked fields from the Lists tab, each level narrowing the next.
+3. **F15b, Large lists + autocomplete (M3, next):** server-side items, search-as-you-type field mode, paging.
 4. **F15d, Details + auto-fill:** columns on items, "Fill other fields", formulas / logic on columns.
 5. **F15e, Dynamic lists:** sources from forms, connected databases (after F12 Data sources), JSON URL, refreshed CSV; sync log.
 
