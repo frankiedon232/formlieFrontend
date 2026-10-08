@@ -2855,7 +2855,8 @@
       "header": "ヘッダー",
       "footer": "フッター",
       "thankYou": "完了ページ",
-      "frame": "ランディングページのスタイル"
+      "frame": "ランディングページのスタイル",
+      "blocks": "セクションとブロック"
     },
     "layout": {
       "card": "カード",
@@ -3017,7 +3018,44 @@
       "showFacts": "概要",
       "showFactsHint": "所要時間、質問数、回答が暗号化されていること。"
     },
-    "applied": "「{name}」を適用しました"
+    "applied": "「{name}」を適用しました",
+    "blocks": {
+      "hint": "フォーム内のセクション、区切り線、段落、画像の見た目を設定します。それぞれのサイズ、配置、幅は個別に保持されます。",
+      "sectionStyle": "見出しのスタイル",
+      "section": {
+        "plain": "標準",
+        "underline": "下線",
+        "accent": "サイド線",
+        "band": "帯"
+      },
+      "headingColor": "見出しの色",
+      "color": {
+        "text": "テキスト",
+        "primary": "アクセント"
+      },
+      "caps": "スモールキャップ",
+      "dividerStyle": "スタイル",
+      "divider": {
+        "line": "線",
+        "accent": "色",
+        "gradient": "フェード",
+        "dots": "点",
+        "space": "余白"
+      },
+      "weight": "太さ",
+      "weightOption": {
+        "thin": "細",
+        "thick": "太"
+      },
+      "paragraphStyle": "スタイル",
+      "paragraph": {
+        "plain": "標準",
+        "muted": "淡色",
+        "callout": "強調"
+      },
+      "shadow": "影",
+      "border": "枠線"
+    }
   },
   "themes": {
     "subtitle": "どのフォームでも使える保存済みデザイン",

@@ -2855,7 +2855,8 @@
       "header": "Đầu trang",
       "footer": "Chân trang",
       "thankYou": "Trang cảm ơn",
-      "frame": "Kiểu trang đích"
+      "frame": "Kiểu trang đích",
+      "blocks": "Phần và khối"
     },
     "layout": {
       "card": "Thẻ",
@@ -3017,7 +3018,44 @@
       "showFacts": "Thông tin nhanh",
       "showFactsHint": "Mất bao lâu, có bao nhiêu câu hỏi và câu trả lời được mã hóa."
     },
-    "applied": "Đã áp dụng “{name}”"
+    "applied": "Đã áp dụng “{name}”",
+    "blocks": {
+      "hint": "Cách các phần, đường phân cách, đoạn văn và hình ảnh hiển thị trong biểu mẫu. Mỗi mục giữ kích thước, căn lề và độ rộng riêng.",
+      "sectionStyle": "Kiểu tiêu đề",
+      "section": {
+        "plain": "Thường",
+        "underline": "Gạch chân",
+        "accent": "Viền cạnh",
+        "band": "Dải"
+      },
+      "headingColor": "Màu tiêu đề",
+      "color": {
+        "text": "Văn bản",
+        "primary": "Màu nhấn"
+      },
+      "caps": "Chữ hoa nhỏ",
+      "dividerStyle": "Kiểu",
+      "divider": {
+        "line": "Đường",
+        "accent": "Màu",
+        "gradient": "Mờ dần",
+        "dots": "Chấm",
+        "space": "Khoảng trống"
+      },
+      "weight": "Độ dày",
+      "weightOption": {
+        "thin": "Mỏng",
+        "thick": "Dày"
+      },
+      "paragraphStyle": "Kiểu",
+      "paragraph": {
+        "plain": "Thường",
+        "muted": "Nhẹ",
+        "callout": "Nổi bật"
+      },
+      "shadow": "Bóng đổ",
+      "border": "Viền"
+    }
   },
   "themes": {
     "subtitle": "Các thiết kế đã lưu mà bạn có thể dùng cho mọi biểu mẫu",

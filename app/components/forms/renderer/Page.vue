@@ -38,6 +38,7 @@ const heading = computed(() => props.schema.settings?.title?.trim() || props.tit
 const branding = useWorkspaceBranding()
 const theme = useFormTheme(() => props.schema.theme)
 provideControlStyle(theme)
+provideBlockStyle(theme)
 
 const vars = computed(() => themeVars(theme.value))
 const WIDTH: Record<string, string> = { sm: 'max-w-xl', md: 'max-w-2xl', lg: 'max-w-3xl', xl: 'max-w-5xl' }

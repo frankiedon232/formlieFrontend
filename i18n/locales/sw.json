@@ -2855,7 +2855,8 @@
       "header": "Kichwa",
       "footer": "Sehemu ya chini",
       "thankYou": "Ukurasa wa shukrani",
-      "frame": "Mtindo wa ukurasa wa kutua"
+      "frame": "Mtindo wa ukurasa wa kutua",
+      "blocks": "Sehemu na vizuizi"
     },
     "layout": {
       "card": "Kadi",
@@ -3017,7 +3018,44 @@
       "showFacts": "Taarifa fupi",
       "showFactsHint": "Inachukua muda gani, maswali mangapi, na kwamba majibu yamesimbwa."
     },
-    "applied": "“{name}” imetumika"
+    "applied": "“{name}” imetumika",
+    "blocks": {
+      "hint": "Jinsi sehemu, vigawanyaji, aya na picha zinavyoonekana kwenye fomu. Kila kimoja huhifadhi ukubwa, mpangilio na upana wake.",
+      "sectionStyle": "Mtindo wa kichwa",
+      "section": {
+        "plain": "Rahisi",
+        "underline": "Mstari chini",
+        "accent": "Ukingo",
+        "band": "Utepe"
+      },
+      "headingColor": "Rangi ya kichwa",
+      "color": {
+        "text": "Maandishi",
+        "primary": "Rangi kuu"
+      },
+      "caps": "Herufi kubwa ndogo",
+      "dividerStyle": "Mtindo",
+      "divider": {
+        "line": "Mstari",
+        "accent": "Rangi",
+        "gradient": "Kufifia",
+        "dots": "Vitone",
+        "space": "Nafasi"
+      },
+      "weight": "Unene",
+      "weightOption": {
+        "thin": "Nyembamba",
+        "thick": "Nene"
+      },
+      "paragraphStyle": "Mtindo",
+      "paragraph": {
+        "plain": "Rahisi",
+        "muted": "Hafifu",
+        "callout": "Kisanduku"
+      },
+      "shadow": "Kivuli",
+      "border": "Mpaka"
+    }
   },
   "themes": {
     "subtitle": "Miundo iliyohifadhiwa unayoweza kutumia kwenye fomu yoyote",

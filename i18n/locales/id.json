@@ -2855,7 +2855,8 @@
       "header": "Header",
       "footer": "Footer",
       "thankYou": "Halaman terima kasih",
-      "frame": "Gaya halaman arahan"
+      "frame": "Gaya halaman arahan",
+      "blocks": "Bagian dan blok"
     },
     "layout": {
       "card": "Kartu",
@@ -3017,7 +3018,44 @@
       "showFacts": "Info singkat",
       "showFactsHint": "Berapa lama waktunya, berapa banyak pertanyaan, dan bahwa jawaban dienkripsi."
     },
-    "applied": "“{name}” diterapkan"
+    "applied": "“{name}” diterapkan",
+    "blocks": {
+      "hint": "Tampilan bagian, pemisah, paragraf, dan gambar dalam formulir. Masing-masing mempertahankan ukuran, perataan, dan lebarnya sendiri.",
+      "sectionStyle": "Gaya judul",
+      "section": {
+        "plain": "Polos",
+        "underline": "Garis bawah",
+        "accent": "Tepi",
+        "band": "Pita"
+      },
+      "headingColor": "Warna judul",
+      "color": {
+        "text": "Teks",
+        "primary": "Aksen"
+      },
+      "caps": "Huruf kapital kecil",
+      "dividerStyle": "Gaya",
+      "divider": {
+        "line": "Garis",
+        "accent": "Warna",
+        "gradient": "Pudar",
+        "dots": "Titik",
+        "space": "Spasi"
+      },
+      "weight": "Ketebalan",
+      "weightOption": {
+        "thin": "Tipis",
+        "thick": "Tebal"
+      },
+      "paragraphStyle": "Gaya",
+      "paragraph": {
+        "plain": "Polos",
+        "muted": "Lembut",
+        "callout": "Sorotan"
+      },
+      "shadow": "Bayangan",
+      "border": "Batas"
+    }
   },
   "themes": {
     "subtitle": "Desain tersimpan yang dapat Anda gunakan di formulir mana pun",

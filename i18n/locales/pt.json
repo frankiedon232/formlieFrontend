@@ -2855,7 +2855,8 @@
       "header": "Cabeçalho",
       "footer": "Rodapé",
       "thankYou": "Página de agradecimento",
-      "frame": "Estilo da página de destino"
+      "frame": "Estilo da página de destino",
+      "blocks": "Seções e blocos"
     },
     "layout": {
       "card": "Cartão",
@@ -3017,7 +3018,44 @@
       "showFacts": "Informações rápidas",
       "showFactsHint": "Quanto tempo leva, quantas perguntas há e que as respostas são criptografadas."
     },
-    "applied": "“{name}” aplicado"
+    "applied": "“{name}” aplicado",
+    "blocks": {
+      "hint": "Como seções, divisores, parágrafos e imagens aparecem no formulário. Cada um mantém seu próprio tamanho, alinhamento e largura.",
+      "sectionStyle": "Estilo do título",
+      "section": {
+        "plain": "Simples",
+        "underline": "Sublinhado",
+        "accent": "Borda",
+        "band": "Faixa"
+      },
+      "headingColor": "Cor do título",
+      "color": {
+        "text": "Texto",
+        "primary": "Destaque"
+      },
+      "caps": "Versaletes",
+      "dividerStyle": "Estilo",
+      "divider": {
+        "line": "Linha",
+        "accent": "Cor",
+        "gradient": "Esmaecido",
+        "dots": "Pontos",
+        "space": "Espaço"
+      },
+      "weight": "Espessura",
+      "weightOption": {
+        "thin": "Fina",
+        "thick": "Grossa"
+      },
+      "paragraphStyle": "Estilo",
+      "paragraph": {
+        "plain": "Simples",
+        "muted": "Suave",
+        "callout": "Destaque"
+      },
+      "shadow": "Sombra",
+      "border": "Borda"
+    }
   },
   "themes": {
     "subtitle": "Designs guardados que pode usar em qualquer formulário",

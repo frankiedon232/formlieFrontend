@@ -1,7 +1,7 @@
 <!--
   Designer controls (FRONTEND-SPEC §7), every part a collapsible group (owner 2026-10-04: the
   themes collapse like the rest, a little space under each open group): Starting points · Your
-  themes · Page designs (Resources → Landing pages) · Page (the frame around the form on its link) · Layout · Background · Form container · Typography · Colours · Inputs · Buttons · Header ·
+  themes · Page designs (Resources → Landing pages) · Page (the frame around the form on its link) · Layout · Background · Form container · Typography · Colours · Inputs · Buttons · Sections and blocks · Header ·
   Footer · Thank-you page. "Reset" goes back to the workspace default.
 -->
 <script setup lang="ts">
@@ -26,6 +26,7 @@ const groups = computed<AccordionItem[]>(() => [
   { value: 'colors', label: t('designer.group.colors'), icon: 'i-lucide-palette', slot: 'colors' },
   { value: 'inputs', label: t('designer.group.inputs'), icon: 'i-lucide-text-cursor-input', slot: 'inputs' },
   { value: 'buttons', label: t('designer.group.buttons'), icon: 'i-lucide-mouse-pointer-click', slot: 'buttons' },
+  { value: 'blocks', label: t('designer.group.blocks'), icon: 'i-lucide-heading', slot: 'blocks' },
   { value: 'header', label: t('designer.group.header'), icon: 'i-lucide-panel-top', slot: 'header' },
   { value: 'footer', label: t('designer.group.footer'), icon: 'i-lucide-panel-bottom', slot: 'footer' },
   { value: 'thank_you', label: t('designer.group.thankYou'), icon: 'i-lucide-party-popper', slot: 'thank_you' },
@@ -59,6 +60,7 @@ async function reset() {
       <template #colors><FormsDesignerPanelStyle group="colors" /></template>
       <template #inputs><FormsDesignerPanelStyle group="inputs" /></template>
       <template #buttons><FormsDesignerPanelStyle group="buttons" /></template>
+      <template #blocks><FormsDesignerPanelBlocks /></template>
       <template #header><FormsDesignerPanelContent group="header" /></template>
       <template #footer><FormsDesignerPanelContent group="footer" /></template>
       <template #thank_you><FormsDesignerPanelContent group="thank_you" /></template>

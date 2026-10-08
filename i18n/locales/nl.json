@@ -2855,7 +2855,8 @@
       "header": "Koptekst",
       "footer": "Voettekst",
       "thankYou": "Bedankpagina",
-      "frame": "Stijl van de landingspagina"
+      "frame": "Stijl van de landingspagina",
+      "blocks": "Secties en blokken"
     },
     "layout": {
       "card": "Kaart",
@@ -3017,7 +3018,44 @@
       "showFacts": "Korte info",
       "showFactsHint": "Hoe lang het duurt, hoeveel vragen er zijn en dat antwoorden versleuteld zijn."
     },
-    "applied": "“{name}” toegepast"
+    "applied": "“{name}” toegepast",
+    "blocks": {
+      "hint": "Hoe secties, scheidingslijnen, alinea’s en afbeeldingen eruitzien in het formulier. Elk behoudt zijn eigen grootte, uitlijning en breedte.",
+      "sectionStyle": "Kopstijl",
+      "section": {
+        "plain": "Eenvoudig",
+        "underline": "Onderstreept",
+        "accent": "Rand",
+        "band": "Balk"
+      },
+      "headingColor": "Kopkleur",
+      "color": {
+        "text": "Tekst",
+        "primary": "Accent"
+      },
+      "caps": "Kleine hoofdletters",
+      "dividerStyle": "Stijl",
+      "divider": {
+        "line": "Lijn",
+        "accent": "Kleur",
+        "gradient": "Verloop",
+        "dots": "Stippen",
+        "space": "Ruimte"
+      },
+      "weight": "Dikte",
+      "weightOption": {
+        "thin": "Dun",
+        "thick": "Dik"
+      },
+      "paragraphStyle": "Stijl",
+      "paragraph": {
+        "plain": "Eenvoudig",
+        "muted": "Zacht",
+        "callout": "Uitgelicht"
+      },
+      "shadow": "Schaduw",
+      "border": "Rand"
+    }
   },
   "themes": {
     "subtitle": "Opgeslagen ontwerpen die u op elk formulier kunt gebruiken",

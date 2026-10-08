@@ -2855,7 +2855,8 @@
       "header": "Intestazione",
       "footer": "Piè di pagina",
       "thankYou": "Pagina di ringraziamento",
-      "frame": "Stile della landing page"
+      "frame": "Stile della landing page",
+      "blocks": "Sezioni e blocchi"
     },
     "layout": {
       "card": "Scheda",
@@ -3017,7 +3018,44 @@
       "showFacts": "Info rapide",
       "showFactsHint": "Quanto tempo serve, quante domande ci sono e che le risposte sono crittografate."
     },
-    "applied": "“{name}” applicato"
+    "applied": "“{name}” applicato",
+    "blocks": {
+      "hint": "Come appaiono nel modulo sezioni, separatori, paragrafi e immagini. Ognuno mantiene la propria dimensione, allineamento e larghezza.",
+      "sectionStyle": "Stile del titolo",
+      "section": {
+        "plain": "Semplice",
+        "underline": "Sottolineato",
+        "accent": "Bordo",
+        "band": "Fascia"
+      },
+      "headingColor": "Colore del titolo",
+      "color": {
+        "text": "Testo",
+        "primary": "Accento"
+      },
+      "caps": "Maiuscoletto",
+      "dividerStyle": "Stile",
+      "divider": {
+        "line": "Linea",
+        "accent": "Colore",
+        "gradient": "Sfumato",
+        "dots": "Punti",
+        "space": "Spazio"
+      },
+      "weight": "Spessore",
+      "weightOption": {
+        "thin": "Sottile",
+        "thick": "Spesso"
+      },
+      "paragraphStyle": "Stile",
+      "paragraph": {
+        "plain": "Semplice",
+        "muted": "Tenue",
+        "callout": "Evidenziato"
+      },
+      "shadow": "Ombra",
+      "border": "Bordo"
+    }
   },
   "themes": {
     "subtitle": "Design salvati da usare in qualsiasi modulo",

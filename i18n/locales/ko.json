@@ -2855,7 +2855,8 @@
       "header": "헤더",
       "footer": "푸터",
       "thankYou": "감사 페이지",
-      "frame": "랜딩 페이지 스타일"
+      "frame": "랜딩 페이지 스타일",
+      "blocks": "섹션과 블록"
     },
     "layout": {
       "card": "카드",
@@ -3017,7 +3018,44 @@
       "showFacts": "요약 정보",
       "showFactsHint": "소요 시간, 질문 수, 응답이 암호화된다는 사실."
     },
-    "applied": "“{name}” 적용됨"
+    "applied": "“{name}” 적용됨",
+    "blocks": {
+      "hint": "양식 안에서 섹션, 구분선, 단락, 사진이 보이는 방식입니다. 각 항목은 자체 크기, 정렬, 너비를 유지합니다.",
+      "sectionStyle": "제목 스타일",
+      "section": {
+        "plain": "기본",
+        "underline": "밑줄",
+        "accent": "가장자리",
+        "band": "띠"
+      },
+      "headingColor": "제목 색상",
+      "color": {
+        "text": "텍스트",
+        "primary": "강조색"
+      },
+      "caps": "작은 대문자",
+      "dividerStyle": "스타일",
+      "divider": {
+        "line": "선",
+        "accent": "색상",
+        "gradient": "페이드",
+        "dots": "점",
+        "space": "여백"
+      },
+      "weight": "두께",
+      "weightOption": {
+        "thin": "얇게",
+        "thick": "굵게"
+      },
+      "paragraphStyle": "스타일",
+      "paragraph": {
+        "plain": "기본",
+        "muted": "연하게",
+        "callout": "강조"
+      },
+      "shadow": "그림자",
+      "border": "테두리"
+    }
   },
   "themes": {
     "subtitle": "어떤 양식에서든 사용할 수 있는 저장된 디자인",

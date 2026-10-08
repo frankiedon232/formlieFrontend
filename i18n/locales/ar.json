@@ -2855,7 +2855,8 @@
       "header": "الترويسة",
       "footer": "التذييل",
       "thankYou": "صفحة الشكر",
-      "frame": "نمط صفحة الهبوط"
+      "frame": "نمط صفحة الهبوط",
+      "blocks": "الأقسام والكتل"
     },
     "layout": {
       "card": "بطاقة",
@@ -3017,7 +3018,44 @@
       "showFacts": "معلومات سريعة",
       "showFactsHint": "كم يستغرق، وعدد الأسئلة، وأن الإجابات مشفّرة."
     },
-    "applied": "تم تطبيق “{name}”"
+    "applied": "تم تطبيق “{name}”",
+    "blocks": {
+      "hint": "مظهر الأقسام والفواصل والفقرات والصور داخل النموذج. يحتفظ كل عنصر بحجمه ومحاذاته وعرضه.",
+      "sectionStyle": "نمط العنوان",
+      "section": {
+        "plain": "عادي",
+        "underline": "تسطير",
+        "accent": "حافة",
+        "band": "شريط"
+      },
+      "headingColor": "لون العنوان",
+      "color": {
+        "text": "النص",
+        "primary": "اللون المميز"
+      },
+      "caps": "أحرف كبيرة صغيرة",
+      "dividerStyle": "النمط",
+      "divider": {
+        "line": "خط",
+        "accent": "لون",
+        "gradient": "تلاشي",
+        "dots": "نقاط",
+        "space": "مسافة"
+      },
+      "weight": "السماكة",
+      "weightOption": {
+        "thin": "رفيع",
+        "thick": "سميك"
+      },
+      "paragraphStyle": "النمط",
+      "paragraph": {
+        "plain": "عادي",
+        "muted": "خفيف",
+        "callout": "مميز"
+      },
+      "shadow": "الظل",
+      "border": "الحدود"
+    }
   },
   "themes": {
     "subtitle": "تصاميم محفوظة يمكنك استخدامها في أي نموذج",

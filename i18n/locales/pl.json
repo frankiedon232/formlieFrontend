@@ -2855,7 +2855,8 @@
       "header": "Nagłówek",
       "footer": "Stopka",
       "thankYou": "Strona podziękowania",
-      "frame": "Styl strony docelowej"
+      "frame": "Styl strony docelowej",
+      "blocks": "Sekcje i bloki"
     },
     "layout": {
       "card": "Karta",
@@ -3017,7 +3018,44 @@
       "showFacts": "Krótkie informacje",
       "showFactsHint": "Ile to trwa, ile jest pytań i że odpowiedzi są szyfrowane."
     },
-    "applied": "Zastosowano „{name}”"
+    "applied": "Zastosowano „{name}”",
+    "blocks": {
+      "hint": "Jak sekcje, separatory, akapity i obrazy wyglądają w formularzu. Każdy element zachowuje własny rozmiar, wyrównanie i szerokość.",
+      "sectionStyle": "Styl nagłówka",
+      "section": {
+        "plain": "Zwykły",
+        "underline": "Podkreślony",
+        "accent": "Krawędź",
+        "band": "Pasek"
+      },
+      "headingColor": "Kolor nagłówka",
+      "color": {
+        "text": "Tekst",
+        "primary": "Akcent"
+      },
+      "caps": "Kapitaliki",
+      "dividerStyle": "Styl",
+      "divider": {
+        "line": "Linia",
+        "accent": "Kolor",
+        "gradient": "Zanikanie",
+        "dots": "Kropki",
+        "space": "Odstęp"
+      },
+      "weight": "Grubość",
+      "weightOption": {
+        "thin": "Cienka",
+        "thick": "Gruba"
+      },
+      "paragraphStyle": "Styl",
+      "paragraph": {
+        "plain": "Zwykły",
+        "muted": "Delikatny",
+        "callout": "Wyróżniony"
+      },
+      "shadow": "Cień",
+      "border": "Obramowanie"
+    }
   },
   "themes": {
     "subtitle": "Zapisane projekty, których można użyć w dowolnym formularzu",

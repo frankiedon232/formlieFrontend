@@ -2855,7 +2855,8 @@
       "header": "Üst bilgi",
       "footer": "Alt bilgi",
       "thankYou": "Teşekkür sayfası",
-      "frame": "Açılış sayfası stili"
+      "frame": "Açılış sayfası stili",
+      "blocks": "Bölümler ve bloklar"
     },
     "layout": {
       "card": "Kart",
@@ -3017,7 +3018,44 @@
       "showFacts": "Kısa bilgiler",
       "showFactsHint": "Ne kadar sürdüğü, kaç soru olduğu ve yanıtların şifrelendiği."
     },
-    "applied": "“{name}” uygulandı"
+    "applied": "“{name}” uygulandı",
+    "blocks": {
+      "hint": "Bölümlerin, ayırıcıların, paragrafların ve resimlerin formda nasıl göründüğü. Her biri kendi boyutunu, hizalamasını ve genişliğini korur.",
+      "sectionStyle": "Başlık stili",
+      "section": {
+        "plain": "Düz",
+        "underline": "Altı çizili",
+        "accent": "Kenar",
+        "band": "Şerit"
+      },
+      "headingColor": "Başlık rengi",
+      "color": {
+        "text": "Metin",
+        "primary": "Vurgu"
+      },
+      "caps": "Küçük büyük harfler",
+      "dividerStyle": "Stil",
+      "divider": {
+        "line": "Çizgi",
+        "accent": "Renk",
+        "gradient": "Solma",
+        "dots": "Noktalar",
+        "space": "Boşluk"
+      },
+      "weight": "Kalınlık",
+      "weightOption": {
+        "thin": "İnce",
+        "thick": "Kalın"
+      },
+      "paragraphStyle": "Stil",
+      "paragraph": {
+        "plain": "Düz",
+        "muted": "Yumuşak",
+        "callout": "Vurgulu"
+      },
+      "shadow": "Gölge",
+      "border": "Kenarlık"
+    }
   },
   "themes": {
     "subtitle": "Herhangi bir formda kullanabileceğiniz kayıtlı tasarımlar",

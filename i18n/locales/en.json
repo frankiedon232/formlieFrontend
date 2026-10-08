@@ -2855,7 +2855,8 @@
       "header": "Header",
       "footer": "Footer",
       "thankYou": "Thank-you page",
-      "frame": "Landing page style"
+      "frame": "Landing page style",
+      "blocks": "Sections and blocks"
     },
     "layout": {
       "card": "Card",
@@ -3017,7 +3018,44 @@
       "showFacts": "Quick facts",
       "showFactsHint": "How long it takes, how many questions, and that answers are encrypted."
     },
-    "applied": "“{name}” applied"
+    "applied": "“{name}” applied",
+    "blocks": {
+      "hint": "How sections, dividers, paragraphs and pictures look in the form. Each one keeps its own size, alignment and width.",
+      "sectionStyle": "Heading style",
+      "section": {
+        "plain": "Plain",
+        "underline": "Underline",
+        "accent": "Edge",
+        "band": "Band"
+      },
+      "headingColor": "Heading colour",
+      "color": {
+        "text": "Text",
+        "primary": "Accent"
+      },
+      "caps": "Small capitals",
+      "dividerStyle": "Style",
+      "divider": {
+        "line": "Line",
+        "accent": "Colour",
+        "gradient": "Fade",
+        "dots": "Dots",
+        "space": "Space"
+      },
+      "weight": "Thickness",
+      "weightOption": {
+        "thin": "Thin",
+        "thick": "Thick"
+      },
+      "paragraphStyle": "Style",
+      "paragraph": {
+        "plain": "Plain",
+        "muted": "Soft",
+        "callout": "Callout"
+      },
+      "shadow": "Shadow",
+      "border": "Border"
+    }
   },
   "themes": {
     "subtitle": "Saved designs you can use on any form",

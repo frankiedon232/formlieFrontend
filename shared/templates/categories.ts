@@ -34,6 +34,7 @@ export const TEMPLATE_CATEGORIES: TemplateCategory[] = [
     icon: 'i-lucide-briefcase-business',
     dot: 'bg-indigo-500',
     design: {
+      blocks: { section: 'underline', section_color: 'primary', divider: 'line', paragraph: 'plain', image_radius: 'md' },
       page: { bg_type: 'color', bg: '#f5f3ff' },
       container: { radius: 'xl', shadow: 'md', border: false },
       colors: { primary: '#4f46e5', input_border: '#ddd6fe' },
@@ -47,6 +48,7 @@ export const TEMPLATE_CATEGORIES: TemplateCategory[] = [
     icon: 'i-lucide-users-round',
     dot: 'bg-teal-500',
     design: {
+      blocks: { section: 'band', section_color: 'primary', divider: 'gradient', paragraph: 'callout', image_radius: 'lg' },
       page: { bg_type: 'color', bg: '#f0fdfa' },
       container: { radius: 'lg', shadow: 'sm', border: true },
       colors: { primary: '#0f766e', input_border: '#ccfbf1' },
@@ -59,6 +61,7 @@ export const TEMPLATE_CATEGORIES: TemplateCategory[] = [
     icon: 'i-lucide-shield-plus',
     dot: 'bg-red-500',
     design: {
+      blocks: { section: 'accent', section_color: 'primary', divider: 'accent', divider_weight: 'thick', paragraph: 'callout', image_radius: 'sm', image_border: true },
       page: { bg_type: 'color', bg: '#f4f4f5' },
       container: { width: 'lg', radius: 'md', shadow: 'sm', border: true },
       colors: { primary: '#b91c1c' },
@@ -72,6 +75,7 @@ export const TEMPLATE_CATEGORIES: TemplateCategory[] = [
     icon: 'i-lucide-calendar-heart',
     dot: 'bg-pink-500',
     design: {
+      blocks: { section: 'band', section_color: 'primary', divider: 'dots', paragraph: 'plain', image_radius: 'xl', image_shadow: true },
       // Card with an accent header (owner, 2026-10-03: the side panel squeezed the form).
       layout: 'card',
       page: { bg_type: 'gradient', bg: '#fdf2f8', bg_to: '#eef2ff', gradient_angle: 135 },
@@ -88,6 +92,7 @@ export const TEMPLATE_CATEGORIES: TemplateCategory[] = [
     icon: 'i-lucide-concierge-bell',
     dot: 'bg-amber-600',
     design: {
+      blocks: { section: 'plain', section_color: 'primary', section_caps: true, divider: 'dots', paragraph: 'muted', image_radius: 'lg', image_shadow: true },
       page: { bg_type: 'color', bg: '#faf7f2' },
       container: { radius: 'none', border: true, shadow: 'none', bg: '#fffdf9', padding: 'lg' },
       typography: { font: 'serif', heading_weight: 'medium' },
@@ -102,6 +107,7 @@ export const TEMPLATE_CATEGORIES: TemplateCategory[] = [
     icon: 'i-lucide-graduation-cap',
     dot: 'bg-sky-500',
     design: {
+      blocks: { section: 'underline', section_color: 'primary', divider: 'gradient', paragraph: 'callout', image_radius: 'lg' },
       page: { bg_type: 'gradient', bg: '#eff6ff', bg_to: '#f0fdf4', gradient_angle: 160 },
       container: { radius: 'xl', shadow: 'md', border: false },
       colors: { primary: '#0369a1', input_bg: '#f8fafc', input_border: '#bae6fd' },
@@ -116,6 +122,7 @@ export const TEMPLATE_CATEGORIES: TemplateCategory[] = [
     icon: 'i-lucide-server-cog',
     dot: 'bg-slate-600',
     design: {
+      blocks: { section: 'accent', section_color: 'text', divider: 'line', paragraph: 'muted', image_radius: 'sm', image_border: true },
       // Card with an accent header (owner, 2026-10-03: the side panel squeezed the form).
       layout: 'card',
       page: { bg_type: 'color', bg: '#e2e8f0' },
@@ -130,6 +137,7 @@ export const TEMPLATE_CATEGORIES: TemplateCategory[] = [
     icon: 'i-lucide-landmark',
     dot: 'bg-emerald-700',
     design: {
+      blocks: { section: 'plain', section_color: 'text', section_caps: true, divider: 'line', divider_weight: 'thick', paragraph: 'muted', image_radius: 'none', image_border: true },
       page: { bg_type: 'color', bg: '#f8fafc' },
       container: { width: 'lg', radius: 'sm', shadow: 'sm', border: true },
       colors: { primary: '#065f46', input_border: '#cbd5e1' },
@@ -145,6 +153,7 @@ export const TEMPLATE_CATEGORIES: TemplateCategory[] = [
     icon: 'i-lucide-hand-heart',
     dot: 'bg-lime-600',
     design: {
+      blocks: { section: 'band', section_color: 'primary', divider: 'gradient', paragraph: 'callout', image_radius: 'xl' },
       layout: 'plain',
       page: { bg_type: 'color', bg: '#fafaf9' },
       colors: { primary: '#4d7c0f', input_border: '#d6d3d1' },
@@ -159,6 +168,7 @@ export const TEMPLATE_CATEGORIES: TemplateCategory[] = [
     icon: 'i-lucide-house',
     dot: 'bg-orange-600',
     design: {
+      blocks: { section: 'underline', section_color: 'text', divider: 'space', paragraph: 'plain', image_radius: 'md', image_shadow: true },
       // Card with an accent header (owner, 2026-10-04: the side panel squeezed the form).
       layout: 'card',
       page: { bg_type: 'gradient', bg: '#fff7ed', bg_to: '#f5f5f4', gradient_angle: 160 },
@@ -172,6 +182,7 @@ export const TEMPLATE_CATEGORIES: TemplateCategory[] = [
     icon: 'i-lucide-trending-up',
     dot: 'bg-cyan-600',
     design: {
+      blocks: { section: 'accent', section_color: 'primary', divider: 'accent', paragraph: 'callout', image_radius: 'md', image_shadow: true },
       page: { bg_type: 'color', bg: '#0e7490' },
       container: { radius: 'md', shadow: 'lg', border: false },
       colors: { primary: '#0e7490' },

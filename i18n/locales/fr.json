@@ -2855,7 +2855,8 @@
       "header": "En-tête",
       "footer": "Pied de page",
       "thankYou": "Page de remerciement",
-      "frame": "Style de la page de destination"
+      "frame": "Style de la page de destination",
+      "blocks": "Sections et blocs"
     },
     "layout": {
       "card": "Carte",
@@ -3017,7 +3018,44 @@
       "showFacts": "L’essentiel",
       "showFactsHint": "La durée, le nombre de questions et le fait que les réponses sont chiffrées."
     },
-    "applied": "« {name} » appliqué"
+    "applied": "« {name} » appliqué",
+    "blocks": {
+      "hint": "Apparence des sections, séparateurs, paragraphes et images dans le formulaire. Chacun garde sa propre taille, son alignement et sa largeur.",
+      "sectionStyle": "Style du titre",
+      "section": {
+        "plain": "Simple",
+        "underline": "Souligné",
+        "accent": "Bord",
+        "band": "Bandeau"
+      },
+      "headingColor": "Couleur du titre",
+      "color": {
+        "text": "Texte",
+        "primary": "Accent"
+      },
+      "caps": "Petites capitales",
+      "dividerStyle": "Style",
+      "divider": {
+        "line": "Ligne",
+        "accent": "Couleur",
+        "gradient": "Fondu",
+        "dots": "Points",
+        "space": "Espace"
+      },
+      "weight": "Épaisseur",
+      "weightOption": {
+        "thin": "Fin",
+        "thick": "Épais"
+      },
+      "paragraphStyle": "Style",
+      "paragraph": {
+        "plain": "Simple",
+        "muted": "Discret",
+        "callout": "Encadré"
+      },
+      "shadow": "Ombre",
+      "border": "Bordure"
+    }
   },
   "themes": {
     "subtitle": "Des designs enregistrés à utiliser sur n’importe quel formulaire",

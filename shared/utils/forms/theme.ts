@@ -115,6 +115,26 @@ export const themeSchema = z.object({
     bg: hex,
   }),
   thank_you: z.object({ show_icon: z.boolean() }),
+  /**
+   * Layout blocks in the form (owner 2026-10-08): sections, dividers, paragraphs and images follow
+   * the theme. Each block keeps its own options (size, alignment, dashes, width); the theme sets the look.
+   *   section:  plain (heading and a line) · underline (short bar in the theme colour) · accent (edge bar)
+   *             · band (tinted strip); heading in the text or theme colour; optional small capitals
+   *   divider:  line · accent (theme colour) · gradient (fades out at both ends) · dots (ornament) · space
+   *   paragraph: plain · muted (softer text) · callout (tinted box with an edge in the theme colour)
+   *   image:    corner rounding, shadow, border
+   */
+  blocks: z.object({
+    section: z.enum(['plain', 'underline', 'accent', 'band']),
+    section_color: z.enum(['text', 'primary']),
+    section_caps: z.boolean(),
+    divider: z.enum(['line', 'accent', 'gradient', 'dots', 'space']),
+    divider_weight: z.enum(['thin', 'thick']),
+    paragraph: z.enum(['plain', 'muted', 'callout']),
+    image_radius: z.enum(['none', 'sm', 'md', 'lg', 'xl']),
+    image_shadow: z.boolean(),
+    image_border: z.boolean(),
+  }),
   frame: z.object({
     style: z.enum(THEME_FRAMES),
     /** "Visit website", the organisation's site (Settings → Company), never the portal. */
@@ -153,6 +173,8 @@ export function defaultTheme(branding: WorkspaceBranding = { logo_url: null, pri
     split: { image: null, side: 'start', panel: 'image', bg: '#18181b', bg_to: '#3f3f46' },
     footer: { enabled: false, text: '', links: [], show_logo: false, align: 'center', style: 'plain', bg: '#18181b' },
     thank_you: { show_icon: true },
+    // Today's look: a heading with a line, a grey divider, plain text, slightly rounded pictures
+    blocks: { section: 'plain', section_color: 'text', section_caps: false, divider: 'line', divider_weight: 'thin', paragraph: 'plain', image_radius: 'md', image_shadow: false, image_border: false },
     frame: { style: 'branded', show_website: true, show_facts: true, tone: 'light' },
   }
 }
@@ -166,6 +188,7 @@ export const THEME_PRESETS: { key: string; patch: ThemePatch }[] = [
   {
     key: 'minimal',
     patch: {
+      blocks: { section: 'plain', section_caps: true, divider: 'space', paragraph: 'muted', image_radius: 'none' },
       layout: 'plain',
       page: { bg_type: 'color', bg: '#ffffff' },
       container: { border: false, shadow: 'none', bg: '#ffffff' },
@@ -176,6 +199,7 @@ export const THEME_PRESETS: { key: string; patch: ThemePatch }[] = [
   {
     key: 'soft',
     patch: {
+      blocks: { section: 'band', section_color: 'primary', divider: 'gradient', paragraph: 'callout', image_radius: 'xl', image_shadow: true },
       page: { bg_type: 'gradient', bg: '#eef2ff', bg_to: '#fdf2f8', gradient_angle: 135 },
       container: { radius: 'xl', shadow: 'md', border: false },
       colors: { primary: '#4f46e5', input_bg: '#f8fafc', input_border: '#e2e8f0' },
@@ -187,6 +211,7 @@ export const THEME_PRESETS: { key: string; patch: ThemePatch }[] = [
   {
     key: 'bold',
     patch: {
+      blocks: { section: 'accent', section_color: 'primary', divider: 'accent', divider_weight: 'thick', image_radius: 'md', image_shadow: true },
       page: { bg_type: 'color', bg: '#0f766e' },
       container: { radius: 'md', shadow: 'lg', border: false },
       colors: { primary: '#0f766e' },
@@ -198,6 +223,7 @@ export const THEME_PRESETS: { key: string; patch: ThemePatch }[] = [
   {
     key: 'dark',
     patch: {
+      blocks: { section: 'underline', section_color: 'primary', divider: 'line', paragraph: 'muted', image_border: true },
       page: { bg_type: 'color', bg: '#09090b' },
       container: { bg: '#18181b', border: true, shadow: 'none' },
       colors: { primary: '#fafafa', text: '#fafafa', muted: '#a1a1aa', input_bg: '#27272a', input_border: '#3f3f46', error: '#f87171' },
@@ -206,6 +232,7 @@ export const THEME_PRESETS: { key: string; patch: ThemePatch }[] = [
   {
     key: 'elegant',
     patch: {
+      blocks: { section: 'plain', section_color: 'primary', section_caps: true, divider: 'dots', paragraph: 'muted', image_radius: 'none', image_border: true },
       page: { bg_type: 'color', bg: '#faf7f2' },
       container: { radius: 'none', border: true, shadow: 'none', bg: '#fffdf9', padding: 'lg' },
       typography: { font: 'serif', heading_weight: 'medium' },
@@ -219,6 +246,7 @@ export const THEME_PRESETS: { key: string; patch: ThemePatch }[] = [
   {
     key: 'banner',
     patch: {
+      blocks: { section: 'band', section_color: 'primary', divider: 'gradient', paragraph: 'callout', image_radius: 'lg', image_shadow: true },
       page: { bg_type: 'color', bg: '#f5f3ff' },
       container: { radius: 'xl', shadow: 'md', border: false },
       colors: { primary: '#6d28d9', input_border: '#ddd6fe' },
@@ -230,6 +258,7 @@ export const THEME_PRESETS: { key: string; patch: ThemePatch }[] = [
   {
     key: 'ribbon',
     patch: {
+      blocks: { section: 'underline', section_color: 'primary', divider: 'accent', paragraph: 'plain', image_radius: 'md' },
       page: { bg_type: 'color', bg: '#f1f5f9' },
       container: { radius: 'sm', shadow: 'sm', border: true },
       colors: { primary: '#1d4ed8', input_border: '#cbd5e1' },
@@ -241,6 +270,7 @@ export const THEME_PRESETS: { key: string; patch: ThemePatch }[] = [
   {
     key: 'grounded',
     patch: {
+      blocks: { section: 'accent', section_color: 'text', divider: 'line', divider_weight: 'thick', paragraph: 'callout', image_radius: 'sm', image_border: true },
       layout: 'plain',
       page: { bg_type: 'color', bg: '#fafaf9' },
       colors: { primary: '#15803d', input_border: '#d6d3d1' },
@@ -253,6 +283,7 @@ export const THEME_PRESETS: { key: string; patch: ThemePatch }[] = [
   {
     key: 'sidebar',
     patch: {
+      blocks: { section: 'underline', section_color: 'text', divider: 'space', paragraph: 'muted', image_radius: 'lg' },
       layout: 'card',
       page: { bg_type: 'color', bg: '#e2e8f0' },
       container: { width: 'lg', radius: 'lg', shadow: 'lg', border: false },
@@ -263,6 +294,7 @@ export const THEME_PRESETS: { key: string; patch: ThemePatch }[] = [
   {
     key: 'aurora',
     patch: {
+      blocks: { section: 'band', section_color: 'primary', divider: 'gradient', paragraph: 'callout', image_radius: 'xl', image_shadow: true },
       layout: 'card',
       page: { bg_type: 'gradient', bg: '#ecfeff', bg_to: '#f0fdf4', gradient_angle: 160 },
       container: { width: 'lg', radius: 'xl', shadow: 'md', border: false },
@@ -277,6 +309,7 @@ export const THEME_PRESETS: { key: string; patch: ThemePatch }[] = [
   {
     key: 'corporate',
     patch: {
+      blocks: { section: 'accent', section_color: 'primary', section_caps: true, divider: 'line', paragraph: 'plain', image_radius: 'sm', image_border: true },
       page: { bg_type: 'color', bg: '#f4f4f5' },
       container: { width: 'lg', radius: 'md', shadow: 'sm', border: true },
       colors: { primary: '#b45309' },

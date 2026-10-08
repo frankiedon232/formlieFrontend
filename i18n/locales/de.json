@@ -2855,7 +2855,8 @@
       "header": "Kopfzeile",
       "footer": "Fußzeile",
       "thankYou": "Dankesseite",
-      "frame": "Stil der Landingpage"
+      "frame": "Stil der Landingpage",
+      "blocks": "Abschnitte und Blöcke"
     },
     "layout": {
       "card": "Karte",
@@ -3017,7 +3018,44 @@
       "showFacts": "Kurzinfos",
       "showFactsHint": "Wie lange es dauert, wie viele Fragen es gibt und dass Antworten verschlüsselt sind."
     },
-    "applied": "“{name}” angewendet"
+    "applied": "“{name}” angewendet",
+    "blocks": {
+      "hint": "So sehen Abschnitte, Trennlinien, Absätze und Bilder im Formular aus. Jedes Element behält seine eigene Größe, Ausrichtung und Breite.",
+      "sectionStyle": "Überschriftenstil",
+      "section": {
+        "plain": "Schlicht",
+        "underline": "Unterstrichen",
+        "accent": "Kante",
+        "band": "Band"
+      },
+      "headingColor": "Überschriftenfarbe",
+      "color": {
+        "text": "Text",
+        "primary": "Akzent"
+      },
+      "caps": "Kapitälchen",
+      "dividerStyle": "Stil",
+      "divider": {
+        "line": "Linie",
+        "accent": "Farbe",
+        "gradient": "Verlauf",
+        "dots": "Punkte",
+        "space": "Abstand"
+      },
+      "weight": "Stärke",
+      "weightOption": {
+        "thin": "Dünn",
+        "thick": "Dick"
+      },
+      "paragraphStyle": "Stil",
+      "paragraph": {
+        "plain": "Schlicht",
+        "muted": "Dezent",
+        "callout": "Hervorgehoben"
+      },
+      "shadow": "Schatten",
+      "border": "Rahmen"
+    }
   },
   "themes": {
     "subtitle": "Gespeicherte Designs, die Sie in jedem Formular verwenden können",

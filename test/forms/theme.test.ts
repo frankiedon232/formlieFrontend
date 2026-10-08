@@ -80,3 +80,18 @@ describe('footer links', () => {
     expect(visibleLinks(theme).map(l => l.label)).toEqual(['Privacy'])
   })
 })
+
+describe('theme block styles (sections, dividers, paragraphs, images)', () => {
+  it('keep today’s look for themes saved before them', () => {
+    const old = defaultTheme() as unknown as Record<string, unknown>
+    delete old.blocks
+    expect(resolveTheme(old).blocks).toEqual(defaultTheme().blocks)
+    expect(defaultTheme().blocks).toMatchObject({ section: 'plain', divider: 'line', paragraph: 'plain', image_radius: 'md' })
+  })
+
+  it('come with every starting point, each valid', () => {
+    const styles = new Set(THEME_PRESETS.filter(preset => preset.key !== 'workspace').map(preset => JSON.stringify(applyPatch(defaultTheme(), preset.patch).blocks)))
+    expect(styles.size).toBeGreaterThan(5)
+    for (const preset of THEME_PRESETS) expect(themeSchema.safeParse(applyPatch(defaultTheme(), preset.patch)).success).toBe(true)
+  })
+})

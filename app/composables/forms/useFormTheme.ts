@@ -49,3 +49,16 @@ export function useControlStyle() {
     computed<ControlStyle>(() => ({ size: 'md', variant: 'outline', ui: {} })),
   )
 }
+
+// ── Layout blocks inside a themed form (sections, dividers, paragraphs, images; owner 2026-10-08) ──
+type BlockStyle = FormTheme['blocks'] & { heading_weight: FormTheme['typography']['heading_weight'] }
+const BLOCK_STYLE: InjectionKey<ComputedRef<BlockStyle>> = Symbol('form-block-style')
+
+export function provideBlockStyle(theme: ComputedRef<FormTheme>) {
+  provide(BLOCK_STYLE, computed(() => ({ ...theme.value.blocks, heading_weight: theme.value.typography.heading_weight })))
+}
+
+/** Outside a themed page (the builder canvas) blocks keep the default look. */
+export function useBlockStyle() {
+  return inject(BLOCK_STYLE, computed<BlockStyle>(() => ({ ...defaultTheme().blocks, heading_weight: 'semibold' })))
+}
