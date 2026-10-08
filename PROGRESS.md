@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-07 (PROGRESS tidy; loading screen and PDF follow Appearance)
+**Last updated:** 2026-10-08 (lists with levels refined, builder click-to-add and panes, theme block styles, form and page names outside the form body, API connections, Publish only with changes)
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend
 
@@ -25,7 +25,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F12   | Data sources & databases                          | ✅     | 100% |
 | F13   | API service & integrations                        | ✅     | 100% (owner-tested 2026-10-06) |
 | F14   | Settings                                          | ✅     | 100% (M1 to M7 ✅; billing in F23) |
-| F15   | Option sets & payments                            | 🟡     | ~30% (M1, M2 ✅) |
+| F15   | Option sets & payments                            | 🟡     | ~35% (M1, M2 ✅; M3 search next) |
 | F16   | Profile                                           | ⬜     | 0%   |
 | F17   | Users                                             | ⬜     | 0%   |
 | F18   | Analytics                                         | ✅     | 100% |
@@ -342,6 +342,10 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 - ✅ Heavy parts lazy-loaded (preview, publish dialogs load on first use)
 - ✅ Canvas fills the space between the panes (no fixed width); full-screen mode (button or Ctrl+Shift+F) shows only fields · canvas · settings under a slim bar with name, save status, undo / redo, Preview, Publish, Exit (Esc), browser full screen when allowed (owner request 2026-10-02)
 - ➡️ Canvas virtualisation deferred: it conflicts with drag and drop; revisit if forms > 200 fields feel slow (measured, not guessed)
+- ✅ Click to add (owner 2026-10-08): a click on an empty spot of the page opens a searchable field list there; the field lands where clicked (new row, or beside the fields of a row with room)
+- ✅ No page title block on the canvas; the page name lives on its tab (pencil or double-click to rename); the page fills the screen height and grows with its content
+- ✅ Fields and Settings panes collapse / open from the toggles beside the page tabs (open by default, remembered); selecting a field opens Settings
+- ✅ Publish only with something new: disabled and dimmed with "No new changes. Make changes first." when the published form has no changes
 
 ---
 
@@ -368,6 +372,8 @@ Owner-tested 2026-10-03: all good. Open items below (fonts, custom CSS, workspac
 - ✅ New global and IT field types (owner request): full name (title / middle optional), percentage, duration, consent with terms link, language, time zone, currency (all from `Intl`, in the respondent's language), IP address (any / IPv4 / IPv6), domain, MAC address, colour, IBAN (checksum), SWIFT / BIC, new palette group "Technical & IDs", validated by the shared validator
 - ✅ Six more starting points with different structures (owner request): Banner (gradient header band), Ribbon (colour header band), Grounded (footer bar), Side panel (colour panel carrying logo / title), Aurora (gradient side panel), Corporate (header band + footer bar); new tokens `header.band`, `footer.style`, `split.panel`, all editable in the designer
 - ✅ Owner follow-ups 2026-10-03: "Folder" on New form explained in place (workspace folders, not template categories); typing masks for IP address (IPv4 dots, IPv6 groups) and MAC address (colon pairs in capitals; dash / dot notation kept); **field access** (Everyone · Departments · Roles · People, all or selected; restricted fields can't be required; lock icon on the field; answers later shown only to the same people, F11)
+- ✅ Sections and blocks (owner 2026-10-08): theme styles for sections (plain, underline, edge, band; accent or text colour; small capitals), dividers (line, colour, fade, dots, space; thin / thick), paragraphs (plain, soft, callout) and images (corners, shadow, border); a style per starting point and per template category; default = the earlier look
+- ✅ Form name and page name outside the form body (owner 2026-10-08): the form name under the organisation in the page frame (or the hero title), the page name with the step progress
 - ⬜ More fonts (self-hosted web fonts, needs a font package, ask first)
 - ⬜ Custom CSS (paid plans, sanitised), with billing
 
@@ -706,6 +712,12 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 - ✅ Docs & testing redesign; Try it in a drawer; method colours everywhere (GET green, POST violet, PUT amber, DELETE red)
 - ✅ README: API service test cases
 
+### Owner follow-ups 2026-10-08
+
+- ✅ New tokens named "{Service} Token" (unique with 2, 3 …), for one endpoint or the whole service
+- ✅ An endpoint's checklist counts only tokens made for it or its service; tokens for every endpoint are named apart, never shown as assigned
+- ✅ Connections in every detail panel (service, endpoint, token, access rule): service, form, endpoints, tokens (made for it / its service / every endpoint), access rules, each a link (`GET /api-service/connections`)
+
 ### 10. API (mock first)
 
 - ✅ Portal management API: `/api-services` · `/api-services/{id}/endpoints` · `/api-tokens` · `/api-access-rules` · `/api-logs` · `/api-analytics`; error codes `FRM-API-*`; contract updated
@@ -826,6 +838,9 @@ Full plan: [docs/OPTION-LISTS.md](docs/OPTION-LISTS.md) (owner request 2026-10-0
 - ✅ Items: add, edit, retire, bulk paste, import CSV / XLSX with column mapping and preview, reorder (drag + keyboard), values vs labels, scores, translations
 - ✅ "Used in" list of forms and fields, up-to-date marks, Update forms (drafts, with translations); the builder flags a changed list
 - ✅ **F15c Lists with levels (M2):** up to 4 named levels (owner 2026-10-07: more becomes a mess) (Country → Region → City, Product → Category → Type → Brand); the editor edits one level at a time with the option above (searchable), a filter by it and "N under it" to go down; import by path (one column per level); the builder Lists tab shows plain or levels with the chain and adds one field per level, with One / Several chosen per level; each level's settings show the chain and switch one / several; in the form a level opens only with what is under the choice above and stays closed (not required) when nothing matches; changing a choice clears what no longer fits; the server checks the same
+  - ✅ Refined after owner tests (2026-10-07 / 08): at most 4 levels; added by click or drag with nothing to choose, each level set in the right panel (One / Several, Required; plain lists get Show as); the editor canvas behaves as the form (a lower level locked with "Choose … first", only what is under the choice); a chain is one block (delete or duplicate all levels together)
+  - ✅ Import and Paste ask what a row is (one option or a path); a file shaped like levels is spotted and creates the levels from its headers; pasted headers detected; List type switch and "How lists work" guide in the editor
+  - ✅ API service: levels say what they depend on (`depends_on`, option `parent`), examples follow the levels, POST skips closed levels, PUT checks and clears levels
 - ⬜ **F15b Large lists + autocomplete (M3):** items on the server, "search as you type" field mode, paging
 - ⬜ **F15d Details + auto-fill:** extra columns on items; choosing an item fills other fields (optionally read-only); columns usable in formulas and logic
 - ⬜ **F15e Dynamic lists:** live sources, another form's responses, a connected database (a saved read query from the F12 Query editor), a JSON URL, a refreshed CSV; refresh schedule and sync log
@@ -1400,3 +1415,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-08 | F8 | Theme block styles (owner): new theme group `blocks` (section plain / underline / edge / band, heading in text or accent colour, small capitals, the theme's heading weight; divider line / accent / fade / dots / space, thin or thick; paragraph plain / soft / callout; image corners, shadow, border). Default = today's look, so older themes and forms do not change. Every starting point and every template category has its own block style; designer group "Sections and blocks". Renderer `Layout` reads it (`provideBlockStyle` / `useBlockStyle`); the builder canvas keeps the default look. Checked in the designer on Places test with a section, divider and paragraph: default, Soft (band, fade, callout), Bold (edge, thick accent line), Elegant (small capitals, dots, soft text); then reset to the workspace default and the test blocks removed. |
 | 2026-10-08 | F13 | API service tidy (owner). What happened: tokens without a chosen service or endpoint can call every endpoint, and a new endpoint's checklist counted them, so a token nobody made for it looked assigned; the token dialog named endpoint tokens "{service} · /{endpoint}". Now: the checklist counts only tokens made for the endpoint or its service (`tokens_live / _test`), tokens for every endpoint apart (`tokens_all_live / _test`, said in the text); new tokens are named "{Service} Token" (unique with 2, 3 …); `GET /api-service/connections` and a Connections block in the service, endpoint, token and access rule panels (service, form, endpoints, tokens with how they reach it, access rules; each a link). Checked in the browser: the /account panel lists its service, form, 2 tokens (one for every endpoint) and 2 rules; a new token from the endpoint is named "Service Account Data Token" (cancelled, nothing created). |
 | 2026-10-08 | F7 | Publish (builder header on Build, Logic, Design and Versions, normal and full screen) is disabled and dimmed when the form is published and has no saved or pending changes (`nothingToPublish` in `useBuilderSession`: published version known, no `has_unpublished_changes`, autosave not pending); hovering or focusing it says "No new changes. Make changes first." A form never published can always be published. Checked in the browser: Account (published, no changes) disabled with the message; Places test (never published) clickable. |
+| 2026-10-08 | Docs | PROGRESS brought up to date (owner): "Last updated", F15 lists with levels refinements (right panel settings, canvas behaviour, chain delete, smarter import, API support), the F7 builder items (click to add, page tabs, full-height page, panes, Publish), the F8 designer items (block styles, names outside the form body) and the F13 API follow-ups (token names, own tokens, Connections) ticked in their phases, F15 overview ~35%. |
