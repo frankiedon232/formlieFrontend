@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-08 (owner's general test done: lists with levels, builder click-to-add and panes, theme block styles, names outside the form body, API labels / order / connections, Publish only with changes; next: F15 M3 search for large lists)
+**Last updated:** 2026-10-08 (lists M1 to M4 done; owner chose both: the 20,000 limit stays and large dynamic lists become an opt-in (F15 M5, next); payments and subscriptions moved to the last phase, F24)
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend
 
@@ -22,18 +22,21 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F9    | Templates gallery                                 | ✅     | 100% |
 | F10   | Renderer, preview, share, embed, short links, SEO | ✅     | 100% |
 | F11   | Responses                                         | ✅     | 100% |
-| F12   | Data sources & databases                          | ✅     | 100% |
+| F12   | Data sources & databases                          | ✅     | 100% (waiting for review) |
 | F13   | API service & integrations                        | ✅     | 100% (owner-tested 2026-10-06) |
-| F14   | Settings                                          | ✅     | 100% (M1 to M7 ✅; billing in F23) |
-| F15   | Option sets & payments                            | 🟡     | ~80% (lists done: M1 to M4 ✅ incl. dynamic lists with levels; live-source lists dropped; M6 payments next) |
+| F14   | Settings                                          | ✅     | 100% (M1 to M7 ✅; billing in F24) |
+| F15   | Option sets (lists)                               | 🟡     | ~85% (M1 to M4 ✅; M5 large dynamic lists next) |
 | F16   | Profile                                           | ⬜     | 0%   |
 | F17   | Users                                             | ⬜     | 0%   |
-| F18   | Analytics                                         | ✅     | 100% |
+| F18   | Analytics                                         | ✅     | 100% (waiting for review) |
 | F19   | AI assistant                                      | 🟡     | ~2%  |
 | F20   | Live collaboration (optional)                     | ⬜     | 0%   |
 | F21   | Dashboard                                         | ⬜     | 0%   |
-| F22   | Roles & access (last)                             | ⬜     | 0%   |
+| F22   | Roles & access                                    | ⬜     | 0%   |
 | F23   | Platform admin (super admin, Formalie team)       | ⬜     | 0%   |
+| F24   | Payments & subscriptions (last)                   | ⬜     | 0%   |
+
+**Order of what is left (owner, 2026-10-08):** F15 M5, F16 Profile, F17 Users, F19 AI, F20 collaboration (optional), F21 Dashboard, F22 Roles & access, F23 Platform admin, and **last F24 Payments & subscriptions** (form payments and plans together, once the owner has chosen the payment processor).
 
 **Every phase is only done when:** phone / tablet / desktop checked · keyboard-only checked · light + dark checked · Arabic RTL checked · every new action recorded in the audit trail (from F4 on) · loading feedback complete (first-load screen, top bar on navigation and API calls, skeletons, busy buttons, busy rows, progress bars, CLAUDE.md rule 5) · empty and error states present · every new string in all 20 languages · matches [docs/design](docs/design/README.md) · typecheck, lint and tests green · this file and the docs updated · committed and pushed.
 
@@ -819,19 +822,17 @@ Every workspace sets up its own reference data here; the builder, field access a
 - ✅ Themes library (created in the designer, F8): list, rename, delete done in F8; the theme new forms start with is set in Form defaults
 - ✅ Form defaults: progress bar, save and resume, field icons, label position, theme, thank-you text, response-email team, allowed embed websites (embed size stays per embed code)
 
-### Billing & subscription (moved to F23 Platform admin, owner 2026-10-06)
+### Billing & subscription
 
-- ⬜ Current plan, usage against limits (forms, responses per month, seats, destinations)
-- ⬜ Upgrade / change plan, payment method, invoices
-- ⬜ Plan-limit messages wherever a limit is hit (FRM-PLAN-1001 / 1002)
+- Moved to **F24, Payments & subscriptions** (owner, 2026-10-08: payments come last).
 
 ---
 
-## F15, Option sets & payments 🟡
+## F15, Option sets (lists) 🟡
 
 ### Option sets (reusable choice lists)
 
-**Plan (2026-10-07, milestones):** **M1** ✅ List manager (F15a: Option sets page in the list format, list editor with items, values, retire, reorder, bulk paste, CSV / Excel import with column mapping, translations, used in, update forms). **M2** ✅ Dynamic lists, the owner's name for lists with levels (F15c, brought forward by the owner 2026-10-07). **M3** ✅ Large lists and search as you type (F15b). **M4** ✅ Details and auto-fill (F15d). ~~**M5** Lists from live sources (F15e)~~ dropped by the owner 2026-10-08 (import keeps lists current). **M6** Payments.
+**Plan (2026-10-07, milestones):** **M1** ✅ List manager (F15a). **M2** ✅ Dynamic lists, the owner's name for lists with levels (F15c). **M3** ✅ Large lists and search as you type (F15b). **M4** ✅ Details and auto-fill (F15d). **M5** ⬜ Large dynamic lists (owner 2026-10-08, opt-in beside the 20,000 limit). Lists from live sources dropped (import keeps lists current). Payments moved to **F24** (last).
 
 Full plan: [docs/OPTION-LISTS.md](docs/OPTION-LISTS.md) (owner request 2026-10-02). Simple saved lists already exist (F7).
 
@@ -846,22 +847,12 @@ Full plan: [docs/OPTION-LISTS.md](docs/OPTION-LISTS.md) (owner request 2026-10-0
 - ✅ **F15d Details + auto-fill (M4):** lists get up to 10 detail columns (Details card; per option a Details button; import maps columns to details); fields from a list copy the details; field settings "Fill other fields" maps each detail to a question, locked by default (people can't change it); the logic engine fills in the browser and on the server alike, so a locked value can't be faked; an unlocked field is filled only while empty or still holding a filled-in value
   - ⬜ Details in formulas and logic conditions (later)
 - ➖ **F15e Lists from live sources** (another form, a database query, a JSON or CSV link): dropped (owner 2026-10-08: lists are kept up to date by importing). Not to be confused with the owner's "dynamic lists" = lists with levels (M2), which are built
+- ⬜ **Large dynamic lists (M5, owner 2026-10-08: "do 1 and 2"):** a list stays within 20,000 options by default; a list switched to "Large" holds up to 200,000 and stays on the server: a form loads each level only for the choice above (pick a country, then only its states load), searched as people type
+  - ⬜ The switch explains first what "Large" means (options load from the server level by level, a short wait as people choose, forms need to be online, the builder shows a summary instead of every option, copies in forms update on Save without "Update forms"), asks before turning it on, and an import above 20,000 offers it
+  - ⬜ Builder, preview, public form, submission checks, responses, exports and the API service read a large list's options from the server
 - ✅ Public option lookups for respondents (published forms only, M3); answers keep the value, records and exports show the label (API since 2026-10-08)
 
-### Destinations (where responses go)
-
-- Moved to **F12, Data sources & databases** (connections, sending form data, explorer, query editor, other database operations).
-
-### Payments (Payment field, shown as "soon" in the builder until then)
-
-- ⬜ Payment providers per workspace (connect with the provider's own sign-in; e.g. Stripe, PayPal, Adyen, Mollie, Razorpay, Flutterwave, Paystack, global and regional), test / live mode
-- ⬜ Payment field: fixed amount, amount from a choice, or **calculated** (formula, order totals, fees); currency; optional tax and fee lines; one-off payments first (subscriptions later)
-- ⬜ Card details never touch Formalie: the provider's secure checkout / hosted fields; we keep only the payment status, reference and amount
-- ⬜ Response shows paid / pending / failed / refunded; receipts by email; refunds from the response (audited); webhooks from the provider confirm payment before the response counts as complete
-
-### Webhooks, API keys, other integrations
-
-- Moved to **F13, API service & integrations** (owner, 2026-10-03: integrations belong to the API service).
+Moved out of F15: destinations to **F12**, webhooks and integrations to **F13**, payments to **F24**.
 
 ---
 
@@ -955,7 +946,7 @@ Full plan: [docs/OPTION-LISTS.md](docs/OPTION-LISTS.md) (owner request 2026-10-0
 
 ---
 
-## F22, Roles & access ⬜ (last)
+## F22, Roles & access ⬜
 
 - ⬜ Roles and permissions editor (permission catalogue, custom roles)
 - ⬜ Role assignment per user and per organisation; form-level access
@@ -983,6 +974,27 @@ The Formalie team's own console (owner, 2026-10-03: "a place for me to manage ev
 
 - ⬜ System templates and themes (publish, retire), template content languages
 - ⬜ Platform audit trail and security events
+
+---
+
+## F24, Payments & subscriptions ⬜ (last)
+
+Owner, 2026-10-08: payments come after the rest of the platform, form payments and subscriptions together. By then the owner will have chosen the payment processor; the mock follows that processor's real interface so the switch to the backend only connects it. Card details never touch Formalie (the processor's checkout or hosted fields); we keep status, reference and amount.
+
+### Plans and subscriptions
+
+- ⬜ Plans and prices (monthly / yearly, currencies), limits per plan (forms, responses per month, seats, data sources)
+- ⬜ Sign-up from the website with checkout; the workspace is activated when the payment is confirmed
+- ⬜ Billing in the portal: current plan, usage against limits, change plan, payment method, invoices and receipts
+- ⬜ Renewals: next billing date, automatic renewal, failed payment retries and reminders, expiry with a grace period, then read-only until renewed
+- ⬜ Plan-limit messages wherever a limit is hit (FRM-PLAN-1001 / 1002)
+- ⬜ Platform admin (F23) sees and changes a workspace's plan
+
+### Payments in forms (the Payment field, "soon" in the builder until then)
+
+- ⬜ Payment providers per workspace (connect with the provider's own sign-in), test / live mode
+- ⬜ Payment field: fixed amount, amount from a choice, or calculated (formula, order totals, fees); currency; optional tax and fee lines; one-off payments first
+- ⬜ Response shows paid / pending / failed / refunded; receipts by email; refunds from the response (audited); the provider's webhooks confirm payment before the response counts as complete
 
 ---
 
@@ -1050,7 +1062,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-03 | "Folder" on New form, what it means                                                                                                                                                                                                                                                                                                                              | F8                                                                                | ✅         |
 | 2026-10-03 | IP address and MAC address typing masks (MAC: other notations allowed)                                                                                                                                                                                                                                                                                            | F8                                                                                | ✅         |
 | 2026-10-03 | Field access: Everyone / Departments / Roles / People; restricted fields never required                                                                                                                                                                                                                                                                           | F8 (answers visibility in F11)                                                    | ✅         |
-| 2026-10-03 | Payment field, intention                                                                                                                                                                                                                                                                                                                                         | F15 (Payments)                                                                    | ⬜         |
+| 2026-10-03 | Payment field, intention                                                                                                                                                                                                                                                                                                                                         | F24 (Payments)                                                                    | ⬜         |
 | 2026-10-03 | How duplicate submissions are prevented                                                                                                                                                                                                                                                                                                                           | F10                                                                               | ✅ |
 | 2026-10-03 | Field access: Departments / Roles showed no list to pick from                                                                                                                                                                                                                                                                                                     | F8                                                                                | ✅         |
 | 2026-10-03 | Templates table: smaller, even thumbnails                                                                                                                                                                                                                                                                                                                         | F9                                                                                | ✅         |
@@ -1190,6 +1202,9 @@ Owner requests added during development, and where they landed.
 | 2026-10-06 | API keys folded into tokens: a token can hold management rights (Manage forms and responses), the /v1 management API signs in with tokens; API keys page removed | F13 | ✅ |
 | 2026-10-06 | Final header rule: three headers on every call (Authorization, Content-Type, Formalie-Key), none optional; no custom headers, no signed calls; token expiry in every answer; Docs show the three | F13 | ✅ |
 | 2026-10-06 | Rail "+" menu: Forms group (New form, From a template, New template) and Operations group (Add database, New API service, Query editor, Database explorer) | F1 shell | ✅ |
+| 2026-10-08 | Payments and subscriptions come last, together: form payments, plans, sign-up from the site with activation, renewals in the portal, next billing date, expiry; integrate the processor the owner chooses (mock first) | F24 (new phase, last) | ⬜ planned |
+| 2026-10-08 | Large lists: keep the 20,000 limit and also offer large dynamic lists (up to 200,000, loaded level by level from the server), explaining first what choosing it means | F15 M5 | ⬜ next |
+| 2026-10-08 | Proper cleanup of PROGRESS.md | All | ✅ |
 
 ---
 
@@ -1432,3 +1447,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-08 | F15 | M4 details and auto-fill: `OptionList.columns`, `OptionItem.attrs` (server keeps details only for the list's columns), `offeredOptions` copies details into fields and `matchesList` notices changed details; list editor Details card (`option-sets/Columns.vue`), a Details popover per option, import role "Detail: …"; `shared/utils/forms/fills.ts` (`props.fills = [{ column, target, lock }]`) applied inside `evaluateLogic`, so the form page and `checkSubmission` fill alike (locked = disabled and always the detail); builder "Fill other fields" (`InspectorFill.vue`). Checked in the browser: a Dial code detail on Places (Brazil +55), Update from the list on Places test, Dial code → a short text field (locked); in the preview choosing Brazil filled "+55" and kept it locked; then fill, field, detail removed and the form updated back. Found and fixed: a select item with an empty value breaks the select ("Don't fill" now uses "none"). Tests added (`test/forms/fills.test.ts`). |
 | 2026-10-08 | F15 | Owner: lists from live sources (M5) dropped, import keeps lists current; wording corrected after the owner's note that "dynamic list" is their name for lists with levels (built in M2, kept). Removed from the plan in PROGRESS, OPTION-LISTS and the decisions; nothing had been built for it. The list work of F15 is complete (M1 to M4); next is M6 payments. |
 | 2026-10-08 | F15 | Owner: a 4.9 MB CSV (250 countries, 5,283 states, 154,393 cities) hung the import. Causes: matching each row against every option built so far (rows × options), a unique-value helper copying the taken values per row, and `Math.max(...rows)` over 154,000 rows (call stack overflow). Now indexed (one look-up per row), a kept set of taken values, loops instead of spreads, and the dialog's rows in a `shallowRef`. Measured on the owner's file: parse 0.1 s, level detection 0.07 s, building 158,461 options 0.5 s; in the browser a 19,200-row paste is ready in 1.2 s. The import now says before Apply when a file makes more options than a list holds (20,000) and disables Apply, with advice to split the file. Also: "List with levels" renamed "Dynamic list" in the List type switch and the guide (owner's name), all 20 languages. |
+| 2026-10-08 | All | PROGRESS.md cleaned up: F15 renamed "Option sets (lists)"; payments (F15) and billing (F14) moved to a new last phase F24 Payments & subscriptions with plans, site sign-up, activation, renewals, expiry; order of what is left under the overview; F12 / F18 marked waiting for review; moved-out stubs folded into one line; owner chose both list sizes (M5 large dynamic lists added) |
