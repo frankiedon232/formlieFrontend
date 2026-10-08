@@ -128,3 +128,10 @@ Deleting or retiring items never breaks old responses.
 - **Search as you type:** a dropdown or multi-select with more than 50 options shows a search box (field setting "Search as you type", `props.search`, sets it by hand); long lists are drawn as they scroll.
 - **Options on the server:** on the public form page a field with more than 300 options and no level above is sent without them (`options_remote.total`); the page asks `GET /public/forms/{key}/options?field=&q=&values=&language=` for up to 50 matches as people type (case and accents ignored, those starting with the text first) and for the labels of chosen values (resumed drafts). The server keeps the full form, so answers are checked against every option. Lower levels of a list with levels keep their options (already narrowed by the choice above).
 - **Builder:** a field from a list with more than 100 options shows a summary and "Edit the list" instead of every row; a field may hold up to 20,000 options, like a list.
+
+## F15d details and auto-fill, as built (M4, 2026-10-08)
+
+- **Data:** `OptionList.columns: { key, label }[]` (up to 10; keys `a-z0-9_`), `OptionItem.attrs: { [column]: string | number }`; the server keeps details only for the list's columns. Fields from a list copy the details (`options[].attrs`); a changed detail shows "list changed" like a changed label.
+- **Editor:** a Details card names the columns; each option has a Details button; Import (one option per row) maps a column to "Detail: …".
+- **Auto-fill:** a one-choice field (dropdown, single choice) has "Fill other fields": each detail → a question, locked by default. Stored as `props.fills = [{ column, target, lock }]` and applied by the logic engine (`shared/utils/forms/fills.ts`) in the browser and on submit: a locked target is disabled and always holds the chosen option's detail (empty when nothing is chosen); an unlocked target is filled while empty or still holding a filled-in detail, never over what a person typed. Number questions get numbers.
+- **Later:** details in formulas and logic conditions.

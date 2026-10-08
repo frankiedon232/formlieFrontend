@@ -39,16 +39,18 @@ const item = z.object({
   translations: z.record(z.string().max(10), z.string().max(500)).optional(),
   level: z.number().int().min(0).max(MAX_LIST_LEVELS - 1).optional(),
   parent: z.string().trim().max(200).optional(),
+  attrs: z.record(z.string().max(40), z.union([z.string().max(500), z.number().finite()])).optional(),
 })
 const level = z.object({ key: z.string().trim().min(1).max(40), label: z.string().trim().min(1).max(60) })
-const listBody = z.object({ name, description: z.string().trim().max(300).nullable().optional(), levels: z.array(level).max(MAX_LIST_LEVELS).optional(), options: z.array(item).min(1).max(20000) })
+const column = z.object({ key: z.string().trim().min(1).max(40).regex(/^[a-z][a-z0-9_]*$/), label: z.string().trim().min(1).max(60) })
+const listBody = z.object({ name, description: z.string().trim().max(300).nullable().optional(), levels: z.array(level).max(MAX_LIST_LEVELS).optional(), columns: z.array(column).max(10).optional(), options: z.array(item).min(1).max(20000) })
 
 const authorOf = (user: MockUser) => ({ id: user.id, name: `${user.first_name} ${user.last_name}`.trim() })
 const audit = (event: H3Event, tenant: MockTenant, user: MockUser, action: 'forms.list_created' | 'forms.list_updated' | 'forms.list_deleted' | 'forms.list_synced', list: { id: string; name: string }, extra: { changes?: { field: string; before: string | null; after: string | null }[]; metadata?: Record<string, string> } = {}) =>
   recordAudit(event, tenant, { action, actor: actorOf(user), resource: { type: 'option_list', id: list.id, name: list.name }, ...extra })
 
 /** Clean items: tidy translations, refuse repeated values; lists with levels: every option sits under one on the level above. */
-function cleanOptions(options: OptionItem[], levels: number): OptionItem[] {
+function cleanOptions(options: OptionItem[], levels: number, columns: string[] = []): OptionItem[] {
   const seen = new Set<string>()
   const byLevel = new Map<number, Set<string>>()
   for (const option of options) {
@@ -63,10 +65,18 @@ function cleanOptions(options: OptionItem[], levels: number): OptionItem[] {
     const at = levels > 1 ? Math.min(option.level ?? 0, levels - 1) : 0
     if (at > 0 && (!option.parent || !byLevel.get(at - 1)?.has(option.parent))) throw new MockError('FRM-FORM-1021', [{ field: 'options', message: option.label }])
     const translations = Object.fromEntries(Object.entries(option.translations ?? {}).filter(([, text]) => text.trim()))
-    return { value: option.value, label: option.label, ...(option.score !== undefined ? { score: option.score } : {}), ...(option.active === false ? { active: false } : {}), ...(Object.keys(translations).length ? { translations } : {}), ...(at > 0 ? { level: at, parent: option.parent } : {}) }
+    // Details only for the list's columns, without empty ones (F15 M4)
+    const attrs = Object.fromEntries(Object.entries(option.attrs ?? {}).filter(([key, value]) => columns.includes(key) && value !== '' && value !== null))
+    return { value: option.value, label: option.label, ...(option.score !== undefined ? { score: option.score } : {}), ...(option.active === false ? { active: false } : {}), ...(Object.keys(translations).length ? { translations } : {}), ...(at > 0 ? { level: at, parent: option.parent } : {}), ...(Object.keys(attrs).length ? { attrs } : {}) }
   })
 }
 const cleanLevels = (levels: { key: string; label: string }[] | undefined) => (levels && levels.length > 1 ? levels.map(item => ({ key: item.key, label: item.label })) : undefined)
+/** Columns of details (F15 M4): unique keys, at most 10; none = undefined. */
+const cleanColumns = (columns: { key: string; label: string }[] | undefined) => {
+  const seen = new Set<string>()
+  const kept = (columns ?? []).filter(item => !seen.has(item.key) && seen.add(item.key)).map(item => ({ key: item.key, label: item.label }))
+  return kept.length ? kept : undefined
+}
 const assertName = (lists: OptionList[], value: string, except?: string) => {
   if (lists.some(list => list.id !== except && list.name.toLowerCase() === value.toLowerCase())) throw new MockError('FRM-FORM-1009', [{ field: 'name', message: 'taken' }])
 }
@@ -148,7 +158,8 @@ export const createOptionList = defineMockRoute(({ event, body }) => {
   assertName(store.lists, input.name)
   const now = new Date().toISOString()
   const levels = cleanLevels(input.levels)
-  const created: OptionList = { id: crypto.randomUUID(), name: input.name, description: input.description ?? null, ...(levels ? { levels } : {}), options: cleanOptions(input.options, levels?.length ?? 1), created_by: authorOf(user), created_at: now, updated_at: now }
+  const columns = cleanColumns(input.columns)
+  const created: OptionList = { id: crypto.randomUUID(), name: input.name, description: input.description ?? null, ...(levels ? { levels } : {}), ...(columns ? { columns } : {}), options: cleanOptions(input.options, levels?.length ?? 1, columns?.map(item => item.key)), created_by: authorOf(user), created_at: now, updated_at: now }
   store.lists.push(created)
   saveLibrary()
   audit(event, tenant, user, 'forms.list_created', created, { metadata: { options: String(created.options.length) } })
@@ -162,7 +173,8 @@ export const updateOptionList = defineMockRoute(({ event, body }) => {
   const found = findList(tenant, getRouterParam(event, 'id'))
   if (input.name) assertName(store.lists, input.name, found.id)
   const levels = input.levels !== undefined ? cleanLevels(input.levels) : found.levels
-  const options = input.options || input.levels !== undefined ? cleanOptions(input.options ?? found.options, levels?.length ?? 1) : undefined
+  const columns = input.columns !== undefined ? cleanColumns(input.columns) : found.columns
+  const options = input.options || input.levels !== undefined || input.columns !== undefined ? cleanOptions(input.options ?? found.options, levels?.length ?? 1, columns?.map(item => item.key)) : undefined
   const retiredBefore = found.options.filter(option => option.active === false).length
   const changes: { field: string; before: string | null; after: string | null }[] = [
     ...(input.name && input.name !== found.name ? [{ field: 'name', before: found.name, after: input.name }] : []),
@@ -174,6 +186,8 @@ export const updateOptionList = defineMockRoute(({ event, body }) => {
   Object.assign(found, { ...(input.name ? { name: input.name } : {}), ...(input.description !== undefined ? { description: input.description ?? null } : {}), ...(options ? { options } : {}), updated_at: new Date().toISOString() })
   if (levels) found.levels = levels
   else delete found.levels
+  if (columns) found.columns = columns
+  else delete found.columns
   saveLibrary()
   audit(event, tenant, user, 'forms.list_updated', found, { changes })
   return ok(rowOf(tenant, found, allLanguages(tenant)))

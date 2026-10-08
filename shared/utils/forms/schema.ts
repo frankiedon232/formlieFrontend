@@ -36,7 +36,7 @@ export const formFieldSchema = z.object({
     .optional(),
   validation: z.record(z.string(), z.unknown()).optional(),
   options: z
-    .array(z.object({ value: text(200), label: text(500), score: z.number().finite().optional(), parent: text(200).optional() }))
+    .array(z.object({ value: text(200), label: text(500), score: z.number().finite().optional(), parent: text(200).optional(), attrs: z.record(z.string().max(40), z.union([z.string().max(500), z.number().finite()])).optional() }))
     .max(MAX_OPTIONS)
     .nullable()
     .optional(),

@@ -35,7 +35,7 @@ export const servedRemotely = (field: SearchField) => !field.option_parent && (f
 export function valueFromLabel(label: string): string {
   const base = label
     .normalize('NFKD')
-    .replace(/[̀-ͯ]/g, '')
+    .replace(/[\u0300-\u036f]/g, '')
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '_')
     .replace(/^_+|_+$/g, '')
@@ -58,7 +58,8 @@ export const repeatedValues = (values: string[]) => {
   return repeated
 }
 
-type ListLike = { levels?: { key: string; label: string }[]; options: { value: string; label: string; score?: number; active?: boolean; level?: number; parent?: string }[] }
+type Attrs = Record<string, string | number>
+type ListLike = { levels?: { key: string; label: string }[]; columns?: { key: string; label: string }[]; options: { value: string; label: string; score?: number; active?: boolean; level?: number; parent?: string; attrs?: Attrs }[] }
 
 /** The named levels of a list with levels (two or more), else null for a plain list. */
 export const levelsOf = (list: Pick<ListLike, 'levels'>) => (list.levels && list.levels.length > 1 ? list.levels : null)
@@ -74,17 +75,27 @@ function offeredAt(list: ListLike, level: number) {
   return result
 }
 
-/** What a level field gets from a list (level 0 for plain lists): value / label / score, and the option it sits under. */
-export const offeredOptions = (list: ListLike, level = 0) =>
-  offeredAt(list, level).map(({ value, label, score, parent }) => ({ value, label, ...(score !== undefined ? { score } : {}), ...(level > 0 && parent !== undefined ? { parent } : {}) }))
-
-/** A field's options still match its list at its level (same values, labels, scores and parents, same order). */
-export const matchesList = (options: { value: string; label: string; score?: number; parent?: string }[] | null | undefined, list: ListLike, level = 0) => {
-  const wanted = offeredOptions(list, level)
-  return !!options && options.length === wanted.length && options.every((option, i) => option.value === wanted[i]!.value && option.label === wanted[i]!.label && (option.score ?? null) === (wanted[i]!.score ?? null) && (option.parent ?? null) === ((wanted[i] as { parent?: string }).parent ?? null))
+/** Only details for the list's own columns, without empty ones. */
+const detailsOf = (attrs: Attrs | undefined, columns: ListLike['columns']) => {
+  if (!attrs || !columns?.length) return undefined
+  const kept = Object.fromEntries(columns.filter(column => attrs[column.key] !== undefined && attrs[column.key] !== '').map(column => [column.key, attrs[column.key]!]))
+  return Object.keys(kept).length ? kept : undefined
 }
 
-const fold = (text: string) => text.normalize('NFKD').replace(/[̀-ͯ]/g, '').toLowerCase()
+/** What a level field gets from a list (level 0 for plain lists): value / label / score, the option it sits under, and its details (F15 M4). */
+export const offeredOptions = (list: ListLike, level = 0) =>
+  offeredAt(list, level).map(({ value, label, score, parent, attrs }) => {
+    const details = detailsOf(attrs, list.columns)
+    return { value, label, ...(score !== undefined ? { score } : {}), ...(level > 0 && parent !== undefined ? { parent } : {}), ...(details ? { attrs: details } : {}) }
+  })
+
+/** A field's options still match its list at its level (same values, labels, scores and parents, same order). */
+export const matchesList = (options: { value: string; label: string; score?: number; parent?: string; attrs?: Attrs }[] | null | undefined, list: ListLike, level = 0) => {
+  const wanted = offeredOptions(list, level)
+  return !!options && options.length === wanted.length && options.every((option, i) => option.value === wanted[i]!.value && option.label === wanted[i]!.label && (option.score ?? null) === (wanted[i]!.score ?? null) && (option.parent ?? null) === ((wanted[i] as { parent?: string }).parent ?? null) && JSON.stringify(option.attrs ?? null) === JSON.stringify((wanted[i] as { attrs?: Attrs }).attrs ?? null))
+}
+
+const fold = (text: string) => text.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
 /**
  * Search as you type on the server (F15 M3): options whose label contains `q`, without minding case or
  * accents ("sao" finds "São Paulo"); those that start with it first; at most `limit`, with how many match.

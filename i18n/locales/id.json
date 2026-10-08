@@ -2328,6 +2328,13 @@
       "showFields": "Tampilkan daftar kolom",
       "hideSettings": "Sembunyikan pengaturan",
       "showSettings": "Tampilkan pengaturan"
+    },
+    "fill": {
+      "title": "Isi kolom lain",
+      "hint": "Saat opsi dipilih, detailnya mengisi pertanyaan ini. Pertanyaan yang dikunci tidak dapat diubah.",
+      "none": "Jangan isi",
+      "target": "Pertanyaan yang diisi dengan {name}",
+      "lock": "Kunci (orang tidak dapat mengubahnya)"
     }
   },
   "renderer": {
@@ -7279,7 +7286,8 @@
         "score": "Skor",
         "lang": "Label dalam {name}",
         "skip": "Jangan dipakai",
-        "level": "Level {n}"
+        "level": "Level {n}",
+        "detail": "Detail: {name}"
       },
       "summary": "{rows} baris: {added} baru, {updated} diperbarui",
       "skipped": "{n} dilewati (kosong atau berulang)",
@@ -7357,6 +7365,19 @@
       "fill": "Satu per satu, tempel dari spreadsheet, atau impor berkas CSV atau Excel. Untuk level: satu kolom per level, satu baris per jalur.",
       "useTitle": "Simpan dan gunakan",
       "use": "Di formulir, buka Tambah kolom → Daftar lalu klik atau seret daftarnya. Formulir menyimpan salinan: setelah ada perubahan, perbarui di Dipakai di."
+    },
+    "columns": {
+      "title": "Detail",
+      "hint": "Informasi tambahan pada setiap opsi, seperti kode pos, harga, atau manajer. Memilih opsi di formulir dapat mengisi pertanyaan lain dengan informasi ini.",
+      "add": "Tambah detail",
+      "nameN": "Detail {n}",
+      "nameOf": "Nama detail {n}",
+      "remove": "Hapus detail",
+      "removeTitle": "Hapus detail {name}?",
+      "removeDesc": "Detail ini terisi pada {n} opsi dan akan dihapus darinya. | Detail ini terisi pada {n} opsi dan akan dihapus dari semuanya.",
+      "edit": "Detail {name}",
+      "of": "Detail {name}",
+      "unnamed": "Beri setiap detail sebuah nama."
     }
   }
 }

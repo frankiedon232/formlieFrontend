@@ -2328,6 +2328,13 @@
       "showFields": "Onyesha orodha ya sehemu",
       "hideSettings": "Ficha mipangilio",
       "showSettings": "Onyesha mipangilio"
+    },
+    "fill": {
+      "title": "Jaza sehemu nyingine",
+      "hint": "Chaguo likichaguliwa, maelezo yake hujaza maswali haya. Maswali yaliyofungwa hayawezi kubadilishwa.",
+      "none": "Usijaze",
+      "target": "Swali linalojazwa na {name}",
+      "lock": "Funga (watu hawawezi kubadilisha)"
     }
   },
   "renderer": {
@@ -7279,7 +7286,8 @@
         "score": "Alama",
         "lang": "Lebo kwa {name}",
         "skip": "Usitumie",
-        "level": "Kiwango cha {n}"
+        "level": "Kiwango cha {n}",
+        "detail": "Maelezo: {name}"
       },
       "summary": "Mistari {rows}: mipya {added}, iliyosasishwa {updated}",
       "skipped": "{n} imerukwa (tupu au imerudiwa)",
@@ -7357,6 +7365,19 @@
       "fill": "Moja baada ya jingine, kuzibandika kutoka lahajedwali, au kuleta faili ya CSV au Excel. Kwa viwango: safu wima moja kwa kila kiwango, safu moja kwa kila njia.",
       "useTitle": "Hifadhi na utumie",
       "use": "Katika fomu, fungua Ongeza sehemu → Orodha kisha bofya orodha au iburute. Fomu hubaki na nakala: baada ya mabadiliko, zisasishe chini ya Inatumika katika."
+    },
+    "columns": {
+      "title": "Maelezo",
+      "hint": "Taarifa za ziada kwa kila chaguo, kama msimbo wa posta, bei au meneja. Kuchagua chaguo kwenye fomu kunaweza kujaza maswali mengine kwa taarifa hizo.",
+      "add": "Ongeza maelezo",
+      "nameN": "Maelezo {n}",
+      "nameOf": "Jina la maelezo {n}",
+      "remove": "Ondoa maelezo",
+      "removeTitle": "Ondoa maelezo {name}?",
+      "removeDesc": "Yamejazwa kwenye chaguo {n} na yataondolewa kutoka kwake. | Yamejazwa kwenye chaguo {n} na yataondolewa kutoka kwa hizo.",
+      "edit": "Maelezo ya {name}",
+      "of": "Maelezo ya {name}",
+      "unnamed": "Pe kila maelezo jina."
     }
   }
 }

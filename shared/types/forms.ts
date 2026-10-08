@@ -232,6 +232,14 @@ export interface OptionItem {
   /** Lists with levels (F15 M2): the level (0 = top, missing = 0) and the value of the option it sits under. */
   level?: number
   parent?: string
+  /** Details (F15 M4): a value per list column, e.g. { postcode: 'SW1A 1AA', price: 12.5 }. */
+  attrs?: Record<string, string | number>
+}
+
+/** A column of details on a list's options (F15 M4), used to fill other fields. */
+export interface OptionColumn {
+  key: string
+  label: string
 }
 
 /** A level of a list with levels, e.g. Country → State → City. */
@@ -246,6 +254,8 @@ export interface OptionList {
   description?: string | null
   /** Two to four named levels for a list with levels; missing or one = a plain list. */
   levels?: OptionLevel[]
+  /** Details on every option (F15 M4), up to 10 columns. */
+  columns?: OptionColumn[]
   options: OptionItem[]
   created_by: { id: string; name: string }
   created_at: string

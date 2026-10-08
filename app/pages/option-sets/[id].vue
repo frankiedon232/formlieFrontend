@@ -7,7 +7,7 @@
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@nuxt/ui'
 import type { LocalisationSettings } from '#shared/types/settings'
-import type { OptionItem, OptionLevel, OptionListRow } from '#shared/types/forms'
+import type { OptionColumn, OptionItem, OptionLevel, OptionListRow } from '#shared/types/forms'
 
 definePageMeta({ breadcrumb: 'nav.optionSets' })
 const { t } = useI18n()
@@ -22,9 +22,9 @@ const breadcrumbs = useBreadcrumbs()
 
 const list = ref<OptionListRow | null>(null)
 const failed = ref(false)
-type Draft = { name: string; description: string | null; levels: OptionLevel[] | null; options: OptionItem[] }
+type Draft = { name: string; description: string | null; levels: OptionLevel[] | null; columns: OptionColumn[] | null; options: OptionItem[] }
 const draft = ref<Draft | null>(null)
-const draftOf = (row: OptionListRow): Draft => clone({ name: row.name, description: row.description ?? null, levels: row.levels ?? null, options: row.options })
+const draftOf = (row: OptionListRow): Draft => clone({ name: row.name, description: row.description ?? null, levels: row.levels ?? null, columns: row.columns ?? null, options: row.options })
 function clone<T>(value: T): T {
   return JSON.parse(JSON.stringify(value)) as T
 }
@@ -78,9 +78,13 @@ async function save() {
     toast.add({ title: orphans.length ? t('optionSets.levels.orphans', { n: orphans.length }, orphans.length) : t('optionSets.levels.unnamed'), color: 'warning', icon: 'i-lucide-triangle-alert' })
     return
   }
+  if (draft.value.columns?.some(column => !column.label.trim())) {
+    toast.add({ title: t('optionSets.columns.unnamed'), color: 'warning', icon: 'i-lucide-triangle-alert' })
+    return
+  }
   saving.value = true
   try {
-    list.value = (await api.patch<OptionListRow>(`/option-lists/${id}`, { name: draft.value.name, description: draft.value.description, levels: draft.value.levels ?? [], options: draft.value.options })).data
+    list.value = (await api.patch<OptionListRow>(`/option-lists/${id}`, { name: draft.value.name, description: draft.value.description, levels: draft.value.levels ?? [], columns: draft.value.columns ?? [], options: draft.value.options })).data
     draft.value = draftOf(list.value)
     toast.add({ title: t('optionSets.saved'), description: list.value.forms_count ? t('optionSets.savedUsed', { n: list.value.forms_count }, list.value.forms_count) : undefined, color: 'success', icon: 'i-lucide-circle-check' })
     void usageRef.value?.load()
@@ -155,12 +159,13 @@ async function remove() {
       </div>
       <OptionSetsGuide />
       <OptionSetsLevels v-model:levels="draft.levels" v-model:options="draft.options" :saved-values="savedValues" />
+      <OptionSetsColumns v-model:columns="draft.columns" v-model:options="draft.options" />
       <UTabs v-model="tab" :items="tabs" :content="false" color="neutral" variant="link" class="w-full" />
-      <OptionSetsItems v-if="tab === 'items'" v-model="draft.options" :saved-values="savedValues" :levels="draft.levels" @paste="openImport('paste')" @import="openImport('file')" />
+      <OptionSetsItems v-if="tab === 'items'" v-model="draft.options" :saved-values="savedValues" :levels="draft.levels" :columns="draft.columns" @paste="openImport('paste')" @import="openImport('file')" />
       <OptionSetsTranslations v-else-if="tab === 'translations'" v-model="draft.options" :languages="languages" />
       <OptionSetsUsage v-show="tab === 'usage'" ref="usage" :list-id="id" :dirty="dirty" @synced="load" />
     </template>
 
-    <OptionSetsImportModal v-if="draft" v-model:open="importOpen" :source="importSource" :options="draft.options" :languages="languages" :levels="draft.levels" @apply="applyImport" />
+    <OptionSetsImportModal v-if="draft" v-model:open="importOpen" :source="importSource" :options="draft.options" :languages="languages" :levels="draft.levels" :columns="draft.columns" @apply="applyImport" />
   </AppPanel>
 </template>

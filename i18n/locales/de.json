@@ -2328,6 +2328,13 @@
       "showFields": "Feldliste einblenden",
       "hideSettings": "Einstellungen ausblenden",
       "showSettings": "Einstellungen einblenden"
+    },
+    "fill": {
+      "title": "Andere Felder ausfüllen",
+      "hint": "Wenn eine Option gewählt wird, füllen ihre Details diese Fragen aus. Gesperrte Fragen können nicht geändert werden.",
+      "none": "Nicht ausfüllen",
+      "target": "Frage, die mit {name} ausgefüllt wird",
+      "lock": "Sperren (Personen können es nicht ändern)"
     }
   },
   "renderer": {
@@ -7279,7 +7286,8 @@
         "score": "Punktwert",
         "lang": "Beschriftung in {name}",
         "skip": "Nicht verwenden",
-        "level": "Ebene {n}"
+        "level": "Ebene {n}",
+        "detail": "Detail: {name}"
       },
       "summary": "{rows} Zeilen: {added} neu, {updated} aktualisiert",
       "skipped": "{n} übersprungen (leer oder wiederholt)",
@@ -7357,6 +7365,19 @@
       "fill": "Einzeln, aus einer Tabelle eingefügt oder per CSV- oder Excel-Datei importiert. Für Ebenen: eine Spalte pro Ebene, eine Zeile pro Pfad.",
       "useTitle": "Speichern und verwenden",
       "use": "Öffnen Sie in einem Formular Feld hinzufügen → Listen und klicken Sie auf die Liste oder ziehen Sie sie. Formulare behalten eine Kopie: Aktualisieren Sie sie nach Änderungen unter Verwendet in."
+    },
+    "columns": {
+      "title": "Details",
+      "hint": "Zusätzliche Angaben zu jeder Option, etwa Postleitzahl, Preis oder Manager. Die Auswahl einer Option in einem Formular kann damit andere Fragen ausfüllen.",
+      "add": "Detail hinzufügen",
+      "nameN": "Detail {n}",
+      "nameOf": "Name von Detail {n}",
+      "remove": "Detail entfernen",
+      "removeTitle": "Das Detail {name} entfernen?",
+      "removeDesc": "Es ist bei {n} Option ausgefüllt und wird dort entfernt. | Es ist bei {n} Optionen ausgefüllt und wird dort entfernt.",
+      "edit": "Details von {name}",
+      "of": "Details von {name}",
+      "unnamed": "Geben Sie jedem Detail einen Namen."
     }
   }
 }

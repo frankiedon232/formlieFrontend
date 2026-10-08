@@ -2328,6 +2328,13 @@
       "showFields": "Mostrar la lista de campos",
       "hideSettings": "Ocultar los ajustes",
       "showSettings": "Mostrar los ajustes"
+    },
+    "fill": {
+      "title": "Rellenar otros campos",
+      "hint": "Al elegir una opción, sus detalles rellenan estas preguntas. Las bloqueadas no se pueden cambiar.",
+      "none": "No rellenar",
+      "target": "Pregunta rellenada con {name}",
+      "lock": "Bloquear (las personas no pueden cambiarlo)"
     }
   },
   "renderer": {
@@ -7279,7 +7286,8 @@
         "score": "Puntuación",
         "lang": "Etiqueta en {name}",
         "skip": "No usar",
-        "level": "Nivel {n}"
+        "level": "Nivel {n}",
+        "detail": "Detalle: {name}"
       },
       "summary": "{rows} filas: {added} nuevas, {updated} actualizadas",
       "skipped": "{n} omitidas (vacías o repetidas)",
@@ -7357,6 +7365,19 @@
       "fill": "Una a una, pegándolas desde una hoja de cálculo o importando un archivo CSV o Excel. Para niveles: una columna por nivel, una fila por ruta.",
       "useTitle": "Guarda y úsala",
       "use": "En un formulario, abre Añadir campo → Listas y haz clic en la lista o arrástrala. Los formularios conservan una copia: tras los cambios, actualízalos en Usada en."
+    },
+    "columns": {
+      "title": "Detalles",
+      "hint": "Datos adicionales de cada opción, como código postal, precio o responsable. Al elegir una opción en un formulario se pueden rellenar otras preguntas con ellos.",
+      "add": "Añadir detalle",
+      "nameN": "Detalle {n}",
+      "nameOf": "Nombre del detalle {n}",
+      "remove": "Quitar detalle",
+      "removeTitle": "¿Quitar el detalle {name}?",
+      "removeDesc": "Está rellenado en {n} opción y se quitará de ella. | Está rellenado en {n} opciones y se quitará de ellas.",
+      "edit": "Detalles de {name}",
+      "of": "Detalles de {name}",
+      "unnamed": "Da un nombre a cada detalle."
     }
   }
 }

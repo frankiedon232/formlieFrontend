@@ -10,6 +10,7 @@
  */
 import type { FormField } from './build'
 import type { FormSchemaV1 } from './schema'
+import { applyFills } from './fills'
 
 export type LogicOperator =
   | 'eq' | 'neq' | 'contains' | 'not_contains' | 'starts_with' | 'ends_with'
@@ -223,5 +224,7 @@ export function evaluateLogic(schema: FormSchemaV1, answers: Record<string, unkn
       }
     }
   }
+  // Details and auto-fill from a chosen option (F15 M4), after the rules
+  applyFills(state, [...fields.values()].map(item => item.field), answers)
   return state
 }

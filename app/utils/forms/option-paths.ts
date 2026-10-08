@@ -69,7 +69,7 @@ export function importPaths(options: OptionItem[], rows: string[][], columns: nu
 }
 
 /** One option per row: `at` = the columns holding label, value, score and translations (−1 = none). */
-export function importRows(options: OptionItem[], rows: string[][], at: { label: number; value: number; score: number; languages: [string, number][] }, replace: boolean): RowImport {
+export function importRows(options: OptionItem[], rows: string[][], at: { label: number; value: number; score: number; languages: [string, number][]; details?: [string, number][] }, replace: boolean): RowImport {
   const list: OptionItem[] = options.map(option => (replace ? { ...option, active: false } : { ...option }))
   let added = 0
   let updated = 0
@@ -87,17 +87,21 @@ export function importRows(options: OptionItem[], rows: string[][], at: { label:
     const scoreText = cell(row, at.score)
     const score = scoreText && !Number.isNaN(Number(scoreText)) ? Number(scoreText) : undefined
     const translations = Object.fromEntries(at.languages.map(([code, index]) => [code, cell(row, index)]).filter(([, value]) => value))
+    // Details (F15 M4): a column per list detail
+    const details = Object.fromEntries((at.details ?? []).map(([key, index]) => [key, cell(row, index)]).filter(([, value]) => value))
+    const withDetails = (option: OptionItem) => (Object.keys(details).length ? { attrs: { ...option.attrs, ...details } } : {})
     if (match) {
       if (seen.has(match)) {
         skipped++
         continue
       }
       seen.add(match)
-      Object.assign(match, { label, ...(score !== undefined ? { score } : {}), ...(Object.keys(translations).length ? { translations: { ...match.translations, ...translations } } : {}) })
+      Object.assign(match, { label, ...(score !== undefined ? { score } : {}), ...(Object.keys(translations).length ? { translations: { ...match.translations, ...translations } } : {}), ...withDetails(match) })
       delete match.active
       updated++
     } else {
       const option: OptionItem = { value: uniqueValue(wanted || valueFromLabel(label), list.map(item => item.value)), label, ...(score !== undefined ? { score } : {}), ...(Object.keys(translations).length ? { translations } : {}) }
+      Object.assign(option, withDetails(option))
       list.push(option)
       seen.add(option)
       added++

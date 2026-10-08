@@ -2328,6 +2328,13 @@
       "showFields": "Show the field list",
       "hideSettings": "Hide the settings",
       "showSettings": "Show the settings"
+    },
+    "fill": {
+      "title": "Fill other fields",
+      "hint": "When an option is chosen, its details fill these questions. Locked ones can't be changed.",
+      "none": "Don't fill",
+      "target": "Question filled with {name}",
+      "lock": "Lock it (people can't change it)"
     }
   },
   "renderer": {
@@ -7279,7 +7286,8 @@
         "score": "Score",
         "lang": "Label in {name}",
         "skip": "Don’t use",
-        "level": "Level {n}"
+        "level": "Level {n}",
+        "detail": "Detail: {name}"
       },
       "summary": "{rows} rows: {added} new, {updated} updated",
       "skipped": "{n} skipped (empty or repeated)",
@@ -7357,6 +7365,19 @@
       "fill": "One by one, paste them from a spreadsheet, or import a CSV or Excel file. For levels: one column per level, one row per path.",
       "useTitle": "Save and use it",
       "use": "In a form, open Add field → Lists and click or drag the list. Forms keep a copy: after changes, update them under Used in."
+    },
+    "columns": {
+      "title": "Details",
+      "hint": "Extra facts on every option, such as a postcode, price or manager. Choosing an option in a form can fill other questions with them.",
+      "add": "Add detail",
+      "nameN": "Detail {n}",
+      "nameOf": "Name of detail {n}",
+      "remove": "Remove detail",
+      "removeTitle": "Remove the detail {name}?",
+      "removeDesc": "It is filled in on {n} option and is removed from it. | It is filled in on {n} options and is removed from them.",
+      "edit": "Details of {name}",
+      "of": "Details of {name}",
+      "unnamed": "Give every detail a name."
     }
   }
 }

@@ -2328,6 +2328,13 @@
       "showFields": "Mostrar a lista de campos",
       "hideSettings": "Ocultar as configurações",
       "showSettings": "Mostrar as configurações"
+    },
+    "fill": {
+      "title": "Preencher outros campos",
+      "hint": "Quando uma opção é escolhida, os seus detalhes preenchem estas perguntas. As bloqueadas não podem ser alteradas.",
+      "none": "Não preencher",
+      "target": "Pergunta preenchida com {name}",
+      "lock": "Bloquear (as pessoas não podem alterar)"
     }
   },
   "renderer": {
@@ -7279,7 +7286,8 @@
         "score": "Pontuação",
         "lang": "Rótulo em {name}",
         "skip": "Não usar",
-        "level": "Nível {n}"
+        "level": "Nível {n}",
+        "detail": "Detalhe: {name}"
       },
       "summary": "{rows} linhas: {added} novas, {updated} atualizadas",
       "skipped": "{n} ignoradas (vazias ou repetidas)",
@@ -7357,6 +7365,19 @@
       "fill": "Uma a uma, coladas de uma planilha, ou importando um arquivo CSV ou Excel. Para níveis: uma coluna por nível, uma linha por caminho.",
       "useTitle": "Salve e use",
       "use": "Em um formulário, abra Adicionar campo → Listas e clique na lista ou arraste-a. Os formulários guardam uma cópia: após mudanças, atualize-os em Usada em."
+    },
+    "columns": {
+      "title": "Detalhes",
+      "hint": "Informações extras em cada opção, como código postal, preço ou gestor. Escolher uma opção num formulário pode preencher outras perguntas com elas.",
+      "add": "Adicionar detalhe",
+      "nameN": "Detalhe {n}",
+      "nameOf": "Nome do detalhe {n}",
+      "remove": "Remover detalhe",
+      "removeTitle": "Remover o detalhe {name}?",
+      "removeDesc": "Está preenchido em {n} opção e será removido dela. | Está preenchido em {n} opções e será removido delas.",
+      "edit": "Detalhes de {name}",
+      "of": "Detalhes de {name}",
+      "unnamed": "Dê um nome a cada detalhe."
     }
   }
 }

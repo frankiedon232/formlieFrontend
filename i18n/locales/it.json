@@ -2328,6 +2328,13 @@
       "showFields": "Mostra l'elenco dei campi",
       "hideSettings": "Nascondi le impostazioni",
       "showSettings": "Mostra le impostazioni"
+    },
+    "fill": {
+      "title": "Compila altri campi",
+      "hint": "Quando si sceglie un'opzione, i suoi dettagli compilano queste domande. Quelle bloccate non possono essere modificate.",
+      "none": "Non compilare",
+      "target": "Domanda compilata con {name}",
+      "lock": "Blocca (le persone non possono modificarlo)"
     }
   },
   "renderer": {
@@ -7279,7 +7286,8 @@
         "score": "Punteggio",
         "lang": "Etichetta in {name}",
         "skip": "Non usare",
-        "level": "Livello {n}"
+        "level": "Livello {n}",
+        "detail": "Dettaglio: {name}"
       },
       "summary": "{rows} righe: {added} nuove, {updated} aggiornate",
       "skipped": "{n} saltate (vuote o ripetute)",
@@ -7357,6 +7365,19 @@
       "fill": "Una alla volta, incollandole da un foglio di calcolo, oppure importando un file CSV o Excel. Per i livelli: una colonna per livello, una riga per percorso.",
       "useTitle": "Salva e usa",
       "use": "In un modulo, apri Aggiungi campo → Elenchi e fai clic sull'elenco o trascinalo. I moduli ne conservano una copia: dopo le modifiche, aggiornali in Usato in."
+    },
+    "columns": {
+      "title": "Dettagli",
+      "hint": "Informazioni aggiuntive su ogni opzione, come CAP, prezzo o responsabile. Scegliere un'opzione in un modulo può compilare altre domande con questi dati.",
+      "add": "Aggiungi dettaglio",
+      "nameN": "Dettaglio {n}",
+      "nameOf": "Nome del dettaglio {n}",
+      "remove": "Rimuovi dettaglio",
+      "removeTitle": "Rimuovere il dettaglio {name}?",
+      "removeDesc": "È compilato in {n} opzione e verrà rimosso da essa. | È compilato in {n} opzioni e verrà rimosso da esse.",
+      "edit": "Dettagli di {name}",
+      "of": "Dettagli di {name}",
+      "unnamed": "Dai un nome a ogni dettaglio."
     }
   }
 }

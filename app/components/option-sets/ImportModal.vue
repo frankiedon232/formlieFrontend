@@ -9,11 +9,11 @@
   no longer has. Nothing changes until Apply, and the list still needs Save.
 -->
 <script setup lang="ts">
-import type { OptionItem, OptionLevel } from '#shared/types/forms'
+import type { OptionColumn, OptionItem, OptionLevel } from '#shared/types/forms'
 import { APP_LOCALES } from '#shared/utils/i18n/locales'
 import { MAX_LIST_LEVELS, uniqueValue, valueFromLabel } from '#shared/utils/forms/options'
 
-const props = defineProps<{ source: 'paste' | 'file'; options: OptionItem[]; languages: string[]; levels?: OptionLevel[] | null }>()
+const props = defineProps<{ source: 'paste' | 'file'; options: OptionItem[]; languages: string[]; levels?: OptionLevel[] | null; columns?: OptionColumn[] | null }>()
 const open = defineModel<boolean>('open', { required: true })
 const emit = defineEmits<{ apply: [options: OptionItem[], levels: OptionLevel[] | null] }>()
 const { t } = useI18n()
@@ -55,7 +55,7 @@ const shapes = computed(() => [
 ])
 
 // Columns and what each one is
-type Role = 'label' | 'value' | 'score' | 'skip' | `lang:${string}` | `lvl:${number}`
+type Role = 'label' | 'value' | 'score' | 'skip' | `lang:${string}` | `lvl:${number}` | `col:${string}`
 const roles = ref<Role[]>([])
 const languageName = (code: string) => APP_LOCALES.find(item => item.code === code)?.name ?? code
 function guessOne(name: string, index: number): Role {
@@ -64,6 +64,8 @@ function guessOne(name: string, index: number): Role {
   if (['score', 'points', 'weight'].includes(n)) return 'score'
   const lang = props.languages.find(code => n === code.toLowerCase() || n === languageName(code).toLowerCase() || n === APP_LOCALES.find(item => item.code === code)?.englishName.toLowerCase())
   if (lang) return `lang:${lang}`
+  const detail = props.columns?.find(column => column.label.toLowerCase() === n || column.key === n)
+  if (detail) return `col:${detail.key}`
   return index === 0 ? 'label' : 'skip'
 }
 function guessPath(name: string, index: number): Role {
@@ -103,6 +105,7 @@ const roleItems = computed(() =>
         { value: 'value', label: t('optionSets.import.role.value') },
         { value: 'score', label: t('optionSets.import.role.score') },
         ...props.languages.map(code => ({ value: `lang:${code}`, label: t('optionSets.import.role.lang', { name: languageName(code) }) })),
+        ...(props.columns ?? []).map(column => ({ value: `col:${column.key}`, label: t('optionSets.import.role.detail', { name: column.label }) })),
         { value: 'skip', label: t('optionSets.import.role.skip') },
       ],
 )
@@ -111,7 +114,7 @@ const roleItems = computed(() =>
 const replace = computed(() => mode.value === 'replace')
 const paths = computed(() => (shape.value === 'path' ? importPaths(props.options, body.value, Array.from({ length: usedLevels.value }, (_, i) => columnOf(i)), replace.value) : null))
 const result = computed(() =>
-  importRows(props.options, body.value, { label: roles.value.indexOf('label'), value: roles.value.indexOf('value'), score: roles.value.indexOf('score'), languages: roles.value.flatMap((role, i) => (role.startsWith('lang:') ? [[role.slice(5), i] as [string, number]] : [])) }, replace.value),
+  importRows(props.options, body.value, { label: roles.value.indexOf('label'), value: roles.value.indexOf('value'), score: roles.value.indexOf('score'), languages: roles.value.flatMap((role, i) => (role.startsWith('lang:') ? [[role.slice(5), i] as [string, number]] : [])), details: roles.value.flatMap((role, i) => (role.startsWith('col:') ? [[role.slice(4), i] as [string, number]] : [])) }, replace.value),
 )
 const needsMore = computed(() => (shape.value === 'path' ? usedLevels.value < 2 && !props.levels : !roles.value.includes('label')))
 const canApply = computed(() => !needsMore.value && (paths.value ? paths.value.added > 0 || paths.value.retired > 0 : result.value.added > 0 || result.value.updated > 0))

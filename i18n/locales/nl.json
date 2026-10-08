@@ -2328,6 +2328,13 @@
       "showFields": "Veldenlijst tonen",
       "hideSettings": "Instellingen verbergen",
       "showSettings": "Instellingen tonen"
+    },
+    "fill": {
+      "title": "Andere velden invullen",
+      "hint": "Als een optie is gekozen, vullen de details ervan deze vragen in. Vergrendelde vragen kunnen niet worden gewijzigd.",
+      "none": "Niet invullen",
+      "target": "Vraag ingevuld met {name}",
+      "lock": "Vergrendelen (mensen kunnen het niet wijzigen)"
     }
   },
   "renderer": {
@@ -7279,7 +7286,8 @@
         "score": "Score",
         "lang": "Label in {name}",
         "skip": "Niet gebruiken",
-        "level": "Niveau {n}"
+        "level": "Niveau {n}",
+        "detail": "Detail: {name}"
       },
       "summary": "{rows} rijen: {added} nieuw, {updated} bijgewerkt",
       "skipped": "{n} overgeslagen (leeg of dubbel)",
@@ -7357,6 +7365,19 @@
       "fill": "Een voor een, geplakt uit een spreadsheet, of via een CSV- of Excel-bestand. Voor niveaus: één kolom per niveau, één rij per pad.",
       "useTitle": "Opslaan en gebruiken",
       "use": "Open in een formulier Veld toevoegen → Lijsten en klik op de lijst of sleep deze. Formulieren bewaren een kopie: werk ze na wijzigingen bij onder Gebruikt in."
+    },
+    "columns": {
+      "title": "Details",
+      "hint": "Extra gegevens bij elke optie, zoals postcode, prijs of manager. Als je een optie kiest in een formulier, kunnen andere vragen hiermee worden ingevuld.",
+      "add": "Detail toevoegen",
+      "nameN": "Detail {n}",
+      "nameOf": "Naam van detail {n}",
+      "remove": "Detail verwijderen",
+      "removeTitle": "Detail {name} verwijderen?",
+      "removeDesc": "Het is ingevuld bij {n} optie en wordt daar verwijderd. | Het is ingevuld bij {n} opties en wordt daar verwijderd.",
+      "edit": "Details van {name}",
+      "of": "Details van {name}",
+      "unnamed": "Geef elk detail een naam."
     }
   }
 }

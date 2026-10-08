@@ -2328,6 +2328,13 @@
       "showFields": "Pokaż listę pól",
       "hideSettings": "Ukryj ustawienia",
       "showSettings": "Pokaż ustawienia"
+    },
+    "fill": {
+      "title": "Wypełnij inne pola",
+      "hint": "Po wybraniu opcji jej szczegóły wypełniają te pytania. Zablokowanych pytań nie można zmieniać.",
+      "none": "Nie wypełniaj",
+      "target": "Pytanie wypełniane wartością {name}",
+      "lock": "Zablokuj (osoby nie mogą tego zmienić)"
     }
   },
   "renderer": {
@@ -7279,7 +7286,8 @@
         "score": "Punkty",
         "lang": "Etykieta w języku: {name}",
         "skip": "Nie używaj",
-        "level": "Poziom {n}"
+        "level": "Poziom {n}",
+        "detail": "Szczegół: {name}"
       },
       "summary": "Wiersze: {rows}, nowe: {added}, zaktualizowane: {updated}",
       "skipped": "Pominięto: {n} (puste lub powtórzone)",
@@ -7357,6 +7365,19 @@
       "fill": "Po jednej, wklejając je z arkusza albo importując plik CSV lub Excel. Dla poziomów: jedna kolumna na poziom, jeden wiersz na ścieżkę.",
       "useTitle": "Zapisz i używaj",
       "use": "W formularzu otwórz Dodaj pole → Listy i kliknij listę lub przeciągnij ją. Formularze zachowują kopię: po zmianach zaktualizuj je w sekcji Używana w."
+    },
+    "columns": {
+      "title": "Szczegóły",
+      "hint": "Dodatkowe informacje przy każdej opcji, takie jak kod pocztowy, cena czy kierownik. Wybór opcji w formularzu może wypełnić nimi inne pytania.",
+      "add": "Dodaj szczegół",
+      "nameN": "Szczegół {n}",
+      "nameOf": "Nazwa szczegółu {n}",
+      "remove": "Usuń szczegół",
+      "removeTitle": "Usunąć szczegół {name}?",
+      "removeDesc": "Jest wypełniony w {n} opcji i zostanie z niej usunięty. | Jest wypełniony w {n} opcjach i zostanie z nich usunięty.",
+      "edit": "Szczegóły: {name}",
+      "of": "Szczegóły: {name}",
+      "unnamed": "Nadaj nazwę każdemu szczegółowi."
     }
   }
 }

@@ -8,11 +8,11 @@
 -->
 <script setup lang="ts">
 import { VueDraggable } from 'vue-draggable-plus'
-import type { OptionItem, OptionLevel } from '#shared/types/forms'
+import type { OptionColumn, OptionItem, OptionLevel } from '#shared/types/forms'
 import { repeatedValues, uniqueValue, valueFromLabel } from '#shared/utils/forms/options'
 
 const options = defineModel<OptionItem[]>({ required: true })
-const props = defineProps<{ savedValues: Set<string>; levels?: OptionLevel[] | null }>()
+const props = defineProps<{ savedValues: Set<string>; levels?: OptionLevel[] | null; columns?: OptionColumn[] | null }>()
 const emit = defineEmits<{ paste: []; import: [] }>()
 const { t } = useI18n()
 const { number } = useFormat()
@@ -96,6 +96,14 @@ function remove(option: OptionItem) {
   options.value = options.value.filter(item => !gone.has(item.value))
 }
 const setParent = (option: OptionItem, value: unknown) => typeof value === 'string' && value && (option.parent = value)
+// Details (F15 M4): a value per list column, empty ones left out
+const detailCount = (option: OptionItem) => Object.values(option.attrs ?? {}).filter(value => value !== '').length
+function setDetail(option: OptionItem, key: string, text: string) {
+  const attrs = Object.fromEntries(Object.entries(option.attrs ?? {}).filter(([name]) => name !== key))
+  if (text.trim()) attrs[key] = text
+  if (Object.keys(attrs).length) option.attrs = attrs
+  else delete option.attrs
+}
 const setActive = (option: OptionItem, on: boolean) => (on ? delete option.active : (option.active = false))
 const setScore = (option: OptionItem, text: string) => (text.trim() === '' || Number.isNaN(Number(text)) ? delete option.score : (option.score = Number(text)))
 </script>
@@ -131,6 +139,17 @@ const setScore = (option: OptionItem, text: string) => (text.trim() === '' || Nu
         <UInput v-if="showValues" v-model="option.value" size="sm" class="w-32 font-mono sm:w-44" :color="repeated.has(option.value.toLowerCase()) ? 'error' : undefined" :highlight="repeated.has(option.value.toLowerCase())" :disabled="savedValues.has(option.value)" :aria-label="t('optionSets.items.value')" />
         <UInput v-if="showScores" :model-value="option.score === undefined ? '' : String(option.score)" type="number" size="sm" class="w-20" :aria-label="t('optionSets.items.score')" @update:model-value="value => setScore(option, String(value))" />
         <UButton v-if="levels && level < levels.length - 1" :label="t('optionSets.levels.underIt', { n: number(childCount.get(option.value) ?? 0) })" trailing-icon="i-lucide-chevron-right" color="neutral" variant="soft" size="xs" class="shrink-0" :ui="{ trailingIcon: 'rtl:rotate-180' }" @click="openUnder(option)" />
+        <UPopover v-if="columns?.length" :content="{ align: 'end' }">
+          <UButton icon="i-lucide-table-properties" color="neutral" :variant="detailCount(option) ? 'soft' : 'ghost'" size="xs" :label="detailCount(option) ? String(detailCount(option)) : undefined" :aria-label="t('optionSets.columns.edit', { name: option.label || t('builder.untitled') })" />
+          <template #content>
+            <div class="flex w-72 flex-col gap-2 p-3">
+              <span class="text-xs font-medium text-highlighted">{{ t('optionSets.columns.of', { name: option.label || t('builder.untitled') }) }}</span>
+              <UFormField v-for="column in columns" :key="column.key" :label="column.label" size="sm">
+                <UInput :model-value="String(option.attrs?.[column.key] ?? '')" size="sm" maxlength="500" class="w-full" @update:model-value="value => setDetail(option, column.key, String(value))" />
+              </UFormField>
+            </div>
+          </template>
+        </UPopover>
         <UBadge v-if="option.active === false" :label="t('optionSets.items.retired')" color="neutral" variant="soft" size="sm" class="hidden sm:inline-flex" />
         <div class="flex shrink-0 items-center">
           <UButton icon="i-lucide-arrow-up" color="neutral" variant="ghost" size="xs" :disabled="placeOf(option) === 0 || !!q" :aria-label="t('optionSets.items.up')" @click="move(option, -1)" />

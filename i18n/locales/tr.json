@@ -2328,6 +2328,13 @@
       "showFields": "Alan listesini göster",
       "hideSettings": "Ayarları gizle",
       "showSettings": "Ayarları göster"
+    },
+    "fill": {
+      "title": "Diğer alanları doldur",
+      "hint": "Bir seçenek seçildiğinde ayrıntıları bu soruları doldurur. Kilitli sorular değiştirilemez.",
+      "none": "Doldurma",
+      "target": "{name} ile doldurulan soru",
+      "lock": "Kilitle (kişiler değiştiremez)"
     }
   },
   "renderer": {
@@ -7279,7 +7286,8 @@
         "score": "Puan",
         "lang": "{name} dilinde etiket",
         "skip": "Kullanma",
-        "level": "Düzey {n}"
+        "level": "Düzey {n}",
+        "detail": "Ayrıntı: {name}"
       },
       "summary": "{rows} satır: {added} yeni, {updated} güncellendi",
       "skipped": "{n} atlandı (boş veya tekrar eden)",
@@ -7357,6 +7365,19 @@
       "fill": "Tek tek, bir elektronik tablodan yapıştırarak veya bir CSV ya da Excel dosyasını içe aktararak. Düzeyler için: düzey başına bir sütun, yol başına bir satır.",
       "useTitle": "Kaydedin ve kullanın",
       "use": "Bir formda Alan ekle → Listeler bölümünü açın ve listeye tıklayın ya da sürükleyin. Formlar bir kopya tutar: değişikliklerden sonra bunları Kullanıldığı yer altında güncelleyin."
+    },
+    "columns": {
+      "title": "Ayrıntılar",
+      "hint": "Her seçenekteki posta kodu, fiyat veya yönetici gibi ek bilgiler. Bir formda seçenek seçmek, diğer soruları bunlarla doldurabilir.",
+      "add": "Ayrıntı ekle",
+      "nameN": "Ayrıntı {n}",
+      "nameOf": "{n}. ayrıntının adı",
+      "remove": "Ayrıntıyı kaldır",
+      "removeTitle": "{name} ayrıntısı kaldırılsın mı?",
+      "removeDesc": "{n} seçenekte dolu ve ondan kaldırılacak. | {n} seçenekte dolu ve onlardan kaldırılacak.",
+      "edit": "{name} ayrıntıları",
+      "of": "{name} ayrıntıları",
+      "unnamed": "Her ayrıntıya bir ad verin."
     }
   }
 }

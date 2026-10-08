@@ -2328,6 +2328,13 @@
       "showFields": "Afficher la liste des champs",
       "hideSettings": "Masquer les réglages",
       "showSettings": "Afficher les réglages"
+    },
+    "fill": {
+      "title": "Remplir d'autres champs",
+      "hint": "Quand une option est choisie, ses détails remplissent ces questions. Les questions verrouillées ne peuvent pas être modifiées.",
+      "none": "Ne pas remplir",
+      "target": "Question remplie avec {name}",
+      "lock": "Verrouiller (les personnes ne peuvent pas le modifier)"
     }
   },
   "renderer": {
@@ -7279,7 +7286,8 @@
         "score": "Score",
         "lang": "Libellé en {name}",
         "skip": "Ne pas utiliser",
-        "level": "Niveau {n}"
+        "level": "Niveau {n}",
+        "detail": "Détail : {name}"
       },
       "summary": "{rows} lignes : {added} nouvelles, {updated} mises à jour",
       "skipped": "{n} ignorées (vides ou répétées)",
@@ -7357,6 +7365,19 @@
       "fill": "Une par une, collées depuis un tableur, ou importées depuis un fichier CSV ou Excel. Pour les niveaux : une colonne par niveau, une ligne par chemin.",
       "useTitle": "Enregistrez et utilisez",
       "use": "Dans un formulaire, ouvrez Ajouter un champ → Listes et cliquez sur la liste ou faites-la glisser. Les formulaires gardent une copie : après des modifications, mettez-les à jour sous Utilisée dans."
+    },
+    "columns": {
+      "title": "Détails",
+      "hint": "Informations supplémentaires sur chaque option, comme un code postal, un prix ou un responsable. Choisir une option dans un formulaire peut remplir d'autres questions avec ces informations.",
+      "add": "Ajouter un détail",
+      "nameN": "Détail {n}",
+      "nameOf": "Nom du détail {n}",
+      "remove": "Supprimer le détail",
+      "removeTitle": "Supprimer le détail {name} ?",
+      "removeDesc": "Il est renseigné dans {n} option et sera retiré de celle-ci. | Il est renseigné dans {n} options et sera retiré de celles-ci.",
+      "edit": "Détails de {name}",
+      "of": "Détails de {name}",
+      "unnamed": "Donnez un nom à chaque détail."
     }
   }
 }

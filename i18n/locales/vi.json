@@ -2328,6 +2328,13 @@
       "showFields": "Hiện danh sách trường",
       "hideSettings": "Ẩn cài đặt",
       "showSettings": "Hiện cài đặt"
+    },
+    "fill": {
+      "title": "Điền các trường khác",
+      "hint": "Khi một lựa chọn được chọn, chi tiết của nó sẽ điền vào các câu hỏi này. Câu hỏi bị khóa không thể thay đổi.",
+      "none": "Không điền",
+      "target": "Câu hỏi được điền bằng {name}",
+      "lock": "Khóa (mọi người không thể thay đổi)"
     }
   },
   "renderer": {
@@ -7279,7 +7286,8 @@
         "score": "Điểm",
         "lang": "Nhãn bằng {name}",
         "skip": "Không dùng",
-        "level": "Cấp {n}"
+        "level": "Cấp {n}",
+        "detail": "Chi tiết: {name}"
       },
       "summary": "{rows} dòng: {added} mới, {updated} đã cập nhật",
       "skipped": "Đã bỏ qua {n} (trống hoặc lặp)",
@@ -7357,6 +7365,19 @@
       "fill": "Từng cái một, dán từ bảng tính, hoặc nhập tệp CSV hoặc Excel. Với các cấp: mỗi cấp một cột, mỗi đường dẫn một hàng.",
       "useTitle": "Lưu và sử dụng",
       "use": "Trong biểu mẫu, mở Thêm trường → Danh sách rồi nhấp hoặc kéo danh sách. Biểu mẫu giữ một bản sao: sau khi thay đổi, hãy cập nhật chúng trong Được dùng trong."
+    },
+    "columns": {
+      "title": "Chi tiết",
+      "hint": "Thông tin bổ sung cho mỗi lựa chọn, như mã bưu chính, giá hoặc người quản lý. Chọn một lựa chọn trong biểu mẫu có thể điền các câu hỏi khác bằng thông tin này.",
+      "add": "Thêm chi tiết",
+      "nameN": "Chi tiết {n}",
+      "nameOf": "Tên của chi tiết {n}",
+      "remove": "Xóa chi tiết",
+      "removeTitle": "Xóa chi tiết {name}?",
+      "removeDesc": "Chi tiết này đã được điền ở {n} lựa chọn và sẽ bị xóa khỏi lựa chọn đó. | Chi tiết này đã được điền ở {n} lựa chọn và sẽ bị xóa khỏi các lựa chọn đó.",
+      "edit": "Chi tiết của {name}",
+      "of": "Chi tiết của {name}",
+      "unnamed": "Hãy đặt tên cho mọi chi tiết."
     }
   }
 }
