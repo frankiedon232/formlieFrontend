@@ -7193,9 +7193,7 @@
     },
     "import": {
       "pasteTitle": "Tempel opsi",
-      "pasteDesc": "Satu opsi per baris. Kolom dari spreadsheet juga bisa: label, nilai, skor, terjemahan.",
       "fileTitle": "Impor opsi",
-      "fileDesc": "Berkas CSV atau Excel. Pilih isi setiap kolom, lalu periksa pratinjau.",
       "pastePlaceholder": "Utara\nSelatan\nTimur\nBarat",
       "drop": "Letakkan berkas CSV atau Excel di sini atau klik untuk memilih",
       "types": "CSV, TXT, atau XLSX (lembar pertama)",
@@ -7210,16 +7208,30 @@
         "value": "Nilai",
         "score": "Skor",
         "lang": "Label dalam {name}",
-        "skip": "Jangan dipakai"
+        "skip": "Jangan dipakai",
+        "level": "Level {n}"
       },
       "summary": "{rows} baris: {added} baru, {updated} diperbarui",
       "skipped": "{n} dilewati (kosong atau berulang)",
       "retired": "{n} opsi yang tidak ada di dalamnya akan dinonaktifkan",
       "needLabel": "Pilih kolom yang berisi label.",
       "apply": "Terapkan",
-      "pathsDesc": "Satu baris per jalur, satu kolom per tingkat ({chain}). Baris dengan awal yang sama digabung.",
       "pathsSummary": "{rows} baris: {added} baru, {kept} sudah ada",
-      "needTop": "Pilih kolom yang berisi {name}."
+      "intro": "Pilih isi tiap baris, lalu tempel atau pilih berkas. Anda memeriksa hasilnya sebelum ada yang berubah.",
+      "example": "Contoh",
+      "shape": {
+        "title": "Setiap baris adalah",
+        "one": "Satu opsi",
+        "path": "Satu jalur melalui level",
+        "oneHint": "Setiap baris adalah satu opsi. Kolom lain dapat berisi nilai, skor, atau terjemahannya.",
+        "pathHint": "Setiap baris adalah satu jalur, satu kolom per level, level teratas lebih dulu (hingga {n} level). Baris yang diawali sama digabung, sehingga Canada muncul sekali dengan wilayahnya di bawahnya."
+      },
+      "detected": "Berkas ini tampak berisi level: kolom pertama berulang. Setiap kolom menjadi satu level, dengan nama dari judulnya.",
+      "pastePathPlaceholder": "Canada\tOntario\tToronto\nCanada\tQuebec\tMontréal\nJapan\tTokyo\tShibuya",
+      "levelsKept": "Level:",
+      "levelsMade": "Level yang akan dibuat:",
+      "needTwoLevels": "Pilih setidaknya dua kolom sebagai level, mulai dari Level 1.",
+      "existingTop": "{n} opsi yang sudah ada di daftar ini tetap berada di tingkat teratas ({name}). Pilih Ganti daftar untuk hanya menyimpan isi file. | {n} opsi yang sudah ada di daftar ini tetap berada di tingkat teratas ({name}). Pilih Ganti daftar untuk hanya menyimpan isi file."
     },
     "translations": {
       "none": "Formulir Anda memakai satu bahasa",
@@ -7243,11 +7255,8 @@
       "publishHint": "{n} di antaranya dipublikasikan: publikasikan agar opsi baru tampil. | {n} di antaranya dipublikasikan: publikasikan agar opsi baru tampil."
     },
     "levels": {
-      "plain": "Satu tingkat",
-      "plainHint": "Daftar biasa. Tambahkan tingkat untuk pilihan yang makin menyempit, seperti Negara, Wilayah, Kota.",
-      "start": "Tambah tingkat",
-      "title": "{n} tingkat",
-      "hint": "Setiap opsi berada di bawah satu opsi pada tingkat di atasnya. Dalam formulir, setiap tingkat hanya terbuka dengan isi di bawah pilihan di atasnya.",
+      "plainHint": "Satu daftar opsi, misalnya Departemen atau Prioritas.",
+      "hint": "Setiap pilihan mempersempit pilihan berikutnya, misalnya Negara → Wilayah → Kota. Setiap opsi berada di bawah satu opsi pada level di atasnya.",
       "chain": "Tingkat",
       "nameN": "Tingkat {n}",
       "nameOf": "Nama tingkat {n}",
@@ -7262,7 +7271,22 @@
       "underIt": "{n} di bawahnya",
       "aboveFirst": "Tambahkan opsi ke {name} dulu, lalu yang berada di bawahnya di sini.",
       "orphans": "{n} opsi belum punya induk di atasnya. Pilih tempatnya. | {n} opsi belum punya induk di atasnya. Pilih tempatnya.",
-      "unnamed": "Beri nama setiap tingkat."
+      "unnamed": "Beri nama setiap tingkat.",
+      "type": "Jenis daftar",
+      "simple": "Daftar sederhana",
+      "withLevels": "Daftar dengan level",
+      "toSimpleTitle": "Jadikan daftar sederhana?",
+      "toSimpleDesc": "{n} opsi di bawah level teratas akan dihapus. Jawaban yang memakainya tetap menyimpan nilainya. | {n} opsi di bawah level teratas akan dihapus. Jawaban yang memakainya tetap menyimpan nilainya.",
+      "toSimple": "Jadikan sederhana"
+    },
+    "guide": {
+      "title": "Cara kerja daftar",
+      "typeTitle": "Pilih jenisnya",
+      "type": "Daftar sederhana, atau daftar dengan level yang setiap pilihannya mempersempit pilihan berikutnya (Negara → Wilayah → Kota). Hingga 4 level.",
+      "fillTitle": "Tambahkan opsi",
+      "fill": "Satu per satu, tempel dari spreadsheet, atau impor berkas CSV atau Excel. Untuk level: satu kolom per level, satu baris per jalur.",
+      "useTitle": "Simpan dan gunakan",
+      "use": "Di formulir, buka Tambah kolom → Daftar lalu klik atau seret daftarnya. Formulir menyimpan salinan: setelah ada perubahan, perbarui di Dipakai di."
     }
   }
 }

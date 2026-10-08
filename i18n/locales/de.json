@@ -7193,9 +7193,7 @@
     },
     "import": {
       "pasteTitle": "Optionen einfügen",
-      "pasteDesc": "Eine Option pro Zeile. Spalten aus einer Tabelle funktionieren ebenfalls: Beschriftungen, Werte, Punktwerte, Übersetzungen.",
       "fileTitle": "Optionen importieren",
-      "fileDesc": "Eine CSV- oder Excel-Datei. Wählen Sie, was jede Spalte enthält, und prüfen Sie dann die Vorschau.",
       "pastePlaceholder": "Nord\nSüd\nOst\nWest",
       "drop": "CSV- oder Excel-Datei hier ablegen oder klicken, um zu suchen",
       "types": "CSV, TXT oder XLSX (erstes Blatt)",
@@ -7210,16 +7208,30 @@
         "value": "Wert",
         "score": "Punktwert",
         "lang": "Beschriftung in {name}",
-        "skip": "Nicht verwenden"
+        "skip": "Nicht verwenden",
+        "level": "Ebene {n}"
       },
       "summary": "{rows} Zeilen: {added} neu, {updated} aktualisiert",
       "skipped": "{n} übersprungen (leer oder wiederholt)",
       "retired": "{n} Optionen, die nicht enthalten sind, werden zurückgezogen",
       "needLabel": "Wählen Sie die Spalte mit den Beschriftungen.",
       "apply": "Anwenden",
-      "pathsDesc": "Eine Zeile pro Pfad, eine Spalte pro Ebene ({chain}). Zeilen mit gleichem Anfang werden zusammengeführt.",
       "pathsSummary": "{rows} Zeilen: {added} neu, {kept} bereits vorhanden",
-      "needTop": "Wählen Sie die Spalte mit {name}."
+      "intro": "Wählen Sie, was jede Zeile enthält, und fügen Sie dann Daten ein oder wählen Sie eine Datei. Sie prüfen das Ergebnis, bevor sich etwas ändert.",
+      "example": "Beispiel",
+      "shape": {
+        "title": "Jede Zeile ist",
+        "one": "Eine Option",
+        "path": "Ein Pfad durch die Ebenen",
+        "oneHint": "Jede Zeile ist eine Option. Weitere Spalten können Wert, Punktzahl oder Übersetzungen enthalten.",
+        "pathHint": "Jede Zeile ist ein Pfad, eine Spalte pro Ebene, oberste Ebene zuerst (bis zu {n} Ebenen). Zeilen mit gleichem Anfang werden zusammengeführt, sodass Canada nur einmal erscheint und seine Regionen darunter stehen."
+      },
+      "detected": "Diese Datei sieht nach Ebenen aus: Die erste Spalte wiederholt sich. Jede Spalte wird zu einer Ebene, benannt nach ihrer Überschrift.",
+      "pastePathPlaceholder": "Canada\tOntario\tToronto\nCanada\tQuebec\tMontréal\nJapan\tTokyo\tShibuya",
+      "levelsKept": "Ebenen:",
+      "levelsMade": "Zu erstellende Ebenen:",
+      "needTwoLevels": "Wählen Sie mindestens zwei Spalten als Ebenen, beginnend mit Ebene 1.",
+      "existingTop": "Die {n} Option, die bereits in dieser Liste ist, bleibt auf der obersten Ebene ({name}). Wählen Sie Liste ersetzen, um nur den Inhalt der Datei zu behalten. | Die {n} Optionen, die bereits in dieser Liste sind, bleiben auf der obersten Ebene ({name}). Wählen Sie Liste ersetzen, um nur den Inhalt der Datei zu behalten."
     },
     "translations": {
       "none": "Ihre Formulare verwenden eine Sprache",
@@ -7243,11 +7255,8 @@
       "publishHint": "{n} davon ist veröffentlicht: Veröffentlichen Sie es, um die neuen Optionen anzuzeigen. | {n} davon sind veröffentlicht: Veröffentlichen Sie sie, um die neuen Optionen anzuzeigen."
     },
     "levels": {
-      "plain": "Eine Ebene",
-      "plainHint": "Eine einfache Liste. Fügen Sie Ebenen für Auswahlen hinzu, die sich eingrenzen, etwa Land, Region, Stadt.",
-      "start": "Ebenen hinzufügen",
-      "title": "{n} Ebenen",
-      "hint": "Jede Option liegt unter einer Option der Ebene darüber. Im Formular zeigt jede Ebene nur, was unter der Auswahl darüber liegt.",
+      "plainHint": "Eine Liste von Optionen, zum Beispiel Abteilungen oder Priorität.",
+      "hint": "Jede Auswahl grenzt die nächste ein, zum Beispiel Land → Region → Stadt. Jede Option gehört zu genau einer Option der Ebene darüber.",
       "chain": "Ebenen",
       "nameN": "Ebene {n}",
       "nameOf": "Name der Ebene {n}",
@@ -7262,7 +7271,22 @@
       "underIt": "{n} darunter",
       "aboveFirst": "Fügen Sie zuerst Optionen zu {name} hinzu, dann hier die darunter liegenden.",
       "orphans": "{n} Option hat noch nichts über sich. Wählen Sie, wohin sie gehört. | {n} Optionen haben noch nichts über sich. Wählen Sie, wohin sie gehören.",
-      "unnamed": "Geben Sie jeder Ebene einen Namen."
+      "unnamed": "Geben Sie jeder Ebene einen Namen.",
+      "type": "Listentyp",
+      "simple": "Einfache Liste",
+      "withLevels": "Liste mit Ebenen",
+      "toSimpleTitle": "Als einfache Liste speichern?",
+      "toSimpleDesc": "Die {n} Option unterhalb der obersten Ebene wird entfernt. Antworten, die sie verwendet haben, behalten ihren Wert. | Die {n} Optionen unterhalb der obersten Ebene werden entfernt. Antworten, die sie verwendet haben, behalten ihren Wert.",
+      "toSimple": "Einfach machen"
+    },
+    "guide": {
+      "title": "So funktionieren Listen",
+      "typeTitle": "Typ wählen",
+      "type": "Eine einfache Liste oder eine Liste mit Ebenen, in der jede Auswahl die nächste eingrenzt (Land → Region → Stadt). Bis zu 4 Ebenen.",
+      "fillTitle": "Optionen hinzufügen",
+      "fill": "Einzeln, aus einer Tabelle eingefügt oder per CSV- oder Excel-Datei importiert. Für Ebenen: eine Spalte pro Ebene, eine Zeile pro Pfad.",
+      "useTitle": "Speichern und verwenden",
+      "use": "Öffnen Sie in einem Formular Feld hinzufügen → Listen und klicken Sie auf die Liste oder ziehen Sie sie. Formulare behalten eine Kopie: Aktualisieren Sie sie nach Änderungen unter Verwendet in."
     }
   }
 }

@@ -7193,9 +7193,7 @@
     },
     "import": {
       "pasteTitle": "Dán tùy chọn",
-      "pasteDesc": "Mỗi dòng một tùy chọn. Các cột từ bảng tính cũng dùng được: nhãn, giá trị, điểm, bản dịch.",
       "fileTitle": "Nhập tùy chọn",
-      "fileDesc": "Một tệp CSV hoặc Excel. Chọn nội dung của từng cột, rồi kiểm tra bản xem trước.",
       "pastePlaceholder": "Bắc\nNam\nĐông\nTây",
       "drop": "Thả tệp CSV hoặc Excel vào đây hoặc nhấp để duyệt",
       "types": "CSV, TXT hoặc XLSX (trang tính đầu tiên)",
@@ -7210,16 +7208,30 @@
         "value": "Giá trị",
         "score": "Điểm",
         "lang": "Nhãn bằng {name}",
-        "skip": "Không dùng"
+        "skip": "Không dùng",
+        "level": "Cấp {n}"
       },
       "summary": "{rows} dòng: {added} mới, {updated} đã cập nhật",
       "skipped": "Đã bỏ qua {n} (trống hoặc lặp)",
       "retired": "{n} tùy chọn không có trong đó sẽ bị ngừng",
       "needLabel": "Hãy chọn cột chứa các nhãn.",
       "apply": "Áp dụng",
-      "pathsDesc": "Một hàng cho mỗi đường dẫn, một cột cho mỗi cấp ({chain}). Các hàng có phần đầu giống nhau được gộp lại.",
       "pathsSummary": "{rows} hàng: {added} mới, {kept} đã có",
-      "needTop": "Chọn cột chứa {name}."
+      "intro": "Chọn mỗi hàng chứa gì, rồi dán dữ liệu hoặc chọn tệp. Bạn kiểm tra kết quả trước khi có bất kỳ thay đổi nào.",
+      "example": "Ví dụ",
+      "shape": {
+        "title": "Mỗi hàng là",
+        "one": "Một tùy chọn",
+        "path": "Một đường dẫn qua các cấp",
+        "oneHint": "Mỗi hàng là một tùy chọn. Các cột khác có thể chứa giá trị, điểm hoặc bản dịch của nó.",
+        "pathHint": "Mỗi hàng là một đường dẫn, mỗi cấp một cột, cấp cao nhất đứng trước (tối đa {n} cấp). Các hàng bắt đầu giống nhau được gộp lại, nên Canada chỉ xuất hiện một lần với các vùng nằm bên dưới."
+      },
+      "detected": "Tệp này có vẻ có các cấp: cột đầu tiên lặp lại. Mỗi cột trở thành một cấp, lấy tên từ tiêu đề.",
+      "pastePathPlaceholder": "Canada\tOntario\tToronto\nCanada\tQuebec\tMontréal\nJapan\tTokyo\tShibuya",
+      "levelsKept": "Các cấp:",
+      "levelsMade": "Các cấp sẽ tạo:",
+      "needTwoLevels": "Chọn ít nhất hai cột làm cấp, bắt đầu từ Cấp 1.",
+      "existingTop": "{n} tùy chọn đã có trong danh sách này được giữ ở cấp cao nhất ({name}). Chọn Thay thế danh sách để chỉ giữ lại nội dung trong tệp. | {n} tùy chọn đã có trong danh sách này được giữ ở cấp cao nhất ({name}). Chọn Thay thế danh sách để chỉ giữ lại nội dung trong tệp."
     },
     "translations": {
       "none": "Biểu mẫu của bạn dùng một ngôn ngữ",
@@ -7243,11 +7255,8 @@
       "publishHint": "{n} trong số đó đã được xuất bản: hãy xuất bản để hiển thị các tùy chọn mới. | {n} trong số đó đã được xuất bản: hãy xuất bản để hiển thị các tùy chọn mới."
     },
     "levels": {
-      "plain": "Một cấp",
-      "plainHint": "Một danh sách thường. Thêm cấp cho các lựa chọn thu hẹp dần, như Quốc gia, Khu vực, Thành phố.",
-      "start": "Thêm cấp",
-      "title": "{n} cấp",
-      "hint": "Mỗi tùy chọn nằm dưới một tùy chọn ở cấp trên. Trong biểu mẫu, mỗi cấp chỉ mở ra với những gì nằm dưới lựa chọn ở trên.",
+      "plainHint": "Một danh sách các tùy chọn, ví dụ Phòng ban hoặc Mức ưu tiên.",
+      "hint": "Mỗi lựa chọn thu hẹp lựa chọn tiếp theo, ví dụ Quốc gia → Vùng → Thành phố. Mỗi tùy chọn nằm dưới một tùy chọn ở cấp trên.",
       "chain": "Các cấp",
       "nameN": "Cấp {n}",
       "nameOf": "Tên của cấp {n}",
@@ -7262,7 +7271,22 @@
       "underIt": "{n} bên dưới",
       "aboveFirst": "Hãy thêm tùy chọn vào {name} trước, rồi thêm những tùy chọn nằm dưới chúng ở đây.",
       "orphans": "{n} tùy chọn chưa có gì ở trên. Hãy chọn nơi nó thuộc về. | {n} tùy chọn chưa có gì ở trên. Hãy chọn nơi chúng thuộc về.",
-      "unnamed": "Hãy đặt tên cho mọi cấp."
+      "unnamed": "Hãy đặt tên cho mọi cấp.",
+      "type": "Loại danh sách",
+      "simple": "Danh sách đơn giản",
+      "withLevels": "Danh sách có cấp",
+      "toSimpleTitle": "Chuyển thành danh sách đơn giản?",
+      "toSimpleDesc": "{n} tùy chọn bên dưới cấp cao nhất sẽ bị xóa. Các câu trả lời đã dùng chúng vẫn giữ giá trị. | {n} tùy chọn bên dưới cấp cao nhất sẽ bị xóa. Các câu trả lời đã dùng chúng vẫn giữ giá trị.",
+      "toSimple": "Chuyển thành đơn giản"
+    },
+    "guide": {
+      "title": "Cách danh sách hoạt động",
+      "typeTitle": "Chọn loại",
+      "type": "Một danh sách đơn giản, hoặc danh sách có cấp trong đó mỗi lựa chọn thu hẹp lựa chọn tiếp theo (Quốc gia → Vùng → Thành phố). Tối đa 4 cấp.",
+      "fillTitle": "Thêm các tùy chọn",
+      "fill": "Từng cái một, dán từ bảng tính, hoặc nhập tệp CSV hoặc Excel. Với các cấp: mỗi cấp một cột, mỗi đường dẫn một hàng.",
+      "useTitle": "Lưu và sử dụng",
+      "use": "Trong biểu mẫu, mở Thêm trường → Danh sách rồi nhấp hoặc kéo danh sách. Biểu mẫu giữ một bản sao: sau khi thay đổi, hãy cập nhật chúng trong Được dùng trong."
     }
   }
 }

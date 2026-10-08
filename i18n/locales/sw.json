@@ -7193,9 +7193,7 @@
     },
     "import": {
       "pasteTitle": "Bandika chaguo",
-      "pasteDesc": "Chaguo moja kwa kila mstari. Safu wima kutoka lahajedwali pia zinafanya kazi: lebo, thamani, alama, tafsiri.",
       "fileTitle": "Leta chaguo",
-      "fileDesc": "Faili ya CSV au Excel. Chagua kila safu wima ina nini, kisha angalia hakikisho.",
       "pastePlaceholder": "Kaskazini\nKusini\nMashariki\nMagharibi",
       "drop": "Weka faili ya CSV au Excel hapa au bofya ili kuvinjari",
       "types": "CSV, TXT au XLSX (ukurasa wa kwanza)",
@@ -7210,16 +7208,30 @@
         "value": "Thamani",
         "score": "Alama",
         "lang": "Lebo kwa {name}",
-        "skip": "Usitumie"
+        "skip": "Usitumie",
+        "level": "Kiwango cha {n}"
       },
       "summary": "Mistari {rows}: mipya {added}, iliyosasishwa {updated}",
       "skipped": "{n} imerukwa (tupu au imerudiwa)",
       "retired": "Chaguo {n} ambazo hazimo zitasitishwa",
       "needLabel": "Chagua safu wima yenye lebo.",
       "apply": "Tumia",
-      "pathsDesc": "Safu mlalo moja kwa kila njia, safu wima moja kwa kila ngazi ({chain}). Safu mlalo zenye mwanzo mmoja huunganishwa.",
       "pathsSummary": "Safu mlalo {rows}: {added} mpya, {kept} tayari zipo",
-      "needTop": "Chagua safu wima yenye {name}."
+      "intro": "Chagua kila safu ina nini, kisha bandika au chagua faili. Unakagua matokeo kabla ya kitu chochote kubadilika.",
+      "example": "Mfano",
+      "shape": {
+        "title": "Kila safu ni",
+        "one": "Chaguo moja",
+        "path": "Njia kupitia viwango",
+        "oneHint": "Kila safu ni chaguo moja. Safu wima nyingine zinaweza kuwa na thamani, alama au tafsiri zake.",
+        "pathHint": "Kila safu ni njia, safu wima moja kwa kila kiwango, kiwango cha juu kwanza (hadi viwango {n}). Safu zinazoanza sawa huunganishwa, kwa hivyo Canada inaonekana mara moja na mikoa yake chini yake."
+      },
+      "detected": "Faili hii inaonekana kuwa na viwango: safu wima ya kwanza inajirudia. Kila safu wima inakuwa kiwango, kikipewa jina kutoka kwenye kichwa chake.",
+      "pastePathPlaceholder": "Canada\tOntario\tToronto\nCanada\tQuebec\tMontréal\nJapan\tTokyo\tShibuya",
+      "levelsKept": "Viwango:",
+      "levelsMade": "Viwango vya kuundwa:",
+      "needTwoLevels": "Chagua angalau safu wima mbili kama viwango, kuanzia Kiwango cha 1.",
+      "existingTop": "Chaguo {n} ambalo tayari lipo kwenye orodha hii linabaki kwenye ngazi ya juu ({name}). Chagua Badilisha orodha ili kubaki na yaliyo kwenye faili tu. | Machaguo {n} ambayo tayari yako kwenye orodha hii yanabaki kwenye ngazi ya juu ({name}). Chagua Badilisha orodha ili kubaki na yaliyo kwenye faili tu."
     },
     "translations": {
       "none": "Fomu zako zinatumia lugha moja",
@@ -7243,11 +7255,8 @@
       "publishHint": "{n} kati yake imechapishwa: ichapishe ili kuonyesha chaguo mpya. | {n} kati yake zimechapishwa: zichapishe ili kuonyesha chaguo mpya."
     },
     "levels": {
-      "plain": "Ngazi moja",
-      "plainHint": "Orodha ya kawaida. Ongeza ngazi kwa chaguo zinazopungua, kama Nchi, Mkoa, Jiji.",
-      "start": "Ongeza ngazi",
-      "title": "Ngazi {n}",
-      "hint": "Kila chaguo liko chini ya moja la ngazi ya juu. Kwenye fomu, kila ngazi hufunguka na kilicho chini ya chaguo la juu tu.",
+      "plainHint": "Orodha moja ya chaguo, kwa mfano Idara au Kipaumbele.",
+      "hint": "Kila chaguo hupunguza linalofuata, kwa mfano Nchi → Mkoa → Jiji. Kila chaguo liko chini ya moja la kiwango cha juu.",
       "chain": "Ngazi",
       "nameN": "Ngazi ya {n}",
       "nameOf": "Jina la ngazi ya {n}",
@@ -7262,7 +7271,22 @@
       "underIt": "{n} chini yake",
       "aboveFirst": "Ongeza kwanza chaguo kwenye {name}, kisha zile za chini yake hapa.",
       "orphans": "Chaguo {n} halina chochote juu yake bado. Chagua linapoenda. | Chaguo {n} hazina chochote juu yake bado. Chagua zinapoenda.",
-      "unnamed": "Patia kila ngazi jina."
+      "unnamed": "Patia kila ngazi jina.",
+      "type": "Aina ya orodha",
+      "simple": "Orodha rahisi",
+      "withLevels": "Orodha yenye viwango",
+      "toSimpleTitle": "Ifanye orodha rahisi?",
+      "toSimpleDesc": "Chaguo {n} lililo chini ya kiwango cha juu litaondolewa. Majibu yaliyolitumia yanabaki na thamani yake. | Chaguo {n} zilizo chini ya kiwango cha juu zitaondolewa. Majibu yaliyozitumia yanabaki na thamani yake.",
+      "toSimple": "Ifanye rahisi"
+    },
+    "guide": {
+      "title": "Jinsi orodha zinavyofanya kazi",
+      "typeTitle": "Chagua aina",
+      "type": "Orodha rahisi, au orodha yenye viwango ambapo kila chaguo hupunguza linalofuata (Nchi → Mkoa → Jiji). Hadi viwango 4.",
+      "fillTitle": "Ongeza chaguo",
+      "fill": "Moja baada ya jingine, kuzibandika kutoka lahajedwali, au kuleta faili ya CSV au Excel. Kwa viwango: safu wima moja kwa kila kiwango, safu moja kwa kila njia.",
+      "useTitle": "Hifadhi na utumie",
+      "use": "Katika fomu, fungua Ongeza sehemu → Orodha kisha bofya orodha au iburute. Fomu hubaki na nakala: baada ya mabadiliko, zisasishe chini ya Inatumika katika."
     }
   }
 }

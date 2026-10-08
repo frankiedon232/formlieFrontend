@@ -7193,9 +7193,7 @@
     },
     "import": {
       "pasteTitle": "Coller des options",
-      "pasteDesc": "Une option par ligne. Les colonnes d’un tableur fonctionnent aussi : libellés, valeurs, scores, traductions.",
       "fileTitle": "Importer des options",
-      "fileDesc": "Un fichier CSV ou Excel. Choisissez le contenu de chaque colonne, puis vérifiez l’aperçu.",
       "pastePlaceholder": "Nord\nSud\nEst\nOuest",
       "drop": "Déposez un fichier CSV ou Excel ici ou cliquez pour parcourir",
       "types": "CSV, TXT ou XLSX (première feuille)",
@@ -7210,16 +7208,30 @@
         "value": "Valeur",
         "score": "Score",
         "lang": "Libellé en {name}",
-        "skip": "Ne pas utiliser"
+        "skip": "Ne pas utiliser",
+        "level": "Niveau {n}"
       },
       "summary": "{rows} lignes : {added} nouvelles, {updated} mises à jour",
       "skipped": "{n} ignorées (vides ou répétées)",
       "retired": "{n} options absentes seront retirées",
       "needLabel": "Choisissez la colonne qui contient les libellés.",
       "apply": "Appliquer",
-      "pathsDesc": "Une ligne par chemin, une colonne par niveau ({chain}). Les lignes qui partagent un début sont fusionnées.",
       "pathsSummary": "{rows} lignes : {added} nouvelles, {kept} déjà présentes",
-      "needTop": "Choisissez la colonne qui contient {name}."
+      "intro": "Choisissez ce que contient chaque ligne, puis collez les données ou sélectionnez un fichier. Vous vérifiez le résultat avant tout changement.",
+      "example": "Exemple",
+      "shape": {
+        "title": "Chaque ligne est",
+        "one": "Une option",
+        "path": "Un chemin à travers les niveaux",
+        "oneHint": "Chaque ligne est une option. D'autres colonnes peuvent contenir sa valeur, son score ou ses traductions.",
+        "pathHint": "Chaque ligne est un chemin, une colonne par niveau, niveau supérieur en premier (jusqu'à {n} niveaux). Les lignes qui commencent pareil sont regroupées : Canada apparaît une seule fois avec ses régions en dessous."
+      },
+      "detected": "Ce fichier ressemble à des niveaux : la première colonne se répète. Chaque colonne devient un niveau, nommé d'après son en-tête.",
+      "pastePathPlaceholder": "Canada\tOntario\tToronto\nCanada\tQuebec\tMontréal\nJapan\tTokyo\tShibuya",
+      "levelsKept": "Niveaux :",
+      "levelsMade": "Niveaux à créer :",
+      "needTwoLevels": "Choisissez au moins deux colonnes comme niveaux, en commençant par le niveau 1.",
+      "existingTop": "L’{n} option déjà présente dans cette liste reste au niveau supérieur ({name}). Choisissez Remplacer la liste pour ne garder que le contenu du fichier. | Les {n} options déjà présentes dans cette liste restent au niveau supérieur ({name}). Choisissez Remplacer la liste pour ne garder que le contenu du fichier."
     },
     "translations": {
       "none": "Vos formulaires utilisent une seule langue",
@@ -7243,11 +7255,8 @@
       "publishHint": "{n} d’entre eux est publié : publiez-le pour afficher les nouvelles options. | {n} d’entre eux sont publiés : publiez-les pour afficher les nouvelles options."
     },
     "levels": {
-      "plain": "Un niveau",
-      "plainHint": "Une liste simple. Ajoutez des niveaux pour des choix qui se précisent, comme Pays, Région, Ville.",
-      "start": "Ajouter des niveaux",
-      "title": "{n} niveaux",
-      "hint": "Chaque option se place sous une option du niveau supérieur. Dans un formulaire, chaque niveau s’ouvre avec seulement ce qui se trouve sous le choix au-dessus.",
+      "plainHint": "Une liste d'options, par exemple Services ou Priorité.",
+      "hint": "Chaque choix restreint le suivant, par exemple Pays → Région → Ville. Chaque option se place sous une option du niveau supérieur.",
       "chain": "Niveaux",
       "nameN": "Niveau {n}",
       "nameOf": "Nom du niveau {n}",
@@ -7262,7 +7271,22 @@
       "underIt": "{n} dessous",
       "aboveFirst": "Ajoutez d’abord des options à {name}, puis celles qui se trouvent dessous ici.",
       "orphans": "{n} option n’a encore rien au-dessus. Choisissez où la placer. | {n} options n’ont encore rien au-dessus. Choisissez où les placer.",
-      "unnamed": "Donnez un nom à chaque niveau."
+      "unnamed": "Donnez un nom à chaque niveau.",
+      "type": "Type de liste",
+      "simple": "Liste simple",
+      "withLevels": "Liste avec niveaux",
+      "toSimpleTitle": "En faire une liste simple ?",
+      "toSimpleDesc": "L'{n} option sous le niveau supérieur est supprimée. Les réponses qui l'utilisaient conservent leur valeur. | Les {n} options sous le niveau supérieur sont supprimées. Les réponses qui les utilisaient conservent leur valeur.",
+      "toSimple": "La rendre simple"
+    },
+    "guide": {
+      "title": "Comment fonctionnent les listes",
+      "typeTitle": "Choisissez le type",
+      "type": "Une liste simple, ou une liste avec niveaux où chaque choix restreint le suivant (Pays → Région → Ville). Jusqu'à 4 niveaux.",
+      "fillTitle": "Ajoutez les options",
+      "fill": "Une par une, collées depuis un tableur, ou importées depuis un fichier CSV ou Excel. Pour les niveaux : une colonne par niveau, une ligne par chemin.",
+      "useTitle": "Enregistrez et utilisez",
+      "use": "Dans un formulaire, ouvrez Ajouter un champ → Listes et cliquez sur la liste ou faites-la glisser. Les formulaires gardent une copie : après des modifications, mettez-les à jour sous Utilisée dans."
     }
   }
 }

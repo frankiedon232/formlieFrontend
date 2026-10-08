@@ -7193,9 +7193,7 @@
     },
     "import": {
       "pasteTitle": "Seçenekleri yapıştır",
-      "pasteDesc": "Satır başına bir seçenek. Elektronik tablodan sütunlar da çalışır: etiketler, değerler, puanlar, çeviriler.",
       "fileTitle": "Seçenekleri içe aktar",
-      "fileDesc": "Bir CSV veya Excel dosyası. Her sütunun neyi içerdiğini seçin, sonra önizlemeyi kontrol edin.",
       "pastePlaceholder": "Kuzey\nGüney\nDoğu\nBatı",
       "drop": "Bir CSV veya Excel dosyasını buraya bırakın ya da göz atmak için tıklayın",
       "types": "CSV, TXT veya XLSX (ilk sayfa)",
@@ -7210,16 +7208,30 @@
         "value": "Değer",
         "score": "Puan",
         "lang": "{name} dilinde etiket",
-        "skip": "Kullanma"
+        "skip": "Kullanma",
+        "level": "Düzey {n}"
       },
       "summary": "{rows} satır: {added} yeni, {updated} güncellendi",
       "skipped": "{n} atlandı (boş veya tekrar eden)",
       "retired": "İçinde olmayan {n} seçenek kaldırılacak",
       "needLabel": "Etiketleri içeren sütunu seçin.",
       "apply": "Uygula",
-      "pathsDesc": "Her yol için bir satır, her düzey için bir sütun ({chain}). Başlangıcı aynı olan satırlar birleştirilir.",
       "pathsSummary": "{rows} satır: {added} yeni, {kept} zaten var",
-      "needTop": "{name} içeren sütunu seçin."
+      "intro": "Her satırın neyi içerdiğini seçin, ardından yapıştırın ya da bir dosya seçin. Hiçbir şey değişmeden önce sonucu kontrol edersiniz.",
+      "example": "Örnek",
+      "shape": {
+        "title": "Her satır",
+        "one": "Tek bir seçenek",
+        "path": "Düzeylerden geçen bir yol",
+        "oneHint": "Her satır tek bir seçenektir. Diğer sütunlar değerini, puanını veya çevirilerini içerebilir.",
+        "pathHint": "Her satır bir yoldur, düzey başına bir sütun, en üst düzey önce (en çok {n} düzey). Aynı başlayan satırlar birleştirilir, böylece Canada bir kez görünür ve bölgeleri altında yer alır."
+      },
+      "detected": "Bu dosya düzeyler içeriyor gibi görünüyor: ilk sütun tekrar ediyor. Her sütun, başlığından adlandırılan bir düzey olur.",
+      "pastePathPlaceholder": "Canada\tOntario\tToronto\nCanada\tQuebec\tMontréal\nJapan\tTokyo\tShibuya",
+      "levelsKept": "Düzeyler:",
+      "levelsMade": "Oluşturulacak düzeyler:",
+      "needTwoLevels": "Düzey 1'den başlayarak düzey olarak en az iki sütun seçin.",
+      "existingTop": "Bu listede zaten bulunan {n} seçenek en üst düzeyde ({name}) kalır. Yalnızca dosyadaki içeriği tutmak için Listeyi değiştir seçeneğini seçin. | Bu listede zaten bulunan {n} seçenek en üst düzeyde ({name}) kalır. Yalnızca dosyadaki içeriği tutmak için Listeyi değiştir seçeneğini seçin."
     },
     "translations": {
       "none": "Formlarınız tek dil kullanıyor",
@@ -7243,11 +7255,8 @@
       "publishHint": "Bunların {n} tanesi yayında: yeni seçenekleri göstermek için yayınlayın. | Bunların {n} tanesi yayında: yeni seçenekleri göstermek için yayınlayın."
     },
     "levels": {
-      "plain": "Tek düzey",
-      "plainHint": "Düz bir liste. Ülke, Bölge, Şehir gibi daralan seçimler için düzey ekleyin.",
-      "start": "Düzey ekle",
-      "title": "{n} düzey",
-      "hint": "Her seçenek bir üst düzeydeki bir seçeneğin altında yer alır. Formda her düzey yalnızca yukarıdaki seçimin altındakilerle açılır.",
+      "plainHint": "Tek bir seçenek listesi, örneğin Departmanlar veya Öncelik.",
+      "hint": "Her seçim bir sonrakini daraltır, örneğin Ülke → Bölge → Şehir. Her seçenek bir üst düzeydeki tek bir seçeneğin altında yer alır.",
       "chain": "Düzeyler",
       "nameN": "Düzey {n}",
       "nameOf": "Düzey {n} adı",
@@ -7262,7 +7271,22 @@
       "underIt": "Altında {n} var",
       "aboveFirst": "Önce {name} listesine seçenek ekleyin, ardından altındakileri burada ekleyin.",
       "orphans": "{n} seçeneğin henüz üstünde bir şey yok. Nereye ait olduğunu seçin. | {n} seçeneğin henüz üstünde bir şey yok. Nereye ait olduklarını seçin.",
-      "unnamed": "Her düzeye bir ad verin."
+      "unnamed": "Her düzeye bir ad verin.",
+      "type": "Liste türü",
+      "simple": "Basit liste",
+      "withLevels": "Düzeyli liste",
+      "toSimpleTitle": "Basit liste yapılsın mı?",
+      "toSimpleDesc": "Üst düzeyin altındaki {n} seçenek kaldırılır. Bunu kullanan yanıtlar değerini korur. | Üst düzeyin altındaki {n} seçenek kaldırılır. Bunları kullanan yanıtlar değerini korur.",
+      "toSimple": "Basit yap"
+    },
+    "guide": {
+      "title": "Listeler nasıl çalışır",
+      "typeTitle": "Türü seçin",
+      "type": "Basit bir liste ya da her seçimin bir sonrakini daralttığı düzeyli bir liste (Ülke → Bölge → Şehir). En çok 4 düzey.",
+      "fillTitle": "Seçenekleri ekleyin",
+      "fill": "Tek tek, bir elektronik tablodan yapıştırarak veya bir CSV ya da Excel dosyasını içe aktararak. Düzeyler için: düzey başına bir sütun, yol başına bir satır.",
+      "useTitle": "Kaydedin ve kullanın",
+      "use": "Bir formda Alan ekle → Listeler bölümünü açın ve listeye tıklayın ya da sürükleyin. Formlar bir kopya tutar: değişikliklerden sonra bunları Kullanıldığı yer altında güncelleyin."
     }
   }
 }

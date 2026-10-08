@@ -114,7 +114,7 @@ const setScore = (option: OptionItem, text: string) => (text.trim() === '' || Nu
       <USwitch v-model="showValues" :label="t('optionSets.items.showValues')" size="sm" color="neutral" />
       <USwitch v-model="showScores" :label="t('optionSets.items.showScores')" size="sm" color="neutral" />
       <div class="ms-auto flex flex-wrap gap-2">
-        <UButton v-if="!levels" :label="t('optionSets.items.paste')" icon="i-lucide-clipboard-paste" color="neutral" variant="outline" size="sm" @click="emit('paste')" />
+        <UButton :label="t('optionSets.items.paste')" icon="i-lucide-clipboard-paste" color="neutral" variant="outline" size="sm" @click="emit('paste')" />
         <UButton :label="t('optionSets.items.import')" icon="i-lucide-file-up" color="neutral" variant="outline" size="sm" @click="emit('import')" />
         <UButton :label="t('optionSets.items.add')" icon="i-lucide-plus" color="neutral" size="sm" :disabled="level > 0 && !parents.length" @click="add" />
       </div>

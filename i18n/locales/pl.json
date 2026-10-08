@@ -7193,9 +7193,7 @@
     },
     "import": {
       "pasteTitle": "Wklej opcje",
-      "pasteDesc": "Jedna opcja w wierszu. Kolumny z arkusza kalkulacyjnego też działają: etykiety, wartości, punkty, tłumaczenia.",
       "fileTitle": "Importuj opcje",
-      "fileDesc": "Plik CSV lub Excel. Wybierz, co zawiera każda kolumna, a potem sprawdź podgląd.",
       "pastePlaceholder": "Północ\nPołudnie\nWschód\nZachód",
       "drop": "Upuść tutaj plik CSV lub Excel albo kliknij, aby przeglądać",
       "types": "CSV, TXT lub XLSX (pierwszy arkusz)",
@@ -7210,16 +7208,30 @@
         "value": "Wartość",
         "score": "Punkty",
         "lang": "Etykieta w języku: {name}",
-        "skip": "Nie używaj"
+        "skip": "Nie używaj",
+        "level": "Poziom {n}"
       },
       "summary": "Wiersze: {rows}, nowe: {added}, zaktualizowane: {updated}",
       "skipped": "Pominięto: {n} (puste lub powtórzone)",
       "retired": "Opcje, których w nim nie ma ({n}), zostaną wycofane",
       "needLabel": "Wybierz kolumnę z etykietami.",
       "apply": "Zastosuj",
-      "pathsDesc": "Jeden wiersz na ścieżkę, jedna kolumna na poziom ({chain}). Wiersze o wspólnym początku są scalane.",
       "pathsSummary": "Wiersze: {rows}, nowe: {added}, już istniejące: {kept}",
-      "needTop": "Wybierz kolumnę z {name}."
+      "intro": "Wybierz, co zawiera każdy wiersz, a następnie wklej dane lub wybierz plik. Wynik sprawdzasz, zanim cokolwiek się zmieni.",
+      "example": "Przykład",
+      "shape": {
+        "title": "Każdy wiersz to",
+        "one": "Jedna opcja",
+        "path": "Ścieżka przez poziomy",
+        "oneHint": "Każdy wiersz to jedna opcja. Inne kolumny mogą zawierać jej wartość, wynik lub tłumaczenia.",
+        "pathHint": "Każdy wiersz to ścieżka, jedna kolumna na poziom, najwyższy poziom jako pierwszy (do {n} poziomów). Wiersze zaczynające się tak samo są łączone, więc Canada pojawia się raz, a pod nią jej regiony."
+      },
+      "detected": "Ten plik wygląda na zawierający poziomy: pierwsza kolumna się powtarza. Każda kolumna staje się poziomem, nazwanym według nagłówka.",
+      "pastePathPlaceholder": "Canada\tOntario\tToronto\nCanada\tQuebec\tMontréal\nJapan\tTokyo\tShibuya",
+      "levelsKept": "Poziomy:",
+      "levelsMade": "Poziomy do utworzenia:",
+      "needTwoLevels": "Wybierz co najmniej dwie kolumny jako poziomy, zaczynając od Poziomu 1.",
+      "existingTop": "{n} opcja, która już jest na tej liście, zostaje na najwyższym poziomie ({name}). Wybierz Zastąp listę, aby zachować tylko to, co jest w pliku. | {n} opcje, które już są na tej liście, zostają na najwyższym poziomie ({name}). Wybierz Zastąp listę, aby zachować tylko to, co jest w pliku."
     },
     "translations": {
       "none": "Twoje formularze używają jednego języka",
@@ -7243,11 +7255,8 @@
       "publishHint": "{n} z nich jest opublikowany: opublikuj go, aby pokazać nowe opcje. | {n} z nich jest opublikowanych: opublikuj je, aby pokazać nowe opcje."
     },
     "levels": {
-      "plain": "Jeden poziom",
-      "plainHint": "Zwykła lista. Dodaj poziomy dla wyborów, które się zawężają, np. Kraj, Region, Miasto.",
-      "start": "Dodaj poziomy",
-      "title": "Poziomy: {n}",
-      "hint": "Każda opcja jest pod jedną z poziomu wyżej. W formularzu każdy poziom otwiera się tylko z tym, co jest pod wyborem wyżej.",
+      "plainHint": "Jedna lista opcji, na przykład Działy lub Priorytet.",
+      "hint": "Każdy wybór zawęża następny, na przykład Kraj → Region → Miasto. Każda opcja znajduje się pod jedną opcją z wyższego poziomu.",
       "chain": "Poziomy",
       "nameN": "Poziom {n}",
       "nameOf": "Nazwa poziomu {n}",
@@ -7262,7 +7271,22 @@
       "underIt": "{n} pod nią",
       "aboveFirst": "Najpierw dodaj opcje do {name}, a potem tutaj te, które są pod nimi.",
       "orphans": "{n} opcja nie ma jeszcze nic nad sobą. Wybierz, gdzie należy. | Opcje bez niczego nad sobą: {n}. Wybierz, gdzie należą.",
-      "unnamed": "Nadaj nazwę każdemu poziomowi."
+      "unnamed": "Nadaj nazwę każdemu poziomowi.",
+      "type": "Typ listy",
+      "simple": "Prosta lista",
+      "withLevels": "Lista z poziomami",
+      "toSimpleTitle": "Zmienić na prostą listę?",
+      "toSimpleDesc": "{n} opcja poniżej najwyższego poziomu zostanie usunięta. Odpowiedzi, które jej użyły, zachowują swoją wartość. | {n} opcje poniżej najwyższego poziomu zostaną usunięte. Odpowiedzi, które ich użyły, zachowują swoją wartość.",
+      "toSimple": "Zrób prostą"
+    },
+    "guide": {
+      "title": "Jak działają listy",
+      "typeTitle": "Wybierz typ",
+      "type": "Prosta lista albo lista z poziomami, w której każdy wybór zawęża następny (Kraj → Region → Miasto). Do 4 poziomów.",
+      "fillTitle": "Dodaj opcje",
+      "fill": "Po jednej, wklejając je z arkusza albo importując plik CSV lub Excel. Dla poziomów: jedna kolumna na poziom, jeden wiersz na ścieżkę.",
+      "useTitle": "Zapisz i używaj",
+      "use": "W formularzu otwórz Dodaj pole → Listy i kliknij listę lub przeciągnij ją. Formularze zachowują kopię: po zmianach zaktualizuj je w sekcji Używana w."
     }
   }
 }

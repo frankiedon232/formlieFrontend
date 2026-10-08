@@ -7193,9 +7193,7 @@
     },
     "import": {
       "pasteTitle": "Paste options",
-      "pasteDesc": "One option per line. Columns from a spreadsheet work too: labels, values, scores, translations.",
       "fileTitle": "Import options",
-      "fileDesc": "A CSV or Excel file. Choose what each column holds, then check the preview.",
       "pastePlaceholder": "North\nSouth\nEast\nWest",
       "drop": "Drop a CSV or Excel file here or click to browse",
       "types": "CSV, TXT or XLSX (first sheet)",
@@ -7210,16 +7208,30 @@
         "value": "Value",
         "score": "Score",
         "lang": "Label in {name}",
-        "skip": "Don’t use"
+        "skip": "Don’t use",
+        "level": "Level {n}"
       },
       "summary": "{rows} rows: {added} new, {updated} updated",
       "skipped": "{n} skipped (empty or repeated)",
       "retired": "{n} options not in it will be retired",
       "needLabel": "Choose the column that holds the labels.",
       "apply": "Apply",
-      "pathsDesc": "One row per path, one column per level ({chain}). Rows that share a start are merged.",
       "pathsSummary": "{rows} rows: {added} new, {kept} already there",
-      "needTop": "Choose the column that holds {name}."
+      "intro": "Choose what each row holds, then paste or pick a file. You check the result before anything changes.",
+      "example": "Example",
+      "shape": {
+        "title": "Each row is",
+        "one": "One option",
+        "path": "A path through levels",
+        "oneHint": "Each row is one option. Other columns can hold its value, score or translations.",
+        "pathHint": "Each row is a path, one column per level, top level first (up to {n} levels). Rows that start the same are joined, so Canada appears once with its regions under it."
+      },
+      "detected": "This file looks like levels: the first column repeats. Each column becomes a level, named from its header.",
+      "pastePathPlaceholder": "Canada\tOntario\tToronto\nCanada\tQuebec\tMontréal\nJapan\tTokyo\tShibuya",
+      "levelsKept": "Levels:",
+      "levelsMade": "Levels to create:",
+      "needTwoLevels": "Choose at least two columns as levels, starting with Level 1.",
+      "existingTop": "The {n} option already in this list stays on the top level ({name}). Choose Replace the list to keep only what is in the file. | The {n} options already in this list stay on the top level ({name}). Choose Replace the list to keep only what is in the file."
     },
     "translations": {
       "none": "Your forms use one language",
@@ -7243,11 +7255,8 @@
       "publishHint": "{n} of them is published: publish it to show the new options. | {n} of them are published: publish them to show the new options."
     },
     "levels": {
-      "plain": "One level",
-      "plainHint": "A plain list. Add levels for choices that narrow down, such as Country, Region, City.",
-      "start": "Add levels",
-      "title": "{n} levels",
-      "hint": "Each option sits under one on the level above. In a form, each level opens with only what is under the choice above.",
+      "plainHint": "One list of options, for example Departments or Priority.",
+      "hint": "Each choice narrows the next, for example Country → Region → City. Each option sits under one on the level above.",
       "chain": "Levels",
       "nameN": "Level {n}",
       "nameOf": "Name of level {n}",
@@ -7262,7 +7271,22 @@
       "underIt": "{n} under it",
       "aboveFirst": "Add options to {name} first, then the ones under them here.",
       "orphans": "{n} option has nothing above it yet. Choose where it belongs. | {n} options have nothing above them yet. Choose where they belong.",
-      "unnamed": "Give every level a name."
+      "unnamed": "Give every level a name.",
+      "type": "List type",
+      "simple": "Simple list",
+      "withLevels": "List with levels",
+      "toSimpleTitle": "Make it a simple list?",
+      "toSimpleDesc": "The {n} option below the top level is removed. Answers that used it keep their value. | The {n} options below the top level are removed. Answers that used them keep their value.",
+      "toSimple": "Make it simple"
+    },
+    "guide": {
+      "title": "How lists work",
+      "typeTitle": "Choose the type",
+      "type": "A simple list, or a list with levels where each choice narrows the next (Country → Region → City). Up to 4 levels.",
+      "fillTitle": "Add the options",
+      "fill": "One by one, paste them from a spreadsheet, or import a CSV or Excel file. For levels: one column per level, one row per path.",
+      "useTitle": "Save and use it",
+      "use": "In a form, open Add field → Lists and click or drag the list. Forms keep a copy: after changes, update them under Used in."
     }
   }
 }

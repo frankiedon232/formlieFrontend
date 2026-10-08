@@ -7193,9 +7193,7 @@
     },
     "import": {
       "pasteTitle": "Colar opções",
-      "pasteDesc": "Uma opção por linha. Colunas de uma planilha também funcionam: rótulos, valores, pontuações, traduções.",
       "fileTitle": "Importar opções",
-      "fileDesc": "Um arquivo CSV ou Excel. Escolha o que cada coluna contém e confira a prévia.",
       "pastePlaceholder": "Norte\nSul\nLeste\nOeste",
       "drop": "Solte um arquivo CSV ou Excel aqui ou clique para procurar",
       "types": "CSV, TXT ou XLSX (primeira planilha)",
@@ -7210,16 +7208,30 @@
         "value": "Valor",
         "score": "Pontuação",
         "lang": "Rótulo em {name}",
-        "skip": "Não usar"
+        "skip": "Não usar",
+        "level": "Nível {n}"
       },
       "summary": "{rows} linhas: {added} novas, {updated} atualizadas",
       "skipped": "{n} ignoradas (vazias ou repetidas)",
       "retired": "{n} opções que não estão nele serão retiradas",
       "needLabel": "Escolha a coluna que contém os rótulos.",
       "apply": "Aplicar",
-      "pathsDesc": "Uma linha por caminho, uma coluna por nível ({chain}). Linhas com o mesmo início são mescladas.",
       "pathsSummary": "{rows} linhas: {added} novas, {kept} já existentes",
-      "needTop": "Escolha a coluna que contém {name}."
+      "intro": "Escolha o que cada linha contém e depois cole os dados ou selecione um arquivo. Você confere o resultado antes de qualquer mudança.",
+      "example": "Exemplo",
+      "shape": {
+        "title": "Cada linha é",
+        "one": "Uma opção",
+        "path": "Um caminho pelos níveis",
+        "oneHint": "Cada linha é uma opção. Outras colunas podem conter seu valor, pontuação ou traduções.",
+        "pathHint": "Cada linha é um caminho, uma coluna por nível, com o nível superior primeiro (até {n} níveis). Linhas que começam igual são unidas, então Canada aparece uma vez com suas regiões abaixo."
+      },
+      "detected": "Este arquivo parece ter níveis: a primeira coluna se repete. Cada coluna vira um nível, com o nome do seu cabeçalho.",
+      "pastePathPlaceholder": "Canada\tOntario\tToronto\nCanada\tQuebec\tMontréal\nJapan\tTokyo\tShibuya",
+      "levelsKept": "Níveis:",
+      "levelsMade": "Níveis a criar:",
+      "needTwoLevels": "Escolha pelo menos duas colunas como níveis, começando pelo Nível 1.",
+      "existingTop": "A {n} opção que já está nesta lista permanece no nível superior ({name}). Escolha Substituir a lista para manter apenas o que está no arquivo. | As {n} opções que já estão nesta lista permanecem no nível superior ({name}). Escolha Substituir a lista para manter apenas o que está no arquivo."
     },
     "translations": {
       "none": "Seus formulários usam um só idioma",
@@ -7243,11 +7255,8 @@
       "publishHint": "{n} deles está publicado: publique-o para mostrar as novas opções. | {n} deles estão publicados: publique-os para mostrar as novas opções."
     },
     "levels": {
-      "plain": "Um nível",
-      "plainHint": "Uma lista simples. Adicione níveis para escolhas que vão se restringindo, como País, Região, Cidade.",
-      "start": "Adicionar níveis",
-      "title": "{n} níveis",
-      "hint": "Cada opção fica sob uma do nível acima. Em um formulário, cada nível abre só com o que está sob a escolha acima.",
+      "plainHint": "Uma lista de opções, por exemplo Departamentos ou Prioridade.",
+      "hint": "Cada escolha restringe a seguinte, por exemplo País → Região → Cidade. Cada opção fica sob uma do nível acima.",
       "chain": "Níveis",
       "nameN": "Nível {n}",
       "nameOf": "Nome do nível {n}",
@@ -7262,7 +7271,22 @@
       "underIt": "{n} abaixo dela",
       "aboveFirst": "Adicione primeiro opções a {name} e depois, aqui, as que ficam sob elas.",
       "orphans": "{n} opção ainda não tem nada acima. Escolha onde ela fica. | {n} opções ainda não têm nada acima. Escolha onde elas ficam.",
-      "unnamed": "Dê um nome a cada nível."
+      "unnamed": "Dê um nome a cada nível.",
+      "type": "Tipo de lista",
+      "simple": "Lista simples",
+      "withLevels": "Lista com níveis",
+      "toSimpleTitle": "Transformar em lista simples?",
+      "toSimpleDesc": "A {n} opção abaixo do nível superior é removida. As respostas que a usaram mantêm o valor. | As {n} opções abaixo do nível superior são removidas. As respostas que as usaram mantêm o valor.",
+      "toSimple": "Tornar simples"
+    },
+    "guide": {
+      "title": "Como as listas funcionam",
+      "typeTitle": "Escolha o tipo",
+      "type": "Uma lista simples, ou uma lista com níveis em que cada escolha restringe a seguinte (País → Região → Cidade). Até 4 níveis.",
+      "fillTitle": "Adicione as opções",
+      "fill": "Uma a uma, coladas de uma planilha, ou importando um arquivo CSV ou Excel. Para níveis: uma coluna por nível, uma linha por caminho.",
+      "useTitle": "Salve e use",
+      "use": "Em um formulário, abra Adicionar campo → Listas e clique na lista ou arraste-a. Os formulários guardam uma cópia: após mudanças, atualize-os em Usada em."
     }
   }
 }

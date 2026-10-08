@@ -7193,9 +7193,7 @@
     },
     "import": {
       "pasteTitle": "Incolla opzioni",
-      "pasteDesc": "Un’opzione per riga. Funzionano anche le colonne di un foglio di calcolo: etichette, valori, punteggi, traduzioni.",
       "fileTitle": "Importa opzioni",
-      "fileDesc": "Un file CSV o Excel. Scegli cosa contiene ogni colonna, poi controlla l’anteprima.",
       "pastePlaceholder": "Nord\nSud\nEst\nOvest",
       "drop": "Trascina qui un file CSV o Excel o fai clic per cercarlo",
       "types": "CSV, TXT o XLSX (primo foglio)",
@@ -7210,16 +7208,30 @@
         "value": "Valore",
         "score": "Punteggio",
         "lang": "Etichetta in {name}",
-        "skip": "Non usare"
+        "skip": "Non usare",
+        "level": "Livello {n}"
       },
       "summary": "{rows} righe: {added} nuove, {updated} aggiornate",
       "skipped": "{n} saltate (vuote o ripetute)",
       "retired": "{n} opzioni non presenti verranno ritirate",
       "needLabel": "Scegli la colonna che contiene le etichette.",
       "apply": "Applica",
-      "pathsDesc": "Una riga per percorso, una colonna per livello ({chain}). Le righe con lo stesso inizio vengono unite.",
       "pathsSummary": "{rows} righe: {added} nuove, {kept} già presenti",
-      "needTop": "Scegli la colonna che contiene {name}."
+      "intro": "Scegli cosa contiene ogni riga, poi incolla i dati o scegli un file. Controlli il risultato prima che cambi qualcosa.",
+      "example": "Esempio",
+      "shape": {
+        "title": "Ogni riga è",
+        "one": "Un'opzione",
+        "path": "Un percorso attraverso i livelli",
+        "oneHint": "Ogni riga è un'opzione. Altre colonne possono contenere il suo valore, punteggio o le traduzioni.",
+        "pathHint": "Ogni riga è un percorso, una colonna per livello, prima il livello superiore (fino a {n} livelli). Le righe che iniziano allo stesso modo vengono unite, così Canada compare una volta con le sue regioni sotto."
+      },
+      "detected": "Questo file sembra avere dei livelli: la prima colonna si ripete. Ogni colonna diventa un livello, con il nome della sua intestazione.",
+      "pastePathPlaceholder": "Canada\tOntario\tToronto\nCanada\tQuebec\tMontréal\nJapan\tTokyo\tShibuya",
+      "levelsKept": "Livelli:",
+      "levelsMade": "Livelli da creare:",
+      "needTwoLevels": "Scegli almeno due colonne come livelli, a partire dal Livello 1.",
+      "existingTop": "L’{n} opzione già presente in questo elenco resta al livello superiore ({name}). Scegli Sostituisci l’elenco per mantenere solo ciò che c’è nel file. | Le {n} opzioni già presenti in questo elenco restano al livello superiore ({name}). Scegli Sostituisci l’elenco per mantenere solo ciò che c’è nel file."
     },
     "translations": {
       "none": "I tuoi moduli usano una sola lingua",
@@ -7243,11 +7255,8 @@
       "publishHint": "{n} di essi è pubblicato: pubblicalo per mostrare le nuove opzioni. | {n} di essi sono pubblicati: pubblicali per mostrare le nuove opzioni."
     },
     "levels": {
-      "plain": "Un livello",
-      "plainHint": "Un elenco semplice. Aggiungi livelli per scelte che si restringono, come Paese, Regione, Città.",
-      "start": "Aggiungi livelli",
-      "title": "{n} livelli",
-      "hint": "Ogni opzione sta sotto una del livello superiore. In un modulo, ogni livello si apre solo con ciò che sta sotto la scelta sopra.",
+      "plainHint": "Un elenco di opzioni, ad esempio Reparti o Priorità.",
+      "hint": "Ogni scelta restringe la successiva, ad esempio Paese → Regione → Città. Ogni opzione sta sotto una del livello superiore.",
       "chain": "Livelli",
       "nameN": "Livello {n}",
       "nameOf": "Nome del livello {n}",
@@ -7262,7 +7271,22 @@
       "underIt": "{n} sotto di essa",
       "aboveFirst": "Aggiungi prima le opzioni a {name}, poi qui quelle che stanno sotto.",
       "orphans": "{n} opzione non ha ancora nulla sopra. Scegli dove va. | {n} opzioni non hanno ancora nulla sopra. Scegli dove vanno.",
-      "unnamed": "Dai un nome a ogni livello."
+      "unnamed": "Dai un nome a ogni livello.",
+      "type": "Tipo di elenco",
+      "simple": "Elenco semplice",
+      "withLevels": "Elenco con livelli",
+      "toSimpleTitle": "Renderlo un elenco semplice?",
+      "toSimpleDesc": "L'{n} opzione sotto il livello superiore viene rimossa. Le risposte che la usavano mantengono il loro valore. | Le {n} opzioni sotto il livello superiore vengono rimosse. Le risposte che le usavano mantengono il loro valore.",
+      "toSimple": "Rendilo semplice"
+    },
+    "guide": {
+      "title": "Come funzionano gli elenchi",
+      "typeTitle": "Scegli il tipo",
+      "type": "Un elenco semplice, oppure un elenco con livelli in cui ogni scelta restringe la successiva (Paese → Regione → Città). Fino a 4 livelli.",
+      "fillTitle": "Aggiungi le opzioni",
+      "fill": "Una alla volta, incollandole da un foglio di calcolo, oppure importando un file CSV o Excel. Per i livelli: una colonna per livello, una riga per percorso.",
+      "useTitle": "Salva e usa",
+      "use": "In un modulo, apri Aggiungi campo → Elenchi e fai clic sull'elenco o trascinalo. I moduli ne conservano una copia: dopo le modifiche, aggiornali in Usato in."
     }
   }
 }

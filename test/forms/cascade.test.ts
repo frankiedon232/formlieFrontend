@@ -3,7 +3,7 @@ import { blankSchema, type FormField } from '../../shared/utils/forms/build'
 import { cascadeChain, cascadeClosed, cascadeOptions, fitAnswer } from '../../shared/utils/forms/cascade'
 import { checkSubmission } from '../../shared/utils/forms/submission'
 import { levelsOf, matchesList, offeredOptions } from '../../shared/utils/forms/options'
-import { importPaths } from '../../app/utils/forms/option-paths'
+import { importPaths, importRows, looksLikeHeader, looksLikeLevels } from '../../app/utils/forms/option-paths'
 
 const country: FormField = { id: 'f1', key: 'country', type: 'dropdown', label: 'Country', option_set_id: 'l', option_level: 0, options: [{ value: 'ca', label: 'Canada' }, { value: 'jp', label: 'Japan' }, { value: 'is', label: 'Island' }] }
 const region: FormField = { id: 'f2', key: 'region', type: 'multi_select', label: 'Region', option_set_id: 'l', option_level: 1, option_parent: 'f1', options: [{ value: 'on', label: 'Ontario', parent: 'ca' }, { value: 'qc', label: 'Quebec', parent: 'ca' }, { value: 'tk', label: 'Tokyo', parent: 'jp' }] }
@@ -69,5 +69,29 @@ describe('option lists with levels', () => {
     const replaced = importPaths(list.options, [['Canada', 'Ontario']], [0, 1], true)
     expect(replaced.retired).toBe(1)
     expect(replaced.list.find(option => option.value === 'tk')?.active).toBe(false)
+  })
+})
+
+describe('reading an import file', () => {
+  it('spots a file with one column per level', () => {
+    expect(looksLikeLevels([['Canada', 'Ontario', 'Toronto'], ['Canada', 'Quebec', 'Montréal'], ['Japan', 'Tokyo', 'Shibuya']])).toBe(true)
+    // One option per row, or labels with scores / values: not levels
+    expect(looksLikeLevels([['North'], ['South']])).toBe(false)
+    expect(looksLikeLevels([['Low', '1'], ['High', '3']])).toBe(false)
+    expect(looksLikeLevels([['North', 'north'], ['South', 'south']])).toBe(false)
+  })
+
+  it('spots column names in pasted text', () => {
+    expect(looksLikeHeader([['Country', 'Region'], ['Canada', 'Ontario'], ['Canada', 'Quebec']])).toBe(true)
+    expect(looksLikeHeader([['Label', 'Score'], ['Low', '1'], ['High', '3']])).toBe(true)
+    // Plain options and paths without names: no header
+    expect(looksLikeHeader([['North'], ['South'], ['East']])).toBe(false)
+    expect(looksLikeHeader([['Canada', 'Ontario'], ['Canada', 'Quebec'], ['Japan', 'Tokyo']])).toBe(false)
+  })
+
+  it('reads one option per row with its value and score', () => {
+    const result = importRows([{ value: 'north', label: 'North' }], [['North', '', '2'], ['South', 'sth', '']], { label: 0, value: 1, score: 2, languages: [] }, false)
+    expect(result).toMatchObject({ added: 1, updated: 1, skipped: 0 })
+    expect(result.list).toEqual([{ value: 'north', label: 'North', score: 2 }, { value: 'sth', label: 'South' }])
   })
 })

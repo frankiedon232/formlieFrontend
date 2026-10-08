@@ -31,6 +31,23 @@ function rename(index: number, label: string) {
   if (!levels.value) return
   levels.value = levels.value.map((item, i) => (i === index ? { ...item, label } : item))
 }
+/** The list type switch: back to a simple list removes everything below the top level (asked first). */
+async function setType(value: unknown) {
+  if (value === 'levels') return void (!levels.value && start())
+  if (!levels.value) return
+  const below = options.value.filter(option => (option.level ?? 0) > 0)
+  if (below.length) {
+    const ok = await confirm({ title: t('optionSets.levels.toSimpleTitle'), description: t('optionSets.levels.toSimpleDesc', { n: below.length }, below.length), confirmLabel: t('optionSets.levels.toSimple'), danger: true })
+    if (!ok) return
+  }
+  levels.value = null
+  options.value = options.value.filter(option => !option.level).map(({ level: _level, parent: _parent, ...rest }) => rest)
+}
+const types = computed(() => [
+  { value: 'simple', label: t('optionSets.levels.simple'), icon: 'i-lucide-list' },
+  { value: 'levels', label: t('optionSets.levels.withLevels'), icon: 'i-lucide-network' },
+])
+
 /** Removes the last level and its options; back to two levels means one, a plain list. */
 async function removeLast() {
   if (!levels.value) return
@@ -52,13 +69,12 @@ async function removeLast() {
 
 <template>
   <div class="flex flex-col gap-2 rounded-lg border border-default p-3">
-    <div class="flex flex-wrap items-center gap-2">
-      <UIcon :name="levels ? 'i-lucide-network' : 'i-lucide-list'" class="size-4 shrink-0 text-muted" />
-      <div class="flex min-w-0 flex-1 flex-col">
-        <span class="text-sm font-medium text-highlighted">{{ levels ? t('optionSets.levels.title', { n: levels.length }) : t('optionSets.levels.plain') }}</span>
-        <span class="text-xs text-muted">{{ levels ? t('optionSets.levels.hint') : t('optionSets.levels.plainHint') }}</span>
+    <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
+      <div class="flex shrink-0 flex-col gap-1">
+        <span class="text-xs font-medium text-highlighted">{{ t('optionSets.levels.type') }}</span>
+        <UTabs :model-value="levels ? 'levels' : 'simple'" :items="types" :content="false" color="neutral" size="xs" :ui="SEGMENTED_UI" class="w-fit" @update:model-value="setType" />
       </div>
-      <UButton v-if="!levels" :label="t('optionSets.levels.start')" icon="i-lucide-network" color="neutral" variant="outline" size="sm" @click="start" />
+      <p class="min-w-0 flex-1 text-xs text-muted">{{ levels ? t('optionSets.levels.hint') : t('optionSets.levels.plainHint') }}</p>
     </div>
     <ol v-if="levels" class="flex flex-wrap items-center gap-1.5" :aria-label="t('optionSets.levels.chain')">
       <template v-for="(item, index) in levels" :key="index">

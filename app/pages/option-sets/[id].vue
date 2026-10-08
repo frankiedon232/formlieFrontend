@@ -99,7 +99,8 @@ useEventListener(window, 'beforeunload', event => dirty.value && event.preventDe
 const importOpen = ref(false)
 const importSource = ref<'paste' | 'file'>('paste')
 const openImport = (source: 'paste' | 'file') => ((importSource.value = source), (importOpen.value = true))
-const applyImport = (options: OptionItem[]) => draft.value && (draft.value.options = options)
+// An import can also set up levels (a file with one column per level, owner 2026-10-08)
+const applyImport = (options: OptionItem[], levels: OptionLevel[] | null) => draft.value && ((draft.value.options = options), (draft.value.levels = levels))
 
 const moreItems = computed<DropdownMenuItem[][]>(() => [
   [{ label: t('optionSets.duplicate'), icon: 'i-lucide-copy', onSelect: duplicate }],
@@ -152,6 +153,7 @@ async function remove() {
           <UInput :model-value="draft.description ?? ''" maxlength="300" :placeholder="t('optionSets.descriptionPlaceholder')" class="w-full" @update:model-value="value => draft && (draft.description = String(value) || null)" />
         </UFormField>
       </div>
+      <OptionSetsGuide />
       <OptionSetsLevels v-model:levels="draft.levels" v-model:options="draft.options" :saved-values="savedValues" />
       <UTabs v-model="tab" :items="tabs" :content="false" color="neutral" variant="link" class="w-full" />
       <OptionSetsItems v-if="tab === 'items'" v-model="draft.options" :saved-values="savedValues" :levels="draft.levels" @paste="openImport('paste')" @import="openImport('file')" />

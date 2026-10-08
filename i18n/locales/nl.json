@@ -7193,9 +7193,7 @@
     },
     "import": {
       "pasteTitle": "Opties plakken",
-      "pasteDesc": "Eén optie per regel. Kolommen uit een spreadsheet werken ook: labels, waarden, scores, vertalingen.",
       "fileTitle": "Opties importeren",
-      "fileDesc": "Een CSV- of Excel-bestand. Kies wat elke kolom bevat en controleer dan het voorbeeld.",
       "pastePlaceholder": "Noord\nZuid\nOost\nWest",
       "drop": "Zet een CSV- of Excel-bestand hier neer of klik om te bladeren",
       "types": "CSV, TXT of XLSX (eerste blad)",
@@ -7210,16 +7208,30 @@
         "value": "Waarde",
         "score": "Score",
         "lang": "Label in {name}",
-        "skip": "Niet gebruiken"
+        "skip": "Niet gebruiken",
+        "level": "Niveau {n}"
       },
       "summary": "{rows} rijen: {added} nieuw, {updated} bijgewerkt",
       "skipped": "{n} overgeslagen (leeg of dubbel)",
       "retired": "{n} opties die er niet in staan worden ingetrokken",
       "needLabel": "Kies de kolom met de labels.",
       "apply": "Toepassen",
-      "pathsDesc": "Eén rij per pad, één kolom per niveau ({chain}). Rijen met dezelfde start worden samengevoegd.",
       "pathsSummary": "{rows} rijen: {added} nieuw, {kept} al aanwezig",
-      "needTop": "Kies de kolom met {name}."
+      "intro": "Kies wat elke rij bevat en plak daarna de gegevens of kies een bestand. U controleert het resultaat voordat er iets verandert.",
+      "example": "Voorbeeld",
+      "shape": {
+        "title": "Elke rij is",
+        "one": "Eén optie",
+        "path": "Een pad door de niveaus",
+        "oneHint": "Elke rij is één optie. Andere kolommen kunnen de waarde, score of vertalingen bevatten.",
+        "pathHint": "Elke rij is een pad, één kolom per niveau, hoogste niveau eerst (tot {n} niveaus). Rijen die hetzelfde beginnen worden samengevoegd, zodat Canada één keer verschijnt met zijn regio's eronder."
+      },
+      "detected": "Dit bestand lijkt niveaus te bevatten: de eerste kolom herhaalt zich. Elke kolom wordt een niveau, genoemd naar de kop.",
+      "pastePathPlaceholder": "Canada\tOntario\tToronto\nCanada\tQuebec\tMontréal\nJapan\tTokyo\tShibuya",
+      "levelsKept": "Niveaus:",
+      "levelsMade": "Aan te maken niveaus:",
+      "needTwoLevels": "Kies minstens twee kolommen als niveaus, te beginnen met Niveau 1.",
+      "existingTop": "De {n} optie die al in deze lijst staat, blijft op het hoogste niveau ({name}). Kies De lijst vervangen om alleen te bewaren wat in het bestand staat. | De {n} opties die al in deze lijst staan, blijven op het hoogste niveau ({name}). Kies De lijst vervangen om alleen te bewaren wat in het bestand staat."
     },
     "translations": {
       "none": "Je formulieren gebruiken één taal",
@@ -7243,11 +7255,8 @@
       "publishHint": "{n} ervan is gepubliceerd: publiceer het om de nieuwe opties te tonen. | {n} ervan zijn gepubliceerd: publiceer ze om de nieuwe opties te tonen."
     },
     "levels": {
-      "plain": "Eén niveau",
-      "plainHint": "Een gewone lijst. Voeg niveaus toe voor keuzes die steeds smaller worden, zoals Land, Regio, Stad.",
-      "start": "Niveaus toevoegen",
-      "title": "{n} niveaus",
-      "hint": "Elke optie valt onder één optie van het niveau erboven. In een formulier opent elk niveau alleen met wat onder de keuze erboven valt.",
+      "plainHint": "Eén lijst met opties, bijvoorbeeld Afdelingen of Prioriteit.",
+      "hint": "Elke keuze beperkt de volgende, bijvoorbeeld Land → Regio → Stad. Elke optie hoort bij één optie van het niveau erboven.",
       "chain": "Niveaus",
       "nameN": "Niveau {n}",
       "nameOf": "Naam van niveau {n}",
@@ -7262,7 +7271,22 @@
       "underIt": "{n} eronder",
       "aboveFirst": "Voeg eerst opties toe aan {name}, daarna hier die eronder.",
       "orphans": "{n} optie heeft nog niets boven zich. Kies waar hij hoort. | {n} opties hebben nog niets boven zich. Kies waar ze horen.",
-      "unnamed": "Geef elk niveau een naam."
+      "unnamed": "Geef elk niveau een naam.",
+      "type": "Lijsttype",
+      "simple": "Eenvoudige lijst",
+      "withLevels": "Lijst met niveaus",
+      "toSimpleTitle": "Er een eenvoudige lijst van maken?",
+      "toSimpleDesc": "De {n} optie onder het hoogste niveau wordt verwijderd. Antwoorden die deze gebruikten behouden hun waarde. | De {n} opties onder het hoogste niveau worden verwijderd. Antwoorden die deze gebruikten behouden hun waarde.",
+      "toSimple": "Eenvoudig maken"
+    },
+    "guide": {
+      "title": "Hoe lijsten werken",
+      "typeTitle": "Kies het type",
+      "type": "Een eenvoudige lijst, of een lijst met niveaus waarin elke keuze de volgende beperkt (Land → Regio → Stad). Tot 4 niveaus.",
+      "fillTitle": "Voeg de opties toe",
+      "fill": "Een voor een, geplakt uit een spreadsheet, of via een CSV- of Excel-bestand. Voor niveaus: één kolom per niveau, één rij per pad.",
+      "useTitle": "Opslaan en gebruiken",
+      "use": "Open in een formulier Veld toevoegen → Lijsten en klik op de lijst of sleep deze. Formulieren bewaren een kopie: werk ze na wijzigingen bij onder Gebruikt in."
     }
   }
 }
