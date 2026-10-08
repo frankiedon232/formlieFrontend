@@ -8,6 +8,7 @@ import type { QuestionInsight, ResponseInsights, ResponseStatus } from '#shared/
 import { allFields, type FormField } from '#shared/utils/forms/build'
 import { isInputField } from '#shared/utils/forms/fields'
 import { answersOf, responseSchema, type IndexedResponse } from './responseData'
+import { keepAnswered } from './largeLists'
 import type { StoredForm } from './formStore'
 
 const DAY = 86_400_000
@@ -44,10 +45,12 @@ function questionInsight(field: FormField, rows: { entry: IndexedResponse; data:
   if (CHOICE.has(field.type) || (calculated && !numeric)) {
     const counts = new Map<string, number>()
     for (const { value } of values) for (const one of Array.isArray(value) ? value : [value]) counts.set(String(one), (counts.get(String(one)) ?? 0) + 1)
-    const known = field.type === 'toggle' ? [{ value: 'true', label: '' }, { value: 'false', label: '' }] : (field.options ?? []).map(option => ({ value: option.value, label: option.label }))
+    // A large list (F15 M5): its most chosen options, not every one of them
+    const known = field.options_large ? [] : field.type === 'toggle' ? [{ value: 'true', label: '' }, { value: 'false', label: '' }] : (field.options ?? []).map(option => ({ value: option.value, label: option.label }))
+    const labels = field.options_large ? new Map((field.options ?? []).filter(option => counts.has(option.value)).map(option => [option.value, option.label])) : null
     const options = known.length
       ? known.map(option => ({ ...option, count: counts.get(option.value) ?? 0 }))
-      : [...counts].map(([value, count]) => ({ value, label: value, count })).sort((a, b) => b.count - a.count).slice(0, 8)
+      : [...counts].map(([value, count]) => ({ value, label: labels?.get(value) ?? value, count })).sort((a, b) => b.count - a.count).slice(0, 8)
     return { ...base, answered, kind: 'choice', multiple: field.type === 'checkbox' || field.type === 'multi_select', options }
   }
   if (RATING.has(field.type)) {
@@ -123,6 +126,7 @@ export function insightsOf(entries: { form: StoredForm; entry: IndexedResponse }
     last_at: entries[0] ? new Date(entries[0].entry.at).toISOString() : null,
     questions,
     top_forms: [...busiest.values()].sort((a, b) => b.count - a.count).slice(0, 5),
-    schema: form ? responseSchema(form) : null,
+    // Large lists keep only the options that were answered (labels in the table, F15 M5)
+    schema: form ? keepAnswered(responseSchema(form), entries.map(({ entry }) => answersOf(form, entry))) : null,
   }
 }

@@ -610,7 +610,8 @@
     "FRM-AUTH-1017": "Thay đổi này sẽ khóa bạn ở ngoài. Hãy kiểm tra tên miền và địa chỉ email của chính bạn.",
     "FRM-AUTH-1018": "Bạn đã dùng mật khẩu này gần đây. Hãy chọn mật khẩu khác.",
     "FRM-FORM-1020": "Hai tùy chọn có cùng giá trị. Mỗi giá trị phải khác nhau.",
-    "FRM-FORM-1021": "Có tùy chọn không có tùy chọn nào ở trên. Hãy chọn nơi nó thuộc về."
+    "FRM-FORM-1021": "Có tùy chọn không có tùy chọn nào ở trên. Hãy chọn nơi nó thuộc về.",
+    "FRM-FORM-1022": "Danh sách này có nhiều tùy chọn hơn mức cho phép: 20.000, hoặc 200.000 nếu là danh sách lớn."
   },
   "errorUi": {
     "reference": "Mã tham chiếu: {id}",
@@ -2013,7 +2014,8 @@
       "search": "Tìm kiếm khi nhập",
       "searchHint": "Một ô tìm kiếm thay cho danh sách dài. Tự động bật khi có hơn {n} tùy chọn.",
       "searchServer": "Khi có hơn {n} tùy chọn, biểu mẫu công khai sẽ lấy kết quả khớp khi người dùng nhập để luôn nhanh.",
-      "longList": "{n} tùy chọn từ {name}. Chỉnh sửa trong Danh sách tùy chọn."
+      "longList": "{n} tùy chọn từ {name}. Chỉnh sửa trong Danh sách tùy chọn.",
+      "searchLarge": "Luôn bật với danh sách lớn: các tùy chọn được tải từ máy chủ khi người dùng gõ."
     },
     "shortcuts": {
       "title": "Phím tắt",
@@ -2335,6 +2337,10 @@
       "none": "Không điền",
       "target": "Câu hỏi được điền bằng {name}",
       "lock": "Khóa (mọi người không thể thay đổi)"
+    },
+    "large": {
+      "title": "{count} tùy chọn trên máy chủ | {count} tùy chọn trên máy chủ",
+      "desc": "Từ một danh sách lớn. Tùy chọn được tải khi gõ, nên biểu mẫu vẫn nhanh. Chỉnh sửa chúng trong List Option."
     }
   },
   "renderer": {
@@ -7312,7 +7318,8 @@
       "existingTop": "{n} tùy chọn đã có trong danh sách này được giữ ở cấp cao nhất ({name}). Chọn Thay thế danh sách để chỉ giữ lại nội dung trong tệp. | {n} tùy chọn đã có trong danh sách này được giữ ở cấp cao nhất ({name}). Chọn Thay thế danh sách để chỉ giữ lại nội dung trong tệp.",
       "tooMany": {
         "title": "Thao tác này tạo ra {n} tùy chọn, nhưng một danh sách chỉ chứa tối đa {max}.",
-        "text": "Hãy chia tệp thành các danh sách nhỏ hơn, ví dụ mỗi khu vực hoặc nhóm quốc gia một danh sách, hoặc chỉ giữ các cấp bạn cần."
+        "text": "Hãy chia tệp thành các danh sách nhỏ hơn, ví dụ mỗi khu vực hoặc nhóm quốc gia một danh sách, hoặc chỉ giữ các cấp bạn cần.",
+        "large": "Danh sách lớn chứa tối đa {max}. Hãy chuyển thành danh sách lớn để nhập tệp này một lần."
       }
     },
     "translations": {
@@ -7382,6 +7389,31 @@
       "edit": "Chi tiết của {name}",
       "of": "Chi tiết của {name}",
       "unnamed": "Hãy đặt tên cho mọi chi tiết."
+    },
+    "large": {
+      "badge": "Lớn",
+      "size": "Kích thước",
+      "standard": "Tiêu chuẩn",
+      "large": "Lớn",
+      "standardHint": "Tùy chọn: {n}. Danh sách tiêu chuẩn chứa tối đa {max} và được sao chép vào từng biểu mẫu, nên việc chọn diễn ra tức thì.",
+      "largeHint": "Tùy chọn: {n}. Danh sách lớn chứa tối đa {max} và nằm trên máy chủ; biểu mẫu tải từng cấp theo lựa chọn ở trên.",
+      "cannotStandard": "Hơn {max} tùy chọn: hãy xóa bớt để quay lại tiêu chuẩn.",
+      "askTitle": "Chuyển danh sách này thành danh sách lớn?",
+      "askDesc": "Danh sách lớn phù hợp với dữ liệu rất lớn, chẳng hạn mọi thành phố trên thế giới. Những điều sẽ thay đổi:",
+      "point": {
+        "server": "Chứa tối đa {max} tùy chọn. Chúng nằm trên máy chủ thay vì được sao chép vào từng biểu mẫu.",
+        "levels": "Trong biểu mẫu, mỗi cấp chỉ tải những gì thuộc lựa chọn ở trên: chọn một quốc gia, rồi các vùng của nó được tải.",
+        "search": "Mọi người gõ để tìm kiếm. Danh sách hiển thị 50 kết quả đầu tiên, với một chút chờ khi tải.",
+        "live": "Biểu mẫu theo danh sách ngay khi bạn lưu, kể cả biểu mẫu đang hoạt động. Không có bước Cập nhật biểu mẫu.",
+        "dropdown": "Các câu hỏi từ danh sách hiển thị dưới dạng danh sách thả xuống hoặc chọn nhiều, không phải nút radio hay hộp kiểm.",
+        "online": "Trình tạo hiển thị bản tóm tắt thay vì từng tùy chọn, và biểu mẫu cần kết nối để tải tùy chọn."
+      },
+      "keepStandard": "Giữ tiêu chuẩn",
+      "makeLarge": "Chuyển thành lớn",
+      "makeLargeQ": "Chuyển thành danh sách lớn",
+      "toStandardTitle": "Quay lại danh sách tiêu chuẩn?",
+      "toStandardDesc": "Biểu mẫu lại nhận một bản sao các tùy chọn và hiển thị tất cả cùng lúc. Thay đổi sau đó đến được chúng qua Cập nhật biểu mẫu, như mọi danh sách.",
+      "toStandard": "Chuyển thành tiêu chuẩn"
     }
   }
 }

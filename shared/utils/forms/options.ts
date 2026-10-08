@@ -20,17 +20,27 @@ export const REMOTE_FROM = 300
 export const LONG_FROM = 100
 /** Lists may hold this many options, and so may a field filled from one. */
 export const MAX_OPTIONS = 20000
+/**
+ * Large dynamic lists (F15 M5, owner 2026-10-08: "do 1 and 2"): a list switched to Large holds up to
+ * this many. Its options stay on the server: forms keep them there (the browser gets `options_large`
+ * instead, with how many and which choices above have options under them) and load each level for the
+ * choice above as people type. Only dropdowns and multi-selects can show a large list.
+ */
+export const MAX_LARGE_OPTIONS = 200000
+export const maxOptionsOf = (list: { large?: boolean }) => (list.large ? MAX_LARGE_OPTIONS : MAX_OPTIONS)
+/** Field types a large list can be shown as. */
+export const LARGE_LIST_TYPES = ['dropdown', 'multi_select'] as const
 
-type SearchField = { type: string; options?: { value: string }[] | null; props?: Record<string, unknown> | null; option_parent?: string | null; options_remote?: { total: number } | null }
+type SearchField = { type: string; options?: { value: string }[] | null; props?: Record<string, unknown> | null; option_parent?: string | null; options_remote?: { total: number } | null; options_large?: { total: number } | null }
 /** A dropdown / multi-select that searches as you type. */
 export function searchesAsYouType(field: SearchField): boolean {
   if (field.type !== 'dropdown' && field.type !== 'multi_select') return false
-  if (field.options_remote) return true
+  if (field.options_remote || field.options_large) return true
   const set = field.props?.search
   return typeof set === 'boolean' ? set : (field.options?.length ?? 0) > SEARCH_FROM
 }
 /** Options served by the server on the public page (not sent with the form). */
-export const servedRemotely = (field: SearchField) => !field.option_parent && (field.type === 'dropdown' || field.type === 'multi_select') && (field.options?.length ?? 0) > REMOTE_FROM
+export const servedRemotely = (field: SearchField) => (field.type === 'dropdown' || field.type === 'multi_select') && (!!field.options_large || (!field.option_parent && (field.options?.length ?? 0) > REMOTE_FROM))
 
 export function valueFromLabel(label: string): string {
   const base = label
@@ -95,6 +105,9 @@ export const matchesList = (options: { value: string; label: string; score?: num
   return !!options && options.length === wanted.length && options.every((option, i) => option.value === wanted[i]!.value && option.label === wanted[i]!.label && (option.score ?? null) === (wanted[i]!.score ?? null) && (option.parent ?? null) === ((wanted[i] as { parent?: string }).parent ?? null) && JSON.stringify(option.attrs ?? null) === JSON.stringify((wanted[i] as { attrs?: Attrs }).attrs ?? null))
 }
 
+/** Active options per level of a list (the builder's summary of a large list, F15 M5). */
+export const levelCounts = (list: ListLike) => Array.from({ length: levelsOf(list)?.length ?? 1 }, (_, level) => offeredAt(list, level).length)
+
 const fold = (text: string) => text.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
 /**
  * Search as you type on the server (F15 M3): options whose label contains `q`, without minding case or
@@ -107,4 +120,18 @@ export function matchOptions<T extends { label: string }>(options: T[], q: strin
   const first = matches.filter(option => fold(option.label).startsWith(wanted))
   const rest = matches.filter(option => !fold(option.label).startsWith(wanted))
   return { items: [...first, ...rest].slice(0, limit), total: matches.length }
+}
+
+/**
+ * A server-side lookup on one field's options (public page and builder, F15 M3 / M5): `values` gives the
+ * labels of chosen options, `parents` keeps a lower level to what is under the choices above, `q` searches.
+ */
+export function lookupOptions(options: { value: string; label: string; parent?: string }[], query: { q?: string; values?: string[] | null; parents?: string[] | null }) {
+  const under = query.parents ? new Set(query.parents) : null
+  const pool = (under ? options.filter(option => option.parent !== undefined && under.has(option.parent)) : options).map(option => ({ value: option.value, label: option.label }))
+  if (query.values) {
+    const wanted = new Set(query.values)
+    return { items: pool.filter(option => wanted.has(option.value)), total: query.values.length }
+  }
+  return matchOptions(pool, query.q ?? '')
 }

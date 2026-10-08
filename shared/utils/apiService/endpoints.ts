@@ -41,7 +41,9 @@ export function endpointFieldsOf(schema: FormSchemaV1, saved?: { key: string; na
         required: accept && (formRequired || !!own?.required),
         returned: own ? own.returned : true,
         filter: filterable && !!own?.filter,
-        ...(field.options?.length ? { options: field.options.map(option => ({ value: option.value, label: option.label, ...(option.parent ? { parent: option.parent } : {}) })) } : {}),
+        // A large list (F15 M5): 20 examples and how many there are
+        ...(field.options?.length ? { options: (field.options_large ? field.options.slice(0, 20) : field.options).map(option => ({ value: option.value, label: option.label, ...(option.parent ? { parent: option.parent } : {}) })) } : {}),
+        ...(field.options_large ? { options_total: field.options?.length ?? field.options_large.total } : {}),
         ...(field.option_parent && keyOfId.get(field.option_parent) ? { depends_on: keyOfId.get(field.option_parent) } : {}),
       }
     })

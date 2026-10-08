@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-08 (lists M1 to M4 done; owner chose both: the 20,000 limit stays and large dynamic lists become an opt-in (F15 M5, next); payments and subscriptions moved to the last phase, F24)
+**Last updated:** 2026-10-08 (F15 complete: M5 large dynamic lists built and browser-tested; lists hold 20,000 options, or 200,000 when switched to Large; next: F16 Profile; payments and subscriptions last, F24)
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend
 
@@ -25,7 +25,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F12   | Data sources & databases                          | ✅     | 100% (waiting for review) |
 | F13   | API service & integrations                        | ✅     | 100% (owner-tested 2026-10-06) |
 | F14   | Settings                                          | ✅     | 100% (M1 to M7 ✅; billing in F24) |
-| F15   | Option sets (lists)                               | 🟡     | ~85% (M1 to M4 ✅; M5 large dynamic lists next) |
+| F15   | Option sets (lists)                               | ✅     | 100% (M1 to M5 ✅; payments moved to F24) |
 | F16   | Profile                                           | ⬜     | 0%   |
 | F17   | Users                                             | ⬜     | 0%   |
 | F18   | Analytics                                         | ✅     | 100% (waiting for review) |
@@ -36,7 +36,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F23   | Platform admin (super admin, Formalie team)       | ⬜     | 0%   |
 | F24   | Payments & subscriptions (last)                   | ⬜     | 0%   |
 
-**Order of what is left (owner, 2026-10-08):** F15 M5, F16 Profile, F17 Users, F19 AI, F20 collaboration (optional), F21 Dashboard, F22 Roles & access, F23 Platform admin, and **last F24 Payments & subscriptions** (form payments and plans together, once the owner has chosen the payment processor).
+**Order of what is left (owner, 2026-10-08):** F16 Profile, F17 Users, F19 AI, F20 collaboration (optional), F21 Dashboard, F22 Roles & access, F23 Platform admin, and **last F24 Payments & subscriptions** (form payments and plans together, once the owner has chosen the payment processor).
 
 **Every phase is only done when:** phone / tablet / desktop checked · keyboard-only checked · light + dark checked · Arabic RTL checked · every new action recorded in the audit trail (from F4 on) · loading feedback complete (first-load screen, top bar on navigation and API calls, skeletons, busy buttons, busy rows, progress bars, CLAUDE.md rule 5) · empty and error states present · every new string in all 20 languages · matches [docs/design](docs/design/README.md) · typecheck, lint and tests green · this file and the docs updated · committed and pushed.
 
@@ -828,11 +828,11 @@ Every workspace sets up its own reference data here; the builder, field access a
 
 ---
 
-## F15, Option sets (lists) 🟡
+## F15, Option sets (lists) ✅
 
 ### Option sets (reusable choice lists)
 
-**Plan (2026-10-07, milestones):** **M1** ✅ List manager (F15a). **M2** ✅ Dynamic lists, the owner's name for lists with levels (F15c). **M3** ✅ Large lists and search as you type (F15b). **M4** ✅ Details and auto-fill (F15d). **M5** ⬜ Large dynamic lists (owner 2026-10-08, opt-in beside the 20,000 limit). Lists from live sources dropped (import keeps lists current). Payments moved to **F24** (last).
+**Plan (2026-10-07, milestones):** **M1** ✅ List manager (F15a). **M2** ✅ Dynamic lists, the owner's name for lists with levels (F15c). **M3** ✅ Large lists and search as you type (F15b). **M4** ✅ Details and auto-fill (F15d). **M5** ✅ Large dynamic lists (owner 2026-10-08, opt-in beside the 20,000 limit). Lists from live sources dropped (import keeps lists current). Payments moved to **F24** (last).
 
 Full plan: [docs/OPTION-LISTS.md](docs/OPTION-LISTS.md) (owner request 2026-10-02). Simple saved lists already exist (F7).
 
@@ -847,9 +847,9 @@ Full plan: [docs/OPTION-LISTS.md](docs/OPTION-LISTS.md) (owner request 2026-10-0
 - ✅ **F15d Details + auto-fill (M4):** lists get up to 10 detail columns (Details card; per option a Details button; import maps columns to details); fields from a list copy the details; field settings "Fill other fields" maps each detail to a question, locked by default (people can't change it); the logic engine fills in the browser and on the server alike, so a locked value can't be faked; an unlocked field is filled only while empty or still holding a filled-in value
   - ⬜ Details in formulas and logic conditions (later)
 - ➖ **F15e Lists from live sources** (another form, a database query, a JSON or CSV link): dropped (owner 2026-10-08: lists are kept up to date by importing). Not to be confused with the owner's "dynamic lists" = lists with levels (M2), which are built
-- ⬜ **Large dynamic lists (M5, owner 2026-10-08: "do 1 and 2"):** a list stays within 20,000 options by default; a list switched to "Large" holds up to 200,000 and stays on the server: a form loads each level only for the choice above (pick a country, then only its states load), searched as people type
-  - ⬜ The switch explains first what "Large" means (options load from the server level by level, a short wait as people choose, forms need to be online, the builder shows a summary instead of every option, copies in forms update on Save without "Update forms"), asks before turning it on, and an import above 20,000 offers it
-  - ⬜ Builder, preview, public form, submission checks, responses, exports and the API service read a large list's options from the server
+- ✅ **Large dynamic lists (M5, owner 2026-10-08: "do 1 and 2"):** a list stays within 20,000 options by default; a list switched to "Large" holds up to 200,000 and stays on the server: a form loads each level only for the choice above (pick a country, then only its states load), searched as people type
+  - ✅ The switch explains first what "Large" means (options load from the server level by level, a short wait as people choose, forms need to be online, the builder shows a summary instead of every option, copies in forms update on Save without "Update forms"), asks before turning it on, and an import above 20,000 offers it
+  - ✅ Builder, preview, public form, submission checks, responses, exports and the API service read a large list's options from the server (the server keeps them in the form and leaves them out of every reply; lookups by level; see docs/OPTION-LISTS.md → F15e)
 - ✅ Public option lookups for respondents (published forms only, M3); answers keep the value, records and exports show the label (API since 2026-10-08)
 
 Moved out of F15: destinations to **F12**, webhooks and integrations to **F13**, payments to **F24**.
@@ -1203,7 +1203,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-06 | Final header rule: three headers on every call (Authorization, Content-Type, Formalie-Key), none optional; no custom headers, no signed calls; token expiry in every answer; Docs show the three | F13 | ✅ |
 | 2026-10-06 | Rail "+" menu: Forms group (New form, From a template, New template) and Operations group (Add database, New API service, Query editor, Database explorer) | F1 shell | ✅ |
 | 2026-10-08 | Payments and subscriptions come last, together: form payments, plans, sign-up from the site with activation, renewals in the portal, next billing date, expiry; integrate the processor the owner chooses (mock first) | F24 (new phase, last) | ⬜ planned |
-| 2026-10-08 | Large lists: keep the 20,000 limit and also offer large dynamic lists (up to 200,000, loaded level by level from the server), explaining first what choosing it means | F15 M5 | ⬜ next |
+| 2026-10-08 | Large lists: keep the 20,000 limit and also offer large dynamic lists (up to 200,000, loaded level by level from the server), explaining first what choosing it means | F15 M5 | ✅ |
 | 2026-10-08 | Proper cleanup of PROGRESS.md | All | ✅ |
 
 ---
@@ -1448,3 +1448,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-08 | F15 | Owner: lists from live sources (M5) dropped, import keeps lists current; wording corrected after the owner's note that "dynamic list" is their name for lists with levels (built in M2, kept). Removed from the plan in PROGRESS, OPTION-LISTS and the decisions; nothing had been built for it. The list work of F15 is complete (M1 to M4); next is M6 payments. |
 | 2026-10-08 | F15 | Owner: a 4.9 MB CSV (250 countries, 5,283 states, 154,393 cities) hung the import. Causes: matching each row against every option built so far (rows × options), a unique-value helper copying the taken values per row, and `Math.max(...rows)` over 154,000 rows (call stack overflow). Now indexed (one look-up per row), a kept set of taken values, loops instead of spreads, and the dialog's rows in a `shallowRef`. Measured on the owner's file: parse 0.1 s, level detection 0.07 s, building 158,461 options 0.5 s; in the browser a 19,200-row paste is ready in 1.2 s. The import now says before Apply when a file makes more options than a list holds (20,000) and disables Apply, with advice to split the file. Also: "List with levels" renamed "Dynamic list" in the List type switch and the guide (owner's name), all 20 languages. |
 | 2026-10-08 | All | PROGRESS.md cleaned up: F15 renamed "Option sets (lists)"; payments (F15) and billing (F14) moved to a new last phase F24 Payments & subscriptions with plans, site sign-up, activation, renewals, expiry; order of what is left under the overview; F12 / F18 marked waiting for review; moved-out stubs folded into one line; owner chose both list sizes (M5 large dynamic lists added) |
+| 2026-10-08 | F15 | M5 large dynamic lists: `OptionList.large` (up to 200,000, `MAX_LARGE_OPTIONS`), Size card with Standard / Large and an explanation before switching (also inside the import when a file is over 20,000); the server fills forms from the list (`fillLargeLists`, live forms follow on save) and leaves the options out of every reply (`trimLargeLists` in the route wrapper: `options_large { total, parents }`); lookups `GET /option-lists/{id}/options` (builder, previews) and `parents` on the public lookup; `cascadeClosed` opens a large level only under a choice with options; the page clears a lower answer that no longer fits; responses get answered options only (`keepAnswered`); insights show the most chosen; API docs show 20 examples, no enum; `FRM-FORM-1022`. Fixed: the list Save check was quadratic (froze on 30,000 options). Browser-tested with 30,311 options: paste, explanation, save 2.6 s, builder canvas, public page levels, clearing, submit, response labels |

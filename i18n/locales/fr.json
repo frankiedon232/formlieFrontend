@@ -610,7 +610,8 @@
     "FRM-AUTH-1017": "Ce changement vous bloquerait l'accès. Vérifiez votre propre domaine et adresse e-mail.",
     "FRM-AUTH-1018": "Vous avez utilisé ce mot de passe récemment. Choisissez-en un autre.",
     "FRM-FORM-1020": "Deux options ont la même valeur. Chaque valeur doit être différente.",
-    "FRM-FORM-1021": "Une option n’a aucune option au-dessus. Choisissez où la placer."
+    "FRM-FORM-1021": "Une option n’a aucune option au-dessus. Choisissez où la placer.",
+    "FRM-FORM-1022": "Cette liste contient plus d'options qu'elle ne peut en accepter : 20 000, ou 200 000 si elle est grande."
   },
   "errorUi": {
     "reference": "Référence : {id}",
@@ -2013,7 +2014,8 @@
       "search": "Rechercher pendant la saisie",
       "searchHint": "Un champ de recherche au lieu d’une longue liste. S’active tout seul au-delà de {n} options.",
       "searchServer": "Au-delà de {n} options, le formulaire public demande les résultats pendant la saisie, pour rester rapide.",
-      "longList": "{n} options issues de {name}. Modifiez-les dans Liste d’options."
+      "longList": "{n} options issues de {name}. Modifiez-les dans Liste d’options.",
+      "searchLarge": "Toujours actif pour une grande liste : ses options se chargent depuis le serveur pendant la saisie."
     },
     "shortcuts": {
       "title": "Raccourcis",
@@ -2335,6 +2337,10 @@
       "none": "Ne pas remplir",
       "target": "Question remplie avec {name}",
       "lock": "Verrouiller (les personnes ne peuvent pas le modifier)"
+    },
+    "large": {
+      "title": "{count} option sur le serveur | {count} options sur le serveur",
+      "desc": "Issu d'une grande liste. Les options se chargent pendant la saisie, pour garder le formulaire rapide. Modifiez-les dans List Option."
     }
   },
   "renderer": {
@@ -7312,7 +7318,8 @@
       "existingTop": "L’{n} option déjà présente dans cette liste reste au niveau supérieur ({name}). Choisissez Remplacer la liste pour ne garder que le contenu du fichier. | Les {n} options déjà présentes dans cette liste restent au niveau supérieur ({name}). Choisissez Remplacer la liste pour ne garder que le contenu du fichier.",
       "tooMany": {
         "title": "Cela crée {n} options, mais une liste en contient au maximum {max}.",
-        "text": "Divisez le fichier en listes plus petites, par exemple une liste par région ou groupe de pays, ou conservez uniquement les niveaux dont vous avez besoin."
+        "text": "Divisez le fichier en listes plus petites, par exemple une liste par région ou groupe de pays, ou conservez uniquement les niveaux dont vous avez besoin.",
+        "large": "Une grande liste accepte jusqu'à {max}. Passez-la en grande liste pour importer ce fichier en une fois."
       }
     },
     "translations": {
@@ -7382,6 +7389,31 @@
       "edit": "Détails de {name}",
       "of": "Détails de {name}",
       "unnamed": "Donnez un nom à chaque détail."
+    },
+    "large": {
+      "badge": "Grande",
+      "size": "Taille",
+      "standard": "Standard",
+      "large": "Grande",
+      "standardHint": "Options : {n}. Une liste standard accepte jusqu'à {max} et est copiée dans chaque formulaire, le choix est donc instantané.",
+      "largeHint": "Options : {n}. Une grande liste accepte jusqu'à {max} et reste sur le serveur ; les formulaires chargent chaque niveau selon le choix du dessus.",
+      "cannotStandard": "Plus de {max} options : supprimez-en pour revenir à standard.",
+      "askTitle": "Passer cette liste en grande liste ?",
+      "askDesc": "Les grandes listes conviennent aux très gros volumes, comme toutes les villes du monde. Voici ce qui change :",
+      "point": {
+        "server": "Elle peut contenir jusqu'à {max} options. Elles restent sur le serveur au lieu d'être copiées dans chaque formulaire.",
+        "levels": "Dans un formulaire, chaque niveau charge seulement ce qui dépend du choix du dessus : choisissez un pays, puis ses régions se chargent.",
+        "search": "Les gens saisissent pour rechercher. La liste affiche les 50 premiers résultats, avec une courte attente pendant le chargement.",
+        "live": "Les formulaires suivent la liste dès son enregistrement, y compris ceux en ligne. Il n'y a pas d'étape Mettre à jour les formulaires.",
+        "dropdown": "Les questions issues de cette liste s'affichent en liste déroulante ou en sélection multiple, pas en boutons radio ni en cases à cocher.",
+        "online": "Le générateur affiche un résumé au lieu de toutes les options, et les formulaires ont besoin d'une connexion pour les charger."
+      },
+      "keepStandard": "Garder standard",
+      "makeLarge": "La passer en grande",
+      "makeLargeQ": "Passer en grande liste",
+      "toStandardTitle": "Revenir à une liste standard ?",
+      "toStandardDesc": "Les formulaires reçoivent de nouveau une copie des options et les proposent toutes à la fois. Les changements suivants leur parviennent avec Mettre à jour les formulaires, comme pour toute liste.",
+      "toStandard": "La passer en standard"
     }
   }
 }

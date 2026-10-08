@@ -21,6 +21,7 @@ import { parseBody } from '../core/validate'
 import { canSee, levelOf, requireLevel } from '../data/formPermissions'
 import { formsOf, type StoredForm } from '../data/formStore'
 import { answersOf, findResponse, formResponses, responseSchema, workspaceResponses, type IndexedResponse } from '../data/responseData'
+import { keepAnswered } from '../data/largeLists'
 import { insightsOf } from '../data/responseInsights'
 import { reviewOf, updateReview } from '../data/responseReview'
 import type { MockTenant, MockUser } from '../data/tenants'
@@ -256,7 +257,7 @@ function detailOf(form: StoredForm, entry: IndexedResponse, user: MockUser): Res
     ...rowOf(form, entry, false),
     data: answersOf(form, entry),
     form_version: entry.form_version,
-    schema,
+    schema: keepAnswered(schema, [answersOf(form, entry)]),
     meta: { device, country: null },
     notes: [...(review?.notes ?? [])].reverse(),
     history: review?.history ?? [],

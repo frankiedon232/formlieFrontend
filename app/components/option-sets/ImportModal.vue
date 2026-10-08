@@ -11,11 +11,11 @@
 <script setup lang="ts">
 import type { OptionColumn, OptionItem, OptionLevel } from '#shared/types/forms'
 import { APP_LOCALES } from '#shared/utils/i18n/locales'
-import { MAX_LIST_LEVELS, MAX_OPTIONS, uniqueValue, valueFromLabel } from '#shared/utils/forms/options'
+import { MAX_LARGE_OPTIONS, MAX_LIST_LEVELS, MAX_OPTIONS, uniqueValue, valueFromLabel } from '#shared/utils/forms/options'
 
-const props = defineProps<{ source: 'paste' | 'file'; options: OptionItem[]; languages: string[]; levels?: OptionLevel[] | null; columns?: OptionColumn[] | null }>()
+const props = defineProps<{ source: 'paste' | 'file'; options: OptionItem[]; languages: string[]; levels?: OptionLevel[] | null; columns?: OptionColumn[] | null; large?: boolean }>()
 const open = defineModel<boolean>('open', { required: true })
-const emit = defineEmits<{ apply: [options: OptionItem[], levels: OptionLevel[] | null] }>()
+const emit = defineEmits<{ apply: [options: OptionItem[], levels: OptionLevel[] | null]; large: [] }>()
 const { t } = useI18n()
 const { number } = useFormat()
 
@@ -121,7 +121,16 @@ const result = computed(() =>
 const needsMore = computed(() => (shape.value === 'path' ? usedLevels.value < 2 && !props.levels : !roles.value.includes('label')))
 // A list holds at most MAX_OPTIONS options (owner 2026-10-08: a 160,000-option file): said before Apply, not on Save
 const total = computed(() => (paths.value ? paths.value.list.length : result.value.list.length))
-const tooMany = computed(() => total.value > MAX_OPTIONS)
+// A large list (F15 M5) holds up to MAX_LARGE_OPTIONS; a standard one over its limit can become large
+const max = computed(() => (props.large ? MAX_LARGE_OPTIONS : MAX_OPTIONS))
+const tooMany = computed(() => total.value > max.value)
+const canBeLarge = computed(() => !props.large && total.value <= MAX_LARGE_OPTIONS)
+// Making the list large is explained here first (owner 2026-10-08)
+const asking = ref(false)
+function makeLarge() {
+  asking.value = false
+  emit('large')
+}
 const canApply = computed(() => !needsMore.value && !tooMany.value && (paths.value ? paths.value.added > 0 || paths.value.retired > 0 : result.value.added > 0 || result.value.updated > 0))
 function apply() {
   if (!canApply.value) return
@@ -190,7 +199,17 @@ const example = computed(() => (shape.value === 'path' ? [['Canada', 'Ontario', 
           <UAlert v-if="paths && !levels && options.length && mode === 'merge'" color="warning" variant="subtle" icon="i-lucide-triangle-alert" :description="t('optionSets.import.existingTop', { n: number(options.length), name: plannedLevels[0]?.label ?? '' }, options.length)" :ui="{ description: 'text-xs' }" />
           <p v-if="paths" class="text-xs text-muted">{{ t('optionSets.import.pathsSummary', { rows: number(body.length), added: number(paths.added), kept: number(paths.kept) }) }}<template v-if="paths.skipped"> · {{ t('optionSets.import.skipped', { n: number(paths.skipped) }) }}</template><template v-if="paths.retired"> · <span class="text-warning">{{ t('optionSets.import.retired', { n: number(paths.retired) }) }}</span></template></p>
           <p v-else class="text-xs text-muted">{{ t('optionSets.import.summary', { rows: number(body.length), added: number(result.added), updated: number(result.updated) }) }}<template v-if="result.skipped"> · {{ t('optionSets.import.skipped', { n: number(result.skipped) }) }}</template><template v-if="result.retired"> · <span class="text-warning">{{ t('optionSets.import.retired', { n: number(result.retired) }) }}</span></template></p>
-          <UAlert v-if="tooMany" color="error" variant="subtle" icon="i-lucide-octagon-alert" :title="t('optionSets.import.tooMany.title', { n: number(total), max: number(MAX_OPTIONS) })" :description="t('optionSets.import.tooMany.text')" :ui="{ title: 'text-xs', description: 'text-xs' }" />
+          <UAlert v-if="tooMany && canBeLarge" color="warning" variant="subtle" icon="i-lucide-server" :title="t('optionSets.import.tooMany.title', { n: number(total), max: number(MAX_OPTIONS) })" :description="t('optionSets.import.tooMany.large', { max: number(MAX_LARGE_OPTIONS) })" :actions="asking ? [] : [{ label: t('optionSets.large.makeLargeQ'), icon: 'i-lucide-server', color: 'neutral', variant: 'outline', size: 'xs', onClick: () => (asking = true) }]" :ui="{ title: 'text-xs', description: 'text-xs' }" />
+          <div v-if="tooMany && canBeLarge && asking" class="flex flex-col gap-3 rounded-lg border border-default p-3">
+            <p class="text-sm font-medium text-highlighted">{{ t('optionSets.large.askTitle') }}</p>
+            <p class="text-xs text-muted">{{ t('optionSets.large.askDesc') }}</p>
+            <OptionSetsLargePoints />
+            <div class="flex justify-end gap-2">
+              <UButton :label="t('optionSets.large.keepStandard')" color="neutral" variant="outline" size="sm" @click="asking = false" />
+              <UButton :label="t('optionSets.large.makeLarge')" icon="i-lucide-server" color="neutral" size="sm" @click="makeLarge" />
+            </div>
+          </div>
+          <UAlert v-else-if="tooMany" color="error" variant="subtle" icon="i-lucide-octagon-alert" :title="t('optionSets.import.tooMany.title', { n: number(total), max: number(max) })" :description="t('optionSets.import.tooMany.text')" :ui="{ title: 'text-xs', description: 'text-xs' }" />
           <p v-if="needsMore" class="text-xs text-error">{{ shape === 'path' ? t('optionSets.import.needTwoLevels') : t('optionSets.import.needLabel') }}</p>
         </template>
       </div>

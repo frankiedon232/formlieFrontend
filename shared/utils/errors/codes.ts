@@ -72,6 +72,7 @@ export const ERROR_CODES = {
   'FRM-FORM-1019': { status: 403, message: 'Your sign-in for this form has expired. Sign in again.' },
   'FRM-FORM-1020': { status: 422, message: 'Two options share the same value. Each value must be different.' },
   'FRM-FORM-1021': { status: 422, message: 'An option has no option above it. Choose where it belongs.' },
+  'FRM-FORM-1022': { status: 422, message: 'This list has more options than it can hold: 20,000, or 200,000 when it is large.' },
   'FRM-RESP-1001': { status: 422, message: 'Submission is invalid.' },
   'FRM-RESP-1002': { status: 400, message: 'Verification failed.' },
   'FRM-RESP-1003': { status: 409, message: 'This form was already submitted from this session.' },

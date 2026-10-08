@@ -14,6 +14,7 @@ import type { OptionList } from '#shared/types/forms'
 const props = defineProps<{ query: string }>()
 const emit = defineEmits<{ added: [] }>()
 const { t } = useI18n()
+const { number } = useFormat()
 const builder = useBuilder()
 const library = useFieldLibrary()
 const confirm = useConfirm()
@@ -34,7 +35,9 @@ function add(list: OptionList) {
 }
 const kindOf = (list: OptionList) => {
   const levels = levelsOf(list)
-  return levels ? levels.map(level => level.label).join(' → ') : t('library.optionCount', { count: offeredOptions(list).length }, offeredOptions(list).length)
+  if (levels) return levels.map(level => level.label).join(' → ')
+  const count = list.large ? (list.level_counts?.[0] ?? 0) : offeredOptions(list).length
+  return t('library.optionCount', { count: number(count) }, count)
 }
 const drag = usePaletteDrag(() => emit('added'))
 // Dragging a list with levels carries its top level; the others join it on drop
@@ -57,7 +60,7 @@ async function remove(list: OptionList) {
 
 const menu = (list: OptionList): DropdownMenuItem[][] => [
   [
-    { label: t('library.editList'), icon: 'i-lucide-pencil', onSelect: () => (levelsOf(list) ? void navigateTo(`/option-sets/${list.id}`) : openEditor(list)) },
+    { label: t('library.editList'), icon: 'i-lucide-pencil', onSelect: () => (levelsOf(list) || list.large ? void navigateTo(`/option-sets/${list.id}`) : openEditor(list)) },
     { label: t('library.openInListOption'), icon: 'i-lucide-external-link', onSelect: () => void navigateTo(`/option-sets/${list.id}`) },
     { label: t('library.deleteList'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => void remove(list) },
   ],
@@ -111,7 +114,7 @@ const menu = (list: OptionList): DropdownMenuItem[][] => [
             @click="add(list)"
           >
             <span class="flex min-w-0 flex-col items-start">
-              <span class="flex max-w-full items-center gap-1.5"><span class="truncate">{{ list.name }}</span><UBadge v-if="levelsOf(list)" :label="t('library.levels', { n: levelsOf(list)!.length })" color="neutral" variant="soft" size="sm" class="shrink-0" /></span>
+              <span class="flex max-w-full items-center gap-1.5"><span class="truncate">{{ list.name }}</span><UBadge v-if="levelsOf(list)" :label="t('library.levels', { n: levelsOf(list)!.length })" color="neutral" variant="soft" size="sm" class="shrink-0" /><UBadge v-if="list.large" :label="t('optionSets.large.badge')" color="neutral" variant="outline" size="sm" class="shrink-0" /></span>
               <span class="max-w-full truncate text-xs font-normal text-muted">{{ kindOf(list) }}</span>
             </span>
           </UButton>

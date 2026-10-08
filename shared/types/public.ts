@@ -93,8 +93,14 @@ export interface FileAnswer {
 }
 
 /** Uploads one file for a file question, reporting progress (0–100); `onAbort` receives a cancel function. */
-/** A long list's options from the server as people type (F15 M3): matches for `q`, or the labels of chosen `values`. */
-export type RendererLookup = (field: string, q: string, values?: string[]) => Promise<{ items: { value: string; label: string }[]; total: number }>
+/**
+ * A long list's options from the server as people type (F15 M3): matches for `q`, or the labels of chosen
+ * `values`; a lower level of a large list (F15 M5) only what is under the choices above (`parents`).
+ */
+export type RendererLookup = (
+  field: { key: string; option_set_id?: string | null; option_level?: number },
+  query: { q: string; values?: string[]; parents?: string[] },
+) => Promise<{ items: { value: string; label: string }[]; total: number }>
 
 export type RendererUpload = (field: string, file: File, onProgress: (percent: number) => void, onAbort: (abort: () => void) => void) => Promise<FileAnswer>
 

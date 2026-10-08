@@ -256,6 +256,10 @@ export interface OptionList {
   levels?: OptionLevel[]
   /** Details on every option (F15 M4), up to 10 columns. */
   columns?: OptionColumn[]
+  /** Large dynamic list (F15 M5): up to 200,000 options kept on the server; forms load them level by level. */
+  large?: boolean
+  /** Large lists in the builder's list (GET /option-lists): options are left out, active ones per level instead. */
+  level_counts?: number[]
   options: OptionItem[]
   created_by: { id: string; name: string }
   created_at: string

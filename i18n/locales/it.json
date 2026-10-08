@@ -610,7 +610,8 @@
     "FRM-AUTH-1017": "Questa modifica ti bloccherebbe l'accesso. Controlla il tuo dominio e il tuo indirizzo email.",
     "FRM-AUTH-1018": "Hai usato questa password di recente. Scegline un'altra.",
     "FRM-FORM-1020": "Due opzioni hanno lo stesso valore. Ogni valore deve essere diverso.",
-    "FRM-FORM-1021": "Un’opzione non ha nessuna opzione sopra. Scegli dove va."
+    "FRM-FORM-1021": "Un’opzione non ha nessuna opzione sopra. Scegli dove va.",
+    "FRM-FORM-1022": "Questo elenco ha più opzioni di quante ne possa contenere: 20.000, o 200.000 se è grande."
   },
   "errorUi": {
     "reference": "Riferimento: {id}",
@@ -2013,7 +2014,8 @@
       "search": "Cerca mentre si scrive",
       "searchHint": "Una casella di ricerca al posto di un lungo elenco. Si attiva da sola oltre {n} opzioni.",
       "searchServer": "Oltre {n} opzioni, il modulo pubblico richiede le corrispondenze mentre si scrive, così resta veloce.",
-      "longList": "{n} opzioni da {name}. Modificale in Elenco opzioni."
+      "longList": "{n} opzioni da {name}. Modificale in Elenco opzioni.",
+      "searchLarge": "Sempre attivo per un elenco grande: le opzioni si caricano dal server mentre si digita."
     },
     "shortcuts": {
       "title": "Scorciatoie",
@@ -2335,6 +2337,10 @@
       "none": "Non compilare",
       "target": "Domanda compilata con {name}",
       "lock": "Blocca (le persone non possono modificarlo)"
+    },
+    "large": {
+      "title": "{count} opzione sul server | {count} opzioni sul server",
+      "desc": "Da un elenco grande. Le opzioni si caricano mentre si digita, così il modulo resta veloce. Modificale in List Option."
     }
   },
   "renderer": {
@@ -7312,7 +7318,8 @@
       "existingTop": "L’{n} opzione già presente in questo elenco resta al livello superiore ({name}). Scegli Sostituisci l’elenco per mantenere solo ciò che c’è nel file. | Le {n} opzioni già presenti in questo elenco restano al livello superiore ({name}). Scegli Sostituisci l’elenco per mantenere solo ciò che c’è nel file.",
       "tooMany": {
         "title": "Questo crea {n} opzioni, ma un elenco ne contiene al massimo {max}.",
-        "text": "Dividi il file in elenchi più piccoli, ad esempio un elenco per regione o gruppo di paesi, oppure mantieni solo i livelli che ti servono."
+        "text": "Dividi il file in elenchi più piccoli, ad esempio un elenco per regione o gruppo di paesi, oppure mantieni solo i livelli che ti servono.",
+        "large": "Un elenco grande contiene fino a {max}. Rendilo un elenco grande per importare questo file in un colpo solo."
       }
     },
     "translations": {
@@ -7382,6 +7389,31 @@
       "edit": "Dettagli di {name}",
       "of": "Dettagli di {name}",
       "unnamed": "Dai un nome a ogni dettaglio."
+    },
+    "large": {
+      "badge": "Grande",
+      "size": "Dimensione",
+      "standard": "Standard",
+      "large": "Grande",
+      "standardHint": "Opzioni: {n}. Un elenco standard contiene fino a {max} ed è copiato in ogni modulo, quindi la scelta è immediata.",
+      "largeHint": "Opzioni: {n}. Un elenco grande contiene fino a {max} e resta sul server; i moduli caricano ogni livello in base alla scelta sopra.",
+      "cannotStandard": "Più di {max} opzioni: rimuovine alcune per tornare a standard.",
+      "askTitle": "Rendere questo elenco grande?",
+      "askDesc": "Gli elenchi grandi vanno bene per dati molto estesi, come tutte le città del mondo. Ecco cosa cambia:",
+      "point": {
+        "server": "Può contenere fino a {max} opzioni. Restano sul server invece di essere copiate in ogni modulo.",
+        "levels": "In un modulo, ogni livello carica solo ciò che sta sotto la scelta sopra: scegli un paese e si caricano le sue regioni.",
+        "search": "Le persone digitano per cercare. L'elenco mostra le prime 50 corrispondenze, con una breve attesa durante il caricamento.",
+        "live": "I moduli seguono l'elenco appena lo salvi, anche quelli pubblicati. Non c'è il passaggio Aggiorna moduli.",
+        "dropdown": "Le domande che lo usano appaiono come menu a discesa o selezione multipla, non come pulsanti di opzione o caselle.",
+        "online": "Il builder mostra un riepilogo invece di ogni opzione, e i moduli hanno bisogno di una connessione per caricare le opzioni."
+      },
+      "keepStandard": "Mantieni standard",
+      "makeLarge": "Rendilo grande",
+      "makeLargeQ": "Rendilo un elenco grande",
+      "toStandardTitle": "Tornare a un elenco standard?",
+      "toStandardDesc": "I moduli ricevono di nuovo una copia delle opzioni e le offrono tutte insieme. Le modifiche successive li raggiungono con Aggiorna moduli, come per ogni elenco.",
+      "toStandard": "Rendilo standard"
     }
   }
 }

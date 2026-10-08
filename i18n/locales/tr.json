@@ -610,7 +610,8 @@
     "FRM-AUTH-1017": "Bu değişiklik sizi dışarıda bırakır. Kendi e-posta alan adınızı ve adresinizi kontrol edin.",
     "FRM-AUTH-1018": "Bu parolayı yakın zamanda kullandınız. Başka bir parola seçin.",
     "FRM-FORM-1020": "İki seçenek aynı değere sahip. Her değer farklı olmalı.",
-    "FRM-FORM-1021": "Bir seçeneğin üstünde seçenek yok. Nereye ait olduğunu seçin."
+    "FRM-FORM-1021": "Bir seçeneğin üstünde seçenek yok. Nereye ait olduğunu seçin.",
+    "FRM-FORM-1022": "Bu liste taşıyabileceğinden fazla seçenek içeriyor: 20.000, büyükse 200.000."
   },
   "errorUi": {
     "reference": "Referans: {id}",
@@ -2013,7 +2014,8 @@
       "search": "Yazarken ara",
       "searchHint": "Uzun bir liste yerine arama kutusu. {n} seçeneğin üzerinde kendiliğinden açılır.",
       "searchServer": "{n} seçeneğin üzerinde herkese açık form, kişiler yazarken eşleşmeleri ister, böylece hızlı kalır.",
-      "longList": "{name} kaynağından {n} seçenek. Bunları Seçenek Listesi bölümünde düzenleyin."
+      "longList": "{name} kaynağından {n} seçenek. Bunları Seçenek Listesi bölümünde düzenleyin.",
+      "searchLarge": "Büyük listede her zaman açıktır: seçenekler yazarken sunucudan yüklenir."
     },
     "shortcuts": {
       "title": "Kısayollar",
@@ -2335,6 +2337,10 @@
       "none": "Doldurma",
       "target": "{name} ile doldurulan soru",
       "lock": "Kilitle (kişiler değiştiremez)"
+    },
+    "large": {
+      "title": "Sunucuda {count} seçenek | Sunucuda {count} seçenek",
+      "desc": "Büyük bir listeden. Seçenekler yazarken yüklenir, böylece form hızlı kalır. Bunları List Option sayfasında düzenleyin."
     }
   },
   "renderer": {
@@ -7312,7 +7318,8 @@
       "existingTop": "Bu listede zaten bulunan {n} seçenek en üst düzeyde ({name}) kalır. Yalnızca dosyadaki içeriği tutmak için Listeyi değiştir seçeneğini seçin. | Bu listede zaten bulunan {n} seçenek en üst düzeyde ({name}) kalır. Yalnızca dosyadaki içeriği tutmak için Listeyi değiştir seçeneğini seçin.",
       "tooMany": {
         "title": "Bu işlem {n} seçenek oluşturur, ancak bir liste en fazla {max} seçenek alabilir.",
-        "text": "Dosyayı daha küçük listelere bölün, örneğin her bölge veya ülke grubu için bir liste yapın ya da yalnızca ihtiyacınız olan düzeyleri tutun."
+        "text": "Dosyayı daha küçük listelere bölün, örneğin her bölge veya ülke grubu için bir liste yapın ya da yalnızca ihtiyacınız olan düzeyleri tutun.",
+        "large": "Büyük liste {max} seçeneğe kadar alır. Bu dosyayı tek seferde içe aktarmak için büyük liste yapın."
       }
     },
     "translations": {
@@ -7382,6 +7389,31 @@
       "edit": "{name} ayrıntıları",
       "of": "{name} ayrıntıları",
       "unnamed": "Her ayrıntıya bir ad verin."
+    },
+    "large": {
+      "badge": "Büyük",
+      "size": "Boyut",
+      "standard": "Standart",
+      "large": "Büyük",
+      "standardHint": "Seçenekler: {n}. Standart liste {max} seçeneğe kadar alır ve her forma kopyalanır, bu yüzden seçim anlıktır.",
+      "largeHint": "Seçenekler: {n}. Büyük liste {max} seçeneğe kadar alır ve sunucuda kalır; formlar her düzeyi yukarıdaki seçime göre yükler.",
+      "cannotStandard": "{max} üzerinde seçenek var: standarda dönmek için bazılarını kaldırın.",
+      "askTitle": "Bu liste büyük yapılsın mı?",
+      "askDesc": "Büyük listeler, dünyadaki tüm şehirler gibi çok büyük veriler için uygundur. Değişenler şunlar:",
+      "point": {
+        "server": "{max} seçeneğe kadar alabilir. Seçenekler her forma kopyalanmak yerine sunucuda kalır.",
+        "levels": "Bir formda her düzey yalnızca yukarıdaki seçimin altındakileri yükler: bir ülke seçin, ardından bölgeleri yüklenir.",
+        "search": "Kişiler aramak için yazar. Liste ilk 50 eşleşmeyi gösterir, yüklenirken kısa bir bekleme olur.",
+        "live": "Formlar, listeyi kaydettiğiniz anda onu izler, yayındaki formlar da. Formları güncelle adımı yoktur.",
+        "dropdown": "Bu listeden gelen sorular açılır liste veya çoklu seçim olarak görünür, seçenek düğmesi veya onay kutusu olarak değil.",
+        "online": "Oluşturucu her seçenek yerine bir özet gösterir ve formların seçenekleri yüklemek için bağlantıya ihtiyacı vardır."
+      },
+      "keepStandard": "Standart kalsın",
+      "makeLarge": "Büyük yap",
+      "makeLargeQ": "Büyük liste yap",
+      "toStandardTitle": "Standart listeye dönülsün mü?",
+      "toStandardDesc": "Formlar seçeneklerin kopyasını yeniden alır ve hepsini birden sunar. Sonraki değişiklikler, her listede olduğu gibi Formları güncelle ile onlara ulaşır.",
+      "toStandard": "Standart yap"
     }
   }
 }

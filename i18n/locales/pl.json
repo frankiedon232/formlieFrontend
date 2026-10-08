@@ -610,7 +610,8 @@
     "FRM-AUTH-1017": "Ta zmiana zablokowałaby Ci dostęp. Sprawdź własną domenę i adres e-mail.",
     "FRM-AUTH-1018": "Niedawno używasz tego hasła. Wybierz inne.",
     "FRM-FORM-1020": "Dwie opcje mają tę samą wartość. Każda wartość musi być inna.",
-    "FRM-FORM-1021": "Jedna opcja nie ma opcji nad sobą. Wybierz, gdzie należy."
+    "FRM-FORM-1021": "Jedna opcja nie ma opcji nad sobą. Wybierz, gdzie należy.",
+    "FRM-FORM-1022": "Ta lista ma więcej opcji, niż może pomieścić: 20 000, a 200 000 gdy jest duża."
   },
   "errorUi": {
     "reference": "Identyfikator: {id}",
@@ -2013,7 +2014,8 @@
       "search": "Szukaj podczas pisania",
       "searchHint": "Pole wyszukiwania zamiast długiej listy. Włącza się samo powyżej {n} opcji.",
       "searchServer": "Powyżej {n} opcji formularz publiczny pobiera dopasowania w trakcie pisania, dzięki czemu działa szybko.",
-      "longList": "Liczba opcji z {name}: {n}. Edytuj je w Liście opcji."
+      "longList": "Liczba opcji z {name}: {n}. Edytuj je w Liście opcji.",
+      "searchLarge": "Zawsze włączone dla dużej listy: jej opcje ładują się z serwera podczas pisania."
     },
     "shortcuts": {
       "title": "Skróty",
@@ -2335,6 +2337,10 @@
       "none": "Nie wypełniaj",
       "target": "Pytanie wypełniane wartością {name}",
       "lock": "Zablokuj (osoby nie mogą tego zmienić)"
+    },
+    "large": {
+      "title": "{count} opcja na serwerze | {count} opcji na serwerze",
+      "desc": "Z dużej listy. Opcje ładują się podczas pisania, dzięki czemu formularz działa szybko. Edytuj je w List Option."
     }
   },
   "renderer": {
@@ -7312,7 +7318,8 @@
       "existingTop": "{n} opcja, która już jest na tej liście, zostaje na najwyższym poziomie ({name}). Wybierz Zastąp listę, aby zachować tylko to, co jest w pliku. | {n} opcje, które już są na tej liście, zostają na najwyższym poziomie ({name}). Wybierz Zastąp listę, aby zachować tylko to, co jest w pliku.",
       "tooMany": {
         "title": "Utworzy to {n} opcji, a jedna lista może zawierać ich najwyżej {max}.",
-        "text": "Podziel plik na mniejsze listy, na przykład jedną listę na region lub grupę krajów, albo zachowaj tylko potrzebne poziomy."
+        "text": "Podziel plik na mniejsze listy, na przykład jedną listę na region lub grupę krajów, albo zachowaj tylko potrzebne poziomy.",
+        "large": "Duża lista mieści do {max}. Zmień ją na dużą listę, aby zaimportować ten plik naraz."
       }
     },
     "translations": {
@@ -7382,6 +7389,31 @@
       "edit": "Szczegóły: {name}",
       "of": "Szczegóły: {name}",
       "unnamed": "Nadaj nazwę każdemu szczegółowi."
+    },
+    "large": {
+      "badge": "Duża",
+      "size": "Rozmiar",
+      "standard": "Standardowa",
+      "large": "Duża",
+      "standardHint": "Opcje: {n}. Lista standardowa mieści do {max} i jest kopiowana do każdego formularza, więc wybór jest natychmiastowy.",
+      "largeHint": "Opcje: {n}. Duża lista mieści do {max} i zostaje na serwerze; formularze ładują każdy poziom zależnie od wyboru powyżej.",
+      "cannotStandard": "Ponad {max} opcji: usuń część, aby wrócić do standardowej.",
+      "askTitle": "Zmienić tę listę na dużą?",
+      "askDesc": "Duże listy nadają się do bardzo obszernych danych, np. wszystkich miast świata. Oto, co się zmieni:",
+      "point": {
+        "server": "Może pomieścić do {max} opcji. Zostają na serwerze zamiast być kopiowane do każdego formularza.",
+        "levels": "W formularzu każdy poziom ładuje tylko to, co jest pod wyborem powyżej: wybierz kraj, a załadują się jego regiony.",
+        "search": "Użytkownicy wpisują tekst, aby szukać. Lista pokazuje pierwsze 50 wyników, z krótkim oczekiwaniem na załadowanie.",
+        "live": "Formularze podążają za listą od razu po zapisaniu, także te opublikowane. Nie ma kroku Aktualizuj formularze.",
+        "dropdown": "Pytania z tej listy wyświetlają się jako lista rozwijana lub wielokrotny wybór, a nie przyciski opcji czy pola wyboru.",
+        "online": "Kreator pokazuje podsumowanie zamiast wszystkich opcji, a formularze potrzebują połączenia, aby załadować opcje."
+      },
+      "keepStandard": "Zostaw standardową",
+      "makeLarge": "Zmień na dużą",
+      "makeLargeQ": "Zmień na dużą listę",
+      "toStandardTitle": "Wrócić do listy standardowej?",
+      "toStandardDesc": "Formularze znów dostają kopię opcji i pokazują je wszystkie naraz. Późniejsze zmiany docierają do nich przez Aktualizuj formularze, jak przy każdej liście.",
+      "toStandard": "Zmień na standardową"
     }
   }
 }

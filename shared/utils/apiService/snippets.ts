@@ -56,9 +56,10 @@ export function endpointCalls(endpoint: Pick<ApiEndpointDetail, 'methods' | 'url
 }
 
 /** A question as JSON Schema (OpenAPI 3.1). */
-export function fieldSchema(field: Pick<ApiEndpointField, 'type' | 'options' | 'label' | 'key'>): Record<string, unknown> {
+export function fieldSchema(field: Pick<ApiEndpointField, 'type' | 'options' | 'label' | 'key'> & { options_total?: number }): Record<string, unknown> {
   // Choices are read and returned by label (values are accepted too, owner 2026-10-08)
-  const values = field.options?.map(option => option.label)
+  // A large list (F15 M5) sends only examples: no enum then
+  const values = field.options_total ? undefined : field.options?.map(option => option.label)
   const base: Record<string, unknown> = { description: field.label }
   switch (field.type) {
     case 'number':

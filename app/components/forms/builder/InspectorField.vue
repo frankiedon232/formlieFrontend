@@ -105,6 +105,7 @@ const prefillExample = computed(() => `?${String(p.value.prefill_param || props.
 
     <FormsBuilderInspectorChoiceStyle v-if="field.option_level === undefined && ['dropdown', 'multi_select', 'radio', 'checkbox'].includes(field.type)" :field="field" />
     <FormsBuilderInspectorLevel v-if="field.option_level !== undefined && field.option_set_id" :field="field" />
+    <FormsBuilderInspectorLarge v-else-if="field.options_large" :field="field" with-link />
     <FormsBuilderInspectorOptions v-else-if="has('options') || has('matrix_rows')" :field="field" />
     <FormsBuilderInspectorFill :field="field" />
 

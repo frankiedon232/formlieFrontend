@@ -2,11 +2,12 @@
   Dropdown, multi-select, radio, checkboxes and toggle. Options come from the field; a level of a list
   with levels shows only what is under the choice above (F15 M2). Long lists (F15 M3): a dropdown or
   multi-select with many options searches as you type (a search box, long lists drawn as they scroll);
-  on the public page a very long list asks the server for matches (useRemoteOptions).
+  on the public page a very long list asks the server for matches, and a large list (F15 M5) always does,
+  level by level (useRemoteOptions).
 -->
 <script setup lang="ts">
 import { isLocked, type FormField } from '#shared/utils/forms/build'
-import { cascadeOptions } from '#shared/utils/forms/cascade'
+import { cascadeClosed, cascadeOptions } from '#shared/utils/forms/cascade'
 import { searchesAsYouType } from '#shared/utils/forms/options'
 
 const props = defineProps<{ id: string; field: FormField; mode: 'builder' | 'live' }>()
@@ -38,12 +39,16 @@ const on = computed({
 
 // Long lists: a search box; options from the server when the page left them out
 const searching = computed(() => searchesAsYouType(props.field))
-const server = useRemoteOptions(() => props.field, () => (one.value ? [one.value] : many.value))
+const server = useRemoteOptions(
+  () => props.field,
+  () => (one.value ? [one.value] : many.value),
+  values => (value.value = props.field.type === 'multi_select' ? (values.length ? values : undefined) : values[0]),
+)
 const items = computed(() => (server.remote.value ? server.items.value : own.value))
 const searchInput = computed(() => (searching.value ? { placeholder: t('renderer.typeToSearch'), icon: 'i-lucide-search' } : false))
 const more = computed(() => (server.remote.value && server.total.value > server.items.value.length ? t('renderer.moreMatches', { shown: number(server.items.value.length), total: number(server.total.value) }) : ''))
 
-const closed = computed(() => cascading.value && !own.value.length)
+const closed = computed(() => cascading.value && cascadeClosed(props.field, live!.fieldsById.value, live!.answers.value))
 const above = computed(() => (props.field.option_parent ? live?.fieldsById.value.get(props.field.option_parent)?.label : '') || t('builder.untitled'))
 const placeholder = (fallback: string) => (closed.value ? t('renderer.chooseAboveFirst', { name: above.value }) : props.field.placeholder || (searching.value ? t('renderer.typeToSearch') : fallback))
 const icon = useFieldIcon(() => props.field)

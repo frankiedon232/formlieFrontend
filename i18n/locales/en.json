@@ -610,7 +610,8 @@
     "FRM-AUTH-1017": "This change would lock you out. Check your own email domain and address.",
     "FRM-AUTH-1018": "You used this password recently. Choose another one.",
     "FRM-FORM-1020": "Two options share the same value. Each value must be different.",
-    "FRM-FORM-1021": "An option has no option above it. Choose where it belongs."
+    "FRM-FORM-1021": "An option has no option above it. Choose where it belongs.",
+    "FRM-FORM-1022": "This list has more options than it can hold: 20,000, or 200,000 when it is large."
   },
   "errorUi": {
     "reference": "Reference: {id}",
@@ -2021,7 +2022,8 @@
       "search": "Search as you type",
       "searchHint": "A search box instead of a long list. On by itself above {n} options.",
       "searchServer": "Above {n} options the public form asks for matches as people type, so it stays fast.",
-      "longList": "{n} options from {name}. Edit them in List Option."
+      "longList": "{n} options from {name}. Edit them in List Option.",
+      "searchLarge": "Always on for a large list: its options load from the server as people type."
     },
     "shortcuts": {
       "title": "Shortcuts",
@@ -2335,6 +2337,10 @@
       "none": "Don't fill",
       "target": "Question filled with {name}",
       "lock": "Lock it (people can't change it)"
+    },
+    "large": {
+      "title": "{count} option on the server | {count} options on the server",
+      "desc": "From a large list. Options load as people type, so the form stays fast. Edit them in List Option."
     }
   },
   "renderer": {
@@ -7312,7 +7318,8 @@
       "existingTop": "The {n} option already in this list stays on the top level ({name}). Choose Replace the list to keep only what is in the file. | The {n} options already in this list stay on the top level ({name}). Choose Replace the list to keep only what is in the file.",
       "tooMany": {
         "title": "This makes {n} options; a list holds up to {max}.",
-        "text": "Split the file into smaller lists, for example one list per region or group of countries, or keep only the levels you need."
+        "text": "Split the file into smaller lists, for example one list per region or group of countries, or keep only the levels you need.",
+        "large": "A large list holds up to {max}. Make it a large list to import this file in one go."
       }
     },
     "translations": {
@@ -7382,6 +7389,31 @@
       "edit": "Details of {name}",
       "of": "Details of {name}",
       "unnamed": "Give every detail a name."
+    },
+    "large": {
+      "badge": "Large",
+      "size": "Size",
+      "standard": "Standard",
+      "large": "Large",
+      "standardHint": "Options: {n}. A standard list holds up to {max} and is copied into each form, so choosing is instant.",
+      "largeHint": "Options: {n}. A large list holds up to {max} and stays on the server; forms load each level for the choice above.",
+      "cannotStandard": "Over {max} options: remove some to go back to standard.",
+      "askTitle": "Make this a large list?",
+      "askDesc": "Large lists suit very big data, such as every city in the world. This is what changes:",
+      "point": {
+        "server": "It can hold up to {max} options. They stay on the server instead of being copied into each form.",
+        "levels": "In a form, each level loads only what is under the choice above: pick a country, then its states load.",
+        "search": "People type to search. A list shows the first 50 matches, with a short wait while they load.",
+        "live": "Forms follow the list as soon as you save it, live forms too. There is no Update forms step.",
+        "dropdown": "Questions from it show as a dropdown or multi-select, not as radio buttons or checkboxes.",
+        "online": "The builder shows a summary instead of every option, and forms need a connection to load options."
+      },
+      "keepStandard": "Keep standard",
+      "makeLarge": "Make it large",
+      "makeLargeQ": "Make it a large list",
+      "toStandardTitle": "Back to a standard list?",
+      "toStandardDesc": "Forms get a copy of the options again and offer them all at once. Later changes reach them with Update forms, as for any list.",
+      "toStandard": "Make it standard"
     }
   }
 }

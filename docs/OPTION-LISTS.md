@@ -135,3 +135,14 @@ Deleting or retiring items never breaks old responses.
 - **Editor:** a Details card names the columns; each option has a Details button; Import (one option per row) maps a column to "Detail: …".
 - **Auto-fill:** a one-choice field (dropdown, single choice) has "Fill other fields": each detail → a question, locked by default. Stored as `props.fills = [{ column, target, lock }]` and applied by the logic engine (`shared/utils/forms/fills.ts`) in the browser and on submit: a locked target is disabled and always holds the chosen option's detail (empty when nothing is chosen); an unlocked target is filled while empty or still holding a filled-in detail, never over what a person typed. Number questions get numbers.
 - **Later:** details in formulas and logic conditions.
+
+## F15e large dynamic lists, as built (M5, 2026-10-08)
+
+Owner 2026-10-08: "do 1 and 2", keep the 20,000 limit and also offer large lists, and say first what choosing one means.
+
+- **Size** card in the list editor: Standard (up to 20,000 options, copied into each form) or Large (up to 200,000, `OptionList.large`). Switching to Large opens an explanation (server, level by level, search, live forms follow, dropdown / multi-select only, needs a connection) and asks first; back to Standard only while the list fits 20,000. An import over 20,000 offers "Make it a large list" with the same explanation inside the import dialog.
+- **Server keeps the options.** Forms store a large list's current options in their schema on the server (`fillLargeLists` on draft save, form create, and every list save, live forms too), so submission checks, the API service, exports and insights work as for any list. Every reply goes through `trimLargeLists` (server/mock/core/route.ts): the browser gets `options: []` and `options_large: { total, parents? }` (`parents` = choices one level up that have options under them, so a level opens only when it has something).
+- **Lookups.** Public page: `GET /public/forms/{key}/options?field=&q=&values=&parents=`; builder and previews: `GET /option-lists/{id}/options?level=&q=&values=&parents=`. 50 at a time with the total; a lower level only under the choices above. The page clears a lower answer that no longer fits when the choice above changes.
+- **Builder:** the Lists tab marks Large lists and adds them like any list (fields hold no options); field settings show "N options on the server" instead of an options editor; Show as offers dropdown / multi-select only; search as you type is always on.
+- **Responses:** the table and detail get only the answered options (`keepAnswered`, `options_large.partial`), so labels read as usual; insights show the most chosen options. API docs show 20 examples and the count, no enum.
+- Size errors: `422 FRM-FORM-1022`. Tested with 30,311 options (10 → 300 → 30,000): save about 2.6 s, every lookup instant.

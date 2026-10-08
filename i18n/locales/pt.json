@@ -610,7 +610,8 @@
     "FRM-AUTH-1017": "Esta alteração bloquearia o seu acesso. Verifique o seu próprio domínio e endereço de email.",
     "FRM-AUTH-1018": "Usou esta senha recentemente. Escolha outra.",
     "FRM-FORM-1020": "Duas opções têm o mesmo valor. Cada valor deve ser diferente.",
-    "FRM-FORM-1021": "Uma opção não tem nenhuma opção acima. Escolha onde ela fica."
+    "FRM-FORM-1021": "Uma opção não tem nenhuma opção acima. Escolha onde ela fica.",
+    "FRM-FORM-1022": "Esta lista tem mais opções do que comporta: 20.000, ou 200.000 se for grande."
   },
   "errorUi": {
     "reference": "Referência: {id}",
@@ -2013,7 +2014,8 @@
       "search": "Pesquisar enquanto digita",
       "searchHint": "Uma caixa de pesquisa em vez de uma lista longa. Ativa-se sozinha acima de {n} opções.",
       "searchServer": "Acima de {n} opções, o formulário público busca as correspondências enquanto a pessoa digita, para continuar rápido.",
-      "longList": "{n} opções de {name}. Edite-as em Lista de opções."
+      "longList": "{n} opções de {name}. Edite-as em Lista de opções.",
+      "searchLarge": "Sempre ativo numa lista grande: as opções são carregadas do servidor enquanto se digita."
     },
     "shortcuts": {
       "title": "Atalhos",
@@ -2335,6 +2337,10 @@
       "none": "Não preencher",
       "target": "Pergunta preenchida com {name}",
       "lock": "Bloquear (as pessoas não podem alterar)"
+    },
+    "large": {
+      "title": "{count} opção no servidor | {count} opções no servidor",
+      "desc": "De uma lista grande. As opções são carregadas enquanto se digita, para o formulário continuar rápido. Edite-as em List Option."
     }
   },
   "renderer": {
@@ -7312,7 +7318,8 @@
       "existingTop": "A {n} opção que já está nesta lista permanece no nível superior ({name}). Escolha Substituir a lista para manter apenas o que está no arquivo. | As {n} opções que já estão nesta lista permanecem no nível superior ({name}). Escolha Substituir a lista para manter apenas o que está no arquivo.",
       "tooMany": {
         "title": "Isto cria {n} opções, mas uma lista comporta no máximo {max}.",
-        "text": "Divida o arquivo em listas menores, por exemplo uma lista por região ou grupo de países, ou mantenha apenas os níveis de que você precisa."
+        "text": "Divida o arquivo em listas menores, por exemplo uma lista por região ou grupo de países, ou mantenha apenas os níveis de que você precisa.",
+        "large": "Uma lista grande comporta até {max}. Torne-a uma lista grande para importar este ficheiro de uma só vez."
       }
     },
     "translations": {
@@ -7382,6 +7389,31 @@
       "edit": "Detalhes de {name}",
       "of": "Detalhes de {name}",
       "unnamed": "Dê um nome a cada detalhe."
+    },
+    "large": {
+      "badge": "Grande",
+      "size": "Tamanho",
+      "standard": "Padrão",
+      "large": "Grande",
+      "standardHint": "Opções: {n}. Uma lista padrão comporta até {max} e é copiada para cada formulário, por isso escolher é instantâneo.",
+      "largeHint": "Opções: {n}. Uma lista grande comporta até {max} e fica no servidor; os formulários carregam cada nível conforme a escolha acima.",
+      "cannotStandard": "Mais de {max} opções: remova algumas para voltar ao padrão.",
+      "askTitle": "Tornar esta lista grande?",
+      "askDesc": "As listas grandes servem para dados muito extensos, como todas as cidades do mundo. Isto é o que muda:",
+      "point": {
+        "server": "Comporta até {max} opções. Elas ficam no servidor em vez de serem copiadas para cada formulário.",
+        "levels": "Num formulário, cada nível carrega só o que está sob a escolha acima: escolha um país e as suas regiões são carregadas.",
+        "search": "As pessoas digitam para pesquisar. A lista mostra as primeiras 50 correspondências, com uma breve espera durante o carregamento.",
+        "live": "Os formulários seguem a lista assim que a guarda, incluindo os publicados. Não há passo de Atualizar formulários.",
+        "dropdown": "As perguntas dela aparecem como menu suspenso ou seleção múltipla, não como botões de opção ou caixas de seleção.",
+        "online": "O construtor mostra um resumo em vez de todas as opções, e os formulários precisam de ligação para carregar as opções."
+      },
+      "keepStandard": "Manter padrão",
+      "makeLarge": "Tornar grande",
+      "makeLargeQ": "Tornar uma lista grande",
+      "toStandardTitle": "Voltar a uma lista padrão?",
+      "toStandardDesc": "Os formulários voltam a receber uma cópia das opções e oferecem-nas todas de uma vez. As alterações seguintes chegam com Atualizar formulários, como em qualquer lista.",
+      "toStandard": "Tornar padrão"
     }
   }
 }

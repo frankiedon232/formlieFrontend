@@ -610,7 +610,8 @@
     "FRM-AUTH-1017": "Este cambio te dejaría fuera. Revisa tu propio dominio y dirección de correo.",
     "FRM-AUTH-1018": "Usaste esta contraseña hace poco. Elige otra.",
     "FRM-FORM-1020": "Dos opciones comparten el mismo valor. Cada valor debe ser distinto.",
-    "FRM-FORM-1021": "Una opción no tiene ninguna opción encima. Elija dónde va."
+    "FRM-FORM-1021": "Una opción no tiene ninguna opción encima. Elija dónde va.",
+    "FRM-FORM-1022": "Esta lista tiene más opciones de las que admite: 20.000, o 200.000 si es grande."
   },
   "errorUi": {
     "reference": "Referencia: {id}",
@@ -2013,7 +2014,8 @@
       "search": "Buscar mientras se escribe",
       "searchHint": "Un cuadro de búsqueda en lugar de una lista larga. Se activa solo a partir de {n} opciones.",
       "searchServer": "A partir de {n} opciones, el formulario público pide las coincidencias mientras se escribe, para que siga siendo rápido.",
-      "longList": "{n} opciones de {name}. Edítalas en Lista de opciones."
+      "longList": "{n} opciones de {name}. Edítalas en Lista de opciones.",
+      "searchLarge": "Siempre activa en una lista grande: sus opciones se cargan desde el servidor mientras se escribe."
     },
     "shortcuts": {
       "title": "Atajos",
@@ -2335,6 +2337,10 @@
       "none": "No rellenar",
       "target": "Pregunta rellenada con {name}",
       "lock": "Bloquear (las personas no pueden cambiarlo)"
+    },
+    "large": {
+      "title": "{count} opción en el servidor | {count} opciones en el servidor",
+      "desc": "De una lista grande. Las opciones se cargan mientras se escribe, así el formulario sigue rápido. Edítelas en List Option."
     }
   },
   "renderer": {
@@ -7312,7 +7318,8 @@
       "existingTop": "La {n} opción que ya está en esta lista se queda en el nivel superior ({name}). Elija Reemplazar la lista para conservar solo lo que hay en el archivo. | Las {n} opciones que ya están en esta lista se quedan en el nivel superior ({name}). Elija Reemplazar la lista para conservar solo lo que hay en el archivo.",
       "tooMany": {
         "title": "Esto crea {n} opciones, pero una lista admite hasta {max}.",
-        "text": "Divide el archivo en listas más pequeñas, por ejemplo una lista por región o grupo de países, o conserva solo los niveles que necesitas."
+        "text": "Divide el archivo en listas más pequeñas, por ejemplo una lista por región o grupo de países, o conserva solo los niveles que necesitas.",
+        "large": "Una lista grande admite hasta {max}. Conviértala en lista grande para importar este archivo de una vez."
       }
     },
     "translations": {
@@ -7382,6 +7389,31 @@
       "edit": "Detalles de {name}",
       "of": "Detalles de {name}",
       "unnamed": "Da un nombre a cada detalle."
+    },
+    "large": {
+      "badge": "Grande",
+      "size": "Tamaño",
+      "standard": "Estándar",
+      "large": "Grande",
+      "standardHint": "Opciones: {n}. Una lista estándar admite hasta {max} y se copia en cada formulario, así que elegir es instantáneo.",
+      "largeHint": "Opciones: {n}. Una lista grande admite hasta {max} y se queda en el servidor; los formularios cargan cada nivel según la opción de arriba.",
+      "cannotStandard": "Más de {max} opciones: quite algunas para volver a estándar.",
+      "askTitle": "¿Convertir en lista grande?",
+      "askDesc": "Las listas grandes sirven para datos muy extensos, como todas las ciudades del mundo. Esto es lo que cambia:",
+      "point": {
+        "server": "Admite hasta {max} opciones. Se quedan en el servidor en lugar de copiarse en cada formulario.",
+        "levels": "En un formulario, cada nivel carga solo lo que hay bajo la opción de arriba: elija un país y se cargan sus regiones.",
+        "search": "Las personas escriben para buscar. La lista muestra las primeras 50 coincidencias, con una breve espera mientras cargan.",
+        "live": "Los formularios siguen la lista en cuanto la guarda, también los publicados. No hay paso de Actualizar formularios.",
+        "dropdown": "Las preguntas de esta lista se muestran como desplegable o selección múltiple, no como botones de opción ni casillas.",
+        "online": "El constructor muestra un resumen en lugar de todas las opciones, y los formularios necesitan conexión para cargarlas."
+      },
+      "keepStandard": "Mantener estándar",
+      "makeLarge": "Hacerla grande",
+      "makeLargeQ": "Convertir en lista grande",
+      "toStandardTitle": "¿Volver a una lista estándar?",
+      "toStandardDesc": "Los formularios vuelven a recibir una copia de las opciones y las ofrecen todas a la vez. Los cambios posteriores les llegan con Actualizar formularios, como en cualquier lista.",
+      "toStandard": "Hacerla estándar"
     }
   }
 }

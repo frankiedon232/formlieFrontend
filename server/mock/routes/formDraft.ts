@@ -17,6 +17,8 @@ import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
 import type { FormPreview } from '#shared/types/forms'
 import { formsOf, saveForms, summaryOf, type StoredForm, type StoredVersion } from '../data/formStore'
+import { fillLargeLists } from '../data/largeLists'
+import { libraryOf } from '../data/libraryStore'
 import type { MockTenant } from '../data/tenants'
 
 const GUESS: [RegExp, StarterTemplateKey][] = [
@@ -76,6 +78,8 @@ export const saveDraft = defineMockRoute(({ event, body }) => {
   const input = parseBody(draftSchema, body)
   if (input.row_version !== form.row_version) throw new MockError('FRM-GEN-1009')
   form.schema = input.schema
+  // Fields from large lists come without their options: the server fills them in (F15 M5)
+  fillLargeLists(form.schema, libraryOf(tenant).lists)
   form.has_unpublished_changes = form.status !== 'draft'
   form.row_version++
   form.updated_at = new Date().toISOString()

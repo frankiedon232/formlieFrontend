@@ -12,6 +12,9 @@ import { MAX_LIST_LEVELS } from './options'
 type Option = NonNullable<FormField['options']>[number]
 type FieldsById = Map<string, FormField>
 
+/** A field from a large list in the browser (F15 M5): its options stay on the server. */
+const remoteLevel = (field: FormField) => !!field.options_large && !field.options?.length
+
 const chosen = (value: unknown): string[] => (Array.isArray(value) ? value.filter((item): item is string => typeof item === 'string') : typeof value === 'string' && value ? [value] : [])
 
 /** The options a field offers with these answers (all of them for fields without a level above). */
@@ -21,19 +24,32 @@ export function cascadeOptions(field: FormField, fieldsById: FieldsById, answers
   const parent = fieldsById.get(field.option_parent)
   if (!parent) return options
   // A level above that is closed closes this one too
-  if (parent.option_parent && !cascadeOptions(parent, fieldsById, answers, depth + 1).length) return []
+  if (cascadeClosed(parent, fieldsById, answers, depth + 1)) return []
   const above = chosen(answers[parent.key])
   return above.length ? options.filter(option => option.parent !== undefined && above.includes(option.parent)) : []
 }
 
 /** A level that has nothing to offer right now: hidden, not required, its answer dropped. */
-export const cascadeClosed = (field: FormField, fieldsById: FieldsById, answers: Record<string, unknown>) =>
-  !!field.option_parent && cascadeOptions(field, fieldsById, answers).length === 0
+export function cascadeClosed(field: FormField, fieldsById: FieldsById, answers: Record<string, unknown>, depth = 0): boolean {
+  if (!field.option_parent || depth > MAX_LIST_LEVELS) return false
+  if (!remoteLevel(field)) return cascadeOptions(field, fieldsById, answers, depth).length === 0
+  // Large list: open when a choice above has options under it (the server says which do)
+  const parent = fieldsById.get(field.option_parent)
+  if (!parent) return false
+  if (cascadeClosed(parent, fieldsById, answers, depth + 1)) return true
+  const above = chosen(answers[parent.key])
+  // Not known yet (a field just added in the builder): open as soon as something is chosen above
+  const known = field.options_large?.parents
+  if (!known) return !above.length
+  const open = new Set(known)
+  return !above.some(value => open.has(value))
+}
 
 /** The answer kept to what the field offers now (a changed choice above clears what no longer fits). */
 export function fitAnswer(field: FormField, fieldsById: FieldsById, answers: Record<string, unknown>): unknown {
   const value = answers[field.key]
-  if (!field.option_parent || value == null) return value
+  // A large list's level is fitted by the page as the choice above changes, and checked by the server
+  if (!field.option_parent || value == null || remoteLevel(field)) return value
   const allowed = new Set(cascadeOptions(field, fieldsById, answers).map(option => option.value))
   if (Array.isArray(value)) {
     const kept = value.filter(item => typeof item === 'string' && allowed.has(item))

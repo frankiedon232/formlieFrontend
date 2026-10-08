@@ -610,7 +610,8 @@
     "FRM-AUTH-1017": "Met deze wijziging sluit je jezelf buiten. Controleer je eigen e-maildomein en -adres.",
     "FRM-AUTH-1018": "Je hebt dit wachtwoord onlangs gebruikt. Kies een ander wachtwoord.",
     "FRM-FORM-1020": "Twee opties hebben dezelfde waarde. Elke waarde moet anders zijn.",
-    "FRM-FORM-1021": "Een optie heeft geen optie boven zich. Kies waar hij hoort."
+    "FRM-FORM-1021": "Een optie heeft geen optie boven zich. Kies waar hij hoort.",
+    "FRM-FORM-1022": "Deze lijst heeft meer opties dan ze kan bevatten: 20.000, of 200.000 als ze groot is."
   },
   "errorUi": {
     "reference": "Referentie: {id}",
@@ -2013,7 +2014,8 @@
       "search": "Zoeken tijdens het typen",
       "searchHint": "Een zoekvak in plaats van een lange lijst. Gaat vanzelf aan boven {n} opties.",
       "searchServer": "Boven {n} opties vraagt het openbare formulier de treffers op tijdens het typen, zodat het snel blijft.",
-      "longList": "{n} opties uit {name}. Bewerk ze in Optielijst."
+      "longList": "{n} opties uit {name}. Bewerk ze in Optielijst.",
+      "searchLarge": "Altijd aan voor een grote lijst: de opties worden tijdens het typen van de server geladen."
     },
     "shortcuts": {
       "title": "Sneltoetsen",
@@ -2335,6 +2337,10 @@
       "none": "Niet invullen",
       "target": "Vraag ingevuld met {name}",
       "lock": "Vergrendelen (mensen kunnen het niet wijzigen)"
+    },
+    "large": {
+      "title": "{count} optie op de server | {count} opties op de server",
+      "desc": "Uit een grote lijst. Opties worden tijdens het typen geladen, zodat het formulier snel blijft. Bewerk ze in List Option."
     }
   },
   "renderer": {
@@ -7312,7 +7318,8 @@
       "existingTop": "De {n} optie die al in deze lijst staat, blijft op het hoogste niveau ({name}). Kies De lijst vervangen om alleen te bewaren wat in het bestand staat. | De {n} opties die al in deze lijst staan, blijven op het hoogste niveau ({name}). Kies De lijst vervangen om alleen te bewaren wat in het bestand staat.",
       "tooMany": {
         "title": "Dit levert {n} opties op, maar een lijst bevat er maximaal {max}.",
-        "text": "Splits het bestand op in kleinere lijsten, bijvoorbeeld een lijst per regio of landengroep, of houd alleen de niveaus over die je nodig hebt."
+        "text": "Splits het bestand op in kleinere lijsten, bijvoorbeeld een lijst per regio of landengroep, of houd alleen de niveaus over die je nodig hebt.",
+        "large": "Een grote lijst bevat tot {max}. Maak er een grote lijst van om dit bestand in één keer te importeren."
       }
     },
     "translations": {
@@ -7382,6 +7389,31 @@
       "edit": "Details van {name}",
       "of": "Details van {name}",
       "unnamed": "Geef elk detail een naam."
+    },
+    "large": {
+      "badge": "Groot",
+      "size": "Grootte",
+      "standard": "Standaard",
+      "large": "Groot",
+      "standardHint": "Opties: {n}. Een standaardlijst bevat tot {max} en wordt in elk formulier gekopieerd, dus kiezen gaat direct.",
+      "largeHint": "Opties: {n}. Een grote lijst bevat tot {max} en blijft op de server; formulieren laden elk niveau bij de keuze erboven.",
+      "cannotStandard": "Meer dan {max} opties: verwijder er enkele om terug te gaan naar standaard.",
+      "askTitle": "Van deze lijst een grote lijst maken?",
+      "askDesc": "Grote lijsten zijn geschikt voor erg veel gegevens, zoals alle steden ter wereld. Dit verandert er:",
+      "point": {
+        "server": "Ze kan tot {max} opties bevatten. Ze blijven op de server in plaats van in elk formulier gekopieerd te worden.",
+        "levels": "In een formulier laadt elk niveau alleen wat onder de keuze erboven valt: kies een land en de bijbehorende regio's worden geladen.",
+        "search": "Mensen typen om te zoeken. Een lijst toont de eerste 50 resultaten, met een korte wachttijd tijdens het laden.",
+        "live": "Formulieren volgen de lijst zodra u die opslaat, ook live formulieren. Er is geen stap Formulieren bijwerken.",
+        "dropdown": "Vragen uit deze lijst verschijnen als keuzelijst of meervoudige selectie, niet als keuzerondjes of selectievakjes.",
+        "online": "De builder toont een samenvatting in plaats van elke optie, en formulieren hebben een verbinding nodig om opties te laden."
+      },
+      "keepStandard": "Standaard houden",
+      "makeLarge": "Groot maken",
+      "makeLargeQ": "Er een grote lijst van maken",
+      "toStandardTitle": "Terug naar een standaardlijst?",
+      "toStandardDesc": "Formulieren krijgen weer een kopie van de opties en bieden ze allemaal tegelijk aan. Latere wijzigingen bereiken ze met Formulieren bijwerken, zoals bij elke lijst.",
+      "toStandard": "Standaard maken"
     }
   }
 }

@@ -610,7 +610,8 @@
     "FRM-AUTH-1017": "Mabadiliko haya yangekufungia nje. Angalia kikoa na anwani yako ya barua pepe.",
     "FRM-AUTH-1018": "Ulitumia nenosiri hili hivi karibuni. Chagua lingine.",
     "FRM-FORM-1020": "Chaguo mbili zina thamani moja. Kila thamani lazima iwe tofauti.",
-    "FRM-FORM-1021": "Chaguo moja halina chaguo juu yake. Chagua linapoenda."
+    "FRM-FORM-1021": "Chaguo moja halina chaguo juu yake. Chagua linapoenda.",
+    "FRM-FORM-1022": "Orodha hii ina chaguo nyingi kuliko inavyoweza kubeba: 20,000, au 200,000 ikiwa ni kubwa."
   },
   "errorUi": {
     "reference": "Kumbukumbu: {id}",
@@ -2013,7 +2014,8 @@
       "search": "Tafuta unapoandika",
       "searchHint": "Kisanduku cha kutafuta badala ya orodha ndefu. Huwaka chenyewe zikizidi chaguo {n}.",
       "searchServer": "Zikizidi chaguo {n}, fomu ya umma huomba matokeo watu wanapoandika, ili iendelee kuwa haraka.",
-      "longList": "Chaguo {n} kutoka {name}. Zihariri katika Orodha ya Chaguo."
+      "longList": "Chaguo {n} kutoka {name}. Zihariri katika Orodha ya Chaguo.",
+      "searchLarge": "Huwashwa kila mara kwa orodha kubwa: chaguo hupakiwa kutoka kwa seva watu wanapoandika."
     },
     "shortcuts": {
       "title": "Njia za mkato",
@@ -2335,6 +2337,10 @@
       "none": "Usijaze",
       "target": "Swali linalojazwa na {name}",
       "lock": "Funga (watu hawawezi kubadilisha)"
+    },
+    "large": {
+      "title": "Chaguo {count} kwenye seva | Chaguo {count} kwenye seva",
+      "desc": "Kutoka kwa orodha kubwa. Chaguo hupakiwa watu wanapoandika, ili fomu iendelee kuwa ya haraka. Zihariri katika List Option."
     }
   },
   "renderer": {
@@ -7312,7 +7318,8 @@
       "existingTop": "Chaguo {n} ambalo tayari lipo kwenye orodha hii linabaki kwenye ngazi ya juu ({name}). Chagua Badilisha orodha ili kubaki na yaliyo kwenye faili tu. | Machaguo {n} ambayo tayari yako kwenye orodha hii yanabaki kwenye ngazi ya juu ({name}). Chagua Badilisha orodha ili kubaki na yaliyo kwenye faili tu.",
       "tooMany": {
         "title": "Hii itaunda chaguo {n}, lakini orodha moja inabeba hadi {max}.",
-        "text": "Gawanya faili kuwa orodha ndogo zaidi, kwa mfano orodha moja kwa kila eneo au kundi la nchi, au weka ngazi unazohitaji pekee."
+        "text": "Gawanya faili kuwa orodha ndogo zaidi, kwa mfano orodha moja kwa kila eneo au kundi la nchi, au weka ngazi unazohitaji pekee.",
+        "large": "Orodha kubwa hubeba hadi {max}. Ifanye orodha kubwa ili kuleta faili hii kwa mara moja."
       }
     },
     "translations": {
@@ -7382,6 +7389,31 @@
       "edit": "Maelezo ya {name}",
       "of": "Maelezo ya {name}",
       "unnamed": "Pe kila maelezo jina."
+    },
+    "large": {
+      "badge": "Kubwa",
+      "size": "Ukubwa",
+      "standard": "Kawaida",
+      "large": "Kubwa",
+      "standardHint": "Chaguo: {n}. Orodha ya kawaida hubeba hadi {max} na hunakiliwa kwenye kila fomu, hivyo kuchagua ni papo hapo.",
+      "largeHint": "Chaguo: {n}. Orodha kubwa hubeba hadi {max} na hubaki kwenye seva; fomu hupakia kila ngazi kulingana na chaguo la juu.",
+      "cannotStandard": "Zaidi ya chaguo {max}: ondoa baadhi ili kurudi kwenye kawaida.",
+      "askTitle": "Ifanye orodha hii kuwa kubwa?",
+      "askDesc": "Orodha kubwa zinafaa data kubwa sana, kama miji yote duniani. Haya ndiyo yatakayobadilika:",
+      "point": {
+        "server": "Inaweza kubeba hadi chaguo {max}. Hubaki kwenye seva badala ya kunakiliwa kwenye kila fomu.",
+        "levels": "Kwenye fomu, kila ngazi hupakia tu kilicho chini ya chaguo la juu: chagua nchi, kisha mikoa yake hupakiwa.",
+        "search": "Watu huandika ili kutafuta. Orodha huonyesha matokeo 50 ya kwanza, kukiwa na kusubiri kidogo wakati wa kupakia.",
+        "live": "Fomu hufuata orodha mara tu unapoihifadhi, pamoja na fomu zilizo hewani. Hakuna hatua ya Sasisha fomu.",
+        "dropdown": "Maswali kutoka kwake huonekana kama orodha kunjuzi au uchaguzi wa nyingi, si vitufe vya redio au visanduku vya kuteua.",
+        "online": "Kijenzi huonyesha muhtasari badala ya kila chaguo, na fomu zinahitaji muunganisho ili kupakia chaguo."
+      },
+      "keepStandard": "Endelea na kawaida",
+      "makeLarge": "Ifanye kubwa",
+      "makeLargeQ": "Ifanye orodha kubwa",
+      "toStandardTitle": "Rudi kwenye orodha ya kawaida?",
+      "toStandardDesc": "Fomu hupata nakala ya chaguo tena na kuzitoa zote kwa pamoja. Mabadiliko ya baadaye huzifikia kupitia Sasisha fomu, kama orodha yoyote.",
+      "toStandard": "Ifanye kawaida"
     }
   }
 }

@@ -610,7 +610,8 @@
     "FRM-AUTH-1017": "Diese Änderung würde Sie aussperren. Prüfen Sie Ihre eigene E-Mail-Domain und -Adresse.",
     "FRM-AUTH-1018": "Sie haben dieses Passwort kürzlich verwendet. Wählen Sie ein anderes.",
     "FRM-FORM-1020": "Zwei Optionen haben denselben Wert. Jeder Wert muss unterschiedlich sein.",
-    "FRM-FORM-1021": "Eine Option hat keine Option über sich. Wählen Sie, wohin sie gehört."
+    "FRM-FORM-1021": "Eine Option hat keine Option über sich. Wählen Sie, wohin sie gehört.",
+    "FRM-FORM-1022": "Diese Liste hat mehr Optionen, als sie fassen kann: 20.000, oder 200.000 bei einer großen Liste."
   },
   "errorUi": {
     "reference": "Referenz: {id}",
@@ -2013,7 +2014,8 @@
       "search": "Suche während der Eingabe",
       "searchHint": "Ein Suchfeld statt einer langen Liste. Schaltet sich ab {n} Optionen automatisch ein.",
       "searchServer": "Ab {n} Optionen fragt das öffentliche Formular die Treffer während der Eingabe ab, damit es schnell bleibt.",
-      "longList": "{n} Optionen aus {name}. Bearbeiten Sie sie in der Optionsliste."
+      "longList": "{n} Optionen aus {name}. Bearbeiten Sie sie in der Optionsliste.",
+      "searchLarge": "Bei einer großen Liste immer aktiv: Die Optionen werden beim Tippen vom Server geladen."
     },
     "shortcuts": {
       "title": "Tastenkürzel",
@@ -2335,6 +2337,10 @@
       "none": "Nicht ausfüllen",
       "target": "Frage, die mit {name} ausgefüllt wird",
       "lock": "Sperren (Personen können es nicht ändern)"
+    },
+    "large": {
+      "title": "{count} Option auf dem Server | {count} Optionen auf dem Server",
+      "desc": "Aus einer großen Liste. Die Optionen werden beim Tippen geladen, damit das Formular schnell bleibt. Bearbeiten Sie sie unter List Option."
     }
   },
   "renderer": {
@@ -7312,7 +7318,8 @@
       "existingTop": "Die {n} Option, die bereits in dieser Liste ist, bleibt auf der obersten Ebene ({name}). Wählen Sie Liste ersetzen, um nur den Inhalt der Datei zu behalten. | Die {n} Optionen, die bereits in dieser Liste sind, bleiben auf der obersten Ebene ({name}). Wählen Sie Liste ersetzen, um nur den Inhalt der Datei zu behalten.",
       "tooMany": {
         "title": "Daraus entstehen {n} Optionen, eine Liste fasst jedoch höchstens {max}.",
-        "text": "Teilen Sie die Datei in kleinere Listen auf, zum Beispiel eine Liste pro Region oder Ländergruppe, oder behalten Sie nur die Ebenen, die Sie benötigen."
+        "text": "Teilen Sie die Datei in kleinere Listen auf, zum Beispiel eine Liste pro Region oder Ländergruppe, oder behalten Sie nur die Ebenen, die Sie benötigen.",
+        "large": "Eine große Liste fasst bis zu {max}. Machen Sie sie zu einer großen Liste, um diese Datei in einem Schritt zu importieren."
       }
     },
     "translations": {
@@ -7382,6 +7389,31 @@
       "edit": "Details von {name}",
       "of": "Details von {name}",
       "unnamed": "Geben Sie jedem Detail einen Namen."
+    },
+    "large": {
+      "badge": "Groß",
+      "size": "Größe",
+      "standard": "Standard",
+      "large": "Groß",
+      "standardHint": "Optionen: {n}. Eine Standardliste fasst bis zu {max} und wird in jedes Formular kopiert, daher ist die Auswahl sofort da.",
+      "largeHint": "Optionen: {n}. Eine große Liste fasst bis zu {max} und bleibt auf dem Server; Formulare laden jede Ebene passend zur Auswahl darüber.",
+      "cannotStandard": "Über {max} Optionen: Entfernen Sie einige, um zu Standard zurückzukehren.",
+      "askTitle": "Diese Liste groß machen?",
+      "askDesc": "Große Listen eignen sich für sehr große Datenmengen, etwa alle Städte der Welt. Das ändert sich:",
+      "point": {
+        "server": "Sie kann bis zu {max} Optionen fassen. Sie bleiben auf dem Server, statt in jedes Formular kopiert zu werden.",
+        "levels": "In einem Formular lädt jede Ebene nur, was unter der Auswahl darüber liegt: Wählen Sie ein Land, dann werden dessen Bundesländer geladen.",
+        "search": "Die Nutzer tippen, um zu suchen. Eine Liste zeigt die ersten 50 Treffer, mit kurzer Wartezeit beim Laden.",
+        "live": "Formulare folgen der Liste, sobald Sie sie speichern, auch veröffentlichte. Es gibt keinen Schritt „Formulare aktualisieren“.",
+        "dropdown": "Fragen daraus erscheinen als Dropdown oder Mehrfachauswahl, nicht als Optionsfelder oder Kontrollkästchen.",
+        "online": "Der Builder zeigt eine Zusammenfassung statt aller Optionen, und Formulare brauchen eine Verbindung, um Optionen zu laden."
+      },
+      "keepStandard": "Standard beibehalten",
+      "makeLarge": "Groß machen",
+      "makeLargeQ": "Als große Liste festlegen",
+      "toStandardTitle": "Zurück zu einer Standardliste?",
+      "toStandardDesc": "Formulare erhalten wieder eine Kopie der Optionen und bieten alle auf einmal an. Spätere Änderungen erreichen sie mit „Formulare aktualisieren“, wie bei jeder Liste.",
+      "toStandard": "Zu Standard machen"
     }
   }
 }

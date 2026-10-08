@@ -106,9 +106,15 @@ export function useFormBuilder() {
     const field = createField(type)
     field.label = list.name
     field.key = newKey(list.name)
-    field.options = offeredOptions(toRaw(list))
+    fillFromList(field, list, 0)
     field.option_set_id = list.id
     return field
+  }
+  /** A field's options from a list; a large list (F15 M5) stays on the server, the field says how many. */
+  function fillFromList(field: FormField, list: OptionList, level: number) {
+    if (!list.large) return void (field.options = offeredOptions(toRaw(list), level))
+    field.options = []
+    field.options_large = { total: list.level_counts?.[level] ?? 0 }
   }
 
   /**
@@ -128,7 +134,7 @@ export function useFormBuilder() {
       field.label = level.label
       field.key = keyFromLabel(level.label, [...allFields(schema.value!).map(item => item.key), ...taken])
       taken.push(field.key)
-      field.options = offeredOptions(toRaw(list), index)
+      fillFromList(field, list, index)
       field.option_set_id = list.id
       field.option_level = index
       field.width = 12 / levels.length

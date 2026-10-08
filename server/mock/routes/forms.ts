@@ -24,6 +24,8 @@ import { MockError, ok, paginate } from '../core/respond'
 import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
 import { formsOf, saveForms, summaryOf, uniqueSlug, type StoredForm } from '../data/formStore'
+import { fillLargeLists } from '../data/largeLists'
+import { libraryOf } from '../data/libraryStore'
 import { settingsOf } from '../data/settingsStore'
 import { themeForNewForm } from './themes'
 import { retireShortCode } from '../data/shortCodeStore'
@@ -202,6 +204,7 @@ function newForm(
     schema: input.schema ?? (input.template_key ? schemaForTemplate(tenant, input.template_key, input.language) : null) ?? blankFormSchema(input.language),
     template_key: input.template_key ?? null,
   }
+  fillLargeLists(form.schema, libraryOf(tenant).lists)
   store.forms.unshift(form)
   saveForms()
   return form

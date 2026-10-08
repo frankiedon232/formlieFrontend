@@ -17,7 +17,8 @@ onMounted(() => library.load())
 const chain = computed(() => (builder.schema.value ? cascadeChain(props.field, allFields(builder.schema.value)) : [props.field]))
 const parent = computed(() => chain.value.find(item => item.id === props.field.option_parent) ?? null)
 const list = computed(() => library.lists.value.find(item => item.id === props.field.option_set_id) ?? null)
-const changed = computed(() => !!list.value && !matchesList(props.field.options, list.value, props.field.option_level ?? 0))
+// A large list (F15 M5) is never copied into the form, so it can't fall behind
+const changed = computed(() => !!list.value && !list.value.large && !matchesList(props.field.options, list.value, props.field.option_level ?? 0))
 const several = computed(() => props.field.type === 'multi_select')
 const setSeveral = (on: boolean) => builder.updateField(props.field.id, { type: on ? 'multi_select' : 'dropdown' })
 /** The whole chain takes the list as it is now. */
@@ -42,6 +43,7 @@ function refresh() {
       {{ parent ? t('builder.level.filtered', { n: (field.option_level ?? 0) + 1, total: chain.length, parent: parent.label || t('builder.untitled') }) : t('builder.level.top', { total: chain.length }) }}
       {{ t('builder.level.fromList', { name: list?.name ?? t('builder.level.deletedList') }) }}
     </p>
+    <FormsBuilderInspectorLarge v-if="field.options_large" :field="field" />
     <USwitch :model-value="several" :label="t('builder.level.several')" :description="t('builder.level.severalHint')" color="neutral" @update:model-value="value => setSeveral(!!value)" />
     <UAlert v-if="changed && list" color="warning" variant="subtle" icon="i-lucide-refresh-ccw" :title="t('library.listChanged', { name: list.name })" :actions="[{ label: t('library.updateFromList'), color: 'neutral', variant: 'outline', size: 'xs', onClick: refresh }]" :ui="{ title: 'text-xs' }" />
     <UButton :label="t('builder.level.editList')" icon="i-lucide-external-link" color="neutral" variant="link" size="xs" class="w-fit px-0" :to="list ? `/option-sets/${list.id}` : undefined" :disabled="!list" target="_blank" />

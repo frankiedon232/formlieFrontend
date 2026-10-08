@@ -610,7 +610,8 @@
     "FRM-AUTH-1017": "Perubahan ini akan mengunci Anda. Periksa domain dan alamat email Anda sendiri.",
     "FRM-AUTH-1018": "Anda baru saja memakai kata sandi ini. Pilih yang lain.",
     "FRM-FORM-1020": "Dua opsi memiliki nilai yang sama. Setiap nilai harus berbeda.",
-    "FRM-FORM-1021": "Ada opsi yang tidak punya opsi di atasnya. Pilih tempatnya."
+    "FRM-FORM-1021": "Ada opsi yang tidak punya opsi di atasnya. Pilih tempatnya.",
+    "FRM-FORM-1022": "Daftar ini memiliki opsi lebih banyak dari yang dapat ditampung: 20.000, atau 200.000 jika besar."
   },
   "errorUi": {
     "reference": "Referensi: {id}",
@@ -2013,7 +2014,8 @@
       "search": "Cari saat mengetik",
       "searchHint": "Kotak pencarian sebagai pengganti daftar panjang. Aktif otomatis jika lebih dari {n} opsi.",
       "searchServer": "Jika lebih dari {n} opsi, formulir publik meminta hasil yang cocok saat orang mengetik agar tetap cepat.",
-      "longList": "{n} opsi dari {name}. Ubah di Daftar Opsi."
+      "longList": "{n} opsi dari {name}. Ubah di Daftar Opsi.",
+      "searchLarge": "Selalu aktif untuk daftar besar: opsinya dimuat dari server saat orang mengetik."
     },
     "shortcuts": {
       "title": "Pintasan",
@@ -2335,6 +2337,10 @@
       "none": "Jangan isi",
       "target": "Pertanyaan yang diisi dengan {name}",
       "lock": "Kunci (orang tidak dapat mengubahnya)"
+    },
+    "large": {
+      "title": "{count} opsi di server | {count} opsi di server",
+      "desc": "Dari daftar besar. Opsi dimuat saat mengetik agar formulir tetap cepat. Edit di List Option."
     }
   },
   "renderer": {
@@ -7312,7 +7318,8 @@
       "existingTop": "{n} opsi yang sudah ada di daftar ini tetap berada di tingkat teratas ({name}). Pilih Ganti daftar untuk hanya menyimpan isi file. | {n} opsi yang sudah ada di daftar ini tetap berada di tingkat teratas ({name}). Pilih Ganti daftar untuk hanya menyimpan isi file.",
       "tooMany": {
         "title": "Ini menghasilkan {n} opsi, sedangkan satu daftar maksimal berisi {max}.",
-        "text": "Pisahkan file menjadi daftar yang lebih kecil, misalnya satu daftar per wilayah atau kelompok negara, atau simpan hanya tingkat yang Anda perlukan."
+        "text": "Pisahkan file menjadi daftar yang lebih kecil, misalnya satu daftar per wilayah atau kelompok negara, atau simpan hanya tingkat yang Anda perlukan.",
+        "large": "Daftar besar menampung hingga {max}. Jadikan daftar besar untuk mengimpor file ini sekaligus."
       }
     },
     "translations": {
@@ -7382,6 +7389,31 @@
       "edit": "Detail {name}",
       "of": "Detail {name}",
       "unnamed": "Beri setiap detail sebuah nama."
+    },
+    "large": {
+      "badge": "Besar",
+      "size": "Ukuran",
+      "standard": "Standar",
+      "large": "Besar",
+      "standardHint": "Opsi: {n}. Daftar standar menampung hingga {max} dan disalin ke setiap formulir, jadi memilih instan.",
+      "largeHint": "Opsi: {n}. Daftar besar menampung hingga {max} dan tetap di server; formulir memuat tiap tingkat sesuai pilihan di atasnya.",
+      "cannotStandard": "Lebih dari {max} opsi: hapus beberapa untuk kembali ke standar.",
+      "askTitle": "Jadikan daftar ini besar?",
+      "askDesc": "Daftar besar cocok untuk data yang sangat banyak, seperti semua kota di dunia. Ini yang berubah:",
+      "point": {
+        "server": "Dapat menampung hingga {max} opsi. Opsi tetap di server, tidak disalin ke setiap formulir.",
+        "levels": "Dalam formulir, tiap tingkat hanya memuat yang ada di bawah pilihan di atasnya: pilih negara, lalu wilayahnya dimuat.",
+        "search": "Orang mengetik untuk mencari. Daftar menampilkan 50 hasil pertama, dengan jeda singkat saat dimuat.",
+        "live": "Formulir mengikuti daftar begitu Anda menyimpannya, termasuk formulir yang sudah aktif. Tidak ada langkah Perbarui formulir.",
+        "dropdown": "Pertanyaan darinya tampil sebagai dropdown atau pilihan ganda, bukan tombol radio atau kotak centang.",
+        "online": "Builder menampilkan ringkasan, bukan setiap opsi, dan formulir butuh koneksi untuk memuat opsi."
+      },
+      "keepStandard": "Tetap standar",
+      "makeLarge": "Jadikan besar",
+      "makeLargeQ": "Jadikan daftar besar",
+      "toStandardTitle": "Kembali ke daftar standar?",
+      "toStandardDesc": "Formulir kembali mendapat salinan opsi dan menampilkan semuanya sekaligus. Perubahan berikutnya sampai ke formulir lewat Perbarui formulir, seperti daftar lainnya.",
+      "toStandard": "Jadikan standar"
     }
   }
 }

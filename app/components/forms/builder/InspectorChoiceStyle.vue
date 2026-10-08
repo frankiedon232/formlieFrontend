@@ -12,8 +12,10 @@ const { t } = useI18n()
 const builder = useBuilder()
 
 const STYLES: FieldType[] = ['dropdown', 'multi_select', 'radio', 'checkbox']
-const items = computed(() => STYLES.map(type => ({ value: type, label: t(`builder.field.${type}`), icon: fieldIcon(type) })))
-const pick = (value: unknown) => STYLES.includes(value as FieldType) && value !== props.field.type && builder.updateField(props.field.id, { type: value as FieldType })
+// A large list (F15 M5) shows as a dropdown or multi-select only
+const styles = computed(() => (props.field.options_large ? STYLES.slice(0, 2) : STYLES))
+const items = computed(() => styles.value.map(type => ({ value: type, label: t(`builder.field.${type}`), icon: fieldIcon(type) })))
+const pick = (value: unknown) => styles.value.includes(value as FieldType) && value !== props.field.type && builder.updateField(props.field.id, { type: value as FieldType })
 </script>
 
 <template>

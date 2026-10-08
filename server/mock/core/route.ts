@@ -12,6 +12,7 @@ import {
 import { MockError, fail, type MockReply } from './respond'
 import { decodeIds, decodeRouteParams, encodeIds } from './ids'
 import { claimNonce, isCsrfTokenValid, useSessionKey } from './store'
+import { trimLargeLists } from '../data/largeLists'
 
 export interface MockRouteContext {
   event: H3Event
@@ -78,7 +79,8 @@ export function defineMockRoute(
     const reply = async (result: MockReply) => {
       setResponseStatus(event, result.status)
       setHeader(event, 'content-type', ENVELOPE_CONTENT_TYPE)
-      return sealEnvelope(session.key, envelope.kid, encodeIds(result.body))
+      // Large lists' options never leave the server (F15 M5)
+      return sealEnvelope(session.key, envelope.kid, encodeIds(trimLargeLists(result.body)))
     }
 
     if (!isEnvelopeFresh(envelope)) return reply(fail('FRM-SEC-1002'))
