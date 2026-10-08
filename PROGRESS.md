@@ -845,7 +845,7 @@ Full plan: [docs/OPTION-LISTS.md](docs/OPTION-LISTS.md) (owner request 2026-10-0
 - ✅ **F15b Large lists + search as you type (M3):** dropdowns and multi-selects search as you type above 50 options (or switched on / off per field); on the public form page lists above 300 options stay on the server and come 50 at a time as people type (`GET /public/forms/{key}/options`, accents and case ignored, starting matches first); long lists drawn as they scroll; the builder shows a summary of a long list's options; a form field may hold up to 20,000 options like a list
 - ✅ **F15d Details + auto-fill (M4):** lists get up to 10 detail columns (Details card; per option a Details button; import maps columns to details); fields from a list copy the details; field settings "Fill other fields" maps each detail to a question, locked by default (people can't change it); the logic engine fills in the browser and on the server alike, so a locked value can't be faked; an unlocked field is filled only while empty or still holding a filled-in value
   - ⬜ Details in formulas and logic conditions (later)
-- ⬜ **F15e Dynamic lists:** live sources, another form's responses, a connected database (a saved read query from the F12 Query editor), a JSON URL, a refreshed CSV; refresh schedule and sync log
+- ➖ **F15e Dynamic lists:** dropped (owner 2026-10-08: lists are kept up to date by importing; no live sources)
 - ⬜ Public option lookups for respondents (rate limited, published lists only); answers store value + label (+ path)
 
 ### Destinations (where responses go)
