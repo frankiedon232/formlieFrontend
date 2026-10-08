@@ -2948,7 +2948,7 @@
       "logo": "Logo",
       "logoHint": "Your workspace logo is used unless you upload another one.",
       "logoNone": "Upload a logo for this form (your workspace has none yet).",
-      "showTitle": "Show the form name",
+      "showTitle": "Show the form name under the organisation",
       "subtitle": "Intro text",
       "band": "Header background",
       "plain": "Plain",

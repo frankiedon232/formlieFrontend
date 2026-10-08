@@ -21,7 +21,7 @@ const { frame, primary, onPrimary, tone, website, initials, facts, year } = useF
   <div class="flex flex-col">
     <div class="px-3 pt-3 @xl:px-6 @xl:pt-5">
       <header class="mx-auto flex h-14 max-w-4xl items-center justify-between gap-3 rounded-full border px-3 shadow-lg backdrop-blur @xl:px-4" :style="tone">
-        <FormsRendererFrameOrg :org="org" :initials="initials" :accent="primary" :on-accent="onPrimary" :inverse="frame.tone === 'brand'" class="min-w-0" />
+        <FormsRendererFrameOrg :org="org" :initials="initials" :accent="primary" :on-accent="onPrimary" :inverse="frame.tone === 'brand'" :form="theme.header.show_title ? title : null" class="min-w-0" />
         <div class="flex shrink-0 items-center gap-2">
           <slot name="language" />
           <FormsRendererFrameWebsite v-if="website" :href="website" :org-name="org.name" />

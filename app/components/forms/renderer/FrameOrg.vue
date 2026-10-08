@@ -1,4 +1,4 @@
-<!-- The organisation on a public form page: its logo (or initials on the brand colour) and name. -->
+<!-- The organisation on a public form page: its logo (or initials on the brand colour) and name; with `form`, the form's name as a small line under it (owner 2026-10-08: the name belongs to the page, not the form body). -->
 <script setup lang="ts">
 defineProps<{
   org: { name: string; logo: string | null }
@@ -7,6 +7,8 @@ defineProps<{
   onAccent: string
   /** On the brand hero: the initials chip turns light. */
   inverse?: boolean
+  /** The form's name (theme "Show the form name"), for frames without a hero title. */
+  form?: string | null
 }>()
 </script>
 
@@ -30,6 +32,9 @@ defineProps<{
     >
       {{ initials }}
     </span>
-    <span class="truncate text-base font-semibold tracking-tight">{{ org.name }}</span>
+    <span class="flex min-w-0 flex-col">
+      <span class="truncate text-base leading-tight font-semibold tracking-tight">{{ org.name }}</span>
+      <h1 v-if="form" class="truncate text-xs leading-tight font-normal opacity-75">{{ form }}</h1>
+    </span>
   </div>
 </template>

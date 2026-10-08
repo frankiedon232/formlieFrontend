@@ -2948,7 +2948,7 @@
       "logo": "Logo",
       "logoHint": "Başka bir logo yüklemediğiniz sürece çalışma alanınızın logosu kullanılır.",
       "logoNone": "Bu form için bir logo yükleyin (çalışma alanınızın henüz logosu yok).",
-      "showTitle": "Form adını göster",
+      "showTitle": "Form adını kuruluş adının altında göster",
       "subtitle": "Giriş metni",
       "band": "Üst bilgi arka planı",
       "plain": "Sade",

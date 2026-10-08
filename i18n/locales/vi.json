@@ -2948,7 +2948,7 @@
       "logo": "Logo",
       "logoHint": "Logo của không gian làm việc sẽ được dùng trừ khi bạn tải lên logo khác.",
       "logoNone": "Tải logo lên cho biểu mẫu này (không gian làm việc của bạn chưa có logo).",
-      "showTitle": "Hiện tên biểu mẫu",
+      "showTitle": "Hiện tên biểu mẫu bên dưới tên tổ chức",
       "subtitle": "Văn bản giới thiệu",
       "band": "Nền tiêu đề",
       "plain": "Đơn giản",

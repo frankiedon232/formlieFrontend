@@ -2948,7 +2948,7 @@
       "logo": "Logo",
       "logoHint": "Le logo de votre espace est utilisé, sauf si vous en importez un autre.",
       "logoNone": "Importez un logo pour ce formulaire (votre espace n’en a pas encore).",
-      "showTitle": "Afficher le nom du formulaire",
+      "showTitle": "Afficher le nom du formulaire sous celui de l'organisation",
       "subtitle": "Texte d’introduction",
       "band": "Arrière-plan de l’en-tête",
       "plain": "Simple",

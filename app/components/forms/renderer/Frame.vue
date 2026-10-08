@@ -110,6 +110,7 @@ const more = computed(() => MORE[frame.value.style] ?? null)
             :accent="primary"
             :on-accent="onPrimary"
             :inverse="frame.style === 'spotlight'"
+            :form="frame.style === 'branded' && theme.header.show_title ? title : null"
           />
           <div class="flex shrink-0 items-center gap-2">
             <!-- Forms in several languages: the switcher sits beside "Visit website" (owner, 2026-10-04). -->

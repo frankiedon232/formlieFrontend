@@ -2948,7 +2948,7 @@
       "logo": "Logo",
       "logoHint": "Das Logo Ihres Arbeitsbereichs wird verwendet, sofern Sie kein anderes hochladen.",
       "logoNone": "Laden Sie ein Logo für dieses Formular hoch (Ihr Arbeitsbereich hat noch keins).",
-      "showTitle": "Formularnamen anzeigen",
+      "showTitle": "Formularnamen unter dem Namen der Organisation anzeigen",
       "subtitle": "Einleitungstext",
       "band": "Hintergrund der Kopfzeile",
       "plain": "Schlicht",

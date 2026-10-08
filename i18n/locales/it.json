@@ -2948,7 +2948,7 @@
       "logo": "Logo",
       "logoHint": "Viene usato il logo del tuo spazio di lavoro, a meno che tu non ne carichi un altro.",
       "logoNone": "Carica un logo per questo modulo (il tuo spazio di lavoro non ne ha ancora uno).",
-      "showTitle": "Mostra il nome del modulo",
+      "showTitle": "Mostra il nome del modulo sotto quello dell'organizzazione",
       "subtitle": "Testo introduttivo",
       "band": "Sfondo dell’intestazione",
       "plain": "Semplice",

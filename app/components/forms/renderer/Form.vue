@@ -260,8 +260,8 @@ function restart() {
   <div class="flex flex-col gap-5 @container/form" :style="{ '--form-label-w': labelWidth }">
     <FormsRendererAfter v-if="showAlready" mode="already" :org="respondent?.org" :embedded="respondent?.embedded" class="py-10 text-center" @another="onAnother" />
     <template v-else-if="!done && page">
-      <FormsRendererProgress v-if="pages.length > 1 && schema.settings?.progress_bar !== false" :position="position" :total="pages.length" />
-      <h2 v-if="page.title" class="text-xl font-semibold text-highlighted">{{ page.title }}</h2>
+      <!-- The page name rides with the step progress (owner 2026-10-08), never as a heading in the form -->
+      <FormsRendererProgress v-if="pages.length > 1 && schema.settings?.progress_bar !== false" :position="position" :total="pages.length" :page="page.title" />
       <form class="relative flex flex-col gap-4" novalidate @submit.prevent="next">
         <input v-if="submit && !preview" v-model="trap" type="text" name="formalie_hp" tabindex="-1" autocomplete="off" aria-hidden="true" class="pointer-events-none absolute -start-[200vw] top-0 size-px opacity-0">
         <div v-for="row in shownRows" :key="row.id" class="grid grid-cols-12 gap-x-4 gap-y-4">

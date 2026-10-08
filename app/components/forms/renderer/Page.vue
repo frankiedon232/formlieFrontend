@@ -59,7 +59,7 @@ const frameOwnsTitle = computed(() => frameStyle.value === 'spotlight' || frameS
 const switcherInBar = computed(() => !!frameStyle.value && frameStyle.value !== 'minimal')
 const logo = computed(() => (!frameOwnsLogo.value && theme.value.header.show_logo ? theme.value.header.logo || branding.value.logo_url : null))
 const footerLogo = computed(() => (theme.value.footer.show_logo ? theme.value.header.logo || branding.value.logo_url : null))
-const hasHeader = computed(() => !frameOwnsTitle.value && !!(logo.value || theme.value.header.show_title || theme.value.header.subtitle))
+const hasHeader = computed(() => !frameOwnsTitle.value && !!(logo.value || theme.value.header.subtitle))
 
 const { profile } = useTenant()
 const frameOrg = computed(() => ({

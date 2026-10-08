@@ -2948,7 +2948,7 @@
       "logo": "Logotipo",
       "logoHint": "O logotipo do seu espaço de trabalho é usado, a menos que você envie outro.",
       "logoNone": "Envie um logotipo para este formulário (seu espaço de trabalho ainda não tem um).",
-      "showTitle": "Mostrar o nome do formulário",
+      "showTitle": "Mostrar o nome do formulário abaixo do da organização",
       "subtitle": "Texto de introdução",
       "band": "Fundo do cabeçalho",
       "plain": "Simples",

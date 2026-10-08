@@ -24,7 +24,7 @@ const { primary, onPrimary, website, initials, facts, year } = useFrameParts(pro
         <slot name="language" />
         <FormsRendererFrameWebsite v-if="website" :href="website" :org-name="org.name" />
       </div>
-      <FormsRendererFrameOrg :org="org" :initials="initials" :accent="primary" :on-accent="onPrimary" class="justify-center pt-2" />
+      <FormsRendererFrameOrg :org="org" :initials="initials" :accent="primary" :on-accent="onPrimary" :form="theme.header.show_title ? title : null" class="justify-center pt-2" />
       <ul v-if="facts.length" class="flex flex-wrap justify-center gap-x-4 gap-y-1 text-xs opacity-75">
         <li v-for="fact in facts" :key="fact.icon" class="flex items-center gap-1.5"><UIcon :name="fact.icon" class="size-3.5 shrink-0" :style="{ color: primary }" />{{ fact.label }}</li>
       </ul>

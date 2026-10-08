@@ -2948,7 +2948,7 @@
       "logo": "Logo",
       "logoHint": "Używane jest logo obszaru roboczego, chyba że prześlesz inne.",
       "logoNone": "Prześlij logo dla tego formularza (obszar roboczy nie ma jeszcze logo).",
-      "showTitle": "Pokaż nazwę formularza",
+      "showTitle": "Pokaż nazwę formularza pod nazwą organizacji",
       "subtitle": "Tekst wstępu",
       "band": "Tło nagłówka",
       "plain": "Zwykły",

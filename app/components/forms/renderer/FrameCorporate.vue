@@ -24,7 +24,7 @@ const { frame, primary, onPrimary, tone, website, websiteHost, initials, facts, 
     <header class="border-b" :style="tone">
       <div v-if="frame.tone !== 'brand'" class="h-1" :style="{ background: primary }" aria-hidden="true" />
       <div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 @xl:px-6">
-        <FormsRendererFrameOrg :org="org" :initials="initials" :accent="primary" :on-accent="onPrimary" :inverse="frame.tone === 'brand'" />
+        <FormsRendererFrameOrg :org="org" :initials="initials" :accent="primary" :on-accent="onPrimary" :inverse="frame.tone === 'brand'" :form="theme.header.show_title ? title : null" />
         <div class="flex shrink-0 items-center gap-3">
           <span class="hidden items-center gap-1.5 text-xs opacity-80 @3xl:flex"><UIcon name="i-lucide-lock-keyhole" class="size-3.5" />{{ t('public.frame.encrypted') }}</span>
           <slot name="language" />
