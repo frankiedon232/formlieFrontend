@@ -7902,7 +7902,8 @@
       "manage": "관리",
       "query": "쿼리 실행",
       "approve": "승인",
-      "use": "사용"
+      "use": "사용",
+      "review": "검토"
     },
     "perm": {
       "forms_view": "양식과 빌더를 봅니다.",
@@ -7912,7 +7913,7 @@
       "forms_delete": "양식을 삭제하고 휴지통을 비웁니다.",
       "forms_all": "공유받은 것뿐 아니라 워크스페이스의 모든 양식.",
       "responses_view": "응답을 읽습니다.",
-      "responses_edit": "응답, 상태, 태그, 메모를 변경합니다.",
+      "responses_edit": "제출된 답변을 수정합니다.",
       "responses_delete": "응답을 삭제합니다.",
       "responses_export": "응답을 파일로 내보냅니다.",
       "resources_manage": "템플릿, 테마, 랜딩 페이지, 목록, 폴더, 저장된 필드를 만들고 변경합니다.",
@@ -7930,7 +7931,8 @@
       "settings_manage": "워크스페이스 설정을 변경합니다.",
       "audit_view": "감사 로그를 봅니다.",
       "audit_export": "감사 로그를 내보냅니다.",
-      "ai_use": "AI 어시스턴트를 사용합니다."
+      "ai_use": "AI 어시스턴트를 사용합니다.",
+      "responses_review": "상태, 태그, 메모를 변경합니다."
     }
   }
 }

@@ -7902,7 +7902,8 @@
       "manage": "管理",
       "query": "クエリを実行",
       "approve": "承認",
-      "use": "利用"
+      "use": "利用",
+      "review": "レビュー"
     },
     "perm": {
       "forms_view": "フォームとそのビルダーを見る。",
@@ -7912,7 +7913,7 @@
       "forms_delete": "フォームの削除とごみ箱の空にする操作。",
       "forms_all": "共有されたものだけでなく、ワークスペースのすべてのフォーム。",
       "responses_view": "回答を読む。",
-      "responses_edit": "回答、ステータス、タグ、メモの変更。",
+      "responses_edit": "送信された回答を修正します。",
       "responses_delete": "回答の削除。",
       "responses_export": "回答をファイルにエクスポート。",
       "resources_manage": "テンプレート、テーマ、ランディングページ、リスト、フォルダ、保存済みフィールドの作成と変更。",
@@ -7930,7 +7931,8 @@
       "settings_manage": "ワークスペースの設定を変更。",
       "audit_view": "監査ログを見る。",
       "audit_export": "監査ログをエクスポート。",
-      "ai_use": "AI アシスタントを使う。"
+      "ai_use": "AI アシスタントを使う。",
+      "responses_review": "ステータス、タグ、メモを変更します。"
     }
   }
 }

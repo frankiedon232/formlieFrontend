@@ -7902,7 +7902,8 @@
       "manage": "Quản lý",
       "query": "Chạy truy vấn",
       "approve": "Phê duyệt",
-      "use": "Dùng"
+      "use": "Dùng",
+      "review": "Xem xét"
     },
     "perm": {
       "forms_view": "Xem biểu mẫu và trình tạo của chúng.",
@@ -7912,7 +7913,7 @@
       "forms_delete": "Xóa biểu mẫu và dọn thùng rác.",
       "forms_all": "Mọi biểu mẫu trong không gian làm việc, không chỉ những biểu mẫu được chia sẻ với họ.",
       "responses_view": "Đọc phản hồi.",
-      "responses_edit": "Thay đổi câu trả lời, trạng thái, thẻ và ghi chú.",
+      "responses_edit": "Sửa các câu trả lời đã gửi.",
       "responses_delete": "Xóa phản hồi.",
       "responses_export": "Xuất phản hồi ra tệp.",
       "resources_manage": "Tạo và thay đổi mẫu, giao diện, trang đích, danh sách, thư mục và trường đã lưu.",
@@ -7930,7 +7931,8 @@
       "settings_manage": "Thay đổi cài đặt của không gian làm việc.",
       "audit_view": "Xem nhật ký kiểm tra.",
       "audit_export": "Xuất nhật ký kiểm tra.",
-      "ai_use": "Dùng trợ lý AI."
+      "ai_use": "Dùng trợ lý AI.",
+      "responses_review": "Thay đổi trạng thái, thẻ và ghi chú."
     }
   }
 }

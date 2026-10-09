@@ -17,6 +17,15 @@ describe('roles & access (F22)', () => {
     expect(permissionFor('PATCH', '/settings/appearance')).toBe('settings.manage')
     expect(permissionFor('GET', '/audit-logs')).toBe('audit.view')
   })
+  it('splits reviewing responses from editing answers', () => {
+    expect(permissionFor('PATCH', '/responses/r1')).toBe('responses.review')
+    expect(permissionFor('POST', '/responses/r1/notes')).toBe('responses.review')
+    expect(permissionFor('POST', '/responses/bulk')).toBe('responses.review')
+    // Opening a file is reading
+    expect(permissionFor('POST', '/responses/r1/files')).toBe('responses.view')
+    expect(withNeeds(['responses.review'])).toEqual(['responses.view', 'responses.review'])
+    expect(DEFAULT_ROLE_PERMISSIONS.member).toEqual(expect.arrayContaining(['responses.review', 'responses.edit']))
+  })
   it('leaves what every signed-in person needs open', () => {
     for (const path of ['/me/profile', '/navigation/counts', '/directory', '/settings/appearance', '/themes', '/option-lists/l1/options', '/notifications'])
       expect(permissionFor('GET', path), path).toBeNull()

@@ -7902,7 +7902,8 @@
       "manage": "管理",
       "query": "运行查询",
       "approve": "审批",
-      "use": "使用"
+      "use": "使用",
+      "review": "审阅"
     },
     "perm": {
       "forms_view": "查看表单及其构建器。",
@@ -7912,7 +7913,7 @@
       "forms_delete": "删除表单并清空回收站。",
       "forms_all": "工作区中的所有表单，而不只是与其共享的表单。",
       "responses_view": "阅读回复。",
-      "responses_edit": "更改回答、状态、标签和备注。",
+      "responses_edit": "更正已提交的答案。",
       "responses_delete": "删除回复。",
       "responses_export": "将回复导出为文件。",
       "resources_manage": "创建和更改模板、主题、落地页、列表、文件夹和已保存字段。",
@@ -7930,7 +7931,8 @@
       "settings_manage": "更改工作区设置。",
       "audit_view": "查看审计日志。",
       "audit_export": "导出审计日志。",
-      "ai_use": "使用 AI 助手。"
+      "ai_use": "使用 AI 助手。",
+      "responses_review": "更改状态、标签和备注。"
     }
   }
 }

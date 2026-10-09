@@ -7902,7 +7902,8 @@
       "manage": "Gestire",
       "query": "Eseguire query",
       "approve": "Approvare",
-      "use": "Usare"
+      "use": "Usare",
+      "review": "Revisionare"
     },
     "perm": {
       "forms_view": "Vedere i moduli e il loro editor.",
@@ -7912,7 +7913,7 @@
       "forms_delete": "Eliminare i moduli e svuotare il cestino.",
       "forms_all": "Ogni modulo dell’area di lavoro, non solo quelli condivisi con la persona.",
       "responses_view": "Leggere le risposte.",
-      "responses_edit": "Modificare risposte, stato, tag e note.",
+      "responses_edit": "Correggere le risposte inviate.",
       "responses_delete": "Eliminare le risposte.",
       "responses_export": "Esportare le risposte in file.",
       "resources_manage": "Creare e modificare modelli, temi, pagine di destinazione, elenchi, cartelle e campi salvati.",
@@ -7930,7 +7931,8 @@
       "settings_manage": "Modificare le impostazioni dell’area di lavoro.",
       "audit_view": "Vedere il registro di audit.",
       "audit_export": "Esportare il registro di audit.",
-      "ai_use": "Usare l’assistente IA."
+      "ai_use": "Usare l’assistente IA.",
+      "responses_review": "Modificare stato, tag e note."
     }
   }
 }

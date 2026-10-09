@@ -30,7 +30,7 @@ async function add() {
 <template>
   <section class="flex flex-col gap-3">
     <h3 class="text-xs font-medium text-muted uppercase">{{ t('responses.detail.notes') }}</h3>
-    <form class="flex flex-col gap-2" @submit.prevent="add">
+    <form v-if="response.can.review" class="flex flex-col gap-2" @submit.prevent="add">
       <UTextarea
         v-model="draft"
         :rows="2"

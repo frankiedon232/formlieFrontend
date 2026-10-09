@@ -14,7 +14,8 @@ const toast = useToast()
 const { copy } = useClipboard({ legacy: true })
 
 const name = computed(() => props.response.respondent.title || `#${props.response.number}`)
-const statuses = computed(() => RESPONSE_STATUSES.map(value => ({ value, label: t(`status.${value}`) })))
+// UTabs locks per tab: without Review (or while saving) every status but the current one is locked
+const statuses = computed(() => RESPONSE_STATUSES.map(value => ({ value, label: t(`status.${value}`), disabled: (!props.response.can.review || props.busy) && value !== props.response.status })))
 const menu = computed<DropdownMenuItem[][]>(() => [
   [
     {
@@ -27,7 +28,7 @@ const menu = computed<DropdownMenuItem[][]>(() => [
     },
     { label: t('responses.list.allOfForm'), icon: 'i-lucide-table-2', to: `/forms/${props.response.form.id}/responses` },
   ],
-  ...(props.response.can.edit ? [[{ label: t('responses.list.delete'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => emit('delete') }]] : []),
+  ...(props.response.can.delete ? [[{ label: t('responses.list.delete'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => emit('delete') }]] : []),
 ])
 </script>
 
@@ -66,7 +67,6 @@ const menu = computed<DropdownMenuItem[][]>(() => [
       color="neutral"
       size="sm"
       :ui="{ ...SEGMENTED_UI, root: 'w-full', list: `${SEGMENTED_UI.list} w-full`, trigger: `${SEGMENTED_UI.trigger} flex-1` }"
-      :disabled="!response.can.review || busy"
       :aria-label="t('responses.list.status')"
       @update:model-value="value => emit('status', value as ResponseStatus)"
     >

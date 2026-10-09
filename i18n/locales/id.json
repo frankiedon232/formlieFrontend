@@ -7902,7 +7902,8 @@
       "manage": "Kelola",
       "query": "Jalankan kueri",
       "approve": "Setujui",
-      "use": "Gunakan"
+      "use": "Gunakan",
+      "review": "Tinjau"
     },
     "perm": {
       "forms_view": "Melihat formulir dan pembuatnya.",
@@ -7912,7 +7913,7 @@
       "forms_delete": "Menghapus formulir dan mengosongkan tempat sampah.",
       "forms_all": "Semua formulir di ruang kerja, bukan hanya yang dibagikan kepada mereka.",
       "responses_view": "Membaca tanggapan.",
-      "responses_edit": "Mengubah jawaban, status, tag, dan catatan.",
+      "responses_edit": "Perbaiki jawaban yang dikirim.",
       "responses_delete": "Menghapus tanggapan.",
       "responses_export": "Mengekspor tanggapan ke file.",
       "resources_manage": "Membuat dan mengubah templat, tema, halaman arahan, daftar, folder, dan kolom tersimpan.",
@@ -7930,7 +7931,8 @@
       "settings_manage": "Mengubah pengaturan ruang kerja.",
       "audit_view": "Melihat jejak audit.",
       "audit_export": "Mengekspor jejak audit.",
-      "ai_use": "Menggunakan asisten AI."
+      "ai_use": "Menggunakan asisten AI.",
+      "responses_review": "Ubah status, tag, dan catatan."
     }
   }
 }

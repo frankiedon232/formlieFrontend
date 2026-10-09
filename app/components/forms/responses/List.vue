@@ -118,12 +118,17 @@ async function bulk(ids: string[], action: 'status' | 'tag' | 'untag' | 'delete'
     busyIds.value = new Set([...busyIds.value].filter(id => !ids.includes(id)))
   }
 }
+// The role decides too (Review: status and tags; Delete; Export), next to the person's access to this form
+const { can } = useCan()
+const canReview = computed(() => can('responses.review'))
+const canDelete = computed(() => props.canEdit && can('responses.delete'))
+const canExport = computed(() => can('responses.export'))
 const statusItems = (ids: string[], after?: () => void): DropdownMenuItem[] =>
   RESPONSE_STATUSES.map(status => ({ label: t(`status.${status}`), icon: RESPONSE_STATUS_META[status].icon, onSelect: () => void bulk(ids, 'status', status).then(after) }))
 const rowActions = (row: ResponseRow): DropdownMenuItem[][] => [
   [{ label: t('responses.list.open'), icon: 'i-lucide-panel-right-open', onSelect: () => openRow(row) }],
-  [{ type: 'label', label: t('responses.list.markAs') }, ...statusItems([row.id]).filter((_, i) => RESPONSE_STATUSES[i] !== row.status)],
-  ...(props.canEdit ? [[{ label: t('responses.list.delete'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => void bulk([row.id], 'delete') }]] : []),
+  ...(canReview.value ? [[{ type: 'label' as const, label: t('responses.list.markAs') }, ...statusItems([row.id]).filter((_, i) => RESPONSE_STATUSES[i] !== row.status)]] : []),
+  ...(canDelete.value ? [[{ label: t('responses.list.delete'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => void bulk([row.id], 'delete') }]] : []),
 ]
 const openRow = (row: ResponseRow) => emit('open', row, view.value?.state.rows.value ?? [row])
 
@@ -191,15 +196,15 @@ defineExpose({ refresh: () => view.value?.refresh(), rows: () => view.value?.sta
     </template>
 
     <template #toolbar-end>
-      <UButton :label="t('responses.export.button')" icon="i-lucide-file-down" color="neutral" variant="outline" class="@max-xl:[&>span:last-child]:sr-only" @click="openExport()" />
+      <UButton v-if="canExport" :label="t('responses.export.button')" icon="i-lucide-file-down" color="neutral" variant="outline" class="@max-xl:[&>span:last-child]:sr-only" @click="openExport()" />
     </template>
     <template #bulk-actions="{ selected, clear }">
-      <UButton :label="t('responses.export.button')" icon="i-lucide-file-down" color="neutral" variant="outline" size="sm" @click="exportSelected(selected.map(row => row.id), clear)" />
-      <UDropdownMenu :items="statusItems(selected.map(row => row.id), clear)">
+      <UButton v-if="canExport" :label="t('responses.export.button')" icon="i-lucide-file-down" color="neutral" variant="outline" size="sm" @click="exportSelected(selected.map(row => row.id), clear)" />
+      <UDropdownMenu v-if="canReview" :items="statusItems(selected.map(row => row.id), clear)">
         <UButton :label="t('responses.list.markAs')" icon="i-lucide-circle-dot" trailing-icon="i-lucide-chevron-down" color="neutral" variant="outline" size="sm" />
       </UDropdownMenu>
-      <FormsResponsesBulkTags :count="selected.length" :tags="tags" :busy="selected.some(row => busyIds.has(row.id))" @apply="(action, tag) => bulk(selected.map(row => row.id), action, tag).then(clear)" />
-      <UButton v-if="canEdit" :label="t('responses.list.delete')" icon="i-lucide-trash-2" color="error" variant="outline" size="sm" @click="bulk(selected.map(row => row.id), 'delete').then(clear)" />
+      <FormsResponsesBulkTags v-if="canReview" :count="selected.length" :tags="tags" :busy="selected.some(row => busyIds.has(row.id))" @apply="(action, tag) => bulk(selected.map(row => row.id), action, tag).then(clear)" />
+      <UButton v-if="canDelete" :label="t('responses.list.delete')" icon="i-lucide-trash-2" color="error" variant="outline" size="sm" @click="bulk(selected.map(row => row.id), 'delete').then(clear)" />
     </template>
   </DataView>
   <FormsResponsesExportModal

@@ -552,7 +552,7 @@ Every signed-in person, about themselves.
 
 ## Roles & access (F22, brought forward into F16)
 
-Permissions: `forms.view|create|edit|publish|delete|all`, `responses.view|edit|delete|export`, `resources.manage`, `analytics.view`, `data.view|query|manage`, `api.view|manage`, `people.view|manage|approve`, `roles.manage`, `settings.view|manage`, `audit.view|export`, `ai.use` (`shared/utils/auth/permissions.ts`; some need others, e.g. edit needs view). Every signed-in call is checked against `permissionFor(method, path)`; a missing permission answers `403 FRM-PERM-1001`. `SessionUser` carries `role_name` and `permissions`.
+Permissions: `forms.view|create|edit|publish|delete|all`, `responses.view|review|edit|delete|export` (review = status, tags, notes, possible-duplicate; edit = correct answers; `PATCH /responses/{id}` and `POST /responses/bulk` need review, with `data` also edit, bulk `delete` also delete; `POST /responses/{id}/files` needs view; `ResponseDetail.can { review, edit, delete }` combines the role and the person's access to the form), `resources.manage`, `analytics.view`, `data.view|query|manage`, `api.view|manage`, `people.view|manage|approve`, `roles.manage`, `settings.view|manage`, `audit.view|export`, `ai.use` (`shared/utils/auth/permissions.ts`; some need others, e.g. edit needs view). Every signed-in call is checked against `permissionFor(method, path)`; a missing permission answers `403 FRM-PERM-1001`. `SessionUser` carries `role_name` and `permissions`.
 
 | Method | Path | Notes |
 | ------ | ---- | ----- |

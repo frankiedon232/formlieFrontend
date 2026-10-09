@@ -22,6 +22,15 @@ export interface StoredRole {
 const stores = new Map<string, StoredRole[]>(Object.entries(loadPersisted<Record<string, StoredRole[]>>('roles', {})))
 export const saveRoles = () => savePersisted('roles', () => Object.fromEntries(stores))
 
+// Review responses was split from Edit (2026-10-09): roles that could edit keep reviewing
+let migrated = false
+for (const role of [...stores.values()].flat())
+  if (role.permissions.includes('responses.edit') && !role.permissions.includes('responses.review')) {
+    role.permissions = withNeeds([...role.permissions, 'responses.review'])
+    migrated = true
+  }
+if (migrated) saveRoles()
+
 const NAMES = { owner: 'Owner', admin: 'Admin', member: 'Member' } as const
 const DESCRIPTIONS = {
   owner: "Everything, including roles and the workspace itself. It can't be changed.",

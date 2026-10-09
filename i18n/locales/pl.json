@@ -7902,7 +7902,8 @@
       "manage": "Zarządzanie",
       "query": "Uruchamianie zapytań",
       "approve": "Zatwierdzanie",
-      "use": "Używanie"
+      "use": "Używanie",
+      "review": "Przeglądanie"
     },
     "perm": {
       "forms_view": "Zobacz formularze i ich kreator.",
@@ -7912,7 +7913,7 @@
       "forms_delete": "Usuwaj formularze i opróżniaj kosz.",
       "forms_all": "Każdy formularz w przestrzeni roboczej, nie tylko te udostępnione tej osobie.",
       "responses_view": "Czytaj odpowiedzi.",
-      "responses_edit": "Zmieniaj odpowiedzi, status, tagi i notatki.",
+      "responses_edit": "Poprawianie wysłanych odpowiedzi.",
       "responses_delete": "Usuwaj odpowiedzi.",
       "responses_export": "Eksportuj odpowiedzi do plików.",
       "resources_manage": "Twórz i zmieniaj szablony, motywy, strony docelowe, listy, foldery i zapisane pola.",
@@ -7930,7 +7931,8 @@
       "settings_manage": "Zmieniaj ustawienia przestrzeni roboczej.",
       "audit_view": "Zobacz dziennik audytu.",
       "audit_export": "Eksportuj dziennik audytu.",
-      "ai_use": "Korzystaj z asystenta AI."
+      "ai_use": "Korzystaj z asystenta AI.",
+      "responses_review": "Zmiana statusu, tagów i notatek."
     }
   }
 }

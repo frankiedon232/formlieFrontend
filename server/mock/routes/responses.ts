@@ -14,6 +14,7 @@ import { isFileField } from '#shared/utils/forms/file-answers'
 import { isInputField } from '#shared/utils/forms/fields'
 import { validateAnswer } from '#shared/utils/forms/validate'
 import { requireAuth } from '../core/auth'
+import { can } from '../data/rolesStore'
 import { actorOf, recordAudit } from '../core/audit'
 import { MockError, ok } from '../core/respond'
 import { defineMockRoute } from '../core/route'
@@ -261,7 +262,8 @@ function detailOf(form: StoredForm, entry: IndexedResponse, user: MockUser): Res
     meta: { device, country: null },
     notes: [...(review?.notes ?? [])].reverse(),
     history: review?.history ?? [],
-    can: { review: level !== 'none', edit: level === 'edit' },
+    // What this person may do here: their role (Review, Edit, Delete) and their access to the form
+    can: { review: level !== 'none' && can(user, 'responses.review'), edit: level === 'edit' && can(user, 'responses.edit'), delete: level === 'edit' && can(user, 'responses.delete') },
   }
 }
 
@@ -313,6 +315,8 @@ function checkEdits(form: StoredForm, entry: IndexedResponse, data: Record<strin
 export const patchResponse = defineMockRoute(({ event, body: raw }) => {
   const { tenant, user } = requireAuth(event)
   const input = parseBody(patchBody, raw)
+  // Status, tags and duplicates need Review (checked by address); changing answers needs Edit too
+  if (input.data && !can(user, 'responses.edit', tenant)) throw new MockError('FRM-PERM-1001')
   const { form, entry } = responseFor(tenant, user, getRouterParam(event, 'id'), input.data ? 'edit' : 'responses')
   if (input.data) checkEdits(form, entry, input.data)
   const current = answersOf(form, entry)
@@ -379,6 +383,7 @@ const bulkBody = z.object({
 export const bulkResponses = defineMockRoute(({ event, body: raw }) => {
   const { tenant, user } = requireAuth(event)
   const input = parseBody(bulkBody, raw)
+  if (input.action === 'delete' && !can(user, 'responses.delete', tenant)) throw new MockError('FRM-PERM-1001')
   if (input.action === 'status' && !RESPONSE_STATUSES.includes(input.value as ResponseStatus)) throw new MockError('FRM-GEN-1002', [{ field: 'value', message: 'Unknown status.' }])
   if ((input.action === 'tag' || input.action === 'untag') && !input.value) throw new MockError('FRM-GEN-1002', [{ field: 'value', message: 'Tag required.' }])
   let done = 0

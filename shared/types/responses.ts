@@ -73,7 +73,8 @@ export interface ResponseDetail extends ResponseRow {
   notes: ResponseNote[]
   history: ResponseChange[]
   /** What the person may do: review (status, tags, notes) and edit answers / delete. */
-  can: { review: boolean; edit: boolean }
+  /** Review = status, tags, notes; edit = correct answers; delete. Role and form access together. */
+  can: { review: boolean; edit: boolean; delete: boolean }
 }
 
 export type QuestionInsight =

@@ -7,7 +7,8 @@
 
 export const PERMISSION_AREAS = [
   { key: 'forms', actions: ['view', 'create', 'edit', 'publish', 'delete', 'all'] },
-  { key: 'responses', actions: ['view', 'edit', 'delete', 'export'] },
+  // review = status, tags and notes; edit = correct submitted answers (owner, 2026-10-09)
+  { key: 'responses', actions: ['view', 'review', 'edit', 'delete', 'export'] },
   { key: 'resources', actions: ['manage'] },
   { key: 'analytics', actions: ['view'] },
   { key: 'data', actions: ['view', 'query', 'manage'] },
@@ -31,7 +32,7 @@ export const BUILT_IN_ROLES = ['owner', 'admin', 'member'] as const
 export const DEFAULT_ROLE_PERMISSIONS: Record<(typeof BUILT_IN_ROLES)[number], Permission[]> = {
   owner: ALL_PERMISSIONS,
   admin: ALL_PERMISSIONS.filter(item => item !== 'roles.manage'),
-  member: ['forms.view', 'forms.create', 'forms.edit', 'forms.publish', 'responses.view', 'responses.edit', 'responses.export', 'analytics.view', 'ai.use'],
+  member: ['forms.view', 'forms.create', 'forms.edit', 'forms.publish', 'responses.view', 'responses.review', 'responses.edit', 'responses.export', 'analytics.view', 'ai.use'],
 }
 
 /** Some permissions only make sense with another (editing needs viewing …): ticking one ticks these too. */
@@ -41,6 +42,7 @@ export const PERMISSION_NEEDS: Partial<Record<Permission, Permission[]>> = {
   'forms.publish': ['forms.view', 'forms.edit'],
   'forms.delete': ['forms.view'],
   'forms.all': ['forms.view'],
+  'responses.review': ['responses.view'],
   'responses.edit': ['responses.view'],
   'responses.delete': ['responses.view'],
   'responses.export': ['responses.view'],
@@ -88,8 +90,10 @@ export function permissionFor(method: string, path: string): Permission | null {
     [/^\/forms\/[^/]+\/responses\/export$/, 'responses.export'],
     [/^\/forms\/[^/]+\/responses(\/|$)/, 'responses.view'],
     [/^\/responses\/exports(\/|$)/, 'responses.export'],
-    [/^\/responses\/[^/]+$/, () => (m === 'DELETE' ? 'responses.delete' : read ? 'responses.view' : 'responses.edit')],
-    [/^\/responses(\/|$)/, r => (r ? 'responses.view' : 'responses.edit')],
+    // Opening a file is reading (a short private link); changing answers is checked again in the route (Edit)
+    [/^\/responses\/[^/]+\/files$/, 'responses.view'],
+    [/^\/responses\/[^/]+$/, () => (m === 'DELETE' ? 'responses.delete' : read ? 'responses.view' : 'responses.review')],
+    [/^\/responses(\/|$)/, r => (r ? 'responses.view' : 'responses.review')],
     [/^\/forms\/[^/]+\/publish$/, 'forms.publish'],
     [/^\/forms\/(import|[^/]+\/duplicate)$/, 'forms.create'],
     [/^\/forms\/trash$/, 'forms.delete'],

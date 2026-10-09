@@ -7902,7 +7902,8 @@
       "manage": "Gerenciar",
       "query": "Executar consultas",
       "approve": "Aprovar",
-      "use": "Usar"
+      "use": "Usar",
+      "review": "Revisar"
     },
     "perm": {
       "forms_view": "Ver formulários e o editor deles.",
@@ -7912,7 +7913,7 @@
       "forms_delete": "Excluir formulários e esvaziar a lixeira.",
       "forms_all": "Todos os formulários do espaço de trabalho, não só os compartilhados com a pessoa.",
       "responses_view": "Ler respostas.",
-      "responses_edit": "Alterar respostas, status, tags e notas.",
+      "responses_edit": "Corrigir as respostas enviadas.",
       "responses_delete": "Excluir respostas.",
       "responses_export": "Exportar respostas para arquivos.",
       "resources_manage": "Criar e alterar modelos, temas, páginas de destino, listas, pastas e campos salvos.",
@@ -7930,7 +7931,8 @@
       "settings_manage": "Alterar as configurações do espaço de trabalho.",
       "audit_view": "Ver a trilha de auditoria.",
       "audit_export": "Exportar a trilha de auditoria.",
-      "ai_use": "Usar o assistente de IA."
+      "ai_use": "Usar o assistente de IA.",
+      "responses_review": "Alterar status, etiquetas e notas."
     }
   }
 }

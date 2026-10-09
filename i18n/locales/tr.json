@@ -7902,7 +7902,8 @@
       "manage": "Yönet",
       "query": "Sorgu çalıştır",
       "approve": "Onayla",
-      "use": "Kullan"
+      "use": "Kullan",
+      "review": "İnceleme"
     },
     "perm": {
       "forms_view": "Formları ve oluşturucularını görün.",
@@ -7912,7 +7913,7 @@
       "forms_delete": "Formları silin ve çöp kutusunu boşaltın.",
       "forms_all": "Çalışma alanındaki her form, yalnızca kişiyle paylaşılanlar değil.",
       "responses_view": "Yanıtları okuyun.",
-      "responses_edit": "Yanıtları, durumu, etiketleri ve notları değiştirin.",
+      "responses_edit": "Gönderilen yanıtları düzeltme.",
       "responses_delete": "Yanıtları silin.",
       "responses_export": "Yanıtları dosyalara aktarın.",
       "resources_manage": "Şablonları, temaları, açılış sayfalarını, listeleri, klasörleri ve kayıtlı alanları oluşturun ve değiştirin.",
@@ -7930,7 +7931,8 @@
       "settings_manage": "Çalışma alanının ayarlarını değiştirin.",
       "audit_view": "Denetim kaydını görün.",
       "audit_export": "Denetim kaydını dışa aktarın.",
-      "ai_use": "YZ asistanını kullanın."
+      "ai_use": "YZ asistanını kullanın.",
+      "responses_review": "Durumu, etiketleri ve notları değiştirme."
     }
   }
 }

@@ -7902,7 +7902,8 @@
       "manage": "Beheren",
       "query": "Query's uitvoeren",
       "approve": "Goedkeuren",
-      "use": "Gebruiken"
+      "use": "Gebruiken",
+      "review": "Beoordelen"
     },
     "perm": {
       "forms_view": "Formulieren en hun builder bekijken.",
@@ -7912,7 +7913,7 @@
       "forms_delete": "Formulieren verwijderen en de prullenbak legen.",
       "forms_all": "Elk formulier in de werkruimte, niet alleen die met hen zijn gedeeld.",
       "responses_view": "Reacties lezen.",
-      "responses_edit": "Antwoorden, status, labels en notities wijzigen.",
+      "responses_edit": "Verzonden antwoorden corrigeren.",
       "responses_delete": "Reacties verwijderen.",
       "responses_export": "Reacties exporteren naar bestanden.",
       "resources_manage": "Sjablonen, thema's, landingspagina's, lijsten, mappen en opgeslagen velden aanmaken en wijzigen.",
@@ -7930,7 +7931,8 @@
       "settings_manage": "De instellingen van de werkruimte wijzigen.",
       "audit_view": "De audittrail bekijken.",
       "audit_export": "De audittrail exporteren.",
-      "ai_use": "De AI-assistent gebruiken."
+      "ai_use": "De AI-assistent gebruiken.",
+      "responses_review": "Status, labels en notities wijzigen."
     }
   }
 }
