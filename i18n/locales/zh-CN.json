@@ -612,7 +612,9 @@
     "FRM-AUTH-1018": "你最近用过这个密码。请换一个。",
     "FRM-FORM-1020": "有两个选项的值相同。每个值都必须不同。",
     "FRM-FORM-1021": "有选项上方没有选项。请选择它所属的位置。",
-    "FRM-FORM-1022": "此列表的选项超过了容量上限：20,000 个，大型列表为 200,000 个。"
+    "FRM-FORM-1022": "此列表的选项超过了容量上限：20,000 个，大型列表为 200,000 个。",
+    "FRM-USER-1001": "此邀请已过期。请向邀请你的人索取新的邀请。",
+    "FRM-USER-1002": "此邀请已失效，可能已被使用或已被撤回。"
   },
   "errorUi": {
     "reference": "参考编号：{id}",
@@ -1074,7 +1076,11 @@
       "settings_retention_applied": "已删除旧回复(保留期限)",
       "settings_data_exported": "已导出某人的数据",
       "settings_data_deleted": "已删除某人的数据",
-      "forms_list_synced": "已根据选项列表更新表单"
+      "forms_list_synced": "已根据选项列表更新表单",
+      "users_invite_resent": "已重新发送邀请",
+      "users_invite_link": "已复制邀请链接",
+      "users_invite_revoked": "已撤回邀请",
+      "users_joined": "已加入工作区"
     },
     "detail": {
       "who": "谁",
@@ -7476,6 +7482,62 @@
       "forms": "拥有的表单",
       "phone": "电话",
       "twoStepShort": "两步"
+    },
+    "invite": {
+      "button": "邀请成员",
+      "title": "邀请成员",
+      "desc": "他们会收到一封带有加入链接的邮件。角色、部门和职位现在就设置。",
+      "emails": "邮箱地址",
+      "emailsHint": "输入或粘贴一个或多个，用逗号或换行分隔。",
+      "emailsPlaceholder": "name{'@'}example.org",
+      "wrong": "不是有效的邮箱地址：{list}",
+      "tooMany": "一次最多 50 个。",
+      "memberHint": "可使用已授权访问的表单和回复。",
+      "adminHint": "还可管理成员、设置和审计记录。",
+      "pick": "选择",
+      "addDepartments": "在设置中添加部门",
+      "addJobTitles": "在设置中添加职位",
+      "message": "个人留言",
+      "optional": "可选",
+      "messagePlaceholder": "写给邀请邮件的一句话",
+      "expires": "链接 7 天内有效。",
+      "send": "发送邀请",
+      "sendMany": "发送 {n} 个邀请",
+      "sent": "已发送 {n} 个邀请 | 已发送 {n} 个邀请",
+      "noneSent": "未发送任何邀请",
+      "skipped": "已跳过：{list}",
+      "skip": {
+        "member": "已在工作区中",
+        "invited": "已受邀"
+      },
+      "resend": "重新发送",
+      "resent": "已向 {email} 重新发送邀请",
+      "copyLink": "复制邀请链接",
+      "linkCopied": "已复制新的邀请链接，之前的链接将不再有效。",
+      "revoke": "撤回邀请",
+      "revokeTitle": "撤回发给 {email} 的邀请？",
+      "revokeDesc": "链接将失效，对方会从列表中移除。你以后可以再次邀请。",
+      "revoked": "已撤回发给 {email} 的邀请",
+      "expired": "邀请已过期",
+      "expiredOn": "邀请已于 {date} 过期",
+      "waiting": "等待对方加入。链接在 {date} 前有效。",
+      "sentBy": "由 {name} 发送，{when}",
+      "sentAgo": "{when}邀请",
+      "by": "由 {name} 邀请",
+      "notJoined": "尚未加入"
+    },
+    "join": {
+      "title": "加入工作区",
+      "heading": "加入 {workspace}",
+      "desc": "{name} 邀请你担任 {role}。请填写姓名并设置密码。",
+      "confirm": "确认密码",
+      "submit": "加入工作区",
+      "done": "你的账户已就绪。请登录开始使用。",
+      "toSignIn": "前往登录",
+      "expired": "此邀请已过期",
+      "expiredDesc": "邀请链接 7 天内有效。请让邀请你的人重新发送一个。",
+      "invalid": "此邀请无效",
+      "invalidDesc": "可能已被使用或已被撤回。如果你已加入，请直接登录。"
     }
   }
 }

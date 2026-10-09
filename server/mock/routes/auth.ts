@@ -343,7 +343,7 @@ export const forgotPassword = defineMockRoute(({ event, body }) => {
 const resetSchema = z.object({ challenge_id: z.string(), code, password: z.string().min(1).max(200) })
 
 /** The workspace's password rules (Settings → Security): FRM-AUTH-1007 names what is missing, 1018 a recent one. */
-function checkNewPassword(tenant: MockTenant, user: MockUser | null, value: string) {
+export function checkNewPassword(tenant: MockTenant, user: MockUser | null, value: string) {
   const rules = settingsOf(tenant).security.password
   if (!meetsPasswordPolicy(value, rules)) {
     const missing = checkPassword(value, rules).filter(check => check.required && !check.passed)

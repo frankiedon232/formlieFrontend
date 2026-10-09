@@ -612,7 +612,9 @@
     "FRM-AUTH-1018": "Hai usato questa password di recente. Scegline un'altra.",
     "FRM-FORM-1020": "Due opzioni hanno lo stesso valore. Ogni valore deve essere diverso.",
     "FRM-FORM-1021": "Un’opzione non ha nessuna opzione sopra. Scegli dove va.",
-    "FRM-FORM-1022": "Questo elenco ha più opzioni di quante ne possa contenere: 20.000, o 200.000 se è grande."
+    "FRM-FORM-1022": "Questo elenco ha più opzioni di quante ne possa contenere: 20.000, o 200.000 se è grande.",
+    "FRM-USER-1001": "Questo invito è scaduto. Chiedi un nuovo invito a chi ti ha invitato.",
+    "FRM-USER-1002": "Questo invito non è più valido. Potrebbe essere stato usato o ritirato."
   },
   "errorUi": {
     "reference": "Riferimento: {id}",
@@ -1074,7 +1076,11 @@
       "settings_retention_applied": "Risposte vecchie rimosse (conservazione)",
       "settings_data_exported": "Dati di una persona esportati",
       "settings_data_deleted": "Dati di una persona eliminati",
-      "forms_list_synced": "Moduli aggiornati da un elenco di opzioni"
+      "forms_list_synced": "Moduli aggiornati da un elenco di opzioni",
+      "users_invite_resent": "Invito inviato di nuovo",
+      "users_invite_link": "Link di invito copiato",
+      "users_invite_revoked": "Invito ritirato",
+      "users_joined": "Si è unito allo spazio di lavoro"
     },
     "detail": {
       "who": "Chi",
@@ -7476,6 +7482,62 @@
       "forms": "Moduli posseduti",
       "phone": "Telefono",
       "twoStepShort": "Due passaggi"
+    },
+    "invite": {
+      "button": "Invita persone",
+      "title": "Invita persone",
+      "desc": "Riceveranno un'email con un link per unirsi. Ruolo, reparti e qualifiche si impostano ora.",
+      "emails": "Indirizzi email",
+      "emailsHint": "Scrivine o incollane uno o più, separati da virgole o a capo.",
+      "emailsPlaceholder": "name{'@'}example.org",
+      "wrong": "Non è un indirizzo email: {list}",
+      "tooMany": "Massimo 50 alla volta.",
+      "memberHint": "Lavora con i moduli e le risposte a cui ha accesso.",
+      "adminHint": "Gestisce anche persone, impostazioni e registro di audit.",
+      "pick": "Scegli",
+      "addDepartments": "Aggiungi reparti nelle Impostazioni",
+      "addJobTitles": "Aggiungi qualifiche nelle Impostazioni",
+      "message": "Nota personale",
+      "optional": "Facoltativo",
+      "messagePlaceholder": "Una riga per l'email di invito",
+      "expires": "I link funzionano per 7 giorni.",
+      "send": "Invia invito",
+      "sendMany": "Invia {n} inviti",
+      "sent": "{n} invito inviato | {n} inviti inviati",
+      "noneSent": "Nessun invito inviato",
+      "skipped": "Esclusi: {list}",
+      "skip": {
+        "member": "già nello spazio di lavoro",
+        "invited": "già invitato"
+      },
+      "resend": "Invia di nuovo",
+      "resent": "Invito inviato di nuovo a {email}",
+      "copyLink": "Copia link di invito",
+      "linkCopied": "Un nuovo link di invito è stato copiato. Il link precedente non funziona più.",
+      "revoke": "Ritira invito",
+      "revokeTitle": "Ritirare l'invito a {email}?",
+      "revokeDesc": "Il link smette di funzionare e la persona esce dall'elenco. Potrai invitarla di nuovo più tardi.",
+      "revoked": "Invito a {email} ritirato",
+      "expired": "Invito scaduto",
+      "expiredOn": "L'invito è scaduto il {date}",
+      "waiting": "In attesa che si unisca. Il link funziona fino al {date}.",
+      "sentBy": "Inviato da {name}, {when}",
+      "sentAgo": "Invitato {when}",
+      "by": "Invitato da {name}",
+      "notJoined": "Non ancora iscritto"
+    },
+    "join": {
+      "title": "Unisciti allo spazio di lavoro",
+      "heading": "Unisciti a {workspace}",
+      "desc": "{name} ti ha invitato come {role}. Aggiungi il tuo nome e scegli una password.",
+      "confirm": "Conferma password",
+      "submit": "Unisciti allo spazio di lavoro",
+      "done": "Il tuo account è pronto. Accedi per iniziare.",
+      "toSignIn": "Vai all'accesso",
+      "expired": "Questo invito è scaduto",
+      "expiredDesc": "I link di invito funzionano per 7 giorni. Chiedi a chi ti ha invitato di inviarne uno nuovo.",
+      "invalid": "Questo invito non è valido",
+      "invalidDesc": "Potrebbe essere già stato usato o ritirato. Se ti sei già unito, accedi."
     }
   }
 }

@@ -33,6 +33,31 @@ export interface PersonRow {
   joined_at: string
   /** Forms this person owns. */
   forms_count: number
+  /** An invitation not yet accepted (F16 M2): when it ends and who sent it. */
+  invite: { expires_at: string; sent_at: string; invited_by: string; expired: boolean } | null
+}
+
+/** POST /people/invites */
+export interface InviteRequest {
+  emails: string[]
+  role: 'admin' | 'member'
+  department_ids: string[]
+  job_title_ids: string[]
+  message?: string | null
+}
+export interface InviteResult {
+  invited: number
+  /** Addresses left out: already in the workspace, or already invited. */
+  skipped: { email: string; reason: 'member' | 'invited' }[]
+}
+
+/** GET /public/invites/{token}: what the invitation page shows. */
+export interface InvitePreview {
+  workspace: string
+  email: string
+  inviter: string
+  role: 'owner' | 'admin' | 'member'
+  message: string | null
 }
 
 /** One person's detail panel (GET /people/{id}). */

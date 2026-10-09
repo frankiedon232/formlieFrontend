@@ -612,7 +612,9 @@
     "FRM-AUTH-1018": "Bạn đã dùng mật khẩu này gần đây. Hãy chọn mật khẩu khác.",
     "FRM-FORM-1020": "Hai tùy chọn có cùng giá trị. Mỗi giá trị phải khác nhau.",
     "FRM-FORM-1021": "Có tùy chọn không có tùy chọn nào ở trên. Hãy chọn nơi nó thuộc về.",
-    "FRM-FORM-1022": "Danh sách này có nhiều tùy chọn hơn mức cho phép: 20.000, hoặc 200.000 nếu là danh sách lớn."
+    "FRM-FORM-1022": "Danh sách này có nhiều tùy chọn hơn mức cho phép: 20.000, hoặc 200.000 nếu là danh sách lớn.",
+    "FRM-USER-1001": "Lời mời này đã hết hạn. Hãy nhờ người đã mời bạn gửi lời mời mới.",
+    "FRM-USER-1002": "Lời mời này không còn hiệu lực. Có thể nó đã được dùng hoặc bị thu hồi."
   },
   "errorUi": {
     "reference": "Mã tham chiếu: {id}",
@@ -1074,7 +1076,11 @@
       "settings_retention_applied": "Đã xóa phản hồi cũ (lưu giữ)",
       "settings_data_exported": "Đã xuất dữ liệu của một người",
       "settings_data_deleted": "Đã xóa dữ liệu của một người",
-      "forms_list_synced": "Biểu mẫu đã được cập nhật từ danh sách tùy chọn"
+      "forms_list_synced": "Biểu mẫu đã được cập nhật từ danh sách tùy chọn",
+      "users_invite_resent": "Đã gửi lại lời mời",
+      "users_invite_link": "Đã sao chép liên kết mời",
+      "users_invite_revoked": "Đã thu hồi lời mời",
+      "users_joined": "Đã tham gia không gian làm việc"
     },
     "detail": {
       "who": "Ai",
@@ -7476,6 +7482,62 @@
       "forms": "Biểu mẫu sở hữu",
       "phone": "Điện thoại",
       "twoStepShort": "Hai bước"
+    },
+    "invite": {
+      "button": "Mời mọi người",
+      "title": "Mời mọi người",
+      "desc": "Họ nhận được email kèm liên kết để tham gia. Vai trò, phòng ban và chức danh được đặt ngay bây giờ.",
+      "emails": "Địa chỉ email",
+      "emailsHint": "Nhập hoặc dán một hoặc nhiều địa chỉ, cách nhau bằng dấu phẩy hoặc xuống dòng.",
+      "emailsPlaceholder": "name{'@'}example.org",
+      "wrong": "Không phải địa chỉ email: {list}",
+      "tooMany": "Tối đa 50 mỗi lần.",
+      "memberHint": "Làm việc với các biểu mẫu và phản hồi mà họ được cấp quyền truy cập.",
+      "adminHint": "Đồng thời quản lý mọi người, cài đặt và nhật ký kiểm tra.",
+      "pick": "Chọn",
+      "addDepartments": "Thêm phòng ban trong Cài đặt",
+      "addJobTitles": "Thêm chức danh trong Cài đặt",
+      "message": "Lời nhắn cá nhân",
+      "optional": "Tùy chọn",
+      "messagePlaceholder": "Một dòng cho email mời",
+      "expires": "Liên kết có hiệu lực trong 7 ngày.",
+      "send": "Gửi lời mời",
+      "sendMany": "Gửi {n} lời mời",
+      "sent": "Đã gửi {n} lời mời | Đã gửi {n} lời mời",
+      "noneSent": "Chưa gửi lời mời nào",
+      "skipped": "Đã bỏ qua: {list}",
+      "skip": {
+        "member": "đã ở trong không gian làm việc",
+        "invited": "đã được mời"
+      },
+      "resend": "Gửi lại",
+      "resent": "Đã gửi lại lời mời tới {email}",
+      "copyLink": "Sao chép liên kết mời",
+      "linkCopied": "Đã sao chép liên kết mời mới. Liên kết trước đó không còn dùng được.",
+      "revoke": "Thu hồi lời mời",
+      "revokeTitle": "Thu hồi lời mời gửi tới {email}?",
+      "revokeDesc": "Liên kết sẽ ngừng hoạt động và họ bị xóa khỏi danh sách. Bạn có thể mời lại sau.",
+      "revoked": "Đã thu hồi lời mời gửi tới {email}",
+      "expired": "Lời mời hết hạn",
+      "expiredOn": "Lời mời đã hết hạn vào {date}",
+      "waiting": "Đang chờ họ tham gia. Liên kết có hiệu lực đến {date}.",
+      "sentBy": "Gửi bởi {name}, {when}",
+      "sentAgo": "Đã mời {when}",
+      "by": "Được mời bởi {name}",
+      "notJoined": "Chưa tham gia"
+    },
+    "join": {
+      "title": "Tham gia không gian làm việc",
+      "heading": "Tham gia {workspace}",
+      "desc": "{name} đã mời bạn với vai trò {role}. Thêm tên của bạn và chọn mật khẩu.",
+      "confirm": "Xác nhận mật khẩu",
+      "submit": "Tham gia không gian làm việc",
+      "done": "Tài khoản của bạn đã sẵn sàng. Đăng nhập để bắt đầu.",
+      "toSignIn": "Đến trang đăng nhập",
+      "expired": "Lời mời này đã hết hạn",
+      "expiredDesc": "Liên kết mời có hiệu lực trong 7 ngày. Hãy nhờ người đã mời bạn gửi liên kết mới.",
+      "invalid": "Lời mời này không hợp lệ",
+      "invalidDesc": "Có thể nó đã được dùng hoặc bị thu hồi. Nếu bạn đã tham gia, hãy đăng nhập."
     }
   }
 }

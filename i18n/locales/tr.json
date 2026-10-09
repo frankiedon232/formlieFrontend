@@ -612,7 +612,9 @@
     "FRM-AUTH-1018": "Bu parolayı yakın zamanda kullandınız. Başka bir parola seçin.",
     "FRM-FORM-1020": "İki seçenek aynı değere sahip. Her değer farklı olmalı.",
     "FRM-FORM-1021": "Bir seçeneğin üstünde seçenek yok. Nereye ait olduğunu seçin.",
-    "FRM-FORM-1022": "Bu liste taşıyabileceğinden fazla seçenek içeriyor: 20.000, büyükse 200.000."
+    "FRM-FORM-1022": "Bu liste taşıyabileceğinden fazla seçenek içeriyor: 20.000, büyükse 200.000.",
+    "FRM-USER-1001": "Bu davetin süresi doldu. Sizi davet eden kişiden yenisini isteyin.",
+    "FRM-USER-1002": "Bu davet artık geçerli değil. Kullanılmış veya geri çekilmiş olabilir."
   },
   "errorUi": {
     "reference": "Referans: {id}",
@@ -1074,7 +1076,11 @@
       "settings_retention_applied": "Eski yanıtlar kaldırıldı (saklama)",
       "settings_data_exported": "Bir kişinin verileri dışa aktarıldı",
       "settings_data_deleted": "Bir kişinin verileri silindi",
-      "forms_list_synced": "Formlar bir seçenek listesinden güncellendi"
+      "forms_list_synced": "Formlar bir seçenek listesinden güncellendi",
+      "users_invite_resent": "Davet yeniden gönderildi",
+      "users_invite_link": "Davet bağlantısı kopyalandı",
+      "users_invite_revoked": "Davet geri çekildi",
+      "users_joined": "Çalışma alanına katıldı"
     },
     "detail": {
       "who": "Kim",
@@ -7476,6 +7482,62 @@
       "forms": "Sahip olunan formlar",
       "phone": "Telefon",
       "twoStepShort": "İki adımlı"
+    },
+    "invite": {
+      "button": "Kişileri davet et",
+      "title": "Kişileri davet et",
+      "desc": "Katılmaları için bağlantı içeren bir e-posta alırlar. Rolleri, departmanları ve unvanları şimdi belirlenir.",
+      "emails": "E-posta adresleri",
+      "emailsHint": "Bir veya daha fazlasını yazın ya da yapıştırın; virgül veya yeni satırla ayırın.",
+      "emailsPlaceholder": "name{'@'}example.org",
+      "wrong": "E-posta adresi değil: {list}",
+      "tooMany": "Tek seferde en fazla 50.",
+      "memberHint": "Erişim verilen formlar ve yanıtlarla çalışır.",
+      "adminHint": "Ayrıca kişileri, ayarları ve denetim kaydını yönetir.",
+      "pick": "Seç",
+      "addDepartments": "Departmanları Ayarlar'dan ekleyin",
+      "addJobTitles": "Unvanları Ayarlar'dan ekleyin",
+      "message": "Kişisel not",
+      "optional": "İsteğe bağlı",
+      "messagePlaceholder": "Davet e-postası için bir satır",
+      "expires": "Bağlantılar 7 gün geçerlidir.",
+      "send": "Daveti gönder",
+      "sendMany": "{n} davet gönder",
+      "sent": "{n} davet gönderildi | {n} davet gönderildi",
+      "noneSent": "Davet gönderilmedi",
+      "skipped": "Atlananlar: {list}",
+      "skip": {
+        "member": "zaten çalışma alanında",
+        "invited": "zaten davet edildi"
+      },
+      "resend": "Yeniden gönder",
+      "resent": "Davet {email} adresine yeniden gönderildi",
+      "copyLink": "Davet bağlantısını kopyala",
+      "linkCopied": "Yeni bir davet bağlantısı kopyalandı. Önceki bağlantı artık çalışmaz.",
+      "revoke": "Daveti geri çek",
+      "revokeTitle": "{email} adresine gönderilen davet geri çekilsin mi?",
+      "revokeDesc": "Bağlantı çalışmaz olur ve kişi listeden çıkar. Daha sonra tekrar davet edebilirsiniz.",
+      "revoked": "{email} adresine gönderilen davet geri çekildi",
+      "expired": "Davetin süresi doldu",
+      "expiredOn": "Davetin süresi {date} tarihinde doldu",
+      "waiting": "Katılmaları bekleniyor. Bağlantı {date} tarihine kadar geçerli.",
+      "sentBy": "Gönderen {name}, {when}",
+      "sentAgo": "Davet edildi {when}",
+      "by": "Davet eden {name}",
+      "notJoined": "Henüz katılmadı"
+    },
+    "join": {
+      "title": "Çalışma alanına katıl",
+      "heading": "{workspace} alanına katıl",
+      "desc": "{name} sizi {role} olarak davet etti. Adınızı girin ve bir parola seçin.",
+      "confirm": "Parolayı onayla",
+      "submit": "Çalışma alanına katıl",
+      "done": "Hesabınız hazır. Başlamak için oturum açın.",
+      "toSignIn": "Oturum açmaya git",
+      "expired": "Bu davetin süresi doldu",
+      "expiredDesc": "Davet bağlantıları 7 gün geçerlidir. Sizi davet eden kişiden yenisini göndermesini isteyin.",
+      "invalid": "Bu davet geçerli değil",
+      "invalidDesc": "Daha önce kullanılmış veya geri çekilmiş olabilir. Zaten katıldıysanız oturum açın."
     }
   }
 }

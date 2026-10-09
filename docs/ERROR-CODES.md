@@ -56,6 +56,8 @@ Format: `FRM-<DOMAIN>-<NNNN>`. Ranges: 1000–1999 client/validation, 5000–599
 | FRM-FORM-1014 | 403  | System themes can’t be changed. Duplicate it to make your own.    | INFO     |
 | FRM-FORM-1020 | 422  | Two options share the same value. Each value must be different.  | INFO     |
 | FRM-FORM-1021 | 422  | An option has no option above it. Choose where it belongs.       | INFO     |
+| FRM-USER-1001 | 410  | This invitation has expired. Ask the person who invited you for a new one. | INFO |
+| FRM-USER-1002 | 404  | This invitation is no longer valid. It may have been used or withdrawn. | INFO |
 | FRM-FORM-1022 | 422  | This list has more options than it can hold: 20,000, or 200,000 when it is large. | INFO |
 | FRM-RESP-1001 | 422  | Submission is invalid.                                            | INFO     |
 | FRM-RESP-1002 | 400  | Verification failed. (captcha)                                    | WARNING  |

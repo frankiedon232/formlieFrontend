@@ -612,7 +612,9 @@
     "FRM-AUTH-1018": "You used this password recently. Choose another one.",
     "FRM-FORM-1020": "Two options share the same value. Each value must be different.",
     "FRM-FORM-1021": "An option has no option above it. Choose where it belongs.",
-    "FRM-FORM-1022": "This list has more options than it can hold: 20,000, or 200,000 when it is large."
+    "FRM-FORM-1022": "This list has more options than it can hold: 20,000, or 200,000 when it is large.",
+    "FRM-USER-1001": "This invitation has expired. Ask the person who invited you for a new one.",
+    "FRM-USER-1002": "This invitation is no longer valid. It may have been used or withdrawn."
   },
   "errorUi": {
     "reference": "Reference: {id}",
@@ -1074,7 +1076,11 @@
       "settings_retention_applied": "Old responses removed (retention)",
       "settings_data_exported": "A person's data exported",
       "settings_data_deleted": "A person's data deleted",
-      "forms_list_synced": "Forms updated from an option list"
+      "forms_list_synced": "Forms updated from an option list",
+      "users_invite_resent": "Invitation sent again",
+      "users_invite_link": "Invitation link copied",
+      "users_invite_revoked": "Invitation withdrawn",
+      "users_joined": "Joined the workspace"
     },
     "detail": {
       "who": "Who",
@@ -7476,6 +7482,62 @@
       "forms": "Forms owned",
       "phone": "Phone",
       "twoStepShort": "Two-step"
+    },
+    "invite": {
+      "button": "Invite people",
+      "title": "Invite people",
+      "desc": "They get an email with a link to join. Their role, departments and job titles are set now.",
+      "emails": "Email addresses",
+      "emailsHint": "Type or paste one or more, separated by commas or new lines.",
+      "emailsPlaceholder": "name{'@'}example.org",
+      "wrong": "Not an email address: {list}",
+      "tooMany": "Up to 50 at a time.",
+      "memberHint": "Works with forms and responses they are given access to.",
+      "adminHint": "Also manages people, settings and the audit trail.",
+      "pick": "Choose",
+      "addDepartments": "Add departments in Settings",
+      "addJobTitles": "Add job titles in Settings",
+      "message": "Personal note",
+      "optional": "Optional",
+      "messagePlaceholder": "A line for the invitation email",
+      "expires": "Links work for 7 days.",
+      "send": "Send invitation",
+      "sendMany": "Send {n} invitations",
+      "sent": "{n} invitation sent | {n} invitations sent",
+      "noneSent": "No invitations sent",
+      "skipped": "Left out: {list}",
+      "skip": {
+        "member": "already in the workspace",
+        "invited": "already invited"
+      },
+      "resend": "Send again",
+      "resent": "Invitation sent again to {email}",
+      "copyLink": "Copy invite link",
+      "linkCopied": "A new invite link is copied. The earlier link no longer works.",
+      "revoke": "Withdraw invitation",
+      "revokeTitle": "Withdraw the invitation to {email}?",
+      "revokeDesc": "The link stops working and they leave the list. You can invite them again later.",
+      "revoked": "Invitation to {email} withdrawn",
+      "expired": "Invite expired",
+      "expiredOn": "The invitation expired on {date}",
+      "waiting": "Waiting for them to join. The link works until {date}.",
+      "sentBy": "Sent by {name}, {when}",
+      "sentAgo": "Invited {when}",
+      "by": "Invited by {name}",
+      "notJoined": "Not joined yet"
+    },
+    "join": {
+      "title": "Join the workspace",
+      "heading": "Join {workspace}",
+      "desc": "{name} invited you as {role}. Add your name and choose a password.",
+      "confirm": "Confirm password",
+      "submit": "Join the workspace",
+      "done": "Your account is ready. Sign in to start.",
+      "toSignIn": "Go to sign in",
+      "expired": "This invitation has expired",
+      "expiredDesc": "Invitation links work for 7 days. Ask the person who invited you to send a new one.",
+      "invalid": "This invitation is not valid",
+      "invalidDesc": "It may have been used already or withdrawn. If you joined before, sign in."
     }
   }
 }

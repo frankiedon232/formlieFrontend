@@ -5,6 +5,7 @@
 import { fail } from './core/respond'
 import * as audit from './routes/audit'
 import * as people from './routes/people'
+import * as invites from './routes/invites'
 import { getDirectory } from './routes/directory'
 import { getFormOverview } from './routes/formOverview'
 import * as responses from './routes/responses'
@@ -238,6 +239,12 @@ const router = createRouter()
   .get('/people', people.listPeople)
   .get('/people/insights', people.peopleInsights)
   .get('/people/:id', people.getPerson)
+  .post('/people/invites', invites.invitePeople)
+  .post('/people/:id/invite/resend', invites.resendInvite)
+  .post('/people/:id/invite/link', invites.inviteLink)
+  .delete('/people/:id/invite', invites.revokeInvite)
+  .get('/public/invites/:token', invites.previewInvite)
+  .post('/public/invites/:token/accept', invites.acceptInvite)
   .get('/option-lists', optionLists.listOptionLists)
   .get('/option-lists/insights', optionLists.optionListInsights)
   .post('/option-lists', optionLists.createOptionList)

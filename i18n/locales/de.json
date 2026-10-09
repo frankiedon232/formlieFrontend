@@ -612,7 +612,9 @@
     "FRM-AUTH-1018": "Sie haben dieses Passwort kürzlich verwendet. Wählen Sie ein anderes.",
     "FRM-FORM-1020": "Zwei Optionen haben denselben Wert. Jeder Wert muss unterschiedlich sein.",
     "FRM-FORM-1021": "Eine Option hat keine Option über sich. Wählen Sie, wohin sie gehört.",
-    "FRM-FORM-1022": "Diese Liste hat mehr Optionen, als sie fassen kann: 20.000, oder 200.000 bei einer großen Liste."
+    "FRM-FORM-1022": "Diese Liste hat mehr Optionen, als sie fassen kann: 20.000, oder 200.000 bei einer großen Liste.",
+    "FRM-USER-1001": "Diese Einladung ist abgelaufen. Bitten Sie die einladende Person um eine neue.",
+    "FRM-USER-1002": "Diese Einladung ist nicht mehr gültig. Sie wurde möglicherweise bereits verwendet oder zurückgezogen."
   },
   "errorUi": {
     "reference": "Referenz: {id}",
@@ -1074,7 +1076,11 @@
       "settings_retention_applied": "Alte Antworten entfernt (Aufbewahrung)",
       "settings_data_exported": "Daten einer Person exportiert",
       "settings_data_deleted": "Daten einer Person gelöscht",
-      "forms_list_synced": "Formulare aus einer Optionsliste aktualisiert"
+      "forms_list_synced": "Formulare aus einer Optionsliste aktualisiert",
+      "users_invite_resent": "Einladung erneut gesendet",
+      "users_invite_link": "Einladungslink kopiert",
+      "users_invite_revoked": "Einladung zurückgezogen",
+      "users_joined": "Dem Arbeitsbereich beigetreten"
     },
     "detail": {
       "who": "Wer",
@@ -7476,6 +7482,62 @@
       "forms": "Eigene Formulare",
       "phone": "Telefon",
       "twoStepShort": "Zwei-Schritt"
+    },
+    "invite": {
+      "button": "Personen einladen",
+      "title": "Personen einladen",
+      "desc": "Sie erhalten eine E-Mail mit einem Link zum Beitreten. Rolle, Abteilungen und Positionen legen Sie jetzt fest.",
+      "emails": "E-Mail-Adressen",
+      "emailsHint": "Eine oder mehrere eingeben oder einfügen, getrennt durch Kommas oder Zeilenumbrüche.",
+      "emailsPlaceholder": "name{'@'}example.org",
+      "wrong": "Keine E-Mail-Adresse: {list}",
+      "tooMany": "Maximal 50 auf einmal.",
+      "memberHint": "Arbeitet mit Formularen und Antworten, auf die Zugriff gewährt wurde.",
+      "adminHint": "Verwaltet außerdem Personen, Einstellungen und das Audit-Protokoll.",
+      "pick": "Auswählen",
+      "addDepartments": "Abteilungen in den Einstellungen hinzufügen",
+      "addJobTitles": "Positionen in den Einstellungen hinzufügen",
+      "message": "Persönliche Nachricht",
+      "optional": "Optional",
+      "messagePlaceholder": "Eine Zeile für die Einladungs-E-Mail",
+      "expires": "Links sind 7 Tage gültig.",
+      "send": "Einladung senden",
+      "sendMany": "{n} Einladungen senden",
+      "sent": "{n} Einladung gesendet | {n} Einladungen gesendet",
+      "noneSent": "Keine Einladungen gesendet",
+      "skipped": "Ausgelassen: {list}",
+      "skip": {
+        "member": "bereits im Arbeitsbereich",
+        "invited": "bereits eingeladen"
+      },
+      "resend": "Erneut senden",
+      "resent": "Einladung erneut an {email} gesendet",
+      "copyLink": "Einladungslink kopieren",
+      "linkCopied": "Ein neuer Einladungslink wurde kopiert. Der frühere Link funktioniert nicht mehr.",
+      "revoke": "Einladung zurückziehen",
+      "revokeTitle": "Einladung an {email} zurückziehen?",
+      "revokeDesc": "Der Link funktioniert nicht mehr und die Person verschwindet aus der Liste. Sie können sie später erneut einladen.",
+      "revoked": "Einladung an {email} zurückgezogen",
+      "expired": "Einladung abgelaufen",
+      "expiredOn": "Die Einladung ist am {date} abgelaufen",
+      "waiting": "Wartet auf den Beitritt. Der Link ist bis {date} gültig.",
+      "sentBy": "Gesendet von {name}, {when}",
+      "sentAgo": "Eingeladen {when}",
+      "by": "Eingeladen von {name}",
+      "notJoined": "Noch nicht beigetreten"
+    },
+    "join": {
+      "title": "Dem Arbeitsbereich beitreten",
+      "heading": "{workspace} beitreten",
+      "desc": "{name} hat Sie als {role} eingeladen. Geben Sie Ihren Namen ein und wählen Sie ein Passwort.",
+      "confirm": "Passwort bestätigen",
+      "submit": "Dem Arbeitsbereich beitreten",
+      "done": "Ihr Konto ist bereit. Melden Sie sich an, um zu starten.",
+      "toSignIn": "Zur Anmeldung",
+      "expired": "Diese Einladung ist abgelaufen",
+      "expiredDesc": "Einladungslinks sind 7 Tage gültig. Bitten Sie die einladende Person, eine neue zu senden.",
+      "invalid": "Diese Einladung ist ungültig",
+      "invalidDesc": "Sie wurde möglicherweise bereits verwendet oder zurückgezogen. Wenn Sie schon beigetreten sind, melden Sie sich an."
     }
   }
 }

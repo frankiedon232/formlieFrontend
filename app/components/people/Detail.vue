@@ -7,12 +7,12 @@
 <script setup lang="ts">
 import type { PersonDetail } from '#shared/types/people'
 
-const props = defineProps<{ id: string | null; ids: string[] }>()
+const props = defineProps<{ id: string | null; ids: string[]; busy?: boolean }>()
 const open = defineModel<boolean>('open', { default: false })
-const emit = defineEmits<{ go: [id: string] }>()
+const emit = defineEmits<{ go: [id: string]; resend: [person: PersonDetail]; copyLink: [person: PersonDetail]; revoke: [person: PersonDetail] }>()
 const { t } = useI18n()
 const api = useApi()
-const { number, relative, date, percent } = useFormat()
+const { number, relative, date, dateTime, percent } = useFormat()
 
 const person = ref<PersonDetail | null>(null)
 const failed = ref(false)
@@ -26,6 +26,8 @@ async function load(id: string) {
   }
 }
 watch(() => [props.id, open.value] as const, ([id, isOpen]) => id && isOpen && void load(id), { immediate: true })
+// After an action (resend renews the link's dates)
+watch(() => props.busy, (now, before) => before && !now && props.id && open.value && void load(props.id))
 
 const index = computed(() => (props.id ? props.ids.indexOf(props.id) : -1))
 const prev = computed(() => (index.value > 0 ? props.ids[index.value - 1] : null))
@@ -42,7 +44,7 @@ const tiles = computed(() => {
   return [
     { key: 'role', icon: 'i-lucide-shield', label: t('people.col.role'), value: t(`people.role.${p.role}`) },
     { key: 'active', icon: 'i-lucide-clock', label: t('people.col.lastActive'), value: p.last_active_at ? relative(p.last_active_at) : t('people.never') },
-    { key: 'joined', icon: 'i-lucide-calendar', label: t('people.col.joined'), value: date(p.joined_at) },
+    p.invite ? { key: 'joined', icon: 'i-lucide-mail', label: t('people.status.invited'), value: date(p.invite.sent_at) } : { key: 'joined', icon: 'i-lucide-calendar', label: t('people.col.joined'), value: date(p.joined_at) },
     { key: 'twoStep', icon: p.two_step ? 'i-lucide-shield-check' : 'i-lucide-shield-off', label: t('people.col.twoStep'), value: p.two_step ? t('people.twoStepOn') : t('people.twoStepOff') },
     { key: 'signIns', icon: 'i-lucide-log-in', label: t('people.signIns30'), value: number(p.sign_ins_30d) },
     { key: 'forms', icon: 'i-lucide-file-text', label: t('people.col.forms'), value: number(p.forms_count) },
@@ -72,15 +74,20 @@ const place = computed(() => {
           <UAvatar :alt="person.name" size="2xl" class="ring-4 ring-(--ui-bg-elevated)" />
           <div class="flex min-w-0 flex-1 flex-col gap-1">
             <h2 class="truncate text-lg leading-tight font-semibold text-highlighted">{{ person.name }}</h2>
-            <p class="truncate text-sm text-muted" dir="ltr">{{ person.email }}</p>
+            <p v-if="person.name !== person.email" class="truncate text-sm text-muted" dir="ltr">{{ person.email }}</p>
             <div class="mt-1 flex flex-wrap items-center gap-1.5">
-              <DataStatusBadge :status="person.status" :label="t(`people.status.${person.status}`)" />
+              <PeopleStatus :person="person" />
               <UBadge :label="t(`people.role.${person.role}`)" icon="i-lucide-shield" color="neutral" variant="outline" size="sm" class="rounded-md" />
             </div>
           </div>
           <UButton icon="i-lucide-x" color="neutral" variant="soft" size="sm" square class="rounded-full" :aria-label="t('common.close')" @click="open = false" />
         </div>
-        <div class="flex flex-wrap items-center gap-2">
+        <div v-if="person.invite" class="flex flex-wrap items-center gap-2">
+          <UButton :label="t('people.invite.resend')" icon="i-lucide-send" color="neutral" size="sm" :loading="busy" @click="emit('resend', person)" />
+          <UButton :label="t('people.invite.copyLink')" icon="i-lucide-link" color="neutral" variant="outline" size="sm" :disabled="busy" @click="emit('copyLink', person)" />
+          <UButton :label="t('people.invite.revoke')" icon="i-lucide-user-minus" color="error" variant="outline" size="sm" :disabled="busy" @click="emit('revoke', person)" />
+        </div>
+        <div v-else class="flex flex-wrap items-center gap-2">
           <UButton :label="t('people.email')" icon="i-lucide-mail" color="neutral" size="sm" :to="`mailto:${person.email}`" external />
           <UButton :label="t('people.activity')" icon="i-lucide-scroll-text" color="neutral" variant="outline" size="sm" :to="{ path: '/audit', query: { actor_id: person.id } }" />
         </div>
@@ -91,6 +98,7 @@ const place = computed(() => {
       <AppEmpty v-if="failed && !person" icon="i-lucide-cloud-alert" :title="t('dataView.errorTitle')" :actions="[{ label: t('common.retry'), color: 'neutral', variant: 'outline', onClick: () => id && load(id) }]" />
       <div v-else-if="!person" class="grid grid-cols-2 gap-2 sm:grid-cols-3"><USkeleton v-for="n in 6" :key="n" class="h-14 rounded-lg" /></div>
       <template v-else>
+        <UAlert v-if="person.invite" :icon="person.invite.expired ? 'i-lucide-clock-alert' : 'i-lucide-mail'" :color="person.invite.expired ? 'warning' : 'neutral'" variant="subtle" :title="person.invite.expired ? t('people.invite.expiredOn', { date: dateTime(person.invite.expires_at) }) : t('people.invite.waiting', { date: dateTime(person.invite.expires_at) })" :description="t('people.invite.sentBy', { name: person.invite.invited_by, when: relative(person.invite.sent_at) })" />
         <UAlert v-if="person.role !== 'member' && !person.two_step && person.status === 'active'" icon="i-lucide-flag" color="error" variant="subtle" :title="t('people.flagTwoStep')" :description="t('people.flagTwoStepDesc')" />
         <div class="grid grid-cols-2 gap-2 sm:grid-cols-3">
           <div v-for="tile in tiles" :key="tile.key" class="flex min-w-0 items-center gap-2.5 rounded-lg border border-default p-2.5">

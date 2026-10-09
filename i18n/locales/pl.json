@@ -612,7 +612,9 @@
     "FRM-AUTH-1018": "Niedawno używasz tego hasła. Wybierz inne.",
     "FRM-FORM-1020": "Dwie opcje mają tę samą wartość. Każda wartość musi być inna.",
     "FRM-FORM-1021": "Jedna opcja nie ma opcji nad sobą. Wybierz, gdzie należy.",
-    "FRM-FORM-1022": "Ta lista ma więcej opcji, niż może pomieścić: 20 000, a 200 000 gdy jest duża."
+    "FRM-FORM-1022": "Ta lista ma więcej opcji, niż może pomieścić: 20 000, a 200 000 gdy jest duża.",
+    "FRM-USER-1001": "To zaproszenie wygasło. Poproś osobę, która Cię zaprosiła, o nowe.",
+    "FRM-USER-1002": "To zaproszenie nie jest już ważne. Mogło zostać wykorzystane lub wycofane."
   },
   "errorUi": {
     "reference": "Identyfikator: {id}",
@@ -1074,7 +1076,11 @@
       "settings_retention_applied": "Usunięto stare odpowiedzi (przechowywanie)",
       "settings_data_exported": "Wyeksportowano dane osoby",
       "settings_data_deleted": "Usunięto dane osoby",
-      "forms_list_synced": "Formularze zaktualizowane z listy opcji"
+      "forms_list_synced": "Formularze zaktualizowane z listy opcji",
+      "users_invite_resent": "Zaproszenie wysłano ponownie",
+      "users_invite_link": "Skopiowano link zaproszenia",
+      "users_invite_revoked": "Zaproszenie wycofane",
+      "users_joined": "Dołączono do przestrzeni roboczej"
     },
     "detail": {
       "who": "Kto",
@@ -7476,6 +7482,62 @@
       "forms": "Posiadane formularze",
       "phone": "Telefon",
       "twoStepShort": "Dwuetapowe"
+    },
+    "invite": {
+      "button": "Zaproś osoby",
+      "title": "Zaproś osoby",
+      "desc": "Dostaną e-mail z linkiem do dołączenia. Rolę, działy i stanowiska ustawiasz teraz.",
+      "emails": "Adresy e-mail",
+      "emailsHint": "Wpisz lub wklej jeden lub więcej, oddzielone przecinkami lub nowymi wierszami.",
+      "emailsPlaceholder": "name{'@'}example.org",
+      "wrong": "To nie jest adres e-mail: {list}",
+      "tooMany": "Do 50 naraz.",
+      "memberHint": "Pracuje z formularzami i odpowiedziami, do których ma dostęp.",
+      "adminHint": "Zarządza też osobami, ustawieniami i dziennikiem audytu.",
+      "pick": "Wybierz",
+      "addDepartments": "Dodaj działy w Ustawieniach",
+      "addJobTitles": "Dodaj stanowiska w Ustawieniach",
+      "message": "Osobista wiadomość",
+      "optional": "Opcjonalnie",
+      "messagePlaceholder": "Jedna linijka do e-maila z zaproszeniem",
+      "expires": "Linki działają 7 dni.",
+      "send": "Wyślij zaproszenie",
+      "sendMany": "Wyślij zaproszenia: {n}",
+      "sent": "Wysłano {n} zaproszenie | Wysłano zaproszenia: {n}",
+      "noneSent": "Nie wysłano zaproszeń",
+      "skipped": "Pominięto: {list}",
+      "skip": {
+        "member": "już w przestrzeni roboczej",
+        "invited": "już zaproszono"
+      },
+      "resend": "Wyślij ponownie",
+      "resent": "Zaproszenie ponownie wysłano na adres {email}",
+      "copyLink": "Kopiuj link zaproszenia",
+      "linkCopied": "Skopiowano nowy link zaproszenia. Poprzedni link już nie działa.",
+      "revoke": "Wycofaj zaproszenie",
+      "revokeTitle": "Wycofać zaproszenie dla {email}?",
+      "revokeDesc": "Link przestaje działać, a osoba znika z listy. Możesz zaprosić ją ponownie później.",
+      "revoked": "Zaproszenie dla {email} wycofane",
+      "expired": "Zaproszenie wygasło",
+      "expiredOn": "Zaproszenie wygasło {date}",
+      "waiting": "Czeka na dołączenie. Link działa do {date}.",
+      "sentBy": "Wysłał(a) {name}, {when}",
+      "sentAgo": "Zaproszono {when}",
+      "by": "Zaprosił(a) {name}",
+      "notJoined": "Jeszcze nie dołączył(a)"
+    },
+    "join": {
+      "title": "Dołącz do przestrzeni roboczej",
+      "heading": "Dołącz do {workspace}",
+      "desc": "{name} zaprasza Cię jako {role}. Podaj swoje imię i wybierz hasło.",
+      "confirm": "Potwierdź hasło",
+      "submit": "Dołącz do przestrzeni roboczej",
+      "done": "Twoje konto jest gotowe. Zaloguj się, aby zacząć.",
+      "toSignIn": "Przejdź do logowania",
+      "expired": "To zaproszenie wygasło",
+      "expiredDesc": "Linki z zaproszeniem działają 7 dni. Poproś osobę, która Cię zaprosiła, o nowy.",
+      "invalid": "To zaproszenie jest nieważne",
+      "invalidDesc": "Mogło zostać już wykorzystane lub wycofane. Jeśli już dołączyłeś(aś), zaloguj się."
     }
   }
 }

@@ -612,7 +612,9 @@
     "FRM-AUTH-1018": "Je hebt dit wachtwoord onlangs gebruikt. Kies een ander wachtwoord.",
     "FRM-FORM-1020": "Twee opties hebben dezelfde waarde. Elke waarde moet anders zijn.",
     "FRM-FORM-1021": "Een optie heeft geen optie boven zich. Kies waar hij hoort.",
-    "FRM-FORM-1022": "Deze lijst heeft meer opties dan ze kan bevatten: 20.000, of 200.000 als ze groot is."
+    "FRM-FORM-1022": "Deze lijst heeft meer opties dan ze kan bevatten: 20.000, of 200.000 als ze groot is.",
+    "FRM-USER-1001": "Deze uitnodiging is verlopen. Vraag degene die je uitnodigde om een nieuwe.",
+    "FRM-USER-1002": "Deze uitnodiging is niet meer geldig. Ze is mogelijk gebruikt of ingetrokken."
   },
   "errorUi": {
     "reference": "Referentie: {id}",
@@ -1074,7 +1076,11 @@
       "settings_retention_applied": "Oude antwoorden verwijderd (bewaartermijn)",
       "settings_data_exported": "Gegevens van een persoon geëxporteerd",
       "settings_data_deleted": "Gegevens van een persoon verwijderd",
-      "forms_list_synced": "Formulieren bijgewerkt vanuit een optielijst"
+      "forms_list_synced": "Formulieren bijgewerkt vanuit een optielijst",
+      "users_invite_resent": "Uitnodiging opnieuw verzonden",
+      "users_invite_link": "Uitnodigingslink gekopieerd",
+      "users_invite_revoked": "Uitnodiging ingetrokken",
+      "users_joined": "Is lid geworden van de werkruimte"
     },
     "detail": {
       "who": "Wie",
@@ -7476,6 +7482,62 @@
       "forms": "Eigen formulieren",
       "phone": "Telefoon",
       "twoStepShort": "Tweestaps"
+    },
+    "invite": {
+      "button": "Mensen uitnodigen",
+      "title": "Mensen uitnodigen",
+      "desc": "Ze krijgen een e-mail met een link om deel te nemen. Hun rol, afdelingen en functies stel je nu in.",
+      "emails": "E-mailadressen",
+      "emailsHint": "Typ of plak er een of meer, gescheiden door komma's of nieuwe regels.",
+      "emailsPlaceholder": "name{'@'}example.org",
+      "wrong": "Geen e-mailadres: {list}",
+      "tooMany": "Maximaal 50 tegelijk.",
+      "memberHint": "Werkt met formulieren en antwoorden waartoe ze toegang hebben.",
+      "adminHint": "Beheert ook mensen, instellingen en het auditlogboek.",
+      "pick": "Kiezen",
+      "addDepartments": "Afdelingen toevoegen in Instellingen",
+      "addJobTitles": "Functies toevoegen in Instellingen",
+      "message": "Persoonlijke notitie",
+      "optional": "Optioneel",
+      "messagePlaceholder": "Een regel voor de uitnodigingsmail",
+      "expires": "Links werken 7 dagen.",
+      "send": "Uitnodiging verzenden",
+      "sendMany": "{n} uitnodigingen verzenden",
+      "sent": "{n} uitnodiging verzonden | {n} uitnodigingen verzonden",
+      "noneSent": "Geen uitnodigingen verzonden",
+      "skipped": "Overgeslagen: {list}",
+      "skip": {
+        "member": "al in de werkruimte",
+        "invited": "al uitgenodigd"
+      },
+      "resend": "Opnieuw verzenden",
+      "resent": "Uitnodiging opnieuw verzonden naar {email}",
+      "copyLink": "Uitnodigingslink kopiëren",
+      "linkCopied": "Er is een nieuwe uitnodigingslink gekopieerd. De eerdere link werkt niet meer.",
+      "revoke": "Uitnodiging intrekken",
+      "revokeTitle": "De uitnodiging voor {email} intrekken?",
+      "revokeDesc": "De link werkt niet meer en de persoon verdwijnt uit de lijst. Je kunt later opnieuw uitnodigen.",
+      "revoked": "Uitnodiging voor {email} ingetrokken",
+      "expired": "Uitnodiging verlopen",
+      "expiredOn": "De uitnodiging is verlopen op {date}",
+      "waiting": "Wacht tot de persoon lid wordt. De link werkt tot {date}.",
+      "sentBy": "Verzonden door {name}, {when}",
+      "sentAgo": "Uitgenodigd {when}",
+      "by": "Uitgenodigd door {name}",
+      "notJoined": "Nog niet lid geworden"
+    },
+    "join": {
+      "title": "Lid worden van de werkruimte",
+      "heading": "Word lid van {workspace}",
+      "desc": "{name} heeft je uitgenodigd als {role}. Vul je naam in en kies een wachtwoord.",
+      "confirm": "Wachtwoord bevestigen",
+      "submit": "Lid worden van de werkruimte",
+      "done": "Je account is klaar. Log in om te beginnen.",
+      "toSignIn": "Naar inloggen",
+      "expired": "Deze uitnodiging is verlopen",
+      "expiredDesc": "Uitnodigingslinks werken 7 dagen. Vraag degene die je uitnodigde om een nieuwe te sturen.",
+      "invalid": "Deze uitnodiging is niet geldig",
+      "invalidDesc": "Ze is mogelijk al gebruikt of ingetrokken. Als je al lid bent geworden, log dan in."
     }
   }
 }

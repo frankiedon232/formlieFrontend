@@ -612,7 +612,9 @@
     "FRM-AUTH-1018": "Anda baru saja memakai kata sandi ini. Pilih yang lain.",
     "FRM-FORM-1020": "Dua opsi memiliki nilai yang sama. Setiap nilai harus berbeda.",
     "FRM-FORM-1021": "Ada opsi yang tidak punya opsi di atasnya. Pilih tempatnya.",
-    "FRM-FORM-1022": "Daftar ini memiliki opsi lebih banyak dari yang dapat ditampung: 20.000, atau 200.000 jika besar."
+    "FRM-FORM-1022": "Daftar ini memiliki opsi lebih banyak dari yang dapat ditampung: 20.000, atau 200.000 jika besar.",
+    "FRM-USER-1001": "Undangan ini sudah kedaluwarsa. Minta undangan baru kepada orang yang mengundang Anda.",
+    "FRM-USER-1002": "Undangan ini tidak berlaku lagi. Mungkin sudah digunakan atau ditarik."
   },
   "errorUi": {
     "reference": "Referensi: {id}",
@@ -1074,7 +1076,11 @@
       "settings_retention_applied": "Respons lama dihapus (retensi)",
       "settings_data_exported": "Data seseorang diekspor",
       "settings_data_deleted": "Data seseorang dihapus",
-      "forms_list_synced": "Formulir diperbarui dari daftar opsi"
+      "forms_list_synced": "Formulir diperbarui dari daftar opsi",
+      "users_invite_resent": "Undangan dikirim ulang",
+      "users_invite_link": "Tautan undangan disalin",
+      "users_invite_revoked": "Undangan ditarik",
+      "users_joined": "Bergabung ke ruang kerja"
     },
     "detail": {
       "who": "Siapa",
@@ -7476,6 +7482,62 @@
       "forms": "Formulir dimiliki",
       "phone": "Telepon",
       "twoStepShort": "Dua langkah"
+    },
+    "invite": {
+      "button": "Undang orang",
+      "title": "Undang orang",
+      "desc": "Mereka menerima email berisi tautan untuk bergabung. Peran, departemen, dan jabatan ditetapkan sekarang.",
+      "emails": "Alamat email",
+      "emailsHint": "Ketik atau tempel satu atau lebih, dipisahkan koma atau baris baru.",
+      "emailsPlaceholder": "name{'@'}example.org",
+      "wrong": "Bukan alamat email: {list}",
+      "tooMany": "Maksimal 50 sekaligus.",
+      "memberHint": "Bekerja dengan formulir dan respons yang dapat diaksesnya.",
+      "adminHint": "Juga mengelola orang, pengaturan, dan jejak audit.",
+      "pick": "Pilih",
+      "addDepartments": "Tambahkan departemen di Pengaturan",
+      "addJobTitles": "Tambahkan jabatan di Pengaturan",
+      "message": "Catatan pribadi",
+      "optional": "Opsional",
+      "messagePlaceholder": "Satu baris untuk email undangan",
+      "expires": "Tautan berlaku 7 hari.",
+      "send": "Kirim undangan",
+      "sendMany": "Kirim {n} undangan",
+      "sent": "{n} undangan terkirim | {n} undangan terkirim",
+      "noneSent": "Tidak ada undangan terkirim",
+      "skipped": "Dilewati: {list}",
+      "skip": {
+        "member": "sudah ada di ruang kerja",
+        "invited": "sudah diundang"
+      },
+      "resend": "Kirim ulang",
+      "resent": "Undangan dikirim ulang ke {email}",
+      "copyLink": "Salin tautan undangan",
+      "linkCopied": "Tautan undangan baru telah disalin. Tautan sebelumnya tidak berlaku lagi.",
+      "revoke": "Tarik undangan",
+      "revokeTitle": "Tarik undangan untuk {email}?",
+      "revokeDesc": "Tautan berhenti berfungsi dan orang tersebut hilang dari daftar. Anda dapat mengundangnya lagi nanti.",
+      "revoked": "Undangan untuk {email} ditarik",
+      "expired": "Undangan kedaluwarsa",
+      "expiredOn": "Undangan kedaluwarsa pada {date}",
+      "waiting": "Menunggu mereka bergabung. Tautan berlaku sampai {date}.",
+      "sentBy": "Dikirim oleh {name}, {when}",
+      "sentAgo": "Diundang {when}",
+      "by": "Diundang oleh {name}",
+      "notJoined": "Belum bergabung"
+    },
+    "join": {
+      "title": "Bergabung ke ruang kerja",
+      "heading": "Bergabung ke {workspace}",
+      "desc": "{name} mengundang Anda sebagai {role}. Tambahkan nama Anda dan pilih kata sandi.",
+      "confirm": "Konfirmasi kata sandi",
+      "submit": "Bergabung ke ruang kerja",
+      "done": "Akun Anda sudah siap. Masuk untuk memulai.",
+      "toSignIn": "Ke halaman masuk",
+      "expired": "Undangan ini sudah kedaluwarsa",
+      "expiredDesc": "Tautan undangan berlaku 7 hari. Minta orang yang mengundang Anda untuk mengirim yang baru.",
+      "invalid": "Undangan ini tidak valid",
+      "invalidDesc": "Mungkin sudah digunakan atau ditarik. Jika Anda sudah bergabung, silakan masuk."
     }
   }
 }

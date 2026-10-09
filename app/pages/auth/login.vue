@@ -24,7 +24,8 @@ const hasSocial = computed(() => (profile.value?.auth_providers ?? []).some(p =>
 
 const schema = computed(() => (isManage.value ? emailOnlySchema(t) : loginSchema(t)))
 const state = reactive({
-  email: typeof route.query.email === 'string' ? route.query.email : '',
+  // An accepted invitation brings the address along in app state (F16 M2)
+  email: typeof route.query.email === 'string' ? route.query.email : (useState<string>('auth:join-email').value ?? ''),
   password: '',
 })
 
@@ -38,6 +39,8 @@ const notice = computed(() => {
       title: t('auth.login.oauthUnavailable', { provider: providerName(route.query.provider) }),
     }
   }
+  if (route.query.joined)
+    return { color: 'success' as const, icon: 'i-lucide-party-popper', title: t('people.join.done') }
   if (route.query.reset)
     return { color: 'success' as const, icon: 'i-lucide-circle-check', title: t('auth.login.passwordReset') }
   return null

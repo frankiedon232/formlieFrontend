@@ -612,7 +612,9 @@
     "FRM-AUTH-1018": "Ulitumia nenosiri hili hivi karibuni. Chagua lingine.",
     "FRM-FORM-1020": "Chaguo mbili zina thamani moja. Kila thamani lazima iwe tofauti.",
     "FRM-FORM-1021": "Chaguo moja halina chaguo juu yake. Chagua linapoenda.",
-    "FRM-FORM-1022": "Orodha hii ina chaguo nyingi kuliko inavyoweza kubeba: 20,000, au 200,000 ikiwa ni kubwa."
+    "FRM-FORM-1022": "Orodha hii ina chaguo nyingi kuliko inavyoweza kubeba: 20,000, au 200,000 ikiwa ni kubwa.",
+    "FRM-USER-1001": "Mwaliko huu umeisha muda. Mwombe aliyekualika akutumie mpya.",
+    "FRM-USER-1002": "Mwaliko huu haufai tena. Huenda ulishatumika au ulirejeshwa."
   },
   "errorUi": {
     "reference": "Kumbukumbu: {id}",
@@ -1074,7 +1076,11 @@
       "settings_retention_applied": "Majibu ya zamani yameondolewa (uhifadhi)",
       "settings_data_exported": "Data ya mtu imehamishwa",
       "settings_data_deleted": "Data ya mtu imefutwa",
-      "forms_list_synced": "Fomu zimesasishwa kutoka orodha ya chaguo"
+      "forms_list_synced": "Fomu zimesasishwa kutoka orodha ya chaguo",
+      "users_invite_resent": "Mwaliko umetumwa tena",
+      "users_invite_link": "Kiungo cha mwaliko kimenakiliwa",
+      "users_invite_revoked": "Mwaliko umerejeshwa",
+      "users_joined": "Amejiunga na nafasi ya kazi"
     },
     "detail": {
       "who": "Nani",
@@ -7476,6 +7482,62 @@
       "forms": "Fomu anazomiliki",
       "phone": "Simu",
       "twoStepShort": "Hatua mbili"
+    },
+    "invite": {
+      "button": "Alika watu",
+      "title": "Alika watu",
+      "desc": "Watapata barua pepe yenye kiungo cha kujiunga. Jukumu, idara na vyeo vyao huwekwa sasa.",
+      "emails": "Anwani za barua pepe",
+      "emailsHint": "Andika au bandika moja au zaidi, zikitenganishwa kwa koma au mistari mipya.",
+      "emailsPlaceholder": "name{'@'}example.org",
+      "wrong": "Si anwani ya barua pepe: {list}",
+      "tooMany": "Hadi 50 kwa wakati mmoja.",
+      "memberHint": "Hufanya kazi na fomu na majibu ambayo amepewa ufikiaji.",
+      "adminHint": "Pia husimamia watu, mipangilio na kumbukumbu ya ukaguzi.",
+      "pick": "Chagua",
+      "addDepartments": "Ongeza idara katika Mipangilio",
+      "addJobTitles": "Ongeza vyeo katika Mipangilio",
+      "message": "Ujumbe binafsi",
+      "optional": "Hiari",
+      "messagePlaceholder": "Mstari mmoja wa barua pepe ya mwaliko",
+      "expires": "Viungo hufanya kazi kwa siku 7.",
+      "send": "Tuma mwaliko",
+      "sendMany": "Tuma mialiko {n}",
+      "sent": "Mwaliko {n} umetumwa | Mialiko {n} imetumwa",
+      "noneSent": "Hakuna mialiko iliyotumwa",
+      "skipped": "Walioachwa: {list}",
+      "skip": {
+        "member": "tayari yuko kwenye nafasi ya kazi",
+        "invited": "tayari amealikwa"
+      },
+      "resend": "Tuma tena",
+      "resent": "Mwaliko umetumwa tena kwa {email}",
+      "copyLink": "Nakili kiungo cha mwaliko",
+      "linkCopied": "Kiungo kipya cha mwaliko kimenakiliwa. Kiungo cha awali hakifanyi kazi tena.",
+      "revoke": "Rejesha mwaliko",
+      "revokeTitle": "Rejesha mwaliko wa {email}?",
+      "revokeDesc": "Kiungo huacha kufanya kazi na mtu huyo huondolewa kwenye orodha. Unaweza kumwalika tena baadaye.",
+      "revoked": "Mwaliko wa {email} umerejeshwa",
+      "expired": "Mwaliko umeisha muda",
+      "expiredOn": "Mwaliko uliisha muda tarehe {date}",
+      "waiting": "Inasubiri ajiunge. Kiungo kinafanya kazi hadi {date}.",
+      "sentBy": "Imetumwa na {name}, {when}",
+      "sentAgo": "Alialikwa {when}",
+      "by": "Amealikwa na {name}",
+      "notJoined": "Bado hajajiunga"
+    },
+    "join": {
+      "title": "Jiunge na nafasi ya kazi",
+      "heading": "Jiunge na {workspace}",
+      "desc": "{name} amekualika kama {role}. Ongeza jina lako na uchague nenosiri.",
+      "confirm": "Thibitisha nenosiri",
+      "submit": "Jiunge na nafasi ya kazi",
+      "done": "Akaunti yako iko tayari. Ingia ili uanze.",
+      "toSignIn": "Nenda kwenye kuingia",
+      "expired": "Mwaliko huu umeisha muda",
+      "expiredDesc": "Viungo vya mwaliko hufanya kazi kwa siku 7. Mwombe aliyekualika atume kipya.",
+      "invalid": "Mwaliko huu si halali",
+      "invalidDesc": "Huenda ulishatumika au ulirejeshwa. Ikiwa ulishajiunga, ingia."
     }
   }
 }

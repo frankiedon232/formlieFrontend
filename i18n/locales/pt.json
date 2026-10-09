@@ -612,7 +612,9 @@
     "FRM-AUTH-1018": "Usou esta senha recentemente. Escolha outra.",
     "FRM-FORM-1020": "Duas opções têm o mesmo valor. Cada valor deve ser diferente.",
     "FRM-FORM-1021": "Uma opção não tem nenhuma opção acima. Escolha onde ela fica.",
-    "FRM-FORM-1022": "Esta lista tem mais opções do que comporta: 20.000, ou 200.000 se for grande."
+    "FRM-FORM-1022": "Esta lista tem mais opções do que comporta: 20.000, ou 200.000 se for grande.",
+    "FRM-USER-1001": "Este convite expirou. Peça um novo a quem convidou você.",
+    "FRM-USER-1002": "Este convite não é mais válido. Ele pode ter sido usado ou retirado."
   },
   "errorUi": {
     "reference": "Referência: {id}",
@@ -1074,7 +1076,11 @@
       "settings_retention_applied": "Respostas antigas removidas (retenção)",
       "settings_data_exported": "Dados de uma pessoa exportados",
       "settings_data_deleted": "Dados de uma pessoa excluídos",
-      "forms_list_synced": "Formulários atualizados a partir de uma lista de opções"
+      "forms_list_synced": "Formulários atualizados a partir de uma lista de opções",
+      "users_invite_resent": "Convite reenviado",
+      "users_invite_link": "Link do convite copiado",
+      "users_invite_revoked": "Convite retirado",
+      "users_joined": "Entrou no espaço de trabalho"
     },
     "detail": {
       "who": "Quem",
@@ -7476,6 +7482,62 @@
       "forms": "Formulários próprios",
       "phone": "Telefone",
       "twoStepShort": "Duas etapas"
+    },
+    "invite": {
+      "button": "Convidar pessoas",
+      "title": "Convidar pessoas",
+      "desc": "Elas recebem um e-mail com um link para entrar. Função, departamentos e cargos são definidos agora.",
+      "emails": "Endereços de e-mail",
+      "emailsHint": "Digite ou cole um ou mais, separados por vírgulas ou quebras de linha.",
+      "emailsPlaceholder": "name{'@'}example.org",
+      "wrong": "Não é um e-mail válido: {list}",
+      "tooMany": "Até 50 por vez.",
+      "memberHint": "Trabalha com os formulários e respostas aos quais tem acesso.",
+      "adminHint": "Também gerencia pessoas, configurações e a trilha de auditoria.",
+      "pick": "Escolher",
+      "addDepartments": "Adicionar departamentos em Configurações",
+      "addJobTitles": "Adicionar cargos em Configurações",
+      "message": "Nota pessoal",
+      "optional": "Opcional",
+      "messagePlaceholder": "Uma linha para o e-mail do convite",
+      "expires": "Os links funcionam por 7 dias.",
+      "send": "Enviar convite",
+      "sendMany": "Enviar {n} convites",
+      "sent": "{n} convite enviado | {n} convites enviados",
+      "noneSent": "Nenhum convite enviado",
+      "skipped": "Ignorados: {list}",
+      "skip": {
+        "member": "já está no espaço de trabalho",
+        "invited": "já convidado"
+      },
+      "resend": "Reenviar",
+      "resent": "Convite reenviado para {email}",
+      "copyLink": "Copiar link do convite",
+      "linkCopied": "Um novo link de convite foi copiado. O link anterior não funciona mais.",
+      "revoke": "Retirar convite",
+      "revokeTitle": "Retirar o convite para {email}?",
+      "revokeDesc": "O link deixa de funcionar e a pessoa sai da lista. Você pode convidá-la novamente depois.",
+      "revoked": "Convite para {email} retirado",
+      "expired": "Convite expirado",
+      "expiredOn": "O convite expirou em {date}",
+      "waiting": "Aguardando a pessoa entrar. O link funciona até {date}.",
+      "sentBy": "Enviado por {name}, {when}",
+      "sentAgo": "Convidado {when}",
+      "by": "Convidado por {name}",
+      "notJoined": "Ainda não entrou"
+    },
+    "join": {
+      "title": "Entrar no espaço de trabalho",
+      "heading": "Entrar em {workspace}",
+      "desc": "{name} convidou você como {role}. Adicione seu nome e escolha uma senha.",
+      "confirm": "Confirmar senha",
+      "submit": "Entrar no espaço de trabalho",
+      "done": "Sua conta está pronta. Entre para começar.",
+      "toSignIn": "Ir para o login",
+      "expired": "Este convite expirou",
+      "expiredDesc": "Os links de convite funcionam por 7 dias. Peça a quem convidou você que envie um novo.",
+      "invalid": "Este convite não é válido",
+      "invalidDesc": "Ele pode já ter sido usado ou retirado. Se você já entrou, faça login."
     }
   }
 }

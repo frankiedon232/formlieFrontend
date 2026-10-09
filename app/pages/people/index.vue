@@ -21,15 +21,27 @@ const { relative, dateTime, date } = useFormat()
 const list = useTemplateRef<{ refresh: () => Promise<void>; state: { rows: Ref<PersonRow[]> } }>('list')
 const insights = ref<PeopleInsights | null>(null)
 const directory = ref<Directory | null>(null)
-onMounted(async () => {
+async function loadInsights() {
   try {
-    const [stats, dir] = await Promise.all([api.get<PeopleInsights>('/people/insights'), api.get<Directory>('/directory', undefined, { background: true })])
-    insights.value = stats.data
-    directory.value = dir.data
+    insights.value = (await api.get<PeopleInsights>('/people/insights', undefined, { background: !!insights.value })).data
   } catch {
     insights.value ??= null
   }
+}
+onMounted(async () => {
+  void loadInsights()
+  try {
+    directory.value = (await api.get<Directory>('/directory', undefined, { background: true })).data
+  } catch {
+    directory.value = null
+  }
 })
+const refreshAll = () => Promise.all([list.value?.refresh(), loadInsights()])
+const actions = usePeopleActions(refreshAll)
+
+// Invite people (I, or ?invite=1)
+const inviteOpen = ref(!!route.query.invite)
+defineShortcuts({ i: { usingInput: false, handler: () => (inviteOpen.value = true) } })
 
 const columns = computed<DataColumn[]>(() => [
   { key: 'name', label: t('people.col.name'), sortable: true, fixed: true },
@@ -69,14 +81,28 @@ const rowActions = (row: PersonRow): DropdownMenuItem[][] => [
   [
     { label: t('apiService.actions.open'), icon: 'i-lucide-panel-right-open', onSelect: () => openRow(row) },
     { label: t('people.email'), icon: 'i-lucide-mail', to: `mailto:${row.email}`, external: true },
-    { label: t('people.activity'), icon: 'i-lucide-scroll-text', to: { path: '/audit', query: { actor_id: row.id } } },
+    ...(row.status === 'invited' ? [] : [{ label: t('people.activity'), icon: 'i-lucide-scroll-text', to: { path: '/audit', query: { actor_id: row.id } } }]),
   ],
+  ...(row.status === 'invited'
+    ? [
+        [
+          { label: t('people.invite.resend'), icon: 'i-lucide-send', onSelect: () => void actions.resend(row) },
+          { label: t('people.invite.copyLink'), icon: 'i-lucide-link', onSelect: () => void actions.copyLink(row) },
+        ],
+        [{ label: t('people.invite.revoke'), icon: 'i-lucide-user-minus', color: 'error' as const, onSelect: () => void actions.revoke(row) }],
+      ]
+    : []),
 ]
 const names = (items: { name: string }[]) => items.map(item => item.name).join(', ')
 </script>
 
 <template>
   <AppPanel id="people" :title="t('nav.people')" :subtitle="t('people.subtitle')">
+    <template #actions>
+      <UButton :label="t('people.invite.button')" icon="i-lucide-user-plus" color="neutral" @click="inviteOpen = true">
+        <template #trailing><UKbd value="I" size="sm" class="hidden sm:inline-flex" /></template>
+      </UButton>
+    </template>
     <PeopleOverview :insights="insights" :selected="statusFilter" @pick="pickStatus" />
 
     <DataView
@@ -89,6 +115,7 @@ const names = (items: { name: string }[]) => items.map(item => item.name).join('
       default-sort="name"
       default-view="table"
       :row-actions="rowActions"
+      :busy="row => actions.busy.value === row.id"
       :open-row="openRow"
       :search-placeholder="t('people.search')"
       empty-icon="i-lucide-users"
@@ -99,18 +126,21 @@ const names = (items: { name: string }[]) => items.map(item => item.name).join('
       <template #role-cell="{ row }"><span class="text-default">{{ t(`people.role.${row.original.role}`) }}</span></template>
       <template #departments-cell="{ row }"><span class="block max-w-48 truncate text-muted">{{ names(row.original.departments) || '–' }}</span></template>
       <template #job_titles-cell="{ row }"><span class="block max-w-48 truncate text-muted">{{ names(row.original.job_titles) || '–' }}</span></template>
-      <template #status-cell="{ row }"><DataStatusBadge :status="row.original.status" :label="t(`people.status.${row.original.status}`)" /></template>
+      <template #status-cell="{ row }"><PeopleStatus :person="row.original" /></template>
       <template #two_step-cell="{ row }">
         <span class="flex items-center gap-1.5 text-muted"><UIcon :name="row.original.two_step ? 'i-lucide-shield-check' : 'i-lucide-shield-off'" class="size-4" :class="row.original.two_step ? 'text-highlighted' : ''" />{{ row.original.two_step ? t('people.twoStepOn') : t('people.twoStepOff') }}</span>
       </template>
       <template #last_active_at-cell="{ row }">
-        <UTooltip v-if="row.original.last_active_at" :text="dateTime(row.original.last_active_at)"><span class="whitespace-nowrap text-muted">{{ relative(row.original.last_active_at) }}</span></UTooltip>
+        <UTooltip v-if="row.original.invite" :text="t('people.invite.by', { name: row.original.invite.invited_by })"><span class="whitespace-nowrap text-muted">{{ t('people.invite.sentAgo', { when: relative(row.original.invite.sent_at) }) }}</span></UTooltip>
+        <UTooltip v-else-if="row.original.last_active_at" :text="dateTime(row.original.last_active_at)"><span class="whitespace-nowrap text-muted">{{ relative(row.original.last_active_at) }}</span></UTooltip>
         <span v-else class="text-muted">{{ t('people.never') }}</span>
       </template>
       <template #joined_at-cell="{ row }"><span class="whitespace-nowrap text-muted">{{ date(row.original.joined_at) }}</span></template>
-      <template #grid-card="{ row }"><PeopleCard :person="row" :actions="rowActions(row)" /></template>
+      <template #empty-actions><UButton :label="t('people.invite.button')" icon="i-lucide-user-plus" color="neutral" @click="inviteOpen = true" /></template>
+      <template #grid-card="{ row }"><PeopleCard :person="row" :actions="rowActions(row)" :busy="actions.busy.value === row.id" /></template>
     </DataView>
 
-    <PeopleDetail :id="openId" v-model:open="panelOpen" :ids="ids.length ? ids : openId ? [openId] : []" @go="go" />
+    <PeopleDetail :id="openId" ref="panel" v-model:open="panelOpen" :ids="ids.length ? ids : openId ? [openId] : []" :busy="!!actions.busy.value" @go="go" @resend="actions.resend" @copy-link="actions.copyLink" @revoke="person => actions.revoke(person).then(() => (panelOpen = false))" />
+    <PeopleInviteModal v-model:open="inviteOpen" :directory="directory" @invited="refreshAll" />
   </AppPanel>
 </template>

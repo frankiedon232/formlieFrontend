@@ -267,3 +267,5 @@ Edit this file whenever a decision changes.
 **No live collaboration (owner 2026-10-08).** F20 (presence, cursors, shared live editing in the builder) is removed from the plan. One person edits a form at a time; draft saves and version checks stay as built.
 
 **Responses carry only what the form collected (owner 2026-10-09).** No made-up respondent such as "Anonymous": a response is named by the name or email its form asked for, else by its own first answers (words before scores), else by its number. Exports have no Name / Email columns of their own; the form's questions carry them. System details (number, time, status, channel) stay.
+
+**Invitations (F16 M2, 2026-10-09).** Admins invite by email with role, departments and job titles set at once; the link works 7 days and only a hash of its token is stored, so a new link (Send again, Copy invite link) replaces the old one. The invitee sets their own name and password on the workspace's join page, then signs in normally (with the code). Owners are never invited, only Admin or Member; ownership changes come with managing people.

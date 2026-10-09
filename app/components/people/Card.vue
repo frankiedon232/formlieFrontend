@@ -19,9 +19,9 @@ const names = (items: { name: string }[]) => items.map(item => item.name).join('
 <template>
   <div class="flex h-full flex-col gap-3 rounded-xl border border-default bg-default p-4 transition hover:border-accented hover:shadow-sm" :class="busy ? 'pointer-events-none opacity-60' : ''">
     <div class="flex items-center justify-between gap-2">
-      <span class="flex min-w-0 items-center gap-1.5 rounded-full border border-default px-2 py-0.5 text-[11px] text-muted"><UIcon name="i-lucide-clock" class="size-3" />{{ person.last_active_at ? relative(person.last_active_at) : t('people.never') }}</span>
+      <span class="flex min-w-0 items-center gap-1.5 rounded-full border border-default px-2 py-0.5 text-[11px] text-muted"><UIcon name="i-lucide-clock" class="size-3" />{{ person.invite ? t('people.invite.sentAgo', { when: relative(person.invite.sent_at) }) : person.last_active_at ? relative(person.last_active_at) : t('people.never') }}</span>
       <div class="flex items-center gap-1">
-        <DataStatusBadge :status="person.status" :label="t(`people.status.${person.status}`)" />
+        <PeopleStatus :person="person" />
         <UDropdownMenu :items="actions" :content="{ align: 'end' }">
           <UButton icon="i-lucide-ellipsis" color="neutral" variant="outline" size="xs" :loading="busy" :aria-label="t('dataView.actions')" @click.stop />
         </UDropdownMenu>
@@ -32,7 +32,7 @@ const names = (items: { name: string }[]) => items.map(item => item.name).join('
         <UTooltip v-if="flagged" :text="t('people.flagTwoStep')"><UIcon name="i-lucide-flag" class="size-3.5 shrink-0 text-error" :aria-label="t('people.flagTwoStep')" /></UTooltip>
         <span class="truncate font-semibold text-highlighted">{{ person.name }}</span>
       </span>
-      <span class="truncate text-xs text-muted" dir="ltr">{{ person.email }}</span>
+      <span class="truncate text-xs text-muted" dir="ltr">{{ person.name !== person.email ? person.email : t('people.invite.notJoined') }}</span>
     </div>
     <dl class="grid grid-cols-2 gap-x-4 gap-y-2 text-xs">
       <div class="flex min-w-0 flex-col"><dt class="text-muted">{{ t('people.col.department') }}</dt><dd class="truncate font-medium text-highlighted">{{ names(person.departments) }}</dd></div>
@@ -47,7 +47,7 @@ const names = (items: { name: string }[]) => items.map(item => item.name).join('
     <div class="mt-auto flex items-center justify-between gap-2 text-[11px] text-muted">
       <div class="flex min-w-0 items-center gap-2">
         <UAvatar :alt="person.name" size="xs" />
-        <span class="truncate">{{ t('people.joinedOn', { date: date(person.joined_at) }) }}</span>
+        <span class="truncate">{{ person.invite ? t('people.invite.by', { name: person.invite.invited_by }) : t('people.joinedOn', { date: date(person.joined_at) }) }}</span>
       </div>
       <div class="flex shrink-0 items-center gap-2.5">
         <UTooltip :text="t('people.formsOwned', { n: person.forms_count }, person.forms_count)"><span class="flex items-center gap-1"><UIcon name="i-lucide-file-text" class="size-3.5" />{{ number(person.forms_count) }}</span></UTooltip>

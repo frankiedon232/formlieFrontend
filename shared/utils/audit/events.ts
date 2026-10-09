@@ -93,6 +93,10 @@ export const AUDIT_EVENTS = {
   'settings.data_deleted': { area: 'settings', icon: 'i-lucide-user-x' },
   // Users
   'users.invited': { area: 'users', icon: 'i-lucide-user-plus' },
+  'users.invite_resent': { area: 'users', icon: 'i-lucide-mail' },
+  'users.invite_link': { area: 'users', icon: 'i-lucide-link' },
+  'users.invite_revoked': { area: 'users', icon: 'i-lucide-user-minus' },
+  'users.joined': { area: 'users', icon: 'i-lucide-user-check' },
   'users.role_changed': { area: 'users', icon: 'i-lucide-user-cog' },
   'users.disabled': { area: 'users', icon: 'i-lucide-user-x' },
   'users.enabled': { area: 'users', icon: 'i-lucide-user-check' },

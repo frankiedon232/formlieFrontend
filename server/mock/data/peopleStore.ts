@@ -25,6 +25,8 @@ export interface StoredPerson {
   manager_id: string | null
   two_step: boolean
   joined_at: string
+  /** An open invitation (F16 M2): only a hash of the link's token is kept. */
+  invite?: { token_hash: string; expires_at: string; sent_at: string; invited_by: { id: string; name: string }; message: string | null }
 }
 
 const stores = new Map<string, StoredPerson[]>(Object.entries(loadPersisted<Record<string, StoredPerson[]>>('people', {})))
@@ -87,7 +89,7 @@ export function peopleRows(tenant: MockTenant): PersonRow[] {
   const lastSeen = new Map<string, string>()
   for (const event of auditLogOf(tenant)) if (event.actor.id && !lastSeen.has(event.actor.id)) lastSeen.set(event.actor.id, event.occurred_at)
   const forms = formsOf(tenant).forms.filter(form => !form.deleted_at)
-  const nameOf = (person: StoredPerson) => `${person.first_name} ${person.last_name}`.trim()
+  const nameOf = (person: StoredPerson) => `${person.first_name} ${person.last_name}`.trim() || person.email
   return people.map(person => {
     const manager = person.manager_id ? people.find(item => item.id === person.manager_id) : undefined
     return {
@@ -106,6 +108,7 @@ export function peopleRows(tenant: MockTenant): PersonRow[] {
       last_active_at: person.status === 'invited' ? null : (lastSeen.get(person.id) ?? null),
       joined_at: person.joined_at,
       forms_count: forms.filter(form => form.owner?.id === person.id).length,
+      invite: person.invite ? { expires_at: person.invite.expires_at, sent_at: person.invite.sent_at, invited_by: person.invite.invited_by.name, expired: Date.parse(person.invite.expires_at) < Date.now() } : null,
     }
   })
 }

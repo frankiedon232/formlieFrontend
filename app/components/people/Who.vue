@@ -15,7 +15,7 @@ const { t } = useI18n()
         <span class="truncate">{{ person.name }}</span>
         <UTooltip v-if="person.role !== 'member' && !person.two_step && person.status === 'active'" :text="t('people.flagTwoStep')"><UIcon name="i-lucide-flag" class="size-3.5 shrink-0 text-error" :aria-label="t('people.flagTwoStep')" /></UTooltip>
       </button>
-      <span class="truncate text-xs text-muted" dir="ltr">{{ person.email }}</span>
+      <span v-if="person.name !== person.email" class="truncate text-xs text-muted" dir="ltr">{{ person.email }}</span>
     </div>
   </div>
 </template>

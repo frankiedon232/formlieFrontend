@@ -612,7 +612,9 @@
     "FRM-AUTH-1018": "Vous avez utilisé ce mot de passe récemment. Choisissez-en un autre.",
     "FRM-FORM-1020": "Deux options ont la même valeur. Chaque valeur doit être différente.",
     "FRM-FORM-1021": "Une option n’a aucune option au-dessus. Choisissez où la placer.",
-    "FRM-FORM-1022": "Cette liste contient plus d'options qu'elle ne peut en accepter : 20 000, ou 200 000 si elle est grande."
+    "FRM-FORM-1022": "Cette liste contient plus d'options qu'elle ne peut en accepter : 20 000, ou 200 000 si elle est grande.",
+    "FRM-USER-1001": "Cette invitation a expiré. Demandez-en une nouvelle à la personne qui vous a invité.",
+    "FRM-USER-1002": "Cette invitation n'est plus valide. Elle a peut-être été utilisée ou retirée."
   },
   "errorUi": {
     "reference": "Référence : {id}",
@@ -1074,7 +1076,11 @@
       "settings_retention_applied": "Anciennes réponses supprimées (conservation)",
       "settings_data_exported": "Données d'une personne exportées",
       "settings_data_deleted": "Données d'une personne supprimées",
-      "forms_list_synced": "Formulaires mis à jour depuis une liste d’options"
+      "forms_list_synced": "Formulaires mis à jour depuis une liste d’options",
+      "users_invite_resent": "Invitation renvoyée",
+      "users_invite_link": "Lien d'invitation copié",
+      "users_invite_revoked": "Invitation retirée",
+      "users_joined": "A rejoint l'espace de travail"
     },
     "detail": {
       "who": "Qui",
@@ -7476,6 +7482,62 @@
       "forms": "Formulaires possédés",
       "phone": "Téléphone",
       "twoStepShort": "Deux étapes"
+    },
+    "invite": {
+      "button": "Inviter des personnes",
+      "title": "Inviter des personnes",
+      "desc": "Elles reçoivent un e-mail avec un lien pour rejoindre. Leur rôle, leurs services et leurs postes sont définis maintenant.",
+      "emails": "Adresses e-mail",
+      "emailsHint": "Saisissez ou collez-en une ou plusieurs, séparées par des virgules ou des retours à la ligne.",
+      "emailsPlaceholder": "name{'@'}example.org",
+      "wrong": "Adresse e-mail non valide : {list}",
+      "tooMany": "50 maximum à la fois.",
+      "memberHint": "Travaille avec les formulaires et les réponses auxquels il a accès.",
+      "adminHint": "Gère aussi les personnes, les paramètres et le journal d'audit.",
+      "pick": "Choisir",
+      "addDepartments": "Ajouter des services dans les paramètres",
+      "addJobTitles": "Ajouter des postes dans les paramètres",
+      "message": "Note personnelle",
+      "optional": "Facultatif",
+      "messagePlaceholder": "Une ligne pour l'e-mail d'invitation",
+      "expires": "Les liens sont valables 7 jours.",
+      "send": "Envoyer l'invitation",
+      "sendMany": "Envoyer {n} invitations",
+      "sent": "{n} invitation envoyée | {n} invitations envoyées",
+      "noneSent": "Aucune invitation envoyée",
+      "skipped": "Ignorés : {list}",
+      "skip": {
+        "member": "déjà dans l'espace de travail",
+        "invited": "déjà invité"
+      },
+      "resend": "Renvoyer",
+      "resent": "Invitation renvoyée à {email}",
+      "copyLink": "Copier le lien d'invitation",
+      "linkCopied": "Un nouveau lien d'invitation est copié. Le lien précédent ne fonctionne plus.",
+      "revoke": "Retirer l'invitation",
+      "revokeTitle": "Retirer l'invitation envoyée à {email} ?",
+      "revokeDesc": "Le lien cesse de fonctionner et la personne disparaît de la liste. Vous pourrez l'inviter à nouveau plus tard.",
+      "revoked": "Invitation à {email} retirée",
+      "expired": "Invitation expirée",
+      "expiredOn": "L'invitation a expiré le {date}",
+      "waiting": "En attente de son arrivée. Le lien est valable jusqu'au {date}.",
+      "sentBy": "Envoyée par {name}, {when}",
+      "sentAgo": "Invité {when}",
+      "by": "Invité par {name}",
+      "notJoined": "Pas encore rejoint"
+    },
+    "join": {
+      "title": "Rejoindre l'espace de travail",
+      "heading": "Rejoindre {workspace}",
+      "desc": "{name} vous a invité en tant que {role}. Indiquez votre nom et choisissez un mot de passe.",
+      "confirm": "Confirmer le mot de passe",
+      "submit": "Rejoindre l'espace de travail",
+      "done": "Votre compte est prêt. Connectez-vous pour commencer.",
+      "toSignIn": "Aller à la connexion",
+      "expired": "Cette invitation a expiré",
+      "expiredDesc": "Les liens d'invitation sont valables 7 jours. Demandez à la personne qui vous a invité d'en envoyer un nouveau.",
+      "invalid": "Cette invitation n'est pas valide",
+      "invalidDesc": "Elle a peut-être déjà été utilisée ou retirée. Si vous avez déjà rejoint l'espace, connectez-vous."
     }
   }
 }
