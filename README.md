@@ -30,7 +30,7 @@ The mock API (`NUXT_PUBLIC_API_MOCK=true`) is seeded in [server/mock/data/tenant
 | ------------ | -------------------------------------- | ---------------------------------- | ---------------------------------------------------------------------------------- |
 | Remedy Legal | Frankie Don, workspace owner           | `admin@remedylegal.test`           | Normal sign-in; code by email or SMS; sees the **Audit trail**                     |
 | Remedy Legal | Marcus Reid, account disabled by admin | `marcus.reid@remedylegal.test`     | Correct password, but "Account disabled. Contact your administrator."              |
-| Remedy Legal | Lena Novak, staff member               | `staff@remedylegal.test`           | **Form test:** opening a form set to "Only my organisation" (Share tab), see below |
+| Remedy Legal | Lena Novak, staff member (Reviewer)    | `staff@remedylegal.test`           | **Form test:** opening a form set to "Only my organisation" (Share tab), see below |
 | Samath Tax   | Elena Rossi, workspace owner           | `admin@samathtax.test`             | Sign-in with Google, Apple and Facebook buttons shown                              |
 | Both         | James Carter, external consultant      | `james.carter@carterpartners.test` | Member of both workspaces; **Find my workspace** lists both; no audit trail access |
 | Old Co       | ,                                      | ,                                  | Suspended workspace page (`https://oldco.formalie.dev:2202/`, needs a hosts entry) |
@@ -64,6 +64,32 @@ Open a personal link in a private window → "Filling in as test1@example.org"; 
 **Without a hosts entry** (e.g. `localhost` or a phone on Wi-Fi): add `?tenant=remedylegal` once, e.g. `https://localhost:2202/auth/login?tenant=remedylegal` (dev only, remembered for the tab).
 
 Workspaces created through signup live until the dev server restarts.
+
+**People and roles (F16 + F22):** every account above signs in with the same password. Roles are per workspace (People → Roles & access): **Owner** (built in, everything, locked), **Admin** (everything except Roles & access), **Member** (builds and publishes forms, works with responses; no People, Data, API, Settings or Audit), plus roles you make. A role change applies from the person's next sign-in.
+
+| Person (Remedy Legal)  | Email                             | Role                            | Use it to test                                                                                                   |
+| ---------------------- | --------------------------------- | ------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Frankie Don            | `admin@remedylegal.test`          | Owner                           | Everything: People, Roles & access, Add user, Sign-up links, approvals                                           |
+| Sofia Martins          | `sofia.martins@remedylegal.test`  | Admin                           | Manages people and the workspace, but no Roles & access                                                          |
+| Alex Novak             | `alex.novak@remedylegal.test`     | Admin                           | Same as Sofia                                                                                                    |
+| Priya Raman            | `priya.raman@remedylegal.test`    | Member                          | Forms and responses only                                                                                         |
+| Lukas Becker           | `lukas.becker@remedylegal.test`   | Member                          | Same as Priya                                                                                                    |
+| Kenji Watanabe         | `kenji.watanabe@remedylegal.test` | Member                          | Same as Priya                                                                                                    |
+| Lena Novak             | `staff@remedylegal.test`          | Reviewer (own role, local data) | Forms view only, Responses view and export; no People, Data, API, AI, Settings, Audit, Analytics; no New form   |
+| Amara Okafor           | `amara.okafor@remedylegal.test`   | Member (local data)             | Was made with **Add user** and activated from the activation link                                               |
+| Kenji Sato             | `kenji.sato@example.org`          | Member (local data)             | Signed up with the workspace's sign-up link, then approved                                                       |
+| Marcus Reid            | `marcus.reid@remedylegal.test`    | Disabled                        | Sign-in is refused                                                                                               |
+
+"Local data": the Reviewer role and the last two accounts were made while testing and live in this machine's `.data/mock/` (not in the seed). On a fresh checkout make them again with the steps below.
+
+**Test your own account with a role:**
+
+1. Sign in as the owner (`admin@remedylegal.test`) → **People**.
+2. Add yourself, either way:
+   - **Add user** (N): your details and a role → you're _Not activated_. Development sends no mail: in your panel use ⋯ → **Copy activation link**, open it in a private window, choose your password, sign in.
+   - **Sign-up links** → switch the workspace's link on → open it in a private window → fill in your details → "Request sent". Signing in now says the account waits for approval. As the owner: **People → Awaiting approval** → open yourself → **Approve** (pick role, departments, job titles, manager). Now you can sign in.
+3. As the owner, **People → Roles & access**: make a role (or edit one) and tick what it may view, create, edit, delete, export or manage per area; picking an action ticks the view it needs. Give it to yourself (your panel → **Edit** → Role).
+4. Sign out, sign in as yourself: the rail, menus, pages and buttons follow the role; an address the role doesn't open shows **No access**, and the API refuses it too.
 
 ## API service: test cases (F13)
 
