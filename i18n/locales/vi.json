@@ -1096,7 +1096,12 @@
       "users_updated": "Đã đổi hồ sơ",
       "users_signed_out": "Đã đăng xuất mọi nơi",
       "users_password_requested": "Đã yêu cầu mật khẩu mới",
-      "users_two_step_reset": "Đã đặt lại đăng nhập hai bước"
+      "users_two_step_reset": "Đã đặt lại đăng nhập hai bước",
+      "auth_password_changed": "Đã đổi mật khẩu",
+      "auth_two_step_enabled": "Đã bật đăng nhập hai bước",
+      "auth_two_step_disabled": "Đã tắt đăng nhập hai bước",
+      "auth_recovery_codes_created": "Đã tạo mã khôi phục mới",
+      "users_profile_updated": "Đã thay đổi hồ sơ của chính mình"
     },
     "detail": {
       "who": "Ai",
@@ -7606,6 +7611,118 @@
       "recent": "Hoạt động gần đây",
       "all": "Tất cả mọi người ({n})",
       "invite": "Mời thành viên"
+    }
+  },
+  "profile": {
+    "subtitle": "Thông tin của bạn, cách đăng nhập và email bạn nhận",
+    "saved": "Đã lưu hồ sơ",
+    "photoType": "Chọn ảnh PNG, JPEG hoặc WebP.",
+    "photoSaved": "Đã lưu ảnh",
+    "photoRemoved": "Đã xóa ảnh",
+    "photoAdd": "Thêm ảnh",
+    "photoChange": "Đổi ảnh",
+    "photoRemove": "Xóa",
+    "emailHint": "Bạn đăng nhập bằng địa chỉ này. Quản trị viên có thể thay đổi.",
+    "details": {
+      "title": "Thông tin của bạn",
+      "desc": "Tên và ảnh của bạn, như nhóm của bạn thấy."
+    },
+    "prefs": {
+      "title": "Ngôn ngữ và khu vực",
+      "desc": "Cách ứng dụng nói với bạn và hiển thị ngày. Cài đặt của không gian làm việc được dùng cho đến khi bạn chọn.",
+      "workspace": "Theo không gian làm việc",
+      "language": "Ngôn ngữ",
+      "timeZone": "Múi giờ",
+      "dateFormat": "Định dạng ngày"
+    },
+    "place": {
+      "title": "Trong không gian làm việc",
+      "desc": "Do quản trị viên đặt tại Mọi người."
+    },
+    "password": {
+      "title": "Mật khẩu",
+      "desc": "Chọn mật khẩu mạnh mà bạn không dùng ở nơi nào khác.",
+      "changedAgo": "Đã đổi {when}.",
+      "current": "Mật khẩu hiện tại",
+      "new": "Mật khẩu mới",
+      "change": "Đổi mật khẩu",
+      "done": "Đã đổi mật khẩu",
+      "doneDesc": "Các thiết bị khác của bạn đã bị đăng xuất."
+    },
+    "twoStep": {
+      "title": "Đăng nhập hai bước",
+      "desc": "Bước thứ hai sau mật khẩu. Ứng dụng xác thực là an toàn nhất.",
+      "app": "Ứng dụng xác thực",
+      "appOn": "Đang bật. Còn {n} mã khôi phục. | Đang bật. Còn {n} mã khôi phục.",
+      "appOff": "Mã từ một ứng dụng trên điện thoại, kể cả khi ngoại tuyến.",
+      "setUp": "Thiết lập",
+      "newCodes": "Mã khôi phục mới",
+      "remove": "Gỡ bỏ",
+      "appRemoved": "Đã gỡ ứng dụng xác thực",
+      "appTitle": "Thiết lập ứng dụng xác thực",
+      "appDesc": "Dùng bất kỳ ứng dụng xác thực nào trên điện thoại.",
+      "step1": "Quét mã này bằng ứng dụng, hoặc nhập khóa bên dưới.",
+      "step2": "Nhập mã 6 chữ số mà ứng dụng hiển thị.",
+      "qrLabel": "Mã để quét bằng ứng dụng xác thực của bạn",
+      "key": "Khóa:",
+      "code": "Mã từ ứng dụng",
+      "turnOn": "Bật",
+      "codesTitle": "Hãy giữ mã khôi phục của bạn",
+      "codesDesc": "Mỗi mã cho bạn đăng nhập một lần khi không có điện thoại bên cạnh. Chúng chỉ hiển thị bây giờ.",
+      "codesFile": "Mã khôi phục Formalie. Mỗi mã chỉ dùng một lần.",
+      "codesCopied": "Đã sao chép mã khôi phục",
+      "download": "Tải xuống",
+      "saved": "Tôi đã lưu chúng",
+      "removeTitle": "Gỡ ứng dụng xác thực?",
+      "newCodesTitle": "Tạo mã khôi phục mới?",
+      "passwordFirst": "Nhập mật khẩu để tiếp tục. Các mã khôi phục trước đó sẽ không còn dùng được.",
+      "sms": "Tin nhắn SMS",
+      "smsOff": "Mã gửi qua tin nhắn SMS đến điện thoại của bạn.",
+      "smsNotAllowed": "Không gian làm việc của bạn không gửi mã qua tin nhắn SMS.",
+      "addNumber": "Thêm số",
+      "phoneTitle": "Thêm số điện thoại",
+      "phoneDesc": "Chúng tôi gửi một mã để kiểm tra số.",
+      "number": "Số điện thoại",
+      "numberHint": "Kèm mã quốc gia",
+      "sendCode": "Gửi mã",
+      "codeSent": "Đã gửi mã đến {to}",
+      "devCode": "Mã phát triển: {code}",
+      "confirm": "Xác nhận",
+      "phoneOn": "Đã thêm số điện thoại",
+      "phoneRemoved": "Đã xóa số điện thoại"
+    },
+    "sessions": {
+      "title": "Nơi bạn đã đăng nhập",
+      "desc": "Các thiết bị đang đăng nhập vào tài khoản của bạn. Hãy đăng xuất thiết bị bạn không nhận ra.",
+      "this": "Thiết bị này",
+      "unknown": "Thiết bị không xác định",
+      "active": "hoạt động {when}",
+      "signOut": "Đăng xuất",
+      "others": "Đăng xuất mọi nơi khác",
+      "othersTitle": "Đăng xuất mọi nơi khác?",
+      "othersDesc": "Mọi thiết bị khác sẽ bị đăng xuất. Thiết bị này vẫn đăng nhập.",
+      "ended": "Đã đăng xuất"
+    },
+    "notify": {
+      "title": "Thông báo qua email",
+      "desc": "Những gì chúng tôi gửi email cho bạn. Thông báo trong ứng dụng vẫn bật.",
+      "responses": "Phản hồi mới",
+      "responsesHint": "Khi biểu mẫu của bạn nhận được phản hồi.",
+      "digest": "Tóm tắt hằng ngày",
+      "digestHint": "Một email mỗi ngày thay vì một email mỗi lần.",
+      "mentions": "Được chia sẻ với bạn",
+      "mentionsHint": "Khi ai đó cấp cho bạn quyền truy cập một biểu mẫu.",
+      "product": "Tin tức từ Formalie",
+      "productHint": "Tính năng mới, thỉnh thoảng.",
+      "security": "Bảo mật",
+      "securityHint": "Đăng nhập từ thiết bị mới và thay đổi mật khẩu. Luôn bật."
+    },
+    "signin": {
+      "appDesc": "Nhập mã 6 chữ số từ ứng dụng xác thực của bạn.",
+      "useRecovery": "Dùng mã khôi phục",
+      "recovery": "Mã khôi phục",
+      "recoveryUse": "Đăng nhập",
+      "title": "Nhập mã của bạn"
     }
   }
 }

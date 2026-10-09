@@ -530,3 +530,17 @@ Admins and owners only until F22.
 | POST | `/people/bulk` | `{ ids (1 to 200), action: role\|department\|job_title\|disable\|enable, value? }` → `{ done, skipped }` (department / job_title add to what they have; the same guards, refused ones count as skipped) |
 
 `NavCounts.people { total, active, invited, disabled, departments, job_titles }` (zeros for members). Departments and job titles pages moved to `/people/departments` and `/people/job-titles` (the `/org/{kind}` API is unchanged).
+
+## My profile (F16 M5)
+
+Every signed-in person, about themselves.
+
+| Method | Path | Notes |
+| ------ | ---- | ----- |
+| GET · PATCH | `/me/profile` | `MyProfile { id, first_name, last_name, email, photo (data URL ≤ 200 KB), language, time_zone, date_format (null = the workspace's), role, departments, job_titles, manager, password_changed_at, two_step: { app, recovery_left, phone (masked), sms_allowed }, notifications: { responses, digest, mentions, product } }`; PATCH takes `first_name`, `last_name`, `photo`, `language`, `time_zone`, `date_format`, `notifications` (partial). Audit `users.profile_updated` |
+| POST | `/me/password` | `{ current, password }`; wrong current `FRM-AUTH-1001`, rules `FRM-AUTH-1007` / `1018`; other sessions end. Audit `auth.password.changed` |
+| POST | `/me/two-step/app` → `/app/confirm` · `/app/remove` · `/recovery` | Start: `{ secret, uri (otpauth) }`; confirm `{ code }` → `{ recovery_codes: string[10] }` (shown once, stored as hashes); remove and new recovery codes need `{ password }`. Sign-in then offers `totp` first (`LoginChallenge.channels`), and a recovery code (`xxxx-xxxx`) is accepted once in `POST /auth/otp/verify`. Audit `auth.two_step.enabled` / `disabled`, `auth.recovery_codes.created` |
+| POST · DELETE | `/me/two-step/phone` → `/phone/confirm` | `{ phone }` (+country code; only when Settings → Sign-in allows text codes) → a code by text (mock: `meta.dev_code`); confirm `{ code }`; DELETE removes the number |
+| GET · DELETE · POST | `/me/sessions` · `/me/sessions/{id}` · `/me/sessions/sign-out-others` | `MySession { id, current, started_at, last_active_at, ip, device }[]`; the current session can't be ended here (`FRM-USER-1005`) |
+
+`SessionUser` gains `avatar_url` (the photo), `language`, `time_zone`, `date_format`.

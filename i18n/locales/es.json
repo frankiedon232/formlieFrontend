@@ -1096,7 +1096,12 @@
       "users_updated": "Perfil modificado",
       "users_signed_out": "Sesión cerrada en todas partes",
       "users_password_requested": "Nueva contraseña solicitada",
-      "users_two_step_reset": "Inicio de sesión en dos pasos restablecido"
+      "users_two_step_reset": "Inicio de sesión en dos pasos restablecido",
+      "auth_password_changed": "Contraseña cambiada",
+      "auth_two_step_enabled": "Verificación en dos pasos activada",
+      "auth_two_step_disabled": "Verificación en dos pasos desactivada",
+      "auth_recovery_codes_created": "Nuevos códigos de recuperación creados",
+      "users_profile_updated": "Perfil propio modificado"
     },
     "detail": {
       "who": "Quién",
@@ -7606,6 +7611,118 @@
       "recent": "Activos recientemente",
       "all": "Todas las personas ({n})",
       "invite": "Invitar miembro"
+    }
+  },
+  "profile": {
+    "subtitle": "Tus datos, el inicio de sesión y los correos que recibes",
+    "saved": "Perfil guardado",
+    "photoType": "Elige una imagen PNG, JPEG o WebP.",
+    "photoSaved": "Foto guardada",
+    "photoRemoved": "Foto eliminada",
+    "photoAdd": "Añadir una foto",
+    "photoChange": "Cambiar foto",
+    "photoRemove": "Quitar",
+    "emailHint": "Inicias sesión con esta dirección. Un administrador puede cambiarla.",
+    "details": {
+      "title": "Tus datos",
+      "desc": "Tu nombre y tu foto, tal como los ve tu equipo."
+    },
+    "prefs": {
+      "title": "Idioma y región",
+      "desc": "Cómo te habla la app y cómo muestra las fechas. Se usa la configuración del espacio de trabajo hasta que elijas.",
+      "workspace": "La del espacio de trabajo",
+      "language": "Idioma",
+      "timeZone": "Zona horaria",
+      "dateFormat": "Formato de fecha"
+    },
+    "place": {
+      "title": "En el espacio de trabajo",
+      "desc": "Lo establecen tus administradores en Personas."
+    },
+    "password": {
+      "title": "Contraseña",
+      "desc": "Elige una contraseña segura que no uses en ningún otro sitio.",
+      "changedAgo": "Cambiada {when}.",
+      "current": "Contraseña actual",
+      "new": "Contraseña nueva",
+      "change": "Cambiar contraseña",
+      "done": "Contraseña cambiada",
+      "doneDesc": "Tus otros dispositivos se han desconectado."
+    },
+    "twoStep": {
+      "title": "Verificación en dos pasos",
+      "desc": "Un segundo paso después de la contraseña. Una app de autenticación es lo más seguro.",
+      "app": "App de autenticación",
+      "appOn": "Activada. Queda {n} código de recuperación. | Activada. Quedan {n} códigos de recuperación.",
+      "appOff": "Códigos de una app en tu teléfono, incluso sin conexión.",
+      "setUp": "Configurar",
+      "newCodes": "Nuevos códigos de recuperación",
+      "remove": "Quitar",
+      "appRemoved": "App de autenticación eliminada",
+      "appTitle": "Configurar una app de autenticación",
+      "appDesc": "Usa cualquier app de autenticación en tu teléfono.",
+      "step1": "Escanea este código con la app o escribe la clave de abajo.",
+      "step2": "Introduce el código de 6 dígitos que muestra la app.",
+      "qrLabel": "Código para escanear con tu app de autenticación",
+      "key": "Clave:",
+      "code": "Código de la app",
+      "turnOn": "Activar",
+      "codesTitle": "Guarda tus códigos de recuperación",
+      "codesDesc": "Cada código inicia sesión una sola vez cuando no tienes el teléfono a mano. Solo se muestran ahora.",
+      "codesFile": "Códigos de recuperación de Formalie. Cada uno vale una vez.",
+      "codesCopied": "Códigos de recuperación copiados",
+      "download": "Descargar",
+      "saved": "Los he guardado",
+      "removeTitle": "¿Quitar la app de autenticación?",
+      "newCodesTitle": "¿Crear nuevos códigos de recuperación?",
+      "passwordFirst": "Introduce tu contraseña para continuar. Los códigos de recuperación anteriores dejan de funcionar.",
+      "sms": "Mensaje de texto",
+      "smsOff": "Códigos por mensaje de texto a tu teléfono.",
+      "smsNotAllowed": "Tu espacio de trabajo no envía códigos por mensaje de texto.",
+      "addNumber": "Añadir un número",
+      "phoneTitle": "Añadir un número de teléfono",
+      "phoneDesc": "Enviamos un código para comprobar el número.",
+      "number": "Número de teléfono",
+      "numberHint": "Con el prefijo del país",
+      "sendCode": "Enviar código",
+      "codeSent": "Código enviado a {to}",
+      "devCode": "Código de desarrollo: {code}",
+      "confirm": "Confirmar",
+      "phoneOn": "Número de teléfono añadido",
+      "phoneRemoved": "Número de teléfono eliminado"
+    },
+    "sessions": {
+      "title": "Dónde has iniciado sesión",
+      "desc": "Dispositivos con sesión iniciada en tu cuenta ahora. Cierra los que no reconozcas.",
+      "this": "Este dispositivo",
+      "unknown": "Dispositivo desconocido",
+      "active": "activo {when}",
+      "signOut": "Cerrar sesión",
+      "others": "Cerrar sesión en todos los demás",
+      "othersTitle": "¿Cerrar sesión en todos los demás?",
+      "othersDesc": "Se cierra la sesión en todos los demás dispositivos. Este sigue conectado.",
+      "ended": "Sesión cerrada"
+    },
+    "notify": {
+      "title": "Notificaciones por correo",
+      "desc": "Sobre qué te escribimos. Las notificaciones de la app siguen activas.",
+      "responses": "Respuestas nuevas",
+      "responsesHint": "Cuando los formularios que posees reciben una respuesta.",
+      "digest": "Resumen diario",
+      "digestHint": "Un correo al día en lugar de uno cada vez.",
+      "mentions": "Compartido contigo",
+      "mentionsHint": "Cuando alguien te da acceso a un formulario.",
+      "product": "Novedades de Formalie",
+      "productHint": "Nuevas funciones, de vez en cuando.",
+      "security": "Seguridad",
+      "securityHint": "Inicios de sesión desde dispositivos nuevos y cambios de contraseña. Siempre activo."
+    },
+    "signin": {
+      "appDesc": "Introduce el código de 6 dígitos de tu app de autenticación.",
+      "useRecovery": "Usar un código de recuperación",
+      "recovery": "Código de recuperación",
+      "recoveryUse": "Iniciar sesión",
+      "title": "Introduce tu código"
     }
   }
 }

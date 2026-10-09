@@ -4,6 +4,7 @@
  * family revocation on reuse, one-time login tickets for cross-subdomain hand-off.
  */
 import type { H3Event } from 'h3'
+import { hashRecovery, verifyTotp } from './totp'
 import type { AuthTokens, LoginChallenge, OtpChannel } from '#shared/types/auth'
 import type { ActiveSession } from '#shared/types/settings'
 import type { AuditDevice } from '#shared/types/audit'
@@ -147,6 +148,19 @@ export function describeChallenge(challenge: Challenge): LoginChallenge {
   }
 }
 
+/** A recovery code works once: its hash is crossed off (F16 M5). */
+function useRecoveryCode(user: MockUser, code: string): boolean {
+  if (!/^[a-z0-9]{4}-?[a-z0-9]{4}$/i.test(code)) return false
+  const wanted = hashRecovery(code.includes('-') ? code : `${code.slice(0, 4)}-${code.slice(4)}`)
+  if (!user.recovery_hashes?.includes(wanted)) return false
+  user.recovery_hashes = user.recovery_hashes.filter(item => item !== wanted)
+  onRecoveryUsed?.(user)
+  return true
+}
+/** Set by the people store so the crossed-off code is saved (avoids an import cycle). */
+let onRecoveryUsed: ((user: MockUser) => void) | null = null
+export const whenRecoveryUsed = (handler: (user: MockUser) => void) => (onRecoveryUsed = handler)
+
 /** Mock only: lets the dev code screen show the code. A real backend never returns it. */
 export const devMeta = (challenge: Challenge) => ({ dev_code: challenge.code })
 
@@ -156,6 +170,16 @@ export function verifyChallenge(id: string, code: string, purpose: ChallengePurp
     throw new MockError('FRM-AUTH-1003')
   }
   if (challenge.attempts >= challenge.maxAttempts) throw new MockError('FRM-AUTH-1004')
+  if (challenge.channel === 'totp' && challenge.user?.totp_secret) {
+    if (verifyTotp(challenge.user.totp_secret, code) || useRecoveryCode(challenge.user, code)) {
+      challenge.verified = true
+      return challenge
+    }
+    challenge.attempts++
+    const left = challenge.maxAttempts - challenge.attempts
+    if (left <= 0) throw new MockError('FRM-AUTH-1004')
+    throw new MockError('FRM-AUTH-1003', [{ field: 'attempts_left', message: String(left) }])
+  }
   if (challenge.code !== code) {
     challenge.attempts++
     const left = challenge.maxAttempts - challenge.attempts
@@ -170,7 +194,8 @@ export function resendChallenge(id: string, channel: OtpChannel | undefined): Ch
   const challenge = challenges.get(id)
   if (!challenge || challenge.verified) throw new MockError('FRM-AUTH-1003')
   if (challenge.resends >= OTP_MAX_RESENDS) throw new MockError('FRM-AUTH-1004')
-  if (Date.now() - challenge.lastSentAt < OTP_RESEND_AFTER_S * 1000) throw new MockError('FRM-GEN-1029')
+  // Leaving the authenticator app for an email or text code needs no wait: nothing was sent yet (F16 M5)
+  if (challenge.channel !== 'totp' && Date.now() - challenge.lastSentAt < OTP_RESEND_AFTER_S * 1000) throw new MockError('FRM-GEN-1029')
   if (channel && challenge.channels.includes(channel)) challenge.channel = channel
   challenge.resends++
   challenge.attempts = 0
@@ -287,8 +312,11 @@ function tokensFor(event: H3Event, session: Session): AuthTokens {
       first_name: user.first_name,
       last_name: user.last_name,
       email: user.email,
-      avatar_url: null,
+      avatar_url: user.photo ?? null,
       role: user.role,
+      language: user.language ?? null,
+      time_zone: user.time_zone ?? null,
+      date_format: user.date_format ?? null,
     },
     tenant: { id: tenant.id, name: tenant.name, subdomain: tenant.subdomain },
     organisation: tenant.organisation,

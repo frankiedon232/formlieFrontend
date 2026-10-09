@@ -9,7 +9,7 @@ const { t } = useI18n()
 
 <template>
   <div class="flex min-w-0 items-center gap-2.5">
-    <UAvatar :alt="person.name" size="sm" />
+    <UAvatar :src="person.photo ?? undefined" :alt="person.name" size="sm" />
     <div class="flex min-w-0 flex-col">
       <button type="button" class="flex min-w-0 items-center gap-1.5 text-start font-medium text-highlighted hover:underline focus-visible:outline-2 focus-visible:outline-(--ui-border-inverted)" @click="emit('open')">
         <span class="truncate">{{ person.name }}</span>

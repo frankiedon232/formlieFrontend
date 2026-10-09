@@ -1,3 +1,4 @@
+import type { DateFormat } from './onboarding'
 /** Auth + tenant shapes (docs/API-CONTRACT.md → Tenants, Auth). */
 
 export type AuthProvider = 'password' | 'google' | 'microsoft' | 'apple' | 'facebook'
@@ -53,6 +54,10 @@ export interface SessionUser {
   email: string
   avatar_url: string | null
   role: WorkspaceRole
+  /** My profile (F16 M5): null = the workspace's. */
+  language?: string | null
+  time_zone?: string | null
+  date_format?: DateFormat | null
 }
 
 export interface SessionTenant {

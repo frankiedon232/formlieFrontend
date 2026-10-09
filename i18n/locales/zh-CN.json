@@ -1096,7 +1096,12 @@
       "users_updated": "资料已更改",
       "users_signed_out": "已在所有设备退出登录",
       "users_password_requested": "已请求新密码",
-      "users_two_step_reset": "两步登录已重置"
+      "users_two_step_reset": "两步登录已重置",
+      "auth_password_changed": "密码已更改",
+      "auth_two_step_enabled": "两步登录已开启",
+      "auth_two_step_disabled": "两步登录已关闭",
+      "auth_recovery_codes_created": "已生成新的恢复码",
+      "users_profile_updated": "已更改个人资料"
     },
     "detail": {
       "who": "谁",
@@ -7606,6 +7611,118 @@
       "recent": "最近活跃",
       "all": "所有成员（{n}）",
       "invite": "邀请成员"
+    }
+  },
+  "profile": {
+    "subtitle": "你的信息、登录方式和接收的邮件",
+    "saved": "资料已保存",
+    "photoType": "请选择 PNG、JPEG 或 WebP 图片。",
+    "photoSaved": "照片已保存",
+    "photoRemoved": "照片已移除",
+    "photoAdd": "添加照片",
+    "photoChange": "更换照片",
+    "photoRemove": "移除",
+    "emailHint": "你使用此地址登录。管理员可以更改。",
+    "details": {
+      "title": "你的信息",
+      "desc": "你的姓名和照片，团队看到的样子。"
+    },
+    "prefs": {
+      "title": "语言和地区",
+      "desc": "应用使用的语言和日期显示方式。在你选择之前，使用工作区的设置。",
+      "workspace": "工作区的设置",
+      "language": "语言",
+      "timeZone": "时区",
+      "dateFormat": "日期格式"
+    },
+    "place": {
+      "title": "在工作区中",
+      "desc": "由管理员在成员中设置。"
+    },
+    "password": {
+      "title": "密码",
+      "desc": "请选择一个你没有在其他地方使用过的强密码。",
+      "changedAgo": "{when}更改。",
+      "current": "当前密码",
+      "new": "新密码",
+      "change": "更改密码",
+      "done": "密码已更改",
+      "doneDesc": "你的其他设备已退出登录。"
+    },
+    "twoStep": {
+      "title": "两步登录",
+      "desc": "密码之后的第二步。验证器应用最安全。",
+      "app": "验证器应用",
+      "appOn": "已开启。还剩 {n} 个恢复码。 | 已开启。还剩 {n} 个恢复码。",
+      "appOff": "来自手机应用的验证码，离线也能用。",
+      "setUp": "设置",
+      "newCodes": "新的恢复码",
+      "remove": "移除",
+      "appRemoved": "验证器应用已移除",
+      "appTitle": "设置验证器应用",
+      "appDesc": "使用手机上的任意验证器应用。",
+      "step1": "用应用扫描此码，或输入下方的密钥。",
+      "step2": "输入应用显示的 6 位验证码。",
+      "qrLabel": "用验证器应用扫描的二维码",
+      "key": "密钥:",
+      "code": "应用中的验证码",
+      "turnOn": "开启",
+      "codesTitle": "请保存好恢复码",
+      "codesDesc": "手机不在身边时，每个恢复码可登录一次。它们只会在此刻显示。",
+      "codesFile": "Formalie 恢复码。每个只能使用一次。",
+      "codesCopied": "恢复码已复制",
+      "download": "下载",
+      "saved": "我已保存",
+      "removeTitle": "移除验证器应用？",
+      "newCodesTitle": "生成新的恢复码？",
+      "passwordFirst": "请输入密码以继续。之前的恢复码将失效。",
+      "sms": "短信",
+      "smsOff": "通过短信把验证码发到你的手机。",
+      "smsNotAllowed": "你的工作区不通过短信发送验证码。",
+      "addNumber": "添加号码",
+      "phoneTitle": "添加手机号码",
+      "phoneDesc": "我们会发送验证码来核对号码。",
+      "number": "手机号码",
+      "numberHint": "含国家区号",
+      "sendCode": "发送验证码",
+      "codeSent": "验证码已发送至 {to}",
+      "devCode": "开发用验证码: {code}",
+      "confirm": "确认",
+      "phoneOn": "已添加手机号码",
+      "phoneRemoved": "已移除手机号码"
+    },
+    "sessions": {
+      "title": "登录的位置",
+      "desc": "当前登录你账户的设备。请退出你不认识的设备。",
+      "this": "此设备",
+      "unknown": "未知设备",
+      "active": "{when}活跃",
+      "signOut": "退出登录",
+      "others": "退出其他所有设备",
+      "othersTitle": "退出其他所有设备？",
+      "othersDesc": "其他所有设备都将退出登录。此设备保持登录。",
+      "ended": "已退出登录"
+    },
+    "notify": {
+      "title": "邮件通知",
+      "desc": "我们会就哪些内容给你发邮件。应用内通知始终开启。",
+      "responses": "新回复",
+      "responsesHint": "当你拥有的表单收到回复时。",
+      "digest": "每日摘要",
+      "digestHint": "每天一封邮件，而不是每次一封。",
+      "mentions": "与你共享",
+      "mentionsHint": "当有人授予你表单的访问权限时。",
+      "product": "Formalie 动态",
+      "productHint": "偶尔发布的新功能。",
+      "security": "安全",
+      "securityHint": "新设备登录和密码更改。始终开启。"
+    },
+    "signin": {
+      "appDesc": "输入验证器应用中的 6 位验证码。",
+      "useRecovery": "改用恢复码",
+      "recovery": "恢复码",
+      "recoveryUse": "登录",
+      "title": "输入你的验证码"
     }
   }
 }

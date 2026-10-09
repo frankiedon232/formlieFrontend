@@ -1096,7 +1096,12 @@
       "users_updated": "Profile changed",
       "users_signed_out": "Signed out everywhere",
       "users_password_requested": "New password asked for",
-      "users_two_step_reset": "Two-step sign-in reset"
+      "users_two_step_reset": "Two-step sign-in reset",
+      "auth_password_changed": "Password changed",
+      "auth_two_step_enabled": "Two-step sign-in turned on",
+      "auth_two_step_disabled": "Two-step sign-in turned off",
+      "auth_recovery_codes_created": "New recovery codes made",
+      "users_profile_updated": "Own profile changed"
     },
     "detail": {
       "who": "Who",
@@ -7606,6 +7611,118 @@
       "recent": "Recently active",
       "all": "All people ({n})",
       "invite": "Invite member"
+    }
+  },
+  "profile": {
+    "subtitle": "Your details, sign-in and the emails you get",
+    "saved": "Profile saved",
+    "photoType": "Choose a PNG, JPEG or WebP picture.",
+    "photoSaved": "Photo saved",
+    "photoRemoved": "Photo removed",
+    "photoAdd": "Add a photo",
+    "photoChange": "Change photo",
+    "photoRemove": "Remove",
+    "emailHint": "You sign in with this address. An admin can change it.",
+    "details": {
+      "title": "Your details",
+      "desc": "Your name and photo, as your team sees them."
+    },
+    "prefs": {
+      "title": "Language and region",
+      "desc": "How the app speaks to you and shows dates. The workspace's setting is used until you choose.",
+      "workspace": "The workspace's",
+      "language": "Language",
+      "timeZone": "Time zone",
+      "dateFormat": "Date format"
+    },
+    "place": {
+      "title": "In the workspace",
+      "desc": "Set by your admins on People."
+    },
+    "password": {
+      "title": "Password",
+      "desc": "Choose a strong password you don't use anywhere else.",
+      "changedAgo": "Changed {when}.",
+      "current": "Current password",
+      "new": "New password",
+      "change": "Change password",
+      "done": "Password changed",
+      "doneDesc": "Your other devices are signed out."
+    },
+    "twoStep": {
+      "title": "Two-step sign-in",
+      "desc": "A second step after your password. An authenticator app is the safest.",
+      "app": "Authenticator app",
+      "appOn": "On. {n} recovery code left. | On. {n} recovery codes left.",
+      "appOff": "Codes from an app on your phone, even offline.",
+      "setUp": "Set up",
+      "newCodes": "New recovery codes",
+      "remove": "Remove",
+      "appRemoved": "Authenticator app removed",
+      "appTitle": "Set up an authenticator app",
+      "appDesc": "Use any authenticator app on your phone.",
+      "step1": "Scan this code with the app, or type the key below.",
+      "step2": "Enter the 6-digit code the app shows.",
+      "qrLabel": "Code to scan with your authenticator app",
+      "key": "Key:",
+      "code": "Code from the app",
+      "turnOn": "Turn on",
+      "codesTitle": "Keep your recovery codes",
+      "codesDesc": "Each code signs you in once when your phone isn't at hand. They are shown only now.",
+      "codesFile": "Formalie recovery codes. Each works once.",
+      "codesCopied": "Recovery codes copied",
+      "download": "Download",
+      "saved": "I saved them",
+      "removeTitle": "Remove the authenticator app?",
+      "newCodesTitle": "Make new recovery codes?",
+      "passwordFirst": "Enter your password to continue. Earlier recovery codes stop working.",
+      "sms": "Text message",
+      "smsOff": "Codes by text message to your phone.",
+      "smsNotAllowed": "Your workspace doesn't send codes by text message.",
+      "addNumber": "Add a number",
+      "phoneTitle": "Add a phone number",
+      "phoneDesc": "We send a code to check the number.",
+      "number": "Phone number",
+      "numberHint": "With the country code",
+      "sendCode": "Send code",
+      "codeSent": "Code sent to {to}",
+      "devCode": "Development code: {code}",
+      "confirm": "Confirm",
+      "phoneOn": "Phone number added",
+      "phoneRemoved": "Phone number removed"
+    },
+    "sessions": {
+      "title": "Where you're signed in",
+      "desc": "Devices signed in to your account now. Sign out any you don't recognise.",
+      "this": "This device",
+      "unknown": "Unknown device",
+      "active": "active {when}",
+      "signOut": "Sign out",
+      "others": "Sign out everywhere else",
+      "othersTitle": "Sign out everywhere else?",
+      "othersDesc": "Every other device is signed out. This one stays signed in.",
+      "ended": "Signed out"
+    },
+    "notify": {
+      "title": "Email notifications",
+      "desc": "What we email you about. In-app notifications stay on.",
+      "responses": "New responses",
+      "responsesHint": "When forms you own get a response.",
+      "digest": "Daily summary",
+      "digestHint": "One email a day instead of one each time.",
+      "mentions": "Shared with you",
+      "mentionsHint": "When someone gives you access to a form.",
+      "product": "News from Formalie",
+      "productHint": "New features, now and then.",
+      "security": "Security",
+      "securityHint": "Sign-ins from new devices and password changes. Always on."
+    },
+    "signin": {
+      "appDesc": "Enter the 6-digit code from your authenticator app.",
+      "useRecovery": "Use a recovery code instead",
+      "recovery": "Recovery code",
+      "recoveryUse": "Sign in",
+      "title": "Enter your code"
     }
   }
 }

@@ -1,3 +1,4 @@
+import type { DateFormat } from '#shared/types/onboarding'
 /**
  * Mock tenants, organisations and users (in memory; signup adds to them).
  * Test sign-in for every seeded user, mock only, never a real credential:
@@ -40,6 +41,13 @@ export interface MockUser {
   password_history?: string[]
   /** An admin asked for a new password (F16 M3): sign-in sends them to set one, like an expired password. */
   must_change_password?: boolean
+  /** My profile (F16 M5): authenticator app secret and recovery code hashes (two-step sign-in), photo and preferences. */
+  totp_secret?: string | null
+  recovery_hashes?: string[]
+  photo?: string | null
+  language?: string | null
+  time_zone?: string | null
+  date_format?: DateFormat | null
 }
 
 export const MOCK_TENANTS: MockTenant[] = [

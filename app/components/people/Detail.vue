@@ -76,7 +76,7 @@ const place = computed(() => {
       </div>
       <div v-else class="flex w-full flex-col gap-4">
         <div class="flex items-start gap-3.5">
-          <UAvatar :alt="person.name" size="2xl" class="ring-4 ring-(--ui-bg-elevated)" />
+          <UAvatar :src="person.photo ?? undefined" :alt="person.name" size="2xl" class="ring-4 ring-(--ui-bg-elevated)" />
           <div class="flex min-w-0 flex-1 flex-col gap-1">
             <h2 class="truncate text-lg leading-tight font-semibold text-highlighted">{{ person.name }}</h2>
             <p v-if="person.name !== person.email" class="truncate text-sm text-muted" dir="ltr">{{ person.email }}</p>

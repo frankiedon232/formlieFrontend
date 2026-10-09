@@ -149,20 +149,22 @@ export const login = defineMockRoute(({ event, body }) => {
     email: user.email,
     user,
     tenant,
-    channel: 'email',
+    // An authenticator app comes first when they set one up (My profile, F16 M5); no code is sent then
+    channel: user.totp_secret ? 'totp' : 'email',
     // Text messages only when the workspace allows them (Settings → Sign-in)
-    channels: user.phone && signin.code.sms ? ['email', 'sms'] : ['email'],
+    channels: [...(user.totp_secret ? (['totp'] as const) : []), 'email', ...(user.phone && signin.code.sms ? (['sms'] as const) : [])],
   })
   recordAudit(event, tenant, {
     action: 'auth.otp.sent',
     actor: actorOf(user),
-    metadata: { channel: 'email' },
+    metadata: { channel: challenge.channel },
   })
   logCodeEmail(challenge)
-  return ok(describeChallenge(challenge), devMeta(challenge))
+  return ok(describeChallenge(challenge), challenge.channel === 'totp' ? {} : devMeta(challenge))
 })
 
-const verifySchema = z.object({ challenge_id: z.string(), code })
+// A recovery code ("k7q2-9xmd") also passes where an authenticator code is asked (F16 M5)
+const verifySchema = z.object({ challenge_id: z.string(), code: z.union([code, z.string().trim().regex(/^[a-z0-9]{4}-?[a-z0-9]{4}$/i)]) })
 
 /** POST /auth/otp/verify, login → tokens + refresh cookie; signup → marks the email verified. */
 export const verifyOtp = defineMockRoute(({ event, body }) => {
@@ -215,8 +217,11 @@ export const me = defineMockRoute(({ event }) => {
     first_name: user.first_name,
     last_name: user.last_name,
     email: user.email,
-    avatar_url: null,
+    avatar_url: user.photo ?? null,
     role: user.role,
+    language: user.language ?? null,
+    time_zone: user.time_zone ?? null,
+    date_format: user.date_format ?? null,
   })
 })
 

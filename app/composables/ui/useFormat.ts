@@ -17,7 +17,10 @@ export function useFormat() {
   const { current } = useAppLocale()
   const lang = computed(() => current.value.language)
   const { locale: workspace } = useWorkspaceLocale()
-  const timeZone = computed(() => workspace.value?.timezone)
+  // A person's own time zone and date format (My profile, F16 M5) come before the workspace's
+  const session = useSession()
+  const timeZone = computed(() => session.user.value?.time_zone || workspace.value?.timezone)
+  const dateFormat = computed(() => session.user.value?.date_format || workspace.value?.date_format)
 
   const toDate = (value: string | number | Date) => (value instanceof Date ? value : new Date(value))
 
@@ -27,7 +30,7 @@ export function useFormat() {
   ) {
     if (value == null || value === '') return ''
     // Short dates follow the workspace's date format (31/12/2026, 2026-12-31…)
-    if (style === 'short' && workspace.value) return formatDatePattern(toDate(value), workspace.value.date_format, workspace.value.timezone)
+    if (style === 'short' && dateFormat.value) return formatDatePattern(toDate(value), dateFormat.value, timeZone.value ?? 'UTC')
     return new Intl.DateTimeFormat(lang.value, { dateStyle: style, timeZone: timeZone.value }).format(toDate(value))
   }
 

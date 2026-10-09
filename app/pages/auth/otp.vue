@@ -7,7 +7,8 @@ definePageMeta({ layout: 'auth', auth: 'guest' })
 const { t } = useI18n()
 const auth = useAuth()
 const { handle } = useErrorHandler()
-useHead({ title: () => t('auth.otp.title') })
+const fromApp = computed(() => auth.pending.value?.challenge.channel === 'totp')
+useHead({ title: () => (fromApp.value ? t('profile.signin.title') : t('auth.otp.title')) })
 
 // The challenge lives in memory only: reloading this page starts over (by design).
 if (!auth.pending.value || auth.pending.value.purpose !== 'login') await navigateTo('/auth/login')
@@ -15,6 +16,8 @@ if (!auth.pending.value || auth.pending.value.purpose !== 'login') await navigat
 const otp = useTemplateRef<{ reset: () => void }>('otp')
 const verifying = ref(false)
 const attemptsLeft = ref<number | null>(null)
+const useRecovery = ref(false)
+const recoveryCode = ref('')
 
 async function verify(code: string) {
   if (verifying.value) return
@@ -51,9 +54,10 @@ function back() {
 
 <template>
   <div v-if="auth.pending.value">
-    <AuthHeading :title="t('auth.otp.title')" :back="t('common.back')" workspace @back="back">
+    <AuthHeading :title="fromApp ? t('profile.signin.title') : t('auth.otp.title')" :back="t('common.back')" workspace @back="back">
       <template #description>
-        <i18n-t keypath="auth.otp.desc" scope="global">
+        <span v-if="auth.pending.value.challenge.channel === 'totp'">{{ t('profile.signin.appDesc') }}</span>
+        <i18n-t v-else keypath="auth.otp.desc" scope="global">
           <template #destination>
             <span class="font-medium text-highlighted">{{
               auth.pending.value.challenge.masked_destination
@@ -72,6 +76,17 @@ function back() {
       @complete="verify"
       @resend="resend"
     />
+
+    <!-- Authenticator app not at hand: a recovery code (F16 M5) -->
+    <div v-if="auth.pending.value.challenge.channel === 'totp' && !verifying" class="mt-5">
+      <UButton v-if="!useRecovery" :label="t('profile.signin.useRecovery')" icon="i-lucide-life-buoy" color="neutral" variant="link" size="sm" class="px-0" @click="useRecovery = true" />
+      <form v-else class="flex items-end gap-2" @submit.prevent="recoveryCode.trim() && verify(recoveryCode.trim())">
+        <UFormField :label="t('profile.signin.recovery')" class="flex-1">
+          <UInput v-model="recoveryCode" placeholder="xxxx-xxxx" autocomplete="off" class="w-full font-mono" dir="ltr" autofocus />
+        </UFormField>
+        <UButton type="submit" :label="t('profile.signin.recoveryUse')" color="neutral" :disabled="!/^[a-z0-9]{4}-?[a-z0-9]{4}$/i.test(recoveryCode.trim())" />
+      </form>
+    </div>
 
     <UButton
       v-if="verifying"

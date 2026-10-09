@@ -1096,7 +1096,12 @@
       "users_updated": "Profil modifié",
       "users_signed_out": "Déconnecté partout",
       "users_password_requested": "Nouveau mot de passe demandé",
-      "users_two_step_reset": "Connexion en deux étapes réinitialisée"
+      "users_two_step_reset": "Connexion en deux étapes réinitialisée",
+      "auth_password_changed": "Mot de passe modifié",
+      "auth_two_step_enabled": "Connexion en deux étapes activée",
+      "auth_two_step_disabled": "Connexion en deux étapes désactivée",
+      "auth_recovery_codes_created": "Nouveaux codes de récupération créés",
+      "users_profile_updated": "Profil personnel modifié"
     },
     "detail": {
       "who": "Qui",
@@ -7606,6 +7611,118 @@
       "recent": "Actives récemment",
       "all": "Toutes les personnes ({n})",
       "invite": "Inviter un membre"
+    }
+  },
+  "profile": {
+    "subtitle": "Vos informations, votre connexion et les e-mails que vous recevez",
+    "saved": "Profil enregistré",
+    "photoType": "Choisissez une image PNG, JPEG ou WebP.",
+    "photoSaved": "Photo enregistrée",
+    "photoRemoved": "Photo supprimée",
+    "photoAdd": "Ajouter une photo",
+    "photoChange": "Changer de photo",
+    "photoRemove": "Supprimer",
+    "emailHint": "Vous vous connectez avec cette adresse. Un administrateur peut la modifier.",
+    "details": {
+      "title": "Vos informations",
+      "desc": "Votre nom et votre photo, tels que votre équipe les voit."
+    },
+    "prefs": {
+      "title": "Langue et région",
+      "desc": "La langue de l'application et le format des dates. Le réglage de l'espace de travail s'applique tant que vous ne choisissez pas.",
+      "workspace": "Celui de l'espace de travail",
+      "language": "Langue",
+      "timeZone": "Fuseau horaire",
+      "dateFormat": "Format de date"
+    },
+    "place": {
+      "title": "Dans l'espace de travail",
+      "desc": "Défini par vos administrateurs dans Personnes."
+    },
+    "password": {
+      "title": "Mot de passe",
+      "desc": "Choisissez un mot de passe solide que vous n'utilisez nulle part ailleurs.",
+      "changedAgo": "Modifié {when}.",
+      "current": "Mot de passe actuel",
+      "new": "Nouveau mot de passe",
+      "change": "Changer le mot de passe",
+      "done": "Mot de passe modifié",
+      "doneDesc": "Vos autres appareils sont déconnectés."
+    },
+    "twoStep": {
+      "title": "Connexion en deux étapes",
+      "desc": "Une seconde étape après votre mot de passe. Une application d'authentification est le choix le plus sûr.",
+      "app": "Application d'authentification",
+      "appOn": "Activée. {n} code de récupération restant. | Activée. {n} codes de récupération restants.",
+      "appOff": "Des codes d'une application sur votre téléphone, même hors ligne.",
+      "setUp": "Configurer",
+      "newCodes": "Nouveaux codes de récupération",
+      "remove": "Supprimer",
+      "appRemoved": "Application d'authentification supprimée",
+      "appTitle": "Configurer une application d'authentification",
+      "appDesc": "Utilisez n'importe quelle application d'authentification sur votre téléphone.",
+      "step1": "Scannez ce code avec l'application, ou saisissez la clé ci-dessous.",
+      "step2": "Saisissez le code à 6 chiffres affiché par l'application.",
+      "qrLabel": "Code à scanner avec votre application d'authentification",
+      "key": "Clé :",
+      "code": "Code de l'application",
+      "turnOn": "Activer",
+      "codesTitle": "Conservez vos codes de récupération",
+      "codesDesc": "Chaque code vous connecte une seule fois quand votre téléphone n'est pas à portée. Ils ne s'affichent que maintenant.",
+      "codesFile": "Codes de récupération Formalie. Chacun ne sert qu'une fois.",
+      "codesCopied": "Codes de récupération copiés",
+      "download": "Télécharger",
+      "saved": "Je les ai enregistrés",
+      "removeTitle": "Supprimer l'application d'authentification ?",
+      "newCodesTitle": "Créer de nouveaux codes de récupération ?",
+      "passwordFirst": "Saisissez votre mot de passe pour continuer. Les anciens codes de récupération cessent de fonctionner.",
+      "sms": "SMS",
+      "smsOff": "Des codes par SMS sur votre téléphone.",
+      "smsNotAllowed": "Votre espace de travail n'envoie pas de codes par SMS.",
+      "addNumber": "Ajouter un numéro",
+      "phoneTitle": "Ajouter un numéro de téléphone",
+      "phoneDesc": "Nous envoyons un code pour vérifier le numéro.",
+      "number": "Numéro de téléphone",
+      "numberHint": "Avec l'indicatif du pays",
+      "sendCode": "Envoyer le code",
+      "codeSent": "Code envoyé à {to}",
+      "devCode": "Code de développement : {code}",
+      "confirm": "Confirmer",
+      "phoneOn": "Numéro de téléphone ajouté",
+      "phoneRemoved": "Numéro de téléphone supprimé"
+    },
+    "sessions": {
+      "title": "Où vous êtes connecté",
+      "desc": "Les appareils actuellement connectés à votre compte. Déconnectez ceux que vous ne reconnaissez pas.",
+      "this": "Cet appareil",
+      "unknown": "Appareil inconnu",
+      "active": "actif {when}",
+      "signOut": "Se déconnecter",
+      "others": "Déconnecter partout ailleurs",
+      "othersTitle": "Déconnecter partout ailleurs ?",
+      "othersDesc": "Tous les autres appareils sont déconnectés. Celui-ci reste connecté.",
+      "ended": "Déconnecté"
+    },
+    "notify": {
+      "title": "Notifications par e-mail",
+      "desc": "Ce sur quoi nous vous écrivons. Les notifications dans l'application restent activées.",
+      "responses": "Nouvelles réponses",
+      "responsesHint": "Quand les formulaires dont vous êtes propriétaire reçoivent une réponse.",
+      "digest": "Résumé quotidien",
+      "digestHint": "Un e-mail par jour au lieu d'un à chaque fois.",
+      "mentions": "Partagé avec vous",
+      "mentionsHint": "Quand quelqu'un vous donne accès à un formulaire.",
+      "product": "Actualités de Formalie",
+      "productHint": "De nouvelles fonctionnalités, de temps en temps.",
+      "security": "Sécurité",
+      "securityHint": "Connexions depuis de nouveaux appareils et changements de mot de passe. Toujours activé."
+    },
+    "signin": {
+      "appDesc": "Saisissez le code à 6 chiffres de votre application d'authentification.",
+      "useRecovery": "Utiliser plutôt un code de récupération",
+      "recovery": "Code de récupération",
+      "recoveryUse": "Se connecter",
+      "title": "Saisissez votre code"
     }
   }
 }

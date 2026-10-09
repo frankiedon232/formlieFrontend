@@ -1096,7 +1096,12 @@
       "users_updated": "Wasifu umebadilishwa",
       "users_signed_out": "Ametoka kila mahali",
       "users_password_requested": "Nenosiri jipya limeombwa",
-      "users_two_step_reset": "Kuingia kwa hatua mbili kumewekwa upya"
+      "users_two_step_reset": "Kuingia kwa hatua mbili kumewekwa upya",
+      "auth_password_changed": "Nenosiri limebadilishwa",
+      "auth_two_step_enabled": "Kuingia kwa hatua mbili kumewashwa",
+      "auth_two_step_disabled": "Kuingia kwa hatua mbili kumezimwa",
+      "auth_recovery_codes_created": "Misimbo mipya ya kurejesha imetengenezwa",
+      "users_profile_updated": "Wasifu wako umebadilishwa"
     },
     "detail": {
       "who": "Nani",
@@ -7606,6 +7611,118 @@
       "recent": "Waliokuwa hai hivi karibuni",
       "all": "Watu wote ({n})",
       "invite": "Alika mwanachama"
+    }
+  },
+  "profile": {
+    "subtitle": "Taarifa zako, kuingia na barua pepe unazopata",
+    "saved": "Wasifu umehifadhiwa",
+    "photoType": "Chagua picha ya PNG, JPEG au WebP.",
+    "photoSaved": "Picha imehifadhiwa",
+    "photoRemoved": "Picha imeondolewa",
+    "photoAdd": "Ongeza picha",
+    "photoChange": "Badilisha picha",
+    "photoRemove": "Ondoa",
+    "emailHint": "Unaingia kwa anwani hii. Msimamizi anaweza kuibadilisha.",
+    "details": {
+      "title": "Taarifa zako",
+      "desc": "Jina na picha yako, kama timu yako inavyoviona."
+    },
+    "prefs": {
+      "title": "Lugha na eneo",
+      "desc": "Jinsi programu inavyozungumza nawe na kuonyesha tarehe. Mpangilio wa nafasi ya kazi hutumika hadi uchague.",
+      "workspace": "Wa nafasi ya kazi",
+      "language": "Lugha",
+      "timeZone": "Saa za eneo",
+      "dateFormat": "Muundo wa tarehe"
+    },
+    "place": {
+      "title": "Katika nafasi ya kazi",
+      "desc": "Huwekwa na wasimamizi wako katika Watu."
+    },
+    "password": {
+      "title": "Nenosiri",
+      "desc": "Chagua nenosiri imara usilolitumia mahali pengine.",
+      "changedAgo": "Limebadilishwa {when}.",
+      "current": "Nenosiri la sasa",
+      "new": "Nenosiri jipya",
+      "change": "Badilisha nenosiri",
+      "done": "Nenosiri limebadilishwa",
+      "doneDesc": "Vifaa vyako vingine vimetolewa."
+    },
+    "twoStep": {
+      "title": "Kuingia kwa hatua mbili",
+      "desc": "Hatua ya pili baada ya nenosiri. Programu ya uthibitishaji ndiyo salama zaidi.",
+      "app": "Programu ya uthibitishaji",
+      "appOn": "Imewashwa. Msimbo {n} wa kurejesha umebaki. | Imewashwa. Misimbo {n} ya kurejesha imebaki.",
+      "appOff": "Misimbo kutoka programu ya simu yako, hata bila intaneti.",
+      "setUp": "Weka",
+      "newCodes": "Misimbo mipya ya kurejesha",
+      "remove": "Ondoa",
+      "appRemoved": "Programu ya uthibitishaji imeondolewa",
+      "appTitle": "Weka programu ya uthibitishaji",
+      "appDesc": "Tumia programu yoyote ya uthibitishaji kwenye simu yako.",
+      "step1": "Skani msimbo huu kwa programu, au andika ufunguo ulio hapa chini.",
+      "step2": "Weka msimbo wa tarakimu 6 unaoonyeshwa na programu.",
+      "qrLabel": "Msimbo wa kuskani kwa programu yako ya uthibitishaji",
+      "key": "Ufunguo:",
+      "code": "Msimbo kutoka programu",
+      "turnOn": "Washa",
+      "codesTitle": "Hifadhi misimbo yako ya kurejesha",
+      "codesDesc": "Kila msimbo hukuingiza mara moja simu yako isipokuwa karibu. Huonyeshwa sasa tu.",
+      "codesFile": "Misimbo ya kurejesha ya Formalie. Kila mmoja hufanya kazi mara moja.",
+      "codesCopied": "Misimbo ya kurejesha imenakiliwa",
+      "download": "Pakua",
+      "saved": "Nimeihifadhi",
+      "removeTitle": "Ondoa programu ya uthibitishaji?",
+      "newCodesTitle": "Tengeneza misimbo mipya ya kurejesha?",
+      "passwordFirst": "Weka nenosiri lako ili kuendelea. Misimbo ya awali ya kurejesha itaacha kufanya kazi.",
+      "sms": "Ujumbe mfupi",
+      "smsOff": "Misimbo kwa ujumbe mfupi kwenye simu yako.",
+      "smsNotAllowed": "Nafasi yako ya kazi haitumi misimbo kwa ujumbe mfupi.",
+      "addNumber": "Ongeza namba",
+      "phoneTitle": "Ongeza namba ya simu",
+      "phoneDesc": "Tunatuma msimbo kuhakiki namba.",
+      "number": "Namba ya simu",
+      "numberHint": "Pamoja na msimbo wa nchi",
+      "sendCode": "Tuma msimbo",
+      "codeSent": "Msimbo umetumwa kwa {to}",
+      "devCode": "Msimbo wa ukuzaji: {code}",
+      "confirm": "Thibitisha",
+      "phoneOn": "Namba ya simu imeongezwa",
+      "phoneRemoved": "Namba ya simu imeondolewa"
+    },
+    "sessions": {
+      "title": "Unapoingia",
+      "desc": "Vifaa vilivyoingia kwenye akaunti yako sasa. Toa vile usivyovitambua.",
+      "this": "Kifaa hiki",
+      "unknown": "Kifaa kisichojulikana",
+      "active": "kimekuwa hai {when}",
+      "signOut": "Toka",
+      "others": "Toka kila mahali pengine",
+      "othersTitle": "Toka kila mahali pengine?",
+      "othersDesc": "Vifaa vingine vyote vitatolewa. Hiki kitabaki kimeingia.",
+      "ended": "Umetoka"
+    },
+    "notify": {
+      "title": "Arifa za barua pepe",
+      "desc": "Tunakutumia barua pepe kuhusu nini. Arifa ndani ya programu hubaki zimewashwa.",
+      "responses": "Majibu mapya",
+      "responsesHint": "Fomu zako zikipata jibu.",
+      "digest": "Muhtasari wa kila siku",
+      "digestHint": "Barua pepe moja kwa siku badala ya moja kila mara.",
+      "mentions": "Mlichoshirikishwa",
+      "mentionsHint": "Mtu akikupa ufikiaji wa fomu.",
+      "product": "Habari kutoka Formalie",
+      "productHint": "Vipengele vipya, mara kwa mara.",
+      "security": "Usalama",
+      "securityHint": "Kuingia kutoka vifaa vipya na mabadiliko ya nenosiri. Huwashwa kila wakati."
+    },
+    "signin": {
+      "appDesc": "Weka msimbo wa tarakimu 6 kutoka programu yako ya uthibitishaji.",
+      "useRecovery": "Tumia msimbo wa kurejesha badala yake",
+      "recovery": "Msimbo wa kurejesha",
+      "recoveryUse": "Ingia",
+      "title": "Weka msimbo wako"
     }
   }
 }

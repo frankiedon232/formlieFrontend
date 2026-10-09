@@ -6,8 +6,10 @@
  * with their sign-in accounts and the sample colleagues who own their forms.
  */
 import type { WorkspaceRole } from '#shared/types/auth'
+import type { DateFormat } from '#shared/types/onboarding'
 import type { PersonDetail, PersonRow, PersonStatus } from '#shared/types/people'
 import { auditLogOf } from '../core/audit'
+import { whenRecoveryUsed } from '../core/auth'
 import { loadPersisted, savePersisted } from '../core/persist'
 import { MOCK_OWNERS } from './forms'
 import { formsOf } from './formStore'
@@ -27,6 +29,16 @@ export interface StoredPerson {
   joined_at: string
   /** An admin asked for a new password at the next sign-in (F16 M3). */
   must_change_password?: boolean
+  /** A password changed in My profile, as a hash (the demo's built-in accounts aren't saved elsewhere). */
+  password_hash?: string
+  /** My profile (F16 M5), kept here so the demo's built-in accounts keep them across restarts. */
+  totp_secret?: string | null
+  recovery_hashes?: string[]
+  photo?: string | null
+  language?: string | null
+  time_zone?: string | null
+  date_format?: DateFormat | null
+  notifications?: Record<string, boolean>
   /** An open invitation (F16 M2): only a hash of the link's token is kept. */
   invite?: { token_hash: string; expires_at: string; sent_at: string; invited_by: { id: string; name: string }; message: string | null }
 }
@@ -38,11 +50,32 @@ export const savePeople = () => savePersisted('people', () => Object.fromEntries
 function syncAccounts(list: StoredPerson[]) {
   for (const person of list) {
     const user = MOCK_USERS.find(item => item.id === person.id)
-    if (user && person.status !== 'invited') Object.assign(user, { role: person.role, disabled: person.status === 'disabled', must_change_password: !!person.must_change_password })
+    if (user && person.status !== 'invited')
+      Object.assign(user, {
+        role: person.role,
+        disabled: person.status === 'disabled',
+        must_change_password: !!person.must_change_password,
+        totp_secret: person.totp_secret ?? null,
+        recovery_hashes: person.recovery_hashes ?? [],
+        photo: person.photo ?? null,
+        language: person.language ?? null,
+        time_zone: person.time_zone ?? null,
+        date_format: person.date_format ?? null,
+        ...(person.phone !== undefined ? { phone: person.phone } : {}),
+        ...(person.password_hash ? { password: person.password_hash } : {}),
+      })
   }
 }
 // At start, before anyone signs in, so access follows what admins set (F16 M3)
 for (const list of stores.values()) syncAccounts(list)
+// A recovery code used at sign-in is crossed off here too (F16 M5)
+whenRecoveryUsed(user => {
+  for (const list of stores.values()) {
+    const person = list.find(item => item.id === user.id)
+    if (person) person.recovery_hashes = user.recovery_hashes ?? []
+  }
+  savePeople()
+})
 
 const DAY = 86_400_000
 
@@ -120,6 +153,7 @@ export function peopleRows(tenant: MockTenant): PersonRow[] {
       name: nameOf(person),
       email: person.email,
       phone: person.phone,
+      photo: person.photo ?? null,
       role: person.role,
       status: person.status,
       departments: org.departments.filter(item => !item.archived_at && item.member_ids.includes(person.id)).map(refOf),

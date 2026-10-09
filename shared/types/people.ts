@@ -22,6 +22,8 @@ export interface PersonRow {
   name: string
   email: string
   phone: string | null
+  /** Their photo (My profile), a small data URL, or null. */
+  photo: string | null
   role: WorkspaceRole
   status: PersonStatus
   departments: PersonRef[]

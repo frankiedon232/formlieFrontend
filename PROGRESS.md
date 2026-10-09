@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-09 (F16 M4 linking people done; next: F16 M5 My profile)
+**Last updated:** 2026-10-09 (F16 Users & profiles complete, waiting for review; next after review: F19 AI assistant)
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend · ➖ dropped or merged
 
@@ -26,7 +26,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F13   | API service & integrations                        | ✅     | 100% (owner-tested 2026-10-06)            |
 | F14   | Settings                                          | ✅     | 100% (M1 to M7 ✅; billing in F24)        |
 | F15   | Option sets (lists)                               | ✅     | 100% (M1 to M5 ✅; payments moved to F24) |
-| F16   | Users & profiles (Profile + Users)                | 🟡     | ~80% (M1 to M4 ✅; M5 My profile next)    |
+| F16   | Users & profiles (Profile + Users)                | ✅     | 100% (waiting for review)                 |
 | F17   | Users (merged into F16)                           | ➖     | -                                         |
 | F18   | Analytics                                         | ✅     | 100% (waiting for review)                 |
 | F19   | AI assistant                                      | 🟡     | ~2%                                       |
@@ -37,7 +37,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F24   | Payments & subscriptions                          | ⬜     | 0%                                        |
 | F25   | Help centre (FAQs, knowledge base, videos)        | ⬜     | 0% (after F24)                            |
 
-**Order of what is left (owner, 2026-10-08):** F16 Users & profiles (Profile and Users together), F19 AI, F21 Dashboard, F22 Roles & access, F23 Platform admin, then **F24 Payments & subscriptions** (form payments and plans together, once the owner has chosen the payment processor), then **F25 Help centre** (built from everything that exists by then). Formalie default data (below) is seeded by the backend and kept in mind in every phase.
+**Order of what is left (owner, 2026-10-08):** F19 AI, F21 Dashboard, F22 Roles & access, F23 Platform admin, then **F24 Payments & subscriptions** (form payments and plans together, once the owner has chosen the payment processor), then **F25 Help centre** (built from everything that exists by then). Formalie default data (below) is seeded by the backend and kept in mind in every phase.
 
 **Every phase is only done when:** phone / tablet / desktop checked · keyboard-only checked · light + dark checked · Arabic RTL checked · every new action recorded in the audit trail (from F4 on) · loading feedback complete (first-load screen, top bar on navigation and API calls, skeletons, busy buttons, busy rows, progress bars, CLAUDE.md rule 5) · empty and error states present · every new string in all 20 languages · matches [docs/design](docs/design/README.md) · typecheck, lint and tests green · this file and the docs updated · committed and pushed.
 
@@ -858,13 +858,13 @@ Moved out of F15: destinations to **F12**, webhooks and integrations to **F13**,
 
 ---
 
-## F16, Users & profiles 🟡 (Profile and Users together, owner 2026-10-08)
+## F16, Users & profiles ✅ (Profile and Users together, owner 2026-10-08; waiting for review)
 
 Owner, 2026-10-08: "profiling and users are the same thing". One phase builds the people of a workspace and their profiles: who they are, where they sit (department, job title) and what they may do (role). Department and job title lists come from Settings → Organisation data (F14); the role is assigned here and its permissions are defined in F22 (RBAC), so until F22 the role is the built-in Owner / Admin / Member and access follows it.
 
 ### People (workspace admins)
 
-**Milestones (2026-10-09):** **M1** ✅ People list · **M2** ✅ Invites · **M3** ✅ Managing people · **M4** ✅ Linking people (field access, share, departments, header avatars) · **M5** My profile.
+**Milestones (2026-10-09):** **M1** ✅ People list · **M2** ✅ Invites · **M3** ✅ Managing people · **M4** ✅ Linking people (field access, share, departments, header avatars) · **M5** ✅ My profile.
 
 - ✅ **M1 People list** (`/people`, SYSTEM menu, G U; admins and owners): two chart cards (people with joined change, two-step count, sign-ins per day from the audit trail; by status as thin lines, legend filters), DataView table and grid (person card in the locked format: last active, status, name with a red flag for owners / admins without two-step sign-in, department, job title, role, manager, profile completeness bar, joined date, forms owned), filters status / role / department / job title, sort name / last active / newest / role, detail panel (status and role, Email and Activity (audit trail filtered to the person), fact tiles, profile: departments, job titles, manager, who reports to them, phone, last sign-in with place and device; K / J). Departments and job titles stay in Settings → Organisation data, so both pages agree
 - ✅ **M2 Invites:** Invite people (header button, I, `?invite=1`, empty state): one or many addresses (typed or pasted, split on commas / spaces / new lines, up to 50), role Member / Admin, departments and job titles (from Settings, added to their member lists at once), an optional personal note; addresses already in the workspace or already invited are left out and named. The workspace's invitation email (all 20 languages) carries a link that works 7 days; only a hash of its token is kept. Invited people show as Invited (Invite expired after 7 days) with when and by whom; row, card and panel actions: Send again (new link by email), Copy invite link (a new link, the old one stops), Withdraw (asks first; the person and their memberships go). `/auth/join/{token}`: who invited them, to which workspace and as what, the note, then name and password (the workspace's password rules) → sign in with "Your account is ready" and the address filled in; an expired or used link says so. Audit: users.invited, invite_resent, invite_link, invite_revoked, users.joined. Errors FRM-USER-1001 (expired), 1002 (not valid)
@@ -875,10 +875,9 @@ Owner, 2026-10-08: "profiling and users are the same thing". One phase builds th
 
 ### My profile (every person)
 
-- ⬜ Name, photo, phone (fictional example ranges), language, time zone, date format; department, job title and role shown read-only (set by admins)
-- ⬜ Change password; authenticator app (QR, recovery codes), SMS number
-- ⬜ Sessions and devices (see and sign out)
-- ⬜ Notification preferences (which emails, in-app)
+- ✅ **M5 My profile** (`/profile`, user menu): photo (cropped square to 256 px in the browser, shown wherever the person's avatar is: menu, People, header team), first and last name (email is the sign-in, changed by admins); language, time zone and date format ("The workspace's" by default; dates everywhere follow them, the language follows the person when they sign in); role, departments, job titles and manager shown, set by admins; change password (current one first, the workspace's rules, other devices signed out); two-step sign-in: authenticator app (QR code and key, confirmed with a code, ten recovery codes shown once with Copy / Download, new codes and remove with the password) and an SMS number (checked with a code, only when the workspace allows text codes); where you're signed in (this device marked, sign out one or every other); email notifications (new responses, daily summary, shared with you, news; security always on)
+- ✅ Sign-in uses the authenticator app first when set up ("Enter your code"; switch to email or text at once), a recovery code works once ("Use a recovery code instead"); codes are RFC 6238 (checked against its test values)
+- Audit: auth.password.changed, auth.two_step.enabled / disabled, auth.recovery_codes.created, users.profile_updated
 
 ### Roles hook (until F22)
 
@@ -1523,3 +1522,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-09 | F16 | M2 Invites: `routes/invites.ts` (POST /people/invites, resend, link, DELETE invite, GET /public/invites/{token}, POST accept), invite data on the people store (token hash, expiry, sender, note), `usePeopleActions`, `PeopleInviteModal`, `PeopleStatus`, page `/auth/join/{token}`, sign-in notice and prefilled address after joining. Browser-checked: two addresses pasted as one line → 2 invitations with Sales; emails in the sent log with the link; join page → account created (password hashed), the used link refused; Send again, Copy link and Withdraw on the second. Fixed on the way: an "@" in a translation broke the whole language file (vue-i18n needs {'@'}) |
 | 2026-10-09 | F16 | M3 Managing people + People rail area: `routes/peopleManage.ts` (PATCH /people/{id}, disable, enable, sign-out, password, two-step/reset, bulk), `revokeUserSessions`, `must_change_password` in the sign-in check, `PeopleEditModal`, `usePeopleActions.menu`, bulk bar; PEOPLE_NAV + rail area (admin only), nav counts `people`, Departments / Job titles under /people (SettingsPage `plain`), redirects from Settings, Roles & access placeholder. Browser-checked: People area menu and counts, Departments in the area, Alex made Admin, demoting the only owner refused, bulk Coordinator for 2, Lena disabled and enabled |
 | 2026-10-09 | F16 | M4 Linking people: `peopleOf` (orgStore) and Share settings read the people store; admins with full access from People roles; account sync at server start; `PersonDetail.forms`; `AppNavbarTeam` + `useTeam` (avatars, menu, Invite member); audit row "Open in People"; `?invite=1` opens the dialog on the People page too. Browser-checked: header avatars "+6" and Invite member opening the dialog, Frankie's panel with his forms and "All forms" → forms list filtered (count aligned with the list), Vehicles share settings showing Frankie, Sofia and Alex as admins |
+| 2026-10-09 | F16 | M5 My profile: `routes/me.ts` (profile, password, authenticator app with recovery codes, SMS number, sessions), `core/totp.ts` (RFC 6238, tested with its vectors), sign-in with the app or a recovery code, profile fields kept in the people store (password only as a hash), session user carries photo and preferences (`useFormat` follows the person's time zone and date format; the layout applies their language), `/profile` with Details, Preferences, Place, Password, TwoStep (+ AppSetup), Sessions, Notifications. Browser-checked: page, authenticator set up with the QR key, sign-out and sign-in with an app code, app removed again, date format saved and put back, masked number. F16 complete, stopping for review |

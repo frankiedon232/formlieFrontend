@@ -7,6 +7,7 @@ import * as audit from './routes/audit'
 import * as people from './routes/people'
 import * as invites from './routes/invites'
 import * as peopleManage from './routes/peopleManage'
+import * as me from './routes/me'
 import { getDirectory } from './routes/directory'
 import { getFormOverview } from './routes/formOverview'
 import * as responses from './routes/responses'
@@ -240,6 +241,19 @@ const router = createRouter()
   .get('/people', people.listPeople)
   .get('/people/insights', people.peopleInsights)
   .get('/people/:id', people.getPerson)
+  .get('/me/profile', me.getProfile)
+  .patch('/me/profile', me.updateProfile)
+  .post('/me/password', me.changePassword)
+  .post('/me/two-step/app', me.startApp)
+  .post('/me/two-step/app/confirm', me.confirmApp)
+  .post('/me/two-step/app/remove', me.removeApp)
+  .post('/me/two-step/recovery', me.newRecovery)
+  .post('/me/two-step/phone', me.startPhone)
+  .post('/me/two-step/phone/confirm', me.confirmPhone)
+  .delete('/me/two-step/phone', me.removePhone)
+  .get('/me/sessions', me.mySessions)
+  .delete('/me/sessions/:id', me.endMySession)
+  .post('/me/sessions/sign-out-others', me.endOtherSessions)
   .post('/people/bulk', peopleManage.bulkPeople)
   .post('/people/invites', invites.invitePeople)
   .patch('/people/:id', peopleManage.updatePerson)

@@ -15,6 +15,10 @@ const { shortcutsOpen } = useAppUi()
 const peek = ref<{ focusEdge: (edge: 'first' | 'last') => void } | null>(null)
 // The workspace's look of the portal (Settings → Appearance)
 const appearance = useAppearance()
+// A person's own language (My profile, F16 M5) follows them: once signed in, the app switches to it
+const session = useSession()
+const { locale: appLocale, changeLocale } = useAppLocale()
+watch(() => session.user.value?.language, language => language && language !== appLocale.value && void changeLocale(language), { immediate: true })
 appearance.apply()
 onMounted(() => void appearance.load())
 

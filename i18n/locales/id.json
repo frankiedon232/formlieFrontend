@@ -1096,7 +1096,12 @@
       "users_updated": "Profil diubah",
       "users_signed_out": "Keluar dari semua perangkat",
       "users_password_requested": "Kata sandi baru diminta",
-      "users_two_step_reset": "Masuk dua langkah direset"
+      "users_two_step_reset": "Masuk dua langkah direset",
+      "auth_password_changed": "Kata sandi diubah",
+      "auth_two_step_enabled": "Masuk dua langkah diaktifkan",
+      "auth_two_step_disabled": "Masuk dua langkah dinonaktifkan",
+      "auth_recovery_codes_created": "Kode pemulihan baru dibuat",
+      "users_profile_updated": "Profil sendiri diubah"
     },
     "detail": {
       "who": "Siapa",
@@ -7606,6 +7611,118 @@
       "recent": "Aktif baru-baru ini",
       "all": "Semua orang ({n})",
       "invite": "Undang anggota"
+    }
+  },
+  "profile": {
+    "subtitle": "Data Anda, cara masuk, dan email yang Anda terima",
+    "saved": "Profil disimpan",
+    "photoType": "Pilih gambar PNG, JPEG, atau WebP.",
+    "photoSaved": "Foto disimpan",
+    "photoRemoved": "Foto dihapus",
+    "photoAdd": "Tambah foto",
+    "photoChange": "Ganti foto",
+    "photoRemove": "Hapus",
+    "emailHint": "Anda masuk dengan alamat ini. Admin dapat mengubahnya.",
+    "details": {
+      "title": "Data Anda",
+      "desc": "Nama dan foto Anda, seperti yang dilihat tim Anda."
+    },
+    "prefs": {
+      "title": "Bahasa dan wilayah",
+      "desc": "Cara aplikasi berbicara kepada Anda dan menampilkan tanggal. Pengaturan ruang kerja dipakai sampai Anda memilih.",
+      "workspace": "Milik ruang kerja",
+      "language": "Bahasa",
+      "timeZone": "Zona waktu",
+      "dateFormat": "Format tanggal"
+    },
+    "place": {
+      "title": "Di ruang kerja",
+      "desc": "Ditetapkan oleh admin Anda di Orang."
+    },
+    "password": {
+      "title": "Kata sandi",
+      "desc": "Pilih kata sandi yang kuat dan tidak Anda pakai di tempat lain.",
+      "changedAgo": "Diubah {when}.",
+      "current": "Kata sandi saat ini",
+      "new": "Kata sandi baru",
+      "change": "Ubah kata sandi",
+      "done": "Kata sandi diubah",
+      "doneDesc": "Perangkat Anda yang lain telah dikeluarkan."
+    },
+    "twoStep": {
+      "title": "Masuk dua langkah",
+      "desc": "Langkah kedua setelah kata sandi. Aplikasi autentikator paling aman.",
+      "app": "Aplikasi autentikator",
+      "appOn": "Aktif. Sisa {n} kode pemulihan. | Aktif. Sisa {n} kode pemulihan.",
+      "appOff": "Kode dari aplikasi di ponsel Anda, bahkan saat offline.",
+      "setUp": "Siapkan",
+      "newCodes": "Kode pemulihan baru",
+      "remove": "Hapus",
+      "appRemoved": "Aplikasi autentikator dihapus",
+      "appTitle": "Siapkan aplikasi autentikator",
+      "appDesc": "Gunakan aplikasi autentikator apa pun di ponsel Anda.",
+      "step1": "Pindai kode ini dengan aplikasi, atau ketik kunci di bawah.",
+      "step2": "Masukkan kode 6 digit yang ditampilkan aplikasi.",
+      "qrLabel": "Kode untuk dipindai dengan aplikasi autentikator Anda",
+      "key": "Kunci:",
+      "code": "Kode dari aplikasi",
+      "turnOn": "Aktifkan",
+      "codesTitle": "Simpan kode pemulihan Anda",
+      "codesDesc": "Setiap kode dapat dipakai masuk satu kali saat ponsel Anda tidak ada. Kode hanya ditampilkan sekarang.",
+      "codesFile": "Kode pemulihan Formalie. Masing-masing berlaku sekali.",
+      "codesCopied": "Kode pemulihan disalin",
+      "download": "Unduh",
+      "saved": "Sudah saya simpan",
+      "removeTitle": "Hapus aplikasi autentikator?",
+      "newCodesTitle": "Buat kode pemulihan baru?",
+      "passwordFirst": "Masukkan kata sandi Anda untuk melanjutkan. Kode pemulihan sebelumnya tidak berlaku lagi.",
+      "sms": "Pesan teks",
+      "smsOff": "Kode lewat pesan teks ke ponsel Anda.",
+      "smsNotAllowed": "Ruang kerja Anda tidak mengirim kode lewat pesan teks.",
+      "addNumber": "Tambah nomor",
+      "phoneTitle": "Tambah nomor telepon",
+      "phoneDesc": "Kami mengirim kode untuk memeriksa nomor.",
+      "number": "Nomor telepon",
+      "numberHint": "Dengan kode negara",
+      "sendCode": "Kirim kode",
+      "codeSent": "Kode dikirim ke {to}",
+      "devCode": "Kode pengembangan: {code}",
+      "confirm": "Konfirmasi",
+      "phoneOn": "Nomor telepon ditambahkan",
+      "phoneRemoved": "Nomor telepon dihapus"
+    },
+    "sessions": {
+      "title": "Tempat Anda masuk",
+      "desc": "Perangkat yang saat ini masuk ke akun Anda. Keluarkan yang tidak Anda kenali.",
+      "this": "Perangkat ini",
+      "unknown": "Perangkat tidak dikenal",
+      "active": "aktif {when}",
+      "signOut": "Keluar",
+      "others": "Keluar dari semua yang lain",
+      "othersTitle": "Keluar dari semua yang lain?",
+      "othersDesc": "Semua perangkat lain dikeluarkan. Perangkat ini tetap masuk.",
+      "ended": "Sudah keluar"
+    },
+    "notify": {
+      "title": "Notifikasi email",
+      "desc": "Hal-hal yang kami kirim lewat email. Notifikasi di aplikasi tetap aktif.",
+      "responses": "Respons baru",
+      "responsesHint": "Saat formulir milik Anda menerima respons.",
+      "digest": "Ringkasan harian",
+      "digestHint": "Satu email sehari, bukan satu setiap kali.",
+      "mentions": "Dibagikan kepada Anda",
+      "mentionsHint": "Saat seseorang memberi Anda akses ke formulir.",
+      "product": "Kabar dari Formalie",
+      "productHint": "Fitur baru, sesekali.",
+      "security": "Keamanan",
+      "securityHint": "Masuk dari perangkat baru dan perubahan kata sandi. Selalu aktif."
+    },
+    "signin": {
+      "appDesc": "Masukkan kode 6 digit dari aplikasi autentikator Anda.",
+      "useRecovery": "Gunakan kode pemulihan",
+      "recovery": "Kode pemulihan",
+      "recoveryUse": "Masuk",
+      "title": "Masukkan kode Anda"
     }
   }
 }

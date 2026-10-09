@@ -36,6 +36,10 @@ export const AUDIT_EVENTS = {
   'auth.session.revoked': { area: 'auth', icon: 'i-lucide-octagon-x' },
   'auth.password.reset_requested': { area: 'auth', icon: 'i-lucide-key-round' },
   'auth.password.reset': { area: 'auth', icon: 'i-lucide-rotate-ccw-key' },
+  'auth.password.changed': { area: 'auth', icon: 'i-lucide-key-round' },
+  'auth.two_step.enabled': { area: 'auth', icon: 'i-lucide-shield-check' },
+  'auth.two_step.disabled': { area: 'auth', icon: 'i-lucide-shield-off' },
+  'auth.recovery_codes.created': { area: 'auth', icon: 'i-lucide-list-restart' },
   // Workspace
   'workspace.created': { area: 'workspace', icon: 'i-lucide-building-2' },
   'workspace.updated': { area: 'workspace', icon: 'i-lucide-building' },
@@ -98,6 +102,7 @@ export const AUDIT_EVENTS = {
   'users.invite_revoked': { area: 'users', icon: 'i-lucide-user-minus' },
   'users.joined': { area: 'users', icon: 'i-lucide-user-check' },
   'users.updated': { area: 'users', icon: 'i-lucide-user-pen' },
+  'users.profile_updated': { area: 'users', icon: 'i-lucide-user-round-pen' },
   'users.signed_out': { area: 'users', icon: 'i-lucide-log-out' },
   'users.password_requested': { area: 'users', icon: 'i-lucide-key-round' },
   'users.two_step_reset': { area: 'users', icon: 'i-lucide-shield-off' },

@@ -82,8 +82,10 @@ defineExpose({ reset })
     />
 
     <div class="flex flex-wrap items-center justify-between gap-2 text-sm">
+      <!-- An authenticator app sends nothing, so there is nothing to resend (F16 M5) -->
+      <span v-if="challenge.channel === 'totp'" />
       <UButton
-        v-if="remaining > 0"
+        v-else-if="remaining > 0"
         :label="t('auth.otp.resendIn', { seconds: remaining })"
         color="neutral"
         variant="link"
@@ -115,7 +117,7 @@ defineExpose({ reset })
             square
             :aria-pressed="channel === challenge.channel"
             :aria-label="t(`auth.otp.channel.${channel}`)"
-            :disabled="loading || remaining > 0 || channel === challenge.channel"
+            :disabled="loading || (remaining > 0 && challenge.channel !== 'totp') || channel === challenge.channel"
             @click="emit('resend', channel)"
           />
         </UTooltip>

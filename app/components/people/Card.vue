@@ -46,7 +46,7 @@ const names = (items: { name: string }[]) => items.map(item => item.name).join('
     </div>
     <div class="mt-auto flex items-center justify-between gap-2 text-[11px] text-muted">
       <div class="flex min-w-0 items-center gap-2">
-        <UAvatar :alt="person.name" size="xs" />
+        <UAvatar :src="person.photo ?? undefined" :alt="person.name" size="xs" />
         <span class="truncate">{{ person.invite ? t('people.invite.by', { name: person.invite.invited_by }) : t('people.joinedOn', { date: date(person.joined_at) }) }}</span>
       </div>
       <div class="flex shrink-0 items-center gap-2.5">

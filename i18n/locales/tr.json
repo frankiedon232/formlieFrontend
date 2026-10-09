@@ -1096,7 +1096,12 @@
       "users_updated": "Profil değiştirildi",
       "users_signed_out": "Her yerden çıkış yapıldı",
       "users_password_requested": "Yeni parola istendi",
-      "users_two_step_reset": "İki adımlı giriş sıfırlandı"
+      "users_two_step_reset": "İki adımlı giriş sıfırlandı",
+      "auth_password_changed": "Parola değiştirildi",
+      "auth_two_step_enabled": "İki adımlı giriş açıldı",
+      "auth_two_step_disabled": "İki adımlı giriş kapatıldı",
+      "auth_recovery_codes_created": "Yeni kurtarma kodları oluşturuldu",
+      "users_profile_updated": "Kendi profili değiştirildi"
     },
     "detail": {
       "who": "Kim",
@@ -7606,6 +7611,118 @@
       "recent": "Yakın zamanda etkin",
       "all": "Tüm kişiler ({n})",
       "invite": "Üye davet et"
+    }
+  },
+  "profile": {
+    "subtitle": "Bilgileriniz, girişiniz ve aldığınız e-postalar",
+    "saved": "Profil kaydedildi",
+    "photoType": "PNG, JPEG veya WebP bir görsel seçin.",
+    "photoSaved": "Fotoğraf kaydedildi",
+    "photoRemoved": "Fotoğraf kaldırıldı",
+    "photoAdd": "Fotoğraf ekle",
+    "photoChange": "Fotoğrafı değiştir",
+    "photoRemove": "Kaldır",
+    "emailHint": "Bu adresle giriş yaparsınız. Bir yönetici değiştirebilir.",
+    "details": {
+      "title": "Bilgileriniz",
+      "desc": "Adınız ve fotoğrafınız, ekibinizin gördüğü şekilde."
+    },
+    "prefs": {
+      "title": "Dil ve bölge",
+      "desc": "Uygulamanın size nasıl konuştuğu ve tarihleri nasıl gösterdiği. Siz seçene kadar çalışma alanının ayarı kullanılır.",
+      "workspace": "Çalışma alanınınki",
+      "language": "Dil",
+      "timeZone": "Saat dilimi",
+      "dateFormat": "Tarih biçimi"
+    },
+    "place": {
+      "title": "Çalışma alanında",
+      "desc": "Yöneticileriniz tarafından Kişiler bölümünde belirlenir."
+    },
+    "password": {
+      "title": "Parola",
+      "desc": "Başka hiçbir yerde kullanmadığınız güçlü bir parola seçin.",
+      "changedAgo": "{when} değiştirildi.",
+      "current": "Mevcut parola",
+      "new": "Yeni parola",
+      "change": "Parolayı değiştir",
+      "done": "Parola değiştirildi",
+      "doneDesc": "Diğer cihazlarınızdaki oturumlar kapatıldı."
+    },
+    "twoStep": {
+      "title": "İki adımlı giriş",
+      "desc": "Parolanızdan sonra ikinci bir adım. En güvenlisi kimlik doğrulayıcı uygulamadır.",
+      "app": "Kimlik doğrulayıcı uygulama",
+      "appOn": "Açık. {n} kurtarma kodu kaldı. | Açık. {n} kurtarma kodu kaldı.",
+      "appOff": "Telefonunuzdaki bir uygulamadan kodlar, çevrimdışıyken de.",
+      "setUp": "Kur",
+      "newCodes": "Yeni kurtarma kodları",
+      "remove": "Kaldır",
+      "appRemoved": "Kimlik doğrulayıcı uygulama kaldırıldı",
+      "appTitle": "Kimlik doğrulayıcı uygulama kurun",
+      "appDesc": "Telefonunuzdaki herhangi bir kimlik doğrulayıcı uygulamayı kullanın.",
+      "step1": "Bu kodu uygulamayla tarayın veya aşağıdaki anahtarı yazın.",
+      "step2": "Uygulamanın gösterdiği 6 haneli kodu girin.",
+      "qrLabel": "Kimlik doğrulayıcı uygulamanızla taranacak kod",
+      "key": "Anahtar:",
+      "code": "Uygulamadaki kod",
+      "turnOn": "Aç",
+      "codesTitle": "Kurtarma kodlarınızı saklayın",
+      "codesDesc": "Her kod, telefonunuz yanınızda değilken bir kez giriş yapmanızı sağlar. Yalnızca şimdi gösterilirler.",
+      "codesFile": "Formalie kurtarma kodları. Her biri bir kez çalışır.",
+      "codesCopied": "Kurtarma kodları kopyalandı",
+      "download": "İndir",
+      "saved": "Kaydettim",
+      "removeTitle": "Kimlik doğrulayıcı uygulama kaldırılsın mı?",
+      "newCodesTitle": "Yeni kurtarma kodları oluşturulsun mu?",
+      "passwordFirst": "Devam etmek için parolanızı girin. Önceki kurtarma kodları çalışmaz hale gelir.",
+      "sms": "Kısa mesaj",
+      "smsOff": "Telefonunuza kısa mesajla kodlar.",
+      "smsNotAllowed": "Çalışma alanınız kısa mesajla kod göndermiyor.",
+      "addNumber": "Numara ekle",
+      "phoneTitle": "Telefon numarası ekle",
+      "phoneDesc": "Numarayı doğrulamak için bir kod göndeririz.",
+      "number": "Telefon numarası",
+      "numberHint": "Ülke koduyla",
+      "sendCode": "Kod gönder",
+      "codeSent": "Kod {to} numarasına gönderildi",
+      "devCode": "Geliştirme kodu: {code}",
+      "confirm": "Onayla",
+      "phoneOn": "Telefon numarası eklendi",
+      "phoneRemoved": "Telefon numarası kaldırıldı"
+    },
+    "sessions": {
+      "title": "Nerelerde oturum açtınız",
+      "desc": "Hesabınızda şu an oturum açık olan cihazlar. Tanımadığınız cihazların oturumunu kapatın.",
+      "this": "Bu cihaz",
+      "unknown": "Bilinmeyen cihaz",
+      "active": "{when} etkin",
+      "signOut": "Oturumu kapat",
+      "others": "Diğer her yerde oturumu kapat",
+      "othersTitle": "Diğer her yerde oturum kapatılsın mı?",
+      "othersDesc": "Diğer tüm cihazların oturumu kapatılır. Bu cihaz açık kalır.",
+      "ended": "Oturum kapatıldı"
+    },
+    "notify": {
+      "title": "E-posta bildirimleri",
+      "desc": "Size hangi konularda e-posta göndeririz. Uygulama içi bildirimler açık kalır.",
+      "responses": "Yeni yanıtlar",
+      "responsesHint": "Sahibi olduğunuz formlara yanıt geldiğinde.",
+      "digest": "Günlük özet",
+      "digestHint": "Her seferinde bir e-posta yerine günde bir e-posta.",
+      "mentions": "Sizinle paylaşılanlar",
+      "mentionsHint": "Biri size bir forma erişim verdiğinde.",
+      "product": "Formalie haberleri",
+      "productHint": "Ara sıra yeni özellikler.",
+      "security": "Güvenlik",
+      "securityHint": "Yeni cihazlardan girişler ve parola değişiklikleri. Her zaman açık."
+    },
+    "signin": {
+      "appDesc": "Kimlik doğrulayıcı uygulamanızdaki 6 haneli kodu girin.",
+      "useRecovery": "Bunun yerine kurtarma kodu kullan",
+      "recovery": "Kurtarma kodu",
+      "recoveryUse": "Giriş yap",
+      "title": "Kodunuzu girin"
     }
   }
 }

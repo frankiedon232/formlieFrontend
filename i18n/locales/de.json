@@ -1096,7 +1096,12 @@
       "users_updated": "Profil geändert",
       "users_signed_out": "Überall abgemeldet",
       "users_password_requested": "Neues Passwort angefordert",
-      "users_two_step_reset": "Zwei-Schritt-Anmeldung zurückgesetzt"
+      "users_two_step_reset": "Zwei-Schritt-Anmeldung zurückgesetzt",
+      "auth_password_changed": "Passwort geändert",
+      "auth_two_step_enabled": "Zwei-Schritt-Anmeldung aktiviert",
+      "auth_two_step_disabled": "Zwei-Schritt-Anmeldung deaktiviert",
+      "auth_recovery_codes_created": "Neue Wiederherstellungscodes erstellt",
+      "users_profile_updated": "Eigenes Profil geändert"
     },
     "detail": {
       "who": "Wer",
@@ -7606,6 +7611,118 @@
       "recent": "Zuletzt aktiv",
       "all": "Alle Personen ({n})",
       "invite": "Mitglied einladen"
+    }
+  },
+  "profile": {
+    "subtitle": "Ihre Angaben, die Anmeldung und die E-Mails, die Sie erhalten",
+    "saved": "Profil gespeichert",
+    "photoType": "Wählen Sie ein Bild als PNG, JPEG oder WebP.",
+    "photoSaved": "Foto gespeichert",
+    "photoRemoved": "Foto entfernt",
+    "photoAdd": "Foto hinzufügen",
+    "photoChange": "Foto ändern",
+    "photoRemove": "Entfernen",
+    "emailHint": "Mit dieser Adresse melden Sie sich an. Ein Admin kann sie ändern.",
+    "details": {
+      "title": "Ihre Angaben",
+      "desc": "Ihr Name und Ihr Foto, so wie Ihr Team sie sieht."
+    },
+    "prefs": {
+      "title": "Sprache und Region",
+      "desc": "Wie die App mit Ihnen spricht und Datumsangaben anzeigt. Bis zu Ihrer Auswahl gilt die Einstellung des Arbeitsbereichs.",
+      "workspace": "Die des Arbeitsbereichs",
+      "language": "Sprache",
+      "timeZone": "Zeitzone",
+      "dateFormat": "Datumsformat"
+    },
+    "place": {
+      "title": "Im Arbeitsbereich",
+      "desc": "Von Ihren Admins unter Personen festgelegt."
+    },
+    "password": {
+      "title": "Passwort",
+      "desc": "Wählen Sie ein starkes Passwort, das Sie nirgendwo sonst verwenden.",
+      "changedAgo": "Geändert {when}.",
+      "current": "Aktuelles Passwort",
+      "new": "Neues Passwort",
+      "change": "Passwort ändern",
+      "done": "Passwort geändert",
+      "doneDesc": "Ihre anderen Geräte wurden abgemeldet."
+    },
+    "twoStep": {
+      "title": "Zwei-Schritt-Anmeldung",
+      "desc": "Ein zweiter Schritt nach Ihrem Passwort. Eine Authenticator-App ist am sichersten.",
+      "app": "Authenticator-App",
+      "appOn": "Aktiv. {n} Wiederherstellungscode übrig. | Aktiv. {n} Wiederherstellungscodes übrig.",
+      "appOff": "Codes aus einer App auf Ihrem Telefon, auch offline.",
+      "setUp": "Einrichten",
+      "newCodes": "Neue Wiederherstellungscodes",
+      "remove": "Entfernen",
+      "appRemoved": "Authenticator-App entfernt",
+      "appTitle": "Authenticator-App einrichten",
+      "appDesc": "Verwenden Sie eine beliebige Authenticator-App auf Ihrem Telefon.",
+      "step1": "Scannen Sie diesen Code mit der App oder geben Sie den Schlüssel unten ein.",
+      "step2": "Geben Sie den 6-stelligen Code ein, den die App anzeigt.",
+      "qrLabel": "Code zum Scannen mit Ihrer Authenticator-App",
+      "key": "Schlüssel:",
+      "code": "Code aus der App",
+      "turnOn": "Aktivieren",
+      "codesTitle": "Bewahren Sie Ihre Wiederherstellungscodes auf",
+      "codesDesc": "Jeder Code meldet Sie einmal an, wenn Ihr Telefon nicht griffbereit ist. Sie werden nur jetzt angezeigt.",
+      "codesFile": "Formalie-Wiederherstellungscodes. Jeder gilt nur einmal.",
+      "codesCopied": "Wiederherstellungscodes kopiert",
+      "download": "Herunterladen",
+      "saved": "Ich habe sie gespeichert",
+      "removeTitle": "Authenticator-App entfernen?",
+      "newCodesTitle": "Neue Wiederherstellungscodes erstellen?",
+      "passwordFirst": "Geben Sie Ihr Passwort ein, um fortzufahren. Frühere Wiederherstellungscodes funktionieren dann nicht mehr.",
+      "sms": "SMS",
+      "smsOff": "Codes per SMS auf Ihr Telefon.",
+      "smsNotAllowed": "Ihr Arbeitsbereich sendet keine Codes per SMS.",
+      "addNumber": "Nummer hinzufügen",
+      "phoneTitle": "Telefonnummer hinzufügen",
+      "phoneDesc": "Wir senden einen Code, um die Nummer zu prüfen.",
+      "number": "Telefonnummer",
+      "numberHint": "Mit Landesvorwahl",
+      "sendCode": "Code senden",
+      "codeSent": "Code gesendet an {to}",
+      "devCode": "Entwicklungscode: {code}",
+      "confirm": "Bestätigen",
+      "phoneOn": "Telefonnummer hinzugefügt",
+      "phoneRemoved": "Telefonnummer entfernt"
+    },
+    "sessions": {
+      "title": "Wo Sie angemeldet sind",
+      "desc": "Geräte, die gerade bei Ihrem Konto angemeldet sind. Melden Sie unbekannte Geräte ab.",
+      "this": "Dieses Gerät",
+      "unknown": "Unbekanntes Gerät",
+      "active": "aktiv {when}",
+      "signOut": "Abmelden",
+      "others": "Überall sonst abmelden",
+      "othersTitle": "Überall sonst abmelden?",
+      "othersDesc": "Alle anderen Geräte werden abgemeldet. Dieses bleibt angemeldet.",
+      "ended": "Abgemeldet"
+    },
+    "notify": {
+      "title": "E-Mail-Benachrichtigungen",
+      "desc": "Worüber wir Sie per E-Mail informieren. Benachrichtigungen in der App bleiben aktiv.",
+      "responses": "Neue Antworten",
+      "responsesHint": "Wenn Formulare, die Ihnen gehören, eine Antwort erhalten.",
+      "digest": "Tägliche Zusammenfassung",
+      "digestHint": "Eine E-Mail pro Tag statt einer pro Ereignis.",
+      "mentions": "Mit Ihnen geteilt",
+      "mentionsHint": "Wenn jemand Ihnen Zugriff auf ein Formular gibt.",
+      "product": "Neuigkeiten von Formalie",
+      "productHint": "Ab und zu neue Funktionen.",
+      "security": "Sicherheit",
+      "securityHint": "Anmeldungen von neuen Geräten und Passwortänderungen. Immer aktiv."
+    },
+    "signin": {
+      "appDesc": "Geben Sie den 6-stelligen Code aus Ihrer Authenticator-App ein.",
+      "useRecovery": "Stattdessen einen Wiederherstellungscode verwenden",
+      "recovery": "Wiederherstellungscode",
+      "recoveryUse": "Anmelden",
+      "title": "Geben Sie Ihren Code ein"
     }
   }
 }

@@ -21,7 +21,7 @@ async function logout() {
   await auth.logout()
   await navigateTo('/auth/login')
 }
-const avatar = computed(() => ({ alt: user.value.name }))
+const avatar = computed(() => ({ alt: user.value.name, src: session.user.value?.avatar_url ?? undefined }))
 
 const themeItem = (value: 'light' | 'dark' | 'system', icon: string): DropdownMenuItem => ({
   label: t(`user.${value}`),

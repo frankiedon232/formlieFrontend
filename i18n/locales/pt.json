@@ -1096,7 +1096,12 @@
       "users_updated": "Perfil alterado",
       "users_signed_out": "Sessão encerrada em todos os lugares",
       "users_password_requested": "Nova senha solicitada",
-      "users_two_step_reset": "Login em duas etapas redefinido"
+      "users_two_step_reset": "Login em duas etapas redefinido",
+      "auth_password_changed": "Senha alterada",
+      "auth_two_step_enabled": "Verificação em duas etapas ativada",
+      "auth_two_step_disabled": "Verificação em duas etapas desativada",
+      "auth_recovery_codes_created": "Novos códigos de recuperação criados",
+      "users_profile_updated": "Perfil próprio alterado"
     },
     "detail": {
       "who": "Quem",
@@ -7606,6 +7611,118 @@
       "recent": "Ativas recentemente",
       "all": "Todas as pessoas ({n})",
       "invite": "Convidar membro"
+    }
+  },
+  "profile": {
+    "subtitle": "Seus dados, o login e os e-mails que você recebe",
+    "saved": "Perfil salvo",
+    "photoType": "Escolha uma imagem PNG, JPEG ou WebP.",
+    "photoSaved": "Foto salva",
+    "photoRemoved": "Foto removida",
+    "photoAdd": "Adicionar uma foto",
+    "photoChange": "Alterar foto",
+    "photoRemove": "Remover",
+    "emailHint": "Você entra com este endereço. Um administrador pode alterá-lo.",
+    "details": {
+      "title": "Seus dados",
+      "desc": "Seu nome e sua foto, como sua equipe os vê."
+    },
+    "prefs": {
+      "title": "Idioma e região",
+      "desc": "Como o app fala com você e mostra as datas. A configuração do espaço de trabalho vale até você escolher.",
+      "workspace": "A do espaço de trabalho",
+      "language": "Idioma",
+      "timeZone": "Fuso horário",
+      "dateFormat": "Formato de data"
+    },
+    "place": {
+      "title": "No espaço de trabalho",
+      "desc": "Definido pelos seus administradores em Pessoas."
+    },
+    "password": {
+      "title": "Senha",
+      "desc": "Escolha uma senha forte que você não use em nenhum outro lugar.",
+      "changedAgo": "Alterada {when}.",
+      "current": "Senha atual",
+      "new": "Nova senha",
+      "change": "Alterar senha",
+      "done": "Senha alterada",
+      "doneDesc": "Seus outros dispositivos foram desconectados."
+    },
+    "twoStep": {
+      "title": "Verificação em duas etapas",
+      "desc": "Uma segunda etapa depois da senha. Um app autenticador é o mais seguro.",
+      "app": "App autenticador",
+      "appOn": "Ativada. Resta {n} código de recuperação. | Ativada. Restam {n} códigos de recuperação.",
+      "appOff": "Códigos de um app no seu celular, mesmo offline.",
+      "setUp": "Configurar",
+      "newCodes": "Novos códigos de recuperação",
+      "remove": "Remover",
+      "appRemoved": "App autenticador removido",
+      "appTitle": "Configurar um app autenticador",
+      "appDesc": "Use qualquer app autenticador no seu celular.",
+      "step1": "Escaneie este código com o app ou digite a chave abaixo.",
+      "step2": "Digite o código de 6 dígitos mostrado pelo app.",
+      "qrLabel": "Código para escanear com seu app autenticador",
+      "key": "Chave:",
+      "code": "Código do app",
+      "turnOn": "Ativar",
+      "codesTitle": "Guarde seus códigos de recuperação",
+      "codesDesc": "Cada código permite entrar uma vez quando o celular não está à mão. Eles só aparecem agora.",
+      "codesFile": "Códigos de recuperação do Formalie. Cada um vale uma vez.",
+      "codesCopied": "Códigos de recuperação copiados",
+      "download": "Baixar",
+      "saved": "Eu os salvei",
+      "removeTitle": "Remover o app autenticador?",
+      "newCodesTitle": "Criar novos códigos de recuperação?",
+      "passwordFirst": "Digite sua senha para continuar. Os códigos de recuperação anteriores deixam de funcionar.",
+      "sms": "Mensagem de texto",
+      "smsOff": "Códigos por mensagem de texto no seu celular.",
+      "smsNotAllowed": "Seu espaço de trabalho não envia códigos por mensagem de texto.",
+      "addNumber": "Adicionar um número",
+      "phoneTitle": "Adicionar um número de telefone",
+      "phoneDesc": "Enviamos um código para verificar o número.",
+      "number": "Número de telefone",
+      "numberHint": "Com o código do país",
+      "sendCode": "Enviar código",
+      "codeSent": "Código enviado para {to}",
+      "devCode": "Código de desenvolvimento: {code}",
+      "confirm": "Confirmar",
+      "phoneOn": "Número de telefone adicionado",
+      "phoneRemoved": "Número de telefone removido"
+    },
+    "sessions": {
+      "title": "Onde você está conectado",
+      "desc": "Dispositivos conectados à sua conta agora. Desconecte os que você não reconhece.",
+      "this": "Este dispositivo",
+      "unknown": "Dispositivo desconhecido",
+      "active": "ativo {when}",
+      "signOut": "Sair",
+      "others": "Sair em todos os outros",
+      "othersTitle": "Sair em todos os outros?",
+      "othersDesc": "Todos os outros dispositivos serão desconectados. Este continua conectado.",
+      "ended": "Desconectado"
+    },
+    "notify": {
+      "title": "Notificações por e-mail",
+      "desc": "Sobre o que enviamos e-mails. As notificações no app continuam ativas.",
+      "responses": "Novas respostas",
+      "responsesHint": "Quando formulários seus recebem uma resposta.",
+      "digest": "Resumo diário",
+      "digestHint": "Um e-mail por dia em vez de um a cada vez.",
+      "mentions": "Compartilhado com você",
+      "mentionsHint": "Quando alguém dá a você acesso a um formulário.",
+      "product": "Novidades do Formalie",
+      "productHint": "Novos recursos, de vez em quando.",
+      "security": "Segurança",
+      "securityHint": "Logins de novos dispositivos e alterações de senha. Sempre ativo."
+    },
+    "signin": {
+      "appDesc": "Digite o código de 6 dígitos do seu app autenticador.",
+      "useRecovery": "Usar um código de recuperação",
+      "recovery": "Código de recuperação",
+      "recoveryUse": "Entrar",
+      "title": "Digite seu código"
     }
   }
 }

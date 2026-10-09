@@ -25,6 +25,11 @@ export function useSession() {
     organisation.value = tokens.organisation
   }
 
+  /** After My profile changes (F16 M5): name, photo and preferences, without a new sign-in. */
+  function updateUser(values: Partial<SessionUser>) {
+    if (user.value) user.value = { ...user.value, ...values }
+  }
+
   function clear() {
     accessToken.value = null
     expiresAt.value = null
@@ -43,6 +48,7 @@ export function useSession() {
     tenant: readonly(tenant),
     organisation: readonly(organisation),
     displayName,
+    updateUser,
     isAuthenticated: computed(() => !!accessToken.value),
     setAccessToken,
     applyTokens,

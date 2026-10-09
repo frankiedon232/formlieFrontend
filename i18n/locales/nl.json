@@ -1096,7 +1096,12 @@
       "users_updated": "Profiel gewijzigd",
       "users_signed_out": "Overal afgemeld",
       "users_password_requested": "Nieuw wachtwoord gevraagd",
-      "users_two_step_reset": "Tweestapsaanmelding gereset"
+      "users_two_step_reset": "Tweestapsaanmelding gereset",
+      "auth_password_changed": "Wachtwoord gewijzigd",
+      "auth_two_step_enabled": "Tweestapsaanmelding ingeschakeld",
+      "auth_two_step_disabled": "Tweestapsaanmelding uitgeschakeld",
+      "auth_recovery_codes_created": "Nieuwe herstelcodes gemaakt",
+      "users_profile_updated": "Eigen profiel gewijzigd"
     },
     "detail": {
       "who": "Wie",
@@ -7606,6 +7611,118 @@
       "recent": "Onlangs actief",
       "all": "Alle mensen ({n})",
       "invite": "Lid uitnodigen"
+    }
+  },
+  "profile": {
+    "subtitle": "Je gegevens, het aanmelden en de e-mails die je krijgt",
+    "saved": "Profiel opgeslagen",
+    "photoType": "Kies een PNG-, JPEG- of WebP-afbeelding.",
+    "photoSaved": "Foto opgeslagen",
+    "photoRemoved": "Foto verwijderd",
+    "photoAdd": "Foto toevoegen",
+    "photoChange": "Foto wijzigen",
+    "photoRemove": "Verwijderen",
+    "emailHint": "Je meldt je aan met dit adres. Een beheerder kan het wijzigen.",
+    "details": {
+      "title": "Je gegevens",
+      "desc": "Je naam en foto, zoals je team ze ziet."
+    },
+    "prefs": {
+      "title": "Taal en regio",
+      "desc": "Hoe de app tegen je praat en datums toont. De instelling van de werkruimte geldt totdat je kiest.",
+      "workspace": "Die van de werkruimte",
+      "language": "Taal",
+      "timeZone": "Tijdzone",
+      "dateFormat": "Datumnotatie"
+    },
+    "place": {
+      "title": "In de werkruimte",
+      "desc": "Ingesteld door je beheerders bij Mensen."
+    },
+    "password": {
+      "title": "Wachtwoord",
+      "desc": "Kies een sterk wachtwoord dat je nergens anders gebruikt.",
+      "changedAgo": "Gewijzigd {when}.",
+      "current": "Huidig wachtwoord",
+      "new": "Nieuw wachtwoord",
+      "change": "Wachtwoord wijzigen",
+      "done": "Wachtwoord gewijzigd",
+      "doneDesc": "Je andere apparaten zijn afgemeld."
+    },
+    "twoStep": {
+      "title": "Tweestapsaanmelding",
+      "desc": "Een tweede stap na je wachtwoord. Een authenticator-app is het veiligst.",
+      "app": "Authenticator-app",
+      "appOn": "Aan. {n} herstelcode over. | Aan. {n} herstelcodes over.",
+      "appOff": "Codes uit een app op je telefoon, ook offline.",
+      "setUp": "Instellen",
+      "newCodes": "Nieuwe herstelcodes",
+      "remove": "Verwijderen",
+      "appRemoved": "Authenticator-app verwijderd",
+      "appTitle": "Een authenticator-app instellen",
+      "appDesc": "Gebruik een willekeurige authenticator-app op je telefoon.",
+      "step1": "Scan deze code met de app, of typ de sleutel hieronder.",
+      "step2": "Voer de 6-cijferige code in die de app toont.",
+      "qrLabel": "Code om te scannen met je authenticator-app",
+      "key": "Sleutel:",
+      "code": "Code uit de app",
+      "turnOn": "Inschakelen",
+      "codesTitle": "Bewaar je herstelcodes",
+      "codesDesc": "Elke code meldt je één keer aan als je telefoon niet binnen handbereik is. Ze worden alleen nu getoond.",
+      "codesFile": "Formalie-herstelcodes. Elke code werkt één keer.",
+      "codesCopied": "Herstelcodes gekopieerd",
+      "download": "Downloaden",
+      "saved": "Ik heb ze opgeslagen",
+      "removeTitle": "De authenticator-app verwijderen?",
+      "newCodesTitle": "Nieuwe herstelcodes maken?",
+      "passwordFirst": "Voer je wachtwoord in om door te gaan. Eerdere herstelcodes werken dan niet meer.",
+      "sms": "Sms",
+      "smsOff": "Codes per sms naar je telefoon.",
+      "smsNotAllowed": "Je werkruimte verstuurt geen codes per sms.",
+      "addNumber": "Nummer toevoegen",
+      "phoneTitle": "Telefoonnummer toevoegen",
+      "phoneDesc": "We sturen een code om het nummer te controleren.",
+      "number": "Telefoonnummer",
+      "numberHint": "Met landcode",
+      "sendCode": "Code versturen",
+      "codeSent": "Code verstuurd naar {to}",
+      "devCode": "Ontwikkelcode: {code}",
+      "confirm": "Bevestigen",
+      "phoneOn": "Telefoonnummer toegevoegd",
+      "phoneRemoved": "Telefoonnummer verwijderd"
+    },
+    "sessions": {
+      "title": "Waar je bent aangemeld",
+      "desc": "Apparaten die nu zijn aangemeld bij je account. Meld apparaten af die je niet herkent.",
+      "this": "Dit apparaat",
+      "unknown": "Onbekend apparaat",
+      "active": "actief {when}",
+      "signOut": "Afmelden",
+      "others": "Overal elders afmelden",
+      "othersTitle": "Overal elders afmelden?",
+      "othersDesc": "Alle andere apparaten worden afgemeld. Dit apparaat blijft aangemeld.",
+      "ended": "Afgemeld"
+    },
+    "notify": {
+      "title": "E-mailmeldingen",
+      "desc": "Waarover we je mailen. Meldingen in de app blijven aan.",
+      "responses": "Nieuwe antwoorden",
+      "responsesHint": "Wanneer formulieren van jou een antwoord krijgen.",
+      "digest": "Dagelijks overzicht",
+      "digestHint": "Eén e-mail per dag in plaats van één per keer.",
+      "mentions": "Met je gedeeld",
+      "mentionsHint": "Wanneer iemand je toegang geeft tot een formulier.",
+      "product": "Nieuws van Formalie",
+      "productHint": "Af en toe nieuwe functies.",
+      "security": "Beveiliging",
+      "securityHint": "Aanmeldingen vanaf nieuwe apparaten en wachtwoordwijzigingen. Altijd aan."
+    },
+    "signin": {
+      "appDesc": "Voer de 6-cijferige code uit je authenticator-app in.",
+      "useRecovery": "Gebruik in plaats daarvan een herstelcode",
+      "recovery": "Herstelcode",
+      "recoveryUse": "Aanmelden",
+      "title": "Voer je code in"
     }
   }
 }

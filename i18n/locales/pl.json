@@ -1096,7 +1096,12 @@
       "users_updated": "Zmieniono profil",
       "users_signed_out": "Wylogowano wszędzie",
       "users_password_requested": "Poproszono o nowe hasło",
-      "users_two_step_reset": "Zresetowano logowanie dwuetapowe"
+      "users_two_step_reset": "Zresetowano logowanie dwuetapowe",
+      "auth_password_changed": "Hasło zmienione",
+      "auth_two_step_enabled": "Logowanie dwuetapowe włączone",
+      "auth_two_step_disabled": "Logowanie dwuetapowe wyłączone",
+      "auth_recovery_codes_created": "Utworzono nowe kody odzyskiwania",
+      "users_profile_updated": "Zmieniono własny profil"
     },
     "detail": {
       "who": "Kto",
@@ -7606,6 +7611,118 @@
       "recent": "Ostatnio aktywne",
       "all": "Wszystkie osoby ({n})",
       "invite": "Zaproś członka"
+    }
+  },
+  "profile": {
+    "subtitle": "Twoje dane, logowanie i e-maile, które dostajesz",
+    "saved": "Profil zapisany",
+    "photoType": "Wybierz obraz PNG, JPEG lub WebP.",
+    "photoSaved": "Zdjęcie zapisane",
+    "photoRemoved": "Zdjęcie usunięte",
+    "photoAdd": "Dodaj zdjęcie",
+    "photoChange": "Zmień zdjęcie",
+    "photoRemove": "Usuń",
+    "emailHint": "Logujesz się tym adresem. Administrator może go zmienić.",
+    "details": {
+      "title": "Twoje dane",
+      "desc": "Twoje imię i nazwisko oraz zdjęcie, tak jak widzi je zespół."
+    },
+    "prefs": {
+      "title": "Język i region",
+      "desc": "Jak aplikacja do Ciebie mówi i jak pokazuje daty. Dopóki nie wybierzesz, obowiązuje ustawienie przestrzeni roboczej.",
+      "workspace": "Z przestrzeni roboczej",
+      "language": "Język",
+      "timeZone": "Strefa czasowa",
+      "dateFormat": "Format daty"
+    },
+    "place": {
+      "title": "W przestrzeni roboczej",
+      "desc": "Ustawione przez administratorów w sekcji Osoby."
+    },
+    "password": {
+      "title": "Hasło",
+      "desc": "Wybierz silne hasło, którego nie używasz nigdzie indziej.",
+      "changedAgo": "Zmieniono {when}.",
+      "current": "Obecne hasło",
+      "new": "Nowe hasło",
+      "change": "Zmień hasło",
+      "done": "Hasło zmienione",
+      "doneDesc": "Pozostałe urządzenia zostały wylogowane."
+    },
+    "twoStep": {
+      "title": "Logowanie dwuetapowe",
+      "desc": "Drugi krok po haśle. Najbezpieczniejsza jest aplikacja uwierzytelniająca.",
+      "app": "Aplikacja uwierzytelniająca",
+      "appOn": "Włączone. Został {n} kod odzyskiwania. | Włączone. Zostało {n} kodów odzyskiwania.",
+      "appOff": "Kody z aplikacji na telefonie, także offline.",
+      "setUp": "Skonfiguruj",
+      "newCodes": "Nowe kody odzyskiwania",
+      "remove": "Usuń",
+      "appRemoved": "Aplikacja uwierzytelniająca usunięta",
+      "appTitle": "Skonfiguruj aplikację uwierzytelniającą",
+      "appDesc": "Użyj dowolnej aplikacji uwierzytelniającej na telefonie.",
+      "step1": "Zeskanuj ten kod w aplikacji lub wpisz poniższy klucz.",
+      "step2": "Wpisz 6-cyfrowy kod pokazany w aplikacji.",
+      "qrLabel": "Kod do zeskanowania w aplikacji uwierzytelniającej",
+      "key": "Klucz:",
+      "code": "Kod z aplikacji",
+      "turnOn": "Włącz",
+      "codesTitle": "Zachowaj kody odzyskiwania",
+      "codesDesc": "Każdy kod loguje jednorazowo, gdy nie masz telefonu pod ręką. Są pokazane tylko teraz.",
+      "codesFile": "Kody odzyskiwania Formalie. Każdy działa raz.",
+      "codesCopied": "Kody odzyskiwania skopiowane",
+      "download": "Pobierz",
+      "saved": "Zapisano je",
+      "removeTitle": "Usunąć aplikację uwierzytelniającą?",
+      "newCodesTitle": "Utworzyć nowe kody odzyskiwania?",
+      "passwordFirst": "Wpisz hasło, aby kontynuować. Dotychczasowe kody odzyskiwania przestaną działać.",
+      "sms": "SMS",
+      "smsOff": "Kody w SMS-ie na Twój telefon.",
+      "smsNotAllowed": "Twoja przestrzeń robocza nie wysyła kodów SMS-em.",
+      "addNumber": "Dodaj numer",
+      "phoneTitle": "Dodaj numer telefonu",
+      "phoneDesc": "Wyślemy kod, aby sprawdzić numer.",
+      "number": "Numer telefonu",
+      "numberHint": "Z numerem kierunkowym kraju",
+      "sendCode": "Wyślij kod",
+      "codeSent": "Kod wysłano na {to}",
+      "devCode": "Kod deweloperski: {code}",
+      "confirm": "Potwierdź",
+      "phoneOn": "Numer telefonu dodany",
+      "phoneRemoved": "Numer telefonu usunięty"
+    },
+    "sessions": {
+      "title": "Gdzie jesteś zalogowany",
+      "desc": "Urządzenia zalogowane teraz na Twoje konto. Wyloguj te, których nie rozpoznajesz.",
+      "this": "To urządzenie",
+      "unknown": "Nieznane urządzenie",
+      "active": "aktywne {when}",
+      "signOut": "Wyloguj",
+      "others": "Wyloguj wszędzie indziej",
+      "othersTitle": "Wylogować wszędzie indziej?",
+      "othersDesc": "Wszystkie pozostałe urządzenia zostaną wylogowane. To pozostanie zalogowane.",
+      "ended": "Wylogowano"
+    },
+    "notify": {
+      "title": "Powiadomienia e-mail",
+      "desc": "O czym piszemy do Ciebie e-mailem. Powiadomienia w aplikacji pozostają włączone.",
+      "responses": "Nowe odpowiedzi",
+      "responsesHint": "Gdy formularze, których jesteś właścicielem, dostaną odpowiedź.",
+      "digest": "Podsumowanie dzienne",
+      "digestHint": "Jeden e-mail dziennie zamiast jednego za każdym razem.",
+      "mentions": "Udostępnione Tobie",
+      "mentionsHint": "Gdy ktoś da Ci dostęp do formularza.",
+      "product": "Nowości z Formalie",
+      "productHint": "Nowe funkcje, od czasu do czasu.",
+      "security": "Bezpieczeństwo",
+      "securityHint": "Logowania z nowych urządzeń i zmiany hasła. Zawsze włączone."
+    },
+    "signin": {
+      "appDesc": "Wpisz 6-cyfrowy kod z aplikacji uwierzytelniającej.",
+      "useRecovery": "Użyj zamiast tego kodu odzyskiwania",
+      "recovery": "Kod odzyskiwania",
+      "recoveryUse": "Zaloguj się",
+      "title": "Wpisz swój kod"
     }
   }
 }

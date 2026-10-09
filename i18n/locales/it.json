@@ -1096,7 +1096,12 @@
       "users_updated": "Profilo modificato",
       "users_signed_out": "Disconnesso ovunque",
       "users_password_requested": "Nuova password richiesta",
-      "users_two_step_reset": "Accesso in due passaggi reimpostato"
+      "users_two_step_reset": "Accesso in due passaggi reimpostato",
+      "auth_password_changed": "Password modificata",
+      "auth_two_step_enabled": "Accesso in due passaggi attivato",
+      "auth_two_step_disabled": "Accesso in due passaggi disattivato",
+      "auth_recovery_codes_created": "Nuovi codici di recupero creati",
+      "users_profile_updated": "Profilo personale modificato"
     },
     "detail": {
       "who": "Chi",
@@ -7606,6 +7611,118 @@
       "recent": "Attive di recente",
       "all": "Tutte le persone ({n})",
       "invite": "Invita un membro"
+    }
+  },
+  "profile": {
+    "subtitle": "I tuoi dati, l'accesso e le email che ricevi",
+    "saved": "Profilo salvato",
+    "photoType": "Scegli un'immagine PNG, JPEG o WebP.",
+    "photoSaved": "Foto salvata",
+    "photoRemoved": "Foto rimossa",
+    "photoAdd": "Aggiungi una foto",
+    "photoChange": "Cambia foto",
+    "photoRemove": "Rimuovi",
+    "emailHint": "Accedi con questo indirizzo. Un amministratore può cambiarlo.",
+    "details": {
+      "title": "I tuoi dati",
+      "desc": "Il tuo nome e la tua foto, come li vede il tuo team."
+    },
+    "prefs": {
+      "title": "Lingua e regione",
+      "desc": "Come ti parla l'app e come mostra le date. Vale l'impostazione dello spazio di lavoro finché non scegli.",
+      "workspace": "Quella dello spazio di lavoro",
+      "language": "Lingua",
+      "timeZone": "Fuso orario",
+      "dateFormat": "Formato data"
+    },
+    "place": {
+      "title": "Nello spazio di lavoro",
+      "desc": "Impostato dai tuoi amministratori in Persone."
+    },
+    "password": {
+      "title": "Password",
+      "desc": "Scegli una password sicura che non usi altrove.",
+      "changedAgo": "Modificata {when}.",
+      "current": "Password attuale",
+      "new": "Nuova password",
+      "change": "Cambia password",
+      "done": "Password modificata",
+      "doneDesc": "Gli altri tuoi dispositivi sono stati disconnessi."
+    },
+    "twoStep": {
+      "title": "Accesso in due passaggi",
+      "desc": "Un secondo passaggio dopo la password. Un'app di autenticazione è la scelta più sicura.",
+      "app": "App di autenticazione",
+      "appOn": "Attivo. {n} codice di recupero rimasto. | Attivo. {n} codici di recupero rimasti.",
+      "appOff": "Codici da un'app sul telefono, anche offline.",
+      "setUp": "Configura",
+      "newCodes": "Nuovi codici di recupero",
+      "remove": "Rimuovi",
+      "appRemoved": "App di autenticazione rimossa",
+      "appTitle": "Configura un'app di autenticazione",
+      "appDesc": "Usa qualsiasi app di autenticazione sul telefono.",
+      "step1": "Scansiona questo codice con l'app o digita la chiave qui sotto.",
+      "step2": "Inserisci il codice a 6 cifre mostrato dall'app.",
+      "qrLabel": "Codice da scansionare con la tua app di autenticazione",
+      "key": "Chiave:",
+      "code": "Codice dall'app",
+      "turnOn": "Attiva",
+      "codesTitle": "Conserva i tuoi codici di recupero",
+      "codesDesc": "Ogni codice ti fa accedere una volta quando non hai il telefono a portata di mano. Vengono mostrati solo ora.",
+      "codesFile": "Codici di recupero Formalie. Ognuno vale una volta.",
+      "codesCopied": "Codici di recupero copiati",
+      "download": "Scarica",
+      "saved": "Li ho salvati",
+      "removeTitle": "Rimuovere l'app di autenticazione?",
+      "newCodesTitle": "Creare nuovi codici di recupero?",
+      "passwordFirst": "Inserisci la password per continuare. I codici di recupero precedenti smettono di funzionare.",
+      "sms": "SMS",
+      "smsOff": "Codici via SMS sul tuo telefono.",
+      "smsNotAllowed": "Il tuo spazio di lavoro non invia codici via SMS.",
+      "addNumber": "Aggiungi un numero",
+      "phoneTitle": "Aggiungi un numero di telefono",
+      "phoneDesc": "Inviamo un codice per verificare il numero.",
+      "number": "Numero di telefono",
+      "numberHint": "Con il prefisso internazionale",
+      "sendCode": "Invia codice",
+      "codeSent": "Codice inviato a {to}",
+      "devCode": "Codice di sviluppo: {code}",
+      "confirm": "Conferma",
+      "phoneOn": "Numero di telefono aggiunto",
+      "phoneRemoved": "Numero di telefono rimosso"
+    },
+    "sessions": {
+      "title": "Dove hai effettuato l'accesso",
+      "desc": "Dispositivi con accesso al tuo account in questo momento. Disconnetti quelli che non riconosci.",
+      "this": "Questo dispositivo",
+      "unknown": "Dispositivo sconosciuto",
+      "active": "attivo {when}",
+      "signOut": "Esci",
+      "others": "Esci ovunque altrove",
+      "othersTitle": "Uscire ovunque altrove?",
+      "othersDesc": "Tutti gli altri dispositivi vengono disconnessi. Questo resta connesso.",
+      "ended": "Disconnesso"
+    },
+    "notify": {
+      "title": "Notifiche email",
+      "desc": "Di cosa ti scriviamo. Le notifiche nell'app restano attive.",
+      "responses": "Nuove risposte",
+      "responsesHint": "Quando i moduli di cui sei proprietario ricevono una risposta.",
+      "digest": "Riepilogo giornaliero",
+      "digestHint": "Una email al giorno invece di una per volta.",
+      "mentions": "Condiviso con te",
+      "mentionsHint": "Quando qualcuno ti dà accesso a un modulo.",
+      "product": "Novità da Formalie",
+      "productHint": "Nuove funzioni, ogni tanto.",
+      "security": "Sicurezza",
+      "securityHint": "Accessi da nuovi dispositivi e cambi di password. Sempre attivo."
+    },
+    "signin": {
+      "appDesc": "Inserisci il codice a 6 cifre della tua app di autenticazione.",
+      "useRecovery": "Usa invece un codice di recupero",
+      "recovery": "Codice di recupero",
+      "recoveryUse": "Accedi",
+      "title": "Inserisci il tuo codice"
     }
   }
 }
