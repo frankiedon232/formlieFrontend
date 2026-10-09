@@ -16,7 +16,7 @@ useHead({ title: () => t('nav.people') })
 const api = useApi()
 const route = useRoute()
 const router = useRouter()
-const { relative, dateTime, date } = useFormat()
+const { date } = useFormat()
 
 const list = useTemplateRef<{ refresh: () => Promise<void>; state: { rows: Ref<PersonRow[]> } }>('list')
 const insights = ref<PeopleInsights | null>(null)
@@ -148,9 +148,7 @@ const names = (items: { name: string }[]) => items.map(item => item.name).join('
         <span class="flex items-center gap-1.5 text-muted"><UIcon :name="row.original.two_step ? 'i-lucide-shield-check' : 'i-lucide-shield-off'" class="size-4" :class="row.original.two_step ? 'text-highlighted' : ''" />{{ row.original.two_step ? t('people.twoStepOn') : t('people.twoStepOff') }}</span>
       </template>
       <template #last_active_at-cell="{ row }">
-        <UTooltip v-if="row.original.invite" :text="t('people.invite.by', { name: row.original.invite.invited_by })"><span class="whitespace-nowrap text-muted">{{ t('people.invite.sentAgo', { when: relative(row.original.invite.sent_at) }) }}</span></UTooltip>
-        <UTooltip v-else-if="row.original.last_active_at" :text="dateTime(row.original.last_active_at)"><span class="whitespace-nowrap text-muted">{{ relative(row.original.last_active_at) }}</span></UTooltip>
-        <span v-else class="text-muted">{{ t('people.never') }}</span>
+        <PeoplePresence :person="row.original" />
       </template>
       <template #joined_at-cell="{ row }"><span class="whitespace-nowrap text-muted">{{ date(row.original.joined_at) }}</span></template>
       <template v-if="canManage" #empty-actions><UButton :label="t('people.add.button')" icon="i-lucide-user-plus" color="neutral" @click="addOpen = true" /><UButton :label="t('people.links.button')" icon="i-lucide-link" color="neutral" variant="outline" @click="linksOpen = true" /></template>

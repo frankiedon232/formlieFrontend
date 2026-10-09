@@ -7642,7 +7642,8 @@
       "recent": "Aktif baru-baru ini",
       "all": "Semua orang ({n})",
       "online": "Online",
-      "duration": "Durasi"
+      "duration": "Durasi",
+      "offline": "Offline"
     },
     "add": {
       "button": "Tambah pengguna",

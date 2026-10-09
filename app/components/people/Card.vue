@@ -1,5 +1,5 @@
 <!--
-  People, grid card (locked card format, rule 21): pill with when they were last active, status and ⋯
+  People, grid card (locked card format, rule 21): pill with Online (green) or when they were last active, status and ⋯
   on top; name (red flag = an owner or admin without two-step sign-in) and email; department, job title,
   role and manager; a profile line (how complete the profile is, black bar); avatar, joined date and
   counts at the bottom. The whole card opens the person.
@@ -19,7 +19,7 @@ const names = (items: { name: string }[]) => items.map(item => item.name).join('
 <template>
   <div class="flex h-full flex-col gap-3 rounded-xl border border-default bg-default p-4 transition hover:border-accented hover:shadow-sm" :class="busy ? 'pointer-events-none opacity-60' : ''">
     <div class="flex items-center justify-between gap-2">
-      <span class="flex min-w-0 items-center gap-1.5 rounded-full border border-default px-2 py-0.5 text-[11px] text-muted"><UIcon name="i-lucide-clock" class="size-3" />{{ person.invite ? t('people.invite.sentAgo', { when: relative(person.invite.sent_at) }) : person.last_active_at ? relative(person.last_active_at) : t('people.never') }}</span>
+      <span class="flex min-w-0 items-center gap-1.5 rounded-full border border-default px-2 py-0.5 text-[11px] text-muted"><template v-if="person.last_visit?.online"><span class="size-2 rounded-full bg-(--ui-success)" aria-hidden="true" /><span class="font-medium text-success">{{ t('people.team.online') }}</span></template><template v-else><UIcon name="i-lucide-clock" class="size-3" />{{ person.invite ? t('people.invite.sentAgo', { when: relative(person.invite.sent_at) }) : person.last_active_at ? relative(person.last_active_at) : t('people.never') }}</template></span>
       <div class="flex items-center gap-1">
         <PeopleStatus :person="person" />
         <UDropdownMenu :items="actions" :content="{ align: 'end' }">
@@ -46,7 +46,7 @@ const names = (items: { name: string }[]) => items.map(item => item.name).join('
     </div>
     <div class="mt-auto flex items-center justify-between gap-2 text-[11px] text-muted">
       <div class="flex min-w-0 items-center gap-2">
-        <UAvatar :src="person.photo ?? undefined" :alt="person.name" size="xs" />
+        <UChip :show="!!person.last_visit?.online" color="success" position="bottom-right" inset size="sm"><UAvatar :src="person.photo ?? undefined" :alt="person.name" size="xs" /></UChip>
         <span class="truncate">{{ person.invite ? t('people.invite.by', { name: person.invite.invited_by }) : t('people.joinedOn', { date: date(person.joined_at) }) }}</span>
       </div>
       <div class="flex shrink-0 items-center gap-2.5">

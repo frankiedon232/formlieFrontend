@@ -7642,7 +7642,8 @@
       "recent": "Yakın zamanda etkin",
       "all": "Tüm kişiler ({n})",
       "online": "Çevrimiçi",
-      "duration": "Süre"
+      "duration": "Süre",
+      "offline": "Çevrimdışı"
     },
     "add": {
       "button": "Kullanıcı ekle",

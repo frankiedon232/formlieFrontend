@@ -49,7 +49,7 @@ const tiles = computed(() => {
   if (!p) return []
   return [
     { key: 'role', icon: 'i-lucide-shield', label: t('people.col.role'), value: p.role_name },
-    { key: 'active', icon: 'i-lucide-clock', label: t('people.col.lastActive'), value: p.last_active_at ? relative(p.last_active_at) : t('people.never') },
+    { key: 'active', icon: 'i-lucide-clock', label: t('people.col.lastActive'), value: p.last_visit?.online ? t('people.team.online') : p.last_active_at ? relative(p.last_active_at) : t('people.never') },
     p.invite ? { key: 'joined', icon: 'i-lucide-mail', label: t('people.status.invited'), value: date(p.invite.sent_at) } : { key: 'joined', icon: 'i-lucide-calendar', label: t('people.col.joined'), value: date(p.joined_at) },
     { key: 'twoStep', icon: p.two_step ? 'i-lucide-shield-check' : 'i-lucide-shield-off', label: t('people.col.twoStep'), value: p.two_step ? t('people.twoStepOn') : t('people.twoStepOff') },
     { key: 'signIns', icon: 'i-lucide-log-in', label: t('people.signIns30'), value: number(p.sign_ins_30d) },
@@ -77,7 +77,7 @@ const place = computed(() => {
       </div>
       <div v-else class="flex w-full flex-col gap-4">
         <div class="flex items-start gap-3.5">
-          <UAvatar :src="person.photo ?? undefined" :alt="person.name" size="2xl" class="ring-4 ring-(--ui-bg-elevated)" />
+          <UChip :show="!!person.last_visit?.online" color="success" position="bottom-right" inset size="2xl"><UAvatar :src="person.photo ?? undefined" :alt="person.name" size="2xl" class="ring-4 ring-(--ui-bg-elevated)" /></UChip>
           <div class="flex min-w-0 flex-1 flex-col gap-1">
             <h2 class="truncate text-lg leading-tight font-semibold text-highlighted">{{ person.name }}</h2>
             <p v-if="person.name !== person.email" class="truncate text-sm text-muted" dir="ltr">{{ person.email }}</p>

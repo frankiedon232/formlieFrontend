@@ -7642,7 +7642,8 @@
       "recent": "Hoạt động gần đây",
       "all": "Tất cả mọi người ({n})",
       "online": "Trực tuyến",
-      "duration": "Thời lượng"
+      "duration": "Thời lượng",
+      "offline": "Ngoại tuyến"
     },
     "add": {
       "button": "Thêm người dùng",

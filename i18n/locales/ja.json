@@ -7642,7 +7642,8 @@
       "recent": "最近アクティブ",
       "all": "全メンバー（{n}）",
       "online": "オンライン",
-      "duration": "時間"
+      "duration": "時間",
+      "offline": "オフライン"
     },
     "add": {
       "button": "ユーザーを追加",

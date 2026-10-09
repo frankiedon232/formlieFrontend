@@ -7642,7 +7642,8 @@
       "recent": "Recently active",
       "all": "All people ({n})",
       "online": "Online",
-      "duration": "Duration"
+      "duration": "Duration",
+      "offline": "Offline"
     },
     "add": {
       "button": "Add user",

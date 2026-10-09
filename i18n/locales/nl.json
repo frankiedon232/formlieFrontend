@@ -7642,7 +7642,8 @@
       "recent": "Onlangs actief",
       "all": "Alle mensen ({n})",
       "online": "Online",
-      "duration": "Duur"
+      "duration": "Duur",
+      "offline": "Offline"
     },
     "add": {
       "button": "Gebruiker toevoegen",

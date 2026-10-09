@@ -7642,7 +7642,8 @@
       "recent": "Waliokuwa hai hivi karibuni",
       "all": "Watu wote ({n})",
       "online": "Mtandaoni",
-      "duration": "Muda"
+      "duration": "Muda",
+      "offline": "Nje ya mtandao"
     },
     "add": {
       "button": "Ongeza mtumiaji",

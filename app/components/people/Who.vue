@@ -1,4 +1,4 @@
-<!-- People table, name cell (F16): avatar, name and email; the name is a button so the row opens by keyboard too. -->
+<!-- People table, name cell (F16): avatar (green dot = online now), name and email; the name is a button so the row opens by keyboard too. -->
 <script setup lang="ts">
 import type { PersonRow } from '#shared/types/people'
 
@@ -9,7 +9,7 @@ const { t } = useI18n()
 
 <template>
   <div class="flex min-w-0 items-center gap-2.5">
-    <UAvatar :src="person.photo ?? undefined" :alt="person.name" size="sm" />
+    <UChip :show="!!person.last_visit?.online" color="success" position="bottom-right" inset><UAvatar :src="person.photo ?? undefined" :alt="person.name" size="sm" /></UChip>
     <div class="flex min-w-0 flex-col">
       <button type="button" class="flex min-w-0 items-center gap-1.5 text-start font-medium text-highlighted hover:underline focus-visible:outline-2 focus-visible:outline-(--ui-border-inverted)" @click="emit('open')">
         <span class="truncate">{{ person.name }}</span>
