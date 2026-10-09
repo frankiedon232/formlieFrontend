@@ -42,7 +42,7 @@ const modes = computed(() =>
   (['everyone', 'department', 'job_title', 'role', 'user'] as const).map(value => ({ value, label: t(`builder.audience.mode.${value}`), icon: ICONS[value] })),
 )
 const LIST: Record<Exclude<Mode, 'everyone'>, Exclude<keyof Directory, never>> = { department: 'departments', job_title: 'job_titles', role: 'roles', user: 'users' }
-const SETTINGS: Partial<Record<Mode, string>> = { department: '/settings/departments', job_title: '/settings/job-titles' }
+const SETTINGS: Partial<Record<Mode, string>> = { department: '/people/departments', job_title: '/people/job-titles' }
 const listed = computed<DirectoryItem[]>(() => (mode.value === 'everyone' ? [] : (directory.value?.[LIST[mode.value]] ?? [])))
 // Active entries to choose from; archived ones only while chosen (marked)
 const items = computed(() =>

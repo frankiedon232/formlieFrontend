@@ -13,6 +13,8 @@ import { SYSTEM_THEME_COUNT } from './themes'
 import { SYSTEM_PAGE_COUNT } from './pageDesigns'
 import { dataSourcesOf, statusOf } from '../data/dataSourceStore'
 import { destinationsOf, rowOfDestination } from '../data/destinationStore'
+import { peopleStoreOf } from '../data/peopleStore'
+import { orgOf } from '../data/orgStore'
 
 /** GET /navigation/counts, cheap counters and short lists for the sidebar. */
 export const navigationCounts = defineMockRoute(({ event }) => {
@@ -69,6 +71,19 @@ export const navigationCounts = defineMockRoute(({ event }) => {
     destinations: (() => {
       const rows = destinationsOf(tenant).map(item => rowOfDestination(tenant, item))
       return { total: rows.filter(Boolean).length, failing: rows.filter(row => row?.status === 'failing').length }
+    })(),
+    people: (() => {
+      if (user.role === 'member') return { total: 0, active: 0, invited: 0, disabled: 0, departments: 0, job_titles: 0 }
+      const people = peopleStoreOf(tenant)
+      const org = orgOf(tenant)
+      return {
+        total: people.length,
+        active: people.filter(item => item.status === 'active').length,
+        invited: people.filter(item => item.status === 'invited').length,
+        disabled: people.filter(item => item.status === 'disabled').length,
+        departments: org.departments.filter(item => !item.archived_at).length,
+        job_titles: org.job_titles.filter(item => !item.archived_at).length,
+      }
     })(),
     datasources: {
       total: dataSourcesOf(tenant).length,

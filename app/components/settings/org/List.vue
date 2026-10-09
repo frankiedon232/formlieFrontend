@@ -8,7 +8,7 @@
 import type { DropdownMenuItem } from '@nuxt/ui'
 import type { OrgImportResult, OrgInsights, OrgItem, OrgKind } from '#shared/types/org'
 
-const props = defineProps<{ kind: OrgKind }>()
+const props = defineProps<{ kind: OrgKind; plain?: boolean }>()
 const { t } = useI18n()
 const api = useApi()
 const route = useRoute()
@@ -101,7 +101,7 @@ const existing = computed(() => (view.value?.state.rows.value ?? []).map(row => 
 </script>
 
 <template>
-  <SettingsPage :id="`settings-${kind}`" :title="t(`settings.org.kind.${kind}.many`)" :subtitle="t(`settings.org.kind.${kind}.hint`)" :icon="SETTINGS_ORG_ICONS[kind]">
+  <SettingsPage :id="`settings-${kind}`" :plain="plain" :title="t(`settings.org.kind.${kind}.many`)" :subtitle="t(`settings.org.kind.${kind}.hint`)" :icon="SETTINGS_ORG_ICONS[kind]">
     <template #actions>
       <UButton :label="t('settings.org.importShort')" icon="i-lucide-file-up" color="neutral" variant="outline" class="hidden sm:inline-flex" @click="importOpen = true" />
       <UButton :label="t(`settings.org.kind.${kind}.new`)" icon="i-lucide-plus" color="neutral" @click="edit(null)">

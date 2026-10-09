@@ -8,9 +8,9 @@ import type { OrgItem, OrgKind, OrgPerson, OrgUsage } from '#shared/types/org'
 import { ORG_KINDS } from '#shared/types/org'
 import { allFields } from '#shared/utils/forms/build'
 import { loadPersisted, savePersisted } from '../core/persist'
-import { MOCK_OWNERS } from './forms'
 import { formsOf } from './formStore'
-import { MOCK_USERS, SEEDED_TENANT_IDS, type MockTenant } from './tenants'
+import { SEEDED_TENANT_IDS, type MockTenant } from './tenants'
+import { peopleStoreOf } from './peopleStore'
 
 export interface StoredOrgItem {
   id: string
@@ -30,13 +30,14 @@ export const saveOrg = () => savePersisted('org', () => Object.fromEntries(store
 /** Field access mode for each kind that fields can be restricted to. */
 export const AUDIENCE_MODE: Partial<Record<OrgKind, string>> = { departments: 'department', job_titles: 'job_title' }
 
-/** The people of a workspace (members and the sample form owners), as the directory lists them. */
+/**
+ * The people of a workspace as the directory lists them: everyone on the People page (F16) except
+ * disabled accounts; invited people count too, since they already belong to departments and job titles.
+ */
 export function peopleOf(tenant: MockTenant): OrgPerson[] {
-  const domain = `${tenant.subdomain}.test`
-  return [
-    ...MOCK_USERS.filter(user => user.tenant_id === tenant.id && !user.disabled).map(user => ({ id: user.id, name: `${user.first_name} ${user.last_name}`.trim(), email: user.email })),
-    ...MOCK_OWNERS.map(owner => ({ id: owner.id, name: owner.name, email: `${owner.name.toLowerCase().replace(/\s+/g, '.')}@${domain}` })),
-  ]
+  return peopleStoreOf(tenant)
+    .filter(person => person.status !== 'disabled')
+    .map(person => ({ id: person.id, name: `${person.first_name} ${person.last_name}`.trim() || person.email, email: person.email }))
 }
 
 const DEPARTMENTS = ['Finance', 'Operations', 'People', 'Sales', 'Support', 'Technology', 'Legal', 'Compliance']

@@ -6,6 +6,7 @@ import { fail } from './core/respond'
 import * as audit from './routes/audit'
 import * as people from './routes/people'
 import * as invites from './routes/invites'
+import * as peopleManage from './routes/peopleManage'
 import { getDirectory } from './routes/directory'
 import { getFormOverview } from './routes/formOverview'
 import * as responses from './routes/responses'
@@ -239,7 +240,14 @@ const router = createRouter()
   .get('/people', people.listPeople)
   .get('/people/insights', people.peopleInsights)
   .get('/people/:id', people.getPerson)
+  .post('/people/bulk', peopleManage.bulkPeople)
   .post('/people/invites', invites.invitePeople)
+  .patch('/people/:id', peopleManage.updatePerson)
+  .post('/people/:id/disable', peopleManage.disablePerson)
+  .post('/people/:id/enable', peopleManage.enablePerson)
+  .post('/people/:id/sign-out', peopleManage.signOutPerson)
+  .post('/people/:id/password', peopleManage.requestPassword)
+  .post('/people/:id/two-step/reset', peopleManage.resetTwoStep)
   .post('/people/:id/invite/resend', invites.resendInvite)
   .post('/people/:id/invite/link', invites.inviteLink)
   .delete('/people/:id/invite', invites.revokeInvite)

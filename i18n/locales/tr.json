@@ -436,7 +436,15 @@
     "createOperations": "İşlemler",
     "addDatabase": "Veritabanı ekle",
     "newApiService": "Yeni API hizmeti",
-    "people": "Kişiler"
+    "people": "Kişiler",
+    "peopleAll": "Tüm kişiler",
+    "peopleActive": "Etkin",
+    "peopleInvited": "Davet edildi",
+    "peopleDisabled": "Devre dışı",
+    "peopleInvite": "Kişileri davet et",
+    "departments": "Departmanlar",
+    "jobTitles": "Unvanlar",
+    "peopleRoles": "Roller ve erişim"
   },
   "navbar": {
     "breadcrumb": "İçerik haritası",
@@ -614,7 +622,11 @@
     "FRM-FORM-1021": "Bir seçeneğin üstünde seçenek yok. Nereye ait olduğunu seçin.",
     "FRM-FORM-1022": "Bu liste taşıyabileceğinden fazla seçenek içeriyor: 20.000, büyükse 200.000.",
     "FRM-USER-1001": "Bu davetin süresi doldu. Sizi davet eden kişiden yenisini isteyin.",
-    "FRM-USER-1002": "Bu davet artık geçerli değil. Kullanılmış veya geri çekilmiş olabilir."
+    "FRM-USER-1002": "Bu davet artık geçerli değil. Kullanılmış veya geri çekilmiş olabilir.",
+    "FRM-USER-1003": "Çalışma alanının en az bir sahibi olmalı. Önce başka birini sahip yapın.",
+    "FRM-USER-1004": "Bir kişi kendisine ya da kendisine bağlı birine bağlı olamaz.",
+    "FRM-USER-1005": "Bunu kendi hesabınızda yapamazsınız.",
+    "FRM-USER-1006": "Sahip atamayı ve sahibi değiştirmeyi yalnızca sahipler yapabilir."
   },
   "errorUi": {
     "reference": "Referans: {id}",
@@ -1080,7 +1092,11 @@
       "users_invite_resent": "Davet yeniden gönderildi",
       "users_invite_link": "Davet bağlantısı kopyalandı",
       "users_invite_revoked": "Davet geri çekildi",
-      "users_joined": "Çalışma alanına katıldı"
+      "users_joined": "Çalışma alanına katıldı",
+      "users_updated": "Profil değiştirildi",
+      "users_signed_out": "Her yerden çıkış yapıldı",
+      "users_password_requested": "Yeni parola istendi",
+      "users_two_step_reset": "İki adımlı giriş sıfırlandı"
     },
     "detail": {
       "who": "Kim",
@@ -7538,6 +7554,47 @@
       "expiredDesc": "Davet bağlantıları 7 gün geçerlidir. Sizi davet eden kişiden yenisini göndermesini isteyin.",
       "invalid": "Bu davet geçerli değil",
       "invalidDesc": "Daha önce kullanılmış veya geri çekilmiş olabilir. Zaten katıldıysanız oturum açın."
+    },
+    "rolesSoon": "Özel roller ve her rolün yetkileri Roller ve erişim aşamasında gelecek. O zamana kadar kişiler Sahip, Yönetici veya Üyedir.",
+    "manage": {
+      "edit": "Düzenle",
+      "editTitle": "{name} kişisini düzenle",
+      "editDesc": "Rol, departmanlar, unvanlar ve yönetici. Ad, telefon ve fotoğrafı herkes kendi profilinde değiştirir.",
+      "saved": "{name} güncellendi",
+      "managerHint": "Bağlı olduğu kişi.",
+      "roleHint": {
+        "owner": "Sahipler ve çalışma alanının kendisi dahil her şey.",
+        "admin": "Kişileri, ayarları ve denetim kaydını yönetir.",
+        "member": "Erişim verilen formlarla çalışır."
+      },
+      "ownerOnly": "Sahibi yalnızca sahipler değiştirebilir",
+      "disable": "Devre dışı bırak",
+      "disableTitle": "{name} devre dışı bırakılsın mı?",
+      "disableDesc": "Oturumu kapatılır ve siz yeniden etkinleştirene kadar giriş yapamaz. Formları ve geçmişi kalır.",
+      "disabled": "{name} devre dışı",
+      "enable": "Etkinleştir",
+      "enabled": "{name} yeniden giriş yapabilir",
+      "signOut": "Her yerden çıkış yap",
+      "signOutTitle": "{name} her yerden çıkış yapsın mı?",
+      "signOutDesc": "Oturum açık olan tüm cihazlardan çıkış yapılır. Yeniden giriş yapabilir.",
+      "signedOut": "{name} her yerden çıkış yaptı",
+      "password": "Yeni parola iste",
+      "passwordTitle": "{name} için yeni parola istensin mi?",
+      "passwordDesc": "Oturumu kapatılır ve sonraki girişte e-postayla gelen kodla yeni bir parola seçmesi istenir.",
+      "passwordDone": "{name} sonraki girişte yeni parola seçecek",
+      "twoStep": "İki adımlı girişi sıfırla",
+      "twoStepTitle": "{name} için iki adımlı giriş sıfırlansın mı?",
+      "twoStepDesc": "Kimlik doğrulayıcı uygulaması ve SMS numarası kaldırılır. Telefonunu kaybettiğinde kullanın. Profilinden yeniden kurabilir.",
+      "twoStepDone": "{name} için iki adımlı giriş sıfırlandı"
+    },
+    "bulk": {
+      "role": "Rol",
+      "department": "Departmana ekle",
+      "jobTitle": "Unvan ekle",
+      "done": "{n} kişi güncellendi | {n} kişi güncellendi",
+      "disableTitle": "{n} kişi devre dışı bırakılsın mı? | {n} kişi devre dışı bırakılsın mı?",
+      "skipped": "{n} olduğu gibi bırakıldı | {n} olduğu gibi bırakıldı",
+      "skippedDesc": "Zaten öyle, kendi hesabınız, son sahip veya yalnızca sahiplerin değiştirebildiği bir sahip."
     }
   }
 }

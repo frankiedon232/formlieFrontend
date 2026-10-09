@@ -417,6 +417,12 @@ export function activeSessions(event: H3Event, tenant: MockTenant): ActiveSessio
     }))
 }
 
+/** Ends every session of one person in the workspace (People → Sign out everywhere, disable; F16 M3). */
+export function revokeUserSessions(tenant: MockTenant, userId: string): number {
+  const ids = [...sessions.values()].filter(s => s.tenant.id === tenant.id && s.user.id === userId && !s.revoked).map(s => s.id)
+  return ids.length ? revokeSessions(tenant, { ids }).length : 0
+}
+
 /** Ends sessions of the workspace (all but `keep`, or only `ids`); returns the ended ones. */
 export function revokeSessions(tenant: MockTenant, options: { ids?: string[]; keep?: string | null }): Session[] {
   const ended = [...sessions.values()].filter(s => s.tenant.id === tenant.id && !s.revoked && s.id !== options.keep && (!options.ids || options.ids.includes(s.id)))

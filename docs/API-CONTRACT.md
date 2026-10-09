@@ -525,3 +525,8 @@ Admins and owners only until F22.
 | DELETE | `/people/{id}/invite` | Withdraw: the invited person and their memberships are removed. Audit `users.invite_revoked` |
 | GET | `/public/invites/{token}` | `InvitePreview { workspace, email, inviter, role, message }`; expired → `410 FRM-USER-1001`; used, withdrawn or unknown → `404 FRM-USER-1002` |
 | POST | `/public/invites/{token}/accept` | `{ first_name, last_name, password }` (the workspace's password rules, `FRM-AUTH-1007`) → `{ email }`; the account is created with the invited role, the person becomes `active`, then signs in as usual. Audit `users.joined` |
+| PATCH | `/people/{id}` | `{ role?, department_ids?, job_title_ids?, manager_id? (null = none) }` → `PersonDetail`; invitations too (no manager). Last active owner `409 FRM-USER-1003`, owner changes by non-owners `403 FRM-USER-1006`, manager loops `422 FRM-USER-1004`. Audit `users.role_changed`, `users.updated` |
+| POST | `/people/{id}/disable` · `/enable` · `/sign-out` · `/password` · `/two-step/reset` | → `PersonDetail`. Disable signs them out; `password` signs them out and the next sign-in answers `FRM-AUTH-1015` (choose a new password); own account `409 FRM-USER-1005` (disable, password). Audit `users.disabled` / `enabled` / `signed_out` / `password_requested` / `two_step_reset` |
+| POST | `/people/bulk` | `{ ids (1 to 200), action: role\|department\|job_title\|disable\|enable, value? }` → `{ done, skipped }` (department / job_title add to what they have; the same guards, refused ones count as skipped) |
+
+`NavCounts.people { total, active, invited, disabled, departments, job_titles }` (zeros for members). Departments and job titles pages moved to `/people/departments` and `/people/job-titles` (the `/org/{kind}` API is unchanged).

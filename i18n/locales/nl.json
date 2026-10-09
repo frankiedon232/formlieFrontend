@@ -436,7 +436,15 @@
     "createOperations": "Bewerkingen",
     "addDatabase": "Database toevoegen",
     "newApiService": "Nieuwe API-service",
-    "people": "Mensen"
+    "people": "Mensen",
+    "peopleAll": "Alle mensen",
+    "peopleActive": "Actief",
+    "peopleInvited": "Uitgenodigd",
+    "peopleDisabled": "Uitgeschakeld",
+    "peopleInvite": "Mensen uitnodigen",
+    "departments": "Afdelingen",
+    "jobTitles": "Functietitels",
+    "peopleRoles": "Rollen & toegang"
   },
   "navbar": {
     "breadcrumb": "Kruimelpad",
@@ -614,7 +622,11 @@
     "FRM-FORM-1021": "Een optie heeft geen optie boven zich. Kies waar hij hoort.",
     "FRM-FORM-1022": "Deze lijst heeft meer opties dan ze kan bevatten: 20.000, of 200.000 als ze groot is.",
     "FRM-USER-1001": "Deze uitnodiging is verlopen. Vraag degene die je uitnodigde om een nieuwe.",
-    "FRM-USER-1002": "Deze uitnodiging is niet meer geldig. Ze is mogelijk gebruikt of ingetrokken."
+    "FRM-USER-1002": "Deze uitnodiging is niet meer geldig. Ze is mogelijk gebruikt of ingetrokken.",
+    "FRM-USER-1003": "Een werkruimte heeft minstens één eigenaar nodig. Maak eerst iemand anders eigenaar.",
+    "FRM-USER-1004": "Iemand kan niet aan zichzelf rapporteren of aan iemand die aan hem of haar rapporteert.",
+    "FRM-USER-1005": "Dit kan niet met je eigen account.",
+    "FRM-USER-1006": "Alleen eigenaren kunnen iemand eigenaar maken of een eigenaar wijzigen."
   },
   "errorUi": {
     "reference": "Referentie: {id}",
@@ -1080,7 +1092,11 @@
       "users_invite_resent": "Uitnodiging opnieuw verzonden",
       "users_invite_link": "Uitnodigingslink gekopieerd",
       "users_invite_revoked": "Uitnodiging ingetrokken",
-      "users_joined": "Is lid geworden van de werkruimte"
+      "users_joined": "Is lid geworden van de werkruimte",
+      "users_updated": "Profiel gewijzigd",
+      "users_signed_out": "Overal afgemeld",
+      "users_password_requested": "Nieuw wachtwoord gevraagd",
+      "users_two_step_reset": "Tweestapsaanmelding gereset"
     },
     "detail": {
       "who": "Wie",
@@ -7538,6 +7554,47 @@
       "expiredDesc": "Uitnodigingslinks werken 7 dagen. Vraag degene die je uitnodigde om een nieuwe te sturen.",
       "invalid": "Deze uitnodiging is niet geldig",
       "invalidDesc": "Ze is mogelijk al gebruikt of ingetrokken. Als je al lid bent geworden, log dan in."
+    },
+    "rolesSoon": "Eigen rollen en wat elke rol mag, komen in de fase Rollen & toegang. Tot dan zijn mensen eigenaar, beheerder of lid.",
+    "manage": {
+      "edit": "Bewerken",
+      "editTitle": "{name} bewerken",
+      "editDesc": "Rol, afdelingen, functietitels en leidinggevende. Naam, telefoon en foto wijzigt iedereen zelf in het eigen profiel.",
+      "saved": "{name} is bijgewerkt",
+      "managerHint": "De persoon aan wie wordt gerapporteerd.",
+      "roleHint": {
+        "owner": "Alles, inclusief eigenaren en de werkruimte zelf.",
+        "admin": "Beheert mensen, instellingen en het auditlogboek.",
+        "member": "Werkt met de formulieren waartoe toegang is gegeven."
+      },
+      "ownerOnly": "Alleen eigenaren kunnen een eigenaar wijzigen",
+      "disable": "Uitschakelen",
+      "disableTitle": "{name} uitschakelen?",
+      "disableDesc": "De persoon wordt afgemeld en kan pas weer aanmelden als je hem of haar weer inschakelt. Formulieren en geschiedenis blijven.",
+      "disabled": "{name} is uitgeschakeld",
+      "enable": "Inschakelen",
+      "enabled": "{name} kan weer aanmelden",
+      "signOut": "Overal afmelden",
+      "signOutTitle": "{name} overal afmelden?",
+      "signOutDesc": "Alle apparaten waarop de persoon is aangemeld, worden afgemeld. Opnieuw aanmelden kan.",
+      "signedOut": "{name} is overal afgemeld",
+      "password": "Nieuw wachtwoord vragen",
+      "passwordTitle": "Nieuw wachtwoord vragen aan {name}?",
+      "passwordDesc": "De persoon wordt afgemeld en kiest bij de volgende aanmelding een nieuw wachtwoord met een code per e-mail.",
+      "passwordDone": "{name} kiest bij de volgende aanmelding een nieuw wachtwoord",
+      "twoStep": "Tweestapsaanmelding resetten",
+      "twoStepTitle": "Tweestapsaanmelding van {name} resetten?",
+      "twoStepDesc": "De authenticator-app en het sms-nummer worden verwijderd. Gebruik dit als de telefoon kwijt is. In het profiel kan het opnieuw worden ingesteld.",
+      "twoStepDone": "Tweestapsaanmelding van {name} is gereset"
+    },
+    "bulk": {
+      "role": "Rol",
+      "department": "Toevoegen aan afdeling",
+      "jobTitle": "Functietitel toevoegen",
+      "done": "{n} persoon bijgewerkt | {n} mensen bijgewerkt",
+      "disableTitle": "{n} persoon uitschakelen? | {n} mensen uitschakelen?",
+      "skipped": "{n} gelaten zoals het was | {n} gelaten zoals ze waren",
+      "skippedDesc": "Al zo, je eigen account, de laatste eigenaar, of een eigenaar die alleen eigenaren kunnen wijzigen."
     }
   }
 }

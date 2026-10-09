@@ -1,10 +1,8 @@
-<!-- Settings → Departments (F14 M2): the workspace's departments, with the people in them. -->
+<!-- Departments moved to the People area (F16, owner 2026-10-09); old links still work. -->
 <script setup lang="ts">
-definePageMeta({ breadcrumb: 'settings.nav.departments' })
-const { t } = useI18n()
-useHead({ title: () => t('settings.nav.departments') })
+definePageMeta({ redirect: '/people/departments' })
 </script>
 
 <template>
-  <SettingsOrgList kind="departments" />
+  <div />
 </template>

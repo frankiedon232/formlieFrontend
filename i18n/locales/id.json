@@ -436,7 +436,15 @@
     "createOperations": "Operasi",
     "addDatabase": "Tambah database",
     "newApiService": "Layanan API baru",
-    "people": "Orang"
+    "people": "Orang",
+    "peopleAll": "Semua orang",
+    "peopleActive": "Aktif",
+    "peopleInvited": "Diundang",
+    "peopleDisabled": "Dinonaktifkan",
+    "peopleInvite": "Undang orang",
+    "departments": "Departemen",
+    "jobTitles": "Jabatan",
+    "peopleRoles": "Peran & akses"
   },
   "navbar": {
     "breadcrumb": "Jejak navigasi",
@@ -614,7 +622,11 @@
     "FRM-FORM-1021": "Ada opsi yang tidak punya opsi di atasnya. Pilih tempatnya.",
     "FRM-FORM-1022": "Daftar ini memiliki opsi lebih banyak dari yang dapat ditampung: 20.000, atau 200.000 jika besar.",
     "FRM-USER-1001": "Undangan ini sudah kedaluwarsa. Minta undangan baru kepada orang yang mengundang Anda.",
-    "FRM-USER-1002": "Undangan ini tidak berlaku lagi. Mungkin sudah digunakan atau ditarik."
+    "FRM-USER-1002": "Undangan ini tidak berlaku lagi. Mungkin sudah digunakan atau ditarik.",
+    "FRM-USER-1003": "Ruang kerja membutuhkan minimal satu pemilik. Jadikan orang lain pemilik terlebih dahulu.",
+    "FRM-USER-1004": "Seseorang tidak bisa melapor ke dirinya sendiri atau ke orang yang melapor kepadanya.",
+    "FRM-USER-1005": "Anda tidak bisa melakukan ini pada akun Anda sendiri.",
+    "FRM-USER-1006": "Hanya pemilik yang bisa menjadikan seseorang pemilik atau mengubah pemilik."
   },
   "errorUi": {
     "reference": "Referensi: {id}",
@@ -1080,7 +1092,11 @@
       "users_invite_resent": "Undangan dikirim ulang",
       "users_invite_link": "Tautan undangan disalin",
       "users_invite_revoked": "Undangan ditarik",
-      "users_joined": "Bergabung ke ruang kerja"
+      "users_joined": "Bergabung ke ruang kerja",
+      "users_updated": "Profil diubah",
+      "users_signed_out": "Keluar dari semua perangkat",
+      "users_password_requested": "Kata sandi baru diminta",
+      "users_two_step_reset": "Masuk dua langkah direset"
     },
     "detail": {
       "who": "Siapa",
@@ -7538,6 +7554,47 @@
       "expiredDesc": "Tautan undangan berlaku 7 hari. Minta orang yang mengundang Anda untuk mengirim yang baru.",
       "invalid": "Undangan ini tidak valid",
       "invalidDesc": "Mungkin sudah digunakan atau ditarik. Jika Anda sudah bergabung, silakan masuk."
+    },
+    "rolesSoon": "Peran khusus dan izin tiap peran hadir di fase Peran & akses. Sampai saat itu orang berperan sebagai Pemilik, Admin, atau Anggota.",
+    "manage": {
+      "edit": "Edit",
+      "editTitle": "Edit {name}",
+      "editDesc": "Peran, departemen, jabatan, dan atasan. Nama, telepon, dan foto diubah sendiri oleh orangnya di profil.",
+      "saved": "{name} diperbarui",
+      "managerHint": "Orang yang menjadi atasannya.",
+      "roleHint": {
+        "owner": "Semuanya, termasuk pemilik dan ruang kerja itu sendiri.",
+        "admin": "Mengelola orang, pengaturan, dan jejak audit.",
+        "member": "Bekerja dengan formulir yang aksesnya diberikan."
+      },
+      "ownerOnly": "Hanya pemilik yang bisa mengubah pemilik",
+      "disable": "Nonaktifkan",
+      "disableTitle": "Nonaktifkan {name}?",
+      "disableDesc": "Mereka dikeluarkan dan tidak bisa masuk sampai Anda mengaktifkannya lagi. Formulir dan riwayat mereka tetap ada.",
+      "disabled": "{name} dinonaktifkan",
+      "enable": "Aktifkan",
+      "enabled": "{name} bisa masuk lagi",
+      "signOut": "Keluar dari semua perangkat",
+      "signOutTitle": "Keluarkan {name} dari semua perangkat?",
+      "signOutDesc": "Semua perangkat tempat mereka masuk akan dikeluarkan. Mereka bisa masuk lagi.",
+      "signedOut": "{name} dikeluarkan dari semua perangkat",
+      "password": "Minta kata sandi baru",
+      "passwordTitle": "Minta {name} membuat kata sandi baru?",
+      "passwordDesc": "Mereka dikeluarkan, dan saat masuk berikutnya diminta memilih kata sandi baru dengan kode lewat email.",
+      "passwordDone": "{name} akan memilih kata sandi baru saat masuk berikutnya",
+      "twoStep": "Reset masuk dua langkah",
+      "twoStepTitle": "Reset masuk dua langkah untuk {name}?",
+      "twoStepDesc": "Aplikasi autentikator dan nomor SMS mereka dihapus. Gunakan ini jika ponsel hilang. Mereka bisa mengaturnya lagi di profil.",
+      "twoStepDone": "Masuk dua langkah untuk {name} direset"
+    },
+    "bulk": {
+      "role": "Peran",
+      "department": "Tambahkan ke departemen",
+      "jobTitle": "Tambahkan jabatan",
+      "done": "{n} orang diperbarui | {n} orang diperbarui",
+      "disableTitle": "Nonaktifkan {n} orang? | Nonaktifkan {n} orang?",
+      "skipped": "{n} dibiarkan seperti semula | {n} dibiarkan seperti semula",
+      "skippedDesc": "Sudah begitu, akun Anda sendiri, pemilik terakhir, atau pemilik yang hanya bisa diubah oleh pemilik."
     }
   }
 }

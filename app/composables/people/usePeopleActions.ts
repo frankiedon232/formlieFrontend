@@ -1,8 +1,11 @@
 /**
- * What can be done to a person from the People page, its cards and the detail panel (F16): for an
- * invitation, send it again, copy a fresh link, or withdraw it (asks first). The row that is busy shows a
- * spinner; a toast confirms; `done` refreshes the list and the cards.
+ * What can be done to people from the People page, its cards and the detail panel (F16): invitations
+ * (send again, copy a fresh link, withdraw) and accounts (disable / enable, sign out everywhere, ask for
+ * a new password, reset two-step sign-in), one at a time or several at once. Risky ones ask first; the
+ * busy row shows a spinner; a toast confirms; `done` refreshes the list, the cards and the menu counts.
  */
+import type { DropdownMenuItem } from '@nuxt/ui'
+import type { WorkspaceRole } from '#shared/types/auth'
 import type { PersonRow } from '#shared/types/people'
 
 export function usePeopleActions(done: () => unknown) {
@@ -10,28 +13,35 @@ export function usePeopleActions(done: () => unknown) {
   const api = useApi()
   const toast = useToast()
   const confirm = useConfirm()
+  const session = useSession()
+  const counts = useNavCounts()
   const { handle } = useErrorHandler()
   const { copy } = useClipboard({ legacy: true })
   const busy = ref<string | null>(null)
+  const me = computed(() => session.user.value?.id ?? null)
+  const iAmOwner = computed(() => session.user.value?.role === 'owner')
 
-  async function act(person: PersonRow, work: () => Promise<unknown>, message: string) {
+  async function act(id: string, work: () => Promise<unknown>, message: string) {
     if (busy.value) return
-    busy.value = person.id
+    busy.value = id
     try {
       await work()
       toast.add({ title: message, color: 'success', icon: 'i-lucide-circle-check' })
       await done()
+      void counts.refresh(true)
     } catch (error) {
       handle(error)
     } finally {
       busy.value = null
     }
   }
+  const ask = (key: string, person: PersonRow, danger = false) => confirm({ title: t(`people.manage.${key}Title`, { name: person.name }), description: t(`people.manage.${key}Desc`), confirmLabel: t(`people.manage.${key}`), danger })
+  const post = (person: PersonRow, path: string) => api.post(`/people/${person.id}/${path}`)
 
-  const resend = (person: PersonRow) => act(person, () => api.post(`/people/${person.id}/invite/resend`), t('people.invite.resent', { email: person.email }))
+  const resend = (person: PersonRow) => act(person.id, () => post(person, 'invite/resend'), t('people.invite.resent', { email: person.email }))
   const copyLink = (person: PersonRow) =>
     act(
-      person,
+      person.id,
       async () => {
         const { data } = await api.post<{ link: string }>(`/people/${person.id}/invite/link`)
         await copy(data.link)
@@ -40,8 +50,58 @@ export function usePeopleActions(done: () => unknown) {
     )
   async function revoke(person: PersonRow) {
     const ok = await confirm({ title: t('people.invite.revokeTitle', { email: person.email }), description: t('people.invite.revokeDesc'), confirmLabel: t('people.invite.revoke'), danger: true })
-    if (ok) await act(person, () => api.del(`/people/${person.id}/invite`), t('people.invite.revoked', { email: person.email }))
+    if (ok) await act(person.id, () => api.del(`/people/${person.id}/invite`), t('people.invite.revoked', { email: person.email }))
+  }
+  async function disable(person: PersonRow) {
+    if (await ask('disable', person, true)) await act(person.id, () => post(person, 'disable'), t('people.manage.disabled', { name: person.name }))
+  }
+  const enable = (person: PersonRow) => act(person.id, () => post(person, 'enable'), t('people.manage.enabled', { name: person.name }))
+  async function signOut(person: PersonRow) {
+    if (await ask('signOut', person)) await act(person.id, () => post(person, 'sign-out'), t('people.manage.signedOut', { name: person.name }))
+  }
+  async function password(person: PersonRow) {
+    if (await ask('password', person)) await act(person.id, () => post(person, 'password'), t('people.manage.passwordDone', { name: person.name }))
+  }
+  async function twoStep(person: PersonRow) {
+    if (await ask('twoStep', person, true)) await act(person.id, () => post(person, 'two-step/reset'), t('people.manage.twoStepDone', { name: person.name }))
   }
 
-  return { busy, resend, copyLink, revoke }
+  /** Several people at once; says how many were changed and how many left as they were. */
+  async function bulk(ids: string[], action: 'role' | 'department' | 'job_title' | 'disable' | 'enable', value?: string) {
+    if (action === 'disable' && !(await confirm({ title: t('people.bulk.disableTitle', { n: ids.length }, ids.length), description: t('people.manage.disableDesc'), confirmLabel: t('people.manage.disable'), danger: true }))) return
+    await act('bulk', async () => {
+      const { data } = await api.post<{ done: number; skipped: number }>('/people/bulk', { ids, action, value })
+      if (data.skipped) toast.add({ title: t('people.bulk.skipped', { n: data.skipped }, data.skipped), description: t('people.bulk.skippedDesc'), color: 'warning', icon: 'i-lucide-info' })
+    }, t('people.bulk.done', { n: ids.length }, ids.length))
+  }
+
+  /** The ⋯ items for a person (row, card, panel); `edit` opens the edit dialog. */
+  function menu(person: PersonRow, edit: (person: PersonRow) => void): DropdownMenuItem[][] {
+    if (person.status === 'invited')
+      return [
+        [
+          { label: t('people.invite.resend'), icon: 'i-lucide-send', onSelect: () => void resend(person) },
+          { label: t('people.invite.copyLink'), icon: 'i-lucide-link', onSelect: () => void copyLink(person) },
+          { label: t('people.manage.edit'), icon: 'i-lucide-pencil', onSelect: () => edit(person) },
+        ],
+        [{ label: t('people.invite.revoke'), icon: 'i-lucide-user-minus', color: 'error' as const, onSelect: () => void revoke(person) }],
+      ]
+    const self = person.id === me.value
+    const ownerLocked = person.role === 'owner' && !iAmOwner.value
+    if (ownerLocked) return [[{ label: t('people.manage.ownerOnly'), icon: 'i-lucide-lock', disabled: true }]]
+    return [
+      [{ label: t('people.manage.edit'), icon: 'i-lucide-pencil', onSelect: () => edit(person) }],
+      [
+        { label: t('people.manage.signOut'), icon: 'i-lucide-log-out', onSelect: () => void signOut(person) },
+        ...(self ? [] : [{ label: t('people.manage.password'), icon: 'i-lucide-key-round', onSelect: () => void password(person) }]),
+        ...(person.two_step ? [{ label: t('people.manage.twoStep'), icon: 'i-lucide-shield-off', onSelect: () => void twoStep(person) }] : []),
+      ],
+      ...(self ? [] : [[person.status === 'disabled' ? { label: t('people.manage.enable'), icon: 'i-lucide-user-check', onSelect: () => void enable(person) } : { label: t('people.manage.disable'), icon: 'i-lucide-user-x', color: 'error' as const, onSelect: () => void disable(person) }]]),
+    ]
+  }
+
+  const roleItems = (pick: (role: WorkspaceRole) => void): DropdownMenuItem[] =>
+    (['owner', 'admin', 'member'] as WorkspaceRole[]).filter(role => role !== 'owner' || iAmOwner.value).map(role => ({ label: t(`people.role.${role}`), icon: 'i-lucide-shield', onSelect: () => pick(role) }))
+
+  return { busy, me, iAmOwner, resend, copyLink, revoke, disable, enable, signOut, password, twoStep, bulk, menu, roleItems }
 }

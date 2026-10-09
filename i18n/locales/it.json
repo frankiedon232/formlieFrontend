@@ -436,7 +436,15 @@
     "createOperations": "Operazioni",
     "addDatabase": "Aggiungi database",
     "newApiService": "Nuovo servizio API",
-    "people": "Persone"
+    "people": "Persone",
+    "peopleAll": "Tutte le persone",
+    "peopleActive": "Attive",
+    "peopleInvited": "Invitate",
+    "peopleDisabled": "Disattivate",
+    "peopleInvite": "Invita persone",
+    "departments": "Reparti",
+    "jobTitles": "Ruoli professionali",
+    "peopleRoles": "Ruoli e accesso"
   },
   "navbar": {
     "breadcrumb": "Percorso di navigazione",
@@ -614,7 +622,11 @@
     "FRM-FORM-1021": "Un’opzione non ha nessuna opzione sopra. Scegli dove va.",
     "FRM-FORM-1022": "Questo elenco ha più opzioni di quante ne possa contenere: 20.000, o 200.000 se è grande.",
     "FRM-USER-1001": "Questo invito è scaduto. Chiedi un nuovo invito a chi ti ha invitato.",
-    "FRM-USER-1002": "Questo invito non è più valido. Potrebbe essere stato usato o ritirato."
+    "FRM-USER-1002": "Questo invito non è più valido. Potrebbe essere stato usato o ritirato.",
+    "FRM-USER-1003": "Uno spazio di lavoro ha bisogno di almeno un proprietario. Nomina prima un'altra persona proprietaria.",
+    "FRM-USER-1004": "Una persona non può riferire a sé stessa né a chi riferisce a lei.",
+    "FRM-USER-1005": "Non puoi farlo sul tuo account.",
+    "FRM-USER-1006": "Solo i proprietari possono nominare o modificare un proprietario."
   },
   "errorUi": {
     "reference": "Riferimento: {id}",
@@ -1080,7 +1092,11 @@
       "users_invite_resent": "Invito inviato di nuovo",
       "users_invite_link": "Link di invito copiato",
       "users_invite_revoked": "Invito ritirato",
-      "users_joined": "Si è unito allo spazio di lavoro"
+      "users_joined": "Si è unito allo spazio di lavoro",
+      "users_updated": "Profilo modificato",
+      "users_signed_out": "Disconnesso ovunque",
+      "users_password_requested": "Nuova password richiesta",
+      "users_two_step_reset": "Accesso in due passaggi reimpostato"
     },
     "detail": {
       "who": "Chi",
@@ -7538,6 +7554,47 @@
       "expiredDesc": "I link di invito funzionano per 7 giorni. Chiedi a chi ti ha invitato di inviarne uno nuovo.",
       "invalid": "Questo invito non è valido",
       "invalidDesc": "Potrebbe essere già stato usato o ritirato. Se ti sei già unito, accedi."
+    },
+    "rolesSoon": "I ruoli personalizzati e cosa può fare ciascuno arriveranno nella fase Ruoli e accesso. Fino ad allora le persone sono Proprietario, Admin o Membro.",
+    "manage": {
+      "edit": "Modifica",
+      "editTitle": "Modifica {name}",
+      "editDesc": "Ruolo, reparti, ruoli professionali e responsabile. Nome, telefono e foto li cambia ciascuno nel proprio profilo.",
+      "saved": "{name} è stato aggiornato",
+      "managerHint": "La persona a cui riferisce.",
+      "roleHint": {
+        "owner": "Tutto, inclusi i proprietari e lo spazio di lavoro stesso.",
+        "admin": "Gestisce persone, impostazioni e registro di audit.",
+        "member": "Lavora con i moduli a cui ha accesso."
+      },
+      "ownerOnly": "Solo i proprietari possono modificare un proprietario",
+      "disable": "Disattiva",
+      "disableTitle": "Disattivare {name}?",
+      "disableDesc": "La persona viene disconnessa e non può accedere finché non la riattivi. I suoi moduli e la cronologia restano.",
+      "disabled": "{name} è disattivato",
+      "enable": "Attiva",
+      "enabled": "{name} può accedere di nuovo",
+      "signOut": "Disconnetti ovunque",
+      "signOutTitle": "Disconnettere {name} ovunque?",
+      "signOutDesc": "Tutti i dispositivi su cui è connessa vengono disconnessi. Potrà accedere di nuovo.",
+      "signedOut": "{name} è disconnesso ovunque",
+      "password": "Richiedi una nuova password",
+      "passwordTitle": "Richiedere una nuova password a {name}?",
+      "passwordDesc": "La persona viene disconnessa e al prossimo accesso dovrà scegliere una nuova password con un codice via email.",
+      "passwordDone": "{name} sceglierà una nuova password al prossimo accesso",
+      "twoStep": "Reimposta l'accesso in due passaggi",
+      "twoStepTitle": "Reimpostare l'accesso in due passaggi per {name}?",
+      "twoStepDesc": "L'app di autenticazione e il numero SMS vengono rimossi. Usalo se ha perso il telefono. Potrà configurarlo di nuovo nel profilo.",
+      "twoStepDone": "Accesso in due passaggi reimpostato per {name}"
+    },
+    "bulk": {
+      "role": "Ruolo",
+      "department": "Aggiungi a un reparto",
+      "jobTitle": "Aggiungi ruolo professionale",
+      "done": "{n} persona aggiornata | {n} persone aggiornate",
+      "disableTitle": "Disattivare {n} persona? | Disattivare {n} persone?",
+      "skipped": "{n} lasciata com'era | {n} lasciate com'erano",
+      "skippedDesc": "Già così, il tuo account, l'ultimo proprietario o un proprietario che solo i proprietari possono modificare."
     }
   }
 }

@@ -31,8 +31,9 @@ const GROUPS: SettingsGroup[] = [
   {
     key: 'organisation',
     items: [
-      { key: 'departments', icon: 'i-lucide-network', to: '/settings/departments' },
-      { key: 'jobTitles', icon: 'i-lucide-id-card', to: '/settings/job-titles' },
+      // They live in the People area now (F16, owner 2026-10-09); Settings links there, as for Lists
+      { key: 'departments', icon: 'i-lucide-network', to: '/people/departments' },
+      { key: 'jobTitles', icon: 'i-lucide-id-card', to: '/people/job-titles' },
       { key: 'lists', icon: 'i-lucide-list-tree', to: '/option-sets' },
     ],
   },

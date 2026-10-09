@@ -436,7 +436,15 @@
     "createOperations": "Vận hành",
     "addDatabase": "Thêm cơ sở dữ liệu",
     "newApiService": "Dịch vụ API mới",
-    "people": "Mọi người"
+    "people": "Mọi người",
+    "peopleAll": "Tất cả mọi người",
+    "peopleActive": "Đang hoạt động",
+    "peopleInvited": "Đã mời",
+    "peopleDisabled": "Đã vô hiệu hóa",
+    "peopleInvite": "Mời mọi người",
+    "departments": "Phòng ban",
+    "jobTitles": "Chức danh",
+    "peopleRoles": "Vai trò & quyền truy cập"
   },
   "navbar": {
     "breadcrumb": "Đường dẫn",
@@ -614,7 +622,11 @@
     "FRM-FORM-1021": "Có tùy chọn không có tùy chọn nào ở trên. Hãy chọn nơi nó thuộc về.",
     "FRM-FORM-1022": "Danh sách này có nhiều tùy chọn hơn mức cho phép: 20.000, hoặc 200.000 nếu là danh sách lớn.",
     "FRM-USER-1001": "Lời mời này đã hết hạn. Hãy nhờ người đã mời bạn gửi lời mời mới.",
-    "FRM-USER-1002": "Lời mời này không còn hiệu lực. Có thể nó đã được dùng hoặc bị thu hồi."
+    "FRM-USER-1002": "Lời mời này không còn hiệu lực. Có thể nó đã được dùng hoặc bị thu hồi.",
+    "FRM-USER-1003": "Không gian làm việc cần ít nhất một chủ sở hữu. Hãy đặt người khác làm chủ sở hữu trước.",
+    "FRM-USER-1004": "Một người không thể báo cáo cho chính mình hoặc cho người báo cáo cho mình.",
+    "FRM-USER-1005": "Bạn không thể làm điều này với tài khoản của chính mình.",
+    "FRM-USER-1006": "Chỉ chủ sở hữu mới có thể đặt hoặc đổi chủ sở hữu."
   },
   "errorUi": {
     "reference": "Mã tham chiếu: {id}",
@@ -1080,7 +1092,11 @@
       "users_invite_resent": "Đã gửi lại lời mời",
       "users_invite_link": "Đã sao chép liên kết mời",
       "users_invite_revoked": "Đã thu hồi lời mời",
-      "users_joined": "Đã tham gia không gian làm việc"
+      "users_joined": "Đã tham gia không gian làm việc",
+      "users_updated": "Đã đổi hồ sơ",
+      "users_signed_out": "Đã đăng xuất mọi nơi",
+      "users_password_requested": "Đã yêu cầu mật khẩu mới",
+      "users_two_step_reset": "Đã đặt lại đăng nhập hai bước"
     },
     "detail": {
       "who": "Ai",
@@ -7538,6 +7554,47 @@
       "expiredDesc": "Liên kết mời có hiệu lực trong 7 ngày. Hãy nhờ người đã mời bạn gửi liên kết mới.",
       "invalid": "Lời mời này không hợp lệ",
       "invalidDesc": "Có thể nó đã được dùng hoặc bị thu hồi. Nếu bạn đã tham gia, hãy đăng nhập."
+    },
+    "rolesSoon": "Vai trò tùy chỉnh và quyền của từng vai trò sẽ có ở giai đoạn Vai trò & quyền truy cập. Đến lúc đó mọi người là Chủ sở hữu, Quản trị viên hoặc Thành viên.",
+    "manage": {
+      "edit": "Chỉnh sửa",
+      "editTitle": "Chỉnh sửa {name}",
+      "editDesc": "Vai trò, phòng ban, chức danh và quản lý. Tên, số điện thoại và ảnh do mỗi người tự đổi trong hồ sơ.",
+      "saved": "Đã cập nhật {name}",
+      "managerHint": "Người mà họ báo cáo.",
+      "roleHint": {
+        "owner": "Mọi quyền, kể cả chủ sở hữu và chính không gian làm việc.",
+        "admin": "Quản lý mọi người, cài đặt và nhật ký kiểm tra.",
+        "member": "Làm việc với các biểu mẫu được cấp quyền truy cập."
+      },
+      "ownerOnly": "Chỉ chủ sở hữu mới có thể đổi chủ sở hữu",
+      "disable": "Vô hiệu hóa",
+      "disableTitle": "Vô hiệu hóa {name}?",
+      "disableDesc": "Họ bị đăng xuất và không thể đăng nhập cho đến khi bạn bật lại. Biểu mẫu và lịch sử vẫn được giữ.",
+      "disabled": "Đã vô hiệu hóa {name}",
+      "enable": "Bật lại",
+      "enabled": "{name} có thể đăng nhập lại",
+      "signOut": "Đăng xuất mọi nơi",
+      "signOutTitle": "Đăng xuất {name} khỏi mọi nơi?",
+      "signOutDesc": "Mọi thiết bị họ đang đăng nhập sẽ bị đăng xuất. Họ có thể đăng nhập lại.",
+      "signedOut": "Đã đăng xuất {name} khỏi mọi nơi",
+      "password": "Yêu cầu mật khẩu mới",
+      "passwordTitle": "Yêu cầu {name} đặt mật khẩu mới?",
+      "passwordDesc": "Họ bị đăng xuất, và lần đăng nhập tiếp theo sẽ được yêu cầu chọn mật khẩu mới bằng mã gửi qua email.",
+      "passwordDone": "{name} sẽ chọn mật khẩu mới ở lần đăng nhập tiếp theo",
+      "twoStep": "Đặt lại đăng nhập hai bước",
+      "twoStepTitle": "Đặt lại đăng nhập hai bước cho {name}?",
+      "twoStepDesc": "Ứng dụng xác thực và số SMS của họ sẽ bị xóa. Dùng khi họ mất điện thoại. Họ có thể thiết lập lại trong hồ sơ.",
+      "twoStepDone": "Đã đặt lại đăng nhập hai bước cho {name}"
+    },
+    "bulk": {
+      "role": "Vai trò",
+      "department": "Thêm vào phòng ban",
+      "jobTitle": "Thêm chức danh",
+      "done": "Đã cập nhật {n} người | Đã cập nhật {n} người",
+      "disableTitle": "Vô hiệu hóa {n} người? | Vô hiệu hóa {n} người?",
+      "skipped": "{n} người giữ nguyên | {n} người giữ nguyên",
+      "skippedDesc": "Vốn đã như vậy, tài khoản của chính bạn, chủ sở hữu cuối cùng, hoặc chủ sở hữu mà chỉ chủ sở hữu mới đổi được."
     }
   }
 }

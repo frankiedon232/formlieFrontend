@@ -436,7 +436,15 @@
     "createOperations": "Opérations",
     "addDatabase": "Ajouter une base de données",
     "newApiService": "Nouveau service d'API",
-    "people": "Personnes"
+    "people": "Personnes",
+    "peopleAll": "Toutes les personnes",
+    "peopleActive": "Actives",
+    "peopleInvited": "Invitées",
+    "peopleDisabled": "Désactivées",
+    "peopleInvite": "Inviter des personnes",
+    "departments": "Services",
+    "jobTitles": "Intitulés de poste",
+    "peopleRoles": "Rôles et accès"
   },
   "navbar": {
     "breadcrumb": "Fil d'Ariane",
@@ -614,7 +622,11 @@
     "FRM-FORM-1021": "Une option n’a aucune option au-dessus. Choisissez où la placer.",
     "FRM-FORM-1022": "Cette liste contient plus d'options qu'elle ne peut en accepter : 20 000, ou 200 000 si elle est grande.",
     "FRM-USER-1001": "Cette invitation a expiré. Demandez-en une nouvelle à la personne qui vous a invité.",
-    "FRM-USER-1002": "Cette invitation n'est plus valide. Elle a peut-être été utilisée ou retirée."
+    "FRM-USER-1002": "Cette invitation n'est plus valide. Elle a peut-être été utilisée ou retirée.",
+    "FRM-USER-1003": "Un espace de travail doit avoir au moins un propriétaire. Nommez d'abord quelqu'un d'autre propriétaire.",
+    "FRM-USER-1004": "Une personne ne peut pas dépendre d'elle-même ni de quelqu'un qui dépend d'elle.",
+    "FRM-USER-1005": "Vous ne pouvez pas faire cela sur votre propre compte.",
+    "FRM-USER-1006": "Seuls les propriétaires peuvent nommer ou modifier un propriétaire."
   },
   "errorUi": {
     "reference": "Référence : {id}",
@@ -1080,7 +1092,11 @@
       "users_invite_resent": "Invitation renvoyée",
       "users_invite_link": "Lien d'invitation copié",
       "users_invite_revoked": "Invitation retirée",
-      "users_joined": "A rejoint l'espace de travail"
+      "users_joined": "A rejoint l'espace de travail",
+      "users_updated": "Profil modifié",
+      "users_signed_out": "Déconnecté partout",
+      "users_password_requested": "Nouveau mot de passe demandé",
+      "users_two_step_reset": "Connexion en deux étapes réinitialisée"
     },
     "detail": {
       "who": "Qui",
@@ -7538,6 +7554,47 @@
       "expiredDesc": "Les liens d'invitation sont valables 7 jours. Demandez à la personne qui vous a invité d'en envoyer un nouveau.",
       "invalid": "Cette invitation n'est pas valide",
       "invalidDesc": "Elle a peut-être déjà été utilisée ou retirée. Si vous avez déjà rejoint l'espace, connectez-vous."
+    },
+    "rolesSoon": "Les rôles personnalisés et ce que chacun permet arriveront avec la phase Rôles et accès. D'ici là, les personnes sont propriétaires, admins ou membres.",
+    "manage": {
+      "edit": "Modifier",
+      "editTitle": "Modifier {name}",
+      "editDesc": "Rôle, services, intitulés de poste et responsable. Le nom, le téléphone et la photo se modifient dans le profil de chacun.",
+      "saved": "{name} est mis à jour",
+      "managerHint": "La personne dont elle dépend.",
+      "roleHint": {
+        "owner": "Tout, y compris les propriétaires et l'espace de travail lui-même.",
+        "admin": "Gère les personnes, les paramètres et le journal d'audit.",
+        "member": "Travaille avec les formulaires auxquels elle a accès."
+      },
+      "ownerOnly": "Seuls les propriétaires peuvent modifier un propriétaire",
+      "disable": "Désactiver",
+      "disableTitle": "Désactiver {name} ?",
+      "disableDesc": "La personne est déconnectée et ne peut plus se connecter tant que vous ne la réactivez pas. Ses formulaires et son historique sont conservés.",
+      "disabled": "{name} est désactivé",
+      "enable": "Activer",
+      "enabled": "{name} peut de nouveau se connecter",
+      "signOut": "Déconnecter partout",
+      "signOutTitle": "Déconnecter {name} partout ?",
+      "signOutDesc": "Tous les appareils connectés sont déconnectés. La personne peut se reconnecter.",
+      "signedOut": "{name} est déconnecté partout",
+      "password": "Demander un nouveau mot de passe",
+      "passwordTitle": "Demander un nouveau mot de passe à {name} ?",
+      "passwordDesc": "La personne est déconnectée et, à la prochaine connexion, devra choisir un nouveau mot de passe avec un code reçu par e-mail.",
+      "passwordDone": "{name} choisira un nouveau mot de passe à la prochaine connexion",
+      "twoStep": "Réinitialiser la connexion en deux étapes",
+      "twoStepTitle": "Réinitialiser la connexion en deux étapes de {name} ?",
+      "twoStepDesc": "Son application d'authentification et son numéro SMS sont supprimés. Utile en cas de téléphone perdu. Elle pourra la reconfigurer dans son profil.",
+      "twoStepDone": "Connexion en deux étapes réinitialisée pour {name}"
+    },
+    "bulk": {
+      "role": "Rôle",
+      "department": "Ajouter à un service",
+      "jobTitle": "Ajouter un intitulé de poste",
+      "done": "{n} personne mise à jour | {n} personnes mises à jour",
+      "disableTitle": "Désactiver {n} personne ? | Désactiver {n} personnes ?",
+      "skipped": "{n} laissée telle quelle | {n} laissées telles quelles",
+      "skippedDesc": "Déjà dans cet état, votre propre compte, le dernier propriétaire ou un propriétaire que seuls les propriétaires peuvent modifier."
     }
   }
 }

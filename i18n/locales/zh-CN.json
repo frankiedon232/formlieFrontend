@@ -436,7 +436,15 @@
     "createOperations": "运营",
     "addDatabase": "添加数据库",
     "newApiService": "新建 API 服务",
-    "people": "成员"
+    "people": "成员",
+    "peopleAll": "所有人",
+    "peopleActive": "已启用",
+    "peopleInvited": "已邀请",
+    "peopleDisabled": "已停用",
+    "peopleInvite": "邀请成员",
+    "departments": "部门",
+    "jobTitles": "职位",
+    "peopleRoles": "角色与权限"
   },
   "navbar": {
     "breadcrumb": "面包屑导航",
@@ -614,7 +622,11 @@
     "FRM-FORM-1021": "有选项上方没有选项。请选择它所属的位置。",
     "FRM-FORM-1022": "此列表的选项超过了容量上限：20,000 个，大型列表为 200,000 个。",
     "FRM-USER-1001": "此邀请已过期。请向邀请你的人索取新的邀请。",
-    "FRM-USER-1002": "此邀请已失效，可能已被使用或已被撤回。"
+    "FRM-USER-1002": "此邀请已失效，可能已被使用或已被撤回。",
+    "FRM-USER-1003": "工作区至少需要一位所有者。请先指定另一位所有者。",
+    "FRM-USER-1004": "一个人不能向自己或向自己的下属汇报。",
+    "FRM-USER-1005": "你不能对自己的账号执行此操作。",
+    "FRM-USER-1006": "只有所有者才能指定或更改所有者。"
   },
   "errorUi": {
     "reference": "参考编号：{id}",
@@ -1080,7 +1092,11 @@
       "users_invite_resent": "已重新发送邀请",
       "users_invite_link": "已复制邀请链接",
       "users_invite_revoked": "已撤回邀请",
-      "users_joined": "已加入工作区"
+      "users_joined": "已加入工作区",
+      "users_updated": "资料已更改",
+      "users_signed_out": "已在所有设备退出登录",
+      "users_password_requested": "已请求新密码",
+      "users_two_step_reset": "两步登录已重置"
     },
     "detail": {
       "who": "谁",
@@ -7538,6 +7554,47 @@
       "expiredDesc": "邀请链接 7 天内有效。请让邀请你的人重新发送一个。",
       "invalid": "此邀请无效",
       "invalidDesc": "可能已被使用或已被撤回。如果你已加入，请直接登录。"
+    },
+    "rolesSoon": "自定义角色及各角色的权限将在“角色与权限”阶段推出。在此之前，成员为所有者、管理员或成员。",
+    "manage": {
+      "edit": "编辑",
+      "editTitle": "编辑 {name}",
+      "editDesc": "设置角色、部门、职位和上级。姓名、电话和照片由本人在个人资料中修改。",
+      "saved": "已更新 {name}",
+      "managerHint": "他们汇报的对象。",
+      "roleHint": {
+        "owner": "拥有全部权限，包括所有者和工作区本身。",
+        "admin": "管理成员、设置和审计记录。",
+        "member": "使用已授权访问的表单。"
+      },
+      "ownerOnly": "只有所有者才能更改所有者",
+      "disable": "停用",
+      "disableTitle": "停用 {name}？",
+      "disableDesc": "该成员将被退出登录，在你重新启用之前无法登录。其表单和历史记录会保留。",
+      "disabled": "已停用 {name}",
+      "enable": "启用",
+      "enabled": "{name} 可以重新登录",
+      "signOut": "在所有设备退出登录",
+      "signOutTitle": "让 {name} 在所有设备退出登录？",
+      "signOutDesc": "该成员已登录的所有设备都会退出登录，之后仍可重新登录。",
+      "signedOut": "{name} 已在所有设备退出登录",
+      "password": "要求设置新密码",
+      "passwordTitle": "要求 {name} 设置新密码？",
+      "passwordDesc": "该成员将被退出登录，下次登录时需通过邮件验证码设置新密码。",
+      "passwordDone": "{name} 将在下次登录时设置新密码",
+      "twoStep": "重置两步登录",
+      "twoStepTitle": "重置 {name} 的两步登录？",
+      "twoStepDesc": "其验证器应用和短信号码将被移除。手机丢失时可使用。之后可在个人资料中重新设置。",
+      "twoStepDone": "已重置 {name} 的两步登录"
+    },
+    "bulk": {
+      "role": "角色",
+      "department": "添加到部门",
+      "jobTitle": "添加职位",
+      "done": "已更新 {n} 人 | 已更新 {n} 人",
+      "disableTitle": "停用 {n} 人？ | 停用 {n} 人？",
+      "skipped": "{n} 人保持不变 | {n} 人保持不变",
+      "skippedDesc": "已经是该状态、你自己的账号、最后一位所有者，或只有所有者才能更改的所有者。"
     }
   }
 }

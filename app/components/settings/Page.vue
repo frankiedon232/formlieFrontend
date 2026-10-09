@@ -7,12 +7,13 @@
 <script setup lang="ts">
 import type { SettingsChange } from '#shared/types/settings'
 
-const props = defineProps<{ id: string; title: string; subtitle?: string; icon?: string; form?: { dirty: boolean; saving: boolean; updated: SettingsChange | null } }>()
+// `plain`: the same page in another area (People → Departments, Job titles; F16) without the Settings navigator
+const props = defineProps<{ id: string; title: string; subtitle?: string; icon?: string; plain?: boolean; form?: { dirty: boolean; saving: boolean; updated: SettingsChange | null } }>()
 const emit = defineEmits<{ save: []; discard: [] }>()
 const { t } = useI18n()
 const { relative } = useFormat()
 const takeover = useSidebarTakeover()
-takeover.claim(() => t('settings.title'), 'i-lucide-settings')
+if (!props.plain) takeover.claim(() => t('settings.title'), 'i-lucide-settings')
 const sectionsOpen = ref(false)
 watch(takeover.shown, shown => shown && (sectionsOpen.value = false))
 </script>
@@ -24,8 +25,8 @@ watch(takeover.shown, shown => shown && (sectionsOpen.value = false))
       <span v-else-if="form.updated" class="truncate text-xs text-muted">{{ t('settings.changedBy', { when: relative(form.updated.at), name: form.updated.by }) }}</span>
     </template>
     <template #actions>
-      <UButton v-if="!takeover.shown.value" :label="t('settings.sections')" icon="i-lucide-panel-left" color="neutral" variant="outline" class="lg:hidden" @click="sectionsOpen = true" />
-      <UButton v-if="!takeover.shown.value" icon="i-lucide-panel-left" color="neutral" variant="outline" square class="hidden lg:inline-flex" :aria-label="t('settings.sections')" @click="sectionsOpen = true" />
+      <UButton v-if="!plain && !takeover.shown.value" :label="t('settings.sections')" icon="i-lucide-panel-left" color="neutral" variant="outline" class="lg:hidden" @click="sectionsOpen = true" />
+      <UButton v-if="!plain && !takeover.shown.value" icon="i-lucide-panel-left" color="neutral" variant="outline" square class="hidden lg:inline-flex" :aria-label="t('settings.sections')" @click="sectionsOpen = true" />
       <slot name="actions" />
       <template v-if="props.form">
         <UButton :label="t('settings.discard')" color="neutral" variant="outline" :disabled="!props.form.dirty || props.form.saving" class="max-sm:hidden" @click="emit('discard')" />

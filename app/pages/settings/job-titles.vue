@@ -1,10 +1,8 @@
-<!-- Settings → Job titles (F14 M2): what people do (not permission roles, F22), with who holds each. -->
+<!-- Job titles moved to the People area (F16, owner 2026-10-09); old links still work. -->
 <script setup lang="ts">
-definePageMeta({ breadcrumb: 'settings.nav.jobTitles' })
-const { t } = useI18n()
-useHead({ title: () => t('settings.nav.jobTitles') })
+definePageMeta({ redirect: '/people/job-titles' })
 </script>
 
 <template>
-  <SettingsOrgList kind="job_titles" />
+  <div />
 </template>

@@ -38,6 +38,8 @@ export interface MockUser {
   password_changed_at?: string
   /** Hashes of earlier passwords, newest first (Settings → Security: no reuse). */
   password_history?: string[]
+  /** An admin asked for a new password (F16 M3): sign-in sends them to set one, like an expired password. */
+  must_change_password?: boolean
 }
 
 export const MOCK_TENANTS: MockTenant[] = [

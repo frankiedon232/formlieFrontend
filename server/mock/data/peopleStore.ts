@@ -25,6 +25,8 @@ export interface StoredPerson {
   manager_id: string | null
   two_step: boolean
   joined_at: string
+  /** An admin asked for a new password at the next sign-in (F16 M3). */
+  must_change_password?: boolean
   /** An open invitation (F16 M2): only a hash of the link's token is kept. */
   invite?: { token_hash: string; expires_at: string; sent_at: string; invited_by: { id: string; name: string }; message: string | null }
 }
@@ -70,6 +72,7 @@ function seed(tenant: MockTenant): StoredPerson[] {
   return [...fromUsers, ...samples]
 }
 
+const synced = new Set<string>()
 export function peopleStoreOf(tenant: MockTenant): StoredPerson[] {
   let list = stores.get(tenant.id)
   if (!list) {
@@ -77,8 +80,19 @@ export function peopleStoreOf(tenant: MockTenant): StoredPerson[] {
     stores.set(tenant.id, list)
     savePeople()
   }
+  // The demo's built-in accounts aren't saved to disk: their role, status and password request live
+  // here and are put back on their sign-in accounts once per start (F16 M3)
+  if (!synced.has(tenant.id)) {
+    synced.add(tenant.id)
+    for (const person of list) {
+      const user = MOCK_USERS.find(item => item.id === person.id)
+      if (user && person.status !== 'invited') Object.assign(user, { role: person.role, disabled: person.status === 'disabled', must_change_password: !!person.must_change_password })
+    }
+  }
   return list
 }
+/** The person and their sign-in account (sample colleagues have none). */
+export const accountOf = (id: string) => MOCK_USERS.find(user => user.id === id) ?? null
 
 const refOf = (item: { id: string; name: string }) => ({ id: item.id, name: item.name })
 

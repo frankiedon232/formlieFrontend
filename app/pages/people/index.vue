@@ -77,22 +77,23 @@ const ids = computed(() => (list.value?.state.rows.value ?? []).map(row => row.i
 const openRow = (row: PersonRow) => void router.replace({ query: { ...route.query, person: row.id } })
 const go = (id: string) => void router.replace({ query: { ...route.query, person: id } })
 
+// Edit (role, departments, job titles, manager)
+const editOpen = ref(false)
+const editing = ref<PersonRow | null>(null)
+const edit = (person: PersonRow) => ((editing.value = person), (editOpen.value = true))
+const panel = useTemplateRef<{ reload: () => void }>('panel')
+const saved = () => Promise.all([refreshAll(), panel.value?.reload()])
+
 const rowActions = (row: PersonRow): DropdownMenuItem[][] => [
   [
     { label: t('apiService.actions.open'), icon: 'i-lucide-panel-right-open', onSelect: () => openRow(row) },
     { label: t('people.email'), icon: 'i-lucide-mail', to: `mailto:${row.email}`, external: true },
     ...(row.status === 'invited' ? [] : [{ label: t('people.activity'), icon: 'i-lucide-scroll-text', to: { path: '/audit', query: { actor_id: row.id } } }]),
   ],
-  ...(row.status === 'invited'
-    ? [
-        [
-          { label: t('people.invite.resend'), icon: 'i-lucide-send', onSelect: () => void actions.resend(row) },
-          { label: t('people.invite.copyLink'), icon: 'i-lucide-link', onSelect: () => void actions.copyLink(row) },
-        ],
-        [{ label: t('people.invite.revoke'), icon: 'i-lucide-user-minus', color: 'error' as const, onSelect: () => void actions.revoke(row) }],
-      ]
-    : []),
+  ...actions.menu(row, edit),
 ]
+// Several at once: role, add to a department or job title, disable / enable
+const pickItems = (list: { id: string; name: string; archived?: boolean }[] | undefined, pick: (id: string) => void): DropdownMenuItem[] => (list ?? []).filter(item => !item.archived).map(item => ({ label: item.name, onSelect: () => pick(item.id) }))
 const names = (items: { name: string }[]) => items.map(item => item.name).join(', ')
 </script>
 
@@ -114,6 +115,7 @@ const names = (items: { name: string }[]) => items.map(item => item.name).join('
       :sort-options="sortOptions"
       default-sort="name"
       default-view="table"
+      selectable
       :row-actions="rowActions"
       :busy="row => actions.busy.value === row.id"
       :open-row="openRow"
@@ -137,10 +139,24 @@ const names = (items: { name: string }[]) => items.map(item => item.name).join('
       </template>
       <template #joined_at-cell="{ row }"><span class="whitespace-nowrap text-muted">{{ date(row.original.joined_at) }}</span></template>
       <template #empty-actions><UButton :label="t('people.invite.button')" icon="i-lucide-user-plus" color="neutral" @click="inviteOpen = true" /></template>
+      <template #bulk-actions="{ selected, clear }">
+        <UDropdownMenu :items="actions.roleItems(role => void actions.bulk(selected.map(row => row.id), 'role', role).then(clear))">
+          <UButton :label="t('people.bulk.role')" icon="i-lucide-shield" trailing-icon="i-lucide-chevron-down" color="neutral" variant="outline" size="sm" :loading="actions.busy.value === 'bulk'" />
+        </UDropdownMenu>
+        <UDropdownMenu v-if="directory?.departments.length" :items="pickItems(directory?.departments, id => void actions.bulk(selected.map(row => row.id), 'department', id).then(clear))">
+          <UButton :label="t('people.bulk.department')" icon="i-lucide-building-2" trailing-icon="i-lucide-chevron-down" color="neutral" variant="outline" size="sm" />
+        </UDropdownMenu>
+        <UDropdownMenu v-if="directory?.job_titles.length" :items="pickItems(directory?.job_titles, id => void actions.bulk(selected.map(row => row.id), 'job_title', id).then(clear))">
+          <UButton :label="t('people.bulk.jobTitle')" icon="i-lucide-briefcase" trailing-icon="i-lucide-chevron-down" color="neutral" variant="outline" size="sm" />
+        </UDropdownMenu>
+        <UButton :label="t('people.manage.enable')" icon="i-lucide-user-check" color="neutral" variant="outline" size="sm" @click="actions.bulk(selected.map(row => row.id), 'enable').then(clear)" />
+        <UButton :label="t('people.manage.disable')" icon="i-lucide-user-x" color="error" variant="outline" size="sm" @click="actions.bulk(selected.map(row => row.id), 'disable').then(clear)" />
+      </template>
       <template #grid-card="{ row }"><PeopleCard :person="row" :actions="rowActions(row)" :busy="actions.busy.value === row.id" /></template>
     </DataView>
 
-    <PeopleDetail :id="openId" ref="panel" v-model:open="panelOpen" :ids="ids.length ? ids : openId ? [openId] : []" :busy="!!actions.busy.value" @go="go" @resend="actions.resend" @copy-link="actions.copyLink" @revoke="person => actions.revoke(person).then(() => (panelOpen = false))" />
+    <PeopleDetail :id="openId" ref="panel" v-model:open="panelOpen" :ids="ids.length ? ids : openId ? [openId] : []" :busy="!!actions.busy.value" :menu="person => actions.menu(person, edit)" @go="go" @resend="actions.resend" @copy-link="actions.copyLink" @revoke="person => actions.revoke(person).then(() => (panelOpen = false))" @edit="edit" />
+    <PeopleEditModal v-model:open="editOpen" :person="editing" :directory="directory" @saved="saved" />
     <PeopleInviteModal v-model:open="inviteOpen" :directory="directory" @invited="refreshAll" />
   </AppPanel>
 </template>

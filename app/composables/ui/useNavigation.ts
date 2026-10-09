@@ -216,21 +216,45 @@ const AI_NAV: AppNavItem[] = [
 ]
 
 /**
+ * People area (F16 Users & profiles, owner 2026-10-09: "profiling is a rail and menus of its own"):
+ * everyone in the workspace by status, invitations, and the profiling data (departments, job titles);
+ * roles come with F22. Admins and owners only until then.
+ */
+const PEOPLE_NAV: AppNavItem[] = [
+  {
+    key: 'people',
+    icon: 'i-lucide-users',
+    to: '/people',
+    shortcut: 'g-u',
+    exact: true,
+    children: [
+      { key: 'peopleAll', to: '/people', dot: 'bg-(--ui-text-dimmed)', count: c => c.people.total },
+      { key: 'peopleActive', to: '/people', query: { status: 'active' }, dot: 'bg-green-500', count: c => c.people.active },
+      { key: 'peopleInvited', to: '/people', query: { status: 'invited' }, dot: 'bg-amber-500', count: c => c.people.invited, hideZero: true },
+      { key: 'peopleDisabled', to: '/people', query: { status: 'disabled' }, dot: 'bg-(--ui-text-dimmed)', count: c => c.people.disabled, hideZero: true },
+      { key: 'peopleInvite', icon: 'i-lucide-user-plus', to: '/people', query: { invite: '1' } },
+    ],
+  },
+  { key: 'departments', icon: 'i-lucide-network', to: '/people/departments', count: c => c.people.departments },
+  { key: 'jobTitles', icon: 'i-lucide-id-card', to: '/people/job-titles', count: c => c.people.job_titles },
+  { key: 'peopleRoles', icon: 'i-lucide-shield', to: '/people/roles' },
+]
+
+/**
  * Areas on the rail; each brings its own menu. The workspace button is the Forms area, so only
  * the extra areas are listed here.
  */
-export type NavArea = 'forms' | 'data' | 'api' | 'ai'
-const NAV_AREAS: { key: Exclude<NavArea, 'forms'>; label: string; icon: string; to: string; menu: AppNavItem[] }[] = [
+export type NavArea = 'forms' | 'data' | 'api' | 'ai' | 'people'
+const NAV_AREAS: { key: Exclude<NavArea, 'forms'>; label: string; icon: string; to: string; menu: AppNavItem[]; adminOnly?: boolean }[] = [
   { key: 'data', label: 'nav.dataSources', icon: 'i-lucide-database', to: '/data-sources', menu: DATA_NAV },
   { key: 'api', label: 'nav.apiService', icon: 'i-lucide-code-xml', to: '/api-service', menu: API_NAV },
   { key: 'ai', label: 'nav.ai', icon: 'i-lucide-sparkles', to: '/ai', menu: AI_NAV },
+  { key: 'people', label: 'nav.people', icon: 'i-lucide-users', to: '/people', menu: PEOPLE_NAV, adminOnly: true },
 ]
 const areaOf = (path: string): NavArea =>
   NAV_AREAS.find(a => path === a.to || path.startsWith(`${a.to}/`))?.key ?? 'forms'
 
 const SYSTEM_NAV: AppNavItem[] = [
-  // People and their profiles (F16): admins and owners until F22
-  { key: 'people', icon: 'i-lucide-users', to: '/people', shortcut: 'g-u', adminOnly: true },
   { key: 'settings', icon: 'i-lucide-settings', to: '/settings', shortcut: 'g-s', except: ['/settings/themes'] },
   { key: 'audit', icon: 'i-lucide-scroll-text', to: '/audit', shortcut: 'g-l', adminOnly: true },
   { key: 'help', icon: 'i-lucide-circle-help', to: '/help', railFoot: true },
@@ -333,13 +357,16 @@ export function useNavigation() {
   })
   /** Sidebar heading for the main list: the area's name, or "Main menu" for Forms. */
   const areaLabel = computed(() => NAV_AREAS.find(a => a.key === area.value)?.label ?? 'nav.main')
+  const isAdmin = computed(() => session.user.value?.role !== 'member')
+  /** Rail areas this person may open (People: admins and owners until F22). */
+  const areas = computed(() => NAV_AREAS.filter(item => !item.adminOnly || isAdmin.value))
   const systemItems = computed(() => SYSTEM_NAV.filter(item => allowed(item) && !item.railFoot).map(item => toMenuItem(item)))
   /** Help & support also in the SYSTEM group, below Audit after a line (owner 2026-10-08). */
   const helpItems = computed(() => SYSTEM_NAV.filter(item => allowed(item) && item.railFoot).map(item => toMenuItem(item)))
 
   /** Flat list of top-level destinations (children with their own page included), for search, rail and shortcuts. */
   const destinations = computed(() =>
-    [...MAIN_NAV, ...RESOURCE_NAV, ...DATA_NAV, ...API_NAV, ...AI_NAV, ...SYSTEM_NAV]
+    [...MAIN_NAV, ...RESOURCE_NAV, ...DATA_NAV, ...API_NAV, ...AI_NAV, ...(isAdmin.value ? PEOPLE_NAV : []), ...SYSTEM_NAV]
       .filter(allowed)
       .flatMap(item => (item.children && !item.children[0]?.dot ? item.children : [item])),
   )
@@ -350,5 +377,5 @@ export function useNavigation() {
       .flatMap(item => (item.children && !item.children[0]?.dot ? item.children : [item])),
   )
 
-  return { mainItems, resourceItems, folderItems, systemItems, helpItems, destinations, areaDestinations, area, areaLabel, areas: NAV_AREAS, isActive }
+  return { mainItems, resourceItems, folderItems, systemItems, helpItems, destinations, areaDestinations, area, areaLabel, areas, isActive }
 }

@@ -436,7 +436,15 @@
     "createOperations": "Betrieb",
     "addDatabase": "Datenbank hinzufügen",
     "newApiService": "Neuer API-Dienst",
-    "people": "Personen"
+    "people": "Personen",
+    "peopleAll": "Alle Personen",
+    "peopleActive": "Aktiv",
+    "peopleInvited": "Eingeladen",
+    "peopleDisabled": "Deaktiviert",
+    "peopleInvite": "Personen einladen",
+    "departments": "Abteilungen",
+    "jobTitles": "Positionen",
+    "peopleRoles": "Rollen & Zugriff"
   },
   "navbar": {
     "breadcrumb": "Brotkrümelnavigation",
@@ -614,7 +622,11 @@
     "FRM-FORM-1021": "Eine Option hat keine Option über sich. Wählen Sie, wohin sie gehört.",
     "FRM-FORM-1022": "Diese Liste hat mehr Optionen, als sie fassen kann: 20.000, oder 200.000 bei einer großen Liste.",
     "FRM-USER-1001": "Diese Einladung ist abgelaufen. Bitten Sie die einladende Person um eine neue.",
-    "FRM-USER-1002": "Diese Einladung ist nicht mehr gültig. Sie wurde möglicherweise bereits verwendet oder zurückgezogen."
+    "FRM-USER-1002": "Diese Einladung ist nicht mehr gültig. Sie wurde möglicherweise bereits verwendet oder zurückgezogen.",
+    "FRM-USER-1003": "Ein Arbeitsbereich braucht mindestens einen Inhaber. Machen Sie zuerst jemand anderen zum Inhaber.",
+    "FRM-USER-1004": "Eine Person kann nicht an sich selbst oder an jemanden berichten, der an sie berichtet.",
+    "FRM-USER-1005": "Das ist für Ihr eigenes Konto nicht möglich.",
+    "FRM-USER-1006": "Nur Inhaber können jemanden zum Inhaber machen oder einen Inhaber ändern."
   },
   "errorUi": {
     "reference": "Referenz: {id}",
@@ -1080,7 +1092,11 @@
       "users_invite_resent": "Einladung erneut gesendet",
       "users_invite_link": "Einladungslink kopiert",
       "users_invite_revoked": "Einladung zurückgezogen",
-      "users_joined": "Dem Arbeitsbereich beigetreten"
+      "users_joined": "Dem Arbeitsbereich beigetreten",
+      "users_updated": "Profil geändert",
+      "users_signed_out": "Überall abgemeldet",
+      "users_password_requested": "Neues Passwort angefordert",
+      "users_two_step_reset": "Zwei-Schritt-Anmeldung zurückgesetzt"
     },
     "detail": {
       "who": "Wer",
@@ -7538,6 +7554,47 @@
       "expiredDesc": "Einladungslinks sind 7 Tage gültig. Bitten Sie die einladende Person, eine neue zu senden.",
       "invalid": "Diese Einladung ist ungültig",
       "invalidDesc": "Sie wurde möglicherweise bereits verwendet oder zurückgezogen. Wenn Sie schon beigetreten sind, melden Sie sich an."
+    },
+    "rolesSoon": "Eigene Rollen und was jede darf, kommen in der Phase Rollen & Zugriff. Bis dahin sind Personen Inhaber, Admin oder Mitglied.",
+    "manage": {
+      "edit": "Bearbeiten",
+      "editTitle": "{name} bearbeiten",
+      "editDesc": "Rolle, Abteilungen, Positionen und Vorgesetzte/r. Name, Telefon und Foto ändert jede Person selbst im Profil.",
+      "saved": "{name} wurde aktualisiert",
+      "managerHint": "Die Person, an die berichtet wird.",
+      "roleHint": {
+        "owner": "Alles, auch Inhaber und den Arbeitsbereich selbst.",
+        "admin": "Verwaltet Personen, Einstellungen und das Audit-Protokoll.",
+        "member": "Arbeitet mit den Formularen, auf die Zugriff besteht."
+      },
+      "ownerOnly": "Nur Inhaber können einen Inhaber ändern",
+      "disable": "Deaktivieren",
+      "disableTitle": "{name} deaktivieren?",
+      "disableDesc": "Die Person wird abgemeldet und kann sich erst wieder anmelden, wenn Sie sie aktivieren. Formulare und Verlauf bleiben erhalten.",
+      "disabled": "{name} ist deaktiviert",
+      "enable": "Aktivieren",
+      "enabled": "{name} kann sich wieder anmelden",
+      "signOut": "Überall abmelden",
+      "signOutTitle": "{name} überall abmelden?",
+      "signOutDesc": "Alle Geräte, auf denen die Person angemeldet ist, werden abgemeldet. Eine neue Anmeldung ist möglich.",
+      "signedOut": "{name} ist überall abgemeldet",
+      "password": "Neues Passwort anfordern",
+      "passwordTitle": "Neues Passwort für {name} anfordern?",
+      "passwordDesc": "Die Person wird abgemeldet und wählt bei der nächsten Anmeldung mit einem Code per E-Mail ein neues Passwort.",
+      "passwordDone": "{name} wählt bei der nächsten Anmeldung ein neues Passwort",
+      "twoStep": "Zwei-Schritt-Anmeldung zurücksetzen",
+      "twoStepTitle": "Zwei-Schritt-Anmeldung für {name} zurücksetzen?",
+      "twoStepDesc": "Authenticator-App und SMS-Nummer werden entfernt. Nutzen Sie das, wenn das Telefon verloren ging. Im Profil kann sie neu eingerichtet werden.",
+      "twoStepDone": "Zwei-Schritt-Anmeldung für {name} zurückgesetzt"
+    },
+    "bulk": {
+      "role": "Rolle",
+      "department": "Zu Abteilung hinzufügen",
+      "jobTitle": "Position hinzufügen",
+      "done": "{n} Person aktualisiert | {n} Personen aktualisiert",
+      "disableTitle": "{n} Person deaktivieren? | {n} Personen deaktivieren?",
+      "skipped": "{n} unverändert | {n} unverändert",
+      "skippedDesc": "Schon so, Ihr eigenes Konto, der letzte Inhaber oder ein Inhaber, den nur Inhaber ändern können."
     }
   }
 }

@@ -436,7 +436,15 @@
     "createOperations": "Shughuli",
     "addDatabase": "Ongeza hifadhidata",
     "newApiService": "Huduma mpya ya API",
-    "people": "Watu"
+    "people": "Watu",
+    "peopleAll": "Watu wote",
+    "peopleActive": "Walio hai",
+    "peopleInvited": "Waliyoalikwa",
+    "peopleDisabled": "Waliozimwa",
+    "peopleInvite": "Alika watu",
+    "departments": "Idara",
+    "jobTitles": "Vyeo vya kazi",
+    "peopleRoles": "Majukumu na ufikiaji"
   },
   "navbar": {
     "breadcrumb": "Njia ya urambazaji",
@@ -614,7 +622,11 @@
     "FRM-FORM-1021": "Chaguo moja halina chaguo juu yake. Chagua linapoenda.",
     "FRM-FORM-1022": "Orodha hii ina chaguo nyingi kuliko inavyoweza kubeba: 20,000, au 200,000 ikiwa ni kubwa.",
     "FRM-USER-1001": "Mwaliko huu umeisha muda. Mwombe aliyekualika akutumie mpya.",
-    "FRM-USER-1002": "Mwaliko huu haufai tena. Huenda ulishatumika au ulirejeshwa."
+    "FRM-USER-1002": "Mwaliko huu haufai tena. Huenda ulishatumika au ulirejeshwa.",
+    "FRM-USER-1003": "Nafasi ya kazi inahitaji angalau mmiliki mmoja. Mfanye mtu mwingine mmiliki kwanza.",
+    "FRM-USER-1004": "Mtu hawezi kuripoti kwake mwenyewe wala kwa anayeripoti kwake.",
+    "FRM-USER-1005": "Huwezi kufanya hivi kwenye akaunti yako mwenyewe.",
+    "FRM-USER-1006": "Ni wamiliki pekee wanaoweza kumfanya mtu mmiliki au kubadilisha mmiliki."
   },
   "errorUi": {
     "reference": "Kumbukumbu: {id}",
@@ -1080,7 +1092,11 @@
       "users_invite_resent": "Mwaliko umetumwa tena",
       "users_invite_link": "Kiungo cha mwaliko kimenakiliwa",
       "users_invite_revoked": "Mwaliko umerejeshwa",
-      "users_joined": "Amejiunga na nafasi ya kazi"
+      "users_joined": "Amejiunga na nafasi ya kazi",
+      "users_updated": "Wasifu umebadilishwa",
+      "users_signed_out": "Ametoka kila mahali",
+      "users_password_requested": "Nenosiri jipya limeombwa",
+      "users_two_step_reset": "Kuingia kwa hatua mbili kumewekwa upya"
     },
     "detail": {
       "who": "Nani",
@@ -7538,6 +7554,47 @@
       "expiredDesc": "Viungo vya mwaliko hufanya kazi kwa siku 7. Mwombe aliyekualika atume kipya.",
       "invalid": "Mwaliko huu si halali",
       "invalidDesc": "Huenda ulishatumika au ulirejeshwa. Ikiwa ulishajiunga, ingia."
+    },
+    "rolesSoon": "Majukumu maalum na kile ambacho kila moja linaruhusu vitakuja katika awamu ya Majukumu na ufikiaji. Hadi hapo watu ni Mmiliki, Msimamizi au Mwanachama.",
+    "manage": {
+      "edit": "Hariri",
+      "editTitle": "Hariri {name}",
+      "editDesc": "Jukumu, idara, vyeo vya kazi na meneja. Jina, simu na picha hubadilishwa na mhusika kwenye wasifu wake.",
+      "saved": "{name} amesasishwa",
+      "managerHint": "Mtu anayeripoti kwake.",
+      "roleHint": {
+        "owner": "Kila kitu, ikiwa ni pamoja na wamiliki na nafasi ya kazi yenyewe.",
+        "admin": "Husimamia watu, mipangilio na rekodi ya ukaguzi.",
+        "member": "Hufanya kazi na fomu alizopewa ufikiaji."
+      },
+      "ownerOnly": "Ni wamiliki pekee wanaoweza kubadilisha mmiliki",
+      "disable": "Zima",
+      "disableTitle": "Zima {name}?",
+      "disableDesc": "Atatolewa na hataweza kuingia hadi umwezeshe tena. Fomu na historia yake vinabaki.",
+      "disabled": "{name} amezimwa",
+      "enable": "Washa",
+      "enabled": "{name} anaweza kuingia tena",
+      "signOut": "Toka kila mahali",
+      "signOutTitle": "Mtoe {name} kila mahali?",
+      "signOutDesc": "Kila kifaa alichoingia kitatolewa. Anaweza kuingia tena.",
+      "signedOut": "{name} ametoka kila mahali",
+      "password": "Omba nenosiri jipya",
+      "passwordTitle": "Mwombe {name} nenosiri jipya?",
+      "passwordDesc": "Atatolewa, na akiingia tena ataombwa kuchagua nenosiri jipya kwa msimbo wa barua pepe.",
+      "passwordDone": "{name} atachagua nenosiri jipya atakapoingia tena",
+      "twoStep": "Weka upya kuingia kwa hatua mbili",
+      "twoStepTitle": "Weka upya kuingia kwa hatua mbili kwa {name}?",
+      "twoStepDesc": "Programu yake ya uthibitishaji na nambari ya SMS vinaondolewa. Tumia hili akipoteza simu. Anaweza kuiweka tena kwenye wasifu wake.",
+      "twoStepDone": "Kuingia kwa hatua mbili kwa {name} kumewekwa upya"
+    },
+    "bulk": {
+      "role": "Jukumu",
+      "department": "Ongeza kwenye idara",
+      "jobTitle": "Ongeza cheo cha kazi",
+      "done": "Mtu {n} amesasishwa | Watu {n} wamesasishwa",
+      "disableTitle": "Mzime mtu {n}? | Muzime watu {n}?",
+      "skipped": "{n} ameachwa kama alivyokuwa | {n} wameachwa kama walivyokuwa",
+      "skippedDesc": "Tayari ni hivyo, akaunti yako mwenyewe, mmiliki wa mwisho, au mmiliki ambaye wamiliki pekee wanaweza kumbadilisha."
     }
   }
 }

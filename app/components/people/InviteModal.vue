@@ -81,11 +81,11 @@ async function send() {
         <div class="grid gap-4 sm:grid-cols-2">
           <UFormField :label="t('people.col.departments')">
             <USelectMenu v-model="state.department_ids" :items="departments" value-key="value" multiple :placeholder="t('people.invite.pick')" icon="i-lucide-building-2" class="w-full" />
-            <template v-if="!departments.length" #hint><NuxtLink to="/settings/departments" class="underline">{{ t('people.invite.addDepartments') }}</NuxtLink></template>
+            <template v-if="!departments.length" #hint><NuxtLink to="/people/departments" class="underline">{{ t('people.invite.addDepartments') }}</NuxtLink></template>
           </UFormField>
           <UFormField :label="t('people.col.jobTitles')">
             <USelectMenu v-model="state.job_title_ids" :items="jobTitles" value-key="value" multiple :placeholder="t('people.invite.pick')" icon="i-lucide-briefcase" class="w-full" />
-            <template v-if="!jobTitles.length" #hint><NuxtLink to="/settings/job-titles" class="underline">{{ t('people.invite.addJobTitles') }}</NuxtLink></template>
+            <template v-if="!jobTitles.length" #hint><NuxtLink to="/people/job-titles" class="underline">{{ t('people.invite.addJobTitles') }}</NuxtLink></template>
           </UFormField>
         </div>
         <UFormField :label="t('people.invite.message')" :hint="t('people.invite.optional')">

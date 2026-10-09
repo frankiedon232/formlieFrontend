@@ -5,11 +5,12 @@
   with M3. Previous (K) · position · Next (J).
 -->
 <script setup lang="ts">
+import type { DropdownMenuItem } from '@nuxt/ui'
 import type { PersonDetail } from '#shared/types/people'
 
-const props = defineProps<{ id: string | null; ids: string[]; busy?: boolean }>()
+const props = defineProps<{ id: string | null; ids: string[]; busy?: boolean; menu?: (person: PersonDetail) => DropdownMenuItem[][] }>()
 const open = defineModel<boolean>('open', { default: false })
-const emit = defineEmits<{ go: [id: string]; resend: [person: PersonDetail]; copyLink: [person: PersonDetail]; revoke: [person: PersonDetail] }>()
+const emit = defineEmits<{ go: [id: string]; resend: [person: PersonDetail]; copyLink: [person: PersonDetail]; revoke: [person: PersonDetail]; edit: [person: PersonDetail] }>()
 const { t } = useI18n()
 const api = useApi()
 const { number, relative, date, dateTime, percent } = useFormat()
@@ -26,6 +27,10 @@ async function load(id: string) {
   }
 }
 watch(() => [props.id, open.value] as const, ([id, isOpen]) => id && isOpen && void load(id), { immediate: true })
+defineExpose({ reload: () => props.id && load(props.id) })
+// Owners are changed only by owners
+const session = useSession()
+const canEdit = computed(() => !!props.menu && !(person.value?.role === 'owner' && session.user.value?.role !== 'owner'))
 // After an action (resend renews the link's dates)
 watch(() => props.busy, (now, before) => before && !now && props.id && open.value && void load(props.id))
 
@@ -80,7 +85,12 @@ const place = computed(() => {
               <UBadge :label="t(`people.role.${person.role}`)" icon="i-lucide-shield" color="neutral" variant="outline" size="sm" class="rounded-md" />
             </div>
           </div>
-          <UButton icon="i-lucide-x" color="neutral" variant="soft" size="sm" square class="rounded-full" :aria-label="t('common.close')" @click="open = false" />
+          <div class="flex shrink-0 items-center gap-1">
+            <UDropdownMenu v-if="menu" :items="menu(person)" :content="{ align: 'end' }">
+              <UButton icon="i-lucide-ellipsis" color="neutral" variant="ghost" size="sm" square :loading="busy" :aria-label="t('dataView.actions')" />
+            </UDropdownMenu>
+            <UButton icon="i-lucide-x" color="neutral" variant="soft" size="sm" square class="rounded-full" :aria-label="t('common.close')" @click="open = false" />
+          </div>
         </div>
         <div v-if="person.invite" class="flex flex-wrap items-center gap-2">
           <UButton :label="t('people.invite.resend')" icon="i-lucide-send" color="neutral" size="sm" :loading="busy" @click="emit('resend', person)" />
@@ -88,7 +98,8 @@ const place = computed(() => {
           <UButton :label="t('people.invite.revoke')" icon="i-lucide-user-minus" color="error" variant="outline" size="sm" :disabled="busy" @click="emit('revoke', person)" />
         </div>
         <div v-else class="flex flex-wrap items-center gap-2">
-          <UButton :label="t('people.email')" icon="i-lucide-mail" color="neutral" size="sm" :to="`mailto:${person.email}`" external />
+          <UButton v-if="canEdit" :label="t('people.manage.edit')" icon="i-lucide-pencil" color="neutral" size="sm" :disabled="busy" @click="emit('edit', person)" />
+          <UButton :label="t('people.email')" icon="i-lucide-mail" color="neutral" variant="outline" size="sm" :to="`mailto:${person.email}`" external />
           <UButton :label="t('people.activity')" icon="i-lucide-scroll-text" color="neutral" variant="outline" size="sm" :to="{ path: '/audit', query: { actor_id: person.id } }" />
         </div>
       </div>

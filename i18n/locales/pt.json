@@ -436,7 +436,15 @@
     "createOperations": "Operações",
     "addDatabase": "Adicionar banco de dados",
     "newApiService": "Novo serviço de API",
-    "people": "Pessoas"
+    "people": "Pessoas",
+    "peopleAll": "Todas as pessoas",
+    "peopleActive": "Ativas",
+    "peopleInvited": "Convidadas",
+    "peopleDisabled": "Desativadas",
+    "peopleInvite": "Convidar pessoas",
+    "departments": "Departamentos",
+    "jobTitles": "Cargos",
+    "peopleRoles": "Funções e acesso"
   },
   "navbar": {
     "breadcrumb": "Trilha de navegação",
@@ -614,7 +622,11 @@
     "FRM-FORM-1021": "Uma opção não tem nenhuma opção acima. Escolha onde ela fica.",
     "FRM-FORM-1022": "Esta lista tem mais opções do que comporta: 20.000, ou 200.000 se for grande.",
     "FRM-USER-1001": "Este convite expirou. Peça um novo a quem convidou você.",
-    "FRM-USER-1002": "Este convite não é mais válido. Ele pode ter sido usado ou retirado."
+    "FRM-USER-1002": "Este convite não é mais válido. Ele pode ter sido usado ou retirado.",
+    "FRM-USER-1003": "Um espaço de trabalho precisa de pelo menos um proprietário. Torne outra pessoa proprietária primeiro.",
+    "FRM-USER-1004": "Uma pessoa não pode reportar a si mesma nem a alguém que reporta a ela.",
+    "FRM-USER-1005": "Você não pode fazer isso na sua própria conta.",
+    "FRM-USER-1006": "Só proprietários podem tornar alguém proprietário ou alterar um proprietário."
   },
   "errorUi": {
     "reference": "Referência: {id}",
@@ -1080,7 +1092,11 @@
       "users_invite_resent": "Convite reenviado",
       "users_invite_link": "Link do convite copiado",
       "users_invite_revoked": "Convite retirado",
-      "users_joined": "Entrou no espaço de trabalho"
+      "users_joined": "Entrou no espaço de trabalho",
+      "users_updated": "Perfil alterado",
+      "users_signed_out": "Sessão encerrada em todos os lugares",
+      "users_password_requested": "Nova senha solicitada",
+      "users_two_step_reset": "Login em duas etapas redefinido"
     },
     "detail": {
       "who": "Quem",
@@ -7538,6 +7554,47 @@
       "expiredDesc": "Os links de convite funcionam por 7 dias. Peça a quem convidou você que envie um novo.",
       "invalid": "Este convite não é válido",
       "invalidDesc": "Ele pode já ter sido usado ou retirado. Se você já entrou, faça login."
+    },
+    "rolesSoon": "Funções personalizadas e o que cada uma pode fazer chegam na fase Funções e acesso. Até lá, as pessoas são Proprietário, Administrador ou Membro.",
+    "manage": {
+      "edit": "Editar",
+      "editTitle": "Editar {name}",
+      "editDesc": "Função, departamentos, cargos e gestor. Nome, telefone e foto cada pessoa altera no próprio perfil.",
+      "saved": "{name} foi atualizado",
+      "managerHint": "A pessoa a quem reporta.",
+      "roleHint": {
+        "owner": "Tudo, incluindo proprietários e o próprio espaço de trabalho.",
+        "admin": "Gerencia pessoas, configurações e a trilha de auditoria.",
+        "member": "Trabalha com os formulários aos quais tem acesso."
+      },
+      "ownerOnly": "Só proprietários podem alterar um proprietário",
+      "disable": "Desativar",
+      "disableTitle": "Desativar {name}?",
+      "disableDesc": "A pessoa é desconectada e não pode entrar até você ativá-la de novo. Os formulários e o histórico permanecem.",
+      "disabled": "{name} foi desativado",
+      "enable": "Ativar",
+      "enabled": "{name} pode entrar novamente",
+      "signOut": "Encerrar sessão em todos os lugares",
+      "signOutTitle": "Encerrar a sessão de {name} em todos os lugares?",
+      "signOutDesc": "Todos os dispositivos em que a pessoa está conectada serão desconectados. Ela pode entrar de novo.",
+      "signedOut": "A sessão de {name} foi encerrada em todos os lugares",
+      "password": "Pedir uma nova senha",
+      "passwordTitle": "Pedir uma nova senha a {name}?",
+      "passwordDesc": "A pessoa é desconectada e, no próximo login, escolhe uma nova senha com um código enviado por e-mail.",
+      "passwordDone": "{name} vai escolher uma nova senha no próximo login",
+      "twoStep": "Redefinir o login em duas etapas",
+      "twoStepTitle": "Redefinir o login em duas etapas de {name}?",
+      "twoStepDesc": "O aplicativo autenticador e o número de SMS são removidos. Use isso quando a pessoa perder o celular. Ela pode configurar de novo no perfil.",
+      "twoStepDone": "Login em duas etapas de {name} redefinido"
+    },
+    "bulk": {
+      "role": "Função",
+      "department": "Adicionar a um departamento",
+      "jobTitle": "Adicionar cargo",
+      "done": "{n} pessoa atualizada | {n} pessoas atualizadas",
+      "disableTitle": "Desativar {n} pessoa? | Desativar {n} pessoas?",
+      "skipped": "{n} ficou como estava | {n} ficaram como estavam",
+      "skippedDesc": "Já está assim, é a sua própria conta, o último proprietário ou um proprietário que só proprietários podem alterar."
     }
   }
 }

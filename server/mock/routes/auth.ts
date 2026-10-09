@@ -28,6 +28,7 @@ import { parseBody } from '../core/validate'
 import { notify } from '../data/notificationStore'
 import { sendEmail } from '../data/outboxStore'
 import { settingsOf } from '../data/settingsStore'
+import { peopleStoreOf, savePeople } from '../data/peopleStore'
 import {
   hashPassword,
   MOCK_TENANTS,
@@ -93,6 +94,8 @@ function domainAllowed(tenant: MockTenant, email: string) {
 
 /** Settings → Security: the password is older than the workspace allows. */
 function passwordExpired(tenant: MockTenant, user: MockUser) {
+  // An admin asked for a new one (People → Ask for a new password, F16 M3)
+  if (user.must_change_password) return true
   const days = settingsOf(tenant).security.password.expiry_days
   return !!days && !!user.password_changed_at && Date.now() - Date.parse(user.password_changed_at) > days * 86_400_000
 }
@@ -367,6 +370,14 @@ export const resetPassword = defineMockRoute(({ event, body }) => {
     challenge.user.password_history = [old, ...(challenge.user.password_history ?? [])].slice(0, 10)
     challenge.user.password = input.password
     challenge.user.password_changed_at = new Date().toISOString()
+    if (challenge.user.must_change_password) {
+      challenge.user.must_change_password = false
+      const person = challenge.tenant ? peopleStoreOf(challenge.tenant).find(item => item.id === challenge.user!.id) : undefined
+      if (person) {
+        delete person.must_change_password
+        savePeople()
+      }
+    }
     saveCreatedWorkspaces()
     recordAudit(event, challenge.tenant!, { action: 'auth.password.reset', actor: actorOf(challenge.user) })
   }

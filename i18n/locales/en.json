@@ -436,7 +436,15 @@
     "createOperations": "Operations",
     "addDatabase": "Add database",
     "newApiService": "New API service",
-    "people": "People"
+    "people": "People",
+    "peopleAll": "All people",
+    "peopleActive": "Active",
+    "peopleInvited": "Invited",
+    "peopleDisabled": "Disabled",
+    "peopleInvite": "Invite people",
+    "departments": "Departments",
+    "jobTitles": "Job titles",
+    "peopleRoles": "Roles & access"
   },
   "navbar": {
     "breadcrumb": "Breadcrumb",
@@ -614,7 +622,11 @@
     "FRM-FORM-1021": "An option has no option above it. Choose where it belongs.",
     "FRM-FORM-1022": "This list has more options than it can hold: 20,000, or 200,000 when it is large.",
     "FRM-USER-1001": "This invitation has expired. Ask the person who invited you for a new one.",
-    "FRM-USER-1002": "This invitation is no longer valid. It may have been used or withdrawn."
+    "FRM-USER-1002": "This invitation is no longer valid. It may have been used or withdrawn.",
+    "FRM-USER-1003": "A workspace needs at least one owner. Make someone else an owner first.",
+    "FRM-USER-1004": "A person can't report to themselves or to someone who reports to them.",
+    "FRM-USER-1005": "You can't do this to your own account.",
+    "FRM-USER-1006": "Only owners can make someone an owner or change an owner."
   },
   "errorUi": {
     "reference": "Reference: {id}",
@@ -1080,7 +1092,11 @@
       "users_invite_resent": "Invitation sent again",
       "users_invite_link": "Invitation link copied",
       "users_invite_revoked": "Invitation withdrawn",
-      "users_joined": "Joined the workspace"
+      "users_joined": "Joined the workspace",
+      "users_updated": "Profile changed",
+      "users_signed_out": "Signed out everywhere",
+      "users_password_requested": "New password asked for",
+      "users_two_step_reset": "Two-step sign-in reset"
     },
     "detail": {
       "who": "Who",
@@ -7538,6 +7554,47 @@
       "expiredDesc": "Invitation links work for 7 days. Ask the person who invited you to send a new one.",
       "invalid": "This invitation is not valid",
       "invalidDesc": "It may have been used already or withdrawn. If you joined before, sign in."
+    },
+    "rolesSoon": "Custom roles and what each one may do come in the Roles & access phase. Until then people are Owner, Admin or Member.",
+    "manage": {
+      "edit": "Edit",
+      "editTitle": "Edit {name}",
+      "editDesc": "Role, departments, job titles and manager. Their name, phone and photo are theirs to change in their profile.",
+      "saved": "{name} is updated",
+      "managerHint": "The person they report to.",
+      "roleHint": {
+        "owner": "Everything, including owners and the workspace itself.",
+        "admin": "Manages people, settings and the audit trail.",
+        "member": "Works with the forms they are given access to."
+      },
+      "ownerOnly": "Only owners can change an owner",
+      "disable": "Disable",
+      "disableTitle": "Disable {name}?",
+      "disableDesc": "They are signed out and can't sign in until you enable them again. Their forms and history stay.",
+      "disabled": "{name} is disabled",
+      "enable": "Enable",
+      "enabled": "{name} can sign in again",
+      "signOut": "Sign out everywhere",
+      "signOutTitle": "Sign {name} out everywhere?",
+      "signOutDesc": "Every device they are signed in on is signed out. They can sign in again.",
+      "signedOut": "{name} is signed out everywhere",
+      "password": "Ask for a new password",
+      "passwordTitle": "Ask {name} for a new password?",
+      "passwordDesc": "They are signed out, and the next sign-in asks them to choose a new password with a code by email.",
+      "passwordDone": "{name} will choose a new password at the next sign-in",
+      "twoStep": "Reset two-step sign-in",
+      "twoStepTitle": "Reset two-step sign-in for {name}?",
+      "twoStepDesc": "Their authenticator app and SMS number are removed. Use this when they lost their phone. They can set it up again in their profile.",
+      "twoStepDone": "Two-step sign-in reset for {name}"
+    },
+    "bulk": {
+      "role": "Role",
+      "department": "Add to department",
+      "jobTitle": "Add job title",
+      "done": "{n} person updated | {n} people updated",
+      "disableTitle": "Disable {n} person? | Disable {n} people?",
+      "skipped": "{n} left as it was | {n} left as they were",
+      "skippedDesc": "Already like that, your own account, the last owner, or an owner only owners can change."
     }
   }
 }

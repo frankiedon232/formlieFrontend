@@ -436,7 +436,15 @@
     "createOperations": "Operaciones",
     "addDatabase": "Añadir base de datos",
     "newApiService": "Nuevo servicio de API",
-    "people": "Personas"
+    "people": "Personas",
+    "peopleAll": "Todas las personas",
+    "peopleActive": "Activas",
+    "peopleInvited": "Invitadas",
+    "peopleDisabled": "Desactivadas",
+    "peopleInvite": "Invitar personas",
+    "departments": "Departamentos",
+    "jobTitles": "Cargos",
+    "peopleRoles": "Roles y acceso"
   },
   "navbar": {
     "breadcrumb": "Ruta de navegación",
@@ -614,7 +622,11 @@
     "FRM-FORM-1021": "Una opción no tiene ninguna opción encima. Elija dónde va.",
     "FRM-FORM-1022": "Esta lista tiene más opciones de las que admite: 20.000, o 200.000 si es grande.",
     "FRM-USER-1001": "Esta invitación ha caducado. Pide una nueva a quien te invitó.",
-    "FRM-USER-1002": "Esta invitación ya no es válida. Puede que se haya usado o retirado."
+    "FRM-USER-1002": "Esta invitación ya no es válida. Puede que se haya usado o retirado.",
+    "FRM-USER-1003": "Un espacio de trabajo necesita al menos un propietario. Nombra antes a otra persona como propietaria.",
+    "FRM-USER-1004": "Una persona no puede reportar a sí misma ni a alguien que le reporta.",
+    "FRM-USER-1005": "No puedes hacer esto con tu propia cuenta.",
+    "FRM-USER-1006": "Solo los propietarios pueden nombrar o cambiar a un propietario."
   },
   "errorUi": {
     "reference": "Referencia: {id}",
@@ -1080,7 +1092,11 @@
       "users_invite_resent": "Invitación reenviada",
       "users_invite_link": "Enlace de invitación copiado",
       "users_invite_revoked": "Invitación retirada",
-      "users_joined": "Se unió al espacio de trabajo"
+      "users_joined": "Se unió al espacio de trabajo",
+      "users_updated": "Perfil modificado",
+      "users_signed_out": "Sesión cerrada en todas partes",
+      "users_password_requested": "Nueva contraseña solicitada",
+      "users_two_step_reset": "Inicio de sesión en dos pasos restablecido"
     },
     "detail": {
       "who": "Quién",
@@ -7538,6 +7554,47 @@
       "expiredDesc": "Los enlaces de invitación funcionan durante 7 días. Pide a quien te invitó que envíe uno nuevo.",
       "invalid": "Esta invitación no es válida",
       "invalidDesc": "Puede que ya se haya usado o retirado. Si ya te uniste, inicia sesión."
+    },
+    "rolesSoon": "Los roles personalizados y lo que puede hacer cada uno llegarán en la fase Roles y acceso. Hasta entonces las personas son propietarias, administradoras o miembros.",
+    "manage": {
+      "edit": "Editar",
+      "editTitle": "Editar a {name}",
+      "editDesc": "Rol, departamentos, cargos y responsable. El nombre, el teléfono y la foto los cambia cada persona en su perfil.",
+      "saved": "{name} se ha actualizado",
+      "managerHint": "La persona a la que reporta.",
+      "roleHint": {
+        "owner": "Todo, incluidos los propietarios y el propio espacio de trabajo.",
+        "admin": "Gestiona personas, ajustes y el registro de auditoría.",
+        "member": "Trabaja con los formularios a los que tiene acceso."
+      },
+      "ownerOnly": "Solo los propietarios pueden cambiar a un propietario",
+      "disable": "Desactivar",
+      "disableTitle": "¿Desactivar a {name}?",
+      "disableDesc": "Se cerrará su sesión y no podrá iniciarla hasta que la actives de nuevo. Sus formularios y su historial se conservan.",
+      "disabled": "{name} está desactivado",
+      "enable": "Activar",
+      "enabled": "{name} puede iniciar sesión de nuevo",
+      "signOut": "Cerrar sesión en todas partes",
+      "signOutTitle": "¿Cerrar la sesión de {name} en todas partes?",
+      "signOutDesc": "Se cerrará la sesión en todos los dispositivos. Podrá iniciarla de nuevo.",
+      "signedOut": "Se cerró la sesión de {name} en todas partes",
+      "password": "Pedir una nueva contraseña",
+      "passwordTitle": "¿Pedir una nueva contraseña a {name}?",
+      "passwordDesc": "Se cierra su sesión y, al iniciar la siguiente, deberá elegir una nueva contraseña con un código enviado por correo.",
+      "passwordDone": "{name} elegirá una nueva contraseña en su próximo inicio de sesión",
+      "twoStep": "Restablecer el inicio de sesión en dos pasos",
+      "twoStepTitle": "¿Restablecer el inicio de sesión en dos pasos de {name}?",
+      "twoStepDesc": "Se eliminan su aplicación de autenticación y su número de SMS. Úsalo si perdió el teléfono. Podrá configurarlo de nuevo en su perfil.",
+      "twoStepDone": "Inicio de sesión en dos pasos restablecido para {name}"
+    },
+    "bulk": {
+      "role": "Rol",
+      "department": "Añadir a un departamento",
+      "jobTitle": "Añadir cargo",
+      "done": "{n} persona actualizada | {n} personas actualizadas",
+      "disableTitle": "¿Desactivar a {n} persona? | ¿Desactivar a {n} personas?",
+      "skipped": "{n} se quedó como estaba | {n} se quedaron como estaban",
+      "skippedDesc": "Ya estaba así, es tu propia cuenta, el último propietario o un propietario que solo otros propietarios pueden cambiar."
     }
   }
 }

@@ -58,6 +58,10 @@ Format: `FRM-<DOMAIN>-<NNNN>`. Ranges: 1000–1999 client/validation, 5000–599
 | FRM-FORM-1021 | 422  | An option has no option above it. Choose where it belongs.       | INFO     |
 | FRM-USER-1001 | 410  | This invitation has expired. Ask the person who invited you for a new one. | INFO |
 | FRM-USER-1002 | 404  | This invitation is no longer valid. It may have been used or withdrawn. | INFO |
+| FRM-USER-1003 | 409  | A workspace needs at least one owner. Make someone else an owner first. | INFO |
+| FRM-USER-1004 | 422  | A person can't report to themselves or to someone who reports to them. | INFO |
+| FRM-USER-1005 | 409  | You can't do this to your own account. | INFO |
+| FRM-USER-1006 | 403  | Only owners can make someone an owner or change an owner. | INFO |
 | FRM-FORM-1022 | 422  | This list has more options than it can hold: 20,000, or 200,000 when it is large. | INFO |
 | FRM-RESP-1001 | 422  | Submission is invalid.                                            | INFO     |
 | FRM-RESP-1002 | 400  | Verification failed. (captcha)                                    | WARNING  |

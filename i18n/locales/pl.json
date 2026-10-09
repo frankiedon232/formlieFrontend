@@ -436,7 +436,15 @@
     "createOperations": "Operacje",
     "addDatabase": "Dodaj bazę danych",
     "newApiService": "Nowa usługa API",
-    "people": "Osoby"
+    "people": "Osoby",
+    "peopleAll": "Wszyscy",
+    "peopleActive": "Aktywni",
+    "peopleInvited": "Zaproszeni",
+    "peopleDisabled": "Wyłączeni",
+    "peopleInvite": "Zaproś osoby",
+    "departments": "Działy",
+    "jobTitles": "Stanowiska",
+    "peopleRoles": "Role i dostęp"
   },
   "navbar": {
     "breadcrumb": "Ścieżka nawigacji",
@@ -614,7 +622,11 @@
     "FRM-FORM-1021": "Jedna opcja nie ma opcji nad sobą. Wybierz, gdzie należy.",
     "FRM-FORM-1022": "Ta lista ma więcej opcji, niż może pomieścić: 20 000, a 200 000 gdy jest duża.",
     "FRM-USER-1001": "To zaproszenie wygasło. Poproś osobę, która Cię zaprosiła, o nowe.",
-    "FRM-USER-1002": "To zaproszenie nie jest już ważne. Mogło zostać wykorzystane lub wycofane."
+    "FRM-USER-1002": "To zaproszenie nie jest już ważne. Mogło zostać wykorzystane lub wycofane.",
+    "FRM-USER-1003": "Przestrzeń robocza potrzebuje co najmniej jednego właściciela. Najpierw wskaż innego właściciela.",
+    "FRM-USER-1004": "Osoba nie może podlegać sobie ani komuś, kto podlega jej.",
+    "FRM-USER-1005": "Nie możesz tego zrobić na własnym koncie.",
+    "FRM-USER-1006": "Tylko właściciele mogą wskazać właściciela lub zmienić jego dane."
   },
   "errorUi": {
     "reference": "Identyfikator: {id}",
@@ -1080,7 +1092,11 @@
       "users_invite_resent": "Zaproszenie wysłano ponownie",
       "users_invite_link": "Skopiowano link zaproszenia",
       "users_invite_revoked": "Zaproszenie wycofane",
-      "users_joined": "Dołączono do przestrzeni roboczej"
+      "users_joined": "Dołączono do przestrzeni roboczej",
+      "users_updated": "Zmieniono profil",
+      "users_signed_out": "Wylogowano wszędzie",
+      "users_password_requested": "Poproszono o nowe hasło",
+      "users_two_step_reset": "Zresetowano logowanie dwuetapowe"
     },
     "detail": {
       "who": "Kto",
@@ -7538,6 +7554,47 @@
       "expiredDesc": "Linki z zaproszeniem działają 7 dni. Poproś osobę, która Cię zaprosiła, o nowy.",
       "invalid": "To zaproszenie jest nieważne",
       "invalidDesc": "Mogło zostać już wykorzystane lub wycofane. Jeśli już dołączyłeś(aś), zaloguj się."
+    },
+    "rolesSoon": "Własne role i uprawnienia każdej z nich pojawią się w fazie Role i dostęp. Do tego czasu osoby są właścicielami, administratorami lub członkami.",
+    "manage": {
+      "edit": "Edytuj",
+      "editTitle": "Edytuj: {name}",
+      "editDesc": "Rola, działy, stanowiska i przełożony. Imię, telefon i zdjęcie zmienia każdy we własnym profilu.",
+      "saved": "Zaktualizowano: {name}",
+      "managerHint": "Osoba, której podlega.",
+      "roleHint": {
+        "owner": "Wszystko, także właściciele i sama przestrzeń robocza.",
+        "admin": "Zarządza osobami, ustawieniami i dziennikiem audytu.",
+        "member": "Pracuje z formularzami, do których ma dostęp."
+      },
+      "ownerOnly": "Tylko właściciele mogą zmienić właściciela",
+      "disable": "Wyłącz",
+      "disableTitle": "Wyłączyć: {name}?",
+      "disableDesc": "Osoba zostanie wylogowana i nie zaloguje się, dopóki jej nie włączysz. Jej formularze i historia zostają.",
+      "disabled": "Wyłączono: {name}",
+      "enable": "Włącz",
+      "enabled": "{name} może znowu się logować",
+      "signOut": "Wyloguj wszędzie",
+      "signOutTitle": "Wylogować {name} wszędzie?",
+      "signOutDesc": "Wszystkie urządzenia, na których osoba jest zalogowana, zostaną wylogowane. Może zalogować się ponownie.",
+      "signedOut": "Wylogowano {name} wszędzie",
+      "password": "Poproś o nowe hasło",
+      "passwordTitle": "Poprosić {name} o nowe hasło?",
+      "passwordDesc": "Osoba zostanie wylogowana, a przy następnym logowaniu wybierze nowe hasło za pomocą kodu z e-maila.",
+      "passwordDone": "{name} wybierze nowe hasło przy następnym logowaniu",
+      "twoStep": "Zresetuj logowanie dwuetapowe",
+      "twoStepTitle": "Zresetować logowanie dwuetapowe dla {name}?",
+      "twoStepDesc": "Aplikacja uwierzytelniająca i numer SMS zostaną usunięte. Użyj tego, gdy telefon zginął. Można to ustawić ponownie w profilu.",
+      "twoStepDone": "Zresetowano logowanie dwuetapowe dla {name}"
+    },
+    "bulk": {
+      "role": "Rola",
+      "department": "Dodaj do działu",
+      "jobTitle": "Dodaj stanowisko",
+      "done": "Zaktualizowano {n} osobę | Zaktualizowano {n} osób",
+      "disableTitle": "Wyłączyć {n} osobę? | Wyłączyć {n} osób?",
+      "skipped": "{n} bez zmian | {n} bez zmian",
+      "skippedDesc": "Już tak jest, to Twoje konto, ostatni właściciel lub właściciel, którego mogą zmienić tylko właściciele."
     }
   }
 }

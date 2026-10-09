@@ -17,4 +17,6 @@ export interface NavCounts {
   datasources: { total: number; connected: number; attention: number; failing: number; disabled: number; untested: number }
   /** Response storage (F12 M2): forms storing in a database, and how many are failing. */
   destinations: { total: number; failing: number }
+  /** People area (F16): people by status, and the profiling lists (departments, job titles in use). Zeros for members. */
+  people: { total: number; active: number; invited: number; disabled: number; departments: number; job_titles: number }
 }
