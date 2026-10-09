@@ -65,6 +65,9 @@ Format: `FRM-<DOMAIN>-<NNNN>`. Ranges: 1000–1999 client/validation, 5000–599
 | FRM-USER-1007 | 409  | The built-in roles can't be deleted, and Owner can't be changed. | INFO |
 | FRM-USER-1008 | 409  | People hold this role. Give them another role first. | INFO |
 | FRM-USER-1009 | 422  | This role does not exist any more. Choose another one. | INFO |
+| FRM-USER-1010 | 403  | Your account is waiting for an admin's approval. You'll get an email when you can sign in. | INFO |
+| FRM-USER-1011 | 409  | This email address already has an account here. Sign in instead. | INFO |
+| FRM-USER-1012 | 422  | This sign-up link only accepts the organisation's email addresses. | INFO |
 | FRM-FORM-1022 | 422  | This list has more options than it can hold: 20,000, or 200,000 when it is large. | INFO |
 | FRM-RESP-1001 | 422  | Submission is invalid.                                            | INFO     |
 | FRM-RESP-1002 | 400  | Verification failed. (captcha)                                    | WARNING  |

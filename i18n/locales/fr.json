@@ -444,7 +444,10 @@
     "peopleInvite": "Inviter des personnes",
     "departments": "Services",
     "jobTitles": "Intitulés de poste",
-    "peopleRoles": "Rôles et accès"
+    "peopleRoles": "Rôles et accès",
+    "peoplePending": "En attente d'approbation",
+    "peopleNotActivated": "Non activés",
+    "peopleAdd": "Ajouter un utilisateur"
   },
   "navbar": {
     "breadcrumb": "Fil d'Ariane",
@@ -629,7 +632,10 @@
     "FRM-USER-1006": "Seuls les propriétaires peuvent nommer ou modifier un propriétaire.",
     "FRM-USER-1007": "Les rôles intégrés ne peuvent pas être supprimés et le rôle Propriétaire ne peut pas être modifié.",
     "FRM-USER-1008": "Des personnes ont ce rôle. Donnez-leur d’abord un autre rôle.",
-    "FRM-USER-1009": "Ce rôle n’existe plus. Choisissez-en un autre."
+    "FRM-USER-1009": "Ce rôle n’existe plus. Choisissez-en un autre.",
+    "FRM-USER-1010": "Votre compte attend l'approbation d'un administrateur. Vous recevrez un e-mail dès que vous pourrez vous connecter.",
+    "FRM-USER-1011": "Cette adresse e-mail a déjà un compte ici. Connectez-vous plutôt.",
+    "FRM-USER-1012": "Ce lien d'inscription n'accepte que les adresses e-mail de l'organisation."
   },
   "errorUi": {
     "reference": "Référence : {id}",
@@ -1107,7 +1113,12 @@
       "users_profile_updated": "Profil personnel modifié",
       "users_role_created": "Rôle créé",
       "users_role_updated": "Rôle modifié",
-      "users_role_deleted": "Rôle supprimé"
+      "users_role_deleted": "Rôle supprimé",
+      "users_profile_created": "Profil utilisateur créé",
+      "users_requested": "A demandé à rejoindre",
+      "users_approved": "Approuvé",
+      "users_rejected": "Demande refusée",
+      "users_signup_link_changed": "Lien d'inscription modifié"
     },
     "detail": {
       "who": "Qui",
@@ -7483,7 +7494,9 @@
     "status": {
       "active": "Actif",
       "invited": "Invité",
-      "disabled": "Désactivé"
+      "disabled": "Désactivé",
+      "not_activated": "Non activé",
+      "pending": "En attente d'approbation"
     },
     "role": {
       "owner": "Propriétaire",
@@ -7565,7 +7578,19 @@
       "expired": "Cette invitation a expiré",
       "expiredDesc": "Les liens d'invitation sont valables 7 jours. Demandez à la personne qui vous a invité d'en envoyer un nouveau.",
       "invalid": "Cette invitation n'est pas valide",
-      "invalidDesc": "Elle a peut-être déjà été utilisée ou retirée. Si vous avez déjà rejoint l'espace, connectez-vous."
+      "invalidDesc": "Elle a peut-être déjà été utilisée ou retirée. Si vous avez déjà rejoint l'espace, connectez-vous.",
+      "activateHeading": "Activez votre compte sur {workspace}",
+      "activateDesc": "{name} a créé votre profil avec le rôle {role}. Vérifiez votre nom et choisissez un mot de passe.",
+      "askHeading": "Demander à rejoindre {workspace}",
+      "askDesc": "Renseignez vos informations et choisissez un mot de passe.",
+      "inviteDesc": "{name} vous a envoyé ce lien. Renseignez vos informations et choisissez un mot de passe.",
+      "approvalNote": "Un administrateur approuve les nouveaux comptes. Vous pourrez vous connecter après son approbation, et nous vous enverrons un e-mail.",
+      "phoneFormat": "Commencez par + et l'indicatif du pays.",
+      "domains": "Pour les adresses {list}",
+      "activate": "Activer mon compte",
+      "request": "Envoyer la demande",
+      "sent": "Demande envoyée",
+      "sentDesc": "Un administrateur de {workspace} l'examinera. Nous vous enverrons un e-mail dès que vous pourrez vous connecter."
     },
     "rolesSoon": "Les rôles personnalisés et ce que chacun permet arriveront avec la phase Rôles et accès. D'ici là, les personnes sont propriétaires, admins ou membres.",
     "manage": {
@@ -7617,6 +7642,58 @@
       "recent": "Actives récemment",
       "all": "Toutes les personnes ({n})",
       "invite": "Inviter un membre"
+    },
+    "add": {
+      "button": "Ajouter un utilisateur",
+      "title": "Ajouter un profil utilisateur",
+      "desc": "Créez le profil d'un membre du personnel. Il reçoit un e-mail pour définir son mot de passe, puis peut se connecter.",
+      "note": "Il reçoit un e-mail d'activation valable 7 jours.",
+      "done": "{name} ajouté",
+      "doneDesc": "E-mail d'activation envoyé à {email}.",
+      "resend": "Renvoyer l'activation",
+      "copyLink": "Copier le lien d'activation",
+      "remove": "Supprimer le profil",
+      "removeTitle": "Supprimer le profil de {name} ?",
+      "removeDesc": "Ce profil n'a pas encore été activé. Le lien cessera de fonctionner et le profil sera supprimé."
+    },
+    "approve": {
+      "button": "Approuver",
+      "title": "Approuver {name}",
+      "desc": "Complétez son profil : rôle, services, fonctions et responsable. Il pourra se connecter une fois approuvé.",
+      "note": "Il reçoit un e-mail l'informant qu'il peut se connecter.",
+      "done": "{name} approuvé",
+      "doneDesc": "Il peut se connecter maintenant.",
+      "reject": "Refuser",
+      "rejectTitle": "Refuser {name} ?",
+      "rejectDesc": "Sa demande sera supprimée et il recevra un e-mail. Il ne pourra pas se connecter.",
+      "rejected": "Demande de {name} refusée",
+      "waiting": "En attente d'approbation",
+      "viaLink": "Inscrit avec le lien de l'espace de travail {when}.",
+      "viaInvite": "Inscrit avec un lien personnel {when}."
+    },
+    "links": {
+      "button": "Liens d'inscription",
+      "title": "Liens d'inscription",
+      "desc": "Les personnes qui s'inscrivent avec un lien attendent une approbation avant de pouvoir se connecter.",
+      "shared": "Le lien de l'espace de travail",
+      "sharedOn": "Activé. Toute personne disposant du lien peut demander à rejoindre.",
+      "sharedOff": "Désactivé. Activez-le pour partager un lien unique par e-mail, messagerie ou affiche.",
+      "turnedOn": "Lien d'inscription activé",
+      "turnedOff": "Lien d'inscription désactivé",
+      "link": "Lien",
+      "changed": "Modifié {when}",
+      "waiting": "{n} en attente d'approbation | {n} en attente d'approbation",
+      "domains": "Domaines e-mail acceptés",
+      "domainsHint": "Par exemple le domaine de votre entreprise. Vide : toutes les adresses.",
+      "saved": "Domaines enregistrés",
+      "renew": "Nouveau lien",
+      "renewTitle": "Créer un nouveau lien ?",
+      "renewDesc": "Le lien actuel cessera de fonctionner. Partagez le nouveau.",
+      "renewed": "Nouveau lien créé",
+      "qr": "Code QR du lien d'inscription",
+      "personal": "Liens personnels",
+      "personalHint": "Envoyez un lien à des adresses e-mail choisies, avec un rôle et un service suggérés.",
+      "sendPersonal": "Envoyer des liens personnels"
     }
   },
   "profile": {

@@ -5,8 +5,12 @@
  */
 import type { WorkspaceRole } from './auth'
 
-export type PersonStatus = 'active' | 'invited' | 'disabled'
-export const PERSON_STATUSES: PersonStatus[] = ['active', 'invited', 'disabled']
+/**
+ * active · not_activated (a profile an admin made; the activation email is out) · invited (a personal
+ * sign-up link is out) · pending (signed up with a link, awaiting approval) · disabled.
+ */
+export type PersonStatus = 'active' | 'not_activated' | 'invited' | 'pending' | 'disabled'
+export const PERSON_STATUSES: PersonStatus[] = ['active', 'not_activated', 'invited', 'pending', 'disabled']
 export const WORKSPACE_ROLES: WorkspaceRole[] = ['owner', 'admin', 'member']
 
 export interface PersonRef {
@@ -40,7 +44,9 @@ export interface PersonRow {
   /** Forms this person owns. */
   forms_count: number
   /** An invitation not yet accepted (F16 M2): when it ends and who sent it. */
-  invite: { expires_at: string; sent_at: string; invited_by: string; expired: boolean } | null
+  invite: { kind: 'invite' | 'activation'; expires_at: string; sent_at: string; invited_by: string; expired: boolean } | null
+  /** Signed up with a link and waiting for approval: how (personal link or the workspace's link) and when. */
+  request: { via: 'invite' | 'link'; at: string } | null
 }
 
 /** POST /people/invites */
@@ -58,14 +64,44 @@ export interface InviteResult {
   skipped: { email: string; reason: 'member' | 'invited' }[]
 }
 
-/** GET /public/invites/{token}: what the invitation page shows. */
+/**
+ * GET /public/invites/{token}: what the sign-up page shows. `activation` = a profile an admin made (set a
+ * password, then sign in); `invite` = a personal sign-up link; `link` = the workspace's shared link (both
+ * wait for approval).
+ */
 export interface InvitePreview {
+  kind: 'activation' | 'invite' | 'link'
   workspace: string
-  email: string
-  inviter: string
-  role: string
-  role_name: string
+  email: string | null
+  first_name: string
+  last_name: string
+  inviter: string | null
+  role: string | null
+  role_name: string | null
   message: string | null
+  /** The shared link: email domains it accepts (empty = any). */
+  domains: string[]
+}
+
+/** POST /people: a user profile made by an admin (activation email follows). */
+export interface ProfileRequest {
+  first_name: string
+  last_name: string
+  email: string
+  phone: string | null
+  role: string
+  department_ids: string[]
+  job_title_ids: string[]
+  manager_id: string | null
+}
+
+/** GET /people/signup-link */
+export interface SignupLinkView {
+  enabled: boolean
+  link: string
+  domains: string[]
+  updated_at: string
+  pending: number
 }
 
 /** One person's detail panel (GET /people/{id}). */

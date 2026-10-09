@@ -124,6 +124,11 @@ export const login = defineMockRoute(({ event, body }) => {
     })
     throw new MockError('FRM-AUTH-1002')
   }
+  // Signed up with a link: not until an admin approves (F16 R3)
+  if (user.awaiting_approval) {
+    recordAudit(event, tenant, { action: 'auth.login.blocked', actor: actorOf(user), outcome: 'blocked', severity: 'notice', reason: 'FRM-USER-1010', metadata: { method: 'password', cause: 'awaiting_approval' } })
+    throw new MockError('FRM-USER-1010')
+  }
   if (user.disabled) {
     recordAudit(event, tenant, {
       action: 'auth.login.blocked',

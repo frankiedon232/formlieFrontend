@@ -444,7 +444,10 @@
     "peopleInvite": "Undang orang",
     "departments": "Departemen",
     "jobTitles": "Jabatan",
-    "peopleRoles": "Peran & akses"
+    "peopleRoles": "Peran & akses",
+    "peoplePending": "Menunggu persetujuan",
+    "peopleNotActivated": "Belum diaktifkan",
+    "peopleAdd": "Tambah pengguna"
   },
   "navbar": {
     "breadcrumb": "Jejak navigasi",
@@ -629,7 +632,10 @@
     "FRM-USER-1006": "Hanya pemilik yang bisa menjadikan seseorang pemilik atau mengubah pemilik.",
     "FRM-USER-1007": "Peran bawaan tidak bisa dihapus, dan Pemilik tidak bisa diubah.",
     "FRM-USER-1008": "Masih ada orang yang memegang peran ini. Beri mereka peran lain dulu.",
-    "FRM-USER-1009": "Peran ini sudah tidak ada. Pilih peran lain."
+    "FRM-USER-1009": "Peran ini sudah tidak ada. Pilih peran lain.",
+    "FRM-USER-1010": "Akun Anda menunggu persetujuan admin. Anda akan menerima email saat sudah bisa masuk.",
+    "FRM-USER-1011": "Alamat email ini sudah punya akun di sini. Silakan masuk.",
+    "FRM-USER-1012": "Tautan pendaftaran ini hanya menerima alamat email organisasi."
   },
   "errorUi": {
     "reference": "Referensi: {id}",
@@ -1107,7 +1113,12 @@
       "users_profile_updated": "Profil sendiri diubah",
       "users_role_created": "Peran dibuat",
       "users_role_updated": "Peran diubah",
-      "users_role_deleted": "Peran dihapus"
+      "users_role_deleted": "Peran dihapus",
+      "users_profile_created": "Profil pengguna dibuat",
+      "users_requested": "Meminta bergabung",
+      "users_approved": "Disetujui",
+      "users_rejected": "Permintaan ditolak",
+      "users_signup_link_changed": "Tautan pendaftaran diubah"
     },
     "detail": {
       "who": "Siapa",
@@ -7483,7 +7494,9 @@
     "status": {
       "active": "Aktif",
       "invited": "Diundang",
-      "disabled": "Dinonaktifkan"
+      "disabled": "Dinonaktifkan",
+      "not_activated": "Belum diaktifkan",
+      "pending": "Menunggu persetujuan"
     },
     "role": {
       "owner": "Pemilik",
@@ -7565,7 +7578,19 @@
       "expired": "Undangan ini sudah kedaluwarsa",
       "expiredDesc": "Tautan undangan berlaku 7 hari. Minta orang yang mengundang Anda untuk mengirim yang baru.",
       "invalid": "Undangan ini tidak valid",
-      "invalidDesc": "Mungkin sudah digunakan atau ditarik. Jika Anda sudah bergabung, silakan masuk."
+      "invalidDesc": "Mungkin sudah digunakan atau ditarik. Jika Anda sudah bergabung, silakan masuk.",
+      "activateHeading": "Aktifkan akun Anda di {workspace}",
+      "activateDesc": "{name} membuat profil Anda sebagai {role}. Periksa nama Anda dan pilih kata sandi.",
+      "askHeading": "Minta bergabung ke {workspace}",
+      "askDesc": "Isi data Anda dan pilih kata sandi.",
+      "inviteDesc": "{name} mengirim tautan ini kepada Anda. Isi data Anda dan pilih kata sandi.",
+      "approvalNote": "Admin menyetujui akun baru. Anda bisa masuk setelah disetujui, dan kami akan mengirim email.",
+      "phoneFormat": "Mulai dengan + dan kode negara.",
+      "domains": "Untuk alamat {list}",
+      "activate": "Aktifkan akun saya",
+      "request": "Kirim permintaan",
+      "sent": "Permintaan terkirim",
+      "sentDesc": "Admin {workspace} akan meninjaunya. Kami akan mengirim email saat Anda bisa masuk."
     },
     "rolesSoon": "Peran khusus dan izin tiap peran hadir di fase Peran & akses. Sampai saat itu orang berperan sebagai Pemilik, Admin, atau Anggota.",
     "manage": {
@@ -7617,6 +7642,58 @@
       "recent": "Aktif baru-baru ini",
       "all": "Semua orang ({n})",
       "invite": "Undang anggota"
+    },
+    "add": {
+      "button": "Tambah pengguna",
+      "title": "Tambah profil pengguna",
+      "desc": "Buat profil untuk anggota staf. Mereka menerima email untuk mengatur kata sandi, lalu bisa masuk.",
+      "note": "Email aktivasi berlaku selama 7 hari.",
+      "done": "{name} ditambahkan",
+      "doneDesc": "Email aktivasi dikirim ke {email}.",
+      "resend": "Kirim ulang aktivasi",
+      "copyLink": "Salin tautan aktivasi",
+      "remove": "Hapus profil",
+      "removeTitle": "Hapus profil {name}?",
+      "removeDesc": "Profil belum diaktifkan. Tautan berhenti berfungsi dan profil dihapus."
+    },
+    "approve": {
+      "button": "Setujui",
+      "title": "Setujui {name}",
+      "desc": "Lengkapi profilnya: peran, departemen, jabatan, dan atasan. Mereka bisa masuk setelah Anda menyetujui.",
+      "note": "Mereka menerima email bahwa sudah bisa masuk.",
+      "done": "{name} disetujui",
+      "doneDesc": "Sekarang mereka bisa masuk.",
+      "reject": "Tolak",
+      "rejectTitle": "Tolak {name}?",
+      "rejectDesc": "Permintaannya dihapus dan mereka menerima email. Mereka tidak bisa masuk.",
+      "rejected": "Permintaan {name} ditolak",
+      "waiting": "Menunggu persetujuan",
+      "viaLink": "Mendaftar dengan tautan ruang kerja {when}.",
+      "viaInvite": "Mendaftar dengan tautan pribadi {when}."
+    },
+    "links": {
+      "button": "Tautan pendaftaran",
+      "title": "Tautan pendaftaran",
+      "desc": "Orang yang mendaftar lewat tautan menunggu persetujuan sebelum bisa masuk.",
+      "shared": "Tautan ruang kerja",
+      "sharedOn": "Aktif. Siapa pun yang memiliki tautan bisa meminta bergabung.",
+      "sharedOff": "Nonaktif. Aktifkan untuk membagikan satu tautan lewat email, obrolan, atau poster.",
+      "turnedOn": "Tautan pendaftaran diaktifkan",
+      "turnedOff": "Tautan pendaftaran dinonaktifkan",
+      "link": "Tautan",
+      "changed": "Diubah {when}",
+      "waiting": "{n} menunggu persetujuan | {n} menunggu persetujuan",
+      "domains": "Domain email yang diterima",
+      "domainsHint": "Misalnya domain perusahaan Anda. Kosong berarti alamat apa pun.",
+      "saved": "Domain disimpan",
+      "renew": "Tautan baru",
+      "renewTitle": "Buat tautan baru?",
+      "renewDesc": "Tautan saat ini berhenti berfungsi. Bagikan yang baru.",
+      "renewed": "Tautan baru dibuat",
+      "qr": "Kode QR untuk tautan pendaftaran",
+      "personal": "Tautan pribadi",
+      "personalHint": "Kirim tautan ke alamat email pilihan, dengan saran peran dan departemen.",
+      "sendPersonal": "Kirim tautan pribadi"
     }
   },
   "profile": {

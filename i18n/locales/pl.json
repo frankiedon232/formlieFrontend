@@ -444,7 +444,10 @@
     "peopleInvite": "Zaproś osoby",
     "departments": "Działy",
     "jobTitles": "Stanowiska",
-    "peopleRoles": "Role i dostęp"
+    "peopleRoles": "Role i dostęp",
+    "peoplePending": "Oczekuje na zatwierdzenie",
+    "peopleNotActivated": "Nieaktywowani",
+    "peopleAdd": "Dodaj użytkownika"
   },
   "navbar": {
     "breadcrumb": "Ścieżka nawigacji",
@@ -629,7 +632,10 @@
     "FRM-USER-1006": "Tylko właściciele mogą wskazać właściciela lub zmienić jego dane.",
     "FRM-USER-1007": "Wbudowanych ról nie można usunąć, a roli Właściciel nie można zmienić.",
     "FRM-USER-1008": "Ta rola jest przypisana osobom. Najpierw nadaj im inną rolę.",
-    "FRM-USER-1009": "Ta rola już nie istnieje. Wybierz inną."
+    "FRM-USER-1009": "Ta rola już nie istnieje. Wybierz inną.",
+    "FRM-USER-1010": "Twoje konto czeka na zatwierdzenie przez administratora. Gdy będzie można się zalogować, otrzymasz e-mail.",
+    "FRM-USER-1011": "Ten adres e-mail ma już tutaj konto. Zaloguj się.",
+    "FRM-USER-1012": "Ten link rejestracyjny akceptuje tylko adresy e-mail organizacji."
   },
   "errorUi": {
     "reference": "Identyfikator: {id}",
@@ -1107,7 +1113,12 @@
       "users_profile_updated": "Zmieniono własny profil",
       "users_role_created": "Rola utworzona",
       "users_role_updated": "Rola zmieniona",
-      "users_role_deleted": "Rola usunięta"
+      "users_role_deleted": "Rola usunięta",
+      "users_profile_created": "Utworzono profil użytkownika",
+      "users_requested": "Poprosił o dołączenie",
+      "users_approved": "Zatwierdzono",
+      "users_rejected": "Prośba odrzucona",
+      "users_signup_link_changed": "Zmieniono link rejestracyjny"
     },
     "detail": {
       "who": "Kto",
@@ -7483,7 +7494,9 @@
     "status": {
       "active": "Aktywny",
       "invited": "Zaproszony",
-      "disabled": "Wyłączony"
+      "disabled": "Wyłączony",
+      "not_activated": "Nieaktywowany",
+      "pending": "Oczekuje na zatwierdzenie"
     },
     "role": {
       "owner": "Właściciel",
@@ -7565,7 +7578,19 @@
       "expired": "To zaproszenie wygasło",
       "expiredDesc": "Linki z zaproszeniem działają 7 dni. Poproś osobę, która Cię zaprosiła, o nowy.",
       "invalid": "To zaproszenie jest nieważne",
-      "invalidDesc": "Mogło zostać już wykorzystane lub wycofane. Jeśli już dołączyłeś(aś), zaloguj się."
+      "invalidDesc": "Mogło zostać już wykorzystane lub wycofane. Jeśli już dołączyłeś(aś), zaloguj się.",
+      "activateHeading": "Aktywuj konto w {workspace}",
+      "activateDesc": "{name} utworzył(a) Twój profil z rolą {role}. Sprawdź swoje imię i nazwisko oraz wybierz hasło.",
+      "askHeading": "Poproś o dołączenie do {workspace}",
+      "askDesc": "Wpisz swoje dane i wybierz hasło.",
+      "inviteDesc": "{name} wysłał(a) Ci ten link. Wpisz swoje dane i wybierz hasło.",
+      "approvalNote": "Administrator zatwierdza nowe konta. Zalogujesz się po zatwierdzeniu, a my wyślemy Ci e-mail.",
+      "phoneFormat": "Zacznij od + i numeru kierunkowego kraju.",
+      "domains": "Dla adresów {list}",
+      "activate": "Aktywuj moje konto",
+      "request": "Wyślij prośbę",
+      "sent": "Prośba wysłana",
+      "sentDesc": "Administrator {workspace} ją rozpatrzy. Wyślemy Ci e-mail, gdy będzie można się zalogować."
     },
     "rolesSoon": "Własne role i uprawnienia każdej z nich pojawią się w fazie Role i dostęp. Do tego czasu osoby są właścicielami, administratorami lub członkami.",
     "manage": {
@@ -7617,6 +7642,58 @@
       "recent": "Ostatnio aktywne",
       "all": "Wszystkie osoby ({n})",
       "invite": "Zaproś członka"
+    },
+    "add": {
+      "button": "Dodaj użytkownika",
+      "title": "Dodaj profil użytkownika",
+      "desc": "Utwórz profil pracownika. Otrzyma e-mail, w którym ustawi hasło, a potem będzie mógł się zalogować.",
+      "note": "E-mail aktywacyjny jest ważny przez 7 dni.",
+      "done": "Dodano: {name}",
+      "doneDesc": "E-mail aktywacyjny wysłano na adres {email}.",
+      "resend": "Wyślij aktywację ponownie",
+      "copyLink": "Kopiuj link aktywacyjny",
+      "remove": "Usuń profil",
+      "removeTitle": "Usunąć profil użytkownika {name}?",
+      "removeDesc": "Profil nie został jeszcze aktywowany. Link przestanie działać, a profil zostanie usunięty."
+    },
+    "approve": {
+      "button": "Zatwierdź",
+      "title": "Zatwierdź: {name}",
+      "desc": "Uzupełnij profil: rola, działy, stanowiska i przełożony. Po zatwierdzeniu użytkownik będzie mógł się zalogować.",
+      "note": "Otrzyma e-mail z informacją, że może się zalogować.",
+      "done": "Zatwierdzono: {name}",
+      "doneDesc": "Może się teraz zalogować.",
+      "reject": "Odrzuć",
+      "rejectTitle": "Odrzucić: {name}?",
+      "rejectDesc": "Prośba zostanie usunięta, a użytkownik otrzyma e-mail. Nie będzie mógł się zalogować.",
+      "rejected": "Odrzucono prośbę: {name}",
+      "waiting": "Oczekuje na zatwierdzenie",
+      "viaLink": "Zarejestrowano przez link przestrzeni roboczej {when}.",
+      "viaInvite": "Zarejestrowano przez link osobisty {when}."
+    },
+    "links": {
+      "button": "Linki rejestracyjne",
+      "title": "Linki rejestracyjne",
+      "desc": "Osoby rejestrujące się przez link czekają na zatwierdzenie, zanim będą mogły się zalogować.",
+      "shared": "Link przestrzeni roboczej",
+      "sharedOn": "Włączony. Każdy z linkiem może poprosić o dołączenie.",
+      "sharedOff": "Wyłączony. Włącz, aby udostępnić jeden link e-mailem, na czacie lub na plakacie.",
+      "turnedOn": "Link rejestracyjny włączony",
+      "turnedOff": "Link rejestracyjny wyłączony",
+      "link": "Link",
+      "changed": "Zmieniono {when}",
+      "waiting": "{n} oczekuje na zatwierdzenie | {n} oczekuje na zatwierdzenie",
+      "domains": "Akceptowane domeny e-mail",
+      "domainsHint": "Na przykład domena Twojej firmy. Puste pole oznacza dowolny adres.",
+      "saved": "Domeny zapisane",
+      "renew": "Nowy link",
+      "renewTitle": "Utworzyć nowy link?",
+      "renewDesc": "Obecny link przestanie działać. Udostępnij nowy.",
+      "renewed": "Utworzono nowy link",
+      "qr": "Kod QR linku rejestracyjnego",
+      "personal": "Linki osobiste",
+      "personalHint": "Wyślij link na wybrane adresy e-mail z sugerowaną rolą i działem.",
+      "sendPersonal": "Wyślij linki osobiste"
     }
   },
   "profile": {

@@ -444,7 +444,10 @@
     "peopleInvite": "Convidar pessoas",
     "departments": "Departamentos",
     "jobTitles": "Cargos",
-    "peopleRoles": "Funções e acesso"
+    "peopleRoles": "Funções e acesso",
+    "peoplePending": "Aguardando aprovação",
+    "peopleNotActivated": "Não ativados",
+    "peopleAdd": "Adicionar utilizador"
   },
   "navbar": {
     "breadcrumb": "Trilha de navegação",
@@ -629,7 +632,10 @@
     "FRM-USER-1006": "Só proprietários podem tornar alguém proprietário ou alterar um proprietário.",
     "FRM-USER-1007": "As funções integradas não podem ser excluídas e a função Proprietário não pode ser alterada.",
     "FRM-USER-1008": "Há pessoas com esta função. Atribua outra função a elas primeiro.",
-    "FRM-USER-1009": "Esta função não existe mais. Escolha outra."
+    "FRM-USER-1009": "Esta função não existe mais. Escolha outra.",
+    "FRM-USER-1010": "A sua conta aguarda a aprovação de um administrador. Receberá um e-mail quando puder iniciar sessão.",
+    "FRM-USER-1011": "Este endereço de e-mail já tem uma conta aqui. Inicie sessão.",
+    "FRM-USER-1012": "Este link de registo só aceita endereços de e-mail da organização."
   },
   "errorUi": {
     "reference": "Referência: {id}",
@@ -1107,7 +1113,12 @@
       "users_profile_updated": "Perfil próprio alterado",
       "users_role_created": "Função criada",
       "users_role_updated": "Função alterada",
-      "users_role_deleted": "Função excluída"
+      "users_role_deleted": "Função excluída",
+      "users_profile_created": "Perfil de utilizador criado",
+      "users_requested": "Pediu para aderir",
+      "users_approved": "Aprovado",
+      "users_rejected": "Pedido rejeitado",
+      "users_signup_link_changed": "Link de registo alterado"
     },
     "detail": {
       "who": "Quem",
@@ -7483,7 +7494,9 @@
     "status": {
       "active": "Ativo",
       "invited": "Convidado",
-      "disabled": "Desativado"
+      "disabled": "Desativado",
+      "not_activated": "Não ativado",
+      "pending": "Aguardando aprovação"
     },
     "role": {
       "owner": "Proprietário",
@@ -7565,7 +7578,19 @@
       "expired": "Este convite expirou",
       "expiredDesc": "Os links de convite funcionam por 7 dias. Peça a quem convidou você que envie um novo.",
       "invalid": "Este convite não é válido",
-      "invalidDesc": "Ele pode já ter sido usado ou retirado. Se você já entrou, faça login."
+      "invalidDesc": "Ele pode já ter sido usado ou retirado. Se você já entrou, faça login.",
+      "activateHeading": "Ative a sua conta em {workspace}",
+      "activateDesc": "{name} criou o seu perfil como {role}. Verifique o seu nome e escolha uma palavra-passe.",
+      "askHeading": "Pedir para aderir a {workspace}",
+      "askDesc": "Preencha os seus dados e escolha uma palavra-passe.",
+      "inviteDesc": "{name} enviou-lhe este link. Preencha os seus dados e escolha uma palavra-passe.",
+      "approvalNote": "Um administrador aprova as contas novas. Poderá iniciar sessão depois disso e enviaremos um e-mail.",
+      "phoneFormat": "Comece com + e o indicativo do país.",
+      "domains": "Para endereços {list}",
+      "activate": "Ativar a minha conta",
+      "request": "Enviar pedido",
+      "sent": "Pedido enviado",
+      "sentDesc": "Um administrador de {workspace} irá analisá-lo. Enviaremos um e-mail quando puder iniciar sessão."
     },
     "rolesSoon": "Funções personalizadas e o que cada uma pode fazer chegam na fase Funções e acesso. Até lá, as pessoas são Proprietário, Administrador ou Membro.",
     "manage": {
@@ -7617,6 +7642,58 @@
       "recent": "Ativas recentemente",
       "all": "Todas as pessoas ({n})",
       "invite": "Convidar membro"
+    },
+    "add": {
+      "button": "Adicionar utilizador",
+      "title": "Adicionar um perfil de utilizador",
+      "desc": "Crie o perfil de um colaborador. Receberá um e-mail para definir a palavra-passe e depois poderá iniciar sessão.",
+      "note": "Receberá um e-mail de ativação válido por 7 dias.",
+      "done": "{name} adicionado",
+      "doneDesc": "E-mail de ativação enviado para {email}.",
+      "resend": "Reenviar ativação",
+      "copyLink": "Copiar link de ativação",
+      "remove": "Eliminar perfil",
+      "removeTitle": "Eliminar o perfil de {name}?",
+      "removeDesc": "Ainda não o ativou. O link deixa de funcionar e o perfil é removido."
+    },
+    "approve": {
+      "button": "Aprovar",
+      "title": "Aprovar {name}",
+      "desc": "Complete o perfil: função, departamentos, cargos e responsável. Poderá iniciar sessão depois da aprovação.",
+      "note": "Receberá um e-mail a informar que já pode iniciar sessão.",
+      "done": "{name} aprovado",
+      "doneDesc": "Já pode iniciar sessão.",
+      "reject": "Rejeitar",
+      "rejectTitle": "Rejeitar {name}?",
+      "rejectDesc": "O pedido é removido e receberá um e-mail. Não poderá iniciar sessão.",
+      "rejected": "Pedido de {name} rejeitado",
+      "waiting": "Aguardando aprovação",
+      "viaLink": "Registou-se com o link do espaço de trabalho {when}.",
+      "viaInvite": "Registou-se com um link pessoal {when}."
+    },
+    "links": {
+      "button": "Links de registo",
+      "title": "Links de registo",
+      "desc": "Quem se regista com um link aguarda aprovação antes de poder iniciar sessão.",
+      "shared": "O link do espaço de trabalho",
+      "sharedOn": "Ativado. Qualquer pessoa com o link pode pedir para aderir.",
+      "sharedOff": "Desativado. Ative para partilhar um link por e-mail, chat ou cartaz.",
+      "turnedOn": "Link de registo ativado",
+      "turnedOff": "Link de registo desativado",
+      "link": "Link",
+      "changed": "Alterado {when}",
+      "waiting": "{n} aguarda aprovação | {n} aguardam aprovação",
+      "domains": "Domínios de e-mail aceites",
+      "domainsHint": "Por exemplo, o domínio da sua empresa. Vazio significa qualquer endereço.",
+      "saved": "Domínios guardados",
+      "renew": "Novo link",
+      "renewTitle": "Criar um novo link?",
+      "renewDesc": "O link atual deixa de funcionar. Partilhe o novo.",
+      "renewed": "Novo link criado",
+      "qr": "Código QR do link de registo",
+      "personal": "Links pessoais",
+      "personalHint": "Envie um link para endereços de e-mail escolhidos, com função e departamento sugeridos.",
+      "sendPersonal": "Enviar links pessoais"
     }
   },
   "profile": {

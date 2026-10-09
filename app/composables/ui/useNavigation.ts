@@ -232,9 +232,11 @@ const PEOPLE_NAV: AppNavItem[] = [
     children: [
       { key: 'peopleAll', to: '/people', dot: 'bg-(--ui-text-dimmed)', count: c => c.people.total },
       { key: 'peopleActive', to: '/people', query: { status: 'active' }, dot: 'bg-green-500', count: c => c.people.active },
+      { key: 'peoplePending', to: '/people', query: { status: 'pending' }, dot: 'bg-violet-500', count: c => c.people.pending },
+      { key: 'peopleNotActivated', to: '/people', query: { status: 'not_activated' }, dot: 'bg-sky-500', count: c => c.people.not_activated, hideZero: true },
       { key: 'peopleInvited', to: '/people', query: { status: 'invited' }, dot: 'bg-amber-500', count: c => c.people.invited, hideZero: true },
       { key: 'peopleDisabled', to: '/people', query: { status: 'disabled' }, dot: 'bg-(--ui-text-dimmed)', count: c => c.people.disabled, hideZero: true },
-      { key: 'peopleInvite', icon: 'i-lucide-user-plus', to: '/people', query: { invite: '1' } },
+      { key: 'peopleAdd', icon: 'i-lucide-user-plus', to: '/people', query: { add: '1' } },
     ],
   },
   { key: 'departments', icon: 'i-lucide-network', to: '/people/departments', count: c => c.people.departments },

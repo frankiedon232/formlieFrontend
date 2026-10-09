@@ -444,7 +444,10 @@
     "peopleInvite": "Mensen uitnodigen",
     "departments": "Afdelingen",
     "jobTitles": "Functietitels",
-    "peopleRoles": "Rollen & toegang"
+    "peopleRoles": "Rollen & toegang",
+    "peoplePending": "Wacht op goedkeuring",
+    "peopleNotActivated": "Niet geactiveerd",
+    "peopleAdd": "Gebruiker toevoegen"
   },
   "navbar": {
     "breadcrumb": "Kruimelpad",
@@ -629,7 +632,10 @@
     "FRM-USER-1006": "Alleen eigenaren kunnen iemand eigenaar maken of een eigenaar wijzigen.",
     "FRM-USER-1007": "De ingebouwde rollen kunnen niet worden verwijderd en Eigenaar kan niet worden gewijzigd.",
     "FRM-USER-1008": "Er zijn mensen met deze rol. Geef hen eerst een andere rol.",
-    "FRM-USER-1009": "Deze rol bestaat niet meer. Kies een andere."
+    "FRM-USER-1009": "Deze rol bestaat niet meer. Kies een andere.",
+    "FRM-USER-1010": "Uw account wacht op goedkeuring van een beheerder. U krijgt een e-mail zodra u kunt inloggen.",
+    "FRM-USER-1011": "Dit e-mailadres heeft hier al een account. Log in.",
+    "FRM-USER-1012": "Deze aanmeldlink accepteert alleen e-mailadressen van de organisatie."
   },
   "errorUi": {
     "reference": "Referentie: {id}",
@@ -1107,7 +1113,12 @@
       "users_profile_updated": "Eigen profiel gewijzigd",
       "users_role_created": "Rol aangemaakt",
       "users_role_updated": "Rol gewijzigd",
-      "users_role_deleted": "Rol verwijderd"
+      "users_role_deleted": "Rol verwijderd",
+      "users_profile_created": "Gebruikersprofiel aangemaakt",
+      "users_requested": "Verzoek om deel te nemen",
+      "users_approved": "Goedgekeurd",
+      "users_rejected": "Verzoek afgewezen",
+      "users_signup_link_changed": "Aanmeldlink gewijzigd"
     },
     "detail": {
       "who": "Wie",
@@ -7483,7 +7494,9 @@
     "status": {
       "active": "Actief",
       "invited": "Uitgenodigd",
-      "disabled": "Uitgeschakeld"
+      "disabled": "Uitgeschakeld",
+      "not_activated": "Niet geactiveerd",
+      "pending": "Wacht op goedkeuring"
     },
     "role": {
       "owner": "Eigenaar",
@@ -7565,7 +7578,19 @@
       "expired": "Deze uitnodiging is verlopen",
       "expiredDesc": "Uitnodigingslinks werken 7 dagen. Vraag degene die je uitnodigde om een nieuwe te sturen.",
       "invalid": "Deze uitnodiging is niet geldig",
-      "invalidDesc": "Ze is mogelijk al gebruikt of ingetrokken. Als je al lid bent geworden, log dan in."
+      "invalidDesc": "Ze is mogelijk al gebruikt of ingetrokken. Als je al lid bent geworden, log dan in.",
+      "activateHeading": "Activeer uw account bij {workspace}",
+      "activateDesc": "{name} heeft uw profiel aangemaakt als {role}. Controleer uw naam en kies een wachtwoord.",
+      "askHeading": "Vraag om deel te nemen aan {workspace}",
+      "askDesc": "Vul uw gegevens in en kies een wachtwoord.",
+      "inviteDesc": "{name} heeft u deze link gestuurd. Vul uw gegevens in en kies een wachtwoord.",
+      "approvalNote": "Een beheerder keurt nieuwe accounts goed. Daarna kunt u inloggen en sturen we u een e-mail.",
+      "phoneFormat": "Begin met + en de landcode.",
+      "domains": "Voor {list}-adressen",
+      "activate": "Mijn account activeren",
+      "request": "Verzoek versturen",
+      "sent": "Verzoek verstuurd",
+      "sentDesc": "Een beheerder van {workspace} bekijkt het. We mailen u zodra u kunt inloggen."
     },
     "rolesSoon": "Eigen rollen en wat elke rol mag, komen in de fase Rollen & toegang. Tot dan zijn mensen eigenaar, beheerder of lid.",
     "manage": {
@@ -7617,6 +7642,58 @@
       "recent": "Onlangs actief",
       "all": "Alle mensen ({n})",
       "invite": "Lid uitnodigen"
+    },
+    "add": {
+      "button": "Gebruiker toevoegen",
+      "title": "Gebruikersprofiel toevoegen",
+      "desc": "Maak het profiel van een medewerker aan. Die krijgt een e-mail om een wachtwoord in te stellen en kan daarna inloggen.",
+      "note": "De activatiemail is 7 dagen geldig.",
+      "done": "{name} toegevoegd",
+      "doneDesc": "Activatiemail verstuurd naar {email}.",
+      "resend": "Activatie opnieuw versturen",
+      "copyLink": "Activatielink kopiëren",
+      "remove": "Profiel verwijderen",
+      "removeTitle": "Profiel van {name} verwijderen?",
+      "removeDesc": "Het profiel is nog niet geactiveerd. De link werkt dan niet meer en het profiel wordt verwijderd."
+    },
+    "approve": {
+      "button": "Goedkeuren",
+      "title": "{name} goedkeuren",
+      "desc": "Vul het profiel aan: rol, afdelingen, functies en leidinggevende. Na goedkeuring kan de persoon inloggen.",
+      "note": "De persoon krijgt een e-mail dat inloggen mogelijk is.",
+      "done": "{name} goedgekeurd",
+      "doneDesc": "De persoon kan nu inloggen.",
+      "reject": "Afwijzen",
+      "rejectTitle": "{name} afwijzen?",
+      "rejectDesc": "Het verzoek wordt verwijderd en de persoon krijgt een e-mail. Inloggen is niet mogelijk.",
+      "rejected": "Verzoek van {name} afgewezen",
+      "waiting": "Wacht op goedkeuring",
+      "viaLink": "Aangemeld via de link van de werkruimte {when}.",
+      "viaInvite": "Aangemeld via een persoonlijke link {when}."
+    },
+    "links": {
+      "button": "Aanmeldlinks",
+      "title": "Aanmeldlinks",
+      "desc": "Mensen die zich via een link aanmelden, wachten op goedkeuring voordat ze kunnen inloggen.",
+      "shared": "De link van de werkruimte",
+      "sharedOn": "Aan. Iedereen met de link kan vragen om deel te nemen.",
+      "sharedOff": "Uit. Zet aan om één link te delen via e-mail, chat of poster.",
+      "turnedOn": "Aanmeldlink aangezet",
+      "turnedOff": "Aanmeldlink uitgezet",
+      "link": "Link",
+      "changed": "Gewijzigd {when}",
+      "waiting": "{n} wacht op goedkeuring | {n} wachten op goedkeuring",
+      "domains": "Geaccepteerde e-maildomeinen",
+      "domainsHint": "Bijvoorbeeld het domein van uw bedrijf. Leeg betekent elk adres.",
+      "saved": "Domeinen opgeslagen",
+      "renew": "Nieuwe link",
+      "renewTitle": "Nieuwe link maken?",
+      "renewDesc": "De huidige link werkt dan niet meer. Deel de nieuwe.",
+      "renewed": "Nieuwe link gemaakt",
+      "qr": "QR-code voor de aanmeldlink",
+      "personal": "Persoonlijke links",
+      "personalHint": "Stuur een link naar gekozen e-mailadressen, met voorgestelde rol en afdeling.",
+      "sendPersonal": "Persoonlijke links versturen"
     }
   },
   "profile": {

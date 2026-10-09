@@ -444,7 +444,10 @@
     "peopleInvite": "Invita persone",
     "departments": "Reparti",
     "jobTitles": "Ruoli professionali",
-    "peopleRoles": "Ruoli e accesso"
+    "peopleRoles": "Ruoli e accesso",
+    "peoplePending": "In attesa di approvazione",
+    "peopleNotActivated": "Non attivati",
+    "peopleAdd": "Aggiungi utente"
   },
   "navbar": {
     "breadcrumb": "Percorso di navigazione",
@@ -629,7 +632,10 @@
     "FRM-USER-1006": "Solo i proprietari possono nominare o modificare un proprietario.",
     "FRM-USER-1007": "I ruoli integrati non possono essere eliminati e il ruolo Proprietario non può essere modificato.",
     "FRM-USER-1008": "Ci sono persone con questo ruolo. Assegna prima un altro ruolo.",
-    "FRM-USER-1009": "Questo ruolo non esiste più. Scegline un altro."
+    "FRM-USER-1009": "Questo ruolo non esiste più. Scegline un altro.",
+    "FRM-USER-1010": "Il tuo account è in attesa di approvazione da parte di un amministratore. Riceverai un'e-mail quando potrai accedere.",
+    "FRM-USER-1011": "Questo indirizzo e-mail ha già un account qui. Accedi.",
+    "FRM-USER-1012": "Questo link di registrazione accetta solo indirizzi e-mail dell'organizzazione."
   },
   "errorUi": {
     "reference": "Riferimento: {id}",
@@ -1107,7 +1113,12 @@
       "users_profile_updated": "Profilo personale modificato",
       "users_role_created": "Ruolo creato",
       "users_role_updated": "Ruolo modificato",
-      "users_role_deleted": "Ruolo eliminato"
+      "users_role_deleted": "Ruolo eliminato",
+      "users_profile_created": "Profilo utente creato",
+      "users_requested": "Ha chiesto di unirsi",
+      "users_approved": "Approvato",
+      "users_rejected": "Richiesta rifiutata",
+      "users_signup_link_changed": "Link di registrazione modificato"
     },
     "detail": {
       "who": "Chi",
@@ -7483,7 +7494,9 @@
     "status": {
       "active": "Attivo",
       "invited": "Invitato",
-      "disabled": "Disattivato"
+      "disabled": "Disattivato",
+      "not_activated": "Non attivato",
+      "pending": "In attesa di approvazione"
     },
     "role": {
       "owner": "Proprietario",
@@ -7565,7 +7578,19 @@
       "expired": "Questo invito è scaduto",
       "expiredDesc": "I link di invito funzionano per 7 giorni. Chiedi a chi ti ha invitato di inviarne uno nuovo.",
       "invalid": "Questo invito non è valido",
-      "invalidDesc": "Potrebbe essere già stato usato o ritirato. Se ti sei già unito, accedi."
+      "invalidDesc": "Potrebbe essere già stato usato o ritirato. Se ti sei già unito, accedi.",
+      "activateHeading": "Attiva il tuo account su {workspace}",
+      "activateDesc": "{name} ha creato il tuo profilo come {role}. Controlla il tuo nome e scegli una password.",
+      "askHeading": "Chiedi di unirti a {workspace}",
+      "askDesc": "Inserisci i tuoi dati e scegli una password.",
+      "inviteDesc": "{name} ti ha inviato questo link. Inserisci i tuoi dati e scegli una password.",
+      "approvalNote": "Un amministratore approva i nuovi account. Potrai accedere dopo l'approvazione e ti scriveremo un'e-mail.",
+      "phoneFormat": "Inizia con + e il prefisso internazionale.",
+      "domains": "Per indirizzi {list}",
+      "activate": "Attiva il mio account",
+      "request": "Invia richiesta",
+      "sent": "Richiesta inviata",
+      "sentDesc": "Un amministratore di {workspace} la esaminerà. Ti scriveremo quando potrai accedere."
     },
     "rolesSoon": "I ruoli personalizzati e cosa può fare ciascuno arriveranno nella fase Ruoli e accesso. Fino ad allora le persone sono Proprietario, Admin o Membro.",
     "manage": {
@@ -7617,6 +7642,58 @@
       "recent": "Attive di recente",
       "all": "Tutte le persone ({n})",
       "invite": "Invita un membro"
+    },
+    "add": {
+      "button": "Aggiungi utente",
+      "title": "Aggiungi un profilo utente",
+      "desc": "Crea il profilo di un membro del personale. Riceverà un'e-mail per impostare la password, poi potrà accedere.",
+      "note": "Riceverà un'e-mail di attivazione valida per 7 giorni.",
+      "done": "{name} aggiunto",
+      "doneDesc": "E-mail di attivazione inviata a {email}.",
+      "resend": "Invia di nuovo l'attivazione",
+      "copyLink": "Copia link di attivazione",
+      "remove": "Elimina profilo",
+      "removeTitle": "Eliminare il profilo di {name}?",
+      "removeDesc": "Non lo ha ancora attivato. Il link smette di funzionare e il profilo viene rimosso."
+    },
+    "approve": {
+      "button": "Approva",
+      "title": "Approva {name}",
+      "desc": "Completa il profilo: ruolo, reparti, mansioni e responsabile. Potrà accedere dopo l'approvazione.",
+      "note": "Riceverà un'e-mail che lo informa che può accedere.",
+      "done": "{name} approvato",
+      "doneDesc": "Ora può accedere.",
+      "reject": "Rifiuta",
+      "rejectTitle": "Rifiutare {name}?",
+      "rejectDesc": "La richiesta viene rimossa e riceverà un'e-mail. Non potrà accedere.",
+      "rejected": "Richiesta di {name} rifiutata",
+      "waiting": "In attesa di approvazione",
+      "viaLink": "Registrato con il link dello spazio di lavoro {when}.",
+      "viaInvite": "Registrato con un link personale {when}."
+    },
+    "links": {
+      "button": "Link di registrazione",
+      "title": "Link di registrazione",
+      "desc": "Chi si registra con un link attende l'approvazione prima di poter accedere.",
+      "shared": "Il link dello spazio di lavoro",
+      "sharedOn": "Attivo. Chiunque abbia il link può chiedere di unirsi.",
+      "sharedOff": "Disattivato. Attivalo per condividere un link via e-mail, chat o poster.",
+      "turnedOn": "Link di registrazione attivato",
+      "turnedOff": "Link di registrazione disattivato",
+      "link": "Link",
+      "changed": "Modificato {when}",
+      "waiting": "{n} in attesa di approvazione | {n} in attesa di approvazione",
+      "domains": "Domini e-mail accettati",
+      "domainsHint": "Ad esempio il dominio della tua azienda. Vuoto significa qualsiasi indirizzo.",
+      "saved": "Domini salvati",
+      "renew": "Nuovo link",
+      "renewTitle": "Creare un nuovo link?",
+      "renewDesc": "Il link attuale smette di funzionare. Condividi quello nuovo.",
+      "renewed": "Nuovo link creato",
+      "qr": "Codice QR del link di registrazione",
+      "personal": "Link personali",
+      "personalHint": "Invia un link a indirizzi e-mail scelti, con ruolo e reparto suggeriti.",
+      "sendPersonal": "Invia link personali"
     }
   },
   "profile": {

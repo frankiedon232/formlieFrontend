@@ -74,13 +74,15 @@ export const navigationCounts = defineMockRoute(({ event }) => {
       return { total: rows.filter(Boolean).length, failing: rows.filter(row => row?.status === 'failing').length }
     })(),
     people: (() => {
-      if (!can(user, 'people.view', tenant)) return { total: 0, active: 0, invited: 0, disabled: 0, departments: 0, job_titles: 0 }
+      if (!can(user, 'people.view', tenant)) return { total: 0, active: 0, invited: 0, pending: 0, not_activated: 0, disabled: 0, departments: 0, job_titles: 0 }
       const people = peopleStoreOf(tenant)
       const org = orgOf(tenant)
       return {
         total: people.length,
         active: people.filter(item => item.status === 'active').length,
         invited: people.filter(item => item.status === 'invited').length,
+        pending: people.filter(item => item.status === 'pending').length,
+        not_activated: people.filter(item => item.status === 'not_activated').length,
         disabled: people.filter(item => item.status === 'disabled').length,
         departments: org.departments.filter(item => !item.archived_at).length,
         job_titles: org.job_titles.filter(item => !item.archived_at).length,

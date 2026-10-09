@@ -18,6 +18,8 @@ const stats = computed(() => (props.insights ? [
 ] : []))
 const parts = computed(() => [
   { key: 'active', label: t('people.status.active'), count: props.insights?.by_status.active ?? 0, color: 'bg-green-500' },
+  { key: 'pending', label: t('people.status.pending'), count: props.insights?.by_status.pending ?? 0, color: 'bg-violet-500' },
+  { key: 'not_activated', label: t('people.status.not_activated'), count: props.insights?.by_status.not_activated ?? 0, color: 'bg-sky-500' },
   { key: 'invited', label: t('people.status.invited'), count: props.insights?.by_status.invited ?? 0, color: 'bg-amber-500' },
   { key: 'disabled', label: t('people.status.disabled'), count: props.insights?.by_status.disabled ?? 0, color: 'bg-(--ui-border-accented)' },
 ])
@@ -60,7 +62,7 @@ const parts = computed(() => [
         <ul class="hidden shrink-0 flex-col gap-1 sm:flex">
           <li v-for="part in parts" :key="part.key">
             <button type="button" class="flex w-full items-center gap-2 rounded-md px-1.5 py-0.5 text-start text-xs hover:bg-elevated focus-visible:outline-2 focus-visible:outline-(--ui-border-inverted)" :class="selected === part.key ? 'bg-elevated' : ''" :aria-pressed="selected === part.key" @click="emit('pick', part.key)">
-              <span class="size-2 shrink-0 rounded-[2px]" :class="part.color" /><span class="w-20 truncate text-default">{{ part.label }}</span><span class="ms-auto font-medium text-highlighted tabular-nums">{{ number(part.count) }}</span>
+              <span class="size-2 shrink-0 rounded-[2px]" :class="part.color" /><span class="w-28 truncate text-default">{{ part.label }}</span><span class="ms-auto font-medium text-highlighted tabular-nums">{{ number(part.count) }}</span>
             </button>
           </li>
         </ul>

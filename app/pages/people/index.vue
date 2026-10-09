@@ -38,15 +38,25 @@ onMounted(async () => {
 })
 const { roles, refresh: loadRoles } = useRoles()
 onMounted(() => void loadRoles())
-const refreshAll = () => Promise.all([list.value?.refresh(), loadInsights()])
+// The menu counts (Awaiting approval, Not activated…) follow every change
+const counts = useNavCounts()
+const refreshAll = () => Promise.all([list.value?.refresh(), loadInsights(), counts.refresh(true)])
 const actions = usePeopleActions(refreshAll)
 
 // Invite people (I, or ?invite=1)
 const inviteOpen = ref(!!route.query.invite)
 // `?invite=1` from the menu or the header opens it here too; the address is tidied after
 watch(() => route.query.invite, value => value && (inviteOpen.value = true))
+watch(() => route.query.add, value => value && ((addOpen.value = true), router.replace({ query: { ...route.query, add: undefined } })), { immediate: true })
 watch(inviteOpen, value => !value && route.query.invite && router.replace({ query: { ...route.query, invite: undefined } }))
-defineShortcuts({ i: { usingInput: false, handler: () => (inviteOpen.value = true) } })
+// Add a user profile (N); sign-up links (shared and personal); approve someone who signed up with a link
+const addOpen = ref(false)
+const linksOpen = ref(false)
+const approving = ref<PersonRow | null>(null)
+const approveOpen = ref(false)
+const approve = (person: PersonRow) => ((approving.value = person), (approveOpen.value = true))
+const canManage = computed(() => useCan().can('people.manage'))
+defineShortcuts({ n: { usingInput: false, handler: () => canManage.value && (addOpen.value = true) }, i: { usingInput: false, handler: () => canManage.value && (inviteOpen.value = true) } })
 
 const columns = computed<DataColumn[]>(() => [
   { key: 'name', label: t('people.col.name'), sortable: true, fixed: true },
@@ -58,7 +68,7 @@ const columns = computed<DataColumn[]>(() => [
   { key: 'last_active_at', label: t('people.col.lastActive'), sortable: true, hideBelow: 'sm' },
   { key: 'joined_at', label: t('people.col.joined'), sortable: true, hidden: true },
 ])
-const STATUS_DOT: Record<string, string> = { active: 'bg-green-500', invited: 'bg-amber-500', disabled: 'bg-(--ui-border-accented)' }
+const STATUS_DOT: Record<string, string> = { active: 'bg-green-500', not_activated: 'bg-sky-500', invited: 'bg-amber-500', pending: 'bg-violet-500', disabled: 'bg-(--ui-border-accented)' }
 const filters = computed<DataFilter[]>(() => [
   { key: 'status', label: t('people.col.status'), icon: 'i-lucide-circle-dot', options: PERSON_STATUSES.map(value => ({ value, label: t(`people.status.${value}`), dot: STATUS_DOT[value] })) },
   { key: 'role', label: t('people.col.role'), icon: 'i-lucide-shield', options: roles.value.map(role => ({ value: role.id, label: role.name })) },
@@ -93,9 +103,9 @@ const rowActions = (row: PersonRow): DropdownMenuItem[][] => [
   [
     { label: t('apiService.actions.open'), icon: 'i-lucide-panel-right-open', onSelect: () => openRow(row) },
     { label: t('people.email'), icon: 'i-lucide-mail', to: `mailto:${row.email}`, external: true },
-    ...(row.status === 'invited' ? [] : [{ label: t('people.activity'), icon: 'i-lucide-scroll-text', to: { path: '/audit', query: { actor_id: row.id } } }]),
+    ...(['invited', 'not_activated', 'pending'].includes(row.status) ? [] : [{ label: t('people.activity'), icon: 'i-lucide-scroll-text', to: { path: '/audit', query: { actor_id: row.id } } }]),
   ],
-  ...actions.menu(row, edit),
+  ...actions.menu(row, edit, approve),
 ]
 // Several at once: role, add to a department or job title, disable / enable
 const pickItems = (list: { id: string; name: string; archived?: boolean }[] | undefined, pick: (id: string) => void): DropdownMenuItem[] => (list ?? []).filter(item => !item.archived).map(item => ({ label: item.name, onSelect: () => pick(item.id) }))
@@ -105,8 +115,9 @@ const names = (items: { name: string }[]) => items.map(item => item.name).join('
 <template>
   <AppPanel id="people" :title="t('nav.people')" :subtitle="t('people.subtitle')">
     <template #actions>
-      <UButton :label="t('people.invite.button')" icon="i-lucide-user-plus" color="neutral" @click="inviteOpen = true">
-        <template #trailing><UKbd value="I" size="sm" class="hidden sm:inline-flex" /></template>
+      <UButton v-if="canManage" :label="t('people.links.button')" icon="i-lucide-link" color="neutral" variant="outline" @click="linksOpen = true" />
+      <UButton v-if="canManage" :label="t('people.add.button')" icon="i-lucide-user-plus" color="neutral" @click="addOpen = true">
+        <template #trailing><UKbd value="N" size="sm" class="hidden sm:inline-flex" /></template>
       </UButton>
     </template>
     <PeopleOverview :insights="insights" :selected="statusFilter" @pick="pickStatus" />
@@ -143,7 +154,7 @@ const names = (items: { name: string }[]) => items.map(item => item.name).join('
         <span v-else class="text-muted">{{ t('people.never') }}</span>
       </template>
       <template #joined_at-cell="{ row }"><span class="whitespace-nowrap text-muted">{{ date(row.original.joined_at) }}</span></template>
-      <template #empty-actions><UButton :label="t('people.invite.button')" icon="i-lucide-user-plus" color="neutral" @click="inviteOpen = true" /></template>
+      <template v-if="canManage" #empty-actions><UButton :label="t('people.add.button')" icon="i-lucide-user-plus" color="neutral" @click="addOpen = true" /><UButton :label="t('people.links.button')" icon="i-lucide-link" color="neutral" variant="outline" @click="linksOpen = true" /></template>
       <template #bulk-actions="{ selected, clear }">
         <UDropdownMenu :items="actions.roleItems(role => void actions.bulk(selected.map(row => row.id), 'role', role).then(clear))">
           <UButton :label="t('people.bulk.role')" icon="i-lucide-shield" trailing-icon="i-lucide-chevron-down" color="neutral" variant="outline" size="sm" :loading="actions.busy.value === 'bulk'" />
@@ -160,8 +171,11 @@ const names = (items: { name: string }[]) => items.map(item => item.name).join('
       <template #grid-card="{ row }"><PeopleCard :person="row" :actions="rowActions(row)" :busy="actions.busy.value === row.id" /></template>
     </DataView>
 
-    <PeopleDetail :id="openId" ref="panel" v-model:open="panelOpen" :ids="ids.length ? ids : openId ? [openId] : []" :busy="!!actions.busy.value" :menu="person => actions.menu(person, edit)" @go="go" @resend="actions.resend" @copy-link="actions.copyLink" @revoke="person => actions.revoke(person).then(() => (panelOpen = false))" @edit="edit" />
+    <PeopleDetail :id="openId" ref="panel" v-model:open="panelOpen" :ids="ids.length ? ids : openId ? [openId] : []" :busy="!!actions.busy.value" :menu="person => actions.menu(person, edit, approve)" @go="go" @resend="actions.resend" @copy-link="actions.copyLink" @revoke="person => actions.revoke(person).then(() => (panelOpen = false))" @edit="edit" @approve="approve" @reject="person => actions.reject(person).then(() => (panelOpen = false))" />
     <PeopleEditModal v-model:open="editOpen" :person="editing" :directory="directory" @saved="saved" />
     <PeopleInviteModal v-model:open="inviteOpen" :directory="directory" @invited="refreshAll" />
+    <PeopleAddModal v-model:open="addOpen" :directory="directory" @saved="refreshAll" />
+    <PeopleAddModal v-model:open="approveOpen" :directory="directory" :approve="approving" @saved="saved" />
+    <PeopleSignupLinks v-model:open="linksOpen" @personal="() => ((linksOpen = false), (inviteOpen = true))" />
   </AppPanel>
 </template>

@@ -444,7 +444,10 @@
     "peopleInvite": "사용자 초대",
     "departments": "부서",
     "jobTitles": "직함",
-    "peopleRoles": "역할 및 접근"
+    "peopleRoles": "역할 및 접근",
+    "peoplePending": "승인 대기 중",
+    "peopleNotActivated": "활성화되지 않음",
+    "peopleAdd": "사용자 추가"
   },
   "navbar": {
     "breadcrumb": "이동 경로",
@@ -629,7 +632,10 @@
     "FRM-USER-1006": "소유자 지정과 변경은 소유자만 할 수 있습니다.",
     "FRM-USER-1007": "기본 제공 역할은 삭제할 수 없고, 소유자는 변경할 수 없습니다.",
     "FRM-USER-1008": "이 역할을 가진 구성원이 있습니다. 먼저 다른 역할을 지정해 주세요.",
-    "FRM-USER-1009": "이 역할은 더 이상 없습니다. 다른 역할을 선택해 주세요."
+    "FRM-USER-1009": "이 역할은 더 이상 없습니다. 다른 역할을 선택해 주세요.",
+    "FRM-USER-1010": "계정이 관리자의 승인을 기다리고 있습니다. 로그인할 수 있게 되면 이메일로 알려 드립니다.",
+    "FRM-USER-1011": "이 이메일 주소로 이미 계정이 있습니다. 로그인해 주세요.",
+    "FRM-USER-1012": "이 가입 링크는 조직의 이메일 주소만 사용할 수 있습니다."
   },
   "errorUi": {
     "reference": "참조 번호: {id}",
@@ -1107,7 +1113,12 @@
       "users_profile_updated": "내 프로필을 변경했습니다",
       "users_role_created": "역할을 만들었습니다",
       "users_role_updated": "역할을 변경했습니다",
-      "users_role_deleted": "역할을 삭제했습니다"
+      "users_role_deleted": "역할을 삭제했습니다",
+      "users_profile_created": "사용자 프로필 생성됨",
+      "users_requested": "참여 요청함",
+      "users_approved": "승인됨",
+      "users_rejected": "요청 거절됨",
+      "users_signup_link_changed": "가입 링크 변경됨"
     },
     "detail": {
       "who": "누가",
@@ -7483,7 +7494,9 @@
     "status": {
       "active": "활성",
       "invited": "초대됨",
-      "disabled": "비활성"
+      "disabled": "비활성",
+      "not_activated": "활성화되지 않음",
+      "pending": "승인 대기 중"
     },
     "role": {
       "owner": "소유자",
@@ -7565,7 +7578,19 @@
       "expired": "이 초대가 만료되었습니다",
       "expiredDesc": "초대 링크는 7일간 유효합니다. 초대한 사람에게 새 링크를 보내 달라고 요청하세요.",
       "invalid": "이 초대는 유효하지 않습니다",
-      "invalidDesc": "이미 사용되었거나 취소되었을 수 있습니다. 이미 참여했다면 로그인하세요."
+      "invalidDesc": "이미 사용되었거나 취소되었을 수 있습니다. 이미 참여했다면 로그인하세요.",
+      "activateHeading": "{workspace}에서 계정 활성화",
+      "activateDesc": "{name}님이 회원님의 프로필을 {role}(으)로 만들었습니다. 이름을 확인하고 비밀번호를 설정하세요.",
+      "askHeading": "{workspace} 참여 요청",
+      "askDesc": "정보를 입력하고 비밀번호를 설정하세요.",
+      "inviteDesc": "{name}님이 이 링크를 보냈습니다. 정보를 입력하고 비밀번호를 설정하세요.",
+      "approvalNote": "관리자가 새 계정을 승인합니다. 승인되면 로그인할 수 있으며 이메일로 알려 드립니다.",
+      "phoneFormat": "+와 국가 번호로 시작하세요.",
+      "domains": "{list} 주소용",
+      "activate": "내 계정 활성화",
+      "request": "요청 보내기",
+      "sent": "요청을 보냈습니다",
+      "sentDesc": "{workspace}의 관리자가 확인합니다. 로그인할 수 있게 되면 이메일로 알려 드립니다."
     },
     "rolesSoon": "사용자 지정 역할과 역할별 권한은 역할 및 접근 단계에서 제공됩니다. 그때까지는 소유자, 관리자, 멤버로 구분됩니다.",
     "manage": {
@@ -7617,6 +7642,58 @@
       "recent": "최근 활동",
       "all": "모든 구성원 ({n})",
       "invite": "구성원 초대"
+    },
+    "add": {
+      "button": "사용자 추가",
+      "title": "사용자 프로필 추가",
+      "desc": "직원의 프로필을 만드세요. 비밀번호를 설정하는 이메일을 받은 뒤 로그인할 수 있습니다.",
+      "note": "활성화 이메일은 7일 동안 유효합니다.",
+      "done": "{name} 추가됨",
+      "doneDesc": "활성화 이메일을 {email}(으)로 보냈습니다.",
+      "resend": "활성화 다시 보내기",
+      "copyLink": "활성화 링크 복사",
+      "remove": "프로필 삭제",
+      "removeTitle": "{name}의 프로필을 삭제할까요?",
+      "removeDesc": "아직 활성화되지 않았습니다. 링크는 더 이상 작동하지 않고 프로필은 삭제됩니다."
+    },
+    "approve": {
+      "button": "승인",
+      "title": "{name} 승인",
+      "desc": "프로필을 완성하세요: 역할, 부서, 직함, 관리자. 승인하면 로그인할 수 있습니다.",
+      "note": "로그인할 수 있다는 이메일을 받습니다.",
+      "done": "{name} 승인됨",
+      "doneDesc": "이제 로그인할 수 있습니다.",
+      "reject": "거절",
+      "rejectTitle": "{name}을(를) 거절할까요?",
+      "rejectDesc": "요청이 삭제되고 이메일이 전송됩니다. 로그인할 수 없습니다.",
+      "rejected": "{name}의 요청을 거절함",
+      "waiting": "승인 대기 중",
+      "viaLink": "워크스페이스 링크로 가입함 {when}.",
+      "viaInvite": "개인 링크로 가입함 {when}."
+    },
+    "links": {
+      "button": "가입 링크",
+      "title": "가입 링크",
+      "desc": "링크로 가입한 사람은 승인을 받아야 로그인할 수 있습니다.",
+      "shared": "워크스페이스 링크",
+      "sharedOn": "켜짐. 링크가 있는 사람은 누구나 참여를 요청할 수 있습니다.",
+      "sharedOff": "꺼짐. 켜면 이메일, 채팅 또는 포스터로 링크 하나를 공유할 수 있습니다.",
+      "turnedOn": "가입 링크를 켰습니다",
+      "turnedOff": "가입 링크를 껐습니다",
+      "link": "링크",
+      "changed": "변경됨 {when}",
+      "waiting": "{n}명 승인 대기 중 | {n}명 승인 대기 중",
+      "domains": "허용하는 이메일 도메인",
+      "domainsHint": "예: 회사 도메인. 비워 두면 모든 주소를 허용합니다.",
+      "saved": "도메인을 저장했습니다",
+      "renew": "새 링크",
+      "renewTitle": "새 링크를 만들까요?",
+      "renewDesc": "현재 링크는 더 이상 작동하지 않습니다. 새 링크를 공유하세요.",
+      "renewed": "새 링크를 만들었습니다",
+      "qr": "가입 링크 QR 코드",
+      "personal": "개인 링크",
+      "personalHint": "선택한 이메일 주소로 역할과 부서를 제안하여 링크를 보냅니다.",
+      "sendPersonal": "개인 링크 보내기"
     }
   },
   "profile": {

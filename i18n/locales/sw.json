@@ -444,7 +444,10 @@
     "peopleInvite": "Alika watu",
     "departments": "Idara",
     "jobTitles": "Vyeo vya kazi",
-    "peopleRoles": "Majukumu na ufikiaji"
+    "peopleRoles": "Majukumu na ufikiaji",
+    "peoplePending": "Inasubiri idhini",
+    "peopleNotActivated": "Haijawashwa",
+    "peopleAdd": "Ongeza mtumiaji"
   },
   "navbar": {
     "breadcrumb": "Njia ya urambazaji",
@@ -629,7 +632,10 @@
     "FRM-USER-1006": "Ni wamiliki pekee wanaoweza kumfanya mtu mmiliki au kubadilisha mmiliki.",
     "FRM-USER-1007": "Majukumu yaliyojengewa ndani hayawezi kufutwa, na Mmiliki hawezi kubadilishwa.",
     "FRM-USER-1008": "Kuna watu wanaoshikilia jukumu hili. Wape jukumu lingine kwanza.",
-    "FRM-USER-1009": "Jukumu hili halipo tena. Chagua lingine."
+    "FRM-USER-1009": "Jukumu hili halipo tena. Chagua lingine.",
+    "FRM-USER-1010": "Akaunti yako inasubiri idhini ya msimamizi. Utapata barua pepe utakapoweza kuingia.",
+    "FRM-USER-1011": "Anwani hii ya barua pepe ina akaunti hapa tayari. Ingia badala yake.",
+    "FRM-USER-1012": "Kiungo hiki cha kujisajili kinakubali anwani za barua pepe za shirika pekee."
   },
   "errorUi": {
     "reference": "Kumbukumbu: {id}",
@@ -1107,7 +1113,12 @@
       "users_profile_updated": "Wasifu wako umebadilishwa",
       "users_role_created": "Jukumu limeundwa",
       "users_role_updated": "Jukumu limebadilishwa",
-      "users_role_deleted": "Jukumu limefutwa"
+      "users_role_deleted": "Jukumu limefutwa",
+      "users_profile_created": "Wasifu wa mtumiaji umeundwa",
+      "users_requested": "Ameomba kujiunga",
+      "users_approved": "Imeidhinishwa",
+      "users_rejected": "Ombi limekataliwa",
+      "users_signup_link_changed": "Kiungo cha kujisajili kimebadilishwa"
     },
     "detail": {
       "who": "Nani",
@@ -7483,7 +7494,9 @@
     "status": {
       "active": "Hai",
       "invited": "Amealikwa",
-      "disabled": "Amezimwa"
+      "disabled": "Amezimwa",
+      "not_activated": "Haijawashwa",
+      "pending": "Inasubiri idhini"
     },
     "role": {
       "owner": "Mmiliki",
@@ -7565,7 +7578,19 @@
       "expired": "Mwaliko huu umeisha muda",
       "expiredDesc": "Viungo vya mwaliko hufanya kazi kwa siku 7. Mwombe aliyekualika atume kipya.",
       "invalid": "Mwaliko huu si halali",
-      "invalidDesc": "Huenda ulishatumika au ulirejeshwa. Ikiwa ulishajiunga, ingia."
+      "invalidDesc": "Huenda ulishatumika au ulirejeshwa. Ikiwa ulishajiunga, ingia.",
+      "activateHeading": "Washa akaunti yako katika {workspace}",
+      "activateDesc": "{name} ameunda wasifu wako kama {role}. Hakiki jina lako na uchague nenosiri.",
+      "askHeading": "Omba kujiunga na {workspace}",
+      "askDesc": "Jaza maelezo yako na uchague nenosiri.",
+      "inviteDesc": "{name} amekutumia kiungo hiki. Jaza maelezo yako na uchague nenosiri.",
+      "approvalNote": "Msimamizi huidhinisha akaunti mpya. Utaweza kuingia akishaidhinisha, nasi tutakutumia barua pepe.",
+      "phoneFormat": "Anza na + na msimbo wa nchi.",
+      "domains": "Kwa anwani za {list}",
+      "activate": "Washa akaunti yangu",
+      "request": "Tuma ombi",
+      "sent": "Ombi limetumwa",
+      "sentDesc": "Msimamizi wa {workspace} atalitazama. Tutakutumia barua pepe utakapoweza kuingia."
     },
     "rolesSoon": "Majukumu maalum na kile ambacho kila moja linaruhusu vitakuja katika awamu ya Majukumu na ufikiaji. Hadi hapo watu ni Mmiliki, Msimamizi au Mwanachama.",
     "manage": {
@@ -7617,6 +7642,58 @@
       "recent": "Waliokuwa hai hivi karibuni",
       "all": "Watu wote ({n})",
       "invite": "Alika mwanachama"
+    },
+    "add": {
+      "button": "Ongeza mtumiaji",
+      "title": "Ongeza wasifu wa mtumiaji",
+      "desc": "Unda wasifu wa mfanyakazi. Atapata barua pepe ya kuweka nenosiri, kisha ataweza kuingia.",
+      "note": "Barua pepe ya kuwasha ni halali kwa siku 7.",
+      "done": "{name} ameongezwa",
+      "doneDesc": "Barua pepe ya kuwasha imetumwa kwa {email}.",
+      "resend": "Tuma kuwasha tena",
+      "copyLink": "Nakili kiungo cha kuwasha",
+      "remove": "Futa wasifu",
+      "removeTitle": "Futa wasifu wa {name}?",
+      "removeDesc": "Bado haujawashwa. Kiungo kitaacha kufanya kazi na wasifu utafutwa."
+    },
+    "approve": {
+      "button": "Idhinisha",
+      "title": "Idhinisha {name}",
+      "desc": "Kamilisha wasifu wake: jukumu, idara, vyeo na msimamizi. Ataweza kuingia ukishaidhinisha.",
+      "note": "Atapata barua pepe kwamba anaweza kuingia.",
+      "done": "{name} ameidhinishwa",
+      "doneDesc": "Sasa anaweza kuingia.",
+      "reject": "Kataa",
+      "rejectTitle": "Kataa {name}?",
+      "rejectDesc": "Ombi lake litaondolewa na atapata barua pepe. Hataweza kuingia.",
+      "rejected": "Ombi la {name} limekataliwa",
+      "waiting": "Inasubiri idhini",
+      "viaLink": "Alijisajili kwa kiungo cha eneo la kazi {when}.",
+      "viaInvite": "Alijisajili kwa kiungo cha kibinafsi {when}."
+    },
+    "links": {
+      "button": "Viungo vya kujisajili",
+      "title": "Viungo vya kujisajili",
+      "desc": "Watu wanaojisajili kwa kiungo husubiri idhini kabla ya kuweza kuingia.",
+      "shared": "Kiungo cha eneo la kazi",
+      "sharedOn": "Umewashwa. Yeyote mwenye kiungo anaweza kuomba kujiunga.",
+      "sharedOff": "Umezimwa. Uwashe ili kushiriki kiungo kimoja kwa barua pepe, gumzo au bango.",
+      "turnedOn": "Kiungo cha kujisajili kimewashwa",
+      "turnedOff": "Kiungo cha kujisajili kimezimwa",
+      "link": "Kiungo",
+      "changed": "Kimebadilishwa {when}",
+      "waiting": "{n} anasubiri idhini | {n} wanasubiri idhini",
+      "domains": "Vikoa vya barua pepe vinavyokubaliwa",
+      "domainsHint": "Kwa mfano kikoa cha kampuni yako. Tupu inamaanisha anwani yoyote.",
+      "saved": "Vikoa vimehifadhiwa",
+      "renew": "Kiungo kipya",
+      "renewTitle": "Tengeneza kiungo kipya?",
+      "renewDesc": "Kiungo cha sasa kitaacha kufanya kazi. Shiriki kipya.",
+      "renewed": "Kiungo kipya kimetengenezwa",
+      "qr": "Msimbo wa QR wa kiungo cha kujisajili",
+      "personal": "Viungo vya kibinafsi",
+      "personalHint": "Tuma kiungo kwa anwani za barua pepe ulizochagua, pamoja na jukumu na idara zinazopendekezwa.",
+      "sendPersonal": "Tuma viungo vya kibinafsi"
     }
   },
   "profile": {

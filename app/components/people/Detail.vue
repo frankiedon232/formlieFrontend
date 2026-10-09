@@ -10,7 +10,7 @@ import type { PersonDetail } from '#shared/types/people'
 
 const props = defineProps<{ id: string | null; ids: string[]; busy?: boolean; menu?: (person: PersonDetail) => DropdownMenuItem[][] }>()
 const open = defineModel<boolean>('open', { default: false })
-const emit = defineEmits<{ go: [id: string]; resend: [person: PersonDetail]; copyLink: [person: PersonDetail]; revoke: [person: PersonDetail]; edit: [person: PersonDetail] }>()
+const emit = defineEmits<{ go: [id: string]; resend: [person: PersonDetail]; copyLink: [person: PersonDetail]; revoke: [person: PersonDetail]; edit: [person: PersonDetail]; approve: [person: PersonDetail]; reject: [person: PersonDetail] }>()
 const { t } = useI18n()
 const api = useApi()
 const { number, relative, date, dateTime, percent } = useFormat()
@@ -30,6 +30,7 @@ watch(() => [props.id, open.value] as const, ([id, isOpen]) => id && isOpen && v
 defineExpose({ reload: () => props.id && load(props.id) })
 // Owners are changed only by owners
 const session = useSession()
+const { can } = useCan()
 const canEdit = computed(() => !!props.menu && !(person.value?.role === 'owner' && session.user.value?.role !== 'owner'))
 // After an action (resend renews the link's dates)
 watch(() => props.busy, (now, before) => before && !now && props.id && open.value && void load(props.id))
@@ -92,7 +93,11 @@ const place = computed(() => {
             <UButton icon="i-lucide-x" color="neutral" variant="soft" size="sm" square class="rounded-full" :aria-label="t('common.close')" @click="open = false" />
           </div>
         </div>
-        <div v-if="person.invite" class="flex flex-wrap items-center gap-2">
+        <div v-if="person.status === 'pending'" class="flex flex-wrap items-center gap-2">
+          <UButton :label="t('people.approve.button')" icon="i-lucide-user-check" color="neutral" size="sm" :disabled="busy || !can('people.approve')" @click="emit('approve', person)" />
+          <UButton :label="t('people.approve.reject')" icon="i-lucide-user-x" color="error" variant="outline" size="sm" :disabled="busy || !can('people.approve')" @click="emit('reject', person)" />
+        </div>
+        <div v-else-if="person.invite" class="flex flex-wrap items-center gap-2">
           <UButton :label="t('people.invite.resend')" icon="i-lucide-send" color="neutral" size="sm" :loading="busy" @click="emit('resend', person)" />
           <UButton :label="t('people.invite.copyLink')" icon="i-lucide-link" color="neutral" variant="outline" size="sm" :disabled="busy" @click="emit('copyLink', person)" />
           <UButton :label="t('people.invite.revoke')" icon="i-lucide-user-minus" color="error" variant="outline" size="sm" :disabled="busy" @click="emit('revoke', person)" />
@@ -109,6 +114,7 @@ const place = computed(() => {
       <AppEmpty v-if="failed && !person" icon="i-lucide-cloud-alert" :title="t('dataView.errorTitle')" :actions="[{ label: t('common.retry'), color: 'neutral', variant: 'outline', onClick: () => id && load(id) }]" />
       <div v-else-if="!person" class="grid grid-cols-2 gap-2 sm:grid-cols-3"><USkeleton v-for="n in 6" :key="n" class="h-14 rounded-lg" /></div>
       <template v-else>
+        <UAlert v-if="person.request" icon="i-lucide-hourglass" color="neutral" variant="subtle" :title="t('people.approve.waiting')" :description="t(person.request.via === 'link' ? 'people.approve.viaLink' : 'people.approve.viaInvite', { when: relative(person.request.at) })" />
         <UAlert v-if="person.invite" :icon="person.invite.expired ? 'i-lucide-clock-alert' : 'i-lucide-mail'" :color="person.invite.expired ? 'warning' : 'neutral'" variant="subtle" :title="person.invite.expired ? t('people.invite.expiredOn', { date: dateTime(person.invite.expires_at) }) : t('people.invite.waiting', { date: dateTime(person.invite.expires_at) })" :description="t('people.invite.sentBy', { name: person.invite.invited_by, when: relative(person.invite.sent_at) })" />
         <UAlert v-if="person.privileged && !person.two_step && person.status === 'active'" icon="i-lucide-flag" color="error" variant="subtle" :title="t('people.flagTwoStep')" :description="t('people.flagTwoStepDesc')" />
         <div class="grid grid-cols-2 gap-2 sm:grid-cols-3">

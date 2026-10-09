@@ -39,6 +39,9 @@ const COLORS: Record<string, BadgeProps['color']> = {
   revoked: 'error',
   // People (F16): an invite not yet accepted
   invited: 'warning',
+  not_activated: 'info',
+  // Signed up with a link, awaiting approval (F16)
+  pending_approval: 'secondary',
   // Webhook deliveries (F13 M6)
   delivered: 'success',
   retrying: 'warning',

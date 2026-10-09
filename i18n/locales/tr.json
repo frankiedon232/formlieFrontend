@@ -444,7 +444,10 @@
     "peopleInvite": "Kişileri davet et",
     "departments": "Departmanlar",
     "jobTitles": "Unvanlar",
-    "peopleRoles": "Roller ve erişim"
+    "peopleRoles": "Roller ve erişim",
+    "peoplePending": "Onay bekliyor",
+    "peopleNotActivated": "Etkinleştirilmedi",
+    "peopleAdd": "Kullanıcı ekle"
   },
   "navbar": {
     "breadcrumb": "İçerik haritası",
@@ -629,7 +632,10 @@
     "FRM-USER-1006": "Sahip atamayı ve sahibi değiştirmeyi yalnızca sahipler yapabilir.",
     "FRM-USER-1007": "Yerleşik roller silinemez ve Sahip rolü değiştirilemez.",
     "FRM-USER-1008": "Bu role sahip kişiler var. Önce onlara başka bir rol verin.",
-    "FRM-USER-1009": "Bu rol artık yok. Başka bir rol seçin."
+    "FRM-USER-1009": "Bu rol artık yok. Başka bir rol seçin.",
+    "FRM-USER-1010": "Hesabınız bir yöneticinin onayını bekliyor. Giriş yapabildiğinizde e-posta alacaksınız.",
+    "FRM-USER-1011": "Bu e-posta adresinin burada zaten bir hesabı var. Giriş yapın.",
+    "FRM-USER-1012": "Bu kayıt bağlantısı yalnızca kuruluşun e-posta adreslerini kabul eder."
   },
   "errorUi": {
     "reference": "Referans: {id}",
@@ -1107,7 +1113,12 @@
       "users_profile_updated": "Kendi profili değiştirildi",
       "users_role_created": "Rol oluşturuldu",
       "users_role_updated": "Rol değiştirildi",
-      "users_role_deleted": "Rol silindi"
+      "users_role_deleted": "Rol silindi",
+      "users_profile_created": "Kullanıcı profili oluşturuldu",
+      "users_requested": "Katılma isteği gönderdi",
+      "users_approved": "Onaylandı",
+      "users_rejected": "İstek reddedildi",
+      "users_signup_link_changed": "Kayıt bağlantısı değiştirildi"
     },
     "detail": {
       "who": "Kim",
@@ -7483,7 +7494,9 @@
     "status": {
       "active": "Etkin",
       "invited": "Davet edildi",
-      "disabled": "Devre dışı"
+      "disabled": "Devre dışı",
+      "not_activated": "Etkinleştirilmedi",
+      "pending": "Onay bekliyor"
     },
     "role": {
       "owner": "Sahip",
@@ -7565,7 +7578,19 @@
       "expired": "Bu davetin süresi doldu",
       "expiredDesc": "Davet bağlantıları 7 gün geçerlidir. Sizi davet eden kişiden yenisini göndermesini isteyin.",
       "invalid": "Bu davet geçerli değil",
-      "invalidDesc": "Daha önce kullanılmış veya geri çekilmiş olabilir. Zaten katıldıysanız oturum açın."
+      "invalidDesc": "Daha önce kullanılmış veya geri çekilmiş olabilir. Zaten katıldıysanız oturum açın.",
+      "activateHeading": "{workspace} hesabınızı etkinleştirin",
+      "activateDesc": "{name} profilinizi {role} olarak oluşturdu. Adınızı kontrol edin ve bir parola seçin.",
+      "askHeading": "{workspace} alanına katılma isteği gönderin",
+      "askDesc": "Bilgilerinizi girin ve bir parola seçin.",
+      "inviteDesc": "{name} size bu bağlantıyı gönderdi. Bilgilerinizi girin ve bir parola seçin.",
+      "approvalNote": "Yeni hesapları bir yönetici onaylar. Onaydan sonra giriş yapabilirsiniz, size e-posta göndeririz.",
+      "phoneFormat": "+ ve ülke koduyla başlayın.",
+      "domains": "{list} adresleri için",
+      "activate": "Hesabımı etkinleştir",
+      "request": "İstek gönder",
+      "sent": "İstek gönderildi",
+      "sentDesc": "{workspace} yöneticisi isteği inceleyecek. Giriş yapabildiğinizde size e-posta göndeririz."
     },
     "rolesSoon": "Özel roller ve her rolün yetkileri Roller ve erişim aşamasında gelecek. O zamana kadar kişiler Sahip, Yönetici veya Üyedir.",
     "manage": {
@@ -7617,6 +7642,58 @@
       "recent": "Yakın zamanda etkin",
       "all": "Tüm kişiler ({n})",
       "invite": "Üye davet et"
+    },
+    "add": {
+      "button": "Kullanıcı ekle",
+      "title": "Kullanıcı profili ekle",
+      "desc": "Bir çalışan için profil oluşturun. Parolasını belirlemesi için e-posta alır, sonra giriş yapabilir.",
+      "note": "Etkinleştirme e-postası 7 gün geçerlidir.",
+      "done": "{name} eklendi",
+      "doneDesc": "Etkinleştirme e-postası {email} adresine gönderildi.",
+      "resend": "Etkinleştirmeyi yeniden gönder",
+      "copyLink": "Etkinleştirme bağlantısını kopyala",
+      "remove": "Profili sil",
+      "removeTitle": "{name} profili silinsin mi?",
+      "removeDesc": "Profil henüz etkinleştirilmedi. Bağlantı çalışmaz hale gelir ve profil silinir."
+    },
+    "approve": {
+      "button": "Onayla",
+      "title": "{name} kişisini onayla",
+      "desc": "Profilini tamamlayın: rol, departmanlar, unvanlar ve yönetici. Onayladığınızda giriş yapabilir.",
+      "note": "Giriş yapabileceğini bildiren bir e-posta alır.",
+      "done": "{name} onaylandı",
+      "doneDesc": "Artık giriş yapabilir.",
+      "reject": "Reddet",
+      "rejectTitle": "{name} reddedilsin mi?",
+      "rejectDesc": "İsteği kaldırılır ve bir e-posta alır. Giriş yapamaz.",
+      "rejected": "{name} isteği reddedildi",
+      "waiting": "Onay bekliyor",
+      "viaLink": "Çalışma alanının bağlantısıyla kayıt oldu: {when}.",
+      "viaInvite": "Kişisel bağlantıyla kayıt oldu: {when}."
+    },
+    "links": {
+      "button": "Kayıt bağlantıları",
+      "title": "Kayıt bağlantıları",
+      "desc": "Bağlantıyla kayıt olanlar, giriş yapmadan önce onay bekler.",
+      "shared": "Çalışma alanının bağlantısı",
+      "sharedOn": "Açık. Bağlantıya sahip herkes katılmak için istekte bulunabilir.",
+      "sharedOff": "Kapalı. E-posta, sohbet veya afişle tek bir bağlantı paylaşmak için açın.",
+      "turnedOn": "Kayıt bağlantısı açıldı",
+      "turnedOff": "Kayıt bağlantısı kapatıldı",
+      "link": "Bağlantı",
+      "changed": "Değiştirildi: {when}",
+      "waiting": "{n} kişi onay bekliyor | {n} kişi onay bekliyor",
+      "domains": "Kabul edilen e-posta alan adları",
+      "domainsHint": "Örneğin şirketinizin alan adı. Boş bırakırsanız her adres kabul edilir.",
+      "saved": "Alan adları kaydedildi",
+      "renew": "Yeni bağlantı",
+      "renewTitle": "Yeni bağlantı oluşturulsun mu?",
+      "renewDesc": "Mevcut bağlantı çalışmaz hale gelir. Yenisini paylaşın.",
+      "renewed": "Yeni bağlantı oluşturuldu",
+      "qr": "Kayıt bağlantısı için QR kodu",
+      "personal": "Kişisel bağlantılar",
+      "personalHint": "Seçtiğiniz e-posta adreslerine, önerilen rol ve departmanla birlikte bir bağlantı gönderin.",
+      "sendPersonal": "Kişisel bağlantıları gönder"
     }
   },
   "profile": {

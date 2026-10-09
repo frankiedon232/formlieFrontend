@@ -444,7 +444,10 @@
     "peopleInvite": "Invite people",
     "departments": "Departments",
     "jobTitles": "Job titles",
-    "peopleRoles": "Roles & access"
+    "peopleRoles": "Roles & access",
+    "peoplePending": "Awaiting approval",
+    "peopleNotActivated": "Not activated",
+    "peopleAdd": "Add user"
   },
   "navbar": {
     "breadcrumb": "Breadcrumb",
@@ -629,7 +632,10 @@
     "FRM-USER-1006": "Only owners can make someone an owner or change an owner.",
     "FRM-USER-1007": "The built-in roles can't be deleted, and Owner can't be changed.",
     "FRM-USER-1008": "People hold this role. Give them another role first.",
-    "FRM-USER-1009": "This role does not exist any more. Choose another one."
+    "FRM-USER-1009": "This role does not exist any more. Choose another one.",
+    "FRM-USER-1010": "Your account is waiting for an admin's approval. You'll get an email when you can sign in.",
+    "FRM-USER-1011": "This email address already has an account here. Sign in instead.",
+    "FRM-USER-1012": "This sign-up link only accepts the organisation's email addresses."
   },
   "errorUi": {
     "reference": "Reference: {id}",
@@ -1107,7 +1113,12 @@
       "users_profile_updated": "Own profile changed",
       "users_role_created": "Role created",
       "users_role_updated": "Role changed",
-      "users_role_deleted": "Role deleted"
+      "users_role_deleted": "Role deleted",
+      "users_profile_created": "User profile created",
+      "users_requested": "Asked to join",
+      "users_approved": "Approved",
+      "users_rejected": "Request rejected",
+      "users_signup_link_changed": "Sign-up link changed"
     },
     "detail": {
       "who": "Who",
@@ -7483,7 +7494,9 @@
     "status": {
       "active": "Active",
       "invited": "Invited",
-      "disabled": "Disabled"
+      "disabled": "Disabled",
+      "not_activated": "Not activated",
+      "pending": "Awaiting approval"
     },
     "role": {
       "owner": "Owner",
@@ -7565,7 +7578,19 @@
       "expired": "This invitation has expired",
       "expiredDesc": "Invitation links work for 7 days. Ask the person who invited you to send a new one.",
       "invalid": "This invitation is not valid",
-      "invalidDesc": "It may have been used already or withdrawn. If you joined before, sign in."
+      "invalidDesc": "It may have been used already or withdrawn. If you joined before, sign in.",
+      "activateHeading": "Activate your account at {workspace}",
+      "activateDesc": "{name} made your profile as {role}. Check your name and choose a password.",
+      "askHeading": "Ask to join {workspace}",
+      "askDesc": "Fill in your details and choose a password.",
+      "inviteDesc": "{name} sent you this link. Fill in your details and choose a password.",
+      "approvalNote": "An admin approves new accounts. You can sign in once they do; we'll email you.",
+      "phoneFormat": "Start with + and the country code.",
+      "domains": "For {list} addresses",
+      "activate": "Activate my account",
+      "request": "Send request",
+      "sent": "Request sent",
+      "sentDesc": "An admin of {workspace} will look at it. We'll email you when you can sign in."
     },
     "rolesSoon": "Custom roles and what each one may do come in the Roles & access phase. Until then people are Owner, Admin or Member.",
     "manage": {
@@ -7617,6 +7642,58 @@
       "recent": "Recently active",
       "all": "All people ({n})",
       "invite": "Invite member"
+    },
+    "add": {
+      "button": "Add user",
+      "title": "Add a user profile",
+      "desc": "Profile a member of staff. They get an email to set their password, then they can sign in.",
+      "note": "They get an activation email that works for 7 days.",
+      "done": "{name} added",
+      "doneDesc": "Activation email sent to {email}.",
+      "resend": "Send activation again",
+      "copyLink": "Copy activation link",
+      "remove": "Delete profile",
+      "removeTitle": "Delete the profile of {name}?",
+      "removeDesc": "They haven't activated it yet. The link stops working and the profile goes."
+    },
+    "approve": {
+      "button": "Approve",
+      "title": "Approve {name}",
+      "desc": "Complete their profile: role, departments, job titles and manager. They can sign in once you approve.",
+      "note": "They get an email that they can sign in.",
+      "done": "{name} approved",
+      "doneDesc": "They can sign in now.",
+      "reject": "Reject",
+      "rejectTitle": "Reject {name}?",
+      "rejectDesc": "Their request is removed and they get an email. They can't sign in.",
+      "rejected": "Request from {name} rejected",
+      "waiting": "Waiting for approval",
+      "viaLink": "Signed up with the workspace's link {when}.",
+      "viaInvite": "Signed up with a personal link {when}."
+    },
+    "links": {
+      "button": "Sign-up links",
+      "title": "Sign-up links",
+      "desc": "People who sign up with a link wait for approval before they can sign in.",
+      "shared": "The workspace's link",
+      "sharedOn": "On. Anyone with the link can ask to join.",
+      "sharedOff": "Off. Turn it on to share one link, by email, chat or a poster.",
+      "turnedOn": "Sign-up link turned on",
+      "turnedOff": "Sign-up link turned off",
+      "link": "Link",
+      "changed": "Changed {when}",
+      "waiting": "{n} waiting for approval | {n} waiting for approval",
+      "domains": "Email domains it accepts",
+      "domainsHint": "For example your company's domain. Empty means any address.",
+      "saved": "Domains saved",
+      "renew": "New link",
+      "renewTitle": "Make a new link?",
+      "renewDesc": "The current link stops working. Share the new one.",
+      "renewed": "New link made",
+      "qr": "QR code for the sign-up link",
+      "personal": "Personal links",
+      "personalHint": "Send a link to chosen email addresses, with their role and department suggested.",
+      "sendPersonal": "Send personal links"
     }
   },
   "profile": {

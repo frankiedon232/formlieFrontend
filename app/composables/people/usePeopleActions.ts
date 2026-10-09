@@ -40,6 +40,7 @@ export function usePeopleActions(done: () => unknown) {
   const ask = (key: string, person: PersonRow, danger = false) => confirm({ title: t(`people.manage.${key}Title`, { name: person.name }), description: t(`people.manage.${key}Desc`), confirmLabel: t(`people.manage.${key}`), danger })
   const post = (person: PersonRow, path: string) => api.post(`/people/${person.id}/${path}`)
 
+  const { can } = useCan()
   const resend = (person: PersonRow) => act(person.id, () => post(person, 'invite/resend'), t('people.invite.resent', { email: person.email }))
   const copyLink = (person: PersonRow) =>
     act(
@@ -50,8 +51,13 @@ export function usePeopleActions(done: () => unknown) {
       },
       t('people.invite.linkCopied'),
     )
+  async function reject(person: PersonRow) {
+    const ok = await confirm({ title: t('people.approve.rejectTitle', { name: person.name }), description: t('people.approve.rejectDesc'), confirmLabel: t('people.approve.reject'), danger: true })
+    if (ok) await act(person.id, () => api.post(`/people/${person.id}/reject`, {}), t('people.approve.rejected', { name: person.name }))
+  }
   async function revoke(person: PersonRow) {
-    const ok = await confirm({ title: t('people.invite.revokeTitle', { email: person.email }), description: t('people.invite.revokeDesc'), confirmLabel: t('people.invite.revoke'), danger: true })
+    const activation = person.status === 'not_activated'
+    const ok = await confirm({ title: activation ? t('people.add.removeTitle', { name: person.name }) : t('people.invite.revokeTitle', { email: person.email }), description: activation ? t('people.add.removeDesc') : t('people.invite.revokeDesc'), confirmLabel: activation ? t('people.add.remove') : t('people.invite.revoke'), danger: true })
     if (ok) await act(person.id, () => api.del(`/people/${person.id}/invite`), t('people.invite.revoked', { email: person.email }))
   }
   async function disable(person: PersonRow) {
@@ -78,16 +84,30 @@ export function usePeopleActions(done: () => unknown) {
   }
 
   /** The ⋯ items for a person (row, card, panel); `edit` opens the edit dialog. */
-  function menu(person: PersonRow, edit: (person: PersonRow) => void): DropdownMenuItem[][] {
-    if (person.status === 'invited')
-      return [
-        [
-          { label: t('people.invite.resend'), icon: 'i-lucide-send', onSelect: () => void resend(person) },
-          { label: t('people.invite.copyLink'), icon: 'i-lucide-link', onSelect: () => void copyLink(person) },
-          { label: t('people.manage.edit'), icon: 'i-lucide-pencil', onSelect: () => edit(person) },
-        ],
-        [{ label: t('people.invite.revoke'), icon: 'i-lucide-user-minus', color: 'error' as const, onSelect: () => void revoke(person) }],
-      ]
+  function menu(person: PersonRow, edit: (person: PersonRow) => void, approve?: (person: PersonRow) => void): DropdownMenuItem[][] {
+    // Signed up with a link, waiting: approve (completing the profile) or reject
+    if (person.status === 'pending')
+      return can('people.approve')
+        ? [
+            [{ label: t('people.approve.button'), icon: 'i-lucide-user-check', onSelect: () => approve?.(person) }],
+            [{ label: t('people.approve.reject'), icon: 'i-lucide-user-x', color: 'error' as const, onSelect: () => void reject(person) }],
+          ]
+        : []
+    // A link is out: a personal sign-up link, or the activation email of a profile an admin made
+    if (person.status === 'invited' || person.status === 'not_activated') {
+      const activation = person.status === 'not_activated'
+      return can('people.manage')
+        ? [
+            [
+              { label: activation ? t('people.add.resend') : t('people.invite.resend'), icon: 'i-lucide-send', onSelect: () => void resend(person) },
+              { label: activation ? t('people.add.copyLink') : t('people.invite.copyLink'), icon: 'i-lucide-link', onSelect: () => void copyLink(person) },
+              { label: t('people.manage.edit'), icon: 'i-lucide-pencil', onSelect: () => edit(person) },
+            ],
+            [{ label: activation ? t('people.add.remove') : t('people.invite.revoke'), icon: 'i-lucide-user-minus', color: 'error' as const, onSelect: () => void revoke(person) }],
+          ]
+        : []
+    }
+    if (!can('people.manage')) return []
     const self = person.id === me.value
     const ownerLocked = person.role === 'owner' && !iAmOwner.value
     if (ownerLocked) return [[{ label: t('people.manage.ownerOnly'), icon: 'i-lucide-lock', disabled: true }]]
@@ -108,5 +128,5 @@ export function usePeopleActions(done: () => unknown) {
   const roleItems = (pick: (role: WorkspaceRole) => void): DropdownMenuItem[] =>
     roles.value.filter(role => role.id !== 'owner' || iAmOwner.value).map(role => ({ label: role.name, icon: role.id === 'owner' ? 'i-lucide-crown' : 'i-lucide-shield', onSelect: () => pick(role.id) }))
 
-  return { busy, me, iAmOwner, resend, copyLink, revoke, disable, enable, signOut, password, twoStep, bulk, menu, roleItems }
+  return { busy, me, iAmOwner, resend, copyLink, revoke, reject, disable, enable, signOut, password, twoStep, bulk, menu, roleItems }
 }

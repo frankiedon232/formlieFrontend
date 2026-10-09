@@ -444,7 +444,10 @@
     "peopleInvite": "邀请成员",
     "departments": "部门",
     "jobTitles": "职位",
-    "peopleRoles": "角色与权限"
+    "peopleRoles": "角色与权限",
+    "peoplePending": "等待批准",
+    "peopleNotActivated": "未激活",
+    "peopleAdd": "添加用户"
   },
   "navbar": {
     "breadcrumb": "面包屑导航",
@@ -629,7 +632,10 @@
     "FRM-USER-1006": "只有所有者才能指定或更改所有者。",
     "FRM-USER-1007": "内置角色无法删除，所有者角色也无法更改。",
     "FRM-USER-1008": "有成员拥有此角色。请先为他们分配其他角色。",
-    "FRM-USER-1009": "此角色已不存在。请选择其他角色。"
+    "FRM-USER-1009": "此角色已不存在。请选择其他角色。",
+    "FRM-USER-1010": "您的账号正在等待管理员批准。可以登录时您会收到电子邮件。",
+    "FRM-USER-1011": "此电子邮件地址在这里已有账号。请直接登录。",
+    "FRM-USER-1012": "此注册链接仅接受组织的电子邮件地址。"
   },
   "errorUi": {
     "reference": "参考编号：{id}",
@@ -1107,7 +1113,12 @@
       "users_profile_updated": "已更改个人资料",
       "users_role_created": "已创建角色",
       "users_role_updated": "已更改角色",
-      "users_role_deleted": "已删除角色"
+      "users_role_deleted": "已删除角色",
+      "users_profile_created": "已创建用户档案",
+      "users_requested": "申请加入",
+      "users_approved": "已批准",
+      "users_rejected": "申请已拒绝",
+      "users_signup_link_changed": "注册链接已更改"
     },
     "detail": {
       "who": "谁",
@@ -7483,7 +7494,9 @@
     "status": {
       "active": "正常",
       "invited": "已邀请",
-      "disabled": "已停用"
+      "disabled": "已停用",
+      "not_activated": "未激活",
+      "pending": "等待批准"
     },
     "role": {
       "owner": "所有者",
@@ -7565,7 +7578,19 @@
       "expired": "此邀请已过期",
       "expiredDesc": "邀请链接 7 天内有效。请让邀请你的人重新发送一个。",
       "invalid": "此邀请无效",
-      "invalidDesc": "可能已被使用或已被撤回。如果你已加入，请直接登录。"
+      "invalidDesc": "可能已被使用或已被撤回。如果你已加入，请直接登录。",
+      "activateHeading": "在 {workspace} 激活您的账号",
+      "activateDesc": "{name} 已将您的档案创建为 {role}。请核对姓名并设置密码。",
+      "askHeading": "申请加入 {workspace}",
+      "askDesc": "请填写您的信息并设置密码。",
+      "inviteDesc": "{name} 向您发送了此链接。请填写您的信息并设置密码。",
+      "approvalNote": "新账号需由管理员批准。批准后您即可登录，我们会通过电子邮件通知您。",
+      "phoneFormat": "请以 + 和国家区号开头。",
+      "domains": "适用于 {list} 地址",
+      "activate": "激活我的账号",
+      "request": "发送申请",
+      "sent": "申请已发送",
+      "sentDesc": "{workspace} 的管理员会审核。可以登录时我们会通过电子邮件通知您。"
     },
     "rolesSoon": "自定义角色及各角色的权限将在“角色与权限”阶段推出。在此之前，成员为所有者、管理员或成员。",
     "manage": {
@@ -7617,6 +7642,58 @@
       "recent": "最近活跃",
       "all": "所有成员（{n}）",
       "invite": "邀请成员"
+    },
+    "add": {
+      "button": "添加用户",
+      "title": "添加用户档案",
+      "desc": "为一名员工创建档案。对方会收到设置密码的电子邮件，之后即可登录。",
+      "note": "激活邮件有效期为 7 天。",
+      "done": "已添加 {name}",
+      "doneDesc": "激活邮件已发送至 {email}。",
+      "resend": "重新发送激活邮件",
+      "copyLink": "复制激活链接",
+      "remove": "删除档案",
+      "removeTitle": "删除 {name} 的档案？",
+      "removeDesc": "该档案尚未激活。链接将失效，档案也会被删除。"
+    },
+    "approve": {
+      "button": "批准",
+      "title": "批准 {name}",
+      "desc": "请完善其档案：角色、部门、职位和上级。批准后对方即可登录。",
+      "note": "对方会收到可以登录的电子邮件。",
+      "done": "已批准 {name}",
+      "doneDesc": "对方现在可以登录。",
+      "reject": "拒绝",
+      "rejectTitle": "拒绝 {name}？",
+      "rejectDesc": "其申请将被移除，对方会收到电子邮件，且无法登录。",
+      "rejected": "已拒绝 {name} 的申请",
+      "waiting": "等待批准",
+      "viaLink": "通过工作区链接注册，时间：{when}。",
+      "viaInvite": "通过个人链接注册，时间：{when}。"
+    },
+    "links": {
+      "button": "注册链接",
+      "title": "注册链接",
+      "desc": "通过链接注册的人需等待批准后才能登录。",
+      "shared": "工作区链接",
+      "sharedOn": "已开启。任何拥有链接的人都可以申请加入。",
+      "sharedOff": "已关闭。开启后可通过电子邮件、聊天或海报分享同一个链接。",
+      "turnedOn": "注册链接已开启",
+      "turnedOff": "注册链接已关闭",
+      "link": "链接",
+      "changed": "更改时间：{when}",
+      "waiting": "{n} 人等待批准 | {n} 人等待批准",
+      "domains": "接受的电子邮件域名",
+      "domainsHint": "例如贵公司的域名。留空表示接受任何地址。",
+      "saved": "域名已保存",
+      "renew": "新链接",
+      "renewTitle": "生成新链接？",
+      "renewDesc": "当前链接将失效。请分享新链接。",
+      "renewed": "已生成新链接",
+      "qr": "注册链接的二维码",
+      "personal": "个人链接",
+      "personalHint": "向指定电子邮件地址发送链接，并预设建议的角色和部门。",
+      "sendPersonal": "发送个人链接"
     }
   },
   "profile": {

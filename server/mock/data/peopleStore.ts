@@ -41,7 +41,9 @@ export interface StoredPerson {
   date_format?: DateFormat | null
   notifications?: Record<string, boolean>
   /** An open invitation (F16 M2): only a hash of the link's token is kept. */
-  invite?: { token_hash: string; expires_at: string; sent_at: string; invited_by: { id: string; name: string }; message: string | null }
+  invite?: { kind?: 'invite' | 'activation'; token_hash: string; expires_at: string; sent_at: string; invited_by: { id: string; name: string }; message: string | null }
+  /** Signed up with a link, waiting for approval (R3 / R4). */
+  request?: { via: 'invite' | 'link'; at: string }
 }
 
 const stores = new Map<string, StoredPerson[]>(Object.entries(loadPersisted<Record<string, StoredPerson[]>>('people', {})))
@@ -51,7 +53,7 @@ export const savePeople = () => savePersisted('people', () => Object.fromEntries
 function syncAccounts(list: StoredPerson[]) {
   for (const person of list) {
     const user = MOCK_USERS.find(item => item.id === person.id)
-    if (user && person.status !== 'invited')
+    if (user && person.status !== 'invited' && person.status !== 'not_activated')
       Object.assign(user, {
         role: person.role,
         disabled: person.status === 'disabled',
@@ -141,7 +143,7 @@ export function peopleRows(tenant: MockTenant): PersonRow[] {
   const people = peopleStoreOf(tenant)
   const org = orgOf(tenant)
   const lastSeen = new Map<string, string>()
-  for (const event of auditLogOf(tenant)) if (event.actor.id && !lastSeen.has(event.actor.id)) lastSeen.set(event.actor.id, event.occurred_at)
+  for (const event of auditLogOf(tenant)) if (event.actor.id && event.outcome !== 'blocked' && event.outcome !== 'failure' && !lastSeen.has(event.actor.id)) lastSeen.set(event.actor.id, event.occurred_at)
   // Like the forms list: archived and deleted forms aren't counted
   const forms = formsOf(tenant).forms.filter(form => !form.deleted_at && form.status !== 'archived')
   const nameOf = (person: StoredPerson) => `${person.first_name} ${person.last_name}`.trim() || person.email
@@ -163,10 +165,11 @@ export function peopleRows(tenant: MockTenant): PersonRow[] {
       job_titles: org.job_titles.filter(item => !item.archived_at && item.member_ids.includes(person.id)).map(refOf),
       manager: manager ? { id: manager.id, name: nameOf(manager) } : null,
       two_step: person.two_step,
-      last_active_at: person.status === 'invited' ? null : (lastSeen.get(person.id) ?? null),
+      last_active_at: ['invited', 'not_activated', 'pending'].includes(person.status) ? null : (lastSeen.get(person.id) ?? null),
       joined_at: person.joined_at,
       forms_count: forms.filter(form => form.owner?.id === person.id).length,
-      invite: person.invite ? { expires_at: person.invite.expires_at, sent_at: person.invite.sent_at, invited_by: person.invite.invited_by.name, expired: Date.parse(person.invite.expires_at) < Date.now() } : null,
+      request: person.request ?? null,
+      invite: person.invite ? { kind: person.invite.kind ?? 'invite', expires_at: person.invite.expires_at, sent_at: person.invite.sent_at, invited_by: person.invite.invited_by.name, expired: Date.parse(person.invite.expires_at) < Date.now() } : null,
     }
   })
 }

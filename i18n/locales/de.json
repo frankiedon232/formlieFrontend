@@ -444,7 +444,10 @@
     "peopleInvite": "Personen einladen",
     "departments": "Abteilungen",
     "jobTitles": "Positionen",
-    "peopleRoles": "Rollen & Zugriff"
+    "peopleRoles": "Rollen & Zugriff",
+    "peoplePending": "Wartet auf Freigabe",
+    "peopleNotActivated": "Nicht aktiviert",
+    "peopleAdd": "Benutzer hinzufügen"
   },
   "navbar": {
     "breadcrumb": "Brotkrümelnavigation",
@@ -629,7 +632,10 @@
     "FRM-USER-1006": "Nur Inhaber können jemanden zum Inhaber machen oder einen Inhaber ändern.",
     "FRM-USER-1007": "Die integrierten Rollen können nicht gelöscht werden, und die Rolle Inhaber kann nicht geändert werden.",
     "FRM-USER-1008": "Diese Rolle haben noch Personen. Weisen Sie ihnen zuerst eine andere Rolle zu.",
-    "FRM-USER-1009": "Diese Rolle existiert nicht mehr. Wählen Sie eine andere."
+    "FRM-USER-1009": "Diese Rolle existiert nicht mehr. Wählen Sie eine andere.",
+    "FRM-USER-1010": "Ihr Konto wartet auf die Freigabe durch einen Administrator. Sie erhalten eine E-Mail, sobald Sie sich anmelden können.",
+    "FRM-USER-1011": "Für diese E-Mail-Adresse gibt es hier bereits ein Konto. Bitte melden Sie sich an.",
+    "FRM-USER-1012": "Dieser Registrierungslink akzeptiert nur E-Mail-Adressen der Organisation."
   },
   "errorUi": {
     "reference": "Referenz: {id}",
@@ -1107,7 +1113,12 @@
       "users_profile_updated": "Eigenes Profil geändert",
       "users_role_created": "Rolle erstellt",
       "users_role_updated": "Rolle geändert",
-      "users_role_deleted": "Rolle gelöscht"
+      "users_role_deleted": "Rolle gelöscht",
+      "users_profile_created": "Benutzerprofil erstellt",
+      "users_requested": "Beitritt angefragt",
+      "users_approved": "Freigegeben",
+      "users_rejected": "Anfrage abgelehnt",
+      "users_signup_link_changed": "Registrierungslink geändert"
     },
     "detail": {
       "who": "Wer",
@@ -7483,7 +7494,9 @@
     "status": {
       "active": "Aktiv",
       "invited": "Eingeladen",
-      "disabled": "Deaktiviert"
+      "disabled": "Deaktiviert",
+      "not_activated": "Nicht aktiviert",
+      "pending": "Wartet auf Freigabe"
     },
     "role": {
       "owner": "Inhaber",
@@ -7565,7 +7578,19 @@
       "expired": "Diese Einladung ist abgelaufen",
       "expiredDesc": "Einladungslinks sind 7 Tage gültig. Bitten Sie die einladende Person, eine neue zu senden.",
       "invalid": "Diese Einladung ist ungültig",
-      "invalidDesc": "Sie wurde möglicherweise bereits verwendet oder zurückgezogen. Wenn Sie schon beigetreten sind, melden Sie sich an."
+      "invalidDesc": "Sie wurde möglicherweise bereits verwendet oder zurückgezogen. Wenn Sie schon beigetreten sind, melden Sie sich an.",
+      "activateHeading": "Aktivieren Sie Ihr Konto bei {workspace}",
+      "activateDesc": "{name} hat Ihr Profil als {role} angelegt. Prüfen Sie Ihren Namen und wählen Sie ein Passwort.",
+      "askHeading": "Beitritt zu {workspace} anfragen",
+      "askDesc": "Geben Sie Ihre Daten ein und wählen Sie ein Passwort.",
+      "inviteDesc": "{name} hat Ihnen diesen Link gesendet. Geben Sie Ihre Daten ein und wählen Sie ein Passwort.",
+      "approvalNote": "Ein Administrator gibt neue Konten frei. Danach können Sie sich anmelden, wir informieren Sie per E-Mail.",
+      "phoneFormat": "Beginnen Sie mit + und der Landesvorwahl.",
+      "domains": "Für Adressen von {list}",
+      "activate": "Mein Konto aktivieren",
+      "request": "Anfrage senden",
+      "sent": "Anfrage gesendet",
+      "sentDesc": "Ein Administrator von {workspace} prüft sie. Wir informieren Sie per E-Mail, sobald Sie sich anmelden können."
     },
     "rolesSoon": "Eigene Rollen und was jede darf, kommen in der Phase Rollen & Zugriff. Bis dahin sind Personen Inhaber, Admin oder Mitglied.",
     "manage": {
@@ -7617,6 +7642,58 @@
       "recent": "Zuletzt aktiv",
       "all": "Alle Personen ({n})",
       "invite": "Mitglied einladen"
+    },
+    "add": {
+      "button": "Benutzer hinzufügen",
+      "title": "Benutzerprofil hinzufügen",
+      "desc": "Legen Sie das Profil eines Mitarbeiters an. Er erhält eine E-Mail zum Festlegen des Passworts und kann sich danach anmelden.",
+      "note": "Die Aktivierungs-E-Mail ist 7 Tage gültig.",
+      "done": "{name} hinzugefügt",
+      "doneDesc": "Aktivierungs-E-Mail an {email} gesendet.",
+      "resend": "Aktivierung erneut senden",
+      "copyLink": "Aktivierungslink kopieren",
+      "remove": "Profil löschen",
+      "removeTitle": "Profil von {name} löschen?",
+      "removeDesc": "Das Profil wurde noch nicht aktiviert. Der Link funktioniert dann nicht mehr und das Profil wird entfernt."
+    },
+    "approve": {
+      "button": "Freigeben",
+      "title": "{name} freigeben",
+      "desc": "Vervollständigen Sie das Profil: Rolle, Abteilungen, Positionen und Vorgesetzte. Nach der Freigabe kann sich die Person anmelden.",
+      "note": "Die Person erhält eine E-Mail, dass die Anmeldung möglich ist.",
+      "done": "{name} freigegeben",
+      "doneDesc": "Die Person kann sich jetzt anmelden.",
+      "reject": "Ablehnen",
+      "rejectTitle": "{name} ablehnen?",
+      "rejectDesc": "Die Anfrage wird entfernt und die Person erhält eine E-Mail. Eine Anmeldung ist nicht möglich.",
+      "rejected": "Anfrage von {name} abgelehnt",
+      "waiting": "Wartet auf Freigabe",
+      "viaLink": "Über den Link des Arbeitsbereichs registriert {when}.",
+      "viaInvite": "Über einen persönlichen Link registriert {when}."
+    },
+    "links": {
+      "button": "Registrierungslinks",
+      "title": "Registrierungslinks",
+      "desc": "Wer sich über einen Link registriert, wartet auf Freigabe, bevor eine Anmeldung möglich ist.",
+      "shared": "Der Link des Arbeitsbereichs",
+      "sharedOn": "Aktiv. Jeder mit dem Link kann den Beitritt anfragen.",
+      "sharedOff": "Aus. Aktivieren Sie ihn, um einen Link per E-Mail, Chat oder Poster zu teilen.",
+      "turnedOn": "Registrierungslink aktiviert",
+      "turnedOff": "Registrierungslink deaktiviert",
+      "link": "Link",
+      "changed": "Geändert {when}",
+      "waiting": "{n} wartet auf Freigabe | {n} warten auf Freigabe",
+      "domains": "Akzeptierte E-Mail-Domains",
+      "domainsHint": "Zum Beispiel die Domain Ihres Unternehmens. Leer bedeutet jede Adresse.",
+      "saved": "Domains gespeichert",
+      "renew": "Neuer Link",
+      "renewTitle": "Neuen Link erstellen?",
+      "renewDesc": "Der aktuelle Link funktioniert dann nicht mehr. Teilen Sie den neuen.",
+      "renewed": "Neuer Link erstellt",
+      "qr": "QR-Code für den Registrierungslink",
+      "personal": "Persönliche Links",
+      "personalHint": "Senden Sie einen Link an ausgewählte E-Mail-Adressen, mit vorgeschlagener Rolle und Abteilung.",
+      "sendPersonal": "Persönliche Links senden"
     }
   },
   "profile": {

@@ -444,7 +444,10 @@
     "peopleInvite": "Mời mọi người",
     "departments": "Phòng ban",
     "jobTitles": "Chức danh",
-    "peopleRoles": "Vai trò & quyền truy cập"
+    "peopleRoles": "Vai trò & quyền truy cập",
+    "peoplePending": "Chờ phê duyệt",
+    "peopleNotActivated": "Chưa kích hoạt",
+    "peopleAdd": "Thêm người dùng"
   },
   "navbar": {
     "breadcrumb": "Đường dẫn",
@@ -629,7 +632,10 @@
     "FRM-USER-1006": "Chỉ chủ sở hữu mới có thể đặt hoặc đổi chủ sở hữu.",
     "FRM-USER-1007": "Không thể xóa các vai trò tích hợp sẵn, và không thể thay đổi vai trò Chủ sở hữu.",
     "FRM-USER-1008": "Vẫn còn người giữ vai trò này. Hãy gán vai trò khác cho họ trước.",
-    "FRM-USER-1009": "Vai trò này không còn nữa. Hãy chọn vai trò khác."
+    "FRM-USER-1009": "Vai trò này không còn nữa. Hãy chọn vai trò khác.",
+    "FRM-USER-1010": "Tài khoản của bạn đang chờ quản trị viên phê duyệt. Bạn sẽ nhận được email khi có thể đăng nhập.",
+    "FRM-USER-1011": "Địa chỉ email này đã có tài khoản ở đây. Vui lòng đăng nhập.",
+    "FRM-USER-1012": "Liên kết đăng ký này chỉ chấp nhận địa chỉ email của tổ chức."
   },
   "errorUi": {
     "reference": "Mã tham chiếu: {id}",
@@ -1107,7 +1113,12 @@
       "users_profile_updated": "Đã thay đổi hồ sơ của chính mình",
       "users_role_created": "Đã tạo vai trò",
       "users_role_updated": "Đã thay đổi vai trò",
-      "users_role_deleted": "Đã xóa vai trò"
+      "users_role_deleted": "Đã xóa vai trò",
+      "users_profile_created": "Đã tạo hồ sơ người dùng",
+      "users_requested": "Đã yêu cầu tham gia",
+      "users_approved": "Đã phê duyệt",
+      "users_rejected": "Đã từ chối yêu cầu",
+      "users_signup_link_changed": "Đã đổi liên kết đăng ký"
     },
     "detail": {
       "who": "Ai",
@@ -7483,7 +7494,9 @@
     "status": {
       "active": "Hoạt động",
       "invited": "Đã mời",
-      "disabled": "Đã vô hiệu hóa"
+      "disabled": "Đã vô hiệu hóa",
+      "not_activated": "Chưa kích hoạt",
+      "pending": "Chờ phê duyệt"
     },
     "role": {
       "owner": "Chủ sở hữu",
@@ -7565,7 +7578,19 @@
       "expired": "Lời mời này đã hết hạn",
       "expiredDesc": "Liên kết mời có hiệu lực trong 7 ngày. Hãy nhờ người đã mời bạn gửi liên kết mới.",
       "invalid": "Lời mời này không hợp lệ",
-      "invalidDesc": "Có thể nó đã được dùng hoặc bị thu hồi. Nếu bạn đã tham gia, hãy đăng nhập."
+      "invalidDesc": "Có thể nó đã được dùng hoặc bị thu hồi. Nếu bạn đã tham gia, hãy đăng nhập.",
+      "activateHeading": "Kích hoạt tài khoản của bạn tại {workspace}",
+      "activateDesc": "{name} đã tạo hồ sơ của bạn với vai trò {role}. Kiểm tra tên và chọn mật khẩu.",
+      "askHeading": "Yêu cầu tham gia {workspace}",
+      "askDesc": "Điền thông tin của bạn và chọn mật khẩu.",
+      "inviteDesc": "{name} đã gửi cho bạn liên kết này. Điền thông tin của bạn và chọn mật khẩu.",
+      "approvalNote": "Quản trị viên phê duyệt tài khoản mới. Bạn có thể đăng nhập sau khi được duyệt, và chúng tôi sẽ gửi email.",
+      "phoneFormat": "Bắt đầu bằng + và mã quốc gia.",
+      "domains": "Dành cho địa chỉ {list}",
+      "activate": "Kích hoạt tài khoản của tôi",
+      "request": "Gửi yêu cầu",
+      "sent": "Đã gửi yêu cầu",
+      "sentDesc": "Quản trị viên của {workspace} sẽ xem xét. Chúng tôi sẽ gửi email khi bạn có thể đăng nhập."
     },
     "rolesSoon": "Vai trò tùy chỉnh và quyền của từng vai trò sẽ có ở giai đoạn Vai trò & quyền truy cập. Đến lúc đó mọi người là Chủ sở hữu, Quản trị viên hoặc Thành viên.",
     "manage": {
@@ -7617,6 +7642,58 @@
       "recent": "Hoạt động gần đây",
       "all": "Tất cả mọi người ({n})",
       "invite": "Mời thành viên"
+    },
+    "add": {
+      "button": "Thêm người dùng",
+      "title": "Thêm hồ sơ người dùng",
+      "desc": "Tạo hồ sơ cho một nhân viên. Họ nhận email để đặt mật khẩu, sau đó có thể đăng nhập.",
+      "note": "Email kích hoạt có hiệu lực trong 7 ngày.",
+      "done": "Đã thêm {name}",
+      "doneDesc": "Đã gửi email kích hoạt tới {email}.",
+      "resend": "Gửi lại email kích hoạt",
+      "copyLink": "Sao chép liên kết kích hoạt",
+      "remove": "Xóa hồ sơ",
+      "removeTitle": "Xóa hồ sơ của {name}?",
+      "removeDesc": "Hồ sơ chưa được kích hoạt. Liên kết sẽ ngừng hoạt động và hồ sơ bị xóa."
+    },
+    "approve": {
+      "button": "Phê duyệt",
+      "title": "Phê duyệt {name}",
+      "desc": "Hoàn thiện hồ sơ: vai trò, phòng ban, chức danh và quản lý. Họ có thể đăng nhập sau khi bạn phê duyệt.",
+      "note": "Họ nhận email báo rằng có thể đăng nhập.",
+      "done": "Đã phê duyệt {name}",
+      "doneDesc": "Bây giờ họ có thể đăng nhập.",
+      "reject": "Từ chối",
+      "rejectTitle": "Từ chối {name}?",
+      "rejectDesc": "Yêu cầu của họ bị xóa và họ nhận được email. Họ không thể đăng nhập.",
+      "rejected": "Đã từ chối yêu cầu của {name}",
+      "waiting": "Chờ phê duyệt",
+      "viaLink": "Đã đăng ký bằng liên kết của không gian làm việc {when}.",
+      "viaInvite": "Đã đăng ký bằng liên kết cá nhân {when}."
+    },
+    "links": {
+      "button": "Liên kết đăng ký",
+      "title": "Liên kết đăng ký",
+      "desc": "Người đăng ký bằng liên kết phải chờ phê duyệt trước khi có thể đăng nhập.",
+      "shared": "Liên kết của không gian làm việc",
+      "sharedOn": "Đang bật. Ai có liên kết đều có thể yêu cầu tham gia.",
+      "sharedOff": "Đang tắt. Hãy bật để chia sẻ một liên kết qua email, trò chuyện hoặc áp phích.",
+      "turnedOn": "Đã bật liên kết đăng ký",
+      "turnedOff": "Đã tắt liên kết đăng ký",
+      "link": "Liên kết",
+      "changed": "Đã đổi {when}",
+      "waiting": "{n} đang chờ phê duyệt | {n} đang chờ phê duyệt",
+      "domains": "Tên miền email được chấp nhận",
+      "domainsHint": "Ví dụ tên miền công ty của bạn. Để trống nghĩa là chấp nhận mọi địa chỉ.",
+      "saved": "Đã lưu tên miền",
+      "renew": "Liên kết mới",
+      "renewTitle": "Tạo liên kết mới?",
+      "renewDesc": "Liên kết hiện tại sẽ ngừng hoạt động. Hãy chia sẻ liên kết mới.",
+      "renewed": "Đã tạo liên kết mới",
+      "qr": "Mã QR của liên kết đăng ký",
+      "personal": "Liên kết cá nhân",
+      "personalHint": "Gửi liên kết tới các địa chỉ email đã chọn, kèm gợi ý vai trò và phòng ban.",
+      "sendPersonal": "Gửi liên kết cá nhân"
     }
   },
   "profile": {

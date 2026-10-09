@@ -513,23 +513,28 @@ Theme tokens (`schema.theme`, and later `themes.tokens`), full shape in `shared/
 
 ## People (F16 Users & profiles)
 
-Admins and owners only until F22.
+Access follows the caller's role (Roles & access below): `people.view` to read, `people.manage` to add, edit and manage links, `people.approve` to approve or reject.
 
 | Method | Path | Notes |
 | ------ | ---- | ----- |
-| GET | `/people` | `PersonRow[] { id, first_name, last_name, name, email, phone, role: owner\|admin\|member, status: active\|invited\|disabled, departments: { id, name }[], job_titles: { id, name }[], manager: { id, name } \| null, two_step, last_active_at, joined_at, forms_count }`; `?q` (name, email, departments, job titles), `filter[status]`, `filter[role]`, `filter[department]`, `filter[job_title]` (comma lists), `sort` `name` · `-last_active_at` · `-joined_at` · `role`, `page`, `page_size`. Departments and job titles come from the organisation data (`/org/{kind}` member lists) |
+| GET | `/people` | `PersonRow[] { id, first_name, last_name, name, email, phone, role (role id), role_name, privileged, status: active\|not_activated\|invited\|pending\|disabled, photo, invite? { kind: activation\|invite, … }, request? { via: link\|invite, at }, departments: { id, name }[], job_titles: { id, name }[], manager: { id, name } \| null, two_step, last_active_at, joined_at, forms_count }`; `?q` (name, email, departments, job titles), `filter[status]`, `filter[role]`, `filter[department]`, `filter[job_title]` (comma lists), `sort` `name` · `-last_active_at` · `-joined_at` · `role`, `page`, `page_size`. Departments and job titles come from the organisation data (`/org/{kind}` member lists) |
 | GET | `/people/insights` | `PeopleInsights { total, joined, joined_previous (30-day windows), two_step, by_status, by_role, daily: { date, count }[] (sign-ins, 30 days) }` |
 | GET | `/people/{id}` | `PersonDetail { …PersonRow, last_sign_in: { at, city, country, browser, os } \| null, sign_ins_30d, actions_30d, reports: { id, name }[], forms: { id, name, status }[] (latest 5, not archived) }`; unknown id → `FRM-GEN-1004` |
+| POST | `/people` | Add a user profile: `ProfileRequest { first_name, last_name, email, phone?, role, department_ids, job_title_ids, manager_id? }` → 201 `PersonDetail` with status `not_activated` and an activation email (link valid 7 days). Email already in the workspace → `409 FRM-USER-1011`. Audit `users.profile_created` |
+| GET · PUT | `/people/signup-link` | `SignupLinkView { enabled, link, domains: string[], updated_at, pending }`; PUT `{ enabled?, domains? }`. Audit `users.signup_link_changed` |
+| POST | `/people/signup-link/new` | A new shared link; the old one stops working |
+| POST | `/people/{id}/approve` | Someone `pending`: `{ role, department_ids, job_title_ids, manager_id? }` → `PersonDetail` (active, approval email). Audit `users.approved` |
+| POST | `/people/{id}/reject` | `{ reason? }`: the request and account are removed, rejection email. Audit `users.rejected` |
 | POST | `/people/invites` | `InviteRequest { emails: string[] (1 to 50), role: admin\|member, department_ids, job_title_ids, message? (500) }` → 201 `InviteResult { invited, skipped: { email, reason: member\|invited }[] }`; each new person gets status `invited`, joins the chosen departments and job titles, and the `invitation` email with a link valid 7 days (`PersonRow.invite { expires_at, sent_at, invited_by, expired }`). Audit `users.invited` |
 | POST | `/people/{id}/invite/resend` · `/people/{id}/invite/link` | A new link by email, or `{ link, expires_at }` to copy; the previous link stops working. Audit `users.invite_resent` / `users.invite_link` |
 | DELETE | `/people/{id}/invite` | Withdraw: the invited person and their memberships are removed. Audit `users.invite_revoked` |
-| GET | `/public/invites/{token}` | `InvitePreview { workspace, email, inviter, role, message }`; expired → `410 FRM-USER-1001`; used, withdrawn or unknown → `404 FRM-USER-1002` |
-| POST | `/public/invites/{token}/accept` | `{ first_name, last_name, password }` (the workspace's password rules, `FRM-AUTH-1007`) → `{ email }`; the account is created with the invited role, the person becomes `active`, then signs in as usual. Audit `users.joined` |
+| GET | `/public/invites/{token}` | `InvitePreview { kind: activation\|invite\|link, workspace, email, first_name, last_name, inviter, role_name, message, domains }` (a personal token or the workspace's shared link token); expired → `410 FRM-USER-1001`; used, withdrawn or unknown → `404 FRM-USER-1002` |
+| POST | `/public/invites/{token}/accept` | `{ first_name, last_name, email? (shared link only), phone?, password }` (the workspace's password rules, `FRM-AUTH-1007`) → `{ email, status }`. Activation → `active`, signs in as usual (audit `users.joined`); invite or shared link → `pending`, sign-in answers `403 FRM-USER-1010` until approved (audit `users.requested`). Shared link: address outside the allowed domains → `422 FRM-USER-1012`, already a member → `409 FRM-USER-1011` |
 | PATCH | `/people/{id}` | `{ role?, department_ids?, job_title_ids?, manager_id? (null = none) }` → `PersonDetail`; invitations too (no manager). Last active owner `409 FRM-USER-1003`, owner changes by non-owners `403 FRM-USER-1006`, manager loops `422 FRM-USER-1004`. Audit `users.role_changed`, `users.updated` |
 | POST | `/people/{id}/disable` · `/enable` · `/sign-out` · `/password` · `/two-step/reset` | → `PersonDetail`. Disable signs them out; `password` signs them out and the next sign-in answers `FRM-AUTH-1015` (choose a new password); own account `409 FRM-USER-1005` (disable, password). Audit `users.disabled` / `enabled` / `signed_out` / `password_requested` / `two_step_reset` |
 | POST | `/people/bulk` | `{ ids (1 to 200), action: role\|department\|job_title\|disable\|enable, value? }` → `{ done, skipped }` (department / job_title add to what they have; the same guards, refused ones count as skipped) |
 
-`NavCounts.people { total, active, invited, disabled, departments, job_titles }` (zeros for members). Departments and job titles pages moved to `/people/departments` and `/people/job-titles` (the `/org/{kind}` API is unchanged).
+`NavCounts.people { total, active, invited, pending, not_activated, disabled, departments, job_titles }` (zeros for members). Departments and job titles pages moved to `/people/departments` and `/people/job-titles` (the `/org/{kind}` API is unchanged).
 
 ## My profile (F16 M5)
 

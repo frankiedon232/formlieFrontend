@@ -43,6 +43,8 @@ export interface MockUser {
   must_change_password?: boolean
   /** My profile (F16 M5): authenticator app secret and recovery code hashes (two-step sign-in), photo and preferences. */
   totp_secret?: string | null
+  /** Signed up with a link, waiting for an admin's approval: sign-in says so (F16 R3). */
+  awaiting_approval?: boolean
   recovery_hashes?: string[]
   photo?: string | null
   language?: string | null
