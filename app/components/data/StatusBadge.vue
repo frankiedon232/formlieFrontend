@@ -37,6 +37,8 @@ const COLORS: Record<string, BadgeProps['color']> = {
   // API tokens (F13 M2)
   expiring: 'warning',
   revoked: 'error',
+  // People (F16): an invite not yet accepted
+  invited: 'warning',
   // Webhook deliveries (F13 M6)
   delivered: 'success',
   retrying: 'warning',

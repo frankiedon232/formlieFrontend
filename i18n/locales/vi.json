@@ -435,7 +435,8 @@
     "createForms": "Biểu mẫu",
     "createOperations": "Vận hành",
     "addDatabase": "Thêm cơ sở dữ liệu",
-    "newApiService": "Dịch vụ API mới"
+    "newApiService": "Dịch vụ API mới",
+    "people": "Mọi người"
   },
   "navbar": {
     "breadcrumb": "Đường dẫn",
@@ -7416,5 +7417,65 @@
       "toStandard": "Chuyển thành tiêu chuẩn"
     },
     "savedLive": "Các biểu mẫu đang dùng nó đã theo nó rồi, kể cả biểu mẫu đang hoạt động."
+  },
+  "people": {
+    "title": "Mọi người",
+    "subtitle": "Tất cả mọi người trong không gian làm việc, kèm phòng ban, chức danh và vai trò",
+    "overviewHint": "Mọi người trong không gian làm việc và lượt đăng nhập của họ trong 30 ngày qua.",
+    "byStatus": "Theo trạng thái",
+    "total": "Tổng {n}",
+    "signIns": "Đăng nhập mỗi ngày",
+    "signIns30": "Đăng nhập (30 ngày)",
+    "search": "Tìm tên, email, phòng ban",
+    "empty": "Chưa có ai",
+    "emptyDesc": "Mọi người sẽ xuất hiện ở đây khi tham gia không gian làm việc.",
+    "never": "Chưa bao giờ",
+    "none": "Không có",
+    "profile": "Hồ sơ",
+    "reports": "Báo cáo cho họ",
+    "lastSignIn": "Đăng nhập gần nhất",
+    "email": "Email",
+    "activity": "Hoạt động",
+    "joinedOn": "Tham gia {date}",
+    "formsOwned": "Sở hữu {n} biểu mẫu | Sở hữu {n} biểu mẫu",
+    "twoStepOn": "Bật",
+    "twoStepOff": "Tắt",
+    "flagTwoStep": "Chưa đăng nhập hai bước",
+    "flagTwoStepDesc": "Người này có thể quản lý không gian làm việc. Hãy nhờ họ thiết lập đăng nhập hai bước trong hồ sơ.",
+    "stat": {
+      "joined": "Tham gia (30 ngày)",
+      "twoStep": "Đã bật hai bước"
+    },
+    "status": {
+      "active": "Hoạt động",
+      "invited": "Đã mời",
+      "disabled": "Đã vô hiệu hóa"
+    },
+    "role": {
+      "owner": "Chủ sở hữu",
+      "admin": "Quản trị viên",
+      "member": "Thành viên"
+    },
+    "sort": {
+      "active": "Hoạt động gần nhất",
+      "joined": "Mới nhất trước",
+      "role": "Vai trò"
+    },
+    "col": {
+      "name": "Tên",
+      "role": "Vai trò",
+      "department": "Phòng ban",
+      "departments": "Phòng ban",
+      "jobTitle": "Chức danh",
+      "jobTitles": "Chức danh",
+      "manager": "Quản lý",
+      "status": "Trạng thái",
+      "twoStep": "Đăng nhập hai bước",
+      "lastActive": "Hoạt động gần nhất",
+      "joined": "Ngày tham gia",
+      "forms": "Biểu mẫu sở hữu",
+      "phone": "Điện thoại",
+      "twoStepShort": "Hai bước"
+    }
   }
 }

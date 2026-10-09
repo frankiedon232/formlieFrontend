@@ -435,7 +435,8 @@
     "createForms": "フォーム",
     "createOperations": "オペレーション",
     "addDatabase": "データベースを追加",
-    "newApiService": "新しい API サービス"
+    "newApiService": "新しい API サービス",
+    "people": "メンバー"
   },
   "navbar": {
     "breadcrumb": "パンくずリスト",
@@ -7416,5 +7417,65 @@
       "toStandard": "標準にする"
     },
     "savedLive": "これを使っているフォームは、公開中のフォームも含め、すでに追従しています。"
+  },
+  "people": {
+    "title": "メンバー",
+    "subtitle": "ワークスペースの全メンバーと、部署・役職・ロール",
+    "overviewHint": "ワークスペースのメンバーと、過去30日間のサインイン。",
+    "byStatus": "ステータス別",
+    "total": "合計 {n} 人",
+    "signIns": "1日あたりのサインイン",
+    "signIns30": "サインイン（30日間）",
+    "search": "名前、メール、部署を検索",
+    "empty": "メンバーはまだいません",
+    "emptyDesc": "ワークスペースに参加すると、ここに表示されます。",
+    "never": "なし",
+    "none": "なし",
+    "profile": "プロフィール",
+    "reports": "直属の部下",
+    "lastSignIn": "最終サインイン",
+    "email": "メール",
+    "activity": "アクティビティ",
+    "joinedOn": "{date} に参加",
+    "formsOwned": "{n} 件のフォームを所有 | {n} 件のフォームを所有",
+    "twoStepOn": "オン",
+    "twoStepOff": "オフ",
+    "flagTwoStep": "2段階認証なし",
+    "flagTwoStepDesc": "このメンバーはワークスペースを管理できます。プロフィールで2段階認証を設定するよう依頼してください。",
+    "stat": {
+      "joined": "参加（30日間）",
+      "twoStep": "2段階認証オン"
+    },
+    "status": {
+      "active": "有効",
+      "invited": "招待済み",
+      "disabled": "無効"
+    },
+    "role": {
+      "owner": "オーナー",
+      "admin": "管理者",
+      "member": "メンバー"
+    },
+    "sort": {
+      "active": "最終アクティブ",
+      "joined": "新しい順",
+      "role": "ロール"
+    },
+    "col": {
+      "name": "名前",
+      "role": "ロール",
+      "department": "部署",
+      "departments": "部署",
+      "jobTitle": "役職",
+      "jobTitles": "役職",
+      "manager": "上司",
+      "status": "ステータス",
+      "twoStep": "2段階認証",
+      "lastActive": "最終アクティブ",
+      "joined": "参加日",
+      "forms": "所有フォーム",
+      "phone": "電話",
+      "twoStepShort": "2段階"
+    }
   }
 }

@@ -435,7 +435,8 @@
     "createForms": "Formulieren",
     "createOperations": "Bewerkingen",
     "addDatabase": "Database toevoegen",
-    "newApiService": "Nieuwe API-service"
+    "newApiService": "Nieuwe API-service",
+    "people": "Mensen"
   },
   "navbar": {
     "breadcrumb": "Kruimelpad",
@@ -7416,5 +7417,65 @@
       "toStandard": "Standaard maken"
     },
     "savedLive": "Formulieren die haar gebruiken volgen haar al, ook live formulieren."
+  },
+  "people": {
+    "title": "Mensen",
+    "subtitle": "Iedereen in de werkruimte, met afdeling, functie en rol",
+    "overviewHint": "Mensen in de werkruimte en hun aanmeldingen in de afgelopen 30 dagen.",
+    "byStatus": "Per status",
+    "total": "{n} in totaal",
+    "signIns": "Aanmeldingen per dag",
+    "signIns30": "Aanmeldingen (30 dagen)",
+    "search": "Zoek op namen, e-mailadressen, afdelingen",
+    "empty": "Nog geen mensen",
+    "emptyDesc": "Mensen verschijnen hier zodra ze lid worden van de werkruimte.",
+    "never": "Nooit",
+    "none": "Geen",
+    "profile": "Profiel",
+    "reports": "Rapporteren aan hen",
+    "lastSignIn": "Laatste aanmelding",
+    "email": "E-mail",
+    "activity": "Activiteit",
+    "joinedOn": "Lid sinds {date}",
+    "formsOwned": "Beheert {n} formulier | Beheert {n} formulieren",
+    "twoStepOn": "Aan",
+    "twoStepOff": "Uit",
+    "flagTwoStep": "Geen tweestapsverificatie",
+    "flagTwoStepDesc": "Deze persoon kan de werkruimte beheren. Vraag hen tweestapsverificatie in te stellen in hun profiel.",
+    "stat": {
+      "joined": "Toegetreden (30 dagen)",
+      "twoStep": "Tweestaps aan"
+    },
+    "status": {
+      "active": "Actief",
+      "invited": "Uitgenodigd",
+      "disabled": "Uitgeschakeld"
+    },
+    "role": {
+      "owner": "Eigenaar",
+      "admin": "Beheerder",
+      "member": "Lid"
+    },
+    "sort": {
+      "active": "Laatst actief",
+      "joined": "Nieuwste eerst",
+      "role": "Rol"
+    },
+    "col": {
+      "name": "Naam",
+      "role": "Rol",
+      "department": "Afdeling",
+      "departments": "Afdelingen",
+      "jobTitle": "Functie",
+      "jobTitles": "Functies",
+      "manager": "Manager",
+      "status": "Status",
+      "twoStep": "Tweestapsverificatie",
+      "lastActive": "Laatst actief",
+      "joined": "Lid sinds",
+      "forms": "Eigen formulieren",
+      "phone": "Telefoon",
+      "twoStepShort": "Tweestaps"
+    }
   }
 }

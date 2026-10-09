@@ -435,7 +435,8 @@
     "createForms": "Formulare",
     "createOperations": "Betrieb",
     "addDatabase": "Datenbank hinzufügen",
-    "newApiService": "Neuer API-Dienst"
+    "newApiService": "Neuer API-Dienst",
+    "people": "Personen"
   },
   "navbar": {
     "breadcrumb": "Brotkrümelnavigation",
@@ -7416,5 +7417,65 @@
       "toStandard": "Zu Standard machen"
     },
     "savedLive": "Formulare, die sie verwenden, folgen ihr bereits, auch live geschaltete."
+  },
+  "people": {
+    "title": "Personen",
+    "subtitle": "Alle im Arbeitsbereich, mit Abteilung, Position und Rolle",
+    "overviewHint": "Personen im Arbeitsbereich und ihre Anmeldungen in den letzten 30 Tagen.",
+    "byStatus": "Nach Status",
+    "total": "{n} insgesamt",
+    "signIns": "Anmeldungen pro Tag",
+    "signIns30": "Anmeldungen (30 Tage)",
+    "search": "Namen, E-Mail-Adressen, Abteilungen suchen",
+    "empty": "Noch keine Personen",
+    "emptyDesc": "Personen erscheinen hier, sobald sie dem Arbeitsbereich beitreten.",
+    "never": "Nie",
+    "none": "Keine",
+    "profile": "Profil",
+    "reports": "Berichten an diese Person",
+    "lastSignIn": "Letzte Anmeldung",
+    "email": "E-Mail",
+    "activity": "Aktivität",
+    "joinedOn": "Beigetreten am {date}",
+    "formsOwned": "Besitzt {n} Formular | Besitzt {n} Formulare",
+    "twoStepOn": "Ein",
+    "twoStepOff": "Aus",
+    "flagTwoStep": "Keine Zwei-Schritt-Anmeldung",
+    "flagTwoStepDesc": "Diese Person kann den Arbeitsbereich verwalten. Bitten Sie sie, die Zwei-Schritt-Anmeldung in ihrem Profil einzurichten.",
+    "stat": {
+      "joined": "Beigetreten (30 Tage)",
+      "twoStep": "Zwei-Schritt aktiv"
+    },
+    "status": {
+      "active": "Aktiv",
+      "invited": "Eingeladen",
+      "disabled": "Deaktiviert"
+    },
+    "role": {
+      "owner": "Inhaber",
+      "admin": "Admin",
+      "member": "Mitglied"
+    },
+    "sort": {
+      "active": "Zuletzt aktiv",
+      "joined": "Neueste zuerst",
+      "role": "Rolle"
+    },
+    "col": {
+      "name": "Name",
+      "role": "Rolle",
+      "department": "Abteilung",
+      "departments": "Abteilungen",
+      "jobTitle": "Position",
+      "jobTitles": "Positionen",
+      "manager": "Vorgesetzte/r",
+      "status": "Status",
+      "twoStep": "Zwei-Schritt-Anmeldung",
+      "lastActive": "Zuletzt aktiv",
+      "joined": "Beigetreten",
+      "forms": "Eigene Formulare",
+      "phone": "Telefon",
+      "twoStepShort": "Zwei-Schritt"
+    }
   }
 }

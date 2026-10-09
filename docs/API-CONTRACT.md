@@ -510,3 +510,13 @@ Theme tokens (`schema.theme`, and later `themes.tokens`), full shape in `shared/
 **Large dynamic lists (F15 M5).** `OptionList.large?: boolean` (up to 200,000 options; standard lists 20,000; over the limit `422 FRM-FORM-1022`). `GET /option-lists` (builder) sends a large list without options and with `level_counts: number[]`; Option sets rows carry its first 20. Form fields from a large list arrive with `options: []` and `options_large: { total, parents?: string[] }` (choices one level up that have options under them; `partial: true` when only answered options are included, responses). `GET /option-lists/{id}/options?level=&q=&values=&parents=` → `{ items: [{ value, label }], total }` (builder and previews, signed in). The public lookup below also takes `parents` for a lower level. `ApiEndpointField.options_total` = how many when `options` holds only 20 examples.
 
 **Long list lookup (F15 M3).** `GET /public/forms/{key}/options?field=&q=&values=&language=&channel=` (open forms, same access as the form page) → `{ items: [{ value, label }], total }`: up to 50 options of a long-list field (more than 300 options, no level above) whose label contains `q` (case and accents ignored, starting matches first), or the options for comma-separated `values`. In `GET /public/forms/{key}` such fields come with `options: []` and `options_remote: { total }`.
+
+## People (F16 Users & profiles)
+
+Admins and owners only until F22.
+
+| Method | Path | Notes |
+| ------ | ---- | ----- |
+| GET | `/people` | `PersonRow[] { id, first_name, last_name, name, email, phone, role: owner\|admin\|member, status: active\|invited\|disabled, departments: { id, name }[], job_titles: { id, name }[], manager: { id, name } \| null, two_step, last_active_at, joined_at, forms_count }`; `?q` (name, email, departments, job titles), `filter[status]`, `filter[role]`, `filter[department]`, `filter[job_title]` (comma lists), `sort` `name` · `-last_active_at` · `-joined_at` · `role`, `page`, `page_size`. Departments and job titles come from the organisation data (`/org/{kind}` member lists) |
+| GET | `/people/insights` | `PeopleInsights { total, joined, joined_previous (30-day windows), two_step, by_status, by_role, daily: { date, count }[] (sign-ins, 30 days) }` |
+| GET | `/people/{id}` | `PersonDetail { …PersonRow, last_sign_in: { at, city, country, browser, os } \| null, sign_ins_30d, actions_30d, reports: { id, name }[] }`; unknown id → `FRM-GEN-1004` |

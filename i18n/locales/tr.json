@@ -435,7 +435,8 @@
     "createForms": "Formlar",
     "createOperations": "İşlemler",
     "addDatabase": "Veritabanı ekle",
-    "newApiService": "Yeni API hizmeti"
+    "newApiService": "Yeni API hizmeti",
+    "people": "Kişiler"
   },
   "navbar": {
     "breadcrumb": "İçerik haritası",
@@ -7416,5 +7417,65 @@
       "toStandard": "Standart yap"
     },
     "savedLive": "Onu kullanan formlar, yayındakiler dahil, zaten onu takip eder."
+  },
+  "people": {
+    "title": "Kişiler",
+    "subtitle": "Çalışma alanındaki herkes, departmanı, unvanı ve rolüyle",
+    "overviewHint": "Çalışma alanındaki kişiler ve son 30 gündeki girişleri.",
+    "byStatus": "Duruma göre",
+    "total": "Toplam {n}",
+    "signIns": "Günlük girişler",
+    "signIns30": "Girişler (30 gün)",
+    "search": "Ad, e-posta, departman ara",
+    "empty": "Henüz kimse yok",
+    "emptyDesc": "Kişiler çalışma alanına katıldığında burada görünür.",
+    "never": "Hiç",
+    "none": "Yok",
+    "profile": "Profil",
+    "reports": "Ona bağlı olanlar",
+    "lastSignIn": "Son giriş",
+    "email": "E-posta",
+    "activity": "Etkinlik",
+    "joinedOn": "{date} tarihinde katıldı",
+    "formsOwned": "{n} formun sahibi | {n} formun sahibi",
+    "twoStepOn": "Açık",
+    "twoStepOff": "Kapalı",
+    "flagTwoStep": "İki adımlı giriş yok",
+    "flagTwoStepDesc": "Bu kişi çalışma alanını yönetebilir. Profilinde iki adımlı girişi kurmasını isteyin.",
+    "stat": {
+      "joined": "Katılanlar (30 gün)",
+      "twoStep": "İki adımlı açık"
+    },
+    "status": {
+      "active": "Etkin",
+      "invited": "Davet edildi",
+      "disabled": "Devre dışı"
+    },
+    "role": {
+      "owner": "Sahip",
+      "admin": "Yönetici",
+      "member": "Üye"
+    },
+    "sort": {
+      "active": "Son etkinlik",
+      "joined": "En yeni önce",
+      "role": "Rol"
+    },
+    "col": {
+      "name": "Ad",
+      "role": "Rol",
+      "department": "Departman",
+      "departments": "Departmanlar",
+      "jobTitle": "Unvan",
+      "jobTitles": "Unvanlar",
+      "manager": "Yönetici",
+      "status": "Durum",
+      "twoStep": "İki adımlı giriş",
+      "lastActive": "Son etkinlik",
+      "joined": "Katılma",
+      "forms": "Sahip olunan formlar",
+      "phone": "Telefon",
+      "twoStepShort": "İki adımlı"
+    }
   }
 }

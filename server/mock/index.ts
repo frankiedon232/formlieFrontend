@@ -4,6 +4,7 @@
  */
 import { fail } from './core/respond'
 import * as audit from './routes/audit'
+import * as people from './routes/people'
 import { getDirectory } from './routes/directory'
 import { getFormOverview } from './routes/formOverview'
 import * as responses from './routes/responses'
@@ -234,6 +235,9 @@ const router = createRouter()
   .get('/field-library', library.listSavedFields)
   .post('/field-library', library.saveField)
   .delete('/field-library/:id', library.deleteSavedField)
+  .get('/people', people.listPeople)
+  .get('/people/insights', people.peopleInsights)
+  .get('/people/:id', people.getPerson)
   .get('/option-lists', optionLists.listOptionLists)
   .get('/option-lists/insights', optionLists.optionListInsights)
   .post('/option-lists', optionLists.createOptionList)

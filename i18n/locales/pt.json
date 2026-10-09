@@ -435,7 +435,8 @@
     "createForms": "Formulários",
     "createOperations": "Operações",
     "addDatabase": "Adicionar banco de dados",
-    "newApiService": "Novo serviço de API"
+    "newApiService": "Novo serviço de API",
+    "people": "Pessoas"
   },
   "navbar": {
     "breadcrumb": "Trilha de navegação",
@@ -7416,5 +7417,65 @@
       "toStandard": "Tornar padrão"
     },
     "savedLive": "Os formulários que a usam já a acompanham, inclusive os ao vivo."
+  },
+  "people": {
+    "title": "Pessoas",
+    "subtitle": "Todas as pessoas do espaço de trabalho, com departamento, cargo e função",
+    "overviewHint": "Pessoas do espaço de trabalho e os seus acessos nos últimos 30 dias.",
+    "byStatus": "Por estado",
+    "total": "{n} no total",
+    "signIns": "Acessos por dia",
+    "signIns30": "Acessos (30 dias)",
+    "search": "Pesquisar nomes, e-mails, departamentos",
+    "empty": "Ainda não há pessoas",
+    "emptyDesc": "As pessoas aparecem aqui quando entram no espaço de trabalho.",
+    "never": "Nunca",
+    "none": "Nenhum",
+    "profile": "Perfil",
+    "reports": "Reportam a esta pessoa",
+    "lastSignIn": "Último acesso",
+    "email": "E-mail",
+    "activity": "Atividade",
+    "joinedOn": "Entrou em {date}",
+    "formsOwned": "Tem {n} formulário | Tem {n} formulários",
+    "twoStepOn": "Ativada",
+    "twoStepOff": "Desativada",
+    "flagTwoStep": "Sem verificação em duas etapas",
+    "flagTwoStepDesc": "Esta pessoa pode gerir o espaço de trabalho. Peça-lhe que configure a verificação em duas etapas no perfil.",
+    "stat": {
+      "joined": "Entraram (30 dias)",
+      "twoStep": "Duas etapas ativas"
+    },
+    "status": {
+      "active": "Ativo",
+      "invited": "Convidado",
+      "disabled": "Desativado"
+    },
+    "role": {
+      "owner": "Proprietário",
+      "admin": "Administrador",
+      "member": "Membro"
+    },
+    "sort": {
+      "active": "Última atividade",
+      "joined": "Mais recentes primeiro",
+      "role": "Função"
+    },
+    "col": {
+      "name": "Nome",
+      "role": "Função",
+      "department": "Departamento",
+      "departments": "Departamentos",
+      "jobTitle": "Cargo",
+      "jobTitles": "Cargos",
+      "manager": "Gestor",
+      "status": "Estado",
+      "twoStep": "Verificação em duas etapas",
+      "lastActive": "Última atividade",
+      "joined": "Entrada",
+      "forms": "Formulários próprios",
+      "phone": "Telefone",
+      "twoStepShort": "Duas etapas"
+    }
   }
 }

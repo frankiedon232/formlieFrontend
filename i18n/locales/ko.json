@@ -435,7 +435,8 @@
     "createForms": "양식",
     "createOperations": "운영",
     "addDatabase": "데이터베이스 추가",
-    "newApiService": "새 API 서비스"
+    "newApiService": "새 API 서비스",
+    "people": "구성원"
   },
   "navbar": {
     "breadcrumb": "이동 경로",
@@ -7416,5 +7417,65 @@
       "toStandard": "표준으로 만들기"
     },
     "savedLive": "이 목록을 사용하는 양식은 게시된 양식도 이미 목록을 따라갑니다."
+  },
+  "people": {
+    "title": "구성원",
+    "subtitle": "워크스페이스의 모든 구성원과 부서, 직함, 역할",
+    "overviewHint": "워크스페이스 구성원과 최근 30일간의 로그인 현황입니다.",
+    "byStatus": "상태별",
+    "total": "총 {n}명",
+    "signIns": "일별 로그인",
+    "signIns30": "로그인 (30일)",
+    "search": "이름, 이메일, 부서 검색",
+    "empty": "아직 구성원이 없습니다",
+    "emptyDesc": "워크스페이스에 참여하면 여기에 표시됩니다.",
+    "never": "없음",
+    "none": "없음",
+    "profile": "프로필",
+    "reports": "직속 팀원",
+    "lastSignIn": "마지막 로그인",
+    "email": "이메일",
+    "activity": "활동",
+    "joinedOn": "{date} 참여",
+    "formsOwned": "양식 {n}개 소유 | 양식 {n}개 소유",
+    "twoStepOn": "켜짐",
+    "twoStepOff": "꺼짐",
+    "flagTwoStep": "2단계 로그인 없음",
+    "flagTwoStepDesc": "이 구성원은 워크스페이스를 관리할 수 있습니다. 프로필에서 2단계 로그인을 설정하도록 요청하세요.",
+    "stat": {
+      "joined": "참여 (30일)",
+      "twoStep": "2단계 로그인 사용"
+    },
+    "status": {
+      "active": "활성",
+      "invited": "초대됨",
+      "disabled": "비활성"
+    },
+    "role": {
+      "owner": "소유자",
+      "admin": "관리자",
+      "member": "멤버"
+    },
+    "sort": {
+      "active": "마지막 활동",
+      "joined": "최신순",
+      "role": "역할"
+    },
+    "col": {
+      "name": "이름",
+      "role": "역할",
+      "department": "부서",
+      "departments": "부서",
+      "jobTitle": "직함",
+      "jobTitles": "직함",
+      "manager": "관리자",
+      "status": "상태",
+      "twoStep": "2단계 로그인",
+      "lastActive": "마지막 활동",
+      "joined": "참여일",
+      "forms": "소유한 양식",
+      "phone": "전화",
+      "twoStepShort": "2단계"
+    }
   }
 }

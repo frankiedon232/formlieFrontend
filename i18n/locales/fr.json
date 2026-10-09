@@ -435,7 +435,8 @@
     "createForms": "Formulaires",
     "createOperations": "Opérations",
     "addDatabase": "Ajouter une base de données",
-    "newApiService": "Nouveau service d'API"
+    "newApiService": "Nouveau service d'API",
+    "people": "Personnes"
   },
   "navbar": {
     "breadcrumb": "Fil d'Ariane",
@@ -7416,5 +7417,65 @@
       "toStandard": "La passer en standard"
     },
     "savedLive": "Les formulaires qui l'utilisent la suivent déjà, y compris ceux en ligne."
+  },
+  "people": {
+    "title": "Personnes",
+    "subtitle": "Toutes les personnes de l'espace de travail, avec leur service, leur poste et leur rôle",
+    "overviewHint": "Les personnes de l'espace de travail et leurs connexions des 30 derniers jours.",
+    "byStatus": "Par statut",
+    "total": "{n} au total",
+    "signIns": "Connexions par jour",
+    "signIns30": "Connexions (30 jours)",
+    "search": "Rechercher des noms, e-mails, services",
+    "empty": "Aucune personne pour l'instant",
+    "emptyDesc": "Les personnes apparaissent ici dès qu'elles rejoignent l'espace de travail.",
+    "never": "Jamais",
+    "none": "Aucun",
+    "profile": "Profil",
+    "reports": "Rapportent à elle",
+    "lastSignIn": "Dernière connexion",
+    "email": "E-mail",
+    "activity": "Activité",
+    "joinedOn": "Arrivé le {date}",
+    "formsOwned": "Possède {n} formulaire | Possède {n} formulaires",
+    "twoStepOn": "Activée",
+    "twoStepOff": "Désactivée",
+    "flagTwoStep": "Pas de connexion en deux étapes",
+    "flagTwoStepDesc": "Cette personne peut gérer l'espace de travail. Demandez-lui d'activer la connexion en deux étapes dans son profil.",
+    "stat": {
+      "joined": "Arrivées (30 jours)",
+      "twoStep": "Deux étapes activées"
+    },
+    "status": {
+      "active": "Actif",
+      "invited": "Invité",
+      "disabled": "Désactivé"
+    },
+    "role": {
+      "owner": "Propriétaire",
+      "admin": "Admin",
+      "member": "Membre"
+    },
+    "sort": {
+      "active": "Dernière activité",
+      "joined": "Plus récents d'abord",
+      "role": "Rôle"
+    },
+    "col": {
+      "name": "Nom",
+      "role": "Rôle",
+      "department": "Service",
+      "departments": "Services",
+      "jobTitle": "Poste",
+      "jobTitles": "Postes",
+      "manager": "Responsable",
+      "status": "Statut",
+      "twoStep": "Connexion en deux étapes",
+      "lastActive": "Dernière activité",
+      "joined": "Arrivée",
+      "forms": "Formulaires possédés",
+      "phone": "Téléphone",
+      "twoStepShort": "Deux étapes"
+    }
   }
 }

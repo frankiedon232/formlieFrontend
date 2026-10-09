@@ -435,7 +435,8 @@
     "createForms": "Fomu",
     "createOperations": "Shughuli",
     "addDatabase": "Ongeza hifadhidata",
-    "newApiService": "Huduma mpya ya API"
+    "newApiService": "Huduma mpya ya API",
+    "people": "Watu"
   },
   "navbar": {
     "breadcrumb": "Njia ya urambazaji",
@@ -7416,5 +7417,65 @@
       "toStandard": "Ifanye kawaida"
     },
     "savedLive": "Fomu zinazoitumia tayari zinaifuata, pamoja na fomu zilizo hewani."
+  },
+  "people": {
+    "title": "Watu",
+    "subtitle": "Kila mtu katika eneo la kazi, pamoja na idara, cheo na jukumu lake",
+    "overviewHint": "Watu walio katika eneo la kazi na uingiaji wao katika siku 30 zilizopita.",
+    "byStatus": "Kwa hali",
+    "total": "Jumla {n}",
+    "signIns": "Uingiaji kwa siku",
+    "signIns30": "Uingiaji (siku 30)",
+    "search": "Tafuta majina, barua pepe, idara",
+    "empty": "Bado hakuna watu",
+    "emptyDesc": "Watu huonekana hapa mara wanapojiunga na eneo la kazi.",
+    "never": "Kamwe",
+    "none": "Hakuna",
+    "profile": "Wasifu",
+    "reports": "Wanaowajibika kwake",
+    "lastSignIn": "Uingiaji wa mwisho",
+    "email": "Barua pepe",
+    "activity": "Shughuli",
+    "joinedOn": "Alijiunga {date}",
+    "formsOwned": "Anamiliki fomu {n} | Anamiliki fomu {n}",
+    "twoStepOn": "Imewashwa",
+    "twoStepOff": "Imezimwa",
+    "flagTwoStep": "Hakuna uingiaji wa hatua mbili",
+    "flagTwoStepDesc": "Mtu huyu anaweza kusimamia eneo la kazi. Mwombe aweke uingiaji wa hatua mbili kwenye wasifu wake.",
+    "stat": {
+      "joined": "Waliojiunga (siku 30)",
+      "twoStep": "Hatua mbili imewashwa"
+    },
+    "status": {
+      "active": "Hai",
+      "invited": "Amealikwa",
+      "disabled": "Amezimwa"
+    },
+    "role": {
+      "owner": "Mmiliki",
+      "admin": "Msimamizi",
+      "member": "Mwanachama"
+    },
+    "sort": {
+      "active": "Aliyekuwa hai mwisho",
+      "joined": "Wapya kwanza",
+      "role": "Jukumu"
+    },
+    "col": {
+      "name": "Jina",
+      "role": "Jukumu",
+      "department": "Idara",
+      "departments": "Idara",
+      "jobTitle": "Cheo",
+      "jobTitles": "Vyeo",
+      "manager": "Meneja",
+      "status": "Hali",
+      "twoStep": "Uingiaji wa hatua mbili",
+      "lastActive": "Aliyekuwa hai mwisho",
+      "joined": "Alijiunga",
+      "forms": "Fomu anazomiliki",
+      "phone": "Simu",
+      "twoStepShort": "Hatua mbili"
+    }
   }
 }

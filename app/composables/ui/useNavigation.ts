@@ -229,6 +229,8 @@ const areaOf = (path: string): NavArea =>
   NAV_AREAS.find(a => path === a.to || path.startsWith(`${a.to}/`))?.key ?? 'forms'
 
 const SYSTEM_NAV: AppNavItem[] = [
+  // People and their profiles (F16): admins and owners until F22
+  { key: 'people', icon: 'i-lucide-users', to: '/people', shortcut: 'g-u', adminOnly: true },
   { key: 'settings', icon: 'i-lucide-settings', to: '/settings', shortcut: 'g-s', except: ['/settings/themes'] },
   { key: 'audit', icon: 'i-lucide-scroll-text', to: '/audit', shortcut: 'g-l', adminOnly: true },
   { key: 'help', icon: 'i-lucide-circle-help', to: '/help', railFoot: true },

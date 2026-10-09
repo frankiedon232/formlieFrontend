@@ -435,7 +435,8 @@
     "createForms": "Formularios",
     "createOperations": "Operaciones",
     "addDatabase": "Añadir base de datos",
-    "newApiService": "Nuevo servicio de API"
+    "newApiService": "Nuevo servicio de API",
+    "people": "Personas"
   },
   "navbar": {
     "breadcrumb": "Ruta de navegación",
@@ -7416,5 +7417,65 @@
       "toStandard": "Hacerla estándar"
     },
     "savedLive": "Los formularios que la usan ya la siguen, también los que están en vivo."
+  },
+  "people": {
+    "title": "Personas",
+    "subtitle": "Todas las personas del espacio de trabajo, con su departamento, puesto y rol",
+    "overviewHint": "Personas del espacio de trabajo y sus inicios de sesión en los últimos 30 días.",
+    "byStatus": "Por estado",
+    "total": "{n} en total",
+    "signIns": "Inicios de sesión por día",
+    "signIns30": "Inicios de sesión (30 días)",
+    "search": "Buscar nombres, correos, departamentos",
+    "empty": "Aún no hay personas",
+    "emptyDesc": "Las personas aparecen aquí cuando se unen al espacio de trabajo.",
+    "never": "Nunca",
+    "none": "Ninguno",
+    "profile": "Perfil",
+    "reports": "Le reportan",
+    "lastSignIn": "Último inicio de sesión",
+    "email": "Correo electrónico",
+    "activity": "Actividad",
+    "joinedOn": "Se unió el {date}",
+    "formsOwned": "Es propietario de {n} formulario | Es propietario de {n} formularios",
+    "twoStepOn": "Activada",
+    "twoStepOff": "Desactivada",
+    "flagTwoStep": "Sin verificación en dos pasos",
+    "flagTwoStepDesc": "Esta persona puede administrar el espacio de trabajo. Pídele que configure la verificación en dos pasos en su perfil.",
+    "stat": {
+      "joined": "Se unieron (30 días)",
+      "twoStep": "Verificación en dos pasos activa"
+    },
+    "status": {
+      "active": "Activo",
+      "invited": "Invitado",
+      "disabled": "Desactivado"
+    },
+    "role": {
+      "owner": "Propietario",
+      "admin": "Administrador",
+      "member": "Miembro"
+    },
+    "sort": {
+      "active": "Última actividad",
+      "joined": "Más recientes primero",
+      "role": "Rol"
+    },
+    "col": {
+      "name": "Nombre",
+      "role": "Rol",
+      "department": "Departamento",
+      "departments": "Departamentos",
+      "jobTitle": "Puesto",
+      "jobTitles": "Puestos",
+      "manager": "Responsable",
+      "status": "Estado",
+      "twoStep": "Verificación en dos pasos",
+      "lastActive": "Última actividad",
+      "joined": "Se unió",
+      "forms": "Formularios propios",
+      "phone": "Teléfono",
+      "twoStepShort": "Dos pasos"
+    }
   }
 }

@@ -435,7 +435,8 @@
     "createForms": "表单",
     "createOperations": "运营",
     "addDatabase": "添加数据库",
-    "newApiService": "新建 API 服务"
+    "newApiService": "新建 API 服务",
+    "people": "成员"
   },
   "navbar": {
     "breadcrumb": "面包屑导航",
@@ -7416,5 +7417,65 @@
       "toStandard": "设为标准"
     },
     "savedLive": "使用它的表单已经跟随它，已上线的表单也一样。"
+  },
+  "people": {
+    "title": "成员",
+    "subtitle": "工作区内的所有人，包括部门、职位和角色",
+    "overviewHint": "工作区成员及其近 30 天的登录情况。",
+    "byStatus": "按状态",
+    "total": "共 {n} 人",
+    "signIns": "每日登录",
+    "signIns30": "登录（30 天）",
+    "search": "搜索姓名、邮箱、部门",
+    "empty": "还没有成员",
+    "emptyDesc": "成员加入工作区后会显示在这里。",
+    "never": "从未",
+    "none": "无",
+    "profile": "个人资料",
+    "reports": "下属",
+    "lastSignIn": "最近登录",
+    "email": "邮箱",
+    "activity": "动态",
+    "joinedOn": "{date} 加入",
+    "formsOwned": "拥有 {n} 个表单 | 拥有 {n} 个表单",
+    "twoStepOn": "开启",
+    "twoStepOff": "关闭",
+    "flagTwoStep": "未启用两步登录",
+    "flagTwoStepDesc": "此人可以管理工作区。请让其在个人资料中设置两步登录。",
+    "stat": {
+      "joined": "加入（30 天）",
+      "twoStep": "已开启两步登录"
+    },
+    "status": {
+      "active": "正常",
+      "invited": "已邀请",
+      "disabled": "已停用"
+    },
+    "role": {
+      "owner": "所有者",
+      "admin": "管理员",
+      "member": "成员"
+    },
+    "sort": {
+      "active": "最近活跃",
+      "joined": "最新优先",
+      "role": "角色"
+    },
+    "col": {
+      "name": "姓名",
+      "role": "角色",
+      "department": "部门",
+      "departments": "部门",
+      "jobTitle": "职位",
+      "jobTitles": "职位",
+      "manager": "上级",
+      "status": "状态",
+      "twoStep": "两步登录",
+      "lastActive": "最近活跃",
+      "joined": "加入时间",
+      "forms": "拥有的表单",
+      "phone": "电话",
+      "twoStepShort": "两步"
+    }
   }
 }

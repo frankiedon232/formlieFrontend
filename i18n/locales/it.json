@@ -435,7 +435,8 @@
     "createForms": "Moduli",
     "createOperations": "Operazioni",
     "addDatabase": "Aggiungi database",
-    "newApiService": "Nuovo servizio API"
+    "newApiService": "Nuovo servizio API",
+    "people": "Persone"
   },
   "navbar": {
     "breadcrumb": "Percorso di navigazione",
@@ -7416,5 +7417,65 @@
       "toStandard": "Rendilo standard"
     },
     "savedLive": "I moduli che lo usano lo seguono già, anche quelli attivi."
+  },
+  "people": {
+    "title": "Persone",
+    "subtitle": "Tutte le persone dello spazio di lavoro, con reparto, qualifica e ruolo",
+    "overviewHint": "Le persone dello spazio di lavoro e i loro accessi negli ultimi 30 giorni.",
+    "byStatus": "Per stato",
+    "total": "{n} in tutto",
+    "signIns": "Accessi al giorno",
+    "signIns30": "Accessi (30 giorni)",
+    "search": "Cerca nomi, email, reparti",
+    "empty": "Ancora nessuna persona",
+    "emptyDesc": "Le persone compaiono qui quando entrano nello spazio di lavoro.",
+    "never": "Mai",
+    "none": "Nessuno",
+    "profile": "Profilo",
+    "reports": "Fanno capo a lei",
+    "lastSignIn": "Ultimo accesso",
+    "email": "Email",
+    "activity": "Attività",
+    "joinedOn": "Iscritto il {date}",
+    "formsOwned": "Possiede {n} modulo | Possiede {n} moduli",
+    "twoStepOn": "Attiva",
+    "twoStepOff": "Disattivata",
+    "flagTwoStep": "Nessun accesso in due passaggi",
+    "flagTwoStepDesc": "Questa persona può gestire lo spazio di lavoro. Chiedile di attivare l'accesso in due passaggi nel suo profilo.",
+    "stat": {
+      "joined": "Nuovi (30 giorni)",
+      "twoStep": "Due passaggi attivi"
+    },
+    "status": {
+      "active": "Attivo",
+      "invited": "Invitato",
+      "disabled": "Disattivato"
+    },
+    "role": {
+      "owner": "Proprietario",
+      "admin": "Admin",
+      "member": "Membro"
+    },
+    "sort": {
+      "active": "Ultima attività",
+      "joined": "Più recenti prima",
+      "role": "Ruolo"
+    },
+    "col": {
+      "name": "Nome",
+      "role": "Ruolo",
+      "department": "Reparto",
+      "departments": "Reparti",
+      "jobTitle": "Qualifica",
+      "jobTitles": "Qualifiche",
+      "manager": "Responsabile",
+      "status": "Stato",
+      "twoStep": "Accesso in due passaggi",
+      "lastActive": "Ultima attività",
+      "joined": "Iscritto",
+      "forms": "Moduli posseduti",
+      "phone": "Telefono",
+      "twoStepShort": "Due passaggi"
+    }
   }
 }

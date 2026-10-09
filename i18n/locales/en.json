@@ -435,7 +435,8 @@
     "createForms": "Forms",
     "createOperations": "Operations",
     "addDatabase": "Add database",
-    "newApiService": "New API service"
+    "newApiService": "New API service",
+    "people": "People"
   },
   "navbar": {
     "breadcrumb": "Breadcrumb",
@@ -7416,5 +7417,65 @@
       "toStandard": "Make it standard"
     },
     "savedLive": "Forms using it follow it already, live forms too."
+  },
+  "people": {
+    "title": "People",
+    "subtitle": "Everyone in the workspace, with their department, job title and role",
+    "overviewHint": "People in the workspace and their sign-ins in the last 30 days.",
+    "byStatus": "By status",
+    "total": "{n} in all",
+    "signIns": "Sign-ins per day",
+    "signIns30": "Sign-ins (30 days)",
+    "search": "Search names, emails, departments",
+    "empty": "No people yet",
+    "emptyDesc": "People appear here once they join the workspace.",
+    "never": "Never",
+    "none": "None",
+    "profile": "Profile",
+    "reports": "Reports to them",
+    "lastSignIn": "Last sign-in",
+    "email": "Email",
+    "activity": "Activity",
+    "joinedOn": "Joined {date}",
+    "formsOwned": "Owns {n} form | Owns {n} forms",
+    "twoStepOn": "On",
+    "twoStepOff": "Off",
+    "flagTwoStep": "No two-step sign-in",
+    "flagTwoStepDesc": "This person can manage the workspace. Ask them to set up two-step sign-in in their profile.",
+    "stat": {
+      "joined": "Joined (30 days)",
+      "twoStep": "Two-step on"
+    },
+    "status": {
+      "active": "Active",
+      "invited": "Invited",
+      "disabled": "Disabled"
+    },
+    "role": {
+      "owner": "Owner",
+      "admin": "Admin",
+      "member": "Member"
+    },
+    "sort": {
+      "active": "Last active",
+      "joined": "Newest first",
+      "role": "Role"
+    },
+    "col": {
+      "name": "Name",
+      "role": "Role",
+      "department": "Department",
+      "departments": "Departments",
+      "jobTitle": "Job title",
+      "jobTitles": "Job titles",
+      "manager": "Manager",
+      "status": "Status",
+      "twoStep": "Two-step sign-in",
+      "lastActive": "Last active",
+      "joined": "Joined",
+      "forms": "Forms owned",
+      "phone": "Phone",
+      "twoStepShort": "Two-step"
+    }
   }
 }

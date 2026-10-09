@@ -435,7 +435,8 @@
     "createForms": "Formulir",
     "createOperations": "Operasi",
     "addDatabase": "Tambah database",
-    "newApiService": "Layanan API baru"
+    "newApiService": "Layanan API baru",
+    "people": "Orang"
   },
   "navbar": {
     "breadcrumb": "Jejak navigasi",
@@ -7416,5 +7417,65 @@
       "toStandard": "Jadikan standar"
     },
     "savedLive": "Formulir yang memakainya sudah mengikutinya, termasuk formulir yang sedang aktif."
+  },
+  "people": {
+    "title": "Orang",
+    "subtitle": "Semua orang di ruang kerja, beserta departemen, jabatan, dan perannya",
+    "overviewHint": "Orang di ruang kerja dan login mereka dalam 30 hari terakhir.",
+    "byStatus": "Menurut status",
+    "total": "Total {n}",
+    "signIns": "Login per hari",
+    "signIns30": "Login (30 hari)",
+    "search": "Cari nama, email, departemen",
+    "empty": "Belum ada orang",
+    "emptyDesc": "Orang akan muncul di sini setelah bergabung dengan ruang kerja.",
+    "never": "Tidak pernah",
+    "none": "Tidak ada",
+    "profile": "Profil",
+    "reports": "Melapor kepadanya",
+    "lastSignIn": "Login terakhir",
+    "email": "Email",
+    "activity": "Aktivitas",
+    "joinedOn": "Bergabung {date}",
+    "formsOwned": "Memiliki {n} formulir | Memiliki {n} formulir",
+    "twoStepOn": "Aktif",
+    "twoStepOff": "Nonaktif",
+    "flagTwoStep": "Tanpa login dua langkah",
+    "flagTwoStepDesc": "Orang ini dapat mengelola ruang kerja. Minta mereka mengatur login dua langkah di profilnya.",
+    "stat": {
+      "joined": "Bergabung (30 hari)",
+      "twoStep": "Dua langkah aktif"
+    },
+    "status": {
+      "active": "Aktif",
+      "invited": "Diundang",
+      "disabled": "Dinonaktifkan"
+    },
+    "role": {
+      "owner": "Pemilik",
+      "admin": "Admin",
+      "member": "Anggota"
+    },
+    "sort": {
+      "active": "Terakhir aktif",
+      "joined": "Terbaru dulu",
+      "role": "Peran"
+    },
+    "col": {
+      "name": "Nama",
+      "role": "Peran",
+      "department": "Departemen",
+      "departments": "Departemen",
+      "jobTitle": "Jabatan",
+      "jobTitles": "Jabatan",
+      "manager": "Atasan",
+      "status": "Status",
+      "twoStep": "Login dua langkah",
+      "lastActive": "Terakhir aktif",
+      "joined": "Bergabung",
+      "forms": "Formulir dimiliki",
+      "phone": "Telepon",
+      "twoStepShort": "Dua langkah"
+    }
   }
 }

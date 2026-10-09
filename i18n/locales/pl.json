@@ -435,7 +435,8 @@
     "createForms": "Formularze",
     "createOperations": "Operacje",
     "addDatabase": "Dodaj bazę danych",
-    "newApiService": "Nowa usługa API"
+    "newApiService": "Nowa usługa API",
+    "people": "Osoby"
   },
   "navbar": {
     "breadcrumb": "Ścieżka nawigacji",
@@ -7416,5 +7417,65 @@
       "toStandard": "Zmień na standardową"
     },
     "savedLive": "Formularze, które jej używają, już za nią podążają, także te opublikowane."
+  },
+  "people": {
+    "title": "Osoby",
+    "subtitle": "Wszyscy w przestrzeni roboczej, z działem, stanowiskiem i rolą",
+    "overviewHint": "Osoby w przestrzeni roboczej i ich logowania w ciągu ostatnich 30 dni.",
+    "byStatus": "Według statusu",
+    "total": "Razem: {n}",
+    "signIns": "Logowania dziennie",
+    "signIns30": "Logowania (30 dni)",
+    "search": "Szukaj imion, e-maili, działów",
+    "empty": "Brak osób",
+    "emptyDesc": "Osoby pojawią się tutaj po dołączeniu do przestrzeni roboczej.",
+    "never": "Nigdy",
+    "none": "Brak",
+    "profile": "Profil",
+    "reports": "Podlegają tej osobie",
+    "lastSignIn": "Ostatnie logowanie",
+    "email": "E-mail",
+    "activity": "Aktywność",
+    "joinedOn": "Dołączył(a) {date}",
+    "formsOwned": "Jest właścicielem {n} formularza | Jest właścicielem {n} formularzy",
+    "twoStepOn": "Włączone",
+    "twoStepOff": "Wyłączone",
+    "flagTwoStep": "Brak logowania dwuetapowego",
+    "flagTwoStepDesc": "Ta osoba może zarządzać przestrzenią roboczą. Poproś ją o ustawienie logowania dwuetapowego w profilu.",
+    "stat": {
+      "joined": "Dołączyli (30 dni)",
+      "twoStep": "Dwuetapowe włączone"
+    },
+    "status": {
+      "active": "Aktywny",
+      "invited": "Zaproszony",
+      "disabled": "Wyłączony"
+    },
+    "role": {
+      "owner": "Właściciel",
+      "admin": "Administrator",
+      "member": "Członek"
+    },
+    "sort": {
+      "active": "Ostatnia aktywność",
+      "joined": "Najnowsze najpierw",
+      "role": "Rola"
+    },
+    "col": {
+      "name": "Imię i nazwisko",
+      "role": "Rola",
+      "department": "Dział",
+      "departments": "Działy",
+      "jobTitle": "Stanowisko",
+      "jobTitles": "Stanowiska",
+      "manager": "Przełożony",
+      "status": "Status",
+      "twoStep": "Logowanie dwuetapowe",
+      "lastActive": "Ostatnia aktywność",
+      "joined": "Dołączył(a)",
+      "forms": "Posiadane formularze",
+      "phone": "Telefon",
+      "twoStepShort": "Dwuetapowe"
+    }
   }
 }
