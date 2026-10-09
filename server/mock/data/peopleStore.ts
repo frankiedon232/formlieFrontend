@@ -9,7 +9,7 @@ import type { WorkspaceRole } from '#shared/types/auth'
 import type { DateFormat } from '#shared/types/onboarding'
 import type { PersonDetail, PersonRow, PersonStatus } from '#shared/types/people'
 import { auditLogOf } from '../core/audit'
-import { whenRecoveryUsed } from '../core/auth'
+import { latestSessions, whenRecoveryUsed } from '../core/auth'
 import { loadPersisted, savePersisted } from '../core/persist'
 import { MOCK_OWNERS } from './forms'
 import { formsOf } from './formStore'
@@ -143,12 +143,35 @@ export function peopleRows(tenant: MockTenant): PersonRow[] {
   const people = peopleStoreOf(tenant)
   const org = orgOf(tenant)
   const lastSeen = new Map<string, string>()
-  for (const event of auditLogOf(tenant)) if (event.actor.id && event.outcome !== 'blocked' && event.outcome !== 'failure' && !lastSeen.has(event.actor.id)) lastSeen.set(event.actor.id, event.occurred_at)
+  // The latest visit from the audit trail (newest first): a run of actions with gaps under 30 minutes
+  const visits = new Map<string, { start: number; end: number; done: boolean }>()
+  for (const event of auditLogOf(tenant)) {
+    const id = event.actor.id
+    if (!id || event.outcome === 'blocked' || event.outcome === 'failure') continue
+    const at = Date.parse(event.occurred_at)
+    if (!lastSeen.has(id)) lastSeen.set(id, event.occurred_at)
+    const visit = visits.get(id)
+    if (!visit) visits.set(id, { start: at, end: at, done: false })
+    else if (!visit.done) {
+      if (visit.start - at < 30 * 60_000) visit.start = at
+      else visit.done = true
+    }
+  }
+  const sessions = latestSessions(tenant)
+  const visitOf = (id: string): PersonRow['last_visit'] => {
+    const session = sessions.get(id)
+    const trail = visits.get(id)
+    if (session && (!trail || session.lastActiveAt >= trail.end)) return { started_at: new Date(session.startedAt).toISOString(), ended_at: new Date(Math.max(session.lastActiveAt, trail?.end ?? 0)).toISOString(), online: session.open && Date.now() - session.lastActiveAt < 5 * 60_000 }
+    return trail ? { started_at: new Date(trail.start).toISOString(), ended_at: new Date(trail.end).toISOString(), online: false } : null
+  }
   // Like the forms list: archived and deleted forms aren't counted
   const forms = formsOf(tenant).forms.filter(form => !form.deleted_at && form.status !== 'archived')
   const nameOf = (person: StoredPerson) => `${person.first_name} ${person.last_name}`.trim() || person.email
   return people.map(person => {
     const manager = person.manager_id ? people.find(item => item.id === person.manager_id) : undefined
+    // Never signed in yet (invited, not activated, awaiting approval)
+    const away = ['invited', 'not_activated', 'pending'].includes(person.status)
+    const visit = away ? null : visitOf(person.id)
     return {
       id: person.id,
       first_name: person.first_name,
@@ -165,7 +188,8 @@ export function peopleRows(tenant: MockTenant): PersonRow[] {
       job_titles: org.job_titles.filter(item => !item.archived_at && item.member_ids.includes(person.id)).map(refOf),
       manager: manager ? { id: manager.id, name: nameOf(manager) } : null,
       two_step: person.two_step,
-      last_active_at: ['invited', 'not_activated', 'pending'].includes(person.status) ? null : (lastSeen.get(person.id) ?? null),
+      last_active_at: away ? null : (visit?.ended_at ?? lastSeen.get(person.id) ?? null),
+      last_visit: away ? null : visit,
       joined_at: person.joined_at,
       forms_count: forms.filter(form => form.owner?.id === person.id).length,
       request: person.request ?? null,

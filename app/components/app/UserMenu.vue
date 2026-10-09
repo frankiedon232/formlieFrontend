@@ -15,6 +15,7 @@ const auth = useAuth()
 const user = computed(() => ({
   name: session.displayName.value || t('user.guest'),
   email: session.user.value?.email ?? t('user.notSignedIn'),
+  role: session.user.value?.role_name ?? '',
 }))
 
 async function logout() {
@@ -36,7 +37,7 @@ const themeItem = (value: 'light' | 'dark' | 'system', icon: string): DropdownMe
 })
 
 const items = computed<DropdownMenuItem[][]>(() => [
-  [{ type: 'label', label: user.value.name, description: user.value.email, avatar: avatar.value }],
+  [{ type: 'label', slot: 'account' as const, label: user.value.name, avatar: avatar.value }],
   [
     { label: t('user.profile'), icon: 'i-lucide-circle-user', to: '/profile' },
     ...(can('settings.view') ? [{ label: t('nav.settings'), icon: 'i-lucide-settings', to: '/settings' }] : []),
@@ -90,6 +91,12 @@ const items = computed<DropdownMenuItem[][]>(() => [
     }"
     :ui="{ content: 'w-60' }"
   >
+    <!-- Name, email and the person's role (Roles & access) at the top of the menu -->
+    <template #account-label>
+      <span class="block truncate text-highlighted">{{ user.name }}</span>
+      <span class="block truncate text-xs font-normal text-muted">{{ user.email }}</span>
+      <UBadge v-if="user.role" :label="user.role" icon="i-lucide-shield" color="neutral" variant="outline" size="sm" class="mt-1.5" />
+    </template>
     <UButton
       v-if="props.compact"
       :avatar="{ ...avatar, size: props.large ? 'lg' : undefined }"

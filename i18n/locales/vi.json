@@ -7641,7 +7641,9 @@
       "label": "{n} người trong không gian làm việc | {n} người trong không gian làm việc",
       "recent": "Hoạt động gần đây",
       "all": "Tất cả mọi người ({n})",
-      "invite": "Mời người dùng"
+      "invite": "Mời người dùng",
+      "online": "Trực tuyến",
+      "duration": "Thời lượng"
     },
     "add": {
       "button": "Thêm người dùng",

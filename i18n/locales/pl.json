@@ -7641,7 +7641,9 @@
       "label": "{n} osoba w przestrzeni roboczej | {n} osób w przestrzeni roboczej",
       "recent": "Ostatnio aktywne",
       "all": "Wszystkie osoby ({n})",
-      "invite": "Zaproś użytkownika"
+      "invite": "Zaproś użytkownika",
+      "online": "Online",
+      "duration": "Czas trwania"
     },
     "add": {
       "button": "Dodaj użytkownika",

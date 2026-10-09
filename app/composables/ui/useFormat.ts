@@ -49,6 +49,35 @@ export function useFormat() {
     return formatter.format(Math.round(seconds / size), unit)
   }
 
+  const dayKey = (value: Date) => new Intl.DateTimeFormat('en-CA', { timeZone: timeZone.value }).format(value)
+  /** Compact moment: "14:32" today, "Yesterday 14:32", "Mon 14:32" this week, else "3 Oct, 14:32" (or with the year). */
+  function moment(value: string | number | Date | null | undefined, now = Date.now()) {
+    if (value == null || value === '') return ''
+    const at = toDate(value)
+    const time = new Intl.DateTimeFormat(lang.value, { timeStyle: 'short', timeZone: timeZone.value }).format(at)
+    const days = Math.round((Date.parse(dayKey(new Date(now))) - Date.parse(dayKey(at))) / 86_400_000)
+    if (days === 0) return time
+    if (days === 1) {
+      const word = new Intl.RelativeTimeFormat(lang.value, { numeric: 'auto' }).format(-1, 'day')
+      return `${word.charAt(0).toLocaleUpperCase(lang.value)}${word.slice(1)} ${time}`
+    }
+    const options: Intl.DateTimeFormatOptions = days > 1 && days < 7 ? { weekday: 'short' } : { day: 'numeric', month: 'short', ...(new Date(now).getFullYear() !== at.getFullYear() ? { year: 'numeric' } : {}) }
+    return `${new Intl.DateTimeFormat(lang.value, { ...options, timeZone: timeZone.value }).format(at)}, ${time}`
+  }
+
+  /** Compact length of time: "45s", "25m", "1h 20m", "2d 3h" (narrow units in the active language). */
+  function span(ms: number | null | undefined) {
+    if (ms == null || ms < 0) return ''
+    const unit = (n: number, name: string) => number(n, { style: 'unit', unit: name, unitDisplay: 'narrow' })
+    const seconds = Math.round(ms / 1000)
+    if (seconds < 60) return unit(seconds, 'second')
+    const minutes = Math.round(seconds / 60)
+    if (minutes < 60) return unit(minutes, 'minute')
+    const hours = Math.floor(minutes / 60)
+    if (hours < 24) return [unit(hours, 'hour'), minutes % 60 ? unit(minutes % 60, 'minute') : ''].filter(Boolean).join(' ')
+    return [unit(Math.floor(hours / 24), 'day'), hours % 24 ? unit(hours % 24, 'hour') : ''].filter(Boolean).join(' ')
+  }
+
   function number(value: number | null | undefined, options?: Intl.NumberFormatOptions) {
     if (value == null || Number.isNaN(value)) return ''
     const formatter = new Intl.NumberFormat(lang.value, options)
@@ -80,5 +109,5 @@ export function useFormat() {
     return number(size, { style: 'unit', unit: units[index], unitDisplay: 'short', maximumFractionDigits: 1 })
   }
 
-  return { date, dateTime, relative, number, compact, percent, currency, fileSize }
+  return { date, dateTime, moment, span, relative, number, compact, percent, currency, fileSize }
 }

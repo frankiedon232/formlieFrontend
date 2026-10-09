@@ -7641,7 +7641,9 @@
       "label": "{n} Person im Arbeitsbereich | {n} Personen im Arbeitsbereich",
       "recent": "Zuletzt aktiv",
       "all": "Alle Personen ({n})",
-      "invite": "Benutzer einladen"
+      "invite": "Benutzer einladen",
+      "online": "Online",
+      "duration": "Dauer"
     },
     "add": {
       "button": "Benutzer hinzufügen",

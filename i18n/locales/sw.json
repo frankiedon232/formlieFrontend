@@ -7641,7 +7641,9 @@
       "label": "Mtu {n} katika nafasi ya kazi | Watu {n} katika nafasi ya kazi",
       "recent": "Waliokuwa hai hivi karibuni",
       "all": "Watu wote ({n})",
-      "invite": "Alika mtumiaji"
+      "invite": "Alika mtumiaji",
+      "online": "Mtandaoni",
+      "duration": "Muda"
     },
     "add": {
       "button": "Ongeza mtumiaji",

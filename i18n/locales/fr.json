@@ -7641,7 +7641,9 @@
       "label": "{n} personne dans l'espace de travail | {n} personnes dans l'espace de travail",
       "recent": "Actives récemment",
       "all": "Toutes les personnes ({n})",
-      "invite": "Inviter un utilisateur"
+      "invite": "Inviter un utilisateur",
+      "online": "En ligne",
+      "duration": "Durée"
     },
     "add": {
       "button": "Ajouter un utilisateur",

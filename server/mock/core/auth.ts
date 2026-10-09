@@ -456,6 +456,19 @@ export function activeSessions(event: H3Event, tenant: MockTenant): ActiveSessio
 }
 
 /** Ends every session of one person in the workspace (People → Sign out everywhere, disable; F16 M3). */
+/** Each person's latest sign-in session in a workspace (People: Recently active, F16). */
+export function latestSessions(tenant: MockTenant): Map<string, { startedAt: number; lastActiveAt: number; open: boolean }> {
+  const latest = new Map<string, { startedAt: number; lastActiveAt: number; open: boolean }>()
+  const idle = sessionLimits(tenant).idle
+  for (const item of sessions.values()) {
+    if (item.tenant.id !== tenant.id) continue
+    const known = latest.get(item.user.id)
+    if (known && known.lastActiveAt >= item.lastActiveAt) continue
+    latest.set(item.user.id, { startedAt: item.startedAt, lastActiveAt: item.lastActiveAt, open: !item.revoked && Date.now() - item.lastActiveAt < idle })
+  }
+  return latest
+}
+
 export function revokeUserSessions(tenant: MockTenant, userId: string): number {
   const ids = [...sessions.values()].filter(s => s.tenant.id === tenant.id && s.user.id === userId && !s.revoked).map(s => s.id)
   return ids.length ? revokeSessions(tenant, { ids }).length : 0

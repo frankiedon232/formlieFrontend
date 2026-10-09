@@ -40,6 +40,8 @@ export interface PersonRow {
   /** Two-step sign-in set up (authenticator app or SMS). */
   two_step: boolean
   last_active_at: string | null
+  /** The latest visit (a sign-in session, else a run of activity in the audit trail): when it started and ended, and whether they're online now. */
+  last_visit: { started_at: string; ended_at: string; online: boolean } | null
   joined_at: string
   /** Forms this person owns. */
   forms_count: number
