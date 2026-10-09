@@ -19,7 +19,7 @@ import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
 import { formsOf } from '../data/formStore'
 import { levelOf } from '../data/formPermissions'
-import { answersOf, formResponses } from '../data/responseData'
+import { answersOf, formResponses, titleOf } from '../data/responseData'
 import { responseReport } from '../data/responseReport'
 import { settingsOf } from '../data/settingsStore'
 import type { MockTenant, MockUser } from '../data/tenants'
@@ -89,14 +89,13 @@ export const exportFormResponses = defineMockRoute(({ event, body: raw }) => {
   const questions = questionsOf(form)
   const byKey = new Map(questions.map(field => [field.key, field]))
   const fields = input.columns.length ? input.columns.map(key => byKey.get(key)).filter(field => !!field) : questions
-  const head = ['Number', 'Submitted (UTC)', 'Name', 'Email', ...(input.details ? ['Status', 'Tags', 'Came in', 'Language', 'Time taken (s)', 'Notes'] : []), ...fields.map(field => field.label?.trim() || field.key)]
+  // Only what the form collected (owner 2026-10-09): name and email come as the form's own questions
+  const head = ['Number', 'Submitted (UTC)', ...(input.details ? ['Status', 'Tags', 'Came in', 'Language', 'Time taken (s)', 'Notes'] : []), ...fields.map(field => field.label?.trim() || field.key)]
   const rows = picked.map(({ entry }) => {
     const data = answersOf(form, entry)
     return [
       entry.number,
       new Date(entry.at).toISOString(),
-      entry.respondent.name ?? '',
-      entry.respondent.email ?? '',
       ...(input.details ? [entry.status, entry.tags.join('; '), entry.channel, entry.language, entry.duration_seconds ?? '', entry.notes_count] : []),
       ...fields.map(field => answerText(field, data[field.key])),
     ]
@@ -128,8 +127,8 @@ export const exportFormResponses = defineMockRoute(({ event, body: raw }) => {
         const at = new Date(entry.at)
         return {
           number: entry.number,
-          name: entry.respondent.name ?? '',
-          email: entry.respondent.email ?? '',
+          name: titleOf(form, entry, data) ?? '',
+          email: entry.respondent.name ? (entry.respondent.email ?? '') : '',
           submitted: `${at.toISOString().slice(0, 10)} ${at.toISOString().slice(11, 16)} UTC`,
           status: entry.status,
           channel: entry.channel,

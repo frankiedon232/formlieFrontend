@@ -13,7 +13,7 @@ const { t } = useI18n()
 const toast = useToast()
 const { copy } = useClipboard({ legacy: true })
 
-const name = computed(() => props.response.respondent.name || props.response.respondent.email || t('responses.anonymous'))
+const name = computed(() => props.response.respondent.title || `#${props.response.number}`)
 const statuses = computed(() => RESPONSE_STATUSES.map(value => ({ value, label: t(`status.${value}`) })))
 const menu = computed<DropdownMenuItem[][]>(() => [
   [
@@ -34,7 +34,7 @@ const menu = computed<DropdownMenuItem[][]>(() => [
 <template>
   <div class="flex w-full flex-col gap-4">
     <div class="flex items-start gap-3.5">
-      <UAvatar :alt="response.respondent.name || response.respondent.email || '?'" :icon="response.respondent.kind === 'anonymous' ? 'i-lucide-user-round' : undefined" size="2xl" class="ring-4 ring-(--ui-bg-elevated)" />
+      <UAvatar :alt="name" :icon="response.respondent.kind === 'anonymous' ? 'i-lucide-user-round' : undefined" size="2xl" class="ring-4 ring-(--ui-bg-elevated)" />
       <div class="flex min-w-0 flex-1 flex-col gap-1">
         <div class="flex min-w-0 items-center gap-1.5">
           <h2 class="truncate text-lg leading-tight font-semibold text-highlighted">{{ name }}</h2>
@@ -43,7 +43,7 @@ const menu = computed<DropdownMenuItem[][]>(() => [
           </UTooltip>
         </div>
         <p v-if="response.respondent.name && response.respondent.email" class="truncate text-sm text-muted" dir="ltr">{{ response.respondent.email }}</p>
-        <p v-else class="text-sm text-muted">{{ t(`responses.respondentKind.${response.respondent.kind}`) }}</p>
+        <p v-else class="text-sm text-muted">{{ t(`responses.respondentKind.${response.respondent.kind === 'anonymous' ? 'answer' : response.respondent.kind}`) }}</p>
         <div class="mt-1 flex flex-wrap items-center gap-1.5">
           <UBadge :label="`#${response.number}`" color="neutral" variant="outline" size="sm" class="rounded-md font-mono" />
           <DataStatusBadge :status="response.status" />

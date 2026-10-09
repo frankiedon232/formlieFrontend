@@ -17,8 +17,8 @@ const { t } = useI18n()
 const { relative, number, percent } = useFormat()
 const { text, duration } = useResponseFormat()
 
-const name = computed(() => props.row.respondent.name || props.row.respondent.email || t('responses.anonymous'))
-const sub = computed(() => (props.row.respondent.name && props.row.respondent.email ? props.row.respondent.email : t(`responses.respondentKind.${props.row.respondent.kind}`)))
+const name = computed(() => props.row.respondent.title || `#${props.row.number}`)
+const sub = computed(() => (props.row.respondent.name && props.row.respondent.email ? props.row.respondent.email : t(`responses.respondentKind.${props.row.respondent.kind === 'anonymous' ? 'answer' : props.row.respondent.kind}`)))
 const share = computed(() => (props.row.questions ? props.row.answered / props.row.questions : 0))
 const max = (field: FormField) => Number(field.props?.max ?? (field.type === 'rating' ? 5 : field.type === 'scale' ? 10 : 100))
 const value = (field: FormField) => props.row.answers[field.key]
@@ -101,7 +101,7 @@ const facts = computed(() =>
       <!-- Avatar, number, counts -->
       <div class="mt-4 flex items-center justify-between gap-2">
         <div class="flex min-w-0 items-center gap-2">
-          <UAvatar :alt="row.respondent.name || row.respondent.email || '?'" :icon="row.respondent.kind === 'anonymous' ? 'i-lucide-user-round' : undefined" size="xs" />
+          <UAvatar :alt="name" :icon="row.respondent.kind === 'anonymous' ? 'i-lucide-user-round' : undefined" size="xs" />
           <span class="text-xs text-muted tabular-nums">#{{ row.number }}</span>
         </div>
         <div class="flex items-center gap-3 text-xs text-muted">

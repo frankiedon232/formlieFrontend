@@ -20,7 +20,7 @@ import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
 import { canSee, levelOf, requireLevel } from '../data/formPermissions'
 import { formsOf, type StoredForm } from '../data/formStore'
-import { answersOf, findResponse, formResponses, responseSchema, workspaceResponses, type IndexedResponse } from '../data/responseData'
+import { answersOf, findResponse, formResponses, respondentOf, responseSchema, titleOf, workspaceResponses, type IndexedResponse } from '../data/responseData'
 import { keepAnswered } from '../data/largeLists'
 import { insightsOf } from '../data/responseInsights'
 import { reviewOf, updateReview } from '../data/responseReview'
@@ -58,7 +58,7 @@ function rowOf(form: StoredForm, entry: IndexedResponse, withAnswers: boolean): 
     submitted_at: new Date(entry.at).toISOString(),
     status: entry.status,
     tags: entry.tags,
-    respondent: entry.respondent,
+    respondent: respondentOf(form, entry, data),
     channel: entry.channel,
     language: entry.language,
     duration_seconds: entry.duration_seconds,
@@ -108,7 +108,7 @@ export function filterResponses(items: { form: StoredForm; entry: IndexedRespons
       answersMatch(form, entry) &&
       (!q ||
         String(entry.number) === q.replace(/^#/, '') ||
-        `${entry.respondent.name ?? ''} ${entry.respondent.email ?? ''} ${form.name}`.toLowerCase().includes(q) ||
+        `${titleOf(form, entry) ?? ''} ${entry.respondent.email ?? ''} ${form.name}`.toLowerCase().includes(q) ||
         (searchAnswers && JSON.stringify(answersOf(form, entry)).toLowerCase().includes(q))),
   )
   const sort = typeof query.sort === 'string' && query.sort ? query.sort : '-submitted_at'
@@ -116,7 +116,7 @@ export function filterResponses(items: { form: StoredForm; entry: IndexedRespons
   const key = desc ? sort.slice(1) : sort
   const ORDER: Record<ResponseStatus, number> = { new: 0, reviewed: 1, approved: 2, rejected: 3 }
   const value = ({ form, entry }: { form: StoredForm; entry: IndexedResponse }): string | number =>
-    key === 'number' ? entry.number : key === 'status' ? ORDER[entry.status] : key === 'respondent' ? (entry.respondent.name ?? entry.respondent.email ?? '~').toLowerCase() : key === 'form' ? form.name.toLowerCase() : entry.at
+    key === 'number' ? entry.number : key === 'status' ? ORDER[entry.status] : key === 'respondent' ? (titleOf(form, entry) ?? '~').toLowerCase() : key === 'form' ? form.name.toLowerCase() : entry.at
   return [...result].sort((a, b) => {
     const x = value(a)
     const y = value(b)

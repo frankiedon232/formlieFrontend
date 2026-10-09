@@ -85,7 +85,7 @@ async function retry(delivery: Delivery) {
       <li v-for="delivery in rows" :key="delivery.response_id" class="flex flex-col gap-1 px-3 py-2">
         <div class="flex items-center gap-2.5 text-sm">
           <NuxtLink :to="{ path: `/forms/${formId}/responses`, query: { response: delivery.response_id } }" class="font-mono text-xs text-highlighted hover:underline">#{{ delivery.number }}</NuxtLink>
-          <span class="min-w-0 flex-1 truncate text-default">{{ delivery.respondent || t('responses.anonymous') }}</span>
+          <span class="min-w-0 flex-1 truncate text-default">{{ delivery.respondent || `#${delivery.number}` }}</span>
           <UTooltip :text="dateTime(delivery.submitted_at)"><span class="hidden text-xs text-muted sm:inline">{{ relative(delivery.submitted_at) }}</span></UTooltip>
           <DataStatusBadge :status="delivery.status" :label="t(`destinations.delivery.${delivery.status}`)" />
           <UButton v-if="delivery.status === 'failed'" icon="i-lucide-rotate-cw" color="neutral" variant="ghost" size="xs" :loading="retrying === delivery.response_id" :aria-label="t('destinations.deliveries.retryOne', { n: delivery.number })" @click="retry(delivery)" />

@@ -11,6 +11,8 @@
  */
 import type { ResponseRespondent, ResponseStatus } from '#shared/types/responses'
 import { allFields } from '#shared/utils/forms/build'
+import { answerText } from '#shared/utils/forms/answer-text'
+import { isInputField } from '#shared/utils/forms/fields'
 import { identityOf } from '#shared/utils/forms/identity'
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
 import { formLanguages } from '#shared/utils/forms/translations'
@@ -224,6 +226,32 @@ export function formResponses(tenant: MockTenant, form: StoredForm): IndexedResp
 
 const answerCache = new Map<string, Record<string, unknown>>()
 /** Every answer of a response (the team's edits on top). */
+const SCORES = new Set(['rating', 'scale', 'nps', 'slider', 'number', 'currency', 'percentage', 'ranking', 'toggle'])
+const NOT_A_TITLE = new Set(['hidden', 'calculated', 'payment', 'signature', 'file_upload', 'image_upload', 'long_text', 'rich_text', 'matrix'])
+/**
+ * What names a response, only from what its form collected (owner 2026-10-09): the name or email the
+ * form asked for, else its first two short answers in form order. Never a made-up word such as "Anonymous".
+ */
+export function titleOf(form: StoredForm, entry: IndexedResponse, data = answersOf(form, entry)): string | null {
+  const { name, email } = entry.respondent
+  if (name || email) return name || email
+  const schema = responseSchema(form)
+  if (!schema) return null
+  const usable = allFields(schema).filter(field => isInputField(field.type) && !NOT_A_TITLE.has(field.type))
+  // Words first (text, choices, dates); scores and numbers only when nothing else was answered
+  const pick = (fields: typeof usable) =>
+    fields
+      .map(field => answerText(field, data[field.key]).trim())
+      .filter(Boolean)
+      .slice(0, 2)
+      .map(text => (text.length > 60 ? `${text.slice(0, 57)}…` : text))
+  const parts = pick(usable.filter(field => !SCORES.has(field.type)))
+  const chosen = parts.length ? parts : pick(usable)
+  return chosen.length ? chosen.join(' · ') : null
+}
+/** The respondent with its title, for anything that leaves the server. */
+export const respondentOf = (form: StoredForm, entry: IndexedResponse, data?: Record<string, unknown>): ResponseRespondent => ({ ...entry.respondent, title: titleOf(form, entry, data) })
+
 export function answersOf(form: StoredForm, entry: IndexedResponse): Record<string, unknown> {
   const edits = reviewOf(entry.id)?.data
   if (entry.source.kind === 'real') return { ...entry.source.stored.data, ...edits }

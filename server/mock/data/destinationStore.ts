@@ -23,7 +23,7 @@ import { tablesOf, type CreatedTable } from './databaseTables'
 import { seedOf, uuidFrom } from './dataSourceSim'
 import { dataSourcesOf, statusOf, type StoredDataSource } from './dataSourceStore'
 import { formsOf, type StoredForm } from './formStore'
-import { formResponses, responseSchema, type IndexedResponse } from './responseData'
+import { formResponses, responseSchema, type IndexedResponse, titleOf } from './responseData'
 import { MOCK_USERS, SEEDED_TENANT_IDS, type MockTenant } from './tenants'
 
 export interface DeliveryOverride {
@@ -226,7 +226,7 @@ export function deliveriesOf(tenant: MockTenant, destination: StoredDestination,
   return formResponses(tenant, form)
     .slice()
     .sort((a, b) => b.at - a.at)
-    .map(entry => ({ response_id: entry.id, number: entry.number, submitted_at: new Date(entry.at).toISOString(), respondent: entry.respondent.name || entry.respondent.email || null, ...statusFor(entry, destination, ctx) }))
+    .map(entry => ({ response_id: entry.id, number: entry.number, submitted_at: new Date(entry.at).toISOString(), respondent: titleOf(form, entry), ...statusFor(entry, destination, ctx) }))
 }
 
 function countSent(tenant: MockTenant, destination: StoredDestination, form: StoredForm): number {

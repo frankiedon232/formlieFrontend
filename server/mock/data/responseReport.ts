@@ -118,7 +118,7 @@ export function responseReport(input: ReportInput): Uint8Array {
       doc.rect(M, y, 4, header, input.brand, 2)
       doc.text(Q_X, y + 19, `#${response.number}`, { size: 11, bold: true, color: input.brand })
       const nameX = Q_X + textWidth(`#${response.number}`, 11, true) + 8
-      doc.text(nameX, y + 19, `${response.name || response.email || 'Anonymous'}${continued ? '  (continued)' : ''}`, { size: 11, bold: true, color: INK })
+      doc.text(nameX, y + 19, `${response.name || response.email || `#${response.number}`}${continued ? '  (continued)' : ''}`, { size: 11, bold: true, color: INK })
       const status = STATUS[response.status]
       const pillW = textWidth(status.label, 8, true) + 16
       doc.rect(RIGHT - 12 - pillW, y + 9, pillW, 15, status.fill, 7.5)

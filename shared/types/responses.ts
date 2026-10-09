@@ -11,8 +11,13 @@ export const RESPONSE_STATUSES: ResponseStatus[] = ['new', 'reviewed', 'approved
 export interface ResponseRespondent {
   name: string | null
   email: string | null
-  /** How we know: an invitation, a signed-in member, or what they typed in the form. */
+  /** How we know: an invitation, a signed-in member, or what they typed in the form ('anonymous' = the form asks no name or email). */
   kind: 'invite' | 'member' | 'answer' | 'anonymous'
+  /**
+   * What names this response, only from what the form collected (owner 2026-10-09: no data outside the
+   * form): the name, else the email, else its first answers ("Country 2 · State 2-1"); null when nothing was answered.
+   */
+  title?: string | null
 }
 
 export interface ResponseRow {
