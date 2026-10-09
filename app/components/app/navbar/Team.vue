@@ -1,8 +1,9 @@
 <!--
-  Team in the page header (design: overlapping avatars "+10 ⌄" then "+ Add Member", F16 M4), for owners
-  and admins: the most recently active people; the menu lists them (each opens their panel on People)
-  and All people, each with when they were last active and for how long (green dot = online now). Invite user opens the invite dialog. Only in the People area (owner, 2026-10-09), so
-  other pages keep the header space. Avatars from xl, the button from sm (icon only below xl, so the header never overflows).
+  Team in the page header (design: overlapping avatars "+10 ⌄", F16 M4), for owners and admins, only in
+  the People area (owner, 2026-10-09): the most recently active people; the menu lists them (each opens
+  their panel on People) with when they were last active and for how long (green dot = online now), and
+  All people. No Invite button: Sign-up links on People is the one way to invite (owner, 2026-10-09).
+  Avatars from xl so the header never overflows.
 -->
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@nuxt/ui'
@@ -60,6 +61,5 @@ const items = computed<DropdownMenuItem[][]>(() => [
         </template>
       </template>
     </UDropdownMenu>
-    <UButton :label="t('people.team.invite')" icon="i-lucide-plus" color="neutral" variant="outline" class="hidden sm:inline-flex max-xl:[&_[data-slot=label]]:hidden" :to="{ path: '/people', query: { invite: '1' } }" :aria-label="t('people.team.invite')" />
   </template>
 </template>

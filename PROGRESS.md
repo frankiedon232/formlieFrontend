@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-09 (F16 rework R1 to R5 done: roles, user profiles, sign-up links, approval; stop for owner review of F16 + F22)
+**Last updated:** 2026-10-09 (F16 Users & profiles and F22 Roles & access done and owner-approved; next: F19 AI assistant)
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend · ➖ dropped or merged
 
@@ -26,18 +26,18 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F13   | API service & integrations                        | ✅     | 100% (owner-tested 2026-10-06)            |
 | F14   | Settings                                          | ✅     | 100% (M1 to M7 ✅; billing in F24)        |
 | F15   | Option sets (lists)                               | ✅     | 100% (M1 to M5 ✅; payments moved to F24) |
-| F16   | Users & profiles (Profile + Users)                | ✅     | reworked with F22 roles, owner review     |
+| F16   | Users & profiles (Profile + Users)                | ✅     | 100% (owner-approved 2026-10-09)          |
 | F17   | Users (merged into F16)                           | ➖     | -                                         |
 | F18   | Analytics                                         | ✅     | 100% (waiting for review)                 |
 | F19   | AI assistant                                      | 🟡     | ~2%                                       |
 | F20   | Live collaboration (removed)                      | ➖     | -                                         |
 | F21   | Dashboard                                         | ⬜     | 0%                                        |
-| F22   | Roles & access                                    | ✅     | built with F16 (owner 2026-10-09)         |
+| F22   | Roles & access                                    | ✅     | 100% (built with F16, owner-approved)     |
 | F23   | Platform admin (super admin, Formalie team)       | ⬜     | 0%                                        |
 | F24   | Payments & subscriptions                          | ⬜     | 0%                                        |
 | F25   | Help centre (FAQs, knowledge base, videos)        | ⬜     | 0% (after F24)                            |
 
-**Order of what is left (owner, 2026-10-08):** F19 AI, F21 Dashboard, F22 Roles & access, F23 Platform admin, then **F24 Payments & subscriptions** (form payments and plans together, once the owner has chosen the payment processor), then **F25 Help centre** (built from everything that exists by then). Formalie default data (below) is seeded by the backend and kept in mind in every phase.
+**Order of what is left (owner, 2026-10-08; F22 done with F16 on 2026-10-09):** F19 AI, F21 Dashboard, F23 Platform admin, then **F24 Payments & subscriptions** (form payments and plans together, once the owner has chosen the payment processor), then **F25 Help centre** (built from everything that exists by then). Formalie default data (below) is seeded by the backend and kept in mind in every phase.
 
 **Every phase is only done when:** phone / tablet / desktop checked · keyboard-only checked · light + dark checked · Arabic RTL checked · every new action recorded in the audit trail (from F4 on) · loading feedback complete (first-load screen, top bar on navigation and API calls, skeletons, busy buttons, busy rows, progress bars, CLAUDE.md rule 5) · empty and error states present · every new string in all 20 languages · matches [docs/design](docs/design/README.md) · typecheck, lint and tests green · this file and the docs updated · committed and pushed.
 
@@ -1537,3 +1537,5 @@ Owner requests added during development, and where they landed.
 | 2026-10-09 | F16 | R2 to R5: user profiles (Add user, activation email, set password), sign-up links (shared link with domains, QR, new link; personal links) with a separate sign-up page, approval queue (Awaiting approval menu and count, approve completes the profile, reject), statuses Not activated and Awaiting approval everywhere; FRM-USER-1010 to 1012; audit users.profile_created / requested / approved / rejected / signup_link_changed; 20 locales. Browser-checked end to end |
 | 2026-10-09 | F16 | Owner: the header's recently active people and Invite button only in the People area (People, Departments, Job titles, Roles & access), so other pages keep the space; "Invite member" renamed "Invite user" |
 | 2026-10-09 | F16 | Owner: the account menu shows the person's role under the email; Recently active shows when (Online, time, Yesterday, weekday or date) and how long the last visit lasted (sign-in session, else a run of actions in the audit trail), green dot when online; `PersonRow.last_visit`; `useFormat().moment / span`; header avatars from xl so the header never overflows |
+| 2026-10-09 | F16 | Owner: one way to invite: Sign-up links (shared link and personal links inside it); the header's Invite user button, the I shortcut and `/people?invite=1` removed |
+| 2026-10-09 | F16 / F22 | Owner: profiling and roles approved. F16 and F22 done; next F19 AI assistant |

@@ -44,11 +44,10 @@ const refreshAll = () => Promise.all([list.value?.refresh(), loadInsights(), cou
 const actions = usePeopleActions(refreshAll)
 
 // Invite people (I, or ?invite=1)
-const inviteOpen = ref(!!route.query.invite)
+// Personal sign-up links, opened from Sign-up links (the one way to invite)
+const inviteOpen = ref(false)
 // `?invite=1` from the menu or the header opens it here too; the address is tidied after
-watch(() => route.query.invite, value => value && (inviteOpen.value = true))
 watch(() => route.query.add, value => value && ((addOpen.value = true), router.replace({ query: { ...route.query, add: undefined } })), { immediate: true })
-watch(inviteOpen, value => !value && route.query.invite && router.replace({ query: { ...route.query, invite: undefined } }))
 // Add a user profile (N); sign-up links (shared and personal); approve someone who signed up with a link
 const addOpen = ref(false)
 const linksOpen = ref(false)
@@ -56,7 +55,7 @@ const approving = ref<PersonRow | null>(null)
 const approveOpen = ref(false)
 const approve = (person: PersonRow) => ((approving.value = person), (approveOpen.value = true))
 const canManage = computed(() => useCan().can('people.manage'))
-defineShortcuts({ n: { usingInput: false, handler: () => canManage.value && (addOpen.value = true) }, i: { usingInput: false, handler: () => canManage.value && (inviteOpen.value = true) } })
+defineShortcuts({ n: { usingInput: false, handler: () => canManage.value && (addOpen.value = true) } })
 
 const columns = computed<DataColumn[]>(() => [
   { key: 'name', label: t('people.col.name'), sortable: true, fixed: true },
