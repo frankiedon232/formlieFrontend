@@ -5,7 +5,8 @@ export type AuthProvider = 'password' | 'google' | 'microsoft' | 'apple' | 'face
 export type OtpChannel = 'email' | 'sms' | 'totp'
 export type TenantStatus = 'active' | 'suspended'
 /** Simple workspace role until Roles & access (F22): owner and admin manage the workspace. */
-export type WorkspaceRole = 'owner' | 'admin' | 'member'
+/** A role id: the built-in owner · admin · member, or one the workspace made (Roles & access, F22). */
+export type WorkspaceRole = 'owner' | 'admin' | 'member' | (string & {})
 
 /** GET /tenants/public, what the login page of a host may show (no secrets). */
 export interface TenantPublicProfile {
@@ -54,6 +55,9 @@ export interface SessionUser {
   email: string
   avatar_url: string | null
   role: WorkspaceRole
+  /** The role's name and what it allows (Roles & access, F22): the app shows only what the role can use. */
+  role_name?: string
+  permissions?: string[]
   /** My profile (F16 M5): null = the workspace's. */
   language?: string | null
   time_zone?: string | null

@@ -62,6 +62,9 @@ Format: `FRM-<DOMAIN>-<NNNN>`. Ranges: 1000–1999 client/validation, 5000–599
 | FRM-USER-1004 | 422  | A person can't report to themselves or to someone who reports to them. | INFO |
 | FRM-USER-1005 | 409  | You can't do this to your own account. | INFO |
 | FRM-USER-1006 | 403  | Only owners can make someone an owner or change an owner. | INFO |
+| FRM-USER-1007 | 409  | The built-in roles can't be deleted, and Owner can't be changed. | INFO |
+| FRM-USER-1008 | 409  | People hold this role. Give them another role first. | INFO |
+| FRM-USER-1009 | 422  | This role does not exist any more. Choose another one. | INFO |
 | FRM-FORM-1022 | 422  | This list has more options than it can hold: 20,000, or 200,000 when it is large. | INFO |
 | FRM-RESP-1001 | 422  | Submission is invalid.                                            | INFO     |
 | FRM-RESP-1002 | 400  | Verification failed. (captcha)                                    | WARNING  |

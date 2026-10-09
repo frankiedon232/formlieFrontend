@@ -256,7 +256,7 @@ defineExpose({ refresh, folders, foldersLoading, loadMeta })
       />
     </template>
 
-    <template #empty-actions>
+    <template v-if="useCan().can('forms.create')" #empty-actions>
       <UButton
         icon="i-lucide-plus"
         :label="t('nav.newForm')"

@@ -54,7 +54,7 @@ async function join(event: FormSubmitEvent<typeof state>) {
     <AppEmpty v-if="problem" :icon="problem === 'expired' ? 'i-lucide-clock-alert' : 'i-lucide-link-2-off'" :title="t(`people.join.${problem}`)" :description="t(`people.join.${problem}Desc`)" :actions="[{ label: t('people.join.toSignIn'), icon: 'i-lucide-log-in', color: 'neutral', variant: 'outline', to: '/auth/login' }]" />
     <div v-else-if="!invite" class="flex flex-col gap-4"><USkeleton class="h-8 w-64" /><USkeleton class="h-4 w-80" /><USkeleton v-for="n in 3" :key="n" class="h-11" /></div>
     <template v-else>
-      <AuthHeading :title="t('people.join.heading', { workspace: invite.workspace })" :description="t('people.join.desc', { name: invite.inviter, role: t(`people.role.${invite.role}`) })" />
+      <AuthHeading :title="t('people.join.heading', { workspace: invite.workspace })" :description="t('people.join.desc', { name: invite.inviter, role: invite.role_name })" />
       <blockquote v-if="invite.message" class="mb-6 rounded-lg border-s-2 border-inverted bg-elevated/60 px-4 py-3 text-sm text-default">
         {{ invite.message }}
         <footer class="mt-1 text-xs text-muted">{{ invite.inviter }}</footer>

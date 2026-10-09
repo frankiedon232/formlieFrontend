@@ -25,6 +25,7 @@ import { orgOf, saveOrg } from '../data/orgStore'
 import { peopleStoreOf, savePeople, type StoredPerson } from '../data/peopleStore'
 import { MOCK_TENANTS, MOCK_USERS, saveCreatedWorkspaces, type MockTenant, type MockUser } from '../data/tenants'
 import { checkNewPassword } from './auth'
+import { roleOf } from '../data/rolesStore'
 
 const DAYS = 7
 const hash = (token: string) => createHash('sha256').update(token).digest('hex')
@@ -53,7 +54,8 @@ const audit = (event: H3Event, tenant: MockTenant, user: MockUser, action: 'user
 
 const inviteBody = z.object({
   emails: z.array(z.email().max(200)).min(1).max(50),
-  role: z.enum(['admin', 'member']),
+  // Any role but Owner (owners are made on People by owners)
+  role: z.string().min(1).max(64).refine(value => value !== 'owner'),
   department_ids: z.array(z.string().max(64)).max(20).default([]),
   job_title_ids: z.array(z.string().max(64)).max(20).default([]),
   message: z.string().trim().max(500).nullable().optional(),
@@ -62,6 +64,7 @@ const inviteBody = z.object({
 export const invitePeople = defineMockRoute(({ event, body }) => {
   const { user, tenant } = requireAdmin(event)
   const input = parseBody(inviteBody, body)
+  if (!roleOf(tenant, input.role)) throw new MockError('FRM-USER-1009')
   const people = peopleStoreOf(tenant)
   const org = orgOf(tenant)
   const result: InviteResult = { invited: 0, skipped: [] }
@@ -133,7 +136,7 @@ function findInvite(event: H3Event, token: string): { tenant: MockTenant; person
 
 export const previewInvite = defineMockRoute(({ event }) => {
   const { tenant, person } = findInvite(event, getRouterParam(event, 'token') ?? '')
-  return ok<InvitePreview>({ workspace: tenant.name, email: person.email, inviter: person.invite!.invited_by.name, role: person.role, message: person.invite!.message })
+  return ok<InvitePreview>({ workspace: tenant.name, email: person.email, inviter: person.invite!.invited_by.name, role: person.role, role_name: roleOf(tenant, person.role)?.name ?? person.role, message: person.invite!.message })
 })
 
 const acceptBody = z.object({ first_name: z.string().trim().min(1).max(60), last_name: z.string().trim().min(1).max(60), password: z.string().min(1).max(200) })

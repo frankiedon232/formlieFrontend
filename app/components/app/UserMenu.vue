@@ -21,6 +21,7 @@ async function logout() {
   await auth.logout()
   await navigateTo('/auth/login')
 }
+const { can } = useCan()
 const avatar = computed(() => ({ alt: user.value.name, src: session.user.value?.avatar_url ?? undefined }))
 
 const themeItem = (value: 'light' | 'dark' | 'system', icon: string): DropdownMenuItem => ({
@@ -38,8 +39,8 @@ const items = computed<DropdownMenuItem[][]>(() => [
   [{ type: 'label', label: user.value.name, description: user.value.email, avatar: avatar.value }],
   [
     { label: t('user.profile'), icon: 'i-lucide-circle-user', to: '/profile' },
-    { label: t('nav.settings'), icon: 'i-lucide-settings', to: '/settings' },
-    ...(session.user.value?.role === 'member'
+    ...(can('settings.view') ? [{ label: t('nav.settings'), icon: 'i-lucide-settings', to: '/settings' }] : []),
+    ...(!can('settings.manage')
       ? []
       : [{ label: t('onboarding.menu'), icon: 'i-lucide-list-checks', to: '/onboarding' }]),
   ],

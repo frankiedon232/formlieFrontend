@@ -14,7 +14,7 @@ const { locales, changeLocale } = useAppLocale()
 const { counts } = useNavCounts()
 const folderOf = (item: unknown) => (item as { folderColor?: string | null }).folderColor
 const settingsSections = useSettingsSections()
-const session = useSession()
+const { can } = useCan()
 
 const groups = computed<CommandPaletteGroup<CommandPaletteItem>[]>(() => [
   {
@@ -44,7 +44,7 @@ const groups = computed<CommandPaletteGroup<CommandPaletteItem>[]>(() => [
       ]
     : []),
   // Settings sections (F14), for admins: one search away
-  ...(session.user.value?.role !== 'member'
+  ...(can('settings.view')
     ? [
         {
           id: 'settings',

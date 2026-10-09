@@ -33,21 +33,24 @@ const moreItems = computed<DropdownMenuItem[][]>(() => [
   ],
 ])
 
-const createItems = computed<DropdownMenuItem[][]>(() => [
+// Only what the role may create (Roles & access); a group with nothing left goes
+const { can } = useCan()
+const createItems = computed<DropdownMenuItem[][]>(() =>
   [
-    { type: 'label' as const, label: t('nav.createForms') },
-    { label: t('nav.newForm'), icon: 'i-lucide-file-plus', to: '/forms/new' },
-    { label: t('nav.fromTemplate'), icon: 'i-lucide-layout-template', to: '/templates' },
-    { label: t('nav.newTemplate'), icon: 'i-lucide-bookmark-plus', to: { path: '/forms/new', query: { purpose: 'template' } } },
-  ],
-  [
-    { type: 'label' as const, label: t('nav.createOperations') },
-    { label: t('nav.addDatabase'), icon: 'i-lucide-database', to: '/data-sources/connections/new' },
-    { label: t('nav.newApiService'), icon: 'i-lucide-boxes', to: { path: '/api-service/services', query: { new: '1' } } },
-    { label: t('nav.dataQuery'), icon: 'i-lucide-square-terminal', to: '/data-sources/query' },
-    { label: t('nav.dataExplorer'), icon: 'i-lucide-table-2', to: '/data-sources/explorer' },
-  ],
-])
+    [
+      { type: 'label' as const, label: t('nav.createForms') },
+      ...(can('forms.create') ? [{ label: t('nav.newForm'), icon: 'i-lucide-file-plus', to: '/forms/new' }, { label: t('nav.fromTemplate'), icon: 'i-lucide-layout-template', to: '/templates' }] : []),
+      ...(can('resources.manage') ? [{ label: t('nav.newTemplate'), icon: 'i-lucide-bookmark-plus', to: { path: '/forms/new', query: { purpose: 'template' } } }] : []),
+    ],
+    [
+      { type: 'label' as const, label: t('nav.createOperations') },
+      ...(can('data.manage') ? [{ label: t('nav.addDatabase'), icon: 'i-lucide-database', to: '/data-sources/connections/new' }] : []),
+      ...(can('api.manage') ? [{ label: t('nav.newApiService'), icon: 'i-lucide-boxes', to: { path: '/api-service/services', query: { new: '1' } } }] : []),
+      ...(can('data.query') ? [{ label: t('nav.dataQuery'), icon: 'i-lucide-square-terminal', to: '/data-sources/query' }] : []),
+      ...(can('data.view') ? [{ label: t('nav.dataExplorer'), icon: 'i-lucide-table-2', to: '/data-sources/explorer' }] : []),
+    ],
+  ].filter(group => group.length > 1),
+)
 
 // Current workspace; the organisation switcher (several orgs per tenant) joins in F14.
 const tenant = useTenant()
@@ -64,7 +67,7 @@ const workspaces = computed(() => [
         <UButton icon="i-lucide-ellipsis" color="neutral" variant="ghost" :aria-label="t('nav.more')" />
       </UDropdownMenu>
 
-      <UDropdownMenu :items="createItems" :content="{ side: 'right', align: 'start' }">
+      <UDropdownMenu v-if="createItems.length" :items="createItems" :content="{ side: 'right', align: 'start' }">
         <UButton icon="i-lucide-plus" color="neutral" variant="solid" size="lg" square :aria-label="t('nav.create')" />
       </UDropdownMenu>
 

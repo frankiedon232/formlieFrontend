@@ -10,13 +10,13 @@ const { t } = useI18n()
 const { notificationsOpen } = useAppUi()
 const { endSide } = useAppLocale()
 const { relative, dateTime } = useFormat()
-const session = useSession()
 const notifications = useNotifications()
 const { busy, run } = useBusy()
 const feed = notifications.feed
 
 watch(notificationsOpen, open => open && void notifications.load(false))
-const isAdmin = computed(() => session.user.value?.role !== 'member')
+const { can } = useCan()
+const isAdmin = computed(() => can('settings.manage'))
 
 const groups = computed(() => {
   const items = feed.value?.items ?? []

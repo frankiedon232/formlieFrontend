@@ -47,7 +47,7 @@ const tiles = computed(() => {
   const p = person.value
   if (!p) return []
   return [
-    { key: 'role', icon: 'i-lucide-shield', label: t('people.col.role'), value: t(`people.role.${p.role}`) },
+    { key: 'role', icon: 'i-lucide-shield', label: t('people.col.role'), value: p.role_name },
     { key: 'active', icon: 'i-lucide-clock', label: t('people.col.lastActive'), value: p.last_active_at ? relative(p.last_active_at) : t('people.never') },
     p.invite ? { key: 'joined', icon: 'i-lucide-mail', label: t('people.status.invited'), value: date(p.invite.sent_at) } : { key: 'joined', icon: 'i-lucide-calendar', label: t('people.col.joined'), value: date(p.joined_at) },
     { key: 'twoStep', icon: p.two_step ? 'i-lucide-shield-check' : 'i-lucide-shield-off', label: t('people.col.twoStep'), value: p.two_step ? t('people.twoStepOn') : t('people.twoStepOff') },
@@ -82,7 +82,7 @@ const place = computed(() => {
             <p v-if="person.name !== person.email" class="truncate text-sm text-muted" dir="ltr">{{ person.email }}</p>
             <div class="mt-1 flex flex-wrap items-center gap-1.5">
               <PeopleStatus :person="person" />
-              <UBadge :label="t(`people.role.${person.role}`)" icon="i-lucide-shield" color="neutral" variant="outline" size="sm" class="rounded-md" />
+              <UBadge :label="person.role_name" icon="i-lucide-shield" color="neutral" variant="outline" size="sm" class="rounded-md" />
             </div>
           </div>
           <div class="flex shrink-0 items-center gap-1">
@@ -110,7 +110,7 @@ const place = computed(() => {
       <div v-else-if="!person" class="grid grid-cols-2 gap-2 sm:grid-cols-3"><USkeleton v-for="n in 6" :key="n" class="h-14 rounded-lg" /></div>
       <template v-else>
         <UAlert v-if="person.invite" :icon="person.invite.expired ? 'i-lucide-clock-alert' : 'i-lucide-mail'" :color="person.invite.expired ? 'warning' : 'neutral'" variant="subtle" :title="person.invite.expired ? t('people.invite.expiredOn', { date: dateTime(person.invite.expires_at) }) : t('people.invite.waiting', { date: dateTime(person.invite.expires_at) })" :description="t('people.invite.sentBy', { name: person.invite.invited_by, when: relative(person.invite.sent_at) })" />
-        <UAlert v-if="person.role !== 'member' && !person.two_step && person.status === 'active'" icon="i-lucide-flag" color="error" variant="subtle" :title="t('people.flagTwoStep')" :description="t('people.flagTwoStepDesc')" />
+        <UAlert v-if="person.privileged && !person.two_step && person.status === 'active'" icon="i-lucide-flag" color="error" variant="subtle" :title="t('people.flagTwoStep')" :description="t('people.flagTwoStepDesc')" />
         <div class="grid grid-cols-2 gap-2 sm:grid-cols-3">
           <div v-for="tile in tiles" :key="tile.key" class="flex min-w-0 items-center gap-2.5 rounded-lg border border-default p-2.5">
             <span class="flex size-8 shrink-0 items-center justify-center rounded-md bg-elevated"><UIcon :name="tile.icon" class="size-4 text-muted" /></span>

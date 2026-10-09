@@ -74,7 +74,7 @@ const lifecycleItems = computed(() => {
     ...menu(form.value).slice(2),
   ]
 })
-const canSeeActivity = computed(() => useSession().user.value?.role !== 'member')
+const canSeeActivity = computed(() => useCan().can('audit.view'))
 const subtitle = computed(() =>
   form.value ? t('forms.overview.subtitle', { status: t(`status.${form.value.status}`), updated: relative(form.value.updated_at) }) : undefined,
 )

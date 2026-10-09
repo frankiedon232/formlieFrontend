@@ -42,7 +42,7 @@ const doneCount = computed(() =>
 )
 
 onMounted(async () => {
-  if (session.user.value?.role === 'member') return navigateTo('/forms', { replace: true })
+  if (!useCan().can('settings.manage')) return navigateTo('/forms', { replace: true })
   await onboarding.load()
   if (!state.value) return
   draft.value = createOnboardingDraft(state.value, uiLocale.value.code)

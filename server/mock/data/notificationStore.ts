@@ -13,6 +13,7 @@ import { peopleOf } from './orgStore'
 import { sendEmail } from './outboxStore'
 import { settingsOf } from './settingsStore'
 import { MOCK_USERS, type MockTenant } from './tenants'
+import { can } from './rolesStore'
 
 const KEEP = 100
 
@@ -58,7 +59,7 @@ function recipients(tenant: MockTenant, rule: NotificationRule, only?: string[])
     const people = peopleOf(tenant).filter(person => rule.people.includes(person.id))
     return { members: users.filter(user => rule.people.includes(user.id)).map(user => user.id), emails: people.map(person => ({ email: person.email, name: person.name.split(' ')[0] ?? person.name })) }
   }
-  const chosen = rule.to === 'admins' ? users.filter(user => user.role !== 'member') : users
+  const chosen = rule.to === 'admins' ? users.filter(user => can(user, 'settings.manage')) : users
   return { members: chosen.map(user => user.id), emails: chosen.map(user => ({ email: user.email, name: user.first_name })) }
 }
 

@@ -15,6 +15,7 @@ import { dataSourcesOf, statusOf } from '../data/dataSourceStore'
 import { destinationsOf, rowOfDestination } from '../data/destinationStore'
 import { peopleStoreOf } from '../data/peopleStore'
 import { orgOf } from '../data/orgStore'
+import { can } from '../data/rolesStore'
 
 /** GET /navigation/counts, cheap counters and short lists for the sidebar. */
 export const navigationCounts = defineMockRoute(({ event }) => {
@@ -73,7 +74,7 @@ export const navigationCounts = defineMockRoute(({ event }) => {
       return { total: rows.filter(Boolean).length, failing: rows.filter(row => row?.status === 'failing').length }
     })(),
     people: (() => {
-      if (user.role === 'member') return { total: 0, active: 0, invited: 0, disabled: 0, departments: 0, job_titles: 0 }
+      if (!can(user, 'people.view', tenant)) return { total: 0, active: 0, invited: 0, disabled: 0, departments: 0, job_titles: 0 }
       const people = peopleStoreOf(tenant)
       const org = orgOf(tenant)
       return {

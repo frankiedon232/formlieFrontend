@@ -65,6 +65,7 @@ function profileOf(tenant: MockTenant, user: MockUser, person: StoredPerson): My
     time_zone: user.time_zone ?? null,
     date_format: user.date_format ?? null,
     role: user.role,
+    role_name: row?.role_name ?? user.role,
     departments: row?.departments ?? [],
     job_titles: row?.job_titles ?? [],
     manager: row?.manager ?? null,

@@ -24,6 +24,7 @@ import { MOCK_TENANTS, type MockTenant, type MockUser } from '../data/tenants'
 import { requireLevel } from '../data/formPermissions'
 import { peopleOf as directoryPeople } from '../data/orgStore'
 import { peopleStoreOf } from '../data/peopleStore'
+import { roleOf } from '../data/rolesStore'
 
 /** A form of this workspace that this person can edit: sharing is editors only (decision 97). */
 function findForm(tenant: MockTenant, user: MockUser, id: string | undefined): StoredForm {
@@ -67,7 +68,8 @@ const peopleIn = (tenant: MockTenant): Person[] => directoryPeople(tenant)
 function peopleOf(form: StoredForm, tenant: MockTenant): FormShareSettings['people'] {
   const people = peopleIn(tenant)
   // Owners and admins always have access (their role from People)
-  const admins = peopleStoreOf(tenant).filter(person => person.status === 'active' && (person.role === 'owner' || person.role === 'admin'))
+  // Everyone whose role sees every form (forms.all) always has access
+  const admins = peopleStoreOf(tenant).filter(person => person.status === 'active' && (person.role === 'owner' || !!roleOf(tenant, person.role)?.permissions.includes('forms.all')))
   const always: FormShareSettings['people']['always'] = admins.map(user => ({ user: people.find(person => person.id === user.id)!, reason: 'workspace_admin' as const }))
   if (!admins.some(user => user.id === form.owner.id)) {
     const owner = people.find(person => person.id === form.owner.id) ?? { id: form.owner.id, name: form.owner.name, email: '' }

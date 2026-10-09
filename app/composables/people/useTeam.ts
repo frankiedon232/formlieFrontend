@@ -12,7 +12,8 @@ let pending: Promise<void> | null = null
 export function useTeam() {
   const api = useApi()
   const session = useSession()
-  const canSee = computed(() => !!session.user.value && session.user.value.role !== 'member')
+  const { can } = useCan()
+  const canSee = computed(() => !!session.user.value && can('people.view'))
 
   function refresh(force = false): Promise<void> {
     if (!canSee.value) return Promise.resolve()

@@ -25,6 +25,7 @@ export interface MyProfile {
   time_zone: string | null
   date_format: DateFormat | null
   role: WorkspaceRole
+  role_name: string
   departments: PersonRef[]
   job_titles: PersonRef[]
   manager: PersonRef | null

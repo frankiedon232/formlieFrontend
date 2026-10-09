@@ -19,4 +19,7 @@ export default defineNuxtRouteMiddleware(async to => {
   if (!session.isAuthenticated.value) {
     return navigateTo({ path: '/auth/login', query: to.fullPath !== '/' ? { redirect: to.fullPath } : {} })
   }
+  // Roles & access (F22): a page the role doesn't open shows "No access" instead
+  const needed = pagePermission(to.path)
+  if (needed && !useCan().can(needed)) return navigateTo({ path: '/no-access', query: { from: to.path } })
 })

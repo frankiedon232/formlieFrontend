@@ -38,7 +38,8 @@ const filterStatus = (status: string) =>
     query: { ...route.query, status: statusFilter.value === status ? undefined : status, page: undefined },
   })
 
-defineShortcuts({ n: () => navigateTo('/forms/new') })
+const { can } = useCan()
+defineShortcuts({ n: () => can('forms.create') && navigateTo('/forms/new') })
 </script>
 
 <template>
@@ -57,13 +58,14 @@ defineShortcuts({ n: () => navigateTo('/forms/new') })
         @click="foldersOpen = true"
       />
       <UButton
+        v-if="can('forms.create')"
         icon="i-lucide-upload"
         :label="t('forms.import')"
         color="neutral"
         variant="outline"
         :to="{ path: '/forms/new', query: { mode: 'import' } }"
       />
-      <UButton icon="i-lucide-plus" :label="t('nav.newForm')" color="neutral" to="/forms/new">
+      <UButton v-if="can('forms.create')" icon="i-lucide-plus" :label="t('nav.newForm')" color="neutral" to="/forms/new">
         <template #trailing>
           <UKbd value="N" class="hidden lg:inline-flex" />
         </template>

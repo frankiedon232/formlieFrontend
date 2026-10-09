@@ -4,6 +4,8 @@
  * family revocation on reuse, one-time login tickets for cross-subdomain hand-off.
  */
 import type { H3Event } from 'h3'
+import { permissionFor } from '#shared/utils/auth/permissions'
+import { permissionsOf, roleOf } from '../data/rolesStore'
 import { hashRecovery, verifyTotp } from './totp'
 import type { AuthTokens, LoginChallenge, OtpChannel } from '#shared/types/auth'
 import type { ActiveSession } from '#shared/types/settings'
@@ -314,6 +316,8 @@ function tokensFor(event: H3Event, session: Session): AuthTokens {
       email: user.email,
       avatar_url: user.photo ?? null,
       role: user.role,
+      role_name: roleOf(tenant, user.role)?.name ?? user.role,
+      permissions: [...permissionsOf(user, tenant)],
       language: user.language ?? null,
       time_zone: user.time_zone ?? null,
       date_format: user.date_format ?? null,
@@ -390,13 +394,19 @@ export function requireAuth(event: H3Event): { user: MockUser; tenant: MockTenan
   if (!ipAllowed(session.tenant, callerIp(event))) throw new MockError('FRM-AUTH-1016')
   // Throttled: activity is recorded at most once a minute per session.
   if (Date.now() - session.lastActiveAt > 60_000) touch(session)
+  // Roles & access (F22): the call's permission (by address and action) must be in the person's role
+  const needed = permissionFor(event.method, event.path)
+  if (needed && !permissionsOf(session.user, session.tenant).has(needed)) throw new MockError('FRM-PERM-1001')
   return { user: session.user, tenant: session.tenant }
 }
 
-/** Workspace owner / admin only (until Roles & access, F22). */
+/**
+ * Calls that change the workspace (Roles & access): the rule for the address applies (requireAuth);
+ * an address without one needs `settings.manage`.
+ */
 export function requireAdmin(event: H3Event): { user: MockUser; tenant: MockTenant } {
   const auth = requireAuth(event)
-  if (auth.user.role === 'member') throw new MockError('FRM-PERM-1001')
+  if (!permissionFor(event.method, event.path) && !permissionsOf(auth.user, auth.tenant).has('settings.manage')) throw new MockError('FRM-PERM-1001')
   return auth
 }
 

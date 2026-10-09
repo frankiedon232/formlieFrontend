@@ -102,8 +102,11 @@ export function usePeopleActions(done: () => unknown) {
     ]
   }
 
+  // The workspace's roles (Owner only offered to owners)
+  const { roles, refresh: loadRoles } = useRoles()
+  void loadRoles()
   const roleItems = (pick: (role: WorkspaceRole) => void): DropdownMenuItem[] =>
-    (['owner', 'admin', 'member'] as WorkspaceRole[]).filter(role => role !== 'owner' || iAmOwner.value).map(role => ({ label: t(`people.role.${role}`), icon: 'i-lucide-shield', onSelect: () => pick(role) }))
+    roles.value.filter(role => role.id !== 'owner' || iAmOwner.value).map(role => ({ label: role.name, icon: role.id === 'owner' ? 'i-lucide-crown' : 'i-lucide-shield', onSelect: () => pick(role.id) }))
 
   return { busy, me, iAmOwner, resend, copyLink, revoke, disable, enable, signOut, password, twoStep, bulk, menu, roleItems }
 }

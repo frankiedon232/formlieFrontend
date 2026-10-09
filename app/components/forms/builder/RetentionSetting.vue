@@ -10,9 +10,8 @@ const { t } = useI18n()
 const builder = useBuilder()
 const schema = builder.schema
 const store = useWorkspaceSettings()
-const session = useSession()
 // Admins see the workspace's choice; members just "the workspace's"
-onMounted(() => session.user.value?.role !== 'member' && void store.load().catch(() => {}))
+onMounted(() => useCan().can('settings.view') && void store.load().catch(() => {}))
 
 const WORKSPACE = -1
 const label = (days: number) => (days ? t('builder.retention.days', { n: days }, days) : t('builder.retention.keep'))

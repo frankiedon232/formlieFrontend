@@ -14,7 +14,6 @@ const { t } = useI18n()
 const api = useApi()
 const route = useRoute()
 const router = useRouter()
-const session = useSession()
 const toast = useToast()
 const { copy } = useClipboard({ legacy: true })
 const { relative, dateTime } = useFormat()
@@ -23,7 +22,7 @@ const { endSide } = useAppLocale()
 const { handle } = useErrorHandler()
 useHead({ title: () => t('nav.audit') })
 
-const canView = computed(() => session.user.value?.role !== 'member')
+const canView = computed(() => useCan().can('audit.view'))
 
 const facets = ref<AuditFacets>({ actors: [], countries: [] })
 onMounted(async () => {

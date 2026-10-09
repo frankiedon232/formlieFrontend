@@ -1,3 +1,4 @@
+import type { Permission } from '#shared/utils/auth/permissions'
 import type { BadgeProps, NavigationMenuItem } from '@nuxt/ui'
 import type { NavCounts } from '#shared/types/navigation'
 import { categoryOf } from '#shared/templates/categories'
@@ -18,8 +19,8 @@ export interface AppNavItem {
   count?: (counts: NavCounts) => number
   /** Hide the badge at 0 (e.g. "new" items); status counts always show. */
   hideZero?: boolean
-  /** Workspace owners / admins only (until Roles & access, F22). */
-  adminOnly?: boolean
+  /** Shown only when the role allows it (Roles & access, F22). */
+  permission?: Permission
   /** Sits at the foot of the rail instead of the menu (Help & support, owner 2026-10-05). */
   railFoot?: boolean
   /** Active on its own path only (an overview whose sections live under it). */
@@ -88,6 +89,7 @@ const MAIN_NAV: AppNavItem[] = [
     to: '/responses',
     alsoMatch: FORM_RESPONSES,
     shortcut: 'g-r',
+    permission: 'responses.view',
     children: [
       { key: 'responsesAll', to: '/responses', dot: 'bg-(--ui-text-dimmed)', count: c => c.responses.all },
       { key: 'responsesNew', to: '/responses', query: { review: 'new' }, dot: 'bg-inverted', count: c => c.responses.new },
@@ -97,7 +99,7 @@ const MAIN_NAV: AppNavItem[] = [
       { key: 'responsesExports', icon: 'i-lucide-file-down', to: '/responses/exports' },
     ],
   },
-  { key: 'analytics', icon: 'i-lucide-chart-column', to: '/analytics', shortcut: 'g-a' },
+  { key: 'analytics', icon: 'i-lucide-chart-column', to: '/analytics', shortcut: 'g-a', permission: 'analytics.view' },
 ]
 
 const RESOURCE_NAV: AppNavItem[] = [
@@ -245,28 +247,28 @@ const PEOPLE_NAV: AppNavItem[] = [
  * the extra areas are listed here.
  */
 export type NavArea = 'forms' | 'data' | 'api' | 'ai' | 'people'
-const NAV_AREAS: { key: Exclude<NavArea, 'forms'>; label: string; icon: string; to: string; menu: AppNavItem[]; adminOnly?: boolean }[] = [
-  { key: 'data', label: 'nav.dataSources', icon: 'i-lucide-database', to: '/data-sources', menu: DATA_NAV },
-  { key: 'api', label: 'nav.apiService', icon: 'i-lucide-code-xml', to: '/api-service', menu: API_NAV },
-  { key: 'ai', label: 'nav.ai', icon: 'i-lucide-sparkles', to: '/ai', menu: AI_NAV },
-  { key: 'people', label: 'nav.people', icon: 'i-lucide-users', to: '/people', menu: PEOPLE_NAV, adminOnly: true },
+const NAV_AREAS: { key: Exclude<NavArea, 'forms'>; label: string; icon: string; to: string; menu: AppNavItem[]; permission?: Permission }[] = [
+  { key: 'data', label: 'nav.dataSources', icon: 'i-lucide-database', to: '/data-sources', menu: DATA_NAV, permission: 'data.view' },
+  { key: 'api', label: 'nav.apiService', icon: 'i-lucide-code-xml', to: '/api-service', menu: API_NAV, permission: 'api.view' },
+  { key: 'ai', label: 'nav.ai', icon: 'i-lucide-sparkles', to: '/ai', menu: AI_NAV, permission: 'ai.use' },
+  { key: 'people', label: 'nav.people', icon: 'i-lucide-users', to: '/people', menu: PEOPLE_NAV, permission: 'people.view' },
 ]
 const areaOf = (path: string): NavArea =>
   NAV_AREAS.find(a => path === a.to || path.startsWith(`${a.to}/`))?.key ?? 'forms'
 
 const SYSTEM_NAV: AppNavItem[] = [
-  { key: 'settings', icon: 'i-lucide-settings', to: '/settings', shortcut: 'g-s', except: ['/settings/themes'] },
-  { key: 'audit', icon: 'i-lucide-scroll-text', to: '/audit', shortcut: 'g-l', adminOnly: true },
+  { key: 'settings', icon: 'i-lucide-settings', to: '/settings', shortcut: 'g-s', except: ['/settings/themes'], permission: 'settings.view' },
+  { key: 'audit', icon: 'i-lucide-scroll-text', to: '/audit', shortcut: 'g-l', permission: 'audit.view' },
   { key: 'help', icon: 'i-lucide-circle-help', to: '/help', railFoot: true },
 ]
 
 export function useNavigation() {
   const { t, te } = useI18n()
   const route = useRoute()
-  const session = useSession()
   const { counts } = useNavCounts()
   const { compact } = useFormat()
-  const allowed = (item: AppNavItem) => !item.adminOnly || session.user.value?.role !== 'member'
+  const { can } = useCan()
+  const allowed = (item: AppNavItem) => !item.permission || can(item.permission)
 
   function isActive(item: AppNavItem): boolean {
     if (item.except?.some(path => route.path === path || route.path.startsWith(`${path}/`))) return false
@@ -334,8 +336,9 @@ export function useNavigation() {
   const area = computed<NavArea>(() => areaOf(route.path))
   /** The current area's own menu (Forms: MAIN MENU + RESOURCES). */
   const areaMenu = computed(() => NAV_AREAS.find(a => a.key === area.value)?.menu)
-  const mainItems = computed(() => (areaMenu.value ?? MAIN_NAV).map(item => toMenuItem(item)))
-  const resourceItems = computed(() => (areaMenu.value ? [] : RESOURCE_NAV.map(item => toMenuItem(item))))
+  // Only what the role opens (Roles & access)
+  const mainItems = computed(() => (areaMenu.value ?? MAIN_NAV).filter(allowed).map(item => toMenuItem(item)))
+  const resourceItems = computed(() => (areaMenu.value ? [] : RESOURCE_NAV.filter(allowed).map(item => toMenuItem(item))))
   /**
    * FOLDERS (F11 M4; owner 2026-10-05: they must not take over the menu as they grow): at most five,
    * chosen per person (pinned first, then recently opened, then the busiest), each in its colour
@@ -357,16 +360,15 @@ export function useNavigation() {
   })
   /** Sidebar heading for the main list: the area's name, or "Main menu" for Forms. */
   const areaLabel = computed(() => NAV_AREAS.find(a => a.key === area.value)?.label ?? 'nav.main')
-  const isAdmin = computed(() => session.user.value?.role !== 'member')
-  /** Rail areas this person may open (People: admins and owners until F22). */
-  const areas = computed(() => NAV_AREAS.filter(item => !item.adminOnly || isAdmin.value))
+  /** Rail areas this person's role may open (Roles & access). */
+  const areas = computed(() => NAV_AREAS.filter(item => !item.permission || can(item.permission)))
   const systemItems = computed(() => SYSTEM_NAV.filter(item => allowed(item) && !item.railFoot).map(item => toMenuItem(item)))
   /** Help & support also in the SYSTEM group, below Audit after a line (owner 2026-10-08). */
   const helpItems = computed(() => SYSTEM_NAV.filter(item => allowed(item) && item.railFoot).map(item => toMenuItem(item)))
 
   /** Flat list of top-level destinations (children with their own page included), for search, rail and shortcuts. */
   const destinations = computed(() =>
-    [...MAIN_NAV, ...RESOURCE_NAV, ...DATA_NAV, ...API_NAV, ...AI_NAV, ...(isAdmin.value ? PEOPLE_NAV : []), ...SYSTEM_NAV]
+    [...MAIN_NAV, ...RESOURCE_NAV, ...DATA_NAV, ...API_NAV, ...AI_NAV, ...(can('people.view') ? PEOPLE_NAV : []), ...SYSTEM_NAV]
       .filter(allowed)
       .flatMap(item => (item.children && !item.children[0]?.dot ? item.children : [item])),
   )

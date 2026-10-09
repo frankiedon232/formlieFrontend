@@ -30,10 +30,13 @@ watch(open, async value => {
 })
 
 const iAmOwner = computed(() => session.user.value?.role === 'owner')
+// The workspace's roles (Roles & access); Owner only for owners
+const { roles: workspaceRoles, refresh: loadRoles } = useRoles()
+onMounted(() => void loadRoles())
 const roles = computed(() =>
-  (['member', 'admin', 'owner'] as WorkspaceRole[])
-    .filter(role => role !== 'owner' || iAmOwner.value || props.person?.role === 'owner')
-    .map(role => ({ value: role, label: t(`people.role.${role}`), description: t(`people.manage.roleHint.${role}`), disabled: role === 'owner' && !iAmOwner.value })),
+  workspaceRoles.value
+    .filter(role => role.id !== 'owner' || iAmOwner.value || props.person?.role === 'owner')
+    .map(role => ({ value: role.id, label: role.name, description: role.description ?? undefined, disabled: role.id === 'owner' && !iAmOwner.value })),
 )
 const departments = computed(() => (props.directory?.departments ?? []).filter(item => !item.archived).map(item => ({ value: item.id, label: item.name })))
 const jobTitles = computed(() => (props.directory?.job_titles ?? []).filter(item => !item.archived).map(item => ({ value: item.id, label: item.name })))
@@ -62,7 +65,8 @@ async function save() {
     <template #body>
       <form class="flex flex-col gap-4" @submit.prevent="save">
         <UFormField :label="t('people.col.role')">
-          <URadioGroup v-model="state.role" :items="roles" value-key="value" color="neutral" variant="card" :ui="{ fieldset: 'grid gap-2 sm:grid-cols-3', item: 'w-full' }" />
+          <USelectMenu v-model="state.role" :items="roles" value-key="value" icon="i-lucide-shield" class="w-full" />
+          <template #hint><NuxtLink to="/people/roles" class="underline">{{ t('access.manageRoles') }}</NuxtLink></template>
         </UFormField>
         <div class="grid gap-4 sm:grid-cols-2">
           <UFormField :label="t('people.col.departments')">

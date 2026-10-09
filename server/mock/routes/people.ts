@@ -35,7 +35,7 @@ export const listPeople = defineMockRoute(({ event, query }) => {
   const sort = typeof query.sort === 'string' && query.sort ? query.sort : 'name'
   const key = sort.replace(/^-/, '')
   const sign = sort.startsWith('-') ? -1 : 1
-  const value = (row: PersonRow): string | number => (key === 'role' ? ORDER[row.role] : key === 'last_active_at' ? (row.last_active_at ? Date.parse(row.last_active_at) : 0) : key === 'joined_at' ? Date.parse(row.joined_at) : row.name.toLowerCase())
+  const value = (row: PersonRow): string | number => (key === 'role' ? ((ORDER as Record<string, number>)[row.role] ?? 3) : key === 'last_active_at' ? (row.last_active_at ? Date.parse(row.last_active_at) : 0) : key === 'joined_at' ? Date.parse(row.joined_at) : row.name.toLowerCase())
   rows = rows.sort((a, b) => {
     const x = value(a)
     const y = value(b)

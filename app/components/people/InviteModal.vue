@@ -36,10 +36,10 @@ const wrong = computed(() => state.value.emails.filter(item => !isEmail(item)))
 const tooMany = computed(() => state.value.emails.length > 50)
 const canSend = computed(() => state.value.emails.length > 0 && !wrong.value.length && !tooMany.value)
 
-const roles = computed(() => [
-  { value: 'member', label: t('people.role.member'), description: t('people.invite.memberHint') },
-  { value: 'admin', label: t('people.role.admin'), description: t('people.invite.adminHint') },
-])
+// Any of the workspace's roles but Owner (Roles & access)
+const { roles: workspaceRoles, refresh: loadRoles } = useRoles()
+onMounted(() => void loadRoles())
+const roles = computed(() => workspaceRoles.value.filter(role => role.id !== 'owner').map(role => ({ value: role.id, label: role.name, description: role.description ?? undefined })))
 const departments = computed(() => (props.directory?.departments ?? []).filter(item => !item.archived).map(item => ({ value: item.id, label: item.name })))
 const jobTitles = computed(() => (props.directory?.job_titles ?? []).filter(item => !item.archived).map(item => ({ value: item.id, label: item.name })))
 
@@ -76,7 +76,7 @@ async function send() {
           <UInputTags v-model="state.emails" :placeholder="t('people.invite.emailsPlaceholder')" icon="i-lucide-at-sign" :add-on-blur="true" :add-on-paste="true" class="w-full" autofocus />
         </UFormField>
         <UFormField :label="t('people.col.role')">
-          <URadioGroup v-model="state.role" :items="roles" value-key="value" color="neutral" variant="card" orientation="horizontal" :ui="{ fieldset: 'grid gap-2 sm:grid-cols-2', item: 'w-full' }" />
+          <USelectMenu v-model="state.role" :items="roles" value-key="value" icon="i-lucide-shield" class="w-full" />
         </UFormField>
         <div class="grid gap-4 sm:grid-cols-2">
           <UFormField :label="t('people.col.departments')">

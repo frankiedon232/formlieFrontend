@@ -22,6 +22,7 @@ import { parseBody } from '../core/validate'
 import { orgOf, saveOrg } from '../data/orgStore'
 import { accountOf, peopleStoreOf, personDetail, savePeople, type StoredPerson } from '../data/peopleStore'
 import type { MockTenant, MockUser } from '../data/tenants'
+import { roleOf } from '../data/rolesStore'
 
 const nameOf = (person: StoredPerson) => `${person.first_name} ${person.last_name}`.trim() || person.email
 const activeOwners = (tenant: MockTenant) => peopleStoreOf(tenant).filter(item => item.role === 'owner' && item.status === 'active')
@@ -43,6 +44,7 @@ function guardOwner(tenant: MockTenant, user: MockUser, person: StoredPerson, lo
 
 function setRole(tenant: MockTenant, user: MockUser, person: StoredPerson, role: WorkspaceRole): AuditChange | null {
   if (role === person.role) return null
+  if (!roleOf(tenant, role)) throw new MockError('FRM-USER-1009')
   if (role === 'owner' && user.role !== 'owner') throw new MockError('FRM-USER-1006')
   if (person.id === user.id && role !== 'owner' && person.role === 'owner' && activeOwners(tenant).length <= 1) throw new MockError('FRM-USER-1003')
   guardOwner(tenant, user, person, true)
@@ -84,7 +86,7 @@ function setManager(tenant: MockTenant, person: StoredPerson, managerId: string 
 }
 
 const patchBody = z.object({
-  role: z.enum(['owner', 'admin', 'member']).optional(),
+  role: z.string().min(1).max(64).optional(),
   department_ids: z.array(z.string().max(64)).max(20).optional(),
   job_title_ids: z.array(z.string().max(64)).max(20).optional(),
   manager_id: z.string().max(64).nullable().optional(),
@@ -174,7 +176,7 @@ export const bulkPeople = defineMockRoute(({ event, body }) => {
       let changed: AuditChange | boolean | null = null
       let name: AuditAction = 'users.updated'
       if (input.action === 'role') {
-        changed = setRole(tenant, user, person, z.enum(['owner', 'admin', 'member']).parse(input.value))
+        changed = setRole(tenant, user, person, z.string().min(1).max(64).parse(input.value))
         name = 'users.role_changed'
       }
       // Adds to a department or job title (keeps the others)

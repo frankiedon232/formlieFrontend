@@ -544,3 +544,16 @@ Every signed-in person, about themselves.
 | GET · DELETE · POST | `/me/sessions` · `/me/sessions/{id}` · `/me/sessions/sign-out-others` | `MySession { id, current, started_at, last_active_at, ip, device }[]`; the current session can't be ended here (`FRM-USER-1005`) |
 
 `SessionUser` gains `avatar_url` (the photo), `language`, `time_zone`, `date_format`.
+
+## Roles & access (F22, brought forward into F16)
+
+Permissions: `forms.view|create|edit|publish|delete|all`, `responses.view|edit|delete|export`, `resources.manage`, `analytics.view`, `data.view|query|manage`, `api.view|manage`, `people.view|manage|approve`, `roles.manage`, `settings.view|manage`, `audit.view|export`, `ai.use` (`shared/utils/auth/permissions.ts`; some need others, e.g. edit needs view). Every signed-in call is checked against `permissionFor(method, path)`; a missing permission answers `403 FRM-PERM-1001`. `SessionUser` carries `role_name` and `permissions`.
+
+| Method | Path | Notes |
+| ------ | ---- | ----- |
+| GET | `/roles` · `/roles/insights` · `/roles/{id}` | `RoleRow { id, name, description, permissions, built_in: owner\|admin\|member\|null, people_count, people (first 5), created_at, updated_at }`; with `?page=` paged, `filter[kind]=builtin,own`, `sort` `name` · `-people_count` · `-updated_at`; insights `{ total, custom, people, by_role, reach }` |
+| POST | `/roles` · `/roles/{id}/duplicate` | `{ name, description?, permissions? \| copy_of? }` → 201 `RoleRow`; names unique (`409 FRM-ORG-1001`) |
+| PATCH | `/roles/{id}` | `{ name?, description?, permissions? }` (needs added); Owner `409 FRM-USER-1007` |
+| DELETE | `/roles/{id}` | own roles only (`FRM-USER-1007`), nobody holding it (`FRM-USER-1008`) |
+
+People: `PersonRow.role` is a role id, with `role_name` and `privileged` (the role manages people, settings or roles); an unknown role → `422 FRM-USER-1009`.

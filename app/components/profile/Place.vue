@@ -6,7 +6,7 @@ const props = defineProps<{ profile: MyProfile }>()
 const { t } = useI18n()
 const names = (items: { name: string }[]) => items.map(item => item.name).join(', ') || t('people.none')
 const tiles = computed(() => [
-  { key: 'role', icon: 'i-lucide-shield', label: t('people.col.role'), value: t(`people.role.${props.profile.role}`) },
+  { key: 'role', icon: 'i-lucide-shield', label: t('people.col.role'), value: props.profile.role_name },
   { key: 'departments', icon: 'i-lucide-building-2', label: t('people.col.departments'), value: names(props.profile.departments) },
   { key: 'jobs', icon: 'i-lucide-briefcase', label: t('people.col.jobTitles'), value: names(props.profile.job_titles) },
   { key: 'manager', icon: 'i-lucide-user-round', label: t('people.col.manager'), value: props.profile.manager?.name ?? t('people.none') },

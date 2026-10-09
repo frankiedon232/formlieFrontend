@@ -8,6 +8,7 @@ import * as people from './routes/people'
 import * as invites from './routes/invites'
 import * as peopleManage from './routes/peopleManage'
 import * as me from './routes/me'
+import * as roles from './routes/roles'
 import { getDirectory } from './routes/directory'
 import { getFormOverview } from './routes/formOverview'
 import * as responses from './routes/responses'
@@ -254,6 +255,13 @@ const router = createRouter()
   .get('/me/sessions', me.mySessions)
   .delete('/me/sessions/:id', me.endMySession)
   .post('/me/sessions/sign-out-others', me.endOtherSessions)
+  .get('/roles', roles.listRoles)
+  .get('/roles/insights', roles.rolesInsights)
+  .post('/roles', roles.createRole)
+  .get('/roles/:id', roles.getRole)
+  .patch('/roles/:id', roles.updateRole)
+  .post('/roles/:id/duplicate', roles.duplicateRole)
+  .delete('/roles/:id', roles.deleteRole)
   .post('/people/bulk', peopleManage.bulkPeople)
   .post('/people/invites', invites.invitePeople)
   .patch('/people/:id', peopleManage.updatePerson)

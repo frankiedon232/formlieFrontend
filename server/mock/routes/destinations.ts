@@ -30,6 +30,7 @@ import { backfillState, createdTablesOn, deliveriesOf, destinationsOf, detailOfD
 import { canSee } from '../data/formPermissions'
 import { formsOf } from '../data/formStore'
 import type { MockTenant } from '../data/tenants'
+import { can } from '../data/rolesStore'
 
 const DAY = 86_400_000
 const columnSchema = z.object({
@@ -79,7 +80,7 @@ export const formStorage = defineMockRoute(({ event }) => {
     destination: destination ? rowOfDestination(tenant, destination) : null,
     connections: dataSourcesOf(tenant).filter(source => source.enabled).length,
     fields: inputFieldsOf(form).map(field => ({ key: field.key, label: field.label ?? field.key, type: field.type, options: field.options?.map(option => ({ value: option.value, label: option.label })) })),
-    can_manage: user.role !== 'member',
+    can_manage: can(user, 'data.manage'),
   })
 })
 

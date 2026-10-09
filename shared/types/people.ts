@@ -25,6 +25,10 @@ export interface PersonRow {
   /** Their photo (My profile), a small data URL, or null. */
   photo: string | null
   role: WorkspaceRole
+  /** The role's name (Roles & access). */
+  role_name: string
+  /** The role manages the workspace (people, settings or roles): two-step sign-in matters most. */
+  privileged: boolean
   status: PersonStatus
   departments: PersonRef[]
   job_titles: PersonRef[]
@@ -42,7 +46,8 @@ export interface PersonRow {
 /** POST /people/invites */
 export interface InviteRequest {
   emails: string[]
-  role: 'admin' | 'member'
+  /** Any role id but owner (Roles & access). */
+  role: string
   department_ids: string[]
   job_title_ids: string[]
   message?: string | null
@@ -58,7 +63,8 @@ export interface InvitePreview {
   workspace: string
   email: string
   inviter: string
-  role: 'owner' | 'admin' | 'member'
+  role: string
+  role_name: string
   message: string | null
 }
 
@@ -86,4 +92,30 @@ export interface PeopleInsights {
   by_role: Record<WorkspaceRole, number>
   /** Sign-ins per day, last 30 days. */
   daily: { date: string; count: number }[]
+}
+
+/** A role (Roles & access, F22): what its holders may do (GET /roles). */
+export interface RoleRow {
+  id: string
+  name: string
+  description: string | null
+  permissions: string[]
+  /** owner · admin · member for the built-in ones (Owner can't be changed), null for the workspace's own. */
+  built_in: 'owner' | 'admin' | 'member' | null
+  people_count: number
+  /** A few of the people who hold it (avatars). */
+  people: { id: string; name: string; photo: string | null }[]
+  created_at: string
+  updated_at: string
+}
+
+/** GET /roles/insights: the two cards on top of the Roles page. */
+export interface RolesInsights {
+  total: number
+  custom: number
+  people: number
+  /** People per role, most first. */
+  by_role: { id: string; name: string; count: number }[]
+  /** How much of the platform each role opens (share of all permissions), for the lines card. */
+  reach: { id: string; name: string; share: number }[]
 }

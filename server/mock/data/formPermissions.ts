@@ -13,6 +13,7 @@ import type { FormAccessLevel } from '#shared/types/forms'
 import { MockError } from '../core/respond'
 import type { StoredForm } from './formStore'
 import type { MockUser } from './tenants'
+import { can } from './rolesStore'
 
 const RANK: Record<FormAccessLevel, number> = { none: 0, responses: 1, view: 2, edit: 3 }
 
@@ -22,7 +23,8 @@ export interface FormGrant {
   granted_at: string
 }
 
-export const isWorkspaceAdmin = (user: MockUser) => user.role === 'owner' || user.role === 'admin'
+/** Every form, not only those shared with them (Roles & access: forms.all). */
+export const isWorkspaceAdmin = (user: MockUser) => can(user, 'forms.all')
 
 /** This person's level on this form. */
 export function levelOf(form: StoredForm, user: MockUser): FormAccessLevel {
