@@ -134,6 +134,8 @@ function rowActions(event: AuditEvent): DropdownMenuItem[][] {
               icon: 'i-lucide-user-search',
               onSelect: () => applyFilter({ actor_id: event.actor.id! }),
             },
+            // The person on the People page (F16 M4; links from an event to its item)
+            { label: t('audit.detail.openPerson'), icon: 'i-lucide-user-round', to: { path: '/people', query: { person: event.actor.id! } } },
           ]
         : []),
     ],

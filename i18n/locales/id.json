@@ -1117,7 +1117,8 @@
       "copied": "ID permintaan disalin",
       "moreItem": "Lainnya untuk item ini",
       "morePerson": "Lainnya dari orang ini",
-      "showAll": "Tampilkan semua"
+      "showAll": "Tampilkan semua",
+      "openPerson": "Buka di Orang"
     },
     "timeline": {
       "empty": "Belum ada aktivitas lain.",
@@ -7595,6 +7596,16 @@
       "disableTitle": "Nonaktifkan {n} orang? | Nonaktifkan {n} orang?",
       "skipped": "{n} dibiarkan seperti semula | {n} dibiarkan seperti semula",
       "skippedDesc": "Sudah begitu, akun Anda sendiri, pemilik terakhir, atau pemilik yang hanya bisa diubah oleh pemilik."
+    },
+    "forms": {
+      "title": "Formulir mereka",
+      "all": "Semua {n} formulir"
+    },
+    "team": {
+      "label": "{n} orang di ruang kerja | {n} orang di ruang kerja",
+      "recent": "Aktif baru-baru ini",
+      "all": "Semua orang ({n})",
+      "invite": "Undang anggota"
     }
   }
 }

@@ -1,7 +1,8 @@
 <!--
   Page header bar (owner, 2026-10-02: titles, subtitles, crumbs and page buttons live here so the
   content area stays clear). Left: title + (breadcrumbs · subtitle). Right: search, page actions,
-  language, notifications, theme (below lg, where the sidebar's Dark mode switch is hidden).
+  language, notifications, theme (below lg, where the sidebar's Dark mode switch is hidden), team
+  avatars and Invite member (owners and admins).
   Phones: title only; page action buttons collapse to icons.
 -->
 <script setup lang="ts">
@@ -124,6 +125,9 @@ const languageItems = computed(() =>
       </UTooltip>
 
       <UColorModeButton color="neutral" variant="outline" class="lg:hidden" />
+
+      <!-- Team avatars and Invite member, after the bell as in the design (F16 M4) -->
+      <AppNavbarTeam />
     </template>
   </UDashboardNavbar>
 </template>

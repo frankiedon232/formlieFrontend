@@ -1117,7 +1117,8 @@
       "copied": "İstek kimliği kopyalandı",
       "moreItem": "Bu öğeyle ilgili diğerleri",
       "morePerson": "Bu kişinin diğer işlemleri",
-      "showAll": "Tümünü göster"
+      "showAll": "Tümünü göster",
+      "openPerson": "Kişiler'de aç"
     },
     "timeline": {
       "empty": "Henüz başka etkinlik yok.",
@@ -7595,6 +7596,16 @@
       "disableTitle": "{n} kişi devre dışı bırakılsın mı? | {n} kişi devre dışı bırakılsın mı?",
       "skipped": "{n} olduğu gibi bırakıldı | {n} olduğu gibi bırakıldı",
       "skippedDesc": "Zaten öyle, kendi hesabınız, son sahip veya yalnızca sahiplerin değiştirebildiği bir sahip."
+    },
+    "forms": {
+      "title": "Formları",
+      "all": "Tüm {n} form"
+    },
+    "team": {
+      "label": "Çalışma alanında {n} kişi | Çalışma alanında {n} kişi",
+      "recent": "Yakın zamanda etkin",
+      "all": "Tüm kişiler ({n})",
+      "invite": "Üye davet et"
     }
   }
 }

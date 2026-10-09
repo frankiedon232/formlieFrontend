@@ -1117,7 +1117,8 @@
       "copied": "Đã sao chép mã yêu cầu",
       "moreItem": "Thêm về mục này",
       "morePerson": "Thêm từ người này",
-      "showAll": "Hiện tất cả"
+      "showAll": "Hiện tất cả",
+      "openPerson": "Mở trong Mọi người"
     },
     "timeline": {
       "empty": "Chưa có hoạt động nào khác.",
@@ -7595,6 +7596,16 @@
       "disableTitle": "Vô hiệu hóa {n} người? | Vô hiệu hóa {n} người?",
       "skipped": "{n} người giữ nguyên | {n} người giữ nguyên",
       "skippedDesc": "Vốn đã như vậy, tài khoản của chính bạn, chủ sở hữu cuối cùng, hoặc chủ sở hữu mà chỉ chủ sở hữu mới đổi được."
+    },
+    "forms": {
+      "title": "Biểu mẫu của họ",
+      "all": "Tất cả {n} biểu mẫu"
+    },
+    "team": {
+      "label": "{n} người trong không gian làm việc | {n} người trong không gian làm việc",
+      "recent": "Hoạt động gần đây",
+      "all": "Tất cả mọi người ({n})",
+      "invite": "Mời thành viên"
     }
   }
 }

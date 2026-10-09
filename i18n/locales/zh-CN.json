@@ -1117,7 +1117,8 @@
       "copied": "已复制请求 ID",
       "moreItem": "此项目的更多记录",
       "morePerson": "此人的更多记录",
-      "showAll": "全部显示"
+      "showAll": "全部显示",
+      "openPerson": "在成员中打开"
     },
     "timeline": {
       "empty": "暂无其他活动。",
@@ -7595,6 +7596,16 @@
       "disableTitle": "停用 {n} 人？ | 停用 {n} 人？",
       "skipped": "{n} 人保持不变 | {n} 人保持不变",
       "skippedDesc": "已经是该状态、你自己的账号、最后一位所有者，或只有所有者才能更改的所有者。"
+    },
+    "forms": {
+      "title": "他们的表单",
+      "all": "全部 {n} 个表单"
+    },
+    "team": {
+      "label": "工作区中有 {n} 名成员 | 工作区中有 {n} 名成员",
+      "recent": "最近活跃",
+      "all": "所有成员（{n}）",
+      "invite": "邀请成员"
     }
   }
 }

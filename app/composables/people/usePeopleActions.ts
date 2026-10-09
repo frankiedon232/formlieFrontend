@@ -15,6 +15,7 @@ export function usePeopleActions(done: () => unknown) {
   const confirm = useConfirm()
   const session = useSession()
   const counts = useNavCounts()
+  const team = useTeam()
   const { handle } = useErrorHandler()
   const { copy } = useClipboard({ legacy: true })
   const busy = ref<string | null>(null)
@@ -29,6 +30,7 @@ export function usePeopleActions(done: () => unknown) {
       toast.add({ title: message, color: 'success', icon: 'i-lucide-circle-check' })
       await done()
       void counts.refresh(true)
+      void team.refresh(true)
     } catch (error) {
       handle(error)
     } finally {

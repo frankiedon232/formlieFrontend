@@ -20,9 +20,10 @@ import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
 import { formsOf, saveForms, type StoredForm } from '../data/formStore'
 import { isRetiredShortCode, retireShortCode } from '../data/shortCodeStore'
-import { MOCK_TENANTS, MOCK_USERS, type MockTenant, type MockUser } from '../data/tenants'
-import { isWorkspaceAdmin, requireLevel } from '../data/formPermissions'
-import { MOCK_OWNERS } from '../data/forms'
+import { MOCK_TENANTS, type MockTenant, type MockUser } from '../data/tenants'
+import { requireLevel } from '../data/formPermissions'
+import { peopleOf as directoryPeople } from '../data/orgStore'
+import { peopleStoreOf } from '../data/peopleStore'
 
 /** A form of this workspace that this person can edit: sharing is editors only (decision 97). */
 function findForm(tenant: MockTenant, user: MockUser, id: string | undefined): StoredForm {
@@ -61,17 +62,12 @@ const settingsOf = (form: StoredForm, tenant: MockTenant): FormShareSettings => 
 
 // ── People access (decision 97) ─────────────────────────────────────────────────────────
 type Person = { id: string; name: string; email: string }
-/** Everyone who can be given access: the workspace's people (plus the sample form owners of the mock). */
-function peopleIn(tenant: MockTenant): Person[] {
-  const domain = `${tenant.subdomain}.test`
-  return [
-    ...MOCK_USERS.filter(user => user.tenant_id === tenant.id && !user.disabled).map(user => ({ id: user.id, name: `${user.first_name} ${user.last_name}`.trim(), email: user.email })),
-    ...MOCK_OWNERS.map(owner => ({ id: owner.id, name: owner.name, email: `${owner.name.toLowerCase().replace(/\s+/g, '.')}@${domain}` })),
-  ]
-}
+/** Everyone who can be given access: the People page's people (F16), invited ones too, not disabled ones. */
+const peopleIn = (tenant: MockTenant): Person[] => directoryPeople(tenant)
 function peopleOf(form: StoredForm, tenant: MockTenant): FormShareSettings['people'] {
   const people = peopleIn(tenant)
-  const admins = MOCK_USERS.filter(user => user.tenant_id === tenant.id && !user.disabled && isWorkspaceAdmin(user))
+  // Owners and admins always have access (their role from People)
+  const admins = peopleStoreOf(tenant).filter(person => person.status === 'active' && (person.role === 'owner' || person.role === 'admin'))
   const always: FormShareSettings['people']['always'] = admins.map(user => ({ user: people.find(person => person.id === user.id)!, reason: 'workspace_admin' as const }))
   if (!admins.some(user => user.id === form.owner.id)) {
     const owner = people.find(person => person.id === form.owner.id) ?? { id: form.owner.id, name: form.owner.name, email: '' }

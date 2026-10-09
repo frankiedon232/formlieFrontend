@@ -23,7 +23,7 @@ Add a row for every new image.
 | RESOURCES (+) with coloured folders | Templates, Option sets, Themes |
 | SYSTEM: Dark Mode switch, Settings, Help & Support | same |
 | User card (avatar, name, email, ⇅) | `AppUserMenu` |
-| Top bar: search left; bell, avatars, Add Member right | search left (`Ctrl/⌘+K`); language, bell, New form right (team avatars arrive with Users & profiles, F16 M4) |
+| Top bar: search left; bell, avatars, Add Member right | search left (`Ctrl/⌘+K`); language, bell, New form right + team avatars and Invite member for owners and admins (F16 M4) |
 | Title + "Last sync" line + Import / Add (black) | `AppPanel` header: title + meta line + outline / solid actions |
 | Segmented controls (Table / Kanban / Timeline, Daily / Weekly, Week 1 / 2) | `SEGMENTED_UI` on every view switch: grey track, active option white with hairline + soft shadow |
 

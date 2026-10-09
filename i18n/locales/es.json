@@ -1117,7 +1117,8 @@
       "copied": "ID de solicitud copiado",
       "moreItem": "Más sobre este elemento",
       "morePerson": "Más de esta persona",
-      "showAll": "Ver todo"
+      "showAll": "Ver todo",
+      "openPerson": "Abrir en Personas"
     },
     "timeline": {
       "empty": "Aún no hay otra actividad.",
@@ -7595,6 +7596,16 @@
       "disableTitle": "¿Desactivar a {n} persona? | ¿Desactivar a {n} personas?",
       "skipped": "{n} se quedó como estaba | {n} se quedaron como estaban",
       "skippedDesc": "Ya estaba así, es tu propia cuenta, el último propietario o un propietario que solo otros propietarios pueden cambiar."
+    },
+    "forms": {
+      "title": "Sus formularios",
+      "all": "Los {n} formularios"
+    },
+    "team": {
+      "label": "{n} persona en el espacio de trabajo | {n} personas en el espacio de trabajo",
+      "recent": "Activos recientemente",
+      "all": "Todas las personas ({n})",
+      "invite": "Invitar miembro"
     }
   }
 }

@@ -1117,7 +1117,8 @@
       "copied": "Anfrage-ID kopiert",
       "moreItem": "Mehr zu diesem Element",
       "morePerson": "Mehr von dieser Person",
-      "showAll": "Alle anzeigen"
+      "showAll": "Alle anzeigen",
+      "openPerson": "In Personen öffnen"
     },
     "timeline": {
       "empty": "Noch keine weitere Aktivität.",
@@ -7595,6 +7596,16 @@
       "disableTitle": "{n} Person deaktivieren? | {n} Personen deaktivieren?",
       "skipped": "{n} unverändert | {n} unverändert",
       "skippedDesc": "Schon so, Ihr eigenes Konto, der letzte Inhaber oder ein Inhaber, den nur Inhaber ändern können."
+    },
+    "forms": {
+      "title": "Ihre Formulare",
+      "all": "Alle {n} Formulare"
+    },
+    "team": {
+      "label": "{n} Person im Arbeitsbereich | {n} Personen im Arbeitsbereich",
+      "recent": "Zuletzt aktiv",
+      "all": "Alle Personen ({n})",
+      "invite": "Mitglied einladen"
     }
   }
 }

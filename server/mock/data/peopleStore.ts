@@ -34,6 +34,16 @@ export interface StoredPerson {
 const stores = new Map<string, StoredPerson[]>(Object.entries(loadPersisted<Record<string, StoredPerson[]>>('people', {})))
 export const savePeople = () => savePersisted('people', () => Object.fromEntries(stores))
 
+/** Puts role, status and a password request back on the sign-in accounts (the demo's built-in ones aren't saved to disk). */
+function syncAccounts(list: StoredPerson[]) {
+  for (const person of list) {
+    const user = MOCK_USERS.find(item => item.id === person.id)
+    if (user && person.status !== 'invited') Object.assign(user, { role: person.role, disabled: person.status === 'disabled', must_change_password: !!person.must_change_password })
+  }
+}
+// At start, before anyone signs in, so access follows what admins set (F16 M3)
+for (const list of stores.values()) syncAccounts(list)
+
 const DAY = 86_400_000
 
 function seed(tenant: MockTenant): StoredPerson[] {
@@ -80,14 +90,10 @@ export function peopleStoreOf(tenant: MockTenant): StoredPerson[] {
     stores.set(tenant.id, list)
     savePeople()
   }
-  // The demo's built-in accounts aren't saved to disk: their role, status and password request live
-  // here and are put back on their sign-in accounts once per start (F16 M3)
+  // A store seeded just now: the same, once
   if (!synced.has(tenant.id)) {
     synced.add(tenant.id)
-    for (const person of list) {
-      const user = MOCK_USERS.find(item => item.id === person.id)
-      if (user && person.status !== 'invited') Object.assign(user, { role: person.role, disabled: person.status === 'disabled', must_change_password: !!person.must_change_password })
-    }
+    syncAccounts(list)
   }
   return list
 }
@@ -102,7 +108,8 @@ export function peopleRows(tenant: MockTenant): PersonRow[] {
   const org = orgOf(tenant)
   const lastSeen = new Map<string, string>()
   for (const event of auditLogOf(tenant)) if (event.actor.id && !lastSeen.has(event.actor.id)) lastSeen.set(event.actor.id, event.occurred_at)
-  const forms = formsOf(tenant).forms.filter(form => !form.deleted_at)
+  // Like the forms list: archived and deleted forms aren't counted
+  const forms = formsOf(tenant).forms.filter(form => !form.deleted_at && form.status !== 'archived')
   const nameOf = (person: StoredPerson) => `${person.first_name} ${person.last_name}`.trim() || person.email
   return people.map(person => {
     const manager = person.manager_id ? people.find(item => item.id === person.manager_id) : undefined
@@ -142,5 +149,11 @@ export function personDetail(tenant: MockTenant, id: string): PersonDetail | nul
     sign_ins_30d: recent.filter(event => event.action === 'auth.login.succeeded').length,
     actions_30d: recent.length,
     reports: rows.filter(item => item.manager?.id === id).map(item => ({ id: item.id, name: item.name })),
+    // Their forms, most recently changed first (the forms list filters by owner for the rest)
+    forms: formsOf(tenant)
+      .forms.filter(form => !form.deleted_at && form.status !== 'archived' && form.owner?.id === id)
+      .sort((a, b) => b.updated_at.localeCompare(a.updated_at))
+      .slice(0, 5)
+      .map(form => ({ id: form.id, name: form.name, status: form.status })),
   }
 }

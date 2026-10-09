@@ -41,6 +41,9 @@ const actions = usePeopleActions(refreshAll)
 
 // Invite people (I, or ?invite=1)
 const inviteOpen = ref(!!route.query.invite)
+// `?invite=1` from the menu or the header opens it here too; the address is tidied after
+watch(() => route.query.invite, value => value && (inviteOpen.value = true))
+watch(inviteOpen, value => !value && route.query.invite && router.replace({ query: { ...route.query, invite: undefined } }))
 defineShortcuts({ i: { usingInput: false, handler: () => (inviteOpen.value = true) } })
 
 const columns = computed<DataColumn[]>(() => [

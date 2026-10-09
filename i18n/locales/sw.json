@@ -1117,7 +1117,8 @@
       "copied": "Kitambulisho cha ombi kimenakiliwa",
       "moreItem": "Zaidi kuhusu kipengee hiki",
       "morePerson": "Zaidi kutoka kwa mtu huyu",
-      "showAll": "Onyesha zote"
+      "showAll": "Onyesha zote",
+      "openPerson": "Fungua katika Watu"
     },
     "timeline": {
       "empty": "Bado hakuna shughuli nyingine.",
@@ -7595,6 +7596,16 @@
       "disableTitle": "Mzime mtu {n}? | Muzime watu {n}?",
       "skipped": "{n} ameachwa kama alivyokuwa | {n} wameachwa kama walivyokuwa",
       "skippedDesc": "Tayari ni hivyo, akaunti yako mwenyewe, mmiliki wa mwisho, au mmiliki ambaye wamiliki pekee wanaweza kumbadilisha."
+    },
+    "forms": {
+      "title": "Fomu zao",
+      "all": "Fomu zote {n}"
+    },
+    "team": {
+      "label": "Mtu {n} katika nafasi ya kazi | Watu {n} katika nafasi ya kazi",
+      "recent": "Waliokuwa hai hivi karibuni",
+      "all": "Watu wote ({n})",
+      "invite": "Alika mwanachama"
     }
   }
 }

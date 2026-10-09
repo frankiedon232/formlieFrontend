@@ -1117,7 +1117,8 @@
       "copied": "ID richiesta copiato",
       "moreItem": "Altro su questo elemento",
       "morePerson": "Altro da questa persona",
-      "showAll": "Mostra tutto"
+      "showAll": "Mostra tutto",
+      "openPerson": "Apri in Persone"
     },
     "timeline": {
       "empty": "Ancora nessun’altra attività.",
@@ -7595,6 +7596,16 @@
       "disableTitle": "Disattivare {n} persona? | Disattivare {n} persone?",
       "skipped": "{n} lasciata com'era | {n} lasciate com'erano",
       "skippedDesc": "Già così, il tuo account, l'ultimo proprietario o un proprietario che solo i proprietari possono modificare."
+    },
+    "forms": {
+      "title": "I loro moduli",
+      "all": "Tutti i {n} moduli"
+    },
+    "team": {
+      "label": "{n} persona nello spazio di lavoro | {n} persone nello spazio di lavoro",
+      "recent": "Attive di recente",
+      "all": "Tutte le persone ({n})",
+      "invite": "Invita un membro"
     }
   }
 }

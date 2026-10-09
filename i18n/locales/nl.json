@@ -1117,7 +1117,8 @@
       "copied": "Verzoek-ID gekopieerd",
       "moreItem": "Meer over dit item",
       "morePerson": "Meer van deze persoon",
-      "showAll": "Alles tonen"
+      "showAll": "Alles tonen",
+      "openPerson": "Openen in Mensen"
     },
     "timeline": {
       "empty": "Nog geen andere activiteit.",
@@ -7595,6 +7596,16 @@
       "disableTitle": "{n} persoon uitschakelen? | {n} mensen uitschakelen?",
       "skipped": "{n} gelaten zoals het was | {n} gelaten zoals ze waren",
       "skippedDesc": "Al zo, je eigen account, de laatste eigenaar, of een eigenaar die alleen eigenaren kunnen wijzigen."
+    },
+    "forms": {
+      "title": "Hun formulieren",
+      "all": "Alle {n} formulieren"
+    },
+    "team": {
+      "label": "{n} persoon in de werkruimte | {n} mensen in de werkruimte",
+      "recent": "Onlangs actief",
+      "all": "Alle mensen ({n})",
+      "invite": "Lid uitnodigen"
     }
   }
 }

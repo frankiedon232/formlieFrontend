@@ -136,6 +136,22 @@ const place = computed(() => {
             <div class="flex h-full flex-col gap-1 rounded-lg border border-default p-3"><span class="text-[11px] text-muted">{{ t('people.lastSignIn') }}</span><span class="text-sm text-highlighted">{{ person.last_sign_in ? `${relative(person.last_sign_in.at)}${place ? ` · ${place}` : ''}` : t('people.never') }}</span></div>
           </div>
         </section>
+
+        <section v-if="person.forms?.length" class="flex flex-col gap-3">
+          <div class="flex items-center justify-between gap-2">
+            <h3 class="text-sm font-semibold text-highlighted">{{ t('people.forms.title') }}</h3>
+            <UButton v-if="person.forms_count > person.forms.length" :label="t('people.forms.all', { n: number(person.forms_count) })" color="neutral" variant="link" size="xs" trailing-icon="i-lucide-arrow-right" :to="{ path: '/forms', query: { owner_id: person.id } }" class="rtl:[&_svg]:rotate-180" />
+          </div>
+          <ul class="flex flex-col divide-y divide-default rounded-lg border border-default">
+            <li v-for="form in person.forms" :key="form.id">
+              <NuxtLink :to="`/forms/${form.id}`" class="flex items-center gap-3 px-3 py-2.5 text-sm hover:bg-elevated/50 focus-visible:outline-2 focus-visible:outline-(--ui-border-inverted)">
+                <UIcon name="i-lucide-file-text" class="size-4 shrink-0 text-muted" />
+                <span class="min-w-0 flex-1 truncate text-highlighted">{{ form.name }}</span>
+                <DataStatusBadge :status="form.status" />
+              </NuxtLink>
+            </li>
+          </ul>
+        </section>
       </template>
     </template>
 

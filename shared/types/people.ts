@@ -69,6 +69,8 @@ export interface PersonDetail extends PersonRow {
   actions_30d: number
   /** People who report to them. */
   reports: PersonRef[]
+  /** Their five most recently changed forms (`forms_count` has them all). */
+  forms: { id: string; name: string; status: string }[]
 }
 
 /** GET /people/insights: the two cards on top of the People page. */

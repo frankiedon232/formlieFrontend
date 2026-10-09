@@ -1117,7 +1117,8 @@
       "copied": "Request ID copied",
       "moreItem": "More on this item",
       "morePerson": "More by this person",
-      "showAll": "Show all"
+      "showAll": "Show all",
+      "openPerson": "Open in People"
     },
     "timeline": {
       "empty": "No other activity yet.",
@@ -7595,6 +7596,16 @@
       "disableTitle": "Disable {n} person? | Disable {n} people?",
       "skipped": "{n} left as it was | {n} left as they were",
       "skippedDesc": "Already like that, your own account, the last owner, or an owner only owners can change."
+    },
+    "forms": {
+      "title": "Their forms",
+      "all": "All {n} forms"
+    },
+    "team": {
+      "label": "{n} person in the workspace | {n} people in the workspace",
+      "recent": "Recently active",
+      "all": "All people ({n})",
+      "invite": "Invite member"
     }
   }
 }

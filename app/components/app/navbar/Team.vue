@@ -1,0 +1,39 @@
+<!--
+  Team in the page header (design: overlapping avatars "+10 ⌄" then "+ Add Member", F16 M4), for owners
+  and admins: the most recently active people; the menu lists them (each opens their panel on People)
+  and All people. Invite member opens the invite dialog. Avatars from lg, the button from sm (icon only
+  below md).
+-->
+<script setup lang="ts">
+import type { DropdownMenuItem } from '@nuxt/ui'
+
+const { t } = useI18n()
+const { number } = useFormat()
+const { team, canSee, refresh } = useTeam()
+const route = useRoute()
+// The People page has its own Invite people button
+const onPeople = computed(() => route.path === '/people')
+onMounted(() => void refresh())
+
+const shown = computed(() => team.value?.people.slice(0, 3) ?? [])
+const more = computed(() => Math.max(0, (team.value?.total ?? 0) - shown.value.length))
+const items = computed<DropdownMenuItem[][]>(() => [
+  [{ type: 'label', label: t('people.team.recent') }, ...(team.value?.people ?? []).map(person => ({ label: person.name, description: person.email, avatar: { alt: person.name }, to: { path: '/people', query: { person: person.id } } }))],
+  [{ label: t('people.team.all', { n: number(team.value?.total ?? 0) }), icon: 'i-lucide-users', to: '/people' }],
+])
+</script>
+
+<template>
+  <template v-if="canSee">
+    <UDropdownMenu v-if="team?.people.length" :items="items" :content="{ align: 'end' }" :ui="{ content: 'w-64' }">
+      <UButton color="neutral" variant="ghost" class="hidden gap-1.5 px-1.5 lg:inline-flex" :aria-label="t('people.team.label', { n: team.total }, team.total)">
+        <UAvatarGroup size="xs" :max="3">
+          <UAvatar v-for="person in shown" :key="person.id" :alt="person.name" />
+        </UAvatarGroup>
+        <span v-if="more" class="text-xs font-medium text-default tabular-nums">+{{ number(more) }}</span>
+        <UIcon name="i-lucide-chevron-down" class="size-3.5 text-muted" />
+      </UButton>
+    </UDropdownMenu>
+    <UButton v-if="!onPeople" :label="t('people.team.invite')" icon="i-lucide-plus" color="neutral" variant="outline" class="hidden sm:inline-flex max-md:[&_[data-slot=label]]:hidden" :to="{ path: '/people', query: { invite: '1' } }" :aria-label="t('people.team.invite')" />
+  </template>
+</template>
