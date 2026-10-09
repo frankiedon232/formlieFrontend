@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-09 (F16 Users & profiles complete, waiting for review; next after review: F19 AI assistant)
+**Last updated:** 2026-10-09 (F16 reworked after the owner's test: user profiles, sign-up links with approval, roles from F22 brought forward; R1 roles next)
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend · ➖ dropped or merged
 
@@ -26,13 +26,13 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F13   | API service & integrations                        | ✅     | 100% (owner-tested 2026-10-06)            |
 | F14   | Settings                                          | ✅     | 100% (M1 to M7 ✅; billing in F24)        |
 | F15   | Option sets (lists)                               | ✅     | 100% (M1 to M5 ✅; payments moved to F24) |
-| F16   | Users & profiles (Profile + Users)                | ✅     | 100% (waiting for review)                 |
+| F16   | Users & profiles (Profile + Users)                | 🟡     | rework with F22 roles (owner 2026-10-09)  |
 | F17   | Users (merged into F16)                           | ➖     | -                                         |
 | F18   | Analytics                                         | ✅     | 100% (waiting for review)                 |
 | F19   | AI assistant                                      | 🟡     | ~2%                                       |
 | F20   | Live collaboration (removed)                      | ➖     | -                                         |
 | F21   | Dashboard                                         | ⬜     | 0%                                        |
-| F22   | Roles & access                                    | ⬜     | 0%                                        |
+| F22   | Roles & access                                    | 🟡     | brought forward into F16 (owner 2026-10-09) |
 | F23   | Platform admin (super admin, Formalie team)       | ⬜     | 0%                                        |
 | F24   | Payments & subscriptions                          | ⬜     | 0%                                        |
 | F25   | Help centre (FAQs, knowledge base, videos)        | ⬜     | 0% (after F24)                            |
@@ -858,11 +858,19 @@ Moved out of F15: destinations to **F12**, webhooks and integrations to **F13**,
 
 ---
 
-## F16, Users & profiles ✅ (Profile and Users together, owner 2026-10-08; waiting for review)
+## F16, Users & profiles 🟡 (Profile and Users together, owner 2026-10-08; reworked with roles 2026-10-09)
 
 Owner, 2026-10-08: "profiling and users are the same thing". One phase builds the people of a workspace and their profiles: who they are, where they sit (department, job title) and what they may do (role). Department and job title lists come from Settings → Organisation data (F14); the role is assigned here and its permissions are defined in F22 (RBAC), so until F22 the role is the built-in Owner / Admin / Member and access follows it.
 
 ### People (workspace admins)
+
+**Rework (owner 2026-10-09, after testing):** "where is the User Profile? ... what you did is entirely different from user profiling". The organisation profiles its staff as **user profiles**; a sign-up link is the other way in, and those accounts **wait for approval**; **roles come from Roles & access (F22, brought forward)** and decide what each account may view and do. Decisions: build roles now; both a shared workspace sign-up link and personal links; profiles made by admins are activated by email (the person sets their own password); one role per person.
+
+- ⬜ **R1 Roles & access (F22 core):** permission catalogue (per area: view, create, edit, delete, publish, export, manage, approve …); roles per workspace: Owner (built in, everything, locked), Admin and Member (built-in defaults, editable), custom roles (create, duplicate, rename, delete when unused); a Roles page in the People area (list in the locked format, editor with a permission matrix, who holds each role); the role is picked on each profile; access is enforced on the server (one rule table by address and action) and in the app (menu, pages, buttons follow `can()`)
+- ⬜ **R2 User profiles:** Add user (full profile: name, email, phone, departments, job titles, manager, role) → status Not activated → activation email → the person sets their password and signs in; resend activation; profiles can also be imported (CSV) later
+- ⬜ **R3 Sign-up links:** a shared workspace link (on / off, allowed email domains, copy, QR code, new link) and personal links to chosen addresses; the link opens a separate sign-up page (name, email, phone, password); the account then waits for approval and can't sign in yet
+- ⬜ **R4 Approval:** "Awaiting approval" in the People menu with a count and on the People page; approve (complete the profile: role, departments, job titles, manager) or reject (with a reason, emailed); audited
+- ⬜ **R5** Statuses everywhere: Active · Not activated · Invited · Awaiting approval · Disabled; People cards, filters, counts, emails and the audit trail follow
 
 **Milestones (2026-10-09):** **M1** ✅ People list · **M2** ✅ Invites · **M3** ✅ Managing people · **M4** ✅ Linking people (field access, share, departments, header avatars) · **M5** ✅ My profile.
 
@@ -963,7 +971,7 @@ Owner, 2026-10-08: "profiling and users are the same thing". One phase builds th
 
 ---
 
-## F22, Roles & access ⬜
+## F22, Roles & access 🟡 (brought forward into F16, owner 2026-10-09)
 
 - ⬜ Roles and permissions editor (permission catalogue, custom roles)
 - ⬜ Role assignment per user and per organisation; form-level access
@@ -1268,6 +1276,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-08 | Formalie default data is loaded from Formalie and managed only in the super admin portal (F23: create lists and dynamic lists, other defaults); workspaces can use defaults but not edit or delete them                                                                                                                                                           | F23 + Formalie default data                                                                                                                | ⬜ noted                                                                                                |
 | 2026-10-09 | Responses show only what the form collected: no "Anonymous" respondent; name / email when the form asked, else the response's own answers; check everywhere | F11 (all response views, exports) | ✅ |
 | 2026-10-09 | Profiling (People) is its own rail area with its own menu | F16 | ✅ |
+| 2026-10-09 | User profiles: the organisation profiles its staff (full profile, activation email); a sign-up link (shared or personal) opens a separate sign-up page and the account awaits approval before it is profiled; roles are not fixed: they come from Roles & access (F22) and decide what each account may view, create, edit, delete | F16 rework + F22 brought forward | 🟡 in progress |
 
 ---
 
@@ -1523,3 +1532,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-09 | F16 | M3 Managing people + People rail area: `routes/peopleManage.ts` (PATCH /people/{id}, disable, enable, sign-out, password, two-step/reset, bulk), `revokeUserSessions`, `must_change_password` in the sign-in check, `PeopleEditModal`, `usePeopleActions.menu`, bulk bar; PEOPLE_NAV + rail area (admin only), nav counts `people`, Departments / Job titles under /people (SettingsPage `plain`), redirects from Settings, Roles & access placeholder. Browser-checked: People area menu and counts, Departments in the area, Alex made Admin, demoting the only owner refused, bulk Coordinator for 2, Lena disabled and enabled |
 | 2026-10-09 | F16 | M4 Linking people: `peopleOf` (orgStore) and Share settings read the people store; admins with full access from People roles; account sync at server start; `PersonDetail.forms`; `AppNavbarTeam` + `useTeam` (avatars, menu, Invite member); audit row "Open in People"; `?invite=1` opens the dialog on the People page too. Browser-checked: header avatars "+6" and Invite member opening the dialog, Frankie's panel with his forms and "All forms" → forms list filtered (count aligned with the list), Vehicles share settings showing Frankie, Sofia and Alex as admins |
 | 2026-10-09 | F16 | M5 My profile: `routes/me.ts` (profile, password, authenticator app with recovery codes, SMS number, sessions), `core/totp.ts` (RFC 6238, tested with its vectors), sign-in with the app or a recovery code, profile fields kept in the people store (password only as a hash), session user carries photo and preferences (`useFormat` follows the person's time zone and date format; the layout applies their language), `/profile` with Details, Preferences, Place, Password, TwoStep (+ AppSetup), Sessions, Notifications. Browser-checked: page, authenticator set up with the QR key, sign-out and sign-in with an app code, app removed again, date format saved and put back, masked number. F16 complete, stopping for review |
+| 2026-10-09 | F16 | Owner testing: F16 as built (invite-only, fixed roles) is not user profiling. Reworked plan R1 to R5 written (roles from F22 first, then user profiles with activation, sign-up links with approval, approval queue, statuses) |
