@@ -65,12 +65,12 @@ Open a personal link in a private window → "Filling in as test1@example.org"; 
 
 Workspaces created through signup live until the dev server restarts.
 
-**People and roles (F16 + F22):** every account above signs in with the same password. Roles are per workspace (People → Roles & access): **Owner** (built in, everything, locked), **Admin** (everything except Roles & access), **Member** (builds and publishes forms, works with responses; no People, Data, API, Settings or Audit), plus roles you make. A role change applies from the person's next sign-in.
+**People and roles (F16 + F22):** every account in the table below signs in with the same password (sample colleagues get a mock account when the dev server starts). Roles are per workspace (People → Roles & access): **Owner** (built in, everything, locked), **Admin** (everything; sees Roles & access but can't change roles), **Member** (builds and publishes forms, works with responses; no People, Data, API, Settings or Audit), plus roles you make. A role change applies from the person's next sign-in.
 
 | Person (Remedy Legal)  | Email                             | Role                            | Use it to test                                                                                                   |
 | ---------------------- | --------------------------------- | ------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | Frankie Don            | `admin@remedylegal.test`          | Owner                           | Everything: People, Roles & access, Add user, Sign-up links, approvals                                           |
-| Sofia Martins          | `sofia.martins@remedylegal.test`  | Admin                           | Manages people and the workspace, but no Roles & access                                                          |
+| Sofia Martins          | `sofia.martins@remedylegal.test`  | Admin                           | Manages people and the workspace; Roles & access is read-only                                                    |
 | Alex Novak             | `alex.novak@remedylegal.test`     | Admin                           | Same as Sofia                                                                                                    |
 | Priya Raman            | `priya.raman@remedylegal.test`    | Member                          | Forms and responses only                                                                                         |
 | Lukas Becker           | `lukas.becker@remedylegal.test`   | Member                          | Same as Priya                                                                                                    |

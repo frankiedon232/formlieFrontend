@@ -14,7 +14,7 @@ import { loadPersisted, savePersisted } from '../core/persist'
 import { MOCK_OWNERS } from './forms'
 import { formsOf } from './formStore'
 import { orgOf } from './orgStore'
-import { MOCK_USERS, type MockTenant } from './tenants'
+import { MOCK_PASSWORD, MOCK_USERS, type MockTenant } from './tenants'
 import { roleOf } from './rolesStore'
 
 export interface StoredPerson {
@@ -50,9 +50,13 @@ const stores = new Map<string, StoredPerson[]>(Object.entries(loadPersisted<Reco
 export const savePeople = () => savePersisted('people', () => Object.fromEntries(stores))
 
 /** Puts role, status and a password request back on the sign-in accounts (the demo's built-in ones aren't saved to disk). */
-function syncAccounts(list: StoredPerson[]) {
+function syncAccounts(tenantId: string, list: StoredPerson[]) {
   for (const person of list) {
-    const user = MOCK_USERS.find(item => item.id === person.id)
+    // Everyone who has signed in or is waiting for approval has an account. Sample colleagues and people who
+    // joined in an earlier run get one here (mock only: their own password if they set one, else the test password)
+    if (['active', 'disabled', 'pending'].includes(person.status) && !MOCK_USERS.some(item => item.id === person.id && item.tenant_id === tenantId))
+      MOCK_USERS.push({ id: person.id, tenant_id: tenantId, first_name: person.first_name, last_name: person.last_name, email: person.email, password: person.password_hash ?? MOCK_PASSWORD, phone: person.phone ?? null, disabled: false, role: person.role, awaiting_approval: person.status === 'pending' })
+    const user = MOCK_USERS.find(item => item.id === person.id && item.tenant_id === tenantId)
     if (user && person.status !== 'invited' && person.status !== 'not_activated')
       Object.assign(user, {
         role: person.role,
@@ -70,7 +74,7 @@ function syncAccounts(list: StoredPerson[]) {
   }
 }
 // At start, before anyone signs in, so access follows what admins set (F16 M3)
-for (const list of stores.values()) syncAccounts(list)
+for (const [tenantId, list] of stores) syncAccounts(tenantId, list)
 // A recovery code used at sign-in is crossed off here too (F16 M5)
 whenRecoveryUsed(user => {
   for (const list of stores.values()) {
@@ -129,7 +133,7 @@ export function peopleStoreOf(tenant: MockTenant): StoredPerson[] {
   // A store seeded just now: the same, once
   if (!synced.has(tenant.id)) {
     synced.add(tenant.id)
-    syncAccounts(list)
+    syncAccounts(tenant.id, list)
   }
   return list
 }

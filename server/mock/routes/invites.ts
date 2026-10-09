@@ -32,7 +32,7 @@ import { orgOf, saveOrg } from '../data/orgStore'
 import { peopleStoreOf, personDetail, savePeople, type StoredPerson } from '../data/peopleStore'
 import { roleOf } from '../data/rolesStore'
 import { newSignupToken, saveSignupLinks, signupLinkOf, tenantBySignupToken } from '../data/signupLinkStore'
-import { MOCK_TENANTS, MOCK_USERS, saveCreatedWorkspaces, type MockTenant, type MockUser } from '../data/tenants'
+import { hashPassword, MOCK_TENANTS, MOCK_USERS, saveCreatedWorkspaces, type MockTenant, type MockUser } from '../data/tenants'
 import { checkNewPassword } from './auth'
 
 const DAYS = 7
@@ -311,10 +311,10 @@ export const acceptInvite = defineMockRoute(({ event, body }) => {
   }
   const activation = found.kind === 'activation'
   const phone = input.phone?.replace(/[\s-]/g, '') ?? person.phone ?? null
-  const account: MockUser = { id: person.id, tenant_id: tenant.id, first_name: input.first_name, last_name: input.last_name, email: person.email, password: input.password, phone, disabled: false, role: person.role, password_changed_at: new Date().toISOString(), awaiting_approval: !activation }
+  const account: MockUser = { id: person.id, tenant_id: tenant.id, first_name: input.first_name, last_name: input.last_name, email: person.email, password: hashPassword(input.password), phone, disabled: false, role: person.role, password_changed_at: new Date().toISOString(), awaiting_approval: !activation }
   MOCK_USERS.push(account)
   saveCreatedWorkspaces()
-  Object.assign(person, { first_name: input.first_name, last_name: input.last_name, phone, status: activation ? 'active' : 'pending', ...(activation ? { joined_at: new Date().toISOString() } : { request: { via: found.kind === 'link' ? 'link' : 'invite', at: new Date().toISOString() } }) })
+  Object.assign(person, { first_name: input.first_name, last_name: input.last_name, phone, password_hash: account.password, status: activation ? 'active' : 'pending', ...(activation ? { joined_at: new Date().toISOString() } : { request: { via: found.kind === 'link' ? 'link' : 'invite', at: new Date().toISOString() } }) })
   delete person.invite
   savePeople()
   recordAudit(event, tenant, { action: activation ? 'users.joined' : 'users.requested', actor: actorOf(account), resource: { type: 'user', id: person.id, name: nameOf(account) }, metadata: { via: found.kind } })
