@@ -7641,7 +7641,7 @@
       "label": "{n} persoon in de werkruimte | {n} mensen in de werkruimte",
       "recent": "Onlangs actief",
       "all": "Alle mensen ({n})",
-      "invite": "Lid uitnodigen"
+      "invite": "Gebruiker uitnodigen"
     },
     "add": {
       "button": "Gebruiker toevoegen",

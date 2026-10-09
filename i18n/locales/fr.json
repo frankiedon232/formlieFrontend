@@ -7641,7 +7641,7 @@
       "label": "{n} personne dans l'espace de travail | {n} personnes dans l'espace de travail",
       "recent": "Actives récemment",
       "all": "Toutes les personnes ({n})",
-      "invite": "Inviter un membre"
+      "invite": "Inviter un utilisateur"
     },
     "add": {
       "button": "Ajouter un utilisateur",

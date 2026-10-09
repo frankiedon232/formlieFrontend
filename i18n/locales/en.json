@@ -7641,7 +7641,7 @@
       "label": "{n} person in the workspace | {n} people in the workspace",
       "recent": "Recently active",
       "all": "All people ({n})",
-      "invite": "Invite member"
+      "invite": "Invite user"
     },
     "add": {
       "button": "Add user",
