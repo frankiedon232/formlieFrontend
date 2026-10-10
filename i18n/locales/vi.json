@@ -1158,7 +1158,8 @@
       "ai_disabled": "Đã tắt trợ lý AI",
       "ai_settings_updated": "Đã thay đổi cài đặt AI",
       "ai_request_deleted": "Đã xóa yêu cầu AI khỏi lịch sử",
-      "ai_applied": "Đã áp dụng bản nháp AI"
+      "ai_applied": "Đã áp dụng bản nháp AI",
+      "forms_custom_css_changed": "Đã đổi CSS tùy chỉnh"
     },
     "detail": {
       "who": "Ai",
@@ -3198,6 +3199,29 @@
       },
       "shadow": "Bóng đổ",
       "border": "Viền"
+    },
+    "css": {
+      "label": "CSS tùy chỉnh",
+      "hint": "Kiểu riêng của bạn cho biểu mẫu này, đặt lên trên thiết kế ở trên.",
+      "count": "{n} trên {max} ký tự",
+      "clean": "Không có phần nào bị bỏ",
+      "leftOut": "{n} phần bị bỏ | {n} phần bị bỏ",
+      "issue": {
+        "too_long": "Quá dài: hãy rút ngắn để lưu",
+        "too_many": "Hơn 500 quy tắc: phần còn lại bị bỏ",
+        "at_rule": "Chỉ cho phép {'@'}media, {'@'}supports và {'@'}container",
+        "loads": "Không được tải gì từ nơi khác (url, {'@'}import, hình ảnh, phông chữ)",
+        "script": "Không cho phép giá trị giống script",
+        "escape": "Không cho phép escape bằng dấu gạch chéo ngược",
+        "html": "Không cho phép ký tự <",
+        "fixed": "Không cho phép định vị cố định",
+        "syntax": "CSS không hợp lệ"
+      },
+      "guideTitle": "CSS tùy chỉnh hoạt động thế nào",
+      "guideScope": "Quy tắc chỉ áp dụng trong khung của biểu mẫu này. Trang xung quanh, với thanh của tổ chức bạn và chân trang Formalie, giữ nguyên.",
+      "guideHooks": "Nhắm vào tiêu đề, nhãn và ô nhập như thường lệ, một câu hỏi bằng [data-field=\"khóa của nó\"] hoặc một loại câu hỏi bằng [data-field-type=\"email\"].",
+      "guideBlocked": "Vì an toàn, không có gì được tải từ các trang khác, còn script, escape và định vị cố định bị bỏ.",
+      "guidePlan": "Ở các gói có CSS tùy chỉnh. Ở gói khác, CSS được giữ lại nhưng không hiển thị."
     }
   },
   "themes": {
@@ -9312,6 +9336,7 @@
       "subdomain": "Tên miền phụ Formalie",
       "customDomain": "Tên miền riêng",
       "customEmail": "Địa chỉ gửi và máy chủ thư riêng",
+      "customCss": "CSS tùy chỉnh trên biểu mẫu",
       "emailSignin": "Email và mật khẩu",
       "socialSignin": "Google, Apple, Microsoft, Facebook",
       "sso": "Đăng nhập một lần (Okta và các loại khác)",

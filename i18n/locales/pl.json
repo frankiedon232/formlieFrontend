@@ -1158,7 +1158,8 @@
       "ai_disabled": "Wyłączono asystenta AI",
       "ai_settings_updated": "Zmieniono ustawienia AI",
       "ai_request_deleted": "Usunięto zapytanie AI z historii",
-      "ai_applied": "Zastosowano szkic AI"
+      "ai_applied": "Zastosowano szkic AI",
+      "forms_custom_css_changed": "Zmieniono własny CSS"
     },
     "detail": {
       "who": "Kto",
@@ -3198,6 +3199,29 @@
       },
       "shadow": "Cień",
       "border": "Obramowanie"
+    },
+    "css": {
+      "label": "Własny CSS",
+      "hint": "Twoje własne style dla tego formularza, na wierzchu projektu powyżej.",
+      "count": "{n} z {max} znaków",
+      "clean": "Nic nie pominięto",
+      "leftOut": "Pominięto {n} część | Pominięto {n} części",
+      "issue": {
+        "too_long": "Za długie: skróć, aby zapisać",
+        "too_many": "Ponad 500 reguł: reszta zostanie pominięta",
+        "at_rule": "Dozwolone są tylko {'@'}media, {'@'}supports i {'@'}container",
+        "loads": "Nic nie może się ładować z zewnątrz (url, {'@'}import, obrazy, czcionki)",
+        "script": "Wartości przypominające skrypty są niedozwolone",
+        "escape": "Sekwencje ucieczki z ukośnikiem wstecznym są niedozwolone",
+        "html": "Znak < jest niedozwolony",
+        "fixed": "Pozycjonowanie stałe jest niedozwolone",
+        "syntax": "Nieprawidłowy CSS"
+      },
+      "guideTitle": "Jak działa własny CSS",
+      "guideScope": "Reguły obejmują tylko ramkę tego formularza. Strona wokół niej, z paskiem Twojej organizacji i stopką Formalie, pozostaje bez zmian.",
+      "guideHooks": "Celuj w nagłówki, etykiety i pola jak zwykle, w jedno pytanie przez [data-field=\"jego klucz\"] lub w rodzaj pytania przez [data-field-type=\"email\"].",
+      "guideBlocked": "Ze względów bezpieczeństwa nic nie ładuje się z innych witryn, a skrypty, sekwencje ucieczki i pozycjonowanie stałe są pomijane.",
+      "guidePlan": "W planach z własnym CSS. W innych planach jest zachowany, ale niewyświetlany."
     }
   },
   "themes": {
@@ -9312,6 +9336,7 @@
       "subdomain": "Subdomena Formalie",
       "customDomain": "Własna domena",
       "customEmail": "Własny adres nadawcy i serwer poczty",
+      "customCss": "Własny CSS w formularzach",
       "emailSignin": "E-mail i hasło",
       "socialSignin": "Google, Apple, Microsoft, Facebook",
       "sso": "Jednokrotne logowanie (Okta i inne)",

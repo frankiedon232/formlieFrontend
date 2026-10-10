@@ -1158,7 +1158,8 @@
       "ai_disabled": "Assistente IA disattivato",
       "ai_settings_updated": "Impostazioni IA modificate",
       "ai_request_deleted": "Richiesta IA eliminata dalla cronologia",
-      "ai_applied": "Bozza IA applicata"
+      "ai_applied": "Bozza IA applicata",
+      "forms_custom_css_changed": "CSS personalizzato modificato"
     },
     "detail": {
       "who": "Chi",
@@ -3198,6 +3199,29 @@
       },
       "shadow": "Ombra",
       "border": "Bordo"
+    },
+    "css": {
+      "label": "CSS personalizzato",
+      "hint": "I tuoi stili per questo modulo, in aggiunta al design qui sopra.",
+      "count": "{n} di {max} caratteri",
+      "clean": "Niente escluso",
+      "leftOut": "{n} parte esclusa | {n} parti escluse",
+      "issue": {
+        "too_long": "Troppo lungo: accorcialo per salvarlo",
+        "too_many": "Più di 500 regole: il resto viene escluso",
+        "at_rule": "Sono ammessi solo {'@'}media, {'@'}supports e {'@'}container",
+        "loads": "Nulla può essere caricato da altrove (url, {'@'}import, immagini, font)",
+        "script": "I valori simili a script non sono ammessi",
+        "escape": "Le sequenze di escape con barra rovesciata non sono ammesse",
+        "html": "Il carattere < non è ammesso",
+        "fixed": "Il posizionamento fisso non è ammesso",
+        "syntax": "CSS non valido"
+      },
+      "guideTitle": "Come funziona il CSS personalizzato",
+      "guideScope": "Le regole raggiungono solo il riquadro di questo modulo. La pagina intorno, con la barra della tua organizzazione e il piè di pagina di Formalie, resta com’è.",
+      "guideHooks": "Puoi indirizzare titoli, etichette e campi come al solito, una domanda con [data-field=\"la sua chiave\"] o un tipo di domanda con [data-field-type=\"email\"].",
+      "guideBlocked": "Per sicurezza, nulla viene caricato da altri siti e script, escape e posizionamento fisso vengono esclusi.",
+      "guidePlan": "Con i piani che includono il CSS personalizzato. Con gli altri viene conservato ma non mostrato."
     }
   },
   "themes": {
@@ -9312,6 +9336,7 @@
       "subdomain": "Sottodominio Formalie",
       "customDomain": "Dominio personalizzato",
       "customEmail": "Indirizzo di invio e server di posta propri",
+      "customCss": "CSS personalizzato nei moduli",
       "emailSignin": "Email e password",
       "socialSignin": "Google, Apple, Microsoft, Facebook",
       "sso": "Single sign-on (Okta e altri)",

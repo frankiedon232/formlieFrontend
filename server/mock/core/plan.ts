@@ -28,7 +28,7 @@ export function requireDatabase(tenant: MockTenant, engine: DbEngine) {
   if (!limitsOf(tenant).databases.includes(engine)) throw new MockError('FRM-PLAN-1002', [{ field: 'engine', message: engine }])
 }
 
-type Feature = 'social_signin' | 'sso' | 'custom_domain' | 'custom_email'
+type Feature = 'social_signin' | 'sso' | 'custom_domain' | 'custom_email' | 'custom_css'
 export function hasFeature(tenant: MockTenant, feature: Feature) {
   const limits = limitsOf(tenant)
   if (feature === 'custom_domain') return limits.custom_domains !== 0

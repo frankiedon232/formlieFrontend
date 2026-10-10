@@ -23,6 +23,8 @@ export interface PlanLimits {
   /** 0 = none. */
   custom_domains: number | null
   custom_email: boolean
+  /** Custom CSS on forms (leftovers L5). */
+  custom_css: boolean
   ai_credits: number | null
   languages: number
 }
@@ -51,6 +53,7 @@ export const PLAN_FEATURES = [
   'sso',
   'customDomain',
   'customEmail',
+  'customCss',
   'prioritySupport',
   'dedicatedSupport',
   'securityReview',

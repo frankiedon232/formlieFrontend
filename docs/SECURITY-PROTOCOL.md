@@ -113,6 +113,15 @@ Payments go through the processor (Payoneer). Formalie never sees, stores or log
 10. **The checkout frame** only loads the processor's own pages (Content-Security-Policy `frame-src` limited to Payoneer's hosts when connected).
 11. **Access and record.** Reading billing needs `settings.view`, changing it `settings.manage`; every change, payment and notification is in the audit trail (notifications as the system actor "Payoneer").
 
-## 12. Honest note
+## 12. Custom CSS on forms (leftovers L5, owner 2026-10-10)
+
+Code written by customers runs on Formalie's pages, so it is never trusted:
+
+- **Cleaned the same way everywhere** (`shared/utils/forms/custom-css.ts`): in the designer (to show what was left out) and wherever a form is drawn. Only the cleaned version is ever served; what the person wrote is stored so they can keep editing it.
+- **Fenced:** every selector is placed inside the form box (`[data-form-css]`, the form's `<main>`); `:root`, `html` and `body` mean the box. The box has `contain: paint`, so nothing is drawn outside it. The page frame (organisation bar, "Secured by Formalie") can't be restyled or covered.
+- **Left out:** every at-rule except @media, @supports and @container (no @import, @font-face, @keyframes …); anything that loads from elsewhere (url(), image-set(), src()), so there is no tracking or data leakage through requests; script-like values (expression(), javascript:, behavior, -moz-binding); backslash escapes (they can spell any of these); `<` (it could close the style element); fixed positioning.
+- **Limits:** 20,000 characters, 500 rules. **Plan feature** (Professional and up): saving a change needs the plan (FRM-PLAN-1002), and public pages leave the CSS out while the plan doesn't include it. **Audited:** every change (`forms.custom_css_changed`, with its length and how much was left out).
+
+## 13. Honest note
 
 App-layer encryption protects against TLS-terminating proxies, logging leaks and traffic inspection; it does not protect against a compromised browser or device. It adds CPU cost, so keep payloads lean and paginate.

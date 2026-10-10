@@ -23,16 +23,19 @@ export function useDesigner() {
   }
 
   /** Set one token: `set('colors', 'primary', '#123456')`. */
-  function set<G extends keyof FormTheme, K extends keyof FormTheme[G]>(group: G, key: K, value: FormTheme[G][K]) {
+  function set<G extends Exclude<keyof FormTheme, 'layout' | 'custom_css'>, K extends keyof FormTheme[G]>(group: G, key: K, value: FormTheme[G][K]) {
     const next = structuredClone(toRaw(theme.value))
     ;(next[group] as FormTheme[G])[key] = value
     write(next, `theme:${String(group)}.${String(key)}`)
   }
   const setLayout = (layout: FormTheme['layout']) => write({ ...structuredClone(toRaw(theme.value)), layout })
+  /** Custom CSS as written (leftovers L5); typing in it is one undo step. */
+  const setCustomCss = (css: string) => write({ ...structuredClone(toRaw(theme.value)), custom_css: css.trim() ? css : null }, 'theme:custom_css')
 
   /** Apply a starting point over the workspace default (keeps nothing of the old design). */
   /** Keep the page around the form when a page design is applied. */
-  const keepPage = (next: FormTheme) => (builder.schema.value?.page_design_id ? withPageDesign(next, pageTokensOf(theme.value)) : next)
+  // Custom CSS is the form's own: a starting point or saved theme never wipes it
+  const keepPage = (next: FormTheme) => ({ ...(builder.schema.value?.page_design_id ? withPageDesign(next, pageTokensOf(theme.value)) : next), custom_css: theme.value.custom_css })
 
   function applyPreset(patch: ThemePatch) {
     write(keepPage(applyPatch(resolveTheme(undefined, branding.value), patch)))
@@ -67,5 +70,5 @@ export function useDesigner() {
   function applied(name: string) {
     toast.add({ id: 'designer-applied', title: t('designer.applied', { name }), icon: 'i-lucide-palette', color: 'neutral', duration: 4000, actions: [{ label: t('builder.undo'), icon: 'i-lucide-undo-2', color: 'neutral', variant: 'outline', onClick: () => void builder.history.undo() }] })
   }
-  return { theme, customised, themeId, pageDesignId, set, setLayout, applyPreset, applySaved, applyPage, reset, write, applied }
+  return { theme, customised, themeId, pageDesignId, set, setLayout, setCustomCss, applyPreset, applySaved, applyPage, reset, write, applied }
 }

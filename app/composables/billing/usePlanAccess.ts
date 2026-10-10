@@ -8,12 +8,12 @@ import type { Plan, PlanId } from '#shared/types/billing'
 import type { DbEngine } from '#shared/utils/integrations/databases'
 import { PLANS } from '#shared/utils/billing/plans'
 
-export type PlanFeatureKey = 'social_signin' | 'sso' | 'custom_domain' | 'custom_email' | `db:${DbEngine}`
+export type PlanFeatureKey = 'social_signin' | 'sso' | 'custom_domain' | 'custom_email' | 'custom_css' | `db:${DbEngine}`
 
 const includes = (plan: Plan, feature: PlanFeatureKey) => {
   if (feature.startsWith('db:')) return plan.limits.databases.includes(feature.slice(3) as DbEngine)
   if (feature === 'custom_domain') return plan.limits.custom_domains !== 0
-  return plan.limits[feature as 'social_signin' | 'sso' | 'custom_email']
+  return plan.limits[feature as 'social_signin' | 'sso' | 'custom_email' | 'custom_css']
 }
 
 export function usePlanAccess() {

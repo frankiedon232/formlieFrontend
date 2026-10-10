@@ -1158,7 +1158,8 @@
       "ai_disabled": "AIアシスタントをオフにしました",
       "ai_settings_updated": "AI設定を変更しました",
       "ai_request_deleted": "AIリクエストを履歴から削除しました",
-      "ai_applied": "AI の下書きを適用しました"
+      "ai_applied": "AI の下書きを適用しました",
+      "forms_custom_css_changed": "カスタム CSS を変更しました"
     },
     "detail": {
       "who": "誰が",
@@ -3198,6 +3199,29 @@
       },
       "shadow": "影",
       "border": "枠線"
+    },
+    "css": {
+      "label": "カスタム CSS",
+      "hint": "上のデザインに重ねて適用する、このフォーム専用のスタイルです。",
+      "count": "{n} / {max} 文字",
+      "clean": "除外されたものはありません",
+      "leftOut": "{n} 件の部分を除外 | {n} 件の部分を除外",
+      "issue": {
+        "too_long": "長すぎます。保存するには短くしてください",
+        "too_many": "ルールが 500 を超えています。残りは除外されます",
+        "at_rule": "{'@'}media、{'@'}supports、{'@'}container のみ使用できます",
+        "loads": "外部から何も読み込めません (url、{'@'}import、画像、フォント)",
+        "script": "スクリプトのような値は使用できません",
+        "escape": "バックスラッシュのエスケープは使用できません",
+        "html": "< の文字は使用できません",
+        "fixed": "固定位置指定は使用できません",
+        "syntax": "有効な CSS ではありません"
+      },
+      "guideTitle": "カスタム CSS の仕組み",
+      "guideScope": "ルールはこのフォームの枠内にのみ適用されます。組織のバーや Formalie のフッターを含む周囲のページは変わりません。",
+      "guideHooks": "見出し、ラベル、入力欄はいつもどおり指定できます。質問ひとつは [data-field=\"そのキー\"]、質問の種類は [data-field-type=\"email\"] で指定します。",
+      "guideBlocked": "安全のため、他のサイトからは何も読み込まれず、スクリプト、エスケープ、固定位置指定は除外されます。",
+      "guidePlan": "カスタム CSS を含むプランで利用できます。他のプランでは保存されますが表示されません。"
     }
   },
   "themes": {
@@ -9312,6 +9336,7 @@
       "subdomain": "Formalie サブドメイン",
       "customDomain": "独自ドメイン",
       "customEmail": "独自の送信元アドレスとメールサーバー",
+      "customCss": "フォームのカスタム CSS",
       "emailSignin": "メールとパスワード",
       "socialSignin": "Google、Apple、Microsoft、Facebook",
       "sso": "シングルサインオン (Okta など)",

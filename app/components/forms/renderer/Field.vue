@@ -99,6 +99,7 @@ const left = computed(() => props.labelPosition === 'left' && showLabel.value &&
           : ''
     "
     :data-field-type="field.type"
+    :data-field="field.key"
   >
     <div
       v-if="showLabel"

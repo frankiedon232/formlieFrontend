@@ -19,6 +19,8 @@ import type { FormPreview } from '#shared/types/forms'
 import { formsOf, saveForms, type StoredForm, type StoredVersion } from '../data/formStore'
 import { fillLargeLists } from '../data/largeLists'
 import { libraryOf } from '../data/libraryStore'
+import { requireFeature } from '../core/plan'
+import { sanitiseCss } from '#shared/utils/forms/custom-css'
 import type { MockTenant } from '../data/tenants'
 
 const GUESS: [RegExp, StarterTemplateKey][] = [
@@ -78,6 +80,11 @@ export const saveDraft = defineMockRoute(({ event, body }) => {
   requireAction(form, user, 'edit', tenant)
   const input = parseBody(draftSchema, body)
   if (input.row_version !== form.row_version) throw new MockError('FRM-GEN-1009')
+  // Custom CSS (leftovers L5): only on plans that include it; every change recorded with what was left out
+  const cssOf = (schema: unknown) => String((schema as { theme?: { custom_css?: unknown } } | null)?.theme?.custom_css ?? '').trim()
+  const css = cssOf(input.schema)
+  const cssChanged = css !== cssOf(form.schema)
+  if (cssChanged && css) requireFeature(tenant, 'custom_css')
   form.schema = input.schema
   // Fields from large lists come without their options: the server fills them in (F15 M5)
   fillLargeLists(form.schema, libraryOf(tenant).lists)
@@ -85,6 +92,15 @@ export const saveDraft = defineMockRoute(({ event, body }) => {
   form.row_version++
   form.updated_at = new Date().toISOString()
   saveForms()
+  if (cssChanged) {
+    const cleaned = sanitiseCss(css)
+    recordAudit(event, tenant, {
+      action: 'forms.custom_css_changed',
+      actor: actorOf(user),
+      resource: { type: 'form', id: form.id, name: form.name },
+      metadata: { characters: String(css.length), left_out: String(cleaned.issues.length) },
+    })
+  }
   const key = `${form.id}:${user.id}`
   if (Date.now() - (lastDraftAudit.get(key) ?? 0) > 10 * 60_000) {
     lastDraftAudit.set(key, Date.now())

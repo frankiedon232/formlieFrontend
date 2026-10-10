@@ -1158,7 +1158,8 @@
       "ai_disabled": "Msaidizi wa AI umezimwa",
       "ai_settings_updated": "Mipangilio ya AI imebadilishwa",
       "ai_request_deleted": "Ombi la AI limefutwa kwenye historia",
-      "ai_applied": "Rasimu ya AI imetumika"
+      "ai_applied": "Rasimu ya AI imetumika",
+      "forms_custom_css_changed": "CSS maalum imebadilishwa"
     },
     "detail": {
       "who": "Nani",
@@ -3198,6 +3199,29 @@
       },
       "shadow": "Kivuli",
       "border": "Mpaka"
+    },
+    "css": {
+      "label": "CSS maalum",
+      "hint": "Mitindo yako mwenyewe kwa fomu hii, juu ya muundo ulio juu.",
+      "count": "Herufi {n} kati ya {max}",
+      "clean": "Hakuna kilichoachwa",
+      "leftOut": "Sehemu {n} imeachwa | Sehemu {n} zimeachwa",
+      "issue": {
+        "too_long": "Ndefu mno: ifupishe ili kuhifadhi",
+        "too_many": "Zaidi ya kanuni 500: zilizobaki zinaachwa",
+        "at_rule": "{'@'}media, {'@'}supports na {'@'}container pekee ndizo zinazoruhusiwa",
+        "loads": "Hakuna kinachoweza kupakiwa kutoka kwingine (url, {'@'}import, picha, fonti)",
+        "script": "Thamani zinazofanana na hati-tekelezi hazikubaliwi",
+        "escape": "Escape za mkwaju-nyuma hazikubaliwi",
+        "html": "Herufi < haikubaliwi",
+        "fixed": "Uwekaji mahali usiobadilika hauruhusiwi",
+        "syntax": "Si CSS halali"
+      },
+      "guideTitle": "Jinsi CSS maalum inavyofanya kazi",
+      "guideScope": "Kanuni hufikia kisanduku cha fomu hii tu. Ukurasa unaoizunguka, wenye upau wa shirika lako na kijachini cha Formalie, hubaki kama ulivyo.",
+      "guideHooks": "Lenga vichwa, lebo na sehemu za kuingiza kama kawaida, swali moja kwa [data-field=\"kitufe chake\"] au aina ya swali kwa [data-field-type=\"email\"].",
+      "guideBlocked": "Kwa usalama, hakuna kinachopakiwa kutoka tovuti nyingine, na hati-tekelezi, escape na uwekaji mahali usiobadilika huachwa.",
+      "guidePlan": "Kwenye mipango inayojumuisha CSS maalum. Kwenye mipango mingine huhifadhiwa lakini haionyeshwi."
     }
   },
   "themes": {
@@ -9312,6 +9336,7 @@
       "subdomain": "Kikoa kidogo cha Formalie",
       "customDomain": "Kikoa maalum",
       "customEmail": "Anwani ya kutuma na seva ya barua ya kwako",
+      "customCss": "CSS maalum kwenye fomu",
       "emailSignin": "Barua pepe na nenosiri",
       "socialSignin": "Google, Apple, Microsoft, Facebook",
       "sso": "Kuingia mara moja (Okta na nyinginezo)",
