@@ -14,6 +14,7 @@ const toast = useToast()
 const { handle } = useErrorHandler()
 const { relative } = useFormat()
 const confirm = useConfirm()
+const access = usePlanAccess()
 
 const settings = ref<SsoSettings | null>(null)
 const failed = ref(false)
@@ -84,6 +85,7 @@ const STATUS_COLOR = { draft: 'warning', tested: 'neutral', active: 'success' } 
       <li class="flex items-start gap-1.5"><UIcon name="i-lucide-at-sign" class="mt-0.5 size-3.5 shrink-0" />{{ connection.domains.length ? t(connection.enforce ? 'settings.sso.sumRequired' : 'settings.sso.sumDomains', { list: connection.domains.join(', ') }) : t('settings.sso.sumAnyone') }}</li>
       <li class="flex items-start gap-1.5"><UIcon name="i-lucide-user-plus" class="mt-0.5 size-3.5 shrink-0" />{{ connection.auto_create ? t('settings.sso.sumCreate') : t('settings.sso.sumInvited') }}</li>
     </ul>
+    <BillingLocked v-if="!access.allows('sso')" feature="sso" />
     <UAlert v-if="connection.problem" color="error" variant="subtle" icon="i-lucide-circle-x" :description="t(`settings.sso.problem.${connection.problem}`)" />
     <div class="flex flex-wrap items-center gap-2">
       <UButton :label="t('settings.sso.test')" icon="i-lucide-flask-conical" color="neutral" :variant="connection.status === 'draft' ? 'solid' : 'outline'" :loading="testing" @click="test" />
@@ -95,6 +97,7 @@ const STATUS_COLOR = { draft: 'warning', tested: 'neutral', active: 'success' } 
     <p v-if="connection.status === 'draft'" class="text-xs text-muted">{{ t('settings.sso.testFirst') }}</p>
   </div>
 
+  <BillingLocked v-else-if="!access.allows('sso')" feature="sso" />
   <div v-else class="flex flex-col gap-3">
     <p class="text-xs text-muted">{{ t('settings.sso.pick') }}</p>
     <div class="grid grid-cols-2 gap-2 sm:grid-cols-3">

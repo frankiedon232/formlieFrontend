@@ -16,6 +16,7 @@ const toast = useToast()
 const { dateTime, relative } = useFormat()
 const { handle } = useErrorHandler()
 const config = useRuntimeConfig()
+const access = usePlanAccess()
 
 const address = ref<WorkspaceAddress | null>(null)
 const failed = ref(false)
@@ -118,11 +119,12 @@ const formsHost = computed(() => (address.value?.domain?.status === 'verified' ?
       </SettingsBlock>
 
       <SettingsBlock :title="t('settings.address.domain')" :description="t('settings.address.domainHint')" icon="i-lucide-globe-lock">
-        <form v-if="!address.domain" class="flex flex-col gap-2 sm:flex-row" @submit.prevent="addDomain">
+        <BillingLocked v-if="!access.allows('custom_domain')" feature="custom_domain" />
+        <form v-if="!address.domain && access.allows('custom_domain')" class="flex flex-col gap-2 sm:flex-row" @submit.prevent="addDomain">
           <UInput v-model="domainInput" icon="i-lucide-globe" placeholder="forms.example.com" class="w-full sm:max-w-sm" :aria-label="t('settings.address.domain')" />
           <UButton type="submit" :label="t('settings.address.addDomain')" icon="i-lucide-plus" color="neutral" variant="outline" :loading="busy" :disabled="!domainInput.trim()" />
         </form>
-        <template v-else>
+        <template v-else-if="address.domain">
           <div class="flex flex-wrap items-center gap-2">
             <span class="font-mono text-sm text-highlighted">{{ address.domain.domain }}</span>
             <UBadge :label="t(`settings.address.status.${address.domain.status}`)" :color="STATUS_COLOR[address.domain.status]" variant="subtle" />

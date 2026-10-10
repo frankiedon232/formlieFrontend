@@ -3,6 +3,7 @@
  * kept in `.data/mock/sending.json`: Formalie's address, the workspace's own address on a verified domain,
  * or its own mail server. The mail server password stays here only (the backend keeps it encrypted).
  */
+import { hasFeature } from '../core/plan'
 import type { SendingDomain, SendingMode, SmtpServer } from '#shared/types/emails'
 import { loadPersisted, savePersisted } from '../core/persist'
 import type { MockTenant } from './tenants'
@@ -40,6 +41,8 @@ export function updateSending(tenant: MockTenant, change: (sending: StoredSendin
 /** The address the workspace's emails go out from right now. */
 export function fromAddress(tenant: MockTenant): string {
   const sending = sendingOf(tenant)
+  // Subscription (F24): the own address only while the plan includes it
+  if (!hasFeature(tenant, 'custom_email')) return FORMALIE_ADDRESS
   if (sending.mode === 'domain' && sending.domain?.status === 'verified') return sending.domain.address
   if (sending.mode === 'smtp' && sending.smtp?.status === 'working') return sending.smtp.from_address
   return FORMALIE_ADDRESS

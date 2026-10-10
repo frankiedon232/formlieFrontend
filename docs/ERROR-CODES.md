@@ -103,6 +103,9 @@ Format: `FRM-<DOMAIN>-<NNNN>`. Ranges: 1000–1999 client/validation, 5000–599
 | FRM-ORG-1002  | 409  | Forms still use it. Archive it, or merge it into another one.    | INFO     |
 | FRM-PLAN-1001 | 402  | Your plan limit has been reached. Upgrade to continue.            | INFO     |
 | FRM-PLAN-1002 | 402  | This feature is not included in your plan.                        | INFO     |
+| FRM-BILL-1001 | 402  | The payment didn't go through (declined by the bank or processor). | INFO |
+| FRM-BILL-1002 | 410  | This checkout has expired. Start again.                            | INFO     |
+| FRM-BILL-1003 | 409  | We already have your enquiry (sent twice within a minute).        | INFO     |
 | FRM-SET-1001  | 409  | Verify or test this first (an email domain before sending from it, a mail server before using it). | INFO |
 
 ### Client-side codes (raised by the portal, never sent by the server)

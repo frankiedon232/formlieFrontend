@@ -655,7 +655,10 @@
     "FRM-AI-1004": "Rasimu hii tayari imetumika au imewekwa kando. Muulize msaidizi tena.",
     "FRM-AUTH-1019": "Anwani hii ya barua pepe huingia kwa kuingia mara moja (single sign-on) kwa shirika lako. Tumia kitufe kilicho juu.",
     "FRM-AUTH-1020": "Jaribu kuingia mara moja kabla ya kuliwasha.",
-    "FRM-SET-1001": "Thibitisha au jaribu hili kwanza, kisha utaweza kulitumia."
+    "FRM-SET-1001": "Thibitisha au jaribu hili kwanza, kisha utaweza kulitumia.",
+    "FRM-BILL-1001": "Malipo hayakukamilika. Jaribu kadi nyingine au wasiliana na benki yako.",
+    "FRM-BILL-1002": "Malipo haya yameisha muda. Anza tena.",
+    "FRM-BILL-1003": "Tayari tuna ombi lako. Tutawasiliana nawe hivi karibuni."
   },
   "errorUi": {
     "reference": "Kumbukumbu: {id}",
@@ -7074,7 +7077,8 @@
       "organisation": "Shirika",
       "access": "Kuingia na usalama",
       "communication": "Arifa na barua pepe",
-      "data": "Data na fomu"
+      "data": "Data na fomu",
+      "billing": "Usajili"
     },
     "nav": {
       "overview": "Muhtasari",
@@ -7093,7 +7097,9 @@
       "privacy": "Faragha na data",
       "formDefaults": "Chaguo-msingi za fomu",
       "themes": "Mandhari",
-      "landingPages": "Kurasa za kutua"
+      "landingPages": "Kurasa za kutua",
+      "subscription": "Usajili",
+      "plans": "Mipango"
     },
     "desc": {
       "overview": "Kila kitu kuhusu eneo lako la kazi mahali pamoja.",
@@ -7112,7 +7118,9 @@
       "privacy": "Majibu huhifadhiwa kwa muda gani, maandishi ya idhini na maombi ya data.",
       "formDefaults": "Mipangilio ambayo fomu mpya huanza nayo, na chaguo-msingi za kupachika.",
       "themes": "Miundo ya fomu ambayo eneo lako la kazi linaweza kutumia.",
-      "landingPages": "Miundo ya kurasa za umma za fomu zako."
+      "landingPages": "Miundo ya kurasa za umma za fomu zako.",
+      "subscription": "Mpango wako, unachotumia, kadi yako, kusasisha, vikumbusho na ankara.",
+      "plans": "Linganisha mipango na ubadilishe wako, kila mwezi, kila robo mwaka au kila mwaka."
     },
     "status": {
       "complete": "Imekamilika",
@@ -9115,5 +9123,332 @@
       "of": "{n} kati ya {total}",
       "hint": "Bofya mara mbili au bonyeza + na - ili kukuza. Buruta ili kusogea. Esc hufunga."
     }
+  },
+  "billing": {
+    "plan": {
+      "starter": {
+        "name": "Starter",
+        "bestFor": "Kwa watu binafsi, wanafunzi na wapenda hobi wanaokusanya data kwa kiwango kidogo au kujaribu API.",
+        "everything": "Vipengele vyote vya msingi, bila malipo kwa muda wote unaotaka."
+      },
+      "professional": {
+        "name": "Professional",
+        "bestFor": "Kwa kampuni changa na timu ndogo zinazotegemea data ya kawaida ya kiotomatiki na ufuatiliaji wa karibu wakati halisi zinapokua.",
+        "everything": "Kila kitu cha Starter, pamoja na kikoa chako mwenyewe, anwani ya kutuma na kuingia kwa kampuni."
+      },
+      "business": {
+        "name": "Business",
+        "bestFor": "Kwa kampuni zilizokomaa zenye data nyingi, uchujaji wa hali ya juu na utoaji wa haraka. Bila mipaka.",
+        "everything": "Kila kitu cha Professional, bila mipaka ya fomu, majibu au hifadhidata."
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "bestFor": "Kwa mashirika makubwa yenye mahitaji maalum ya data, mahitaji makali ya usalama na utiifu, au miundombinu maalum.",
+        "everything": "Kila kitu cha Business, kimeundwa kulingana na shirika lako, pamoja na timu maalum."
+      }
+    },
+    "periodName": {
+      "monthly": "Kila mwezi",
+      "quarterly": "Kila robo mwaka",
+      "annually": "Kila mwaka"
+    },
+    "periodLabel": "Kipindi cha malipo",
+    "billed": {
+      "quarterly": "{total} hutozwa kila baada ya miezi 3",
+      "annually": "{total} hutozwa mara moja kwa mwaka"
+    },
+    "billedMonthly": "Hutozwa kila mwezi",
+    "pricePer": {
+      "monthly": "{amount} kwa mwezi",
+      "quarterly": "{amount} kila baada ya miezi 3",
+      "annually": "{amount} kwa mwaka"
+    },
+    "perMonth": "/ mwezi",
+    "save": "Okoa {amount}",
+    "free": "Bure",
+    "freeHint": "Hakuna kadi inayohitajika",
+    "freeForever": "Bure, bila tarehe ya mwisho.",
+    "custom": "Maalum",
+    "customHint": "Bei kulingana na shirika lako",
+    "customAmount": "Maalum",
+    "popular": "Maarufu zaidi",
+    "yours": "Mpango wako",
+    "currentPlan": "Mpango wa sasa",
+    "scheduledShort": "Huanza kipindi kijacho",
+    "upgrade": "Boresha",
+    "downgrade": "Punguza",
+    "switchPeriod": "Hamia kipindi hiki",
+    "contactUs": "Wasiliana nasi",
+    "unlimited": "Bila kikomo",
+    "upTo": "Hadi {n}",
+    "credits": "Mikopo {n} kwa mwezi",
+    "included": "Imejumuishwa",
+    "notIncluded": "Haijajumuishwa",
+    "pricesNote": "Bei ni kwa dola za Marekani, kabla ya kodi. Robo mwaka huokoa 10%, mwaka huokoa 20%.",
+    "comparePlans": "Linganisha mipango",
+    "changePlan": "Badilisha mpango",
+    "cancelPlan": "Ghairi mpango",
+    "keepPlan": "Weka mpango wangu",
+    "addCard": "Ongeza kadi",
+    "enterpriseTitle": "Unahitaji zaidi, au kitu maalum?",
+    "enterpriseDesc": "Tuambie kuhusu shirika lako nasi tutaandaa ofa ya Enterprise: miundombinu maalum, mahali data inapohifadhiwa, ukaguzi wa usalama na mipaka maalum.",
+    "fact": {
+      "forms": "Fomu {n} | Fomu {n}",
+      "formsUnlimited": "Fomu zisizo na kikomo",
+      "responses": "Majibu {n} kwenye kila fomu",
+      "responsesUnlimited": "Majibu yasiyo na kikomo",
+      "databases": "Leta hifadhidata yako: {list}",
+      "databasesAll": "Leta hifadhidata yoyote: MySQL, PostgreSQL, MariaDB, SQL Server, Oracle",
+      "signinEmail": "Kuingia kwa barua pepe na nenosiri",
+      "signinAll": "Google, Apple, Microsoft, Facebook na kuingia mara moja (Okta na nyinginezo)",
+      "subdomain": "Kikoa kidogo chako cha Formalie",
+      "domain": "Kikoa kimoja maalum",
+      "domains": "Vikoa maalum",
+      "email": "Barua pepe kutoka anwani yako au seva yako ya barua",
+      "emailFormalie": "Barua pepe kutoka anwani ya Formalie",
+      "ai": "Msaidizi wa AI: mikopo {n} kwa mwezi",
+      "aiCustom": "Msaidizi wa AI: mikopo kulingana na mahitaji yako"
+    },
+    "db": {
+      "mysql": "MySQL",
+      "postgresql": "PostgreSQL",
+      "mariadb": "MariaDB",
+      "sqlserver": "SQL Server",
+      "oracle": "Oracle"
+    },
+    "compare": {
+      "heading": "Linganisha kila kipengele",
+      "title": "Kipengele",
+      "group": {
+        "forms": "Fomu na majibu",
+        "insight": "Maarifa",
+        "data": "Data yako",
+        "api": "Huduma ya API",
+        "brand": "Chapa na anwani",
+        "access": "Kuingia",
+        "support": "Msaada"
+      },
+      "forms": "Fomu",
+      "responses": "Majibu kwenye kila fomu",
+      "languages": "Lugha",
+      "templates": "Hazina ya violezo",
+      "lists": "Orodha maalum",
+      "themes": "Mandhari na kurasa za kutua",
+      "versions": "Historia ya matoleo",
+      "folders": "Eneo la kazi na folda",
+      "fillLater": "Jaza baadaye (endelea ulipoishia)",
+      "analytics": "Uchanganuzi wa hali ya juu",
+      "visits": "Uchanganuzi wa ziara na majibu",
+      "ai": "Msaidizi wa AI",
+      "db": "Leta hifadhidata yako: {name}",
+      "explorer": "Kichunguzi cha hifadhidata",
+      "query": "Kihariri cha hoja cha moja kwa moja",
+      "destinations": "Maeneo ya data",
+      "api": "Huduma ya API, vituo, tokeni na sheria za ufikiaji",
+      "webhooks": "Webhooks",
+      "apiDocs": "Nyaraka za API",
+      "branding": "Chapa",
+      "subdomain": "Kikoa kidogo cha Formalie",
+      "customDomain": "Kikoa maalum",
+      "customEmail": "Anwani ya kutuma na seva ya barua ya kwako",
+      "emailSignin": "Barua pepe na nenosiri",
+      "socialSignin": "Google, Apple, Microsoft, Facebook",
+      "sso": "Kuingia mara moja (Okta na nyinginezo)",
+      "helpCentre": "Kituo cha msaada na msaidizi",
+      "prioritySupport": "Msaada wa kipaumbele kwa barua pepe",
+      "dedicatedSupport": "Timu maalum ya akaunti",
+      "securityReview": "Ukaguzi wa usalama na utiifu"
+    },
+    "status": {
+      "active": "Inatumika",
+      "past_due": "Malipo yanadaiwa",
+      "grace": "Kipindi cha neema",
+      "cancelled": "Imeghairiwa",
+      "expired": "Imeisha",
+      "ending": "Inaisha"
+    },
+    "renewsOn": "Husasishwa tarehe {date} kwa {amount}.",
+    "endsOn": "Huisha tarehe {date}, kisha huhamia Starter.",
+    "noRenewal": "Imelipiwa hadi {date}. Usasishaji wa kiotomatiki umezimwa.",
+    "cancelTitle": "Ghairi {plan}?",
+    "cancelDesc": "Unabaki na kila kitu hadi {date}. Kisha eneo la kazi huhamia Starter na mipaka yake hutumika.",
+    "cancelConfirm": "Ghairi mwishoni mwa kipindi",
+    "cancelled": "Mpango wako unaisha tarehe {date}",
+    "resumed": "Mpango wako utasasishwa kama kawaida",
+    "pastDueTitle": "Hatukuweza kupokea malipo",
+    "pastDueDesc": "Kila kitu kinaendelea kufanya kazi hadi {date}. Ongeza kadi ili kuweka mpango wako.",
+    "expiredTitle": "Mpango wako wa kulipia umeisha",
+    "expiredDesc": "Eneo la kazi sasa liko Starter. Chagua mpango ili kurejesha kila kitu.",
+    "scheduledTitle": "{plan} ({period}) huanza tarehe {date}",
+    "dropScheduled": "Weka mpango wa sasa",
+    "scheduleDropped": "Mabadiliko yameghairiwa",
+    "noCardTitle": "Hakuna kadi ya usasishaji",
+    "noCardDesc": "Ongeza kadi kabla ya {date}, la sivyo mpango huingia kipindi kifupi cha neema kisha huisha.",
+    "block": {
+      "usage": "Matumizi",
+      "usageHint": "Kile eneo la kazi linachotumia dhidi ya mipaka ya mpango.",
+      "payment": "Njia ya malipo",
+      "paymentHint": "Kadi ambayo usasishaji hutozwa.",
+      "renewal": "Usasishaji na vikumbusho",
+      "renewalHint": "Sasisha kiotomatiki na upate kikumbusho kabla ya kutozwa chochote.",
+      "invoices": "Ankara",
+      "invoicesHint": "Kila malipo, pamoja na kipindi chake na hali."
+    },
+    "usage": {
+      "forms": "Fomu",
+      "responses": "Majibu kwenye fomu yako yenye shughuli nyingi zaidi",
+      "ai": "Mikopo ya AI",
+      "busiest": "Fomu yenye shughuli nyingi zaidi: {form}",
+      "thisMonth": "Mwezi huu",
+      "databases": "Hifadhidata unazoweza kuunganisha",
+      "upgradeFor": "kwenye mpango wa juu zaidi"
+    },
+    "card": {
+      "expires": "Inaisha {date}",
+      "expiringSoon": "inaisha hivi karibuni",
+      "none": "Hakuna kadi iliyohifadhiwa. Mipango ya kulipia inahitaji moja kwa usasishaji.",
+      "replace": "Badilisha",
+      "remove": "Ondoa kadi",
+      "removeTitle": "Ondoa kadi hii?",
+      "removeDesc": "Unaweza kuongeza kadi tena wakati wowote.",
+      "removeRenewal": "Mpango wako husasishwa tarehe {date}. Bila kadi, ongeza mpya kabla ya hapo la sivyo usasishaji hautaweza kutozwa.",
+      "removed": "Kadi imeondolewa",
+      "secure": "Maelezo ya kadi huhifadhiwa na mtoa huduma wetu wa malipo, Payoneer. Formalie haioni wala kuhifadhi namba ya kadi yako."
+    },
+    "renewal": {
+      "auto": "Sasisha kiotomatiki",
+      "onHint": "Mpango wako husasishwa tarehe {date} na kadi iliyohifadhiwa hutozwa.",
+      "offHint": "Mpango wako unaisha tarehe {date} usipousasisha.",
+      "freeHint": "Starter ni bure na hauhitaji kusasishwa kamwe.",
+      "offTitle": "Zima usasishaji wa kiotomatiki?",
+      "offDesc": "Mpango wako unabaki hadi {date}, kisha eneo la kazi huhamia Starter.",
+      "offConfirm": "Zima",
+      "reminders": "Vikumbusho",
+      "before": "Kabla ya usasishaji",
+      "days": "Siku {n} kabla | Siku {n} kabla",
+      "failed": "Malipo yanaposhindwa",
+      "expiring": "Kadi inapokaribia kuisha muda",
+      "alsoTo": "Tuma pia kwa",
+      "alsoToHelp": "Mmiliki wa eneo la kazi huvipata kila mara. Ongeza hadi anwani 5 zaidi, kama timu yako ya fedha.",
+      "emailPlaceholder": "finance{'@'}example.com, kisha Enter",
+      "saved": "Imehifadhiwa"
+    },
+    "invoice": {
+      "number": "Ankara",
+      "date": "Tarehe",
+      "plan": "Mpango na kipindi",
+      "amount": "Kiasi",
+      "status": "Hali",
+      "more": "Onyesha zaidi",
+      "none": "Bado hakuna ankara",
+      "noneDesc": "Ankara huonekana hapa baada ya malipo yako ya kwanza.",
+      "state": {
+        "paid": "Imelipwa",
+        "open": "Wazi",
+        "failed": "Imeshindwa",
+        "refunded": "Imerejeshewa"
+      }
+    },
+    "changeTitle": "Hamia {plan}",
+    "changeDesc": "Angalia kinachobadilika kabla ya kuthibitisha.",
+    "starts": "Huanza",
+    "startsNow": "Mara moja",
+    "startsOn": "Tarehe {date}",
+    "price": "Bei",
+    "credit": "Mkopo kwa muda usiotumika",
+    "dueNow": "Inadaiwa sasa",
+    "nowNote": "Mpango mpya huanza mara moja. Kilichobaki cha kipindi chako cha sasa kinapunguzwa kwenye malipo ya kwanza.",
+    "laterNote": "Unabaki na mpango wako wa sasa hadi mwisho wa kipindi ulicholipia. Mpya huanza hapo.",
+    "cancelNote": "Unabaki na mpango wako wa sasa hadi mwisho wa kipindi ulicholipia. Kisha eneo la kazi huhamia Starter.",
+    "overTitle": "Baadhi ya vitu vinazidi mipaka ya mpango mpya",
+    "overNote": "Hakuna kinachofutwa. Fomu na majibu yanayozidi mipaka hubaki kama yalivyo, lakini huwezi kuongeza zaidi. Vipengele ambavyo mpango mpya haujumuishi huzimwa, na hurudi ukiboresha tena.",
+    "over": {
+      "forms": "Fomu: {current} sasa, {allowed} zinaruhusiwa",
+      "responses": "Majibu kwenye fomu: {current} sasa, {allowed} yanaruhusiwa",
+      "databases": "Hifadhidata ambazo hazijajumuishwa: {current}",
+      "customDomain": "Kikoa chako maalum hakitahudumiwa tena",
+      "customEmail": "Barua pepe zinarudi kutoka anwani ya Formalie",
+      "sso": "Kuingia mara moja kunazimwa",
+      "socialSignin": "Kuingia kwa Google, Apple, Microsoft na Facebook kunazimwa"
+    },
+    "confirmChange": "Thibitisha mabadiliko",
+    "continuePay": "Endelea kwenye malipo",
+    "changed": "Sasa uko kwenye {plan}",
+    "changeScheduled": "{plan} huanza tarehe {date}",
+    "paid": "Malipo yamepokelewa. Sasa uko kwenye {plan}",
+    "cardSaved": "Kadi imehifadhiwa",
+    "checkout": {
+      "title": "Malipo",
+      "cardTitle": "Ongeza kadi",
+      "desc": "Malipo salama kupitia Payoneer.",
+      "cardDesc": "Hifadhi kadi kwa usasishaji. Hakuna kinachotozwa sasa.",
+      "testNote": "Hali ya majaribio: Payoneer bado haijaunganishwa, kwa hivyo hakuna kadi halisi inayotumika. Chagua kadi ya majaribio ili kujaribu malipo.",
+      "testCard": "Kadi ya majaribio",
+      "pay": "Lipa {amount}",
+      "saveCard": "Hifadhi kadi",
+      "decline": "Jaribu malipo yaliyokataliwa",
+      "secure": "Unaandika maelezo ya kadi yako kwenye ukurasa salama wa Payoneer. Formalie huhifadhi tu chapa ya kadi, tarakimu zake nne za mwisho na tarehe ya kuisha muda."
+    },
+    "enquiry": {
+      "title": "Ombi la Enterprise",
+      "desc": "Tuambie unachohitaji. Timu ya Formalie hujibu ndani ya siku moja ya kazi.",
+      "you": "Kukuhusu",
+      "company": "Kampuni",
+      "name": "Jina lako",
+      "workEmail": "Barua pepe ya kazi",
+      "phone": "Simu",
+      "role": "Cheo",
+      "country": "Nchi",
+      "scale": "Ukubwa",
+      "sizeLabel": "Ukubwa wa kampuni",
+      "size": {
+        "1-50": "Watu 1 hadi 50",
+        "51-200": "Watu 51 hadi 200",
+        "201-1000": "Watu 201 hadi 1,000",
+        "1001-5000": "Watu 1,001 hadi 5,000",
+        "5000+": "Zaidi ya watu 5,000"
+      },
+      "volumeLabel": "Majibu kwa mwezi",
+      "volume": {
+        "under_100k": "Chini ya 100,000",
+        "100k_1m": "100,000 hadi milioni 1",
+        "1m_10m": "Milioni 1 hadi milioni 10",
+        "over_10m": "Zaidi ya milioni 10"
+      },
+      "startLabel": "Ungeanza lini?",
+      "startWhen": {
+        "now": "Mara moja",
+        "quarter": "Robo hii ya mwaka",
+        "later": "Baadaye mwaka huu"
+      },
+      "needsLabel": "Unahitaji nini?",
+      "need": {
+        "sso": "Kuingia mara moja",
+        "dedicated": "Miundombinu maalum",
+        "residency": "Data katika eneo mahususi",
+        "sla": "Makubaliano ya upatikanaji (SLA)",
+        "security": "Ukaguzi wa usalama na utiifu",
+        "invoice": "Lipa kwa ankara",
+        "onboarding": "Mafunzo ya kuanza na mafunzo",
+        "custom_limits": "Mipaka maalum"
+      },
+      "residency": "Data ibaki wapi?",
+      "residencyHelp": "Nchi au eneo, kwa mfano Umoja wa Ulaya.",
+      "message": "Kuna jambo lingine tunalopaswa kujua?",
+      "messageHelp": "Matumizi yako, miundo, muunganisho au mahitaji ya usalama.",
+      "messageShort": "Tuambie zaidi kidogo (angalau herufi 10).",
+      "required": "Tafadhali jaza hapa.",
+      "email": "Weka anwani halali ya barua pepe.",
+      "privacy": "Tunatumia maelezo haya tu kujibu ombi lako.",
+      "send": "Tuma ombi",
+      "sentTitle": "Asante, tumelipokea",
+      "sentDesc": "Timu ya Formalie itajibu {email} ndani ya siku moja ya kazi.",
+      "close": "Funga"
+    },
+    "limitAdmin": "Mpango wa juu zaidi unajumuisha zaidi. Linganisha mipango ili kuboresha.",
+    "limitMember": "Muulize msimamizi wa eneo la kazi kuhusu mpango wa juu zaidi.",
+    "seePlans": "Tazama mipango",
+    "locked": "Kwenye {plan} na kuendelea",
+    "lockedHint": "Mpango wako haujumuishi hiki. Boresha ili ukitumie."
   }
 }

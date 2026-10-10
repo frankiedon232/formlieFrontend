@@ -3,6 +3,7 @@
  * subdomain (changed in Settings; the old one keeps working for 90 days so links don't break) and an
  * own domain with the DNS records to add and its verification. Applied to the workspaces at start.
  */
+import { hasFeature } from '../core/plan'
 import type { CustomDomain } from '#shared/types/address'
 import { loadPersisted, savePersisted } from '../core/persist'
 import { MOCK_TENANTS, type MockTenant } from './tenants'
@@ -43,7 +44,12 @@ export function tenantByPreviousSubdomain(subdomain: string): MockTenant | null 
 
 /** The workspace whose verified own domain this host is. */
 export function tenantByDomain(host: string): MockTenant | null {
-  for (const [id, address] of stores) if (address.domain?.status === 'verified' && address.domain.domain === host) return MOCK_TENANTS.find(tenant => tenant.id === id) ?? null
+  for (const [id, address] of stores) {
+    if (address.domain?.status !== 'verified' || address.domain.domain !== host) continue
+    const tenant = MOCK_TENANTS.find(item => item.id === id) ?? null
+    // Subscription (F24): only while the plan includes a custom domain
+    return tenant && hasFeature(tenant, 'custom_domain') ? tenant : null
+  }
   return null
 }
 

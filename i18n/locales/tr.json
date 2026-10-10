@@ -655,7 +655,10 @@
     "FRM-AI-1004": "Bu taslak zaten kullanıldı veya kenara bırakıldı. Asistana tekrar sorun.",
     "FRM-AUTH-1019": "Bu e-posta adresi kuruluşunuzun çoklu oturum açma (SSO) hizmetiyle giriş yapar. Yukarıdaki düğmeyi kullanın.",
     "FRM-AUTH-1020": "Açmadan önce çoklu oturum açmayı test edin.",
-    "FRM-SET-1001": "Önce bunu doğrulayın veya test edin, sonra kullanabilirsiniz."
+    "FRM-SET-1001": "Önce bunu doğrulayın veya test edin, sonra kullanabilirsiniz.",
+    "FRM-BILL-1001": "Ödeme gerçekleşmedi. Başka bir kart deneyin veya bankanızla iletişime geçin.",
+    "FRM-BILL-1002": "Bu ödeme oturumunun süresi doldu. Yeniden başlayın.",
+    "FRM-BILL-1003": "Talebiniz zaten elimizde. Yakında size dönüş yapacağız."
   },
   "errorUi": {
     "reference": "Referans: {id}",
@@ -7074,7 +7077,8 @@
       "organisation": "Kuruluş",
       "access": "Giriş ve güvenlik",
       "communication": "Bildirimler ve e-postalar",
-      "data": "Veriler ve formlar"
+      "data": "Veriler ve formlar",
+      "billing": "Abonelik"
     },
     "nav": {
       "overview": "Genel bakış",
@@ -7093,7 +7097,9 @@
       "privacy": "Gizlilik ve veriler",
       "formDefaults": "Form varsayılanları",
       "themes": "Temalar",
-      "landingPages": "Açılış sayfaları"
+      "landingPages": "Açılış sayfaları",
+      "subscription": "Abonelik",
+      "plans": "Planlar"
     },
     "desc": {
       "overview": "Çalışma alanınızla ilgili her şey tek yerde.",
@@ -7112,7 +7118,9 @@
       "privacy": "Yanıtların ne kadar saklanacağı, onay metinleri ve veri talepleri.",
       "formDefaults": "Yeni formların başladığı ayarlar ve gömme varsayılanları.",
       "themes": "Çalışma alanınızın kullanabileceği form tasarımları.",
-      "landingPages": "Formlarınızın herkese açık sayfaları için sayfa tasarımları."
+      "landingPages": "Formlarınızın herkese açık sayfaları için sayfa tasarımları.",
+      "subscription": "Planınız, kullanımınız, kartınız, yenileme, hatırlatmalar ve faturalar.",
+      "plans": "Planları karşılaştırın ve kendi planınızı aylık, üç aylık veya yıllık olarak değiştirin."
     },
     "status": {
       "complete": "Tamam",
@@ -9115,5 +9123,332 @@
       "of": "{n} / {total}",
       "hint": "Yakınlaştırmak için çift tıklayın veya + ve - tuşlarına basın. Gezinmek için sürükleyin. Esc kapatır."
     }
+  },
+  "billing": {
+    "plan": {
+      "starter": {
+        "name": "Starter",
+        "bestFor": "Küçük ölçekte veri toplayan veya API’yi deneyen bireyler, öğrenciler ve hobi kullanıcıları için.",
+        "everything": "Tüm temel özellikler, istediğiniz kadar ücretsiz."
+      },
+      "professional": {
+        "name": "Professional",
+        "bestFor": "Büyürken düzenli, otomatik verilere ve neredeyse gerçek zamanlı izlemeye güvenen girişimler ve küçük ekipler için.",
+        "everything": "Starter’daki her şey, ayrıca kendi alan adınız, gönderen adresiniz ve şirket girişi."
+      },
+      "business": {
+        "name": "Business",
+        "bestFor": "Yoğun veri girişi, gelişmiş filtreleme ve hızlı veri çıkarma gereken köklü şirketler için. Sınırsız.",
+        "everything": "Professional’daki her şey, formlarda, yanıtlarda ve veritabanlarında sınır olmadan."
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "bestFor": "Özel veri gereksinimleri, katı güvenlik ve uyum ihtiyaçları veya ayrılmış altyapısı olan büyük kuruluşlar için.",
+        "everything": "Business’taki her şey, kuruluşunuza göre şekillenir, ayrılmış bir ekiple."
+      }
+    },
+    "periodName": {
+      "monthly": "Aylık",
+      "quarterly": "Üç aylık",
+      "annually": "Yıllık"
+    },
+    "periodLabel": "Faturalama dönemi",
+    "billed": {
+      "quarterly": "{total}, 3 ayda bir faturalanır",
+      "annually": "{total}, yılda bir kez faturalanır"
+    },
+    "billedMonthly": "Her ay faturalanır",
+    "pricePer": {
+      "monthly": "Ayda {amount}",
+      "quarterly": "3 ayda {amount}",
+      "annually": "Yılda {amount}"
+    },
+    "perMonth": "/ ay",
+    "save": "{amount} tasarruf edin",
+    "free": "Ücretsiz",
+    "freeHint": "Kart gerekmez",
+    "freeForever": "Ücretsiz, bitiş tarihi yok.",
+    "custom": "Özel",
+    "customHint": "Kuruluşunuza göre fiyatlandırılır",
+    "customAmount": "Özel",
+    "popular": "En popüler",
+    "yours": "Planınız",
+    "currentPlan": "Geçerli plan",
+    "scheduledShort": "Sonraki dönemde başlar",
+    "upgrade": "Yükselt",
+    "downgrade": "Düşür",
+    "switchPeriod": "Bu döneme geç",
+    "contactUs": "Bize ulaşın",
+    "unlimited": "Sınırsız",
+    "upTo": "En fazla {n}",
+    "credits": "Ayda {n} kredi",
+    "included": "Dahil",
+    "notIncluded": "Dahil değil",
+    "pricesNote": "Fiyatlar ABD doları cinsindendir, vergiler hariç. Üç aylık %10, yıllık %20 tasarruf sağlar.",
+    "comparePlans": "Planları karşılaştır",
+    "changePlan": "Planı değiştir",
+    "cancelPlan": "Planı iptal et",
+    "keepPlan": "Planımı koru",
+    "addCard": "Kart ekle",
+    "enterpriseTitle": "Daha fazlasına veya özel bir şeye mi ihtiyacınız var?",
+    "enterpriseDesc": "Kuruluşunuzdan bahsedin, size bir Enterprise teklifi hazırlayalım: ayrılmış altyapı, veri yerleşimi, güvenlik incelemeleri ve özel sınırlar.",
+    "fact": {
+      "forms": "{n} form | {n} form",
+      "formsUnlimited": "Sınırsız form",
+      "responses": "Her formda {n} yanıt",
+      "responsesUnlimited": "Sınırsız yanıt",
+      "databases": "Kendi veritabanınızı getirin: {list}",
+      "databasesAll": "Herhangi bir veritabanını getirin: MySQL, PostgreSQL, MariaDB, SQL Server, Oracle",
+      "signinEmail": "E-posta ve şifreyle giriş",
+      "signinAll": "Google, Apple, Microsoft, Facebook ve çoklu oturum açma (Okta ve diğerleri)",
+      "subdomain": "Kendi Formalie alt alan adınız",
+      "domain": "Bir özel alan adı",
+      "domains": "Özel alan adları",
+      "email": "Kendi adresinizden veya posta sunucunuzdan e-postalar",
+      "emailFormalie": "Formalie’nin adresinden e-postalar",
+      "ai": "Yapay zeka asistanı: ayda {n} kredi",
+      "aiCustom": "Yapay zeka asistanı: size göre krediler"
+    },
+    "db": {
+      "mysql": "MySQL",
+      "postgresql": "PostgreSQL",
+      "mariadb": "MariaDB",
+      "sqlserver": "SQL Server",
+      "oracle": "Oracle"
+    },
+    "compare": {
+      "heading": "Tüm özellikleri karşılaştırın",
+      "title": "Özellik",
+      "group": {
+        "forms": "Formlar ve yanıtlar",
+        "insight": "İçgörü",
+        "data": "Verileriniz",
+        "api": "API hizmeti",
+        "brand": "Marka ve adres",
+        "access": "Giriş",
+        "support": "Destek"
+      },
+      "forms": "Formlar",
+      "responses": "Her formdaki yanıtlar",
+      "languages": "Diller",
+      "templates": "Şablon deposu",
+      "lists": "Özel listeler",
+      "themes": "Temalar ve açılış sayfaları",
+      "versions": "Sürüm geçmişi",
+      "folders": "Çalışma alanı ve klasörler",
+      "fillLater": "Sonra doldur (kaldığınız yerden devam edin)",
+      "analytics": "Gelişmiş analizler",
+      "visits": "Ziyaret ve yanıt analizleri",
+      "ai": "Yapay zeka asistanı",
+      "db": "Kendi veritabanınızı getirin: {name}",
+      "explorer": "Veritabanı gezgini",
+      "query": "Canlı sorgu düzenleyici",
+      "destinations": "Veri hedefleri",
+      "api": "API hizmeti, uç noktalar, belirteçler ve erişim kuralları",
+      "webhooks": "Webhook’lar",
+      "apiDocs": "API belgeleri",
+      "branding": "Markalama",
+      "subdomain": "Formalie alt alan adı",
+      "customDomain": "Özel alan adı",
+      "customEmail": "Kendi gönderen adresi ve posta sunucusu",
+      "emailSignin": "E-posta ve şifre",
+      "socialSignin": "Google, Apple, Microsoft, Facebook",
+      "sso": "Çoklu oturum açma (Okta ve diğerleri)",
+      "helpCentre": "Yardım merkezi ve asistan",
+      "prioritySupport": "Öncelikli e-posta desteği",
+      "dedicatedSupport": "Ayrılmış hesap ekibi",
+      "securityReview": "Güvenlik ve uyum incelemesi"
+    },
+    "status": {
+      "active": "Etkin",
+      "past_due": "Ödeme gerekli",
+      "grace": "Ek süre",
+      "cancelled": "İptal edildi",
+      "expired": "Sona erdi",
+      "ending": "Sona eriyor"
+    },
+    "renewsOn": "{date} tarihinde {amount} karşılığında yenilenir.",
+    "endsOn": "{date} tarihinde sona erer, sonra Starter’a geçer.",
+    "noRenewal": "{date} tarihine kadar ödendi. Otomatik yenileme kapalı.",
+    "cancelTitle": "{plan} iptal edilsin mi?",
+    "cancelDesc": "Her şey {date} tarihine kadar sizde kalır. Sonra çalışma alanı Starter’a geçer ve onun sınırları geçerli olur.",
+    "cancelConfirm": "Dönem sonunda iptal et",
+    "cancelled": "Planınız {date} tarihinde sona erecek",
+    "resumed": "Planınız her zamanki gibi yenilenecek",
+    "pastDueTitle": "Ödemeyi alamadık",
+    "pastDueDesc": "Her şey {date} tarihine kadar çalışmaya devam eder. Planınızı korumak için bir kart ekleyin.",
+    "expiredTitle": "Ücretli planınız sona erdi",
+    "expiredDesc": "Çalışma alanı şimdi Starter’da. Her şeyi geri almak için bir plan seçin.",
+    "scheduledTitle": "{plan} ({period}) {date} tarihinde başlıyor",
+    "dropScheduled": "Geçerli planı koru",
+    "scheduleDropped": "Değişiklikten vazgeçildi",
+    "noCardTitle": "Yenileme için kart yok",
+    "noCardDesc": "{date} tarihinden önce bir kart ekleyin, yoksa plan kısa bir ek süreye girer ve sonra sona erer.",
+    "block": {
+      "usage": "Kullanım",
+      "usageHint": "Çalışma alanının plan sınırlarına göre kullandıkları.",
+      "payment": "Ödeme yöntemi",
+      "paymentHint": "Yenilemelerin tahsil edildiği kart.",
+      "renewal": "Yenileme ve hatırlatmalar",
+      "renewalHint": "Otomatik yenileyin ve herhangi bir tahsilattan önce hatırlatma alın.",
+      "invoices": "Faturalar",
+      "invoicesHint": "Her ödeme, dönemi ve durumuyla."
+    },
+    "usage": {
+      "forms": "Formlar",
+      "responses": "En yoğun formunuzdaki yanıtlar",
+      "ai": "Yapay zeka kredileri",
+      "busiest": "En yoğun form: {form}",
+      "thisMonth": "Bu ay",
+      "databases": "Bağlayabileceğiniz veritabanları",
+      "upgradeFor": "daha yüksek bir planda"
+    },
+    "card": {
+      "expires": "Son kullanma: {date}",
+      "expiringSoon": "yakında sona eriyor",
+      "none": "Kayıtlı kart yok. Ücretli planların yenilemeler için bir karta ihtiyacı var.",
+      "replace": "Değiştir",
+      "remove": "Kartı kaldır",
+      "removeTitle": "Bu kart kaldırılsın mı?",
+      "removeDesc": "İstediğiniz zaman yeniden kart ekleyebilirsiniz.",
+      "removeRenewal": "Planınız {date} tarihinde yenilenir. Kart olmadan, o tarihten önce yeni bir kart ekleyin, yoksa yenileme tahsil edilemez.",
+      "removed": "Kart kaldırıldı",
+      "secure": "Kart bilgilerini ödeme sağlayıcımız Payoneer saklar. Formalie kart numaranızı asla görmez veya saklamaz."
+    },
+    "renewal": {
+      "auto": "Otomatik yenile",
+      "onHint": "Planınız {date} tarihinde yenilenir ve kayıtlı karttan tahsilat yapılır.",
+      "offHint": "Yenilemezseniz planınız {date} tarihinde sona erer.",
+      "freeHint": "Starter ücretsizdir ve hiç yenilenmesi gerekmez.",
+      "offTitle": "Otomatik yenileme kapatılsın mı?",
+      "offDesc": "Planınız {date} tarihine kadar kalır, sonra çalışma alanı Starter’a geçer.",
+      "offConfirm": "Kapat",
+      "reminders": "Hatırlatmalar",
+      "before": "Yenilemeden önce",
+      "days": "{n} gün önce | {n} gün önce",
+      "failed": "Bir ödeme başarısız olduğunda",
+      "expiring": "Kartın süresi dolmak üzereyken",
+      "alsoTo": "Ayrıca şuraya gönder",
+      "alsoToHelp": "Çalışma alanı sahibi bunları her zaman alır. Finans ekibiniz gibi en fazla 5 adres daha ekleyin.",
+      "emailPlaceholder": "finance{'@'}example.com, sonra Enter",
+      "saved": "Kaydedildi"
+    },
+    "invoice": {
+      "number": "Fatura",
+      "date": "Tarih",
+      "plan": "Plan ve dönem",
+      "amount": "Tutar",
+      "status": "Durum",
+      "more": "Daha fazla göster",
+      "none": "Henüz fatura yok",
+      "noneDesc": "Faturalar ilk ödemenizden sonra burada görünür.",
+      "state": {
+        "paid": "Ödendi",
+        "open": "Açık",
+        "failed": "Başarısız",
+        "refunded": "İade edildi"
+      }
+    },
+    "changeTitle": "{plan} planına geç",
+    "changeDesc": "Onaylamadan önce nelerin değiştiğine bakın.",
+    "starts": "Başlangıç",
+    "startsNow": "Hemen",
+    "startsOn": "{date} tarihinde",
+    "price": "Fiyat",
+    "credit": "Kullanılmayan süre için kredi",
+    "dueNow": "Şimdi ödenecek",
+    "nowNote": "Yeni plan hemen başlar. Mevcut döneminizden kalan kısım ilk ödemeden düşülür.",
+    "laterNote": "Mevcut planınızı ödediğiniz dönemin sonuna kadar korursunuz. Yenisi o zaman başlar.",
+    "cancelNote": "Mevcut planınızı ödediğiniz dönemin sonuna kadar korursunuz. Sonra çalışma alanı Starter’a geçer.",
+    "overTitle": "Bazı şeyler yeni planın sınırlarını aşıyor",
+    "overNote": "Hiçbir şey silinmez. Sınırların üzerindeki formlar ve yanıtlar olduğu gibi kalır, ancak yenisini ekleyemezsiniz. Yeni planın içermediği özellikler kapanır ve yeniden yükseltirseniz geri gelir.",
+    "over": {
+      "forms": "Formlar: şimdi {current}, izin verilen {allowed}",
+      "responses": "Bir formdaki yanıtlar: şimdi {current}, izin verilen {allowed}",
+      "databases": "Dahil olmayan veritabanları: {current}",
+      "customDomain": "Özel alan adınız artık sunulmaz",
+      "customEmail": "E-postalar yeniden Formalie’nin adresinden gider",
+      "sso": "Çoklu oturum açma kapatılır",
+      "socialSignin": "Google, Apple, Microsoft ve Facebook ile giriş kapatılır"
+    },
+    "confirmChange": "Değişikliği onayla",
+    "continuePay": "Ödemeye devam et",
+    "changed": "Artık {plan} planındasınız",
+    "changeScheduled": "{plan} {date} tarihinde başlıyor",
+    "paid": "Ödeme alındı. Artık {plan} planındasınız",
+    "cardSaved": "Kart kaydedildi",
+    "checkout": {
+      "title": "Ödeme",
+      "cardTitle": "Kart ekle",
+      "desc": "Payoneer ile güvenli ödeme.",
+      "cardDesc": "Yenilemeler için bir kart kaydedin. Şimdi hiçbir şey tahsil edilmez.",
+      "testNote": "Test modu: Payoneer henüz bağlı değil, bu yüzden gerçek kart kullanılmıyor. Ödemeyi denemek için bir test kartı seçin.",
+      "testCard": "Test kartı",
+      "pay": "{amount} öde",
+      "saveCard": "Kartı kaydet",
+      "decline": "Reddedilen bir ödemeyi dene",
+      "secure": "Kart bilgilerinizi Payoneer’in güvenli sayfasında girersiniz. Formalie yalnızca kart markasını, son dört hanesini ve son kullanma tarihini saklar."
+    },
+    "enquiry": {
+      "title": "Enterprise talebi",
+      "desc": "Neye ihtiyacınız olduğunu bize söyleyin. Formalie ekibi bir iş günü içinde yanıtlar.",
+      "you": "Sizin hakkınızda",
+      "company": "Şirket",
+      "name": "Adınız",
+      "workEmail": "İş e-postası",
+      "phone": "Telefon",
+      "role": "Unvan",
+      "country": "Ülke",
+      "scale": "Ölçek",
+      "sizeLabel": "Şirket büyüklüğü",
+      "size": {
+        "1-50": "1 ile 50 kişi",
+        "51-200": "51 ile 200 kişi",
+        "201-1000": "201 ile 1.000 kişi",
+        "1001-5000": "1.001 ile 5.000 kişi",
+        "5000+": "5.000’den fazla kişi"
+      },
+      "volumeLabel": "Aylık yanıt sayısı",
+      "volume": {
+        "under_100k": "100.000’in altı",
+        "100k_1m": "100.000 ile 1 milyon",
+        "1m_10m": "1 ile 10 milyon",
+        "over_10m": "10 milyondan fazla"
+      },
+      "startLabel": "Ne zaman başlamak istersiniz?",
+      "startWhen": {
+        "now": "Hemen",
+        "quarter": "Bu çeyrekte",
+        "later": "Bu yılın ilerleyen aylarında"
+      },
+      "needsLabel": "Neye ihtiyacınız var?",
+      "need": {
+        "sso": "Çoklu oturum açma",
+        "dedicated": "Ayrılmış altyapı",
+        "residency": "Belirli bir bölgede veri",
+        "sla": "Hizmet sürekliliği anlaşması (SLA)",
+        "security": "Güvenlik ve uyum incelemesi",
+        "invoice": "Faturayla ödeme",
+        "onboarding": "Kurulum ve eğitim",
+        "custom_limits": "Özel sınırlar"
+      },
+      "residency": "Veriler nerede kalmalı?",
+      "residencyHelp": "Bir ülke veya bölge, örneğin Avrupa Birliği.",
+      "message": "Bilmemiz gereken başka bir şey var mı?",
+      "messageHelp": "Kullanımınız, biçimler, entegrasyonlar veya güvenlik gereksinimleri.",
+      "messageShort": "Biraz daha anlatın (en az 10 karakter).",
+      "required": "Lütfen bu alanı doldurun.",
+      "email": "Geçerli bir e-posta adresi girin.",
+      "privacy": "Bu bilgileri yalnızca talebinizi yanıtlamak için kullanırız.",
+      "send": "Talebi gönder",
+      "sentTitle": "Teşekkürler, aldık",
+      "sentDesc": "Formalie ekibi bir iş günü içinde {email} adresine yanıt verecek.",
+      "close": "Kapat"
+    },
+    "limitAdmin": "Daha yüksek bir plan daha fazlasını içerir. Yükseltmek için planları karşılaştırın.",
+    "limitMember": "Daha yüksek bir plan için çalışma alanı yöneticisine sorun.",
+    "seePlans": "Planları gör",
+    "locked": "{plan} ve üzeri",
+    "lockedHint": "Planınız bunu içermiyor. Kullanmak için yükseltin."
   }
 }

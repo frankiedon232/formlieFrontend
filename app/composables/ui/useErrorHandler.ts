@@ -33,6 +33,19 @@ export function useErrorHandler() {
     const normalised = normalise(error)
     if (normalised.aborted || options.silent) return normalised
 
+    // A plan limit (Subscription, F24): not a fault, so no reference; admins get a way to the plans
+    if (normalised.code.startsWith('FRM-PLAN-')) {
+      const admin = useCan().can('settings.manage')
+      toast.add({
+        title: options.title ?? messageFor(normalised),
+        description: admin ? t('billing.limitAdmin') : t('billing.limitMember'),
+        color: 'warning',
+        icon: 'i-lucide-gem',
+        actions: admin ? [{ label: t('billing.seePlans'), icon: 'i-lucide-arrow-up-right', color: 'neutral', variant: 'outline', onClick: () => void navigateTo('/settings/plans') }] : undefined,
+      })
+      return normalised
+    }
+
     toast.add({
       id: normalised.traceId || undefined,
       title: options.title ?? messageFor(normalised),

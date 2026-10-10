@@ -655,7 +655,10 @@
     "FRM-AI-1004": "Dit concept is al gebruikt of opzijgezet. Vraag het de assistent opnieuw.",
     "FRM-AUTH-1019": "Dit e-mailadres logt in met de single sign-on van je organisatie. Gebruik de knop hierboven.",
     "FRM-AUTH-1020": "Test single sign-on voordat je het inschakelt.",
-    "FRM-SET-1001": "Verifieer of test dit eerst, dan kun je het gebruiken."
+    "FRM-SET-1001": "Verifieer of test dit eerst, dan kun je het gebruiken.",
+    "FRM-BILL-1001": "De betaling is niet gelukt. Probeer een andere kaart of neem contact op met je bank.",
+    "FRM-BILL-1002": "Deze betaalsessie is verlopen. Begin opnieuw.",
+    "FRM-BILL-1003": "We hebben je aanvraag al. We nemen snel contact op."
   },
   "errorUi": {
     "reference": "Referentie: {id}",
@@ -7074,7 +7077,8 @@
       "organisation": "Organisatie",
       "access": "Aanmelden en beveiliging",
       "communication": "Meldingen en e-mails",
-      "data": "Gegevens en formulieren"
+      "data": "Gegevens en formulieren",
+      "billing": "Abonnement"
     },
     "nav": {
       "overview": "Overzicht",
@@ -7093,7 +7097,9 @@
       "privacy": "Privacy en gegevens",
       "formDefaults": "Standaard voor formulieren",
       "themes": "Thema's",
-      "landingPages": "Landingspagina's"
+      "landingPages": "Landingspagina's",
+      "subscription": "Abonnement",
+      "plans": "Abonnementen"
     },
     "desc": {
       "overview": "Alles over je werkruimte op één plek.",
@@ -7112,7 +7118,9 @@
       "privacy": "Hoe lang antwoorden bewaard blijven, toestemmingsteksten en gegevensverzoeken.",
       "formDefaults": "De instellingen waarmee nieuwe formulieren beginnen en de standaard voor insluiten.",
       "themes": "Formulierontwerpen die je werkruimte kan gebruiken.",
-      "landingPages": "Paginaontwerpen voor de openbare pagina's van je formulieren."
+      "landingPages": "Paginaontwerpen voor de openbare pagina's van je formulieren.",
+      "subscription": "Je abonnement, wat je gebruikt, je kaart, verlenging, herinneringen en facturen.",
+      "plans": "Vergelijk de abonnementen en wijzig het jouwe, maandelijks, per kwartaal of per jaar."
     },
     "status": {
       "complete": "Compleet",
@@ -9115,5 +9123,332 @@
       "of": "{n} van {total}",
       "hint": "Dubbelklik of druk op + en - om te zoomen. Sleep om te verplaatsen. Esc sluit."
     }
+  },
+  "billing": {
+    "plan": {
+      "starter": {
+        "name": "Starter",
+        "bestFor": "Voor particulieren, studenten en hobbyisten die op kleine schaal gegevens verzamelen of de API uitproberen.",
+        "everything": "Alle kernfuncties, gratis zolang je wilt."
+      },
+      "professional": {
+        "name": "Professional",
+        "bestFor": "Voor startups en kleine teams die tijdens hun groei rekenen op regelmatige, geautomatiseerde gegevens en bijna realtime monitoring.",
+        "everything": "Alles uit Starter, plus je eigen domein, afzenderadres en bedrijfsaanmelding."
+      },
+      "business": {
+        "name": "Business",
+        "bestFor": "Voor gevestigde bedrijven met veel gegevens, geavanceerd filteren en snelle extractie. Zonder limieten.",
+        "everything": "Alles uit Professional, zonder limieten op formulieren, reacties of databases."
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "bestFor": "Voor grote organisaties met specifieke gegevensvereisten, strenge beveiligings- en compliancewensen of eigen infrastructuur.",
+        "everything": "Alles uit Business, afgestemd op je organisatie, met een eigen team."
+      }
+    },
+    "periodName": {
+      "monthly": "Maandelijks",
+      "quarterly": "Per kwartaal",
+      "annually": "Jaarlijks"
+    },
+    "periodLabel": "Factuurperiode",
+    "billed": {
+      "quarterly": "{total} gefactureerd per 3 maanden",
+      "annually": "{total} eenmaal per jaar gefactureerd"
+    },
+    "billedMonthly": "Maandelijks gefactureerd",
+    "pricePer": {
+      "monthly": "{amount} per maand",
+      "quarterly": "{amount} per 3 maanden",
+      "annually": "{amount} per jaar"
+    },
+    "perMonth": "/ maand",
+    "save": "Bespaar {amount}",
+    "free": "Gratis",
+    "freeHint": "Geen kaart nodig",
+    "freeForever": "Gratis, zonder einddatum.",
+    "custom": "Op maat",
+    "customHint": "Prijs op maat voor je organisatie",
+    "customAmount": "Op maat",
+    "popular": "Meest gekozen",
+    "yours": "Jouw abonnement",
+    "currentPlan": "Huidig abonnement",
+    "scheduledShort": "Begint in de volgende periode",
+    "upgrade": "Upgraden",
+    "downgrade": "Downgraden",
+    "switchPeriod": "Overstappen naar deze periode",
+    "contactUs": "Neem contact op",
+    "unlimited": "Onbeperkt",
+    "upTo": "Tot {n}",
+    "credits": "{n} credits per maand",
+    "included": "Inbegrepen",
+    "notIncluded": "Niet inbegrepen",
+    "pricesNote": "Prijzen in Amerikaanse dollars, exclusief belastingen. Per kwartaal bespaart 10%, per jaar bespaart 20%.",
+    "comparePlans": "Abonnementen vergelijken",
+    "changePlan": "Abonnement wijzigen",
+    "cancelPlan": "Abonnement opzeggen",
+    "keepPlan": "Mijn abonnement behouden",
+    "addCard": "Kaart toevoegen",
+    "enterpriseTitle": "Meer nodig, of iets specifieks?",
+    "enterpriseDesc": "Vertel ons over je organisatie en we maken een Enterprise-aanbod: eigen infrastructuur, dataresidentie, beveiligingsbeoordelingen en limieten op maat.",
+    "fact": {
+      "forms": "{n} formulier | {n} formulieren",
+      "formsUnlimited": "Onbeperkt formulieren",
+      "responses": "{n} reacties per formulier",
+      "responsesUnlimited": "Onbeperkt reacties",
+      "databases": "Gebruik je eigen database: {list}",
+      "databasesAll": "Gebruik elke database: MySQL, PostgreSQL, MariaDB, SQL Server, Oracle",
+      "signinEmail": "Aanmelden met e-mail en wachtwoord",
+      "signinAll": "Google, Apple, Microsoft, Facebook en single sign-on (Okta en andere)",
+      "subdomain": "Je eigen Formalie-subdomein",
+      "domain": "Eén eigen domein",
+      "domains": "Eigen domeinen",
+      "email": "E-mails vanaf je eigen adres of mailserver",
+      "emailFormalie": "E-mails vanaf het adres van Formalie",
+      "ai": "AI-assistent: {n} credits per maand",
+      "aiCustom": "AI-assistent: credits naar wens"
+    },
+    "db": {
+      "mysql": "MySQL",
+      "postgresql": "PostgreSQL",
+      "mariadb": "MariaDB",
+      "sqlserver": "SQL Server",
+      "oracle": "Oracle"
+    },
+    "compare": {
+      "heading": "Vergelijk alle functies",
+      "title": "Functie",
+      "group": {
+        "forms": "Formulieren en reacties",
+        "insight": "Inzichten",
+        "data": "Je gegevens",
+        "api": "API-service",
+        "brand": "Merk en adres",
+        "access": "Aanmelden",
+        "support": "Ondersteuning"
+      },
+      "forms": "Formulieren",
+      "responses": "Reacties per formulier",
+      "languages": "Talen",
+      "templates": "Sjabloonbibliotheek",
+      "lists": "Eigen lijsten",
+      "themes": "Thema’s en landingspagina’s",
+      "versions": "Versiegeschiedenis",
+      "folders": "Werkruimte en mappen",
+      "fillLater": "Later invullen (verdergaan waar je bent gebleven)",
+      "analytics": "Geavanceerde analyses",
+      "visits": "Analyses van bezoeken en reacties",
+      "ai": "AI-assistent",
+      "db": "Gebruik je eigen database: {name}",
+      "explorer": "Database-explorer",
+      "query": "Live queryeditor",
+      "destinations": "Gegevensbestemmingen",
+      "api": "API-service, endpoints, tokens en toegangsregels",
+      "webhooks": "Webhooks",
+      "apiDocs": "API-documentatie",
+      "branding": "Huisstijl",
+      "subdomain": "Formalie-subdomein",
+      "customDomain": "Eigen domein",
+      "customEmail": "Eigen afzenderadres en mailserver",
+      "emailSignin": "E-mail en wachtwoord",
+      "socialSignin": "Google, Apple, Microsoft, Facebook",
+      "sso": "Single sign-on (Okta en andere)",
+      "helpCentre": "Helpcentrum en assistent",
+      "prioritySupport": "E-mailondersteuning met voorrang",
+      "dedicatedSupport": "Eigen accountteam",
+      "securityReview": "Beveiligings- en compliancebeoordeling"
+    },
+    "status": {
+      "active": "Actief",
+      "past_due": "Betaling openstaand",
+      "grace": "Respijtperiode",
+      "cancelled": "Opgezegd",
+      "expired": "Beëindigd",
+      "ending": "Loopt af"
+    },
+    "renewsOn": "Wordt verlengd op {date} voor {amount}.",
+    "endsOn": "Eindigt op {date}, daarna ga je naar Starter.",
+    "noRenewal": "Betaald tot {date}. Automatisch verlengen staat uit.",
+    "cancelTitle": "{plan} opzeggen?",
+    "cancelDesc": "Je behoudt alles tot {date}. Daarna gaat de werkruimte naar Starter en gelden de limieten daarvan.",
+    "cancelConfirm": "Opzeggen aan het einde van de periode",
+    "cancelled": "Je abonnement eindigt op {date}",
+    "resumed": "Je abonnement wordt gewoon verlengd",
+    "pastDueTitle": "We konden de betaling niet innen",
+    "pastDueDesc": "Alles blijft werken tot {date}. Voeg een kaart toe om je abonnement te behouden.",
+    "expiredTitle": "Je betaalde abonnement is beëindigd",
+    "expiredDesc": "De werkruimte staat nu op Starter. Kies een abonnement om alles terug te krijgen.",
+    "scheduledTitle": "{plan} ({period}) begint op {date}",
+    "dropScheduled": "Huidig abonnement behouden",
+    "scheduleDropped": "De wijziging is geannuleerd",
+    "noCardTitle": "Geen kaart voor de verlenging",
+    "noCardDesc": "Voeg vóór {date} een kaart toe, anders gaat het abonnement een korte respijtperiode in en eindigt het daarna.",
+    "block": {
+      "usage": "Gebruik",
+      "usageHint": "Wat de werkruimte gebruikt ten opzichte van de limieten van het abonnement.",
+      "payment": "Betaalmethode",
+      "paymentHint": "De kaart waarop verlengingen worden afgeschreven.",
+      "renewal": "Verlenging en herinneringen",
+      "renewalHint": "Verleng automatisch en krijg een herinnering voordat er iets wordt afgeschreven.",
+      "invoices": "Facturen",
+      "invoicesHint": "Elke betaling, met periode en status."
+    },
+    "usage": {
+      "forms": "Formulieren",
+      "responses": "Reacties op je drukste formulier",
+      "ai": "AI-credits",
+      "busiest": "Drukste formulier: {form}",
+      "thisMonth": "Deze maand",
+      "databases": "Databases die je mag koppelen",
+      "upgradeFor": "in een hoger abonnement"
+    },
+    "card": {
+      "expires": "Verloopt op {date}",
+      "expiringSoon": "verloopt binnenkort",
+      "none": "Geen kaart opgeslagen. Betaalde abonnementen hebben er een nodig voor verlengingen.",
+      "replace": "Vervangen",
+      "remove": "Kaart verwijderen",
+      "removeTitle": "Deze kaart verwijderen?",
+      "removeDesc": "Je kunt op elk moment weer een kaart toevoegen.",
+      "removeRenewal": "Je abonnement wordt verlengd op {date}. Voeg zonder kaart vóór die datum een nieuwe toe, anders kan de verlenging niet worden afgeschreven.",
+      "removed": "Kaart verwijderd",
+      "secure": "Kaartgegevens worden bewaard door onze betaalprovider, Payoneer. Formalie ziet of bewaart je kaartnummer nooit."
+    },
+    "renewal": {
+      "auto": "Automatisch verlengen",
+      "onHint": "Je abonnement wordt verlengd op {date} en de opgeslagen kaart wordt belast.",
+      "offHint": "Je abonnement eindigt op {date} tenzij je het verlengt.",
+      "freeHint": "Starter is gratis en hoeft nooit verlengd te worden.",
+      "offTitle": "Automatisch verlengen uitzetten?",
+      "offDesc": "Je abonnement blijft tot {date}, daarna gaat de werkruimte naar Starter.",
+      "offConfirm": "Uitzetten",
+      "reminders": "Herinneringen",
+      "before": "Vóór de verlenging",
+      "days": "{n} dag vooraf | {n} dagen vooraf",
+      "failed": "Wanneer een betaling mislukt",
+      "expiring": "Wanneer de kaart bijna verloopt",
+      "alsoTo": "Ook sturen naar",
+      "alsoToHelp": "De eigenaar van de werkruimte krijgt ze altijd. Voeg maximaal 5 extra adressen toe, bijvoorbeeld van je financiële team.",
+      "emailPlaceholder": "finance{'@'}example.com, dan Enter",
+      "saved": "Opgeslagen"
+    },
+    "invoice": {
+      "number": "Factuur",
+      "date": "Datum",
+      "plan": "Abonnement en periode",
+      "amount": "Bedrag",
+      "status": "Status",
+      "more": "Meer tonen",
+      "none": "Nog geen facturen",
+      "noneDesc": "Facturen verschijnen hier na je eerste betaling.",
+      "state": {
+        "paid": "Betaald",
+        "open": "Open",
+        "failed": "Mislukt",
+        "refunded": "Terugbetaald"
+      }
+    },
+    "changeTitle": "Overstappen naar {plan}",
+    "changeDesc": "Bekijk wat er verandert voordat je bevestigt.",
+    "starts": "Begint",
+    "startsNow": "Direct",
+    "startsOn": "Op {date}",
+    "price": "Prijs",
+    "credit": "Tegoed voor ongebruikte tijd",
+    "dueNow": "Nu te betalen",
+    "nowNote": "Het nieuwe abonnement begint direct. Wat er over is van je huidige periode wordt van de eerste betaling afgetrokken.",
+    "laterNote": "Je behoudt je huidige abonnement tot het einde van de betaalde periode. Dan begint het nieuwe.",
+    "cancelNote": "Je behoudt je huidige abonnement tot het einde van de betaalde periode. Daarna gaat de werkruimte naar Starter.",
+    "overTitle": "Sommige dingen overschrijden de limieten van het nieuwe abonnement",
+    "overNote": "Er wordt niets verwijderd. Formulieren en reacties boven de limieten blijven bestaan, maar je kunt er geen meer toevoegen. Functies die het nieuwe abonnement niet bevat, gaan uit en komen terug als je weer upgrade.",
+    "over": {
+      "forms": "Formulieren: nu {current}, toegestaan {allowed}",
+      "responses": "Reacties op een formulier: nu {current}, toegestaan {allowed}",
+      "databases": "Databases die niet zijn inbegrepen: {current}",
+      "customDomain": "Je eigen domein wordt niet meer geserveerd",
+      "customEmail": "E-mails gaan weer uit van het adres van Formalie",
+      "sso": "Single sign-on wordt uitgezet",
+      "socialSignin": "Aanmelden met Google, Apple, Microsoft en Facebook wordt uitgezet"
+    },
+    "confirmChange": "Wijziging bevestigen",
+    "continuePay": "Verder naar betaling",
+    "changed": "Je zit nu op {plan}",
+    "changeScheduled": "{plan} begint op {date}",
+    "paid": "Betaling ontvangen. Je zit nu op {plan}",
+    "cardSaved": "Kaart opgeslagen",
+    "checkout": {
+      "title": "Betaling",
+      "cardTitle": "Kaart toevoegen",
+      "desc": "Veilig afrekenen via Payoneer.",
+      "cardDesc": "Sla een kaart op voor verlengingen. Er wordt nu niets afgeschreven.",
+      "testNote": "Testmodus: Payoneer is nog niet gekoppeld, dus er wordt geen echte kaart gebruikt. Kies een testkaart om de betaling te proberen.",
+      "testCard": "Testkaart",
+      "pay": "{amount} betalen",
+      "saveCard": "Kaart opslaan",
+      "decline": "Een geweigerde betaling proberen",
+      "secure": "Je voert je kaartgegevens in op de beveiligde pagina van Payoneer. Formalie bewaart alleen het kaartmerk, de laatste vier cijfers en de vervaldatum."
+    },
+    "enquiry": {
+      "title": "Enterprise-aanvraag",
+      "desc": "Vertel ons wat je nodig hebt. Het Formalie-team antwoordt binnen één werkdag.",
+      "you": "Over jou",
+      "company": "Bedrijf",
+      "name": "Je naam",
+      "workEmail": "Zakelijk e-mailadres",
+      "phone": "Telefoon",
+      "role": "Functie",
+      "country": "Land",
+      "scale": "Schaal",
+      "sizeLabel": "Bedrijfsgrootte",
+      "size": {
+        "1-50": "1 tot 50 mensen",
+        "51-200": "51 tot 200 mensen",
+        "201-1000": "201 tot 1.000 mensen",
+        "1001-5000": "1.001 tot 5.000 mensen",
+        "5000+": "Meer dan 5.000 mensen"
+      },
+      "volumeLabel": "Reacties per maand",
+      "volume": {
+        "under_100k": "Minder dan 100.000",
+        "100k_1m": "100.000 tot 1 miljoen",
+        "1m_10m": "1 tot 10 miljoen",
+        "over_10m": "Meer dan 10 miljoen"
+      },
+      "startLabel": "Wanneer wil je beginnen?",
+      "startWhen": {
+        "now": "Direct",
+        "quarter": "Dit kwartaal",
+        "later": "Later dit jaar"
+      },
+      "needsLabel": "Wat heb je nodig?",
+      "need": {
+        "sso": "Single sign-on",
+        "dedicated": "Eigen infrastructuur",
+        "residency": "Gegevens in een bepaalde regio",
+        "sla": "Beschikbaarheidsovereenkomst (SLA)",
+        "security": "Beveiligings- en compliancebeoordeling",
+        "invoice": "Betalen op factuur",
+        "onboarding": "Onboarding en training",
+        "custom_limits": "Limieten op maat"
+      },
+      "residency": "Waar moeten de gegevens blijven?",
+      "residencyHelp": "Een land of regio, bijvoorbeeld de Europese Unie.",
+      "message": "Is er nog iets wat we moeten weten?",
+      "messageHelp": "Je gebruik, formaten, integraties of beveiligingsvereisten.",
+      "messageShort": "Vertel ons iets meer (minstens 10 tekens).",
+      "required": "Vul dit in.",
+      "email": "Voer een geldig e-mailadres in.",
+      "privacy": "We gebruiken deze gegevens alleen om je aanvraag te beantwoorden.",
+      "send": "Aanvraag versturen",
+      "sentTitle": "Bedankt, we hebben het ontvangen",
+      "sentDesc": "Het Formalie-team antwoordt binnen één werkdag naar {email}.",
+      "close": "Sluiten"
+    },
+    "limitAdmin": "Een hoger abonnement bevat meer. Vergelijk de abonnementen om te upgraden.",
+    "limitMember": "Vraag een beheerder van de werkruimte naar een hoger abonnement.",
+    "seePlans": "Abonnementen bekijken",
+    "locked": "Vanaf {plan}",
+    "lockedHint": "Je abonnement bevat dit niet. Upgrade om het te gebruiken."
   }
 }

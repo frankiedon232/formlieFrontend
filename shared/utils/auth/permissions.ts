@@ -419,6 +419,9 @@ export function permissionFor(method: string, path: string): Permission | null {
     // Settings: pages read them (appearance, language, defaults); security and sent emails need settings.view
     [/^\/settings\/(security|emails)(\/|$)/, r => (r ? 'settings.view' : 'settings.manage')],
     [/^\/(settings|privacy|onboarding)(\/|$)/, r => (r ? null : 'settings.manage')],
+    // Subscription (F24): every member may read the plans (upgrade prompts); billing itself is the admins'
+    [/^\/billing\/plans$/, r => (r ? null : 'settings.manage')],
+    [/^\/billing(\/|$)/, r => (r ? 'settings.view' : 'settings.manage')],
   ]
   for (const [pattern, rule] of rules) if (pattern.test(p)) return typeof rule === 'function' ? rule(read) : rule
   return null

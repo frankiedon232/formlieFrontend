@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { hasFeature } from '../core/plan'
 import type { SubdomainAvailability, TenantPublicProfile, WorkspaceLink } from '#shared/types/auth'
 import { isValidSubdomain, RESERVED_SUBDOMAINS } from '#shared/utils/tenant/host'
 import {
@@ -47,8 +48,9 @@ export const publicProfile = defineMockRoute(({ event }) => {
     signin_message: branding.signin_message,
     colors: { primary: branding.brand_color },
     website: websiteOf(tenant),
-    auth_providers: signin.methods,
-    sso: ssoPublic(tenant),
+    // Subscription (F24): other sign-in methods and single sign-on only while the plan has them
+    auth_providers: hasFeature(tenant, 'social_signin') ? signin.methods : ['password'],
+    sso: hasFeature(tenant, 'sso') ? ssoPublic(tenant) : null,
     password_policy: { min_length: security.password.min_length, lower: security.password.lower, upper: security.password.upper, number: security.password.number, symbol: security.password.symbol },
     status: tenant.status,
   })

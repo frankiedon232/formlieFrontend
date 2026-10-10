@@ -14,6 +14,7 @@
  * domain left off the allowed domains, or their own address left off the IP allowlist.
  * Every change is in the audit trail (`settings.updated`, field by field).
  */
+import { requireFeature } from '../core/plan'
 import { z } from 'zod'
 import type { BrandingSettings, SecurityActivity, SettingsSection } from '#shared/types/settings'
 import { SETTINGS_SECTIONS } from '#shared/types/settings'
@@ -110,6 +111,8 @@ export const patchSection = defineMockRoute(({ event, body }) => {
     const value = parseBody(signinSchema, body)
     const domain = user.email.split('@').pop()!.toLowerCase()
     if (value.allowed_domains.length && !value.allowed_domains.some(item => domain === item || domain.endsWith(`.${item}`))) throw lockedOut('allowed_domains', 'own_domain')
+    // Subscription (F24): Google, Apple, Microsoft and Facebook come with Professional and up
+    if (value.methods.some(method => method !== 'password' && !settings.signin.methods.includes(method))) requireFeature(tenant, 'social_signin')
     changes = settingsChanges(settings.signin as unknown as Record<string, unknown>, value as unknown as Record<string, unknown>)
     next = writeSettings(tenant, 'signin', value, by).signin
   } else if (section === 'security') {

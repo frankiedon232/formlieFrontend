@@ -2,6 +2,7 @@
  * Single sign-on connections in the mock (Settings → Sign-in, owner 2026-10-10), kept in `.data/mock/sso.json`:
  * one per workspace. The client secret stays here only (the backend keeps it encrypted).
  */
+import { hasFeature } from '../core/plan'
 import type { SsoConnection, SsoPublic } from '#shared/types/sso'
 import { loadPersisted, savePersisted } from '../core/persist'
 import type { MockTenant } from './tenants'
@@ -34,4 +35,4 @@ export function ssoDomainMatch(tenant: MockTenant, email: string) {
 }
 
 /** People of these domains may only sign in through the provider. */
-export const ssoRequired = (tenant: MockTenant, email: string) => !!ssoPublic(tenant)?.enforce && ssoDomainMatch(tenant, email)
+export const ssoRequired = (tenant: MockTenant, email: string) => hasFeature(tenant, 'sso') && !!ssoPublic(tenant)?.enforce && ssoDomainMatch(tenant, email)

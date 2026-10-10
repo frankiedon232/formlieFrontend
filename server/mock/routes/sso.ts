@@ -11,6 +11,7 @@
  *
  * Everything is in the audit trail.
  */
+import { requireFeature } from '../core/plan'
 import type { H3Event } from 'h3'
 import { z } from 'zod'
 import { SSO_PROTOCOL, SSO_PROVIDERS, type SsoProblem, type SsoServiceProvider, type SsoSettings } from '#shared/types/sso'
@@ -66,6 +67,7 @@ const saveSchema = z.object({
 
 export const saveSso = defineMockRoute(({ event, body }) => {
   const { tenant, user } = requireAdmin(event)
+  requireFeature(tenant, 'sso')
   const input = parseBody(saveSchema, body)
   if (input.default_role === 'owner' || !rolesOf(tenant).some(role => role.id === input.default_role)) throw new MockError('FRM-GEN-1002', [{ field: 'default_role', message: 'role' }])
   if (input.enforce && !input.domains.length) throw new MockError('FRM-GEN-1002', [{ field: 'domains', message: 'required' }])
@@ -153,6 +155,7 @@ export const setSsoStatus = defineMockRoute(({ event, body }) => {
   const { active } = parseBody(statusSchema, body)
   const sso = ssoOf(tenant)
   if (!sso) throw new MockError('FRM-GEN-1004')
+  if (active) requireFeature(tenant, 'sso')
   if (active && sso.status === 'draft') throw new MockError('FRM-AUTH-1020')
   const before = sso.status
   sso.status = active ? 'active' : 'tested'

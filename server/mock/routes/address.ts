@@ -9,6 +9,7 @@
  *
  * The old subdomain keeps leading here for 90 days. Every change is in the audit trail.
  */
+import { requireFeature } from '../core/plan'
 import { resolveCname, resolveTxt } from 'node:dns/promises'
 import type { H3Event } from 'h3'
 import { z } from 'zod'
@@ -65,6 +66,7 @@ const domainSchema = z.object({
 
 export const addDomain = defineMockRoute(({ event, body }) => {
   const { tenant, user } = requireAdmin(event)
+  requireFeature(tenant, 'custom_domain')
   const { domain } = parseBody(domainSchema, body)
   const root = useRuntimeConfig(event).public.rootDomain
   if (!DOMAIN.test(domain) || domain === root || domain.endsWith(`.${root}`) || domain.endsWith('.formalie.com')) throw new MockError('FRM-GEN-1002', [{ field: 'domain', message: 'domain' }])

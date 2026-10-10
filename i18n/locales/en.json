@@ -655,7 +655,10 @@
     "FRM-AI-1004": "This draft was already used or put aside. Ask the assistant again.",
     "FRM-AUTH-1019": "This email address signs in with your organisation's single sign-on. Use the button above.",
     "FRM-AUTH-1020": "Test single sign-on before turning it on.",
-    "FRM-SET-1001": "Verify or test this first, then you can use it."
+    "FRM-SET-1001": "Verify or test this first, then you can use it.",
+    "FRM-BILL-1001": "The payment didn't go through. Try another card or contact your bank.",
+    "FRM-BILL-1002": "This checkout has expired. Start again.",
+    "FRM-BILL-1003": "We already have your enquiry. We'll be in touch soon."
   },
   "errorUi": {
     "reference": "Reference: {id}",
@@ -7074,7 +7077,8 @@
       "organisation": "Organisation",
       "access": "Sign-in and security",
       "communication": "Notifications and emails",
-      "data": "Data and forms"
+      "data": "Data and forms",
+      "billing": "Subscription"
     },
     "nav": {
       "overview": "Overview",
@@ -7093,7 +7097,9 @@
       "privacy": "Privacy and data",
       "formDefaults": "Form defaults",
       "themes": "Themes",
-      "landingPages": "Landing pages"
+      "landingPages": "Landing pages",
+      "subscription": "Subscription",
+      "plans": "Plans"
     },
     "desc": {
       "overview": "Everything about your workspace in one place.",
@@ -7112,7 +7118,9 @@
       "privacy": "How long responses are kept, consent texts and data requests.",
       "formDefaults": "The settings new forms start with, and embed defaults.",
       "themes": "Form designs your workspace can use.",
-      "landingPages": "Page designs for your forms' public pages."
+      "landingPages": "Page designs for your forms' public pages.",
+      "subscription": "Your plan, what you use, your card, renewal, reminders and invoices.",
+      "plans": "Compare the plans and change yours, monthly, quarterly or yearly."
     },
     "status": {
       "complete": "Complete",
@@ -9115,5 +9123,332 @@
       "of": "{n} of {total}",
       "hint": "Double-click or press + and - to zoom. Drag to move around. Esc closes."
     }
+  },
+  "billing": {
+    "plan": {
+      "starter": {
+        "name": "Starter",
+        "bestFor": "Individuals, students and hobbyists collecting data on a small scale or trying out the API.",
+        "everything": "Every core feature, free for as long as you like."
+      },
+      "professional": {
+        "name": "Professional",
+        "bestFor": "Startups and small teams that rely on regular, automated data and near real-time monitoring as they grow.",
+        "everything": "Everything in Starter, plus your own domain, sending address and company sign-in."
+      },
+      "business": {
+        "name": "Business",
+        "bestFor": "Established companies with heavy data intake, advanced filtering and fast extraction. No limits.",
+        "everything": "Everything in Professional, with no limits on forms, responses or databases."
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "bestFor": "Large organisations with specific data requirements, strict security and compliance needs, or dedicated infrastructure.",
+        "everything": "Everything in Business, shaped around your organisation, with a dedicated team."
+      }
+    },
+    "periodName": {
+      "monthly": "Monthly",
+      "quarterly": "Quarterly",
+      "annually": "Annually"
+    },
+    "periodLabel": "Billing period",
+    "billed": {
+      "quarterly": "{total} billed every 3 months",
+      "annually": "{total} billed once a year"
+    },
+    "billedMonthly": "Billed every month",
+    "pricePer": {
+      "monthly": "{amount} a month",
+      "quarterly": "{amount} every 3 months",
+      "annually": "{amount} a year"
+    },
+    "perMonth": "/ month",
+    "save": "Save {amount}",
+    "free": "Free",
+    "freeHint": "No card needed",
+    "freeForever": "Free, with no end date.",
+    "custom": "Custom",
+    "customHint": "Priced for your organisation",
+    "customAmount": "Custom",
+    "popular": "Most popular",
+    "yours": "Your plan",
+    "currentPlan": "Current plan",
+    "scheduledShort": "Starts next period",
+    "upgrade": "Upgrade",
+    "downgrade": "Downgrade",
+    "switchPeriod": "Switch to this period",
+    "contactUs": "Contact us",
+    "unlimited": "Unlimited",
+    "upTo": "Up to {n}",
+    "credits": "{n} credits a month",
+    "included": "Included",
+    "notIncluded": "Not included",
+    "pricesNote": "Prices in US dollars, before any taxes. Quarterly saves 10%, annually saves 20%.",
+    "comparePlans": "Compare plans",
+    "changePlan": "Change plan",
+    "cancelPlan": "Cancel plan",
+    "keepPlan": "Keep my plan",
+    "addCard": "Add a card",
+    "enterpriseTitle": "Need more, or something specific?",
+    "enterpriseDesc": "Tell us about your organisation and we'll prepare an Enterprise offer: dedicated infrastructure, data residency, security reviews and custom limits.",
+    "fact": {
+      "forms": "{n} form | {n} forms",
+      "formsUnlimited": "Unlimited forms",
+      "responses": "{n} responses on each form",
+      "responsesUnlimited": "Unlimited responses",
+      "databases": "Bring your database: {list}",
+      "databasesAll": "Bring any database: MySQL, PostgreSQL, MariaDB, SQL Server, Oracle",
+      "signinEmail": "Sign-in with email and password",
+      "signinAll": "Google, Apple, Microsoft, Facebook and single sign-on (Okta and others)",
+      "subdomain": "Your own Formalie subdomain",
+      "domain": "One custom domain",
+      "domains": "Custom domains",
+      "email": "Emails from your own address or mail server",
+      "emailFormalie": "Emails from Formalie's address",
+      "ai": "AI assistant: {n} credits a month",
+      "aiCustom": "AI assistant: credits to suit you"
+    },
+    "db": {
+      "mysql": "MySQL",
+      "postgresql": "PostgreSQL",
+      "mariadb": "MariaDB",
+      "sqlserver": "SQL Server",
+      "oracle": "Oracle"
+    },
+    "compare": {
+      "heading": "Compare every feature",
+      "title": "Feature",
+      "group": {
+        "forms": "Forms and responses",
+        "insight": "Insight",
+        "data": "Your data",
+        "api": "API service",
+        "brand": "Brand and address",
+        "access": "Sign-in",
+        "support": "Support"
+      },
+      "forms": "Forms",
+      "responses": "Responses on each form",
+      "languages": "Languages",
+      "templates": "Template repository",
+      "lists": "Custom lists",
+      "themes": "Themes and landing pages",
+      "versions": "Version history",
+      "folders": "Workspace and folders",
+      "fillLater": "Fill in later (continue where you stopped)",
+      "analytics": "Advanced analytics",
+      "visits": "Visits and responses analytics",
+      "ai": "AI assistant",
+      "db": "Bring your database: {name}",
+      "explorer": "Database explorer",
+      "query": "Live Query editor",
+      "destinations": "Data destinations",
+      "api": "API service, endpoints, tokens and access rules",
+      "webhooks": "Webhooks",
+      "apiDocs": "API documentation",
+      "branding": "Branding",
+      "subdomain": "Formalie subdomain",
+      "customDomain": "Custom domain",
+      "customEmail": "Own sending address and mail server",
+      "emailSignin": "Email and password",
+      "socialSignin": "Google, Apple, Microsoft, Facebook",
+      "sso": "Single sign-on (Okta and others)",
+      "helpCentre": "Help centre and assistant",
+      "prioritySupport": "Priority email support",
+      "dedicatedSupport": "Dedicated account team",
+      "securityReview": "Security and compliance review"
+    },
+    "status": {
+      "active": "Active",
+      "past_due": "Payment due",
+      "grace": "Grace period",
+      "cancelled": "Cancelled",
+      "expired": "Ended",
+      "ending": "Ending"
+    },
+    "renewsOn": "Renews on {date} for {amount}.",
+    "endsOn": "Ends on {date}, then moves to Starter.",
+    "noRenewal": "Paid until {date}. Automatic renewal is off.",
+    "cancelTitle": "Cancel {plan}?",
+    "cancelDesc": "You keep everything until {date}. Then the workspace moves to Starter and its limits apply.",
+    "cancelConfirm": "Cancel at period end",
+    "cancelled": "Your plan ends on {date}",
+    "resumed": "Your plan will renew as usual",
+    "pastDueTitle": "We couldn't take the payment",
+    "pastDueDesc": "Everything keeps working until {date}. Add a card to keep your plan.",
+    "expiredTitle": "Your paid plan has ended",
+    "expiredDesc": "The workspace is on Starter now. Choose a plan to get everything back.",
+    "scheduledTitle": "{plan} ({period}) starts on {date}",
+    "dropScheduled": "Keep the current plan",
+    "scheduleDropped": "The change was called off",
+    "noCardTitle": "No card for the renewal",
+    "noCardDesc": "Add a card before {date}, or the plan goes into a short grace period and then ends.",
+    "block": {
+      "usage": "Usage",
+      "usageHint": "What the workspace uses against the plan's limits.",
+      "payment": "Payment method",
+      "paymentHint": "The card renewals are charged to.",
+      "renewal": "Renewal and reminders",
+      "renewalHint": "Renew automatically and get reminded before anything is charged.",
+      "invoices": "Invoices",
+      "invoicesHint": "Every payment, with its period and status."
+    },
+    "usage": {
+      "forms": "Forms",
+      "responses": "Responses on your busiest form",
+      "ai": "AI credits",
+      "busiest": "Busiest form: {form}",
+      "thisMonth": "This month",
+      "databases": "Databases you may connect",
+      "upgradeFor": "on a higher plan"
+    },
+    "card": {
+      "expires": "Expires {date}",
+      "expiringSoon": "expiring soon",
+      "none": "No card on file. Paid plans need one for renewals.",
+      "replace": "Replace",
+      "remove": "Remove card",
+      "removeTitle": "Remove this card?",
+      "removeDesc": "You can add a card again at any time.",
+      "removeRenewal": "Your plan renews on {date}. Without a card, add a new one before then or the renewal can't be charged.",
+      "removed": "Card removed",
+      "secure": "Card details are kept by our payment provider, Payoneer. Formalie never sees or stores your card number."
+    },
+    "renewal": {
+      "auto": "Renew automatically",
+      "onHint": "Your plan renews on {date} and the card on file is charged.",
+      "offHint": "Your plan ends on {date} unless you renew it.",
+      "freeHint": "Starter is free and never needs renewing.",
+      "offTitle": "Turn off automatic renewal?",
+      "offDesc": "Your plan stays until {date}, then the workspace moves to Starter.",
+      "offConfirm": "Turn off",
+      "reminders": "Reminders",
+      "before": "Before renewal",
+      "days": "{n} day before | {n} days before",
+      "failed": "When a payment fails",
+      "expiring": "When the card is about to expire",
+      "alsoTo": "Also send to",
+      "alsoToHelp": "The workspace owner always gets them. Add up to 5 more addresses, such as your finance team.",
+      "emailPlaceholder": "finance{'@'}example.com, then Enter",
+      "saved": "Saved"
+    },
+    "invoice": {
+      "number": "Invoice",
+      "date": "Date",
+      "plan": "Plan and period",
+      "amount": "Amount",
+      "status": "Status",
+      "more": "Show more",
+      "none": "No invoices yet",
+      "noneDesc": "Invoices appear here after your first payment.",
+      "state": {
+        "paid": "Paid",
+        "open": "Open",
+        "failed": "Failed",
+        "refunded": "Refunded"
+      }
+    },
+    "changeTitle": "Move to {plan}",
+    "changeDesc": "Check what changes before you confirm.",
+    "starts": "Starts",
+    "startsNow": "Right away",
+    "startsOn": "On {date}",
+    "price": "Price",
+    "credit": "Credit for unused time",
+    "dueNow": "Due now",
+    "nowNote": "The new plan starts at once. What's left of your current period is taken off the first payment.",
+    "laterNote": "You keep your current plan until the end of the period you paid for. The new one starts then.",
+    "cancelNote": "You keep your current plan until the end of the period you paid for. Then the workspace moves to Starter.",
+    "overTitle": "Some things go over the new plan's limits",
+    "overNote": "Nothing is deleted. Forms and responses over the limits stay as they are, but you can't add more. Features the new plan doesn't include switch off, and come back if you upgrade again.",
+    "over": {
+      "forms": "Forms: {current} now, {allowed} allowed",
+      "responses": "Responses on a form: {current} now, {allowed} allowed",
+      "databases": "Databases not included: {current}",
+      "customDomain": "Your custom domain stops being served",
+      "customEmail": "Emails go back to Formalie's address",
+      "sso": "Single sign-on is turned off",
+      "socialSignin": "Google, Apple, Microsoft and Facebook sign-in are turned off"
+    },
+    "confirmChange": "Confirm change",
+    "continuePay": "Continue to payment",
+    "changed": "You're on {plan} now",
+    "changeScheduled": "{plan} starts on {date}",
+    "paid": "Payment received. You're on {plan} now",
+    "cardSaved": "Card saved",
+    "checkout": {
+      "title": "Payment",
+      "cardTitle": "Add a card",
+      "desc": "Secure checkout by Payoneer.",
+      "cardDesc": "Save a card for renewals. Nothing is charged now.",
+      "testNote": "Test mode: Payoneer isn't connected yet, so no real card is used. Pick a test card to try the payment.",
+      "testCard": "Test card",
+      "pay": "Pay {amount}",
+      "saveCard": "Save card",
+      "decline": "Try a declined payment",
+      "secure": "You type your card details on Payoneer's secure page. Formalie only keeps the card brand, its last four digits and its expiry date."
+    },
+    "enquiry": {
+      "title": "Enterprise enquiry",
+      "desc": "Tell us what you need. The Formalie team replies within one business day.",
+      "you": "About you",
+      "company": "Company",
+      "name": "Your name",
+      "workEmail": "Work email",
+      "phone": "Phone",
+      "role": "Job title",
+      "country": "Country",
+      "scale": "Scale",
+      "sizeLabel": "Company size",
+      "size": {
+        "1-50": "1 to 50 people",
+        "51-200": "51 to 200 people",
+        "201-1000": "201 to 1,000 people",
+        "1001-5000": "1,001 to 5,000 people",
+        "5000+": "More than 5,000 people"
+      },
+      "volumeLabel": "Responses a month",
+      "volume": {
+        "under_100k": "Under 100,000",
+        "100k_1m": "100,000 to 1 million",
+        "1m_10m": "1 to 10 million",
+        "over_10m": "More than 10 million"
+      },
+      "startLabel": "When would you start?",
+      "startWhen": {
+        "now": "Right away",
+        "quarter": "This quarter",
+        "later": "Later this year"
+      },
+      "needsLabel": "What do you need?",
+      "need": {
+        "sso": "Single sign-on",
+        "dedicated": "Dedicated infrastructure",
+        "residency": "Data in a specific region",
+        "sla": "Uptime agreement (SLA)",
+        "security": "Security and compliance review",
+        "invoice": "Pay by invoice",
+        "onboarding": "Onboarding and training",
+        "custom_limits": "Custom limits"
+      },
+      "residency": "Where should the data stay?",
+      "residencyHelp": "A country or region, for example the European Union.",
+      "message": "Anything else we should know?",
+      "messageHelp": "Your use, formats, integrations or security requirements.",
+      "messageShort": "Tell us a little more (at least 10 characters).",
+      "required": "Please fill this in.",
+      "email": "Enter a valid email address.",
+      "privacy": "We use these details only to answer your enquiry.",
+      "send": "Send enquiry",
+      "sentTitle": "Thank you, we've got it",
+      "sentDesc": "The Formalie team will reply to {email} within one business day.",
+      "close": "Close"
+    },
+    "limitAdmin": "A higher plan includes more. Compare the plans to upgrade.",
+    "limitMember": "Ask a workspace admin about a higher plan.",
+    "seePlans": "See plans",
+    "locked": "On {plan} and up",
+    "lockedHint": "Your plan doesn't include this. Upgrade to use it."
   }
 }

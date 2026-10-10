@@ -171,6 +171,9 @@ export const ERROR_CODES = {
   'FRM-ORG-1002': { status: 409, message: 'Forms still use it. Archive it, or merge it into another one.' },
   'FRM-PLAN-1001': { status: 402, message: 'Your plan limit has been reached. Upgrade to continue.' },
   'FRM-PLAN-1002': { status: 402, message: 'This feature is not included in your plan.' },
+  'FRM-BILL-1001': { status: 402, message: "The payment didn't go through." },
+  'FRM-BILL-1002': { status: 410, message: 'This checkout has expired.' },
+  'FRM-BILL-1003': { status: 409, message: 'We already have your enquiry.' },
   'FRM-SET-1001': { status: 409, message: 'Verify or test this first.' },
 } as const satisfies Record<string, ErrorCodeDefinition>
 

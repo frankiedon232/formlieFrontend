@@ -655,7 +655,10 @@
     "FRM-AI-1004": "此草稿已被使用或已搁置。请再次向助手提问。",
     "FRM-AUTH-1019": "此邮箱地址使用贵组织的单点登录。请使用上方的按钮。",
     "FRM-AUTH-1020": "开启前请先测试单点登录。",
-    "FRM-SET-1001": "请先验证或测试，然后才能使用。"
+    "FRM-SET-1001": "请先验证或测试，然后才能使用。",
+    "FRM-BILL-1001": "付款未成功。请换一张卡试试，或联系您的银行。",
+    "FRM-BILL-1002": "此次结账已过期。请重新开始。",
+    "FRM-BILL-1003": "我们已收到您的咨询，会尽快与您联系。"
   },
   "errorUi": {
     "reference": "参考编号：{id}",
@@ -7074,7 +7077,8 @@
       "organisation": "组织",
       "access": "登录与安全",
       "communication": "通知与邮件",
-      "data": "数据与表单"
+      "data": "数据与表单",
+      "billing": "订阅"
     },
     "nav": {
       "overview": "概览",
@@ -7093,7 +7097,9 @@
       "privacy": "隐私与数据",
       "formDefaults": "表单默认值",
       "themes": "主题",
-      "landingPages": "落地页"
+      "landingPages": "落地页",
+      "subscription": "订阅",
+      "plans": "套餐"
     },
     "desc": {
       "overview": "关于工作区的一切，集中在一处。",
@@ -7112,7 +7118,9 @@
       "privacy": "回复保留多久、同意声明文本和数据请求。",
       "formDefaults": "新表单的初始设置和嵌入默认值。",
       "themes": "工作区可使用的表单设计。",
-      "landingPages": "表单公开页面的页面设计。"
+      "landingPages": "表单公开页面的页面设计。",
+      "subscription": "您的套餐、用量、银行卡、续订、提醒和发票。",
+      "plans": "比较各套餐，并按月、按季或按年更换您的套餐。"
     },
     "status": {
       "complete": "已完成",
@@ -9115,5 +9123,332 @@
       "of": "第 {n} 张，共 {total} 张",
       "hint": "双击或按 + 和 - 缩放。拖动可移动。按 Esc 关闭。"
     }
+  },
+  "billing": {
+    "plan": {
+      "starter": {
+        "name": "Starter",
+        "bestFor": "适合小规模收集数据或试用 API 的个人、学生和爱好者。",
+        "everything": "所有核心功能，想用多久就免费用多久。"
+      },
+      "professional": {
+        "name": "Professional",
+        "bestFor": "适合在成长过程中依赖定期自动数据和近乎实时监控的初创公司和小团队。",
+        "everything": "包含 Starter 的全部功能，另有自有域名、发件地址和公司登录。"
+      },
+      "business": {
+        "name": "Business",
+        "bestFor": "适合数据量大、需要高级筛选和快速提取的成熟企业。没有限制。",
+        "everything": "包含 Professional 的全部功能，表单、回复和数据库均无限制。"
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "bestFor": "适合有特定数据需求、严格安全与合规要求或需要专属基础设施的大型组织。",
+        "everything": "包含 Business 的全部功能，按您的组织量身定制，并配有专属团队。"
+      }
+    },
+    "periodName": {
+      "monthly": "按月",
+      "quarterly": "按季",
+      "annually": "按年"
+    },
+    "periodLabel": "计费周期",
+    "billed": {
+      "quarterly": "{total}，每 3 个月计费一次",
+      "annually": "{total}，每年计费一次"
+    },
+    "billedMonthly": "每月计费",
+    "pricePer": {
+      "monthly": "每月 {amount}",
+      "quarterly": "每 3 个月 {amount}",
+      "annually": "每年 {amount}"
+    },
+    "perMonth": "/ 月",
+    "save": "节省 {amount}",
+    "free": "免费",
+    "freeHint": "无需银行卡",
+    "freeForever": "免费，没有到期日。",
+    "custom": "定制",
+    "customHint": "按您的组织定价",
+    "customAmount": "定制",
+    "popular": "最受欢迎",
+    "yours": "您的套餐",
+    "currentPlan": "当前套餐",
+    "scheduledShort": "下一周期开始",
+    "upgrade": "升级",
+    "downgrade": "降级",
+    "switchPeriod": "切换到此周期",
+    "contactUs": "联系我们",
+    "unlimited": "无限制",
+    "upTo": "最多 {n}",
+    "credits": "每月 {n} 点数",
+    "included": "已包含",
+    "notIncluded": "未包含",
+    "pricesNote": "价格以美元计，不含税。按季付费可省 10%，按年付费可省 20%。",
+    "comparePlans": "比较套餐",
+    "changePlan": "更换套餐",
+    "cancelPlan": "取消套餐",
+    "keepPlan": "保留我的套餐",
+    "addCard": "添加银行卡",
+    "enterpriseTitle": "需要更多，或有特殊要求？",
+    "enterpriseDesc": "请介绍一下您的组织，我们会准备 Enterprise 方案：专属基础设施、数据驻留、安全评审和定制限额。",
+    "fact": {
+      "forms": "{n} 个表单 | {n} 个表单",
+      "formsUnlimited": "无限表单",
+      "responses": "每个表单 {n} 条回复",
+      "responsesUnlimited": "无限回复",
+      "databases": "使用您自己的数据库：{list}",
+      "databasesAll": "使用任意数据库：MySQL、PostgreSQL、MariaDB、SQL Server、Oracle",
+      "signinEmail": "使用邮箱和密码登录",
+      "signinAll": "Google、Apple、Microsoft、Facebook 和单点登录（Okta 等）",
+      "subdomain": "您自己的 Formalie 子域名",
+      "domain": "一个自定义域名",
+      "domains": "自定义域名",
+      "email": "使用您自己的地址或邮件服务器发送邮件",
+      "emailFormalie": "使用 Formalie 的地址发送邮件",
+      "ai": "AI 助手：每月 {n} 点数",
+      "aiCustom": "AI 助手：按您的需要提供点数"
+    },
+    "db": {
+      "mysql": "MySQL",
+      "postgresql": "PostgreSQL",
+      "mariadb": "MariaDB",
+      "sqlserver": "SQL Server",
+      "oracle": "Oracle"
+    },
+    "compare": {
+      "heading": "比较所有功能",
+      "title": "功能",
+      "group": {
+        "forms": "表单和回复",
+        "insight": "洞察",
+        "data": "您的数据",
+        "api": "API 服务",
+        "brand": "品牌和地址",
+        "access": "登录",
+        "support": "支持"
+      },
+      "forms": "表单",
+      "responses": "每个表单的回复",
+      "languages": "语言",
+      "templates": "模板库",
+      "lists": "自定义列表",
+      "themes": "主题和落地页",
+      "versions": "版本历史",
+      "folders": "工作区和文件夹",
+      "fillLater": "稍后填写（从停下的地方继续）",
+      "analytics": "高级分析",
+      "visits": "访问和回复分析",
+      "ai": "AI 助手",
+      "db": "使用您自己的数据库：{name}",
+      "explorer": "数据库浏览器",
+      "query": "实时查询编辑器",
+      "destinations": "数据目的地",
+      "api": "API 服务、端点、令牌和访问规则",
+      "webhooks": "Webhook",
+      "apiDocs": "API 文档",
+      "branding": "品牌定制",
+      "subdomain": "Formalie 子域名",
+      "customDomain": "自定义域名",
+      "customEmail": "自有发件地址和邮件服务器",
+      "emailSignin": "邮箱和密码",
+      "socialSignin": "Google、Apple、Microsoft、Facebook",
+      "sso": "单点登录（Okta 等）",
+      "helpCentre": "帮助中心和助手",
+      "prioritySupport": "优先邮件支持",
+      "dedicatedSupport": "专属客户团队",
+      "securityReview": "安全与合规评审"
+    },
+    "status": {
+      "active": "生效中",
+      "past_due": "待付款",
+      "grace": "宽限期",
+      "cancelled": "已取消",
+      "expired": "已结束",
+      "ending": "即将结束"
+    },
+    "renewsOn": "将于 {date} 续订，金额 {amount}。",
+    "endsOn": "将于 {date} 结束，之后转为 Starter。",
+    "noRenewal": "已付款至 {date}。自动续订已关闭。",
+    "cancelTitle": "取消 {plan}？",
+    "cancelDesc": "在 {date} 之前，一切照旧。之后工作区将转为 Starter，并适用其限额。",
+    "cancelConfirm": "在周期结束时取消",
+    "cancelled": "您的套餐将于 {date} 结束",
+    "resumed": "您的套餐将照常续订",
+    "pastDueTitle": "我们未能扣款",
+    "pastDueDesc": "在 {date} 之前一切照常运行。请添加银行卡以保留您的套餐。",
+    "expiredTitle": "您的付费套餐已结束",
+    "expiredDesc": "工作区现在使用 Starter。选择一个套餐即可恢复全部功能。",
+    "scheduledTitle": "{plan}（{period}）将于 {date} 开始",
+    "dropScheduled": "保留当前套餐",
+    "scheduleDropped": "更改已取消",
+    "noCardTitle": "续订没有可用的银行卡",
+    "noCardDesc": "请在 {date} 前添加银行卡，否则套餐会进入短暂宽限期，然后结束。",
+    "block": {
+      "usage": "用量",
+      "usageHint": "工作区相对于套餐限额的使用情况。",
+      "payment": "付款方式",
+      "paymentHint": "续订费用将从这张卡扣除。",
+      "renewal": "续订和提醒",
+      "renewalHint": "自动续订，并在扣款前收到提醒。",
+      "invoices": "发票",
+      "invoicesHint": "每笔付款，含周期和状态。"
+    },
+    "usage": {
+      "forms": "表单",
+      "responses": "最活跃表单的回复",
+      "ai": "AI 点数",
+      "busiest": "最活跃的表单：{form}",
+      "thisMonth": "本月",
+      "databases": "您可以连接的数据库",
+      "upgradeFor": "更高套餐可用"
+    },
+    "card": {
+      "expires": "{date} 到期",
+      "expiringSoon": "即将到期",
+      "none": "没有已保存的银行卡。付费套餐需要银行卡来续订。",
+      "replace": "更换",
+      "remove": "移除银行卡",
+      "removeTitle": "移除这张银行卡？",
+      "removeDesc": "您可以随时重新添加银行卡。",
+      "removeRenewal": "您的套餐将于 {date} 续订。如果没有银行卡，请在此之前添加新卡，否则无法扣除续订费用。",
+      "removed": "银行卡已移除",
+      "secure": "银行卡信息由我们的支付服务商 Payoneer 保管。Formalie 不会查看或存储您的卡号。"
+    },
+    "renewal": {
+      "auto": "自动续订",
+      "onHint": "您的套餐将于 {date} 续订，并从已保存的银行卡扣款。",
+      "offHint": "如果不续订，您的套餐将于 {date} 结束。",
+      "freeHint": "Starter 免费，无需续订。",
+      "offTitle": "关闭自动续订？",
+      "offDesc": "您的套餐保留到 {date}，之后工作区将转为 Starter。",
+      "offConfirm": "关闭",
+      "reminders": "提醒",
+      "before": "续订前",
+      "days": "提前 {n} 天 | 提前 {n} 天",
+      "failed": "付款失败时",
+      "expiring": "银行卡即将到期时",
+      "alsoTo": "同时发送给",
+      "alsoToHelp": "工作区所有者始终会收到。最多可再添加 5 个地址，例如财务团队的地址。",
+      "emailPlaceholder": "输入 finance{'@'}example.com，然后按 Enter",
+      "saved": "已保存"
+    },
+    "invoice": {
+      "number": "发票",
+      "date": "日期",
+      "plan": "套餐和周期",
+      "amount": "金额",
+      "status": "状态",
+      "more": "显示更多",
+      "none": "还没有发票",
+      "noneDesc": "首次付款后，发票会显示在这里。",
+      "state": {
+        "paid": "已付款",
+        "open": "未结清",
+        "failed": "失败",
+        "refunded": "已退款"
+      }
+    },
+    "changeTitle": "切换到 {plan}",
+    "changeDesc": "确认前，请查看有哪些变化。",
+    "starts": "开始时间",
+    "startsNow": "立即",
+    "startsOn": "{date}",
+    "price": "价格",
+    "credit": "未使用时间的抵扣",
+    "dueNow": "现需支付",
+    "nowNote": "新套餐会立即开始。当前周期的剩余部分将从首次付款中扣除。",
+    "laterNote": "在已付款周期结束前，您继续使用当前套餐。新套餐届时开始。",
+    "cancelNote": "在已付款周期结束前，您继续使用当前套餐。之后工作区将转为 Starter。",
+    "overTitle": "有些内容超出了新套餐的限额",
+    "overNote": "不会删除任何内容。超出限额的表单和回复会保持原样，但无法再添加。新套餐未包含的功能会被关闭，再次升级后会恢复。",
+    "over": {
+      "forms": "表单：当前 {current}，允许 {allowed}",
+      "responses": "每个表单的回复：当前 {current}，允许 {allowed}",
+      "databases": "不包含的数据库：{current}",
+      "customDomain": "您的自定义域名将不再提供服务",
+      "customEmail": "邮件将改回从 Formalie 的地址发出",
+      "sso": "单点登录将被关闭",
+      "socialSignin": "使用 Google、Apple、Microsoft 和 Facebook 登录将被关闭"
+    },
+    "confirmChange": "确认更改",
+    "continuePay": "继续付款",
+    "changed": "您现在使用 {plan}",
+    "changeScheduled": "{plan} 将于 {date} 开始",
+    "paid": "已收到付款。您现在使用 {plan}",
+    "cardSaved": "银行卡已保存",
+    "checkout": {
+      "title": "付款",
+      "cardTitle": "添加银行卡",
+      "desc": "由 Payoneer 提供的安全结账。",
+      "cardDesc": "保存一张银行卡用于续订。现在不会扣款。",
+      "testNote": "测试模式：Payoneer 尚未连接，因此不使用真实银行卡。请选择一张测试卡来试用付款。",
+      "testCard": "测试卡",
+      "pay": "支付 {amount}",
+      "saveCard": "保存银行卡",
+      "decline": "试用被拒绝的付款",
+      "secure": "您在 Payoneer 的安全页面输入银行卡信息。Formalie 只保留卡的品牌、后四位数字和有效期。"
+    },
+    "enquiry": {
+      "title": "Enterprise 咨询",
+      "desc": "请告诉我们您的需求。Formalie 团队会在一个工作日内回复。",
+      "you": "关于您",
+      "company": "公司",
+      "name": "您的姓名",
+      "workEmail": "工作邮箱",
+      "phone": "电话",
+      "role": "职位",
+      "country": "国家或地区",
+      "scale": "规模",
+      "sizeLabel": "公司规模",
+      "size": {
+        "1-50": "1 至 50 人",
+        "51-200": "51 至 200 人",
+        "201-1000": "201 至 1000 人",
+        "1001-5000": "1001 至 5000 人",
+        "5000+": "5000 人以上"
+      },
+      "volumeLabel": "每月回复数",
+      "volume": {
+        "under_100k": "少于 100,000",
+        "100k_1m": "100,000 至 100 万",
+        "1m_10m": "100 万至 1000 万",
+        "over_10m": "超过 1000 万"
+      },
+      "startLabel": "您打算何时开始？",
+      "startWhen": {
+        "now": "立即",
+        "quarter": "本季度",
+        "later": "今年晚些时候"
+      },
+      "needsLabel": "您需要什么？",
+      "need": {
+        "sso": "单点登录",
+        "dedicated": "专属基础设施",
+        "residency": "数据存放在特定地区",
+        "sla": "可用性协议 (SLA)",
+        "security": "安全与合规评审",
+        "invoice": "按发票付款",
+        "onboarding": "入门引导和培训",
+        "custom_limits": "定制限额"
+      },
+      "residency": "数据应存放在哪里？",
+      "residencyHelp": "国家或地区，例如欧盟。",
+      "message": "还有什么我们需要了解的吗？",
+      "messageHelp": "您的使用场景、格式、集成或安全要求。",
+      "messageShort": "请再多告诉我们一些（至少 10 个字符）。",
+      "required": "请填写此项。",
+      "email": "请输入有效的邮箱地址。",
+      "privacy": "我们仅使用这些信息来回复您的咨询。",
+      "send": "发送咨询",
+      "sentTitle": "谢谢，我们已收到",
+      "sentDesc": "Formalie 团队将在一个工作日内回复到 {email}。",
+      "close": "关闭"
+    },
+    "limitAdmin": "更高的套餐包含更多功能。比较各套餐即可升级。",
+    "limitMember": "请向工作区管理员咨询更高的套餐。",
+    "seePlans": "查看套餐",
+    "locked": "{plan} 及以上",
+    "lockedHint": "您的套餐不包含此功能。升级后即可使用。"
   }
 }

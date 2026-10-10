@@ -19,6 +19,7 @@
  * be tried from Postman (the real service takes the connection's address and GeoIP).
  * Test tokens never touch real responses: writes are checked and answered, nothing is stored.
  */
+import { responsesAllowed } from './core/plan'
 import { notifyResponse } from './data/notificationStore'
 import { emailResponse } from './data/responseEmails'
 import { createHash, timingSafeEqual } from 'node:crypto'
@@ -417,6 +418,8 @@ async function handle(event: H3Event, path: string, context: CallContext) {
       if (required.length) throw new PublicError('FRM-RESP-1001', required.map(field => ({ field: field.key, message: 'required' })))
       const { issues, answers } = checkSubmission(schema, body)
       if (issues.length) throw new PublicError('FRM-RESP-1001', issues.map(issue => ({ field: issue.key, message: issue.code })))
+      // The form's own response limit, or the plan's responses on each form (Subscription, F24)
+      if (!test && ((form.response_limit != null && form.responses_count >= form.response_limit) || !responsesAllowed(tenant, form.responses_count))) throw new PublicError('FRM-FORM-1003')
       // A retry within 24 hours: the same key and body answer with the first record; the same key with another
       // body is refused, so a key reused by mistake never swallows a new record silently (owner, 2026-10-06)
       const store = apiOf(tenant)

@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-10 (Settings: custom domain back, own sending address and mail server, single sign-on with Okta and others; F19 AI assistant and F25 Help centre done, both waiting for the owner's review; next: F24 Payments & subscriptions with dLocal (Stripe possible) once the sandbox account is ready, then F21 Dashboard)
+**Last updated:** 2026-10-10 (F24 subscriptions M1 to M4 done: plans with Monthly / Quarterly / Annually, Settings → Subscription and Plans, card, renewal, reminders, invoices, plan limits, Enterprise enquiry; waiting for the owner's Payoneer methods and final prices; then form payments, the website project files and F21 Dashboard)
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend · ➖ dropped or merged
 
@@ -34,14 +34,14 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F21   | Dashboard                                         | ⬜     | 0%                                        |
 | F22   | Roles & access                                    | ✅     | 100% (owner-tested 2026-10-10)            |
 | F23   | Platform admin (super admin, Formalie team)       | ➖     | separate projects (formaliePlatformFront / Back) |
-| F24   | Payments & subscriptions                          | ⬜     | 0%                                        |
+| F24   | Payments & subscriptions                          | 🟡     | 60% (subscriptions M1 to M4 ✅; Payoneer and form payments next) |
 | F25   | Help centre (FAQs, knowledge base, videos)        | ✅     | 100% (waiting for review)                 |
 
 **Order of what is left (owner, 2026-10-10; F22 done with F16 on 2026-10-09):**
 
 1. ✅ **F19 AI assistant** (waiting for the owner's review)
 2. ✅ **F25 Help centre** (brought forward by the owner, 2026-10-10, while the payment processor accounts are set up; its content is posted from the platform admin; waiting for review)
-3. **F24 Payments & subscriptions** (form payments and plans together; processor: dLocal most likely, Stripe possible, sandbox accounts first, owner 2026-10-10; plan features to gate include the custom domain, own sending address / mail server and single sign-on)
+3. **F24 Payments & subscriptions** (in progress; form payments and plans together; processor: Payoneer, owner 2026-10-10; plan features to gate include the custom domain, own sending address / mail server and single sign-on)
 4. **F21 Dashboard** (after F24, owner 2026-10-10, so it can show payments and plans too)
 5. ⏸ **Switching to the real backend** (FastAPI, `formalieBackend`): the mock is replaced, API-CONTRACT is the spec
 6. **F23 Platform admin (super admin)**: a **separate project** with its own front end, backend and database that also reaches Formalie's database (owner, 2026-10-10). Its full plan lives in its own two projects, formaliePlatformFront (Nuxt) and formaliePlatformBack (FastAPI), not in this project.
@@ -1036,18 +1036,34 @@ The owner's super admin portal is where Formalie's default data is made and kept
 
 ---
 
-## F24, Payments & subscriptions ⬜
+## F24, Payments & subscriptions 🟡
 
-Owner, 2026-10-08: payments come after the rest of the platform, form payments and subscriptions together. **Processor (owner 2026-10-10): dLocal most likely (global payments), Stripe possible; both have test sandboxes (https://sandbox.dlocal.com/); the owner sets up the accounts while F25 is built.** By then the owner will have chosen the payment processor; the mock follows that processor's real interface so the switch to the backend only connects it. Card details never touch Formalie (the processor's checkout or hosted fields); we keep status, reference and amount.
+Owner, 2026-10-08: payments come after the rest of the platform, form payments and subscriptions together. **Processor (owner 2026-10-10, final): Payoneer.** The owner is opening the account and will bring the methods to use; until then the mock simulates the processor's hosted checkout. Card details never touch Formalie (the processor's checkout or hosted fields); we keep status, reference, brand, last four digits and amount.
+
+**Plans (owner 2026-10-10):** Starter (free), Professional, Business, Enterprise (custom, contact us). Monthly / Quarterly / Annually with a toggle that changes every price. Prices are provisional until the owner sets them (Professional 19, Business 49 USD a month; quarterly 10% off, annually 20% off) and come from the platform admin later.
+
+| | Starter (free) | Professional | Business | Enterprise |
+|---|---|---|---|---|
+| Forms | 5 | 20 | Unlimited | Unlimited |
+| Responses per form | 10,000 | 200,000 | Unlimited | Unlimited |
+| Bring your database | MySQL | MySQL, PostgreSQL, MariaDB | All five | All five |
+| Sign-in | Email and password | + Google, Apple, Microsoft, Facebook, SSO (Okta …) | Same | Same |
+| Custom domain | No | 1 | Yes | Yes |
+| Own sending address / mail server | No | Yes | Yes | Yes |
+| Everything else (analytics, templates, lists, themes and pages, explorer, Query editor, destinations, API service, webhooks, docs, AI assistant, branding, subdomain, 20 languages, versions, folders, fill later) | Yes | Yes | Yes | Yes |
+
+**Milestones:** **M1** plans catalogue, Plans page with the period toggle and comparison, Settings → Subscription (current plan, usage, automatic activation of the plan the workspace holds) · **M2** payment method (add through the processor, remove), automatic renewal, reminders (on by default), invoices, change plan / cancel at period end, grace period · **M3** plan limits everywhere (forms, responses per form, databases, sign-in methods, domain, email, SSO) with upgrade prompts (FRM-PLAN-1001 / 1002) · **M4** Enterprise enquiry (a form inside the app, sent to the Formalie team, seen in the platform admin) · **M5** Payoneer methods when the owner has them, 20 languages, phase checks · **After F24:** generate the project files for the Formalie website (pricing and plans, sign-up with checkout), like the platform admin folder, for the owner to take to the website project.
 
 ### Plans and subscriptions
 
-- ⬜ Plans and prices (monthly / yearly, currencies), limits per plan (forms, responses per month, seats, data sources)
-- ⬜ Sign-up from the website with checkout; the workspace is activated when the payment is confirmed
-- ⬜ Billing in the portal: current plan, usage against limits, change plan, payment method, invoices and receipts
-- ⬜ Renewals: next billing date, automatic renewal, failed payment retries and reminders, expiry with a grace period, then read-only until renewed
-- ⬜ Plan-limit messages wherever a limit is hit (FRM-PLAN-1001 / 1002)
-- ⬜ Platform admin (F23) sees and changes a workspace's plan
+- ✅ **M1** Plans and prices (monthly / quarterly / annually), limits per plan, Settings → Plans: four plan cards with a period switch that changes every price (per month, the period's total, the saving) and every feature compared
+- ✅ **M1** Settings → Subscription: current plan, status, next billing date, usage against limits (forms, busiest form's responses, AI credits, databases, plan-only features); every workspace holds a plan and it is active at once (new workspaces: Starter; the sample workspace: Business, yearly)
+- ✅ **M2** Payment method: add or replace through the processor's checkout (the mock's clearly marked test step until Payoneer is connected), remove the card; automatic renewal on / off; reminders on by default (7 and 1 days before renewal, failed payment, card expiring; up to 5 more addresses)
+- ✅ **M2** Change plan with a preview (upgrade now with unused time credited, downgrade at the end of the period, what goes over the new limits), cancel at period end and keep the plan again, call off a scheduled change, invoices, past due with 7 days' grace, then Starter
+- ⬜ Sign-up from the website with checkout; the workspace is activated when the payment is confirmed (website project)
+- ✅ **M3** Plan limits enforced (forms, restored forms, responses on each form for forms and the API, database types, sign-in methods, SSO, custom domain, own sending address, AI credits) with a clear message and See plans (FRM-PLAN-1001 / 1002); locked states with the plan that brings them in Settings → Sign-in, Address and domain, Emails and the new connection wizard
+- ✅ **M4** Enterprise: "Contact us" opens an enquiry form inside the app (company, contact, size, volume, needs, data residency, timing, message, prefilled); the Formalie team sees it in the platform admin and replies
+- ⬜ Platform admin (F23) sees and changes a workspace's plan, sets prices, reads enquiries
 
 ### Payments in forms (the Payment field, "soon" in the builder until then)
 
@@ -1313,6 +1329,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-10 | Re-order: F19 AI, F24 Payments, F25 Help centre, switch to the real backend, then F23 Platform admin as a separate project (own front end, backend and database, reaches Formalie's database; Google Analytics-like analytics, full management, help content, payments and manual subscription activation, its own staff roles); create the `SUPER_ADMIN_PLATFORM` folder with everything needed to build it | Order, F23 | ✅ folder ready, owner moves it out |
 | 2026-10-10 | Start F25 Help centre now, before F24, while the owner sets up a payment processor (dLocal most likely for global payments, Stripe possible; both have test sandboxes, e.g. https://sandbox.dlocal.com/) | Order, F24, F25 | 🟡 F25 in progress |
 | 2026-10-10 | Offer a custom domain and a custom email again, and single sign-on with Okta in sign-in (found while putting together the plans and prices): put them back in Settings | F14 Settings, F24 | ✅ done (domain restored, sending address and mail server, single sign-on) |
+| 2026-10-10 | Subscriptions: Starter (free), Professional, Business, Enterprise (contact us) with Monthly / Quarterly / Annually toggle; Settings → Subscription with automatic activation of the plan held, remove the card, automatic renewal, reminders by default; Enterprise enquiry form inside the app for the Formalie team (platform admin); processor Payoneer; afterwards generate the Formalie website project files | F24, website | 🟡 in progress |
 
 ---
 
@@ -1597,3 +1614,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-10 | F25 | Screenshots for all 46 help articles (light mode, phone width), captions in 20 languages, framed and narrow in the article and the assistant. Fixed while capturing: card grids overflowing sideways on phones (DataView, latest forms), the database explorer's Tables drawer overflowing, an empty count pill on the Templates header button on phones. |
 | 2026-10-10 | F14 | Owner request: Settings → Address and domain has the own domain again (DNS records, real check, forms on it); Settings → Emails has a Sending address (Formalie's, own address on a verified domain with SPF / DKIM / bounce / DMARC records, or own SMTP mail server with a connection test; From shows it); Settings → Sign-in has Single sign-on (Okta, Entra ID, Google Workspace, OneLogin, SAML, OIDC: copy values, paste the provider's, real test, turn on, domains, required, new accounts with a role) and the sign-in page shows "Continue with …". New codes FRM-AUTH-1019 / 1020, FRM-SET-1001. |
 | 2026-10-10 | F25 | Owner review: help screenshots retaken at desktop size, cropped to the part each article needs (not the whole app), watermarked (tiled Formalie mark plus a footer strip, in the pixels); a picture viewer (HelpLightbox) opens them over the page with close, zoom and drag, no right-click. Captured with headless Chrome signed in as a seeded test admin. |
+| 2026-10-10 | F24 | Subscriptions M1 to M4: plans catalogue (Starter, Professional, Business, Enterprise; sample prices in US dollars), Settings → Plans with the Monthly / Quarterly / Annually switch and full comparison, Settings → Subscription (current plan, usage, card through the processor's checkout, automatic renewal, reminders on by default, invoices), plan changes with a preview, cancel / keep, grace period, plan limits enforced with See plans and locked states, Enterprise enquiry form inside the app. Processor Payoneer (simulated until the owner brings its methods). New codes FRM-BILL-1001 to 1003. |

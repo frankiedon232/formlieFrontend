@@ -655,7 +655,10 @@
     "FRM-AI-1004": "Draf ini sudah digunakan atau disisihkan. Minta asisten lagi.",
     "FRM-AUTH-1019": "Alamat email ini masuk dengan single sign-on organisasi Anda. Gunakan tombol di atas.",
     "FRM-AUTH-1020": "Uji single sign-on sebelum mengaktifkannya.",
-    "FRM-SET-1001": "Verifikasi atau uji ini dulu, lalu Anda bisa menggunakannya."
+    "FRM-SET-1001": "Verifikasi atau uji ini dulu, lalu Anda bisa menggunakannya.",
+    "FRM-BILL-1001": "Pembayaran tidak berhasil. Coba kartu lain atau hubungi bank Anda.",
+    "FRM-BILL-1002": "Pembayaran ini sudah kedaluwarsa. Mulai lagi.",
+    "FRM-BILL-1003": "Kami sudah menerima pertanyaan Anda. Kami akan segera menghubungi Anda."
   },
   "errorUi": {
     "reference": "Referensi: {id}",
@@ -7074,7 +7077,8 @@
       "organisation": "Organisasi",
       "access": "Masuk dan keamanan",
       "communication": "Notifikasi dan email",
-      "data": "Data dan formulir"
+      "data": "Data dan formulir",
+      "billing": "Langganan"
     },
     "nav": {
       "overview": "Ringkasan",
@@ -7093,7 +7097,9 @@
       "privacy": "Privasi dan data",
       "formDefaults": "Bawaan formulir",
       "themes": "Tema",
-      "landingPages": "Halaman arahan"
+      "landingPages": "Halaman arahan",
+      "subscription": "Langganan",
+      "plans": "Paket"
     },
     "desc": {
       "overview": "Semua tentang ruang kerja Anda di satu tempat.",
@@ -7112,7 +7118,9 @@
       "privacy": "Berapa lama respons disimpan, teks persetujuan, dan permintaan data.",
       "formDefaults": "Pengaturan awal untuk formulir baru, dan bawaan penyematan.",
       "themes": "Desain formulir yang dapat dipakai ruang kerja Anda.",
-      "landingPages": "Desain halaman untuk halaman publik formulir Anda."
+      "landingPages": "Desain halaman untuk halaman publik formulir Anda.",
+      "subscription": "Paket Anda, penggunaan, kartu, perpanjangan, pengingat, dan faktur.",
+      "plans": "Bandingkan paket dan ubah paket Anda, bulanan, per tiga bulan, atau tahunan."
     },
     "status": {
       "complete": "Lengkap",
@@ -9115,5 +9123,332 @@
       "of": "{n} dari {total}",
       "hint": "Klik dua kali atau tekan + dan - untuk zoom. Seret untuk menggeser. Esc menutup."
     }
+  },
+  "billing": {
+    "plan": {
+      "starter": {
+        "name": "Starter",
+        "bestFor": "Untuk individu, pelajar, dan penghobi yang mengumpulkan data dalam skala kecil atau mencoba API.",
+        "everything": "Semua fitur inti, gratis selama Anda mau."
+      },
+      "professional": {
+        "name": "Professional",
+        "bestFor": "Untuk startup dan tim kecil yang mengandalkan data otomatis secara rutin dan pemantauan hampir real-time saat berkembang.",
+        "everything": "Semua yang ada di Starter, ditambah domain, alamat pengirim, dan masuk perusahaan sendiri."
+      },
+      "business": {
+        "name": "Business",
+        "bestFor": "Untuk perusahaan mapan dengan data masuk yang besar, penyaringan lanjutan, dan ekstraksi cepat. Tanpa batas.",
+        "everything": "Semua yang ada di Professional, tanpa batas untuk formulir, respons, atau basis data."
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "bestFor": "Untuk organisasi besar dengan kebutuhan data khusus, keamanan dan kepatuhan yang ketat, atau infrastruktur khusus.",
+        "everything": "Semua yang ada di Business, disesuaikan dengan organisasi Anda, dengan tim khusus."
+      }
+    },
+    "periodName": {
+      "monthly": "Bulanan",
+      "quarterly": "Per tiga bulan",
+      "annually": "Tahunan"
+    },
+    "periodLabel": "Periode penagihan",
+    "billed": {
+      "quarterly": "{total} ditagih setiap 3 bulan",
+      "annually": "{total} ditagih sekali setahun"
+    },
+    "billedMonthly": "Ditagih setiap bulan",
+    "pricePer": {
+      "monthly": "{amount} per bulan",
+      "quarterly": "{amount} setiap 3 bulan",
+      "annually": "{amount} per tahun"
+    },
+    "perMonth": "/ bulan",
+    "save": "Hemat {amount}",
+    "free": "Gratis",
+    "freeHint": "Tanpa kartu",
+    "freeForever": "Gratis, tanpa tanggal berakhir.",
+    "custom": "Khusus",
+    "customHint": "Harga disesuaikan dengan organisasi Anda",
+    "customAmount": "Khusus",
+    "popular": "Paling populer",
+    "yours": "Paket Anda",
+    "currentPlan": "Paket saat ini",
+    "scheduledShort": "Mulai periode berikutnya",
+    "upgrade": "Tingkatkan",
+    "downgrade": "Turunkan",
+    "switchPeriod": "Pindah ke periode ini",
+    "contactUs": "Hubungi kami",
+    "unlimited": "Tanpa batas",
+    "upTo": "Hingga {n}",
+    "credits": "{n} kredit per bulan",
+    "included": "Termasuk",
+    "notIncluded": "Tidak termasuk",
+    "pricesNote": "Harga dalam dolar AS, sebelum pajak. Per tiga bulan hemat 10%, tahunan hemat 20%.",
+    "comparePlans": "Bandingkan paket",
+    "changePlan": "Ubah paket",
+    "cancelPlan": "Batalkan paket",
+    "keepPlan": "Pertahankan paket saya",
+    "addCard": "Tambah kartu",
+    "enterpriseTitle": "Butuh lebih, atau sesuatu yang khusus?",
+    "enterpriseDesc": "Ceritakan tentang organisasi Anda dan kami akan menyiapkan penawaran Enterprise: infrastruktur khusus, residensi data, tinjauan keamanan, dan batas khusus.",
+    "fact": {
+      "forms": "{n} formulir | {n} formulir",
+      "formsUnlimited": "Formulir tanpa batas",
+      "responses": "{n} respons di setiap formulir",
+      "responsesUnlimited": "Respons tanpa batas",
+      "databases": "Gunakan basis data Anda: {list}",
+      "databasesAll": "Gunakan basis data apa pun: MySQL, PostgreSQL, MariaDB, SQL Server, Oracle",
+      "signinEmail": "Masuk dengan email dan kata sandi",
+      "signinAll": "Google, Apple, Microsoft, Facebook, dan single sign-on (Okta dan lainnya)",
+      "subdomain": "Subdomain Formalie Anda sendiri",
+      "domain": "Satu domain khusus",
+      "domains": "Domain khusus",
+      "email": "Email dari alamat atau server email Anda sendiri",
+      "emailFormalie": "Email dari alamat Formalie",
+      "ai": "Asisten AI: {n} kredit per bulan",
+      "aiCustom": "Asisten AI: kredit sesuai kebutuhan Anda"
+    },
+    "db": {
+      "mysql": "MySQL",
+      "postgresql": "PostgreSQL",
+      "mariadb": "MariaDB",
+      "sqlserver": "SQL Server",
+      "oracle": "Oracle"
+    },
+    "compare": {
+      "heading": "Bandingkan setiap fitur",
+      "title": "Fitur",
+      "group": {
+        "forms": "Formulir dan respons",
+        "insight": "Wawasan",
+        "data": "Data Anda",
+        "api": "Layanan API",
+        "brand": "Merek dan alamat",
+        "access": "Masuk",
+        "support": "Dukungan"
+      },
+      "forms": "Formulir",
+      "responses": "Respons di setiap formulir",
+      "languages": "Bahasa",
+      "templates": "Repositori templat",
+      "lists": "Daftar khusus",
+      "themes": "Tema dan halaman landing",
+      "versions": "Riwayat versi",
+      "folders": "Ruang kerja dan folder",
+      "fillLater": "Isi nanti (lanjutkan dari tempat Anda berhenti)",
+      "analytics": "Analitik lanjutan",
+      "visits": "Analitik kunjungan dan respons",
+      "ai": "Asisten AI",
+      "db": "Gunakan basis data Anda: {name}",
+      "explorer": "Penjelajah basis data",
+      "query": "Editor kueri langsung",
+      "destinations": "Tujuan data",
+      "api": "Layanan API, endpoint, token, dan aturan akses",
+      "webhooks": "Webhook",
+      "apiDocs": "Dokumentasi API",
+      "branding": "Branding",
+      "subdomain": "Subdomain Formalie",
+      "customDomain": "Domain khusus",
+      "customEmail": "Alamat pengirim dan server email sendiri",
+      "emailSignin": "Email dan kata sandi",
+      "socialSignin": "Google, Apple, Microsoft, Facebook",
+      "sso": "Single sign-on (Okta dan lainnya)",
+      "helpCentre": "Pusat bantuan dan asisten",
+      "prioritySupport": "Dukungan email prioritas",
+      "dedicatedSupport": "Tim akun khusus",
+      "securityReview": "Tinjauan keamanan dan kepatuhan"
+    },
+    "status": {
+      "active": "Aktif",
+      "past_due": "Pembayaran jatuh tempo",
+      "grace": "Masa tenggang",
+      "cancelled": "Dibatalkan",
+      "expired": "Berakhir",
+      "ending": "Segera berakhir"
+    },
+    "renewsOn": "Diperpanjang pada {date} seharga {amount}.",
+    "endsOn": "Berakhir pada {date}, lalu pindah ke Starter.",
+    "noRenewal": "Dibayar sampai {date}. Perpanjangan otomatis mati.",
+    "cancelTitle": "Batalkan {plan}?",
+    "cancelDesc": "Anda mempertahankan semuanya sampai {date}. Setelah itu ruang kerja pindah ke Starter dan batasnya berlaku.",
+    "cancelConfirm": "Batalkan di akhir periode",
+    "cancelled": "Paket Anda berakhir pada {date}",
+    "resumed": "Paket Anda akan diperpanjang seperti biasa",
+    "pastDueTitle": "Kami tidak dapat menarik pembayaran",
+    "pastDueDesc": "Semuanya tetap berjalan sampai {date}. Tambahkan kartu untuk mempertahankan paket Anda.",
+    "expiredTitle": "Paket berbayar Anda telah berakhir",
+    "expiredDesc": "Ruang kerja kini di Starter. Pilih paket untuk mendapatkan semuanya kembali.",
+    "scheduledTitle": "{plan} ({period}) dimulai pada {date}",
+    "dropScheduled": "Pertahankan paket saat ini",
+    "scheduleDropped": "Perubahan dibatalkan",
+    "noCardTitle": "Tidak ada kartu untuk perpanjangan",
+    "noCardDesc": "Tambahkan kartu sebelum {date}, atau paket masuk ke masa tenggang singkat lalu berakhir.",
+    "block": {
+      "usage": "Penggunaan",
+      "usageHint": "Apa yang dipakai ruang kerja dibandingkan batas paket.",
+      "payment": "Metode pembayaran",
+      "paymentHint": "Kartu yang ditagih untuk perpanjangan.",
+      "renewal": "Perpanjangan dan pengingat",
+      "renewalHint": "Perpanjang otomatis dan dapatkan pengingat sebelum ada penagihan.",
+      "invoices": "Faktur",
+      "invoicesHint": "Setiap pembayaran, dengan periode dan statusnya."
+    },
+    "usage": {
+      "forms": "Formulir",
+      "responses": "Respons di formulir tersibuk Anda",
+      "ai": "Kredit AI",
+      "busiest": "Formulir tersibuk: {form}",
+      "thisMonth": "Bulan ini",
+      "databases": "Basis data yang boleh Anda hubungkan",
+      "upgradeFor": "di paket yang lebih tinggi"
+    },
+    "card": {
+      "expires": "Kedaluwarsa {date}",
+      "expiringSoon": "segera kedaluwarsa",
+      "none": "Belum ada kartu tersimpan. Paket berbayar membutuhkannya untuk perpanjangan.",
+      "replace": "Ganti",
+      "remove": "Hapus kartu",
+      "removeTitle": "Hapus kartu ini?",
+      "removeDesc": "Anda dapat menambahkan kartu lagi kapan saja.",
+      "removeRenewal": "Paket Anda diperpanjang pada {date}. Tanpa kartu, tambahkan yang baru sebelum itu atau perpanjangan tidak dapat ditagih.",
+      "removed": "Kartu dihapus",
+      "secure": "Data kartu disimpan oleh penyedia pembayaran kami, Payoneer. Formalie tidak pernah melihat atau menyimpan nomor kartu Anda."
+    },
+    "renewal": {
+      "auto": "Perpanjang otomatis",
+      "onHint": "Paket Anda diperpanjang pada {date} dan kartu tersimpan ditagih.",
+      "offHint": "Paket Anda berakhir pada {date} kecuali Anda memperpanjangnya.",
+      "freeHint": "Starter gratis dan tidak perlu diperpanjang.",
+      "offTitle": "Matikan perpanjangan otomatis?",
+      "offDesc": "Paket Anda tetap sampai {date}, lalu ruang kerja pindah ke Starter.",
+      "offConfirm": "Matikan",
+      "reminders": "Pengingat",
+      "before": "Sebelum perpanjangan",
+      "days": "{n} hari sebelumnya | {n} hari sebelumnya",
+      "failed": "Saat pembayaran gagal",
+      "expiring": "Saat kartu akan kedaluwarsa",
+      "alsoTo": "Kirim juga ke",
+      "alsoToHelp": "Pemilik ruang kerja selalu menerimanya. Tambahkan hingga 5 alamat lagi, seperti tim keuangan Anda.",
+      "emailPlaceholder": "finance{'@'}example.com, lalu Enter",
+      "saved": "Disimpan"
+    },
+    "invoice": {
+      "number": "Faktur",
+      "date": "Tanggal",
+      "plan": "Paket dan periode",
+      "amount": "Jumlah",
+      "status": "Status",
+      "more": "Tampilkan lebih banyak",
+      "none": "Belum ada faktur",
+      "noneDesc": "Faktur muncul di sini setelah pembayaran pertama Anda.",
+      "state": {
+        "paid": "Lunas",
+        "open": "Terbuka",
+        "failed": "Gagal",
+        "refunded": "Dikembalikan"
+      }
+    },
+    "changeTitle": "Pindah ke {plan}",
+    "changeDesc": "Periksa apa yang berubah sebelum Anda konfirmasi.",
+    "starts": "Mulai",
+    "startsNow": "Segera",
+    "startsOn": "Pada {date}",
+    "price": "Harga",
+    "credit": "Kredit untuk waktu yang tidak terpakai",
+    "dueNow": "Dibayar sekarang",
+    "nowNote": "Paket baru dimulai segera. Sisa periode Anda saat ini dikurangkan dari pembayaran pertama.",
+    "laterNote": "Anda mempertahankan paket saat ini sampai akhir periode yang dibayar. Paket baru dimulai saat itu.",
+    "cancelNote": "Anda mempertahankan paket saat ini sampai akhir periode yang dibayar. Setelah itu ruang kerja pindah ke Starter.",
+    "overTitle": "Beberapa hal melebihi batas paket baru",
+    "overNote": "Tidak ada yang dihapus. Formulir dan respons yang melebihi batas tetap seperti adanya, tetapi Anda tidak dapat menambah lagi. Fitur yang tidak termasuk dalam paket baru dimatikan, dan kembali jika Anda meningkatkan lagi.",
+    "over": {
+      "forms": "Formulir: {current} sekarang, {allowed} diizinkan",
+      "responses": "Respons di satu formulir: {current} sekarang, {allowed} diizinkan",
+      "databases": "Basis data tidak termasuk: {current}",
+      "customDomain": "Domain khusus Anda tidak lagi dilayani",
+      "customEmail": "Email kembali dikirim dari alamat Formalie",
+      "sso": "Single sign-on dimatikan",
+      "socialSignin": "Masuk dengan Google, Apple, Microsoft, dan Facebook dimatikan"
+    },
+    "confirmChange": "Konfirmasi perubahan",
+    "continuePay": "Lanjut ke pembayaran",
+    "changed": "Anda sekarang di {plan}",
+    "changeScheduled": "{plan} dimulai pada {date}",
+    "paid": "Pembayaran diterima. Anda sekarang di {plan}",
+    "cardSaved": "Kartu disimpan",
+    "checkout": {
+      "title": "Pembayaran",
+      "cardTitle": "Tambah kartu",
+      "desc": "Pembayaran aman oleh Payoneer.",
+      "cardDesc": "Simpan kartu untuk perpanjangan. Tidak ada yang ditagih sekarang.",
+      "testNote": "Mode uji: Payoneer belum terhubung, jadi tidak ada kartu asli yang dipakai. Pilih kartu uji untuk mencoba pembayaran.",
+      "testCard": "Kartu uji",
+      "pay": "Bayar {amount}",
+      "saveCard": "Simpan kartu",
+      "decline": "Coba pembayaran yang ditolak",
+      "secure": "Anda mengetik data kartu di halaman aman Payoneer. Formalie hanya menyimpan merek kartu, empat digit terakhir, dan tanggal kedaluwarsanya."
+    },
+    "enquiry": {
+      "title": "Pertanyaan Enterprise",
+      "desc": "Ceritakan apa yang Anda butuhkan. Tim Formalie membalas dalam satu hari kerja.",
+      "you": "Tentang Anda",
+      "company": "Perusahaan",
+      "name": "Nama Anda",
+      "workEmail": "Email kerja",
+      "phone": "Telepon",
+      "role": "Jabatan",
+      "country": "Negara",
+      "scale": "Skala",
+      "sizeLabel": "Ukuran perusahaan",
+      "size": {
+        "1-50": "1 sampai 50 orang",
+        "51-200": "51 sampai 200 orang",
+        "201-1000": "201 sampai 1.000 orang",
+        "1001-5000": "1.001 sampai 5.000 orang",
+        "5000+": "Lebih dari 5.000 orang"
+      },
+      "volumeLabel": "Respons per bulan",
+      "volume": {
+        "under_100k": "Di bawah 100.000",
+        "100k_1m": "100.000 sampai 1 juta",
+        "1m_10m": "1 sampai 10 juta",
+        "over_10m": "Lebih dari 10 juta"
+      },
+      "startLabel": "Kapan Anda ingin mulai?",
+      "startWhen": {
+        "now": "Segera",
+        "quarter": "Kuartal ini",
+        "later": "Nanti tahun ini"
+      },
+      "needsLabel": "Apa yang Anda butuhkan?",
+      "need": {
+        "sso": "Single sign-on",
+        "dedicated": "Infrastruktur khusus",
+        "residency": "Data di wilayah tertentu",
+        "sla": "Perjanjian waktu aktif (SLA)",
+        "security": "Tinjauan keamanan dan kepatuhan",
+        "invoice": "Bayar dengan faktur",
+        "onboarding": "Orientasi dan pelatihan",
+        "custom_limits": "Batas khusus"
+      },
+      "residency": "Di mana data harus disimpan?",
+      "residencyHelp": "Sebuah negara atau wilayah, misalnya Uni Eropa.",
+      "message": "Ada hal lain yang perlu kami ketahui?",
+      "messageHelp": "Penggunaan, format, integrasi, atau persyaratan keamanan Anda.",
+      "messageShort": "Ceritakan sedikit lagi (minimal 10 karakter).",
+      "required": "Harap isi kolom ini.",
+      "email": "Masukkan alamat email yang valid.",
+      "privacy": "Kami hanya menggunakan data ini untuk menjawab pertanyaan Anda.",
+      "send": "Kirim pertanyaan",
+      "sentTitle": "Terima kasih, sudah kami terima",
+      "sentDesc": "Tim Formalie akan membalas ke {email} dalam satu hari kerja.",
+      "close": "Tutup"
+    },
+    "limitAdmin": "Paket yang lebih tinggi mencakup lebih banyak. Bandingkan paket untuk meningkatkan.",
+    "limitMember": "Tanyakan kepada admin ruang kerja tentang paket yang lebih tinggi.",
+    "seePlans": "Lihat paket",
+    "locked": "Di {plan} ke atas",
+    "lockedHint": "Paket Anda tidak mencakup ini. Tingkatkan untuk menggunakannya."
   }
 }

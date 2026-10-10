@@ -12,6 +12,7 @@ const toast = useToast()
 const { handle } = useErrorHandler()
 const { relative } = useFormat()
 const confirm = useConfirm()
+const access = usePlanAccess()
 
 const sending = ref<EmailSending | null>(null)
 const failed = ref(false)
@@ -103,8 +104,9 @@ const options = computed(() => {
     </div>
     <p class="flex items-start gap-1.5 text-xs text-muted"><UIcon name="i-lucide-info" class="mt-0.5 size-3.5 shrink-0" />{{ t('settings.sending.markNote') }}</p>
 
+    <BillingLocked v-if="!access.allows('custom_email')" feature="custom_email" />
     <!-- Own address on the workspace's domain -->
-    <div class="flex flex-col gap-3 rounded-lg border border-default p-3 sm:p-4">
+    <div v-if="access.allows('custom_email') || sending.domain" class="flex flex-col gap-3 rounded-lg border border-default p-3 sm:p-4">
       <h3 class="flex items-center gap-2 text-sm font-medium text-highlighted"><UIcon name="i-lucide-at-sign" class="size-4 text-muted" />{{ t('settings.sending.domain') }}</h3>
       <form v-if="!sending.domain" class="flex flex-col gap-2 sm:flex-row" @submit.prevent="addDomain">
         <UInput v-model="address" type="email" icon="i-lucide-mail" placeholder="forms@example.com" class="w-full sm:max-w-sm" :aria-label="t('settings.sending.addressLabel')" />
@@ -127,6 +129,6 @@ const options = computed(() => {
     </div>
 
     <!-- Own mail server -->
-    <SettingsEmailsSmtp :server="sending.smtp" @saved="set" />
+    <SettingsEmailsSmtp v-if="access.allows('custom_email') || sending.smtp" :server="sending.smtp" @saved="set" />
   </div>
 </template>

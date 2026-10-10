@@ -30,6 +30,7 @@ import { libraryOf } from '../data/libraryStore'
 import { settingsOf } from '../data/settingsStore'
 import { themeForNewForm } from './themes'
 import { retireShortCode } from '../data/shortCodeStore'
+import { requireFormSlot } from '../core/plan'
 import type { MockTenant, MockUser } from '../data/tenants'
 import { allows, canSee, folderFor, folderVisible, requireAction, summaryFor } from '../data/formPermissions'
 import { FORMALIE_MARK, storageMarks } from '../data/destinationStore'
@@ -177,6 +178,8 @@ function newForm(
   },
 ): StoredForm {
   const store = formsOf(tenant)
+  // Subscription (F24): the plan's number of forms (the trash doesn't count)
+  requireFormSlot(tenant, store.forms.filter(item => !item.deleted_at).length)
   const now = new Date().toISOString()
   const form: StoredForm = {
     id: crypto.randomUUID(),
@@ -397,6 +400,7 @@ export const formLifecycle = defineMockRoute(({ event, body }) => {
   if (!LIFECYCLE_ACTIONS.includes(action)) throw new MockError('FRM-GEN-1004')
   const form = findForm(tenant, user, getRouterParam(event, 'id'), { trash: action === 'restore', action: LIFECYCLE_NEEDS[action] })
   checkVersion(form, parseBody(lifecycleSchema, body ?? {}).row_version)
+  if (action === 'restore') requireFormSlot(tenant, formsOf(tenant).forms.filter(item => !item.deleted_at).length)
   const changes = applyLifecycle(form, action)
   touch(form)
   audit(
@@ -485,6 +489,7 @@ export const bulkForms = defineMockRoute(({ event, body }) => {
         store.forms = store.forms.filter(item => item.id !== form.id)
         audit(event, tenant, user, 'forms.purged', form, [], { via: 'bulk' })
       } else {
+        if (input.action === 'restore') requireFormSlot(tenant, store.forms.filter(item => !item.deleted_at).length)
         const changes = applyLifecycle(form, input.action)
         touch(form)
         audit(

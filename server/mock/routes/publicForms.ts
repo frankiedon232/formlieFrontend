@@ -7,6 +7,7 @@
  *   POST /public/forms/:key/submit   one response per fill-in session (Formalie-Key)
  *   POST /public/forms/:key/uploads  a pre-signed link for one file of a file question (+ /:id/complete)
  */
+import { responsesAllowed } from '../core/plan'
 import { reviewOf } from '../data/responseReview'
 import { createHmac, randomBytes, timingSafeEqual } from 'node:crypto'
 import { emitResponse } from '../data/integrationStore'
@@ -82,13 +83,14 @@ function locate(event: Parameters<typeof tenantOf>[0], key: string, channel?: 'l
 const channelOf = (event: Parameters<typeof tenantOf>[0]): 'link' | 'embed' => (getQuery(event).channel === 'embed' ? 'embed' : 'link')
 
 /** The form's response limit is used up (Share settings, F10 M3). */
-const limitReached = (form: StoredForm) => form.response_limit != null && form.responses_count >= form.response_limit
+/** The form's own limit, or the plan's responses on each form (Subscription, F24). */
+const limitReached = (tenant: MockTenant, form: StoredForm) => (form.response_limit != null && form.responses_count >= form.response_limit) || !responsesAllowed(tenant, form.responses_count)
 
-function stateOf(form: StoredForm, { ignoreLimit = false } = {}): PublicFormState {
+function stateOf(tenant: MockTenant, form: StoredForm, { ignoreLimit = false } = {}): PublicFormState {
   if (form.status === 'published') {
     const window = availabilityOf(form)
     if (window === 'expired' || window === 'scheduled') return window
-    return !ignoreLimit && limitReached(form) ? 'limit_reached' : 'open'
+    return !ignoreLimit && limitReached(tenant, form) ? 'limit_reached' : 'open'
   }
   if (form.status === 'closed' || form.status === 'archived') return 'closed'
   return 'not_published'
@@ -98,7 +100,7 @@ function stateOf(form: StoredForm, { ignoreLimit = false } = {}): PublicFormStat
 /** The form takes responses from this visitor right now: open and unlocked for them, or the reason why not. */
 function takingResponses(event: Parameters<typeof tenantOf>[0], key: string, { ignoreLimit = false, channel }: { ignoreLimit?: boolean; channel?: 'link' | 'embed' } = {}) {
   const { tenant, form } = locate(event, key, channel)
-  const state = stateOf(form, { ignoreLimit })
+  const state = stateOf(tenant, form, { ignoreLimit })
   const schema = state === 'open' ? publishedSchema(tenant, form) : null
   if (!schema)
     throw new MockError(
@@ -185,7 +187,7 @@ const offered = (schema: FormSchemaV1 | null) => mainLanguage(schema)
 /** The published form for respondents (also used by the server-rendered page, server/routes/_ssr). */
 export function publicFormView(event: Parameters<typeof tenantOf>[0], key: string, channel: 'link' | 'embed' = channelOf(event)): PublicForm {
   const { tenant, form } = locate(event, key, channel)
-  const state = stateOf(form)
+  const state = stateOf(tenant, form)
   const visitor = state === 'open' ? visitorOf(event, form, tenant) : null
   const locked = state === 'open' && !visitor
   const identity = visitorIdentity(visitor)
@@ -275,7 +277,7 @@ export const submitPublicForm = defineMockRoute(async ({ event, body }) => {
   // The same session again (double click, retry, back button): the response it already made.
   const earlier = responseForSubmission(tenant, form.id, submissionId)
   if (earlier) return ok<PublicSubmitResult>({ response_id: earlier.id, duplicate: true, thank_you: thankYou })
-  if (limitReached(form)) throw new MockError('FRM-FORM-1003')
+  if (limitReached(tenant, form)) throw new MockError('FRM-FORM-1003')
 
   // Spam (decision 89): a filled-in trap looks accepted but stores nothing; too many from one
   // address → slow down; without a solved challenge (or sent within seconds of opening) → refused.
@@ -622,7 +624,7 @@ export function resolveShortLink(event: Parameters<typeof tenantOf>[0], code: st
  */
 export const lookupOptions = defineMockRoute(({ event, query }) => {
   const { tenant, form } = locate(event, getRouterParam(event, 'key') ?? '', channelOf(event))
-  if (stateOf(form) !== 'open') throw new MockError('FRM-GEN-1004')
+  if (stateOf(tenant, form) !== 'open') throw new MockError('FRM-GEN-1004')
   if (!visitorOf(event, form, tenant)) throw new MockError('FRM-PERM-1001')
   const published = publishedSchema(tenant, form)
   if (!published) throw new MockError('FRM-GEN-1004')

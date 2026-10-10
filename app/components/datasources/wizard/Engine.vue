@@ -1,11 +1,13 @@
-<!-- Step 1 of a new connection: which database (arrow keys move between them, like any radio group). -->
+<!-- Step 1 of a new connection: which database (arrow keys move between them, like any radio group). Databases the
+     plan doesn't include (F24) are shown locked, with the plan that brings them. -->
 <script setup lang="ts">
 import type { DbEngine } from '#shared/utils/integrations/databases'
 import { SUPPORTED_DATABASES } from '#shared/utils/integrations/databases'
 
 const engine = defineModel<DbEngine | null>({ required: true })
 const { t } = useI18n()
-const items = computed(() => SUPPORTED_DATABASES.map(db => ({ value: db.key, label: db.name, description: t(`dataSources.engineDesc.${db.key}`) })))
+const access = usePlanAccess()
+const items = computed(() => SUPPORTED_DATABASES.map(db => ({ value: db.key, label: db.name, description: t(`dataSources.engineDesc.${db.key}`), disabled: !access.allows(`db:${db.key}`) })))
 </script>
 
 <template>
@@ -24,6 +26,7 @@ const items = computed(() => SUPPORTED_DATABASES.map(db => ({ value: db.key, lab
         <span class="flex items-center gap-2.5">
           <DatasourcesEngineLogo :engine="String(item.value)" size="sm" />
           <span class="font-semibold text-highlighted">{{ item.label }}</span>
+          <BillingLocked v-if="item.disabled" :feature="`db:${String(item.value) as DbEngine}`" inline />
         </span>
       </template>
       <template #description="{ item }">

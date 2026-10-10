@@ -16,7 +16,7 @@ import { requireAuth } from '../core/auth'
 import { MockError, filtersOf, ok, paginate } from '../core/respond'
 import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
-import { aiOf, creditsUsed, emptyByKind, emptyByStatus, monthStart, saveAi, toAiDetail, toAiRow, type StoredAiRequest } from '../data/aiStore'
+import { aiOf, allowanceOf, creditsUsed, emptyByKind, emptyByStatus, monthStart, saveAi, toAiDetail, toAiRow, type StoredAiRequest } from '../data/aiStore'
 import { permissionsOf } from '../data/rolesStore'
 import { settingsOf } from '../data/settingsStore'
 import type { MockTenant, MockUser } from '../data/tenants'
@@ -85,7 +85,7 @@ export const getAiUsage = defineMockRoute(({ event }) => {
   const usage: AiUsage = {
     period: { start: start.toISOString().slice(0, 10), end: end.toISOString().slice(0, 10) },
     used: creditsUsed(tenant),
-    limit: store.settings.monthly_credits,
+    limit: allowanceOf(tenant),
     previous,
     requests: thisMonth.length,
     people: new Set(thisMonth.map(request => request.by.id)).size,

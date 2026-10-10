@@ -38,6 +38,14 @@ const GROUPS: SettingsGroup[] = [
     ],
   },
   {
+    // Subscription (F24): the plan, its card, renewal, invoices, and the plans to compare
+    key: 'billing',
+    items: [
+      { key: 'subscription', icon: 'i-lucide-gem', to: '/settings/subscription' },
+      { key: 'plans', icon: 'i-lucide-columns-3', to: '/settings/plans' },
+    ],
+  },
+  {
     key: 'access',
     items: [
       { key: 'signin', icon: 'i-lucide-log-in', to: '/settings/signin' },

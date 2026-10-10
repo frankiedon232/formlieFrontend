@@ -655,7 +655,10 @@
     "FRM-AI-1004": "Bản nháp này đã được dùng hoặc đã để sang một bên. Hãy hỏi lại trợ lý.",
     "FRM-AUTH-1019": "Địa chỉ email này đăng nhập bằng đăng nhập một lần của tổ chức bạn. Hãy dùng nút phía trên.",
     "FRM-AUTH-1020": "Hãy kiểm tra đăng nhập một lần trước khi bật.",
-    "FRM-SET-1001": "Hãy xác minh hoặc kiểm tra trước, sau đó bạn có thể dùng."
+    "FRM-SET-1001": "Hãy xác minh hoặc kiểm tra trước, sau đó bạn có thể dùng.",
+    "FRM-BILL-1001": "Thanh toán chưa thành công. Hãy thử thẻ khác hoặc liên hệ ngân hàng của bạn.",
+    "FRM-BILL-1002": "Phiên thanh toán này đã hết hạn. Hãy bắt đầu lại.",
+    "FRM-BILL-1003": "Chúng tôi đã nhận được yêu cầu của bạn. Chúng tôi sẽ sớm liên hệ."
   },
   "errorUi": {
     "reference": "Mã tham chiếu: {id}",
@@ -7074,7 +7077,8 @@
       "organisation": "Tổ chức",
       "access": "Đăng nhập và bảo mật",
       "communication": "Thông báo và email",
-      "data": "Dữ liệu và biểu mẫu"
+      "data": "Dữ liệu và biểu mẫu",
+      "billing": "Gói đăng ký"
     },
     "nav": {
       "overview": "Tổng quan",
@@ -7093,7 +7097,9 @@
       "privacy": "Quyền riêng tư và dữ liệu",
       "formDefaults": "Mặc định của biểu mẫu",
       "themes": "Giao diện biểu mẫu",
-      "landingPages": "Trang đích"
+      "landingPages": "Trang đích",
+      "subscription": "Gói đăng ký",
+      "plans": "Các gói"
     },
     "desc": {
       "overview": "Mọi thứ về không gian làm việc của bạn ở một nơi.",
@@ -7112,7 +7118,9 @@
       "privacy": "Phản hồi được giữ bao lâu, nội dung đồng ý và yêu cầu dữ liệu.",
       "formDefaults": "Cài đặt mà biểu mẫu mới bắt đầu với, và mặc định khi nhúng.",
       "themes": "Thiết kế biểu mẫu mà không gian làm việc của bạn có thể dùng.",
-      "landingPages": "Thiết kế trang cho các trang công khai của biểu mẫu."
+      "landingPages": "Thiết kế trang cho các trang công khai của biểu mẫu.",
+      "subscription": "Gói của bạn, mức sử dụng, thẻ, gia hạn, nhắc nhở và hóa đơn.",
+      "plans": "So sánh các gói và đổi gói của bạn, theo tháng, quý hoặc năm."
     },
     "status": {
       "complete": "Hoàn tất",
@@ -9115,5 +9123,332 @@
       "of": "{n} trên {total}",
       "hint": "Nhấp đúp hoặc nhấn + và - để thu phóng. Kéo để di chuyển. Esc để đóng."
     }
+  },
+  "billing": {
+    "plan": {
+      "starter": {
+        "name": "Starter",
+        "bestFor": "Dành cho cá nhân, sinh viên và người dùng sở thích thu thập dữ liệu quy mô nhỏ hoặc thử API.",
+        "everything": "Mọi tính năng cốt lõi, miễn phí bao lâu tùy bạn."
+      },
+      "professional": {
+        "name": "Professional",
+        "bestFor": "Dành cho startup và nhóm nhỏ cần dữ liệu tự động đều đặn và giám sát gần như theo thời gian thực khi phát triển.",
+        "everything": "Mọi thứ trong Starter, cùng tên miền riêng, địa chỉ gửi và đăng nhập công ty."
+      },
+      "business": {
+        "name": "Business",
+        "bestFor": "Dành cho công ty đã phát triển với lượng dữ liệu lớn, lọc nâng cao và trích xuất nhanh. Không giới hạn.",
+        "everything": "Mọi thứ trong Professional, không giới hạn biểu mẫu, phản hồi hay cơ sở dữ liệu."
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "bestFor": "Dành cho tổ chức lớn có yêu cầu dữ liệu riêng, yêu cầu bảo mật và tuân thủ nghiêm ngặt hoặc hạ tầng riêng.",
+        "everything": "Mọi thứ trong Business, được điều chỉnh theo tổ chức của bạn, kèm đội ngũ chuyên trách."
+      }
+    },
+    "periodName": {
+      "monthly": "Hằng tháng",
+      "quarterly": "Hằng quý",
+      "annually": "Hằng năm"
+    },
+    "periodLabel": "Chu kỳ thanh toán",
+    "billed": {
+      "quarterly": "{total} tính phí mỗi 3 tháng",
+      "annually": "{total} tính phí một lần mỗi năm"
+    },
+    "billedMonthly": "Tính phí mỗi tháng",
+    "pricePer": {
+      "monthly": "{amount} mỗi tháng",
+      "quarterly": "{amount} mỗi 3 tháng",
+      "annually": "{amount} mỗi năm"
+    },
+    "perMonth": "/ tháng",
+    "save": "Tiết kiệm {amount}",
+    "free": "Miễn phí",
+    "freeHint": "Không cần thẻ",
+    "freeForever": "Miễn phí, không có ngày kết thúc.",
+    "custom": "Tùy chỉnh",
+    "customHint": "Giá theo tổ chức của bạn",
+    "customAmount": "Tùy chỉnh",
+    "popular": "Phổ biến nhất",
+    "yours": "Gói của bạn",
+    "currentPlan": "Gói hiện tại",
+    "scheduledShort": "Bắt đầu từ kỳ sau",
+    "upgrade": "Nâng cấp",
+    "downgrade": "Hạ cấp",
+    "switchPeriod": "Chuyển sang chu kỳ này",
+    "contactUs": "Liên hệ chúng tôi",
+    "unlimited": "Không giới hạn",
+    "upTo": "Tối đa {n}",
+    "credits": "{n} tín dụng mỗi tháng",
+    "included": "Đã bao gồm",
+    "notIncluded": "Không bao gồm",
+    "pricesNote": "Giá tính bằng đô la Mỹ, chưa gồm thuế. Chu kỳ quý tiết kiệm 10%, chu kỳ năm tiết kiệm 20%.",
+    "comparePlans": "So sánh các gói",
+    "changePlan": "Đổi gói",
+    "cancelPlan": "Hủy gói",
+    "keepPlan": "Giữ gói của tôi",
+    "addCard": "Thêm thẻ",
+    "enterpriseTitle": "Cần nhiều hơn, hoặc điều gì đặc biệt?",
+    "enterpriseDesc": "Hãy cho chúng tôi biết về tổ chức của bạn và chúng tôi sẽ chuẩn bị ưu đãi Enterprise: hạ tầng riêng, vị trí lưu trữ dữ liệu, đánh giá bảo mật và giới hạn tùy chỉnh.",
+    "fact": {
+      "forms": "{n} biểu mẫu | {n} biểu mẫu",
+      "formsUnlimited": "Biểu mẫu không giới hạn",
+      "responses": "{n} phản hồi mỗi biểu mẫu",
+      "responsesUnlimited": "Phản hồi không giới hạn",
+      "databases": "Dùng cơ sở dữ liệu của bạn: {list}",
+      "databasesAll": "Dùng bất kỳ cơ sở dữ liệu nào: MySQL, PostgreSQL, MariaDB, SQL Server, Oracle",
+      "signinEmail": "Đăng nhập bằng email và mật khẩu",
+      "signinAll": "Google, Apple, Microsoft, Facebook và đăng nhập một lần (Okta và các loại khác)",
+      "subdomain": "Tên miền phụ Formalie riêng của bạn",
+      "domain": "Một tên miền riêng",
+      "domains": "Các tên miền riêng",
+      "email": "Email từ địa chỉ hoặc máy chủ thư của riêng bạn",
+      "emailFormalie": "Email từ địa chỉ của Formalie",
+      "ai": "Trợ lý AI: {n} tín dụng mỗi tháng",
+      "aiCustom": "Trợ lý AI: tín dụng theo nhu cầu của bạn"
+    },
+    "db": {
+      "mysql": "MySQL",
+      "postgresql": "PostgreSQL",
+      "mariadb": "MariaDB",
+      "sqlserver": "SQL Server",
+      "oracle": "Oracle"
+    },
+    "compare": {
+      "heading": "So sánh từng tính năng",
+      "title": "Tính năng",
+      "group": {
+        "forms": "Biểu mẫu và phản hồi",
+        "insight": "Thông tin chi tiết",
+        "data": "Dữ liệu của bạn",
+        "api": "Dịch vụ API",
+        "brand": "Thương hiệu và địa chỉ",
+        "access": "Đăng nhập",
+        "support": "Hỗ trợ"
+      },
+      "forms": "Biểu mẫu",
+      "responses": "Phản hồi mỗi biểu mẫu",
+      "languages": "Ngôn ngữ",
+      "templates": "Kho mẫu",
+      "lists": "Danh sách tùy chỉnh",
+      "themes": "Giao diện và trang đích",
+      "versions": "Lịch sử phiên bản",
+      "folders": "Không gian làm việc và thư mục",
+      "fillLater": "Điền sau (tiếp tục từ chỗ bạn dừng)",
+      "analytics": "Phân tích nâng cao",
+      "visits": "Phân tích lượt truy cập và phản hồi",
+      "ai": "Trợ lý AI",
+      "db": "Dùng cơ sở dữ liệu của bạn: {name}",
+      "explorer": "Trình khám phá cơ sở dữ liệu",
+      "query": "Trình soạn truy vấn trực tiếp",
+      "destinations": "Đích đến của dữ liệu",
+      "api": "Dịch vụ API, điểm cuối, token và quy tắc truy cập",
+      "webhooks": "Webhook",
+      "apiDocs": "Tài liệu API",
+      "branding": "Thương hiệu hóa",
+      "subdomain": "Tên miền phụ Formalie",
+      "customDomain": "Tên miền riêng",
+      "customEmail": "Địa chỉ gửi và máy chủ thư riêng",
+      "emailSignin": "Email và mật khẩu",
+      "socialSignin": "Google, Apple, Microsoft, Facebook",
+      "sso": "Đăng nhập một lần (Okta và các loại khác)",
+      "helpCentre": "Trung tâm trợ giúp và trợ lý",
+      "prioritySupport": "Hỗ trợ email ưu tiên",
+      "dedicatedSupport": "Đội ngũ tài khoản chuyên trách",
+      "securityReview": "Đánh giá bảo mật và tuân thủ"
+    },
+    "status": {
+      "active": "Đang hoạt động",
+      "past_due": "Cần thanh toán",
+      "grace": "Thời gian ân hạn",
+      "cancelled": "Đã hủy",
+      "expired": "Đã kết thúc",
+      "ending": "Sắp kết thúc"
+    },
+    "renewsOn": "Gia hạn vào {date} với giá {amount}.",
+    "endsOn": "Kết thúc vào {date}, sau đó chuyển sang Starter.",
+    "noRenewal": "Đã thanh toán đến {date}. Gia hạn tự động đang tắt.",
+    "cancelTitle": "Hủy {plan}?",
+    "cancelDesc": "Bạn giữ mọi thứ đến {date}. Sau đó không gian làm việc chuyển sang Starter và áp dụng giới hạn của gói này.",
+    "cancelConfirm": "Hủy vào cuối chu kỳ",
+    "cancelled": "Gói của bạn kết thúc vào {date}",
+    "resumed": "Gói của bạn sẽ gia hạn như bình thường",
+    "pastDueTitle": "Chúng tôi không thu được tiền",
+    "pastDueDesc": "Mọi thứ vẫn hoạt động đến {date}. Hãy thêm thẻ để giữ gói của bạn.",
+    "expiredTitle": "Gói trả phí của bạn đã kết thúc",
+    "expiredDesc": "Không gian làm việc hiện ở gói Starter. Hãy chọn một gói để lấy lại mọi thứ.",
+    "scheduledTitle": "{plan} ({period}) bắt đầu vào {date}",
+    "dropScheduled": "Giữ gói hiện tại",
+    "scheduleDropped": "Thay đổi đã được hủy",
+    "noCardTitle": "Chưa có thẻ để gia hạn",
+    "noCardDesc": "Hãy thêm thẻ trước {date}, nếu không gói sẽ vào thời gian ân hạn ngắn rồi kết thúc.",
+    "block": {
+      "usage": "Mức sử dụng",
+      "usageHint": "Những gì không gian làm việc dùng so với giới hạn của gói.",
+      "payment": "Phương thức thanh toán",
+      "paymentHint": "Thẻ dùng để thu tiền gia hạn.",
+      "renewal": "Gia hạn và nhắc nhở",
+      "renewalHint": "Gia hạn tự động và nhận nhắc nhở trước khi bị tính phí.",
+      "invoices": "Hóa đơn",
+      "invoicesHint": "Mọi khoản thanh toán, kèm chu kỳ và trạng thái."
+    },
+    "usage": {
+      "forms": "Biểu mẫu",
+      "responses": "Phản hồi ở biểu mẫu sôi động nhất",
+      "ai": "Tín dụng AI",
+      "busiest": "Biểu mẫu sôi động nhất: {form}",
+      "thisMonth": "Tháng này",
+      "databases": "Cơ sở dữ liệu bạn có thể kết nối",
+      "upgradeFor": "ở gói cao hơn"
+    },
+    "card": {
+      "expires": "Hết hạn {date}",
+      "expiringSoon": "sắp hết hạn",
+      "none": "Chưa có thẻ nào được lưu. Các gói trả phí cần thẻ để gia hạn.",
+      "replace": "Thay thế",
+      "remove": "Xóa thẻ",
+      "removeTitle": "Xóa thẻ này?",
+      "removeDesc": "Bạn có thể thêm thẻ lại bất cứ lúc nào.",
+      "removeRenewal": "Gói của bạn gia hạn vào {date}. Nếu không có thẻ, hãy thêm thẻ mới trước đó, nếu không sẽ không thu được tiền gia hạn.",
+      "removed": "Đã xóa thẻ",
+      "secure": "Thông tin thẻ được nhà cung cấp thanh toán Payoneer của chúng tôi lưu giữ. Formalie không bao giờ thấy hay lưu số thẻ của bạn."
+    },
+    "renewal": {
+      "auto": "Gia hạn tự động",
+      "onHint": "Gói của bạn gia hạn vào {date} và thẻ đã lưu sẽ bị tính phí.",
+      "offHint": "Gói của bạn kết thúc vào {date} nếu bạn không gia hạn.",
+      "freeHint": "Starter miễn phí và không bao giờ cần gia hạn.",
+      "offTitle": "Tắt gia hạn tự động?",
+      "offDesc": "Gói của bạn còn đến {date}, sau đó không gian làm việc chuyển sang Starter.",
+      "offConfirm": "Tắt",
+      "reminders": "Nhắc nhở",
+      "before": "Trước khi gia hạn",
+      "days": "Trước {n} ngày | Trước {n} ngày",
+      "failed": "Khi thanh toán thất bại",
+      "expiring": "Khi thẻ sắp hết hạn",
+      "alsoTo": "Gửi thêm đến",
+      "alsoToHelp": "Chủ sở hữu không gian làm việc luôn nhận được. Thêm tối đa 5 địa chỉ nữa, chẳng hạn của nhóm tài chính.",
+      "emailPlaceholder": "finance{'@'}example.com, rồi nhấn Enter",
+      "saved": "Đã lưu"
+    },
+    "invoice": {
+      "number": "Hóa đơn",
+      "date": "Ngày",
+      "plan": "Gói và chu kỳ",
+      "amount": "Số tiền",
+      "status": "Trạng thái",
+      "more": "Hiện thêm",
+      "none": "Chưa có hóa đơn",
+      "noneDesc": "Hóa đơn xuất hiện ở đây sau lần thanh toán đầu tiên.",
+      "state": {
+        "paid": "Đã thanh toán",
+        "open": "Đang mở",
+        "failed": "Thất bại",
+        "refunded": "Đã hoàn tiền"
+      }
+    },
+    "changeTitle": "Chuyển sang {plan}",
+    "changeDesc": "Xem những gì thay đổi trước khi xác nhận.",
+    "starts": "Bắt đầu",
+    "startsNow": "Ngay lập tức",
+    "startsOn": "Vào {date}",
+    "price": "Giá",
+    "credit": "Tín dụng cho thời gian chưa dùng",
+    "dueNow": "Cần trả ngay",
+    "nowNote": "Gói mới bắt đầu ngay. Phần còn lại của chu kỳ hiện tại được trừ vào lần thanh toán đầu tiên.",
+    "laterNote": "Bạn giữ gói hiện tại đến hết chu kỳ đã trả. Gói mới bắt đầu sau đó.",
+    "cancelNote": "Bạn giữ gói hiện tại đến hết chu kỳ đã trả. Sau đó không gian làm việc chuyển sang Starter.",
+    "overTitle": "Một số mục vượt giới hạn của gói mới",
+    "overNote": "Không có gì bị xóa. Biểu mẫu và phản hồi vượt giới hạn vẫn giữ nguyên, nhưng bạn không thể thêm nữa. Các tính năng gói mới không bao gồm sẽ bị tắt, và quay lại nếu bạn nâng cấp lần nữa.",
+    "over": {
+      "forms": "Biểu mẫu: hiện {current}, cho phép {allowed}",
+      "responses": "Phản hồi trên một biểu mẫu: hiện {current}, cho phép {allowed}",
+      "databases": "Cơ sở dữ liệu không bao gồm: {current}",
+      "customDomain": "Tên miền riêng của bạn sẽ không còn được phục vụ",
+      "customEmail": "Email quay lại gửi từ địa chỉ của Formalie",
+      "sso": "Đăng nhập một lần bị tắt",
+      "socialSignin": "Đăng nhập bằng Google, Apple, Microsoft và Facebook bị tắt"
+    },
+    "confirmChange": "Xác nhận thay đổi",
+    "continuePay": "Tiếp tục đến thanh toán",
+    "changed": "Bạn đang dùng {plan}",
+    "changeScheduled": "{plan} bắt đầu vào {date}",
+    "paid": "Đã nhận thanh toán. Bạn đang dùng {plan}",
+    "cardSaved": "Đã lưu thẻ",
+    "checkout": {
+      "title": "Thanh toán",
+      "cardTitle": "Thêm thẻ",
+      "desc": "Thanh toán an toàn qua Payoneer.",
+      "cardDesc": "Lưu một thẻ để gia hạn. Hiện chưa tính phí gì.",
+      "testNote": "Chế độ thử: Payoneer chưa được kết nối nên không dùng thẻ thật. Hãy chọn một thẻ thử để thử thanh toán.",
+      "testCard": "Thẻ thử",
+      "pay": "Thanh toán {amount}",
+      "saveCard": "Lưu thẻ",
+      "decline": "Thử một thanh toán bị từ chối",
+      "secure": "Bạn nhập thông tin thẻ trên trang bảo mật của Payoneer. Formalie chỉ giữ loại thẻ, bốn số cuối và ngày hết hạn."
+    },
+    "enquiry": {
+      "title": "Yêu cầu Enterprise",
+      "desc": "Hãy cho chúng tôi biết bạn cần gì. Đội ngũ Formalie phản hồi trong một ngày làm việc.",
+      "you": "Về bạn",
+      "company": "Công ty",
+      "name": "Tên của bạn",
+      "workEmail": "Email công việc",
+      "phone": "Điện thoại",
+      "role": "Chức danh",
+      "country": "Quốc gia",
+      "scale": "Quy mô",
+      "sizeLabel": "Quy mô công ty",
+      "size": {
+        "1-50": "1 đến 50 người",
+        "51-200": "51 đến 200 người",
+        "201-1000": "201 đến 1.000 người",
+        "1001-5000": "1.001 đến 5.000 người",
+        "5000+": "Hơn 5.000 người"
+      },
+      "volumeLabel": "Phản hồi mỗi tháng",
+      "volume": {
+        "under_100k": "Dưới 100.000",
+        "100k_1m": "100.000 đến 1 triệu",
+        "1m_10m": "1 đến 10 triệu",
+        "over_10m": "Hơn 10 triệu"
+      },
+      "startLabel": "Bạn muốn bắt đầu khi nào?",
+      "startWhen": {
+        "now": "Ngay lập tức",
+        "quarter": "Quý này",
+        "later": "Cuối năm nay"
+      },
+      "needsLabel": "Bạn cần gì?",
+      "need": {
+        "sso": "Đăng nhập một lần",
+        "dedicated": "Hạ tầng riêng",
+        "residency": "Dữ liệu ở một khu vực cụ thể",
+        "sla": "Cam kết thời gian hoạt động (SLA)",
+        "security": "Đánh giá bảo mật và tuân thủ",
+        "invoice": "Thanh toán theo hóa đơn",
+        "onboarding": "Hướng dẫn làm quen và đào tạo",
+        "custom_limits": "Giới hạn tùy chỉnh"
+      },
+      "residency": "Dữ liệu nên ở đâu?",
+      "residencyHelp": "Một quốc gia hoặc khu vực, ví dụ Liên minh châu Âu.",
+      "message": "Còn điều gì khác chúng tôi nên biết không?",
+      "messageHelp": "Cách bạn sử dụng, định dạng, tích hợp hoặc yêu cầu bảo mật.",
+      "messageShort": "Hãy cho chúng tôi biết thêm một chút (ít nhất 10 ký tự).",
+      "required": "Vui lòng điền mục này.",
+      "email": "Nhập địa chỉ email hợp lệ.",
+      "privacy": "Chúng tôi chỉ dùng các thông tin này để trả lời yêu cầu của bạn.",
+      "send": "Gửi yêu cầu",
+      "sentTitle": "Cảm ơn, chúng tôi đã nhận được",
+      "sentDesc": "Đội ngũ Formalie sẽ trả lời {email} trong một ngày làm việc.",
+      "close": "Đóng"
+    },
+    "limitAdmin": "Gói cao hơn bao gồm nhiều hơn. Hãy so sánh các gói để nâng cấp.",
+    "limitMember": "Hãy hỏi quản trị viên không gian làm việc về gói cao hơn.",
+    "seePlans": "Xem các gói",
+    "locked": "Từ {plan} trở lên",
+    "lockedHint": "Gói của bạn không bao gồm tính năng này. Hãy nâng cấp để dùng."
   }
 }

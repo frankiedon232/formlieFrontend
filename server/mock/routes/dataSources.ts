@@ -29,6 +29,7 @@ import { parseBody } from '../core/validate'
 import { finishedTest, planTest, testAt, type TestPlan } from '../data/dataSourceSim'
 import { countOp, dataSourcesOf, detailOf, previousOps, rowOf, saveDataSources, statusOf, type StoredDataSource } from '../data/dataSourceStore'
 import { platformEgressIps } from '../data/platformStore'
+import { requireDatabase } from '../core/plan'
 import type { MockTenant } from '../data/tenants'
 import { formsOnConnection } from './destinations'
 
@@ -115,6 +116,8 @@ export const startConnectionTest = defineMockRoute(({ event, body }) => {
   const input = parseBody(configSchema.extend({ datasource_id: z.string().optional() }), body)
   const saved = input.datasource_id ? find(tenant, input.datasource_id) : null
   const config = normalise(input)
+  // Subscription (F24): the databases the plan lets the workspace bring
+  requireDatabase(tenant, config.engine)
   // Secrets left empty on a saved connection keep the stored ones.
   const secrets = { ...(saved && saved.engine === config.engine ? cleanSecrets(config.engine, config.settings, saved.secrets) : {}), ...config.secrets }
   validate(config, config.secrets, saved && saved.engine === config.engine ? Object.keys(secrets) : [])
@@ -198,6 +201,7 @@ export const createDataSource = defineMockRoute(({ event, body }) => {
   const { tenant, user } = requireAdmin(event)
   const input = parseBody(saveSchema, body)
   const config = normalise(input)
+  requireDatabase(tenant, config.engine)
   validate(config, config.secrets)
   if (nameTaken(tenant, input.name)) throw new MockError('FRM-DEST-1007', [{ field: 'name', message: 'taken' }])
   const now = new Date().toISOString()

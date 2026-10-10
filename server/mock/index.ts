@@ -50,6 +50,9 @@ import * as address from './routes/address'
 import * as emails from './routes/emails'
 import * as emailSending from './routes/emailSending'
 import * as sso from './routes/sso'
+import * as billing from './routes/billing'
+import * as billingCheckout from './routes/billingCheckout'
+import * as enterprise from './routes/enterprise'
 import * as notifications from './routes/notifications'
 import * as optionLists from './routes/optionLists'
 import * as privacy from './routes/dataPrivacy'
@@ -406,6 +409,20 @@ const router = createRouter()
   .post('/settings/emails/sending/smtp/test', emailSending.testSmtp)
   .delete('/settings/emails/sending/smtp', emailSending.removeSmtp)
   .post('/settings/emails/sending/mode', emailSending.setSendingMode)
+  .get('/billing', billing.getBilling)
+  .get('/billing/plans', billing.getPlans)
+  .get('/billing/invoices', billing.getInvoices)
+  .post('/billing/preview', billing.previewChange)
+  .post('/billing/change', billing.changePlan)
+  .post('/billing/cancel', billing.cancelPlan)
+  .post('/billing/resume', billing.resumePlan)
+  .delete('/billing/scheduled', billing.dropScheduled)
+  .patch('/billing/settings', billing.patchBillingSettings)
+  .delete('/billing/payment-method', billing.removePaymentMethod)
+  .post('/billing/checkout', billingCheckout.startCheckout)
+  .get('/billing/enterprise-enquiries', enterprise.listEnquiries)
+  .post('/billing/enterprise-enquiries', enterprise.sendEnquiry)
+  .post('/billing/checkout/:id/complete', billingCheckout.completeCheckout)
   .get('/settings/sso', sso.getSso)
   .put('/settings/sso', sso.saveSso)
   .post('/settings/sso/test', sso.testSso)

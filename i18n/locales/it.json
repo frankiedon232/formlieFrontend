@@ -655,7 +655,10 @@
     "FRM-AI-1004": "Questa bozza è già stata usata o messa da parte. Chiedi di nuovo all’assistente.",
     "FRM-AUTH-1019": "Questo indirizzo email accede con il single sign-on della tua organizzazione. Usa il pulsante qui sopra.",
     "FRM-AUTH-1020": "Prova il single sign-on prima di attivarlo.",
-    "FRM-SET-1001": "Verificalo o provalo prima, poi potrai usarlo."
+    "FRM-SET-1001": "Verificalo o provalo prima, poi potrai usarlo.",
+    "FRM-BILL-1001": "Il pagamento non è andato a buon fine. Prova con un’altra carta o contatta la tua banca.",
+    "FRM-BILL-1002": "Questo pagamento è scaduto. Ricomincia.",
+    "FRM-BILL-1003": "Abbiamo già la tua richiesta. Ti risponderemo presto."
   },
   "errorUi": {
     "reference": "Riferimento: {id}",
@@ -7074,7 +7077,8 @@
       "organisation": "Organizzazione",
       "access": "Accesso e sicurezza",
       "communication": "Notifiche ed e-mail",
-      "data": "Dati e moduli"
+      "data": "Dati e moduli",
+      "billing": "Abbonamento"
     },
     "nav": {
       "overview": "Panoramica",
@@ -7093,7 +7097,9 @@
       "privacy": "Privacy e dati",
       "formDefaults": "Impostazioni predefinite dei moduli",
       "themes": "Temi",
-      "landingPages": "Landing page"
+      "landingPages": "Landing page",
+      "subscription": "Abbonamento",
+      "plans": "Piani"
     },
     "desc": {
       "overview": "Tutto sul tuo spazio di lavoro in un unico posto.",
@@ -7112,7 +7118,9 @@
       "privacy": "Per quanto tempo si conservano le risposte, testi di consenso e richieste sui dati.",
       "formDefaults": "Le impostazioni da cui partono i nuovi moduli e i valori predefiniti per l’incorporamento.",
       "themes": "Design dei moduli che il tuo spazio di lavoro può usare.",
-      "landingPages": "Design delle pagine pubbliche dei tuoi moduli."
+      "landingPages": "Design delle pagine pubbliche dei tuoi moduli.",
+      "subscription": "Il tuo piano, cosa usi, la tua carta, il rinnovo, i promemoria e le fatture.",
+      "plans": "Confronta i piani e cambia il tuo, con addebito mensile, trimestrale o annuale."
     },
     "status": {
       "complete": "Completo",
@@ -9115,5 +9123,332 @@
       "of": "{n} di {total}",
       "hint": "Fai doppio clic o premi + e - per lo zoom. Trascina per spostarti. Esc chiude."
     }
+  },
+  "billing": {
+    "plan": {
+      "starter": {
+        "name": "Starter",
+        "bestFor": "Per privati, studenti e hobbisti che raccolgono dati su piccola scala o provano l’API.",
+        "everything": "Tutte le funzioni principali, gratis per quanto vuoi."
+      },
+      "professional": {
+        "name": "Professional",
+        "bestFor": "Per startup e piccoli team che contano su dati regolari e automatizzati e su un monitoraggio quasi in tempo reale mentre crescono.",
+        "everything": "Tutto di Starter, più il tuo dominio, l’indirizzo di invio e l’accesso aziendale."
+      },
+      "business": {
+        "name": "Business",
+        "bestFor": "Per aziende consolidate con grandi volumi di dati, filtri avanzati ed estrazione veloce. Senza limiti.",
+        "everything": "Tutto di Professional, senza limiti su moduli, risposte o database."
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "bestFor": "Per grandi organizzazioni con esigenze di dati specifiche, requisiti rigorosi di sicurezza e conformità o infrastruttura dedicata.",
+        "everything": "Tutto di Business, su misura per la tua organizzazione, con un team dedicato."
+      }
+    },
+    "periodName": {
+      "monthly": "Mensile",
+      "quarterly": "Trimestrale",
+      "annually": "Annuale"
+    },
+    "periodLabel": "Periodo di fatturazione",
+    "billed": {
+      "quarterly": "{total} fatturati ogni 3 mesi",
+      "annually": "{total} fatturati una volta all’anno"
+    },
+    "billedMonthly": "Fatturato ogni mese",
+    "pricePer": {
+      "monthly": "{amount} al mese",
+      "quarterly": "{amount} ogni 3 mesi",
+      "annually": "{amount} all’anno"
+    },
+    "perMonth": "/ mese",
+    "save": "Risparmia {amount}",
+    "free": "Gratis",
+    "freeHint": "Nessuna carta richiesta",
+    "freeForever": "Gratis, senza data di fine.",
+    "custom": "Personalizzato",
+    "customHint": "Prezzo su misura per la tua organizzazione",
+    "customAmount": "Personalizzato",
+    "popular": "Il più popolare",
+    "yours": "Il tuo piano",
+    "currentPlan": "Piano attuale",
+    "scheduledShort": "Inizia al prossimo periodo",
+    "upgrade": "Passa a un piano superiore",
+    "downgrade": "Passa a un piano inferiore",
+    "switchPeriod": "Passa a questo periodo",
+    "contactUs": "Contattaci",
+    "unlimited": "Illimitato",
+    "upTo": "Fino a {n}",
+    "credits": "{n} crediti al mese",
+    "included": "Incluso",
+    "notIncluded": "Non incluso",
+    "pricesNote": "Prezzi in dollari statunitensi, tasse escluse. Il trimestrale fa risparmiare il 10%, l’annuale il 20%.",
+    "comparePlans": "Confronta i piani",
+    "changePlan": "Cambia piano",
+    "cancelPlan": "Annulla piano",
+    "keepPlan": "Mantieni il mio piano",
+    "addCard": "Aggiungi una carta",
+    "enterpriseTitle": "Ti serve di più, o qualcosa di specifico?",
+    "enterpriseDesc": "Raccontaci della tua organizzazione e prepareremo un’offerta Enterprise: infrastruttura dedicata, residenza dei dati, verifiche di sicurezza e limiti personalizzati.",
+    "fact": {
+      "forms": "{n} modulo | {n} moduli",
+      "formsUnlimited": "Moduli illimitati",
+      "responses": "{n} risposte per ogni modulo",
+      "responsesUnlimited": "Risposte illimitate",
+      "databases": "Usa il tuo database: {list}",
+      "databasesAll": "Usa qualsiasi database: MySQL, PostgreSQL, MariaDB, SQL Server, Oracle",
+      "signinEmail": "Accesso con email e password",
+      "signinAll": "Google, Apple, Microsoft, Facebook e single sign-on (Okta e altri)",
+      "subdomain": "Il tuo sottodominio Formalie",
+      "domain": "Un dominio personalizzato",
+      "domains": "Domini personalizzati",
+      "email": "Email dal tuo indirizzo o dal tuo server di posta",
+      "emailFormalie": "Email dall’indirizzo di Formalie",
+      "ai": "Assistente IA: {n} crediti al mese",
+      "aiCustom": "Assistente IA: crediti su misura per te"
+    },
+    "db": {
+      "mysql": "MySQL",
+      "postgresql": "PostgreSQL",
+      "mariadb": "MariaDB",
+      "sqlserver": "SQL Server",
+      "oracle": "Oracle"
+    },
+    "compare": {
+      "heading": "Confronta ogni funzione",
+      "title": "Funzione",
+      "group": {
+        "forms": "Moduli e risposte",
+        "insight": "Approfondimenti",
+        "data": "I tuoi dati",
+        "api": "Servizio API",
+        "brand": "Marchio e indirizzo",
+        "access": "Accesso",
+        "support": "Assistenza"
+      },
+      "forms": "Moduli",
+      "responses": "Risposte per ogni modulo",
+      "languages": "Lingue",
+      "templates": "Archivio di modelli",
+      "lists": "Elenchi personalizzati",
+      "themes": "Temi e pagine di destinazione",
+      "versions": "Cronologia delle versioni",
+      "folders": "Spazio di lavoro e cartelle",
+      "fillLater": "Compila più tardi (riprendi da dove ti sei fermato)",
+      "analytics": "Analisi avanzate",
+      "visits": "Analisi di visite e risposte",
+      "ai": "Assistente IA",
+      "db": "Usa il tuo database: {name}",
+      "explorer": "Esplora database",
+      "query": "Editor di query in tempo reale",
+      "destinations": "Destinazioni dei dati",
+      "api": "Servizio API, endpoint, token e regole di accesso",
+      "webhooks": "Webhook",
+      "apiDocs": "Documentazione dell’API",
+      "branding": "Personalizzazione del marchio",
+      "subdomain": "Sottodominio Formalie",
+      "customDomain": "Dominio personalizzato",
+      "customEmail": "Indirizzo di invio e server di posta propri",
+      "emailSignin": "Email e password",
+      "socialSignin": "Google, Apple, Microsoft, Facebook",
+      "sso": "Single sign-on (Okta e altri)",
+      "helpCentre": "Centro assistenza e assistente",
+      "prioritySupport": "Assistenza email prioritaria",
+      "dedicatedSupport": "Team dedicato all’account",
+      "securityReview": "Verifica di sicurezza e conformità"
+    },
+    "status": {
+      "active": "Attivo",
+      "past_due": "Pagamento dovuto",
+      "grace": "Periodo di tolleranza",
+      "cancelled": "Annullato",
+      "expired": "Terminato",
+      "ending": "In scadenza"
+    },
+    "renewsOn": "Si rinnova il {date} per {amount}.",
+    "endsOn": "Termina il {date}, poi passa a Starter.",
+    "noRenewal": "Pagato fino al {date}. Il rinnovo automatico è disattivato.",
+    "cancelTitle": "Annullare {plan}?",
+    "cancelDesc": "Mantieni tutto fino al {date}. Poi lo spazio di lavoro passa a Starter e valgono i suoi limiti.",
+    "cancelConfirm": "Annulla alla fine del periodo",
+    "cancelled": "Il tuo piano termina il {date}",
+    "resumed": "Il tuo piano si rinnoverà come sempre",
+    "pastDueTitle": "Non siamo riusciti a incassare il pagamento",
+    "pastDueDesc": "Tutto continua a funzionare fino al {date}. Aggiungi una carta per mantenere il tuo piano.",
+    "expiredTitle": "Il tuo piano a pagamento è terminato",
+    "expiredDesc": "Lo spazio di lavoro è ora su Starter. Scegli un piano per riavere tutto.",
+    "scheduledTitle": "{plan} ({period}) inizia il {date}",
+    "dropScheduled": "Mantieni il piano attuale",
+    "scheduleDropped": "La modifica è stata annullata",
+    "noCardTitle": "Nessuna carta per il rinnovo",
+    "noCardDesc": "Aggiungi una carta prima del {date}, altrimenti il piano entra in un breve periodo di tolleranza e poi termina.",
+    "block": {
+      "usage": "Utilizzo",
+      "usageHint": "Cosa usa lo spazio di lavoro rispetto ai limiti del piano.",
+      "payment": "Metodo di pagamento",
+      "paymentHint": "La carta su cui vengono addebitati i rinnovi.",
+      "renewal": "Rinnovo e promemoria",
+      "renewalHint": "Rinnova automaticamente e ricevi un promemoria prima di ogni addebito.",
+      "invoices": "Fatture",
+      "invoicesHint": "Ogni pagamento, con periodo e stato."
+    },
+    "usage": {
+      "forms": "Moduli",
+      "responses": "Risposte sul tuo modulo più attivo",
+      "ai": "Crediti IA",
+      "busiest": "Modulo più attivo: {form}",
+      "thisMonth": "Questo mese",
+      "databases": "Database che puoi collegare",
+      "upgradeFor": "con un piano superiore"
+    },
+    "card": {
+      "expires": "Scade il {date}",
+      "expiringSoon": "in scadenza",
+      "none": "Nessuna carta salvata. I piani a pagamento ne richiedono una per i rinnovi.",
+      "replace": "Sostituisci",
+      "remove": "Rimuovi carta",
+      "removeTitle": "Rimuovere questa carta?",
+      "removeDesc": "Puoi aggiungere di nuovo una carta in qualsiasi momento.",
+      "removeRenewal": "Il tuo piano si rinnova il {date}. Senza carta, aggiungine una nuova prima di quella data, altrimenti il rinnovo non potrà essere addebitato.",
+      "removed": "Carta rimossa",
+      "secure": "I dati della carta sono conservati dal nostro provider di pagamenti, Payoneer. Formalie non vede né memorizza mai il numero della tua carta."
+    },
+    "renewal": {
+      "auto": "Rinnova automaticamente",
+      "onHint": "Il tuo piano si rinnova il {date} e viene addebitata la carta salvata.",
+      "offHint": "Il tuo piano termina il {date} se non lo rinnovi.",
+      "freeHint": "Starter è gratis e non richiede mai il rinnovo.",
+      "offTitle": "Disattivare il rinnovo automatico?",
+      "offDesc": "Il tuo piano resta fino al {date}, poi lo spazio di lavoro passa a Starter.",
+      "offConfirm": "Disattiva",
+      "reminders": "Promemoria",
+      "before": "Prima del rinnovo",
+      "days": "{n} giorno prima | {n} giorni prima",
+      "failed": "Quando un pagamento non riesce",
+      "expiring": "Quando la carta sta per scadere",
+      "alsoTo": "Invia anche a",
+      "alsoToHelp": "Il proprietario dello spazio di lavoro li riceve sempre. Aggiungi fino a 5 altri indirizzi, per esempio quello del tuo team finanza.",
+      "emailPlaceholder": "finance{'@'}example.com, poi Invio",
+      "saved": "Salvato"
+    },
+    "invoice": {
+      "number": "Fattura",
+      "date": "Data",
+      "plan": "Piano e periodo",
+      "amount": "Importo",
+      "status": "Stato",
+      "more": "Mostra altro",
+      "none": "Ancora nessuna fattura",
+      "noneDesc": "Le fatture compaiono qui dopo il primo pagamento.",
+      "state": {
+        "paid": "Pagata",
+        "open": "Aperta",
+        "failed": "Non riuscita",
+        "refunded": "Rimborsata"
+      }
+    },
+    "changeTitle": "Passa a {plan}",
+    "changeDesc": "Controlla cosa cambia prima di confermare.",
+    "starts": "Inizia",
+    "startsNow": "Subito",
+    "startsOn": "Il {date}",
+    "price": "Prezzo",
+    "credit": "Credito per il tempo non usato",
+    "dueNow": "Da pagare ora",
+    "nowNote": "Il nuovo piano inizia subito. Quanto resta del periodo attuale viene detratto dal primo pagamento.",
+    "laterNote": "Mantieni il piano attuale fino alla fine del periodo pagato. Poi inizia il nuovo.",
+    "cancelNote": "Mantieni il piano attuale fino alla fine del periodo pagato. Poi lo spazio di lavoro passa a Starter.",
+    "overTitle": "Alcune cose superano i limiti del nuovo piano",
+    "overNote": "Non viene eliminato nulla. I moduli e le risposte oltre i limiti restano come sono, ma non potrai aggiungerne altri. Le funzioni che il nuovo piano non include vengono disattivate e tornano se passi di nuovo a un piano superiore.",
+    "over": {
+      "forms": "Moduli: {current} ora, {allowed} consentiti",
+      "responses": "Risposte su un modulo: {current} ora, {allowed} consentite",
+      "databases": "Database non inclusi: {current}",
+      "customDomain": "Il tuo dominio personalizzato non viene più servito",
+      "customEmail": "Le email tornano a partire dall’indirizzo di Formalie",
+      "sso": "Il single sign-on viene disattivato",
+      "socialSignin": "L’accesso con Google, Apple, Microsoft e Facebook viene disattivato"
+    },
+    "confirmChange": "Conferma la modifica",
+    "continuePay": "Continua al pagamento",
+    "changed": "Ora sei su {plan}",
+    "changeScheduled": "{plan} inizia il {date}",
+    "paid": "Pagamento ricevuto. Ora sei su {plan}",
+    "cardSaved": "Carta salvata",
+    "checkout": {
+      "title": "Pagamento",
+      "cardTitle": "Aggiungi una carta",
+      "desc": "Pagamento sicuro con Payoneer.",
+      "cardDesc": "Salva una carta per i rinnovi. Ora non viene addebitato nulla.",
+      "testNote": "Modalità di prova: Payoneer non è ancora collegato, quindi non viene usata nessuna carta reale. Scegli una carta di prova per provare il pagamento.",
+      "testCard": "Carta di prova",
+      "pay": "Paga {amount}",
+      "saveCard": "Salva carta",
+      "decline": "Prova un pagamento rifiutato",
+      "secure": "Inserisci i dati della carta nella pagina sicura di Payoneer. Formalie conserva solo il circuito della carta, le ultime quattro cifre e la data di scadenza."
+    },
+    "enquiry": {
+      "title": "Richiesta Enterprise",
+      "desc": "Raccontaci di cosa hai bisogno. Il team di Formalie risponde entro un giorno lavorativo.",
+      "you": "Su di te",
+      "company": "Azienda",
+      "name": "Il tuo nome",
+      "workEmail": "Email di lavoro",
+      "phone": "Telefono",
+      "role": "Ruolo",
+      "country": "Paese",
+      "scale": "Dimensioni",
+      "sizeLabel": "Dimensione dell’azienda",
+      "size": {
+        "1-50": "Da 1 a 50 persone",
+        "51-200": "Da 51 a 200 persone",
+        "201-1000": "Da 201 a 1.000 persone",
+        "1001-5000": "Da 1.001 a 5.000 persone",
+        "5000+": "Più di 5.000 persone"
+      },
+      "volumeLabel": "Risposte al mese",
+      "volume": {
+        "under_100k": "Meno di 100.000",
+        "100k_1m": "Da 100.000 a 1 milione",
+        "1m_10m": "Da 1 a 10 milioni",
+        "over_10m": "Più di 10 milioni"
+      },
+      "startLabel": "Quando inizieresti?",
+      "startWhen": {
+        "now": "Subito",
+        "quarter": "Questo trimestre",
+        "later": "Più avanti quest’anno"
+      },
+      "needsLabel": "Di cosa hai bisogno?",
+      "need": {
+        "sso": "Single sign-on",
+        "dedicated": "Infrastruttura dedicata",
+        "residency": "Dati in una regione specifica",
+        "sla": "Accordo sul livello di servizio (SLA)",
+        "security": "Verifica di sicurezza e conformità",
+        "invoice": "Pagamento con fattura",
+        "onboarding": "Avvio e formazione",
+        "custom_limits": "Limiti personalizzati"
+      },
+      "residency": "Dove devono restare i dati?",
+      "residencyHelp": "Un paese o una regione, per esempio l’Unione europea.",
+      "message": "Altro che dovremmo sapere?",
+      "messageHelp": "Il tuo utilizzo, i formati, le integrazioni o i requisiti di sicurezza.",
+      "messageShort": "Raccontaci qualcosa in più (almeno 10 caratteri).",
+      "required": "Compila questo campo.",
+      "email": "Inserisci un indirizzo email valido.",
+      "privacy": "Usiamo questi dati solo per rispondere alla tua richiesta.",
+      "send": "Invia richiesta",
+      "sentTitle": "Grazie, l’abbiamo ricevuta",
+      "sentDesc": "Il team di Formalie risponderà a {email} entro un giorno lavorativo.",
+      "close": "Chiudi"
+    },
+    "limitAdmin": "Un piano superiore include di più. Confronta i piani per passare a uno superiore.",
+    "limitMember": "Chiedi a un amministratore dello spazio di lavoro informazioni su un piano superiore.",
+    "seePlans": "Vedi i piani",
+    "locked": "Da {plan} in su",
+    "lockedHint": "Il tuo piano non lo include. Passa a un piano superiore per usarlo."
   }
 }

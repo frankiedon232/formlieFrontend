@@ -13,6 +13,7 @@
  *
  * Formalie's mark stays under every email whatever the address (owner, 2026-10-07). Every change is audited.
  */
+import { requireFeature } from '../core/plan'
 import { resolveCname, resolveTxt } from 'node:dns/promises'
 import { connect as connectTcp } from 'node:net'
 import { connect as connectTls } from 'node:tls'
@@ -43,6 +44,7 @@ const blocked = (domain: string, root: string) => domain === root || domain.ends
 
 export const addSendingDomain = defineMockRoute(({ event, body }) => {
   const { tenant, user } = requireAdmin(event)
+  requireFeature(tenant, 'custom_email')
   const { address } = parseBody(addressSchema, body)
   const domain = address.split('@').pop()!
   if (blocked(domain, useRuntimeConfig(event).public.rootDomain)) throw new MockError('FRM-GEN-1002', [{ field: 'address', message: 'domain' }])
@@ -124,6 +126,7 @@ const smtpSchema = z.object({
 
 export const saveSmtp = defineMockRoute(({ event, body }) => {
   const { tenant, user } = requireAdmin(event)
+  requireFeature(tenant, 'custom_email')
   const input = parseBody(smtpSchema, body)
   const current = sendingOf(tenant).smtp
   const password = input.password === undefined ? (current?.password ?? null) : input.password || null
@@ -195,6 +198,7 @@ const modeSchema = z.object({ mode: z.enum(['formalie', 'domain', 'smtp']) })
 export const setSendingMode = defineMockRoute(({ event, body }) => {
   const { tenant, user } = requireAdmin(event)
   const { mode } = parseBody(modeSchema, body)
+  if (mode !== 'formalie') requireFeature(tenant, 'custom_email')
   const sending = sendingOf(tenant)
   if ((mode === 'domain' && sending.domain?.status !== 'verified') || (mode === 'smtp' && sending.smtp?.status !== 'working')) throw new MockError('FRM-SET-1001', [{ field: 'mode', message: mode }])
   const before = sending.mode

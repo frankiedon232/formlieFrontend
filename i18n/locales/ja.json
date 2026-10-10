@@ -655,7 +655,10 @@
     "FRM-AI-1004": "この下書きはすでに使用済みか、保留されています。もう一度アシスタントに依頼してください。",
     "FRM-AUTH-1019": "このメールアドレスは、組織のシングルサインオンでログインします。上のボタンをご利用ください。",
     "FRM-AUTH-1020": "オンにする前に、シングルサインオンをテストしてください。",
-    "FRM-SET-1001": "先に確認またはテストをすると、使えるようになります。"
+    "FRM-SET-1001": "先に確認またはテストをすると、使えるようになります。",
+    "FRM-BILL-1001": "お支払いが完了しませんでした。別のカードをお試しになるか、カード会社にお問い合わせください。",
+    "FRM-BILL-1002": "このお支払い画面の有効期限が切れました。最初からやり直してください。",
+    "FRM-BILL-1003": "お問い合わせはすでに受け付けています。まもなくご連絡します。"
   },
   "errorUi": {
     "reference": "参照番号：{id}",
@@ -7074,7 +7077,8 @@
       "organisation": "組織",
       "access": "サインインとセキュリティ",
       "communication": "通知とメール",
-      "data": "データとフォーム"
+      "data": "データとフォーム",
+      "billing": "サブスクリプション"
     },
     "nav": {
       "overview": "概要",
@@ -7093,7 +7097,9 @@
       "privacy": "プライバシーとデータ",
       "formDefaults": "フォームの既定値",
       "themes": "テーマ",
-      "landingPages": "ランディングページ"
+      "landingPages": "ランディングページ",
+      "subscription": "サブスクリプション",
+      "plans": "プラン"
     },
     "desc": {
       "overview": "ワークスペースに関するすべてを 1 か所に。",
@@ -7112,7 +7118,9 @@
       "privacy": "回答の保存期間、同意文、データリクエスト。",
       "formDefaults": "新しいフォームの初期設定と埋め込みの既定値。",
       "themes": "ワークスペースで使えるフォームのデザイン。",
-      "landingPages": "フォームの公開ページ用のページデザイン。"
+      "landingPages": "フォームの公開ページ用のページデザイン。",
+      "subscription": "ご利用のプラン、利用状況、カード、更新、リマインダー、請求書を確認できます。",
+      "plans": "プランを比較し、月払い、3 か月払い、年払いでプランを変更できます。"
     },
     "status": {
       "complete": "完了",
@@ -9115,5 +9123,332 @@
       "of": "{n} / {total}",
       "hint": "ダブルクリック、または + と - を押すとズームできます。ドラッグで移動します。Esc で閉じます。"
     }
+  },
+  "billing": {
+    "plan": {
+      "starter": {
+        "name": "Starter",
+        "bestFor": "小規模にデータを集める個人、学生、趣味の方や、API を試したい方向けです。",
+        "everything": "主要な機能をすべて、好きなだけ無料でご利用いただけます。"
+      },
+      "professional": {
+        "name": "Professional",
+        "bestFor": "成長に合わせて、定期的な自動データとほぼリアルタイムの監視が必要なスタートアップや小規模チーム向けです。",
+        "everything": "Starter のすべてに加えて、独自ドメイン、送信元アドレス、社内ログインが使えます。"
+      },
+      "business": {
+        "name": "Business",
+        "bestFor": "大量のデータ取り込み、高度なフィルタリング、高速な抽出が必要な成熟した企業向けです。制限はありません。",
+        "everything": "Professional のすべてに加えて、フォーム、回答、データベースの制限がありません。"
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "bestFor": "特有のデータ要件、厳格なセキュリティとコンプライアンスの要件、専用インフラが必要な大規模組織向けです。",
+        "everything": "Business のすべてを組織に合わせて整え、専任チームがサポートします。"
+      }
+    },
+    "periodName": {
+      "monthly": "月払い",
+      "quarterly": "3 か月払い",
+      "annually": "年払い"
+    },
+    "periodLabel": "請求期間",
+    "billed": {
+      "quarterly": "{total} を 3 か月ごとに請求",
+      "annually": "{total} を年 1 回請求"
+    },
+    "billedMonthly": "毎月請求",
+    "pricePer": {
+      "monthly": "月額 {amount}",
+      "quarterly": "3 か月ごとに {amount}",
+      "annually": "年額 {amount}"
+    },
+    "perMonth": "/ 月",
+    "save": "{amount} お得",
+    "free": "無料",
+    "freeHint": "カードは不要です",
+    "freeForever": "無料、期限なし。",
+    "custom": "カスタム",
+    "customHint": "組織に合わせた価格",
+    "customAmount": "カスタム",
+    "popular": "一番人気",
+    "yours": "現在のプラン",
+    "currentPlan": "利用中のプラン",
+    "scheduledShort": "次の期間から開始",
+    "upgrade": "アップグレード",
+    "downgrade": "ダウングレード",
+    "switchPeriod": "この期間に切り替える",
+    "contactUs": "お問い合わせ",
+    "unlimited": "無制限",
+    "upTo": "最大 {n}",
+    "credits": "月 {n} クレジット",
+    "included": "含まれる",
+    "notIncluded": "含まれない",
+    "pricesNote": "価格は米ドルで、税抜きです。3 か月払いは 10%、年払いは 20% お得です。",
+    "comparePlans": "プランを比較",
+    "changePlan": "プランを変更",
+    "cancelPlan": "プランをキャンセル",
+    "keepPlan": "プランを継続",
+    "addCard": "カードを追加",
+    "enterpriseTitle": "もっと必要ですか、それとも特別な要件がありますか?",
+    "enterpriseDesc": "組織についてお聞かせください。専用インフラ、データの所在地指定、セキュリティレビュー、カスタム上限を含む Enterprise の提案をご用意します。",
+    "fact": {
+      "forms": "フォーム {n} 件 | フォーム {n} 件",
+      "formsUnlimited": "フォーム無制限",
+      "responses": "各フォームに回答 {n} 件",
+      "responsesUnlimited": "回答無制限",
+      "databases": "自分のデータベースを使う: {list}",
+      "databasesAll": "任意のデータベースを使う: MySQL、PostgreSQL、MariaDB、SQL Server、Oracle",
+      "signinEmail": "メールとパスワードでログイン",
+      "signinAll": "Google、Apple、Microsoft、Facebook、シングルサインオン (Okta など)",
+      "subdomain": "独自の Formalie サブドメイン",
+      "domain": "独自ドメイン 1 つ",
+      "domains": "独自ドメイン",
+      "email": "ご自分のアドレスまたはメールサーバーからメール送信",
+      "emailFormalie": "Formalie のアドレスからメール送信",
+      "ai": "AI アシスタント: 月 {n} クレジット",
+      "aiCustom": "AI アシスタント: ご要望に合わせたクレジット"
+    },
+    "db": {
+      "mysql": "MySQL",
+      "postgresql": "PostgreSQL",
+      "mariadb": "MariaDB",
+      "sqlserver": "SQL Server",
+      "oracle": "Oracle"
+    },
+    "compare": {
+      "heading": "すべての機能を比較",
+      "title": "機能",
+      "group": {
+        "forms": "フォームと回答",
+        "insight": "インサイト",
+        "data": "データ",
+        "api": "API サービス",
+        "brand": "ブランドとアドレス",
+        "access": "ログイン",
+        "support": "サポート"
+      },
+      "forms": "フォーム",
+      "responses": "各フォームの回答数",
+      "languages": "言語",
+      "templates": "テンプレートリポジトリ",
+      "lists": "カスタムリスト",
+      "themes": "テーマとランディングページ",
+      "versions": "バージョン履歴",
+      "folders": "ワークスペースとフォルダ",
+      "fillLater": "後で入力 (中断したところから再開)",
+      "analytics": "高度な分析",
+      "visits": "訪問数と回答数の分析",
+      "ai": "AI アシスタント",
+      "db": "自分のデータベースを使う: {name}",
+      "explorer": "データベースエクスプローラー",
+      "query": "ライブクエリエディター",
+      "destinations": "データの保存先",
+      "api": "API サービス、エンドポイント、トークン、アクセスルール",
+      "webhooks": "Webhook",
+      "apiDocs": "API ドキュメント",
+      "branding": "ブランディング",
+      "subdomain": "Formalie サブドメイン",
+      "customDomain": "独自ドメイン",
+      "customEmail": "独自の送信元アドレスとメールサーバー",
+      "emailSignin": "メールとパスワード",
+      "socialSignin": "Google、Apple、Microsoft、Facebook",
+      "sso": "シングルサインオン (Okta など)",
+      "helpCentre": "ヘルプセンターとアシスタント",
+      "prioritySupport": "優先メールサポート",
+      "dedicatedSupport": "専任アカウントチーム",
+      "securityReview": "セキュリティとコンプライアンスのレビュー"
+    },
+    "status": {
+      "active": "有効",
+      "past_due": "お支払い期限",
+      "grace": "猶予期間",
+      "cancelled": "キャンセル済み",
+      "expired": "終了",
+      "ending": "終了予定"
+    },
+    "renewsOn": "{date} に {amount} で更新されます。",
+    "endsOn": "{date} に終了し、その後 Starter に移行します。",
+    "noRenewal": "{date} までお支払い済みです。自動更新はオフです。",
+    "cancelTitle": "{plan} をキャンセルしますか?",
+    "cancelDesc": "{date} まではすべてそのままご利用いただけます。その後、ワークスペースは Starter に移行し、その上限が適用されます。",
+    "cancelConfirm": "期間の終了時にキャンセル",
+    "cancelled": "プランは {date} に終了します",
+    "resumed": "プランはこれまでどおり更新されます",
+    "pastDueTitle": "お支払いを受け付けられませんでした",
+    "pastDueDesc": "{date} まではすべて引き続き動作します。プランを続けるにはカードを追加してください。",
+    "expiredTitle": "有料プランが終了しました",
+    "expiredDesc": "ワークスペースは現在 Starter です。すべてを元に戻すにはプランを選んでください。",
+    "scheduledTitle": "{plan} ({period}) は {date} に開始します",
+    "dropScheduled": "現在のプランを続ける",
+    "scheduleDropped": "変更を取り消しました",
+    "noCardTitle": "更新用のカードがありません",
+    "noCardDesc": "{date} までにカードを追加してください。追加しない場合、プランは短い猶予期間に入り、その後終了します。",
+    "block": {
+      "usage": "利用状況",
+      "usageHint": "プランの上限に対するワークスペースの利用状況です。",
+      "payment": "お支払い方法",
+      "paymentHint": "更新料金を請求するカードです。",
+      "renewal": "更新とリマインダー",
+      "renewalHint": "自動で更新し、請求の前にお知らせを受け取れます。",
+      "invoices": "請求書",
+      "invoicesHint": "すべてのお支払いを、期間とステータスとともに表示します。"
+    },
+    "usage": {
+      "forms": "フォーム",
+      "responses": "最も利用の多いフォームの回答数",
+      "ai": "AI クレジット",
+      "busiest": "最も利用の多いフォーム: {form}",
+      "thisMonth": "今月",
+      "databases": "接続できるデータベース",
+      "upgradeFor": "上位プランで"
+    },
+    "card": {
+      "expires": "有効期限 {date}",
+      "expiringSoon": "まもなく期限切れ",
+      "none": "登録されたカードがありません。有料プランの更新にはカードが必要です。",
+      "replace": "置き換える",
+      "remove": "カードを削除",
+      "removeTitle": "このカードを削除しますか?",
+      "removeDesc": "カードはいつでも追加し直せます。",
+      "removeRenewal": "プランは {date} に更新されます。カードがない場合は、それまでに新しいカードを追加してください。追加しないと更新料金を請求できません。",
+      "removed": "カードを削除しました",
+      "secure": "カード情報は決済代行会社の Payoneer が保管します。Formalie がカード番号を見たり保存したりすることはありません。"
+    },
+    "renewal": {
+      "auto": "自動で更新",
+      "onHint": "プランは {date} に更新され、登録されたカードに請求されます。",
+      "offHint": "更新しない場合、プランは {date} に終了します。",
+      "freeHint": "Starter は無料で、更新は不要です。",
+      "offTitle": "自動更新をオフにしますか?",
+      "offDesc": "プランは {date} まで続き、その後ワークスペースは Starter に移行します。",
+      "offConfirm": "オフにする",
+      "reminders": "リマインダー",
+      "before": "更新の前",
+      "days": "{n} 日前 | {n} 日前",
+      "failed": "お支払いに失敗したとき",
+      "expiring": "カードの有効期限が近いとき",
+      "alsoTo": "追加の送信先",
+      "alsoToHelp": "ワークスペースの所有者には必ず届きます。経理チームなど、最大 5 件まで追加できます。",
+      "emailPlaceholder": "finance{'@'}example.com を入力して Enter",
+      "saved": "保存しました"
+    },
+    "invoice": {
+      "number": "請求書",
+      "date": "日付",
+      "plan": "プランと期間",
+      "amount": "金額",
+      "status": "ステータス",
+      "more": "さらに表示",
+      "none": "請求書はまだありません",
+      "noneDesc": "請求書は最初のお支払いの後にここに表示されます。",
+      "state": {
+        "paid": "支払い済み",
+        "open": "未払い",
+        "failed": "失敗",
+        "refunded": "返金済み"
+      }
+    },
+    "changeTitle": "{plan} に変更",
+    "changeDesc": "確定する前に、何が変わるか確認してください。",
+    "starts": "開始",
+    "startsNow": "すぐに",
+    "startsOn": "{date}",
+    "price": "価格",
+    "credit": "未使用期間のクレジット",
+    "dueNow": "今回のお支払い額",
+    "nowNote": "新しいプランはすぐに開始されます。現在の期間の残りは、最初のお支払いから差し引かれます。",
+    "laterNote": "お支払い済みの期間が終わるまで現在のプランを利用できます。新しいプランはそのときに始まります。",
+    "cancelNote": "お支払い済みの期間が終わるまで現在のプランを利用できます。その後、ワークスペースは Starter に移行します。",
+    "overTitle": "新しいプランの上限を超えるものがあります",
+    "overNote": "何も削除されません。上限を超えたフォームと回答はそのまま残りますが、追加はできません。新しいプランに含まれない機能はオフになり、再びアップグレードすると戻ります。",
+    "over": {
+      "forms": "フォーム: 現在 {current} 件、許可は {allowed} 件",
+      "responses": "フォームあたりの回答: 現在 {current} 件、許可は {allowed} 件",
+      "databases": "含まれないデータベース: {current} 件",
+      "customDomain": "独自ドメインが提供されなくなります",
+      "customEmail": "メールは再び Formalie のアドレスから送信されます",
+      "sso": "シングルサインオンがオフになります",
+      "socialSignin": "Google、Apple、Microsoft、Facebook でのログインがオフになります"
+    },
+    "confirmChange": "変更を確定",
+    "continuePay": "お支払いに進む",
+    "changed": "{plan} に変更されました",
+    "changeScheduled": "{plan} は {date} に開始します",
+    "paid": "お支払いを受け付けました。{plan} に変更されました",
+    "cardSaved": "カードを保存しました",
+    "checkout": {
+      "title": "お支払い",
+      "cardTitle": "カードを追加",
+      "desc": "Payoneer による安全な決済です。",
+      "cardDesc": "更新用のカードを保存してください。今は何も請求されません。",
+      "testNote": "テストモード: Payoneer はまだ接続されていないため、実際のカードは使われません。テストカードを選んで支払いを試せます。",
+      "testCard": "テストカード",
+      "pay": "{amount} を支払う",
+      "saveCard": "カードを保存",
+      "decline": "拒否された支払いを試す",
+      "secure": "カード情報は Payoneer の安全なページで入力します。Formalie が保持するのは、カードのブランド、下 4 桁、有効期限だけです。"
+    },
+    "enquiry": {
+      "title": "Enterprise のお問い合わせ",
+      "desc": "必要なことをお聞かせください。Formalie チームが 1 営業日以内に返信します。",
+      "you": "お客様について",
+      "company": "会社",
+      "name": "お名前",
+      "workEmail": "勤務先のメールアドレス",
+      "phone": "電話番号",
+      "role": "役職",
+      "country": "国",
+      "scale": "規模",
+      "sizeLabel": "会社の規模",
+      "size": {
+        "1-50": "1 人から 50 人",
+        "51-200": "51 人から 200 人",
+        "201-1000": "201 人から 1,000 人",
+        "1001-5000": "1,001 人から 5,000 人",
+        "5000+": "5,000 人を超える"
+      },
+      "volumeLabel": "月あたりの回答数",
+      "volume": {
+        "under_100k": "100,000 件未満",
+        "100k_1m": "100,000 件から 100 万件",
+        "1m_10m": "100 万件から 1,000 万件",
+        "over_10m": "1,000 万件を超える"
+      },
+      "startLabel": "いつ開始しますか?",
+      "startWhen": {
+        "now": "すぐに",
+        "quarter": "今四半期",
+        "later": "今年の後半"
+      },
+      "needsLabel": "必要なものは何ですか?",
+      "need": {
+        "sso": "シングルサインオン",
+        "dedicated": "専用インフラ",
+        "residency": "特定の地域のデータ",
+        "sla": "稼働率の保証 (SLA)",
+        "security": "セキュリティとコンプライアンスのレビュー",
+        "invoice": "請求書払い",
+        "onboarding": "導入支援とトレーニング",
+        "custom_limits": "カスタム上限"
+      },
+      "residency": "データはどこに置きますか?",
+      "residencyHelp": "国または地域です。例: 欧州連合。",
+      "message": "ほかにお伝えしたいことはありますか?",
+      "messageHelp": "ご利用内容、形式、連携、セキュリティ要件など。",
+      "messageShort": "もう少し詳しくお聞かせください (10 文字以上)。",
+      "required": "この項目を入力してください。",
+      "email": "有効なメールアドレスを入力してください。",
+      "privacy": "これらの情報は、お問い合わせへの返信にのみ使用します。",
+      "send": "お問い合わせを送信",
+      "sentTitle": "ありがとうございます、受け付けました",
+      "sentDesc": "Formalie チームが 1 営業日以内に {email} へ返信します。",
+      "close": "閉じる"
+    },
+    "limitAdmin": "上位のプランにはより多くの機能が含まれます。プランを比較してアップグレードしてください。",
+    "limitMember": "上位のプランについては、ワークスペースの管理者にお問い合わせください。",
+    "seePlans": "プランを見る",
+    "locked": "{plan} 以上",
+    "lockedHint": "現在のプランには含まれていません。アップグレードするとご利用いただけます。"
   }
 }

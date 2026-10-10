@@ -3,6 +3,7 @@
  * chosen days), in `.data/mock/ai.json`. Seeded workspaces start with a month of believable requests
  * so the overview, history and usage have something to show.
  */
+import { limitsOf } from '../core/plan'
 import { AI_KINDS, AI_STATUSES, type AiDraftStats, type AiKind, type AiNote, type AiTitleKey, type AiRequestDetail, type AiRequestRow, type AiSettings, type AiSource, type AiStatus, type AiTarget } from '#shared/types/ai'
 import { AI_DEFAULT_MONTHLY_CREDITS, AI_KIND_META } from '#shared/utils/ai/kinds'
 import { loadPersisted, savePersisted } from '../core/persist'
@@ -144,6 +145,9 @@ function titleKeyOf(title: string): AiTitleKey | null {
 export const monthStart = (now = new Date()) => new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), 1))
 
 /** Credits used since the start of this month. */
+/** This month's credits: the plan's (Subscription, F24); Enterprise uses the agreed amount kept in the settings. */
+export const allowanceOf = (tenant: MockTenant) => limitsOf(tenant).ai_credits ?? aiOf(tenant).settings.monthly_credits
+
 export const creditsUsed = (tenant: MockTenant) => {
   const start = monthStart().getTime()
   return aiOf(tenant).requests.reduce((sum, request) => (Date.parse(request.created_at) >= start ? sum + request.credits : sum), 0)
@@ -157,7 +161,7 @@ export function requireAi(tenant: MockTenant, kind: AiKind, needs: AiSource[] = 
   const { settings } = aiOf(tenant)
   if (!settings.enabled) throw new MockError('FRM-AI-1001')
   if (needs.some(source => !settings.sources[source])) throw new MockError('FRM-AI-1003')
-  if (creditsUsed(tenant) + cost > settings.monthly_credits) throw new MockError('FRM-AI-1002')
+  if (creditsUsed(tenant) + cost > allowanceOf(tenant)) throw new MockError('FRM-AI-1002')
   return settings
 }
 

@@ -655,7 +655,10 @@
     "FRM-AI-1004": "이 초안은 이미 사용되었거나 보류되었습니다. 어시스턴트에게 다시 요청해 주세요.",
     "FRM-AUTH-1019": "이 이메일 주소는 조직의 싱글 사인온으로 로그인합니다. 위의 버튼을 사용하세요.",
     "FRM-AUTH-1020": "켜기 전에 싱글 사인온을 테스트하세요.",
-    "FRM-SET-1001": "먼저 확인하거나 테스트하면 사용할 수 있습니다."
+    "FRM-SET-1001": "먼저 확인하거나 테스트하면 사용할 수 있습니다.",
+    "FRM-BILL-1001": "결제가 완료되지 않았습니다. 다른 카드를 사용하거나 카드사에 문의하세요.",
+    "FRM-BILL-1002": "이 결제 세션이 만료되었습니다. 처음부터 다시 시작하세요.",
+    "FRM-BILL-1003": "문의를 이미 받았습니다. 곧 연락드리겠습니다."
   },
   "errorUi": {
     "reference": "참조 번호: {id}",
@@ -7074,7 +7077,8 @@
       "organisation": "조직",
       "access": "로그인 및 보안",
       "communication": "알림 및 이메일",
-      "data": "데이터 및 양식"
+      "data": "데이터 및 양식",
+      "billing": "구독"
     },
     "nav": {
       "overview": "개요",
@@ -7093,7 +7097,9 @@
       "privacy": "개인정보 및 데이터",
       "formDefaults": "양식 기본값",
       "themes": "테마",
-      "landingPages": "랜딩 페이지"
+      "landingPages": "랜딩 페이지",
+      "subscription": "구독",
+      "plans": "요금제"
     },
     "desc": {
       "overview": "워크스페이스에 관한 모든 것을 한곳에서 확인하세요.",
@@ -7112,7 +7118,9 @@
       "privacy": "응답 보관 기간, 동의 문구, 데이터 요청.",
       "formDefaults": "새 양식의 시작 설정과 삽입 기본값.",
       "themes": "워크스페이스에서 사용할 수 있는 양식 디자인.",
-      "landingPages": "양식 공개 페이지용 페이지 디자인."
+      "landingPages": "양식 공개 페이지용 페이지 디자인.",
+      "subscription": "요금제, 사용량, 카드, 갱신, 알림, 청구서를 확인하세요.",
+      "plans": "요금제를 비교하고 월간, 분기, 연간 결제로 변경하세요."
     },
     "status": {
       "complete": "완료",
@@ -9115,5 +9123,332 @@
       "of": "{n} / {total}",
       "hint": "두 번 클릭하거나 + 와 - 를 눌러 확대·축소하세요. 드래그하면 이동합니다. Esc로 닫습니다."
     }
+  },
+  "billing": {
+    "plan": {
+      "starter": {
+        "name": "Starter",
+        "bestFor": "소규모로 데이터를 수집하거나 API를 써 보는 개인, 학생, 취미 사용자를 위한 요금제입니다.",
+        "everything": "모든 핵심 기능을 원하는 만큼 무료로 이용하세요."
+      },
+      "professional": {
+        "name": "Professional",
+        "bestFor": "성장하면서 정기적인 자동 데이터와 실시간에 가까운 모니터링이 필요한 스타트업과 소규모 팀을 위한 요금제입니다.",
+        "everything": "Starter의 모든 기능에 개인 도메인, 보내는 주소, 회사 로그인이 더해집니다."
+      },
+      "business": {
+        "name": "Business",
+        "bestFor": "데이터 유입이 많고 고급 필터링과 빠른 추출이 필요한 기업을 위한 요금제입니다. 제한이 없습니다.",
+        "everything": "Professional의 모든 기능에 양식, 응답, 데이터베이스 제한이 없습니다."
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "bestFor": "특별한 데이터 요건, 엄격한 보안 및 규정 준수 요구 또는 전용 인프라가 필요한 대규모 조직을 위한 요금제입니다.",
+        "everything": "Business의 모든 기능을 조직에 맞게 구성하고 전담 팀이 지원합니다."
+      }
+    },
+    "periodName": {
+      "monthly": "월간",
+      "quarterly": "분기",
+      "annually": "연간"
+    },
+    "periodLabel": "결제 주기",
+    "billed": {
+      "quarterly": "{total}, 3개월마다 청구",
+      "annually": "{total}, 연 1회 청구"
+    },
+    "billedMonthly": "매월 청구",
+    "pricePer": {
+      "monthly": "월 {amount}",
+      "quarterly": "3개월마다 {amount}",
+      "annually": "연 {amount}"
+    },
+    "perMonth": "/ 월",
+    "save": "{amount} 절약",
+    "free": "무료",
+    "freeHint": "카드 불필요",
+    "freeForever": "무료, 종료일 없음.",
+    "custom": "맞춤형",
+    "customHint": "조직에 맞춘 가격",
+    "customAmount": "맞춤형",
+    "popular": "가장 인기",
+    "yours": "내 요금제",
+    "currentPlan": "현재 요금제",
+    "scheduledShort": "다음 주기에 시작",
+    "upgrade": "업그레이드",
+    "downgrade": "다운그레이드",
+    "switchPeriod": "이 주기로 전환",
+    "contactUs": "문의하기",
+    "unlimited": "무제한",
+    "upTo": "최대 {n}",
+    "credits": "월 {n} 크레딧",
+    "included": "포함",
+    "notIncluded": "미포함",
+    "pricesNote": "가격은 미국 달러 기준이며 세금은 별도입니다. 분기 결제는 10%, 연간 결제는 20% 절약됩니다.",
+    "comparePlans": "요금제 비교",
+    "changePlan": "요금제 변경",
+    "cancelPlan": "요금제 취소",
+    "keepPlan": "내 요금제 유지",
+    "addCard": "카드 추가",
+    "enterpriseTitle": "더 많은 기능이나 특별한 요건이 필요하신가요?",
+    "enterpriseDesc": "조직에 대해 알려 주시면 Enterprise 제안을 준비해 드립니다. 전용 인프라, 데이터 상주, 보안 검토, 맞춤 한도를 제공합니다.",
+    "fact": {
+      "forms": "양식 {n}개 | 양식 {n}개",
+      "formsUnlimited": "무제한 양식",
+      "responses": "양식마다 응답 {n}개",
+      "responsesUnlimited": "무제한 응답",
+      "databases": "내 데이터베이스 사용: {list}",
+      "databasesAll": "모든 데이터베이스 사용: MySQL, PostgreSQL, MariaDB, SQL Server, Oracle",
+      "signinEmail": "이메일과 비밀번호로 로그인",
+      "signinAll": "Google, Apple, Microsoft, Facebook, 싱글 사인온(Okta 등)",
+      "subdomain": "나만의 Formalie 서브도메인",
+      "domain": "사용자 지정 도메인 1개",
+      "domains": "사용자 지정 도메인",
+      "email": "내 주소 또는 메일 서버에서 이메일 발송",
+      "emailFormalie": "Formalie 주소에서 이메일 발송",
+      "ai": "AI 어시스턴트: 월 {n} 크레딧",
+      "aiCustom": "AI 어시스턴트: 필요에 맞는 크레딧"
+    },
+    "db": {
+      "mysql": "MySQL",
+      "postgresql": "PostgreSQL",
+      "mariadb": "MariaDB",
+      "sqlserver": "SQL Server",
+      "oracle": "Oracle"
+    },
+    "compare": {
+      "heading": "모든 기능 비교",
+      "title": "기능",
+      "group": {
+        "forms": "양식과 응답",
+        "insight": "인사이트",
+        "data": "내 데이터",
+        "api": "API 서비스",
+        "brand": "브랜드와 주소",
+        "access": "로그인",
+        "support": "지원"
+      },
+      "forms": "양식",
+      "responses": "양식당 응답",
+      "languages": "언어",
+      "templates": "템플릿 저장소",
+      "lists": "사용자 지정 목록",
+      "themes": "테마와 랜딩 페이지",
+      "versions": "버전 기록",
+      "folders": "워크스페이스와 폴더",
+      "fillLater": "나중에 작성(중단한 곳에서 이어서)",
+      "analytics": "고급 분석",
+      "visits": "방문 및 응답 분석",
+      "ai": "AI 어시스턴트",
+      "db": "내 데이터베이스 사용: {name}",
+      "explorer": "데이터베이스 탐색기",
+      "query": "실시간 쿼리 편집기",
+      "destinations": "데이터 대상",
+      "api": "API 서비스, 엔드포인트, 토큰, 접근 규칙",
+      "webhooks": "웹훅",
+      "apiDocs": "API 문서",
+      "branding": "브랜딩",
+      "subdomain": "Formalie 서브도메인",
+      "customDomain": "사용자 지정 도메인",
+      "customEmail": "자체 보내는 주소와 메일 서버",
+      "emailSignin": "이메일과 비밀번호",
+      "socialSignin": "Google, Apple, Microsoft, Facebook",
+      "sso": "싱글 사인온(Okta 등)",
+      "helpCentre": "도움말 센터와 어시스턴트",
+      "prioritySupport": "우선 이메일 지원",
+      "dedicatedSupport": "전담 계정 팀",
+      "securityReview": "보안 및 규정 준수 검토"
+    },
+    "status": {
+      "active": "활성",
+      "past_due": "결제 필요",
+      "grace": "유예 기간",
+      "cancelled": "취소됨",
+      "expired": "종료됨",
+      "ending": "종료 예정"
+    },
+    "renewsOn": "{date}에 {amount}으로 갱신됩니다.",
+    "endsOn": "{date}에 종료되며 이후 Starter로 전환됩니다.",
+    "noRenewal": "{date}까지 결제되었습니다. 자동 갱신이 꺼져 있습니다.",
+    "cancelTitle": "{plan}을(를) 취소할까요?",
+    "cancelDesc": "{date}까지는 모든 것을 유지합니다. 이후 워크스페이스는 Starter로 전환되며 해당 한도가 적용됩니다.",
+    "cancelConfirm": "주기 종료 시 취소",
+    "cancelled": "요금제가 {date}에 종료됩니다",
+    "resumed": "요금제가 평소처럼 갱신됩니다",
+    "pastDueTitle": "결제를 처리하지 못했습니다",
+    "pastDueDesc": "{date}까지는 모든 것이 계속 작동합니다. 요금제를 유지하려면 카드를 추가하세요.",
+    "expiredTitle": "유료 요금제가 종료되었습니다",
+    "expiredDesc": "워크스페이스가 이제 Starter입니다. 모든 기능을 되찾으려면 요금제를 선택하세요.",
+    "scheduledTitle": "{plan}({period})이(가) {date}에 시작됩니다",
+    "dropScheduled": "현재 요금제 유지",
+    "scheduleDropped": "변경이 취소되었습니다",
+    "noCardTitle": "갱신용 카드가 없습니다",
+    "noCardDesc": "{date} 전에 카드를 추가하세요. 그러지 않으면 요금제가 짧은 유예 기간에 들어간 뒤 종료됩니다.",
+    "block": {
+      "usage": "사용량",
+      "usageHint": "요금제 한도 대비 워크스페이스 사용 현황입니다.",
+      "payment": "결제 수단",
+      "paymentHint": "갱신 요금이 청구되는 카드입니다.",
+      "renewal": "갱신 및 알림",
+      "renewalHint": "자동으로 갱신하고 결제 전에 알림을 받으세요.",
+      "invoices": "청구서",
+      "invoicesHint": "모든 결제를 기간과 상태와 함께 보여 줍니다."
+    },
+    "usage": {
+      "forms": "양식",
+      "responses": "가장 활발한 양식의 응답",
+      "ai": "AI 크레딧",
+      "busiest": "가장 활발한 양식: {form}",
+      "thisMonth": "이번 달",
+      "databases": "연결할 수 있는 데이터베이스",
+      "upgradeFor": "상위 요금제에서"
+    },
+    "card": {
+      "expires": "{date} 만료",
+      "expiringSoon": "곧 만료",
+      "none": "등록된 카드가 없습니다. 유료 요금제는 갱신을 위해 카드가 필요합니다.",
+      "replace": "교체",
+      "remove": "카드 제거",
+      "removeTitle": "이 카드를 제거할까요?",
+      "removeDesc": "언제든지 카드를 다시 추가할 수 있습니다.",
+      "removeRenewal": "요금제가 {date}에 갱신됩니다. 카드가 없으면 그 전에 새 카드를 추가하세요. 그러지 않으면 갱신 요금을 청구할 수 없습니다.",
+      "removed": "카드를 제거했습니다",
+      "secure": "카드 정보는 결제 대행사 Payoneer가 보관합니다. Formalie는 카드 번호를 보거나 저장하지 않습니다."
+    },
+    "renewal": {
+      "auto": "자동 갱신",
+      "onHint": "요금제가 {date}에 갱신되며 등록된 카드로 청구됩니다.",
+      "offHint": "갱신하지 않으면 요금제가 {date}에 종료됩니다.",
+      "freeHint": "Starter는 무료이며 갱신이 필요 없습니다.",
+      "offTitle": "자동 갱신을 끌까요?",
+      "offDesc": "요금제는 {date}까지 유지되며 이후 워크스페이스는 Starter로 전환됩니다.",
+      "offConfirm": "끄기",
+      "reminders": "알림",
+      "before": "갱신 전",
+      "days": "{n}일 전 | {n}일 전",
+      "failed": "결제가 실패할 때",
+      "expiring": "카드가 곧 만료될 때",
+      "alsoTo": "추가 수신 주소",
+      "alsoToHelp": "워크스페이스 소유자는 항상 받습니다. 재무팀 등 주소를 최대 5개까지 더 추가하세요.",
+      "emailPlaceholder": "finance{'@'}example.com 입력 후 Enter",
+      "saved": "저장됨"
+    },
+    "invoice": {
+      "number": "청구서",
+      "date": "날짜",
+      "plan": "요금제와 기간",
+      "amount": "금액",
+      "status": "상태",
+      "more": "더 보기",
+      "none": "아직 청구서가 없습니다",
+      "noneDesc": "첫 결제 후 청구서가 여기에 표시됩니다.",
+      "state": {
+        "paid": "결제됨",
+        "open": "미결제",
+        "failed": "실패",
+        "refunded": "환불됨"
+      }
+    },
+    "changeTitle": "{plan}(으)로 변경",
+    "changeDesc": "확인하기 전에 무엇이 바뀌는지 살펴보세요.",
+    "starts": "시작",
+    "startsNow": "즉시",
+    "startsOn": "{date}",
+    "price": "가격",
+    "credit": "미사용 기간 크레딧",
+    "dueNow": "지금 결제할 금액",
+    "nowNote": "새 요금제는 바로 시작됩니다. 현재 주기에서 남은 금액은 첫 결제에서 차감됩니다.",
+    "laterNote": "결제한 주기가 끝날 때까지 현재 요금제를 유지합니다. 그 후 새 요금제가 시작됩니다.",
+    "cancelNote": "결제한 주기가 끝날 때까지 현재 요금제를 유지합니다. 그 후 워크스페이스는 Starter로 전환됩니다.",
+    "overTitle": "일부 항목이 새 요금제의 한도를 넘습니다",
+    "overNote": "삭제되는 것은 없습니다. 한도를 넘은 양식과 응답은 그대로 유지되지만 더 추가할 수는 없습니다. 새 요금제에 포함되지 않은 기능은 꺼지며, 다시 업그레이드하면 돌아옵니다.",
+    "over": {
+      "forms": "양식: 현재 {current}개, 허용 {allowed}개",
+      "responses": "양식당 응답: 현재 {current}개, 허용 {allowed}개",
+      "databases": "포함되지 않은 데이터베이스: {current}개",
+      "customDomain": "사용자 지정 도메인이 더 이상 제공되지 않습니다",
+      "customEmail": "이메일이 다시 Formalie 주소에서 발송됩니다",
+      "sso": "싱글 사인온이 꺼집니다",
+      "socialSignin": "Google, Apple, Microsoft, Facebook 로그인이 꺼집니다"
+    },
+    "confirmChange": "변경 확인",
+    "continuePay": "결제로 계속",
+    "changed": "이제 {plan}을(를) 사용 중입니다",
+    "changeScheduled": "{plan}이(가) {date}에 시작됩니다",
+    "paid": "결제가 완료되었습니다. 이제 {plan}을(를) 사용 중입니다",
+    "cardSaved": "카드가 저장되었습니다",
+    "checkout": {
+      "title": "결제",
+      "cardTitle": "카드 추가",
+      "desc": "Payoneer의 안전한 결제입니다.",
+      "cardDesc": "갱신용 카드를 저장하세요. 지금은 아무것도 청구되지 않습니다.",
+      "testNote": "테스트 모드: Payoneer가 아직 연결되지 않아 실제 카드는 사용되지 않습니다. 테스트 카드를 선택해 결제를 체험해 보세요.",
+      "testCard": "테스트 카드",
+      "pay": "{amount} 결제",
+      "saveCard": "카드 저장",
+      "decline": "거절된 결제 체험",
+      "secure": "카드 정보는 Payoneer의 보안 페이지에 입력합니다. Formalie는 카드 브랜드, 마지막 네 자리, 만료일만 보관합니다."
+    },
+    "enquiry": {
+      "title": "Enterprise 문의",
+      "desc": "필요한 내용을 알려 주세요. Formalie 팀이 영업일 하루 안에 답변드립니다.",
+      "you": "본인 정보",
+      "company": "회사",
+      "name": "이름",
+      "workEmail": "업무용 이메일",
+      "phone": "전화번호",
+      "role": "직책",
+      "country": "국가",
+      "scale": "규모",
+      "sizeLabel": "회사 규모",
+      "size": {
+        "1-50": "1명에서 50명",
+        "51-200": "51명에서 200명",
+        "201-1000": "201명에서 1,000명",
+        "1001-5000": "1,001명에서 5,000명",
+        "5000+": "5,000명 초과"
+      },
+      "volumeLabel": "월 응답 수",
+      "volume": {
+        "under_100k": "100,000건 미만",
+        "100k_1m": "100,000건에서 100만 건",
+        "1m_10m": "100만 건에서 1,000만 건",
+        "over_10m": "1,000만 건 초과"
+      },
+      "startLabel": "언제 시작하시겠습니까?",
+      "startWhen": {
+        "now": "즉시",
+        "quarter": "이번 분기",
+        "later": "올해 후반"
+      },
+      "needsLabel": "무엇이 필요하세요?",
+      "need": {
+        "sso": "싱글 사인온",
+        "dedicated": "전용 인프라",
+        "residency": "특정 지역의 데이터",
+        "sla": "가동 시간 계약(SLA)",
+        "security": "보안 및 규정 준수 검토",
+        "invoice": "청구서로 결제",
+        "onboarding": "온보딩과 교육",
+        "custom_limits": "맞춤 한도"
+      },
+      "residency": "데이터는 어디에 있어야 하나요?",
+      "residencyHelp": "국가 또는 지역입니다. 예: 유럽 연합.",
+      "message": "그 밖에 알려 주실 내용이 있나요?",
+      "messageHelp": "사용 방식, 형식, 연동 또는 보안 요건.",
+      "messageShort": "조금 더 알려 주세요(10자 이상).",
+      "required": "이 항목을 입력하세요.",
+      "email": "올바른 이메일 주소를 입력하세요.",
+      "privacy": "이 정보는 문의에 답변하는 용도로만 사용합니다.",
+      "send": "문의 보내기",
+      "sentTitle": "감사합니다. 접수했습니다",
+      "sentDesc": "Formalie 팀이 영업일 하루 안에 {email}(으)로 답변드립니다.",
+      "close": "닫기"
+    },
+    "limitAdmin": "상위 요금제에는 더 많은 기능이 포함됩니다. 요금제를 비교해 업그레이드하세요.",
+    "limitMember": "상위 요금제는 워크스페이스 관리자에게 문의하세요.",
+    "seePlans": "요금제 보기",
+    "locked": "{plan} 이상",
+    "lockedHint": "현재 요금제에 포함되지 않은 기능입니다. 업그레이드하면 사용할 수 있습니다."
   }
 }
