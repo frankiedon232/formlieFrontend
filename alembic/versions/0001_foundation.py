@@ -1,4 +1,4 @@
-"""B0 foundation: schemas, grants, tenant directory, organisations, event outbox, partition upkeep.
+"""B0 foundation: schemas (`formaly` for workspace tables, `platform` for global ones), grants, tenant directory, organisations, event outbox, partition upkeep.
 
 Revision ID: 0001
 Revises:
@@ -16,6 +16,7 @@ import sqlalchemy as sa
 from alembic import op
 from sqlalchemy.dialects import postgresql
 
+from app.core.config import get_settings
 from app.core.db.rls import TENANT_MATCH, disable_tenant_rls, enable_tenant_rls
 
 revision: str = "0001"
@@ -24,6 +25,7 @@ branch_labels: str | Sequence[str] | None = None
 depends_on: str | Sequence[str] | None = None
 
 RUNTIME_ROLES = "formalie_app, formalie_worker, formalie_readonly, platform_reader, platform_writer"
+S = get_settings().db_schema  # `formaly`: every workspace table
 
 
 def _audit_columns() -> list[sa.Column]:
@@ -39,9 +41,11 @@ def _audit_columns() -> list[sa.Column]:
 
 def upgrade() -> None:
     # ── Schemas and baseline privileges ────────────────────────────────────────
+    # Nothing of Formalie lives in `public`; nobody may create objects there.
     op.execute("REVOKE CREATE ON SCHEMA public FROM PUBLIC")
+    op.execute(f"CREATE SCHEMA IF NOT EXISTS {S}")
     op.execute("CREATE SCHEMA IF NOT EXISTS platform")
-    op.execute(f"GRANT USAGE ON SCHEMA public, platform TO {RUNTIME_ROLES}")
+    op.execute(f"GRANT USAGE ON SCHEMA {S}, platform TO {RUNTIME_ROLES}")
 
     # ── Tenant directory (platform schema, no RLS, never readable by formalie_app) ──
     op.create_table(
@@ -120,8 +124,9 @@ def upgrade() -> None:
         sa.CheckConstraint("organisation_id = id", name="self_organisation"),
         sa.ForeignKeyConstraint(["tenant_id"], ["platform.tenants.id"], ondelete="RESTRICT",
                                 name="fk_organisations_tenant_id_tenants"),
+        schema=S,
     )
-    op.create_index("ix_organisations_tenant_org", "organisations", ["tenant_id", "organisation_id"],
+    op.create_index("ix_organisations_tenant_org", "organisations", ["tenant_id", "organisation_id"], schema=S,
                     postgresql_where=sa.text("deleted_at IS NULL"))
     for statement in enable_tenant_rls("organisations"):
         op.execute(statement)
@@ -143,20 +148,21 @@ def upgrade() -> None:
         sa.Column("attempts", sa.Integer(), server_default="0", nullable=False),
         sa.Column("last_error", sa.Text()),
         sa.PrimaryKeyConstraint("id", "created_at", name="pk_event_outbox"),
+        schema=S,
         postgresql_partition_by="RANGE (created_at)",
     )
-    op.create_index("ix_event_outbox_unpublished", "event_outbox", ["created_at"],
+    op.create_index("ix_event_outbox_unpublished", "event_outbox", ["created_at"], schema=S,
                     postgresql_where=sa.text("published_at IS NULL"))
-    op.execute("ALTER TABLE public.event_outbox ENABLE ROW LEVEL SECURITY")
-    op.execute("ALTER TABLE public.event_outbox FORCE ROW LEVEL SECURITY")
+    op.execute(f"ALTER TABLE {S}.event_outbox ENABLE ROW LEVEL SECURITY")
+    op.execute(f"ALTER TABLE {S}.event_outbox FORCE ROW LEVEL SECURITY")
     op.execute(f"""
-        CREATE POLICY event_outbox_isolation ON public.event_outbox
+        CREATE POLICY event_outbox_isolation ON {S}.event_outbox
         USING ({TENANT_MATCH})
         WITH CHECK (({TENANT_MATCH}) OR (tenant_id IS NULL AND organisation_id IS NULL))
     """)
-    op.execute("GRANT INSERT ON public.event_outbox TO formalie_app")
-    op.execute("GRANT SELECT, UPDATE ON public.event_outbox TO formalie_worker")
-    op.execute("GRANT SELECT ON public.event_outbox TO platform_reader")
+    op.execute(f"GRANT INSERT ON {S}.event_outbox TO formalie_app")
+    op.execute(f"GRANT SELECT, UPDATE ON {S}.event_outbox TO formalie_worker")
+    op.execute(f"GRANT SELECT ON {S}.event_outbox TO platform_reader")
 
     op.create_table(
         "processed_events",
@@ -164,8 +170,9 @@ def upgrade() -> None:
         sa.Column("event_id", sa.Uuid(), nullable=False),
         sa.Column("processed_at", sa.DateTime(timezone=True), server_default=sa.text("now()"), nullable=False),
         sa.PrimaryKeyConstraint("consumer", "event_id", name="pk_processed_events"),
+        schema=S,
     )
-    op.execute("GRANT SELECT, INSERT ON public.processed_events TO formalie_app, formalie_worker")
+    op.execute(f"GRANT SELECT, INSERT ON {S}.processed_events TO formalie_app, formalie_worker")
 
     # ── Monthly partitions: next N months, each with RLS forced like its parent ──
     op.execute("""
@@ -206,17 +213,18 @@ def upgrade() -> None:
     """)
     op.execute("REVOKE ALL ON FUNCTION platform.ensure_monthly_partitions(regclass, integer) FROM PUBLIC")
     op.execute("GRANT EXECUTE ON FUNCTION platform.ensure_monthly_partitions(regclass, integer) TO formalie_worker")
-    op.execute("SELECT platform.ensure_monthly_partitions('public.event_outbox'::regclass, 3)")
+    op.execute(f"SELECT platform.ensure_monthly_partitions('{S}.event_outbox'::regclass, 3)")
 
 
 def downgrade() -> None:
     op.execute("DROP FUNCTION IF EXISTS platform.ensure_monthly_partitions(regclass, integer)")
-    op.drop_table("processed_events")
-    op.drop_table("event_outbox")  # drops its partitions with it
+    op.drop_table("processed_events", schema=S)
+    op.drop_table("event_outbox", schema=S)  # drops its partitions with it
     for statement in disable_tenant_rls("organisations"):
         op.execute(statement)
-    op.drop_table("organisations")
+    op.drop_table("organisations", schema=S)
     op.execute("DROP FUNCTION IF EXISTS platform.resolve_tenant(text)")
     op.drop_table("tenant_subdomain_history", schema="platform")
     op.drop_table("tenants", schema="platform")
     op.execute("DROP SCHEMA IF EXISTS platform")
+    # The app schema keeps alembic_version, so it stays.

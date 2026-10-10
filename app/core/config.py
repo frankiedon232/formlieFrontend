@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import ipaddress
+import re
 from functools import lru_cache
 from pathlib import Path
 from typing import Annotated, Literal
@@ -35,6 +36,7 @@ class Settings(BaseSettings):
     db_app_url: SecretStr | None = None  # runtime, primary (NOBYPASSRLS)
     db_replica_urls: Annotated[list[SecretStr], NoDecode] = Field(default_factory=list)  # runtime, replicas
     db_relay_url: SecretStr | None = None  # outbox relay worker
+    db_schema: str = "formaly"  # every workspace table lives here; global tables in `platform`; nothing in `public`
     db_test_database: str = "formalie_test"
     db_pgbouncer: bool = False
     db_pool_size: int = 10
@@ -69,6 +71,14 @@ class Settings(BaseSettings):
         if isinstance(value, list):
             for item in value:
                 ipaddress.ip_network(item, strict=False)
+        return value
+
+    @field_validator("db_schema")
+    @classmethod
+    def _plain_identifier(cls, value: str) -> str:
+        # Used inside SQL (migrations, search_path), so only a plain lower-case identifier is accepted.
+        if not re.fullmatch(r"[a-z_][a-z0-9_]{0,62}", value) or value in ("public", "platform"):
+            raise ValueError("DB_SCHEMA must be a lower-case identifier other than public and platform")
         return value
 
     @field_validator("db_replica_urls", mode="before")

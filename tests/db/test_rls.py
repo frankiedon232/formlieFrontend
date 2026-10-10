@@ -10,11 +10,14 @@ import psycopg
 import pytest
 from sqlalchemy import text
 
+from app.core.config import get_settings
 from app.core.db.session import db_session
 from app.core.ids import uuid7
 from tests.db.conftest import Workspace
 
 pytestmark = pytest.mark.db
+
+S = get_settings().db_schema
 
 TENANT_TABLES = """
     SELECT c.oid, n.nspname, c.relname, c.relkind, c.relrowsecurity, c.relforcerowsecurity, c.relispartition
@@ -28,7 +31,8 @@ TENANT_TABLES = """
 def test_every_tenant_table_has_rls_enabled_forced_and_a_policy(owner: psycopg.Connection) -> None:
     rows = owner.execute(TENANT_TABLES).fetchall()
     names = {f"{r[1]}.{r[2]}" for r in rows}
-    assert "public.organisations" in names and "public.event_outbox" in names
+    assert f"{S}.organisations" in names and f"{S}.event_outbox" in names
+    assert not any(name.startswith("public.") for name in names), "nothing of Formalie lives in public"
     problems = []
     for oid, schema, table, _kind, enabled, forced, is_partition in rows:
         if schema == "platform":
@@ -52,25 +56,25 @@ def test_runtime_roles_cannot_bypass_rls(owner: psycopg.Connection) -> None:
 def test_app_cannot_hard_delete_anything(owner: psycopg.Connection) -> None:
     rows = owner.execute("""
         SELECT n.nspname || '.' || c.relname FROM pg_class c JOIN pg_namespace n ON n.oid = c.relnamespace
-         WHERE c.relkind IN ('r', 'p') AND n.nspname IN ('public', 'platform')
+         WHERE c.relkind IN ('r', 'p') AND n.nspname IN (%s, 'platform')
            AND (has_table_privilege('formalie_app', c.oid, 'DELETE')
              OR has_table_privilege('formalie_app', c.oid, 'TRUNCATE'))
-    """).fetchall()
+    """, (S,)).fetchall()
     assert rows == [], f"formalie_app may delete from {rows} (soft delete only)"
 
 
 def test_no_foreign_key_cascades(owner: psycopg.Connection) -> None:
     rows = owner.execute("SELECT conname FROM pg_constraint WHERE contype = 'f' AND confdeltype IN ('c', 'n', 'd')"
-                         " AND connamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('public', 'platform'))"
-                         ).fetchall()
+                         " AND connamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN (%s, 'platform'))",
+                         (S,)).fetchall()
     assert rows == []
 
 
 def test_partitions_exist_for_the_next_months_with_rls_forced(owner: psycopg.Connection) -> None:
     rows = owner.execute("""
         SELECT c.relname, c.relrowsecurity, c.relforcerowsecurity FROM pg_inherits i
-          JOIN pg_class c ON c.oid = i.inhrelid WHERE i.inhparent = 'public.event_outbox'::regclass
-    """).fetchall()
+          JOIN pg_class c ON c.oid = i.inhrelid WHERE i.inhparent = %s::regclass
+    """, (f"{S}.event_outbox",)).fetchall()
     assert len(rows) >= 4
     assert all(enabled and forced for _, enabled, forced in rows)
 

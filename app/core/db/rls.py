@@ -10,6 +10,8 @@ tests/db/test_rls.py fails if any table with a tenant_id column misses any of th
 
 from __future__ import annotations
 
+from app.core.config import get_settings
+
 APP_ROLE = "formalie_app"
 READONLY_ROLE = "formalie_readonly"
 WORKER_ROLE = "formalie_worker"
@@ -29,11 +31,11 @@ def _qualified(table: str, schema: str) -> str:
 
 def enable_tenant_rls(
     table: str,
-    schema: str = "public",
+    schema: str | None = None,
     *,
     app_privileges: str = "SELECT, INSERT, UPDATE",
 ) -> list[str]:
-    name = _qualified(table, schema)
+    name = _qualified(table, schema or get_settings().db_schema)
     return [
         f"ALTER TABLE {name} ENABLE ROW LEVEL SECURITY",
         f"ALTER TABLE {name} FORCE ROW LEVEL SECURITY",
@@ -43,9 +45,9 @@ def enable_tenant_rls(
     ]
 
 
-def disable_tenant_rls(table: str, schema: str = "public") -> list[str]:
+def disable_tenant_rls(table: str, schema: str | None = None) -> list[str]:
     """Downgrade counterpart (drops the policy and privileges; the table drop itself is the migration's)."""
-    name = _qualified(table, schema)
+    name = _qualified(table, schema or get_settings().db_schema)
     return [
         f"REVOKE ALL ON {name} FROM {APP_ROLE}, {READONLY_ROLE}, {PLATFORM_READER_ROLE}",
         f"DROP POLICY IF EXISTS {table}_isolation ON {name}",

@@ -84,7 +84,12 @@ def main() -> None:
             cur.execute(sql.SQL("REVOKE ALL ON DATABASE {} FROM PUBLIC").format(sql.Identifier(name)))
             cur.execute(sql.SQL("GRANT CONNECT ON DATABASE {} TO formalie_app, formalie_worker, formalie_readonly, "
                                 "platform_reader, platform_writer").format(sql.Identifier(name)))
-            print(f"  database {name}: {'exists' if exists else 'created'}")
+            # Default search_path per role and database, so it holds through PgBouncer too.
+            for role in ("formalie_owner", "formalie_app", "formalie_worker", "formalie_readonly",
+                         "platform_reader", "platform_writer"):
+                cur.execute(sql.SQL("ALTER ROLE {} IN DATABASE {} SET search_path = {}, platform").format(
+                    sql.Identifier(role), sql.Identifier(name), sql.Identifier(settings.db_schema)))
+            print(f"  database {name}: {'exists' if exists else 'created'} (schema {settings.db_schema})")
     print("Done. Next: alembic upgrade head  and  alembic -x db=test upgrade head")
 
 

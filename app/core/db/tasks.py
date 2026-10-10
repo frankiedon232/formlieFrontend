@@ -12,12 +12,13 @@ import logging
 from sqlalchemy import text
 from sqlalchemy.orm import Session
 
+from app.core.config import get_settings
 from app.workers.celery_app import celery_app
 from app.workers.db import worker_engine
 
 log = logging.getLogger("formalie.db")
 
-MONTHLY_TABLES = ("public.event_outbox",)
+MONTHLY_TABLES = (f"{get_settings().db_schema}.event_outbox",)
 MONTHS_AHEAD = 3
 
 

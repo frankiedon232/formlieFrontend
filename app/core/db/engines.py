@@ -28,6 +28,7 @@ def make_engine(url: str, settings: Settings, *, name: str, statement_timeout_ms
             "application_name": f"formalie-api-{name}",
             "statement_timeout": str(statement_timeout_ms or settings.db_statement_timeout_ms),
             "timezone": "UTC",
+            "search_path": f"{settings.db_schema}, platform",
         },
         "timeout": settings.db_pool_timeout,
     }

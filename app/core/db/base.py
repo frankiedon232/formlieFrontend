@@ -17,6 +17,7 @@ from typing import Any
 from sqlalchemy import DateTime, ForeignKeyConstraint, Integer, MetaData, UniqueConstraint, Uuid, event, func
 from sqlalchemy.orm import DeclarativeBase, Mapped, Session, mapped_column
 
+from app.core.config import get_settings
 from app.core.ids import uuid7
 
 NAMING_CONVENTION = {
@@ -28,8 +29,13 @@ NAMING_CONVENTION = {
 }
 
 
+APP_SCHEMA = get_settings().db_schema
+
+
 class Base(DeclarativeBase):
-    metadata = MetaData(naming_convention=NAMING_CONVENTION)
+    """Tables without an explicit schema go into the app schema (DB_SCHEMA, `formaly`); global ones say `platform`."""
+
+    metadata = MetaData(schema=APP_SCHEMA, naming_convention=NAMING_CONVENTION)
 
 
 class UuidPkMixin:
@@ -72,6 +78,7 @@ def tenant_table_args(*extra: Any) -> tuple[Any, ...]:
 
 def tenant_fk(column: str, target: str, *, name: str | None = None) -> ForeignKeyConstraint:
     """Tenant-aware FK `(tenant_id, column) → target(tenant_id, id)`, ON DELETE RESTRICT (no cross-tenant links)."""
+    target = target if "." in target else f"{APP_SCHEMA}.{target}"
     return ForeignKeyConstraint(
         ["tenant_id", column], [f"{target}.tenant_id", f"{target}.id"], ondelete="RESTRICT", name=name
     )

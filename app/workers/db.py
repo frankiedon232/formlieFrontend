@@ -30,5 +30,6 @@ def worker_engine() -> Engine:
         pool_size=2,
         max_overflow=2,
         pool_pre_ping=True,
-        connect_args={"application_name": "formalie-worker", "options": "-c statement_timeout=30000"},
+        connect_args={"application_name": "formalie-worker",
+                      "options": f"-c statement_timeout=30000 -c search_path={settings.db_schema},platform"},
     )

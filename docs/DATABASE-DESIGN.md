@@ -4,6 +4,7 @@ Rewritten 2026-10-10 from the finished portal (`C:\UNETPROJECTS\formalieFrontend
 
 ## Conventions
 
+- **Schemas** (owner, 2026-10-10): every workspace (tenant) table and the outbox live in the **`formaly`** schema (`DB_SCHEMA`); global and directory tables in `platform`; nothing in `public` (no one may create objects there). Each role's `search_path` is `formaly, platform`.
 - IDs: `uuid` (UUIDv7, generated in app) everywhere. Names: snake_case, plural tables. Enums are `text` with a `CHECK` (values listed below come from the frontend catalogues).
 - **Tenant mixin** (all tenant tables): `tenant_id uuid not null`, `organisation_id uuid not null`, composite unique `(tenant_id, id)` for composite FKs, **RLS enabled and FORCED**. Policy on both `tenant_id` and `organisation_id` (BACKEND-SPEC §2, `enable_tenant_rls()`); the API sets `app.tenant_id` / `app.organisation_id` / `app.user_id` per transaction (`set_config(…, true)`).
 - **No hard deletes** (owner, 2026-10-10): `formalie_app` has no DELETE or TRUNCATE privilege on any Formalie table, and the ORM refuses `session.delete()`. Purges, trash emptying and retention mark rows (`deleted_at`, `purged_at`), they never remove them.

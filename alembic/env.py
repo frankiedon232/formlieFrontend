@@ -38,10 +38,13 @@ def _include_object(obj, name, type_, reflected, compare_to):  # noqa: ANN001, A
 
 
 def _configure(connection) -> None:  # noqa: ANN001
+    # alembic_version lives in the app schema too, so the schema must exist before Alembic reads it.
+    connection.exec_driver_sql(f"CREATE SCHEMA IF NOT EXISTS {get_settings().db_schema}")
     context.configure(
         connection=connection,
         target_metadata=target_metadata,
         include_schemas=True,
+        version_table_schema=get_settings().db_schema,
         include_object=_include_object,
         compare_type=True,
         transaction_per_migration=True,
@@ -49,7 +52,8 @@ def _configure(connection) -> None:  # noqa: ANN001
 
 
 def run_offline() -> None:
-    context.configure(url=_url(), target_metadata=target_metadata, literal_binds=True, include_schemas=True)
+    context.configure(url=_url(), target_metadata=target_metadata, literal_binds=True, include_schemas=True,
+                      version_table_schema=get_settings().db_schema)
     with context.begin_transaction():
         context.run_migrations()
 

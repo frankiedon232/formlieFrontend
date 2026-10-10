@@ -336,3 +336,4 @@ The portal shows the mark as the icon `i-formalie-mark`, a custom Nuxt Icon coll
 - **RLS on tenant AND organisation**, as in BACKEND-SPEC §2. A workspace has one organisation, whose `organisation_id` is its own id.
 - **Event outbox.** The outbox is a tenant table with RLS forced. The app may only INSERT into it and can never read it. The relay reads it as `formalie_worker`.
 - **Subdomain change.** An old subdomain keeps working for 90 days (F14 M7). PLATFORM-ADMIN-INTEGRATION said 30.
+- **Database schema `formaly` (owner 2026-10-10).** Every workspace table, the event outbox and `alembic_version` live in the `formaly` schema (`DB_SCHEMA`). Global and tenant-directory tables live in `platform`. Nothing lives in `public`, and no one may create objects there. Each role's default `search_path` is `formaly, platform`; `scripts/db_bootstrap.py` sets it, so it holds through PgBouncer.

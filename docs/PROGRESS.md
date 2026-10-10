@@ -51,4 +51,5 @@ Portal endpoints: 1 of 399 ticked in `ENDPOINTS.md`.
 
 ## Log
 
+- **2026-10-10:** Workspace tables moved to the `formaly` schema (`DB_SCHEMA`), global tables stay in `platform`, nothing in `public` (owner).
 - **2026-10-10:** B0 built. Docs aligned (health path, refresh cookie path, plaintext exceptions, no hard deletes, roles, 144 error codes with levels). Decisions recorded in 03-DECISIONS ("Backend B0 decisions").
