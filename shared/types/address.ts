@@ -3,13 +3,8 @@
  * changed (the old one keeps working for 90 days); an own domain is verified with two DNS records.
  */
 
-export interface DnsRecord {
-  type: 'CNAME' | 'TXT'
-  name: string
-  value: string
-  /** Found in DNS at the last check. */
-  found: boolean
-}
+// One DNS record type for the domain and the sending address (auto-imports need one name, one meaning)
+import type { DnsRecord } from './emails'
 
 export interface CustomDomain {
   domain: string
