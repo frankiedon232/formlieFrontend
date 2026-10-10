@@ -40,8 +40,8 @@ const openKind = (kind: AiKind) => void navigateTo({ path: '/ai/history', query:
 const sections: { key: string; nav: string; icon: string; to: string; permission: Permission; ready: boolean }[] = [
   { key: 'createForm', nav: 'aiCreateForm', icon: 'i-lucide-file-plus-2', to: '/ai/create-form', permission: 'ai.create', ready: true },
   { key: 'templates', nav: 'aiTemplates', icon: 'i-lucide-layout-template', to: '/ai/templates', permission: 'ai.create', ready: true },
-  { key: 'analysis', nav: 'aiAnalysis', icon: 'i-lucide-chart-scatter', to: '/ai/analysis', permission: 'ai.analyse', ready: false },
-  { key: 'insights', nav: 'aiInsights', icon: 'i-lucide-lightbulb', to: '/ai/insights', permission: 'ai.analyse', ready: false },
+  { key: 'analysis', nav: 'aiAnalysis', icon: 'i-lucide-chart-scatter', to: '/ai/analysis', permission: 'ai.analyse', ready: true },
+  { key: 'insights', nav: 'aiInsights', icon: 'i-lucide-lightbulb', to: '/ai/insights', permission: 'ai.analyse', ready: true },
   { key: 'translate', nav: 'aiTranslate', icon: 'i-lucide-languages', to: '/ai/translate', permission: 'ai.translate', ready: false },
   { key: 'history', nav: 'aiHistory', icon: 'i-lucide-history', to: '/ai/history', permission: 'ai.history', ready: true },
   { key: 'settings', nav: 'aiSettings', icon: 'i-lucide-sliders-horizontal', to: '/ai/settings', permission: 'ai.use', ready: true },

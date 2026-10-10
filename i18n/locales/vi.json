@@ -4947,7 +4947,20 @@
       "common": "Một câu hỏi mà hầu hết biểu mẫu loại này đều có.",
       "consent": "Biểu mẫu hỏi thông tin cá nhân, nên mọi người cần đồng ý với cách dùng chúng.",
       "assist_found": "Đã tìm thấy {n} đề xuất. | Đã tìm thấy {n} đề xuất.",
-      "assist_applied": "Đã áp dụng {n} trên {total} đề xuất. | Đã áp dụng {n} trên {total} đề xuất."
+      "assist_applied": "Đã áp dụng {n} trên {total} đề xuất. | Đã áp dụng {n} trên {total} đề xuất.",
+      "busiest_day": "Ngày bận rộn nhất là {day}, với {n} phản hồi. | Ngày bận rộn nhất là {day}, với {n} phản hồi.",
+      "responses_up": "Nhiều hơn {n}% phản hồi so với giai đoạn trước. | Nhiều hơn {n}% phản hồi so với giai đoạn trước.",
+      "responses_down": "Ít hơn {n}% phản hồi so với giai đoạn trước. | Ít hơn {n}% phản hồi so với giai đoạn trước.",
+      "rating_up": "“{label}” tăng từ {from} lên {to}.",
+      "rating_down": "“{label}” giảm từ {from} xuống {to}.",
+      "theme_negative": "{theme} bị chê nhiều nhất ({n} câu trả lời). | {theme} bị chê nhiều nhất ({n} câu trả lời).",
+      "theme_positive": "{theme} được khen nhiều nhất ({n} câu trả lời). | {theme} được khen nhiều nhất ({n} câu trả lời).",
+      "no_text": "Không có câu trả lời viết tay trong giai đoạn này.",
+      "few_responses": "Chỉ có {n} phản hồi trong giai đoạn này, nên hãy cân nhắc kỹ các phát hiện. | Chỉ có {n} phản hồi trong giai đoạn này, nên hãy cân nhắc kỹ các phát hiện.",
+      "period_default": "Chưa nêu giai đoạn nào nên đã tính tất cả phản hồi.",
+      "field_guess": "Chưa nêu câu hỏi nào nên đã dùng “{label}”.",
+      "no_field": "Câu hỏi không khớp với câu hỏi nào trong biểu mẫu này. Hãy thử dùng các từ trong câu hỏi.",
+      "no_answers": "Không có câu trả lời phù hợp."
     },
     "create": {
       "describe": "Mô tả biểu mẫu",
@@ -5127,6 +5140,95 @@
       "done": "Xong",
       "emptyTitle": "Trợ lý có thể giúp gì?",
       "emptyDesc": "Chọn một mục ở trên. Trợ lý xem biểu mẫu như hiện tại, kể cả các thay đổi chưa lưu."
+    },
+    "range": "từ {from} đến {to}",
+    "theme": {
+      "speed": "Tốc độ và thời gian chờ",
+      "ease": "Dễ sử dụng",
+      "staff": "Nhân viên và dịch vụ",
+      "price": "Giá cả và giá trị",
+      "quality": "Chất lượng",
+      "mobile": "Điện thoại và trực tuyến",
+      "communication": "Giao tiếp",
+      "scheduling": "Giờ giấc và đặt chỗ",
+      "location": "Vị trí",
+      "delivery": "Giao hàng",
+      "other": "Khác"
+    },
+    "tone": {
+      "positive": "Tích cực",
+      "neutral": "Trung lập",
+      "negative": "Tiêu cực"
+    },
+    "analysis": {
+      "form": "Biểu mẫu",
+      "pickForm": "Chọn biểu mẫu",
+      "responses": "{n} phản hồi | {n} phản hồi",
+      "run": "Phân tích",
+      "private": "Chỉ các câu hỏi và câu trả lời của biểu mẫu này được đọc; thông tin cá nhân được che khi không gian làm việc của bạn yêu cầu.",
+      "step": {
+        "read": "Đang đọc phản hồi",
+        "themes": "Đang tìm chủ đề và sắc thái",
+        "compare": "Đang so sánh với giai đoạn trước"
+      },
+      "stale": "Biểu mẫu hoặc giai đoạn đã thay đổi. Hãy phân tích lại để cập nhật.",
+      "emptyTitle": "Phân tích phản hồi của biểu mẫu",
+      "emptyDesc": "Chọn biểu mẫu và giai đoạn. Trợ lý tìm xem các câu trả lời viết tay nói về gì, sắc thái và cách điểm đánh giá, lựa chọn thay đổi.",
+      "responsesTitle": "Phản hồi",
+      "written": "Câu trả lời viết tay",
+      "positive": "Tích cực",
+      "before": "Giai đoạn trước",
+      "perDay": "Phản hồi mỗi ngày",
+      "tone": "Sắc thái câu trả lời viết tay",
+      "writtenCount": "{n} câu trả lời viết tay | {n} câu trả lời viết tay",
+      "standsOut": "Điểm nổi bật",
+      "themes": "Mọi người viết về gì",
+      "ratings": "Điểm đánh giá trung bình",
+      "was": "là {n}",
+      "mostChosen": "Câu trả lời được chọn nhiều nhất"
+    },
+    "ask": {
+      "title": "Hỏi về biểu mẫu này",
+      "desc": "Hỏi bằng lời đơn giản. Câu trả lời hiển thị các con số và bộ lọc đã dùng để bạn kiểm tra.",
+      "placeholder": "Ví dụ: tháng trước có bao nhiêu phản hồi?",
+      "button": "Hỏi",
+      "example": {
+        "count": "Tháng này có bao nhiêu phản hồi?",
+        "top": "Câu trả lời nào được chọn nhiều nhất?",
+        "average": "Điểm đánh giá trung bình là bao nhiêu?",
+        "trend": "Phản hồi theo tháng trong năm nay"
+      },
+      "responses": "phản hồi | phản hồi",
+      "averageOf": "trung bình của “{label}”",
+      "topOf": "“{label}”, {n} người trả lời",
+      "trendOf": "Trung bình “{label}”",
+      "filters": "Đã tính:",
+      "allResponses": "Tất cả phản hồi"
+    },
+    "insights": {
+      "period": {
+        "week": "7 ngày qua",
+        "month": "30 ngày qua",
+        "quarter": "3 tháng qua"
+      },
+      "run": "Tóm tắt",
+      "single": "Để tóm tắt một phản hồi, hãy mở nó trong Phản hồi.",
+      "step": {
+        "write": "Đang viết bản tóm tắt"
+      },
+      "copy": "Sao chép dạng văn bản",
+      "copied": "Đã sao chép bản tóm tắt",
+      "emptyTitle": "Bản tóm lược của biểu mẫu",
+      "emptyDesc": "Chọn biểu mẫu và giai đoạn để có bản tóm tắt ngắn có thể chia sẻ: phản hồi, sắc thái, chủ đề và điểm nổi bật.",
+      "text": {
+        "responses": "{n} phản hồi ({before} ở giai đoạn trước).",
+        "tone": "Câu trả lời viết tay: {positive} tích cực, {neutral} trung lập, {negative} tiêu cực."
+      }
+    },
+    "summary": {
+      "title": "Tóm tắt AI",
+      "run": "Tóm tắt",
+      "desc": "Các câu trả lời chính, sắc thái và chủ đề của câu trả lời viết tay, trong vài dòng."
     }
   },
   "public": {

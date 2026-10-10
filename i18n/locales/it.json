@@ -4947,7 +4947,20 @@
       "common": "Una domanda che la maggior parte dei moduli di questo tipo include.",
       "consent": "Il modulo chiede dati personali, quindi le persone dovrebbero accettare come vengono usati.",
       "assist_found": "Trovato {n} suggerimento. | Trovati {n} suggerimenti.",
-      "assist_applied": "{n} suggerimenti su {total} applicati. | {n} suggerimenti su {total} applicati."
+      "assist_applied": "{n} suggerimenti su {total} applicati. | {n} suggerimenti su {total} applicati.",
+      "busiest_day": "Il giorno più intenso è stato {day}, con {n} risposta. | Il giorno più intenso è stato {day}, con {n} risposte.",
+      "responses_up": "{n}% di risposte in più rispetto al periodo precedente. | {n}% di risposte in più rispetto al periodo precedente.",
+      "responses_down": "{n}% di risposte in meno rispetto al periodo precedente. | {n}% di risposte in meno rispetto al periodo precedente.",
+      "rating_up": "«{label}» è salito da {from} a {to}.",
+      "rating_down": "«{label}» è sceso da {from} a {to}.",
+      "theme_negative": "{theme} ha ricevuto più critiche ({n} risposta). | {theme} ha ricevuto più critiche ({n} risposte).",
+      "theme_positive": "{theme} è stato il più apprezzato ({n} risposta). | {theme} è stato il più apprezzato ({n} risposte).",
+      "no_text": "Nessuna risposta scritta in questo periodo.",
+      "few_responses": "Solo {n} risposta in questo periodo, quindi considera questi risultati con cautela. | Solo {n} risposte in questo periodo, quindi considera questi risultati con cautela.",
+      "period_default": "Nessun periodo indicato, quindi sono state contate tutte le risposte.",
+      "field_guess": "Nessuna domanda indicata, quindi è stata usata «{label}».",
+      "no_field": "La domanda non corrisponde a nessuna domanda di questo modulo. Prova con parole della domanda.",
+      "no_answers": "Nessuna risposta corrisponde."
     },
     "create": {
       "describe": "Descrivi il modulo",
@@ -5127,6 +5140,95 @@
       "done": "Fatto",
       "emptyTitle": "Come può aiutare l’assistente?",
       "emptyDesc": "Scegline uno qui sopra. Guarda il modulo com’è ora, modifiche non salvate comprese."
+    },
+    "range": "da {from} a {to}",
+    "theme": {
+      "speed": "Rapidità e attesa",
+      "ease": "Facilità d’uso",
+      "staff": "Personale e servizio",
+      "price": "Prezzo e valore",
+      "quality": "Qualità",
+      "mobile": "Mobile e online",
+      "communication": "Comunicazione",
+      "scheduling": "Orari e prenotazione",
+      "location": "Posizione",
+      "delivery": "Consegna",
+      "other": "Altro"
+    },
+    "tone": {
+      "positive": "Positivo",
+      "neutral": "Neutro",
+      "negative": "Negativo"
+    },
+    "analysis": {
+      "form": "Modulo",
+      "pickForm": "Scegli un modulo",
+      "responses": "{n} risposta | {n} risposte",
+      "run": "Analizza",
+      "private": "Vengono lette solo le domande e le risposte di questo modulo; i dati personali sono oscurati quando lo richiede il tuo spazio di lavoro.",
+      "step": {
+        "read": "Lettura delle risposte",
+        "themes": "Ricerca di temi e tono",
+        "compare": "Confronto con il periodo precedente"
+      },
+      "stale": "Il modulo o il periodo è cambiato. Analizza di nuovo per aggiornare.",
+      "emptyTitle": "Analizza le risposte di un modulo",
+      "emptyDesc": "Scegli un modulo e un periodo. L’assistente trova di cosa parlano le risposte scritte, il loro tono e come sono cambiati valutazioni e scelte.",
+      "responsesTitle": "Risposte",
+      "written": "Risposte scritte",
+      "positive": "Positivo",
+      "before": "Periodo precedente",
+      "perDay": "Risposte al giorno",
+      "tone": "Tono delle risposte scritte",
+      "writtenCount": "{n} risposta scritta | {n} risposte scritte",
+      "standsOut": "Cosa emerge",
+      "themes": "Di cosa scrivono le persone",
+      "ratings": "Valutazioni medie",
+      "was": "era {n}",
+      "mostChosen": "Risposte più scelte"
+    },
+    "ask": {
+      "title": "Chiedi di questo modulo",
+      "desc": "Chiedi con parole semplici. La risposta mostra i numeri e i filtri usati, così puoi verificarli.",
+      "placeholder": "Per esempio: quante risposte il mese scorso?",
+      "button": "Chiedi",
+      "example": {
+        "count": "Quante risposte questo mese?",
+        "top": "Quale risposta è stata scelta di più?",
+        "average": "Qual è la valutazione media?",
+        "trend": "Risposte al mese quest’anno"
+      },
+      "responses": "risposta | risposte",
+      "averageOf": "media di «{label}»",
+      "topOf": "«{label}», {n} hanno risposto",
+      "trendOf": "Media di «{label}»",
+      "filters": "Conteggiate:",
+      "allResponses": "Tutte le risposte"
+    },
+    "insights": {
+      "period": {
+        "week": "Ultimi 7 giorni",
+        "month": "Ultimi 30 giorni",
+        "quarter": "Ultimi 3 mesi"
+      },
+      "run": "Riassumi",
+      "single": "Per riassumere una sola risposta, aprila in Risposte.",
+      "step": {
+        "write": "Scrittura del riepilogo"
+      },
+      "copy": "Copia come testo",
+      "copied": "Riepilogo copiato",
+      "emptyTitle": "Un riepilogo di un modulo",
+      "emptyDesc": "Scegli un modulo e un periodo per un breve riepilogo da condividere: risposte, tono, temi e cosa emerge.",
+      "text": {
+        "responses": "{n} risposte ({before} nel periodo precedente).",
+        "tone": "Risposte scritte: {positive} positive, {neutral} neutre, {negative} negative."
+      }
+    },
+    "summary": {
+      "title": "Riepilogo IA",
+      "run": "Riassumi",
+      "desc": "Le risposte chiave, il tono e i temi delle risposte scritte, in poche righe."
     }
   },
   "public": {

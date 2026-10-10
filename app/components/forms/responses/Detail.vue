@@ -92,6 +92,7 @@ async function remove() {
       <template v-else-if="response">
         <div class="flex flex-col gap-5 transition-opacity" :class="loading ? 'opacity-60' : ''" :aria-busy="loading || undefined">
           <FormsResponsesDetailFacts :response="response" />
+          <AiResponseSummary :response-id="response.id" />
 
           <UFormField :label="t('responses.detail.tags')">
             <UInputTags

@@ -4947,7 +4947,20 @@
       "common": "이런 종류의 양식 대부분에 들어 있는 질문입니다.",
       "consent": "이 양식은 개인 정보를 묻기 때문에, 사용 방식에 동의를 받는 것이 좋습니다.",
       "assist_found": "제안 {n}개를 찾았습니다. | 제안 {n}개를 찾았습니다.",
-      "assist_applied": "제안 {total}개 중 {n}개를 적용했습니다. | 제안 {total}개 중 {n}개를 적용했습니다."
+      "assist_applied": "제안 {total}개 중 {n}개를 적용했습니다. | 제안 {total}개 중 {n}개를 적용했습니다.",
+      "busiest_day": "가장 바쁜 날은 {day}이며, 응답은 {n}건이었습니다. | 가장 바쁜 날은 {day}이며, 응답은 {n}건이었습니다.",
+      "responses_up": "이전 기간보다 응답이 {n}% 늘었습니다. | 이전 기간보다 응답이 {n}% 늘었습니다.",
+      "responses_down": "이전 기간보다 응답이 {n}% 줄었습니다. | 이전 기간보다 응답이 {n}% 줄었습니다.",
+      "rating_up": "“{label}” 점수가 {from}에서 {to}로 올랐습니다.",
+      "rating_down": "“{label}” 점수가 {from}에서 {to}로 내려갔습니다.",
+      "theme_negative": "{theme}에 대한 비판이 가장 많았습니다 ({n}건). | {theme}에 대한 비판이 가장 많았습니다 ({n}건).",
+      "theme_positive": "{theme}에 대한 칭찬이 가장 많았습니다 ({n}건). | {theme}에 대한 칭찬이 가장 많았습니다 ({n}건).",
+      "no_text": "이 기간에는 서술형 답변이 없습니다.",
+      "few_responses": "이 기간의 응답은 {n}건뿐이므로 결과를 참고용으로만 보세요. | 이 기간의 응답은 {n}건뿐이므로 결과를 참고용으로만 보세요.",
+      "period_default": "기간이 지정되지 않아 모든 응답을 집계했습니다.",
+      "field_guess": "질문이 지정되지 않아 “{label}”을(를) 사용했습니다.",
+      "no_field": "질문이 이 양식의 어떤 질문과도 맞지 않습니다. 질문에 있는 단어를 사용해 보세요.",
+      "no_answers": "일치하는 답변이 없습니다."
     },
     "create": {
       "describe": "양식 설명하기",
@@ -5127,6 +5140,95 @@
       "done": "완료",
       "emptyTitle": "어시스턴트가 어떻게 도와드릴까요?",
       "emptyDesc": "위에서 하나를 선택하세요. 저장하지 않은 변경 사항을 포함해 현재 양식을 살펴봅니다."
+    },
+    "range": "{from}부터 {to}까지",
+    "theme": {
+      "speed": "속도와 대기",
+      "ease": "사용 편의성",
+      "staff": "직원과 서비스",
+      "price": "가격과 가치",
+      "quality": "품질",
+      "mobile": "모바일과 온라인",
+      "communication": "소통",
+      "scheduling": "시간과 예약",
+      "location": "위치",
+      "delivery": "배송",
+      "other": "기타"
+    },
+    "tone": {
+      "positive": "긍정",
+      "neutral": "중립",
+      "negative": "부정"
+    },
+    "analysis": {
+      "form": "양식",
+      "pickForm": "양식 선택",
+      "responses": "응답 {n}건 | 응답 {n}건",
+      "run": "분석",
+      "private": "이 양식의 질문과 답변만 읽으며, 워크스페이스에서 요구하면 개인 정보는 가려집니다.",
+      "step": {
+        "read": "응답을 읽는 중",
+        "themes": "주제와 어조를 찾는 중",
+        "compare": "이전 기간과 비교하는 중"
+      },
+      "stale": "양식이나 기간이 바뀌었습니다. 다시 분석해서 업데이트하세요.",
+      "emptyTitle": "양식의 응답 분석",
+      "emptyDesc": "양식과 기간을 선택하세요. 어시스턴트가 서술형 답변의 주제와 어조, 평점과 선택의 변화를 찾아 줍니다.",
+      "responsesTitle": "응답",
+      "written": "서술형 답변",
+      "positive": "긍정",
+      "before": "이전 기간",
+      "perDay": "일별 응답",
+      "tone": "서술형 답변의 어조",
+      "writtenCount": "서술형 답변 {n}건 | 서술형 답변 {n}건",
+      "standsOut": "눈에 띄는 점",
+      "themes": "사람들이 쓰는 내용",
+      "ratings": "평균 평점",
+      "was": "{n}였습니다",
+      "mostChosen": "가장 많이 선택된 답변"
+    },
+    "ask": {
+      "title": "이 양식에 대해 질문",
+      "desc": "쉬운 말로 물어보세요. 답변에는 숫자와 사용한 필터가 표시되어 직접 확인할 수 있습니다.",
+      "placeholder": "예: 지난달 응답은 몇 건인가요?",
+      "button": "질문",
+      "example": {
+        "count": "이번 달 응답은 몇 건인가요?",
+        "top": "가장 많이 선택된 답변은 무엇인가요?",
+        "average": "평균 평점은 얼마인가요?",
+        "trend": "올해 월별 응답"
+      },
+      "responses": "건 | 건",
+      "averageOf": "“{label}” 평균",
+      "topOf": "“{label}”, {n}명이 응답",
+      "trendOf": "“{label}” 평균",
+      "filters": "집계 기준:",
+      "allResponses": "모든 응답"
+    },
+    "insights": {
+      "period": {
+        "week": "최근 7일",
+        "month": "최근 30일",
+        "quarter": "최근 3개월"
+      },
+      "run": "요약",
+      "single": "응답 하나를 요약하려면 응답 메뉴에서 열어 주세요.",
+      "step": {
+        "write": "요약을 작성하는 중"
+      },
+      "copy": "텍스트로 복사",
+      "copied": "요약을 복사했습니다",
+      "emptyTitle": "양식 요약본",
+      "emptyDesc": "공유할 수 있는 짧은 요약을 위해 양식과 기간을 선택하세요. 응답, 어조, 주제, 눈에 띄는 점을 정리합니다.",
+      "text": {
+        "responses": "응답 {n}건 (이전 기간 {before}건).",
+        "tone": "서술형 답변: 긍정 {positive}건, 중립 {neutral}건, 부정 {negative}건."
+      }
+    },
+    "summary": {
+      "title": "AI 요약",
+      "run": "요약",
+      "desc": "핵심 답변, 어조, 서술형 답변의 주제를 몇 줄로 정리합니다."
     }
   },
   "public": {

@@ -4947,7 +4947,20 @@
       "common": "Eine Frage, die die meisten Formulare dieser Art enthalten.",
       "consent": "Das Formular fragt nach persönlichen Daten, daher sollten die Personen der Verwendung zustimmen.",
       "assist_found": "{n} Vorschlag gefunden. | {n} Vorschläge gefunden.",
-      "assist_applied": "{n} von {total} Vorschlägen angewendet. | {n} von {total} Vorschlägen angewendet."
+      "assist_applied": "{n} von {total} Vorschlägen angewendet. | {n} von {total} Vorschlägen angewendet.",
+      "busiest_day": "Der aktivste Tag war {day} mit {n} Antwort. | Der aktivste Tag war {day} mit {n} Antworten.",
+      "responses_up": "{n}% mehr Antworten als im Zeitraum davor. | {n}% mehr Antworten als im Zeitraum davor.",
+      "responses_down": "{n}% weniger Antworten als im Zeitraum davor. | {n}% weniger Antworten als im Zeitraum davor.",
+      "rating_up": "„{label}“ stieg von {from} auf {to}.",
+      "rating_down": "„{label}“ sank von {from} auf {to}.",
+      "theme_negative": "{theme} wurde am meisten kritisiert ({n} Antwort). | {theme} wurde am meisten kritisiert ({n} Antworten).",
+      "theme_positive": "{theme} wurde am meisten gelobt ({n} Antwort). | {theme} wurde am meisten gelobt ({n} Antworten).",
+      "no_text": "Keine Textantworten in diesem Zeitraum.",
+      "few_responses": "Nur {n} Antwort in diesem Zeitraum, daher sind die Ergebnisse mit Vorsicht zu genießen. | Nur {n} Antworten in diesem Zeitraum, daher sind die Ergebnisse mit Vorsicht zu genießen.",
+      "period_default": "Es wurde kein Zeitraum genannt, daher wurden alle Antworten gezählt.",
+      "field_guess": "Es wurde keine Frage genannt, daher wurde „{label}“ verwendet.",
+      "no_field": "Die Frage passt zu keiner Frage in diesem Formular. Verwende Wörter aus der Frage.",
+      "no_answers": "Keine passenden Antworten."
     },
     "create": {
       "describe": "Formular beschreiben",
@@ -5127,6 +5140,95 @@
       "done": "Fertig",
       "emptyTitle": "Wie kann der Assistent helfen?",
       "emptyDesc": "Wähle oben eine Option. Er betrachtet das Formular so, wie es jetzt ist, inklusive ungespeicherter Änderungen."
+    },
+    "range": "{from} bis {to}",
+    "theme": {
+      "speed": "Tempo und Wartezeit",
+      "ease": "Einfache Bedienung",
+      "staff": "Personal und Service",
+      "price": "Preis und Wert",
+      "quality": "Qualität",
+      "mobile": "Handy und Online",
+      "communication": "Kommunikation",
+      "scheduling": "Termine und Buchung",
+      "location": "Standort",
+      "delivery": "Lieferung",
+      "other": "Sonstiges"
+    },
+    "tone": {
+      "positive": "Positiv",
+      "neutral": "Neutral",
+      "negative": "Negativ"
+    },
+    "analysis": {
+      "form": "Formular",
+      "pickForm": "Formular wählen",
+      "responses": "{n} Antwort | {n} Antworten",
+      "run": "Analysieren",
+      "private": "Es werden nur die Fragen und Antworten dieses Formulars gelesen; persönliche Angaben werden maskiert, wenn dein Workspace es verlangt.",
+      "step": {
+        "read": "Antworten lesen",
+        "themes": "Themen und Stimmung finden",
+        "compare": "Mit dem Zeitraum davor vergleichen"
+      },
+      "stale": "Formular oder Zeitraum wurde geändert. Analysiere erneut, um zu aktualisieren.",
+      "emptyTitle": "Antworten eines Formulars analysieren",
+      "emptyDesc": "Wähle ein Formular und einen Zeitraum. Der Assistent findet heraus, worum es in den Textantworten geht, wie die Stimmung ist und wie sich Bewertungen und Auswahlen verändert haben.",
+      "responsesTitle": "Antworten",
+      "written": "Textantworten",
+      "positive": "Positiv",
+      "before": "Zeitraum davor",
+      "perDay": "Antworten pro Tag",
+      "tone": "Stimmung der Textantworten",
+      "writtenCount": "{n} Textantwort | {n} Textantworten",
+      "standsOut": "Was auffällt",
+      "themes": "Worüber Leute schreiben",
+      "ratings": "Durchschnittliche Bewertungen",
+      "was": "war {n}",
+      "mostChosen": "Am häufigsten gewählte Antworten"
+    },
+    "ask": {
+      "title": "Zu diesem Formular fragen",
+      "desc": "Frag in einfachen Worten. Die Antwort zeigt die Zahlen und die verwendeten Filter, damit du sie prüfen kannst.",
+      "placeholder": "Zum Beispiel: Wie viele Antworten gab es letzten Monat?",
+      "button": "Fragen",
+      "example": {
+        "count": "Wie viele Antworten in diesem Monat?",
+        "top": "Welche Antwort wurde am häufigsten gewählt?",
+        "average": "Wie lautet die durchschnittliche Bewertung?",
+        "trend": "Antworten pro Monat in diesem Jahr"
+      },
+      "responses": "Antwort | Antworten",
+      "averageOf": "Durchschnitt für „{label}“",
+      "topOf": "„{label}“, {n} haben geantwortet",
+      "trendOf": "Durchschnitt „{label}“",
+      "filters": "Gezählt:",
+      "allResponses": "Alle Antworten"
+    },
+    "insights": {
+      "period": {
+        "week": "Letzte 7 Tage",
+        "month": "Letzte 30 Tage",
+        "quarter": "Letzte 3 Monate"
+      },
+      "run": "Zusammenfassen",
+      "single": "Um eine einzelne Antwort zusammenzufassen, öffne sie unter Antworten.",
+      "step": {
+        "write": "Zusammenfassung schreiben"
+      },
+      "copy": "Als Text kopieren",
+      "copied": "Zusammenfassung kopiert",
+      "emptyTitle": "Eine Übersicht zu einem Formular",
+      "emptyDesc": "Wähle ein Formular und einen Zeitraum für eine kurze Zusammenfassung zum Teilen: Antworten, Stimmung, Themen und was auffällt.",
+      "text": {
+        "responses": "{n} Antworten ({before} im Zeitraum davor).",
+        "tone": "Textantworten: {positive} positiv, {neutral} neutral, {negative} negativ."
+      }
+    },
+    "summary": {
+      "title": "KI-Zusammenfassung",
+      "run": "Zusammenfassen",
+      "desc": "Die wichtigsten Antworten, die Stimmung und die Themen der Textantworten in wenigen Zeilen."
     }
   },
   "public": {

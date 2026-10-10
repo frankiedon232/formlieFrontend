@@ -3,7 +3,13 @@
 import type { AiDraftStats, AiNote } from '#shared/types/ai'
 
 defineProps<{ notes: AiNote[]; stats?: AiDraftStats | null }>()
-const { t } = useI18n()
+const { t, d } = useI18n()
+/** A note's values, with a theme's name and a day in the reader's language. */
+const paramsOf = (note: AiNote) => ({
+  ...note.params,
+  ...(note.theme ? { theme: t(`ai.theme.${note.theme}`) } : {}),
+  ...(typeof note.params?.day === 'string' ? { day: d(new Date(`${note.params.day}T12:00:00`), { weekday: 'long', day: 'numeric', month: 'long' }) } : {}),
+})
 </script>
 
 <template>
@@ -18,7 +24,7 @@ const { t } = useI18n()
     <ul v-if="notes.length" class="flex flex-col gap-1.5">
       <li v-for="(note, index) in notes" :key="index" class="flex items-start gap-2 text-sm text-muted">
         <UIcon name="i-lucide-sparkle" class="mt-0.5 size-3.5 shrink-0 text-default" />
-        <span>{{ t(`ai.note.${note.code}`, note.params ?? {}, typeof note.params?.n === 'number' ? note.params.n : 1) }}</span>
+        <span>{{ t(`ai.note.${note.code}`, paramsOf(note), typeof note.params?.n === 'number' ? note.params.n : 1) }}</span>
       </li>
     </ul>
   </div>

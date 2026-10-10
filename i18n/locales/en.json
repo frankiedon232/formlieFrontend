@@ -4947,7 +4947,20 @@
       "common": "A question most forms of this kind include.",
       "consent": "The form asks for personal details, so people should agree to how they are used.",
       "assist_found": "Found {n} suggestion. | Found {n} suggestions.",
-      "assist_applied": "{n} of {total} suggestions applied. | {n} of {total} suggestions applied."
+      "assist_applied": "{n} of {total} suggestions applied. | {n} of {total} suggestions applied.",
+      "busiest_day": "The busiest day was {day}, with {n} response. | The busiest day was {day}, with {n} responses.",
+      "responses_up": "{n}% more responses than the period before. | {n}% more responses than the period before.",
+      "responses_down": "{n}% fewer responses than the period before. | {n}% fewer responses than the period before.",
+      "rating_up": "“{label}” rose from {from} to {to}.",
+      "rating_down": "“{label}” fell from {from} to {to}.",
+      "theme_negative": "{theme} drew the most criticism ({n} answer). | {theme} drew the most criticism ({n} answers).",
+      "theme_positive": "{theme} was praised most ({n} answer). | {theme} was praised most ({n} answers).",
+      "no_text": "No written answers in this period.",
+      "few_responses": "Only {n} response in this period, so treat these findings with care. | Only {n} responses in this period, so treat these findings with care.",
+      "period_default": "No period was named, so all responses were counted.",
+      "field_guess": "No question was named, so “{label}” was used.",
+      "no_field": "The question didn’t match a question in this form. Try using words from the question.",
+      "no_answers": "No answers match."
     },
     "create": {
       "describe": "Describe the form",
@@ -5127,6 +5140,95 @@
       "done": "Done",
       "emptyTitle": "How can the assistant help?",
       "emptyDesc": "Pick one above. It looks at the form as it is now, unsaved changes included."
+    },
+    "range": "{from} to {to}",
+    "theme": {
+      "speed": "Speed and waiting",
+      "ease": "Ease of use",
+      "staff": "Staff and service",
+      "price": "Price and value",
+      "quality": "Quality",
+      "mobile": "Phones and online",
+      "communication": "Communication",
+      "scheduling": "Times and booking",
+      "location": "Location",
+      "delivery": "Delivery",
+      "other": "Other"
+    },
+    "tone": {
+      "positive": "Positive",
+      "neutral": "Neutral",
+      "negative": "Negative"
+    },
+    "analysis": {
+      "form": "Form",
+      "pickForm": "Choose a form",
+      "responses": "{n} response | {n} responses",
+      "run": "Analyse",
+      "private": "Only this form’s questions and answers are read; personal details are masked when your workspace asks for it.",
+      "step": {
+        "read": "Reading the responses",
+        "themes": "Finding themes and tone",
+        "compare": "Comparing with the period before"
+      },
+      "stale": "The form or period changed. Analyse again to update.",
+      "emptyTitle": "Analyse a form’s responses",
+      "emptyDesc": "Choose a form and a period. The assistant finds what written answers are about, their tone, and how ratings and choices changed.",
+      "responsesTitle": "Responses",
+      "written": "Written answers",
+      "positive": "Positive",
+      "before": "Period before",
+      "perDay": "Responses per day",
+      "tone": "Tone of written answers",
+      "writtenCount": "{n} written answer | {n} written answers",
+      "standsOut": "What stands out",
+      "themes": "What people write about",
+      "ratings": "Average ratings",
+      "was": "was {n}",
+      "mostChosen": "Most chosen answers"
+    },
+    "ask": {
+      "title": "Ask about this form",
+      "desc": "Ask in plain words. The answer shows the numbers and the filters used, so you can check them.",
+      "placeholder": "For example: how many responses last month?",
+      "button": "Ask",
+      "example": {
+        "count": "How many responses this month?",
+        "top": "Which answer was chosen most?",
+        "average": "What is the average rating?",
+        "trend": "Responses per month this year"
+      },
+      "responses": "response | responses",
+      "averageOf": "average for “{label}”",
+      "topOf": "“{label}”, {n} answered",
+      "trendOf": "Average “{label}”",
+      "filters": "Counted:",
+      "allResponses": "All responses"
+    },
+    "insights": {
+      "period": {
+        "week": "Last 7 days",
+        "month": "Last 30 days",
+        "quarter": "Last 3 months"
+      },
+      "run": "Summarise",
+      "single": "To summarise one response, open it in Responses.",
+      "step": {
+        "write": "Writing the summary"
+      },
+      "copy": "Copy as text",
+      "copied": "Summary copied",
+      "emptyTitle": "A digest of a form",
+      "emptyDesc": "Choose a form and a period for a short summary you can share: responses, tone, themes and what stands out.",
+      "text": {
+        "responses": "{n} responses ({before} in the period before).",
+        "tone": "Written answers: {positive} positive, {neutral} neutral, {negative} negative."
+      }
+    },
+    "summary": {
+      "title": "AI summary",
+      "run": "Summarise",
+      "desc": "The key answers, the tone and what the written answers are about, in a few lines."
     }
   },
   "public": {

@@ -4947,7 +4947,20 @@
       "common": "Swali ambalo fomu nyingi za aina hii huwa nalo.",
       "consent": "Fomu inaomba taarifa binafsi, kwa hiyo watu wanapaswa kukubali jinsi zinavyotumika.",
       "assist_found": "Pendekezo {n} limepatikana. | Mapendekezo {n} yamepatikana.",
-      "assist_applied": "Mapendekezo {n} kati ya {total} yametumika. | Mapendekezo {n} kati ya {total} yametumika."
+      "assist_applied": "Mapendekezo {n} kati ya {total} yametumika. | Mapendekezo {n} kati ya {total} yametumika.",
+      "busiest_day": "Siku yenye shughuli nyingi zaidi ilikuwa {day}, na jibu {n}. | Siku yenye shughuli nyingi zaidi ilikuwa {day}, na majibu {n}.",
+      "responses_up": "Majibu {n}% zaidi kuliko kipindi kilichotangulia. | Majibu {n}% zaidi kuliko kipindi kilichotangulia.",
+      "responses_down": "Majibu {n}% pungufu kuliko kipindi kilichotangulia. | Majibu {n}% pungufu kuliko kipindi kilichotangulia.",
+      "rating_up": "“{label}” ilipanda kutoka {from} hadi {to}.",
+      "rating_down": "“{label}” ilishuka kutoka {from} hadi {to}.",
+      "theme_negative": "{theme} ilikosolewa zaidi (jibu {n}). | {theme} ilikosolewa zaidi (majibu {n}).",
+      "theme_positive": "{theme} ilisifiwa zaidi (jibu {n}). | {theme} ilisifiwa zaidi (majibu {n}).",
+      "no_text": "Hakuna majibu ya maandishi katika kipindi hiki.",
+      "few_responses": "Jibu {n} tu katika kipindi hiki, kwa hivyo tumia matokeo haya kwa tahadhari. | Majibu {n} tu katika kipindi hiki, kwa hivyo tumia matokeo haya kwa tahadhari.",
+      "period_default": "Hakuna kipindi kilichotajwa, kwa hivyo majibu yote yalihesabiwa.",
+      "field_guess": "Hakuna swali lililotajwa, kwa hivyo “{label}” ilitumika.",
+      "no_field": "Swali halilingani na swali lolote katika fomu hii. Jaribu kutumia maneno kutoka kwenye swali.",
+      "no_answers": "Hakuna majibu yanayolingana."
     },
     "create": {
       "describe": "Eleza fomu",
@@ -5127,6 +5140,95 @@
       "done": "Imekamilika",
       "emptyTitle": "Msaidizi anawezaje kusaidia?",
       "emptyDesc": "Chagua moja hapo juu. Hutazama fomu kama ilivyo sasa, pamoja na mabadiliko ambayo hayajahifadhiwa."
+    },
+    "range": "{from} hadi {to}",
+    "theme": {
+      "speed": "Kasi na kusubiri",
+      "ease": "Urahisi wa kutumia",
+      "staff": "Wafanyakazi na huduma",
+      "price": "Bei na thamani",
+      "quality": "Ubora",
+      "mobile": "Simu na mtandaoni",
+      "communication": "Mawasiliano",
+      "scheduling": "Muda na kuweka nafasi",
+      "location": "Mahali",
+      "delivery": "Uwasilishaji",
+      "other": "Nyingine"
+    },
+    "tone": {
+      "positive": "Chanya",
+      "neutral": "Wastani",
+      "negative": "Hasi"
+    },
+    "analysis": {
+      "form": "Fomu",
+      "pickForm": "Chagua fomu",
+      "responses": "jibu {n} | majibu {n}",
+      "run": "Changanua",
+      "private": "Maswali na majibu ya fomu hii pekee ndiyo husomwa; maelezo binafsi hufichwa nafasi yako ya kazi ikihitaji.",
+      "step": {
+        "read": "Inasoma majibu",
+        "themes": "Inatafuta mada na hisia",
+        "compare": "Inalinganisha na kipindi kilichotangulia"
+      },
+      "stale": "Fomu au kipindi kimebadilika. Changanua tena ili kusasisha.",
+      "emptyTitle": "Changanua majibu ya fomu",
+      "emptyDesc": "Chagua fomu na kipindi. Msaidizi hutafuta majibu ya maandishi yanahusu nini, hisia zake, na jinsi ukadiriaji na chaguo vilivyobadilika.",
+      "responsesTitle": "Majibu",
+      "written": "Majibu ya maandishi",
+      "positive": "Chanya",
+      "before": "Kipindi kilichotangulia",
+      "perDay": "Majibu kwa siku",
+      "tone": "Hisia za majibu ya maandishi",
+      "writtenCount": "jibu {n} la maandishi | majibu {n} ya maandishi",
+      "standsOut": "Kinachojitokeza",
+      "themes": "Watu wanaandika kuhusu nini",
+      "ratings": "Ukadiriaji wa wastani",
+      "was": "ulikuwa {n}",
+      "mostChosen": "Majibu yaliyochaguliwa zaidi"
+    },
+    "ask": {
+      "title": "Uliza kuhusu fomu hii",
+      "desc": "Uliza kwa maneno rahisi. Jibu linaonyesha namba na vichujio vilivyotumika, ili uvikague.",
+      "placeholder": "Kwa mfano: kulikuwa na majibu mangapi mwezi uliopita?",
+      "button": "Uliza",
+      "example": {
+        "count": "Majibu mangapi mwezi huu?",
+        "top": "Jibu lipi lilichaguliwa zaidi?",
+        "average": "Ukadiriaji wa wastani ni upi?",
+        "trend": "Majibu kwa mwezi mwaka huu"
+      },
+      "responses": "jibu | majibu",
+      "averageOf": "wastani wa “{label}”",
+      "topOf": "“{label}”, {n} walijibu",
+      "trendOf": "Wastani wa “{label}”",
+      "filters": "Yaliyohesabiwa:",
+      "allResponses": "Majibu yote"
+    },
+    "insights": {
+      "period": {
+        "week": "Siku 7 zilizopita",
+        "month": "Siku 30 zilizopita",
+        "quarter": "Miezi 3 iliyopita"
+      },
+      "run": "Fupisha",
+      "single": "Ili kufupisha jibu moja, lifungue katika Majibu.",
+      "step": {
+        "write": "Inaandika muhtasari"
+      },
+      "copy": "Nakili kama maandishi",
+      "copied": "Muhtasari umenakiliwa",
+      "emptyTitle": "Muhtasari wa fomu",
+      "emptyDesc": "Chagua fomu na kipindi upate muhtasari mfupi wa kushiriki: majibu, hisia, mada na kinachojitokeza.",
+      "text": {
+        "responses": "Majibu {n} ({before} katika kipindi kilichotangulia).",
+        "tone": "Majibu ya maandishi: {positive} chanya, {neutral} wastani, {negative} hasi."
+      }
+    },
+    "summary": {
+      "title": "Muhtasari wa AI",
+      "run": "Fupisha",
+      "desc": "Majibu muhimu, hisia na mada za majibu ya maandishi, kwa mistari michache."
     }
   },
   "public": {

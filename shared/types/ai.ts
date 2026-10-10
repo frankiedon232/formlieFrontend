@@ -98,7 +98,9 @@ export interface AiRequestInsights {
 
 /** One thing the assistant did, translated in the app (`ai.note.<code>`). */
 export interface AiNote {
-  code: 'follow_up' | 'total' | 'pages' | 'document_questions' | 'document_sections' | 'document_none' | 'added_contact' | 'from_list' | 'template' | 'try_again' | 'basic' | 'themes' | 'low_rating' | 'other_option' | 'from_template' | 'common' | 'consent' | 'assist_found' | 'assist_applied'
+  /** A theme's key (translated in the app: ai.theme.<key>), passed to the text as {theme}. */
+  theme?: AiTheme
+  code: 'follow_up' | 'total' | 'pages' | 'document_questions' | 'document_sections' | 'document_none' | 'added_contact' | 'from_list' | 'template' | 'try_again' | 'basic' | 'themes' | 'low_rating' | 'other_option' | 'from_template' | 'common' | 'consent' | 'assist_found' | 'assist_applied' | 'busiest_day' | 'responses_up' | 'responses_down' | 'rating_up' | 'rating_down' | 'theme_negative' | 'theme_positive' | 'no_text' | 'few_responses' | 'period_default' | 'field_guess' | 'no_field' | 'no_answers'
   params?: Record<string, string | number>
 }
 
@@ -170,5 +172,55 @@ export interface AiAssistResult {
   request_id: string
   action: AiAssistAction
   suggestions: AiSuggestion[]
+  credits: number
+}
+
+/** Themes the assistant finds in written answers (translated in the app: ai.theme.<key>). */
+export const AI_THEMES = ['speed', 'ease', 'staff', 'price', 'quality', 'mobile', 'communication', 'scheduling', 'location', 'delivery', 'other'] as const
+export type AiTheme = (typeof AI_THEMES)[number]
+
+export interface AiSentiment {
+  positive: number
+  neutral: number
+  negative: number
+}
+
+/** POST /ai/analysis (and /ai/digest): what a form's responses say over a period, against the period before. */
+export interface AiAnalysis {
+  request_id: string
+  form: { id: string; name: string }
+  period: { from: string; to: string }
+  previous: { from: string; to: string }
+  totals: { responses: number; previous: number; text_answers: number }
+  daily: { date: string; count: number }[]
+  sentiment: AiSentiment
+  previous_sentiment: AiSentiment
+  themes: { key: AiTheme; count: number; share: number; positive: number; negative: number; examples: string[] }[]
+  ratings: { key: string; label: string; average: number; previous: number | null; max: number }[]
+  choices: { key: string; label: string; top: string; share: number }[]
+  findings: AiNote[]
+  credits: number
+}
+
+/** POST /ai/ask: a question in plain words about one form's responses, with the numbers and the filters used. */
+export interface AiAnswer {
+  request_id: string
+  question: string
+  kind: 'count' | 'top' | 'average' | 'trend'
+  value: number | null
+  field: { key: string; label: string } | null
+  rows: { label: string; count: number; share: number }[]
+  filters: { kind: 'period' | 'status' | 'answer'; label: string; value: string }[]
+  period: { from: string; to: string } | null
+  notes: AiNote[]
+  credits: number
+}
+
+/** POST /ai/responses/{id}/summary: one response in a few lines. */
+export interface AiResponseSummary {
+  request_id: string
+  points: { label: string; value: string }[]
+  sentiment: keyof AiSentiment | null
+  themes: AiTheme[]
   credits: number
 }

@@ -407,6 +407,8 @@ export function permissionFor(method: string, path: string): Permission | null {
     // Applying or discarding your own draft is part of using it (applying also checks forms / templates / themes create)
     [/^\/ai\/requests\/[^/]+\/(apply|discard)$/, 'ai.use'],
     [/^\/ai\/forms\/[^/]+\/assist$/, 'ai.assist'],
+    [/^\/ai\/(analysis|digest|ask)$/, 'ai.analyse'],
+    [/^\/ai\/responses\/[^/]+\/summary$/, 'ai.analyse'],
     [/^\/ai\/(forms|templates|themes)\/draft$/, 'ai.create'],
     [/^\/ai\/requests(\/|$)/, 'ai.history'],
     [/^\/ai(\/|$)/, 'ai.use'],

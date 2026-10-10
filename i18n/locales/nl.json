@@ -4947,7 +4947,20 @@
       "common": "Een vraag die de meeste formulieren van dit soort bevatten.",
       "consent": "Het formulier vraagt persoonlijke gegevens, dus mensen moeten akkoord gaan met het gebruik ervan.",
       "assist_found": "{n} suggestie gevonden. | {n} suggesties gevonden.",
-      "assist_applied": "{n} van {total} suggesties toegepast. | {n} van {total} suggesties toegepast."
+      "assist_applied": "{n} van {total} suggesties toegepast. | {n} van {total} suggesties toegepast.",
+      "busiest_day": "De drukste dag was {day}, met {n} reactie. | De drukste dag was {day}, met {n} reacties.",
+      "responses_up": "{n}% meer reacties dan de periode ervoor. | {n}% meer reacties dan de periode ervoor.",
+      "responses_down": "{n}% minder reacties dan de periode ervoor. | {n}% minder reacties dan de periode ervoor.",
+      "rating_up": "“{label}” steeg van {from} naar {to}.",
+      "rating_down": "“{label}” daalde van {from} naar {to}.",
+      "theme_negative": "{theme} kreeg de meeste kritiek ({n} antwoord). | {theme} kreeg de meeste kritiek ({n} antwoorden).",
+      "theme_positive": "{theme} werd het meest geprezen ({n} antwoord). | {theme} werd het meest geprezen ({n} antwoorden).",
+      "no_text": "Geen geschreven antwoorden in deze periode.",
+      "few_responses": "Slechts {n} reactie in deze periode, dus ga voorzichtig om met deze bevindingen. | Slechts {n} reacties in deze periode, dus ga voorzichtig om met deze bevindingen.",
+      "period_default": "Er is geen periode genoemd, dus alle reacties zijn meegeteld.",
+      "field_guess": "Er is geen vraag genoemd, dus “{label}” is gebruikt.",
+      "no_field": "De vraag komt niet overeen met een vraag in dit formulier. Gebruik woorden uit de vraag.",
+      "no_answers": "Geen antwoorden gevonden."
     },
     "create": {
       "describe": "Beschrijf het formulier",
@@ -5127,6 +5140,95 @@
       "done": "Klaar",
       "emptyTitle": "Hoe kan de assistent helpen?",
       "emptyDesc": "Kies hierboven een optie. Hij kijkt naar het formulier zoals het nu is, inclusief niet-opgeslagen wijzigingen."
+    },
+    "range": "{from} tot {to}",
+    "theme": {
+      "speed": "Snelheid en wachttijd",
+      "ease": "Gebruiksgemak",
+      "staff": "Personeel en service",
+      "price": "Prijs en waarde",
+      "quality": "Kwaliteit",
+      "mobile": "Mobiel en online",
+      "communication": "Communicatie",
+      "scheduling": "Tijden en boeken",
+      "location": "Locatie",
+      "delivery": "Bezorging",
+      "other": "Overig"
+    },
+    "tone": {
+      "positive": "Positief",
+      "neutral": "Neutraal",
+      "negative": "Negatief"
+    },
+    "analysis": {
+      "form": "Formulier",
+      "pickForm": "Kies een formulier",
+      "responses": "{n} reactie | {n} reacties",
+      "run": "Analyseren",
+      "private": "Alleen de vragen en antwoorden van dit formulier worden gelezen; persoonlijke gegevens worden afgeschermd als je werkruimte dat vraagt.",
+      "step": {
+        "read": "Reacties lezen",
+        "themes": "Thema’s en toon zoeken",
+        "compare": "Vergelijken met de periode ervoor"
+      },
+      "stale": "Het formulier of de periode is gewijzigd. Analyseer opnieuw om bij te werken.",
+      "emptyTitle": "Analyseer de reacties op een formulier",
+      "emptyDesc": "Kies een formulier en een periode. De assistent vindt waar de geschreven antwoorden over gaan, de toon, en hoe beoordelingen en keuzes zijn veranderd.",
+      "responsesTitle": "Reacties",
+      "written": "Geschreven antwoorden",
+      "positive": "Positief",
+      "before": "Periode ervoor",
+      "perDay": "Reacties per dag",
+      "tone": "Toon van geschreven antwoorden",
+      "writtenCount": "{n} geschreven antwoord | {n} geschreven antwoorden",
+      "standsOut": "Wat opvalt",
+      "themes": "Waar mensen over schrijven",
+      "ratings": "Gemiddelde beoordelingen",
+      "was": "was {n}",
+      "mostChosen": "Meest gekozen antwoorden"
+    },
+    "ask": {
+      "title": "Vraag iets over dit formulier",
+      "desc": "Vraag het in gewone woorden. Het antwoord toont de cijfers en de gebruikte filters, zodat je ze kunt controleren.",
+      "placeholder": "Bijvoorbeeld: hoeveel reacties vorige maand?",
+      "button": "Vragen",
+      "example": {
+        "count": "Hoeveel reacties deze maand?",
+        "top": "Welk antwoord werd het meest gekozen?",
+        "average": "Wat is de gemiddelde beoordeling?",
+        "trend": "Reacties per maand dit jaar"
+      },
+      "responses": "reactie | reacties",
+      "averageOf": "gemiddelde voor “{label}”",
+      "topOf": "“{label}”, {n} antwoordden",
+      "trendOf": "Gemiddelde “{label}”",
+      "filters": "Geteld:",
+      "allResponses": "Alle reacties"
+    },
+    "insights": {
+      "period": {
+        "week": "Laatste 7 dagen",
+        "month": "Laatste 30 dagen",
+        "quarter": "Laatste 3 maanden"
+      },
+      "run": "Samenvatten",
+      "single": "Om één reactie samen te vatten, open je die bij Reacties.",
+      "step": {
+        "write": "De samenvatting schrijven"
+      },
+      "copy": "Kopiëren als tekst",
+      "copied": "Samenvatting gekopieerd",
+      "emptyTitle": "Een overzicht van een formulier",
+      "emptyDesc": "Kies een formulier en een periode voor een korte samenvatting om te delen: reacties, toon, thema’s en wat opvalt.",
+      "text": {
+        "responses": "{n} reacties ({before} in de periode ervoor).",
+        "tone": "Geschreven antwoorden: {positive} positief, {neutral} neutraal, {negative} negatief."
+      }
+    },
+    "summary": {
+      "title": "AI-samenvatting",
+      "run": "Samenvatten",
+      "desc": "De belangrijkste antwoorden, de toon en waar de geschreven antwoorden over gaan, in een paar regels."
     }
   },
   "public": {

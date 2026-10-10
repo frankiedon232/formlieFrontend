@@ -187,4 +187,5 @@ export const emptyByStatus = () => Object.fromEntries(AI_STATUSES.map(status => 
 export const maskText = (text: string) =>
   text
     .replace(/[\w.+-]+@[\w-]+(\.[\w-]+)+/g, '[email]')
-    .replace(/\+?\d[\d\s().-]{7,}\d/g, '[number]')
+    // Phone-like runs of digits; dates (2026-03-14) and times stay
+    .replace(/\+?\d[\d\s().-]{7,}\d/g, match => (/^\d{4}-\d{2}-\d{2}(T[\d:.]+Z?)?$/.test(match.trim()) ? match : '[number]'))

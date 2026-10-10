@@ -7,6 +7,7 @@ import * as audit from './routes/audit'
 import * as ai from './routes/ai'
 import * as aiCreate from './routes/aiCreate'
 import * as aiAssist from './routes/aiAssist'
+import * as aiAnalyse from './routes/aiAnalyse'
 import * as people from './routes/people'
 import * as invites from './routes/invites'
 import * as peopleManage from './routes/peopleManage'
@@ -222,6 +223,10 @@ const router = createRouter()
   .post('/ai/requests/:id/discard', aiCreate.discardAiRequest)
   .post('/ai/forms/draft', aiCreate.draftFormRoute)
   .post('/ai/forms/:id/assist', aiAssist.assistFormRoute)
+  .post('/ai/analysis', aiAnalyse.analysisRoute)
+  .post('/ai/digest', aiAnalyse.digestRoute)
+  .post('/ai/ask', aiAnalyse.askRoute)
+  .post('/ai/responses/:id/summary', aiAnalyse.responseSummaryRoute)
   .post('/ai/templates/draft', aiCreate.draftTemplateRoute)
   .post('/ai/themes/draft', aiCreate.draftThemeRoute)
   .get('/saved-queries', savedQueries.listSavedQueries)

@@ -4947,7 +4947,20 @@
       "common": "Pertanyaan yang ada di sebagian besar formulir sejenis.",
       "consent": "Formulir meminta data pribadi, jadi orang sebaiknya menyetujui cara penggunaannya.",
       "assist_found": "Ditemukan {n} saran. | Ditemukan {n} saran.",
-      "assist_applied": "{n} dari {total} saran diterapkan. | {n} dari {total} saran diterapkan."
+      "assist_applied": "{n} dari {total} saran diterapkan. | {n} dari {total} saran diterapkan.",
+      "busiest_day": "Hari tersibuk adalah {day}, dengan {n} respons. | Hari tersibuk adalah {day}, dengan {n} respons.",
+      "responses_up": "{n}% lebih banyak respons dibanding periode sebelumnya. | {n}% lebih banyak respons dibanding periode sebelumnya.",
+      "responses_down": "{n}% lebih sedikit respons dibanding periode sebelumnya. | {n}% lebih sedikit respons dibanding periode sebelumnya.",
+      "rating_up": "“{label}” naik dari {from} menjadi {to}.",
+      "rating_down": "“{label}” turun dari {from} menjadi {to}.",
+      "theme_negative": "{theme} paling banyak dikritik ({n} jawaban). | {theme} paling banyak dikritik ({n} jawaban).",
+      "theme_positive": "{theme} paling banyak dipuji ({n} jawaban). | {theme} paling banyak dipuji ({n} jawaban).",
+      "no_text": "Tidak ada jawaban tertulis pada periode ini.",
+      "few_responses": "Hanya {n} respons pada periode ini, jadi gunakan temuan ini dengan hati-hati. | Hanya {n} respons pada periode ini, jadi gunakan temuan ini dengan hati-hati.",
+      "period_default": "Tidak ada periode yang disebutkan, jadi semua respons dihitung.",
+      "field_guess": "Tidak ada pertanyaan yang disebutkan, jadi “{label}” digunakan.",
+      "no_field": "Pertanyaan tidak cocok dengan pertanyaan mana pun di formulir ini. Coba gunakan kata dari pertanyaan.",
+      "no_answers": "Tidak ada jawaban yang cocok."
     },
     "create": {
       "describe": "Jelaskan formulirnya",
@@ -5127,6 +5140,95 @@
       "done": "Selesai",
       "emptyTitle": "Bagaimana asisten bisa membantu?",
       "emptyDesc": "Pilih satu di atas. Asisten melihat formulir seperti sekarang, termasuk perubahan yang belum disimpan."
+    },
+    "range": "{from} sampai {to}",
+    "theme": {
+      "speed": "Kecepatan dan waktu tunggu",
+      "ease": "Kemudahan penggunaan",
+      "staff": "Staf dan layanan",
+      "price": "Harga dan nilai",
+      "quality": "Kualitas",
+      "mobile": "Ponsel dan online",
+      "communication": "Komunikasi",
+      "scheduling": "Jadwal dan pemesanan",
+      "location": "Lokasi",
+      "delivery": "Pengiriman",
+      "other": "Lainnya"
+    },
+    "tone": {
+      "positive": "Positif",
+      "neutral": "Netral",
+      "negative": "Negatif"
+    },
+    "analysis": {
+      "form": "Formulir",
+      "pickForm": "Pilih formulir",
+      "responses": "{n} respons | {n} respons",
+      "run": "Analisis",
+      "private": "Hanya pertanyaan dan jawaban formulir ini yang dibaca; data pribadi disamarkan jika ruang kerja Anda memintanya.",
+      "step": {
+        "read": "Membaca respons",
+        "themes": "Mencari tema dan nada",
+        "compare": "Membandingkan dengan periode sebelumnya"
+      },
+      "stale": "Formulir atau periode berubah. Analisis lagi untuk memperbarui.",
+      "emptyTitle": "Analisis respons sebuah formulir",
+      "emptyDesc": "Pilih formulir dan periode. Asisten menemukan topik jawaban tertulis, nadanya, dan perubahan penilaian serta pilihan.",
+      "responsesTitle": "Respons",
+      "written": "Jawaban tertulis",
+      "positive": "Positif",
+      "before": "Periode sebelumnya",
+      "perDay": "Respons per hari",
+      "tone": "Nada jawaban tertulis",
+      "writtenCount": "{n} jawaban tertulis | {n} jawaban tertulis",
+      "standsOut": "Yang menonjol",
+      "themes": "Yang ditulis orang",
+      "ratings": "Rata-rata penilaian",
+      "was": "adalah {n}",
+      "mostChosen": "Jawaban paling banyak dipilih"
+    },
+    "ask": {
+      "title": "Tanya tentang formulir ini",
+      "desc": "Tanya dengan kata-kata sederhana. Jawaban menampilkan angka dan filter yang dipakai, agar Anda bisa memeriksanya.",
+      "placeholder": "Contoh: berapa respons bulan lalu?",
+      "button": "Tanya",
+      "example": {
+        "count": "Berapa respons bulan ini?",
+        "top": "Jawaban mana yang paling banyak dipilih?",
+        "average": "Berapa rata-rata penilaian?",
+        "trend": "Respons per bulan tahun ini"
+      },
+      "responses": "respons | respons",
+      "averageOf": "rata-rata untuk “{label}”",
+      "topOf": "“{label}”, {n} menjawab",
+      "trendOf": "Rata-rata “{label}”",
+      "filters": "Dihitung:",
+      "allResponses": "Semua respons"
+    },
+    "insights": {
+      "period": {
+        "week": "7 hari terakhir",
+        "month": "30 hari terakhir",
+        "quarter": "3 bulan terakhir"
+      },
+      "run": "Ringkas",
+      "single": "Untuk meringkas satu respons, buka di Respons.",
+      "step": {
+        "write": "Menulis ringkasan"
+      },
+      "copy": "Salin sebagai teks",
+      "copied": "Ringkasan disalin",
+      "emptyTitle": "Rangkuman sebuah formulir",
+      "emptyDesc": "Pilih formulir dan periode untuk ringkasan singkat yang bisa dibagikan: respons, nada, tema, dan yang menonjol.",
+      "text": {
+        "responses": "{n} respons ({before} pada periode sebelumnya).",
+        "tone": "Jawaban tertulis: {positive} positif, {neutral} netral, {negative} negatif."
+      }
+    },
+    "summary": {
+      "title": "Ringkasan AI",
+      "run": "Ringkas",
+      "desc": "Jawaban utama, nada, dan topik jawaban tertulis dalam beberapa baris."
     }
   },
   "public": {

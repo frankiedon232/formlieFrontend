@@ -4947,7 +4947,20 @@
       "common": "这类表单大多会包含的问题。",
       "consent": "表单会询问个人信息，因此应让大家同意其使用方式。",
       "assist_found": "找到 {n} 条建议。 | 找到 {n} 条建议。",
-      "assist_applied": "已应用 {n} 条建议，共 {total} 条。 | 已应用 {n} 条建议，共 {total} 条。"
+      "assist_applied": "已应用 {n} 条建议，共 {total} 条。 | 已应用 {n} 条建议，共 {total} 条。",
+      "busiest_day": "最忙的一天是 {day}，共 {n} 条回复。 | 最忙的一天是 {day}，共 {n} 条回复。",
+      "responses_up": "回复比上一时段多 {n}%。 | 回复比上一时段多 {n}%。",
+      "responses_down": "回复比上一时段少 {n}%。 | 回复比上一时段少 {n}%。",
+      "rating_up": "“{label}”从 {from} 升至 {to}。",
+      "rating_down": "“{label}”从 {from} 降至 {to}。",
+      "theme_negative": "{theme} 受到的批评最多（{n} 条回答）。 | {theme} 受到的批评最多（{n} 条回答）。",
+      "theme_positive": "{theme} 受到的好评最多（{n} 条回答）。 | {theme} 受到的好评最多（{n} 条回答）。",
+      "no_text": "此时段没有文字回答。",
+      "few_responses": "此时段只有 {n} 条回复，请谨慎看待这些发现。 | 此时段只有 {n} 条回复，请谨慎看待这些发现。",
+      "period_default": "未指定时段，因此统计了所有回复。",
+      "field_guess": "未指定问题，因此使用了“{label}”。",
+      "no_field": "该问题与此表单中的任何问题都不匹配。请尝试使用问题中的词语。",
+      "no_answers": "没有匹配的回答。"
     },
     "create": {
       "describe": "描述表单",
@@ -5127,6 +5140,95 @@
       "done": "完成",
       "emptyTitle": "助手能帮你什么？",
       "emptyDesc": "请在上方选择一项。它会查看表单当前的样子，包括未保存的更改。"
+    },
+    "range": "{from} 至 {to}",
+    "theme": {
+      "speed": "速度与等待",
+      "ease": "易用性",
+      "staff": "员工与服务",
+      "price": "价格与价值",
+      "quality": "质量",
+      "mobile": "手机与线上",
+      "communication": "沟通",
+      "scheduling": "时间与预约",
+      "location": "位置",
+      "delivery": "配送",
+      "other": "其他"
+    },
+    "tone": {
+      "positive": "正面",
+      "neutral": "中性",
+      "negative": "负面"
+    },
+    "analysis": {
+      "form": "表单",
+      "pickForm": "选择表单",
+      "responses": "{n} 条回复 | {n} 条回复",
+      "run": "分析",
+      "private": "只会读取此表单的问题和回答；当你的工作区要求时，个人信息会被遮盖。",
+      "step": {
+        "read": "正在读取回复",
+        "themes": "正在查找主题和情绪",
+        "compare": "正在与上一时段比较"
+      },
+      "stale": "表单或时段已更改。请重新分析以更新。",
+      "emptyTitle": "分析表单的回复",
+      "emptyDesc": "选择表单和时段。助手会找出文字回答的主题、情绪，以及评分和选择的变化。",
+      "responsesTitle": "回复",
+      "written": "文字回答",
+      "positive": "正面",
+      "before": "上一时段",
+      "perDay": "每日回复",
+      "tone": "文字回答的情绪",
+      "writtenCount": "{n} 条文字回答 | {n} 条文字回答",
+      "standsOut": "突出之处",
+      "themes": "大家在写什么",
+      "ratings": "平均评分",
+      "was": "为 {n}",
+      "mostChosen": "最常选择的答案"
+    },
+    "ask": {
+      "title": "询问此表单",
+      "desc": "用简单的话提问。回答会显示数字和所用的筛选条件，方便你核对。",
+      "placeholder": "例如：上个月有多少条回复？",
+      "button": "提问",
+      "example": {
+        "count": "本月有多少条回复？",
+        "top": "哪个答案被选得最多？",
+        "average": "平均评分是多少？",
+        "trend": "今年每月的回复数"
+      },
+      "responses": "条回复 | 条回复",
+      "averageOf": "“{label}”的平均值",
+      "topOf": "“{label}”，{n} 人作答",
+      "trendOf": "“{label}”的平均值",
+      "filters": "统计范围：",
+      "allResponses": "所有回复"
+    },
+    "insights": {
+      "period": {
+        "week": "最近 7 天",
+        "month": "最近 30 天",
+        "quarter": "最近 3 个月"
+      },
+      "run": "总结",
+      "single": "要总结单条回复，请在回复中打开它。",
+      "step": {
+        "write": "正在撰写总结"
+      },
+      "copy": "复制为文本",
+      "copied": "总结已复制",
+      "emptyTitle": "表单摘要",
+      "emptyDesc": "选择表单和时段，获得可分享的简短总结：回复、情绪、主题和突出之处。",
+      "text": {
+        "responses": "{n} 条回复（上一时段为 {before} 条）。",
+        "tone": "文字回答：正面 {positive} 条，中性 {neutral} 条，负面 {negative} 条。"
+      }
+    },
+    "summary": {
+      "title": "AI 总结",
+      "run": "总结",
+      "desc": "用几行字呈现关键回答、情绪和文字回答的主题。"
     }
   },
   "public": {

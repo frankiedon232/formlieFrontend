@@ -4947,7 +4947,20 @@
       "common": "Uma pergunta que a maioria dos formulários deste tipo inclui.",
       "consent": "O formulário pede dados pessoais, por isso as pessoas devem concordar com o seu uso.",
       "assist_found": "{n} sugestão encontrada. | {n} sugestões encontradas.",
-      "assist_applied": "{n} de {total} sugestões aplicadas. | {n} de {total} sugestões aplicadas."
+      "assist_applied": "{n} de {total} sugestões aplicadas. | {n} de {total} sugestões aplicadas.",
+      "busiest_day": "O dia mais movimentado foi {day}, com {n} resposta. | O dia mais movimentado foi {day}, com {n} respostas.",
+      "responses_up": "{n}% mais respostas do que no período anterior. | {n}% mais respostas do que no período anterior.",
+      "responses_down": "{n}% menos respostas do que no período anterior. | {n}% menos respostas do que no período anterior.",
+      "rating_up": "“{label}” subiu de {from} para {to}.",
+      "rating_down": "“{label}” caiu de {from} para {to}.",
+      "theme_negative": "{theme} recebeu mais críticas ({n} resposta). | {theme} recebeu mais críticas ({n} respostas).",
+      "theme_positive": "{theme} foi o mais elogiado ({n} resposta). | {theme} foi o mais elogiado ({n} respostas).",
+      "no_text": "Nenhuma resposta escrita neste período.",
+      "few_responses": "Apenas {n} resposta neste período, então encare estes resultados com cautela. | Apenas {n} respostas neste período, então encare estes resultados com cautela.",
+      "period_default": "Nenhum período foi indicado, então todas as respostas foram contadas.",
+      "field_guess": "Nenhuma pergunta foi indicada, então “{label}” foi usada.",
+      "no_field": "A pergunta não corresponde a nenhuma pergunta deste formulário. Tente usar palavras da pergunta.",
+      "no_answers": "Nenhuma resposta corresponde."
     },
     "create": {
       "describe": "Descreva o formulário",
@@ -5127,6 +5140,95 @@
       "done": "Concluído",
       "emptyTitle": "Como o assistente pode ajudar?",
       "emptyDesc": "Escolha uma opção acima. Ele analisa o formulário como está agora, incluindo alterações não guardadas."
+    },
+    "range": "{from} a {to}",
+    "theme": {
+      "speed": "Rapidez e espera",
+      "ease": "Facilidade de uso",
+      "staff": "Equipe e atendimento",
+      "price": "Preço e valor",
+      "quality": "Qualidade",
+      "mobile": "Celular e online",
+      "communication": "Comunicação",
+      "scheduling": "Horários e reservas",
+      "location": "Localização",
+      "delivery": "Entrega",
+      "other": "Outro"
+    },
+    "tone": {
+      "positive": "Positivo",
+      "neutral": "Neutro",
+      "negative": "Negativo"
+    },
+    "analysis": {
+      "form": "Formulário",
+      "pickForm": "Escolha um formulário",
+      "responses": "{n} resposta | {n} respostas",
+      "run": "Analisar",
+      "private": "Apenas as perguntas e respostas deste formulário são lidas; dados pessoais são ocultados quando seu espaço de trabalho pede.",
+      "step": {
+        "read": "Lendo as respostas",
+        "themes": "Encontrando temas e tom",
+        "compare": "Comparando com o período anterior"
+      },
+      "stale": "O formulário ou o período mudou. Analise de novo para atualizar.",
+      "emptyTitle": "Analise as respostas de um formulário",
+      "emptyDesc": "Escolha um formulário e um período. O assistente encontra do que tratam as respostas escritas, o tom e como mudaram as avaliações e escolhas.",
+      "responsesTitle": "Respostas",
+      "written": "Respostas escritas",
+      "positive": "Positivo",
+      "before": "Período anterior",
+      "perDay": "Respostas por dia",
+      "tone": "Tom das respostas escritas",
+      "writtenCount": "{n} resposta escrita | {n} respostas escritas",
+      "standsOut": "O que se destaca",
+      "themes": "Sobre o que as pessoas escrevem",
+      "ratings": "Avaliações médias",
+      "was": "era {n}",
+      "mostChosen": "Respostas mais escolhidas"
+    },
+    "ask": {
+      "title": "Pergunte sobre este formulário",
+      "desc": "Pergunte com palavras simples. A resposta mostra os números e os filtros usados, para você conferir.",
+      "placeholder": "Por exemplo: quantas respostas no mês passado?",
+      "button": "Perguntar",
+      "example": {
+        "count": "Quantas respostas neste mês?",
+        "top": "Qual resposta foi a mais escolhida?",
+        "average": "Qual é a avaliação média?",
+        "trend": "Respostas por mês neste ano"
+      },
+      "responses": "resposta | respostas",
+      "averageOf": "média de “{label}”",
+      "topOf": "“{label}”, {n} responderam",
+      "trendOf": "Média de “{label}”",
+      "filters": "Contadas:",
+      "allResponses": "Todas as respostas"
+    },
+    "insights": {
+      "period": {
+        "week": "Últimos 7 dias",
+        "month": "Últimos 30 dias",
+        "quarter": "Últimos 3 meses"
+      },
+      "run": "Resumir",
+      "single": "Para resumir uma única resposta, abra-a em Respostas.",
+      "step": {
+        "write": "Escrevendo o resumo"
+      },
+      "copy": "Copiar como texto",
+      "copied": "Resumo copiado",
+      "emptyTitle": "Um resumo de um formulário",
+      "emptyDesc": "Escolha um formulário e um período para um resumo curto que você pode compartilhar: respostas, tom, temas e o que se destaca.",
+      "text": {
+        "responses": "{n} respostas ({before} no período anterior).",
+        "tone": "Respostas escritas: {positive} positivas, {neutral} neutras, {negative} negativas."
+      }
+    },
+    "summary": {
+      "title": "Resumo de IA",
+      "run": "Resumir",
+      "desc": "As respostas principais, o tom e os temas das respostas escritas, em poucas linhas."
     }
   },
   "public": {

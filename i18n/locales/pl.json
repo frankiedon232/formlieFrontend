@@ -4947,7 +4947,20 @@
       "common": "Pytanie, które zawiera większość takich formularzy.",
       "consent": "Formularz pyta o dane osobowe, więc osoby powinny zgodzić się na ich wykorzystanie.",
       "assist_found": "Znaleziono {n} sugestię. | Znaleziono sugestie: {n}.",
-      "assist_applied": "Zastosowano {n} z {total} sugestii. | Zastosowano {n} z {total} sugestii."
+      "assist_applied": "Zastosowano {n} z {total} sugestii. | Zastosowano {n} z {total} sugestii.",
+      "busiest_day": "Najbardziej ruchliwy był dzień {day}, z {n} odpowiedzią. | Najbardziej ruchliwy był dzień {day}, z {n} odpowiedziami.",
+      "responses_up": "O {n}% więcej odpowiedzi niż w poprzednim okresie. | O {n}% więcej odpowiedzi niż w poprzednim okresie.",
+      "responses_down": "O {n}% mniej odpowiedzi niż w poprzednim okresie. | O {n}% mniej odpowiedzi niż w poprzednim okresie.",
+      "rating_up": "„{label}” wzrosło z {from} do {to}.",
+      "rating_down": "„{label}” spadło z {from} do {to}.",
+      "theme_negative": "{theme}: najwięcej krytyki ({n} odpowiedź). | {theme}: najwięcej krytyki ({n} odpowiedzi).",
+      "theme_positive": "{theme}: najwięcej pochwał ({n} odpowiedź). | {theme}: najwięcej pochwał ({n} odpowiedzi).",
+      "no_text": "Brak odpowiedzi pisemnych w tym okresie.",
+      "few_responses": "Tylko {n} odpowiedź w tym okresie, więc traktuj te wnioski ostrożnie. | Tylko {n} odpowiedzi w tym okresie, więc traktuj te wnioski ostrożnie.",
+      "period_default": "Nie podano okresu, więc policzono wszystkie odpowiedzi.",
+      "field_guess": "Nie podano pytania, więc użyto „{label}”.",
+      "no_field": "Pytanie nie pasuje do żadnego pytania w tym formularzu. Użyj słów z pytania.",
+      "no_answers": "Brak pasujących odpowiedzi."
     },
     "create": {
       "describe": "Opisz formularz",
@@ -5127,6 +5140,95 @@
       "done": "Gotowe",
       "emptyTitle": "Jak asystent może pomóc?",
       "emptyDesc": "Wybierz coś powyżej. Asystent patrzy na formularz takim, jaki jest teraz, razem z niezapisanymi zmianami."
+    },
+    "range": "od {from} do {to}",
+    "theme": {
+      "speed": "Szybkość i czas oczekiwania",
+      "ease": "Łatwość obsługi",
+      "staff": "Obsługa i personel",
+      "price": "Cena i wartość",
+      "quality": "Jakość",
+      "mobile": "Telefon i internet",
+      "communication": "Komunikacja",
+      "scheduling": "Terminy i rezerwacje",
+      "location": "Lokalizacja",
+      "delivery": "Dostawa",
+      "other": "Inne"
+    },
+    "tone": {
+      "positive": "Pozytywny",
+      "neutral": "Neutralny",
+      "negative": "Negatywny"
+    },
+    "analysis": {
+      "form": "Formularz",
+      "pickForm": "Wybierz formularz",
+      "responses": "{n} odpowiedź | {n} odpowiedzi",
+      "run": "Analizuj",
+      "private": "Czytane są tylko pytania i odpowiedzi z tego formularza; dane osobowe są maskowane, gdy wymaga tego Twoja przestrzeń robocza.",
+      "step": {
+        "read": "Czytanie odpowiedzi",
+        "themes": "Szukanie tematów i tonu",
+        "compare": "Porównanie z poprzednim okresem"
+      },
+      "stale": "Formularz lub okres się zmienił. Przeanalizuj ponownie, aby zaktualizować.",
+      "emptyTitle": "Przeanalizuj odpowiedzi z formularza",
+      "emptyDesc": "Wybierz formularz i okres. Asystent znajdzie, czego dotyczą odpowiedzi pisemne, jaki mają ton oraz jak zmieniły się oceny i wybory.",
+      "responsesTitle": "Odpowiedzi",
+      "written": "Odpowiedzi pisemne",
+      "positive": "Pozytywne",
+      "before": "Poprzedni okres",
+      "perDay": "Odpowiedzi dziennie",
+      "tone": "Ton odpowiedzi pisemnych",
+      "writtenCount": "{n} odpowiedź pisemna | {n} odpowiedzi pisemnych",
+      "standsOut": "Co się wyróżnia",
+      "themes": "O czym piszą ludzie",
+      "ratings": "Średnie oceny",
+      "was": "było {n}",
+      "mostChosen": "Najczęściej wybierane odpowiedzi"
+    },
+    "ask": {
+      "title": "Zapytaj o ten formularz",
+      "desc": "Pytaj zwykłymi słowami. Odpowiedź pokazuje liczby i użyte filtry, żebyś mógł je sprawdzić.",
+      "placeholder": "Na przykład: ile odpowiedzi w zeszłym miesiącu?",
+      "button": "Zapytaj",
+      "example": {
+        "count": "Ile odpowiedzi w tym miesiącu?",
+        "top": "Którą odpowiedź wybrano najczęściej?",
+        "average": "Jaka jest średnia ocena?",
+        "trend": "Odpowiedzi miesięcznie w tym roku"
+      },
+      "responses": "odpowiedź | odpowiedzi",
+      "averageOf": "średnia dla „{label}”",
+      "topOf": "„{label}”, odpowiedziało {n}",
+      "trendOf": "Średnia „{label}”",
+      "filters": "Policzono:",
+      "allResponses": "Wszystkie odpowiedzi"
+    },
+    "insights": {
+      "period": {
+        "week": "Ostatnie 7 dni",
+        "month": "Ostatnie 30 dni",
+        "quarter": "Ostatnie 3 miesiące"
+      },
+      "run": "Podsumuj",
+      "single": "Aby podsumować jedną odpowiedź, otwórz ją w Odpowiedziach.",
+      "step": {
+        "write": "Pisanie podsumowania"
+      },
+      "copy": "Kopiuj jako tekst",
+      "copied": "Podsumowanie skopiowane",
+      "emptyTitle": "Zestawienie formularza",
+      "emptyDesc": "Wybierz formularz i okres, aby uzyskać krótkie podsumowanie do udostępnienia: odpowiedzi, ton, tematy i to, co się wyróżnia.",
+      "text": {
+        "responses": "{n} odpowiedzi ({before} w poprzednim okresie).",
+        "tone": "Odpowiedzi pisemne: {positive} pozytywnych, {neutral} neutralnych, {negative} negatywnych."
+      }
+    },
+    "summary": {
+      "title": "Podsumowanie AI",
+      "run": "Podsumuj",
+      "desc": "Najważniejsze odpowiedzi, ton i tematy odpowiedzi pisemnych w kilku linijkach."
     }
   },
   "public": {

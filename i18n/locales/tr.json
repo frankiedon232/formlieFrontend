@@ -4947,7 +4947,20 @@
       "common": "Bu türdeki çoğu formda bulunan bir soru.",
       "consent": "Form kişisel bilgi istiyor, bu yüzden kişilerin kullanımına onay vermesi gerekir.",
       "assist_found": "{n} öneri bulundu. | {n} öneri bulundu.",
-      "assist_applied": "{total} öneriden {n} tanesi uygulandı. | {total} öneriden {n} tanesi uygulandı."
+      "assist_applied": "{total} öneriden {n} tanesi uygulandı. | {total} öneriden {n} tanesi uygulandı.",
+      "busiest_day": "En yoğun gün {day} oldu, {n} yanıt ile. | En yoğun gün {day} oldu, {n} yanıt ile.",
+      "responses_up": "Önceki döneme göre %{n} daha fazla yanıt. | Önceki döneme göre %{n} daha fazla yanıt.",
+      "responses_down": "Önceki döneme göre %{n} daha az yanıt. | Önceki döneme göre %{n} daha az yanıt.",
+      "rating_up": "“{label}” {from} değerinden {to} değerine yükseldi.",
+      "rating_down": "“{label}” {from} değerinden {to} değerine düştü.",
+      "theme_negative": "{theme} en çok eleştiriyi aldı ({n} yanıt). | {theme} en çok eleştiriyi aldı ({n} yanıt).",
+      "theme_positive": "{theme} en çok övüldü ({n} yanıt). | {theme} en çok övüldü ({n} yanıt).",
+      "no_text": "Bu dönemde yazılı yanıt yok.",
+      "few_responses": "Bu dönemde yalnızca {n} yanıt var, bu yüzden bulgulara dikkatli yaklaşın. | Bu dönemde yalnızca {n} yanıt var, bu yüzden bulgulara dikkatli yaklaşın.",
+      "period_default": "Dönem belirtilmedi, bu yüzden tüm yanıtlar sayıldı.",
+      "field_guess": "Soru belirtilmedi, bu yüzden “{label}” kullanıldı.",
+      "no_field": "Soru bu formdaki hiçbir soruyla eşleşmedi. Sorudan kelimeler kullanmayı deneyin.",
+      "no_answers": "Eşleşen yanıt yok."
     },
     "create": {
       "describe": "Formu anlatın",
@@ -5127,6 +5140,95 @@
       "done": "Bitti",
       "emptyTitle": "Asistan nasıl yardımcı olabilir?",
       "emptyDesc": "Yukarıdan birini seçin. Formu şu anki haliyle, kaydedilmemiş değişiklikler dahil inceler."
+    },
+    "range": "{from} ile {to} arası",
+    "theme": {
+      "speed": "Hız ve bekleme",
+      "ease": "Kullanım kolaylığı",
+      "staff": "Personel ve hizmet",
+      "price": "Fiyat ve değer",
+      "quality": "Kalite",
+      "mobile": "Telefon ve çevrimiçi",
+      "communication": "İletişim",
+      "scheduling": "Saatler ve rezervasyon",
+      "location": "Konum",
+      "delivery": "Teslimat",
+      "other": "Diğer"
+    },
+    "tone": {
+      "positive": "Olumlu",
+      "neutral": "Nötr",
+      "negative": "Olumsuz"
+    },
+    "analysis": {
+      "form": "Form",
+      "pickForm": "Bir form seçin",
+      "responses": "{n} yanıt | {n} yanıt",
+      "run": "Analiz et",
+      "private": "Yalnızca bu formun soruları ve yanıtları okunur; çalışma alanınız istediğinde kişisel bilgiler gizlenir.",
+      "step": {
+        "read": "Yanıtlar okunuyor",
+        "themes": "Temalar ve ton bulunuyor",
+        "compare": "Önceki dönemle karşılaştırılıyor"
+      },
+      "stale": "Form veya dönem değişti. Güncellemek için yeniden analiz edin.",
+      "emptyTitle": "Bir formun yanıtlarını analiz edin",
+      "emptyDesc": "Bir form ve dönem seçin. Asistan yazılı yanıtların neyle ilgili olduğunu, tonunu ve puanlarla seçimlerin nasıl değiştiğini bulur.",
+      "responsesTitle": "Yanıtlar",
+      "written": "Yazılı yanıtlar",
+      "positive": "Olumlu",
+      "before": "Önceki dönem",
+      "perDay": "Günlük yanıtlar",
+      "tone": "Yazılı yanıtların tonu",
+      "writtenCount": "{n} yazılı yanıt | {n} yazılı yanıt",
+      "standsOut": "Öne çıkanlar",
+      "themes": "İnsanlar neyi yazıyor",
+      "ratings": "Ortalama puanlar",
+      "was": "{n} idi",
+      "mostChosen": "En çok seçilen yanıtlar"
+    },
+    "ask": {
+      "title": "Bu form hakkında sorun",
+      "desc": "Sade kelimelerle sorun. Yanıt, kontrol edebilmeniz için rakamları ve kullanılan filtreleri gösterir.",
+      "placeholder": "Örneğin: geçen ay kaç yanıt geldi?",
+      "button": "Sor",
+      "example": {
+        "count": "Bu ay kaç yanıt var?",
+        "top": "En çok hangi yanıt seçildi?",
+        "average": "Ortalama puan nedir?",
+        "trend": "Bu yıl aylık yanıtlar"
+      },
+      "responses": "yanıt | yanıt",
+      "averageOf": "“{label}” ortalaması",
+      "topOf": "“{label}”, {n} kişi yanıtladı",
+      "trendOf": "Ortalama “{label}”",
+      "filters": "Sayılan:",
+      "allResponses": "Tüm yanıtlar"
+    },
+    "insights": {
+      "period": {
+        "week": "Son 7 gün",
+        "month": "Son 30 gün",
+        "quarter": "Son 3 ay"
+      },
+      "run": "Özetle",
+      "single": "Tek bir yanıtı özetlemek için Yanıtlar bölümünde açın.",
+      "step": {
+        "write": "Özet yazılıyor"
+      },
+      "copy": "Metin olarak kopyala",
+      "copied": "Özet kopyalandı",
+      "emptyTitle": "Bir formun özeti",
+      "emptyDesc": "Paylaşabileceğiniz kısa bir özet için bir form ve dönem seçin: yanıtlar, ton, temalar ve öne çıkanlar.",
+      "text": {
+        "responses": "{n} yanıt (önceki dönemde {before}).",
+        "tone": "Yazılı yanıtlar: {positive} olumlu, {neutral} nötr, {negative} olumsuz."
+      }
+    },
+    "summary": {
+      "title": "YZ özeti",
+      "run": "Özetle",
+      "desc": "Anahtar yanıtlar, ton ve yazılı yanıtların konuları, birkaç satırda."
     }
   },
   "public": {
