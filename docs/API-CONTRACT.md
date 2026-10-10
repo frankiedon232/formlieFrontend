@@ -400,6 +400,20 @@ A view is the form opened, a start is the first answer, a completion is a submit
 | GET | `/analytics/forms?from&to&q&sort&page&page_size` | `FormAnalyticsRow` (totals + `id, name, status, change` (completions vs before, %) `, trend` (completions per day) `, drop_off { page, page_title, field, field_label, rate } \| null`); drafts without views are left out; sort by name, views, starts, completions, completion_rate, median_seconds |
 | GET | `/analytics/forms/{id}/funnel?from&to` | `FormFunnel { form, totals, pages [{ index, title, reached, left }], fields [{ key, label, type, page, required, reached, answered, left, seconds }] }` |
 
+## AI assistant (F19)
+
+The assistant proposes, a person applies. Every call checks that the assistant is on (`FRM-AI-1001`), that it may read what the call needs (`FRM-AI-1003`, Settings → What it may read) and that the month's allowance covers it (`FRM-AI-1002`); each request is kept for the workspace's `keep_days` with who asked, what came back and whether it was applied, and is audited (`ai.*`). Personal data is masked before anything reaches the model when `mask_personal` is on. Kinds and their credits: `form` 5, `template` 5, `theme` 2, `builder` 2, `analysis` 8, `question` 3, `summary` 3, `translate` 4 per language, `rewrite` 1 (`shared/utils/ai/kinds.ts`).
+
+| Method | Path | Notes |
+| ------ | ---- | ----- |
+| GET | `/ai/settings` | `AiSettings { enabled, sources { forms, responses, data }, mask_personal, keep_days (30 · 90 · 180 · 365), monthly_credits, updated_at, updated_by }` (ai.use) |
+| PATCH | `/ai/settings` | `{ enabled?, sources?, mask_personal?, keep_days? }` → `AiSettings` (ai.settings); audited `ai.enabled`, `ai.disabled` or `ai.settings_updated` with before → after |
+| GET | `/ai/usage` | `AiUsage { period { start, end }, used, limit, previous (same days of last month), requests, people, daily [{ date, count }] (credits, last 30 days), by_kind }` (ai.use) |
+| GET | `/ai/requests?q&sort&page&page_size&from&to&filter[kind\|status\|person]` | `AiRequestRow { id, kind, status (proposed · applied · discarded · failed), title, by, target { type (form · template · theme · response), id, name } \| null, credits, created_at, applied_at, mine }`; your own requests, or the workspace's with ai.settings (ai.history); sort `created_at`, `credits`, `title` |
+| GET | `/ai/requests/insights` | `AiRequestInsights { total (30 days), previous, daily, by_status, by_kind, people, credits }` (same reach as the list) |
+| GET | `/ai/requests/{id}` | `AiRequestDetail` = row + `prompt` (masked when the setting is on), `result` (plain-language summary), `read` (sources it read), `masked`, `expires_at` |
+| DELETE | `/ai/requests/{id}` | your own, or any with ai.settings; audited `ai.request_deleted` |
+
 ## Integrations, settings
 
 | GET · POST | `/webhooks` (q, sort, `filter[status]`, `filter[event]`) · `/webhooks/insights` | `Webhook { id, name, url, events, forms, enabled, status (active · failing · paused), paused_reason, secret_preview, deliveries_30d, failed_30d, success_rate, avg_ms, last_delivery, consecutive_failures, daily }`; POST `{ name, url, events, form_ids ([] = every form), enabled? }` → `{ webhook, secret }` (once). URL: HTTPS, public host, never Formalie (`FRM-GEN-1002` url: required · url · https · host · private) |

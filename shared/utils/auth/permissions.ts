@@ -402,6 +402,10 @@ export function permissionFor(method: string, path: string): Permission | null {
     [/^\/api-tokens(\/|$)/, r => (r ? 'api.view' : 'api.tokens')],
     [/^\/(webhooks|webhook-deliveries)(\/|$)/, r => (r ? 'api.view' : 'api.webhooks')],
     [/^\/api-[a-z-]+(\/|$)/, r => (r ? 'api.view' : 'api.service_edit')],
+    // AI assistant (F19): reading the settings and usage is part of using it; each part checks its own permission
+    [/^\/ai\/settings$/, r => (r ? 'ai.use' : 'ai.settings')],
+    [/^\/ai\/requests(\/|$)/, 'ai.history'],
+    [/^\/ai(\/|$)/, 'ai.use'],
     // Audit trail
     [/^\/audit-logs\/export/, 'audit.export'],
     [/^\/audit-logs(\/|$)/, 'audit.view'],

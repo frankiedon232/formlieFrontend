@@ -635,7 +635,10 @@
     "FRM-USER-1009": "此角色已不存在。请选择其他角色。",
     "FRM-USER-1010": "您的账号正在等待管理员批准。可以登录时您会收到电子邮件。",
     "FRM-USER-1011": "此电子邮件地址在这里已有账号。请直接登录。",
-    "FRM-USER-1012": "此注册链接仅接受组织的电子邮件地址。"
+    "FRM-USER-1012": "此注册链接仅接受组织的电子邮件地址。",
+    "FRM-AI-1001": "此工作区已关闭 AI 助手。",
+    "FRM-AI-1002": "本月的 AI 额度已用完。下月初会重新计算。",
+    "FRM-AI-1003": "AI 助手无权读取工作区的这一部分。管理员可以在 AI 设置中更改。"
   },
   "errorUi": {
     "reference": "参考编号：{id}",
@@ -702,7 +705,10 @@
     "paused": "已暂停",
     "delivered": "已送达",
     "retrying": "重试中",
-    "failed": "失败"
+    "failed": "失败",
+    "proposed": "等待审核",
+    "applied": "已应用",
+    "discarded": "已丢弃"
   },
   "footer": {
     "rights": "保留所有权利。",
@@ -899,7 +905,8 @@
       "integrations": "集成",
       "audit": "审计日志",
       "data": "数据源",
-      "api": "API 服务"
+      "api": "API 服务",
+      "ai": "AI 助手"
     },
     "actorType": {
       "user": "人员",
@@ -1119,7 +1126,11 @@
       "users_approved": "已批准",
       "users_rejected": "申请已拒绝",
       "users_signup_link_changed": "注册链接已更改",
-      "forms_folder_access_changed": "文件夹访问权限已更改"
+      "forms_folder_access_changed": "文件夹访问权限已更改",
+      "ai_enabled": "已开启 AI 助手",
+      "ai_disabled": "已关闭 AI 助手",
+      "ai_settings_updated": "AI 设置已更改",
+      "ai_request_deleted": "已从历史记录中删除 AI 请求"
     },
     "detail": {
       "who": "谁",
@@ -4779,6 +4790,135 @@
       "translate": "将表单翻译为 20 种语言中的任意一种，并并排审阅。",
       "history": "向助手提出的所有请求，以及提出者和时间。",
       "settings": "开启或关闭助手，选择它可以读取的内容，并查看用量。"
+    },
+    "kind": {
+      "form": "表单",
+      "template": "模板",
+      "theme": "设计",
+      "builder": "构建器帮助",
+      "analysis": "回复分析",
+      "question": "数据提问",
+      "summary": "摘要",
+      "translate": "翻译",
+      "rewrite": "改写"
+    },
+    "kindHint": {
+      "form": "一个新表单",
+      "template": "一个新模板",
+      "theme": "一个新设计",
+      "builder": "构建器中的帮助",
+      "analysis": "已分析的回复",
+      "question": "关于你的数据的问题",
+      "summary": "一份摘要",
+      "translate": "已翻译的表单",
+      "rewrite": "已改写的文本"
+    },
+    "label": {
+      "made": "由 AI 生成"
+    },
+    "source": {
+      "forms": {
+        "label": "表单",
+        "hint": "表单的问题、选项、设置和设计。"
+      },
+      "responses": {
+        "label": "回复",
+        "hint": "人们提交的回复，用于分析和摘要。"
+      },
+      "data": {
+        "label": "数据源",
+        "hint": "已连接数据库中的表和行。"
+      }
+    },
+    "off": {
+      "title": "AI 助手已关闭",
+      "desc": "你的工作区已关闭 AI 助手。如需使用，请联系管理员。",
+      "descAdmin": "关闭期间不会向助手发送任何内容。请在 AI 设置中开启。",
+      "open": "打开 AI 设置"
+    },
+    "usage": {
+      "title": "已用点数",
+      "thisMonth": "本月",
+      "left": "剩余 {n}",
+      "allowance": "额度",
+      "requests": "请求",
+      "people": "人员",
+      "perDay": "每日点数",
+      "vsLastMonth": "较上月"
+    },
+    "overview": {
+      "byKind": "按类型的点数",
+      "what": "助手能做什么",
+      "soon": "即将推出",
+      "latest": "最新请求",
+      "all": "所有请求",
+      "credits": "{n} 点数 | {n} 点数"
+    },
+    "history": {
+      "subtitleMine": "你向助手提出的所有请求及其结果",
+      "subtitleAll": "工作区向助手提出的所有请求，包括提出者和时间",
+      "byKind": "按类型的请求",
+      "people": "本月 {n} 人 | 本月 {n} 人",
+      "none": "暂无请求",
+      "search": "搜索请求…",
+      "emptyTitle": "暂无请求",
+      "emptyDesc": "向助手发出的请求会连同结果显示在这里。",
+      "you": "你",
+      "ofAllowance": "占月度额度的比例",
+      "sortNewest": "最新优先",
+      "sortOldest": "最早优先",
+      "sortCredits": "点数最多",
+      "sortTitle": "标题",
+      "openTarget": "打开生成的内容",
+      "again": "再问一次",
+      "delete": "从历史记录中删除",
+      "deleteTitle": "从历史记录中删除“{name}”？",
+      "deleteDesc": "请求及其结果将被移除。已应用的内容保持不变。",
+      "deleted": "已从历史记录中删除请求",
+      "asked": "提出的内容",
+      "answer": "返回的内容",
+      "read": "已读取",
+      "readNothing": "仅输入的内容",
+      "keptUntil": "保留至",
+      "masked": "姓名、邮箱和电话号码等个人数据在发送前已被屏蔽。",
+      "notMasked": "此请求未屏蔽个人数据（当时工作区的设置）。",
+      "navigate": "浏览请求",
+      "col": {
+        "request": "请求",
+        "kind": "类型",
+        "status": "状态",
+        "by": "提出者",
+        "credits": "点数",
+        "when": "时间",
+        "applied": "已应用"
+      }
+    },
+    "settings": {
+      "saved": "AI 设置已保存",
+      "readOnly": "只有管理助手的人员才能更改这些设置。",
+      "assistant": "助手",
+      "assistantHint": "此工作区的成员是否可以使用 AI 助手。",
+      "enabled": "AI 助手",
+      "enabledOn": "开启：有权限的人可以使用。",
+      "enabledOff": "关闭：不会向助手发送任何内容。",
+      "reads": "可读取的内容",
+      "readsHint": "助手只读取此处开启的部分，并且只为提问的人读取。",
+      "privacy": "隐私",
+      "privacyHint": "如何处理个人数据，以及请求保留多久。",
+      "mask": "排除个人数据",
+      "maskHint": "姓名、邮箱、电话号码等信息在发送前会被替换。",
+      "keep": "请求保留时长",
+      "keepHint": "较旧的请求及其结果会从历史记录中删除。",
+      "days": "{n} 天",
+      "processing": "助手绝不会使用你的数据进行训练。请求仅为回答而处理，并且只保留此处设置的时长。",
+      "usage": "用量",
+      "usageHint": "每个请求都会从月度额度中消耗点数。",
+      "credits": "点数",
+      "renews": "{date} 更新",
+      "planNote": "额度包含在你的套餐中。",
+      "leaveTitle": "不保存就离开？",
+      "leaveDesc": "你对 AI 设置的更改将会丢失。",
+      "leave": "离开"
     }
   },
   "public": {

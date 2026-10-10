@@ -45,6 +45,10 @@ const COLORS: Record<string, BadgeProps['color']> = {
   // Webhook deliveries (F13 M6)
   delivered: 'success',
   retrying: 'warning',
+  // AI assistant requests (F19)
+  proposed: 'warning',
+  applied: 'success',
+  discarded: 'neutral',
 }
 
 // Deeper text than Nuxt UI's subtle default (500 shade), so status reads crisply (owner, 2026-10-03; docs/design).

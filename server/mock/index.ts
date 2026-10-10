@@ -4,6 +4,7 @@
  */
 import { fail } from './core/respond'
 import * as audit from './routes/audit'
+import * as ai from './routes/ai'
 import * as people from './routes/people'
 import * as invites from './routes/invites'
 import * as peopleManage from './routes/peopleManage'
@@ -208,6 +209,13 @@ const router = createRouter()
   .delete('/datasources/:id/query-history', query.clearQueryHistory)
   .post('/datasources/:id/query/export', query.exportQuery)
   .get('/datasources/activity/insights', dataActivity.dataActivityInsights)
+  .get('/ai/settings', ai.getAiSettings)
+  .patch('/ai/settings', ai.updateAiSettings)
+  .get('/ai/usage', ai.getAiUsage)
+  .get('/ai/requests', ai.listAiRequests)
+  .get('/ai/requests/insights', ai.aiRequestInsights)
+  .get('/ai/requests/:id', ai.getAiRequest)
+  .delete('/ai/requests/:id', ai.deleteAiRequest)
   .get('/saved-queries', savedQueries.listSavedQueries)
   .get('/saved-queries/insights', savedQueries.savedQueryInsights)
   .get('/saved-queries/:id', savedQueries.getSavedQuery)

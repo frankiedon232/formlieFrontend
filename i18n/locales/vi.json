@@ -635,7 +635,10 @@
     "FRM-USER-1009": "Vai trò này không còn nữa. Hãy chọn vai trò khác.",
     "FRM-USER-1010": "Tài khoản của bạn đang chờ quản trị viên phê duyệt. Bạn sẽ nhận được email khi có thể đăng nhập.",
     "FRM-USER-1011": "Địa chỉ email này đã có tài khoản ở đây. Vui lòng đăng nhập.",
-    "FRM-USER-1012": "Liên kết đăng ký này chỉ chấp nhận địa chỉ email của tổ chức."
+    "FRM-USER-1012": "Liên kết đăng ký này chỉ chấp nhận địa chỉ email của tổ chức.",
+    "FRM-AI-1001": "Trợ lý AI đã bị tắt cho không gian làm việc này.",
+    "FRM-AI-1002": "Hạn mức AI tháng này đã dùng hết. Hạn mức sẽ được làm mới vào đầu tháng sau.",
+    "FRM-AI-1003": "Trợ lý AI không được phép đọc phần này của không gian làm việc. Quản trị viên có thể thay đổi trong cài đặt AI."
   },
   "errorUi": {
     "reference": "Mã tham chiếu: {id}",
@@ -702,7 +705,10 @@
     "paused": "Tạm dừng",
     "delivered": "Đã gửi tới",
     "retrying": "Đang thử lại",
-    "failed": "Thất bại"
+    "failed": "Thất bại",
+    "proposed": "Chờ xem xét",
+    "applied": "Đã áp dụng",
+    "discarded": "Đã loại bỏ"
   },
   "footer": {
     "rights": "Bảo lưu mọi quyền.",
@@ -899,7 +905,8 @@
       "integrations": "Tích hợp",
       "audit": "Nhật ký kiểm tra",
       "data": "Nguồn dữ liệu",
-      "api": "Dịch vụ API"
+      "api": "Dịch vụ API",
+      "ai": "Trợ lý AI"
     },
     "actorType": {
       "user": "Người",
@@ -1119,7 +1126,11 @@
       "users_approved": "Đã phê duyệt",
       "users_rejected": "Đã từ chối yêu cầu",
       "users_signup_link_changed": "Đã đổi liên kết đăng ký",
-      "forms_folder_access_changed": "Đã đổi quyền truy cập thư mục"
+      "forms_folder_access_changed": "Đã đổi quyền truy cập thư mục",
+      "ai_enabled": "Đã bật trợ lý AI",
+      "ai_disabled": "Đã tắt trợ lý AI",
+      "ai_settings_updated": "Đã thay đổi cài đặt AI",
+      "ai_request_deleted": "Đã xóa yêu cầu AI khỏi lịch sử"
     },
     "detail": {
       "who": "Ai",
@@ -4779,6 +4790,135 @@
       "translate": "Dịch biểu mẫu sang bất kỳ ngôn ngữ nào trong 20 ngôn ngữ và xem song song.",
       "history": "Mọi điều trợ lý được yêu cầu, bởi ai và khi nào.",
       "settings": "Bật hoặc tắt trợ lý, chọn những gì trợ lý được đọc và xem mức sử dụng."
+    },
+    "kind": {
+      "form": "Biểu mẫu",
+      "template": "Mẫu",
+      "theme": "Thiết kế",
+      "builder": "Trợ giúp trình tạo",
+      "analysis": "Phân tích phản hồi",
+      "question": "Câu hỏi về dữ liệu",
+      "summary": "Tóm tắt",
+      "translate": "Bản dịch",
+      "rewrite": "Viết lại"
+    },
+    "kindHint": {
+      "form": "Một biểu mẫu mới",
+      "template": "Một mẫu mới",
+      "theme": "Một thiết kế mới",
+      "builder": "Trợ giúp trong trình tạo",
+      "analysis": "Đã phân tích câu trả lời",
+      "question": "Một câu hỏi về dữ liệu của bạn",
+      "summary": "Một bản tóm tắt",
+      "translate": "Một biểu mẫu đã dịch",
+      "rewrite": "Văn bản đã viết lại"
+    },
+    "label": {
+      "made": "Tạo bằng AI"
+    },
+    "source": {
+      "forms": {
+        "label": "Biểu mẫu",
+        "hint": "Câu hỏi, tùy chọn, cài đặt và thiết kế của biểu mẫu."
+      },
+      "responses": {
+        "label": "Phản hồi",
+        "hint": "Câu trả lời của mọi người, dùng cho phân tích và tóm tắt."
+      },
+      "data": {
+        "label": "Nguồn dữ liệu",
+        "hint": "Bảng và hàng trong cơ sở dữ liệu đã kết nối."
+      }
+    },
+    "off": {
+      "title": "Trợ lý AI đang tắt",
+      "desc": "Không gian làm việc của bạn đã tắt trợ lý AI. Hãy hỏi quản trị viên nếu bạn cần.",
+      "descAdmin": "Khi đang tắt, không có gì được gửi đến trợ lý. Hãy bật trong cài đặt AI.",
+      "open": "Mở cài đặt AI"
+    },
+    "usage": {
+      "title": "Tín dụng đã dùng",
+      "thisMonth": "Tháng này",
+      "left": "Còn {n}",
+      "allowance": "Hạn mức",
+      "requests": "Yêu cầu",
+      "people": "Người dùng",
+      "perDay": "Tín dụng mỗi ngày",
+      "vsLastMonth": "so với tháng trước"
+    },
+    "overview": {
+      "byKind": "Tín dụng theo loại",
+      "what": "Trợ lý có thể làm gì",
+      "soon": "Sắp có",
+      "latest": "Yêu cầu mới nhất",
+      "all": "Tất cả yêu cầu",
+      "credits": "{n} tín dụng | {n} tín dụng"
+    },
+    "history": {
+      "subtitleMine": "Mọi thứ bạn đã hỏi trợ lý và kết quả nhận được",
+      "subtitleAll": "Mọi thứ không gian làm việc đã hỏi trợ lý, bởi ai và khi nào",
+      "byKind": "Yêu cầu theo loại",
+      "people": "{n} người trong tháng này | {n} người trong tháng này",
+      "none": "Chưa có yêu cầu",
+      "search": "Tìm yêu cầu…",
+      "emptyTitle": "Chưa có yêu cầu",
+      "emptyDesc": "Các yêu cầu gửi tới trợ lý sẽ hiện ở đây, cùng kết quả.",
+      "you": "Bạn",
+      "ofAllowance": "Tỷ lệ trong hạn mức tháng",
+      "sortNewest": "Mới nhất trước",
+      "sortOldest": "Cũ nhất trước",
+      "sortCredits": "Nhiều tín dụng nhất",
+      "sortTitle": "Tiêu đề",
+      "openTarget": "Mở nội dung đã tạo",
+      "again": "Hỏi lại",
+      "delete": "Xóa khỏi lịch sử",
+      "deleteTitle": "Xóa “{name}” khỏi lịch sử?",
+      "deleteDesc": "Yêu cầu và kết quả sẽ bị xóa. Những gì đã áp dụng vẫn giữ nguyên.",
+      "deleted": "Đã xóa yêu cầu khỏi lịch sử",
+      "asked": "Đã hỏi gì",
+      "answer": "Kết quả nhận được",
+      "read": "Đã đọc",
+      "readNothing": "Chỉ nội dung đã nhập",
+      "keptUntil": "Lưu đến",
+      "masked": "Dữ liệu cá nhân như tên, email và số điện thoại đã được che trước khi gửi.",
+      "notMasked": "Dữ liệu cá nhân không được che cho yêu cầu này (theo cài đặt của không gian làm việc lúc đó).",
+      "navigate": "Chuyển giữa các yêu cầu",
+      "col": {
+        "request": "Yêu cầu",
+        "kind": "Loại",
+        "status": "Trạng thái",
+        "by": "Người hỏi",
+        "credits": "Tín dụng",
+        "when": "Khi nào",
+        "applied": "Đã áp dụng"
+      }
+    },
+    "settings": {
+      "saved": "Đã lưu cài đặt AI",
+      "readOnly": "Chỉ những người quản lý trợ lý mới có thể thay đổi các cài đặt này.",
+      "assistant": "Trợ lý",
+      "assistantHint": "Cho phép hay không mọi người trong không gian làm việc này dùng trợ lý AI.",
+      "enabled": "Trợ lý AI",
+      "enabledOn": "Bật: người có quyền truy cập có thể dùng.",
+      "enabledOff": "Tắt: không có gì được gửi đến trợ lý.",
+      "reads": "Những gì được đọc",
+      "readsHint": "Trợ lý chỉ đọc các phần được bật ở đây, và chỉ cho người đặt câu hỏi.",
+      "privacy": "Quyền riêng tư",
+      "privacyHint": "Cách xử lý dữ liệu cá nhân và thời gian lưu các yêu cầu.",
+      "mask": "Không đưa dữ liệu cá nhân vào",
+      "maskHint": "Tên, email, số điện thoại và các chi tiết tương tự được thay thế trước khi gửi.",
+      "keep": "Lưu yêu cầu trong",
+      "keepHint": "Các yêu cầu cũ và kết quả của chúng sẽ bị xóa khỏi lịch sử.",
+      "days": "{n} ngày",
+      "processing": "Trợ lý không bao giờ huấn luyện bằng dữ liệu của bạn. Yêu cầu chỉ được xử lý để trả lời và chỉ lưu trong thời gian đặt ở đây.",
+      "usage": "Mức sử dụng",
+      "usageHint": "Mỗi yêu cầu dùng tín dụng từ hạn mức tháng.",
+      "credits": "tín dụng",
+      "renews": "Làm mới vào {date}",
+      "planNote": "Hạn mức đi kèm gói của bạn.",
+      "leaveTitle": "Rời đi mà không lưu?",
+      "leaveDesc": "Các thay đổi đối với cài đặt AI sẽ bị mất.",
+      "leave": "Rời đi"
     }
   },
   "public": {

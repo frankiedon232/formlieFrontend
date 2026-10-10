@@ -635,7 +635,10 @@
     "FRM-USER-1009": "Ce rôle n’existe plus. Choisissez-en un autre.",
     "FRM-USER-1010": "Votre compte attend l'approbation d'un administrateur. Vous recevrez un e-mail dès que vous pourrez vous connecter.",
     "FRM-USER-1011": "Cette adresse e-mail a déjà un compte ici. Connectez-vous plutôt.",
-    "FRM-USER-1012": "Ce lien d'inscription n'accepte que les adresses e-mail de l'organisation."
+    "FRM-USER-1012": "Ce lien d'inscription n'accepte que les adresses e-mail de l'organisation.",
+    "FRM-AI-1001": "L’assistant IA est désactivé pour cet espace de travail.",
+    "FRM-AI-1002": "Le quota d’IA de ce mois est épuisé. Il se renouvelle au début du mois prochain.",
+    "FRM-AI-1003": "L’assistant IA n’est pas autorisé à lire cette partie de l’espace de travail. Un admin peut le modifier dans les paramètres IA."
   },
   "errorUi": {
     "reference": "Référence : {id}",
@@ -702,7 +705,10 @@
     "paused": "En pause",
     "delivered": "Livré",
     "retrying": "Nouvelle tentative",
-    "failed": "Échoué"
+    "failed": "Échoué",
+    "proposed": "En attente de relecture",
+    "applied": "Appliqué",
+    "discarded": "Écarté"
   },
   "footer": {
     "rights": "Tous droits réservés.",
@@ -899,7 +905,8 @@
       "integrations": "Intégrations",
       "audit": "Journal d’audit",
       "data": "Sources de données",
-      "api": "Service API"
+      "api": "Service API",
+      "ai": "Assistant IA"
     },
     "actorType": {
       "user": "Personne",
@@ -1119,7 +1126,11 @@
       "users_approved": "Approuvé",
       "users_rejected": "Demande refusée",
       "users_signup_link_changed": "Lien d'inscription modifié",
-      "forms_folder_access_changed": "Accès au dossier modifié"
+      "forms_folder_access_changed": "Accès au dossier modifié",
+      "ai_enabled": "Assistant IA activé",
+      "ai_disabled": "Assistant IA désactivé",
+      "ai_settings_updated": "Paramètres IA modifiés",
+      "ai_request_deleted": "Demande IA supprimée de l’historique"
     },
     "detail": {
       "who": "Qui",
@@ -4779,6 +4790,135 @@
       "translate": "Traduisez vos formulaires dans l'une des 20 langues et comparez côte à côte.",
       "history": "Tout ce qui a été demandé à l'assistant, par qui et quand.",
       "settings": "Activez ou désactivez l'assistant, choisissez ce qu'il peut lire et consultez l'utilisation."
+    },
+    "kind": {
+      "form": "Formulaire",
+      "template": "Modèle",
+      "theme": "Design",
+      "builder": "Aide du créateur",
+      "analysis": "Analyse des réponses",
+      "question": "Question sur les données",
+      "summary": "Résumé",
+      "translate": "Traduction",
+      "rewrite": "Reformulation"
+    },
+    "kindHint": {
+      "form": "Un nouveau formulaire",
+      "template": "Un nouveau modèle",
+      "theme": "Un nouveau design",
+      "builder": "Aide dans le créateur",
+      "analysis": "Réponses analysées",
+      "question": "Une question sur vos données",
+      "summary": "Un résumé",
+      "translate": "Un formulaire traduit",
+      "rewrite": "Textes reformulés"
+    },
+    "label": {
+      "made": "Créé avec l’IA"
+    },
+    "source": {
+      "forms": {
+        "label": "Formulaires",
+        "hint": "Questions, options, paramètres et designs de vos formulaires."
+      },
+      "responses": {
+        "label": "Réponses",
+        "hint": "Réponses données par les gens, pour les analyses et les résumés."
+      },
+      "data": {
+        "label": "Sources de données",
+        "hint": "Tables et lignes de vos bases de données connectées."
+      }
+    },
+    "off": {
+      "title": "L’assistant IA est désactivé",
+      "desc": "Votre espace de travail a désactivé l’assistant IA. Demandez à un admin si vous en avez besoin.",
+      "descAdmin": "Rien n’est envoyé à l’assistant tant qu’il est désactivé. Activez-le dans les paramètres IA.",
+      "open": "Ouvrir les paramètres IA"
+    },
+    "usage": {
+      "title": "Crédits utilisés",
+      "thisMonth": "Ce mois-ci",
+      "left": "{n} restants",
+      "allowance": "Quota",
+      "requests": "Demandes",
+      "people": "Personnes",
+      "perDay": "Crédits par jour",
+      "vsLastMonth": "vs mois dernier"
+    },
+    "overview": {
+      "byKind": "Crédits par type",
+      "what": "Ce que l’assistant sait faire",
+      "soon": "Prochainement",
+      "latest": "Dernières demandes",
+      "all": "Toutes les demandes",
+      "credits": "{n} crédit | {n} crédits"
+    },
+    "history": {
+      "subtitleMine": "Tout ce que vous avez demandé à l’assistant, et ce qu’il a répondu",
+      "subtitleAll": "Tout ce que l’espace de travail a demandé à l’assistant, par qui et quand",
+      "byKind": "Demandes par type",
+      "people": "{n} personne ce mois-ci | {n} personnes ce mois-ci",
+      "none": "Aucune demande pour l’instant",
+      "search": "Rechercher des demandes…",
+      "emptyTitle": "Aucune demande pour l’instant",
+      "emptyDesc": "Les demandes à l’assistant apparaissent ici, avec leur résultat.",
+      "you": "Vous",
+      "ofAllowance": "Part du quota mensuel",
+      "sortNewest": "Plus récentes d’abord",
+      "sortOldest": "Plus anciennes d’abord",
+      "sortCredits": "Plus de crédits",
+      "sortTitle": "Titre",
+      "openTarget": "Ouvrir ce qui a été créé",
+      "again": "Redemander",
+      "delete": "Supprimer de l’historique",
+      "deleteTitle": "Supprimer “{name}” de l’historique ?",
+      "deleteDesc": "La demande et son résultat sont supprimés. Ce qui a été appliqué reste tel quel.",
+      "deleted": "Demande supprimée de l’historique",
+      "asked": "Ce qui a été demandé",
+      "answer": "Ce qui est revenu",
+      "read": "Lu",
+      "readNothing": "Seulement le texte saisi",
+      "keptUntil": "Conservé jusqu’au",
+      "masked": "Les données personnelles comme les noms, e-mails et numéros de téléphone ont été masquées avant tout envoi.",
+      "notMasked": "Les données personnelles n’ont pas été masquées pour cette demande (réglage de l’espace de travail à ce moment-là).",
+      "navigate": "Parcourir les demandes",
+      "col": {
+        "request": "Demande",
+        "kind": "Type",
+        "status": "Statut",
+        "by": "Demandé par",
+        "credits": "Crédits",
+        "when": "Quand",
+        "applied": "Appliqué"
+      }
+    },
+    "settings": {
+      "saved": "Paramètres IA enregistrés",
+      "readOnly": "Seules les personnes qui gèrent l’assistant peuvent modifier ces paramètres.",
+      "assistant": "Assistant",
+      "assistantHint": "Indique si les membres de cet espace de travail peuvent utiliser l’assistant IA.",
+      "enabled": "Assistant IA",
+      "enabledOn": "Activé : les personnes avec accès peuvent l’utiliser.",
+      "enabledOff": "Désactivé : rien n’est envoyé à l’assistant.",
+      "reads": "Ce qu’il peut lire",
+      "readsHint": "L’assistant ne lit que les parties activées ici, et seulement pour la personne qui demande.",
+      "privacy": "Confidentialité",
+      "privacyHint": "Comment les données personnelles sont traitées et combien de temps les demandes sont conservées.",
+      "mask": "Exclure les données personnelles",
+      "maskHint": "Les noms, e-mails, numéros de téléphone et détails similaires sont remplacés avant tout envoi.",
+      "keep": "Conserver les demandes pendant",
+      "keepHint": "Les demandes plus anciennes et leurs résultats sont supprimés de l’historique.",
+      "days": "{n} jours",
+      "processing": "L’assistant ne s’entraîne jamais sur vos données. Les demandes sont traitées uniquement pour y répondre et conservées uniquement pendant la durée définie ici.",
+      "usage": "Utilisation",
+      "usageHint": "Chaque demande consomme des crédits du quota mensuel.",
+      "credits": "crédits",
+      "renews": "Se renouvelle le {date}",
+      "planNote": "Le quota est inclus dans votre offre.",
+      "leaveTitle": "Quitter sans enregistrer ?",
+      "leaveDesc": "Vos modifications des paramètres IA seront perdues.",
+      "leave": "Quitter"
     }
   },
   "public": {

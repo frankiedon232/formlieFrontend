@@ -635,7 +635,10 @@
     "FRM-USER-1009": "이 역할은 더 이상 없습니다. 다른 역할을 선택해 주세요.",
     "FRM-USER-1010": "계정이 관리자의 승인을 기다리고 있습니다. 로그인할 수 있게 되면 이메일로 알려 드립니다.",
     "FRM-USER-1011": "이 이메일 주소로 이미 계정이 있습니다. 로그인해 주세요.",
-    "FRM-USER-1012": "이 가입 링크는 조직의 이메일 주소만 사용할 수 있습니다."
+    "FRM-USER-1012": "이 가입 링크는 조직의 이메일 주소만 사용할 수 있습니다.",
+    "FRM-AI-1001": "이 워크스페이스에서는 AI 어시스턴트가 꺼져 있습니다.",
+    "FRM-AI-1002": "이번 달 AI 사용량을 모두 썼습니다. 다음 달 초에 갱신됩니다.",
+    "FRM-AI-1003": "AI 어시스턴트는 워크스페이스의 이 부분을 읽을 수 없습니다. 관리자가 AI 설정에서 변경할 수 있습니다."
   },
   "errorUi": {
     "reference": "참조 번호: {id}",
@@ -702,7 +705,10 @@
     "paused": "일시 중지됨",
     "delivered": "전달됨",
     "retrying": "재시도 중",
-    "failed": "실패"
+    "failed": "실패",
+    "proposed": "검토 대기 중",
+    "applied": "적용됨",
+    "discarded": "취소됨"
   },
   "footer": {
     "rights": "모든 권리 보유.",
@@ -899,7 +905,8 @@
       "integrations": "연동",
       "audit": "감사 로그",
       "data": "데이터 소스",
-      "api": "API 서비스"
+      "api": "API 서비스",
+      "ai": "AI 어시스턴트"
     },
     "actorType": {
       "user": "사용자",
@@ -1119,7 +1126,11 @@
       "users_approved": "승인됨",
       "users_rejected": "요청 거절됨",
       "users_signup_link_changed": "가입 링크 변경됨",
-      "forms_folder_access_changed": "폴더 접근 권한이 변경되었습니다"
+      "forms_folder_access_changed": "폴더 접근 권한이 변경되었습니다",
+      "ai_enabled": "AI 어시스턴트를 켰습니다",
+      "ai_disabled": "AI 어시스턴트를 껐습니다",
+      "ai_settings_updated": "AI 설정이 변경되었습니다",
+      "ai_request_deleted": "AI 요청을 기록에서 삭제했습니다"
     },
     "detail": {
       "who": "누가",
@@ -4779,6 +4790,135 @@
       "translate": "양식을 20개 언어 중 원하는 언어로 번역하고 나란히 검토하세요.",
       "history": "어시스턴트에게 요청된 모든 내용과 요청자, 시간.",
       "settings": "어시스턴트를 켜거나 끄고, 읽을 수 있는 항목을 선택하고, 사용량을 확인하세요."
+    },
+    "kind": {
+      "form": "양식",
+      "template": "템플릿",
+      "theme": "디자인",
+      "builder": "빌더 도움말",
+      "analysis": "응답 분석",
+      "question": "데이터 질문",
+      "summary": "요약",
+      "translate": "번역",
+      "rewrite": "다시 쓰기"
+    },
+    "kindHint": {
+      "form": "새 양식",
+      "template": "새 템플릿",
+      "theme": "새 디자인",
+      "builder": "빌더에서 도움",
+      "analysis": "응답 분석됨",
+      "question": "내 데이터에 대한 질문",
+      "summary": "요약",
+      "translate": "번역된 양식",
+      "rewrite": "다시 쓴 텍스트"
+    },
+    "label": {
+      "made": "AI로 만듦"
+    },
+    "source": {
+      "forms": {
+        "label": "양식",
+        "hint": "양식의 질문, 옵션, 설정, 디자인."
+      },
+      "responses": {
+        "label": "응답",
+        "hint": "분석과 요약을 위한 사람들의 응답."
+      },
+      "data": {
+        "label": "데이터 소스",
+        "hint": "연결된 데이터베이스의 테이블과 행."
+      }
+    },
+    "off": {
+      "title": "AI 어시스턴트가 꺼져 있습니다",
+      "desc": "워크스페이스에서 AI 어시스턴트를 껐습니다. 필요하면 관리자에게 문의하세요.",
+      "descAdmin": "꺼져 있는 동안에는 어시스턴트로 아무것도 전송되지 않습니다. AI 설정에서 켜세요.",
+      "open": "AI 설정 열기"
+    },
+    "usage": {
+      "title": "사용한 크레딧",
+      "thisMonth": "이번 달",
+      "left": "{n} 남음",
+      "allowance": "사용량",
+      "requests": "요청",
+      "people": "사람",
+      "perDay": "일일 크레딧",
+      "vsLastMonth": "지난달 대비"
+    },
+    "overview": {
+      "byKind": "유형별 크레딧",
+      "what": "어시스턴트가 할 수 있는 일",
+      "soon": "곧 제공",
+      "latest": "최근 요청",
+      "all": "모든 요청",
+      "credits": "{n}크레딧 | {n}크레딧"
+    },
+    "history": {
+      "subtitleMine": "어시스턴트에게 요청한 모든 것과 그 결과",
+      "subtitleAll": "워크스페이스가 어시스턴트에게 요청한 모든 것, 요청한 사람과 시간",
+      "byKind": "유형별 요청",
+      "people": "이번 달 {n}명 | 이번 달 {n}명",
+      "none": "아직 요청이 없습니다",
+      "search": "요청 검색…",
+      "emptyTitle": "아직 요청이 없습니다",
+      "emptyDesc": "어시스턴트에게 한 요청이 결과와 함께 여기에 표시됩니다.",
+      "you": "나",
+      "ofAllowance": "월 사용량 중 비율",
+      "sortNewest": "최신순",
+      "sortOldest": "오래된순",
+      "sortCredits": "크레딧 많은 순",
+      "sortTitle": "제목",
+      "openTarget": "만든 항목 열기",
+      "again": "다시 요청",
+      "delete": "기록에서 삭제",
+      "deleteTitle": "기록에서 “{name}”을(를) 삭제할까요?",
+      "deleteDesc": "요청과 결과가 삭제됩니다. 이미 적용된 내용은 그대로 유지됩니다.",
+      "deleted": "요청을 기록에서 삭제했습니다",
+      "asked": "요청 내용",
+      "answer": "돌아온 결과",
+      "read": "읽은 항목",
+      "readNothing": "입력한 내용만",
+      "keptUntil": "보관 기한",
+      "masked": "이름, 이메일, 전화번호 같은 개인 데이터는 전송 전에 가려졌습니다.",
+      "notMasked": "이 요청에서는 개인 데이터가 가려지지 않았습니다(당시 워크스페이스 설정).",
+      "navigate": "요청 이동",
+      "col": {
+        "request": "요청",
+        "kind": "유형",
+        "status": "상태",
+        "by": "요청자",
+        "credits": "크레딧",
+        "when": "시간",
+        "applied": "적용됨"
+      }
+    },
+    "settings": {
+      "saved": "AI 설정을 저장했습니다",
+      "readOnly": "어시스턴트를 관리하는 사람만 이 설정을 변경할 수 있습니다.",
+      "assistant": "어시스턴트",
+      "assistantHint": "이 워크스페이스의 사람들이 AI 어시스턴트를 사용할 수 있는지 여부.",
+      "enabled": "AI 어시스턴트",
+      "enabledOn": "켬: 접근 권한이 있는 사람이 사용할 수 있습니다.",
+      "enabledOff": "끔: 어시스턴트로 아무것도 전송되지 않습니다.",
+      "reads": "읽을 수 있는 범위",
+      "readsHint": "어시스턴트는 여기서 켠 부분만, 요청한 사람을 위해서만 읽습니다.",
+      "privacy": "개인정보 보호",
+      "privacyHint": "개인 데이터를 처리하는 방식과 요청을 보관하는 기간.",
+      "mask": "개인 데이터 제외",
+      "maskHint": "이름, 이메일, 전화번호 등은 전송 전에 대체됩니다.",
+      "keep": "요청 보관 기간",
+      "keepHint": "오래된 요청과 결과는 기록에서 삭제됩니다.",
+      "days": "{n}일",
+      "processing": "어시스턴트는 회원님의 데이터로 학습하지 않습니다. 요청은 답변을 위해서만 처리되며 여기서 설정한 기간 동안만 보관됩니다.",
+      "usage": "사용량",
+      "usageHint": "요청할 때마다 월 사용량에서 크레딧이 차감됩니다.",
+      "credits": "크레딧",
+      "renews": "{date}에 갱신",
+      "planNote": "사용량은 요금제에 포함되어 있습니다.",
+      "leaveTitle": "저장하지 않고 나갈까요?",
+      "leaveDesc": "AI 설정의 변경 내용이 사라집니다.",
+      "leave": "나가기"
     }
   },
   "public": {

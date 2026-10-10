@@ -635,7 +635,10 @@
     "FRM-USER-1009": "Jukumu hili halipo tena. Chagua lingine.",
     "FRM-USER-1010": "Akaunti yako inasubiri idhini ya msimamizi. Utapata barua pepe utakapoweza kuingia.",
     "FRM-USER-1011": "Anwani hii ya barua pepe ina akaunti hapa tayari. Ingia badala yake.",
-    "FRM-USER-1012": "Kiungo hiki cha kujisajili kinakubali anwani za barua pepe za shirika pekee."
+    "FRM-USER-1012": "Kiungo hiki cha kujisajili kinakubali anwani za barua pepe za shirika pekee.",
+    "FRM-AI-1001": "Msaidizi wa AI umezimwa kwa nafasi hii ya kazi.",
+    "FRM-AI-1002": "Kiwango cha AI cha mwezi huu kimeisha. Kitasasishwa mwanzoni mwa mwezi ujao.",
+    "FRM-AI-1003": "Msaidizi wa AI haruhusiwi kusoma sehemu hii ya nafasi ya kazi. Msimamizi anaweza kubadilisha hili katika mipangilio ya AI."
   },
   "errorUi": {
     "reference": "Kumbukumbu: {id}",
@@ -702,7 +705,10 @@
     "paused": "Imesitishwa",
     "delivered": "Imewasilishwa",
     "retrying": "Inajaribu tena",
-    "failed": "Imeshindwa"
+    "failed": "Imeshindwa",
+    "proposed": "Inasubiri ukaguzi",
+    "applied": "Imetumika",
+    "discarded": "Imetupwa"
   },
   "footer": {
     "rights": "Haki zote zimehifadhiwa.",
@@ -899,7 +905,8 @@
       "integrations": "Miunganisho",
       "audit": "Kumbukumbu za ukaguzi",
       "data": "Vyanzo vya data",
-      "api": "Huduma ya API"
+      "api": "Huduma ya API",
+      "ai": "Msaidizi wa AI"
     },
     "actorType": {
       "user": "Mtu",
@@ -1119,7 +1126,11 @@
       "users_approved": "Imeidhinishwa",
       "users_rejected": "Ombi limekataliwa",
       "users_signup_link_changed": "Kiungo cha kujisajili kimebadilishwa",
-      "forms_folder_access_changed": "Ufikiaji wa folda umebadilishwa"
+      "forms_folder_access_changed": "Ufikiaji wa folda umebadilishwa",
+      "ai_enabled": "Msaidizi wa AI umewashwa",
+      "ai_disabled": "Msaidizi wa AI umezimwa",
+      "ai_settings_updated": "Mipangilio ya AI imebadilishwa",
+      "ai_request_deleted": "Ombi la AI limefutwa kwenye historia"
     },
     "detail": {
       "who": "Nani",
@@ -4779,6 +4790,135 @@
       "translate": "Tafsiri fomu katika lugha yoyote kati ya 20 na uzikague bega kwa bega.",
       "history": "Kila kitu msaidizi aliulizwa, na nani na lini.",
       "settings": "Washa au zima msaidizi, chagua anachoweza kusoma na uone matumizi."
+    },
+    "kind": {
+      "form": "Fomu",
+      "template": "Kiolezo",
+      "theme": "Muundo",
+      "builder": "Msaada wa mjenzi",
+      "analysis": "Uchambuzi wa majibu",
+      "question": "Swali kuhusu data",
+      "summary": "Muhtasari",
+      "translate": "Tafsiri",
+      "rewrite": "Kuandika upya"
+    },
+    "kindHint": {
+      "form": "Fomu mpya",
+      "template": "Kiolezo kipya",
+      "theme": "Muundo mpya",
+      "builder": "Msaada katika mjenzi",
+      "analysis": "Majibu yamechambuliwa",
+      "question": "Swali kuhusu data yako",
+      "summary": "Muhtasari",
+      "translate": "Fomu iliyotafsiriwa",
+      "rewrite": "Maandishi yaliyoandikwa upya"
+    },
+    "label": {
+      "made": "Imetengenezwa kwa AI"
+    },
+    "source": {
+      "forms": {
+        "label": "Fomu",
+        "hint": "Maswali, chaguo, mipangilio na miundo ya fomu zako."
+      },
+      "responses": {
+        "label": "Majibu",
+        "hint": "Majibu yaliyotolewa na watu, kwa uchambuzi na muhtasari."
+      },
+      "data": {
+        "label": "Vyanzo vya data",
+        "hint": "Majedwali na safu katika hifadhidata zako zilizounganishwa."
+      }
+    },
+    "off": {
+      "title": "Msaidizi wa AI umezimwa",
+      "desc": "Nafasi yako ya kazi imezima msaidizi wa AI. Muulize msimamizi ukiuhitaji.",
+      "descAdmin": "Hakuna kinachotumwa kwa msaidizi ukiwa umezimwa. Uwashe katika mipangilio ya AI.",
+      "open": "Fungua mipangilio ya AI"
+    },
+    "usage": {
+      "title": "Salio lililotumika",
+      "thisMonth": "Mwezi huu",
+      "left": "Zimebaki {n}",
+      "allowance": "Kiwango",
+      "requests": "Maombi",
+      "people": "Watu",
+      "perDay": "Salio kwa siku",
+      "vsLastMonth": "ikilinganishwa na mwezi uliopita"
+    },
+    "overview": {
+      "byKind": "Salio kwa aina",
+      "what": "Msaidizi anaweza kufanya nini",
+      "soon": "Inakuja hivi karibuni",
+      "latest": "Maombi ya hivi karibuni",
+      "all": "Maombi yote",
+      "credits": "Salio {n} | Salio {n}"
+    },
+    "history": {
+      "subtitleMine": "Kila ulichomuuliza msaidizi na kilichorudi",
+      "subtitleAll": "Kila ambacho nafasi ya kazi ilimuuliza msaidizi, na nani, lini",
+      "byKind": "Maombi kwa aina",
+      "people": "Mtu {n} mwezi huu | Watu {n} mwezi huu",
+      "none": "Bado hakuna maombi",
+      "search": "Tafuta maombi…",
+      "emptyTitle": "Bado hakuna maombi",
+      "emptyDesc": "Maombi kwa msaidizi huonekana hapa, pamoja na kilichorudi.",
+      "you": "Wewe",
+      "ofAllowance": "Sehemu ya kiwango cha kila mwezi",
+      "sortNewest": "Mapya kwanza",
+      "sortOldest": "Ya zamani kwanza",
+      "sortCredits": "Salio nyingi zaidi",
+      "sortTitle": "Kichwa",
+      "openTarget": "Fungua kilichotengenezwa",
+      "again": "Uliza tena",
+      "delete": "Futa kwenye historia",
+      "deleteTitle": "Futa “{name}” kwenye historia?",
+      "deleteDesc": "Ombi na matokeo yake vitaondolewa. Kilichotumika kitabaki kama kilivyo.",
+      "deleted": "Ombi limefutwa kwenye historia",
+      "asked": "Kilichoulizwa",
+      "answer": "Kilichorudi",
+      "read": "Kilisomwa",
+      "readNothing": "Kilichoandikwa tu",
+      "keptUntil": "Huhifadhiwa hadi",
+      "masked": "Data binafsi kama majina, barua pepe na namba za simu ilifichwa kabla ya kutuma chochote.",
+      "notMasked": "Data binafsi haikufichwa kwa ombi hili (mpangilio wa nafasi ya kazi wakati huo).",
+      "navigate": "Pitia maombi",
+      "col": {
+        "request": "Ombi",
+        "kind": "Aina",
+        "status": "Hali",
+        "by": "Aliyeuliza",
+        "credits": "Salio",
+        "when": "Lini",
+        "applied": "Imetumika"
+      }
+    },
+    "settings": {
+      "saved": "Mipangilio ya AI imehifadhiwa",
+      "readOnly": "Ni watu wanaosimamia msaidizi tu wanaoweza kubadilisha mipangilio hii.",
+      "assistant": "Msaidizi",
+      "assistantHint": "Kama watu katika nafasi hii ya kazi wanaweza kutumia msaidizi wa AI.",
+      "enabled": "Msaidizi wa AI",
+      "enabledOn": "Umewashwa: watu wenye ufikiaji wanaweza kuutumia.",
+      "enabledOff": "Umezimwa: hakuna kinachotumwa kwa msaidizi.",
+      "reads": "Anachoweza kusoma",
+      "readsHint": "Msaidizi husoma sehemu zilizowashwa hapa tu, na kwa mtu anayeuliza tu.",
+      "privacy": "Faragha",
+      "privacyHint": "Jinsi data binafsi inavyoshughulikiwa na maombi yanahifadhiwa kwa muda gani.",
+      "mask": "Weka data binafsi nje",
+      "maskHint": "Majina, barua pepe, namba za simu na maelezo kama hayo hubadilishwa kabla ya kutuma chochote.",
+      "keep": "Hifadhi maombi kwa",
+      "keepHint": "Maombi ya zamani na matokeo yake hufutwa kwenye historia.",
+      "days": "Siku {n}",
+      "processing": "Msaidizi hafundishwi kamwe kwa data yako. Maombi huchakatwa ili kujibiwa tu na huhifadhiwa kwa muda uliowekwa hapa tu.",
+      "usage": "Matumizi",
+      "usageHint": "Kila ombi hutumia salio kutoka kiwango cha kila mwezi.",
+      "credits": "salio",
+      "renews": "Husasishwa tarehe {date}",
+      "planNote": "Kiwango huja na mpango wako.",
+      "leaveTitle": "Toka bila kuhifadhi?",
+      "leaveDesc": "Mabadiliko yako kwenye mipangilio ya AI yatapotea.",
+      "leave": "Toka"
     }
   },
   "public": {

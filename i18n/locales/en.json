@@ -635,7 +635,10 @@
     "FRM-USER-1009": "This role does not exist any more. Choose another one.",
     "FRM-USER-1010": "Your account is waiting for an admin's approval. You'll get an email when you can sign in.",
     "FRM-USER-1011": "This email address already has an account here. Sign in instead.",
-    "FRM-USER-1012": "This sign-up link only accepts the organisation's email addresses."
+    "FRM-USER-1012": "This sign-up link only accepts the organisation's email addresses.",
+    "FRM-AI-1001": "The AI assistant is switched off for this workspace.",
+    "FRM-AI-1002": "This month's AI allowance has been used. It renews at the start of next month.",
+    "FRM-AI-1003": "The AI assistant isn't allowed to read this part of the workspace. An admin can change it in AI settings."
   },
   "errorUi": {
     "reference": "Reference: {id}",
@@ -702,7 +705,10 @@
     "paused": "Paused",
     "delivered": "Delivered",
     "retrying": "Retrying",
-    "failed": "Failed"
+    "failed": "Failed",
+    "proposed": "Waiting for review",
+    "applied": "Applied",
+    "discarded": "Discarded"
   },
   "footer": {
     "rights": "All rights reserved.",
@@ -899,7 +905,8 @@
       "integrations": "Integrations",
       "audit": "Audit trail",
       "data": "Data sources",
-      "api": "API service"
+      "api": "API service",
+      "ai": "AI assistant"
     },
     "actorType": {
       "user": "Person",
@@ -1119,7 +1126,11 @@
       "users_approved": "Approved",
       "users_rejected": "Request rejected",
       "users_signup_link_changed": "Sign-up link changed",
-      "forms_folder_access_changed": "Folder access changed"
+      "forms_folder_access_changed": "Folder access changed",
+      "ai_enabled": "AI assistant switched on",
+      "ai_disabled": "AI assistant switched off",
+      "ai_settings_updated": "AI settings changed",
+      "ai_request_deleted": "AI request deleted from the history"
     },
     "detail": {
       "who": "Who",
@@ -4779,6 +4790,135 @@
       "translate": "Translate forms into any of the 20 languages and review side by side.",
       "history": "Everything the assistant was asked, by whom and when.",
       "settings": "Switch the assistant on or off, choose what it may read and see usage."
+    },
+    "kind": {
+      "form": "Form",
+      "template": "Template",
+      "theme": "Design",
+      "builder": "Builder help",
+      "analysis": "Response analysis",
+      "question": "Question about data",
+      "summary": "Summary",
+      "translate": "Translation",
+      "rewrite": "Rewrite"
+    },
+    "kindHint": {
+      "form": "A new form",
+      "template": "A new template",
+      "theme": "A new design",
+      "builder": "Help in the builder",
+      "analysis": "Answers analysed",
+      "question": "A question about your data",
+      "summary": "A summary",
+      "translate": "A form translated",
+      "rewrite": "Texts rewritten"
+    },
+    "label": {
+      "made": "Made with AI"
+    },
+    "source": {
+      "forms": {
+        "label": "Forms",
+        "hint": "Questions, options, settings and designs of your forms."
+      },
+      "responses": {
+        "label": "Responses",
+        "hint": "Answers people gave, for analysis and summaries."
+      },
+      "data": {
+        "label": "Data sources",
+        "hint": "Tables and rows in your connected databases."
+      }
+    },
+    "off": {
+      "title": "The AI assistant is switched off",
+      "desc": "Your workspace has switched off the AI assistant. Ask an admin if you need it.",
+      "descAdmin": "Nothing is sent to the assistant while it is off. Switch it on in AI settings.",
+      "open": "Open AI settings"
+    },
+    "usage": {
+      "title": "Credits used",
+      "thisMonth": "This month",
+      "left": "{n} left",
+      "allowance": "Allowance",
+      "requests": "Requests",
+      "people": "People",
+      "perDay": "Credits per day",
+      "vsLastMonth": "vs last month"
+    },
+    "overview": {
+      "byKind": "Credits by kind",
+      "what": "What the assistant can do",
+      "soon": "Coming next",
+      "latest": "Latest requests",
+      "all": "All requests",
+      "credits": "{n} credit | {n} credits"
+    },
+    "history": {
+      "subtitleMine": "Everything you asked the assistant, and what came back",
+      "subtitleAll": "Everything the workspace asked the assistant, by whom and when",
+      "byKind": "Requests by kind",
+      "people": "{n} person this month | {n} people this month",
+      "none": "No requests yet",
+      "search": "Search requests…",
+      "emptyTitle": "No requests yet",
+      "emptyDesc": "Requests to the assistant show up here, with what came back.",
+      "you": "You",
+      "ofAllowance": "Share of the monthly allowance",
+      "sortNewest": "Newest first",
+      "sortOldest": "Oldest first",
+      "sortCredits": "Most credits",
+      "sortTitle": "Title",
+      "openTarget": "Open what it made",
+      "again": "Ask again",
+      "delete": "Delete from history",
+      "deleteTitle": "Delete “{name}” from the history?",
+      "deleteDesc": "The request and its result are removed. Anything that was applied stays as it is.",
+      "deleted": "Request deleted from the history",
+      "asked": "What was asked",
+      "answer": "What came back",
+      "read": "Read",
+      "readNothing": "Only what was typed",
+      "keptUntil": "Kept until",
+      "masked": "Personal data such as names, emails and phone numbers was masked before anything was sent.",
+      "notMasked": "Personal data was not masked for this request (the workspace's setting at the time).",
+      "navigate": "Move through requests",
+      "col": {
+        "request": "Request",
+        "kind": "Kind",
+        "status": "Status",
+        "by": "Asked by",
+        "credits": "Credits",
+        "when": "When",
+        "applied": "Applied"
+      }
+    },
+    "settings": {
+      "saved": "AI settings saved",
+      "readOnly": "Only people who manage the assistant can change these settings.",
+      "assistant": "Assistant",
+      "assistantHint": "Whether people in this workspace can use the AI assistant.",
+      "enabled": "AI assistant",
+      "enabledOn": "On: people with access can use it.",
+      "enabledOff": "Off: nothing is sent to the assistant.",
+      "reads": "What it may read",
+      "readsHint": "The assistant only reads the parts switched on here, and only for the person who asks.",
+      "privacy": "Privacy",
+      "privacyHint": "How personal data is handled and how long requests are kept.",
+      "mask": "Keep personal data out",
+      "maskHint": "Names, emails, phone numbers and similar details are replaced before anything is sent.",
+      "keep": "Keep requests for",
+      "keepHint": "Older requests and their results are deleted from the history.",
+      "days": "{n} days",
+      "processing": "The assistant never trains on your data. Requests are processed only to answer them and are kept only for the time set here.",
+      "usage": "Usage",
+      "usageHint": "Each request uses credits from the monthly allowance.",
+      "credits": "credits",
+      "renews": "Renews on {date}",
+      "planNote": "The allowance comes with your plan.",
+      "leaveTitle": "Leave without saving?",
+      "leaveDesc": "Your changes to the AI settings will be lost.",
+      "leave": "Leave"
     }
   },
   "public": {

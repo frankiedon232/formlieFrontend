@@ -635,7 +635,10 @@
     "FRM-USER-1009": "Deze rol bestaat niet meer. Kies een andere.",
     "FRM-USER-1010": "Uw account wacht op goedkeuring van een beheerder. U krijgt een e-mail zodra u kunt inloggen.",
     "FRM-USER-1011": "Dit e-mailadres heeft hier al een account. Log in.",
-    "FRM-USER-1012": "Deze aanmeldlink accepteert alleen e-mailadressen van de organisatie."
+    "FRM-USER-1012": "Deze aanmeldlink accepteert alleen e-mailadressen van de organisatie.",
+    "FRM-AI-1001": "De AI-assistent is uitgeschakeld voor deze werkruimte.",
+    "FRM-AI-1002": "Het AI-tegoed van deze maand is op. Het wordt aan het begin van volgende maand vernieuwd.",
+    "FRM-AI-1003": "De AI-assistent mag dit deel van de werkruimte niet lezen. Een beheerder kan dit wijzigen in de AI-instellingen."
   },
   "errorUi": {
     "reference": "Referentie: {id}",
@@ -702,7 +705,10 @@
     "paused": "Gepauzeerd",
     "delivered": "Afgeleverd",
     "retrying": "Opnieuw proberen",
-    "failed": "Mislukt"
+    "failed": "Mislukt",
+    "proposed": "Wacht op beoordeling",
+    "applied": "Toegepast",
+    "discarded": "Verworpen"
   },
   "footer": {
     "rights": "Alle rechten voorbehouden.",
@@ -899,7 +905,8 @@
       "integrations": "Integraties",
       "audit": "Audittrail",
       "data": "Gegevensbronnen",
-      "api": "API-service"
+      "api": "API-service",
+      "ai": "AI-assistent"
     },
     "actorType": {
       "user": "Persoon",
@@ -1119,7 +1126,11 @@
       "users_approved": "Goedgekeurd",
       "users_rejected": "Verzoek afgewezen",
       "users_signup_link_changed": "Aanmeldlink gewijzigd",
-      "forms_folder_access_changed": "Maptoegang gewijzigd"
+      "forms_folder_access_changed": "Maptoegang gewijzigd",
+      "ai_enabled": "AI-assistent ingeschakeld",
+      "ai_disabled": "AI-assistent uitgeschakeld",
+      "ai_settings_updated": "AI-instellingen gewijzigd",
+      "ai_request_deleted": "AI-verzoek verwijderd uit de geschiedenis"
     },
     "detail": {
       "who": "Wie",
@@ -4779,6 +4790,135 @@
       "translate": "Vertaal formulieren naar een van de 20 talen en vergelijk ze naast elkaar.",
       "history": "Alles wat aan de assistent is gevraagd, door wie en wanneer.",
       "settings": "Zet de assistent aan of uit, kies wat hij mag lezen en bekijk het gebruik."
+    },
+    "kind": {
+      "form": "Formulier",
+      "template": "Sjabloon",
+      "theme": "Ontwerp",
+      "builder": "Hulp in de builder",
+      "analysis": "Antwoordanalyse",
+      "question": "Vraag over gegevens",
+      "summary": "Samenvatting",
+      "translate": "Vertaling",
+      "rewrite": "Herschrijving"
+    },
+    "kindHint": {
+      "form": "Een nieuw formulier",
+      "template": "Een nieuw sjabloon",
+      "theme": "Een nieuw ontwerp",
+      "builder": "Hulp in de builder",
+      "analysis": "Antwoorden geanalyseerd",
+      "question": "Een vraag over je gegevens",
+      "summary": "Een samenvatting",
+      "translate": "Een formulier vertaald",
+      "rewrite": "Teksten herschreven"
+    },
+    "label": {
+      "made": "Gemaakt met AI"
+    },
+    "source": {
+      "forms": {
+        "label": "Formulieren",
+        "hint": "Vragen, opties, instellingen en ontwerpen van je formulieren."
+      },
+      "responses": {
+        "label": "Antwoorden",
+        "hint": "Antwoorden van mensen, voor analyses en samenvattingen."
+      },
+      "data": {
+        "label": "Gegevensbronnen",
+        "hint": "Tabellen en rijen in je gekoppelde databases."
+      }
+    },
+    "off": {
+      "title": "De AI-assistent is uitgeschakeld",
+      "desc": "Je werkruimte heeft de AI-assistent uitgeschakeld. Vraag het een beheerder als je hem nodig hebt.",
+      "descAdmin": "Er wordt niets naar de assistent gestuurd zolang hij uit staat. Schakel hem in bij de AI-instellingen.",
+      "open": "AI-instellingen openen"
+    },
+    "usage": {
+      "title": "Gebruikte credits",
+      "thisMonth": "Deze maand",
+      "left": "{n} over",
+      "allowance": "Tegoed",
+      "requests": "Verzoeken",
+      "people": "Mensen",
+      "perDay": "Credits per dag",
+      "vsLastMonth": "t.o.v. vorige maand"
+    },
+    "overview": {
+      "byKind": "Credits per soort",
+      "what": "Wat de assistent kan",
+      "soon": "Binnenkort",
+      "latest": "Laatste verzoeken",
+      "all": "Alle verzoeken",
+      "credits": "{n} credit | {n} credits"
+    },
+    "history": {
+      "subtitleMine": "Alles wat je de assistent vroeg en wat er terugkwam",
+      "subtitleAll": "Alles wat de werkruimte de assistent vroeg, door wie en wanneer",
+      "byKind": "Verzoeken per soort",
+      "people": "{n} persoon deze maand | {n} mensen deze maand",
+      "none": "Nog geen verzoeken",
+      "search": "Verzoeken zoeken…",
+      "emptyTitle": "Nog geen verzoeken",
+      "emptyDesc": "Verzoeken aan de assistent verschijnen hier, met het resultaat.",
+      "you": "Jij",
+      "ofAllowance": "Aandeel van het maandtegoed",
+      "sortNewest": "Nieuwste eerst",
+      "sortOldest": "Oudste eerst",
+      "sortCredits": "Meeste credits",
+      "sortTitle": "Titel",
+      "openTarget": "Open wat het maakte",
+      "again": "Opnieuw vragen",
+      "delete": "Verwijderen uit geschiedenis",
+      "deleteTitle": "“{name}” uit de geschiedenis verwijderen?",
+      "deleteDesc": "Het verzoek en het resultaat worden verwijderd. Wat is toegepast, blijft zoals het is.",
+      "deleted": "Verzoek verwijderd uit de geschiedenis",
+      "asked": "Wat er gevraagd werd",
+      "answer": "Wat er terugkwam",
+      "read": "Gelezen",
+      "readNothing": "Alleen wat is getypt",
+      "keptUntil": "Bewaard tot",
+      "masked": "Persoonsgegevens zoals namen, e-mails en telefoonnummers zijn gemaskeerd voordat er iets werd verstuurd.",
+      "notMasked": "Persoonsgegevens zijn voor dit verzoek niet gemaskeerd (de instelling van de werkruimte destijds).",
+      "navigate": "Door verzoeken bladeren",
+      "col": {
+        "request": "Verzoek",
+        "kind": "Soort",
+        "status": "Status",
+        "by": "Gevraagd door",
+        "credits": "Credits",
+        "when": "Wanneer",
+        "applied": "Toegepast"
+      }
+    },
+    "settings": {
+      "saved": "AI-instellingen opgeslagen",
+      "readOnly": "Alleen mensen die de assistent beheren kunnen deze instellingen wijzigen.",
+      "assistant": "Assistent",
+      "assistantHint": "Of mensen in deze werkruimte de AI-assistent kunnen gebruiken.",
+      "enabled": "AI-assistent",
+      "enabledOn": "Aan: mensen met toegang kunnen hem gebruiken.",
+      "enabledOff": "Uit: er wordt niets naar de assistent gestuurd.",
+      "reads": "Wat hij mag lezen",
+      "readsHint": "De assistent leest alleen de hier ingeschakelde onderdelen, en alleen voor degene die vraagt.",
+      "privacy": "Privacy",
+      "privacyHint": "Hoe persoonsgegevens worden behandeld en hoe lang verzoeken bewaard blijven.",
+      "mask": "Persoonsgegevens buiten houden",
+      "maskHint": "Namen, e-mails, telefoonnummers en vergelijkbare gegevens worden vervangen voordat er iets wordt verstuurd.",
+      "keep": "Verzoeken bewaren gedurende",
+      "keepHint": "Oudere verzoeken en hun resultaten worden uit de geschiedenis verwijderd.",
+      "days": "{n} dagen",
+      "processing": "De assistent traint nooit op je gegevens. Verzoeken worden alleen verwerkt om ze te beantwoorden en alleen bewaard voor de hier ingestelde tijd.",
+      "usage": "Gebruik",
+      "usageHint": "Elk verzoek gebruikt credits van het maandtegoed.",
+      "credits": "credits",
+      "renews": "Wordt vernieuwd op {date}",
+      "planNote": "Het tegoed hoort bij je abonnement.",
+      "leaveTitle": "Verlaten zonder opslaan?",
+      "leaveDesc": "Je wijzigingen in de AI-instellingen gaan verloren.",
+      "leave": "Verlaten"
     }
   },
   "public": {

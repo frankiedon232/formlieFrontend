@@ -635,7 +635,10 @@
     "FRM-USER-1009": "Ta rola już nie istnieje. Wybierz inną.",
     "FRM-USER-1010": "Twoje konto czeka na zatwierdzenie przez administratora. Gdy będzie można się zalogować, otrzymasz e-mail.",
     "FRM-USER-1011": "Ten adres e-mail ma już tutaj konto. Zaloguj się.",
-    "FRM-USER-1012": "Ten link rejestracyjny akceptuje tylko adresy e-mail organizacji."
+    "FRM-USER-1012": "Ten link rejestracyjny akceptuje tylko adresy e-mail organizacji.",
+    "FRM-AI-1001": "Asystent AI jest wyłączony w tej przestrzeni roboczej.",
+    "FRM-AI-1002": "Limit AI na ten miesiąc został wykorzystany. Odnowi się na początku przyszłego miesiąca.",
+    "FRM-AI-1003": "Asystent AI nie ma dostępu do tej części przestrzeni roboczej. Administrator może to zmienić w ustawieniach AI."
   },
   "errorUi": {
     "reference": "Identyfikator: {id}",
@@ -702,7 +705,10 @@
     "paused": "Wstrzymany",
     "delivered": "Dostarczony",
     "retrying": "Ponawianie",
-    "failed": "Nieudany"
+    "failed": "Nieudany",
+    "proposed": "Czeka na przegląd",
+    "applied": "Zastosowano",
+    "discarded": "Odrzucono"
   },
   "footer": {
     "rights": "Wszelkie prawa zastrzeżone.",
@@ -899,7 +905,8 @@
       "integrations": "Integracje",
       "audit": "Dziennik audytu",
       "data": "Źródła danych",
-      "api": "Usługa API"
+      "api": "Usługa API",
+      "ai": "Asystent AI"
     },
     "actorType": {
       "user": "Osoba",
@@ -1119,7 +1126,11 @@
       "users_approved": "Zatwierdzono",
       "users_rejected": "Prośba odrzucona",
       "users_signup_link_changed": "Zmieniono link rejestracyjny",
-      "forms_folder_access_changed": "Zmieniono dostęp do folderu"
+      "forms_folder_access_changed": "Zmieniono dostęp do folderu",
+      "ai_enabled": "Włączono asystenta AI",
+      "ai_disabled": "Wyłączono asystenta AI",
+      "ai_settings_updated": "Zmieniono ustawienia AI",
+      "ai_request_deleted": "Usunięto zapytanie AI z historii"
     },
     "detail": {
       "who": "Kto",
@@ -4779,6 +4790,135 @@
       "translate": "Tłumacz formularze na dowolny z 20 języków i porównuj obok siebie.",
       "history": "Wszystko, o co proszono asystenta, kto i kiedy.",
       "settings": "Włącz lub wyłącz asystenta, wybierz, co może czytać, i sprawdź użycie."
+    },
+    "kind": {
+      "form": "Formularz",
+      "template": "Szablon",
+      "theme": "Projekt",
+      "builder": "Pomoc w kreatorze",
+      "analysis": "Analiza odpowiedzi",
+      "question": "Pytanie o dane",
+      "summary": "Podsumowanie",
+      "translate": "Tłumaczenie",
+      "rewrite": "Przepisanie"
+    },
+    "kindHint": {
+      "form": "Nowy formularz",
+      "template": "Nowy szablon",
+      "theme": "Nowy projekt",
+      "builder": "Pomoc w kreatorze",
+      "analysis": "Przeanalizowane odpowiedzi",
+      "question": "Pytanie o Twoje dane",
+      "summary": "Podsumowanie",
+      "translate": "Przetłumaczony formularz",
+      "rewrite": "Przepisane teksty"
+    },
+    "label": {
+      "made": "Utworzone z AI"
+    },
+    "source": {
+      "forms": {
+        "label": "Formularze",
+        "hint": "Pytania, opcje, ustawienia i projekty Twoich formularzy."
+      },
+      "responses": {
+        "label": "Odpowiedzi",
+        "hint": "Odpowiedzi udzielone przez ludzi, do analiz i podsumowań."
+      },
+      "data": {
+        "label": "Źródła danych",
+        "hint": "Tabele i wiersze w Twoich połączonych bazach danych."
+      }
+    },
+    "off": {
+      "title": "Asystent AI jest wyłączony",
+      "desc": "Twoja przestrzeń robocza wyłączyła asystenta AI. Zapytaj administratora, jeśli go potrzebujesz.",
+      "descAdmin": "Gdy jest wyłączony, nic nie jest do niego wysyłane. Włącz go w ustawieniach AI.",
+      "open": "Otwórz ustawienia AI"
+    },
+    "usage": {
+      "title": "Wykorzystane kredyty",
+      "thisMonth": "Ten miesiąc",
+      "left": "Zostało {n}",
+      "allowance": "Limit",
+      "requests": "Zapytania",
+      "people": "Osoby",
+      "perDay": "Kredyty dziennie",
+      "vsLastMonth": "vs zeszły miesiąc"
+    },
+    "overview": {
+      "byKind": "Kredyty według rodzaju",
+      "what": "Co potrafi asystent",
+      "soon": "Wkrótce",
+      "latest": "Ostatnie zapytania",
+      "all": "Wszystkie zapytania",
+      "credits": "{n} kredyt | {n} kredytów"
+    },
+    "history": {
+      "subtitleMine": "Wszystko, o co poprosiłeś asystenta, i co wrócił",
+      "subtitleAll": "Wszystko, o co przestrzeń robocza poprosiła asystenta, kto i kiedy",
+      "byKind": "Zapytania według rodzaju",
+      "people": "{n} osoba w tym miesiącu | {n} osób w tym miesiącu",
+      "none": "Brak zapytań",
+      "search": "Szukaj zapytań…",
+      "emptyTitle": "Brak zapytań",
+      "emptyDesc": "Zapytania do asystenta pojawią się tutaj razem z wynikiem.",
+      "you": "Ty",
+      "ofAllowance": "Udział w miesięcznym limicie",
+      "sortNewest": "Najnowsze najpierw",
+      "sortOldest": "Najstarsze najpierw",
+      "sortCredits": "Najwięcej kredytów",
+      "sortTitle": "Tytuł",
+      "openTarget": "Otwórz to, co powstało",
+      "again": "Zapytaj ponownie",
+      "delete": "Usuń z historii",
+      "deleteTitle": "Usunąć “{name}” z historii?",
+      "deleteDesc": "Zapytanie i jego wynik zostaną usunięte. Wszystko, co zastosowano, pozostaje bez zmian.",
+      "deleted": "Zapytanie usunięte z historii",
+      "asked": "O co poproszono",
+      "answer": "Co wróciło",
+      "read": "Odczytano",
+      "readNothing": "Tylko wpisany tekst",
+      "keptUntil": "Przechowywane do",
+      "masked": "Dane osobowe, takie jak imiona, e-maile i numery telefonów, zostały zamaskowane przed wysłaniem.",
+      "notMasked": "Dane osobowe nie zostały zamaskowane w tym zapytaniu (ustawienie przestrzeni roboczej w tamtym czasie).",
+      "navigate": "Przechodź między zapytaniami",
+      "col": {
+        "request": "Zapytanie",
+        "kind": "Rodzaj",
+        "status": "Status",
+        "by": "Zapytał(a)",
+        "credits": "Kredyty",
+        "when": "Kiedy",
+        "applied": "Zastosowano"
+      }
+    },
+    "settings": {
+      "saved": "Zapisano ustawienia AI",
+      "readOnly": "Te ustawienia mogą zmieniać tylko osoby zarządzające asystentem.",
+      "assistant": "Asystent",
+      "assistantHint": "Czy osoby w tej przestrzeni roboczej mogą używać asystenta AI.",
+      "enabled": "Asystent AI",
+      "enabledOn": "Włączony: osoby z dostępem mogą z niego korzystać.",
+      "enabledOff": "Wyłączony: nic nie jest wysyłane do asystenta.",
+      "reads": "Co może czytać",
+      "readsHint": "Asystent czyta tylko włączone tutaj części i tylko dla osoby, która pyta.",
+      "privacy": "Prywatność",
+      "privacyHint": "Jak traktowane są dane osobowe i jak długo przechowywane są zapytania.",
+      "mask": "Nie przekazuj danych osobowych",
+      "maskHint": "Imiona, e-maile, numery telefonów i podobne dane są zastępowane przed wysłaniem.",
+      "keep": "Przechowuj zapytania przez",
+      "keepHint": "Starsze zapytania i ich wyniki są usuwane z historii.",
+      "days": "{n} dni",
+      "processing": "Asystent nigdy nie uczy się na Twoich danych. Zapytania są przetwarzane tylko po to, by na nie odpowiedzieć, i przechowywane tylko przez ustawiony tu czas.",
+      "usage": "Użycie",
+      "usageHint": "Każde zapytanie zużywa kredyty z miesięcznego limitu.",
+      "credits": "kredytów",
+      "renews": "Odnawia się {date}",
+      "planNote": "Limit wynika z Twojego planu.",
+      "leaveTitle": "Wyjść bez zapisywania?",
+      "leaveDesc": "Zmiany w ustawieniach AI zostaną utracone.",
+      "leave": "Wyjdź"
     }
   },
   "public": {

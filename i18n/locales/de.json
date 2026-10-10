@@ -635,7 +635,10 @@
     "FRM-USER-1009": "Diese Rolle existiert nicht mehr. Wählen Sie eine andere.",
     "FRM-USER-1010": "Ihr Konto wartet auf die Freigabe durch einen Administrator. Sie erhalten eine E-Mail, sobald Sie sich anmelden können.",
     "FRM-USER-1011": "Für diese E-Mail-Adresse gibt es hier bereits ein Konto. Bitte melden Sie sich an.",
-    "FRM-USER-1012": "Dieser Registrierungslink akzeptiert nur E-Mail-Adressen der Organisation."
+    "FRM-USER-1012": "Dieser Registrierungslink akzeptiert nur E-Mail-Adressen der Organisation.",
+    "FRM-AI-1001": "Der KI-Assistent ist für diesen Arbeitsbereich ausgeschaltet.",
+    "FRM-AI-1002": "Das KI-Kontingent dieses Monats ist aufgebraucht. Es wird zu Beginn des nächsten Monats erneuert.",
+    "FRM-AI-1003": "Der KI-Assistent darf diesen Teil des Arbeitsbereichs nicht lesen. Ein Admin kann das in den KI-Einstellungen ändern."
   },
   "errorUi": {
     "reference": "Referenz: {id}",
@@ -702,7 +705,10 @@
     "paused": "Pausiert",
     "delivered": "Zugestellt",
     "retrying": "Wiederholung läuft",
-    "failed": "Fehlgeschlagen"
+    "failed": "Fehlgeschlagen",
+    "proposed": "Wartet auf Prüfung",
+    "applied": "Angewendet",
+    "discarded": "Verworfen"
   },
   "footer": {
     "rights": "Alle Rechte vorbehalten.",
@@ -899,7 +905,8 @@
       "integrations": "Integrationen",
       "audit": "Audit-Protokoll",
       "data": "Datenquellen",
-      "api": "API-Service"
+      "api": "API-Service",
+      "ai": "KI-Assistent"
     },
     "actorType": {
       "user": "Person",
@@ -1119,7 +1126,11 @@
       "users_approved": "Freigegeben",
       "users_rejected": "Anfrage abgelehnt",
       "users_signup_link_changed": "Registrierungslink geändert",
-      "forms_folder_access_changed": "Ordnerzugriff geändert"
+      "forms_folder_access_changed": "Ordnerzugriff geändert",
+      "ai_enabled": "KI-Assistent eingeschaltet",
+      "ai_disabled": "KI-Assistent ausgeschaltet",
+      "ai_settings_updated": "KI-Einstellungen geändert",
+      "ai_request_deleted": "KI-Anfrage aus dem Verlauf gelöscht"
     },
     "detail": {
       "who": "Wer",
@@ -4779,6 +4790,135 @@
       "translate": "Übersetzen Sie Formulare in jede der 20 Sprachen und prüfen Sie sie nebeneinander.",
       "history": "Alles, was der Assistent gefragt wurde, von wem und wann.",
       "settings": "Schalten Sie den Assistenten ein oder aus, legen Sie fest, was er lesen darf, und sehen Sie die Nutzung."
+    },
+    "kind": {
+      "form": "Formular",
+      "template": "Vorlage",
+      "theme": "Design",
+      "builder": "Hilfe im Builder",
+      "analysis": "Antwortanalyse",
+      "question": "Frage zu Daten",
+      "summary": "Zusammenfassung",
+      "translate": "Übersetzung",
+      "rewrite": "Umformulierung"
+    },
+    "kindHint": {
+      "form": "Ein neues Formular",
+      "template": "Eine neue Vorlage",
+      "theme": "Ein neues Design",
+      "builder": "Hilfe im Builder",
+      "analysis": "Antworten analysiert",
+      "question": "Eine Frage zu deinen Daten",
+      "summary": "Eine Zusammenfassung",
+      "translate": "Ein Formular übersetzt",
+      "rewrite": "Texte umformuliert"
+    },
+    "label": {
+      "made": "Mit KI erstellt"
+    },
+    "source": {
+      "forms": {
+        "label": "Formulare",
+        "hint": "Fragen, Optionen, Einstellungen und Designs deiner Formulare."
+      },
+      "responses": {
+        "label": "Antworten",
+        "hint": "Antworten von Personen, für Analysen und Zusammenfassungen."
+      },
+      "data": {
+        "label": "Datenquellen",
+        "hint": "Tabellen und Zeilen in deinen verbundenen Datenbanken."
+      }
+    },
+    "off": {
+      "title": "Der KI-Assistent ist ausgeschaltet",
+      "desc": "Dein Arbeitsbereich hat den KI-Assistenten ausgeschaltet. Frag einen Admin, falls du ihn brauchst.",
+      "descAdmin": "Solange er ausgeschaltet ist, wird nichts an den Assistenten gesendet. Schalte ihn in den KI-Einstellungen ein.",
+      "open": "KI-Einstellungen öffnen"
+    },
+    "usage": {
+      "title": "Verbrauchte Credits",
+      "thisMonth": "Diesen Monat",
+      "left": "{n} übrig",
+      "allowance": "Kontingent",
+      "requests": "Anfragen",
+      "people": "Personen",
+      "perDay": "Credits pro Tag",
+      "vsLastMonth": "ggü. Vormonat"
+    },
+    "overview": {
+      "byKind": "Credits nach Art",
+      "what": "Was der Assistent kann",
+      "soon": "Als Nächstes",
+      "latest": "Neueste Anfragen",
+      "all": "Alle Anfragen",
+      "credits": "{n} Credit | {n} Credits"
+    },
+    "history": {
+      "subtitleMine": "Alles, was du den Assistenten gefragt hast, und was zurückkam",
+      "subtitleAll": "Alles, was der Arbeitsbereich den Assistenten gefragt hat, von wem und wann",
+      "byKind": "Anfragen nach Art",
+      "people": "{n} Person diesen Monat | {n} Personen diesen Monat",
+      "none": "Noch keine Anfragen",
+      "search": "Anfragen suchen…",
+      "emptyTitle": "Noch keine Anfragen",
+      "emptyDesc": "Anfragen an den Assistenten erscheinen hier, zusammen mit dem Ergebnis.",
+      "you": "Du",
+      "ofAllowance": "Anteil am Monatskontingent",
+      "sortNewest": "Neueste zuerst",
+      "sortOldest": "Älteste zuerst",
+      "sortCredits": "Meiste Credits",
+      "sortTitle": "Titel",
+      "openTarget": "Erstelltes öffnen",
+      "again": "Erneut fragen",
+      "delete": "Aus dem Verlauf löschen",
+      "deleteTitle": "“{name}” aus dem Verlauf löschen?",
+      "deleteDesc": "Die Anfrage und ihr Ergebnis werden entfernt. Alles, was angewendet wurde, bleibt unverändert.",
+      "deleted": "Anfrage aus dem Verlauf gelöscht",
+      "asked": "Was gefragt wurde",
+      "answer": "Was zurückkam",
+      "read": "Gelesen",
+      "readNothing": "Nur das Getippte",
+      "keptUntil": "Aufbewahrt bis",
+      "masked": "Persönliche Daten wie Namen, E-Mails und Telefonnummern wurden maskiert, bevor etwas gesendet wurde.",
+      "notMasked": "Persönliche Daten wurden für diese Anfrage nicht maskiert (Einstellung des Arbeitsbereichs zu diesem Zeitpunkt).",
+      "navigate": "Durch Anfragen navigieren",
+      "col": {
+        "request": "Anfrage",
+        "kind": "Art",
+        "status": "Status",
+        "by": "Gefragt von",
+        "credits": "Credits",
+        "when": "Wann",
+        "applied": "Angewendet"
+      }
+    },
+    "settings": {
+      "saved": "KI-Einstellungen gespeichert",
+      "readOnly": "Nur Personen, die den Assistenten verwalten, können diese Einstellungen ändern.",
+      "assistant": "Assistent",
+      "assistantHint": "Ob Personen in diesem Arbeitsbereich den KI-Assistenten nutzen können.",
+      "enabled": "KI-Assistent",
+      "enabledOn": "An: Personen mit Zugriff können ihn nutzen.",
+      "enabledOff": "Aus: Es wird nichts an den Assistenten gesendet.",
+      "reads": "Was er lesen darf",
+      "readsHint": "Der Assistent liest nur die hier eingeschalteten Bereiche, und nur für die Person, die fragt.",
+      "privacy": "Datenschutz",
+      "privacyHint": "Wie persönliche Daten behandelt werden und wie lange Anfragen aufbewahrt werden.",
+      "mask": "Persönliche Daten fernhalten",
+      "maskHint": "Namen, E-Mails, Telefonnummern und ähnliche Angaben werden ersetzt, bevor etwas gesendet wird.",
+      "keep": "Anfragen aufbewahren für",
+      "keepHint": "Ältere Anfragen und ihre Ergebnisse werden aus dem Verlauf gelöscht.",
+      "days": "{n} Tage",
+      "processing": "Der Assistent trainiert nie mit deinen Daten. Anfragen werden nur zur Beantwortung verarbeitet und nur für die hier eingestellte Zeit aufbewahrt.",
+      "usage": "Nutzung",
+      "usageHint": "Jede Anfrage verbraucht Credits aus dem Monatskontingent.",
+      "credits": "Credits",
+      "renews": "Erneuert sich am {date}",
+      "planNote": "Das Kontingent gehört zu deinem Tarif.",
+      "leaveTitle": "Ohne Speichern verlassen?",
+      "leaveDesc": "Deine Änderungen an den KI-Einstellungen gehen verloren.",
+      "leave": "Verlassen"
     }
   },
   "public": {

@@ -635,7 +635,10 @@
     "FRM-USER-1009": "Peran ini sudah tidak ada. Pilih peran lain.",
     "FRM-USER-1010": "Akun Anda menunggu persetujuan admin. Anda akan menerima email saat sudah bisa masuk.",
     "FRM-USER-1011": "Alamat email ini sudah punya akun di sini. Silakan masuk.",
-    "FRM-USER-1012": "Tautan pendaftaran ini hanya menerima alamat email organisasi."
+    "FRM-USER-1012": "Tautan pendaftaran ini hanya menerima alamat email organisasi.",
+    "FRM-AI-1001": "Asisten AI dimatikan untuk ruang kerja ini.",
+    "FRM-AI-1002": "Jatah AI bulan ini sudah habis. Jatah diperbarui di awal bulan depan.",
+    "FRM-AI-1003": "Asisten AI tidak diizinkan membaca bagian ruang kerja ini. Admin dapat mengubahnya di pengaturan AI."
   },
   "errorUi": {
     "reference": "Referensi: {id}",
@@ -702,7 +705,10 @@
     "paused": "Dijeda",
     "delivered": "Terkirim",
     "retrying": "Mencoba lagi",
-    "failed": "Gagal"
+    "failed": "Gagal",
+    "proposed": "Menunggu tinjauan",
+    "applied": "Diterapkan",
+    "discarded": "Dibuang"
   },
   "footer": {
     "rights": "Hak cipta dilindungi.",
@@ -899,7 +905,8 @@
       "integrations": "Integrasi",
       "audit": "Jejak audit",
       "data": "Sumber data",
-      "api": "Layanan API"
+      "api": "Layanan API",
+      "ai": "Asisten AI"
     },
     "actorType": {
       "user": "Orang",
@@ -1119,7 +1126,11 @@
       "users_approved": "Disetujui",
       "users_rejected": "Permintaan ditolak",
       "users_signup_link_changed": "Tautan pendaftaran diubah",
-      "forms_folder_access_changed": "Akses folder diubah"
+      "forms_folder_access_changed": "Akses folder diubah",
+      "ai_enabled": "Asisten AI dinyalakan",
+      "ai_disabled": "Asisten AI dimatikan",
+      "ai_settings_updated": "Pengaturan AI diubah",
+      "ai_request_deleted": "Permintaan AI dihapus dari riwayat"
     },
     "detail": {
       "who": "Siapa",
@@ -4779,6 +4790,135 @@
       "translate": "Terjemahkan formulir ke salah satu dari 20 bahasa dan tinjau berdampingan.",
       "history": "Semua yang ditanyakan kepada asisten, oleh siapa dan kapan.",
       "settings": "Aktifkan atau nonaktifkan asisten, pilih apa yang boleh dibacanya, dan lihat penggunaan."
+    },
+    "kind": {
+      "form": "Formulir",
+      "template": "Templat",
+      "theme": "Desain",
+      "builder": "Bantuan pembuat",
+      "analysis": "Analisis respons",
+      "question": "Pertanyaan tentang data",
+      "summary": "Ringkasan",
+      "translate": "Terjemahan",
+      "rewrite": "Penulisan ulang"
+    },
+    "kindHint": {
+      "form": "Formulir baru",
+      "template": "Templat baru",
+      "theme": "Desain baru",
+      "builder": "Bantuan di pembuat",
+      "analysis": "Jawaban dianalisis",
+      "question": "Pertanyaan tentang data Anda",
+      "summary": "Sebuah ringkasan",
+      "translate": "Formulir diterjemahkan",
+      "rewrite": "Teks ditulis ulang"
+    },
+    "label": {
+      "made": "Dibuat dengan AI"
+    },
+    "source": {
+      "forms": {
+        "label": "Formulir",
+        "hint": "Pertanyaan, opsi, pengaturan, dan desain formulir Anda."
+      },
+      "responses": {
+        "label": "Respons",
+        "hint": "Jawaban dari orang-orang, untuk analisis dan ringkasan."
+      },
+      "data": {
+        "label": "Sumber data",
+        "hint": "Tabel dan baris di basis data Anda yang terhubung."
+      }
+    },
+    "off": {
+      "title": "Asisten AI dimatikan",
+      "desc": "Ruang kerja Anda telah mematikan asisten AI. Tanyakan ke admin jika Anda membutuhkannya.",
+      "descAdmin": "Tidak ada yang dikirim ke asisten selama dimatikan. Nyalakan di pengaturan AI.",
+      "open": "Buka pengaturan AI"
+    },
+    "usage": {
+      "title": "Kredit terpakai",
+      "thisMonth": "Bulan ini",
+      "left": "Sisa {n}",
+      "allowance": "Jatah",
+      "requests": "Permintaan",
+      "people": "Orang",
+      "perDay": "Kredit per hari",
+      "vsLastMonth": "vs bulan lalu"
+    },
+    "overview": {
+      "byKind": "Kredit menurut jenis",
+      "what": "Yang bisa dilakukan asisten",
+      "soon": "Segera hadir",
+      "latest": "Permintaan terbaru",
+      "all": "Semua permintaan",
+      "credits": "{n} kredit | {n} kredit"
+    },
+    "history": {
+      "subtitleMine": "Semua yang Anda tanyakan ke asisten, dan hasilnya",
+      "subtitleAll": "Semua yang ditanyakan ruang kerja ke asisten, oleh siapa dan kapan",
+      "byKind": "Permintaan menurut jenis",
+      "people": "{n} orang bulan ini | {n} orang bulan ini",
+      "none": "Belum ada permintaan",
+      "search": "Cari permintaan…",
+      "emptyTitle": "Belum ada permintaan",
+      "emptyDesc": "Permintaan ke asisten muncul di sini, beserta hasilnya.",
+      "you": "Anda",
+      "ofAllowance": "Bagian dari jatah bulanan",
+      "sortNewest": "Terbaru dulu",
+      "sortOldest": "Terlama dulu",
+      "sortCredits": "Kredit terbanyak",
+      "sortTitle": "Judul",
+      "openTarget": "Buka hasil buatannya",
+      "again": "Tanya lagi",
+      "delete": "Hapus dari riwayat",
+      "deleteTitle": "Hapus “{name}” dari riwayat?",
+      "deleteDesc": "Permintaan dan hasilnya dihapus. Yang sudah diterapkan tetap seperti semula.",
+      "deleted": "Permintaan dihapus dari riwayat",
+      "asked": "Yang ditanyakan",
+      "answer": "Hasilnya",
+      "read": "Dibaca",
+      "readNothing": "Hanya yang diketik",
+      "keptUntil": "Disimpan sampai",
+      "masked": "Data pribadi seperti nama, email, dan nomor telepon disamarkan sebelum apa pun dikirim.",
+      "notMasked": "Data pribadi tidak disamarkan untuk permintaan ini (pengaturan ruang kerja saat itu).",
+      "navigate": "Telusuri permintaan",
+      "col": {
+        "request": "Permintaan",
+        "kind": "Jenis",
+        "status": "Status",
+        "by": "Ditanyakan oleh",
+        "credits": "Kredit",
+        "when": "Kapan",
+        "applied": "Diterapkan"
+      }
+    },
+    "settings": {
+      "saved": "Pengaturan AI disimpan",
+      "readOnly": "Hanya orang yang mengelola asisten yang dapat mengubah pengaturan ini.",
+      "assistant": "Asisten",
+      "assistantHint": "Apakah orang di ruang kerja ini dapat menggunakan asisten AI.",
+      "enabled": "Asisten AI",
+      "enabledOn": "Aktif: orang yang punya akses dapat menggunakannya.",
+      "enabledOff": "Mati: tidak ada yang dikirim ke asisten.",
+      "reads": "Yang boleh dibaca",
+      "readsHint": "Asisten hanya membaca bagian yang dinyalakan di sini, dan hanya untuk orang yang bertanya.",
+      "privacy": "Privasi",
+      "privacyHint": "Cara data pribadi ditangani dan berapa lama permintaan disimpan.",
+      "mask": "Jauhkan data pribadi",
+      "maskHint": "Nama, email, nomor telepon, dan detail serupa diganti sebelum apa pun dikirim.",
+      "keep": "Simpan permintaan selama",
+      "keepHint": "Permintaan lama beserta hasilnya dihapus dari riwayat.",
+      "days": "{n} hari",
+      "processing": "Asisten tidak pernah dilatih dengan data Anda. Permintaan diproses hanya untuk menjawabnya dan disimpan hanya selama waktu yang diatur di sini.",
+      "usage": "Penggunaan",
+      "usageHint": "Setiap permintaan memakai kredit dari jatah bulanan.",
+      "credits": "kredit",
+      "renews": "Diperbarui pada {date}",
+      "planNote": "Jatah ini bagian dari paket Anda.",
+      "leaveTitle": "Keluar tanpa menyimpan?",
+      "leaveDesc": "Perubahan pada pengaturan AI akan hilang.",
+      "leave": "Keluar"
     }
   },
   "public": {

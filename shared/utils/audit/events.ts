@@ -14,6 +14,7 @@ export const AUDIT_AREAS = [
   'integrations',
   'api',
   'data',
+  'ai',
   'audit',
 ] as const
 
@@ -164,6 +165,11 @@ export const AUDIT_EVENTS = {
   'data.query_exported': { area: 'data', icon: 'i-lucide-file-down' },
   'data.saved_query_saved': { area: 'data', icon: 'i-lucide-bookmark' },
   'data.saved_query_deleted': { area: 'data', icon: 'i-lucide-bookmark-x' },
+  // AI assistant (F19)
+  'ai.enabled': { area: 'ai', icon: 'i-lucide-sparkles' },
+  'ai.disabled': { area: 'ai', icon: 'i-lucide-circle-off' },
+  'ai.settings_updated': { area: 'ai', icon: 'i-lucide-sliders-horizontal' },
+  'ai.request_deleted': { area: 'ai', icon: 'i-lucide-trash-2' },
   // API service (F13)
   'api.service_created': { area: 'api', icon: 'i-lucide-boxes' },
   'api.service_updated': { area: 'api', icon: 'i-lucide-pencil' },

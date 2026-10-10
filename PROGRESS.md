@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-10 (owner re-ordered what is left: F19 AI, F24 Payments, F21 Dashboard, F25 Help centre, real backend, then F23 Platform admin as a separate project; its plan split into the two projects formaliePlatformFront and formaliePlatformBack; next: F19)
+**Last updated:** 2026-10-10 (F19 AI assistant M1 done: settings, usage, history, overview; next: M2 creating forms, templates and designs)
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend · ➖ dropped or merged
 
@@ -29,7 +29,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F16   | Users & profiles (Profile + Users)                | ✅     | 100% (owner-approved 2026-10-09)          |
 | F17   | Users (merged into F16)                           | ➖     | -                                         |
 | F18   | Analytics                                         | ✅     | 100% (waiting for review)                 |
-| F19   | AI assistant                                      | 🟡     | ~2%                                       |
+| F19   | AI assistant                                      | 🟡     | ~15% (M1 done)                            |
 | F20   | Live collaboration (removed)                      | ➖     | -                                         |
 | F21   | Dashboard                                         | ⬜     | 0%                                        |
 | F22   | Roles & access                                    | ✅     | 100% (owner-tested 2026-10-10)            |
@@ -924,36 +924,39 @@ Owner, 2026-10-08: "profiling and users are the same thing". One phase builds th
 
 **Goal:** an assistant built into Formalie that makes work easier, creating forms and templates, analysing responses, summarising, translating and more (owner idea 2026-10-03). Own rail area and menu; also available in context (builder, templates, responses). People stay in control: the assistant proposes, a person reviews and applies; nothing is published or sent by the assistant on its own.
 
+**How it works until the real backend (decided 2026-10-10):** the mock has its own built-in assistant engine (`server/mock/ai/`), no outside service: it builds forms from Formalie's template catalogue and a dictionary of common questions, finds themes and sentiment in answers with word lists, and translates with Formalie's own translated texts. Same request and answer shapes as the real one (API-CONTRACT → AI assistant), so the screens don't change when the backend's model takes over. The model / provider is a backend decision for the owner (recommendation in docs/03-DECISIONS-AND-NOTES.md).
+
+**Milestones:** **M1** ✅ Foundation (settings, usage, history, overview) · **M2** Creating (form from a description or a document, template ideas, theme from a brand colour) · **M3** Builder help · **M4** Analysing (response analysis, questions in plain words, summaries) · **M5** Translating and writing · **M6** Phase checks (phone, keyboard, RTL, 20 languages).
+
 ### 1. Area and navigation
 
 - ✅ Own rail area (sparkles icon) with its own menu: Overview · Create a form · Template ideas · Response analysis · Insights & summaries · Translations · History · Settings & usage, placeholder pages (`/ai/**`)
+- ✅ **M1** Overview page: this month's usage (with the change, daily bars), requests by kind (thin lines, legend opens History filtered), what to do next (the assistant's parts as cards, each following the role), latest requests; switched-off state with the way to switch it on
 
-### 2. Creating
+### 2. Creating (M2, M3)
 
-- ⬜ Describe a form in plain words (or paste a document / old form) → a draft with pages, fields, options, validation, logic and calculations, shown as a preview to accept, edit or regenerate; then opened in the builder
-- ⬜ In the builder: "Suggest fields", "Write help texts", "Add logic", "Check my form" (accessibility, missing validation, duplicate questions)
-- ⬜ Template ideas: generate a template for an industry / use case, with a matching theme; save to the workspace templates (F9)
-- ⬜ Design help: suggest a theme from a brand colour / logo / website
+- ⬜ **M2** Describe a form in plain words (or paste a document / old form) → a draft with pages, fields, options, validation, logic and calculations, shown as a preview to accept, edit or regenerate; then opened in the builder
+- ⬜ **M3** In the builder: "Suggest fields", "Write help texts", "Add logic", "Check my form" (accessibility, missing validation, duplicate questions), each shown as changes to apply one by one or all
+- ⬜ **M2** Template ideas: generate a template for an industry / use case, with a matching theme; save to the workspace templates (F9)
+- ⬜ **M2** Design help: suggest a theme from a brand colour / logo / website
 
-### 3. Analysing
+### 3. Analysing (M4)
 
 - ⬜ Response analysis per form: themes in open text, sentiment, trends, outliers, comparison between periods
 - ⬜ Ask questions about the data in plain words ("Which site had most incidents last month?") with the numbers and the filters used shown
 - ⬜ Insights and summaries: weekly digest per form, summary of a single response, executive summary for exports
 
-### 4. Translating and writing
+### 4. Translating and writing (M5)
 
 - ⬜ Translate a form (labels, options, help, messages) into any of the 20 languages; reviewed side by side before applying
 - ⬜ Rewrite for clarity / tone; plain-language check
 
-### 5. Control, privacy and cost
+### 5. Control, privacy and cost (M1, checked again in M6)
 
-- ⬜ Settings: switch the assistant on / off per workspace, choose which areas it may read (forms, responses, data sources), keep personal data out (masking), retention of prompts
-- ⬜ Usage and limits per plan; history of every request (who, what, when) with the result; everything audited (`ai.*`)
+- ✅ **M1** Settings: switch the assistant on / off per workspace, choose which areas it may read (forms, responses, data sources), keep personal data out (masking), how long requests are kept
+- ✅ **M1** Usage and limits per plan (a monthly allowance of credits until plans come in F24); history of every request (who, what, when, result, applied or not) in the locked list format (two chart cards, DataView, cards, detail panel); everything audited (`ai.*`)
 - ⬜ Clear labelling of AI-made content; nothing applied without a person's confirmation
 - ⬜ Model / provider choice is a backend decision (documented when F19 starts); data processing terms shown, controls, not certifications
-
----
 
 ## F20, Live collaboration ➖ (removed by the owner, 2026-10-08)
 
@@ -1575,3 +1578,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-10 | Plan | Owner re-ordered what is left: F19, F24, F25, real backend, then F23 Platform admin as a separate project (own repo, front end, FastAPI backend, database; dev `platformadm.formalie.dev:2203`, API `platformapi.formalie.dev:5601`). F21 Dashboard confirmed, after F24 |
 | 2026-10-10 | Plan | `SUPER_ADMIN_PLATFORM` folder complete (README, CLAUDE.md for both projects, 12 docs, PROGRESS P0 to P14, design references, dev docker compose, production Nginx sketch); kept out of this repository, the owner moves it to its own folder |
 | 2026-10-10 | Plan | Owner: no Docker (services installed directly; production on AWS or dedicated servers, 04-HOSTING.md). The plan split into two projects to drop into their own folders: formaliePlatformFront (Nuxt) and formaliePlatformBack (FastAPI), each with README, CLAUDE.md, STARTUP-PROMPT.md, its own PROGRESS.md and the shared docs |
+| 2026-10-10 | F19 M1 | AI assistant foundation: settings (on / off, what it may read: forms, responses, data sources; keep personal data out; keep requests 30 to 365 days), monthly credits (500 until plans), usage, history in the locked list format (two chart cards, DataView with kind, status, person and date filters, cards, detail panel with what was asked and what came back, K / J), overview with what it can do and the latest requests, switched-off state everywhere; API `/ai/settings`, `/ai/usage`, `/ai/requests` with `FRM-AI-1001..1003`, audit `ai.*`; built-in mock engine decided (no outside service until the backend); browser-checked as the owner: off and on again, audit rows |

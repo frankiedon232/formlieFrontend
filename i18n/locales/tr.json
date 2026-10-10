@@ -635,7 +635,10 @@
     "FRM-USER-1009": "Bu rol artık yok. Başka bir rol seçin.",
     "FRM-USER-1010": "Hesabınız bir yöneticinin onayını bekliyor. Giriş yapabildiğinizde e-posta alacaksınız.",
     "FRM-USER-1011": "Bu e-posta adresinin burada zaten bir hesabı var. Giriş yapın.",
-    "FRM-USER-1012": "Bu kayıt bağlantısı yalnızca kuruluşun e-posta adreslerini kabul eder."
+    "FRM-USER-1012": "Bu kayıt bağlantısı yalnızca kuruluşun e-posta adreslerini kabul eder.",
+    "FRM-AI-1001": "Yapay zeka asistanı bu çalışma alanı için kapalı.",
+    "FRM-AI-1002": "Bu ayki yapay zeka hakkı kullanıldı. Gelecek ayın başında yenilenir.",
+    "FRM-AI-1003": "Yapay zeka asistanının çalışma alanının bu bölümünü okumasına izin verilmiyor. Bir yönetici bunu yapay zeka ayarlarından değiştirebilir."
   },
   "errorUi": {
     "reference": "Referans: {id}",
@@ -702,7 +705,10 @@
     "paused": "Duraklatıldı",
     "delivered": "Teslim edildi",
     "retrying": "Yeniden deneniyor",
-    "failed": "Başarısız"
+    "failed": "Başarısız",
+    "proposed": "İnceleme bekliyor",
+    "applied": "Uygulandı",
+    "discarded": "Silindi"
   },
   "footer": {
     "rights": "Tüm hakları saklıdır.",
@@ -899,7 +905,8 @@
       "integrations": "Entegrasyonlar",
       "audit": "Denetim kaydı",
       "data": "Veri kaynakları",
-      "api": "API hizmeti"
+      "api": "API hizmeti",
+      "ai": "Yapay zeka asistanı"
     },
     "actorType": {
       "user": "Kişi",
@@ -1119,7 +1126,11 @@
       "users_approved": "Onaylandı",
       "users_rejected": "İstek reddedildi",
       "users_signup_link_changed": "Kayıt bağlantısı değiştirildi",
-      "forms_folder_access_changed": "Klasör erişimi değiştirildi"
+      "forms_folder_access_changed": "Klasör erişimi değiştirildi",
+      "ai_enabled": "Yapay zeka asistanı açıldı",
+      "ai_disabled": "Yapay zeka asistanı kapatıldı",
+      "ai_settings_updated": "Yapay zeka ayarları değişti",
+      "ai_request_deleted": "Yapay zeka isteği geçmişten silindi"
     },
     "detail": {
       "who": "Kim",
@@ -4779,6 +4790,135 @@
       "translate": "Formları 20 dilden herhangi birine çevirin ve yan yana inceleyin.",
       "history": "Asistana sorulan her şey, kimin tarafından ve ne zaman.",
       "settings": "Asistanı açın veya kapatın, neleri okuyabileceğini seçin ve kullanımı görün."
+    },
+    "kind": {
+      "form": "Form",
+      "template": "Şablon",
+      "theme": "Tasarım",
+      "builder": "Oluşturucu yardımı",
+      "analysis": "Yanıt analizi",
+      "question": "Veri hakkında soru",
+      "summary": "Özet",
+      "translate": "Çeviri",
+      "rewrite": "Yeniden yazma"
+    },
+    "kindHint": {
+      "form": "Yeni bir form",
+      "template": "Yeni bir şablon",
+      "theme": "Yeni bir tasarım",
+      "builder": "Oluşturucuda yardım",
+      "analysis": "Yanıtlar analiz edildi",
+      "question": "Verileriniz hakkında bir soru",
+      "summary": "Bir özet",
+      "translate": "Çevrilmiş bir form",
+      "rewrite": "Yeniden yazılan metinler"
+    },
+    "label": {
+      "made": "Yapay zeka ile yapıldı"
+    },
+    "source": {
+      "forms": {
+        "label": "Formlar",
+        "hint": "Formlarınızın soruları, seçenekleri, ayarları ve tasarımları."
+      },
+      "responses": {
+        "label": "Yanıtlar",
+        "hint": "İnsanların verdiği yanıtlar, analiz ve özetler için."
+      },
+      "data": {
+        "label": "Veri kaynakları",
+        "hint": "Bağlı veritabanlarınızdaki tablolar ve satırlar."
+      }
+    },
+    "off": {
+      "title": "Yapay zeka asistanı kapalı",
+      "desc": "Çalışma alanınız yapay zeka asistanını kapattı. İhtiyacınız varsa bir yöneticiye sorun.",
+      "descAdmin": "Kapalıyken asistana hiçbir şey gönderilmez. Yapay zeka ayarlarından açın.",
+      "open": "Yapay zeka ayarlarını aç"
+    },
+    "usage": {
+      "title": "Kullanılan kredi",
+      "thisMonth": "Bu ay",
+      "left": "{n} kaldı",
+      "allowance": "Hak",
+      "requests": "İstekler",
+      "people": "Kişiler",
+      "perDay": "Günlük kredi",
+      "vsLastMonth": "geçen aya göre"
+    },
+    "overview": {
+      "byKind": "Türe göre kredi",
+      "what": "Asistan neler yapabilir",
+      "soon": "Yakında",
+      "latest": "Son istekler",
+      "all": "Tüm istekler",
+      "credits": "{n} kredi | {n} kredi"
+    },
+    "history": {
+      "subtitleMine": "Asistana sorduğunuz her şey ve gelen yanıtlar",
+      "subtitleAll": "Çalışma alanının asistana sorduğu her şey, kim tarafından ve ne zaman",
+      "byKind": "Türe göre istekler",
+      "people": "Bu ay {n} kişi | Bu ay {n} kişi",
+      "none": "Henüz istek yok",
+      "search": "İstek ara…",
+      "emptyTitle": "Henüz istek yok",
+      "emptyDesc": "Asistana yapılan istekler, gelen yanıtla birlikte burada görünür.",
+      "you": "Siz",
+      "ofAllowance": "Aylık hakkın payı",
+      "sortNewest": "Önce en yeni",
+      "sortOldest": "Önce en eski",
+      "sortCredits": "En çok kredi",
+      "sortTitle": "Başlık",
+      "openTarget": "Oluşturulanı aç",
+      "again": "Tekrar sor",
+      "delete": "Geçmişten sil",
+      "deleteTitle": "“{name}” geçmişten silinsin mi?",
+      "deleteDesc": "İstek ve sonucu kaldırılır. Uygulanmış olanlar olduğu gibi kalır.",
+      "deleted": "İstek geçmişten silindi",
+      "asked": "Ne soruldu",
+      "answer": "Ne geldi",
+      "read": "Okunan",
+      "readNothing": "Yalnızca yazılanlar",
+      "keptUntil": "Şu tarihe kadar saklanır",
+      "masked": "İsim, e-posta ve telefon numarası gibi kişisel veriler, bir şey gönderilmeden önce maskelendi.",
+      "notMasked": "Bu istekte kişisel veriler maskelenmedi (o sırada çalışma alanının ayarı).",
+      "navigate": "İstekler arasında gezin",
+      "col": {
+        "request": "İstek",
+        "kind": "Tür",
+        "status": "Durum",
+        "by": "Soran",
+        "credits": "Kredi",
+        "when": "Ne zaman",
+        "applied": "Uygulandı"
+      }
+    },
+    "settings": {
+      "saved": "Yapay zeka ayarları kaydedildi",
+      "readOnly": "Bu ayarları yalnızca asistanı yöneten kişiler değiştirebilir.",
+      "assistant": "Asistan",
+      "assistantHint": "Bu çalışma alanındaki kişilerin yapay zeka asistanını kullanıp kullanamayacağı.",
+      "enabled": "Yapay zeka asistanı",
+      "enabledOn": "Açık: erişimi olan kişiler kullanabilir.",
+      "enabledOff": "Kapalı: asistana hiçbir şey gönderilmez.",
+      "reads": "Neleri okuyabilir",
+      "readsHint": "Asistan yalnızca burada açık olan bölümleri ve yalnızca soran kişi için okur.",
+      "privacy": "Gizlilik",
+      "privacyHint": "Kişisel verilerin nasıl işlendiği ve isteklerin ne kadar süre saklandığı.",
+      "mask": "Kişisel verileri dışarıda tut",
+      "maskHint": "İsimler, e-postalar, telefon numaraları ve benzeri bilgiler, bir şey gönderilmeden önce değiştirilir.",
+      "keep": "İstekleri şu süre sakla",
+      "keepHint": "Eski istekler ve sonuçları geçmişten silinir.",
+      "days": "{n} gün",
+      "processing": "Asistan verilerinizle asla eğitilmez. İstekler yalnızca yanıtlamak için işlenir ve yalnızca burada ayarlanan süre kadar saklanır.",
+      "usage": "Kullanım",
+      "usageHint": "Her istek aylık haktan kredi harcar.",
+      "credits": "kredi",
+      "renews": "{date} tarihinde yenilenir",
+      "planNote": "Hak, planınızla birlikte gelir.",
+      "leaveTitle": "Kaydetmeden çıkılsın mı?",
+      "leaveDesc": "Yapay zeka ayarlarındaki değişiklikleriniz kaybolacak.",
+      "leave": "Çık"
     }
   },
   "public": {
