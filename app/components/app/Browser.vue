@@ -99,7 +99,7 @@ onBeforeUnmount(() => clearTimeout(timer))
   >
     <template #title>
       <span class="flex min-w-0 items-center gap-3">
-        <span class="hidden size-8 shrink-0 items-center justify-center rounded-lg bg-inverted text-inverted sm:flex" aria-hidden="true"><UIcon name="i-lucide-file-check-2" class="size-4" /></span>
+        <span class="hidden size-8 shrink-0 items-center justify-center rounded-lg bg-inverted text-inverted sm:flex" aria-hidden="true"><UIcon name="i-formalie-mark" class="size-4" /></span>
         <span class="flex min-w-0 flex-col">
           <span class="truncate text-sm font-semibold text-highlighted">{{ heading }}</span>
           <span class="flex min-w-0 items-center gap-1 text-xs font-normal text-muted">

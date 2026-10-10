@@ -112,7 +112,7 @@ const CARDS = [
 
     <!-- The hub -->
     <div class="absolute flex aspect-square w-[13%] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-2xl bg-white text-neutral-950 shadow-[0_0_40px_rgb(255_255_255/0.25)]" :style="at(HUB.x, HUB.y)">
-      <UIcon name="i-lucide-file-check-2" class="size-1/2" />
+      <UIcon name="i-formalie-mark" class="size-1/2" />
       <span class="absolute -end-2 -bottom-2 flex size-6 items-center justify-center rounded-full bg-neutral-950 text-white ring-2 ring-white"><UIcon name="i-lucide-lock-keyhole" class="size-3" /></span>
     </div>
     <span class="absolute -translate-x-1/2 text-[11px] whitespace-nowrap text-white/60" :style="at(HUB.x, HUB.y + 62)">{{ t('authLayout.flow.hub') }}</span>

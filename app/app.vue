@@ -12,7 +12,14 @@ useHead({
     dir: () => current.value.dir,
   },
   titleTemplate: title => (title ? `${title} · ${t('app.name')}` : t('app.name')),
-  link: () => (tabIcon.value ? [{ key: 'workspace-icon', rel: 'icon', href: tabIcon.value }] : []),
+  // Same keys as Formalie's icons in nuxt.config, so the workspace's icon replaces both instead of competing
+  link: () =>
+    tabIcon.value
+      ? [
+          { key: 'icon-ico', rel: 'icon', href: tabIcon.value },
+          { key: 'icon-svg', rel: 'icon', href: tabIcon.value },
+        ]
+      : [],
 })
 </script>
 

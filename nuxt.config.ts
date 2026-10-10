@@ -44,6 +44,19 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
+  // Formalie's brand icons (Field F, docs/brand/BRAND.md). A workspace's own tab icon replaces them in app.vue.
+  app: {
+    head: {
+      link: [
+        { key: 'icon-ico', rel: 'icon', href: '/favicon.ico', sizes: '48x48' },
+        { key: 'icon-svg', rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' },
+        { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
+        { rel: 'manifest', href: '/site.webmanifest' },
+      ],
+      meta: [{ name: 'theme-color', content: '#0a0a0a' }],
+    },
+  },
+
   // composables/, utils/ and shared/utils/ are organised in sub-folders (max two levels).
   imports: {
     dirs: ['~/composables/**', '~/utils/**', '~~/shared/utils/**'],
@@ -151,10 +164,12 @@ export default defineNuxtConfig({
     families: Object.values(WEB_FONTS).map(font => ({ name: font.family, provider: 'google', global: true, weights: [400, 500, 600, 700] })),
   },
 
-  // Icon sets: lucide (UI), circle-flags (languages), simple-icons (sign-in providers).
+  // Icon sets: lucide (UI), circle-flags (languages), simple-icons (sign-in providers), formalie (brand).
   icon: {
     // /api/** belongs to the backend (mock, dev proxy, Nginx in production), keep icons out of it.
     localApiEndpoint: '/_nuxt_icon',
+    // i-formalie-mark: the Formalie mark (Field F glyph, currentColor) from app/assets/icons.
+    customCollections: [{ prefix: 'formalie', dir: './app/assets/icons' }],
     // Bundle every icon used in the source so menus never render blank while icons load.
     clientBundle: {
       scan: true,

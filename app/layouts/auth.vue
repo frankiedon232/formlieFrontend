@@ -30,7 +30,7 @@ const own = computed(() => (tenant.profile.value?.mode === 'tenant' ? tenant.pro
             <img v-if="own.logo_dark_url" :src="own.logo_dark_url" alt="" class="hidden max-h-full max-w-full object-contain dark:block">
           </span>
           <span v-else class="flex size-8 items-center justify-center rounded-lg bg-inverted text-inverted">
-            <UIcon name="i-lucide-file-check-2" class="size-4" />
+            <UIcon name="i-formalie-mark" class="size-4" />
           </span>
           <span class="truncate tracking-tight">{{ brand }}</span>
         </NuxtLink>

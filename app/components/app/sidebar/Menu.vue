@@ -87,7 +87,7 @@ const menuUi = computed(() => ({
         class="flex min-w-0 items-center gap-2 rounded-md text-lg font-semibold text-highlighted focus-visible:outline-2 focus-visible:outline-primary"
       >
         <span class="flex size-7 shrink-0 items-center justify-center rounded-md bg-inverted text-inverted">
-          <UIcon name="i-lucide-file-check-2" class="size-4" />
+          <UIcon name="i-formalie-mark" class="size-4" />
         </span>
         <span class="truncate">{{ t('app.name') }}</span>
       </NuxtLink>

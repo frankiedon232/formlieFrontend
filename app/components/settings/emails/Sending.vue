@@ -65,7 +65,7 @@ const options = computed(() => {
   const value = sending.value
   if (!value) return []
   return [
-    { mode: 'formalie' as const, icon: 'i-lucide-file-check-2', title: t('settings.sending.formalie'), hint: value.formalie_address, ready: true },
+    { mode: 'formalie' as const, icon: 'i-formalie-mark', title: t('settings.sending.formalie'), hint: value.formalie_address, ready: true },
     { mode: 'domain' as const, icon: 'i-lucide-at-sign', title: t('settings.sending.domain'), hint: value.domain?.address ?? t('settings.sending.domainHint'), ready: value.domain?.status === 'verified' },
     { mode: 'smtp' as const, icon: 'i-lucide-server', title: t('settings.sending.smtp'), hint: value.smtp ? `${value.smtp.host}:${value.smtp.port}` : t('settings.sending.smtpHint'), ready: value.smtp?.status === 'working' },
   ]

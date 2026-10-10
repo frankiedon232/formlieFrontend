@@ -301,3 +301,9 @@ Edit this file whenever a decision changes.
 **Every open item is built (owner 2026-10-10, "deal with all", leftovers L1 to L7).** List details work in formulas (`{product.price}`) and in logic conditions. The form designer offers 16 more fonts, which are open-licence Google fonts self-hosted by `@nuxt/fonts`. That module was already part of Nuxt UI, so no package was added, and forms never load fonts from another site. Script fallbacks cover all 20 languages.
 
 **No custom CSS (owner 2026-10-10).** Customers never write code: the designer's settings, starting points, themes and templates cover the look of a form. Custom CSS was built as leftover L5 and removed the same day. Don't offer it again.
+
+**Brand: Field F (owner 2026-10-10).** The owner picked Field F from six concepts: an F built from form fields, with a dot for the answer that arrives. The kit is in `docs/brand/`, with the rules in BRAND.md. It holds:
+- the SVG sources, PNG sizes and web icons, plus the OG image;
+- the renderer `scripts/brand/render.mjs`.
+
+The portal shows the mark as the icon `i-formalie-mark`, a custom Nuxt Icon collection in `app/assets/icons`, inside the UI's inverted box. The browser tab icons sit in `nuxt.config` `app.head` under the keys `icon-ico` and `icon-svg`, and a workspace's own tab icon takes over both keys. The website and the platform admin use the same files, from `formalie-brand.zip`.

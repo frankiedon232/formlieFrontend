@@ -48,7 +48,7 @@ const badges = computed(() => [
         <img :src="props.logo" alt="" class="max-h-full max-w-full object-contain">
       </span>
       <span v-else class="flex size-9 items-center justify-center rounded-xl bg-white text-neutral-950">
-        <UIcon name="i-lucide-file-check-2" class="size-5" />
+        <UIcon name="i-formalie-mark" class="size-5" />
       </span>
       <span class="text-lg font-semibold tracking-tight">{{ props.brand }}</span>
       <AppPoweredBy v-if="workspace" tone="light" class="ms-auto" />

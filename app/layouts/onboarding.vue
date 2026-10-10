@@ -14,7 +14,7 @@ const session = useSession()
     >
       <div class="flex min-w-0 items-center gap-2.5 font-semibold text-highlighted">
         <span class="flex size-8 shrink-0 items-center justify-center rounded-lg bg-inverted text-inverted">
-          <UIcon name="i-lucide-file-check-2" class="size-4" />
+          <UIcon name="i-formalie-mark" class="size-4" />
         </span>
         <span class="hidden truncate tracking-tight sm:inline">{{
           session.tenant.value?.name ?? t('app.name')

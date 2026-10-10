@@ -18,7 +18,7 @@ const { t } = useI18n()
     :aria-label="t('app.poweredBy', { brand: 'Formalie' })"
   >
     <span class="flex shrink-0 items-center justify-center rounded-md" :class="[tone === 'light' ? 'bg-white text-neutral-950' : 'bg-inverted text-inverted', size === 'xs' ? 'size-3.5' : 'size-5']">
-      <UIcon name="i-lucide-file-check-2" :class="size === 'xs' ? 'size-2.5' : 'size-3'" />
+      <UIcon name="i-formalie-mark" :class="size === 'xs' ? 'size-2.5' : 'size-3'" />
     </span>
     <i18n-t keypath="app.poweredBy" tag="span" scope="global">
       <template #brand><span class="font-semibold" :class="tone === 'light' ? 'text-white' : 'text-highlighted'">Formalie</span></template>

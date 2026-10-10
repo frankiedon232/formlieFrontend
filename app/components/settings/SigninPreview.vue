@@ -32,7 +32,7 @@ const formLogo = computed(() => (mode.value === 'dark' ? (props.logoDark ?? prop
         <span class="flex gap-1"><span class="size-2 rounded-full bg-neutral-300 dark:bg-neutral-700" /><span class="size-2 rounded-full bg-neutral-300 dark:bg-neutral-700" /><span class="size-2 rounded-full bg-neutral-300 dark:bg-neutral-700" /></span>
         <span class="flex min-w-0 items-center gap-1.5 rounded-md bg-default px-2 py-0.5 text-[10px] text-muted">
           <img v-if="favicon ?? logo" :src="(favicon ?? logo)!" alt="" class="size-3 rounded-sm object-contain">
-          <UIcon v-else name="i-lucide-file-check-2" class="size-3" />
+          <UIcon v-else name="i-formalie-mark" class="size-3" />
           <span class="truncate">{{ t('settings.branding.tabTitle', { name }) }}</span>
         </span>
       </div>
@@ -42,7 +42,7 @@ const formLogo = computed(() => (mode.value === 'dark' ? (props.logoDark ?? prop
           <div class="pointer-events-none absolute -right-8 -bottom-10 size-32 rounded-full opacity-50 blur-2xl" :style="{ backgroundColor: accent }" />
           <div class="relative flex items-center gap-1.5">
             <span v-if="logoDark ?? logo" class="flex size-5 items-center justify-center overflow-hidden rounded bg-white/90 p-0.5"><img :src="(logoDark ?? logo)!" alt="" class="max-h-full max-w-full object-contain"></span>
-            <span v-else class="flex size-5 items-center justify-center rounded bg-white text-neutral-950"><UIcon name="i-lucide-file-check-2" class="size-3" /></span>
+            <span v-else class="flex size-5 items-center justify-center rounded bg-white text-neutral-950"><UIcon name="i-formalie-mark" class="size-3" /></span>
             <span class="truncate text-[10px] font-semibold">{{ name }}</span>
           </div>
           <p class="relative line-clamp-3 text-[11px] leading-snug font-semibold">{{ message || t('authLayout.headline') }}</p>
@@ -61,7 +61,7 @@ const formLogo = computed(() => (mode.value === 'dark' ? (props.logoDark ?? prop
             <span class="h-4 rounded" :class="mode === 'dark' ? 'bg-white' : 'bg-neutral-900'" />
           </template>
           <span class="h-0.5 w-8 rounded-full" :style="{ backgroundColor: accent }" />
-          <span class="mt-1 flex items-center gap-1 text-[8px]" :class="mode === 'dark' ? 'text-white/70' : 'text-neutral-500'"><span class="flex size-2.5 items-center justify-center rounded-sm" :class="mode === 'dark' ? 'bg-white text-neutral-950' : 'bg-neutral-900 text-white'"><UIcon name="i-lucide-file-check-2" class="size-2" /></span>{{ t('app.poweredBy', { brand: 'Formalie' }) }}</span>
+          <span class="mt-1 flex items-center gap-1 text-[8px]" :class="mode === 'dark' ? 'text-white/70' : 'text-neutral-500'"><span class="flex size-2.5 items-center justify-center rounded-sm" :class="mode === 'dark' ? 'bg-white text-neutral-950' : 'bg-neutral-900 text-white'"><UIcon name="i-formalie-mark" class="size-2" /></span>{{ t('app.poweredBy', { brand: 'Formalie' }) }}</span>
         </div>
       </div>
     </div>
