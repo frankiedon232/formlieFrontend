@@ -7976,12 +7976,14 @@
       "none": "Hiçbiri",
       "own": "Kendi",
       "shared": "Paylaşılan",
+      "own_shared": "Kendi ve paylaşılan",
       "all": "Tümü"
     },
     "scopeHint": {
       "none": "Hiçbir şekilde, kendi oluşturdukları üzerinde bile",
       "own": "Yalnızca kendi oluşturdukları üzerinde",
-      "shared": "Kendi formları ve kendileriyle paylaşılan formlar üzerinde",
+      "shared": "Yalnızca başkalarının onlarla paylaştığı formlarda",
+      "own_shared": "Kendi formları ve kendileriyle paylaşılan formlar üzerinde",
       "all": "Çalışma alanındaki her şey üzerinde"
     },
     "group": {

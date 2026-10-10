@@ -7976,12 +7976,14 @@
       "none": "Brak",
       "own": "Własne",
       "shared": "Wspólne",
+      "own_shared": "Własne i udostępnione",
       "all": "Wszystkie"
     },
     "scopeHint": {
       "none": "W ogóle, nawet dla tego, co sami utworzyli",
       "own": "Tylko dla tego, co sami utworzyli",
-      "shared": "Dla własnych formularzy i udostępnionych im",
+      "shared": "Tylko formularze udostępnione im przez innych",
+      "own_shared": "Dla własnych formularzy i udostępnionych im",
       "all": "Dla wszystkiego w przestrzeni roboczej"
     },
     "group": {

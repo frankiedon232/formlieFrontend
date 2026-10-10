@@ -36,11 +36,11 @@ describe('roles & access (F22)', () => {
     expect(permissionFor('POST', '/responses/r1/files')).toBe('responses.view')
     expect(withNeeds({ 'responses.review': 'all' })).toEqual({ 'responses.view': 'all', 'responses.review': 'all' })
     // Responses have a reach too (F22 R2 M2): Member works with responses of their own and shared forms
-    expect(DEFAULT_ROLE_GRANTS.member['responses.review']).toBe('shared')
+    expect(DEFAULT_ROLE_GRANTS.member['responses.review']).toBe('own_shared')
     expect(DEFAULT_ROLE_GRANTS.member['responses.delete']).toBeUndefined()
     expect(withNeeds({ 'responses.export': 'own' })).toEqual({ 'responses.view': 'own', 'responses.export': 'own' })
     // A role saved as a list: responses reach as far as the forms did
-    expect(grantsFromList(['forms.view', 'responses.view'])['responses.view']).toBe('shared')
+    expect(grantsFromList(['forms.view', 'responses.view'])['responses.view']).toBe('own_shared')
     expect(grantsFromList(['forms.view', 'forms.all', 'responses.view'])['responses.view']).toBe('all')
   })
   it('leaves what every signed-in person needs open', () => {
@@ -55,6 +55,13 @@ describe('roles & access (F22)', () => {
     expect(DEFAULT_ROLE_GRANTS.owner).toEqual(ALL_GRANTS)
     expect(DEFAULT_ROLE_GRANTS.admin['roles.manage']).toBeUndefined()
     expect(DEFAULT_ROLE_GRANTS.member['forms.delete']).toBeUndefined()
+  })
+  it('treats own and shared as separate parts (None · Own · Shared · Own & shared · All)', () => {
+    // Editing shared forms and viewing own ones: viewing must reach both
+    expect(withNeeds({ 'forms.view': 'own', 'forms.edit': 'shared' })['forms.view']).toBe('own_shared')
+    // Narrowing view to own takes edit off shared forms
+    expect(setGrant({ 'forms.view': 'own_shared', 'forms.edit': 'shared' }, 'forms.view', 'own')['forms.edit']).toBeUndefined()
+    expect(setGrant({ 'forms.view': 'all', 'forms.edit': 'own_shared' }, 'forms.view', 'shared')['forms.edit']).toBe('shared')
   })
   it('keeps a role consistent when one action changes', () => {
     const role = withNeeds({ 'forms.edit': 'all', 'forms.versions': 'all', 'forms.delete': 'all', 'forms.purge': 'all' })
@@ -72,8 +79,8 @@ describe('roles & access (F22)', () => {
   })
   it('turns a role saved as a list into grants with the same reach', () => {
     const member = grantsFromList(['forms.view', 'forms.create', 'forms.edit', 'forms.publish', 'responses.view', 'responses.edit'])
-    expect(member['forms.edit']).toBe('shared')
-    expect(member['forms.publish']).toBe('shared')
+    expect(member['forms.edit']).toBe('own_shared')
+    expect(member['forms.publish']).toBe('own_shared')
     expect(member['forms.import']).toBe('all')
     expect(member['forms.delete']).toBeUndefined()
     expect(member['folders.create']).toBeUndefined()

@@ -69,6 +69,20 @@ describe('who may take an action on a form (F22 R2: role scope, maker, sharing)'
     expect(responsesAllowed(form({ team_access: 'view' }), user('a'), 'edit')).toBe(false)
     expect(responsesAllowed(form({ team_access: 'none' }), user('boss', 'admin'), 'delete')).toBe(true)
   })
+  it('shared means forms of others shared with them, not their own', async () => {
+    const { reaches } = await import('../../server/mock/data/formPermissions')
+    const mine = form({ owner: { id: 'me', name: 'Me' } })
+    const theirs = form({ team_access: 'edit' })
+    const me = user('me')
+    expect(reaches(mine, me, 'own', 'edit')).toBe(true)
+    expect(reaches(theirs, me, 'own', 'edit')).toBe(false)
+    expect(reaches(mine, me, 'shared', 'edit')).toBe(false)
+    expect(reaches(theirs, me, 'shared', 'edit')).toBe(true)
+    expect(reaches(form({ team_access: 'view' }), me, 'shared', 'edit')).toBe(false)
+    expect(reaches(mine, me, 'own_shared', 'edit') && reaches(theirs, me, 'own_shared', 'edit')).toBe(true)
+    expect(reaches(form({ team_access: 'none' }), me, 'all', 'edit')).toBe(true)
+    expect(reaches(mine, me, null, 'edit')).toBe(false)
+  })
   it('the app reads the answer the API sends (no answer means no)', async () => {
     const { canEditForm, formCan } = await import('../../shared/utils/forms/access')
     const can = { edit: true, publish: false } as never

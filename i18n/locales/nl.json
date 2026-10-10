@@ -7976,12 +7976,14 @@
       "none": "Geen",
       "own": "Eigen",
       "shared": "Gedeeld",
+      "own_shared": "Eigen en gedeeld",
       "all": "Alle"
     },
     "scopeHint": {
       "none": "Helemaal niet, ook niet op wat ze zelf maakten",
       "own": "Alleen op wat ze zelf maakten",
-      "shared": "Op hun eigen formulieren en formulieren die met hen zijn gedeeld",
+      "shared": "Alleen op formulieren die anderen met hen hebben gedeeld",
+      "own_shared": "Op hun eigen formulieren en formulieren die met hen zijn gedeeld",
       "all": "Op alles in de werkruimte"
     },
     "group": {

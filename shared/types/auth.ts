@@ -59,7 +59,7 @@ export interface SessionUser {
   role_name?: string
   permissions?: string[]
   /** The same with each action's scope (own · shared · all), F22 R2. */
-  grants?: Record<string, 'own' | 'shared' | 'all'>
+  grants?: Record<string, 'own' | 'shared' | 'own_shared' | 'all'>
   /** My profile (F16 M5): null = the workspace's. */
   language?: string | null
   time_zone?: string | null

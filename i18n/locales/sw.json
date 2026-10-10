@@ -7976,12 +7976,14 @@
       "none": "Hakuna",
       "own": "Vyao",
       "shared": "Vilivyoshirikiwa",
+      "own_shared": "Zao na zilizoshirikiwa",
       "all": "Vyote"
     },
     "scopeHint": {
       "none": "Hapana kabisa, hata kwa walichounda",
       "own": "Kwa walichounda tu",
-      "shared": "Kwa fomu zao na fomu zilizoshirikiwa nao",
+      "shared": "Kwenye fomu walizoshirikiwa na wengine pekee",
+      "own_shared": "Kwa fomu zao na fomu zilizoshirikiwa nao",
       "all": "Kwa kila kitu katika eneo la kazi"
     },
     "group": {

@@ -7976,12 +7976,14 @@
       "none": "Tidak ada",
       "own": "Milik sendiri",
       "shared": "Dibagikan",
+      "own_shared": "Milik sendiri dan dibagikan",
       "all": "Semua"
     },
     "scopeHint": {
       "none": "Sama sekali tidak, bahkan pada yang mereka buat",
       "own": "Hanya pada yang mereka buat",
-      "shared": "Pada formulir sendiri dan formulir yang dibagikan kepada mereka",
+      "shared": "Hanya pada formulir yang dibagikan orang lain kepada mereka",
+      "own_shared": "Pada formulir sendiri dan formulir yang dibagikan kepada mereka",
       "all": "Pada semua hal di ruang kerja"
     },
     "group": {

@@ -7976,12 +7976,14 @@
       "none": "Aucun",
       "own": "Siens",
       "shared": "Partagés",
+      "own_shared": "Les leurs et partagés",
       "all": "Tous"
     },
     "scopeHint": {
       "none": "Pas du tout, pas même sur ce qu'elles ont créé",
       "own": "Uniquement sur ce qu'elles ont créé",
-      "shared": "Sur leurs propres formulaires et ceux partagés avec elles",
+      "shared": "Uniquement sur les formulaires que d'autres leur ont partagés",
+      "own_shared": "Sur leurs propres formulaires et ceux partagés avec elles",
       "all": "Sur tout l'espace de travail"
     },
     "group": {

@@ -21,6 +21,7 @@ import type { StoredForm } from './formStore'
 import { formsOf, summaryOf } from './formStore'
 import { orgOf } from './orgStore'
 import { can, scopeOf } from './rolesStore'
+import { scopeParts, type Scope } from '#shared/utils/auth/permissions'
 import { MOCK_TENANTS, type MockTenant, type MockUser } from './tenants'
 
 const RANK: Record<FormAccessLevel, number> = { none: 0, responses: 1, view: 2, edit: 3 }
@@ -79,14 +80,22 @@ function sharedLevel(form: StoredForm, user: MockUser): FormAccessLevel {
   return (form.grants ?? []).find(item => item.user_id === user.id)?.level ?? form.team_access ?? 'edit'
 }
 
+/**
+ * Does a scope reach this form? own: they made it · shared: someone else's form shared with them at the
+ * level the action needs · own_shared: either · all: any form.
+ */
+export function reaches(form: StoredForm, user: MockUser, scope: Scope | null, level: Exclude<FormAccessLevel, 'none'>): boolean {
+  if (!scope) return false
+  const parts = scopeParts(scope)
+  if (parts & 4) return true
+  if (form.owner?.id === user.id) return !!(parts & 1)
+  return !!(parts & 2) && RANK[sharedLevel(form, user)] >= RANK[level]
+}
+
 /** May this person take this action on this form? */
 export function allows(form: StoredForm, user: MockUser, action: FormAction, tenant = tenantOfUser(user)): boolean {
   if (!folderVisible(folderOf(form, tenant), user, tenant)) return false
-  const scope = scopeOf(user, `forms.${action}`, tenant)
-  if (!scope) return false
-  if (scope === 'all') return true
-  if (form.owner?.id === user.id) return true
-  return scope === 'shared' && RANK[sharedLevel(form, user)] >= RANK[LEVEL_FOR[action]]
+  return reaches(form, user, scopeOf(user, `forms.${action}`, tenant), LEVEL_FOR[action])
 }
 
 /** Everything this person may do with this form (sent with every form, so the app shows only that). */
@@ -149,10 +158,7 @@ const RESPONSE_LEVEL: Record<ResponseAction, Exclude<FormAccessLevel, 'none'>> =
  */
 export function responsesAllowed(form: StoredForm, user: MockUser, action: ResponseAction, tenant = tenantOfUser(user)): boolean {
   if (!folderVisible(folderOf(form, tenant), user, tenant)) return false
-  const scope = scopeOf(user, `responses.${action}`, tenant)
-  if (!scope) return false
-  if (scope === 'all' || form.owner?.id === user.id) return true
-  return scope === 'shared' && RANK[sharedLevel(form, user)] >= RANK[RESPONSE_LEVEL[action]]
+  return reaches(form, user, scopeOf(user, `responses.${action}`, tenant), RESPONSE_LEVEL[action])
 }
 
 /** Every response action this person may take on this form (sent with forms and responses). */

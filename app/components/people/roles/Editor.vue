@@ -8,7 +8,7 @@
 -->
 <script setup lang="ts">
 import type { Grants, Permission, PermissionArea, Scope } from '#shared/utils/auth/permissions'
-import { PERMISSION_AREAS, scopesOf, setGrant } from '#shared/utils/auth/permissions'
+import { PERMISSION_AREAS, SCOPES, scopesOf, setGrant } from '#shared/utils/auth/permissions'
 
 const model = defineModel<Grants>({ required: true })
 defineProps<{ readonly?: boolean }>()
@@ -60,7 +60,7 @@ function setArea(area: (typeof PERMISSION_AREAS)[number], scope: Scope | null) {
 }
 const areaChoices = (area: (typeof PERMISSION_AREAS)[number]) => {
   const scoped = new Set(permissionsIn(area).flatMap(item => scopesOf(item) ?? []))
-  return [null, ...(['own', 'shared', 'all'] as Scope[]).filter(scope => scoped.has(scope) || (scope === 'all' && !scoped.size))]
+  return [null, ...SCOPES.filter(scope => scoped.has(scope) || (scope === 'all' && !scoped.size))]
 }
 </script>
 

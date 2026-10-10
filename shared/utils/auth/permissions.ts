@@ -6,16 +6,22 @@
  * item: who made it, whom it is shared with, which folder it sits in) and the app hides what the role
  * can't use, everywhere the action appears.
  *
- * A grant has a scope (owner: "no matter the permission granted, I can be limited to even what I created"):
- *   own     only on what the person made (leaving the action out means not even their own)
- *   shared  their own plus forms shared with them (form sharing never goes beyond the role)
- *   all     everything in the workspace
- * Actions without a scope are on / off (stored as `all`).
+ * A grant has a scope (owner: "no matter the permission granted, I can be limited to even what I created";
+ * 2026-10-10: "None, Own, Shared, Own & Shared, All"):
+ *   own         only on what the person made (leaving the action out means not even their own)
+ *   shared      only on forms others shared with them (form sharing never goes beyond the role)
+ *   own_shared  both
+ *   all         everything in the workspace
+ * Actions without a scope are on / off (stored as `all`). A scope is a set of parts: what they made,
+ * what is shared with them, everything else (bits 1, 2, 4).
  */
 
-export type Scope = 'own' | 'shared' | 'all'
-export const SCOPE_RANK: Record<Scope, number> = { own: 1, shared: 2, all: 3 }
-const FORM: readonly Scope[] = ['own', 'shared', 'all']
+export type Scope = 'own' | 'shared' | 'own_shared' | 'all'
+export const SCOPES: readonly Scope[] = ['own', 'shared', 'own_shared', 'all']
+const PARTS: Record<Scope, number> = { own: 1, shared: 2, own_shared: 3, all: 7 }
+/** The parts a scope covers: own (1) · shared with them (2) · everything else (4). */
+export const scopeParts = (scope: Scope) => PARTS[scope]
+const FORM: readonly Scope[] = ['own', 'shared', 'own_shared', 'all']
 const OWNED: readonly Scope[] = ['own', 'all']
 
 interface ActionDef {
@@ -94,10 +100,10 @@ export const DEFAULT_ROLE_GRANTS: Record<(typeof BUILT_IN_ROLES)[number], Grants
   owner: ALL_GRANTS,
   admin: grant(ALL_PERMISSIONS.filter(item => item !== 'roles.manage')),
   member: {
-    ...grant(['forms.view', 'forms.preview', 'forms.duplicate', 'forms.save_template', 'forms.rename', 'forms.edit', 'forms.versions', 'forms.share_view', 'forms.share', 'forms.availability', 'forms.publish', 'forms.close', 'forms.archive', 'forms.move'], 'shared'),
+    ...grant(['forms.view', 'forms.preview', 'forms.duplicate', 'forms.save_template', 'forms.rename', 'forms.edit', 'forms.versions', 'forms.share_view', 'forms.share', 'forms.availability', 'forms.publish', 'forms.close', 'forms.archive', 'forms.move'], 'own_shared'),
     ...grant(['forms.create', 'forms.import', 'folders.create']),
     ...grant(['folders.edit', 'folders.delete'], 'own'),
-    ...grant(['responses.view', 'responses.review', 'responses.edit', 'responses.export'], 'shared'),
+    ...grant(['responses.view', 'responses.review', 'responses.edit', 'responses.export'], 'own_shared'),
     ...grant(['analytics.view', 'ai.use']),
   },
 }
@@ -133,24 +139,38 @@ export const PERMISSION_NEEDS: Partial<Record<Permission, Permission[]>> = {
   'audit.export': ['audit.view'],
 }
 
-/** The widest scope an action offers that is not wider than `scope`. */
+const bits = (mask: number) => (mask & 1) + ((mask >> 1) & 1) + ((mask >> 2) & 1)
+/** The narrowest scope an action offers that covers all these parts (what something it needs must reach). */
+function cover(permission: Permission, mask: number): Scope {
+  const offered = scopesOf(permission)
+  if (!offered) return 'all'
+  return offered.filter(item => (PARTS[item] & mask) === mask).sort((a, b) => bits(PARTS[a]) - bits(PARTS[b]))[0] ?? 'all'
+}
+/** The widest scope an action offers inside these parts (an action held back to what it needs), or null. */
+function within(permission: Permission, mask: number): Scope | null {
+  const offered = scopesOf(permission)
+  if (!offered) return mask === 7 ? 'all' : null
+  return offered.filter(item => (PARTS[item] & ~mask) === 0).sort((a, b) => bits(PARTS[b]) - bits(PARTS[a]))[0] ?? null
+}
+/** A scope as the action offers it: one it doesn't offer becomes the widest inside it, else the narrowest it has (never wider). */
 function fit(permission: Permission, scope: Scope): Scope {
   const offered = scopesOf(permission)
   if (!offered) return 'all'
-  return offered.filter(item => SCOPE_RANK[item] <= SCOPE_RANK[scope]).at(-1) ?? offered[0]!
+  return within(permission, PARTS[scope]) ?? [...offered].sort((x, y) => bits(PARTS[x]) - bits(PARTS[y]))[0]!
 }
 
 /** Grants cleaned up (unknown actions dropped, scopes fitted), with what they need added as far as they reach. */
 export function withNeeds(input: Readonly<Record<string, string | undefined>>): Grants {
   const out: Grants = {}
-  for (const [key, value] of Object.entries(input)) if (isPermission(key) && value && value in SCOPE_RANK) out[key] = fit(key, value as Scope)
+  for (const [key, value] of Object.entries(input)) if (isPermission(key) && value && value in PARTS) out[key] = fit(key, value as Scope)
   for (let changed = true; changed; ) {
     changed = false
     for (const [item, scope] of Object.entries(out) as [Permission, Scope][])
       for (const need of PERMISSION_NEEDS[item] ?? []) {
-        const wanted = fit(need, scope)
+        // What it needs must reach at least the same parts (both together when it had others already)
         const has = out[need]
-        if (!has || SCOPE_RANK[has] < SCOPE_RANK[wanted]) {
+        const wanted = cover(need, (has ? PARTS[has] : 0) | PARTS[scope])
+        if (wanted !== has) {
           out[need] = wanted
           changed = true
         }
@@ -175,22 +195,25 @@ export function dependentsOf(permission: Permission): Permission[] {
 
 /**
  * One action changed in a role (the editor): what needs it follows, removed with it or held back to the
- * same reach (edit can't reach further than view); what it needs is added.
+ * parts it still reaches (edit can't reach what view doesn't); what it needs is added.
  */
 export function setGrant(grants: Grants, permission: Permission, scope: Scope | null): Grants {
   const dependents = new Set(dependentsOf(permission))
-  // Removed: it and everything that needs it go
-  const next: Grants = scope ? { ...grants, [permission]: fit(permission, scope) } : (Object.fromEntries(Object.entries(grants).filter(([key]) => key !== permission && !dependents.has(key as Permission))) as Grants)
-  if (scope)
-    for (const item of dependents) {
-      const has = next[item]
-      if (has && SCOPE_RANK[has] > SCOPE_RANK[next[permission]!]) next[item] = fit(item, next[permission]!)
-    }
-  return withNeeds(next)
+  const next: Grants = { ...grants }
+  if (scope) next[permission] = fit(permission, scope)
+  const reach = scope ? PARTS[next[permission]!] : 0
+  for (const item of [permission, ...dependents]) {
+    const has = next[item]
+    if (!has || (item === permission && scope)) continue
+    const kept = within(item, PARTS[has] & reach)
+    if (kept) next[item] = kept
+    else next[item] = undefined
+  }
+  return withNeeds(Object.fromEntries(Object.entries(next).filter(([, value]) => value)) as Grants)
 }
 
-/** How much of the platform a role opens (0–1): each action weighed by its reach (own a third, shared two thirds, all whole). */
-export const reachOf = (grants: Grants) => Object.values(withNeeds(grants)).reduce((sum, scope) => sum + SCOPE_RANK[scope!] / 3, 0) / ALL_PERMISSIONS.length
+/** How much of the platform a role opens (0–1): each action weighed by its reach (each part a third, all whole). */
+export const reachOf = (grants: Grants) => Object.values(withNeeds(grants)).reduce((sum, scope) => sum + bits(PARTS[scope!]) / 3, 0) / ALL_PERMISSIONS.length
 /** The areas a role opens at least one action in. */
 export const areasOf = (grants: Grants) => PERMISSION_AREAS.filter(area => area.groups.some(group => group.actions.some(action => grants[`${area.key}.${action.key}` as Permission]))).length
 
@@ -198,7 +221,7 @@ export const areasOf = (grants: Grants) => PERMISSION_AREAS.filter(area => area.
 export function grantsFromList(list: readonly string[]): Grants {
   const has = (item: string) => list.includes(item)
   // Without "every form" a person worked on their own forms and those shared with them
-  const forms: Scope = has('forms.all') ? 'all' : 'shared'
+  const forms: Scope = has('forms.all') ? 'all' : 'own_shared'
   const out: Record<string, Scope> = {}
   const give = (items: string[], scope: Scope) => items.forEach(item => (out[item] = scope))
   if (has('forms.view')) give(['forms.view', 'forms.preview', 'forms.share_view'], forms)

@@ -41,7 +41,7 @@ const audit = (event: H3Event, tenant: MockTenant, user: MockUser, action: 'user
 const assertName = (tenant: MockTenant, name: string, except?: string) => {
   if (rolesOf(tenant).some(role => role.id !== except && role.name.toLowerCase() === name.toLowerCase())) throw new MockError('FRM-ORG-1001', [{ field: 'name', message: 'taken' }])
 }
-const grants = z.partialRecord(z.enum(ALL_PERMISSIONS as [string, ...string[]]), z.enum(['own', 'shared', 'all']))
+const grants = z.partialRecord(z.enum(ALL_PERMISSIONS as [string, ...string[]]), z.enum(['own', 'shared', 'own_shared', 'all']))
 /** "forms.edit (own)" for the audit trail. */
 const describe = (value: Grants, keys: string[]) => keys.map(key => `${key} (${value[key as keyof Grants]})`).join(', ')
 
@@ -84,7 +84,7 @@ export const createRole = defineMockRoute(({ event, body }) => {
   assertName(tenant, input.name)
   const source = input.copy_of ? find(tenant, input.copy_of) : null
   const now = new Date().toISOString()
-  const role: StoredRole = { id: `role_${crypto.randomUUID().slice(0, 8)}`, name: input.name, description: input.description ?? source?.description ?? null, grants: withNeeds(input.grants ?? source?.grants ?? {}), built_in: null, version: 2, created_at: now, updated_at: now }
+  const role: StoredRole = { id: `role_${crypto.randomUUID().slice(0, 8)}`, name: input.name, description: input.description ?? source?.description ?? null, grants: withNeeds(input.grants ?? source?.grants ?? {}), built_in: null, version: 3, created_at: now, updated_at: now }
   rolesOf(tenant).push(role)
   saveRoles()
   audit(event, tenant, user, 'users.role_created', role)
@@ -111,7 +111,7 @@ export const updateRole = defineMockRoute(({ event, body }) => {
     ...(removed.length ? [{ field: 'permissions_removed', before: describe(role.grants, removed), after: null }] : []),
     ...(rescoped.length ? [{ field: 'permissions_scope', before: describe(role.grants, rescoped), after: describe(next, rescoped) }] : []),
   ]
-  Object.assign(role, { ...(input.name ? { name: input.name } : {}), ...(input.description !== undefined ? { description: input.description ?? null } : {}), grants: next, version: 2, updated_at: new Date().toISOString() })
+  Object.assign(role, { ...(input.name ? { name: input.name } : {}), ...(input.description !== undefined ? { description: input.description ?? null } : {}), grants: next, version: 3, updated_at: new Date().toISOString() })
   saveRoles()
   if (changes.length) audit(event, tenant, user, 'users.role_updated', role, changes)
   return ok(rowOf(tenant, role))
@@ -123,7 +123,7 @@ export const duplicateRole = defineMockRoute(({ event }) => {
   let name = `${source.name} (copy)`.slice(0, 60)
   for (let n = 2; rolesOf(tenant).some(role => role.name.toLowerCase() === name.toLowerCase()); n++) name = `${source.name} (copy ${n})`.slice(0, 60)
   const now = new Date().toISOString()
-  const role: StoredRole = { id: `role_${crypto.randomUUID().slice(0, 8)}`, name, description: source.description, grants: { ...source.grants }, built_in: null, version: 2, created_at: now, updated_at: now }
+  const role: StoredRole = { id: `role_${crypto.randomUUID().slice(0, 8)}`, name, description: source.description, grants: { ...source.grants }, built_in: null, version: 3, created_at: now, updated_at: now }
   rolesOf(tenant).push(role)
   saveRoles()
   audit(event, tenant, user, 'users.role_created', role)

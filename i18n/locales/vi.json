@@ -7976,12 +7976,14 @@
       "none": "Không",
       "own": "Của mình",
       "shared": "Được chia sẻ",
+      "own_shared": "Của mình và được chia sẻ",
       "all": "Tất cả"
     },
     "scopeHint": {
       "none": "Hoàn toàn không, kể cả với nội dung họ tạo",
       "own": "Chỉ với nội dung họ tạo",
-      "shared": "Với biểu mẫu của họ và biểu mẫu được chia sẻ với họ",
+      "shared": "Chỉ trên biểu mẫu người khác chia sẻ với họ",
+      "own_shared": "Với biểu mẫu của họ và biểu mẫu được chia sẻ với họ",
       "all": "Với mọi thứ trong không gian làm việc"
     },
     "group": {

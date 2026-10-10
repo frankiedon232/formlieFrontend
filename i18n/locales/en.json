@@ -7976,12 +7976,14 @@
       "none": "None",
       "own": "Own",
       "shared": "Shared",
+      "own_shared": "Own & shared",
       "all": "All"
     },
     "scopeHint": {
       "none": "Not at all, not even on what they made",
       "own": "Only on what they made",
-      "shared": "On their own forms and forms shared with them",
+      "shared": "Only on forms others shared with them",
+      "own_shared": "On their own forms and forms shared with them",
       "all": "On everything in the workspace"
     },
     "group": {

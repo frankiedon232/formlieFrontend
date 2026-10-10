@@ -7976,12 +7976,14 @@
       "none": "Ninguno",
       "own": "Propios",
       "shared": "Compartidos",
+      "own_shared": "Propios y compartidos",
       "all": "Todos"
     },
     "scopeHint": {
       "none": "Para nada, ni siquiera en lo que crearon",
       "own": "Solo en lo que crearon",
-      "shared": "En sus propios formularios y en los compartidos con ellos",
+      "shared": "Solo en formularios que otros les compartieron",
+      "own_shared": "En sus propios formularios y en los compartidos con ellos",
       "all": "En todo el espacio de trabajo"
     },
     "group": {

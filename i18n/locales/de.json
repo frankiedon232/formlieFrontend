@@ -7976,12 +7976,14 @@
       "none": "Keine",
       "own": "Eigene",
       "shared": "Geteilt",
+      "own_shared": "Eigene und geteilte",
       "all": "Alle"
     },
     "scopeHint": {
       "none": "Gar nicht, auch nicht bei selbst Erstelltem",
       "own": "Nur bei selbst Erstelltem",
-      "shared": "Bei eigenen Formularen und mit ihnen geteilten Formularen",
+      "shared": "Nur für Formulare, die andere mit ihnen geteilt haben",
+      "own_shared": "Bei eigenen Formularen und mit ihnen geteilten Formularen",
       "all": "Bei allem im Arbeitsbereich"
     },
     "group": {

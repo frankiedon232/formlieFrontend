@@ -7976,12 +7976,14 @@
       "none": "Nessuno",
       "own": "Propri",
       "shared": "Condivisi",
+      "own_shared": "Propri e condivisi",
       "all": "Tutti"
     },
     "scopeHint": {
       "none": "Per niente, nemmeno su ciò che hanno creato",
       "own": "Solo su ciò che hanno creato",
-      "shared": "Sui propri moduli e su quelli condivisi con loro",
+      "shared": "Solo sui moduli che altri hanno condiviso con loro",
+      "own_shared": "Sui propri moduli e su quelli condivisi con loro",
       "all": "Su tutto nell'area di lavoro"
     },
     "group": {
