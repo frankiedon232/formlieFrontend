@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-10 (F19 AI assistant done, waiting for the owner's review; next: F24 Payments & subscriptions once the processor is chosen)
+**Last updated:** 2026-10-10 (F19 done, waiting for review; F25 Help centre brought forward while the owner sets up dLocal / Stripe sandboxes; then F24, F21)
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend · ➖ dropped or merged
 
@@ -35,14 +35,14 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F22   | Roles & access                                    | ✅     | 100% (owner-tested 2026-10-10)            |
 | F23   | Platform admin (super admin, Formalie team)       | ➖     | separate projects (formaliePlatformFront / Back) |
 | F24   | Payments & subscriptions                          | ⬜     | 0%                                        |
-| F25   | Help centre (FAQs, knowledge base, videos)        | ⬜     | 0% (after F24)                            |
+| F25   | Help centre (FAQs, knowledge base, videos)        | 🟡     | 0% (now, before F24)                      |
 
 **Order of what is left (owner, 2026-10-10; F22 done with F16 on 2026-10-09):**
 
-1. **F19 AI assistant**
-2. **F24 Payments & subscriptions** (form payments and plans together, once the owner has chosen the payment processor)
-3. **F21 Dashboard** (after F24, owner 2026-10-10, so it can show payments and plans too)
-4. **F25 Help centre** (built from everything that exists by then; its content is posted from the platform admin)
+1. ✅ **F19 AI assistant** (waiting for the owner's review)
+2. **F25 Help centre** (brought forward by the owner, 2026-10-10, while the payment processor accounts are set up; its content is posted from the platform admin)
+3. **F24 Payments & subscriptions** (form payments and plans together; processor: dLocal most likely, Stripe possible, sandbox accounts first, owner 2026-10-10)
+4. **F21 Dashboard** (after F24, owner 2026-10-10, so it can show payments and plans too)
 5. ⏸ **Switching to the real backend** (FastAPI, `formalieBackend`): the mock is replaced, API-CONTRACT is the spec
 6. **F23 Platform admin (super admin)**: a **separate project** with its own front end, backend and database that also reaches Formalie's database (owner, 2026-10-10). Its full plan lives in its own two projects, formaliePlatformFront (Nuxt) and formaliePlatformBack (FastAPI), not in this project.
 
@@ -1037,7 +1037,7 @@ The owner's super admin portal is where Formalie's default data is made and kept
 
 ## F24, Payments & subscriptions ⬜
 
-Owner, 2026-10-08: payments come after the rest of the platform, form payments and subscriptions together. By then the owner will have chosen the payment processor; the mock follows that processor's real interface so the switch to the backend only connects it. Card details never touch Formalie (the processor's checkout or hosted fields); we keep status, reference and amount.
+Owner, 2026-10-08: payments come after the rest of the platform, form payments and subscriptions together. **Processor (owner 2026-10-10): dLocal most likely (global payments), Stripe possible; both have test sandboxes (https://sandbox.dlocal.com/); the owner sets up the accounts while F25 is built.** By then the owner will have chosen the payment processor; the mock follows that processor's real interface so the switch to the backend only connects it. Card details never touch Formalie (the processor's checkout or hosted fields); we keep status, reference and amount.
 
 ### Plans and subscriptions
 
@@ -1056,19 +1056,23 @@ Owner, 2026-10-08: payments come after the rest of the platform, form payments a
 
 ---
 
-## F25, Help centre ⬜ (after F24, owner 2026-10-08)
+## F25, Help centre 🟡 (brought forward before F24 by the owner, 2026-10-10)
 
 Owner, 2026-10-08: a Help section, FAQs and knowledge base with everything about the platform, so people can learn and teach themselves and find their way around; with videos and GIFs; built from everything we have built.
 
+**How it works (decided 2026-10-10):** help content is written and published by the Formalie team in the platform admin (formaliePlatformFront / Back) and served by Formalie's API (`/help/**`, read-only for workspaces). Until then the mock ships the content from files (`server/mock/data/help/`), English written here and translated into the 19 other languages. Articles are made of simple blocks (text, headings, steps, tips, "Show me" links, media), so the platform admin's editor can write the same thing. Screenshots, GIFs and videos are added by the Formalie team in the platform admin (the article page shows them with captions when they exist).
+
+**Milestones:** **M1** Help home, knowledge base, articles, search, feedback · **M2** FAQs, glossary, keyboard shortcuts · **M3** Help in context ("?" on pages and panels, empty states, "Show me where", guided tours) · **M4** Answers from the knowledge base (AI assistant) · **M5** 20 languages and phase checks.
+
 - ✅ Entry points: the help icon at the foot of the rail, and **Help & support in the SYSTEM group below Audit trail, after a line** (2026-10-08); `/help` exists as a placeholder
-- ⬜ Help home: search across everything, popular topics, "new here?" path, contact support
-- ⬜ Knowledge base by area (Forms, builder, designer, templates, sharing, responses, analytics, lists, data sources, API service, settings, users, audit, AI, billing): articles with screenshots, GIFs and short videos, step by step
-- ⬜ FAQs (by area, searchable), a glossary (dynamic list, endpoint, token …), keyboard shortcuts
-- ⬜ Guided tours and "show me where" links that open the real page (and highlight the control)
-- ⬜ Help in context: a "?" on each page and panel opens the matching article in a side panel; empty states link to their article
-- ⬜ Every article in all 20 languages; videos with captions; works on phones; RTL
-- ⬜ Articles managed by the Formalie team (F23 platform admin), with "Was this helpful?" feedback and what people searched without finding
-- ⬜ AI assistant (F19) answers from the knowledge base
+- ⬜ **M1** Help home: search across everything, popular topics, "new here?" path, contact support
+- ⬜ **M1** Knowledge base by area (Forms, builder, designer, templates, sharing, responses, analytics, lists, data sources, API service, settings, users, audit, AI; billing with F24): articles step by step, with screenshots, GIFs and short videos where the Formalie team adds them
+- ⬜ **M2** FAQs (by area, searchable), a glossary (dynamic list, endpoint, token …), keyboard shortcuts
+- ⬜ **M3** Guided tours and "show me where" links that open the real page (and highlight the control)
+- ⬜ **M3** Help in context: a "?" on each page and panel opens the matching article in a side panel; empty states link to their article
+- ⬜ **M5** Every article in all 20 languages; videos with captions; works on phones; RTL
+- ⬜ **M1** "Was this helpful?" feedback and what people searched without finding (kept for the Formalie team; managed in the platform admin)
+- ⬜ **M4** AI assistant (F19) answers from the knowledge base
 
 ---
 
@@ -1304,6 +1308,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-10 | Granular permissions with scope (None · Own · Shared · Own & shared · All) for every action in Forms, Responses, Templates, Lists, Themes, Landing pages, Folders (incl. folder access that hides forms and responses), Data sources, API service and AI; applied everywhere the action appears; role editor regrouped | F22 R2 | ✅ |
 | 2026-10-10 | Translate the names Formalie provides (built-in roles, default lists and their options); what users type stays as typed | i18n | ✅ |
 | 2026-10-10 | Re-order: F19 AI, F24 Payments, F25 Help centre, switch to the real backend, then F23 Platform admin as a separate project (own front end, backend and database, reaches Formalie's database; Google Analytics-like analytics, full management, help content, payments and manual subscription activation, its own staff roles); create the `SUPER_ADMIN_PLATFORM` folder with everything needed to build it | Order, F23 | ✅ folder ready, owner moves it out |
+| 2026-10-10 | Start F25 Help centre now, before F24, while the owner sets up a payment processor (dLocal most likely for global payments, Stripe possible; both have test sandboxes, e.g. https://sandbox.dlocal.com/) | Order, F24, F25 | 🟡 F25 in progress |
 
 ---
 
