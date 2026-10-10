@@ -658,7 +658,8 @@
     "FRM-SET-1001": "Najpierw zweryfikuj lub przetestuj, potem będzie można tego użyć.",
     "FRM-BILL-1001": "Płatność się nie powiodła. Spróbuj innej karty lub skontaktuj się z bankiem.",
     "FRM-BILL-1002": "Ta sesja płatności wygasła. Zacznij od nowa.",
-    "FRM-BILL-1003": "Mamy już Twoje zapytanie. Wkrótce się odezwiemy."
+    "FRM-BILL-1003": "Mamy już Twoje zapytanie. Wkrótce się odezwiemy.",
+    "FRM-HELP-1001": "Mamy już to zgłoszenie. Wkrótce się odezwiemy."
   },
   "errorUi": {
     "reference": "Identyfikator: {id}",
@@ -9061,7 +9062,8 @@
       "title": "Porozmawiaj z człowiekiem",
       "desc": "Nie możesz znaleźć tego, czego potrzebujesz? Nasz zespół wsparcia chętnie pomoże.",
       "email": "Napisz do wsparcia",
-      "site": "Strona wsparcia"
+      "site": "Strona wsparcia",
+      "contact": "Skontaktuj się z pomocą"
     },
     "feedback": {
       "question": "Czy ten artykuł był pomocny?",
@@ -9122,6 +9124,41 @@
       "next": "Następny obraz",
       "of": "{n} z {total}",
       "hint": "Kliknij dwukrotnie lub naciśnij + i -, aby powiększać. Przeciągnij, aby się przemieszczać. Esc zamyka."
+    },
+    "contact": {
+      "title": "Skontaktuj się z pomocą",
+      "desc": "Powiedz nam, czego potrzebujesz. Zespół Formalie odpowiada e-mailem, zwykle w ciągu jednego dnia roboczego.",
+      "topicLabel": "Czego dotyczy sprawa?",
+      "topic": {
+        "question": "Pytanie",
+        "problem": "Coś nie działa",
+        "billing": "Plany i rozliczenia",
+        "account": "Konto i logowanie",
+        "idea": "Pomysł lub prośba",
+        "other": "Coś innego"
+      },
+      "areaLabel": "Część Formalie",
+      "anyArea": "Nie wiem lub kilka",
+      "subject": "Temat",
+      "subjectPlaceholder": "W kilku słowach",
+      "subjectShort": "Dodaj krótki temat (co najmniej 3 znaki).",
+      "message": "Wiadomość",
+      "messageHelp": "Co zrobiono, czego się spodziewano i co się stało. Im więcej wiemy, tym szybciej możemy pomóc.",
+      "messageShort": "Napisz nam trochę więcej (co najmniej 10 znaków).",
+      "urgent": "Pilne",
+      "urgentHint": "Coś właśnie nie działa dla całego zespołu.",
+      "replyTo": "Odpowiedz na",
+      "included": "Widzimy też Twoją przestrzeń roboczą i stronę, na której byłeś, więc nie musisz tłumaczyć, gdzie.",
+      "send": "Wyślij do pomocy",
+      "sentTitle": "Wysłano. Twój numer referencyjny to {reference}",
+      "sentDesc": "Zespół Formalie odpowie na adres {email}. Podaj numer referencyjny, jeśli napiszesz o tym ponownie.",
+      "another": "Wyślij kolejne",
+      "yours": "Twoje zgłoszenia",
+      "status": {
+        "open": "Otwarte",
+        "answered": "Z odpowiedzią",
+        "closed": "Zamknięte"
+      }
     }
   },
   "billing": {

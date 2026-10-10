@@ -658,7 +658,8 @@
     "FRM-SET-1001": "Verifieer of test dit eerst, dan kun je het gebruiken.",
     "FRM-BILL-1001": "De betaling is niet gelukt. Probeer een andere kaart of neem contact op met je bank.",
     "FRM-BILL-1002": "Deze betaalsessie is verlopen. Begin opnieuw.",
-    "FRM-BILL-1003": "We hebben je aanvraag al. We nemen snel contact op."
+    "FRM-BILL-1003": "We hebben je aanvraag al. We nemen snel contact op.",
+    "FRM-HELP-1001": "We hebben deze aanvraag al. We nemen snel contact op."
   },
   "errorUi": {
     "reference": "Referentie: {id}",
@@ -9061,7 +9062,8 @@
       "title": "Praat met een mens",
       "desc": "Vind je niet wat je zoekt? Ons supportteam helpt je graag.",
       "email": "Mail de support",
-      "site": "Supportsite"
+      "site": "Supportsite",
+      "contact": "Contact opnemen met support"
     },
     "feedback": {
       "question": "Was dit artikel nuttig?",
@@ -9122,6 +9124,41 @@
       "next": "Volgende afbeelding",
       "of": "{n} van {total}",
       "hint": "Dubbelklik of druk op + en - om te zoomen. Sleep om te verplaatsen. Esc sluit."
+    },
+    "contact": {
+      "title": "Contact opnemen met support",
+      "desc": "Vertel ons wat je nodig hebt. Het Formalie-team antwoordt per e-mail, meestal binnen één werkdag.",
+      "topicLabel": "Waar gaat het over?",
+      "topic": {
+        "question": "Een vraag",
+        "problem": "Iets werkt niet",
+        "billing": "Abonnementen en facturatie",
+        "account": "Account en aanmelden",
+        "idea": "Een idee of verzoek",
+        "other": "Iets anders"
+      },
+      "areaLabel": "Onderdeel van Formalie",
+      "anyArea": "Niet zeker, of meerdere",
+      "subject": "Onderwerp",
+      "subjectPlaceholder": "In een paar woorden",
+      "subjectShort": "Voeg een kort onderwerp toe (minstens 3 tekens).",
+      "message": "Bericht",
+      "messageHelp": "Wat je deed, wat je verwachtte en wat er gebeurde. Hoe meer we weten, hoe sneller we kunnen helpen.",
+      "messageShort": "Vertel ons iets meer (minstens 10 tekens).",
+      "urgent": "Dringend",
+      "urgentHint": "Er is nu iets kapot voor het hele team.",
+      "replyTo": "Antwoorden naar",
+      "included": "We zien ook je werkruimte en de pagina waar je was, dus je hoeft niet uit te leggen waar.",
+      "send": "Naar support sturen",
+      "sentTitle": "Verzonden. Je referentie is {reference}",
+      "sentDesc": "Het Formalie-team antwoordt naar {email}. Noem de referentie als je hier opnieuw over schrijft.",
+      "another": "Nog een versturen",
+      "yours": "Je aanvragen",
+      "status": {
+        "open": "Open",
+        "answered": "Beantwoord",
+        "closed": "Gesloten"
+      }
     }
   },
   "billing": {

@@ -658,7 +658,8 @@
     "FRM-SET-1001": "Önce bunu doğrulayın veya test edin, sonra kullanabilirsiniz.",
     "FRM-BILL-1001": "Ödeme gerçekleşmedi. Başka bir kart deneyin veya bankanızla iletişime geçin.",
     "FRM-BILL-1002": "Bu ödeme oturumunun süresi doldu. Yeniden başlayın.",
-    "FRM-BILL-1003": "Talebiniz zaten elimizde. Yakında size dönüş yapacağız."
+    "FRM-BILL-1003": "Talebiniz zaten elimizde. Yakında size dönüş yapacağız.",
+    "FRM-HELP-1001": "Bu talep zaten elimizde. Yakında size dönüş yapacağız."
   },
   "errorUi": {
     "reference": "Referans: {id}",
@@ -9061,7 +9062,8 @@
       "title": "Bir insanla konuşun",
       "desc": "İhtiyacınız olanı bulamadınız mı? Destek ekibimiz yardımcı olmaktan memnuniyet duyar.",
       "email": "Destek ekibine e-posta",
-      "site": "Destek sitesi"
+      "site": "Destek sitesi",
+      "contact": "Destekle iletişime geçin"
     },
     "feedback": {
       "question": "Bu makale yardımcı oldu mu?",
@@ -9122,6 +9124,41 @@
       "next": "Sonraki resim",
       "of": "{n} / {total}",
       "hint": "Yakınlaştırmak için çift tıklayın veya + ve - tuşlarına basın. Gezinmek için sürükleyin. Esc kapatır."
+    },
+    "contact": {
+      "title": "Destekle iletişime geçin",
+      "desc": "Neye ihtiyacınız olduğunu bize söyleyin. Formalie ekibi e-postayla yanıtlar, genellikle bir iş günü içinde.",
+      "topicLabel": "Konu nedir?",
+      "topic": {
+        "question": "Bir soru",
+        "problem": "Bir şey çalışmıyor",
+        "billing": "Planlar ve faturalama",
+        "account": "Hesap ve giriş",
+        "idea": "Bir fikir veya istek",
+        "other": "Başka bir şey"
+      },
+      "areaLabel": "Formalie’nin bir bölümü",
+      "anyArea": "Emin değilim veya birkaç tane",
+      "subject": "Konu",
+      "subjectPlaceholder": "Birkaç kelimeyle",
+      "subjectShort": "Kısa bir konu ekleyin (en az 3 karakter).",
+      "message": "Mesaj",
+      "messageHelp": "Ne yaptığınız, ne beklediğiniz ve ne olduğu. Ne kadar çok bilirsek o kadar hızlı yardımcı olabiliriz.",
+      "messageShort": "Biraz daha anlatın (en az 10 karakter).",
+      "urgent": "Acil",
+      "urgentHint": "Şu anda tüm ekip için bir şey bozuk.",
+      "replyTo": "Yanıtlanacak adres",
+      "included": "Çalışma alanınızı ve bulunduğunuz sayfayı da görüyoruz, böylece nerede olduğunu anlatmanız gerekmez.",
+      "send": "Desteğe gönder",
+      "sentTitle": "Gönderildi. Başvuru numaranız {reference}",
+      "sentDesc": "Formalie ekibi {email} adresine yanıt verecek. Bu konuda tekrar yazarsanız başvuru numarasını belirtin.",
+      "another": "Bir tane daha gönder",
+      "yours": "Taleplerin",
+      "status": {
+        "open": "Açık",
+        "answered": "Yanıtlandı",
+        "closed": "Kapalı"
+      }
     }
   },
   "billing": {

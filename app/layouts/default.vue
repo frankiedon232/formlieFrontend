@@ -49,6 +49,7 @@ defineShortcuts({
     <AppConfirmDialog />
     <HelpPanel />
     <HelpTour />
+    <HelpSupportModal />
     <!-- The help assistant floats on the Help pages only (F25) -->
     <HelpAssistant v-if="route.path === '/help' || route.path.startsWith('/help/')" />
   </UDashboardGroup>

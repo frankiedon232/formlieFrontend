@@ -174,6 +174,7 @@ export const ERROR_CODES = {
   'FRM-BILL-1001': { status: 402, message: "The payment didn't go through." },
   'FRM-BILL-1002': { status: 410, message: 'This checkout has expired.' },
   'FRM-BILL-1003': { status: 409, message: 'We already have your enquiry.' },
+  'FRM-HELP-1001': { status: 409, message: 'We already have this request.' },
   'FRM-SET-1001': { status: 409, message: 'Verify or test this first.' },
 } as const satisfies Record<string, ErrorCodeDefinition>
 

@@ -658,7 +658,8 @@
     "FRM-SET-1001": "Hãy xác minh hoặc kiểm tra trước, sau đó bạn có thể dùng.",
     "FRM-BILL-1001": "Thanh toán chưa thành công. Hãy thử thẻ khác hoặc liên hệ ngân hàng của bạn.",
     "FRM-BILL-1002": "Phiên thanh toán này đã hết hạn. Hãy bắt đầu lại.",
-    "FRM-BILL-1003": "Chúng tôi đã nhận được yêu cầu của bạn. Chúng tôi sẽ sớm liên hệ."
+    "FRM-BILL-1003": "Chúng tôi đã nhận được yêu cầu của bạn. Chúng tôi sẽ sớm liên hệ.",
+    "FRM-HELP-1001": "Chúng tôi đã nhận được yêu cầu này. Chúng tôi sẽ sớm liên hệ."
   },
   "errorUi": {
     "reference": "Mã tham chiếu: {id}",
@@ -9061,7 +9062,8 @@
       "title": "Nói chuyện với một người",
       "desc": "Không tìm thấy điều bạn cần? Nhóm hỗ trợ của chúng tôi luôn sẵn lòng giúp.",
       "email": "Gửi email cho hỗ trợ",
-      "site": "Trang hỗ trợ"
+      "site": "Trang hỗ trợ",
+      "contact": "Liên hệ hỗ trợ"
     },
     "feedback": {
       "question": "Bài viết này có hữu ích không?",
@@ -9122,6 +9124,41 @@
       "next": "Hình tiếp theo",
       "of": "{n} trên {total}",
       "hint": "Nhấp đúp hoặc nhấn + và - để thu phóng. Kéo để di chuyển. Esc để đóng."
+    },
+    "contact": {
+      "title": "Liên hệ hỗ trợ",
+      "desc": "Hãy cho chúng tôi biết bạn cần gì. Đội ngũ Formalie trả lời qua email, thường trong một ngày làm việc.",
+      "topicLabel": "Vấn đề về gì?",
+      "topic": {
+        "question": "Một câu hỏi",
+        "problem": "Có thứ không hoạt động",
+        "billing": "Gói và thanh toán",
+        "account": "Tài khoản và đăng nhập",
+        "idea": "Một ý tưởng hoặc yêu cầu",
+        "other": "Việc khác"
+      },
+      "areaLabel": "Phần của Formalie",
+      "anyArea": "Không chắc, hoặc nhiều phần",
+      "subject": "Tiêu đề",
+      "subjectPlaceholder": "Trong vài từ",
+      "subjectShort": "Thêm tiêu đề ngắn (ít nhất 3 ký tự).",
+      "message": "Nội dung",
+      "messageHelp": "Bạn đã làm gì, bạn mong đợi gì và điều gì đã xảy ra. Càng biết nhiều, chúng tôi càng giúp nhanh hơn.",
+      "messageShort": "Hãy cho chúng tôi biết thêm một chút (ít nhất 10 ký tự).",
+      "urgent": "Khẩn cấp",
+      "urgentHint": "Hiện có thứ bị hỏng với cả nhóm.",
+      "replyTo": "Trả lời đến",
+      "included": "Chúng tôi cũng thấy không gian làm việc của bạn và trang bạn đang xem, nên bạn không cần giải thích ở đâu.",
+      "send": "Gửi cho hỗ trợ",
+      "sentTitle": "Đã gửi. Mã tham chiếu của bạn là {reference}",
+      "sentDesc": "Đội ngũ Formalie sẽ trả lời {email}. Hãy nêu mã tham chiếu nếu bạn viết lại về việc này.",
+      "another": "Gửi thêm một yêu cầu",
+      "yours": "Các yêu cầu của bạn",
+      "status": {
+        "open": "Đang mở",
+        "answered": "Đã trả lời",
+        "closed": "Đã đóng"
+      }
     }
   },
   "billing": {

@@ -6,9 +6,10 @@
 import type { HelpSearchResult } from '#shared/types/help'
 import { helpArticlePath } from '#shared/utils/help/categories'
 
-const props = defineProps<{ result: HelpSearchResult | null; loading: boolean; supportEmail: string | null; categoryOf: (id: string) => string | undefined; showAnswer?: boolean }>()
+const props = defineProps<{ result: HelpSearchResult | null; loading: boolean; support?: boolean; categoryOf: (id: string) => string | undefined; showAnswer?: boolean }>()
 const emit = defineEmits<{ clear: [] }>()
 const { t } = useI18n()
+const { contact } = useSupport()
 const empty = computed(() => !!props.result && !props.result.articles.length && !props.result.faqs.length && !props.result.terms.length)
 const articleLink = (id: string | null) => (id && props.categoryOf(id) ? helpArticlePath({ id, category: props.categoryOf(id) as never }) : null)
 </script>
@@ -21,7 +22,7 @@ const articleLink = (id: string | null) => (id && props.categoryOf(id) ? helpArt
         icon="i-lucide-search-x"
         :title="t('help.search.none', { q: result!.query })"
         :description="t('help.search.noneDesc')"
-        :actions="[{ label: t('help.search.clear'), color: 'neutral', variant: 'outline', onClick: () => emit('clear') }, ...(supportEmail ? [{ label: t('help.support.email'), icon: 'i-lucide-mail', color: 'neutral' as const, to: `mailto:${supportEmail}` }] : [])]"
+        :actions="[{ label: t('help.search.clear'), color: 'neutral', variant: 'outline', onClick: () => emit('clear') }, ...(support ? [{ label: t('help.support.contact'), icon: 'i-lucide-life-buoy', color: 'neutral' as const, onClick: () => contact({ subject: result?.query ?? '' }) }] : [])]"
       />
     </UCard>
     <template v-else-if="result">

@@ -106,6 +106,7 @@ Format: `FRM-<DOMAIN>-<NNNN>`. Ranges: 1000–1999 client/validation, 5000–599
 | FRM-BILL-1001 | 402  | The payment didn't go through (declined by the bank or processor). | INFO |
 | FRM-BILL-1002 | 410  | This checkout has expired. Start again.                            | INFO     |
 | FRM-BILL-1003 | 409  | We already have your enquiry (sent twice within a minute).        | INFO     |
+| FRM-HELP-1001 | 409  | We already have this support request (the same subject twice within a minute). | INFO |
 | FRM-SET-1001  | 409  | Verify or test this first (an email domain before sending from it, a mail server before using it). | INFO |
 
 ### Client-side codes (raised by the portal, never sent by the server)

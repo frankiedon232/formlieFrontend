@@ -658,7 +658,8 @@
     "FRM-SET-1001": "Thibitisha au jaribu hili kwanza, kisha utaweza kulitumia.",
     "FRM-BILL-1001": "Malipo hayakukamilika. Jaribu kadi nyingine au wasiliana na benki yako.",
     "FRM-BILL-1002": "Malipo haya yameisha muda. Anza tena.",
-    "FRM-BILL-1003": "Tayari tuna ombi lako. Tutawasiliana nawe hivi karibuni."
+    "FRM-BILL-1003": "Tayari tuna ombi lako. Tutawasiliana nawe hivi karibuni.",
+    "FRM-HELP-1001": "Tayari tuna ombi hili. Tutawasiliana nawe hivi karibuni."
   },
   "errorUi": {
     "reference": "Kumbukumbu: {id}",
@@ -9061,7 +9062,8 @@
       "title": "Ongea na mtu",
       "desc": "Hujapata unachohitaji? Timu yetu ya usaidizi itafurahi kusaidia.",
       "email": "Tuma barua pepe kwa usaidizi",
-      "site": "Tovuti ya usaidizi"
+      "site": "Tovuti ya usaidizi",
+      "contact": "Wasiliana na msaada"
     },
     "feedback": {
       "question": "Je, makala hii ilisaidia?",
@@ -9122,6 +9124,41 @@
       "next": "Picha inayofuata",
       "of": "{n} kati ya {total}",
       "hint": "Bofya mara mbili au bonyeza + na - ili kukuza. Buruta ili kusogea. Esc hufunga."
+    },
+    "contact": {
+      "title": "Wasiliana na msaada",
+      "desc": "Tuambie unachohitaji. Timu ya Formalie hujibu kwa barua pepe, kwa kawaida ndani ya siku moja ya kazi.",
+      "topicLabel": "Ni kuhusu nini?",
+      "topic": {
+        "question": "Swali",
+        "problem": "Kitu hakifanyi kazi",
+        "billing": "Mipango na malipo",
+        "account": "Akaunti na kuingia",
+        "idea": "Wazo au ombi",
+        "other": "Jambo lingine"
+      },
+      "areaLabel": "Sehemu ya Formalie",
+      "anyArea": "Sina uhakika, au kadhaa",
+      "subject": "Mada",
+      "subjectPlaceholder": "Kwa maneno machache",
+      "subjectShort": "Ongeza mada fupi (angalau herufi 3).",
+      "message": "Ujumbe",
+      "messageHelp": "Ulichofanya, ulichotarajia na kilichotokea. Tukijua zaidi, tunaweza kusaidia haraka zaidi.",
+      "messageShort": "Tuambie zaidi kidogo (angalau herufi 10).",
+      "urgent": "Dharura",
+      "urgentHint": "Kuna kitu kimeharibika kwa timu nzima sasa hivi.",
+      "replyTo": "Jibu kwa",
+      "included": "Pia tunaona eneo lako la kazi na ukurasa uliokuwa ukitumia, kwa hivyo huhitaji kueleza ni wapi.",
+      "send": "Tuma kwa msaada",
+      "sentTitle": "Imetumwa. Namba yako ya kumbukumbu ni {reference}",
+      "sentDesc": "Timu ya Formalie itajibu {email}. Taja namba ya kumbukumbu ukiandika tena kuhusu hili.",
+      "another": "Tuma nyingine",
+      "yours": "Maombi yako",
+      "status": {
+        "open": "Wazi",
+        "answered": "Imejibiwa",
+        "closed": "Imefungwa"
+      }
     }
   },
   "billing": {

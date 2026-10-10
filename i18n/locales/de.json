@@ -658,7 +658,8 @@
     "FRM-SET-1001": "Bestätigen oder testen Sie dies zuerst, dann können Sie es verwenden.",
     "FRM-BILL-1001": "Die Zahlung ist nicht durchgegangen. Versuchen Sie eine andere Karte oder wenden Sie sich an Ihre Bank.",
     "FRM-BILL-1002": "Dieser Bezahlvorgang ist abgelaufen. Beginnen Sie neu.",
-    "FRM-BILL-1003": "Ihre Anfrage liegt uns bereits vor. Wir melden uns bald."
+    "FRM-BILL-1003": "Ihre Anfrage liegt uns bereits vor. Wir melden uns bald.",
+    "FRM-HELP-1001": "Diese Anfrage liegt uns bereits vor. Wir melden uns bald."
   },
   "errorUi": {
     "reference": "Referenz: {id}",
@@ -9061,7 +9062,8 @@
       "title": "Mit einem Menschen sprechen",
       "desc": "Nichts Passendes gefunden? Unser Support-Team hilft gern.",
       "email": "Support per E-Mail",
-      "site": "Support-Website"
+      "site": "Support-Website",
+      "contact": "Support kontaktieren"
     },
     "feedback": {
       "question": "War dieser Artikel hilfreich?",
@@ -9122,6 +9124,41 @@
       "next": "Nächstes Bild",
       "of": "{n} von {total}",
       "hint": "Zum Zoomen doppelklicken oder + und - drücken. Zum Verschieben ziehen. Esc schließt."
+    },
+    "contact": {
+      "title": "Support kontaktieren",
+      "desc": "Sagen Sie uns, was Sie brauchen. Das Formalie-Team antwortet per E-Mail, meist innerhalb eines Werktags.",
+      "topicLabel": "Worum geht es?",
+      "topic": {
+        "question": "Eine Frage",
+        "problem": "Etwas funktioniert nicht",
+        "billing": "Tarife und Abrechnung",
+        "account": "Konto und Anmeldung",
+        "idea": "Eine Idee oder ein Wunsch",
+        "other": "Etwas anderes"
+      },
+      "areaLabel": "Bereich von Formalie",
+      "anyArea": "Nicht sicher, oder mehrere",
+      "subject": "Betreff",
+      "subjectPlaceholder": "In wenigen Worten",
+      "subjectShort": "Fügen Sie einen kurzen Betreff hinzu (mindestens 3 Zeichen).",
+      "message": "Nachricht",
+      "messageHelp": "Was Sie getan haben, was Sie erwartet haben und was passiert ist. Je mehr wir wissen, desto schneller können wir helfen.",
+      "messageShort": "Erzählen Sie uns etwas mehr (mindestens 10 Zeichen).",
+      "urgent": "Dringend",
+      "urgentHint": "Für das ganze Team ist gerade etwas kaputt.",
+      "replyTo": "Antwort an",
+      "included": "Wir sehen auch Ihren Arbeitsbereich und die Seite, auf der Sie waren, sodass Sie nicht erklären müssen, wo.",
+      "send": "An den Support senden",
+      "sentTitle": "Gesendet. Ihre Referenz ist {reference}",
+      "sentDesc": "Das Formalie-Team antwortet an {email}. Nennen Sie die Referenz, wenn Sie dazu erneut schreiben.",
+      "another": "Weitere senden",
+      "yours": "Ihre Anfragen",
+      "status": {
+        "open": "Offen",
+        "answered": "Beantwortet",
+        "closed": "Geschlossen"
+      }
     }
   },
   "billing": {

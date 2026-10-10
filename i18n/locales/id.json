@@ -658,7 +658,8 @@
     "FRM-SET-1001": "Verifikasi atau uji ini dulu, lalu Anda bisa menggunakannya.",
     "FRM-BILL-1001": "Pembayaran tidak berhasil. Coba kartu lain atau hubungi bank Anda.",
     "FRM-BILL-1002": "Pembayaran ini sudah kedaluwarsa. Mulai lagi.",
-    "FRM-BILL-1003": "Kami sudah menerima pertanyaan Anda. Kami akan segera menghubungi Anda."
+    "FRM-BILL-1003": "Kami sudah menerima pertanyaan Anda. Kami akan segera menghubungi Anda.",
+    "FRM-HELP-1001": "Kami sudah menerima permintaan ini. Kami akan segera menghubungi Anda."
   },
   "errorUi": {
     "reference": "Referensi: {id}",
@@ -9061,7 +9062,8 @@
       "title": "Bicara dengan seseorang",
       "desc": "Tidak menemukan yang Anda butuhkan? Tim dukungan kami siap membantu.",
       "email": "Email dukungan",
-      "site": "Situs dukungan"
+      "site": "Situs dukungan",
+      "contact": "Hubungi dukungan"
     },
     "feedback": {
       "question": "Apakah artikel ini membantu?",
@@ -9122,6 +9124,41 @@
       "next": "Gambar berikutnya",
       "of": "{n} dari {total}",
       "hint": "Klik dua kali atau tekan + dan - untuk zoom. Seret untuk menggeser. Esc menutup."
+    },
+    "contact": {
+      "title": "Hubungi dukungan",
+      "desc": "Ceritakan apa yang Anda butuhkan. Tim Formalie membalas lewat email, biasanya dalam satu hari kerja.",
+      "topicLabel": "Tentang apa?",
+      "topic": {
+        "question": "Pertanyaan",
+        "problem": "Ada yang tidak berfungsi",
+        "billing": "Paket dan penagihan",
+        "account": "Akun dan masuk",
+        "idea": "Ide atau permintaan",
+        "other": "Hal lain"
+      },
+      "areaLabel": "Bagian dari Formalie",
+      "anyArea": "Tidak yakin, atau beberapa",
+      "subject": "Subjek",
+      "subjectPlaceholder": "Dalam beberapa kata",
+      "subjectShort": "Tambahkan subjek singkat (minimal 3 karakter).",
+      "message": "Pesan",
+      "messageHelp": "Apa yang Anda lakukan, apa yang Anda harapkan, dan apa yang terjadi. Semakin banyak yang kami tahu, semakin cepat kami bisa membantu.",
+      "messageShort": "Ceritakan sedikit lagi (minimal 10 karakter).",
+      "urgent": "Mendesak",
+      "urgentHint": "Ada yang rusak untuk seluruh tim saat ini.",
+      "replyTo": "Balas ke",
+      "included": "Kami juga melihat ruang kerja Anda dan halaman yang sedang Anda buka, jadi Anda tidak perlu menjelaskan di mana.",
+      "send": "Kirim ke dukungan",
+      "sentTitle": "Terkirim. Referensi Anda adalah {reference}",
+      "sentDesc": "Tim Formalie akan membalas ke {email}. Sebutkan referensi jika Anda menulis lagi soal ini.",
+      "another": "Kirim yang lain",
+      "yours": "Permintaan Anda",
+      "status": {
+        "open": "Terbuka",
+        "answered": "Sudah dijawab",
+        "closed": "Ditutup"
+      }
     }
   },
   "billing": {

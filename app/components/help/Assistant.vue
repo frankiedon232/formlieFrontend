@@ -2,11 +2,11 @@
   The help assistant (F25, owner 2026-10-10): a floating button on the Help pages opens a chat. It starts with
   every question people ask, by area; a question opens its answer in the chat, and anything typed is answered
   from the knowledge base (the best steps or paragraph, the articles to read, a matching question), with
-  "email support" when nothing fits. Uses only the help centre, never the workspace's data, so it works for
+  "Contact support" (a form inside the app) when nothing fits. Uses only the help centre, never the workspace's data, so it works for
   everyone. Esc closes; the conversation stays while you move around the help centre.
 -->
 <script setup lang="ts">
-import { HELP_CATEGORIES, type HelpBlock, type HelpCategory, type HelpFaq, type HelpHome, type HelpSearchResult } from '#shared/types/help'
+import { HELP_CATEGORIES, type HelpBlock, type HelpCategory, type HelpFaq, type HelpSearchResult } from '#shared/types/help'
 import { HELP_CATEGORY_ICONS, helpArticlePath } from '#shared/utils/help/categories'
 
 interface Message {
@@ -15,8 +15,9 @@ interface Message {
   text?: string
   blocks?: HelpBlock[]
   links?: { label: string; to: string }[]
-  /** Nothing found: offer support. */
+  /** Nothing found: offer support (with the question asked as the subject). */
   support?: boolean
+  asked?: string
 }
 
 const { t, locale } = useI18n()
@@ -30,16 +31,15 @@ const messages = ref<Message[]>([])
 const question = ref('')
 const thinking = ref(false)
 const area = ref<HelpCategory | null>(null)
-const supportEmail = ref<string | null>(null)
+const { contact } = useSupport()
 let counter = 0
 const say = (message: Omit<Message, 'id'>) => messages.value.push({ ...message, id: ++counter })
 
 async function load() {
   if (faqs.value) return
   try {
-    const [list, index, home] = await Promise.all([api.get<HelpFaq[]>('/help/faqs', { lang: locale.value }, { background: true }), api.get<{ id: string; category: HelpCategory }[]>('/help/articles', { lang: locale.value }, { background: true }), api.get<HelpHome>('/help/home', { lang: locale.value }, { background: true })])
+    const [list, index] = await Promise.all([api.get<HelpFaq[]>('/help/faqs', { lang: locale.value }, { background: true }), api.get<{ id: string; category: HelpCategory }[]>('/help/articles', { lang: locale.value }, { background: true })])
     faqs.value = list.data
-    supportEmail.value = home.data.support.email
     areas.value = Object.fromEntries(index.data.map(item => [item.id, item.category]))
   } catch (error) {
     handle(error, { silent: true })
@@ -75,7 +75,7 @@ async function ask() {
     if (data.answer) say({ from: 'bot', text: t('help.bot.found'), blocks: data.answer.blocks, links })
     else if (data.faqs[0]) say({ from: 'bot', text: data.faqs[0].answer, links: [...(articleLink(data.faqs[0].article) ? [{ label: t('help.readMore'), to: articleLink(data.faqs[0].article)! }] : []), ...links] })
     else if (links.length) say({ from: 'bot', text: t('help.bot.maybe'), links })
-    else say({ from: 'bot', text: t('help.bot.none'), support: true })
+    else say({ from: 'bot', text: t('help.bot.none'), support: true, asked: text })
   } catch (error) {
     handle(error)
     say({ from: 'bot', text: t('help.bot.failed') })
@@ -134,7 +134,7 @@ const reset = () => ((messages.value = []), (area.value = null))
                 <div v-if="message.links?.length" class="flex flex-col items-start gap-1">
                   <UButton v-for="link in message.links" :key="link.to" :label="link.label" trailing-icon="i-lucide-arrow-right" color="neutral" variant="link" size="xs" class="px-0 text-start whitespace-normal" :to="link.to" @click="open = false" />
                 </div>
-                <UButton v-if="message.support && supportEmail" :label="t('help.support.email')" icon="i-lucide-mail" color="neutral" variant="outline" size="xs" class="self-start" :to="`mailto:${supportEmail}`" />
+                <UButton v-if="message.support" :label="t('help.support.contact')" icon="i-lucide-life-buoy" color="neutral" variant="outline" size="xs" class="self-start" @click="((open = false), contact({ subject: message.asked ?? '' }))" />
                 <span v-if="message.blocks?.length" class="flex items-center gap-1 text-[11px] text-muted"><UIcon name="i-lucide-sparkles" class="size-3" />{{ t('ai.label.made') }}</span>
               </div>
             </div>

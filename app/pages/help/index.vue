@@ -9,6 +9,7 @@ import { HELP_CATEGORY_ICONS, helpArticlePath } from '#shared/utils/help/categor
 
 definePageMeta({ breadcrumb: 'nav.help' })
 const { t, locale } = useI18n()
+const { contact } = useSupport()
 useHead({ title: () => t('nav.help') })
 const api = useApi()
 const route = useRoute()
@@ -70,7 +71,7 @@ defineShortcuts({ '/': { handler: () => input.value?.inputRef?.focus() } })
   <AppPanel id="help" :title="t('nav.help')" :subtitle="t('help.subtitle')" subtitle-icon="i-lucide-circle-help">
     <template #actions>
       <UButton :label="t('help.faq.title')" icon="i-lucide-messages-square" color="neutral" variant="outline" to="/help/faq" class="max-sm:hidden" />
-      <UButton v-if="home?.support.email" :label="t('help.support.email')" icon="i-lucide-mail" color="neutral" :to="`mailto:${home.support.email}`" />
+      <UButton :label="t('help.support.contact')" icon="i-lucide-life-buoy" color="neutral" @click="contact()" />
     </template>
 
     <UCard variant="outline" class="shrink-0" :ui="{ body: 'flex flex-col gap-3 p-4 sm:p-6' }">
@@ -83,7 +84,7 @@ defineShortcuts({ '/': { handler: () => input.value?.inputRef?.focus() } })
       </div>
     </UCard>
 
-    <HelpSearchResults v-if="query.trim()" :result="result" :loading="searching" :show-answer="can('ai.use') && ai.enabled.value" :support-email="home?.support.email ?? null" :category-of="id => ids[id]" @clear="query = ''" />
+    <HelpSearchResults v-if="query.trim()" :result="result" :loading="searching" :show-answer="can('ai.use') && ai.enabled.value" :support="true" :category-of="id => ids[id]" @clear="query = ''" />
     <AppEmpty v-else-if="failed && !home" icon="i-lucide-cloud-alert" :title="t('dataView.errorTitle')" :actions="[{ label: t('common.retry'), icon: 'i-lucide-refresh-cw', color: 'neutral', variant: 'outline', onClick: load }]" />
     <div v-else-if="!home" class="flex flex-col gap-4"><USkeleton class="h-32 w-full rounded-lg" /><div class="grid gap-3 sm:grid-cols-3"><USkeleton v-for="n in 6" :key="n" class="h-24 rounded-lg" /></div></div>
     <template v-else>
@@ -134,7 +135,7 @@ defineShortcuts({ '/': { handler: () => input.value?.inputRef?.focus() } })
           <UCard variant="outline" :ui="{ body: 'flex flex-col gap-2 p-4 sm:p-5' }">
             <h2 class="text-sm font-semibold text-highlighted">{{ t('help.support.title') }}</h2>
             <p class="text-sm text-muted">{{ t('help.support.desc') }}</p>
-            <UButton v-if="home.support.email" :label="home.support.email" icon="i-lucide-mail" color="neutral" variant="outline" class="self-start" :to="`mailto:${home.support.email}`" />
+            <UButton :label="t('help.support.contact')" icon="i-lucide-life-buoy" color="neutral" class="self-start" @click="contact()" />
             <UButton v-if="home.support.url" :label="t('help.support.site')" icon="i-lucide-external-link" color="neutral" variant="outline" class="self-start" :to="home.support.url" target="_blank" />
           </UCard>
         </div>

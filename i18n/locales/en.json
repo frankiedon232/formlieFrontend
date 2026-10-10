@@ -658,7 +658,8 @@
     "FRM-SET-1001": "Verify or test this first, then you can use it.",
     "FRM-BILL-1001": "The payment didn't go through. Try another card or contact your bank.",
     "FRM-BILL-1002": "This checkout has expired. Start again.",
-    "FRM-BILL-1003": "We already have your enquiry. We'll be in touch soon."
+    "FRM-BILL-1003": "We already have your enquiry. We'll be in touch soon.",
+    "FRM-HELP-1001": "We already have this request. We'll be in touch soon."
   },
   "errorUi": {
     "reference": "Reference: {id}",
@@ -9061,7 +9062,8 @@
       "title": "Talk to a person",
       "desc": "Can’t find what you need? Our support team is happy to help.",
       "email": "Email support",
-      "site": "Support site"
+      "site": "Support site",
+      "contact": "Contact support"
     },
     "feedback": {
       "question": "Was this article helpful?",
@@ -9122,6 +9124,41 @@
       "next": "Next picture",
       "of": "{n} of {total}",
       "hint": "Double-click or press + and - to zoom. Drag to move around. Esc closes."
+    },
+    "contact": {
+      "title": "Contact support",
+      "desc": "Tell us what you need. The Formalie team replies by email, usually within one business day.",
+      "topicLabel": "What is it about?",
+      "topic": {
+        "question": "A question",
+        "problem": "Something isn't working",
+        "billing": "Plans and billing",
+        "account": "Account and sign-in",
+        "idea": "An idea or a request",
+        "other": "Something else"
+      },
+      "areaLabel": "Part of Formalie",
+      "anyArea": "Not sure, or several",
+      "subject": "Subject",
+      "subjectPlaceholder": "In a few words",
+      "subjectShort": "Add a short subject (at least 3 characters).",
+      "message": "Message",
+      "messageHelp": "What you did, what you expected and what happened. The more we know, the faster we can help.",
+      "messageShort": "Tell us a little more (at least 10 characters).",
+      "urgent": "Urgent",
+      "urgentHint": "Something is broken for the whole team right now.",
+      "replyTo": "Reply to",
+      "included": "We also see your workspace and the page you were on, so you don't have to explain where.",
+      "send": "Send to support",
+      "sentTitle": "Sent. Your reference is {reference}",
+      "sentDesc": "The Formalie team will reply to {email}. Quote the reference if you write about it again.",
+      "another": "Send another",
+      "yours": "Your requests",
+      "status": {
+        "open": "Open",
+        "answered": "Answered",
+        "closed": "Closed"
+      }
     }
   },
   "billing": {

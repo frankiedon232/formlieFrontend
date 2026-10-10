@@ -658,7 +658,8 @@
     "FRM-SET-1001": "请先验证或测试，然后才能使用。",
     "FRM-BILL-1001": "付款未成功。请换一张卡试试，或联系您的银行。",
     "FRM-BILL-1002": "此次结账已过期。请重新开始。",
-    "FRM-BILL-1003": "我们已收到您的咨询，会尽快与您联系。"
+    "FRM-BILL-1003": "我们已收到您的咨询，会尽快与您联系。",
+    "FRM-HELP-1001": "我们已收到此请求，会尽快与您联系。"
   },
   "errorUi": {
     "reference": "参考编号：{id}",
@@ -9061,7 +9062,8 @@
       "title": "联系真人",
       "desc": "没找到需要的内容？我们的支持团队乐意帮忙。",
       "email": "发邮件给支持团队",
-      "site": "支持网站"
+      "site": "支持网站",
+      "contact": "联系支持"
     },
     "feedback": {
       "question": "这篇文章对您有帮助吗？",
@@ -9122,6 +9124,41 @@
       "next": "下一张图片",
       "of": "第 {n} 张，共 {total} 张",
       "hint": "双击或按 + 和 - 缩放。拖动可移动。按 Esc 关闭。"
+    },
+    "contact": {
+      "title": "联系支持",
+      "desc": "请告诉我们您的需求。Formalie 团队会通过邮件回复，通常在一个工作日内。",
+      "topicLabel": "是关于什么的？",
+      "topic": {
+        "question": "一个问题",
+        "problem": "有东西无法使用",
+        "billing": "套餐和账单",
+        "account": "账户和登录",
+        "idea": "想法或请求",
+        "other": "其他"
+      },
+      "areaLabel": "Formalie 的哪个部分",
+      "anyArea": "不确定，或涉及多个",
+      "subject": "主题",
+      "subjectPlaceholder": "用几个词概括",
+      "subjectShort": "请添加简短的主题（至少 3 个字符）。",
+      "message": "消息",
+      "messageHelp": "您做了什么、期望什么以及发生了什么。我们了解得越多，就能越快帮到您。",
+      "messageShort": "请再多告诉我们一些（至少 10 个字符）。",
+      "urgent": "紧急",
+      "urgentHint": "目前整个团队都有东西无法使用。",
+      "replyTo": "回复至",
+      "included": "我们还能看到您的工作区和您所在的页面，因此无需说明位置。",
+      "send": "发送给支持",
+      "sentTitle": "已发送。您的参考编号是 {reference}",
+      "sentDesc": "Formalie 团队将回复到 {email}。如果您就此事再次来信，请注明参考编号。",
+      "another": "再发送一条",
+      "yours": "您的请求",
+      "status": {
+        "open": "待处理",
+        "answered": "已回复",
+        "closed": "已关闭"
+      }
     }
   },
   "billing": {

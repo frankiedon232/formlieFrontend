@@ -91,3 +91,33 @@ export interface HelpContext {
   more: HelpArticleSummary[]
   tour: HelpTour | null
 }
+
+/**
+ * A request to the Formalie support team (F25, owner 2026-10-10): sent from inside the app (never a mail
+ * program); the Formalie team reads and answers it in the platform admin, replies go to the email given.
+ */
+export const SUPPORT_TOPICS = ['question', 'problem', 'billing', 'account', 'idea', 'other'] as const
+export type SupportTopic = (typeof SUPPORT_TOPICS)[number]
+
+export interface SupportRequestInput {
+  topic: SupportTopic
+  /** The area it is about (a help area), when known. */
+  area: HelpCategory | null
+  subject: string
+  message: string
+  /** Something isn't working for the whole team. */
+  urgent: boolean
+  /** Where to reply. */
+  email: string
+  /** The page it was sent from, and the article being read (filled in by the app). */
+  page: string | null
+  article: string | null
+}
+
+export interface SupportRequest extends SupportRequestInput {
+  id: string
+  /** A short reference people can quote, e.g. SR-48213. */
+  reference: string
+  status: 'open' | 'answered' | 'closed'
+  created_at: string
+}
