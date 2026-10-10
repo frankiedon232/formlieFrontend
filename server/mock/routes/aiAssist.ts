@@ -35,6 +35,7 @@ export const assistFormRoute = defineMockRoute(async ({ event, body }) => {
     kind: 'builder',
     status: suggestions.length ? 'proposed' : 'discarded',
     title: TITLES[values.action],
+    title_key: { code: `assist_${values.action}` },
     target: { type: 'form', id: form.id, name: form.name },
     credits: AI_KIND_META.builder.credits,
     prompt: TITLES[values.action],

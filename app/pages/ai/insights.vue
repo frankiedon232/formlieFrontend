@@ -76,6 +76,7 @@ function copyText() {
     </template>
 
     <AiOff v-if="!ai.enabled.value" />
+    <AiNotAllowed v-else-if="ai.blocked('forms', 'responses')" :source="ai.blocked('forms', 'responses')!" />
     <template v-else>
       <div class="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center">
         <AiFormPicker v-model="formId" />

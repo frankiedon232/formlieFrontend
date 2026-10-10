@@ -4960,7 +4960,9 @@
       "period_default": "Nie podano okresu, więc policzono wszystkie odpowiedzi.",
       "field_guess": "Nie podano pytania, więc użyto „{label}”.",
       "no_field": "Pytanie nie pasuje do żadnego pytania w tym formularzu. Użyj słów z pytania.",
-      "no_answers": "Brak pasujących odpowiedzi."
+      "no_answers": "Brak pasujących odpowiedzi.",
+      "translated_total": "Przetłumaczono {n} tekst, {left} do sprawdzenia przez osobę. | Przetłumaczono {n} tekstów, {left} do sprawdzenia przez osobę.",
+      "rewrite_result": "{n} z {total} tekstów może być jaśniejszych; wiek czytelnika {before} → {after}."
     },
     "create": {
       "describe": "Opisz formularz",
@@ -5296,6 +5298,21 @@
       "saved": "Przepisano {n} tekst | Przepisano {n} tekstów",
       "emptyTitle": "Ułatw czytanie formularza",
       "emptyDesc": "Wybierz formularz i ton. Asystent proponuje prostsze sformułowania tylko tam, gdzie to pomaga; Ty wybierasz, co zostaje."
+    },
+    "title": {
+      "analysis": "Analiza formularza {form}",
+      "digest_week": "Tygodniowe podsumowanie formularza {form}",
+      "digest_month": "Miesięczne podsumowanie formularza {form}",
+      "digest_quarter": "Kwartalne podsumowanie formularza {form}",
+      "response_summary": "Podsumowanie odpowiedzi #{n}",
+      "translate": "Przetłumacz {form} na: {languages}",
+      "rewrite": "Przepisz {form} ({tone})",
+      "theme": "Projekty z koloru {colour}"
+    },
+    "notAllowed": {
+      "title": "Asystent nie może czytać: {part}",
+      "desc": "Twoja przestrzeń robocza nie udostępnia tego asystentowi AI. Poproś administratora, jeśli tego potrzebujesz.",
+      "descAdmin": "Włącz to w ustawieniach AI w sekcji «Co może czytać»."
     }
   },
   "public": {

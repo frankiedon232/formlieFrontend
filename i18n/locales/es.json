@@ -4960,7 +4960,9 @@
       "period_default": "No se indicó ningún periodo, así que se contaron todas las respuestas.",
       "field_guess": "No se indicó ninguna pregunta, así que se usó “{label}”.",
       "no_field": "La pregunta no coincide con ninguna de este formulario. Prueba con palabras de la pregunta.",
-      "no_answers": "Ninguna respuesta coincide."
+      "no_answers": "Ninguna respuesta coincide.",
+      "translated_total": "{n} texto traducido, {left} pendiente para una persona. | {n} textos traducidos, {left} pendientes para una persona.",
+      "rewrite_result": "{n} de {total} textos podrían ser más claros; edad de lectura {before} → {after}."
     },
     "create": {
       "describe": "Describe el formulario",
@@ -5296,6 +5298,21 @@
       "saved": "{n} texto reescrito | {n} textos reescritos",
       "emptyTitle": "Haz un formulario más fácil de leer",
       "emptyDesc": "Elige un formulario y el tono. El asistente sugiere una redacción más sencilla solo donde ayuda; tú eliges qué conservar."
+    },
+    "title": {
+      "analysis": "Análisis de {form}",
+      "digest_week": "Resumen semanal de {form}",
+      "digest_month": "Resumen mensual de {form}",
+      "digest_quarter": "Resumen trimestral de {form}",
+      "response_summary": "Resumen de la respuesta #{n}",
+      "translate": "Traducir {form} a {languages}",
+      "rewrite": "Reescribir {form} ({tone})",
+      "theme": "Diseños a partir de {colour}"
+    },
+    "notAllowed": {
+      "title": "El asistente no puede leer {part}",
+      "desc": "Tu espacio de trabajo no permite que el asistente de IA acceda a esto. Pídeselo a un administrador si lo necesitas.",
+      "descAdmin": "Actívalo en los ajustes de IA, en «Qué puede leer»."
     }
   },
   "public": {

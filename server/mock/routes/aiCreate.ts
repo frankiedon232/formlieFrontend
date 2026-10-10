@@ -161,6 +161,7 @@ export const draftThemeRoute = defineMockRoute(async ({ event, body }) => {
     kind: 'theme',
     status: 'proposed',
     title: `Designs from ${input.colour.toUpperCase()}`,
+    title_key: { code: 'theme', params: { colour: input.colour.toUpperCase() } },
     target: null,
     credits: AI_KIND_META.theme.credits,
     prompt: `Brand colour ${input.colour.toUpperCase()}${input.mood ? `, ${input.mood}` : ''}`,

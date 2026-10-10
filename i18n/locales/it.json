@@ -4960,7 +4960,9 @@
       "period_default": "Nessun periodo indicato, quindi sono state contate tutte le risposte.",
       "field_guess": "Nessuna domanda indicata, quindi è stata usata «{label}».",
       "no_field": "La domanda non corrisponde a nessuna domanda di questo modulo. Prova con parole della domanda.",
-      "no_answers": "Nessuna risposta corrisponde."
+      "no_answers": "Nessuna risposta corrisponde.",
+      "translated_total": "{n} testo tradotto, {left} da rivedere da una persona. | {n} testi tradotti, {left} da rivedere da una persona.",
+      "rewrite_result": "{n} testi su {total} potrebbero essere più chiari; età di lettura {before} → {after}."
     },
     "create": {
       "describe": "Descrivi il modulo",
@@ -5296,6 +5298,21 @@
       "saved": "{n} testo riscritto | {n} testi riscritti",
       "emptyTitle": "Rendi un modulo più facile da leggere",
       "emptyDesc": "Scegli un modulo e il tono. L’assistente suggerisce parole più semplici solo dove serve; sei tu a scegliere cosa tenere."
+    },
+    "title": {
+      "analysis": "Analisi di {form}",
+      "digest_week": "Riepilogo settimanale di {form}",
+      "digest_month": "Riepilogo mensile di {form}",
+      "digest_quarter": "Riepilogo trimestrale di {form}",
+      "response_summary": "Riepilogo della risposta #{n}",
+      "translate": "Traduci {form} in {languages}",
+      "rewrite": "Riscrivi {form} ({tone})",
+      "theme": "Design da {colour}"
+    },
+    "notAllowed": {
+      "title": "L’assistente non può leggere {part}",
+      "desc": "Il tuo spazio di lavoro non consente all’assistente IA di accedere a questo. Chiedi a un amministratore se ti serve.",
+      "descAdmin": "Attivalo nelle impostazioni IA, in «Cosa può leggere»."
     }
   },
   "public": {

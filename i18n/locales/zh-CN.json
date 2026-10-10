@@ -4960,7 +4960,9 @@
       "period_default": "未指定时段，因此统计了所有回复。",
       "field_guess": "未指定问题，因此使用了“{label}”。",
       "no_field": "该问题与此表单中的任何问题都不匹配。请尝试使用问题中的词语。",
-      "no_answers": "没有匹配的回答。"
+      "no_answers": "没有匹配的回答。",
+      "translated_total": "已翻译 {n} 条文本，还有 {left} 条需人工处理。 | 已翻译 {n} 条文本，还有 {left} 条需人工处理。",
+      "rewrite_result": "{total} 条文本中有 {n} 条可以更清晰；阅读年龄 {before} → {after}。"
     },
     "create": {
       "describe": "描述表单",
@@ -5296,6 +5298,21 @@
       "saved": "已改写 {n} 条文本 | 已改写 {n} 条文本",
       "emptyTitle": "让表单更易读",
       "emptyDesc": "选择表单和语气。助手只在有帮助的地方建议更简明的措辞，保留什么由你决定。"
+    },
+    "title": {
+      "analysis": "{form}分析",
+      "digest_week": "{form}每周摘要",
+      "digest_month": "{form}每月摘要",
+      "digest_quarter": "{form}季度摘要",
+      "response_summary": "回复 #{n} 的摘要",
+      "translate": "将{form}翻译为{languages}",
+      "rewrite": "改写{form}（{tone}）",
+      "theme": "基于{colour}的设计"
+    },
+    "notAllowed": {
+      "title": "助手无权读取{part}",
+      "desc": "你的工作区不允许 AI 助手访问此内容。如有需要，请联系管理员。",
+      "descAdmin": "请在 AI 设置的“可读取内容”中开启。"
     }
   },
   "public": {

@@ -4960,7 +4960,9 @@
       "period_default": "Hakuna kipindi kilichotajwa, kwa hivyo majibu yote yalihesabiwa.",
       "field_guess": "Hakuna swali lililotajwa, kwa hivyo “{label}” ilitumika.",
       "no_field": "Swali halilingani na swali lolote katika fomu hii. Jaribu kutumia maneno kutoka kwenye swali.",
-      "no_answers": "Hakuna majibu yanayolingana."
+      "no_answers": "Hakuna majibu yanayolingana.",
+      "translated_total": "Maandishi {n} yametafsiriwa, {left} yamebaki kwa mtu. | Maandishi {n} yametafsiriwa, {left} yamebaki kwa mtu.",
+      "rewrite_result": "Maandishi {n} kati ya {total} yanaweza kuwa wazi zaidi; umri wa kusoma {before} → {after}."
     },
     "create": {
       "describe": "Eleza fomu",
@@ -5296,6 +5298,21 @@
       "saved": "Maandishi {n} yameandikwa upya | Maandishi {n} yameandikwa upya",
       "emptyTitle": "Fanya fomu iwe rahisi kusoma",
       "emptyDesc": "Chagua fomu na toni. Msaidizi hupendekeza maneno rahisi zaidi pale tu panapofaa; wewe huchagua cha kubakiza."
+    },
+    "title": {
+      "analysis": "Uchambuzi wa {form}",
+      "digest_week": "Muhtasari wa wiki wa {form}",
+      "digest_month": "Muhtasari wa mwezi wa {form}",
+      "digest_quarter": "Muhtasari wa robo mwaka wa {form}",
+      "response_summary": "Muhtasari wa jibu #{n}",
+      "translate": "Tafsiri {form} kwa {languages}",
+      "rewrite": "Andika upya {form} ({tone})",
+      "theme": "Miundo kutoka {colour}"
+    },
+    "notAllowed": {
+      "title": "Msaidizi haruhusiwi kusoma {part}",
+      "desc": "Nafasi yako ya kazi haimruhusu msaidizi wa AI kufikia hili. Mwombe msimamizi ikiwa unahitaji.",
+      "descAdmin": "Liwashe katika mipangilio ya AI chini ya «Anachoruhusiwa kusoma»."
     }
   },
   "public": {

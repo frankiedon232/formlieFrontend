@@ -4960,7 +4960,9 @@
       "period_default": "期間が指定されなかったため、すべての回答を集計しました。",
       "field_guess": "質問が指定されなかったため、「{label}」を使いました。",
       "no_field": "質問がこのフォームのどの質問とも一致しませんでした。質問の言葉を使ってみてください。",
-      "no_answers": "一致する回答はありません。"
+      "no_answers": "一致する回答はありません。",
+      "translated_total": "{n}件のテキストを翻訳しました。人の確認が必要なものは{left}件です。 | {n}件のテキストを翻訳しました。人の確認が必要なものは{left}件です。",
+      "rewrite_result": "{total}件中{n}件のテキストはより分かりやすくできます。読解年齢 {before} → {after}。"
     },
     "create": {
       "describe": "フォームの内容を説明",
@@ -5296,6 +5298,21 @@
       "saved": "{n} 件のテキストを書き直しました | {n} 件のテキストを書き直しました",
       "emptyTitle": "フォームを読みやすくする",
       "emptyDesc": "フォームとトーンを選んでください。アシスタントは役立つ箇所だけやさしい表現を提案します。残すものはあなたが選べます。"
+    },
+    "title": {
+      "analysis": "{form}の分析",
+      "digest_week": "{form}の週次ダイジェスト",
+      "digest_month": "{form}の月次ダイジェスト",
+      "digest_quarter": "{form}の四半期ダイジェスト",
+      "response_summary": "回答 #{n} の要約",
+      "translate": "{form}を{languages}に翻訳",
+      "rewrite": "{form}を書き直し（{tone}）",
+      "theme": "{colour}からのデザイン"
+    },
+    "notAllowed": {
+      "title": "アシスタントは{part}を読み取れません",
+      "desc": "ワークスペースの設定により、AIアシスタントはこれにアクセスできません。必要な場合は管理者に相談してください。",
+      "descAdmin": "AI設定の「読み取り可能な内容」でオンにしてください。"
     }
   },
   "public": {

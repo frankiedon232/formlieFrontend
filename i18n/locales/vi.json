@@ -4960,7 +4960,9 @@
       "period_default": "Chưa nêu giai đoạn nào nên đã tính tất cả phản hồi.",
       "field_guess": "Chưa nêu câu hỏi nào nên đã dùng “{label}”.",
       "no_field": "Câu hỏi không khớp với câu hỏi nào trong biểu mẫu này. Hãy thử dùng các từ trong câu hỏi.",
-      "no_answers": "Không có câu trả lời phù hợp."
+      "no_answers": "Không có câu trả lời phù hợp.",
+      "translated_total": "Đã dịch {n} văn bản, còn {left} để người xem lại. | Đã dịch {n} văn bản, còn {left} để người xem lại.",
+      "rewrite_result": "{n} trên {total} văn bản có thể rõ hơn; độ tuổi đọc {before} → {after}."
     },
     "create": {
       "describe": "Mô tả biểu mẫu",
@@ -5296,6 +5298,21 @@
       "saved": "Đã viết lại {n} văn bản | Đã viết lại {n} văn bản",
       "emptyTitle": "Giúp biểu mẫu dễ đọc hơn",
       "emptyDesc": "Chọn biểu mẫu và giọng điệu. Trợ lý chỉ gợi ý cách diễn đạt đơn giản hơn khi có ích; bạn chọn giữ lại gì."
+    },
+    "title": {
+      "analysis": "Phân tích {form}",
+      "digest_week": "Tóm tắt tuần của {form}",
+      "digest_month": "Tóm tắt tháng của {form}",
+      "digest_quarter": "Tóm tắt quý của {form}",
+      "response_summary": "Tóm tắt phản hồi #{n}",
+      "translate": "Dịch {form} sang {languages}",
+      "rewrite": "Viết lại {form} ({tone})",
+      "theme": "Thiết kế từ {colour}"
+    },
+    "notAllowed": {
+      "title": "Trợ lý không được phép đọc {part}",
+      "desc": "Không gian làm việc của bạn không cho trợ lý AI truy cập mục này. Hãy hỏi quản trị viên nếu bạn cần.",
+      "descAdmin": "Bật trong cài đặt AI, mục «Những gì được đọc»."
     }
   },
   "public": {

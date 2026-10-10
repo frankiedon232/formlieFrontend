@@ -45,6 +45,7 @@ onMounted(() => {
     </template>
 
     <AiOff v-if="!ai.enabled.value" />
+    <AiNotAllowed v-else-if="ai.blocked('forms')" :source="ai.blocked('forms')!" />
     <template v-else>
       <UTabs v-model="mode" :items="modes" :content="false" color="neutral" size="sm" :ui="SEGMENTED_UI" class="self-start" />
       <AiRewriteWork v-if="mode === 'rewrite'" @used="loadUsage" />

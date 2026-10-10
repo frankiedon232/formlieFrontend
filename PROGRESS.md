@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-10 (F19 AI assistant M1 to M5 done; next: M6 phase checks: phone, keyboard, RTL, 20 languages, labelling)
+**Last updated:** 2026-10-10 (F19 AI assistant done, waiting for the owner's review; next: F24 Payments & subscriptions once the processor is chosen)
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend · ➖ dropped or merged
 
@@ -29,7 +29,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F16   | Users & profiles (Profile + Users)                | ✅     | 100% (owner-approved 2026-10-09)          |
 | F17   | Users (merged into F16)                           | ➖     | -                                         |
 | F18   | Analytics                                         | ✅     | 100% (waiting for review)                 |
-| F19   | AI assistant                                      | 🟡     | ~85% (M1 to M5 done)                      |
+| F19   | AI assistant                                      | ✅     | 100% (waiting for review)                 |
 | F20   | Live collaboration (removed)                      | ➖     | -                                         |
 | F21   | Dashboard                                         | ⬜     | 0%                                        |
 | F22   | Roles & access                                    | ✅     | 100% (owner-tested 2026-10-10)            |
@@ -920,13 +920,13 @@ Owner, 2026-10-08: "profiling and users are the same thing". One phase builds th
 
 ---
 
-## F19, AI assistant 🟡
+## F19, AI assistant ✅ (waiting for the owner's review)
 
 **Goal:** an assistant built into Formalie that makes work easier, creating forms and templates, analysing responses, summarising, translating and more (owner idea 2026-10-03). Own rail area and menu; also available in context (builder, templates, responses). People stay in control: the assistant proposes, a person reviews and applies; nothing is published or sent by the assistant on its own.
 
 **How it works until the real backend (decided 2026-10-10):** the mock has its own built-in assistant engine (`server/mock/ai/`), no outside service: it builds forms from Formalie's template catalogue and a dictionary of common questions, finds themes and sentiment in answers with word lists, and translates with Formalie's own translated texts. Same request and answer shapes as the real one (API-CONTRACT → AI assistant), so the screens don't change when the backend's model takes over. The model / provider is a backend decision for the owner (recommendation in docs/03-DECISIONS-AND-NOTES.md).
 
-**Milestones:** **M1** ✅ Foundation (settings, usage, history, overview) · **M2** ✅ Creating (form from a description or a document, template ideas, theme from a brand colour) · **M3** ✅ Builder help · **M4** ✅ Analysing (response analysis, questions in plain words, summaries) · **M5** ✅ Translating and writing · **M6** Phase checks (phone, keyboard, RTL, 20 languages).
+**Milestones:** **M1** ✅ Foundation (settings, usage, history, overview) · **M2** ✅ Creating (form from a description or a document, template ideas, theme from a brand colour) · **M3** ✅ Builder help · **M4** ✅ Analysing (response analysis, questions in plain words, summaries) · **M5** ✅ Translating and writing · **M6** ✅ Phase checks (phone, keyboard, RTL, 20 languages).
 
 ### 1. Area and navigation
 
@@ -955,8 +955,8 @@ Owner, 2026-10-08: "profiling and users are the same thing". One phase builds th
 
 - ✅ **M1** Settings: switch the assistant on / off per workspace, choose which areas it may read (forms, responses, data sources), keep personal data out (masking), how long requests are kept
 - ✅ **M1** Usage and limits per plan (a monthly allowance of credits until plans come in F24); history of every request (who, what, when, result, applied or not) in the locked list format (two chart cards, DataView, cards, detail panel); everything audited (`ai.*`)
-- ⬜ Clear labelling of AI-made content; nothing applied without a person's confirmation
-- ⬜ Model / provider choice is a backend decision (documented when F19 starts); data processing terms shown, controls, not certifications
+- ✅ Clear labelling of AI-made content ("Made with AI" on drafts, analyses, digests and summaries; every request in History); nothing applied without a person's confirmation (drafts are proposals until Create / Save / Apply; applied content is the person's own from then on, and the history and audit trail record that it came from the assistant)
+- ✅ Model / provider choice is a backend decision (recommendation in 03-DECISIONS-AND-NOTES, the owner decides before the real backend); data processing terms shown in AI settings (no training on workspace data, kept only for the chosen days), controls, not certifications
 
 ## F20, Live collaboration ➖ (removed by the owner, 2026-10-08)
 
@@ -1583,3 +1583,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-10 | F19 M3 | Builder help: Assistant button in the builder header on Build and Logic (and the full-screen bar and phone menu) for people who may edit the form and use builder help; a side panel with Suggest fields (from the template that matches the form's name, plus email, "anything else" and agreement when personal details are asked), Write help texts (by kind of question), Add logic (details after a yes, "what went wrong" after a low score, "other" after Other) and Check my form (wrong kind of field for email / phone / date / number, duplicates, images without a description, very long questions, nothing required, too few choices, long pages); each suggestion applied or skipped, Apply all, every change one undo step and saved with the draft; the history records how many were taken; API `POST /ai/forms/{id}/assist`; browser-checked: suggestions applied and undone, check and logic on sample forms (a wrong follow-up found in testing and fixed) |
 | 2026-10-10 | F19 M4 | Analysing: Response analysis (a form and a period: responses with the change and per day, tone of written answers as thin lines, what stands out (more or fewer responses, busiest day, ratings up or down, the most criticised and most praised themes), themes with share bars, tone and examples, average ratings against the period before, most chosen answers); Ask about this form in plain words (count, top answers, average, trend per day / week / month; periods like last month, this year, in March, last 30 days; a named answer or review status filters; always shows what was counted); Insights & summaries (digest of the last 7 days, 30 days or 3 months, Copy as text); Summarise in a response's panel (key answers, tone, themes; names and contact details left out). Built-in word lists for themes and tone. Fixed in testing: dates were masked as numbers, a name showed in a summary, a theme was both praised and criticised, "which answer was chosen most" without a question named now uses the first choice question and says so |
 | 2026-10-10 | F19 M5 | Translating and writing: AI → Translations with Translate (a form you may edit and any of the 20 languages; side by side per language, original and translation editable, marked as translated by the assistant / already translated / needs a person; saved into the form's draft, the languages added; a form changed in the meantime is refused) and Rewrite (plain, friendly or formal; only the texts that change, original crossed out and suggestion editable, why (plainer words, shorter sentences, says who does what, no shouting capitals, tone), reading age before and after; chosen ones saved into the draft); the builder's translation screen has "Translate the rest with AI" (fills what is still to do, one undo step each). The mock translates with Formalie's own translations (the portal's interface texts in 20 languages, template content, and the texts the assistant itself writes into forms, added as translations); anything else is left for a person, never guessed; the backend's model translates the rest. Browser-checked: Contact us 2 in French, 19 of 20 texts translated, the typed title left; saved into a test form and seen in its builder; the builder button. Fixed in testing: reading age counted a list of labels as one long sentence |
+| 2026-10-10 | F19 M6 | Phase checks: every AI page at phone width (no page wider than the screen; History's table scrolls like every list), tablet and desktop; light and dark; Arabic right to left (mirrored, no English left except names and what people typed); every control named for keyboards and screen readers; role rules tested (members use the assistant, only managers change its settings; every assistant call has its own permission); switched-off and "may not read" states on every page that needs them (new: Response analysis, Insights and Translations say so up front when the workspace keeps forms or responses from the assistant). Fixed: titles Formalie writes in History ("Analysis of …", "Check my form", "Translate … into …") are now translated for the reader (requests kept from before converted once), translate and rewrite results carry translated notes. F19 stops here for the owner's review |

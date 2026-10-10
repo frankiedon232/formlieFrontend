@@ -3,7 +3,7 @@
  * overview and (later) the in-context helpers in the builder, templates and responses. Saving goes
  * through the API; the result replaces the shared copy so every place follows at once.
  */
-import type { AiSettings } from '#shared/types/ai'
+import type { AiSettings, AiSource } from '#shared/types/ai'
 
 export function useAi() {
   const api = useApi()
@@ -34,6 +34,8 @@ export function useAi() {
 
   /** On until the settings say otherwise (so pages don't flash the switched-off state while loading). */
   const enabled = computed(() => settings.value?.enabled ?? true)
+  /** The first part this page needs that the workspace keeps from the assistant (null = all allowed or not loaded yet). */
+  const blocked = (...needs: AiSource[]) => needs.find(source => settings.value?.sources[source] === false) ?? null
 
-  return { settings, loading, failed, load, save, enabled }
+  return { settings, loading, failed, load, save, enabled, blocked }
 }

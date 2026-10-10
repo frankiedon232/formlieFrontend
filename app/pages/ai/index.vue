@@ -16,6 +16,7 @@ const { handle } = useErrorHandler()
 const { relative, number } = useFormat()
 const { can } = useCan()
 const ai = useAi()
+const { titleOf } = useAiText()
 useHead({ title: () => t('nav.ai') })
 
 const usage = ref<AiUsage | null>(null)
@@ -96,7 +97,7 @@ const promises = ['review', 'private', 'audit'] as const
               <NuxtLink :to="{ path: '/ai/history', query: { q: item.title } }" class="flex items-center gap-3 rounded-md py-2.5 hover:bg-elevated/50 focus-visible:outline-2 focus-visible:outline-(--ui-border-inverted)">
                 <span class="flex size-8 shrink-0 items-center justify-center rounded-lg border border-default"><UIcon :name="AI_KIND_META[item.kind].icon" class="size-4 text-muted" /></span>
                 <span class="flex min-w-0 flex-1 flex-col">
-                  <span class="truncate text-sm font-medium text-highlighted">{{ item.title }}</span>
+                  <span class="truncate text-sm font-medium text-highlighted">{{ titleOf(item) }}</span>
                   <span class="truncate text-xs text-muted">{{ item.mine ? t('ai.history.you') : item.by.name }} · {{ relative(item.created_at) }}</span>
                 </span>
                 <span class="hidden text-xs text-muted tabular-nums sm:inline">{{ t('ai.overview.credits', { n: number(item.credits) }, item.credits) }}</span>

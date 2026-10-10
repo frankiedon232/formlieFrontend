@@ -4960,7 +4960,9 @@
       "period_default": "Es wurde kein Zeitraum genannt, daher wurden alle Antworten gezählt.",
       "field_guess": "Es wurde keine Frage genannt, daher wurde „{label}“ verwendet.",
       "no_field": "Die Frage passt zu keiner Frage in diesem Formular. Verwende Wörter aus der Frage.",
-      "no_answers": "Keine passenden Antworten."
+      "no_answers": "Keine passenden Antworten.",
+      "translated_total": "{n} Text übersetzt, {left} für eine Person übrig. | {n} Texte übersetzt, {left} für eine Person übrig.",
+      "rewrite_result": "{n} von {total} Texten könnten klarer sein; Lesealter {before} → {after}."
     },
     "create": {
       "describe": "Formular beschreiben",
@@ -5296,6 +5298,21 @@
       "saved": "{n} Text umgeschrieben | {n} Texte umgeschrieben",
       "emptyTitle": "Ein Formular leichter lesbar machen",
       "emptyDesc": "Wählen Sie ein Formular und den Tonfall. Der Assistent schlägt einfachere Formulierungen nur vor, wo es hilft; Sie entscheiden, was bleibt."
+    },
+    "title": {
+      "analysis": "Analyse von {form}",
+      "digest_week": "Wochenübersicht für {form}",
+      "digest_month": "Monatsübersicht für {form}",
+      "digest_quarter": "Quartalsübersicht für {form}",
+      "response_summary": "Zusammenfassung der Antwort #{n}",
+      "translate": "{form} in {languages} übersetzen",
+      "rewrite": "{form} umschreiben ({tone})",
+      "theme": "Designs aus {colour}"
+    },
+    "notAllowed": {
+      "title": "Der Assistent darf {part} nicht lesen",
+      "desc": "Ihr Arbeitsbereich hält dies vom KI-Assistenten fern. Fragen Sie bei Bedarf eine Administratorin oder einen Administrator.",
+      "descAdmin": "Aktivieren Sie es in den KI-Einstellungen unter „Was gelesen werden darf“."
     }
   },
   "public": {

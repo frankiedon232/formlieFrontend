@@ -3,7 +3,7 @@
  * chosen days), in `.data/mock/ai.json`. Seeded workspaces start with a month of believable requests
  * so the overview, history and usage have something to show.
  */
-import { AI_KINDS, AI_STATUSES, type AiDraftStats, type AiKind, type AiNote, type AiRequestDetail, type AiRequestRow, type AiSettings, type AiSource, type AiStatus, type AiTarget } from '#shared/types/ai'
+import { AI_KINDS, AI_STATUSES, type AiDraftStats, type AiKind, type AiNote, type AiTitleKey, type AiRequestDetail, type AiRequestRow, type AiSettings, type AiSource, type AiStatus, type AiTarget } from '#shared/types/ai'
 import { AI_DEFAULT_MONTHLY_CREDITS, AI_KIND_META } from '#shared/utils/ai/kinds'
 import { loadPersisted, savePersisted } from '../core/persist'
 import { MockError } from '../core/respond'
@@ -29,6 +29,8 @@ export interface StoredAiRequest {
   output?: unknown
   notes?: AiNote[]
   stats?: AiDraftStats
+  /** A title Formalie wrote, translated in the app (null = typed or sample, shown as it is). */
+  title_key?: AiTitleKey | null
 }
 
 interface TenantAi {
@@ -110,6 +112,11 @@ export function aiOf(tenant: MockTenant): TenantAi {
     stores.set(tenant.id, store)
     saveAi()
   }
+  // Requests made before titles were translated: their Formalie-written title gets its code once
+  if (store.requests.some(request => request.title_key === undefined)) {
+    for (const request of store.requests) request.title_key ??= titleKeyOf(request.title)
+    saveAi()
+  }
   const cutoff = Date.now() - store.settings.keep_days * DAY
   const kept = store.requests.filter(request => Date.parse(request.created_at) >= cutoff)
   if (kept.length !== store.requests.length) {
@@ -117,6 +124,20 @@ export function aiOf(tenant: MockTenant): TenantAi {
     saveAi()
   }
   return store
+}
+
+const ASSIST: Record<string, AiTitleKey['code']> = { 'Suggest fields': 'assist_fields', 'Write help texts': 'assist_help', 'Add logic': 'assist_logic', 'Check my form': 'assist_check' }
+/** The code of a title Formalie wrote (requests kept from before codes), else null (typed or sample titles). */
+function titleKeyOf(title: string): AiTitleKey | null {
+  let match: RegExpMatchArray | null
+  if (ASSIST[title]) return { code: ASSIST[title]! }
+  if ((match = title.match(/^Analysis of (.+)$/))) return { code: 'analysis', params: { form: match[1]! } }
+  if ((match = title.match(/^(Weekly|Monthly|Quarterly) digest of (.+)$/))) return { code: match[1] === 'Weekly' ? 'digest_week' : match[1] === 'Monthly' ? 'digest_month' : 'digest_quarter', params: { form: match[2]! } }
+  if ((match = title.match(/^Summary of response #(\d+)$/))) return { code: 'response_summary', params: { n: Number(match[1]) } }
+  if ((match = title.match(/^Translate (.+) into ([a-z, -]+)$/i))) return { code: 'translate', params: { form: match[1]!, languages: match[2]!.replace(/\s/g, '') } }
+  if ((match = title.match(/^Rewrite (.+) \((plain|friendly|formal)\)$/))) return { code: 'rewrite', params: { form: match[1]!, tone: match[2]! } }
+  if ((match = title.match(/^Designs from (#[0-9A-F]{6})$/i))) return { code: 'theme', params: { colour: match[1]! } }
+  return null
 }
 
 /** The start of this month (UTC), the allowance's period. */
@@ -161,6 +182,7 @@ export const toAiRow = (request: StoredAiRequest, user: MockUser): AiRequestRow 
   kind: request.kind,
   status: request.status,
   title: request.title,
+  title_key: request.title_key ?? null,
   by: request.by,
   target: request.target,
   credits: request.credits,

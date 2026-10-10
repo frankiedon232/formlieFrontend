@@ -67,11 +67,13 @@ export const translateFormRoute = defineMockRoute(async ({ event, body }) => {
     kind: 'translate',
     status: 'proposed',
     title: `Translate ${form.name} into ${languages.join(', ')}`,
+    title_key: { code: 'translate', params: { form: form.name, languages: languages.join(',') } },
     target: { type: 'form', id: form.id, name: form.name },
     credits: cost,
     prompt: `Translate the form from ${from} into ${languages.join(', ')}.`,
     result: result.map(item => `${item.code}: ${item.translated} translated, ${item.missing} left`).join('; '),
     read: ['forms'],
+    notes: [{ code: 'translated_total', params: { n: result.reduce((sum, item) => sum + item.translated, 0), left: result.reduce((sum, item) => sum + item.missing, 0) } }],
     output: { form_id: form.id, row_version: form.row_version },
   })
   const answer: AiTranslation = { request_id: request.id, form: { id: form.id, name: form.name }, from, languages: result, credits: cost }
@@ -95,11 +97,13 @@ export const rewriteFormRoute = defineMockRoute(async ({ event, body }) => {
     kind: 'rewrite',
     status: changed.length ? 'proposed' : 'discarded',
     title: `Rewrite ${form.name} (${input.tone})`,
+    title_key: { code: 'rewrite', params: { form: form.name, tone: input.tone } },
     target: { type: 'form', id: form.id, name: form.name },
     credits: AI_KIND_META.rewrite.credits,
     prompt: `Make the form easier to read, ${input.tone} tone.`,
     result: `${changed.length} of ${texts.length} texts could be clearer; reading age ${reading.before} to ${reading.after}.`,
     read: ['forms'],
+    notes: [{ code: 'rewrite_result', params: { n: changed.length, total: texts.length, before: reading.before, after: reading.after } }],
     output: { form_id: form.id, row_version: form.row_version },
   })
   const result: AiRewrite = {

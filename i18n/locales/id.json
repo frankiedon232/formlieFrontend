@@ -4960,7 +4960,9 @@
       "period_default": "Tidak ada periode yang disebutkan, jadi semua respons dihitung.",
       "field_guess": "Tidak ada pertanyaan yang disebutkan, jadi “{label}” digunakan.",
       "no_field": "Pertanyaan tidak cocok dengan pertanyaan mana pun di formulir ini. Coba gunakan kata dari pertanyaan.",
-      "no_answers": "Tidak ada jawaban yang cocok."
+      "no_answers": "Tidak ada jawaban yang cocok.",
+      "translated_total": "{n} teks diterjemahkan, {left} tersisa untuk ditinjau orang. | {n} teks diterjemahkan, {left} tersisa untuk ditinjau orang.",
+      "rewrite_result": "{n} dari {total} teks bisa lebih jelas; usia baca {before} → {after}."
     },
     "create": {
       "describe": "Jelaskan formulirnya",
@@ -5296,6 +5298,21 @@
       "saved": "{n} teks ditulis ulang | {n} teks ditulis ulang",
       "emptyTitle": "Buat formulir lebih mudah dibaca",
       "emptyDesc": "Pilih formulir dan nadanya. Asisten menyarankan kata yang lebih sederhana hanya bila membantu; Anda yang memilih apa yang dipakai."
+    },
+    "title": {
+      "analysis": "Analisis {form}",
+      "digest_week": "Rangkuman mingguan {form}",
+      "digest_month": "Rangkuman bulanan {form}",
+      "digest_quarter": "Rangkuman kuartalan {form}",
+      "response_summary": "Ringkasan respons #{n}",
+      "translate": "Terjemahkan {form} ke {languages}",
+      "rewrite": "Tulis ulang {form} ({tone})",
+      "theme": "Desain dari {colour}"
+    },
+    "notAllowed": {
+      "title": "Asisten tidak boleh membaca {part}",
+      "desc": "Ruang kerja Anda tidak mengizinkan asisten AI mengakses ini. Tanyakan kepada admin jika Anda membutuhkannya.",
+      "descAdmin": "Aktifkan di pengaturan AI pada bagian «Yang boleh dibaca»."
     }
   },
   "public": {

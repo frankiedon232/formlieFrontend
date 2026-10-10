@@ -59,8 +59,10 @@ export interface AiRequestRow {
   id: string
   kind: AiKind
   status: AiStatus
-  /** A short title for the request ("Visitor sign-in form"). */
+  /** A short title for the request ("Visitor sign-in form"): what was typed or made, shown as it is. */
   title: string
+  /** A title Formalie wrote ("Analysis of …"): shown translated in the reader's language instead of `title`. */
+  title_key?: AiTitleKey | null
   by: { id: string; name: string }
   /** What it was about or what it made (opens it), if anything. */
   target: AiTarget | null
@@ -100,7 +102,7 @@ export interface AiRequestInsights {
 export interface AiNote {
   /** A theme's key (translated in the app: ai.theme.<key>), passed to the text as {theme}. */
   theme?: AiTheme
-  code: 'follow_up' | 'total' | 'pages' | 'document_questions' | 'document_sections' | 'document_none' | 'added_contact' | 'from_list' | 'template' | 'try_again' | 'basic' | 'themes' | 'low_rating' | 'other_option' | 'from_template' | 'common' | 'consent' | 'assist_found' | 'assist_applied' | 'busiest_day' | 'responses_up' | 'responses_down' | 'rating_up' | 'rating_down' | 'theme_negative' | 'theme_positive' | 'no_text' | 'few_responses' | 'period_default' | 'field_guess' | 'no_field' | 'no_answers'
+  code: 'follow_up' | 'total' | 'pages' | 'document_questions' | 'document_sections' | 'document_none' | 'added_contact' | 'from_list' | 'template' | 'try_again' | 'basic' | 'themes' | 'low_rating' | 'other_option' | 'from_template' | 'common' | 'consent' | 'assist_found' | 'assist_applied' | 'translated_total' | 'rewrite_result' | 'busiest_day' | 'responses_up' | 'responses_down' | 'rating_up' | 'rating_down' | 'theme_negative' | 'theme_positive' | 'no_text' | 'few_responses' | 'period_default' | 'field_guess' | 'no_field' | 'no_answers'
   params?: Record<string, string | number>
 }
 
@@ -258,4 +260,10 @@ export interface AiRewrite {
   reading: { before: number; after: number }
   total: number
   credits: number
+}
+
+/** Titles Formalie writes for requests (translated in the app: ai.title.<code>). */
+export interface AiTitleKey {
+  code: 'analysis' | 'digest_week' | 'digest_month' | 'digest_quarter' | 'response_summary' | 'translate' | 'rewrite' | 'theme' | 'assist_fields' | 'assist_help' | 'assist_logic' | 'assist_check'
+  params?: Record<string, string | number>
 }

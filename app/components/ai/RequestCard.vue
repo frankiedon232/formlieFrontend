@@ -11,6 +11,7 @@ import { AI_KIND_META } from '#shared/utils/ai/kinds'
 const props = defineProps<{ item: AiRequestRow; actions: DropdownMenuItem[][]; limit: number }>()
 const { t } = useI18n()
 const { relative, number } = useFormat()
+const { titleOf } = useAiText()
 const facts = computed(() => [
   { key: 'kind', label: t('ai.history.col.kind'), value: t(`ai.kind.${props.item.kind}`) },
   { key: 'by', label: t('ai.history.col.by'), value: props.item.mine ? t('ai.history.you') : props.item.by.name },
@@ -38,7 +39,7 @@ const share = computed(() => (props.limit ? Math.min(100, Math.round((props.item
     <div class="mt-3 flex min-w-0 flex-col">
       <div class="flex min-w-0 items-center gap-1.5">
         <UIcon v-if="item.status === 'failed'" name="i-lucide-flag" class="size-3.5 shrink-0 text-error" :aria-label="t('status.failed')" />
-        <span class="truncate text-base font-semibold text-highlighted">{{ item.title }}</span>
+        <span class="truncate text-base font-semibold text-highlighted">{{ titleOf(item) }}</span>
       </div>
       <p class="truncate text-sm text-muted">{{ item.target?.name || t(`ai.kindHint.${item.kind}`) }}</p>
     </div>

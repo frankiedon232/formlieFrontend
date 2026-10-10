@@ -20,6 +20,7 @@ const { handle } = useErrorHandler()
 const { relative, dateTime, number } = useFormat()
 const { can } = useCan()
 const ai = useAi()
+const { titleOf } = useAiText()
 useHead({ title: () => t('nav.aiHistory') })
 
 const view = useTemplateRef<{ refresh: () => Promise<void>; state: { rows: Ref<AiRequestRow[]> } }>('view')
@@ -82,8 +83,8 @@ function openRow(row: AiRequestRow) {
 }
 
 const deleting = ref<string | null>(null)
-async function remove(row: Pick<AiRequestRow, 'id' | 'title'>) {
-  if (!(await useConfirm()({ title: t('ai.history.deleteTitle', { name: row.title }), description: t('ai.history.deleteDesc'), confirmLabel: t('ai.history.delete'), danger: true }))) return
+async function remove(row: Pick<AiRequestRow, 'id' | 'title' | 'title_key'>) {
+  if (!(await useConfirm()({ title: t('ai.history.deleteTitle', { name: titleOf(row) }), description: t('ai.history.deleteDesc'), confirmLabel: t('ai.history.delete'), danger: true }))) return
   deleting.value = row.id
   try {
     await api.del(`/ai/requests/${row.id}`)
@@ -98,7 +99,7 @@ async function remove(row: Pick<AiRequestRow, 'id' | 'title'>) {
 }
 const targetLink = (row: Pick<AiRequestRow, 'target'>) =>
   row.target?.type === 'form' ? `/forms/${row.target.id}` : row.target?.type === 'template' ? '/templates' : row.target?.type === 'theme' ? '/settings/themes' : null
-const rowActions = (row: Pick<AiRequestRow, 'id' | 'title' | 'target' | 'kind' | 'mine'>): DropdownMenuItem[][] => [
+const rowActions = (row: Pick<AiRequestRow, 'id' | 'title' | 'title_key' | 'target' | 'kind' | 'mine'>): DropdownMenuItem[][] => [
   [
     ...(targetLink(row) ? [{ label: t('ai.history.openTarget'), icon: 'i-lucide-external-link', to: targetLink(row)! }] : []),
     ...(can(AI_KIND_META[row.kind].permission) ? [{ label: t('ai.history.again'), icon: AI_KIND_META[row.kind].icon, to: AI_KIND_META[row.kind].page }] : []),
@@ -134,7 +135,7 @@ const rowActions = (row: Pick<AiRequestRow, 'id' | 'title' | 'target' | 'kind' |
           <div class="flex min-w-0 flex-col">
             <span class="flex min-w-0 items-center gap-1.5">
               <UIcon v-if="row.original.status === 'failed'" name="i-lucide-flag" class="size-3.5 shrink-0 text-error" :aria-label="t('status.failed')" />
-              <span class="truncate font-medium text-highlighted">{{ row.original.title }}</span>
+              <span class="truncate font-medium text-highlighted">{{ titleOf(row.original) }}</span>
             </span>
             <span class="truncate text-xs text-muted">{{ row.original.target?.name || t(`ai.kindHint.${row.original.kind}`) }}</span>
           </div>

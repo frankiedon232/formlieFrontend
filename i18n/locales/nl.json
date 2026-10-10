@@ -4960,7 +4960,9 @@
       "period_default": "Er is geen periode genoemd, dus alle reacties zijn meegeteld.",
       "field_guess": "Er is geen vraag genoemd, dus “{label}” is gebruikt.",
       "no_field": "De vraag komt niet overeen met een vraag in dit formulier. Gebruik woorden uit de vraag.",
-      "no_answers": "Geen antwoorden gevonden."
+      "no_answers": "Geen antwoorden gevonden.",
+      "translated_total": "{n} tekst vertaald, {left} over voor een persoon. | {n} teksten vertaald, {left} over voor een persoon.",
+      "rewrite_result": "{n} van {total} teksten kunnen duidelijker; leesleeftijd {before} → {after}."
     },
     "create": {
       "describe": "Beschrijf het formulier",
@@ -5296,6 +5298,21 @@
       "saved": "{n} tekst herschreven | {n} teksten herschreven",
       "emptyTitle": "Maak een formulier makkelijker leesbaar",
       "emptyDesc": "Kies een formulier en de toon. De assistent stelt alleen eenvoudigere formuleringen voor waar dat helpt; jij kiest wat je houdt."
+    },
+    "title": {
+      "analysis": "Analyse van {form}",
+      "digest_week": "Wekelijks overzicht van {form}",
+      "digest_month": "Maandelijks overzicht van {form}",
+      "digest_quarter": "Kwartaaloverzicht van {form}",
+      "response_summary": "Samenvatting van antwoord #{n}",
+      "translate": "{form} vertalen naar {languages}",
+      "rewrite": "{form} herschrijven ({tone})",
+      "theme": "Ontwerpen vanuit {colour}"
+    },
+    "notAllowed": {
+      "title": "De assistent mag {part} niet lezen",
+      "desc": "Je werkruimte houdt dit buiten bereik van de AI-assistent. Vraag het aan een beheerder als je het nodig hebt.",
+      "descAdmin": "Schakel het in bij de AI-instellingen onder «Wat de assistent mag lezen»."
     }
   },
   "public": {

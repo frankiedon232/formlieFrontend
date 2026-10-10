@@ -18,6 +18,7 @@ const api = useApi()
 const toast = useToast()
 const { handle } = useErrorHandler()
 const ai = useAi()
+watch(open, value => value && void ai.load(), { immediate: true })
 const builder = useBuilder()
 
 const ACTIONS: Record<AiAssistAction, string> = { fields: 'i-lucide-list-plus', help: 'i-lucide-message-square-text', logic: 'i-lucide-git-branch', check: 'i-lucide-scan-search' }
@@ -103,6 +104,7 @@ const applyLabel = (item: AiSuggestion) => (item.kind === 'fix' ? (item.remove ?
   <USlideover v-model:open="open" :title="t('ai.assist.title')" :description="t('ai.assist.desc')" :ui="{ content: 'w-full sm:max-w-md', body: 'flex flex-col gap-4' }">
     <template #body>
       <AiOff v-if="!ai.enabled.value" size="sm" />
+      <AiNotAllowed v-else-if="ai.blocked('forms')" source="forms" />
       <template v-else>
         <div class="grid grid-cols-2 gap-2">
           <button

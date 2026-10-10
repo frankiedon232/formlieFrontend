@@ -15,6 +15,7 @@ const { t } = useI18n()
 const api = useApi()
 const { handle } = useErrorHandler()
 const { dateTime, relative, number } = useFormat()
+const { titleOf, askedOf } = useAiText()
 
 const item = ref<AiRequestDetail | null>(null)
 const loading = ref(false)
@@ -63,7 +64,7 @@ const tiles = computed(() =>
   <USlideover
     v-model:open="open"
     :content="{ onOpenAutoFocus: (event: Event) => event.preventDefault() }"
-    :title="item?.title || t('nav.aiHistory')"
+    :title="item ? titleOf(item) : t('nav.aiHistory')"
     :ui="{ content: 'w-full sm:max-w-2xl', header: 'border-b-0 pb-2', body: 'flex flex-col gap-5 pb-40', footer: 'pointer-events-none absolute inset-x-0 bottom-0 justify-center border-t-0 bg-gradient-to-t from-(--ui-bg) via-(--ui-bg)/85 to-transparent pt-10 pb-4' }"
   >
     <template #header>
@@ -74,7 +75,7 @@ const tiles = computed(() =>
       <div v-else class="flex w-full items-start gap-3.5">
         <span class="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-inverted text-inverted"><UIcon :name="AI_KIND_META[item.kind].icon" class="size-6" /></span>
         <div class="flex min-w-0 flex-1 flex-col gap-1">
-          <h2 class="truncate text-lg leading-tight font-semibold text-highlighted">{{ item.title }}</h2>
+          <h2 class="truncate text-lg leading-tight font-semibold text-highlighted">{{ titleOf(item) }}</h2>
           <p class="truncate text-sm text-muted">{{ item.target?.name || t(`ai.kindHint.${item.kind}`) }}</p>
           <div class="mt-1 flex flex-wrap items-center gap-1.5">
             <DataStatusBadge :status="item.status" />
@@ -108,7 +109,7 @@ const tiles = computed(() =>
         <section class="grid gap-3 sm:grid-cols-2">
           <div class="flex flex-col gap-2 rounded-lg border border-default p-4">
             <h3 class="flex items-center gap-1.5 text-xs font-medium text-muted"><UIcon name="i-lucide-message-square" class="size-3.5" />{{ t('ai.history.asked') }}</h3>
-            <p class="text-sm whitespace-pre-line text-default">{{ item.prompt }}</p>
+            <p class="text-sm whitespace-pre-line text-default">{{ askedOf(item) }}</p>
           </div>
           <div class="flex flex-col gap-2 rounded-lg border border-default p-4">
             <h3 class="flex items-center gap-1.5 text-xs font-medium text-muted"><UIcon name="i-lucide-sparkles" class="size-3.5" />{{ t('ai.history.answer') }}</h3>

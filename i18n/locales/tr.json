@@ -4960,7 +4960,9 @@
       "period_default": "Dönem belirtilmedi, bu yüzden tüm yanıtlar sayıldı.",
       "field_guess": "Soru belirtilmedi, bu yüzden “{label}” kullanıldı.",
       "no_field": "Soru bu formdaki hiçbir soruyla eşleşmedi. Sorudan kelimeler kullanmayı deneyin.",
-      "no_answers": "Eşleşen yanıt yok."
+      "no_answers": "Eşleşen yanıt yok.",
+      "translated_total": "{n} metin çevrildi, {left} metin bir kişiye kaldı. | {n} metin çevrildi, {left} metin bir kişiye kaldı.",
+      "rewrite_result": "{total} metinden {n} tanesi daha net olabilir; okuma yaşı {before} → {after}."
     },
     "create": {
       "describe": "Formu anlatın",
@@ -5296,6 +5298,21 @@
       "saved": "{n} metin yeniden yazıldı | {n} metin yeniden yazıldı",
       "emptyTitle": "Bir formu okumayı kolaylaştırın",
       "emptyDesc": "Bir form ve ton seçin. Asistan daha sade ifadeleri yalnızca işe yaradığı yerde önerir; neyi tutacağınızı siz seçersiniz."
+    },
+    "title": {
+      "analysis": "{form} analizi",
+      "digest_week": "{form} haftalık özeti",
+      "digest_month": "{form} aylık özeti",
+      "digest_quarter": "{form} üç aylık özeti",
+      "response_summary": "Yanıt #{n} özeti",
+      "translate": "{form} formunu {languages} diline çevir",
+      "rewrite": "{form} formunu yeniden yaz ({tone})",
+      "theme": "{colour} renginden tasarımlar"
+    },
+    "notAllowed": {
+      "title": "Asistanın {part} okumasına izin verilmiyor",
+      "desc": "Çalışma alanınız bunu yapay zeka asistanından gizliyor. İhtiyacınız varsa bir yöneticiye sorun.",
+      "descAdmin": "Yapay zeka ayarlarında «Okuyabilecekleri» bölümünden açın."
     }
   },
   "public": {

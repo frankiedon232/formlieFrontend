@@ -4960,7 +4960,9 @@
       "period_default": "No period was named, so all responses were counted.",
       "field_guess": "No question was named, so “{label}” was used.",
       "no_field": "The question didn’t match a question in this form. Try using words from the question.",
-      "no_answers": "No answers match."
+      "no_answers": "No answers match.",
+      "translated_total": "{n} text translated, {left} left for a person. | {n} texts translated, {left} left for a person.",
+      "rewrite_result": "{n} of {total} texts could be clearer; reading age {before} → {after}."
     },
     "create": {
       "describe": "Describe the form",
@@ -5296,6 +5298,21 @@
       "saved": "{n} text rewritten | {n} texts rewritten",
       "emptyTitle": "Make a form easier to read",
       "emptyDesc": "Choose a form and the tone. The assistant suggests plainer wording only where it helps; you choose what to keep."
+    },
+    "title": {
+      "analysis": "Analysis of {form}",
+      "digest_week": "Weekly digest of {form}",
+      "digest_month": "Monthly digest of {form}",
+      "digest_quarter": "Quarterly digest of {form}",
+      "response_summary": "Summary of response #{n}",
+      "translate": "Translate {form} into {languages}",
+      "rewrite": "Rewrite {form} ({tone})",
+      "theme": "Designs from {colour}"
+    },
+    "notAllowed": {
+      "title": "The assistant may not read {part}",
+      "desc": "Your workspace keeps this from the AI assistant. Ask an admin if you need it.",
+      "descAdmin": "Turn it on in AI settings under What it may read."
     }
   },
   "public": {
