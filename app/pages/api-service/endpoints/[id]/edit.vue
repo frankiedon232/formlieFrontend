@@ -2,7 +2,9 @@
 <script setup lang="ts">
 import type { ApiEndpointDetail } from '#shared/types/apiService'
 
-definePageMeta({ breadcrumb: 'apiService.wizard.editCrumb' })
+definePageMeta({
+  breadcrumb: 'apiService.wizard.editCrumb',
+})
 const { t } = useI18n()
 const route = useRoute()
 const api = useApi()

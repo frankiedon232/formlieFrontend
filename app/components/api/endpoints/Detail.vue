@@ -14,6 +14,7 @@ const emit = defineEmits<{ go: [id: string]; status: [endpoint: ApiEndpointDetai
 const { t } = useI18n()
 const api = useApi()
 const { number, percent, relative } = useFormat()
+const { can } = useCan()
 
 const endpoint = ref<ApiEndpointDetail | null>(null)
 const failed = ref(false)
@@ -65,8 +66,8 @@ const menu = computed<DropdownMenuItem[][]>(() => {
       { label: t('apiService.actions.openForm'), icon: 'i-lucide-file-text', to: `/forms/${e.form.id}` },
       { label: t('apiService.actions.openService'), icon: 'i-lucide-boxes', to: { path: '/api-service/services', query: { service: e.service.id } } },
     ],
-    [{ label: t('apiService.actions.delete'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => emit('remove', e) }],
-  ]
+    can('api.endpoints') ? [{ label: t('apiService.actions.delete'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => emit('remove', e) }] : [],
+  ].filter(group => group.length)
 })
 </script>
 
@@ -103,11 +104,11 @@ const menu = computed<DropdownMenuItem[][]>(() => {
           </div>
         </div>
         <div class="flex flex-wrap items-center gap-2">
-          <USwitch :model-value="endpoint.status === 'active'" :label="endpoint.status === 'active' ? t('apiService.setup.isLive') : t('apiService.setup.notLive')" :disabled="busy" @update:model-value="value => emit('status', endpoint!, !!value)" />
-          <span class="mx-1 h-5 w-px bg-(--ui-border)" aria-hidden="true" />
-          <UButton :label="t('apiService.actions.edit')" icon="i-lucide-pencil" color="neutral" size="sm" :to="`/api-service/endpoints/${endpoint.id}/edit`" />
+          <USwitch v-if="can('api.endpoints')" :model-value="endpoint.status === 'active'" :label="endpoint.status === 'active' ? t('apiService.setup.isLive') : t('apiService.setup.notLive')" :disabled="busy" @update:model-value="value => emit('status', endpoint!, !!value)" />
+          <span v-if="can('api.endpoints')" class="mx-1 h-5 w-px bg-(--ui-border)" aria-hidden="true" />
+          <UButton v-if="can('api.endpoints')" :label="t('apiService.actions.edit')" icon="i-lucide-pencil" color="neutral" size="sm" :to="`/api-service/endpoints/${endpoint.id}/edit`" />
           <UButton :label="t('apiService.actions.copyUrl')" icon="i-lucide-link" color="neutral" variant="outline" size="sm" @click="emit('copy', endpoint)" />
-          <UButton :label="t('apiService.docs.test')" icon="i-lucide-play" color="neutral" variant="outline" size="sm" :disabled="!endpoint.setup.service_active || !endpoint.setup.form_published" @click="consoleOpen = true" />
+          <UButton v-if="can('api.try')" :label="t('apiService.docs.test')" icon="i-lucide-play" color="neutral" variant="outline" size="sm" :disabled="!endpoint.setup.service_active || !endpoint.setup.form_published" @click="consoleOpen = true" />
         </div>
       </div>
     </template>

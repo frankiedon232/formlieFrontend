@@ -68,6 +68,8 @@ export interface DataSourceRow {
   created_by: { id: string; name: string }
   created_at: string
   updated_at: string
+  /** What the signed-in person may do with it (F22 R2 M4: own · all). */
+  can?: { edit: boolean; delete: boolean }
 }
 
 export interface DataSourceCheck {

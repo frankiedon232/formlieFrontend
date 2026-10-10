@@ -2,6 +2,7 @@
 <script setup lang="ts">
 const props = defineProps<{ setup: ReturnType<typeof useStorageSetup> }>()
 const { t } = useI18n()
+const { can } = useCan()
 onMounted(() => !props.setup.sources.value && void props.setup.loadSources())
 const { sourceId } = props.setup
 const choose = (value: unknown) => (sourceId.value = String(value))
@@ -23,7 +24,7 @@ const items = computed(() =>
       icon="i-lucide-database"
       :title="t('destinations.setup.noConnections')"
       :description="t('destinations.setup.noConnectionsDesc')"
-      :actions="[{ label: t('dataSources.add'), icon: 'i-lucide-plus', color: 'neutral', to: '/data-sources/connections/new' }]"
+      :actions="can('data.create') ? [{ label: t('dataSources.add'), icon: 'i-lucide-plus', color: 'neutral', to: '/data-sources/connections/new' }] : []"
       variant="outline"
     />
     <URadioGroup

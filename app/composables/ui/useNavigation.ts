@@ -178,15 +178,16 @@ const DATA_NAV: AppNavItem[] = [
       { key: 'connectionsAttention', to: '/data-sources/connections', query: { status: 'attention' }, dot: 'bg-amber-500', count: c => c.datasources.attention },
       { key: 'connectionsFailing', to: '/data-sources/connections', query: { status: 'failing' }, dot: 'bg-red-500', count: c => c.datasources.failing },
       { key: 'connectionsDisabled', to: '/data-sources/connections', query: { status: 'disabled' }, dot: 'bg-(--ui-text-dimmed)', count: c => c.datasources.disabled, hideZero: true },
-      { key: 'connectionsNew', icon: 'i-lucide-plus', to: '/data-sources/connections/new' },
+      { key: 'connectionsNew', icon: 'i-lucide-plus', to: '/data-sources/connections/new', permission: 'data.create' },
     ],
   },
-  { key: 'dataExplorer', icon: 'i-lucide-table-2', to: '/data-sources/explorer' },
-  { key: 'dataQuery', icon: 'i-lucide-square-terminal', to: '/data-sources/query' },
+  { key: 'dataExplorer', icon: 'i-lucide-table-2', to: '/data-sources/explorer', permission: 'data.browse' },
+  { key: 'dataQuery', icon: 'i-lucide-square-terminal', to: '/data-sources/query', permission: 'data.query' },
   { key: 'dataSavedQueries', icon: 'i-lucide-bookmark', to: '/data-sources/saved-queries' },
   { key: 'destinations', icon: 'i-lucide-send', to: '/data-sources/destinations', count: c => c.destinations.total },
-  { key: 'dataTransfers', icon: 'i-lucide-file-down', to: '/data-sources/transfers' },
-  { key: 'dataActivity', icon: 'i-lucide-activity', to: '/data-sources/activity' },
+  { key: 'dataTransfers', icon: 'i-lucide-file-down', to: '/data-sources/transfers', permission: 'audit.view' },
+  // Its list is the audit trail filtered to data, so it needs audit.view
+  { key: 'dataActivity', icon: 'i-lucide-activity', to: '/data-sources/activity', permission: 'audit.view' },
 ]
 
 /**
@@ -212,13 +213,14 @@ const API_NAV: AppNavItem[] = [
  */
 const AI_NAV: AppNavItem[] = [
   { key: 'aiOverview', icon: 'i-lucide-layout-grid', to: '/ai', exact: true },
-  { key: 'aiCreateForm', icon: 'i-lucide-file-plus-2', to: '/ai/create-form' },
-  { key: 'aiTemplates', icon: 'i-lucide-layout-template', to: '/ai/templates' },
-  { key: 'aiAnalysis', icon: 'i-lucide-chart-scatter', to: '/ai/analysis' },
-  { key: 'aiInsights', icon: 'i-lucide-lightbulb', to: '/ai/insights' },
-  { key: 'aiTranslate', icon: 'i-lucide-languages', to: '/ai/translate' },
-  { key: 'aiHistory', icon: 'i-lucide-history', to: '/ai/history' },
-  { key: 'aiSettings', icon: 'i-lucide-sliders-horizontal', to: '/ai/settings' },
+  // Each part of the assistant follows its own permission (F22 R2 M4)
+  { key: 'aiCreateForm', icon: 'i-lucide-file-plus-2', to: '/ai/create-form', permission: 'ai.create' },
+  { key: 'aiTemplates', icon: 'i-lucide-layout-template', to: '/ai/templates', permission: 'ai.create' },
+  { key: 'aiAnalysis', icon: 'i-lucide-chart-scatter', to: '/ai/analysis', permission: 'ai.analyse' },
+  { key: 'aiInsights', icon: 'i-lucide-lightbulb', to: '/ai/insights', permission: 'ai.analyse' },
+  { key: 'aiTranslate', icon: 'i-lucide-languages', to: '/ai/translate', permission: 'ai.translate' },
+  { key: 'aiHistory', icon: 'i-lucide-history', to: '/ai/history', permission: 'ai.history' },
+  { key: 'aiSettings', icon: 'i-lucide-sliders-horizontal', to: '/ai/settings', permission: 'ai.settings' },
 ]
 
 /**
@@ -306,8 +308,9 @@ export function useNavigation() {
   }
 
   /** Static children plus the ones built from the sidebar data (recent templates / themes). */
+  // Children follow the role too (F22 R2 M4: e.g. "Add connection" only for people who may create one)
   const childrenOf = (item: AppNavItem) =>
-    item.recent && counts.value ? [...item.recent(counts.value as NavCounts), ...(item.children ?? [])] : item.children
+    (item.recent && counts.value ? [...item.recent(counts.value as NavCounts), ...(item.children ?? [])] : item.children)?.filter(allowed)
 
   function toMenuItem(item: AppNavItem, level = 0): NavigationMenuItem {
     // Template categories show their translated name; other data (themes) as written.
@@ -374,7 +377,8 @@ export function useNavigation() {
 
   /** Flat list of top-level destinations (children with their own page included), for search, rail and shortcuts. */
   const destinations = computed(() =>
-    [...MAIN_NAV, ...RESOURCE_NAV, ...DATA_NAV, ...API_NAV, ...AI_NAV, ...(can('people.view') ? PEOPLE_NAV : []), ...SYSTEM_NAV]
+    // Areas the role can't open don't appear in search or shortcuts either
+    [...MAIN_NAV, ...RESOURCE_NAV, ...(can('data.view') ? DATA_NAV : []), ...(can('api.view') ? API_NAV : []), ...(can('ai.use') ? AI_NAV : []), ...(can('people.view') ? PEOPLE_NAV : []), ...SYSTEM_NAV]
       .filter(allowed)
       .flatMap(item => (item.children && !item.children[0]?.dot ? item.children : [item])),
   )

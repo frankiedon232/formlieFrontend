@@ -17,6 +17,9 @@ const { t } = useI18n()
 const api = useApi()
 const { handle } = useErrorHandler()
 const { number, percent, relative, date } = useFormat()
+// Changing the webhook or sending a test needs api.webhooks (F22 R2 M4)
+const { can } = useCan()
+const manage = computed(() => can('api.webhooks'))
 
 const webhook = ref<Webhook | null>(null)
 const deliveries = ref<WebhookDelivery[] | null>(null)
@@ -67,7 +70,7 @@ const chips = computed(() => [
 ])
 const menu = computed<DropdownMenuItem[][]>(() => {
   const w = webhook.value
-  if (!w) return []
+  if (!w || !manage.value) return []
   return [
     [{ label: t('apiService.actions.delete'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => emit('remove', w) }],
   ]
@@ -77,7 +80,7 @@ const menu = computed<DropdownMenuItem[][]>(() => {
 const test = ref<WebhookDeliveryDetail | null>(null)
 const testing = ref(false)
 async function sendTest() {
-  if (!webhook.value || testing.value) return
+  if (!webhook.value || testing.value || !manage.value) return
   testing.value = true
   try {
     test.value = (await api.post<WebhookDeliveryDetail>(`/webhooks/${webhook.value.id}/test`)).data
@@ -115,13 +118,13 @@ async function sendTest() {
             </div>
           </div>
           <div class="flex shrink-0 items-center gap-1">
-            <UDropdownMenu :items="menu" :content="{ align: 'end' }">
+            <UDropdownMenu v-if="menu.length" :items="menu" :content="{ align: 'end' }">
               <UButton icon="i-lucide-ellipsis" color="neutral" variant="ghost" size="sm" square :aria-label="t('dataView.actions')" />
             </UDropdownMenu>
             <UButton icon="i-lucide-x" color="neutral" variant="soft" size="sm" square class="rounded-full" :aria-label="t('common.close')" @click="open = false" />
           </div>
         </div>
-        <div class="flex flex-wrap items-center gap-2">
+        <div v-if="manage" class="flex flex-wrap items-center gap-2">
           <USwitch :model-value="webhook.enabled" :label="t('integrations.webhooks.enabled')" :disabled="busy" @update:model-value="value => emit('toggle', webhook!, !!value)" />
           <span class="mx-1 h-5 w-px bg-(--ui-border)" aria-hidden="true" />
           <UButton :label="t('integrations.webhooks.sendTest')" icon="i-lucide-send" color="neutral" size="sm" :loading="testing" @click="sendTest" />
@@ -147,7 +150,7 @@ async function sendTest() {
             </template>
             <span v-if="!tokenOk" class="text-xs text-warning">{{ t('integrations.webhooks.tokenGone') }}</span>
           </div>
-          <UButton :label="tokenOk ? t('integrations.webhooks.tokenOpen') : t('apiService.actions.edit')" color="neutral" variant="outline" size="xs" v-bind="tokenOk ? { to: { path: '/api-service/auth', query: { token: webhook.token!.id } } } : {}" @click="!tokenOk && emit('edit', webhook)" />
+          <UButton v-if="tokenOk || manage" :label="tokenOk ? t('integrations.webhooks.tokenOpen') : t('apiService.actions.edit')" color="neutral" variant="outline" size="xs" v-bind="tokenOk ? { to: { path: '/api-service/auth', query: { token: webhook.token!.id } } } : {}" @click="!tokenOk && emit('edit', webhook)" />
         </div>
         <div class="grid grid-cols-2 gap-2 transition-opacity sm:grid-cols-3" :class="busy ? 'opacity-60' : ''">
           <div v-for="tile in tiles" :key="tile.key" class="flex min-w-0 items-center gap-2.5 rounded-lg border border-default p-2.5">

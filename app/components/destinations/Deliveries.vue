@@ -14,6 +14,7 @@ const api = useApi()
 const { handle } = useErrorHandler()
 const toast = useToast()
 const { relative, dateTime, number } = useFormat()
+const { can } = useCan()
 
 const FILTERS: ('all' | DeliveryStatus)[] = ['all', 'failed', 'pending', 'held', 'sent', 'not_sent']
 const filter = ref<'all' | DeliveryStatus>('all')
@@ -88,7 +89,7 @@ async function retry(delivery: Delivery) {
           <span class="min-w-0 flex-1 truncate text-default">{{ delivery.respondent || `#${delivery.number}` }}</span>
           <UTooltip :text="dateTime(delivery.submitted_at)"><span class="hidden text-xs text-muted sm:inline">{{ relative(delivery.submitted_at) }}</span></UTooltip>
           <DataStatusBadge :status="delivery.status" :label="t(`destinations.delivery.${delivery.status}`)" />
-          <UButton v-if="delivery.status === 'failed'" icon="i-lucide-rotate-cw" color="neutral" variant="ghost" size="xs" :loading="retrying === delivery.response_id" :aria-label="t('destinations.deliveries.retryOne', { n: delivery.number })" @click="retry(delivery)" />
+          <UButton v-if="delivery.status === 'failed' && can('data.storage')" icon="i-lucide-rotate-cw" color="neutral" variant="ghost" size="xs" :loading="retrying === delivery.response_id" :aria-label="t('destinations.deliveries.retryOne', { n: delivery.number })" @click="retry(delivery)" />
         </div>
         <p v-if="delivery.status === 'failed'" class="ps-0.5 text-xs text-muted">
           <span class="text-error">{{ delivery.error_code ? t(`errors.${delivery.error_code}`) : '' }}</span>

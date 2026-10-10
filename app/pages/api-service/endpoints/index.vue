@@ -77,22 +77,27 @@ async function remove(endpoint: ApiEndpoint) {
   if ((await actions.deleteEndpoint(endpoint)) && openId.value === endpoint.id) panelOpen.value = false
 }
 const setStatus = (endpoint: ApiEndpoint, active: boolean) => void actions.setEndpointStatus(endpoint, active ? 'active' : 'disabled')
-const rowActions = (row: ApiEndpoint): DropdownMenuItem[][] => [
-  [
-    { label: t('apiService.actions.open'), icon: 'i-lucide-panel-right-open', onSelect: () => openRow(row) },
-    { label: t('apiService.actions.edit'), icon: 'i-lucide-pencil', to: `/api-service/endpoints/${row.id}/edit` },
-    { label: t('apiService.actions.copyUrl'), icon: 'i-lucide-link', onSelect: () => actions.copyUrl(row) },
-  ],
-  [{ label: row.status === 'active' ? t('apiService.actions.turnOff') : t('apiService.actions.turnOn'), icon: row.status === 'active' ? 'i-lucide-circle-pause' : 'i-lucide-circle-play', onSelect: () => setStatus(row, row.status !== 'active') }],
-  [{ label: t('apiService.actions.delete'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => void remove(row) }],
-]
-defineShortcuts({ n: { usingInput: false, handler: () => void navigateTo(newLink.value) } })
+// Changing endpoints needs api.endpoints (F22 R2 M4); without it the menu only opens and copies
+const { can } = useCan()
+const rowActions = (row: ApiEndpoint): DropdownMenuItem[][] => {
+  const manage = can('api.endpoints')
+  return [
+    [
+      { label: t('apiService.actions.open'), icon: 'i-lucide-panel-right-open', onSelect: () => openRow(row) },
+      ...(manage ? [{ label: t('apiService.actions.edit'), icon: 'i-lucide-pencil', to: `/api-service/endpoints/${row.id}/edit` }] : []),
+      { label: t('apiService.actions.copyUrl'), icon: 'i-lucide-link', onSelect: () => actions.copyUrl(row) },
+    ],
+    manage ? [{ label: row.status === 'active' ? t('apiService.actions.turnOff') : t('apiService.actions.turnOn'), icon: row.status === 'active' ? 'i-lucide-circle-pause' : 'i-lucide-circle-play', onSelect: () => setStatus(row, row.status !== 'active') }] : [],
+    manage ? [{ label: t('apiService.actions.delete'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => void remove(row) }] : [],
+  ].filter(group => group.length)
+}
+defineShortcuts({ n: { usingInput: false, handler: () => can('api.endpoints') && void navigateTo(newLink.value) } })
 </script>
 
 <template>
   <AppPanel id="api-endpoints" :title="t('nav.apiEndpoints')" :subtitle="t('apiService.section.endpoints')" subtitle-icon="i-lucide-route">
     <template #actions>
-      <UButton :label="t('apiService.actions.newEndpoint')" icon="i-lucide-plus" color="neutral" :to="newLink">
+      <UButton v-if="can('api.endpoints')" :label="t('apiService.actions.newEndpoint')" icon="i-lucide-plus" color="neutral" :to="newLink">
         <template #trailing><UKbd value="N" size="sm" class="hidden sm:inline-flex" /></template>
       </UButton>
     </template>
@@ -148,7 +153,7 @@ defineShortcuts({ n: { usingInput: false, handler: () => void navigateTo(newLink
       </template>
       <template #updated_at-cell="{ row }"><span class="whitespace-nowrap text-muted">{{ relative(row.original.updated_at) }}</span></template>
       <template #empty-actions>
-        <UButton :label="t('apiService.actions.newEndpoint')" icon="i-lucide-plus" color="neutral" :to="newLink" />
+        <UButton v-if="can('api.endpoints')" :label="t('apiService.actions.newEndpoint')" icon="i-lucide-plus" color="neutral" :to="newLink" />
       </template>
       <template #grid-card="{ row }">
         <ApiEndpointsCard :item="row" :actions="rowActions(row)" :busy="actions.busy.value === row.id" />

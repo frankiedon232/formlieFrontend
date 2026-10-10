@@ -14,6 +14,9 @@ const { t, d } = useI18n()
 const api = useApi()
 const { number, relative, date } = useFormat()
 const format = useRuleFormat()
+// Changing rules needs api.access (F22 R2 M4)
+const { can } = useCan()
+const manage = computed(() => can('api.access'))
 
 const rule = ref<ApiAccessRule | null>(null)
 const failed = ref(false)
@@ -49,7 +52,7 @@ const tiles = computed(() => {
   ]
 })
 const points = computed(() => (rule.value?.daily ?? []).map(day => ({ label: d(new Date(`${day.date}T12:00:00`), { day: 'numeric', month: 'short' }), value: day.count })))
-const menu = computed<DropdownMenuItem[][]>(() => (rule.value ? [[{ label: t('apiService.actions.delete'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => emit('remove', rule.value!) }]] : []))
+const menu = computed<DropdownMenuItem[][]>(() => (rule.value && manage.value ? [[{ label: t('apiService.actions.delete'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => emit('remove', rule.value!) }]] : []))
 </script>
 
 <template>
@@ -76,13 +79,13 @@ const menu = computed<DropdownMenuItem[][]>(() => (rule.value ? [[{ label: t('ap
             </div>
           </div>
           <div class="flex shrink-0 items-center gap-1">
-            <UDropdownMenu :items="menu" :content="{ align: 'end' }">
+            <UDropdownMenu v-if="menu.length" :items="menu" :content="{ align: 'end' }">
               <UButton icon="i-lucide-ellipsis" color="neutral" variant="ghost" size="sm" square :aria-label="t('dataView.actions')" />
             </UDropdownMenu>
             <UButton icon="i-lucide-x" color="neutral" variant="soft" size="sm" square class="rounded-full" :aria-label="t('common.close')" @click="open = false" />
           </div>
         </div>
-        <div class="flex flex-wrap items-center gap-2">
+        <div v-if="manage" class="flex flex-wrap items-center gap-2">
           <USwitch :model-value="rule.enabled" :label="t('apiService.access.enabled')" :disabled="busy" @update:model-value="value => emit('toggle', rule!, !!value)" />
           <span class="mx-1 h-5 w-px bg-(--ui-border)" aria-hidden="true" />
           <UButton :label="t('apiService.actions.edit')" icon="i-lucide-pencil" color="neutral" size="sm" @click="emit('edit', rule)" />

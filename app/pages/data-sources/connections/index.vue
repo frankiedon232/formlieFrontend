@@ -20,6 +20,7 @@ const toast = useToast()
 const counts = useNavCounts()
 const { handle } = useErrorHandler()
 const { relative, dateTime } = useFormat()
+const { can } = useCan()
 useHead({ title: () => t('nav.dataConnections') })
 
 const view = useTemplateRef<{ refresh: () => Promise<void>; state: { rows: { value: DataSourceRow[] } } }>('view')
@@ -111,25 +112,29 @@ async function remove(row: DataSourceRow) {
   if (!(await confirm({ title: t('dataSources.delete.title', { name: row.name }), description: t('dataSources.delete.desc'), confirmLabel: t('dataSources.delete.confirm'), danger: true }))) return
   await act(row, () => api.del(`/datasources/${row.id}`), t('dataSources.toast.deleted'))
 }
-const rowActions = (row: DataSourceRow): DropdownMenuItem[][] => [
+// Only what the role allows: Duplicate needs data.create, edit / delete come per connection (`can`)
+const rowActions = (row: DataSourceRow): DropdownMenuItem[][] =>
   [
-    { label: t('dataSources.actions.open'), icon: 'i-lucide-panel-right-open', onSelect: () => openRow(row) },
-    { label: t('dataSources.actions.edit'), icon: 'i-lucide-pencil', to: `/data-sources/connections/${row.id}/edit` },
-    { label: t('dataSources.actions.duplicate'), icon: 'i-lucide-copy', onSelect: () => void duplicate(row) },
-    { label: row.enabled ? t('dataSources.actions.disable') : t('dataSources.actions.enable'), icon: row.enabled ? 'i-lucide-circle-pause' : 'i-lucide-circle-play', onSelect: () => void toggle(row) },
-  ],
-  [
-    row.forms_count
-      ? { label: t('dataSources.actions.deleteInUse'), icon: 'i-lucide-trash-2', disabled: true }
-      : { label: t('dataSources.actions.delete'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => void remove(row) },
-  ],
-]
+    [
+      { label: t('dataSources.actions.open'), icon: 'i-lucide-panel-right-open', onSelect: () => openRow(row) },
+      ...(row.can?.edit ? [{ label: t('dataSources.actions.edit'), icon: 'i-lucide-pencil', to: `/data-sources/connections/${row.id}/edit` }] : []),
+      ...(can('data.create') ? [{ label: t('dataSources.actions.duplicate'), icon: 'i-lucide-copy', onSelect: () => void duplicate(row) }] : []),
+      ...(row.can?.edit ? [{ label: row.enabled ? t('dataSources.actions.disable') : t('dataSources.actions.enable'), icon: row.enabled ? 'i-lucide-circle-pause' : 'i-lucide-circle-play', onSelect: () => void toggle(row) }] : []),
+    ],
+    row.can?.delete
+      ? [
+          row.forms_count
+            ? { label: t('dataSources.actions.deleteInUse'), icon: 'i-lucide-trash-2', disabled: true }
+            : { label: t('dataSources.actions.delete'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => void remove(row) },
+        ]
+      : [],
+  ].filter(group => group.length)
 </script>
 
 <template>
   <AppPanel id="data-connections" :title="t('nav.dataConnections')" :subtitle="t('dataSources.section.connections')" subtitle-icon="i-lucide-database">
     <template #actions>
-      <UButton :label="t('dataSources.add')" icon="i-lucide-plus" color="neutral" to="/data-sources/connections/new" />
+      <UButton v-if="can('data.create')" :label="t('dataSources.add')" icon="i-lucide-plus" color="neutral" to="/data-sources/connections/new" />
     </template>
 
     <DatasourcesOverview :insights="insights" :status="statusFilter" @status="filterStatus" />
@@ -197,7 +202,7 @@ const rowActions = (row: DataSourceRow): DropdownMenuItem[][] => [
         <span v-else class="text-muted">{{ t('dataSources.neverChecked') }}</span>
       </template>
       <template #empty-actions>
-        <UButton :label="t('dataSources.add')" icon="i-lucide-plus" color="neutral" to="/data-sources/connections/new" />
+        <UButton v-if="can('data.create')" :label="t('dataSources.add')" icon="i-lucide-plus" color="neutral" to="/data-sources/connections/new" />
       </template>
       <template #grid-card="{ row }">
         <DatasourcesCard :source="row" :actions="rowActions(row)" />

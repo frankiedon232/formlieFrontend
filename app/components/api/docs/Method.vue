@@ -17,6 +17,7 @@ const EXPIRY = { token_expires_at: '2027-01-01T00:00:00Z', token_expires_in_days
 const props = defineProps<{ endpoint: ApiEndpointDetail; method: ApiMethod }>()
 const emit = defineEmits<{ try: [method: ApiMethod] }>()
 const { t } = useI18n()
+const { can } = useCan()
 // The workspace's own token that may call it, masked, like the endpoint panel (owner, 2026-10-06)
 const callers = useCallerToken()
 void callers.load()
@@ -60,7 +61,7 @@ watch(() => props.method, () => (shownAnswer.value = 0))
         </div>
         <p class="text-sm text-muted">{{ t(`apiService.wizard.method.${method}`) }}</p>
       </div>
-      <UButton :label="t('apiService.docs.tryIt')" icon="i-lucide-play" color="neutral" size="sm" @click="emit('try', method)" />
+      <UButton v-if="can('api.try')" :label="t('apiService.docs.tryIt')" icon="i-lucide-play" color="neutral" size="sm" @click="emit('try', method)" />
     </header>
 
     <div class="grid lg:grid-cols-2">

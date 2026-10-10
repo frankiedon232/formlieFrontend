@@ -20,6 +20,7 @@ const toast = useToast()
 const counts = useNavCounts()
 const { handle } = useErrorHandler()
 const { relative, dateTime, number } = useFormat()
+const { can } = useCan()
 useHead({ title: () => t('nav.destinations') })
 
 const view = useTemplateRef<{ refresh: () => Promise<void>; state: { rows: { value: DestinationRow[] } } }>('view')
@@ -102,24 +103,30 @@ async function remove(row: DestinationRow) {
   if (!(await confirm({ title: t('destinations.remove.title', { form: row.form.name }), description: t('destinations.remove.desc'), confirmLabel: t('destinations.remove.confirm'), danger: true }))) return
   await act(row, () => api.del(`/destinations/${row.id}`), t('destinations.toast.removed'))
 }
-const rowActions = (row: DestinationRow): DropdownMenuItem[][] => [
+// Changing how a form is stored needs data.storage; opening stays for everyone who can see it
+const rowActions = (row: DestinationRow): DropdownMenuItem[][] =>
   [
-    { label: t('dataSources.actions.open'), icon: 'i-lucide-panel-right-open', onSelect: () => openRow(row) },
-    { label: t('destinations.actions.openForm'), icon: 'i-lucide-file-text', to: `/forms/${row.form.id}` },
-    { label: t('destinations.actions.change'), icon: 'i-lucide-columns-3', to: `/forms/${row.form.id}/storage` },
-    row.status === 'paused'
-      ? { label: t('destinations.actions.resume'), icon: 'i-lucide-circle-play', onSelect: () => void act(row, () => api.patch(`/destinations/${row.id}`, { paused: false }), t('destinations.toast.resumed')) }
-      : { label: t('destinations.actions.pause'), icon: 'i-lucide-circle-pause', onSelect: () => void act(row, () => api.patch(`/destinations/${row.id}`, { paused: true }), t('destinations.toast.paused')) },
-    ...(row.failed ? [{ label: t('destinations.actions.retryAll', { n: row.failed }, row.failed), icon: 'i-lucide-rotate-cw', onSelect: () => void act(row, () => api.post(`/destinations/${row.id}/retry`, {}), t('destinations.toast.retried', { n: row.failed }, row.failed)) }] : []),
-  ],
-  [{ label: t('destinations.actions.remove'), icon: 'i-lucide-undo-2', color: 'error' as const, onSelect: () => void remove(row) }],
-]
+    [
+      { label: t('dataSources.actions.open'), icon: 'i-lucide-panel-right-open', onSelect: () => openRow(row) },
+      { label: t('destinations.actions.openForm'), icon: 'i-lucide-file-text', to: `/forms/${row.form.id}` },
+      ...(can('data.storage')
+        ? [
+            { label: t('destinations.actions.change'), icon: 'i-lucide-columns-3', to: `/forms/${row.form.id}/storage` },
+            row.status === 'paused'
+              ? { label: t('destinations.actions.resume'), icon: 'i-lucide-circle-play', onSelect: () => void act(row, () => api.patch(`/destinations/${row.id}`, { paused: false }), t('destinations.toast.resumed')) }
+              : { label: t('destinations.actions.pause'), icon: 'i-lucide-circle-pause', onSelect: () => void act(row, () => api.patch(`/destinations/${row.id}`, { paused: true }), t('destinations.toast.paused')) },
+            ...(row.failed ? [{ label: t('destinations.actions.retryAll', { n: row.failed }, row.failed), icon: 'i-lucide-rotate-cw', onSelect: () => void act(row, () => api.post(`/destinations/${row.id}/retry`, {}), t('destinations.toast.retried', { n: row.failed }, row.failed)) }] : []),
+          ]
+        : []),
+    ],
+    can('data.storage') ? [{ label: t('destinations.actions.remove'), icon: 'i-lucide-undo-2', color: 'error' as const, onSelect: () => void remove(row) }] : [],
+  ].filter(group => group.length)
 </script>
 
 <template>
   <AppPanel id="data-destinations" :title="t('nav.destinations')" :subtitle="t('dataSources.section.destinations')" subtitle-icon="i-lucide-send">
     <template #actions>
-      <UButton :label="t('destinations.add')" icon="i-lucide-plus" color="neutral" to="/forms" />
+      <UButton v-if="can('data.storage')" :label="t('destinations.add')" icon="i-lucide-plus" color="neutral" to="/forms" />
     </template>
 
     <DestinationsOverview :insights="insights" :status="statusFilter" @status="filterStatus" />
@@ -180,7 +187,7 @@ const rowActions = (row: DestinationRow): DropdownMenuItem[][] => [
         <span v-else class="text-muted">–</span>
       </template>
       <template #empty-actions>
-        <UButton :label="t('destinations.add')" icon="i-lucide-plus" color="neutral" to="/forms" />
+        <UButton v-if="can('data.storage')" :label="t('destinations.add')" icon="i-lucide-plus" color="neutral" to="/forms" />
       </template>
       <template #grid-card="{ row }">
         <DestinationsCard :destination="row" :actions="rowActions(row)" />

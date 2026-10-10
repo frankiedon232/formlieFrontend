@@ -17,6 +17,7 @@ const { t } = useI18n()
 const api = useApi()
 const { handle } = useErrorHandler()
 const setup = useApiSetup()
+const { can } = useCan()
 
 const schema = z.object({
   name: z.string().trim().min(1, t('apiService.invalid.required')).max(80),
@@ -137,7 +138,7 @@ const points = ['group', 'switch', 'watch'] as const
         </template>
         <template v-else>
           <UButton :label="t('apiService.service.done.later')" color="neutral" variant="outline" @click="open = false" />
-          <UButton :label="t('apiService.service.done.endpoint')" icon="i-lucide-plus" color="neutral" :to="{ path: '/api-service/endpoints/new', query: { service: created?.id } }" @click="open = false" />
+          <UButton v-if="can('api.endpoints')" :label="t('apiService.service.done.endpoint')" icon="i-lucide-plus" color="neutral" :to="{ path: '/api-service/endpoints/new', query: { service: created?.id } }" @click="open = false" />
         </template>
       </div>
     </template>

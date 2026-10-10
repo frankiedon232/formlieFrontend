@@ -14,6 +14,9 @@ const { t } = useI18n()
 const api = useApi()
 const { handle } = useErrorHandler()
 const { dateTime } = useFormat()
+// The key needs api.key, a token api.tokens (F22 R2 M4)
+const { can } = useCan()
+const allowed = computed(() => can(props.target === 'key' ? 'api.key' : 'api.tokens'))
 
 const grace = ref(24)
 const result = ref<{ token: ApiToken; secrets: ApiTokenSecrets } | null>(null)
@@ -27,7 +30,7 @@ watch(open, value => {
 const items = computed(() => ROTATION_GRACE_HOURS.map(hours => ({ value: hours, label: t(`apiService.rotate.grace.h${hours}`), description: t(`apiService.rotate.graceHint.h${hours}`) })))
 const busy = ref(false)
 async function rotate() {
-  if (busy.value) return
+  if (busy.value || !allowed.value) return
   busy.value = true
   try {
     if (props.target === 'key') {
@@ -63,7 +66,7 @@ const done = computed(() => !!result.value || !!newKey.value)
         <UButton v-if="done" :label="result ? t('apiService.tokens.copiedDone') : t('common.close')" icon="i-lucide-check" color="neutral" @click="open = false" />
         <template v-else>
           <UButton :label="t('common.cancel')" color="neutral" variant="outline" @click="open = false" />
-          <UButton :label="t('apiService.rotate.confirm')" icon="i-lucide-refresh-cw" color="neutral" :loading="busy" @click="rotate" />
+          <UButton :label="t('apiService.rotate.confirm')" icon="i-lucide-refresh-cw" color="neutral" :loading="busy" :disabled="!allowed" @click="rotate" />
         </template>
       </div>
     </template>

@@ -11,6 +11,8 @@ const { t } = useI18n()
 const api = useApi()
 const { relative, number } = useFormat()
 const { busy, run } = useBusy()
+// Changing the limits needs api.access (F22 R2 M4); without it they only show
+const { can } = useCan()
 
 const limits = ref<ApiRateLimits | null>(null)
 const draft = reactive<Record<'per_token' | 'per_ip' | 'per_endpoint', string>>({ per_token: 'off', per_ip: 'off', per_endpoint: 'off' })
@@ -59,12 +61,12 @@ const save = () =>
           <span class="text-sm font-semibold text-highlighted">{{ t(`apiService.access.limits.${card.key}`) }}</span>
         </div>
         <p class="text-xs text-muted">{{ t(`apiService.access.limits.${card.key}Hint`) }}</p>
-        <USelect v-model="draft[card.key]" :items="items" class="mt-auto w-full" :aria-label="t(`apiService.access.limits.${card.key}`)" />
+        <USelect v-model="draft[card.key]" :items="items" :disabled="!can('api.access')" class="mt-auto w-full" :aria-label="t(`apiService.access.limits.${card.key}`)" />
       </div>
     </div>
     <div class="flex flex-wrap items-center justify-between gap-3">
       <p class="text-xs text-muted">{{ t('apiService.access.limits.answer') }}</p>
-      <UButton :label="t('common.save')" icon="i-lucide-check" color="neutral" :loading="busy" :disabled="!changed" @click="save" />
+      <UButton v-if="can('api.access')" :label="t('common.save')" icon="i-lucide-check" color="neutral" :loading="busy" :disabled="!changed" @click="save" />
     </div>
   </UCard>
 </template>

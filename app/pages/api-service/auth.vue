@@ -20,6 +20,7 @@ const toast = useToast()
 const { handle } = useErrorHandler()
 const { relative, dateTime, number } = useFormat()
 const format = useTokenFormat()
+const { can } = useCan()
 useHead({ title: () => t('nav.apiAuth') })
 
 const view = computed({ get: () => (route.query.view === 'headers' ? 'headers' : 'tokens'), set: value => void router.replace({ query: { ...route.query, view: value === 'tokens' ? undefined : value } }) })
@@ -97,7 +98,7 @@ const presetEndpoint = ref<string | null>(null)
 watch(() => route.query.new, value => {
   if (!value) return
   presetEndpoint.value = typeof route.query.endpoint === 'string' ? route.query.endpoint : null
-  edit(null)
+  if (can('api.tokens')) edit(null)
   void router.replace({ query: { ...route.query, new: undefined, endpoint: undefined } })
 }, { immediate: true })
 watch(editOpen, value => !value && (presetEndpoint.value = null))
@@ -109,6 +110,7 @@ const rotateOpen = ref(false)
 const rotateTarget = ref<'token' | 'key'>('token')
 const rotating = ref<ApiToken | null>(null)
 function rotate(token: ApiToken | null) {
+  if (!can(token ? 'api.tokens' : 'api.key')) return
   rotating.value = token
   rotateTarget.value = token ? 'token' : 'key'
   rotateOpen.value = true
@@ -137,22 +139,25 @@ async function remove(token: ApiToken) {
   if (!(await confirm({ title: t('apiService.tokens.deleteTitle', { name: token.name }), description: t('apiService.tokens.deleteDesc'), confirmLabel: t('apiService.delete.confirm'), danger: true }))) return
   if ((await act(token.id, () => api.del(`/api-tokens/${token.id}`), t('apiService.tokens.toast.deleted', { name: token.name }))) && openId.value === token.id) panelOpen.value = false
 }
+// Changing tokens needs api.tokens (F22 R2 M4); without it the menu only opens the token
 const rowActions = (row: ApiToken): DropdownMenuItem[][] => [
   [
     { label: t('apiService.actions.open'), icon: 'i-lucide-panel-right-open', onSelect: () => openRow(row) },
-    ...(row.status !== 'revoked' ? [{ label: t('apiService.actions.edit'), icon: 'i-lucide-pencil', onSelect: () => edit(row) }, { label: t('apiService.tokens.rotate'), icon: 'i-lucide-refresh-cw', onSelect: () => rotate(row) }] : []),
+    ...(row.status !== 'revoked' && can('api.tokens') ? [{ label: t('apiService.actions.edit'), icon: 'i-lucide-pencil', onSelect: () => edit(row) }, { label: t('apiService.tokens.rotate'), icon: 'i-lucide-refresh-cw', onSelect: () => rotate(row) }] : []),
   ],
-  row.status === 'revoked' || row.status === 'expired'
-    ? [{ label: t('apiService.actions.delete'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => void remove(row) }]
-    : [{ label: t('apiService.tokens.revoke'), icon: 'i-lucide-ban', color: 'error' as const, onSelect: () => void revoke(row) }],
-]
-defineShortcuts({ n: { usingInput: false, handler: () => edit(null) } })
+  !can('api.tokens')
+    ? []
+    : row.status === 'revoked' || row.status === 'expired'
+      ? [{ label: t('apiService.actions.delete'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => void remove(row) }]
+      : [{ label: t('apiService.tokens.revoke'), icon: 'i-lucide-ban', color: 'error' as const, onSelect: () => void revoke(row) }],
+].filter(group => group.length)
+defineShortcuts({ n: { usingInput: false, handler: () => can('api.tokens') && edit(null) } })
 </script>
 
 <template>
   <AppPanel id="api-auth" :title="t('nav.apiAuth')" :subtitle="t('apiService.section.auth')" subtitle-icon="i-lucide-key-round">
     <template #actions>
-      <UButton :label="t('apiService.tokens.newTitle')" icon="i-lucide-plus" color="neutral" @click="edit(null)">
+      <UButton v-if="can('api.tokens')" :label="t('apiService.tokens.newTitle')" icon="i-lucide-plus" color="neutral" @click="edit(null)">
         <template #trailing><UKbd value="N" size="sm" class="hidden sm:inline-flex" /></template>
       </UButton>
     </template>
@@ -206,7 +211,7 @@ defineShortcuts({ n: { usingInput: false, handler: () => edit(null) } })
         <template #expires_at-cell="{ row }"><span class="whitespace-nowrap" :class="row.original.status === 'expiring' ? 'font-medium text-warning' : 'text-muted'">{{ format.expiresText(row.original) }}</span></template>
         <template #created_at-cell="{ row }"><span class="whitespace-nowrap text-muted">{{ relative(row.original.created_at) }}</span></template>
         <template #empty-actions>
-          <UButton :label="t('apiService.tokens.newTitle')" icon="i-lucide-plus" color="neutral" @click="edit(null)" />
+          <UButton v-if="can('api.tokens')" :label="t('apiService.tokens.newTitle')" icon="i-lucide-plus" color="neutral" @click="edit(null)" />
         </template>
         <template #grid-card="{ row }">
           <ApiTokensCard :item="row" :actions="rowActions(row)" :busy="busy === row.id" />

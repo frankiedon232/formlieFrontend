@@ -6,17 +6,20 @@
 -->
 <script setup lang="ts">
 import type { ApiJourneyStep as JourneyStep, ApiSetupSummary } from '#shared/types/apiService'
+import type { Permission } from '#shared/utils/auth/permissions'
 
 const props = withDefaults(defineProps<{ summary: ApiSetupSummary | null; focus?: JourneyStep | null; compact?: boolean; actions?: boolean }>(), { focus: null, compact: false, actions: true })
 const emit = defineEmits<{ step: [step: JourneyStep] }>()
 const { t } = useI18n()
+const { can } = useCan()
 
-const STEPS: { key: JourneyStep; icon: string; to: string | { path: string; query?: Record<string, string> }; optional?: boolean }[] = [
-  { key: 'service', icon: 'i-lucide-boxes', to: { path: '/api-service/services', query: { new: '1' } } },
-  { key: 'endpoint', icon: 'i-lucide-route', to: '/api-service/endpoints/new' },
-  { key: 'token', icon: 'i-lucide-key-round', to: { path: '/api-service/auth', query: { new: '1' } } },
-  { key: 'access', icon: 'i-lucide-shield-check', to: { path: '/api-service/access', query: { new: '1' } }, optional: true },
-  { key: 'live', icon: 'i-lucide-rocket', to: '/api-service/docs' },
+// Each step's button needs the permission its action uses (F22 R2 M4); without it the step only informs
+const STEPS: { key: JourneyStep; icon: string; to: string | { path: string; query?: Record<string, string> }; permission: Permission; optional?: boolean }[] = [
+  { key: 'service', icon: 'i-lucide-boxes', to: { path: '/api-service/services', query: { new: '1' } }, permission: 'api.service_create' },
+  { key: 'endpoint', icon: 'i-lucide-route', to: '/api-service/endpoints/new', permission: 'api.endpoints' },
+  { key: 'token', icon: 'i-lucide-key-round', to: { path: '/api-service/auth', query: { new: '1' } }, permission: 'api.tokens' },
+  { key: 'access', icon: 'i-lucide-shield-check', to: { path: '/api-service/access', query: { new: '1' } }, permission: 'api.access', optional: true },
+  { key: 'live', icon: 'i-lucide-rocket', to: '/api-service/docs', permission: 'api.try' },
 ]
 const done = computed<Record<JourneyStep, boolean>>(() => {
   // With a focus (the dialogs): where you are in the flow, steps before it done, after it open
@@ -61,7 +64,7 @@ const steps = computed(() => STEPS.map((step, i) => ({ ...step, n: i + 1, done: 
         </span>
         <p v-if="!compact" class="text-xs text-muted">{{ t(`apiService.journey.${step.key}.text`) }}</p>
         <UButton
-          v-if="actions && step.current && !compact"
+          v-if="actions && step.current && !compact && can(step.permission)"
           :label="t(`apiService.journey.${step.key}.action`)"
           trailing-icon="i-lucide-arrow-right"
           color="neutral"

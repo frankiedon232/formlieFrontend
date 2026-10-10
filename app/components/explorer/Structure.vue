@@ -20,6 +20,9 @@ const emit = defineEmits<{
 const { t } = useI18n()
 const toast = useToast()
 const { copy } = useClipboard({ legacy: true })
+const { can } = useCan()
+// Structure changes need the table to allow them and the role to have data.structure
+const alterable = computed(() => props.structure.alterable && can('data.structure'))
 const columnMenu = (column: ExplorerColumn): DropdownMenuItem[][] => [
   [{ label: column.primary ? t('explorer.ddl.renameColumn') : t('explorer.ddl.editColumnShort'), icon: 'i-lucide-pencil', onSelect: () => emit('editColumn', column) }],
   ...(column.primary || props.structure.columns.length === 1 ? [] : [[{ label: t('explorer.ddl.dropColumn'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => emit('dropColumn', column) }]]),
@@ -33,12 +36,12 @@ const copyName = (name: string) => {
 useContextMenu().register(root, target => {
   const columnName = target.closest('[data-column]')?.getAttribute('data-column')
   const column = columnName ? props.structure.columns.find(item => item.name === columnName) : undefined
-  if (column) return [...(props.structure.alterable ? columnMenu(column) : []), [{ label: t('explorer.ddl.copyName'), icon: 'i-lucide-copy', onSelect: () => copyName(column.name) }]]
+  if (column) return [...(alterable.value ? columnMenu(column) : []), [{ label: t('explorer.ddl.copyName'), icon: 'i-lucide-copy', onSelect: () => copyName(column.name) }]]
   const indexName = target.closest('[data-index]')?.getAttribute('data-index')
   const index = indexName ? props.structure.indexes.find(item => item.name === indexName) : undefined
   if (index)
     return [
-      ...(props.structure.alterable && !index.primary ? [[{ label: t('explorer.ddl.dropIndex'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => emit('dropIndex', index) }]] : []),
+      ...(alterable.value && !index.primary ? [[{ label: t('explorer.ddl.dropIndex'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => emit('dropIndex', index) }]] : []),
       [{ label: t('explorer.ddl.copyName'), icon: 'i-lucide-copy', onSelect: () => copyName(index.name) }],
     ]
   return null
@@ -54,7 +57,7 @@ function copyDdl() {
     <section class="flex flex-col gap-2 xl:col-span-2">
       <div class="flex items-center justify-between gap-2">
         <h3 class="text-xs font-semibold tracking-wide text-muted uppercase">{{ t('explorer.structure.columns', { n: structure.columns.length }) }}</h3>
-        <UButton v-if="structure.alterable" :label="t('explorer.ddl.addColumn')" icon="i-lucide-plus" color="neutral" variant="outline" size="xs" @click="emit('addColumn')" />
+        <UButton v-if="alterable" :label="t('explorer.ddl.addColumn')" icon="i-lucide-plus" color="neutral" variant="outline" size="xs" @click="emit('addColumn')" />
       </div>
       <div class="overflow-x-auto rounded-lg border border-default">
         <table class="w-full text-sm">
@@ -65,7 +68,7 @@ function copyDdl() {
               <th class="px-3 py-2 text-start font-medium">{{ t('explorer.structure.nullable') }}</th>
               <th class="hidden px-3 py-2 text-start font-medium md:table-cell">{{ t('explorer.structure.default') }}</th>
               <th class="px-3 py-2 text-start font-medium">{{ t('explorer.structure.keys') }}</th>
-              <th v-if="structure.alterable" class="w-10 px-2 py-2"><span class="sr-only">{{ t('explorer.ddl.actions') }}</span></th>
+              <th v-if="alterable" class="w-10 px-2 py-2"><span class="sr-only">{{ t('explorer.ddl.actions') }}</span></th>
             </tr>
           </thead>
           <tbody class="divide-y divide-default">
@@ -81,7 +84,7 @@ function copyDdl() {
                   <UBadge v-if="column.references" :label="t('explorer.structure.fk')" color="neutral" variant="soft" size="sm" class="rounded-md" />
                 </div>
               </td>
-              <td v-if="structure.alterable" class="px-2 py-1 text-end">
+              <td v-if="alterable" class="px-2 py-1 text-end">
                 <UDropdownMenu :items="columnMenu(column)" :content="{ align: 'end' }">
                   <UButton icon="i-lucide-ellipsis" color="neutral" variant="ghost" size="xs" square :loading="removing === column.name" :aria-label="t('explorer.ddl.columnActions', { column: column.name })" />
                 </UDropdownMenu>
@@ -95,7 +98,7 @@ function copyDdl() {
     <section class="flex flex-col gap-2">
       <div class="flex items-center justify-between gap-2">
         <h3 class="text-xs font-semibold tracking-wide text-muted uppercase">{{ t('explorer.structure.indexes') }}</h3>
-        <UButton v-if="structure.alterable" :label="t('explorer.ddl.addIndex')" icon="i-lucide-plus" color="neutral" variant="outline" size="xs" @click="emit('addIndex')" />
+        <UButton v-if="alterable" :label="t('explorer.ddl.addIndex')" icon="i-lucide-plus" color="neutral" variant="outline" size="xs" @click="emit('addIndex')" />
       </div>
       <ul v-if="structure.indexes.length" class="divide-y divide-default rounded-lg border border-default">
         <li v-for="index in structure.indexes" :key="index.name" :data-index="index.name" class="flex flex-wrap items-center gap-2 px-3 py-2 text-sm" :class="removing === index.name ? 'animate-pulse opacity-60' : ''">
@@ -103,7 +106,7 @@ function copyDdl() {
           <code class="font-mono text-xs text-muted" dir="ltr">({{ index.columns.join(', ') }})</code>
           <UBadge v-if="index.primary" :label="t('explorer.structure.pk')" color="neutral" size="sm" class="rounded-md" />
           <UBadge v-else-if="index.unique" :label="t('explorer.structure.unique')" color="neutral" variant="outline" size="sm" class="rounded-md" />
-          <UButton v-if="structure.alterable && !index.primary" icon="i-lucide-trash-2" color="neutral" variant="ghost" size="xs" square :loading="removing === index.name" :aria-label="t('explorer.ddl.dropIndexNamed', { index: index.name })" @click="emit('dropIndex', index)" />
+          <UButton v-if="alterable && !index.primary" icon="i-lucide-trash-2" color="neutral" variant="ghost" size="xs" square :loading="removing === index.name" :aria-label="t('explorer.ddl.dropIndexNamed', { index: index.name })" @click="emit('dropIndex', index)" />
         </li>
       </ul>
       <AppEmpty v-else size="xs" variant="outline" icon="i-lucide-list-tree" :title="t('explorer.structure.noIndexes')" />

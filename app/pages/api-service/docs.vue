@@ -114,10 +114,13 @@ const download = () =>
     { success: t('apiService.docs.downloaded') },
   )
 
+// Trying calls needs api.try (F22 R2 M4); reading the docs only api.view
+const { can } = useCan()
 const consoleOpen = ref(false)
 const consoleEndpoint = ref<ApiEndpointDetail | null>(null)
 const consoleMethod = ref<ApiMethod | null>(null)
 function tryIt(endpoint: ApiEndpointDetail, method?: ApiMethod) {
+  if (!can('api.try')) return
   consoleEndpoint.value = endpoint
   consoleMethod.value = method ?? null
   consoleOpen.value = true
@@ -164,7 +167,7 @@ function tryIt(endpoint: ApiEndpointDetail, method?: ApiMethod) {
             </div>
             <AppCopyField :value="base" monospace class="max-w-2xl" />
             <div class="flex flex-wrap gap-2">
-              <UButton v-if="endpoints[0]" :label="t('apiService.docs.tryFirst')" icon="i-lucide-play" color="neutral" @click="tryIt(endpoints[0]!)" />
+              <UButton v-if="endpoints[0] && can('api.try')" :label="t('apiService.docs.tryFirst')" icon="i-lucide-play" color="neutral" @click="tryIt(endpoints[0]!)" />
               <UButton :label="t('apiService.docs.gettingStarted')" icon="i-lucide-arrow-down" color="neutral" variant="outline" @click="go('guide-address')" />
             </div>
           </div>
@@ -195,7 +198,7 @@ function tryIt(endpoint: ApiEndpointDetail, method?: ApiMethod) {
                 </div>
                 <p class="text-sm text-muted">{{ item.description || t('apiService.docs.fromForm', { form: item.form.name }) }}</p>
               </div>
-              <UButton :label="t('apiService.docs.tryIt')" icon="i-lucide-play" color="neutral" variant="outline" size="sm" @click="tryIt(item)" />
+              <UButton v-if="can('api.try')" :label="t('apiService.docs.tryIt')" icon="i-lucide-play" color="neutral" variant="outline" size="sm" @click="tryIt(item)" />
             </div>
             <AppCopyField :value="item.url" monospace />
             <UAlert v-if="item.status !== 'active'" icon="i-lucide-flask-conical" color="neutral" variant="subtle" :description="t('apiService.docs.notLiveNote')" />

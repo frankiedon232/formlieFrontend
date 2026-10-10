@@ -16,6 +16,7 @@ const { t } = useI18n()
 const api = useApi()
 const { handle } = useErrorHandler()
 const { number } = useFormat()
+const { can } = useCan()
 useHead({ title: () => t('nav.dataSources') })
 
 const insights = ref<DataSourceInsights | null>(null)
@@ -54,19 +55,22 @@ const kpis = computed(() => {
   ]
 })
 
-const shortcuts = [
-  { key: 'explorer', nav: 'dataExplorer', icon: 'i-lucide-table-2', to: '/data-sources/explorer' },
-  { key: 'query', nav: 'dataQuery', icon: 'i-lucide-square-terminal', to: '/data-sources/query' },
-  { key: 'savedQueries', nav: 'dataSavedQueries', icon: 'i-lucide-bookmark', to: '/data-sources/saved-queries' },
-  { key: 'destinations', nav: 'destinations', icon: 'i-lucide-send', to: '/data-sources/destinations' },
-]
+// Only the sections the role can open
+const shortcuts = computed(() =>
+  [
+    { key: 'explorer', nav: 'dataExplorer', icon: 'i-lucide-table-2', to: '/data-sources/explorer', show: can('data.browse') },
+    { key: 'query', nav: 'dataQuery', icon: 'i-lucide-square-terminal', to: '/data-sources/query', show: can('data.query') },
+    { key: 'savedQueries', nav: 'dataSavedQueries', icon: 'i-lucide-bookmark', to: '/data-sources/saved-queries', show: true },
+    { key: 'destinations', nav: 'destinations', icon: 'i-lucide-send', to: '/data-sources/destinations', show: true },
+  ].filter(item => item.show),
+)
 </script>
 
 <template>
   <AppPanel id="data-sources" :title="t('nav.dataSources')" :subtitle="t('dataSources.subtitle')" subtitle-icon="i-lucide-database">
     <template #actions>
-      <UButton :label="t('nav.dataQuery')" icon="i-lucide-square-terminal" color="neutral" variant="outline" to="/data-sources/query" class="hidden sm:inline-flex" />
-      <UButton :label="t('dataSources.add')" icon="i-lucide-plus" color="neutral" to="/data-sources/connections/new" />
+      <UButton v-if="can('data.query')" :label="t('nav.dataQuery')" icon="i-lucide-square-terminal" color="neutral" variant="outline" to="/data-sources/query" class="hidden sm:inline-flex" />
+      <UButton v-if="can('data.create')" :label="t('dataSources.add')" icon="i-lucide-plus" color="neutral" to="/data-sources/connections/new" />
     </template>
 
     <AppEmpty
@@ -74,7 +78,7 @@ const shortcuts = [
       icon="i-lucide-database"
       :title="t('dataSources.emptyTitle')"
       :description="t('dataSources.emptyDesc')"
-      :actions="[{ label: t('dataSources.add'), icon: 'i-lucide-plus', color: 'neutral', to: '/data-sources/connections/new' }]"
+      :actions="can('data.create') ? [{ label: t('dataSources.add'), icon: 'i-lucide-plus', color: 'neutral', to: '/data-sources/connections/new' }] : []"
     />
     <template v-else>
       <div class="flex shrink-0 snap-x gap-3 overflow-x-auto [scrollbar-width:none] sm:grid sm:grid-cols-3 sm:overflow-visible xl:grid-cols-5">

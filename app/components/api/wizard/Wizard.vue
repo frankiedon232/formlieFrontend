@@ -15,6 +15,7 @@ const { t } = useI18n()
 const api = useApi()
 const { handle } = useErrorHandler()
 const setup = useApiSetup()
+const { can } = useCan()
 
 const STEPS = ['form', 'basics', 'methods', 'fields', 'review'] as const
 type Step = (typeof STEPS)[number]
@@ -119,6 +120,7 @@ const stepItems = computed(() => STEPS.map((step, i) => ({ value: step, title: t
 
 const saving = ref(false)
 async function save() {
+  if (!can('api.endpoints')) return
   for (const step of STEPS.slice(0, -1)) if (!check(step)) return void (current.value = step)
   saving.value = true
   try {
@@ -203,7 +205,7 @@ defineShortcuts({ meta_enter: { usingInput: true, handler: () => (current.value 
       <template #footer>
         <UButton :label="t('apiService.wizard.back')" icon="i-lucide-arrow-left" color="neutral" variant="ghost" :disabled="index === 0" class="rtl:[&_.iconify]:-scale-x-100" @click="back" />
         <UButton v-if="current !== 'review'" :label="t('apiService.wizard.next')" trailing-icon="i-lucide-arrow-right" color="neutral" class="rtl:[&_.iconify]:-scale-x-100" @click="next" />
-        <UButton v-else :label="editing ? t('common.save') : t('apiService.wizard.create')" icon="i-lucide-check" color="neutral" :loading="saving" @click="save" />
+        <UButton v-else :label="editing ? t('common.save') : t('apiService.wizard.create')" icon="i-lucide-check" color="neutral" :loading="saving" :disabled="!can('api.endpoints')" @click="save" />
       </template>
     </UCard>
 

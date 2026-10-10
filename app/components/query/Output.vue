@@ -11,6 +11,7 @@ const props = defineProps<{ state: RunState; sourceId: string | null }>()
 const emit = defineEmits<{ page: [page: number]; line: [line: number]; show: [index: number] }>()
 const { t } = useI18n()
 const { number } = useFormat()
+const { can } = useCan()
 const api = useApi()
 
 // The shown outcome: the chosen statement of Run all, or the single run
@@ -65,7 +66,7 @@ const exportResults = async (format: TableExport['format'], scope: TableExport['
       <div class="flex min-h-0 flex-1 flex-col transition-opacity" :class="state.running && !state.batch ? 'opacity-60' : ''">
         <QueryResults v-if="shown.result.kind === 'read'" :result="shown.result" @page="page => emit('page', page)">
           <template #actions>
-            <ExplorerExportButton v-if="sourceId && shown.text && shown.result.rows.length" :source-id="sourceId" :page-rows="shown.result.rows.length" :create="exportResults" :formats="['xlsx', 'csv', 'json']" :result-label="t('query.exportResult', { n: number(Math.min(shown.result.total ?? 0, EXPORT_MAX_ROWS)) }, Math.min(shown.result.total ?? 0, EXPORT_MAX_ROWS))" size="xs" />
+            <ExplorerExportButton v-if="sourceId && can('data.export') && shown.text && shown.result.rows.length" :source-id="sourceId" :page-rows="shown.result.rows.length" :create="exportResults" :formats="['xlsx', 'csv', 'json']" :result-label="t('query.exportResult', { n: number(Math.min(shown.result.total ?? 0, EXPORT_MAX_ROWS)) }, Math.min(shown.result.total ?? 0, EXPORT_MAX_ROWS))" size="xs" />
           </template>
         </QueryResults>
         <AppEmpty

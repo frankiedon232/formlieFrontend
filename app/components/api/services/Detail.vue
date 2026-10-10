@@ -13,6 +13,7 @@ const emit = defineEmits<{ go: [id: string]; edit: [service: ApiService]; status
 const { t, d } = useI18n()
 const api = useApi()
 const { number, percent, relative, date } = useFormat()
+const { can } = useCan()
 
 const service = ref<ApiService | null>(null)
 const endpoints = ref<ApiEndpoint[] | null>(null)
@@ -58,10 +59,10 @@ const menu = computed<DropdownMenuItem[][]>(() =>
     ? [
         [
           { label: t('apiService.actions.viewEndpoints'), icon: 'i-lucide-route', to: { path: '/api-service/endpoints', query: { service: service.value.id } } },
-          { label: t('apiService.actions.duplicate'), icon: 'i-lucide-copy', onSelect: () => emit('duplicate', service.value!) },
+          ...(can('api.service_create') ? [{ label: t('apiService.actions.duplicate'), icon: 'i-lucide-copy', onSelect: () => emit('duplicate', service.value!) }] : []),
         ],
-        [{ label: t('apiService.actions.delete'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => emit('remove', service.value!) }],
-      ]
+        service.value.can?.delete ? [{ label: t('apiService.actions.delete'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => emit('remove', service.value!) }] : [],
+      ].filter(group => group.length)
     : [],
 )
 </script>
@@ -93,11 +94,11 @@ const menu = computed<DropdownMenuItem[][]>(() =>
             <UButton icon="i-lucide-x" color="neutral" variant="soft" size="sm" square class="rounded-full" :aria-label="t('common.close')" @click="open = false" />
           </div>
         </div>
-        <div class="flex flex-wrap items-center gap-2">
-          <USwitch :model-value="service.status === 'active'" :label="t('apiService.answering')" :disabled="busy" @update:model-value="value => emit('status', service!, !!value)" />
-          <span class="mx-1 h-5 w-px bg-(--ui-border)" aria-hidden="true" />
-          <UButton :label="t('apiService.actions.newEndpoint')" icon="i-lucide-plus" color="neutral" size="sm" :to="{ path: '/api-service/endpoints/new', query: { service: service.id } }" />
-          <UButton :label="t('apiService.actions.edit')" icon="i-lucide-pencil" color="neutral" variant="outline" size="sm" @click="emit('edit', service)" />
+        <div v-if="service.can?.edit || can('api.endpoints')" class="flex flex-wrap items-center gap-2">
+          <USwitch v-if="service.can?.edit" :model-value="service.status === 'active'" :label="t('apiService.answering')" :disabled="busy" @update:model-value="value => emit('status', service!, !!value)" />
+          <span v-if="service.can?.edit && can('api.endpoints')" class="mx-1 h-5 w-px bg-(--ui-border)" aria-hidden="true" />
+          <UButton v-if="can('api.endpoints')" :label="t('apiService.actions.newEndpoint')" icon="i-lucide-plus" color="neutral" size="sm" :to="{ path: '/api-service/endpoints/new', query: { service: service.id } }" />
+          <UButton v-if="service.can?.edit" :label="t('apiService.actions.edit')" icon="i-lucide-pencil" color="neutral" variant="outline" size="sm" @click="emit('edit', service)" />
         </div>
       </div>
     </template>
@@ -129,7 +130,7 @@ const menu = computed<DropdownMenuItem[][]>(() =>
         <section class="flex flex-col gap-3">
           <h3 class="text-sm font-semibold text-highlighted">{{ t('apiService.col.endpoints') }}</h3>
           <div v-if="!endpoints" class="grid gap-2 sm:grid-cols-2"><USkeleton v-for="n in 2" :key="n" class="h-20 rounded-lg" /></div>
-          <AppEmpty v-else-if="!endpoints.length" size="xs" icon="i-lucide-route" :title="t('apiService.noEndpoints')" :actions="[{ label: t('apiService.actions.newEndpoint'), icon: 'i-lucide-plus', color: 'neutral', to: { path: '/api-service/endpoints/new', query: { service: service.id } } }]" />
+          <AppEmpty v-else-if="!endpoints.length" size="xs" icon="i-lucide-route" :title="t('apiService.noEndpoints')" :actions="can('api.endpoints') ? [{ label: t('apiService.actions.newEndpoint'), icon: 'i-lucide-plus', color: 'neutral', to: { path: '/api-service/endpoints/new', query: { service: service.id } } }] : []" />
           <div v-else class="grid gap-2 sm:grid-cols-2">
             <NuxtLink
               v-for="endpoint in endpoints"

@@ -15,12 +15,13 @@ const emit = defineEmits<{ start: []; long: []; saved: [values: TableRow] }>()
 const { t } = useI18n()
 const api = useApi()
 const { handle } = useErrorHandler()
+const { can } = useCan()
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
 const kind = computed(() => kindOfType(props.column.type))
 const editable = computed(() => {
   const column = props.column
-  if (props.structure.read_only || column.primary) return false
+  if (!can('data.rows') || props.structure.read_only || column.primary) return false
   if (/UUID|UNIQUEIDENTIFIER/i.test(column.type) || /(^|_)(uuid|guid)$/i.test(column.name)) return false
   const value = props.row[column.name]
   return !(typeof value === 'string' && UUID.test(value))

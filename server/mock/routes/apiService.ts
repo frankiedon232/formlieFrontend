@@ -17,6 +17,7 @@
  * form (FRM-API-1002). The form's own rules decide which questions can be sent: required
  * questions are always accepted on POST, read-only ones, files and calculated values never.
  */
+import { ownedReach, requireOwned } from '../data/resourceAccess'
 import { z } from 'zod'
 import type { ApiInsights, ApiServiceSettings, ApiSetupSummary, ApiTokenSecrets, ApiTokenCreated, ApiTokenInsights, ApiUsage } from '#shared/types/apiService'
 import { API_STATUSES, API_TOKEN_MODES, API_TOKEN_STATUSES } from '#shared/types/apiService'
@@ -113,14 +114,20 @@ function findService(tenant: MockTenant, id: string | undefined) {
   return service
 }
 
+/** What this person may do with a service (F22 R2 M4: own · all). */
+const serviceCan = (service: { created_by?: { id: string } | null }, user: Parameters<typeof ownedReach>[2], tenant: Parameters<typeof ownedReach>[3]) => ({
+  edit: ownedReach('api.service_edit', service, user, tenant),
+  delete: ownedReach('api.service_delete', service, user, tenant),
+})
+
 export const listApiServices = defineMockRoute(({ event, query }) => {
-  const { tenant } = requireAdmin(event)
+  const { tenant, user } = requireAdmin(event)
   const filter = filtersOf(query)
   let rows = apiOf(tenant).services.map(item => toService(tenant, item))
   if (filter.status) rows = rows.filter(row => listOf(filter.status).includes(row.status))
   sortRows(rows as unknown as Record<string, unknown>[], typeof query.sort === 'string' && query.sort ? query.sort : 'name')
   const { data, meta } = paginate(rows, { ...query, sort: undefined }, (row, q) => `${row.name} ${row.description ?? ''}`.toLowerCase().includes(q))
-  return ok(data, meta)
+  return ok(data.map(row => ({ ...row, can: serviceCan(apiOf(tenant).services.find(item => item.id === row.id)!, user, tenant) })), meta)
 })
 
 export const apiServiceInsights = defineMockRoute(({ event }) => {
@@ -131,8 +138,9 @@ export const apiServiceInsights = defineMockRoute(({ event }) => {
 })
 
 export const getApiService = defineMockRoute(({ event }) => {
-  const { tenant } = requireAdmin(event)
-  return ok(toService(tenant, findService(tenant, getRouterParam(event, 'id'))))
+  const { tenant, user } = requireAdmin(event)
+  const service = findService(tenant, getRouterParam(event, 'id'))
+  return ok({ ...toService(tenant, service), can: serviceCan(service, user, tenant) })
 })
 
 export const createApiService = defineMockRoute(({ event, body }) => {
@@ -150,6 +158,7 @@ export const createApiService = defineMockRoute(({ event, body }) => {
 export const updateApiService = defineMockRoute(({ event, body }) => {
   const { tenant, user } = requireAdmin(event)
   const service = findService(tenant, getRouterParam(event, 'id'))
+  requireOwned('api.service_edit', service, user, tenant)
   const values = parseBody(serviceInput.partial(), body)
   const api = apiOf(tenant)
   if (values.name && api.services.some(item => item.id !== service.id && item.name.toLowerCase() === values.name!.toLowerCase())) throw new MockError('FRM-API-1003')
@@ -193,6 +202,7 @@ export const duplicateApiService = defineMockRoute(({ event }) => {
 export const deleteApiService = defineMockRoute(({ event }) => {
   const { tenant, user } = requireAdmin(event)
   const service = findService(tenant, getRouterParam(event, 'id'))
+  requireOwned('api.service_delete', service, user, tenant)
   const api = apiOf(tenant)
   const removed = api.endpoints.filter(item => item.service_id === service.id).length
   api.services.splice(api.services.indexOf(service), 1)

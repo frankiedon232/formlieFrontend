@@ -15,6 +15,8 @@ const api = useApi()
 const toast = useToast()
 const { handle } = useErrorHandler()
 const { relative, dateTime } = useFormat()
+// Sending a delivery again needs api.webhooks (F22 R2 M4)
+const { can } = useCan()
 
 const list = useTemplateRef<{ refresh: () => Promise<void>; state: { rows: Ref<WebhookDelivery[]> } }>('list')
 defineExpose({ refresh: () => list.value?.refresh(), ids: () => (list.value?.state.rows.value ?? []).map(row => row.id) })
@@ -48,7 +50,7 @@ const fetcher: DataFetcher<WebhookDelivery> = (params, signal) => api.list<Webho
 
 const busy = ref<string | null>(null)
 async function resend(row: WebhookDelivery) {
-  if (busy.value) return
+  if (busy.value || !can('api.webhooks')) return
   busy.value = row.id
   try {
     const { data } = await api.post<WebhookDeliveryDetail>(`/webhook-deliveries/${row.id}/resend`)
@@ -64,7 +66,7 @@ async function resend(row: WebhookDelivery) {
 const rowActions = (row: WebhookDelivery): DropdownMenuItem[][] => [
   [
     { label: t('apiService.actions.open'), icon: 'i-lucide-panel-right-open', onSelect: () => emit('open', row.id) },
-    { label: row.status === 'retrying' ? t('integrations.webhooks.retryNow') : t('integrations.webhooks.sendAgain'), icon: 'i-lucide-send', onSelect: () => void resend(row) },
+    ...(can('api.webhooks') ? [{ label: row.status === 'retrying' ? t('integrations.webhooks.retryNow') : t('integrations.webhooks.sendAgain'), icon: 'i-lucide-send', onSelect: () => void resend(row) }] : []),
   ],
 ]
 </script>

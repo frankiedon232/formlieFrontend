@@ -12,6 +12,7 @@
  * with the database's message and the position. Every run is recorded in the audit trail (the
  * statement, never its result rows).
  */
+import { can } from '../data/rolesStore'
 import { z } from 'zod'
 import type { QueryHistoryItem, QueryResult } from '#shared/types/query'
 import { splitStatements, statementKind, tablesIn } from '#shared/utils/datasources/sql'
@@ -75,6 +76,8 @@ export const runQuery = defineMockRoute(({ event, body }) => {
       const page = read.rows.slice((input.page - 1) * input.page_size, input.page * input.page_size)
       result = { run_id: crypto.randomUUID(), kind, columns: read.columns, rows: page, page: input.page, page_size: input.page_size, total: Math.min(total, COUNT_CAP), capped: total > COUNT_CAP, rows_affected: null, duration_ms: duration(), notice: null }
     } else {
+      // Running a changing statement is its own permission (F22 R2 M4), next to the connection's access
+      if (!can(user, 'data.query_write', tenant)) throw new MockError('FRM-PERM-1001')
       if (source.access.other !== 'read_write') throw new MockError('FRM-DEST-1024', [{ field: 'access', message: source.access.other }])
       if (kind === 'insert' || kind === 'update' || kind === 'delete') {
         const plan = planChange(tenant, source, tables, sql, params)

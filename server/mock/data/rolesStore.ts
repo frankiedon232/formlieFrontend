@@ -5,7 +5,7 @@
  * its scope (own · shared · all, F22 R2).
  */
 import type { Grants, Permission, Scope } from '#shared/utils/auth/permissions'
-import { ALL_GRANTS, ALL_PERMISSIONS, BUILT_IN_ROLES, DEFAULT_ROLE_GRANTS, OWNER_ROLE, RESOURCE_CHANGES, RESOURCE_VIEWS, grantsFromList, withNeeds } from '#shared/utils/auth/permissions'
+import { ALL_GRANTS, ALL_PERMISSIONS, BUILT_IN_ROLES, DEFAULT_ROLE_GRANTS, OWNER_ROLE, RESOURCE_CHANGES, RESOURCE_VIEWS, SPLIT_PERMISSIONS, grantsFromList, withNeeds } from '#shared/utils/auth/permissions'
 import { loadPersisted, savePersisted } from '../core/persist'
 import { MOCK_TENANTS, type MockTenant, type MockUser } from './tenants'
 
@@ -16,7 +16,7 @@ export interface StoredRole {
   grants: Grants
   /** owner · admin · member for the built-in ones; null for the workspace's own. */
   built_in: (typeof BUILT_IN_ROLES)[number] | null
-  /** 2 = response actions have scopes (F22 R2 M2); 3 = "shared" split into shared and own & shared; 4 = libraries have their own permissions (M3). */
+  /** 2 = response actions have scopes (F22 R2 M2); 3 = "shared" split into shared and own & shared; 4 = libraries have their own permissions (M3); 5 = data, API and AI split (M4). */
   version?: number
   created_at: string
   updated_at: string
@@ -60,6 +60,21 @@ for (const role of [...stores.values()].flat() as (StoredRole & { grants: Record
     role.version = 4
     migrated = true
   }
+// Data sources, API service and AI got granular permissions (F22 R2 M4): the coarse ones become their parts, at all
+for (const role of [...stores.values()].flat() as (StoredRole & { grants: Record<string, string> })[])
+  if ((role.version ?? 1) < 5) {
+    const next: Record<string, string> = {}
+    for (const [key, scope] of Object.entries(role.grants)) {
+      const parts = SPLIT_PERMISSIONS[key]
+      if (parts) for (const part of parts) next[part] = 'all'
+      else next[key] = scope
+    }
+    // Settings of the assistant went with managing the workspace's settings
+    if (next['ai.use'] && next['settings.manage']) next['ai.settings'] = 'all'
+    role.grants = withNeeds(next)
+    role.version = 5
+    migrated = true
+  }
 if (migrated) saveRoles()
 
 const NAMES = { owner: 'Owner', admin: 'Admin', member: 'Member' } as const
@@ -73,7 +88,7 @@ export function rolesOf(tenant: MockTenant): StoredRole[] {
   let list = stores.get(tenant.id)
   if (!list) {
     const at = new Date().toISOString()
-    list = BUILT_IN_ROLES.map(id => ({ id, name: NAMES[id], description: DESCRIPTIONS[id], grants: { ...DEFAULT_ROLE_GRANTS[id] }, built_in: id, version: 4, created_at: at, updated_at: at }))
+    list = BUILT_IN_ROLES.map(id => ({ id, name: NAMES[id], description: DESCRIPTIONS[id], grants: { ...DEFAULT_ROLE_GRANTS[id] }, built_in: id, version: 5, created_at: at, updated_at: at }))
     stores.set(tenant.id, list)
     saveRoles()
   }

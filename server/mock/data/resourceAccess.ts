@@ -5,6 +5,7 @@
  * `<area>.edit` / `<area>.delete` and its scope: own (they made it) · all.
  */
 import { MockError } from '../core/respond'
+import type { Permission } from '#shared/utils/auth/permissions'
 import { scopeOf } from './rolesStore'
 import type { MockTenant, MockUser } from './tenants'
 
@@ -36,4 +37,13 @@ export const resourceActions = (area: ResourceArea, item: Item, user: MockUser, 
 /** Allowed, else refused (FRM-PERM-1001): built-in items and other people's items without "all". */
 export function requireResource(area: ResourceArea, action: 'edit' | 'delete', item: Item, user: MockUser, tenant?: MockTenant) {
   if (!reach(area, action, item, user, tenant)) throw new MockError('FRM-PERM-1001')
+}
+
+/** own · all for any action on an item that records its maker (data connections, API services, F22 R2 M4). */
+export function ownedReach(permission: Permission, item: Item, user: MockUser, tenant?: MockTenant): boolean {
+  const scope = scopeOf(user, permission, tenant)
+  return scope === 'all' || (scope === 'own' && item.created_by?.id === user.id)
+}
+export function requireOwned(permission: Permission, item: Item, user: MockUser, tenant?: MockTenant) {
+  if (!ownedReach(permission, item, user, tenant)) throw new MockError('FRM-PERM-1001')
 }

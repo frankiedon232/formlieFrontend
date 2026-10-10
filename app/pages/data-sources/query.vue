@@ -21,6 +21,8 @@ const route = useRoute()
 const router = useRouter()
 const toast = useToast()
 const { handle, messageFor } = useErrorHandler()
+// Running needs data.query, saving data.saved (also checked in each action, so the shortcuts follow)
+const { can } = useCan()
 useHead({ title: () => t('nav.dataQuery') })
 
 // Connections and their tables (for the tree and completion)
@@ -87,6 +89,7 @@ const valuesOf = (tabId: string) => {
 }
 
 function run() {
+  if (!can('data.query')) return
   const target = editor.value?.runText()
   if (!target || !dsId.value) return
   const names = parametersIn(target.text)
@@ -101,7 +104,7 @@ function run() {
 // Run all (Ctrl / Cmd + Shift + Enter): every statement of the tab, top to bottom, stopping at the first problem
 function runAll() {
   const statements = splitStatements(text.value)
-  if (!statements.length || !dsId.value) return
+  if (!statements.length || !dsId.value || !can('data.query')) return
   const values = valuesOf(tabs.active.value.id)
   const names = [...new Set(statements.flatMap(statement => parametersIn(statement.text)))]
   const missing = names.filter(name => !(name in values) || values[name] === '')
@@ -117,7 +120,7 @@ const saveBusy = ref(false)
 const editing = ref<SavedQuery | null>(null)
 async function save() {
   const tab = tabs.active.value
-  if (!tab.sql.trim()) return
+  if (!tab.sql.trim() || !can('data.saved')) return
   const linked = tab.savedId ? saved.list.value?.find(item => item.id === tab.savedId) : undefined
   if (linked?.mine) {
     saveBusy.value = true
@@ -239,16 +242,16 @@ const navigatorEvents = {
     <template #actions>
       <UButton v-if="!takeover.shown.value" :label="t('query.side.title')" icon="i-lucide-list-tree" color="neutral" variant="outline" @click="sideOpen = true" />
       <UButton :label="t('query.format')" icon="i-lucide-align-left" color="neutral" variant="outline" class="hidden lg:inline-flex" :disabled="!text.trim()" @click="format" />
-      <UButton :label="t('query.saved.saveButton')" icon="i-lucide-bookmark" color="neutral" variant="outline" class="hidden sm:inline-flex" :loading="saveBusy" :disabled="!dsId || !text.trim()" @click="save">
+      <UButton v-if="can('data.saved')" :label="t('query.saved.saveButton')" icon="i-lucide-bookmark" color="neutral" variant="outline" class="hidden sm:inline-flex" :loading="saveBusy" :disabled="!dsId || !text.trim()" @click="save">
         <template #trailing><span class="hidden items-center gap-0.5 xl:inline-flex"><UKbd value="meta" size="sm" /><UKbd value="s" size="sm" /></span></template>
       </UButton>
       <UButton v-if="state.running" :label="t('query.cancel')" icon="i-lucide-square" color="neutral" variant="outline" @click="cancel">
         <template #trailing><UKbd value="Esc" size="sm" class="hidden sm:inline-flex" /></template>
       </UButton>
-      <UButton v-if="statementCount > 1" :label="t('query.runAll.button')" icon="i-lucide-list-video" color="neutral" variant="outline" class="hidden md:inline-flex" :disabled="!dsId || state.running" @click="runAll">
+      <UButton v-if="statementCount > 1 && can('data.query')" :label="t('query.runAll.button')" icon="i-lucide-list-video" color="neutral" variant="outline" class="hidden md:inline-flex" :disabled="!dsId || state.running" @click="runAll">
         <template #trailing><span class="hidden items-center gap-0.5 xl:inline-flex"><UKbd value="meta" size="sm" /><UKbd value="shift" size="sm" /><UKbd value="enter" size="sm" /></span></template>
       </UButton>
-      <UButton :label="t('query.run')" icon="i-lucide-play" color="neutral" :loading="state.running" :disabled="!dsId || !text.trim()" @click="run">
+      <UButton v-if="can('data.query')" :label="t('query.run')" icon="i-lucide-play" color="neutral" :loading="state.running" :disabled="!dsId || !text.trim()" @click="run">
         <template #trailing><span class="hidden items-center gap-0.5 sm:inline-flex"><UKbd value="meta" size="sm" /><UKbd value="enter" size="sm" /></span></template>
       </UButton>
     </template>
@@ -258,7 +261,7 @@ const navigatorEvents = {
       icon="i-lucide-database"
       :title="t('explorer.noConnections')"
       :description="t('explorer.noConnectionsDesc')"
-      :actions="[{ label: t('dataSources.add'), icon: 'i-lucide-plus', color: 'neutral', to: '/data-sources/connections/new' }]"
+      :actions="can('data.create') ? [{ label: t('dataSources.add'), icon: 'i-lucide-plus', color: 'neutral', to: '/data-sources/connections/new' }] : []"
     />
     <AppEmpty
       v-else-if="tablesError"
@@ -327,7 +330,7 @@ const navigatorEvents = {
     <Teleport v-if="takeover.shown.value" :to="`#${SIDEBAR_TAKEOVER_ID}`" defer>
       <QueryNavigator v-bind="{ ...navigator, ...navigatorEvents }" />
     </Teleport>
-    <QuerySaveModal v-model:open="saveOpen" v-model:busy="saveBusy" :sql="text" :connection="source?.name ?? ''" :existing="editing" :suggested-name="tabs.active.value.title" @save="saveFromModal" />
+    <QuerySaveModal v-if="can('data.saved')" v-model:open="saveOpen" v-model:busy="saveBusy" :sql="text" :connection="source?.name ?? ''" :existing="editing" :suggested-name="tabs.active.value.title" @save="saveFromModal" />
     <USlideover v-model:open="sideOpen" side="left" :title="t('query.side.title')" :ui="{ content: 'w-full max-w-xs', body: 'flex p-0 sm:p-0' }">
       <template #body>
         <QueryNavigator v-bind="{ ...navigator, ...navigatorEvents }" />

@@ -19,6 +19,9 @@ const toast = useToast()
 const { handle } = useErrorHandler()
 const { relative, dateTime, number } = useFormat()
 const { copy } = useClipboard({ legacy: true })
+// Saving and changing saved queries needs data.saved (writing a new one also the editor, data.query)
+const { can } = useCan()
+const canNew = computed(() => can('data.saved') && can('data.query'))
 useHead({ title: () => t('nav.dataSavedQueries') })
 
 const view = useTemplateRef<{ refresh: () => Promise<void> }>('view')
@@ -107,7 +110,7 @@ const rowActions = (row: SavedQuery): DropdownMenuItem[][] => [
     { label: t('query.saved.openEditor'), icon: 'i-lucide-square-terminal', onSelect: () => openRow(row) },
     { label: t('contextMenu.copy'), icon: 'i-lucide-copy', onSelect: () => copySql(row) },
   ],
-  ...(row.mine
+  ...(row.mine && can('data.saved')
     ? [
         [
           { label: t('query.saved.edit'), icon: 'i-lucide-pencil', onSelect: () => edit(row) },
@@ -122,7 +125,7 @@ const rowActions = (row: SavedQuery): DropdownMenuItem[][] => [
 <template>
   <AppPanel id="data-saved-queries" :title="t('nav.dataSavedQueries')" :subtitle="t('dataSources.section.savedQueries')" subtitle-icon="i-lucide-bookmark">
     <template #actions>
-      <UButton :label="t('query.saved.new')" icon="i-lucide-plus" color="neutral" to="/data-sources/query" />
+      <UButton v-if="canNew" :label="t('query.saved.new')" icon="i-lucide-plus" color="neutral" to="/data-sources/query" />
     </template>
 
     <QuerySavedOverview :insights="insights" :kind="kindFilter" @kind="filterKind" />
@@ -184,13 +187,13 @@ const rowActions = (row: SavedQuery): DropdownMenuItem[][] => [
         <span class="whitespace-nowrap text-muted">{{ relative(row.original.updated_at) }}</span>
       </template>
       <template #empty-actions>
-        <UButton :label="t('query.saved.new')" icon="i-lucide-plus" color="neutral" to="/data-sources/query" />
+        <UButton v-if="canNew" :label="t('query.saved.new')" icon="i-lucide-plus" color="neutral" to="/data-sources/query" />
       </template>
       <template #grid-card="{ row }">
         <QuerySavedCard :item="row" :actions="rowActions(row)" />
       </template>
     </DataView>
 
-    <QuerySaveModal v-model:open="editOpen" v-model:busy="editBusy" :sql="editing?.sql ?? ''" :connection="editing?.datasource.name ?? ''" :existing="editing" @save="saveEdit" />
+    <QuerySaveModal v-if="can('data.saved')" v-model:open="editOpen" v-model:busy="editBusy" :sql="editing?.sql ?? ''" :connection="editing?.datasource.name ?? ''" :existing="editing" @save="saveEdit" />
   </AppPanel>
 </template>

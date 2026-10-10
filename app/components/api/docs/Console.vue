@@ -17,6 +17,7 @@ const open = defineModel<boolean>('open', { default: false })
 const { t } = useI18n()
 const api = useApi()
 const { handle } = useErrorHandler()
+const { can } = useCan()
 
 const state = reactive({ method: 'POST' as ApiMethod, record: '', body: '', key: '', keepKey: false })
 const result = ref<ApiTryResult | null>(null)
@@ -48,7 +49,7 @@ watch(() => state.method, () => (tab.value = writes.value ? 'body' : 'headers'))
 
 const sending = ref(false)
 async function send() {
-  if (!props.endpoint || sending.value) return
+  if (!props.endpoint || sending.value || !can('api.try')) return
   let body: unknown
   if (writes.value) {
     try {
@@ -160,7 +161,7 @@ const lines = computed(() => Math.max(state.body.split('\n').length, 12))
 
           <div class="mt-auto flex flex-wrap items-center justify-between gap-2 border-t border-default pt-4">
             <span class="flex items-center gap-1.5 text-xs text-muted"><UIcon name="i-lucide-flask-conical" class="size-3.5" />{{ t('apiService.docs.console.testOnly') }}</span>
-            <UButton type="submit" :label="t('apiService.docs.console.send')" icon="i-lucide-send" color="neutral" :loading="sending">
+            <UButton type="submit" :label="t('apiService.docs.console.send')" icon="i-lucide-send" color="neutral" :loading="sending" :disabled="!can('api.try')">
               <template #trailing><UKbd value="meta" size="sm" class="hidden sm:inline-flex" /><UKbd value="enter" size="sm" class="hidden sm:inline-flex" /></template>
             </UButton>
           </div>

@@ -9,6 +9,7 @@ import type { ApiConnections as Links, ApiReach } from '#shared/types/apiService
 
 const props = defineProps<{ type: 'service' | 'endpoint' | 'token' | 'rule'; id: string }>()
 const { t } = useI18n()
+const { can } = useCan()
 const api = useApi()
 
 const links = ref<Links | null>(null)
@@ -65,7 +66,7 @@ const showTokens = computed(() => props.type === 'service' || props.type === 'en
               </UButton>
             </UTooltip>
           </div>
-          <UButton v-if="!tokens.some(item => item.reach !== 'all')" :label="type === 'endpoint' ? t('apiService.setup.token.action') : t('apiService.connections.newToken')" icon="i-lucide-plus" color="neutral" variant="link" size="xs" class="w-fit px-0" :to="newToken" />
+          <UButton v-if="can('api.tokens') && !tokens.some(item => item.reach !== 'all')" :label="type === 'endpoint' ? t('apiService.setup.token.action') : t('apiService.connections.newToken')" icon="i-lucide-plus" color="neutral" variant="link" size="xs" class="w-fit px-0" :to="newToken" />
         </dd>
         <dt class="text-xs text-muted sm:pt-1.5">{{ t('apiService.connections.rules', { n: links.rules.length }) }}</dt>
         <dd class="flex flex-wrap gap-1.5">

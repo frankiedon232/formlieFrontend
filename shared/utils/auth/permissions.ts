@@ -70,13 +70,31 @@ export const PERMISSION_AREAS = [
   { key: 'pages', groups: [{ key: 'pages', actions: [{ key: 'view' }, { key: 'create' }, { key: 'edit', scopes: OWNED }, { key: 'duplicate' }, { key: 'delete', scopes: OWNED }] }] },
   { key: 'fields', groups: [{ key: 'fields', actions: [{ key: 'view' }, { key: 'create' }, { key: 'delete', scopes: OWNED }] }] },
   { key: 'analytics', groups: [{ key: 'analytics', actions: [{ key: 'view' }] }] },
-  { key: 'data', groups: [{ key: 'data', actions: [{ key: 'view' }, { key: 'query' }, { key: 'manage' }] }] },
-  { key: 'api', groups: [{ key: 'api', actions: [{ key: 'view' }, { key: 'manage' }] }] },
+  // Data sources (F22 R2 M4): connections, the explorer, queries and where forms keep their responses
+  {
+    key: 'data',
+    groups: [
+      { key: 'connections', actions: [{ key: 'view' }, { key: 'create' }, { key: 'edit', scopes: OWNED }, { key: 'delete', scopes: OWNED }] },
+      { key: 'explorer', actions: [{ key: 'browse' }, { key: 'rows' }, { key: 'structure' }, { key: 'export' }] },
+      { key: 'query', actions: [{ key: 'query' }, { key: 'query_write' }, { key: 'saved' }] },
+      { key: 'storage', actions: [{ key: 'storage' }] },
+    ],
+  },
+  // API service (F22 R2 M4)
+  {
+    key: 'api',
+    groups: [
+      { key: 'services', actions: [{ key: 'view' }, { key: 'service_create' }, { key: 'service_edit', scopes: OWNED }, { key: 'service_delete', scopes: OWNED }, { key: 'endpoints' }, { key: 'try' }] },
+      { key: 'security', actions: [{ key: 'tokens' }, { key: 'key' }, { key: 'access' }, { key: 'logs' }] },
+      { key: 'webhooks', actions: [{ key: 'webhooks' }] },
+    ],
+  },
   { key: 'people', groups: [{ key: 'people', actions: [{ key: 'view' }, { key: 'manage' }, { key: 'approve' }] }] },
   { key: 'roles', groups: [{ key: 'roles', actions: [{ key: 'manage' }] }] },
   { key: 'settings', groups: [{ key: 'settings', actions: [{ key: 'view' }, { key: 'manage' }] }] },
   { key: 'audit', groups: [{ key: 'audit', actions: [{ key: 'view' }, { key: 'export' }] }] },
-  { key: 'ai', groups: [{ key: 'ai', actions: [{ key: 'use' }] }] },
+  // AI assistant (F22 R2 M4): using it at all, then each part of it
+  { key: 'ai', groups: [{ key: 'ai', actions: [{ key: 'use' }, { key: 'create' }, { key: 'assist' }, { key: 'analyse' }, { key: 'translate' }, { key: 'history' }, { key: 'settings' }] }] },
 ] as const satisfies readonly { key: string; groups: readonly GroupDef[] }[]
 
 type Area = (typeof PERMISSION_AREAS)[number]
@@ -110,7 +128,7 @@ export const DEFAULT_ROLE_GRANTS: Record<(typeof BUILT_IN_ROLES)[number], Grants
     ...grant(['forms.create', 'forms.import', 'folders.create']),
     ...grant(['folders.edit', 'folders.delete'], 'own'),
     ...grant(['responses.view', 'responses.review', 'responses.edit', 'responses.export'], 'own_shared'),
-    ...grant(['analytics.view', 'ai.use', 'templates.view', 'lists.view', 'themes.view', 'pages.view', 'fields.view']),
+    ...grant(['analytics.view', 'ai.use', 'ai.create', 'ai.assist', 'ai.analyse', 'ai.translate', 'ai.history', 'templates.view', 'lists.view', 'themes.view', 'pages.view', 'fields.view']),
   },
 }
 
@@ -135,9 +153,33 @@ export const PERMISSION_NEEDS: Partial<Record<Permission, Permission[]>> = {
   'responses.edit': ['responses.view'],
   'responses.delete': ['responses.view'],
   'responses.export': ['responses.view'],
+  'data.create': ['data.view'],
+  'data.edit': ['data.view'],
+  'data.delete': ['data.view'],
+  'data.browse': ['data.view'],
+  'data.rows': ['data.browse'],
+  'data.structure': ['data.browse'],
+  'data.export': ['data.browse'],
   'data.query': ['data.view'],
-  'data.manage': ['data.view'],
-  'api.manage': ['api.view'],
+  'data.query_write': ['data.query'],
+  'data.saved': ['data.query'],
+  'data.storage': ['data.view'],
+  'api.service_create': ['api.view'],
+  'api.service_edit': ['api.view'],
+  'api.service_delete': ['api.view'],
+  'api.endpoints': ['api.view'],
+  'api.try': ['api.view'],
+  'api.tokens': ['api.view'],
+  'api.key': ['api.view'],
+  'api.access': ['api.view'],
+  'api.logs': ['api.view'],
+  'api.webhooks': ['api.view'],
+  'ai.create': ['ai.use'],
+  'ai.assist': ['ai.use'],
+  'ai.analyse': ['ai.use'],
+  'ai.translate': ['ai.use'],
+  'ai.history': ['ai.use'],
+  'ai.settings': ['ai.use'],
   'people.manage': ['people.view'],
   'people.approve': ['people.view'],
   'roles.manage': ['people.view'],
@@ -223,6 +265,16 @@ export const reachOf = (grants: Grants) => Object.values(withNeeds(grants)).redu
 /** The areas a role opens at least one action in. */
 export const areasOf = (grants: Grants) => PERMISSION_AREAS.filter(area => area.groups.some(group => group.actions.some(action => grants[`${area.key}.${action.key}` as Permission]))).length
 
+/** What the coarse data / API / AI permissions became (F22 R2 M4), each at all: the same effect. */
+export const SPLIT_PERMISSIONS: Record<string, string[]> = {
+  'data.view': ['data.view', 'data.browse'],
+  'data.query': ['data.query', 'data.query_write', 'data.export', 'data.saved'],
+  'data.manage': ['data.create', 'data.edit', 'data.delete', 'data.rows', 'data.structure', 'data.storage', 'data.saved'],
+  'api.view': ['api.view'],
+  'api.manage': ['api.service_create', 'api.service_edit', 'api.service_delete', 'api.endpoints', 'api.try', 'api.tokens', 'api.key', 'api.access', 'api.logs', 'api.webhooks'],
+  'ai.use': ['ai.use', 'ai.create', 'ai.assist', 'ai.analyse', 'ai.translate', 'ai.history'],
+}
+
 /** A role saved before scopes (a list of permissions) as grants with the same effect (2026-10-10). */
 export function grantsFromList(list: readonly string[]): Grants {
   const has = (item: string) => list.includes(item)
@@ -241,6 +293,7 @@ export function grantsFromList(list: readonly string[]): Grants {
   give(RESOURCE_VIEWS, 'all')
   if (has('settings.manage')) give(['folders.access'], 'all')
   for (const item of list) if (isPermission(item) && !item.startsWith('forms.') && !item.startsWith('folders.')) out[item] = item.startsWith('responses.') ? forms : 'all'
+  for (const item of list) for (const part of SPLIT_PERMISSIONS[item] ?? []) out[part] = 'all'
   return withNeeds(out)
 }
 
@@ -270,7 +323,7 @@ export function permissionFor(method: string, path: string): Permission | null {
   const read = m === 'GET'
   const p = path.split('?')[0]!
   const rules: [RegExp, Permission | null | ((read: boolean) => Permission | null)][] = [
-    [/^\/(me|navigation|notifications|directory|auth|public|crypto|tenants|health|uploads|storage|files|downloads|response-files|response-exports|explorer-exports\/[^/]+$)(\/|$)/, null],
+    [/^\/(me|navigation|notifications|directory|auth|public|crypto|tenants|health|uploads|storage|files|downloads|response-files|response-exports|datasource-exports)(\/|$)/, null],
     // People and roles
     [/^\/roles(\/|$)/, r => (r ? 'people.view' : 'roles.manage')],
     [/^\/people\/[^/]+\/(approve|reject)$/, 'people.approve'],
@@ -310,10 +363,38 @@ export function permissionFor(method: string, path: string): Permission | null {
     ...resourceRules('field-library', 'fields', m),
     [/^\/analytics(\/|$)/, 'analytics.view'],
     // Data sources
-    [/^\/datasources\/[^/]+\/(query|explorer\/exports)/, 'data.query'],
-    [/^\/(datasources|destinations|saved-queries|datasource-exports|explorer-exports)(\/|$)/, r => (r ? 'data.view' : 'data.manage')],
+    // Data sources (F22 R2 M4): each part its own permission; changing or deleting a connection is own · all (checked in the route)
+    [/^\/datasources\/[^/]+\/explorer\/rows$/, r => (r ? 'data.browse' : 'data.rows')],
+    [/^\/datasources\/[^/]+\/explorer\/(tables|changes)$/, r => (r ? 'data.browse' : 'data.structure')],
+    [/^\/datasources\/[^/]+\/explorer\/exports$/, 'data.export'],
+    [/^\/datasources\/[^/]+\/explorer(\/|$)/, 'data.browse'],
+    [/^\/explorer-exports(\/|$)/, 'data.export'],
+    [/^\/datasources\/[^/]+\/query\/export$/, 'data.export'],
+    // Running a changing statement also needs query_write (checked in the route, which knows the statement)
+    [/^\/datasources\/[^/]+\/(query|query-history)$/, 'data.query'],
+    [/^\/datasources\/test$/, 'data.view'],
+    [/^\/datasources\/[^/]+\/test$/, 'data.edit'],
+    [/^\/datasources\/[^/]+\/duplicate$/, 'data.create'],
+    [/^\/datasources$/, r => (r ? 'data.view' : 'data.create')],
+    [/^\/datasources\/[^/]+$/, () => (read ? 'data.view' : m === 'DELETE' ? 'data.delete' : 'data.edit')],
+    [/^\/datasources(\/|$)/, 'data.view'],
+    [/^\/saved-queries(\/|$)/, r => (r ? 'data.view' : 'data.saved')],
+    [/^\/destinations(\/|$)/, r => (r ? 'data.view' : 'data.storage')],
     // API service and webhooks
-    [/^\/(api-[a-z-]+|webhooks|webhook-deliveries)(\/|$)/, r => (r ? 'api.view' : 'api.manage')],
+    // API service (F22 R2 M4): reading needs api.view; each change its own permission (services own · all, checked in the route)
+    [/^\/api-service\/key\/rotate$/, 'api.key'],
+    [/^\/api-service\/limits$/, r => (r ? 'api.view' : 'api.access')],
+    [/^\/api-access-rules\/test$/, 'api.view'],
+    [/^\/api-access-rules(\/|$)/, r => (r ? 'api.view' : 'api.access')],
+    [/^\/api-logs\/settings$/, r => (r ? 'api.view' : 'api.logs')],
+    [/^\/api-services\/[^/]+\/duplicate$/, 'api.service_create'],
+    [/^\/api-services$/, r => (r ? 'api.view' : 'api.service_create')],
+    [/^\/api-services\/[^/]+$/, () => (read ? 'api.view' : m === 'DELETE' ? 'api.service_delete' : 'api.service_edit')],
+    [/^\/api-endpoints\/[^/]+\/try$/, 'api.try'],
+    [/^\/api-endpoints(\/|$)/, r => (r ? 'api.view' : 'api.endpoints')],
+    [/^\/api-tokens(\/|$)/, r => (r ? 'api.view' : 'api.tokens')],
+    [/^\/(webhooks|webhook-deliveries)(\/|$)/, r => (r ? 'api.view' : 'api.webhooks')],
+    [/^\/api-[a-z-]+(\/|$)/, r => (r ? 'api.view' : 'api.service_edit')],
     // Audit trail
     [/^\/audit-logs\/export/, 'audit.export'],
     [/^\/audit-logs(\/|$)/, 'audit.view'],

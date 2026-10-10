@@ -14,6 +14,7 @@
  *   POST   /datasources/:id/duplicate
  *   DELETE /datasources/:id        refused while forms send to it
  */
+import { ownedReach, requireOwned } from '../data/resourceAccess'
 import { z } from 'zod'
 import type { AuditChange } from '#shared/types/audit'
 import { DATASOURCE_STATUSES, TABLE_PREFIXES, type ConnectionTest, type DataSourceConfig, type DataSourceInsights, type DataSourceSecrets } from '#shared/types/datasources'
@@ -145,8 +146,9 @@ export const getConnectionTest = defineMockRoute(({ event }) => {
 
 /** POST /datasources/:id/test, test a saved connection with its stored settings. */
 export const testSavedConnection = defineMockRoute(({ event }) => {
-  const { tenant } = requireAdmin(event)
+  const { tenant, user } = requireAdmin(event)
   const source = find(tenant, getRouterParam(event, 'id'))
+  requireOwned('data.edit', source, user, tenant)
   if (!source.enabled) throw new MockError('FRM-DEST-1009')
   return ok({ id: startTest(tenant, source, source.secrets, source.id, source.name) }, {}, 201)
 })
@@ -156,13 +158,14 @@ export const testSavedConnection = defineMockRoute(({ event }) => {
 const inList = (value: unknown, actual: string) => typeof value !== 'string' || !value || value.split(',').includes(actual)
 
 export const listDataSources = defineMockRoute(({ event, query }) => {
-  const { tenant } = requireAdmin(event)
+  const { tenant, user } = requireAdmin(event)
   const filter = filtersOf(query)
   const rows = dataSourcesOf(tenant)
     .map(source => withForms(tenant, rowOf(source)))
     .filter(row => inList(filter.status, row.status) && inList(filter.engine, row.engine) && inList(filter.access, row.access.other))
   const { data, meta } = paginate(rows, { sort: 'name', ...query }, (row, q) => [row.name, row.address, row.database, row.engine].some(text => text.toLowerCase().includes(q)))
-  return ok(data, meta)
+  // What this person may do with each connection (F22 R2 M4: own · all)
+  return ok(data.map(row => ({ ...row, can: { edit: ownedReach('data.edit', row, user, tenant), delete: ownedReach('data.delete', row, user, tenant) } })), meta)
 })
 
 export const dataSourceInsights = defineMockRoute(({ event }) => {
@@ -227,13 +230,15 @@ export const createDataSource = defineMockRoute(({ event, body }) => {
 })
 
 export const getDataSource = defineMockRoute(({ event }) => {
-  const { tenant } = requireAdmin(event)
-  return ok(withForms(tenant, detailOf(find(tenant, getRouterParam(event, 'id')))))
+  const { tenant, user } = requireAdmin(event)
+  const source = find(tenant, getRouterParam(event, 'id'))
+  return ok({ ...withForms(tenant, detailOf(source)), can: { edit: ownedReach('data.edit', source, user, tenant), delete: ownedReach('data.delete', source, user, tenant) } })
 })
 
 export const patchDataSource = defineMockRoute(({ event, body }) => {
   const { tenant, user } = requireAdmin(event)
   const source = find(tenant, getRouterParam(event, 'id'))
+  requireOwned('data.edit', source, user, tenant)
   const input = parseBody(patchSchema, body)
   const changes: AuditChange[] = []
   const actor = actorOf(user)
@@ -309,6 +314,7 @@ export const duplicateDataSource = defineMockRoute(({ event }) => {
 export const deleteDataSource = defineMockRoute(({ event }) => {
   const { tenant, user } = requireAdmin(event)
   const source = find(tenant, getRouterParam(event, 'id'))
+  requireOwned('data.delete', source, user, tenant)
   if (formsOnConnection(tenant, source.id).length) throw new MockError('FRM-DEST-1010')
   const list = dataSourcesOf(tenant)
   list.splice(list.indexOf(source), 1)

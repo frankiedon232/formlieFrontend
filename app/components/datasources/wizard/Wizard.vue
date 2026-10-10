@@ -23,6 +23,8 @@ const ALL = ['engine', 'server', 'signin', 'security', 'access', 'review'] as co
 type Step = (typeof ALL)[number]
 const ICONS: Record<Step, string> = { engine: 'i-lucide-database', server: 'i-lucide-server', signin: 'i-lucide-user-round', security: 'i-lucide-lock', access: 'i-lucide-key-round', review: 'i-lucide-activity' }
 const editing = computed(() => !!props.source)
+// A role that may only see this connection walks the steps but cannot save (the server refuses too)
+const readOnly = computed(() => !!props.source && !props.source.can?.edit)
 const steps = computed<Step[]>(() => (editing.value ? ALL.slice(1) : [...ALL]))
 const current = ref<Step>(steps.value[0]!)
 const index = computed(() => steps.value.indexOf(current.value))
@@ -99,7 +101,7 @@ async function runTest() {
 
 const saving = ref(false)
 async function save() {
-  if (!check('review')) return
+  if (readOnly.value || !check('review')) return
   const test = runner.test.value
   if (configChanged.value) {
     if (!test || test.status === 'running') return void runTest()
@@ -158,7 +160,7 @@ const saveLabel = computed(() => {
           :disabled="current === 'engine' && !engine"
           class="rtl:[&_.iconify]:-scale-x-100"
         />
-        <UButton v-else type="submit" form="connection-step" :label="saveLabel" icon="i-lucide-check" color="neutral" :loading="saving || runner.starting.value || runner.running.value" />
+        <UButton v-else-if="!readOnly" type="submit" form="connection-step" :label="saveLabel" icon="i-lucide-check" color="neutral" :loading="saving || runner.starting.value || runner.running.value" />
       </template>
     </UCard>
 

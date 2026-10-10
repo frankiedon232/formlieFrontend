@@ -10,6 +10,7 @@ const props = defineProps<{ formId: string }>()
 const { t } = useI18n()
 const api = useApi()
 const { number, relative } = useFormat()
+const { can } = useCan()
 const storage = ref<(FormStorage & { can_manage: boolean }) | null>(null)
 const failed = ref(false)
 async function load() {
@@ -57,7 +58,7 @@ const facts = computed(() =>
       </div>
       <template v-if="storage.can_manage">
         <UButton v-if="storage.connections" :label="t('destinations.card.store')" icon="i-lucide-database" color="neutral" variant="outline" size="sm" class="w-fit" :to="`/forms/${formId}/storage`" />
-        <UButton v-else :label="t('destinations.card.addConnection')" icon="i-lucide-plus" color="neutral" variant="outline" size="sm" class="w-fit" to="/data-sources/connections/new" />
+        <UButton v-else-if="can('data.create')" :label="t('destinations.card.addConnection')" icon="i-lucide-plus" color="neutral" variant="outline" size="sm" class="w-fit" to="/data-sources/connections/new" />
       </template>
     </template>
 

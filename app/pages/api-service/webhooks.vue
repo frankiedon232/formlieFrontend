@@ -143,22 +143,31 @@ async function test(webhook: Webhook) {
   toast.add({ title: data.status === 'delivered' ? t('integrations.webhooks.testOk') : t('integrations.webhooks.testFailed'), color: data.status === 'delivered' ? 'success' : 'warning', icon: data.status === 'delivered' ? 'i-lucide-circle-check' : 'i-lucide-triangle-alert', actions: [{ label: t('integrations.webhooks.details'), color: 'neutral', variant: 'outline', onClick: () => openDelivery(data.id) }] })
 }
 const sendTest = (webhook: Webhook) => void act(webhook.id, () => test(webhook))
-const rowActions = (row: Webhook): DropdownMenuItem[][] => [
-  [
-    { label: t('apiService.actions.open'), icon: 'i-lucide-panel-right-open', onSelect: () => openRow(row) },
-    { label: t('apiService.actions.edit'), icon: 'i-lucide-pencil', onSelect: () => edit(row) },
-    { label: t('integrations.webhooks.sendTest'), icon: 'i-lucide-send', onSelect: () => sendTest(row) },
-    { label: row.enabled ? t('apiService.actions.turnOff') : t('apiService.actions.turnOn'), icon: row.enabled ? 'i-lucide-circle-pause' : 'i-lucide-circle-play', onSelect: () => toggle(row, !row.enabled) },
-  ],
-  [{ label: t('apiService.actions.delete'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => void remove(row) }],
-]
-defineShortcuts({ n: { usingInput: false, handler: () => edit(null) } })
+// Changing webhooks (and sending tests) needs api.webhooks (F22 R2 M4); without it the menu only opens
+const { can } = useCan()
+const rowActions = (row: Webhook): DropdownMenuItem[][] => {
+  const manage = can('api.webhooks')
+  return [
+    [
+      { label: t('apiService.actions.open'), icon: 'i-lucide-panel-right-open', onSelect: () => openRow(row) },
+      ...(manage
+        ? [
+            { label: t('apiService.actions.edit'), icon: 'i-lucide-pencil', onSelect: () => edit(row) },
+            { label: t('integrations.webhooks.sendTest'), icon: 'i-lucide-send', onSelect: () => sendTest(row) },
+            { label: row.enabled ? t('apiService.actions.turnOff') : t('apiService.actions.turnOn'), icon: row.enabled ? 'i-lucide-circle-pause' : 'i-lucide-circle-play', onSelect: () => toggle(row, !row.enabled) },
+          ]
+        : []),
+    ],
+    manage ? [{ label: t('apiService.actions.delete'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => void remove(row) }] : [],
+  ].filter(group => group.length)
+}
+defineShortcuts({ n: { usingInput: false, handler: () => can('api.webhooks') && edit(null) } })
 </script>
 
 <template>
   <AppPanel id="webhooks" :title="t('nav.webhooks')" :subtitle="t('apiService.section.webhooks')" subtitle-icon="i-lucide-webhook">
     <template #actions>
-      <UButton :label="t('integrations.webhooks.newTitle')" icon="i-lucide-plus" color="neutral" @click="edit(null)">
+      <UButton v-if="can('api.webhooks')" :label="t('integrations.webhooks.newTitle')" icon="i-lucide-plus" color="neutral" @click="edit(null)">
         <template #trailing><UKbd value="N" size="sm" class="hidden sm:inline-flex" /></template>
       </UButton>
     </template>
@@ -219,11 +228,12 @@ defineShortcuts({ n: { usingInput: false, handler: () => edit(null) } })
         <span v-else class="text-muted">{{ t('integrations.webhooks.noDeliveries') }}</span>
       </template>
       <template #enabled-cell="{ row }">
-        <USwitch :model-value="row.original.enabled" size="sm" :disabled="!!busy" :aria-label="t('integrations.webhooks.enabled')" @click.stop @update:model-value="value => toggle(row.original as Webhook, !!value)" />
+        <USwitch v-if="can('api.webhooks')" :model-value="row.original.enabled" size="sm" :disabled="!!busy" :aria-label="t('integrations.webhooks.enabled')" @click.stop @update:model-value="value => toggle(row.original as Webhook, !!value)" />
+        <DataStatusBadge v-else :status="row.original.enabled ? 'active' : 'disabled'" />
       </template>
       <template #created_at-cell="{ row }"><span class="whitespace-nowrap text-muted">{{ relative(row.original.created_at) }}</span></template>
       <template #empty-actions>
-        <UButton :label="t('integrations.webhooks.newTitle')" icon="i-lucide-plus" color="neutral" @click="edit(null)" />
+        <UButton v-if="can('api.webhooks')" :label="t('integrations.webhooks.newTitle')" icon="i-lucide-plus" color="neutral" @click="edit(null)" />
       </template>
       <template #grid-card="{ row }">
         <IntegrationsWebhooksCard :item="row" :actions="rowActions(row)" :busy="busy === row.id" />

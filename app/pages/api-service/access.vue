@@ -73,7 +73,8 @@ const ids = computed(() => (list.value?.state.rows.value ?? []).map(row => row.i
 const openRow = (row: Pick<ApiAccessRule, 'id'>) => void router.replace({ query: { ...route.query, rule: row.id, view: undefined } })
 const go = (id: string) => void router.replace({ query: { ...route.query, rule: id } })
 
-// New / edit / on-off / delete / test
+// New / edit / on-off / delete / test (changing rules needs api.access, F22 R2 M4; testing only api.view)
+const { can } = useCan()
 const editOpen = ref(false)
 const editing = ref<ApiAccessRule | null>(null)
 function edit(rule: ApiAccessRule | null) {
@@ -89,7 +90,7 @@ const presetEndpoint = ref<string | null>(null)
 watch(() => route.query.new, value => {
   if (!value) return
   presetEndpoint.value = typeof route.query.endpoint === 'string' ? route.query.endpoint : null
-  edit(null)
+  if (can('api.access')) edit(null)
   void router.replace({ query: { ...route.query, new: undefined, endpoint: undefined } })
 }, { immediate: true })
 watch(editOpen, value => !value && (presetEndpoint.value = null))
@@ -119,22 +120,29 @@ function fromTest(id: string) {
   testOpen.value = false
   openRow({ id })
 }
-const rowActions = (row: ApiAccessRule): DropdownMenuItem[][] => [
-  [
-    { label: t('apiService.actions.open'), icon: 'i-lucide-panel-right-open', onSelect: () => openRow(row) },
-    { label: t('apiService.actions.edit'), icon: 'i-lucide-pencil', onSelect: () => edit(row) },
-    { label: row.enabled ? t('apiService.actions.turnOff') : t('apiService.actions.turnOn'), icon: row.enabled ? 'i-lucide-circle-pause' : 'i-lucide-circle-play', onSelect: () => toggle(row, !row.enabled) },
-  ],
-  [{ label: t('apiService.actions.delete'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => void remove(row) }],
-]
-defineShortcuts({ n: { usingInput: false, handler: () => edit(null) } })
+const rowActions = (row: ApiAccessRule): DropdownMenuItem[][] => {
+  const manage = can('api.access')
+  return [
+    [
+      { label: t('apiService.actions.open'), icon: 'i-lucide-panel-right-open', onSelect: () => openRow(row) },
+      ...(manage
+        ? [
+            { label: t('apiService.actions.edit'), icon: 'i-lucide-pencil', onSelect: () => edit(row) },
+            { label: row.enabled ? t('apiService.actions.turnOff') : t('apiService.actions.turnOn'), icon: row.enabled ? 'i-lucide-circle-pause' : 'i-lucide-circle-play', onSelect: () => toggle(row, !row.enabled) },
+          ]
+        : []),
+    ],
+    manage ? [{ label: t('apiService.actions.delete'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => void remove(row) }] : [],
+  ].filter(group => group.length)
+}
+defineShortcuts({ n: { usingInput: false, handler: () => can('api.access') && edit(null) } })
 </script>
 
 <template>
   <AppPanel id="api-access" :title="t('nav.apiAccess')" :subtitle="t('apiService.section.access')" subtitle-icon="i-lucide-shield-check">
     <template #actions>
       <UButton :label="t('apiService.access.test.title')" icon="i-lucide-shield-question" color="neutral" variant="outline" class="hidden sm:inline-flex" @click="testOpen = true" />
-      <UButton :label="t('apiService.access.newTitle')" icon="i-lucide-plus" color="neutral" @click="edit(null)">
+      <UButton v-if="can('api.access')" :label="t('apiService.access.newTitle')" icon="i-lucide-plus" color="neutral" @click="edit(null)">
         <template #trailing><UKbd value="N" size="sm" class="hidden sm:inline-flex" /></template>
       </UButton>
     </template>
@@ -175,7 +183,8 @@ defineShortcuts({ n: { usingInput: false, handler: () => edit(null) } })
         <template #kind-cell="{ row }"><span class="whitespace-nowrap">{{ format.kindLabel(row.original.kind) }}</span></template>
         <template #scope-cell="{ row }"><span class="block max-w-48 truncate text-muted">{{ format.scopeText(row.original.scope) }}</span></template>
         <template #enabled-cell="{ row }">
-          <USwitch :model-value="row.original.enabled" size="sm" :disabled="!!busy" :aria-label="t('apiService.access.enabled')" @click.stop @update:model-value="value => toggle(row.original as ApiAccessRule, !!value)" />
+          <USwitch v-if="can('api.access')" :model-value="row.original.enabled" size="sm" :disabled="!!busy" :aria-label="t('apiService.access.enabled')" @click.stop @update:model-value="value => toggle(row.original as ApiAccessRule, !!value)" />
+          <DataStatusBadge v-else :status="row.original.enabled ? 'active' : 'disabled'" />
         </template>
         <template #hits_30d-cell="{ row }">
           <div class="flex items-center gap-2">
@@ -189,7 +198,7 @@ defineShortcuts({ n: { usingInput: false, handler: () => edit(null) } })
         </template>
         <template #created_at-cell="{ row }"><span class="whitespace-nowrap text-muted">{{ relative(row.original.created_at) }}</span></template>
         <template #empty-actions>
-          <UButton :label="t('apiService.access.newTitle')" icon="i-lucide-plus" color="neutral" @click="edit(null)" />
+          <UButton v-if="can('api.access')" :label="t('apiService.access.newTitle')" icon="i-lucide-plus" color="neutral" @click="edit(null)" />
         </template>
         <template #grid-card="{ row }">
           <ApiAccessCard :item="row" :actions="rowActions(row)" :busy="busy === row.id" />

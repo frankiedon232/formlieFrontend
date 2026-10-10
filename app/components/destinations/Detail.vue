@@ -15,6 +15,7 @@ const { t } = useI18n()
 const api = useApi()
 const confirm = useConfirm()
 const { handle } = useErrorHandler()
+const { can } = useCan()
 
 const destination = ref<DestinationDetail | null>(null)
 const loading = ref(false)
@@ -39,7 +40,7 @@ watch(
   async ([id, isOpen]) => {
     if (!id || !isOpen) return
     await load(id)
-    if (props.backfill && destination.value?.not_sent) backfillOpen.value = true
+    if (props.backfill && destination.value?.not_sent && can('data.storage')) backfillOpen.value = true
   },
   { immediate: true },
 )
@@ -123,7 +124,7 @@ function started(result: DestinationDetail) {
       <div v-else-if="destination" class="transition-opacity" :class="loading || busy ? 'opacity-60' : ''" :aria-busy="loading || busy || undefined">
         <DestinationsDetailBody :destination="destination" :refresh-key="refreshKey" :busy="busy" @add-columns="addColumns" @retried="() => id && load(id, true)" />
       </div>
-      <DestinationsBackfillModal v-model:open="backfillOpen" :destination="destination" @started="started" />
+      <DestinationsBackfillModal v-if="can('data.storage')" v-model:open="backfillOpen" :destination="destination" @started="started" />
     </template>
 
     <template #footer>

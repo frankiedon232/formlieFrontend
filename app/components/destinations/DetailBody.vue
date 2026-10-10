@@ -11,6 +11,7 @@ const props = defineProps<{ destination: DestinationDetail; refreshKey: number; 
 const emit = defineEmits<{ addColumns: [keys: string[]]; retried: [] }>()
 const { t } = useI18n()
 const { relative, number, date } = useFormat()
+const { can } = useCan()
 
 type Group = 'all' | 'deliveries' | 'columns' | 'fields'
 const group = ref<Group>('all')
@@ -89,7 +90,7 @@ const addSql = computed(() => props.destination.unmapped_fields.map(field => add
         </li>
       </ul>
       <pre class="overflow-x-auto rounded-lg border border-default px-3 py-2 font-mono text-[11px] text-default" dir="ltr" tabindex="0">{{ addSql }}</pre>
-      <UButton :label="t('destinations.detail.addColumns', { n: destination.unmapped_fields.length }, destination.unmapped_fields.length)" icon="i-lucide-plus" color="neutral" size="sm" class="w-fit" :loading="busy" @click="emit('addColumns', destination.unmapped_fields.map(field => field.key))" />
+      <UButton v-if="can('data.storage')" :label="t('destinations.detail.addColumns', { n: destination.unmapped_fields.length }, destination.unmapped_fields.length)" icon="i-lucide-plus" color="neutral" size="sm" class="w-fit" :loading="busy" @click="emit('addColumns', destination.unmapped_fields.map(field => field.key))" />
     </section>
 
     <section v-show="show('deliveries')" class="flex flex-col gap-2">

@@ -18,6 +18,7 @@ const { t } = useI18n()
 const { relative, number } = useFormat()
 const toast = useToast()
 const { copy } = useClipboard({ legacy: true })
+const { can } = useCan()
 const tab = ref<'tables' | 'saved' | 'history'>('tables')
 const tabs = computed(() => [
   // Words only: three tabs fit the menu column's width
@@ -64,7 +65,8 @@ useContextMenu().register(root, target => {
         { label: t('query.side.insertAtCursor'), icon: 'i-lucide-text-cursor-input', onSelect: () => emit('insert', saved.sql) },
         { label: t('contextMenu.copy'), icon: 'i-lucide-copy', onSelect: () => copyText(saved.sql) },
       ],
-      ...(saved.mine
+      // Changing a saved query: yours, and the role's data.saved
+      ...(saved.mine && can('data.saved')
         ? [
             [
               { label: t('query.saved.edit'), icon: 'i-lucide-pencil', onSelect: () => emit('editSaved', saved) },

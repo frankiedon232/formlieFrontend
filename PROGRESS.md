@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-10 (F22 R2 milestones 1 to 3 done: Forms, Folders, Responses, Templates, Lists, Themes, Landing pages, Saved fields; next: Data sources, API service, AI)
+**Last updated:** 2026-10-10 (F22 R2 granular permissions done: Forms, Folders, Responses, libraries, Data sources, API service, AI; approval steps (maker-checker) later; stop for owner review)
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend · ➖ dropped or merged
 
@@ -32,7 +32,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F19   | AI assistant                                      | 🟡     | ~2%                                       |
 | F20   | Live collaboration (removed)                      | ➖     | -                                         |
 | F21   | Dashboard                                         | ⬜     | 0%                                        |
-| F22   | Roles & access                                    | 🟡     | granular permissions with scope (R2)      |
+| F22   | Roles & access                                    | ✅     | R2 granular permissions done, owner review |
 | F23   | Platform admin (super admin, Formalie team)       | ⬜     | 0%                                        |
 | F24   | Payments & subscriptions                          | ⬜     | 0%                                        |
 | F25   | Help centre (FAQs, knowledge base, videos)        | ⬜     | 0% (after F24)                            |
@@ -978,15 +978,15 @@ Owner, 2026-10-08: "profiling and users are the same thing". One phase builds th
 - ⬜ Access overview ("who can see what")
 - ⬜ Permission to view and export the audit trail (`audit.read`, `audit.export`)
 - ⬜ Data sources permissions (from F12): view the explorer · change rows and structure · run read queries · run changing queries · manage connections · send form data to a database; until then admins only
-- ⬜ **Granular permissions with scope (owner 2026-10-10, "total control, beyond the basic"; maker-checker matters in an enterprise system).** Every action is its own permission, with a scope: **None · Own · All** (Own = what the person created; Own also restricts: a role may forbid editing even one's own forms); for forms and responses also **Shared** (only forms others shared with them) and **Own & shared** (owner 2026-10-10). The role is the ceiling everywhere: hidden or locked in every place the action appears (list menus, detail pages, overview, panels, shortcuts, bulk bars, command palette, empty-state buttons, the API)
+- ✅ **Granular permissions with scope (owner 2026-10-10, "total control, beyond the basic"; maker-checker matters in an enterprise system).** Every action is its own permission, with a scope: **None · Own · All** (Own = what the person created; Own also restricts: a role may forbid editing even one's own forms); for forms and responses also **Shared** (only forms others shared with them) and **Own & shared** (owner 2026-10-10). The role is the ceiling everywhere: hidden or locked in every place the action appears (list menus, detail pages, overview, panels, shortcuts, bulk bars, command palette, empty-state buttons, the API)
   - ✅ **Forms:** view, preview, create (incl. Blank form and Use template), import, duplicate, save as template, rename, edit (build, logic, design, tags), versions, share settings (see vs change), availability, publish, unpublish / close / reopen, archive / unarchive, move to folder, delete / restore, delete forever; every menu, page header, overview card, builder tab, share tab, bulk bar, trash and template entry follows the form's `can`; the API checks each action
   - ✅ **Responses:** view, review, correct answers, delete, export, each Own form · Shared · All (with the form's sharing and folder); per form `responses_can`, per response `can`; list, row menus, bulk bar, panel, export (per form, exports page, form picker), sidebar counts, inbox and grouped pages follow it
   - ✅ **Templates:** see (default), change (own · all: update from its form), duplicate, delete (own · all); making one = forms.save_template; using one = forms.create; Formalie's templates use-only
   - ✅ **Lists (option sets), Themes, Landing pages, Saved fields:** see (default, the library pages; forms can always use them), create, change (own · all), duplicate, delete (own · all); Formalie's items (incl. the sample lists) use-only; list editor, theme and landing page editors read-only when not allowed; builder palette, Save as list, Save field, designer Save as theme / page follow it
   - ✅ **Folders:** create, rename, delete (Own · All; only empty folders) and **folder access**: admins choose who may see each folder (roles, departments, people); a hidden folder hides its forms and their responses everywhere (lists, counts, search, analytics, exports, dashboards, API service)
-  - ⬜ **Data sources:** connections (view, add, edit, delete, test), explorer (view, add / change / delete rows, add / change / drop tables, export), query editor (read queries, changing queries, saved queries), response storage, sends
-  - ⬜ **API service:** services, endpoints, tokens, webhooks, logs, integrations, each view / create / edit / delete as fits
-  - ⬜ **AI assistant:** per feature (create forms, builder help, templates, analysis, summaries, translation, settings and usage)
+  - ✅ **Data sources:** connections (see, add, change own · all, delete own · all), explorer (browse, change rows, change tables, export), queries (read, changing statements, save and share), response storage; every page, menu, right-click item, panel and shortcut follows it
+  - ✅ **API service:** see; create services, change / delete services (own · all); endpoints; try in docs; tokens; workspace key; access rules and limits; log settings; webhooks; every page, menu, panel, switch and shortcut follows it
+  - ✅ **AI assistant:** use, create forms and templates, builder help, analyse, translate, history, settings; menus and pages follow it (features come with F19)
   - ✅ **Role editor redesigned** for the larger catalogue: grouped by area and sub-area, action rows with a scope picker, search, "what changes" summary, presets
 
 ## F23, Platform admin (super admin) ⬜
@@ -1287,7 +1287,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-09 | Responses show only what the form collected: no "Anonymous" respondent; name / email when the form asked, else the response's own answers; check everywhere | F11 (all response views, exports) | ✅ |
 | 2026-10-09 | Profiling (People) is its own rail area with its own menu | F16 | ✅ |
 | 2026-10-09 | User profiles: the organisation profiles its staff (full profile, activation email); a sign-up link (shared or personal) opens a separate sign-up page and the account awaits approval before it is profiled; roles are not fixed: they come from Roles & access (F22) and decide what each account may view, create, edit, delete | F16 rework + F22 brought forward | 🟡 in progress |
-| 2026-10-10 | Granular permissions with scope (None · Own · Shared · All) for every action in Forms, Responses, Templates, Lists, Themes, Landing pages, Folders (incl. folder access that hides forms and responses), Data sources, API service and AI; applied everywhere the action appears; role editor regrouped | F22 R2 | ⬜ |
+| 2026-10-10 | Granular permissions with scope (None · Own · Shared · Own & shared · All) for every action in Forms, Responses, Templates, Lists, Themes, Landing pages, Folders (incl. folder access that hides forms and responses), Data sources, API service and AI; applied everywhere the action appears; role editor regrouped | F22 R2 | ✅ |
 
 ---
 
@@ -1557,3 +1557,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-10 | F22 R2 | Milestone 2: response actions (view, review, correct answers, delete, export) have a reach: own forms · shared · all, with the form's sharing and folder; API checks every response route, bulk per response, exports; forms carry `responses_can`, response details `can` (with export), grouped rows `can`; sidebar response counts follow; saved roles migrated (all only where the role saw every form); clearer labels in the editor. Browser-checked: Member with Review set to None sees and exports responses but can't change status or add notes |
 | 2026-10-10 | F22 R2 | Owner: a fifth reach for forms and responses: None · Own · Shared (only forms others shared with them) · Own & shared · All; scopes are sets of parts (own, shared, everything else) so needs and narrowing combine correctly; saved roles moved from shared to own & shared (same effect); Member defaults own & shared; editor and set-the-area offer all five |
 | 2026-10-10 | F22 R2 | Milestone 3: "Manage resources" split into Templates, Lists, Themes, Landing pages and Saved fields (see · create · change own/all · duplicate · delete own/all); each item carries `can`; Formalie's items use-only; library pages and menus guarded by "see"; saved roles migrated (manage resources → every change at all; everyone sees); fixed on the way: Save as template no longer needs manage resources, the list editor had no checks at all. Browser-checked: Formalie's Places list read-only even for the owner, workspace list menus offer Delete only where allowed |
+| 2026-10-10 | F22 R2 | Milestone 4: Data sources (connections own · all, explorer browse / rows / tables / export, read vs changing queries, saved queries, response storage), API service (services own · all, endpoints, try, tokens, workspace key, access rules, log settings, webhooks) and AI (use plus each part) split from view / query / manage; every page, menu, panel, switch and shortcut in both areas follows it; menus and search drop what the role can't open; saved roles converted with the same effect. Fixed on the way: exports couldn't be polled or downloaded with export rights, saving a query needed manage, changing statements had no permission of their own, Activity needed the audit trail, test / try / reveal needed manage. Browser-checked as Lena with see + browse only |

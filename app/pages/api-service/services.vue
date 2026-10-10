@@ -15,6 +15,7 @@ const route = useRoute()
 const router = useRouter()
 const { relative, dateTime, number, percent } = useFormat()
 useHead({ title: () => t('nav.apiServices') })
+const { can } = useCan()
 
 const view = useTemplateRef<{ refresh: () => Promise<void>; state: { rows: Ref<ApiService[]> } }>('view')
 const panel = useTemplateRef<{ reload: () => void }>('panel')
@@ -71,7 +72,7 @@ function edit(service: ApiService | null) {
 // `?new=1` (rail + menu, the setup guide) opens New service
 watch(() => route.query.new, value => {
   if (!value) return
-  edit(null)
+  if (can('api.service_create')) edit(null)
   void router.replace({ query: { ...route.query, new: undefined } })
 }, { immediate: true })
 async function saved(service: ApiService) {
@@ -86,27 +87,28 @@ async function remove(service: ApiService) {
   if ((await actions.deleteService(service)) && openId.value === service.id) panelOpen.value = false
 }
 const setStatus = (service: ApiService, active: boolean) => void actions.setServiceStatus(service, active ? 'active' : 'disabled')
+// Only what the role allows (F22 R2 M4): edit / delete per service (its `can`), the rest by permission
 const rowActions = (row: ApiService): DropdownMenuItem[][] => [
   [
     { label: t('apiService.actions.open'), icon: 'i-lucide-panel-right-open', onSelect: () => openRow(row) },
     { label: t('apiService.actions.viewEndpoints'), icon: 'i-lucide-route', to: { path: '/api-service/endpoints', query: { service: row.id } } },
-    { label: t('apiService.actions.newEndpoint'), icon: 'i-lucide-plus', to: { path: '/api-service/endpoints/new', query: { service: row.id } } },
+    ...(can('api.endpoints') ? [{ label: t('apiService.actions.newEndpoint'), icon: 'i-lucide-plus', to: { path: '/api-service/endpoints/new', query: { service: row.id } } }] : []),
   ],
   [
-    { label: t('apiService.actions.edit'), icon: 'i-lucide-pencil', onSelect: () => edit(row) },
-    { label: row.status === 'active' ? t('apiService.actions.turnOff') : t('apiService.actions.turnOn'), icon: row.status === 'active' ? 'i-lucide-circle-pause' : 'i-lucide-circle-play', onSelect: () => setStatus(row, row.status !== 'active') },
-    { label: t('apiService.actions.duplicate'), icon: 'i-lucide-copy', onSelect: () => void duplicate(row) },
+    ...(row.can?.edit ? [{ label: t('apiService.actions.edit'), icon: 'i-lucide-pencil', onSelect: () => edit(row) }] : []),
+    ...(row.can?.edit ? [{ label: row.status === 'active' ? t('apiService.actions.turnOff') : t('apiService.actions.turnOn'), icon: row.status === 'active' ? 'i-lucide-circle-pause' : 'i-lucide-circle-play', onSelect: () => setStatus(row, row.status !== 'active') }] : []),
+    ...(can('api.service_create') ? [{ label: t('apiService.actions.duplicate'), icon: 'i-lucide-copy', onSelect: () => void duplicate(row) }] : []),
   ],
-  [{ label: t('apiService.actions.delete'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => void remove(row) }],
-]
-defineShortcuts({ n: { usingInput: false, handler: () => edit(null) } })
+  row.can?.delete ? [{ label: t('apiService.actions.delete'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => void remove(row) }] : [],
+].filter(group => group.length)
+defineShortcuts({ n: { usingInput: false, handler: () => can('api.service_create') && edit(null) } })
 </script>
 
 <template>
   <AppPanel id="api-services" :title="t('nav.apiServices')" :subtitle="t('apiService.section.services')" subtitle-icon="i-lucide-boxes">
     <template #actions>
-      <UButton :label="t('apiService.actions.newEndpoint')" icon="i-lucide-route" color="neutral" variant="outline" to="/api-service/endpoints/new" class="hidden sm:inline-flex" />
-      <UButton :label="t('apiService.service.newTitle')" icon="i-lucide-plus" color="neutral" @click="edit(null)">
+      <UButton v-if="can('api.endpoints')" :label="t('apiService.actions.newEndpoint')" icon="i-lucide-route" color="neutral" variant="outline" to="/api-service/endpoints/new" class="hidden sm:inline-flex" />
+      <UButton v-if="can('api.service_create')" :label="t('apiService.service.newTitle')" icon="i-lucide-plus" color="neutral" @click="edit(null)">
         <template #trailing><UKbd value="N" size="sm" class="hidden sm:inline-flex" /></template>
       </UButton>
     </template>
@@ -156,7 +158,7 @@ defineShortcuts({ n: { usingInput: false, handler: () => edit(null) } })
       </template>
       <template #created_at-cell="{ row }"><span class="whitespace-nowrap text-muted">{{ relative(row.original.created_at) }}</span></template>
       <template #empty-actions>
-        <UButton :label="t('apiService.service.newTitle')" icon="i-lucide-plus" color="neutral" @click="edit(null)" />
+        <UButton v-if="can('api.service_create')" :label="t('apiService.service.newTitle')" icon="i-lucide-plus" color="neutral" @click="edit(null)" />
       </template>
       <template #grid-card="{ row }">
         <ApiServicesCard :item="row" :actions="rowActions(row)" :busy="actions.busy.value === row.id" />

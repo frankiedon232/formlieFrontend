@@ -22,6 +22,7 @@ const emit = defineEmits<{
 const { t } = useI18n()
 const toast = useToast()
 const { copy } = useClipboard({ legacy: true })
+const { can } = useCan()
 
 const index = computed(() => (props.row ? props.rows.findIndex(item => item.__key === props.row!.__key) : -1))
 const prev = computed(() => (index.value > 0 ? props.rows[index.value - 1] : null))
@@ -75,7 +76,7 @@ function copyRow() {
           </p>
         </div>
         <div class="flex shrink-0 items-center gap-1">
-          <template v-if="!structure.read_only && row">
+          <template v-if="can('data.rows') && !structure.read_only && row">
             <UButton
               :label="t('explorer.edit')"
               icon="i-lucide-pencil"

@@ -44,8 +44,8 @@ const createItems = computed<DropdownMenuItem[][]>(() =>
     ],
     [
       { type: 'label' as const, label: t('nav.createOperations') },
-      ...(can('data.manage') ? [{ label: t('nav.addDatabase'), icon: 'i-lucide-database', to: '/data-sources/connections/new' }] : []),
-      ...(can('api.manage') ? [{ label: t('nav.newApiService'), icon: 'i-lucide-boxes', to: { path: '/api-service/services', query: { new: '1' } } }] : []),
+      ...(can('data.create') ? [{ label: t('nav.addDatabase'), icon: 'i-lucide-database', to: '/data-sources/connections/new' }] : []),
+      ...(can('api.service_create') ? [{ label: t('nav.newApiService'), icon: 'i-lucide-boxes', to: { path: '/api-service/services', query: { new: '1' } } }] : []),
       ...(can('data.query') ? [{ label: t('nav.dataQuery'), icon: 'i-lucide-square-terminal', to: '/data-sources/query' }] : []),
       ...(can('data.view') ? [{ label: t('nav.dataExplorer'), icon: 'i-lucide-table-2', to: '/data-sources/explorer' }] : []),
     ],

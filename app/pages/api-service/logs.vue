@@ -103,12 +103,13 @@ const download = () =>
     { success: t('apiService.logs.downloaded') },
   )
 const settingsOpen = ref(false)
+const { can } = useCan()
 </script>
 
 <template>
   <AppPanel id="api-logs" :title="t('nav.apiLogs')" :subtitle="t('apiService.section.logs')" subtitle-icon="i-lucide-scroll-text">
     <template #actions>
-      <UButton :label="t('apiService.logs.settings.title')" icon="i-lucide-settings-2" color="neutral" variant="outline" class="hidden sm:inline-flex" @click="settingsOpen = true" />
+      <UButton v-if="can('api.logs')" :label="t('apiService.logs.settings.title')" icon="i-lucide-settings-2" color="neutral" variant="outline" class="hidden sm:inline-flex" @click="settingsOpen = true" />
       <UButton :label="t('analytics.download')" icon="i-lucide-download" color="neutral" :loading="downloading" @click="download" />
     </template>
 
@@ -166,6 +167,6 @@ const settingsOpen = ref(false)
     </DataView>
 
     <ApiLogsDetail :id="openId" v-model:open="panelOpen" :ids="ids.length ? ids : openId ? [openId] : []" @go="go" />
-    <ApiLogsSettingsModal v-model:open="settingsOpen" />
+    <ApiLogsSettingsModal v-if="can('api.logs')" v-model:open="settingsOpen" />
   </AppPanel>
 </template>

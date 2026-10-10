@@ -15,6 +15,8 @@ const api = useApi()
 const toast = useToast()
 const { handle } = useErrorHandler()
 const { relative, dateTime } = useFormat()
+// Sending a delivery again needs api.webhooks (F22 R2 M4)
+const { can } = useCan()
 
 const delivery = ref<WebhookDeliveryDetail | null>(null)
 const failed = ref(false)
@@ -68,7 +70,7 @@ const errorText = (error: string | null) => (!error ? null : error.startsWith('H
 
 const sending = ref(false)
 async function sendAgain() {
-  if (!delivery.value || sending.value) return
+  if (!delivery.value || sending.value || !can('api.webhooks')) return
   sending.value = true
   try {
     const { data } = await api.post<WebhookDeliveryDetail>(`/webhook-deliveries/${delivery.value.id}/resend`)
@@ -111,7 +113,7 @@ async function sendAgain() {
           <UButton icon="i-lucide-x" color="neutral" variant="soft" size="sm" square class="shrink-0 rounded-full" :aria-label="t('common.close')" @click="open = false" />
         </div>
         <div class="flex flex-wrap items-center gap-2">
-          <UButton :label="delivery.status === 'retrying' ? t('integrations.webhooks.retryNow') : t('integrations.webhooks.sendAgain')" icon="i-lucide-send" color="neutral" size="sm" :loading="sending" @click="sendAgain" />
+          <UButton v-if="can('api.webhooks')" :label="delivery.status === 'retrying' ? t('integrations.webhooks.retryNow') : t('integrations.webhooks.sendAgain')" icon="i-lucide-send" color="neutral" size="sm" :loading="sending" @click="sendAgain" />
           <UButton :label="t('integrations.webhooks.openWebhook')" icon="i-lucide-webhook" color="neutral" variant="outline" size="sm" @click="emit('webhook', delivery.webhook.id)" />
         </div>
       </div>

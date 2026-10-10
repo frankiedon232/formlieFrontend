@@ -8,7 +8,9 @@
 <script setup lang="ts">
 import type { ApiEndpointDetail } from '#shared/types/apiService'
 
-definePageMeta({ breadcrumb: 'apiService.wizard.newCrumb' })
+definePageMeta({
+  breadcrumb: 'apiService.wizard.newCrumb',
+})
 const { t } = useI18n()
 const api = useApi()
 const route = useRoute()
@@ -16,6 +18,7 @@ const router = useRouter()
 const confirm = useConfirm()
 const { handle } = useErrorHandler()
 const setup = useApiSetup()
+const { can } = useCan()
 useHead({ title: () => t('apiService.wizard.newTitle') })
 
 const service = computed(() => (typeof route.query.service === 'string' ? route.query.service : null))
@@ -88,7 +91,7 @@ onBeforeRouteLeave(async () => (!dirty.value || created.value ? true : await con
         </div>
         <ApiJourney :summary="setup.summary.value" focus="service" compact :actions="false" />
         <div class="flex flex-wrap gap-2">
-          <UButton :label="t('apiService.gate.action')" icon="i-lucide-plus" color="neutral" @click="serviceOpen = true" />
+          <UButton v-if="can('api.service_create')" :label="t('apiService.gate.action')" icon="i-lucide-plus" color="neutral" @click="serviceOpen = true" />
           <UButton :label="t('nav.apiServices')" color="neutral" variant="outline" to="/api-service/services" />
         </div>
       </div>

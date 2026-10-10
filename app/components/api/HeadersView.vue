@@ -10,6 +10,7 @@ const props = defineProps<{ settings: ApiServiceSettings | null }>()
 const emit = defineEmits<{ rotateKey: [] }>()
 const { t } = useI18n()
 const { dateTime, relative } = useFormat()
+const { can } = useCan()
 
 const STANDARD = [
   { name: 'Authorization', value: 'Bearer <token>', when: 'always' },
@@ -54,7 +55,7 @@ const base = computed(() => (props.settings ? `${props.settings.base_url}/${prop
         <p v-else-if="settings.rotated_at" class="text-xs text-muted">
           {{ t('apiService.key.rotatedAt', { when: relative(settings.rotated_at) }) }}
         </p>
-        <UButton :label="t('apiService.key.rotate')" icon="i-lucide-refresh-cw" color="neutral" variant="outline" class="mt-auto w-fit" @click="emit('rotateKey')" />
+        <UButton v-if="can('api.key')" :label="t('apiService.key.rotate')" icon="i-lucide-refresh-cw" color="neutral" variant="outline" class="mt-auto w-fit" @click="emit('rotateKey')" />
       </template>
     </UCard>
 

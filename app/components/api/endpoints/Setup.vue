@@ -10,6 +10,8 @@ import type { ApiEndpointDetail } from '#shared/types/apiService'
 const props = defineProps<{ endpoint: ApiEndpointDetail; busy?: boolean }>()
 const emit = defineEmits<{ test: []; live: [on: boolean] }>()
 const { t } = useI18n()
+// Buttons that change things follow the role (F22 R2 M4); opening the service or form stays
+const { can } = useCan()
 const s = computed(() => props.endpoint.setup)
 const items = computed(() => [
   {
@@ -30,7 +32,7 @@ const items = computed(() => [
       // Tokens for every endpoint can call it too: said apart, never counted as made for it (owner 2026-10-08)
       s.value.tokens_all_live + s.value.tokens_all_test > 0 ? t('apiService.setup.token.alsoAll', { n: s.value.tokens_all_live + s.value.tokens_all_test }, s.value.tokens_all_live + s.value.tokens_all_test) : '',
     ].filter(Boolean).join(' '),
-    action: { label: t('apiService.setup.token.action'), to: { path: '/api-service/auth', query: { new: '1', endpoint: props.endpoint.id } } },
+    action: can('api.tokens') && { label: t('apiService.setup.token.action'), to: { path: '/api-service/auth', query: { new: '1', endpoint: props.endpoint.id } } },
   },
   {
     key: 'access',
@@ -39,7 +41,7 @@ const items = computed(() => [
     optional: true,
     title: t('apiService.setup.access.title'),
     text: s.value.rules ? t('apiService.setup.access.ok', { n: s.value.rules }, s.value.rules) : t('apiService.setup.access.text'),
-    action: { label: t('apiService.setup.access.action'), to: { path: '/api-service/access', query: { new: '1', endpoint: props.endpoint.id } } },
+    action: can('api.access') && { label: t('apiService.setup.access.action'), to: { path: '/api-service/access', query: { new: '1', endpoint: props.endpoint.id } } },
   },
   {
     key: 'test',
@@ -74,7 +76,7 @@ const ready = computed(() => s.value.service_active && s.value.form_published &&
           <p class="text-xs text-muted">{{ item.text }}</p>
           <div class="mt-1 flex flex-wrap gap-2">
             <UButton v-if="item.action" :label="item.action.label" :to="item.action.to" color="neutral" :variant="item.done ? 'outline' : 'solid'" size="xs" trailing-icon="i-lucide-arrow-right" />
-            <UButton v-if="item.key === 'test'" :label="t('apiService.docs.tryIt')" icon="i-lucide-play" color="neutral" variant="outline" size="xs" :disabled="!ready" @click="emit('test')" />
+            <UButton v-if="item.key === 'test' && can('api.try')" :label="t('apiService.docs.tryIt')" icon="i-lucide-play" color="neutral" variant="outline" size="xs" :disabled="!ready" @click="emit('test')" />
           </div>
         </div>
       </li>
@@ -87,7 +89,7 @@ const ready = computed(() => s.value.service_active && s.value.form_published &&
           <span class="flex items-center gap-1.5"><UIcon name="i-lucide-rocket" class="size-4 text-muted" /><span class="text-sm font-medium text-highlighted">{{ t('apiService.setup.live.title') }}</span></span>
           <p class="text-xs text-muted">{{ s.live ? t('apiService.setup.live.on') : t('apiService.setup.live.text') }}</p>
           <p v-if="!s.live && !s.tokens_live && !s.tokens_all_live" class="text-xs text-warning">{{ t('apiService.setup.live.noLiveToken') }}</p>
-          <USwitch :model-value="s.live" :label="s.live ? t('apiService.setup.isLive') : t('apiService.setup.live.action')" :disabled="busy || !ready" class="mt-1" @update:model-value="value => emit('live', !!value)" />
+          <USwitch v-if="can('api.endpoints')" :model-value="s.live" :label="s.live ? t('apiService.setup.isLive') : t('apiService.setup.live.action')" :disabled="busy || !ready" class="mt-1" @update:model-value="value => emit('live', !!value)" />
         </div>
       </li>
     </ol>

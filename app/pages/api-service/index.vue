@@ -20,6 +20,7 @@ onMounted(() => void setup.refresh())
 const setupDone = computed(() => { const s = setup.summary.value; return !!s && s.services > 0 && s.endpoints > 0 && s.endpoints_live > 0 && s.tokens_live > 0 })
 const setupCount = computed(() => { const s = setup.summary.value; return s ? [s.services > 0, s.endpoints > 0, s.tokens_live + s.tokens_test > 0, s.endpoints_live > 0 && s.tokens_live > 0].filter(Boolean).length : 0 })
 useHead({ title: () => t('nav.apiService') })
+const { can } = useCan()
 
 const analytics = ref<ApiAnalytics | null>(null)
 const services = ref<ApiInsights | null>(null)
@@ -69,8 +70,8 @@ const shortcuts = [
 <template>
   <AppPanel id="api-service" :title="t('nav.apiService')" :subtitle="t('apiService.subtitle')" subtitle-icon="i-lucide-code-xml">
     <template #actions>
-      <UButton :label="t('apiService.tokens.newTitle')" icon="i-lucide-key-round" color="neutral" variant="outline" to="/api-service/auth" class="hidden sm:inline-flex" />
-      <UButton :label="t('apiService.actions.newEndpoint')" icon="i-lucide-plus" color="neutral" to="/api-service/endpoints/new" />
+      <UButton v-if="can('api.tokens')" :label="t('apiService.tokens.newTitle')" icon="i-lucide-key-round" color="neutral" variant="outline" to="/api-service/auth" class="hidden sm:inline-flex" />
+      <UButton v-if="can('api.endpoints')" :label="t('apiService.actions.newEndpoint')" icon="i-lucide-plus" color="neutral" to="/api-service/endpoints/new" />
     </template>
 
     <UCard v-if="setup.summary.value && !setupDone" variant="outline" class="shrink-0" :ui="{ body: 'flex flex-col gap-4 p-4 sm:p-5' }">

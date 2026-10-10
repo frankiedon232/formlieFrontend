@@ -80,7 +80,7 @@ export const formStorage = defineMockRoute(({ event }) => {
     destination: destination ? rowOfDestination(tenant, destination) : null,
     connections: dataSourcesOf(tenant).filter(source => source.enabled).length,
     fields: inputFieldsOf(form).map(field => ({ key: field.key, label: field.label ?? field.key, type: field.type, options: field.options?.map(option => ({ value: option.value, label: option.label })) })),
-    can_manage: can(user, 'data.manage'),
+    can_manage: can(user, 'data.storage'),
   })
 })
 

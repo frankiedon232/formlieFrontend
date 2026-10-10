@@ -20,6 +20,7 @@ const route = useRoute()
 const router = useRouter()
 const { handle, messageFor } = useErrorHandler()
 const { number } = useFormat()
+const { can } = useCan()
 useHead({ title: () => t('nav.dataExplorer') })
 
 const sources = ref<DataSourceRow[] | null>(null)
@@ -152,7 +153,10 @@ async function removeRow(item: TableRow) {
 }
 // Structure changes (their own tables with Full access, never response tables)
 const schema = useTemplateRef<{ addColumn: () => void; editColumn: (column: ExplorerColumn) => void; dropColumn: (column: ExplorerColumn) => void; addIndex: () => void; dropIndex: (index: TableIndex) => void; table: (mode: 'rename' | 'truncate' | 'drop') => void; removing: string | null }>('schema')
-const canCreate = computed(() => source.value?.access.other === 'read_write')
+// What the role allows on top of the table's own rules: rows (data.rows), structure (data.structure)
+const canCreate = computed(() => can('data.structure') && source.value?.access.other === 'read_write')
+const canAlter = computed(() => can('data.structure') && !!structure.value?.alterable)
+const canRows = computed(() => can('data.rows') && !!structure.value && !structure.value.read_only)
 const newTableOpen = ref(false)
 // The open table's schema first, then the connection's own list, then the rest
 const schemas = computed(() => {
@@ -239,11 +243,11 @@ const readOnlyText = computed(() =>
         class="hidden sm:inline-flex"
         @click="newTable()"
       />
-      <template v-if="structure && dsId && !structure.read_only">
+      <template v-if="canRows && dsId">
         <UButton :label="t('explorer.addRow')" icon="i-lucide-plus" color="neutral" @click="editRow(null)" />
       </template>
       <ExplorerExportButton
-        v-if="structure && dsId"
+        v-if="structure && dsId && can('data.export')"
         ref="exporter"
         :source-id="dsId"
         :schema="structure.schema"
@@ -260,14 +264,18 @@ const readOnlyText = computed(() =>
       icon="i-lucide-database"
       :title="t('explorer.noConnections')"
       :description="t('explorer.noConnectionsDesc')"
-      :actions="[
-        {
-          label: t('dataSources.add'),
-          icon: 'i-lucide-plus',
-          color: 'neutral',
-          to: '/data-sources/connections/new',
-        },
-      ]"
+      :actions="
+        can('data.create')
+          ? [
+              {
+                label: t('dataSources.add'),
+                icon: 'i-lucide-plus',
+                color: 'neutral',
+                to: '/data-sources/connections/new',
+              },
+            ]
+          : []
+      "
       class="my-auto"
     />
     <!-- The connection isn't working -->
@@ -367,7 +375,7 @@ const readOnlyText = computed(() =>
               class="shrink-0 sm:ms-auto"
               :ui="{ ...SEGMENTED_UI, root: 'w-full sm:w-fit' }"
             />
-            <UDropdownMenu v-if="structure.alterable" :items="tableMenu" :content="{ align: 'end' }">
+            <UDropdownMenu v-if="canAlter" :items="tableMenu" :content="{ align: 'end' }">
               <UButton icon="i-lucide-ellipsis" color="neutral" variant="outline" size="xs" square :aria-label="t('explorer.ddl.tableActions', { table: structure.name })" />
             </UDropdownMenu>
           </div>
@@ -425,9 +433,9 @@ const readOnlyText = computed(() =>
       @edit="editRow"
       @remove="removeRow"
     />
-    <ExplorerSchemaActions v-if="structure?.alterable && dsId && source" ref="schema" :source-id="dsId" :engine="source.engine" :structure="structure" @changed="schemaChanged" />
+    <ExplorerSchemaActions v-if="structure && canAlter && dsId && source" ref="schema" :source-id="dsId" :engine="source.engine" :structure="structure" @changed="schemaChanged" />
     <ExplorerNewTableModal v-if="canCreate && dsId && source" v-model:open="newTableOpen" :source-id="dsId" :engine="source.engine" :schemas="schemas" @created="tableCreated" />
-    <template v-if="structure && dsId && !structure.read_only">
+    <template v-if="structure && dsId && canRows">
       <ExplorerRowForm
         v-model:open="formOpen"
         :source-id="dsId"

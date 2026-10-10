@@ -12,23 +12,27 @@ const emit = defineEmits<{ pause: [paused: boolean]; backfill: []; retry: []; re
 const { t } = useI18n()
 const toast = useToast()
 const { copy } = useClipboard({ legacy: true })
+// Changing how the form is stored needs data.storage
+const { can } = useCan()
 const running = computed(() => props.destination.backfill?.status === 'running')
-const menu = computed<DropdownMenuItem[][]>(() => [
+const menu = computed<DropdownMenuItem[][]>(() =>
   [
-    { label: t('destinations.actions.openForm'), icon: 'i-lucide-file-text', to: `/forms/${props.destination.form.id}` },
-    { label: t('destinations.actions.openConnection'), icon: 'i-lucide-database', to: { path: '/data-sources/connections', query: { connection: props.destination.datasource.id } } },
-    { label: t('destinations.actions.change'), icon: 'i-lucide-columns-3', to: `/forms/${props.destination.form.id}/storage` },
-    {
-      label: t('dataSources.actions.copyLink'),
-      icon: 'i-lucide-link',
-      onSelect: () => {
-        void copy(`${location.origin}/data-sources/destinations?destination=${props.destination.id}`)
-        toast.add({ title: t('dataSources.toast.linkCopied'), color: 'success', icon: 'i-lucide-check' })
+    [
+      { label: t('destinations.actions.openForm'), icon: 'i-lucide-file-text', to: `/forms/${props.destination.form.id}` },
+      { label: t('destinations.actions.openConnection'), icon: 'i-lucide-database', to: { path: '/data-sources/connections', query: { connection: props.destination.datasource.id } } },
+      ...(can('data.storage') ? [{ label: t('destinations.actions.change'), icon: 'i-lucide-columns-3', to: `/forms/${props.destination.form.id}/storage` }] : []),
+      {
+        label: t('dataSources.actions.copyLink'),
+        icon: 'i-lucide-link',
+        onSelect: () => {
+          void copy(`${location.origin}/data-sources/destinations?destination=${props.destination.id}`)
+          toast.add({ title: t('dataSources.toast.linkCopied'), color: 'success', icon: 'i-lucide-check' })
+        },
       },
-    },
-  ],
-  [{ label: t('destinations.actions.remove'), icon: 'i-lucide-undo-2', color: 'error' as const, onSelect: () => emit('remove') }],
-])
+    ],
+    can('data.storage') ? [{ label: t('destinations.actions.remove'), icon: 'i-lucide-undo-2', color: 'error' as const, onSelect: () => emit('remove') }] : [],
+  ].filter(group => group.length),
+)
 </script>
 
 <template>
@@ -55,7 +59,7 @@ const menu = computed<DropdownMenuItem[][]>(() => [
       </div>
     </div>
 
-    <div class="flex flex-wrap items-center gap-2">
+    <div v-if="can('data.storage')" class="flex flex-wrap items-center gap-2">
       <UButton :label="t('destinations.actions.backfill')" icon="i-lucide-history" color="neutral" size="sm" :disabled="busy || running || !destination.not_sent" @click="emit('backfill')" />
       <UButton v-if="destination.failed" :label="t('destinations.actions.retryAll', { n: destination.failed }, destination.failed)" icon="i-lucide-rotate-cw" color="neutral" variant="outline" size="sm" :loading="busy" @click="emit('retry')" />
       <USwitch :model-value="destination.status !== 'paused'" :label="destination.status === 'paused' ? t('destinations.paused') : t('destinations.delivering')" :disabled="busy" class="ms-auto" @update:model-value="value => emit('pause', !value)" />

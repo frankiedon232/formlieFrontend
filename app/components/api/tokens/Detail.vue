@@ -14,6 +14,9 @@ const { t, d } = useI18n()
 const api = useApi()
 const { number, relative, dateTime, date } = useFormat()
 const format = useTokenFormat()
+// Changing a token or showing its secret needs api.tokens (F22 R2 M4)
+const { can } = useCan()
+const manage = computed(() => can('api.tokens'))
 
 const token = ref<ApiToken | null>(null)
 const failed = ref(false)
@@ -53,7 +56,7 @@ const tiles = computed(() => {
 const points = computed(() => (token.value?.daily ?? []).map(day => ({ label: d(new Date(`${day.date}T12:00:00`), { day: 'numeric', month: 'short' }), value: day.count })))
 const menu = computed<DropdownMenuItem[][]>(() => {
   const k = token.value
-  if (!k) return []
+  if (!k || !manage.value) return []
   return [
     ...(k.status !== 'revoked' ? [[{ label: t('apiService.actions.edit'), icon: 'i-lucide-pencil', onSelect: () => emit('edit', k) }]] : []),
     ...(ended.value ? [[{ label: t('apiService.actions.delete'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => emit('remove', k) }]] : []),
@@ -91,7 +94,7 @@ const menu = computed<DropdownMenuItem[][]>(() => {
             <UButton icon="i-lucide-x" color="neutral" variant="soft" size="sm" square class="rounded-full" :aria-label="t('common.close')" @click="open = false" />
           </div>
         </div>
-        <div v-if="token.status !== 'revoked'" class="flex flex-wrap items-center gap-2">
+        <div v-if="token.status !== 'revoked' && manage" class="flex flex-wrap items-center gap-2">
           <UButton :label="t('apiService.tokens.rotate')" icon="i-lucide-refresh-cw" color="neutral" size="sm" :disabled="busy" @click="emit('rotate', token)" />
           <UButton :label="t('apiService.tokens.revoke')" icon="i-lucide-ban" color="error" variant="outline" size="sm" :disabled="busy" @click="emit('revoke', token)" />
         </div>
@@ -108,8 +111,8 @@ const menu = computed<DropdownMenuItem[][]>(() => {
       <template v-else>
         <UAlert v-if="token.rotating_until" icon="i-lucide-refresh-cw" color="warning" variant="subtle" :title="t('apiService.tokens.rotating', { until: dateTime(token.rotating_until) })" />
         <UAlert v-if="token.status === 'revoked'" icon="i-lucide-ban" color="error" variant="subtle" :title="t('apiService.tokens.revokedOn', { date: dateTime(token.revoked_at!) })" :description="t('apiService.tokens.revokedDesc')" />
-        <UAlert v-if="token.scope_gone && token.status !== 'revoked'" icon="i-lucide-triangle-alert" color="warning" variant="subtle" :title="t('apiService.tokens.scopeGone.title', { n: token.scope_gone }, token.scope_gone)" :description="t('apiService.tokens.scopeGone.text')" :actions="[{ label: t('apiService.actions.edit'), icon: 'i-lucide-pencil', color: 'neutral', variant: 'outline', size: 'xs', onClick: () => emit('edit', token!) }]" />
-        <AppSecretReveal v-if="token.status !== 'revoked'" :preview="token.kind === 'client' ? (token.client_id ?? token.preview) : token.preview" :endpoint="`/api-tokens/${token.id}/reveal`" :viewable="token.viewable" :title="t('apiService.tokens.secret.title')" :labels="{ token: t('apiService.tokens.secret.token'), client_secret: t('apiService.tokens.secret.clientSecret') }" />
+        <UAlert v-if="token.scope_gone && token.status !== 'revoked'" icon="i-lucide-triangle-alert" color="warning" variant="subtle" :title="t('apiService.tokens.scopeGone.title', { n: token.scope_gone }, token.scope_gone)" :description="t('apiService.tokens.scopeGone.text')" :actions="manage ? [{ label: t('apiService.actions.edit'), icon: 'i-lucide-pencil', color: 'neutral', variant: 'outline', size: 'xs', onClick: () => emit('edit', token!) }] : []" />
+        <AppSecretReveal v-if="token.status !== 'revoked' && manage" :preview="token.kind === 'client' ? (token.client_id ?? token.preview) : token.preview" :endpoint="`/api-tokens/${token.id}/reveal`" :viewable="token.viewable" :title="t('apiService.tokens.secret.title')" :labels="{ token: t('apiService.tokens.secret.token'), client_secret: t('apiService.tokens.secret.clientSecret') }" />
         <div class="grid grid-cols-2 gap-2 transition-opacity sm:grid-cols-3" :class="busy ? 'opacity-60' : ''">
           <div v-for="tile in tiles" :key="tile.key" class="flex min-w-0 items-center gap-2.5 rounded-lg border border-default p-2.5">
             <span class="flex size-8 shrink-0 items-center justify-center rounded-md bg-elevated"><UIcon :name="tile.icon" class="size-4 text-muted" /></span>
