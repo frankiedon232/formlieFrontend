@@ -7,7 +7,7 @@
 | Frontend project | `formalieFrontend` (Nuxt 4.5.2, @nuxt/ui 4.11.1, tailwindcss 4.3.3, vue 3.5.43, vue-router 5.3.1), pnpm                             |
 | Frontend URL     | `https://formalie.dev:2202/`                                                                                                        |
 | Frontend run     | `pnpm dev --host 0.0.0.0 --port 2202 --https --https.cert=C:\devcerts\formalie.pem --https.key=C:\devcerts\formalie-key.pem`        |
-| Backend project  | `formalieBackend`, Python 3.11.9, venv, `pip install fastapi[all]`                                                                  |
+| Backend project  | `formlyBackend`, Python 3.11.9, venv, `pip install fastapi[all]`                                                                  |
 | Backend run      | `uvicorn app.run:app --host 0.0.0.0 --port 5004 --ssl-certfile C:\devcerts\formalie.pem --ssl-keyfile C:\devcerts\formalie-key.pem` |
 | API docs         | `https://formalie.dev:5004/docs`, `https://formalie.dev:5004/redoc`                                                                 |
 | Certificate      | mkcert: `formalie.dev *.formalie.dev localhost *.localhost 127.0.0.1 ::1 <LAN IP>` (see Access matrix)                              |

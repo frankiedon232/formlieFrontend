@@ -58,31 +58,31 @@ Build API endpoints from forms (one form per endpoint, as many as needed), group
 
 ### 7. Analytics
 
-Per form: views, starts, completions, completion rate, drop-off per page/field, average completion time, per-question charts, NPS. Date-range filters. Organisation-wide analytics on the Dashboard (built last).
+Per form: views, starts, completions, completion rate, drop-off per page/field, average completion time, per-question charts, NPS. Date-range filters. Organisation-wide numbers on the Dashboard (F21: Workspace, Forms, Data sources and API service views).
 
 ### 8. Collaboration
 
-Live co-editing in the builder (presence, cursors/selection, conflict-free edits), planned as an optional phase once the single-user builder is solid. Comments on fields later.
+Live co-editing was removed by the owner (2026-10-08). People work together through sharing (edit / view / responses access) and roles.
 
 ### 9. Settings (handles everything)
 
 Company profile, branding, subdomain, authentication providers (Google, Microsoft, Apple, Facebook, email/password), OTP policy, predefined select lists (option sets), themes, data destinations/connections, webhooks, API keys, notification and email templates, data retention, localisation (language, timezone, date/number formats, currency), embed defaults, security policies (password rules, session timeout, IP allowlist), billing/subscription.
 
-### 10. Users, roles, access (RBAC), near the end
+### 10. Users, roles, access (RBAC)
 
-Org admin (all access by default) profiles users in their organisation, defines roles and permissions, resets passwords/accounts, enables/disables users, forces MFA, enables auth providers shown on their subdomain login page.
+Brought forward into F16 (owner, 2026-10-09). Org admin (all access by default) profiles people in their organisation (department, job titles, roles), defines roles whose permissions carry a scope per action (None, Own, Shared, Own & shared, All), resets passwords/accounts, enables/disables users, forces MFA, enables auth providers shown on their subdomain login page.
 
 ### 11. Audit trail and logs
 
-Every action recorded with who, what, when, where (IP, geo), before/after values.
+Built right after sign-in (F4); every later feature records its actions there. Every action recorded with who, what, when, where (IP, geo), before/after values.
 
-### 12. Dashboard, last
+### 12. Dashboard
 
-Robust overview with date-range filters, built once we know exactly what to capture.
+Built in F21 (2026-10-10): Workspace, Forms, Data sources and API service views with period, folder and owner filters and first steps for new workspaces.
 
 ### 13. Subscription
 
-Plans and pricing live on the product website; upgrade/renewal also available inside the portal for free-tier users. Plan limits enforced in the backend (forms, responses/month, seats, own-database destination, custom branding, etc.).
+Plans and pricing live on the product website; upgrade/renewal also available inside the portal for free-tier users. Plans Starter (free), Professional, Business and Enterprise (contact us), billed Monthly, Quarterly or Annually through **Payoneer** (F24). Plan limits enforced in the backend (forms, responses/month, seats, own-database destination, custom branding, data residency, etc.). No custom CSS in any plan (owner, 2026-10-10).
 
 ## Non-negotiables (summary)
 

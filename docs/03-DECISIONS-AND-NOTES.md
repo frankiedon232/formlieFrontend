@@ -307,3 +307,5 @@ Edit this file whenever a decision changes.
 - the renderer `scripts/brand/render.mjs`.
 
 The portal shows the mark as the icon `i-formalie-mark`, a custom Nuxt Icon collection in `app/assets/icons`, inside the UI's inverted box. The browser tab icons sit in `nuxt.config` `app.head` under the keys `icon-ico` and `icon-svg`, and a workspace's own tab icon takes over both keys. The website and the platform admin use the same files, from `formalie-brand.zip`.
+
+**Backend alignment (owner 2026-10-10).** The backend project is **formlyBackend** (`C:/UNETPROJECTS/formlyBackend`), built after this frontend and replacing its mock. The mock (`server/mock/**`) is the reference implementation: `docs/ENDPOINTS.md` (in formlyBackend) lists its 399 endpoints, and `docs/FRONTEND-REFERENCE.md` lists the `shared/` rules the backend ports with parity tests. Shared docs stay identical in both projects; a contract change is made in both. Development services run without Docker.
