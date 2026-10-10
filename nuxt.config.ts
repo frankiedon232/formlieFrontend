@@ -60,6 +60,9 @@ export default defineNuxtConfig({
     // Server-only: lets the Nuxt server read published forms for server-rendered pages (F10).
     // Production sets NUXT_INTERNAL_TOKEN (shared with the API); development makes one per start.
     internalToken: randomUUID(),
+    // Server-only (F24): the secret Payoneer signs its payment notifications with. Production: NUXT_PAYONEER_WEBHOOK_SECRET.
+    // Empty outside development = every notification is refused (never trusted unsigned).
+    payoneerWebhookSecret: '',
     public: {
       apiBase: '/api/v1',
       appVersion: pkg.version,

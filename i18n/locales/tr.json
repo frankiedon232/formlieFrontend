@@ -657,7 +657,10 @@
     "FRM-AUTH-1020": "Açmadan önce çoklu oturum açmayı test edin.",
     "FRM-SET-1001": "Önce bunu doğrulayın veya test edin, sonra kullanabilirsiniz.",
     "FRM-BILL-1001": "Ödeme gerçekleşmedi. Başka bir kart deneyin veya bankanızla iletişime geçin.",
-    "FRM-BILL-1002": "Bu ödeme oturumunun süresi doldu. Yeniden başlayın."
+    "FRM-BILL-1002": "Bu ödeme oturumunun süresi doldu. Yeniden başlayın.",
+    "FRM-BILL-1004": "Bu çalışma alanı için başka bir faturalama değişikliği sürüyor. Birazdan tekrar deneyin.",
+    "FRM-BILL-1005": "Bu istek zaten başka bir iş için kullanıldı. Sayfayı yenileyip tekrar deneyin.",
+    "FRM-BILL-1006": "Ödeme bildirimi doğrulanamadı."
   },
   "errorUi": {
     "reference": "Referans: {id}",

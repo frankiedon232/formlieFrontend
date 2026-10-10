@@ -27,9 +27,12 @@ interface Preview {
   impact: DowngradeImpact
 }
 const preview = ref<Preview | null>(null)
+/** One key per decision: confirming twice, or a retry after a dropped connection, is the same request. */
+const requestKey = ref('')
 watch(open, async value => {
   if (!value || !props.plan) return
   preview.value = null
+  requestKey.value = crypto.randomUUID()
   try {
     preview.value = (await api.post<Preview>('/billing/preview', { plan: props.plan, period: props.period })).data
   } catch (error) {
@@ -41,7 +44,7 @@ watch(open, async value => {
 const { busy, run } = useBusy()
 async function confirm() {
   if (!props.plan) return
-  const done = await run(() => billing.change(props.plan!, props.period))
+  const done = await run(() => billing.change(props.plan!, props.period, requestKey.value))
   if (done === undefined) return
   open.value = false
   if (done) toast.add({ title: preview.value?.when === 'now' ? t('billing.changed', { plan: t(`billing.plan.${props.plan}.name`) }) : t('billing.changeScheduled', { plan: t(`billing.plan.${props.plan}.name`), date: date(preview.value!.starts_at) }), color: 'success', icon: 'i-lucide-circle-check' })

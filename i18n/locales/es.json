@@ -657,7 +657,10 @@
     "FRM-AUTH-1020": "Prueba el inicio de sesión único antes de activarlo.",
     "FRM-SET-1001": "Verifícalo o pruébalo primero y después podrás usarlo.",
     "FRM-BILL-1001": "El pago no se completó. Prueba con otra tarjeta o contacta con tu banco.",
-    "FRM-BILL-1002": "Este pago ha caducado. Empieza de nuevo."
+    "FRM-BILL-1002": "Este pago ha caducado. Empieza de nuevo.",
+    "FRM-BILL-1004": "Hay otro cambio de facturación en curso para este espacio de trabajo. Inténtalo de nuevo en un momento.",
+    "FRM-BILL-1005": "Esta solicitud ya se usó para otra cosa. Recarga la página e inténtalo de nuevo.",
+    "FRM-BILL-1006": "No se pudo verificar la notificación de pago."
   },
   "errorUi": {
     "reference": "Referencia: {id}",

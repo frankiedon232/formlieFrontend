@@ -46,16 +46,19 @@ export function useBilling() {
   }
   const set = (value: BillingOverview) => (overview.value = value)
 
-  /** Change plan; when a payment is needed first it opens the checkout. */
-  async function change(plan: PlanId, newPeriod: BillingPeriod) {
-    const { data } = await api.post<{ overview: BillingOverview; checkout: { plan: PlanId; period: BillingPeriod; amount: number } | null }>('/billing/change', { plan, period: newPeriod })
+  /**
+   * Change plan; when a payment is needed first it opens the checkout. `requestKey` is one per decision (the
+   * dialog makes it when it opens): a retry of the same decision can never charge twice.
+   */
+  async function change(plan: PlanId, newPeriod: BillingPeriod, requestKey: string) {
+    const { data } = await api.post<{ overview: BillingOverview; checkout: { plan: PlanId; period: BillingPeriod; amount: number } | null }>('/billing/change', { plan, period: newPeriod, request_key: requestKey })
     overview.value = data.overview
-    if (data.checkout) checkout.value = (await api.post<CheckoutSession>('/billing/checkout', { plan, period: newPeriod })).data
+    if (data.checkout) checkout.value = (await api.post<CheckoutSession>('/billing/checkout', { plan, period: newPeriod, request_key: `${requestKey}-checkout` })).data
     else invoices.value = null
     return !data.checkout
   }
   async function addCard() {
-    checkout.value = (await api.post<CheckoutSession>('/billing/checkout', { purpose: 'add_card' })).data
+    checkout.value = (await api.post<CheckoutSession>('/billing/checkout', { purpose: 'add_card', request_key: crypto.randomUUID() })).data
   }
 
   const planById = (id: PlanId) => plans.value?.find(plan => plan.id === id) ?? null

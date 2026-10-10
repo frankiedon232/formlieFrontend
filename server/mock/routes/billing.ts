@@ -27,6 +27,7 @@ import { addressOf } from '../data/addressStore'
 import { creditsUsed } from '../data/aiStore'
 import { billingOf, makeInvoice, saveBilling } from '../data/billingStore'
 import { advance, cardLabel, refreshNextCharge } from '../data/billingLifecycle'
+import { once, recordPayment, settlePayment, withBillingLock } from '../billing/guard'
 import { dataSourcesOf } from '../data/dataSourceStore'
 import { formsOf } from '../data/formStore'
 import { sendingOf } from '../data/sendingStore'
@@ -104,48 +105,64 @@ export const previewChange = defineMockRoute(({ event, body }) => {
   return ok({ plan: input.plan, period: input.period, price: change.price, currency: change.target.currency, when: change.when, starts_at: change.starts_at, credit: change.credit, due_now: change.due, impact: impactOf(tenant, change.target) })
 })
 
-/** Starts a paid plan now, charged to the card on file (the processor confirms in the backend). */
+/** Starts a paid plan now (the payment is already confirmed); returns the invoice. */
 export function startPlan(tenant: MockTenant, plan: PlanId, period: BillingPeriod, amount: number, now = new Date()) {
   const billing = billingOf(tenant)
   const sub = billing.subscription
   const end = periodEnd(now, period)
   Object.assign(sub, { plan, period, status: 'active', current_period_start: now.toISOString(), current_period_end: end.toISOString(), cancel_at_period_end: false, scheduled: null, grace_until: null })
   if (!sub.auto_renew && sub.payment_method) sub.auto_renew = true
-  billing.invoices.unshift(makeInvoice(plan, period, now, end, amount, cardLabel(sub)))
+  const invoice = makeInvoice(plan, period, now, end, amount, cardLabel(sub))
+  billing.invoices.unshift(invoice)
   refreshNextCharge(sub)
   saveBilling()
+  return invoice
 }
 
+const changeBody = changeSchema.extend({ request_key: z.string() })
+
+/**
+ * One decision, one charge: the workspace's billing lock is held, the request key answers a repeat with the
+ * first result, and an upgrade is written down as a payment (reference `upgrade:{request key}`) before the card
+ * is charged.
+ */
 export const changePlan = defineMockRoute(({ event, body }) => {
   const { tenant, user } = requireAuth(event)
-  const input = parseBody(changeSchema, body)
-  const billing = billingOf(tenant)
-  const sub = billing.subscription
-  const before = label(sub.plan, sub.period)
-  // Moving down to Starter is cancelling at the end of the period
-  if (input.plan === 'starter') {
-    if (sub.plan === 'starter') return ok({ overview: overview(tenant), checkout: null })
-    sub.cancel_at_period_end = true
-    sub.scheduled = null
-    refreshNextCharge(sub)
-    saveBilling()
-    audit(event, tenant, user, 'plan', before, 'starter (at period end)')
-    return ok({ overview: overview(tenant), checkout: null })
-  }
-  const change = planChange(tenant, input.plan, input.period)
-  if (change.when === 'period_end') {
-    sub.scheduled = { plan: input.plan, period: input.period, at: change.starts_at }
-    sub.cancel_at_period_end = false
-    refreshNextCharge(sub)
-    saveBilling()
-    audit(event, tenant, user, 'plan', before, `${label(input.plan, input.period)} (at period end)`)
-    return ok({ overview: overview(tenant), checkout: null })
-  }
-  // Paying now needs a card: without one, the processor's checkout takes the payment and saves the card
-  if (!sub.payment_method) return ok({ overview: overview(tenant), checkout: { plan: input.plan, period: input.period, amount: change.due } })
-  startPlan(tenant, input.plan, input.period, change.due)
-  audit(event, tenant, user, 'plan', before, label(input.plan, input.period))
-  return ok({ overview: overview(tenant), checkout: null })
+  const { request_key: key, ...input } = parseBody(changeBody, body)
+  return withBillingLock(tenant, () =>
+    once(tenant, 'change', key, input, () => {
+      const billing = billingOf(tenant)
+      const sub = billing.subscription
+      const before = label(sub.plan, sub.period)
+      // Moving down to Starter is cancelling at the end of the period
+      if (input.plan === 'starter') {
+        if (sub.plan === 'starter') return { checkout: null }
+        sub.cancel_at_period_end = true
+        sub.scheduled = null
+        refreshNextCharge(sub)
+        saveBilling()
+        audit(event, tenant, user, 'plan', before, 'starter (at period end)')
+        return { checkout: null }
+      }
+      const change = planChange(tenant, input.plan, input.period)
+      if (change.when === 'period_end') {
+        sub.scheduled = { plan: input.plan, period: input.period, at: change.starts_at }
+        sub.cancel_at_period_end = false
+        refreshNextCharge(sub)
+        saveBilling()
+        audit(event, tenant, user, 'plan', before, `${label(input.plan, input.period)} (at period end)`)
+        return { checkout: null }
+      }
+      // Paying now needs a card: without one, the processor's checkout takes the payment and saves the card
+      if (!sub.payment_method) return { checkout: { plan: input.plan, period: input.period, amount: change.due } }
+      const { payment } = recordPayment(tenant, { reference: `upgrade:${key}`, kind: 'upgrade', plan: input.plan, period: input.period, amount: change.due, currency: change.target.currency })
+      // The processor charges the card on file under the payment's reference (the mock: always accepted)
+      const invoice = startPlan(tenant, input.plan, input.period, change.due)
+      settlePayment(payment, 'paid', invoice.id)
+      audit(event, tenant, user, 'plan', before, label(input.plan, input.period))
+      return { checkout: null }
+    }),
+  ).then(result => ok({ overview: overview(tenant), ...result }))
 })
 
 export const cancelPlan = defineMockRoute(({ event }) => {

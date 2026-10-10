@@ -657,7 +657,10 @@
     "FRM-AUTH-1020": "Testen Sie das Single Sign-on, bevor Sie es einschalten.",
     "FRM-SET-1001": "Bestätigen oder testen Sie dies zuerst, dann können Sie es verwenden.",
     "FRM-BILL-1001": "Die Zahlung ist nicht durchgegangen. Versuchen Sie eine andere Karte oder wenden Sie sich an Ihre Bank.",
-    "FRM-BILL-1002": "Dieser Bezahlvorgang ist abgelaufen. Beginnen Sie neu."
+    "FRM-BILL-1002": "Dieser Bezahlvorgang ist abgelaufen. Beginnen Sie neu.",
+    "FRM-BILL-1004": "Eine andere Abrechnungsänderung für diesen Arbeitsbereich läuft gerade. Versuchen Sie es gleich noch einmal.",
+    "FRM-BILL-1005": "Diese Anfrage wurde bereits für etwas anderes verwendet. Laden Sie die Seite neu und versuchen Sie es erneut.",
+    "FRM-BILL-1006": "Die Zahlungsbenachrichtigung konnte nicht verifiziert werden."
   },
   "errorUi": {
     "reference": "Referenz: {id}",

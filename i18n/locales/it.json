@@ -657,7 +657,10 @@
     "FRM-AUTH-1020": "Prova il single sign-on prima di attivarlo.",
     "FRM-SET-1001": "Verificalo o provalo prima, poi potrai usarlo.",
     "FRM-BILL-1001": "Il pagamento non è andato a buon fine. Prova con un’altra carta o contatta la tua banca.",
-    "FRM-BILL-1002": "Questo pagamento è scaduto. Ricomincia."
+    "FRM-BILL-1002": "Questo pagamento è scaduto. Ricomincia.",
+    "FRM-BILL-1004": "È in corso un’altra modifica di fatturazione per questo spazio di lavoro. Riprova tra un momento.",
+    "FRM-BILL-1005": "Questa richiesta è già stata usata per altro. Ricarica la pagina e riprova.",
+    "FRM-BILL-1006": "Non è stato possibile verificare la notifica di pagamento."
   },
   "errorUi": {
     "reference": "Riferimento: {id}",

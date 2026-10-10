@@ -657,7 +657,10 @@
     "FRM-AUTH-1020": "Testez l’authentification unique avant de l’activer.",
     "FRM-SET-1001": "Vérifiez ou testez d’abord, puis vous pourrez l’utiliser.",
     "FRM-BILL-1001": "Le paiement n’a pas abouti. Essayez une autre carte ou contactez votre banque.",
-    "FRM-BILL-1002": "Ce paiement a expiré. Recommencez."
+    "FRM-BILL-1002": "Ce paiement a expiré. Recommencez.",
+    "FRM-BILL-1004": "Une autre modification de facturation est en cours pour cet espace de travail. Réessayez dans un instant.",
+    "FRM-BILL-1005": "Cette demande a déjà été utilisée pour autre chose. Rechargez la page et réessayez.",
+    "FRM-BILL-1006": "La notification de paiement n’a pas pu être vérifiée."
   },
   "errorUi": {
     "reference": "Référence : {id}",

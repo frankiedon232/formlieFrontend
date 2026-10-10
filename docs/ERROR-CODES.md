@@ -105,6 +105,9 @@ Format: `FRM-<DOMAIN>-<NNNN>`. Ranges: 1000–1999 client/validation, 5000–599
 | FRM-PLAN-1002 | 402  | This feature is not included in your plan.                        | INFO     |
 | FRM-BILL-1001 | 402  | The payment didn't go through (declined by the bank or processor). | INFO |
 | FRM-BILL-1002 | 410  | This checkout has expired. Start again.                            | INFO     |
+| FRM-BILL-1004 | 409  | Another billing change for this workspace is in progress (one at a time). | INFO |
+| FRM-BILL-1005 | 409  | This request key was already used for a different billing request (idempotency). | WARN |
+| FRM-BILL-1006 | 400  | A payment webhook failed verification (signature, age or format); nothing is changed. | WARN |
 | FRM-SET-1001  | 409  | Verify or test this first (an email domain before sending from it, a mail server before using it). | INFO |
 
 ### Client-side codes (raised by the portal, never sent by the server)

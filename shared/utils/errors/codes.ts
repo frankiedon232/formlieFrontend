@@ -173,6 +173,9 @@ export const ERROR_CODES = {
   'FRM-PLAN-1002': { status: 402, message: 'This feature is not included in your plan.' },
   'FRM-BILL-1001': { status: 402, message: "The payment didn't go through." },
   'FRM-BILL-1002': { status: 410, message: 'This checkout has expired.' },
+  'FRM-BILL-1004': { status: 409, message: 'Another billing change is in progress.' },
+  'FRM-BILL-1005': { status: 409, message: 'This request was already used for something else.' },
+  'FRM-BILL-1006': { status: 400, message: 'The payment notification could not be verified.' },
   'FRM-SET-1001': { status: 409, message: 'Verify or test this first.' },
 } as const satisfies Record<string, ErrorCodeDefinition>
 

@@ -8,6 +8,8 @@ import type { BillingPeriod, CheckoutSession, Invoice, PlanId, Subscription } fr
 import { periodEnd, planOf } from '#shared/utils/billing/plans'
 import { loadPersisted, savePersisted } from '../core/persist'
 import type { MockTenant } from './tenants'
+import type { IdempotencyRecord } from '../billing/safety'
+import type { StoredPayment } from '../billing/guard'
 
 export interface StoredBilling {
   subscription: Subscription
@@ -15,6 +17,10 @@ export interface StoredBilling {
   checkouts: CheckoutSession[]
   /** Reminders already announced (key: kind + period end), so each goes out once. */
   reminded: string[]
+  /** Request keys of the last 24 hours (idempotency, billing/safety.ts). */
+  requests?: IdempotencyRecord[]
+  /** Every charge, written down before the processor is asked (billing/guard.ts). */
+  payments?: StoredPayment[]
 }
 
 const stores = new Map<string, StoredBilling>(Object.entries(loadPersisted<Record<string, StoredBilling>>('billing', {})))

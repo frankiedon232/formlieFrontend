@@ -657,7 +657,10 @@
     "FRM-AUTH-1020": "Jaribu kuingia mara moja kabla ya kuliwasha.",
     "FRM-SET-1001": "Thibitisha au jaribu hili kwanza, kisha utaweza kulitumia.",
     "FRM-BILL-1001": "Malipo hayakukamilika. Jaribu kadi nyingine au wasiliana na benki yako.",
-    "FRM-BILL-1002": "Malipo haya yameisha muda. Anza tena."
+    "FRM-BILL-1002": "Malipo haya yameisha muda. Anza tena.",
+    "FRM-BILL-1004": "Mabadiliko mengine ya malipo kwa eneo hili la kazi yanaendelea. Jaribu tena baada ya muda mfupi.",
+    "FRM-BILL-1005": "Ombi hili tayari limetumika kwa jambo lingine. Pakia upya ukurasa na ujaribu tena.",
+    "FRM-BILL-1006": "Arifa ya malipo haikuweza kuthibitishwa."
   },
   "errorUi": {
     "reference": "Kumbukumbu: {id}",

@@ -657,7 +657,10 @@
     "FRM-AUTH-1020": "Test single sign-on before turning it on.",
     "FRM-SET-1001": "Verify or test this first, then you can use it.",
     "FRM-BILL-1001": "The payment didn't go through. Try another card or contact your bank.",
-    "FRM-BILL-1002": "This checkout has expired. Start again."
+    "FRM-BILL-1002": "This checkout has expired. Start again.",
+    "FRM-BILL-1004": "Another billing change for this workspace is in progress. Try again in a moment.",
+    "FRM-BILL-1005": "This request was already used for something else. Reload the page and try again.",
+    "FRM-BILL-1006": "The payment notification could not be verified."
   },
   "errorUi": {
     "reference": "Reference: {id}",

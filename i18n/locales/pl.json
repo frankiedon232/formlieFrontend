@@ -657,7 +657,10 @@
     "FRM-AUTH-1020": "Przetestuj jednokrotne logowanie, zanim je włączysz.",
     "FRM-SET-1001": "Najpierw zweryfikuj lub przetestuj, potem będzie można tego użyć.",
     "FRM-BILL-1001": "Płatność się nie powiodła. Spróbuj innej karty lub skontaktuj się z bankiem.",
-    "FRM-BILL-1002": "Ta sesja płatności wygasła. Zacznij od nowa."
+    "FRM-BILL-1002": "Ta sesja płatności wygasła. Zacznij od nowa.",
+    "FRM-BILL-1004": "Dla tej przestrzeni roboczej trwa już inna zmiana rozliczeń. Spróbuj ponownie za chwilę.",
+    "FRM-BILL-1005": "To żądanie zostało już użyte do czegoś innego. Odśwież stronę i spróbuj ponownie.",
+    "FRM-BILL-1006": "Nie udało się zweryfikować powiadomienia o płatności."
   },
   "errorUi": {
     "reference": "Identyfikator: {id}",

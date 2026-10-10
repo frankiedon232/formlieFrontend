@@ -657,7 +657,10 @@
     "FRM-AUTH-1020": "Test single sign-on voordat je het inschakelt.",
     "FRM-SET-1001": "Verifieer of test dit eerst, dan kun je het gebruiken.",
     "FRM-BILL-1001": "De betaling is niet gelukt. Probeer een andere kaart of neem contact op met je bank.",
-    "FRM-BILL-1002": "Deze betaalsessie is verlopen. Begin opnieuw."
+    "FRM-BILL-1002": "Deze betaalsessie is verlopen. Begin opnieuw.",
+    "FRM-BILL-1004": "Er is al een andere factureringswijziging bezig voor deze werkruimte. Probeer het zo meteen opnieuw.",
+    "FRM-BILL-1005": "Dit verzoek is al voor iets anders gebruikt. Laad de pagina opnieuw en probeer het nog eens.",
+    "FRM-BILL-1006": "De betaalmelding kon niet worden geverifieerd."
   },
   "errorUi": {
     "reference": "Referentie: {id}",

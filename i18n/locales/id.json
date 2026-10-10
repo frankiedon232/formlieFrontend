@@ -657,7 +657,10 @@
     "FRM-AUTH-1020": "Uji single sign-on sebelum mengaktifkannya.",
     "FRM-SET-1001": "Verifikasi atau uji ini dulu, lalu Anda bisa menggunakannya.",
     "FRM-BILL-1001": "Pembayaran tidak berhasil. Coba kartu lain atau hubungi bank Anda.",
-    "FRM-BILL-1002": "Pembayaran ini sudah kedaluwarsa. Mulai lagi."
+    "FRM-BILL-1002": "Pembayaran ini sudah kedaluwarsa. Mulai lagi.",
+    "FRM-BILL-1004": "Perubahan penagihan lain untuk ruang kerja ini sedang berlangsung. Coba lagi sebentar lagi.",
+    "FRM-BILL-1005": "Permintaan ini sudah dipakai untuk hal lain. Muat ulang halaman dan coba lagi.",
+    "FRM-BILL-1006": "Pemberitahuan pembayaran tidak dapat diverifikasi."
   },
   "errorUi": {
     "reference": "Referensi: {id}",

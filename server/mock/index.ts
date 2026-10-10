@@ -52,6 +52,7 @@ import * as emailSending from './routes/emailSending'
 import * as sso from './routes/sso'
 import * as billing from './routes/billing'
 import * as billingCheckout from './routes/billingCheckout'
+import { payoneerWebhook } from './billing/webhook'
 import * as notifications from './routes/notifications'
 import * as optionLists from './routes/optionLists'
 import * as privacy from './routes/dataPrivacy'
@@ -420,6 +421,7 @@ const router = createRouter()
   .delete('/billing/payment-method', billing.removePaymentMethod)
   .post('/billing/checkout', billingCheckout.startCheckout)
   .post('/billing/checkout/:id/complete', billingCheckout.completeCheckout)
+  .post('/billing/webhooks/payoneer', payoneerWebhook)
   .get('/settings/sso', sso.getSso)
   .put('/settings/sso', sso.saveSso)
   .post('/settings/sso/test', sso.testSso)

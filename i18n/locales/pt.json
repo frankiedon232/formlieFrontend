@@ -657,7 +657,10 @@
     "FRM-AUTH-1020": "Teste o login único antes de ativá-lo.",
     "FRM-SET-1001": "Verifique ou teste isto primeiro, depois você poderá usar.",
     "FRM-BILL-1001": "O pagamento não foi concluído. Tente outro cartão ou fale com seu banco.",
-    "FRM-BILL-1002": "Este pagamento expirou. Comece de novo."
+    "FRM-BILL-1002": "Este pagamento expirou. Comece de novo.",
+    "FRM-BILL-1004": "Outra alteração de cobrança deste espaço de trabalho está em andamento. Tente de novo em instantes.",
+    "FRM-BILL-1005": "Esta solicitação já foi usada para outra coisa. Recarregue a página e tente de novo.",
+    "FRM-BILL-1006": "Não foi possível verificar a notificação de pagamento."
   },
   "errorUi": {
     "reference": "Referência: {id}",

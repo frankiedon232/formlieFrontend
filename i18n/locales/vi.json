@@ -657,7 +657,10 @@
     "FRM-AUTH-1020": "Hãy kiểm tra đăng nhập một lần trước khi bật.",
     "FRM-SET-1001": "Hãy xác minh hoặc kiểm tra trước, sau đó bạn có thể dùng.",
     "FRM-BILL-1001": "Thanh toán chưa thành công. Hãy thử thẻ khác hoặc liên hệ ngân hàng của bạn.",
-    "FRM-BILL-1002": "Phiên thanh toán này đã hết hạn. Hãy bắt đầu lại."
+    "FRM-BILL-1002": "Phiên thanh toán này đã hết hạn. Hãy bắt đầu lại.",
+    "FRM-BILL-1004": "Một thay đổi thanh toán khác cho không gian làm việc này đang diễn ra. Hãy thử lại sau giây lát.",
+    "FRM-BILL-1005": "Yêu cầu này đã được dùng cho việc khác. Hãy tải lại trang và thử lại.",
+    "FRM-BILL-1006": "Không thể xác minh thông báo thanh toán."
   },
   "errorUi": {
     "reference": "Mã tham chiếu: {id}",
