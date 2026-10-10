@@ -27,6 +27,12 @@
           "text": "Formalie, kuruluşunuzun formlarla bilgi toplamasına, gelenleri incelemesine ve gerektiği yere göndermesine yardımcı olur: bir veritabanına, API üzerinden başka bir sisteme ya da bir rapora."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/welcome.jpg",
+          "caption": "Formlar sayfası: üstte yanıtlarınıza genel bakış, altta formlarınız."
+        },
+        {
           "type": "h",
           "text": "Ana bölümler"
         },
@@ -76,6 +82,12 @@
           "text": "Ekranın en solundaki dar sütun **raydır**. Her simge Formalie’nin bir alanını açar: Formlar, Veri kaynakları, API hizmeti, YZ asistanı ve Kişiler. Yanındaki menü, bulunduğunuz alana göre değişir."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/find-your-way.jpg",
+          "caption": "Kenar çubuğu ve alanın menüsü. Telefon ve tabletlerde sol üstteki menü düğmesinden açılırlar."
+        },
+        {
           "type": "p",
           "text": "Her sayfanın üstünde başlığını, nerede olduğunuzu (gezinti yolu) ve sayfanın düğmelerini bulursunuz. Ana düğme her zaman sağdaki koyu renkli düğmedir."
         },
@@ -117,6 +129,12 @@
         {
           "type": "p",
           "text": "Bir forma üç yolla başlayabilirsiniz: boş bir sayfadan, Formalie’nin şablonlarından birinden ya da YZ asistanına tarif ederek."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/first-form.jpg",
+          "caption": "Yeni form: boş başlayın, şablondan başlayın ya da bir form dosyası içe aktarın."
         },
         {
           "type": "steps",
@@ -165,6 +183,12 @@
           "text": "Çalışma alanınızdaki herkesin departmanı, unvanı ve rolü olan bir profili vardır. Rol, kişinin neleri görebileceğini ve yapabileceğini belirler."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/invite-your-team.jpg",
+          "caption": "Kişiler: çalışma alanınızdaki herkes, üstte Kullanıcı ekle ve Kayıt bağlantıları ile."
+        },
+        {
           "type": "steps",
           "items": [
             "Raydan **Kişiler** bölümünü açın.",
@@ -204,6 +228,12 @@
           "text": "Arama **Ctrl + K** (Mac’te **⌘ + K**) ile açılır. Bir sayfanın, formun, ayarın ya da kişinin adının bir kısmını yazın ve Enter’a basın."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/keyboard-and-search.jpg",
+          "caption": "Tüm klavye kısayolları Yardım ve destek → Klavye kısayolları bölümünde."
+        },
+        {
           "type": "p",
           "text": "Tüm klavye kısayollarını görmek için **?** tuşuna basın. Birçok sayfa kendi kısayollarını da ekler, örneğin bir panelde yanıtlar arasında gezinmek için **J** ve **K**."
         },
@@ -236,6 +266,12 @@
         {
           "type": "p",
           "text": "Formlar sayfası görmenize izin verilen tüm formları listeler. Üstteki iki kart son yanıtları ve formlarınızın taslak, yayında ve kapalı arasındaki dağılımını gösterir; yalnızca o formları göstermek için göstergedeki bir duruma tıklayın."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/forms-list.jpg",
+          "caption": "Kart olarak formlar; arama, filtreler ve Tablo / Izgara düğmesi ile."
         },
         {
           "type": "list",
@@ -289,6 +325,12 @@
           "text": "Yayındaki bir formun **yayınlanmamış değişiklikleri** olabilir: düzenlemeleriniz yeniden yayınlayana kadar taslakta kalır, böylece yanıtlayanlar yarım kalmış bir değişikliği asla görmez."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/form-lifecycle.jpg",
+          "caption": "Yayınlananlar ile filtrelenmiş formlar: filtrelemek için üstteki kartta bir duruma tıklayın."
+        },
+        {
           "type": "tip",
           "text": "Bir formun kendiliğinden açılıp kapanması için **Paylaş → Erişilebilirlik** bölümünde açılış ve kapanış tarihlerini belirleyin."
         }
@@ -318,6 +360,12 @@
           "text": "Klasörler formları gruplar, örneğin ekibe ya da projeye göre. Menüde Klasörler’in yanındaki **+** ile bir klasör oluşturun, sonra formları **⋯** menülerinden ona taşıyın."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/folders.jpg",
+          "caption": "Klasörler; her birinde form ve yanıt sayısı ile."
+        },
+        {
           "type": "p",
           "text": "Yöneticiler, **Klasör erişimi** ile bir klasörü bazı rollere, departmanlara veya kişilere sınırlayabilir. Diğer herkes klasörü, formlarını ve yanıtlarını hiçbir yerde, arama ve dışa aktarımlarda bile görmez."
         }
@@ -343,6 +391,12 @@
         {
           "type": "p",
           "text": "Bir formu sildiğinizde yanıtlarıyla birlikte 30 günlüğüne **Çöp kutusuna** gider. Bu 30 gün içinde istediğiniz zaman oradan geri yükleyebilirsiniz."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/trash.jpg",
+          "caption": "Çöp kutusu: silinen formlar burada 30 gün kalır."
         },
         {
           "type": "warning",
@@ -380,6 +434,12 @@
         {
           "type": "p",
           "text": "Oluşturucunun üç bölümü vardır: solda **alan listesi**, ortada **form** ve sağda seçtiğiniz öğenin **ayarları**."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/builder-basics.jpg",
+          "caption": "Oluşturucu: formunuzun sayfaları ve soruları, altta Alan ekle ve Alan ayarları ile."
         },
         {
           "type": "steps",
@@ -440,6 +500,12 @@
           "text": "En uygun alanı seçin: e-posta alanı yazarken adresi kontrol eder, tarih alanı takvim gösterir, telefon alanı numarayı kontrol eder."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/field-types.jpg",
+          "caption": "Alan listesi her tür soruyu gruplar: metin, tarih, seçenek, derecelendirme, dosya ve daha fazlası."
+        },
+        {
           "type": "tip",
           "text": "Uzun seçenek listeleri (ülkeler, departmanlar) en iyi bir **Seçenek Listesi** olarak tutulur: bir kez saklanır ve birçok formda kullanılır."
         }
@@ -469,6 +535,12 @@
         {
           "type": "p",
           "text": "Mantık kuralları, insanlar formu doldururken formu değiştirir: bir takip sorusunu yalnızca “evet” yanıtından sonra gösterin, acil talepler için telefon numarası isteyin veya doğrudan sona atlayın."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/builder-logic.jpg",
+          "caption": "Mantık sekmesi: her kural, Eğer bir şey yanıtlanırsa, O zaman ne olacağını söyler."
         },
         {
           "type": "steps",
@@ -509,6 +581,12 @@
           "text": "Bir **Hesaplama** alanı, diğer yanıtlardan bir değer hesaplar, örneğin miktar × fiyat, ortalama puan ya da risk puanı. İnsanlar sonucu formu doldururken görür."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/calculations.jpg",
+          "caption": "Oluşturucuda bir form; Hesaplamalar alanı değerini diğer yanıtlardan hesaplar."
+        },
+        {
           "type": "p",
           "text": "Formülü, soruların anahtarlarını süslü parantez içinde yazarak oluşturun, örneğin **{quantity} * {unit_price}**. Seçeneklere puan verilebilir, böylece toplanabilirler."
         }
@@ -536,6 +614,12 @@
         {
           "type": "p",
           "text": "**Yayınla**, taslağınızı canlı form yapar. Her yayın, nelerin değiştiğine dair isteğe bağlı bir notla numaralı bir sürüm olarak kaydedilir."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/publish-and-versions.jpg",
+          "caption": "Sürümler: her yayın, karşılaştırmaya ya da geri yüklemeye hazır."
         },
         {
           "type": "p",
@@ -571,6 +655,12 @@
         {
           "type": "p",
           "text": "Görünümünü değiştirmek için formun **Tasarım** sekmesini açın. Önizleme, formu insanların bilgisayarda, tablette ya da telefonda göreceği şekilde gösterir."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/design-a-form.jpg",
+          "caption": "Canlı önizlemeli Tasarım sekmesi."
         },
         {
           "type": "list",
@@ -610,6 +700,12 @@
           "text": "Temalar kayıtlı tasarımlardır. Formalie bir set ile gelir; çalışma alanınız tasarımcıdan kendi temalarını ekleyebilir ya da YZ asistanından marka renginize göre tasarım önermesini isteyebilir."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/themes.jpg",
+          "caption": "Temalar: Formalie’nin tasarımları ve çalışma alanınızın kendi tasarımları."
+        },
+        {
           "type": "p",
           "text": "Yeni formların hangi temayla başlayacağını **Ayarlar → Form varsayılanları** bölümünden seçin."
         },
@@ -640,6 +736,12 @@
         {
           "type": "p",
           "text": "Açılış sayfası, formunuzun bulunduğu sayfadır: başlıklı bir afiş, bir giriş, ne kadar süreceği ve kuruluşunuz. Tasarımcıdan birini seçin ya da kendinizinkileri **Açılış sayfaları** bölümünde saklayın."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/landing-pages.jpg",
+          "caption": "Açılış sayfaları: bir formun üzerinde durduğu sayfa."
         }
       ]
     },
@@ -665,6 +767,12 @@
         {
           "type": "p",
           "text": "Şablon galerisinde İK, iş sağlığı ve güvenliği, etkinlikler, satış ve daha fazlası için hazır formlar vardır. Her biri soruları, mantığı, hesaplamaları ve uyumlu bir tasarımla gelir."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/use-a-template.jpg",
+          "caption": "Kategoriye göre şablon galerisi."
         },
         {
           "type": "steps",
@@ -701,6 +809,12 @@
         {
           "type": "p",
           "text": "Her form çalışma alanınız için bir şablon olabilir: **⋯** menüsünü açın ve **Şablon olarak kaydet** seçeneğini seçin. Bir ad, açıklama ve kategori verin. Şablonlarınız **Şablonlarınız** altında görünür."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/save-as-template.jpg",
+          "caption": "Şablonlarınız galeride Formalie’nin şablonlarının yanında görünür."
         }
       ]
     },
@@ -728,6 +842,12 @@
         {
           "type": "p",
           "text": "Yayındaki bir formun **Paylaş** sekmesini açın. Buradan bağlantısını kopyalayabilir, QR kodunu indirebilir, kısa bağlantı oluşturabilir veya e-posta daveti gönderebilirsiniz."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/share-a-form.jpg",
+          "caption": "Paylaş sekmesi: insanların nerede yanıt verebileceği ve formu kimin açabileceği burada belirlenir."
         },
         {
           "type": "list",
@@ -776,6 +896,12 @@
         {
           "type": "p",
           "text": "**Erişilebilirlik** bölümünde formu belirli tarihlerde açıp kapatabilir ve belirli sayıda yanıttan sonra durdurabilirsiniz."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/who-can-fill-in.jpg",
+          "caption": "Formu kimin ve ne zaman doldurabileceği, Paylaş ayarlarında."
         }
       ]
     },
@@ -799,6 +925,12 @@
         {
           "type": "p",
           "text": "**Paylaş → Gömme** bölümünde kodu kopyalayıp web sitenize yapıştırın. Formu hangi sitelerin gösterebileceğini sınırlayabilirsiniz."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/embed-a-form.jpg",
+          "caption": "Gömme ve izin verilen web siteleri de Paylaş sekmesinde."
         }
       ]
     },
@@ -825,6 +957,12 @@
         {
           "type": "p",
           "text": "Bir formun ana dili vardır ve daha fazlasını sunabilir. Oluşturucuda form ayarlarını açın, **Diğer diller** altına bir dil ekleyin ve her metni yan yana çevirin."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/form-languages.jpg",
+          "caption": "Oluşturucudaki form ayarları; daha fazla dil buradan eklenir."
         },
         {
           "type": "tip",
@@ -854,6 +992,12 @@
         {
           "type": "p",
           "text": "**Yanıtlar**, formlarınızı yanıtlarıyla listeler. Yanıtlarını tablo ya da kart olarak görmek için bir formu açın; tüm cevapları bir panelde görmek için bir yanıtı açın."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/responses-basics.jpg",
+          "caption": "Bir formun yanıtları; üstte kartlar, altta liste."
         },
         {
           "type": "list",
@@ -894,6 +1038,12 @@
           "text": "Her yanıtın bir durumu vardır: **Yeni**, **İncelendi**, **Onaylandı** veya **Reddedildi**. Yanıt panelinin üstünden tek tıkla değiştirin."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/review-responses.jpg",
+          "caption": "Panelinde açılmış bir yanıt: üstte durum çubuğu, altta etiketler ve notlar."
+        },
+        {
           "type": "p",
           "text": "Takip için etiket ve not ekleyin. Yanıtları düzeltmek ayrı bir izindir, bu yüzden rolünüz insanların yazdıklarını değiştirmeden incelemenize izin verebilir."
         }
@@ -921,6 +1071,12 @@
         {
           "type": "p",
           "text": "Bir formun yanıtlarında **Dışa aktar** düğmesine tıklayın, biçimi ve nelerin dahil edileceğini seçin. Büyük dışa aktarımlar arka planda hazırlanır; ilerlemeyi **Dışa aktarımlar** bölümünde görürsünüz ve dosya hazır olduğunda bir mesaj alırsınız."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/export-responses.jpg",
+          "caption": "Dışa aktarımlar: hazırlanan ve indirmeye hazır dosyalar."
         }
       ]
     },
@@ -947,6 +1103,12 @@
         {
           "type": "p",
           "text": "**Analizler**, her formu kaç kişinin açtığını, başlattığını ve tamamladığını, ne kadar sürdüğünü ve insanların nerede bıraktığını gösterir. Her sayfayı ve soruyu görmek için bir formu açın."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/analytics.jpg",
+          "caption": "Analizler: görüntülemeler, başlangıçlar, tamamlamalar ve insanların nerede bıraktığı."
         },
         {
           "type": "tip",
@@ -977,6 +1139,12 @@
         {
           "type": "p",
           "text": "Bir **Seçenek Listesi**, birçok formda kullandığınız seçimleri tutar, örneğin departmanlar, ürünler veya ülkeler. Listeyi bir kez değiştirin, onu kullanan her form buna uyar."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/lists-basics.jpg",
+          "caption": "Seçenek Listesi: birçok formda kullanılan seçim listeleri."
         },
         {
           "type": "p",
@@ -1013,6 +1181,12 @@
           "text": "**Veri kaynakları**, Formalie’yi kendi veritabanlarınıza bağlar. Yanıtlar böylece orada da saklanabilir; tabloları Formalie oluşturur ve formla uyumlu tutar."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/data-sources-basics.jpg",
+          "caption": "Veritabanlarınıza bağlantılar ve durumları."
+        },
+        {
           "type": "steps",
           "items": [
             "Raydan **Veri kaynakları** bölümünü açın ve **Bağlantı ekle** düğmesine tıklayın.",
@@ -1047,6 +1221,12 @@
         {
           "type": "p",
           "text": "**Veritabanı gezgini** bir bağlantının tablolarını ve satırlarını gösterir. **Sorgu düzenleyici** SQL çalıştırır; veriyi değiştiren ifadeler ayrı bir izin gerektirir ve önce onay ister."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/database-explorer.jpg",
+          "caption": "Veritabanı gezgini: satırlarını ve yapısını görmek için Tablolar altından bir tablo seçin."
         }
       ]
     },
@@ -1072,6 +1252,12 @@
         {
           "type": "p",
           "text": "**API hizmeti** diğer sistemlere kendi uç noktalarını verir: yanıtları okumak, yenilerini göndermek ya da liste seçeneklerini aramak için. Her hizmet uç noktaları gruplar ve kendi belge sayfasına sahiptir."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/api-basics.jpg",
+          "caption": "API hizmetleri; her birinin uç noktaları ve belgeleri ile."
         },
         {
           "type": "steps",
@@ -1107,6 +1293,12 @@
           "text": "API’nizi çağıran her sistem bir **token** alır. Tokenların süresi dolabilir ve istediğiniz zaman iptal edilebilir. **Erişim kuralları** adresleri, saatleri ve izin verilen çağrı sayısını sınırlar."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/api-tokens.jpg",
+          "caption": "Token ve başlıklar: sistemlerin API’nizi çağırmak için kullandığı anahtarlar."
+        },
+        {
           "type": "warning",
           "text": "Bir token yalnızca bir kez gösterilir. Güvenli bir yerde saklayın ve asla herkese açık bir web sayfasına koymayın."
         }
@@ -1132,6 +1324,12 @@
         {
           "type": "p",
           "text": "Bir webhook, bir şey olduğunda, örneğin yeni bir yanıt geldiğinde, başka bir sistemin adresine mesaj gönderir. Formalie başarısız teslimatları yeniden dener ve her teslimatı gösterir, böylece nelerin gönderildiğini görebilirsiniz."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/webhooks.jpg",
+          "caption": "Webhook’lar ve teslimatları."
         }
       ]
     },
@@ -1160,6 +1358,12 @@
         {
           "type": "p",
           "text": "Her kişinin bir rolü vardır. Sahip her şeyi yapabilir; Yönetici ve Üye kullanıma hazırdır ve değiştirilebilir; kendi rollerinizi ekleyebilirsiniz."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/roles-and-access.jpg",
+          "caption": "Roller ve erişim: her rol ve onu kimlerin taşıdığı."
         },
         {
           "type": "p",
@@ -1192,6 +1396,12 @@
         {
           "type": "p",
           "text": "Kayıt bağlantısı, insanların kendi hesaplarını oluşturmasını sağlar. Bunu kuruluşunuzun e-posta adresleriyle sınırlayabilirsiniz. Hesaplar, bir yönetici onaylayıp rol verene kadar **Onay bekliyor** durumunda bekler."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/sign-up-links.jpg",
+          "caption": "Kayıt bağlantıları Kişiler sayfasının üstünde; onaylar Onay bekliyor bölümünde bekler."
         }
       ]
     },
@@ -1216,6 +1426,12 @@
         {
           "type": "p",
           "text": "Profilinizi menünün altındaki adınızdan açın. Fotoğrafınızı, adınızı, dilinizi, saat dilimini ve tarih biçimini, parolanızı ve iki adımlı girişinizi değiştirin ve nerelerde oturum açtığınızı görün."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/your-profile.jpg",
+          "caption": "Profiliniz: fotoğraf, ad, dil, parola ve oturum açma."
         }
       ]
     },
@@ -1241,6 +1457,12 @@
         {
           "type": "p",
           "text": "İki adımlı giriş, parolanızdan sonra bir kod ister. En güvenli seçenek için profilinizde bir kimlik doğrulayıcı uygulaması kurun ve kurtarma kodlarını güvenli bir yerde saklayın."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/two-step-sign-in.jpg",
+          "caption": "İki adımlı oturum açma profilinizde ayarlanır."
         }
       ]
     },
@@ -1266,6 +1488,12 @@
         {
           "type": "p",
           "text": "**Ayarlar**, tüm çalışma alanı için geçerli olanları barındırır: şirket bilgileri, marka, dil ve bölge, görünüm, giriş, güvenlik, bildirimler, e-posta şablonları, gizlilik ve form varsayılanları."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/workspace-settings.jpg",
+          "caption": "Ayarlar: tüm çalışma alanı için geçerli olan her şey."
         },
         {
           "type": "show",
@@ -1298,6 +1526,12 @@
           "text": "**Ayarlar → Güvenlik** bölümünde yöneticiler parola kurallarını belirler, iki adımlı girişi zorunlu kılar, insanların ne kadar süre oturum açık kalacağını seçer ve gerekirse girişe yalnızca ağlarınızdan izin verir."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/security-settings.jpg",
+          "caption": "Ayarlar → Güvenlik."
+        },
+        {
           "type": "warning",
           "text": "Ağları sınırlamadan önce kendi adresinizi ekleyin, yoksa kendinizi dışarıda bırakabilirsiniz."
         }
@@ -1323,6 +1557,12 @@
         {
           "type": "p",
           "text": "**Form varsayılanları**, her yeni formun başladığı temayı, ilerleme çubuğunu, etiketleri, teşekkür mesajını ve e-postaları belirler. Mevcut formlarınız değişmez."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/form-defaults.jpg",
+          "caption": "Ayarlar → Form varsayılanları."
         }
       ]
     },
@@ -1347,6 +1587,12 @@
         {
           "type": "p",
           "text": "**Denetim kaydı**, çalışma alanınızdaki her eylemi kaydeder: oturum açmalar, formlarda, yanıtlarda, ayarlarda ve kişilerde yapılan değişiklikler ve daha fazlası; kimin, ne zaman ve nereden yaptığıyla birlikte."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/audit-trail.jpg",
+          "caption": "Denetim kaydı: kim, neyi, ne zaman ve nereden yaptı."
         },
         {
           "type": "p",
@@ -1384,6 +1630,12 @@
           "text": "YZ asistanı form ve şablon oluşturur, oluşturucuda yardım eder, yanıtları analiz eder ve çeviri yapar. Her zaman yalnızca **önerir**: siz seçmeden hiçbir şey oluşturulmaz, değiştirilmez ya da gönderilmez."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-overview.jpg",
+          "caption": "YZ asistanına genel bakış: krediler, neler yapabildiği ve son istekler."
+        },
+        {
           "type": "list",
           "items": [
             "Her istek, dönen sonuçla birlikte **Geçmiş** bölümünde saklanır.",
@@ -1416,6 +1668,12 @@
       "title": "Asistanla form oluşturun",
       "summary": "Tarif edin, taslağı kontrol edin, oluşturun.",
       "blocks": [
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-create-form.jpg",
+          "caption": "Form oluşturma: formu anlatın ya da bir örnekle başlayın, sonra Oluştur'u seçin."
+        },
         {
           "type": "steps",
           "items": [
@@ -1455,6 +1713,12 @@
           "text": "**Yanıt analizi** bölümünde bir form ve bir dönem seçin. Asistan yazılı yanıtların neyle ilgili olduğunu, tonunu ve puanların ile seçimlerin nasıl değiştiğini bulur."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-analysis.jpg",
+          "caption": "Yanıt analizi: bir form ve dönem seçin, sonra aşağıdan soru sorun."
+        },
+        {
           "type": "p",
           "text": "Sorularınızı sade sözlerle sorun, örneğin “Geçen ay kaç yanıt geldi?”. Yanıt her zaman nelerin sayıldığını gösterir."
         }
@@ -1480,6 +1744,12 @@
         {
           "type": "p",
           "text": "**Çeviriler**, bir formu 20 dilden herhangi birine çevirir; kaydetmeden önce her metni yan yana kontrol edersiniz. **Yeniden yaz**, seçtiğiniz tonda daha sade ifadeler önerir ve öncesindeki ile sonrasındaki okuma yaşını gösterir."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-translate.jpg",
+          "caption": "Çeviriler: bir form ve diller seçin, sonra her metni yan yana kontrol edin."
         }
       ]
     },
@@ -1503,6 +1773,12 @@
         {
           "type": "p",
           "text": "Yöneticiler asistanı açar veya kapatır, neleri okuyabileceğini seçer (formlar, yanıtlar, veri kaynakları), kişisel verileri dışarıda tutar ve isteklerin ne kadar süre saklanacağını belirler. Asistan verilerinizle asla eğitilmez."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-settings.jpg",
+          "caption": "YZ ayarları: açık veya kapalı, neleri okuyabileceği, gizlilik ve kullanım."
         }
       ]
     }

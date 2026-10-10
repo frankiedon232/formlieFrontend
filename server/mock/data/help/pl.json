@@ -27,6 +27,12 @@
           "text": "Formalie pomaga Twojej organizacji zbierać informacje za pomocą formularzy, przeglądać to, co wpływa, i przekazywać dalej tam, gdzie jest potrzebne: do bazy danych, innego systemu przez API albo do raportu."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/welcome.jpg",
+          "caption": "Strona Formularze: u góry odpowiedzi w skrócie, pod nimi Twoje formularze."
+        },
+        {
           "type": "h",
           "text": "Główne części"
         },
@@ -76,6 +82,12 @@
           "text": "Wąska kolumna po lewej stronie to **pasek**. Każda ikona otwiera jeden obszar Formalie: Formularze, Źródła danych, Usługa API, Asystent AI i Osoby. Menu obok zmienia się zależnie od obszaru, w którym jesteś."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/find-your-way.jpg",
+          "caption": "Pasek boczny i menu obszaru. Na telefonach i tabletach otwierają się przyciskiem menu w lewym górnym rogu."
+        },
+        {
           "type": "p",
           "text": "U góry każdej strony znajdziesz jej tytuł, miejsce, w którym jesteś (ścieżkę nawigacji) i przyciski strony. Główny przycisk jest zawsze ciemny, po prawej stronie."
         },
@@ -117,6 +129,12 @@
         {
           "type": "p",
           "text": "Formularz możesz zacząć na trzy sposoby: od pustej strony, od jednego z szablonów Formalie albo opisując go asystentowi AI."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/first-form.jpg",
+          "caption": "Nowy formularz: zacznij od pustego, z szablonu lub importując plik formularza."
         },
         {
           "type": "steps",
@@ -165,6 +183,12 @@
           "text": "Każda osoba w Twoim obszarze roboczym ma profil z działem, stanowiskiem i rolą. Rola decyduje o tym, co może widzieć i robić."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/invite-your-team.jpg",
+          "caption": "Osoby: wszyscy w Twojej przestrzeni roboczej, u góry z Dodaj użytkownika i Linki rejestracyjne."
+        },
+        {
           "type": "steps",
           "items": [
             "Otwórz **Osoby** na pasku.",
@@ -204,6 +228,12 @@
           "text": "Wyszukiwarka otwiera się przez **Ctrl + K** (**⌘ + K** na Macu). Wpisz fragment strony, formularza, ustawienia lub osoby i naciśnij Enter."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/keyboard-and-search.jpg",
+          "caption": "Wszystkie skróty klawiszowe znajdziesz w Pomoc i wsparcie → Skróty klawiszowe."
+        },
+        {
           "type": "p",
           "text": "Naciśnij **?**, aby zobaczyć wszystkie skróty klawiszowe. Wiele stron ma własne, na przykład **J** i **K** do przechodzenia między odpowiedziami w panelu."
         },
@@ -236,6 +266,12 @@
         {
           "type": "p",
           "text": "Strona Formularze wyświetla wszystkie formularze, które możesz zobaczyć. Dwie karty u góry pokazują ostatnie odpowiedzi i podział formularzy na szkice, opublikowane i zamknięte; kliknij status w legendzie, aby pokazać tylko takie formularze."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/forms-list.jpg",
+          "caption": "Formularze jako karty, z wyszukiwaniem, filtrami i przełącznikiem Tabela / Siatka."
         },
         {
           "type": "list",
@@ -289,6 +325,12 @@
           "text": "Opublikowany formularz może mieć **nieopublikowane zmiany**: Twoje poprawki zostają w szkicu, dopóki nie opublikujesz ich ponownie, więc osoby wypełniające nigdy nie zobaczą niedokończonej zmiany."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/form-lifecycle.jpg",
+          "caption": "Formularze przefiltrowane do Opublikowane: kliknij status w górnej karcie, aby filtrować."
+        },
+        {
           "type": "tip",
           "text": "Ustaw daty otwarcia i zamknięcia w **Udostępnij → Dostępność**, aby formularz otwierał się i zamykał sam."
         }
@@ -318,6 +360,12 @@
           "text": "Foldery grupują formularze, na przykład według zespołu lub projektu. Utwórz folder przyciskiem **+** obok pozycji Foldery w menu, a potem przenoś do niego formularze z ich menu **⋯**."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/folders.jpg",
+          "caption": "Foldery, z liczbą formularzy i odpowiedzi w każdym."
+        },
+        {
           "type": "p",
           "text": "Administratorzy mogą ograniczyć folder do wybranych ról, działów lub osób za pomocą **Dostępu do folderu**. Pozostałe osoby nie widzą folderu, jego formularzy ani ich odpowiedzi nigdzie, nawet w wyszukiwarce czy eksportach."
         }
@@ -343,6 +391,12 @@
         {
           "type": "p",
           "text": "Gdy usuniesz formularz, trafia on wraz z odpowiedziami do **Kosza** na 30 dni. W tym czasie możesz go stamtąd przywrócić w dowolnej chwili."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/trash.jpg",
+          "caption": "Kosz: usunięte formularze zostają tu na 30 dni."
         },
         {
           "type": "warning",
@@ -380,6 +434,12 @@
         {
           "type": "p",
           "text": "Kreator ma trzy części: **listę pól** po lewej, **formularz** pośrodku i **ustawienia** zaznaczonego elementu po prawej."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/builder-basics.jpg",
+          "caption": "Kreator: strony i pytania Twojego formularza, a na dole Dodaj pole i Ustawienia pola."
         },
         {
           "type": "steps",
@@ -440,6 +500,12 @@
           "text": "Wybierz najbardziej konkretne pole: pole e-mail sprawdza adres w trakcie pisania, pole daty pokazuje kalendarz, pole telefonu sprawdza numer."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/field-types.jpg",
+          "caption": "Lista pól grupuje każdy rodzaj pytania: tekst, daty, wybory, oceny, pliki i więcej."
+        },
+        {
           "type": "tip",
           "text": "Długie listy wyborów (kraje, działy) najlepiej działają jako **Lista opcji**, prowadzona raz i używana w wielu formularzach."
         }
@@ -469,6 +535,12 @@
         {
           "type": "p",
           "text": "Reguły logiki zmieniają formularz w trakcie wypełniania: pokaż pytanie dodatkowe dopiero po odpowiedzi „tak”, wymagaj numeru telefonu przy pilnych zgłoszeniach albo przejdź do końca."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/builder-logic.jpg",
+          "caption": "Karta Logika: każda reguła mówi Gdy na coś odpowiedziano, Wtedy co się stanie."
         },
         {
           "type": "steps",
@@ -509,6 +581,12 @@
           "text": "Pole **Obliczenie** wylicza wartość z innych odpowiedzi, na przykład ilość × cena, średnią ocenę lub wynik ryzyka. Osoby widzą wynik już podczas wypełniania formularza."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/calculations.jpg",
+          "caption": "Formularz w kreatorze; pole Obliczenia wylicza swoją wartość z innych odpowiedzi."
+        },
+        {
           "type": "p",
           "text": "Zapisz wzór z kluczami pytań w nawiasach klamrowych, na przykład **{quantity} * {unit_price}**. Wybory mogą mieć punkty, dzięki czemu można je zsumować."
         }
@@ -536,6 +614,12 @@
         {
           "type": "p",
           "text": "**Opublikuj** zamienia Twój szkic w aktywny formularz. Każda publikacja zapisuje się jako numerowana wersja z opcjonalną notatką o zmianach."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/publish-and-versions.jpg",
+          "caption": "Wersje: każda publikacja, gotowa do porównania lub przywrócenia."
         },
         {
           "type": "p",
@@ -571,6 +655,12 @@
         {
           "type": "p",
           "text": "Otwórz kartę **Wygląd** formularza, aby zmienić jego styl. Podgląd pokazuje formularz tak, jak zobaczą go odbiorcy, na komputerze, tablecie lub telefonie."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/design-a-form.jpg",
+          "caption": "Karta Wygląd z podglądem na żywo."
         },
         {
           "type": "list",
@@ -610,6 +700,12 @@
           "text": "Motywy to zapisane wyglądy. Formalie dostarcza gotowy zestaw; Twój obszar roboczy może dodać własne w projektancie albo poprosić asystenta AI o propozycje na podstawie koloru marki."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/themes.jpg",
+          "caption": "Motywy: projekty Formalie i własne projekty Twojej przestrzeni roboczej."
+        },
+        {
           "type": "p",
           "text": "Wybierz motyw, od którego zaczynają się nowe formularze, w **Ustawienia → Domyślne ustawienia formularzy**."
         },
@@ -640,6 +736,12 @@
         {
           "type": "p",
           "text": "Strona docelowa to strona, na której znajduje się formularz: baner z tytułem, wstęp, czas wypełnienia i Twoja organizacja. Wybierz ją w projektancie albo prowadź własne w **Stronach docelowych**."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/landing-pages.jpg",
+          "caption": "Strony docelowe: strona, na której znajduje się formularz."
         }
       ]
     },
@@ -665,6 +767,12 @@
         {
           "type": "p",
           "text": "Galeria szablonów zawiera gotowe formularze dla HR, BHP, wydarzeń, sprzedaży i innych obszarów. Każdy ma pytania, logikę, obliczenia i pasujący wygląd."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/use-a-template.jpg",
+          "caption": "Galeria szablonów, według kategorii."
         },
         {
           "type": "steps",
@@ -701,6 +809,12 @@
         {
           "type": "p",
           "text": "Każdy formularz może stać się szablonem Twojego obszaru roboczego: otwórz jego menu **⋯** i wybierz **Zapisz jako szablon**. Podaj nazwę, opis i kategorię. Twoje szablony pojawią się w **Twoich szablonach**."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/save-as-template.jpg",
+          "caption": "Twoje szablony pojawiają się w galerii obok szablonów Formalie."
         }
       ]
     },
@@ -728,6 +842,12 @@
         {
           "type": "p",
           "text": "Otwórz kartę **Udostępnij** opublikowanego formularza. Stamtąd skopiujesz link, pobierzesz kod QR, utworzysz krótki link lub wyślesz zaproszenia e-mail."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/share-a-form.jpg",
+          "caption": "Karta Udostępnij: gdzie ludzie mogą odpowiadać i kto może otworzyć formularz."
         },
         {
           "type": "list",
@@ -776,6 +896,12 @@
         {
           "type": "p",
           "text": "W **Dostępności** możesz otwierać i zamykać formularz w ustalonych terminach oraz zatrzymać go po określonej liczbie odpowiedzi."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/who-can-fill-in.jpg",
+          "caption": "Kto może wypełnić formularz i kiedy, w ustawieniach Udostępnij."
         }
       ]
     },
@@ -799,6 +925,12 @@
         {
           "type": "p",
           "text": "W **Udostępnij → Osadzanie** skopiuj kod i wklej go na swoją stronę. Możesz ograniczyć, które strony mogą wyświetlać formularz."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/embed-a-form.jpg",
+          "caption": "Osadzanie i dozwolone strony są również na karcie Udostępnij."
         }
       ]
     },
@@ -824,6 +956,12 @@
         {
           "type": "p",
           "text": "Formularz ma język główny i może oferować kolejne. W kreatorze otwórz ustawienia formularza, dodaj język w sekcji **Więcej języków** i przetłumacz każdy tekst obok oryginału."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/form-languages.jpg",
+          "caption": "Ustawienia formularza w kreatorze, gdzie dodajesz kolejne języki."
         },
         {
           "type": "tip",
@@ -853,6 +991,12 @@
         {
           "type": "p",
           "text": "**Odpowiedzi** wyświetlają Twoje formularze wraz z odpowiedziami. Otwórz formularz, aby zobaczyć jego odpowiedzi w tabeli lub na kartach; otwórz odpowiedź, aby zobaczyć wszystkie dane w panelu."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/responses-basics.jpg",
+          "caption": "Odpowiedzi formularza, z kartami u góry i listą poniżej."
         },
         {
           "type": "list",
@@ -893,6 +1037,12 @@
           "text": "Każda odpowiedź ma status: **Nowa**, **Przejrzana**, **Zatwierdzona** lub **Odrzucona**. Zmienisz go jednym kliknięciem u góry panelu odpowiedzi."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/review-responses.jpg",
+          "caption": "Odpowiedź otwarta w panelu: u góry pasek statusu, niżej tagi i notatki."
+        },
+        {
           "type": "p",
           "text": "Dodawaj tagi i notatki, aby wszystko mieć pod kontrolą. Poprawianie odpowiedzi to osobne uprawnienie, więc Twoja rola może pozwalać na przegląd bez zmieniania tego, co napisały osoby."
         }
@@ -920,6 +1070,12 @@
         {
           "type": "p",
           "text": "Kliknij **Eksportuj** przy odpowiedziach formularza, wybierz format i zawartość. Duże eksporty przygotowują się w tle; postęp zobaczysz w **Eksportach**, a gdy plik będzie gotowy, dostaniesz wiadomość."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/export-responses.jpg",
+          "caption": "Eksporty: pliki w przygotowaniu i gotowe do pobrania."
         }
       ]
     },
@@ -946,6 +1102,12 @@
         {
           "type": "p",
           "text": "**Analityka** pokazuje, ile osób otworzyło, rozpoczęło i ukończyło każdy formularz, ile to trwa i gdzie osoby przerywają. Otwórz formularz, aby zobaczyć każdą stronę i pytanie."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/analytics.jpg",
+          "caption": "Analityka: wyświetlenia, rozpoczęcia, ukończenia i miejsca, w których ludzie przerywają."
         },
         {
           "type": "tip",
@@ -976,6 +1138,12 @@
         {
           "type": "p",
           "text": "**Lista opcji** zawiera wybory używane w wielu formularzach, na przykład działy, produkty lub kraje. Zmień listę raz, a każdy formularz, który jej używa, pójdzie za zmianą."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/lists-basics.jpg",
+          "caption": "Lista opcji: listy wyborów używane w wielu formularzach."
         },
         {
           "type": "p",
@@ -1012,6 +1180,12 @@
           "text": "**Źródła danych** łączą Formalie z Twoimi bazami danych. Odpowiedzi mogą być wtedy zapisywane także tam, w tabelach, które Formalie tworzy i utrzymuje zgodnie z formularzem."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/data-sources-basics.jpg",
+          "caption": "Połączenia z Twoimi bazami danych wraz z ich stanem."
+        },
+        {
           "type": "steps",
           "items": [
             "Otwórz **Źródła danych** na pasku i kliknij **Dodaj połączenie**.",
@@ -1046,6 +1220,12 @@
         {
           "type": "p",
           "text": "**Eksplorator baz** pokazuje tabele połączenia i ich wiersze. **Edytor zapytań** uruchamia SQL; instrukcje zmieniające dane wymagają osobnego uprawnienia i pytają o potwierdzenie."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/database-explorer.jpg",
+          "caption": "Eksplorator baz: wybierz tabelę w sekcji Tabele, aby zobaczyć jej wiersze i strukturę."
         }
       ]
     },
@@ -1071,6 +1251,12 @@
         {
           "type": "p",
           "text": "**Usługa API** daje innym systemom własne endpointy: odczyt odpowiedzi, wysyłanie nowych lub wyszukiwanie opcji list. Każda usługa grupuje endpointy i ma własną stronę dokumentacji."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/api-basics.jpg",
+          "caption": "Usługi API, każda z punktami końcowymi i dokumentacją."
         },
         {
           "type": "steps",
@@ -1106,6 +1292,12 @@
           "text": "Każdy system wywołujący Twoje API dostaje **token**. Tokeny mogą wygasać i w każdej chwili można je unieważnić. **Reguły dostępu** ograniczają adresy, godziny i liczbę dozwolonych wywołań."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/api-tokens.jpg",
+          "caption": "Tokeny i nagłówki: klucze, którymi systemy wywołują Twoje API."
+        },
+        {
           "type": "warning",
           "text": "Token jest pokazywany tylko raz. Zachowaj go w bezpiecznym miejscu i nigdy nie umieszczaj na publicznej stronie internetowej."
         }
@@ -1131,6 +1323,12 @@
         {
           "type": "p",
           "text": "Webhook wysyła wiadomość na adres innego systemu, gdy coś się wydarzy, na przykład pojawi się nowa odpowiedź. Formalie ponawia nieudane dostarczenia i pokazuje każde z nich, więc widzisz, co zostało wysłane."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/webhooks.jpg",
+          "caption": "Webhooki i ich dostarczenia."
         }
       ]
     },
@@ -1159,6 +1357,12 @@
         {
           "type": "p",
           "text": "Każda osoba ma jedną rolę. Właściciel może wszystko; Administrator i Członek są gotowe do użycia i można je zmieniać; możesz dodać własne role."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/roles-and-access.jpg",
+          "caption": "Role i dostęp: każda rola i kto ją ma."
         },
         {
           "type": "p",
@@ -1191,6 +1395,12 @@
         {
           "type": "p",
           "text": "Link rejestracyjny pozwala osobom samodzielnie utworzyć konto. Możesz ograniczyć go do adresów e-mail Twojej organizacji. Ich konta czekają w sekcji **Oczekuje na zatwierdzenie**, aż administrator je zatwierdzi i przypisze rolę."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/sign-up-links.jpg",
+          "caption": "Linki rejestracyjne są u góry w Osoby; zatwierdzenia czekają w Oczekuje na zatwierdzenie."
         }
       ]
     },
@@ -1215,6 +1425,12 @@
         {
           "type": "p",
           "text": "Otwórz profil, klikając swoje imię na dole menu. Zmień zdjęcie, imię i nazwisko, język, strefę czasową i format daty, hasło oraz logowanie dwuetapowe, a także zobacz, gdzie jesteś zalogowany."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/your-profile.jpg",
+          "caption": "Twój profil: zdjęcie, imię i nazwisko, język, hasło i logowanie."
         }
       ]
     },
@@ -1240,6 +1456,12 @@
         {
           "type": "p",
           "text": "Logowanie dwuetapowe prosi o kod po podaniu hasła. Skonfiguruj w profilu aplikację uwierzytelniającą, aby uzyskać największe bezpieczeństwo, i zachowaj kody odzyskiwania w bezpiecznym miejscu."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/two-step-sign-in.jpg",
+          "caption": "Logowanie dwuetapowe ustawiasz w swoim profilu."
         }
       ]
     },
@@ -1265,6 +1487,12 @@
         {
           "type": "p",
           "text": "**Ustawienia** obejmują wszystko, co dotyczy całego obszaru roboczego: dane firmy, branding, język i region, wygląd, logowanie, bezpieczeństwo, powiadomienia, szablony e-maili, prywatność oraz domyślne ustawienia formularzy."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/workspace-settings.jpg",
+          "caption": "Ustawienia: wszystko, co dotyczy całej przestrzeni roboczej."
         },
         {
           "type": "show",
@@ -1297,6 +1525,12 @@
           "text": "W **Ustawienia → Bezpieczeństwo** administratorzy ustalają zasady haseł, wymagają logowania dwuetapowego, decydują, jak długo osoby pozostają zalogowane, a w razie potrzeby zezwalają na logowanie tylko z Waszych sieci."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/security-settings.jpg",
+          "caption": "Ustawienia → Bezpieczeństwo."
+        },
+        {
           "type": "warning",
           "text": "Zanim ograniczysz sieci, dodaj własny adres, bo możesz zablokować sobie dostęp."
         }
@@ -1322,6 +1556,12 @@
         {
           "type": "p",
           "text": "**Domyślne ustawienia formularzy** określają motyw, pasek postępu, etykiety, wiadomość z podziękowaniem i e-maile, od których zaczyna się każdy nowy formularz. Istniejące formularze się nie zmieniają."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/form-defaults.jpg",
+          "caption": "Ustawienia → Domyślne ustawienia formularzy."
         }
       ]
     },
@@ -1346,6 +1586,12 @@
         {
           "type": "p",
           "text": "**Dziennik audytu** rejestruje każde działanie w Twoim obszarze roboczym: logowania, zmiany formularzy, odpowiedzi, ustawień, osób i więcej, z informacją, kto to zrobił, kiedy i skąd."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/audit-trail.jpg",
+          "caption": "Dziennik audytu: kto, co, kiedy i skąd zrobił."
         },
         {
           "type": "p",
@@ -1383,6 +1629,12 @@
           "text": "Asystent AI tworzy formularze i szablony, pomaga w kreatorze, analizuje odpowiedzi i tłumaczy. Zawsze tylko **proponuje**: nic nie zostaje utworzone, zmienione ani wysłane, dopóki Ty tego nie wybierzesz."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-overview.jpg",
+          "caption": "Przegląd asystenta AI: kredyty, co potrafi i ostatnie prośby."
+        },
+        {
           "type": "list",
           "items": [
             "Każde zapytanie jest zachowywane w **Historii** razem z wynikiem.",
@@ -1415,6 +1667,12 @@
       "title": "Utwórz formularz z asystentem",
       "summary": "Opisz go, sprawdź szkic, utwórz.",
       "blocks": [
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-create-form.jpg",
+          "caption": "Tworzenie formularza: opisz go lub zacznij od przykładu, a potem wybierz Generuj."
+        },
         {
           "type": "steps",
           "items": [
@@ -1454,6 +1712,12 @@
           "text": "W **Analizie odpowiedzi** wybierz formularz i okres. Asystent sprawdzi, o czym są odpowiedzi tekstowe, jaki mają ton i jak zmieniły się oceny oraz wybory."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-analysis.jpg",
+          "caption": "Analiza odpowiedzi: wybierz formularz i okres, a potem zadawaj pytania poniżej."
+        },
+        {
           "type": "p",
           "text": "Zadawaj pytania prostym językiem, na przykład „Ile było odpowiedzi w zeszłym miesiącu?”. Odpowiedź zawsze pokazuje, co zostało policzone."
         }
@@ -1479,6 +1743,12 @@
         {
           "type": "p",
           "text": "**Tłumaczenia** tłumaczą formularz na dowolny z 20 języków; przed zapisaniem sprawdzasz każdy tekst obok oryginału. **Przepisz** proponuje prostsze sformułowania w wybranym tonie i pokazuje poziom czytelności przed zmianą i po niej."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-translate.jpg",
+          "caption": "Tłumaczenia: wybierz formularz i języki, a potem sprawdź każdy tekst obok oryginału."
         }
       ]
     },
@@ -1502,6 +1772,12 @@
         {
           "type": "p",
           "text": "Administratorzy włączają lub wyłączają asystenta, wybierają, co może czytać (formularze, odpowiedzi, źródła danych), wykluczają dane osobowe i określają, jak długo przechowywane są zapytania. Asystent nigdy nie uczy się na Twoich danych."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-settings.jpg",
+          "caption": "Ustawienia AI: włączone lub wyłączone, co może czytać, prywatność i użycie."
         }
       ]
     }

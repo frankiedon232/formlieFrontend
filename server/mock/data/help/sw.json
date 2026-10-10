@@ -27,6 +27,12 @@
           "text": "Formalie husaidia shirika lako kukusanya taarifa kwa fomu, kukagua kinachoingia na kukituma pale kinapohitajika: hifadhidata, mfumo mwingine kupitia API, au ripoti."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/welcome.jpg",
+          "caption": "Ukurasa wa Fomu: majibu yako kwa muhtasari juu, fomu zako chini."
+        },
+        {
           "type": "h",
           "text": "Sehemu kuu"
         },
@@ -76,6 +82,12 @@
           "text": "Safu nyembamba iliyo kushoto kabisa ni **reli**. Kila ikoni hufungua eneo la Formalie: Fomu, Vyanzo vya data, Huduma ya API, Msaidizi wa AI na Watu. Menyu iliyo kando yake hubadilika kulingana na eneo ulilomo."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/find-your-way.jpg",
+          "caption": "Reli na menyu ya eneo. Kwenye simu na kompyuta kibao hufunguka kutoka kitufe cha menyu juu kushoto."
+        },
+        {
           "type": "p",
           "text": "Juu ya kila ukurasa unaona kichwa chake, ulipo (njia ya kurasa) na vitufe vya ukurasa. Kitufe kikuu ni kile cheusi upande wa kulia kila wakati."
         },
@@ -117,6 +129,12 @@
         {
           "type": "p",
           "text": "Unaweza kuanza fomu kwa njia tatu: kutoka ukurasa mtupu, kutoka kwenye kiolezo cha Formalie, au kwa kuieleza kwa msaidizi wa AI."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/first-form.jpg",
+          "caption": "Fomu mpya: anza tupu, kutoka kwenye kiolezo au kwa kuingiza faili ya fomu."
         },
         {
           "type": "steps",
@@ -165,6 +183,12 @@
           "text": "Kila mtu katika eneo lako la kazi ana wasifu wenye idara, cheo cha kazi na jukumu. Jukumu huamua anachoweza kuona na kufanya."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/invite-your-team.jpg",
+          "caption": "Watu: kila mtu katika nafasi yako ya kazi, na Ongeza mtumiaji na Viungo vya kujisajili juu."
+        },
+        {
           "type": "steps",
           "items": [
             "Open **People** from the rail.",
@@ -204,6 +228,12 @@
           "text": "Utafutaji hufunguka kwa **Ctrl + K** (**⌘ + K** kwenye Mac). Andika sehemu ya jina la ukurasa, fomu, mpangilio au mtu kisha bonyeza Enter."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/keyboard-and-search.jpg",
+          "caption": "Njia zote za mkato za kibodi, katika Msaada → Njia za mkato za kibodi."
+        },
+        {
           "type": "p",
           "text": "Bonyeza **?** kuona njia zote za mkato za kibodi. Kurasa nyingi huongeza zake, kwa mfano **J** na **K** kuhamia kati ya majibu kwenye paneli."
         },
@@ -236,6 +266,12 @@
         {
           "type": "p",
           "text": "Ukurasa wa Fomu huorodhesha kila fomu unayoruhusiwa kuona. Kadi mbili za juu zinaonyesha majibu ya hivi karibuni na jinsi fomu zako zilivyogawanyika kati ya rasimu, zilizochapishwa na zilizofungwa; bofya hali kwenye maelezo ya rangi ili kuonyesha fomu hizo tu."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/forms-list.jpg",
+          "caption": "Fomu kama kadi, zenye utafutaji, vichujio na kibadilishi cha Jedwali / Gridi."
         },
         {
           "type": "list",
@@ -289,6 +325,12 @@
           "text": "Fomu iliyochapishwa inaweza kuwa na **mabadiliko ambayo hayajachapishwa**: mabadiliko yako hubaki kwenye rasimu hadi uchapishe tena, kwa hiyo wanaojaza hawaoni mabadiliko ambayo hayajakamilika."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/form-lifecycle.jpg",
+          "caption": "Fomu zilizochujwa kuwa Zilizochapishwa: bofya hali kwenye kadi ya juu ili kuchuja."
+        },
+        {
           "type": "tip",
           "text": "Weka tarehe za kufungua na kufunga katika **Shiriki → Upatikanaji** ili fomu ifunguke na kufungwa yenyewe."
         }
@@ -318,6 +360,12 @@
           "text": "Folda hukusanya fomu, kwa mfano kwa timu au mradi. Unda moja kwa **+** kando ya Folda kwenye menyu, kisha hamishia fomu ndani yake kutoka menyu ya **⋯** ya fomu."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/folders.jpg",
+          "caption": "Folda, zikionyesha idadi ya fomu na majibu katika kila moja."
+        },
+        {
           "type": "p",
           "text": "Wasimamizi wanaweza kuweka folda kwa baadhi ya majukumu, idara au watu kwa **Ufikiaji wa folda**. Wengine hawaoni folda, fomu zake wala majibu yake popote, hata kwenye utafutaji au uhamishaji."
         }
@@ -343,6 +391,12 @@
         {
           "type": "p",
           "text": "Ukifuta fomu huenda kwenye **Tupio** kwa siku 30, pamoja na majibu yake. Unaweza kuirudisha kutoka hapo wakati wowote ndani ya siku hizo 30."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/trash.jpg",
+          "caption": "Tupio: fomu zilizofutwa hukaa hapa siku 30."
         },
         {
           "type": "warning",
@@ -380,6 +434,12 @@
         {
           "type": "p",
           "text": "Kijenzi kina sehemu tatu: **orodha ya sehemu** upande wa kushoto, **fomu** katikati na **mipangilio** ya ulichochagua upande wa kulia."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/builder-basics.jpg",
+          "caption": "Kijenzi: kurasa na maswali ya fomu yako, pamoja na Ongeza sehemu na Mipangilio ya sehemu chini."
         },
         {
           "type": "steps",
@@ -440,6 +500,12 @@
           "text": "Chagua sehemu mahususi zaidi: sehemu ya barua pepe hukagua anwani watu wanapoandika, sehemu ya tarehe huonyesha kalenda, sehemu ya simu hukagua namba."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/field-types.jpg",
+          "caption": "Orodha ya sehemu inakusanya kila aina ya swali: maandishi, tarehe, chaguo, ukadiriaji, faili na zaidi."
+        },
+        {
           "type": "tip",
           "text": "Orodha ndefu za chaguo (nchi, idara) hufaa zaidi kama **Orodha ya Chaguo**, inayohifadhiwa mara moja na kutumika katika fomu nyingi."
         }
@@ -469,6 +535,12 @@
         {
           "type": "p",
           "text": "Sheria za mantiki hubadilisha fomu watu wanapoijaza: onyesha swali la ufuatiliaji baada ya jibu la ndiyo tu, lazimisha namba ya simu kwa maombi ya dharura, au rukia mwisho."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/builder-logic.jpg",
+          "caption": "Kichupo cha Mantiki: kila kanuni inasema Ikiwa kitu kimejibiwa, Basi nini kitatokea."
         },
         {
           "type": "steps",
@@ -509,6 +581,12 @@
           "text": "Sehemu ya **Hesabu** hukokotoa thamani kutoka kwenye majibu mengine, kwa mfano idadi × bei, wastani wa ukadiriaji au alama ya hatari. Watu huona matokeo wanapojaza fomu."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/calculations.jpg",
+          "caption": "Fomu katika kijenzi; sehemu ya Hesabu hukokotoa thamani yake kutoka kwa majibu mengine."
+        },
+        {
           "type": "p",
           "text": "Andika fomula kwa funguo za maswali ndani ya mabano ya mkunjo, kwa mfano **{quantity} * {unit_price}**. Chaguo zinaweza kubeba alama ili ziweze kujumlishwa."
         }
@@ -536,6 +614,12 @@
         {
           "type": "p",
           "text": "**Chapisha** hufanya rasimu yako kuwa fomu ya moja kwa moja. Kila uchapishaji huhifadhiwa kama toleo lenye namba, pamoja na dokezo la hiari kuhusu kilichobadilika."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/publish-and-versions.jpg",
+          "caption": "Matoleo: kila uchapishaji, tayari kulinganishwa au kurejeshwa."
         },
         {
           "type": "p",
@@ -571,6 +655,12 @@
         {
           "type": "p",
           "text": "Fungua kichupo cha **Muundo** cha fomu kubadilisha mwonekano wake. Hakiki huonyesha fomu kama watu watakavyoiona, kwenye kompyuta, kompyuta kibao au simu."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/design-a-form.jpg",
+          "caption": "Kichupo cha Muundo chenye onyesho la moja kwa moja."
         },
         {
           "type": "list",
@@ -610,6 +700,12 @@
           "text": "Mandhari ni miundo iliyohifadhiwa. Formalie hutoa seti; eneo lako la kazi linaweza kuongeza yake kutoka kwenye kibunifu, au umruhusu msaidizi wa AI apendekeze miundo kutoka rangi ya chapa yako."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/themes.jpg",
+          "caption": "Mandhari: miundo ya Formalie na ya nafasi yako ya kazi."
+        },
+        {
           "type": "p",
           "text": "Chagua mandhari ambayo fomu mpya huanza nayo katika **Mipangilio → Chaguo-msingi za fomu**."
         },
@@ -640,6 +736,12 @@
         {
           "type": "p",
           "text": "Ukurasa wa kutua ni ukurasa ambamo fomu yako inakaa: bango lenye kichwa, utangulizi, muda unaochukua na shirika lako. Chagua mmoja kwenye kibunifu au hifadhi wako mwenyewe katika **Kurasa za kutua**."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/landing-pages.jpg",
+          "caption": "Kurasa za kutua: ukurasa ambao fomu inakaa juu yake."
         }
       ]
     },
@@ -665,6 +767,12 @@
         {
           "type": "p",
           "text": "Jumba la violezo lina fomu tayari za rasilimali watu, afya na usalama, matukio, mauzo na zaidi. Kila moja ina maswali yake, mantiki, hesabu na muundo unaoendana."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/use-a-template.jpg",
+          "caption": "Matunzio ya violezo, kwa kategoria."
         },
         {
           "type": "steps",
@@ -701,6 +809,12 @@
         {
           "type": "p",
           "text": "Fomu yoyote inaweza kuwa kiolezo cha eneo lako la kazi: fungua menyu yake ya **⋯** na uchague **Hifadhi kama kiolezo**. Ipe jina, maelezo na kategoria. Violezo vyako huonekana chini ya **Violezo vyako**."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/save-as-template.jpg",
+          "caption": "Violezo vyako vinaonekana kwenye matunzio kando ya vya Formalie."
         }
       ]
     },
@@ -728,6 +842,12 @@
         {
           "type": "p",
           "text": "Fungua kichupo cha **Shiriki** cha fomu iliyochapishwa. Kutoka hapo unaweza kunakili kiungo chake, kupakua msimbo wa QR, kuunda kiungo kifupi au kutuma mialiko ya barua pepe."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/share-a-form.jpg",
+          "caption": "Kichupo cha Shiriki: mahali watu wanapoweza kujibu na nani anaweza kufungua fomu."
         },
         {
           "type": "list",
@@ -776,6 +896,12 @@
         {
           "type": "p",
           "text": "Katika **Upatikanaji** unaweza kufungua na kufunga fomu kwa tarehe maalum na kuisimamisha baada ya idadi fulani ya majibu."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/who-can-fill-in.jpg",
+          "caption": "Nani anaweza kujaza fomu na lini, katika mipangilio yake ya Shiriki."
         }
       ]
     },
@@ -799,6 +925,12 @@
         {
           "type": "p",
           "text": "Katika **Shiriki → Pachika** nakili msimbo na ubandike kwenye tovuti yako. Unaweza kuweka kikomo cha tovuti zipi zinaweza kuonyesha fomu."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/embed-a-form.jpg",
+          "caption": "Kupachika na tovuti zinazoruhusiwa pia ziko kwenye kichupo cha Shiriki."
         }
       ]
     },
@@ -824,6 +956,12 @@
         {
           "type": "p",
           "text": "Fomu ina lugha kuu na inaweza kutoa nyingine. Kwenye kijenzi, fungua mipangilio ya fomu, ongeza lugha chini ya **Lugha zaidi** na utafsiri kila maandishi kando kwa kando."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/form-languages.jpg",
+          "caption": "Mipangilio ya fomu katika kijenzi, ambapo unaongeza lugha zaidi."
         },
         {
           "type": "tip",
@@ -853,6 +991,12 @@
         {
           "type": "p",
           "text": "**Majibu** huorodhesha fomu zako pamoja na majibu yake. Fungua fomu kuona majibu yake kama jedwali au kadi; fungua jibu kuona kila jibu kwenye paneli."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/responses-basics.jpg",
+          "caption": "Majibu ya fomu, yenye kadi juu na orodha chini."
         },
         {
           "type": "list",
@@ -893,6 +1037,12 @@
           "text": "Kila jibu lina hali: **Mpya**, **Imekaguliwa**, **Imeidhinishwa** au **Imekataliwa**. Ibadilishe kwa mbofyo mmoja juu ya paneli ya jibu."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/review-responses.jpg",
+          "caption": "Jibu lililofunguliwa kwenye paneli yake: upau wa hali juu, lebo na maelezo chini."
+        },
+        {
           "type": "p",
           "text": "Ongeza lebo na madokezo ili kufuatilia. Kusahihisha majibu ni ruhusa tofauti, kwa hiyo jukumu lako linaweza kuruhusu kukagua bila kubadilisha walichoandika watu."
         }
@@ -920,6 +1070,12 @@
         {
           "type": "p",
           "text": "Bofya **Hamisha** kwenye majibu ya fomu, chagua muundo na kinachojumuishwa. Uhamishaji mkubwa huandaliwa chinichini; unaona maendeleo yake katika **Uhamishaji** na kupata ujumbe faili ikiwa tayari."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/export-responses.jpg",
+          "caption": "Uhamishaji: faili zinazoandaliwa na zilizo tayari kupakuliwa."
         }
       ]
     },
@@ -946,6 +1102,12 @@
         {
           "type": "p",
           "text": "**Takwimu** zinaonyesha watu wangapi walifungua, kuanza na kukamilisha kila fomu, inachukua muda gani na pale watu wanapoacha. Fungua fomu kuona kila ukurasa na swali."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/analytics.jpg",
+          "caption": "Takwimu: maonyesho, mianzo, ukamilishaji na mahali watu wanaposimama."
         },
         {
           "type": "tip",
@@ -976,6 +1138,12 @@
         {
           "type": "p",
           "text": "**Orodha ya Chaguo** ina chaguo unazotumia katika fomu nyingi, kwa mfano idara, bidhaa au nchi. Badilisha orodha mara moja na kila fomu inayoitumia inafuata."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/lists-basics.jpg",
+          "caption": "Orodha ya Chaguo: orodha za chaguo zinazotumika katika fomu nyingi."
         },
         {
           "type": "p",
@@ -1012,6 +1180,12 @@
           "text": "**Vyanzo vya data** huunganisha Formalie na hifadhidata zako mwenyewe. Majibu yanaweza kuhifadhiwa huko pia, katika majedwali ambayo Formalie huunda na kuyaweka sambamba na fomu."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/data-sources-basics.jpg",
+          "caption": "Miunganisho kwenye hifadhidata zako, pamoja na hali yake."
+        },
+        {
           "type": "steps",
           "items": [
             "Open **Data sources** from the rail and click **Add connection**.",
@@ -1046,6 +1220,12 @@
         {
           "type": "p",
           "text": "**Kivinjari cha hifadhidata** huonyesha majedwali ya muunganisho na safu zake. **Kihariri cha hoja** huendesha SQL; amri zinazobadilisha data zinahitaji ruhusa yake na huuliza kwanza."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/database-explorer.jpg",
+          "caption": "Kivinjari cha hifadhidata: chagua jedwali chini ya Majedwali ili kuona safu zake na muundo wake."
         }
       ]
     },
@@ -1071,6 +1251,12 @@
         {
           "type": "p",
           "text": "**Huduma ya API** huipa mifumo mingine endpoint zake yenyewe: kusoma majibu, kutuma mapya, au kutafuta chaguo za orodha. Kila huduma hukusanya endpoint na ina ukurasa wake wa nyaraka."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/api-basics.jpg",
+          "caption": "Huduma za API, kila moja na sehemu zake za mwisho na nyaraka."
         },
         {
           "type": "steps",
@@ -1106,6 +1292,12 @@
           "text": "Kila mfumo unaoita API yako hupata **tokeni**. Tokeni zinaweza kuisha muda na kubatilishwa wakati wowote. **Sheria za ufikiaji** huweka kikomo cha anwani, nyakati na idadi ya miito inayoruhusiwa."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/api-tokens.jpg",
+          "caption": "Tokeni na vichwa: funguo zinazotumiwa na mifumo kuita API yako."
+        },
+        {
           "type": "warning",
           "text": "Tokeni huonyeshwa mara moja tu. Iweke mahali salama na usiiweke kamwe kwenye ukurasa wa wavuti wa umma."
         }
@@ -1131,6 +1323,12 @@
         {
           "type": "p",
           "text": "Webhook hutuma ujumbe kwa anwani ya mfumo mwingine jambo linapotokea, kwa mfano jibu jipya. Formalie hujaribu tena uwasilishaji ulioshindwa na huonyesha kila uwasilishaji ili uone kilichotumwa."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/webhooks.jpg",
+          "caption": "Webhooks na uwasilishaji wake."
         }
       ]
     },
@@ -1159,6 +1357,12 @@
         {
           "type": "p",
           "text": "Kila mtu ana jukumu moja. Owner anaweza kufanya kila kitu; Admin na Member ziko tayari kutumika na zinaweza kubadilishwa; unaweza kuongeza majukumu yako mwenyewe."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/roles-and-access.jpg",
+          "caption": "Majukumu na ufikiaji: kila jukumu na nani analo."
         },
         {
           "type": "p",
@@ -1191,6 +1395,12 @@
         {
           "type": "p",
           "text": "Kiungo cha kujisajili huwawezesha watu kujiundia akaunti. Unaweza kukiwekea kikomo cha anwani za barua pepe za shirika lako. Akaunti zao husubiri katika **Inasubiri idhini** hadi msimamizi awaidhinishe na kuwapa jukumu."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/sign-up-links.jpg",
+          "caption": "Viungo vya kujisajili viko juu ya Watu; idhini zinasubiri katika Inasubiri idhini."
         }
       ]
     },
@@ -1215,6 +1425,12 @@
         {
           "type": "p",
           "text": "Fungua wasifu wako kutoka jina lako chini ya menyu. Badilisha picha, jina, lugha, saa za eneo na muundo wa tarehe, nenosiri lako na kuingia kwa hatua mbili, na uone ulipoingia."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/your-profile.jpg",
+          "caption": "Wasifu wako: picha, jina, lugha, nenosiri na kuingia."
         }
       ]
     },
@@ -1240,6 +1456,12 @@
         {
           "type": "p",
           "text": "Kuingia kwa hatua mbili huomba msimbo baada ya nenosiri lako. Weka programu ya kithibitishaji kwenye wasifu wako kwa chaguo salama zaidi, na uhifadhi misimbo ya uokoaji mahali salama."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/two-step-sign-in.jpg",
+          "caption": "Kuingia kwa hatua mbili kunawekwa kwenye wasifu wako."
         }
       ]
     },
@@ -1265,6 +1487,12 @@
         {
           "type": "p",
           "text": "**Mipangilio** ina vitu vinavyotumika kwa eneo zima la kazi: maelezo ya kampuni, chapa, lugha na eneo, mwonekano, kuingia, usalama, arifa, violezo vya barua pepe, faragha na chaguo-msingi za fomu."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/workspace-settings.jpg",
+          "caption": "Mipangilio: kila kinachohusu nafasi nzima ya kazi."
         },
         {
           "type": "show",
@@ -1297,6 +1525,12 @@
           "text": "Katika **Mipangilio → Usalama** wasimamizi huweka kanuni za nenosiri, huhitaji kuingia kwa hatua mbili, huamua watu wakae wameingia kwa muda gani na, ikibidi, huruhusu kuingia kutoka mitandao yenu tu."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/security-settings.jpg",
+          "caption": "Mipangilio → Usalama."
+        },
+        {
           "type": "warning",
           "text": "Kabla ya kuweka kikomo cha mitandao, ongeza anwani yako mwenyewe, la sivyo unaweza kujifungia nje."
         }
@@ -1322,6 +1556,12 @@
         {
           "type": "p",
           "text": "**Chaguo-msingi za fomu** huweka mandhari, upau wa maendeleo, lebo, ujumbe wa shukrani na barua pepe ambazo kila fomu mpya huanza nazo. Fomu ulizonazo tayari hazibadiliki."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/form-defaults.jpg",
+          "caption": "Mipangilio → Chaguo-msingi za fomu."
         }
       ]
     },
@@ -1346,6 +1586,12 @@
         {
           "type": "p",
           "text": "**Kumbukumbu za ukaguzi** hurekodi kila kitendo katika eneo lako la kazi: kuingia, mabadiliko ya fomu, majibu, mipangilio, watu na zaidi, pamoja na nani alifanya, lini na kutoka wapi."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/audit-trail.jpg",
+          "caption": "Kumbukumbu za ukaguzi: nani alifanya nini, lini na kutoka wapi."
         },
         {
           "type": "p",
@@ -1383,6 +1629,12 @@
           "text": "Msaidizi wa AI huunda fomu na violezo, husaidia kwenye kijenzi, huchambua majibu na hutafsiri. Daima **hupendekeza**: hakuna kinachoundwa, kubadilishwa au kutumwa hadi uchague."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-overview.jpg",
+          "caption": "Muhtasari wa msaidizi wa AI: mikopo, anachoweza kufanya na maombi ya hivi karibuni."
+        },
+        {
           "type": "list",
           "items": [
             "Every request is kept in **History** with what came back.",
@@ -1415,6 +1667,12 @@
       "title": "Unda fomu kwa msaidizi",
       "summary": "Eleza, kagua rasimu, kisha unda.",
       "blocks": [
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-create-form.jpg",
+          "caption": "Tengeneza fomu: ieleze au anza na mfano, kisha chagua Tengeneza."
+        },
         {
           "type": "steps",
           "items": [
@@ -1454,6 +1712,12 @@
           "text": "Katika **Uchambuzi wa majibu**, chagua fomu na kipindi. Msaidizi hugundua majibu yaliyoandikwa yanahusu nini, toni yake, na jinsi ukadiriaji na chaguo vilivyobadilika."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-analysis.jpg",
+          "caption": "Uchambuzi wa majibu: chagua fomu na kipindi, kisha uliza maswali chini."
+        },
+        {
           "type": "p",
           "text": "Uliza maswali kwa maneno rahisi, kama “Majibu mangapi mwezi uliopita?”. Jibu daima huonyesha kilichohesabiwa."
         }
@@ -1479,6 +1743,12 @@
         {
           "type": "p",
           "text": "**Tafsiri** hutafsiri fomu kwa lugha yoyote kati ya 20; unakagua kila maandishi kando kwa kando kabla ya kuhifadhi. **Andika upya** hupendekeza maneno rahisi zaidi kwa toni unayochagua na huonyesha kiwango cha usomaji kabla na baada."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-translate.jpg",
+          "caption": "Tafsiri: chagua fomu na lugha, kisha kagua kila maandishi kando kwa kando."
         }
       ]
     },
@@ -1502,6 +1772,12 @@
         {
           "type": "p",
           "text": "Wasimamizi huwasha au kuzima msaidizi, huchagua kinachoweza kusoma (fomu, majibu, vyanzo vya data), huzuia data binafsi na huchagua maombi yahifadhiwe kwa muda gani. Msaidizi hafunzwi kamwe kwa data yako."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-settings.jpg",
+          "caption": "Mipangilio ya AI: imewashwa au imezimwa, inachoweza kusoma, faragha na matumizi."
         }
       ]
     }

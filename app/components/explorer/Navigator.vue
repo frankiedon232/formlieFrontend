@@ -22,7 +22,7 @@ useContextMenu().register(root, target => {
 </script>
 
 <template>
-  <div ref="root" class="flex min-h-0 flex-1 flex-col gap-2 p-3">
+  <div ref="root" class="flex min-h-0 min-w-0 flex-1 flex-col gap-2 p-3">
     <USkeleton v-if="!sources" class="h-7 rounded-sm" />
     <USelectMenu
       v-else-if="sources.length"

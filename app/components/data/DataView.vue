@@ -351,7 +351,7 @@ defineExpose({ refresh: state.refresh, state, shownColumns: () => orderedColumns
     </AppEmpty>
 
     <template v-else-if="viewMode === 'grid'">
-      <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4" :aria-busy="state.loading.value">
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4" :aria-busy="state.loading.value">
         <template v-if="showSkeleton">
           <USkeleton v-for="n in 8" :key="n" class="h-40 rounded-lg" />
         </template>

@@ -27,6 +27,12 @@
           "text": "Met Formalie verzamel je informatie met formulieren, bekijk je wat binnenkomt en stuur je het door naar waar het nodig is: een database, een ander systeem via de API of een rapport."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/welcome.jpg",
+          "caption": "De pagina Formulieren: bovenaan je reacties in één oogopslag, daaronder je formulieren."
+        },
+        {
           "type": "h",
           "text": "De belangrijkste onderdelen"
         },
@@ -76,6 +82,12 @@
           "text": "De smalle kolom helemaal links is de **balk**. Elk pictogram opent een onderdeel van Formalie: Formulieren, Gegevensbronnen, API-service, AI-assistent en Mensen. Het menu ernaast verandert met het onderdeel waarin je zit."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/find-your-way.jpg",
+          "caption": "De rail en het menu van het gebied. Op telefoons en tablets openen ze via de menuknop linksboven."
+        },
+        {
           "type": "p",
           "text": "Bovenaan elke pagina vind je de titel, waar je bent (het kruimelpad) en de knoppen van de pagina. De hoofdknop is altijd de donkere aan de rechterkant."
         },
@@ -117,6 +129,12 @@
         {
           "type": "p",
           "text": "Je kunt op drie manieren beginnen: met een lege pagina, met een sjabloon van Formalie of door het te beschrijven aan de AI-assistent."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/first-form.jpg",
+          "caption": "Nieuw formulier: begin leeg, vanuit een sjabloon of door een formulierbestand te importeren."
         },
         {
           "type": "steps",
@@ -165,6 +183,12 @@
           "text": "Iedereen in je werkruimte heeft een profiel met afdeling, functietitel en rol. De rol bepaalt wat iemand kan zien en doen."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/invite-your-team.jpg",
+          "caption": "Mensen: iedereen in je werkruimte, met Gebruiker toevoegen en Aanmeldlinks bovenaan."
+        },
+        {
           "type": "steps",
           "items": [
             "Open **Mensen** in de balk.",
@@ -204,6 +228,12 @@
           "text": "Zoeken opent met **Ctrl + K** (**⌘ + K** op een Mac). Typ een deel van een pagina, formulier, instelling of persoon en druk op Enter."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/keyboard-and-search.jpg",
+          "caption": "Alle sneltoetsen staan in Hulp & support → Sneltoetsen."
+        },
+        {
           "type": "p",
           "text": "Druk op **?** om alle sneltoetsen te zien. Veel pagina’s hebben eigen sneltoetsen, bijvoorbeeld **J** en **K** om in een paneel tussen reacties te wisselen."
         },
@@ -236,6 +266,12 @@
         {
           "type": "p",
           "text": "De pagina Formulieren toont alle formulieren die je mag zien. De twee kaarten bovenaan tonen recente reacties en hoe je formulieren zijn verdeeld over concept, gepubliceerd en gesloten; klik op een status in de legenda om alleen die formulieren te tonen."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/forms-list.jpg",
+          "caption": "Formulieren als kaarten, met zoeken, filters en de schakelaar Tabel / Raster."
         },
         {
           "type": "list",
@@ -289,6 +325,12 @@
           "text": "Een gepubliceerd formulier kan **niet-gepubliceerde wijzigingen** hebben: je aanpassingen blijven in het concept tot je opnieuw publiceert, zodat invullers nooit een half afgemaakte wijziging zien."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/form-lifecycle.jpg",
+          "caption": "Formulieren gefilterd op Gepubliceerd: klik bovenaan op een status in de kaart om te filteren."
+        },
+        {
           "type": "tip",
           "text": "Stel openings- en sluitingsdatums in bij **Delen → Beschikbaarheid**, zodat een formulier zichzelf opent en sluit."
         }
@@ -318,6 +360,12 @@
           "text": "Mappen groeperen formulieren, bijvoorbeeld per team of project. Maak er een met **+** naast Mappen in het menu en verplaats formulieren erin via hun **⋯**-menu."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/folders.jpg",
+          "caption": "Mappen, met het aantal formulieren en reacties in elk."
+        },
+        {
           "type": "p",
           "text": "Beheerders kunnen een map beperken tot bepaalde rollen, afdelingen of mensen met **Maptoegang**. Alle anderen zien de map, de formulieren en hun reacties nergens, ook niet in zoekresultaten of exports."
         }
@@ -343,6 +391,12 @@
         {
           "type": "p",
           "text": "Als je een formulier verwijdert, gaat het met zijn reacties 30 dagen naar de **Prullenbak**. In die 30 dagen kun je het er altijd uit herstellen."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/trash.jpg",
+          "caption": "Prullenbak: verwijderde formulieren blijven hier 30 dagen."
         },
         {
           "type": "warning",
@@ -380,6 +434,12 @@
         {
           "type": "p",
           "text": "De builder heeft drie delen: de **veldenlijst** links, het **formulier** in het midden en de **instellingen** van je selectie rechts."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/builder-basics.jpg",
+          "caption": "De builder: de pagina's en vragen van je formulier, met Veld toevoegen en Veldinstellingen onderaan."
         },
         {
           "type": "steps",
@@ -440,6 +500,12 @@
           "text": "Kies het meest specifieke veld: een e-mailveld controleert het adres tijdens het typen, een datumveld toont een kalender, een telefoonveld controleert het nummer."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/field-types.jpg",
+          "caption": "De veldenlijst groepeert elk soort vraag: tekst, datums, keuzes, beoordelingen, bestanden en meer."
+        },
+        {
           "type": "tip",
           "text": "Lange lijsten met keuzes (landen, afdelingen) werken het best als **Optielijst**, die je één keer bijhoudt en in veel formulieren gebruikt."
         }
@@ -469,6 +535,12 @@
         {
           "type": "p",
           "text": "Logicaregels veranderen het formulier terwijl iemand het invult: een vervolgvraag pas na een ja tonen, een telefoonnummer verplicht stellen bij dringende verzoeken of naar het einde springen."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/builder-logic.jpg",
+          "caption": "Het tabblad Logica: elke regel zegt Als iets is beantwoord, Dan wat er gebeurt."
         },
         {
           "type": "steps",
@@ -509,6 +581,12 @@
           "text": "Een veld **Berekening** rekent een waarde uit andere antwoorden uit, bijvoorbeeld aantal × prijs, een gemiddelde beoordeling of een risicoscore. Mensen zien het resultaat terwijl ze het formulier invullen."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/calculations.jpg",
+          "caption": "Een formulier in de builder; een veld Berekeningen bepaalt zijn waarde uit andere antwoorden."
+        },
+        {
           "type": "p",
           "text": "Schrijf de formule met de sleutels van de vragen tussen accolades, bijvoorbeeld **{quantity} * {unit_price}**. Keuzes kunnen een score hebben, zodat ze opgeteld kunnen worden."
         }
@@ -536,6 +614,12 @@
         {
           "type": "p",
           "text": "**Publiceren** maakt van je concept het live formulier. Elke publicatie wordt opgeslagen als genummerde versie, met een optionele notitie over wat er is veranderd."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/publish-and-versions.jpg",
+          "caption": "Versies: elke publicatie, klaar om te vergelijken of te herstellen."
         },
         {
           "type": "p",
@@ -571,6 +655,12 @@
         {
           "type": "p",
           "text": "Open het tabblad **Ontwerp** van een formulier om het uiterlijk te wijzigen. De voorbeeldweergave toont het formulier zoals mensen het zien, op een computer, tablet of telefoon."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/design-a-form.jpg",
+          "caption": "Het tabblad Ontwerp met de live voorbeeldweergave."
         },
         {
           "type": "list",
@@ -610,6 +700,12 @@
           "text": "Thema’s zijn opgeslagen ontwerpen. Formalie levert er een aantal mee; je werkruimte kan er zelf bij maken in de ontwerper, of de AI-assistent laten voorstellen doen op basis van je huiskleur."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/themes.jpg",
+          "caption": "Thema’s: de ontwerpen van Formalie en die van je eigen werkruimte."
+        },
+        {
           "type": "p",
           "text": "Kies het thema waarmee nieuwe formulieren beginnen bij **Instellingen → Standaard voor formulieren**."
         },
@@ -640,6 +736,12 @@
         {
           "type": "p",
           "text": "Een landingspagina is de pagina waarop je formulier staat: een banner met de titel, een inleiding, hoe lang het duurt en je organisatie. Kies er een in de ontwerper of beheer je eigen onder **Landingspagina’s**."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/landing-pages.jpg",
+          "caption": "Landingspagina’s: de pagina waarop een formulier staat."
         }
       ]
     },
@@ -665,6 +767,12 @@
         {
           "type": "p",
           "text": "De sjabloongalerij heeft kant-en-klare formulieren voor HR, gezondheid en veiligheid, evenementen, verkoop en meer. Elk wordt geleverd met vragen, logica, berekeningen en een passend ontwerp."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/use-a-template.jpg",
+          "caption": "De sjabloongalerij, per categorie."
         },
         {
           "type": "steps",
@@ -701,6 +809,12 @@
         {
           "type": "p",
           "text": "Elk formulier kan een sjabloon voor je werkruimte worden: open het **⋯**-menu en kies **Opslaan als sjabloon**. Geef het een naam, een beschrijving en een categorie. Je sjablonen verschijnen onder **Je sjablonen**."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/save-as-template.jpg",
+          "caption": "Je sjablonen verschijnen in de galerij naast die van Formalie."
         }
       ]
     },
@@ -728,6 +842,12 @@
         {
           "type": "p",
           "text": "Open het tabblad **Delen** van een gepubliceerd formulier. Daar kun je de link kopiëren, een QR-code downloaden, een korte link maken of e-mailuitnodigingen versturen."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/share-a-form.jpg",
+          "caption": "Het tabblad Delen: waar mensen kunnen reageren en wie het formulier kan openen."
         },
         {
           "type": "list",
@@ -776,6 +896,12 @@
         {
           "type": "p",
           "text": "Bij **Beschikbaarheid** open en sluit je het formulier op vaste data en stop je het na een bepaald aantal reacties."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/who-can-fill-in.jpg",
+          "caption": "Wie het formulier wanneer mag invullen, in de instellingen van Delen."
         }
       ]
     },
@@ -799,6 +925,12 @@
         {
           "type": "p",
           "text": "Kopieer bij **Delen → Insluiten** de code en plak die in je website. Je kunt beperken welke websites het formulier mogen tonen."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/embed-a-form.jpg",
+          "caption": "Insluiten en toegestane websites staan ook in het tabblad Delen."
         }
       ]
     },
@@ -824,6 +956,12 @@
         {
           "type": "p",
           "text": "Een formulier heeft een hoofdtaal en kan er meer aanbieden. Open in de builder de formulierinstellingen, voeg een taal toe onder **Meer talen** en vertaal elke tekst naast elkaar."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/form-languages.jpg",
+          "caption": "Formulierinstellingen in de builder, waar je meer talen toevoegt."
         },
         {
           "type": "tip",
@@ -853,6 +991,12 @@
         {
           "type": "p",
           "text": "**Reacties** toont je formulieren met hun reacties. Open een formulier om de reacties als tabel of kaarten te zien; open een reactie om alle antwoorden in een paneel te zien."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/responses-basics.jpg",
+          "caption": "De reacties van een formulier, met de kaarten bovenaan en de lijst eronder."
         },
         {
           "type": "list",
@@ -893,6 +1037,12 @@
           "text": "Elke reactie heeft een status: **Nieuw**, **Beoordeeld**, **Goedgekeurd** of **Afgewezen**. Wijzig die met één klik bovenaan het reactiepaneel."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/review-responses.jpg",
+          "caption": "Een reactie geopend in het paneel: bovenaan de statusbalk, eronder labels en notities."
+        },
+        {
           "type": "p",
           "text": "Voeg tags en notities toe om het overzicht te houden. Antwoorden corrigeren is een aparte machtiging, dus je rol mag misschien beoordelen zonder te wijzigen wat mensen hebben geschreven."
         }
@@ -920,6 +1070,12 @@
         {
           "type": "p",
           "text": "Klik bij de reacties van een formulier op **Exporteren**, kies het formaat en wat je wilt opnemen. Grote exports worden op de achtergrond voorbereid; je ziet de voortgang bij **Exports** en krijgt een bericht als het bestand klaar is."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/export-responses.jpg",
+          "caption": "Exports: bestanden in voorbereiding en klaar om te downloaden."
         }
       ]
     },
@@ -946,6 +1102,12 @@
         {
           "type": "p",
           "text": "**Analyses** toont hoeveel mensen elk formulier hebben geopend, gestart en voltooid, hoe lang het duurt en waar mensen stoppen. Open een formulier om elke pagina en vraag te zien."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/analytics.jpg",
+          "caption": "Analyses: weergaven, starts, voltooiingen en waar mensen stoppen."
         },
         {
           "type": "tip",
@@ -976,6 +1138,12 @@
         {
           "type": "p",
           "text": "Een **Optielijst** bevat keuzes die je in veel formulieren gebruikt, bijvoorbeeld afdelingen, producten of landen. Wijzig de lijst één keer en elk formulier dat haar gebruikt, volgt."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/lists-basics.jpg",
+          "caption": "Optielijst: keuzelijsten die in veel formulieren worden gebruikt."
         },
         {
           "type": "p",
@@ -1012,6 +1180,12 @@
           "text": "**Gegevensbronnen** verbindt Formalie met je eigen databases. Reacties kunnen dan ook daar worden opgeslagen, in tabellen die Formalie aanmaakt en gelijk houdt met het formulier."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/data-sources-basics.jpg",
+          "caption": "Verbindingen met je databases, met hun status."
+        },
+        {
           "type": "steps",
           "items": [
             "Open **Gegevensbronnen** in de balk en klik op **Verbinding toevoegen**.",
@@ -1046,6 +1220,12 @@
         {
           "type": "p",
           "text": "De **Database-verkenner** toont de tabellen van een verbinding en hun rijen. De **Query-editor** voert SQL uit; opdrachten die gegevens wijzigen, hebben een eigen machtiging nodig en vragen eerst om bevestiging."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/database-explorer.jpg",
+          "caption": "De Database-verkenner: kies onder Tabellen een tabel om de rijen en de structuur te zien."
         }
       ]
     },
@@ -1071,6 +1251,12 @@
         {
           "type": "p",
           "text": "De **API-service** geeft andere systemen hun eigen endpoints: reacties lezen, nieuwe sturen of lijstopties opzoeken. Elke service groepeert endpoints en heeft een eigen documentatiepagina."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/api-basics.jpg",
+          "caption": "API-services, elk met zijn endpoints en documentatie."
         },
         {
           "type": "steps",
@@ -1106,6 +1292,12 @@
           "text": "Elk systeem dat je API aanroept, krijgt een **token**. Tokens kunnen verlopen en altijd worden ingetrokken. **Toegangsregels** beperken adressen, tijden en het aantal toegestane aanroepen."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/api-tokens.jpg",
+          "caption": "Tokens & headers: de sleutels waarmee systemen je API aanroepen."
+        },
+        {
           "type": "warning",
           "text": "Een token wordt één keer getoond. Bewaar hem op een veilige plek en zet hem nooit op een openbare webpagina."
         }
@@ -1131,6 +1323,12 @@
         {
           "type": "p",
           "text": "Een webhook stuurt een bericht naar het adres van een ander systeem als er iets gebeurt, bijvoorbeeld een nieuwe reactie. Formalie probeert mislukte leveringen opnieuw en toont elke levering, zodat je ziet wat er is verstuurd."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/webhooks.jpg",
+          "caption": "Webhooks en hun leveringen."
         }
       ]
     },
@@ -1159,6 +1357,12 @@
         {
           "type": "p",
           "text": "Elke persoon heeft één rol. Eigenaar kan alles; Beheerder en Lid zijn direct bruikbaar en aanpasbaar; je kunt eigen rollen toevoegen."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/roles-and-access.jpg",
+          "caption": "Rollen & toegang: elke rol en wie die heeft."
         },
         {
           "type": "p",
@@ -1191,6 +1395,12 @@
         {
           "type": "p",
           "text": "Met een aanmeldlink maken mensen zelf een account. Je kunt de link beperken tot de e-mailadressen van je organisatie. Hun accounts wachten bij **Wacht op goedkeuring** tot een beheerder ze goedkeurt en een rol geeft."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/sign-up-links.jpg",
+          "caption": "Aanmeldlinks staan bovenaan bij Mensen; goedkeuringen wachten onder Wacht op goedkeuring."
         }
       ]
     },
@@ -1215,6 +1425,12 @@
         {
           "type": "p",
           "text": "Open je profiel via je naam onderaan het menu. Wijzig je foto, naam, taal, tijdzone en datumnotatie, je wachtwoord en je tweestapsaanmelding, en zie waar je bent aangemeld."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/your-profile.jpg",
+          "caption": "Je profiel: foto, naam, taal, wachtwoord en inloggen."
         }
       ]
     },
@@ -1240,6 +1456,12 @@
         {
           "type": "p",
           "text": "Tweestapsaanmelding vraagt na je wachtwoord om een code. Stel in je profiel een authenticator-app in voor de veiligste optie en bewaar de herstelcodes op een veilige plek."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/two-step-sign-in.jpg",
+          "caption": "Inloggen in twee stappen stel je in via je profiel."
         }
       ]
     },
@@ -1265,6 +1487,12 @@
         {
           "type": "p",
           "text": "**Instellingen** bevat wat voor de hele werkruimte geldt: bedrijfsgegevens, huisstijl, taal en regio, uiterlijk, aanmelden, beveiliging, meldingen, e-mailsjablonen, privacy en standaard voor formulieren."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/workspace-settings.jpg",
+          "caption": "Instellingen: alles wat voor de hele werkruimte geldt."
         },
         {
           "type": "show",
@@ -1297,6 +1525,12 @@
           "text": "Bij **Instellingen → Beveiliging** stellen beheerders wachtwoordregels in, eisen ze tweestapsaanmelding, bepalen ze hoe lang mensen aangemeld blijven en laten ze, indien nodig, alleen aanmelden vanaf jullie netwerken toe."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/security-settings.jpg",
+          "caption": "Instellingen → Beveiliging."
+        },
+        {
           "type": "warning",
           "text": "Voeg eerst je eigen adres toe voordat je netwerken beperkt, anders sluit je jezelf misschien buiten."
         }
@@ -1322,6 +1556,12 @@
         {
           "type": "p",
           "text": "**Standaard voor formulieren** stelt het thema, de voortgangsbalk, labels, bedankbericht en e-mails in waarmee elk nieuw formulier begint. Bestaande formulieren veranderen niet."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/form-defaults.jpg",
+          "caption": "Instellingen → Standaard voor formulieren."
         }
       ]
     },
@@ -1346,6 +1586,12 @@
         {
           "type": "p",
           "text": "De **Audittrail** legt elke actie in je werkruimte vast: aanmeldingen, wijzigingen aan formulieren, reacties, instellingen, mensen en meer, met wie het deed, wanneer en van waar."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/audit-trail.jpg",
+          "caption": "De audittrail: wie wat deed, wanneer en vanaf waar."
         },
         {
           "type": "p",
@@ -1383,6 +1629,12 @@
           "text": "De AI-assistent maakt formulieren en sjablonen, helpt in de builder, analyseert reacties en vertaalt. Hij **stelt altijd alleen voor**: er wordt niets gemaakt, gewijzigd of verstuurd tot jij dat kiest."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-overview.jpg",
+          "caption": "Het overzicht van de AI-assistent: tegoed, wat hij kan en de laatste verzoeken."
+        },
+        {
           "type": "list",
           "items": [
             "Elk verzoek wordt met het resultaat bewaard in de **Geschiedenis**.",
@@ -1415,6 +1667,12 @@
       "title": "Een formulier maken met de assistent",
       "summary": "Beschrijf het, controleer het concept, maak het.",
       "blocks": [
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-create-form.jpg",
+          "caption": "Een formulier maken: beschrijf het of begin met een voorbeeld en kies dan Genereren."
+        },
         {
           "type": "steps",
           "items": [
@@ -1454,6 +1712,12 @@
           "text": "Kies bij **Antwoordanalyse** een formulier en een periode. De assistent vindt waar geschreven antwoorden over gaan, welke toon ze hebben en hoe beoordelingen en keuzes zijn veranderd."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-analysis.jpg",
+          "caption": "Antwoordanalyse: kies een formulier en een periode en stel dan onderaan vragen."
+        },
+        {
           "type": "p",
           "text": "Stel vragen in gewone woorden, zoals “Hoeveel reacties waren er vorige maand?”. Het antwoord toont altijd wat er is geteld."
         }
@@ -1479,6 +1743,12 @@
         {
           "type": "p",
           "text": "**Vertalingen** vertaalt een formulier naar elk van de 20 talen; je controleert elke tekst naast elkaar voor het opslaan. **Herschrijven** stelt eenvoudiger formuleringen voor in de gekozen toon en toont het leesniveau ervoor en erna."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-translate.jpg",
+          "caption": "Vertalingen: kies een formulier en talen en controleer dan elke tekst naast elkaar."
         }
       ]
     },
@@ -1502,6 +1772,12 @@
         {
           "type": "p",
           "text": "Beheerders zetten de assistent aan of uit, kiezen wat hij mag lezen (formulieren, reacties, gegevensbronnen), houden persoonsgegevens erbuiten en bepalen hoe lang verzoeken worden bewaard. De assistent traint nooit op jouw gegevens."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-settings.jpg",
+          "caption": "AI-instellingen: aan of uit, wat hij mag lezen, privacy en gebruik."
         }
       ]
     }

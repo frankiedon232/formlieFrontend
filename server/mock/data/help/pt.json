@@ -27,6 +27,12 @@
           "text": "O Formalie ajuda a sua organização a recolher informação com formulários, rever o que chega e enviá-lo para onde for preciso: uma base de dados, outro sistema através da API ou um relatório."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/welcome.jpg",
+          "caption": "A página Formulários: suas respostas num relance no topo e seus formulários abaixo."
+        },
+        {
           "type": "h",
           "text": "As partes principais"
         },
@@ -76,6 +82,12 @@
           "text": "A coluna estreita no extremo esquerdo é o **trilho**. Cada ícone abre uma área do Formalie: Formulários, Fontes de dados, Serviço de API, Assistente de IA e Pessoas. O menu ao lado muda conforme a área em que está."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/find-your-way.jpg",
+          "caption": "A barra lateral e o menu da área. Em celulares e tablets, eles abrem pelo botão de menu no canto superior esquerdo."
+        },
+        {
           "type": "p",
           "text": "No topo de cada página encontra o título, onde está (a navegação por níveis) e os botões da página. O botão principal é sempre o escuro, à direita."
         },
@@ -117,6 +129,12 @@
         {
           "type": "p",
           "text": "Pode começar um formulário de três maneiras: a partir de uma página em branco, de um dos modelos do Formalie ou descrevendo-o ao assistente de IA."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/first-form.jpg",
+          "caption": "Novo formulário: comece em branco, de um modelo ou importando um arquivo de formulário."
         },
         {
           "type": "steps",
@@ -165,6 +183,12 @@
           "text": "Cada pessoa do seu espaço tem um perfil com o departamento, o cargo e a função. A função decide o que pode ver e fazer."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/invite-your-team.jpg",
+          "caption": "Pessoas: todos no seu espaço de trabalho, com Adicionar utilizador e Links de registo no topo."
+        },
+        {
           "type": "steps",
           "items": [
             "Abra **Pessoas** no trilho.",
@@ -204,6 +228,12 @@
           "text": "A pesquisa abre-se com **Ctrl + K** (**⌘ + K** num Mac). Escreva parte do nome de uma página, formulário, configuração ou pessoa e prima Enter."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/keyboard-and-search.jpg",
+          "caption": "Todos os atalhos de teclado, em Ajuda e suporte → Atalhos de teclado."
+        },
+        {
           "type": "p",
           "text": "Prima **?** para ver todos os atalhos de teclado. Muitas páginas acrescentam os seus, por exemplo **J** e **K** para passar de uma resposta a outra num painel."
         },
@@ -236,6 +266,12 @@
         {
           "type": "p",
           "text": "A página Formulários lista todos os formulários que pode ver. Os dois cartões no topo mostram as respostas recentes e como os seus formulários se distribuem entre rascunho, publicado e encerrado; clique num estado na legenda para ver só esses formulários."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/forms-list.jpg",
+          "caption": "Formulários como cartões, com busca, filtros e a alternância Tabela / Grade."
         },
         {
           "type": "list",
@@ -289,6 +325,12 @@
           "text": "Um formulário publicado pode ter **alterações não publicadas**: as suas edições ficam no rascunho até publicar de novo, por isso quem responde nunca vê uma alteração a meio."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/form-lifecycle.jpg",
+          "caption": "Formulários filtrados por Publicados: clique em um status no cartão do topo para filtrar."
+        },
+        {
           "type": "tip",
           "text": "Defina datas de abertura e encerramento em **Partilhar → Disponibilidade** para que um formulário abra e encerre sozinho."
         }
@@ -318,6 +360,12 @@
           "text": "As pastas agrupam formulários, por exemplo por equipa ou projeto. Crie uma com **+** junto a Pastas no menu e depois mova formulários para ela a partir do menu **⋯** deles."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/folders.jpg",
+          "caption": "Pastas, com o número de formulários e respostas em cada uma."
+        },
+        {
           "type": "p",
           "text": "Os administradores podem limitar uma pasta a algumas funções, departamentos ou pessoas com **Acesso à pasta**. Todos os outros não veem a pasta, os formulários nem as respostas em lado nenhum, nem na pesquisa ou nas exportações."
         }
@@ -343,6 +391,12 @@
         {
           "type": "p",
           "text": "Quando elimina um formulário, ele vai para a **Lixeira** durante 30 dias, com as respostas. Pode restaurá-lo a qualquer momento durante esses 30 dias."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/trash.jpg",
+          "caption": "Lixeira: os formulários excluídos ficam aqui por 30 dias."
         },
         {
           "type": "warning",
@@ -380,6 +434,12 @@
         {
           "type": "p",
           "text": "O editor tem três partes: a **lista de campos** à esquerda, o **formulário** ao meio e as **definições** do que selecionou à direita."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/builder-basics.jpg",
+          "caption": "O construtor: as páginas e perguntas do seu formulário, com Adicionar campo e Configurações do campo na parte inferior."
         },
         {
           "type": "steps",
@@ -440,6 +500,12 @@
           "text": "Escolha o campo mais específico: um campo de e-mail verifica o endereço enquanto se escreve, um campo de data mostra um calendário, um campo de telefone verifica o número."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/field-types.jpg",
+          "caption": "A lista de campos agrupa todo tipo de pergunta: texto, datas, escolhas, avaliações, arquivos e mais."
+        },
+        {
           "type": "tip",
           "text": "Listas longas de escolhas (países, departamentos) funcionam melhor como **Lista de opções**, guardada uma vez e usada em muitos formulários."
         }
@@ -469,6 +535,12 @@
         {
           "type": "p",
           "text": "As regras de lógica alteram o formulário enquanto é preenchido: mostrar uma pergunta de seguimento só depois de um sim, exigir um telefone nos pedidos urgentes ou saltar para o fim."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/builder-logic.jpg",
+          "caption": "A aba Lógica: cada regra diz Quando algo é respondido, Então o que acontece."
         },
         {
           "type": "steps",
@@ -509,6 +581,12 @@
           "text": "Um campo **Cálculo** obtém um valor a partir de outras respostas, por exemplo quantidade × preço, uma avaliação média ou uma pontuação de risco. As pessoas veem o resultado enquanto preenchem o formulário."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/calculations.jpg",
+          "caption": "Um formulário no construtor; um campo de Cálculos obtém seu valor de outras respostas."
+        },
+        {
           "type": "p",
           "text": "Escreva a fórmula com as chaves das perguntas entre chavetas, por exemplo **{quantity} * {unit_price}**. As escolhas podem ter uma pontuação para poderem ser somadas."
         }
@@ -536,6 +614,12 @@
         {
           "type": "p",
           "text": "**Publicar** torna o seu rascunho o formulário ativo. Cada publicação é guardada como uma versão numerada com uma nota opcional sobre o que mudou."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/publish-and-versions.jpg",
+          "caption": "Versões: cada publicação, pronta para comparar ou restaurar."
         },
         {
           "type": "p",
@@ -571,6 +655,12 @@
         {
           "type": "p",
           "text": "Abra o separador **Design** de um formulário para alterar o seu aspeto. A pré-visualização mostra o formulário como as pessoas o verão, num computador, tablet ou telemóvel."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/design-a-form.jpg",
+          "caption": "A aba Design com a pré-visualização ao vivo."
         },
         {
           "type": "list",
@@ -610,6 +700,12 @@
           "text": "Os temas são designs guardados. O Formalie inclui um conjunto; o seu espaço pode acrescentar os seus a partir do designer, ou deixar o assistente de IA sugerir designs a partir da cor da sua marca."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/themes.jpg",
+          "caption": "Temas: os designs da Formalie e os do seu espaço de trabalho."
+        },
+        {
           "type": "p",
           "text": "Escolha o tema com que os formulários novos começam em **Configurações → Padrões de formulários**."
         },
@@ -640,6 +736,12 @@
         {
           "type": "p",
           "text": "Uma página de destino é a página onde o seu formulário se encontra: uma faixa com o título, uma introdução, quanto tempo demora e a sua organização. Escolha uma no designer ou guarde as suas em **Páginas de destino**."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/landing-pages.jpg",
+          "caption": "Páginas de destino: a página em que um formulário fica."
         }
       ]
     },
@@ -665,6 +767,12 @@
         {
           "type": "p",
           "text": "A galeria de modelos tem formulários prontos para RH, saúde e segurança, eventos, vendas e mais. Cada um traz as suas perguntas, lógica, cálculos e um design a condizer."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/use-a-template.jpg",
+          "caption": "A galeria de modelos, por categoria."
         },
         {
           "type": "steps",
@@ -701,6 +809,12 @@
         {
           "type": "p",
           "text": "Qualquer formulário pode tornar-se um modelo para o seu espaço: abra o menu **⋯** dele e escolha **Salvar como modelo**. Dê-lhe um nome, uma descrição e uma categoria. Os seus modelos aparecem em **Seus modelos**."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/save-as-template.jpg",
+          "caption": "Seus modelos aparecem na galeria ao lado dos da Formalie."
         }
       ]
     },
@@ -728,6 +842,12 @@
         {
           "type": "p",
           "text": "Abra o separador **Partilhar** de um formulário publicado. A partir daí pode copiar a ligação, transferir um código QR, criar uma ligação curta ou enviar convites por e-mail."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/share-a-form.jpg",
+          "caption": "A aba Compartilhar: onde as pessoas podem responder e quem pode abrir o formulário."
         },
         {
           "type": "list",
@@ -776,6 +896,12 @@
         {
           "type": "p",
           "text": "Em **Disponibilidade** pode abrir e encerrar o formulário em datas definidas e pará-lo após um número de respostas."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/who-can-fill-in.jpg",
+          "caption": "Quem pode preencher o formulário e quando, nas configurações de Partilhar."
         }
       ]
     },
@@ -799,6 +925,12 @@
         {
           "type": "p",
           "text": "Em **Partilhar → Incorporar** copie o código e cole-o no seu site. Pode limitar quais os sites que podem mostrar o formulário."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/embed-a-form.jpg",
+          "caption": "A incorporação e os sites permitidos também estão na aba Partilhar."
         }
       ]
     },
@@ -824,6 +956,12 @@
         {
           "type": "p",
           "text": "Um formulário tem um idioma principal e pode oferecer mais. No editor, abra as definições do formulário, adicione um idioma em **Mais idiomas** e traduza cada texto lado a lado."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/form-languages.jpg",
+          "caption": "Configurações do formulário no construtor, onde você adiciona mais idiomas."
         },
         {
           "type": "tip",
@@ -853,6 +991,12 @@
         {
           "type": "p",
           "text": "**Respostas** lista os seus formulários com as respetivas respostas. Abra um formulário para ver as respostas como tabela ou cartões; abra uma resposta para ver todas as respostas dadas num painel."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/responses-basics.jpg",
+          "caption": "As respostas de um formulário, com os cartões no topo e a lista abaixo."
         },
         {
           "type": "list",
@@ -893,6 +1037,12 @@
           "text": "Cada resposta tem um estado: **Novo**, **Revisto**, **Aprovado** ou **Rejeitado**. Mude-o com um clique no topo do painel da resposta."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/review-responses.jpg",
+          "caption": "Uma resposta aberta no painel: a barra de status no topo, etiquetas e notas abaixo."
+        },
+        {
           "type": "p",
           "text": "Adicione etiquetas e notas para acompanhar. Corrigir respostas é uma permissão à parte, por isso a sua função pode permitir-lhe rever sem alterar o que as pessoas escreveram."
         }
@@ -920,6 +1070,12 @@
         {
           "type": "p",
           "text": "Clique em **Exportar** nas respostas de um formulário, escolha o formato e o que incluir. As exportações grandes são preparadas em segundo plano; vê o progresso em **Exportações** e recebe uma mensagem quando o ficheiro estiver pronto."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/export-responses.jpg",
+          "caption": "Exportações: arquivos em preparação e prontos para baixar."
         }
       ]
     },
@@ -946,6 +1102,12 @@
         {
           "type": "p",
           "text": "**Análises** mostra quantas pessoas abriram, começaram e concluíram cada formulário, quanto tempo demora e onde as pessoas param. Abra um formulário para ver cada página e pergunta."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/analytics.jpg",
+          "caption": "Análises: visualizações, inícios, conclusões e onde as pessoas desistem."
         },
         {
           "type": "tip",
@@ -976,6 +1138,12 @@
         {
           "type": "p",
           "text": "Uma **Lista de opções** guarda escolhas que usa em muitos formulários, por exemplo departamentos, produtos ou países. Altere a lista uma vez e todos os formulários que a usam acompanham."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/lists-basics.jpg",
+          "caption": "Lista de opções: listas de escolhas usadas em muitos formulários."
         },
         {
           "type": "p",
@@ -1012,6 +1180,12 @@
           "text": "**Fontes de dados** liga o Formalie às suas próprias bases de dados. As respostas podem então ser guardadas também aí, em tabelas que o Formalie cria e mantém em linha com o formulário."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/data-sources-basics.jpg",
+          "caption": "Conexões com seus bancos de dados, com a saúde de cada uma."
+        },
+        {
           "type": "steps",
           "items": [
             "Abra **Fontes de dados** no trilho e clique em **Adicionar conexão**.",
@@ -1046,6 +1220,12 @@
         {
           "type": "p",
           "text": "O **Explorador de BD** mostra as tabelas de uma conexão e as suas linhas. O **Editor de consultas** executa SQL; as instruções que alteram dados precisam de permissão própria e pedem confirmação antes."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/database-explorer.jpg",
+          "caption": "O Explorador de BD: escolha uma tabela em Tabelas para ver suas linhas e estrutura."
         }
       ]
     },
@@ -1071,6 +1251,12 @@
         {
           "type": "p",
           "text": "O **Serviço de API** dá a outros sistemas os seus próprios endpoints: ler respostas, enviar novas ou consultar opções de listas. Cada serviço agrupa endpoints e tem a sua própria página de documentação."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/api-basics.jpg",
+          "caption": "Serviços de API, cada um com seus endpoints e documentação."
         },
         {
           "type": "steps",
@@ -1106,6 +1292,12 @@
           "text": "Cada sistema que chama a sua API recebe um **token**. Os tokens podem expirar e ser revogados a qualquer momento. As **regras de acesso** limitam endereços, horários e quantas chamadas são permitidas."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/api-tokens.jpg",
+          "caption": "Tokens e cabeçalhos: as chaves que os sistemas usam para chamar sua API."
+        },
+        {
           "type": "warning",
           "text": "Um token só é mostrado uma vez. Guarde-o num local seguro e nunca o ponha numa página web pública."
         }
@@ -1131,6 +1323,12 @@
         {
           "type": "p",
           "text": "Um webhook envia uma mensagem para o endereço de outro sistema quando algo acontece, por exemplo uma nova resposta. O Formalie volta a tentar os envios falhados e mostra cada envio para que veja o que foi enviado."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/webhooks.jpg",
+          "caption": "Webhooks e suas entregas."
         }
       ]
     },
@@ -1159,6 +1357,12 @@
         {
           "type": "p",
           "text": "Cada pessoa tem uma só função. O Proprietário pode fazer tudo; Administrador e Membro estão prontos a usar e podem ser alterados; pode adicionar as suas próprias funções."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/roles-and-access.jpg",
+          "caption": "Funções e acesso: cada função e quem a tem."
         },
         {
           "type": "p",
@@ -1191,6 +1395,12 @@
         {
           "type": "p",
           "text": "Um link de registo permite que as pessoas criem a sua própria conta. Pode limitá-lo aos endereços de e-mail da sua organização. As contas aguardam em **Aguardando aprovação** até um administrador as aprovar e lhes dar uma função."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/sign-up-links.jpg",
+          "caption": "Os links de registo ficam no topo de Pessoas; as aprovações aguardam em Aguardando aprovação."
         }
       ]
     },
@@ -1215,6 +1425,12 @@
         {
           "type": "p",
           "text": "Abra o seu perfil a partir do seu nome no fundo do menu. Altere a foto, o nome, o idioma, o fuso horário e o formato de data, a senha e o início de sessão em dois passos, e veja onde tem sessão iniciada."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/your-profile.jpg",
+          "caption": "Seu perfil: foto, nome, idioma, senha e login."
         }
       ]
     },
@@ -1240,6 +1456,12 @@
         {
           "type": "p",
           "text": "O início de sessão em dois passos pede um código depois da senha. Configure uma aplicação de autenticação no seu perfil para a opção mais segura e guarde os códigos de recuperação num local seguro."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/two-step-sign-in.jpg",
+          "caption": "O login em duas etapas é configurado no seu perfil."
         }
       ]
     },
@@ -1266,6 +1488,12 @@
         {
           "type": "p",
           "text": "**Configurações** reúne o que se aplica a todo o espaço: dados da empresa, marca, idioma e região, aparência, início de sessão, segurança, notificações, modelos de e-mail, privacidade e padrões de formulários."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/workspace-settings.jpg",
+          "caption": "Configurações: tudo o que vale para todo o espaço de trabalho."
         },
         {
           "type": "show",
@@ -1298,6 +1526,12 @@
           "text": "Em **Configurações → Segurança**, os administradores definem as regras de senha, exigem o início de sessão em dois passos, decidem quanto tempo as pessoas ficam com sessão iniciada e, se necessário, permitem o início de sessão apenas a partir das suas redes."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/security-settings.jpg",
+          "caption": "Configurações → Segurança."
+        },
+        {
           "type": "warning",
           "text": "Antes de limitar as redes, adicione o seu próprio endereço, ou pode ficar sem acesso."
         }
@@ -1323,6 +1557,12 @@
         {
           "type": "p",
           "text": "**Padrões de formulários** define o tema, a barra de progresso, as etiquetas, a mensagem de agradecimento e os e-mails com que cada formulário novo começa. Os formulários que já tem não mudam."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/form-defaults.jpg",
+          "caption": "Configurações → Padrões de formulários."
         }
       ]
     },
@@ -1347,6 +1587,12 @@
         {
           "type": "p",
           "text": "A **Trilha de auditoria** regista todas as ações do seu espaço: inícios de sessão, alterações a formulários, respostas, configurações, pessoas e mais, com quem as fez, quando e a partir de onde."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/audit-trail.jpg",
+          "caption": "A trilha de auditoria: quem fez o quê, quando e de onde."
         },
         {
           "type": "p",
@@ -1384,6 +1630,12 @@
           "text": "O assistente de IA cria formulários e modelos, ajuda no editor, analisa respostas e traduz. **Propõe** sempre: nada é criado, alterado ou enviado até você decidir."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-overview.jpg",
+          "caption": "A visão geral do assistente de IA: créditos, o que ele pode fazer e as últimas solicitações."
+        },
+        {
           "type": "list",
           "items": [
             "Cada pedido fica guardado no **Histórico** com o que voltou.",
@@ -1416,6 +1668,12 @@
       "title": "Criar um formulário com o assistente",
       "summary": "Descreva-o, verifique o rascunho, crie-o.",
       "blocks": [
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-create-form.jpg",
+          "caption": "Criar um formulário: descreva-o ou comece por um exemplo e depois escolha Gerar."
+        },
         {
           "type": "steps",
           "items": [
@@ -1455,6 +1713,12 @@
           "text": "Em **Análise de respostas**, escolha um formulário e um período. O assistente descobre de que tratam as respostas escritas, o seu tom e como mudaram as avaliações e as escolhas."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-analysis.jpg",
+          "caption": "Análise de respostas: escolha um formulário e um período e faça perguntas abaixo."
+        },
+        {
           "type": "p",
           "text": "Faça perguntas em palavras simples, como «Quantas respostas houve no mês passado?». A resposta mostra sempre o que foi contado."
         }
@@ -1480,6 +1744,12 @@
         {
           "type": "p",
           "text": "**Traduções** traduz um formulário para qualquer um dos 20 idiomas; verifica cada texto lado a lado antes de guardar. **Reescrever** sugere uma redação mais simples no tom que escolher e mostra a idade de leitura antes e depois."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-translate.jpg",
+          "caption": "Traduções: escolha um formulário e idiomas e confira cada texto lado a lado."
         }
       ]
     },
@@ -1503,6 +1773,12 @@
         {
           "type": "p",
           "text": "Os administradores ativam ou desativam o assistente, escolhem o que ele pode ler (formulários, respostas, fontes de dados), mantêm os dados pessoais de fora e escolhem durante quanto tempo os pedidos são guardados. O assistente nunca é treinado com os seus dados."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-settings.jpg",
+          "caption": "Configurações de IA: ligada ou desligada, o que pode ler, privacidade e uso."
         }
       ]
     }

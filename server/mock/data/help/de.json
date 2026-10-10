@@ -27,6 +27,12 @@
           "text": "Mit Formalie sammeln Sie Informationen über Formulare, prüfen, was eingeht, und leiten es dorthin weiter, wo es gebraucht wird: in eine Datenbank, über die API an ein anderes System oder in einen Bericht."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/welcome.jpg",
+          "caption": "Die Seite Formulare: oben Ihre Antworten auf einen Blick, darunter Ihre Formulare."
+        },
+        {
           "type": "h",
           "text": "Die wichtigsten Bereiche"
         },
@@ -76,6 +82,12 @@
           "text": "Die schmale Spalte ganz links ist die **Leiste**. Jedes Symbol öffnet einen Bereich von Formalie: Formulare, Datenquellen, API-Dienst, KI-Assistent und Personen. Das Menü daneben passt sich dem Bereich an, in dem Sie sind."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/find-your-way.jpg",
+          "caption": "Die Leiste und das Menü des Bereichs. Auf Handy und Tablet öffnen sie sich über die Menü-Schaltfläche oben links."
+        },
+        {
           "type": "p",
           "text": "Oben auf jeder Seite finden Sie den Titel, Ihren Standort (die Brotkrumen-Navigation) und die Schaltflächen der Seite. Die Hauptschaltfläche ist immer die dunkle rechts."
         },
@@ -117,6 +129,12 @@
         {
           "type": "p",
           "text": "Sie können ein Formular auf drei Arten beginnen: mit einer leeren Seite, mit einer Formalie-Vorlage oder indem Sie es dem KI-Assistenten beschreiben."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/first-form.jpg",
+          "caption": "Neues Formular: leer starten, aus einer Vorlage oder durch Import einer Formulardatei."
         },
         {
           "type": "steps",
@@ -165,6 +183,12 @@
           "text": "Jede Person in Ihrem Arbeitsbereich hat ein Profil mit Abteilung, Position und Rolle. Die Rolle bestimmt, was sie sehen und tun darf."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/invite-your-team.jpg",
+          "caption": "Personen: alle in Ihrem Arbeitsbereich, oben mit Benutzer hinzufügen und Registrierungslinks."
+        },
+        {
           "type": "steps",
           "items": [
             "Öffnen Sie **Personen** in der Leiste.",
@@ -204,6 +228,12 @@
           "text": "Die Suche öffnet sich mit **Strg + K** (**⌘ + K** auf dem Mac). Geben Sie einen Teil einer Seite, eines Formulars, einer Einstellung oder einer Person ein und drücken Sie Enter."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/keyboard-and-search.jpg",
+          "caption": "Alle Tastenkürzel unter Hilfe & Support → Tastenkürzel."
+        },
+        {
           "type": "p",
           "text": "Drücken Sie **?**, um alle Tastenkürzel zu sehen. Viele Seiten haben eigene, zum Beispiel **J** und **K**, um in einem Bereich zwischen Antworten zu wechseln."
         },
@@ -236,6 +266,12 @@
         {
           "type": "p",
           "text": "Die Seite Formulare listet alle Formulare auf, die Sie sehen dürfen. Die zwei Karten oben zeigen die letzten Antworten und die Verteilung Ihrer Formulare auf Entwurf, Veröffentlicht und Geschlossen. Klicken Sie in der Legende auf einen Status, um nur diese Formulare zu sehen."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/forms-list.jpg",
+          "caption": "Formulare als Karten, mit Suche, Filtern und dem Wechsel Tabelle / Raster."
         },
         {
           "type": "list",
@@ -289,6 +325,12 @@
           "text": "Ein veröffentlichtes Formular kann **unveröffentlichte Änderungen** haben: Ihre Änderungen bleiben im Entwurf, bis Sie erneut veröffentlichen, sodass Ausfüllende nie eine halbfertige Änderung sehen."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/form-lifecycle.jpg",
+          "caption": "Formulare gefiltert auf Veröffentlicht: Klicken Sie oben in der Karte auf einen Status, um zu filtern."
+        },
+        {
           "type": "tip",
           "text": "Legen Sie Öffnungs- und Schließdatum unter **Teilen → Verfügbarkeit** fest, damit sich ein Formular von selbst öffnet und schließt."
         }
@@ -318,6 +360,12 @@
           "text": "Ordner gruppieren Formulare, zum Beispiel nach Team oder Projekt. Legen Sie einen mit **+** neben Ordner im Menü an und verschieben Sie Formulare über deren **⋯**-Menü hinein."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/folders.jpg",
+          "caption": "Ordner, mit der Anzahl der Formulare und Antworten in jedem."
+        },
+        {
           "type": "p",
           "text": "Administratoren können einen Ordner mit **Ordnerzugriff** auf bestimmte Rollen, Abteilungen oder Personen beschränken. Alle anderen sehen den Ordner, seine Formulare und deren Antworten nirgends, auch nicht in der Suche oder in Exporten."
         }
@@ -343,6 +391,12 @@
         {
           "type": "p",
           "text": "Wenn Sie ein Formular löschen, landet es mit seinen Antworten für 30 Tage im **Papierkorb**. In dieser Zeit können Sie es jederzeit von dort wiederherstellen."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/trash.jpg",
+          "caption": "Papierkorb: Gelöschte Formulare bleiben hier 30 Tage."
         },
         {
           "type": "warning",
@@ -380,6 +434,12 @@
         {
           "type": "p",
           "text": "Der Builder hat drei Teile: die **Feldliste** links, das **Formular** in der Mitte und die **Einstellungen** des ausgewählten Elements rechts."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/builder-basics.jpg",
+          "caption": "Der Builder: die Seiten und Fragen Ihres Formulars, unten mit Feld hinzufügen und Feldeinstellungen."
         },
         {
           "type": "steps",
@@ -440,6 +500,12 @@
           "text": "Wählen Sie das passendste Feld: Ein E-Mail-Feld prüft die Adresse während der Eingabe, ein Datumsfeld zeigt einen Kalender, ein Telefonfeld prüft die Nummer."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/field-types.jpg",
+          "caption": "Die Feldliste gruppiert jede Art von Frage: Text, Datum, Auswahl, Bewertungen, Dateien und mehr."
+        },
+        {
           "type": "tip",
           "text": "Lange Auswahllisten (Länder, Abteilungen) funktionieren am besten als **Optionsliste**, die Sie einmal pflegen und in vielen Formularen nutzen."
         }
@@ -469,6 +535,12 @@
         {
           "type": "p",
           "text": "Logikregeln verändern das Formular, während jemand es ausfüllt: eine Folgefrage erst nach einem Ja zeigen, bei dringenden Anfragen eine Telefonnummer verlangen oder zum Ende springen."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/builder-logic.jpg",
+          "caption": "Der Tab Logik: Jede Regel sagt Wenn etwas beantwortet wird, Dann was passiert."
         },
         {
           "type": "steps",
@@ -509,6 +581,12 @@
           "text": "Ein Feld **Berechnung** ermittelt einen Wert aus anderen Antworten, zum Beispiel Menge × Preis, eine Durchschnittsbewertung oder einen Risikowert. Die Person sieht das Ergebnis schon beim Ausfüllen."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/calculations.jpg",
+          "caption": "Ein Formular im Builder; ein Berechnungsfeld ermittelt seinen Wert aus anderen Antworten."
+        },
+        {
           "type": "p",
           "text": "Schreiben Sie die Formel mit den Schlüsseln der Fragen in geschweiften Klammern, zum Beispiel **{quantity} * {unit_price}**. Auswahloptionen können eine Punktzahl tragen, damit sie sich addieren lassen."
         }
@@ -536,6 +614,12 @@
         {
           "type": "p",
           "text": "**Veröffentlichen** macht Ihren Entwurf zum Live-Formular. Jede Veröffentlichung wird als nummerierte Version gespeichert, optional mit einer Notiz zu den Änderungen."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/publish-and-versions.jpg",
+          "caption": "Versionen: jede Veröffentlichung, bereit zum Vergleichen oder Wiederherstellen."
         },
         {
           "type": "p",
@@ -571,6 +655,12 @@
         {
           "type": "p",
           "text": "Öffnen Sie den Tab **Design** eines Formulars, um sein Aussehen zu ändern. Die Vorschau zeigt das Formular so, wie es Ausfüllende sehen, auf Computer, Tablet oder Smartphone."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/design-a-form.jpg",
+          "caption": "Der Tab Design mit der Live-Vorschau."
         },
         {
           "type": "list",
@@ -610,6 +700,12 @@
           "text": "Designs sind gespeicherte Gestaltungen. Formalie bringt eine Auswahl mit; Ihr Arbeitsbereich kann im Designer eigene hinzufügen oder sich vom KI-Assistenten Designs aus Ihrer Markenfarbe vorschlagen lassen."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/themes.jpg",
+          "caption": "Designs: die Designs von Formalie und die Ihres Arbeitsbereichs."
+        },
+        {
           "type": "p",
           "text": "Wählen Sie unter **Einstellungen → Formularstandards** das Design, mit dem neue Formulare beginnen."
         },
@@ -640,6 +736,12 @@
         {
           "type": "p",
           "text": "Eine Landingpage ist die Seite, auf der Ihr Formular steht: ein Banner mit dem Titel, eine Einleitung, die Dauer und Ihre Organisation. Wählen Sie eine im Designer oder pflegen Sie eigene unter **Landingpages**."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/landing-pages.jpg",
+          "caption": "Landingpages: die Seite, auf der ein Formular steht."
         }
       ]
     },
@@ -665,6 +767,12 @@
         {
           "type": "p",
           "text": "Die Vorlagengalerie enthält fertige Formulare für Personal, Arbeitsschutz, Veranstaltungen, Vertrieb und mehr. Jede bringt Fragen, Logik, Berechnungen und ein passendes Design mit."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/use-a-template.jpg",
+          "caption": "Die Vorlagengalerie, nach Kategorie."
         },
         {
           "type": "steps",
@@ -701,6 +809,12 @@
         {
           "type": "p",
           "text": "Jedes Formular kann zur Vorlage für Ihren Arbeitsbereich werden: Öffnen Sie sein **⋯**-Menü und wählen Sie **Als Vorlage speichern**. Vergeben Sie einen Namen, eine Beschreibung und eine Kategorie. Ihre Vorlagen erscheinen unter **Eigene Vorlagen**."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/save-as-template.jpg",
+          "caption": "Ihre Vorlagen erscheinen in der Galerie neben denen von Formalie."
         }
       ]
     },
@@ -728,6 +842,12 @@
         {
           "type": "p",
           "text": "Öffnen Sie den Tab **Teilen** eines veröffentlichten Formulars. Dort können Sie den Link kopieren, einen QR-Code herunterladen, einen Kurzlink erstellen oder E-Mail-Einladungen senden."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/share-a-form.jpg",
+          "caption": "Der Tab Teilen: wo Personen antworten können und wer das Formular öffnen darf."
         },
         {
           "type": "list",
@@ -776,6 +896,12 @@
         {
           "type": "p",
           "text": "Unter **Verfügbarkeit** öffnen und schließen Sie das Formular zu festen Terminen und beenden es nach einer bestimmten Anzahl von Antworten."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/who-can-fill-in.jpg",
+          "caption": "Wer das Formular wann ausfüllen darf, in den Einstellungen unter Teilen."
         }
       ]
     },
@@ -799,6 +925,12 @@
         {
           "type": "p",
           "text": "Kopieren Sie unter **Teilen → Einbetten** den Code und fügen Sie ihn in Ihre Website ein. Sie können festlegen, welche Websites das Formular anzeigen dürfen."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/embed-a-form.jpg",
+          "caption": "Einbetten und erlaubte Websites finden Sie ebenfalls im Tab Teilen."
         }
       ]
     },
@@ -824,6 +956,12 @@
         {
           "type": "p",
           "text": "Ein Formular hat eine Hauptsprache und kann weitere anbieten. Öffnen Sie im Builder die Formulareinstellungen, fügen Sie unter **Weitere Sprachen** eine Sprache hinzu und übersetzen Sie jeden Text nebeneinander."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/form-languages.jpg",
+          "caption": "Formulareinstellungen im Builder, wo Sie weitere Sprachen hinzufügen."
         },
         {
           "type": "tip",
@@ -852,6 +990,12 @@
         {
           "type": "p",
           "text": "**Antworten** listet Ihre Formulare mit ihren Antworten auf. Öffnen Sie ein Formular, um seine Antworten als Tabelle oder Karten zu sehen; öffnen Sie eine Antwort, um alle Angaben in einem Bereich zu sehen."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/responses-basics.jpg",
+          "caption": "Die Antworten eines Formulars, oben die Karten, darunter die Liste."
         },
         {
           "type": "list",
@@ -892,6 +1036,12 @@
           "text": "Jede Antwort hat einen Status: **Neu**, **Geprüft**, **Genehmigt** oder **Abgelehnt**. Ändern Sie ihn mit einem Klick oben im Antwortbereich."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/review-responses.jpg",
+          "caption": "Eine Antwort im Seitenpanel: oben die Statusleiste, darunter Tags und Notizen."
+        },
+        {
           "type": "p",
           "text": "Fügen Sie Tags und Notizen hinzu, um den Überblick zu behalten. Antworten zu korrigieren ist eine eigene Berechtigung, Ihre Rolle darf also eventuell prüfen, ohne zu ändern, was Personen geschrieben haben."
         }
@@ -919,6 +1069,12 @@
         {
           "type": "p",
           "text": "Klicken Sie bei den Antworten eines Formulars auf **Exportieren**, wählen Sie das Format und die Inhalte. Große Exporte werden im Hintergrund vorbereitet; den Fortschritt sehen Sie unter **Exporte**, und Sie erhalten eine Nachricht, wenn die Datei bereit ist."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/export-responses.jpg",
+          "caption": "Exporte: Dateien in Vorbereitung und bereit zum Download."
         }
       ]
     },
@@ -945,6 +1101,12 @@
         {
           "type": "p",
           "text": "**Analysen** zeigt, wie viele Personen jedes Formular geöffnet, begonnen und abgeschlossen haben, wie lange es dauert und wo sie aufhören. Öffnen Sie ein Formular, um jede Seite und jede Frage zu sehen."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/analytics.jpg",
+          "caption": "Analysen: Aufrufe, Starts, Abschlüsse und wo Personen aussteigen."
         },
         {
           "type": "tip",
@@ -975,6 +1137,12 @@
         {
           "type": "p",
           "text": "Eine **Optionsliste** enthält Auswahloptionen, die Sie in vielen Formularen nutzen, zum Beispiel Abteilungen, Produkte oder Länder. Ändern Sie die Liste einmal, und jedes Formular, das sie nutzt, folgt."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/lists-basics.jpg",
+          "caption": "Optionsliste: Auswahllisten, die in vielen Formularen verwendet werden."
         },
         {
           "type": "p",
@@ -1011,6 +1179,12 @@
           "text": "**Datenquellen** verbindet Formalie mit Ihren eigenen Datenbanken. Antworten können dann auch dort gespeichert werden, in Tabellen, die Formalie anlegt und mit dem Formular abgleicht."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/data-sources-basics.jpg",
+          "caption": "Verbindungen zu Ihren Datenbanken, mit ihrem Zustand."
+        },
+        {
           "type": "steps",
           "items": [
             "Öffnen Sie **Datenquellen** in der Leiste und klicken Sie auf **Verbindung hinzufügen**.",
@@ -1045,6 +1219,12 @@
         {
           "type": "p",
           "text": "Der **Datenbank-Explorer** zeigt die Tabellen einer Verbindung und ihre Zeilen. Der **Abfrage-Editor** führt SQL aus; Anweisungen, die Daten ändern, brauchen eine eigene Berechtigung und fragen vorher nach."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/database-explorer.jpg",
+          "caption": "Der Datenbank-Explorer: Wählen Sie unter Tabellen eine Tabelle, um ihre Zeilen und Struktur zu sehen."
         }
       ]
     },
@@ -1070,6 +1250,12 @@
         {
           "type": "p",
           "text": "Der **API-Dienst** gibt anderen Systemen eigene Endpunkte: Antworten lesen, neue senden oder Listenoptionen nachschlagen. Jeder Dienst gruppiert Endpunkte und hat eine eigene Dokumentationsseite."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/api-basics.jpg",
+          "caption": "API-Dienste, jeweils mit Endpunkten und Dokumentation."
         },
         {
           "type": "steps",
@@ -1105,6 +1291,12 @@
           "text": "Jedes System, das Ihre API aufruft, erhält ein **Token**. Tokens können ablaufen und jederzeit widerrufen werden. **Zugriffsregeln** begrenzen Adressen, Zeiten und die Anzahl erlaubter Aufrufe."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/api-tokens.jpg",
+          "caption": "Tokens & Header: die Schlüssel, mit denen Systeme Ihre API aufrufen."
+        },
+        {
           "type": "warning",
           "text": "Ein Token wird nur einmal angezeigt. Bewahren Sie es sicher auf und fügen Sie es nie in eine öffentliche Webseite ein."
         }
@@ -1130,6 +1322,12 @@
         {
           "type": "p",
           "text": "Ein Webhook sendet eine Nachricht an die Adresse eines anderen Systems, wenn etwas passiert, zum Beispiel bei einer neuen Antwort. Formalie wiederholt fehlgeschlagene Zustellungen und zeigt jede Zustellung, sodass Sie sehen, was gesendet wurde."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/webhooks.jpg",
+          "caption": "Webhooks und ihre Zustellungen."
         }
       ]
     },
@@ -1158,6 +1356,12 @@
         {
           "type": "p",
           "text": "Jede Person hat eine Rolle. Inhaber darf alles; Administrator und Mitglied sind sofort einsatzbereit und anpassbar; Sie können eigene Rollen anlegen."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/roles-and-access.jpg",
+          "caption": "Rollen & Zugriff: jede Rolle und wer sie hat."
         },
         {
           "type": "p",
@@ -1190,6 +1394,12 @@
         {
           "type": "p",
           "text": "Mit einem Registrierungslink legen Personen selbst ein Konto an. Sie können ihn auf die E-Mail-Adressen Ihrer Organisation beschränken. Die Konten warten unter **Wartet auf Freigabe**, bis ein Administrator sie freigibt und ihnen eine Rolle zuweist."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/sign-up-links.jpg",
+          "caption": "Registrierungslinks stehen oben bei Personen; Freigaben warten unter Wartet auf Freigabe."
         }
       ]
     },
@@ -1214,6 +1424,12 @@
         {
           "type": "p",
           "text": "Öffnen Sie Ihr Profil über Ihren Namen unten im Menü. Ändern Sie Foto, Name, Sprache, Zeitzone und Datumsformat, Ihr Passwort und Ihre Zwei-Schritt-Anmeldung und sehen Sie, wo Sie angemeldet sind."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/your-profile.jpg",
+          "caption": "Ihr Profil: Foto, Name, Sprache, Passwort und Anmeldung."
         }
       ]
     },
@@ -1239,6 +1455,12 @@
         {
           "type": "p",
           "text": "Die Zwei-Schritt-Anmeldung verlangt nach dem Passwort einen Code. Richten Sie in Ihrem Profil eine Authenticator-App ein, das ist die sicherste Option, und bewahren Sie die Wiederherstellungscodes sicher auf."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/two-step-sign-in.jpg",
+          "caption": "Die Zwei-Schritt-Anmeldung richten Sie in Ihrem Profil ein."
         }
       ]
     },
@@ -1264,6 +1486,12 @@
         {
           "type": "p",
           "text": "**Einstellungen** enthält alles, was für den ganzen Arbeitsbereich gilt: Unternehmensdaten, Branding, Sprache und Region, Darstellung, Anmeldung, Sicherheit, Benachrichtigungen, E-Mail-Vorlagen, Datenschutz und Formularstandards."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/workspace-settings.jpg",
+          "caption": "Einstellungen: alles, was für den ganzen Arbeitsbereich gilt."
         },
         {
           "type": "show",
@@ -1296,6 +1524,12 @@
           "text": "Unter **Einstellungen → Sicherheit** legen Administratoren Passwortregeln fest, verlangen die Zwei-Schritt-Anmeldung, bestimmen, wie lange Personen angemeldet bleiben, und erlauben bei Bedarf die Anmeldung nur aus Ihren Netzwerken."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/security-settings.jpg",
+          "caption": "Einstellungen → Sicherheit."
+        },
+        {
           "type": "warning",
           "text": "Fügen Sie vor dem Einschränken der Netzwerke Ihre eigene Adresse hinzu, sonst sperren Sie sich womöglich aus."
         }
@@ -1321,6 +1555,12 @@
         {
           "type": "p",
           "text": "**Formularstandards** legt Design, Fortschrittsbalken, Beschriftungen, Dankesnachricht und E-Mails fest, mit denen jedes neue Formular beginnt. Bestehende Formulare ändern sich nicht."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/form-defaults.jpg",
+          "caption": "Einstellungen → Formularstandards."
         }
       ]
     },
@@ -1345,6 +1585,12 @@
         {
           "type": "p",
           "text": "Das **Audit-Protokoll** hält jede Aktion in Ihrem Arbeitsbereich fest: Anmeldungen, Änderungen an Formularen, Antworten, Einstellungen, Personen und mehr, mit Person, Zeitpunkt und Herkunft."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/audit-trail.jpg",
+          "caption": "Das Audit-Protokoll: wer was wann und von wo getan hat."
         },
         {
           "type": "p",
@@ -1382,6 +1628,12 @@
           "text": "Der KI-Assistent erstellt Formulare und Vorlagen, hilft im Builder, analysiert Antworten und übersetzt. Er **schlägt immer nur vor**: Nichts wird erstellt, geändert oder gesendet, solange Sie es nicht wollen."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-overview.jpg",
+          "caption": "Die Übersicht des KI-Assistenten: Guthaben, was er kann und die letzten Anfragen."
+        },
+        {
           "type": "list",
           "items": [
             "Jede Anfrage bleibt mit dem Ergebnis im **Verlauf** erhalten.",
@@ -1414,6 +1666,12 @@
       "title": "Ein Formular mit dem Assistenten erstellen",
       "summary": "Beschreiben, den Entwurf prüfen, erstellen.",
       "blocks": [
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-create-form.jpg",
+          "caption": "Formular erstellen: Beschreiben Sie es oder starten Sie mit einem Beispiel, dann wählen Sie Erstellen."
+        },
         {
           "type": "steps",
           "items": [
@@ -1453,6 +1711,12 @@
           "text": "Wählen Sie unter **Antwortanalyse** ein Formular und einen Zeitraum. Der Assistent findet heraus, worum es in Textantworten geht, wie die Tonalität ist und wie sich Bewertungen und Auswahl verändert haben."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-analysis.jpg",
+          "caption": "Antwortanalyse: Formular und Zeitraum wählen, dann unten Fragen stellen."
+        },
+        {
           "type": "p",
           "text": "Stellen Sie Fragen in einfachen Worten, etwa „Wie viele Antworten gab es letzten Monat?“. Die Antwort zeigt immer, was gezählt wurde."
         }
@@ -1478,6 +1742,12 @@
         {
           "type": "p",
           "text": "**Übersetzungen** übersetzt ein Formular in jede der 20 Sprachen; Sie prüfen jeden Text nebeneinander, bevor Sie speichern. **Umschreiben** schlägt einfachere Formulierungen im gewählten Ton vor und zeigt das Leseniveau vorher und nachher."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-translate.jpg",
+          "caption": "Übersetzungen: Formular und Sprachen wählen, dann jeden Text nebeneinander prüfen."
         }
       ]
     },
@@ -1501,6 +1771,12 @@
         {
           "type": "p",
           "text": "Administratoren schalten den Assistenten ein oder aus, legen fest, was er lesen darf (Formulare, Antworten, Datenquellen), halten personenbezogene Daten heraus und bestimmen, wie lange Anfragen aufbewahrt werden. Der Assistent trainiert nie mit Ihren Daten."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-settings.jpg",
+          "caption": "KI-Einstellungen: an oder aus, was gelesen werden darf, Datenschutz und Nutzung."
         }
       ]
     }

@@ -27,6 +27,12 @@
           "text": "Formalie helps your organisation collect information with forms, review what comes in and send it where it is needed: a database, another system through the API, or a report."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/welcome.jpg",
+          "caption": "The Forms page: your responses at a glance at the top, your forms below."
+        },
+        {
           "type": "h",
           "text": "The main parts"
         },
@@ -76,6 +82,12 @@
           "text": "The narrow column on the far left is the **rail**. Each icon opens an area of Formalie: Forms, Data sources, API service, AI assistant and People. The menu next to it changes with the area you are in."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/find-your-way.jpg",
+          "caption": "The rail and the area's menu. On phones and tablets they open from the menu button at the top left."
+        },
+        {
           "type": "p",
           "text": "At the top of every page you find its title, where you are (the breadcrumbs) and the page’s buttons. The main button is always the dark one on the right."
         },
@@ -117,6 +129,12 @@
         {
           "type": "p",
           "text": "You can start a form in three ways: from a blank page, from one of Formalie’s templates, or by describing it to the AI assistant."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/first-form.jpg",
+          "caption": "New form: start blank, from a template or by importing a form file."
         },
         {
           "type": "steps",
@@ -165,6 +183,12 @@
           "text": "Everyone in your workspace has a profile with their department, job title and role. The role decides what they can see and do."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/invite-your-team.jpg",
+          "caption": "People: everyone in your workspace, with Add user and Sign-up links at the top."
+        },
+        {
           "type": "steps",
           "items": [
             "Open **People** from the rail.",
@@ -204,6 +228,12 @@
           "text": "Search opens with **Ctrl + K** (**⌘ + K** on a Mac). Type part of a page, form, setting or person and press Enter."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/keyboard-and-search.jpg",
+          "caption": "Every keyboard shortcut, in Help & support → Keyboard shortcuts."
+        },
+        {
           "type": "p",
           "text": "Press **?** to see every keyboard shortcut. Many pages add their own, for example **J** and **K** to move between responses in a panel."
         },
@@ -236,6 +266,12 @@
         {
           "type": "p",
           "text": "The Forms page lists every form you may see. The two cards at the top show recent responses and how your forms are spread across draft, published and closed; click a status in the legend to show only those forms."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/forms-list.jpg",
+          "caption": "Forms as cards, with search, filters and the Table / Grid switch."
         },
         {
           "type": "list",
@@ -289,6 +325,12 @@
           "text": "A published form can have **unpublished changes**: your edits stay in the draft until you publish again, so respondents never see a half-finished change."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/form-lifecycle.jpg",
+          "caption": "Forms filtered to Published: click a status in the card at the top to filter."
+        },
+        {
           "type": "tip",
           "text": "Set opening and closing dates in **Share → Availability** so a form opens and closes by itself."
         }
@@ -318,6 +360,12 @@
           "text": "Folders group forms, for example by team or project. Create one with **+** next to Folders in the menu, then move forms into it from their **⋯** menu."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/folders.jpg",
+          "caption": "Folders, with the number of forms and responses in each."
+        },
+        {
           "type": "p",
           "text": "Admins can limit a folder to some roles, departments or people with **Folder access**. Everyone else doesn’t see the folder, its forms or their responses anywhere, not even in search or exports."
         }
@@ -343,6 +391,12 @@
         {
           "type": "p",
           "text": "When you delete a form it goes to **Trash** for 30 days, with its responses. You can restore it from there at any time in those 30 days."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/trash.jpg",
+          "caption": "Trash: deleted forms stay here for 30 days."
         },
         {
           "type": "warning",
@@ -380,6 +434,12 @@
         {
           "type": "p",
           "text": "The builder has three parts: the **field list** on the left, the **form** in the middle and the **settings** of what you selected on the right."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/builder-basics.jpg",
+          "caption": "The builder: your form's pages and questions, with Add field and Field settings at the bottom."
         },
         {
           "type": "steps",
@@ -440,6 +500,12 @@
           "text": "Pick the most specific field: an email field checks the address as people type, a date field shows a calendar, a phone field checks the number."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/field-types.jpg",
+          "caption": "The field list groups every kind of question: text, dates, choices, ratings, files and more."
+        },
+        {
           "type": "tip",
           "text": "Long lists of choices (countries, departments) work best as a **List Option**, kept once and used in many forms."
         }
@@ -469,6 +535,12 @@
         {
           "type": "p",
           "text": "Logic rules change the form while people fill it in: show a follow-up only after a yes, require a phone number for urgent requests, or jump to the end."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/builder-logic.jpg",
+          "caption": "The Logic tab: each rule says When something is answered, Then what happens."
         },
         {
           "type": "steps",
@@ -509,6 +581,12 @@
           "text": "A **Calculation** field works out a value from other answers, for example quantity × price, an average rating or a risk score. People see the result as they fill in the form."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/calculations.jpg",
+          "caption": "A form in the builder; a Calculation field works out its value from other answers."
+        },
+        {
           "type": "p",
           "text": "Write the formula with the questions’ keys in braces, for example **{quantity} * {unit_price}**. Choices can carry a score so they can be added up."
         }
@@ -536,6 +614,12 @@
         {
           "type": "p",
           "text": "**Publish** makes your draft the live form. Each publish is saved as a numbered version with an optional note about what changed."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/publish-and-versions.jpg",
+          "caption": "Versions: every publish, ready to compare or restore."
         },
         {
           "type": "p",
@@ -571,6 +655,12 @@
         {
           "type": "p",
           "text": "Open the **Design** tab of a form to change its look. The preview shows the form as people will see it, on a computer, tablet or phone."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/design-a-form.jpg",
+          "caption": "The Design tab with the live preview."
         },
         {
           "type": "list",
@@ -610,6 +700,12 @@
           "text": "Themes are saved designs. Formalie ships a set; your workspace can add its own from the designer, or let the AI assistant suggest designs from your brand colour."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/themes.jpg",
+          "caption": "Themes: Formalie’s designs and your workspace’s own."
+        },
+        {
           "type": "p",
           "text": "Choose the theme new forms start with in **Settings → Form defaults**."
         },
@@ -640,6 +736,12 @@
         {
           "type": "p",
           "text": "A landing page is the page your form sits on: a banner with the title, an introduction, how long it takes and your organisation. Pick one in the designer or keep your own in **Landing pages**."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/landing-pages.jpg",
+          "caption": "Landing pages: the page a form sits on."
         }
       ]
     },
@@ -665,6 +767,12 @@
         {
           "type": "p",
           "text": "The template gallery has ready forms for HR, health and safety, events, sales and more. Each one comes with its questions, logic, calculations and a matching design."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/use-a-template.jpg",
+          "caption": "The template gallery, by category."
         },
         {
           "type": "steps",
@@ -701,6 +809,12 @@
         {
           "type": "p",
           "text": "Any form can become a template for your workspace: open its **⋯** menu and choose **Save as template**. Give it a name, a description and a category. Your templates appear under **Your templates**."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/save-as-template.jpg",
+          "caption": "Your templates appear in the gallery next to Formalie’s."
         }
       ]
     },
@@ -728,6 +842,12 @@
         {
           "type": "p",
           "text": "Open the **Share** tab of a published form. From there you can copy its link, download a QR code, create a short link or send email invitations."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/share-a-form.jpg",
+          "caption": "The Share tab: where people can answer and who can open the form."
         },
         {
           "type": "list",
@@ -776,6 +896,12 @@
         {
           "type": "p",
           "text": "In **Availability** you can open and close the form on set dates and stop it after a number of responses."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/who-can-fill-in.jpg",
+          "caption": "Who can fill in the form and when, in its Share settings."
         }
       ]
     },
@@ -799,6 +925,12 @@
         {
           "type": "p",
           "text": "In **Share → Embed** copy the code and paste it into your website. You can limit which websites may show the form."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/embed-a-form.jpg",
+          "caption": "Embedding and allowed websites are in the Share tab too."
         }
       ]
     },
@@ -824,6 +956,12 @@
         {
           "type": "p",
           "text": "A form has a main language and can offer more. In the builder, open the form settings, add a language under **More languages** and translate each text side by side."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/form-languages.jpg",
+          "caption": "Form settings in the builder, where you add more languages."
         },
         {
           "type": "tip",
@@ -853,6 +991,12 @@
         {
           "type": "p",
           "text": "**Responses** lists your forms with their responses. Open a form to see its responses as a table or as cards; open a response to see every answer in a panel."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/responses-basics.jpg",
+          "caption": "A form’s responses, with the cards at the top and the list below."
         },
         {
           "type": "list",
@@ -893,6 +1037,12 @@
           "text": "Each response has a status: **New**, **Reviewed**, **Approved** or **Rejected**. Change it with one click at the top of the response panel."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/review-responses.jpg",
+          "caption": "A response open in its panel: the status bar at the top, tags and notes below."
+        },
+        {
           "type": "p",
           "text": "Add tags and notes to keep track. Correcting answers is a separate permission, so your role may let you review without changing what people wrote."
         }
@@ -920,6 +1070,12 @@
         {
           "type": "p",
           "text": "Click **Export** on a form’s responses, choose the format and what to include. Large exports are prepared in the background; you see their progress in **Exports** and get a message when the file is ready."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/export-responses.jpg",
+          "caption": "Exports: files being prepared and ready to download."
         }
       ]
     },
@@ -946,6 +1102,12 @@
         {
           "type": "p",
           "text": "**Analytics** shows how many people opened, started and completed each form, how long it takes and where people stop. Open a form to see each page and question."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/analytics.jpg",
+          "caption": "Analytics: views, starts, completions and where people stop."
         },
         {
           "type": "tip",
@@ -976,6 +1138,12 @@
         {
           "type": "p",
           "text": "A **List Option** holds choices you use in many forms, for example departments, products or countries. Change the list once and every form that uses it follows."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/lists-basics.jpg",
+          "caption": "List Option: lists of choices used in many forms."
         },
         {
           "type": "p",
@@ -1012,6 +1180,12 @@
           "text": "**Data sources** connects Formalie to your own databases. Responses can then be stored there too, in tables Formalie creates and keeps in step with the form."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/data-sources-basics.jpg",
+          "caption": "Connections to your databases, with their health."
+        },
+        {
           "type": "steps",
           "items": [
             "Open **Data sources** from the rail and click **Add connection**.",
@@ -1046,6 +1220,12 @@
         {
           "type": "p",
           "text": "The **Database explorer** shows the tables of a connection and their rows. The **Query editor** runs SQL; statements that change data need their own permission and ask first."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/database-explorer.jpg",
+          "caption": "The Database explorer: pick a table under Tables to see its rows and structure."
         }
       ]
     },
@@ -1071,6 +1251,12 @@
         {
           "type": "p",
           "text": "The **API service** gives other systems their own endpoints: read responses, send new ones, or look up list options. Each service groups endpoints and has its own documentation page."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/api-basics.jpg",
+          "caption": "API services, each with its endpoints and documentation."
         },
         {
           "type": "steps",
@@ -1106,6 +1292,12 @@
           "text": "Each system that calls your API gets a **token**. Tokens can expire and be revoked at any time. **Access rules** limit addresses, times and how many calls are allowed."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/api-tokens.jpg",
+          "caption": "Tokens & headers: the keys systems use to call your API."
+        },
+        {
           "type": "warning",
           "text": "A token is shown once. Keep it in a safe place and never put it in a public web page."
         }
@@ -1131,6 +1323,12 @@
         {
           "type": "p",
           "text": "A webhook sends a message to another system’s address when something happens, for example a new response. Formalie retries failed deliveries and shows each delivery so you can see what was sent."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/webhooks.jpg",
+          "caption": "Webhooks and their deliveries."
         }
       ]
     },
@@ -1159,6 +1357,12 @@
         {
           "type": "p",
           "text": "Every person has one role. Owner can do everything; Admin and Member are ready to use and can be changed; you can add your own roles."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/roles-and-access.jpg",
+          "caption": "Roles & access: each role and who holds it."
         },
         {
           "type": "p",
@@ -1191,6 +1395,12 @@
         {
           "type": "p",
           "text": "A sign-up link lets people create their own account. You can limit it to your organisation’s email addresses. Their accounts wait in **Awaiting approval** until an admin approves them and gives them a role."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/sign-up-links.jpg",
+          "caption": "Sign-up links are at the top of People; approvals wait in Awaiting approval."
         }
       ]
     },
@@ -1215,6 +1425,12 @@
         {
           "type": "p",
           "text": "Open your profile from your name at the bottom of the menu. Change your photo, name, language, time zone and date format, your password and your two-step sign-in, and see where you are signed in."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/your-profile.jpg",
+          "caption": "Your profile: photo, name, language, password and sign-in."
         }
       ]
     },
@@ -1240,6 +1456,12 @@
         {
           "type": "p",
           "text": "Two-step sign-in asks for a code after your password. Set up an authenticator app in your profile for the safest option, and keep the recovery codes somewhere safe."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/two-step-sign-in.jpg",
+          "caption": "Two-step sign-in is set up in your profile."
         }
       ]
     },
@@ -1265,6 +1487,12 @@
         {
           "type": "p",
           "text": "**Settings** holds what applies to the whole workspace: company details, branding, language and region, appearance, sign-in, security, notifications, email templates, privacy and form defaults."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/workspace-settings.jpg",
+          "caption": "Settings: everything that applies to the whole workspace."
         },
         {
           "type": "show",
@@ -1297,6 +1525,12 @@
           "text": "In **Settings → Security** admins set password rules, require two-step sign-in, decide how long people stay signed in and, if needed, allow sign-in only from your networks."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/security-settings.jpg",
+          "caption": "Settings → Security."
+        },
+        {
           "type": "warning",
           "text": "Before limiting networks, add your own address, or you may lock yourself out."
         }
@@ -1322,6 +1556,12 @@
         {
           "type": "p",
           "text": "**Form defaults** sets the theme, progress bar, labels, thank-you message and emails every new form starts with. Forms you already have don’t change."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/form-defaults.jpg",
+          "caption": "Settings → Form defaults."
         }
       ]
     },
@@ -1346,6 +1586,12 @@
         {
           "type": "p",
           "text": "The **Audit trail** records every action in your workspace: sign-ins, changes to forms, responses, settings, people and more, with who did it, when and from where."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/audit-trail.jpg",
+          "caption": "The audit trail: who did what, when and from where."
         },
         {
           "type": "p",
@@ -1383,6 +1629,12 @@
           "text": "The AI assistant creates forms and templates, helps in the builder, analyses responses and translates. It always **proposes**: nothing is created, changed or sent until you choose to."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-overview.jpg",
+          "caption": "The AI assistant’s overview: credits, what it can do and the latest requests."
+        },
+        {
           "type": "list",
           "items": [
             "Every request is kept in **History** with what came back.",
@@ -1415,6 +1667,12 @@
       "title": "Create a form with the assistant",
       "summary": "Describe it, check the draft, create it.",
       "blocks": [
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-create-form.jpg",
+          "caption": "Create a form: describe it or start from an example, then choose Generate."
+        },
         {
           "type": "steps",
           "items": [
@@ -1454,6 +1712,12 @@
           "text": "In **Response analysis**, pick a form and a period. The assistant finds what written answers are about, their tone, and how ratings and choices changed."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-analysis.jpg",
+          "caption": "Response analysis: pick a form and a period, then ask questions below."
+        },
+        {
           "type": "p",
           "text": "Ask questions in plain words, like “How many responses last month?”. The answer always shows what was counted."
         }
@@ -1479,6 +1743,12 @@
         {
           "type": "p",
           "text": "**Translations** translates a form into any of the 20 languages; you check each text side by side before saving. **Rewrite** suggests plainer wording in the tone you choose and shows the reading age before and after."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-translate.jpg",
+          "caption": "Translations: pick a form and languages, then check each text side by side."
         }
       ]
     },
@@ -1502,6 +1772,12 @@
         {
           "type": "p",
           "text": "Admins switch the assistant on or off, choose what it may read (forms, responses, data sources), keep personal data out and choose how long requests are kept. The assistant never trains on your data."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-settings.jpg",
+          "caption": "AI settings: on or off, what it may read, privacy and usage."
         }
       ]
     }

@@ -52,7 +52,7 @@ function open(event: MouseEvent, row: ResponseRow) {
       :actions="[{ label: published ? t('forms.overview.shareForm') : t('forms.detail.edit'), icon: published ? 'i-lucide-share-2' : 'i-lucide-pencil-ruler', color: 'neutral', variant: 'outline', to: published ? `/forms/${formId}/share` : `/forms/${formId}/build` }]"
       variant="naked"
     />
-    <div v-else class="grid gap-3 sm:grid-cols-2">
+    <div v-else class="grid grid-cols-1 gap-3 sm:grid-cols-2">
       <div v-for="row in rows" :key="row.id" class="h-full cursor-pointer" @click="open($event, row)">
         <FormsResponsesCard :row="row" :fields="fields" :actions="actions(row)" @open="navigateTo(link(row))" />
       </div>

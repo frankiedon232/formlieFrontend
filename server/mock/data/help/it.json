@@ -27,6 +27,12 @@
           "text": "Formalie aiuta la tua organizzazione a raccogliere informazioni con i moduli, a esaminare ciò che arriva e a inviarlo dove serve: un database, un altro sistema tramite l’API o un report."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/welcome.jpg",
+          "caption": "La pagina Moduli: le tue risposte in breve in alto, i tuoi moduli sotto."
+        },
+        {
           "type": "h",
           "text": "Le parti principali"
         },
@@ -76,6 +82,12 @@
           "text": "La colonna stretta all’estrema sinistra è il **rail**. Ogni icona apre un’area di Formalie: Moduli, Origini dati, Servizio API, Assistente IA e Persone. Il menu accanto cambia in base all’area in cui ti trovi."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/find-your-way.jpg",
+          "caption": "La barra laterale e il menu dell'area. Su telefoni e tablet si aprono dal pulsante del menu in alto a sinistra."
+        },
+        {
           "type": "p",
           "text": "In cima a ogni pagina trovi il titolo, dove ti trovi (il percorso di navigazione) e i pulsanti della pagina. Il pulsante principale è sempre quello scuro a destra."
         },
@@ -117,6 +129,12 @@
         {
           "type": "p",
           "text": "Puoi iniziare un modulo in tre modi: da una pagina vuota, da uno dei modelli di Formalie o descrivendolo all’assistente IA."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/first-form.jpg",
+          "caption": "Nuovo modulo: parti da zero, da un modello o importando un file di modulo."
         },
         {
           "type": "steps",
@@ -165,6 +183,12 @@
           "text": "Ogni persona del tuo spazio ha un profilo con reparto, ruolo professionale e ruolo. Il ruolo decide cosa può vedere e fare."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/invite-your-team.jpg",
+          "caption": "Persone: tutti i membri del tuo spazio di lavoro, con Aggiungi utente e Link di registrazione in alto."
+        },
+        {
           "type": "steps",
           "items": [
             "Apri **Persone** dal rail.",
@@ -204,6 +228,12 @@
           "text": "La ricerca si apre con **Ctrl + K** (**⌘ + K** su Mac). Digita parte del nome di una pagina, di un modulo, di un’impostazione o di una persona e premi Enter."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/keyboard-and-search.jpg",
+          "caption": "Tutte le scorciatoie da tastiera, in Aiuto e supporto → Scorciatoie da tastiera."
+        },
+        {
           "type": "p",
           "text": "Premi **?** per vedere tutte le scorciatoie da tastiera. Molte pagine ne aggiungono di proprie, per esempio **J** e **K** per passare da una risposta all’altra in un pannello."
         },
@@ -236,6 +266,12 @@
         {
           "type": "p",
           "text": "La pagina Moduli elenca tutti i moduli che puoi vedere. Le due schede in alto mostrano le risposte recenti e come sono ripartiti i tuoi moduli tra bozza, pubblicato e chiuso; fai clic su uno stato nella legenda per mostrare solo quei moduli."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/forms-list.jpg",
+          "caption": "I moduli come schede, con ricerca, filtri e l’interruttore Tabella / Griglia."
         },
         {
           "type": "list",
@@ -289,6 +325,12 @@
           "text": "Un modulo pubblicato può avere **modifiche non pubblicate**: le tue modifiche restano nella bozza finché non pubblichi di nuovo, così chi risponde non vede mai una modifica a metà."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/form-lifecycle.jpg",
+          "caption": "Moduli filtrati su Pubblicati: clicca uno stato nella scheda in alto per filtrare."
+        },
+        {
           "type": "tip",
           "text": "Imposta le date di apertura e chiusura in **Condividi → Disponibilità** perché un modulo si apra e si chiuda da solo."
         }
@@ -318,6 +360,12 @@
           "text": "Le cartelle raggruppano i moduli, per esempio per team o progetto. Creane una con **+** accanto a Cartelle nel menu, poi sposta i moduli al suo interno dal loro menu **⋯**."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/folders.jpg",
+          "caption": "Cartelle, con il numero di moduli e risposte in ciascuna."
+        },
+        {
           "type": "p",
           "text": "Gli amministratori possono limitare una cartella ad alcuni ruoli, reparti o persone con **Accesso alla cartella**. Tutti gli altri non vedono la cartella, i suoi moduli né le loro risposte da nessuna parte, nemmeno nella ricerca o nelle esportazioni."
         }
@@ -343,6 +391,12 @@
         {
           "type": "p",
           "text": "Quando elimini un modulo, finisce nel **Cestino** per 30 giorni, con le sue risposte. Puoi ripristinarlo da lì in qualsiasi momento in quei 30 giorni."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/trash.jpg",
+          "caption": "Cestino: i moduli eliminati restano qui per 30 giorni."
         },
         {
           "type": "warning",
@@ -380,6 +434,12 @@
         {
           "type": "p",
           "text": "L’editor ha tre parti: l’**elenco dei campi** a sinistra, il **modulo** al centro e le **impostazioni** di ciò che hai selezionato a destra."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/builder-basics.jpg",
+          "caption": "Il costruttore: le pagine e le domande del tuo modulo, con Aggiungi campo e Impostazioni campo in basso."
         },
         {
           "type": "steps",
@@ -440,6 +500,12 @@
           "text": "Scegli il campo più specifico: un campo e-mail controlla l’indirizzo mentre si scrive, un campo data mostra un calendario, un campo telefono controlla il numero."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/field-types.jpg",
+          "caption": "L’elenco dei campi raggruppa ogni tipo di domanda: testo, date, scelte, valutazioni, file e altro."
+        },
+        {
           "type": "tip",
           "text": "Le liste lunghe di scelte (paesi, reparti) funzionano meglio come **Elenco opzioni**, salvato una volta e usato in molti moduli."
         }
@@ -469,6 +535,12 @@
         {
           "type": "p",
           "text": "Le regole di logica cambiano il modulo mentre viene compilato: mostrare una domanda di approfondimento solo dopo un sì, richiedere un telefono per le richieste urgenti o saltare alla fine."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/builder-logic.jpg",
+          "caption": "La scheda Logica: ogni regola dice Quando si risponde a qualcosa, Allora cosa succede."
         },
         {
           "type": "steps",
@@ -509,6 +581,12 @@
           "text": "Un campo **Calcolo** ricava un valore da altre risposte, per esempio quantità × prezzo, una valutazione media o un punteggio di rischio. Le persone vedono il risultato mentre compilano il modulo."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/calculations.jpg",
+          "caption": "Un modulo nel builder; un campo Calcoli ricava il suo valore da altre risposte."
+        },
+        {
           "type": "p",
           "text": "Scrivi la formula con le chiavi delle domande tra parentesi graffe, per esempio **{quantity} * {unit_price}**. Le scelte possono avere un punteggio per poter essere sommate."
         }
@@ -536,6 +614,12 @@
         {
           "type": "p",
           "text": "**Pubblica** rende la tua bozza il modulo attivo. Ogni pubblicazione è salvata come versione numerata con una nota facoltativa su cosa è cambiato."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/publish-and-versions.jpg",
+          "caption": "Versioni: ogni pubblicazione, pronta da confrontare o ripristinare."
         },
         {
           "type": "p",
@@ -571,6 +655,12 @@
         {
           "type": "p",
           "text": "Apri la scheda **Design** di un modulo per cambiarne l’aspetto. L’anteprima mostra il modulo come lo vedranno le persone, su computer, tablet o telefono."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/design-a-form.jpg",
+          "caption": "La scheda Design con l’anteprima in tempo reale."
         },
         {
           "type": "list",
@@ -610,6 +700,12 @@
           "text": "I temi sono design salvati. Formalie ne fornisce una serie; il tuo spazio può aggiungere i propri dal designer, oppure lasciare che l’assistente IA suggerisca design a partire dal colore del tuo brand."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/themes.jpg",
+          "caption": "Temi: i design di Formalie e quelli del tuo spazio di lavoro."
+        },
+        {
           "type": "p",
           "text": "Scegli il tema con cui iniziano i nuovi moduli in **Impostazioni → Impostazioni predefinite dei moduli**."
         },
@@ -640,6 +736,12 @@
         {
           "type": "p",
           "text": "Una landing page è la pagina su cui si trova il tuo modulo: un banner con il titolo, un’introduzione, quanto tempo richiede e la tua organizzazione. Scegline una nel designer o conserva le tue in **Landing page**."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/landing-pages.jpg",
+          "caption": "Landing page: la pagina su cui si trova un modulo."
         }
       ]
     },
@@ -665,6 +767,12 @@
         {
           "type": "p",
           "text": "La galleria dei modelli ha moduli pronti per HR, salute e sicurezza, eventi, vendite e altro. Ognuno include le sue domande, la logica, i calcoli e un design coordinato."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/use-a-template.jpg",
+          "caption": "La galleria dei modelli, per categoria."
         },
         {
           "type": "steps",
@@ -701,6 +809,12 @@
         {
           "type": "p",
           "text": "Qualsiasi modulo può diventare un modello per il tuo spazio: apri il suo menu **⋯** e scegli **Salva come modello**. Dagli un nome, una descrizione e una categoria. I tuoi modelli compaiono in **I tuoi modelli**."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/save-as-template.jpg",
+          "caption": "I tuoi modelli compaiono nella galleria accanto a quelli di Formalie."
         }
       ]
     },
@@ -728,6 +842,12 @@
         {
           "type": "p",
           "text": "Apri la scheda **Condividi** di un modulo pubblicato. Da lì puoi copiare il suo link, scaricare un codice QR, creare un link breve o inviare inviti via e-mail."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/share-a-form.jpg",
+          "caption": "La scheda Condividi: dove le persone possono rispondere e chi può aprire il modulo."
         },
         {
           "type": "list",
@@ -776,6 +896,12 @@
         {
           "type": "p",
           "text": "In **Disponibilità** puoi aprire e chiudere il modulo a date prestabilite e fermarlo dopo un certo numero di risposte."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/who-can-fill-in.jpg",
+          "caption": "Chi può compilare il modulo e quando, nelle impostazioni di Condividi."
         }
       ]
     },
@@ -799,6 +925,12 @@
         {
           "type": "p",
           "text": "In **Condividi → Incorpora** copia il codice e incollalo nel tuo sito web. Puoi limitare quali siti web possono mostrare il modulo."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/embed-a-form.jpg",
+          "caption": "Anche l’incorporamento e i siti consentiti sono nella scheda Condividi."
         }
       ]
     },
@@ -824,6 +956,12 @@
         {
           "type": "p",
           "text": "Un modulo ha una lingua principale e può offrirne altre. Nell’editor, apri le impostazioni del modulo, aggiungi una lingua in **Altre lingue** e traduci ogni testo affiancato."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/form-languages.jpg",
+          "caption": "Le impostazioni del modulo nel builder, dove aggiungi altre lingue."
         },
         {
           "type": "tip",
@@ -853,6 +991,12 @@
         {
           "type": "p",
           "text": "**Risposte** elenca i tuoi moduli con le relative risposte. Apri un modulo per vederne le risposte come tabella o come schede; apri una risposta per vedere ogni dato in un pannello."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/responses-basics.jpg",
+          "caption": "Le risposte di un modulo, con le schede in alto e l’elenco sotto."
         },
         {
           "type": "list",
@@ -893,6 +1037,12 @@
           "text": "Ogni risposta ha uno stato: **Nuova**, **Esaminata**, **Approvata** o **Respinta**. Cambialo con un clic in alto nel pannello della risposta."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/review-responses.jpg",
+          "caption": "Una risposta aperta nel suo pannello: la barra di stato in alto, tag e note sotto."
+        },
+        {
           "type": "p",
           "text": "Aggiungi tag e note per tenere traccia. Correggere le risposte è un’autorizzazione a parte, quindi il tuo ruolo può permetterti di esaminare senza modificare ciò che le persone hanno scritto."
         }
@@ -920,6 +1070,12 @@
         {
           "type": "p",
           "text": "Fai clic su **Esporta** nelle risposte di un modulo, scegli il formato e cosa includere. Le esportazioni grandi vengono preparate in background; ne vedi l’avanzamento in **Esportazioni** e ricevi un messaggio quando il file è pronto."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/export-responses.jpg",
+          "caption": "Esportazioni: file in preparazione e pronti da scaricare."
         }
       ]
     },
@@ -946,6 +1102,12 @@
         {
           "type": "p",
           "text": "**Analisi** mostra quante persone hanno aperto, iniziato e completato ogni modulo, quanto tempo richiede e dove le persone si fermano. Apri un modulo per vedere ogni pagina e domanda."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/analytics.jpg",
+          "caption": "Analisi: visualizzazioni, avvii, completamenti e dove le persone si fermano."
         },
         {
           "type": "tip",
@@ -976,6 +1138,12 @@
         {
           "type": "p",
           "text": "Un **Elenco opzioni** contiene scelte che usi in molti moduli, per esempio reparti, prodotti o paesi. Cambia l’elenco una volta e tutti i moduli che lo usano lo seguono."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/lists-basics.jpg",
+          "caption": "Elenco opzioni: elenchi di scelte usati in molti moduli."
         },
         {
           "type": "p",
@@ -1012,6 +1180,12 @@
           "text": "**Origini dati** collega Formalie ai tuoi database. Le risposte possono così essere salvate anche lì, in tabelle che Formalie crea e mantiene allineate al modulo."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/data-sources-basics.jpg",
+          "caption": "Connessioni ai tuoi database, con il loro stato."
+        },
+        {
           "type": "steps",
           "items": [
             "Apri **Origini dati** dal rail e fai clic su **Aggiungi connessione**.",
@@ -1046,6 +1220,12 @@
         {
           "type": "p",
           "text": "**Esplora database** mostra le tabelle di una connessione e le loro righe. L’**Editor di query** esegue SQL; le istruzioni che modificano i dati richiedono un’autorizzazione apposita e chiedono prima conferma."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/database-explorer.jpg",
+          "caption": "L'Esplora database: scegli una tabella sotto Tabelle per vederne le righe e la struttura."
         }
       ]
     },
@@ -1071,6 +1251,12 @@
         {
           "type": "p",
           "text": "Il **Servizio API** dà ad altri sistemi i loro endpoint: leggere risposte, inviarne di nuove o consultare le opzioni degli elenchi. Ogni servizio raggruppa endpoint e ha la propria pagina di documentazione."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/api-basics.jpg",
+          "caption": "Servizi API, ciascuno con i suoi endpoint e la documentazione."
         },
         {
           "type": "steps",
@@ -1106,6 +1292,12 @@
           "text": "Ogni sistema che chiama la tua API riceve un **token**. I token possono scadere ed essere revocati in qualsiasi momento. Le **regole di accesso** limitano indirizzi, orari e quante chiamate sono consentite."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/api-tokens.jpg",
+          "caption": "Token e header: le chiavi che i sistemi usano per chiamare la tua API."
+        },
+        {
           "type": "warning",
           "text": "Un token viene mostrato una sola volta. Conservalo in un posto sicuro e non metterlo mai in una pagina web pubblica."
         }
@@ -1131,6 +1323,12 @@
         {
           "type": "p",
           "text": "Un webhook invia un messaggio all’indirizzo di un altro sistema quando accade qualcosa, per esempio una nuova risposta. Formalie riprova gli invii falliti e mostra ogni invio così vedi cosa è stato mandato."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/webhooks.jpg",
+          "caption": "Webhook e le loro consegne."
         }
       ]
     },
@@ -1159,6 +1357,12 @@
         {
           "type": "p",
           "text": "Ogni persona ha un solo ruolo. Proprietario può fare tutto; Amministratore e Membro sono pronti all’uso e modificabili; puoi aggiungere ruoli tuoi."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/roles-and-access.jpg",
+          "caption": "Ruoli e accesso: ogni ruolo e chi lo ha."
         },
         {
           "type": "p",
@@ -1191,6 +1395,12 @@
         {
           "type": "p",
           "text": "Un link di registrazione permette alle persone di creare il proprio account. Puoi limitarlo agli indirizzi e-mail della tua organizzazione. I loro account restano in **In attesa di approvazione** finché un amministratore non li approva e assegna loro un ruolo."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/sign-up-links.jpg",
+          "caption": "I link di registrazione sono in alto in Persone; le approvazioni attendono in In attesa di approvazione."
         }
       ]
     },
@@ -1215,6 +1425,12 @@
         {
           "type": "p",
           "text": "Apri il tuo profilo dal tuo nome in fondo al menu. Cambia foto, nome, lingua, fuso orario e formato della data, la password e l’accesso in due passaggi, e vedi dove hai effettuato l’accesso."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/your-profile.jpg",
+          "caption": "Il tuo profilo: foto, nome, lingua, password e accesso."
         }
       ]
     },
@@ -1240,6 +1456,12 @@
         {
           "type": "p",
           "text": "L’accesso in due passaggi chiede un codice dopo la password. Configura un’app di autenticazione nel tuo profilo per l’opzione più sicura e conserva i codici di recupero in un posto sicuro."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/two-step-sign-in.jpg",
+          "caption": "L’accesso in due passaggi si imposta nel tuo profilo."
         }
       ]
     },
@@ -1265,6 +1487,12 @@
         {
           "type": "p",
           "text": "**Impostazioni** raccoglie ciò che vale per l’intero spazio: dati dell’azienda, branding, lingua e regione, aspetto, accesso, sicurezza, notifiche, modelli di e-mail, privacy e impostazioni predefinite dei moduli."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/workspace-settings.jpg",
+          "caption": "Impostazioni: tutto ciò che vale per l’intero spazio di lavoro."
         },
         {
           "type": "show",
@@ -1297,6 +1525,12 @@
           "text": "In **Impostazioni → Sicurezza** gli amministratori definiscono le regole per le password, richiedono l’accesso in due passaggi, decidono per quanto tempo le persone restano connesse e, se serve, consentono l’accesso solo dalle vostre reti."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/security-settings.jpg",
+          "caption": "Impostazioni → Sicurezza."
+        },
+        {
           "type": "warning",
           "text": "Prima di limitare le reti, aggiungi il tuo indirizzo, altrimenti potresti restare fuori."
         }
@@ -1322,6 +1556,12 @@
         {
           "type": "p",
           "text": "**Impostazioni predefinite dei moduli** definisce il tema, la barra di avanzamento, le etichette, il messaggio di ringraziamento e le e-mail con cui inizia ogni nuovo modulo. I moduli che hai già non cambiano."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/form-defaults.jpg",
+          "caption": "Impostazioni → Impostazioni predefinite dei moduli."
         }
       ]
     },
@@ -1346,6 +1586,12 @@
         {
           "type": "p",
           "text": "Il **Registro di audit** registra ogni azione nel tuo spazio: accessi, modifiche a moduli, risposte, impostazioni, persone e altro, con chi l’ha fatta, quando e da dove."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/audit-trail.jpg",
+          "caption": "Il registro di audit: chi ha fatto cosa, quando e da dove."
         },
         {
           "type": "p",
@@ -1383,6 +1629,12 @@
           "text": "L’assistente IA crea moduli e modelli, aiuta nell’editor, analizza le risposte e traduce. **Propone** sempre: nulla viene creato, modificato o inviato finché non lo decidi tu."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-overview.jpg",
+          "caption": "Panoramica dell’assistente IA: crediti, cosa sa fare e le ultime richieste."
+        },
+        {
           "type": "list",
           "items": [
             "Ogni richiesta è conservata nella **Cronologia** con ciò che è tornato.",
@@ -1415,6 +1667,12 @@
       "title": "Creare un modulo con l’assistente",
       "summary": "Descrivilo, controlla la bozza, crealo.",
       "blocks": [
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-create-form.jpg",
+          "caption": "Crea un modulo: descrivilo o parti da un esempio, poi scegli Genera."
+        },
         {
           "type": "steps",
           "items": [
@@ -1454,6 +1712,12 @@
           "text": "In **Analisi delle risposte**, scegli un modulo e un periodo. L’assistente individua di cosa parlano le risposte scritte, il loro tono e come sono cambiate valutazioni e scelte."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-analysis.jpg",
+          "caption": "Analisi delle risposte: scegli un modulo e un periodo, poi fai domande sotto."
+        },
+        {
           "type": "p",
           "text": "Fai domande in parole semplici, come «Quante risposte il mese scorso?». La risposta mostra sempre cosa è stato contato."
         }
@@ -1479,6 +1743,12 @@
         {
           "type": "p",
           "text": "**Traduzioni** traduce un modulo in una delle 20 lingue; controlli ogni testo affiancato prima di salvare. **Riscrivi** suggerisce formulazioni più semplici nel tono che scegli e mostra l’età di lettura prima e dopo."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-translate.jpg",
+          "caption": "Traduzioni: scegli un modulo e le lingue, poi controlla ogni testo affiancato."
         }
       ]
     },
@@ -1502,6 +1772,12 @@
         {
           "type": "p",
           "text": "Gli amministratori attivano o disattivano l’assistente, scelgono cosa può leggere (moduli, risposte, origini dati), tengono fuori i dati personali e decidono per quanto tempo le richieste vengono conservate. L’assistente non si addestra mai sui tuoi dati."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-settings.jpg",
+          "caption": "Impostazioni IA: attiva o disattiva, cosa può leggere, privacy e utilizzo."
         }
       ]
     }

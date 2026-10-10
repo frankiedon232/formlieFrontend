@@ -41,12 +41,15 @@ defineExpose({ headings: computed(() => props.blocks.flatMap((block, index) => (
       <div v-else-if="block.type === 'show'">
         <UButton :label="block.label" icon="i-lucide-mouse-pointer-click" color="neutral" variant="outline" size="sm" :to="block.target ? { path: block.to, query: { show: block.target } } : block.to" @click="emit('show')" />
       </div>
-      <figure v-else-if="block.type === 'media'" class="flex flex-col gap-1.5">
+      <figure v-else-if="block.type === 'media'" class="flex flex-col items-center gap-2 rounded-lg border border-default bg-elevated/50 p-3 sm:p-4">
         <video v-if="block.kind === 'video'" :src="block.src" controls preload="metadata" class="w-full rounded-lg border border-default" :aria-label="block.caption">
           <track v-if="block.captions_src" kind="captions" :src="block.captions_src" default>
         </video>
-        <img v-else :src="block.src" :alt="block.caption" loading="lazy" class="w-full rounded-lg border border-default">
-        <figcaption class="text-xs text-muted">{{ block.caption }}</figcaption>
+        <!-- Screenshots are phone-sized pages: keep them narrow so the steps stay close; click opens the full image -->
+        <a v-else :href="block.src" target="_blank" rel="noopener" class="block w-full rounded-md focus-visible:outline-2 focus-visible:outline-(--ui-border-inverted)" :class="compact ? 'max-w-56' : 'max-w-xs'">
+          <img :src="block.src" :alt="block.caption" loading="lazy" class="w-full rounded-md border border-default shadow-sm">
+        </a>
+        <figcaption class="text-center text-xs text-muted">{{ block.caption }}</figcaption>
       </figure>
     </template>
   </div>

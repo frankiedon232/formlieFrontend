@@ -64,7 +64,7 @@ const rowActions = (category: TemplateCategorySummary) => [
             color="neutral"
             variant="soft"
             size="sm"
-            class="tabular-nums"
+            class="hidden tabular-nums sm:inline-flex"
           />
         </template>
       </UButton>

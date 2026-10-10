@@ -27,6 +27,12 @@
           "text": "Formalie 帮助你的组织用表单收集信息，查看收到的内容，并把它们发送到需要的地方：数据库、通过 API 连接的其他系统，或者一份报告。"
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/welcome.jpg",
+          "caption": "表单页面：上方一览回复情况，下方是你的表单。"
+        },
+        {
           "type": "h",
           "text": "主要功能"
         },
@@ -76,6 +82,12 @@
           "text": "最左边的窄栏是**导轨**。每个图标对应 Formalie 的一个区域：表单、数据源、API 服务、AI 助手和成员。旁边的菜单会随你所在的区域而变化。"
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/find-your-way.jpg",
+          "caption": "侧边栏和该区域的菜单。在手机和平板上，可从左上角的菜单按钮打开。"
+        },
+        {
           "type": "p",
           "text": "每个页面顶部都有页面标题、你当前的位置（面包屑导航）和页面按钮。主按钮永远是右侧的深色按钮。"
         },
@@ -117,6 +129,12 @@
         {
           "type": "p",
           "text": "你可以用三种方式开始一个表单：从空白页开始、从 Formalie 的模板开始，或者向 AI 助手描述你的需求。"
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/first-form.jpg",
+          "caption": "新建表单：从空白、模板开始，或导入表单文件。"
         },
         {
           "type": "steps",
@@ -165,6 +183,12 @@
           "text": "工作区里的每个人都有一份个人资料，包含部门、职位和角色。角色决定他们能看到什么、能做什么。"
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/invite-your-team.jpg",
+          "caption": "成员：工作区中的所有人，顶部有添加用户和注册链接。"
+        },
+        {
           "type": "steps",
           "items": [
             "从导轨打开**成员**。",
@@ -204,6 +228,12 @@
           "text": "按 **Ctrl + K**（Mac 上按 **⌘ + K**）打开搜索。输入页面、表单、设置或人员名称的一部分，然后按 Enter。"
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/keyboard-and-search.jpg",
+          "caption": "所有键盘快捷键都在帮助与支持 → 键盘快捷键中。"
+        },
+        {
           "type": "p",
           "text": "按 **?** 可以查看所有键盘快捷键。很多页面还有自己的快捷键，例如在面板中用 **J** 和 **K** 在回复之间切换。"
         },
@@ -236,6 +266,12 @@
         {
           "type": "p",
           "text": "“表单”页面列出了你有权查看的所有表单。顶部的两张卡片显示最近的回复，以及表单在草稿、已发布和已关闭之间的分布；点击图例中的状态，就只显示这些表单。"
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/forms-list.jpg",
+          "caption": "卡片形式的表单，带搜索、筛选以及表格 / 网格切换。"
         },
         {
           "type": "list",
@@ -289,6 +325,12 @@
           "text": "已发布的表单可能有**未发布的更改**：你的修改会保留在草稿中，直到再次发布，所以填写的人永远不会看到改到一半的内容。"
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/form-lifecycle.jpg",
+          "caption": "筛选为已发布的表单：点击顶部卡片中的状态即可筛选。"
+        },
+        {
           "type": "tip",
           "text": "在**分享 → 开放时间**中设置开放和关闭日期，表单就会自动开放和关闭。"
         }
@@ -318,6 +360,12 @@
           "text": "文件夹用来把表单分组，例如按团队或项目。点击菜单中“文件夹”旁边的 **+** 来创建，然后在表单的 **⋯** 菜单中把表单移进去。"
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/folders.jpg",
+          "caption": "文件夹，显示每个文件夹中的表单数和回复数。"
+        },
+        {
           "type": "p",
           "text": "管理员可以通过**文件夹访问权限**把文件夹限制给某些角色、部门或个人。其他人在任何地方都看不到这个文件夹、其中的表单和它们的回复，搜索和导出里也不会出现。"
         }
@@ -343,6 +391,12 @@
         {
           "type": "p",
           "text": "删除表单时，它连同回复会进入**回收站**，保留 30 天。在这 30 天内，你随时可以从那里恢复。"
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/trash.jpg",
+          "caption": "回收站：已删除的表单会在这里保留 30 天。"
         },
         {
           "type": "warning",
@@ -380,6 +434,12 @@
         {
           "type": "p",
           "text": "生成器分为三部分：左侧是**字段列表**，中间是**表单**，右侧是所选内容的**设置**。"
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/builder-basics.jpg",
+          "caption": "构建器：显示表单的页面和问题，底部有添加字段和字段设置。"
         },
         {
           "type": "steps",
@@ -440,6 +500,12 @@
           "text": "选最具体的字段：邮箱字段会在输入时检查地址，日期字段会显示日历，电话字段会检查号码。"
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/field-types.jpg",
+          "caption": "字段列表按类型归类所有问题：文本、日期、选项、评分、文件等。"
+        },
+        {
           "type": "tip",
           "text": "很长的选项列表（国家、部门）最好做成 **List Option**，只需维护一次，就能在许多表单中使用。"
         }
@@ -469,6 +535,12 @@
         {
           "type": "p",
           "text": "逻辑规则会在人们填写时改变表单：回答“是”之后才显示后续问题，紧急请求必须填写电话号码，或者直接跳到末尾。"
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/builder-logic.jpg",
+          "caption": "逻辑标签页：每条规则说明当某个问题被回答时，则会发生什么。"
         },
         {
           "type": "steps",
@@ -509,6 +581,12 @@
           "text": "**计算**字段会根据其他回答算出一个值，例如数量 × 单价、平均评分或风险得分。填写者在填写表单时就能看到结果。"
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/calculations.jpg",
+          "caption": "构建器中的一份表单；计算字段根据其他答案算出自己的值。"
+        },
+        {
           "type": "p",
           "text": "写公式时，把问题的键放在花括号里，例如 **{quantity} * {unit_price}**。选项也可以带分值，这样就能相加。"
         }
@@ -536,6 +614,12 @@
         {
           "type": "p",
           "text": "**发布**会让你的草稿成为正式上线的表单。每次发布都会保存为带编号的版本，还可以附上一条说明改动内容的备注。"
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/publish-and-versions.jpg",
+          "caption": "版本：每次发布，随时可对比或恢复。"
         },
         {
           "type": "p",
@@ -571,6 +655,12 @@
         {
           "type": "p",
           "text": "打开表单的**设计**标签页来修改外观。预览会显示填写者在电脑、平板或手机上看到的效果。"
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/design-a-form.jpg",
+          "caption": "带实时预览的设计标签页。"
         },
         {
           "type": "list",
@@ -610,6 +700,12 @@
           "text": "主题就是保存好的设计。Formalie 自带一套主题；你的工作区也可以在设计器里添加自己的主题，或者让 AI 助手根据你的品牌色推荐设计。"
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/themes.jpg",
+          "caption": "主题：Formalie 的设计和你工作区自己的设计。"
+        },
+        {
           "type": "p",
           "text": "在**设置 → 表单默认值**中选择新表单默认使用的主题。"
         },
@@ -640,6 +736,12 @@
         {
           "type": "p",
           "text": "落地页是你的表单所在的页面：带标题的横幅、一段简介、填写所需时间，以及你的组织信息。在设计器里选择一个，或者在**落地页**中保存你自己的。"
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/landing-pages.jpg",
+          "caption": "落地页：表单所在的页面。"
         }
       ]
     },
@@ -665,6 +767,12 @@
         {
           "type": "p",
           "text": "模板库里有人力资源、健康与安全、活动、销售等多种现成表单。每个模板都带有问题、逻辑、计算和匹配的设计。"
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/use-a-template.jpg",
+          "caption": "按类别划分的模板库。"
         },
         {
           "type": "steps",
@@ -701,6 +809,12 @@
         {
           "type": "p",
           "text": "任何表单都可以成为工作区的模板：打开它的 **⋯** 菜单，选择**另存为模板**，填写名称、说明和类别。你的模板会显示在**你的模板**下。"
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/save-as-template.jpg",
+          "caption": "你的模板会与 Formalie 的模板一起显示在模板库中。"
         }
       ]
     },
@@ -728,6 +842,12 @@
         {
           "type": "p",
           "text": "打开已发布表单的**分享**标签页。在这里可以复制链接、下载二维码、创建短链接或发送邮件邀请。"
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/share-a-form.jpg",
+          "caption": "分享标签页：在这里设置谁可以作答，以及谁可以打开表单。"
         },
         {
           "type": "list",
@@ -776,6 +896,12 @@
         {
           "type": "p",
           "text": "在**开放时间**中，你可以在设定的日期开放和关闭表单，也可以在回复数量达到上限后停止接收。"
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/who-can-fill-in.jpg",
+          "caption": "谁可以在何时填写表单，在其分享设置中。"
         }
       ]
     },
@@ -799,6 +925,12 @@
         {
           "type": "p",
           "text": "在**分享 → 嵌入**中复制代码，粘贴到你的网站里。你还可以限制哪些网站可以显示该表单。"
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/embed-a-form.jpg",
+          "caption": "嵌入和允许的网站也在分享标签页中。"
         }
       ]
     },
@@ -824,6 +956,12 @@
         {
           "type": "p",
           "text": "表单有一种主要语言，也可以提供更多语言。在生成器中打开表单设置，在**更多语言**下添加一种语言，然后并排翻译每一段文字。"
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/form-languages.jpg",
+          "caption": "构建器中的表单设置，可在此添加更多语言。"
         },
         {
           "type": "tip",
@@ -853,6 +991,12 @@
         {
           "type": "p",
           "text": "**回复**列出了你的表单及其回复。打开一个表单，可以用表格或卡片查看它的回复；打开一条回复，可以在面板中看到所有回答。"
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/responses-basics.jpg",
+          "caption": "表单的回复，顶部是卡片，下方是列表。"
         },
         {
           "type": "list",
@@ -893,6 +1037,12 @@
           "text": "每条回复都有一个状态：**新回复**、**已审阅**、**已批准**或**已拒绝**。在回复面板顶部一键即可更改。"
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/review-responses.jpg",
+          "caption": "在面板中打开的一条回复：顶部是状态栏，下方是标签和备注。"
+        },
+        {
           "type": "p",
           "text": "添加标签和备注方便跟进。更正回答是一项单独的权限，所以你的角色可能只能审阅，而不能修改填写者写的内容。"
         }
@@ -920,6 +1070,12 @@
         {
           "type": "p",
           "text": "在表单的回复页面点击**导出**，选择格式和要包含的内容。大型导出会在后台准备，你可以在**导出**中查看进度，文件准备好后会收到消息。"
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/export-responses.jpg",
+          "caption": "导出：正在准备和可供下载的文件。"
         }
       ]
     },
@@ -946,6 +1102,12 @@
         {
           "type": "p",
           "text": "**分析**会显示每个表单有多少人打开、开始和完成，平均耗时，以及人们在哪里停下。打开一个表单，可以看到每个页面和每个问题的情况。"
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/analytics.jpg",
+          "caption": "分析：浏览量、开始数、完成数，以及人们在哪里中止。"
         },
         {
           "type": "tip",
@@ -976,6 +1138,12 @@
         {
           "type": "p",
           "text": "**List Option** 存放你在许多表单中使用的选项，例如部门、产品或国家。只需修改一次列表，所有使用它的表单都会随之更新。"
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/lists-basics.jpg",
+          "caption": "选项列表：许多表单共用的选项列表。"
         },
         {
           "type": "p",
@@ -1012,6 +1180,12 @@
           "text": "**数据源**把 Formalie 连接到你自己的数据库。这样，回复也可以存储在那里，存放在 Formalie 创建并与表单保持同步的表中。"
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/data-sources-basics.jpg",
+          "caption": "与你的数据库的连接及其运行状况。"
+        },
+        {
           "type": "steps",
           "items": [
             "从导轨打开**数据源**，点击**添加连接**。",
@@ -1046,6 +1220,12 @@
         {
           "type": "p",
           "text": "**数据库浏览器**显示连接中的表和它们的行。**查询编辑器**运行 SQL；会修改数据的语句需要单独的权限，并且会先让你确认。"
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/database-explorer.jpg",
+          "caption": "数据库浏览器：在表下选择一个表，即可查看其行和结构。"
         }
       ]
     },
@@ -1071,6 +1251,12 @@
         {
           "type": "p",
           "text": "**API 服务**为其他系统提供专属端点：读取回复、发送新回复，或查询 List Option。每个服务把端点归为一组，并有自己的文档页面。"
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/api-basics.jpg",
+          "caption": "API 服务，每个服务都有自己的端点和文档。"
         },
         {
           "type": "steps",
@@ -1106,6 +1292,12 @@
           "text": "每个调用你的 API 的系统都会拿到一个**令牌**。令牌可以设置过期，也可以随时撤销。**访问规则**可以限制地址、时间段和允许的调用次数。"
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/api-tokens.jpg",
+          "caption": "令牌与请求头：系统调用你的 API 所用的密钥。"
+        },
+        {
           "type": "warning",
           "text": "令牌只显示一次。请妥善保管，千万不要放进公开的网页里。"
         }
@@ -1131,6 +1323,12 @@
         {
           "type": "p",
           "text": "Webhook 会在发生某件事（例如收到新回复）时，向另一个系统的地址发送一条消息。Formalie 会重试失败的投递，并显示每次投递，方便你查看发送了什么。"
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/webhooks.jpg",
+          "caption": "Webhook 及其投递记录。"
         }
       ]
     },
@@ -1159,6 +1357,12 @@
         {
           "type": "p",
           "text": "每个人都有一个角色。所有者可以做任何事；管理员和成员开箱即用，也可以修改；你还可以添加自己的角色。"
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/roles-and-access.jpg",
+          "caption": "角色与权限：每个角色以及拥有者。"
         },
         {
           "type": "p",
@@ -1191,6 +1395,12 @@
         {
           "type": "p",
           "text": "注册链接让人们自己创建账户。你可以把它限制为只允许你组织的邮箱地址。他们的账户会停留在**等待批准**，直到管理员批准并为其分配角色。"
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/sign-up-links.jpg",
+          "caption": "注册链接在成员页顶部；审批请求在等待批准中。"
         }
       ]
     },
@@ -1215,6 +1425,12 @@
         {
           "type": "p",
           "text": "点击菜单底部你的名字，打开个人资料。你可以修改照片、姓名、语言、时区和日期格式、密码以及两步登录，还可以查看你在哪些地方登录。"
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/your-profile.jpg",
+          "caption": "你的个人资料：头像、姓名、语言、密码和登录。"
         }
       ]
     },
@@ -1240,6 +1456,12 @@
         {
           "type": "p",
           "text": "两步登录会在输入密码后再要求输入验证码。最安全的做法是在个人资料中设置验证器应用，并把恢复码保存在安全的地方。"
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/two-step-sign-in.jpg",
+          "caption": "两步登录在你的个人资料中设置。"
         }
       ]
     },
@@ -1265,6 +1487,12 @@
         {
           "type": "p",
           "text": "**设置**包含适用于整个工作区的内容：公司信息、品牌、语言与地区、外观、登录、安全、通知、邮件模板、隐私与数据，以及表单默认值。"
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/workspace-settings.jpg",
+          "caption": "设置：适用于整个工作区的所有内容。"
         },
         {
           "type": "show",
@@ -1297,6 +1525,12 @@
           "text": "在**设置 → 安全**中，管理员可以设置密码规则、要求两步登录、决定人们保持登录多长时间，必要时还可以只允许从你的网络登录。"
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/security-settings.jpg",
+          "caption": "设置 → 安全。"
+        },
+        {
           "type": "warning",
           "text": "限制网络之前，请先添加你自己的地址，否则你可能会把自己锁在外面。"
         }
@@ -1322,6 +1556,12 @@
         {
           "type": "p",
           "text": "**表单默认值**设置每个新表单起步时使用的主题、进度条、标签、感谢信息和邮件。已有的表单不会改变。"
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/form-defaults.jpg",
+          "caption": "设置 → 表单默认值。"
         }
       ]
     },
@@ -1346,6 +1586,12 @@
         {
           "type": "p",
           "text": "**审计日志**记录你工作区中的每一项操作：登录，以及对表单、回复、设置、成员等的更改，包括谁做的、什么时候做的、从哪里做的。"
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/audit-trail.jpg",
+          "caption": "审计日志：谁在何时、从何处做了什么。"
         },
         {
           "type": "p",
@@ -1383,6 +1629,12 @@
           "text": "AI 助手可以创建表单和模板，在生成器中提供帮助，分析回复，以及翻译。它始终只是**提出建议**：在你确认之前，不会创建、修改或发送任何内容。"
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-overview.jpg",
+          "caption": "AI 助手概览：额度、它能做什么以及最近的请求。"
+        },
+        {
           "type": "list",
           "items": [
             "每个请求及其返回的内容都保存在**历史记录**中。",
@@ -1415,6 +1667,12 @@
       "title": "用助手创建表单",
       "summary": "描述需求，检查草稿，然后创建。",
       "blocks": [
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-create-form.jpg",
+          "caption": "创建表单：描述它或从示例开始，然后选择生成。"
+        },
         {
           "type": "steps",
           "items": [
@@ -1454,6 +1712,12 @@
           "text": "在**回复分析**中，选择一个表单和一个时间段。助手会找出文字回答的内容、语气，以及评分和选项的变化。"
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-analysis.jpg",
+          "caption": "回复分析：选择表单和时间段，然后在下方提问。"
+        },
+        {
           "type": "p",
           "text": "用平实的语言提问，例如“上个月有多少条回复？”。答案里总会显示统计了什么。"
         }
@@ -1479,6 +1743,12 @@
         {
           "type": "p",
           "text": "**翻译**可以把表单翻译成 20 种语言中的任意一种；保存前，请并排检查每一段文字。**改写**会按你选择的语气给出更通俗的措辞，并显示改写前后的阅读难度。"
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-translate.jpg",
+          "caption": "翻译：选择表单和语言，然后并排检查每段文字。"
         }
       ]
     },
@@ -1502,6 +1772,12 @@
         {
           "type": "p",
           "text": "管理员可以开启或关闭助手，选择它可以读取什么（表单、回复、数据源），排除个人数据，并决定请求保留多久。助手绝不会用你的数据进行训练。"
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-settings.jpg",
+          "caption": "AI 设置：开启或关闭、可读取的内容、隐私和用量。"
         }
       ]
     }

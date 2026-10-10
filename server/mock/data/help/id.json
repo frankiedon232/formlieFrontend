@@ -27,6 +27,12 @@
           "text": "Formalie membantu organisasi Anda mengumpulkan informasi lewat formulir, meninjau yang masuk, dan mengirimkannya ke tempat yang dibutuhkan: database, sistem lain melalui API, atau laporan."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/welcome.jpg",
+          "caption": "Halaman Formulir: tanggapan Anda sekilas di bagian atas, formulir Anda di bawahnya."
+        },
+        {
           "type": "h",
           "text": "Bagian utama"
         },
@@ -76,6 +82,12 @@
           "text": "Kolom sempit di paling kiri adalah **rel**. Setiap ikon membuka satu area Formalie: Formulir, Sumber data, Layanan API, Asisten AI, dan Orang. Menu di sebelahnya berubah sesuai area yang sedang Anda buka."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/find-your-way.jpg",
+          "caption": "Rail dan menu area. Di ponsel dan tablet, keduanya terbuka dari tombol menu di kiri atas."
+        },
+        {
           "type": "p",
           "text": "Di bagian atas setiap halaman Anda menemukan judulnya, posisi Anda (breadcrumb), dan tombol-tombol halaman. Tombol utama selalu yang berwarna gelap di sebelah kanan."
         },
@@ -117,6 +129,12 @@
         {
           "type": "p",
           "text": "Anda bisa memulai formulir dengan tiga cara: dari halaman kosong, dari salah satu templat Formalie, atau dengan mendeskripsikannya kepada asisten AI."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/first-form.jpg",
+          "caption": "Formulir baru: mulai dari kosong, dari templat, atau dengan mengimpor file formulir."
         },
         {
           "type": "steps",
@@ -165,6 +183,12 @@
           "text": "Setiap orang di ruang kerja Anda memiliki profil dengan departemen, jabatan, dan peran. Peran menentukan apa yang bisa mereka lihat dan lakukan."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/invite-your-team.jpg",
+          "caption": "Orang: semua anggota ruang kerja Anda, dengan Tambah pengguna dan Tautan pendaftaran di atas."
+        },
+        {
           "type": "steps",
           "items": [
             "Open **People** from the rail.",
@@ -204,6 +228,12 @@
           "text": "Pencarian terbuka dengan **Ctrl + K** (**⌘ + K** di Mac). Ketik sebagian nama halaman, formulir, pengaturan, atau orang, lalu tekan Enter."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/keyboard-and-search.jpg",
+          "caption": "Semua pintasan keyboard ada di Bantuan & dukungan → Pintasan keyboard."
+        },
+        {
           "type": "p",
           "text": "Tekan **?** untuk melihat semua pintasan keyboard. Banyak halaman menambahkan pintasannya sendiri, misalnya **J** dan **K** untuk berpindah antartanggapan di panel."
         },
@@ -236,6 +266,12 @@
         {
           "type": "p",
           "text": "Halaman Formulir menampilkan semua formulir yang boleh Anda lihat. Dua kartu di bagian atas menunjukkan tanggapan terbaru dan sebaran formulir Anda di antara draf, diterbitkan, dan ditutup; klik sebuah status di legenda untuk hanya menampilkan formulir dengan status itu."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/forms-list.jpg",
+          "caption": "Formulir sebagai kartu, dengan pencarian, filter, dan tombol Tabel / Kisi."
         },
         {
           "type": "list",
@@ -289,6 +325,12 @@
           "text": "Formulir yang diterbitkan bisa memiliki **perubahan belum diterbitkan**: hasil edit Anda tetap berada di draf sampai Anda menerbitkan lagi, sehingga responden tidak pernah melihat perubahan yang setengah jadi."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/form-lifecycle.jpg",
+          "caption": "Formulir difilter ke Diterbitkan: klik status di kartu atas untuk memfilter."
+        },
+        {
           "type": "tip",
           "text": "Atur tanggal buka dan tutup di **Bagikan → Ketersediaan** agar formulir dibuka dan ditutup dengan sendirinya."
         }
@@ -318,6 +360,12 @@
           "text": "Folder mengelompokkan formulir, misalnya menurut tim atau proyek. Buat satu dengan **+** di sebelah Folder pada menu, lalu pindahkan formulir ke dalamnya dari menu **⋯** formulir tersebut."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/folders.jpg",
+          "caption": "Folder, dengan jumlah formulir dan tanggapan di masing-masing."
+        },
+        {
           "type": "p",
           "text": "Admin dapat membatasi folder untuk beberapa peran, departemen, atau orang dengan **Akses folder**. Orang lain tidak melihat folder itu, formulirnya, maupun tanggapannya di mana pun, bahkan tidak di pencarian atau ekspor."
         }
@@ -343,6 +391,12 @@
         {
           "type": "p",
           "text": "Saat Anda menghapus formulir, formulir itu masuk ke **Sampah** selama 30 hari, beserta tanggapannya. Anda bisa memulihkannya dari sana kapan saja selama 30 hari tersebut."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/trash.jpg",
+          "caption": "Sampah: formulir yang dihapus tetap di sini selama 30 hari."
         },
         {
           "type": "warning",
@@ -380,6 +434,12 @@
         {
           "type": "p",
           "text": "Pembuat formulir terdiri dari tiga bagian: **daftar kolom** di kiri, **formulir** di tengah, dan **pengaturan** untuk item yang dipilih di kanan."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/builder-basics.jpg",
+          "caption": "Pembuat formulir: halaman dan pertanyaan formulir Anda, dengan Tambah kolom dan Pengaturan kolom di bagian bawah."
         },
         {
           "type": "steps",
@@ -440,6 +500,12 @@
           "text": "Pilih kolom yang paling spesifik: kolom email memeriksa alamat saat orang mengetik, kolom tanggal menampilkan kalender, kolom telepon memeriksa nomornya."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/field-types.jpg",
+          "caption": "Daftar bidang mengelompokkan semua jenis pertanyaan: teks, tanggal, pilihan, penilaian, file, dan lainnya."
+        },
+        {
           "type": "tip",
           "text": "Daftar pilihan yang panjang (negara, departemen) paling baik dibuat sebagai **Daftar Opsi**, disimpan sekali dan dipakai di banyak formulir."
         }
@@ -469,6 +535,12 @@
         {
           "type": "p",
           "text": "Aturan logika mengubah formulir saat orang mengisinya: tampilkan pertanyaan lanjutan hanya setelah jawaban ya, wajibkan nomor telepon untuk permintaan mendesak, atau lompat ke akhir."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/builder-logic.jpg",
+          "caption": "Tab Logika: setiap aturan menyatakan Jika sesuatu dijawab, Maka apa yang terjadi."
         },
         {
           "type": "steps",
@@ -509,6 +581,12 @@
           "text": "Kolom **Perhitungan** menghitung nilai dari jawaban lain, misalnya jumlah × harga, rata-rata penilaian, atau skor risiko. Orang melihat hasilnya saat mengisi formulir."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/calculations.jpg",
+          "caption": "Sebuah formulir di pembuat; bidang Perhitungan menghitung nilainya dari jawaban lain."
+        },
+        {
           "type": "p",
           "text": "Tulis rumus dengan kunci pertanyaan di dalam kurung kurawal, misalnya **{quantity} * {unit_price}**. Pilihan bisa memiliki skor sehingga dapat dijumlahkan."
         }
@@ -536,6 +614,12 @@
         {
           "type": "p",
           "text": "**Terbitkan** menjadikan draf Anda sebagai formulir yang aktif. Setiap penerbitan disimpan sebagai versi bernomor dengan catatan opsional tentang apa yang berubah."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/publish-and-versions.jpg",
+          "caption": "Versi: setiap penerbitan, siap dibandingkan atau dipulihkan."
         },
         {
           "type": "p",
@@ -571,6 +655,12 @@
         {
           "type": "p",
           "text": "Buka tab **Desain** pada formulir untuk mengubah tampilannya. Pratinjau menampilkan formulir seperti yang akan dilihat orang, di komputer, tablet, atau ponsel."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/design-a-form.jpg",
+          "caption": "Tab Desain dengan pratinjau langsung."
         },
         {
           "type": "list",
@@ -610,6 +700,12 @@
           "text": "Tema adalah desain yang tersimpan. Formalie menyediakan sejumlah tema; ruang kerja Anda bisa menambahkan sendiri dari desainer, atau meminta asisten AI menyarankan desain dari warna merek Anda."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/themes.jpg",
+          "caption": "Tema: desain Formalie dan desain milik ruang kerja Anda."
+        },
+        {
           "type": "p",
           "text": "Pilih tema yang dipakai formulir baru di **Pengaturan → Bawaan formulir**."
         },
@@ -640,6 +736,12 @@
         {
           "type": "p",
           "text": "Halaman arahan adalah halaman tempat formulir Anda berada: banner berisi judul, pengantar, lama pengisian, dan organisasi Anda. Pilih satu di desainer atau simpan milik Anda sendiri di **Halaman arahan**."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/landing-pages.jpg",
+          "caption": "Halaman arahan: halaman tempat formulir berada."
         }
       ]
     },
@@ -665,6 +767,12 @@
         {
           "type": "p",
           "text": "Galeri templat berisi formulir siap pakai untuk SDM, kesehatan dan keselamatan kerja, acara, penjualan, dan lainnya. Masing-masing dilengkapi pertanyaan, logika, perhitungan, dan desain yang serasi."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/use-a-template.jpg",
+          "caption": "Galeri templat, menurut kategori."
         },
         {
           "type": "steps",
@@ -701,6 +809,12 @@
         {
           "type": "p",
           "text": "Formulir apa pun bisa menjadi templat untuk ruang kerja Anda: buka menu **⋯** formulir itu dan pilih **Simpan sebagai templat**. Beri nama, deskripsi, dan kategori. Templat Anda muncul di bawah **Templat Anda**."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/save-as-template.jpg",
+          "caption": "Templat Anda muncul di galeri bersama templat Formalie."
         }
       ]
     },
@@ -728,6 +842,12 @@
         {
           "type": "p",
           "text": "Buka tab **Bagikan** pada formulir yang sudah diterbitkan. Dari sana Anda bisa menyalin tautannya, mengunduh kode QR, membuat tautan pendek, atau mengirim undangan email."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/share-a-form.jpg",
+          "caption": "Tab Bagikan: tempat orang dapat menjawab dan siapa yang dapat membuka formulir."
         },
         {
           "type": "list",
@@ -776,6 +896,12 @@
         {
           "type": "p",
           "text": "Di **Ketersediaan** Anda bisa membuka dan menutup formulir pada tanggal tertentu dan menghentikannya setelah jumlah tanggapan tertentu."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/who-can-fill-in.jpg",
+          "caption": "Siapa yang boleh mengisi formulir dan kapan, di pengaturan Bagikan."
         }
       ]
     },
@@ -799,6 +925,12 @@
         {
           "type": "p",
           "text": "Di **Bagikan → Sematkan** salin kodenya dan tempelkan ke situs web Anda. Anda bisa membatasi situs web mana yang boleh menampilkan formulir."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/embed-a-form.jpg",
+          "caption": "Penyematan dan situs web yang diizinkan juga ada di tab Bagikan."
         }
       ]
     },
@@ -824,6 +956,12 @@
         {
           "type": "p",
           "text": "Formulir memiliki bahasa utama dan bisa menawarkan bahasa lain. Di pembuat formulir, buka pengaturan formulir, tambahkan bahasa di bawah **Bahasa lain**, lalu terjemahkan setiap teks berdampingan."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/form-languages.jpg",
+          "caption": "Pengaturan formulir di pembuat, tempat Anda menambah bahasa."
         },
         {
           "type": "tip",
@@ -853,6 +991,12 @@
         {
           "type": "p",
           "text": "**Tanggapan** menampilkan daftar formulir Anda beserta tanggapannya. Buka sebuah formulir untuk melihat tanggapannya sebagai tabel atau kartu; buka sebuah tanggapan untuk melihat setiap jawaban di panel."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/responses-basics.jpg",
+          "caption": "Tanggapan sebuah formulir, dengan kartu di atas dan daftar di bawah."
         },
         {
           "type": "list",
@@ -893,6 +1037,12 @@
           "text": "Setiap tanggapan memiliki status: **Baru**, **Ditinjau**, **Disetujui**, atau **Ditolak**. Ubah dengan satu klik di bagian atas panel tanggapan."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/review-responses.jpg",
+          "caption": "Satu tanggapan terbuka di panelnya: bilah status di atas, tag dan catatan di bawah."
+        },
+        {
           "type": "p",
           "text": "Tambahkan tag dan catatan untuk melacaknya. Mengoreksi jawaban adalah izin tersendiri, jadi peran Anda mungkin boleh meninjau tanpa mengubah apa yang ditulis orang."
         }
@@ -920,6 +1070,12 @@
         {
           "type": "p",
           "text": "Klik **Ekspor** pada tanggapan sebuah formulir, pilih formatnya dan apa yang disertakan. Ekspor besar disiapkan di latar belakang; Anda melihat kemajuannya di **Ekspor** dan mendapat pesan saat file siap."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/export-responses.jpg",
+          "caption": "Ekspor: file yang sedang disiapkan dan siap diunduh."
         }
       ]
     },
@@ -946,6 +1102,12 @@
         {
           "type": "p",
           "text": "**Analitik** menunjukkan berapa banyak orang yang membuka, mulai mengisi, dan menyelesaikan setiap formulir, berapa lama pengisiannya, dan di mana orang berhenti. Buka sebuah formulir untuk melihat setiap halaman dan pertanyaan."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/analytics.jpg",
+          "caption": "Analitik: tampilan, mulai, selesai, dan tempat orang berhenti."
         },
         {
           "type": "tip",
@@ -976,6 +1138,12 @@
         {
           "type": "p",
           "text": "**Daftar Opsi** menyimpan pilihan yang Anda pakai di banyak formulir, misalnya departemen, produk, atau negara. Ubah daftarnya sekali dan setiap formulir yang memakainya ikut berubah."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/lists-basics.jpg",
+          "caption": "Daftar Opsi: daftar pilihan yang dipakai di banyak formulir."
         },
         {
           "type": "p",
@@ -1012,6 +1180,12 @@
           "text": "**Sumber data** menghubungkan Formalie ke database Anda sendiri. Tanggapan kemudian bisa disimpan di sana juga, dalam tabel yang dibuat Formalie dan dijaga tetap selaras dengan formulir."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/data-sources-basics.jpg",
+          "caption": "Koneksi ke database Anda, beserta kondisinya."
+        },
+        {
           "type": "steps",
           "items": [
             "Open **Data sources** from the rail and click **Add connection**.",
@@ -1046,6 +1220,12 @@
         {
           "type": "p",
           "text": "**Penjelajah database** menampilkan tabel sebuah koneksi beserta barisnya. **Editor kueri** menjalankan SQL; pernyataan yang mengubah data membutuhkan izin tersendiri dan meminta konfirmasi dulu."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/database-explorer.jpg",
+          "caption": "Penjelajah database: pilih tabel di bawah Tabel untuk melihat baris dan strukturnya."
         }
       ]
     },
@@ -1071,6 +1251,12 @@
         {
           "type": "p",
           "text": "**Layanan API** memberi sistem lain endpoint mereka sendiri: membaca tanggapan, mengirim tanggapan baru, atau mencari opsi daftar. Setiap layanan mengelompokkan endpoint dan memiliki halaman dokumentasinya sendiri."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/api-basics.jpg",
+          "caption": "Layanan API, masing-masing dengan endpoint dan dokumentasinya."
         },
         {
           "type": "steps",
@@ -1106,6 +1292,12 @@
           "text": "Setiap sistem yang memanggil API Anda mendapat **token**. Token bisa kedaluwarsa dan dicabut kapan saja. **Aturan akses** membatasi alamat, waktu, dan jumlah panggilan yang diizinkan."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/api-tokens.jpg",
+          "caption": "Token & header: kunci yang dipakai sistem untuk memanggil API Anda."
+        },
+        {
           "type": "warning",
           "text": "Token hanya ditampilkan sekali. Simpan di tempat aman dan jangan pernah menaruhnya di halaman web publik."
         }
@@ -1131,6 +1323,12 @@
         {
           "type": "p",
           "text": "Webhook mengirim pesan ke alamat sistem lain saat sesuatu terjadi, misalnya tanggapan baru. Formalie mencoba ulang pengiriman yang gagal dan menampilkan setiap pengiriman agar Anda bisa melihat apa yang dikirim."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/webhooks.jpg",
+          "caption": "Webhook dan pengirimannya."
         }
       ]
     },
@@ -1159,6 +1357,12 @@
         {
           "type": "p",
           "text": "Setiap orang memiliki satu peran. Owner bisa melakukan segalanya; Admin dan Member sudah siap dipakai dan bisa diubah; Anda juga bisa menambah peran sendiri."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/roles-and-access.jpg",
+          "caption": "Peran & akses: setiap peran dan siapa pemegangnya."
         },
         {
           "type": "p",
@@ -1191,6 +1395,12 @@
         {
           "type": "p",
           "text": "Tautan pendaftaran memungkinkan orang membuat akun sendiri. Anda bisa membatasinya untuk alamat email organisasi Anda. Akun mereka menunggu di **Menunggu persetujuan** sampai admin menyetujuinya dan memberi mereka peran."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/sign-up-links.jpg",
+          "caption": "Tautan pendaftaran ada di atas Orang; persetujuan menunggu di Menunggu persetujuan."
         }
       ]
     },
@@ -1215,6 +1425,12 @@
         {
           "type": "p",
           "text": "Buka profil Anda dari nama Anda di bagian bawah menu. Ubah foto, nama, bahasa, zona waktu, dan format tanggal, kata sandi, serta masuk dua langkah Anda, dan lihat di mana saja Anda sedang masuk."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/your-profile.jpg",
+          "caption": "Profil Anda: foto, nama, bahasa, kata sandi, dan masuk."
         }
       ]
     },
@@ -1240,6 +1456,12 @@
         {
           "type": "p",
           "text": "Masuk dua langkah meminta kode setelah kata sandi Anda. Siapkan aplikasi authenticator di profil Anda untuk pilihan teraman, dan simpan kode pemulihan di tempat aman."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/two-step-sign-in.jpg",
+          "caption": "Masuk dua langkah diatur di profil Anda."
         }
       ]
     },
@@ -1265,6 +1487,12 @@
         {
           "type": "p",
           "text": "**Pengaturan** berisi hal-hal yang berlaku untuk seluruh ruang kerja: detail perusahaan, branding, bahasa dan wilayah, tampilan, cara masuk, keamanan, notifikasi, templat email, privasi, dan bawaan formulir."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/workspace-settings.jpg",
+          "caption": "Pengaturan: semua yang berlaku untuk seluruh ruang kerja."
         },
         {
           "type": "show",
@@ -1297,6 +1525,12 @@
           "text": "Di **Pengaturan → Keamanan** admin menetapkan aturan kata sandi, mewajibkan masuk dua langkah, menentukan berapa lama orang tetap masuk, dan, jika perlu, hanya mengizinkan masuk dari jaringan Anda."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/security-settings.jpg",
+          "caption": "Pengaturan → Keamanan."
+        },
+        {
           "type": "warning",
           "text": "Sebelum membatasi jaringan, tambahkan alamat Anda sendiri, atau Anda bisa terkunci di luar."
         }
@@ -1322,6 +1556,12 @@
         {
           "type": "p",
           "text": "**Bawaan formulir** menetapkan tema, bilah kemajuan, label, pesan terima kasih, dan email yang dimiliki setiap formulir baru sejak awal. Formulir yang sudah ada tidak berubah."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/form-defaults.jpg",
+          "caption": "Pengaturan → Bawaan formulir."
         }
       ]
     },
@@ -1346,6 +1586,12 @@
         {
           "type": "p",
           "text": "**Jejak audit** mencatat setiap tindakan di ruang kerja Anda: masuk, perubahan formulir, tanggapan, pengaturan, orang, dan lainnya, beserta siapa yang melakukannya, kapan, dan dari mana."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/audit-trail.jpg",
+          "caption": "Jejak audit: siapa melakukan apa, kapan, dan dari mana."
         },
         {
           "type": "p",
@@ -1383,6 +1629,12 @@
           "text": "Asisten AI membuat formulir dan templat, membantu di pembuat formulir, menganalisis tanggapan, dan menerjemahkan. Asisten ini selalu **mengusulkan**: tidak ada yang dibuat, diubah, atau dikirim sebelum Anda memilihnya."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-overview.jpg",
+          "caption": "Ikhtisar asisten AI: kredit, yang bisa dilakukannya, dan permintaan terbaru."
+        },
+        {
           "type": "list",
           "items": [
             "Every request is kept in **History** with what came back.",
@@ -1415,6 +1667,12 @@
       "title": "Buat formulir dengan asisten",
       "summary": "Deskripsikan, periksa drafnya, lalu buat.",
       "blocks": [
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-create-form.jpg",
+          "caption": "Buat formulir: jelaskan formulirnya atau mulai dari contoh, lalu pilih Buat."
+        },
         {
           "type": "steps",
           "items": [
@@ -1454,6 +1712,12 @@
           "text": "Di **Analisis respons**, pilih formulir dan periode. Asisten mencari tahu tentang apa jawaban tertulis, nadanya, serta bagaimana penilaian dan pilihan berubah."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-analysis.jpg",
+          "caption": "Analisis respons: pilih formulir dan periode, lalu ajukan pertanyaan di bawah."
+        },
+        {
           "type": "p",
           "text": "Ajukan pertanyaan dengan bahasa sehari-hari, seperti “Berapa banyak tanggapan bulan lalu?”. Jawabannya selalu menunjukkan apa yang dihitung."
         }
@@ -1479,6 +1743,12 @@
         {
           "type": "p",
           "text": "**Terjemahan** menerjemahkan formulir ke salah satu dari 20 bahasa; Anda memeriksa setiap teks berdampingan sebelum menyimpan. **Tulis ulang** menyarankan kata-kata yang lebih sederhana dalam nada pilihan Anda dan menunjukkan tingkat keterbacaan sebelum dan sesudahnya."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-translate.jpg",
+          "caption": "Terjemahan: pilih formulir dan bahasa, lalu periksa setiap teks berdampingan."
         }
       ]
     },
@@ -1502,6 +1772,12 @@
         {
           "type": "p",
           "text": "Admin menyalakan atau mematikan asisten, memilih apa yang boleh dibacanya (formulir, tanggapan, sumber data), menjauhkan data pribadi, dan menentukan berapa lama permintaan disimpan. Asisten tidak pernah dilatih dengan data Anda."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-settings.jpg",
+          "caption": "Pengaturan AI: aktif atau nonaktif, yang boleh dibaca, privasi, dan penggunaan."
         }
       ]
     }

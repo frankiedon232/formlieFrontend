@@ -27,6 +27,12 @@
           "text": "Formalie giúp tổ chức của bạn thu thập thông tin bằng biểu mẫu, xem lại những gì gửi về và chuyển đến nơi cần thiết: cơ sở dữ liệu, hệ thống khác qua API, hoặc một báo cáo."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/welcome.jpg",
+          "caption": "Trang Biểu mẫu: phản hồi của bạn xem nhanh ở trên, các biểu mẫu của bạn ở dưới."
+        },
+        {
           "type": "h",
           "text": "Các phần chính"
         },
@@ -76,6 +82,12 @@
           "text": "Cột hẹp ở ngoài cùng bên trái là **thanh biểu tượng**. Mỗi biểu tượng mở một khu vực của Formalie: Biểu mẫu, Nguồn dữ liệu, Dịch vụ API, Trợ lý AI và Mọi người. Menu bên cạnh thay đổi theo khu vực bạn đang ở."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/find-your-way.jpg",
+          "caption": "Thanh bên và menu của khu vực. Trên điện thoại và máy tính bảng, chúng mở từ nút menu ở góc trên bên trái."
+        },
+        {
           "type": "p",
           "text": "Ở đầu mỗi trang bạn thấy tiêu đề, vị trí hiện tại (đường dẫn) và các nút của trang. Nút chính luôn là nút màu tối ở bên phải."
         },
@@ -117,6 +129,12 @@
         {
           "type": "p",
           "text": "Bạn có thể bắt đầu một biểu mẫu theo ba cách: từ trang trống, từ một mẫu của Formalie, hoặc mô tả cho trợ lý AI."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/first-form.jpg",
+          "caption": "Biểu mẫu mới: bắt đầu từ trống, từ mẫu hoặc bằng cách nhập tệp biểu mẫu."
         },
         {
           "type": "steps",
@@ -165,6 +183,12 @@
           "text": "Mỗi người trong không gian làm việc có một hồ sơ với phòng ban, chức danh và vai trò. Vai trò quyết định họ được xem và làm gì."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/invite-your-team.jpg",
+          "caption": "Mọi người: tất cả thành viên trong không gian làm việc, với Thêm người dùng và Liên kết đăng ký ở trên cùng."
+        },
+        {
           "type": "steps",
           "items": [
             "Open **People** from the rail.",
@@ -204,6 +228,12 @@
           "text": "Tìm kiếm mở bằng **Ctrl + K** (**⌘ + K** trên máy Mac). Gõ một phần tên trang, biểu mẫu, cài đặt hoặc người rồi nhấn Enter."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/keyboard-and-search.jpg",
+          "caption": "Mọi phím tắt nằm trong Trợ giúp & hỗ trợ → Phím tắt."
+        },
+        {
           "type": "p",
           "text": "Nhấn **?** để xem mọi phím tắt. Nhiều trang có thêm phím tắt riêng, ví dụ **J** và **K** để chuyển giữa các phản hồi trong một bảng bên."
         },
@@ -236,6 +266,12 @@
         {
           "type": "p",
           "text": "Trang Biểu mẫu liệt kê mọi biểu mẫu bạn được xem. Hai thẻ ở trên cùng cho thấy các phản hồi gần đây và cách biểu mẫu phân bố giữa bản nháp, đã xuất bản và đã đóng; nhấn một trạng thái trong chú giải để chỉ hiện các biểu mẫu đó."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/forms-list.jpg",
+          "caption": "Biểu mẫu dạng thẻ, có tìm kiếm, bộ lọc và nút chuyển Bảng / Lưới."
         },
         {
           "type": "list",
@@ -289,6 +325,12 @@
           "text": "Một biểu mẫu đã xuất bản có thể có **thay đổi chưa xuất bản**: các chỉnh sửa của bạn nằm trong bản nháp cho đến khi bạn xuất bản lại, nên người điền không bao giờ thấy một thay đổi làm dở."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/form-lifecycle.jpg",
+          "caption": "Biểu mẫu lọc theo Đã xuất bản: nhấp một trạng thái trên thẻ phía trên để lọc."
+        },
+        {
           "type": "tip",
           "text": "Đặt ngày mở và đóng ở **Chia sẻ → Thời gian mở** để biểu mẫu tự mở và tự đóng."
         }
@@ -318,6 +360,12 @@
           "text": "Thư mục gom các biểu mẫu lại, ví dụ theo nhóm hoặc dự án. Tạo một thư mục bằng nút **+** cạnh Thư mục trong menu, rồi chuyển biểu mẫu vào đó từ menu **⋯** của biểu mẫu."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/folders.jpg",
+          "caption": "Thư mục, kèm số biểu mẫu và phản hồi trong mỗi thư mục."
+        },
+        {
           "type": "p",
           "text": "Quản trị viên có thể giới hạn một thư mục cho một số vai trò, phòng ban hoặc người bằng **Quyền truy cập thư mục**. Những người khác không thấy thư mục, biểu mẫu hay phản hồi của nó ở bất kỳ đâu, kể cả trong tìm kiếm hay khi xuất."
         }
@@ -343,6 +391,12 @@
         {
           "type": "p",
           "text": "Khi bạn xóa một biểu mẫu, nó vào **Thùng rác** trong 30 ngày cùng các phản hồi. Bạn có thể khôi phục từ đó bất cứ lúc nào trong 30 ngày này."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/trash.jpg",
+          "caption": "Thùng rác: biểu mẫu đã xóa được giữ ở đây 30 ngày."
         },
         {
           "type": "warning",
@@ -380,6 +434,12 @@
         {
           "type": "p",
           "text": "Trình tạo có ba phần: **danh sách trường** ở bên trái, **biểu mẫu** ở giữa và **cài đặt** của mục bạn chọn ở bên phải."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/builder-basics.jpg",
+          "caption": "Trình tạo: các trang và câu hỏi của biểu mẫu, với Thêm trường và Cài đặt trường ở phía dưới."
         },
         {
           "type": "steps",
@@ -440,6 +500,12 @@
           "text": "Chọn trường cụ thể nhất: trường email kiểm tra địa chỉ khi người ta gõ, trường ngày hiện lịch, trường điện thoại kiểm tra số."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/field-types.jpg",
+          "caption": "Danh sách trường nhóm mọi loại câu hỏi: văn bản, ngày, lựa chọn, đánh giá, tệp và hơn nữa."
+        },
+        {
           "type": "tip",
           "text": "Danh sách lựa chọn dài (quốc gia, phòng ban) nên dùng **Danh sách tùy chọn**, tạo một lần và dùng trong nhiều biểu mẫu."
         }
@@ -469,6 +535,12 @@
         {
           "type": "p",
           "text": "Quy tắc logic thay đổi biểu mẫu trong lúc người ta điền: chỉ hiện câu hỏi tiếp theo sau khi trả lời có, bắt buộc nhập số điện thoại cho yêu cầu khẩn, hoặc nhảy thẳng đến cuối."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/builder-logic.jpg",
+          "caption": "Tab Logic: mỗi quy tắc nêu Khi một câu được trả lời, Thì điều gì xảy ra."
         },
         {
           "type": "steps",
@@ -509,6 +581,12 @@
           "text": "Một trường **Phép tính** tính ra giá trị từ các câu trả lời khác, ví dụ số lượng × giá, điểm đánh giá trung bình hoặc điểm rủi ro. Người điền thấy kết quả ngay khi điền biểu mẫu."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/calculations.jpg",
+          "caption": "Một biểu mẫu trong trình tạo; trường Phép tính tính giá trị từ các câu trả lời khác."
+        },
+        {
           "type": "p",
           "text": "Viết công thức với khóa của câu hỏi đặt trong dấu ngoặc nhọn, ví dụ **{quantity} * {unit_price}**. Các lựa chọn có thể mang điểm để cộng lại được."
         }
@@ -536,6 +614,12 @@
         {
           "type": "p",
           "text": "**Xuất bản** biến bản nháp của bạn thành biểu mẫu chính thức. Mỗi lần xuất bản được lưu thành một phiên bản đánh số, kèm ghi chú tùy chọn về những gì đã thay đổi."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/publish-and-versions.jpg",
+          "caption": "Phiên bản: mỗi lần xuất bản, sẵn sàng để so sánh hoặc khôi phục."
         },
         {
           "type": "p",
@@ -571,6 +655,12 @@
         {
           "type": "p",
           "text": "Mở thẻ **Thiết kế** của biểu mẫu để đổi diện mạo. Phần xem trước cho thấy biểu mẫu như người điền sẽ thấy, trên máy tính, máy tính bảng hoặc điện thoại."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/design-a-form.jpg",
+          "caption": "Tab Thiết kế với bản xem trước trực tiếp."
         },
         {
           "type": "list",
@@ -610,6 +700,12 @@
           "text": "Giao diện là các thiết kế đã lưu. Formalie có sẵn một bộ; không gian làm việc của bạn có thể tự thêm từ trình thiết kế, hoặc nhờ trợ lý AI gợi ý thiết kế từ màu thương hiệu của bạn."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/themes.jpg",
+          "caption": "Giao diện: các thiết kế của Formalie và của riêng không gian làm việc."
+        },
+        {
           "type": "p",
           "text": "Chọn giao diện mà biểu mẫu mới bắt đầu ở **Cài đặt → Mặc định của biểu mẫu**."
         },
@@ -640,6 +736,12 @@
         {
           "type": "p",
           "text": "Trang đích là trang chứa biểu mẫu của bạn: một biểu ngữ có tiêu đề, phần giới thiệu, thời gian điền và tổ chức của bạn. Chọn một trang trong trình thiết kế hoặc lưu trang riêng của bạn ở **Trang đích**."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/landing-pages.jpg",
+          "caption": "Trang đích: trang chứa biểu mẫu."
         }
       ]
     },
@@ -665,6 +767,12 @@
         {
           "type": "p",
           "text": "Thư viện mẫu có các biểu mẫu làm sẵn cho nhân sự, sức khỏe và an toàn, sự kiện, bán hàng và nhiều hơn nữa. Mỗi mẫu có đủ câu hỏi, logic, phép tính và một thiết kế phù hợp."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/use-a-template.jpg",
+          "caption": "Thư viện mẫu, theo danh mục."
         },
         {
           "type": "steps",
@@ -701,6 +809,12 @@
         {
           "type": "p",
           "text": "Biểu mẫu nào cũng có thể thành mẫu cho không gian làm việc: mở menu **⋯** của nó và chọn **Lưu thành mẫu**. Đặt tên, mô tả và danh mục. Mẫu của bạn xuất hiện ở mục **Mẫu của bạn**."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/save-as-template.jpg",
+          "caption": "Mẫu của bạn xuất hiện trong thư viện cạnh các mẫu của Formalie."
         }
       ]
     },
@@ -728,6 +842,12 @@
         {
           "type": "p",
           "text": "Mở thẻ **Chia sẻ** của một biểu mẫu đã xuất bản. Từ đó bạn có thể sao chép liên kết, tải mã QR, tạo liên kết ngắn hoặc gửi lời mời qua email."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/share-a-form.jpg",
+          "caption": "Thẻ Chia sẻ: nơi mọi người có thể trả lời và ai có thể mở biểu mẫu."
         },
         {
           "type": "list",
@@ -776,6 +896,12 @@
         {
           "type": "p",
           "text": "Trong **Thời gian mở** bạn có thể mở và đóng biểu mẫu vào những ngày định sẵn và dừng nhận sau một số lượng phản hồi."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/who-can-fill-in.jpg",
+          "caption": "Ai được điền biểu mẫu và khi nào, trong cài đặt Chia sẻ."
         }
       ]
     },
@@ -799,6 +925,12 @@
         {
           "type": "p",
           "text": "Trong **Chia sẻ → Nhúng** hãy sao chép mã và dán vào trang web của bạn. Bạn có thể giới hạn những trang web nào được hiển thị biểu mẫu."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/embed-a-form.jpg",
+          "caption": "Nhúng và các trang web được phép cũng nằm trong tab Chia sẻ."
         }
       ]
     },
@@ -824,6 +956,12 @@
         {
           "type": "p",
           "text": "Một biểu mẫu có ngôn ngữ chính và có thể cung cấp thêm ngôn ngữ khác. Trong trình tạo, mở cài đặt biểu mẫu, thêm ngôn ngữ ở mục **Ngôn ngữ khác** và dịch từng văn bản cạnh nhau."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/form-languages.jpg",
+          "caption": "Cài đặt biểu mẫu trong trình tạo, nơi bạn thêm ngôn ngữ."
         },
         {
           "type": "tip",
@@ -853,6 +991,12 @@
         {
           "type": "p",
           "text": "**Phản hồi** liệt kê các biểu mẫu của bạn cùng phản hồi của chúng. Mở một biểu mẫu để xem phản hồi dạng bảng hoặc thẻ; mở một phản hồi để xem mọi câu trả lời trong một bảng bên."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/responses-basics.jpg",
+          "caption": "Phản hồi của một biểu mẫu, với các thẻ ở trên và danh sách bên dưới."
         },
         {
           "type": "list",
@@ -893,6 +1037,12 @@
           "text": "Mỗi phản hồi có một trạng thái: **Mới**, **Đã xem**, **Đã duyệt** hoặc **Bị từ chối**. Đổi bằng một cú nhấp ở đầu bảng phản hồi."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/review-responses.jpg",
+          "caption": "Một phản hồi mở trong bảng bên: thanh trạng thái ở trên, thẻ và ghi chú bên dưới."
+        },
+        {
           "type": "p",
           "text": "Thêm thẻ và ghi chú để theo dõi. Sửa câu trả lời là một quyền riêng, nên vai trò của bạn có thể được xem xét mà không được sửa những gì người ta đã viết."
         }
@@ -920,6 +1070,12 @@
         {
           "type": "p",
           "text": "Nhấn **Xuất** ở phần phản hồi của một biểu mẫu, chọn định dạng và nội dung cần đưa vào. Các bản xuất lớn được chuẩn bị ở nền; bạn xem tiến độ trong **Xuất dữ liệu** và nhận thông báo khi tệp sẵn sàng."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/export-responses.jpg",
+          "caption": "Xuất dữ liệu: các tệp đang chuẩn bị và sẵn sàng tải xuống."
         }
       ]
     },
@@ -946,6 +1102,12 @@
         {
           "type": "p",
           "text": "**Phân tích** cho biết có bao nhiêu người đã mở, bắt đầu và hoàn thành từng biểu mẫu, mất bao lâu và người ta dừng ở đâu. Mở một biểu mẫu để xem từng trang và câu hỏi."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/analytics.jpg",
+          "caption": "Phân tích: lượt xem, lượt bắt đầu, lượt hoàn thành và nơi mọi người dừng lại."
         },
         {
           "type": "tip",
@@ -976,6 +1138,12 @@
         {
           "type": "p",
           "text": "**Danh sách tùy chọn** chứa các lựa chọn bạn dùng trong nhiều biểu mẫu, ví dụ phòng ban, sản phẩm hay quốc gia. Sửa danh sách một lần và mọi biểu mẫu dùng nó đều thay đổi theo."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/lists-basics.jpg",
+          "caption": "Danh sách tùy chọn: các danh sách lựa chọn dùng trong nhiều biểu mẫu."
         },
         {
           "type": "p",
@@ -1012,6 +1180,12 @@
           "text": "**Nguồn dữ liệu** kết nối Formalie với cơ sở dữ liệu của riêng bạn. Khi đó phản hồi cũng có thể được lưu ở đó, trong các bảng do Formalie tạo và giữ khớp với biểu mẫu."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/data-sources-basics.jpg",
+          "caption": "Kết nối tới cơ sở dữ liệu của bạn, kèm tình trạng."
+        },
+        {
           "type": "steps",
           "items": [
             "Open **Data sources** from the rail and click **Add connection**.",
@@ -1046,6 +1220,12 @@
         {
           "type": "p",
           "text": "**Trình duyệt CSDL** hiển thị các bảng của một kết nối và các hàng của chúng. **Trình soạn truy vấn** chạy SQL; các câu lệnh làm thay đổi dữ liệu cần quyền riêng và sẽ hỏi trước."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/database-explorer.jpg",
+          "caption": "Trình duyệt CSDL: chọn một bảng trong mục Bảng để xem các dòng và cấu trúc của bảng."
         }
       ]
     },
@@ -1071,6 +1251,12 @@
         {
           "type": "p",
           "text": "**Dịch vụ API** cung cấp cho hệ thống khác các endpoint riêng: đọc phản hồi, gửi phản hồi mới hoặc tra cứu các mục trong danh sách. Mỗi dịch vụ gom các endpoint lại và có trang tài liệu riêng."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/api-basics.jpg",
+          "caption": "Dịch vụ API, mỗi dịch vụ có endpoint và tài liệu."
         },
         {
           "type": "steps",
@@ -1106,6 +1292,12 @@
           "text": "Mỗi hệ thống gọi API của bạn nhận một **token**. Token có thể hết hạn và bị thu hồi bất cứ lúc nào. **Quy tắc truy cập** giới hạn địa chỉ, thời gian và số lần gọi được phép."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/api-tokens.jpg",
+          "caption": "Token & header: các khóa hệ thống dùng để gọi API của bạn."
+        },
+        {
           "type": "warning",
           "text": "Token chỉ hiện một lần. Hãy cất ở nơi an toàn và đừng bao giờ đặt nó vào một trang web công khai."
         }
@@ -1131,6 +1323,12 @@
         {
           "type": "p",
           "text": "Webhook gửi một thông điệp đến địa chỉ của hệ thống khác khi có việc xảy ra, ví dụ một phản hồi mới. Formalie thử lại các lần gửi thất bại và hiển thị từng lần gửi để bạn thấy đã gửi gì."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/webhooks.jpg",
+          "caption": "Webhook và các lần gửi của chúng."
         }
       ]
     },
@@ -1159,6 +1357,12 @@
         {
           "type": "p",
           "text": "Mỗi người có một vai trò. Owner làm được mọi việc; Admin và Member có sẵn để dùng và có thể thay đổi; bạn cũng có thể thêm vai trò riêng."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/roles-and-access.jpg",
+          "caption": "Vai trò & quyền truy cập: từng vai trò và ai nắm giữ."
         },
         {
           "type": "p",
@@ -1191,6 +1395,12 @@
         {
           "type": "p",
           "text": "Liên kết đăng ký cho phép mọi người tự tạo tài khoản. Bạn có thể giới hạn cho các địa chỉ email của tổ chức. Tài khoản của họ chờ ở **Chờ phê duyệt** cho đến khi quản trị viên phê duyệt và gán vai trò."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/sign-up-links.jpg",
+          "caption": "Liên kết đăng ký nằm trên cùng của Mọi người; các yêu cầu chờ ở Chờ phê duyệt."
         }
       ]
     },
@@ -1215,6 +1425,12 @@
         {
           "type": "p",
           "text": "Mở hồ sơ từ tên của bạn ở cuối menu. Đổi ảnh, tên, ngôn ngữ, múi giờ và định dạng ngày, mật khẩu và đăng nhập hai bước, và xem bạn đang đăng nhập ở những đâu."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/your-profile.jpg",
+          "caption": "Hồ sơ của bạn: ảnh, tên, ngôn ngữ, mật khẩu và đăng nhập."
         }
       ]
     },
@@ -1240,6 +1456,12 @@
         {
           "type": "p",
           "text": "Đăng nhập hai bước yêu cầu một mã sau mật khẩu. Hãy thiết lập ứng dụng xác thực trong hồ sơ để an toàn nhất, và cất mã khôi phục ở nơi an toàn."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/two-step-sign-in.jpg",
+          "caption": "Đăng nhập hai bước được thiết lập trong hồ sơ của bạn."
         }
       ]
     },
@@ -1265,6 +1487,12 @@
         {
           "type": "p",
           "text": "**Cài đặt** chứa những gì áp dụng cho cả không gian làm việc: thông tin công ty, thương hiệu, ngôn ngữ và khu vực, giao diện, đăng nhập, bảo mật, thông báo, mẫu email, quyền riêng tư và mặc định của biểu mẫu."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/workspace-settings.jpg",
+          "caption": "Cài đặt: mọi thứ áp dụng cho cả không gian làm việc."
         },
         {
           "type": "show",
@@ -1297,6 +1525,12 @@
           "text": "Trong **Cài đặt → Bảo mật**, quản trị viên đặt quy tắc mật khẩu, bắt buộc đăng nhập hai bước, quyết định người dùng được giữ đăng nhập bao lâu và, nếu cần, chỉ cho đăng nhập từ mạng của bạn."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/security-settings.jpg",
+          "caption": "Cài đặt → Bảo mật."
+        },
+        {
           "type": "warning",
           "text": "Trước khi giới hạn mạng, hãy thêm địa chỉ của chính bạn, nếu không bạn có thể bị khóa bên ngoài."
         }
@@ -1322,6 +1556,12 @@
         {
           "type": "p",
           "text": "**Mặc định của biểu mẫu** đặt giao diện, thanh tiến độ, nhãn, lời cảm ơn và email mà mọi biểu mẫu mới có sẵn khi bắt đầu. Các biểu mẫu bạn đã có không thay đổi."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/form-defaults.jpg",
+          "caption": "Cài đặt → Mặc định của biểu mẫu."
         }
       ]
     },
@@ -1346,6 +1586,12 @@
         {
           "type": "p",
           "text": "**Nhật ký kiểm tra** ghi lại mọi hành động trong không gian làm việc: đăng nhập, thay đổi biểu mẫu, phản hồi, cài đặt, con người và nhiều hơn nữa, cùng với ai làm, khi nào và từ đâu."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/audit-trail.jpg",
+          "caption": "Nhật ký kiểm tra: ai làm gì, khi nào và từ đâu."
         },
         {
           "type": "p",
@@ -1383,6 +1629,12 @@
           "text": "Trợ lý AI tạo biểu mẫu và mẫu, hỗ trợ trong trình tạo, phân tích phản hồi và dịch thuật. Nó luôn **đề xuất**: không có gì được tạo, thay đổi hay gửi đi cho đến khi bạn đồng ý."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-overview.jpg",
+          "caption": "Tổng quan trợ lý AI: tín dụng, những gì nó làm được và các yêu cầu gần đây."
+        },
+        {
           "type": "list",
           "items": [
             "Every request is kept in **History** with what came back.",
@@ -1415,6 +1667,12 @@
       "title": "Tạo biểu mẫu với trợ lý",
       "summary": "Mô tả, kiểm tra bản nháp, rồi tạo.",
       "blocks": [
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-create-form.jpg",
+          "caption": "Tạo biểu mẫu: hãy mô tả biểu mẫu hoặc bắt đầu từ một ví dụ, rồi chọn Tạo."
+        },
         {
           "type": "steps",
           "items": [
@@ -1454,6 +1712,12 @@
           "text": "Trong **Phân tích phản hồi**, chọn một biểu mẫu và một khoảng thời gian. Trợ lý tìm ra các câu trả lời viết nói về điều gì, sắc thái của chúng, và các đánh giá cùng lựa chọn đã thay đổi ra sao."
         },
         {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-analysis.jpg",
+          "caption": "Phân tích phản hồi: chọn biểu mẫu và khoảng thời gian, rồi đặt câu hỏi bên dưới."
+        },
+        {
           "type": "p",
           "text": "Hãy hỏi bằng lời đơn giản, như “Tháng trước có bao nhiêu phản hồi?”. Câu trả lời luôn cho thấy những gì đã được đếm."
         }
@@ -1479,6 +1743,12 @@
         {
           "type": "p",
           "text": "**Bản dịch** dịch một biểu mẫu sang bất kỳ ngôn ngữ nào trong 20 ngôn ngữ; bạn kiểm tra từng văn bản cạnh nhau trước khi lưu. **Viết lại** gợi ý cách diễn đạt đơn giản hơn theo sắc thái bạn chọn và cho thấy độ tuổi đọc hiểu trước và sau."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-translate.jpg",
+          "caption": "Bản dịch: chọn biểu mẫu và ngôn ngữ, rồi kiểm tra từng văn bản cạnh nhau."
         }
       ]
     },
@@ -1502,6 +1772,12 @@
         {
           "type": "p",
           "text": "Quản trị viên bật hoặc tắt trợ lý, chọn những gì nó được đọc (biểu mẫu, phản hồi, nguồn dữ liệu), loại bỏ dữ liệu cá nhân và chọn thời gian lưu các yêu cầu. Trợ lý không bao giờ huấn luyện bằng dữ liệu của bạn."
+        },
+        {
+          "type": "media",
+          "kind": "image",
+          "src": "/help/screens/ai-settings.jpg",
+          "caption": "Cài đặt AI: bật hoặc tắt, những gì được đọc, quyền riêng tư và mức sử dụng."
         }
       ]
     }
