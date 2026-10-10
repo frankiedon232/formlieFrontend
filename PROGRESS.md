@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-10 (owner re-ordered what is left: F19 AI, F24 Payments, F21 Dashboard, F25 Help centre, real backend, then F23 Platform admin as a separate project; next: F19) later; stop for owner review)
+**Last updated:** 2026-10-10 (owner re-ordered what is left: F19 AI, F24 Payments, F21 Dashboard, F25 Help centre, real backend, then F23 Platform admin as a separate project; `SUPER_ADMIN_PLATFORM` folder ready to move out; next: F19)
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend · ➖ dropped or merged
 
@@ -1300,7 +1300,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-09 | User profiles: the organisation profiles its staff (full profile, activation email); a sign-up link (shared or personal) opens a separate sign-up page and the account awaits approval before it is profiled; roles are not fixed: they come from Roles & access (F22) and decide what each account may view, create, edit, delete | F16 rework + F22 brought forward | 🟡 in progress |
 | 2026-10-10 | Granular permissions with scope (None · Own · Shared · Own & shared · All) for every action in Forms, Responses, Templates, Lists, Themes, Landing pages, Folders (incl. folder access that hides forms and responses), Data sources, API service and AI; applied everywhere the action appears; role editor regrouped | F22 R2 | ✅ |
 | 2026-10-10 | Translate the names Formalie provides (built-in roles, default lists and their options); what users type stays as typed | i18n | ✅ |
-| 2026-10-10 | Re-order: F19 AI, F24 Payments, F25 Help centre, switch to the real backend, then F23 Platform admin as a separate project (own front end, backend and database, reaches Formalie's database; Google Analytics-like analytics, full management, help content, payments and manual subscription activation, its own staff roles); create the `SUPER_ADMIN_PLATFORM` folder with everything needed to build it | Order, F23 | 🟡 |
+| 2026-10-10 | Re-order: F19 AI, F24 Payments, F25 Help centre, switch to the real backend, then F23 Platform admin as a separate project (own front end, backend and database, reaches Formalie's database; Google Analytics-like analytics, full management, help content, payments and manual subscription activation, its own staff roles); create the `SUPER_ADMIN_PLATFORM` folder with everything needed to build it | Order, F23 | ✅ folder ready, owner moves it out |
 
 ---
 
@@ -1573,3 +1573,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-10 | F22 R2 | Milestone 4: Data sources (connections own · all, explorer browse / rows / tables / export, read vs changing queries, saved queries, response storage), API service (services own · all, endpoints, try, tokens, workspace key, access rules, log settings, webhooks) and AI (use plus each part) split from view / query / manage; every page, menu, panel, switch and shortcut in both areas follows it; menus and search drop what the role can't open; saved roles converted with the same effect. Fixed on the way: exports couldn't be polled or downloaded with export rights, saving a query needed manage, changing statements had no permission of their own, Activity needed the audit trail, test / try / reveal needed manage. Browser-checked as Lena with see + browse only |
 | 2026-10-10 | i18n | Owner: names Formalie provides follow the viewer's language, what workspaces type stays as typed. Built-in roles (Owner, Admin, Member, while not renamed) and their descriptions translated everywhere they show (roles table, grid, editor, people table and cards, panels, pickers, filters, account menu, profile, join page, folder access); Formalie's default lists: name, description, level labels, and their options in all 20 languages (seeded and filled once for existing workspaces) |
 | 2026-10-10 | Plan | Owner re-ordered what is left: F19, F24, F25, real backend, then F23 Platform admin as a separate project (own repo, front end, FastAPI backend, database; dev `platformadm.formalie.dev:2203`, API `platformapi.formalie.dev:5601`). F21 Dashboard confirmed, after F24 |
+| 2026-10-10 | Plan | `SUPER_ADMIN_PLATFORM` folder complete (README, CLAUDE.md for both projects, 12 docs, PROGRESS P0 to P14, design references, dev docker compose, production Nginx sketch); kept out of this repository, the owner moves it to its own folder |
