@@ -5229,6 +5229,73 @@
       "title": "YZ özeti",
       "run": "Özetle",
       "desc": "Anahtar yanıtlar, ton ve yazılı yanıtların konuları, birkaç satırda."
+    },
+    "translate": {
+      "mode": "Çevir",
+      "languages": "Diller",
+      "pickLanguages": "Dilleri seçin",
+      "run": "Çevir",
+      "cost": "{n} kredi harcar (dil başına 4)",
+      "step": {
+        "read": "Form okunuyor",
+        "translate": "Çevriliyor",
+        "check": "Kalanlar kontrol ediliyor"
+      },
+      "byAssistant": "{n} metni asistan çevirdi | {n} metni asistan çevirdi",
+      "forPerson": "{n} metin size kaldı | {n} metin size kaldı",
+      "reviewHint": "Her birini kontrol edin; istediğiniz metni değiştirebilirsiniz.",
+      "state": {
+        "assistant": "Asistan çevirdi",
+        "existing": "Zaten çevrilmiş",
+        "person": "Bir kişi gerekli"
+      },
+      "typeHere": "Çeviriyi yazın",
+      "htmlInBuilder": "Zengin metin: oluşturucuda çevirin",
+      "toSave": "Kaydedilecek {n} metin | Kaydedilecek {n} metin",
+      "save": "Forma kaydet",
+      "saved": "{n} çeviri kaydedildi | {n} çeviri kaydedildi",
+      "savedHint": "Formun taslağında. Yanıtlayanların görmesi için formu yayınlayın.",
+      "openBuilder": "Oluşturucuda aç",
+      "emptyTitle": "Bir formu çevir",
+      "emptyDesc": "Düzenleyebileceğiniz bir form ve dilleri seçin. Hiçbir şey kaydedilmeden önce her metni yan yana gözden geçirirsiniz.",
+      "fill": "Kalanı yapay zekayla çevir",
+      "filled": "Asistan {n} metni doldurdu | Asistan {n} metni doldurdu",
+      "leftForYou": "Çevirmeniz için {n} metin kaldı. | Çevirmeniz için {n} metin kaldı."
+    },
+    "rewrite": {
+      "mode": "Yeniden yaz",
+      "run": "İfadeyi kontrol et",
+      "englishNote": "Sade sözcükler ve ton İngilizce formlarda çalışır; diğer dillerde uzunluk ve büyük harf kontrolleri yapılır.",
+      "tone": {
+        "plain": "Sade",
+        "friendly": "Samimi",
+        "formal": "Resmi"
+      },
+      "toneLabel": "Ton",
+      "step": {
+        "check": "Her metin kontrol ediliyor",
+        "write": "Daha açık ifadeler öneriliyor"
+      },
+      "readingAge": "Okuma yaşı",
+      "years": "{before} → {after}",
+      "clearer": "Daha açık olabilir",
+      "ofTexts": "{total} metinden {n}",
+      "allClear": "Her metin zaten açık ve seçtiğiniz tonda.",
+      "keep": "Bu öneriyi kullan",
+      "suggestion": "Önerilen ifade",
+      "reason": {
+        "plain_words": "Daha sade sözcükler",
+        "long_sentence": "Daha kısa cümleler",
+        "passive": "Kimin ne yaptığını söyler",
+        "caps": "Bağıran büyük harfler yok",
+        "tone_friendly": "Daha samimi",
+        "tone_formal": "Daha resmi"
+      },
+      "chosen": "{n} değişiklik seçildi | {n} değişiklik seçildi",
+      "save": "Forma kaydet",
+      "saved": "{n} metin yeniden yazıldı | {n} metin yeniden yazıldı",
+      "emptyTitle": "Bir formu okumayı kolaylaştırın",
+      "emptyDesc": "Bir form ve ton seçin. Asistan daha sade ifadeleri yalnızca işe yaradığı yerde önerir; neyi tutacağınızı siz seçersiniz."
     }
   },
   "public": {
@@ -8624,5 +8691,35 @@
         "description": "Form oluşturur ve yayımlar, yanıtlarla çalışır."
       }
     }
+  },
+  "aiContent": {
+    "yourAnswers": "Yanıtlarınız",
+    "aboutYou": "Sizin hakkınızda",
+    "details": "Ayrıntılar",
+    "confirm": "Onayla",
+    "questions": "Sorular",
+    "thankYou": "Teşekkür ederiz!",
+    "sent": "Yanıtlarınız gönderildi.",
+    "anythingElse": "Bize söylemek istediğiniz başka bir şey var mı?",
+    "consentDetails": "Bilgilerimin bu talebi işleme almak için kullanılmasını kabul ediyorum",
+    "helpEmail": "Bunu yalnızca size yanıt vermek için kullanıyoruz.",
+    "helpPhone": "Ülke kodunu ekleyin, örneğin +44 7700 900123.",
+    "helpBirth": "Kimliğinizde göründüğü gibi.",
+    "helpDate": "Tarihi takvimden seçin.",
+    "helpDatetime": "Önce tarihi, sonra saati seçin.",
+    "helpRange": "Önce ilk günü, sonra son günü seçin.",
+    "helpTime": "Bulunduğunuz yerin saatini kullanın.",
+    "helpSignature": "Parmağınızla, fareyle veya kalemle imzalayın.",
+    "helpLong": "Birkaç cümle yeterlidir.",
+    "helpCurrency": "Yalnızca rakam, para birimi işareti olmadan.",
+    "helpNumber": "Yalnızca rakam.",
+    "helpAddress": "Size posta ile ulaşabileceğimiz adres.",
+    "helpChoices": "Uygun olanların hepsini seçin.",
+    "helpRanking": "Sıralamak için sürükleyin, en önemlisi en üstte olsun.",
+    "helpUrl": "https:// ile başlayan tam adres.",
+    "helpReference": "Size gönderdiğimiz mektupta veya e-postada bulabilirsiniz.",
+    "sampleVisit": "Ziyaretiniz",
+    "sampleHow": "Ziyaretiniz nasıldı?",
+    "sampleBetter": "Daha iyi yapabileceğimiz bir şey var mı?"
   }
 }

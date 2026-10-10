@@ -5229,6 +5229,73 @@
       "title": "Resumen de IA",
       "run": "Resumir",
       "desc": "Las respuestas clave, el tono y los temas de las respuestas escritas, en pocas líneas."
+    },
+    "translate": {
+      "mode": "Traducir",
+      "languages": "Idiomas",
+      "pickLanguages": "Elige idiomas",
+      "run": "Traducir",
+      "cost": "Usa {n} créditos (4 por idioma)",
+      "step": {
+        "read": "Leyendo el formulario",
+        "translate": "Traduciendo",
+        "check": "Comprobando lo que falta"
+      },
+      "byAssistant": "{n} traducido por el asistente | {n} traducidos por el asistente",
+      "forPerson": "{n} para ti | {n} para ti",
+      "reviewHint": "Revisa cada uno; puedes cambiar cualquier texto.",
+      "state": {
+        "assistant": "Traducido por el asistente",
+        "existing": "Ya traducido",
+        "person": "Necesita a una persona"
+      },
+      "typeHere": "Escribe la traducción",
+      "htmlInBuilder": "Texto enriquecido: tradúcelo en el constructor",
+      "toSave": "{n} texto por guardar | {n} textos por guardar",
+      "save": "Guardar en el formulario",
+      "saved": "{n} traducción guardada | {n} traducciones guardadas",
+      "savedHint": "Está en el borrador del formulario. Publica el formulario para que lo vean los participantes.",
+      "openBuilder": "Abrir en el constructor",
+      "emptyTitle": "Traducir un formulario",
+      "emptyDesc": "Elige un formulario que puedas editar y los idiomas. Revisas cada texto lado a lado antes de guardar nada.",
+      "fill": "Traducir el resto con IA",
+      "filled": "{n} texto completado por el asistente | {n} textos completados por el asistente",
+      "leftForYou": "{n} por traducir para ti. | {n} por traducir para ti."
+    },
+    "rewrite": {
+      "mode": "Reescribir",
+      "run": "Revisar la redacción",
+      "englishNote": "Las palabras sencillas y el tono funcionan en formularios en inglés; los demás idiomas reciben la revisión de longitud y mayúsculas.",
+      "tone": {
+        "plain": "Sencillo",
+        "friendly": "Cercano",
+        "formal": "Formal"
+      },
+      "toneLabel": "Tono",
+      "step": {
+        "check": "Revisando cada texto",
+        "write": "Sugiriendo una redacción más clara"
+      },
+      "readingAge": "Edad de lectura",
+      "years": "{before} → {after}",
+      "clearer": "Podría ser más claro",
+      "ofTexts": "{n} de {total}",
+      "allClear": "Todos los textos ya son claros y tienen el tono que elegiste.",
+      "keep": "Usar esta sugerencia",
+      "suggestion": "Redacción sugerida",
+      "reason": {
+        "plain_words": "Palabras más sencillas",
+        "long_sentence": "Frases más cortas",
+        "passive": "Dice quién hace qué",
+        "caps": "Sin mayúsculas que gritan",
+        "tone_friendly": "Más cercano",
+        "tone_formal": "Más formal"
+      },
+      "chosen": "{n} cambio elegido | {n} cambios elegidos",
+      "save": "Guardar en el formulario",
+      "saved": "{n} texto reescrito | {n} textos reescritos",
+      "emptyTitle": "Haz un formulario más fácil de leer",
+      "emptyDesc": "Elige un formulario y el tono. El asistente sugiere una redacción más sencilla solo donde ayuda; tú eliges qué conservar."
     }
   },
   "public": {
@@ -8624,5 +8691,35 @@
         "description": "Crea y publica formularios y trabaja con sus respuestas."
       }
     }
+  },
+  "aiContent": {
+    "yourAnswers": "Sus respuestas",
+    "aboutYou": "Sobre usted",
+    "details": "Detalles",
+    "confirm": "Confirmar",
+    "questions": "Preguntas",
+    "thankYou": "¡Gracias!",
+    "sent": "Sus respuestas se han enviado.",
+    "anythingElse": "¿Desea comentarnos algo más?",
+    "consentDetails": "Acepto que mis datos se utilicen para gestionar esta solicitud",
+    "helpEmail": "Solo lo usamos para responderle.",
+    "helpPhone": "Incluya el prefijo del país, por ejemplo +44 7700 900123.",
+    "helpBirth": "Tal como aparece en su documento de identidad.",
+    "helpDate": "Elija la fecha en el calendario.",
+    "helpDatetime": "Elija la fecha y luego la hora.",
+    "helpRange": "Elija el primer día y después el último.",
+    "helpTime": "Use la hora de donde se encuentre.",
+    "helpSignature": "Firme con el dedo, el ratón o un lápiz óptico.",
+    "helpLong": "Con unas pocas frases basta.",
+    "helpCurrency": "Solo números, sin el símbolo de la moneda.",
+    "helpNumber": "Solo números.",
+    "helpAddress": "Donde podamos contactarle por correo postal.",
+    "helpChoices": "Elija todas las que correspondan.",
+    "helpRanking": "Arrastre para ordenarlas, lo más importante primero.",
+    "helpUrl": "La dirección completa, que empieza por https://",
+    "helpReference": "La encontrará en nuestra carta o correo electrónico.",
+    "sampleVisit": "Su visita",
+    "sampleHow": "¿Qué tal fue su visita?",
+    "sampleBetter": "¿Hay algo que podríamos mejorar?"
   }
 }

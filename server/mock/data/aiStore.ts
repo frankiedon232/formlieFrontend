@@ -132,11 +132,11 @@ export const creditsUsed = (tenant: MockTenant) => {
  * Every assistant call starts here: the assistant must be on (FRM-AI-1001), may read what the call needs
  * (FRM-AI-1003) and the month's allowance must cover it (FRM-AI-1002).
  */
-export function requireAi(tenant: MockTenant, kind: AiKind, needs: AiSource[] = []): AiSettings {
+export function requireAi(tenant: MockTenant, kind: AiKind, needs: AiSource[] = [], cost = AI_KIND_META[kind].credits): AiSettings {
   const { settings } = aiOf(tenant)
   if (!settings.enabled) throw new MockError('FRM-AI-1001')
   if (needs.some(source => !settings.sources[source])) throw new MockError('FRM-AI-1003')
-  if (creditsUsed(tenant) + AI_KIND_META[kind].credits > settings.monthly_credits) throw new MockError('FRM-AI-1002')
+  if (creditsUsed(tenant) + cost > settings.monthly_credits) throw new MockError('FRM-AI-1002')
   return settings
 }
 

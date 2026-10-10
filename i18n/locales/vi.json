@@ -5229,6 +5229,73 @@
       "title": "Tóm tắt AI",
       "run": "Tóm tắt",
       "desc": "Các câu trả lời chính, sắc thái và chủ đề của câu trả lời viết tay, trong vài dòng."
+    },
+    "translate": {
+      "mode": "Dịch",
+      "languages": "Ngôn ngữ",
+      "pickLanguages": "Chọn ngôn ngữ",
+      "run": "Dịch",
+      "cost": "Dùng {n} tín dụng (4 mỗi ngôn ngữ)",
+      "step": {
+        "read": "Đang đọc biểu mẫu",
+        "translate": "Đang dịch",
+        "check": "Đang kiểm tra phần còn lại"
+      },
+      "byAssistant": "Trợ lý đã dịch {n} | Trợ lý đã dịch {n}",
+      "forPerson": "Còn {n} cho bạn | Còn {n} cho bạn",
+      "reviewHint": "Hãy kiểm tra từng mục; bạn có thể sửa bất kỳ văn bản nào.",
+      "state": {
+        "assistant": "Do trợ lý dịch",
+        "existing": "Đã dịch sẵn",
+        "person": "Cần một người"
+      },
+      "typeHere": "Nhập bản dịch",
+      "htmlInBuilder": "Văn bản định dạng: hãy dịch trong trình tạo",
+      "toSave": "{n} văn bản cần lưu | {n} văn bản cần lưu",
+      "save": "Lưu vào biểu mẫu",
+      "saved": "Đã lưu {n} bản dịch | Đã lưu {n} bản dịch",
+      "savedHint": "Bản dịch nằm trong bản nháp của biểu mẫu. Hãy xuất bản biểu mẫu để người trả lời thấy.",
+      "openBuilder": "Mở trong trình tạo",
+      "emptyTitle": "Dịch một biểu mẫu",
+      "emptyDesc": "Chọn biểu mẫu bạn có thể sửa và các ngôn ngữ. Bạn xem từng văn bản cạnh nhau trước khi lưu bất cứ thứ gì.",
+      "fill": "Dịch phần còn lại bằng AI",
+      "filled": "Trợ lý đã điền {n} văn bản | Trợ lý đã điền {n} văn bản",
+      "leftForYou": "Còn {n} văn bản để bạn dịch. | Còn {n} văn bản để bạn dịch."
+    },
+    "rewrite": {
+      "mode": "Viết lại",
+      "run": "Kiểm tra cách diễn đạt",
+      "englishNote": "Từ ngữ đơn giản và giọng điệu áp dụng cho biểu mẫu tiếng Anh; các ngôn ngữ khác được kiểm tra độ dài và chữ hoa.",
+      "tone": {
+        "plain": "Đơn giản",
+        "friendly": "Thân thiện",
+        "formal": "Trang trọng"
+      },
+      "toneLabel": "Giọng điệu",
+      "step": {
+        "check": "Đang kiểm tra từng văn bản",
+        "write": "Đang gợi ý cách diễn đạt rõ hơn"
+      },
+      "readingAge": "Độ tuổi đọc",
+      "years": "{before} → {after}",
+      "clearer": "Có thể rõ hơn",
+      "ofTexts": "{n} trên {total}",
+      "allClear": "Mọi văn bản đã rõ ràng và đúng giọng điệu bạn chọn.",
+      "keep": "Dùng gợi ý này",
+      "suggestion": "Cách diễn đạt gợi ý",
+      "reason": {
+        "plain_words": "Từ đơn giản hơn",
+        "long_sentence": "Câu ngắn hơn",
+        "passive": "Nói rõ ai làm gì",
+        "caps": "Không viết hoa như hét",
+        "tone_friendly": "Thân thiện hơn",
+        "tone_formal": "Trang trọng hơn"
+      },
+      "chosen": "Đã chọn {n} thay đổi | Đã chọn {n} thay đổi",
+      "save": "Lưu vào biểu mẫu",
+      "saved": "Đã viết lại {n} văn bản | Đã viết lại {n} văn bản",
+      "emptyTitle": "Giúp biểu mẫu dễ đọc hơn",
+      "emptyDesc": "Chọn biểu mẫu và giọng điệu. Trợ lý chỉ gợi ý cách diễn đạt đơn giản hơn khi có ích; bạn chọn giữ lại gì."
     }
   },
   "public": {
@@ -8624,5 +8691,35 @@
         "description": "Tạo và xuất bản biểu mẫu, làm việc với các phản hồi."
       }
     }
+  },
+  "aiContent": {
+    "yourAnswers": "Câu trả lời của bạn",
+    "aboutYou": "Về bạn",
+    "details": "Chi tiết",
+    "confirm": "Xác nhận",
+    "questions": "Câu hỏi",
+    "thankYou": "Cảm ơn bạn!",
+    "sent": "Câu trả lời của bạn đã được gửi.",
+    "anythingElse": "Bạn có muốn cho chúng tôi biết điều gì khác không?",
+    "consentDetails": "Tôi đồng ý cho sử dụng thông tin của mình để xử lý yêu cầu này",
+    "helpEmail": "Chúng tôi chỉ dùng thông tin này để phản hồi bạn.",
+    "helpPhone": "Hãy ghi kèm mã quốc gia, ví dụ +44 7700 900123.",
+    "helpBirth": "Như trên giấy tờ tùy thân của bạn.",
+    "helpDate": "Chọn ngày từ lịch.",
+    "helpDatetime": "Chọn ngày, rồi chọn giờ.",
+    "helpRange": "Chọn ngày đầu tiên, rồi ngày cuối cùng.",
+    "helpTime": "Dùng giờ tại nơi bạn đang ở.",
+    "helpSignature": "Ký bằng ngón tay, chuột hoặc bút.",
+    "helpLong": "Vài câu là đủ.",
+    "helpCurrency": "Chỉ nhập số, không kèm ký hiệu tiền tệ.",
+    "helpNumber": "Chỉ nhập số.",
+    "helpAddress": "Địa chỉ để chúng tôi liên hệ với bạn qua đường bưu điện.",
+    "helpChoices": "Chọn tất cả những mục phù hợp.",
+    "helpRanking": "Kéo để sắp xếp thứ tự, mục quan trọng nhất ở đầu.",
+    "helpUrl": "Địa chỉ đầy đủ, bắt đầu bằng https://",
+    "helpReference": "Bạn có thể tìm thấy trong thư hoặc email của chúng tôi.",
+    "sampleVisit": "Chuyến thăm của bạn",
+    "sampleHow": "Chuyến thăm của bạn thế nào?",
+    "sampleBetter": "Chúng tôi có thể cải thiện điều gì không?"
   }
 }

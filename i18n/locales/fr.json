@@ -5229,6 +5229,73 @@
       "title": "Résumé IA",
       "run": "Résumer",
       "desc": "Les réponses clés, le ton et les thèmes des réponses écrites, en quelques lignes."
+    },
+    "translate": {
+      "mode": "Traduire",
+      "languages": "Langues",
+      "pickLanguages": "Choisir les langues",
+      "run": "Traduire",
+      "cost": "Utilise {n} crédits (4 par langue)",
+      "step": {
+        "read": "Lecture du formulaire",
+        "translate": "Traduction en cours",
+        "check": "Vérification de ce qui reste"
+      },
+      "byAssistant": "{n} traduit par l’assistant | {n} traduits par l’assistant",
+      "forPerson": "{n} à faire par vous | {n} à faire par vous",
+      "reviewHint": "Vérifiez chaque texte ; vous pouvez tout modifier.",
+      "state": {
+        "assistant": "Traduit par l’assistant",
+        "existing": "Déjà traduit",
+        "person": "À traduire par une personne"
+      },
+      "typeHere": "Saisissez la traduction",
+      "htmlInBuilder": "Texte enrichi : traduisez-le dans le constructeur",
+      "toSave": "{n} texte à enregistrer | {n} textes à enregistrer",
+      "save": "Enregistrer dans le formulaire",
+      "saved": "{n} traduction enregistrée | {n} traductions enregistrées",
+      "savedHint": "Elle est dans le brouillon du formulaire. Publiez le formulaire pour que les répondants la voient.",
+      "openBuilder": "Ouvrir dans le constructeur",
+      "emptyTitle": "Traduire un formulaire",
+      "emptyDesc": "Choisissez un formulaire que vous pouvez modifier et les langues. Vous relisez chaque texte côte à côte avant tout enregistrement.",
+      "fill": "Traduire le reste avec l’IA",
+      "filled": "{n} texte complété par l’assistant | {n} textes complétés par l’assistant",
+      "leftForYou": "{n} à traduire par vous. | {n} à traduire par vous."
+    },
+    "rewrite": {
+      "mode": "Reformuler",
+      "run": "Vérifier la formulation",
+      "englishNote": "Les mots simples et le ton fonctionnent pour les formulaires en anglais ; les autres langues bénéficient des contrôles de longueur et de majuscules.",
+      "tone": {
+        "plain": "Simple",
+        "friendly": "Chaleureux",
+        "formal": "Formel"
+      },
+      "toneLabel": "Ton",
+      "step": {
+        "check": "Vérification de chaque texte",
+        "write": "Proposition d’une formulation plus claire"
+      },
+      "readingAge": "Niveau de lecture",
+      "years": "{before} → {after}",
+      "clearer": "Pourrait être plus clair",
+      "ofTexts": "{n} sur {total}",
+      "allClear": "Chaque texte est déjà clair et dans le ton choisi.",
+      "keep": "Utiliser cette suggestion",
+      "suggestion": "Formulation suggérée",
+      "reason": {
+        "plain_words": "Des mots plus simples",
+        "long_sentence": "Des phrases plus courtes",
+        "passive": "Dit qui fait quoi",
+        "caps": "Pas de majuscules criardes",
+        "tone_friendly": "Plus chaleureux",
+        "tone_formal": "Plus formel"
+      },
+      "chosen": "{n} changement choisi | {n} changements choisis",
+      "save": "Enregistrer dans le formulaire",
+      "saved": "{n} texte reformulé | {n} textes reformulés",
+      "emptyTitle": "Rendre un formulaire plus facile à lire",
+      "emptyDesc": "Choisissez un formulaire et le ton. L’assistant propose des mots plus simples seulement quand c’est utile ; vous choisissez ce qu’il faut garder."
     }
   },
   "public": {
@@ -8624,5 +8691,35 @@
         "description": "Crée et publie des formulaires et travaille avec leurs réponses."
       }
     }
+  },
+  "aiContent": {
+    "yourAnswers": "Vos réponses",
+    "aboutYou": "À propos de vous",
+    "details": "Détails",
+    "confirm": "Confirmer",
+    "questions": "Questions",
+    "thankYou": "Merci !",
+    "sent": "Vos réponses ont été envoyées.",
+    "anythingElse": "Souhaitez-vous nous dire autre chose ?",
+    "consentDetails": "J’accepte que mes données soient utilisées pour traiter cette demande",
+    "helpEmail": "Nous l’utilisons uniquement pour vous répondre.",
+    "helpPhone": "Indiquez l’indicatif du pays, par exemple +44 7700 900123.",
+    "helpBirth": "Tel qu’il figure sur votre pièce d’identité.",
+    "helpDate": "Choisissez la date dans le calendrier.",
+    "helpDatetime": "Choisissez la date, puis l’heure.",
+    "helpRange": "Choisissez le premier jour, puis le dernier.",
+    "helpTime": "Utilisez l’heure de l’endroit où vous êtes.",
+    "helpSignature": "Signez avec le doigt, la souris ou un stylet.",
+    "helpLong": "Quelques phrases suffisent.",
+    "helpCurrency": "Chiffres uniquement, sans le symbole monétaire.",
+    "helpNumber": "Chiffres uniquement.",
+    "helpAddress": "L’adresse où nous pouvons vous écrire par courrier.",
+    "helpChoices": "Cochez tout ce qui convient.",
+    "helpRanking": "Faites glisser pour les classer, le plus important en premier.",
+    "helpUrl": "L’adresse complète, commençant par https://",
+    "helpReference": "Vous la trouverez dans notre lettre ou notre e-mail.",
+    "sampleVisit": "Votre visite",
+    "sampleHow": "Comment s’est passée votre visite ?",
+    "sampleBetter": "Y a-t-il quelque chose que nous pourrions améliorer ?"
   }
 }

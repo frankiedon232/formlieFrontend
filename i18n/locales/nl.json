@@ -5229,6 +5229,73 @@
       "title": "AI-samenvatting",
       "run": "Samenvatten",
       "desc": "De belangrijkste antwoorden, de toon en waar de geschreven antwoorden over gaan, in een paar regels."
+    },
+    "translate": {
+      "mode": "Vertalen",
+      "languages": "Talen",
+      "pickLanguages": "Kies talen",
+      "run": "Vertalen",
+      "cost": "Gebruikt {n} credits (4 per taal)",
+      "step": {
+        "read": "Formulier lezen",
+        "translate": "Vertalen",
+        "check": "Controleren wat er nog is"
+      },
+      "byAssistant": "{n} vertaald door de assistent | {n} vertaald door de assistent",
+      "forPerson": "{n} voor jou over | {n} voor jou over",
+      "reviewHint": "Controleer elk item; je kunt elke tekst aanpassen.",
+      "state": {
+        "assistant": "Vertaald door de assistent",
+        "existing": "Al vertaald",
+        "person": "Heeft een mens nodig"
+      },
+      "typeHere": "Typ de vertaling",
+      "htmlInBuilder": "Opgemaakte tekst: vertaal die in de bouwer",
+      "toSave": "{n} tekst om op te slaan | {n} teksten om op te slaan",
+      "save": "Opslaan in het formulier",
+      "saved": "{n} vertaling opgeslagen | {n} vertalingen opgeslagen",
+      "savedHint": "Het staat in het concept van het formulier. Publiceer het formulier zodat respondenten het zien.",
+      "openBuilder": "Openen in de bouwer",
+      "emptyTitle": "Een formulier vertalen",
+      "emptyDesc": "Kies een formulier dat je kunt bewerken en de talen. Je bekijkt elke tekst naast elkaar voordat er iets wordt opgeslagen.",
+      "fill": "Vertaal de rest met AI",
+      "filled": "{n} tekst ingevuld door de assistent | {n} teksten ingevuld door de assistent",
+      "leftForYou": "{n} voor jou om te vertalen. | {n} voor jou om te vertalen."
+    },
+    "rewrite": {
+      "mode": "Herschrijven",
+      "run": "Controleer de formulering",
+      "englishNote": "Eenvoudige woorden en toon werken voor Engelse formulieren; andere talen krijgen de controles op lengte en hoofdletters.",
+      "tone": {
+        "plain": "Eenvoudig",
+        "friendly": "Vriendelijk",
+        "formal": "Formeel"
+      },
+      "toneLabel": "Toon",
+      "step": {
+        "check": "Elke tekst controleren",
+        "write": "Duidelijkere formulering voorstellen"
+      },
+      "readingAge": "Leesleeftijd",
+      "years": "{before} → {after}",
+      "clearer": "Kan duidelijker",
+      "ofTexts": "{n} van {total}",
+      "allClear": "Elke tekst is al duidelijk en in de gekozen toon.",
+      "keep": "Gebruik deze suggestie",
+      "suggestion": "Voorgestelde formulering",
+      "reason": {
+        "plain_words": "Eenvoudigere woorden",
+        "long_sentence": "Kortere zinnen",
+        "passive": "Zegt wie wat doet",
+        "caps": "Geen schreeuwende hoofdletters",
+        "tone_friendly": "Vriendelijker",
+        "tone_formal": "Formeler"
+      },
+      "chosen": "{n} wijziging gekozen | {n} wijzigingen gekozen",
+      "save": "Opslaan in het formulier",
+      "saved": "{n} tekst herschreven | {n} teksten herschreven",
+      "emptyTitle": "Maak een formulier makkelijker leesbaar",
+      "emptyDesc": "Kies een formulier en de toon. De assistent stelt alleen eenvoudigere formuleringen voor waar dat helpt; jij kiest wat je houdt."
     }
   },
   "public": {
@@ -8624,5 +8691,35 @@
         "description": "Maakt en publiceert formulieren en werkt met de reacties."
       }
     }
+  },
+  "aiContent": {
+    "yourAnswers": "Uw antwoorden",
+    "aboutYou": "Over u",
+    "details": "Details",
+    "confirm": "Bevestigen",
+    "questions": "Vragen",
+    "thankYou": "Hartelijk dank!",
+    "sent": "Uw antwoorden zijn verzonden.",
+    "anythingElse": "Is er nog iets dat u ons wilt vertellen?",
+    "consentDetails": "Ik ga ermee akkoord dat mijn gegevens worden gebruikt om dit verzoek af te handelen",
+    "helpEmail": "We gebruiken dit alleen om u te antwoorden.",
+    "helpPhone": "Voeg de landcode toe, bijvoorbeeld +44 7700 900123.",
+    "helpBirth": "Zoals vermeld op uw identiteitsbewijs.",
+    "helpDate": "Kies de datum in de kalender.",
+    "helpDatetime": "Kies de datum en daarna de tijd.",
+    "helpRange": "Kies de eerste dag en daarna de laatste.",
+    "helpTime": "Gebruik de tijd van uw locatie.",
+    "helpSignature": "Onderteken met uw vinger, muis of pen.",
+    "helpLong": "Een paar zinnen is genoeg.",
+    "helpCurrency": "Alleen cijfers, zonder het valutateken.",
+    "helpNumber": "Alleen cijfers.",
+    "helpAddress": "Waar wij u per post kunnen bereiken.",
+    "helpChoices": "Kies alles wat van toepassing is.",
+    "helpRanking": "Sleep om ze te ordenen, het belangrijkste eerst.",
+    "helpUrl": "Het volledige adres, beginnend met https://",
+    "helpReference": "U vindt het in onze brief of e-mail aan u.",
+    "sampleVisit": "Uw bezoek",
+    "sampleHow": "Hoe was uw bezoek?",
+    "sampleBetter": "Kunnen wij iets beter doen?"
   }
 }

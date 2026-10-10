@@ -5229,6 +5229,73 @@
       "title": "AI summary",
       "run": "Summarise",
       "desc": "The key answers, the tone and what the written answers are about, in a few lines."
+    },
+    "translate": {
+      "mode": "Translate",
+      "languages": "Languages",
+      "pickLanguages": "Choose languages",
+      "run": "Translate",
+      "cost": "Uses {n} credits (4 a language)",
+      "step": {
+        "read": "Reading the form",
+        "translate": "Translating",
+        "check": "Checking what is left"
+      },
+      "byAssistant": "{n} translated by the assistant | {n} translated by the assistant",
+      "forPerson": "{n} left for you | {n} left for you",
+      "reviewHint": "Check each one; you can change any text.",
+      "state": {
+        "assistant": "Translated by the assistant",
+        "existing": "Already translated",
+        "person": "Needs a person"
+      },
+      "typeHere": "Type the translation",
+      "htmlInBuilder": "Rich text: translate it in the builder",
+      "toSave": "{n} text to save | {n} texts to save",
+      "save": "Save to the form",
+      "saved": "{n} translation saved | {n} translations saved",
+      "savedHint": "It is in the form’s draft. Publish the form for respondents to see it.",
+      "openBuilder": "Open in the builder",
+      "emptyTitle": "Translate a form",
+      "emptyDesc": "Choose a form you can edit and the languages. You review every text side by side before anything is saved.",
+      "fill": "Translate the rest with AI",
+      "filled": "{n} text filled in by the assistant | {n} texts filled in by the assistant",
+      "leftForYou": "{n} left for you to translate. | {n} left for you to translate."
+    },
+    "rewrite": {
+      "mode": "Rewrite",
+      "run": "Check the wording",
+      "englishNote": "Plain words and tone work for English forms; other languages get the length and capitals checks.",
+      "tone": {
+        "plain": "Plain",
+        "friendly": "Friendly",
+        "formal": "Formal"
+      },
+      "toneLabel": "Tone",
+      "step": {
+        "check": "Checking every text",
+        "write": "Suggesting clearer wording"
+      },
+      "readingAge": "Reading age",
+      "years": "{before} → {after}",
+      "clearer": "Could be clearer",
+      "ofTexts": "{n} of {total}",
+      "allClear": "Every text is already clear and in the tone you chose.",
+      "keep": "Use this suggestion",
+      "suggestion": "Suggested wording",
+      "reason": {
+        "plain_words": "Plainer words",
+        "long_sentence": "Shorter sentences",
+        "passive": "Says who does what",
+        "caps": "No shouting capitals",
+        "tone_friendly": "Friendlier",
+        "tone_formal": "More formal"
+      },
+      "chosen": "{n} change chosen | {n} changes chosen",
+      "save": "Save to the form",
+      "saved": "{n} text rewritten | {n} texts rewritten",
+      "emptyTitle": "Make a form easier to read",
+      "emptyDesc": "Choose a form and the tone. The assistant suggests plainer wording only where it helps; you choose what to keep."
     }
   },
   "public": {
@@ -8624,5 +8691,35 @@
         "description": "Builds and publishes forms and works with their responses."
       }
     }
+  },
+  "aiContent": {
+    "yourAnswers": "Your answers",
+    "aboutYou": "About you",
+    "details": "Details",
+    "confirm": "Confirm",
+    "questions": "Questions",
+    "thankYou": "Thank you!",
+    "sent": "Your answers have been sent.",
+    "anythingElse": "Anything else you would like to tell us?",
+    "consentDetails": "I agree to my details being used to handle this request",
+    "helpEmail": "We only use this to reply to you.",
+    "helpPhone": "Include the country code, for example +44 7700 900123.",
+    "helpBirth": "As shown on your ID.",
+    "helpDate": "Pick the date from the calendar.",
+    "helpDatetime": "Pick the date, then the time.",
+    "helpRange": "Pick the first day, then the last.",
+    "helpTime": "Use the time where you are.",
+    "helpSignature": "Sign with your finger, mouse or pen.",
+    "helpLong": "A few sentences is enough.",
+    "helpCurrency": "Numbers only, without the currency sign.",
+    "helpNumber": "Numbers only.",
+    "helpAddress": "Where we can reach you by post.",
+    "helpChoices": "Choose all that apply.",
+    "helpRanking": "Drag to put them in order, most important first.",
+    "helpUrl": "The full address, starting with https://",
+    "helpReference": "You can find it on your letter or email from us.",
+    "sampleVisit": "Your visit",
+    "sampleHow": "How was your visit?",
+    "sampleBetter": "Anything we could do better?"
   }
 }

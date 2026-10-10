@@ -224,3 +224,38 @@ export interface AiResponseSummary {
   themes: AiTheme[]
   credits: number
 }
+
+/** One text of a form in a language (F19 M5): the original, what the assistant made (null = left for a person), what the form has now. */
+export interface AiTranslationItem {
+  key: string
+  text: string
+  kind: 'text' | 'long' | 'html'
+  page: string | null
+  translation: string | null
+  existing: string | null
+}
+
+/** POST /ai/forms/{id}/translate */
+export interface AiTranslation {
+  request_id: string
+  form: { id: string; name: string }
+  from: string
+  languages: { code: string; items: AiTranslationItem[]; translated: number; missing: number }[]
+  credits: number
+}
+
+/** Why a text was rewritten (translated in the app: ai.rewrite.reason.<code>). */
+export type AiRewriteReason = 'plain_words' | 'long_sentence' | 'passive' | 'caps' | 'tone_friendly' | 'tone_formal'
+export const AI_TONES = ['plain', 'friendly', 'formal'] as const
+export type AiTone = (typeof AI_TONES)[number]
+
+/** POST /ai/forms/{id}/rewrite: suggestions only for texts that change. */
+export interface AiRewrite {
+  request_id: string
+  form: { id: string; name: string }
+  tone: AiTone
+  items: { key: string; text: string; rewrite: string; reasons: AiRewriteReason[] }[]
+  reading: { before: number; after: number }
+  total: number
+  credits: number
+}

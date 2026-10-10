@@ -5229,6 +5229,73 @@
       "title": "AI 总结",
       "run": "总结",
       "desc": "用几行字呈现关键回答、情绪和文字回答的主题。"
+    },
+    "translate": {
+      "mode": "翻译",
+      "languages": "语言",
+      "pickLanguages": "选择语言",
+      "run": "翻译",
+      "cost": "使用 {n} 个额度（每种语言 4 个）",
+      "step": {
+        "read": "正在读取表单",
+        "translate": "正在翻译",
+        "check": "正在检查剩余内容"
+      },
+      "byAssistant": "助手已翻译 {n} 条 | 助手已翻译 {n} 条",
+      "forPerson": "还剩 {n} 条由你处理 | 还剩 {n} 条由你处理",
+      "reviewHint": "请逐条检查，你可以修改任何文本。",
+      "state": {
+        "assistant": "由助手翻译",
+        "existing": "已翻译",
+        "person": "需要人工处理"
+      },
+      "typeHere": "输入译文",
+      "htmlInBuilder": "富文本：请在构建器中翻译",
+      "toSave": "{n} 条文本待保存 | {n} 条文本待保存",
+      "save": "保存到表单",
+      "saved": "已保存 {n} 条翻译 | 已保存 {n} 条翻译",
+      "savedHint": "译文已在表单草稿中。发布表单后，填写者才能看到。",
+      "openBuilder": "在构建器中打开",
+      "emptyTitle": "翻译表单",
+      "emptyDesc": "选择你可以编辑的表单和语言。保存之前，你可以并排检查每条文本。",
+      "fill": "用 AI 翻译其余内容",
+      "filled": "助手已填写 {n} 条文本 | 助手已填写 {n} 条文本",
+      "leftForYou": "还剩 {n} 条需要你翻译。 | 还剩 {n} 条需要你翻译。"
+    },
+    "rewrite": {
+      "mode": "改写",
+      "run": "检查措辞",
+      "englishNote": "简明用语和语气适用于英文表单；其他语言会检查长度和大写字母。",
+      "tone": {
+        "plain": "简明",
+        "friendly": "友好",
+        "formal": "正式"
+      },
+      "toneLabel": "语气",
+      "step": {
+        "check": "正在检查每条文本",
+        "write": "正在建议更清晰的措辞"
+      },
+      "readingAge": "阅读年龄",
+      "years": "{before} → {after}",
+      "clearer": "可以更清晰",
+      "ofTexts": "共 {total} 条中的 {n} 条",
+      "allClear": "每条文本都已清晰，并符合你选择的语气。",
+      "keep": "使用此建议",
+      "suggestion": "建议的措辞",
+      "reason": {
+        "plain_words": "更简单的词",
+        "long_sentence": "更短的句子",
+        "passive": "说明谁做什么",
+        "caps": "不用大喊式的大写",
+        "tone_friendly": "更友好",
+        "tone_formal": "更正式"
+      },
+      "chosen": "已选择 {n} 处修改 | 已选择 {n} 处修改",
+      "save": "保存到表单",
+      "saved": "已改写 {n} 条文本 | 已改写 {n} 条文本",
+      "emptyTitle": "让表单更易读",
+      "emptyDesc": "选择表单和语气。助手只在有帮助的地方建议更简明的措辞，保留什么由你决定。"
     }
   },
   "public": {
@@ -8624,5 +8691,35 @@
         "description": "创建并发布表单，处理表单的回复。"
       }
     }
+  },
+  "aiContent": {
+    "yourAnswers": "您的回答",
+    "aboutYou": "关于您",
+    "details": "详细信息",
+    "confirm": "确认",
+    "questions": "问题",
+    "thankYou": "谢谢！",
+    "sent": "您的回答已提交。",
+    "anythingElse": "您还有其他想告诉我们的吗？",
+    "consentDetails": "我同意使用我的信息来处理此请求",
+    "helpEmail": "我们仅用此信息回复您。",
+    "helpPhone": "请包含国家或地区代码，例如 +44 7700 900123。",
+    "helpBirth": "与您的身份证件一致。",
+    "helpDate": "请从日历中选择日期。",
+    "helpDatetime": "请先选择日期，再选择时间。",
+    "helpRange": "请先选择第一天，再选择最后一天。",
+    "helpTime": "请使用您所在地的时间。",
+    "helpSignature": "请用手指、鼠标或笔签名。",
+    "helpLong": "几句话就够了。",
+    "helpCurrency": "仅填数字，不含货币符号。",
+    "helpNumber": "仅填数字。",
+    "helpAddress": "我们可以通过邮寄联系到您的地址。",
+    "helpChoices": "请选择所有适用项。",
+    "helpRanking": "拖动以排序，最重要的排在最前。",
+    "helpUrl": "完整网址，以 https:// 开头。",
+    "helpReference": "您可以在我们发给您的信件或邮件中找到。",
+    "sampleVisit": "您的到访",
+    "sampleHow": "您的到访体验如何？",
+    "sampleBetter": "有什么我们可以改进的地方吗？"
   }
 }

@@ -9,6 +9,7 @@
 import type { FormField } from '#shared/utils/forms/build'
 import { formTexts, staleKeys, type FormText } from '#shared/utils/forms/translations'
 import { APP_LOCALES } from '#shared/utils/i18n/locales'
+import type { AiTranslation } from '#shared/types/ai'
 
 const props = defineProps<{ language: string }>()
 const open = defineModel<boolean>('open', { default: false })
@@ -71,6 +72,41 @@ const kindOf = (key: string) => (key.startsWith('page.') ? t('builder.translate.
 const editorField = { id: 'translate', key: 'translate', type: 'rich_text', label: '', width: 12, required: false, props: { toolbar: 'full' } } as FormField
 const plain = (html: string) => html.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim()
 const set = (item: FormText, value: unknown) => translations.set(props.language, item.key, String(value ?? ''), item.text)
+
+// The AI assistant fills what is still to do (F19 M5); every text stays editable and one undo step each
+const { can } = useCan()
+const ai = useAi()
+const session = injectBuilderSession()
+const api = useApi()
+const toast = useToast()
+const { handle } = useErrorHandler()
+watch(open, value => value && can('ai.translate') && void ai.load())
+const canAi = computed(() => can('ai.translate') && ai.enabled.value && !!session)
+const filling = ref(false)
+async function fillWithAi() {
+  if (!schema.value || !session || filling.value) return
+  filling.value = true
+  try {
+    const sent = { ...schema.value, settings: { ...schema.value.settings, title: translations.formTitle.value } }
+    const { data } = await api.post<AiTranslation>(`/ai/forms/${session.formId}/translate`, { languages: [props.language], schema: sent })
+    const items = data.languages[0]?.items ?? []
+    let filled = 0
+    for (const item of items) {
+      const text = texts.value.find(entry => entry.key === item.key)
+      if (!text || !item.translation || (saved.value[item.key]?.trim() && !stale.value.has(item.key))) continue
+      translations.set(props.language, item.key, item.translation, text.text)
+      filled += 1
+    }
+    const left = texts.value.filter(entry => !saved.value[entry.key]?.trim()).length
+    filter.value = 'todo'
+    toast.add({ title: t('ai.translate.filled', { n: filled }, filled), description: left ? t('ai.translate.leftForYou', { n: left }, left) : undefined, color: 'success', icon: 'i-lucide-sparkles' })
+    await api.post(`/ai/requests/${data.request_id}/${filled ? 'apply' : 'discard'}`, filled ? { count: filled } : undefined, { background: true }).catch(() => null)
+  } catch (error) {
+    handle(error)
+  } finally {
+    filling.value = false
+  }
+}
 </script>
 
 <template>
@@ -95,6 +131,7 @@ const set = (item: FormText, value: unknown) => translations.set(props.language,
             :ui="SEGMENTED_UI"
             :aria-label="t('builder.translate.filter')"
           />
+          <UButton v-if="canAi" :label="t('ai.translate.fill')" icon="i-lucide-sparkles" color="neutral" variant="outline" size="sm" :loading="filling" :disabled="done === texts.length && !stale.size" @click="fillWithAi" />
           <UInput v-model="search" icon="i-lucide-search" size="sm" :placeholder="t('common.search')" class="sm:ms-auto sm:w-56" :aria-label="t('common.search')" />
         </div>
 

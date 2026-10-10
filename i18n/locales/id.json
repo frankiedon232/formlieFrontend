@@ -5229,6 +5229,73 @@
       "title": "Ringkasan AI",
       "run": "Ringkas",
       "desc": "Jawaban utama, nada, dan topik jawaban tertulis dalam beberapa baris."
+    },
+    "translate": {
+      "mode": "Terjemahkan",
+      "languages": "Bahasa",
+      "pickLanguages": "Pilih bahasa",
+      "run": "Terjemahkan",
+      "cost": "Memakai {n} kredit (4 per bahasa)",
+      "step": {
+        "read": "Membaca formulir",
+        "translate": "Menerjemahkan",
+        "check": "Memeriksa yang tersisa"
+      },
+      "byAssistant": "{n} diterjemahkan oleh asisten | {n} diterjemahkan oleh asisten",
+      "forPerson": "{n} tersisa untuk Anda | {n} tersisa untuk Anda",
+      "reviewHint": "Periksa satu per satu; Anda bisa mengubah teks apa pun.",
+      "state": {
+        "assistant": "Diterjemahkan oleh asisten",
+        "existing": "Sudah diterjemahkan",
+        "person": "Perlu orang"
+      },
+      "typeHere": "Ketik terjemahan",
+      "htmlInBuilder": "Teks kaya: terjemahkan di pembuat formulir",
+      "toSave": "{n} teks untuk disimpan | {n} teks untuk disimpan",
+      "save": "Simpan ke formulir",
+      "saved": "{n} terjemahan disimpan | {n} terjemahan disimpan",
+      "savedHint": "Terjemahan ada di draf formulir. Terbitkan formulir agar responden bisa melihatnya.",
+      "openBuilder": "Buka di pembuat formulir",
+      "emptyTitle": "Terjemahkan formulir",
+      "emptyDesc": "Pilih formulir yang bisa Anda edit dan bahasanya. Anda memeriksa setiap teks berdampingan sebelum apa pun disimpan.",
+      "fill": "Terjemahkan sisanya dengan AI",
+      "filled": "{n} teks diisi oleh asisten | {n} teks diisi oleh asisten",
+      "leftForYou": "{n} tersisa untuk Anda terjemahkan. | {n} tersisa untuk Anda terjemahkan."
+    },
+    "rewrite": {
+      "mode": "Tulis ulang",
+      "run": "Periksa pilihan kata",
+      "englishNote": "Kata sederhana dan nada berlaku untuk formulir berbahasa Inggris; bahasa lain mendapat pemeriksaan panjang dan huruf kapital.",
+      "tone": {
+        "plain": "Sederhana",
+        "friendly": "Ramah",
+        "formal": "Formal"
+      },
+      "toneLabel": "Nada",
+      "step": {
+        "check": "Memeriksa setiap teks",
+        "write": "Menyarankan kata yang lebih jelas"
+      },
+      "readingAge": "Usia baca",
+      "years": "{before} → {after}",
+      "clearer": "Bisa lebih jelas",
+      "ofTexts": "{n} dari {total}",
+      "allClear": "Setiap teks sudah jelas dan sesuai nada yang Anda pilih.",
+      "keep": "Pakai saran ini",
+      "suggestion": "Saran kata",
+      "reason": {
+        "plain_words": "Kata lebih sederhana",
+        "long_sentence": "Kalimat lebih pendek",
+        "passive": "Menyebut siapa melakukan apa",
+        "caps": "Tanpa huruf kapital yang berteriak",
+        "tone_friendly": "Lebih ramah",
+        "tone_formal": "Lebih formal"
+      },
+      "chosen": "{n} perubahan dipilih | {n} perubahan dipilih",
+      "save": "Simpan ke formulir",
+      "saved": "{n} teks ditulis ulang | {n} teks ditulis ulang",
+      "emptyTitle": "Buat formulir lebih mudah dibaca",
+      "emptyDesc": "Pilih formulir dan nadanya. Asisten menyarankan kata yang lebih sederhana hanya bila membantu; Anda yang memilih apa yang dipakai."
     }
   },
   "public": {
@@ -8624,5 +8691,35 @@
         "description": "Membuat dan menerbitkan formulir serta mengolah tanggapannya."
       }
     }
+  },
+  "aiContent": {
+    "yourAnswers": "Jawaban Anda",
+    "aboutYou": "Tentang Anda",
+    "details": "Detail",
+    "confirm": "Konfirmasi",
+    "questions": "Pertanyaan",
+    "thankYou": "Terima kasih!",
+    "sent": "Jawaban Anda telah terkirim.",
+    "anythingElse": "Adakah hal lain yang ingin Anda sampaikan kepada kami?",
+    "consentDetails": "Saya setuju data saya digunakan untuk memproses permintaan ini",
+    "helpEmail": "Kami hanya menggunakannya untuk membalas Anda.",
+    "helpPhone": "Sertakan kode negara, misalnya +44 7700 900123.",
+    "helpBirth": "Sesuai yang tertera di kartu identitas Anda.",
+    "helpDate": "Pilih tanggal dari kalender.",
+    "helpDatetime": "Pilih tanggal, lalu waktunya.",
+    "helpRange": "Pilih hari pertama, lalu hari terakhir.",
+    "helpTime": "Gunakan waktu di tempat Anda berada.",
+    "helpSignature": "Tanda tangani dengan jari, mouse, atau pena.",
+    "helpLong": "Beberapa kalimat sudah cukup.",
+    "helpCurrency": "Hanya angka, tanpa simbol mata uang.",
+    "helpNumber": "Hanya angka.",
+    "helpAddress": "Alamat tempat kami dapat menghubungi Anda melalui pos.",
+    "helpChoices": "Pilih semua yang sesuai.",
+    "helpRanking": "Seret untuk mengurutkan, yang terpenting di atas.",
+    "helpUrl": "Alamat lengkap, diawali dengan https://",
+    "helpReference": "Anda dapat menemukannya di surat atau email dari kami.",
+    "sampleVisit": "Kunjungan Anda",
+    "sampleHow": "Bagaimana kunjungan Anda?",
+    "sampleBetter": "Adakah yang bisa kami tingkatkan?"
   }
 }

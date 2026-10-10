@@ -5229,6 +5229,73 @@
       "title": "KI-Zusammenfassung",
       "run": "Zusammenfassen",
       "desc": "Die wichtigsten Antworten, die Stimmung und die Themen der Textantworten in wenigen Zeilen."
+    },
+    "translate": {
+      "mode": "Übersetzen",
+      "languages": "Sprachen",
+      "pickLanguages": "Sprachen wählen",
+      "run": "Übersetzen",
+      "cost": "Verbraucht {n} Credits (4 pro Sprache)",
+      "step": {
+        "read": "Formular wird gelesen",
+        "translate": "Wird übersetzt",
+        "check": "Restliches wird geprüft"
+      },
+      "byAssistant": "{n} vom Assistenten übersetzt | {n} vom Assistenten übersetzt",
+      "forPerson": "{n} bleibt für Sie | {n} bleiben für Sie",
+      "reviewHint": "Prüfen Sie jeden Text; Sie können alles ändern.",
+      "state": {
+        "assistant": "Vom Assistenten übersetzt",
+        "existing": "Bereits übersetzt",
+        "person": "Braucht einen Menschen"
+      },
+      "typeHere": "Übersetzung eingeben",
+      "htmlInBuilder": "Formatierter Text: im Builder übersetzen",
+      "toSave": "{n} Text zu speichern | {n} Texte zu speichern",
+      "save": "Im Formular speichern",
+      "saved": "{n} Übersetzung gespeichert | {n} Übersetzungen gespeichert",
+      "savedHint": "Sie steht im Entwurf des Formulars. Veröffentlichen Sie das Formular, damit Teilnehmende sie sehen.",
+      "openBuilder": "Im Builder öffnen",
+      "emptyTitle": "Formular übersetzen",
+      "emptyDesc": "Wählen Sie ein Formular, das Sie bearbeiten können, und die Sprachen. Sie prüfen jeden Text nebeneinander, bevor etwas gespeichert wird.",
+      "fill": "Rest mit KI übersetzen",
+      "filled": "{n} Text vom Assistenten ergänzt | {n} Texte vom Assistenten ergänzt",
+      "leftForYou": "{n} zum Übersetzen für Sie übrig. | {n} zum Übersetzen für Sie übrig."
+    },
+    "rewrite": {
+      "mode": "Umschreiben",
+      "run": "Formulierung prüfen",
+      "englishNote": "Einfache Wörter und Tonfall funktionieren bei englischen Formularen; andere Sprachen erhalten die Prüfung von Länge und Großbuchstaben.",
+      "tone": {
+        "plain": "Schlicht",
+        "friendly": "Freundlich",
+        "formal": "Förmlich"
+      },
+      "toneLabel": "Tonfall",
+      "step": {
+        "check": "Jeder Text wird geprüft",
+        "write": "Klarere Formulierung wird vorgeschlagen"
+      },
+      "readingAge": "Lesealter",
+      "years": "{before} → {after}",
+      "clearer": "Könnte klarer sein",
+      "ofTexts": "{n} von {total}",
+      "allClear": "Jeder Text ist bereits klar und im gewählten Tonfall.",
+      "keep": "Diesen Vorschlag verwenden",
+      "suggestion": "Vorgeschlagene Formulierung",
+      "reason": {
+        "plain_words": "Einfachere Wörter",
+        "long_sentence": "Kürzere Sätze",
+        "passive": "Sagt, wer was tut",
+        "caps": "Keine schreienden Großbuchstaben",
+        "tone_friendly": "Freundlicher",
+        "tone_formal": "Förmlicher"
+      },
+      "chosen": "{n} Änderung gewählt | {n} Änderungen gewählt",
+      "save": "Im Formular speichern",
+      "saved": "{n} Text umgeschrieben | {n} Texte umgeschrieben",
+      "emptyTitle": "Ein Formular leichter lesbar machen",
+      "emptyDesc": "Wählen Sie ein Formular und den Tonfall. Der Assistent schlägt einfachere Formulierungen nur vor, wo es hilft; Sie entscheiden, was bleibt."
     }
   },
   "public": {
@@ -8624,5 +8691,35 @@
         "description": "Erstellt und veröffentlicht Formulare und arbeitet mit deren Antworten."
       }
     }
+  },
+  "aiContent": {
+    "yourAnswers": "Ihre Antworten",
+    "aboutYou": "Über Sie",
+    "details": "Details",
+    "confirm": "Bestätigen",
+    "questions": "Fragen",
+    "thankYou": "Vielen Dank!",
+    "sent": "Ihre Antworten wurden gesendet.",
+    "anythingElse": "Möchten Sie uns sonst noch etwas mitteilen?",
+    "consentDetails": "Ich bin damit einverstanden, dass meine Angaben zur Bearbeitung dieser Anfrage verwendet werden",
+    "helpEmail": "Wir verwenden dies nur, um Ihnen zu antworten.",
+    "helpPhone": "Bitte mit Ländervorwahl, zum Beispiel +44 7700 900123.",
+    "helpBirth": "Wie in Ihrem Ausweis angegeben.",
+    "helpDate": "Wählen Sie das Datum im Kalender aus.",
+    "helpDatetime": "Wählen Sie zuerst das Datum, dann die Uhrzeit.",
+    "helpRange": "Wählen Sie den ersten und dann den letzten Tag.",
+    "helpTime": "Verwenden Sie die Uhrzeit an Ihrem Ort.",
+    "helpSignature": "Unterschreiben Sie mit dem Finger, der Maus oder einem Stift.",
+    "helpLong": "Ein paar Sätze genügen.",
+    "helpCurrency": "Nur Zahlen, ohne Währungszeichen.",
+    "helpNumber": "Nur Zahlen.",
+    "helpAddress": "Wo wir Sie postalisch erreichen können.",
+    "helpChoices": "Wählen Sie alles Zutreffende aus.",
+    "helpRanking": "Ziehen Sie die Einträge in die richtige Reihenfolge, das Wichtigste zuerst.",
+    "helpUrl": "Die vollständige Adresse, beginnend mit https://",
+    "helpReference": "Sie finden sie in unserem Brief oder unserer E-Mail an Sie.",
+    "sampleVisit": "Ihr Besuch",
+    "sampleHow": "Wie war Ihr Besuch?",
+    "sampleBetter": "Können wir etwas besser machen?"
   }
 }

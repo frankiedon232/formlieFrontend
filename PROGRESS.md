@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-10 (F19 AI assistant M1 to M4 done: settings, usage, history; creating; builder help; analysing responses; next: M5 translating and writing)
+**Last updated:** 2026-10-10 (F19 AI assistant M1 to M5 done; next: M6 phase checks: phone, keyboard, RTL, 20 languages, labelling)
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend · ➖ dropped or merged
 
@@ -29,7 +29,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F16   | Users & profiles (Profile + Users)                | ✅     | 100% (owner-approved 2026-10-09)          |
 | F17   | Users (merged into F16)                           | ➖     | -                                         |
 | F18   | Analytics                                         | ✅     | 100% (waiting for review)                 |
-| F19   | AI assistant                                      | 🟡     | ~70% (M1 to M4 done)                      |
+| F19   | AI assistant                                      | 🟡     | ~85% (M1 to M5 done)                      |
 | F20   | Live collaboration (removed)                      | ➖     | -                                         |
 | F21   | Dashboard                                         | ⬜     | 0%                                        |
 | F22   | Roles & access                                    | ✅     | 100% (owner-tested 2026-10-10)            |
@@ -926,7 +926,7 @@ Owner, 2026-10-08: "profiling and users are the same thing". One phase builds th
 
 **How it works until the real backend (decided 2026-10-10):** the mock has its own built-in assistant engine (`server/mock/ai/`), no outside service: it builds forms from Formalie's template catalogue and a dictionary of common questions, finds themes and sentiment in answers with word lists, and translates with Formalie's own translated texts. Same request and answer shapes as the real one (API-CONTRACT → AI assistant), so the screens don't change when the backend's model takes over. The model / provider is a backend decision for the owner (recommendation in docs/03-DECISIONS-AND-NOTES.md).
 
-**Milestones:** **M1** ✅ Foundation (settings, usage, history, overview) · **M2** ✅ Creating (form from a description or a document, template ideas, theme from a brand colour) · **M3** ✅ Builder help · **M4** ✅ Analysing (response analysis, questions in plain words, summaries) · **M5** Translating and writing · **M6** Phase checks (phone, keyboard, RTL, 20 languages).
+**Milestones:** **M1** ✅ Foundation (settings, usage, history, overview) · **M2** ✅ Creating (form from a description or a document, template ideas, theme from a brand colour) · **M3** ✅ Builder help · **M4** ✅ Analysing (response analysis, questions in plain words, summaries) · **M5** ✅ Translating and writing · **M6** Phase checks (phone, keyboard, RTL, 20 languages).
 
 ### 1. Area and navigation
 
@@ -948,8 +948,8 @@ Owner, 2026-10-08: "profiling and users are the same thing". One phase builds th
 
 ### 4. Translating and writing (M5)
 
-- ⬜ Translate a form (labels, options, help, messages) into any of the 20 languages; reviewed side by side before applying
-- ⬜ Rewrite for clarity / tone; plain-language check
+- ✅ Translate a form (labels, options, help, messages) into any of the 20 languages; reviewed side by side before applying (AI → Translations, and "Translate the rest with AI" in the builder's translation screen)
+- ✅ Rewrite for clarity / tone; plain-language check (plain · friendly · formal, reading age before and after, each suggestion kept or not)
 
 ### 5. Control, privacy and cost (M1, checked again in M6)
 
@@ -1582,3 +1582,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-10 | F19 M2 | Creating with the assistant: Create a form (describe it, or paste a document / old form; pages auto / one / several; examples; a draft with the questions in your words, name and email first when it is about people, follow-ups after a yes, totals for quantity × price, pages when long, agreement and signature last, else the closest Formalie template; live preview on desktop / tablet / phone; name and folder, Create form opens the builder; Try again gives another take; Put aside), Template ideas (template with the design of its kind, category, saved to the workspace's templates) and Design from a colour (three designs, calm / bold / minimal, readable buttons, preview on a sample form, saved to Themes); every draft is kept as a request (proposed → applied / put aside) with what it did shown translated; API `/ai/forms|templates|themes/draft`, `/ai/requests/{id}/apply|discard`, `FRM-AI-1004`, audit `ai.applied`; the mock's engine is built in (Formalie's templates and a question dictionary, no outside service); browser-checked as the owner: visitor form created and opened in the builder, a design saved to Themes, a template saved; phone layout fixed |
 | 2026-10-10 | F19 M3 | Builder help: Assistant button in the builder header on Build and Logic (and the full-screen bar and phone menu) for people who may edit the form and use builder help; a side panel with Suggest fields (from the template that matches the form's name, plus email, "anything else" and agreement when personal details are asked), Write help texts (by kind of question), Add logic (details after a yes, "what went wrong" after a low score, "other" after Other) and Check my form (wrong kind of field for email / phone / date / number, duplicates, images without a description, very long questions, nothing required, too few choices, long pages); each suggestion applied or skipped, Apply all, every change one undo step and saved with the draft; the history records how many were taken; API `POST /ai/forms/{id}/assist`; browser-checked: suggestions applied and undone, check and logic on sample forms (a wrong follow-up found in testing and fixed) |
 | 2026-10-10 | F19 M4 | Analysing: Response analysis (a form and a period: responses with the change and per day, tone of written answers as thin lines, what stands out (more or fewer responses, busiest day, ratings up or down, the most criticised and most praised themes), themes with share bars, tone and examples, average ratings against the period before, most chosen answers); Ask about this form in plain words (count, top answers, average, trend per day / week / month; periods like last month, this year, in March, last 30 days; a named answer or review status filters; always shows what was counted); Insights & summaries (digest of the last 7 days, 30 days or 3 months, Copy as text); Summarise in a response's panel (key answers, tone, themes; names and contact details left out). Built-in word lists for themes and tone. Fixed in testing: dates were masked as numbers, a name showed in a summary, a theme was both praised and criticised, "which answer was chosen most" without a question named now uses the first choice question and says so |
+| 2026-10-10 | F19 M5 | Translating and writing: AI → Translations with Translate (a form you may edit and any of the 20 languages; side by side per language, original and translation editable, marked as translated by the assistant / already translated / needs a person; saved into the form's draft, the languages added; a form changed in the meantime is refused) and Rewrite (plain, friendly or formal; only the texts that change, original crossed out and suggestion editable, why (plainer words, shorter sentences, says who does what, no shouting capitals, tone), reading age before and after; chosen ones saved into the draft); the builder's translation screen has "Translate the rest with AI" (fills what is still to do, one undo step each). The mock translates with Formalie's own translations (the portal's interface texts in 20 languages, template content, and the texts the assistant itself writes into forms, added as translations); anything else is left for a person, never guessed; the backend's model translates the rest. Browser-checked: Contact us 2 in French, 19 of 20 texts translated, the typed title left; saved into a test form and seen in its builder; the builder button. Fixed in testing: reading age counted a list of labels as one long sentence |

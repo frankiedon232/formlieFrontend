@@ -5229,6 +5229,73 @@
       "title": "Muhtasari wa AI",
       "run": "Fupisha",
       "desc": "Majibu muhimu, hisia na mada za majibu ya maandishi, kwa mistari michache."
+    },
+    "translate": {
+      "mode": "Tafsiri",
+      "languages": "Lugha",
+      "pickLanguages": "Chagua lugha",
+      "run": "Tafsiri",
+      "cost": "Hutumia mikopo {n} (4 kwa kila lugha)",
+      "step": {
+        "read": "Inasoma fomu",
+        "translate": "Inatafsiri",
+        "check": "Inakagua kilichobaki"
+      },
+      "byAssistant": "Msaidizi ametafsiri {n} | Msaidizi ametafsiri {n}",
+      "forPerson": "{n} imebaki kwako | {n} zimebaki kwako",
+      "reviewHint": "Kagua kila moja; unaweza kubadilisha maandishi yoyote.",
+      "state": {
+        "assistant": "Imetafsiriwa na msaidizi",
+        "existing": "Tayari imetafsiriwa",
+        "person": "Inahitaji mtu"
+      },
+      "typeHere": "Andika tafsiri",
+      "htmlInBuilder": "Maandishi yenye muundo: yatafsiri kwenye kijenzi",
+      "toSave": "Maandishi {n} ya kuhifadhi | Maandishi {n} ya kuhifadhi",
+      "save": "Hifadhi kwenye fomu",
+      "saved": "Tafsiri {n} imehifadhiwa | Tafsiri {n} zimehifadhiwa",
+      "savedHint": "Iko kwenye rasimu ya fomu. Chapisha fomu ili wajibuji waione.",
+      "openBuilder": "Fungua kwenye kijenzi",
+      "emptyTitle": "Tafsiri fomu",
+      "emptyDesc": "Chagua fomu unayoweza kuihariri na lugha. Unakagua kila maandishi kando kwa kando kabla ya kuhifadhi chochote.",
+      "fill": "Tafsiri zilizobaki kwa AI",
+      "filled": "Msaidizi amejaza maandishi {n} | Msaidizi amejaza maandishi {n}",
+      "leftForYou": "{n} zimebaki ili uzitafsiri. | {n} zimebaki ili uzitafsiri."
+    },
+    "rewrite": {
+      "mode": "Andika upya",
+      "run": "Kagua maneno",
+      "englishNote": "Maneno rahisi na toni hufanya kazi kwa fomu za Kiingereza; lugha nyingine hukaguliwa urefu na herufi kubwa.",
+      "tone": {
+        "plain": "Rahisi",
+        "friendly": "Ya kirafiki",
+        "formal": "Rasmi"
+      },
+      "toneLabel": "Toni",
+      "step": {
+        "check": "Inakagua kila maandishi",
+        "write": "Inapendekeza maneno yaliyo wazi zaidi"
+      },
+      "readingAge": "Umri wa kusoma",
+      "years": "{before} → {after}",
+      "clearer": "Inaweza kuwa wazi zaidi",
+      "ofTexts": "{n} kati ya {total}",
+      "allClear": "Kila maandishi tayari ni wazi na yana toni uliyochagua.",
+      "keep": "Tumia pendekezo hili",
+      "suggestion": "Maneno yaliyopendekezwa",
+      "reason": {
+        "plain_words": "Maneno rahisi zaidi",
+        "long_sentence": "Sentensi fupi zaidi",
+        "passive": "Inasema nani anafanya nini",
+        "caps": "Hakuna herufi kubwa za kupiga kelele",
+        "tone_friendly": "Ya kirafiki zaidi",
+        "tone_formal": "Rasmi zaidi"
+      },
+      "chosen": "Badiliko {n} limechaguliwa | Mabadiliko {n} yamechaguliwa",
+      "save": "Hifadhi kwenye fomu",
+      "saved": "Maandishi {n} yameandikwa upya | Maandishi {n} yameandikwa upya",
+      "emptyTitle": "Fanya fomu iwe rahisi kusoma",
+      "emptyDesc": "Chagua fomu na toni. Msaidizi hupendekeza maneno rahisi zaidi pale tu panapofaa; wewe huchagua cha kubakiza."
     }
   },
   "public": {
@@ -8624,5 +8691,35 @@
         "description": "Huunda na kuchapisha fomu na kufanya kazi na majibu yake."
       }
     }
+  },
+  "aiContent": {
+    "yourAnswers": "Majibu yako",
+    "aboutYou": "Kukuhusu",
+    "details": "Maelezo",
+    "confirm": "Thibitisha",
+    "questions": "Maswali",
+    "thankYou": "Asante!",
+    "sent": "Majibu yako yametumwa.",
+    "anythingElse": "Je, kuna jambo lingine ungependa kutuambia?",
+    "consentDetails": "Ninakubali taarifa zangu zitumike kushughulikia ombi hili",
+    "helpEmail": "Tunatumia hii tu kukujibu.",
+    "helpPhone": "Weka msimbo wa nchi, kwa mfano +44 7700 900123.",
+    "helpBirth": "Kama inavyoonekana kwenye kitambulisho chako.",
+    "helpDate": "Chagua tarehe kutoka kalenda.",
+    "helpDatetime": "Chagua tarehe, kisha saa.",
+    "helpRange": "Chagua siku ya kwanza, kisha ya mwisho.",
+    "helpTime": "Tumia saa ya mahali ulipo.",
+    "helpSignature": "Saini kwa kidole, kipanya au kalamu.",
+    "helpLong": "Sentensi chache zinatosha.",
+    "helpCurrency": "Namba tu, bila alama ya sarafu.",
+    "helpNumber": "Namba tu.",
+    "helpAddress": "Mahali tunapoweza kukufikia kwa posta.",
+    "helpChoices": "Chagua zote zinazohusika.",
+    "helpRanking": "Buruta kuzipanga, muhimu zaidi kwanza.",
+    "helpUrl": "Anwani kamili, inayoanza na https://",
+    "helpReference": "Utaipata kwenye barua au barua pepe yetu kwako.",
+    "sampleVisit": "Ziara yako",
+    "sampleHow": "Ziara yako ilikuwaje?",
+    "sampleBetter": "Je, kuna kitu tunachoweza kuboresha?"
   }
 }

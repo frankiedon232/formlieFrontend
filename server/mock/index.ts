@@ -8,6 +8,7 @@ import * as ai from './routes/ai'
 import * as aiCreate from './routes/aiCreate'
 import * as aiAssist from './routes/aiAssist'
 import * as aiAnalyse from './routes/aiAnalyse'
+import * as aiWrite from './routes/aiWrite'
 import * as people from './routes/people'
 import * as invites from './routes/invites'
 import * as peopleManage from './routes/peopleManage'
@@ -223,6 +224,8 @@ const router = createRouter()
   .post('/ai/requests/:id/discard', aiCreate.discardAiRequest)
   .post('/ai/forms/draft', aiCreate.draftFormRoute)
   .post('/ai/forms/:id/assist', aiAssist.assistFormRoute)
+  .post('/ai/forms/:id/translate', aiWrite.translateFormRoute)
+  .post('/ai/forms/:id/rewrite', aiWrite.rewriteFormRoute)
   .post('/ai/analysis', aiAnalyse.analysisRoute)
   .post('/ai/digest', aiAnalyse.digestRoute)
   .post('/ai/ask', aiAnalyse.askRoute)

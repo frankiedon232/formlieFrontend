@@ -30,6 +30,11 @@ import type { MockTenant, MockUser } from '../data/tenants'
 import { createFormFromSchema } from './forms'
 import { addWorkspaceTemplate } from './templates'
 import { addTheme, themeForNewForm } from './themes'
+import { ensureSchema } from './formDraft'
+import { requireAction } from '../data/formPermissions'
+import { formsOf, saveForms } from '../data/formStore'
+import { formTexts, mainLanguage, textHash, walkTexts } from '#shared/utils/forms/translations'
+import { APP_LOCALES } from '#shared/utils/i18n/locales'
 
 /** The assistant takes a moment, as the real one does (the page shows its steps meanwhile). */
 const thinking = () => new Promise(resolve => setTimeout(resolve, 900))
@@ -203,11 +208,48 @@ export const applyAiRequest = defineMockRoute(({ event, body }) => {
     if (!suggestion) throw new MockError('FRM-GEN-1002', [{ field: 'key', message: 'Choose one of the designs.' }])
     const theme = addTheme(event, tenant, user, { name: values.name, tokens: suggestion.tokens as never, source: 'created' })
     result = { target: { type: 'theme', id: theme.id, name: theme.name } }
-  } else if (request.kind === 'builder') {
+  } else if ((request.kind === 'translate' || request.kind === 'rewrite') && body && typeof body === 'object' && !('count' in body)) {
+    // From the AI pages: into the saved draft, unless the form changed since the assistant read it
+    const output = request.output as { form_id: string; row_version: number }
+    const form = formsOf(tenant).forms.find(item => item.id === output.form_id && !item.deleted_at)
+    if (!form) throw new MockError('FRM-GEN-1004')
+    requireAction(form, user, 'edit', tenant)
+    if (form.row_version !== output.row_version) throw new MockError('FRM-GEN-1009')
+    const schema = ensureSchema(form, tenant)
+    const original = new Map(formTexts({ ...schema, settings: { ...schema.settings, title: schema.settings?.title || form.name } }).map(item => [item.key, item.text]))
+    let changed = 0
+    if (request.kind === 'translate') {
+      const values = parseBody(z.object({ translations: z.record(z.string().max(10), z.record(z.string().max(200), z.string().max(50_000))) }), body)
+      const main = mainLanguage(schema)
+      for (const [code, texts] of Object.entries(values.translations)) {
+        if (code === main || !APP_LOCALES.some(locale => locale.code === code)) continue
+        const kept = Object.fromEntries(Object.entries(texts).filter(([key, text]) => original.has(key) && text.trim()))
+        schema.translations = { ...schema.translations, [code]: { ...schema.translations?.[code], ...kept } }
+        schema.translated_from = { ...schema.translated_from, [code]: { ...schema.translated_from?.[code], ...Object.fromEntries(Object.keys(kept).map(key => [key, textHash(original.get(key)!)])) } }
+        schema.settings = { ...schema.settings, languages: [...new Set([...(schema.settings?.languages ?? []), code])] }
+        changed += Object.keys(kept).length
+      }
+    } else {
+      const values = parseBody(z.object({ texts: z.record(z.string().max(200), z.string().trim().min(1).max(50_000)) }), body)
+      walkTexts(schema, (key, text) => {
+        if (key === 'form.title' || values.texts[key] === undefined) return text
+        changed += 1
+        return values.texts[key]!
+      })
+    }
+    form.schema = schema
+    form.has_unpublished_changes = form.status !== 'draft'
+    form.row_version++
+    form.updated_at = new Date().toISOString()
+    saveForms()
+    recordAudit(event, tenant, { action: 'forms.updated', actor: actorOf(user), resource: { type: 'form', id: form.id, name: form.name }, metadata: { change: request.kind === 'translate' ? 'translated_with_ai' : 'rewritten_with_ai', texts: String(changed) } })
+    request.notes = [{ code: 'assist_applied', params: { n: changed, total: changed } }]
+    result = { target: { type: 'form', id: form.id, name: form.name } }
+  } else if (request.kind === 'builder' || request.kind === 'translate' || request.kind === 'rewrite') {
     // The builder made the changes in the form's draft (saved as usual); this records how many were taken
     const values = parseBody(z.object({ count: z.number().int().min(1).max(500) }), body)
     if (!request.target) throw new MockError('FRM-AI-1004')
-    const total = (request.output as { count: number }).count
+    const total = (request.output as { count?: number }).count ?? values.count
     request.result = `${values.count} of ${total} suggestions applied.`
     request.notes = [{ code: 'assist_applied', params: { n: values.count, total } }]
     result = { target: request.target }

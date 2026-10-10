@@ -5229,6 +5229,73 @@
       "title": "AI 요약",
       "run": "요약",
       "desc": "핵심 답변, 어조, 서술형 답변의 주제를 몇 줄로 정리합니다."
+    },
+    "translate": {
+      "mode": "번역",
+      "languages": "언어",
+      "pickLanguages": "언어 선택",
+      "run": "번역",
+      "cost": "{n} 크레딧을 사용합니다 (언어당 4)",
+      "step": {
+        "read": "양식 읽는 중",
+        "translate": "번역 중",
+        "check": "남은 항목 확인 중"
+      },
+      "byAssistant": "도우미가 {n}개 번역 | 도우미가 {n}개 번역",
+      "forPerson": "{n}개가 남았어요 | {n}개가 남았어요",
+      "reviewHint": "하나씩 확인하세요. 어떤 텍스트든 바꿀 수 있어요.",
+      "state": {
+        "assistant": "도우미가 번역함",
+        "existing": "이미 번역됨",
+        "person": "사람의 확인 필요"
+      },
+      "typeHere": "번역을 입력하세요",
+      "htmlInBuilder": "서식 있는 텍스트: 빌더에서 번역하세요",
+      "toSave": "저장할 텍스트 {n}개 | 저장할 텍스트 {n}개",
+      "save": "양식에 저장",
+      "saved": "번역 {n}개 저장됨 | 번역 {n}개 저장됨",
+      "savedHint": "양식 초안에 들어 있어요. 응답자에게 보이려면 양식을 게시하세요.",
+      "openBuilder": "빌더에서 열기",
+      "emptyTitle": "양식 번역",
+      "emptyDesc": "편집할 수 있는 양식과 언어를 선택하세요. 저장하기 전에 모든 텍스트를 나란히 검토해요.",
+      "fill": "나머지를 AI로 번역",
+      "filled": "도우미가 {n}개 채움 | 도우미가 {n}개 채움",
+      "leftForYou": "번역할 텍스트가 {n}개 남았어요. | 번역할 텍스트가 {n}개 남았어요."
+    },
+    "rewrite": {
+      "mode": "다시 쓰기",
+      "run": "표현 확인",
+      "englishNote": "쉬운 단어와 어조는 영어 양식에서 작동해요. 다른 언어는 길이와 대문자를 확인해요.",
+      "tone": {
+        "plain": "쉬운",
+        "friendly": "친근한",
+        "formal": "격식 있는"
+      },
+      "toneLabel": "어조",
+      "step": {
+        "check": "모든 텍스트 확인 중",
+        "write": "더 명확한 표현 제안 중"
+      },
+      "readingAge": "읽기 연령",
+      "years": "{before} → {after}",
+      "clearer": "더 명확하게 할 수 있어요",
+      "ofTexts": "{total}개 중 {n}개",
+      "allClear": "모든 텍스트가 이미 명확하고 선택한 어조예요.",
+      "keep": "이 제안 사용",
+      "suggestion": "제안된 표현",
+      "reason": {
+        "plain_words": "더 쉬운 단어",
+        "long_sentence": "더 짧은 문장",
+        "passive": "누가 무엇을 하는지 밝히기",
+        "caps": "소리 지르는 대문자 없애기",
+        "tone_friendly": "더 친근하게",
+        "tone_formal": "더 격식 있게"
+      },
+      "chosen": "변경 {n}개 선택됨 | 변경 {n}개 선택됨",
+      "save": "양식에 저장",
+      "saved": "텍스트 {n}개 다시 씀 | 텍스트 {n}개 다시 씀",
+      "emptyTitle": "양식을 더 읽기 쉽게",
+      "emptyDesc": "양식과 어조를 선택하세요. 도우미는 도움이 되는 곳에만 더 쉬운 표현을 제안하고, 무엇을 남길지는 직접 정해요."
     }
   },
   "public": {
@@ -8624,5 +8691,35 @@
         "description": "양식을 만들고 게시하며 응답을 다룹니다."
       }
     }
+  },
+  "aiContent": {
+    "yourAnswers": "답변 내용",
+    "aboutYou": "회원님에 대해",
+    "details": "상세 정보",
+    "confirm": "확인",
+    "questions": "질문",
+    "thankYou": "감사합니다!",
+    "sent": "답변이 전송되었습니다.",
+    "anythingElse": "그 밖에 전하실 말씀이 있으신가요?",
+    "consentDetails": "이 요청을 처리하는 데 제 정보가 사용되는 것에 동의합니다",
+    "helpEmail": "회신 용도로만 사용됩니다.",
+    "helpPhone": "국가 번호를 포함해 주세요. 예: +44 7700 900123.",
+    "helpBirth": "신분증에 표시된 대로 입력해 주세요.",
+    "helpDate": "달력에서 날짜를 선택해 주세요.",
+    "helpDatetime": "날짜를 선택한 다음 시간을 선택해 주세요.",
+    "helpRange": "첫째 날을 선택한 다음 마지막 날을 선택해 주세요.",
+    "helpTime": "계신 곳의 시간을 사용해 주세요.",
+    "helpSignature": "손가락, 마우스 또는 펜으로 서명해 주세요.",
+    "helpLong": "몇 문장이면 충분합니다.",
+    "helpCurrency": "통화 기호 없이 숫자만 입력해 주세요.",
+    "helpNumber": "숫자만 입력해 주세요.",
+    "helpAddress": "우편으로 연락드릴 수 있는 주소입니다.",
+    "helpChoices": "해당하는 항목을 모두 선택해 주세요.",
+    "helpRanking": "끌어서 순서를 정해 주세요. 가장 중요한 것이 맨 위입니다.",
+    "helpUrl": "https:// 로 시작하는 전체 주소입니다.",
+    "helpReference": "저희가 보낸 편지나 이메일에서 확인하실 수 있습니다.",
+    "sampleVisit": "방문",
+    "sampleHow": "방문은 어떠셨나요?",
+    "sampleBetter": "개선할 점이 있을까요?"
   }
 }
