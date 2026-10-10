@@ -5,7 +5,7 @@
  * its scope (own · shared · all, F22 R2).
  */
 import type { Grants, Permission, Scope } from '#shared/utils/auth/permissions'
-import { ALL_GRANTS, ALL_PERMISSIONS, BUILT_IN_ROLES, DEFAULT_ROLE_GRANTS, OWNER_ROLE, RESOURCE_CHANGES, RESOURCE_VIEWS, SPLIT_PERMISSIONS, grantsFromList, withNeeds } from '#shared/utils/auth/permissions'
+import { ALL_GRANTS, ALL_PERMISSIONS, BUILT_IN_ROLE_TEXT, BUILT_IN_ROLES, DEFAULT_ROLE_GRANTS, OWNER_ROLE, RESOURCE_CHANGES, RESOURCE_VIEWS, SPLIT_PERMISSIONS, grantsFromList, withNeeds } from '#shared/utils/auth/permissions'
 import { loadPersisted, savePersisted } from '../core/persist'
 import { MOCK_TENANTS, type MockTenant, type MockUser } from './tenants'
 
@@ -77,12 +77,8 @@ for (const role of [...stores.values()].flat() as (StoredRole & { grants: Record
   }
 if (migrated) saveRoles()
 
-const NAMES = { owner: 'Owner', admin: 'Admin', member: 'Member' } as const
-const DESCRIPTIONS = {
-  owner: "Everything, including roles and the workspace itself. It can't be changed.",
-  admin: 'Manages people, forms, data, the API service and settings.',
-  member: 'Builds and publishes forms and works with their responses.',
-} as const
+const NAMES = { owner: BUILT_IN_ROLE_TEXT.owner.name, admin: BUILT_IN_ROLE_TEXT.admin.name, member: BUILT_IN_ROLE_TEXT.member.name } as const
+const DESCRIPTIONS = { owner: BUILT_IN_ROLE_TEXT.owner.description, admin: BUILT_IN_ROLE_TEXT.admin.description, member: BUILT_IN_ROLE_TEXT.member.description } as const
 
 export function rolesOf(tenant: MockTenant): StoredRole[] {
   let list = stores.get(tenant.id)

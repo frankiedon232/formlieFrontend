@@ -9,6 +9,7 @@ import type { FormField } from '#shared/utils/forms/build'
 
 const props = defineProps<{ field: FormField }>()
 const { t } = useI18n()
+const { listName } = useBuiltInNames()
 const { number } = useFormat()
 const builder = useBuilder()
 const pasteOpen = ref(false)
@@ -90,7 +91,7 @@ function setScore(index: number, raw: string | number) {
 // Option lists: fill from a saved list, or save these options as one.
 const library = useFieldLibrary()
 onMounted(() => library.load())
-const listItems = computed(() => library.lists.value.map(l => ({ value: l.id, label: l.name, icon: 'i-lucide-list' })))
+const listItems = computed(() => library.lists.value.map(l => ({ value: l.id, label: listName(l), icon: 'i-lucide-list' })))
 function useList(id: string) {
   const list = library.lists.value.find(l => l.id === id)
   if (list) builder.updateField(props.field.id, { options: offeredOptions(toRaw(list)), option_set_id: list.id })

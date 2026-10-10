@@ -2883,7 +2883,30 @@
     "openInListOption": "Openen in Optielijst",
     "readOnly": "U kunt deze lijst bekijken",
     "readOnlySystem": "Dit is een lijst van Formalie. Gebruik hem in formulieren of dupliceer hem voor uw eigen lijst.",
-    "readOnlyRole": "Uw rol staat niet toe dat u deze lijst wijzigt."
+    "readOnlyRole": "Uw rol staat niet toe dat u deze lijst wijzigt.",
+    "defaultList": {
+      "lst_priority": {
+        "name": "Prioriteit"
+      },
+      "lst_departments": {
+        "name": "Afdelingen"
+      },
+      "lst_weekdays": {
+        "name": "Dagen van de week"
+      },
+      "lst_satisfaction": {
+        "name": "Tevredenheid"
+      },
+      "lst_places": {
+        "name": "Plaatsen",
+        "description": "Land, regio en plaats"
+      }
+    },
+    "defaultLevel": {
+      "country": "Land",
+      "region": "Regio",
+      "city": "Plaats"
+    }
   },
   "designer": {
     "crumb": "Ontwerp",
@@ -8136,6 +8159,20 @@
       "ai_translate": "Vertalen",
       "ai_history": "De geschiedenis bekijken",
       "ai_settings": "Instellingen en gebruik"
+    },
+    "builtInRole": {
+      "owner": {
+        "name": "Eigenaar",
+        "description": "Alles, inclusief rollen en de werkruimte zelf. Kan niet worden gewijzigd."
+      },
+      "admin": {
+        "name": "Beheerder",
+        "description": "Beheert mensen, formulieren, gegevens, de API-service en instellingen."
+      },
+      "member": {
+        "name": "Lid",
+        "description": "Maakt en publiceert formulieren en werkt met de reacties."
+      }
     }
   }
 }

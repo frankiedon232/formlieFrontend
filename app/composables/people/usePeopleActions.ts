@@ -10,6 +10,7 @@ import type { PersonRow } from '#shared/types/people'
 
 export function usePeopleActions(done: () => unknown) {
   const { t } = useI18n()
+const { roleName } = useBuiltInNames()
   const api = useApi()
   const toast = useToast()
   const confirm = useConfirm()
@@ -126,7 +127,7 @@ export function usePeopleActions(done: () => unknown) {
   const { roles, refresh: loadRoles } = useRoles()
   void loadRoles()
   const roleItems = (pick: (role: WorkspaceRole) => void): DropdownMenuItem[] =>
-    roles.value.filter(role => role.id !== 'owner' || iAmOwner.value).map(role => ({ label: role.name, icon: role.id === 'owner' ? 'i-lucide-crown' : 'i-lucide-shield', onSelect: () => pick(role.id) }))
+    roles.value.filter(role => role.id !== 'owner' || iAmOwner.value).map(role => ({ label: roleName(role.id, role.name), icon: role.id === 'owner' ? 'i-lucide-crown' : 'i-lucide-shield', onSelect: () => pick(role.id) }))
 
   return { busy, me, iAmOwner, resend, copyLink, revoke, reject, disable, enable, signOut, password, twoStep, bulk, menu, roleItems }
 }

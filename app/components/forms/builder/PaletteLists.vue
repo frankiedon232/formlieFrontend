@@ -14,6 +14,7 @@ import type { OptionList } from '#shared/types/forms'
 const props = defineProps<{ query: string }>()
 const emit = defineEmits<{ added: [] }>()
 const { t } = useI18n()
+const { listName } = useBuiltInNames()
 const { number } = useFormat()
 const builder = useBuilder()
 const library = useFieldLibrary()
@@ -21,7 +22,7 @@ const confirm = useConfirm()
 
 const items = computed(() => {
   const q = props.query.trim().toLowerCase()
-  return library.lists.value.filter(list => !q || list.name.toLowerCase().includes(q))
+  return library.lists.value.filter(list => !q || listName(list).toLowerCase().includes(q) || list.name.toLowerCase().includes(q))
 })
 const editing = ref<OptionList | null>(null)
 const modalOpen = ref(false)
@@ -48,7 +49,7 @@ const clone = (list: OptionList) => {
 
 const busyId = ref<string | null>(null)
 async function remove(list: OptionList) {
-  if (!(await confirm({ title: t('library.deleteListTitle', { name: list.name }), description: t('library.deleteListDesc'), danger: true, confirmLabel: t('library.deleteList') })))
+  if (!(await confirm({ title: t('library.deleteListTitle', { name: listName(list) }), description: t('library.deleteListDesc'), danger: true, confirmLabel: t('library.deleteList') })))
     return
   busyId.value = list.id
   try {
@@ -117,7 +118,7 @@ const menu = (list: OptionList): DropdownMenuItem[][] => [
             @click="add(list)"
           >
             <span class="flex min-w-0 flex-col items-start">
-              <span class="flex max-w-full items-center gap-1.5"><span class="truncate">{{ list.name }}</span><UBadge v-if="levelsOf(list)" :label="t('library.levels', { n: levelsOf(list)!.length })" color="neutral" variant="soft" size="sm" class="shrink-0" /><UBadge v-if="list.large" :label="t('optionSets.large.badge')" color="neutral" variant="outline" size="sm" class="shrink-0" /></span>
+              <span class="flex max-w-full items-center gap-1.5"><span class="truncate">{{ listName(list) }}</span><UBadge v-if="levelsOf(list)" :label="t('library.levels', { n: levelsOf(list)!.length })" color="neutral" variant="soft" size="sm" class="shrink-0" /><UBadge v-if="list.large" :label="t('optionSets.large.badge')" color="neutral" variant="outline" size="sm" class="shrink-0" /></span>
               <span class="max-w-full truncate text-xs font-normal text-muted">{{ kindOf(list) }}</span>
             </span>
           </UButton>
@@ -130,7 +131,7 @@ const menu = (list: OptionList): DropdownMenuItem[][] => [
               square
               data-no-drag
               :class="busyId === list.id ? 'animate-spin' : ''"
-              :aria-label="t('library.listMenu', { name: list.name })"
+              :aria-label="t('library.listMenu', { name: listName(list) })"
             />
           </UDropdownMenu>
           </div>

@@ -9,6 +9,7 @@ import type { OptionListInsights } from '#shared/types/forms'
 const props = defineProps<{ insights: OptionListInsights | null; selected?: string | null }>()
 const emit = defineEmits<{ pick: [key: string] }>()
 const { t } = useI18n()
+const { listName } = useBuiltInNames()
 const { number } = useFormat()
 
 const stats = computed(() => (props.insights ? [
@@ -20,7 +21,7 @@ const parts = computed(() => [
   { key: 'unused', label: t('optionSets.state.unused'), count: props.insights?.unused ?? 0, color: 'bg-amber-500' },
   { key: 'retired', label: t('optionSets.state.retired'), count: 0, color: 'bg-(--ui-border-accented)' },
 ].filter(part => part.key !== 'retired'))
-const points = computed(() => (props.insights?.largest ?? []).map(item => ({ label: item.name, value: item.count })))
+const points = computed(() => (props.insights?.largest ?? []).map(item => ({ label: listName(item), value: item.count })))
 </script>
 
 <template>

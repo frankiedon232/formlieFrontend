@@ -2883,7 +2883,30 @@
     "openInListOption": "Ouvrir dans Liste d’options",
     "readOnly": "Vous pouvez consulter cette liste",
     "readOnlySystem": "C'est une liste de Formalie. Utilisez-la dans vos formulaires ou dupliquez-la pour créer la vôtre.",
-    "readOnlyRole": "Votre rôle ne vous permet pas de modifier cette liste."
+    "readOnlyRole": "Votre rôle ne vous permet pas de modifier cette liste.",
+    "defaultList": {
+      "lst_priority": {
+        "name": "Priorité"
+      },
+      "lst_departments": {
+        "name": "Services"
+      },
+      "lst_weekdays": {
+        "name": "Jours de la semaine"
+      },
+      "lst_satisfaction": {
+        "name": "Satisfaction"
+      },
+      "lst_places": {
+        "name": "Lieux",
+        "description": "Pays, région et ville"
+      }
+    },
+    "defaultLevel": {
+      "country": "Pays",
+      "region": "Région",
+      "city": "Ville"
+    }
   },
   "designer": {
     "crumb": "Design",
@@ -8136,6 +8159,20 @@
       "ai_translate": "Traduire",
       "ai_history": "Voir l’historique",
       "ai_settings": "Réglages et utilisation"
+    },
+    "builtInRole": {
+      "owner": {
+        "name": "Propriétaire",
+        "description": "Tout, y compris les rôles et l'espace de travail lui-même. Ne peut pas être modifié."
+      },
+      "admin": {
+        "name": "Administrateur",
+        "description": "Gère les personnes, les formulaires, les données, le service API et les paramètres."
+      },
+      "member": {
+        "name": "Membre",
+        "description": "Crée et publie des formulaires et travaille avec leurs réponses."
+      }
     }
   }
 }

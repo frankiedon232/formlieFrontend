@@ -5,6 +5,7 @@ import type { RoleRow } from '#shared/types/people'
 const open = defineModel<boolean>('open', { default: false })
 const emit = defineEmits<{ created: [role: RoleRow] }>()
 const { t } = useI18n()
+const { roleName } = useBuiltInNames()
 const api = useApi()
 const { handle } = useErrorHandler()
 const state = reactive({ name: '', description: '', copy_of: 'none' })
@@ -18,7 +19,7 @@ watch(open, async value => {
     roles.value = []
   }
 })
-const starts = computed(() => [{ value: 'none', label: t('access.startEmpty') }, ...roles.value.map(role => ({ value: role.id, label: t('access.startCopy', { name: role.name }) }))])
+const starts = computed(() => [{ value: 'none', label: t('access.startEmpty') }, ...roles.value.map(role => ({ value: role.id, label: t('access.startCopy', { name: roleName(role.id, role.name) }) }))])
 const saving = ref(false)
 async function create() {
   if (!state.name.trim() || saving.value) return

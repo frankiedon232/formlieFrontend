@@ -115,6 +115,13 @@ export const isPermission = (value: string): value is Permission => DEFS.has(val
 export const OWNER_ROLE = 'owner'
 export const BUILT_IN_ROLES = ['owner', 'admin', 'member'] as const
 
+/** The built-in roles' names and descriptions as Formalie ships them (English); the app shows them translated while unchanged. */
+export const BUILT_IN_ROLE_TEXT = {
+  owner: { name: 'Owner', description: "Everything, including roles and the workspace itself. It can't be changed." },
+  admin: { name: 'Admin', description: 'Manages people, forms, data, the API service and settings.' },
+  member: { name: 'Member', description: 'Builds and publishes forms and works with their responses.' },
+} as const
+
 /** Everything, everywhere. */
 export const ALL_GRANTS = Object.fromEntries(ALL_PERMISSIONS.map(item => [item, 'all'])) as Grants
 const grant = (list: Permission[], scope: Scope = 'all') => Object.fromEntries(list.map(item => [item, scopesOf(item) ? scope : 'all'])) as Grants

@@ -2883,7 +2883,30 @@
     "openInListOption": "Mở trong Danh sách tùy chọn",
     "readOnly": "Bạn có thể xem danh sách này",
     "readOnlySystem": "Đây là danh sách của Formalie. Dùng trong biểu mẫu, hoặc nhân bản để tạo danh sách riêng.",
-    "readOnlyRole": "Vai trò của bạn không cho phép thay đổi danh sách này."
+    "readOnlyRole": "Vai trò của bạn không cho phép thay đổi danh sách này.",
+    "defaultList": {
+      "lst_priority": {
+        "name": "Mức ưu tiên"
+      },
+      "lst_departments": {
+        "name": "Phòng ban"
+      },
+      "lst_weekdays": {
+        "name": "Các ngày trong tuần"
+      },
+      "lst_satisfaction": {
+        "name": "Mức hài lòng"
+      },
+      "lst_places": {
+        "name": "Địa điểm",
+        "description": "Quốc gia, khu vực và thành phố"
+      }
+    },
+    "defaultLevel": {
+      "country": "Quốc gia",
+      "region": "Khu vực",
+      "city": "Thành phố"
+    }
   },
   "designer": {
     "crumb": "Thiết kế",
@@ -8136,6 +8159,20 @@
       "ai_translate": "Dịch",
       "ai_history": "Xem lịch sử",
       "ai_settings": "Cài đặt và mức dùng"
+    },
+    "builtInRole": {
+      "owner": {
+        "name": "Chủ sở hữu",
+        "description": "Mọi quyền, kể cả vai trò và chính không gian làm việc. Không thể thay đổi."
+      },
+      "admin": {
+        "name": "Quản trị viên",
+        "description": "Quản lý người dùng, biểu mẫu, dữ liệu, dịch vụ API và cài đặt."
+      },
+      "member": {
+        "name": "Thành viên",
+        "description": "Tạo và xuất bản biểu mẫu, làm việc với các phản hồi."
+      }
     }
   }
 }

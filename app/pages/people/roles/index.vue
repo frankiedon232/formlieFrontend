@@ -11,6 +11,7 @@ import { reachOf } from '#shared/utils/auth/permissions'
 
 definePageMeta({ breadcrumb: 'nav.peopleRoles' })
 const { t } = useI18n()
+const { roleName, roleDescription } = useBuiltInNames()
 useHead({ title: () => t('nav.peopleRoles') })
 const api = useApi()
 const route = useRoute()
@@ -114,8 +115,8 @@ const rowActions = (row: RoleRow): DropdownMenuItem[][] => [
     >
       <template #name-cell="{ row }">
         <div class="flex min-w-0 flex-col">
-          <span class="flex items-center gap-1.5 font-medium text-highlighted"><UIcon :name="row.original.id === 'owner' ? 'i-lucide-crown' : 'i-lucide-shield'" class="size-3.5 shrink-0 text-muted" />{{ row.original.name }}</span>
-          <span v-if="row.original.description" class="max-w-80 truncate text-xs text-muted">{{ row.original.description }}</span>
+          <span class="flex items-center gap-1.5 font-medium text-highlighted"><UIcon :name="row.original.id === 'owner' ? 'i-lucide-crown' : 'i-lucide-shield'" class="size-3.5 shrink-0 text-muted" />{{ roleName(row.original.id, row.original.name) }}</span>
+          <span v-if="row.original.description" class="max-w-80 truncate text-xs text-muted">{{ roleDescription(row.original.id, row.original.description) }}</span>
         </div>
       </template>
       <template #people_count-cell="{ row }">

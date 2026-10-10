@@ -12,6 +12,7 @@ const open = defineModel<boolean>('open', { default: false })
 const props = defineProps<{ folder: Pick<FormFolder, 'id' | 'name'> & { access?: FolderAccess | null } }>()
 const emit = defineEmits<{ saved: [] }>()
 const { t } = useI18n()
+const { roleName } = useBuiltInNames()
 const api = useApi()
 const { busy, run } = useBusy()
 
@@ -29,7 +30,7 @@ watch(open, async value => {
 })
 const items = (list: Directory['roles'] | undefined) => (list ?? []).filter(item => !item.archived).map(item => ({ value: item.id, label: item.name, description: item.detail }))
 // Owner always sees every folder, so it isn't offered
-const roles = computed(() => items(directory.value?.roles).filter(item => item.value !== 'owner'))
+const roles = computed(() => items(directory.value?.roles).filter(item => item.value !== 'owner').map(item => ({ ...item, label: roleName(item.value, item.label) })))
 const chosen = computed(() => state.roles.length + state.departments.length + state.people.length)
 
 async function save() {

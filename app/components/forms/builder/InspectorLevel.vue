@@ -10,6 +10,7 @@ import { keptOnServer, matchesList, offeredOptions } from '#shared/utils/forms/o
 
 const props = defineProps<{ field: FormField }>()
 const { t } = useI18n()
+const { listName } = useBuiltInNames()
 const builder = useBuilder()
 const library = useFieldLibrary()
 onMounted(() => library.load())
@@ -41,11 +42,11 @@ function refresh() {
     </ol>
     <p class="text-xs text-muted">
       {{ parent ? t('builder.level.filtered', { n: (field.option_level ?? 0) + 1, total: chain.length, parent: parent.label || t('builder.untitled') }) : t('builder.level.top', { total: chain.length }) }}
-      {{ t('builder.level.fromList', { name: list?.name ?? t('builder.level.deletedList') }) }}
+      {{ t('builder.level.fromList', { name: list ? listName(list) : t('builder.level.deletedList') }) }}
     </p>
     <FormsBuilderInspectorLarge v-if="field.options_large" :field="field" />
     <USwitch :model-value="several" :label="t('builder.level.several')" :description="t('builder.level.severalHint')" color="neutral" @update:model-value="value => setSeveral(!!value)" />
-    <UAlert v-if="changed && list" color="warning" variant="subtle" icon="i-lucide-refresh-ccw" :title="t('library.listChanged', { name: list.name })" :actions="[{ label: t('library.updateFromList'), color: 'neutral', variant: 'outline', size: 'xs', onClick: refresh }]" :ui="{ title: 'text-xs' }" />
+    <UAlert v-if="changed && list" color="warning" variant="subtle" icon="i-lucide-refresh-ccw" :title="t('library.listChanged', { name: listName(list) })" :actions="[{ label: t('library.updateFromList'), color: 'neutral', variant: 'outline', size: 'xs', onClick: refresh }]" :ui="{ title: 'text-xs' }" />
     <UButton :label="t('builder.level.editList')" icon="i-lucide-external-link" color="neutral" variant="link" size="xs" class="w-fit px-0" :to="list ? `/option-sets/${list.id}` : undefined" :disabled="!list" target="_blank" />
     <FormsBuilderInspectorSearch :field="field" />
   </section>

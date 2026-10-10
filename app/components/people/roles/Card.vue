@@ -10,6 +10,7 @@ import { ALL_GRANTS, areasOf } from '#shared/utils/auth/permissions'
 
 const props = defineProps<{ role: RoleRow; reach: number; actions: DropdownMenuItem[][]; busy?: boolean }>()
 const { t } = useI18n()
+const { roleName, roleDescription } = useBuiltInNames()
 const { relative, number, percent } = useFormat()
 const areas = computed(() => areasOf(props.role.id === 'owner' ? ALL_GRANTS : props.role.grants))
 </script>
@@ -26,8 +27,8 @@ const areas = computed(() => areasOf(props.role.id === 'owner' ? ALL_GRANTS : pr
       </div>
     </div>
     <div class="flex min-w-0 flex-col gap-0.5">
-      <span class="flex items-center gap-1.5 truncate font-semibold text-highlighted"><UIcon :name="role.id === 'owner' ? 'i-lucide-crown' : 'i-lucide-shield'" class="size-3.5 shrink-0 text-muted" />{{ role.name }}</span>
-      <span class="line-clamp-1 text-xs text-muted">{{ role.description || t('optionSets.noDescription') }}</span>
+      <span class="flex items-center gap-1.5 truncate font-semibold text-highlighted"><UIcon :name="role.id === 'owner' ? 'i-lucide-crown' : 'i-lucide-shield'" class="size-3.5 shrink-0 text-muted" />{{ roleName(role.id, role.name) }}</span>
+      <span class="line-clamp-1 text-xs text-muted">{{ roleDescription(role.id, role.description) || t('optionSets.noDescription') }}</span>
     </div>
     <dl class="grid grid-cols-2 gap-2 text-xs">
       <div class="flex min-w-0 flex-col"><dt class="text-muted">{{ t('access.col.people') }}</dt><dd class="font-medium text-highlighted tabular-nums">{{ t('access.peopleCount', { n: number(role.people_count) }, role.people_count) }}</dd></div>

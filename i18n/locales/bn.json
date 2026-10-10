@@ -2883,7 +2883,30 @@
     "openInListOption": "বিকল্প তালিকায় খুলুন",
     "readOnly": "আপনি এই তালিকা দেখতে পারেন",
     "readOnlySystem": "এটি Formalie-এর একটি তালিকা। ফর্মে ব্যবহার করুন বা নিজের তালিকা বানাতে এর প্রতিলিপি করুন।",
-    "readOnlyRole": "আপনার ভূমিকা এই তালিকা পরিবর্তনের অনুমতি দেয় না।"
+    "readOnlyRole": "আপনার ভূমিকা এই তালিকা পরিবর্তনের অনুমতি দেয় না।",
+    "defaultList": {
+      "lst_priority": {
+        "name": "অগ্রাধিকার"
+      },
+      "lst_departments": {
+        "name": "বিভাগ"
+      },
+      "lst_weekdays": {
+        "name": "সপ্তাহের দিন"
+      },
+      "lst_satisfaction": {
+        "name": "সন্তুষ্টি"
+      },
+      "lst_places": {
+        "name": "স্থান",
+        "description": "দেশ, অঞ্চল ও শহর"
+      }
+    },
+    "defaultLevel": {
+      "country": "দেশ",
+      "region": "অঞ্চল",
+      "city": "শহর"
+    }
   },
   "designer": {
     "crumb": "ডিজাইন",
@@ -8136,6 +8159,20 @@
       "ai_translate": "অনুবাদ করুন",
       "ai_history": "ইতিহাস দেখুন",
       "ai_settings": "সেটিং ও ব্যবহার"
+    },
+    "builtInRole": {
+      "owner": {
+        "name": "মালিক",
+        "description": "সবকিছু, ভূমিকা ও ওয়ার্কস্পেস সহ। এটি বদলানো যায় না।"
+      },
+      "admin": {
+        "name": "অ্যাডমিন",
+        "description": "মানুষ, ফর্ম, ডেটা, API সেবা ও সেটিংস পরিচালনা করে।"
+      },
+      "member": {
+        "name": "সদস্য",
+        "description": "ফর্ম তৈরি ও প্রকাশ করে এবং তার উত্তর নিয়ে কাজ করে।"
+      }
     }
   }
 }

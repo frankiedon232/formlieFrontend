@@ -13,6 +13,7 @@ import { keptOnServer } from '#shared/utils/forms/options'
 
 definePageMeta({ breadcrumb: 'nav.optionSets' })
 const { t } = useI18n()
+const { listName } = useBuiltInNames()
 const route = useRoute()
 const api = useApi()
 const toast = useToast()
@@ -35,7 +36,7 @@ async function load() {
   try {
     list.value = (await api.get<OptionListRow>(`/option-lists/${id}`)).data
     draft.value = draftOf(list.value)
-    breadcrumbs.setLabel(route.path, list.value.name)
+    breadcrumbs.setLabel(route.path, listName(list.value))
   } catch (error) {
     failed.value = true
     handle(error, { silent: true })
@@ -150,7 +151,7 @@ async function remove() {
 </script>
 
 <template>
-  <AppPanel id="option-set" :title="list?.name ?? t('nav.optionSets')" :subtitle="list ? t('optionSets.updatedBy', { when: relative(list.updated_at), name: list.created_by.name }) : undefined">
+  <AppPanel id="option-set" :title="list ? listName(list) : t('nav.optionSets')" :subtitle="list ? t('optionSets.updatedBy', { when: relative(list.updated_at), name: list.created_by.name }) : undefined">
     <template #actions>
       <UButton v-if="canEdit" :label="t('settings.discard')" color="neutral" variant="outline" :disabled="!dirty || saving" class="hidden sm:inline-flex" @click="discard" />
       <UButton v-if="canEdit" :label="t('common.save')" icon="i-lucide-check" color="neutral" :loading="saving" :disabled="!dirty" @click="save">

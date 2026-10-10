@@ -150,7 +150,7 @@ export const optionListInsights = defineMockRoute(({ event }) => {
     unused: rows.filter(row => !row.forms_count).length,
     items: rows.reduce((sum, row) => sum + row.items_count, 0),
     retired: rows.reduce((sum, row) => sum + row.retired_count, 0),
-    largest: [...rows].sort((a, b) => b.items_count - a.items_count).slice(0, 8).map(row => ({ name: row.name, count: row.items_count })),
+    largest: [...rows].sort((a, b) => b.items_count - a.items_count).slice(0, 8).map(row => ({ id: row.id, name: row.name, count: row.items_count })),
   })
 })
 

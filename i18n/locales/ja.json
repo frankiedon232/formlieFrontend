@@ -2883,7 +2883,30 @@
     "openInListOption": "選択肢リストで開く",
     "readOnly": "このリストは閲覧できます",
     "readOnlySystem": "これは Formalie のリストです。フォームで使うか、複製して独自のリストを作成してください。",
-    "readOnlyRole": "あなたのロールではこのリストを変更できません。"
+    "readOnlyRole": "あなたのロールではこのリストを変更できません。",
+    "defaultList": {
+      "lst_priority": {
+        "name": "優先度"
+      },
+      "lst_departments": {
+        "name": "部署"
+      },
+      "lst_weekdays": {
+        "name": "曜日"
+      },
+      "lst_satisfaction": {
+        "name": "満足度"
+      },
+      "lst_places": {
+        "name": "場所",
+        "description": "国、地域、市区町村"
+      }
+    },
+    "defaultLevel": {
+      "country": "国",
+      "region": "地域",
+      "city": "市区町村"
+    }
   },
   "designer": {
     "crumb": "デザイン",
@@ -8136,6 +8159,20 @@
       "ai_translate": "翻訳",
       "ai_history": "履歴を見る",
       "ai_settings": "設定と使用量"
+    },
+    "builtInRole": {
+      "owner": {
+        "name": "オーナー",
+        "description": "ロールやワークスペース自体を含む、すべての操作ができます。変更できません。"
+      },
+      "admin": {
+        "name": "管理者",
+        "description": "メンバー、フォーム、データ、APIサービス、設定を管理します。"
+      },
+      "member": {
+        "name": "メンバー",
+        "description": "フォームを作成して公開し、回答を扱います。"
+      }
     }
   }
 }

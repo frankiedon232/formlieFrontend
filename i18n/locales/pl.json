@@ -2883,7 +2883,30 @@
     "openInListOption": "Otwórz w Liście opcji",
     "readOnly": "Możesz przeglądać tę listę",
     "readOnlySystem": "To lista Formalie. Używaj jej w formularzach lub zduplikuj, aby utworzyć własną.",
-    "readOnlyRole": "Twoja rola nie pozwala zmieniać tej listy."
+    "readOnlyRole": "Twoja rola nie pozwala zmieniać tej listy.",
+    "defaultList": {
+      "lst_priority": {
+        "name": "Priorytet"
+      },
+      "lst_departments": {
+        "name": "Działy"
+      },
+      "lst_weekdays": {
+        "name": "Dni tygodnia"
+      },
+      "lst_satisfaction": {
+        "name": "Zadowolenie"
+      },
+      "lst_places": {
+        "name": "Miejsca",
+        "description": "Kraj, region i miasto"
+      }
+    },
+    "defaultLevel": {
+      "country": "Kraj",
+      "region": "Region",
+      "city": "Miasto"
+    }
   },
   "designer": {
     "crumb": "Wygląd",
@@ -8136,6 +8159,20 @@
       "ai_translate": "Tłumaczyć",
       "ai_history": "Widzieć historię",
       "ai_settings": "Ustawienia i zużycie"
+    },
+    "builtInRole": {
+      "owner": {
+        "name": "Właściciel",
+        "description": "Wszystko, także role i sama przestrzeń robocza. Nie można tego zmienić."
+      },
+      "admin": {
+        "name": "Administrator",
+        "description": "Zarządza osobami, formularzami, danymi, usługą API i ustawieniami."
+      },
+      "member": {
+        "name": "Członek",
+        "description": "Tworzy i publikuje formularze oraz pracuje z ich odpowiedziami."
+      }
     }
   }
 }

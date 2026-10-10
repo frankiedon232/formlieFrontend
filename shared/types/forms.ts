@@ -324,7 +324,7 @@ export interface OptionListInsights {
   unused: number
   items: number
   retired: number
-  largest: { name: string; count: number }[]
+  largest: { id: string; name: string; count: number }[]
 }
 
 /** GET /option-lists/{id}/usage: forms with fields filled from the list, and whether they still match it. */

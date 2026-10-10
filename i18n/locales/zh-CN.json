@@ -2883,7 +2883,30 @@
     "openInListOption": "在选项列表中打开",
     "readOnly": "您可以查看此列表",
     "readOnlySystem": "这是 Formalie 的列表。可在表单中使用，或复制后创建您自己的列表。",
-    "readOnlyRole": "您的角色不允许更改此列表。"
+    "readOnlyRole": "您的角色不允许更改此列表。",
+    "defaultList": {
+      "lst_priority": {
+        "name": "优先级"
+      },
+      "lst_departments": {
+        "name": "部门"
+      },
+      "lst_weekdays": {
+        "name": "星期"
+      },
+      "lst_satisfaction": {
+        "name": "满意度"
+      },
+      "lst_places": {
+        "name": "地点",
+        "description": "国家/地区、地区和城市"
+      }
+    },
+    "defaultLevel": {
+      "country": "国家/地区",
+      "region": "地区",
+      "city": "城市"
+    }
   },
   "designer": {
     "crumb": "设计",
@@ -8136,6 +8159,20 @@
       "ai_translate": "翻译",
       "ai_history": "查看历史",
       "ai_settings": "设置和用量"
+    },
+    "builtInRole": {
+      "owner": {
+        "name": "所有者",
+        "description": "拥有全部权限，包括角色和工作区本身。无法更改。"
+      },
+      "admin": {
+        "name": "管理员",
+        "description": "管理人员、表单、数据、API 服务和设置。"
+      },
+      "member": {
+        "name": "成员",
+        "description": "创建并发布表单，处理表单的回复。"
+      }
     }
   }
 }

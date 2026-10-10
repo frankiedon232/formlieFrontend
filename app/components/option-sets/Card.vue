@@ -9,6 +9,7 @@ import type { OptionListRow } from '#shared/types/forms'
 
 const props = defineProps<{ item: OptionListRow; actions: DropdownMenuItem[][]; busy?: boolean }>()
 const { t } = useI18n()
+const { listName, listDescription, levelLabel } = useBuiltInNames()
 const { relative, number } = useFormat()
 // Lists with levels show their top level and the chain (Country → Region → City)
 const preview = computed(() => props.item.options.filter(option => option.active !== false && !option.level).slice(0, 4))
@@ -29,10 +30,10 @@ const more = computed(() => props.item.items_count - preview.value.length)
     <div class="flex min-w-0 flex-col gap-0.5">
       <span class="flex min-w-0 items-center gap-1.5">
         <UIcon v-if="item.retired_count" name="i-lucide-flag" class="size-3.5 shrink-0 text-error" :aria-label="t('optionSets.hasRetired')" />
-        <span class="truncate font-semibold text-highlighted">{{ item.name }}</span>
+        <span class="truncate font-semibold text-highlighted">{{ listName(item) }}</span>
       </span>
-      <span class="line-clamp-1 text-xs text-muted">{{ item.description || t('optionSets.noDescription') }}</span>
-      <span v-if="item.levels" class="flex min-w-0 items-center gap-1 text-[11px] text-default"><UIcon name="i-lucide-network" class="size-3 shrink-0 text-muted" /><span class="truncate">{{ item.levels.map(level => level.label).join(' → ') }}</span></span>
+      <span class="line-clamp-1 text-xs text-muted">{{ listDescription(item) || t('optionSets.noDescription') }}</span>
+      <span v-if="item.levels" class="flex min-w-0 items-center gap-1 text-[11px] text-default"><UIcon name="i-lucide-network" class="size-3 shrink-0 text-muted" /><span class="truncate">{{ item.levels.map(level => levelLabel(item, level)).join(' → ') }}</span></span>
     </div>
     <dl class="grid grid-cols-2 gap-2 text-xs">
       <div class="flex min-w-0 flex-col"><dt class="text-muted">{{ t('optionSets.col.items') }}</dt><dd class="font-medium text-highlighted tabular-nums">{{ t('optionSets.itemsCount', { n: number(item.items_count) }, item.items_count) }}</dd></div>

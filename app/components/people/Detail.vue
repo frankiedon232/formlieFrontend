@@ -12,6 +12,7 @@ const props = defineProps<{ id: string | null; ids: string[]; busy?: boolean; me
 const open = defineModel<boolean>('open', { default: false })
 const emit = defineEmits<{ go: [id: string]; resend: [person: PersonDetail]; copyLink: [person: PersonDetail]; revoke: [person: PersonDetail]; edit: [person: PersonDetail]; approve: [person: PersonDetail]; reject: [person: PersonDetail] }>()
 const { t } = useI18n()
+const { roleName } = useBuiltInNames()
 const api = useApi()
 const { number, relative, date, dateTime, percent } = useFormat()
 
@@ -48,7 +49,7 @@ const tiles = computed(() => {
   const p = person.value
   if (!p) return []
   return [
-    { key: 'role', icon: 'i-lucide-shield', label: t('people.col.role'), value: p.role_name },
+    { key: 'role', icon: 'i-lucide-shield', label: t('people.col.role'), value: roleName(p.role, p.role_name) },
     { key: 'active', icon: 'i-lucide-clock', label: t('people.col.lastActive'), value: p.last_visit?.online ? t('people.team.online') : p.last_active_at ? relative(p.last_active_at) : t('people.never') },
     p.invite ? { key: 'joined', icon: 'i-lucide-mail', label: t('people.status.invited'), value: date(p.invite.sent_at) } : { key: 'joined', icon: 'i-lucide-calendar', label: t('people.col.joined'), value: date(p.joined_at) },
     { key: 'twoStep', icon: p.two_step ? 'i-lucide-shield-check' : 'i-lucide-shield-off', label: t('people.col.twoStep'), value: p.two_step ? t('people.twoStepOn') : t('people.twoStepOff') },
@@ -83,7 +84,7 @@ const place = computed(() => {
             <p v-if="person.name !== person.email" class="truncate text-sm text-muted" dir="ltr">{{ person.email }}</p>
             <div class="mt-1 flex flex-wrap items-center gap-1.5">
               <PeopleStatus :person="person" />
-              <UBadge :label="person.role_name" icon="i-lucide-shield" color="neutral" variant="outline" size="sm" class="rounded-md" />
+              <UBadge :label="roleName(person.role, person.role_name)" icon="i-lucide-shield" color="neutral" variant="outline" size="sm" class="rounded-md" />
             </div>
           </div>
           <div class="flex shrink-0 items-center gap-1">

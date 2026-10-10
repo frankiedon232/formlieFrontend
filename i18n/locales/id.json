@@ -2883,7 +2883,30 @@
     "openInListOption": "Buka di Daftar Opsi",
     "readOnly": "Anda dapat melihat daftar ini",
     "readOnlySystem": "Ini adalah daftar Formalie. Gunakan di formulir, atau duplikat untuk membuat milik Anda.",
-    "readOnlyRole": "Peran Anda tidak mengizinkan mengubah daftar ini."
+    "readOnlyRole": "Peran Anda tidak mengizinkan mengubah daftar ini.",
+    "defaultList": {
+      "lst_priority": {
+        "name": "Prioritas"
+      },
+      "lst_departments": {
+        "name": "Departemen"
+      },
+      "lst_weekdays": {
+        "name": "Hari dalam seminggu"
+      },
+      "lst_satisfaction": {
+        "name": "Kepuasan"
+      },
+      "lst_places": {
+        "name": "Lokasi",
+        "description": "Negara, wilayah, dan kota"
+      }
+    },
+    "defaultLevel": {
+      "country": "Negara",
+      "region": "Wilayah",
+      "city": "Kota"
+    }
   },
   "designer": {
     "crumb": "Desain",
@@ -8136,6 +8159,20 @@
       "ai_translate": "Menerjemahkan",
       "ai_history": "Melihat riwayat",
       "ai_settings": "Pengaturan dan penggunaan"
+    },
+    "builtInRole": {
+      "owner": {
+        "name": "Pemilik",
+        "description": "Semuanya, termasuk peran dan ruang kerja itu sendiri. Tidak dapat diubah."
+      },
+      "admin": {
+        "name": "Administrator",
+        "description": "Mengelola orang, formulir, data, layanan API, dan pengaturan."
+      },
+      "member": {
+        "name": "Anggota",
+        "description": "Membuat dan menerbitkan formulir serta mengolah tanggapannya."
+      }
     }
   }
 }

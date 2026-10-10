@@ -2883,7 +2883,30 @@
     "openInListOption": "옵션 목록에서 열기",
     "readOnly": "이 목록을 볼 수 있습니다",
     "readOnlySystem": "Formalie의 목록입니다. 양식에서 사용하거나 복제하여 나만의 목록을 만드세요.",
-    "readOnlyRole": "역할상 이 목록을 변경할 수 없습니다."
+    "readOnlyRole": "역할상 이 목록을 변경할 수 없습니다.",
+    "defaultList": {
+      "lst_priority": {
+        "name": "우선순위"
+      },
+      "lst_departments": {
+        "name": "부서"
+      },
+      "lst_weekdays": {
+        "name": "요일"
+      },
+      "lst_satisfaction": {
+        "name": "만족도"
+      },
+      "lst_places": {
+        "name": "장소",
+        "description": "국가, 지역, 도시"
+      }
+    },
+    "defaultLevel": {
+      "country": "국가",
+      "region": "지역",
+      "city": "도시"
+    }
   },
   "designer": {
     "crumb": "디자인",
@@ -8136,6 +8159,20 @@
       "ai_translate": "번역",
       "ai_history": "기록 보기",
       "ai_settings": "설정과 사용량"
+    },
+    "builtInRole": {
+      "owner": {
+        "name": "소유자",
+        "description": "역할과 워크스페이스 자체를 포함한 모든 권한입니다. 변경할 수 없습니다."
+      },
+      "admin": {
+        "name": "관리자",
+        "description": "사용자, 양식, 데이터, API 서비스, 설정을 관리합니다."
+      },
+      "member": {
+        "name": "멤버",
+        "description": "양식을 만들고 게시하며 응답을 다룹니다."
+      }
     }
   }
 }

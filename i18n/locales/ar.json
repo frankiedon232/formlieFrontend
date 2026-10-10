@@ -2883,7 +2883,30 @@
     "openInListOption": "فتح في قائمة الخيارات",
     "readOnly": "يمكنك عرض هذه القائمة",
     "readOnlySystem": "هذه إحدى قوائم Formalie. استخدمها في النماذج أو انسخها لإنشاء قائمتك.",
-    "readOnlyRole": "لا يسمح لك دورك بتغيير هذه القائمة."
+    "readOnlyRole": "لا يسمح لك دورك بتغيير هذه القائمة.",
+    "defaultList": {
+      "lst_priority": {
+        "name": "الأولوية"
+      },
+      "lst_departments": {
+        "name": "الأقسام"
+      },
+      "lst_weekdays": {
+        "name": "أيام الأسبوع"
+      },
+      "lst_satisfaction": {
+        "name": "الرضا"
+      },
+      "lst_places": {
+        "name": "الأماكن",
+        "description": "الدولة والمنطقة والمدينة"
+      }
+    },
+    "defaultLevel": {
+      "country": "الدولة",
+      "region": "المنطقة",
+      "city": "المدينة"
+    }
   },
   "designer": {
     "crumb": "التصميم",
@@ -8136,6 +8159,20 @@
       "ai_translate": "الترجمة",
       "ai_history": "رؤية السجل",
       "ai_settings": "الإعدادات والاستخدام"
+    },
+    "builtInRole": {
+      "owner": {
+        "name": "مالك",
+        "description": "كل شيء، بما في ذلك الأدوار ومساحة العمل نفسها. لا يمكن تغييره."
+      },
+      "admin": {
+        "name": "مسؤول",
+        "description": "يدير الأشخاص والنماذج والبيانات وخدمة API والإعدادات."
+      },
+      "member": {
+        "name": "عضو",
+        "description": "ينشئ النماذج وينشرها ويعمل مع ردودها."
+      }
     }
   }
 }

@@ -12,6 +12,7 @@ const open = defineModel<boolean>('open', { default: false })
 const props = defineProps<{ person: PersonRow | null; directory: Directory | null }>()
 const emit = defineEmits<{ saved: [] }>()
 const { t } = useI18n()
+const { roleName, roleDescription } = useBuiltInNames()
 const api = useApi()
 const toast = useToast()
 const session = useSession()
@@ -36,7 +37,7 @@ onMounted(() => void loadRoles())
 const roles = computed(() =>
   workspaceRoles.value
     .filter(role => role.id !== 'owner' || iAmOwner.value || props.person?.role === 'owner')
-    .map(role => ({ value: role.id, label: role.name, description: role.description ?? undefined, disabled: role.id === 'owner' && !iAmOwner.value })),
+    .map(role => ({ value: role.id, label: roleName(role.id, role.name), description: roleDescription(role.id, role.description) || undefined, disabled: role.id === 'owner' && !iAmOwner.value })),
 )
 const departments = computed(() => (props.directory?.departments ?? []).filter(item => !item.archived).map(item => ({ value: item.id, label: item.name })))
 const jobTitles = computed(() => (props.directory?.job_titles ?? []).filter(item => !item.archived).map(item => ({ value: item.id, label: item.name })))

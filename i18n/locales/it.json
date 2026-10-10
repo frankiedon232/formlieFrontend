@@ -2883,7 +2883,30 @@
     "openInListOption": "Apri in Elenco opzioni",
     "readOnly": "Puoi consultare questo elenco",
     "readOnlySystem": "È un elenco di Formalie. Usalo nei moduli o duplicalo per crearne uno tuo.",
-    "readOnlyRole": "Il tuo ruolo non ti permette di modificare questo elenco."
+    "readOnlyRole": "Il tuo ruolo non ti permette di modificare questo elenco.",
+    "defaultList": {
+      "lst_priority": {
+        "name": "Priorità"
+      },
+      "lst_departments": {
+        "name": "Reparti"
+      },
+      "lst_weekdays": {
+        "name": "Giorni della settimana"
+      },
+      "lst_satisfaction": {
+        "name": "Soddisfazione"
+      },
+      "lst_places": {
+        "name": "Luoghi",
+        "description": "Paese, area geografica e città"
+      }
+    },
+    "defaultLevel": {
+      "country": "Paese",
+      "region": "Area geografica",
+      "city": "Città"
+    }
   },
   "designer": {
     "crumb": "Design",
@@ -8136,6 +8159,20 @@
       "ai_translate": "Tradurre",
       "ai_history": "Vedere la cronologia",
       "ai_settings": "Impostazioni e utilizzo"
+    },
+    "builtInRole": {
+      "owner": {
+        "name": "Proprietario",
+        "description": "Tutto, inclusi i ruoli e lo spazio di lavoro stesso. Non può essere modificato."
+      },
+      "admin": {
+        "name": "Amministratore",
+        "description": "Gestisce persone, moduli, dati, il servizio API e le impostazioni."
+      },
+      "member": {
+        "name": "Membro",
+        "description": "Crea e pubblica moduli e lavora con le loro risposte."
+      }
     }
   }
 }

@@ -2883,7 +2883,30 @@
     "openInListOption": "Open in List Option",
     "readOnly": "You can look at this list",
     "readOnlySystem": "This is one of Formalie's lists. Use it in forms, or duplicate it to make your own.",
-    "readOnlyRole": "Your role doesn't let you change this list."
+    "readOnlyRole": "Your role doesn't let you change this list.",
+    "defaultList": {
+      "lst_priority": {
+        "name": "Priority"
+      },
+      "lst_departments": {
+        "name": "Departments"
+      },
+      "lst_weekdays": {
+        "name": "Days of the week"
+      },
+      "lst_satisfaction": {
+        "name": "Satisfaction"
+      },
+      "lst_places": {
+        "name": "Places",
+        "description": "Country, region and city"
+      }
+    },
+    "defaultLevel": {
+      "country": "Country",
+      "region": "Region",
+      "city": "City"
+    }
   },
   "designer": {
     "crumb": "Design",
@@ -8136,6 +8159,20 @@
       "ai_translate": "Translate",
       "ai_history": "See the history",
       "ai_settings": "Settings and usage"
+    },
+    "builtInRole": {
+      "owner": {
+        "name": "Owner",
+        "description": "Everything, including roles and the workspace itself. It can't be changed."
+      },
+      "admin": {
+        "name": "Admin",
+        "description": "Manages people, forms, data, the API service and settings."
+      },
+      "member": {
+        "name": "Member",
+        "description": "Builds and publishes forms and works with their responses."
+      }
     }
   }
 }

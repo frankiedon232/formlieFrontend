@@ -10,6 +10,7 @@ import type { PersonRow } from '#shared/types/people'
 
 const props = defineProps<{ person: PersonRow; actions: DropdownMenuItem[][]; busy?: boolean }>()
 const { t } = useI18n()
+const { roleName } = useBuiltInNames()
 const { relative, date, number, percent } = useFormat()
 const flagged = computed(() => props.person.privileged && !props.person.two_step && props.person.status === 'active')
 const profile = computed(() => profileShare(props.person))
@@ -37,7 +38,7 @@ const names = (items: { name: string }[]) => items.map(item => item.name).join('
     <dl class="grid grid-cols-2 gap-x-4 gap-y-2 text-xs">
       <div class="flex min-w-0 flex-col"><dt class="text-muted">{{ t('people.col.department') }}</dt><dd class="truncate font-medium text-highlighted">{{ names(person.departments) }}</dd></div>
       <div class="flex min-w-0 flex-col"><dt class="text-muted">{{ t('people.col.jobTitle') }}</dt><dd class="truncate font-medium text-highlighted">{{ names(person.job_titles) }}</dd></div>
-      <div class="flex min-w-0 flex-col"><dt class="text-muted">{{ t('people.col.role') }}</dt><dd class="truncate font-medium text-highlighted">{{ person.role_name }}</dd></div>
+      <div class="flex min-w-0 flex-col"><dt class="text-muted">{{ t('people.col.role') }}</dt><dd class="truncate font-medium text-highlighted">{{ roleName(person.role, person.role_name) }}</dd></div>
       <div class="flex min-w-0 flex-col"><dt class="text-muted">{{ t('people.col.manager') }}</dt><dd class="truncate font-medium text-highlighted">{{ person.manager?.name ?? '–' }}</dd></div>
     </dl>
     <div class="flex flex-col gap-1.5 border-t border-default pt-3">

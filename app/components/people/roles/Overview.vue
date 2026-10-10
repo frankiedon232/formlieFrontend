@@ -9,12 +9,13 @@ import type { RolesInsights } from '#shared/types/people'
 const props = defineProps<{ insights: RolesInsights | null; selected?: string | null }>()
 const emit = defineEmits<{ pick: [key: string] }>()
 const { t } = useI18n()
+const { roleName } = useBuiltInNames()
 const { number } = useFormat()
 const stats = computed(() => (props.insights ? [
   { label: t('access.stat.own'), value: number(props.insights.custom) },
   { label: t('access.stat.people'), value: number(props.insights.people) },
 ] : []))
-const points = computed(() => (props.insights?.by_role ?? []).map(item => ({ label: item.name, value: item.count })))
+const points = computed(() => (props.insights?.by_role ?? []).map(item => ({ label: roleName(item.id, item.name), value: item.count })))
 const parts = computed(() => [
   { key: 'builtin', label: t('access.builtIn'), count: (props.insights?.total ?? 0) - (props.insights?.custom ?? 0), color: 'bg-(--ui-border-accented)' },
   { key: 'own', label: t('access.own'), count: props.insights?.custom ?? 0, color: 'bg-violet-500' },

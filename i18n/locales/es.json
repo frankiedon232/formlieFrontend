@@ -2883,7 +2883,30 @@
     "openInListOption": "Abrir en Lista de opciones",
     "readOnly": "Puede consultar esta lista",
     "readOnlySystem": "Es una lista de Formalie. Úsela en formularios o duplíquela para crear la suya.",
-    "readOnlyRole": "Su rol no le permite cambiar esta lista."
+    "readOnlyRole": "Su rol no le permite cambiar esta lista.",
+    "defaultList": {
+      "lst_priority": {
+        "name": "Prioridad"
+      },
+      "lst_departments": {
+        "name": "Departamentos"
+      },
+      "lst_weekdays": {
+        "name": "Días de la semana"
+      },
+      "lst_satisfaction": {
+        "name": "Satisfacción"
+      },
+      "lst_places": {
+        "name": "Lugares",
+        "description": "País, región y ciudad"
+      }
+    },
+    "defaultLevel": {
+      "country": "País",
+      "region": "Región",
+      "city": "Ciudad"
+    }
   },
   "designer": {
     "crumb": "Diseño",
@@ -8136,6 +8159,20 @@
       "ai_translate": "Traducir",
       "ai_history": "Ver el historial",
       "ai_settings": "Ajustes y uso"
+    },
+    "builtInRole": {
+      "owner": {
+        "name": "Propietario",
+        "description": "Todo, incluidos los roles y el propio espacio de trabajo. No se puede cambiar."
+      },
+      "admin": {
+        "name": "Administrador",
+        "description": "Gestiona personas, formularios, datos, el servicio de API y los ajustes."
+      },
+      "member": {
+        "name": "Miembro",
+        "description": "Crea y publica formularios y trabaja con sus respuestas."
+      }
     }
   }
 }

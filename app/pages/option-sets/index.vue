@@ -10,6 +10,7 @@ import type { OptionList, OptionListInsights, OptionListRow } from '#shared/type
 
 definePageMeta({ breadcrumb: 'nav.optionSets' })
 const { t } = useI18n()
+const { listName, listDescription, levelLabel } = useBuiltInNames()
 useHead({ title: () => t('nav.optionSets') })
 const api = useApi()
 const route = useRoute()
@@ -117,10 +118,10 @@ const rowActions = (row: OptionListRow): DropdownMenuItem[][] =>
         <div class="flex min-w-0 flex-col">
           <span class="flex min-w-0 items-center gap-1.5">
             <UIcon v-if="row.original.retired_count" name="i-lucide-flag" class="size-3.5 shrink-0 text-error" :aria-label="t('optionSets.hasRetired')" />
-            <span class="truncate font-medium text-highlighted">{{ row.original.name }}</span>
+            <span class="truncate font-medium text-highlighted">{{ listName(row.original) }}</span>
           </span>
-          <span v-if="row.original.description" class="max-w-80 truncate text-xs text-muted">{{ row.original.description }}</span>
-          <span v-if="row.original.levels" class="flex max-w-80 items-center gap-1 text-xs text-default"><UIcon name="i-lucide-network" class="size-3 shrink-0 text-muted" /><span class="truncate">{{ row.original.levels.map((level: { label: string }) => level.label).join(' → ') }}</span></span>
+          <span v-if="row.original.description" class="max-w-80 truncate text-xs text-muted">{{ listDescription(row.original) }}</span>
+          <span v-if="row.original.levels" class="flex max-w-80 items-center gap-1 text-xs text-default"><UIcon name="i-lucide-network" class="size-3 shrink-0 text-muted" /><span class="truncate">{{ row.original.levels.map((level: { key: string; label: string }) => levelLabel(row.original, level)).join(' → ') }}</span></span>
         </div>
       </template>
       <template #items_count-cell="{ row }"><span class="text-muted tabular-nums">{{ t('optionSets.itemsCount', { n: number(row.original.items_count) }, row.original.items_count) }}<template v-if="row.original.retired_count"> · {{ t('optionSets.retiredCount', { n: row.original.retired_count }, row.original.retired_count) }}</template></span></template>

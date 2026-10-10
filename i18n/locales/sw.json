@@ -2883,7 +2883,30 @@
     "openInListOption": "Fungua katika Orodha ya Chaguo",
     "readOnly": "Unaweza kuona orodha hii",
     "readOnlySystem": "Hii ni orodha ya Formalie. Itumie kwenye fomu, au inakili ili kutengeneza yako.",
-    "readOnlyRole": "Jukumu lako haliruhusu kubadilisha orodha hii."
+    "readOnlyRole": "Jukumu lako haliruhusu kubadilisha orodha hii.",
+    "defaultList": {
+      "lst_priority": {
+        "name": "Kipaumbele"
+      },
+      "lst_departments": {
+        "name": "Idara"
+      },
+      "lst_weekdays": {
+        "name": "Siku za wiki"
+      },
+      "lst_satisfaction": {
+        "name": "Kuridhika"
+      },
+      "lst_places": {
+        "name": "Maeneo",
+        "description": "Nchi, eneo na jiji"
+      }
+    },
+    "defaultLevel": {
+      "country": "Nchi",
+      "region": "Eneo",
+      "city": "Jiji"
+    }
   },
   "designer": {
     "crumb": "Muundo",
@@ -8136,6 +8159,20 @@
       "ai_translate": "Kutafsiri",
       "ai_history": "Kuona historia",
       "ai_settings": "Mipangilio na matumizi"
+    },
+    "builtInRole": {
+      "owner": {
+        "name": "Mmiliki",
+        "description": "Kila kitu, ikiwa ni pamoja na majukumu na nafasi ya kazi yenyewe. Haiwezi kubadilishwa."
+      },
+      "admin": {
+        "name": "Msimamizi",
+        "description": "Husimamia watu, fomu, data, huduma ya API na mipangilio."
+      },
+      "member": {
+        "name": "Mwanachama",
+        "description": "Huunda na kuchapisha fomu na kufanya kazi na majibu yake."
+      }
     }
   }
 }

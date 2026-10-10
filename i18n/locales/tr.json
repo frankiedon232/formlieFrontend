@@ -2883,7 +2883,30 @@
     "openInListOption": "Seçenek Listesi’nde aç",
     "readOnly": "Bu listeyi görüntüleyebilirsiniz",
     "readOnlySystem": "Bu bir Formalie listesidir. Formlarda kullanın veya kendinizinkini yapmak için çoğaltın.",
-    "readOnlyRole": "Rolünüz bu listeyi değiştirmenize izin vermiyor."
+    "readOnlyRole": "Rolünüz bu listeyi değiştirmenize izin vermiyor.",
+    "defaultList": {
+      "lst_priority": {
+        "name": "Öncelik"
+      },
+      "lst_departments": {
+        "name": "Departmanlar"
+      },
+      "lst_weekdays": {
+        "name": "Haftanın günleri"
+      },
+      "lst_satisfaction": {
+        "name": "Memnuniyet"
+      },
+      "lst_places": {
+        "name": "Yerler",
+        "description": "Ülke, bölge ve şehir"
+      }
+    },
+    "defaultLevel": {
+      "country": "Ülke",
+      "region": "Bölge",
+      "city": "Şehir"
+    }
   },
   "designer": {
     "crumb": "Tasarım",
@@ -8136,6 +8159,20 @@
       "ai_translate": "Çeviri",
       "ai_history": "Geçmişi görme",
       "ai_settings": "Ayarlar ve kullanım"
+    },
+    "builtInRole": {
+      "owner": {
+        "name": "Sahip",
+        "description": "Roller ve çalışma alanının kendisi dahil her şey. Değiştirilemez."
+      },
+      "admin": {
+        "name": "Yönetici",
+        "description": "Kişileri, formları, verileri, API hizmetini ve ayarları yönetir."
+      },
+      "member": {
+        "name": "Üye",
+        "description": "Form oluşturur ve yayımlar, yanıtlarla çalışır."
+      }
     }
   }
 }

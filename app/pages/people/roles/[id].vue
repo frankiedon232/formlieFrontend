@@ -12,6 +12,7 @@ import { withNeeds } from '#shared/utils/auth/permissions'
 
 definePageMeta({ breadcrumb: 'nav.peopleRoles' })
 const { t } = useI18n()
+const { roleName } = useBuiltInNames()
 const route = useRoute()
 const api = useApi()
 const toast = useToast()
@@ -33,14 +34,14 @@ async function load() {
   try {
     role.value = (await api.get<RoleRow>(`/roles/${id}`)).data
     draft.value = draftOf(role.value)
-    breadcrumbs.setLabel(route.path, role.value.name)
+    breadcrumbs.setLabel(route.path, roleName(role.value.id, role.value.name))
   } catch (error) {
     failed.value = true
     handle(error, { silent: true })
   }
 }
 onMounted(load)
-useHead({ title: () => role.value?.name ?? t('nav.peopleRoles') })
+useHead({ title: () => (role.value ? roleName(role.value.id, role.value.name) : t('nav.peopleRoles')) })
 
 const locked = computed(() => role.value?.id === 'owner' || !can('roles.manage'))
 const dirty = computed(() => !!draft.value && !!role.value && (draft.value.name !== role.value.name || draft.value.description !== (role.value.description ?? '') || keyOf(draft.value.grants) !== keyOf(role.value.grants)))
@@ -52,7 +53,7 @@ async function save() {
   try {
     role.value = (await api.patch<RoleRow>(`/roles/${id}`, { name: draft.value.name.trim(), description: draft.value.description.trim() || null, grants: draft.value.grants })).data
     draft.value = draftOf(role.value)
-    toast.add({ title: t('access.saved', { name: role.value.name }), description: role.value.people_count ? t('access.savedPeople', { n: role.value.people_count }, role.value.people_count) : undefined, color: 'success', icon: 'i-lucide-circle-check' })
+    toast.add({ title: t('access.saved', { name: roleName(role.value.id, role.value.name) }), description: role.value.people_count ? t('access.savedPeople', { n: role.value.people_count }, role.value.people_count) : undefined, color: 'success', icon: 'i-lucide-circle-check' })
   } catch (error) {
     handle(error)
   } finally {
@@ -81,10 +82,10 @@ async function duplicate() {
   }
 }
 async function remove() {
-  if (!role.value || !(await confirm({ title: t('access.deleteTitle', { name: role.value.name }), description: t('access.deleteDesc'), confirmLabel: t('apiService.delete.confirm'), danger: true }))) return
+  if (!role.value || !(await confirm({ title: t('access.deleteTitle', { name: roleName(role.value.id, role.value.name) }), description: t('access.deleteDesc'), confirmLabel: t('apiService.delete.confirm'), danger: true }))) return
   try {
     await api.del(`/roles/${id}`)
-    toast.add({ title: t('access.deleted', { name: role.value.name }), color: 'success', icon: 'i-lucide-trash-2' })
+    toast.add({ title: t('access.deleted', { name: roleName(role.value.id, role.value.name) }), color: 'success', icon: 'i-lucide-trash-2' })
     await navigateTo('/people/roles')
   } catch (error) {
     handle(error)
@@ -93,7 +94,7 @@ async function remove() {
 </script>
 
 <template>
-  <AppPanel id="role" :title="role?.name ?? t('nav.peopleRoles')" :subtitle="role ? t('access.updated', { when: relative(role.updated_at) }) : undefined">
+  <AppPanel id="role" :title="role ? roleName(role.id, role.name) : t('nav.peopleRoles')" :subtitle="role ? t('access.updated', { when: relative(role.updated_at) }) : undefined">
     <template #actions>
       <template v-if="!locked">
         <UButton :label="t('settings.discard')" color="neutral" variant="outline" :disabled="!dirty || saving" class="hidden sm:inline-flex" @click="discard" />

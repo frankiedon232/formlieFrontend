@@ -12,6 +12,7 @@ const open = defineModel<boolean>('open', { default: false })
 const props = defineProps<{ directory: Directory | null; approve?: PersonRow | null }>()
 const emit = defineEmits<{ saved: [] }>()
 const { t } = useI18n()
+const { roleName, roleDescription } = useBuiltInNames()
 const api = useApi()
 const toast = useToast()
 const { handle } = useErrorHandler()
@@ -31,7 +32,7 @@ watch(open, async value => {
     people.value = []
   }
 })
-const roles = computed(() => workspaceRoles.value.filter(role => role.id !== 'owner').map(role => ({ value: role.id, label: role.name, description: role.description ?? undefined })))
+const roles = computed(() => workspaceRoles.value.filter(role => role.id !== 'owner').map(role => ({ value: role.id, label: roleName(role.id, role.name), description: roleDescription(role.id, role.description) || undefined })))
 const departments = computed(() => (props.directory?.departments ?? []).filter(item => !item.archived).map(item => ({ value: item.id, label: item.name })))
 const jobTitles = computed(() => (props.directory?.job_titles ?? []).filter(item => !item.archived).map(item => ({ value: item.id, label: item.name })))
 const managers = computed(() => [{ value: 'none', label: t('people.none') }, ...people.value.map(item => ({ value: item.id, label: item.name, description: item.email }))])

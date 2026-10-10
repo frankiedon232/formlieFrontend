@@ -12,6 +12,7 @@ import type { InvitePreview } from '#shared/types/people'
 
 definePageMeta({ layout: 'auth', auth: false })
 const { t } = useI18n()
+const { roleName } = useBuiltInNames()
 const route = useRoute()
 const api = useApi()
 const { handle } = useErrorHandler()
@@ -76,7 +77,7 @@ async function join(event: FormSubmitEvent<typeof state>) {
     <template v-else>
       <AuthHeading
         :title="activation ? t('people.join.activateHeading', { workspace: invite.workspace }) : shared ? t('people.join.askHeading', { workspace: invite.workspace }) : t('people.join.heading', { workspace: invite.workspace })"
-        :description="activation ? t('people.join.activateDesc', { name: invite.inviter ?? '', role: invite.role_name ?? '' }) : shared ? t('people.join.askDesc') : t('people.join.inviteDesc', { name: invite.inviter ?? '' })"
+        :description="activation ? t('people.join.activateDesc', { name: invite.inviter ?? '', role: roleName(invite.role, invite.role_name) }) : shared ? t('people.join.askDesc') : t('people.join.inviteDesc', { name: invite.inviter ?? '' })"
       />
       <blockquote v-if="invite.message" class="mb-6 rounded-lg border-s-2 border-inverted bg-elevated/60 px-4 py-3 text-sm text-default">
         {{ invite.message }}

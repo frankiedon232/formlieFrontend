@@ -2883,7 +2883,30 @@
     "openInListOption": "विकल्प सूची में खोलें",
     "readOnly": "आप यह सूची देख सकते हैं",
     "readOnlySystem": "यह Formalie की सूची है। इसे फ़ॉर्म में इस्तेमाल करें या अपनी बनाने के लिए इसकी कॉपी बनाएँ।",
-    "readOnlyRole": "आपकी भूमिका आपको यह सूची बदलने नहीं देती।"
+    "readOnlyRole": "आपकी भूमिका आपको यह सूची बदलने नहीं देती।",
+    "defaultList": {
+      "lst_priority": {
+        "name": "प्राथमिकता"
+      },
+      "lst_departments": {
+        "name": "विभाग"
+      },
+      "lst_weekdays": {
+        "name": "सप्ताह के दिन"
+      },
+      "lst_satisfaction": {
+        "name": "संतुष्टि"
+      },
+      "lst_places": {
+        "name": "स्थान",
+        "description": "देश, क्षेत्र और शहर"
+      }
+    },
+    "defaultLevel": {
+      "country": "देश",
+      "region": "क्षेत्र",
+      "city": "शहर"
+    }
   },
   "designer": {
     "crumb": "डिज़ाइन",
@@ -8136,6 +8159,20 @@
       "ai_translate": "अनुवाद करें",
       "ai_history": "इतिहास देखें",
       "ai_settings": "सेटिंग और उपयोग"
+    },
+    "builtInRole": {
+      "owner": {
+        "name": "स्वामी",
+        "description": "सब कुछ, भूमिकाओं और वर्कस्पेस सहित। इसे बदला नहीं जा सकता।"
+      },
+      "admin": {
+        "name": "एडमिन",
+        "description": "लोगों, फ़ॉर्म, डेटा, API सेवा और सेटिंग्स को प्रबंधित करता है।"
+      },
+      "member": {
+        "name": "सदस्य",
+        "description": "फ़ॉर्म बनाता और प्रकाशित करता है और उनके जवाबों पर काम करता है।"
+      }
     }
   }
 }

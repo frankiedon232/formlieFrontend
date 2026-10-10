@@ -12,6 +12,7 @@ import { PERSON_STATUSES } from '#shared/types/people'
 
 definePageMeta({ breadcrumb: 'nav.people' })
 const { t } = useI18n()
+const { roleName } = useBuiltInNames()
 useHead({ title: () => t('nav.people') })
 const api = useApi()
 const route = useRoute()
@@ -70,7 +71,7 @@ const columns = computed<DataColumn[]>(() => [
 const STATUS_DOT: Record<string, string> = { active: 'bg-green-500', not_activated: 'bg-sky-500', invited: 'bg-amber-500', pending: 'bg-violet-500', disabled: 'bg-(--ui-border-accented)' }
 const filters = computed<DataFilter[]>(() => [
   { key: 'status', label: t('people.col.status'), icon: 'i-lucide-circle-dot', options: PERSON_STATUSES.map(value => ({ value, label: t(`people.status.${value}`), dot: STATUS_DOT[value] })) },
-  { key: 'role', label: t('people.col.role'), icon: 'i-lucide-shield', options: roles.value.map(role => ({ value: role.id, label: role.name })) },
+  { key: 'role', label: t('people.col.role'), icon: 'i-lucide-shield', options: roles.value.map(role => ({ value: role.id, label: roleName(role.id, role.name) })) },
   ...(directory.value?.departments.length ? [{ key: 'department', label: t('people.col.department'), icon: 'i-lucide-building-2', options: directory.value.departments.filter(item => !item.archived).map(item => ({ value: item.id, label: item.name })) }] : []),
   ...(directory.value?.job_titles.length ? [{ key: 'job_title', label: t('people.col.jobTitle'), icon: 'i-lucide-briefcase', options: directory.value.job_titles.filter(item => !item.archived).map(item => ({ value: item.id, label: item.name })) }] : []),
 ])
@@ -140,7 +141,7 @@ const names = (items: { name: string }[]) => items.map(item => item.name).join('
       :empty-description="t('people.emptyDesc')"
     >
       <template #name-cell="{ row }"><PeopleWho :person="row.original" @open="openRow(row.original)" /></template>
-      <template #role-cell="{ row }"><span class="text-default">{{ row.original.role_name }}</span></template>
+      <template #role-cell="{ row }"><span class="text-default">{{ roleName(row.original.role, row.original.role_name) }}</span></template>
       <template #departments-cell="{ row }"><span class="block max-w-48 truncate text-muted">{{ names(row.original.departments) || '–' }}</span></template>
       <template #job_titles-cell="{ row }"><span class="block max-w-48 truncate text-muted">{{ names(row.original.job_titles) || '–' }}</span></template>
       <template #status-cell="{ row }"><PeopleStatus :person="row.original" /></template>

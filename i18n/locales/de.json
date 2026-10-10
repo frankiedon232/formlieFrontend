@@ -2883,7 +2883,30 @@
     "openInListOption": "In Optionsliste öffnen",
     "readOnly": "Sie können diese Liste ansehen",
     "readOnlySystem": "Dies ist eine Liste von Formalie. Verwenden Sie sie in Formularen oder duplizieren Sie sie für eine eigene.",
-    "readOnlyRole": "Ihre Rolle erlaubt es nicht, diese Liste zu ändern."
+    "readOnlyRole": "Ihre Rolle erlaubt es nicht, diese Liste zu ändern.",
+    "defaultList": {
+      "lst_priority": {
+        "name": "Priorität"
+      },
+      "lst_departments": {
+        "name": "Abteilungen"
+      },
+      "lst_weekdays": {
+        "name": "Wochentage"
+      },
+      "lst_satisfaction": {
+        "name": "Zufriedenheit"
+      },
+      "lst_places": {
+        "name": "Orte",
+        "description": "Land, Region und Ort"
+      }
+    },
+    "defaultLevel": {
+      "country": "Land",
+      "region": "Region",
+      "city": "Stadt"
+    }
   },
   "designer": {
     "crumb": "Design",
@@ -8136,6 +8159,20 @@
       "ai_translate": "Übersetzen",
       "ai_history": "Den Verlauf sehen",
       "ai_settings": "Einstellungen und Nutzung"
+    },
+    "builtInRole": {
+      "owner": {
+        "name": "Inhaber",
+        "description": "Alles, einschließlich Rollen und des Arbeitsbereichs selbst. Kann nicht geändert werden."
+      },
+      "admin": {
+        "name": "Administrator",
+        "description": "Verwaltet Personen, Formulare, Daten, den API-Dienst und die Einstellungen."
+      },
+      "member": {
+        "name": "Mitglied",
+        "description": "Erstellt und veröffentlicht Formulare und arbeitet mit deren Antworten."
+      }
     }
   }
 }

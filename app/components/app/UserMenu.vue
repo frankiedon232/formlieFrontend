@@ -6,6 +6,7 @@ import type { DropdownMenuItem } from '@nuxt/ui'
 
 const props = defineProps<{ compact?: boolean; large?: boolean }>()
 const { t } = useI18n()
+const { roleName } = useBuiltInNames()
 const colorMode = useColorMode()
 const { shortcutsOpen } = useAppUi()
 const { locale, locales, current, changeLocale } = useAppLocale()
@@ -15,7 +16,7 @@ const auth = useAuth()
 const user = computed(() => ({
   name: session.displayName.value || t('user.guest'),
   email: session.user.value?.email ?? t('user.notSignedIn'),
-  role: session.user.value?.role_name ?? '',
+  role: roleName(session.user.value?.role, session.user.value?.role_name),
 }))
 
 async function logout() {
