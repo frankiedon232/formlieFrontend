@@ -53,7 +53,7 @@ Add more lines as new test tenants are created.
 
 ## Backend dev services (Phase B0)
 
-Docker Desktop with compose services: PostgreSQL 16 (primary + 1 replica), PgBouncer, Redis 7, RabbitMQ 3 (management UI), MinIO (S3), MailHog/Mailpit (catch OTP emails). Ports to be fixed in `docker-compose.dev.yml`.
+Installed directly on the machine, **no Docker** (owner, 2026-10-10): PostgreSQL 16 (primary + 1 replica), PgBouncer, Redis 7 (Memurai or WSL on Windows), RabbitMQ 3 (management UI), MinIO (S3), Mailpit (catch OTP emails). Production runs on AWS or dedicated servers (decided per deployment); Docker only if a real need comes up.
 
 ## Access matrix (verified 2026-10-02)
 
