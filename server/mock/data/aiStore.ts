@@ -3,7 +3,7 @@
  * chosen days), in `.data/mock/ai.json`. Seeded workspaces start with a month of believable requests
  * so the overview, history and usage have something to show.
  */
-import { AI_KINDS, AI_STATUSES, type AiKind, type AiRequestDetail, type AiRequestRow, type AiSettings, type AiSource, type AiStatus, type AiTarget } from '#shared/types/ai'
+import { AI_KINDS, AI_STATUSES, type AiDraftStats, type AiKind, type AiNote, type AiRequestDetail, type AiRequestRow, type AiSettings, type AiSource, type AiStatus, type AiTarget } from '#shared/types/ai'
 import { AI_DEFAULT_MONTHLY_CREDITS, AI_KIND_META } from '#shared/utils/ai/kinds'
 import { loadPersisted, savePersisted } from '../core/persist'
 import { MockError } from '../core/respond'
@@ -25,6 +25,10 @@ export interface StoredAiRequest {
   masked: boolean
   created_at: string
   applied_at: string | null
+  /** The draft itself (schema, designs …) until it is applied or discarded. */
+  output?: unknown
+  notes?: AiNote[]
+  stats?: AiDraftStats
 }
 
 interface TenantAi {
@@ -172,7 +176,15 @@ export const toAiDetail = (tenant: MockTenant, request: StoredAiRequest, user: M
   read: request.read,
   masked: request.masked,
   expires_at: new Date(Date.parse(request.created_at) + aiOf(tenant).settings.keep_days * DAY).toISOString(),
+  ...(request.notes ? { notes: request.notes } : {}),
+  ...(request.stats ? { stats: request.stats } : {}),
 })
 
 export const emptyByKind = () => Object.fromEntries(AI_KINDS.map(kind => [kind, 0])) as Record<AiKind, number>
 export const emptyByStatus = () => Object.fromEntries(AI_STATUSES.map(status => [status, 0])) as Record<AiStatus, number>
+
+/** Emails, phone numbers and long digit runs replaced before anything is kept or sent (Settings → Keep personal data out). */
+export const maskText = (text: string) =>
+  text
+    .replace(/[\w.+-]+@[\w-]+(\.[\w-]+)+/g, '[email]')
+    .replace(/\+?\d[\d\s().-]{7,}\d/g, '[number]')

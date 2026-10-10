@@ -638,7 +638,8 @@
     "FRM-USER-1012": "Ce lien d'inscription n'accepte que les adresses e-mail de l'organisation.",
     "FRM-AI-1001": "L’assistant IA est désactivé pour cet espace de travail.",
     "FRM-AI-1002": "Le quota d’IA de ce mois est épuisé. Il se renouvelle au début du mois prochain.",
-    "FRM-AI-1003": "L’assistant IA n’est pas autorisé à lire cette partie de l’espace de travail. Un admin peut le modifier dans les paramètres IA."
+    "FRM-AI-1003": "L’assistant IA n’est pas autorisé à lire cette partie de l’espace de travail. Un admin peut le modifier dans les paramètres IA.",
+    "FRM-AI-1004": "Ce brouillon a déjà été utilisé ou mis de côté. Demandez à nouveau à l’assistant."
   },
   "errorUi": {
     "reference": "Référence : {id}",
@@ -1130,7 +1131,8 @@
       "ai_enabled": "Assistant IA activé",
       "ai_disabled": "Assistant IA désactivé",
       "ai_settings_updated": "Paramètres IA modifiés",
-      "ai_request_deleted": "Demande IA supprimée de l’historique"
+      "ai_request_deleted": "Demande IA supprimée de l’historique",
+      "ai_applied": "Brouillon IA appliqué"
     },
     "detail": {
       "who": "Qui",
@@ -4919,6 +4921,139 @@
       "leaveTitle": "Quitter sans enregistrer ?",
       "leaveDesc": "Vos modifications des paramètres IA seront perdues.",
       "leave": "Quitter"
+    },
+    "stats": {
+      "pages": "{n} page | {n} pages",
+      "fields": "{n} question | {n} questions",
+      "logic": "{n} règle | {n} règles",
+      "calculations": "{n} calcul | {n} calculs"
+    },
+    "note": {
+      "follow_up": "« {field} » ne s’affiche qu’après un oui à « {after} ».",
+      "total": "« Total » est calculé à partir de « {a} » × « {b} ».",
+      "pages": "Regroupé en {n} pages pour remplir vite sur un téléphone. | Regroupé en {n} pages pour remplir vite sur un téléphone.",
+      "document_questions": "{n} question du document a été transformée en champ, avec sa formulation. | {n} questions du document ont été transformées en champs, avec leur formulation.",
+      "document_sections": "{n} section du document a été conservée comme page. | Les {n} sections du document ont été conservées comme pages.",
+      "document_none": "Le document ne contenait aucune ligne ressemblant à une question, la description a donc été utilisée.",
+      "added_contact": "Nom et e-mail ajoutés en premier, pour savoir qui a répondu.",
+      "from_list": "{n} question créée à partir de votre liste, avec vos mots. | {n} questions créées à partir de votre liste, avec vos mots.",
+      "template": "Point de départ : le modèle « {name} » de Formalie, le plus proche de votre description.",
+      "try_again": "Réessayez pour un autre point de départ.",
+      "basic": "Il y avait peu d’éléments, voici donc un formulaire de base. Décrivez les questions voulues pour un brouillon plus proche.",
+      "themes": "{n} design qui garde votre couleur lisible. | {n} designs qui gardent votre couleur lisible : les boutons utilisent une teinte sur laquelle le texte blanc se lit bien."
+    },
+    "create": {
+      "describe": "Décrivez le formulaire",
+      "placeholder": "Par exemple : un formulaire d’accueil pour les visiteurs avec nom, entreprise, personne visitée, heure d’arrivée et accord sur le règlement du site.",
+      "examples": "Partir d’un exemple",
+      "example": {
+        "visitor": "Un formulaire d’accueil pour les visiteurs : nom, entreprise, personne visitée, heure d’arrivée, une photo et accord sur le règlement du site",
+        "order": "Une demande de commande avec : article, quantité, prix unitaire, date de livraison, exigences particulières, détails des exigences",
+        "feedback": "Une enquête de satisfaction client après un appel au support",
+        "leave": "Une demande de congé pour le personnel avec : nom, service, dates, type de congé, motif et validation du responsable"
+      },
+      "addDocument": "Collez un document ou un ancien formulaire",
+      "document": "Document",
+      "documentHint": "Collez le texte d’un formulaire papier, d’une liste de contrôle ou d’un ancien formulaire. Chaque question devient un champ, les titres deviennent des pages.",
+      "documentPlaceholder": "SECTION A\nNom complet :\nDate de l’incident :\nQuelqu’un a-t-il été blessé ? ( ) Oui ( ) Non",
+      "removeDocument": "Retirer",
+      "pages": {
+        "label": "Pages",
+        "auto": "Choisir pour moi",
+        "one": "Une page",
+        "several": "Plusieurs pages"
+      },
+      "cost": "Utilise {n} crédit | Utilise {n} crédits",
+      "costLeft": "Utilise {n} crédit · {left} restants ce mois-ci | Utilise {n} crédits · {left} restants ce mois-ci",
+      "generate": "Générer",
+      "thinking": "L’assistant y travaille",
+      "step": {
+        "read": "Lecture de votre description",
+        "questions": "Choix des questions",
+        "logic": "Ajout des questions de suivi et des totaux",
+        "layout": "Mise en page"
+      },
+      "private": "Seul ce que vous saisissez ici est envoyé. Les données personnelles sont masquées quand votre espace de travail le demande.",
+      "failed": "L’assistant n’a pas pu créer de brouillon",
+      "emptyTitle": "Décrivez le formulaire dont vous avez besoin",
+      "emptyDesc": "L’assistant le rédige avec des questions, des suivis et des totaux. Vous le voyez comme le verront les gens, puis vous le créez ou réessayez.",
+      "tip": {
+        "list": "Listez ce qu’il faut demander : « nom, entreprise, heure d’arrivée ».",
+        "document": "Collez un formulaire papier ou ancien pour l’importer.",
+        "people": "Dites qui le remplit : visiteurs, personnel, clients.",
+        "logic": "Mentionnez des questions oui / non et des montants pour les suivis et les totaux."
+      },
+      "name": "Nom du formulaire",
+      "folder": "Dossier",
+      "noFolder": "Aucun dossier",
+      "discard": "Mettre de côté",
+      "again": "Réessayer",
+      "create": "Créer le formulaire",
+      "created": "« {name} » créé. Vous pouvez tout modifier dans le générateur.",
+      "discarded": "Brouillon mis de côté. Il reste dans l’historique.",
+      "noCreate": "Votre rôle ne permet pas de créer des formulaires. Demandez à un administrateur ou utilisez le brouillon comme idée."
+    },
+    "templates": {
+      "mode": {
+        "template": "Modèle",
+        "design": "Design à partir d’une couleur"
+      },
+      "describe": "À quoi sert le modèle ?",
+      "placeholder": "Par exemple : prêt de matériel au personnel, avec l’article, le numéro de série, les dates et l’état au retour.",
+      "example": {
+        "loan": "Prêt de matériel au personnel : article, numéro de série, dates de prêt, état au retour et signature",
+        "inspection": "Une liste de contrôle mensuelle de sécurité incendie pour les bureaux",
+        "volunteer": "Inscription de bénévoles pour un événement communautaire",
+        "course": "Évaluation d’un cours par les étudiants en fin de trimestre"
+      },
+      "step": {
+        "kind": "Recherche du type de modèle",
+        "design": "Choix d’un design assorti"
+      },
+      "name": "Nom du modèle",
+      "category": "Catégorie",
+      "description": "Description",
+      "save": "Enregistrer dans les modèles",
+      "saved": "« {name} » enregistré dans vos modèles",
+      "noSave": "Votre rôle ne permet pas d’enregistrer des modèles. Demandez à un administrateur ou utilisez l’idée pour créer un formulaire.",
+      "emptyTitle": "Décrivez un modèle",
+      "emptyDesc": "L’assistant rédige un modèle pour votre cas avec un design adapté. Enregistrez-le pour tout l’espace de travail."
+    },
+    "design": {
+      "colour": "Couleur de marque",
+      "brandHint": "La couleur de marque de votre espace de travail pour commencer.",
+      "mood": "L’ambiance souhaitée",
+      "moodPlaceholder": "Calme, audacieux, formel, convivial…",
+      "generate": "Suggérer des designs",
+      "step": {
+        "colour": "Lecture de votre couleur",
+        "contrast": "Vérification de la lisibilité",
+        "styles": "Création de trois designs"
+      },
+      "choose": "Choisissez un design",
+      "style": {
+        "calm": {
+          "name": "Calme",
+          "desc": "Page aux teintes douces, champs arrondis et votre couleur sur les boutons et les titres."
+        },
+        "bold": {
+          "name": "Audacieux",
+          "desc": "Un bandeau de votre couleur en haut, une page en dégradé et des boutons pleine largeur."
+        },
+        "minimal": {
+          "name": "Minimal",
+          "desc": "Une page blanche épurée, des titres à empattements et des champs soulignés avec une touche de votre couleur."
+        }
+      },
+      "name": "Nom du thème",
+      "defaultName": "Marque {colour}",
+      "save": "Enregistrer dans les thèmes",
+      "saved": "« {name} » enregistré dans vos thèmes",
+      "noSave": "Votre rôle ne permet pas d’ajouter des thèmes. Demandez à un administrateur.",
+      "sampleTitle": "Formulaire d’exemple",
+      "emptyTitle": "Des designs à partir de votre couleur de marque",
+      "emptyDesc": "Choisissez une couleur et, si vous le souhaitez, l’ambiance voulue. L’assistant propose trois designs à essayer sur un formulaire d’exemple.",
+      "optional": "Facultatif"
     }
   },
   "public": {

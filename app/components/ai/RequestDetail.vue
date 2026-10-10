@@ -112,7 +112,8 @@ const tiles = computed(() =>
           </div>
           <div class="flex flex-col gap-2 rounded-lg border border-default p-4">
             <h3 class="flex items-center gap-1.5 text-xs font-medium text-muted"><UIcon name="i-lucide-sparkles" class="size-3.5" />{{ t('ai.history.answer') }}</h3>
-            <p class="text-sm whitespace-pre-line text-default">{{ item.result }}</p>
+            <AiNotes v-if="item.notes?.length" :notes="item.notes" :stats="item.stats" />
+            <p v-else class="text-sm whitespace-pre-line text-default">{{ item.result }}</p>
           </div>
         </section>
 

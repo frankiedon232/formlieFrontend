@@ -1,3 +1,5 @@
+import type { FormSchemaV1 } from '../utils/forms/schema'
+
 /**
  * AI assistant (F19, docs/API-CONTRACT.md → AI assistant). The assistant proposes, a person applies:
  * every request is kept (who, what, when, the result and whether it was applied) for the workspace's
@@ -29,6 +31,8 @@ export interface AiSettings {
   monthly_credits: number
   updated_at: string | null
   updated_by: { id: string; name: string } | null
+  /** The workspace's brand colour (read only here), where designs start from. */
+  brand_color?: string | null
 }
 
 export interface AiUsage {
@@ -76,6 +80,9 @@ export interface AiRequestDetail extends AiRequestRow {
   masked: boolean
   /** When the request will be removed (the workspace's keep setting). */
   expires_at: string
+  /** For requests made in the app: what it did, translated in the app (the `result` text is the fallback). */
+  notes?: AiNote[]
+  stats?: AiDraftStats
 }
 
 export interface AiRequestInsights {
@@ -86,4 +93,59 @@ export interface AiRequestInsights {
   by_kind: Record<AiKind, number>
   people: number
   credits: number
+}
+
+/** One thing the assistant did, translated in the app (`ai.note.<code>`). */
+export interface AiNote {
+  code: 'follow_up' | 'total' | 'pages' | 'document_questions' | 'document_sections' | 'document_none' | 'added_contact' | 'from_list' | 'template' | 'try_again' | 'basic' | 'themes'
+  params?: Record<string, string | number>
+}
+
+/** What a draft is made of, for the badges next to the preview. */
+export interface AiDraftStats {
+  pages: number
+  fields: number
+  logic: number
+  calculations: number
+}
+
+/** POST /ai/forms/draft: a form to preview, then create (or try again / discard). */
+export interface AiFormDraft {
+  request_id: string
+  name: string
+  description: string
+  schema: FormSchemaV1
+  /** What the assistant did. */
+  notes: AiNote[]
+  /** The Formalie template it started from, if any. */
+  based_on: { key: string; name: string } | null
+  source: 'document' | 'list' | 'template' | 'basic'
+  stats: AiDraftStats
+  credits: number
+}
+
+/** POST /ai/templates/draft: a template idea with a matching design. */
+export interface AiTemplateDraft extends AiFormDraft {
+  category: string
+}
+
+export interface AiThemeSuggestion {
+  key: string
+  name: string
+  description: string
+  tokens: Record<string, unknown>
+}
+
+/** POST /ai/themes/draft: three designs from a brand colour, previewed on a sample form. */
+export interface AiThemeDraft {
+  request_id: string
+  colour: string
+  suggestions: AiThemeSuggestion[]
+  sample: FormSchemaV1
+  credits: number
+}
+
+/** POST /ai/requests/{id}/apply: what was made. */
+export interface AiApplyResult {
+  target: AiTarget
 }

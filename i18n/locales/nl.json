@@ -638,7 +638,8 @@
     "FRM-USER-1012": "Deze aanmeldlink accepteert alleen e-mailadressen van de organisatie.",
     "FRM-AI-1001": "De AI-assistent is uitgeschakeld voor deze werkruimte.",
     "FRM-AI-1002": "Het AI-tegoed van deze maand is op. Het wordt aan het begin van volgende maand vernieuwd.",
-    "FRM-AI-1003": "De AI-assistent mag dit deel van de werkruimte niet lezen. Een beheerder kan dit wijzigen in de AI-instellingen."
+    "FRM-AI-1003": "De AI-assistent mag dit deel van de werkruimte niet lezen. Een beheerder kan dit wijzigen in de AI-instellingen.",
+    "FRM-AI-1004": "Dit concept is al gebruikt of opzijgezet. Vraag het de assistent opnieuw."
   },
   "errorUi": {
     "reference": "Referentie: {id}",
@@ -1130,7 +1131,8 @@
       "ai_enabled": "AI-assistent ingeschakeld",
       "ai_disabled": "AI-assistent uitgeschakeld",
       "ai_settings_updated": "AI-instellingen gewijzigd",
-      "ai_request_deleted": "AI-verzoek verwijderd uit de geschiedenis"
+      "ai_request_deleted": "AI-verzoek verwijderd uit de geschiedenis",
+      "ai_applied": "AI-concept toegepast"
     },
     "detail": {
       "who": "Wie",
@@ -4919,6 +4921,139 @@
       "leaveTitle": "Verlaten zonder opslaan?",
       "leaveDesc": "Je wijzigingen in de AI-instellingen gaan verloren.",
       "leave": "Verlaten"
+    },
+    "stats": {
+      "pages": "{n} pagina | {n} pagina’s",
+      "fields": "{n} vraag | {n} vragen",
+      "logic": "{n} regel | {n} regels",
+      "calculations": "{n} berekening | {n} berekeningen"
+    },
+    "note": {
+      "follow_up": "“{field}” verschijnt alleen na een ja bij “{after}”.",
+      "total": "“Totaal” wordt berekend uit “{a}” × “{b}”.",
+      "pages": "Gegroepeerd in {n} pagina’s zodat het snel in te vullen is op een telefoon. | Gegroepeerd in {n} pagina’s zodat het snel in te vullen is op een telefoon.",
+      "document_questions": "{n} vraag uit het document is een veld geworden, met behoud van de formulering. | {n} vragen uit het document zijn velden geworden, met behoud van de formulering.",
+      "document_sections": "{n} sectie van het document is als pagina behouden. | De {n} secties van het document zijn als pagina’s behouden.",
+      "document_none": "Het document had geen regels die op vragen leken, dus de beschrijving is gebruikt.",
+      "added_contact": "Naam en e-mail zijn eerst toegevoegd, zodat je weet wie er antwoordde.",
+      "from_list": "{n} vraag gemaakt uit je lijst, in je eigen woorden. | {n} vragen gemaakt uit je lijst, in je eigen woorden.",
+      "template": "Gestart vanuit de Formalie-sjabloon “{name}”, het dichtst bij je beschrijving.",
+      "try_again": "Probeer opnieuw voor een ander beginpunt.",
+      "basic": "Er was weinig om op te bouwen, dus dit is een eenvoudig formulier. Beschrijf de vragen die je nodig hebt voor een beter concept.",
+      "themes": "{n} ontwerp dat je kleur leesbaar houdt. | {n} ontwerpen die je kleur leesbaar houden: knoppen gebruiken een tint waarop witte tekst goed leesbaar is."
+    },
+    "create": {
+      "describe": "Beschrijf het formulier",
+      "placeholder": "Bijvoorbeeld: een aanmeldformulier voor bezoekers bij de receptie met naam, bedrijf, wie ze bezoeken, aankomsttijd en akkoord met de huisregels.",
+      "examples": "Begin met een voorbeeld",
+      "example": {
+        "visitor": "Een aanmeldformulier voor bezoekers bij de receptie: naam, bedrijf, wie ze bezoeken, aankomsttijd, een foto en akkoord met de huisregels",
+        "order": "Een bestelaanvraag met: artikel, aantal, stukprijs, leverdatum, speciale eisen, details van de eisen",
+        "feedback": "Een klantenquête na een supportgesprek",
+        "leave": "Een verlofaanvraag voor medewerkers met: naam, afdeling, data, soort verlof, reden en goedkeuring van de manager"
+      },
+      "addDocument": "Plak een document of oud formulier",
+      "document": "Document",
+      "documentHint": "Plak de tekst van een papieren formulier, checklist of oud formulier. Elke vraag wordt een veld, koppen worden pagina’s.",
+      "documentPlaceholder": "SECTIE A\nVolledige naam:\nDatum van het incident:\nIs er iemand gewond? ( ) Ja ( ) Nee",
+      "removeDocument": "Verwijderen",
+      "pages": {
+        "label": "Pagina’s",
+        "auto": "Beslis voor mij",
+        "one": "Eén pagina",
+        "several": "Meerdere pagina’s"
+      },
+      "cost": "Gebruikt {n} tegoed | Gebruikt {n} tegoeden",
+      "costLeft": "Gebruikt {n} tegoed · nog {left} deze maand | Gebruikt {n} tegoeden · nog {left} deze maand",
+      "generate": "Genereren",
+      "thinking": "De assistent is ermee bezig",
+      "step": {
+        "read": "Je beschrijving lezen",
+        "questions": "De vragen kiezen",
+        "logic": "Vervolgvragen en totalen toevoegen",
+        "layout": "De pagina’s indelen"
+      },
+      "private": "Alleen wat je hier typt wordt verstuurd. Persoonlijke gegevens worden afgeschermd als je werkruimte dat vraagt.",
+      "failed": "De assistent kon geen concept maken",
+      "emptyTitle": "Beschrijf het formulier dat je nodig hebt",
+      "emptyDesc": "De assistent maakt een concept met vragen, vervolgvragen en totalen. Je ziet het zoals mensen het zien, en maakt het dan aan of probeert opnieuw.",
+      "tip": {
+        "list": "Noem wat je wilt vragen: “naam, bedrijf, aankomsttijd”.",
+        "document": "Plak een papieren of oud formulier om het over te nemen.",
+        "people": "Zeg wie het invult: bezoekers, medewerkers, klanten.",
+        "logic": "Noem ja / nee-vragen en bedragen voor vervolgvragen en totalen."
+      },
+      "name": "Formuliernaam",
+      "folder": "Map",
+      "noFolder": "Geen map",
+      "discard": "Opzijzetten",
+      "again": "Opnieuw proberen",
+      "create": "Formulier maken",
+      "created": "“{name}” is aangemaakt. Je kunt alles aanpassen in de builder.",
+      "discarded": "Concept opzijgezet. Het blijft in de geschiedenis.",
+      "noCreate": "Je rol kan geen formulieren maken. Vraag een beheerder, of gebruik het concept als idee."
+    },
+    "templates": {
+      "mode": {
+        "template": "Sjabloon",
+        "design": "Ontwerp vanuit een kleur"
+      },
+      "describe": "Waar is het sjabloon voor?",
+      "placeholder": "Bijvoorbeeld: apparatuur uitlenen aan medewerkers, met het artikel, serienummer, data en staat bij terugbrengen.",
+      "example": {
+        "loan": "Apparatuur uitlenen aan medewerkers: artikel, serienummer, uitleendata, staat bij terugbrengen en handtekening",
+        "inspection": "Een maandelijkse brandveiligheidscontrolelijst voor kantoren",
+        "volunteer": "Aanmelding van vrijwilligers voor een buurtevenement",
+        "course": "Cursusevaluatie voor studenten aan het einde van de periode"
+      },
+      "step": {
+        "kind": "Het soort sjabloon zoeken",
+        "design": "Een passend ontwerp kiezen"
+      },
+      "name": "Sjabloonnaam",
+      "category": "Categorie",
+      "description": "Beschrijving",
+      "save": "Opslaan in sjablonen",
+      "saved": "“{name}” opgeslagen in je sjablonen",
+      "noSave": "Je rol kan geen sjablonen opslaan. Vraag een beheerder, of gebruik het idee om een formulier te bouwen.",
+      "emptyTitle": "Beschrijf een sjabloon",
+      "emptyDesc": "De assistent maakt een sjabloon voor jouw toepassing met een passend ontwerp. Sla het op voor iedereen in de werkruimte."
+    },
+    "design": {
+      "colour": "Merkkleur",
+      "brandHint": "De merkkleur van je werkruimte om mee te beginnen.",
+      "mood": "De sfeer die je wilt",
+      "moodPlaceholder": "Rustig, krachtig, formeel, vriendelijk…",
+      "generate": "Ontwerpen voorstellen",
+      "step": {
+        "colour": "Je kleur lezen",
+        "contrast": "Controleren of het goed leesbaar is",
+        "styles": "Drie ontwerpen maken"
+      },
+      "choose": "Kies een ontwerp",
+      "style": {
+        "calm": {
+          "name": "Rustig",
+          "desc": "Zacht getinte pagina, afgeronde velden en je kleur op knoppen en koppen."
+        },
+        "bold": {
+          "name": "Krachtig",
+          "desc": "Een balk in je kleur bovenaan, een pagina met kleurverloop en knoppen over de volle breedte."
+        },
+        "minimal": {
+          "name": "Minimaal",
+          "desc": "Een strakke witte pagina, koppen met schreef en onderstreepte velden met een vleugje van je kleur."
+        }
+      },
+      "name": "Themanaam",
+      "defaultName": "Merk {colour}",
+      "save": "Opslaan in thema’s",
+      "saved": "“{name}” opgeslagen in je thema’s",
+      "noSave": "Je rol kan geen thema’s toevoegen. Vraag een beheerder.",
+      "sampleTitle": "Voorbeeldformulier",
+      "emptyTitle": "Ontwerpen vanuit je merkkleur",
+      "emptyDesc": "Kies een kleur en, als je wilt, de gewenste sfeer. De assistent stelt drie ontwerpen voor die je kunt proberen op een voorbeeldformulier.",
+      "optional": "Optioneel"
     }
   },
   "public": {

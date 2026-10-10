@@ -252,6 +252,15 @@ export const createForm = defineMockRoute(({ event, body }) => {
   return ok(summaryFor(form, user), {}, 201)
 })
 
+/** A new form from a ready schema (the AI assistant's drafts, F19): the workspace's form defaults apply. */
+export function createFormFromSchema(event: H3Event, tenant: MockTenant, user: MockUser, input: { name: string; folder_id?: string | null; schema: NonNullable<StoredForm['schema']>; source: string }) {
+  const form = newForm(tenant, user, { name: input.name, folder: folderRef(tenant, input.folder_id, user), schema: input.schema })
+  withFormDefaults(tenant, form)
+  saveForms()
+  audit(event, tenant, user, 'forms.created', form, [], { source: input.source })
+  return { form, summary: summaryFor(form, user) }
+}
+
 export const importForm = defineMockRoute(({ event, body }) => {
   const { user, tenant } = requireAuth(event)
   const input = parseBody(importSchema, body)

@@ -638,7 +638,8 @@
     "FRM-USER-1012": "Ten link rejestracyjny akceptuje tylko adresy e-mail organizacji.",
     "FRM-AI-1001": "Asystent AI jest wyłączony w tej przestrzeni roboczej.",
     "FRM-AI-1002": "Limit AI na ten miesiąc został wykorzystany. Odnowi się na początku przyszłego miesiąca.",
-    "FRM-AI-1003": "Asystent AI nie ma dostępu do tej części przestrzeni roboczej. Administrator może to zmienić w ustawieniach AI."
+    "FRM-AI-1003": "Asystent AI nie ma dostępu do tej części przestrzeni roboczej. Administrator może to zmienić w ustawieniach AI.",
+    "FRM-AI-1004": "Ten szkic został już użyty lub odłożony. Poproś asystenta ponownie."
   },
   "errorUi": {
     "reference": "Identyfikator: {id}",
@@ -1130,7 +1131,8 @@
       "ai_enabled": "Włączono asystenta AI",
       "ai_disabled": "Wyłączono asystenta AI",
       "ai_settings_updated": "Zmieniono ustawienia AI",
-      "ai_request_deleted": "Usunięto zapytanie AI z historii"
+      "ai_request_deleted": "Usunięto zapytanie AI z historii",
+      "ai_applied": "Zastosowano szkic AI"
     },
     "detail": {
       "who": "Kto",
@@ -4919,6 +4921,139 @@
       "leaveTitle": "Wyjść bez zapisywania?",
       "leaveDesc": "Zmiany w ustawieniach AI zostaną utracone.",
       "leave": "Wyjdź"
+    },
+    "stats": {
+      "pages": "{n} strona | {n} stron",
+      "fields": "{n} pytanie | {n} pytań",
+      "logic": "{n} reguła | {n} reguł",
+      "calculations": "{n} obliczenie | {n} obliczeń"
+    },
+    "note": {
+      "follow_up": "„{field}” pojawia się tylko po odpowiedzi „tak” na „{after}”.",
+      "total": "„Suma” jest liczona z „{a}” × „{b}”.",
+      "pages": "Pogrupowano w {n} stron, aby szybko wypełniać na telefonie. | Pogrupowano w {n} stron, aby szybko wypełniać na telefonie.",
+      "document_questions": "{n} pytanie z dokumentu zamieniono na pole, zachowując jego treść. | {n} pytań z dokumentu zamieniono na pola, zachowując ich treść.",
+      "document_sections": "{n} sekcję dokumentu zachowano jako stronę. | {n} sekcji dokumentu zachowano jako strony.",
+      "document_none": "W dokumencie nie było wierszy przypominających pytania, więc użyto opisu.",
+      "added_contact": "Najpierw dodano imię i e-mail, aby wiedzieć, kto odpowiedział.",
+      "from_list": "Utworzono {n} pytanie z Twojej listy, Twoimi słowami. | Utworzono {n} pytań z Twojej listy, Twoimi słowami.",
+      "template": "Punktem wyjścia był szablon Formalie „{name}”, najbliższy Twojemu opisowi.",
+      "try_again": "Spróbuj ponownie, aby uzyskać inny punkt wyjścia.",
+      "basic": "Było mało wskazówek, więc to prosty formularz. Opisz potrzebne pytania, aby szkic był trafniejszy.",
+      "themes": "{n} projekt, który zachowuje czytelność Twojego koloru. | {n} projektów, które zachowują czytelność Twojego koloru: przyciski mają odcień, na którym dobrze widać biały tekst."
+    },
+    "create": {
+      "describe": "Opisz formularz",
+      "placeholder": "Na przykład: formularz rejestracji gości w recepcji z imieniem, firmą, osobą odwiedzaną, godziną przybycia i zgodą na zasady obiektu.",
+      "examples": "Zacznij od przykładu",
+      "example": {
+        "visitor": "Formularz rejestracji gości w recepcji: imię, firma, osoba odwiedzana, godzina przybycia, zdjęcie i zgoda na zasady obiektu",
+        "order": "Zamówienie z polami: produkt, ilość, cena jednostkowa, data dostawy, szczególne wymagania, szczegóły wymagań",
+        "feedback": "Ankieta opinii klientów po rozmowie z pomocą techniczną",
+        "leave": "Wniosek urlopowy pracownika z polami: imię, dział, daty, rodzaj urlopu, powód i zatwierdzenie przez przełożonego"
+      },
+      "addDocument": "Wklej dokument lub stary formularz",
+      "document": "Dokument",
+      "documentHint": "Wklej tekst papierowego formularza, listy kontrolnej lub starego formularza. Każde pytanie staje się polem, a nagłówki stronami.",
+      "documentPlaceholder": "SEKCJA A\nImię i nazwisko:\nData zdarzenia:\nCzy ktoś został ranny? ( ) Tak ( ) Nie",
+      "removeDocument": "Usuń",
+      "pages": {
+        "label": "Strony",
+        "auto": "Zdecyduj za mnie",
+        "one": "Jedna strona",
+        "several": "Kilka stron"
+      },
+      "cost": "Zużywa {n} kredyt | Zużywa {n} kredytów",
+      "costLeft": "Zużywa {n} kredyt · zostało {left} w tym miesiącu | Zużywa {n} kredytów · zostało {left} w tym miesiącu",
+      "generate": "Generuj",
+      "thinking": "Asystent nad tym pracuje",
+      "step": {
+        "read": "Czytanie opisu",
+        "questions": "Wybieranie pytań",
+        "logic": "Dodawanie pytań uzupełniających i sum",
+        "layout": "Układanie stron"
+      },
+      "private": "Wysyłane jest tylko to, co tu wpiszesz. Dane osobowe są maskowane, gdy wymaga tego Twoja przestrzeń robocza.",
+      "failed": "Asystent nie mógł przygotować szkicu",
+      "emptyTitle": "Opisz potrzebny formularz",
+      "emptyDesc": "Asystent przygotowuje szkic z pytaniami, pytaniami uzupełniającymi i sumami. Widzisz go tak, jak zobaczą go ludzie, a potem go tworzysz lub próbujesz ponownie.",
+      "tip": {
+        "list": "Wymień, o co zapytać: „imię, firma, godzina przybycia”.",
+        "document": "Wklej papierowy lub stary formularz, aby go przenieść.",
+        "people": "Powiedz, kto go wypełnia: goście, pracownicy, klienci.",
+        "logic": "Wspomnij o pytaniach tak / nie i kwotach dla pytań uzupełniających i sum."
+      },
+      "name": "Nazwa formularza",
+      "folder": "Folder",
+      "noFolder": "Bez folderu",
+      "discard": "Odłóż",
+      "again": "Spróbuj ponownie",
+      "create": "Utwórz formularz",
+      "created": "Utworzono „{name}”. Wszystko możesz zmienić w kreatorze.",
+      "discarded": "Szkic odłożony. Pozostaje w historii.",
+      "noCreate": "Twoja rola nie może tworzyć formularzy. Poproś administratora lub użyj szkicu jako pomysłu."
+    },
+    "templates": {
+      "mode": {
+        "template": "Szablon",
+        "design": "Projekt z koloru"
+      },
+      "describe": "Do czego służy szablon?",
+      "placeholder": "Na przykład: wypożyczanie sprzętu pracownikom, z produktem, numerem seryjnym, datami i stanem przy zwrocie.",
+      "example": {
+        "loan": "Wypożyczanie sprzętu pracownikom: produkt, numer seryjny, daty wypożyczenia, stan przy zwrocie i podpis",
+        "inspection": "Miesięczna lista kontrolna przeglądu ppoż. dla biur",
+        "volunteer": "Zapisy wolontariuszy na wydarzenie społeczne",
+        "course": "Ocena kursu przez studentów na koniec semestru"
+      },
+      "step": {
+        "kind": "Szukanie rodzaju szablonu",
+        "design": "Wybieranie pasującego projektu"
+      },
+      "name": "Nazwa szablonu",
+      "category": "Kategoria",
+      "description": "Opis",
+      "save": "Zapisz w szablonach",
+      "saved": "Zapisano „{name}” w Twoich szablonach",
+      "noSave": "Twoja rola nie może zapisywać szablonów. Poproś administratora lub użyj pomysłu do zbudowania formularza.",
+      "emptyTitle": "Opisz szablon",
+      "emptyDesc": "Asystent przygotowuje szablon dla Twojego zastosowania z pasującym projektem. Zapisz go dla wszystkich w przestrzeni roboczej."
+    },
+    "design": {
+      "colour": "Kolor marki",
+      "brandHint": "Kolor marki Twojej przestrzeni roboczej na początek.",
+      "mood": "Pożądany charakter",
+      "moodPlaceholder": "Spokojny, śmiały, formalny, przyjazny…",
+      "generate": "Zaproponuj projekty",
+      "step": {
+        "colour": "Czytanie Twojego koloru",
+        "contrast": "Sprawdzanie czytelności",
+        "styles": "Tworzenie trzech projektów"
+      },
+      "choose": "Wybierz projekt",
+      "style": {
+        "calm": {
+          "name": "Spokojny",
+          "desc": "Delikatnie zabarwiona strona, zaokrąglone pola i Twój kolor na przyciskach i nagłówkach."
+        },
+        "bold": {
+          "name": "Śmiały",
+          "desc": "Pas w Twoim kolorze u góry, strona z gradientem i przyciski na całą szerokość."
+        },
+        "minimal": {
+          "name": "Minimalny",
+          "desc": "Czysta biała strona, nagłówki z szeryfami i podkreślone pola z odrobiną Twojego koloru."
+        }
+      },
+      "name": "Nazwa motywu",
+      "defaultName": "Marka {colour}",
+      "save": "Zapisz w motywach",
+      "saved": "Zapisano „{name}” w Twoich motywach",
+      "noSave": "Twoja rola nie może dodawać motywów. Poproś administratora.",
+      "sampleTitle": "Przykładowy formularz",
+      "emptyTitle": "Projekty z koloru Twojej marki",
+      "emptyDesc": "Wybierz kolor i, jeśli chcesz, pożądany charakter. Asystent proponuje trzy projekty, które możesz wypróbować na przykładowym formularzu.",
+      "optional": "Opcjonalne"
     }
   },
   "public": {

@@ -164,6 +164,7 @@ export const ERROR_CODES = {
   'FRM-AI-1001': { status: 403, message: 'The AI assistant is switched off for this workspace.' },
   'FRM-AI-1002': { status: 429, message: "This month's AI allowance has been used. It renews at the start of next month." },
   'FRM-AI-1003': { status: 403, message: "The AI assistant isn't allowed to read this part of the workspace. An admin can change it in AI settings." },
+  'FRM-AI-1004': { status: 409, message: 'This draft was already used or put aside. Ask the assistant again.' },
   'FRM-ORG-1001': { status: 409, message: 'An entry with this name already exists.' },
   'FRM-ORG-1002': { status: 409, message: 'Forms still use it. Archive it, or merge it into another one.' },
   'FRM-PLAN-1001': { status: 402, message: 'Your plan limit has been reached. Upgrade to continue.' },

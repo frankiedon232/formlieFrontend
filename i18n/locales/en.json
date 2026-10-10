@@ -638,7 +638,8 @@
     "FRM-USER-1012": "This sign-up link only accepts the organisation's email addresses.",
     "FRM-AI-1001": "The AI assistant is switched off for this workspace.",
     "FRM-AI-1002": "This month's AI allowance has been used. It renews at the start of next month.",
-    "FRM-AI-1003": "The AI assistant isn't allowed to read this part of the workspace. An admin can change it in AI settings."
+    "FRM-AI-1003": "The AI assistant isn't allowed to read this part of the workspace. An admin can change it in AI settings.",
+    "FRM-AI-1004": "This draft was already used or put aside. Ask the assistant again."
   },
   "errorUi": {
     "reference": "Reference: {id}",
@@ -1130,7 +1131,8 @@
       "ai_enabled": "AI assistant switched on",
       "ai_disabled": "AI assistant switched off",
       "ai_settings_updated": "AI settings changed",
-      "ai_request_deleted": "AI request deleted from the history"
+      "ai_request_deleted": "AI request deleted from the history",
+      "ai_applied": "AI draft applied"
     },
     "detail": {
       "who": "Who",
@@ -4919,6 +4921,139 @@
       "leaveTitle": "Leave without saving?",
       "leaveDesc": "Your changes to the AI settings will be lost.",
       "leave": "Leave"
+    },
+    "stats": {
+      "pages": "{n} page | {n} pages",
+      "fields": "{n} question | {n} questions",
+      "logic": "{n} rule | {n} rules",
+      "calculations": "{n} calculation | {n} calculations"
+    },
+    "note": {
+      "follow_up": "“{field}” only shows after a yes to “{after}”.",
+      "total": "“Total” is worked out from “{a}” × “{b}”.",
+      "pages": "Grouped into {n} pages so it is quick to fill in on a phone. | Grouped into {n} pages so it is quick to fill in on a phone.",
+      "document_questions": "Turned {n} question from the document into a field, keeping its wording. | Turned {n} questions from the document into fields, keeping their wording.",
+      "document_sections": "Kept the document’s {n} sections as pages. | Kept the document’s {n} sections as pages.",
+      "document_none": "The document had no lines that read like questions, so the description was used instead.",
+      "added_contact": "Added name and email first, so you know who answered.",
+      "from_list": "Made {n} question from what you listed, in your words. | Made {n} questions from what you listed, in your words.",
+      "template": "Started from Formalie’s “{name}” template, the closest to what you described.",
+      "try_again": "Try again for a different starting point.",
+      "basic": "There was not much to go on, so this is a basic form. Describe the questions you need for a closer draft.",
+      "themes": "{n} design that keeps your colour readable. | {n} designs that keep your colour readable: buttons use a shade that white text reads well on."
+    },
+    "create": {
+      "describe": "Describe the form",
+      "placeholder": "For example: a sign-in form for visitors at reception with name, company, who they are visiting, arrival time and agreement to the site rules.",
+      "examples": "Start from an example",
+      "example": {
+        "visitor": "A sign-in form for visitors at reception: name, company, who they are visiting, arrival time, a photo and agreement to the site rules",
+        "order": "An order request with: item, quantity, unit price, delivery date, any special requirements, details of the requirements",
+        "feedback": "A customer feedback survey after a support call",
+        "leave": "A leave request for staff with: name, department, dates, type of leave, reason and manager approval"
+      },
+      "addDocument": "Paste a document or an old form",
+      "document": "Document",
+      "documentHint": "Paste the text of a paper form, a checklist or an old form. Each question becomes a field; headings become pages.",
+      "documentPlaceholder": "SECTION A\nFull name:\nDate of incident:\nWas anyone hurt? ( ) Yes ( ) No",
+      "removeDocument": "Remove",
+      "pages": {
+        "label": "Pages",
+        "auto": "Decide for me",
+        "one": "One page",
+        "several": "Several pages"
+      },
+      "cost": "Uses {n} credit | Uses {n} credits",
+      "costLeft": "Uses {n} credit · {left} left this month | Uses {n} credits · {left} left this month",
+      "generate": "Generate",
+      "thinking": "The assistant is working on it",
+      "step": {
+        "read": "Reading your description",
+        "questions": "Choosing the questions",
+        "logic": "Adding follow-ups and totals",
+        "layout": "Laying out the pages"
+      },
+      "private": "Only what you type here is sent. Personal details are masked when your workspace asks for it.",
+      "failed": "The assistant couldn’t make a draft",
+      "emptyTitle": "Describe the form you need",
+      "emptyDesc": "The assistant drafts it with questions, follow-ups and totals. You see it as people will, then create it or try again.",
+      "tip": {
+        "list": "List what to ask: “name, company, arrival time”.",
+        "document": "Paste a paper form or an old one to bring it in.",
+        "people": "Say who fills it in: visitors, staff, customers.",
+        "logic": "Mention yes / no questions and amounts for follow-ups and totals."
+      },
+      "name": "Form name",
+      "folder": "Folder",
+      "noFolder": "No folder",
+      "discard": "Put aside",
+      "again": "Try again",
+      "create": "Create form",
+      "created": "“{name}” created. You can change everything in the builder.",
+      "discarded": "Draft put aside. It stays in the history.",
+      "noCreate": "Your role can’t create forms. Ask an admin, or use the draft as an idea."
+    },
+    "templates": {
+      "mode": {
+        "template": "Template",
+        "design": "Design from a colour"
+      },
+      "describe": "What is the template for?",
+      "placeholder": "For example: lending equipment to staff, with the item, serial number, dates and condition on return.",
+      "example": {
+        "loan": "Lending equipment to staff: item, serial number, loan dates, condition on return and signature",
+        "inspection": "A monthly fire safety inspection checklist for offices",
+        "volunteer": "Volunteer sign-up for a community event",
+        "course": "Course evaluation for students at the end of term"
+      },
+      "step": {
+        "kind": "Finding the kind of template",
+        "design": "Choosing a matching design"
+      },
+      "name": "Template name",
+      "category": "Category",
+      "description": "Description",
+      "save": "Save to templates",
+      "saved": "“{name}” saved to your templates",
+      "noSave": "Your role can’t save templates. Ask an admin, or use the idea to build a form.",
+      "emptyTitle": "Describe a template",
+      "emptyDesc": "The assistant drafts a template for your use case with a design that suits it. Save it for everyone in the workspace."
+    },
+    "design": {
+      "colour": "Brand colour",
+      "brandHint": "Your workspace’s brand colour to start with.",
+      "mood": "The feel you want",
+      "moodPlaceholder": "Calm, bold, formal, friendly…",
+      "generate": "Suggest designs",
+      "step": {
+        "colour": "Reading your colour",
+        "contrast": "Checking it reads well",
+        "styles": "Making three designs"
+      },
+      "choose": "Choose a design",
+      "style": {
+        "calm": {
+          "name": "Calm",
+          "desc": "Soft tinted page, rounded fields and your colour on buttons and headings."
+        },
+        "bold": {
+          "name": "Bold",
+          "desc": "A band in your colour at the top, a gradient page and full-width buttons."
+        },
+        "minimal": {
+          "name": "Minimal",
+          "desc": "A clean white page, serif headings and underlined fields with a touch of your colour."
+        }
+      },
+      "name": "Theme name",
+      "defaultName": "Brand {colour}",
+      "save": "Save to themes",
+      "saved": "“{name}” saved to your themes",
+      "noSave": "Your role can’t add themes. Ask an admin.",
+      "sampleTitle": "Sample form",
+      "emptyTitle": "Designs from your brand colour",
+      "emptyDesc": "Pick a colour and, if you like, the feel you want. The assistant suggests three designs you can try on a sample form.",
+      "optional": "Optional"
     }
   },
   "public": {

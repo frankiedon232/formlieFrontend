@@ -170,6 +170,7 @@ export const AUDIT_EVENTS = {
   'ai.disabled': { area: 'ai', icon: 'i-lucide-circle-off' },
   'ai.settings_updated': { area: 'ai', icon: 'i-lucide-sliders-horizontal' },
   'ai.request_deleted': { area: 'ai', icon: 'i-lucide-trash-2' },
+  'ai.applied': { area: 'ai', icon: 'i-lucide-check-check' },
   // API service (F13)
   'api.service_created': { area: 'api', icon: 'i-lucide-boxes' },
   'api.service_updated': { area: 'api', icon: 'i-lucide-pencil' },

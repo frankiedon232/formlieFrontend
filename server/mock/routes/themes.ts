@@ -7,6 +7,7 @@
  * Forms keep a copy of the tokens plus `schema.theme_id`, so changing or deleting a theme never
  * breaks a form. Every change is in the audit trail.
  */
+import type { H3Event } from 'h3'
 import { requireResource, resourceActions } from '../data/resourceAccess'
 import { z } from 'zod'
 import type { SavedTheme, ThemeInsights, ThemeSource } from '#shared/types/forms'
@@ -134,6 +135,17 @@ export const getTheme = defineMockRoute(({ event }) => {
   const { tenant, user } = requireAuth(event)
   return ok(view(tenant, user)(find(tenant, getRouterParam(event, 'id'))))
 })
+
+/** A new saved theme (the designer's Save as theme, and the AI assistant's designs, F19). */
+export function addTheme(event: H3Event, tenant: MockTenant, user: MockUser, input: { name: string; tokens: StoredTheme['tokens']; source?: ThemeSource }) {
+  assertName(tenant, input.name)
+  const now = new Date().toISOString()
+  const theme: StoredTheme = { id: crypto.randomUUID(), name: input.name, tokens: input.tokens, source: input.source ?? 'saved', created_by: authorOf(user), created_at: now, updated_at: now }
+  themesOf(tenant).unshift(theme)
+  saveLibrary()
+  audit(event, tenant, user, 'forms.theme_created', theme, [{ field: 'source', before: null, after: theme.source ?? 'saved' }])
+  return view(tenant, user)(theme)
+}
 
 export const createTheme = defineMockRoute(({ event, body: raw }) => {
   const { user, tenant } = requireAuth(event)

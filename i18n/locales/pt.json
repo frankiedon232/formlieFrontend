@@ -638,7 +638,8 @@
     "FRM-USER-1012": "Este link de registo só aceita endereços de e-mail da organização.",
     "FRM-AI-1001": "O assistente de IA está desativado neste espaço de trabalho.",
     "FRM-AI-1002": "A cota de IA deste mês foi usada. Ela renova no início do próximo mês.",
-    "FRM-AI-1003": "O assistente de IA não pode ler esta parte do espaço de trabalho. Um admin pode alterar isso nas configurações de IA."
+    "FRM-AI-1003": "O assistente de IA não pode ler esta parte do espaço de trabalho. Um admin pode alterar isso nas configurações de IA.",
+    "FRM-AI-1004": "Este rascunho já foi usado ou posto de lado. Peça novamente ao assistente."
   },
   "errorUi": {
     "reference": "Referência: {id}",
@@ -1130,7 +1131,8 @@
       "ai_enabled": "Assistente de IA ativado",
       "ai_disabled": "Assistente de IA desativado",
       "ai_settings_updated": "Configurações de IA alteradas",
-      "ai_request_deleted": "Solicitação de IA excluída do histórico"
+      "ai_request_deleted": "Solicitação de IA excluída do histórico",
+      "ai_applied": "Rascunho de IA aplicado"
     },
     "detail": {
       "who": "Quem",
@@ -4919,6 +4921,139 @@
       "leaveTitle": "Sair sem salvar?",
       "leaveDesc": "Suas alterações nas configurações de IA serão perdidas.",
       "leave": "Sair"
+    },
+    "stats": {
+      "pages": "{n} página | {n} páginas",
+      "fields": "{n} pergunta | {n} perguntas",
+      "logic": "{n} regra | {n} regras",
+      "calculations": "{n} cálculo | {n} cálculos"
+    },
+    "note": {
+      "follow_up": "«{field}» só aparece depois de um sim em «{after}».",
+      "total": "«Total» é calculado a partir de «{a}» × «{b}».",
+      "pages": "Agrupado em {n} páginas para preencher rápido no celular. | Agrupado em {n} páginas para preencher rápido no celular.",
+      "document_questions": "{n} pergunta do documento virou um campo, mantendo a redação. | {n} perguntas do documento viraram campos, mantendo a redação.",
+      "document_sections": "{n} seção do documento foi mantida como página. | As {n} seções do documento foram mantidas como páginas.",
+      "document_none": "O documento não tinha linhas que parecessem perguntas, então a descrição foi usada.",
+      "added_contact": "Nome e e-mail foram adicionados primeiro, para você saber quem respondeu.",
+      "from_list": "{n} pergunta criada a partir da sua lista, com as suas palavras. | {n} perguntas criadas a partir da sua lista, com as suas palavras.",
+      "template": "Começamos pelo modelo «{name}» da Formalie, o mais próximo do que você descreveu.",
+      "try_again": "Tente de novo para ter um ponto de partida diferente.",
+      "basic": "Havia pouco para trabalhar, então este é um formulário básico. Descreva as perguntas de que precisa para um rascunho mais próximo.",
+      "themes": "{n} design que mantém sua cor legível. | {n} designs que mantêm sua cor legível: os botões usam um tom em que o texto branco se lê bem."
+    },
+    "create": {
+      "describe": "Descreva o formulário",
+      "placeholder": "Por exemplo: um formulário de entrada para visitantes na recepção com nome, empresa, quem visitam, horário de chegada e aceite das regras do local.",
+      "examples": "Comece por um exemplo",
+      "example": {
+        "visitor": "Um formulário de entrada para visitantes na recepção: nome, empresa, quem visitam, horário de chegada, uma foto e aceite das regras do local",
+        "order": "Um pedido de compra com: item, quantidade, preço unitário, data de entrega, requisitos especiais, detalhes dos requisitos",
+        "feedback": "Uma pesquisa de satisfação do cliente após uma chamada de suporte",
+        "leave": "Um pedido de licença para a equipe com: nome, departamento, datas, tipo de licença, motivo e aprovação do gestor"
+      },
+      "addDocument": "Cole um documento ou formulário antigo",
+      "document": "Documento",
+      "documentHint": "Cole o texto de um formulário em papel, de uma lista de verificação ou de um formulário antigo. Cada pergunta vira um campo e os títulos viram páginas.",
+      "documentPlaceholder": "SEÇÃO A\nNome completo:\nData do incidente:\nAlguém se feriu? ( ) Sim ( ) Não",
+      "removeDocument": "Remover",
+      "pages": {
+        "label": "Páginas",
+        "auto": "Decida por mim",
+        "one": "Uma página",
+        "several": "Várias páginas"
+      },
+      "cost": "Usa {n} crédito | Usa {n} créditos",
+      "costLeft": "Usa {n} crédito · restam {left} este mês | Usa {n} créditos · restam {left} este mês",
+      "generate": "Gerar",
+      "thinking": "O assistente está trabalhando nisso",
+      "step": {
+        "read": "Lendo sua descrição",
+        "questions": "Escolhendo as perguntas",
+        "logic": "Adicionando perguntas de acompanhamento e totais",
+        "layout": "Organizando as páginas"
+      },
+      "private": "Só o que você digita aqui é enviado. Dados pessoais são ocultados quando seu espaço de trabalho pede.",
+      "failed": "O assistente não conseguiu criar um rascunho",
+      "emptyTitle": "Descreva o formulário de que precisa",
+      "emptyDesc": "O assistente cria o rascunho com perguntas, acompanhamentos e totais. Você o vê como as pessoas verão e depois o cria ou tenta de novo.",
+      "tip": {
+        "list": "Liste o que perguntar: «nome, empresa, horário de chegada».",
+        "document": "Cole um formulário em papel ou antigo para trazê-lo.",
+        "people": "Diga quem vai preencher: visitantes, equipe, clientes.",
+        "logic": "Mencione perguntas de sim / não e valores para acompanhamentos e totais."
+      },
+      "name": "Nome do formulário",
+      "folder": "Pasta",
+      "noFolder": "Sem pasta",
+      "discard": "Pôr de lado",
+      "again": "Tentar de novo",
+      "create": "Criar formulário",
+      "created": "«{name}» criado. Você pode alterar tudo no construtor.",
+      "discarded": "Rascunho posto de lado. Ele fica no histórico.",
+      "noCreate": "Seu perfil não pode criar formulários. Peça a um administrador ou use o rascunho como ideia."
+    },
+    "templates": {
+      "mode": {
+        "template": "Modelo",
+        "design": "Design a partir de uma cor"
+      },
+      "describe": "Para que serve o modelo?",
+      "placeholder": "Por exemplo: empréstimo de equipamentos à equipe, com item, número de série, datas e estado na devolução.",
+      "example": {
+        "loan": "Empréstimo de equipamentos à equipe: item, número de série, datas do empréstimo, estado na devolução e assinatura",
+        "inspection": "Uma lista de verificação mensal de segurança contra incêndio para escritórios",
+        "volunteer": "Inscrição de voluntários para um evento comunitário",
+        "course": "Avaliação do curso para estudantes no fim do período"
+      },
+      "step": {
+        "kind": "Procurando o tipo de modelo",
+        "design": "Escolhendo um design que combine"
+      },
+      "name": "Nome do modelo",
+      "category": "Categoria",
+      "description": "Descrição",
+      "save": "Salvar nos modelos",
+      "saved": "«{name}» salvo nos seus modelos",
+      "noSave": "Seu perfil não pode salvar modelos. Peça a um administrador ou use a ideia para criar um formulário.",
+      "emptyTitle": "Descreva um modelo",
+      "emptyDesc": "O assistente cria um modelo para o seu caso com um design que combina. Salve-o para todos no espaço de trabalho."
+    },
+    "design": {
+      "colour": "Cor da marca",
+      "brandHint": "A cor da marca do seu espaço de trabalho para começar.",
+      "mood": "O estilo que você quer",
+      "moodPlaceholder": "Calmo, ousado, formal, amigável…",
+      "generate": "Sugerir designs",
+      "step": {
+        "colour": "Lendo sua cor",
+        "contrast": "Verificando se fica legível",
+        "styles": "Criando três designs"
+      },
+      "choose": "Escolha um design",
+      "style": {
+        "calm": {
+          "name": "Calmo",
+          "desc": "Página com tom suave, campos arredondados e sua cor nos botões e títulos."
+        },
+        "bold": {
+          "name": "Ousado",
+          "desc": "Uma faixa da sua cor no topo, uma página em degradê e botões de largura total."
+        },
+        "minimal": {
+          "name": "Minimalista",
+          "desc": "Uma página branca limpa, títulos com serifa e campos sublinhados com um toque da sua cor."
+        }
+      },
+      "name": "Nome do tema",
+      "defaultName": "Marca {colour}",
+      "save": "Salvar nos temas",
+      "saved": "«{name}» salvo nos seus temas",
+      "noSave": "Seu perfil não pode adicionar temas. Peça a um administrador.",
+      "sampleTitle": "Formulário de exemplo",
+      "emptyTitle": "Designs a partir da cor da sua marca",
+      "emptyDesc": "Escolha uma cor e, se quiser, o estilo desejado. O assistente sugere três designs que você pode testar em um formulário de exemplo.",
+      "optional": "Opcional"
     }
   },
   "public": {

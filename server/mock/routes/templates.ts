@@ -4,6 +4,7 @@
  * template, edit, duplicate, delete). System templates can't be changed, duplicate them instead.
  * Every change is in the audit trail.
  */
+import type { H3Event } from 'h3'
 import { requireResource, resourceActions } from '../data/resourceAccess'
 import { z } from 'zod'
 import type { TemplateCategorySummary, TemplateFacets, TemplateInsights, TemplateSummary } from '#shared/types/templates'
@@ -168,6 +169,17 @@ const createBody = z.object({
   description: z.string().trim().max(300).default(''),
   category: z.enum(TEMPLATE_CATEGORY_KEYS),
 })
+
+/** A workspace template from a schema that has no form behind it (the AI assistant's template ideas, F19). */
+export function addWorkspaceTemplate(event: H3Event, tenant: MockTenant, user: MockUser, input: { name: string; description: string; category: TemplateDef['category']; schema: FormSchemaV1 }) {
+  assertName(tenant, input.name)
+  const now = new Date().toISOString()
+  const item = { id: crypto.randomUUID().slice(0, 12), name: input.name, description: input.description, category: input.category, icon: categoryOf(input.category)?.icon ?? 'i-lucide-layout-template', schema: structuredClone(input.schema), created_by: authorOf(user), created_at: now, updated_at: now }
+  workspaceTemplates(tenant).unshift(item)
+  saveLibrary()
+  audit(event, tenant, user, 'forms.template_created', item, [{ field: 'source', before: null, after: 'AI assistant' }])
+  return templateDetail(tenant, workspaceKey(item.id), 'en')!
+}
 
 /** POST /templates, save a form (its current draft, design included) as a workspace template. */
 export const createTemplate = defineMockRoute(({ event, body: raw }) => {

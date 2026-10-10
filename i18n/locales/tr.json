@@ -638,7 +638,8 @@
     "FRM-USER-1012": "Bu kayıt bağlantısı yalnızca kuruluşun e-posta adreslerini kabul eder.",
     "FRM-AI-1001": "Yapay zeka asistanı bu çalışma alanı için kapalı.",
     "FRM-AI-1002": "Bu ayki yapay zeka hakkı kullanıldı. Gelecek ayın başında yenilenir.",
-    "FRM-AI-1003": "Yapay zeka asistanının çalışma alanının bu bölümünü okumasına izin verilmiyor. Bir yönetici bunu yapay zeka ayarlarından değiştirebilir."
+    "FRM-AI-1003": "Yapay zeka asistanının çalışma alanının bu bölümünü okumasına izin verilmiyor. Bir yönetici bunu yapay zeka ayarlarından değiştirebilir.",
+    "FRM-AI-1004": "Bu taslak zaten kullanıldı veya kenara bırakıldı. Asistana tekrar sorun."
   },
   "errorUi": {
     "reference": "Referans: {id}",
@@ -1130,7 +1131,8 @@
       "ai_enabled": "Yapay zeka asistanı açıldı",
       "ai_disabled": "Yapay zeka asistanı kapatıldı",
       "ai_settings_updated": "Yapay zeka ayarları değişti",
-      "ai_request_deleted": "Yapay zeka isteği geçmişten silindi"
+      "ai_request_deleted": "Yapay zeka isteği geçmişten silindi",
+      "ai_applied": "Yapay zekâ taslağı uygulandı"
     },
     "detail": {
       "who": "Kim",
@@ -4919,6 +4921,139 @@
       "leaveTitle": "Kaydetmeden çıkılsın mı?",
       "leaveDesc": "Yapay zeka ayarlarındaki değişiklikleriniz kaybolacak.",
       "leave": "Çık"
+    },
+    "stats": {
+      "pages": "{n} sayfa | {n} sayfa",
+      "fields": "{n} soru | {n} soru",
+      "logic": "{n} kural | {n} kural",
+      "calculations": "{n} hesaplama | {n} hesaplama"
+    },
+    "note": {
+      "follow_up": "“{field}” yalnızca “{after}” sorusuna evet denince görünür.",
+      "total": "“Toplam”, “{a}” × “{b}” değerinden hesaplanır.",
+      "pages": "Telefonda hızlı doldurulabilmesi için {n} sayfada gruplandı. | Telefonda hızlı doldurulabilmesi için {n} sayfada gruplandı.",
+      "document_questions": "Belgedeki {n} soru, ifadesi korunarak alana dönüştürüldü. | Belgedeki {n} soru, ifadeleri korunarak alana dönüştürüldü.",
+      "document_sections": "Belgenin {n} bölümü sayfa olarak korundu. | Belgenin {n} bölümü sayfa olarak korundu.",
+      "document_none": "Belgede soruya benzeyen satır yoktu, bu yüzden açıklama kullanıldı.",
+      "added_contact": "Kimin yanıtladığını bilmeniz için önce ad ve e-posta eklendi.",
+      "from_list": "Listenizden {n} soru, sizin sözlerinizle oluşturuldu. | Listenizden {n} soru, sizin sözlerinizle oluşturuldu.",
+      "template": "Tarifinize en yakın Formalie şablonu “{name}” ile başlandı.",
+      "try_again": "Farklı bir başlangıç için tekrar deneyin.",
+      "basic": "Elde az bilgi vardı, bu yüzden bu temel bir form. Daha yakın bir taslak için ihtiyacınız olan soruları anlatın.",
+      "themes": "Renginizi okunaklı tutan {n} tasarım. | Renginizi okunaklı tutan {n} tasarım: düğmeler, üzerinde beyaz yazının rahat okunduğu bir ton kullanır."
+    },
+    "create": {
+      "describe": "Formu anlatın",
+      "placeholder": "Örneğin: resepsiyonda ziyaretçiler için ad, şirket, kimi ziyaret ettikleri, varış saati ve alan kurallarını kabul etme içeren bir giriş formu.",
+      "examples": "Örnekle başlayın",
+      "example": {
+        "visitor": "Resepsiyonda ziyaretçiler için bir giriş formu: ad, şirket, kimi ziyaret ettikleri, varış saati, bir fotoğraf ve alan kurallarını kabul etme",
+        "order": "Şunları içeren bir sipariş talebi: ürün, adet, birim fiyat, teslimat tarihi, özel gereksinimler, gereksinim ayrıntıları",
+        "feedback": "Destek görüşmesinden sonra müşteri geri bildirim anketi",
+        "leave": "Personel için izin talebi: ad, departman, tarihler, izin türü, gerekçe ve yönetici onayı"
+      },
+      "addDocument": "Belge veya eski form yapıştırın",
+      "document": "Belge",
+      "documentHint": "Kâğıt bir formun, kontrol listesinin veya eski bir formun metnini yapıştırın. Her soru bir alan olur, başlıklar sayfa olur.",
+      "documentPlaceholder": "BÖLÜM A\nAd soyad:\nOlay tarihi:\nYaralanan oldu mu? ( ) Evet ( ) Hayır",
+      "removeDocument": "Kaldır",
+      "pages": {
+        "label": "Sayfalar",
+        "auto": "Benim yerime karar ver",
+        "one": "Tek sayfa",
+        "several": "Birkaç sayfa"
+      },
+      "cost": "{n} kredi kullanır | {n} kredi kullanır",
+      "costLeft": "{n} kredi kullanır · bu ay {left} kaldı | {n} kredi kullanır · bu ay {left} kaldı",
+      "generate": "Oluştur",
+      "thinking": "Asistan üzerinde çalışıyor",
+      "step": {
+        "read": "Açıklamanız okunuyor",
+        "questions": "Sorular seçiliyor",
+        "logic": "Takip soruları ve toplamlar ekleniyor",
+        "layout": "Sayfalar düzenleniyor"
+      },
+      "private": "Yalnızca buraya yazdıklarınız gönderilir. Çalışma alanınız istediğinde kişisel veriler gizlenir.",
+      "failed": "Asistan taslak oluşturamadı",
+      "emptyTitle": "İhtiyacınız olan formu anlatın",
+      "emptyDesc": "Asistan formu sorular, takip soruları ve toplamlarla taslak olarak hazırlar. İnsanların göreceği şekilde görürsünüz, sonra oluşturur veya tekrar denersiniz.",
+      "tip": {
+        "list": "Neleri soracağınızı sıralayın: “ad, şirket, varış saati”.",
+        "document": "Kâğıt veya eski bir formu yapıştırarak içeri alın.",
+        "people": "Kimin dolduracağını söyleyin: ziyaretçiler, personel, müşteriler.",
+        "logic": "Takip soruları ve toplamlar için evet / hayır sorularını ve tutarları belirtin."
+      },
+      "name": "Form adı",
+      "folder": "Klasör",
+      "noFolder": "Klasör yok",
+      "discard": "Kenara bırak",
+      "again": "Tekrar dene",
+      "create": "Form oluştur",
+      "created": "“{name}” oluşturuldu. Her şeyi oluşturucuda değiştirebilirsiniz.",
+      "discarded": "Taslak kenara bırakıldı. Geçmişte kalır.",
+      "noCreate": "Rolünüz form oluşturamaz. Bir yöneticiye sorun veya taslağı fikir olarak kullanın."
+    },
+    "templates": {
+      "mode": {
+        "template": "Şablon",
+        "design": "Renkten tasarım"
+      },
+      "describe": "Şablon ne için?",
+      "placeholder": "Örneğin: personele ekipman ödünç verme; ürün, seri numarası, tarihler ve iade durumu ile.",
+      "example": {
+        "loan": "Personele ekipman ödünç verme: ürün, seri numarası, ödünç tarihleri, iade durumu ve imza",
+        "inspection": "Ofisler için aylık yangın güvenliği denetim kontrol listesi",
+        "volunteer": "Topluluk etkinliği için gönüllü kaydı",
+        "course": "Dönem sonunda öğrenciler için ders değerlendirmesi"
+      },
+      "step": {
+        "kind": "Şablon türü aranıyor",
+        "design": "Uyumlu bir tasarım seçiliyor"
+      },
+      "name": "Şablon adı",
+      "category": "Kategori",
+      "description": "Açıklama",
+      "save": "Şablonlara kaydet",
+      "saved": "“{name}” şablonlarınıza kaydedildi",
+      "noSave": "Rolünüz şablon kaydedemez. Bir yöneticiye sorun veya fikri form oluşturmak için kullanın.",
+      "emptyTitle": "Şablonu anlatın",
+      "emptyDesc": "Asistan, kullanım amacınız için uygun bir tasarımla şablon hazırlar. Çalışma alanındaki herkes için kaydedin."
+    },
+    "design": {
+      "colour": "Marka rengi",
+      "brandHint": "Başlangıç için çalışma alanınızın marka rengi.",
+      "mood": "İstediğiniz his",
+      "moodPlaceholder": "Sakin, cesur, resmî, samimi…",
+      "generate": "Tasarım öner",
+      "step": {
+        "colour": "Renginiz okunuyor",
+        "contrast": "Okunabilirlik kontrol ediliyor",
+        "styles": "Üç tasarım hazırlanıyor"
+      },
+      "choose": "Bir tasarım seçin",
+      "style": {
+        "calm": {
+          "name": "Sakin",
+          "desc": "Yumuşak tonlu sayfa, yuvarlak alanlar ve düğmelerde ile başlıklarda rengi."
+        },
+        "bold": {
+          "name": "Cesur",
+          "desc": "Üstte renginizde bir şerit, geçişli bir sayfa ve tam genişlikte düğmeler."
+        },
+        "minimal": {
+          "name": "Minimal",
+          "desc": "Sade beyaz sayfa, tırnaklı başlıklar ve renginizin dokunuşuyla altı çizili alanlar."
+        }
+      },
+      "name": "Tema adı",
+      "defaultName": "Marka {colour}",
+      "save": "Temalara kaydet",
+      "saved": "“{name}” temalarınıza kaydedildi",
+      "noSave": "Rolünüz tema ekleyemez. Bir yöneticiye sorun.",
+      "sampleTitle": "Örnek form",
+      "emptyTitle": "Marka renginizden tasarımlar",
+      "emptyDesc": "Bir renk seçin ve isterseniz istediğiniz hissi yazın. Asistan, örnek form üzerinde deneyebileceğiniz üç tasarım önerir.",
+      "optional": "İsteğe bağlı"
     }
   },
   "public": {

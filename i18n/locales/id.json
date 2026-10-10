@@ -638,7 +638,8 @@
     "FRM-USER-1012": "Tautan pendaftaran ini hanya menerima alamat email organisasi.",
     "FRM-AI-1001": "Asisten AI dimatikan untuk ruang kerja ini.",
     "FRM-AI-1002": "Jatah AI bulan ini sudah habis. Jatah diperbarui di awal bulan depan.",
-    "FRM-AI-1003": "Asisten AI tidak diizinkan membaca bagian ruang kerja ini. Admin dapat mengubahnya di pengaturan AI."
+    "FRM-AI-1003": "Asisten AI tidak diizinkan membaca bagian ruang kerja ini. Admin dapat mengubahnya di pengaturan AI.",
+    "FRM-AI-1004": "Draf ini sudah digunakan atau disisihkan. Minta asisten lagi."
   },
   "errorUi": {
     "reference": "Referensi: {id}",
@@ -1130,7 +1131,8 @@
       "ai_enabled": "Asisten AI dinyalakan",
       "ai_disabled": "Asisten AI dimatikan",
       "ai_settings_updated": "Pengaturan AI diubah",
-      "ai_request_deleted": "Permintaan AI dihapus dari riwayat"
+      "ai_request_deleted": "Permintaan AI dihapus dari riwayat",
+      "ai_applied": "Draf AI diterapkan"
     },
     "detail": {
       "who": "Siapa",
@@ -4919,6 +4921,139 @@
       "leaveTitle": "Keluar tanpa menyimpan?",
       "leaveDesc": "Perubahan pada pengaturan AI akan hilang.",
       "leave": "Keluar"
+    },
+    "stats": {
+      "pages": "{n} halaman | {n} halaman",
+      "fields": "{n} pertanyaan | {n} pertanyaan",
+      "logic": "{n} aturan | {n} aturan",
+      "calculations": "{n} perhitungan | {n} perhitungan"
+    },
+    "note": {
+      "follow_up": "“{field}” hanya muncul setelah jawaban ya pada “{after}”.",
+      "total": "“Total” dihitung dari “{a}” × “{b}”.",
+      "pages": "Dikelompokkan menjadi {n} halaman agar cepat diisi di ponsel. | Dikelompokkan menjadi {n} halaman agar cepat diisi di ponsel.",
+      "document_questions": "{n} pertanyaan dari dokumen dijadikan kolom, dengan kata-kata aslinya. | {n} pertanyaan dari dokumen dijadikan kolom, dengan kata-kata aslinya.",
+      "document_sections": "{n} bagian dokumen dipertahankan sebagai halaman. | {n} bagian dokumen dipertahankan sebagai halaman.",
+      "document_none": "Dokumen tidak punya baris yang terbaca seperti pertanyaan, jadi deskripsi yang digunakan.",
+      "added_contact": "Nama dan email ditambahkan lebih dulu, agar Anda tahu siapa yang menjawab.",
+      "from_list": "{n} pertanyaan dibuat dari daftar Anda, dengan kata-kata Anda. | {n} pertanyaan dibuat dari daftar Anda, dengan kata-kata Anda.",
+      "template": "Dimulai dari template “{name}” milik Formalie, yang paling dekat dengan deskripsi Anda.",
+      "try_again": "Coba lagi untuk titik awal yang berbeda.",
+      "basic": "Informasinya sedikit, jadi ini formulir dasar. Jelaskan pertanyaan yang Anda perlukan untuk draf yang lebih tepat.",
+      "themes": "{n} desain yang menjaga warna Anda tetap terbaca. | {n} desain yang menjaga warna Anda tetap terbaca: tombol memakai warna yang nyaman dibaca dengan teks putih."
+    },
+    "create": {
+      "describe": "Jelaskan formulirnya",
+      "placeholder": "Contoh: formulir masuk untuk tamu di resepsionis dengan nama, perusahaan, siapa yang dikunjungi, waktu kedatangan, dan persetujuan aturan lokasi.",
+      "examples": "Mulai dari contoh",
+      "example": {
+        "visitor": "Formulir masuk untuk tamu di resepsionis: nama, perusahaan, siapa yang dikunjungi, waktu kedatangan, foto, dan persetujuan aturan lokasi",
+        "order": "Permintaan pesanan dengan: barang, jumlah, harga satuan, tanggal pengiriman, persyaratan khusus, rincian persyaratan",
+        "feedback": "Survei umpan balik pelanggan setelah panggilan dukungan",
+        "leave": "Pengajuan cuti untuk staf dengan: nama, departemen, tanggal, jenis cuti, alasan, dan persetujuan manajer"
+      },
+      "addDocument": "Tempel dokumen atau formulir lama",
+      "document": "Dokumen",
+      "documentHint": "Tempel teks formulir kertas, daftar periksa, atau formulir lama. Setiap pertanyaan menjadi kolom, judul menjadi halaman.",
+      "documentPlaceholder": "BAGIAN A\nNama lengkap:\nTanggal kejadian:\nApakah ada yang terluka? ( ) Ya ( ) Tidak",
+      "removeDocument": "Hapus",
+      "pages": {
+        "label": "Halaman",
+        "auto": "Pilihkan untuk saya",
+        "one": "Satu halaman",
+        "several": "Beberapa halaman"
+      },
+      "cost": "Memakai {n} kredit | Memakai {n} kredit",
+      "costLeft": "Memakai {n} kredit · sisa {left} bulan ini | Memakai {n} kredit · sisa {left} bulan ini",
+      "generate": "Buat",
+      "thinking": "Asisten sedang mengerjakannya",
+      "step": {
+        "read": "Membaca deskripsi Anda",
+        "questions": "Memilih pertanyaan",
+        "logic": "Menambahkan pertanyaan lanjutan dan total",
+        "layout": "Menata halaman"
+      },
+      "private": "Hanya yang Anda ketik di sini yang dikirim. Data pribadi disamarkan jika ruang kerja Anda memintanya.",
+      "failed": "Asisten tidak dapat membuat draf",
+      "emptyTitle": "Jelaskan formulir yang Anda butuhkan",
+      "emptyDesc": "Asisten menyusunnya dengan pertanyaan, pertanyaan lanjutan, dan total. Anda melihatnya seperti yang akan dilihat orang, lalu membuatnya atau mencoba lagi.",
+      "tip": {
+        "list": "Daftarkan apa yang ditanyakan: “nama, perusahaan, waktu kedatangan”.",
+        "document": "Tempel formulir kertas atau yang lama untuk memasukkannya.",
+        "people": "Sebutkan siapa yang mengisi: tamu, staf, pelanggan.",
+        "logic": "Sebutkan pertanyaan ya / tidak dan jumlah untuk pertanyaan lanjutan dan total."
+      },
+      "name": "Nama formulir",
+      "folder": "Folder",
+      "noFolder": "Tanpa folder",
+      "discard": "Sisihkan",
+      "again": "Coba lagi",
+      "create": "Buat formulir",
+      "created": "“{name}” dibuat. Anda dapat mengubah semuanya di pembuat formulir.",
+      "discarded": "Draf disisihkan. Draf tetap ada di riwayat.",
+      "noCreate": "Peran Anda tidak dapat membuat formulir. Minta admin, atau gunakan draf sebagai ide."
+    },
+    "templates": {
+      "mode": {
+        "template": "Template",
+        "design": "Desain dari warna"
+      },
+      "describe": "Untuk apa template ini?",
+      "placeholder": "Contoh: peminjaman peralatan ke staf, dengan barang, nomor seri, tanggal, dan kondisi saat dikembalikan.",
+      "example": {
+        "loan": "Peminjaman peralatan ke staf: barang, nomor seri, tanggal pinjam, kondisi saat dikembalikan, dan tanda tangan",
+        "inspection": "Daftar periksa inspeksi keselamatan kebakaran bulanan untuk kantor",
+        "volunteer": "Pendaftaran relawan untuk acara komunitas",
+        "course": "Evaluasi mata kuliah untuk mahasiswa di akhir semester"
+      },
+      "step": {
+        "kind": "Mencari jenis template",
+        "design": "Memilih desain yang cocok"
+      },
+      "name": "Nama template",
+      "category": "Kategori",
+      "description": "Deskripsi",
+      "save": "Simpan ke template",
+      "saved": "“{name}” disimpan ke template Anda",
+      "noSave": "Peran Anda tidak dapat menyimpan template. Minta admin, atau gunakan ide ini untuk membuat formulir.",
+      "emptyTitle": "Jelaskan template",
+      "emptyDesc": "Asisten menyusun template untuk kebutuhan Anda dengan desain yang cocok. Simpan untuk semua orang di ruang kerja."
+    },
+    "design": {
+      "colour": "Warna merek",
+      "brandHint": "Warna merek ruang kerja Anda sebagai awal.",
+      "mood": "Kesan yang Anda inginkan",
+      "moodPlaceholder": "Tenang, tegas, formal, ramah…",
+      "generate": "Sarankan desain",
+      "step": {
+        "colour": "Membaca warna Anda",
+        "contrast": "Memeriksa keterbacaan",
+        "styles": "Membuat tiga desain"
+      },
+      "choose": "Pilih desain",
+      "style": {
+        "calm": {
+          "name": "Tenang",
+          "desc": "Halaman dengan nuansa lembut, kolom membulat, dan warna Anda pada tombol dan judul."
+        },
+        "bold": {
+          "name": "Tegas",
+          "desc": "Pita warna Anda di bagian atas, halaman gradasi, dan tombol selebar penuh."
+        },
+        "minimal": {
+          "name": "Minimalis",
+          "desc": "Halaman putih bersih, judul serif, dan kolom bergaris bawah dengan sentuhan warna Anda."
+        }
+      },
+      "name": "Nama tema",
+      "defaultName": "Merek {colour}",
+      "save": "Simpan ke tema",
+      "saved": "“{name}” disimpan ke tema Anda",
+      "noSave": "Peran Anda tidak dapat menambah tema. Minta admin.",
+      "sampleTitle": "Formulir contoh",
+      "emptyTitle": "Desain dari warna merek Anda",
+      "emptyDesc": "Pilih warna dan, jika mau, kesan yang diinginkan. Asisten menyarankan tiga desain yang bisa dicoba pada formulir contoh.",
+      "optional": "Opsional"
     }
   },
   "public": {

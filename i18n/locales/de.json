@@ -638,7 +638,8 @@
     "FRM-USER-1012": "Dieser Registrierungslink akzeptiert nur E-Mail-Adressen der Organisation.",
     "FRM-AI-1001": "Der KI-Assistent ist für diesen Arbeitsbereich ausgeschaltet.",
     "FRM-AI-1002": "Das KI-Kontingent dieses Monats ist aufgebraucht. Es wird zu Beginn des nächsten Monats erneuert.",
-    "FRM-AI-1003": "Der KI-Assistent darf diesen Teil des Arbeitsbereichs nicht lesen. Ein Admin kann das in den KI-Einstellungen ändern."
+    "FRM-AI-1003": "Der KI-Assistent darf diesen Teil des Arbeitsbereichs nicht lesen. Ein Admin kann das in den KI-Einstellungen ändern.",
+    "FRM-AI-1004": "Dieser Entwurf wurde bereits verwendet oder beiseitegelegt. Fragen Sie den Assistenten erneut."
   },
   "errorUi": {
     "reference": "Referenz: {id}",
@@ -1130,7 +1131,8 @@
       "ai_enabled": "KI-Assistent eingeschaltet",
       "ai_disabled": "KI-Assistent ausgeschaltet",
       "ai_settings_updated": "KI-Einstellungen geändert",
-      "ai_request_deleted": "KI-Anfrage aus dem Verlauf gelöscht"
+      "ai_request_deleted": "KI-Anfrage aus dem Verlauf gelöscht",
+      "ai_applied": "KI-Entwurf übernommen"
     },
     "detail": {
       "who": "Wer",
@@ -4919,6 +4921,139 @@
       "leaveTitle": "Ohne Speichern verlassen?",
       "leaveDesc": "Deine Änderungen an den KI-Einstellungen gehen verloren.",
       "leave": "Verlassen"
+    },
+    "stats": {
+      "pages": "{n} Seite | {n} Seiten",
+      "fields": "{n} Frage | {n} Fragen",
+      "logic": "{n} Regel | {n} Regeln",
+      "calculations": "{n} Berechnung | {n} Berechnungen"
+    },
+    "note": {
+      "follow_up": "„{field}“ erscheint nur nach einem Ja bei „{after}“.",
+      "total": "„Summe“ wird aus „{a}“ × „{b}“ berechnet.",
+      "pages": "In {n} Seiten gegliedert, damit das Ausfüllen am Handy schnell geht. | In {n} Seiten gegliedert, damit das Ausfüllen am Handy schnell geht.",
+      "document_questions": "{n} Frage aus dem Dokument wurde mit ihrem Wortlaut in ein Feld umgewandelt. | {n} Fragen aus dem Dokument wurden mit ihrem Wortlaut in Felder umgewandelt.",
+      "document_sections": "{n} Abschnitt des Dokuments wurde als Seite übernommen. | Die {n} Abschnitte des Dokuments wurden als Seiten übernommen.",
+      "document_none": "Das Dokument enthielt keine Zeilen, die wie Fragen aussehen, daher wurde die Beschreibung verwendet.",
+      "added_contact": "Name und E-Mail wurden zuerst hinzugefügt, damit Sie wissen, wer geantwortet hat.",
+      "from_list": "{n} Frage aus Ihrer Liste erstellt, in Ihren Worten. | {n} Fragen aus Ihrer Liste erstellt, in Ihren Worten.",
+      "template": "Ausgangspunkt war die Formalie-Vorlage „{name}“, die Ihrer Beschreibung am nächsten kommt.",
+      "try_again": "Versuchen Sie es erneut für einen anderen Ausgangspunkt.",
+      "basic": "Es gab wenig Anhaltspunkte, daher ist dies ein einfaches Formular. Beschreiben Sie die gewünschten Fragen für einen passenderen Entwurf.",
+      "themes": "{n} Design, das Ihre Farbe gut lesbar hält. | {n} Designs, die Ihre Farbe gut lesbar halten: Buttons nutzen einen Farbton, auf dem weißer Text gut lesbar ist."
+    },
+    "create": {
+      "describe": "Formular beschreiben",
+      "placeholder": "Zum Beispiel: ein Anmeldeformular für Besucher am Empfang mit Name, Firma, Besuchtem, Ankunftszeit und Zustimmung zu den Hausregeln.",
+      "examples": "Mit einem Beispiel starten",
+      "example": {
+        "visitor": "Ein Anmeldeformular für Besucher am Empfang: Name, Firma, Besuchter, Ankunftszeit, ein Foto und Zustimmung zu den Hausregeln",
+        "order": "Eine Bestellanfrage mit: Artikel, Menge, Stückpreis, Lieferdatum, besondere Anforderungen, Details zu den Anforderungen",
+        "feedback": "Eine Kundenumfrage nach einem Support-Anruf",
+        "leave": "Ein Urlaubsantrag für Mitarbeitende mit: Name, Abteilung, Daten, Art des Urlaubs, Grund und Genehmigung der Führungskraft"
+      },
+      "addDocument": "Dokument oder altes Formular einfügen",
+      "document": "Dokument",
+      "documentHint": "Fügen Sie den Text eines Papierformulars, einer Checkliste oder eines alten Formulars ein. Jede Frage wird zu einem Feld, Überschriften werden zu Seiten.",
+      "documentPlaceholder": "ABSCHNITT A\nVollständiger Name:\nDatum des Vorfalls:\nWurde jemand verletzt? ( ) Ja ( ) Nein",
+      "removeDocument": "Entfernen",
+      "pages": {
+        "label": "Seiten",
+        "auto": "Für mich entscheiden",
+        "one": "Eine Seite",
+        "several": "Mehrere Seiten"
+      },
+      "cost": "Verbraucht {n} Credit | Verbraucht {n} Credits",
+      "costLeft": "Verbraucht {n} Credit · {left} übrig in diesem Monat | Verbraucht {n} Credits · {left} übrig in diesem Monat",
+      "generate": "Erstellen",
+      "thinking": "Der Assistent arbeitet daran",
+      "step": {
+        "read": "Ihre Beschreibung wird gelesen",
+        "questions": "Fragen werden ausgewählt",
+        "logic": "Folgefragen und Summen werden ergänzt",
+        "layout": "Seiten werden angeordnet"
+      },
+      "private": "Es wird nur gesendet, was Sie hier eingeben. Persönliche Daten werden maskiert, wenn Ihr Arbeitsbereich das verlangt.",
+      "failed": "Der Assistent konnte keinen Entwurf erstellen",
+      "emptyTitle": "Beschreiben Sie das benötigte Formular",
+      "emptyDesc": "Der Assistent entwirft es mit Fragen, Folgefragen und Summen. Sie sehen es so, wie es die Leute sehen, und erstellen es dann oder versuchen es erneut.",
+      "tip": {
+        "list": "Listen Sie auf, was gefragt werden soll: „Name, Firma, Ankunftszeit“.",
+        "document": "Fügen Sie ein Papierformular oder ein altes Formular ein, um es zu übernehmen.",
+        "people": "Sagen Sie, wer es ausfüllt: Besucher, Mitarbeitende, Kunden.",
+        "logic": "Nennen Sie Ja-/Nein-Fragen und Beträge für Folgefragen und Summen."
+      },
+      "name": "Formularname",
+      "folder": "Ordner",
+      "noFolder": "Kein Ordner",
+      "discard": "Beiseitelegen",
+      "again": "Erneut versuchen",
+      "create": "Formular erstellen",
+      "created": "„{name}“ wurde erstellt. Im Builder können Sie alles ändern.",
+      "discarded": "Entwurf beiseitegelegt. Er bleibt im Verlauf.",
+      "noCreate": "Ihre Rolle darf keine Formulare erstellen. Fragen Sie einen Admin oder nutzen Sie den Entwurf als Idee."
+    },
+    "templates": {
+      "mode": {
+        "template": "Vorlage",
+        "design": "Design aus einer Farbe"
+      },
+      "describe": "Wofür ist die Vorlage?",
+      "placeholder": "Zum Beispiel: Ausleihe von Geräten an Mitarbeitende mit Artikel, Seriennummer, Daten und Zustand bei Rückgabe.",
+      "example": {
+        "loan": "Geräteausleihe an Mitarbeitende: Artikel, Seriennummer, Leihdaten, Zustand bei Rückgabe und Unterschrift",
+        "inspection": "Eine monatliche Brandschutz-Checkliste für Büros",
+        "volunteer": "Freiwilligen-Anmeldung für eine Gemeinschaftsveranstaltung",
+        "course": "Kursbewertung für Studierende am Semesterende"
+      },
+      "step": {
+        "kind": "Art der Vorlage wird gesucht",
+        "design": "Passendes Design wird ausgewählt"
+      },
+      "name": "Vorlagenname",
+      "category": "Kategorie",
+      "description": "Beschreibung",
+      "save": "In Vorlagen speichern",
+      "saved": "„{name}“ in Ihren Vorlagen gespeichert",
+      "noSave": "Ihre Rolle darf keine Vorlagen speichern. Fragen Sie einen Admin oder nutzen Sie die Idee für ein Formular.",
+      "emptyTitle": "Vorlage beschreiben",
+      "emptyDesc": "Der Assistent entwirft eine Vorlage für Ihren Anwendungsfall mit passendem Design. Speichern Sie sie für alle im Arbeitsbereich."
+    },
+    "design": {
+      "colour": "Markenfarbe",
+      "brandHint": "Die Markenfarbe Ihres Arbeitsbereichs als Ausgangspunkt.",
+      "mood": "Die gewünschte Stimmung",
+      "moodPlaceholder": "Ruhig, kräftig, formell, freundlich…",
+      "generate": "Designs vorschlagen",
+      "step": {
+        "colour": "Ihre Farbe wird gelesen",
+        "contrast": "Lesbarkeit wird geprüft",
+        "styles": "Drei Designs werden erstellt"
+      },
+      "choose": "Design wählen",
+      "style": {
+        "calm": {
+          "name": "Ruhig",
+          "desc": "Sanft getönte Seite, runde Felder und Ihre Farbe auf Buttons und Überschriften."
+        },
+        "bold": {
+          "name": "Kräftig",
+          "desc": "Ein Band in Ihrer Farbe oben, eine Seite mit Farbverlauf und Buttons in voller Breite."
+        },
+        "minimal": {
+          "name": "Minimal",
+          "desc": "Eine klare weiße Seite, Serifen-Überschriften und unterstrichene Felder mit einem Hauch Ihrer Farbe."
+        }
+      },
+      "name": "Designname",
+      "defaultName": "Marke {colour}",
+      "save": "In Designs speichern",
+      "saved": "„{name}“ in Ihren Designs gespeichert",
+      "noSave": "Ihre Rolle darf keine Designs hinzufügen. Fragen Sie einen Admin.",
+      "sampleTitle": "Beispielformular",
+      "emptyTitle": "Designs aus Ihrer Markenfarbe",
+      "emptyDesc": "Wählen Sie eine Farbe und, wenn Sie möchten, die gewünschte Stimmung. Der Assistent schlägt drei Designs vor, die Sie an einem Beispielformular ausprobieren können.",
+      "optional": "Optional"
     }
   },
   "public": {

@@ -18,6 +18,7 @@ import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
 import { aiOf, creditsUsed, emptyByKind, emptyByStatus, monthStart, saveAi, toAiDetail, toAiRow, type StoredAiRequest } from '../data/aiStore'
 import { permissionsOf } from '../data/rolesStore'
+import { settingsOf } from '../data/settingsStore'
 import type { MockTenant, MockUser } from '../data/tenants'
 
 const DAY = 86_400_000
@@ -34,9 +35,11 @@ const visible = (tenant: MockTenant, user: MockUser): StoredAiRequest[] => {
   return permissionsOf(user, tenant).has('ai.settings') ? all : all.filter(request => request.by.id === user.id)
 }
 
+const withBrand = (tenant: MockTenant) => ({ ...aiOf(tenant).settings, brand_color: settingsOf(tenant).branding.brand_color })
+
 export const getAiSettings = defineMockRoute(({ event }) => {
   const { tenant } = requireAuth(event)
-  return ok(aiOf(tenant).settings)
+  return ok(withBrand(tenant))
 })
 
 const settingsInput = z.object({
@@ -64,7 +67,7 @@ export const updateAiSettings = defineMockRoute(({ event, body }) => {
   )
   for (const source of AI_SOURCES) if (before.sources[source] !== settings.sources[source]) changed[`reads_${source}`] = `${before.sources[source]} → ${settings.sources[source]}`
   recordAudit(event, tenant, { action: before.enabled !== settings.enabled ? (settings.enabled ? 'ai.enabled' : 'ai.disabled') : 'ai.settings_updated', actor: actorOf(user), resource: { type: 'setting', id: 'ai', name: 'AI assistant' }, metadata: changed })
-  return ok(aiOf(tenant).settings)
+  return ok(withBrand(tenant))
 })
 
 export const getAiUsage = defineMockRoute(({ event }) => {

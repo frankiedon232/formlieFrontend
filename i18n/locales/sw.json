@@ -638,7 +638,8 @@
     "FRM-USER-1012": "Kiungo hiki cha kujisajili kinakubali anwani za barua pepe za shirika pekee.",
     "FRM-AI-1001": "Msaidizi wa AI umezimwa kwa nafasi hii ya kazi.",
     "FRM-AI-1002": "Kiwango cha AI cha mwezi huu kimeisha. Kitasasishwa mwanzoni mwa mwezi ujao.",
-    "FRM-AI-1003": "Msaidizi wa AI haruhusiwi kusoma sehemu hii ya nafasi ya kazi. Msimamizi anaweza kubadilisha hili katika mipangilio ya AI."
+    "FRM-AI-1003": "Msaidizi wa AI haruhusiwi kusoma sehemu hii ya nafasi ya kazi. Msimamizi anaweza kubadilisha hili katika mipangilio ya AI.",
+    "FRM-AI-1004": "Rasimu hii tayari imetumika au imewekwa kando. Muulize msaidizi tena."
   },
   "errorUi": {
     "reference": "Kumbukumbu: {id}",
@@ -1130,7 +1131,8 @@
       "ai_enabled": "Msaidizi wa AI umewashwa",
       "ai_disabled": "Msaidizi wa AI umezimwa",
       "ai_settings_updated": "Mipangilio ya AI imebadilishwa",
-      "ai_request_deleted": "Ombi la AI limefutwa kwenye historia"
+      "ai_request_deleted": "Ombi la AI limefutwa kwenye historia",
+      "ai_applied": "Rasimu ya AI imetumika"
     },
     "detail": {
       "who": "Nani",
@@ -4919,6 +4921,139 @@
       "leaveTitle": "Toka bila kuhifadhi?",
       "leaveDesc": "Mabadiliko yako kwenye mipangilio ya AI yatapotea.",
       "leave": "Toka"
+    },
+    "stats": {
+      "pages": "Ukurasa {n} | Kurasa {n}",
+      "fields": "Swali {n} | Maswali {n}",
+      "logic": "Kanuni {n} | Kanuni {n}",
+      "calculations": "Hesabu {n} | Hesabu {n}"
+    },
+    "note": {
+      "follow_up": "“{field}” huonekana tu baada ya jibu la ndiyo kwenye “{after}”.",
+      "total": "“Jumla” hukokotolewa kutoka “{a}” × “{b}”.",
+      "pages": "Imepangwa katika kurasa {n} ili ijazwe haraka kwenye simu. | Imepangwa katika kurasa {n} ili ijazwe haraka kwenye simu.",
+      "document_questions": "Swali {n} kutoka kwenye hati limegeuzwa kuwa sehemu ya kujaza, maneno yakibaki yale yale. | Maswali {n} kutoka kwenye hati yamegeuzwa kuwa sehemu za kujaza, maneno yakibaki yale yale.",
+      "document_sections": "Sehemu {n} ya hati imehifadhiwa kama ukurasa. | Sehemu {n} za hati zimehifadhiwa kama kurasa.",
+      "document_none": "Hati haikuwa na mistari inayofanana na maswali, kwa hiyo maelezo yametumika badala yake.",
+      "added_contact": "Jina na barua pepe vimeongezwa kwanza, ili ujue nani alijibu.",
+      "from_list": "Swali {n} limetengenezwa kutoka orodha yako, kwa maneno yako. | Maswali {n} yametengenezwa kutoka orodha yako, kwa maneno yako.",
+      "template": "Tulianza na kiolezo cha Formalie “{name}”, kilicho karibu zaidi na ulichoeleza.",
+      "try_again": "Jaribu tena kupata mwanzo tofauti.",
+      "basic": "Kulikuwa na taarifa chache, kwa hiyo huu ni fomu ya msingi. Eleza maswali unayohitaji ili upate rasimu iliyo karibu zaidi.",
+      "themes": "Muundo {n} unaofanya rangi yako isomeke vizuri. | Miundo {n} inayofanya rangi yako isomeke vizuri: vitufe hutumia kivuli ambacho maandishi meupe husomeka vizuri juu yake."
+    },
+    "create": {
+      "describe": "Eleza fomu",
+      "placeholder": "Kwa mfano: fomu ya kuwasili kwa wageni mapokezi yenye jina, kampuni, wanayemtembelea, saa ya kuwasili na kukubali kanuni za eneo.",
+      "examples": "Anza na mfano",
+      "example": {
+        "visitor": "Fomu ya kuwasili kwa wageni mapokezi: jina, kampuni, wanayemtembelea, saa ya kuwasili, picha na kukubali kanuni za eneo",
+        "order": "Ombi la oda lenye: bidhaa, idadi, bei ya kila kimoja, tarehe ya kuletewa, mahitaji maalum, maelezo ya mahitaji",
+        "feedback": "Utafiti wa maoni ya wateja baada ya simu ya msaada",
+        "leave": "Ombi la likizo kwa wafanyakazi lenye: jina, idara, tarehe, aina ya likizo, sababu na idhini ya meneja"
+      },
+      "addDocument": "Bandika hati au fomu ya zamani",
+      "document": "Hati",
+      "documentHint": "Bandika maandishi ya fomu ya karatasi, orodha ya ukaguzi au fomu ya zamani. Kila swali huwa sehemu ya kujaza, vichwa huwa kurasa.",
+      "documentPlaceholder": "SEHEMU A\nJina kamili:\nTarehe ya tukio:\nJe, kuna aliyejeruhiwa? ( ) Ndiyo ( ) Hapana",
+      "removeDocument": "Ondoa",
+      "pages": {
+        "label": "Kurasa",
+        "auto": "Amua kwa niaba yangu",
+        "one": "Ukurasa mmoja",
+        "several": "Kurasa kadhaa"
+      },
+      "cost": "Inatumia krediti {n} | Inatumia krediti {n}",
+      "costLeft": "Inatumia krediti {n} · zimebaki {left} mwezi huu | Inatumia krediti {n} · zimebaki {left} mwezi huu",
+      "generate": "Tengeneza",
+      "thinking": "Msaidizi analifanyia kazi",
+      "step": {
+        "read": "Inasoma maelezo yako",
+        "questions": "Inachagua maswali",
+        "logic": "Inaongeza maswali ya ufuatiliaji na jumla",
+        "layout": "Inapanga kurasa"
+      },
+      "private": "Ni yale unayoandika hapa tu ndiyo hutumwa. Taarifa binafsi hufichwa pale nafasi yako ya kazi inapohitaji.",
+      "failed": "Msaidizi hakuweza kutengeneza rasimu",
+      "emptyTitle": "Eleza fomu unayohitaji",
+      "emptyDesc": "Msaidizi huandaa rasimu yenye maswali, maswali ya ufuatiliaji na jumla. Unaiona kama watu watakavyoiona, kisha unaitengeneza au kujaribu tena.",
+      "tip": {
+        "list": "Orodhesha unachotaka kuuliza: “jina, kampuni, saa ya kuwasili”.",
+        "document": "Bandika fomu ya karatasi au ya zamani ili kuileta.",
+        "people": "Sema nani atajaza: wageni, wafanyakazi, wateja.",
+        "logic": "Taja maswali ya ndiyo / hapana na kiasi kwa ajili ya ufuatiliaji na jumla."
+      },
+      "name": "Jina la fomu",
+      "folder": "Folda",
+      "noFolder": "Hakuna folda",
+      "discard": "Weka kando",
+      "again": "Jaribu tena",
+      "create": "Tengeneza fomu",
+      "created": "“{name}” imetengenezwa. Unaweza kubadilisha kila kitu kwenye kijenzi.",
+      "discarded": "Rasimu imewekwa kando. Inabaki kwenye historia.",
+      "noCreate": "Jukumu lako haliwezi kutengeneza fomu. Muulize msimamizi, au tumia rasimu kama wazo."
+    },
+    "templates": {
+      "mode": {
+        "template": "Kiolezo",
+        "design": "Muundo kutoka rangi"
+      },
+      "describe": "Kiolezo ni cha nini?",
+      "placeholder": "Kwa mfano: kukopesha vifaa kwa wafanyakazi, vyenye kipengee, namba ya mfululizo, tarehe na hali wakati wa kurudisha.",
+      "example": {
+        "loan": "Kukopesha vifaa kwa wafanyakazi: kipengee, namba ya mfululizo, tarehe za mkopo, hali wakati wa kurudisha na sahihi",
+        "inspection": "Orodha ya ukaguzi wa kila mwezi wa usalama wa moto kwa ofisi",
+        "volunteer": "Usajili wa wajitolea kwa tukio la jamii",
+        "course": "Tathmini ya kozi kwa wanafunzi mwishoni mwa muhula"
+      },
+      "step": {
+        "kind": "Inatafuta aina ya kiolezo",
+        "design": "Inachagua muundo unaofaa"
+      },
+      "name": "Jina la kiolezo",
+      "category": "Aina",
+      "description": "Maelezo",
+      "save": "Hifadhi kwenye violezo",
+      "saved": "“{name}” imehifadhiwa kwenye violezo vyako",
+      "noSave": "Jukumu lako haliwezi kuhifadhi violezo. Muulize msimamizi, au tumia wazo kutengeneza fomu.",
+      "emptyTitle": "Eleza kiolezo",
+      "emptyDesc": "Msaidizi huandaa kiolezo cha matumizi yako chenye muundo unaofaa. Kihifadhi kwa kila mtu kwenye nafasi ya kazi."
+    },
+    "design": {
+      "colour": "Rangi ya chapa",
+      "brandHint": "Rangi ya chapa ya nafasi yako ya kazi ya kuanzia.",
+      "mood": "Hisia unayotaka",
+      "moodPlaceholder": "Tulivu, ya ujasiri, rasmi, ya kirafiki…",
+      "generate": "Pendekeza miundo",
+      "step": {
+        "colour": "Inasoma rangi yako",
+        "contrast": "Inakagua kama inasomeka vizuri",
+        "styles": "Inatengeneza miundo mitatu"
+      },
+      "choose": "Chagua muundo",
+      "style": {
+        "calm": {
+          "name": "Tulivu",
+          "desc": "Ukurasa wenye rangi hafifu, sehemu za kujaza za mviringo na rangi yako kwenye vitufe na vichwa."
+        },
+        "bold": {
+          "name": "Ujasiri",
+          "desc": "Mkanda wa rangi yako juu, ukurasa wenye mpito wa rangi na vitufe vya upana kamili."
+        },
+        "minimal": {
+          "name": "Wa kiasi",
+          "desc": "Ukurasa mweupe safi, vichwa vyenye mikia na sehemu za kujaza zenye mstari chini zikiwa na mguso wa rangi yako."
+        }
+      },
+      "name": "Jina la mandhari",
+      "defaultName": "Chapa {colour}",
+      "save": "Hifadhi kwenye mandhari",
+      "saved": "“{name}” imehifadhiwa kwenye mandhari zako",
+      "noSave": "Jukumu lako haliwezi kuongeza mandhari. Muulize msimamizi.",
+      "sampleTitle": "Fomu ya mfano",
+      "emptyTitle": "Miundo kutoka rangi ya chapa yako",
+      "emptyDesc": "Chagua rangi na, ukipenda, hisia unayotaka. Msaidizi hupendekeza miundo mitatu unayoweza kujaribu kwenye fomu ya mfano.",
+      "optional": "Hiari"
     }
   },
   "public": {

@@ -638,7 +638,8 @@
     "FRM-USER-1012": "Questo link di registrazione accetta solo indirizzi e-mail dell'organizzazione.",
     "FRM-AI-1001": "L’assistente IA è disattivato per questo spazio di lavoro.",
     "FRM-AI-1002": "La quota IA di questo mese è esaurita. Si rinnova all’inizio del mese prossimo.",
-    "FRM-AI-1003": "L’assistente IA non può leggere questa parte dello spazio di lavoro. Un admin può cambiarlo nelle impostazioni IA."
+    "FRM-AI-1003": "L’assistente IA non può leggere questa parte dello spazio di lavoro. Un admin può cambiarlo nelle impostazioni IA.",
+    "FRM-AI-1004": "Questa bozza è già stata usata o messa da parte. Chiedi di nuovo all’assistente."
   },
   "errorUi": {
     "reference": "Riferimento: {id}",
@@ -1130,7 +1131,8 @@
       "ai_enabled": "Assistente IA attivato",
       "ai_disabled": "Assistente IA disattivato",
       "ai_settings_updated": "Impostazioni IA modificate",
-      "ai_request_deleted": "Richiesta IA eliminata dalla cronologia"
+      "ai_request_deleted": "Richiesta IA eliminata dalla cronologia",
+      "ai_applied": "Bozza IA applicata"
     },
     "detail": {
       "who": "Chi",
@@ -4919,6 +4921,139 @@
       "leaveTitle": "Uscire senza salvare?",
       "leaveDesc": "Le modifiche alle impostazioni IA andranno perse.",
       "leave": "Esci"
+    },
+    "stats": {
+      "pages": "{n} pagina | {n} pagine",
+      "fields": "{n} domanda | {n} domande",
+      "logic": "{n} regola | {n} regole",
+      "calculations": "{n} calcolo | {n} calcoli"
+    },
+    "note": {
+      "follow_up": "«{field}» compare solo dopo un sì a «{after}».",
+      "total": "«Totale» è calcolato da «{a}» × «{b}».",
+      "pages": "Raggruppato in {n} pagine per compilarlo in fretta dal telefono. | Raggruppato in {n} pagine per compilarlo in fretta dal telefono.",
+      "document_questions": "{n} domanda del documento è diventata un campo, con la sua formulazione. | {n} domande del documento sono diventate campi, con la loro formulazione.",
+      "document_sections": "{n} sezione del documento è stata mantenuta come pagina. | Le {n} sezioni del documento sono state mantenute come pagine.",
+      "document_none": "Il documento non aveva righe che sembrassero domande, quindi è stata usata la descrizione.",
+      "added_contact": "Nome ed email aggiunti per primi, così sai chi ha risposto.",
+      "from_list": "{n} domanda creata dal tuo elenco, con le tue parole. | {n} domande create dal tuo elenco, con le tue parole.",
+      "template": "Si è partiti dal modello «{name}» di Formalie, il più vicino a quanto hai descritto.",
+      "try_again": "Riprova per un punto di partenza diverso.",
+      "basic": "C’erano pochi elementi, quindi questo è un modulo di base. Descrivi le domande che ti servono per una bozza più precisa.",
+      "themes": "{n} design che mantiene leggibile il tuo colore. | {n} design che mantengono leggibile il tuo colore: i pulsanti usano una tonalità su cui il testo bianco si legge bene."
+    },
+    "create": {
+      "describe": "Descrivi il modulo",
+      "placeholder": "Ad esempio: un modulo di registrazione per i visitatori alla reception con nome, azienda, chi visitano, ora di arrivo e accettazione delle regole del sito.",
+      "examples": "Parti da un esempio",
+      "example": {
+        "visitor": "Un modulo di registrazione per i visitatori alla reception: nome, azienda, chi visitano, ora di arrivo, una foto e accettazione delle regole del sito",
+        "order": "Una richiesta d’ordine con: articolo, quantità, prezzo unitario, data di consegna, eventuali requisiti speciali, dettagli dei requisiti",
+        "feedback": "Un sondaggio di feedback dei clienti dopo una chiamata di assistenza",
+        "leave": "Una richiesta di permesso per il personale con: nome, reparto, date, tipo di permesso, motivo e approvazione del responsabile"
+      },
+      "addDocument": "Incolla un documento o un vecchio modulo",
+      "document": "Documento",
+      "documentHint": "Incolla il testo di un modulo cartaceo, di una checklist o di un vecchio modulo. Ogni domanda diventa un campo, i titoli diventano pagine.",
+      "documentPlaceholder": "SEZIONE A\nNome completo:\nData dell’incidente:\nQualcuno si è fatto male? ( ) Sì ( ) No",
+      "removeDocument": "Rimuovi",
+      "pages": {
+        "label": "Pagine",
+        "auto": "Decidi tu",
+        "one": "Una pagina",
+        "several": "Più pagine"
+      },
+      "cost": "Usa {n} credito | Usa {n} crediti",
+      "costLeft": "Usa {n} credito · {left} rimasti questo mese | Usa {n} crediti · {left} rimasti questo mese",
+      "generate": "Genera",
+      "thinking": "L’assistente ci sta lavorando",
+      "step": {
+        "read": "Lettura della descrizione",
+        "questions": "Scelta delle domande",
+        "logic": "Aggiunta di domande di approfondimento e totali",
+        "layout": "Impaginazione"
+      },
+      "private": "Viene inviato solo ciò che scrivi qui. I dati personali sono oscurati quando lo richiede il tuo spazio di lavoro.",
+      "failed": "L’assistente non è riuscito a creare una bozza",
+      "emptyTitle": "Descrivi il modulo che ti serve",
+      "emptyDesc": "L’assistente lo redige con domande, approfondimenti e totali. Lo vedi come lo vedranno le persone, poi lo crei o riprovi.",
+      "tip": {
+        "list": "Elenca cosa chiedere: «nome, azienda, ora di arrivo».",
+        "document": "Incolla un modulo cartaceo o vecchio per importarlo.",
+        "people": "Indica chi lo compila: visitatori, personale, clienti.",
+        "logic": "Cita domande sì / no e importi per approfondimenti e totali."
+      },
+      "name": "Nome del modulo",
+      "folder": "Cartella",
+      "noFolder": "Nessuna cartella",
+      "discard": "Metti da parte",
+      "again": "Riprova",
+      "create": "Crea modulo",
+      "created": "«{name}» creato. Puoi cambiare tutto nel costruttore.",
+      "discarded": "Bozza messa da parte. Resta nella cronologia.",
+      "noCreate": "Il tuo ruolo non può creare moduli. Chiedi a un amministratore o usa la bozza come idea."
+    },
+    "templates": {
+      "mode": {
+        "template": "Modello",
+        "design": "Design da un colore"
+      },
+      "describe": "A cosa serve il modello?",
+      "placeholder": "Ad esempio: prestito di attrezzature al personale, con articolo, numero di serie, date e condizioni alla restituzione.",
+      "example": {
+        "loan": "Prestito di attrezzature al personale: articolo, numero di serie, date del prestito, condizioni alla restituzione e firma",
+        "inspection": "Una checklist mensile di sicurezza antincendio per gli uffici",
+        "volunteer": "Iscrizione di volontari a un evento della comunità",
+        "course": "Valutazione del corso per gli studenti a fine semestre"
+      },
+      "step": {
+        "kind": "Ricerca del tipo di modello",
+        "design": "Scelta di un design abbinato"
+      },
+      "name": "Nome del modello",
+      "category": "Categoria",
+      "description": "Descrizione",
+      "save": "Salva nei modelli",
+      "saved": "«{name}» salvato nei tuoi modelli",
+      "noSave": "Il tuo ruolo non può salvare modelli. Chiedi a un amministratore o usa l’idea per creare un modulo.",
+      "emptyTitle": "Descrivi un modello",
+      "emptyDesc": "L’assistente redige un modello per il tuo caso con un design adatto. Salvalo per tutti nello spazio di lavoro."
+    },
+    "design": {
+      "colour": "Colore del brand",
+      "brandHint": "Il colore del brand del tuo spazio di lavoro per iniziare.",
+      "mood": "Lo stile che vuoi",
+      "moodPlaceholder": "Calmo, deciso, formale, cordiale…",
+      "generate": "Suggerisci design",
+      "step": {
+        "colour": "Lettura del tuo colore",
+        "contrast": "Verifica della leggibilità",
+        "styles": "Creazione di tre design"
+      },
+      "choose": "Scegli un design",
+      "style": {
+        "calm": {
+          "name": "Calmo",
+          "desc": "Pagina con una tinta morbida, campi arrotondati e il tuo colore su pulsanti e titoli."
+        },
+        "bold": {
+          "name": "Deciso",
+          "desc": "Una fascia del tuo colore in alto, una pagina sfumata e pulsanti a tutta larghezza."
+        },
+        "minimal": {
+          "name": "Minimale",
+          "desc": "Una pagina bianca pulita, titoli con grazie e campi sottolineati con un tocco del tuo colore."
+        }
+      },
+      "name": "Nome del tema",
+      "defaultName": "Brand {colour}",
+      "save": "Salva nei temi",
+      "saved": "«{name}» salvato nei tuoi temi",
+      "noSave": "Il tuo ruolo non può aggiungere temi. Chiedi a un amministratore.",
+      "sampleTitle": "Modulo di esempio",
+      "emptyTitle": "Design dal colore del tuo brand",
+      "emptyDesc": "Scegli un colore e, se vuoi, lo stile desiderato. L’assistente suggerisce tre design da provare su un modulo di esempio.",
+      "optional": "Facoltativo"
     }
   },
   "public": {

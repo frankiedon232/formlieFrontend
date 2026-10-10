@@ -5,6 +5,7 @@
 import { fail } from './core/respond'
 import * as audit from './routes/audit'
 import * as ai from './routes/ai'
+import * as aiCreate from './routes/aiCreate'
 import * as people from './routes/people'
 import * as invites from './routes/invites'
 import * as peopleManage from './routes/peopleManage'
@@ -216,6 +217,11 @@ const router = createRouter()
   .get('/ai/requests/insights', ai.aiRequestInsights)
   .get('/ai/requests/:id', ai.getAiRequest)
   .delete('/ai/requests/:id', ai.deleteAiRequest)
+  .post('/ai/requests/:id/apply', aiCreate.applyAiRequest)
+  .post('/ai/requests/:id/discard', aiCreate.discardAiRequest)
+  .post('/ai/forms/draft', aiCreate.draftFormRoute)
+  .post('/ai/templates/draft', aiCreate.draftTemplateRoute)
+  .post('/ai/themes/draft', aiCreate.draftThemeRoute)
   .get('/saved-queries', savedQueries.listSavedQueries)
   .get('/saved-queries/insights', savedQueries.savedQueryInsights)
   .get('/saved-queries/:id', savedQueries.getSavedQuery)

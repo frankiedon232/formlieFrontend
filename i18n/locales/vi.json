@@ -638,7 +638,8 @@
     "FRM-USER-1012": "Liên kết đăng ký này chỉ chấp nhận địa chỉ email của tổ chức.",
     "FRM-AI-1001": "Trợ lý AI đã bị tắt cho không gian làm việc này.",
     "FRM-AI-1002": "Hạn mức AI tháng này đã dùng hết. Hạn mức sẽ được làm mới vào đầu tháng sau.",
-    "FRM-AI-1003": "Trợ lý AI không được phép đọc phần này của không gian làm việc. Quản trị viên có thể thay đổi trong cài đặt AI."
+    "FRM-AI-1003": "Trợ lý AI không được phép đọc phần này của không gian làm việc. Quản trị viên có thể thay đổi trong cài đặt AI.",
+    "FRM-AI-1004": "Bản nháp này đã được dùng hoặc đã để sang một bên. Hãy hỏi lại trợ lý."
   },
   "errorUi": {
     "reference": "Mã tham chiếu: {id}",
@@ -1130,7 +1131,8 @@
       "ai_enabled": "Đã bật trợ lý AI",
       "ai_disabled": "Đã tắt trợ lý AI",
       "ai_settings_updated": "Đã thay đổi cài đặt AI",
-      "ai_request_deleted": "Đã xóa yêu cầu AI khỏi lịch sử"
+      "ai_request_deleted": "Đã xóa yêu cầu AI khỏi lịch sử",
+      "ai_applied": "Đã áp dụng bản nháp AI"
     },
     "detail": {
       "who": "Ai",
@@ -4919,6 +4921,139 @@
       "leaveTitle": "Rời đi mà không lưu?",
       "leaveDesc": "Các thay đổi đối với cài đặt AI sẽ bị mất.",
       "leave": "Rời đi"
+    },
+    "stats": {
+      "pages": "{n} trang | {n} trang",
+      "fields": "{n} câu hỏi | {n} câu hỏi",
+      "logic": "{n} quy tắc | {n} quy tắc",
+      "calculations": "{n} phép tính | {n} phép tính"
+    },
+    "note": {
+      "follow_up": "“{field}” chỉ hiện sau khi chọn có ở “{after}”.",
+      "total": "“Tổng” được tính từ “{a}” × “{b}”.",
+      "pages": "Đã nhóm thành {n} trang để điền nhanh trên điện thoại. | Đã nhóm thành {n} trang để điền nhanh trên điện thoại.",
+      "document_questions": "Đã chuyển {n} câu hỏi trong tài liệu thành trường, giữ nguyên cách diễn đạt. | Đã chuyển {n} câu hỏi trong tài liệu thành trường, giữ nguyên cách diễn đạt.",
+      "document_sections": "Đã giữ {n} phần của tài liệu làm trang. | Đã giữ {n} phần của tài liệu làm trang.",
+      "document_none": "Tài liệu không có dòng nào giống câu hỏi, nên đã dùng phần mô tả.",
+      "added_contact": "Đã thêm tên và email trước để bạn biết ai đã trả lời.",
+      "from_list": "Đã tạo {n} câu hỏi từ danh sách của bạn, bằng lời của bạn. | Đã tạo {n} câu hỏi từ danh sách của bạn, bằng lời của bạn.",
+      "template": "Bắt đầu từ mẫu “{name}” của Formalie, gần nhất với mô tả của bạn.",
+      "try_again": "Thử lại để có điểm xuất phát khác.",
+      "basic": "Có ít thông tin để làm việc nên đây là biểu mẫu cơ bản. Hãy mô tả các câu hỏi bạn cần để có bản nháp sát hơn.",
+      "themes": "{n} thiết kế giữ màu của bạn dễ đọc. | {n} thiết kế giữ màu của bạn dễ đọc: nút dùng sắc độ mà chữ trắng đọc rõ."
+    },
+    "create": {
+      "describe": "Mô tả biểu mẫu",
+      "placeholder": "Ví dụ: biểu mẫu đăng ký cho khách tại quầy lễ tân gồm tên, công ty, người cần gặp, giờ đến và đồng ý quy định của địa điểm.",
+      "examples": "Bắt đầu từ ví dụ",
+      "example": {
+        "visitor": "Biểu mẫu đăng ký cho khách tại quầy lễ tân: tên, công ty, người cần gặp, giờ đến, một tấm ảnh và đồng ý quy định của địa điểm",
+        "order": "Yêu cầu đặt hàng gồm: mặt hàng, số lượng, đơn giá, ngày giao, yêu cầu đặc biệt, chi tiết yêu cầu",
+        "feedback": "Khảo sát phản hồi của khách hàng sau cuộc gọi hỗ trợ",
+        "leave": "Đơn xin nghỉ phép cho nhân viên gồm: tên, phòng ban, ngày, loại phép, lý do và phê duyệt của quản lý"
+      },
+      "addDocument": "Dán tài liệu hoặc biểu mẫu cũ",
+      "document": "Tài liệu",
+      "documentHint": "Dán văn bản của biểu mẫu giấy, danh sách kiểm tra hoặc biểu mẫu cũ. Mỗi câu hỏi trở thành một trường, tiêu đề trở thành trang.",
+      "documentPlaceholder": "PHẦN A\nHọ và tên:\nNgày xảy ra sự cố:\nCó ai bị thương không? ( ) Có ( ) Không",
+      "removeDocument": "Xóa",
+      "pages": {
+        "label": "Trang",
+        "auto": "Tự quyết định giúp tôi",
+        "one": "Một trang",
+        "several": "Nhiều trang"
+      },
+      "cost": "Dùng {n} tín dụng | Dùng {n} tín dụng",
+      "costLeft": "Dùng {n} tín dụng · còn {left} trong tháng này | Dùng {n} tín dụng · còn {left} trong tháng này",
+      "generate": "Tạo",
+      "thinking": "Trợ lý đang xử lý",
+      "step": {
+        "read": "Đang đọc mô tả của bạn",
+        "questions": "Đang chọn câu hỏi",
+        "logic": "Đang thêm câu hỏi tiếp theo và tổng",
+        "layout": "Đang sắp xếp các trang"
+      },
+      "private": "Chỉ những gì bạn gõ ở đây được gửi đi. Thông tin cá nhân được che khi không gian làm việc của bạn yêu cầu.",
+      "failed": "Trợ lý không thể tạo bản nháp",
+      "emptyTitle": "Mô tả biểu mẫu bạn cần",
+      "emptyDesc": "Trợ lý soạn bản nháp với câu hỏi, câu hỏi tiếp theo và tổng. Bạn xem như người dùng sẽ thấy, rồi tạo hoặc thử lại.",
+      "tip": {
+        "list": "Liệt kê những gì cần hỏi: “tên, công ty, giờ đến”.",
+        "document": "Dán biểu mẫu giấy hoặc biểu mẫu cũ để đưa vào.",
+        "people": "Cho biết ai sẽ điền: khách, nhân viên, khách hàng.",
+        "logic": "Nhắc đến câu hỏi có / không và số tiền để có câu hỏi tiếp theo và tổng."
+      },
+      "name": "Tên biểu mẫu",
+      "folder": "Thư mục",
+      "noFolder": "Không có thư mục",
+      "discard": "Để sang một bên",
+      "again": "Thử lại",
+      "create": "Tạo biểu mẫu",
+      "created": "Đã tạo “{name}”. Bạn có thể thay đổi mọi thứ trong trình xây dựng.",
+      "discarded": "Đã để bản nháp sang một bên. Bản nháp vẫn nằm trong lịch sử.",
+      "noCreate": "Vai trò của bạn không thể tạo biểu mẫu. Hãy nhờ quản trị viên, hoặc dùng bản nháp làm ý tưởng."
+    },
+    "templates": {
+      "mode": {
+        "template": "Mẫu",
+        "design": "Thiết kế từ một màu"
+      },
+      "describe": "Mẫu này dùng cho việc gì?",
+      "placeholder": "Ví dụ: cho nhân viên mượn thiết bị, gồm mặt hàng, số sê-ri, ngày và tình trạng khi trả.",
+      "example": {
+        "loan": "Cho nhân viên mượn thiết bị: mặt hàng, số sê-ri, ngày mượn, tình trạng khi trả và chữ ký",
+        "inspection": "Danh sách kiểm tra an toàn phòng cháy hằng tháng cho văn phòng",
+        "volunteer": "Đăng ký tình nguyện viên cho sự kiện cộng đồng",
+        "course": "Đánh giá khóa học cho sinh viên vào cuối học kỳ"
+      },
+      "step": {
+        "kind": "Đang tìm loại mẫu",
+        "design": "Đang chọn thiết kế phù hợp"
+      },
+      "name": "Tên mẫu",
+      "category": "Danh mục",
+      "description": "Mô tả",
+      "save": "Lưu vào mẫu",
+      "saved": "Đã lưu “{name}” vào mẫu của bạn",
+      "noSave": "Vai trò của bạn không thể lưu mẫu. Hãy nhờ quản trị viên, hoặc dùng ý tưởng để tạo biểu mẫu.",
+      "emptyTitle": "Mô tả một mẫu",
+      "emptyDesc": "Trợ lý soạn mẫu cho trường hợp của bạn cùng thiết kế phù hợp. Lưu để mọi người trong không gian làm việc cùng dùng."
+    },
+    "design": {
+      "colour": "Màu thương hiệu",
+      "brandHint": "Màu thương hiệu của không gian làm việc để bắt đầu.",
+      "mood": "Cảm giác bạn muốn",
+      "moodPlaceholder": "Dịu nhẹ, mạnh mẽ, trang trọng, thân thiện…",
+      "generate": "Gợi ý thiết kế",
+      "step": {
+        "colour": "Đang đọc màu của bạn",
+        "contrast": "Đang kiểm tra độ dễ đọc",
+        "styles": "Đang tạo ba thiết kế"
+      },
+      "choose": "Chọn một thiết kế",
+      "style": {
+        "calm": {
+          "name": "Dịu nhẹ",
+          "desc": "Trang phủ màu nhạt, trường bo tròn và màu của bạn trên nút và tiêu đề."
+        },
+        "bold": {
+          "name": "Mạnh mẽ",
+          "desc": "Dải màu của bạn ở trên cùng, trang chuyển sắc và nút rộng toàn bộ."
+        },
+        "minimal": {
+          "name": "Tối giản",
+          "desc": "Trang trắng gọn gàng, tiêu đề có chân và trường gạch chân với chút màu của bạn."
+        }
+      },
+      "name": "Tên giao diện",
+      "defaultName": "Thương hiệu {colour}",
+      "save": "Lưu vào giao diện",
+      "saved": "Đã lưu “{name}” vào giao diện của bạn",
+      "noSave": "Vai trò của bạn không thể thêm giao diện. Hãy nhờ quản trị viên.",
+      "sampleTitle": "Biểu mẫu mẫu",
+      "emptyTitle": "Thiết kế từ màu thương hiệu của bạn",
+      "emptyDesc": "Chọn một màu và, nếu muốn, cảm giác bạn muốn. Trợ lý gợi ý ba thiết kế để bạn thử trên biểu mẫu mẫu.",
+      "optional": "Tùy chọn"
     }
   },
   "public": {
