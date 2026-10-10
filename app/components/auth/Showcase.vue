@@ -75,7 +75,7 @@ const badges = computed(() => [
 
     <!-- Data on the move: sources → the hub → destinations (owner 2026-10-10) -->
     <div class="relative mt-6 flex flex-1 items-center">
-      <AuthFlow :logo="props.logo" :color="props.color" />
+      <AuthFlow :color="props.color" />
     </div>
 
     <div class="relative mt-8 flex flex-wrap gap-2">

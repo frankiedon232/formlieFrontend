@@ -1,12 +1,12 @@
 <!--
   Sign-in showcase: data on the move (owner 2026-10-10, after two concepts: a hub with labelled pills joined by
   curved lines that carry points of light, and response cards floating while they are collected). Sources on the
-  left (form link, embed, API, QR code) send points of light through the hub (Formalie, or the workspace's logo;
-  a lock: encrypted on the way) to destinations on the right (your database, webhooks, dashboard, email), which
+  left (form link, embed, API, QR code) send points of light through the hub (always Formalie, owner 2026-10-10:
+  the workspace's logo is at the top of the panel; a lock: encrypted on the way) to destinations on the right (your database, webhooks, dashboard, email), which
   light up as one arrives. SVG and CSS only; nothing moves for people who ask for less motion. Decorative.
 -->
 <script setup lang="ts">
-const props = defineProps<{ logo?: string | null; color?: string | null }>()
+const props = defineProps<{ color?: string | null }>()
 const { t } = useI18n()
 const still = useMediaQuery('(prefers-reduced-motion: reduce)')
 
@@ -112,8 +112,7 @@ const CARDS = [
 
     <!-- The hub -->
     <div class="absolute flex aspect-square w-[13%] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-2xl bg-white text-neutral-950 shadow-[0_0_40px_rgb(255_255_255/0.25)]" :style="at(HUB.x, HUB.y)">
-      <img v-if="logo" :src="logo" alt="" class="max-h-[70%] max-w-[70%] object-contain">
-      <UIcon v-else name="i-lucide-file-check-2" class="size-1/2" />
+      <UIcon name="i-lucide-file-check-2" class="size-1/2" />
       <span class="absolute -end-2 -bottom-2 flex size-6 items-center justify-center rounded-full bg-neutral-950 text-white ring-2 ring-white"><UIcon name="i-lucide-lock-keyhole" class="size-3" /></span>
     </div>
     <span class="absolute -translate-x-1/2 text-[11px] whitespace-nowrap text-white/60" :style="at(HUB.x, HUB.y + 62)">{{ t('authLayout.flow.hub') }}</span>
