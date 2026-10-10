@@ -32,7 +32,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F19   | AI assistant                                      | 🟡     | ~2%                                       |
 | F20   | Live collaboration (removed)                      | ➖     | -                                         |
 | F21   | Dashboard                                         | ⬜     | 0%                                        |
-| F22   | Roles & access                                    | ✅     | 100% (built with F16, owner-approved)     |
+| F22   | Roles & access                                    | 🟡     | granular permissions with scope (R2)      |
 | F23   | Platform admin (super admin, Formalie team)       | ⬜     | 0%                                        |
 | F24   | Payments & subscriptions                          | ⬜     | 0%                                        |
 | F25   | Help centre (FAQs, knowledge base, videos)        | ⬜     | 0% (after F24)                            |
@@ -978,6 +978,16 @@ Owner, 2026-10-08: "profiling and users are the same thing". One phase builds th
 - ⬜ Access overview ("who can see what")
 - ⬜ Permission to view and export the audit trail (`audit.read`, `audit.export`)
 - ⬜ Data sources permissions (from F12): view the explorer · change rows and structure · run read queries · run changing queries · manage connections · send form data to a database; until then admins only
+- ⬜ **Granular permissions with scope (owner 2026-10-10, "total control, beyond the basic"; maker-checker matters in an enterprise system).** Every action is its own permission, with a scope: **None · Own · All** (Own = what the person created; Own also restricts: a role may forbid editing even one's own forms); for forms also **Shared** (own plus forms shared with them). The role is the ceiling everywhere: hidden or locked in every place the action appears (list menus, detail pages, overview, panels, shortcuts, bulk bars, command palette, empty-state buttons, the API)
+  - ⬜ **Forms:** view, create (incl. Blank form in Templates), import, rename, edit (build, logic, design), share settings (view vs change), availability, publish, unpublish / close, archive / restore, move to folder, duplicate, save as template, versions, delete / trash, preview
+  - ⬜ **Responses:** view, review, edit answers, delete, export, each Own form · Shared · All
+  - ⬜ **Templates:** view / use (default), create (save as template), edit, duplicate, delete; Own · All; Formalie defaults are use-only
+  - ⬜ **Lists (option sets), Themes, Landing pages:** view / use, create, edit, duplicate, delete; Own · All; Formalie defaults are use-only
+  - ⬜ **Folders:** create, rename, delete (Own · All; never a folder holding others' forms unless All) and **folder access**: admins choose who may see each folder (roles, departments, people); a hidden folder hides its forms and their responses everywhere (lists, counts, search, analytics, exports, dashboards, API service)
+  - ⬜ **Data sources:** connections (view, add, edit, delete, test), explorer (view, add / change / delete rows, add / change / drop tables, export), query editor (read queries, changing queries, saved queries), response storage, sends
+  - ⬜ **API service:** services, endpoints, tokens, webhooks, logs, integrations, each view / create / edit / delete as fits
+  - ⬜ **AI assistant:** per feature (create forms, builder help, templates, analysis, summaries, translation, settings and usage)
+  - ⬜ **Role editor redesigned** for the larger catalogue: grouped by area and sub-area, action rows with a scope picker, search, "what changes" summary, presets
 
 ## F23, Platform admin (super admin) ⬜
 
@@ -1277,6 +1287,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-09 | Responses show only what the form collected: no "Anonymous" respondent; name / email when the form asked, else the response's own answers; check everywhere | F11 (all response views, exports) | ✅ |
 | 2026-10-09 | Profiling (People) is its own rail area with its own menu | F16 | ✅ |
 | 2026-10-09 | User profiles: the organisation profiles its staff (full profile, activation email); a sign-up link (shared or personal) opens a separate sign-up page and the account awaits approval before it is profiled; roles are not fixed: they come from Roles & access (F22) and decide what each account may view, create, edit, delete | F16 rework + F22 brought forward | 🟡 in progress |
+| 2026-10-10 | Granular permissions with scope (None · Own · Shared · All) for every action in Forms, Responses, Templates, Lists, Themes, Landing pages, Folders (incl. folder access that hides forms and responses), Data sources, API service and AI; applied everywhere the action appears; role editor regrouped | F22 R2 | ⬜ |
 
 ---
 
