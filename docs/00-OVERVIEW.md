@@ -1,8 +1,14 @@
-# 00 — Formalie Product Overview
+# 00, Formalie Product Overview
+
+## Positioning (owner, 2026-10-02)
+
+**A secure, flexible platform for creating forms, collecting and managing data, connecting systems and controlling access, built for organisations of any size, anywhere in the world.** Companies and organisations can build any form, design it as they want, share it, connect their own database, stay privacy-compliant and keep data secure.
+
+Formalie is a **global** product: copy, examples, sample data and visuals are international and neutral, never tied to one country.
 
 ## One-liner
 
-A drag-and-drop form builder with ready templates, full visual design control, versioned draft → publish workflow, sharing/embedding, short links, responses stored in formalie or sent to the customer's own database, Excel export and analytics — multi-tenant, secure enough for a large enterprise, yet simple to use.
+A drag-and-drop form builder with ready templates, full visual design control, versioned draft → publish workflow, sharing/embedding, short links, responses stored in Formalie or sent to the customer's own database, Excel export and analytics, multi-tenant, secure enough for a large enterprise, yet simple to use.
 
 ## Core modules
 
@@ -13,6 +19,7 @@ A drag-and-drop form builder with ready templates, full visual design control, v
 - Logic: show/hide, skip/jump to page, required-if, calculated values, validation rules (min/max, regex, length, file type/size), prefill from URL params.
 - Multi-page forms with progress bar, save-and-resume.
 - Predefined select lists (option sets) from Settings reusable in any form.
+- Conditional forms fields (show/hide/navigate etc) based on actions etc.
 
 ### 2. Form designer (page design)
 
@@ -33,44 +40,50 @@ System templates (platform-wide) + organisation templates. Categories: questionn
 
 - Share with people inside the organisation with **edit** or **view** access; share responses view separately.
 - Public link options: open, password-protected, invite-only, expiry date, response limit, one response per person, schedule open/close.
-- Designated URL (custom slug per form) + **short URL** (`/s/{code}`) + QR code.
+- Form link `https://{forms | sub}.formalie.com/{formKey}/fill` and embed `…/{formKey}/embed` (`forms.formalie.com` for workspaces without their own subdomain) + **short URL** (`/s/{code}`) + QR code.
+- **API service** (F13): any form can also become API endpoints (`https://api.formalie.com/{apiKey}/{endpoint}`, GET / POST / PUT / DELETE) so applications send and read its data, links, embeds and API all land in the same storage.
 - Embed via **iframe** (primary, with auto-resize script) and popup/slide-in later. Per-form allowed embed domains.
 - **SEO on every shared form link**: title, description, Open Graph/Twitter image, canonical URL, favicon, `noindex` toggle (default noindex for private forms).
 
 ### 6. Responses
 
-- Destinations: Formalie database (default), customer's own database (Postgres/MySQL/SQL Server via Celery writer), webhook (HMAC-signed, retried), email notification; integrations later (Google Sheets, Slack).
+- Data sources (F12): organisations connect their own databases, then browse them (database explorer), query them (query editor, read-only by default) and manage rows, imports and exports, all server-side and audited.
+- Destinations: Formalie database (default), customer's own database, launch set: **MySQL, MariaDB, Oracle, PostgreSQL, SQL Server** (via Celery writer; list in `shared/utils/integrations/databases.ts`), or Formalie's own encrypted storage, webhook (sent with a webhook token, retried), email notification.
 - Response views: table and grid (switchable), filters, search, date ranges, single response view, edit history, notes/tags/status (e.g. new, reviewed, approved), bulk actions.
 - Export: Excel (.xlsx), CSV, PDF (single and bulk) via background jobs.
 
+### 6b. API service (developer option)
+
+Build API endpoints from forms (one form per endpoint, as many as needed), grouped into services that can be switched on / off as a whole. Per endpoint: methods (GET, POST, PUT, DELETE), the fields accepted (POST / PUT) and returned (GET), static or dynamic bearer tokens, required headers, allow / block lists (IP, domain, region, country), rate limits, request logs and its own analytics; generated docs and a try-it console. Runs as its own backend service. Forms, Data sources and API service each get their own dashboard.
+
 ### 7. Analytics
 
-Per form: views, starts, completions, completion rate, drop-off per page/field, average completion time, per-question charts, NPS. Date-range filters. Organisation-wide analytics on the Dashboard (built last).
+Per form: views, starts, completions, completion rate, drop-off per page/field, average completion time, per-question charts, NPS. Date-range filters. Organisation-wide numbers on the Dashboard (F21: Workspace, Forms, Data sources and API service views).
 
 ### 8. Collaboration
 
-Live co-editing in the builder (presence, cursors/selection, conflict-free edits) — planned as an optional phase once the single-user builder is solid. Comments on fields later.
+Live co-editing was removed by the owner (2026-10-08). People work together through sharing (edit / view / responses access) and roles.
 
 ### 9. Settings (handles everything)
 
 Company profile, branding, subdomain, authentication providers (Google, Microsoft, Apple, Facebook, email/password), OTP policy, predefined select lists (option sets), themes, data destinations/connections, webhooks, API keys, notification and email templates, data retention, localisation (language, timezone, date/number formats, currency), embed defaults, security policies (password rules, session timeout, IP allowlist), billing/subscription.
 
-### 10. Users, roles, access (RBAC) — near the end
+### 10. Users, roles, access (RBAC)
 
-Org admin (all access by default) profiles users in their organisation, defines roles and permissions, resets passwords/accounts, enables/disables users, forces MFA, enables auth providers shown on their subdomain login page.
+Brought forward into F16 (owner, 2026-10-09). Org admin (all access by default) profiles people in their organisation (department, job titles, roles), defines roles whose permissions carry a scope per action (None, Own, Shared, Own & shared, All), resets passwords/accounts, enables/disables users, forces MFA, enables auth providers shown on their subdomain login page.
 
 ### 11. Audit trail and logs
 
-Every action recorded with who, what, when, where (IP, geo), before/after values.
+Built right after sign-in (F4); every later feature records its actions there. Every action recorded with who, what, when, where (IP, geo), before/after values.
 
-### 12. Dashboard — last
+### 12. Dashboard
 
-Robust overview with date-range filters, built once we know exactly what to capture.
+Built in F21 (2026-10-10): Workspace, Forms, Data sources and API service views with period, folder and owner filters and first steps for new workspaces.
 
 ### 13. Subscription
 
-Plans and pricing live on the product website; upgrade/renewal also available inside the portal for free-tier users. Plan limits enforced in the backend (forms, responses/month, seats, own-database destination, custom branding, etc.).
+Plans and pricing live on the product website; upgrade/renewal also available inside the portal for free-tier users. Plans Starter (free), Professional, Business and Enterprise (contact us), billed Monthly, Quarterly or Annually through **Payoneer** (F24). Plan limits enforced in the backend (forms, responses/month, seats, own-database destination, custom branding, data residency, etc.). No custom CSS in any plan (owner, 2026-10-10).
 
 ## Non-negotiables (summary)
 
-Clean, mobile-first Nuxt UI interface · keyboard navigable · theme switch · loading states everywhere · table/grid switch with filters and pagination · strict tenant isolation (Postgres RLS) · app-layer encryption of all API traffic on top of TLS · Fernet bearer tokens with expiry and rotation · OTP on every login · CSRF tokens · rate limiting · full request/audit/error logging with geo data · soft delete everywhere · UUIDs everywhere externally.
+Clean, mobile-first Nuxt UI interface · keyboard navigable · theme switch · 20+ languages incl. RTL · loading states everywhere · table/grid switch with filters and pagination · strict tenant isolation (Postgres RLS) · app-layer encryption of all API traffic on top of TLS · Fernet bearer tokens with expiry and rotation · OTP on every login · CSRF tokens · rate limiting · full request/audit/error logging with geo data · soft delete everywhere · UUIDs everywhere externally.
