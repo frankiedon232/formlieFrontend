@@ -439,7 +439,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/builder-basics.jpg",
-          "caption": "Der Builder: die Seiten und Fragen Ihres Formulars, unten mit Feld hinzufügen und Feldeinstellungen."
+          "caption": "Der Builder: die Feldliste, das Formular und die Einstellungen des Ausgewählten."
         },
         {
           "type": "steps",
@@ -1224,7 +1224,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/database-explorer.jpg",
-          "caption": "Der Datenbank-Explorer: Wählen Sie unter Tabellen eine Tabelle, um ihre Zeilen und Struktur zu sehen."
+          "caption": "Der Datenbank-Explorer: Tabellen links, deren Zeilen rechts."
         }
       ]
     },
@@ -1670,7 +1670,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/ai-create-form.jpg",
-          "caption": "Formular erstellen: Beschreiben Sie es oder starten Sie mit einem Beispiel, dann wählen Sie Erstellen."
+          "caption": "Formular erstellen: links beschreiben, rechts der Entwurf mit Vorschau."
         },
         {
           "type": "steps",

@@ -439,7 +439,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/builder-basics.jpg",
-          "caption": "빌더: 양식의 페이지와 질문이 보이고, 아래에 항목 추가와 항목 설정이 있습니다."
+          "caption": "빌더: 필드 목록, 양식, 선택한 항목의 설정."
         },
         {
           "type": "steps",
@@ -1225,7 +1225,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/database-explorer.jpg",
-          "caption": "DB 탐색기: 테이블에서 테이블을 고르면 행과 구조를 볼 수 있습니다."
+          "caption": "DB 탐색기: 왼쪽에 테이블, 오른쪽에 행."
         }
       ]
     },
@@ -1671,7 +1671,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/ai-create-form.jpg",
-          "caption": "양식 만들기: 설명을 입력하거나 예시로 시작한 다음 생성을 선택하세요."
+          "caption": "양식 만들기: 왼쪽에 설명하면 오른쪽에 초안과 미리보기가 나옵니다."
         },
         {
           "type": "steps",

@@ -439,7 +439,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/builder-basics.jpg",
-          "caption": "De builder: de pagina's en vragen van je formulier, met Veld toevoegen en Veldinstellingen onderaan."
+          "caption": "De builder: de veldenlijst, het formulier en de instellingen van wat je selecteerde."
         },
         {
           "type": "steps",
@@ -1225,7 +1225,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/database-explorer.jpg",
-          "caption": "De Database-verkenner: kies onder Tabellen een tabel om de rijen en de structuur te zien."
+          "caption": "De Database-verkenner: tabellen links, hun rijen rechts."
         }
       ]
     },
@@ -1671,7 +1671,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/ai-create-form.jpg",
-          "caption": "Een formulier maken: beschrijf het of begin met een voorbeeld en kies dan Genereren."
+          "caption": "Formulier maken: beschrijf het links, het concept en de voorbeeldweergave rechts."
         },
         {
           "type": "steps",

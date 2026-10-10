@@ -439,7 +439,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/builder-basics.jpg",
-          "caption": "Oluşturucu: formunuzun sayfaları ve soruları, altta Alan ekle ve Alan ayarları ile."
+          "caption": "Oluşturucu: alan listesi, form ve seçtiğiniz öğenin ayarları."
         },
         {
           "type": "steps",
@@ -1226,7 +1226,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/database-explorer.jpg",
-          "caption": "Veritabanı gezgini: satırlarını ve yapısını görmek için Tablolar altından bir tablo seçin."
+          "caption": "Veritabanı gezgini: solda tablolar, sağda satırları."
         }
       ]
     },
@@ -1672,7 +1672,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/ai-create-form.jpg",
-          "caption": "Form oluşturma: formu anlatın ya da bir örnekle başlayın, sonra Oluştur'u seçin."
+          "caption": "Form oluştur: solda tarif edin, sağda taslak ve önizlemesi."
         },
         {
           "type": "steps",

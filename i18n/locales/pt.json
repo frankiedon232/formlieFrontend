@@ -9101,6 +9101,19 @@
       "placeholder": "Digite sua pergunta…",
       "send": "Enviar",
       "reset": "Recomeçar"
+    },
+    "viewer": {
+      "title": "Imagem",
+      "open": "Ampliar: {caption}",
+      "enlarge": "Ampliar",
+      "close": "Fechar",
+      "zoomIn": "Aumentar zoom",
+      "zoomOut": "Diminuir zoom",
+      "reset": "Ajustar à tela",
+      "previous": "Imagem anterior",
+      "next": "Próxima imagem",
+      "of": "{n} de {total}",
+      "hint": "Clique duas vezes ou pressione + e - para dar zoom. Arraste para mover. Esc fecha."
     }
   }
 }

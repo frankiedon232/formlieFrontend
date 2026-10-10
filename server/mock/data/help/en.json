@@ -439,7 +439,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/builder-basics.jpg",
-          "caption": "The builder: your form's pages and questions, with Add field and Field settings at the bottom."
+          "caption": "The builder: the field list, the form and the settings of what you selected."
         },
         {
           "type": "steps",
@@ -1225,7 +1225,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/database-explorer.jpg",
-          "caption": "The Database explorer: pick a table under Tables to see its rows and structure."
+          "caption": "The Database explorer: tables on the left, their rows on the right."
         }
       ]
     },
@@ -1671,7 +1671,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/ai-create-form.jpg",
-          "caption": "Create a form: describe it or start from an example, then choose Generate."
+          "caption": "Create a form: describe it on the left, the draft and its preview on the right."
         },
         {
           "type": "steps",

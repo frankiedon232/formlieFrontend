@@ -9101,6 +9101,19 @@
       "placeholder": "Nhập câu hỏi của bạn…",
       "send": "Gửi",
       "reset": "Bắt đầu lại"
+    },
+    "viewer": {
+      "title": "Hình ảnh",
+      "open": "Phóng to: {caption}",
+      "enlarge": "Phóng to",
+      "close": "Đóng",
+      "zoomIn": "Phóng to",
+      "zoomOut": "Thu nhỏ",
+      "reset": "Vừa màn hình",
+      "previous": "Hình trước",
+      "next": "Hình tiếp theo",
+      "of": "{n} trên {total}",
+      "hint": "Nhấp đúp hoặc nhấn + và - để thu phóng. Kéo để di chuyển. Esc để đóng."
     }
   }
 }

@@ -439,7 +439,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/builder-basics.jpg",
-          "caption": "Kreator: strony i pytania Twojego formularza, a na dole Dodaj pole i Ustawienia pola."
+          "caption": "Kreator: lista pól, formularz i ustawienia zaznaczonego elementu."
         },
         {
           "type": "steps",
@@ -1225,7 +1225,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/database-explorer.jpg",
-          "caption": "Eksplorator baz: wybierz tabelę w sekcji Tabele, aby zobaczyć jej wiersze i strukturę."
+          "caption": "Eksplorator baz: tabele po lewej, ich wiersze po prawej."
         }
       ]
     },
@@ -1671,7 +1671,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/ai-create-form.jpg",
-          "caption": "Tworzenie formularza: opisz go lub zacznij od przykładu, a potem wybierz Generuj."
+          "caption": "Utwórz formularz: opisz go po lewej, szkic i podgląd po prawej."
         },
         {
           "type": "steps",

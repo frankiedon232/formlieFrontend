@@ -9101,6 +9101,19 @@
       "placeholder": "Ketik pertanyaanmu…",
       "send": "Kirim",
       "reset": "Mulai ulang"
+    },
+    "viewer": {
+      "title": "Gambar",
+      "open": "Perbesar: {caption}",
+      "enlarge": "Perbesar",
+      "close": "Tutup",
+      "zoomIn": "Perbesar tampilan",
+      "zoomOut": "Perkecil tampilan",
+      "reset": "Sesuaikan dengan layar",
+      "previous": "Gambar sebelumnya",
+      "next": "Gambar berikutnya",
+      "of": "{n} dari {total}",
+      "hint": "Klik dua kali atau tekan + dan - untuk zoom. Seret untuk menggeser. Esc menutup."
     }
   }
 }

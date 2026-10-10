@@ -439,7 +439,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/builder-basics.jpg",
-          "caption": "Kijenzi: kurasa na maswali ya fomu yako, pamoja na Ongeza sehemu na Mipangilio ya sehemu chini."
+          "caption": "Kijenzi: orodha ya sehemu, fomu na mipangilio ya ulichochagua."
         },
         {
           "type": "steps",
@@ -1225,7 +1225,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/database-explorer.jpg",
-          "caption": "Kivinjari cha hifadhidata: chagua jedwali chini ya Majedwali ili kuona safu zake na muundo wake."
+          "caption": "Kivinjari cha hifadhidata: majedwali kushoto, safu zake kulia."
         }
       ]
     },
@@ -1671,7 +1671,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/ai-create-form.jpg",
-          "caption": "Tengeneza fomu: ieleze au anza na mfano, kisha chagua Tengeneza."
+          "caption": "Unda fomu: ieleze kushoto, rasimu na onyesho lake kulia."
         },
         {
           "type": "steps",

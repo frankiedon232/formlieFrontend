@@ -9101,6 +9101,19 @@
       "placeholder": "Typ je vraag…",
       "send": "Verzenden",
       "reset": "Opnieuw beginnen"
+    },
+    "viewer": {
+      "title": "Afbeelding",
+      "open": "Vergroten: {caption}",
+      "enlarge": "Vergroten",
+      "close": "Sluiten",
+      "zoomIn": "Inzoomen",
+      "zoomOut": "Uitzoomen",
+      "reset": "Aanpassen aan scherm",
+      "previous": "Vorige afbeelding",
+      "next": "Volgende afbeelding",
+      "of": "{n} van {total}",
+      "hint": "Dubbelklik of druk op + en - om te zoomen. Sleep om te verplaatsen. Esc sluit."
     }
   }
 }

@@ -9101,6 +9101,19 @@
       "placeholder": "Andika swali lako…",
       "send": "Tuma",
       "reset": "Anza upya"
+    },
+    "viewer": {
+      "title": "Picha",
+      "open": "Kuza: {caption}",
+      "enlarge": "Kuza",
+      "close": "Funga",
+      "zoomIn": "Sogeza karibu",
+      "zoomOut": "Sogeza mbali",
+      "reset": "Linganisha na skrini",
+      "previous": "Picha iliyotangulia",
+      "next": "Picha inayofuata",
+      "of": "{n} kati ya {total}",
+      "hint": "Bofya mara mbili au bonyeza + na - ili kukuza. Buruta ili kusogea. Esc hufunga."
     }
   }
 }

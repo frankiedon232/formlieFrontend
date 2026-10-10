@@ -439,7 +439,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/builder-basics.jpg",
-          "caption": "O construtor: as páginas e perguntas do seu formulário, com Adicionar campo e Configurações do campo na parte inferior."
+          "caption": "O construtor: a lista de campos, o formulário e as configurações do que você selecionou."
         },
         {
           "type": "steps",
@@ -1225,7 +1225,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/database-explorer.jpg",
-          "caption": "O Explorador de BD: escolha uma tabela em Tabelas para ver suas linhas e estrutura."
+          "caption": "O Explorador de BD: tabelas à esquerda, suas linhas à direita."
         }
       ]
     },
@@ -1672,7 +1672,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/ai-create-form.jpg",
-          "caption": "Criar um formulário: descreva-o ou comece por um exemplo e depois escolha Gerar."
+          "caption": "Criar um formulário: descreva à esquerda, o rascunho e sua pré-visualização à direita."
         },
         {
           "type": "steps",

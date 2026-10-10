@@ -439,7 +439,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/builder-basics.jpg",
-          "caption": "构建器：显示表单的页面和问题，底部有添加字段和字段设置。"
+          "caption": "构建器：字段列表、表单，以及所选内容的设置。"
         },
         {
           "type": "steps",
@@ -1225,7 +1225,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/database-explorer.jpg",
-          "caption": "数据库浏览器：在表下选择一个表，即可查看其行和结构。"
+          "caption": "数据库浏览器：左侧是表，右侧是表中的行。"
         }
       ]
     },
@@ -1671,7 +1671,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/ai-create-form.jpg",
-          "caption": "创建表单：描述它或从示例开始，然后选择生成。"
+          "caption": "创建表单：在左侧描述，右侧是草稿及其预览。"
         },
         {
           "type": "steps",

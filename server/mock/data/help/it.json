@@ -439,7 +439,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/builder-basics.jpg",
-          "caption": "Il costruttore: le pagine e le domande del tuo modulo, con Aggiungi campo e Impostazioni campo in basso."
+          "caption": "Il builder: l’elenco dei campi, il modulo e le impostazioni di ciò che hai selezionato."
         },
         {
           "type": "steps",
@@ -1225,7 +1225,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/database-explorer.jpg",
-          "caption": "L'Esplora database: scegli una tabella sotto Tabelle per vederne le righe e la struttura."
+          "caption": "Esplora database: le tabelle a sinistra, le loro righe a destra."
         }
       ]
     },
@@ -1671,7 +1671,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/ai-create-form.jpg",
-          "caption": "Crea un modulo: descrivilo o parti da un esempio, poi scegli Genera."
+          "caption": "Crea un modulo: descrivilo a sinistra, la bozza e la sua anteprima a destra."
         },
         {
           "type": "steps",

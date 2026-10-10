@@ -439,7 +439,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/builder-basics.jpg",
-          "caption": "Le constructeur : les pages et les questions de votre formulaire, avec Ajouter un champ et Réglages du champ en bas."
+          "caption": "Le générateur : la liste des champs, le formulaire et les réglages de la sélection."
         },
         {
           "type": "steps",
@@ -1225,7 +1225,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/database-explorer.jpg",
-          "caption": "L'Explorateur de BDD : choisissez une table sous Tables pour voir ses lignes et sa structure."
+          "caption": "L’Explorateur de BDD : les tables à gauche, leurs lignes à droite."
         }
       ]
     },
@@ -1671,7 +1671,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/ai-create-form.jpg",
-          "caption": "Créer un formulaire : décrivez-le ou partez d'un exemple, puis choisissez Générer."
+          "caption": "Créer un formulaire : décrivez-le à gauche, le brouillon et son aperçu à droite."
         },
         {
           "type": "steps",

@@ -439,7 +439,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/builder-basics.jpg",
-          "caption": "Pembuat formulir: halaman dan pertanyaan formulir Anda, dengan Tambah kolom dan Pengaturan kolom di bagian bawah."
+          "caption": "Pembuat: daftar bidang, formulir, dan pengaturan item yang dipilih."
         },
         {
           "type": "steps",
@@ -1225,7 +1225,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/database-explorer.jpg",
-          "caption": "Penjelajah database: pilih tabel di bawah Tabel untuk melihat baris dan strukturnya."
+          "caption": "Penjelajah database: tabel di kiri, barisnya di kanan."
         }
       ]
     },
@@ -1671,7 +1671,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/ai-create-form.jpg",
-          "caption": "Buat formulir: jelaskan formulirnya atau mulai dari contoh, lalu pilih Buat."
+          "caption": "Buat formulir: jelaskan di kiri, draf dan pratinjaunya di kanan."
         },
         {
           "type": "steps",

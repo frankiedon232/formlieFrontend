@@ -439,7 +439,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/builder-basics.jpg",
-          "caption": "El constructor: las páginas y preguntas de tu formulario, con Añadir campo y Ajustes del campo abajo."
+          "caption": "El constructor: la lista de campos, el formulario y los ajustes de lo seleccionado."
         },
         {
           "type": "steps",
@@ -1225,7 +1225,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/database-explorer.jpg",
-          "caption": "El Explorador de BD: elige una tabla en Tablas para ver sus filas y su estructura."
+          "caption": "El Explorador de BD: tablas a la izquierda, sus filas a la derecha."
         }
       ]
     },
@@ -1672,7 +1672,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/ai-create-form.jpg",
-          "caption": "Crear un formulario: descríbelo o empieza con un ejemplo y luego elige Generar."
+          "caption": "Crear un formulario: descríbelo a la izquierda, el borrador y su vista previa a la derecha."
         },
         {
           "type": "steps",

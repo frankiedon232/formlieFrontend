@@ -9101,6 +9101,19 @@
       "placeholder": "Type your question…",
       "send": "Send",
       "reset": "Start over"
+    },
+    "viewer": {
+      "title": "Picture",
+      "open": "Enlarge: {caption}",
+      "enlarge": "Enlarge",
+      "close": "Close",
+      "zoomIn": "Zoom in",
+      "zoomOut": "Zoom out",
+      "reset": "Fit to screen",
+      "previous": "Previous picture",
+      "next": "Next picture",
+      "of": "{n} of {total}",
+      "hint": "Double-click or press + and - to zoom. Drag to move around. Esc closes."
     }
   }
 }

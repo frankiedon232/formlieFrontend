@@ -439,7 +439,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/builder-basics.jpg",
-          "caption": "ビルダー：フォームのページと質問が並び、下に「項目を追加」と「項目の設定」があります。"
+          "caption": "ビルダー：フィールド一覧、フォーム、選択した項目の設定。"
         },
         {
           "type": "steps",
@@ -1225,7 +1225,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/database-explorer.jpg",
-          "caption": "DBエクスプローラー：「テーブル」からテーブルを選ぶと、行と構造が見られます。"
+          "caption": "DBエクスプローラー：左にテーブル、右にその行。"
         }
       ]
     },
@@ -1671,7 +1671,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/ai-create-form.jpg",
-          "caption": "フォームを作成：内容を説明するか例から始めて、「生成」を選びます。"
+          "caption": "フォームを作成：左で説明し、右に下書きとプレビュー。"
         },
         {
           "type": "steps",

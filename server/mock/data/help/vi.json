@@ -439,7 +439,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/builder-basics.jpg",
-          "caption": "Trình tạo: các trang và câu hỏi của biểu mẫu, với Thêm trường và Cài đặt trường ở phía dưới."
+          "caption": "Trình tạo: danh sách trường, biểu mẫu và cài đặt của mục bạn chọn."
         },
         {
           "type": "steps",
@@ -1225,7 +1225,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/database-explorer.jpg",
-          "caption": "Trình duyệt CSDL: chọn một bảng trong mục Bảng để xem các dòng và cấu trúc của bảng."
+          "caption": "Trình duyệt CSDL: bảng ở bên trái, các hàng của chúng ở bên phải."
         }
       ]
     },
@@ -1671,7 +1671,7 @@
           "type": "media",
           "kind": "image",
           "src": "/help/screens/ai-create-form.jpg",
-          "caption": "Tạo biểu mẫu: hãy mô tả biểu mẫu hoặc bắt đầu từ một ví dụ, rồi chọn Tạo."
+          "caption": "Tạo biểu mẫu: mô tả ở bên trái, bản nháp và bản xem trước ở bên phải."
         },
         {
           "type": "steps",

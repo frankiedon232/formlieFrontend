@@ -9101,6 +9101,19 @@
       "placeholder": "Sorunu yaz…",
       "send": "Gönder",
       "reset": "Baştan başla"
+    },
+    "viewer": {
+      "title": "Resim",
+      "open": "Büyüt: {caption}",
+      "enlarge": "Büyüt",
+      "close": "Kapat",
+      "zoomIn": "Yakınlaştır",
+      "zoomOut": "Uzaklaştır",
+      "reset": "Ekrana sığdır",
+      "previous": "Önceki resim",
+      "next": "Sonraki resim",
+      "of": "{n} / {total}",
+      "hint": "Yakınlaştırmak için çift tıklayın veya + ve - tuşlarına basın. Gezinmek için sürükleyin. Esc kapatır."
     }
   }
 }

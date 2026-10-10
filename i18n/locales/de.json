@@ -9101,6 +9101,19 @@
       "placeholder": "Stelle deine Frage…",
       "send": "Senden",
       "reset": "Neu starten"
+    },
+    "viewer": {
+      "title": "Bild",
+      "open": "Vergrößern: {caption}",
+      "enlarge": "Vergrößern",
+      "close": "Schließen",
+      "zoomIn": "Vergrößern",
+      "zoomOut": "Verkleinern",
+      "reset": "An Bildschirm anpassen",
+      "previous": "Vorheriges Bild",
+      "next": "Nächstes Bild",
+      "of": "{n} von {total}",
+      "hint": "Zum Zoomen doppelklicken oder + und - drücken. Zum Verschieben ziehen. Esc schließt."
     }
   }
 }
