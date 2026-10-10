@@ -7783,7 +7783,21 @@
         "compact": "Gọn"
       },
       "preview": "Xem trước",
-      "previewHint": "Toàn bộ cổng quanh trang này cũng hiển thị giao diện. Biểu mẫu công khai của bạn giữ giao diện riêng."
+      "previewHint": "Toàn bộ cổng quanh trang này cũng hiển thị giao diện. Biểu mẫu công khai của bạn giữ giao diện riêng.",
+      "modes": "Sáng và tối",
+      "modesHint": "Chế độ mọi người bắt đầu và màu của chế độ tối.",
+      "defaultMode": "Chế độ mặc định",
+      "defaultModeHelp": "Dành cho người chưa chọn chế độ. Ai cũng vẫn có thể tự chuyển đổi.",
+      "mode": {
+        "system": "Theo thiết bị",
+        "light": "Sáng",
+        "dark": "Tối"
+      },
+      "darkOwn": "Màu khác ở chế độ tối",
+      "darkOwnHint": "Tắt: chế độ tối dùng các màu ở trên với sắc thái tối.",
+      "darkPrimary": "Màu nhấn chế độ tối",
+      "darkNeutrals": "Màu xám chế độ tối",
+      "darkBackground": "Nền chế độ tối"
     },
     "address": {
       "workspace": "Địa chỉ không gian làm việc",

@@ -7783,7 +7783,21 @@
         "compact": "Zwarte"
       },
       "preview": "Podgląd",
-      "previewHint": "Cały portal wokół tej strony również pokazuje ten wygląd. Twoje publiczne formularze zachowują własne motywy."
+      "previewHint": "Cały portal wokół tej strony również pokazuje ten wygląd. Twoje publiczne formularze zachowują własne motywy.",
+      "modes": "Jasny i ciemny",
+      "modesHint": "Tryb, w którym zaczynają użytkownicy, oraz kolory trybu ciemnego.",
+      "defaultMode": "Tryb domyślny",
+      "defaultModeHelp": "Dla osób, które nie wybrały trybu. Każdy nadal może go zmienić dla siebie.",
+      "mode": {
+        "system": "Jak w urządzeniu",
+        "light": "Jasny",
+        "dark": "Ciemny"
+      },
+      "darkOwn": "Inne kolory w trybie ciemnym",
+      "darkOwnHint": "Wyłączone: tryb ciemny używa powyższych kolorów w ciemnych odcieniach.",
+      "darkPrimary": "Kolor akcentu w trybie ciemnym",
+      "darkNeutrals": "Szarości w trybie ciemnym",
+      "darkBackground": "Tło w trybie ciemnym"
     },
     "address": {
       "workspace": "Adres przestrzeni roboczej",

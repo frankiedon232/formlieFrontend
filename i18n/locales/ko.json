@@ -7783,7 +7783,21 @@
         "compact": "촘촘하게"
       },
       "preview": "미리보기",
-      "previewHint": "이 페이지를 둘러싼 포털 전체에도 스타일이 표시됩니다. 공개 양식은 자체 테마를 유지합니다."
+      "previewHint": "이 페이지를 둘러싼 포털 전체에도 스타일이 표시됩니다. 공개 양식은 자체 테마를 유지합니다.",
+      "modes": "라이트 및 다크",
+      "modesHint": "사용자가 처음 시작하는 모드와 다크 모드의 색상입니다.",
+      "defaultMode": "기본 모드",
+      "defaultModeHelp": "모드를 고르지 않은 사용자를 위한 설정입니다. 누구나 직접 바꿀 수 있습니다.",
+      "mode": {
+        "system": "기기 설정",
+        "light": "라이트",
+        "dark": "다크"
+      },
+      "darkOwn": "다크 모드의 다른 색상",
+      "darkOwnHint": "끄면 다크 모드는 위의 색상을 어두운 톤으로 사용합니다.",
+      "darkPrimary": "다크 모드 강조 색상",
+      "darkNeutrals": "다크 모드 회색",
+      "darkBackground": "다크 모드 배경"
     },
     "address": {
       "workspace": "워크스페이스 주소",

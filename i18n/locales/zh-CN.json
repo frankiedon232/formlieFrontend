@@ -7783,7 +7783,21 @@
         "compact": "紧凑"
       },
       "preview": "预览",
-      "previewHint": "此页面周围的整个门户也会显示该外观。你的公开表单保留各自的主题。"
+      "previewHint": "此页面周围的整个门户也会显示该外观。你的公开表单保留各自的主题。",
+      "modes": "浅色与深色",
+      "modesHint": "用户初始使用的模式，以及深色模式的颜色。",
+      "defaultMode": "默认模式",
+      "defaultModeHelp": "适用于尚未选择模式的用户。每个人仍可自行切换。",
+      "mode": {
+        "system": "跟随设备",
+        "light": "浅色",
+        "dark": "深色"
+      },
+      "darkOwn": "深色模式下的其他颜色",
+      "darkOwnHint": "关闭：深色模式使用上面的颜色的深色调。",
+      "darkPrimary": "深色模式主色",
+      "darkNeutrals": "深色模式灰色",
+      "darkBackground": "深色模式背景"
     },
     "address": {
       "workspace": "工作区地址",

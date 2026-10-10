@@ -1,7 +1,7 @@
 <!--
   Settings → Appearance (F14 M6, owner 2026-10-05): the workspace's own look of the whole portal.
   Presets to start from; colours (primary incl. the brand colour with a readability check, neutrals,
-  background); shape and type (corners, font, text size); sidebar (rail, menu, count badges); header
+  background); light and dark (default mode, other colours in dark mode); shape and type (corners, font, text size); sidebar (rail, menu, count badges); header
   (breadcrumbs, search) and footer; page (width, density). Every change shows on the real portal at
   once (the page is the preview, plus a small picture); Discard or leaving puts it back. Reset to Formalie.
 -->
@@ -82,6 +82,8 @@ const presets = computed(() => Object.keys(APPEARANCE_PRESETS).filter(key => key
           </UFormField>
         </SettingsBlock>
 
+        <SettingsAppearanceModes :draft="draft" :primaries="primaries" :neutrals="neutrals" @change="patch => draft && Object.assign(draft, patch, { preset: 'custom' })" />
+
         <SettingsBlock :title="t('settings.appearance.shape')" :description="t('settings.appearance.shapeHint')" icon="i-lucide-type">
           <UFormField :label="t('settings.appearance.corners')">
             <UTabs :model-value="draft.radius" :items="radii" :content="false" color="neutral" size="sm" :ui="SEGMENTED_UI" class="w-fit max-w-full overflow-x-auto" @update:model-value="value => set('radius', value as AppearanceSettings['radius'])" />
@@ -131,7 +133,16 @@ const presets = computed(() => Object.keys(APPEARANCE_PRESETS).filter(key => key
       <aside class="w-full max-w-xl 2xl:sticky 2xl:top-0 2xl:max-w-none 2xl:self-start">
         <div class="flex flex-col gap-3 rounded-xl border border-default bg-elevated/30 p-4">
           <span class="text-[11px] font-medium tracking-wide text-muted uppercase">{{ t('settings.appearance.preview') }}</span>
-          <SettingsAppearancePreview :look="draft" :name="name" />
+          <div class="grid gap-3 sm:grid-cols-2 2xl:grid-cols-1">
+            <div class="flex flex-col gap-1.5">
+              <span class="flex items-center gap-1 text-[11px] text-muted"><UIcon name="i-lucide-sun" class="size-3" />{{ t('settings.appearance.mode.light') }}</span>
+              <SettingsAppearancePreview :look="draft" :name="name" class="light" />
+            </div>
+            <div class="flex flex-col gap-1.5">
+              <span class="flex items-center gap-1 text-[11px] text-muted"><UIcon name="i-lucide-moon" class="size-3" />{{ t('settings.appearance.mode.dark') }}</span>
+              <SettingsAppearancePreview :look="draft" :name="name" class="dark" />
+            </div>
+          </div>
           <p class="text-xs text-muted">{{ t('settings.appearance.previewHint') }}</p>
           <UButton :label="t('settings.appearance.reset')" icon="i-lucide-rotate-ccw" color="neutral" variant="outline" size="sm" class="w-fit sm:hidden" :disabled="draft.preset === 'formalie'" @click="reset" />
         </div>

@@ -1,6 +1,8 @@
 /**
  * The portal's look per workspace (F14 M6, owner 2026-10-05): colours, shape, type, sidebar, header,
  * footer and page layout. Everyone in the workspace sees it; public forms keep their own themes.
+ * Light and dark (leftovers L3, owner 2026-10-10): a default mode for people who haven't picked one, and
+ * optionally other colours in dark mode.
  */
 
 export const APPEARANCE_PRIMARIES = ['mono', 'brand', 'indigo', 'blue', 'sky', 'teal', 'emerald', 'green', 'amber', 'orange', 'red', 'rose', 'pink', 'violet', 'purple'] as const
@@ -25,6 +27,17 @@ export interface AppearanceSettings {
   footer: boolean
   content_width: 'full' | 'centred'
   density: 'comfortable' | 'compact'
+  /** The mode for people who haven't picked one themselves (their own choice always wins). */
+  default_mode: 'system' | 'light' | 'dark'
+  /** Other colours in dark mode; null = the same colours in both modes. */
+  dark: AppearanceDark | null
+}
+
+/** The colours used in dark mode when they differ from light mode. */
+export interface AppearanceDark {
+  primary: (typeof APPEARANCE_PRIMARIES)[number]
+  neutral: (typeof APPEARANCE_NEUTRALS)[number]
+  background: 'plain' | 'tinted'
 }
 
 export const FORMALIE_APPEARANCE: AppearanceSettings = {
@@ -42,6 +55,8 @@ export const FORMALIE_APPEARANCE: AppearanceSettings = {
   footer: true,
   content_width: 'full',
   density: 'comfortable',
+  default_mode: 'system',
+  dark: null,
 }
 
 /** Ready-made looks: a start, everything stays adjustable. */

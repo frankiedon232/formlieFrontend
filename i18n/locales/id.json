@@ -7783,7 +7783,21 @@
         "compact": "Ringkas"
       },
       "preview": "Pratinjau",
-      "previewHint": "Seluruh portal di sekitar halaman ini juga menampilkan tampilannya. Formulir publik Anda tetap memakai tema sendiri."
+      "previewHint": "Seluruh portal di sekitar halaman ini juga menampilkan tampilannya. Formulir publik Anda tetap memakai tema sendiri.",
+      "modes": "Terang dan gelap",
+      "modesHint": "Mode awal bagi pengguna dan warna mode gelap.",
+      "defaultMode": "Mode default",
+      "defaultModeHelp": "Untuk orang yang belum memilih mode. Siapa pun tetap bisa mengubahnya sendiri.",
+      "mode": {
+        "system": "Ikuti perangkat",
+        "light": "Terang",
+        "dark": "Gelap"
+      },
+      "darkOwn": "Warna lain di mode gelap",
+      "darkOwnHint": "Nonaktif: mode gelap memakai warna di atas dalam nuansa gelapnya.",
+      "darkPrimary": "Warna aksen mode gelap",
+      "darkNeutrals": "Abu-abu mode gelap",
+      "darkBackground": "Latar mode gelap"
     },
     "address": {
       "workspace": "Alamat ruang kerja",

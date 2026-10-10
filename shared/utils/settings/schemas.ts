@@ -200,4 +200,6 @@ export const appearanceSchema = z.object({
   footer: z.boolean(),
   content_width: z.enum(['full', 'centred']),
   density: z.enum(['comfortable', 'compact']),
+  default_mode: z.enum(['system', 'light', 'dark']),
+  dark: z.object({ primary: z.enum(APPEARANCE_PRIMARIES), neutral: z.enum(APPEARANCE_NEUTRALS), background: z.enum(['plain', 'tinted']) }).nullable(),
 })

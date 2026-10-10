@@ -7783,7 +7783,21 @@
         "compact": "Fupi"
       },
       "preview": "Hakiki",
-      "previewHint": "Lango lote linalozunguka ukurasa huu pia linaonyesha mwonekano. Fomu zako za umma hubaki na mandhari yake."
+      "previewHint": "Lango lote linalozunguka ukurasa huu pia linaonyesha mwonekano. Fomu zako za umma hubaki na mandhari yake.",
+      "modes": "Mwanga na giza",
+      "modesHint": "Hali ambayo watu huanzia nayo, na rangi za hali ya giza.",
+      "defaultMode": "Hali chaguomsingi",
+      "defaultModeHelp": "Kwa watu ambao hawajachagua hali. Mtu yeyote bado anaweza kubadilisha kwa ajili yake.",
+      "mode": {
+        "system": "Kama kifaa",
+        "light": "Mwanga",
+        "dark": "Giza"
+      },
+      "darkOwn": "Rangi nyingine katika hali ya giza",
+      "darkOwnHint": "Imezimwa: hali ya giza hutumia rangi zilizo juu katika vivuli vyake vya giza.",
+      "darkPrimary": "Rangi kuu ya hali ya giza",
+      "darkNeutrals": "Kijivu cha hali ya giza",
+      "darkBackground": "Mandharinyuma ya hali ya giza"
     },
     "address": {
       "workspace": "Anwani ya nafasi ya kazi",

@@ -7783,7 +7783,21 @@
         "compact": "Compact"
       },
       "preview": "Preview",
-      "previewHint": "The whole portal around this page shows the look too. Your public forms keep their own themes."
+      "previewHint": "The whole portal around this page shows the look too. Your public forms keep their own themes.",
+      "modes": "Light and dark",
+      "modesHint": "The mode people start in, and the colours of dark mode.",
+      "defaultMode": "Default mode",
+      "defaultModeHelp": "For people who haven't picked a mode. Anyone can still switch for themselves.",
+      "mode": {
+        "system": "Device setting",
+        "light": "Light",
+        "dark": "Dark"
+      },
+      "darkOwn": "Other colours in dark mode",
+      "darkOwnHint": "Off: dark mode uses the colours above in their dark shades.",
+      "darkPrimary": "Dark mode accent colour",
+      "darkNeutrals": "Dark mode greys",
+      "darkBackground": "Dark mode background"
     },
     "address": {
       "workspace": "Workspace address",

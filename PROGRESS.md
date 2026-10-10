@@ -769,7 +769,7 @@ Organisations run on different brand colours, so each workspace can change the l
 - ✅ **Header (navbar):** show / hide breadcrumbs and the search field (search stays on Ctrl / ⌘ + K)
 - ✅ **Footer:** show / hide
 - ✅ **Main body:** spacing (compact / comfortable), content width (full / centred), font family and text size from a safe set; presets, live preview on the real portal and Reset to Formalie
-- ⬜ **Light and dark** (owner 2026-10-10: build, leftovers L3): separate colours per mode and a workspace default mode; each person can still switch (rule 9)
+- ✅ **Light and dark** (owner 2026-10-10, leftovers L3): a workspace default mode (device setting, light or dark) for people who haven't picked one (a mode a person picks is theirs from then on; light / dark picked before stays theirs), and optionally other colours in dark mode (accent, greys, background) used on the dark page and on dark parts of a light page (dark rail or menu); light and dark pictures side by side in the preview; the loading screen follows the dark colours; every Tailwind palette kept in the CSS (`theme(static)`) so any colour works at run time
 - ✅ Applied app-wide through Nuxt UI theme tokens (`app.config` / CSS variables at runtime), never per-page styling; the first-load screen (Formalie mark, bar and dots) uses the saved look too (2026-10-07)
 - ✅ Files and messages follow it too: the PDF export report (Appearance colour, 2026-10-07), email templates and the sign-in page (Branding)
 - ✅ Who may change it: workspace owners / admins (Roles & access, F22, refines this)

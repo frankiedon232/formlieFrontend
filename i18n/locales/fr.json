@@ -7783,7 +7783,21 @@
         "compact": "Compact"
       },
       "preview": "Aperçu",
-      "previewHint": "Tout le portail autour de cette page affiche aussi le style. Vos formulaires publics gardent leurs propres thèmes."
+      "previewHint": "Tout le portail autour de cette page affiche aussi le style. Vos formulaires publics gardent leurs propres thèmes.",
+      "modes": "Clair et sombre",
+      "modesHint": "Le mode de départ des utilisateurs et les couleurs du mode sombre.",
+      "defaultMode": "Mode par défaut",
+      "defaultModeHelp": "Pour les personnes qui n’ont pas choisi de mode. Chacun peut toujours changer pour soi.",
+      "mode": {
+        "system": "Réglage de l’appareil",
+        "light": "Clair",
+        "dark": "Sombre"
+      },
+      "darkOwn": "Autres couleurs en mode sombre",
+      "darkOwnHint": "Désactivé : le mode sombre utilise les couleurs ci-dessus dans leurs tons sombres.",
+      "darkPrimary": "Couleur d’accent du mode sombre",
+      "darkNeutrals": "Gris du mode sombre",
+      "darkBackground": "Arrière-plan du mode sombre"
     },
     "address": {
       "workspace": "Adresse de l'espace de travail",

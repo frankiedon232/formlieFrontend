@@ -7783,7 +7783,21 @@
         "compact": "Kompakt"
       },
       "preview": "Vorschau",
-      "previewHint": "Das ganze Portal um diese Seite zeigt den Look ebenfalls. Ihre öffentlichen Formulare behalten ihre eigenen Designs."
+      "previewHint": "Das ganze Portal um diese Seite zeigt den Look ebenfalls. Ihre öffentlichen Formulare behalten ihre eigenen Designs.",
+      "modes": "Hell und dunkel",
+      "modesHint": "Der Modus, mit dem Personen starten, und die Farben des dunklen Modus.",
+      "defaultMode": "Standardmodus",
+      "defaultModeHelp": "Für Personen, die noch keinen Modus gewählt haben. Jeder kann weiterhin für sich selbst umschalten.",
+      "mode": {
+        "system": "Wie das Gerät",
+        "light": "Hell",
+        "dark": "Dunkel"
+      },
+      "darkOwn": "Andere Farben im dunklen Modus",
+      "darkOwnHint": "Aus: Der dunkle Modus nutzt die obigen Farben in ihren dunklen Tönen.",
+      "darkPrimary": "Akzentfarbe im dunklen Modus",
+      "darkNeutrals": "Grautöne im dunklen Modus",
+      "darkBackground": "Hintergrund im dunklen Modus"
     },
     "address": {
       "workspace": "Workspace-Adresse",

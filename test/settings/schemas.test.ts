@@ -174,3 +174,11 @@ describe('appearance', () => {
     expect(appearanceSchema.safeParse({ ...FORMALIE_APPEARANCE, font: 'comic' }).success).toBe(false)
   })
 })
+
+describe('appearance light and dark (leftovers L3)', () => {
+  it('takes a default mode and optional dark colours', () => {
+    expect(appearanceSchema.safeParse({ ...FORMALIE_APPEARANCE, default_mode: 'dark', dark: { primary: 'emerald', neutral: 'slate', background: 'tinted' } }).success).toBe(true)
+    expect(appearanceSchema.safeParse({ ...FORMALIE_APPEARANCE, default_mode: 'dim' }).success).toBe(false)
+    expect(appearanceSchema.safeParse({ ...FORMALIE_APPEARANCE, dark: { primary: 'neon', neutral: 'slate', background: 'plain' } }).success).toBe(false)
+  })
+})

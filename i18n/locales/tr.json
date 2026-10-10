@@ -7783,7 +7783,21 @@
         "compact": "Sıkı"
       },
       "preview": "Önizleme",
-      "previewHint": "Bu sayfanın çevresindeki tüm portal da görünümü gösterir. Herkese açık formlarınız kendi temalarını korur."
+      "previewHint": "Bu sayfanın çevresindeki tüm portal da görünümü gösterir. Herkese açık formlarınız kendi temalarını korur.",
+      "modes": "Açık ve koyu",
+      "modesHint": "Kişilerin başladığı mod ve koyu modun renkleri.",
+      "defaultMode": "Varsayılan mod",
+      "defaultModeHelp": "Henüz mod seçmemiş kişiler için. Herkes yine de kendisi için değiştirebilir.",
+      "mode": {
+        "system": "Cihaz ayarı",
+        "light": "Açık",
+        "dark": "Koyu"
+      },
+      "darkOwn": "Koyu modda diğer renkler",
+      "darkOwnHint": "Kapalı: koyu mod yukarıdaki renkleri koyu tonlarında kullanır.",
+      "darkPrimary": "Koyu mod vurgu rengi",
+      "darkNeutrals": "Koyu mod grileri",
+      "darkBackground": "Koyu mod arka planı"
     },
     "address": {
       "workspace": "Çalışma alanı adresi",

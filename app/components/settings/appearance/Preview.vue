@@ -1,6 +1,7 @@
 <!--
   Settings → Appearance (F14 M6): a small picture of the portal in the look being edited (rail, menu,
-  header, a list and a dialog button), beside the real portal that changes too. Decorative.
+  header, a list and a dialog button), beside the real portal that changes too. Decorative. The page shows it
+  twice, with `light` and `dark` classes (leftovers L3); accents use the inverted colour like the real portal.
 -->
 <script setup lang="ts">
 import type { AppearanceSettings } from '#shared/types/appearance'
@@ -28,12 +29,12 @@ const pad = computed(() => (props.look.density === 'compact' ? 'p-2 gap-1.5' : '
         <span class="flex min-w-0 flex-col"><span class="truncate text-[10px] font-semibold text-highlighted">{{ t('nav.forms') }}</span><span v-if="look.header.breadcrumbs" class="text-[8px] text-muted">{{ t('nav.forms') }} › …</span></span>
         <span class="flex items-center gap-1">
           <span v-if="look.header.search" class="h-3.5 w-12 rounded-(--ui-radius) border border-default" />
-          <span class="rounded-(--ui-radius) bg-primary px-1.5 py-0.5 text-[8px] font-medium text-inverted">{{ t('nav.newForm') }}</span>
+          <span class="rounded-(--ui-radius) bg-inverted px-1.5 py-0.5 text-[8px] font-medium text-inverted">{{ t('nav.newForm') }}</span>
         </span>
       </div>
       <div class="flex min-h-0 flex-1 flex-col" :class="[pad, look.content_width === 'centred' ? 'px-5' : '']">
         <div v-for="(width, i) in ROWS" :key="i" class="flex items-center gap-2 rounded-(--ui-radius) border border-default bg-default px-2 py-1.5">
-          <span class="size-2 rounded-full" :class="i % 2 ? 'bg-amber-500' : 'bg-primary'" />
+          <span class="size-2 rounded-full" :class="i % 2 ? 'bg-amber-500' : 'bg-inverted'" />
           <span class="h-1.5 rounded-full bg-(--ui-border-accented)" :style="{ width: `${width}%` }" />
         </div>
       </div>

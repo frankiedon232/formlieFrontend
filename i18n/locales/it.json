@@ -7783,7 +7783,21 @@
         "compact": "Compatta"
       },
       "preview": "Anteprima",
-      "previewHint": "Anche tutto il portale attorno a questa pagina mostra lo stile. I tuoi moduli pubblici mantengono i propri temi."
+      "previewHint": "Anche tutto il portale attorno a questa pagina mostra lo stile. I tuoi moduli pubblici mantengono i propri temi.",
+      "modes": "Chiaro e scuro",
+      "modesHint": "La modalità con cui iniziano le persone e i colori della modalità scura.",
+      "defaultMode": "Modalità predefinita",
+      "defaultModeHelp": "Per chi non ha scelto una modalità. Ognuno può comunque cambiarla per sé.",
+      "mode": {
+        "system": "Come il dispositivo",
+        "light": "Chiaro",
+        "dark": "Scuro"
+      },
+      "darkOwn": "Altri colori in modalità scura",
+      "darkOwnHint": "Disattivato: la modalità scura usa i colori sopra nelle loro tonalità scure.",
+      "darkPrimary": "Colore d’accento della modalità scura",
+      "darkNeutrals": "Grigi della modalità scura",
+      "darkBackground": "Sfondo della modalità scura"
     },
     "address": {
       "workspace": "Indirizzo dello spazio di lavoro",

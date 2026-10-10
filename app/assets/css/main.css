@@ -1,4 +1,5 @@
-@import 'tailwindcss';
+/* theme(static): every palette stays available, Appearance may pick any colour for dark mode at run time (leftovers L3). */
+@import 'tailwindcss' theme(static);
 @import '@nuxt/ui';
 
 /* Classes written in shared/ (e.g. folder colours) must be generated too; Tailwind only scans app/ by default. */

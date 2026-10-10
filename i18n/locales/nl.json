@@ -7783,7 +7783,21 @@
         "compact": "Compact"
       },
       "preview": "Voorbeeld",
-      "previewHint": "Het hele portaal rond deze pagina toont de stijl ook. Je openbare formulieren houden hun eigen thema's."
+      "previewHint": "Het hele portaal rond deze pagina toont de stijl ook. Je openbare formulieren houden hun eigen thema's.",
+      "modes": "Licht en donker",
+      "modesHint": "De modus waarmee mensen starten en de kleuren van de donkere modus.",
+      "defaultMode": "Standaardmodus",
+      "defaultModeHelp": "Voor mensen die nog geen modus hebben gekozen. Iedereen kan nog steeds zelf wisselen.",
+      "mode": {
+        "system": "Zoals apparaat",
+        "light": "Licht",
+        "dark": "Donker"
+      },
+      "darkOwn": "Andere kleuren in donkere modus",
+      "darkOwnHint": "Uit: de donkere modus gebruikt de kleuren hierboven in hun donkere tinten.",
+      "darkPrimary": "Accentkleur in donkere modus",
+      "darkNeutrals": "Grijstinten in donkere modus",
+      "darkBackground": "Achtergrond in donkere modus"
     },
     "address": {
       "workspace": "Werkruimteadres",

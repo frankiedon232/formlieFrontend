@@ -95,6 +95,12 @@ export function settingsOf(tenant: MockTenant): WorkspaceSettings {
     settings.updated.notifications ??= null
     saveSettings()
   }
+  // Appearance saved before light / dark (leftovers L3)
+  if (settings.appearance && (settings.appearance.default_mode === undefined || settings.appearance.dark === undefined)) {
+    settings.appearance.default_mode ??= 'system'
+    settings.appearance.dark ??= null
+    saveSettings()
+  }
   // The sign-in methods live here; the workspace record follows them
   tenant.auth_providers = [...settings.signin.methods]
   return settings

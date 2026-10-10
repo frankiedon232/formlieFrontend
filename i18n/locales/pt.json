@@ -7783,7 +7783,21 @@
         "compact": "Compacto"
       },
       "preview": "Pré-visualização",
-      "previewHint": "O portal inteiro ao redor desta página também mostra o visual. Seus formulários públicos mantêm seus próprios temas."
+      "previewHint": "O portal inteiro ao redor desta página também mostra o visual. Seus formulários públicos mantêm seus próprios temas.",
+      "modes": "Claro e escuro",
+      "modesHint": "O modo com que as pessoas começam e as cores do modo escuro.",
+      "defaultMode": "Modo padrão",
+      "defaultModeHelp": "Para quem ainda não escolheu um modo. Qualquer pessoa ainda pode trocar por conta própria.",
+      "mode": {
+        "system": "Igual ao dispositivo",
+        "light": "Claro",
+        "dark": "Escuro"
+      },
+      "darkOwn": "Outras cores no modo escuro",
+      "darkOwnHint": "Desativado: o modo escuro usa as cores acima em tons escuros.",
+      "darkPrimary": "Cor de destaque do modo escuro",
+      "darkNeutrals": "Cinzas do modo escuro",
+      "darkBackground": "Fundo do modo escuro"
     },
     "address": {
       "workspace": "Endereço do espaço de trabalho",
