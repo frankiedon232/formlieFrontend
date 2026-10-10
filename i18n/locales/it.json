@@ -447,7 +447,8 @@
     "peopleRoles": "Ruoli e accesso",
     "peoplePending": "In attesa di approvazione",
     "peopleNotActivated": "Non attivati",
-    "peopleAdd": "Aggiungi utente"
+    "peopleAdd": "Aggiungi utente",
+    "dashboard": "Dashboard"
   },
   "navbar": {
     "breadcrumb": "Percorso di navigazione",
@@ -9414,5 +9415,96 @@
     "leaveTitle": "Uscire senza inviare?",
     "leaveDesc": "Quello che hai scritto in questo modulo andrà perso.",
     "leave": "Esci"
+  },
+  "dashboard": {
+    "subtitle": "Il tuo spazio di lavoro in sintesi",
+    "synced": "Ultima sincronizzazione: adesso",
+    "refresh": "Aggiorna",
+    "newForm": "Nuovo modulo",
+    "failed": "Impossibile caricare la dashboard",
+    "groupLabel": "Raggruppa per",
+    "group": {
+      "day": "Giornaliero",
+      "week": "Settimanale",
+      "month": "Mensile",
+      "year": "Annuale"
+    },
+    "view": "Vista",
+    "kpi": {
+      "responses": "Risposte",
+      "completion": "Tasso di completamento",
+      "active": "Moduli attivi",
+      "review": "Da rivedere",
+      "reviewHint": "in attesa di un’occhiata",
+      "attention": "Richiede attenzione",
+      "attentionHint": "vedi l’elenco qui sotto",
+      "allGood": "tutto a posto"
+    },
+    "activity": {
+      "title": "Panoramica dell’attività",
+      "responses": "{n} risposta | {n} risposte",
+      "perDay": "{n} al giorno in media",
+      "sent": "Inviate",
+      "completion": "Tasso di completamento",
+      "apiCalls": "{n} chiamate API",
+      "none": "Nessuna attività in questo periodo",
+      "noneDesc": "Condividi un modulo per iniziare a raccogliere risposte, oppure scegli un altro periodo."
+    },
+    "forms": {
+      "title": "Moduli più attivi",
+      "previous": "Modulo precedente",
+      "next": "Modulo successivo",
+      "open": "Apri il modulo",
+      "responses": "{n} risposta | {n} risposte",
+      "toReview": "{n} risposta da rivedere | {n} risposte da rivedere",
+      "allReviewed": "Tutto rivisto",
+      "none": "Ancora nessuna risposta in questo periodo"
+    },
+    "timeline": {
+      "title": "In arrivo",
+      "none": "Niente in programma nei prossimi 60 giorni.",
+      "opens": "{name} si apre",
+      "closes": "{name} si chiude",
+      "renews": "{name} si rinnova",
+      "plan_change": "Passaggio a {name}",
+      "card_expires": "La carta scade"
+    },
+    "recent": {
+      "title": "Risposte recenti",
+      "all": "Tutte le risposte",
+      "who": "Chi risponde",
+      "form": "Modulo",
+      "status": "Stato",
+      "complete": "Con risposta",
+      "when": "Ricevuta",
+      "anonymous": "Anonimo",
+      "none": "Ancora nessuna risposta",
+      "noneDesc": "Le nuove risposte compaiono qui man mano che arrivano."
+    },
+    "attention": {
+      "title": "Richiede attenzione",
+      "none": "Al momento nulla richiede la tua attenzione.",
+      "payment_due": "Un pagamento è dovuto. Il tuo piano resta fino al {date}.",
+      "connection_failing": "{name} non si connette",
+      "connection_attention": "{name} richiede un’occhiata",
+      "webhook_failing": "Il webhook {name} non funziona",
+      "form_full": "{name} è quasi pieno ({n} risposte consentite)",
+      "plan_forms": "Ti stai avvicinando ai {n} moduli del tuo piano",
+      "form_closing": "{name} si chiude il {date}",
+      "card_expiring": "La tua carta scade il {date}",
+      "to_review": "{n} risposta in attesa di revisione | {n} risposte in attesa di revisione"
+    },
+    "areas": {
+      "forms": "Moduli",
+      "formsHint": "{published} pubblicati, {drafts} bozze",
+      "data": "Origini dati",
+      "dataOk": "{n} collegata | {n} collegate",
+      "dataFailing": "{n} con errori | {n} con errori",
+      "api": "Chiamate API",
+      "apiHint": "{services} servizi, {errors} errori",
+      "plan": "Piano",
+      "planForms": "{n} di {limit} moduli",
+      "planUnlimited": "{n} moduli, senza limite"
+    }
   }
 }

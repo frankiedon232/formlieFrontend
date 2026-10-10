@@ -447,7 +447,8 @@
     "peopleRoles": "角色与权限",
     "peoplePending": "等待批准",
     "peopleNotActivated": "未激活",
-    "peopleAdd": "添加用户"
+    "peopleAdd": "添加用户",
+    "dashboard": "仪表板"
   },
   "navbar": {
     "breadcrumb": "面包屑导航",
@@ -9414,5 +9415,96 @@
     "leaveTitle": "不发送就离开？",
     "leaveDesc": "您在此表单中输入的内容将会丢失。",
     "leave": "离开"
+  },
+  "dashboard": {
+    "subtitle": "工作区一览",
+    "synced": "上次同步：刚刚",
+    "refresh": "刷新",
+    "newForm": "新建表单",
+    "failed": "无法加载仪表板",
+    "groupLabel": "分组方式",
+    "group": {
+      "day": "按日",
+      "week": "按周",
+      "month": "按月",
+      "year": "按年"
+    },
+    "view": "视图",
+    "kpi": {
+      "responses": "回复",
+      "completion": "完成率",
+      "active": "活跃表单",
+      "review": "待审核",
+      "reviewHint": "等待查看",
+      "attention": "需要关注",
+      "attentionHint": "请看下方列表",
+      "allGood": "一切正常"
+    },
+    "activity": {
+      "title": "活动概览",
+      "responses": "{n} 条回复 | {n} 条回复",
+      "perDay": "平均每天 {n} 条",
+      "sent": "已发送",
+      "completion": "完成率",
+      "apiCalls": "{n} 次 API 调用",
+      "none": "此期间没有活动",
+      "noneDesc": "分享一个表单开始收集回复，或选择其他时间段。"
+    },
+    "forms": {
+      "title": "最活跃的表单",
+      "previous": "上一个表单",
+      "next": "下一个表单",
+      "open": "打开表单",
+      "responses": "{n} 条回复 | {n} 条回复",
+      "toReview": "{n} 条回复待审核 | {n} 条回复待审核",
+      "allReviewed": "全部已审核",
+      "none": "此期间还没有回复"
+    },
+    "timeline": {
+      "title": "即将到来",
+      "none": "未来 60 天内没有安排。",
+      "opens": "{name} 开放",
+      "closes": "{name} 关闭",
+      "renews": "{name} 续订",
+      "plan_change": "转为 {name}",
+      "card_expires": "银行卡到期"
+    },
+    "recent": {
+      "title": "最近的回复",
+      "all": "所有回复",
+      "who": "填写者",
+      "form": "表单",
+      "status": "状态",
+      "complete": "已回复",
+      "when": "收到时间",
+      "anonymous": "匿名",
+      "none": "还没有回复",
+      "noneDesc": "新回复到达后会显示在这里。"
+    },
+    "attention": {
+      "title": "需要关注",
+      "none": "目前没有需要您关注的事项。",
+      "payment_due": "有一笔款项待付。您的套餐保留到 {date}。",
+      "connection_failing": "{name} 无法连接",
+      "connection_attention": "{name} 需要查看",
+      "webhook_failing": "Webhook {name} 正在失败",
+      "form_full": "{name} 快满了（允许 {n} 条回复）",
+      "plan_forms": "您的套餐快用完 {n} 个表单了",
+      "form_closing": "{name} 将于 {date} 关闭",
+      "card_expiring": "您的银行卡将于 {date} 到期",
+      "to_review": "{n} 条回复等待审核 | {n} 条回复等待审核"
+    },
+    "areas": {
+      "forms": "表单",
+      "formsHint": "已发布 {published} 个，草稿 {drafts} 个",
+      "data": "数据源",
+      "dataOk": "{n} 个已连接 | {n} 个已连接",
+      "dataFailing": "{n} 个失败 | {n} 个失败",
+      "api": "API 调用",
+      "apiHint": "{services} 个服务，{errors} 个错误",
+      "plan": "套餐",
+      "planForms": "{limit} 个表单中的 {n} 个",
+      "planUnlimited": "{n} 个表单，无限制"
+    }
   }
 }

@@ -447,7 +447,8 @@
     "peopleRoles": "Majukumu na ufikiaji",
     "peoplePending": "Inasubiri idhini",
     "peopleNotActivated": "Haijawashwa",
-    "peopleAdd": "Ongeza mtumiaji"
+    "peopleAdd": "Ongeza mtumiaji",
+    "dashboard": "Dashibodi"
   },
   "navbar": {
     "breadcrumb": "Njia ya urambazaji",
@@ -9414,5 +9415,96 @@
     "leaveTitle": "Ondoka bila kutuma?",
     "leaveDesc": "Ulichoandika kwenye fomu hii kitapotea.",
     "leave": "Ondoka"
+  },
+  "dashboard": {
+    "subtitle": "Eneo lako la kazi kwa muhtasari",
+    "synced": "Usawazishaji wa mwisho: sasa hivi",
+    "refresh": "Onyesha upya",
+    "newForm": "Fomu mpya",
+    "failed": "Dashibodi haikuweza kupakia",
+    "groupLabel": "Panga kwa",
+    "group": {
+      "day": "Kila siku",
+      "week": "Kila wiki",
+      "month": "Kila mwezi",
+      "year": "Kila mwaka"
+    },
+    "view": "Mwonekano",
+    "kpi": {
+      "responses": "Majibu",
+      "completion": "Kiwango cha ukamilishaji",
+      "active": "Fomu zinazotumika",
+      "review": "Za kukagua",
+      "reviewHint": "zinasubiri kuangaliwa",
+      "attention": "Inahitaji umakini",
+      "attentionHint": "angalia orodha iliyo chini",
+      "allGood": "yote sawa"
+    },
+    "activity": {
+      "title": "Muhtasari wa shughuli",
+      "responses": "Jibu {n} | Majibu {n}",
+      "perDay": "wastani wa {n} kwa siku",
+      "sent": "Yaliyotumwa",
+      "completion": "Kiwango cha ukamilishaji",
+      "apiCalls": "Miito {n} ya API",
+      "none": "Hakuna shughuli katika kipindi hiki",
+      "noneDesc": "Shiriki fomu ili uanze kukusanya majibu, au chagua kipindi kingine."
+    },
+    "forms": {
+      "title": "Fomu zenye shughuli nyingi zaidi",
+      "previous": "Fomu iliyotangulia",
+      "next": "Fomu inayofuata",
+      "open": "Fungua fomu",
+      "responses": "Jibu {n} | Majibu {n}",
+      "toReview": "Jibu {n} la kukagua | Majibu {n} ya kukagua",
+      "allReviewed": "Kila kitu kimekaguliwa",
+      "none": "Bado hakuna majibu katika kipindi hiki"
+    },
+    "timeline": {
+      "title": "Inayokuja",
+      "none": "Hakuna kilichopangwa katika siku 60 zijazo.",
+      "opens": "{name} inafunguliwa",
+      "closes": "{name} inafungwa",
+      "renews": "{name} inasasishwa",
+      "plan_change": "Kuhamia {name}",
+      "card_expires": "Kadi inaisha muda"
+    },
+    "recent": {
+      "title": "Majibu ya hivi karibuni",
+      "all": "Majibu yote",
+      "who": "Mjibuji",
+      "form": "Fomu",
+      "status": "Hali",
+      "complete": "Imejibiwa",
+      "when": "Imepokelewa",
+      "anonymous": "Bila jina",
+      "none": "Bado hakuna majibu",
+      "noneDesc": "Majibu mapya yataonekana hapa yanapofika."
+    },
+    "attention": {
+      "title": "Inahitaji umakini",
+      "none": "Hakuna kinachohitaji umakini wako sasa hivi.",
+      "payment_due": "Malipo yanadaiwa. Mpango wako unabaki hadi {date}.",
+      "connection_failing": "{name} haiunganishi",
+      "connection_attention": "{name} inahitaji kuangaliwa",
+      "webhook_failing": "Webhook {name} inashindwa",
+      "form_full": "{name} imekaribia kujaa (majibu {n} yanaruhusiwa)",
+      "plan_forms": "Unakaribia fomu {n} za mpango wako",
+      "form_closing": "{name} inafungwa tarehe {date}",
+      "card_expiring": "Kadi yako inaisha muda tarehe {date}",
+      "to_review": "Jibu {n} linasubiri ukaguzi | Majibu {n} yanasubiri ukaguzi"
+    },
+    "areas": {
+      "forms": "Fomu",
+      "formsHint": "{published} zimechapishwa, {drafts} rasimu",
+      "data": "Vyanzo vya data",
+      "dataOk": "{n} imeunganishwa | {n} zimeunganishwa",
+      "dataFailing": "{n} imeshindwa | {n} zimeshindwa",
+      "api": "Miito ya API",
+      "apiHint": "Huduma {services}, hitilafu {errors}",
+      "plan": "Mpango",
+      "planForms": "Fomu {n} kati ya {limit}",
+      "planUnlimited": "Fomu {n}, bila kikomo"
+    }
   }
 }

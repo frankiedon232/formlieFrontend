@@ -447,7 +447,8 @@
     "peopleRoles": "الأدوار والصلاحيات",
     "peoplePending": "بانتظار الموافقة",
     "peopleNotActivated": "غير مفعّلين",
-    "peopleAdd": "إضافة مستخدم"
+    "peopleAdd": "إضافة مستخدم",
+    "dashboard": "لوحة التحكم"
   },
   "navbar": {
     "breadcrumb": "مسار التنقل",
@@ -9414,5 +9415,96 @@
     "leaveTitle": "المغادرة دون إرسال؟",
     "leaveDesc": "سيضيع ما كتبته في هذا النموذج.",
     "leave": "مغادرة"
+  },
+  "dashboard": {
+    "subtitle": "مساحة عملك في لمحة",
+    "synced": "آخر مزامنة: الآن",
+    "refresh": "تحديث",
+    "newForm": "نموذج جديد",
+    "failed": "تعذّر تحميل لوحة التحكم",
+    "groupLabel": "التجميع حسب",
+    "group": {
+      "day": "يومياً",
+      "week": "أسبوعياً",
+      "month": "شهرياً",
+      "year": "سنوياً"
+    },
+    "view": "العرض",
+    "kpi": {
+      "responses": "الردود",
+      "completion": "معدل الإكمال",
+      "active": "النماذج النشطة",
+      "review": "للمراجعة",
+      "reviewHint": "بانتظار نظرة",
+      "attention": "يحتاج إلى انتباه",
+      "attentionHint": "راجع القائمة أدناه",
+      "allGood": "كل شيء على ما يرام"
+    },
+    "activity": {
+      "title": "نظرة عامة على النشاط",
+      "responses": "{n} رد | {n} ردود",
+      "perDay": "بمعدل {n} يومياً",
+      "sent": "المُرسَلة",
+      "completion": "معدل الإكمال",
+      "apiCalls": "{n} استدعاء API",
+      "none": "لا نشاط في هذه الفترة",
+      "noneDesc": "شارك نموذجاً لبدء جمع الردود، أو اختر فترة أخرى."
+    },
+    "forms": {
+      "title": "أكثر النماذج نشاطاً",
+      "previous": "النموذج السابق",
+      "next": "النموذج التالي",
+      "open": "فتح النموذج",
+      "responses": "{n} رد | {n} ردود",
+      "toReview": "{n} رد للمراجعة | {n} ردود للمراجعة",
+      "allReviewed": "تمت مراجعة كل شيء",
+      "none": "لا توجد ردود بعد في هذه الفترة"
+    },
+    "timeline": {
+      "title": "قريباً",
+      "none": "لا شيء مخطط خلال الأيام الـ 60 القادمة.",
+      "opens": "يُفتح {name}",
+      "closes": "يُغلق {name}",
+      "renews": "يُجدَّد {name}",
+      "plan_change": "الانتقال إلى {name}",
+      "card_expires": "تنتهي صلاحية البطاقة"
+    },
+    "recent": {
+      "title": "أحدث الردود",
+      "all": "كل الردود",
+      "who": "المستجيب",
+      "form": "النموذج",
+      "status": "الحالة",
+      "complete": "تمت الإجابة",
+      "when": "وقت الاستلام",
+      "anonymous": "مجهول",
+      "none": "لا توجد ردود بعد",
+      "noneDesc": "تظهر الردود الجديدة هنا فور وصولها."
+    },
+    "attention": {
+      "title": "يحتاج إلى انتباه",
+      "none": "لا شيء يحتاج إلى انتباهك الآن.",
+      "payment_due": "هناك دفعة مستحقة. تبقى باقتك حتى {date}.",
+      "connection_failing": "لا يتصل {name}",
+      "connection_attention": "{name} يحتاج إلى نظرة",
+      "webhook_failing": "Webhook {name} يفشل",
+      "form_full": "{name} شبه ممتلئ (المسموح {n} رداً)",
+      "plan_forms": "تقترب من {n} نموذجاً في باقتك",
+      "form_closing": "يُغلق {name} في {date}",
+      "card_expiring": "تنتهي صلاحية بطاقتك في {date}",
+      "to_review": "{n} رد بانتظار المراجعة | {n} ردود بانتظار المراجعة"
+    },
+    "areas": {
+      "forms": "النماذج",
+      "formsHint": "{published} منشورة، {drafts} مسودات",
+      "data": "مصادر البيانات",
+      "dataOk": "{n} متصل | {n} متصلة",
+      "dataFailing": "{n} فاشل | {n} فاشلة",
+      "api": "استدعاءات API",
+      "apiHint": "{services} خدمات، {errors} أخطاء",
+      "plan": "الباقة",
+      "planForms": "{n} من {limit} نماذج",
+      "planUnlimited": "{n} نموذجاً، بلا حد"
+    }
   }
 }

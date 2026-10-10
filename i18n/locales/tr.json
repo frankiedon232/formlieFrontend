@@ -447,7 +447,8 @@
     "peopleRoles": "Roller ve erişim",
     "peoplePending": "Onay bekliyor",
     "peopleNotActivated": "Etkinleştirilmedi",
-    "peopleAdd": "Kullanıcı ekle"
+    "peopleAdd": "Kullanıcı ekle",
+    "dashboard": "Pano"
   },
   "navbar": {
     "breadcrumb": "İçerik haritası",
@@ -9414,5 +9415,96 @@
     "leaveTitle": "Göndermeden çıkılsın mı?",
     "leaveDesc": "Bu forma yazdıklarınız kaybolacak.",
     "leave": "Çık"
+  },
+  "dashboard": {
+    "subtitle": "Çalışma alanınıza tek bakışta",
+    "synced": "Son eşitleme: az önce",
+    "refresh": "Yenile",
+    "newForm": "Yeni form",
+    "failed": "Pano yüklenemedi",
+    "groupLabel": "Gruplandırma",
+    "group": {
+      "day": "Günlük",
+      "week": "Haftalık",
+      "month": "Aylık",
+      "year": "Yıllık"
+    },
+    "view": "Görünüm",
+    "kpi": {
+      "responses": "Yanıtlar",
+      "completion": "Tamamlanma oranı",
+      "active": "Etkin formlar",
+      "review": "İncelenecek",
+      "reviewHint": "bir göz atılmasını bekliyor",
+      "attention": "Dikkat gerektiriyor",
+      "attentionHint": "aşağıdaki listeye bakın",
+      "allGood": "her şey yolunda"
+    },
+    "activity": {
+      "title": "Etkinlik özeti",
+      "responses": "{n} yanıt | {n} yanıt",
+      "perDay": "günde ortalama {n}",
+      "sent": "Gönderilen",
+      "completion": "Tamamlanma oranı",
+      "apiCalls": "{n} API çağrısı",
+      "none": "Bu dönemde etkinlik yok",
+      "noneDesc": "Yanıt toplamaya başlamak için bir form paylaşın veya başka bir dönem seçin."
+    },
+    "forms": {
+      "title": "En yoğun formlar",
+      "previous": "Önceki form",
+      "next": "Sonraki form",
+      "open": "Formu aç",
+      "responses": "{n} yanıt | {n} yanıt",
+      "toReview": "İncelenecek {n} yanıt | İncelenecek {n} yanıt",
+      "allReviewed": "Her şey incelendi",
+      "none": "Bu dönemde henüz yanıt yok"
+    },
+    "timeline": {
+      "title": "Yaklaşanlar",
+      "none": "Önümüzdeki 60 günde planlanmış bir şey yok.",
+      "opens": "{name} açılıyor",
+      "closes": "{name} kapanıyor",
+      "renews": "{name} yenileniyor",
+      "plan_change": "{name} planına geçiş",
+      "card_expires": "Kartın süresi doluyor"
+    },
+    "recent": {
+      "title": "Son yanıtlar",
+      "all": "Tüm yanıtlar",
+      "who": "Yanıtlayan",
+      "form": "Form",
+      "status": "Durum",
+      "complete": "Yanıtlandı",
+      "when": "Alındı",
+      "anonymous": "Anonim",
+      "none": "Henüz yanıt yok",
+      "noneDesc": "Yeni yanıtlar geldikçe burada görünür."
+    },
+    "attention": {
+      "title": "Dikkat gerektiriyor",
+      "none": "Şu anda dikkatinizi gerektiren bir şey yok.",
+      "payment_due": "Bir ödeme gerekli. Planınız {date} tarihine kadar geçerli.",
+      "connection_failing": "{name} bağlanmıyor",
+      "connection_attention": "{name} için bir göz atmak gerekiyor",
+      "webhook_failing": "{name} webhook’u başarısız oluyor",
+      "form_full": "{name} neredeyse dolu (izin verilen yanıt: {n})",
+      "plan_forms": "Planınızdaki {n} forma yaklaşıyorsunuz",
+      "form_closing": "{name}, {date} tarihinde kapanıyor",
+      "card_expiring": "Kartınızın süresi {date} tarihinde doluyor",
+      "to_review": "İncelemeyi bekleyen {n} yanıt | İncelemeyi bekleyen {n} yanıt"
+    },
+    "areas": {
+      "forms": "Formlar",
+      "formsHint": "{published} yayında, {drafts} taslak",
+      "data": "Veri kaynakları",
+      "dataOk": "{n} bağlı | {n} bağlı",
+      "dataFailing": "{n} hatalı | {n} hatalı",
+      "api": "API çağrıları",
+      "apiHint": "{services} hizmet, {errors} hata",
+      "plan": "Plan",
+      "planForms": "{n} / {limit} form",
+      "planUnlimited": "{n} form, sınır yok"
+    }
   }
 }

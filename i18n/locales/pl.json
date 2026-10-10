@@ -447,7 +447,8 @@
     "peopleRoles": "Role i dostęp",
     "peoplePending": "Oczekuje na zatwierdzenie",
     "peopleNotActivated": "Nieaktywowani",
-    "peopleAdd": "Dodaj użytkownika"
+    "peopleAdd": "Dodaj użytkownika",
+    "dashboard": "Pulpit"
   },
   "navbar": {
     "breadcrumb": "Ścieżka nawigacji",
@@ -9414,5 +9415,96 @@
     "leaveTitle": "Wyjść bez wysyłania?",
     "leaveDesc": "To, co wpisano w tym formularzu, zostanie utracone.",
     "leave": "Wyjdź"
+  },
+  "dashboard": {
+    "subtitle": "Twoja przestrzeń robocza w skrócie",
+    "synced": "Ostatnia synchronizacja: przed chwilą",
+    "refresh": "Odśwież",
+    "newForm": "Nowy formularz",
+    "failed": "Nie udało się załadować pulpitu",
+    "groupLabel": "Grupuj według",
+    "group": {
+      "day": "Dziennie",
+      "week": "Tygodniowo",
+      "month": "Miesięcznie",
+      "year": "Rocznie"
+    },
+    "view": "Widok",
+    "kpi": {
+      "responses": "Odpowiedzi",
+      "completion": "Wskaźnik ukończenia",
+      "active": "Aktywne formularze",
+      "review": "Do przejrzenia",
+      "reviewHint": "czeka na rzut oka",
+      "attention": "Wymaga uwagi",
+      "attentionHint": "zobacz listę poniżej",
+      "allGood": "wszystko w porządku"
+    },
+    "activity": {
+      "title": "Przegląd aktywności",
+      "responses": "{n} odpowiedź | {n} odpowiedzi",
+      "perDay": "średnio {n} dziennie",
+      "sent": "Wysłane",
+      "completion": "Wskaźnik ukończenia",
+      "apiCalls": "{n} wywołań API",
+      "none": "Brak aktywności w tym okresie",
+      "noneDesc": "Udostępnij formularz, aby zacząć zbierać odpowiedzi, lub wybierz inny okres."
+    },
+    "forms": {
+      "title": "Najaktywniejsze formularze",
+      "previous": "Poprzedni formularz",
+      "next": "Następny formularz",
+      "open": "Otwórz formularz",
+      "responses": "{n} odpowiedź | {n} odpowiedzi",
+      "toReview": "{n} odpowiedź do przejrzenia | {n} odpowiedzi do przejrzenia",
+      "allReviewed": "Wszystko przejrzane",
+      "none": "W tym okresie nie ma jeszcze odpowiedzi"
+    },
+    "timeline": {
+      "title": "Nadchodzące",
+      "none": "Nic nie zaplanowano na najbliższe 60 dni.",
+      "opens": "{name} otwiera się",
+      "closes": "{name} zamyka się",
+      "renews": "{name} odnawia się",
+      "plan_change": "Przejście na {name}",
+      "card_expires": "Karta wygasa"
+    },
+    "recent": {
+      "title": "Ostatnie odpowiedzi",
+      "all": "Wszystkie odpowiedzi",
+      "who": "Respondent",
+      "form": "Formularz",
+      "status": "Status",
+      "complete": "Z odpowiedzią",
+      "when": "Otrzymano",
+      "anonymous": "Anonim",
+      "none": "Brak odpowiedzi",
+      "noneDesc": "Nowe odpowiedzi pojawią się tutaj, gdy tylko nadejdą."
+    },
+    "attention": {
+      "title": "Wymaga uwagi",
+      "none": "Teraz nic nie wymaga Twojej uwagi.",
+      "payment_due": "Płatność jest do uregulowania. Twój plan obowiązuje do {date}.",
+      "connection_failing": "{name} nie może się połączyć",
+      "connection_attention": "{name} wymaga uwagi",
+      "webhook_failing": "Webhook {name} nie działa",
+      "form_full": "{name} jest prawie pełny (dozwolonych odpowiedzi: {n})",
+      "plan_forms": "Zbliżasz się do {n} formularzy w swoim planie",
+      "form_closing": "{name} zamyka się {date}",
+      "card_expiring": "Twoja karta wygasa {date}",
+      "to_review": "{n} odpowiedź czeka na przejrzenie | {n} odpowiedzi czeka na przejrzenie"
+    },
+    "areas": {
+      "forms": "Formularze",
+      "formsHint": "{published} opublikowanych, {drafts} wersji roboczych",
+      "data": "Źródła danych",
+      "dataOk": "{n} połączone | {n} połączone",
+      "dataFailing": "{n} z błędami | {n} z błędami",
+      "api": "Wywołania API",
+      "apiHint": "{services} usług, {errors} błędów",
+      "plan": "Plan",
+      "planForms": "{n} z {limit} formularzy",
+      "planUnlimited": "{n} formularzy, bez limitu"
+    }
   }
 }

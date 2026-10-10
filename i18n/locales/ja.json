@@ -447,7 +447,8 @@
     "peopleRoles": "ロールとアクセス",
     "peoplePending": "承認待ち",
     "peopleNotActivated": "未有効化",
-    "peopleAdd": "ユーザーを追加"
+    "peopleAdd": "ユーザーを追加",
+    "dashboard": "ダッシュボード"
   },
   "navbar": {
     "breadcrumb": "パンくずリスト",
@@ -9414,5 +9415,96 @@
     "leaveTitle": "送信せずに閉じますか?",
     "leaveDesc": "このフォームに入力した内容は失われます。",
     "leave": "閉じる"
+  },
+  "dashboard": {
+    "subtitle": "ワークスペースをひと目で",
+    "synced": "最終同期: たった今",
+    "refresh": "更新",
+    "newForm": "新しいフォーム",
+    "failed": "ダッシュボードを読み込めませんでした",
+    "groupLabel": "グループ化",
+    "group": {
+      "day": "日別",
+      "week": "週別",
+      "month": "月別",
+      "year": "年別"
+    },
+    "view": "表示",
+    "kpi": {
+      "responses": "回答",
+      "completion": "完了率",
+      "active": "有効なフォーム",
+      "review": "要確認",
+      "reviewHint": "確認待ち",
+      "attention": "要対応",
+      "attentionHint": "下のリストを参照",
+      "allGood": "問題なし"
+    },
+    "activity": {
+      "title": "アクティビティの概要",
+      "responses": "回答 {n} 件 | 回答 {n} 件",
+      "perDay": "1 日平均 {n} 件",
+      "sent": "送信済み",
+      "completion": "完了率",
+      "apiCalls": "API 呼び出し {n} 回",
+      "none": "この期間にアクティビティはありません",
+      "noneDesc": "フォームを共有して回答を集め始めるか、別の期間を選んでください。"
+    },
+    "forms": {
+      "title": "最も利用の多いフォーム",
+      "previous": "前のフォーム",
+      "next": "次のフォーム",
+      "open": "フォームを開く",
+      "responses": "回答 {n} 件 | 回答 {n} 件",
+      "toReview": "確認待ちの回答 {n} 件 | 確認待ちの回答 {n} 件",
+      "allReviewed": "すべて確認済み",
+      "none": "この期間の回答はまだありません"
+    },
+    "timeline": {
+      "title": "今後の予定",
+      "none": "今後 60 日間の予定はありません。",
+      "opens": "{name} が公開",
+      "closes": "{name} が終了",
+      "renews": "{name} が更新",
+      "plan_change": "{name} に変更",
+      "card_expires": "カードの有効期限"
+    },
+    "recent": {
+      "title": "最近の回答",
+      "all": "すべての回答",
+      "who": "回答者",
+      "form": "フォーム",
+      "status": "ステータス",
+      "complete": "回答済み",
+      "when": "受信",
+      "anonymous": "匿名",
+      "none": "回答はまだありません",
+      "noneDesc": "新しい回答が届くと、ここに表示されます。"
+    },
+    "attention": {
+      "title": "要対応",
+      "none": "現在、対応が必要なものはありません。",
+      "payment_due": "お支払いの期限です。プランは {date} まで有効です。",
+      "connection_failing": "{name} に接続できません",
+      "connection_attention": "{name} の確認が必要です",
+      "webhook_failing": "Webhook {name} が失敗しています",
+      "form_full": "{name} はほぼ満杯です (回答の上限 {n} 件)",
+      "plan_forms": "プランのフォーム {n} 件に近づいています",
+      "form_closing": "{name} は {date} に終了します",
+      "card_expiring": "カードの有効期限は {date} です",
+      "to_review": "確認待ちの回答 {n} 件 | 確認待ちの回答 {n} 件"
+    },
+    "areas": {
+      "forms": "フォーム",
+      "formsHint": "公開 {published} 件、下書き {drafts} 件",
+      "data": "データソース",
+      "dataOk": "{n} 件接続中 | {n} 件接続中",
+      "dataFailing": "{n} 件失敗 | {n} 件失敗",
+      "api": "API 呼び出し",
+      "apiHint": "サービス {services} 件、エラー {errors} 件",
+      "plan": "プラン",
+      "planForms": "フォーム {n} / {limit} 件",
+      "planUnlimited": "フォーム {n} 件、上限なし"
+    }
   }
 }

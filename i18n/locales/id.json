@@ -447,7 +447,8 @@
     "peopleRoles": "Peran & akses",
     "peoplePending": "Menunggu persetujuan",
     "peopleNotActivated": "Belum diaktifkan",
-    "peopleAdd": "Tambah pengguna"
+    "peopleAdd": "Tambah pengguna",
+    "dashboard": "Dasbor"
   },
   "navbar": {
     "breadcrumb": "Jejak navigasi",
@@ -9414,5 +9415,96 @@
     "leaveTitle": "Keluar tanpa mengirim?",
     "leaveDesc": "Apa yang Anda ketik di formulir ini akan hilang.",
     "leave": "Keluar"
+  },
+  "dashboard": {
+    "subtitle": "Ruang kerja Anda sekilas",
+    "synced": "Sinkronisasi terakhir: baru saja",
+    "refresh": "Segarkan",
+    "newForm": "Formulir baru",
+    "failed": "Dasbor tidak dapat dimuat",
+    "groupLabel": "Kelompokkan menurut",
+    "group": {
+      "day": "Harian",
+      "week": "Mingguan",
+      "month": "Bulanan",
+      "year": "Tahunan"
+    },
+    "view": "Tampilan",
+    "kpi": {
+      "responses": "Respons",
+      "completion": "Tingkat penyelesaian",
+      "active": "Formulir aktif",
+      "review": "Perlu ditinjau",
+      "reviewHint": "menunggu untuk dilihat",
+      "attention": "Perlu perhatian",
+      "attentionHint": "lihat daftar di bawah",
+      "allGood": "semua baik"
+    },
+    "activity": {
+      "title": "Ringkasan aktivitas",
+      "responses": "{n} respons | {n} respons",
+      "perDay": "rata-rata {n} per hari",
+      "sent": "Terkirim",
+      "completion": "Tingkat penyelesaian",
+      "apiCalls": "{n} panggilan API",
+      "none": "Tidak ada aktivitas pada periode ini",
+      "noneDesc": "Bagikan formulir untuk mulai mengumpulkan respons, atau pilih periode lain."
+    },
+    "forms": {
+      "title": "Formulir tersibuk",
+      "previous": "Formulir sebelumnya",
+      "next": "Formulir berikutnya",
+      "open": "Buka formulir",
+      "responses": "{n} respons | {n} respons",
+      "toReview": "{n} respons untuk ditinjau | {n} respons untuk ditinjau",
+      "allReviewed": "Semua sudah ditinjau",
+      "none": "Belum ada respons pada periode ini"
+    },
+    "timeline": {
+      "title": "Akan datang",
+      "none": "Tidak ada yang direncanakan dalam 60 hari ke depan.",
+      "opens": "{name} dibuka",
+      "closes": "{name} ditutup",
+      "renews": "{name} diperpanjang",
+      "plan_change": "Pindah ke {name}",
+      "card_expires": "Kartu kedaluwarsa"
+    },
+    "recent": {
+      "title": "Respons terbaru",
+      "all": "Semua respons",
+      "who": "Responden",
+      "form": "Formulir",
+      "status": "Status",
+      "complete": "Dijawab",
+      "when": "Diterima",
+      "anonymous": "Anonim",
+      "none": "Belum ada respons",
+      "noneDesc": "Respons baru muncul di sini begitu masuk."
+    },
+    "attention": {
+      "title": "Perlu perhatian",
+      "none": "Saat ini tidak ada yang perlu perhatian Anda.",
+      "payment_due": "Ada pembayaran jatuh tempo. Paket Anda tetap sampai {date}.",
+      "connection_failing": "{name} tidak terhubung",
+      "connection_attention": "{name} perlu dilihat",
+      "webhook_failing": "Webhook {name} gagal",
+      "form_full": "{name} hampir penuh ({n} respons diizinkan)",
+      "plan_forms": "Anda mendekati {n} formulir di paket Anda",
+      "form_closing": "{name} ditutup pada {date}",
+      "card_expiring": "Kartu Anda kedaluwarsa pada {date}",
+      "to_review": "{n} respons menunggu tinjauan | {n} respons menunggu tinjauan"
+    },
+    "areas": {
+      "forms": "Formulir",
+      "formsHint": "{published} dipublikasikan, {drafts} draf",
+      "data": "Sumber data",
+      "dataOk": "{n} terhubung | {n} terhubung",
+      "dataFailing": "{n} gagal | {n} gagal",
+      "api": "Panggilan API",
+      "apiHint": "{services} layanan, {errors} kesalahan",
+      "plan": "Paket",
+      "planForms": "{n} dari {limit} formulir",
+      "planUnlimited": "{n} formulir, tanpa batas"
+    }
   }
 }

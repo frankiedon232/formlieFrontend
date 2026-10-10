@@ -51,6 +51,7 @@ import * as emails from './routes/emails'
 import * as emailSending from './routes/emailSending'
 import * as sso from './routes/sso'
 import * as billing from './routes/billing'
+import { workspaceDashboard } from './routes/dashboard'
 import * as billingCheckout from './routes/billingCheckout'
 import { payoneerWebhook } from './billing/webhook'
 import * as notifications from './routes/notifications'
@@ -409,6 +410,7 @@ const router = createRouter()
   .post('/settings/emails/sending/smtp/test', emailSending.testSmtp)
   .delete('/settings/emails/sending/smtp', emailSending.removeSmtp)
   .post('/settings/emails/sending/mode', emailSending.setSendingMode)
+  .get('/dashboard', workspaceDashboard)
   .get('/billing', billing.getBilling)
   .get('/billing/plans', billing.getPlans)
   .get('/billing/invoices', billing.getInvoices)

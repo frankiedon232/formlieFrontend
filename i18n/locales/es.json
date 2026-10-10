@@ -447,7 +447,8 @@
     "peopleRoles": "Roles y acceso",
     "peoplePending": "Pendientes de aprobación",
     "peopleNotActivated": "Sin activar",
-    "peopleAdd": "Añadir usuario"
+    "peopleAdd": "Añadir usuario",
+    "dashboard": "Panel"
   },
   "navbar": {
     "breadcrumb": "Ruta de navegación",
@@ -9414,5 +9415,96 @@
     "leaveTitle": "¿Salir sin enviar?",
     "leaveDesc": "Lo que escribiste en este formulario se perderá.",
     "leave": "Salir"
+  },
+  "dashboard": {
+    "subtitle": "Tu espacio de trabajo de un vistazo",
+    "synced": "Última sincronización: ahora mismo",
+    "refresh": "Actualizar",
+    "newForm": "Nuevo formulario",
+    "failed": "No se pudo cargar el panel",
+    "groupLabel": "Agrupar por",
+    "group": {
+      "day": "Diario",
+      "week": "Semanal",
+      "month": "Mensual",
+      "year": "Anual"
+    },
+    "view": "Vista",
+    "kpi": {
+      "responses": "Respuestas",
+      "completion": "Tasa de finalización",
+      "active": "Formularios activos",
+      "review": "Por revisar",
+      "reviewHint": "esperando que les eches un vistazo",
+      "attention": "Requiere atención",
+      "attentionHint": "mira la lista de abajo",
+      "allGood": "todo en orden"
+    },
+    "activity": {
+      "title": "Resumen de actividad",
+      "responses": "{n} respuesta | {n} respuestas",
+      "perDay": "{n} al día de media",
+      "sent": "Enviadas",
+      "completion": "Tasa de finalización",
+      "apiCalls": "{n} llamadas a la API",
+      "none": "Sin actividad en este periodo",
+      "noneDesc": "Comparte un formulario para empezar a recibir respuestas, o elige otro periodo."
+    },
+    "forms": {
+      "title": "Formularios más activos",
+      "previous": "Formulario anterior",
+      "next": "Formulario siguiente",
+      "open": "Abrir el formulario",
+      "responses": "{n} respuesta | {n} respuestas",
+      "toReview": "{n} respuesta por revisar | {n} respuestas por revisar",
+      "allReviewed": "Todo revisado",
+      "none": "Aún no hay respuestas en este periodo"
+    },
+    "timeline": {
+      "title": "Próximamente",
+      "none": "No hay nada previsto en los próximos 60 días.",
+      "opens": "{name} se abre",
+      "closes": "{name} se cierra",
+      "renews": "{name} se renueva",
+      "plan_change": "Cambio a {name}",
+      "card_expires": "La tarjeta caduca"
+    },
+    "recent": {
+      "title": "Respuestas recientes",
+      "all": "Todas las respuestas",
+      "who": "Respondiente",
+      "form": "Formulario",
+      "status": "Estado",
+      "complete": "Respondida",
+      "when": "Recibida",
+      "anonymous": "Anónimo",
+      "none": "Aún no hay respuestas",
+      "noneDesc": "Las nuevas respuestas aparecen aquí según llegan."
+    },
+    "attention": {
+      "title": "Requiere atención",
+      "none": "Nada requiere tu atención ahora mismo.",
+      "payment_due": "Hay un pago pendiente. Tu plan se mantiene hasta el {date}.",
+      "connection_failing": "{name} no se conecta",
+      "connection_attention": "{name} necesita una revisión",
+      "webhook_failing": "El webhook {name} está fallando",
+      "form_full": "{name} está casi lleno ({n} respuestas permitidas)",
+      "plan_forms": "Te acercas a los {n} formularios de tu plan",
+      "form_closing": "{name} se cierra el {date}",
+      "card_expiring": "Tu tarjeta caduca el {date}",
+      "to_review": "{n} respuesta esperando revisión | {n} respuestas esperando revisión"
+    },
+    "areas": {
+      "forms": "Formularios",
+      "formsHint": "{published} publicados, {drafts} borradores",
+      "data": "Fuentes de datos",
+      "dataOk": "{n} conectada | {n} conectadas",
+      "dataFailing": "{n} con fallos | {n} con fallos",
+      "api": "Llamadas a la API",
+      "apiHint": "{services} servicios, {errors} errores",
+      "plan": "Plan",
+      "planForms": "{n} de {limit} formularios",
+      "planUnlimited": "{n} formularios, sin límite"
+    }
   }
 }

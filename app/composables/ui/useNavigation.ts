@@ -45,6 +45,8 @@ export interface AppNavItem {
 const FORM_RESPONSES = /^\/forms\/[^/]+\/responses(\/|$)/
 
 const MAIN_NAV: AppNavItem[] = [
+  // The workspace home (F21), first as in the design
+  { key: 'dashboard', icon: 'i-lucide-layout-dashboard', to: '/dashboard', shortcut: 'g-h', exact: true },
   {
     key: 'forms',
     icon: 'i-lucide-file-text',

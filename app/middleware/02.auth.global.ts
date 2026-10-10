@@ -13,7 +13,7 @@ export default defineNuxtRouteMiddleware(async to => {
 
   if (to.meta.auth === 'guest') {
     if (session.isAuthenticated.value)
-      return navigateTo(typeof to.query.redirect === 'string' ? to.query.redirect : '/forms')
+      return navigateTo(typeof to.query.redirect === 'string' ? to.query.redirect : '/dashboard')
     return
   }
   if (!session.isAuthenticated.value) {

@@ -25,7 +25,7 @@ async function verify(code: string) {
   try {
     const redirect = auth.pending.value?.redirect
     await auth.verify(code)
-    await navigateTo(redirect || '/forms', { replace: true })
+    await navigateTo(redirect || '/dashboard', { replace: true })
   } catch (error) {
     const normalised = handle(error)
     const left = normalised.details.find(detail => detail.field === 'attempts_left')

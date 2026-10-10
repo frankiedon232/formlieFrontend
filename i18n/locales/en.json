@@ -447,7 +447,8 @@
     "peopleRoles": "Roles & access",
     "peoplePending": "Awaiting approval",
     "peopleNotActivated": "Not activated",
-    "peopleAdd": "Add user"
+    "peopleAdd": "Add user",
+    "dashboard": "Dashboard"
   },
   "navbar": {
     "breadcrumb": "Breadcrumb",
@@ -9414,5 +9415,96 @@
     "leaveTitle": "Leave without sending?",
     "leaveDesc": "What you typed in this form will be lost.",
     "leave": "Leave"
+  },
+  "dashboard": {
+    "subtitle": "Your workspace at a glance",
+    "synced": "Last sync: just now",
+    "refresh": "Refresh",
+    "newForm": "New form",
+    "failed": "The dashboard couldn't load",
+    "groupLabel": "Group by",
+    "group": {
+      "day": "Daily",
+      "week": "Weekly",
+      "month": "Monthly",
+      "year": "Yearly"
+    },
+    "view": "View",
+    "kpi": {
+      "responses": "Responses",
+      "completion": "Completion rate",
+      "active": "Active forms",
+      "review": "To review",
+      "reviewHint": "waiting for a look",
+      "attention": "Needs attention",
+      "attentionHint": "see the list below",
+      "allGood": "all good"
+    },
+    "activity": {
+      "title": "Activity overview",
+      "responses": "{n} response | {n} responses",
+      "perDay": "{n} a day on average",
+      "sent": "Sent",
+      "completion": "Completion rate",
+      "apiCalls": "{n} API calls",
+      "none": "No activity in this period",
+      "noneDesc": "Share a form to start collecting responses, or choose another period."
+    },
+    "forms": {
+      "title": "Busiest forms",
+      "previous": "Previous form",
+      "next": "Next form",
+      "open": "Open the form",
+      "responses": "{n} response | {n} responses",
+      "toReview": "{n} response to review | {n} responses to review",
+      "allReviewed": "Everything reviewed",
+      "none": "No responses in this period yet"
+    },
+    "timeline": {
+      "title": "Coming up",
+      "none": "Nothing planned in the next 60 days.",
+      "opens": "{name} opens",
+      "closes": "{name} closes",
+      "renews": "{name} renews",
+      "plan_change": "Moving to {name}",
+      "card_expires": "Card expires"
+    },
+    "recent": {
+      "title": "Recent responses",
+      "all": "All responses",
+      "who": "Respondent",
+      "form": "Form",
+      "status": "Status",
+      "complete": "Answered",
+      "when": "Received",
+      "anonymous": "Anonymous",
+      "none": "No responses yet",
+      "noneDesc": "New responses show up here as they arrive."
+    },
+    "attention": {
+      "title": "Needs attention",
+      "none": "Nothing needs your attention right now.",
+      "payment_due": "A payment is due. Your plan stays until {date}.",
+      "connection_failing": "{name} isn't connecting",
+      "connection_attention": "{name} needs a look",
+      "webhook_failing": "Webhook {name} is failing",
+      "form_full": "{name} is nearly full ({n} responses allowed)",
+      "plan_forms": "You're close to your plan's {n} forms",
+      "form_closing": "{name} closes on {date}",
+      "card_expiring": "Your card expires on {date}",
+      "to_review": "{n} response waiting for review | {n} responses waiting for review"
+    },
+    "areas": {
+      "forms": "Forms",
+      "formsHint": "{published} published, {drafts} drafts",
+      "data": "Data sources",
+      "dataOk": "{n} connected | {n} connected",
+      "dataFailing": "{n} failing | {n} failing",
+      "api": "API calls",
+      "apiHint": "{services} services, {errors} errors",
+      "plan": "Plan",
+      "planForms": "{n} of {limit} forms",
+      "planUnlimited": "{n} forms, no limit"
+    }
   }
 }

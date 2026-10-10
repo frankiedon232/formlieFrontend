@@ -447,7 +447,8 @@
     "peopleRoles": "Rollen & Zugriff",
     "peoplePending": "Wartet auf Freigabe",
     "peopleNotActivated": "Nicht aktiviert",
-    "peopleAdd": "Benutzer hinzufügen"
+    "peopleAdd": "Benutzer hinzufügen",
+    "dashboard": "Dashboard"
   },
   "navbar": {
     "breadcrumb": "Brotkrümelnavigation",
@@ -9414,5 +9415,96 @@
     "leaveTitle": "Ohne Senden verlassen?",
     "leaveDesc": "Was Sie in diesem Formular eingegeben haben, geht verloren.",
     "leave": "Verlassen"
+  },
+  "dashboard": {
+    "subtitle": "Ihr Arbeitsbereich auf einen Blick",
+    "synced": "Zuletzt synchronisiert: gerade eben",
+    "refresh": "Aktualisieren",
+    "newForm": "Neues Formular",
+    "failed": "Das Dashboard konnte nicht geladen werden",
+    "groupLabel": "Gruppieren nach",
+    "group": {
+      "day": "Täglich",
+      "week": "Wöchentlich",
+      "month": "Monatlich",
+      "year": "Jährlich"
+    },
+    "view": "Ansicht",
+    "kpi": {
+      "responses": "Antworten",
+      "completion": "Abschlussquote",
+      "active": "Aktive Formulare",
+      "review": "Zu prüfen",
+      "reviewHint": "wartet auf einen Blick",
+      "attention": "Braucht Aufmerksamkeit",
+      "attentionHint": "siehe Liste unten",
+      "allGood": "alles in Ordnung"
+    },
+    "activity": {
+      "title": "Aktivitätsübersicht",
+      "responses": "{n} Antwort | {n} Antworten",
+      "perDay": "durchschnittlich {n} pro Tag",
+      "sent": "Gesendet",
+      "completion": "Abschlussquote",
+      "apiCalls": "{n} API-Aufrufe",
+      "none": "Keine Aktivität in diesem Zeitraum",
+      "noneDesc": "Teilen Sie ein Formular, um Antworten zu sammeln, oder wählen Sie einen anderen Zeitraum."
+    },
+    "forms": {
+      "title": "Aktivste Formulare",
+      "previous": "Vorheriges Formular",
+      "next": "Nächstes Formular",
+      "open": "Formular öffnen",
+      "responses": "{n} Antwort | {n} Antworten",
+      "toReview": "{n} Antwort zu prüfen | {n} Antworten zu prüfen",
+      "allReviewed": "Alles geprüft",
+      "none": "Noch keine Antworten in diesem Zeitraum"
+    },
+    "timeline": {
+      "title": "Demnächst",
+      "none": "In den nächsten 60 Tagen ist nichts geplant.",
+      "opens": "{name} öffnet",
+      "closes": "{name} schließt",
+      "renews": "{name} verlängert sich",
+      "plan_change": "Wechsel zu {name}",
+      "card_expires": "Karte läuft ab"
+    },
+    "recent": {
+      "title": "Neueste Antworten",
+      "all": "Alle Antworten",
+      "who": "Antwortende/r",
+      "form": "Formular",
+      "status": "Status",
+      "complete": "Beantwortet",
+      "when": "Eingegangen",
+      "anonymous": "Anonym",
+      "none": "Noch keine Antworten",
+      "noneDesc": "Neue Antworten erscheinen hier, sobald sie eingehen."
+    },
+    "attention": {
+      "title": "Braucht Aufmerksamkeit",
+      "none": "Im Moment braucht nichts Ihre Aufmerksamkeit.",
+      "payment_due": "Eine Zahlung ist fällig. Ihr Tarif bleibt bis {date}.",
+      "connection_failing": "{name} verbindet sich nicht",
+      "connection_attention": "{name} braucht einen Blick",
+      "webhook_failing": "Webhook {name} schlägt fehl",
+      "form_full": "{name} ist fast voll ({n} Antworten erlaubt)",
+      "plan_forms": "Sie nähern sich den {n} Formularen Ihres Tarifs",
+      "form_closing": "{name} schließt am {date}",
+      "card_expiring": "Ihre Karte läuft am {date} ab",
+      "to_review": "{n} Antwort wartet auf Prüfung | {n} Antworten warten auf Prüfung"
+    },
+    "areas": {
+      "forms": "Formulare",
+      "formsHint": "{published} veröffentlicht, {drafts} Entwürfe",
+      "data": "Datenquellen",
+      "dataOk": "{n} verbunden | {n} verbunden",
+      "dataFailing": "{n} fehlerhaft | {n} fehlerhaft",
+      "api": "API-Aufrufe",
+      "apiHint": "{services} Dienste, {errors} Fehler",
+      "plan": "Tarif",
+      "planForms": "{n} von {limit} Formularen",
+      "planUnlimited": "{n} Formulare, ohne Limit"
+    }
   }
 }

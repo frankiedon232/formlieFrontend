@@ -1,6 +1,6 @@
 <script setup lang="ts">
-// Dashboard comes near the end (F21); until then the portal opens on Forms.
-definePageMeta({ redirect: '/forms' })
+// The portal opens on the Dashboard (F21).
+definePageMeta({ redirect: '/dashboard' })
 </script>
 
 <template>

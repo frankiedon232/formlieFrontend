@@ -31,7 +31,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F18   | Analytics                                         | ✅     | 100% (waiting for review)                 |
 | F19   | AI assistant                                      | ✅     | 100% (waiting for review)                 |
 | F20   | Live collaboration (removed)                      | ➖     | -                                         |
-| F21   | Dashboard                                         | 🟡     | 0% (started 2026-10-10)                   |
+| F21   | Dashboard                                         | 🟡     | 30% (M1 Workspace view ✅)                 |
 | F22   | Roles & access                                    | ✅     | 100% (owner-tested 2026-10-10)            |
 | F23   | Platform admin (super admin, Formalie team)       | ➖     | separate projects (formaliePlatformFront / Back) |
 | F24   | Payments & subscriptions                          | ⏸️     | 65% (subscriptions, payment safety ✅; paused for Payoneer, then form payments) |
@@ -977,14 +977,14 @@ Owner, 2026-10-08: "profiling and users are the same thing". One phase builds th
 
 **Milestones:** **M1** Workspace view (the home: forms, responses, data sources and API service at a glance, what needs attention, recent activity) and the page frame (route, menu, `/` → Dashboard, view switch, period controls) · **M2** Forms view · **M3** Data sources view · **M4** API service view · **M5** filters (folder, owner), empty states for new workspaces, 20 languages, phase checks.
 
-- ⬜ KPI cards with trend vs previous period (active forms, responses, completion rate, pending reviews, overdue / closing soon)
-- ⬜ Date range + Daily / Weekly / Monthly / Yearly switch
-- ⬜ Responses over time chart with tooltip
-- ⬜ Top forms / form overview card with progress
-- ⬜ Recent responses table (DataView) and activity timeline
+- ✅ **M1** KPI cards with trend vs previous period (responses, completion rate, active forms, to review, needs attention)
+- ✅ **M1** Date range + Daily / Weekly / Monthly / Yearly switch (kept in the address)
+- ✅ **M1** Activity overview: started and sent over time with the design's hatched gap and tooltip (completion, sent, started, API calls)
+- ✅ **M1** Busiest forms one at a time (‹ › ↗) with responses, change, completion bar and responses to review; Coming up timeline (forms opening / closing, renewal, plan change)
+- ✅ **M1** Recent responses table (respondent, form, status, answered bar, received; a row opens the response) and Needs attention (payment due, failing connection or webhook, form nearly full or closing, plan's form limit, card expiring, responses to review) with each area at a glance (forms, data sources, API calls, plan)
 - ⬜ Filters (organisation, folder, owner)
 - ⬜ Empty state for new workspaces (links to onboarding / first form)
-- ⬜ Dashboard entry in the sidebar MAIN MENU (first item, as in the design)
+- ✅ **M1** Dashboard entry first in MAIN MENU (G then H), `/` and sign-in land on it
 
 ---
 
@@ -1630,3 +1630,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-10 | F24 / F25 | Owner feedback on the form window: a click outside no longer closes it (only ✕, Esc, Back to Formalie); with something typed and not sent, closing or reloading asks "Leave without sending?" (the embedded form tells the window once something is typed). New form setting "People may send it more than once" (`settings.repeat`, Form settings → Experience) for contact, support and order forms: no one-per-person check, only the exact same answers twice are refused; on for Formalie's own forms. |
 | 2026-10-10 | F24 | Payment safety (owner: no double charge, idempotency): request keys on every money-moving request (repeat = first result, other request = FRM-BILL-1005), billing lock per workspace (FRM-BILL-1004), one open checkout, a payments ledger written before charging with one reference per charge (renewals `renew:{workspace}:{period end}`), forward-only payment states, past-due retry under the same reference, Payoneer webhook receiver with signature, age, once-only and amount checks (FRM-BILL-1006). SECURITY-PROTOCOL §11, tests in test/billing/safety.test.ts. |
 | 2026-10-10 | F24 / F21 | F24 paused for the owner's Payoneer account (left: Payoneer connection, form payments, website project files, backend reconciliation). F21 Dashboard started: one page, first in MAIN MENU, with Workspace · Forms · Data sources · API service views in the design's layout; milestones M1 to M5 planned. |
+| 2026-10-10 | F21 M1 | Workspace dashboard in the design's layout: `GET /dashboard` (period, group, every number by role and folder access), KPI row, activity chart (ChartsFlow) with tooltip, busiest forms and Coming up, recent responses, Needs attention and areas at a glance; Dashboard first in the menu and the home page; 20 languages; bucketing tested. |

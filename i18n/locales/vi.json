@@ -447,7 +447,8 @@
     "peopleRoles": "Vai trò & quyền truy cập",
     "peoplePending": "Chờ phê duyệt",
     "peopleNotActivated": "Chưa kích hoạt",
-    "peopleAdd": "Thêm người dùng"
+    "peopleAdd": "Thêm người dùng",
+    "dashboard": "Bảng điều khiển"
   },
   "navbar": {
     "breadcrumb": "Đường dẫn",
@@ -9414,5 +9415,96 @@
     "leaveTitle": "Rời đi mà không gửi?",
     "leaveDesc": "Những gì bạn đã nhập trong biểu mẫu này sẽ bị mất.",
     "leave": "Rời đi"
+  },
+  "dashboard": {
+    "subtitle": "Không gian làm việc của bạn trong một cái nhìn",
+    "synced": "Đồng bộ lần cuối: vừa xong",
+    "refresh": "Làm mới",
+    "newForm": "Biểu mẫu mới",
+    "failed": "Không tải được bảng điều khiển",
+    "groupLabel": "Nhóm theo",
+    "group": {
+      "day": "Theo ngày",
+      "week": "Theo tuần",
+      "month": "Theo tháng",
+      "year": "Theo năm"
+    },
+    "view": "Chế độ xem",
+    "kpi": {
+      "responses": "Phản hồi",
+      "completion": "Tỷ lệ hoàn thành",
+      "active": "Biểu mẫu đang hoạt động",
+      "review": "Cần xem xét",
+      "reviewHint": "đang chờ xem",
+      "attention": "Cần chú ý",
+      "attentionHint": "xem danh sách bên dưới",
+      "allGood": "mọi thứ ổn"
+    },
+    "activity": {
+      "title": "Tổng quan hoạt động",
+      "responses": "{n} phản hồi | {n} phản hồi",
+      "perDay": "trung bình {n} mỗi ngày",
+      "sent": "Đã gửi",
+      "completion": "Tỷ lệ hoàn thành",
+      "apiCalls": "{n} lượt gọi API",
+      "none": "Không có hoạt động trong giai đoạn này",
+      "noneDesc": "Hãy chia sẻ một biểu mẫu để bắt đầu thu phản hồi, hoặc chọn giai đoạn khác."
+    },
+    "forms": {
+      "title": "Biểu mẫu sôi động nhất",
+      "previous": "Biểu mẫu trước",
+      "next": "Biểu mẫu tiếp theo",
+      "open": "Mở biểu mẫu",
+      "responses": "{n} phản hồi | {n} phản hồi",
+      "toReview": "{n} phản hồi cần xem xét | {n} phản hồi cần xem xét",
+      "allReviewed": "Đã xem xét hết",
+      "none": "Chưa có phản hồi trong giai đoạn này"
+    },
+    "timeline": {
+      "title": "Sắp tới",
+      "none": "Không có gì được lên lịch trong 60 ngày tới.",
+      "opens": "{name} mở",
+      "closes": "{name} đóng",
+      "renews": "{name} gia hạn",
+      "plan_change": "Chuyển sang {name}",
+      "card_expires": "Thẻ hết hạn"
+    },
+    "recent": {
+      "title": "Phản hồi gần đây",
+      "all": "Tất cả phản hồi",
+      "who": "Người trả lời",
+      "form": "Biểu mẫu",
+      "status": "Trạng thái",
+      "complete": "Đã trả lời",
+      "when": "Đã nhận",
+      "anonymous": "Ẩn danh",
+      "none": "Chưa có phản hồi",
+      "noneDesc": "Phản hồi mới sẽ hiện ở đây khi có."
+    },
+    "attention": {
+      "title": "Cần chú ý",
+      "none": "Hiện không có gì cần bạn chú ý.",
+      "payment_due": "Có một khoản thanh toán đến hạn. Gói của bạn còn đến {date}.",
+      "connection_failing": "{name} không kết nối được",
+      "connection_attention": "{name} cần được xem",
+      "webhook_failing": "Webhook {name} đang lỗi",
+      "form_full": "{name} gần đầy (cho phép {n} phản hồi)",
+      "plan_forms": "Bạn sắp đạt {n} biểu mẫu của gói",
+      "form_closing": "{name} đóng vào {date}",
+      "card_expiring": "Thẻ của bạn hết hạn vào {date}",
+      "to_review": "{n} phản hồi đang chờ xem xét | {n} phản hồi đang chờ xem xét"
+    },
+    "areas": {
+      "forms": "Biểu mẫu",
+      "formsHint": "{published} đã xuất bản, {drafts} bản nháp",
+      "data": "Nguồn dữ liệu",
+      "dataOk": "{n} đã kết nối | {n} đã kết nối",
+      "dataFailing": "{n} đang lỗi | {n} đang lỗi",
+      "api": "Lượt gọi API",
+      "apiHint": "{services} dịch vụ, {errors} lỗi",
+      "plan": "Gói",
+      "planForms": "{n} trên {limit} biểu mẫu",
+      "planUnlimited": "{n} biểu mẫu, không giới hạn"
+    }
   }
 }

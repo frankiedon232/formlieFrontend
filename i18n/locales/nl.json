@@ -447,7 +447,8 @@
     "peopleRoles": "Rollen & toegang",
     "peoplePending": "Wacht op goedkeuring",
     "peopleNotActivated": "Niet geactiveerd",
-    "peopleAdd": "Gebruiker toevoegen"
+    "peopleAdd": "Gebruiker toevoegen",
+    "dashboard": "Dashboard"
   },
   "navbar": {
     "breadcrumb": "Kruimelpad",
@@ -9414,5 +9415,96 @@
     "leaveTitle": "Weggaan zonder te verzenden?",
     "leaveDesc": "Wat je in dit formulier hebt getypt, gaat verloren.",
     "leave": "Weggaan"
+  },
+  "dashboard": {
+    "subtitle": "Je werkruimte in één oogopslag",
+    "synced": "Laatst gesynchroniseerd: zojuist",
+    "refresh": "Vernieuwen",
+    "newForm": "Nieuw formulier",
+    "failed": "Het dashboard kon niet worden geladen",
+    "groupLabel": "Groeperen op",
+    "group": {
+      "day": "Dagelijks",
+      "week": "Wekelijks",
+      "month": "Maandelijks",
+      "year": "Jaarlijks"
+    },
+    "view": "Weergave",
+    "kpi": {
+      "responses": "Reacties",
+      "completion": "Voltooiingspercentage",
+      "active": "Actieve formulieren",
+      "review": "Te beoordelen",
+      "reviewHint": "wacht op een blik",
+      "attention": "Aandacht nodig",
+      "attentionHint": "zie de lijst hieronder",
+      "allGood": "alles in orde"
+    },
+    "activity": {
+      "title": "Activiteitsoverzicht",
+      "responses": "{n} reactie | {n} reacties",
+      "perDay": "gemiddeld {n} per dag",
+      "sent": "Verzonden",
+      "completion": "Voltooiingspercentage",
+      "apiCalls": "{n} API-aanroepen",
+      "none": "Geen activiteit in deze periode",
+      "noneDesc": "Deel een formulier om reacties te verzamelen, of kies een andere periode."
+    },
+    "forms": {
+      "title": "Drukste formulieren",
+      "previous": "Vorig formulier",
+      "next": "Volgend formulier",
+      "open": "Formulier openen",
+      "responses": "{n} reactie | {n} reacties",
+      "toReview": "{n} reactie te beoordelen | {n} reacties te beoordelen",
+      "allReviewed": "Alles beoordeeld",
+      "none": "Nog geen reacties in deze periode"
+    },
+    "timeline": {
+      "title": "Binnenkort",
+      "none": "Niets gepland in de komende 60 dagen.",
+      "opens": "{name} opent",
+      "closes": "{name} sluit",
+      "renews": "{name} wordt verlengd",
+      "plan_change": "Overstappen naar {name}",
+      "card_expires": "Kaart verloopt"
+    },
+    "recent": {
+      "title": "Recente reacties",
+      "all": "Alle reacties",
+      "who": "Respondent",
+      "form": "Formulier",
+      "status": "Status",
+      "complete": "Beantwoord",
+      "when": "Ontvangen",
+      "anonymous": "Anoniem",
+      "none": "Nog geen reacties",
+      "noneDesc": "Nieuwe reacties verschijnen hier zodra ze binnenkomen."
+    },
+    "attention": {
+      "title": "Aandacht nodig",
+      "none": "Op dit moment heeft niets je aandacht nodig.",
+      "payment_due": "Een betaling staat open. Je abonnement blijft tot {date}.",
+      "connection_failing": "{name} maakt geen verbinding",
+      "connection_attention": "{name} moet bekeken worden",
+      "webhook_failing": "Webhook {name} faalt",
+      "form_full": "{name} zit bijna vol ({n} reacties toegestaan)",
+      "plan_forms": "Je nadert de {n} formulieren van je abonnement",
+      "form_closing": "{name} sluit op {date}",
+      "card_expiring": "Je kaart verloopt op {date}",
+      "to_review": "{n} reactie wacht op beoordeling | {n} reacties wachten op beoordeling"
+    },
+    "areas": {
+      "forms": "Formulieren",
+      "formsHint": "{published} gepubliceerd, {drafts} concepten",
+      "data": "Gegevensbronnen",
+      "dataOk": "{n} verbonden | {n} verbonden",
+      "dataFailing": "{n} mislukt | {n} mislukt",
+      "api": "API-aanroepen",
+      "apiHint": "{services} services, {errors} fouten",
+      "plan": "Abonnement",
+      "planForms": "{n} van {limit} formulieren",
+      "planUnlimited": "{n} formulieren, geen limiet"
+    }
   }
 }
