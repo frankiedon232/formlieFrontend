@@ -117,6 +117,13 @@ const menu = computed<DropdownMenuItem[][]>(() =>
           </div>
         </div>
         <ApiConnections :id="service.id" type="service" />
+        <section class="flex flex-col gap-2">
+          <h3 class="flex items-center gap-1.5 text-sm font-semibold text-highlighted"><UIcon name="i-lucide-globe" class="size-4 text-muted" />{{ t('apiService.service.origins') }}</h3>
+          <div v-if="service.allowed_origins.length" class="-mx-1 flex gap-1.5 overflow-x-auto px-1 pb-1 [scrollbar-width:none]">
+            <UBadge v-for="origin in service.allowed_origins" :key="origin" :label="origin" color="neutral" variant="outline" size="md" class="shrink-0 font-mono" />
+          </div>
+          <p v-else class="text-xs text-muted">{{ t('apiService.service.originsNone') }}</p>
+        </section>
 
         <section class="flex flex-col gap-3">
           <div class="flex items-center gap-2">

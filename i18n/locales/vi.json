@@ -4085,7 +4085,13 @@
         "nextText": "Endpoint biến một biểu mẫu đã xuất bản thành một địa chỉ trong dịch vụ này. Bạn chọn biểu mẫu, việc endpoint được phép làm và câu trả lời nó nhận và trả về.",
         "later": "Để sau",
         "endpoint": "Tạo một endpoint"
-      }
+      },
+      "origins": "Trang web được phép",
+      "originsHelp": "Các trang trên những trang web này có thể gọi dịch vụ này từ trình duyệt của khách truy cập. Ứng dụng máy chủ, ứng dụng di động và Postman không cần mục này.",
+      "originsPlaceholder": "https://shop.example.com, rồi nhấn Enter",
+      "originInvalid": "{value} không phải là địa chỉ trang web. Hãy dùng https:// và trang web, không kèm trang con.",
+      "originsMax": "Tối đa {n} trang web.",
+      "originsNone": "Không có trang web: chỉ ứng dụng máy chủ mới gọi được"
     },
     "fields": {
       "title": "Câu hỏi",

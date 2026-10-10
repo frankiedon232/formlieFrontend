@@ -4085,7 +4085,13 @@
         "nextText": "端点把一个已发布的表单变成此服务中的一个地址。你来选择表单、端点可以做什么，以及它接收和返回哪些答案。",
         "later": "稍后",
         "endpoint": "创建端点"
-      }
+      },
+      "origins": "允许的网站",
+      "originsHelp": "这些网站上的页面可以从访问者的浏览器调用此服务。服务器应用、移动应用和 Postman 不需要它。",
+      "originsPlaceholder": "https://shop.example.com，然后按 Enter",
+      "originInvalid": "{value} 不是网站地址。请使用 https:// 和网站，不要带页面。",
+      "originsMax": "最多 {n} 个网站。",
+      "originsNone": "没有网站：只有服务器应用可以调用"
     },
     "fields": {
       "title": "问题",

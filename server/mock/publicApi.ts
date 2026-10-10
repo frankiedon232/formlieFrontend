@@ -18,6 +18,8 @@
  * its anonymous networks (vpn, proxy, tor, hosting), so rules can
  * be tried from Postman (the real service takes the connection's address and GeoIP).
  * Test tokens never touch real responses: writes are checked and answered, nothing is stored.
+ * Browsers: an Origin from the service's allowed websites gets CORS headers and its OPTIONS preflight a 204;
+ * other websites' preflights → FRM-API-1015 (leftovers L6). HTTPS only is the real service's (TLS) job.
  */
 import { responsesAllowed } from './core/plan'
 import { notifyResponse } from './data/notificationStore'
@@ -37,6 +39,7 @@ import { validateAnswer } from '#shared/utils/forms/validate'
 import { endpointFieldsOf, exampleRecord } from '#shared/utils/apiService/endpoints'
 import { canonicalJson, checkCallKey, scopeAllows, secretPreview, tokenPrefix, tokenStatusOf } from '#shared/utils/apiService/tokens'
 import { decideAccess, rulesFor, type AccessCaller } from '#shared/utils/apiService/access'
+import { normaliseOrigin, originAllowed } from '#shared/utils/apiService/origins'
 import { ERROR_CODES, type ErrorCode } from '#shared/utils/errors/codes'
 import type { ApiMethod } from '#shared/utils/urls/public'
 import { recordAudit } from './core/audit'
@@ -214,7 +217,8 @@ export async function handlePublicApi(event: H3Event, path: string) {
     if (result && 'data' in result) result.meta = { ...result.meta, token_expires_at: expires, token_expires_in_days: expires ? Math.max(0, Math.ceil((Date.parse(expires) - Date.now()) / 86_400_000)) : null }
   }
   const tenant = context.tenant
-  if (!tenant) return result
+  // A browser's preflight is not a call: it stays out of the logs and the counts
+  if (!tenant || event.method.toUpperCase() === 'OPTIONS') return result
   const api = apiOf(tenant)
   const endpoint = context.endpoint
   const schema = endpoint ? (() => { const form = formsOf(tenant).forms.find(item => item.id === endpoint.form_id); return form ? schemaOf(form, endpoint.version) : null })() : null
@@ -247,6 +251,26 @@ async function handle(event: H3Event, path: string, context: CallContext) {
     context.tenant = tenant ?? undefined
     if (!tenant) throw new PublicError('FRM-API-1006', [{ field: 'address_key', message: 'unknown' }])
     if (extra !== undefined) throw new PublicError('FRM-API-1006', [{ field: 'path', message: 'too_long' }])
+    // Browsers (leftovers L6): only the service's allowed websites get CORS answers; their preflights stop here.
+    // Calls without an Origin (server apps, mobile apps, Postman) go on as before.
+    const origin = getHeader(event, 'origin')
+    if (origin) {
+      const services = apiOf(tenant).services
+      const target = name === 'token' ? null : (apiOf(tenant).endpoints.find(item => item.name === name) ?? null)
+      const allowed = target ? services.find(item => item.id === target.service_id)?.allowed_origins : services.flatMap(item => item.allowed_origins ?? [])
+      if (originAllowed(origin, allowed)) {
+        setResponseHeaders(event, { 'Access-Control-Allow-Origin': normaliseOrigin(origin)!, Vary: 'Origin', 'Access-Control-Expose-Headers': 'Formalie-Token-Expires, Retry-After, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset' })
+        if (method === 'OPTIONS') {
+          setResponseHeaders(event, {
+            'Access-Control-Allow-Methods': target ? [...target.methods, 'OPTIONS'].join(', ') : 'POST, OPTIONS',
+            'Access-Control-Allow-Headers': ['Authorization', 'Content-Type', 'Formalie-Key', 'X-Formalie-Signature', ...(target?.headers ?? []).map(header => header.name)].join(', '),
+            'Access-Control-Max-Age': '600',
+          })
+          setResponseStatus(event, 204)
+          return null
+        }
+      } else if (method === 'OPTIONS') throw new PublicError('FRM-API-1015', [{ field: 'origin', message: 'not an allowed website' }])
+    }
     // A file upload carries multipart/form-data, every other write a JSON object
     const upload = recordRef === 'files' && method === 'POST'
     const raw = ['POST', 'PUT'].includes(method) && !upload ? ((await readRawBody(event, 'utf8')) ?? '') : ''

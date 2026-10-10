@@ -198,9 +198,9 @@ Portal management (enveloped like the rest of the portal API; admins only until 
 | Method | Path | Notes |
 | ------ | ---- | ----- |
 | GET | `/api-service/settings` | `{ api_key, base_url }`: the organisation's address handle (decision 61) and the API's base address |
-| GET | `/api-services` | `ApiService { id, name, description, status: active\|disabled, endpoints_count, methods (answered by any active endpoint), created_by, created_at, updated_at, calls_30d, previous_30d, errors_30d, daily (30), avg_ms, last_call_at }`; `q`, `sort` (name · -calls_30d · -endpoints_count · -last_call_at · -created_at), `filter[status]` |
+| GET | `/api-services` | `ApiService { id, name, description, status: active\|disabled, allowed_origins[], endpoints_count, methods (answered by any active endpoint), created_by, created_at, updated_at, calls_30d, previous_30d, errors_30d, daily (30), avg_ms, last_call_at }`; `q`, `sort` (name · -calls_30d · -endpoints_count · -last_call_at · -created_at), `filter[status]` |
 | GET | `/api-services/insights` | `ApiInsights { total, by_status, by_method, calls_30d, previous_30d, errors_30d, daily, avg_ms }` |
-| POST · PATCH | `/api-services` · `/api-services/{id}` | `{ name (unique, FRM-API-1003), description?, status? }`; audit `api.service_created / _updated / _enabled / _disabled` |
+| POST · PATCH | `/api-services` · `/api-services/{id}` | `{ name (unique, FRM-API-1003), description?, status?, allowed_origins? }` (allowed websites for browser callers, leftovers L6: `https://host[:port]` only, `http://` only for localhost, at most 20, else `FRM-GEN-1002`); audit `api.service_created / _updated / _enabled / _disabled` |
 | POST | `/api-services/{id}/duplicate` | a copy named "… (copy)", switched off, with copies of its endpoints (names `…-copy`, switched off) |
 | DELETE | `/api-services/{id}` | deletes its endpoints too → `{ deleted, endpoints }`; audit `api.service_deleted` |
 | GET | `/api-endpoints` | `ApiEndpoint { id, name, description, service { id, name, status }, form { id, name, status }, version (null = latest published), methods, status, url, fields_accepted, fields_returned, … usage as above }`; `q`, `sort`, `filter[service]`, `filter[method]`, `filter[status]` |

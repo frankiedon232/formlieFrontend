@@ -4085,7 +4085,13 @@
         "nextText": "엔드포인트는 게시된 양식 하나를 이 서비스 안의 주소로 만듭니다. 양식, 엔드포인트가 할 수 있는 일, 받고 돌려주는 답변을 직접 고릅니다.",
         "later": "나중에",
         "endpoint": "엔드포인트 만들기"
-      }
+      },
+      "origins": "허용된 웹사이트",
+      "originsHelp": "이 웹사이트의 페이지는 방문자의 브라우저에서 이 서비스를 호출할 수 있습니다. 서버 앱, 모바일 앱, Postman에는 필요하지 않습니다.",
+      "originsPlaceholder": "https://shop.example.com 입력 후 Enter",
+      "originInvalid": "{value}은(는) 웹사이트 주소가 아닙니다. https://와 사이트만 입력하고 페이지는 넣지 마세요.",
+      "originsMax": "웹사이트는 최대 {n}개입니다.",
+      "originsNone": "웹사이트 없음: 서버 앱만 호출할 수 있습니다"
     },
     "fields": {
       "title": "질문",

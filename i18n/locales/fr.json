@@ -4085,7 +4085,13 @@
         "nextText": "Un endpoint transforme un formulaire publié en adresse dans ce service. Vous choisissez le formulaire, ce que l'endpoint peut faire et quelles réponses il reçoit et renvoie.",
         "later": "Plus tard",
         "endpoint": "Créer un endpoint"
-      }
+      },
+      "origins": "Sites web autorisés",
+      "originsHelp": "Les pages de ces sites web peuvent appeler ce service depuis le navigateur d’un visiteur. Les applications serveur, les applications mobiles et Postman n’en ont pas besoin.",
+      "originsPlaceholder": "https://shop.example.com, puis Entrée",
+      "originInvalid": "{value} n’est pas une adresse de site web. Utilisez https:// et le site, sans page.",
+      "originsMax": "{n} sites web au maximum.",
+      "originsNone": "Aucun site web : seules les applications serveur peuvent l’appeler"
     },
     "fields": {
       "title": "Questions",

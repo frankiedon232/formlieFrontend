@@ -19,6 +19,7 @@
  */
 import { ownedReach, requireOwned } from '../data/resourceAccess'
 import { z } from 'zod'
+import { MAX_ALLOWED_ORIGINS, normaliseOrigin } from '#shared/utils/apiService/origins'
 import type { ApiInsights, ApiServiceSettings, ApiSetupSummary, ApiTokenSecrets, ApiTokenCreated, ApiTokenInsights, ApiUsage } from '#shared/types/apiService'
 import { API_STATUSES, API_TOKEN_MODES, API_TOKEN_STATUSES } from '#shared/types/apiService'
 import { checkHeaderName, checkHeaderValue, MAX_REQUIRED_HEADERS, ROTATION_GRACE_HOURS, secretPreview, TOKEN_LIFETIMES } from '#shared/utils/apiService/tokens'
@@ -39,7 +40,19 @@ const serviceInput = z.object({
   name: z.string().trim().min(1).max(80),
   description: z.string().trim().max(300).nullish(),
   status: z.enum(API_STATUSES).optional(),
+  allowed_origins: z.array(z.string().max(200)).max(MAX_ALLOWED_ORIGINS).optional(),
 })
+/** Allowed websites in their one form, each once; anything that isn't a website → FRM-GEN-1002 (leftovers L6). */
+function originsOf(values: string[] | undefined): string[] | undefined {
+  if (!values) return undefined
+  const out: string[] = []
+  for (const value of values) {
+    const origin = normaliseOrigin(value)
+    if (!origin) throw new MockError('FRM-GEN-1002', [{ field: 'allowed_origins', message: value }])
+    if (!out.includes(origin)) out.push(origin)
+  }
+  return out
+}
 const endpointInput = z.object({
   name: z.string().trim().max(64),
   description: z.string().trim().max(300).nullish(),
@@ -148,7 +161,7 @@ export const createApiService = defineMockRoute(({ event, body }) => {
   const values = parseBody(serviceInput, body)
   const api = apiOf(tenant)
   if (api.services.some(item => item.name.toLowerCase() === values.name.toLowerCase())) throw new MockError('FRM-API-1003')
-  const service = { id: crypto.randomUUID(), name: values.name, description: values.description || null, status: values.status ?? ('active' as const), created_by: { id: user.id, name: `${user.first_name} ${user.last_name}` }, created_at: now(), updated_at: now() }
+  const service = { id: crypto.randomUUID(), name: values.name, description: values.description || null, status: values.status ?? ('active' as const), allowed_origins: originsOf(values.allowed_origins) ?? [], created_by: { id: user.id, name: `${user.first_name} ${user.last_name}` }, created_at: now(), updated_at: now() }
   api.services.push(service)
   saveApi()
   recordAudit(event, tenant, { action: 'api.service_created', actor: actorOf(user), resource: { type: 'api_service', id: service.id, name: service.name } })
@@ -162,7 +175,9 @@ export const updateApiService = defineMockRoute(({ event, body }) => {
   const values = parseBody(serviceInput.partial(), body)
   const api = apiOf(tenant)
   if (values.name && api.services.some(item => item.id !== service.id && item.name.toLowerCase() === values.name!.toLowerCase())) throw new MockError('FRM-API-1003')
-  const before = { name: service.name, status: service.status }
+  const before = { name: service.name, status: service.status, origins: (service.allowed_origins ?? []).join(', ') }
+  const origins = originsOf(values.allowed_origins)
+  if (origins) service.allowed_origins = origins
   if (values.name !== undefined) service.name = values.name
   if (values.description !== undefined) service.description = values.description || null
   if (values.status !== undefined) service.status = values.status
@@ -172,6 +187,8 @@ export const updateApiService = defineMockRoute(({ event, body }) => {
   if (values.status !== undefined && values.status !== before.status) recordAudit(event, tenant, { action: values.status === 'active' ? 'api.service_enabled' : 'api.service_disabled', actor: actorOf(user), resource })
   if ((values.name !== undefined && values.name !== before.name) || values.description !== undefined)
     recordAudit(event, tenant, { action: 'api.service_updated', actor: actorOf(user), resource, changes: values.name !== before.name && values.name !== undefined ? [{ field: 'name', before: before.name, after: service.name }] : [] })
+  if (origins && origins.join(', ') !== before.origins)
+    recordAudit(event, tenant, { action: 'api.service_updated', actor: actorOf(user), resource, changes: [{ field: 'allowed_origins', before: before.origins || null, after: origins.join(', ') || null }] })
   return ok(toService(tenant, service))
 })
 

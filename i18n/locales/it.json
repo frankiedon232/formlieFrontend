@@ -4085,7 +4085,13 @@
         "nextText": "Un endpoint trasforma un modulo pubblicato in un indirizzo in questo servizio. Scegli il modulo, cosa può fare l'endpoint e quali risposte riceve e restituisce.",
         "later": "Più tardi",
         "endpoint": "Crea un endpoint"
-      }
+      },
+      "origins": "Siti web consentiti",
+      "originsHelp": "Le pagine di questi siti web possono chiamare questo servizio dal browser di un visitatore. Le app server, le app mobili e Postman non ne hanno bisogno.",
+      "originsPlaceholder": "https://shop.example.com, poi Invio",
+      "originInvalid": "{value} non è un indirizzo di sito web. Usa https:// e il sito, senza pagina.",
+      "originsMax": "Al massimo {n} siti web.",
+      "originsNone": "Nessun sito web: solo le app server possono chiamarlo"
     },
     "fields": {
       "title": "Domande",

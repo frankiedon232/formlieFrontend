@@ -4085,7 +4085,13 @@
         "nextText": "An endpoint turns one published form into an address in this service. You choose the form, what the endpoint may do and which answers it takes and gives.",
         "later": "Later",
         "endpoint": "Create an endpoint"
-      }
+      },
+      "origins": "Allowed websites",
+      "originsHelp": "Pages on these websites may call this service from a visitor's browser. Server apps, mobile apps and Postman don't need it.",
+      "originsPlaceholder": "https://shop.example.com, then Enter",
+      "originInvalid": "{value} isn't a website address. Use https:// and the site, without a page.",
+      "originsMax": "At most {n} websites.",
+      "originsNone": "No websites: only server apps can call it"
     },
     "fields": {
       "title": "Questions",

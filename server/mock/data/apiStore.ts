@@ -24,6 +24,8 @@ export interface StoredApiService {
   name: string
   description: string | null
   status: ApiStatus
+  /** Allowed websites for browser callers (leftovers L6); missing on services made before = none. */
+  allowed_origins?: string[]
   created_by: { id: string; name: string }
   created_at: string
   updated_at: string
@@ -487,6 +489,7 @@ export function toService(tenant: MockTenant, service: StoredApiService): ApiSer
   const endpoints = apiOf(tenant).endpoints.filter(item => item.service_id === service.id)
   return {
     ...service,
+    allowed_origins: service.allowed_origins ?? [],
     endpoints_count: endpoints.length,
     methods: API_METHODS.filter(method => endpoints.some(item => item.status === 'active' && item.methods.includes(method))),
     ...sumUsage(endpoints.map(item => endpointUsage(tenant, item))),

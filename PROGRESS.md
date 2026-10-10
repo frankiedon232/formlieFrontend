@@ -710,7 +710,7 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 
 - ✅ Every change to services, endpoints, tokens and rules is audited (`api.*`); tokens shown again only after the password (owner 2026-10-06, replaces "never shown again")
 - ✅ Request size limits (1 MB), no secrets in logs (tokens masked), bodies only when switched on
-- ⬜ Backend: TLS only; CORS for apps that call straight from a web browser (not in the mock; server apps, mobile apps and Postman are not affected). Owner 2026-10-10, leftovers L6: the allowed websites per API service are set in the portal now; HTTPS-only and the CORS answer are switched on in the backend
+- ✅ Browser callers (owner 2026-10-10, leftovers L6): a service's Allowed websites (edit dialog, shown in its panel; `https://` sites only, `http://` only for localhost, at most 20, normalised and checked in the portal and the API); the mock public API answers their preflights (204 with the endpoint's methods and headers) and adds `Access-Control-Allow-Origin` for them only; other websites' preflights → FRM-API-1015; server apps, mobile apps and Postman unchanged; preflights not counted as calls. Still for the backend: HTTPS only (TLS, HSTS) and the same CORS answer in FastAPI
 - ➖ Permissions per role: in F22 (admins only until then)
 
 ### 9. Integrations (moved here from F15, owner 2026-10-03)

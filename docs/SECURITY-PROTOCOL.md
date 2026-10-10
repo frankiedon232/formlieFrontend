@@ -85,6 +85,7 @@ Applications call form endpoints at `https://api.formalie.com/{apiKey}/{endpoint
 - **Bearer tokens:** static tokens (shown once, stored as a hash, test / live prefix, expiry, scopes) or dynamic tokens (client id + secret → short-lived signed token from `/{apiKey}/token`). Token and URL must belong to the same organisation.
 - **Optional request signing:** HMAC-SHA256 of method, path, timestamp and body with a per-client secret; requests older than 5 minutes or replayed are refused.
 - **Access rules:** allow / block by IP / range, domain (browser callers via Origin), region and country; block wins. Rate limits per token, IP and endpoint (`429` with `Retry-After`).
+- **Browsers (CORS, leftovers L6):** only the websites listed on a service (`allowed_origins`) get `Access-Control-Allow-Origin` (that exact origin, with `Vary: Origin`, never `*`) and an answer to their `OPTIONS` preflight (methods of the endpoint, its headers, 10 minutes); any other website's preflight is refused (FRM-API-1015). Calls without an Origin (server and mobile apps, Postman) are not affected. Preflights are not logged as calls. The real API serves HTTPS only (TLS 1.2+, HSTS); that and the CORS layer are switched on in the backend.
 - **Least data:** POST / PUT accept only the chosen fields (validated with the form's own rules); GET returns only the chosen fields.
 - **Audit and logs:** every management change audited (`api.*`); request logs never store tokens; bodies only when switched on, with sensitive fields masked.
 

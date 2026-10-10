@@ -4085,7 +4085,13 @@
         "nextText": "Endpoint mengubah satu formulir terbit menjadi alamat di layanan ini. Kamu memilih formulir, apa yang boleh dilakukan endpoint, dan jawaban apa yang diterima dan diberikannya.",
         "later": "Nanti",
         "endpoint": "Buat endpoint"
-      }
+      },
+      "origins": "Situs web yang diizinkan",
+      "originsHelp": "Halaman di situs web ini boleh memanggil layanan ini dari browser pengunjung. Aplikasi server, aplikasi seluler, dan Postman tidak memerlukannya.",
+      "originsPlaceholder": "https://shop.example.com, lalu Enter",
+      "originInvalid": "{value} bukan alamat situs web. Gunakan https:// dan situsnya, tanpa halaman.",
+      "originsMax": "Paling banyak {n} situs web.",
+      "originsNone": "Tanpa situs web: hanya aplikasi server yang dapat memanggilnya"
     },
     "fields": {
       "title": "Pertanyaan",

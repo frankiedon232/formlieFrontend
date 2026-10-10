@@ -25,6 +25,8 @@ export interface ApiService extends ApiUsage {
   name: string
   description: string | null
   status: ApiStatus
+  /** Websites whose pages may call it from a browser (CORS, leftovers L6), e.g. https://shop.example.com. */
+  allowed_origins: string[]
   endpoints_count: number
   /** Methods switched on in any of its endpoints. */
   methods: ApiMethod[]
@@ -39,6 +41,7 @@ export interface ApiServiceSaveRequest {
   name: string
   description?: string | null
   status?: ApiStatus
+  allowed_origins?: string[]
 }
 
 /** One question of the form, as the endpoint uses it. */

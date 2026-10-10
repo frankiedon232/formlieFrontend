@@ -4085,7 +4085,13 @@
         "nextText": "Endpoint, yayımlanmış bir formu bu hizmette bir adrese dönüştürür. Formu, endpoint'in neler yapabileceğini ve hangi yanıtları alıp vereceğini siz seçersiniz.",
         "later": "Sonra",
         "endpoint": "Endpoint oluştur"
-      }
+      },
+      "origins": "İzin verilen web siteleri",
+      "originsHelp": "Bu web sitelerindeki sayfalar, bir ziyaretçinin tarayıcısından bu hizmeti çağırabilir. Sunucu uygulamaları, mobil uygulamalar ve Postman buna ihtiyaç duymaz.",
+      "originsPlaceholder": "https://shop.example.com, sonra Enter",
+      "originInvalid": "{value} bir web sitesi adresi değil. https:// ve siteyi kullanın, sayfa olmadan.",
+      "originsMax": "En fazla {n} web sitesi.",
+      "originsNone": "Web sitesi yok: yalnızca sunucu uygulamaları çağırabilir"
     },
     "fields": {
       "title": "Sorular",

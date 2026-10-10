@@ -4085,7 +4085,13 @@
         "nextText": "Een endpoint maakt van een gepubliceerd formulier een adres in deze service. Je kiest het formulier, wat het endpoint mag doen en welke antwoorden het aanneemt en teruggeeft.",
         "later": "Later",
         "endpoint": "Maak een endpoint"
-      }
+      },
+      "origins": "Toegestane websites",
+      "originsHelp": "Pagina’s van deze websites mogen deze service aanroepen vanuit de browser van een bezoeker. Server-apps, mobiele apps en Postman hebben dit niet nodig.",
+      "originsPlaceholder": "https://shop.example.com, dan Enter",
+      "originInvalid": "{value} is geen websiteadres. Gebruik https:// en de site, zonder pagina.",
+      "originsMax": "Maximaal {n} websites.",
+      "originsNone": "Geen websites: alleen server-apps kunnen hem aanroepen"
     },
     "fields": {
       "title": "Vragen",

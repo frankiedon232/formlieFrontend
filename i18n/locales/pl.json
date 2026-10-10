@@ -4085,7 +4085,13 @@
         "nextText": "Endpoint zamienia jeden opublikowany formularz w adres w tej usłudze. Wybierasz formularz, co endpoint może robić oraz jakie odpowiedzi przyjmuje i zwraca.",
         "later": "Później",
         "endpoint": "Utwórz endpoint"
-      }
+      },
+      "origins": "Dozwolone strony internetowe",
+      "originsHelp": "Strony tych witryn mogą wywoływać tę usługę z przeglądarki odwiedzającego. Aplikacje serwerowe, aplikacje mobilne i Postman tego nie potrzebują.",
+      "originsPlaceholder": "https://shop.example.com, potem Enter",
+      "originInvalid": "{value} nie jest adresem witryny. Użyj https:// i witryny, bez podstrony.",
+      "originsMax": "Najwyżej {n} witryn.",
+      "originsNone": "Brak witryn: wywołać ją mogą tylko aplikacje serwerowe"
     },
     "fields": {
       "title": "Pytania",

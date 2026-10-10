@@ -4085,7 +4085,13 @@
         "nextText": "Endpoint hugeuza fomu moja iliyochapishwa kuwa anwani katika huduma hii. Unachagua fomu, kile endpoint inaweza kufanya na majibu inayopokea na kutoa.",
         "later": "Baadaye",
         "endpoint": "Unda endpoint"
-      }
+      },
+      "origins": "Tovuti zinazoruhusiwa",
+      "originsHelp": "Kurasa za tovuti hizi zinaweza kuita huduma hii kutoka kivinjari cha mgeni. Programu za seva, programu za simu na Postman hazihitaji hili.",
+      "originsPlaceholder": "https://shop.example.com, kisha Enter",
+      "originInvalid": "{value} si anwani ya tovuti. Tumia https:// na tovuti, bila ukurasa.",
+      "originsMax": "Tovuti {n} kwa kiwango cha juu.",
+      "originsNone": "Hakuna tovuti: ni programu za seva pekee zinazoweza kuiita"
     },
     "fields": {
       "title": "Maswali",

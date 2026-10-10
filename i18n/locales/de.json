@@ -4085,7 +4085,13 @@
         "nextText": "Ein Endpunkt macht aus einem veröffentlichten Formular eine Adresse in diesem Dienst. Sie wählen das Formular, was der Endpunkt darf und welche Antworten er annimmt und liefert.",
         "later": "Später",
         "endpoint": "Endpunkt erstellen"
-      }
+      },
+      "origins": "Erlaubte Websites",
+      "originsHelp": "Seiten dieser Websites dürfen diesen Dienst aus dem Browser eines Besuchers aufrufen. Server-Apps, mobile Apps und Postman brauchen das nicht.",
+      "originsPlaceholder": "https://shop.example.com, dann Enter",
+      "originInvalid": "{value} ist keine Website-Adresse. Verwenden Sie https:// und die Website, ohne Seite.",
+      "originsMax": "Höchstens {n} Websites.",
+      "originsNone": "Keine Websites: nur Server-Apps können ihn aufrufen"
     },
     "fields": {
       "title": "Fragen",

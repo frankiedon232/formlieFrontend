@@ -1,5 +1,6 @@
 <!--
-  New service / edit service (F13 M1; guided in steps since M7, owner 2026-10-06). New: 1 What a
+  New service / edit service (F13 M1; guided in steps since M7, owner 2026-10-06). Allowed websites for
+  browser callers (CORS, leftovers L6). New: 1 What a
   service is (and where it sits in the setup) → 2 Name and description → 3 Created, and what comes
   next (an endpoint, with a button straight to it). Editing goes straight to the details. With
   `:next="false"` (the endpoint wizard's own "create a service first") it closes after saving.
@@ -9,6 +10,7 @@
 import { z } from 'zod'
 import type { FormSubmitEvent } from '@nuxt/ui'
 import type { ApiService, ApiServiceSaveRequest } from '#shared/types/apiService'
+import { MAX_ALLOWED_ORIGINS, normaliseOrigin } from '#shared/utils/apiService/origins'
 
 const props = withDefaults(defineProps<{ service?: ApiService | null; next?: boolean }>(), { service: null, next: true })
 const open = defineModel<boolean>('open', { default: false })
@@ -23,8 +25,21 @@ const schema = z.object({
   name: z.string().trim().min(1, t('apiService.invalid.required')).max(80),
   description: z.string().trim().max(300),
   active: z.boolean(),
+  origins: z.array(z.string()).max(MAX_ALLOWED_ORIGINS, t('apiService.service.originsMax', { n: MAX_ALLOWED_ORIGINS })),
 })
-const state = reactive({ name: '', description: '', active: true })
+const state = reactive({ name: '', description: '', active: true, origins: [] as string[] })
+// Allowed websites (leftovers L6): each one checked and put in its one form as it is added
+const originError = ref<string | null>(null)
+function setOrigins(values: string[]) {
+  originError.value = null
+  const out: string[] = []
+  for (const value of values) {
+    const origin = normaliseOrigin(value)
+    if (!origin) originError.value = t('apiService.service.originInvalid', { value })
+    else if (!out.includes(origin)) out.push(origin)
+  }
+  state.origins = out
+}
 const step = ref(0)
 const created = ref<ApiService | null>(null)
 watch(open, value => {
@@ -32,6 +47,8 @@ watch(open, value => {
   state.name = props.service?.name ?? ''
   state.description = props.service?.description ?? ''
   state.active = (props.service?.status ?? 'active') === 'active'
+  state.origins = [...(props.service?.allowed_origins ?? [])]
+  originError.value = null
   created.value = null
   step.value = props.service ? 1 : 0
 }, { immediate: true })
@@ -46,7 +63,7 @@ async function submit(event: FormSubmitEvent<z.infer<typeof schema>>) {
   if (saving.value) return
   saving.value = true
   try {
-    const body: ApiServiceSaveRequest = { name: event.data.name, description: event.data.description || null, status: event.data.active ? 'active' : 'disabled' }
+    const body: ApiServiceSaveRequest = { name: event.data.name, description: event.data.description || null, status: event.data.active ? 'active' : 'disabled', allowed_origins: event.data.origins }
     const { data } = props.service ? await api.patch<ApiService>(`/api-services/${props.service.id}`, body) : await api.post<ApiService>('/api-services', body)
     emit('saved', data)
     void setup.refresh()
@@ -102,6 +119,9 @@ const points = ['group', 'switch', 'watch'] as const
           </UFormField>
           <UFormField name="description" :label="t('apiService.service.description')" :hint="t('apiService.optional')">
             <UTextarea v-model="state.description" :rows="3" autoresize class="w-full" maxlength="300" :placeholder="t('apiService.service.descriptionPlaceholder')" />
+          </UFormField>
+          <UFormField name="origins" :label="t('apiService.service.origins')" :hint="t('apiService.optional')" :help="originError ? undefined : t('apiService.service.originsHelp')" :error="originError ?? undefined">
+            <UInputTags :model-value="state.origins" :placeholder="t('apiService.service.originsPlaceholder')" icon="i-lucide-globe" class="w-full" :max="MAX_ALLOWED_ORIGINS" @update:model-value="value => setOrigins(value as string[])" />
           </UFormField>
           <UFormField name="active">
             <USwitch v-model="state.active" :label="t('apiService.service.active')" :description="t('apiService.service.activeHint')" />
