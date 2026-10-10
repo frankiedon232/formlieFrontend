@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-10 (owner re-ordered what is left: F19 AI, F24 Payments, F21 Dashboard, F25 Help centre, real backend, then F23 Platform admin as a separate project; `SUPER_ADMIN_PLATFORM` folder ready to move out; next: F19)
+**Last updated:** 2026-10-10 (owner re-ordered what is left: F19 AI, F24 Payments, F21 Dashboard, F25 Help centre, real backend, then F23 Platform admin as a separate project; its plan split into the two projects formaliePlatformFront and formaliePlatformBack; next: F19)
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend · ➖ dropped or merged
 
@@ -33,7 +33,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F20   | Live collaboration (removed)                      | ➖     | -                                         |
 | F21   | Dashboard                                         | ⬜     | 0%                                        |
 | F22   | Roles & access                                    | ✅     | 100% (owner-tested 2026-10-10)            |
-| F23   | Platform admin (super admin, Formalie team)       | ➖     | separate project (`SUPER_ADMIN_PLATFORM`) |
+| F23   | Platform admin (super admin, Formalie team)       | ➖     | separate projects (formaliePlatformFront / Back) |
 | F24   | Payments & subscriptions                          | ⬜     | 0%                                        |
 | F25   | Help centre (FAQs, knowledge base, videos)        | ⬜     | 0% (after F24)                            |
 
@@ -44,7 +44,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 3. **F21 Dashboard** (after F24, owner 2026-10-10, so it can show payments and plans too)
 4. **F25 Help centre** (built from everything that exists by then; its content is posted from the platform admin)
 5. ⏸ **Switching to the real backend** (FastAPI, `formalieBackend`): the mock is replaced, API-CONTRACT is the spec
-6. **F23 Platform admin (super admin)**: a **separate project** with its own front end, backend and database that also reaches Formalie's database (owner, 2026-10-10). Its full plan lives in the `SUPER_ADMIN_PLATFORM` folder, not in this project.
+6. **F23 Platform admin (super admin)**: a **separate project** with its own front end, backend and database that also reaches Formalie's database (owner, 2026-10-10). Its full plan lives in its own two projects, formaliePlatformFront (Nuxt) and formaliePlatformBack (FastAPI), not in this project.
 
 Formalie default data (below) is seeded by the backend and kept in mind in every phase.
 
@@ -1000,7 +1000,7 @@ Owner, 2026-10-08: "profiling and users are the same thing". One phase builds th
 
 ## F23, Platform admin (super admin) ➖ separate project (owner 2026-10-10)
 
-**Moved out of this project.** The platform admin is its own project (own repository folder, Nuxt front end, FastAPI backend and database, same stack as Formalie) that reads and manages Formalie's system and database: analytics like Google Analytics over accounts, access and history; full management of workspaces, plans, payments (view, manual activation of subscriptions), help content, default data and platform settings; its own staff with roles, access and profiles. Dev: `https://platformadm.formalie.dev:2203` (API `https://platformapi.formalie.dev:5601/`); production `platformadm.formalie.com` / `platformapi.formalie.com` or a separate domain (to decide). Everything needed to build it is in the `SUPER_ADMIN_PLATFORM` folder (README, CLAUDE.md, architecture, backend, data model, API contract, security, progress). The list below is kept as the original brief; the folder is the source of truth.
+**Moved out of this project.** The platform admin is its own project (own repository folder, Nuxt front end, FastAPI backend and database, same stack as Formalie) that reads and manages Formalie's system and database: analytics like Google Analytics over accounts, access and history; full management of workspaces, plans, payments (view, manual activation of subscriptions), help content, default data and platform settings; its own staff with roles, access and profiles. Dev: `https://platformadm.formalie.dev:2203` (API `https://platformapi.formalie.dev:5601/`); production `platformadm.formalie.com` / `platformapi.formalie.com` or a separate domain (to decide). Everything needed to build it is in its two projects, formaliePlatformFront (Nuxt) and formaliePlatformBack (FastAPI): each has its README, CLAUDE.md, STARTUP-PROMPT.md, PROGRESS.md and docs. The list below is kept as the original brief; the folder is the source of truth.
 
 The Formalie team's own console (owner, 2026-10-03: "a place for me to manage everything"), separate from any workspace, signed in with platform staff accounts and strong second factor; every action audited.
 
@@ -1574,3 +1574,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-10 | i18n | Owner: names Formalie provides follow the viewer's language, what workspaces type stays as typed. Built-in roles (Owner, Admin, Member, while not renamed) and their descriptions translated everywhere they show (roles table, grid, editor, people table and cards, panels, pickers, filters, account menu, profile, join page, folder access); Formalie's default lists: name, description, level labels, and their options in all 20 languages (seeded and filled once for existing workspaces) |
 | 2026-10-10 | Plan | Owner re-ordered what is left: F19, F24, F25, real backend, then F23 Platform admin as a separate project (own repo, front end, FastAPI backend, database; dev `platformadm.formalie.dev:2203`, API `platformapi.formalie.dev:5601`). F21 Dashboard confirmed, after F24 |
 | 2026-10-10 | Plan | `SUPER_ADMIN_PLATFORM` folder complete (README, CLAUDE.md for both projects, 12 docs, PROGRESS P0 to P14, design references, dev docker compose, production Nginx sketch); kept out of this repository, the owner moves it to its own folder |
+| 2026-10-10 | Plan | Owner: no Docker (services installed directly; production on AWS or dedicated servers, 04-HOSTING.md). The plan split into two projects to drop into their own folders: formaliePlatformFront (Nuxt) and formaliePlatformBack (FastAPI), each with README, CLAUDE.md, STARTUP-PROMPT.md, its own PROGRESS.md and the shared docs |
