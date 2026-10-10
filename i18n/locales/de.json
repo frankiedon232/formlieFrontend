@@ -448,7 +448,8 @@
     "peoplePending": "Wartet auf Freigabe",
     "peopleNotActivated": "Nicht aktiviert",
     "peopleAdd": "Benutzer hinzufügen",
-    "dashboard": "Dashboard"
+    "dashboard": "Dashboard",
+    "orgBranding": "{name}: Branding öffnen"
   },
   "navbar": {
     "breadcrumb": "Brotkrümelnavigation",

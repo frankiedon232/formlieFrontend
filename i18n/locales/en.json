@@ -448,7 +448,8 @@
     "peoplePending": "Awaiting approval",
     "peopleNotActivated": "Not activated",
     "peopleAdd": "Add user",
-    "dashboard": "Dashboard"
+    "dashboard": "Dashboard",
+    "orgBranding": "{name}: open Branding"
   },
   "navbar": {
     "breadcrumb": "Breadcrumb",

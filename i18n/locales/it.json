@@ -448,7 +448,8 @@
     "peoplePending": "In attesa di approvazione",
     "peopleNotActivated": "Non attivati",
     "peopleAdd": "Aggiungi utente",
-    "dashboard": "Dashboard"
+    "dashboard": "Dashboard",
+    "orgBranding": "{name}: apri Branding"
   },
   "navbar": {
     "breadcrumb": "Percorso di navigazione",

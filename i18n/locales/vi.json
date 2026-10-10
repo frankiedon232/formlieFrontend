@@ -448,7 +448,8 @@
     "peoplePending": "Chờ phê duyệt",
     "peopleNotActivated": "Chưa kích hoạt",
     "peopleAdd": "Thêm người dùng",
-    "dashboard": "Bảng điều khiển"
+    "dashboard": "Bảng điều khiển",
+    "orgBranding": "{name}: mở Thương hiệu"
   },
   "navbar": {
     "breadcrumb": "Đường dẫn",

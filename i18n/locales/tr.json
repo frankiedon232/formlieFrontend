@@ -448,7 +448,8 @@
     "peoplePending": "Onay bekliyor",
     "peopleNotActivated": "Etkinleştirilmedi",
     "peopleAdd": "Kullanıcı ekle",
-    "dashboard": "Pano"
+    "dashboard": "Pano",
+    "orgBranding": "{name}: Marka'yı aç"
   },
   "navbar": {
     "breadcrumb": "İçerik haritası",

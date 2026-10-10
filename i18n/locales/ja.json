@@ -448,7 +448,8 @@
     "peoplePending": "承認待ち",
     "peopleNotActivated": "未有効化",
     "peopleAdd": "ユーザーを追加",
-    "dashboard": "ダッシュボード"
+    "dashboard": "ダッシュボード",
+    "orgBranding": "{name}: ブランディングを開く"
   },
   "navbar": {
     "breadcrumb": "パンくずリスト",

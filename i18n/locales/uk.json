@@ -448,7 +448,8 @@
     "peoplePending": "Очікують підтвердження",
     "peopleNotActivated": "Не активовані",
     "peopleAdd": "Додати користувача",
-    "dashboard": "Панель"
+    "dashboard": "Панель",
+    "orgBranding": "{name}: відкрити Брендинг"
   },
   "navbar": {
     "breadcrumb": "Навігаційний ланцюжок",

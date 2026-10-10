@@ -448,7 +448,8 @@
     "peoplePending": "Ожидают подтверждения",
     "peopleNotActivated": "Не активированы",
     "peopleAdd": "Добавить пользователя",
-    "dashboard": "Панель"
+    "dashboard": "Панель",
+    "orgBranding": "{name}: открыть Брендинг"
   },
   "navbar": {
     "breadcrumb": "Навигационная цепочка",

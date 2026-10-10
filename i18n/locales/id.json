@@ -448,7 +448,8 @@
     "peoplePending": "Menunggu persetujuan",
     "peopleNotActivated": "Belum diaktifkan",
     "peopleAdd": "Tambah pengguna",
-    "dashboard": "Dasbor"
+    "dashboard": "Dasbor",
+    "orgBranding": "{name}: buka Branding"
   },
   "navbar": {
     "breadcrumb": "Jejak navigasi",

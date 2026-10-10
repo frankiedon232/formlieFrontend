@@ -1,7 +1,7 @@
 <!--
   Far-left rail (design: ⋯ · + · workspaces), then the other areas (Data sources, API service, AI assistant), each with
   its own menu; the workspace button is the Forms area. When the menu is collapsed it also carries the current area's section icons
-  with tooltips. Its foot stays in place: expand (folded), Help & support (always, owner 2026-10-05) and the account avatar
+  with tooltips. Its foot stays in place: expand (folded), the organisation's logo (F5), Help & support (always, owner 2026-10-05) and the account avatar
   (folded, or while a page holds the menu column, e.g. the Database explorer).
 -->
 <script setup lang="ts">
@@ -135,6 +135,11 @@ const workspaces = computed(() => [
           </UTooltip>
         </div>
       </template>
+      <!-- The organisation (F5, owner 2026-10-10): its logo above Help -->
+      <USeparator class="w-8" />
+      <div class="flex justify-center py-3">
+        <AppSidebarOrgMark :dark="look.rail === 'dark'" />
+      </div>
       <USeparator class="w-8" />
       <div class="flex items-center justify-center" :class="accountHere ? 'py-2' : 'h-18'">
         <UTooltip :text="t('nav.help')" :content="{ side: 'right' }">

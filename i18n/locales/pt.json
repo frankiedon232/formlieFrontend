@@ -448,7 +448,8 @@
     "peoplePending": "Aguardando aprovação",
     "peopleNotActivated": "Não ativados",
     "peopleAdd": "Adicionar utilizador",
-    "dashboard": "Painel"
+    "dashboard": "Painel",
+    "orgBranding": "{name}: abrir Marca"
   },
   "navbar": {
     "breadcrumb": "Trilha de navegação",

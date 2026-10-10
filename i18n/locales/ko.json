@@ -448,7 +448,8 @@
     "peoplePending": "승인 대기 중",
     "peopleNotActivated": "활성화되지 않음",
     "peopleAdd": "사용자 추가",
-    "dashboard": "대시보드"
+    "dashboard": "대시보드",
+    "orgBranding": "{name}: 브랜딩 열기"
   },
   "navbar": {
     "breadcrumb": "이동 경로",

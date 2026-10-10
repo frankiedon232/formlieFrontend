@@ -448,7 +448,8 @@
     "peoplePending": "Wacht op goedkeuring",
     "peopleNotActivated": "Niet geactiveerd",
     "peopleAdd": "Gebruiker toevoegen",
-    "dashboard": "Dashboard"
+    "dashboard": "Dashboard",
+    "orgBranding": "{name}: Huisstijl openen"
   },
   "navbar": {
     "breadcrumb": "Kruimelpad",

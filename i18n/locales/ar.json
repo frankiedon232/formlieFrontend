@@ -448,7 +448,8 @@
     "peoplePending": "بانتظار الموافقة",
     "peopleNotActivated": "غير مفعّلين",
     "peopleAdd": "إضافة مستخدم",
-    "dashboard": "لوحة التحكم"
+    "dashboard": "لوحة التحكم",
+    "orgBranding": "{name}: فتح الهوية البصرية"
   },
   "navbar": {
     "breadcrumb": "مسار التنقل",

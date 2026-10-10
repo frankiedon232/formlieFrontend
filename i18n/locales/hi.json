@@ -448,7 +448,8 @@
     "peoplePending": "अनुमोदन की प्रतीक्षा में",
     "peopleNotActivated": "सक्रिय नहीं",
     "peopleAdd": "उपयोगकर्ता जोड़ें",
-    "dashboard": "डैशबोर्ड"
+    "dashboard": "डैशबोर्ड",
+    "orgBranding": "{name}: ब्रांडिंग खोलें"
   },
   "navbar": {
     "breadcrumb": "ब्रेडक्रंब",

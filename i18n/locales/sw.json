@@ -448,7 +448,8 @@
     "peoplePending": "Inasubiri idhini",
     "peopleNotActivated": "Haijawashwa",
     "peopleAdd": "Ongeza mtumiaji",
-    "dashboard": "Dashibodi"
+    "dashboard": "Dashibodi",
+    "orgBranding": "{name}: fungua Chapa"
   },
   "navbar": {
     "breadcrumb": "Njia ya urambazaji",

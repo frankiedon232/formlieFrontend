@@ -448,7 +448,8 @@
     "peoplePending": "等待批准",
     "peopleNotActivated": "未激活",
     "peopleAdd": "添加用户",
-    "dashboard": "仪表板"
+    "dashboard": "仪表板",
+    "orgBranding": "{name}：打开品牌"
   },
   "navbar": {
     "breadcrumb": "面包屑导航",

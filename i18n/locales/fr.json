@@ -448,7 +448,8 @@
     "peoplePending": "En attente d'approbation",
     "peopleNotActivated": "Non activés",
     "peopleAdd": "Ajouter un utilisateur",
-    "dashboard": "Tableau de bord"
+    "dashboard": "Tableau de bord",
+    "orgBranding": "{name} : ouvrir Image de marque"
   },
   "navbar": {
     "breadcrumb": "Fil d'Ariane",

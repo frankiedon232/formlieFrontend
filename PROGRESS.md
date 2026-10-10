@@ -273,7 +273,7 @@ Formalie default data (below) is seeded by the backend and kept in mind in every
 - ✅ Every saved step recorded in the audit trail (workspace / branding / localisation changes with before → after, invitations, setup finished)
 - ✅ Shown after signup (welcome hand-off); reachable later from Settings and the user menu (owners / admins); members are sent to Forms
 - ✅ Workspace logo on the sign-in page and in emails (F14 Branding)
-- ⬜ Workspace logo in the rail (the rail still shows the Formalie mark)
+- ✅ Organisation logo in the rail (owner 2026-10-10: above Help & support): the workspace's logo from Branding with its name in the tooltip; its dark-background logo in dark mode (on a dark tile), else a white tile; initials on the brand colour without a logo; admins open Settings → Branding from it. The menu column keeps the Formalie mark
 - ⏸ Real invitation emails (F16 Users & profiles), real object storage
 
 ---

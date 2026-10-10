@@ -448,7 +448,8 @@
     "peoplePending": "Oczekuje na zatwierdzenie",
     "peopleNotActivated": "Nieaktywowani",
     "peopleAdd": "Dodaj użytkownika",
-    "dashboard": "Pulpit"
+    "dashboard": "Pulpit",
+    "orgBranding": "{name}: otwórz Branding"
   },
   "navbar": {
     "breadcrumb": "Ścieżka nawigacji",
