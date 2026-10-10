@@ -8013,7 +8013,12 @@
       "folders_create": "Criar pastas",
       "folders_edit": "Renomear e mudar a cor",
       "folders_delete": "Excluir pastas",
-      "folders_access": "Decidir quem vê as pastas"
+      "folders_access": "Decidir quem vê as pastas",
+      "responses_view": "Ver respostas",
+      "responses_review": "Revisar respostas",
+      "responses_edit": "Corrigir respostas",
+      "responses_delete": "Excluir respostas",
+      "responses_export": "Exportar respostas"
     }
   }
 }

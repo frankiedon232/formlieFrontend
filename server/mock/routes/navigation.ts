@@ -5,7 +5,7 @@ import { requireAuth } from '../core/auth'
 import { ok } from '../core/respond'
 import { defineMockRoute } from '../core/route'
 import { formsOf } from '../data/formStore'
-import { canSee, folderVisible } from '../data/formPermissions'
+import { canSee, folderVisible, responsesAllowed } from '../data/formPermissions'
 import { formResponses } from '../data/responseData'
 import { libraryOf } from '../data/libraryStore'
 import { allTemplates } from '../data/templateStore'
@@ -27,7 +27,8 @@ export const navigationCounts = defineMockRoute(({ event }) => {
 
   // Responses by review status, from the response data (decision 100): what the Responses pages show.
   const byStatus = { new: 0, reviewed: 0, approved: 0, rejected: 0 }
-  for (const form of live) for (const entry of formResponses(tenant, form)) byStatus[entry.status]++
+  // Only forms whose responses this person may see (F22 R2 M2)
+  for (const form of formsOf(tenant).forms.filter(item => !item.deleted_at && responsesAllowed(item, user, 'view', tenant))) for (const entry of formResponses(tenant, form)) byStatus[entry.status]++
   const total = byStatus.new + byStatus.reviewed + byStatus.approved + byStatus.rejected
 
   // Templates: Formalie's categories, most used first (forms made from them), then the largest.

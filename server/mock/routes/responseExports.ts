@@ -18,7 +18,7 @@ import { MockError, ok, paginate } from '../core/respond'
 import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
 import { formsOf } from '../data/formStore'
-import { levelOf } from '../data/formPermissions'
+import { responsesAllowed } from '../data/formPermissions'
 import { answersOf, formResponses, titleOf } from '../data/responseData'
 import { responseReport } from '../data/responseReport'
 import { settingsOf } from '../data/settingsStore'
@@ -76,7 +76,7 @@ const audit = (event: H3Event, tenant: MockTenant, user: MockUser, action: 'resp
 /** POST /forms/:id/responses/export, start an export of this form's responses. */
 export const exportFormResponses = defineMockRoute(({ event, body: raw }) => {
   const { tenant, user } = requireAuth(event)
-  const form = formFor(tenant, user, getRouterParam(event, 'id'))
+  const form = formFor(tenant, user, getRouterParam(event, 'id'), 'export')
   const input = parseBody(bodySchema, raw)
   const all = formResponses(tenant, form).map(entry => ({ form, entry }))
   const query = Object.fromEntries(Object.entries(input.query).map(([key, value]) => [key, String(value)]))
@@ -171,7 +171,7 @@ function visible(tenant: MockTenant, user: MockUser) {
   const forms = new Map(formsOf(tenant).forms.map(form => [form.id, form]))
   return [...exports.values()].filter(item => {
     const form = forms.get(item.form.id)
-    return item.tenantId === tenant.id && !item.deleted && !!form && levelOf(form, user) !== 'none'
+    return item.tenantId === tenant.id && !item.deleted && !!form && responsesAllowed(form, user, 'export')
   })
 }
 function findExport(tenant: MockTenant, user: MockUser, id: string | undefined) {

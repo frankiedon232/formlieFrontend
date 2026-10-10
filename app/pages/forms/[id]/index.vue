@@ -75,7 +75,7 @@ const subtitle = computed(() =>
         <UButton icon="i-lucide-ellipsis" :label="t('dataView.actions')" color="neutral" variant="outline" :loading="busy" />
       </UDropdownMenu>
       <UButton
-        v-if="useCan().can('responses.view')"
+        v-if="form.responses_can?.view"
         icon="i-lucide-inbox"
         :label="t('forms.viewResponses')"
         color="neutral"

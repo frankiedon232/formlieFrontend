@@ -37,7 +37,7 @@ const body = z.object({ field: z.string().max(64), index: z.number().int().min(0
 export const fileLink = defineMockRoute(({ event, body: raw }) => {
   const { tenant, user } = requireAuth(event)
   const input = parseBody(body, raw)
-  const { form, entry } = responseFor(tenant, user, getRouterParam(event, 'id'), 'responses')
+  const { form, entry } = responseFor(tenant, user, getRouterParam(event, 'id'), 'view')
   const files = fileAnswers(answersOf(form, entry)[input.field]) as (ReturnType<typeof fileAnswers>[number] & { sample?: boolean })[]
   const file = files[input.index]
   if (!file) throw new MockError('FRM-GEN-1004')

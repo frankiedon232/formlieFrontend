@@ -8013,7 +8013,12 @@
       "folders_create": "Klasör oluşturma",
       "folders_edit": "Yeniden adlandırma ve renklendirme",
       "folders_delete": "Klasör silme",
-      "folders_access": "Klasörleri kimin göreceğine karar verme"
+      "folders_access": "Klasörleri kimin göreceğine karar verme",
+      "responses_view": "Yanıtları görme",
+      "responses_review": "Yanıtları inceleme",
+      "responses_edit": "Yanıtları düzeltme",
+      "responses_delete": "Yanıtları silme",
+      "responses_export": "Yanıtları dışa aktarma"
     }
   }
 }

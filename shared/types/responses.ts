@@ -74,7 +74,7 @@ export interface ResponseDetail extends ResponseRow {
   history: ResponseChange[]
   /** What the person may do: review (status, tags, notes) and edit answers / delete. */
   /** Review = status, tags, notes; edit = correct answers; delete. Role and form access together. */
-  can: { review: boolean; edit: boolean; delete: boolean }
+  can: { review: boolean; edit: boolean; delete: boolean; export: boolean }
 }
 
 export type QuestionInsight =
@@ -126,6 +126,8 @@ export interface ResponseFormRow {
   daily: number[]
   /** Where its responses are kept (F12 M2). */
   storage?: import('./destinations').StorageMark
+  /** What this person may do with this form's responses (F22 R2 M2). */
+  can?: { view: boolean; review: boolean; edit: boolean; delete: boolean; export: boolean }
 }
 
 

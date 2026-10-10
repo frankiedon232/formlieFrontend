@@ -8013,7 +8013,12 @@
       "folders_create": "フォルダーを作成",
       "folders_edit": "名前と色を変更",
       "folders_delete": "フォルダーを削除",
-      "folders_access": "フォルダーの閲覧者を決定"
+      "folders_access": "フォルダーの閲覧者を決定",
+      "responses_view": "回答を見る",
+      "responses_review": "回答をレビュー",
+      "responses_edit": "回答を修正",
+      "responses_delete": "回答を削除",
+      "responses_export": "回答をエクスポート"
     }
   }
 }

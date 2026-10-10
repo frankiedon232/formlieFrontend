@@ -8013,7 +8013,12 @@
       "folders_create": "Membuat folder",
       "folders_edit": "Mengganti nama dan warna",
       "folders_delete": "Menghapus folder",
-      "folders_access": "Menentukan siapa yang melihat folder"
+      "folders_access": "Menentukan siapa yang melihat folder",
+      "responses_view": "Lihat respons",
+      "responses_review": "Tinjau respons",
+      "responses_edit": "Perbaiki jawaban",
+      "responses_delete": "Hapus respons",
+      "responses_export": "Ekspor respons"
     }
   }
 }

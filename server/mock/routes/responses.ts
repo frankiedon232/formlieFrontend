@@ -14,12 +14,12 @@ import { isFileField } from '#shared/utils/forms/file-answers'
 import { isInputField } from '#shared/utils/forms/fields'
 import { validateAnswer } from '#shared/utils/forms/validate'
 import { requireAuth } from '../core/auth'
-import { can } from '../data/rolesStore'
 import { actorOf, recordAudit } from '../core/audit'
 import { MockError, ok } from '../core/respond'
 import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
-import { canSee, levelOf, requireLevel } from '../data/formPermissions'
+import { requireResponses, responseActionsOf, responsesAllowed } from '../data/formPermissions'
+import type { ResponseAction } from '#shared/types/forms'
 import { formsOf, type StoredForm } from '../data/formStore'
 import { answersOf, findResponse, formResponses, respondentOf, responseSchema, titleOf, workspaceResponses, type IndexedResponse } from '../data/responseData'
 import { keepAnswered } from '../data/largeLists'
@@ -37,10 +37,11 @@ const list = (query: Query, key: string) => {
 }
 const day = (value: unknown, end: boolean) => (typeof value === 'string' && value ? Date.parse(value) + (end ? DAY - 1 : 0) : null)
 
-export function formFor(tenant: MockTenant, user: MockUser, id: string | undefined): StoredForm {
+/** A form whose responses this person may work with (F22 R2 M2: responses.<action> with its scope, sharing, folder). */
+export function formFor(tenant: MockTenant, user: MockUser, id: string | undefined, action: ResponseAction = 'view'): StoredForm {
   const form = formsOf(tenant).forms.find(item => item.id === id && !item.deleted_at)
   if (!form) throw new MockError('FRM-GEN-1004')
-  requireLevel(form, user, 'responses')
+  requireResponses(form, user, action, tenant)
   return form
 }
 
@@ -163,7 +164,7 @@ export const formInsights = defineMockRoute(({ event, query }) => {
 /** GET /responses, the inbox: every form this person may see. */
 export const listResponses = defineMockRoute(({ event, query }) => {
   const { tenant, user } = requireAuth(event)
-  const { data, meta } = pageOf(workspaceResponses(tenant, form => levelOf(form, user) !== 'none'), query, false)
+  const { data, meta } = pageOf(workspaceResponses(tenant, form => responsesAllowed(form, user, 'view', tenant)), query, false)
   return ok(data.map(({ form, entry }) => rowOf(form, entry, false)), meta)
 })
 
@@ -188,7 +189,7 @@ export const listResponseForms = defineMockRoute(({ event, query }) => {
   const today = Date.parse(new Date().toISOString().slice(0, 10))
   const rows: ResponseFormRow[] = []
   for (const form of formsOf(tenant).forms) {
-    if (form.deleted_at || levelOf(form, user) === 'none') continue
+    if (form.deleted_at || !responsesAllowed(form, user, 'view', tenant)) continue
     if ((formStatus && !formStatus.includes(form.status)) || (folder && !folder.includes(form.folder?.id ?? 'none')) || (q && !form.name.toLowerCase().includes(q))) continue
     const entries = formResponses(tenant, form).filter(entry => (from === null || entry.at >= from) && (to === null || entry.at <= to))
     if (!entries.length) continue
@@ -214,6 +215,7 @@ export const listResponseForms = defineMockRoute(({ event, query }) => {
       last_at: new Date(entries[0]!.at).toISOString(),
       daily,
       storage: marks.get(form.id) ?? FORMALIE_MARK,
+      can: responseActionsOf(form, user, tenant),
     })
   }
   const sort = typeof query.sort === 'string' && query.sort ? query.sort : '-new'
@@ -235,13 +237,14 @@ export const listResponseForms = defineMockRoute(({ event, query }) => {
 /** GET /responses/insights, the inbox numbers. */
 export const inboxInsights = defineMockRoute(({ event, query }) => {
   const { tenant, user } = requireAuth(event)
-  return ok(insightsOf(workspaceResponses(tenant, form => canSee(form, user)), query))
+  return ok(insightsOf(workspaceResponses(tenant, form => responsesAllowed(form, user, 'view', tenant)), query))
 })
 
-export function responseFor(tenant: MockTenant, user: MockUser, id: string | undefined, need: 'responses' | 'edit') {
+/** One response and the action this person wants to take on it (view · review · edit answers · delete). */
+export function responseFor(tenant: MockTenant, user: MockUser, id: string | undefined, action: ResponseAction) {
   const found = id ? findResponse(tenant, id) : null
   if (!found || found.form.deleted_at) throw new MockError('FRM-GEN-1004')
-  requireLevel(found.form, user, need)
+  requireResponses(found.form, user, action, tenant)
   return found
 }
 
@@ -253,7 +256,7 @@ function detailOf(form: StoredForm, entry: IndexedResponse, user: MockUser): Res
   const ua = stored?.meta.user_agent ?? ''
   const device = stored ? (/mobile|android|iphone/i.test(ua) ? 'Phone' : /ipad|tablet/i.test(ua) ? 'Tablet' : 'Desktop') : ['Desktop', 'Phone', 'Phone', 'Tablet'][entry.number % 4]!
   const review = reviewOf(entry.id)
-  const level = levelOf(form, user)
+  const actions = responseActionsOf(form, user)
   return {
     ...rowOf(form, entry, false),
     data: answersOf(form, entry),
@@ -262,15 +265,15 @@ function detailOf(form: StoredForm, entry: IndexedResponse, user: MockUser): Res
     meta: { device, country: null },
     notes: [...(review?.notes ?? [])].reverse(),
     history: review?.history ?? [],
-    // What this person may do here: their role (Review, Edit, Delete) and their access to the form
-    can: { review: level !== 'none' && can(user, 'responses.review'), edit: level === 'edit' && can(user, 'responses.edit'), delete: level === 'edit' && can(user, 'responses.delete') },
+    // What this person may do here: their role's scope for each action, the sharing and the folder
+    can: { review: actions.review, edit: actions.edit, delete: actions.delete, export: actions.export },
   }
 }
 
 /** GET /responses/:id, one response with every answer, notes and history. */
 export const getResponse = defineMockRoute(({ event }) => {
   const { tenant, user } = requireAuth(event)
-  const { form, entry } = responseFor(tenant, user, getRouterParam(event, 'id'), 'responses')
+  const { form, entry } = responseFor(tenant, user, getRouterParam(event, 'id'), 'view')
   return ok(detailOf(form, entry, user))
 })
 
@@ -315,9 +318,9 @@ function checkEdits(form: StoredForm, entry: IndexedResponse, data: Record<strin
 export const patchResponse = defineMockRoute(({ event, body: raw }) => {
   const { tenant, user } = requireAuth(event)
   const input = parseBody(patchBody, raw)
-  // Status, tags and duplicates need Review (checked by address); changing answers needs Edit too
-  if (input.data && !can(user, 'responses.edit', tenant)) throw new MockError('FRM-PERM-1001')
-  const { form, entry } = responseFor(tenant, user, getRouterParam(event, 'id'), input.data ? 'edit' : 'responses')
+  // Status, tags and duplicates need Review; changing answers needs Edit (each with its scope)
+  const { form, entry } = responseFor(tenant, user, getRouterParam(event, 'id'), input.data ? 'edit' : 'review')
+  if (input.data && (input.status || input.tags || input.duplicate)) requireResponses(form, user, 'review', tenant)
   if (input.data) checkEdits(form, entry, input.data)
   const current = answersOf(form, entry)
   const by = { id: user.id, name: `${user.first_name} ${user.last_name}`.trim() }
@@ -353,7 +356,7 @@ const noteBody = z.object({ text: z.string().trim().min(1).max(2000) })
 export const addNote = defineMockRoute(({ event, body: raw }) => {
   const { tenant, user } = requireAuth(event)
   const input = parseBody(noteBody, raw)
-  const { form, entry } = responseFor(tenant, user, getRouterParam(event, 'id'), 'responses')
+  const { form, entry } = responseFor(tenant, user, getRouterParam(event, 'id'), 'review')
   updateReview(form.id, entry.id, review => {
     review.notes = [...(review.notes ?? []), { id: crypto.randomUUID(), author: { id: user.id, name: `${user.first_name} ${user.last_name}`.trim() }, text: input.text, created_at: new Date().toISOString() }]
   })
@@ -365,7 +368,7 @@ export const addNote = defineMockRoute(({ event, body: raw }) => {
 /** DELETE /responses/:id, removed for good (editors only). */
 export const deleteResponse = defineMockRoute(({ event }) => {
   const { tenant, user } = requireAuth(event)
-  const { form, entry } = responseFor(tenant, user, getRouterParam(event, 'id'), 'edit')
+  const { form, entry } = responseFor(tenant, user, getRouterParam(event, 'id'), 'delete')
   updateReview(form.id, entry.id, review => (review.deleted_at = new Date().toISOString()))
   formResponses(tenant, form)
   audit(event, tenant, user, 'responses.deleted', form, entry)
@@ -383,7 +386,6 @@ const bulkBody = z.object({
 export const bulkResponses = defineMockRoute(({ event, body: raw }) => {
   const { tenant, user } = requireAuth(event)
   const input = parseBody(bulkBody, raw)
-  if (input.action === 'delete' && !can(user, 'responses.delete', tenant)) throw new MockError('FRM-PERM-1001')
   if (input.action === 'status' && !RESPONSE_STATUSES.includes(input.value as ResponseStatus)) throw new MockError('FRM-GEN-1002', [{ field: 'value', message: 'Unknown status.' }])
   if ((input.action === 'tag' || input.action === 'untag') && !input.value) throw new MockError('FRM-GEN-1002', [{ field: 'value', message: 'Tag required.' }])
   let done = 0
@@ -391,8 +393,8 @@ export const bulkResponses = defineMockRoute(({ event, body: raw }) => {
   const touched = new Set<StoredForm>()
   for (const id of input.ids) {
     const found = findResponse(tenant, id)
-    const level = found ? levelOf(found.form, user) : 'none'
-    if (!found || level === 'none' || (input.action === 'delete' && level !== 'edit')) {
+    // Each response: the same permission as one at a time (delete → delete, the rest → review), with its scope
+    if (!found || !responsesAllowed(found.form, user, input.action === 'delete' ? 'delete' : 'review', tenant)) {
       skipped++
       continue
     }

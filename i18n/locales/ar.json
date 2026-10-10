@@ -8013,7 +8013,12 @@
       "folders_create": "إنشاء المجلدات",
       "folders_edit": "إعادة التسمية وتغيير اللون",
       "folders_delete": "حذف المجلدات",
-      "folders_access": "تحديد من يرى المجلدات"
+      "folders_access": "تحديد من يرى المجلدات",
+      "responses_view": "عرض الردود",
+      "responses_review": "مراجعة الردود",
+      "responses_edit": "تصحيح الإجابات",
+      "responses_delete": "حذف الردود",
+      "responses_export": "تصدير الردود"
     }
   }
 }

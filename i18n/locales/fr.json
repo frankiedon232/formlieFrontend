@@ -8013,7 +8013,12 @@
       "folders_create": "Créer des dossiers",
       "folders_edit": "Renommer et changer la couleur",
       "folders_delete": "Supprimer des dossiers",
-      "folders_access": "Décider qui voit les dossiers"
+      "folders_access": "Décider qui voit les dossiers",
+      "responses_view": "Voir les réponses",
+      "responses_review": "Examiner les réponses",
+      "responses_edit": "Corriger les réponses",
+      "responses_delete": "Supprimer des réponses",
+      "responses_export": "Exporter les réponses"
     }
   }
 }

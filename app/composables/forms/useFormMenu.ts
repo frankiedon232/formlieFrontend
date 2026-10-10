@@ -71,7 +71,7 @@ export function useFormMenu(actions: ReturnType<typeof useFormActions>, handlers
           },
         }),
         ...when(allowed('share_view'), { label: t('share.open'), icon: 'i-lucide-share-2', to: `/forms/${form.id}/share` }),
-        ...when(!page && can('responses.view'), { label: t('forms.viewResponses'), icon: 'i-lucide-inbox', to: `/forms/${form.id}/responses` }),
+        ...when(!page && !!form.responses_can?.view, { label: t('forms.viewResponses'), icon: 'i-lucide-inbox', to: `/forms/${form.id}/responses` }),
         // A template is a resource too (templates get their own permissions later; until then resources.manage)
         ...when(allowed('save_template') && can('resources.manage'), { label: t('templates.saveAs'), icon: 'i-lucide-layout-template', onSelect: () => handlers.saveTemplate(form) }),
       ],

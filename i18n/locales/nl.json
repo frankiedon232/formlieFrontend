@@ -8013,7 +8013,12 @@
       "folders_create": "Mappen maken",
       "folders_edit": "Naam wijzigen en kleur aanpassen",
       "folders_delete": "Mappen verwijderen",
-      "folders_access": "Bepalen wie mappen ziet"
+      "folders_access": "Bepalen wie mappen ziet",
+      "responses_view": "Antwoorden zien",
+      "responses_review": "Antwoorden beoordelen",
+      "responses_edit": "Antwoorden corrigeren",
+      "responses_delete": "Antwoorden verwijderen",
+      "responses_export": "Antwoorden exporteren"
     }
   }
 }

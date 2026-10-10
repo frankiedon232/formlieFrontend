@@ -8013,7 +8013,12 @@
       "folders_create": "Create folders",
       "folders_edit": "Rename and recolour",
       "folders_delete": "Delete folders",
-      "folders_access": "Decide who sees folders"
+      "folders_access": "Decide who sees folders",
+      "responses_view": "See responses",
+      "responses_review": "Review responses",
+      "responses_edit": "Correct answers",
+      "responses_delete": "Delete responses",
+      "responses_export": "Export responses"
     }
   }
 }

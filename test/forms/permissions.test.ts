@@ -58,6 +58,17 @@ describe('who may take an action on a form (F22 R2: role scope, maker, sharing)'
     // Admin: everything, everywhere
     expect(allows(form({ team_access: 'none' }), user('boss', 'admin'), 'purge')).toBe(true)
   })
+  it('responses follow the same reach', async () => {
+    const { responsesAllowed } = await import('../../server/mock/data/formPermissions')
+    // Member: responses of their own and shared forms, reviewing too; deleting never
+    expect(responsesAllowed(form({ team_access: 'responses' }), user('a'), 'view')).toBe(true)
+    expect(responsesAllowed(form({ team_access: 'responses' }), user('a'), 'review')).toBe(true)
+    expect(responsesAllowed(form({ team_access: 'none' }), user('a'), 'view')).toBe(false)
+    expect(responsesAllowed(form(), user('owner'), 'delete')).toBe(false)
+    // Correcting answers needs the form shared for editing
+    expect(responsesAllowed(form({ team_access: 'view' }), user('a'), 'edit')).toBe(false)
+    expect(responsesAllowed(form({ team_access: 'none' }), user('boss', 'admin'), 'delete')).toBe(true)
+  })
   it('the app reads the answer the API sends (no answer means no)', async () => {
     const { canEditForm, formCan } = await import('../../shared/utils/forms/access')
     const can = { edit: true, publish: false } as never

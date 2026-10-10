@@ -96,7 +96,7 @@ const newOpen = ref(false)
   <AppPanel id="responses-exports" :title="t('nav.responsesExports')" :subtitle="t('responses.exports.subtitle')" subtitle-icon="i-lucide-file-down">
     <template #actions>
       <UButton :label="t('nav.responses')" icon="i-lucide-inbox" color="neutral" variant="outline" to="/responses" />
-      <UButton :label="t('responses.exports.new')" icon="i-lucide-file-plus" color="neutral" @click="newOpen = true" />
+      <UButton v-if="useCan().can('responses.export')" :label="t('responses.exports.new')" icon="i-lucide-file-plus" color="neutral" @click="newOpen = true" />
     </template>
 
     <DataView
@@ -151,7 +151,7 @@ const newOpen = ref(false)
       </template>
       <template #empty-actions>
         <UButton :label="t('nav.responses')" icon="i-lucide-inbox" color="neutral" variant="outline" to="/responses" />
-        <UButton :label="t('responses.exports.new')" icon="i-lucide-file-plus" color="neutral" @click="newOpen = true" />
+        <UButton v-if="useCan().can('responses.export')" :label="t('responses.exports.new')" icon="i-lucide-file-plus" color="neutral" @click="newOpen = true" />
       </template>
       <template #grid-card="{ row }">
         <FormsResponsesExportCard :item="row" :actions="rowActions(row)" :busy="busyIds.has(row.id)" @download="download(row)" />

@@ -8013,7 +8013,12 @@
       "folders_create": "Створювати теки",
       "folders_edit": "Перейменовувати й змінювати колір",
       "folders_delete": "Видаляти теки",
-      "folders_access": "Вирішувати, хто бачить теки"
+      "folders_access": "Вирішувати, хто бачить теки",
+      "responses_view": "Перегляд відповідей",
+      "responses_review": "Перевірка відповідей",
+      "responses_edit": "Виправлення відповідей",
+      "responses_delete": "Видалення відповідей",
+      "responses_export": "Експорт відповідей"
     }
   }
 }

@@ -15,7 +15,7 @@
  * `levelOf` (none < responses < view < edit) stays for the response routes until responses get their own
  * scopes. Too little → FRM-PERM-1001; can't see → FRM-GEN-1004, so a name never leaks.
  */
-import { FORM_ACTIONS, type FolderActions, type FormAccessLevel, type FormAction, type FormActions, type FormFolder } from '#shared/types/forms'
+import { FORM_ACTIONS, RESPONSE_ACTIONS, type FolderActions, type FormAccessLevel, type FormAction, type FormActions, type FormFolder, type ResponseAction, type ResponseActions } from '#shared/types/forms'
 import { MockError } from '../core/respond'
 import type { StoredForm } from './formStore'
 import { formsOf, summaryOf } from './formStore'
@@ -135,4 +135,32 @@ export function folderFor(folder: FormFolder, user: MockUser, tenant = tenantOfU
 }
 
 /** A form summary with what this person may do (my_access for the response pages, can for everything else). */
-export const summaryFor = (form: StoredForm, user: MockUser) => ({ ...summaryOf(form), my_access: levelOf(form, user), can: actionsOf(form, user) })
+export const summaryFor = (form: StoredForm, user: MockUser) => ({ ...summaryOf(form), my_access: levelOf(form, user), can: actionsOf(form, user), responses_can: responseActionsOf(form, user) })
+
+// ── Responses (F22 R2 M2) ─────────────────────────────────────────────────────────
+
+/** The sharing level each response action needs when the role reaches "shared" forms. */
+const RESPONSE_LEVEL: Record<ResponseAction, Exclude<FormAccessLevel, 'none'>> = { view: 'responses', review: 'responses', export: 'responses', edit: 'edit', delete: 'edit' }
+
+/**
+ * May this person take this action on the responses of this form? The folder must be visible; then the
+ * role's grant for responses.<action> and its scope: own (they made the form) · shared (also forms
+ * shared with them at the level the action needs) · all.
+ */
+export function responsesAllowed(form: StoredForm, user: MockUser, action: ResponseAction, tenant = tenantOfUser(user)): boolean {
+  if (!folderVisible(folderOf(form, tenant), user, tenant)) return false
+  const scope = scopeOf(user, `responses.${action}`, tenant)
+  if (!scope) return false
+  if (scope === 'all' || form.owner?.id === user.id) return true
+  return scope === 'shared' && RANK[sharedLevel(form, user)] >= RANK[RESPONSE_LEVEL[action]]
+}
+
+/** Every response action this person may take on this form (sent with forms and responses). */
+export const responseActionsOf = (form: StoredForm, user: MockUser, tenant = tenantOfUser(user)): ResponseActions =>
+  Object.fromEntries(RESPONSE_ACTIONS.map(action => [action, responsesAllowed(form, user, action, tenant)])) as ResponseActions
+
+/** Allowed, else refused: responses they can't see stay "not found". */
+export function requireResponses(form: StoredForm, user: MockUser, action: ResponseAction, tenant = tenantOfUser(user)) {
+  if (!responsesAllowed(form, user, 'view', tenant)) throw new MockError('FRM-GEN-1004')
+  if (!responsesAllowed(form, user, action, tenant)) throw new MockError('FRM-PERM-1001')
+}

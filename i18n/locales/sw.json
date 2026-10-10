@@ -8013,7 +8013,12 @@
       "folders_create": "Kuunda folda",
       "folders_edit": "Kubadilisha jina na rangi",
       "folders_delete": "Kufuta folda",
-      "folders_access": "Kuamua nani anaona folda"
+      "folders_access": "Kuamua nani anaona folda",
+      "responses_view": "Ona majibu",
+      "responses_review": "Kagua majibu",
+      "responses_edit": "Sahihisha majibu",
+      "responses_delete": "Futa majibu",
+      "responses_export": "Hamisha majibu"
     }
   }
 }

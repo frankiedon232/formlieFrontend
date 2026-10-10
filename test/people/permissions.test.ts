@@ -35,7 +35,13 @@ describe('roles & access (F22)', () => {
     // Opening a file is reading
     expect(permissionFor('POST', '/responses/r1/files')).toBe('responses.view')
     expect(withNeeds({ 'responses.review': 'all' })).toEqual({ 'responses.view': 'all', 'responses.review': 'all' })
-    expect(DEFAULT_ROLE_GRANTS.member['responses.review']).toBe('all')
+    // Responses have a reach too (F22 R2 M2): Member works with responses of their own and shared forms
+    expect(DEFAULT_ROLE_GRANTS.member['responses.review']).toBe('shared')
+    expect(DEFAULT_ROLE_GRANTS.member['responses.delete']).toBeUndefined()
+    expect(withNeeds({ 'responses.export': 'own' })).toEqual({ 'responses.view': 'own', 'responses.export': 'own' })
+    // A role saved as a list: responses reach as far as the forms did
+    expect(grantsFromList(['forms.view', 'responses.view'])['responses.view']).toBe('shared')
+    expect(grantsFromList(['forms.view', 'forms.all', 'responses.view'])['responses.view']).toBe('all')
   })
   it('leaves what every signed-in person needs open', () => {
     for (const path of ['/me/profile', '/navigation/counts', '/directory', '/settings/appearance', '/themes', '/option-lists/l1/options', '/notifications', '/folders'])

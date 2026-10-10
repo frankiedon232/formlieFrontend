@@ -16,6 +16,8 @@ export interface StoredRole {
   grants: Grants
   /** owner · admin · member for the built-in ones; null for the workspace's own. */
   built_in: (typeof BUILT_IN_ROLES)[number] | null
+  /** 2 = response actions have scopes (F22 R2 M2). */
+  version?: number
   created_at: string
   updated_at: string
 }
@@ -33,6 +35,15 @@ for (const role of [...stores.values()].flat() as (StoredRole & { permissions?: 
     delete role.permissions
     migrated = true
   }
+// Responses got scopes (F22 R2 M2): before, a person saw responses of the forms they could see, so a
+// role that didn't see every form reaches "shared" responses; one that did keeps "all".
+for (const role of [...stores.values()].flat())
+  if ((role.version ?? 1) < 2) {
+    const reach = role.grants['forms.view'] === 'all' ? 'all' : 'shared'
+    for (const key of Object.keys(role.grants) as (keyof Grants)[]) if (key.startsWith('responses.')) role.grants[key] = reach
+    role.version = 2
+    migrated = true
+  }
 if (migrated) saveRoles()
 
 const NAMES = { owner: 'Owner', admin: 'Admin', member: 'Member' } as const
@@ -46,7 +57,7 @@ export function rolesOf(tenant: MockTenant): StoredRole[] {
   let list = stores.get(tenant.id)
   if (!list) {
     const at = new Date().toISOString()
-    list = BUILT_IN_ROLES.map(id => ({ id, name: NAMES[id], description: DESCRIPTIONS[id], grants: { ...DEFAULT_ROLE_GRANTS[id] }, built_in: id, created_at: at, updated_at: at }))
+    list = BUILT_IN_ROLES.map(id => ({ id, name: NAMES[id], description: DESCRIPTIONS[id], grants: { ...DEFAULT_ROLE_GRANTS[id] }, built_in: id, version: 2, created_at: at, updated_at: at }))
     stores.set(tenant.id, list)
     saveRoles()
   }

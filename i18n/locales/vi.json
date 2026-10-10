@@ -8013,7 +8013,12 @@
       "folders_create": "Tạo thư mục",
       "folders_edit": "Đổi tên và đổi màu",
       "folders_delete": "Xóa thư mục",
-      "folders_access": "Quyết định ai xem được thư mục"
+      "folders_access": "Quyết định ai xem được thư mục",
+      "responses_view": "Xem phản hồi",
+      "responses_review": "Xem xét phản hồi",
+      "responses_edit": "Sửa câu trả lời",
+      "responses_delete": "Xóa phản hồi",
+      "responses_export": "Xuất phản hồi"
     }
   }
 }

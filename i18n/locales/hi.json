@@ -8013,7 +8013,12 @@
       "folders_create": "फ़ोल्डर बनाना",
       "folders_edit": "नाम बदलना और रंग बदलना",
       "folders_delete": "फ़ोल्डर हटाना",
-      "folders_access": "तय करना कि फ़ोल्डर कौन देखे"
+      "folders_access": "तय करना कि फ़ोल्डर कौन देखे",
+      "responses_view": "जवाब देखें",
+      "responses_review": "जवाबों की समीक्षा",
+      "responses_edit": "जवाब सुधारें",
+      "responses_delete": "जवाब हटाएँ",
+      "responses_export": "जवाब निर्यात करें"
     }
   }
 }

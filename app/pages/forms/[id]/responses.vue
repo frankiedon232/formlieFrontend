@@ -91,7 +91,8 @@ function changed() {
   refreshTimer = setTimeout(() => void loadInsights().catch(() => undefined), 600)
 }
 onBeforeUnmount(() => clearTimeout(refreshTimer))
-const canEdit = computed(() => canEditForm(form.value))
+/** What this person may do with this form's responses (F22 R2 M2: role scope, sharing, folder). */
+const responsesCan = computed(() => form.value?.responses_can ?? null)
 </script>
 
 <template>
@@ -128,7 +129,7 @@ const canEdit = computed(() => canEditForm(form.value))
     <div v-else-if="form && insights" class="flex flex-col gap-4">
       <FormsResponsesOverview :insights="insights" per-form :status="statusFilter" @status="filterStatus" @insights="view = 'insights'" />
 
-      <FormsResponsesList v-if="view === 'responses' && insights.schema" ref="list" :form-id="id" :schema="insights.schema" :can-edit="canEdit" :total="insights.total" @open="openRow" @changed="changed">
+      <FormsResponsesList v-if="view === 'responses' && insights.schema" ref="list" :form-id="id" :schema="insights.schema" :can="responsesCan" :total="insights.total" @open="openRow" @changed="changed">
         <template #start><FormsResponsesViewSwitch v-model="view" /></template>
       </FormsResponsesList>
       <template v-else-if="view === 'insights'">

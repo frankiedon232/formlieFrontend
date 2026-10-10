@@ -8013,7 +8013,12 @@
       "folders_create": "创建文件夹",
       "folders_edit": "重命名和更改颜色",
       "folders_delete": "删除文件夹",
-      "folders_access": "决定谁可以查看文件夹"
+      "folders_access": "决定谁可以查看文件夹",
+      "responses_view": "查看回复",
+      "responses_review": "审阅回复",
+      "responses_edit": "更正答案",
+      "responses_delete": "删除回复",
+      "responses_export": "导出回复"
     }
   }
 }

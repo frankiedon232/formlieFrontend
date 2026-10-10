@@ -54,7 +54,7 @@ async function loadForms() {
     formsLoading.value = false
   }
 }
-const formItems = computed(() => forms.value.map(form => ({ label: form.name, value: form.id, description: t('responses.export.rows', { n: number(form.total) }, form.total) })))
+const formItems = computed(() => forms.value.filter(form => form.can?.export !== false).map(form => ({ label: form.name, value: form.id, description: t('responses.export.rows', { n: number(form.total) }, form.total) })))
 const formId = computed(() => props.formId ?? pickedId.value ?? null)
 const total = computed(() => (props.formId ? props.total : (forms.value.find(form => form.id === pickedId.value)?.total ?? 0)))
 

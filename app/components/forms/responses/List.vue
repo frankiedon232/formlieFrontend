@@ -7,6 +7,7 @@
   Export (F11 M3) on the toolbar line and for the selection: the list's filters and table columns.
 -->
 <script setup lang="ts">
+import type { ResponseActions } from '#shared/types/forms'
 import type { DropdownMenuItem } from '@nuxt/ui'
 import { RESPONSE_STATUSES, type ResponseRow } from '#shared/types/responses'
 import { allFields, type FormField } from '#shared/utils/forms/build'
@@ -14,7 +15,7 @@ import { isInputField } from '#shared/utils/forms/fields'
 import { ANSWER_FILTER_PREFIX, filterValues } from '#shared/utils/forms/answer-filter'
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
 
-const props = defineProps<{ formId: string; schema: FormSchemaV1; canEdit: boolean; total?: number }>()
+const props = defineProps<{ formId: string; schema: FormSchemaV1; can: ResponseActions | null; total?: number }>()
 const emit = defineEmits<{ open: [row: ResponseRow, rows: ResponseRow[]]; changed: [] }>()
 const { t } = useI18n()
 const api = useApi()
@@ -118,11 +119,10 @@ async function bulk(ids: string[], action: 'status' | 'tag' | 'untag' | 'delete'
     busyIds.value = new Set([...busyIds.value].filter(id => !ids.includes(id)))
   }
 }
-// The role decides too (Review: status and tags; Delete; Export), next to the person's access to this form
-const { can } = useCan()
-const canReview = computed(() => can('responses.review'))
-const canDelete = computed(() => props.canEdit && can('responses.delete'))
-const canExport = computed(() => can('responses.export'))
+// What this person may do with this form's responses (F22 R2 M2: their role's scope, the sharing and the folder)
+const canReview = computed(() => !!props.can?.review)
+const canDelete = computed(() => !!props.can?.delete)
+const canExport = computed(() => !!props.can?.export)
 const statusItems = (ids: string[], after?: () => void): DropdownMenuItem[] =>
   RESPONSE_STATUSES.map(status => ({ label: t(`status.${status}`), icon: RESPONSE_STATUS_META[status].icon, onSelect: () => void bulk(ids, 'status', status).then(after) }))
 const rowActions = (row: ResponseRow): DropdownMenuItem[][] => [

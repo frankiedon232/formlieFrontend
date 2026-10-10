@@ -8013,7 +8013,12 @@
       "folders_create": "Ordner erstellen",
       "folders_edit": "Umbenennen und umfärben",
       "folders_delete": "Ordner löschen",
-      "folders_access": "Entscheiden, wer Ordner sieht"
+      "folders_access": "Entscheiden, wer Ordner sieht",
+      "responses_view": "Antworten sehen",
+      "responses_review": "Antworten prüfen",
+      "responses_edit": "Antworten korrigieren",
+      "responses_delete": "Antworten löschen",
+      "responses_export": "Antworten exportieren"
     }
   }
 }

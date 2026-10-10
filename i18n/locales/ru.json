@@ -8013,7 +8013,12 @@
       "folders_create": "Создавать папки",
       "folders_edit": "Переименовывать и менять цвет",
       "folders_delete": "Удалять папки",
-      "folders_access": "Решать, кто видит папки"
+      "folders_access": "Решать, кто видит папки",
+      "responses_view": "Просмотр ответов",
+      "responses_review": "Проверка ответов",
+      "responses_edit": "Исправление ответов",
+      "responses_delete": "Удаление ответов",
+      "responses_export": "Экспорт ответов"
     }
   }
 }

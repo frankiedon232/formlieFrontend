@@ -50,8 +50,12 @@ export const PERMISSION_AREAS = [
     ],
   },
   { key: 'folders', groups: [{ key: 'folders', actions: [{ key: 'create' }, { key: 'edit', scopes: OWNED }, { key: 'delete', scopes: OWNED }, { key: 'access' }] }] },
-  // review = status, tags and notes; edit = correct submitted answers (owner, 2026-10-09)
-  { key: 'responses', groups: [{ key: 'responses', actions: [{ key: 'view' }, { key: 'review' }, { key: 'edit' }, { key: 'delete' }, { key: 'export' }] }] },
+  // review = status, tags and notes; edit = correct submitted answers (owner, 2026-10-09). Scope (F22 R2 M2):
+  // own = responses to forms they made, shared = also forms shared with them, all = every form's responses
+  {
+    key: 'responses',
+    groups: [{ key: 'responses', actions: [{ key: 'view', scopes: FORM }, { key: 'review', scopes: FORM }, { key: 'edit', scopes: FORM }, { key: 'delete', scopes: FORM }, { key: 'export', scopes: FORM }] }],
+  },
   { key: 'resources', groups: [{ key: 'resources', actions: [{ key: 'manage' }] }] },
   { key: 'analytics', groups: [{ key: 'analytics', actions: [{ key: 'view' }] }] },
   { key: 'data', groups: [{ key: 'data', actions: [{ key: 'view' }, { key: 'query' }, { key: 'manage' }] }] },
@@ -93,7 +97,8 @@ export const DEFAULT_ROLE_GRANTS: Record<(typeof BUILT_IN_ROLES)[number], Grants
     ...grant(['forms.view', 'forms.preview', 'forms.duplicate', 'forms.save_template', 'forms.rename', 'forms.edit', 'forms.versions', 'forms.share_view', 'forms.share', 'forms.availability', 'forms.publish', 'forms.close', 'forms.archive', 'forms.move'], 'shared'),
     ...grant(['forms.create', 'forms.import', 'folders.create']),
     ...grant(['folders.edit', 'folders.delete'], 'own'),
-    ...grant(['responses.view', 'responses.review', 'responses.edit', 'responses.export', 'analytics.view', 'ai.use']),
+    ...grant(['responses.view', 'responses.review', 'responses.edit', 'responses.export'], 'shared'),
+    ...grant(['analytics.view', 'ai.use']),
   },
 }
 
@@ -205,7 +210,7 @@ export function grantsFromList(list: readonly string[]): Grants {
   // Folders were part of "resources"; deciding who sees a folder goes with managing settings
   if (has('resources.manage')) give(['folders.create', 'folders.edit', 'folders.delete'], 'all')
   if (has('settings.manage')) give(['folders.access'], 'all')
-  for (const item of list) if (isPermission(item) && !item.startsWith('forms.') && !item.startsWith('folders.')) out[item] = 'all'
+  for (const item of list) if (isPermission(item) && !item.startsWith('forms.') && !item.startsWith('folders.')) out[item] = item.startsWith('responses.') ? forms : 'all'
   return withNeeds(out)
 }
 

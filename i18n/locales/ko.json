@@ -8013,7 +8013,12 @@
       "folders_create": "폴더 만들기",
       "folders_edit": "이름 및 색상 변경",
       "folders_delete": "폴더 삭제",
-      "folders_access": "폴더를 볼 수 있는 사람 결정"
+      "folders_access": "폴더를 볼 수 있는 사람 결정",
+      "responses_view": "응답 보기",
+      "responses_review": "응답 검토",
+      "responses_edit": "답변 수정",
+      "responses_delete": "응답 삭제",
+      "responses_export": "응답 내보내기"
     }
   }
 }

@@ -43,6 +43,10 @@ export const FORM_ACTIONS = ['view', 'preview', 'duplicate', 'save_template', 'r
 export type FormAction = (typeof FORM_ACTIONS)[number]
 /** What the signed-in person may do with one form (role scope, ownership, sharing and folder access together). */
 export type FormActions = Record<FormAction, boolean>
+/** What a person may do with a form's responses (F22 R2 M2: responses.* with their scope). */
+export const RESPONSE_ACTIONS = ['view', 'review', 'edit', 'delete', 'export'] as const
+export type ResponseAction = (typeof RESPONSE_ACTIONS)[number]
+export type ResponseActions = Record<ResponseAction, boolean>
 
 /** GET /folders/overview and /folders/{id}: a folder with its numbers (F11 M4, the Folders pages). */
 export interface FolderRow {
@@ -107,6 +111,8 @@ export interface FormSummary {
   my_access?: FormAccessLevel
   /** Each action allowed for the signed-in person (F22 R2); the app shows only these, the API checks again. */
   can?: FormActions
+  /** The same for its responses (see, review, correct answers, delete, export). */
+  responses_can?: ResponseActions
 }
 
 /** People access per form: none < responses < view (read only) < edit. */
