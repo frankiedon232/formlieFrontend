@@ -4,7 +4,7 @@
 
 ## Phase order
 
-F0 Foundation → F1 App shell → F2 Core plumbing → F3 Workspace detection + sign-in → F4 Audit trail → F5 Onboarding → F6 Forms list and lifecycle → F7 Builder → F8 Designer → F9 Templates → F10 Renderer, share, embed, SEO → F11 Responses → F12 Data sources & databases → F13 API service → F14 Settings → F15 Option sets (lists) → F16 Users & profiles (Profile and Users together) → F18 Analytics → F22 Roles & access (with F16) → F19 AI assistant → F21 Dashboard → F24 Payments & subscriptions → F25 Help centre → switch to the real backend (owner 2026-10-10). F23 Platform admin is a separate project (`SUPER_ADMIN_PLATFORM` folder).
+F0 Foundation → F1 App shell → F2 Core plumbing → F3 Workspace detection + sign-in → F4 Audit trail → F5 Onboarding → F6 Forms list and lifecycle → F7 Builder → F8 Designer → F9 Templates → F10 Renderer, share, embed, SEO → F11 Responses → F12 Data sources & databases → F13 API service → F14 Settings → F15 Option sets (lists) → F16 Users & profiles (Profile and Users together) → F18 Analytics → F22 Roles & access (with F16) → F19 AI assistant → F24 Payments & subscriptions → F21 Dashboard → F25 Help centre → switch to the real backend (owner 2026-10-10). F23 Platform admin is a separate project (`SUPER_ADMIN_PLATFORM` folder).
 
 ## How we work through it
 
