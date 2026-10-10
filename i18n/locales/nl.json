@@ -7704,8 +7704,32 @@
       "typeEmail": "Typ {email} om te bevestigen",
       "deleted": "{n} antwoord verwijderd | {n} antwoorden verwijderd",
       "residency": "Waar gegevens worden opgeslagen",
-      "residencyHint": "De regio waar je antwoorden en bestanden worden bewaard.",
-      "residencyLater": "Gekozen met je abonnement. Abonnementen komen met de platformconsole."
+      "residencyHint": "De regio waarin de gegevens van je werkruimte worden bewaard en verwerkt.",
+      "region": {
+        "default": "Standaardregio van Formalie",
+        "eu": "Europese Unie",
+        "uk": "Verenigd Koninkrijk",
+        "us": "Verenigde Staten",
+        "ca": "Canada",
+        "au": "Australië",
+        "in": "India",
+        "sg": "Singapore",
+        "br": "Brazilië"
+      },
+      "regionKept": "Alles hieronder wordt in deze regio opgeslagen en verwerkt.",
+      "kept": {
+        "responses": "Reacties",
+        "files": "Geüploade bestanden",
+        "backups": "Back-ups",
+        "emails": "Reactie-e-mails",
+        "logs": "Logboeken"
+      },
+      "regionsOffered": "Regio’s die Formalie kan inrichten",
+      "regionWanted": "Regio die je nodig hebt",
+      "regionPick": "Kies een regio",
+      "regionAsk": "Deze regio aanvragen",
+      "regionMove": "Een verhuizing naar een andere regio wordt met je gepland en uitgevoerd door het Formalie-team, waarbij je gegevens eerst worden gekopieerd en gecontroleerd.",
+      "regionFailed": "Kon niet laden waar je gegevens worden opgeslagen"
     },
     "formDefaults": {
       "note": "Nieuwe formulieren starten hiermee. Bestaande formulieren houden hun eigen instellingen, en elk formulier kan ze nog aanpassen.",
@@ -9343,6 +9367,7 @@
       "customDomain": "Eigen domein",
       "customEmail": "Eigen afzenderadres en mailserver",
       "customCss": "Eigen CSS op formulieren",
+      "dataResidency": "Gegevens bewaard in de regio van je keuze",
       "emailSignin": "E-mail en wachtwoord",
       "socialSignin": "Google, Apple, Microsoft, Facebook",
       "sso": "Single sign-on (Okta en andere)",

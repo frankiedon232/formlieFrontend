@@ -7704,8 +7704,32 @@
       "typeEmail": "Ketik {email} untuk mengonfirmasi",
       "deleted": "{n} respons dihapus | {n} respons dihapus",
       "residency": "Tempat data disimpan",
-      "residencyHint": "Wilayah tempat respons dan file Anda disimpan.",
-      "residencyLater": "Dipilih bersama paket Anda. Paket hadir bersama konsol platform."
+      "residencyHint": "Wilayah tempat data ruang kerja Anda disimpan dan diproses.",
+      "region": {
+        "default": "Wilayah default Formalie",
+        "eu": "Uni Eropa",
+        "uk": "Inggris Raya",
+        "us": "Amerika Serikat",
+        "ca": "Kanada",
+        "au": "Australia",
+        "in": "India",
+        "sg": "Singapura",
+        "br": "Brasil"
+      },
+      "regionKept": "Semua yang tercantum di bawah disimpan dan diproses di wilayah ini.",
+      "kept": {
+        "responses": "Respons",
+        "files": "File yang diunggah",
+        "backups": "Cadangan",
+        "emails": "Email respons",
+        "logs": "Log"
+      },
+      "regionsOffered": "Wilayah yang dapat disiapkan Formalie",
+      "regionWanted": "Wilayah yang Anda butuhkan",
+      "regionPick": "Pilih wilayah",
+      "regionAsk": "Minta wilayah ini",
+      "regionMove": "Pemindahan ke wilayah lain direncanakan bersama Anda dan dilakukan oleh tim Formalie, dengan data Anda disalin dan diperiksa terlebih dahulu.",
+      "regionFailed": "Tidak dapat memuat lokasi penyimpanan data Anda"
     },
     "formDefaults": {
       "note": "Formulir baru dimulai dengan pengaturan ini. Formulir yang sudah ada tetap memakai pengaturannya sendiri, dan setiap formulir tetap bisa mengubahnya.",
@@ -9343,6 +9367,7 @@
       "customDomain": "Domain khusus",
       "customEmail": "Alamat pengirim dan server email sendiri",
       "customCss": "CSS khusus pada formulir",
+      "dataResidency": "Data disimpan di wilayah pilihan Anda",
       "emailSignin": "Email dan kata sandi",
       "socialSignin": "Google, Apple, Microsoft, Facebook",
       "sso": "Single sign-on (Okta dan lainnya)",

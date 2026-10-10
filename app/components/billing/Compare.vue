@@ -64,6 +64,7 @@ const GROUPS = computed<{ key: string; rows: Row[] }[]>(() => [
       { key: 'customDomain', cell: plan => (plan.limits.custom_domains === 0 ? false : plan.limits.custom_domains === null ? t('billing.unlimited') : number(plan.limits.custom_domains)) },
       { key: 'customEmail', cell: plan => plan.limits.custom_email },
       { key: 'customCss', cell: plan => plan.limits.custom_css },
+      { key: 'dataResidency', cell: plan => plan.limits.data_residency },
     ],
   },
   {

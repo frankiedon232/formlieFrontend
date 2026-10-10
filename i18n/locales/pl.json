@@ -7704,8 +7704,32 @@
       "typeEmail": "Wpisz {email}, aby potwierdzić",
       "deleted": "Usunięto {n} odpowiedź | Usunięto {n} odpowiedzi",
       "residency": "Gdzie przechowywane są dane",
-      "residencyHint": "Region, w którym przechowywane są odpowiedzi i pliki.",
-      "residencyLater": "Wybierany razem z planem. Plany pojawią się wraz z konsolą platformy."
+      "residencyHint": "Region, w którym przechowywane i przetwarzane są dane Twojej przestrzeni roboczej.",
+      "region": {
+        "default": "Domyślny region Formalie",
+        "eu": "Unia Europejska",
+        "uk": "Wielka Brytania",
+        "us": "Stany Zjednoczone",
+        "ca": "Kanada",
+        "au": "Australia",
+        "in": "Indie",
+        "sg": "Singapur",
+        "br": "Brazylia"
+      },
+      "regionKept": "Wszystko poniżej jest przechowywane i przetwarzane w tym regionie.",
+      "kept": {
+        "responses": "Odpowiedzi",
+        "files": "Przesłane pliki",
+        "backups": "Kopie zapasowe",
+        "emails": "E-maile z odpowiedziami",
+        "logs": "Dzienniki"
+      },
+      "regionsOffered": "Regiony, które Formalie może skonfigurować",
+      "regionWanted": "Potrzebny region",
+      "regionPick": "Wybierz region",
+      "regionAsk": "Poproś o ten region",
+      "regionMove": "Przeniesienie do innego regionu jest planowane z Tobą i wykonywane przez zespół Formalie, a Twoje dane są wcześniej kopiowane i sprawdzane.",
+      "regionFailed": "Nie udało się załadować miejsca przechowywania danych"
     },
     "formDefaults": {
       "note": "Nowe formularze zaczynają z tymi ustawieniami. Istniejące formularze zachowują własne, a każdy formularz nadal może je zmienić.",
@@ -9343,6 +9367,7 @@
       "customDomain": "Własna domena",
       "customEmail": "Własny adres nadawcy i serwer poczty",
       "customCss": "Własny CSS w formularzach",
+      "dataResidency": "Dane przechowywane w wybranym regionie",
       "emailSignin": "E-mail i hasło",
       "socialSignin": "Google, Apple, Microsoft, Facebook",
       "sso": "Jednokrotne logowanie (Okta i inne)",

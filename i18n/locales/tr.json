@@ -7704,8 +7704,32 @@
       "typeEmail": "Onaylamak için {email} yazın",
       "deleted": "{n} yanıt silindi | {n} yanıt silindi",
       "residency": "Verilerin saklandığı yer",
-      "residencyHint": "Yanıtlarınızın ve dosyalarınızın saklandığı bölge.",
-      "residencyLater": "Planınızla birlikte seçilir. Planlar platform konsoluyla gelir."
+      "residencyHint": "Çalışma alanınızın verilerinin tutulduğu ve işlendiği bölge.",
+      "region": {
+        "default": "Formalie varsayılan bölgesi",
+        "eu": "Avrupa Birliği",
+        "uk": "Birleşik Krallık",
+        "us": "Amerika Birleşik Devletleri",
+        "ca": "Kanada",
+        "au": "Avustralya",
+        "in": "Hindistan",
+        "sg": "Singapur",
+        "br": "Brezilya"
+      },
+      "regionKept": "Aşağıdaki her şey bu bölgede saklanır ve işlenir.",
+      "kept": {
+        "responses": "Yanıtlar",
+        "files": "Yüklenen dosyalar",
+        "backups": "Yedekler",
+        "emails": "Yanıt e-postaları",
+        "logs": "Günlükler"
+      },
+      "regionsOffered": "Formalie'nin kurabileceği bölgeler",
+      "regionWanted": "İhtiyacınız olan bölge",
+      "regionPick": "Bir bölge seçin",
+      "regionAsk": "Bu bölgeyi talep edin",
+      "regionMove": "Başka bir bölgeye taşıma sizinle planlanır ve Formalie ekibi tarafından yapılır; verileriniz önce kopyalanır ve kontrol edilir.",
+      "regionFailed": "Verilerinizin nerede saklandığı yüklenemedi"
     },
     "formDefaults": {
       "note": "Yeni formlar bu ayarlarla başlar. Mevcut formlar kendi ayarlarını korur ve her form bunları yine değiştirebilir.",
@@ -9343,6 +9367,7 @@
       "customDomain": "Özel alan adı",
       "customEmail": "Kendi gönderen adresi ve posta sunucusu",
       "customCss": "Formlarda özel CSS",
+      "dataResidency": "Seçtiğiniz bölgede tutulan veriler",
       "emailSignin": "E-posta ve şifre",
       "socialSignin": "Google, Apple, Microsoft, Facebook",
       "sso": "Çoklu oturum açma (Okta ve diğerleri)",

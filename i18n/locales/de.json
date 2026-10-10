@@ -7704,8 +7704,32 @@
       "typeEmail": "Gib {email} zur Bestätigung ein",
       "deleted": "{n} Antwort gelöscht | {n} Antworten gelöscht",
       "residency": "Speicherort der Daten",
-      "residencyHint": "Die Region, in der Ihre Antworten und Dateien gespeichert werden.",
-      "residencyLater": "Wird mit Ihrem Tarif festgelegt. Tarife kommen mit der Plattform-Konsole."
+      "residencyHint": "Die Region, in der die Daten Ihres Arbeitsbereichs gespeichert und verarbeitet werden.",
+      "region": {
+        "default": "Standardregion von Formalie",
+        "eu": "Europäische Union",
+        "uk": "Vereinigtes Königreich",
+        "us": "Vereinigte Staaten",
+        "ca": "Kanada",
+        "au": "Australien",
+        "in": "Indien",
+        "sg": "Singapur",
+        "br": "Brasilien"
+      },
+      "regionKept": "Alles Folgende wird in dieser Region gespeichert und verarbeitet.",
+      "kept": {
+        "responses": "Antworten",
+        "files": "Hochgeladene Dateien",
+        "backups": "Backups",
+        "emails": "Antwort-E-Mails",
+        "logs": "Protokolle"
+      },
+      "regionsOffered": "Regionen, die Formalie einrichten kann",
+      "regionWanted": "Benötigte Region",
+      "regionPick": "Region wählen",
+      "regionAsk": "Diese Region anfragen",
+      "regionMove": "Ein Wechsel in eine andere Region wird mit Ihnen geplant und vom Formalie-Team durchgeführt, wobei Ihre Daten zuvor kopiert und geprüft werden.",
+      "regionFailed": "Der Speicherort Ihrer Daten konnte nicht geladen werden"
     },
     "formDefaults": {
       "note": "Neue Formulare starten mit diesen Einstellungen. Bestehende Formulare behalten ihre eigenen, und jedes Formular kann sie weiterhin ändern.",
@@ -9343,6 +9367,7 @@
       "customDomain": "Eigene Domain",
       "customEmail": "Eigene Absenderadresse und eigener Mailserver",
       "customCss": "Eigenes CSS für Formulare",
+      "dataResidency": "Daten in der Region Ihrer Wahl",
       "emailSignin": "E-Mail und Passwort",
       "socialSignin": "Google, Apple, Microsoft, Facebook",
       "sso": "Single Sign-on (Okta und andere)",

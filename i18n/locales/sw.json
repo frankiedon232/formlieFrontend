@@ -7704,8 +7704,32 @@
       "typeEmail": "Andika {email} ili kuthibitisha",
       "deleted": "Jibu {n} limefutwa | Majibu {n} yamefutwa",
       "residency": "Mahali data inapohifadhiwa",
-      "residencyHint": "Eneo ambalo majibu na faili zako zinahifadhiwa.",
-      "residencyLater": "Huchaguliwa na mpango wako. Mipango inakuja na koneso ya jukwaa."
+      "residencyHint": "Eneo ambamo data ya eneo lako la kazi huhifadhiwa na kuchakatwa.",
+      "region": {
+        "default": "Eneo chaguomsingi la Formalie",
+        "eu": "Umoja wa Ulaya",
+        "uk": "Uingereza",
+        "us": "Marekani",
+        "ca": "Kanada",
+        "au": "Australia",
+        "in": "India",
+        "sg": "Singapore",
+        "br": "Brazil"
+      },
+      "regionKept": "Kila kitu kilicho hapa chini kinahifadhiwa na kuchakatwa katika eneo hili.",
+      "kept": {
+        "responses": "Majibu",
+        "files": "Faili zilizopakiwa",
+        "backups": "Nakala rudufu",
+        "emails": "Barua pepe za majibu",
+        "logs": "Kumbukumbu"
+      },
+      "regionsOffered": "Maeneo ambayo Formalie inaweza kuweka",
+      "regionWanted": "Eneo unalohitaji",
+      "regionPick": "Chagua eneo",
+      "regionAsk": "Omba eneo hili",
+      "regionMove": "Kuhamia eneo lingine hupangwa nawe na kufanywa na timu ya Formalie, data yako ikinakiliwa na kukaguliwa kwanza.",
+      "regionFailed": "Imeshindwa kupakia mahali data yako inapohifadhiwa"
     },
     "formDefaults": {
       "note": "Fomu mpya huanza na mipangilio hii. Fomu ulizo nazo tayari zinabaki na zake, na kila fomu bado inaweza kuibadilisha.",
@@ -9343,6 +9367,7 @@
       "customDomain": "Kikoa maalum",
       "customEmail": "Anwani ya kutuma na seva ya barua ya kwako",
       "customCss": "CSS maalum kwenye fomu",
+      "dataResidency": "Data inayohifadhiwa katika eneo unalochagua",
       "emailSignin": "Barua pepe na nenosiri",
       "socialSignin": "Google, Apple, Microsoft, Facebook",
       "sso": "Kuingia mara moja (Okta na nyinginezo)",

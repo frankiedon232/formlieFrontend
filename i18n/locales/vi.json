@@ -7704,8 +7704,32 @@
       "typeEmail": "Nhập {email} để xác nhận",
       "deleted": "Đã xóa {n} phản hồi | Đã xóa {n} phản hồi",
       "residency": "Nơi lưu trữ dữ liệu",
-      "residencyHint": "Khu vực lưu giữ phản hồi và tệp của bạn.",
-      "residencyLater": "Được chọn cùng gói của bạn. Các gói sẽ có cùng bảng điều khiển nền tảng."
+      "residencyHint": "Khu vực lưu trữ và xử lý dữ liệu của không gian làm việc của bạn.",
+      "region": {
+        "default": "Khu vực mặc định của Formalie",
+        "eu": "Liên minh châu Âu",
+        "uk": "Vương quốc Anh",
+        "us": "Hoa Kỳ",
+        "ca": "Canada",
+        "au": "Úc",
+        "in": "Ấn Độ",
+        "sg": "Singapore",
+        "br": "Brazil"
+      },
+      "regionKept": "Mọi thứ bên dưới được lưu trữ và xử lý tại khu vực này.",
+      "kept": {
+        "responses": "Phản hồi",
+        "files": "Tệp đã tải lên",
+        "backups": "Bản sao lưu",
+        "emails": "Email phản hồi",
+        "logs": "Nhật ký"
+      },
+      "regionsOffered": "Các khu vực Formalie có thể thiết lập",
+      "regionWanted": "Khu vực bạn cần",
+      "regionPick": "Chọn một khu vực",
+      "regionAsk": "Yêu cầu khu vực này",
+      "regionMove": "Việc chuyển sang khu vực khác được lên kế hoạch cùng bạn và do đội ngũ Formalie thực hiện, dữ liệu của bạn được sao chép và kiểm tra trước.",
+      "regionFailed": "Không tải được nơi lưu trữ dữ liệu của bạn"
     },
     "formDefaults": {
       "note": "Biểu mẫu mới bắt đầu với các cài đặt này. Biểu mẫu bạn đã có giữ cài đặt riêng, và mỗi biểu mẫu vẫn có thể thay đổi.",
@@ -9343,6 +9367,7 @@
       "customDomain": "Tên miền riêng",
       "customEmail": "Địa chỉ gửi và máy chủ thư riêng",
       "customCss": "CSS tùy chỉnh trên biểu mẫu",
+      "dataResidency": "Dữ liệu được lưu tại khu vực bạn chọn",
       "emailSignin": "Email và mật khẩu",
       "socialSignin": "Google, Apple, Microsoft, Facebook",
       "sso": "Đăng nhập một lần (Okta và các loại khác)",

@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-10 (F24 paused while the owner's Payoneer account is activated: subscriptions, plan limits, Formalie's own support and enquiry forms and payment safety are done; F21 Dashboard done (M1 to M5), waiting for the owner's review; back to F24 for Payoneer, form payments and the website project files when the account is ready)
+**Last updated:** 2026-10-10 (F21 Dashboard done; the items left open in earlier phases built as leftovers L1 to L7 and waiting for the owner's check; next: the Formalie website project files, then Payoneer when the account is ready, then the real backend)
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend · ➖ dropped or merged
 
@@ -43,7 +43,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 2. ✅ **F25 Help centre** (brought forward by the owner, 2026-10-10, while the payment processor accounts are set up; its content is posted from the platform admin; waiting for review)
 3. ⏸ **F24 Payments & subscriptions** (paused 2026-10-10 for the owner's Payoneer account; subscriptions, plan limits and payment safety done; left: Payoneer, form payments, then the Formalie website project files; form payments and plans together; processor: Payoneer, owner 2026-10-10; plan features to gate include the custom domain, own sending address / mail server and single sign-on)
 4. ✅ **F21 Dashboard** (built 2026-10-10 while F24 waits for Payoneer; Workspace, Forms, Data sources and API service views, filters, first steps; waiting for review)
-5. 🟡 **Leftovers L1 to L7** (owner 2026-10-10, "deal with all"; the items still open in earlier phases): **L1** list details in formulas and logic (F15) · **L2** more fonts (F8) · **L3** light and dark colours per mode and a workspace default mode (F14) · **L4** access overview per form (F22) · **L5** custom CSS (F8) · **L6** allowed websites for browser callers of the API service (F13; HTTPS-only and CORS in the backend) · **L7** data residency (F14). Then the owner checks.
+5. ✅ **Leftovers L1 to L7** (owner 2026-10-10, "deal with all"; the items still open in earlier phases): **L1** list details in formulas and logic (F15) · **L2** more fonts (F8) · **L3** light and dark colours per mode and a workspace default mode (F14) · **L4** access overview per form (F22) · **L5** custom CSS (F8) · **L6** allowed websites for browser callers of the API service (F13; HTTPS-only and CORS in the backend) · **L7** data residency (F14). Then the owner checks.
 6. ⬜ **Formalie website project files** (after the owner's check): Markdown files with instructions and full details for the website project, from this project.
 7. ⏸ **F24 Payoneer connection** when the account is ready (owner 2026-10-10: before switching to the backend).
 8. ⏸ **Switching to the real backend** (FastAPI, `formalieBackend`): the mock is replaced, API-CONTRACT is the spec
@@ -829,7 +829,7 @@ Every workspace sets up its own reference data here; the builder, field access a
 - ✅ Data retention per form / default (auto-delete responses after N days), with a preview of what a limit removes and a confirmation
 - ✅ Consent line above Submit and the organisation's privacy notice link in every public form's footer
 - ✅ Data requests: find a person's responses by email, export them (JSON) or delete them all (typed confirmation, audited)
-- ⬜ Data residency / storage region (owner 2026-10-10: build, leftovers L7): the region a workspace's data stays in, chosen when it is created (Enterprise for regions beyond the default), shown in Settings → Privacy; the regions themselves are infrastructure, set up with the real backend
+- ✅ Data residency (owner 2026-10-10, leftovers L7): Settings → Privacy → Where data is stored shows the workspace's region and what stays there (responses, uploaded files, backups, response emails, logs) and the regions Formalie can set up (EU, UK, US, Canada, Australia, India, Singapore, Brazil); another region is an Enterprise service done by the Formalie team as a planned move (never a switch in the app): on Enterprise, pick a region and Formalie's Enterprise form opens with it filled in; on other plans, the plan lock and Contact us; `GET /settings/data-region`; plan flag `data_residency` (Enterprise), comparison row; pre-fill now takes several choices (comma-separated). Left for the backend and platform admin: the regions themselves (servers, databases, file storage, backups per region) and setting a workspace's region
 
 ### Themes & form defaults
 
@@ -1347,7 +1347,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-10 | Email support in Help & support opens a form inside the app (like Contact us on the plans), seen by the Formalie team in the platform admin | F25 | ✅ done |
 | 2026-10-10 | Use our own data collection forms (not modals) for Contact support and the Enterprise enquiry, shown in an in-app browser like the one on public forms, for the platform admin | F24, F25 | ✅ done |
 | 2026-10-10 | Payoneer account not active yet: update PROGRESS, move to the next phase and come back to F24 later | Order, F24, F21 | ✅ F24 paused, F21 started |
-| 2026-10-10 | Build every item still open in earlier phases ("deal with all"): list details in formulas and logic, more fonts, light / dark colours per mode, access overview per form, custom CSS, allowed websites for the API service, data residency; then the owner checks, then the website project files, then Payoneer, then the backend | F8, F13, F14, F15, F22 | 🟡 Leftovers L1 to L7 |
+| 2026-10-10 | Build every item still open in earlier phases ("deal with all"): list details in formulas and logic, more fonts, light / dark colours per mode, access overview per form, custom CSS, allowed websites for the API service, data residency; then the owner checks, then the website project files, then Payoneer, then the backend | F8, F13, F14, F15, F22 | ✅ Leftovers L1 to L7 |
 
 ---
 
@@ -1643,3 +1643,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-10 | F21 M3 | Dashboard Data sources view: `GET /dashboard/data` (needs data.view; operations from the connections' daily counts, stored responses from response storage, health checks, the audit trail's data area), KPI row, operations columns, connection health, what people did, response storage, latest activity; in the view switch for people with data access; 20 languages. |
 | 2026-10-10 | F21 M4 | Dashboard API service view: `GET /dashboard/api` (needs api.view; calls, errors and response times from the call log, tokens' calls and last use, webhook deliveries), KPI row, calls over time, busiest endpoints, answers by kind, tokens in use, webhooks, latest failed calls; in the view switch for people with API service access; 20 languages. |
 | 2026-10-10 | F21 M5 | Dashboard filters (folder or no folder, owner; `folder` / `owner` on `/dashboard` and `/dashboard/forms`, `filter[folder_id]` / `filter[owner_id]` on `/responses`, kept in the address, chips), first steps for new workspaces (`new_workspace`), API view split, 20 languages; checked on desktop, phone, Arabic and with a new test workspace. F21 done, stopped for the owner's review. |
+| 2026-10-10 | Leftovers L1 to L7 | Owner: build every open item. L1 list details in formulas and logic; L2 16 self-hosted web fonts in the designer; L3 workspace default mode and dark-mode colours; L4 Who can see this form; L5 custom CSS (cleaned, fenced, plan feature, audited); L6 allowed websites for browser callers of the API service (CORS in the mock); L7 data residency in Settings → Privacy (Enterprise, requested through Formalie's own form). Checked in the browser; 20 languages. Waiting for the owner's check, then the website project files. |

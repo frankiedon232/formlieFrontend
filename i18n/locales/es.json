@@ -7704,8 +7704,32 @@
       "typeEmail": "Escribe {email} para confirmar",
       "deleted": "{n} respuesta eliminada | {n} respuestas eliminadas",
       "residency": "Dónde se almacenan los datos",
-      "residencyHint": "La región donde se guardan tus respuestas y archivos.",
-      "residencyLater": "Se elige con tu plan. Los planes llegan con la consola de la plataforma."
+      "residencyHint": "La región en la que se conservan y procesan los datos de su espacio de trabajo.",
+      "region": {
+        "default": "Región predeterminada de Formalie",
+        "eu": "Unión Europea",
+        "uk": "Reino Unido",
+        "us": "Estados Unidos",
+        "ca": "Canadá",
+        "au": "Australia",
+        "in": "India",
+        "sg": "Singapur",
+        "br": "Brasil"
+      },
+      "regionKept": "Todo lo siguiente se almacena y procesa en esta región.",
+      "kept": {
+        "responses": "Respuestas",
+        "files": "Archivos subidos",
+        "backups": "Copias de seguridad",
+        "emails": "Correos de respuesta",
+        "logs": "Registros"
+      },
+      "regionsOffered": "Regiones que Formalie puede configurar",
+      "regionWanted": "Región que necesita",
+      "regionPick": "Elegir una región",
+      "regionAsk": "Solicitar esta región",
+      "regionMove": "El traslado a otra región se planifica con usted y lo realiza el equipo de Formalie, copiando y comprobando antes sus datos.",
+      "regionFailed": "No se pudo cargar dónde se almacenan sus datos"
     },
     "formDefaults": {
       "note": "Los formularios nuevos empiezan con estos ajustes. Los que ya tienes conservan los suyos, y cada formulario puede cambiarlos.",
@@ -9343,6 +9367,7 @@
       "customDomain": "Dominio propio",
       "customEmail": "Dirección de envío y servidor de correo propios",
       "customCss": "CSS personalizado en formularios",
+      "dataResidency": "Datos conservados en la región que elija",
       "emailSignin": "Correo y contraseña",
       "socialSignin": "Google, Apple, Microsoft, Facebook",
       "sso": "Inicio de sesión único (Okta y otros)",

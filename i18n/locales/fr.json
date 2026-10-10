@@ -7704,8 +7704,32 @@
       "typeEmail": "Saisissez {email} pour confirmer",
       "deleted": "{n} réponse supprimée | {n} réponses supprimées",
       "residency": "Lieu de stockage des données",
-      "residencyHint": "La région où vos réponses et fichiers sont conservés.",
-      "residencyLater": "Choisie avec votre offre. Les offres arrivent avec la console de la plateforme."
+      "residencyHint": "La région dans laquelle les données de votre espace de travail sont conservées et traitées.",
+      "region": {
+        "default": "Région par défaut de Formalie",
+        "eu": "Union européenne",
+        "uk": "Royaume-Uni",
+        "us": "États-Unis",
+        "ca": "Canada",
+        "au": "Australie",
+        "in": "Inde",
+        "sg": "Singapour",
+        "br": "Brésil"
+      },
+      "regionKept": "Tout ce qui suit est stocké et traité dans cette région.",
+      "kept": {
+        "responses": "Réponses",
+        "files": "Fichiers téléversés",
+        "backups": "Sauvegardes",
+        "emails": "E-mails de réponse",
+        "logs": "Journaux"
+      },
+      "regionsOffered": "Régions que Formalie peut mettre en place",
+      "regionWanted": "Région dont vous avez besoin",
+      "regionPick": "Choisir une région",
+      "regionAsk": "Demander cette région",
+      "regionMove": "Un transfert vers une autre région est planifié avec vous et réalisé par l’équipe Formalie, vos données étant d’abord copiées et vérifiées.",
+      "regionFailed": "Impossible de charger l’emplacement de vos données"
     },
     "formDefaults": {
       "note": "Les nouveaux formulaires démarrent avec ces réglages. Vos formulaires existants gardent les leurs, et chaque formulaire peut toujours les modifier.",
@@ -9343,6 +9367,7 @@
       "customDomain": "Domaine personnalisé",
       "customEmail": "Adresse d’envoi et serveur de messagerie personnels",
       "customCss": "CSS personnalisé sur les formulaires",
+      "dataResidency": "Données conservées dans la région de votre choix",
       "emailSignin": "E-mail et mot de passe",
       "socialSignin": "Google, Apple, Microsoft, Facebook",
       "sso": "Authentification unique (Okta et autres)",

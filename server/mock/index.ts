@@ -43,6 +43,7 @@ import * as themes from './routes/themes'
 import * as pageDesigns from './routes/pageDesigns'
 import * as formShare from './routes/formShare'
 import { formAccess } from './routes/formAccess'
+import { getDataRegion } from './routes/dataRegion'
 import * as formInvites from './routes/formInvites'
 import * as forms from './routes/forms'
 import { navigationCounts } from './routes/navigation'
@@ -443,6 +444,7 @@ const router = createRouter()
   .post('/settings/address/domain/check', address.checkDomain)
   .delete('/settings/address/domain', address.removeDomain)
   .get('/settings/appearance', settings.getAppearance)
+  .get('/settings/data-region', getDataRegion)
   .patch('/settings/appearance', settings.patchSection)
   .get('/settings/privacy', settings.getSection)
   .patch('/settings/privacy', settings.patchSection)

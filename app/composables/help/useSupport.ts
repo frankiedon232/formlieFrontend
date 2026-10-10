@@ -28,8 +28,8 @@ export function useSupport() {
     })
   }
 
-  /** The Enterprise enquiry (Settings → Plans, "Contact us"). */
-  function enquire() {
+  /** The Enterprise enquiry (Settings → Plans, "Contact us"; Privacy: a region, with what is needed filled in). */
+  function enquire(extra: { needs?: string; residency?: string } = {}) {
     const user = session.user.value
     browser.openForm('enterprise', t('billing.enquiry.title'), {
       company: tenant.profile.value?.name,
@@ -37,6 +37,7 @@ export function useSupport() {
       email: user?.email,
       workspace: tenant.profile.value?.subdomain,
       plan: billing.overview.value?.subscription.plan,
+      ...extra,
     })
   }
   return { contact, enquire }

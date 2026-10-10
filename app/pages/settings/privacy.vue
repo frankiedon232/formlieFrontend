@@ -2,7 +2,7 @@
   Settings → Privacy and data (F14 M5): how long responses are kept (each form may set its own; what a
   shorter limit would remove now is shown, and saving asks first), the organisation's privacy notice and
   a consent line on every public form (with a live sample), and data requests (find, export, delete one
-  person's responses). Where data is stored comes with the plans (F23).
+  person's responses), and where data is stored (the region; another one on Enterprise, leftovers L7).
 -->
 <script setup lang="ts">
 import { RETENTION_DAYS, type RetentionPreview } from '#shared/types/privacy'
@@ -87,7 +87,7 @@ const consentLine = computed(() => draft.value?.consent_text || t('renderer.cons
       </SettingsBlock>
 
       <SettingsBlock :title="t('settings.privacy.residency')" :description="t('settings.privacy.residencyHint')" icon="i-lucide-server">
-        <p class="flex items-center gap-1.5 text-xs text-muted"><UIcon name="i-lucide-info" class="size-3.5 shrink-0" />{{ t('settings.privacy.residencyLater') }}</p>
+        <SettingsPrivacyResidency />
       </SettingsBlock>
     </div>
   </SettingsPage>

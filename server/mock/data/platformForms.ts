@@ -5,6 +5,7 @@
  * platform admin. Created once, then kept as they are (the Formalie team edits them like any form).
  */
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
+import type { FormField } from '#shared/utils/forms/build'
 import { PLATFORM_FORMS } from '#shared/utils/platform/forms'
 import { HELP_CATEGORIES } from '#shared/types/help'
 import { formsOf, saveForms, type StoredForm } from './formStore'
@@ -68,8 +69,8 @@ function enterpriseSchema(): FormSchemaV1 {
             f('dropdown', 'size', 'Company size', { required: true, options: [opt('1-50', '1 to 50 people'), opt('51-200', '51 to 200 people'), opt('201-1000', '201 to 1,000 people'), opt('1001-5000', '1,001 to 5,000 people'), opt('5000+', 'More than 5,000 people')] }),
             f('dropdown', 'volume', 'Responses a month', { required: true, options: [opt('under_100k', 'Under 100,000'), opt('100k_1m', '100,000 to 1 million'), opt('1m_10m', '1 to 10 million'), opt('over_10m', 'More than 10 million')] }),
           ),
-          row(f('checkbox', 'needs', 'What do you need?', { options: [opt('sso', 'Single sign-on'), opt('dedicated', 'Dedicated infrastructure'), opt('residency', 'Data in a specific region'), opt('sla', 'Uptime agreement (SLA)'), opt('security', 'Security and compliance review'), opt('invoice', 'Pay by invoice'), opt('onboarding', 'Onboarding and training'), opt('custom_limits', 'Custom limits')] })),
-          row(f('short_text', 'residency', 'Where should the data stay?', { help: 'A country or region, for example the European Union.' }), f('dropdown', 'start', 'When would you start?', { options: [opt('now', 'Right away'), opt('quarter', 'This quarter'), opt('later', 'Later this year')] })),
+          row(f('checkbox', 'needs', 'What do you need?', { props: { url_prefill: true }, options: [opt('sso', 'Single sign-on'), opt('dedicated', 'Dedicated infrastructure'), opt('residency', 'Data in a specific region'), opt('sla', 'Uptime agreement (SLA)'), opt('security', 'Security and compliance review'), opt('invoice', 'Pay by invoice'), opt('onboarding', 'Onboarding and training'), opt('custom_limits', 'Custom limits')] })),
+          row(f('short_text', 'residency', 'Where should the data stay?', { help: 'A country or region, for example the European Union.', props: { url_prefill: true } }), f('dropdown', 'start', 'When would you start?', { options: [opt('now', 'Right away'), opt('quarter', 'This quarter'), opt('later', 'Later this year')] })),
           row(f('long_text', 'message', 'Anything else we should know?', { required: true, help: 'Your use, formats, integrations or security requirements.', props: { rows: 5 } })),
           row(hidden('workspace', 'Workspace'), hidden('plan', 'Current plan')),
         ],
@@ -96,11 +97,20 @@ export function ensurePlatformForms() {
     const existing = store.forms.find(form => form.public_key === item.key)
     // Made before "send more than once" existed: support and enquiries always take several from one person
     if (existing) {
-      for (const schema of [existing.schema, existing.published_schema])
+      for (const schema of [existing.schema, existing.published_schema]) {
         if (schema && !schema.settings?.repeat) {
           schema.settings = { ...schema.settings, repeat: true }
           added = true
         }
+        // Settings → Privacy asks for a region with these filled in (leftovers L7)
+        for (const page of schema?.pages ?? [])
+          for (const row of page.rows)
+            for (const field of row.fields as FormField[])
+              if (item.key === PLATFORM_FORMS.enterprise && (field.key === 'needs' || field.key === 'residency') && !field.props?.url_prefill) {
+                field.props = { ...field.props, url_prefill: true }
+                added = true
+              }
+      }
       continue
     }
     const schema = item.schema()

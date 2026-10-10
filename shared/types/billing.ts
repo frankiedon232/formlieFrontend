@@ -25,6 +25,8 @@ export interface PlanLimits {
   custom_email: boolean
   /** Custom CSS on forms (leftovers L5). */
   custom_css: boolean
+  /** Data kept in a region the workspace chooses (leftovers L7). */
+  data_residency: boolean
   ai_credits: number | null
   languages: number
 }
@@ -54,6 +56,7 @@ export const PLAN_FEATURES = [
   'customDomain',
   'customEmail',
   'customCss',
+  'dataResidency',
   'prioritySupport',
   'dedicatedSupport',
   'securityReview',

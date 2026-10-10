@@ -7704,8 +7704,32 @@
       "typeEmail": "Digite {email} para confirmar",
       "deleted": "{n} resposta excluída | {n} respostas excluídas",
       "residency": "Onde os dados ficam armazenados",
-      "residencyHint": "A região em que suas respostas e arquivos são mantidos.",
-      "residencyLater": "Escolhida com o seu plano. Os planos chegam com o console da plataforma."
+      "residencyHint": "A região em que os dados do seu espaço de trabalho são mantidos e processados.",
+      "region": {
+        "default": "Região padrão do Formalie",
+        "eu": "União Europeia",
+        "uk": "Reino Unido",
+        "us": "Estados Unidos",
+        "ca": "Canadá",
+        "au": "Austrália",
+        "in": "Índia",
+        "sg": "Singapura",
+        "br": "Brasil"
+      },
+      "regionKept": "Tudo o que está abaixo é armazenado e processado nesta região.",
+      "kept": {
+        "responses": "Respostas",
+        "files": "Arquivos enviados",
+        "backups": "Backups",
+        "emails": "E-mails de resposta",
+        "logs": "Logs"
+      },
+      "regionsOffered": "Regiões que o Formalie pode configurar",
+      "regionWanted": "Região de que você precisa",
+      "regionPick": "Escolher uma região",
+      "regionAsk": "Solicitar esta região",
+      "regionMove": "A mudança para outra região é planejada com você e feita pela equipe do Formalie, com seus dados copiados e conferidos antes.",
+      "regionFailed": "Não foi possível carregar onde seus dados estão armazenados"
     },
     "formDefaults": {
       "note": "Novos formulários começam com estas opções. Os formulários que você já tem mantêm as suas, e cada formulário ainda pode alterá-las.",
@@ -9343,6 +9367,7 @@
       "customDomain": "Domínio próprio",
       "customEmail": "Endereço de envio e servidor de e-mail próprios",
       "customCss": "CSS personalizado nos formulários",
+      "dataResidency": "Dados mantidos na região que você escolher",
       "emailSignin": "E-mail e senha",
       "socialSignin": "Google, Apple, Microsoft, Facebook",
       "sso": "Login único (Okta e outros)",

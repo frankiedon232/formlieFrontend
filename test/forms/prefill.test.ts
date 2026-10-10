@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { withUrlPrefill } from '../../shared/utils/forms/prefill'
 import type { FormSchemaV1 } from '../../shared/utils/forms/schema'
+import { blankSchema, type FormField } from '../../shared/utils/forms/build'
 
 const schema = {
   schema_version: 1,
@@ -44,5 +45,16 @@ describe('starting values from the address', () => {
 
   it('leaves the schema alone without values', () => {
     expect(withUrlPrefill(schema, {})).toBe(schema)
+  })
+})
+
+describe('prefill several choices (leftovers L7)', () => {
+  it('takes comma-separated options and keeps only real ones', () => {
+    const schema = blankSchema()
+    const needs: FormField = { id: 'n', key: 'needs', type: 'checkbox', label: 'Needs', props: { url_prefill: true }, options: [{ value: 'sso', label: 'SSO' }, { value: 'residency', label: 'Region' }] }
+    schema.pages[0]!.rows = [{ id: 'r', fields: [needs] }]
+    const out = withUrlPrefill(schema, { needs: 'residency, nonsense,residency' })
+    expect((out.pages[0]!.rows[0]!.fields[0] as FormField).default).toEqual(['residency'])
+    expect(withUrlPrefill(schema, { needs: 'nonsense' })).toBe(schema)
   })
 })

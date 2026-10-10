@@ -7704,8 +7704,32 @@
       "typeEmail": "Digita {email} per confermare",
       "deleted": "{n} risposta eliminata | {n} risposte eliminate",
       "residency": "Dove sono archiviati i dati",
-      "residencyHint": "La regione in cui sono conservati risposte e file.",
-      "residencyLater": "Si sceglie con il tuo piano. I piani arrivano con la console della piattaforma."
+      "residencyHint": "La regione in cui vengono conservati ed elaborati i dati del tuo spazio di lavoro.",
+      "region": {
+        "default": "Regione predefinita di Formalie",
+        "eu": "Unione europea",
+        "uk": "Regno Unito",
+        "us": "Stati Uniti",
+        "ca": "Canada",
+        "au": "Australia",
+        "in": "India",
+        "sg": "Singapore",
+        "br": "Brasile"
+      },
+      "regionKept": "Tutto ciò che segue è archiviato ed elaborato in questa regione.",
+      "kept": {
+        "responses": "Risposte",
+        "files": "File caricati",
+        "backups": "Backup",
+        "emails": "Email di risposta",
+        "logs": "Log"
+      },
+      "regionsOffered": "Regioni che Formalie può configurare",
+      "regionWanted": "Regione di cui hai bisogno",
+      "regionPick": "Scegli una regione",
+      "regionAsk": "Richiedi questa regione",
+      "regionMove": "Il trasferimento in un’altra regione viene pianificato con te ed eseguito dal team di Formalie, copiando e verificando prima i tuoi dati.",
+      "regionFailed": "Impossibile caricare dove sono archiviati i tuoi dati"
     },
     "formDefaults": {
       "note": "I nuovi moduli partono con queste impostazioni. I moduli che hai già mantengono le proprie, e ogni modulo può comunque cambiarle.",
@@ -9343,6 +9367,7 @@
       "customDomain": "Dominio personalizzato",
       "customEmail": "Indirizzo di invio e server di posta propri",
       "customCss": "CSS personalizzato nei moduli",
+      "dataResidency": "Dati conservati nella regione che scegli",
       "emailSignin": "Email e password",
       "socialSignin": "Google, Apple, Microsoft, Facebook",
       "sso": "Single sign-on (Okta e altri)",

@@ -7704,8 +7704,32 @@
       "typeEmail": "Type {email} to confirm",
       "deleted": "{n} response deleted | {n} responses deleted",
       "residency": "Where data is stored",
-      "residencyHint": "The region your responses and files are kept in.",
-      "residencyLater": "Chosen with your plan. Plans come with the platform console."
+      "residencyHint": "The region your workspace's data is kept and processed in.",
+      "region": {
+        "default": "Formalie's default region",
+        "eu": "European Union",
+        "uk": "United Kingdom",
+        "us": "United States",
+        "ca": "Canada",
+        "au": "Australia",
+        "in": "India",
+        "sg": "Singapore",
+        "br": "Brazil"
+      },
+      "regionKept": "Everything below is stored and processed in this region.",
+      "kept": {
+        "responses": "Responses",
+        "files": "Uploaded files",
+        "backups": "Backups",
+        "emails": "Response emails",
+        "logs": "Logs"
+      },
+      "regionsOffered": "Regions Formalie can set up",
+      "regionWanted": "Region you need",
+      "regionPick": "Choose a region",
+      "regionAsk": "Request this region",
+      "regionMove": "A move to another region is planned with you and done by the Formalie team, with your data copied over and checked first.",
+      "regionFailed": "Couldn't load where your data is stored"
     },
     "formDefaults": {
       "note": "New forms start with these. Forms you already have keep their own settings, and every form can still change them.",
@@ -9343,6 +9367,7 @@
       "customDomain": "Custom domain",
       "customEmail": "Own sending address and mail server",
       "customCss": "Custom CSS on forms",
+      "dataResidency": "Data kept in the region you choose",
       "emailSignin": "Email and password",
       "socialSignin": "Google, Apple, Microsoft, Facebook",
       "sso": "Single sign-on (Okta and others)",

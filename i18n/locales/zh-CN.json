@@ -7704,8 +7704,32 @@
       "typeEmail": "输入 {email} 以确认",
       "deleted": "已删除 {n} 条回复 | 已删除 {n} 条回复",
       "residency": "数据存储位置",
-      "residencyHint": "保存你的回复和文件的区域。",
-      "residencyLater": "随套餐选择。套餐将随平台控制台一同推出。"
+      "residencyHint": "您的工作区数据保存和处理所在的区域。",
+      "region": {
+        "default": "Formalie 默认区域",
+        "eu": "欧盟",
+        "uk": "英国",
+        "us": "美国",
+        "ca": "加拿大",
+        "au": "澳大利亚",
+        "in": "印度",
+        "sg": "新加坡",
+        "br": "巴西"
+      },
+      "regionKept": "以下所有内容都存储和处理在此区域。",
+      "kept": {
+        "responses": "回复",
+        "files": "上传的文件",
+        "backups": "备份",
+        "emails": "回复邮件",
+        "logs": "日志"
+      },
+      "regionsOffered": "Formalie 可设置的区域",
+      "regionWanted": "您需要的区域",
+      "regionPick": "选择区域",
+      "regionAsk": "申请此区域",
+      "regionMove": "迁移到其他区域会与您一起规划，并由 Formalie 团队完成，先复制并核对您的数据。",
+      "regionFailed": "无法加载您的数据存储位置"
     },
     "formDefaults": {
       "note": "新表单将以这些设置开始。已有的表单保留自己的设置,每个表单仍可修改。",
@@ -9343,6 +9367,7 @@
       "customDomain": "自定义域名",
       "customEmail": "自有发件地址和邮件服务器",
       "customCss": "表单自定义 CSS",
+      "dataResidency": "数据保存在您选择的区域",
       "emailSignin": "邮箱和密码",
       "socialSignin": "Google、Apple、Microsoft、Facebook",
       "sso": "单点登录（Okta 等）",

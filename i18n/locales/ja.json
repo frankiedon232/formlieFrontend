@@ -7704,8 +7704,32 @@
       "typeEmail": "確認のため {email} を入力してください",
       "deleted": "{n}件の回答を削除しました | {n}件の回答を削除しました",
       "residency": "データの保管場所",
-      "residencyHint": "回答とファイルが保管されるリージョンです。",
-      "residencyLater": "プランと一緒に選択します。プランはプラットフォームコンソールとともに提供されます。"
+      "residencyHint": "ワークスペースのデータが保管・処理されるリージョンです。",
+      "region": {
+        "default": "Formalie の既定のリージョン",
+        "eu": "欧州連合",
+        "uk": "英国",
+        "us": "米国",
+        "ca": "カナダ",
+        "au": "オーストラリア",
+        "in": "インド",
+        "sg": "シンガポール",
+        "br": "ブラジル"
+      },
+      "regionKept": "以下はすべて、このリージョンで保存・処理されます。",
+      "kept": {
+        "responses": "回答",
+        "files": "アップロードされたファイル",
+        "backups": "バックアップ",
+        "emails": "回答メール",
+        "logs": "ログ"
+      },
+      "regionsOffered": "Formalie が設定できるリージョン",
+      "regionWanted": "必要なリージョン",
+      "regionPick": "リージョンを選択",
+      "regionAsk": "このリージョンをリクエスト",
+      "regionMove": "別のリージョンへの移行は、お客様と計画し、Formalie チームが実施します。事前にデータをコピーして確認します。",
+      "regionFailed": "データの保管場所を読み込めませんでした"
     },
     "formDefaults": {
       "note": "新しいフォームはこの設定で開始します。既存のフォームは各自の設定を維持し、各フォームで変更もできます。",
@@ -9343,6 +9367,7 @@
       "customDomain": "独自ドメイン",
       "customEmail": "独自の送信元アドレスとメールサーバー",
       "customCss": "フォームのカスタム CSS",
+      "dataResidency": "選択したリージョンに保管されるデータ",
       "emailSignin": "メールとパスワード",
       "socialSignin": "Google、Apple、Microsoft、Facebook",
       "sso": "シングルサインオン (Okta など)",

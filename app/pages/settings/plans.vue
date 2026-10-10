@@ -67,7 +67,7 @@ function choose(plan: PlanId) {
           :current-period="sub?.current_period_end ? sub.period : null"
           :scheduled="sub?.scheduled?.plan ?? (sub?.cancel_at_period_end ? 'starter' : null)"
           @choose="choose"
-          @contact="enquire"
+          @contact="enquire()"
         />
       </div>
 
@@ -82,7 +82,7 @@ function choose(plan: PlanId) {
           <span class="text-sm font-semibold text-highlighted">{{ t('billing.enterpriseTitle') }}</span>
           <span class="text-xs text-muted">{{ t('billing.enterpriseDesc') }}</span>
         </span>
-        <UButton :label="t('billing.contactUs')" icon="i-lucide-messages-square" color="neutral" @click="enquire" />
+        <UButton :label="t('billing.contactUs')" icon="i-lucide-messages-square" color="neutral" @click="enquire()" />
       </div>
     </div>
 
