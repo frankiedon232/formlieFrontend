@@ -1158,8 +1158,7 @@
       "ai_disabled": "KI-Assistent ausgeschaltet",
       "ai_settings_updated": "KI-Einstellungen geändert",
       "ai_request_deleted": "KI-Anfrage aus dem Verlauf gelöscht",
-      "ai_applied": "KI-Entwurf übernommen",
-      "forms_custom_css_changed": "Eigenes CSS geändert"
+      "ai_applied": "KI-Entwurf übernommen"
     },
     "detail": {
       "who": "Wer",
@@ -3199,29 +3198,6 @@
       },
       "shadow": "Schatten",
       "border": "Rahmen"
-    },
-    "css": {
-      "label": "Eigenes CSS",
-      "hint": "Ihre eigenen Stile für dieses Formular, zusätzlich zum Design oben.",
-      "count": "{n} von {max} Zeichen",
-      "clean": "Nichts ausgelassen",
-      "leftOut": "{n} Teil ausgelassen | {n} Teile ausgelassen",
-      "issue": {
-        "too_long": "Zu lang: kürzen Sie es, um es zu speichern",
-        "too_many": "Mehr als 500 Regeln: der Rest wird ausgelassen",
-        "at_rule": "Nur {'@'}media, {'@'}supports und {'@'}container sind erlaubt",
-        "loads": "Nichts darf von anderswo geladen werden (url, {'@'}import, Bilder, Schriften)",
-        "script": "Skriptähnliche Werte sind nicht erlaubt",
-        "escape": "Backslash-Escapes sind nicht erlaubt",
-        "html": "Das Zeichen < ist nicht erlaubt",
-        "fixed": "Feste Positionierung ist nicht erlaubt",
-        "syntax": "Kein gültiges CSS"
-      },
-      "guideTitle": "So funktioniert eigenes CSS",
-      "guideScope": "Regeln wirken nur auf den Kasten dieses Formulars. Die Seite darum, mit der Leiste Ihrer Organisation und der Formalie-Fußzeile, bleibt unverändert.",
-      "guideHooks": "Sprechen Sie Überschriften, Beschriftungen und Eingabefelder wie gewohnt an, eine Frage mit [data-field=\"sein Schlüssel\"] oder eine Art von Frage mit [data-field-type=\"email\"].",
-      "guideBlocked": "Aus Sicherheitsgründen wird nichts von anderen Websites geladen, und Skripte, Escapes und feste Positionierung werden ausgelassen.",
-      "guidePlan": "In Tarifen mit eigenem CSS. In anderen Tarifen wird es gespeichert, aber nicht angezeigt."
     }
   },
   "themes": {
@@ -9366,7 +9342,6 @@
       "subdomain": "Formalie-Subdomain",
       "customDomain": "Eigene Domain",
       "customEmail": "Eigene Absenderadresse und eigener Mailserver",
-      "customCss": "Eigenes CSS für Formulare",
       "dataResidency": "Daten in der Region Ihrer Wahl",
       "emailSignin": "E-Mail und Passwort",
       "socialSignin": "Google, Apple, Microsoft, Facebook",

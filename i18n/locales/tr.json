@@ -1158,8 +1158,7 @@
       "ai_disabled": "Yapay zeka asistanı kapatıldı",
       "ai_settings_updated": "Yapay zeka ayarları değişti",
       "ai_request_deleted": "Yapay zeka isteği geçmişten silindi",
-      "ai_applied": "Yapay zekâ taslağı uygulandı",
-      "forms_custom_css_changed": "Özel CSS değiştirildi"
+      "ai_applied": "Yapay zekâ taslağı uygulandı"
     },
     "detail": {
       "who": "Kim",
@@ -3199,29 +3198,6 @@
       },
       "shadow": "Gölge",
       "border": "Kenarlık"
-    },
-    "css": {
-      "label": "Özel CSS",
-      "hint": "Bu form için, yukarıdaki tasarımın üstüne kendi stilleriniz.",
-      "count": "{n} / {max} karakter",
-      "clean": "Dışarıda bırakılan yok",
-      "leftOut": "{n} bölüm dışarıda bırakıldı | {n} bölüm dışarıda bırakıldı",
-      "issue": {
-        "too_long": "Çok uzun: kaydetmek için kısaltın",
-        "too_many": "500'den fazla kural: geri kalanı dışarıda bırakılır",
-        "at_rule": "Yalnızca {'@'}media, {'@'}supports ve {'@'}container'a izin verilir",
-        "loads": "Başka yerden hiçbir şey yüklenemez (url, {'@'}import, görseller, yazı tipleri)",
-        "script": "Betik benzeri değerlere izin verilmez",
-        "escape": "Ters eğik çizgi kaçışlarına izin verilmez",
-        "html": "< karakterine izin verilmez",
-        "fixed": "Sabit konumlandırmaya izin verilmez",
-        "syntax": "Geçerli bir CSS değil"
-      },
-      "guideTitle": "Özel CSS nasıl çalışır",
-      "guideScope": "Kurallar yalnızca bu formun kutusuna ulaşır. Çevresindeki sayfa, kuruluşunuzun çubuğu ve Formalie altbilgisiyle birlikte olduğu gibi kalır.",
-      "guideHooks": "Başlıkları, etiketleri ve girişleri her zamanki gibi hedefleyin; tek bir soruyu [data-field=\"anahtarı\"] ile, bir soru türünü [data-field-type=\"email\"] ile.",
-      "guideBlocked": "Güvenlik için başka sitelerden hiçbir şey yüklenmez; betikler, kaçışlar ve sabit konumlandırma dışarıda bırakılır.",
-      "guidePlan": "Özel CSS içeren planlarda. Diğer planlarda saklanır ama gösterilmez."
     }
   },
   "themes": {
@@ -9366,7 +9342,6 @@
       "subdomain": "Formalie alt alan adı",
       "customDomain": "Özel alan adı",
       "customEmail": "Kendi gönderen adresi ve posta sunucusu",
-      "customCss": "Formlarda özel CSS",
       "dataResidency": "Seçtiğiniz bölgede tutulan veriler",
       "emailSignin": "E-posta ve şifre",
       "socialSignin": "Google, Apple, Microsoft, Facebook",

@@ -1158,8 +1158,7 @@
       "ai_disabled": "AI 어시스턴트를 껐습니다",
       "ai_settings_updated": "AI 설정이 변경되었습니다",
       "ai_request_deleted": "AI 요청을 기록에서 삭제했습니다",
-      "ai_applied": "AI 초안이 적용되었습니다",
-      "forms_custom_css_changed": "사용자 지정 CSS 변경됨"
+      "ai_applied": "AI 초안이 적용되었습니다"
     },
     "detail": {
       "who": "누가",
@@ -3199,29 +3198,6 @@
       },
       "shadow": "그림자",
       "border": "테두리"
-    },
-    "css": {
-      "label": "사용자 지정 CSS",
-      "hint": "위 디자인 위에 얹는, 이 양식만의 스타일입니다.",
-      "count": "{n} / {max}자",
-      "clean": "제외된 항목 없음",
-      "leftOut": "{n}개 부분 제외됨 | {n}개 부분 제외됨",
-      "issue": {
-        "too_long": "너무 깁니다. 저장하려면 줄이세요",
-        "too_many": "규칙이 500개를 넘습니다. 나머지는 제외됩니다",
-        "at_rule": "{'@'}media, {'@'}supports, {'@'}container만 허용됩니다",
-        "loads": "다른 곳에서 불러올 수 없습니다 (url, {'@'}import, 이미지, 글꼴)",
-        "script": "스크립트 같은 값은 허용되지 않습니다",
-        "escape": "백슬래시 이스케이프는 허용되지 않습니다",
-        "html": "< 문자는 허용되지 않습니다",
-        "fixed": "고정 위치 지정은 허용되지 않습니다",
-        "syntax": "올바른 CSS가 아닙니다"
-      },
-      "guideTitle": "사용자 지정 CSS 작동 방식",
-      "guideScope": "규칙은 이 양식의 상자에만 적용됩니다. 조직의 막대와 Formalie 바닥글이 있는 주변 페이지는 그대로 유지됩니다.",
-      "guideHooks": "제목, 레이블, 입력란은 평소처럼 지정하세요. 질문 하나는 [data-field=\"해당 키\"], 질문 유형은 [data-field-type=\"email\"]로 지정합니다.",
-      "guideBlocked": "안전을 위해 다른 사이트에서는 아무것도 불러오지 않으며, 스크립트, 이스케이프, 고정 위치 지정은 제외됩니다.",
-      "guidePlan": "사용자 지정 CSS를 포함한 요금제에서 사용할 수 있습니다. 다른 요금제에서는 저장되지만 표시되지 않습니다."
     }
   },
   "themes": {
@@ -9366,7 +9342,6 @@
       "subdomain": "Formalie 서브도메인",
       "customDomain": "사용자 지정 도메인",
       "customEmail": "자체 보내는 주소와 메일 서버",
-      "customCss": "양식의 사용자 지정 CSS",
       "dataResidency": "선택한 리전에 보관되는 데이터",
       "emailSignin": "이메일과 비밀번호",
       "socialSignin": "Google, Apple, Microsoft, Facebook",

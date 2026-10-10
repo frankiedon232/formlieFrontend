@@ -1158,8 +1158,7 @@
       "ai_disabled": "Asistente de IA desactivado",
       "ai_settings_updated": "Ajustes de IA cambiados",
       "ai_request_deleted": "Solicitud de IA eliminada del historial",
-      "ai_applied": "Borrador de IA aplicado",
-      "forms_custom_css_changed": "CSS personalizado modificado"
+      "ai_applied": "Borrador de IA aplicado"
     },
     "detail": {
       "who": "Quién",
@@ -3199,29 +3198,6 @@
       },
       "shadow": "Sombra",
       "border": "Borde"
-    },
-    "css": {
-      "label": "CSS personalizado",
-      "hint": "Tus propios estilos para este formulario, además del diseño de arriba.",
-      "count": "{n} de {max} caracteres",
-      "clean": "Nada omitido",
-      "leftOut": "{n} parte omitida | {n} partes omitidas",
-      "issue": {
-        "too_long": "Demasiado largo: acórtalo para guardarlo",
-        "too_many": "Más de 500 reglas: el resto se omite",
-        "at_rule": "Solo se permiten {'@'}media, {'@'}supports y {'@'}container",
-        "loads": "Nada puede cargarse desde otro sitio (url, {'@'}import, imágenes, fuentes)",
-        "script": "No se permiten valores tipo script",
-        "escape": "No se permiten escapes con barra invertida",
-        "html": "No se permite el carácter <",
-        "fixed": "No se permite el posicionamiento fijo",
-        "syntax": "CSS no válido"
-      },
-      "guideTitle": "Cómo funciona el CSS personalizado",
-      "guideScope": "Las reglas solo alcanzan el recuadro de este formulario. La página que lo rodea, con la barra de tu organización y el pie de Formalie, se queda como está.",
-      "guideHooks": "Apunta a títulos, etiquetas y campos como siempre, a una pregunta con [data-field=\"su clave\"] o a un tipo de pregunta con [data-field-type=\"email\"].",
-      "guideBlocked": "Por seguridad, nada se carga desde otros sitios, y los scripts, los escapes y el posicionamiento fijo se omiten.",
-      "guidePlan": "En los planes que incluyen CSS personalizado. En los demás se conserva pero no se muestra."
     }
   },
   "themes": {
@@ -9366,7 +9342,6 @@
       "subdomain": "Subdominio de Formalie",
       "customDomain": "Dominio propio",
       "customEmail": "Dirección de envío y servidor de correo propios",
-      "customCss": "CSS personalizado en formularios",
       "dataResidency": "Datos conservados en la región que elija",
       "emailSignin": "Correo y contraseña",
       "socialSignin": "Google, Apple, Microsoft, Facebook",

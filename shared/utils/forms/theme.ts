@@ -5,7 +5,6 @@
  * default (brand colour + logo from onboarding).
  */
 import { z } from 'zod'
-import { CUSTOM_CSS_MAX } from './custom-css'
 import { THEME_FONTS, fontStack } from './fonts'
 
 const hex = z.string().regex(/^#[0-9a-f]{6}$/i)
@@ -145,8 +144,6 @@ export const themeSchema = z.object({
     /** Top bar / side panel colour: the page's surface, dark, or the brand colour. */
     tone: z.enum(['light', 'dark', 'brand']),
   }),
-  /** Custom CSS as written (leftovers L5, plan feature): served only after sanitiseCss, fenced to the form box. */
-  custom_css: z.string().max(CUSTOM_CSS_MAX).nullable(),
 })
 export type FormTheme = z.infer<typeof themeSchema>
 
@@ -179,7 +176,6 @@ export function defaultTheme(branding: WorkspaceBranding = { logo_url: null, pri
     // Today's look: a heading with a line, a grey divider, plain text, slightly rounded pictures
     blocks: { section: 'plain', section_color: 'text', section_caps: false, divider: 'line', divider_weight: 'thin', paragraph: 'plain', image_radius: 'md', image_shadow: false, image_border: false },
     frame: { style: 'branded', show_website: true, show_facts: true, tone: 'light' },
-    custom_css: null,
   }
 }
 

@@ -8,7 +8,7 @@
  *   POST /public/forms/:key/uploads  a pre-signed link for one file of a file question (+ /:id/complete)
  */
 import { ensurePlatformForms } from '../data/platformForms'
-import { hasFeature, responsesAllowed } from '../core/plan'
+import { responsesAllowed } from '../core/plan'
 import { reviewOf } from '../data/responseReview'
 import { createHmac, randomBytes, timingSafeEqual } from 'node:crypto'
 import { emitResponse } from '../data/integrationStore'
@@ -199,10 +199,7 @@ export function publicFormView(event: Parameters<typeof tenantOf>[0], key: strin
   const locked = state === 'open' && !visitor
   const identity = visitorIdentity(visitor)
   const published = state === 'open' ? publishedSchema(tenant, form) : null
-  // Custom CSS only while the plan includes it (leftovers L5); it is kept, and comes back after an upgrade
-  const theme = published ? resolveTheme(published.theme, branding(tenant)) : null
-  if (theme && !hasFeature(tenant, 'custom_css')) theme.custom_css = null
-  const schema = published && theme ? { ...structuredClone(published), theme: theme as unknown as Record<string, unknown> } : null
+  const schema = published ? { ...structuredClone(published), theme: resolveTheme(published.theme, branding(tenant)) as unknown as Record<string, unknown> } : null
   // Long lists (F15 M3): their options stay on the server; the page asks for matches as people type
   // Large lists (F15 M5) also say which choices above have options under them
   if (schema)

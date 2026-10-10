@@ -1158,8 +1158,7 @@
       "ai_disabled": "Assistant IA désactivé",
       "ai_settings_updated": "Paramètres IA modifiés",
       "ai_request_deleted": "Demande IA supprimée de l’historique",
-      "ai_applied": "Brouillon IA appliqué",
-      "forms_custom_css_changed": "CSS personnalisé modifié"
+      "ai_applied": "Brouillon IA appliqué"
     },
     "detail": {
       "who": "Qui",
@@ -3199,29 +3198,6 @@
       },
       "shadow": "Ombre",
       "border": "Bordure"
-    },
-    "css": {
-      "label": "CSS personnalisé",
-      "hint": "Vos propres styles pour ce formulaire, en plus du design ci-dessus.",
-      "count": "{n} sur {max} caractères",
-      "clean": "Rien d’écarté",
-      "leftOut": "{n} partie écartée | {n} parties écartées",
-      "issue": {
-        "too_long": "Trop long : raccourcissez-le pour l’enregistrer",
-        "too_many": "Plus de 500 règles : le reste est écarté",
-        "at_rule": "Seuls {'@'}media, {'@'}supports et {'@'}container sont autorisés",
-        "loads": "Rien ne peut être chargé depuis ailleurs (url, {'@'}import, images, polices)",
-        "script": "Les valeurs de type script ne sont pas autorisées",
-        "escape": "Les échappements par barre oblique inverse ne sont pas autorisés",
-        "html": "Le caractère < n’est pas autorisé",
-        "fixed": "Le positionnement fixe n’est pas autorisé",
-        "syntax": "CSS non valide"
-      },
-      "guideTitle": "Comment fonctionne le CSS personnalisé",
-      "guideScope": "Les règles n’atteignent que le cadre de ce formulaire. La page autour, avec la barre de votre organisation et le pied de page Formalie, reste inchangée.",
-      "guideHooks": "Ciblez les titres, libellés et champs comme d’habitude, une question avec [data-field=\"sa clé\"] ou un type de question avec [data-field-type=\"email\"].",
-      "guideBlocked": "Par sécurité, rien n’est chargé depuis d’autres sites, et les scripts, échappements et positionnements fixes sont écartés.",
-      "guidePlan": "Avec les offres qui incluent le CSS personnalisé. Avec les autres, il est conservé mais non affiché."
     }
   },
   "themes": {
@@ -9366,7 +9342,6 @@
       "subdomain": "Sous-domaine Formalie",
       "customDomain": "Domaine personnalisé",
       "customEmail": "Adresse d’envoi et serveur de messagerie personnels",
-      "customCss": "CSS personnalisé sur les formulaires",
       "dataResidency": "Données conservées dans la région de votre choix",
       "emailSignin": "E-mail et mot de passe",
       "socialSignin": "Google, Apple, Microsoft, Facebook",

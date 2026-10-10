@@ -6,7 +6,7 @@
 import type { BillingPeriod, Plan, PlanFeature, PlanId, PlanLimits } from '#shared/types/billing'
 
 const EVERYONE: PlanFeature[] = ['analytics', 'templates', 'lists', 'themes', 'explorer', 'query', 'destinations', 'api', 'webhooks', 'apiDocs', 'ai', 'branding', 'subdomain', 'languages', 'visits', 'versions', 'folders', 'fillLater']
-const PAID: PlanFeature[] = [...EVERYONE, 'socialSignin', 'sso', 'customDomain', 'customEmail', 'customCss']
+const PAID: PlanFeature[] = [...EVERYONE, 'socialSignin', 'sso', 'customDomain', 'customEmail']
 
 export const PERIOD_MONTHS: Record<BillingPeriod, number> = { monthly: 1, quarterly: 3, annually: 12 }
 export const PERIOD_DISCOUNT: Record<BillingPeriod, number> = { monthly: 0, quarterly: 0.1, annually: 0.2 }
@@ -23,14 +23,14 @@ export const PLANS: Plan[] = [
     id: 'starter',
     prices: { monthly: 0, quarterly: 0, annually: 0 },
     currency: 'USD',
-    limits: { forms: 5, responses_per_form: 10_000, databases: ['mysql'], social_signin: false, sso: false, custom_domains: 0, custom_email: false, custom_css: false, data_residency: false, ai_credits: 100, languages: 20 },
+    limits: { forms: 5, responses_per_form: 10_000, databases: ['mysql'], social_signin: false, sso: false, custom_domains: 0, custom_email: false, data_residency: false, ai_credits: 100, languages: 20 },
     features: EVERYONE,
   },
   {
     id: 'professional',
     prices: pricesFrom(19),
     currency: 'USD',
-    limits: { forms: 20, responses_per_form: 200_000, databases: ['mysql', 'postgresql', 'mariadb'], social_signin: true, sso: true, custom_domains: 1, custom_email: true, custom_css: true, data_residency: false, ai_credits: 500, languages: 20 },
+    limits: { forms: 20, responses_per_form: 200_000, databases: ['mysql', 'postgresql', 'mariadb'], social_signin: true, sso: true, custom_domains: 1, custom_email: true, data_residency: false, ai_credits: 500, languages: 20 },
     features: [...PAID, 'prioritySupport'],
     recommended: true,
   },
@@ -38,14 +38,14 @@ export const PLANS: Plan[] = [
     id: 'business',
     prices: pricesFrom(49),
     currency: 'USD',
-    limits: { forms: null, responses_per_form: null, databases: ALL_DATABASES, social_signin: true, sso: true, custom_domains: null, custom_email: true, custom_css: true, data_residency: false, ai_credits: 2000, languages: 20 },
+    limits: { forms: null, responses_per_form: null, databases: ALL_DATABASES, social_signin: true, sso: true, custom_domains: null, custom_email: true, data_residency: false, ai_credits: 2000, languages: 20 },
     features: [...PAID, 'prioritySupport'],
   },
   {
     id: 'enterprise',
     prices: null,
     currency: 'USD',
-    limits: { forms: null, responses_per_form: null, databases: ALL_DATABASES, social_signin: true, sso: true, custom_domains: null, custom_email: true, custom_css: true, data_residency: true, ai_credits: null, languages: 20 },
+    limits: { forms: null, responses_per_form: null, databases: ALL_DATABASES, social_signin: true, sso: true, custom_domains: null, custom_email: true, data_residency: true, ai_credits: null, languages: 20 },
     features: [...PAID, 'prioritySupport', 'dedicatedSupport', 'securityReview', 'dataResidency'],
   },
 ]

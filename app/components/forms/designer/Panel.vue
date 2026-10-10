@@ -2,7 +2,7 @@
   Designer controls (FRONTEND-SPEC §7), every part a collapsible group (owner 2026-10-04: the
   themes collapse like the rest, a little space under each open group): Starting points · Your
   themes · Page designs (Resources → Landing pages) · Page (the frame around the form on its link) · Layout · Background · Form container · Typography · Colours · Inputs · Buttons · Sections and blocks · Header ·
-  Footer · Thank-you page · Custom CSS (forms only, leftovers L5). "Reset" goes back to the workspace default.
+  Footer · Thank-you page. "Reset" goes back to the workspace default.
 -->
 <script setup lang="ts">
 import type { AccordionItem } from '@nuxt/ui'
@@ -30,8 +30,6 @@ const groups = computed<AccordionItem[]>(() => [
   { value: 'header', label: t('designer.group.header'), icon: 'i-lucide-panel-top', slot: 'header' },
   { value: 'footer', label: t('designer.group.footer'), icon: 'i-lucide-panel-bottom', slot: 'footer' },
   { value: 'thank_you', label: t('designer.group.thankYou'), icon: 'i-lucide-party-popper', slot: 'thank_you' },
-  // Custom CSS belongs to the form (leftovers L5): not in the theme editor
-  ...(props.standalone ? [] : [{ value: 'css', label: t('designer.css.label'), icon: 'i-lucide-braces', slot: 'css' }]),
 ])
 const open = ref<string[]>(['starting'])
 
@@ -66,7 +64,6 @@ async function reset() {
       <template #header><FormsDesignerPanelContent group="header" /></template>
       <template #footer><FormsDesignerPanelContent group="footer" /></template>
       <template #thank_you><FormsDesignerPanelContent group="thank_you" /></template>
-      <template #css><FormsDesignerCustomCss /></template>
     </UAccordion>
   </div>
 </template>

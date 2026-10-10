@@ -3,8 +3,7 @@
   (card · plain · split with an image or a coloured side panel · full width), header (cover
   image, optional colour / gradient band, logo, title, subtitle), the form, and a footer (plain
   text or a coloured bar). The theme is applied as CSS variables on this root only, Nuxt UI
-  controls inside pick them up; the portal around it never changes. Custom CSS (plan feature) is cleaned and
-  fenced to the form box.
+  controls inside pick them up; the portal around it never changes.
   Used by the designer preview, the builder preview and the public form (F10).
 -->
 <script setup lang="ts">
@@ -42,10 +41,6 @@ provideControlStyle(theme)
 provideBlockStyle(theme)
 
 const vars = computed(() => themeVars(theme.value))
-// Custom CSS (leftovers L5): only ever the cleaned version, fenced to the form box (<main data-form-css>); the
-// box paints nothing outside itself, so the page frame around it stays as Formalie draws it
-const customCss = computed(() => sanitiseCss(theme.value.custom_css).css)
-useHead({ style: [{ key: 'formalie-form-css', textContent: customCss }] })
 const WIDTH: Record<string, string> = { sm: 'max-w-xl', md: 'max-w-2xl', lg: 'max-w-3xl', xl: 'max-w-5xl' }
 const PAD: Record<string, string> = { sm: 'p-4 sm:p-5', md: 'p-5 sm:p-8', lg: 'p-6 sm:p-12' }
 const RADIUS: Record<string, string> = { none: 'rounded-none', sm: 'rounded-sm', md: 'rounded-md', lg: 'rounded-xl', xl: 'rounded-3xl' }
@@ -110,7 +105,7 @@ const containerClass = computed(() => [
       <FormsRendererLanguageSwitch bar :model-value="language!" :languages="languages!" @update:model-value="emit('language', $event)" />
     </template>
     <div class="flex w-full flex-1 flex-col items-center" :class="layout === 'full' ? '' : 'px-3 py-6 sm:px-6 sm:py-10'">
-      <main :class="containerClass" data-form-css :style="{ background: layout === 'plain' ? 'transparent' : 'var(--form-container-bg)', ...(customCss ? { contain: 'paint' } : {}) }">
+      <main :class="containerClass" :style="{ background: layout === 'plain' ? 'transparent' : 'var(--form-container-bg)' }">
         <div :class="layout === 'split' ? 'grid @container md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]' : ''">
           <!-- Split layout: image or coloured panel beside the form (above it on narrow screens). -->
           <div

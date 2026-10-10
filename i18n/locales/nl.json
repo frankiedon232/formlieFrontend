@@ -1158,8 +1158,7 @@
       "ai_disabled": "AI-assistent uitgeschakeld",
       "ai_settings_updated": "AI-instellingen gewijzigd",
       "ai_request_deleted": "AI-verzoek verwijderd uit de geschiedenis",
-      "ai_applied": "AI-concept toegepast",
-      "forms_custom_css_changed": "Eigen CSS gewijzigd"
+      "ai_applied": "AI-concept toegepast"
     },
     "detail": {
       "who": "Wie",
@@ -3199,29 +3198,6 @@
       },
       "shadow": "Schaduw",
       "border": "Rand"
-    },
-    "css": {
-      "label": "Eigen CSS",
-      "hint": "Je eigen stijlen voor dit formulier, bovenop het ontwerp hierboven.",
-      "count": "{n} van {max} tekens",
-      "clean": "Niets weggelaten",
-      "leftOut": "{n} deel weggelaten | {n} delen weggelaten",
-      "issue": {
-        "too_long": "Te lang: kort het in om op te slaan",
-        "too_many": "Meer dan 500 regels: de rest wordt weggelaten",
-        "at_rule": "Alleen {'@'}media, {'@'}supports en {'@'}container zijn toegestaan",
-        "loads": "Er mag niets van elders worden geladen (url, {'@'}import, afbeeldingen, lettertypen)",
-        "script": "Scriptachtige waarden zijn niet toegestaan",
-        "escape": "Backslash-escapes zijn niet toegestaan",
-        "html": "Het teken < is niet toegestaan",
-        "fixed": "Vaste positionering is niet toegestaan",
-        "syntax": "Geen geldige CSS"
-      },
-      "guideTitle": "Hoe eigen CSS werkt",
-      "guideScope": "Regels bereiken alleen het vak van dit formulier. De pagina eromheen, met de balk van je organisatie en de Formalie-voettekst, blijft zoals die is.",
-      "guideHooks": "Richt je op koppen, labels en invoervelden zoals gebruikelijk, op één vraag met [data-field=\"zijn sleutel\"] of op een soort vraag met [data-field-type=\"email\"].",
-      "guideBlocked": "Om veiligheidsredenen wordt niets van andere sites geladen, en scripts, escapes en vaste positionering worden weggelaten.",
-      "guidePlan": "Bij abonnementen met eigen CSS. Bij andere abonnementen wordt het bewaard maar niet getoond."
     }
   },
   "themes": {
@@ -9366,7 +9342,6 @@
       "subdomain": "Formalie-subdomein",
       "customDomain": "Eigen domein",
       "customEmail": "Eigen afzenderadres en mailserver",
-      "customCss": "Eigen CSS op formulieren",
       "dataResidency": "Gegevens bewaard in de regio van je keuze",
       "emailSignin": "E-mail en wachtwoord",
       "socialSignin": "Google, Apple, Microsoft, Facebook",

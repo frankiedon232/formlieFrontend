@@ -1158,8 +1158,7 @@
       "ai_disabled": "已关闭 AI 助手",
       "ai_settings_updated": "AI 设置已更改",
       "ai_request_deleted": "已从历史记录中删除 AI 请求",
-      "ai_applied": "已应用 AI 草稿",
-      "forms_custom_css_changed": "自定义 CSS 已更改"
+      "ai_applied": "已应用 AI 草稿"
     },
     "detail": {
       "who": "谁",
@@ -3199,29 +3198,6 @@
       },
       "shadow": "阴影",
       "border": "边框"
-    },
-    "css": {
-      "label": "自定义 CSS",
-      "hint": "在上方设计之上，为此表单添加您自己的样式。",
-      "count": "{n} / {max} 个字符",
-      "clean": "没有被忽略的内容",
-      "leftOut": "{n} 个部分被忽略 | {n} 个部分被忽略",
-      "issue": {
-        "too_long": "太长：请缩短后再保存",
-        "too_many": "超过 500 条规则：其余部分被忽略",
-        "at_rule": "仅允许 {'@'}media、{'@'}supports 和 {'@'}container",
-        "loads": "不能从别处加载任何内容（url、{'@'}import、图片、字体）",
-        "script": "不允许类似脚本的值",
-        "escape": "不允许反斜杠转义",
-        "html": "不允许使用 < 字符",
-        "fixed": "不允许固定定位",
-        "syntax": "不是有效的 CSS"
-      },
-      "guideTitle": "自定义 CSS 的工作方式",
-      "guideScope": "规则只作用于此表单的框内。周围的页面，包括贵组织的栏和 Formalie 页脚，保持不变。",
-      "guideHooks": "可像往常一样选择标题、标签和输入框；用 [data-field=\"其键名\"] 选择某个问题，用 [data-field-type=\"email\"] 选择某类问题。",
-      "guideBlocked": "出于安全考虑，不会从其他网站加载任何内容，脚本、转义和固定定位会被忽略。",
-      "guidePlan": "适用于包含自定义 CSS 的套餐。其他套餐会保存但不显示。"
     }
   },
   "themes": {
@@ -9366,7 +9342,6 @@
       "subdomain": "Formalie 子域名",
       "customDomain": "自定义域名",
       "customEmail": "自有发件地址和邮件服务器",
-      "customCss": "表单自定义 CSS",
       "dataResidency": "数据保存在您选择的区域",
       "emailSignin": "邮箱和密码",
       "socialSignin": "Google、Apple、Microsoft、Facebook",

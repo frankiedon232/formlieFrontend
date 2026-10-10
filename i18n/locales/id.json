@@ -1158,8 +1158,7 @@
       "ai_disabled": "Asisten AI dimatikan",
       "ai_settings_updated": "Pengaturan AI diubah",
       "ai_request_deleted": "Permintaan AI dihapus dari riwayat",
-      "ai_applied": "Draf AI diterapkan",
-      "forms_custom_css_changed": "CSS khusus diubah"
+      "ai_applied": "Draf AI diterapkan"
     },
     "detail": {
       "who": "Siapa",
@@ -3199,29 +3198,6 @@
       },
       "shadow": "Bayangan",
       "border": "Batas"
-    },
-    "css": {
-      "label": "CSS khusus",
-      "hint": "Gaya Anda sendiri untuk formulir ini, di atas desain di atas.",
-      "count": "{n} dari {max} karakter",
-      "clean": "Tidak ada yang dilewati",
-      "leftOut": "{n} bagian dilewati | {n} bagian dilewati",
-      "issue": {
-        "too_long": "Terlalu panjang: persingkat untuk menyimpan",
-        "too_many": "Lebih dari 500 aturan: sisanya dilewati",
-        "at_rule": "Hanya {'@'}media, {'@'}supports, dan {'@'}container yang diizinkan",
-        "loads": "Tidak boleh memuat apa pun dari tempat lain (url, {'@'}import, gambar, font)",
-        "script": "Nilai mirip skrip tidak diizinkan",
-        "escape": "Escape garis miring terbalik tidak diizinkan",
-        "html": "Karakter < tidak diizinkan",
-        "fixed": "Pemosisian tetap tidak diizinkan",
-        "syntax": "CSS tidak valid"
-      },
-      "guideTitle": "Cara kerja CSS khusus",
-      "guideScope": "Aturan hanya menjangkau kotak formulir ini. Halaman di sekitarnya, dengan bilah organisasi Anda dan footer Formalie, tetap seperti semula.",
-      "guideHooks": "Targetkan judul, label, dan isian seperti biasa, satu pertanyaan dengan [data-field=\"kuncinya\"] atau satu jenis pertanyaan dengan [data-field-type=\"email\"].",
-      "guideBlocked": "Demi keamanan, tidak ada yang dimuat dari situs lain, dan skrip, escape, serta pemosisian tetap dilewati.",
-      "guidePlan": "Pada paket yang menyertakan CSS khusus. Pada paket lain, CSS disimpan tetapi tidak ditampilkan."
     }
   },
   "themes": {
@@ -9366,7 +9342,6 @@
       "subdomain": "Subdomain Formalie",
       "customDomain": "Domain khusus",
       "customEmail": "Alamat pengirim dan server email sendiri",
-      "customCss": "CSS khusus pada formulir",
       "dataResidency": "Data disimpan di wilayah pilihan Anda",
       "emailSignin": "Email dan kata sandi",
       "socialSignin": "Google, Apple, Microsoft, Facebook",

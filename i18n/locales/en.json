@@ -1158,8 +1158,7 @@
       "ai_disabled": "AI assistant switched off",
       "ai_settings_updated": "AI settings changed",
       "ai_request_deleted": "AI request deleted from the history",
-      "ai_applied": "AI draft applied",
-      "forms_custom_css_changed": "Custom CSS changed"
+      "ai_applied": "AI draft applied"
     },
     "detail": {
       "who": "Who",
@@ -3199,29 +3198,6 @@
       },
       "shadow": "Shadow",
       "border": "Border"
-    },
-    "css": {
-      "label": "Custom CSS",
-      "hint": "Your own styles for this form, on top of the design above.",
-      "count": "{n} of {max} characters",
-      "clean": "Nothing left out",
-      "leftOut": "{n} part left out | {n} parts left out",
-      "issue": {
-        "too_long": "Too long: shorten it to save it",
-        "too_many": "More than 500 rules: the rest is left out",
-        "at_rule": "Only {'@'}media, {'@'}supports and {'@'}container are allowed",
-        "loads": "Nothing may load from elsewhere (url, {'@'}import, images, fonts)",
-        "script": "Script-like values are not allowed",
-        "escape": "Backslash escapes are not allowed",
-        "html": "The < character is not allowed",
-        "fixed": "Fixed positioning is not allowed",
-        "syntax": "Not valid CSS"
-      },
-      "guideTitle": "How custom CSS works",
-      "guideScope": "Rules only reach this form's box. The page around it, with your organisation's bar and the Formalie footer, stays as it is.",
-      "guideHooks": "Target headings, labels and inputs as usual, one question with [data-field=\"its key\"] or a kind of question with [data-field-type=\"email\"].",
-      "guideBlocked": "For safety, nothing loads from other sites, and scripts, escapes and fixed positioning are left out.",
-      "guidePlan": "On plans that include custom CSS. On other plans it is kept but not shown."
     }
   },
   "themes": {
@@ -9366,7 +9342,6 @@
       "subdomain": "Formalie subdomain",
       "customDomain": "Custom domain",
       "customEmail": "Own sending address and mail server",
-      "customCss": "Custom CSS on forms",
       "dataResidency": "Data kept in the region you choose",
       "emailSignin": "Email and password",
       "socialSignin": "Google, Apple, Microsoft, Facebook",

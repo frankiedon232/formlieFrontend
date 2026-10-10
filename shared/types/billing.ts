@@ -23,8 +23,6 @@ export interface PlanLimits {
   /** 0 = none. */
   custom_domains: number | null
   custom_email: boolean
-  /** Custom CSS on forms (leftovers L5). */
-  custom_css: boolean
   /** Data kept in a region the workspace chooses (leftovers L7). */
   data_residency: boolean
   ai_credits: number | null
@@ -55,7 +53,6 @@ export const PLAN_FEATURES = [
   'sso',
   'customDomain',
   'customEmail',
-  'customCss',
   'dataResidency',
   'prioritySupport',
   'dedicatedSupport',
