@@ -128,3 +128,26 @@ export interface DataDashboard {
   storage: { forms: number; sent: number; pending: number; failed: number }
   recent: { id: string; action: string; actor: string; resource: string | null; at: string }[]
 }
+
+/** GET /dashboard/api?from&to&group (F21 M4): the API service at work (people with API service access). */
+export interface ApiDashboard {
+  from: string
+  to: string
+  group: DashboardGroup
+  kpis: {
+    calls: DashboardKpi
+    success_rate: DashboardKpi
+    /** Average answer time, in milliseconds. */
+    latency: DashboardKpi
+    errors: DashboardKpi
+    deliveries: DashboardKpi
+  }
+  /** Calls and the ones that went wrong, per bucket. */
+  series: { start: string; calls: number; errors: number }[]
+  endpoints: { id: string; name: string; service: string | null; calls: number; errors: number; latency_ms: number }[]
+  /** Answers by kind: 2xx, 4xx, 5xx. */
+  statuses: { ok: number; client: number; server: number }
+  tokens: { id: string; name: string; mode: string; calls: number; last_used_at: string | null; expires_at: string | null }[]
+  webhooks: { active: number; failing: number; paused: number; delivered: number; failed: number }
+  errors: { id: string; at: string; method: string; path: string; status: number; code: string | null }[]
+}

@@ -1,8 +1,8 @@
 <!--
   Dashboard (F21, design reference 2: docs/design/Screenshot 2026-10-02 092034.png): the workspace home. Header:
   the period (last 30 days by default, kept in the address) and Daily / Weekly / Monthly / Yearly, with New form.
-  Below, a view switch: Workspace (every area at a glance, M1) · Forms (running the forms, M2) · Data sources and
-  API service (M3, M4), each shown to people whose role reaches it; the choice is remembered. Everything follows
+  Below, a view switch: Workspace (every area at a glance, M1) · Forms (running the forms, M2) · Data sources (M3) ·
+  API service (M4), each shown to people whose role reaches it; the choice is remembered. Everything follows
   the person's role and folder access.
 -->
 <script setup lang="ts">
@@ -36,7 +36,7 @@ const syncedAt = ref<number | null>(null)
 
 // Views: Workspace for everyone, the others for people whose role reaches the area
 const VIEW_KEY = 'formalie:dashboard-view'
-const views = computed(() => [{ value: 'workspace' as const, label: t('dashboard.views.workspace'), icon: 'i-lucide-layout-dashboard' }, ...(can('forms.view') ? [{ value: 'forms' as const, label: t('dashboard.views.forms'), icon: 'i-lucide-file-text' }] : []), ...(can('data.view') ? [{ value: 'data' as const, label: t('dashboard.views.data'), icon: 'i-lucide-database' }] : [])])
+const views = computed(() => [{ value: 'workspace' as const, label: t('dashboard.views.workspace'), icon: 'i-lucide-layout-dashboard' }, ...(can('forms.view') ? [{ value: 'forms' as const, label: t('dashboard.views.forms'), icon: 'i-lucide-file-text' }] : []), ...(can('data.view') ? [{ value: 'data' as const, label: t('dashboard.views.data'), icon: 'i-lucide-database' }] : []), ...(can('api.view') ? [{ value: 'api' as const, label: t('dashboard.views.api'), icon: 'i-lucide-code-xml' }] : [])])
 const stored = (() => {
   try {
     return localStorage.getItem(VIEW_KEY) as DashboardView | null
@@ -75,7 +75,8 @@ const current = useTemplateRef<{ refresh: () => Promise<unknown> }>('current')
         <UTabs v-if="views.length > 1" v-model="view" :items="views" :content="false" color="neutral" size="sm" :ui="SEGMENTED_UI" :aria-label="t('dashboard.views.label')" />
         <UTabs v-model="chosenGroup" :items="groups" :content="false" color="neutral" size="xs" :ui="SEGMENTED_UI" class="ms-auto 2xl:hidden" :aria-label="t('dashboard.groupLabel')" />
       </div>
-      <DashboardData v-if="view === 'data'" ref="current" :from="from" :to="to" :group="group" @loaded="loaded" />
+      <DashboardApi v-if="view === 'api'" ref="current" :from="from" :to="to" :group="group" @loaded="loaded" />
+      <DashboardData v-else-if="view === 'data'" ref="current" :from="from" :to="to" :group="group" @loaded="loaded" />
       <DashboardForms v-else-if="view === 'forms'" ref="current" :from="from" :to="to" :group="group" @loaded="loaded" />
       <DashboardWorkspace v-else ref="current" :from="from" :to="to" :group="group" @loaded="loaded" />
     </div>

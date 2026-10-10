@@ -54,6 +54,7 @@ import * as billing from './routes/billing'
 import { workspaceDashboard } from './routes/dashboard'
 import { formsDashboard } from './routes/dashboardForms'
 import { dataDashboard } from './routes/dashboardData'
+import { apiDashboard } from './routes/dashboardApi'
 import * as billingCheckout from './routes/billingCheckout'
 import { payoneerWebhook } from './billing/webhook'
 import * as notifications from './routes/notifications'
@@ -415,6 +416,7 @@ const router = createRouter()
   .get('/dashboard', workspaceDashboard)
   .get('/dashboard/forms', formsDashboard)
   .get('/dashboard/data', dataDashboard)
+  .get('/dashboard/api', apiDashboard)
   .get('/billing', billing.getBilling)
   .get('/billing/plans', billing.getPlans)
   .get('/billing/invoices', billing.getInvoices)
