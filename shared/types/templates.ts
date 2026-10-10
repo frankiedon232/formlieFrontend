@@ -30,6 +30,8 @@ export interface TemplateSummary {
   updated_at: string
   /** Workspace templates: the form it was saved from (null for copies and system templates). */
   source_form_id: string | null
+  /** What the signed-in person may do with it (F22 R2 M3: own · all; Formalie's own items are use-only). */
+  can?: { edit: boolean; delete: boolean }
 }
 
 export interface TemplateCalculation {

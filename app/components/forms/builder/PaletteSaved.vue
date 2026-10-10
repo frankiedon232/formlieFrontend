@@ -81,6 +81,7 @@ async function remove(item: SavedField) {
           </span>
         </UButton>
         <UButton
+          v-if="item.can?.delete"
           :icon="removing === item.id ? 'i-lucide-loader-circle' : 'i-lucide-trash-2'"
           color="neutral"
           variant="ghost"

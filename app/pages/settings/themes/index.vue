@@ -106,37 +106,19 @@ async function duplicateToEdit(theme: SavedTheme) {
     busy.value = next
   }
 }
+// Each theme says what this person may do (F22 R2 M3: own · all; Formalie's themes are use-only)
+const { can } = useCan()
 const rowActions = (theme: SavedTheme): DropdownMenuItem[][] =>
-  theme.source === 'system'
-    ? [
-        [
-          { label: t('themes.view'), icon: 'i-lucide-eye', to: `/settings/themes/${theme.id}` },
-          {
-            label: t('themes.duplicateToEdit'),
-            icon: 'i-lucide-copy-plus',
-            onSelect: () => void duplicateToEdit(theme),
-          },
-        ],
-      ]
-    : [
-        [
-          { label: t('themes.editDesign'), icon: 'i-lucide-paintbrush', to: `/settings/themes/${theme.id}` },
-          { label: t('themes.rename'), icon: 'i-lucide-pencil', onSelect: () => rename(theme) },
-          {
-            label: t('themes.duplicate'),
-            icon: 'i-lucide-copy',
-            onSelect: () => void act(theme, () => library.duplicate(theme)),
-          },
-        ],
-        [
-          {
-            label: t('themes.delete'),
-            icon: 'i-lucide-trash-2',
-            color: 'error',
-            onSelect: () => void remove(theme),
-          },
-        ],
-      ]
+  [
+    [
+      theme.can?.edit ? { label: t('themes.editDesign'), icon: 'i-lucide-paintbrush', to: `/settings/themes/${theme.id}` } : { label: t('themes.view'), icon: 'i-lucide-eye', to: `/settings/themes/${theme.id}` },
+      ...(theme.can?.edit ? [{ label: t('themes.rename'), icon: 'i-lucide-pencil', onSelect: () => rename(theme) }] : []),
+      ...(can('themes.duplicate')
+        ? [theme.source === 'system' ? { label: t('themes.duplicateToEdit'), icon: 'i-lucide-copy-plus', onSelect: () => void duplicateToEdit(theme) } : { label: t('themes.duplicate'), icon: 'i-lucide-copy', onSelect: () => void act(theme, () => library.duplicate(theme)) }]
+        : []),
+    ],
+    theme.can?.delete ? [{ label: t('themes.delete'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => void remove(theme) }] : [],
+  ].filter(group => group.length)
 const isBusy = (theme: SavedTheme) => busy.value.has(theme.id)
 /** After a rename: the list and the top cards. */
 const refreshAll = () => Promise.all([dataView.value?.refresh(), loadInsights()])
@@ -157,7 +139,7 @@ const refreshAll = () => Promise.all([dataView.value?.refresh(), loadInsights()]
         variant="outline"
         to="/forms"
       />
-      <UButton :label="t('themes.newTheme')" icon="i-lucide-plus" color="neutral" to="/settings/themes/new" />
+      <UButton v-if="can('themes.create')" :label="t('themes.newTheme')" icon="i-lucide-plus" color="neutral" to="/settings/themes/new" />
     </template>
 
     <div class="flex flex-col gap-4">

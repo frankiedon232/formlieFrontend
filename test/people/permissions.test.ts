@@ -92,3 +92,32 @@ describe('roles & access (F22)', () => {
     expect(ALL_PERMISSIONS.length).toBeGreaterThan(30)
   })
 })
+
+describe('libraries (F22 R2 M3)', () => {
+  it('give each change its own permission, reads stay open', () => {
+    expect(permissionFor('GET', '/option-lists')).toBeNull()
+    expect(permissionFor('POST', '/option-lists')).toBe('lists.create')
+    expect(permissionFor('PATCH', '/option-lists/l1')).toBe('lists.edit')
+    expect(permissionFor('DELETE', '/option-lists/l1')).toBe('lists.delete')
+    expect(permissionFor('POST', '/option-lists/l1/duplicate')).toBe('lists.duplicate')
+    expect(permissionFor('POST', '/option-lists/l1/sync')).toBe('lists.edit')
+    expect(permissionFor('POST', '/themes')).toBe('themes.create')
+    expect(permissionFor('DELETE', '/page-designs/p1')).toBe('pages.delete')
+    expect(permissionFor('POST', '/field-library')).toBe('fields.create')
+    expect(permissionFor('POST', '/templates')).toBe('forms.save_template')
+    expect(permissionFor('POST', '/templates/ws_1/sync')).toBe('templates.edit')
+    expect(permissionFor('POST', '/templates/translate-content')).toBeNull()
+    expect(DEFAULT_ROLE_GRANTS.member['lists.view']).toBe('all')
+    expect(DEFAULT_ROLE_GRANTS.member['lists.edit']).toBeUndefined()
+  })
+  it("never lets a workspace change Formalie's items; own · all for the rest", async () => {
+    const { resourceActions } = await import('../../server/mock/data/resourceAccess')
+    const admin = { id: 'a', role: 'admin' } as never
+    const member = { id: 'm', role: 'member' } as never
+    expect(resourceActions('lists', { created_by: { id: 'system' } }, admin)).toEqual({ edit: false, delete: false })
+    expect(resourceActions('themes', { source: 'system' }, admin)).toEqual({ edit: false, delete: false })
+    expect(resourceActions('lists', { created_by: { id: 'x' } }, admin)).toEqual({ edit: true, delete: true })
+    // Member can't change lists by default, not even their own
+    expect(resourceActions('lists', { created_by: { id: 'm' } }, member)).toEqual({ edit: false, delete: false })
+  })
+})

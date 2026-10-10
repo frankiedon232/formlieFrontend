@@ -60,7 +60,8 @@ onMounted(async () => {
 watch(name, value => setLabel(route.path, value.trim() || t('pages.editor.untitled')), { immediate: true })
 useHead({ title: () => name.value.trim() || t('pages.editor.newTitle') })
 
-const readOnly = computed(() => page.value?.source === 'system')
+/** Formalie's own designs, and pages this person may not change (F22 R2 M3), can be looked at, and copied with "duplicate". */
+const readOnly = computed(() => !!page.value && !page.value.can?.edit)
 const { busy: duplicating, run: runDuplicate } = useBusy()
 async function duplicateToEdit() {
   if (!page.value) return
@@ -114,7 +115,7 @@ const WIDTH = { desktop: 'max-w-full', tablet: 'max-w-[768px]', phone: 'max-w-[3
   >
     <template v-if="readOnly" #actions>
       <UButton :label="t('nav.pagesAll')" icon="i-lucide-arrow-left" color="neutral" variant="outline" to="/settings/landing-pages" class="rtl:[&_.iconify]:-scale-x-100" />
-      <UButton :label="t('themes.duplicateToEdit')" icon="i-lucide-copy-plus" color="neutral" :loading="duplicating" @click="duplicateToEdit" />
+      <UButton v-if="useCan().can('pages.duplicate')" :label="t('themes.duplicateToEdit')" icon="i-lucide-copy-plus" color="neutral" :loading="duplicating" @click="duplicateToEdit" />
     </template>
     <template v-else #actions>
       <UButton :label="t('common.cancel')" icon="i-lucide-x" color="neutral" variant="outline" to="/settings/landing-pages" />

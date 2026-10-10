@@ -2880,7 +2880,10 @@
     "listChanged": "{name} mudou desde que estas opções foram preenchidas.",
     "updateFromList": "Atualizar a partir da lista",
     "levels": "{n} níveis",
-    "openInListOption": "Abrir em Lista de opções"
+    "openInListOption": "Abrir em Lista de opções",
+    "readOnly": "Você pode consultar esta lista",
+    "readOnlySystem": "Esta é uma lista da Formalie. Use-a em formulários ou duplique-a para criar a sua.",
+    "readOnlyRole": "Sua função não permite alterar esta lista."
   },
   "designer": {
     "crumb": "Design",
@@ -7886,7 +7889,6 @@
     "area": {
       "forms": "Formulários",
       "responses": "Respostas",
-      "resources": "Modelos, temas e listas",
       "analytics": "Análises",
       "data": "Fontes de dados",
       "api": "Serviço de API",
@@ -7895,12 +7897,16 @@
       "settings": "Configurações",
       "audit": "Trilha de auditoria",
       "ai": "Assistente de IA",
-      "folders": "Pastas"
+      "folders": "Pastas",
+      "templates": "Modelos",
+      "lists": "Listas",
+      "themes": "Temas",
+      "pages": "Páginas de destino",
+      "fields": "Campos salvos"
     },
     "areaHint": {
       "forms": "Criar, montar, compartilhar, publicar e excluir formulários.",
       "responses": "Ler, alterar e exportar respostas.",
-      "resources": "Modelos, temas, páginas de destino, listas e campos salvos.",
       "analytics": "As páginas de análises.",
       "data": "Conexões de banco de dados, o explorador e consultas.",
       "api": "Serviços, endpoints, tokens e webhooks.",
@@ -7909,7 +7915,12 @@
       "settings": "As configurações do espaço de trabalho.",
       "audit": "Quem fez o quê e quando.",
       "ai": "Usar o assistente de IA.",
-      "folders": "Pastas e quem pode vê-las."
+      "folders": "Pastas e quem pode vê-las.",
+      "templates": "Os modelos do espaço de trabalho. Os modelos da Formalie sempre podem ser usados, nunca alterados.",
+      "lists": "Listas de opções usadas nos formulários.",
+      "themes": "Aparências dos formulários.",
+      "pages": "A página ao redor de um formulário.",
+      "fields": "Perguntas salvas para reutilização."
     },
     "action": {
       "view": "Ver",
@@ -7934,7 +7945,6 @@
       "responses_edit": "Corrigir as respostas enviadas.",
       "responses_delete": "Excluir respostas.",
       "responses_export": "Exportar respostas para arquivos.",
-      "resources_manage": "Criar e alterar modelos, temas, páginas de destino, listas, pastas e campos salvos.",
       "analytics_view": "Ver as páginas de análises.",
       "data_view": "Ver fontes de dados, tabelas e armazenamento.",
       "data_query": "Executar consultas e exportar resultados.",
@@ -7967,7 +7977,29 @@
       "folders_create": "Criar novas pastas.",
       "folders_edit": "Mudar o nome e a cor de uma pasta.",
       "folders_delete": "Remover pastas vazias.",
-      "folders_access": "Escolher quem pode ver cada pasta e ver todas as pastas."
+      "folders_access": "Escolher quem pode ver cada pasta e ver todas as pastas.",
+      "templates_view": "Abrir as páginas de Modelos. Usar um modelo exige Criar formulários; salvar um exige Salvar como modelo.",
+      "templates_edit": "Renomear um modelo e atualizá-lo a partir do formulário.",
+      "templates_duplicate": "Fazer uma cópia de um modelo.",
+      "templates_delete": "Remover um modelo do espaço de trabalho.",
+      "lists_view": "Abrir as páginas de Listas. Os formulários sempre podem usar listas.",
+      "lists_create": "Criar novas listas, inclusive por importação.",
+      "lists_edit": "Alterar as opções de uma lista e atualizar os formulários que a usam.",
+      "lists_duplicate": "Fazer uma cópia de uma lista.",
+      "lists_delete": "Remover uma lista.",
+      "themes_view": "Abrir as páginas de Temas. Os formulários sempre podem usar temas.",
+      "themes_create": "Criar novos temas, inclusive salvando um a partir do designer.",
+      "themes_edit": "Alterar um tema.",
+      "themes_duplicate": "Fazer uma cópia de um tema.",
+      "themes_delete": "Remover um tema.",
+      "pages_view": "Abrir a seção Páginas de destino. Os formulários sempre podem usá-las.",
+      "pages_create": "Criar novas páginas de destino, inclusive salvando uma a partir do designer.",
+      "pages_edit": "Alterar uma página de destino.",
+      "pages_duplicate": "Fazer uma cópia de uma página de destino.",
+      "pages_delete": "Remover uma página de destino.",
+      "fields_view": "Ver os campos salvos no construtor.",
+      "fields_create": "Salvar uma pergunta para reutilização.",
+      "fields_delete": "Remover um campo salvo."
     },
     "setArea": "Definir a área",
     "searchActions": "Pesquisar ações",
@@ -8020,7 +8052,29 @@
       "responses_review": "Revisar respostas",
       "responses_edit": "Corrigir respostas",
       "responses_delete": "Excluir respostas",
-      "responses_export": "Exportar respostas"
+      "responses_export": "Exportar respostas",
+      "templates_view": "Ver modelos",
+      "templates_edit": "Alterar modelos",
+      "templates_duplicate": "Duplicar modelos",
+      "templates_delete": "Excluir modelos",
+      "lists_view": "Ver listas",
+      "lists_create": "Criar listas",
+      "lists_edit": "Alterar listas",
+      "lists_duplicate": "Duplicar listas",
+      "lists_delete": "Excluir listas",
+      "themes_view": "Ver temas",
+      "themes_create": "Criar temas",
+      "themes_edit": "Alterar temas",
+      "themes_duplicate": "Duplicar temas",
+      "themes_delete": "Excluir temas",
+      "pages_view": "Ver páginas de destino",
+      "pages_create": "Criar páginas de destino",
+      "pages_edit": "Alterar páginas de destino",
+      "pages_duplicate": "Duplicar páginas de destino",
+      "pages_delete": "Excluir páginas de destino",
+      "fields_view": "Ver campos salvos",
+      "fields_create": "Salvar campos",
+      "fields_delete": "Excluir campos salvos"
     }
   }
 }

@@ -2880,7 +2880,10 @@
     "listChanged": "{name} ha cambiado desde que se rellenaron estas opciones.",
     "updateFromList": "Actualizar desde la lista",
     "levels": "{n} niveles",
-    "openInListOption": "Abrir en Lista de opciones"
+    "openInListOption": "Abrir en Lista de opciones",
+    "readOnly": "Puede consultar esta lista",
+    "readOnlySystem": "Es una lista de Formalie. Úsela en formularios o duplíquela para crear la suya.",
+    "readOnlyRole": "Su rol no le permite cambiar esta lista."
   },
   "designer": {
     "crumb": "Diseño",
@@ -7886,7 +7889,6 @@
     "area": {
       "forms": "Formularios",
       "responses": "Respuestas",
-      "resources": "Plantillas, temas y listas",
       "analytics": "Analítica",
       "data": "Fuentes de datos",
       "api": "Servicio API",
@@ -7895,12 +7897,16 @@
       "settings": "Configuración",
       "audit": "Registro de auditoría",
       "ai": "Asistente de IA",
-      "folders": "Carpetas"
+      "folders": "Carpetas",
+      "templates": "Plantillas",
+      "lists": "Listas",
+      "themes": "Temas",
+      "pages": "Páginas de destino",
+      "fields": "Campos guardados"
     },
     "areaHint": {
       "forms": "Crear, diseñar, compartir, publicar y eliminar formularios.",
       "responses": "Leer, cambiar y exportar respuestas.",
-      "resources": "Plantillas, temas, páginas de destino, listas y campos guardados.",
       "analytics": "Las páginas de analítica.",
       "data": "Conexiones de base de datos, el explorador y las consultas.",
       "api": "Servicios, endpoints, tokens y webhooks.",
@@ -7909,7 +7915,12 @@
       "settings": "La configuración del espacio de trabajo.",
       "audit": "Quién hizo qué y cuándo.",
       "ai": "Usar el asistente de IA.",
-      "folders": "Las carpetas y quién puede verlas."
+      "folders": "Las carpetas y quién puede verlas.",
+      "templates": "Las plantillas del espacio de trabajo. Las de Formalie siempre se pueden usar, nunca cambiar.",
+      "lists": "Listas de opciones usadas en los formularios.",
+      "themes": "Aspectos de los formularios.",
+      "pages": "La página que rodea a un formulario.",
+      "fields": "Preguntas guardadas para reutilizarlas."
     },
     "action": {
       "view": "Ver",
@@ -7934,7 +7945,6 @@
       "responses_edit": "Corregir las respuestas enviadas.",
       "responses_delete": "Eliminar respuestas.",
       "responses_export": "Exportar respuestas a archivos.",
-      "resources_manage": "Crear y cambiar plantillas, temas, páginas de destino, listas, carpetas y campos guardados.",
       "analytics_view": "Ver las páginas de analítica.",
       "data_view": "Ver fuentes de datos, tablas y almacenamiento.",
       "data_query": "Ejecutar consultas y exportar resultados.",
@@ -7967,7 +7977,29 @@
       "folders_create": "Crear carpetas nuevas.",
       "folders_edit": "Cambiar el nombre y el color de una carpeta.",
       "folders_delete": "Quitar carpetas vacías.",
-      "folders_access": "Elegir quién puede ver cada carpeta, y ver todas las carpetas."
+      "folders_access": "Elegir quién puede ver cada carpeta, y ver todas las carpetas.",
+      "templates_view": "Abrir las páginas de Plantillas. Usar una plantilla requiere Crear formularios; guardar una requiere Guardar como plantilla.",
+      "templates_edit": "Renombrar una plantilla y actualizarla desde su formulario.",
+      "templates_duplicate": "Hacer una copia de una plantilla.",
+      "templates_delete": "Quitar una plantilla del espacio de trabajo.",
+      "lists_view": "Abrir las páginas de Listas. Los formularios siempre pueden usar listas.",
+      "lists_create": "Crear listas nuevas, también importándolas.",
+      "lists_edit": "Cambiar las opciones de una lista y actualizar los formularios que la usan.",
+      "lists_duplicate": "Hacer una copia de una lista.",
+      "lists_delete": "Quitar una lista.",
+      "themes_view": "Abrir las páginas de Temas. Los formularios siempre pueden usar temas.",
+      "themes_create": "Crear temas nuevos, también guardando uno desde el diseñador.",
+      "themes_edit": "Cambiar un tema.",
+      "themes_duplicate": "Hacer una copia de un tema.",
+      "themes_delete": "Quitar un tema.",
+      "pages_view": "Abrir la sección Páginas de destino. Los formularios siempre pueden usarlas.",
+      "pages_create": "Crear páginas de destino nuevas, también guardando una desde el diseñador.",
+      "pages_edit": "Cambiar una página de destino.",
+      "pages_duplicate": "Hacer una copia de una página de destino.",
+      "pages_delete": "Quitar una página de destino.",
+      "fields_view": "Ver los campos guardados en el constructor.",
+      "fields_create": "Guardar una pregunta para reutilizarla.",
+      "fields_delete": "Quitar un campo guardado."
     },
     "setArea": "Definir el área",
     "searchActions": "Buscar acciones",
@@ -8020,7 +8052,29 @@
       "responses_review": "Revisar respuestas",
       "responses_edit": "Corregir respuestas",
       "responses_delete": "Eliminar respuestas",
-      "responses_export": "Exportar respuestas"
+      "responses_export": "Exportar respuestas",
+      "templates_view": "Ver plantillas",
+      "templates_edit": "Editar plantillas",
+      "templates_duplicate": "Duplicar plantillas",
+      "templates_delete": "Eliminar plantillas",
+      "lists_view": "Ver listas",
+      "lists_create": "Crear listas",
+      "lists_edit": "Editar listas",
+      "lists_duplicate": "Duplicar listas",
+      "lists_delete": "Eliminar listas",
+      "themes_view": "Ver temas",
+      "themes_create": "Crear temas",
+      "themes_edit": "Editar temas",
+      "themes_duplicate": "Duplicar temas",
+      "themes_delete": "Eliminar temas",
+      "pages_view": "Ver páginas de destino",
+      "pages_create": "Crear páginas de destino",
+      "pages_edit": "Editar páginas de destino",
+      "pages_duplicate": "Duplicar páginas de destino",
+      "pages_delete": "Eliminar páginas de destino",
+      "fields_view": "Ver campos guardados",
+      "fields_create": "Guardar campos",
+      "fields_delete": "Eliminar campos guardados"
     }
   }
 }

@@ -2880,7 +2880,10 @@
     "listChanged": "이 옵션을 채운 이후 {name}이(가) 변경되었습니다.",
     "updateFromList": "목록에서 업데이트",
     "levels": "{n}단계",
-    "openInListOption": "옵션 목록에서 열기"
+    "openInListOption": "옵션 목록에서 열기",
+    "readOnly": "이 목록을 볼 수 있습니다",
+    "readOnlySystem": "Formalie의 목록입니다. 양식에서 사용하거나 복제하여 나만의 목록을 만드세요.",
+    "readOnlyRole": "역할상 이 목록을 변경할 수 없습니다."
   },
   "designer": {
     "crumb": "디자인",
@@ -7886,7 +7889,6 @@
     "area": {
       "forms": "양식",
       "responses": "응답",
-      "resources": "템플릿, 테마, 목록",
       "analytics": "분석",
       "data": "데이터 소스",
       "api": "API 서비스",
@@ -7895,12 +7897,16 @@
       "settings": "설정",
       "audit": "감사 로그",
       "ai": "AI 어시스턴트",
-      "folders": "폴더"
+      "folders": "폴더",
+      "templates": "템플릿",
+      "lists": "목록",
+      "themes": "테마",
+      "pages": "랜딩 페이지",
+      "fields": "저장된 항목"
     },
     "areaHint": {
       "forms": "양식 만들기, 구성, 공유, 게시 및 삭제.",
       "responses": "응답 읽기, 변경, 내보내기.",
-      "resources": "템플릿, 테마, 랜딩 페이지, 목록, 저장된 필드.",
       "analytics": "분석 페이지.",
       "data": "데이터베이스 연결, 탐색기, 쿼리.",
       "api": "서비스, 엔드포인트, 토큰, 웹훅.",
@@ -7909,7 +7915,12 @@
       "settings": "워크스페이스 설정.",
       "audit": "누가 언제 무엇을 했는지.",
       "ai": "AI 어시스턴트 사용.",
-      "folders": "폴더와 폴더를 볼 수 있는 사람."
+      "folders": "폴더와 폴더를 볼 수 있는 사람.",
+      "templates": "워크스페이스의 템플릿입니다. Formalie 템플릿은 항상 사용할 수 있지만 변경할 수는 없습니다.",
+      "lists": "양식에서 사용하는 옵션 목록입니다.",
+      "themes": "양식의 모양입니다.",
+      "pages": "양식을 둘러싼 페이지입니다.",
+      "fields": "재사용하기 위해 저장한 질문입니다."
     },
     "action": {
       "view": "보기",
@@ -7934,7 +7945,6 @@
       "responses_edit": "제출된 답변을 수정합니다.",
       "responses_delete": "응답을 삭제합니다.",
       "responses_export": "응답을 파일로 내보냅니다.",
-      "resources_manage": "템플릿, 테마, 랜딩 페이지, 목록, 폴더, 저장된 필드를 만들고 변경합니다.",
       "analytics_view": "분석 페이지를 봅니다.",
       "data_view": "데이터 소스, 테이블, 저장소를 봅니다.",
       "data_query": "쿼리를 실행하고 결과를 내보냅니다.",
@@ -7967,7 +7977,29 @@
       "folders_create": "새 폴더를 만듭니다.",
       "folders_edit": "폴더의 이름과 색상을 변경합니다.",
       "folders_delete": "빈 폴더를 제거합니다.",
-      "folders_access": "각 폴더를 볼 수 있는 사람을 선택하고, 모든 폴더를 봅니다."
+      "folders_access": "각 폴더를 볼 수 있는 사람을 선택하고, 모든 폴더를 봅니다.",
+      "templates_view": "템플릿 페이지를 엽니다. 템플릿을 사용하려면 양식 만들기, 저장하려면 템플릿으로 저장 권한이 필요합니다.",
+      "templates_edit": "템플릿 이름을 바꾸고 해당 양식에서 업데이트합니다.",
+      "templates_duplicate": "템플릿의 사본을 만듭니다.",
+      "templates_delete": "워크스페이스 템플릿을 제거합니다.",
+      "lists_view": "목록 페이지를 엽니다. 양식은 언제나 목록을 사용할 수 있습니다.",
+      "lists_create": "새 목록을 만듭니다. 가져오기로도 만들 수 있습니다.",
+      "lists_edit": "목록의 옵션을 변경하고 그 목록을 쓰는 양식을 업데이트합니다.",
+      "lists_duplicate": "목록의 사본을 만듭니다.",
+      "lists_delete": "목록을 제거합니다.",
+      "themes_view": "테마 페이지를 엽니다. 양식은 언제나 테마를 사용할 수 있습니다.",
+      "themes_create": "새 테마를 만듭니다. 디자이너에서 저장하는 것도 포함합니다.",
+      "themes_edit": "테마를 변경합니다.",
+      "themes_duplicate": "테마의 사본을 만듭니다.",
+      "themes_delete": "테마를 제거합니다.",
+      "pages_view": "랜딩 페이지 섹션을 엽니다. 양식은 언제나 랜딩 페이지를 사용할 수 있습니다.",
+      "pages_create": "새 랜딩 페이지를 만듭니다. 디자이너에서 저장하는 것도 포함합니다.",
+      "pages_edit": "랜딩 페이지를 변경합니다.",
+      "pages_duplicate": "랜딩 페이지의 사본을 만듭니다.",
+      "pages_delete": "랜딩 페이지를 제거합니다.",
+      "fields_view": "빌더에서 저장된 항목을 봅니다.",
+      "fields_create": "재사용하기 위해 질문을 저장합니다.",
+      "fields_delete": "저장된 항목을 제거합니다."
     },
     "setArea": "영역 설정",
     "searchActions": "작업 검색",
@@ -8020,7 +8052,29 @@
       "responses_review": "응답 검토",
       "responses_edit": "답변 수정",
       "responses_delete": "응답 삭제",
-      "responses_export": "응답 내보내기"
+      "responses_export": "응답 내보내기",
+      "templates_view": "템플릿 보기",
+      "templates_edit": "템플릿 변경",
+      "templates_duplicate": "템플릿 복제",
+      "templates_delete": "템플릿 삭제",
+      "lists_view": "목록 보기",
+      "lists_create": "목록 만들기",
+      "lists_edit": "목록 변경",
+      "lists_duplicate": "목록 복제",
+      "lists_delete": "목록 삭제",
+      "themes_view": "테마 보기",
+      "themes_create": "테마 만들기",
+      "themes_edit": "테마 변경",
+      "themes_duplicate": "테마 복제",
+      "themes_delete": "테마 삭제",
+      "pages_view": "랜딩 페이지 보기",
+      "pages_create": "랜딩 페이지 만들기",
+      "pages_edit": "랜딩 페이지 변경",
+      "pages_duplicate": "랜딩 페이지 복제",
+      "pages_delete": "랜딩 페이지 삭제",
+      "fields_view": "저장된 항목 보기",
+      "fields_create": "항목 저장",
+      "fields_delete": "저장된 항목 삭제"
     }
   }
 }

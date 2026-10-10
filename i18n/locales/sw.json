@@ -2880,7 +2880,10 @@
     "listChanged": "{name} imebadilika tangu chaguo hizi zilipojazwa.",
     "updateFromList": "Sasisha kutoka orodha",
     "levels": "Ngazi {n}",
-    "openInListOption": "Fungua katika Orodha ya Chaguo"
+    "openInListOption": "Fungua katika Orodha ya Chaguo",
+    "readOnly": "Unaweza kuona orodha hii",
+    "readOnlySystem": "Hii ni orodha ya Formalie. Itumie kwenye fomu, au inakili ili kutengeneza yako.",
+    "readOnlyRole": "Jukumu lako haliruhusu kubadilisha orodha hii."
   },
   "designer": {
     "crumb": "Muundo",
@@ -7886,7 +7889,6 @@
     "area": {
       "forms": "Fomu",
       "responses": "Majibu",
-      "resources": "Violezo, mandhari na orodha",
       "analytics": "Takwimu",
       "data": "Vyanzo vya data",
       "api": "Huduma ya API",
@@ -7895,12 +7897,16 @@
       "settings": "Mipangilio",
       "audit": "Kumbukumbu za ukaguzi",
       "ai": "Msaidizi wa AI",
-      "folders": "Folda"
+      "folders": "Folda",
+      "templates": "Violezo",
+      "lists": "Orodha",
+      "themes": "Mandhari",
+      "pages": "Kurasa za kutua",
+      "fields": "Sehemu zilizohifadhiwa"
     },
     "areaHint": {
       "forms": "Kuunda, kujenga, kushiriki, kuchapisha na kufuta fomu.",
       "responses": "Kusoma, kubadilisha na kusafirisha majibu.",
-      "resources": "Violezo, mandhari, kurasa za kutua, orodha na sehemu zilizohifadhiwa.",
       "analytics": "Kurasa za takwimu.",
       "data": "Miunganisho ya hifadhidata, kichunguzi na maswali.",
       "api": "Huduma, endpoint, tokeni na webhook.",
@@ -7909,7 +7915,12 @@
       "settings": "Mipangilio ya nafasi ya kazi.",
       "audit": "Nani alifanya nini, na lini.",
       "ai": "Kutumia msaidizi wa AI.",
-      "folders": "Folda na nani anaweza kuziona."
+      "folders": "Folda na nani anaweza kuziona.",
+      "templates": "Violezo vya nafasi ya kazi. Violezo vya Formalie vinaweza kutumika kila wakati, havibadilishwi kamwe.",
+      "lists": "Orodha za chaguo zinazotumika kwenye fomu.",
+      "themes": "Mwonekano wa fomu.",
+      "pages": "Ukurasa unaozunguka fomu.",
+      "fields": "Maswali yaliyohifadhiwa ili yatumike tena."
     },
     "action": {
       "view": "Tazama",
@@ -7934,7 +7945,6 @@
       "responses_edit": "Sahihisha majibu yaliyotumwa.",
       "responses_delete": "Kufuta majibu.",
       "responses_export": "Kusafirisha majibu kwenda kwenye faili.",
-      "resources_manage": "Kuunda na kubadilisha violezo, mandhari, kurasa za kutua, orodha, folda na sehemu zilizohifadhiwa.",
       "analytics_view": "Kuona kurasa za takwimu.",
       "data_view": "Kuona vyanzo vya data, majedwali na hifadhi.",
       "data_query": "Kuendesha maswali na kusafirisha matokeo.",
@@ -7967,7 +7977,29 @@
       "folders_create": "Kutengeneza folda mpya.",
       "folders_edit": "Kubadilisha jina na rangi ya folda.",
       "folders_delete": "Kuondoa folda tupu.",
-      "folders_access": "Kuchagua nani anaweza kuona kila folda, na kuona folda zote."
+      "folders_access": "Kuchagua nani anaweza kuona kila folda, na kuona folda zote.",
+      "templates_view": "Kufungua kurasa za Violezo. Kutumia kiolezo kunahitaji Kuunda fomu; kuhifadhi kunahitaji Hifadhi kama kiolezo.",
+      "templates_edit": "Kubadilisha jina la kiolezo na kukisasisha kutoka kwa fomu yake.",
+      "templates_duplicate": "Kutengeneza nakala ya kiolezo.",
+      "templates_delete": "Kuondoa kiolezo cha nafasi ya kazi.",
+      "lists_view": "Kufungua kurasa za Orodha. Fomu zinaweza kutumia orodha kila wakati.",
+      "lists_create": "Kutengeneza orodha mpya, pia kwa kuagiza.",
+      "lists_edit": "Kubadilisha chaguo za orodha na kusasisha fomu zinazoitumia.",
+      "lists_duplicate": "Kutengeneza nakala ya orodha.",
+      "lists_delete": "Kuondoa orodha.",
+      "themes_view": "Kufungua kurasa za Mandhari. Fomu zinaweza kutumia mandhari kila wakati.",
+      "themes_create": "Kutengeneza mandhari mapya, pia kwa kuhifadhi kutoka kwa kibunifu.",
+      "themes_edit": "Kubadilisha mandhari.",
+      "themes_duplicate": "Kutengeneza nakala ya mandhari.",
+      "themes_delete": "Kuondoa mandhari.",
+      "pages_view": "Kufungua sehemu ya Kurasa za kutua. Fomu zinaweza kuzitumia kila wakati.",
+      "pages_create": "Kutengeneza kurasa mpya za kutua, pia kwa kuhifadhi kutoka kwa kibunifu.",
+      "pages_edit": "Kubadilisha ukurasa wa kutua.",
+      "pages_duplicate": "Kutengeneza nakala ya ukurasa wa kutua.",
+      "pages_delete": "Kuondoa ukurasa wa kutua.",
+      "fields_view": "Kuona sehemu zilizohifadhiwa kwenye kijenzi.",
+      "fields_create": "Kuhifadhi swali ili litumike tena.",
+      "fields_delete": "Kuondoa sehemu iliyohifadhiwa."
     },
     "setArea": "Weka eneo",
     "searchActions": "Tafuta vitendo",
@@ -8020,7 +8052,29 @@
       "responses_review": "Kagua majibu",
       "responses_edit": "Sahihisha majibu",
       "responses_delete": "Futa majibu",
-      "responses_export": "Hamisha majibu"
+      "responses_export": "Hamisha majibu",
+      "templates_view": "Kuona violezo",
+      "templates_edit": "Kubadilisha violezo",
+      "templates_duplicate": "Kunakili violezo",
+      "templates_delete": "Kufuta violezo",
+      "lists_view": "Kuona orodha",
+      "lists_create": "Kuunda orodha",
+      "lists_edit": "Kubadilisha orodha",
+      "lists_duplicate": "Kunakili orodha",
+      "lists_delete": "Kufuta orodha",
+      "themes_view": "Kuona mandhari",
+      "themes_create": "Kuunda mandhari",
+      "themes_edit": "Kubadilisha mandhari",
+      "themes_duplicate": "Kunakili mandhari",
+      "themes_delete": "Kufuta mandhari",
+      "pages_view": "Kuona kurasa za kutua",
+      "pages_create": "Kuunda kurasa za kutua",
+      "pages_edit": "Kubadilisha kurasa za kutua",
+      "pages_duplicate": "Kunakili kurasa za kutua",
+      "pages_delete": "Kufuta kurasa za kutua",
+      "fields_view": "Kuona sehemu zilizohifadhiwa",
+      "fields_create": "Kuhifadhi sehemu",
+      "fields_delete": "Kufuta sehemu zilizohifadhiwa"
     }
   }
 }

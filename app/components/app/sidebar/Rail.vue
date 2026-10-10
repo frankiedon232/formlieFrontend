@@ -40,7 +40,7 @@ const createItems = computed<DropdownMenuItem[][]>(() =>
     [
       { type: 'label' as const, label: t('nav.createForms') },
       ...(can('forms.create') ? [{ label: t('nav.newForm'), icon: 'i-lucide-file-plus', to: '/forms/new' }, { label: t('nav.fromTemplate'), icon: 'i-lucide-layout-template', to: '/templates' }] : []),
-      ...(can('resources.manage') && can('forms.create') ? [{ label: t('nav.newTemplate'), icon: 'i-lucide-bookmark-plus', to: { path: '/forms/new', query: { purpose: 'template' } } }] : []),
+      ...(can('forms.save_template') && can('forms.create') ? [{ label: t('nav.newTemplate'), icon: 'i-lucide-bookmark-plus', to: { path: '/forms/new', query: { purpose: 'template' } } }] : []),
     ],
     [
       { type: 'label' as const, label: t('nav.createOperations') },

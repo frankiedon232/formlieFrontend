@@ -2880,7 +2880,10 @@
     "listChanged": "{name} è cambiato da quando queste opzioni sono state compilate.",
     "updateFromList": "Aggiorna dall’elenco",
     "levels": "{n} livelli",
-    "openInListOption": "Apri in Elenco opzioni"
+    "openInListOption": "Apri in Elenco opzioni",
+    "readOnly": "Puoi consultare questo elenco",
+    "readOnlySystem": "È un elenco di Formalie. Usalo nei moduli o duplicalo per crearne uno tuo.",
+    "readOnlyRole": "Il tuo ruolo non ti permette di modificare questo elenco."
   },
   "designer": {
     "crumb": "Design",
@@ -7886,7 +7889,6 @@
     "area": {
       "forms": "Moduli",
       "responses": "Risposte",
-      "resources": "Modelli, temi ed elenchi",
       "analytics": "Analisi",
       "data": "Origini dati",
       "api": "Servizio API",
@@ -7895,12 +7897,16 @@
       "settings": "Impostazioni",
       "audit": "Registro di audit",
       "ai": "Assistente IA",
-      "folders": "Cartelle"
+      "folders": "Cartelle",
+      "templates": "Modelli",
+      "lists": "Elenchi",
+      "themes": "Temi",
+      "pages": "Landing page",
+      "fields": "Campi salvati"
     },
     "areaHint": {
       "forms": "Creare, costruire, condividere, pubblicare ed eliminare moduli.",
       "responses": "Leggere, modificare ed esportare le risposte.",
-      "resources": "Modelli, temi, pagine di destinazione, elenchi e campi salvati.",
       "analytics": "Le pagine di analisi.",
       "data": "Connessioni ai database, esplora e query.",
       "api": "Servizi, endpoint, token e webhook.",
@@ -7909,7 +7915,12 @@
       "settings": "Le impostazioni dell’area di lavoro.",
       "audit": "Chi ha fatto cosa e quando.",
       "ai": "Usare l’assistente IA.",
-      "folders": "Le cartelle e chi può vederle."
+      "folders": "Le cartelle e chi può vederle.",
+      "templates": "I modelli dell’area di lavoro. I modelli di Formalie si possono sempre usare, mai modificare.",
+      "lists": "Elenchi di opzioni usati nei moduli.",
+      "themes": "Aspetti dei moduli.",
+      "pages": "La pagina attorno a un modulo.",
+      "fields": "Domande salvate per essere riutilizzate."
     },
     "action": {
       "view": "Vedere",
@@ -7934,7 +7945,6 @@
       "responses_edit": "Correggere le risposte inviate.",
       "responses_delete": "Eliminare le risposte.",
       "responses_export": "Esportare le risposte in file.",
-      "resources_manage": "Creare e modificare modelli, temi, pagine di destinazione, elenchi, cartelle e campi salvati.",
       "analytics_view": "Vedere le pagine di analisi.",
       "data_view": "Vedere origini dati, tabelle e archiviazione.",
       "data_query": "Eseguire query ed esportare i risultati.",
@@ -7967,7 +7977,29 @@
       "folders_create": "Creare nuove cartelle.",
       "folders_edit": "Cambiare nome e colore di una cartella.",
       "folders_delete": "Rimuovere le cartelle vuote.",
-      "folders_access": "Scegliere chi può vedere ogni cartella e vedere tutte le cartelle."
+      "folders_access": "Scegliere chi può vedere ogni cartella e vedere tutte le cartelle.",
+      "templates_view": "Aprire le pagine dei Modelli. Usare un modello richiede Creare moduli; salvarne uno richiede Salva come modello.",
+      "templates_edit": "Rinominare un modello e aggiornarlo dal suo modulo.",
+      "templates_duplicate": "Fare una copia di un modello.",
+      "templates_delete": "Rimuovere un modello dell’area di lavoro.",
+      "lists_view": "Aprire le pagine degli Elenchi. I moduli possono sempre usare gli elenchi.",
+      "lists_create": "Creare nuovi elenchi, anche con l’importazione.",
+      "lists_edit": "Modificare le opzioni di un elenco e aggiornare i moduli che lo usano.",
+      "lists_duplicate": "Fare una copia di un elenco.",
+      "lists_delete": "Rimuovere un elenco.",
+      "themes_view": "Aprire le pagine dei Temi. I moduli possono sempre usare i temi.",
+      "themes_create": "Creare nuovi temi, anche salvandone uno dal designer.",
+      "themes_edit": "Modificare un tema.",
+      "themes_duplicate": "Fare una copia di un tema.",
+      "themes_delete": "Rimuovere un tema.",
+      "pages_view": "Aprire la sezione Landing page. I moduli possono sempre usarle.",
+      "pages_create": "Creare nuove landing page, anche salvandone una dal designer.",
+      "pages_edit": "Modificare una landing page.",
+      "pages_duplicate": "Fare una copia di una landing page.",
+      "pages_delete": "Rimuovere una landing page.",
+      "fields_view": "Vedere i campi salvati nel builder.",
+      "fields_create": "Salvare una domanda per riutilizzarla.",
+      "fields_delete": "Rimuovere un campo salvato."
     },
     "setArea": "Imposta l'area",
     "searchActions": "Cerca azioni",
@@ -8020,7 +8052,29 @@
       "responses_review": "Revisionare le risposte",
       "responses_edit": "Correggere le risposte",
       "responses_delete": "Eliminare le risposte",
-      "responses_export": "Esportare le risposte"
+      "responses_export": "Esportare le risposte",
+      "templates_view": "Vedere i modelli",
+      "templates_edit": "Modificare i modelli",
+      "templates_duplicate": "Duplicare i modelli",
+      "templates_delete": "Eliminare i modelli",
+      "lists_view": "Vedere gli elenchi",
+      "lists_create": "Creare gli elenchi",
+      "lists_edit": "Modificare gli elenchi",
+      "lists_duplicate": "Duplicare gli elenchi",
+      "lists_delete": "Eliminare gli elenchi",
+      "themes_view": "Vedere i temi",
+      "themes_create": "Creare i temi",
+      "themes_edit": "Modificare i temi",
+      "themes_duplicate": "Duplicare i temi",
+      "themes_delete": "Eliminare i temi",
+      "pages_view": "Vedere le landing page",
+      "pages_create": "Creare le landing page",
+      "pages_edit": "Modificare le landing page",
+      "pages_duplicate": "Duplicare le landing page",
+      "pages_delete": "Eliminare le landing page",
+      "fields_view": "Vedere i campi salvati",
+      "fields_create": "Salvare campi",
+      "fields_delete": "Eliminare i campi salvati"
     }
   }
 }

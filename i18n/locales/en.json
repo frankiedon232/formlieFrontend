@@ -2880,7 +2880,10 @@
     "listChanged": "{name} changed since these options were filled in.",
     "updateFromList": "Update from the list",
     "levels": "{n} levels",
-    "openInListOption": "Open in List Option"
+    "openInListOption": "Open in List Option",
+    "readOnly": "You can look at this list",
+    "readOnlySystem": "This is one of Formalie's lists. Use it in forms, or duplicate it to make your own.",
+    "readOnlyRole": "Your role doesn't let you change this list."
   },
   "designer": {
     "crumb": "Design",
@@ -7886,7 +7889,6 @@
     "area": {
       "forms": "Forms",
       "responses": "Responses",
-      "resources": "Templates, themes and lists",
       "analytics": "Analytics",
       "data": "Data sources",
       "api": "API service",
@@ -7895,12 +7897,16 @@
       "settings": "Settings",
       "audit": "Audit trail",
       "ai": "AI assistant",
-      "folders": "Folders"
+      "folders": "Folders",
+      "templates": "Templates",
+      "lists": "Lists",
+      "themes": "Themes",
+      "pages": "Landing pages",
+      "fields": "Saved fields"
     },
     "areaHint": {
       "forms": "Creating, building, sharing, publishing and deleting forms.",
       "responses": "Reading, changing and exporting answers.",
-      "resources": "Templates, themes, landing pages, lists and saved fields.",
       "analytics": "The analytics pages.",
       "data": "Database connections, the explorer and queries.",
       "api": "Services, endpoints, tokens and webhooks.",
@@ -7909,7 +7915,12 @@
       "settings": "The workspace's settings.",
       "audit": "Who did what, and when.",
       "ai": "Using the AI assistant.",
-      "folders": "Folders and who can see them."
+      "folders": "Folders and who can see them.",
+      "templates": "The workspace's templates. Formalie's templates can always be used, never changed.",
+      "lists": "Option lists used in forms.",
+      "themes": "Looks for forms.",
+      "pages": "The page around a form.",
+      "fields": "Questions saved for reuse."
     },
     "action": {
       "view": "View",
@@ -7934,7 +7945,6 @@
       "responses_edit": "Correct submitted answers.",
       "responses_delete": "Delete responses.",
       "responses_export": "Export responses to files.",
-      "resources_manage": "Create and change templates, themes, landing pages, lists, folders and saved fields.",
       "analytics_view": "See the analytics pages.",
       "data_view": "See data sources, tables and storage.",
       "data_query": "Run queries and export results.",
@@ -7967,7 +7977,29 @@
       "folders_create": "Make new folders.",
       "folders_edit": "Change a folder's name and colour.",
       "folders_delete": "Remove empty folders.",
-      "folders_access": "Choose who can see each folder, and see every folder."
+      "folders_access": "Choose who can see each folder, and see every folder.",
+      "templates_view": "Open the Templates pages. Using a template needs Create forms; saving one needs Save as template.",
+      "templates_edit": "Rename a template and update it from its form.",
+      "templates_duplicate": "Make a copy of a template.",
+      "templates_delete": "Remove a workspace template.",
+      "lists_view": "Open the Lists pages. Forms can always use lists.",
+      "lists_create": "Make new lists, also by importing.",
+      "lists_edit": "Change a list's options and update the forms that use it.",
+      "lists_duplicate": "Make a copy of a list.",
+      "lists_delete": "Remove a list.",
+      "themes_view": "Open the Themes pages. Forms can always use themes.",
+      "themes_create": "Make new themes, also by saving one from the designer.",
+      "themes_edit": "Change a theme.",
+      "themes_duplicate": "Make a copy of a theme.",
+      "themes_delete": "Remove a theme.",
+      "pages_view": "Open the Landing pages pages. Forms can always use them.",
+      "pages_create": "Make new landing pages, also by saving one from the designer.",
+      "pages_edit": "Change a landing page.",
+      "pages_duplicate": "Make a copy of a landing page.",
+      "pages_delete": "Remove a landing page.",
+      "fields_view": "See saved fields in the builder.",
+      "fields_create": "Save a question for reuse.",
+      "fields_delete": "Remove a saved field."
     },
     "setArea": "Set the area",
     "searchActions": "Search actions",
@@ -8020,7 +8052,29 @@
       "responses_review": "Review responses",
       "responses_edit": "Correct answers",
       "responses_delete": "Delete responses",
-      "responses_export": "Export responses"
+      "responses_export": "Export responses",
+      "templates_view": "See templates",
+      "templates_edit": "Change templates",
+      "templates_duplicate": "Duplicate templates",
+      "templates_delete": "Delete templates",
+      "lists_view": "See lists",
+      "lists_create": "Create lists",
+      "lists_edit": "Change lists",
+      "lists_duplicate": "Duplicate lists",
+      "lists_delete": "Delete lists",
+      "themes_view": "See themes",
+      "themes_create": "Create themes",
+      "themes_edit": "Change themes",
+      "themes_duplicate": "Duplicate themes",
+      "themes_delete": "Delete themes",
+      "pages_view": "See landing pages",
+      "pages_create": "Create landing pages",
+      "pages_edit": "Change landing pages",
+      "pages_duplicate": "Duplicate landing pages",
+      "pages_delete": "Delete landing pages",
+      "fields_view": "See saved fields",
+      "fields_create": "Save fields",
+      "fields_delete": "Delete saved fields"
     }
   }
 }

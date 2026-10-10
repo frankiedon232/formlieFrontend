@@ -62,7 +62,13 @@ export const PERMISSION_AREAS = [
     key: 'responses',
     groups: [{ key: 'responses', actions: [{ key: 'view', scopes: FORM }, { key: 'review', scopes: FORM }, { key: 'edit', scopes: FORM }, { key: 'delete', scopes: FORM }, { key: 'export', scopes: FORM }] }],
   },
-  { key: 'resources', groups: [{ key: 'resources', actions: [{ key: 'manage' }] }] },
+  // Workspace resources (F22 R2 M3): seeing a library page, making, changing (own · all), copying, deleting (own · all).
+  // Formalie's built-in items are use-only for everyone. Templates are made from a form (forms.save_template).
+  { key: 'templates', groups: [{ key: 'templates', actions: [{ key: 'view' }, { key: 'edit', scopes: OWNED }, { key: 'duplicate' }, { key: 'delete', scopes: OWNED }] }] },
+  { key: 'lists', groups: [{ key: 'lists', actions: [{ key: 'view' }, { key: 'create' }, { key: 'edit', scopes: OWNED }, { key: 'duplicate' }, { key: 'delete', scopes: OWNED }] }] },
+  { key: 'themes', groups: [{ key: 'themes', actions: [{ key: 'view' }, { key: 'create' }, { key: 'edit', scopes: OWNED }, { key: 'duplicate' }, { key: 'delete', scopes: OWNED }] }] },
+  { key: 'pages', groups: [{ key: 'pages', actions: [{ key: 'view' }, { key: 'create' }, { key: 'edit', scopes: OWNED }, { key: 'duplicate' }, { key: 'delete', scopes: OWNED }] }] },
+  { key: 'fields', groups: [{ key: 'fields', actions: [{ key: 'view' }, { key: 'create' }, { key: 'delete', scopes: OWNED }] }] },
   { key: 'analytics', groups: [{ key: 'analytics', actions: [{ key: 'view' }] }] },
   { key: 'data', groups: [{ key: 'data', actions: [{ key: 'view' }, { key: 'query' }, { key: 'manage' }] }] },
   { key: 'api', groups: [{ key: 'api', actions: [{ key: 'view' }, { key: 'manage' }] }] },
@@ -104,7 +110,7 @@ export const DEFAULT_ROLE_GRANTS: Record<(typeof BUILT_IN_ROLES)[number], Grants
     ...grant(['forms.create', 'forms.import', 'folders.create']),
     ...grant(['folders.edit', 'folders.delete'], 'own'),
     ...grant(['responses.view', 'responses.review', 'responses.edit', 'responses.export'], 'own_shared'),
-    ...grant(['analytics.view', 'ai.use']),
+    ...grant(['analytics.view', 'ai.use', 'templates.view', 'lists.view', 'themes.view', 'pages.view', 'fields.view']),
   },
 }
 
@@ -230,11 +236,28 @@ export function grantsFromList(list: readonly string[]): Grants {
   if (has('forms.edit')) give(['forms.rename', 'forms.edit', 'forms.versions', 'forms.share', 'forms.availability', 'forms.close', 'forms.archive', 'forms.move', 'forms.save_template'], forms)
   if (has('forms.publish')) give(['forms.publish'], forms)
   if (has('forms.delete')) give(['forms.delete', 'forms.purge'], forms)
-  // Folders were part of "resources"; deciding who sees a folder goes with managing settings
-  if (has('resources.manage')) give(['folders.create', 'folders.edit', 'folders.delete'], 'all')
+  // Folders and the libraries were "resources"; deciding who sees a folder goes with managing settings
+  if (has('resources.manage')) give(['folders.create', 'folders.edit', 'folders.delete', ...RESOURCE_CHANGES], 'all')
+  give(RESOURCE_VIEWS, 'all')
   if (has('settings.manage')) give(['folders.access'], 'all')
   for (const item of list) if (isPermission(item) && !item.startsWith('forms.') && !item.startsWith('folders.')) out[item] = item.startsWith('responses.') ? forms : 'all'
   return withNeeds(out)
+}
+
+/** Every library's "see" permission (granted to every role by default) and its changes (once "resources.manage"). */
+export const RESOURCE_VIEWS = ['templates.view', 'lists.view', 'themes.view', 'pages.view', 'fields.view']
+export const RESOURCE_CHANGES = ['templates.edit', 'templates.duplicate', 'templates.delete', 'lists.create', 'lists.edit', 'lists.duplicate', 'lists.delete', 'themes.create', 'themes.edit', 'themes.duplicate', 'themes.delete', 'pages.create', 'pages.edit', 'pages.duplicate', 'pages.delete', 'fields.create', 'fields.delete']
+
+/** Address rules for a library: reads are open, then create · duplicate · change · delete (the route checks own · all). */
+function resourceRules(base: string, area: 'templates' | 'lists' | 'themes' | 'pages' | 'fields', method: string): [RegExp, Permission | null][] {
+  const p = (action: string) => `${area}.${action}` as Permission
+  const read = method === 'GET'
+  return [
+    [new RegExp(`^/${base}/[^/]+/duplicate$`), read ? null : p('duplicate')],
+    [new RegExp(`^/${base}$`), read ? null : p('create')],
+    [new RegExp(`^/${base}/[^/]+$`), read ? null : method === 'DELETE' ? p('delete') : p('edit')],
+    [new RegExp(`^/${base}(/|$)`), read ? null : p('edit')],
+  ]
 }
 
 /**
@@ -275,8 +298,16 @@ export function permissionFor(method: string, path: string): Permission | null {
     [/^\/folders$/, r => (r ? null : 'folders.create')],
     [/^\/folders\/[^/]+$/, () => (read ? null : m === 'DELETE' ? 'folders.delete' : 'folders.edit')],
     [/^\/folders(\/|$)/, null],
-    // Templates, themes, landing pages, lists, saved fields: everyone reads them; changes need resources.manage
-    [/^\/(templates|themes|page-designs|option-lists|field-library)(\/|$)/, r => (r || /\/translate-content$/.test(p) ? null : 'resources.manage')],
+    // Templates, lists, themes, landing pages, saved fields (F22 R2 M3): everyone reads them (forms use them);
+    // each change has its own permission, and the route checks own · all on the item
+    [/^\/templates\/translate-content$/, null],
+    [/^\/templates$/, r => (r ? null : 'forms.save_template')],
+    [/^\/templates\/[^/]+\/sync$/, 'templates.edit'],
+    ...resourceRules('templates', 'templates', m),
+    ...resourceRules('option-lists', 'lists', m),
+    ...resourceRules('themes', 'themes', m),
+    ...resourceRules('page-designs', 'pages', m),
+    ...resourceRules('field-library', 'fields', m),
     [/^\/analytics(\/|$)/, 'analytics.view'],
     // Data sources
     [/^\/datasources\/[^/]+\/(query|explorer\/exports)/, 'data.query'],

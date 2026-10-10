@@ -12,6 +12,9 @@ onMounted(() => library.load())
 
 const saveOpen = ref(false)
 const current = computed(() => library.themes.value.find(item => item.id === d.themeId.value) ?? null)
+// Save as a new theme (themes.create) or update the one the form uses when this person may change it (F22 R2 M3)
+const canCreate = computed(() => useCan().can('themes.create'))
+const updatable = computed(() => (current.value?.can?.edit ? current.value : null))
 
 function apply(saved: SavedTheme) {
   if (d.themeId.value === saved.id) return
@@ -24,7 +27,7 @@ function apply(saved: SavedTheme) {
   <section class="flex flex-col gap-2">
     <div class="flex items-center justify-between gap-2">
       <p class="text-xs text-muted">{{ t('themes.yoursHint') }}</p>
-      <UButton :label="t('themes.save')" icon="i-lucide-bookmark-plus" color="neutral" variant="outline" size="xs" class="shrink-0" @click="saveOpen = true" />
+      <UButton v-if="canCreate || updatable" :label="t('themes.save')" icon="i-lucide-bookmark-plus" color="neutral" variant="outline" size="xs" class="shrink-0" @click="saveOpen = true" />
     </div>
 
     <div v-if="library.loading.value && !library.loaded.value" class="grid grid-cols-2 gap-2" :aria-label="t('common.loading')">
@@ -47,6 +50,6 @@ function apply(saved: SavedTheme) {
       </button>
     </div>
 
-    <FormsDesignerSaveThemeModal v-model:open="saveOpen" :current="current" />
+    <FormsDesignerSaveThemeModal v-model:open="saveOpen" :current="updatable" :can-create="canCreate" />
   </section>
 </template>

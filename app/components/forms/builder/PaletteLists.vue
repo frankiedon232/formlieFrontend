@@ -58,11 +58,13 @@ async function remove(list: OptionList) {
   }
 }
 
+// Each list says what this person may do with it (F22 R2 M3); the Lists page needs "see lists"
+const { can } = useCan()
 const menu = (list: OptionList): DropdownMenuItem[][] => [
   [
-    { label: t('library.editList'), icon: 'i-lucide-pencil', onSelect: () => (levelsOf(list) || list.level_counts ? void navigateTo(`/option-sets/${list.id}`) : openEditor(list)) },
-    { label: t('library.openInListOption'), icon: 'i-lucide-external-link', onSelect: () => void navigateTo(`/option-sets/${list.id}`) },
-    { label: t('library.deleteList'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => void remove(list) },
+    ...(list.can?.edit ? [{ label: t('library.editList'), icon: 'i-lucide-pencil', onSelect: () => (levelsOf(list) || list.level_counts ? void navigateTo(`/option-sets/${list.id}`) : openEditor(list)) }] : []),
+    ...(can('lists.view') ? [{ label: t('library.openInListOption'), icon: 'i-lucide-external-link', onSelect: () => void navigateTo(`/option-sets/${list.id}`) }] : []),
+    ...(list.can?.delete ? [{ label: t('library.deleteList'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => void remove(list) }] : []),
   ],
 ]
 </script>
@@ -70,6 +72,7 @@ const menu = (list: OptionList): DropdownMenuItem[][] => [
 <template>
   <div class="flex min-h-0 flex-1 flex-col gap-2">
     <UButton
+      v-if="can('lists.create')"
       :label="t('library.newList')"
       icon="i-lucide-list-plus"
       color="neutral"

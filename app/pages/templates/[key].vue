@@ -66,7 +66,7 @@ async function duplicate() {
         :to="template.source === 'workspace' ? '/templates/mine' : `/templates/category/${template.category}`"
       />
       <UButton
-        v-if="useCan().can('resources.manage')"
+        v-if="useCan().can('templates.duplicate')"
         :label="t('templates.duplicate')"
         icon="i-lucide-copy"
         color="neutral"

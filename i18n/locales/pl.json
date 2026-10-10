@@ -2880,7 +2880,10 @@
     "listChanged": "Lista {name} zmieniła się od czasu wypełnienia tych opcji.",
     "updateFromList": "Zaktualizuj z listy",
     "levels": "Poziomy: {n}",
-    "openInListOption": "Otwórz w Liście opcji"
+    "openInListOption": "Otwórz w Liście opcji",
+    "readOnly": "Możesz przeglądać tę listę",
+    "readOnlySystem": "To lista Formalie. Używaj jej w formularzach lub zduplikuj, aby utworzyć własną.",
+    "readOnlyRole": "Twoja rola nie pozwala zmieniać tej listy."
   },
   "designer": {
     "crumb": "Wygląd",
@@ -7886,7 +7889,6 @@
     "area": {
       "forms": "Formularze",
       "responses": "Odpowiedzi",
-      "resources": "Szablony, motywy i listy",
       "analytics": "Analityka",
       "data": "Źródła danych",
       "api": "Usługa API",
@@ -7895,12 +7897,16 @@
       "settings": "Ustawienia",
       "audit": "Dziennik audytu",
       "ai": "Asystent AI",
-      "folders": "Foldery"
+      "folders": "Foldery",
+      "templates": "Szablony",
+      "lists": "Listy",
+      "themes": "Motywy",
+      "pages": "Strony docelowe",
+      "fields": "Zapisane pola"
     },
     "areaHint": {
       "forms": "Tworzenie, budowanie, udostępnianie, publikowanie i usuwanie formularzy.",
       "responses": "Czytanie, zmienianie i eksportowanie odpowiedzi.",
-      "resources": "Szablony, motywy, strony docelowe, listy i zapisane pola.",
       "analytics": "Strony analityki.",
       "data": "Połączenia z bazami danych, eksplorator i zapytania.",
       "api": "Usługi, endpointy, tokeny i webhooki.",
@@ -7909,7 +7915,12 @@
       "settings": "Ustawienia przestrzeni roboczej.",
       "audit": "Kto co zrobił i kiedy.",
       "ai": "Korzystanie z asystenta AI.",
-      "folders": "Foldery i to, kto może je widzieć."
+      "folders": "Foldery i to, kto może je widzieć.",
+      "templates": "Szablony przestrzeni roboczej. Szablonów Formalie zawsze można używać, nigdy zmieniać.",
+      "lists": "Listy opcji używane w formularzach.",
+      "themes": "Wygląd formularzy.",
+      "pages": "Strona otaczająca formularz.",
+      "fields": "Pytania zapisane do ponownego użycia."
     },
     "action": {
       "view": "Przeglądanie",
@@ -7934,7 +7945,6 @@
       "responses_edit": "Poprawianie wysłanych odpowiedzi.",
       "responses_delete": "Usuwaj odpowiedzi.",
       "responses_export": "Eksportuj odpowiedzi do plików.",
-      "resources_manage": "Twórz i zmieniaj szablony, motywy, strony docelowe, listy, foldery i zapisane pola.",
       "analytics_view": "Zobacz strony analityki.",
       "data_view": "Zobacz źródła danych, tabele i przestrzeń dyskową.",
       "data_query": "Uruchamiaj zapytania i eksportuj wyniki.",
@@ -7967,7 +7977,29 @@
       "folders_create": "Tworzenie nowych folderów.",
       "folders_edit": "Zmiana nazwy i koloru folderu.",
       "folders_delete": "Usuwanie pustych folderów.",
-      "folders_access": "Wybieranie, kto widzi każdy folder, oraz widzenie wszystkich folderów."
+      "folders_access": "Wybieranie, kto widzi każdy folder, oraz widzenie wszystkich folderów.",
+      "templates_view": "Otwieranie stron Szablonów. Użycie szablonu wymaga uprawnienia Tworzenie formularzy, a zapisanie go uprawnienia Zapisz jako szablon.",
+      "templates_edit": "Zmiana nazwy szablonu i aktualizacja go z poziomu formularza.",
+      "templates_duplicate": "Tworzenie kopii szablonu.",
+      "templates_delete": "Usuwanie szablonu przestrzeni roboczej.",
+      "lists_view": "Otwieranie stron List. Formularze zawsze mogą używać list.",
+      "lists_create": "Tworzenie nowych list, także przez import.",
+      "lists_edit": "Zmiana opcji listy i aktualizacja formularzy, które jej używają.",
+      "lists_duplicate": "Tworzenie kopii listy.",
+      "lists_delete": "Usuwanie listy.",
+      "themes_view": "Otwieranie stron Motywów. Formularze zawsze mogą używać motywów.",
+      "themes_create": "Tworzenie nowych motywów, także przez zapisanie ich z projektanta.",
+      "themes_edit": "Zmiana motywu.",
+      "themes_duplicate": "Tworzenie kopii motywu.",
+      "themes_delete": "Usuwanie motywu.",
+      "pages_view": "Otwieranie sekcji Strony docelowe. Formularze zawsze mogą ich używać.",
+      "pages_create": "Tworzenie nowych stron docelowych, także przez zapisanie ich z projektanta.",
+      "pages_edit": "Zmiana strony docelowej.",
+      "pages_duplicate": "Tworzenie kopii strony docelowej.",
+      "pages_delete": "Usuwanie strony docelowej.",
+      "fields_view": "Wyświetlanie zapisanych pól w kreatorze.",
+      "fields_create": "Zapisanie pytania do ponownego użycia.",
+      "fields_delete": "Usuwanie zapisanego pola."
     },
     "setArea": "Ustaw obszar",
     "searchActions": "Szukaj działań",
@@ -8020,7 +8052,29 @@
       "responses_review": "Przeglądanie odpowiedzi",
       "responses_edit": "Poprawianie odpowiedzi",
       "responses_delete": "Usuwanie odpowiedzi",
-      "responses_export": "Eksport odpowiedzi"
+      "responses_export": "Eksport odpowiedzi",
+      "templates_view": "Przeglądanie szablonów",
+      "templates_edit": "Edycja szablonów",
+      "templates_duplicate": "Duplikowanie szablonów",
+      "templates_delete": "Usuwanie szablonów",
+      "lists_view": "Przeglądanie list",
+      "lists_create": "Tworzenie list",
+      "lists_edit": "Edycja list",
+      "lists_duplicate": "Duplikowanie list",
+      "lists_delete": "Usuwanie list",
+      "themes_view": "Przeglądanie motywów",
+      "themes_create": "Tworzenie motywów",
+      "themes_edit": "Edycja motywów",
+      "themes_duplicate": "Duplikowanie motywów",
+      "themes_delete": "Usuwanie motywów",
+      "pages_view": "Przeglądanie stron docelowych",
+      "pages_create": "Tworzenie stron docelowych",
+      "pages_edit": "Edycja stron docelowych",
+      "pages_duplicate": "Duplikowanie stron docelowych",
+      "pages_delete": "Usuwanie stron docelowych",
+      "fields_view": "Przeglądanie zapisanych pól",
+      "fields_create": "Zapisywanie pól",
+      "fields_delete": "Usuwanie zapisanych pól"
     }
   }
 }

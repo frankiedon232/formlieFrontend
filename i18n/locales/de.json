@@ -2880,7 +2880,10 @@
     "listChanged": "{name} hat sich geändert, seit diese Optionen ausgefüllt wurden.",
     "updateFromList": "Aus der Liste aktualisieren",
     "levels": "{n} Ebenen",
-    "openInListOption": "In Optionsliste öffnen"
+    "openInListOption": "In Optionsliste öffnen",
+    "readOnly": "Sie können diese Liste ansehen",
+    "readOnlySystem": "Dies ist eine Liste von Formalie. Verwenden Sie sie in Formularen oder duplizieren Sie sie für eine eigene.",
+    "readOnlyRole": "Ihre Rolle erlaubt es nicht, diese Liste zu ändern."
   },
   "designer": {
     "crumb": "Design",
@@ -7886,7 +7889,6 @@
     "area": {
       "forms": "Formulare",
       "responses": "Antworten",
-      "resources": "Vorlagen, Designs und Listen",
       "analytics": "Analysen",
       "data": "Datenquellen",
       "api": "API-Dienst",
@@ -7895,12 +7897,16 @@
       "settings": "Einstellungen",
       "audit": "Audit-Protokoll",
       "ai": "KI-Assistent",
-      "folders": "Ordner"
+      "folders": "Ordner",
+      "templates": "Vorlagen",
+      "lists": "Listen",
+      "themes": "Designs",
+      "pages": "Landingpages",
+      "fields": "Gespeicherte Felder"
     },
     "areaHint": {
       "forms": "Formulare erstellen, gestalten, teilen, veröffentlichen und löschen.",
       "responses": "Antworten lesen, ändern und exportieren.",
-      "resources": "Vorlagen, Designs, Landingpages, Listen und gespeicherte Felder.",
       "analytics": "Die Analyseseiten.",
       "data": "Datenbankverbindungen, der Explorer und Abfragen.",
       "api": "Dienste, Endpunkte, Tokens und Webhooks.",
@@ -7909,7 +7915,12 @@
       "settings": "Die Einstellungen des Arbeitsbereichs.",
       "audit": "Wer wann was getan hat.",
       "ai": "Den KI-Assistenten nutzen.",
-      "folders": "Ordner und wer sie sehen kann."
+      "folders": "Ordner und wer sie sehen kann.",
+      "templates": "Die Vorlagen des Arbeitsbereichs. Die Vorlagen von Formalie können immer verwendet, aber nie geändert werden.",
+      "lists": "Optionslisten, die in Formularen verwendet werden.",
+      "themes": "Designs für Formulare.",
+      "pages": "Die Seite rund um ein Formular.",
+      "fields": "Fragen, die zur Wiederverwendung gespeichert wurden."
     },
     "action": {
       "view": "Ansehen",
@@ -7934,7 +7945,6 @@
       "responses_edit": "Gesendete Antworten korrigieren.",
       "responses_delete": "Antworten löschen.",
       "responses_export": "Antworten in Dateien exportieren.",
-      "resources_manage": "Vorlagen, Designs, Landingpages, Listen, Ordner und gespeicherte Felder erstellen und ändern.",
       "analytics_view": "Die Analyseseiten ansehen.",
       "data_view": "Datenquellen, Tabellen und Speicher ansehen.",
       "data_query": "Abfragen ausführen und Ergebnisse exportieren.",
@@ -7967,7 +7977,29 @@
       "folders_create": "Neue Ordner anlegen.",
       "folders_edit": "Name und Farbe eines Ordners ändern.",
       "folders_delete": "Leere Ordner entfernen.",
-      "folders_access": "Festlegen, wer welchen Ordner sehen kann, und alle Ordner sehen."
+      "folders_access": "Festlegen, wer welchen Ordner sehen kann, und alle Ordner sehen.",
+      "templates_view": "Die Seiten für Vorlagen öffnen. Zum Verwenden einer Vorlage ist Formulare erstellen nötig, zum Speichern Als Vorlage speichern.",
+      "templates_edit": "Eine Vorlage umbenennen und aus ihrem Formular aktualisieren.",
+      "templates_duplicate": "Eine Kopie einer Vorlage erstellen.",
+      "templates_delete": "Eine Vorlage des Arbeitsbereichs entfernen.",
+      "lists_view": "Die Seiten für Listen öffnen. Formulare können Listen immer verwenden.",
+      "lists_create": "Neue Listen erstellen, auch per Import.",
+      "lists_edit": "Die Optionen einer Liste ändern und die Formulare aktualisieren, die sie verwenden.",
+      "lists_duplicate": "Eine Kopie einer Liste erstellen.",
+      "lists_delete": "Eine Liste entfernen.",
+      "themes_view": "Die Seiten für Designs öffnen. Formulare können Designs immer verwenden.",
+      "themes_create": "Neue Designs erstellen, auch durch Speichern aus dem Designer.",
+      "themes_edit": "Ein Design ändern.",
+      "themes_duplicate": "Eine Kopie eines Designs erstellen.",
+      "themes_delete": "Ein Design entfernen.",
+      "pages_view": "Die Seiten für Landingpages öffnen. Formulare können sie immer verwenden.",
+      "pages_create": "Neue Landingpages erstellen, auch durch Speichern aus dem Designer.",
+      "pages_edit": "Eine Landingpage ändern.",
+      "pages_duplicate": "Eine Kopie einer Landingpage erstellen.",
+      "pages_delete": "Eine Landingpage entfernen.",
+      "fields_view": "Gespeicherte Felder im Builder sehen.",
+      "fields_create": "Eine Frage zur Wiederverwendung speichern.",
+      "fields_delete": "Ein gespeichertes Feld entfernen."
     },
     "setArea": "Bereich festlegen",
     "searchActions": "Aktionen suchen",
@@ -8020,7 +8052,29 @@
       "responses_review": "Antworten prüfen",
       "responses_edit": "Antworten korrigieren",
       "responses_delete": "Antworten löschen",
-      "responses_export": "Antworten exportieren"
+      "responses_export": "Antworten exportieren",
+      "templates_view": "Vorlagen sehen",
+      "templates_edit": "Vorlagen ändern",
+      "templates_duplicate": "Vorlagen duplizieren",
+      "templates_delete": "Vorlagen löschen",
+      "lists_view": "Listen sehen",
+      "lists_create": "Listen erstellen",
+      "lists_edit": "Listen ändern",
+      "lists_duplicate": "Listen duplizieren",
+      "lists_delete": "Listen löschen",
+      "themes_view": "Designs sehen",
+      "themes_create": "Designs erstellen",
+      "themes_edit": "Designs ändern",
+      "themes_duplicate": "Designs duplizieren",
+      "themes_delete": "Designs löschen",
+      "pages_view": "Landingpages sehen",
+      "pages_create": "Landingpages erstellen",
+      "pages_edit": "Landingpages ändern",
+      "pages_duplicate": "Landingpages duplizieren",
+      "pages_delete": "Landingpages löschen",
+      "fields_view": "Gespeicherte Felder sehen",
+      "fields_create": "Felder speichern",
+      "fields_delete": "Gespeicherte Felder löschen"
     }
   }
 }

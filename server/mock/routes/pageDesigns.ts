@@ -7,6 +7,7 @@
  * Forms keep a copy of the tokens plus `schema.page_design_id`, so changing or deleting a design
  * never breaks a form. Every change is in the audit trail.
  */
+import { requireResource, resourceActions } from '../data/resourceAccess'
 import { z } from 'zod'
 import type { PageDesign, PageDesignInsights, ThemeSource } from '#shared/types/forms'
 import { PAGE_PRESETS, pageDesignSchema, presetTokens } from '#shared/utils/forms/page-design'
@@ -59,13 +60,15 @@ function usage(tenant: MockTenant) {
     if (!form.deleted_at && form.schema?.page_design_id) counts.set(form.schema.page_design_id, (counts.get(form.schema.page_design_id) ?? 0) + 1)
   return counts
 }
-const view = (tenant: MockTenant) => {
+const view = (tenant: MockTenant, user?: MockUser) => {
   const counts = usage(tenant)
   return (page: StoredPage): PageDesign => ({
     ...page,
     source: page.source ?? 'saved',
     ...(page.source === 'system' ? { name_key: `pages.preset.${page.id.slice(9)}` } : {}),
     forms_count: counts.get(page.id) ?? 0,
+    // What this person may do with it (F22 R2 M3: own · all; Formalie's are use-only)
+    ...(user ? { can: resourceActions('pages', page, user, tenant) } : {}),
   })
 }
 const allPages = (tenant: MockTenant) => [...pagesOf(tenant), ...systemPages(tenant)]
@@ -91,18 +94,18 @@ const audit = (event: Parameters<typeof recordAudit>[0], tenant: MockTenant, use
 
 /** GET /page-designs, `filter[source]=system,saved,created`, search, sort. */
 export const listPageDesigns = defineMockRoute(({ event, query }) => {
-  const { tenant } = requireAuth(event)
+  const { tenant, user } = requireAuth(event)
   const raw = query['filter[source]']
   const sources = typeof raw === 'string' && raw ? raw.split(',') : null
-  const all = allPages(tenant).map(view(tenant)).filter(page => !sources || sources.includes(page.source))
+  const all = allPages(tenant).map(view(tenant, user)).filter(page => !sources || sources.includes(page.source))
   const { data, meta } = paginate(all, { sort: '-updated_at', ...query }, (item, q) => item.name.toLowerCase().includes(q))
   return ok(data, meta)
 })
 
 /** GET /page-designs/insights, designs per kind and all forms (each card's share of forms). */
 export const pageDesignInsights = defineMockRoute(({ event }) => {
-  const { tenant } = requireAuth(event)
-  const all = allPages(tenant).map(view(tenant))
+  const { tenant, user } = requireAuth(event)
+  const all = allPages(tenant).map(view(tenant, user))
   const insights: PageDesignInsights = {
     by_source: { system: 0, saved: 0, created: 0 },
     in_use: all.filter(page => page.forms_count > 0).length,
@@ -114,8 +117,8 @@ export const pageDesignInsights = defineMockRoute(({ event }) => {
 
 /** GET /page-designs/:id, one design (page editor). */
 export const getPageDesign = defineMockRoute(({ event }) => {
-  const { tenant } = requireAuth(event)
-  return ok(view(tenant)(find(tenant, getRouterParam(event, 'id'))))
+  const { tenant, user } = requireAuth(event)
+  return ok(view(tenant, user)(find(tenant, getRouterParam(event, 'id'))))
 })
 
 export const createPageDesign = defineMockRoute(({ event, body: raw }) => {
@@ -127,13 +130,14 @@ export const createPageDesign = defineMockRoute(({ event, body: raw }) => {
   pagesOf(tenant).unshift(page)
   saveLibrary()
   audit(event, tenant, user, 'forms.page_design_created', page, [{ field: 'source', before: null, after: page.source ?? 'saved' }])
-  return ok(view(tenant)(page), {}, 201)
+  return ok(view(tenant, user)(page), {}, 201)
 })
 
 export const updatePageDesign = defineMockRoute(({ event, body: raw }) => {
   const { user, tenant } = requireAuth(event)
   const input = parseBody(body.partial(), raw)
   const page = own(tenant, getRouterParam(event, 'id'))
+  requireResource('pages', 'edit', page, user, tenant)
   if (input.name) assertName(tenant, input.name, page.id)
   const changes = [
     ...(input.name && input.name !== page.name ? [{ field: 'name', before: page.name, after: input.name }] : []),
@@ -142,7 +146,7 @@ export const updatePageDesign = defineMockRoute(({ event, body: raw }) => {
   Object.assign(page, { name: input.name ?? page.name, tokens: input.tokens ?? page.tokens, updated_at: new Date().toISOString() })
   saveLibrary()
   audit(event, tenant, user, 'forms.page_design_updated', page, changes)
-  return ok(view(tenant)(page))
+  return ok(view(tenant, user)(page))
 })
 
 /** POST /page-designs/:id/duplicate, any design (Formalie's included) → a workspace copy to change. */
@@ -165,13 +169,14 @@ export const duplicatePageDesign = defineMockRoute(({ event, body: raw }) => {
   pagesOf(tenant).unshift(copy)
   saveLibrary()
   audit(event, tenant, user, 'forms.page_design_created', copy, [{ field: 'copied_from', before: null, after: source.name }])
-  return ok(view(tenant)(copy), {}, 201)
+  return ok(view(tenant, user)(copy), {}, 201)
 })
 
 export const deletePageDesign = defineMockRoute(({ event }) => {
   const { user, tenant } = requireAuth(event)
   const list = pagesOf(tenant)
   const page = own(tenant, getRouterParam(event, 'id'))
+  requireResource('pages', 'delete', page, user, tenant)
   list.splice(list.indexOf(page), 1)
   saveLibrary()
   audit(event, tenant, user, 'forms.page_design_deleted', page)

@@ -84,7 +84,7 @@ function setThankYou(key: 'title' | 'message', value: string) {
           }}
         </p>
       </div>
-      <UTooltip v-if="single" :text="t('library.saveFieldHint')">
+      <UTooltip v-if="single && useCan().can('fields.create')" :text="t('library.saveFieldHint')">
         <UButton
           icon="i-lucide-bookmark-plus"
           :label="t('library.saveShort')"

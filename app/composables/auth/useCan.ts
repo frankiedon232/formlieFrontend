@@ -8,6 +8,13 @@ import type { Permission, Scope } from '#shared/utils/auth/permissions'
 /** Pages and the permission each needs (first match), mirrored from the server's table. */
 const PAGE_PERMISSIONS: [RegExp, Permission][] = [
   [/^\/forms\/new(\/|$)/, 'forms.create'],
+  // The libraries (F22 R2 M3): their pages need "see"; each item then says what may change (its `can`)
+  [/^\/settings\/themes\/new$/, 'themes.create'],
+  [/^\/settings\/landing-pages\/new$/, 'pages.create'],
+  [/^\/templates(\/|$)/, 'templates.view'],
+  [/^\/option-sets(\/|$)/, 'lists.view'],
+  [/^\/settings\/themes(\/|$)/, 'themes.view'],
+  [/^\/settings\/landing-pages(\/|$)/, 'pages.view'],
   [/^\/forms\/trash(\/|$)/, 'forms.delete'],
   // The role must reach at least some forms for each tab; the form itself then decides (its `can`)
   [/^\/forms\/[^/]+\/(build|design|logic)(\/|$)/, 'forms.edit'],

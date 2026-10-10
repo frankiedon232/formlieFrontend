@@ -254,6 +254,8 @@ export interface SavedField {
   field: Omit<FormField, 'id'>
   created_by: { id: string; name: string }
   created_at: string
+  /** What the signed-in person may do with it (F22 R2 M3: own · all; Formalie's own items are use-only). */
+  can?: { edit: boolean; delete: boolean }
 }
 
 /** A reusable list of options, countries, regions, products … (GET /option-lists). */
@@ -301,6 +303,8 @@ export interface OptionList {
   created_by: { id: string; name: string }
   created_at: string
   updated_at: string
+  /** What the signed-in person may do with it (F22 R2 M3: own · all; Formalie's own items are use-only). */
+  can?: { edit: boolean; delete: boolean }
 }
 
 /** A row of the Option sets page (GET /option-lists?page=…). */
@@ -344,6 +348,8 @@ export interface SavedTheme {
   created_by: { id: string; name: string }
   created_at: string
   updated_at: string
+  /** What the signed-in person may do with it (F22 R2 M3: own · all; Formalie's own items are use-only). */
+  can?: { edit: boolean; delete: boolean }
 }
 
 /** A page design (Resources → Landing pages): the page around a form on its public link (shared/utils/forms/page-design.ts). */
@@ -358,6 +364,8 @@ export interface PageDesign {
   created_by: { id: string; name: string }
   created_at: string
   updated_at: string
+  /** What the signed-in person may do with it (F22 R2 M3: own · all; Formalie's own items are use-only). */
+  can?: { edit: boolean; delete: boolean }
 }
 
 /** GET /page-designs/insights, totals for each card's share of forms. */

@@ -108,6 +108,7 @@ const RESOURCE_NAV: AppNavItem[] = [
     icon: 'i-lucide-layout-template',
     iconClass: 'text-teal-500',
     to: '/templates',
+    permission: 'templates.view',
     shortcut: 'g-t',
     // Owner, 2026-10-03: the six most used categories, then all categories, then the workspace's own.
     recent: c =>
@@ -127,6 +128,7 @@ const RESOURCE_NAV: AppNavItem[] = [
     icon: 'i-lucide-folder',
     iconClass: 'text-violet-600',
     to: '/option-sets',
+    permission: 'lists.view',
     shortcut: 'g-o',
   },
   {
@@ -134,6 +136,7 @@ const RESOURCE_NAV: AppNavItem[] = [
     icon: 'i-lucide-palette',
     iconClass: 'text-amber-500',
     to: '/settings/themes',
+    permission: 'themes.view',
     // Like Templates (owner, 2026-10-03): the kinds with counts, never every saved theme.
     children: [
       { key: 'themesAll', icon: 'i-lucide-swatch-book', to: '/settings/themes', exact: true, count: c => c.themes.total },
@@ -149,6 +152,7 @@ const RESOURCE_NAV: AppNavItem[] = [
     icon: 'i-lucide-panels-top-left',
     iconClass: 'text-rose-500',
     to: '/settings/landing-pages',
+    permission: 'pages.view',
     children: [
       { key: 'pagesAll', icon: 'i-lucide-layout-grid', to: '/settings/landing-pages', exact: true, count: c => c.pages.total },
       { key: 'pagesSystem', icon: 'i-lucide-sparkles', to: '/settings/landing-pages', query: { source: 'system' }, count: c => c.pages.system },

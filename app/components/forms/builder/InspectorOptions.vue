@@ -136,6 +136,7 @@ const saveListOpen = ref(false)
         @update:model-value="v => v && useList(String(v))"
       />
       <UButton
+        v-if="useCan().can('lists.create')"
         :label="t('library.saveAsList')"
         icon="i-lucide-list-plus"
         color="neutral"

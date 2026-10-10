@@ -2880,7 +2880,10 @@
     "listChanged": "{name} đã thay đổi kể từ khi các tùy chọn này được điền.",
     "updateFromList": "Cập nhật từ danh sách",
     "levels": "{n} cấp",
-    "openInListOption": "Mở trong Danh sách tùy chọn"
+    "openInListOption": "Mở trong Danh sách tùy chọn",
+    "readOnly": "Bạn có thể xem danh sách này",
+    "readOnlySystem": "Đây là danh sách của Formalie. Dùng trong biểu mẫu, hoặc nhân bản để tạo danh sách riêng.",
+    "readOnlyRole": "Vai trò của bạn không cho phép thay đổi danh sách này."
   },
   "designer": {
     "crumb": "Thiết kế",
@@ -7886,7 +7889,6 @@
     "area": {
       "forms": "Biểu mẫu",
       "responses": "Phản hồi",
-      "resources": "Mẫu, giao diện và danh sách",
       "analytics": "Phân tích",
       "data": "Nguồn dữ liệu",
       "api": "Dịch vụ API",
@@ -7895,12 +7897,16 @@
       "settings": "Cài đặt",
       "audit": "Nhật ký kiểm tra",
       "ai": "Trợ lý AI",
-      "folders": "Thư mục"
+      "folders": "Thư mục",
+      "templates": "Mẫu",
+      "lists": "Danh sách",
+      "themes": "Giao diện",
+      "pages": "Trang đích",
+      "fields": "Trường đã lưu"
     },
     "areaHint": {
       "forms": "Tạo, xây dựng, chia sẻ, xuất bản và xóa biểu mẫu.",
       "responses": "Đọc, thay đổi và xuất phản hồi.",
-      "resources": "Mẫu, giao diện, trang đích, danh sách và trường đã lưu.",
       "analytics": "Các trang phân tích.",
       "data": "Kết nối cơ sở dữ liệu, trình khám phá và truy vấn.",
       "api": "Dịch vụ, endpoint, token và webhook.",
@@ -7909,7 +7915,12 @@
       "settings": "Cài đặt của không gian làm việc.",
       "audit": "Ai đã làm gì, và khi nào.",
       "ai": "Dùng trợ lý AI.",
-      "folders": "Thư mục và ai có thể xem chúng."
+      "folders": "Thư mục và ai có thể xem chúng.",
+      "templates": "Các mẫu của không gian làm việc. Mẫu của Formalie luôn dùng được nhưng không bao giờ sửa được.",
+      "lists": "Danh sách tùy chọn dùng trong biểu mẫu.",
+      "themes": "Giao diện cho biểu mẫu.",
+      "pages": "Trang bao quanh một biểu mẫu.",
+      "fields": "Câu hỏi được lưu để dùng lại."
     },
     "action": {
       "view": "Xem",
@@ -7934,7 +7945,6 @@
       "responses_edit": "Sửa các câu trả lời đã gửi.",
       "responses_delete": "Xóa phản hồi.",
       "responses_export": "Xuất phản hồi ra tệp.",
-      "resources_manage": "Tạo và thay đổi mẫu, giao diện, trang đích, danh sách, thư mục và trường đã lưu.",
       "analytics_view": "Xem các trang phân tích.",
       "data_view": "Xem nguồn dữ liệu, bảng và dung lượng lưu trữ.",
       "data_query": "Chạy truy vấn và xuất kết quả.",
@@ -7967,7 +7977,29 @@
       "folders_create": "Tạo thư mục mới.",
       "folders_edit": "Đổi tên và màu của thư mục.",
       "folders_delete": "Xóa các thư mục trống.",
-      "folders_access": "Chọn ai xem được từng thư mục, và xem mọi thư mục."
+      "folders_access": "Chọn ai xem được từng thư mục, và xem mọi thư mục.",
+      "templates_view": "Mở các trang Mẫu. Dùng một mẫu cần quyền Tạo biểu mẫu; lưu một mẫu cần quyền Lưu thành mẫu.",
+      "templates_edit": "Đổi tên một mẫu và cập nhật nó từ biểu mẫu của nó.",
+      "templates_duplicate": "Tạo bản sao của một mẫu.",
+      "templates_delete": "Gỡ một mẫu của không gian làm việc.",
+      "lists_view": "Mở các trang Danh sách. Biểu mẫu luôn dùng được danh sách.",
+      "lists_create": "Tạo danh sách mới, kể cả bằng cách nhập.",
+      "lists_edit": "Thay đổi các tùy chọn của danh sách và cập nhật các biểu mẫu đang dùng nó.",
+      "lists_duplicate": "Tạo bản sao của một danh sách.",
+      "lists_delete": "Gỡ một danh sách.",
+      "themes_view": "Mở các trang Giao diện. Biểu mẫu luôn dùng được giao diện.",
+      "themes_create": "Tạo giao diện mới, kể cả bằng cách lưu từ trình thiết kế.",
+      "themes_edit": "Thay đổi một giao diện.",
+      "themes_duplicate": "Tạo bản sao của một giao diện.",
+      "themes_delete": "Gỡ một giao diện.",
+      "pages_view": "Mở phần Trang đích. Biểu mẫu luôn dùng được chúng.",
+      "pages_create": "Tạo trang đích mới, kể cả bằng cách lưu từ trình thiết kế.",
+      "pages_edit": "Thay đổi một trang đích.",
+      "pages_duplicate": "Tạo bản sao của một trang đích.",
+      "pages_delete": "Gỡ một trang đích.",
+      "fields_view": "Xem các trường đã lưu trong trình tạo.",
+      "fields_create": "Lưu một câu hỏi để dùng lại.",
+      "fields_delete": "Gỡ một trường đã lưu."
     },
     "setArea": "Đặt phạm vi",
     "searchActions": "Tìm thao tác",
@@ -8020,7 +8052,29 @@
       "responses_review": "Xem xét phản hồi",
       "responses_edit": "Sửa câu trả lời",
       "responses_delete": "Xóa phản hồi",
-      "responses_export": "Xuất phản hồi"
+      "responses_export": "Xuất phản hồi",
+      "templates_view": "Xem mẫu",
+      "templates_edit": "Thay đổi mẫu",
+      "templates_duplicate": "Nhân bản mẫu",
+      "templates_delete": "Xóa mẫu",
+      "lists_view": "Xem danh sách",
+      "lists_create": "Tạo danh sách",
+      "lists_edit": "Thay đổi danh sách",
+      "lists_duplicate": "Nhân bản danh sách",
+      "lists_delete": "Xóa danh sách",
+      "themes_view": "Xem giao diện",
+      "themes_create": "Tạo giao diện",
+      "themes_edit": "Thay đổi giao diện",
+      "themes_duplicate": "Nhân bản giao diện",
+      "themes_delete": "Xóa giao diện",
+      "pages_view": "Xem trang đích",
+      "pages_create": "Tạo trang đích",
+      "pages_edit": "Thay đổi trang đích",
+      "pages_duplicate": "Nhân bản trang đích",
+      "pages_delete": "Xóa trang đích",
+      "fields_view": "Xem trường đã lưu",
+      "fields_create": "Lưu trường",
+      "fields_delete": "Xóa trường đã lưu"
     }
   }
 }

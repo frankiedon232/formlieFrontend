@@ -2880,7 +2880,10 @@
     "listChanged": "{name} a changé depuis le remplissage de ces options.",
     "updateFromList": "Mettre à jour depuis la liste",
     "levels": "{n} niveaux",
-    "openInListOption": "Ouvrir dans Liste d’options"
+    "openInListOption": "Ouvrir dans Liste d’options",
+    "readOnly": "Vous pouvez consulter cette liste",
+    "readOnlySystem": "C'est une liste de Formalie. Utilisez-la dans vos formulaires ou dupliquez-la pour créer la vôtre.",
+    "readOnlyRole": "Votre rôle ne vous permet pas de modifier cette liste."
   },
   "designer": {
     "crumb": "Design",
@@ -7886,7 +7889,6 @@
     "area": {
       "forms": "Formulaires",
       "responses": "Réponses",
-      "resources": "Modèles, thèmes et listes",
       "analytics": "Statistiques",
       "data": "Sources de données",
       "api": "Service API",
@@ -7895,12 +7897,16 @@
       "settings": "Paramètres",
       "audit": "Journal d’audit",
       "ai": "Assistant IA",
-      "folders": "Dossiers"
+      "folders": "Dossiers",
+      "templates": "Modèles",
+      "lists": "Listes",
+      "themes": "Thèmes",
+      "pages": "Pages de destination",
+      "fields": "Champs enregistrés"
     },
     "areaHint": {
       "forms": "Créer, concevoir, partager, publier et supprimer des formulaires.",
       "responses": "Lire, modifier et exporter les réponses.",
-      "resources": "Modèles, thèmes, pages d'accueil, listes et champs enregistrés.",
       "analytics": "Les pages de statistiques.",
       "data": "Connexions aux bases de données, explorateur et requêtes.",
       "api": "Services, points de terminaison, jetons et webhooks.",
@@ -7909,7 +7915,12 @@
       "settings": "Les paramètres de l’espace de travail.",
       "audit": "Qui a fait quoi, et quand.",
       "ai": "Utiliser l’assistant IA.",
-      "folders": "Les dossiers et les personnes qui peuvent les voir."
+      "folders": "Les dossiers et les personnes qui peuvent les voir.",
+      "templates": "Les modèles de l’espace de travail. Ceux de Formalie peuvent toujours être utilisés, jamais modifiés.",
+      "lists": "Listes d’options utilisées dans les formulaires.",
+      "themes": "Apparences des formulaires.",
+      "pages": "La page autour d’un formulaire.",
+      "fields": "Questions enregistrées pour être réutilisées."
     },
     "action": {
       "view": "Voir",
@@ -7934,7 +7945,6 @@
       "responses_edit": "Corriger les réponses envoyées.",
       "responses_delete": "Supprimer des réponses.",
       "responses_export": "Exporter les réponses vers des fichiers.",
-      "resources_manage": "Créer et modifier des modèles, thèmes, pages de destination, listes, dossiers et champs enregistrés.",
       "analytics_view": "Voir les pages de statistiques.",
       "data_view": "Voir les sources de données, tables et le stockage.",
       "data_query": "Exécuter des requêtes et exporter les résultats.",
@@ -7967,7 +7977,29 @@
       "folders_create": "Créer de nouveaux dossiers.",
       "folders_edit": "Changer le nom et la couleur d'un dossier.",
       "folders_delete": "Supprimer les dossiers vides.",
-      "folders_access": "Choisir qui peut voir chaque dossier, et voir tous les dossiers."
+      "folders_access": "Choisir qui peut voir chaque dossier, et voir tous les dossiers.",
+      "templates_view": "Ouvrir les pages Modèles. Utiliser un modèle demande Créer des formulaires, en enregistrer un demande Enregistrer comme modèle.",
+      "templates_edit": "Renommer un modèle et le mettre à jour depuis son formulaire.",
+      "templates_duplicate": "Faire une copie d’un modèle.",
+      "templates_delete": "Supprimer un modèle de l’espace de travail.",
+      "lists_view": "Ouvrir les pages Listes. Les formulaires peuvent toujours utiliser les listes.",
+      "lists_create": "Créer des listes, y compris par importation.",
+      "lists_edit": "Modifier les options d’une liste et mettre à jour les formulaires qui l’utilisent.",
+      "lists_duplicate": "Faire une copie d’une liste.",
+      "lists_delete": "Supprimer une liste.",
+      "themes_view": "Ouvrir les pages Thèmes. Les formulaires peuvent toujours utiliser les thèmes.",
+      "themes_create": "Créer des thèmes, y compris en en enregistrant un depuis le designer.",
+      "themes_edit": "Modifier un thème.",
+      "themes_duplicate": "Faire une copie d’un thème.",
+      "themes_delete": "Supprimer un thème.",
+      "pages_view": "Ouvrir la section Pages de destination. Les formulaires peuvent toujours les utiliser.",
+      "pages_create": "Créer des pages de destination, y compris en en enregistrant une depuis le designer.",
+      "pages_edit": "Modifier une page de destination.",
+      "pages_duplicate": "Faire une copie d’une page de destination.",
+      "pages_delete": "Supprimer une page de destination.",
+      "fields_view": "Voir les champs enregistrés dans le générateur.",
+      "fields_create": "Enregistrer une question pour la réutiliser.",
+      "fields_delete": "Supprimer un champ enregistré."
     },
     "setArea": "Définir la zone",
     "searchActions": "Rechercher des actions",
@@ -8020,7 +8052,29 @@
       "responses_review": "Examiner les réponses",
       "responses_edit": "Corriger les réponses",
       "responses_delete": "Supprimer des réponses",
-      "responses_export": "Exporter les réponses"
+      "responses_export": "Exporter les réponses",
+      "templates_view": "Voir les modèles",
+      "templates_edit": "Modifier les modèles",
+      "templates_duplicate": "Dupliquer les modèles",
+      "templates_delete": "Supprimer les modèles",
+      "lists_view": "Voir les listes",
+      "lists_create": "Créer les listes",
+      "lists_edit": "Modifier les listes",
+      "lists_duplicate": "Dupliquer les listes",
+      "lists_delete": "Supprimer les listes",
+      "themes_view": "Voir les thèmes",
+      "themes_create": "Créer les thèmes",
+      "themes_edit": "Modifier les thèmes",
+      "themes_duplicate": "Dupliquer les thèmes",
+      "themes_delete": "Supprimer les thèmes",
+      "pages_view": "Voir les pages de destination",
+      "pages_create": "Créer les pages de destination",
+      "pages_edit": "Modifier les pages de destination",
+      "pages_duplicate": "Dupliquer les pages de destination",
+      "pages_delete": "Supprimer les pages de destination",
+      "fields_view": "Voir les champs enregistrés",
+      "fields_create": "Enregistrer des champs",
+      "fields_delete": "Supprimer les champs enregistrés"
     }
   }
 }

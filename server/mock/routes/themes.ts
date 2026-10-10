@@ -7,6 +7,7 @@
  * Forms keep a copy of the tokens plus `schema.theme_id`, so changing or deleting a theme never
  * breaks a form. Every change is in the audit trail.
  */
+import { requireResource, resourceActions } from '../data/resourceAccess'
 import { z } from 'zod'
 import type { SavedTheme, ThemeInsights, ThemeSource } from '#shared/types/forms'
 import { applyPatch, defaultTheme, themeSchema, THEME_PRESETS } from '#shared/utils/forms/theme'
@@ -65,13 +66,15 @@ function usage(tenant: MockTenant) {
     if (!form.deleted_at && form.schema?.theme_id) counts.set(form.schema.theme_id, (counts.get(form.schema.theme_id) ?? 0) + 1)
   return counts
 }
-const view = (tenant: MockTenant) => {
+const view = (tenant: MockTenant, user?: MockUser) => {
   const counts = usage(tenant)
   return (theme: StoredTheme): SavedTheme => ({
     ...theme,
     source: theme.source ?? 'saved',
     ...(theme.source === 'system' ? { name_key: nameKey(theme.id) } : {}),
     forms_count: counts.get(theme.id) ?? 0,
+    // What this person may do with it (F22 R2 M3: own · all; Formalie's are use-only)
+    ...(user ? { can: resourceActions('themes', theme, user, tenant) } : {}),
   })
 }
 const allThemes = (tenant: MockTenant) => [...themesOf(tenant), ...systemThemes(tenant)]
@@ -97,18 +100,18 @@ const audit = (event: Parameters<typeof recordAudit>[0], tenant: MockTenant, use
 
 /** GET /themes, `filter[source]=system,saved,created`, search, sort. */
 export const listThemes = defineMockRoute(({ event, query }) => {
-  const { tenant } = requireAuth(event)
+  const { tenant, user } = requireAuth(event)
   const raw = query['filter[source]']
   const sources = typeof raw === 'string' && raw ? raw.split(',') : null
-  const all = allThemes(tenant).map(view(tenant)).filter(theme => !sources || sources.includes(theme.source))
+  const all = allThemes(tenant).map(view(tenant, user)).filter(theme => !sources || sources.includes(theme.source))
   const { data, meta } = paginate(all, { sort: '-updated_at', ...query }, (item, q) => item.name.toLowerCase().includes(q))
   return ok(data, meta)
 })
 
 /** GET /themes/insights, themes per kind, forms styled with a library theme, the most used. */
 export const themeInsights = defineMockRoute(({ event }) => {
-  const { tenant } = requireAuth(event)
-  const all = allThemes(tenant).map(view(tenant))
+  const { tenant, user } = requireAuth(event)
+  const all = allThemes(tenant).map(view(tenant, user))
   const forms = formsOf(tenant).forms.filter(form => !form.deleted_at)
   const ids = new Set(all.map(theme => theme.id))
   const insights: ThemeInsights = {
@@ -128,8 +131,8 @@ export const themeInsights = defineMockRoute(({ event }) => {
 
 /** GET /themes/:id, one theme (theme editor). */
 export const getTheme = defineMockRoute(({ event }) => {
-  const { tenant } = requireAuth(event)
-  return ok(view(tenant)(find(tenant, getRouterParam(event, 'id'))))
+  const { tenant, user } = requireAuth(event)
+  return ok(view(tenant, user)(find(tenant, getRouterParam(event, 'id'))))
 })
 
 export const createTheme = defineMockRoute(({ event, body: raw }) => {
@@ -141,13 +144,14 @@ export const createTheme = defineMockRoute(({ event, body: raw }) => {
   themesOf(tenant).unshift(theme)
   saveLibrary()
   audit(event, tenant, user, 'forms.theme_created', theme, [{ field: 'source', before: null, after: theme.source ?? 'saved' }])
-  return ok(view(tenant)(theme), {}, 201)
+  return ok(view(tenant, user)(theme), {}, 201)
 })
 
 export const updateTheme = defineMockRoute(({ event, body: raw }) => {
   const { user, tenant } = requireAuth(event)
   const input = parseBody(body.partial(), raw)
   const theme = own(tenant, getRouterParam(event, 'id'))
+  requireResource('themes', 'edit', theme, user, tenant)
   if (input.name) assertName(tenant, input.name, theme.id)
   const changes = [
     ...(input.name && input.name !== theme.name ? [{ field: 'name', before: theme.name, after: input.name }] : []),
@@ -156,7 +160,7 @@ export const updateTheme = defineMockRoute(({ event, body: raw }) => {
   Object.assign(theme, { name: input.name ?? theme.name, tokens: input.tokens ?? theme.tokens, updated_at: new Date().toISOString() })
   saveLibrary()
   audit(event, tenant, user, 'forms.theme_updated', theme, changes)
-  return ok(view(tenant)(theme))
+  return ok(view(tenant, user)(theme))
 })
 
 /** POST /themes/:id/duplicate, any theme (system included) → a workspace copy to change. */
@@ -179,13 +183,14 @@ export const duplicateTheme = defineMockRoute(({ event, body: raw }) => {
   themesOf(tenant).unshift(copy)
   saveLibrary()
   audit(event, tenant, user, 'forms.theme_created', copy, [{ field: 'copied_from', before: null, after: source.name }])
-  return ok(view(tenant)(copy), {}, 201)
+  return ok(view(tenant, user)(copy), {}, 201)
 })
 
 export const deleteTheme = defineMockRoute(({ event }) => {
   const { user, tenant } = requireAuth(event)
   const list = themesOf(tenant)
   const theme = own(tenant, getRouterParam(event, 'id'))
+  requireResource('themes', 'delete', theme, user, tenant)
   list.splice(list.indexOf(theme), 1)
   saveLibrary()
   audit(event, tenant, user, 'forms.theme_deleted', theme)

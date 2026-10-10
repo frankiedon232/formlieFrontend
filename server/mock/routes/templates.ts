@@ -4,6 +4,7 @@
  * template, edit, duplicate, delete). System templates can't be changed, duplicate them instead.
  * Every change is in the audit trail.
  */
+import { requireResource, resourceActions } from '../data/resourceAccess'
 import { z } from 'zod'
 import type { TemplateCategorySummary, TemplateFacets, TemplateInsights, TemplateSummary } from '#shared/types/templates'
 import { TEMPLATE_CATEGORIES, TEMPLATE_CATEGORY_KEYS, categoryOf, templateTheme, translateContent, type TemplateDef } from '#shared/templates'
@@ -51,7 +52,7 @@ function ownTemplate(tenant: MockTenant, key: string | undefined) {
 
 /** GET /templates, gallery: search (in the person's language), category / source / feature filters, sort. */
 export const listTemplates = defineMockRoute(({ event, query }) => {
-  const { tenant } = requireAuth(event)
+  const { tenant, user } = requireAuth(event)
   const category = filterList(query, 'category')
   const source = filterList(query, 'source')
   const features = filterList(query, 'features')
@@ -73,7 +74,8 @@ export const listTemplates = defineMockRoute(({ event, query }) => {
       item.tags.some(tag => tag.includes(q)) ||
       item.key.includes(q.replace(/\s+/g, '_')),
   )
-  return ok(data, meta)
+  // What this person may do with each (F22 R2 M3: own · all; Formalie's templates are use-only)
+  return ok(data.map(item => ({ ...item, can: resourceActions('templates', item, user, tenant) })), meta)
 })
 
 /** GET /templates/categories, Formalie's categories with counts and use of the templates inside. */
@@ -154,10 +156,10 @@ export const templateFacets = defineMockRoute(({ event }) => {
 
 /** GET /templates/:key, one template with its schema and calculations. */
 export const getTemplate = defineMockRoute(({ event, query }) => {
-  const { tenant } = requireAuth(event)
+  const { tenant, user } = requireAuth(event)
   const detail = templateDetail(tenant, getRouterParam(event, 'key') ?? '', langOf(query))
   if (!detail) throw new MockError('FRM-GEN-1004')
-  return ok(detail)
+  return ok({ ...detail, can: resourceActions('templates', detail, user, tenant) })
 })
 
 const createBody = z.object({
@@ -200,6 +202,7 @@ export const updateTemplate = defineMockRoute(({ event, body: raw }) => {
   const { user, tenant } = requireAuth(event)
   const input = parseBody(createBody.omit({ form_id: true }).partial(), raw)
   const item = ownTemplate(tenant, getRouterParam(event, 'key'))
+  requireResource('templates', 'edit', item, user, tenant)
   if (input.name) assertName(tenant, input.name, item.id)
   const changes = (['name', 'description', 'category'] as const)
     .filter(field => input[field] !== undefined && input[field] !== item[field])
@@ -217,6 +220,7 @@ export const updateTemplate = defineMockRoute(({ event, body: raw }) => {
 export const syncTemplate = defineMockRoute(({ event }) => {
   const { user, tenant } = requireAuth(event)
   const item = ownTemplate(tenant, getRouterParam(event, 'key'))
+  requireResource('templates', 'edit', item, user, tenant)
   const form = item.source_form_id ? formsOf(tenant).forms.find(entry => entry.id === item.source_form_id && !entry.deleted_at) : undefined
   if (!form) throw new MockError('FRM-GEN-1004')
   requireAction(form, user, 'save_template', tenant)
@@ -257,6 +261,7 @@ export const duplicateTemplate = defineMockRoute(({ event, query }) => {
 export const deleteTemplate = defineMockRoute(({ event }) => {
   const { user, tenant } = requireAuth(event)
   const item = ownTemplate(tenant, getRouterParam(event, 'key'))
+  requireResource('templates', 'delete', item, user, tenant)
   const list = workspaceTemplates(tenant)
   list.splice(list.indexOf(item), 1)
   saveLibrary()

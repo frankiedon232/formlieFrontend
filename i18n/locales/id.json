@@ -2880,7 +2880,10 @@
     "listChanged": "{name} telah berubah sejak opsi ini diisi.",
     "updateFromList": "Perbarui dari daftar",
     "levels": "{n} tingkat",
-    "openInListOption": "Buka di Daftar Opsi"
+    "openInListOption": "Buka di Daftar Opsi",
+    "readOnly": "Anda dapat melihat daftar ini",
+    "readOnlySystem": "Ini adalah daftar Formalie. Gunakan di formulir, atau duplikat untuk membuat milik Anda.",
+    "readOnlyRole": "Peran Anda tidak mengizinkan mengubah daftar ini."
   },
   "designer": {
     "crumb": "Desain",
@@ -7886,7 +7889,6 @@
     "area": {
       "forms": "Formulir",
       "responses": "Tanggapan",
-      "resources": "Templat, tema, dan daftar",
       "analytics": "Analitik",
       "data": "Sumber data",
       "api": "Layanan API",
@@ -7895,12 +7897,16 @@
       "settings": "Pengaturan",
       "audit": "Jejak audit",
       "ai": "Asisten AI",
-      "folders": "Folder"
+      "folders": "Folder",
+      "templates": "Templat",
+      "lists": "Daftar",
+      "themes": "Tema",
+      "pages": "Halaman arahan",
+      "fields": "Kolom tersimpan"
     },
     "areaHint": {
       "forms": "Membuat, menyusun, membagikan, memublikasikan, dan menghapus formulir.",
       "responses": "Membaca, mengubah, dan mengekspor jawaban.",
-      "resources": "Templat, tema, halaman arahan, daftar, dan kolom tersimpan.",
       "analytics": "Halaman analitik.",
       "data": "Koneksi database, penjelajah, dan kueri.",
       "api": "Layanan, endpoint, token, dan webhook.",
@@ -7909,7 +7915,12 @@
       "settings": "Pengaturan ruang kerja.",
       "audit": "Siapa melakukan apa, dan kapan.",
       "ai": "Menggunakan asisten AI.",
-      "folders": "Folder dan siapa yang dapat melihatnya."
+      "folders": "Folder dan siapa yang dapat melihatnya.",
+      "templates": "Templat ruang kerja. Templat Formalie selalu bisa dipakai, tidak pernah bisa diubah.",
+      "lists": "Daftar opsi yang dipakai di formulir.",
+      "themes": "Tampilan untuk formulir.",
+      "pages": "Halaman di sekitar formulir.",
+      "fields": "Pertanyaan yang disimpan untuk dipakai ulang."
     },
     "action": {
       "view": "Lihat",
@@ -7934,7 +7945,6 @@
       "responses_edit": "Perbaiki jawaban yang dikirim.",
       "responses_delete": "Menghapus tanggapan.",
       "responses_export": "Mengekspor tanggapan ke file.",
-      "resources_manage": "Membuat dan mengubah templat, tema, halaman arahan, daftar, folder, dan kolom tersimpan.",
       "analytics_view": "Melihat halaman analitik.",
       "data_view": "Melihat sumber data, tabel, dan penyimpanan.",
       "data_query": "Menjalankan kueri dan mengekspor hasilnya.",
@@ -7967,7 +7977,29 @@
       "folders_create": "Membuat folder baru.",
       "folders_edit": "Mengubah nama dan warna folder.",
       "folders_delete": "Menghapus folder kosong.",
-      "folders_access": "Memilih siapa yang dapat melihat setiap folder, dan melihat semua folder."
+      "folders_access": "Memilih siapa yang dapat melihat setiap folder, dan melihat semua folder.",
+      "templates_view": "Membuka halaman Templat. Memakai templat memerlukan Membuat formulir; menyimpannya memerlukan Simpan sebagai templat.",
+      "templates_edit": "Mengganti nama templat dan memperbaruinya dari formulirnya.",
+      "templates_duplicate": "Membuat salinan templat.",
+      "templates_delete": "Menghapus templat ruang kerja.",
+      "lists_view": "Membuka halaman Daftar. Formulir selalu bisa memakai daftar.",
+      "lists_create": "Membuat daftar baru, termasuk dengan impor.",
+      "lists_edit": "Mengubah opsi daftar dan memperbarui formulir yang memakainya.",
+      "lists_duplicate": "Membuat salinan daftar.",
+      "lists_delete": "Menghapus daftar.",
+      "themes_view": "Membuka halaman Tema. Formulir selalu bisa memakai tema.",
+      "themes_create": "Membuat tema baru, termasuk dengan menyimpannya dari desainer.",
+      "themes_edit": "Mengubah tema.",
+      "themes_duplicate": "Membuat salinan tema.",
+      "themes_delete": "Menghapus tema.",
+      "pages_view": "Membuka bagian Halaman arahan. Formulir selalu bisa memakainya.",
+      "pages_create": "Membuat halaman arahan baru, termasuk dengan menyimpannya dari desainer.",
+      "pages_edit": "Mengubah halaman arahan.",
+      "pages_duplicate": "Membuat salinan halaman arahan.",
+      "pages_delete": "Menghapus halaman arahan.",
+      "fields_view": "Melihat kolom tersimpan di pembuat formulir.",
+      "fields_create": "Menyimpan pertanyaan untuk dipakai ulang.",
+      "fields_delete": "Menghapus kolom tersimpan."
     },
     "setArea": "Atur area",
     "searchActions": "Cari tindakan",
@@ -8020,7 +8052,29 @@
       "responses_review": "Tinjau respons",
       "responses_edit": "Perbaiki jawaban",
       "responses_delete": "Hapus respons",
-      "responses_export": "Ekspor respons"
+      "responses_export": "Ekspor respons",
+      "templates_view": "Melihat templat",
+      "templates_edit": "Mengubah templat",
+      "templates_duplicate": "Menduplikasi templat",
+      "templates_delete": "Menghapus templat",
+      "lists_view": "Melihat daftar",
+      "lists_create": "Membuat daftar",
+      "lists_edit": "Mengubah daftar",
+      "lists_duplicate": "Menduplikasi daftar",
+      "lists_delete": "Menghapus daftar",
+      "themes_view": "Melihat tema",
+      "themes_create": "Membuat tema",
+      "themes_edit": "Mengubah tema",
+      "themes_duplicate": "Menduplikasi tema",
+      "themes_delete": "Menghapus tema",
+      "pages_view": "Melihat halaman arahan",
+      "pages_create": "Membuat halaman arahan",
+      "pages_edit": "Mengubah halaman arahan",
+      "pages_duplicate": "Menduplikasi halaman arahan",
+      "pages_delete": "Menghapus halaman arahan",
+      "fields_view": "Melihat kolom tersimpan",
+      "fields_create": "Menyimpan kolom",
+      "fields_delete": "Menghapus kolom tersimpan"
     }
   }
 }

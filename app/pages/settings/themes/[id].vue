@@ -61,8 +61,9 @@ onMounted(async () => {
 watch(name, value => setLabel(route.path, value.trim() || t('themes.editor.untitled')), { immediate: true })
 useHead({ title: () => name.value.trim() || t('themes.editor.newTitle') })
 
-/** Formalie's own designs can be looked at and copied, not changed. */
-const readOnly = computed(() => theme.value?.source === 'system')
+/** Formalie's own designs, and themes this person may not change (F22 R2 M3), can be looked at, and copied with "duplicate". */
+const readOnly = computed(() => !!theme.value && !theme.value.can?.edit)
+const canDuplicate = computed(() => useCan().can('themes.duplicate'))
 const { busy: duplicating, run: runDuplicate } = useBusy()
 async function duplicateToEdit() {
   if (!theme.value) return
@@ -154,6 +155,7 @@ const panelOpen = ref(false)
         to="/settings/themes"
       />
       <UButton
+        v-if="canDuplicate"
         :label="t('themes.duplicateToEdit')"
         icon="i-lucide-copy-plus"
         color="neutral"

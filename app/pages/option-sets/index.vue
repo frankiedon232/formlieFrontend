@@ -53,7 +53,9 @@ const pickStatus = (status: string) => void router.replace({ query: { ...route.q
 
 const open = (row: OptionList) => navigateTo(`/option-sets/${row.id}`)
 const newOpen = ref(false)
-defineShortcuts({ n: { usingInput: false, handler: () => (newOpen.value = true) } })
+// What this person may do (F22 R2 M3): create, duplicate; each list says whether it may change or go
+const { can } = useCan()
+defineShortcuts({ n: { usingInput: false, handler: () => can('lists.create') && (newOpen.value = true) } })
 const created = (list: OptionList) => navigateTo(`/option-sets/${list.id}`)
 
 const busy = ref<string | null>(null)
@@ -74,18 +76,19 @@ async function remove(row: OptionListRow) {
   const ok = await confirm({ title: t('optionSets.deleteTitle', { name: row.name }), description: row.forms_count ? t('optionSets.deleteUsed', { n: row.forms_count }, row.forms_count) : t('optionSets.deleteDesc'), confirmLabel: t('apiService.delete.confirm'), danger: true })
   if (ok) await act(row, () => api.del(`/option-lists/${row.id}`), t('optionSets.deleted', { name: row.name }))
 }
-const rowActions = (row: OptionListRow): DropdownMenuItem[][] => [
+const rowActions = (row: OptionListRow): DropdownMenuItem[][] =>
   [
-    { label: t('apiService.actions.open'), icon: 'i-lucide-panel-right-open', onSelect: () => void open(row) },
-    { label: t('optionSets.duplicate'), icon: 'i-lucide-copy', onSelect: () => void act(row, () => api.post(`/option-lists/${row.id}/duplicate`), t('optionSets.duplicated', { name: row.name })) },
-  ],
-  [{ label: t('apiService.actions.delete'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => void remove(row) }],
-]
+    [
+      { label: t('apiService.actions.open'), icon: 'i-lucide-panel-right-open', onSelect: () => void open(row) },
+      ...(can('lists.duplicate') ? [{ label: t('optionSets.duplicate'), icon: 'i-lucide-copy', onSelect: () => void act(row, () => api.post(`/option-lists/${row.id}/duplicate`), t('optionSets.duplicated', { name: row.name })) }] : []),
+    ],
+    row.can?.delete ? [{ label: t('apiService.actions.delete'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => void remove(row) }] : [],
+  ].filter(group => group.length)
 </script>
 
 <template>
   <AppPanel id="option-sets" :title="t('nav.optionSets')" :subtitle="t('optionSets.subtitle')">
-    <template #actions>
+    <template v-if="can('lists.create')" #actions>
       <UButton :label="t('optionSets.new')" icon="i-lucide-plus" color="neutral" @click="newOpen = true">
         <template #trailing><UKbd value="N" size="sm" class="hidden sm:inline-flex" /></template>
       </UButton>
@@ -124,7 +127,7 @@ const rowActions = (row: OptionListRow): DropdownMenuItem[][] => [
       <template #forms_count-cell="{ row }"><span class="text-muted tabular-nums">{{ t('optionSets.formsCount', { n: number(row.original.forms_count) }, row.original.forms_count) }}</span></template>
       <template #languages-cell="{ row }"><span class="text-xs text-muted">{{ row.original.languages.length ? row.original.languages.map((code: string) => code.toUpperCase()).join(' · ') : '–' }}</span></template>
       <template #updated_at-cell="{ row }"><UTooltip :text="dateTime(row.original.updated_at)"><span class="whitespace-nowrap text-muted">{{ relative(row.original.updated_at) }}</span></UTooltip></template>
-      <template #empty-actions><UButton :label="t('optionSets.new')" icon="i-lucide-plus" color="neutral" @click="newOpen = true" /></template>
+      <template v-if="can('lists.create')" #empty-actions><UButton :label="t('optionSets.new')" icon="i-lucide-plus" color="neutral" @click="newOpen = true" /></template>
       <template #grid-card="{ row }"><OptionSetsCard :item="row" :actions="rowActions(row)" :busy="busy === row.id" /></template>
     </DataView>
 

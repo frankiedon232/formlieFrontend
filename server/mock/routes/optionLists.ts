@@ -14,6 +14,7 @@
  *
  * Values must be different within a list (FRM-FORM-1020). Every change is in the audit trail.
  */
+import { requireResource, resourceActions } from '../data/resourceAccess'
 import { z } from 'zod'
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
 import type { OptionItem, OptionList, OptionListInsights, OptionListRow, OptionListUsage } from '#shared/types/forms'
@@ -104,7 +105,7 @@ function usageOf(tenant: MockTenant, list: OptionList): OptionListUsage[] {
     })
 }
 
-function rowOf(tenant: MockTenant, list: OptionList, languages: string[]): OptionListRow {
+function rowOf(tenant: MockTenant, list: OptionList, languages: string[], user?: MockUser): OptionListRow {
   const usage = usageOf(tenant, list)
   const active = list.options.filter(option => option.active !== false)
   return {
@@ -115,6 +116,7 @@ function rowOf(tenant: MockTenant, list: OptionList, languages: string[]): Optio
     languages: languages.filter(code => active.length > 0 && active.every(option => option.translations?.[code]?.trim())),
     forms_count: usage.length,
     fields_count: usage.reduce((sum, item) => sum + item.fields.length, 0),
+    ...(user ? { can: resourceActions('lists', list, user, tenant) } : {}),
   }
 }
 const allLanguages = (tenant: MockTenant) => [...new Set(libraryOf(tenant).lists.flatMap(list => list.options.flatMap(option => Object.keys(option.translations ?? {}))))]
@@ -122,13 +124,13 @@ const allLanguages = (tenant: MockTenant) => [...new Set(libraryOf(tenant).lists
 // ── Routes ───────────────────────────────────────────────────────────────────────────
 
 export const listOptionLists = defineMockRoute(({ event, query }) => {
-  const { tenant } = requireAuth(event)
+  const { tenant, user } = requireAuth(event)
   const lists = [...libraryOf(tenant).lists].sort((a, b) => a.name.localeCompare(b.name))
   // The builder wants them all (large lists: counts per level instead of their options); the Option sets page pages through rows
-  if (query.page === undefined) return ok(lists.map(list => (keptOnServer(list) ? { ...list, options: [], level_counts: levelCounts(list) } : list)))
+  if (query.page === undefined) return ok(lists.map(list => ({ ...(keptOnServer(list) ? { ...list, options: [], level_counts: levelCounts(list) } : list), can: resourceActions('lists', list, user, tenant) })))
   const languages = allLanguages(tenant)
   const status = typeof query['filter[status]'] === 'string' ? query['filter[status]'].split(',') : []
-  let rows = lists.map(list => rowOf(tenant, list, languages))
+  let rows = lists.map(list => rowOf(tenant, list, languages, user))
   if (status.length) rows = rows.filter(row => (status.includes('in_use') && row.forms_count > 0) || (status.includes('unused') && !row.forms_count) || (status.includes('retired') && row.retired_count > 0))
   const sort = typeof query.sort === 'string' ? query.sort : 'name'
   const key = sort.replace(/^-/, '') as 'name' | 'items_count' | 'forms_count' | 'updated_at'
@@ -139,9 +141,9 @@ export const listOptionLists = defineMockRoute(({ event, query }) => {
 })
 
 export const optionListInsights = defineMockRoute(({ event }) => {
-  const { tenant } = requireAuth(event)
+  const { tenant, user } = requireAuth(event)
   const languages = allLanguages(tenant)
-  const rows = libraryOf(tenant).lists.map(list => rowOf(tenant, list, languages))
+  const rows = libraryOf(tenant).lists.map(list => rowOf(tenant, list, languages, user))
   return ok<OptionListInsights>({
     total: rows.length,
     in_use: rows.filter(row => row.forms_count > 0).length,
@@ -153,9 +155,9 @@ export const optionListInsights = defineMockRoute(({ event }) => {
 })
 
 export const getOptionList = defineMockRoute(({ event }) => {
-  const { tenant } = requireAuth(event)
+  const { tenant, user } = requireAuth(event)
   const list = findList(tenant, getRouterParam(event, 'id'))
-  return ok(rowOf(tenant, list, allLanguages(tenant)))
+  return ok(rowOf(tenant, list, allLanguages(tenant), user))
 })
 
 export const createOptionList = defineMockRoute(({ event, body }) => {
@@ -179,6 +181,7 @@ export const updateOptionList = defineMockRoute(({ event, body }) => {
   const input = parseBody(listBody.partial(), body)
   const store = libraryOf(tenant)
   const found = findList(tenant, getRouterParam(event, 'id'))
+  requireResource('lists', 'edit', found, user, tenant)
   if (input.name) assertName(store.lists, input.name, found.id)
   const levels = input.levels !== undefined ? cleanLevels(input.levels) : found.levels
   const columns = input.columns !== undefined ? cleanColumns(input.columns) : found.columns
@@ -214,7 +217,7 @@ export const updateOptionList = defineMockRoute(({ event, body }) => {
     if (touched) saveForms()
   }
   audit(event, tenant, user, 'forms.list_updated', found, { changes })
-  return ok(rowOf(tenant, found, allLanguages(tenant)))
+  return ok(rowOf(tenant, found, allLanguages(tenant), user))
 })
 
 export const deleteOptionList = defineMockRoute(({ event }) => {
@@ -222,6 +225,7 @@ export const deleteOptionList = defineMockRoute(({ event }) => {
   const store = libraryOf(tenant)
   const index = store.lists.findIndex(item => item.id === getRouterParam(event, 'id'))
   if (index < 0) throw new MockError('FRM-GEN-1004')
+  requireResource('lists', 'delete', store.lists[index]!, user, tenant)
   const [removed] = store.lists.splice(index, 1)
   saveLibrary()
   // Forms keep their copies of the options; the link just leads nowhere now
@@ -257,6 +261,7 @@ const syncBody = z.object({ form_ids: z.array(z.string().max(64)).max(500).optio
 export const syncOptionList = defineMockRoute(({ event, body }) => {
   const { user, tenant } = requireAuth(event)
   const list = findList(tenant, getRouterParam(event, 'id'))
+  requireResource('lists', 'edit', list, user, tenant)
   const { form_ids } = parseBody(syncBody, body ?? {})
   const targets = usageOf(tenant, list).filter(item => !form_ids || form_ids.includes(item.form.id))
   let fields = 0

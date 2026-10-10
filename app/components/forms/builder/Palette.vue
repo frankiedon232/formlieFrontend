@@ -18,7 +18,8 @@ onMounted(() => library.load())
 
 const tabs = computed(() => [
   { value: 'fields', label: t('library.tab.fields') },
-  { value: 'saved', label: t('library.tab.saved'), badge: library.savedFields.value.length || undefined },
+  // Saved fields only for people who may see them (F22 R2 M3)
+  ...(useCan().can('fields.view') ? [{ value: 'saved' as const, label: t('library.tab.saved'), badge: library.savedFields.value.length || undefined }] : []),
   { value: 'lists', label: t('library.tab.lists'), badge: library.lists.value.length || undefined },
 ])
 

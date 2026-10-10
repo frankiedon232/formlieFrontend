@@ -25,7 +25,6 @@ export function useFormMenu(actions: ReturnType<typeof useFormActions>, handlers
   const config = useRuntimeConfig().public
   const tenant = useTenant()
   const request = useRequestURL()
-  const { can } = useCan()
   /** Public fill link: https://{forms | sub}.formalie.com/{formKey}/fill (docs/01-ARCHITECTURE.md). */
   const fillLink = (key: string) => formLink(publicHosts(config, request.port), key, 'fill', tenant.profile.value?.subdomain ?? null)
 
@@ -72,8 +71,7 @@ export function useFormMenu(actions: ReturnType<typeof useFormActions>, handlers
         }),
         ...when(allowed('share_view'), { label: t('share.open'), icon: 'i-lucide-share-2', to: `/forms/${form.id}/share` }),
         ...when(!page && !!form.responses_can?.view, { label: t('forms.viewResponses'), icon: 'i-lucide-inbox', to: `/forms/${form.id}/responses` }),
-        // A template is a resource too (templates get their own permissions later; until then resources.manage)
-        ...when(allowed('save_template') && can('resources.manage'), { label: t('templates.saveAs'), icon: 'i-lucide-layout-template', onSelect: () => handlers.saveTemplate(form) }),
+        ...when(allowed('save_template'), { label: t('templates.saveAs'), icon: 'i-lucide-layout-template', onSelect: () => handlers.saveTemplate(form) }),
       ],
       lifecycle,
       when(allowed('delete'), { label: t('forms.actions.delete'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => actions.remove(form) }),

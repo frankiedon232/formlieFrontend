@@ -80,21 +80,18 @@ async function duplicateToEdit(page: PageDesign) {
     busy.value = next
   }
 }
+// Each landing page says what this person may do (F22 R2 M3: own · all; Formalie's are use-only)
+const { can } = useCan()
 const rowActions = (page: PageDesign): DropdownMenuItem[][] =>
-  page.source === 'system'
-    ? [
-        [
-          { label: t('themes.view'), icon: 'i-lucide-eye', to: `/settings/landing-pages/${page.id}` },
-          { label: t('themes.duplicateToEdit'), icon: 'i-lucide-copy-plus', onSelect: () => void duplicateToEdit(page) },
-        ],
-      ]
-    : [
-        [
-          { label: t('themes.editDesign'), icon: 'i-lucide-paintbrush', to: `/settings/landing-pages/${page.id}` },
-          { label: t('themes.duplicate'), icon: 'i-lucide-copy', onSelect: () => void act(page, () => library.duplicate({ ...page, name: name(page) })) },
-        ],
-        [{ label: t('themes.delete'), icon: 'i-lucide-trash-2', color: 'error', onSelect: () => void remove(page) }],
-      ]
+  [
+    [
+      page.can?.edit ? { label: t('themes.editDesign'), icon: 'i-lucide-paintbrush', to: `/settings/landing-pages/${page.id}` } : { label: t('themes.view'), icon: 'i-lucide-eye', to: `/settings/landing-pages/${page.id}` },
+      ...(can('pages.duplicate')
+        ? [page.source === 'system' ? { label: t('themes.duplicateToEdit'), icon: 'i-lucide-copy-plus', onSelect: () => void duplicateToEdit(page) } : { label: t('themes.duplicate'), icon: 'i-lucide-copy', onSelect: () => void act(page, () => library.duplicate({ ...page, name: name(page) })) }]
+        : []),
+    ],
+    page.can?.delete ? [{ label: t('themes.delete'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => void remove(page) }] : [],
+  ].filter(group => group.length)
 const isBusy = (page: PageDesign) => busy.value.has(page.id)
 </script>
 
@@ -102,7 +99,7 @@ const isBusy = (page: PageDesign) => busy.value.has(page.id)
   <AppPanel id="pages" :title="t('nav.pages')" :subtitle="t('pages.subtitle')" subtitle-icon="i-lucide-panels-top-left">
     <template #actions>
       <UButton :label="t('themes.goToForms')" icon="i-lucide-file-text" color="neutral" variant="outline" to="/forms" />
-      <UButton :label="t('pages.new')" icon="i-lucide-plus" color="neutral" to="/settings/landing-pages/new" />
+      <UButton v-if="can('pages.create')" :label="t('pages.new')" icon="i-lucide-plus" color="neutral" to="/settings/landing-pages/new" />
     </template>
 
     <DataView

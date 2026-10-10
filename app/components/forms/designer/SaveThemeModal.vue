@@ -7,7 +7,7 @@ import { z } from 'zod'
 import type { FormSubmitEvent } from '@nuxt/ui'
 import type { SavedTheme } from '#shared/types/forms'
 
-const props = defineProps<{ current: SavedTheme | null }>()
+const props = defineProps<{ current: SavedTheme | null; canCreate?: boolean }>()
 const open = defineModel<boolean>('open', { default: false })
 const { t } = useI18n()
 const d = useDesigner()
@@ -24,7 +24,7 @@ watch(open, value => {
 })
 const modes = computed(() => [
   { value: 'update', label: t('themes.updateExisting', { name: props.current?.name ?? '' }) },
-  { value: 'new', label: t('themes.saveNew') },
+  ...(props.canCreate ? [{ value: 'new', label: t('themes.saveNew') }] : []),
 ])
 
 const { busy, run } = useBusy()
@@ -47,7 +47,7 @@ async function submit(event: FormSubmitEvent<z.output<typeof schema>>) {
   <AppModal v-model:open="open" :title="t('themes.saveTitle')" :description="t('themes.saveDesc')" :dismissible="!busy">
     <template #body>
       <UForm id="save-theme-form" :schema="schema" :state="state" class="flex flex-col gap-4" @submit="submit">
-        <URadioGroup v-if="current" v-model="mode" :items="modes" value-key="value" color="neutral" :aria-label="t('themes.saveTitle')" />
+        <URadioGroup v-if="current && canCreate" v-model="mode" :items="modes" value-key="value" color="neutral" :aria-label="t('themes.saveTitle')" />
         <UFormField name="name" :label="t('themes.name')" required>
           <UInput v-model="state.name" maxlength="80" class="w-full" :placeholder="t('themes.namePlaceholder')" autofocus />
         </UFormField>

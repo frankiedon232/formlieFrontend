@@ -2880,7 +2880,10 @@
     "listChanged": "{name} is veranderd sinds deze opties zijn ingevuld.",
     "updateFromList": "Bijwerken vanuit de lijst",
     "levels": "{n} niveaus",
-    "openInListOption": "Openen in Optielijst"
+    "openInListOption": "Openen in Optielijst",
+    "readOnly": "U kunt deze lijst bekijken",
+    "readOnlySystem": "Dit is een lijst van Formalie. Gebruik hem in formulieren of dupliceer hem voor uw eigen lijst.",
+    "readOnlyRole": "Uw rol staat niet toe dat u deze lijst wijzigt."
   },
   "designer": {
     "crumb": "Ontwerp",
@@ -7886,7 +7889,6 @@
     "area": {
       "forms": "Formulieren",
       "responses": "Reacties",
-      "resources": "Sjablonen, thema's en lijsten",
       "analytics": "Analyses",
       "data": "Gegevensbronnen",
       "api": "API-service",
@@ -7895,12 +7897,16 @@
       "settings": "Instellingen",
       "audit": "Audittrail",
       "ai": "AI-assistent",
-      "folders": "Mappen"
+      "folders": "Mappen",
+      "templates": "Sjablonen",
+      "lists": "Lijsten",
+      "themes": "Thema’s",
+      "pages": "Landingspagina’s",
+      "fields": "Opgeslagen velden"
     },
     "areaHint": {
       "forms": "Formulieren maken, bouwen, delen, publiceren en verwijderen.",
       "responses": "Reacties lezen, wijzigen en exporteren.",
-      "resources": "Sjablonen, thema's, landingspagina's, lijsten en opgeslagen velden.",
       "analytics": "De analysepagina's.",
       "data": "Databaseverbindingen, de verkenner en query's.",
       "api": "Services, endpoints, tokens en webhooks.",
@@ -7909,7 +7915,12 @@
       "settings": "De instellingen van de werkruimte.",
       "audit": "Wie wat heeft gedaan, en wanneer.",
       "ai": "De AI-assistent gebruiken.",
-      "folders": "Mappen en wie ze kan zien."
+      "folders": "Mappen en wie ze kan zien.",
+      "templates": "De sjablonen van de werkruimte. Sjablonen van Formalie kunnen altijd worden gebruikt, nooit worden gewijzigd.",
+      "lists": "Optielijsten die in formulieren worden gebruikt.",
+      "themes": "Uiterlijken voor formulieren.",
+      "pages": "De pagina rond een formulier.",
+      "fields": "Vragen die zijn opgeslagen om opnieuw te gebruiken."
     },
     "action": {
       "view": "Bekijken",
@@ -7934,7 +7945,6 @@
       "responses_edit": "Verzonden antwoorden corrigeren.",
       "responses_delete": "Reacties verwijderen.",
       "responses_export": "Reacties exporteren naar bestanden.",
-      "resources_manage": "Sjablonen, thema's, landingspagina's, lijsten, mappen en opgeslagen velden aanmaken en wijzigen.",
       "analytics_view": "De analysepagina's bekijken.",
       "data_view": "Gegevensbronnen, tabellen en opslag bekijken.",
       "data_query": "Query's uitvoeren en resultaten exporteren.",
@@ -7967,7 +7977,29 @@
       "folders_create": "Nieuwe mappen maken.",
       "folders_edit": "De naam en kleur van een map wijzigen.",
       "folders_delete": "Lege mappen verwijderen.",
-      "folders_access": "Kiezen wie elke map kan zien, en alle mappen zien."
+      "folders_access": "Kiezen wie elke map kan zien, en alle mappen zien.",
+      "templates_view": "De pagina’s voor Sjablonen openen. Een sjabloon gebruiken vraagt Formulieren maken; er een opslaan vraagt Opslaan als sjabloon.",
+      "templates_edit": "Een sjabloon hernoemen en bijwerken vanuit het formulier.",
+      "templates_duplicate": "Een kopie van een sjabloon maken.",
+      "templates_delete": "Een sjabloon van de werkruimte verwijderen.",
+      "lists_view": "De pagina’s voor Lijsten openen. Formulieren kunnen altijd lijsten gebruiken.",
+      "lists_create": "Nieuwe lijsten maken, ook door te importeren.",
+      "lists_edit": "De opties van een lijst wijzigen en de formulieren bijwerken die haar gebruiken.",
+      "lists_duplicate": "Een kopie van een lijst maken.",
+      "lists_delete": "Een lijst verwijderen.",
+      "themes_view": "De pagina’s voor Thema’s openen. Formulieren kunnen altijd thema’s gebruiken.",
+      "themes_create": "Nieuwe thema’s maken, ook door er een op te slaan vanuit de ontwerper.",
+      "themes_edit": "Een thema wijzigen.",
+      "themes_duplicate": "Een kopie van een thema maken.",
+      "themes_delete": "Een thema verwijderen.",
+      "pages_view": "De sectie Landingspagina’s openen. Formulieren kunnen ze altijd gebruiken.",
+      "pages_create": "Nieuwe landingspagina’s maken, ook door er een op te slaan vanuit de ontwerper.",
+      "pages_edit": "Een landingspagina wijzigen.",
+      "pages_duplicate": "Een kopie van een landingspagina maken.",
+      "pages_delete": "Een landingspagina verwijderen.",
+      "fields_view": "Opgeslagen velden zien in de builder.",
+      "fields_create": "Een vraag opslaan om opnieuw te gebruiken.",
+      "fields_delete": "Een opgeslagen veld verwijderen."
     },
     "setArea": "Gebied instellen",
     "searchActions": "Acties zoeken",
@@ -8020,7 +8052,29 @@
       "responses_review": "Antwoorden beoordelen",
       "responses_edit": "Antwoorden corrigeren",
       "responses_delete": "Antwoorden verwijderen",
-      "responses_export": "Antwoorden exporteren"
+      "responses_export": "Antwoorden exporteren",
+      "templates_view": "Sjablonen bekijken",
+      "templates_edit": "Sjablonen wijzigen",
+      "templates_duplicate": "Sjablonen dupliceren",
+      "templates_delete": "Sjablonen verwijderen",
+      "lists_view": "Lijsten bekijken",
+      "lists_create": "Lijsten maken",
+      "lists_edit": "Lijsten wijzigen",
+      "lists_duplicate": "Lijsten dupliceren",
+      "lists_delete": "Lijsten verwijderen",
+      "themes_view": "Thema’s bekijken",
+      "themes_create": "Thema’s maken",
+      "themes_edit": "Thema’s wijzigen",
+      "themes_duplicate": "Thema’s dupliceren",
+      "themes_delete": "Thema’s verwijderen",
+      "pages_view": "Landingspagina’s bekijken",
+      "pages_create": "Landingspagina’s maken",
+      "pages_edit": "Landingspagina’s wijzigen",
+      "pages_duplicate": "Landingspagina’s dupliceren",
+      "pages_delete": "Landingspagina’s verwijderen",
+      "fields_view": "Opgeslagen velden bekijken",
+      "fields_create": "Velden opslaan",
+      "fields_delete": "Opgeslagen velden verwijderen"
     }
   }
 }

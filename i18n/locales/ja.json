@@ -2880,7 +2880,10 @@
     "listChanged": "これらの選択肢が入力されてから、{name}が変更されました。",
     "updateFromList": "リストから更新",
     "levels": "{n}階層",
-    "openInListOption": "選択肢リストで開く"
+    "openInListOption": "選択肢リストで開く",
+    "readOnly": "このリストは閲覧できます",
+    "readOnlySystem": "これは Formalie のリストです。フォームで使うか、複製して独自のリストを作成してください。",
+    "readOnlyRole": "あなたのロールではこのリストを変更できません。"
   },
   "designer": {
     "crumb": "デザイン",
@@ -7886,7 +7889,6 @@
     "area": {
       "forms": "フォーム",
       "responses": "回答",
-      "resources": "テンプレート、テーマ、リスト",
       "analytics": "分析",
       "data": "データソース",
       "api": "API サービス",
@@ -7895,12 +7897,16 @@
       "settings": "設定",
       "audit": "監査ログ",
       "ai": "AI アシスタント",
-      "folders": "フォルダー"
+      "folders": "フォルダー",
+      "templates": "テンプレート",
+      "lists": "リスト",
+      "themes": "テーマ",
+      "pages": "ランディングページ",
+      "fields": "保存済みの項目"
     },
     "areaHint": {
       "forms": "フォームの作成、構築、共有、公開、削除。",
       "responses": "回答の閲覧、変更、エクスポート。",
-      "resources": "テンプレート、テーマ、ランディングページ、リスト、保存済みフィールド。",
       "analytics": "分析ページ。",
       "data": "データベース接続、エクスプローラー、クエリ。",
       "api": "サービス、エンドポイント、トークン、Webhook。",
@@ -7909,7 +7915,12 @@
       "settings": "ワークスペースの設定。",
       "audit": "誰がいつ何をしたか。",
       "ai": "AI アシスタントの利用。",
-      "folders": "フォルダーと、閲覧できる人。"
+      "folders": "フォルダーと、閲覧できる人。",
+      "templates": "ワークスペースのテンプレートです。Formalie のテンプレートはいつでも使えますが、変更はできません。",
+      "lists": "フォームで使う選択肢リストです。",
+      "themes": "フォームの見た目です。",
+      "pages": "フォームを囲むページです。",
+      "fields": "再利用のために保存した質問です。"
     },
     "action": {
       "view": "表示",
@@ -7934,7 +7945,6 @@
       "responses_edit": "送信された回答を修正します。",
       "responses_delete": "回答の削除。",
       "responses_export": "回答をファイルにエクスポート。",
-      "resources_manage": "テンプレート、テーマ、ランディングページ、リスト、フォルダ、保存済みフィールドの作成と変更。",
       "analytics_view": "分析ページを見る。",
       "data_view": "データソース、テーブル、ストレージを見る。",
       "data_query": "クエリの実行と結果のエクスポート。",
@@ -7967,7 +7977,29 @@
       "folders_create": "新しいフォルダーを作ります。",
       "folders_edit": "フォルダーの名前と色を変更します。",
       "folders_delete": "空のフォルダーを削除します。",
-      "folders_access": "各フォルダーを閲覧できる人を選び、すべてのフォルダーを閲覧します。"
+      "folders_access": "各フォルダーを閲覧できる人を選び、すべてのフォルダーを閲覧します。",
+      "templates_view": "テンプレートのページを開きます。テンプレートの利用にはフォームの作成、保存にはテンプレートとして保存の権限が必要です。",
+      "templates_edit": "テンプレートの名前を変更し、そのフォームから更新します。",
+      "templates_duplicate": "テンプレートのコピーを作成します。",
+      "templates_delete": "ワークスペースのテンプレートを削除します。",
+      "lists_view": "リストのページを開きます。フォームではいつでもリストを使えます。",
+      "lists_create": "新しいリストを作成します。インポートも含みます。",
+      "lists_edit": "リストの選択肢を変更し、それを使うフォームを更新します。",
+      "lists_duplicate": "リストのコピーを作成します。",
+      "lists_delete": "リストを削除します。",
+      "themes_view": "テーマのページを開きます。フォームではいつでもテーマを使えます。",
+      "themes_create": "新しいテーマを作成します。デザイナーからの保存も含みます。",
+      "themes_edit": "テーマを変更します。",
+      "themes_duplicate": "テーマのコピーを作成します。",
+      "themes_delete": "テーマを削除します。",
+      "pages_view": "ランディングページのセクションを開きます。フォームではいつでも使えます。",
+      "pages_create": "新しいランディングページを作成します。デザイナーからの保存も含みます。",
+      "pages_edit": "ランディングページを変更します。",
+      "pages_duplicate": "ランディングページのコピーを作成します。",
+      "pages_delete": "ランディングページを削除します。",
+      "fields_view": "ビルダーで保存済みの項目を見ます。",
+      "fields_create": "再利用のために質問を保存します。",
+      "fields_delete": "保存済みの項目を削除します。"
     },
     "setArea": "範囲を設定",
     "searchActions": "操作を検索",
@@ -8020,7 +8052,29 @@
       "responses_review": "回答をレビュー",
       "responses_edit": "回答を修正",
       "responses_delete": "回答を削除",
-      "responses_export": "回答をエクスポート"
+      "responses_export": "回答をエクスポート",
+      "templates_view": "テンプレートを見る",
+      "templates_edit": "テンプレートを変更",
+      "templates_duplicate": "テンプレートを複製",
+      "templates_delete": "テンプレートを削除",
+      "lists_view": "リストを見る",
+      "lists_create": "リストを作成",
+      "lists_edit": "リストを変更",
+      "lists_duplicate": "リストを複製",
+      "lists_delete": "リストを削除",
+      "themes_view": "テーマを見る",
+      "themes_create": "テーマを作成",
+      "themes_edit": "テーマを変更",
+      "themes_duplicate": "テーマを複製",
+      "themes_delete": "テーマを削除",
+      "pages_view": "ランディングページを見る",
+      "pages_create": "ランディングページを作成",
+      "pages_edit": "ランディングページを変更",
+      "pages_duplicate": "ランディングページを複製",
+      "pages_delete": "ランディングページを削除",
+      "fields_view": "保存済みの項目を見る",
+      "fields_create": "項目を保存",
+      "fields_delete": "保存済みの項目を削除"
     }
   }
 }

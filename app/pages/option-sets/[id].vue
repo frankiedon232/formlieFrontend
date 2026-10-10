@@ -103,7 +103,7 @@ async function save() {
   }
 }
 const discard = () => saved.value && (draft.value = clone(saved.value))
-defineShortcuts({ meta_s: { usingInput: true, handler: () => void save() } })
+defineShortcuts({ meta_s: { usingInput: true, handler: () => canEdit.value && void save() } })
 onBeforeRouteLeave(async () => (!dirty.value ? true : await confirm({ title: t('settings.leave.title'), description: t('settings.leave.desc'), confirmLabel: t('settings.leave.confirm'), danger: true })))
 useEventListener(window, 'beforeunload', event => dirty.value && event.preventDefault())
 
@@ -116,10 +116,15 @@ const applyImport = (options: OptionItem[], levels: OptionLevel[] | null) => dra
 // A file over 20,000 options can make the list large (F15 M5), after the import explains what that means
 const makeLarge = () => draft.value && (draft.value.large = true)
 
-const moreItems = computed<DropdownMenuItem[][]>(() => [
-  [{ label: t('optionSets.duplicate'), icon: 'i-lucide-copy', onSelect: duplicate }],
-  [{ label: t('apiService.actions.delete'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: remove }],
-])
+// What this person may do with this list (F22 R2 M3: own · all; Formalie's lists are use-only)
+const { can } = useCan()
+const canEdit = computed(() => !!list.value?.can?.edit)
+const moreItems = computed<DropdownMenuItem[][]>(() =>
+  [
+    can('lists.duplicate') ? [{ label: t('optionSets.duplicate'), icon: 'i-lucide-copy', onSelect: duplicate }] : [],
+    list.value?.can?.delete ? [{ label: t('apiService.actions.delete'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: remove }] : [],
+  ].filter(group => group.length),
+)
 async function duplicate() {
   try {
     const { data } = await api.post<{ id: string; name: string }>(`/option-lists/${id}/duplicate`)
@@ -147,11 +152,11 @@ async function remove() {
 <template>
   <AppPanel id="option-set" :title="list?.name ?? t('nav.optionSets')" :subtitle="list ? t('optionSets.updatedBy', { when: relative(list.updated_at), name: list.created_by.name }) : undefined">
     <template #actions>
-      <UButton :label="t('settings.discard')" color="neutral" variant="outline" :disabled="!dirty || saving" class="hidden sm:inline-flex" @click="discard" />
-      <UButton :label="t('common.save')" icon="i-lucide-check" color="neutral" :loading="saving" :disabled="!dirty" @click="save">
+      <UButton v-if="canEdit" :label="t('settings.discard')" color="neutral" variant="outline" :disabled="!dirty || saving" class="hidden sm:inline-flex" @click="discard" />
+      <UButton v-if="canEdit" :label="t('common.save')" icon="i-lucide-check" color="neutral" :loading="saving" :disabled="!dirty" @click="save">
         <template #trailing><UKbd value="meta" size="sm" class="hidden sm:inline-flex" /><UKbd value="S" size="sm" class="hidden sm:inline-flex" /></template>
       </UButton>
-      <UDropdownMenu :items="moreItems" :content="{ align: 'end' }">
+      <UDropdownMenu v-if="moreItems.length" :items="moreItems" :content="{ align: 'end' }">
         <UButton icon="i-lucide-ellipsis" color="neutral" variant="outline" square :aria-label="t('dataView.actions')" />
       </UDropdownMenu>
     </template>
@@ -159,6 +164,9 @@ async function remove() {
     <AppEmpty v-if="failed" icon="i-lucide-list-x" :title="t('optionSets.notFound')" :actions="[{ label: t('nav.optionSets'), icon: 'i-lucide-arrow-left', color: 'neutral', variant: 'outline', to: '/option-sets' }]" />
     <div v-else-if="!draft" class="flex flex-col gap-4"><USkeleton class="h-24 rounded-lg" /><USkeleton v-for="n in 5" :key="n" class="h-10" /></div>
     <template v-else>
+      <UAlert v-if="!canEdit" icon="i-lucide-lock" color="neutral" variant="subtle" :title="t('library.readOnly')" :description="list?.created_by.id === 'system' ? t('library.readOnlySystem') : t('library.readOnlyRole')" />
+      <!-- Without "change lists" (or a Formalie list) everything is shown but locked -->
+      <fieldset :disabled="!canEdit" class="contents">
       <div class="grid gap-4 sm:grid-cols-[minmax(0,20rem)_minmax(0,1fr)]">
         <UFormField :label="t('optionSets.name')" required :error="!draft.name.trim() ? t('library.nameRequired') : undefined">
           <UInput v-model="draft.name" maxlength="80" class="w-full" />
@@ -171,10 +179,13 @@ async function remove() {
       <OptionSetsSize v-model:large="draft.large" :count="draft.options.length" />
       <OptionSetsLevels v-model:levels="draft.levels" v-model:options="draft.options" :saved-values="savedValues" />
       <OptionSetsColumns v-model:columns="draft.columns" v-model:options="draft.options" />
+      </fieldset>
       <UTabs v-model="tab" :items="tabs" :content="false" color="neutral" variant="link" class="w-full" />
+      <fieldset :disabled="!canEdit" class="contents">
       <OptionSetsItems v-if="tab === 'items'" v-model="draft.options" :saved-values="savedValues" :levels="draft.levels" :columns="draft.columns" @paste="openImport('paste')" @import="openImport('file')" />
       <OptionSetsTranslations v-else-if="tab === 'translations'" v-model="draft.options" :languages="languages" />
       <OptionSetsUsage v-show="tab === 'usage'" ref="usage" :list-id="id" :dirty="dirty" @synced="load" />
+      </fieldset>
     </template>
 
     <OptionSetsImportModal v-if="draft" v-model:open="importOpen" :source="importSource" :options="draft.options" :languages="languages" :levels="draft.levels" :columns="draft.columns" :large="draft.large" @apply="applyImport" @large="makeLarge" />

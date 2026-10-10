@@ -2,6 +2,7 @@
  * Mock reusable building blocks (docs/API-CONTRACT.md → Field library & option lists):
  * saved fields, per workspace (option lists: ./optionLists.ts). Every change is in the audit trail.
  */
+import { requireResource, resourceActions } from '../data/resourceAccess'
 import { z } from 'zod'
 import { formFieldSchema } from '#shared/utils/forms/schema'
 import { requireAuth } from '../core/auth'
@@ -24,8 +25,8 @@ const byName = <T extends { name: string }>(items: T[]) =>
 
 // ── Saved fields ──────────────────────────────────────────────────────────────────────
 export const listSavedFields = defineMockRoute(({ event }) => {
-  const { tenant } = requireAuth(event)
-  return ok(byName(libraryOf(tenant).fields))
+  const { tenant, user } = requireAuth(event)
+  return ok(byName(libraryOf(tenant).fields).map(field => ({ ...field, can: resourceActions('fields', field, user, tenant) })))
 })
 
 export const saveField = defineMockRoute(({ event, body }) => {
@@ -50,6 +51,7 @@ export const deleteSavedField = defineMockRoute(({ event }) => {
   const store = libraryOf(tenant)
   const index = store.fields.findIndex(item => item.id === getRouterParam(event, 'id'))
   if (index < 0) throw new MockError('FRM-GEN-1004')
+  requireResource('fields', 'delete', store.fields[index]!, user, tenant)
   const [removed] = store.fields.splice(index, 1)
   saveLibrary()
   recordAudit(event, tenant, {

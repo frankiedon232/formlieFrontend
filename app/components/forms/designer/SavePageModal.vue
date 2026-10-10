@@ -9,7 +9,7 @@ import type { FormSubmitEvent } from '@nuxt/ui'
 import type { PageDesign } from '#shared/types/forms'
 import { pageTokensOf } from '#shared/utils/forms/page-design'
 
-const props = defineProps<{ current: PageDesign | null }>()
+const props = defineProps<{ current: PageDesign | null; canCreate?: boolean }>()
 const open = defineModel<boolean>('open', { default: false })
 const { t } = useI18n()
 const d = useDesigner()
@@ -27,7 +27,7 @@ watch(open, value => {
 })
 const modes = computed(() => [
   { value: 'update', label: t('themes.updateExisting', { name: own.value?.name ?? '' }) },
-  { value: 'new', label: t('themes.saveNew') },
+  ...(props.canCreate ? [{ value: 'new', label: t('themes.saveNew') }] : []),
 ])
 
 const { busy, run } = useBusy()
@@ -47,7 +47,7 @@ async function submit(event: FormSubmitEvent<z.output<typeof schema>>) {
   <AppModal v-model:open="open" :title="t('pages.saveTitle')" :description="t('pages.saveDesc')" :dismissible="!busy">
     <template #body>
       <UForm id="save-page-form" :schema="schema" :state="state" class="flex flex-col gap-4" @submit="submit">
-        <URadioGroup v-if="own" v-model="mode" :items="modes" value-key="value" color="neutral" :aria-label="t('pages.saveTitle')" />
+        <URadioGroup v-if="own && canCreate" v-model="mode" :items="modes" value-key="value" color="neutral" :aria-label="t('pages.saveTitle')" />
         <UFormField name="name" :label="t('pages.editor.name')" required>
           <UInput v-model="state.name" maxlength="80" class="w-full" :placeholder="t('pages.editor.namePlaceholder')" autofocus />
         </UFormField>

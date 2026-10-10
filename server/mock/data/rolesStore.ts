@@ -5,7 +5,7 @@
  * its scope (own · shared · all, F22 R2).
  */
 import type { Grants, Permission, Scope } from '#shared/utils/auth/permissions'
-import { ALL_GRANTS, ALL_PERMISSIONS, BUILT_IN_ROLES, DEFAULT_ROLE_GRANTS, OWNER_ROLE, grantsFromList, withNeeds } from '#shared/utils/auth/permissions'
+import { ALL_GRANTS, ALL_PERMISSIONS, BUILT_IN_ROLES, DEFAULT_ROLE_GRANTS, OWNER_ROLE, RESOURCE_CHANGES, RESOURCE_VIEWS, grantsFromList, withNeeds } from '#shared/utils/auth/permissions'
 import { loadPersisted, savePersisted } from '../core/persist'
 import { MOCK_TENANTS, type MockTenant, type MockUser } from './tenants'
 
@@ -16,7 +16,7 @@ export interface StoredRole {
   grants: Grants
   /** owner · admin · member for the built-in ones; null for the workspace's own. */
   built_in: (typeof BUILT_IN_ROLES)[number] | null
-  /** 2 = response actions have scopes (F22 R2 M2); 3 = "shared" split into shared and own & shared. */
+  /** 2 = response actions have scopes (F22 R2 M2); 3 = "shared" split into shared and own & shared; 4 = libraries have their own permissions (M3). */
   version?: number
   created_at: string
   updated_at: string
@@ -51,6 +51,15 @@ for (const role of [...stores.values()].flat())
     role.version = 3
     migrated = true
   }
+// The libraries got their own permissions (F22 R2 M3): "manage resources" becomes each change at All; every role sees them
+for (const role of [...stores.values()].flat() as (StoredRole & { grants: Record<string, string> })[])
+  if ((role.version ?? 1) < 4) {
+    const managed = !!role.grants['resources.manage']
+    delete role.grants['resources.manage']
+    role.grants = withNeeds({ ...role.grants, ...Object.fromEntries([...RESOURCE_VIEWS, ...(managed ? RESOURCE_CHANGES : [])].map(key => [key, 'all'])) })
+    role.version = 4
+    migrated = true
+  }
 if (migrated) saveRoles()
 
 const NAMES = { owner: 'Owner', admin: 'Admin', member: 'Member' } as const
@@ -64,7 +73,7 @@ export function rolesOf(tenant: MockTenant): StoredRole[] {
   let list = stores.get(tenant.id)
   if (!list) {
     const at = new Date().toISOString()
-    list = BUILT_IN_ROLES.map(id => ({ id, name: NAMES[id], description: DESCRIPTIONS[id], grants: { ...DEFAULT_ROLE_GRANTS[id] }, built_in: id, version: 3, created_at: at, updated_at: at }))
+    list = BUILT_IN_ROLES.map(id => ({ id, name: NAMES[id], description: DESCRIPTIONS[id], grants: { ...DEFAULT_ROLE_GRANTS[id] }, built_in: id, version: 4, created_at: at, updated_at: at }))
     stores.set(tenant.id, list)
     saveRoles()
   }

@@ -2880,7 +2880,10 @@
     "listChanged": "Bu seçenekler doldurulduktan sonra {name} değişti.",
     "updateFromList": "Listeden güncelle",
     "levels": "{n} düzey",
-    "openInListOption": "Seçenek Listesi’nde aç"
+    "openInListOption": "Seçenek Listesi’nde aç",
+    "readOnly": "Bu listeyi görüntüleyebilirsiniz",
+    "readOnlySystem": "Bu bir Formalie listesidir. Formlarda kullanın veya kendinizinkini yapmak için çoğaltın.",
+    "readOnlyRole": "Rolünüz bu listeyi değiştirmenize izin vermiyor."
   },
   "designer": {
     "crumb": "Tasarım",
@@ -7886,7 +7889,6 @@
     "area": {
       "forms": "Formlar",
       "responses": "Yanıtlar",
-      "resources": "Şablonlar, temalar ve listeler",
       "analytics": "Analizler",
       "data": "Veri kaynakları",
       "api": "API hizmeti",
@@ -7895,12 +7897,16 @@
       "settings": "Ayarlar",
       "audit": "Denetim kaydı",
       "ai": "YZ asistanı",
-      "folders": "Klasörler"
+      "folders": "Klasörler",
+      "templates": "Şablonlar",
+      "lists": "Listeler",
+      "themes": "Temalar",
+      "pages": "Açılış sayfaları",
+      "fields": "Kayıtlı alanlar"
     },
     "areaHint": {
       "forms": "Formları oluşturma, tasarlama, paylaşma, yayımlama ve silme.",
       "responses": "Yanıtları okuma, değiştirme ve dışa aktarma.",
-      "resources": "Şablonlar, temalar, açılış sayfaları, listeler ve kayıtlı alanlar.",
       "analytics": "Analiz sayfaları.",
       "data": "Veritabanı bağlantıları, gezgin ve sorgular.",
       "api": "Hizmetler, uç noktalar, belirteçler ve webhook'lar.",
@@ -7909,7 +7915,12 @@
       "settings": "Çalışma alanının ayarları.",
       "audit": "Kim ne zaman ne yaptı.",
       "ai": "YZ asistanını kullanma.",
-      "folders": "Klasörler ve onları kimlerin görebileceği."
+      "folders": "Klasörler ve onları kimlerin görebileceği.",
+      "templates": "Çalışma alanının şablonları. Formalie şablonları her zaman kullanılabilir, asla değiştirilemez.",
+      "lists": "Formlarda kullanılan seçenek listeleri.",
+      "themes": "Formların görünümleri.",
+      "pages": "Bir formun etrafındaki sayfa.",
+      "fields": "Yeniden kullanım için kaydedilen sorular."
     },
     "action": {
       "view": "Görüntüle",
@@ -7934,7 +7945,6 @@
       "responses_edit": "Gönderilen yanıtları düzeltme.",
       "responses_delete": "Yanıtları silin.",
       "responses_export": "Yanıtları dosyalara aktarın.",
-      "resources_manage": "Şablonları, temaları, açılış sayfalarını, listeleri, klasörleri ve kayıtlı alanları oluşturun ve değiştirin.",
       "analytics_view": "Analiz sayfalarını görün.",
       "data_view": "Veri kaynaklarını, tabloları ve depolamayı görün.",
       "data_query": "Sorgu çalıştırın ve sonuçları dışa aktarın.",
@@ -7967,7 +7977,29 @@
       "folders_create": "Yeni klasörler oluşturma.",
       "folders_edit": "Bir klasörün adını ve rengini değiştirme.",
       "folders_delete": "Boş klasörleri kaldırma.",
-      "folders_access": "Her klasörü kimin görebileceğini seçme ve tüm klasörleri görme."
+      "folders_access": "Her klasörü kimin görebileceğini seçme ve tüm klasörleri görme.",
+      "templates_view": "Şablonlar sayfalarını açar. Şablon kullanmak için Form oluşturma, kaydetmek için Şablon olarak kaydet gerekir.",
+      "templates_edit": "Bir şablonu yeniden adlandırır ve formundan günceller.",
+      "templates_duplicate": "Bir şablonun kopyasını oluşturur.",
+      "templates_delete": "Çalışma alanındaki bir şablonu kaldırır.",
+      "lists_view": "Listeler sayfalarını açar. Formlar listeleri her zaman kullanabilir.",
+      "lists_create": "Yeni listeler oluşturur, içe aktararak da.",
+      "lists_edit": "Bir listenin seçeneklerini değiştirir ve onu kullanan formları günceller.",
+      "lists_duplicate": "Bir listenin kopyasını oluşturur.",
+      "lists_delete": "Bir listeyi kaldırır.",
+      "themes_view": "Temalar sayfalarını açar. Formlar temaları her zaman kullanabilir.",
+      "themes_create": "Yeni temalar oluşturur, tasarımcıdan kaydederek de.",
+      "themes_edit": "Bir temayı değiştirir.",
+      "themes_duplicate": "Bir temanın kopyasını oluşturur.",
+      "themes_delete": "Bir temayı kaldırır.",
+      "pages_view": "Açılış sayfaları bölümünü açar. Formlar bunları her zaman kullanabilir.",
+      "pages_create": "Yeni açılış sayfaları oluşturur, tasarımcıdan kaydederek de.",
+      "pages_edit": "Bir açılış sayfasını değiştirir.",
+      "pages_duplicate": "Bir açılış sayfasının kopyasını oluşturur.",
+      "pages_delete": "Bir açılış sayfasını kaldırır.",
+      "fields_view": "Oluşturucuda kayıtlı alanları görür.",
+      "fields_create": "Bir soruyu yeniden kullanım için kaydeder.",
+      "fields_delete": "Kayıtlı bir alanı kaldırır."
     },
     "setArea": "Alanı belirleyin",
     "searchActions": "Eylem ara",
@@ -8020,7 +8052,29 @@
       "responses_review": "Yanıtları inceleme",
       "responses_edit": "Yanıtları düzeltme",
       "responses_delete": "Yanıtları silme",
-      "responses_export": "Yanıtları dışa aktarma"
+      "responses_export": "Yanıtları dışa aktarma",
+      "templates_view": "Şablonları görme",
+      "templates_edit": "Şablonları düzenleme",
+      "templates_duplicate": "Şablonları çoğaltma",
+      "templates_delete": "Şablonları silme",
+      "lists_view": "Listeleri görme",
+      "lists_create": "Listeleri oluşturma",
+      "lists_edit": "Listeleri düzenleme",
+      "lists_duplicate": "Listeleri çoğaltma",
+      "lists_delete": "Listeleri silme",
+      "themes_view": "Temaları görme",
+      "themes_create": "Temaları oluşturma",
+      "themes_edit": "Temaları düzenleme",
+      "themes_duplicate": "Temaları çoğaltma",
+      "themes_delete": "Temaları silme",
+      "pages_view": "Açılış sayfalarını görme",
+      "pages_create": "Açılış sayfalarını oluşturma",
+      "pages_edit": "Açılış sayfalarını düzenleme",
+      "pages_duplicate": "Açılış sayfalarını çoğaltma",
+      "pages_delete": "Açılış sayfalarını silme",
+      "fields_view": "Kayıtlı alanları görme",
+      "fields_create": "Alanları kaydetme",
+      "fields_delete": "Kayıtlı alanları silme"
     }
   }
 }

@@ -2880,7 +2880,10 @@
     "listChanged": "自填充这些选项以来，{name}已更改。",
     "updateFromList": "从列表更新",
     "levels": "{n}个层级",
-    "openInListOption": "在选项列表中打开"
+    "openInListOption": "在选项列表中打开",
+    "readOnly": "您可以查看此列表",
+    "readOnlySystem": "这是 Formalie 的列表。可在表单中使用，或复制后创建您自己的列表。",
+    "readOnlyRole": "您的角色不允许更改此列表。"
   },
   "designer": {
     "crumb": "设计",
@@ -7886,7 +7889,6 @@
     "area": {
       "forms": "表单",
       "responses": "回复",
-      "resources": "模板、主题和列表",
       "analytics": "分析",
       "data": "数据源",
       "api": "API 服务",
@@ -7895,12 +7897,16 @@
       "settings": "设置",
       "audit": "审计日志",
       "ai": "AI 助手",
-      "folders": "文件夹"
+      "folders": "文件夹",
+      "templates": "模板",
+      "lists": "列表",
+      "themes": "主题",
+      "pages": "落地页",
+      "fields": "已保存的字段"
     },
     "areaHint": {
       "forms": "创建、搭建、共享、发布和删除表单。",
       "responses": "阅读、更改和导出回复。",
-      "resources": "模板、主题、落地页、列表和已保存的字段。",
       "analytics": "分析页面。",
       "data": "数据库连接、浏览器和查询。",
       "api": "服务、端点、令牌和 Webhook。",
@@ -7909,7 +7915,12 @@
       "settings": "工作区设置。",
       "audit": "谁在何时做了什么。",
       "ai": "使用 AI 助手。",
-      "folders": "文件夹及可以查看它们的人。"
+      "folders": "文件夹及可以查看它们的人。",
+      "templates": "工作区的模板。Formalie 的模板始终可以使用，但不能更改。",
+      "lists": "表单中使用的选项列表。",
+      "themes": "表单的外观。",
+      "pages": "表单周围的页面。",
+      "fields": "保存下来以便重复使用的问题。"
     },
     "action": {
       "view": "查看",
@@ -7934,7 +7945,6 @@
       "responses_edit": "更正已提交的答案。",
       "responses_delete": "删除回复。",
       "responses_export": "将回复导出为文件。",
-      "resources_manage": "创建和更改模板、主题、落地页、列表、文件夹和已保存字段。",
       "analytics_view": "查看分析页面。",
       "data_view": "查看数据源、表和存储。",
       "data_query": "运行查询并导出结果。",
@@ -7967,7 +7977,29 @@
       "folders_create": "新建文件夹。",
       "folders_edit": "更改文件夹的名称和颜色。",
       "folders_delete": "移除空文件夹。",
-      "folders_access": "选择谁可以查看每个文件夹，并查看所有文件夹。"
+      "folders_access": "选择谁可以查看每个文件夹，并查看所有文件夹。",
+      "templates_view": "打开模板页面。使用模板需要创建表单权限，保存模板需要另存为模板权限。",
+      "templates_edit": "重命名模板，并从其表单更新模板。",
+      "templates_duplicate": "制作模板的副本。",
+      "templates_delete": "移除工作区模板。",
+      "lists_view": "打开列表页面。表单始终可以使用列表。",
+      "lists_create": "创建新列表，也可通过导入创建。",
+      "lists_edit": "更改列表的选项，并更新使用该列表的表单。",
+      "lists_duplicate": "制作列表的副本。",
+      "lists_delete": "移除列表。",
+      "themes_view": "打开主题页面。表单始终可以使用主题。",
+      "themes_create": "创建新主题，也可从设计器保存主题。",
+      "themes_edit": "更改主题。",
+      "themes_duplicate": "制作主题的副本。",
+      "themes_delete": "移除主题。",
+      "pages_view": "打开落地页部分。表单始终可以使用落地页。",
+      "pages_create": "创建新落地页，也可从设计器保存落地页。",
+      "pages_edit": "更改落地页。",
+      "pages_duplicate": "制作落地页的副本。",
+      "pages_delete": "移除落地页。",
+      "fields_view": "在构建器中查看已保存的字段。",
+      "fields_create": "保存问题以便重复使用。",
+      "fields_delete": "移除已保存的字段。"
     },
     "setArea": "设置范围",
     "searchActions": "搜索操作",
@@ -8020,7 +8052,29 @@
       "responses_review": "审阅回复",
       "responses_edit": "更正答案",
       "responses_delete": "删除回复",
-      "responses_export": "导出回复"
+      "responses_export": "导出回复",
+      "templates_view": "查看模板",
+      "templates_edit": "更改模板",
+      "templates_duplicate": "创建副本模板",
+      "templates_delete": "删除模板",
+      "lists_view": "查看列表",
+      "lists_create": "创建列表",
+      "lists_edit": "更改列表",
+      "lists_duplicate": "创建副本列表",
+      "lists_delete": "删除列表",
+      "themes_view": "查看主题",
+      "themes_create": "创建主题",
+      "themes_edit": "更改主题",
+      "themes_duplicate": "创建副本主题",
+      "themes_delete": "删除主题",
+      "pages_view": "查看落地页",
+      "pages_create": "创建落地页",
+      "pages_edit": "更改落地页",
+      "pages_duplicate": "创建副本落地页",
+      "pages_delete": "删除落地页",
+      "fields_view": "查看已保存的字段",
+      "fields_create": "保存字段",
+      "fields_delete": "删除已保存的字段"
     }
   }
 }
