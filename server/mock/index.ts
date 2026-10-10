@@ -48,6 +48,8 @@ import { navigationCounts } from './routes/navigation'
 import * as onboarding from './routes/onboarding'
 import * as address from './routes/address'
 import * as emails from './routes/emails'
+import * as emailSending from './routes/emailSending'
+import * as sso from './routes/sso'
 import * as notifications from './routes/notifications'
 import * as optionLists from './routes/optionLists'
 import * as privacy from './routes/dataPrivacy'
@@ -80,6 +82,7 @@ const router = createRouter()
   .post('/auth/password/forgot', auth.forgotPassword)
   .post('/auth/password/reset', auth.resetPassword)
   .get('/auth/oauth/:provider/start', auth.oauthStart)
+  .get('/auth/sso/start', sso.ssoStart)
   .get('/me', auth.me)
   // forms
   .get('/forms', forms.listForms)
@@ -395,8 +398,24 @@ const router = createRouter()
   .post('/settings/emails/test', emails.testEmail)
   .get('/settings/emails/sent', emails.listSent)
   .get('/settings/emails/sent/:id', emails.getSent)
+  .get('/settings/emails/sending', emailSending.getSending)
+  .put('/settings/emails/sending/domain', emailSending.addSendingDomain)
+  .post('/settings/emails/sending/domain/check', emailSending.checkSendingDomain)
+  .delete('/settings/emails/sending/domain', emailSending.removeSendingDomain)
+  .put('/settings/emails/sending/smtp', emailSending.saveSmtp)
+  .post('/settings/emails/sending/smtp/test', emailSending.testSmtp)
+  .delete('/settings/emails/sending/smtp', emailSending.removeSmtp)
+  .post('/settings/emails/sending/mode', emailSending.setSendingMode)
+  .get('/settings/sso', sso.getSso)
+  .put('/settings/sso', sso.saveSso)
+  .post('/settings/sso/test', sso.testSso)
+  .post('/settings/sso/status', sso.setSsoStatus)
+  .delete('/settings/sso', sso.removeSso)
   .get('/settings/address', address.getAddress)
   .post('/settings/address/subdomain', address.changeWorkspaceSubdomain)
+  .put('/settings/address/domain', address.addDomain)
+  .post('/settings/address/domain/check', address.checkDomain)
+  .delete('/settings/address/domain', address.removeDomain)
   .get('/settings/appearance', settings.getAppearance)
   .patch('/settings/appearance', settings.patchSection)
   .get('/settings/privacy', settings.getSection)

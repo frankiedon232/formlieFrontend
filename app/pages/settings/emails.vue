@@ -1,5 +1,6 @@
 <!--
-  Settings → Email templates (F14 M4): who emails come from (name, reply-to, a footer line), every
+  Settings → Email templates (F14 M4): who emails come from (name, reply-to, a footer line; the sending
+  address: Formalie's, the workspace's own on a verified domain, or its own mail server, owner 2026-10-10), every
   email Formalie sends in each language the workspace uses (Formalie's text or the workspace's own,
   with a live preview and a test send), and the sent log. Saving applies to the next email.
 -->
@@ -57,6 +58,10 @@ const customCount = (key: EmailTemplateKey) => Object.keys(draft.value?.custom[k
         <UFormField :label="t('settings.emails.footer')" :help="t('settings.emails.footerHelp')">
           <SettingsText v-model="draft.footer" :placeholder="t('settings.emails.footerPlaceholder')" class="w-full" />
         </UFormField>
+      </SettingsBlock>
+
+      <SettingsBlock :title="t('settings.sending.title')" :description="t('settings.sending.titleHint')" icon="i-lucide-mail-check">
+        <SettingsEmailsSending />
       </SettingsBlock>
 
       <SettingsBlock :title="t('settings.emails.templates')" :description="t('settings.emails.templatesHint')" icon="i-lucide-mail">

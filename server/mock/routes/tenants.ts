@@ -16,6 +16,7 @@ import { MOCK_TENANTS, MOCK_USERS } from '../data/tenants'
 import { websiteOf } from './onboarding'
 import { settingsOf } from '../data/settingsStore'
 import { subdomainTaken } from '../data/addressStore'
+import { ssoPublic } from '../data/ssoStore'
 
 /** GET /tenants/public, branding + enabled sign-in methods for this host. */
 export const publicProfile = defineMockRoute(({ event }) => {
@@ -47,6 +48,7 @@ export const publicProfile = defineMockRoute(({ event }) => {
     colors: { primary: branding.brand_color },
     website: websiteOf(tenant),
     auth_providers: signin.methods,
+    sso: ssoPublic(tenant),
     password_policy: { min_length: security.password.min_length, lower: security.password.lower, upper: security.password.upper, number: security.password.number, symbol: security.password.symbol },
     status: tenant.status,
   })

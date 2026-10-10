@@ -63,3 +63,63 @@ export interface EmailPreviewRequest extends EmailText {
   key: EmailTemplateKey
   language: string
 }
+
+/**
+ * Where emails come from (Settings → Emails → Sending address, owner 2026-10-10): Formalie's own address,
+ * the workspace's own address on a domain it verified (DNS records), or the workspace's own mail server.
+ * The mail server password is write-only.
+ */
+export type SendingMode = 'formalie' | 'domain' | 'smtp'
+
+export interface DnsRecord {
+  type: 'TXT' | 'CNAME' | 'MX'
+  name: string
+  value: string
+  /** Found in DNS at the last check. */
+  found: boolean
+  /** Recommended, not needed for sending (DMARC). */
+  optional?: boolean
+}
+
+export interface SendingDomain {
+  /** The from address, e.g. forms@example.com */
+  address: string
+  domain: string
+  status: 'pending' | 'verified' | 'failed'
+  records: DnsRecord[]
+  added_at: string
+  checked_at: string | null
+  problem: 'not_found' | 'wrong_value' | 'dns_error' | null
+}
+
+export interface SmtpServer {
+  host: string
+  port: number
+  security: 'starttls' | 'tls' | 'none'
+  username: string | null
+  has_password: boolean
+  from_address: string
+  status: 'untested' | 'working' | 'failed'
+  checked_at: string | null
+  problem: 'unreachable' | 'timeout' | 'not_smtp' | null
+}
+
+/** GET /settings/emails/sending */
+export interface EmailSending {
+  mode: SendingMode
+  /** The address emails go out from right now. */
+  from_address: string
+  formalie_address: string
+  domain: SendingDomain | null
+  smtp: SmtpServer | null
+}
+
+/** PUT /settings/emails/sending/smtp (password: a new one replaces, left out keeps it). */
+export interface SmtpSaveRequest {
+  host: string
+  port: number
+  security: SmtpServer['security']
+  username: string | null
+  password?: string | null
+  from_address: string
+}

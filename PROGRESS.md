@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-10 (F19 AI assistant and F25 Help centre done, both waiting for the owner's review; next: F24 Payments & subscriptions with dLocal (Stripe possible) once the sandbox account is ready, then F21 Dashboard)
+**Last updated:** 2026-10-10 (Settings: custom domain back, own sending address and mail server, single sign-on with Okta and others; F19 AI assistant and F25 Help centre done, both waiting for the owner's review; next: F24 Payments & subscriptions with dLocal (Stripe possible) once the sandbox account is ready, then F21 Dashboard)
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend · ➖ dropped or merged
 
@@ -41,7 +41,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 1. ✅ **F19 AI assistant** (waiting for the owner's review)
 2. ✅ **F25 Help centre** (brought forward by the owner, 2026-10-10, while the payment processor accounts are set up; its content is posted from the platform admin; waiting for review)
-3. **F24 Payments & subscriptions** (form payments and plans together; processor: dLocal most likely, Stripe possible, sandbox accounts first, owner 2026-10-10)
+3. **F24 Payments & subscriptions** (form payments and plans together; processor: dLocal most likely, Stripe possible, sandbox accounts first, owner 2026-10-10; plan features to gate include the custom domain, own sending address / mail server and single sign-on)
 4. **F21 Dashboard** (after F24, owner 2026-10-10, so it can show payments and plans too)
 5. ⏸ **Switching to the real backend** (FastAPI, `formalieBackend`): the mock is replaced, API-CONTRACT is the spec
 6. **F23 Platform admin (super admin)**: a **separate project** with its own front end, backend and database that also reaches Formalie's database (owner, 2026-10-10). Its full plan lives in its own two projects, formaliePlatformFront (Nuxt) and formaliePlatformBack (FastAPI), not in this project.
@@ -785,7 +785,7 @@ Every workspace sets up its own reference data here; the builder, field access a
 ### Domain & workspace address
 
 - ✅ Workspace subdomain (change with availability check and typed confirmation; the old one keeps leading here for 90 days)
-- ➖ Custom domain: removed for now (owner, 2026-10-07: the subdomain is enough)
+- ✅ Custom domain: back (owner, 2026-10-10, while setting up plans): the two DNS records, a real DNS check, verified status, forms served on it (removed 2026-10-07, restored as it was)
 - ➖ Custom short-link domain: not for now
 
 ### Organisations
@@ -796,7 +796,7 @@ Every workspace sets up its own reference data here; the builder, field access a
 ### Authentication
 
 - ✅ Sign-in methods: enable / disable email + password, Google, Microsoft, Apple, Facebook, only enabled ones appear on the workspace sign-in page (at least one; turning off email and password asks first; live sign-in page preview, also on Branding)
-- ⬜ Single sign-on: SAML / OIDC set-up (metadata, certificates, test sign-in), later
+- ✅ Single sign-on (owner, 2026-10-10): Okta, Microsoft Entra ID, Google Workspace, OneLogin, any SAML 2.0 or OpenID Connect provider; Formalie's values to copy, the provider's values (OIDC issuer, client ID, write-only secret; SAML metadata address or values by hand), a real test (OIDC discovery / SAML metadata), then on; button text, email domains, required for them (password refused, FRM-AUTH-1019), accounts on first sign-in with a role; the sign-in page shows "Continue with …" and sends those domains to the provider. The real SAML / OIDC round trip is the backend's (the mock says it isn't connected yet)
 - ✅ One-time code policy: email always, text message optional (off for new workspaces), expiry 5 / 10 / 15 min, wrong tries 3 / 5 / 10 (no authenticator app, owner 2026-10-07)
 - ✅ Multi-factor authentication: always on for everyone (every sign-in asks for a code), shown as such
 - ✅ Allowed email domains (optional; sign-in checks them now, invites in F22); your own domain must stay on the list
@@ -817,7 +817,8 @@ Every workspace sets up its own reference data here; the builder, field access a
 
 - ✅ Which events notify whom (new response, possible duplicate, form full, form closing, export ready, webhook failing, sign-in blocked): in the app and / or email, admins / everyone / chosen people, optional daily summary; the bell shows a live feed with unread count
 - ✅ Email templates (sign-in code, password reset, invitation, new response, respondent copy, notification, daily summary) with placeholders, live preview, test send, per language; a sent log until a mail service is connected
-- ✅ Sender name, reply-to address and a footer line (custom sending domain later)
+- ✅ Sender name, reply-to address and a footer line
+- ✅ Sending address (owner, 2026-10-10): Formalie's address, the workspace's own address on its domain (SPF, two DKIM, bounce and DMARC records with a real DNS check) or its own mail server (SMTP: host, port, security, sign-in with a write-only password, from address; a real connection test); one in use, the others need verifying / testing first (FRM-SET-1001); Formalie's mark stays under every email
 - ✅ Response emails per form (owner request): new responses to team members and outside addresses (personal answers masked unless allowed), a copy for the respondent
 
 ### Privacy & data
@@ -1311,6 +1312,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-10 | Translate the names Formalie provides (built-in roles, default lists and their options); what users type stays as typed | i18n | ✅ |
 | 2026-10-10 | Re-order: F19 AI, F24 Payments, F25 Help centre, switch to the real backend, then F23 Platform admin as a separate project (own front end, backend and database, reaches Formalie's database; Google Analytics-like analytics, full management, help content, payments and manual subscription activation, its own staff roles); create the `SUPER_ADMIN_PLATFORM` folder with everything needed to build it | Order, F23 | ✅ folder ready, owner moves it out |
 | 2026-10-10 | Start F25 Help centre now, before F24, while the owner sets up a payment processor (dLocal most likely for global payments, Stripe possible; both have test sandboxes, e.g. https://sandbox.dlocal.com/) | Order, F24, F25 | 🟡 F25 in progress |
+| 2026-10-10 | Offer a custom domain and a custom email again, and single sign-on with Okta in sign-in (found while putting together the plans and prices): put them back in Settings | F14 Settings, F24 | ✅ done (domain restored, sending address and mail server, single sign-on) |
 
 ---
 
@@ -1593,3 +1595,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-10 | F19 M6 | Phase checks: every AI page at phone width (no page wider than the screen; History's table scrolls like every list), tablet and desktop; light and dark; Arabic right to left (mirrored, no English left except names and what people typed); every control named for keyboards and screen readers; role rules tested (members use the assistant, only managers change its settings; every assistant call has its own permission); switched-off and "may not read" states on every page that needs them (new: Response analysis, Insights and Translations say so up front when the workspace keeps forms or responses from the assistant). Fixed: titles Formalie writes in History ("Analysis of …", "Check my form", "Translate … into …") are now translated for the reader (requests kept from before converted once), translate and rewrite results carry translated notes. F19 stops here for the owner's review |
 | 2026-10-10 | F25 | Help centre: Help & support home (search across articles, questions and words in the address; "New here?" path of five articles; 14 areas; popular articles; FAQs, glossary and shortcuts links; email support from the platform settings), areas, articles (blocks: text, headings, numbered steps, lists, tips / notes / warnings, "Show me" links, media with captions; "On this page", related, "shown in English" note, "Was this helpful?" with what was missing), FAQs (28, by area, searchable), glossary (24 words, A to Z in the reader's language), keyboard shortcuts (all of them, shared with the ? dialog; two "Overview" entries now named by their area); help in context: a ? in every header opens the help panel with the page's article and its guided tour, empty lists offer "Learn how", "Show me" opens the page and points at the control (data-help markers), tours for Forms and People (keyboard: ← → Enter Esc); the AI assistant answers from the knowledge base in search (its steps or best paragraph, with the article it came from); feedback and searches that found nothing kept for the Formalie team. Content: 46 articles, 28 FAQs, 24 words, 2 tours in all 20 languages, using each language's own interface words. Found in testing: cards collapsing in some page bodies (search box on Help, two AI pages), the article's related list cramped, "Storage" and "Test" not matching the interface (now Response storage and Test now in every language). API `/help/**` |
 | 2026-10-10 | F25 | Screenshots for all 46 help articles (light mode, phone width), captions in 20 languages, framed and narrow in the article and the assistant. Fixed while capturing: card grids overflowing sideways on phones (DataView, latest forms), the database explorer's Tables drawer overflowing, an empty count pill on the Templates header button on phones. |
+| 2026-10-10 | F14 | Owner request: Settings → Address and domain has the own domain again (DNS records, real check, forms on it); Settings → Emails has a Sending address (Formalie's, own address on a verified domain with SPF / DKIM / bounce / DMARC records, or own SMTP mail server with a connection test; From shows it); Settings → Sign-in has Single sign-on (Okta, Entra ID, Google Workspace, OneLogin, SAML, OIDC: copy values, paste the provider's, real test, turn on, domains, required, new accounts with a role) and the sign-in page shows "Continue with …". New codes FRM-AUTH-1019 / 1020, FRM-SET-1001. |

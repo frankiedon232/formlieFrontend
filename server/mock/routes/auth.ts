@@ -28,6 +28,7 @@ import { parseBody } from '../core/validate'
 import { notify } from '../data/notificationStore'
 import { sendEmail } from '../data/outboxStore'
 import { settingsOf } from '../data/settingsStore'
+import { ssoRequired } from '../data/ssoStore'
 import { peopleStoreOf, savePeople } from '../data/peopleStore'
 import {
   hashPassword,
@@ -112,6 +113,11 @@ export const login = defineMockRoute(({ event, body }) => {
     recordAudit(event, tenant, { action: 'auth.login.blocked', actor: anonymousActor(input.email), outcome: 'blocked', reason: 'FRM-AUTH-1016', metadata: { method: 'password', cause: 'ip_not_allowed' } })
     securityAlert(event, tenant, input.email, 'ip_not_allowed')
     throw new MockError('FRM-AUTH-1016')
+  }
+  // Settings → Sign-in → Single sign-on, required for these domains: the provider decides, never a password here
+  if (ssoRequired(tenant, input.email)) {
+    recordAudit(event, tenant, { action: 'auth.login.blocked', actor: anonymousActor(input.email), outcome: 'blocked', severity: 'notice', reason: 'FRM-AUTH-1019', metadata: { method: 'password', cause: 'sso_required' } })
+    throw new MockError('FRM-AUTH-1019')
   }
   const user = findUser(input.email, tenant.id)
   if (!user || !passwordMatches(user, input.password)) {

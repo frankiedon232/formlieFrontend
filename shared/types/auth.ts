@@ -1,4 +1,5 @@
 import type { DateFormat } from './onboarding'
+import type { SsoPublic } from './sso'
 /** Auth + tenant shapes (docs/API-CONTRACT.md → Tenants, Auth). */
 
 export type AuthProvider = 'password' | 'google' | 'microsoft' | 'apple' | 'facebook'
@@ -24,6 +25,8 @@ export interface TenantPublicProfile {
   /** The organisation's own website (public form pages link to it); null on manage.*. */
   website?: string | null
   auth_providers: AuthProvider[]
+  /** Settings → Sign-in → Single sign-on, when switched on: "Continue with {label}", and these email domains go straight there. */
+  sso?: SsoPublic | null
   /** The workspace's password rules, for new passwords (reset); absent = the default. */
   password_policy?: PasswordPolicy
   status: TenantStatus

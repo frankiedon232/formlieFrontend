@@ -1,6 +1,7 @@
 <!--
-  Settings → Workspace address (F14 M7): change the subdomain with a live availability check; asks
-  first, and the old one keeps leading here for 90 days. Own domains are not offered (owner, 2026-10-07).
+  Settings → Address and domain (F14 M7): the workspace's address (change the subdomain with a live
+  availability check; asks first and the old one keeps leading here for 90 days), its own domain (the
+  two DNS records to add, a real DNS check, verified status; back by the owner's request, 2026-10-10).
 -->
 <script setup lang="ts">
 import type { SubdomainAvailability } from '#shared/types/auth'
@@ -12,7 +13,7 @@ useHead({ title: () => t('settings.nav.address') })
 const api = useApi()
 const tenant = useTenant()
 const toast = useToast()
-const { dateTime } = useFormat()
+const { dateTime, relative } = useFormat()
 const { handle } = useErrorHandler()
 const config = useRuntimeConfig()
 
@@ -63,7 +64,31 @@ async function change() {
   }
 }
 
-const formsHost = computed(() => `${address.value?.subdomain}.${config.public.rootDomain}`)
+// Own domain
+const domainInput = ref('')
+const { busy, run } = useBusy()
+const addDomain = () => run(async () => (address.value = (await api.put<WorkspaceAddress>('/settings/address/domain', { domain: domainInput.value })).data))
+const checkingDns = ref(false)
+async function check() {
+  if (checkingDns.value) return
+  checkingDns.value = true
+  try {
+    address.value = (await api.post<WorkspaceAddress>('/settings/address/domain/check')).data
+    const status = address.value.domain?.status
+    toast.add({ title: t(`settings.address.status.${status}`), color: status === 'verified' ? 'success' : 'warning', icon: status === 'verified' ? 'i-lucide-badge-check' : 'i-lucide-clock' })
+  } catch (error) {
+    handle(error)
+  } finally {
+    checkingDns.value = false
+  }
+}
+const confirm = useConfirm()
+async function removeDomain() {
+  if (!address.value?.domain || !(await confirm({ title: t('settings.address.removeTitle', { domain: address.value.domain.domain }), description: t('settings.address.removeDesc'), confirmLabel: t('settings.address.remove'), danger: true }))) return
+  await run(async () => (address.value = (await api.del<WorkspaceAddress>('/settings/address/domain')).data))
+}
+const STATUS_COLOR = { pending: 'warning', verified: 'success', failed: 'error' } as const
+const formsHost = computed(() => (address.value?.domain?.status === 'verified' ? address.value.domain.domain : `${address.value?.subdomain}.${config.public.rootDomain}`))
 </script>
 
 <template>
@@ -84,7 +109,6 @@ const formsHost = computed(() => `${address.value?.subdomain}.${config.public.ro
         <p v-if="checking" class="flex items-center gap-1.5 text-xs text-muted"><UIcon name="i-lucide-loader-circle" class="size-3.5 animate-spin" />{{ t('settings.address.checking') }}</p>
         <p v-else-if="canChange" class="flex items-center gap-1.5 text-xs text-success"><UIcon name="i-lucide-circle-check" class="size-3.5" />{{ t('settings.address.free', { url: `${cleaned}.${config.public.rootDomain}` }) }}</p>
         <p v-else-if="availability && !availability.available" class="flex items-center gap-1.5 text-xs text-error"><UIcon name="i-lucide-circle-x" class="size-3.5" />{{ t(`settings.address.reason.${availability.reason}`) }}</p>
-        <p class="flex items-start gap-1.5 text-xs text-muted"><UIcon name="i-lucide-file-text" class="mt-0.5 size-3.5 shrink-0" />{{ t('settings.address.formsAt', { host: formsHost }) }}</p>
         <div v-if="address.previous.length" class="flex flex-col gap-1.5 rounded-lg border border-default p-3">
           <span class="text-xs font-medium text-highlighted">{{ t('settings.address.previous') }}</span>
           <span v-for="item in address.previous" :key="item.subdomain" class="flex flex-wrap items-center gap-2 text-xs text-muted">
@@ -93,6 +117,27 @@ const formsHost = computed(() => `${address.value?.subdomain}.${config.public.ro
         </div>
       </SettingsBlock>
 
+      <SettingsBlock :title="t('settings.address.domain')" :description="t('settings.address.domainHint')" icon="i-lucide-globe-lock">
+        <form v-if="!address.domain" class="flex flex-col gap-2 sm:flex-row" @submit.prevent="addDomain">
+          <UInput v-model="domainInput" icon="i-lucide-globe" placeholder="forms.example.com" class="w-full sm:max-w-sm" :aria-label="t('settings.address.domain')" />
+          <UButton type="submit" :label="t('settings.address.addDomain')" icon="i-lucide-plus" color="neutral" variant="outline" :loading="busy" :disabled="!domainInput.trim()" />
+        </form>
+        <template v-else>
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="font-mono text-sm text-highlighted">{{ address.domain.domain }}</span>
+            <UBadge :label="t(`settings.address.status.${address.domain.status}`)" :color="STATUS_COLOR[address.domain.status]" variant="subtle" />
+            <span v-if="address.domain.checked_at" class="text-xs text-muted">{{ t('settings.address.checked', { when: relative(address.domain.checked_at) }) }}</span>
+          </div>
+          <p class="text-xs text-muted">{{ address.domain.status === 'verified' ? t('settings.address.verifiedDesc') : t('settings.address.addRecords') }}</p>
+          <SettingsDnsRecords :records="address.domain.records" />
+          <UAlert v-if="address.domain.problem" :color="address.domain.problem === 'wrong_target' ? 'error' : 'neutral'" variant="subtle" icon="i-lucide-info" :description="t(`settings.address.problem.${address.domain.problem}`)" />
+          <div class="flex flex-wrap gap-2">
+            <UButton :label="t('settings.address.check')" icon="i-lucide-refresh-cw" color="neutral" :loading="checkingDns" @click="check" />
+            <UButton :label="t('settings.address.remove')" icon="i-lucide-trash-2" color="error" variant="outline" :disabled="busy" @click="removeDomain" />
+          </div>
+        </template>
+        <p class="flex items-start gap-1.5 text-xs text-muted"><UIcon name="i-lucide-file-text" class="mt-0.5 size-3.5 shrink-0" />{{ t('settings.address.formsAt', { host: formsHost }) }}</p>
+      </SettingsBlock>
     </div>
 
     <AppModal v-model:open="changeOpen" :title="t('settings.address.confirmTitle')" :description="t('settings.address.confirmDesc', { old: address?.url ?? '', url: `https://${cleaned}.${config.public.rootDomain}` })" keep-open>

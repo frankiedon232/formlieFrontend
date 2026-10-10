@@ -7,6 +7,7 @@
 import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import type { EmailTemplateKey, EmailText } from '#shared/types/emails'
+import { fromAddress } from '../data/sendingStore'
 import { settingsOf } from '../data/settingsStore'
 import type { MockTenant } from '../data/tenants'
 
@@ -94,5 +95,5 @@ export function renderEmail(tenant: MockTenant, key: EmailTemplateKey, language:
   const logo = settings.branding.logo_url ? `<img src="${escape(settings.branding.logo_url)}" alt="" height="28" style="height:28px;max-width:160px;object-fit:contain;vertical-align:middle">` : ''
   const html = `<!doctype html><html><body style="margin:0;padding:24px;background:#f4f4f5;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#111"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;border:1px solid #e5e5e5"><tr><td style="height:4px;background:${escape(color)}"></td></tr><tr><td style="padding:20px 28px 4px;font-weight:600;font-size:15px">${logo}${logo ? '&nbsp;&nbsp;' : ''}<span style="vertical-align:middle">${escape(name)}</span></td></tr><tr><td style="padding:12px 28px 8px;font-size:14px">${paragraphs}</td></tr><tr><td style="padding:16px 28px 22px;border-top:1px solid #eee;color:#888;font-size:12px;line-height:1.5">${footer.map(line => escape(line)).join('<br>')}</td></tr></table>${FORMALIE_MARK}</body></html>`
   const text = `${body.split(ANSWERS).join(answersText)}\n\n--\n${footer.join('\n')}\n\nFormalie · https://formalie.com`
-  return { subject, html, text, from: settings.emails.sender_name || name, reply_to: settings.emails.reply_to }
+  return { subject, html, text, from: `${settings.emails.sender_name || name} <${fromAddress(tenant)}>`, reply_to: settings.emails.reply_to }
 }

@@ -1,9 +1,11 @@
 <!--
-  Sign in. Workspace host: workspace chip, providers this tenant enabled, email + password → OTP.
+  Sign in. Workspace host: workspace chip, single sign-on and the providers this tenant enabled, email + password → OTP.
+  An address of a single sign-on domain is offered the provider (and, when required, nothing else).
   manage.*: "Continue to <last workspace>" or find your workspace by email.
 -->
 <script setup lang="ts">
 import type { FormSubmitEvent } from '@nuxt/ui'
+import { SSO_ICONS } from '#shared/types/sso'
 
 definePageMeta({ layout: 'auth', auth: 'guest', manage: true })
 
@@ -21,8 +23,14 @@ const isManage = tenant.isManage
 const redirect = typeof route.query.redirect === 'string' ? route.query.redirect : undefined
 const usesPassword = computed(() => profile.value?.auth_providers.includes('password') ?? true)
 const hasSocial = computed(() => (profile.value?.auth_providers ?? []).some(p => p !== 'password'))
+// Single sign-on (Settings → Sign-in): a button for everyone, and addresses of its domains go straight there
+const sso = computed(() => (isManage.value ? null : (profile.value?.sso ?? null)))
+const ssoUrl = computed(() => `${useRuntimeConfig().public.apiBase}/auth/sso/start`)
+const emailDomain = computed(() => state.email.trim().toLowerCase().split('@')[1] ?? '')
+const ssoMatch = computed(() => !!sso.value && !!emailDomain.value && sso.value.domains.some(item => emailDomain.value === item || emailDomain.value.endsWith(`.${item}`)))
+const ssoOnly = computed(() => ssoMatch.value && !!sso.value?.enforce)
 
-const schema = computed(() => (isManage.value ? emailOnlySchema(t) : loginSchema(t)))
+const schema = computed(() => (isManage.value || ssoOnly.value ? emailOnlySchema(t) : loginSchema(t)))
 const state = reactive({
   // An accepted invitation brings the address along in app state (F16 M2)
   email: typeof route.query.email === 'string' ? route.query.email : (useState<string>('auth:join-email').value ?? ''),
@@ -39,6 +47,8 @@ const notice = computed(() => {
       title: t('auth.login.oauthUnavailable', { provider: providerName(route.query.provider) }),
     }
   }
+  if (route.query.sso === 'unavailable')
+    return { color: 'neutral' as const, icon: 'i-lucide-info', title: t('auth.login.ssoUnavailable') }
   if (route.query.joined)
     return { color: 'success' as const, icon: 'i-lucide-party-popper', title: t('people.join.done') }
   if (route.query.reset)
@@ -47,6 +57,7 @@ const notice = computed(() => {
 })
 
 async function onSubmit(event: FormSubmitEvent<{ email: string; password?: string }>) {
+  if (ssoOnly.value) return navigateTo(ssoUrl.value, { external: true })
   if (isManage.value) {
     const ok = await run(async () => {
       await auth.findWorkspace(event.data.email)
@@ -109,9 +120,22 @@ async function onSubmit(event: FormSubmitEvent<{ email: string; password?: strin
     </NuxtLink>
 
     <template v-if="!isManage && profile">
+      <UButton
+        v-if="sso"
+        :icon="SSO_ICONS[sso.provider]"
+        :label="t('auth.login.ssoContinue', { label: sso.label })"
+        :to="ssoUrl"
+        external
+        color="neutral"
+        variant="outline"
+        size="xl"
+        block
+        class="mb-4 justify-center font-medium"
+        :ui="{ leadingIcon: 'size-5' }"
+      />
       <AuthProviders :providers="profile.auth_providers" />
       <USeparator
-        v-if="usesPassword && hasSocial"
+        v-if="usesPassword && (hasSocial || sso)"
         :label="t('auth.or')"
         class="my-6"
         :ui="{ label: 'text-xs text-muted' }"
@@ -138,7 +162,14 @@ async function onSubmit(event: FormSubmitEvent<{ email: string; password?: strin
         />
       </UFormField>
 
-      <UFormField v-if="!isManage" :label="t('auth.fields.password')" name="password" size="lg">
+      <div v-if="ssoMatch && sso" class="flex flex-col gap-3 rounded-lg border border-default bg-elevated/40 p-3">
+        <p class="flex items-start gap-2 text-sm text-default">
+          <UIcon :name="SSO_ICONS[sso.provider]" class="mt-0.5 size-4 shrink-0" />{{ ssoOnly ? t('auth.login.ssoRequired', { domain: emailDomain, label: sso.label }) : t('auth.login.ssoSuggested', { domain: emailDomain, label: sso.label }) }}
+        </p>
+        <UButton :label="t('auth.login.ssoContinue', { label: sso.label })" :to="ssoUrl" external color="neutral" block trailing-icon="i-lucide-arrow-right" :ui="{ trailingIcon: 'rtl:rotate-180' }" />
+      </div>
+
+      <UFormField v-if="!isManage && !ssoOnly" :label="t('auth.fields.password')" name="password" size="lg">
         <template #hint>
           <ULink to="/auth/forgot-password" class="text-sm font-medium text-muted hover:text-highlighted">
             {{ t('auth.login.forgot') }}
@@ -152,7 +183,7 @@ async function onSubmit(event: FormSubmitEvent<{ email: string; password?: strin
         />
       </UFormField>
 
-      <UButton type="submit" color="neutral" size="xl" block class="group mt-1 font-semibold" :loading="busy">
+      <UButton v-if="!ssoOnly" type="submit" color="neutral" size="xl" block class="group mt-1 font-semibold" :loading="busy">
         {{ isManage ? t('auth.login.findWorkspace') : t('auth.login.submit') }}
         <UIcon
           v-if="!busy"

@@ -35,6 +35,8 @@ Format: `FRM-<DOMAIN>-<NNNN>`. Ranges: 1000–1999 client/validation, 5000–599
 | FRM-AUTH-1016 | 403  | Sign-in isn't allowed from this network. (IP allowlist, sign-in and every request) | WARNING  |
 | FRM-AUTH-1017 | 409  | This change would lock you out. (`own_domain` / `own_ip`)        | INFO     |
 | FRM-AUTH-1018 | 422  | You used this password recently. Choose another one.             | INFO     |
+| FRM-AUTH-1019 | 403  | This email address signs in with single sign-on (Settings → Sign-in → Single sign-on, required). | INFO |
+| FRM-AUTH-1020 | 409  | Test single sign-on before turning it on.                        | INFO     |
 | FRM-PERM-1001 | 403  | You don't have access to this.                                    | WARNING  |
 | FRM-TEN-1001  | 404  | Workspace not found.                                              | INFO     |
 | FRM-TEN-1002  | 403  | Workspace suspended.                                              | WARNING  |
@@ -101,6 +103,7 @@ Format: `FRM-<DOMAIN>-<NNNN>`. Ranges: 1000–1999 client/validation, 5000–599
 | FRM-ORG-1002  | 409  | Forms still use it. Archive it, or merge it into another one.    | INFO     |
 | FRM-PLAN-1001 | 402  | Your plan limit has been reached. Upgrade to continue.            | INFO     |
 | FRM-PLAN-1002 | 402  | This feature is not included in your plan.                        | INFO     |
+| FRM-SET-1001  | 409  | Verify or test this first (an email domain before sending from it, a mail server before using it). | INFO |
 
 ### Client-side codes (raised by the portal, never sent by the server)
 

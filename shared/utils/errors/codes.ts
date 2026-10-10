@@ -40,6 +40,8 @@ export const ERROR_CODES = {
   'FRM-AUTH-1016': { status: 403, message: "Sign-in isn't allowed from this network." },
   'FRM-AUTH-1017': { status: 409, message: 'This change would lock you out.' },
   'FRM-AUTH-1018': { status: 422, message: 'You used this password recently. Choose another one.' },
+  'FRM-AUTH-1019': { status: 403, message: 'This email address signs in with single sign-on.' },
+  'FRM-AUTH-1020': { status: 409, message: 'Test single sign-on before turning it on.' },
   'FRM-PERM-1001': { status: 403, message: "You don't have access to this." },
   'FRM-TEN-1001': { status: 404, message: 'Workspace not found.' },
   'FRM-TEN-1002': { status: 403, message: 'Workspace suspended.' },
@@ -169,6 +171,7 @@ export const ERROR_CODES = {
   'FRM-ORG-1002': { status: 409, message: 'Forms still use it. Archive it, or merge it into another one.' },
   'FRM-PLAN-1001': { status: 402, message: 'Your plan limit has been reached. Upgrade to continue.' },
   'FRM-PLAN-1002': { status: 402, message: 'This feature is not included in your plan.' },
+  'FRM-SET-1001': { status: 409, message: 'Verify or test this first.' },
 } as const satisfies Record<string, ErrorCodeDefinition>
 
 export type ErrorCode = keyof typeof ERROR_CODES

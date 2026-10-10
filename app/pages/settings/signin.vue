@@ -1,5 +1,6 @@
 <!--
   Settings → Sign-in (F14 M3): the ways people sign in (only these show on the workspace sign-in page),
+  single sign-on with the company's identity provider (Okta and others, owner 2026-10-10; saves on its own),
   the one-time code every sign-in asks for (by email; text message optional), how long it lasts, how many tries, and the email
   domains allowed to sign in. A live miniature of the sign-in page sits beside it. The server refuses a
   domain list without the admin's own domain (FRM-AUTH-1017); the page says so before saving.
@@ -41,6 +42,10 @@ const name = computed(() => store.settings.value?.company.display_name ?? '')
         <SettingsBlock :title="t('settings.signin.methods')" :description="t('settings.signin.methodsHint')" icon="i-lucide-log-in">
           <SettingsSigninMethods v-model="draft.methods" />
           <p class="flex items-start gap-1.5 text-xs text-muted"><UIcon name="i-lucide-info" class="mt-0.5 size-3.5 shrink-0" />{{ t('settings.signin.providersNote') }}</p>
+        </SettingsBlock>
+
+        <SettingsBlock :title="t('settings.sso.title')" :description="t('settings.sso.titleHint')" icon="i-lucide-building-2">
+          <SettingsSigninSso />
         </SettingsBlock>
 
         <SettingsBlock :title="t('settings.signin.codes')" :description="t('settings.signin.codesHint')" icon="i-lucide-shield-check">

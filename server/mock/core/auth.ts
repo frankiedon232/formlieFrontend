@@ -15,7 +15,7 @@ import { resolveHostContext, type HostContext } from '#shared/utils/tenant/host'
 import { actorOf, deviceFrom, recordAudit } from './audit'
 import { loadPersisted, savePersisted } from './persist'
 import { MockError } from './respond'
-import { tenantByPreviousSubdomain } from '../data/addressStore'
+import { tenantByDomain, tenantByPreviousSubdomain } from '../data/addressStore'
 import { settingsOf } from '../data/settingsStore'
 import { MOCK_TENANTS, MOCK_USERS, type MockTenant, type MockUser } from '../data/tenants'
 
@@ -64,9 +64,14 @@ export function tenantOf(event: H3Event): RequestTenant {
     manageSubdomain: config.manageSubdomain,
     tenantOverride: getHeader(event, DEV_TENANT_HEADER) ?? null,
   })
-  // A subdomain that changed keeps working for a while (Settings → Workspace address)
+  // A subdomain that changed keeps working for a while (Settings → Address and domain); an own domain once verified
   const tenant =
-    context.kind === 'tenant' ? (MOCK_TENANTS.find(t => t.subdomain === context.subdomain) ?? tenantByPreviousSubdomain(context.subdomain)) : null
+    context.kind === 'tenant'
+      ? (MOCK_TENANTS.find(t => t.subdomain === context.subdomain) ?? tenantByPreviousSubdomain(context.subdomain))
+      : context.kind === 'custom'
+        ? tenantByDomain(context.host)
+        : null
+  if (context.kind === 'custom' && tenant) return { context: { kind: 'tenant', host: context.host, subdomain: tenant.subdomain } as HostContext, tenant }
   return { context, tenant }
 }
 
