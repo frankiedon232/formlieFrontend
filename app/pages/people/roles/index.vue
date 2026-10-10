@@ -7,7 +7,7 @@
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@nuxt/ui'
 import type { RoleRow, RolesInsights } from '#shared/types/people'
-import { ALL_PERMISSIONS, withNeeds } from '#shared/utils/auth/permissions'
+import { reachOf } from '#shared/utils/auth/permissions'
 
 definePageMeta({ breadcrumb: 'nav.peopleRoles' })
 const { t } = useI18n()
@@ -51,7 +51,7 @@ const fetcher: DataFetcher<RoleRow> = (params, signal) => api.list<RoleRow>('/ro
 const kind = computed(() => (typeof route.query.kind === 'string' && !route.query.kind.includes(',') ? route.query.kind : null))
 const pickKind = (key: string) => void router.replace({ query: { ...route.query, kind: kind.value === key ? undefined : key, page: undefined } })
 /** How much of the platform a role opens (share of all permissions). */
-const reach = (row: RoleRow) => (row.id === 'owner' ? 1 : withNeeds(row.permissions).length / ALL_PERMISSIONS.length)
+const reach = (row: RoleRow) => (row.id === 'owner' ? 1 : reachOf(row.grants))
 
 const open = (row: RoleRow) => navigateTo(`/people/roles/${row.id}`)
 const newOpen = ref(false)

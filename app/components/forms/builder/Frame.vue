@@ -2,6 +2,8 @@
   Shared frame for the builder, logic and versions pages (one form, one session):
   header = inline name · status + "Saved just now" · Build / Logic / Design / Share / Versions (design segmented
   control) · undo / redo · Preview · Publish; body = loading / error / conflict states + the page.
+  Each part follows what this person may do with the form (F22 R2): Build / Logic / Design need edit, Share
+  needs to see share settings, Versions needs versions; renaming, publishing and preview are their own.
 -->
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@nuxt/ui'
@@ -18,13 +20,19 @@ async function saveName() {
   if (!(await s.rename(nameDraft.value))) nameDraft.value = form.value?.name ?? ''
 }
 
-const modes = computed(() => [
-  { value: 'build', label: t('builder.mode.build'), icon: 'i-lucide-layout-panel-top' },
-  { value: 'logic', label: t('builder.mode.logic'), icon: 'i-lucide-git-branch' },
-  { value: 'design', label: t('builder.mode.design'), icon: 'i-lucide-palette' },
-  { value: 'share', label: t('builder.mode.share'), icon: 'i-lucide-share-2' },
-  { value: 'versions', label: t('builder.mode.versions'), icon: 'i-lucide-history' },
-])
+const allowed = (action: Parameters<typeof formCan>[1]) => formCan(form.value, action)
+const NEEDS = { build: 'edit', logic: 'edit', design: 'edit', share: 'share_view', versions: 'versions' } as const
+/** May they be on this tab at all? (Otherwise the page explains and offers the way back.) */
+const canHere = computed(() => allowed(NEEDS[props.mode]))
+const modes = computed(() =>
+  [
+    { value: 'build', label: t('builder.mode.build'), icon: 'i-lucide-layout-panel-top' },
+    { value: 'logic', label: t('builder.mode.logic'), icon: 'i-lucide-git-branch' },
+    { value: 'design', label: t('builder.mode.design'), icon: 'i-lucide-palette' },
+    { value: 'share', label: t('builder.mode.share'), icon: 'i-lucide-share-2' },
+    { value: 'versions', label: t('builder.mode.versions'), icon: 'i-lucide-history' },
+  ].filter(item => allowed(NEEDS[item.value as keyof typeof NEEDS])),
+)
 const go = (mode: string | number) => navigateTo(`/forms/${s.formId}/${mode === 'build' ? 'build' : mode}`)
 
 const publishOpen = ref(false)
@@ -40,12 +48,14 @@ async function publish(summary: string | null) {
 
 const phoneMenu = computed<DropdownMenuItem[][]>(() => [
   modes.value.map(m => ({ label: m.label, icon: m.icon, type: 'checkbox' as const, checked: m.value === props.mode, onSelect: () => void go(m.value) })),
-  [
-    { label: t('builder.undo'), icon: 'i-lucide-undo-2', disabled: !builder.history.canUndo.value, onSelect: () => { builder.history.undo() } },
-    { label: t('builder.redo'), icon: 'i-lucide-redo-2', disabled: !builder.history.canRedo.value, onSelect: () => { builder.history.redo() } },
-  ],
-  [{ label: t('builder.preview.button'), icon: 'i-lucide-eye', onSelect: () => { previewOpen.value = true } }],
-])
+  s.canEdit.value
+    ? [
+        { label: t('builder.undo'), icon: 'i-lucide-undo-2', disabled: !builder.history.canUndo.value, onSelect: () => { builder.history.undo() } },
+        { label: t('builder.redo'), icon: 'i-lucide-redo-2', disabled: !builder.history.canRedo.value, onSelect: () => { builder.history.redo() } },
+      ]
+    : [],
+  allowed('preview') ? [{ label: t('builder.preview.button'), icon: 'i-lucide-eye', onSelect: () => { previewOpen.value = true } }] : [],
+].filter(group => group.length))
 
 defineShortcuts({
   meta_z: () => builder.history.undo(),
@@ -59,7 +69,7 @@ defineShortcuts({
   <AppPanel :id="`form-${mode}`" :title="form?.name ?? t('builder.crumb')" compact-search>
     <template #title>
       <UInput
-        v-if="form && s.canEdit.value"
+        v-if="form && allowed('rename')"
         v-model="nameDraft"
         variant="ghost"
         maxlength="120"
@@ -77,7 +87,7 @@ defineShortcuts({
       <FormsBuilderSaveStatus :session="s" />
     </template>
 
-    <template v-if="form && s.canEdit.value" #actions>
+    <template v-if="form && canHere" #actions>
       <UTabs
         :model-value="mode"
         :items="modes"
@@ -89,12 +99,12 @@ defineShortcuts({
         :aria-label="t('builder.mode.label')"
         @update:model-value="go"
       />
-      <UButton class="hidden sm:inline-flex" icon="i-lucide-undo-2" color="neutral" variant="outline" square :disabled="!builder.history.canUndo.value" :aria-label="t('builder.undo')" @click="builder.history.undo()" />
-      <UButton class="hidden sm:inline-flex" icon="i-lucide-redo-2" color="neutral" variant="outline" square :disabled="!builder.history.canRedo.value" :aria-label="t('builder.redo')" @click="builder.history.redo()" />
-      <UTooltip :text="t('builder.fullscreen.enter')" :kbds="['meta', 'shift', 'f']">
+      <UButton v-if="s.canEdit.value" class="hidden sm:inline-flex" icon="i-lucide-undo-2" color="neutral" variant="outline" square :disabled="!builder.history.canUndo.value" :aria-label="t('builder.undo')" @click="builder.history.undo()" />
+      <UButton v-if="s.canEdit.value" class="hidden sm:inline-flex" icon="i-lucide-redo-2" color="neutral" variant="outline" square :disabled="!builder.history.canRedo.value" :aria-label="t('builder.redo')" @click="builder.history.redo()" />
+      <UTooltip v-if="s.canEdit.value" :text="t('builder.fullscreen.enter')" :kbds="['meta', 'shift', 'f']">
         <UButton class="hidden lg:inline-flex" icon="i-lucide-maximize-2" color="neutral" variant="outline" square :aria-label="t('builder.fullscreen.enter')" @click="s.toggleFullscreen(true)" />
       </UTooltip>
-      <UTooltip :text="t('builder.preview.button')">
+      <UTooltip v-if="allowed('preview')" :text="t('builder.preview.button')">
         <UButton class="hidden sm:inline-flex" icon="i-lucide-eye" color="neutral" variant="outline" square :aria-label="t('builder.preview.button')" @click="previewOpen = true" />
       </UTooltip>
       <!-- Phones / small tablets: modes, undo / redo and preview fold into one menu. -->
@@ -102,9 +112,9 @@ defineShortcuts({
         <UButton class="md:hidden" icon="i-lucide-ellipsis" color="neutral" variant="outline" square :aria-label="t('builder.actions.more')" />
       </UDropdownMenu>
       <!-- Nothing new since the last publish: not clickable, and it says why on hover (owner 2026-10-08) -->
-      <UTooltip :text="t('builder.publish.nothing')" :disabled="!s.nothingToPublish.value">
+      <UTooltip v-if="allowed('publish')" :text="t('builder.publish.nothing')" :disabled="!s.nothingToPublish.value">
         <span class="inline-flex" :tabindex="s.nothingToPublish.value ? 0 : undefined" :aria-label="s.nothingToPublish.value ? t('builder.publish.nothing') : undefined">
-          <UButton icon="i-lucide-globe" :label="t('builder.publish.button')" color="neutral" :loading="s.publishing.value" :disabled="!s.canEdit.value || s.nothingToPublish.value" :class="s.nothingToPublish.value ? 'opacity-50!' : ''" @click="publishOpen = true" />
+          <UButton icon="i-lucide-globe" :label="t('builder.publish.button')" color="neutral" :loading="s.publishing.value" :disabled="s.nothingToPublish.value" :class="s.nothingToPublish.value ? 'opacity-50!' : ''" @click="publishOpen = true" />
         </span>
       </UTooltip>
     </template>
@@ -115,7 +125,7 @@ defineShortcuts({
 
     <!-- "Can view" / "Responses only" (people access, decision 97): never the editor, only the way back. -->
     <AppEmpty
-      v-else-if="s.failed.value === 'FRM-PERM-1001' || !s.canEdit.value"
+      v-else-if="s.failed.value === 'FRM-PERM-1001' || (form && !canHere)"
       icon="i-lucide-eye"
       :title="t('share.people.noEditor')"
       :description="t('share.people.noEditorDesc')"
@@ -169,12 +179,12 @@ defineShortcuts({
                 :aria-label="t('builder.mode.label')"
                 @update:model-value="go"
               />
-              <UButton icon="i-lucide-undo-2" color="neutral" variant="ghost" size="sm" square :disabled="!builder.history.canUndo.value" :aria-label="t('builder.undo')" @click="builder.history.undo()" />
-              <UButton icon="i-lucide-redo-2" color="neutral" variant="ghost" size="sm" square :disabled="!builder.history.canRedo.value" :aria-label="t('builder.redo')" @click="builder.history.redo()" />
-              <UButton icon="i-lucide-eye" :label="t('builder.preview.button')" color="neutral" variant="outline" size="sm" class="hidden sm:inline-flex" @click="previewOpen = true" />
-              <UTooltip :text="t('builder.publish.nothing')" :disabled="!s.nothingToPublish.value">
+              <UButton v-if="s.canEdit.value" icon="i-lucide-undo-2" color="neutral" variant="ghost" size="sm" square :disabled="!builder.history.canUndo.value" :aria-label="t('builder.undo')" @click="builder.history.undo()" />
+              <UButton v-if="s.canEdit.value" icon="i-lucide-redo-2" color="neutral" variant="ghost" size="sm" square :disabled="!builder.history.canRedo.value" :aria-label="t('builder.redo')" @click="builder.history.redo()" />
+              <UButton v-if="allowed('preview')" icon="i-lucide-eye" :label="t('builder.preview.button')" color="neutral" variant="outline" size="sm" class="hidden sm:inline-flex" @click="previewOpen = true" />
+              <UTooltip v-if="allowed('publish')" :text="t('builder.publish.nothing')" :disabled="!s.nothingToPublish.value">
                 <span class="inline-flex" :tabindex="s.nothingToPublish.value ? 0 : undefined" :aria-label="s.nothingToPublish.value ? t('builder.publish.nothing') : undefined">
-                  <UButton icon="i-lucide-globe" :label="t('builder.publish.button')" color="neutral" size="sm" :loading="s.publishing.value" :disabled="!s.canEdit.value || s.nothingToPublish.value" :class="s.nothingToPublish.value ? 'opacity-50!' : ''" @click="publishOpen = true" />
+                  <UButton icon="i-lucide-globe" :label="t('builder.publish.button')" color="neutral" size="sm" :loading="s.publishing.value" :disabled="s.nothingToPublish.value" :class="s.nothingToPublish.value ? 'opacity-50!' : ''" @click="publishOpen = true" />
                 </span>
               </UTooltip>
               <UTooltip :text="t('builder.fullscreen.exit')" :kbds="['esc']">

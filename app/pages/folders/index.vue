@@ -74,24 +74,32 @@ const pinItem = (folderId: string): DropdownMenuItem =>
     : sidebarFolders.canPin.value
       ? { label: t('folders.pin'), icon: 'i-lucide-pin', onSelect: () => sidebarFolders.togglePin(folderId) }
       : { label: t('folders.pinFull'), icon: 'i-lucide-pin', disabled: true }
-const rowActions = (folder: FolderRow): DropdownMenuItem[][] => [
+// Each folder says what this person may do with it (F22 R2: own or all folders, folder access)
+const { can } = useCan()
+const accessFolder = ref<FolderRow | null>(null)
+const accessOpen = ref(false)
+const rowActions = (folder: FolderRow): DropdownMenuItem[][] =>
   [
-    { label: t('folders.open'), icon: 'i-lucide-folder-open', to: `/folders/${folder.id}` },
-    pinItem(folder.id),
-    { label: t('folders.editTitle'), icon: 'i-lucide-pencil', onSelect: () => edit(folder) },
-    { label: t('nav.newForm'), icon: 'i-lucide-plus', to: { path: '/forms/new', query: { folder: folder.id } } },
-  ],
-  [
-    folder.forms_count
-      ? { label: t('forms.folders.notEmpty'), icon: 'i-lucide-trash-2', disabled: true }
-      : { label: t('forms.folders.deleteNamed', { name: folder.name }), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => void remove(folder) },
-  ],
-]
+    [
+      { label: t('folders.open'), icon: 'i-lucide-folder-open', to: `/folders/${folder.id}` },
+      pinItem(folder.id),
+      ...(folder.can?.edit ? [{ label: t('folders.editTitle'), icon: 'i-lucide-pencil', onSelect: () => edit(folder) }] : []),
+      ...(can('forms.create') ? [{ label: t('nav.newForm'), icon: 'i-lucide-plus', to: { path: '/forms/new', query: { folder: folder.id } } }] : []),
+    ],
+    folder.can?.access ? [{ label: t('folders.access.menu'), icon: 'i-lucide-folder-lock', onSelect: () => ((accessFolder.value = folder), (accessOpen.value = true)) }] : [],
+    folder.can?.delete
+      ? [
+          folder.forms_count
+            ? { label: t('forms.folders.notEmpty'), icon: 'i-lucide-trash-2', disabled: true }
+            : { label: t('forms.folders.deleteNamed', { name: folder.name }), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => void remove(folder) },
+        ]
+      : [],
+  ].filter(group => group.length)
 </script>
 
 <template>
   <AppPanel id="folders" :title="t('nav.folders')" :subtitle="t('forms.folders.desc')" subtitle-icon="i-lucide-folders">
-    <template #actions>
+    <template v-if="can('folders.create')" #actions>
       <UButton :label="t('forms.folders.new')" icon="i-lucide-folder-plus" color="neutral" @click="edit(null)" />
     </template>
 
@@ -115,6 +123,7 @@ const rowActions = (folder: FolderRow): DropdownMenuItem[][] => [
         <NuxtLink :to="`/folders/${row.original.id}`" class="flex min-w-0 items-center gap-2 rounded-sm focus-visible:outline-2 focus-visible:outline-(--ui-border-inverted)">
           <UIcon name="i-lucide-folder" class="size-4 shrink-0" :class="folderColor(row.original.color).text" :style="folderColor(row.original.color).textStyle" />
           <span class="truncate font-medium text-highlighted">{{ row.original.name }}</span>
+          <UTooltip v-if="row.original.access?.restricted" :text="t('folders.access.badge')"><UIcon name="i-lucide-lock" class="size-3.5 shrink-0 text-muted" :aria-label="t('folders.access.badge')" /></UTooltip>
         </NuxtLink>
       </template>
       <template #forms_count-cell="{ row }">
@@ -141,7 +150,7 @@ const rowActions = (folder: FolderRow): DropdownMenuItem[][] => [
           <span class="whitespace-nowrap text-muted">{{ relative(row.original.last_activity_at) }}</span>
         </UTooltip>
       </template>
-      <template #empty-actions>
+      <template v-if="can('folders.create')" #empty-actions>
         <UButton :label="t('forms.folders.new')" icon="i-lucide-folder-plus" color="neutral" @click="edit(null)" />
       </template>
       <template #grid-card="{ row }">
@@ -150,5 +159,6 @@ const rowActions = (folder: FolderRow): DropdownMenuItem[][] => [
     </DataView>
 
     <FoldersEditModal v-model:open="editOpen" :folder="editing" @saved="saved" />
+    <FoldersAccessModal v-if="accessFolder" v-model:open="accessOpen" :folder="accessFolder" @saved="() => view?.refresh()" />
   </AppPanel>
 </template>

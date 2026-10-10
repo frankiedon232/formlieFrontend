@@ -95,6 +95,7 @@ async function create() {
                 t('forms.folders.count', { count: folder.forms_count ?? 0 }, folder.forms_count ?? 0)
               }}</span>
               <UButton
+                v-if="folder.can?.edit"
                 icon="i-lucide-pencil"
                 color="neutral"
                 variant="ghost"
@@ -112,7 +113,7 @@ async function create() {
                 :aria-label="t('forms.folders.viewForms', { name: folder.name })"
                 @click="open = false"
               />
-              <UTooltip :text="folder.forms_count ? t('forms.folders.notEmpty') : t('forms.folders.deleteNamed', { name: folder.name })">
+              <UTooltip v-if="folder.can?.delete" :text="folder.forms_count ? t('forms.folders.notEmpty') : t('forms.folders.deleteNamed', { name: folder.name })">
                 <UButton
                   icon="i-lucide-trash-2"
                   color="neutral"
@@ -131,7 +132,7 @@ async function create() {
           {{ t('forms.folders.empty') }}
         </p>
 
-        <form class="flex items-end gap-2" @submit.prevent="create">
+        <form v-if="useCan().can('folders.create')" class="flex items-end gap-2" @submit.prevent="create">
           <UFormField :label="t('forms.folders.newName')" class="flex-1">
             <UInput v-model="newName" maxlength="60" icon="i-lucide-folder-plus" class="w-full" />
           </UFormField>

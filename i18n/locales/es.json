@@ -1118,7 +1118,8 @@
       "users_requested": "Solicitó unirse",
       "users_approved": "Aprobado",
       "users_rejected": "Solicitud rechazada",
-      "users_signup_link_changed": "Enlace de registro modificado"
+      "users_signup_link_changed": "Enlace de registro modificado",
+      "forms_folder_access_changed": "Acceso a la carpeta cambiado"
     },
     "detail": {
       "who": "Quién",
@@ -5075,7 +5076,9 @@
       "answeringDesc": "Quién puede rellenarlo y cómo llega a él: para todas las personas a las que envíe el formulario.",
       "team": "Su equipo",
       "teamDesc": "Personal de su espacio de trabajo que crea y gestiona este formulario. No cambia quién puede rellenarlo."
-    }
+    },
+    "readOnly": "Puede ver estos ajustes",
+    "readOnlyDesc": "Su rol no le permite cambiar cómo se comparte este formulario."
   },
   "preview": {
     "crumb": "Vista previa",
@@ -5536,7 +5539,22 @@
     "pin": "Fijar en la barra lateral",
     "unpin": "Quitar de la barra lateral",
     "pinFull": "Se pueden fijar hasta 5 carpetas",
-    "hex": "Color hex"
+    "hex": "Color hex",
+    "access": {
+      "menu": "Quién puede verla",
+      "title": "Quién puede ver {name}",
+      "desc": "Una carpeta que algunas personas no pueden ver oculta sus formularios y respuestas en todas partes.",
+      "everyone": "Todos",
+      "everyoneHint": "Todas las personas cuyo rol abre formularios.",
+      "restricted": "Solo personas elegidas",
+      "restrictedHint": "Elija roles, departamentos o personas. Los propietarios y quienes deciden el acceso a las carpetas siempre la ven.",
+      "roles": "Roles",
+      "people": "Personas",
+      "note": "Quien coincida con alguno de estos ve la carpeta.",
+      "nobody": "Aún no se ha elegido a nadie: solo la verán los propietarios y quienes deciden el acceso a las carpetas.",
+      "saved": "Acceso a la carpeta guardado",
+      "badge": "Restringida"
+    }
   },
   "destinations": {
     "crumb": "Almacenamiento de respuestas",
@@ -7876,12 +7894,13 @@
       "roles": "Roles",
       "settings": "Configuración",
       "audit": "Registro de auditoría",
-      "ai": "Asistente de IA"
+      "ai": "Asistente de IA",
+      "folders": "Carpetas"
     },
     "areaHint": {
-      "forms": "Crear, publicar y eliminar formularios.",
+      "forms": "Crear, diseñar, compartir, publicar y eliminar formularios.",
       "responses": "Leer, cambiar y exportar respuestas.",
-      "resources": "Plantillas, temas, páginas de destino, listas, carpetas y campos guardados.",
+      "resources": "Plantillas, temas, páginas de destino, listas y campos guardados.",
       "analytics": "Las páginas de analítica.",
       "data": "Conexiones de base de datos, el explorador y las consultas.",
       "api": "Servicios, endpoints, tokens y webhooks.",
@@ -7889,7 +7908,8 @@
       "roles": "Crear y cambiar roles.",
       "settings": "La configuración del espacio de trabajo.",
       "audit": "Quién hizo qué y cuándo.",
-      "ai": "Usar el asistente de IA."
+      "ai": "Usar el asistente de IA.",
+      "folders": "Las carpetas y quién puede verlas."
     },
     "action": {
       "view": "Ver",
@@ -7897,7 +7917,6 @@
       "edit": "Editar",
       "publish": "Publicar",
       "delete": "Eliminar",
-      "all": "Todos los formularios",
       "export": "Exportar",
       "manage": "Administrar",
       "query": "Ejecutar consultas",
@@ -7906,12 +7925,11 @@
       "review": "Revisar"
     },
     "perm": {
-      "forms_view": "Ver los formularios y su editor.",
-      "forms_create": "Crear, importar y duplicar formularios.",
-      "forms_edit": "Cambiar formularios: preguntas, diseño, uso compartido.",
-      "forms_publish": "Publicar formularios y abrirlos o cerrarlos.",
-      "forms_delete": "Eliminar formularios y vaciar la papelera.",
-      "forms_all": "Todos los formularios del espacio de trabajo, no solo los compartidos con la persona.",
+      "forms_view": "Encontrar formularios en las listas y abrir su resumen.",
+      "forms_create": "Empezar formularios nuevos, en blanco o desde una plantilla.",
+      "forms_edit": "Cambiar preguntas, páginas, lógica, diseño y etiquetas.",
+      "forms_publish": "Poner en vivo los últimos cambios.",
+      "forms_delete": "Mover un formulario a la Papelera y recuperarlo.",
       "responses_view": "Leer respuestas.",
       "responses_edit": "Corregir las respuestas enviadas.",
       "responses_delete": "Eliminar respuestas.",
@@ -7932,7 +7950,70 @@
       "audit_view": "Ver el registro de auditoría.",
       "audit_export": "Exportar el registro de auditoría.",
       "ai_use": "Usar el asistente de IA.",
-      "responses_review": "Cambiar el estado, las etiquetas y las notas."
+      "responses_review": "Cambiar el estado, las etiquetas y las notas.",
+      "forms_preview": "Ver el formulario tal como lo rellenarán las personas.",
+      "forms_import": "Traer un formulario desde un archivo.",
+      "forms_duplicate": "Hacer una copia de un formulario.",
+      "forms_save_template": "Convertir un formulario en plantilla del espacio de trabajo.",
+      "forms_rename": "Cambiar el nombre de un formulario.",
+      "forms_versions": "Ver versiones anteriores y recuperar una.",
+      "forms_share_view": "Ver enlaces, acceso y con quién se comparte el formulario.",
+      "forms_share": "Cambiar enlaces, acceso, incrustación y con quién se comparte el formulario.",
+      "forms_availability": "Definir cuándo se abre y se cierra un formulario.",
+      "forms_close": "Desconectar un formulario y volver a conectarlo.",
+      "forms_archive": "Guardar un formulario y recuperarlo.",
+      "forms_move": "Poner un formulario en otra carpeta.",
+      "forms_purge": "Eliminar un formulario definitivamente y vaciar la Papelera.",
+      "folders_create": "Crear carpetas nuevas.",
+      "folders_edit": "Cambiar el nombre y el color de una carpeta.",
+      "folders_delete": "Quitar carpetas vacías.",
+      "folders_access": "Elegir quién puede ver cada carpeta, y ver todas las carpetas."
+    },
+    "setArea": "Definir el área",
+    "searchActions": "Buscar acciones",
+    "noActions": "Ninguna acción coincide",
+    "scope": {
+      "none": "Ninguno",
+      "own": "Propios",
+      "shared": "Compartidos",
+      "all": "Todos"
+    },
+    "scopeHint": {
+      "none": "Para nada, ni siquiera en lo que crearon",
+      "own": "Solo en lo que crearon",
+      "shared": "En sus propios formularios y en los compartidos con ellos",
+      "all": "En todo el espacio de trabajo"
+    },
+    "group": {
+      "forms_see": "Ver",
+      "forms_create": "Crear",
+      "forms_build": "Diseñar",
+      "forms_share": "Compartir",
+      "forms_lifecycle": "Publicación y ciclo de vida"
+    },
+    "label": {
+      "forms_view": "Ver formularios",
+      "forms_preview": "Vista previa",
+      "forms_create": "Crear formularios",
+      "forms_import": "Importar formularios",
+      "forms_duplicate": "Duplicar",
+      "forms_save_template": "Guardar como plantilla",
+      "forms_rename": "Cambiar nombre",
+      "forms_edit": "Editar preguntas, lógica y diseño",
+      "forms_versions": "Versiones",
+      "forms_share_view": "Ver ajustes de uso compartido",
+      "forms_share": "Cambiar ajustes de uso compartido",
+      "forms_availability": "Disponibilidad",
+      "forms_publish": "Publicar",
+      "forms_close": "Despublicar, cerrar y reabrir",
+      "forms_archive": "Archivar y desarchivar",
+      "forms_move": "Mover a una carpeta",
+      "forms_delete": "Mover a la Papelera y restaurar",
+      "forms_purge": "Eliminar para siempre",
+      "folders_create": "Crear carpetas",
+      "folders_edit": "Cambiar nombre y color",
+      "folders_delete": "Eliminar carpetas",
+      "folders_access": "Decidir quién ve las carpetas"
     }
   }
 }

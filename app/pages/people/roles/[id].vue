@@ -7,6 +7,8 @@
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@nuxt/ui'
 import type { RoleRow } from '#shared/types/people'
+import type { Grants } from '#shared/utils/auth/permissions'
+import { withNeeds } from '#shared/utils/auth/permissions'
 
 definePageMeta({ breadcrumb: 'nav.peopleRoles' })
 const { t } = useI18n()
@@ -22,8 +24,10 @@ const id = String(route.params.id)
 
 const role = ref<RoleRow | null>(null)
 const failed = ref(false)
-const draft = ref<{ name: string; description: string; permissions: string[] } | null>(null)
-const draftOf = (row: RoleRow) => ({ name: row.name, description: row.description ?? '', permissions: [...row.permissions].sort() })
+const draft = ref<{ name: string; description: string; grants: Grants } | null>(null)
+const draftOf = (row: RoleRow) => ({ name: row.name, description: row.description ?? '', grants: withNeeds(row.grants) })
+/** The same grants in a fixed order, to see whether anything changed. */
+const keyOf = (grants: Grants) => JSON.stringify(withNeeds(grants))
 async function load() {
   failed.value = false
   try {
@@ -39,14 +43,14 @@ onMounted(load)
 useHead({ title: () => role.value?.name ?? t('nav.peopleRoles') })
 
 const locked = computed(() => role.value?.id === 'owner' || !can('roles.manage'))
-const dirty = computed(() => !!draft.value && !!role.value && JSON.stringify({ ...draft.value, permissions: [...draft.value.permissions].sort() }) !== JSON.stringify(draftOf(role.value)))
+const dirty = computed(() => !!draft.value && !!role.value && (draft.value.name !== role.value.name || draft.value.description !== (role.value.description ?? '') || keyOf(draft.value.grants) !== keyOf(role.value.grants)))
 const saving = ref(false)
 async function save() {
   if (!draft.value || !dirty.value || saving.value || locked.value) return
   if (!draft.value.name.trim()) return toast.add({ title: t('access.nameRequired'), color: 'warning', icon: 'i-lucide-triangle-alert' })
   saving.value = true
   try {
-    role.value = (await api.patch<RoleRow>(`/roles/${id}`, { name: draft.value.name.trim(), description: draft.value.description.trim() || null, permissions: draft.value.permissions })).data
+    role.value = (await api.patch<RoleRow>(`/roles/${id}`, { name: draft.value.name.trim(), description: draft.value.description.trim() || null, grants: draft.value.grants })).data
     draft.value = draftOf(role.value)
     toast.add({ title: t('access.saved', { name: role.value.name }), description: role.value.people_count ? t('access.savedPeople', { n: role.value.people_count }, role.value.people_count) : undefined, color: 'success', icon: 'i-lucide-circle-check' })
   } catch (error) {
@@ -115,7 +119,7 @@ async function remove() {
           <h2 class="text-sm font-semibold text-highlighted">{{ t('access.what') }}</h2>
           <p class="text-xs text-muted">{{ t('access.whatHint') }}</p>
         </div>
-        <PeopleRolesMatrix v-model="draft.permissions" :readonly="locked" />
+        <PeopleRolesEditor v-model="draft.grants" :readonly="locked" />
       </section>
       <section class="flex flex-col gap-3">
         <div class="flex items-center justify-between gap-2">

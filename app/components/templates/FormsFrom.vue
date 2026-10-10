@@ -130,6 +130,7 @@ const usage = computed(() => [
       <UIcon name="i-lucide-file-plus" class="size-5 text-muted" />
       <p class="text-sm text-highlighted">{{ t('templates.noFormsTitle') }}</p>
       <UButton
+        v-if="useCan().can('forms.create')"
         :label="t('templates.use')"
         icon="i-lucide-file-plus"
         color="neutral"

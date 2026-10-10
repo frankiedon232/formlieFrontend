@@ -1118,7 +1118,8 @@
       "users_requested": "참여 요청함",
       "users_approved": "승인됨",
       "users_rejected": "요청 거절됨",
-      "users_signup_link_changed": "가입 링크 변경됨"
+      "users_signup_link_changed": "가입 링크 변경됨",
+      "forms_folder_access_changed": "폴더 접근 권한이 변경되었습니다"
     },
     "detail": {
       "who": "누가",
@@ -5075,7 +5076,9 @@
       "answeringDesc": "누가 작성할 수 있고 어떻게 들어오는지 정합니다. 양식을 보내는 모든 사람에게 적용됩니다.",
       "team": "내 팀",
       "teamDesc": "이 양식을 만들고 관리하는 워크스페이스 직원입니다. 누가 작성할 수 있는지는 바뀌지 않습니다."
-    }
+    },
+    "readOnly": "이 설정을 볼 수 있습니다",
+    "readOnlyDesc": "현재 역할로는 이 양식의 공유 방식을 변경할 수 없습니다."
   },
   "preview": {
     "crumb": "미리보기",
@@ -5536,7 +5539,22 @@
     "pin": "사이드바에 고정",
     "unpin": "사이드바 고정 해제",
     "pinFull": "폴더는 최대 5개까지 고정할 수 있습니다",
-    "hex": "16진수 색상"
+    "hex": "16진수 색상",
+    "access": {
+      "menu": "볼 수 있는 사람",
+      "title": "{name}을(를) 볼 수 있는 사람",
+      "desc": "사람들이 볼 수 없는 폴더는 그 안의 양식과 응답을 어디서든 숨깁니다.",
+      "everyone": "모든 사람",
+      "everyoneHint": "역할로 양식을 열 수 있는 모든 사람.",
+      "restricted": "선택한 사람만",
+      "restrictedHint": "역할, 부서 또는 구성원을 선택하세요. 소유자와 폴더 접근을 결정하는 사람은 항상 볼 수 있습니다.",
+      "roles": "역할",
+      "people": "구성원",
+      "note": "이 중 하나에 해당하는 사람은 폴더를 볼 수 있습니다.",
+      "nobody": "아직 선택한 사람이 없습니다. 소유자와 폴더 접근을 결정하는 사람만 볼 수 있습니다.",
+      "saved": "폴더 접근 권한이 저장되었습니다",
+      "badge": "제한됨"
+    }
   },
   "destinations": {
     "crumb": "응답 저장소",
@@ -7876,12 +7894,13 @@
       "roles": "역할",
       "settings": "설정",
       "audit": "감사 로그",
-      "ai": "AI 어시스턴트"
+      "ai": "AI 어시스턴트",
+      "folders": "폴더"
     },
     "areaHint": {
-      "forms": "양식 만들기, 게시, 삭제.",
+      "forms": "양식 만들기, 구성, 공유, 게시 및 삭제.",
       "responses": "응답 읽기, 변경, 내보내기.",
-      "resources": "템플릿, 테마, 랜딩 페이지, 목록, 폴더, 저장된 필드.",
+      "resources": "템플릿, 테마, 랜딩 페이지, 목록, 저장된 필드.",
       "analytics": "분석 페이지.",
       "data": "데이터베이스 연결, 탐색기, 쿼리.",
       "api": "서비스, 엔드포인트, 토큰, 웹훅.",
@@ -7889,7 +7908,8 @@
       "roles": "역할 만들기와 변경.",
       "settings": "워크스페이스 설정.",
       "audit": "누가 언제 무엇을 했는지.",
-      "ai": "AI 어시스턴트 사용."
+      "ai": "AI 어시스턴트 사용.",
+      "folders": "폴더와 폴더를 볼 수 있는 사람."
     },
     "action": {
       "view": "보기",
@@ -7897,7 +7917,6 @@
       "edit": "편집",
       "publish": "게시",
       "delete": "삭제",
-      "all": "모든 양식",
       "export": "내보내기",
       "manage": "관리",
       "query": "쿼리 실행",
@@ -7906,12 +7925,11 @@
       "review": "검토"
     },
     "perm": {
-      "forms_view": "양식과 빌더를 봅니다.",
-      "forms_create": "양식을 만들고, 가져오고, 복제합니다.",
-      "forms_edit": "양식을 변경합니다: 질문, 디자인, 공유.",
-      "forms_publish": "양식을 게시하고 열거나 닫습니다.",
-      "forms_delete": "양식을 삭제하고 휴지통을 비웁니다.",
-      "forms_all": "공유받은 것뿐 아니라 워크스페이스의 모든 양식.",
+      "forms_view": "목록에서 양식을 찾고 개요를 엽니다.",
+      "forms_create": "빈 양식이나 템플릿으로 새 양식을 시작합니다.",
+      "forms_edit": "질문, 페이지, 로직, 디자인, 태그를 변경합니다.",
+      "forms_publish": "최신 변경 사항을 게시합니다.",
+      "forms_delete": "양식을 휴지통으로 옮기고 되살립니다.",
       "responses_view": "응답을 읽습니다.",
       "responses_edit": "제출된 답변을 수정합니다.",
       "responses_delete": "응답을 삭제합니다.",
@@ -7932,7 +7950,70 @@
       "audit_view": "감사 로그를 봅니다.",
       "audit_export": "감사 로그를 내보냅니다.",
       "ai_use": "AI 어시스턴트를 사용합니다.",
-      "responses_review": "상태, 태그, 메모를 변경합니다."
+      "responses_review": "상태, 태그, 메모를 변경합니다.",
+      "forms_preview": "사람들이 작성하게 될 모습 그대로 양식을 봅니다.",
+      "forms_import": "파일에서 양식을 가져옵니다.",
+      "forms_duplicate": "양식의 사본을 만듭니다.",
+      "forms_save_template": "양식을 워크스페이스 템플릿으로 만듭니다.",
+      "forms_rename": "양식의 이름을 변경합니다.",
+      "forms_versions": "이전 버전을 보고 하나를 복원합니다.",
+      "forms_share_view": "링크, 접근 권한, 양식이 공유된 대상을 봅니다.",
+      "forms_share": "링크, 접근 권한, 삽입, 양식이 공유된 대상을 변경합니다.",
+      "forms_availability": "양식이 열리고 닫히는 시점을 설정합니다.",
+      "forms_close": "양식을 오프라인으로 전환하고 다시 되돌립니다.",
+      "forms_archive": "양식을 보관하고 다시 꺼냅니다.",
+      "forms_move": "양식을 다른 폴더로 옮깁니다.",
+      "forms_purge": "양식을 영구적으로 제거하고 휴지통을 비웁니다.",
+      "folders_create": "새 폴더를 만듭니다.",
+      "folders_edit": "폴더의 이름과 색상을 변경합니다.",
+      "folders_delete": "빈 폴더를 제거합니다.",
+      "folders_access": "각 폴더를 볼 수 있는 사람을 선택하고, 모든 폴더를 봅니다."
+    },
+    "setArea": "영역 설정",
+    "searchActions": "작업 검색",
+    "noActions": "일치하는 작업이 없습니다",
+    "scope": {
+      "none": "없음",
+      "own": "본인",
+      "shared": "공유",
+      "all": "전체"
+    },
+    "scopeHint": {
+      "none": "전혀 불가, 직접 만든 항목도 불가",
+      "own": "직접 만든 항목만",
+      "shared": "본인 양식과 공유받은 양식",
+      "all": "워크스페이스의 모든 항목"
+    },
+    "group": {
+      "forms_see": "보기",
+      "forms_create": "만들기",
+      "forms_build": "구성",
+      "forms_share": "공유",
+      "forms_lifecycle": "게시 및 수명 주기"
+    },
+    "label": {
+      "forms_view": "양식 보기",
+      "forms_preview": "미리보기",
+      "forms_create": "양식 만들기",
+      "forms_import": "양식 가져오기",
+      "forms_duplicate": "복제",
+      "forms_save_template": "템플릿으로 저장",
+      "forms_rename": "이름 바꾸기",
+      "forms_edit": "질문, 로직, 디자인 편집",
+      "forms_versions": "버전",
+      "forms_share_view": "공유 설정 보기",
+      "forms_share": "공유 설정 변경",
+      "forms_availability": "이용 기간",
+      "forms_publish": "게시",
+      "forms_close": "게시 취소, 마감, 다시 열기",
+      "forms_archive": "보관 및 보관 해제",
+      "forms_move": "폴더로 이동",
+      "forms_delete": "휴지통으로 이동 및 복원",
+      "forms_purge": "영구 삭제",
+      "folders_create": "폴더 만들기",
+      "folders_edit": "이름 및 색상 변경",
+      "folders_delete": "폴더 삭제",
+      "folders_access": "폴더를 볼 수 있는 사람 결정"
     }
   }
 }

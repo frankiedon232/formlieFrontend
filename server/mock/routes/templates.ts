@@ -10,7 +10,7 @@ import { TEMPLATE_CATEGORIES, TEMPLATE_CATEGORY_KEYS, categoryOf, templateTheme,
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
 import { APP_LOCALES } from '#shared/utils/i18n/locales'
 import { requireAuth } from '../core/auth'
-import { requireLevel } from '../data/formPermissions'
+import { requireAction } from '../data/formPermissions'
 import { actorOf, recordAudit } from '../core/audit'
 import { MockError, ok, paginate } from '../core/respond'
 import { defineMockRoute } from '../core/route'
@@ -174,7 +174,7 @@ export const createTemplate = defineMockRoute(({ event, body: raw }) => {
   const form = formsOf(tenant).forms.find(item => item.id === input.form_id && !item.deleted_at)
   if (!form) throw new MockError('FRM-GEN-1004')
   // Saving a form as a template copies its content: editors only (decision 97).
-  requireLevel(form, user, 'edit')
+  requireAction(form, user, 'save_template', tenant)
   assertName(tenant, input.name)
   const now = new Date().toISOString()
   const item = {
@@ -219,7 +219,7 @@ export const syncTemplate = defineMockRoute(({ event }) => {
   const item = ownTemplate(tenant, getRouterParam(event, 'key'))
   const form = item.source_form_id ? formsOf(tenant).forms.find(entry => entry.id === item.source_form_id && !entry.deleted_at) : undefined
   if (!form) throw new MockError('FRM-GEN-1004')
-  requireLevel(form, user, 'edit')
+  requireAction(form, user, 'save_template', tenant)
   item.schema = structuredClone(ensureSchema(form, tenant))
   item.updated_at = new Date().toISOString()
   saveLibrary()

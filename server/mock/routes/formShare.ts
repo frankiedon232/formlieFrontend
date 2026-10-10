@@ -8,7 +8,7 @@
 import { randomBytes, scryptSync } from 'node:crypto'
 import { z } from 'zod'
 import type { AuditChange } from '#shared/types/audit'
-import { channelsOf, FORM_CHANNELS, type CustomLinkCheck, type FormShareSettings } from '#shared/types/forms'
+import { channelsOf, FORM_CHANNELS, type CustomLinkCheck, type FormAction, type FormShareSettings } from '#shared/types/forms'
 import { customLinkProblem, FORM_KEY_PATTERN, newShortCode, tidyCustomLink } from '#shared/utils/urls/public'
 import { MAX_EMBED_DOMAINS, normaliseEmbedDomain } from '#shared/utils/urls/embed-domains'
 import { requireAuth } from '../core/auth'
@@ -21,16 +21,16 @@ import { parseBody } from '../core/validate'
 import { formsOf, saveForms, type StoredForm } from '../data/formStore'
 import { isRetiredShortCode, retireShortCode } from '../data/shortCodeStore'
 import { MOCK_TENANTS, type MockTenant, type MockUser } from '../data/tenants'
-import { requireLevel } from '../data/formPermissions'
+import { requireAction } from '../data/formPermissions'
 import { peopleOf as directoryPeople } from '../data/orgStore'
 import { peopleStoreOf } from '../data/peopleStore'
 import { roleOf } from '../data/rolesStore'
 
 /** A form of this workspace that this person can edit: sharing is editors only (decision 97). */
-function findForm(tenant: MockTenant, user: MockUser, id: string | undefined): StoredForm {
+function findForm(tenant: MockTenant, user: MockUser, id: string | undefined, action: FormAction): StoredForm {
   const form = formsOf(tenant).forms.find(item => item.id === id && !item.deleted_at)
   if (!form) throw new MockError('FRM-GEN-1004')
-  requireLevel(form, user, 'edit')
+  requireAction(form, user, action, tenant)
   return form
 }
 
@@ -68,8 +68,8 @@ const peopleIn = (tenant: MockTenant): Person[] => directoryPeople(tenant)
 function peopleOf(form: StoredForm, tenant: MockTenant): FormShareSettings['people'] {
   const people = peopleIn(tenant)
   // Owners and admins always have access (their role from People)
-  // Everyone whose role sees every form (forms.all) always has access
-  const admins = peopleStoreOf(tenant).filter(person => person.status === 'active' && (person.role === 'owner' || !!roleOf(tenant, person.role)?.permissions.includes('forms.all')))
+  // Everyone whose role sees every form (forms.view at scope All) always has access
+  const admins = peopleStoreOf(tenant).filter(person => person.status === 'active' && (person.role === 'owner' || roleOf(tenant, person.role)?.grants['forms.view'] === 'all'))
   const always: FormShareSettings['people']['always'] = admins.map(user => ({ user: people.find(person => person.id === user.id)!, reason: 'workspace_admin' as const }))
   if (!admins.some(user => user.id === form.owner.id)) {
     const owner = people.find(person => person.id === form.owner.id) ?? { id: form.owner.id, name: form.owner.name, email: '' }
@@ -136,13 +136,13 @@ function check(value: string, formId: string, tenant: MockTenant): CustomLinkChe
 /** GET /forms/:id/share */
 export const getShare = defineMockRoute(({ event }) => {
   const { tenant, user } = requireAuth(event)
-  return ok(settingsOf(findForm(tenant, user, getRouterParam(event, 'id')), tenant))
+  return ok(settingsOf(findForm(tenant, user, getRouterParam(event, 'id'), 'share_view'), tenant))
 })
 
 /** GET /forms/:id/share/link-check?value= */
 export const checkLink = defineMockRoute(({ event, query }) => {
   const { tenant, user } = requireAuth(event)
-  const form = findForm(tenant, user, getRouterParam(event, 'id'))
+  const form = findForm(tenant, user, getRouterParam(event, 'id'), 'share_view')
   // Query values arrive inside the encrypted envelope (ctx.query), not in the address.
   const value = String(query.value ?? '').slice(0, 80)
   return ok(check(value, form.id, tenant))
@@ -180,7 +180,7 @@ const shareSchema = z.object({
 /** PUT /forms/:id/share */
 export const saveShare = defineMockRoute(({ event, body }) => {
   const { user, tenant } = requireAuth(event)
-  const form = findForm(tenant, user, getRouterParam(event, 'id'))
+  const form = findForm(tenant, user, getRouterParam(event, 'id'), 'share')
   const input = parseBody(shareSchema, body)
   if (input.row_version !== undefined && input.row_version !== form.row_version) throw new MockError('FRM-GEN-1009')
   const changes: AuditChange[] = []
@@ -277,7 +277,7 @@ const codeTaken = (code: string) => isRetiredShortCode(code) || MOCK_TENANTS.som
 
 function shortLinkChange(event: Parameters<typeof requireAuth>[0], create: boolean) {
   const { user, tenant } = requireAuth(event)
-  const form = findForm(tenant, user, getRouterParam(event, 'id'))
+  const form = findForm(tenant, user, getRouterParam(event, 'id'), 'share')
   const before = form.short_code ?? null
   if (create && !form.short_code) {
     let code = newShortCode()

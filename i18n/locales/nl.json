@@ -1118,7 +1118,8 @@
       "users_requested": "Verzoek om deel te nemen",
       "users_approved": "Goedgekeurd",
       "users_rejected": "Verzoek afgewezen",
-      "users_signup_link_changed": "Aanmeldlink gewijzigd"
+      "users_signup_link_changed": "Aanmeldlink gewijzigd",
+      "forms_folder_access_changed": "Maptoegang gewijzigd"
     },
     "detail": {
       "who": "Wie",
@@ -5075,7 +5076,9 @@
       "answeringDesc": "Wie het kan invullen en hoe men erbij komt. Geldt voor iedereen naar wie u het formulier stuurt.",
       "team": "Uw team",
       "teamDesc": "Medewerkers van uw werkruimte die dit formulier maken en beheren. Dit verandert niet wie het kan invullen."
-    }
+    },
+    "readOnly": "U kunt deze instellingen zien",
+    "readOnlyDesc": "Uw rol staat niet toe dat u wijzigt hoe dit formulier wordt gedeeld."
   },
   "preview": {
     "crumb": "Voorbeeld",
@@ -5536,7 +5539,22 @@
     "pin": "Vastzetten in de zijbalk",
     "unpin": "Losmaken uit de zijbalk",
     "pinFull": "U kunt maximaal 5 mappen vastzetten",
-    "hex": "Hexkleur"
+    "hex": "Hexkleur",
+    "access": {
+      "menu": "Wie het kan zien",
+      "title": "Wie {name} kan zien",
+      "desc": "Een map die mensen niet kunnen zien, verbergt de formulieren en reacties ervan overal voor hen.",
+      "everyone": "Iedereen",
+      "everyoneHint": "Iedereen wiens rol formulieren opent.",
+      "restricted": "Alleen gekozen mensen",
+      "restrictedHint": "Kies rollen, afdelingen of mensen. Eigenaren en mensen die over maptoegang beslissen zien de map altijd.",
+      "roles": "Rollen",
+      "people": "Mensen",
+      "note": "Wie bij een van deze past, ziet de map.",
+      "nobody": "Nog niemand gekozen: alleen eigenaren en mensen die over maptoegang beslissen zien de map.",
+      "saved": "Maptoegang opgeslagen",
+      "badge": "Beperkt"
+    }
   },
   "destinations": {
     "crumb": "Opslag van reacties",
@@ -7876,12 +7894,13 @@
       "roles": "Rollen",
       "settings": "Instellingen",
       "audit": "Audittrail",
-      "ai": "AI-assistent"
+      "ai": "AI-assistent",
+      "folders": "Mappen"
     },
     "areaHint": {
-      "forms": "Formulieren bouwen, publiceren en verwijderen.",
+      "forms": "Formulieren maken, bouwen, delen, publiceren en verwijderen.",
       "responses": "Reacties lezen, wijzigen en exporteren.",
-      "resources": "Sjablonen, thema's, landingspagina's, lijsten, mappen en opgeslagen velden.",
+      "resources": "Sjablonen, thema's, landingspagina's, lijsten en opgeslagen velden.",
       "analytics": "De analysepagina's.",
       "data": "Databaseverbindingen, de verkenner en query's.",
       "api": "Services, endpoints, tokens en webhooks.",
@@ -7889,7 +7908,8 @@
       "roles": "Rollen aanmaken en wijzigen.",
       "settings": "De instellingen van de werkruimte.",
       "audit": "Wie wat heeft gedaan, en wanneer.",
-      "ai": "De AI-assistent gebruiken."
+      "ai": "De AI-assistent gebruiken.",
+      "folders": "Mappen en wie ze kan zien."
     },
     "action": {
       "view": "Bekijken",
@@ -7897,7 +7917,6 @@
       "edit": "Bewerken",
       "publish": "Publiceren",
       "delete": "Verwijderen",
-      "all": "Elk formulier",
       "export": "Exporteren",
       "manage": "Beheren",
       "query": "Query's uitvoeren",
@@ -7906,12 +7925,11 @@
       "review": "Beoordelen"
     },
     "perm": {
-      "forms_view": "Formulieren en hun builder bekijken.",
-      "forms_create": "Formulieren aanmaken, importeren en dupliceren.",
-      "forms_edit": "Formulieren wijzigen: vragen, ontwerp, delen.",
-      "forms_publish": "Formulieren publiceren en openen of sluiten.",
-      "forms_delete": "Formulieren verwijderen en de prullenbak legen.",
-      "forms_all": "Elk formulier in de werkruimte, niet alleen die met hen zijn gedeeld.",
+      "forms_view": "Formulieren vinden in lijsten en hun overzicht openen.",
+      "forms_create": "Nieuwe formulieren starten, leeg of vanuit een sjabloon.",
+      "forms_edit": "Vragen, pagina's, logica, ontwerp en tags wijzigen.",
+      "forms_publish": "De laatste wijzigingen live zetten.",
+      "forms_delete": "Een formulier naar de Prullenbak verplaatsen en terughalen.",
       "responses_view": "Reacties lezen.",
       "responses_edit": "Verzonden antwoorden corrigeren.",
       "responses_delete": "Reacties verwijderen.",
@@ -7932,7 +7950,70 @@
       "audit_view": "De audittrail bekijken.",
       "audit_export": "De audittrail exporteren.",
       "ai_use": "De AI-assistent gebruiken.",
-      "responses_review": "Status, labels en notities wijzigen."
+      "responses_review": "Status, labels en notities wijzigen.",
+      "forms_preview": "Het formulier bekijken zoals mensen het invullen.",
+      "forms_import": "Een formulier uit een bestand importeren.",
+      "forms_duplicate": "Een kopie van een formulier maken.",
+      "forms_save_template": "Een formulier omzetten in een sjabloon van de werkruimte.",
+      "forms_rename": "De naam van een formulier wijzigen.",
+      "forms_versions": "Eerdere versies bekijken en er een terugzetten.",
+      "forms_share_view": "Links, toegang en met wie het formulier is gedeeld bekijken.",
+      "forms_share": "Links, toegang, insluiting en met wie het formulier is gedeeld wijzigen.",
+      "forms_availability": "Instellen wanneer een formulier opent en sluit.",
+      "forms_close": "Een formulier offline halen en terugzetten.",
+      "forms_archive": "Een formulier opbergen en terughalen.",
+      "forms_move": "Een formulier in een andere map zetten.",
+      "forms_purge": "Een formulier definitief verwijderen en de Prullenbak legen.",
+      "folders_create": "Nieuwe mappen maken.",
+      "folders_edit": "De naam en kleur van een map wijzigen.",
+      "folders_delete": "Lege mappen verwijderen.",
+      "folders_access": "Kiezen wie elke map kan zien, en alle mappen zien."
+    },
+    "setArea": "Gebied instellen",
+    "searchActions": "Acties zoeken",
+    "noActions": "Geen actie gevonden",
+    "scope": {
+      "none": "Geen",
+      "own": "Eigen",
+      "shared": "Gedeeld",
+      "all": "Alle"
+    },
+    "scopeHint": {
+      "none": "Helemaal niet, ook niet op wat ze zelf maakten",
+      "own": "Alleen op wat ze zelf maakten",
+      "shared": "Op hun eigen formulieren en formulieren die met hen zijn gedeeld",
+      "all": "Op alles in de werkruimte"
+    },
+    "group": {
+      "forms_see": "Bekijken",
+      "forms_create": "Maken",
+      "forms_build": "Bouwen",
+      "forms_share": "Delen",
+      "forms_lifecycle": "Publiceren en levenscyclus"
+    },
+    "label": {
+      "forms_view": "Formulieren bekijken",
+      "forms_preview": "Voorbeeld",
+      "forms_create": "Formulieren maken",
+      "forms_import": "Formulieren importeren",
+      "forms_duplicate": "Dupliceren",
+      "forms_save_template": "Opslaan als sjabloon",
+      "forms_rename": "Naam wijzigen",
+      "forms_edit": "Vragen, logica en ontwerp bewerken",
+      "forms_versions": "Versies",
+      "forms_share_view": "Deelinstellingen bekijken",
+      "forms_share": "Deelinstellingen wijzigen",
+      "forms_availability": "Beschikbaarheid",
+      "forms_publish": "Publiceren",
+      "forms_close": "Publicatie intrekken, sluiten en heropenen",
+      "forms_archive": "Archiveren en uit archief halen",
+      "forms_move": "Naar een map verplaatsen",
+      "forms_delete": "Naar de Prullenbak verplaatsen en herstellen",
+      "forms_purge": "Definitief verwijderen",
+      "folders_create": "Mappen maken",
+      "folders_edit": "Naam wijzigen en kleur aanpassen",
+      "folders_delete": "Mappen verwijderen",
+      "folders_access": "Bepalen wie mappen ziet"
     }
   }
 }

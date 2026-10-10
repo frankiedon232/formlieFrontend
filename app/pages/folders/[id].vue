@@ -63,14 +63,21 @@ const pinItem = (folderId: string): DropdownMenuItem =>
     : sidebarFolders.canPin.value
       ? { label: t('folders.pin'), icon: 'i-lucide-pin', onSelect: () => sidebarFolders.togglePin(folderId) }
       : { label: t('folders.pinFull'), icon: 'i-lucide-pin', disabled: true }
-const menu = computed<DropdownMenuItem[][]>(() => [
-  [{ label: t('folders.editTitle'), icon: 'i-lucide-pencil', onSelect: () => (editOpen.value = true) }, ...(folder.value ? [pinItem(folder.value.id)] : [])],
+// Each action follows what this person may do with this folder (F22 R2: own or all folders, folder access)
+const accessOpen = ref(false)
+const menu = computed<DropdownMenuItem[][]>(() =>
   [
-    folder.value?.forms_count
-      ? { label: t('forms.folders.notEmpty'), icon: 'i-lucide-trash-2', disabled: true }
-      : { label: t('forms.folders.deleteNamed', { name: folder.value?.name ?? '' }), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => void remove() },
-  ],
-])
+    [...(folder.value?.can?.edit ? [{ label: t('folders.editTitle'), icon: 'i-lucide-pencil', onSelect: () => (editOpen.value = true) }] : []), ...(folder.value ? [pinItem(folder.value.id)] : [])],
+    folder.value?.can?.access ? [{ label: t('folders.access.menu'), icon: 'i-lucide-folder-lock', onSelect: () => (accessOpen.value = true) }] : [],
+    folder.value?.can?.delete
+      ? [
+          folder.value.forms_count
+            ? { label: t('forms.folders.notEmpty'), icon: 'i-lucide-trash-2', disabled: true }
+            : { label: t('forms.folders.deleteNamed', { name: folder.value.name }), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => void remove() },
+        ]
+      : [],
+  ].filter(group => group.length),
+)
 const changed = () => Promise.all([load(), counts.refresh(true)])
 </script>
 
@@ -84,11 +91,12 @@ const changed = () => Promise.all([load(), counts.refresh(true)])
     :subtitle-icon-style="folder ? folderColor(folder.color).textStyle : undefined"
   >
     <template v-if="folder" #actions>
-      <UButton :label="t('folders.editTitle')" icon="i-lucide-pencil" color="neutral" variant="outline" class="hidden sm:inline-flex" @click="editOpen = true" />
+      <UBadge v-if="folder.access?.restricted" :label="t('folders.access.badge')" icon="i-lucide-lock" color="neutral" variant="outline" class="hidden sm:inline-flex" />
+      <UButton v-if="folder.can?.edit" :label="t('folders.editTitle')" icon="i-lucide-pencil" color="neutral" variant="outline" class="hidden sm:inline-flex" @click="editOpen = true" />
       <UDropdownMenu :items="menu" :content="{ align: 'end' }">
         <UButton icon="i-lucide-ellipsis" color="neutral" variant="outline" square :loading="busy" :aria-label="t('dataView.actions')" />
       </UDropdownMenu>
-      <UButton :label="t('nav.newForm')" icon="i-lucide-plus" color="neutral" :to="{ path: '/forms/new', query: { folder: folder.id } }" />
+      <UButton v-if="useCan().can('forms.create')" :label="t('nav.newForm')" icon="i-lucide-plus" color="neutral" :to="{ path: '/forms/new', query: { folder: folder.id } }" />
     </template>
 
     <AppEmpty
@@ -114,5 +122,6 @@ const changed = () => Promise.all([load(), counts.refresh(true)])
     </div>
 
     <FoldersEditModal v-model:open="editOpen" :folder="folder" @saved="changed" />
+    <FoldersAccessModal v-if="folder?.can?.access" v-model:open="accessOpen" :folder="folder" @saved="changed" />
   </AppPanel>
 </template>

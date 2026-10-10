@@ -1118,7 +1118,8 @@
       "users_requested": "Katılma isteği gönderdi",
       "users_approved": "Onaylandı",
       "users_rejected": "İstek reddedildi",
-      "users_signup_link_changed": "Kayıt bağlantısı değiştirildi"
+      "users_signup_link_changed": "Kayıt bağlantısı değiştirildi",
+      "forms_folder_access_changed": "Klasör erişimi değiştirildi"
     },
     "detail": {
       "who": "Kim",
@@ -5075,7 +5076,9 @@
       "answeringDesc": "Kimin doldurabileceği ve forma nasıl ulaşılacağı. Formu gönderdiğiniz herkes için geçerlidir.",
       "team": "Ekibiniz",
       "teamDesc": "Bu formu oluşturan ve yöneten çalışma alanı personeli. Kimin doldurabileceğini değiştirmez."
-    }
+    },
+    "readOnly": "Bu ayarları görebilirsiniz",
+    "readOnlyDesc": "Rolünüz, bu formun nasıl paylaşıldığını değiştirmenize izin vermiyor."
   },
   "preview": {
     "crumb": "Önizleme",
@@ -5536,7 +5539,22 @@
     "pin": "Kenar çubuğuna sabitle",
     "unpin": "Kenar çubuğundan kaldır",
     "pinFull": "En fazla 5 klasör sabitlenebilir",
-    "hex": "Hex renk"
+    "hex": "Hex renk",
+    "access": {
+      "menu": "Kimler görebilir",
+      "title": "{name} klasörünü kimler görebilir",
+      "desc": "Kişilerin göremediği bir klasör, formlarını ve yanıtlarını onlardan her yerde gizler.",
+      "everyone": "Herkes",
+      "everyoneHint": "Rolü formları açabilen herkes.",
+      "restricted": "Yalnızca seçilen kişiler",
+      "restrictedHint": "Rolleri, departmanları veya kişileri seçin. Sahipler ve klasör erişimine karar verenler klasörü her zaman görür.",
+      "roles": "Roller",
+      "people": "Kişiler",
+      "note": "Bunlardan birine uyan herkes klasörü görür.",
+      "nobody": "Henüz kimse seçilmedi: klasörü yalnızca sahipler ve klasör erişimine karar verenler görür.",
+      "saved": "Klasör erişimi kaydedildi",
+      "badge": "Kısıtlı"
+    }
   },
   "destinations": {
     "crumb": "Yanıt depolaması",
@@ -7876,12 +7894,13 @@
       "roles": "Roller",
       "settings": "Ayarlar",
       "audit": "Denetim kaydı",
-      "ai": "YZ asistanı"
+      "ai": "YZ asistanı",
+      "folders": "Klasörler"
     },
     "areaHint": {
-      "forms": "Formları oluşturma, yayımlama ve silme.",
+      "forms": "Formları oluşturma, tasarlama, paylaşma, yayımlama ve silme.",
       "responses": "Yanıtları okuma, değiştirme ve dışa aktarma.",
-      "resources": "Şablonlar, temalar, açılış sayfaları, listeler, klasörler ve kayıtlı alanlar.",
+      "resources": "Şablonlar, temalar, açılış sayfaları, listeler ve kayıtlı alanlar.",
       "analytics": "Analiz sayfaları.",
       "data": "Veritabanı bağlantıları, gezgin ve sorgular.",
       "api": "Hizmetler, uç noktalar, belirteçler ve webhook'lar.",
@@ -7889,7 +7908,8 @@
       "roles": "Rolleri oluşturma ve değiştirme.",
       "settings": "Çalışma alanının ayarları.",
       "audit": "Kim ne zaman ne yaptı.",
-      "ai": "YZ asistanını kullanma."
+      "ai": "YZ asistanını kullanma.",
+      "folders": "Klasörler ve onları kimlerin görebileceği."
     },
     "action": {
       "view": "Görüntüle",
@@ -7897,7 +7917,6 @@
       "edit": "Düzenle",
       "publish": "Yayımla",
       "delete": "Sil",
-      "all": "Her form",
       "export": "Dışa aktar",
       "manage": "Yönet",
       "query": "Sorgu çalıştır",
@@ -7906,12 +7925,11 @@
       "review": "İnceleme"
     },
     "perm": {
-      "forms_view": "Formları ve oluşturucularını görün.",
-      "forms_create": "Form oluşturun, içe aktarın ve çoğaltın.",
-      "forms_edit": "Formları değiştirin: sorular, tasarım, paylaşım.",
-      "forms_publish": "Formları yayımlayın, açın veya kapatın.",
-      "forms_delete": "Formları silin ve çöp kutusunu boşaltın.",
-      "forms_all": "Çalışma alanındaki her form, yalnızca kişiyle paylaşılanlar değil.",
+      "forms_view": "Formları listelerde bulma ve genel görünümlerini açma.",
+      "forms_create": "Boş veya şablondan yeni formlar başlatma.",
+      "forms_edit": "Soruları, sayfaları, mantığı, tasarımı ve etiketleri değiştirme.",
+      "forms_publish": "Son değişiklikleri yayına alma.",
+      "forms_delete": "Bir formu çöp kutusuna taşıma ve geri alma.",
       "responses_view": "Yanıtları okuyun.",
       "responses_edit": "Gönderilen yanıtları düzeltme.",
       "responses_delete": "Yanıtları silin.",
@@ -7932,7 +7950,70 @@
       "audit_view": "Denetim kaydını görün.",
       "audit_export": "Denetim kaydını dışa aktarın.",
       "ai_use": "YZ asistanını kullanın.",
-      "responses_review": "Durumu, etiketleri ve notları değiştirme."
+      "responses_review": "Durumu, etiketleri ve notları değiştirme.",
+      "forms_preview": "Formu, kişilerin dolduracağı şekilde görme.",
+      "forms_import": "Bir dosyadan form içe aktarma.",
+      "forms_duplicate": "Bir formun kopyasını oluşturma.",
+      "forms_save_template": "Bir formu çalışma alanı şablonuna dönüştürme.",
+      "forms_rename": "Bir formun adını değiştirme.",
+      "forms_versions": "Önceki sürümleri görme ve birini geri getirme.",
+      "forms_share_view": "Bağlantıları, erişimi ve formun kimlerle paylaşıldığını görme.",
+      "forms_share": "Bağlantıları, erişimi, yerleştirmeyi ve formun kimlerle paylaşıldığını değiştirme.",
+      "forms_availability": "Bir formun ne zaman açılıp kapanacağını belirleme.",
+      "forms_close": "Bir formu çevrimdışı yapma ve geri getirme.",
+      "forms_archive": "Bir formu kaldırma ve geri getirme.",
+      "forms_move": "Bir formu başka bir klasöre koyma.",
+      "forms_purge": "Bir formu kalıcı olarak kaldırma ve çöp kutusunu boşaltma.",
+      "folders_create": "Yeni klasörler oluşturma.",
+      "folders_edit": "Bir klasörün adını ve rengini değiştirme.",
+      "folders_delete": "Boş klasörleri kaldırma.",
+      "folders_access": "Her klasörü kimin görebileceğini seçme ve tüm klasörleri görme."
+    },
+    "setArea": "Alanı belirleyin",
+    "searchActions": "Eylem ara",
+    "noActions": "Eşleşen eylem yok",
+    "scope": {
+      "none": "Hiçbiri",
+      "own": "Kendi",
+      "shared": "Paylaşılan",
+      "all": "Tümü"
+    },
+    "scopeHint": {
+      "none": "Hiçbir şekilde, kendi oluşturdukları üzerinde bile",
+      "own": "Yalnızca kendi oluşturdukları üzerinde",
+      "shared": "Kendi formları ve kendileriyle paylaşılan formlar üzerinde",
+      "all": "Çalışma alanındaki her şey üzerinde"
+    },
+    "group": {
+      "forms_see": "Görme",
+      "forms_create": "Oluşturma",
+      "forms_build": "Tasarlama",
+      "forms_share": "Paylaşma",
+      "forms_lifecycle": "Yayımlama ve yaşam döngüsü"
+    },
+    "label": {
+      "forms_view": "Formları görme",
+      "forms_preview": "Önizleme",
+      "forms_create": "Form oluşturma",
+      "forms_import": "Form içe aktarma",
+      "forms_duplicate": "Çoğalt",
+      "forms_save_template": "Şablon olarak kaydet",
+      "forms_rename": "Yeniden adlandır",
+      "forms_edit": "Soruları, mantığı ve tasarımı düzenleme",
+      "forms_versions": "Sürümler",
+      "forms_share_view": "Paylaşım ayarlarını görme",
+      "forms_share": "Paylaşım ayarlarını değiştirme",
+      "forms_availability": "Kullanılabilirlik",
+      "forms_publish": "Yayımla",
+      "forms_close": "Yayından kaldırma, kapatma ve yeniden açma",
+      "forms_archive": "Arşivleme ve arşivden çıkarma",
+      "forms_move": "Klasöre taşıma",
+      "forms_delete": "Çöp kutusuna taşıma ve geri yükleme",
+      "forms_purge": "Kalıcı olarak silme",
+      "folders_create": "Klasör oluşturma",
+      "folders_edit": "Yeniden adlandırma ve renklendirme",
+      "folders_delete": "Klasör silme",
+      "folders_access": "Klasörleri kimin göreceğine karar verme"
     }
   }
 }

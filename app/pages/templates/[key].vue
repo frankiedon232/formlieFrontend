@@ -66,6 +66,7 @@ async function duplicate() {
         :to="template.source === 'workspace' ? '/templates/mine' : `/templates/category/${template.category}`"
       />
       <UButton
+        v-if="useCan().can('resources.manage')"
         :label="t('templates.duplicate')"
         icon="i-lucide-copy"
         color="neutral"
@@ -74,6 +75,7 @@ async function duplicate() {
         @click="duplicate"
       />
       <UButton
+        v-if="useCan().can('forms.create')"
         :label="t('templates.use')"
         icon="i-lucide-file-plus"
         color="neutral"

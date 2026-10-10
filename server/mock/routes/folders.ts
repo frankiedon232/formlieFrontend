@@ -8,14 +8,15 @@ import type { FolderRow, FormFolder } from '#shared/types/forms'
 import { requireAuth } from '../core/auth'
 import { MockError, ok, paginate } from '../core/respond'
 import { defineMockRoute } from '../core/route'
-import { canSee } from '../data/formPermissions'
+import { canSee, folderFor, folderVisible } from '../data/formPermissions'
 import { formsOf, type StoredForm } from '../data/formStore'
 import { formResponses } from '../data/responseData'
 import type { MockTenant, MockUser } from '../data/tenants'
 
 const DAY = 86_400_000
 
-function rowOf(tenant: MockTenant, folder: FormFolder, forms: StoredForm[]): FolderRow {
+function rowOf(tenant: MockTenant, folder: FormFolder, forms: StoredForm[], user: MockUser): FolderRow {
+  const shown = folderFor(folder, user, tenant)
   const today = Date.parse(new Date().toISOString().slice(0, 10))
   const start = today - 29 * DAY
   const daily = Array.from({ length: 30 }, (_, i) => ({ date: new Date(start + i * DAY).toISOString().slice(0, 10), count: 0 }))
@@ -51,6 +52,9 @@ function rowOf(tenant: MockTenant, folder: FormFolder, forms: StoredForm[]): Fol
     completion_rate: published.length ? Math.round(published.reduce((sum, form) => sum + form.completion_rate, 0) / published.length) : null,
     last_activity_at: last ? new Date(last).toISOString() : null,
     owners: [...owners].slice(0, 5).map(([id, name]) => ({ id, name })),
+    created_by: shown.created_by ?? null,
+    access: shown.access ?? null,
+    can: shown.can,
   }
 }
 
@@ -59,7 +63,8 @@ const formsIn = (tenant: MockTenant, user: MockUser, folderId: string) => formsO
 /** GET /folders/overview, every folder with its numbers; q (name), sort, paged. */
 export const folderOverview = defineMockRoute(({ event, query }) => {
   const { tenant, user } = requireAuth(event)
-  const rows = formsOf(tenant).folders.map(folder => rowOf(tenant, folder, formsIn(tenant, user, folder.id)))
+  // A folder this person may not see doesn't exist for them (F22 R2)
+  const rows = formsOf(tenant).folders.filter(folder => folderVisible(folder, user, tenant)).map(folder => rowOf(tenant, folder, formsIn(tenant, user, folder.id), user))
   const { data, meta } = paginate(rows, { sort: 'name', ...query }, (row, q) => row.name.toLowerCase().includes(q))
   return ok(data, meta)
 })
@@ -68,6 +73,6 @@ export const folderOverview = defineMockRoute(({ event, query }) => {
 export const getFolder = defineMockRoute(({ event }) => {
   const { tenant, user } = requireAuth(event)
   const folder = formsOf(tenant).folders.find(item => item.id === getRouterParam(event, 'id'))
-  if (!folder) throw new MockError('FRM-GEN-1004')
-  return ok(rowOf(tenant, folder, formsIn(tenant, user, folder.id)))
+  if (!folder || !folderVisible(folder, user, tenant)) throw new MockError('FRM-GEN-1004')
+  return ok(rowOf(tenant, folder, formsIn(tenant, user, folder.id), user))
 })

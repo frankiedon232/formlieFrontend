@@ -1118,7 +1118,8 @@
       "users_requested": "Ha chiesto di unirsi",
       "users_approved": "Approvato",
       "users_rejected": "Richiesta rifiutata",
-      "users_signup_link_changed": "Link di registrazione modificato"
+      "users_signup_link_changed": "Link di registrazione modificato",
+      "forms_folder_access_changed": "Accesso alla cartella modificato"
     },
     "detail": {
       "who": "Chi",
@@ -5075,7 +5076,9 @@
       "answeringDesc": "Chi può compilarlo e come ci arriva, per tutte le persone a cui invia il modulo.",
       "team": "Il suo team",
       "teamDesc": "Il personale del suo spazio di lavoro che crea e gestisce questo modulo. Non cambia chi può compilarlo."
-    }
+    },
+    "readOnly": "Può vedere queste impostazioni",
+    "readOnlyDesc": "Il suo ruolo non le consente di modificare come viene condiviso questo modulo."
   },
   "preview": {
     "crumb": "Anteprima",
@@ -5536,7 +5539,22 @@
     "pin": "Fissa nella barra laterale",
     "unpin": "Rimuovi dalla barra laterale",
     "pinFull": "Si possono fissare fino a 5 cartelle",
-    "hex": "Colore hex"
+    "hex": "Colore hex",
+    "access": {
+      "menu": "Chi può vederla",
+      "title": "Chi può vedere {name}",
+      "desc": "Una cartella che le persone non possono vedere nasconde loro i suoi moduli e le relative risposte ovunque.",
+      "everyone": "Tutti",
+      "everyoneHint": "Tutte le persone il cui ruolo apre i moduli.",
+      "restricted": "Solo persone scelte",
+      "restrictedHint": "Scelga ruoli, reparti o persone. I proprietari e chi decide l'accesso alle cartelle la vedono sempre.",
+      "roles": "Ruoli",
+      "people": "Persone",
+      "note": "Chiunque corrisponda a una di queste scelte vede la cartella.",
+      "nobody": "Nessuno scelto per ora: la vedranno solo i proprietari e chi decide l'accesso alle cartelle.",
+      "saved": "Accesso alla cartella salvato",
+      "badge": "Limitata"
+    }
   },
   "destinations": {
     "crumb": "Archiviazione risposte",
@@ -7876,12 +7894,13 @@
       "roles": "Ruoli",
       "settings": "Impostazioni",
       "audit": "Registro di audit",
-      "ai": "Assistente IA"
+      "ai": "Assistente IA",
+      "folders": "Cartelle"
     },
     "areaHint": {
-      "forms": "Creare, pubblicare ed eliminare moduli.",
+      "forms": "Creare, costruire, condividere, pubblicare ed eliminare moduli.",
       "responses": "Leggere, modificare ed esportare le risposte.",
-      "resources": "Modelli, temi, pagine di destinazione, elenchi, cartelle e campi salvati.",
+      "resources": "Modelli, temi, pagine di destinazione, elenchi e campi salvati.",
       "analytics": "Le pagine di analisi.",
       "data": "Connessioni ai database, esplora e query.",
       "api": "Servizi, endpoint, token e webhook.",
@@ -7889,7 +7908,8 @@
       "roles": "Creare e modificare i ruoli.",
       "settings": "Le impostazioni dell’area di lavoro.",
       "audit": "Chi ha fatto cosa e quando.",
-      "ai": "Usare l’assistente IA."
+      "ai": "Usare l’assistente IA.",
+      "folders": "Le cartelle e chi può vederle."
     },
     "action": {
       "view": "Vedere",
@@ -7897,7 +7917,6 @@
       "edit": "Modificare",
       "publish": "Pubblicare",
       "delete": "Eliminare",
-      "all": "Ogni modulo",
       "export": "Esportare",
       "manage": "Gestire",
       "query": "Eseguire query",
@@ -7906,12 +7925,11 @@
       "review": "Revisionare"
     },
     "perm": {
-      "forms_view": "Vedere i moduli e il loro editor.",
-      "forms_create": "Creare, importare e duplicare moduli.",
-      "forms_edit": "Modificare i moduli: domande, design, condivisione.",
-      "forms_publish": "Pubblicare i moduli e aprirli o chiuderli.",
-      "forms_delete": "Eliminare i moduli e svuotare il cestino.",
-      "forms_all": "Ogni modulo dell’area di lavoro, non solo quelli condivisi con la persona.",
+      "forms_view": "Trovare i moduli negli elenchi e aprirne la panoramica.",
+      "forms_create": "Avviare nuovi moduli, vuoti o da un modello.",
+      "forms_edit": "Modificare domande, pagine, logica, design e tag.",
+      "forms_publish": "Mettere online le ultime modifiche.",
+      "forms_delete": "Spostare un modulo nel Cestino e recuperarlo.",
       "responses_view": "Leggere le risposte.",
       "responses_edit": "Correggere le risposte inviate.",
       "responses_delete": "Eliminare le risposte.",
@@ -7932,7 +7950,70 @@
       "audit_view": "Vedere il registro di audit.",
       "audit_export": "Esportare il registro di audit.",
       "ai_use": "Usare l’assistente IA.",
-      "responses_review": "Modificare stato, tag e note."
+      "responses_review": "Modificare stato, tag e note.",
+      "forms_preview": "Vedere il modulo come lo compileranno le persone.",
+      "forms_import": "Importare un modulo da un file.",
+      "forms_duplicate": "Fare una copia di un modulo.",
+      "forms_save_template": "Trasformare un modulo in un modello dell'area di lavoro.",
+      "forms_rename": "Cambiare il nome di un modulo.",
+      "forms_versions": "Vedere le versioni precedenti e ripristinarne una.",
+      "forms_share_view": "Vedere link, accesso e con chi è condiviso il modulo.",
+      "forms_share": "Modificare link, accesso, incorporamento e con chi è condiviso il modulo.",
+      "forms_availability": "Impostare quando un modulo si apre e si chiude.",
+      "forms_close": "Mettere offline un modulo e riportarlo online.",
+      "forms_archive": "Mettere da parte un modulo e riprenderlo.",
+      "forms_move": "Mettere un modulo in un'altra cartella.",
+      "forms_purge": "Rimuovere un modulo per sempre e svuotare il Cestino.",
+      "folders_create": "Creare nuove cartelle.",
+      "folders_edit": "Cambiare nome e colore di una cartella.",
+      "folders_delete": "Rimuovere le cartelle vuote.",
+      "folders_access": "Scegliere chi può vedere ogni cartella e vedere tutte le cartelle."
+    },
+    "setArea": "Imposta l'area",
+    "searchActions": "Cerca azioni",
+    "noActions": "Nessuna azione corrisponde",
+    "scope": {
+      "none": "Nessuno",
+      "own": "Propri",
+      "shared": "Condivisi",
+      "all": "Tutti"
+    },
+    "scopeHint": {
+      "none": "Per niente, nemmeno su ciò che hanno creato",
+      "own": "Solo su ciò che hanno creato",
+      "shared": "Sui propri moduli e su quelli condivisi con loro",
+      "all": "Su tutto nell'area di lavoro"
+    },
+    "group": {
+      "forms_see": "Visualizzazione",
+      "forms_create": "Creazione",
+      "forms_build": "Costruzione",
+      "forms_share": "Condivisione",
+      "forms_lifecycle": "Pubblicazione e ciclo di vita"
+    },
+    "label": {
+      "forms_view": "Vedere i moduli",
+      "forms_preview": "Anteprima",
+      "forms_create": "Creare moduli",
+      "forms_import": "Importare moduli",
+      "forms_duplicate": "Duplica",
+      "forms_save_template": "Salva come modello",
+      "forms_rename": "Rinomina",
+      "forms_edit": "Modificare domande, logica e design",
+      "forms_versions": "Versioni",
+      "forms_share_view": "Vedere le impostazioni di condivisione",
+      "forms_share": "Modificare le impostazioni di condivisione",
+      "forms_availability": "Disponibilità",
+      "forms_publish": "Pubblica",
+      "forms_close": "Annullare la pubblicazione, chiudere e riaprire",
+      "forms_archive": "Archiviare e ripristinare dall'archivio",
+      "forms_move": "Spostare in una cartella",
+      "forms_delete": "Spostare nel Cestino e ripristinare",
+      "forms_purge": "Eliminare definitivamente",
+      "folders_create": "Creare cartelle",
+      "folders_edit": "Rinominare e cambiare colore",
+      "folders_delete": "Eliminare cartelle",
+      "folders_access": "Decidere chi vede le cartelle"
     }
   }
 }

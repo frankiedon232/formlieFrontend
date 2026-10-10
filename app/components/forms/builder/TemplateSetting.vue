@@ -60,7 +60,8 @@ async function update() {
 </script>
 
 <template>
-  <section v-if="session" ref="root" class="flex flex-col gap-3" :class="route.query.save === 'template' && !linked ? '-m-2 rounded-lg p-2 ring-2 ring-(--ui-border-inverted)' : ''">
+  <!-- Only for people who may save this form as a template (F22 R2; templates are resources too) -->
+  <section v-if="session && formCan(session.form.value, 'save_template') && useCan().can('resources.manage')" ref="root" class="flex flex-col gap-3" :class="route.query.save === 'template' && !linked ? '-m-2 rounded-lg p-2 ring-2 ring-(--ui-border-inverted)' : ''">
     <h3 class="text-xs font-medium text-muted uppercase">{{ t('builder.template.title') }}</h3>
 
     <USkeleton v-if="loading" class="h-16 w-full" />

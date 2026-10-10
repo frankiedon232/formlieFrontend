@@ -45,13 +45,25 @@ describe('seed users', () => {
   })
 })
 
-describe('who may change a form (decision 97)', () => {
-  it('only "Can edit" (or full access) changes anything', async () => {
-    const { canEditForm } = await import('../../shared/utils/forms/access')
-    expect(canEditForm({ my_access: 'edit' })).toBe(true)
-    expect(canEditForm({})).toBe(true)
-    expect(canEditForm({ my_access: 'view' })).toBe(false)
-    expect(canEditForm({ my_access: 'responses' })).toBe(false)
+describe('who may take an action on a form (F22 R2: role scope, maker, sharing)', () => {
+  it('follows the role, its scope and the sharing', async () => {
+    const { allows } = await import('../../server/mock/data/formPermissions')
+    // Member: most actions on own and shared forms, never delete (not even their own)
+    expect(allows(form(), user('owner'), 'delete')).toBe(false)
+    expect(allows(form(), user('owner'), 'rename')).toBe(true)
+    expect(allows(form({ team_access: 'edit' }), user('a'), 'rename')).toBe(true)
+    // Shared for viewing only: may see and preview, not change
+    expect(allows(form({ team_access: 'view' }), user('a'), 'preview')).toBe(true)
+    expect(allows(form({ team_access: 'view' }), user('a'), 'rename')).toBe(false)
+    // Admin: everything, everywhere
+    expect(allows(form({ team_access: 'none' }), user('boss', 'admin'), 'purge')).toBe(true)
+  })
+  it('the app reads the answer the API sends (no answer means no)', async () => {
+    const { canEditForm, formCan } = await import('../../shared/utils/forms/access')
+    const can = { edit: true, publish: false } as never
+    expect(canEditForm({ can })).toBe(true)
+    expect(formCan({ can }, 'publish')).toBe(false)
+    expect(canEditForm({})).toBe(false)
     expect(canEditForm(null)).toBe(false)
   })
 })

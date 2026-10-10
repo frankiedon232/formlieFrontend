@@ -22,13 +22,14 @@ useHead({ title: () => (forTemplate.value ? t('nav.newTemplate') : t('nav.newFor
 type Mode = 'blank' | 'template' | 'import'
 const mode = computed<Mode>({
   get: () =>
-    ['template', 'import'].includes(String(route.query.mode)) ? (route.query.mode as Mode) : 'blank',
+    // Import is its own permission (F22 R2)
+    route.query.mode === 'template' || (route.query.mode === 'import' && useCan().can('forms.import')) ? (route.query.mode as Mode) : 'blank',
   set: value => router.replace({ query: { ...route.query, mode: value === 'blank' ? undefined : value } }),
 })
 const tabs = computed(() => [
   { value: 'blank', label: t('forms.new.blank'), icon: 'i-lucide-file-plus' },
   { value: 'template', label: t('forms.new.template'), icon: 'i-lucide-layout-template' },
-  { value: 'import', label: t('forms.new.import'), icon: 'i-lucide-file-json' },
+  ...(useCan().can('forms.import') ? [{ value: 'import', label: t('forms.new.import'), icon: 'i-lucide-file-json' }] : []),
 ])
 
 const folders = ref<FormFolder[]>([])

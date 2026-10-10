@@ -6,15 +6,12 @@
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@nuxt/ui'
 import type { RoleRow } from '#shared/types/people'
-import { ALL_PERMISSIONS, PERMISSION_AREAS, withNeeds } from '#shared/utils/auth/permissions'
+import { ALL_GRANTS, areasOf } from '#shared/utils/auth/permissions'
 
 const props = defineProps<{ role: RoleRow; reach: number; actions: DropdownMenuItem[][]; busy?: boolean }>()
 const { t } = useI18n()
 const { relative, number, percent } = useFormat()
-const areas = computed(() => {
-  const granted = new Set<string>(props.role.id === 'owner' ? ALL_PERMISSIONS : withNeeds(props.role.permissions))
-  return PERMISSION_AREAS.filter(area => area.actions.some(action => granted.has(`${area.key}.${action}`))).length
-})
+const areas = computed(() => areasOf(props.role.id === 'owner' ? ALL_GRANTS : props.role.grants))
 </script>
 
 <template>

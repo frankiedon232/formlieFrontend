@@ -1118,7 +1118,8 @@
       "users_requested": "Meminta bergabung",
       "users_approved": "Disetujui",
       "users_rejected": "Permintaan ditolak",
-      "users_signup_link_changed": "Tautan pendaftaran diubah"
+      "users_signup_link_changed": "Tautan pendaftaran diubah",
+      "forms_folder_access_changed": "Akses folder diubah"
     },
     "detail": {
       "who": "Siapa",
@@ -5075,7 +5076,9 @@
       "answeringDesc": "Siapa yang dapat mengisinya dan cara mereka membukanya, untuk semua orang yang Anda kirimi formulir.",
       "team": "Tim Anda",
       "teamDesc": "Staf di ruang kerja Anda yang membuat dan mengelola formulir ini. Ini tidak mengubah siapa yang dapat mengisinya."
-    }
+    },
+    "readOnly": "Anda dapat melihat pengaturan ini",
+    "readOnlyDesc": "Peran Anda tidak mengizinkan Anda mengubah cara formulir ini dibagikan."
   },
   "preview": {
     "crumb": "Pratinjau",
@@ -5536,7 +5539,22 @@
     "pin": "Sematkan di bilah samping",
     "unpin": "Lepas dari bilah samping",
     "pinFull": "Maksimal 5 folder bisa disematkan",
-    "hex": "Warna hex"
+    "hex": "Warna hex",
+    "access": {
+      "menu": "Siapa yang bisa melihat",
+      "title": "Siapa yang bisa melihat {name}",
+      "desc": "Folder yang tidak dapat dilihat orang menyembunyikan formulir dan tanggapannya dari mereka di mana pun.",
+      "everyone": "Semua orang",
+      "everyoneHint": "Semua orang yang perannya membuka formulir.",
+      "restricted": "Hanya orang tertentu",
+      "restrictedHint": "Pilih peran, departemen, atau orang. Pemilik dan orang yang menentukan akses folder selalu dapat melihatnya.",
+      "roles": "Peran",
+      "people": "Orang",
+      "note": "Siapa pun yang cocok dengan salah satunya dapat melihat folder.",
+      "nobody": "Belum ada yang dipilih: hanya pemilik dan orang yang menentukan akses folder yang dapat melihatnya.",
+      "saved": "Akses folder disimpan",
+      "badge": "Dibatasi"
+    }
   },
   "destinations": {
     "crumb": "Penyimpanan respons",
@@ -7876,12 +7894,13 @@
       "roles": "Peran",
       "settings": "Pengaturan",
       "audit": "Jejak audit",
-      "ai": "Asisten AI"
+      "ai": "Asisten AI",
+      "folders": "Folder"
     },
     "areaHint": {
-      "forms": "Membuat, memublikasikan, dan menghapus formulir.",
+      "forms": "Membuat, menyusun, membagikan, memublikasikan, dan menghapus formulir.",
       "responses": "Membaca, mengubah, dan mengekspor jawaban.",
-      "resources": "Templat, tema, halaman arahan, daftar, folder, dan kolom tersimpan.",
+      "resources": "Templat, tema, halaman arahan, daftar, dan kolom tersimpan.",
       "analytics": "Halaman analitik.",
       "data": "Koneksi database, penjelajah, dan kueri.",
       "api": "Layanan, endpoint, token, dan webhook.",
@@ -7889,7 +7908,8 @@
       "roles": "Membuat dan mengubah peran.",
       "settings": "Pengaturan ruang kerja.",
       "audit": "Siapa melakukan apa, dan kapan.",
-      "ai": "Menggunakan asisten AI."
+      "ai": "Menggunakan asisten AI.",
+      "folders": "Folder dan siapa yang dapat melihatnya."
     },
     "action": {
       "view": "Lihat",
@@ -7897,7 +7917,6 @@
       "edit": "Edit",
       "publish": "Publikasikan",
       "delete": "Hapus",
-      "all": "Semua formulir",
       "export": "Ekspor",
       "manage": "Kelola",
       "query": "Jalankan kueri",
@@ -7906,12 +7925,11 @@
       "review": "Tinjau"
     },
     "perm": {
-      "forms_view": "Melihat formulir dan pembuatnya.",
-      "forms_create": "Membuat, mengimpor, dan menduplikasi formulir.",
-      "forms_edit": "Mengubah formulir: pertanyaan, desain, berbagi.",
-      "forms_publish": "Memublikasikan formulir serta membuka atau menutupnya.",
-      "forms_delete": "Menghapus formulir dan mengosongkan tempat sampah.",
-      "forms_all": "Semua formulir di ruang kerja, bukan hanya yang dibagikan kepada mereka.",
+      "forms_view": "Menemukan formulir di daftar dan membuka ringkasannya.",
+      "forms_create": "Memulai formulir baru, kosong atau dari templat.",
+      "forms_edit": "Mengubah pertanyaan, halaman, logika, desain, dan tag.",
+      "forms_publish": "Menayangkan perubahan terbaru.",
+      "forms_delete": "Memindahkan formulir ke Sampah dan mengembalikannya.",
       "responses_view": "Membaca tanggapan.",
       "responses_edit": "Perbaiki jawaban yang dikirim.",
       "responses_delete": "Menghapus tanggapan.",
@@ -7932,7 +7950,70 @@
       "audit_view": "Melihat jejak audit.",
       "audit_export": "Mengekspor jejak audit.",
       "ai_use": "Menggunakan asisten AI.",
-      "responses_review": "Ubah status, tag, dan catatan."
+      "responses_review": "Ubah status, tag, dan catatan.",
+      "forms_preview": "Melihat formulir seperti yang akan diisi orang.",
+      "forms_import": "Membawa masuk formulir dari file.",
+      "forms_duplicate": "Membuat salinan formulir.",
+      "forms_save_template": "Mengubah formulir menjadi templat ruang kerja.",
+      "forms_rename": "Mengubah nama formulir.",
+      "forms_versions": "Melihat versi sebelumnya dan memulihkan salah satunya.",
+      "forms_share_view": "Melihat tautan, akses, dan kepada siapa formulir dibagikan.",
+      "forms_share": "Mengubah tautan, akses, penyematan, dan kepada siapa formulir dibagikan.",
+      "forms_availability": "Mengatur kapan formulir dibuka dan ditutup.",
+      "forms_close": "Menonaktifkan formulir dan mengaktifkannya kembali.",
+      "forms_archive": "Menyimpan formulir dan mengembalikannya.",
+      "forms_move": "Menaruh formulir di folder lain.",
+      "forms_purge": "Menghapus formulir secara permanen dan mengosongkan Sampah.",
+      "folders_create": "Membuat folder baru.",
+      "folders_edit": "Mengubah nama dan warna folder.",
+      "folders_delete": "Menghapus folder kosong.",
+      "folders_access": "Memilih siapa yang dapat melihat setiap folder, dan melihat semua folder."
+    },
+    "setArea": "Atur area",
+    "searchActions": "Cari tindakan",
+    "noActions": "Tidak ada tindakan yang cocok",
+    "scope": {
+      "none": "Tidak ada",
+      "own": "Milik sendiri",
+      "shared": "Dibagikan",
+      "all": "Semua"
+    },
+    "scopeHint": {
+      "none": "Sama sekali tidak, bahkan pada yang mereka buat",
+      "own": "Hanya pada yang mereka buat",
+      "shared": "Pada formulir sendiri dan formulir yang dibagikan kepada mereka",
+      "all": "Pada semua hal di ruang kerja"
+    },
+    "group": {
+      "forms_see": "Melihat",
+      "forms_create": "Membuat",
+      "forms_build": "Menyusun",
+      "forms_share": "Membagikan",
+      "forms_lifecycle": "Publikasi dan siklus hidup"
+    },
+    "label": {
+      "forms_view": "Melihat formulir",
+      "forms_preview": "Pratinjau",
+      "forms_create": "Membuat formulir",
+      "forms_import": "Mengimpor formulir",
+      "forms_duplicate": "Duplikat",
+      "forms_save_template": "Simpan sebagai templat",
+      "forms_rename": "Ganti nama",
+      "forms_edit": "Mengedit pertanyaan, logika, dan desain",
+      "forms_versions": "Versi",
+      "forms_share_view": "Melihat pengaturan berbagi",
+      "forms_share": "Mengubah pengaturan berbagi",
+      "forms_availability": "Ketersediaan",
+      "forms_publish": "Publikasikan",
+      "forms_close": "Membatalkan publikasi, menutup, dan membuka kembali",
+      "forms_archive": "Mengarsipkan dan membatalkan arsip",
+      "forms_move": "Memindahkan ke folder",
+      "forms_delete": "Memindahkan ke Sampah dan memulihkan",
+      "forms_purge": "Menghapus permanen",
+      "folders_create": "Membuat folder",
+      "folders_edit": "Mengganti nama dan warna",
+      "folders_delete": "Menghapus folder",
+      "folders_access": "Menentukan siapa yang melihat folder"
     }
   }
 }

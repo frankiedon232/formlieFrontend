@@ -57,23 +57,11 @@ const menu = useFormMenu(actions, {
   saveTemplate: () => (templateOpen.value = true),
   availability: () => (availabilityOpen.value = true),
 })
-/** People access (decision 97): only editors change anything; "Can view" looks via the preview. */
+/** Each button follows what this person may do with this form (F22 R2: role scope, maker, sharing, folder). */
 const editable = computed(() => canEditForm(form.value))
-// Header menu: save as template + lifecycle + delete (rename / move / tags live in the list).
-const lifecycleItems = computed(() => {
-  if (!form.value) return []
-  // Not an editor: copy the live link and responses only ("Open" is this page, Preview is in the header).
-  if (!editable.value)
-    return menu(form.value)
-      .map(group => group.filter(item => ![`/forms/${form.value!.id}`, `/forms/${form.value!.id}/preview`].includes(String(item.to))))
-      .filter(group => group.length)
-  if (form.value.deleted_at)
-    return [[{ label: t('forms.actions.restore'), icon: 'i-lucide-undo-2', onSelect: () => actions.lifecycle(form.value!, 'restore') }]]
-  return [
-    [{ label: t('templates.saveAs'), icon: 'i-lucide-layout-template', onSelect: () => (templateOpen.value = true) }],
-    ...menu(form.value).slice(2),
-  ]
-})
+const allowed = (action: Parameters<typeof formCan>[1]) => formCan(form.value, action)
+// Header menu: duplicate, availability, share, save as template, lifecycle, delete (rename / move / tags live in the list).
+const lifecycleItems = computed(() => (form.value ? menu(form.value, { page: true }) : []))
 const canSeeActivity = computed(() => useCan().can('audit.view'))
 const subtitle = computed(() =>
   form.value ? t('forms.overview.subtitle', { status: t(`status.${form.value.status}`), updated: relative(form.value.updated_at) }) : undefined,
@@ -87,6 +75,7 @@ const subtitle = computed(() =>
         <UButton icon="i-lucide-ellipsis" :label="t('dataView.actions')" color="neutral" variant="outline" :loading="busy" />
       </UDropdownMenu>
       <UButton
+        v-if="useCan().can('responses.view')"
         icon="i-lucide-inbox"
         :label="t('forms.viewResponses')"
         color="neutral"
@@ -96,7 +85,7 @@ const subtitle = computed(() =>
       />
       <!-- People access: only editors open the editor; "Can view" gets the read-only preview page. -->
       <UButton
-        v-if="form.my_access !== 'responses'"
+        v-if="allowed('preview')"
         icon="i-lucide-eye"
         :label="t('preview.crumb')"
         color="neutral"
@@ -161,11 +150,11 @@ const subtitle = computed(() =>
         <div class="flex min-w-0 flex-col gap-4">
           <FormsOverviewLatest :form-id="form.id" :schema="insights?.schema ?? null" :published="form.status !== 'draft'" />
           <FormsOverviewHighlights v-if="insights" :form-id="form.id" :insights="insights" />
-          <FormsOverviewStructure :form="form" :overview="overview" :read-only="!editable" />
+          <FormsOverviewStructure :form="form" :overview="overview" :read-only="!editable" :can-versions="allowed('versions')" />
         </div>
         <div class="flex min-w-0 flex-col gap-4">
-          <FormsOverviewShare :form="form" :read-only="!editable" :accent="(overview.theme.colors as { primary?: string } | undefined)?.primary" />
-          <FormsOverviewDetails :form="form" :template="overview.template" :read-only="!editable" @availability="availabilityOpen = true" />
+          <FormsOverviewShare :form="form" :read-only="!allowed('share_view')" :accent="(overview.theme.colors as { primary?: string } | undefined)?.primary" />
+          <FormsOverviewDetails :form="form" :template="overview.template" :read-only="!allowed('availability')" @availability="availabilityOpen = true" />
           <FormsOverviewStorage :form-id="form.id" />
           <UCard v-if="canSeeActivity" variant="outline" :ui="{ body: 'p-4 sm:p-5' }">
             <h2 class="mb-4 text-sm font-semibold text-highlighted">{{ t('forms.detail.activity') }}</h2>
@@ -179,9 +168,9 @@ const subtitle = computed(() =>
         </div>
       </div>
     </div>
-    <template v-if="editable">
-      <TemplatesSaveModal v-model:open="templateOpen" :form="form" />
-      <FormsListAvailabilityModal v-model:open="availabilityOpen" :form="form" @saved="load" />
+    <template v-if="form">
+      <TemplatesSaveModal v-if="allowed('save_template')" v-model:open="templateOpen" :form="form" />
+      <FormsListAvailabilityModal v-if="allowed('availability')" v-model:open="availabilityOpen" :form="form" @saved="load" />
     </template>
   </AppPanel>
 </template>

@@ -186,7 +186,7 @@ export function peopleRows(tenant: MockTenant): PersonRow[] {
       photo: person.photo ?? null,
       role: person.role,
       role_name: roleOf(tenant, person.role)?.name ?? person.role,
-      privileged: person.role === 'owner' || ['people.manage', 'settings.manage', 'roles.manage'].some(item => roleOf(tenant, person.role)?.permissions.includes(item as never)),
+      privileged: person.role === 'owner' || ['people.manage', 'settings.manage', 'roles.manage'].some(item => roleOf(tenant, person.role)?.grants[item as never]),
       status: person.status,
       departments: org.departments.filter(item => !item.archived_at && item.member_ids.includes(person.id)).map(refOf),
       job_titles: org.job_titles.filter(item => !item.archived_at && item.member_ids.includes(person.id)).map(refOf),

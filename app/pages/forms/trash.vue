@@ -39,23 +39,13 @@ const sortOptions = computed(() => [
 const fetcher: DataFetcher<FormSummary> = (params, signal) =>
   api.list<FormSummary>('/forms', { ...params, 'filter[trash]': '1' }, { signal })
 
-const rowActions = (form: FormSummary): DropdownMenuItem[][] => [
+// Restoring goes with deleting, deleting for good is its own permission; each form says what this person may do (F22 R2)
+const rowActions = (form: FormSummary): DropdownMenuItem[][] =>
   [
-    {
-      label: t('forms.actions.restore'),
-      icon: 'i-lucide-undo-2',
-      onSelect: () => actions.lifecycle(form, 'restore'),
-    },
-  ],
-  [
-    {
-      label: t('forms.actions.purge'),
-      icon: 'i-lucide-trash',
-      color: 'error',
-      onSelect: () => actions.purge(form),
-    },
-  ],
-]
+    formCan(form, 'delete') ? [{ label: t('forms.actions.restore'), icon: 'i-lucide-undo-2', onSelect: () => actions.lifecycle(form, 'restore') }] : [],
+    formCan(form, 'purge') ? [{ label: t('forms.actions.purge'), icon: 'i-lucide-trash', color: 'error' as const, onSelect: () => actions.purge(form) }] : [],
+  ].filter(group => group.length)
+const canPurge = computed(() => useCan().can('forms.purge'))
 </script>
 
 <template>
@@ -65,7 +55,7 @@ const rowActions = (form: FormSummary): DropdownMenuItem[][] => [
     :subtitle="t('forms.trash.subtitle', { days: TRASH_RETENTION_DAYS })"
     subtitle-icon="i-lucide-clock"
   >
-    <template #actions>
+    <template v-if="canPurge" #actions>
       <UButton
         icon="i-lucide-trash"
         :label="t('forms.trash.empty')"
@@ -153,22 +143,24 @@ const rowActions = (form: FormSummary): DropdownMenuItem[][] => [
 
       <template #bulk-actions="{ selected, clear }">
         <UButton
+          v-if="selected.some(form => formCan(form, 'delete'))"
           :label="t('forms.actions.restore')"
           icon="i-lucide-undo-2"
           color="neutral"
           variant="outline"
           size="sm"
           :loading="selected.some(actions.isBusy)"
-          @click="actions.bulk('restore', selected).then(done => done && clear())"
+          @click="actions.bulk('restore', selected.filter(form => formCan(form, 'delete'))).then(done => done && clear())"
         />
         <UButton
+          v-if="selected.some(form => formCan(form, 'purge'))"
           :label="t('forms.actions.purge')"
           icon="i-lucide-trash"
           color="error"
           variant="outline"
           size="sm"
           :loading="selected.some(actions.isBusy)"
-          @click="actions.bulk('purge', selected).then(done => done && clear())"
+          @click="actions.bulk('purge', selected.filter(form => formCan(form, 'purge'))).then(done => done && clear())"
         />
       </template>
     </DataView>

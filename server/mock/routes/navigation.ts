@@ -5,7 +5,7 @@ import { requireAuth } from '../core/auth'
 import { ok } from '../core/respond'
 import { defineMockRoute } from '../core/route'
 import { formsOf } from '../data/formStore'
-import { canSee } from '../data/formPermissions'
+import { canSee, folderVisible } from '../data/formPermissions'
 import { formResponses } from '../data/responseData'
 import { libraryOf } from '../data/libraryStore'
 import { allTemplates } from '../data/templateStore'
@@ -67,7 +67,8 @@ export const navigationCounts = defineMockRoute(({ event }) => {
       created: pages.filter(page => page.source === 'created').length,
     },
     folders: formsOf(tenant)
-      .folders.map(folder => ({ id: folder.id, name: folder.name, color: folder.color ?? null, count: live.filter(form => form.folder?.id === folder.id && form.status !== 'archived').length }))
+      .folders.filter(folder => folderVisible(folder, user, tenant))
+      .map(folder => ({ id: folder.id, name: folder.name, color: folder.color ?? null, count: live.filter(form => form.folder?.id === folder.id && form.status !== 'archived').length }))
       .sort((a, b) => a.name.localeCompare(b.name)),
     destinations: (() => {
       const rows = destinationsOf(tenant).map(item => rowOfDestination(tenant, item))

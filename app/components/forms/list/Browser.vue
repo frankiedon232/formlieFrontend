@@ -227,32 +227,36 @@ defineExpose({ refresh, folders, foldersLoading, loadMeta })
       <FormsListCard :form="row" :actions="rowActions(row)" :busy="actions.isBusy(row)" />
     </template>
 
+    <!-- Each bulk action shows when one of the chosen forms allows it, and acts on those (F22 R2) -->
     <template #bulk-actions="{ selected, clear }">
       <UButton
+        v-if="selected.some(form => formCan(form, 'move'))"
         :label="t('forms.actions.move')"
         icon="i-lucide-folder-input"
         color="neutral"
         variant="outline"
         size="sm"
-        @click="((moveTargets = selected), (moveOpen = true))"
+        @click="((moveTargets = selected.filter(form => formCan(form, 'move'))), (moveOpen = true))"
       />
       <UButton
+        v-if="selected.some(form => formCan(form, 'archive'))"
         :label="t('forms.actions.archive')"
         icon="i-lucide-archive"
         color="neutral"
         variant="outline"
         size="sm"
         :loading="selected.some(actions.isBusy)"
-        @click="actions.bulk('archive', selected).then(done => done && clear())"
+        @click="actions.bulk('archive', selected.filter(form => formCan(form, 'archive'))).then(done => done && clear())"
       />
       <UButton
+        v-if="selected.some(form => formCan(form, 'delete'))"
         :label="t('forms.actions.delete')"
         icon="i-lucide-trash-2"
         color="error"
         variant="outline"
         size="sm"
         :loading="selected.some(actions.isBusy)"
-        @click="actions.bulk('delete', selected).then(done => done && clear())"
+        @click="actions.bulk('delete', selected.filter(form => formCan(form, 'delete'))).then(done => done && clear())"
       />
     </template>
 

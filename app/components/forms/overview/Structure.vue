@@ -6,7 +6,8 @@
 <script setup lang="ts">
 import type { FormOverview, FormSummary } from '#shared/types/forms'
 
-const props = defineProps<{ form: FormSummary; overview: FormOverview; readOnly?: boolean }>()
+/** readOnly: may not edit the questions (F22 R2); canVersions: may see and restore versions. */
+const props = defineProps<{ form: FormSummary; overview: FormOverview; readOnly?: boolean; canVersions?: boolean }>()
 const { t } = useI18n()
 const { relative } = useFormat()
 
@@ -63,7 +64,7 @@ const parts = computed(() => [
     <div class="mt-4 flex flex-col gap-2">
       <div class="flex items-center justify-between">
         <h3 class="text-xs font-medium text-muted uppercase">{{ t('forms.overview.versions') }}</h3>
-        <UButton v-if="!readOnly" :label="t('forms.overview.allVersions')" color="neutral" variant="link" size="xs" :to="`${base}/versions`" trailing-icon="i-lucide-arrow-right" />
+        <UButton v-if="canVersions" :label="t('forms.overview.allVersions')" color="neutral" variant="link" size="xs" :to="`${base}/versions`" trailing-icon="i-lucide-arrow-right" />
       </div>
       <ol v-if="overview.versions.length" class="flex flex-col">
         <li v-for="version in overview.versions" :key="version.id" class="flex items-center gap-3 border-s border-default py-1.5 ps-3">

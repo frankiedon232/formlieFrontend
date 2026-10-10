@@ -1118,7 +1118,8 @@
       "users_requested": "Ameomba kujiunga",
       "users_approved": "Imeidhinishwa",
       "users_rejected": "Ombi limekataliwa",
-      "users_signup_link_changed": "Kiungo cha kujisajili kimebadilishwa"
+      "users_signup_link_changed": "Kiungo cha kujisajili kimebadilishwa",
+      "forms_folder_access_changed": "Ufikiaji wa folda umebadilishwa"
     },
     "detail": {
       "who": "Nani",
@@ -5075,7 +5076,9 @@
       "answeringDesc": "Nani anaweza kuijaza na jinsi ya kuifikia, kwa kila mtu unayemtumia fomu.",
       "team": "Timu yako",
       "teamDesc": "Wafanyakazi wa eneo lako la kazi wanaounda na kusimamia fomu hii. Haibadilishi nani anaweza kuijaza."
-    }
+    },
+    "readOnly": "Unaweza kuona mipangilio hii",
+    "readOnlyDesc": "Jukumu lako haliruhusu kubadilisha jinsi fomu hii inavyoshirikiwa."
   },
   "preview": {
     "crumb": "Onyesho",
@@ -5536,7 +5539,22 @@
     "pin": "Bandika kwenye upau wa pembeni",
     "unpin": "Bandua kutoka upau wa pembeni",
     "pinFull": "Unaweza kubandika folda hadi 5",
-    "hex": "Rangi ya hex"
+    "hex": "Rangi ya hex",
+    "access": {
+      "menu": "Nani anaweza kuona",
+      "title": "Nani anaweza kuona {name}",
+      "desc": "Folda ambayo watu hawawezi kuiona huficha fomu zake na majibu yake kwao kila mahali.",
+      "everyone": "Kila mtu",
+      "everyoneHint": "Kila mtu ambaye jukumu lake hufungua fomu.",
+      "restricted": "Watu waliochaguliwa tu",
+      "restrictedHint": "Chagua majukumu, idara au watu. Wamiliki na watu wanaoamua ufikiaji wa folda huiona kila wakati.",
+      "roles": "Majukumu",
+      "people": "Watu",
+      "note": "Yeyote anayelingana na mojawapo ya haya huiona folda.",
+      "nobody": "Hakuna aliyechaguliwa bado: wamiliki na watu wanaoamua ufikiaji wa folda pekee ndio wataiona.",
+      "saved": "Ufikiaji wa folda umehifadhiwa",
+      "badge": "Imedhibitiwa"
+    }
   },
   "destinations": {
     "crumb": "Hifadhi ya majibu",
@@ -7876,12 +7894,13 @@
       "roles": "Majukumu",
       "settings": "Mipangilio",
       "audit": "Kumbukumbu za ukaguzi",
-      "ai": "Msaidizi wa AI"
+      "ai": "Msaidizi wa AI",
+      "folders": "Folda"
     },
     "areaHint": {
-      "forms": "Kuunda, kuchapisha na kufuta fomu.",
+      "forms": "Kuunda, kujenga, kushiriki, kuchapisha na kufuta fomu.",
       "responses": "Kusoma, kubadilisha na kusafirisha majibu.",
-      "resources": "Violezo, mandhari, kurasa za kutua, orodha, folda na sehemu zilizohifadhiwa.",
+      "resources": "Violezo, mandhari, kurasa za kutua, orodha na sehemu zilizohifadhiwa.",
       "analytics": "Kurasa za takwimu.",
       "data": "Miunganisho ya hifadhidata, kichunguzi na maswali.",
       "api": "Huduma, endpoint, tokeni na webhook.",
@@ -7889,7 +7908,8 @@
       "roles": "Kuunda na kubadilisha majukumu.",
       "settings": "Mipangilio ya nafasi ya kazi.",
       "audit": "Nani alifanya nini, na lini.",
-      "ai": "Kutumia msaidizi wa AI."
+      "ai": "Kutumia msaidizi wa AI.",
+      "folders": "Folda na nani anaweza kuziona."
     },
     "action": {
       "view": "Tazama",
@@ -7897,7 +7917,6 @@
       "edit": "Hariri",
       "publish": "Chapisha",
       "delete": "Futa",
-      "all": "Kila fomu",
       "export": "Safirisha",
       "manage": "Simamia",
       "query": "Endesha maswali",
@@ -7906,12 +7925,11 @@
       "review": "Kagua"
     },
     "perm": {
-      "forms_view": "Kuona fomu na kijenzi chake.",
-      "forms_create": "Kuunda, kuleta na kunakili fomu.",
-      "forms_edit": "Kubadilisha fomu: maswali, muundo, kushiriki.",
-      "forms_publish": "Kuchapisha fomu na kuzifungua au kuzifunga.",
-      "forms_delete": "Kufuta fomu na kuondoa takataka.",
-      "forms_all": "Kila fomu katika nafasi ya kazi, si zile tu walizoshirikishwa.",
+      "forms_view": "Kupata fomu kwenye orodha na kufungua muhtasari wake.",
+      "forms_create": "Kuanza fomu mpya, tupu au kutoka kiolezo.",
+      "forms_edit": "Kubadilisha maswali, kurasa, mantiki, muundo na lebo.",
+      "forms_publish": "Kuweka mabadiliko ya hivi karibuni hewani.",
+      "forms_delete": "Kuhamishia fomu Tupioni na kuirejesha.",
       "responses_view": "Kusoma majibu.",
       "responses_edit": "Sahihisha majibu yaliyotumwa.",
       "responses_delete": "Kufuta majibu.",
@@ -7932,7 +7950,70 @@
       "audit_view": "Kuona kumbukumbu za ukaguzi.",
       "audit_export": "Kusafirisha kumbukumbu za ukaguzi.",
       "ai_use": "Kutumia msaidizi wa AI.",
-      "responses_review": "Badilisha hali, lebo na maelezo."
+      "responses_review": "Badilisha hali, lebo na maelezo.",
+      "forms_preview": "Kuona fomu jinsi watu watakavyoijaza.",
+      "forms_import": "Kuleta fomu kutoka faili.",
+      "forms_duplicate": "Kutengeneza nakala ya fomu.",
+      "forms_save_template": "Kugeuza fomu kuwa kiolezo cha eneo la kazi.",
+      "forms_rename": "Kubadilisha jina la fomu.",
+      "forms_versions": "Kuona matoleo ya awali na kurudisha moja.",
+      "forms_share_view": "Kuona viungo, ufikiaji na walioshirikiwa fomu.",
+      "forms_share": "Kubadilisha viungo, ufikiaji, upachikaji na walioshirikiwa fomu.",
+      "forms_availability": "Kuweka lini fomu inafunguka na kufungwa.",
+      "forms_close": "Kuondoa fomu mtandaoni na kuirudisha.",
+      "forms_archive": "Kuweka fomu kando na kuirudisha.",
+      "forms_move": "Kuweka fomu kwenye folda nyingine.",
+      "forms_purge": "Kuondoa fomu kabisa na kumwaga Tupio.",
+      "folders_create": "Kutengeneza folda mpya.",
+      "folders_edit": "Kubadilisha jina na rangi ya folda.",
+      "folders_delete": "Kuondoa folda tupu.",
+      "folders_access": "Kuchagua nani anaweza kuona kila folda, na kuona folda zote."
+    },
+    "setArea": "Weka eneo",
+    "searchActions": "Tafuta vitendo",
+    "noActions": "Hakuna kitendo kinacholingana",
+    "scope": {
+      "none": "Hakuna",
+      "own": "Vyao",
+      "shared": "Vilivyoshirikiwa",
+      "all": "Vyote"
+    },
+    "scopeHint": {
+      "none": "Hapana kabisa, hata kwa walichounda",
+      "own": "Kwa walichounda tu",
+      "shared": "Kwa fomu zao na fomu zilizoshirikiwa nao",
+      "all": "Kwa kila kitu katika eneo la kazi"
+    },
+    "group": {
+      "forms_see": "Kuona",
+      "forms_create": "Kuunda",
+      "forms_build": "Kujenga",
+      "forms_share": "Kushiriki",
+      "forms_lifecycle": "Kuchapisha na mzunguko wa maisha"
+    },
+    "label": {
+      "forms_view": "Kuona fomu",
+      "forms_preview": "Hakikisho",
+      "forms_create": "Kuunda fomu",
+      "forms_import": "Kuleta fomu",
+      "forms_duplicate": "Nakili",
+      "forms_save_template": "Hifadhi kama kiolezo",
+      "forms_rename": "Badilisha jina",
+      "forms_edit": "Kuhariri maswali, mantiki na muundo",
+      "forms_versions": "Matoleo",
+      "forms_share_view": "Kuona mipangilio ya kushiriki",
+      "forms_share": "Kubadilisha mipangilio ya kushiriki",
+      "forms_availability": "Upatikanaji",
+      "forms_publish": "Chapisha",
+      "forms_close": "Kuondoa uchapishaji, kufunga na kufungua tena",
+      "forms_archive": "Kuhifadhi kwenye kumbukumbu na kutoa",
+      "forms_move": "Kuhamishia kwenye folda",
+      "forms_delete": "Kuhamishia Tupioni na kurejesha",
+      "forms_purge": "Kufuta kabisa",
+      "folders_create": "Kuunda folda",
+      "folders_edit": "Kubadilisha jina na rangi",
+      "folders_delete": "Kufuta folda",
+      "folders_access": "Kuamua nani anaona folda"
     }
   }
 }

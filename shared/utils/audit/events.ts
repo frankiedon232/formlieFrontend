@@ -60,6 +60,7 @@ export const AUDIT_EVENTS = {
   'forms.folder_created': { area: 'forms', icon: 'i-lucide-folder-plus' },
   'forms.folder_renamed': { area: 'forms', icon: 'i-lucide-folder-pen' },
   'forms.folder_deleted': { area: 'forms', icon: 'i-lucide-folder-x' },
+  'forms.folder_access_changed': { area: 'forms', icon: 'i-lucide-folder-lock' },
   'forms.field_saved': { area: 'forms', icon: 'i-lucide-bookmark-plus' },
   'forms.field_removed': { area: 'forms', icon: 'i-lucide-bookmark-minus' },
   'forms.list_created': { area: 'forms', icon: 'i-lucide-list-plus' },

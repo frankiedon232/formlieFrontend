@@ -8,7 +8,7 @@
  * Tokens are stored as hashes; the personal link exists only in the invitation. Audited as forms.shared.
  */
 import { z } from 'zod'
-import type { FormInvitation } from '#shared/types/forms'
+import type { FormAction, FormInvitation } from '#shared/types/forms'
 import { formLink, publicHosts } from '#shared/utils/urls/public'
 import { requireAuth } from '../core/auth'
 import { actorOf, recordAudit } from '../core/audit'
@@ -16,17 +16,17 @@ import { MockError, ok } from '../core/respond'
 import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
 import { hashToken, issuePass, newInviteToken, type FormInvite } from '../data/formAccess'
-import { requireLevel } from '../data/formPermissions'
+import { requireAction } from '../data/formPermissions'
 import { formsOf, saveForms, type StoredForm } from '../data/formStore'
 import type { MockTenant, MockUser } from '../data/tenants'
 
 const MAX_INVITES = 500
 
 /** A form of this workspace that this person can edit: sharing is editors only (decision 97). */
-function findForm(tenant: MockTenant, user: MockUser, id: string | undefined): StoredForm {
+function findForm(tenant: MockTenant, user: MockUser, id: string | undefined, action: FormAction): StoredForm {
   const form = formsOf(tenant).forms.find(item => item.id === id && !item.deleted_at)
   if (!form) throw new MockError('FRM-GEN-1004')
-  requireLevel(form, user, 'edit')
+  requireAction(form, user, action, tenant)
   return form
 }
 
@@ -62,7 +62,7 @@ function audit(event: Parameters<typeof requireAuth>[0], tenant: MockTenant, use
 /** GET /forms/:id/invites */
 export const listInvites = defineMockRoute(({ event }) => {
   const { tenant, user } = requireAuth(event)
-  return ok(listOf(findForm(tenant, user, getRouterParam(event, 'id'))))
+  return ok(listOf(findForm(tenant, user, getRouterParam(event, 'id'), 'share_view')))
 })
 
 const inviteBody = z.object({
@@ -75,7 +75,7 @@ const inviteBody = z.object({
 /** POST /forms/:id/invites, people already invited (and not revoked) are skipped, not invited twice. */
 export const createInvites = defineMockRoute(({ event, body }) => {
   const { user, tenant } = requireAuth(event)
-  const form = findForm(tenant, user, getRouterParam(event, 'id'))
+  const form = findForm(tenant, user, getRouterParam(event, 'id'), 'share')
   const input = parseBody(inviteBody, body)
   form.invites ??= []
   const active = new Set(form.invites.filter(item => !item.revoked_at).map(item => item.email))
@@ -108,7 +108,7 @@ function inviteOf(form: StoredForm, id: string | undefined): FormInvite {
 /** POST /forms/:id/invites/:inviteId/resend, a new personal link; the previous one stops working. */
 export const resendInvite = defineMockRoute(({ event }) => {
   const { user, tenant } = requireAuth(event)
-  const form = findForm(tenant, user, getRouterParam(event, 'id'))
+  const form = findForm(tenant, user, getRouterParam(event, 'id'), 'share')
   const invite = inviteOf(form, getRouterParam(event, 'inviteId'))
   if (invite.revoked_at) throw new MockError('FRM-FORM-1007')
   const token = newInviteToken()
@@ -124,7 +124,7 @@ export const resendInvite = defineMockRoute(({ event }) => {
  */
 export const revokeInvite = defineMockRoute(({ event, query }) => {
   const { user, tenant } = requireAuth(event)
-  const form = findForm(tenant, user, getRouterParam(event, 'id'))
+  const form = findForm(tenant, user, getRouterParam(event, 'id'), 'share')
   const invite = inviteOf(form, getRouterParam(event, 'inviteId'))
   if (query.remove === '1') {
     if (!invite.revoked_at) throw new MockError('FRM-FORM-1007')

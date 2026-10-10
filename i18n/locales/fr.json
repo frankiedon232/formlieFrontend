@@ -1118,7 +1118,8 @@
       "users_requested": "A demandé à rejoindre",
       "users_approved": "Approuvé",
       "users_rejected": "Demande refusée",
-      "users_signup_link_changed": "Lien d'inscription modifié"
+      "users_signup_link_changed": "Lien d'inscription modifié",
+      "forms_folder_access_changed": "Accès au dossier modifié"
     },
     "detail": {
       "who": "Qui",
@@ -5075,7 +5076,9 @@
       "answeringDesc": "Qui peut le remplir et comment y accéder, pour toutes les personnes à qui vous l’envoyez.",
       "team": "Votre équipe",
       "teamDesc": "Les membres de votre espace de travail qui créent et gèrent ce formulaire. Cela ne change pas qui peut le remplir."
-    }
+    },
+    "readOnly": "Vous pouvez consulter ces paramètres",
+    "readOnlyDesc": "Votre rôle ne vous permet pas de modifier le partage de ce formulaire."
   },
   "preview": {
     "crumb": "Aperçu",
@@ -5536,7 +5539,22 @@
     "pin": "Épingler dans la barre latérale",
     "unpin": "Retirer de la barre latérale",
     "pinFull": "Jusqu’à 5 dossiers peuvent être épinglés",
-    "hex": "Couleur hex"
+    "hex": "Couleur hex",
+    "access": {
+      "menu": "Qui peut le voir",
+      "title": "Qui peut voir {name}",
+      "desc": "Un dossier que des personnes ne peuvent pas voir leur masque ses formulaires et leurs réponses partout.",
+      "everyone": "Tout le monde",
+      "everyoneHint": "Toutes les personnes dont le rôle ouvre les formulaires.",
+      "restricted": "Seulement certaines personnes",
+      "restrictedHint": "Choisissez des rôles, des services ou des personnes. Les propriétaires et les personnes qui décident de l'accès aux dossiers le voient toujours.",
+      "roles": "Rôles",
+      "people": "Personnes",
+      "note": "Toute personne correspondant à l'un de ces choix voit le dossier.",
+      "nobody": "Personne n'est encore choisi : seuls les propriétaires et les personnes qui décident de l'accès aux dossiers le verront.",
+      "saved": "Accès au dossier enregistré",
+      "badge": "Restreint"
+    }
   },
   "destinations": {
     "crumb": "Stockage des réponses",
@@ -7876,12 +7894,13 @@
       "roles": "Rôles",
       "settings": "Paramètres",
       "audit": "Journal d’audit",
-      "ai": "Assistant IA"
+      "ai": "Assistant IA",
+      "folders": "Dossiers"
     },
     "areaHint": {
-      "forms": "Créer, publier et supprimer des formulaires.",
+      "forms": "Créer, concevoir, partager, publier et supprimer des formulaires.",
       "responses": "Lire, modifier et exporter les réponses.",
-      "resources": "Modèles, thèmes, pages de destination, listes, dossiers et champs enregistrés.",
+      "resources": "Modèles, thèmes, pages d'accueil, listes et champs enregistrés.",
       "analytics": "Les pages de statistiques.",
       "data": "Connexions aux bases de données, explorateur et requêtes.",
       "api": "Services, points de terminaison, jetons et webhooks.",
@@ -7889,7 +7908,8 @@
       "roles": "Créer et modifier des rôles.",
       "settings": "Les paramètres de l’espace de travail.",
       "audit": "Qui a fait quoi, et quand.",
-      "ai": "Utiliser l’assistant IA."
+      "ai": "Utiliser l’assistant IA.",
+      "folders": "Les dossiers et les personnes qui peuvent les voir."
     },
     "action": {
       "view": "Voir",
@@ -7897,7 +7917,6 @@
       "edit": "Modifier",
       "publish": "Publier",
       "delete": "Supprimer",
-      "all": "Tous les formulaires",
       "export": "Exporter",
       "manage": "Gérer",
       "query": "Exécuter des requêtes",
@@ -7906,12 +7925,11 @@
       "review": "Examiner"
     },
     "perm": {
-      "forms_view": "Voir les formulaires et leur éditeur.",
-      "forms_create": "Créer, importer et dupliquer des formulaires.",
-      "forms_edit": "Modifier les formulaires : questions, design, partage.",
-      "forms_publish": "Publier des formulaires, les ouvrir ou les fermer.",
-      "forms_delete": "Supprimer des formulaires et vider la corbeille.",
-      "forms_all": "Tous les formulaires de l’espace de travail, pas seulement ceux partagés avec la personne.",
+      "forms_view": "Trouver des formulaires dans les listes et ouvrir leur aperçu général.",
+      "forms_create": "Démarrer de nouveaux formulaires, vierges ou à partir d'un modèle.",
+      "forms_edit": "Modifier les questions, pages, logique, design et étiquettes.",
+      "forms_publish": "Mettre les dernières modifications en ligne.",
+      "forms_delete": "Mettre un formulaire à la Corbeille et le récupérer.",
       "responses_view": "Lire les réponses.",
       "responses_edit": "Corriger les réponses envoyées.",
       "responses_delete": "Supprimer des réponses.",
@@ -7932,7 +7950,70 @@
       "audit_view": "Voir le journal d’audit.",
       "audit_export": "Exporter le journal d’audit.",
       "ai_use": "Utiliser l’assistant IA.",
-      "responses_review": "Modifier le statut, les étiquettes et les notes."
+      "responses_review": "Modifier le statut, les étiquettes et les notes.",
+      "forms_preview": "Voir le formulaire tel que les personnes le rempliront.",
+      "forms_import": "Importer un formulaire depuis un fichier.",
+      "forms_duplicate": "Faire une copie d'un formulaire.",
+      "forms_save_template": "Transformer un formulaire en modèle de l'espace de travail.",
+      "forms_rename": "Changer le nom d'un formulaire.",
+      "forms_versions": "Voir les versions précédentes et en restaurer une.",
+      "forms_share_view": "Voir les liens, l'accès et les personnes avec qui le formulaire est partagé.",
+      "forms_share": "Modifier les liens, l'accès, l'intégration et les personnes avec qui le formulaire est partagé.",
+      "forms_availability": "Définir quand un formulaire ouvre et ferme.",
+      "forms_close": "Mettre un formulaire hors ligne et le remettre en ligne.",
+      "forms_archive": "Ranger un formulaire et le ressortir.",
+      "forms_move": "Placer un formulaire dans un autre dossier.",
+      "forms_purge": "Supprimer un formulaire définitivement et vider la Corbeille.",
+      "folders_create": "Créer de nouveaux dossiers.",
+      "folders_edit": "Changer le nom et la couleur d'un dossier.",
+      "folders_delete": "Supprimer les dossiers vides.",
+      "folders_access": "Choisir qui peut voir chaque dossier, et voir tous les dossiers."
+    },
+    "setArea": "Définir la zone",
+    "searchActions": "Rechercher des actions",
+    "noActions": "Aucune action ne correspond",
+    "scope": {
+      "none": "Aucun",
+      "own": "Siens",
+      "shared": "Partagés",
+      "all": "Tous"
+    },
+    "scopeHint": {
+      "none": "Pas du tout, pas même sur ce qu'elles ont créé",
+      "own": "Uniquement sur ce qu'elles ont créé",
+      "shared": "Sur leurs propres formulaires et ceux partagés avec elles",
+      "all": "Sur tout l'espace de travail"
+    },
+    "group": {
+      "forms_see": "Consultation",
+      "forms_create": "Création",
+      "forms_build": "Conception",
+      "forms_share": "Partage",
+      "forms_lifecycle": "Publication et cycle de vie"
+    },
+    "label": {
+      "forms_view": "Voir les formulaires",
+      "forms_preview": "Aperçu",
+      "forms_create": "Créer des formulaires",
+      "forms_import": "Importer des formulaires",
+      "forms_duplicate": "Dupliquer",
+      "forms_save_template": "Enregistrer comme modèle",
+      "forms_rename": "Renommer",
+      "forms_edit": "Modifier les questions, la logique et le design",
+      "forms_versions": "Versions",
+      "forms_share_view": "Voir les paramètres de partage",
+      "forms_share": "Modifier les paramètres de partage",
+      "forms_availability": "Disponibilité",
+      "forms_publish": "Publier",
+      "forms_close": "Dépublier, fermer et rouvrir",
+      "forms_archive": "Archiver et désarchiver",
+      "forms_move": "Déplacer vers un dossier",
+      "forms_delete": "Mettre à la Corbeille et restaurer",
+      "forms_purge": "Supprimer définitivement",
+      "folders_create": "Créer des dossiers",
+      "folders_edit": "Renommer et changer la couleur",
+      "folders_delete": "Supprimer des dossiers",
+      "folders_access": "Décider qui voit les dossiers"
     }
   }
 }

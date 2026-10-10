@@ -30,7 +30,7 @@ function changed() {
         variant="outline"
         to="/templates"
       />
-      <UButton :label="t('templates.blank')" icon="i-lucide-file" color="neutral" to="/forms/new" />
+      <UButton v-if="useCan().can('forms.create')" :label="t('templates.blank')" icon="i-lucide-file" color="neutral" to="/forms/new" />
     </template>
     <div class="flex flex-col gap-4">
       <TemplatesList

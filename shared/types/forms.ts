@@ -17,7 +17,32 @@ export interface FormFolder {
   color?: string | null
   /** Forms in the folder (not counting trash). */
   forms_count?: number
+  /** Who made it (F22 R2: folders.edit / delete at scope Own). */
+  created_by?: FormOwner | null
+  /** Who may see the folder and its forms (F22 R2); missing or not restricted = everyone. */
+  access?: FolderAccess | null
+  /** What the signed-in person may do with it (lists and pages). */
+  can?: FolderActions
 }
+
+/** Folder access (owner, 2026-10-10): restricted folders, and their forms and responses, only show to these. */
+export interface FolderAccess {
+  restricted: boolean
+  roles: string[]
+  departments: string[]
+  people: string[]
+}
+export interface FolderActions {
+  edit: boolean
+  delete: boolean
+  access: boolean
+}
+
+/** Every action on a form a role grants with a scope (shared/utils/auth/permissions.ts → forms.*). */
+export const FORM_ACTIONS = ['view', 'preview', 'duplicate', 'save_template', 'rename', 'edit', 'versions', 'share_view', 'share', 'availability', 'publish', 'close', 'archive', 'move', 'delete', 'purge'] as const
+export type FormAction = (typeof FORM_ACTIONS)[number]
+/** What the signed-in person may do with one form (role scope, ownership, sharing and folder access together). */
+export type FormActions = Record<FormAction, boolean>
 
 /** GET /folders/overview and /folders/{id}: a folder with its numbers (F11 M4, the Folders pages). */
 export interface FolderRow {
@@ -37,6 +62,10 @@ export interface FolderRow {
   /** Latest form change or response. */
   last_activity_at: string | null
   owners: { id: string; name: string }[]
+  /** Who made it, who may see it (for people who decide that, else only whether it is restricted) and what this person may do (F22 R2). */
+  created_by?: FormOwner | null
+  access?: FolderAccess | null
+  can?: FolderActions
 }
 
 export interface FormSummary {
@@ -76,6 +105,8 @@ export interface FormSummary {
   short_code: string | null
   /** What the signed-in person may do with this form (F10 M3 people access; lists and form pages). */
   my_access?: FormAccessLevel
+  /** Each action allowed for the signed-in person (F22 R2); the app shows only these, the API checks again. */
+  can?: FormActions
 }
 
 /** People access per form: none < responses < view (read only) < edit. */

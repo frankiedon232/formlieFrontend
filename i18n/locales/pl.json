@@ -1118,7 +1118,8 @@
       "users_requested": "Poprosił o dołączenie",
       "users_approved": "Zatwierdzono",
       "users_rejected": "Prośba odrzucona",
-      "users_signup_link_changed": "Zmieniono link rejestracyjny"
+      "users_signup_link_changed": "Zmieniono link rejestracyjny",
+      "forms_folder_access_changed": "Zmieniono dostęp do folderu"
     },
     "detail": {
       "who": "Kto",
@@ -5075,7 +5076,9 @@
       "answeringDesc": "Kto może go wypełnić i jak do niego trafia. Dotyczy wszystkich, do których wysyłasz formularz.",
       "team": "Twój zespół",
       "teamDesc": "Pracownicy obszaru roboczego, którzy tworzą formularz i nim zarządzają. Nie zmienia to, kto może go wypełnić."
-    }
+    },
+    "readOnly": "Mogą Państwo zobaczyć te ustawienia",
+    "readOnlyDesc": "Państwa rola nie pozwala zmieniać sposobu udostępniania tego formularza."
   },
   "preview": {
     "crumb": "Podgląd",
@@ -5536,7 +5539,22 @@
     "pin": "Przypnij na pasku bocznym",
     "unpin": "Odepnij z paska bocznego",
     "pinFull": "Można przypiąć maksymalnie 5 folderów",
-    "hex": "Kolor hex"
+    "hex": "Kolor hex",
+    "access": {
+      "menu": "Kto może go zobaczyć",
+      "title": "Kto widzi folder {name}",
+      "desc": "Folder, którego osoby nie widzą, ukrywa przed nimi swoje formularze i ich odpowiedzi w każdym miejscu.",
+      "everyone": "Wszyscy",
+      "everyoneHint": "Wszyscy, których rola pozwala otwierać formularze.",
+      "restricted": "Tylko wybrane osoby",
+      "restrictedHint": "Wybierz role, działy lub osoby. Właściciele i osoby decydujące o dostępie do folderów zawsze go widzą.",
+      "roles": "Role",
+      "people": "Osoby",
+      "note": "Każdy, kto pasuje do jednej z tych opcji, widzi folder.",
+      "nobody": "Nikogo jeszcze nie wybrano: folder zobaczą tylko właściciele i osoby decydujące o dostępie do folderów.",
+      "saved": "Zapisano dostęp do folderu",
+      "badge": "Ograniczony"
+    }
   },
   "destinations": {
     "crumb": "Zapisywanie odpowiedzi",
@@ -7876,12 +7894,13 @@
       "roles": "Role",
       "settings": "Ustawienia",
       "audit": "Dziennik audytu",
-      "ai": "Asystent AI"
+      "ai": "Asystent AI",
+      "folders": "Foldery"
     },
     "areaHint": {
-      "forms": "Tworzenie, publikowanie i usuwanie formularzy.",
+      "forms": "Tworzenie, budowanie, udostępnianie, publikowanie i usuwanie formularzy.",
       "responses": "Czytanie, zmienianie i eksportowanie odpowiedzi.",
-      "resources": "Szablony, motywy, strony docelowe, listy, foldery i zapisane pola.",
+      "resources": "Szablony, motywy, strony docelowe, listy i zapisane pola.",
       "analytics": "Strony analityki.",
       "data": "Połączenia z bazami danych, eksplorator i zapytania.",
       "api": "Usługi, endpointy, tokeny i webhooki.",
@@ -7889,7 +7908,8 @@
       "roles": "Tworzenie i zmienianie ról.",
       "settings": "Ustawienia przestrzeni roboczej.",
       "audit": "Kto co zrobił i kiedy.",
-      "ai": "Korzystanie z asystenta AI."
+      "ai": "Korzystanie z asystenta AI.",
+      "folders": "Foldery i to, kto może je widzieć."
     },
     "action": {
       "view": "Przeglądanie",
@@ -7897,7 +7917,6 @@
       "edit": "Edycja",
       "publish": "Publikowanie",
       "delete": "Usuwanie",
-      "all": "Każdy formularz",
       "export": "Eksport",
       "manage": "Zarządzanie",
       "query": "Uruchamianie zapytań",
@@ -7906,12 +7925,11 @@
       "review": "Przeglądanie"
     },
     "perm": {
-      "forms_view": "Zobacz formularze i ich kreator.",
-      "forms_create": "Twórz, importuj i duplikuj formularze.",
-      "forms_edit": "Zmieniaj formularze: pytania, wygląd, udostępnianie.",
-      "forms_publish": "Publikuj formularze oraz otwieraj je lub zamykaj.",
-      "forms_delete": "Usuwaj formularze i opróżniaj kosz.",
-      "forms_all": "Każdy formularz w przestrzeni roboczej, nie tylko te udostępnione tej osobie.",
+      "forms_view": "Znajdowanie formularzy na listach i otwieranie ich przeglądu.",
+      "forms_create": "Tworzenie nowych formularzy, pustych lub z szablonu.",
+      "forms_edit": "Zmiana pytań, stron, logiki, wyglądu i tagów.",
+      "forms_publish": "Uruchamianie najnowszych zmian.",
+      "forms_delete": "Przenoszenie formularza do Kosza i jego odzyskiwanie.",
       "responses_view": "Czytaj odpowiedzi.",
       "responses_edit": "Poprawianie wysłanych odpowiedzi.",
       "responses_delete": "Usuwaj odpowiedzi.",
@@ -7932,7 +7950,70 @@
       "audit_view": "Zobacz dziennik audytu.",
       "audit_export": "Eksportuj dziennik audytu.",
       "ai_use": "Korzystaj z asystenta AI.",
-      "responses_review": "Zmiana statusu, tagów i notatek."
+      "responses_review": "Zmiana statusu, tagów i notatek.",
+      "forms_preview": "Oglądanie formularza tak, jak będą go wypełniać osoby.",
+      "forms_import": "Importowanie formularza z pliku.",
+      "forms_duplicate": "Tworzenie kopii formularza.",
+      "forms_save_template": "Zamiana formularza na szablon przestrzeni roboczej.",
+      "forms_rename": "Zmiana nazwy formularza.",
+      "forms_versions": "Podgląd wcześniejszych wersji i przywracanie jednej z nich.",
+      "forms_share_view": "Podgląd linków, dostępu i osób, którym formularz jest udostępniony.",
+      "forms_share": "Zmiana linków, dostępu, osadzania i osób, którym formularz jest udostępniony.",
+      "forms_availability": "Ustawianie, kiedy formularz się otwiera i zamyka.",
+      "forms_close": "Wyłączanie formularza i jego ponowne włączanie.",
+      "forms_archive": "Odkładanie formularza i jego przywracanie.",
+      "forms_move": "Umieszczanie formularza w innym folderze.",
+      "forms_purge": "Trwałe usuwanie formularza i opróżnianie Kosza.",
+      "folders_create": "Tworzenie nowych folderów.",
+      "folders_edit": "Zmiana nazwy i koloru folderu.",
+      "folders_delete": "Usuwanie pustych folderów.",
+      "folders_access": "Wybieranie, kto widzi każdy folder, oraz widzenie wszystkich folderów."
+    },
+    "setArea": "Ustaw obszar",
+    "searchActions": "Szukaj działań",
+    "noActions": "Brak pasujących działań",
+    "scope": {
+      "none": "Brak",
+      "own": "Własne",
+      "shared": "Wspólne",
+      "all": "Wszystkie"
+    },
+    "scopeHint": {
+      "none": "W ogóle, nawet dla tego, co sami utworzyli",
+      "own": "Tylko dla tego, co sami utworzyli",
+      "shared": "Dla własnych formularzy i udostępnionych im",
+      "all": "Dla wszystkiego w przestrzeni roboczej"
+    },
+    "group": {
+      "forms_see": "Przeglądanie",
+      "forms_create": "Tworzenie",
+      "forms_build": "Budowanie",
+      "forms_share": "Udostępnianie",
+      "forms_lifecycle": "Publikowanie i cykl życia"
+    },
+    "label": {
+      "forms_view": "Przeglądanie formularzy",
+      "forms_preview": "Podgląd",
+      "forms_create": "Tworzenie formularzy",
+      "forms_import": "Importowanie formularzy",
+      "forms_duplicate": "Duplikuj",
+      "forms_save_template": "Zapisz jako szablon",
+      "forms_rename": "Zmień nazwę",
+      "forms_edit": "Edycja pytań, logiki i wyglądu",
+      "forms_versions": "Wersje",
+      "forms_share_view": "Podgląd ustawień udostępniania",
+      "forms_share": "Zmiana ustawień udostępniania",
+      "forms_availability": "Dostępność",
+      "forms_publish": "Publikowanie",
+      "forms_close": "Cofanie publikacji, zamykanie i ponowne otwieranie",
+      "forms_archive": "Archiwizowanie i przywracanie z archiwum",
+      "forms_move": "Przenoszenie do folderu",
+      "forms_delete": "Przenoszenie do Kosza i przywracanie",
+      "forms_purge": "Usuwanie na stałe",
+      "folders_create": "Tworzenie folderów",
+      "folders_edit": "Zmiana nazwy i koloru",
+      "folders_delete": "Usuwanie folderów",
+      "folders_access": "Decydowanie, kto widzi foldery"
     }
   }
 }

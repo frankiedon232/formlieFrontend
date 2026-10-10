@@ -1,47 +1,119 @@
 /**
- * Roles & access (F22, brought forward into F16 by the owner, 2026-10-09): what a role may do, per area
- * of the platform. Each workspace keeps its own roles (Owner is built in with everything and can't be
- * changed, so a workspace never locks itself out); a person holds one role. The server checks every call
- * against `permissionFor` (by address and action) and the app hides what the role can't use.
+ * Roles & access (F22, brought forward into F16 by the owner, 2026-10-09; granular with scope, R2,
+ * 2026-10-10): what a role may do, action by action, per area of the platform. Each workspace keeps its
+ * own roles (Owner is built in with everything and can't be changed, so a workspace never locks itself
+ * out); a person holds one role. The server checks every call (by address, then each action against the
+ * item: who made it, whom it is shared with, which folder it sits in) and the app hides what the role
+ * can't use, everywhere the action appears.
+ *
+ * A grant has a scope (owner: "no matter the permission granted, I can be limited to even what I created"):
+ *   own     only on what the person made (leaving the action out means not even their own)
+ *   shared  their own plus forms shared with them (form sharing never goes beyond the role)
+ *   all     everything in the workspace
+ * Actions without a scope are on / off (stored as `all`).
  */
 
-export const PERMISSION_AREAS = [
-  { key: 'forms', actions: ['view', 'create', 'edit', 'publish', 'delete', 'all'] },
-  // review = status, tags and notes; edit = correct submitted answers (owner, 2026-10-09)
-  { key: 'responses', actions: ['view', 'review', 'edit', 'delete', 'export'] },
-  { key: 'resources', actions: ['manage'] },
-  { key: 'analytics', actions: ['view'] },
-  { key: 'data', actions: ['view', 'query', 'manage'] },
-  { key: 'api', actions: ['view', 'manage'] },
-  { key: 'people', actions: ['view', 'manage', 'approve'] },
-  { key: 'roles', actions: ['manage'] },
-  { key: 'settings', actions: ['view', 'manage'] },
-  { key: 'audit', actions: ['view', 'export'] },
-  { key: 'ai', actions: ['use'] },
-] as const
+export type Scope = 'own' | 'shared' | 'all'
+export const SCOPE_RANK: Record<Scope, number> = { own: 1, shared: 2, all: 3 }
+const FORM: readonly Scope[] = ['own', 'shared', 'all']
+const OWNED: readonly Scope[] = ['own', 'all']
 
-export type PermissionArea = (typeof PERMISSION_AREAS)[number]['key']
-export type Permission = { [A in (typeof PERMISSION_AREAS)[number] as A['key']]: `${A['key']}.${A['actions'][number]}` }[PermissionArea]
-export const ALL_PERMISSIONS = PERMISSION_AREAS.flatMap(area => area.actions.map(action => `${area.key}.${action}`)) as Permission[]
+interface ActionDef {
+  readonly key: string
+  readonly scopes?: readonly Scope[]
+}
+interface GroupDef {
+  readonly key: string
+  readonly actions: readonly ActionDef[]
+}
+
+/** The catalogue: area → group (for the editor) → action. New actions are added here only. */
+export const PERMISSION_AREAS = [
+  {
+    key: 'forms',
+    groups: [
+      { key: 'see', actions: [{ key: 'view', scopes: FORM }, { key: 'preview', scopes: FORM }] },
+      { key: 'create', actions: [{ key: 'create' }, { key: 'import' }, { key: 'duplicate', scopes: FORM }, { key: 'save_template', scopes: FORM }] },
+      { key: 'build', actions: [{ key: 'rename', scopes: FORM }, { key: 'edit', scopes: FORM }, { key: 'versions', scopes: FORM }] },
+      { key: 'share', actions: [{ key: 'share_view', scopes: FORM }, { key: 'share', scopes: FORM }, { key: 'availability', scopes: FORM }] },
+      {
+        key: 'lifecycle',
+        actions: [
+          { key: 'publish', scopes: FORM },
+          { key: 'close', scopes: FORM },
+          { key: 'archive', scopes: FORM },
+          { key: 'move', scopes: FORM },
+          { key: 'delete', scopes: FORM },
+          { key: 'purge', scopes: FORM },
+        ],
+      },
+    ],
+  },
+  { key: 'folders', groups: [{ key: 'folders', actions: [{ key: 'create' }, { key: 'edit', scopes: OWNED }, { key: 'delete', scopes: OWNED }, { key: 'access' }] }] },
+  // review = status, tags and notes; edit = correct submitted answers (owner, 2026-10-09)
+  { key: 'responses', groups: [{ key: 'responses', actions: [{ key: 'view' }, { key: 'review' }, { key: 'edit' }, { key: 'delete' }, { key: 'export' }] }] },
+  { key: 'resources', groups: [{ key: 'resources', actions: [{ key: 'manage' }] }] },
+  { key: 'analytics', groups: [{ key: 'analytics', actions: [{ key: 'view' }] }] },
+  { key: 'data', groups: [{ key: 'data', actions: [{ key: 'view' }, { key: 'query' }, { key: 'manage' }] }] },
+  { key: 'api', groups: [{ key: 'api', actions: [{ key: 'view' }, { key: 'manage' }] }] },
+  { key: 'people', groups: [{ key: 'people', actions: [{ key: 'view' }, { key: 'manage' }, { key: 'approve' }] }] },
+  { key: 'roles', groups: [{ key: 'roles', actions: [{ key: 'manage' }] }] },
+  { key: 'settings', groups: [{ key: 'settings', actions: [{ key: 'view' }, { key: 'manage' }] }] },
+  { key: 'audit', groups: [{ key: 'audit', actions: [{ key: 'view' }, { key: 'export' }] }] },
+  { key: 'ai', groups: [{ key: 'ai', actions: [{ key: 'use' }] }] },
+] as const satisfies readonly { key: string; groups: readonly GroupDef[] }[]
+
+type Area = (typeof PERMISSION_AREAS)[number]
+export type PermissionArea = Area['key']
+export type Permission = { [A in Area as A['key']]: `${A['key']}.${A['groups'][number]['actions'][number]['key']}` }[PermissionArea]
+/** What a role holds: each permission it has, with its scope. */
+export type Grants = Partial<Record<Permission, Scope>>
+
+export const ALL_PERMISSIONS = PERMISSION_AREAS.flatMap(area => area.groups.flatMap(group => group.actions.map(action => `${area.key}.${action.key}`))) as Permission[]
+const DEFS = new Map<string, readonly Scope[] | undefined>(
+  PERMISSION_AREAS.flatMap(area => area.groups.flatMap(group => group.actions.map(action => [`${area.key}.${action.key}`, (action as ActionDef).scopes] as const))),
+)
+/** The scopes an action offers (none = on / off). */
+export const scopesOf = (permission: string): readonly Scope[] | undefined => DEFS.get(permission)
+export const isPermission = (value: string): value is Permission => DEFS.has(value)
 
 /** Ids of the roles every workspace starts with. */
 export const OWNER_ROLE = 'owner'
 export const BUILT_IN_ROLES = ['owner', 'admin', 'member'] as const
 
+/** Everything, everywhere. */
+export const ALL_GRANTS = Object.fromEntries(ALL_PERMISSIONS.map(item => [item, 'all'])) as Grants
+const grant = (list: Permission[], scope: Scope = 'all') => Object.fromEntries(list.map(item => [item, scopesOf(item) ? scope : 'all'])) as Grants
+
 /** What the built-in roles start with (Admin and Member can be changed by owners; Owner can't). */
-export const DEFAULT_ROLE_PERMISSIONS: Record<(typeof BUILT_IN_ROLES)[number], Permission[]> = {
-  owner: ALL_PERMISSIONS,
-  admin: ALL_PERMISSIONS.filter(item => item !== 'roles.manage'),
-  member: ['forms.view', 'forms.create', 'forms.edit', 'forms.publish', 'responses.view', 'responses.review', 'responses.edit', 'responses.export', 'analytics.view', 'ai.use'],
+export const DEFAULT_ROLE_GRANTS: Record<(typeof BUILT_IN_ROLES)[number], Grants> = {
+  owner: ALL_GRANTS,
+  admin: grant(ALL_PERMISSIONS.filter(item => item !== 'roles.manage')),
+  member: {
+    ...grant(['forms.view', 'forms.preview', 'forms.duplicate', 'forms.save_template', 'forms.rename', 'forms.edit', 'forms.versions', 'forms.share_view', 'forms.share', 'forms.availability', 'forms.publish', 'forms.close', 'forms.archive', 'forms.move'], 'shared'),
+    ...grant(['forms.create', 'forms.import', 'folders.create']),
+    ...grant(['folders.edit', 'folders.delete'], 'own'),
+    ...grant(['responses.view', 'responses.review', 'responses.edit', 'responses.export', 'analytics.view', 'ai.use']),
+  },
 }
 
-/** Some permissions only make sense with another (editing needs viewing …): ticking one ticks these too. */
+/** Some actions only make sense with another (changing needs seeing …): granting one grants these too, as far as it reaches. */
 export const PERMISSION_NEEDS: Partial<Record<Permission, Permission[]>> = {
-  'forms.create': ['forms.view'],
+  'forms.preview': ['forms.view'],
+  'forms.duplicate': ['forms.view', 'forms.create'],
+  'forms.save_template': ['forms.view'],
+  'forms.rename': ['forms.view'],
   'forms.edit': ['forms.view'],
-  'forms.publish': ['forms.view', 'forms.edit'],
+  'forms.versions': ['forms.view', 'forms.edit'],
+  'forms.share_view': ['forms.view'],
+  'forms.share': ['forms.share_view'],
+  'forms.availability': ['forms.view'],
+  'forms.publish': ['forms.view'],
+  'forms.close': ['forms.view'],
+  'forms.archive': ['forms.view'],
+  'forms.move': ['forms.view'],
   'forms.delete': ['forms.view'],
-  'forms.all': ['forms.view'],
+  'forms.purge': ['forms.delete'],
   'responses.review': ['responses.view'],
   'responses.edit': ['responses.view'],
   'responses.delete': ['responses.view'],
@@ -55,19 +127,86 @@ export const PERMISSION_NEEDS: Partial<Record<Permission, Permission[]>> = {
   'settings.manage': ['settings.view'],
   'audit.export': ['audit.view'],
 }
-/** A set of permissions with everything they need added. */
-export function withNeeds(list: readonly string[]): Permission[] {
-  const out = new Set(list.filter((item): item is Permission => (ALL_PERMISSIONS as string[]).includes(item)))
+
+/** The widest scope an action offers that is not wider than `scope`. */
+function fit(permission: Permission, scope: Scope): Scope {
+  const offered = scopesOf(permission)
+  if (!offered) return 'all'
+  return offered.filter(item => SCOPE_RANK[item] <= SCOPE_RANK[scope]).at(-1) ?? offered[0]!
+}
+
+/** Grants cleaned up (unknown actions dropped, scopes fitted), with what they need added as far as they reach. */
+export function withNeeds(input: Readonly<Record<string, string | undefined>>): Grants {
+  const out: Grants = {}
+  for (const [key, value] of Object.entries(input)) if (isPermission(key) && value && value in SCOPE_RANK) out[key] = fit(key, value as Scope)
   for (let changed = true; changed; ) {
     changed = false
-    for (const item of [...out])
-      for (const need of PERMISSION_NEEDS[item] ?? [])
-        if (!out.has(need)) {
-          out.add(need)
+    for (const [item, scope] of Object.entries(out) as [Permission, Scope][])
+      for (const need of PERMISSION_NEEDS[item] ?? []) {
+        const wanted = fit(need, scope)
+        const has = out[need]
+        if (!has || SCOPE_RANK[has] < SCOPE_RANK[wanted]) {
+          out[need] = wanted
           changed = true
         }
+      }
   }
-  return ALL_PERMISSIONS.filter(item => out.has(item))
+  return Object.fromEntries(ALL_PERMISSIONS.filter(item => out[item]).map(item => [item, out[item]])) as Grants
+}
+
+/** Every action that needs this one, directly or through another. */
+export function dependentsOf(permission: Permission): Permission[] {
+  const out = new Set<Permission>()
+  for (let changed = true; changed; ) {
+    changed = false
+    for (const [item, needs] of Object.entries(PERMISSION_NEEDS) as [Permission, Permission[]][])
+      if (!out.has(item) && needs.some(need => need === permission || out.has(need))) {
+        out.add(item)
+        changed = true
+      }
+  }
+  return [...out]
+}
+
+/**
+ * One action changed in a role (the editor): what needs it follows, removed with it or held back to the
+ * same reach (edit can't reach further than view); what it needs is added.
+ */
+export function setGrant(grants: Grants, permission: Permission, scope: Scope | null): Grants {
+  const dependents = new Set(dependentsOf(permission))
+  // Removed: it and everything that needs it go
+  const next: Grants = scope ? { ...grants, [permission]: fit(permission, scope) } : (Object.fromEntries(Object.entries(grants).filter(([key]) => key !== permission && !dependents.has(key as Permission))) as Grants)
+  if (scope)
+    for (const item of dependents) {
+      const has = next[item]
+      if (has && SCOPE_RANK[has] > SCOPE_RANK[next[permission]!]) next[item] = fit(item, next[permission]!)
+    }
+  return withNeeds(next)
+}
+
+/** How much of the platform a role opens (0–1): each action weighed by its reach (own a third, shared two thirds, all whole). */
+export const reachOf = (grants: Grants) => Object.values(withNeeds(grants)).reduce((sum, scope) => sum + SCOPE_RANK[scope!] / 3, 0) / ALL_PERMISSIONS.length
+/** The areas a role opens at least one action in. */
+export const areasOf = (grants: Grants) => PERMISSION_AREAS.filter(area => area.groups.some(group => group.actions.some(action => grants[`${area.key}.${action.key}` as Permission]))).length
+
+/** A role saved before scopes (a list of permissions) as grants with the same effect (2026-10-10). */
+export function grantsFromList(list: readonly string[]): Grants {
+  const has = (item: string) => list.includes(item)
+  // Without "every form" a person worked on their own forms and those shared with them
+  const forms: Scope = has('forms.all') ? 'all' : 'shared'
+  const out: Record<string, Scope> = {}
+  const give = (items: string[], scope: Scope) => items.forEach(item => (out[item] = scope))
+  if (has('forms.view')) give(['forms.view', 'forms.preview', 'forms.share_view'], forms)
+  if (has('forms.create')) give(['forms.create', 'forms.import'], 'all')
+  if (has('forms.create')) give(['forms.duplicate'], forms)
+  if (has('forms.edit')) give(['forms.rename', 'forms.edit', 'forms.versions', 'forms.share', 'forms.availability', 'forms.close', 'forms.archive', 'forms.move', 'forms.save_template'], forms)
+  if (has('forms.publish')) give(['forms.publish'], forms)
+  if (has('forms.delete')) give(['forms.delete', 'forms.purge'], forms)
+  // Folders were part of "resources"; deciding who sees a folder goes with managing settings
+  if (has('resources.manage')) give(['folders.create', 'folders.edit', 'folders.delete'], 'all')
+  if (has('settings.manage')) give(['folders.access'], 'all')
+  for (const item of list) if (isPermission(item) && !item.startsWith('forms.') && !item.startsWith('folders.')) out[item] = 'all'
+  return withNeeds(out)
 }
 
 /**
@@ -94,14 +233,22 @@ export function permissionFor(method: string, path: string): Permission | null {
     [/^\/responses\/[^/]+\/files$/, 'responses.view'],
     [/^\/responses\/[^/]+$/, () => (m === 'DELETE' ? 'responses.delete' : read ? 'responses.view' : 'responses.review')],
     [/^\/responses(\/|$)/, r => (r ? 'responses.view' : 'responses.review')],
+    // Forms (F22 R2): the address says "works with forms"; each route then checks its own action on the form
+    // (rename, move, publish …) with the role's scope, the sharing and the folder.
+    [/^\/forms\/pass$/, null],
+    [/^\/forms\/import$/, 'forms.import'],
+    [/^\/forms\/[^/]+\/duplicate$/, 'forms.duplicate'],
     [/^\/forms\/[^/]+\/publish$/, 'forms.publish'],
-    [/^\/forms\/(import|[^/]+\/duplicate)$/, 'forms.create'],
-    [/^\/forms\/trash$/, 'forms.delete'],
+    [/^\/forms\/trash$/, 'forms.purge'],
     [/^\/forms$/, r => (r ? 'forms.view' : 'forms.create')],
-    [/^\/forms\/[^/]+$/, () => (m === 'DELETE' ? 'forms.delete' : read ? 'forms.view' : 'forms.edit')],
-    [/^\/forms(\/|$)/, r => (r ? 'forms.view' : 'forms.edit')],
-    // Templates, themes, landing pages, lists, saved fields, folders: everyone reads them; changes need resources.manage
-    [/^\/(templates|themes|page-designs|option-lists|field-library|folders)(\/|$)/, r => (r || /\/translate-content$/.test(p) ? null : 'resources.manage')],
+    [/^\/forms(\/|$)/, 'forms.view'],
+    // Folders: creating, changing (own · all), deleting (own · all), deciding who sees them; everyone reads the ones they may see
+    [/^\/folders\/[^/]+\/access$/, 'folders.access'],
+    [/^\/folders$/, r => (r ? null : 'folders.create')],
+    [/^\/folders\/[^/]+$/, () => (read ? null : m === 'DELETE' ? 'folders.delete' : 'folders.edit')],
+    [/^\/folders(\/|$)/, null],
+    // Templates, themes, landing pages, lists, saved fields: everyone reads them; changes need resources.manage
+    [/^\/(templates|themes|page-designs|option-lists|field-library)(\/|$)/, r => (r || /\/translate-content$/.test(p) ? null : 'resources.manage')],
     [/^\/analytics(\/|$)/, 'analytics.view'],
     // Data sources
     [/^\/datasources\/[^/]+\/(query|explorer\/exports)/, 'data.query'],

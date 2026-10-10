@@ -72,7 +72,7 @@ function submit() {
           />
         </form>
         <UButton
-          v-else
+          v-else-if="useCan().can('folders.create')"
           :label="t('forms.folders.new')"
           icon="i-lucide-folder-plus"
           color="neutral"

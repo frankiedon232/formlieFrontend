@@ -10,7 +10,7 @@ import type { FormSchemaV1 } from '#shared/utils/forms/schema'
 import { newPublicKey } from '#shared/utils/urls/public'
 import { loadPersisted, savePersisted } from '../core/persist'
 import { MOCK_FOLDERS, MOCK_FORMS, SEED_TEMPLATES, seedBaseName } from './forms'
-import { SEEDED_TENANT_IDS, type MockTenant } from './tenants'
+import { SEEDED_TENANT_IDS, type MockTenant, MOCK_USERS } from './tenants'
 import { fillLargeLists } from './largeLists'
 import { libraryOf } from './libraryStore'
 
@@ -82,6 +82,12 @@ export function formsOf(tenant: MockTenant): TenantForms {
     for (const form of store.forms)
       if (!form.template_key && !form.schema) form.template_key = SEED_TEMPLATES[seedBaseName(form.name)] ?? null
     store.templatesSeeded = true
+    saveForms()
+  }
+  // Folders made before F22 R2 have no maker: the workspace's owner made them
+  if (store.folders.some(folder => folder.created_by === undefined)) {
+    const owner = MOCK_USERS.find(user => user.tenant_id === tenant.id && user.role === 'owner')
+    for (const folder of store.folders) folder.created_by ??= owner ? { id: owner.id, name: `${owner.first_name} ${owner.last_name}`.trim() } : null
     saveForms()
   }
   // Stores saved before F10: give every form its public key once.

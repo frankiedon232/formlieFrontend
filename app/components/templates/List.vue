@@ -99,17 +99,15 @@ async function remove(template: TemplateSummary) {
   })
   if (ok) await act(template, () => templates.remove(template))
 }
+// Using a template makes a form (Create forms); copying or deleting templates changes resources (F22 R2)
+const { can } = useCan()
 const rowActions = (template: TemplateSummary): DropdownMenuItem[][] => [
   [
-    { label: t('templates.use'), icon: 'i-lucide-file-plus', onSelect: () => startUse(template) },
+    ...(can('forms.create') ? [{ label: t('templates.use'), icon: 'i-lucide-file-plus', onSelect: () => startUse(template) }] : []),
     { label: t('templates.open'), icon: 'i-lucide-eye', to: `/templates/${template.key}` },
-    {
-      label: t('templates.duplicate'),
-      icon: 'i-lucide-copy',
-      onSelect: () => void act(template, () => templates.duplicate(template)),
-    },
+    ...(can('resources.manage') ? [{ label: t('templates.duplicate'), icon: 'i-lucide-copy', onSelect: () => void act(template, () => templates.duplicate(template)) }] : []),
   ],
-  ...(template.source === 'workspace'
+  ...(template.source === 'workspace' && can('resources.manage')
     ? [
         [
           {

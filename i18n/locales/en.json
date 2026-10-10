@@ -1118,7 +1118,8 @@
       "users_requested": "Asked to join",
       "users_approved": "Approved",
       "users_rejected": "Request rejected",
-      "users_signup_link_changed": "Sign-up link changed"
+      "users_signup_link_changed": "Sign-up link changed",
+      "forms_folder_access_changed": "Folder access changed"
     },
     "detail": {
       "who": "Who",
@@ -5075,7 +5076,9 @@
       "answeringDesc": "Who can fill it in and how they reach it, for everyone you send the form to.",
       "team": "Your team",
       "teamDesc": "Staff in your workspace who build and manage this form. This doesn’t change who can fill it in."
-    }
+    },
+    "readOnly": "You can see these settings",
+    "readOnlyDesc": "Your role doesn't let you change how this form is shared."
   },
   "preview": {
     "crumb": "Preview",
@@ -5536,7 +5539,22 @@
     "pin": "Pin to sidebar",
     "unpin": "Unpin from sidebar",
     "pinFull": "Up to 5 folders can be pinned",
-    "hex": "Hex colour"
+    "hex": "Hex colour",
+    "access": {
+      "menu": "Who can see it",
+      "title": "Who can see {name}",
+      "desc": "A folder people can't see hides its forms and their responses from them everywhere.",
+      "everyone": "Everyone",
+      "everyoneHint": "Everyone whose role opens forms.",
+      "restricted": "Only chosen people",
+      "restrictedHint": "Pick roles, departments or people. Owners and people who decide folder access always see it.",
+      "roles": "Roles",
+      "people": "People",
+      "note": "Anyone who matches one of these sees the folder.",
+      "nobody": "Nobody chosen yet: only owners and people who decide folder access will see it.",
+      "saved": "Folder access saved",
+      "badge": "Restricted"
+    }
   },
   "destinations": {
     "crumb": "Response storage",
@@ -7876,12 +7894,13 @@
       "roles": "Roles",
       "settings": "Settings",
       "audit": "Audit trail",
-      "ai": "AI assistant"
+      "ai": "AI assistant",
+      "folders": "Folders"
     },
     "areaHint": {
-      "forms": "Building, publishing and deleting forms.",
+      "forms": "Creating, building, sharing, publishing and deleting forms.",
       "responses": "Reading, changing and exporting answers.",
-      "resources": "Templates, themes, landing pages, lists, folders and saved fields.",
+      "resources": "Templates, themes, landing pages, lists and saved fields.",
       "analytics": "The analytics pages.",
       "data": "Database connections, the explorer and queries.",
       "api": "Services, endpoints, tokens and webhooks.",
@@ -7889,7 +7908,8 @@
       "roles": "Creating and changing roles.",
       "settings": "The workspace's settings.",
       "audit": "Who did what, and when.",
-      "ai": "Using the AI assistant."
+      "ai": "Using the AI assistant.",
+      "folders": "Folders and who can see them."
     },
     "action": {
       "view": "View",
@@ -7897,7 +7917,6 @@
       "edit": "Edit",
       "publish": "Publish",
       "delete": "Delete",
-      "all": "Every form",
       "export": "Export",
       "manage": "Manage",
       "query": "Run queries",
@@ -7906,12 +7925,11 @@
       "review": "Review"
     },
     "perm": {
-      "forms_view": "See forms and their builder.",
-      "forms_create": "Create, import and duplicate forms.",
-      "forms_edit": "Change forms: questions, design, sharing.",
-      "forms_publish": "Publish forms and open or close them.",
-      "forms_delete": "Delete forms and empty the trash.",
-      "forms_all": "Every form in the workspace, not only those shared with them.",
+      "forms_view": "Find forms in lists and open their overview.",
+      "forms_create": "Start new forms, blank or from a template.",
+      "forms_edit": "Change questions, pages, logic, design and tags.",
+      "forms_publish": "Put the latest changes live.",
+      "forms_delete": "Move a form to Trash and get it back.",
       "responses_view": "Read responses.",
       "responses_edit": "Correct submitted answers.",
       "responses_delete": "Delete responses.",
@@ -7932,7 +7950,70 @@
       "audit_view": "See the audit trail.",
       "audit_export": "Export the audit trail.",
       "ai_use": "Use the AI assistant.",
-      "responses_review": "Change status, tags and notes."
+      "responses_review": "Change status, tags and notes.",
+      "forms_preview": "Look at the form as people will fill it in.",
+      "forms_import": "Bring in a form from a file.",
+      "forms_duplicate": "Make a copy of a form.",
+      "forms_save_template": "Turn a form into a workspace template.",
+      "forms_rename": "Change a form's name.",
+      "forms_versions": "See earlier versions and bring one back.",
+      "forms_share_view": "See links, access and who the form is shared with.",
+      "forms_share": "Change links, access, embedding and who the form is shared with.",
+      "forms_availability": "Set when a form opens and closes.",
+      "forms_close": "Take a form offline and bring it back.",
+      "forms_archive": "Put a form away and bring it back.",
+      "forms_move": "Put a form in another folder.",
+      "forms_purge": "Remove a form for good, and empty the Trash.",
+      "folders_create": "Make new folders.",
+      "folders_edit": "Change a folder's name and colour.",
+      "folders_delete": "Remove empty folders.",
+      "folders_access": "Choose who can see each folder, and see every folder."
+    },
+    "setArea": "Set the area",
+    "searchActions": "Search actions",
+    "noActions": "No action matches",
+    "scope": {
+      "none": "None",
+      "own": "Own",
+      "shared": "Shared",
+      "all": "All"
+    },
+    "scopeHint": {
+      "none": "Not at all, not even on what they made",
+      "own": "Only on what they made",
+      "shared": "On their own forms and forms shared with them",
+      "all": "On everything in the workspace"
+    },
+    "group": {
+      "forms_see": "Seeing",
+      "forms_create": "Creating",
+      "forms_build": "Building",
+      "forms_share": "Sharing",
+      "forms_lifecycle": "Publishing and lifecycle"
+    },
+    "label": {
+      "forms_view": "See forms",
+      "forms_preview": "Preview",
+      "forms_create": "Create forms",
+      "forms_import": "Import forms",
+      "forms_duplicate": "Duplicate",
+      "forms_save_template": "Save as template",
+      "forms_rename": "Rename",
+      "forms_edit": "Edit questions, logic and design",
+      "forms_versions": "Versions",
+      "forms_share_view": "See share settings",
+      "forms_share": "Change share settings",
+      "forms_availability": "Availability",
+      "forms_publish": "Publish",
+      "forms_close": "Unpublish, close and reopen",
+      "forms_archive": "Archive and unarchive",
+      "forms_move": "Move to a folder",
+      "forms_delete": "Move to Trash and restore",
+      "forms_purge": "Delete forever",
+      "folders_create": "Create folders",
+      "folders_edit": "Rename and recolour",
+      "folders_delete": "Delete folders",
+      "folders_access": "Decide who sees folders"
     }
   }
 }

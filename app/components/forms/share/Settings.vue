@@ -13,7 +13,7 @@ const { t } = useI18n()
 const api = useApi()
 const toast = useToast()
 const { handle } = useErrorHandler()
-const { form, rowVersion, canEdit } = props.session
+const { form, rowVersion } = props.session
 
 const settings = ref<FormShareSettings | null>(null)
 const loading = ref(true)
@@ -85,7 +85,9 @@ const dirty = computed(() => {
 })
 const passwordMissing = computed(() => draft.access === 'password' && !settings.value?.has_password && draft.password.length < 8)
 const embedMissing = computed(() => draft.embedLimited && !draft.domains.length)
-const canSave = computed(() => canEdit.value && dirty.value && linkOk.value && !passwordMissing.value && !embedMissing.value && (!draft.password || draft.password.length >= 8))
+// Seeing share settings and changing them are separate permissions (F22 R2)
+const canChange = computed(() => formCan(form.value, 'share'))
+const canSave = computed(() => canChange.value && dirty.value && linkOk.value && !passwordMissing.value && !embedMissing.value && (!draft.password || draft.password.length >= 8))
 
 /** Keeps the rest of the editor in step: the form's version and what the overview / links show. */
 function applyToSession(next: FormShareSettings) {
@@ -156,7 +158,9 @@ onBeforeRouteLeave(async () => (dirty.value ? await useConfirm()({ title: t('sha
   />
   <div v-else class="flex flex-col gap-4 pb-20">
     <div class="grid items-start gap-4 lg:grid-cols-[minmax(0,1fr)_22rem]">
-      <div class="flex min-w-0 flex-col gap-4">
+      <!-- Without "change share settings" everything here is shown but locked (a disabled fieldset locks every control in it) -->
+      <fieldset :disabled="!canChange" class="flex min-w-0 flex-col gap-4">
+        <UAlert v-if="!canChange" icon="i-lucide-lock" color="neutral" variant="subtle" :title="t('share.readOnly')" :description="t('share.readOnlyDesc')" />
         <!-- Two worlds, kept apart (owner, 2026-10-04): the people the form is sent to, and your team. -->
         <FormsShareSection icon="i-lucide-send" :title="t('share.section.answering')" :description="t('share.section.answeringDesc')" />
         <FormsShareChannelsCard v-model:draft="draft" />
@@ -171,13 +175,13 @@ onBeforeRouteLeave(async () => (dirty.value ? await useConfirm()({ title: t('sha
         <FormsShareSeoCard v-if="draft.channels.includes('link')" v-model:draft="draft" :settings="settings" :form="form" />
         <FormsShareSection icon="i-lucide-users" :title="t('share.section.team')" :description="t('share.section.teamDesc')" class="mt-4" />
         <FormsSharePeopleCard v-model:draft="draft" :settings="settings" />
-      </div>
+      </fieldset>
       <FormsOverviewShare :form="form" class="lg:sticky lg:top-4" />
     </div>
 
     <!-- Unsaved changes: one bar for the whole page. -->
     <Transition enter-from-class="translate-y-4 opacity-0" leave-to-class="translate-y-4 opacity-0" enter-active-class="transition" leave-active-class="transition">
-      <div v-if="dirty" class="sticky bottom-3 z-10 mx-auto flex w-full max-w-2xl flex-wrap items-center justify-between gap-2 rounded-lg border border-default bg-default/95 px-3 py-2 shadow-lg backdrop-blur" role="status">
+      <div v-if="dirty && canChange" class="sticky bottom-3 z-10 mx-auto flex w-full max-w-2xl flex-wrap items-center justify-between gap-2 rounded-lg border border-default bg-default/95 px-3 py-2 shadow-lg backdrop-blur" role="status">
         <span class="flex items-center gap-2 text-sm text-highlighted">
           <UIcon name="i-lucide-circle-dot" class="size-4 text-warning" />{{ passwordMissing ? t('share.needPassword') : embedMissing ? t('share.embed.needSite') : t('share.unsaved') }}
         </span>

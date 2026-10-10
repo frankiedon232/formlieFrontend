@@ -58,7 +58,7 @@ defineShortcuts({ n: () => can('forms.create') && navigateTo('/forms/new') })
         @click="foldersOpen = true"
       />
       <UButton
-        v-if="can('forms.create')"
+        v-if="can('forms.import')"
         icon="i-lucide-upload"
         :label="t('forms.import')"
         color="neutral"

@@ -1118,7 +1118,8 @@
       "users_requested": "Pediu para aderir",
       "users_approved": "Aprovado",
       "users_rejected": "Pedido rejeitado",
-      "users_signup_link_changed": "Link de registo alterado"
+      "users_signup_link_changed": "Link de registo alterado",
+      "forms_folder_access_changed": "Acesso à pasta alterado"
     },
     "detail": {
       "who": "Quem",
@@ -5075,7 +5076,9 @@
       "answeringDesc": "Quem o pode preencher e como lá chega. Aplica-se a todas as pessoas a quem envia o formulário.",
       "team": "A sua equipa",
       "teamDesc": "Pessoal da sua área de trabalho que cria e gere este formulário. Não altera quem o pode preencher."
-    }
+    },
+    "readOnly": "Você pode ver estas configurações",
+    "readOnlyDesc": "Seu perfil não permite alterar como este formulário é compartilhado."
   },
   "preview": {
     "crumb": "Pré-visualização",
@@ -5536,7 +5539,22 @@
     "pin": "Fixar na barra lateral",
     "unpin": "Desafixar da barra lateral",
     "pinFull": "É possível fixar até 5 pastas",
-    "hex": "Cor hex"
+    "hex": "Cor hex",
+    "access": {
+      "menu": "Quem pode ver",
+      "title": "Quem pode ver {name}",
+      "desc": "Uma pasta que as pessoas não podem ver oculta seus formulários e respostas delas em todo lugar.",
+      "everyone": "Todos",
+      "everyoneHint": "Todas as pessoas cujo perfil abre formulários.",
+      "restricted": "Somente pessoas escolhidas",
+      "restrictedHint": "Escolha perfis, departamentos ou pessoas. Proprietários e quem decide o acesso às pastas sempre a veem.",
+      "roles": "Perfis",
+      "people": "Pessoas",
+      "note": "Quem corresponder a qualquer um destes vê a pasta.",
+      "nobody": "Ninguém escolhido ainda: somente proprietários e quem decide o acesso às pastas a verão.",
+      "saved": "Acesso à pasta salvo",
+      "badge": "Restrita"
+    }
   },
   "destinations": {
     "crumb": "Armazenamento de respostas",
@@ -7876,12 +7894,13 @@
       "roles": "Funções",
       "settings": "Configurações",
       "audit": "Trilha de auditoria",
-      "ai": "Assistente de IA"
+      "ai": "Assistente de IA",
+      "folders": "Pastas"
     },
     "areaHint": {
-      "forms": "Criar, publicar e excluir formulários.",
+      "forms": "Criar, montar, compartilhar, publicar e excluir formulários.",
       "responses": "Ler, alterar e exportar respostas.",
-      "resources": "Modelos, temas, páginas de destino, listas, pastas e campos salvos.",
+      "resources": "Modelos, temas, páginas de destino, listas e campos salvos.",
       "analytics": "As páginas de análises.",
       "data": "Conexões de banco de dados, o explorador e consultas.",
       "api": "Serviços, endpoints, tokens e webhooks.",
@@ -7889,7 +7908,8 @@
       "roles": "Criar e alterar funções.",
       "settings": "As configurações do espaço de trabalho.",
       "audit": "Quem fez o quê e quando.",
-      "ai": "Usar o assistente de IA."
+      "ai": "Usar o assistente de IA.",
+      "folders": "Pastas e quem pode vê-las."
     },
     "action": {
       "view": "Ver",
@@ -7897,7 +7917,6 @@
       "edit": "Editar",
       "publish": "Publicar",
       "delete": "Excluir",
-      "all": "Todos os formulários",
       "export": "Exportar",
       "manage": "Gerenciar",
       "query": "Executar consultas",
@@ -7906,12 +7925,11 @@
       "review": "Revisar"
     },
     "perm": {
-      "forms_view": "Ver formulários e o editor deles.",
-      "forms_create": "Criar, importar e duplicar formulários.",
-      "forms_edit": "Alterar formulários: perguntas, design, compartilhamento.",
-      "forms_publish": "Publicar formulários e abri-los ou fechá-los.",
-      "forms_delete": "Excluir formulários e esvaziar a lixeira.",
-      "forms_all": "Todos os formulários do espaço de trabalho, não só os compartilhados com a pessoa.",
+      "forms_view": "Encontrar formulários nas listas e abrir a visão geral deles.",
+      "forms_create": "Iniciar novos formulários, em branco ou a partir de um modelo.",
+      "forms_edit": "Alterar perguntas, páginas, lógica, design e etiquetas.",
+      "forms_publish": "Colocar as últimas alterações no ar.",
+      "forms_delete": "Mover um formulário para a Lixeira e recuperá-lo.",
       "responses_view": "Ler respostas.",
       "responses_edit": "Corrigir as respostas enviadas.",
       "responses_delete": "Excluir respostas.",
@@ -7932,7 +7950,70 @@
       "audit_view": "Ver a trilha de auditoria.",
       "audit_export": "Exportar a trilha de auditoria.",
       "ai_use": "Usar o assistente de IA.",
-      "responses_review": "Alterar status, etiquetas e notas."
+      "responses_review": "Alterar status, etiquetas e notas.",
+      "forms_preview": "Ver o formulário como as pessoas vão preenchê-lo.",
+      "forms_import": "Trazer um formulário de um arquivo.",
+      "forms_duplicate": "Fazer uma cópia de um formulário.",
+      "forms_save_template": "Transformar um formulário em modelo do espaço de trabalho.",
+      "forms_rename": "Mudar o nome de um formulário.",
+      "forms_versions": "Ver versões anteriores e restaurar uma.",
+      "forms_share_view": "Ver links, acesso e com quem o formulário é compartilhado.",
+      "forms_share": "Alterar links, acesso, incorporação e com quem o formulário é compartilhado.",
+      "forms_availability": "Definir quando um formulário abre e fecha.",
+      "forms_close": "Tirar um formulário do ar e colocá-lo de volta.",
+      "forms_archive": "Guardar um formulário e trazê-lo de volta.",
+      "forms_move": "Colocar um formulário em outra pasta.",
+      "forms_purge": "Remover um formulário de vez e esvaziar a Lixeira.",
+      "folders_create": "Criar novas pastas.",
+      "folders_edit": "Mudar o nome e a cor de uma pasta.",
+      "folders_delete": "Remover pastas vazias.",
+      "folders_access": "Escolher quem pode ver cada pasta e ver todas as pastas."
+    },
+    "setArea": "Definir a área",
+    "searchActions": "Pesquisar ações",
+    "noActions": "Nenhuma ação corresponde",
+    "scope": {
+      "none": "Nenhum",
+      "own": "Próprios",
+      "shared": "Compartilhado",
+      "all": "Todos"
+    },
+    "scopeHint": {
+      "none": "Nada, nem mesmo no que criaram",
+      "own": "Somente no que criaram",
+      "shared": "Nos próprios formulários e nos compartilhados com elas",
+      "all": "Em tudo no espaço de trabalho"
+    },
+    "group": {
+      "forms_see": "Visualização",
+      "forms_create": "Criação",
+      "forms_build": "Montagem",
+      "forms_share": "Compartilhamento",
+      "forms_lifecycle": "Publicação e ciclo de vida"
+    },
+    "label": {
+      "forms_view": "Ver formulários",
+      "forms_preview": "Pré-visualizar",
+      "forms_create": "Criar formulários",
+      "forms_import": "Importar formulários",
+      "forms_duplicate": "Duplicar",
+      "forms_save_template": "Salvar como modelo",
+      "forms_rename": "Renomear",
+      "forms_edit": "Editar perguntas, lógica e design",
+      "forms_versions": "Versões",
+      "forms_share_view": "Ver configurações de compartilhamento",
+      "forms_share": "Alterar configurações de compartilhamento",
+      "forms_availability": "Disponibilidade",
+      "forms_publish": "Publicar",
+      "forms_close": "Despublicar, encerrar e reabrir",
+      "forms_archive": "Arquivar e desarquivar",
+      "forms_move": "Mover para uma pasta",
+      "forms_delete": "Mover para a Lixeira e restaurar",
+      "forms_purge": "Excluir permanentemente",
+      "folders_create": "Criar pastas",
+      "folders_edit": "Renomear e mudar a cor",
+      "folders_delete": "Excluir pastas",
+      "folders_access": "Decidir quem vê as pastas"
     }
   }
 }

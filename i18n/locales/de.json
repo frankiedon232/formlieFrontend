@@ -1118,7 +1118,8 @@
       "users_requested": "Beitritt angefragt",
       "users_approved": "Freigegeben",
       "users_rejected": "Anfrage abgelehnt",
-      "users_signup_link_changed": "Registrierungslink geändert"
+      "users_signup_link_changed": "Registrierungslink geändert",
+      "forms_folder_access_changed": "Ordnerzugriff geändert"
     },
     "detail": {
       "who": "Wer",
@@ -5075,7 +5076,9 @@
       "answeringDesc": "Wer es ausfüllen kann und wie man es erreicht, für alle, denen Sie das Formular schicken.",
       "team": "Ihr Team",
       "teamDesc": "Mitarbeitende Ihres Arbeitsbereichs, die dieses Formular erstellen und verwalten. Das ändert nicht, wer es ausfüllen kann."
-    }
+    },
+    "readOnly": "Sie können diese Einstellungen sehen",
+    "readOnlyDesc": "Ihre Rolle erlaubt es Ihnen nicht, die Freigabe dieses Formulars zu ändern."
   },
   "preview": {
     "crumb": "Vorschau",
@@ -5536,7 +5539,22 @@
     "pin": "In der Seitenleiste anheften",
     "unpin": "Aus der Seitenleiste lösen",
     "pinFull": "Bis zu 5 Ordner lassen sich anheften",
-    "hex": "Hex-Farbe"
+    "hex": "Hex-Farbe",
+    "access": {
+      "menu": "Wer es sehen kann",
+      "title": "Wer {name} sehen kann",
+      "desc": "Ein Ordner, den Personen nicht sehen können, verbirgt seine Formulare und deren Antworten überall vor ihnen.",
+      "everyone": "Alle",
+      "everyoneHint": "Alle, deren Rolle Formulare öffnet.",
+      "restricted": "Nur ausgewählte Personen",
+      "restrictedHint": "Wählen Sie Rollen, Abteilungen oder Personen. Eigentümer und Personen, die über den Ordnerzugriff entscheiden, sehen ihn immer.",
+      "roles": "Rollen",
+      "people": "Personen",
+      "note": "Wer zu einer dieser Auswahlen passt, sieht den Ordner.",
+      "nobody": "Noch niemand ausgewählt: Nur Eigentümer und Personen, die über den Ordnerzugriff entscheiden, sehen ihn.",
+      "saved": "Ordnerzugriff gespeichert",
+      "badge": "Eingeschränkt"
+    }
   },
   "destinations": {
     "crumb": "Antwortspeicher",
@@ -7876,12 +7894,13 @@
       "roles": "Rollen",
       "settings": "Einstellungen",
       "audit": "Audit-Protokoll",
-      "ai": "KI-Assistent"
+      "ai": "KI-Assistent",
+      "folders": "Ordner"
     },
     "areaHint": {
-      "forms": "Formulare erstellen, veröffentlichen und löschen.",
+      "forms": "Formulare erstellen, gestalten, teilen, veröffentlichen und löschen.",
       "responses": "Antworten lesen, ändern und exportieren.",
-      "resources": "Vorlagen, Designs, Landingpages, Listen, Ordner und gespeicherte Felder.",
+      "resources": "Vorlagen, Designs, Landingpages, Listen und gespeicherte Felder.",
       "analytics": "Die Analyseseiten.",
       "data": "Datenbankverbindungen, der Explorer und Abfragen.",
       "api": "Dienste, Endpunkte, Tokens und Webhooks.",
@@ -7889,7 +7908,8 @@
       "roles": "Rollen erstellen und ändern.",
       "settings": "Die Einstellungen des Arbeitsbereichs.",
       "audit": "Wer wann was getan hat.",
-      "ai": "Den KI-Assistenten nutzen."
+      "ai": "Den KI-Assistenten nutzen.",
+      "folders": "Ordner und wer sie sehen kann."
     },
     "action": {
       "view": "Ansehen",
@@ -7897,7 +7917,6 @@
       "edit": "Bearbeiten",
       "publish": "Veröffentlichen",
       "delete": "Löschen",
-      "all": "Jedes Formular",
       "export": "Exportieren",
       "manage": "Verwalten",
       "query": "Abfragen ausführen",
@@ -7906,12 +7925,11 @@
       "review": "Prüfen"
     },
     "perm": {
-      "forms_view": "Formulare und ihren Builder ansehen.",
-      "forms_create": "Formulare erstellen, importieren und duplizieren.",
-      "forms_edit": "Formulare ändern: Fragen, Design, Freigabe.",
-      "forms_publish": "Formulare veröffentlichen sowie öffnen oder schließen.",
-      "forms_delete": "Formulare löschen und den Papierkorb leeren.",
-      "forms_all": "Jedes Formular im Arbeitsbereich, nicht nur die mit ihnen geteilten.",
+      "forms_view": "Formulare in Listen finden und ihre Übersicht öffnen.",
+      "forms_create": "Neue Formulare beginnen, leer oder aus einer Vorlage.",
+      "forms_edit": "Fragen, Seiten, Logik, Design und Tags ändern.",
+      "forms_publish": "Die neuesten Änderungen live schalten.",
+      "forms_delete": "Ein Formular in den Papierkorb verschieben und zurückholen.",
       "responses_view": "Antworten lesen.",
       "responses_edit": "Gesendete Antworten korrigieren.",
       "responses_delete": "Antworten löschen.",
@@ -7932,7 +7950,70 @@
       "audit_view": "Das Audit-Protokoll ansehen.",
       "audit_export": "Das Audit-Protokoll exportieren.",
       "ai_use": "Den KI-Assistenten nutzen.",
-      "responses_review": "Status, Schlagwörter und Notizen ändern."
+      "responses_review": "Status, Schlagwörter und Notizen ändern.",
+      "forms_preview": "Das Formular so ansehen, wie Personen es ausfüllen werden.",
+      "forms_import": "Ein Formular aus einer Datei importieren.",
+      "forms_duplicate": "Eine Kopie eines Formulars anlegen.",
+      "forms_save_template": "Ein Formular in eine Vorlage des Arbeitsbereichs verwandeln.",
+      "forms_rename": "Den Namen eines Formulars ändern.",
+      "forms_versions": "Frühere Versionen ansehen und eine wiederherstellen.",
+      "forms_share_view": "Links, Zugriff und die Personen sehen, für die das Formular freigegeben ist.",
+      "forms_share": "Links, Zugriff, Einbettung und die Personen ändern, für die das Formular freigegeben ist.",
+      "forms_availability": "Festlegen, wann ein Formular öffnet und schließt.",
+      "forms_close": "Ein Formular offline nehmen und wieder verfügbar machen.",
+      "forms_archive": "Ein Formular ablegen und wieder hervorholen.",
+      "forms_move": "Ein Formular in einen anderen Ordner legen.",
+      "forms_purge": "Ein Formular endgültig entfernen und den Papierkorb leeren.",
+      "folders_create": "Neue Ordner anlegen.",
+      "folders_edit": "Name und Farbe eines Ordners ändern.",
+      "folders_delete": "Leere Ordner entfernen.",
+      "folders_access": "Festlegen, wer welchen Ordner sehen kann, und alle Ordner sehen."
+    },
+    "setArea": "Bereich festlegen",
+    "searchActions": "Aktionen suchen",
+    "noActions": "Keine Aktion passt",
+    "scope": {
+      "none": "Keine",
+      "own": "Eigene",
+      "shared": "Geteilt",
+      "all": "Alle"
+    },
+    "scopeHint": {
+      "none": "Gar nicht, auch nicht bei selbst Erstelltem",
+      "own": "Nur bei selbst Erstelltem",
+      "shared": "Bei eigenen Formularen und mit ihnen geteilten Formularen",
+      "all": "Bei allem im Arbeitsbereich"
+    },
+    "group": {
+      "forms_see": "Ansehen",
+      "forms_create": "Erstellen",
+      "forms_build": "Gestalten",
+      "forms_share": "Teilen",
+      "forms_lifecycle": "Veröffentlichung und Lebenszyklus"
+    },
+    "label": {
+      "forms_view": "Formulare sehen",
+      "forms_preview": "Vorschau",
+      "forms_create": "Formulare erstellen",
+      "forms_import": "Formulare importieren",
+      "forms_duplicate": "Duplizieren",
+      "forms_save_template": "Als Vorlage speichern",
+      "forms_rename": "Umbenennen",
+      "forms_edit": "Fragen, Logik und Design bearbeiten",
+      "forms_versions": "Versionen",
+      "forms_share_view": "Freigabeeinstellungen ansehen",
+      "forms_share": "Freigabeeinstellungen ändern",
+      "forms_availability": "Verfügbarkeit",
+      "forms_publish": "Veröffentlichen",
+      "forms_close": "Veröffentlichung aufheben, schließen und wieder öffnen",
+      "forms_archive": "Archivieren und Archivierung aufheben",
+      "forms_move": "In einen Ordner verschieben",
+      "forms_delete": "In den Papierkorb verschieben und wiederherstellen",
+      "forms_purge": "Endgültig löschen",
+      "folders_create": "Ordner erstellen",
+      "folders_edit": "Umbenennen und umfärben",
+      "folders_delete": "Ordner löschen",
+      "folders_access": "Entscheiden, wer Ordner sieht"
     }
   }
 }

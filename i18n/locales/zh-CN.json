@@ -1118,7 +1118,8 @@
       "users_requested": "申请加入",
       "users_approved": "已批准",
       "users_rejected": "申请已拒绝",
-      "users_signup_link_changed": "注册链接已更改"
+      "users_signup_link_changed": "注册链接已更改",
+      "forms_folder_access_changed": "文件夹访问权限已更改"
     },
     "detail": {
       "who": "谁",
@@ -5075,7 +5076,9 @@
       "answeringDesc": "谁可以填写以及如何打开。适用于您发送表单的所有人。",
       "team": "您的团队",
       "teamDesc": "创建和管理此表单的工作区成员。不会改变谁可以填写。"
-    }
+    },
+    "readOnly": "您可以查看这些设置",
+    "readOnlyDesc": "您的角色无法更改此表单的共享方式。"
   },
   "preview": {
     "crumb": "预览",
@@ -5536,7 +5539,22 @@
     "pin": "固定到侧边栏",
     "unpin": "从侧边栏取消固定",
     "pinFull": "最多可固定 5 个文件夹",
-    "hex": "十六进制颜色"
+    "hex": "十六进制颜色",
+    "access": {
+      "menu": "谁可以查看",
+      "title": "谁可以查看 {name}",
+      "desc": "人们看不到的文件夹，会在所有位置对他们隐藏其中的表单及回复。",
+      "everyone": "所有人",
+      "everyoneHint": "角色可打开表单的所有人。",
+      "restricted": "仅选定的人",
+      "restrictedHint": "选择角色、部门或成员。所有者和决定文件夹访问权限的人始终可以看到。",
+      "roles": "角色",
+      "people": "成员",
+      "note": "符合其中任一条件的人都能看到该文件夹。",
+      "nobody": "尚未选择任何人：只有所有者和决定文件夹访问权限的人可以看到。",
+      "saved": "文件夹访问权限已保存",
+      "badge": "受限"
+    }
   },
   "destinations": {
     "crumb": "回复存储",
@@ -7876,12 +7894,13 @@
       "roles": "角色",
       "settings": "设置",
       "audit": "审计日志",
-      "ai": "AI 助手"
+      "ai": "AI 助手",
+      "folders": "文件夹"
     },
     "areaHint": {
-      "forms": "创建、发布和删除表单。",
+      "forms": "创建、搭建、共享、发布和删除表单。",
       "responses": "阅读、更改和导出回复。",
-      "resources": "模板、主题、落地页、列表、文件夹和已保存字段。",
+      "resources": "模板、主题、落地页、列表和已保存的字段。",
       "analytics": "分析页面。",
       "data": "数据库连接、浏览器和查询。",
       "api": "服务、端点、令牌和 Webhook。",
@@ -7889,7 +7908,8 @@
       "roles": "创建和更改角色。",
       "settings": "工作区设置。",
       "audit": "谁在何时做了什么。",
-      "ai": "使用 AI 助手。"
+      "ai": "使用 AI 助手。",
+      "folders": "文件夹及可以查看它们的人。"
     },
     "action": {
       "view": "查看",
@@ -7897,7 +7917,6 @@
       "edit": "编辑",
       "publish": "发布",
       "delete": "删除",
-      "all": "所有表单",
       "export": "导出",
       "manage": "管理",
       "query": "运行查询",
@@ -7906,12 +7925,11 @@
       "review": "审阅"
     },
     "perm": {
-      "forms_view": "查看表单及其构建器。",
-      "forms_create": "创建、导入和复制表单。",
-      "forms_edit": "更改表单：问题、设计、共享。",
-      "forms_publish": "发布表单，并开启或关闭表单。",
-      "forms_delete": "删除表单并清空回收站。",
-      "forms_all": "工作区中的所有表单，而不只是与其共享的表单。",
+      "forms_view": "在列表中找到表单并打开其概览。",
+      "forms_create": "新建表单，空白或从模板开始。",
+      "forms_edit": "更改问题、页面、逻辑、设计和标签。",
+      "forms_publish": "让最新更改上线。",
+      "forms_delete": "将表单移到回收站并取回。",
       "responses_view": "阅读回复。",
       "responses_edit": "更正已提交的答案。",
       "responses_delete": "删除回复。",
@@ -7932,7 +7950,70 @@
       "audit_view": "查看审计日志。",
       "audit_export": "导出审计日志。",
       "ai_use": "使用 AI 助手。",
-      "responses_review": "更改状态、标签和备注。"
+      "responses_review": "更改状态、标签和备注。",
+      "forms_preview": "按人们填写时的样子查看表单。",
+      "forms_import": "从文件导入表单。",
+      "forms_duplicate": "复制一份表单。",
+      "forms_save_template": "将表单变成工作区模板。",
+      "forms_rename": "更改表单名称。",
+      "forms_versions": "查看早期版本并恢复其中一个。",
+      "forms_share_view": "查看链接、访问权限以及表单共享给了谁。",
+      "forms_share": "更改链接、访问权限、嵌入方式以及表单共享给谁。",
+      "forms_availability": "设置表单何时开放和关闭。",
+      "forms_close": "让表单下线并重新上线。",
+      "forms_archive": "将表单收起并重新取回。",
+      "forms_move": "将表单放入另一个文件夹。",
+      "forms_purge": "永久移除表单并清空回收站。",
+      "folders_create": "新建文件夹。",
+      "folders_edit": "更改文件夹的名称和颜色。",
+      "folders_delete": "移除空文件夹。",
+      "folders_access": "选择谁可以查看每个文件夹，并查看所有文件夹。"
+    },
+    "setArea": "设置范围",
+    "searchActions": "搜索操作",
+    "noActions": "没有匹配的操作",
+    "scope": {
+      "none": "无",
+      "own": "自己",
+      "shared": "共享",
+      "all": "全部"
+    },
+    "scopeHint": {
+      "none": "完全不可，连自己创建的也不行",
+      "own": "仅限自己创建的内容",
+      "shared": "限于自己的表单和与其共享的表单",
+      "all": "工作区内的所有内容"
+    },
+    "group": {
+      "forms_see": "查看",
+      "forms_create": "创建",
+      "forms_build": "搭建",
+      "forms_share": "共享",
+      "forms_lifecycle": "发布与生命周期"
+    },
+    "label": {
+      "forms_view": "查看表单",
+      "forms_preview": "预览",
+      "forms_create": "创建表单",
+      "forms_import": "导入表单",
+      "forms_duplicate": "创建副本",
+      "forms_save_template": "另存为模板",
+      "forms_rename": "重命名",
+      "forms_edit": "编辑问题、逻辑和设计",
+      "forms_versions": "版本",
+      "forms_share_view": "查看共享设置",
+      "forms_share": "更改共享设置",
+      "forms_availability": "可用时间",
+      "forms_publish": "发布",
+      "forms_close": "取消发布、关闭和重新开放",
+      "forms_archive": "归档和取消归档",
+      "forms_move": "移到文件夹",
+      "forms_delete": "移到回收站和恢复",
+      "forms_purge": "永久删除",
+      "folders_create": "创建文件夹",
+      "folders_edit": "重命名和更改颜色",
+      "folders_delete": "删除文件夹",
+      "folders_access": "决定谁可以查看文件夹"
     }
   }
 }

@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-09 (F16 Users & profiles and F22 Roles & access done and owner-approved; next: F19 AI assistant)
+**Last updated:** 2026-10-10 (F22 R2 milestone 1: Forms and Folders permissions with scope, folder access, new role editor; next: Responses)
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend · ➖ dropped or merged
 
@@ -979,15 +979,15 @@ Owner, 2026-10-08: "profiling and users are the same thing". One phase builds th
 - ⬜ Permission to view and export the audit trail (`audit.read`, `audit.export`)
 - ⬜ Data sources permissions (from F12): view the explorer · change rows and structure · run read queries · run changing queries · manage connections · send form data to a database; until then admins only
 - ⬜ **Granular permissions with scope (owner 2026-10-10, "total control, beyond the basic"; maker-checker matters in an enterprise system).** Every action is its own permission, with a scope: **None · Own · All** (Own = what the person created; Own also restricts: a role may forbid editing even one's own forms); for forms also **Shared** (own plus forms shared with them). The role is the ceiling everywhere: hidden or locked in every place the action appears (list menus, detail pages, overview, panels, shortcuts, bulk bars, command palette, empty-state buttons, the API)
-  - ⬜ **Forms:** view, create (incl. Blank form in Templates), import, rename, edit (build, logic, design), share settings (view vs change), availability, publish, unpublish / close, archive / restore, move to folder, duplicate, save as template, versions, delete / trash, preview
+  - ✅ **Forms:** view, preview, create (incl. Blank form and Use template), import, duplicate, save as template, rename, edit (build, logic, design, tags), versions, share settings (see vs change), availability, publish, unpublish / close / reopen, archive / unarchive, move to folder, delete / restore, delete forever; every menu, page header, overview card, builder tab, share tab, bulk bar, trash and template entry follows the form's `can`; the API checks each action
   - ⬜ **Responses:** view, review, edit answers, delete, export, each Own form · Shared · All
   - ⬜ **Templates:** view / use (default), create (save as template), edit, duplicate, delete; Own · All; Formalie defaults are use-only
   - ⬜ **Lists (option sets), Themes, Landing pages:** view / use, create, edit, duplicate, delete; Own · All; Formalie defaults are use-only
-  - ⬜ **Folders:** create, rename, delete (Own · All; never a folder holding others' forms unless All) and **folder access**: admins choose who may see each folder (roles, departments, people); a hidden folder hides its forms and their responses everywhere (lists, counts, search, analytics, exports, dashboards, API service)
+  - ✅ **Folders:** create, rename, delete (Own · All; only empty folders) and **folder access**: admins choose who may see each folder (roles, departments, people); a hidden folder hides its forms and their responses everywhere (lists, counts, search, analytics, exports, dashboards, API service)
   - ⬜ **Data sources:** connections (view, add, edit, delete, test), explorer (view, add / change / delete rows, add / change / drop tables, export), query editor (read queries, changing queries, saved queries), response storage, sends
   - ⬜ **API service:** services, endpoints, tokens, webhooks, logs, integrations, each view / create / edit / delete as fits
   - ⬜ **AI assistant:** per feature (create forms, builder help, templates, analysis, summaries, translation, settings and usage)
-  - ⬜ **Role editor redesigned** for the larger catalogue: grouped by area and sub-area, action rows with a scope picker, search, "what changes" summary, presets
+  - ✅ **Role editor redesigned** for the larger catalogue: grouped by area and sub-area, action rows with a scope picker, search, "what changes" summary, presets
 
 ## F23, Platform admin (super admin) ⬜
 
@@ -1553,3 +1553,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-09 | F16 | Fix (owner testing): sample colleagues (Sofia Martins, Alex Novak, Priya Raman, Lukas Becker, Kenji Watanabe, Maria Lopez) had no sign-in account ("invalid email"); the mock now gives every active, disabled or waiting person an account at start (their own password if they set one, else the test password); join stores the password as a hash on the person |
 | 2026-10-09 | F22 | Owner: Review responses split from Edit (status, tags, notes vs correcting answers); opening a file needs only View; response panel, row menus, bulk bar and Export follow the role; status bar now really locks (per tab); existing roles with Edit got Review; tests for the rules. Browser-checked as Reviewer: only Open and Export, status locked, tags disabled, no notes box |
 | 2026-10-09 | F16 / F22 | Owner: profiling and roles approved. F16 and F22 done; next F19 AI assistant |
+| 2026-10-10 | F22 R2 | Milestone 1: permission catalogue with scopes (own · shared · all) and groups; roles store grants (saved roles migrated with the same reach); Forms: 18 actions checked by the API per form (role scope, maker, sharing, folder) and sent as `form.can`; menus, page header, overview, builder tabs, share tab (read-only when only seeing), bulk bars, trash, templates (Blank form, Use template) follow it; Folders: create, edit / delete own · all, folder access (roles, departments, people) hiding the folder, its forms and their responses everywhere; directory lists the workspace's real roles; role editor redesigned (areas, groups, None · Own · Shared · All, search, set the area). Fixed on the way: bulk delete / purge / restore and lifecycle skipped their permissions; opening an organisation-only form needed edit; folder delete leaked hidden form counts. Browser-checked as Priya (Member) and the owner |

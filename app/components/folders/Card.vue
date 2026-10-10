@@ -37,6 +37,7 @@ const facts = computed(() => [
     <div class="mt-3 flex min-w-0 items-center gap-2">
       <UIcon name="i-lucide-folder" class="size-5 shrink-0" :class="folderColor(folder.color).text" :style="folderColor(folder.color).textStyle" />
       <NuxtLink :to="`/folders/${folder.id}`" class="truncate text-base font-semibold text-highlighted hover:underline focus-visible:outline-2 focus-visible:outline-(--ui-border-inverted)">{{ folder.name }}</NuxtLink>
+      <UTooltip v-if="folder.access?.restricted" :text="t('folders.access.badge')"><UIcon name="i-lucide-lock" class="size-3.5 shrink-0 text-muted" :aria-label="t('folders.access.badge')" /></UTooltip>
     </div>
     <p class="text-sm text-muted">{{ t('forms.folders.count', { count: folder.forms_count }, folder.forms_count) }}</p>
 

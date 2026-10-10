@@ -137,7 +137,8 @@ export interface RoleRow {
   id: string
   name: string
   description: string | null
-  permissions: string[]
+  /** Each action the role may do with its scope (own · shared · all; on / off actions are `all`), F22 R2. */
+  grants: Record<string, 'own' | 'shared' | 'all'>
   /** owner · admin · member for the built-in ones (Owner can't be changed), null for the workspace's own. */
   built_in: 'owner' | 'admin' | 'member' | null
   people_count: number

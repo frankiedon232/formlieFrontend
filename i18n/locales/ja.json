@@ -1118,7 +1118,8 @@
       "users_requested": "参加をリクエストしました",
       "users_approved": "承認しました",
       "users_rejected": "リクエストを却下しました",
-      "users_signup_link_changed": "登録リンクを変更しました"
+      "users_signup_link_changed": "登録リンクを変更しました",
+      "forms_folder_access_changed": "フォルダーのアクセス権を変更しました"
     },
     "detail": {
       "who": "誰が",
@@ -5075,7 +5076,9 @@
       "answeringDesc": "誰が回答できるか、どうやって開くか。フォームを送るすべての人が対象です。",
       "team": "あなたのチーム",
       "teamDesc": "このフォームを作成・管理するワークスペースのスタッフ。回答できる人は変わりません。"
-    }
+    },
+    "readOnly": "これらの設定は閲覧できます",
+    "readOnlyDesc": "お使いのロールでは、このフォームの共有方法を変更できません。"
   },
   "preview": {
     "crumb": "プレビュー",
@@ -5536,7 +5539,22 @@
     "pin": "サイドバーにピン留め",
     "unpin": "サイドバーのピン留めを外す",
     "pinFull": "ピン留めできるのは 5 つまでです",
-    "hex": "16 進カラー"
+    "hex": "16 進カラー",
+    "access": {
+      "menu": "閲覧できる人",
+      "title": "{name} を閲覧できる人",
+      "desc": "メンバーが見られないフォルダーは、そのフォームと回答をどこでも非表示にします。",
+      "everyone": "全員",
+      "everyoneHint": "ロールでフォームを開ける全員。",
+      "restricted": "選んだ人のみ",
+      "restrictedHint": "ロール、部署、メンバーを選びます。オーナーとフォルダーのアクセスを決める人には常に表示されます。",
+      "roles": "ロール",
+      "people": "メンバー",
+      "note": "いずれかに当てはまる人はフォルダーを閲覧できます。",
+      "nobody": "まだ誰も選ばれていません。オーナーとフォルダーのアクセスを決める人だけが閲覧できます。",
+      "saved": "フォルダーのアクセス権を保存しました",
+      "badge": "制限付き"
+    }
   },
   "destinations": {
     "crumb": "回答の保存先",
@@ -7876,12 +7894,13 @@
       "roles": "ロール",
       "settings": "設定",
       "audit": "監査ログ",
-      "ai": "AI アシスタント"
+      "ai": "AI アシスタント",
+      "folders": "フォルダー"
     },
     "areaHint": {
-      "forms": "フォームの作成、公開、削除。",
+      "forms": "フォームの作成、構築、共有、公開、削除。",
       "responses": "回答の閲覧、変更、エクスポート。",
-      "resources": "テンプレート、テーマ、ランディングページ、リスト、フォルダ、保存済みフィールド。",
+      "resources": "テンプレート、テーマ、ランディングページ、リスト、保存済みフィールド。",
       "analytics": "分析ページ。",
       "data": "データベース接続、エクスプローラー、クエリ。",
       "api": "サービス、エンドポイント、トークン、Webhook。",
@@ -7889,7 +7908,8 @@
       "roles": "ロールの作成と変更。",
       "settings": "ワークスペースの設定。",
       "audit": "誰がいつ何をしたか。",
-      "ai": "AI アシスタントの利用。"
+      "ai": "AI アシスタントの利用。",
+      "folders": "フォルダーと、閲覧できる人。"
     },
     "action": {
       "view": "表示",
@@ -7897,7 +7917,6 @@
       "edit": "編集",
       "publish": "公開",
       "delete": "削除",
-      "all": "すべてのフォーム",
       "export": "エクスポート",
       "manage": "管理",
       "query": "クエリを実行",
@@ -7906,12 +7925,11 @@
       "review": "レビュー"
     },
     "perm": {
-      "forms_view": "フォームとそのビルダーを見る。",
-      "forms_create": "フォームの作成、インポート、複製。",
-      "forms_edit": "フォームの変更: 質問、デザイン、共有。",
-      "forms_publish": "フォームの公開、開始と終了。",
-      "forms_delete": "フォームの削除とごみ箱の空にする操作。",
-      "forms_all": "共有されたものだけでなく、ワークスペースのすべてのフォーム。",
+      "forms_view": "一覧からフォームを探し、概要を開きます。",
+      "forms_create": "新しいフォームを白紙またはテンプレートから始めます。",
+      "forms_edit": "質問、ページ、ロジック、デザイン、タグを変更します。",
+      "forms_publish": "最新の変更を公開します。",
+      "forms_delete": "フォームをゴミ箱に移し、元に戻します。",
       "responses_view": "回答を読む。",
       "responses_edit": "送信された回答を修正します。",
       "responses_delete": "回答の削除。",
@@ -7932,7 +7950,70 @@
       "audit_view": "監査ログを見る。",
       "audit_export": "監査ログをエクスポート。",
       "ai_use": "AI アシスタントを使う。",
-      "responses_review": "ステータス、タグ、メモを変更します。"
+      "responses_review": "ステータス、タグ、メモを変更します。",
+      "forms_preview": "回答者が入力するのと同じ見た目でフォームを確認します。",
+      "forms_import": "ファイルからフォームを取り込みます。",
+      "forms_duplicate": "フォームのコピーを作ります。",
+      "forms_save_template": "フォームをワークスペースのテンプレートにします。",
+      "forms_rename": "フォームの名前を変更します。",
+      "forms_versions": "以前のバージョンを確認し、復元します。",
+      "forms_share_view": "リンク、アクセス権、フォームの共有先を確認します。",
+      "forms_share": "リンク、アクセス権、埋め込み、フォームの共有先を変更します。",
+      "forms_availability": "フォームを開く日時と閉じる日時を設定します。",
+      "forms_close": "フォームを非公開にし、再び公開します。",
+      "forms_archive": "フォームを片付け、元に戻します。",
+      "forms_move": "フォームを別のフォルダーに入れます。",
+      "forms_purge": "フォームを完全に削除し、ゴミ箱を空にします。",
+      "folders_create": "新しいフォルダーを作ります。",
+      "folders_edit": "フォルダーの名前と色を変更します。",
+      "folders_delete": "空のフォルダーを削除します。",
+      "folders_access": "各フォルダーを閲覧できる人を選び、すべてのフォルダーを閲覧します。"
+    },
+    "setArea": "範囲を設定",
+    "searchActions": "操作を検索",
+    "noActions": "一致する操作がありません",
+    "scope": {
+      "none": "なし",
+      "own": "自分",
+      "shared": "共有",
+      "all": "すべて"
+    },
+    "scopeHint": {
+      "none": "一切不可。自分で作成したものも対象外",
+      "own": "自分で作成したものだけ",
+      "shared": "自分のフォームと共有されたフォーム",
+      "all": "ワークスペース内のすべて"
+    },
+    "group": {
+      "forms_see": "閲覧",
+      "forms_create": "作成",
+      "forms_build": "構築",
+      "forms_share": "共有",
+      "forms_lifecycle": "公開とライフサイクル"
+    },
+    "label": {
+      "forms_view": "フォームを見る",
+      "forms_preview": "プレビュー",
+      "forms_create": "フォームを作成",
+      "forms_import": "フォームをインポート",
+      "forms_duplicate": "複製",
+      "forms_save_template": "テンプレートとして保存",
+      "forms_rename": "名前を変更",
+      "forms_edit": "質問、ロジック、デザインを編集",
+      "forms_versions": "バージョン",
+      "forms_share_view": "共有設定を見る",
+      "forms_share": "共有設定を変更",
+      "forms_availability": "公開期間",
+      "forms_publish": "公開",
+      "forms_close": "公開停止、終了、再開",
+      "forms_archive": "アーカイブと解除",
+      "forms_move": "フォルダーに移動",
+      "forms_delete": "ゴミ箱への移動と復元",
+      "forms_purge": "完全に削除",
+      "folders_create": "フォルダーを作成",
+      "folders_edit": "名前と色を変更",
+      "folders_delete": "フォルダーを削除",
+      "folders_access": "フォルダーの閲覧者を決定"
     }
   }
 }

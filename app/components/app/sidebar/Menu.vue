@@ -132,6 +132,7 @@ const menuUi = computed(() => ({
         <div class="mb-1 flex items-center justify-between ps-2.5">
           <p class="text-xs font-medium text-muted uppercase">{{ t('nav.resources') }}</p>
           <UButton
+            v-if="useCan().can('forms.create')"
             icon="i-lucide-plus"
             color="neutral"
             variant="ghost"
@@ -159,7 +160,7 @@ const menuUi = computed(() => ({
               {{ t('nav.folders') }}
               <UIcon name="i-lucide-chevron-down" class="size-3.5 transition-transform" :class="sidebarFolders.open.value ? '' : '-rotate-90 rtl:rotate-90'" />
             </button>
-            <UTooltip :text="t('forms.folders.new')">
+            <UTooltip v-if="useCan().can('folders.create')" :text="t('forms.folders.new')">
               <UButton icon="i-lucide-plus" color="neutral" variant="ghost" size="xs" square :aria-label="t('forms.folders.new')" @click="folderOpen = true" />
             </UTooltip>
           </div>
@@ -170,7 +171,7 @@ const menuUi = computed(() => ({
             </template>
           </UNavigationMenu>
           </div>
-          <UButton v-if="!folderItems.length && sidebarFolders.open.value" :label="t('forms.folders.new')" icon="i-lucide-folder-plus" color="neutral" variant="link" size="sm" class="px-2.5 text-muted" @click="folderOpen = true" />
+          <UButton v-if="!folderItems.length && sidebarFolders.open.value && useCan().can('folders.create')" :label="t('forms.folders.new')" icon="i-lucide-folder-plus" color="neutral" variant="link" size="sm" class="px-2.5 text-muted" @click="folderOpen = true" />
         </nav>
         <FoldersEditModal v-model:open="folderOpen" @saved="onFolderCreated" />
       </template>

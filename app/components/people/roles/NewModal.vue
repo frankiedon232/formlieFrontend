@@ -24,7 +24,7 @@ async function create() {
   if (!state.name.trim() || saving.value) return
   saving.value = true
   try {
-    const { data } = await api.post<RoleRow>('/roles', { name: state.name.trim(), description: state.description.trim() || null, ...(state.copy_of !== 'none' ? { copy_of: state.copy_of } : { permissions: [] }) })
+    const { data } = await api.post<RoleRow>('/roles', { name: state.name.trim(), description: state.description.trim() || null, ...(state.copy_of !== 'none' ? { copy_of: state.copy_of } : { grants: {} }) })
     open.value = false
     emit('created', data)
   } catch (error) {

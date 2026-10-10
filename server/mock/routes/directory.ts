@@ -8,12 +8,8 @@ import { requireAuth } from '../core/auth'
 import { ok } from '../core/respond'
 import { defineMockRoute } from '../core/route'
 import { orgOf, peopleOf } from '../data/orgStore'
+import { rolesOf } from '../data/rolesStore'
 
-const ROLES = [
-  { id: 'owner', name: 'Owner' },
-  { id: 'admin', name: 'Administrator' },
-  { id: 'member', name: 'Member' },
-]
 
 export const getDirectory = defineMockRoute(({ event }) => {
   const { tenant } = requireAuth(event)
@@ -22,7 +18,8 @@ export const getDirectory = defineMockRoute(({ event }) => {
   const directory: Directory = {
     departments: list(org.departments),
     job_titles: list(org.job_titles),
-    roles: ROLES,
+    // The workspace's own roles (Roles & access), not a fixed list
+    roles: rolesOf(tenant).map(role => ({ id: role.id, name: role.name })),
     users: peopleOf(tenant).map(person => ({ id: person.id, name: person.name, detail: person.email })),
   }
   return ok(directory)

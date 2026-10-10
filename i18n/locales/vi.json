@@ -1118,7 +1118,8 @@
       "users_requested": "Đã yêu cầu tham gia",
       "users_approved": "Đã phê duyệt",
       "users_rejected": "Đã từ chối yêu cầu",
-      "users_signup_link_changed": "Đã đổi liên kết đăng ký"
+      "users_signup_link_changed": "Đã đổi liên kết đăng ký",
+      "forms_folder_access_changed": "Đã đổi quyền truy cập thư mục"
     },
     "detail": {
       "who": "Ai",
@@ -5075,7 +5076,9 @@
       "answeringDesc": "Ai có thể điền và cách họ mở biểu mẫu. Áp dụng cho mọi người bạn gửi biểu mẫu.",
       "team": "Nhóm của bạn",
       "teamDesc": "Nhân viên trong không gian làm việc tạo và quản lý biểu mẫu này. Điều này không thay đổi ai có thể điền."
-    }
+    },
+    "readOnly": "Bạn có thể xem các cài đặt này",
+    "readOnlyDesc": "Vai trò của bạn không cho phép thay đổi cách chia sẻ biểu mẫu này."
   },
   "preview": {
     "crumb": "Xem trước",
@@ -5536,7 +5539,22 @@
     "pin": "Ghim vào thanh bên",
     "unpin": "Bỏ ghim khỏi thanh bên",
     "pinFull": "Có thể ghim tối đa 5 thư mục",
-    "hex": "Mã màu hex"
+    "hex": "Mã màu hex",
+    "access": {
+      "menu": "Ai có thể xem",
+      "title": "Ai có thể xem {name}",
+      "desc": "Thư mục mà mọi người không thể thấy sẽ ẩn các biểu mẫu và phản hồi của nó khỏi họ ở mọi nơi.",
+      "everyone": "Mọi người",
+      "everyoneHint": "Mọi người có vai trò mở được biểu mẫu.",
+      "restricted": "Chỉ người được chọn",
+      "restrictedHint": "Chọn vai trò, phòng ban hoặc người. Chủ sở hữu và người quyết định quyền truy cập thư mục luôn thấy thư mục.",
+      "roles": "Vai trò",
+      "people": "Mọi người",
+      "note": "Ai khớp với một trong các mục này sẽ thấy thư mục.",
+      "nobody": "Chưa chọn ai: chỉ chủ sở hữu và người quyết định quyền truy cập thư mục mới thấy.",
+      "saved": "Đã lưu quyền truy cập thư mục",
+      "badge": "Hạn chế"
+    }
   },
   "destinations": {
     "crumb": "Nơi lưu phản hồi",
@@ -7876,12 +7894,13 @@
       "roles": "Vai trò",
       "settings": "Cài đặt",
       "audit": "Nhật ký kiểm tra",
-      "ai": "Trợ lý AI"
+      "ai": "Trợ lý AI",
+      "folders": "Thư mục"
     },
     "areaHint": {
-      "forms": "Tạo, xuất bản và xóa biểu mẫu.",
+      "forms": "Tạo, xây dựng, chia sẻ, xuất bản và xóa biểu mẫu.",
       "responses": "Đọc, thay đổi và xuất phản hồi.",
-      "resources": "Mẫu, giao diện, trang đích, danh sách, thư mục và trường đã lưu.",
+      "resources": "Mẫu, giao diện, trang đích, danh sách và trường đã lưu.",
       "analytics": "Các trang phân tích.",
       "data": "Kết nối cơ sở dữ liệu, trình khám phá và truy vấn.",
       "api": "Dịch vụ, endpoint, token và webhook.",
@@ -7889,7 +7908,8 @@
       "roles": "Tạo và thay đổi vai trò.",
       "settings": "Cài đặt của không gian làm việc.",
       "audit": "Ai đã làm gì, và khi nào.",
-      "ai": "Dùng trợ lý AI."
+      "ai": "Dùng trợ lý AI.",
+      "folders": "Thư mục và ai có thể xem chúng."
     },
     "action": {
       "view": "Xem",
@@ -7897,7 +7917,6 @@
       "edit": "Chỉnh sửa",
       "publish": "Xuất bản",
       "delete": "Xóa",
-      "all": "Mọi biểu mẫu",
       "export": "Xuất",
       "manage": "Quản lý",
       "query": "Chạy truy vấn",
@@ -7906,12 +7925,11 @@
       "review": "Xem xét"
     },
     "perm": {
-      "forms_view": "Xem biểu mẫu và trình tạo của chúng.",
-      "forms_create": "Tạo, nhập và nhân bản biểu mẫu.",
-      "forms_edit": "Thay đổi biểu mẫu: câu hỏi, thiết kế, chia sẻ.",
-      "forms_publish": "Xuất bản biểu mẫu, mở hoặc đóng chúng.",
-      "forms_delete": "Xóa biểu mẫu và dọn thùng rác.",
-      "forms_all": "Mọi biểu mẫu trong không gian làm việc, không chỉ những biểu mẫu được chia sẻ với họ.",
+      "forms_view": "Tìm biểu mẫu trong danh sách và mở phần tổng quan.",
+      "forms_create": "Bắt đầu biểu mẫu mới, trống hoặc từ một mẫu.",
+      "forms_edit": "Thay đổi câu hỏi, trang, logic, thiết kế và thẻ.",
+      "forms_publish": "Đưa các thay đổi mới nhất lên chính thức.",
+      "forms_delete": "Chuyển biểu mẫu vào Thùng rác và lấy lại.",
       "responses_view": "Đọc phản hồi.",
       "responses_edit": "Sửa các câu trả lời đã gửi.",
       "responses_delete": "Xóa phản hồi.",
@@ -7932,7 +7950,70 @@
       "audit_view": "Xem nhật ký kiểm tra.",
       "audit_export": "Xuất nhật ký kiểm tra.",
       "ai_use": "Dùng trợ lý AI.",
-      "responses_review": "Thay đổi trạng thái, thẻ và ghi chú."
+      "responses_review": "Thay đổi trạng thái, thẻ và ghi chú.",
+      "forms_preview": "Xem biểu mẫu đúng như mọi người sẽ điền.",
+      "forms_import": "Đưa biểu mẫu vào từ một tệp.",
+      "forms_duplicate": "Tạo bản sao của biểu mẫu.",
+      "forms_save_template": "Biến biểu mẫu thành mẫu của không gian làm việc.",
+      "forms_rename": "Đổi tên biểu mẫu.",
+      "forms_versions": "Xem các phiên bản trước và khôi phục một phiên bản.",
+      "forms_share_view": "Xem liên kết, quyền truy cập và những người được chia sẻ biểu mẫu.",
+      "forms_share": "Thay đổi liên kết, quyền truy cập, nhúng và những người được chia sẻ biểu mẫu.",
+      "forms_availability": "Đặt thời điểm biểu mẫu mở và đóng.",
+      "forms_close": "Gỡ biểu mẫu xuống và đưa lại lên.",
+      "forms_archive": "Cất biểu mẫu đi và lấy lại.",
+      "forms_move": "Đặt biểu mẫu vào thư mục khác.",
+      "forms_purge": "Xóa hẳn biểu mẫu và dọn sạch Thùng rác.",
+      "folders_create": "Tạo thư mục mới.",
+      "folders_edit": "Đổi tên và màu của thư mục.",
+      "folders_delete": "Xóa các thư mục trống.",
+      "folders_access": "Chọn ai xem được từng thư mục, và xem mọi thư mục."
+    },
+    "setArea": "Đặt phạm vi",
+    "searchActions": "Tìm thao tác",
+    "noActions": "Không có thao tác phù hợp",
+    "scope": {
+      "none": "Không",
+      "own": "Của mình",
+      "shared": "Được chia sẻ",
+      "all": "Tất cả"
+    },
+    "scopeHint": {
+      "none": "Hoàn toàn không, kể cả với nội dung họ tạo",
+      "own": "Chỉ với nội dung họ tạo",
+      "shared": "Với biểu mẫu của họ và biểu mẫu được chia sẻ với họ",
+      "all": "Với mọi thứ trong không gian làm việc"
+    },
+    "group": {
+      "forms_see": "Xem",
+      "forms_create": "Tạo",
+      "forms_build": "Xây dựng",
+      "forms_share": "Chia sẻ",
+      "forms_lifecycle": "Xuất bản và vòng đời"
+    },
+    "label": {
+      "forms_view": "Xem biểu mẫu",
+      "forms_preview": "Xem trước",
+      "forms_create": "Tạo biểu mẫu",
+      "forms_import": "Nhập biểu mẫu",
+      "forms_duplicate": "Nhân bản",
+      "forms_save_template": "Lưu thành mẫu",
+      "forms_rename": "Đổi tên",
+      "forms_edit": "Chỉnh sửa câu hỏi, logic và thiết kế",
+      "forms_versions": "Phiên bản",
+      "forms_share_view": "Xem cài đặt chia sẻ",
+      "forms_share": "Thay đổi cài đặt chia sẻ",
+      "forms_availability": "Thời gian khả dụng",
+      "forms_publish": "Xuất bản",
+      "forms_close": "Hủy xuất bản, đóng và mở lại",
+      "forms_archive": "Lưu trữ và bỏ lưu trữ",
+      "forms_move": "Chuyển vào thư mục",
+      "forms_delete": "Chuyển vào Thùng rác và khôi phục",
+      "forms_purge": "Xóa vĩnh viễn",
+      "folders_create": "Tạo thư mục",
+      "folders_edit": "Đổi tên và đổi màu",
+      "folders_delete": "Xóa thư mục",
+      "folders_access": "Quyết định ai xem được thư mục"
     }
   }
 }

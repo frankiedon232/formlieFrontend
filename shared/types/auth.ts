@@ -58,6 +58,8 @@ export interface SessionUser {
   /** The role's name and what it allows (Roles & access, F22): the app shows only what the role can use. */
   role_name?: string
   permissions?: string[]
+  /** The same with each action's scope (own · shared · all), F22 R2. */
+  grants?: Record<string, 'own' | 'shared' | 'all'>
   /** My profile (F16 M5): null = the workspace's. */
   language?: string | null
   time_zone?: string | null
