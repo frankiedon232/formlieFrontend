@@ -37,7 +37,7 @@ After writing, the platform publishes `platform.published { table, ids, version 
 | Method | Path | Does |
 | --- | --- | --- |
 | POST | `/tenants/{id}/suspend` · `/restore` | Suspend (reason shown to the workspace) or restore |
-| POST | `/tenants/{id}/subdomain` | Change subdomain (old one redirects for 30 days) |
+| POST | `/tenants/{id}/subdomain` | Change subdomain (old one keeps working for 90 days, 03-DECISIONS F14 M7) |
 | POST | `/tenants/{id}/read-only` · `/close` · `/cancel-close` | Read-only mode; close with a deletion date; undo |
 | POST | `/tenants/{id}/plan` | Change plan / limits / trial end (from the platform's subscription actions) |
 | POST | `/tenants/{id}/export` | Start a full data export for the workspace (download for the workspace owner) |

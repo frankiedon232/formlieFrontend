@@ -310,3 +310,29 @@ Edit this file whenever a decision changes.
 The portal shows the mark as the icon `i-formalie-mark`, a custom Nuxt Icon collection in `app/assets/icons`, inside the UI's inverted box. The browser tab icons sit in `nuxt.config` `app.head` under the keys `icon-ico` and `icon-svg`, and a workspace's own tab icon takes over both keys. The website and the platform admin use the same files, from `formalie-brand.zip`.
 
 **Backend alignment (owner 2026-10-10).** The backend project is **formlyBackend** (`C:/UNETPROJECTS/formlyBackend`), built after this frontend and replacing its mock. The mock (`server/mock/**`) is the reference implementation: `docs/ENDPOINTS.md` (in formlyBackend) lists its 399 endpoints, and `docs/FRONTEND-REFERENCE.md` lists the `shared/` rules the backend ports with parity tests. Shared docs stay identical in both projects; a contract change is made in both. Development services run without Docker.
+
+**Backend B0 decisions (owner 2026-10-10).**
+
+- **PostgreSQL 18 in development.** The owner's machine runs PostgreSQL 18. SQL stays compatible with 16, so nothing uses features newer than 16, and UUIDv7 ids are made in the app.
+- **WSL for the Linux services.** Redis, RabbitMQ, PgBouncer, MinIO and Mailpit run in WSL (Ubuntu), not Docker. The setup is in 02-DEV-ENVIRONMENT. Celery workers on Windows run with `--pool=solo`.
+- **No hard deletes anywhere.** Wherever API-CONTRACT said "removed for good", it was a mistake: all removals are soft, with proper relations. This covers purge, empty Trash, response and export deletes, rejecting a person, withdrawing an invite, and webhook deliveries. Enforcement:
+  - `formalie_app` has no DELETE or TRUNCATE privilege;
+  - the ORM refuses `session.delete()`;
+  - foreign keys are `ON DELETE RESTRICT`;
+  - a CI test checks all three.
+
+  Rows the customer deletes in their own database (explorer, query editor) are their action on their table and are not affected.
+- **Contract alignments.**
+  - The health check is `/api/v1/health`, as in the mock. SECURITY-PROTOCOL said `/api/health`.
+  - The refresh cookie is `formalie_rt` with `Path=/api/v1/auth`, as in the mock. SECURITY-PROTOCOL said `/auth/refresh`.
+  - The list of plaintext exceptions is written out in full.
+  - The envelope is checked before routing, so an unknown `/api/v1` address without an envelope answers `FRM-SEC-1001`, not `FRM-GEN-1004`.
+- **Error code levels.** ERROR-CODES.md now lists all 144 server codes. Some 50 codes from `codes.ts` were missing (FORM-1015 to 1019, RESP-1004 to 1009, DEST-1002 to 1027, AI-1001 to 1004). Levels include NOTICE (between INFO and WARNING), and WARN became WARNING. `app/core/errors/codes.py` is generated from `codes.ts` and ERROR-CODES.md, and a parity test keeps them equal.
+- **DB roles.**
+  - The union of BACKEND-SPEC and DATABASE-DESIGN: `formalie_owner`, `formalie_app`, `formalie_readonly`, `platform_reader` and `platform_writer`.
+  - Plus `formalie_worker` (BYPASSRLS, the outbox relay and partition upkeep only).
+  - BACKEND-SPEC's `formalie_platform` is replaced by SECURITY DEFINER functions (`platform.resolve_tenant`).
+  - Roles carry passwords, so `scripts/db_bootstrap.py` creates them, not migrations.
+- **RLS on tenant AND organisation**, as in BACKEND-SPEC §2. A workspace has one organisation, whose `organisation_id` is its own id.
+- **Event outbox.** The outbox is a tenant table with RLS forced. The app may only INSERT into it and can never read it. The relay reads it as `formalie_worker`.
+- **Subdomain change.** An old subdomain keeps working for 90 days (F14 M7). PLATFORM-ADMIN-INTEGRATION said 30.

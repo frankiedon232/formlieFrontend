@@ -53,7 +53,43 @@ Add more lines as new test tenants are created.
 
 ## Backend dev services (Phase B0)
 
-Installed directly on the machine, **no Docker** (owner, 2026-10-10): PostgreSQL 16 (primary + 1 replica), PgBouncer, Redis 7 (Memurai or WSL on Windows), RabbitMQ 3 (management UI), MinIO (S3), Mailpit (catch OTP emails). Production runs on AWS or dedicated servers (decided per deployment); Docker only if a real need comes up.
+Installed directly on the machine, **no Docker** (owner, 2026-10-10). Production runs on AWS or dedicated servers (decided per deployment); Docker only if a real need comes up.
+
+| Service | Where (development) | Port | Notes |
+| --- | --- | --- | --- |
+| PostgreSQL **18** primary | Windows service `postgresql-x64-18` (already installed) | 5432 | Owner, 2026-10-10: develop on 18, write SQL that also runs on 16 (no PG 17/18-only features; UUIDv7 is made in the app) |
+| PostgreSQL 18 replica | Windows, second cluster (streaming replication) | 5433 | Optional until reports and lists need it; `DB_REPLICA_URLS` empty = reads go to the primary |
+| Redis 7 | WSL (Ubuntu) | 6379 | cache, rate limits, nonces, session keys |
+| RabbitMQ 3 + management UI | WSL | 5672, 15672 | Celery broker and the `formalie.events` exchange |
+| PgBouncer | WSL | 6432 | transaction pooling; then `DB_PGBOUNCER=true` |
+| MinIO (S3) | WSL | 9000, 9001 | uploads and exports (from B3) |
+| Mailpit | WSL | 1025 (SMTP), 8025 (UI) | catches OTP and other emails (from B1) |
+
+### 1. PostgreSQL: roles and databases (once)
+
+1. Copy `.env.example` to `.env` and fill the four `DB_*_URL` lines: the `postgres` superuser password in `DB_SUPERUSER_URL`, and a password of your choice for `formalie_owner`, `formalie_app` and `formalie_worker` (the user names are fixed).
+2. `fmly\Scripts\python.exe scripts\db_bootstrap.py` creates the roles and the `formalie` and `formalie_test` databases (safe to run again; it updates passwords).
+3. `fmly\Scripts\alembic.exe upgrade head` and `fmly\Scripts\alembic.exe -x db=test upgrade head`.
+4. `fmly\Scripts\python.exe -m pytest` now also runs `tests/db` (RLS, cross-tenant, outbox).
+
+### 2. WSL services (when we reach them)
+
+1. PowerShell as administrator: `wsl --install -d Ubuntu-24.04`, restart, create the Linux user.
+2. Let Windows and WSL share `127.0.0.1`: create `%UserProfile%\.wslconfig` with
+   ```ini
+   [wsl2]
+   networkingMode=mirrored
+   ```
+   then `wsl --shutdown`. (Windows 11 22H2 or later. Without it, use the WSL address from `wsl hostname -I`.)
+3. In Ubuntu: `bash /mnt/c/UNETPROJECTS/formlyBackend/scripts/wsl/setup-services.sh` installs and starts Redis, RabbitMQ (with a `formalie` vhost and user), PgBouncer, MinIO and Mailpit as systemd services. It prints the values to put in `.env`.
+4. Workers on Windows: Celery has no official Windows pool, so run them with `--pool=solo` (or `--pool=threads`):
+   `fmly\Scripts\celery.exe -A app.workers.celery_app worker -Q scheduled --pool=solo -l info` and `fmly\Scripts\celery.exe -A app.workers.celery_app beat -l info`.
+
+### 3. Replica on Windows (optional, later)
+
+As administrator, with the primary running: allow replication for `formalie_replicator` in `pg_hba.conf`, then
+`"C:\Program Files\PostgreSQL\18\bin\pg_basebackup.exe" -h 127.0.0.1 -p 5432 -U formalie_replicator -D C:\pgdata\replica18 -R -X stream`,
+set `port = 5433` in `C:\pgdata\replica18\postgresql.conf`, register it with `pg_ctl register -N postgresql-x64-18-replica -D C:\pgdata\replica18`, start it, and add `postgresql://formalie_app:…@127.0.0.1:5433/formalie` to `DB_REPLICA_URLS`.
 
 ## Access matrix (verified 2026-10-02)
 

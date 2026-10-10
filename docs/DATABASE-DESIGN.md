@@ -5,7 +5,8 @@ Rewritten 2026-10-10 from the finished portal (`C:\UNETPROJECTS\formalieFrontend
 ## Conventions
 
 - IDs: `uuid` (UUIDv7, generated in app) everywhere. Names: snake_case, plural tables. Enums are `text` with a `CHECK` (values listed below come from the frontend catalogues).
-- **Tenant mixin** (all tenant tables): `tenant_id uuid not null`, `organisation_id uuid not null`, composite unique `(tenant_id, id)` for composite FKs, **RLS enabled and FORCED**. Policy: `tenant_id = current_setting('app.tenant_id')::uuid`; the API sets `app.tenant_id` / `app.organisation_id` per transaction (`SET LOCAL`).
+- **Tenant mixin** (all tenant tables): `tenant_id uuid not null`, `organisation_id uuid not null`, composite unique `(tenant_id, id)` for composite FKs, **RLS enabled and FORCED**. Policy on both `tenant_id` and `organisation_id` (BACKEND-SPEC §2, `enable_tenant_rls()`); the API sets `app.tenant_id` / `app.organisation_id` / `app.user_id` per transaction (`set_config(…, true)`).
+- **No hard deletes** (owner, 2026-10-10): `formalie_app` has no DELETE or TRUNCATE privilege on any Formalie table, and the ORM refuses `session.delete()`. Purges, trash emptying and retention mark rows (`deleted_at`, `purged_at`), they never remove them.
 - **Audit mixin:** `created_at timestamptz default now()`, `updated_at`, `created_by uuid`, `updated_by uuid`.
 - **Soft delete mixin:** `deleted_at timestamptz null`, `deleted_by uuid null`. Default queries exclude deleted rows. Uniques are partial `WHERE deleted_at IS NULL`. Forms in Trash are purged after 30 days (`TRASH_RETENTION_DAYS`).
 - **Optimistic locking:** `row_version int not null default 1` on editable entities (forms, roles, themes, page designs, lists, settings sections, destinations); a stale version → `FRM-GEN-1009`.
@@ -20,8 +21,10 @@ Rewritten 2026-10-10 from the finished portal (`C:\UNETPROJECTS\formalieFrontend
 
 | Role | Grants |
 | --- | --- |
-| `formalie_owner` | Owns the schema; used only by migrations (Alembic). |
-| `formalie_app` | API and Celery workers. `NOBYPASSRLS`; CRUD on tenant tables, `SELECT` on global tables, `INSERT` only on log tables (`audit_logs`, `request_logs`, `error_logs`, `api_request_logs`, `form_fill_events`). Cannot list `tenants` except through `platform.resolve_tenant(host)` (SECURITY DEFINER). |
+| `formalie_owner` | Owns the schema; used only by migrations (Alembic). Roles are created once per cluster by `scripts/db_bootstrap.py`. |
+| `formalie_app` | API and Celery workers. `NOBYPASSRLS`; SELECT, INSERT, UPDATE on tenant tables (no DELETE: soft delete only), INSERT only on `event_outbox`, `SELECT` on global tables, `INSERT` only on log tables (`audit_logs`, `request_logs`, `error_logs`, `api_request_logs`, `form_fill_events`). Cannot list `tenants` except through `platform.resolve_tenant(host)` (SECURITY DEFINER). |
+| `formalie_worker` | Outbox relay and partition upkeep only. `BYPASSRLS`, SELECT and UPDATE on `event_outbox`, EXECUTE on `platform.ensure_monthly_partitions`; nothing else. |
+| `formalie_readonly` | Reporting on replicas: SELECT, `default_transaction_read_only = on`, `NOBYPASSRLS`. |
 | `platform_reader` | Read replica only. `BYPASSRLS`, `default_transaction_read_only = on`, `statement_timeout = 15s`, connection limit. Column privileges exclude secrets (`*_hash`, `*_enc`, TOTP secrets, recovery codes, connection credentials, webhook secrets) and answer content (`responses.data`, file contents, `resume_drafts.data`). |
 | `platform_writer` | `INSERT`, `UPDATE` (no `DELETE`; retire with `retired_at`) on the platform-owned global tables marked **(P)** below. Every write carries `published_by_staff_id`, `published_at`; then `platform.published { table, ids, version }` on the bus drops Formalie's caches. |
 

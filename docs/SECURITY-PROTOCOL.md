@@ -43,7 +43,8 @@ Same structure (`kid, iv, ts, nonce, ct`), encrypted with the session key. Clien
 
 - File uploads: browser uploads directly to object storage via **pre-signed, expiring URLs** (TLS); the request that obtains the URL is enveloped. Files are encrypted at rest. Respondents' files (public forms) are checked by their bytes (real pictures for image questions, no programs for file questions), never served from a public address, and attached to exactly one response (03-DECISIONS → 88).
 - File downloads/exports: signed, short-lived URLs.
-- `/api/health` and the handshake endpoint.
+- `/api/v1/health` and the handshake endpoint.
+- Browser redirects (`/auth/oauth/{provider}/start`, `/auth/sso/start`), single-use download links (`/downloads/{token}`, `/response-exports/{token}`, `/response-files/{token}`, `/datasource-exports/{token}`), the processor's signed webhook (`/billing/webhooks/payoneer`) and service-to-service routes (`/internal/*`, never reachable through the public proxy). The backend's list is `plaintext_patterns()` in `app/core/middleware/envelope.py`; nothing else is plain.
 
 ## 5. Authentication tokens (Fernet)
 
@@ -53,7 +54,7 @@ Same structure (`kid, iv, ts, nonce, ct`), encrypted with the session key. Clien
 - An unknown or expired access token answers `FRM-AUTH-1001` (never `1010`), so the client always tries the refresh cookie before signing anyone out.
 - Fernet tokens include a timestamp and random IV, so **two tokens are never identical even for the same payload**.
 - Access tokens can be revoked early via a session (`sid`) deny-list in Redis (logout, password change, admin reset).
-- Browser storage: access token in memory; refresh token in an `HttpOnly; Secure; SameSite=Strict` cookie scoped to the tenant subdomain, path `/api/v1/auth/refresh`.
+- Browser storage: access token in memory; refresh token in the `formalie_rt` cookie, `HttpOnly; Secure; SameSite=Strict`, scoped to the tenant subdomain, path `/api/v1/auth` (refresh and logout both need it; as the mock does).
 - Keys: `FERNET_KEYS` list (MultiFernet) to allow key rotation.
 
 ## 6. CSRF

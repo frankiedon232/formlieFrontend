@@ -10,14 +10,14 @@ Rewritten on 2026-10-10, after the frontend (formalieFrontend) was finished agai
 - new error codes are registered in `ERROR-CODES.md`;
 - the frontend runs that area against the real backend: `NUXT_PUBLIC_API_MOCK=false`, or that area's routes through the dev proxy.
 
-Then stop for the owner's review.
+Then stop for the owner's review. Day-to-day status lives in `PROGRESS.md`.
 
 ## B0, Foundation
 
-- [ ] Project layout per CLAUDE.md, `app/run.py` app factory, settings from `.env` (+ `.env.example`), requirements pinned.
-- [ ] Development services installed directly on the machine, **no Docker** (owner, 2026-10-10; 02-DEV-ENVIRONMENT): PostgreSQL 16 (primary + replica), PgBouncer, Redis 7 (Memurai or WSL), RabbitMQ, MinIO, Mailpit.
-- [ ] Logging (files by level and date, structured, trace_id), error codes from `shared/utils/errors/codes.ts`, exception handlers, standard response models.
-- [ ] Middleware chain (BACKEND-SPEC §1): request context, security headers, IP rate limit, tenant, envelope, encrypted references, request log.
+- [x] Project layout per CLAUDE.md, `app/run.py` app factory, settings from `.env` (+ `.env.example`), requirements pinned.
+- [ ] Development services installed directly on the machine, **no Docker** (owner, 2026-10-10; 02-DEV-ENVIRONMENT): PostgreSQL 18 on Windows (primary + replica), and in WSL: PgBouncer, Redis 7, RabbitMQ, MinIO, Mailpit.
+- [x] Logging (files by level and date, structured, trace_id), error codes from `shared/utils/errors/codes.ts`, exception handlers, standard response models.
+- [x] Middleware chain (BACKEND-SPEC §1): request context, security headers, IP rate limit, tenant, envelope gate (fails closed), request log. Envelope crypto and encrypted references are B1's first items.
 - [ ] DB: primary / replica engines, session router, RLS context, mixins, Alembic with the `enable_tenant_rls` helper, DB roles (including `platform_reader` / `platform_writer`).
 - [ ] Redis cache tiers, the Celery app and queues, the event bus and the outbox relay.
 - [ ] CI test asserting RLS is forced on every tenant table.

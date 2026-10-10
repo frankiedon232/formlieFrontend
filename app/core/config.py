@@ -1,0 +1,92 @@
+"""Settings from the environment (`.env` in development). Every variable is listed in `.env.example`."""
+
+from __future__ import annotations
+
+import ipaddress
+from functools import lru_cache
+from pathlib import Path
+from typing import Annotated, Literal
+
+from pydantic import Field, SecretStr, field_validator
+from pydantic_settings import BaseSettings, NoDecode, SettingsConfigDict
+
+ROOT_DIR = Path(__file__).resolve().parents[2]
+
+
+class Settings(BaseSettings):
+    model_config = SettingsConfigDict(env_file=ROOT_DIR / ".env", env_file_encoding="utf-8", extra="ignore")
+
+    # ── Application ────────────────────────────────────────────────────────────
+    app_env: Literal["development", "test", "staging", "production"] = "development"
+    app_release: str = "0.0.0-dev"
+    api_prefix: str = "/api/v1"
+    docs_enabled: bool = True
+
+    # ── Hosts and tenancy (01-ARCHITECTURE, shared/utils/tenant/host.ts) ──────
+    root_domain: str = "formalie.dev"
+    manage_subdomain: str = "manage"
+    # Only these peers may set X-Forwarded-For / X-Forwarded-Host / CF-Connecting-IP (Nginx, the Nuxt dev proxy).
+    trusted_proxies: Annotated[list[str], NoDecode] = Field(default_factory=lambda: ["127.0.0.1/32", "::1/128"])
+    tenant_cache_seconds: int = 30
+
+    # ── PostgreSQL (primary + replicas, PgBouncer) ────────────────────────────
+    db_superuser_url: SecretStr | None = None  # scripts/db_bootstrap.py only, never used by the app
+    db_owner_url: SecretStr | None = None  # Alembic migrations only
+    db_app_url: SecretStr | None = None  # runtime, primary (NOBYPASSRLS)
+    db_replica_urls: Annotated[list[SecretStr], NoDecode] = Field(default_factory=list)  # runtime, replicas
+    db_relay_url: SecretStr | None = None  # outbox relay worker
+    db_test_database: str = "formalie_test"
+    db_pgbouncer: bool = False
+    db_pool_size: int = 10
+    db_max_overflow: int = 10
+    db_pool_timeout: int = 10
+    db_statement_timeout_ms: int = 15_000
+    db_read_your_writes_seconds: int = 5
+
+    # ── Redis, RabbitMQ, Celery ───────────────────────────────────────────────
+    redis_url: SecretStr = SecretStr("redis://127.0.0.1:6379/0")
+    rabbitmq_url: SecretStr = SecretStr("amqp://guest:guest@127.0.0.1:5672//")
+    celery_result_backend: SecretStr = SecretStr("redis://127.0.0.1:6379/1")
+    events_exchange: str = "formalie.events"
+    outbox_relay_batch: int = 200
+
+    # ── Rate limiting (Redis sliding window) ─────────────────────────────────
+    rate_limit_enabled: bool = True
+    rate_limit_ip_per_minute: int = 600
+    rate_limit_fail_open: bool = True  # when Redis is down: allow and log CRITICAL (False = refuse with FRM-GEN-5003)
+
+    # ── Logging (BACKEND-SPEC §8) ─────────────────────────────────────────────
+    log_dir: Path = ROOT_DIR / "logs"
+    log_level: str = "INFO"
+    log_retention_days: int = 90
+    log_console: bool = True
+
+    @field_validator("trusted_proxies", mode="before")
+    @classmethod
+    def _split_proxies(cls, value: object) -> object:
+        if isinstance(value, str):
+            value = [item.strip() for item in value.split(",") if item.strip()]
+        if isinstance(value, list):
+            for item in value:
+                ipaddress.ip_network(item, strict=False)
+        return value
+
+    @field_validator("db_replica_urls", mode="before")
+    @classmethod
+    def _split_replicas(cls, value: object) -> object:
+        if isinstance(value, str):
+            return [item.strip() for item in value.split(",") if item.strip()]
+        return value
+
+    @property
+    def is_development(self) -> bool:
+        return self.app_env in ("development", "test")
+
+    @property
+    def is_production(self) -> bool:
+        return self.app_env == "production"
+
+
+@lru_cache
+def get_settings() -> Settings:
+    return Settings()

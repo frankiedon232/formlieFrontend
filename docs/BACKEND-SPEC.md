@@ -20,18 +20,18 @@ Updated 2026-10-10 after the frontend was finished. The frontend's mock (`C:/UNE
 ## 2. Tenancy and RLS
 
 - Model: shared DB + shared schema + `tenant_id` + `organisation_id`.
-- Roles: `formalie_owner` (migrations only), `formalie_app` (runtime, `NOBYPASSRLS`), `formalie_readonly` (replicas/reporting), `formalie_platform` (tenant directory lookups only).
+- Roles (made by `scripts/db_bootstrap.py`, granted by migrations): `formalie_owner` (migrations only), `formalie_app` (runtime, `NOBYPASSRLS`, no DELETE on tenant tables), `formalie_worker` (`BYPASSRLS`, only the outbox relay and partition upkeep), `formalie_readonly` (replicas/reporting, read only), `platform_reader` / `platform_writer` (platform admin, PLATFORM-ADMIN-INTEGRATION §1). Tenant directory lookups go through `SECURITY DEFINER` functions (`platform.resolve_tenant`), so no separate directory role is needed.
 - For each tenant table:
   ```sql
   ALTER TABLE forms ENABLE ROW LEVEL SECURITY;
   ALTER TABLE forms FORCE ROW LEVEL SECURITY;
   CREATE POLICY forms_isolation ON forms
-    USING (tenant_id = current_setting('app.tenant_id', true)::uuid
-           AND organisation_id = current_setting('app.organisation_id', true)::uuid)
-    WITH CHECK (tenant_id = current_setting('app.tenant_id', true)::uuid
-           AND organisation_id = current_setting('app.organisation_id', true)::uuid);
+    USING (tenant_id = nullif(current_setting('app.tenant_id', true), '')::uuid
+           AND organisation_id = nullif(current_setting('app.organisation_id', true), '')::uuid)
+    WITH CHECK (tenant_id = nullif(current_setting('app.tenant_id', true), '')::uuid
+           AND organisation_id = nullif(current_setting('app.organisation_id', true), '')::uuid);
   ```
-  If the setting is missing, `current_setting(..., true)` returns NULL and **no rows match** (fail closed).
+  If the setting is missing, `current_setting(..., true)` returns NULL (or `''` once a transaction on that connection has set it, hence `nullif`) and **no rows match** (fail closed). The generator is `enable_tenant_rls()` in `app/core/db/rls.py`, which also grants `formalie_app` SELECT, INSERT, UPDATE and never DELETE.
 - Session setup per transaction: `SELECT set_config('app.tenant_id', :t, true), set_config('app.organisation_id', :o, true), set_config('app.user_id', :u, true)`, transaction-local, safe with PgBouncer transaction pooling.
 - Tenant lookup by subdomain before tenant context exists uses a `SECURITY DEFINER` function `platform.resolve_tenant(subdomain)` returning only public fields.
 - Composite foreign keys `(tenant_id, parent_id) → parent(tenant_id, id)` make cross-tenant references impossible at the DB level.
