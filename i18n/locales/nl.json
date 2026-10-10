@@ -9553,6 +9553,33 @@
         "unpublished_changes": "Bekijken en publiceren",
         "stale_draft": "Afmaken"
       }
+    },
+    "dataView": {
+      "connections": "Verbindingen",
+      "connectionsHint": "je databases",
+      "operations": "Bewerkingen",
+      "stored": "Opgeslagen",
+      "failing": "Mislukt",
+      "failingHint": "geen verbinding",
+      "latency": "Reactietijd",
+      "latencyHint": "gemiddeld, laatste controle",
+      "activity": "Activiteit op je databases",
+      "operationsCount": "{n} bewerking | {n} bewerkingen",
+      "storedIn": "{n} reacties opgeslagen",
+      "noOps": "Geen bewerkingen in deze periode.",
+      "health": "Gezondheid van verbindingen",
+      "done": "Wat mensen deden",
+      "nothingDone": "Niets in deze periode.",
+      "storage": "Opslag van reacties",
+      "noStorage": "Nog geen formulier slaat zijn reacties op in een database.",
+      "storageForms": "{n} formulier slaat zijn reacties op in een database | {n} formulieren slaan hun reacties op in een database",
+      "sent": "Opgeslagen",
+      "waiting": "Wachtend",
+      "failedSend": "Mislukt",
+      "recent": "Laatste activiteit",
+      "noneTitle": "Nog geen databases verbonden",
+      "noneDesc": "Verbind een database om reacties op te slaan in je eigen tabellen, ze te verkennen en query’s uit te voeren.",
+      "add": "Verbinding toevoegen"
     }
   }
 }

@@ -9553,6 +9553,33 @@
         "unpublished_changes": "Xem lại và xuất bản",
         "stale_draft": "Hoàn thiện"
       }
+    },
+    "dataView": {
+      "connections": "Kết nối",
+      "connectionsHint": "cơ sở dữ liệu của bạn",
+      "operations": "Thao tác",
+      "stored": "Phản hồi đã lưu",
+      "failing": "Lỗi",
+      "failingHint": "không kết nối được",
+      "latency": "Thời gian phản hồi",
+      "latencyHint": "trung bình, lần kiểm tra cuối",
+      "activity": "Hoạt động trên cơ sở dữ liệu của bạn",
+      "operationsCount": "{n} thao tác | {n} thao tác",
+      "storedIn": "Đã lưu {n} phản hồi",
+      "noOps": "Không có thao tác trong giai đoạn này.",
+      "health": "Tình trạng kết nối",
+      "done": "Những gì mọi người đã làm",
+      "nothingDone": "Không có gì trong giai đoạn này.",
+      "storage": "Lưu trữ phản hồi",
+      "noStorage": "Chưa có biểu mẫu nào lưu phản hồi vào cơ sở dữ liệu.",
+      "storageForms": "{n} biểu mẫu lưu phản hồi vào cơ sở dữ liệu | {n} biểu mẫu lưu phản hồi vào cơ sở dữ liệu",
+      "sent": "Đã lưu",
+      "waiting": "Đang chờ",
+      "failedSend": "Thất bại",
+      "recent": "Hoạt động mới nhất",
+      "noneTitle": "Chưa kết nối cơ sở dữ liệu nào",
+      "noneDesc": "Kết nối cơ sở dữ liệu để lưu phản hồi vào bảng của riêng bạn, khám phá và chạy truy vấn.",
+      "add": "Thêm kết nối"
     }
   }
 }

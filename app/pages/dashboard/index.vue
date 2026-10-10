@@ -36,7 +36,7 @@ const syncedAt = ref<number | null>(null)
 
 // Views: Workspace for everyone, the others for people whose role reaches the area
 const VIEW_KEY = 'formalie:dashboard-view'
-const views = computed(() => [{ value: 'workspace' as const, label: t('dashboard.views.workspace'), icon: 'i-lucide-layout-dashboard' }, ...(can('forms.view') ? [{ value: 'forms' as const, label: t('dashboard.views.forms'), icon: 'i-lucide-file-text' }] : [])])
+const views = computed(() => [{ value: 'workspace' as const, label: t('dashboard.views.workspace'), icon: 'i-lucide-layout-dashboard' }, ...(can('forms.view') ? [{ value: 'forms' as const, label: t('dashboard.views.forms'), icon: 'i-lucide-file-text' }] : []), ...(can('data.view') ? [{ value: 'data' as const, label: t('dashboard.views.data'), icon: 'i-lucide-database' }] : [])])
 const stored = (() => {
   try {
     return localStorage.getItem(VIEW_KEY) as DashboardView | null
@@ -75,7 +75,8 @@ const current = useTemplateRef<{ refresh: () => Promise<unknown> }>('current')
         <UTabs v-if="views.length > 1" v-model="view" :items="views" :content="false" color="neutral" size="sm" :ui="SEGMENTED_UI" :aria-label="t('dashboard.views.label')" />
         <UTabs v-model="chosenGroup" :items="groups" :content="false" color="neutral" size="xs" :ui="SEGMENTED_UI" class="ms-auto 2xl:hidden" :aria-label="t('dashboard.groupLabel')" />
       </div>
-      <DashboardForms v-if="view === 'forms'" ref="current" :from="from" :to="to" :group="group" @loaded="loaded" />
+      <DashboardData v-if="view === 'data'" ref="current" :from="from" :to="to" :group="group" @loaded="loaded" />
+      <DashboardForms v-else-if="view === 'forms'" ref="current" :from="from" :to="to" :group="group" @loaded="loaded" />
       <DashboardWorkspace v-else ref="current" :from="from" :to="to" :group="group" @loaded="loaded" />
     </div>
   </AppPanel>

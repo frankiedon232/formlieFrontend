@@ -9553,6 +9553,33 @@
         "unpublished_changes": "Kagua na uchapishe",
         "stale_draft": "Ikamilishe"
       }
+    },
+    "dataView": {
+      "connections": "Miunganisho",
+      "connectionsHint": "hifadhidata zako",
+      "operations": "Shughuli",
+      "stored": "Zilizohifadhiwa",
+      "failing": "Zinazoshindwa",
+      "failingHint": "haziunganishi",
+      "latency": "Muda wa majibu",
+      "latencyHint": "wastani, ukaguzi wa mwisho",
+      "activity": "Shughuli kwenye hifadhidata zako",
+      "operationsCount": "Shughuli {n} | Shughuli {n}",
+      "storedIn": "Majibu {n} yamehifadhiwa",
+      "noOps": "Hakuna shughuli katika kipindi hiki.",
+      "health": "Afya ya miunganisho",
+      "done": "Walichofanya watu",
+      "nothingDone": "Hakuna kitu katika kipindi hiki.",
+      "storage": "Hifadhi ya majibu",
+      "noStorage": "Bado hakuna fomu inayohifadhi majibu yake kwenye hifadhidata.",
+      "storageForms": "Fomu {n} inahifadhi majibu yake kwenye hifadhidata | Fomu {n} zinahifadhi majibu yake kwenye hifadhidata",
+      "sent": "Imehifadhiwa",
+      "waiting": "Inasubiri",
+      "failedSend": "Imeshindwa",
+      "recent": "Shughuli za hivi karibuni",
+      "noneTitle": "Bado hakuna hifadhidata iliyounganishwa",
+      "noneDesc": "Unganisha hifadhidata ili kuhifadhi majibu kwenye majedwali yako mwenyewe, kuyachunguza na kuendesha hoja.",
+      "add": "Ongeza muunganisho"
     }
   }
 }

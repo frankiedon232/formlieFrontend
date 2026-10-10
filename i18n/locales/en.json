@@ -9553,6 +9553,33 @@
         "unpublished_changes": "Review and publish",
         "stale_draft": "Finish it"
       }
+    },
+    "dataView": {
+      "connections": "Connections",
+      "connectionsHint": "your databases",
+      "operations": "Operations",
+      "stored": "Stored responses",
+      "failing": "Failing",
+      "failingHint": "not connecting",
+      "latency": "Response time",
+      "latencyHint": "average, last check",
+      "activity": "Activity on your databases",
+      "operationsCount": "{n} operation | {n} operations",
+      "storedIn": "{n} responses stored",
+      "noOps": "No operations in this period.",
+      "health": "Connection health",
+      "done": "What people did",
+      "nothingDone": "Nothing in this period.",
+      "storage": "Response storage",
+      "noStorage": "No forms store their responses in a database yet.",
+      "storageForms": "{n} form stores its responses in a database | {n} forms store their responses in a database",
+      "sent": "Stored",
+      "waiting": "Waiting",
+      "failedSend": "Failed",
+      "recent": "Latest activity",
+      "noneTitle": "No databases connected yet",
+      "noneDesc": "Connect a database to store responses in your own tables, explore them and run queries.",
+      "add": "Add a connection"
     }
   }
 }

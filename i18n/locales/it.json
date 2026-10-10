@@ -9553,6 +9553,33 @@
         "unpublished_changes": "Rivedi e pubblica",
         "stale_draft": "Completalo"
       }
+    },
+    "dataView": {
+      "connections": "Connessioni",
+      "connectionsHint": "i tuoi database",
+      "operations": "Operazioni",
+      "stored": "Risposte salvate",
+      "failing": "Con errori",
+      "failingHint": "non si connettono",
+      "latency": "Tempo di risposta",
+      "latencyHint": "media, ultimo controllo",
+      "activity": "Attività sui tuoi database",
+      "operationsCount": "{n} operazione | {n} operazioni",
+      "storedIn": "{n} risposte salvate",
+      "noOps": "Nessuna operazione in questo periodo.",
+      "health": "Stato delle connessioni",
+      "done": "Cosa hanno fatto le persone",
+      "nothingDone": "Niente in questo periodo.",
+      "storage": "Archiviazione delle risposte",
+      "noStorage": "Nessun modulo salva ancora le sue risposte in un database.",
+      "storageForms": "{n} modulo salva le sue risposte in un database | {n} moduli salvano le loro risposte in un database",
+      "sent": "Salvate",
+      "waiting": "In attesa",
+      "failedSend": "Non riuscite",
+      "recent": "Ultima attività",
+      "noneTitle": "Nessun database ancora collegato",
+      "noneDesc": "Collega un database per salvare le risposte nelle tue tabelle, esplorarle ed eseguire query.",
+      "add": "Aggiungi una connessione"
     }
   }
 }

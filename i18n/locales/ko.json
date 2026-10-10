@@ -9553,6 +9553,33 @@
         "unpublished_changes": "검토 후 게시",
         "stale_draft": "마무리하기"
       }
+    },
+    "dataView": {
+      "connections": "연결",
+      "connectionsHint": "내 데이터베이스",
+      "operations": "작업",
+      "stored": "저장된 응답",
+      "failing": "실패",
+      "failingHint": "연결 안 됨",
+      "latency": "응답 시간",
+      "latencyHint": "평균, 마지막 확인",
+      "activity": "데이터베이스 활동",
+      "operationsCount": "작업 {n}건 | 작업 {n}건",
+      "storedIn": "응답 {n}개 저장됨",
+      "noOps": "이 기간에는 작업이 없습니다.",
+      "health": "연결 상태",
+      "done": "사용자가 한 일",
+      "nothingDone": "이 기간에는 없습니다.",
+      "storage": "응답 저장소",
+      "noStorage": "아직 응답을 데이터베이스에 저장하는 양식이 없습니다.",
+      "storageForms": "양식 {n}개가 응답을 데이터베이스에 저장합니다 | 양식 {n}개가 응답을 데이터베이스에 저장합니다",
+      "sent": "저장됨",
+      "waiting": "대기 중",
+      "failedSend": "실패",
+      "recent": "최근 활동",
+      "noneTitle": "아직 연결된 데이터베이스가 없습니다",
+      "noneDesc": "데이터베이스를 연결하면 응답을 내 테이블에 저장하고, 살펴보고, 쿼리를 실행할 수 있습니다.",
+      "add": "연결 추가"
     }
   }
 }

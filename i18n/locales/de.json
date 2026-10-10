@@ -9553,6 +9553,33 @@
         "unpublished_changes": "Prüfen und veröffentlichen",
         "stale_draft": "Fertigstellen"
       }
+    },
+    "dataView": {
+      "connections": "Verbindungen",
+      "connectionsHint": "Ihre Datenbanken",
+      "operations": "Vorgänge",
+      "stored": "Gespeichert",
+      "failing": "Fehlerhaft",
+      "failingHint": "keine Verbindung",
+      "latency": "Antwortzeit",
+      "latencyHint": "Durchschnitt, letzte Prüfung",
+      "activity": "Aktivität in Ihren Datenbanken",
+      "operationsCount": "{n} Vorgang | {n} Vorgänge",
+      "storedIn": "{n} Antworten gespeichert",
+      "noOps": "Keine Vorgänge in diesem Zeitraum.",
+      "health": "Zustand der Verbindungen",
+      "done": "Was Personen getan haben",
+      "nothingDone": "Nichts in diesem Zeitraum.",
+      "storage": "Antwortspeicher",
+      "noStorage": "Noch speichert kein Formular seine Antworten in einer Datenbank.",
+      "storageForms": "{n} Formular speichert seine Antworten in einer Datenbank | {n} Formulare speichern ihre Antworten in einer Datenbank",
+      "sent": "Gespeichert",
+      "waiting": "Wartet",
+      "failedSend": "Fehlgeschlagen",
+      "recent": "Letzte Aktivität",
+      "noneTitle": "Noch keine Datenbank verbunden",
+      "noneDesc": "Verbinden Sie eine Datenbank, um Antworten in Ihren eigenen Tabellen zu speichern, sie zu erkunden und Abfragen auszuführen.",
+      "add": "Verbindung hinzufügen"
     }
   }
 }

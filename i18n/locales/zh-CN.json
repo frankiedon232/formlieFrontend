@@ -9553,6 +9553,33 @@
         "unpublished_changes": "审核并发布",
         "stale_draft": "完成它"
       }
+    },
+    "dataView": {
+      "connections": "连接",
+      "connectionsHint": "您的数据库",
+      "operations": "操作",
+      "stored": "已存回复",
+      "failing": "失败",
+      "failingHint": "无法连接",
+      "latency": "响应时间",
+      "latencyHint": "平均值，最近一次检查",
+      "activity": "数据库上的活动",
+      "operationsCount": "{n} 次操作 | {n} 次操作",
+      "storedIn": "已存储 {n} 条回复",
+      "noOps": "此期间没有操作。",
+      "health": "连接状态",
+      "done": "用户做了什么",
+      "nothingDone": "此期间没有内容。",
+      "storage": "回复存储",
+      "noStorage": "目前还没有表单把回复存入数据库。",
+      "storageForms": "{n} 个表单把回复存入数据库 | {n} 个表单把回复存入数据库",
+      "sent": "已存储",
+      "waiting": "等待中",
+      "failedSend": "失败",
+      "recent": "最新活动",
+      "noneTitle": "还没有连接数据库",
+      "noneDesc": "连接数据库后，可将回复存入您自己的表中，浏览并运行查询。",
+      "add": "添加连接"
     }
   }
 }

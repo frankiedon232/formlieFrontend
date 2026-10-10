@@ -9553,6 +9553,33 @@
         "unpublished_changes": "İncele ve yayınla",
         "stale_draft": "Tamamla"
       }
+    },
+    "dataView": {
+      "connections": "Bağlantılar",
+      "connectionsHint": "veritabanlarınız",
+      "operations": "İşlemler",
+      "stored": "Saklanan yanıtlar",
+      "failing": "Başarısız",
+      "failingHint": "bağlanmıyor",
+      "latency": "Yanıt süresi",
+      "latencyHint": "ortalama, son kontrol",
+      "activity": "Veritabanlarınızdaki etkinlik",
+      "operationsCount": "{n} işlem | {n} işlem",
+      "storedIn": "{n} yanıt saklandı",
+      "noOps": "Bu dönemde işlem yok.",
+      "health": "Bağlantı durumu",
+      "done": "İnsanların yaptıkları",
+      "nothingDone": "Bu dönemde hiçbir şey yok.",
+      "storage": "Yanıt depolama",
+      "noStorage": "Henüz hiçbir form yanıtlarını bir veritabanında saklamıyor.",
+      "storageForms": "{n} form yanıtlarını bir veritabanında saklıyor | {n} form yanıtlarını bir veritabanında saklıyor",
+      "sent": "Saklandı",
+      "waiting": "Bekliyor",
+      "failedSend": "Başarısız",
+      "recent": "Son etkinlik",
+      "noneTitle": "Henüz bağlı veritabanı yok",
+      "noneDesc": "Yanıtları kendi tablolarınızda saklamak, incelemek ve sorgu çalıştırmak için bir veritabanı bağlayın.",
+      "add": "Bağlantı ekle"
     }
   }
 }

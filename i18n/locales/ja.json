@@ -9553,6 +9553,33 @@
         "unpublished_changes": "確認して公開",
         "stale_draft": "仕上げる"
       }
+    },
+    "dataView": {
+      "connections": "接続",
+      "connectionsHint": "お使いのデータベース",
+      "operations": "操作",
+      "stored": "保存済みの回答",
+      "failing": "失敗",
+      "failingHint": "接続できません",
+      "latency": "応答時間",
+      "latencyHint": "平均、最終確認時",
+      "activity": "データベースのアクティビティ",
+      "operationsCount": "操作 {n} 件 | 操作 {n} 件",
+      "storedIn": "回答 {n} 件を保存済み",
+      "noOps": "この期間に操作はありません。",
+      "health": "接続の状態",
+      "done": "ユーザーの操作",
+      "nothingDone": "この期間にはありません。",
+      "storage": "回答の保存先",
+      "noStorage": "回答をデータベースに保存しているフォームはまだありません。",
+      "storageForms": "フォーム {n} 件が回答をデータベースに保存 | フォーム {n} 件が回答をデータベースに保存",
+      "sent": "保存済み",
+      "waiting": "待機中",
+      "failedSend": "失敗",
+      "recent": "最新のアクティビティ",
+      "noneTitle": "接続済みのデータベースはまだありません",
+      "noneDesc": "データベースを接続すると、回答を自分のテーブルに保存し、確認し、クエリを実行できます。",
+      "add": "接続を追加"
     }
   }
 }

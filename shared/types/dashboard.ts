@@ -106,3 +106,25 @@ export interface FormsDashboard {
   owners: { id: string; name: string; forms: number; responses: number }[]
   work: { kind: FormsWorkKind; form: { id: string; name: string }; at: string | null; count: number | null }[]
 }
+
+/** GET /dashboard/data?from&to&group (F21 M3): the data sources at work (people with data access). */
+export interface DataDashboard {
+  from: string
+  to: string
+  group: DashboardGroup
+  kpis: {
+    connections: DashboardKpi
+    operations: DashboardKpi
+    deliveries: DashboardKpi
+    failing: DashboardKpi
+    /** Average time to answer the last health checks, in milliseconds. */
+    latency: DashboardKpi
+  }
+  /** Operations on the connections and responses stored in databases, per bucket. */
+  series: { start: string; operations: number; deliveries: number }[]
+  connections: { id: string; name: string; engine: string; status: string; latency_ms: number | null; last_checked_at: string | null; operations: number }[]
+  /** What people did (the audit trail's data area), by kind. */
+  kinds: { queries: number; rows: number; structure: number; exports: number; storage: number; connections: number }
+  storage: { forms: number; sent: number; pending: number; failed: number }
+  recent: { id: string; action: string; actor: string; resource: string | null; at: string }[]
+}

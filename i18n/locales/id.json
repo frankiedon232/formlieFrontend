@@ -9553,6 +9553,33 @@
         "unpublished_changes": "Tinjau dan publikasikan",
         "stale_draft": "Selesaikan"
       }
+    },
+    "dataView": {
+      "connections": "Koneksi",
+      "connectionsHint": "basis data Anda",
+      "operations": "Operasi",
+      "stored": "Respons tersimpan",
+      "failing": "Gagal",
+      "failingHint": "tidak terhubung",
+      "latency": "Waktu respons",
+      "latencyHint": "rata-rata, pemeriksaan terakhir",
+      "activity": "Aktivitas di basis data Anda",
+      "operationsCount": "{n} operasi | {n} operasi",
+      "storedIn": "{n} respons tersimpan",
+      "noOps": "Tidak ada operasi pada periode ini.",
+      "health": "Kesehatan koneksi",
+      "done": "Apa yang dilakukan orang",
+      "nothingDone": "Tidak ada pada periode ini.",
+      "storage": "Penyimpanan respons",
+      "noStorage": "Belum ada formulir yang menyimpan responsnya di basis data.",
+      "storageForms": "{n} formulir menyimpan responsnya di basis data | {n} formulir menyimpan responsnya di basis data",
+      "sent": "Tersimpan",
+      "waiting": "Menunggu",
+      "failedSend": "Gagal",
+      "recent": "Aktivitas terbaru",
+      "noneTitle": "Belum ada basis data yang terhubung",
+      "noneDesc": "Hubungkan basis data untuk menyimpan respons di tabel Anda sendiri, menjelajahinya, dan menjalankan kueri.",
+      "add": "Tambah koneksi"
     }
   }
 }

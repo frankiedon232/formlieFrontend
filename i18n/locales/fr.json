@@ -9553,6 +9553,33 @@
         "unpublished_changes": "Relire et publier",
         "stale_draft": "Le terminer"
       }
+    },
+    "dataView": {
+      "connections": "Connexions",
+      "connectionsHint": "vos bases de données",
+      "operations": "Opérations",
+      "stored": "Réponses stockées",
+      "failing": "En échec",
+      "failingHint": "ne se connectent pas",
+      "latency": "Temps de réponse",
+      "latencyHint": "moyenne, dernier contrôle",
+      "activity": "Activité sur vos bases de données",
+      "operationsCount": "{n} opération | {n} opérations",
+      "storedIn": "{n} réponses stockées",
+      "noOps": "Aucune opération sur cette période.",
+      "health": "État des connexions",
+      "done": "Ce que les gens ont fait",
+      "nothingDone": "Rien sur cette période.",
+      "storage": "Stockage des réponses",
+      "noStorage": "Aucun formulaire ne stocke encore ses réponses dans une base de données.",
+      "storageForms": "{n} formulaire stocke ses réponses dans une base de données | {n} formulaires stockent leurs réponses dans une base de données",
+      "sent": "Stockées",
+      "waiting": "En attente",
+      "failedSend": "Échec",
+      "recent": "Dernière activité",
+      "noneTitle": "Aucune base de données connectée pour le moment",
+      "noneDesc": "Connectez une base de données pour stocker les réponses dans vos propres tables, les explorer et lancer des requêtes.",
+      "add": "Ajouter une connexion"
     }
   }
 }

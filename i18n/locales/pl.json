@@ -9553,6 +9553,33 @@
         "unpublished_changes": "Przejrzyj i opublikuj",
         "stale_draft": "Dokończ"
       }
+    },
+    "dataView": {
+      "connections": "Połączenia",
+      "connectionsHint": "Twoje bazy danych",
+      "operations": "Operacje",
+      "stored": "Zapisane",
+      "failing": "Z błędami",
+      "failingHint": "brak połączenia",
+      "latency": "Czas odpowiedzi",
+      "latencyHint": "średnia, ostatnie sprawdzenie",
+      "activity": "Aktywność w Twoich bazach danych",
+      "operationsCount": "{n} operacja | {n} operacji",
+      "storedIn": "Zapisano odpowiedzi: {n}",
+      "noOps": "Brak operacji w tym okresie.",
+      "health": "Stan połączeń",
+      "done": "Co zrobili ludzie",
+      "nothingDone": "Nic w tym okresie.",
+      "storage": "Przechowywanie odpowiedzi",
+      "noStorage": "Żaden formularz nie zapisuje jeszcze odpowiedzi w bazie danych.",
+      "storageForms": "{n} formularz zapisuje odpowiedzi w bazie danych | Formularze zapisujące odpowiedzi w bazie danych: {n}",
+      "sent": "Zapisane",
+      "waiting": "Oczekuje",
+      "failedSend": "Nieudane",
+      "recent": "Ostatnia aktywność",
+      "noneTitle": "Nie połączono jeszcze żadnej bazy danych",
+      "noneDesc": "Połącz bazę danych, aby zapisywać odpowiedzi we własnych tabelach, przeglądać je i uruchamiać zapytania.",
+      "add": "Dodaj połączenie"
     }
   }
 }
