@@ -5674,7 +5674,37 @@
       "teamDesc": "Staf di ruang kerja Anda yang membuat dan mengelola formulir ini. Ini tidak mengubah siapa yang dapat mengisinya."
     },
     "readOnly": "Anda dapat melihat pengaturan ini",
-    "readOnlyDesc": "Peran Anda tidak mengizinkan Anda mengubah cara formulir ini dibagikan."
+    "readOnlyDesc": "Peran Anda tidak mengizinkan Anda mengubah cara formulir ini dibagikan.",
+    "who": {
+      "title": "Siapa yang dapat melihat formulir ini",
+      "desc": "Semua orang di ruang kerja, apa yang boleh mereka lakukan dengan formulir ini, dan alasannya.",
+      "refresh": "Segarkan",
+      "failed": "Tidak dapat memuat siapa yang memiliki akses",
+      "all": "Semua · {n}",
+      "level": {
+        "edit": "Dapat mengedit",
+        "view": "Dapat melihat",
+        "responses": "Hanya respons",
+        "none": "Tanpa akses"
+      },
+      "search": "Cari orang",
+      "seesResponses": "Melihat respons",
+      "none": "Tidak ada yang cocok",
+      "clear": "Hapus filter",
+      "folderNote": "Formulir ini berada di {folder}, folder yang hanya dapat dibuka sebagian orang. Yang lain tidak punya akses, apa pun pengaturan di atas.",
+      "note": "Untuk mengubah akses, gunakan Orang dengan akses di atas, akses folder, atau peran orang tersebut.",
+      "reason": {
+        "workspace_owner": "Pemilik ruang kerja: semua formulir",
+        "all_forms": "Peran mereka melihat semua formulir",
+        "form_owner": "Membuat formulir ini",
+        "own_grant": "Diberi akses sendiri di atas",
+        "team_default": "Default untuk semua di atas",
+        "not_shared": "Tidak dibagikan kepada mereka (default: tanpa akses)",
+        "role_own_only": "Peran mereka hanya mencakup formulir yang mereka buat",
+        "role_none": "Peran mereka tidak punya akses ke formulir",
+        "folder_hidden": "Tidak dapat membuka folder {folder}"
+      }
+    }
   },
   "preview": {
     "crumb": "Pratinjau",

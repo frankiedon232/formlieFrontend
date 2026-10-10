@@ -5674,7 +5674,37 @@
       "teamDesc": "Bu formu oluşturan ve yöneten çalışma alanı personeli. Kimin doldurabileceğini değiştirmez."
     },
     "readOnly": "Bu ayarları görebilirsiniz",
-    "readOnlyDesc": "Rolünüz, bu formun nasıl paylaşıldığını değiştirmenize izin vermiyor."
+    "readOnlyDesc": "Rolünüz, bu formun nasıl paylaşıldığını değiştirmenize izin vermiyor.",
+    "who": {
+      "title": "Bu formu kimler görebilir",
+      "desc": "Çalışma alanındaki herkes, bu formla neler yapabilecekleri ve nedenleri.",
+      "refresh": "Yenile",
+      "failed": "Erişimi olanlar yüklenemedi",
+      "all": "Herkes · {n}",
+      "level": {
+        "edit": "Düzenleyebilir",
+        "view": "Görüntüleyebilir",
+        "responses": "Yalnızca yanıtlar",
+        "none": "Erişim yok"
+      },
+      "search": "Kişi ara",
+      "seesResponses": "Yanıtları görür",
+      "none": "Eşleşen kimse yok",
+      "clear": "Filtreleri temizle",
+      "folderNote": "Bu form, yalnızca bazı kişilerin açabildiği {folder} klasöründe. Yukarıda ne ayarlı olursa olsun diğer herkesin erişimi yok.",
+      "note": "Erişimi değiştirmek için yukarıdaki Erişimi olan kişiler bölümünü, klasörün erişimini veya kişinin rolünü kullanın.",
+      "reason": {
+        "workspace_owner": "Çalışma alanı sahibi: her form",
+        "all_forms": "Rolleri her formu görür",
+        "form_owner": "Bu formu oluşturdu",
+        "own_grant": "Yukarıda kendi erişimi verildi",
+        "team_default": "Yukarıda herkes için varsayılan",
+        "not_shared": "Onlarla paylaşılmadı (varsayılan erişimsiz)",
+        "role_own_only": "Rolleri yalnızca kendi oluşturdukları formlara ulaşır",
+        "role_none": "Rollerinin formlara erişimi yok",
+        "folder_hidden": "{folder} klasörünü açamaz"
+      }
+    }
   },
   "preview": {
     "crumb": "Önizleme",

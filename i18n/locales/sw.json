@@ -5674,7 +5674,37 @@
       "teamDesc": "Wafanyakazi wa eneo lako la kazi wanaounda na kusimamia fomu hii. Haibadilishi nani anaweza kuijaza."
     },
     "readOnly": "Unaweza kuona mipangilio hii",
-    "readOnlyDesc": "Jukumu lako haliruhusu kubadilisha jinsi fomu hii inavyoshirikiwa."
+    "readOnlyDesc": "Jukumu lako haliruhusu kubadilisha jinsi fomu hii inavyoshirikiwa.",
+    "who": {
+      "title": "Nani anaweza kuona fomu hii",
+      "desc": "Kila mtu kwenye eneo la kazi, wanachoweza kufanya na fomu hii na kwa nini.",
+      "refresh": "Onyesha upya",
+      "failed": "Imeshindwa kupakia nani ana ufikiaji",
+      "all": "Wote · {n}",
+      "level": {
+        "edit": "Anaweza kuhariri",
+        "view": "Anaweza kutazama",
+        "responses": "Majibu pekee",
+        "none": "Hakuna ufikiaji"
+      },
+      "search": "Tafuta watu",
+      "seesResponses": "Anaona majibu",
+      "none": "Hakuna anayelingana",
+      "clear": "Futa vichujio",
+      "folderNote": "Fomu hii iko kwenye {folder}, folda ambayo baadhi ya watu pekee wanaweza kuifungua. Wengine wote hawana ufikiaji, bila kujali yaliyowekwa juu.",
+      "note": "Ili kubadilisha ufikiaji, tumia Watu wenye ufikiaji hapo juu, ufikiaji wa folda, au jukumu la mtu huyo.",
+      "reason": {
+        "workspace_owner": "Mmiliki wa eneo la kazi: kila fomu",
+        "all_forms": "Jukumu lao linaona kila fomu",
+        "form_owner": "Alitengeneza fomu hii",
+        "own_grant": "Alipewa ufikiaji wake mwenyewe hapo juu",
+        "team_default": "Chaguomsingi kwa kila mtu hapo juu",
+        "not_shared": "Haijashirikiwa nao (chaguomsingi ni bila ufikiaji)",
+        "role_own_only": "Jukumu lao hufikia fomu walizotengeneza tu",
+        "role_none": "Jukumu lao halina ufikiaji wa fomu",
+        "folder_hidden": "Hawezi kufungua folda {folder}"
+      }
+    }
   },
   "preview": {
     "crumb": "Onyesho",

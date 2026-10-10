@@ -5674,7 +5674,37 @@
       "teamDesc": "Les membres de votre espace de travail qui créent et gèrent ce formulaire. Cela ne change pas qui peut le remplir."
     },
     "readOnly": "Vous pouvez consulter ces paramètres",
-    "readOnlyDesc": "Votre rôle ne vous permet pas de modifier le partage de ce formulaire."
+    "readOnlyDesc": "Votre rôle ne vous permet pas de modifier le partage de ce formulaire.",
+    "who": {
+      "title": "Qui peut voir ce formulaire",
+      "desc": "Tous les membres de l’espace de travail, ce qu’ils peuvent faire avec ce formulaire et pourquoi.",
+      "refresh": "Actualiser",
+      "failed": "Impossible de charger les accès",
+      "all": "Tout le monde · {n}",
+      "level": {
+        "edit": "Peut modifier",
+        "view": "Peut consulter",
+        "responses": "Réponses uniquement",
+        "none": "Aucun accès"
+      },
+      "search": "Rechercher des personnes",
+      "seesResponses": "Voit les réponses",
+      "none": "Personne ne correspond",
+      "clear": "Effacer les filtres",
+      "folderNote": "Ce formulaire est dans {folder}, un dossier que seules certaines personnes peuvent ouvrir. Tous les autres n’ont aucun accès, quoi qu’il soit réglé plus haut.",
+      "note": "Pour modifier l’accès, utilisez « Personnes ayant accès » plus haut, l’accès du dossier ou le rôle de la personne.",
+      "reason": {
+        "workspace_owner": "Propriétaire de l’espace de travail : tous les formulaires",
+        "all_forms": "Son rôle voit tous les formulaires",
+        "form_owner": "A créé ce formulaire",
+        "own_grant": "Accès personnel donné plus haut",
+        "team_default": "La valeur par défaut pour tous, plus haut",
+        "not_shared": "Non partagé avec elle (par défaut : aucun accès)",
+        "role_own_only": "Son rôle n’atteint que les formulaires qu’elle a créés",
+        "role_none": "Son rôle n’a pas accès aux formulaires",
+        "folder_hidden": "Ne peut pas ouvrir le dossier {folder}"
+      }
+    }
   },
   "preview": {
     "crumb": "Aperçu",

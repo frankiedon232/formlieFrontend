@@ -5674,7 +5674,37 @@
       "teamDesc": "Staff in your workspace who build and manage this form. This doesn’t change who can fill it in."
     },
     "readOnly": "You can see these settings",
-    "readOnlyDesc": "Your role doesn't let you change how this form is shared."
+    "readOnlyDesc": "Your role doesn't let you change how this form is shared.",
+    "who": {
+      "title": "Who can see this form",
+      "desc": "Everyone in the workspace, what they may do with this form and why.",
+      "refresh": "Refresh",
+      "failed": "Couldn't load who has access",
+      "all": "Everyone · {n}",
+      "level": {
+        "edit": "Can edit",
+        "view": "Can view",
+        "responses": "Responses only",
+        "none": "No access"
+      },
+      "search": "Search people",
+      "seesResponses": "Sees the responses",
+      "none": "Nobody matches",
+      "clear": "Clear filters",
+      "folderNote": "This form is in {folder}, a folder only some people can open. Everyone else has no access, whatever is set above.",
+      "note": "To change access, use People with access above, the folder's access, or the person's role.",
+      "reason": {
+        "workspace_owner": "Workspace owner: every form",
+        "all_forms": "Their role sees every form",
+        "form_owner": "Made this form",
+        "own_grant": "Given their own access above",
+        "team_default": "The default for everyone above",
+        "not_shared": "Not shared with them (the default is no access)",
+        "role_own_only": "Their role only reaches forms they made",
+        "role_none": "Their role has no access to forms",
+        "folder_hidden": "Can't open the folder {folder}"
+      }
+    }
   },
   "preview": {
     "crumb": "Preview",

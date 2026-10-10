@@ -5674,7 +5674,37 @@
       "teamDesc": "Mitarbeitende Ihres Arbeitsbereichs, die dieses Formular erstellen und verwalten. Das ändert nicht, wer es ausfüllen kann."
     },
     "readOnly": "Sie können diese Einstellungen sehen",
-    "readOnlyDesc": "Ihre Rolle erlaubt es Ihnen nicht, die Freigabe dieses Formulars zu ändern."
+    "readOnlyDesc": "Ihre Rolle erlaubt es Ihnen nicht, die Freigabe dieses Formulars zu ändern.",
+    "who": {
+      "title": "Wer dieses Formular sehen kann",
+      "desc": "Alle im Arbeitsbereich, was sie mit diesem Formular tun dürfen und warum.",
+      "refresh": "Aktualisieren",
+      "failed": "Zugriffe konnten nicht geladen werden",
+      "all": "Alle · {n}",
+      "level": {
+        "edit": "Bearbeiten",
+        "view": "Anzeigen",
+        "responses": "Nur Antworten",
+        "none": "Kein Zugriff"
+      },
+      "search": "Personen suchen",
+      "seesResponses": "Sieht die Antworten",
+      "none": "Niemand passt",
+      "clear": "Filter löschen",
+      "folderNote": "Dieses Formular liegt in {folder}, einem Ordner, den nur manche Personen öffnen können. Alle anderen haben keinen Zugriff, egal was oben eingestellt ist.",
+      "note": "Um den Zugriff zu ändern, nutzen Sie oben „Personen mit Zugriff“, den Zugriff des Ordners oder die Rolle der Person.",
+      "reason": {
+        "workspace_owner": "Inhaber des Arbeitsbereichs: jedes Formular",
+        "all_forms": "Ihre Rolle sieht jedes Formular",
+        "form_owner": "Hat dieses Formular erstellt",
+        "own_grant": "Hat oben eigenen Zugriff erhalten",
+        "team_default": "Die Vorgabe für alle oben",
+        "not_shared": "Nicht mit ihnen geteilt (Vorgabe ist kein Zugriff)",
+        "role_own_only": "Ihre Rolle erreicht nur selbst erstellte Formulare",
+        "role_none": "Ihre Rolle hat keinen Zugriff auf Formulare",
+        "folder_hidden": "Kann den Ordner {folder} nicht öffnen"
+      }
+    }
   },
   "preview": {
     "crumb": "Vorschau",

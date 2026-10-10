@@ -5674,7 +5674,37 @@
       "teamDesc": "Nhân viên trong không gian làm việc tạo và quản lý biểu mẫu này. Điều này không thay đổi ai có thể điền."
     },
     "readOnly": "Bạn có thể xem các cài đặt này",
-    "readOnlyDesc": "Vai trò của bạn không cho phép thay đổi cách chia sẻ biểu mẫu này."
+    "readOnlyDesc": "Vai trò của bạn không cho phép thay đổi cách chia sẻ biểu mẫu này.",
+    "who": {
+      "title": "Ai có thể xem biểu mẫu này",
+      "desc": "Mọi người trong không gian làm việc, họ được làm gì với biểu mẫu này và vì sao.",
+      "refresh": "Làm mới",
+      "failed": "Không tải được danh sách người có quyền truy cập",
+      "all": "Tất cả · {n}",
+      "level": {
+        "edit": "Có thể chỉnh sửa",
+        "view": "Có thể xem",
+        "responses": "Chỉ câu trả lời",
+        "none": "Không có quyền"
+      },
+      "search": "Tìm người",
+      "seesResponses": "Xem được phản hồi",
+      "none": "Không ai khớp",
+      "clear": "Xóa bộ lọc",
+      "folderNote": "Biểu mẫu này nằm trong {folder}, thư mục chỉ một số người mở được. Những người còn lại không có quyền truy cập, bất kể cài đặt ở trên.",
+      "note": "Để đổi quyền truy cập, hãy dùng mục Người có quyền truy cập ở trên, quyền của thư mục hoặc vai trò của người đó.",
+      "reason": {
+        "workspace_owner": "Chủ sở hữu không gian làm việc: mọi biểu mẫu",
+        "all_forms": "Vai trò của họ xem được mọi biểu mẫu",
+        "form_owner": "Đã tạo biểu mẫu này",
+        "own_grant": "Được cấp quyền riêng ở trên",
+        "team_default": "Mặc định cho mọi người ở trên",
+        "not_shared": "Chưa chia sẻ với họ (mặc định là không có quyền)",
+        "role_own_only": "Vai trò của họ chỉ tới được biểu mẫu họ tạo",
+        "role_none": "Vai trò của họ không có quyền với biểu mẫu",
+        "folder_hidden": "Không mở được thư mục {folder}"
+      }
+    }
   },
   "preview": {
     "crumb": "Xem trước",

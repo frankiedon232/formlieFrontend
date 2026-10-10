@@ -175,6 +175,7 @@ onBeforeRouteLeave(async () => (dirty.value ? await useConfirm()({ title: t('sha
         <FormsShareSeoCard v-if="draft.channels.includes('link')" v-model:draft="draft" :settings="settings" :form="form" />
         <FormsShareSection icon="i-lucide-users" :title="t('share.section.team')" :description="t('share.section.teamDesc')" class="mt-4" />
         <FormsSharePeopleCard v-model:draft="draft" :settings="settings" />
+        <FormsShareWhoCanSee :form-id="form.id" :settings="settings" />
       </fieldset>
       <FormsOverviewShare :form="form" class="lg:sticky lg:top-4" />
     </div>

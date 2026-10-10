@@ -217,6 +217,24 @@ export interface CustomLinkCheck {
   taken_by: { id: string; name: string; status: FormStatus; link: boolean } | null
 }
 
+/** Why a person has the access they have to a form (leftovers L4), the first rule that decides it. */
+export const ACCESS_REASONS = ['workspace_owner', 'all_forms', 'form_owner', 'own_grant', 'team_default', 'not_shared', 'role_own_only', 'role_none', 'folder_hidden'] as const
+export type AccessReason = (typeof ACCESS_REASONS)[number]
+
+/** GET /forms/{id}/access (leftovers L4): everyone in the workspace and what they may do with this form, and why. */
+export interface FormAccessOverview {
+  folder: { id: string; name: string; restricted: boolean } | null
+  people: {
+    user: { id: string; name: string; email: string; photo: string | null }
+    role: { id: string; name: string }
+    /** none < responses < view < edit, exactly what the routes allow. */
+    level: FormAccessLevel
+    /** May open the form's responses. */
+    responses: boolean
+    reason: AccessReason
+  }[]
+}
+
 /** GET /forms/facets, options for the owner and tag filters. */
 export interface FormFacets {
   owners: FormOwner[]

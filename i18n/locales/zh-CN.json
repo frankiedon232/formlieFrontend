@@ -5674,7 +5674,37 @@
       "teamDesc": "创建和管理此表单的工作区成员。不会改变谁可以填写。"
     },
     "readOnly": "您可以查看这些设置",
-    "readOnlyDesc": "您的角色无法更改此表单的共享方式。"
+    "readOnlyDesc": "您的角色无法更改此表单的共享方式。",
+    "who": {
+      "title": "谁能查看此表单",
+      "desc": "工作区中的所有人、他们可以对此表单做什么，以及原因。",
+      "refresh": "刷新",
+      "failed": "无法加载访问权限信息",
+      "all": "所有人 · {n}",
+      "level": {
+        "edit": "可编辑",
+        "view": "可查看",
+        "responses": "仅限回复",
+        "none": "无访问权限"
+      },
+      "search": "搜索成员",
+      "seesResponses": "可查看回复",
+      "none": "没有匹配的人",
+      "clear": "清除筛选",
+      "folderNote": "此表单位于 {folder}，该文件夹只有部分人能打开。无论上方如何设置，其他人都没有访问权限。",
+      "note": "要更改访问权限，请使用上方的“有访问权限的人员”、文件夹的访问权限或该成员的角色。",
+      "reason": {
+        "workspace_owner": "工作区所有者：所有表单",
+        "all_forms": "其角色可查看所有表单",
+        "form_owner": "创建了此表单",
+        "own_grant": "已在上方获得个人访问权限",
+        "team_default": "上方对所有人的默认设置",
+        "not_shared": "未与其共享（默认无权限）",
+        "role_own_only": "其角色只能访问自己创建的表单",
+        "role_none": "其角色无权访问表单",
+        "folder_hidden": "无法打开文件夹 {folder}"
+      }
+    }
   },
   "preview": {
     "crumb": "预览",

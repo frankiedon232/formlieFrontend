@@ -5674,7 +5674,37 @@
       "teamDesc": "Il personale del suo spazio di lavoro che crea e gestisce questo modulo. Non cambia chi può compilarlo."
     },
     "readOnly": "Può vedere queste impostazioni",
-    "readOnlyDesc": "Il suo ruolo non le consente di modificare come viene condiviso questo modulo."
+    "readOnlyDesc": "Il suo ruolo non le consente di modificare come viene condiviso questo modulo.",
+    "who": {
+      "title": "Chi può vedere questo modulo",
+      "desc": "Tutte le persone dello spazio di lavoro, cosa possono fare con questo modulo e perché.",
+      "refresh": "Aggiorna",
+      "failed": "Impossibile caricare chi ha accesso",
+      "all": "Tutti · {n}",
+      "level": {
+        "edit": "Può modificare",
+        "view": "Può visualizzare",
+        "responses": "Solo risposte",
+        "none": "Nessun accesso"
+      },
+      "search": "Cerca persone",
+      "seesResponses": "Vede le risposte",
+      "none": "Nessuno corrisponde",
+      "clear": "Cancella filtri",
+      "folderNote": "Questo modulo è in {folder}, una cartella che solo alcune persone possono aprire. Tutti gli altri non hanno accesso, qualunque cosa sia impostata sopra.",
+      "note": "Per cambiare l’accesso usa «Persone con accesso» più su, l’accesso della cartella o il ruolo della persona.",
+      "reason": {
+        "workspace_owner": "Proprietario dello spazio di lavoro: ogni modulo",
+        "all_forms": "Il suo ruolo vede ogni modulo",
+        "form_owner": "Ha creato questo modulo",
+        "own_grant": "Accesso personale assegnato più su",
+        "team_default": "Il valore predefinito per tutti, più su",
+        "not_shared": "Non condiviso con la persona (di default nessun accesso)",
+        "role_own_only": "Il suo ruolo raggiunge solo i moduli che ha creato",
+        "role_none": "Il suo ruolo non ha accesso ai moduli",
+        "folder_hidden": "Non può aprire la cartella {folder}"
+      }
+    }
   },
   "preview": {
     "crumb": "Anteprima",

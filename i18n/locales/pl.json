@@ -5674,7 +5674,37 @@
       "teamDesc": "Pracownicy obszaru roboczego, którzy tworzą formularz i nim zarządzają. Nie zmienia to, kto może go wypełnić."
     },
     "readOnly": "Mogą Państwo zobaczyć te ustawienia",
-    "readOnlyDesc": "Państwa rola nie pozwala zmieniać sposobu udostępniania tego formularza."
+    "readOnlyDesc": "Państwa rola nie pozwala zmieniać sposobu udostępniania tego formularza.",
+    "who": {
+      "title": "Kto może zobaczyć ten formularz",
+      "desc": "Wszyscy w przestrzeni roboczej, co mogą robić z tym formularzem i dlaczego.",
+      "refresh": "Odśwież",
+      "failed": "Nie udało się załadować listy osób z dostępem",
+      "all": "Wszyscy · {n}",
+      "level": {
+        "edit": "Może edytować",
+        "view": "Może wyświetlać",
+        "responses": "Tylko odpowiedzi",
+        "none": "Brak dostępu"
+      },
+      "search": "Szukaj osób",
+      "seesResponses": "Widzi odpowiedzi",
+      "none": "Nikt nie pasuje",
+      "clear": "Wyczyść filtry",
+      "folderNote": "Ten formularz jest w folderze {folder}, który mogą otworzyć tylko niektóre osoby. Pozostali nie mają dostępu, niezależnie od ustawień powyżej.",
+      "note": "Aby zmienić dostęp, użyj powyżej sekcji „Osoby z dostępem”, dostępu folderu lub roli osoby.",
+      "reason": {
+        "workspace_owner": "Właściciel przestrzeni roboczej: każdy formularz",
+        "all_forms": "Ich rola widzi każdy formularz",
+        "form_owner": "Utworzył(a) ten formularz",
+        "own_grant": "Ma własny dostęp nadany powyżej",
+        "team_default": "Ustawienie domyślne dla wszystkich powyżej",
+        "not_shared": "Nie udostępniono (domyślnie brak dostępu)",
+        "role_own_only": "Ich rola obejmuje tylko formularze, które sami utworzyli",
+        "role_none": "Ich rola nie ma dostępu do formularzy",
+        "folder_hidden": "Nie może otworzyć folderu {folder}"
+      }
+    }
   },
   "preview": {
     "crumb": "Podgląd",

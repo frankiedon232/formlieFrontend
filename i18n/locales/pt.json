@@ -5674,7 +5674,37 @@
       "teamDesc": "Pessoal da sua área de trabalho que cria e gere este formulário. Não altera quem o pode preencher."
     },
     "readOnly": "Você pode ver estas configurações",
-    "readOnlyDesc": "Seu perfil não permite alterar como este formulário é compartilhado."
+    "readOnlyDesc": "Seu perfil não permite alterar como este formulário é compartilhado.",
+    "who": {
+      "title": "Quem pode ver este formulário",
+      "desc": "Todos no espaço de trabalho, o que podem fazer com este formulário e por quê.",
+      "refresh": "Atualizar",
+      "failed": "Não foi possível carregar quem tem acesso",
+      "all": "Todos · {n}",
+      "level": {
+        "edit": "Pode editar",
+        "view": "Pode ver",
+        "responses": "Só respostas",
+        "none": "Sem acesso"
+      },
+      "search": "Buscar pessoas",
+      "seesResponses": "Vê as respostas",
+      "none": "Ninguém corresponde",
+      "clear": "Limpar filtros",
+      "folderNote": "Este formulário está em {folder}, uma pasta que só algumas pessoas podem abrir. Todas as outras não têm acesso, seja qual for a configuração acima.",
+      "note": "Para mudar o acesso, use «Pessoas com acesso» acima, o acesso da pasta ou a função da pessoa.",
+      "reason": {
+        "workspace_owner": "Proprietário do espaço de trabalho: todos os formulários",
+        "all_forms": "A função dela vê todos os formulários",
+        "form_owner": "Criou este formulário",
+        "own_grant": "Recebeu acesso próprio acima",
+        "team_default": "O padrão para todos, acima",
+        "not_shared": "Não compartilhado com ela (o padrão é sem acesso)",
+        "role_own_only": "A função dela só alcança formulários que ela criou",
+        "role_none": "A função dela não tem acesso a formulários",
+        "folder_hidden": "Não pode abrir a pasta {folder}"
+      }
+    }
   },
   "preview": {
     "crumb": "Pré-visualização",

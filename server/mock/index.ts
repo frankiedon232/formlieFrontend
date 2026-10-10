@@ -42,6 +42,7 @@ import * as library from './routes/library'
 import * as themes from './routes/themes'
 import * as pageDesigns from './routes/pageDesigns'
 import * as formShare from './routes/formShare'
+import { formAccess } from './routes/formAccess'
 import * as formInvites from './routes/formInvites'
 import * as forms from './routes/forms'
 import { navigationCounts } from './routes/navigation'
@@ -103,6 +104,7 @@ const router = createRouter()
   .get('/forms/:id/overview', getFormOverview)
   .patch('/forms/:id', forms.patchForm)
   .get('/forms/:id/share', formShare.getShare)
+  .get('/forms/:id/access', formAccess)
   .put('/forms/:id/share', formShare.saveShare)
   .get('/forms/:id/share/link-check', formShare.checkLink)
   .post('/forms/:id/short-link', formShare.createShortLink)

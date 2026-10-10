@@ -5674,7 +5674,37 @@
       "teamDesc": "Personal de su espacio de trabajo que crea y gestiona este formulario. No cambia quién puede rellenarlo."
     },
     "readOnly": "Puede ver estos ajustes",
-    "readOnlyDesc": "Su rol no le permite cambiar cómo se comparte este formulario."
+    "readOnlyDesc": "Su rol no le permite cambiar cómo se comparte este formulario.",
+    "who": {
+      "title": "Quién puede ver este formulario",
+      "desc": "Todas las personas del espacio de trabajo, qué pueden hacer con este formulario y por qué.",
+      "refresh": "Actualizar",
+      "failed": "No se pudo cargar quién tiene acceso",
+      "all": "Todos · {n}",
+      "level": {
+        "edit": "Puede editar",
+        "view": "Puede ver",
+        "responses": "Solo respuestas",
+        "none": "Sin acceso"
+      },
+      "search": "Buscar personas",
+      "seesResponses": "Ve las respuestas",
+      "none": "Nadie coincide",
+      "clear": "Borrar filtros",
+      "folderNote": "Este formulario está en {folder}, una carpeta que solo algunas personas pueden abrir. Todos los demás no tienen acceso, sea cual sea el ajuste de arriba.",
+      "note": "Para cambiar el acceso, usa «Personas con acceso» más arriba, el acceso de la carpeta o el rol de la persona.",
+      "reason": {
+        "workspace_owner": "Propietario del espacio de trabajo: todos los formularios",
+        "all_forms": "Su rol ve todos los formularios",
+        "form_owner": "Creó este formulario",
+        "own_grant": "Acceso propio dado más arriba",
+        "team_default": "El valor predeterminado para todos, más arriba",
+        "not_shared": "No se ha compartido con esa persona (por defecto no hay acceso)",
+        "role_own_only": "Su rol solo llega a los formularios que creó",
+        "role_none": "Su rol no tiene acceso a formularios",
+        "folder_hidden": "No puede abrir la carpeta {folder}"
+      }
+    }
   },
   "preview": {
     "crumb": "Vista previa",

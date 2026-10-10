@@ -5674,7 +5674,37 @@
       "teamDesc": "Medewerkers van uw werkruimte die dit formulier maken en beheren. Dit verandert niet wie het kan invullen."
     },
     "readOnly": "U kunt deze instellingen zien",
-    "readOnlyDesc": "Uw rol staat niet toe dat u wijzigt hoe dit formulier wordt gedeeld."
+    "readOnlyDesc": "Uw rol staat niet toe dat u wijzigt hoe dit formulier wordt gedeeld.",
+    "who": {
+      "title": "Wie dit formulier kan zien",
+      "desc": "Iedereen in de werkruimte, wat ze met dit formulier mogen doen en waarom.",
+      "refresh": "Vernieuwen",
+      "failed": "Kon niet laden wie toegang heeft",
+      "all": "Iedereen · {n}",
+      "level": {
+        "edit": "Kan bewerken",
+        "view": "Kan bekijken",
+        "responses": "Alleen reacties",
+        "none": "Geen toegang"
+      },
+      "search": "Mensen zoeken",
+      "seesResponses": "Ziet de reacties",
+      "none": "Niemand komt overeen",
+      "clear": "Filters wissen",
+      "folderNote": "Dit formulier staat in {folder}, een map die maar een deel van de mensen kan openen. Alle anderen hebben geen toegang, wat er hierboven ook is ingesteld.",
+      "note": "Om de toegang te wijzigen, gebruik je hierboven Mensen met toegang, de toegang van de map of de rol van de persoon.",
+      "reason": {
+        "workspace_owner": "Eigenaar van de werkruimte: elk formulier",
+        "all_forms": "Hun rol ziet elk formulier",
+        "form_owner": "Heeft dit formulier gemaakt",
+        "own_grant": "Eigen toegang gekregen hierboven",
+        "team_default": "De standaard voor iedereen hierboven",
+        "not_shared": "Niet met hen gedeeld (standaard is geen toegang)",
+        "role_own_only": "Hun rol reikt alleen tot formulieren die ze zelf maakten",
+        "role_none": "Hun rol heeft geen toegang tot formulieren",
+        "folder_hidden": "Kan de map {folder} niet openen"
+      }
+    }
   },
   "preview": {
     "crumb": "Voorbeeld",
