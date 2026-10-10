@@ -747,16 +747,17 @@
     "badgeDatabase": "{count}+ СУБД або захищене сховище",
     "badgeAccess": "Доступ за ролями",
     "badgeLanguages": "20 мов, будь-який регіон",
-    "previewForm": "Реєстрація постачальника",
-    "previewCompany": "Назва компанії",
-    "previewConsent": "Згода на обробку даних",
-    "previewConsentText": "Я погоджуюся з політикою конфіденційності",
-    "previewSubmit": "Надіслати",
-    "previewStat": "Відповідей за місяць",
-    "previewAccess": "Видно: відділ комплаєнсу",
-    "previewSync": "Синхронізовано з вашою базою даних",
-    "previewSyncCount": "Підтримка {count}+ СУБД",
-    "previewSyncAlt": "Або використовуйте вбудоване зашифроване сховище {app}"
+    "flow": {
+      "hub": "Шифрується в дорозі",
+      "link": "Посилання на форму",
+      "embed": "Вбудовування на сайт",
+      "api": "API",
+      "qr": "QR-код",
+      "database": "Ваша база даних",
+      "webhook": "Вебхуки",
+      "dashboard": "Панель",
+      "email": "Сповіщення на email"
+    }
   },
   "auth": {
     "or": "або",

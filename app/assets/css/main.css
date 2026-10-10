@@ -14,6 +14,9 @@
   --animate-float: float 7s ease-in-out infinite;
   --animate-float-delayed: float 7s ease-in-out 2.5s infinite;
   --animate-rise: rise 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  /* Sign-in flow (AuthFlow): response cards drift up and fade; dashes run along the lines. */
+  --animate-drift: drift 8s ease-in-out infinite;
+  --animate-dash: dash 1.6s linear infinite;
 
   @keyframes float {
     0%,
@@ -22,6 +25,27 @@
     }
     50% {
       translate: 0 -10px;
+    }
+  }
+
+  @keyframes drift {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    20%,
+    70% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-22px);
+    }
+  }
+
+  @keyframes dash {
+    to {
+      stroke-dashoffset: -24;
     }
   }
 

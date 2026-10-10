@@ -747,16 +747,17 @@
     "badgeDatabase": "{count}+ basis data atau penyimpanan aman",
     "badgeAccess": "Akses berbasis peran",
     "badgeLanguages": "20 bahasa, semua wilayah",
-    "previewForm": "Pendaftaran pemasok",
-    "previewCompany": "Nama perusahaan",
-    "previewConsent": "Persetujuan pemrosesan data",
-    "previewConsentText": "Saya menyetujui pemberitahuan privasi",
-    "previewSubmit": "Kirim",
-    "previewStat": "Tanggapan bulan ini",
-    "previewAccess": "Terlihat oleh: tim Kepatuhan",
-    "previewSync": "Tersinkron ke basis data Anda",
-    "previewSyncCount": "Mendukung {count}+ basis data",
-    "previewSyncAlt": "Atau gunakan penyimpanan terenkripsi bawaan {app}"
+    "flow": {
+      "hub": "Terenkripsi di perjalanan",
+      "link": "Tautan formulir",
+      "embed": "Sematan situs web",
+      "api": "API",
+      "qr": "Kode QR",
+      "database": "Basis data Anda",
+      "webhook": "Webhook",
+      "dashboard": "Dasbor",
+      "email": "Peringatan email"
+    }
   },
   "auth": {
     "or": "atau",

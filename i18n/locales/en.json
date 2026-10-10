@@ -747,16 +747,17 @@
     "badgeDatabase": "{count}+ databases or secure storage",
     "badgeAccess": "Role-based access",
     "badgeLanguages": "20 languages, any region",
-    "previewForm": "Supplier onboarding",
-    "previewCompany": "Company name",
-    "previewConsent": "Data processing consent",
-    "previewConsentText": "I agree to the privacy notice",
-    "previewSubmit": "Submit",
-    "previewStat": "Responses this month",
-    "previewAccess": "Visible to: Compliance team",
-    "previewSync": "Synced to your database",
-    "previewSyncCount": "{count}+ databases supported",
-    "previewSyncAlt": "Or use {app}'s built-in encrypted storage"
+    "flow": {
+      "hub": "Encrypted on the way",
+      "link": "Form link",
+      "embed": "Website embed",
+      "api": "API",
+      "qr": "QR code",
+      "database": "Your database",
+      "webhook": "Webhooks",
+      "dashboard": "Dashboard",
+      "email": "Email alerts"
+    }
   },
   "auth": {
     "or": "or",

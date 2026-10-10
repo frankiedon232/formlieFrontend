@@ -747,16 +747,17 @@
     "badgeDatabase": "{count}+ डेटाबेस या सुरक्षित स्टोरेज",
     "badgeAccess": "भूमिका-आधारित एक्सेस",
     "badgeLanguages": "20 भाषाएँ, हर क्षेत्र",
-    "previewForm": "सप्लायर ऑनबोर्डिंग",
-    "previewCompany": "कंपनी का नाम",
-    "previewConsent": "डेटा प्रोसेसिंग की सहमति",
-    "previewConsentText": "मैं निजता सूचना से सहमत हूँ",
-    "previewSubmit": "सबमिट करें",
-    "previewStat": "इस महीने के जवाब",
-    "previewAccess": "किसे दिखेगा: अनुपालन टीम",
-    "previewSync": "आपके डेटाबेस से सिंक हुआ",
-    "previewSyncCount": "{count}+ डेटाबेस समर्थित",
-    "previewSyncAlt": "या {app} का इन-बिल्ट एन्क्रिप्टेड स्टोरेज इस्तेमाल करें"
+    "flow": {
+      "hub": "रास्ते में एन्क्रिप्टेड",
+      "link": "फ़ॉर्म लिंक",
+      "embed": "वेबसाइट एम्बेड",
+      "api": "API",
+      "qr": "QR कोड",
+      "database": "आपका डेटाबेस",
+      "webhook": "वेबहुक",
+      "dashboard": "डैशबोर्ड",
+      "email": "ईमेल अलर्ट"
+    }
   },
   "auth": {
     "or": "या",

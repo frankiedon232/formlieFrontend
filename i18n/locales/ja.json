@@ -747,16 +747,17 @@
     "badgeDatabase": "{count} 種類以上のデータベース、または安全なストレージ",
     "badgeAccess": "ロールベースのアクセス",
     "badgeLanguages": "20 言語・全地域対応",
-    "previewForm": "取引先登録",
-    "previewCompany": "会社名",
-    "previewConsent": "データ処理への同意",
-    "previewConsentText": "プライバシーポリシーに同意します",
-    "previewSubmit": "送信",
-    "previewStat": "今月の回答",
-    "previewAccess": "閲覧可能: コンプライアンスチーム",
-    "previewSync": "データベースに同期しました",
-    "previewSyncCount": "{count} 種類以上のデータベースに対応",
-    "previewSyncAlt": "または {app} の組み込み暗号化ストレージを利用"
+    "flow": {
+      "hub": "送信中も暗号化",
+      "link": "フォームのリンク",
+      "embed": "サイトへの埋め込み",
+      "api": "API",
+      "qr": "QR コード",
+      "database": "お使いのデータベース",
+      "webhook": "Webhook",
+      "dashboard": "ダッシュボード",
+      "email": "メール通知"
+    }
   },
   "auth": {
     "or": "または",

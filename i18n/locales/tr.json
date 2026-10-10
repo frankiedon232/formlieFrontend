@@ -747,16 +747,17 @@
     "badgeDatabase": "{count}+ veritabanı veya güvenli depolama",
     "badgeAccess": "Rol tabanlı erişim",
     "badgeLanguages": "20 dil, her bölge",
-    "previewForm": "Tedarikçi kaydı",
-    "previewCompany": "Şirket adı",
-    "previewConsent": "Veri işleme onayı",
-    "previewConsentText": "Gizlilik bildirimini kabul ediyorum",
-    "previewSubmit": "Gönder",
-    "previewStat": "Bu ayki yanıtlar",
-    "previewAccess": "Görebilenler: Uyum ekibi",
-    "previewSync": "Veritabanınızla senkronize edildi",
-    "previewSyncCount": "{count}+ veritabanı desteği",
-    "previewSyncAlt": "Ya da {app} yerleşik şifreli depolamasını kullanın"
+    "flow": {
+      "hub": "Yolda şifrelenir",
+      "link": "Form bağlantısı",
+      "embed": "Web sitesine gömme",
+      "api": "API",
+      "qr": "QR kodu",
+      "database": "Veritabanınız",
+      "webhook": "Webhook'lar",
+      "dashboard": "Pano",
+      "email": "E-posta uyarıları"
+    }
   },
   "auth": {
     "or": "veya",

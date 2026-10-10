@@ -747,16 +747,17 @@
     "badgeDatabase": "{count}+ baz danych lub bezpieczny magazyn",
     "badgeAccess": "Dostęp oparty na rolach",
     "badgeLanguages": "20 języków, każdy region",
-    "previewForm": "Rejestracja dostawcy",
-    "previewCompany": "Nazwa firmy",
-    "previewConsent": "Zgoda na przetwarzanie danych",
-    "previewConsentText": "Akceptuję informację o prywatności",
-    "previewSubmit": "Wyślij",
-    "previewStat": "Odpowiedzi w tym miesiącu",
-    "previewAccess": "Widoczne dla: zespół compliance",
-    "previewSync": "Zsynchronizowano z Twoją bazą danych",
-    "previewSyncCount": "Obsługa {count}+ baz danych",
-    "previewSyncAlt": "Albo użyj wbudowanego szyfrowanego magazynu {app}"
+    "flow": {
+      "hub": "Szyfrowane w drodze",
+      "link": "Link do formularza",
+      "embed": "Osadzenie na stronie",
+      "api": "API",
+      "qr": "Kod QR",
+      "database": "Twoja baza danych",
+      "webhook": "Webhooki",
+      "dashboard": "Pulpit",
+      "email": "Alerty e-mail"
+    }
   },
   "auth": {
     "or": "lub",

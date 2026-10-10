@@ -747,16 +747,17 @@
     "badgeDatabase": "{count}+ database o archiviazione sicura",
     "badgeAccess": "Accesso basato sui ruoli",
     "badgeLanguages": "20 lingue, ogni regione",
-    "previewForm": "Onboarding fornitori",
-    "previewCompany": "Ragione sociale",
-    "previewConsent": "Consenso al trattamento dei dati",
-    "previewConsentText": "Accetto l’informativa sulla privacy",
-    "previewSubmit": "Invia",
-    "previewStat": "Risposte questo mese",
-    "previewAccess": "Visibile a: team Compliance",
-    "previewSync": "Sincronizzato con il tuo database",
-    "previewSyncCount": "{count}+ database supportati",
-    "previewSyncAlt": "Oppure usa l’archiviazione crittografata integrata di {app}"
+    "flow": {
+      "hub": "Cifrato in transito",
+      "link": "Link del modulo",
+      "embed": "Incorporato nel sito",
+      "api": "API",
+      "qr": "Codice QR",
+      "database": "Il tuo database",
+      "webhook": "Webhook",
+      "dashboard": "Dashboard",
+      "email": "Avvisi email"
+    }
   },
   "auth": {
     "or": "oppure",

@@ -747,16 +747,17 @@
     "badgeDatabase": "{count}+ bases de datos o almacenamiento seguro",
     "badgeAccess": "Acceso por roles",
     "badgeLanguages": "20 idiomas, cualquier región",
-    "previewForm": "Alta de proveedores",
-    "previewCompany": "Nombre de la empresa",
-    "previewConsent": "Consentimiento de tratamiento de datos",
-    "previewConsentText": "Acepto el aviso de privacidad",
-    "previewSubmit": "Enviar",
-    "previewStat": "Respuestas este mes",
-    "previewAccess": "Visible para: equipo de Cumplimiento",
-    "previewSync": "Sincronizado con tu base de datos",
-    "previewSyncCount": "{count}+ bases de datos compatibles",
-    "previewSyncAlt": "O usa el almacenamiento cifrado integrado de {app}"
+    "flow": {
+      "hub": "Cifrado en el camino",
+      "link": "Enlace del formulario",
+      "embed": "Incrustado en web",
+      "api": "API",
+      "qr": "Código QR",
+      "database": "Tu base de datos",
+      "webhook": "Webhooks",
+      "dashboard": "Panel",
+      "email": "Alertas por correo"
+    }
   },
   "auth": {
     "or": "o",

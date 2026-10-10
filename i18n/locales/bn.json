@@ -747,16 +747,17 @@
     "badgeDatabase": "{count}+ ডাটাবেস বা নিরাপদ স্টোরেজ",
     "badgeAccess": "ভূমিকাভিত্তিক অ্যাক্সেস",
     "badgeLanguages": "২০টি ভাষা, যেকোনো অঞ্চল",
-    "previewForm": "সরবরাহকারী নিবন্ধন",
-    "previewCompany": "কোম্পানির নাম",
-    "previewConsent": "ডেটা প্রক্রিয়াকরণের সম্মতি",
-    "previewConsentText": "আমি গোপনীয়তা নীতিতে সম্মত",
-    "previewSubmit": "জমা দিন",
-    "previewStat": "এই মাসের উত্তর",
-    "previewAccess": "যারা দেখতে পাবে: কমপ্লায়েন্স টিম",
-    "previewSync": "আপনার ডাটাবেসের সাথে সিঙ্ক হয়েছে",
-    "previewSyncCount": "{count}+ ডাটাবেস সমর্থিত",
-    "previewSyncAlt": "অথবা {app}-এর বিল্ট-ইন এনক্রিপ্টেড স্টোরেজ ব্যবহার করুন"
+    "flow": {
+      "hub": "পথে এনক্রিপ্টেড",
+      "link": "ফর্মের লিংক",
+      "embed": "ওয়েবসাইটে এমবেড",
+      "api": "API",
+      "qr": "QR কোড",
+      "database": "আপনার ডেটাবেস",
+      "webhook": "ওয়েবহুক",
+      "dashboard": "ড্যাশবোর্ড",
+      "email": "ইমেল সতর্কতা"
+    }
   },
   "auth": {
     "or": "অথবা",

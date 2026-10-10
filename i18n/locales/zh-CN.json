@@ -747,16 +747,17 @@
     "badgeDatabase": "{count}+ 种数据库或安全存储",
     "badgeAccess": "基于角色的访问",
     "badgeLanguages": "20 种语言，覆盖各地区",
-    "previewForm": "供应商入驻",
-    "previewCompany": "公司名称",
-    "previewConsent": "数据处理同意",
-    "previewConsentText": "我同意隐私声明",
-    "previewSubmit": "提交",
-    "previewStat": "本月回复",
-    "previewAccess": "可见范围：合规团队",
-    "previewSync": "已同步到您的数据库",
-    "previewSyncCount": "支持 {count}+ 种数据库",
-    "previewSyncAlt": "或使用 {app} 内置的加密存储"
+    "flow": {
+      "hub": "传输中加密",
+      "link": "表单链接",
+      "embed": "网站嵌入",
+      "api": "API",
+      "qr": "二维码",
+      "database": "您的数据库",
+      "webhook": "Webhook",
+      "dashboard": "仪表板",
+      "email": "邮件提醒"
+    }
   },
   "auth": {
     "or": "或",

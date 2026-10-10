@@ -747,16 +747,17 @@
     "badgeDatabase": "{count}+ СУБД или защищённое хранилище",
     "badgeAccess": "Доступ по ролям",
     "badgeLanguages": "20 языков, любой регион",
-    "previewForm": "Регистрация поставщика",
-    "previewCompany": "Название компании",
-    "previewConsent": "Согласие на обработку данных",
-    "previewConsentText": "Я принимаю политику конфиденциальности",
-    "previewSubmit": "Отправить",
-    "previewStat": "Ответов за месяц",
-    "previewAccess": "Видно: отдел комплаенса",
-    "previewSync": "Синхронизировано с вашей базой данных",
-    "previewSyncCount": "Поддержка {count}+ СУБД",
-    "previewSyncAlt": "Или используйте встроенное зашифрованное хранилище {app}"
+    "flow": {
+      "hub": "Шифруется в пути",
+      "link": "Ссылка на форму",
+      "embed": "Встраивание на сайт",
+      "api": "API",
+      "qr": "QR-код",
+      "database": "Ваша база данных",
+      "webhook": "Вебхуки",
+      "dashboard": "Панель",
+      "email": "Уведомления по email"
+    }
   },
   "auth": {
     "or": "или",

@@ -747,16 +747,17 @@
     "badgeDatabase": "Hifadhidata {count}+ au hifadhi salama",
     "badgeAccess": "Ufikiaji kwa majukumu",
     "badgeLanguages": "Lugha 20, kila eneo",
-    "previewForm": "Usajili wa wasambazaji",
-    "previewCompany": "Jina la kampuni",
-    "previewConsent": "Idhini ya kuchakata data",
-    "previewConsentText": "Nakubali taarifa ya faragha",
-    "previewSubmit": "Tuma",
-    "previewStat": "Majibu mwezi huu",
-    "previewAccess": "Wanaoona: timu ya Uzingatiaji",
-    "previewSync": "Imesawazishwa na hifadhidata yako",
-    "previewSyncCount": "Hifadhidata {count}+ zinatumika",
-    "previewSyncAlt": "Au tumia hifadhi fiche iliyojengwa ndani ya {app}"
+    "flow": {
+      "hub": "Husimbwa njiani",
+      "link": "Kiungo cha fomu",
+      "embed": "Kupachika kwenye tovuti",
+      "api": "API",
+      "qr": "Msimbo wa QR",
+      "database": "Hifadhidata yako",
+      "webhook": "Webhooks",
+      "dashboard": "Dashibodi",
+      "email": "Arifa za barua pepe"
+    }
   },
   "auth": {
     "or": "au",

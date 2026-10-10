@@ -747,16 +747,17 @@
     "badgeDatabase": "{count}+ bancos de dados ou armazenamento seguro",
     "badgeAccess": "Acesso por funções",
     "badgeLanguages": "20 idiomas, qualquer região",
-    "previewForm": "Cadastro de fornecedores",
-    "previewCompany": "Nome da empresa",
-    "previewConsent": "Consentimento para tratamento de dados",
-    "previewConsentText": "Concordo com o aviso de privacidade",
-    "previewSubmit": "Enviar",
-    "previewStat": "Respostas neste mês",
-    "previewAccess": "Visível para: equipe de Compliance",
-    "previewSync": "Sincronizado com seu banco de dados",
-    "previewSyncCount": "{count}+ bancos de dados compatíveis",
-    "previewSyncAlt": "Ou use o armazenamento criptografado integrado do {app}"
+    "flow": {
+      "hub": "Criptografado no caminho",
+      "link": "Link do formulário",
+      "embed": "Incorporado no site",
+      "api": "API",
+      "qr": "Código QR",
+      "database": "Seu banco de dados",
+      "webhook": "Webhooks",
+      "dashboard": "Painel",
+      "email": "Alertas por e-mail"
+    }
   },
   "auth": {
     "or": "ou",

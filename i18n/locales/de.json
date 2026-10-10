@@ -747,16 +747,17 @@
     "badgeDatabase": "{count}+ Datenbanken oder sicherer Speicher",
     "badgeAccess": "Rollenbasierter Zugriff",
     "badgeLanguages": "20 Sprachen, jede Region",
-    "previewForm": "Lieferanten-Onboarding",
-    "previewCompany": "Firmenname",
-    "previewConsent": "Einwilligung zur Datenverarbeitung",
-    "previewConsentText": "Ich stimme der Datenschutzerklärung zu",
-    "previewSubmit": "Absenden",
-    "previewStat": "Antworten diesen Monat",
-    "previewAccess": "Sichtbar für: Compliance-Team",
-    "previewSync": "Mit Ihrer Datenbank synchronisiert",
-    "previewSyncCount": "{count}+ Datenbanken unterstützt",
-    "previewSyncAlt": "Oder den integrierten verschlüsselten Speicher von {app} nutzen"
+    "flow": {
+      "hub": "Unterwegs verschlüsselt",
+      "link": "Formularlink",
+      "embed": "Website-Einbettung",
+      "api": "API",
+      "qr": "QR-Code",
+      "database": "Ihre Datenbank",
+      "webhook": "Webhooks",
+      "dashboard": "Dashboard",
+      "email": "E-Mail-Hinweise"
+    }
   },
   "auth": {
     "or": "oder",

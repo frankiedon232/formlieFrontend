@@ -747,16 +747,17 @@
     "badgeDatabase": "{count}개 이상의 데이터베이스 또는 안전한 저장소",
     "badgeAccess": "역할 기반 접근",
     "badgeLanguages": "20개 언어, 모든 지역",
-    "previewForm": "공급업체 등록",
-    "previewCompany": "회사 이름",
-    "previewConsent": "데이터 처리 동의",
-    "previewConsentText": "개인정보 처리방침에 동의합니다",
-    "previewSubmit": "제출",
-    "previewStat": "이번 달 응답",
-    "previewAccess": "공개 대상: 컴플라이언스 팀",
-    "previewSync": "데이터베이스에 동기화됨",
-    "previewSyncCount": "{count}개 이상의 데이터베이스 지원",
-    "previewSyncAlt": "또는 {app}의 내장 암호화 저장소 사용"
+    "flow": {
+      "hub": "전송 중 암호화",
+      "link": "양식 링크",
+      "embed": "웹사이트 삽입",
+      "api": "API",
+      "qr": "QR 코드",
+      "database": "내 데이터베이스",
+      "webhook": "웹훅",
+      "dashboard": "대시보드",
+      "email": "이메일 알림"
+    }
   },
   "auth": {
     "or": "또는",

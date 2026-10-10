@@ -747,16 +747,17 @@
     "badgeDatabase": "{count}+ cơ sở dữ liệu hoặc lưu trữ an toàn",
     "badgeAccess": "Phân quyền theo vai trò",
     "badgeLanguages": "20 ngôn ngữ, mọi khu vực",
-    "previewForm": "Đăng ký nhà cung cấp",
-    "previewCompany": "Tên công ty",
-    "previewConsent": "Đồng ý xử lý dữ liệu",
-    "previewConsentText": "Tôi đồng ý với thông báo quyền riêng tư",
-    "previewSubmit": "Gửi",
-    "previewStat": "Phản hồi tháng này",
-    "previewAccess": "Hiển thị cho: nhóm Tuân thủ",
-    "previewSync": "Đã đồng bộ với cơ sở dữ liệu của bạn",
-    "previewSyncCount": "Hỗ trợ {count}+ cơ sở dữ liệu",
-    "previewSyncAlt": "Hoặc dùng bộ lưu trữ mã hóa tích hợp của {app}"
+    "flow": {
+      "hub": "Mã hóa khi truyền",
+      "link": "Liên kết biểu mẫu",
+      "embed": "Nhúng vào web",
+      "api": "API",
+      "qr": "Mã QR",
+      "database": "Cơ sở dữ liệu của bạn",
+      "webhook": "Webhook",
+      "dashboard": "Bảng điều khiển",
+      "email": "Cảnh báo email"
+    }
   },
   "auth": {
     "or": "hoặc",

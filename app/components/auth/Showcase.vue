@@ -1,8 +1,8 @@
 <!--
-  Auth showcase (lg+): inset dark panel with depth (grid, glow) + a live-looking product preview
-  composed from real Nuxt UI parts, telling the platform story (global, any organisation):
-  build any form · collect data · sync to your own database · control access.
-  Floats gently (motion-safe only). Decorative: hidden from assistive tech except the copy.
+  Auth showcase (lg+): inset dark panel with depth (grid, glow), the headline, and data on the move (AuthFlow:
+  form link, embed, API and QR code send points of light through the hub to your database, webhooks, dashboard
+  and email; owner 2026-10-10), then the trust badges. Motion only for people who allow it. Decorative: hidden
+  from assistive tech except the copy.
   A workspace's own branding (Settings → Branding, F14) takes over: its logo for dark backgrounds,
   its welcome as the headline, its brand colour in the glow; with a sign-in picture, the picture
   fills the panel under the logo and the welcome.
@@ -13,10 +13,6 @@ import { SUPPORTED_DATABASES } from '#shared/utils/integrations/databases'
 
 const props = defineProps<{ brand: string; logo?: string | null; image?: string | null; message?: string | null; color?: string | null; workspace?: boolean }>()
 const { t } = useI18n()
-const { number } = useFormat()
-
-const bars = [38, 52, 44, 70, 58, 86, 74]
-const DATABASES = SUPPORTED_DATABASES.map(db => db.name)
 const databaseCount = SUPPORTED_DATABASES.length
 const badges = computed(() => [
   { icon: 'i-lucide-lock-keyhole', label: t('authLayout.badgeEncrypted') },
@@ -77,105 +73,9 @@ const badges = computed(() => [
       <p class="mt-4 text-[15px] leading-relaxed text-white/60">{{ t('authLayout.subline') }}</p>
     </div>
 
-    <!-- product preview: build · collect · connect · control -->
-    <div aria-hidden="true" class="relative mt-8 min-h-[390px] flex-1">
-      <UCard
-        class="absolute top-0 left-0 w-[310px] -rotate-2 shadow-2xl shadow-black/40 motion-safe:animate-float"
-        :ui="{ body: 'space-y-4 p-5 sm:p-5' }"
-      >
-        <div class="flex items-center justify-between">
-          <div class="flex items-center gap-2">
-            <span class="flex size-7 items-center justify-center rounded-lg bg-inverted text-inverted">
-              <UIcon name="i-lucide-clipboard-list" class="size-4" />
-            </span>
-            <span class="text-sm font-semibold text-highlighted">{{ t('authLayout.previewForm') }}</span>
-          </div>
-          <UBadge
-            :label="t('status.published')"
-            color="success"
-            variant="subtle"
-            size="sm"
-            class="rounded-md"
-          />
-        </div>
-        <div class="space-y-1.5">
-          <p class="text-xs font-medium text-default">{{ t('authLayout.previewCompany') }}</p>
-          <UInput
-            model-value="Northwind Ltd."
-            disabled
-            class="w-full"
-            :ui="{ base: 'disabled:opacity-100' }"
-          />
-        </div>
-        <div class="space-y-1.5">
-          <p class="text-xs font-medium text-default">{{ t('authLayout.previewConsent') }}</p>
-          <div class="flex items-center gap-2 text-xs text-default">
-            <UCheckbox :model-value="true" disabled :ui="{ base: 'disabled:opacity-100' }" />
-            {{ t('authLayout.previewConsentText') }}
-          </div>
-        </div>
-        <UButton :label="t('authLayout.previewSubmit')" color="neutral" block tabindex="-1" />
-      </UCard>
-
-      <UCard
-        class="absolute top-6 right-0 w-[240px] rotate-3 shadow-2xl shadow-black/40 motion-safe:animate-float-delayed"
-        :ui="{ body: 'p-5 sm:p-5' }"
-      >
-        <p class="text-xs text-muted">{{ t('authLayout.previewStat') }}</p>
-        <div class="mt-1 flex items-end gap-2">
-          <span class="text-3xl font-semibold tracking-tight text-highlighted">{{ number(12840) }}</span>
-          <UBadge label="+12%" color="success" variant="subtle" size="sm" class="mb-1 rounded-md" />
-        </div>
-        <div class="mt-4 flex h-16 items-end gap-1.5">
-          <span
-            v-for="(height, index) in bars"
-            :key="index"
-            class="flex-1 rounded-sm"
-            :class="index === bars.length - 2 ? 'bg-inverted' : 'bg-accented'"
-            :style="{ height: `${height}%` }"
-          />
-        </div>
-        <div class="mt-4 flex items-center gap-1.5 border-t border-default pt-3 text-xs text-muted">
-          <UIcon name="i-lucide-users-round" class="size-3.5" />
-          {{ t('authLayout.previewAccess') }}
-        </div>
-      </UCard>
-
-      <UCard
-        class="absolute right-4 bottom-0 w-[340px] -rotate-1 shadow-2xl shadow-black/40 motion-safe:animate-float"
-        :ui="{ body: 'space-y-3 p-4 sm:p-4' }"
-      >
-        <div class="flex items-center gap-3">
-          <span
-            class="flex size-9 shrink-0 items-center justify-center rounded-lg bg-elevated text-highlighted"
-          >
-            <UIcon name="i-lucide-database-zap" class="size-5" />
-          </span>
-          <div class="min-w-0 flex-1">
-            <p class="truncate text-sm font-semibold text-highlighted">{{ t('authLayout.previewSync') }}</p>
-            <p class="truncate text-xs text-muted">
-              {{ t('authLayout.previewSyncCount', { count: databaseCount }) }}
-            </p>
-          </div>
-          <UIcon name="i-lucide-circle-check" class="size-5 text-success" />
-        </div>
-        <!-- Product names: not translated. -->
-        <div class="flex flex-wrap gap-1">
-          <UBadge
-            v-for="db in DATABASES"
-            :key="db"
-            :label="db"
-            color="neutral"
-            variant="outline"
-            size="sm"
-            class="rounded-md"
-          />
-        </div>
-        <p class="flex items-center gap-1.5 border-t border-default pt-2.5 text-xs text-muted">
-          <UIcon name="i-lucide-shield-check" class="size-3.5 shrink-0" />
-          {{ t('authLayout.previewSyncAlt', { app: t('app.name') }) }}
-        </p>
-      </UCard>
+    <!-- Data on the move: sources → the hub → destinations (owner 2026-10-10) -->
+    <div class="relative mt-6 flex flex-1 items-center">
+      <AuthFlow :logo="props.logo" :color="props.color" />
     </div>
 
     <div class="relative mt-8 flex flex-wrap gap-2">

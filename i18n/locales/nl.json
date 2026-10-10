@@ -747,16 +747,17 @@
     "badgeDatabase": "{count}+ databases of veilige opslag",
     "badgeAccess": "Toegang op basis van rollen",
     "badgeLanguages": "20 talen, elke regio",
-    "previewForm": "Leveranciers onboarden",
-    "previewCompany": "Bedrijfsnaam",
-    "previewConsent": "Toestemming voor gegevensverwerking",
-    "previewConsentText": "Ik ga akkoord met de privacyverklaring",
-    "previewSubmit": "Versturen",
-    "previewStat": "Reacties deze maand",
-    "previewAccess": "Zichtbaar voor: complianceteam",
-    "previewSync": "Gesynchroniseerd met je database",
-    "previewSyncCount": "{count}+ databases ondersteund",
-    "previewSyncAlt": "Of gebruik de ingebouwde versleutelde opslag van {app}"
+    "flow": {
+      "hub": "Onderweg versleuteld",
+      "link": "Formulierlink",
+      "embed": "Website-insluiting",
+      "api": "API",
+      "qr": "QR-code",
+      "database": "Je database",
+      "webhook": "Webhooks",
+      "dashboard": "Dashboard",
+      "email": "E-mailmeldingen"
+    }
   },
   "auth": {
     "or": "of",

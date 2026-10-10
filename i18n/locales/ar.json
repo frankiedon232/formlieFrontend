@@ -747,16 +747,17 @@
     "badgeDatabase": "أكثر من {count} قواعد بيانات أو تخزين آمن",
     "badgeAccess": "صلاحيات حسب الأدوار",
     "badgeLanguages": "20 لغة، لكل المناطق",
-    "previewForm": "تسجيل الموردين",
-    "previewCompany": "اسم الشركة",
-    "previewConsent": "الموافقة على معالجة البيانات",
-    "previewConsentText": "أوافق على إشعار الخصوصية",
-    "previewSubmit": "إرسال",
-    "previewStat": "الردود هذا الشهر",
-    "previewAccess": "مرئي لـ: فريق الامتثال",
-    "previewSync": "تمت المزامنة مع قاعدة بياناتك",
-    "previewSyncCount": "دعم أكثر من {count} قواعد بيانات",
-    "previewSyncAlt": "أو استخدم تخزين {app} المدمج والمشفّر"
+    "flow": {
+      "hub": "مشفّر أثناء النقل",
+      "link": "رابط النموذج",
+      "embed": "تضمين في موقع",
+      "api": "API",
+      "qr": "رمز QR",
+      "database": "قاعدة بياناتك",
+      "webhook": "Webhooks",
+      "dashboard": "لوحة التحكم",
+      "email": "تنبيهات البريد"
+    }
   },
   "auth": {
     "or": "أو",
