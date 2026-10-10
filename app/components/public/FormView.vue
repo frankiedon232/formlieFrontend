@@ -28,11 +28,23 @@ const submit: typeof send = async (...args) => {
   if (outcome.done && import.meta.client && window.parent !== window) window.parent.postMessage({ type: 'formalie:submitted', key: props.formKey }, '*')
   return outcome
 }
+// An embedded form tells the page around it once something is typed (so closing it can ask first)
+if (import.meta.client && window.parent !== window) {
+  let told = false
+  const typed = () => {
+    if (told) return
+    told = true
+    window.parent.postMessage({ type: 'formalie:typing', key: props.formKey }, '*')
+  }
+  useEventListener(document, 'input', typed, { capture: true })
+  useEventListener(document, 'change', typed, { capture: true })
+}
 const { upload } = usePublicUploads(props.formKey)
 const respondent = computed(() => ({
   org: form.value ? { name: form.value.workspace.name, website: form.value.workspace.website } : undefined,
   embedded: !!props.embed,
-  alreadySent: alreadySent.value,
+  // A form people may send more than once (settings.repeat) never opens as "already filled in"
+  alreadySent: alreadySent.value && !form.value?.schema?.settings?.repeat,
   upload,
   // Long lists: their options come from the server as people type (F15 M3)
   lookup: async (field: { key: string }, { q, values, parents }: { q: string; values?: string[]; parents?: string[] }) =>

@@ -22,7 +22,7 @@ const AREA_LABELS: Record<string, string> = { start: 'Getting started', forms: '
 function supportSchema(): FormSchemaV1 {
   return {
     schema_version: 1,
-    settings: { progress_bar: false, save_resume: false, language: 'en', title: 'Contact support', field_icons: true, label_position: 'top' },
+    settings: { progress_bar: false, save_resume: false, repeat: true, language: 'en', title: 'Contact support', field_icons: true, label_position: 'top' },
     pages: [
       {
         id: 'pg_support',
@@ -49,7 +49,7 @@ function supportSchema(): FormSchemaV1 {
 function enterpriseSchema(): FormSchemaV1 {
   return {
     schema_version: 1,
-    settings: { progress_bar: true, save_resume: false, language: 'en', title: 'Enterprise enquiry', field_icons: true, label_position: 'top' },
+    settings: { progress_bar: true, save_resume: false, repeat: true, language: 'en', title: 'Enterprise enquiry', field_icons: true, label_position: 'top' },
     pages: [
       {
         id: 'pg_about',
@@ -93,7 +93,16 @@ export function ensurePlatformForms() {
   const store = formsOf(tenant)
   let added = false
   for (const item of PLATFORM) {
-    if (store.forms.some(form => form.public_key === item.key)) continue
+    const existing = store.forms.find(form => form.public_key === item.key)
+    // Made before "send more than once" existed: support and enquiries always take several from one person
+    if (existing) {
+      for (const schema of [existing.schema, existing.published_schema])
+        if (schema && !schema.settings?.repeat) {
+          schema.settings = { ...schema.settings, repeat: true }
+          added = true
+        }
+      continue
+    }
     const schema = item.schema()
     const now = new Date().toISOString()
     const form = {

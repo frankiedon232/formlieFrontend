@@ -61,6 +61,8 @@ export const formSchemaV1 = z.object({
     .object({
       progress_bar: z.boolean().optional(),
       save_resume: z.boolean().optional(),
+      /** People may send it more than once (contact and support forms, orders); off = one response per person (owner 2026-10-10). */
+      repeat: z.boolean().optional(),
       language: text(10).optional(),
       /** More languages the form offers besides its main one (F10 M4, decision 99). */
       languages: z.array(text(10)).max(19).optional(),

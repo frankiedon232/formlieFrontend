@@ -2097,7 +2097,9 @@
       "searchHint": "Een zoekvak in plaats van een lange lijst. Gaat vanzelf aan boven {n} opties.",
       "searchServer": "Boven {n} opties vraagt het openbare formulier de treffers op tijdens het typen, zodat het snel blijft.",
       "longList": "{n} opties uit {name}. Bewerk ze in Optielijst.",
-      "searchLarge": "Altijd aan voor een grote lijst: de opties worden tijdens het typen van de server geladen."
+      "searchLarge": "Altijd aan voor een grote lijst: de opties worden tijdens het typen van de server geladen.",
+      "repeat": "Respondenten mogen meerdere keren verzenden",
+      "repeatHint": "Voor contact-, support- of bestelformulieren. Uit: één reactie per persoon."
     },
     "shortcuts": {
       "title": "Sneltoetsen",
@@ -9405,6 +9407,9 @@
     "sent": "{name}: verzonden",
     "sentNote": "Verzonden. Je kunt dit venster sluiten.",
     "safe": "Een Formalie-pagina, weergegeven in de app.",
-    "back": "Terug naar Formalie"
+    "back": "Terug naar Formalie",
+    "leaveTitle": "Weggaan zonder te verzenden?",
+    "leaveDesc": "Wat je in dit formulier hebt getypt, gaat verloren.",
+    "leave": "Weggaan"
   }
 }

@@ -2105,7 +2105,9 @@
       "searchHint": "A search box instead of a long list. On by itself above {n} options.",
       "searchServer": "Above {n} options the public form asks for matches as people type, so it stays fast.",
       "longList": "{n} options from {name}. Edit them in List Option.",
-      "searchLarge": "Always on for a large list: its options load from the server as people type."
+      "searchLarge": "Always on for a large list: its options load from the server as people type.",
+      "repeat": "People may send it more than once",
+      "repeatHint": "For contact, support or order forms. Off: one response per person."
     },
     "shortcuts": {
       "title": "Shortcuts",
@@ -9405,6 +9407,9 @@
     "sent": "{name}: sent",
     "sentNote": "Sent. You can close this window.",
     "safe": "A Formalie page, shown inside the app.",
-    "back": "Back to Formalie"
+    "back": "Back to Formalie",
+    "leaveTitle": "Leave without sending?",
+    "leaveDesc": "What you typed in this form will be lost.",
+    "leave": "Leave"
   }
 }

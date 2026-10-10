@@ -2097,7 +2097,9 @@
       "searchHint": "Una casella di ricerca al posto di un lungo elenco. Si attiva da sola oltre {n} opzioni.",
       "searchServer": "Oltre {n} opzioni, il modulo pubblico richiede le corrispondenze mentre si scrive, così resta veloce.",
       "longList": "{n} opzioni da {name}. Modificale in Elenco opzioni.",
-      "searchLarge": "Sempre attivo per un elenco grande: le opzioni si caricano dal server mentre si digita."
+      "searchLarge": "Sempre attivo per un elenco grande: le opzioni si caricano dal server mentre si digita.",
+      "repeat": "Chi risponde può inviare più volte",
+      "repeatHint": "Per moduli di contatto, assistenza o ordini. Disattivato: una risposta per persona."
     },
     "shortcuts": {
       "title": "Scorciatoie",
@@ -9405,6 +9407,9 @@
     "sent": "{name}: inviato",
     "sentNote": "Inviato. Puoi chiudere questa finestra.",
     "safe": "Una pagina di Formalie, mostrata nell’app.",
-    "back": "Torna a Formalie"
+    "back": "Torna a Formalie",
+    "leaveTitle": "Uscire senza inviare?",
+    "leaveDesc": "Quello che hai scritto in questo modulo andrà perso.",
+    "leave": "Esci"
   }
 }

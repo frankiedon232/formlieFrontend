@@ -329,8 +329,12 @@ export const submitPublicForm = defineMockRoute(async ({ event, body }) => {
       throw new MockError('FRM-RESP-1008', [{ field: identity.email, message: maskEmail(answers[identity.email]) }])
   }
   let possibleDuplicate: { of: string; reason: string } | undefined
+  // A form people may send more than once (settings.repeat: contact and support forms, orders) skips the one-per-person checks
+  const repeat = !!schema.settings?.repeat
   // Invitation or signed-in member (F10 M3): the person is known, one response each.
-  if (known) {
+  if (repeat) {
+    // Only the exact same answers twice are refused (below)
+  } else if (known) {
     const earlier = earlierResponses.find(item => item.respondent?.kind === known.kind && item.respondent.id === known.id)
     if (earlier) throw new MockError('FRM-RESP-1006', [{ field: '', message: JSON.stringify({ at: earlier.submitted_at, email: maskEmail(known.email) }) }])
   } else if (identity.email) {

@@ -2,17 +2,31 @@
   The app's browser window (owner 2026-10-10), in the design of the public forms' link browser: a rounded window
   over most of the screen with the page's name and address (padlock), a loading bar, reload, open in a new tab
   and a clear close button, so the page underneath stays as it was. Formalie's own forms open here (Contact
-  support, Enterprise enquiry); when one is sent, the window says so (the embed page tells it).
+  support, Enterprise enquiry); when one is sent, the window says so (the embed page tells it). A click outside
+  never closes it (owner 2026-10-10): only ✕, Esc or Back to Formalie; with something typed and not sent
+  (the embed page says so), closing or reloading asks first.
 -->
 <script setup lang="ts">
 const { t } = useI18n()
 const toast = useToast()
 const browser = useAppBrowser()
+const confirm = useConfirm()
 
 const open = computed({
   get: () => browser.state.open,
-  set: value => (browser.state.open = value),
+  set: value => (value ? (browser.state.open = true) : void leave()),
 })
+/** Something typed in the form and not sent yet: closing or reloading asks first. */
+const typing = ref(false)
+async function unsaved() {
+  if (!typing.value || sent.value) return false
+  return !(await confirm({ title: t('appBrowser.leaveTitle'), description: t('appBrowser.leaveDesc'), confirmLabel: t('appBrowser.leave'), danger: true }))
+}
+async function leave() {
+  if (await unsaved()) return
+  typing.value = false
+  browser.close()
+}
 const host = computed(() => {
   try {
     return new URL(browser.state.url).host.replace(/^www\./, '')
@@ -39,7 +53,9 @@ function loaded() {
   slow.value = false
   clearTimeout(timer)
 }
-function reload() {
+async function reload() {
+  if (await unsaved()) return
+  typing.value = false
   sent.value = false
   frameKey.value++
   start()
@@ -48,6 +64,7 @@ watch(
   () => [browser.state.open, browser.state.url],
   ([isOpen]) => {
     sent.value = false
+    typing.value = false
     if (isOpen) start()
     else clearTimeout(timer)
   },
@@ -57,9 +74,12 @@ watch(
 const frame = useTemplateRef<HTMLIFrameElement>('frame')
 useEventListener(import.meta.client ? window : null, 'message', (event: MessageEvent) => {
   const data = event.data as { type?: string; key?: string } | null
-  if (!browser.state.open || event.source !== frame.value?.contentWindow || data?.type !== 'formalie:submitted') return
-  if (browser.state.form && data.key !== browser.state.form) return
+  if (!browser.state.open || event.source !== frame.value?.contentWindow) return
+  if (browser.state.form && data?.key !== browser.state.form) return
+  if (data?.type === 'formalie:typing') typing.value = true
+  if (data?.type !== 'formalie:submitted') return
   sent.value = true
+  typing.value = false
   toast.add({ title: t('appBrowser.sent', { name: heading.value }), color: 'success', icon: 'i-lucide-circle-check' })
 })
 onBeforeUnmount(() => clearTimeout(timer))
@@ -69,6 +89,7 @@ onBeforeUnmount(() => clearTimeout(timer))
   <AppModal
     v-model:open="open"
     :title="heading"
+    keep-open
     :ui="{
       content: 'flex h-[86dvh] w-[calc(100vw-1rem)] max-w-none flex-col overflow-hidden rounded-2xl sm:h-[82dvh] sm:w-[82vw] sm:max-w-5xl',
       header: 'gap-3 px-3 py-2.5 sm:px-4',
@@ -100,7 +121,7 @@ onBeforeUnmount(() => clearTimeout(timer))
 
     <template #close>
       <UTooltip :text="t('public.browser.close')" :kbds="['esc']">
-        <UButton icon="i-lucide-x" color="neutral" variant="solid" size="md" class="rounded-full shadow-md ring-2 ring-(--ui-bg)" :aria-label="t('public.browser.close')" @click="browser.close()" />
+        <UButton icon="i-lucide-x" color="neutral" variant="solid" size="md" class="rounded-full shadow-md ring-2 ring-(--ui-bg)" :aria-label="t('public.browser.close')" @click="leave" />
       </UTooltip>
     </template>
 
@@ -130,7 +151,7 @@ onBeforeUnmount(() => clearTimeout(timer))
     <template #footer>
       <div class="flex w-full flex-wrap items-center justify-between gap-2 text-xs text-muted">
         <span class="flex items-center gap-1.5"><UIcon :name="sent ? 'i-lucide-circle-check' : 'i-lucide-shield-check'" class="size-3.5 shrink-0" :class="sent ? 'text-success' : ''" />{{ sent ? t('appBrowser.sentNote') : t('appBrowser.safe') }}</span>
-        <UButton :label="t('appBrowser.back')" icon="i-lucide-arrow-left" color="neutral" variant="link" size="xs" class="px-0 rtl:[&_svg]:rotate-180" @click="browser.close()" />
+        <UButton :label="t('appBrowser.back')" icon="i-lucide-arrow-left" color="neutral" variant="link" size="xs" class="px-0 rtl:[&_svg]:rotate-180" @click="leave" />
       </div>
     </template>
   </AppModal>

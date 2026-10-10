@@ -2097,7 +2097,9 @@
       "searchHint": "Uzun bir liste yerine arama kutusu. {n} seçeneğin üzerinde kendiliğinden açılır.",
       "searchServer": "{n} seçeneğin üzerinde herkese açık form, kişiler yazarken eşleşmeleri ister, böylece hızlı kalır.",
       "longList": "{name} kaynağından {n} seçenek. Bunları Seçenek Listesi bölümünde düzenleyin.",
-      "searchLarge": "Büyük listede her zaman açıktır: seçenekler yazarken sunucudan yüklenir."
+      "searchLarge": "Büyük listede her zaman açıktır: seçenekler yazarken sunucudan yüklenir.",
+      "repeat": "Yanıtlayanlar birden fazla kez gönderebilir",
+      "repeatHint": "İletişim, destek veya sipariş formları için. Kapalı: kişi başına bir yanıt."
     },
     "shortcuts": {
       "title": "Kısayollar",
@@ -9405,6 +9407,9 @@
     "sent": "{name}: gönderildi",
     "sentNote": "Gönderildi. Bu pencereyi kapatabilirsiniz.",
     "safe": "Uygulamanın içinde gösterilen bir Formalie sayfası.",
-    "back": "Formalie’ye dön"
+    "back": "Formalie’ye dön",
+    "leaveTitle": "Göndermeden çıkılsın mı?",
+    "leaveDesc": "Bu forma yazdıklarınız kaybolacak.",
+    "leave": "Çık"
   }
 }

@@ -2097,7 +2097,9 @@
       "searchHint": "Pole wyszukiwania zamiast długiej listy. Włącza się samo powyżej {n} opcji.",
       "searchServer": "Powyżej {n} opcji formularz publiczny pobiera dopasowania w trakcie pisania, dzięki czemu działa szybko.",
       "longList": "Liczba opcji z {name}: {n}. Edytuj je w Liście opcji.",
-      "searchLarge": "Zawsze włączone dla dużej listy: jej opcje ładują się z serwera podczas pisania."
+      "searchLarge": "Zawsze włączone dla dużej listy: jej opcje ładują się z serwera podczas pisania.",
+      "repeat": "Respondenci mogą wysyłać wielokrotnie",
+      "repeatHint": "Dla formularzy kontaktowych, pomocy lub zamówień. Wyłączone: jedna odpowiedź na osobę."
     },
     "shortcuts": {
       "title": "Skróty",
@@ -9405,6 +9407,9 @@
     "sent": "{name}: wysłano",
     "sentNote": "Wysłano. Możesz zamknąć to okno.",
     "safe": "Strona Formalie wyświetlona w aplikacji.",
-    "back": "Wróć do Formalie"
+    "back": "Wróć do Formalie",
+    "leaveTitle": "Wyjść bez wysyłania?",
+    "leaveDesc": "To, co wpisano w tym formularzu, zostanie utracone.",
+    "leave": "Wyjdź"
   }
 }

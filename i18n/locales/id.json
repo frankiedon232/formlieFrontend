@@ -2097,7 +2097,9 @@
       "searchHint": "Kotak pencarian sebagai pengganti daftar panjang. Aktif otomatis jika lebih dari {n} opsi.",
       "searchServer": "Jika lebih dari {n} opsi, formulir publik meminta hasil yang cocok saat orang mengetik agar tetap cepat.",
       "longList": "{n} opsi dari {name}. Ubah di Daftar Opsi.",
-      "searchLarge": "Selalu aktif untuk daftar besar: opsinya dimuat dari server saat orang mengetik."
+      "searchLarge": "Selalu aktif untuk daftar besar: opsinya dimuat dari server saat orang mengetik.",
+      "repeat": "Responden boleh mengirim lebih dari sekali",
+      "repeatHint": "Untuk formulir kontak, dukungan, atau pesanan. Nonaktif: satu respons per orang."
     },
     "shortcuts": {
       "title": "Pintasan",
@@ -9405,6 +9407,9 @@
     "sent": "{name}: terkirim",
     "sentNote": "Terkirim. Anda dapat menutup jendela ini.",
     "safe": "Halaman Formalie, ditampilkan di dalam aplikasi.",
-    "back": "Kembali ke Formalie"
+    "back": "Kembali ke Formalie",
+    "leaveTitle": "Keluar tanpa mengirim?",
+    "leaveDesc": "Apa yang Anda ketik di formulir ini akan hilang.",
+    "leave": "Keluar"
   }
 }

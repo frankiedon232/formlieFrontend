@@ -2097,7 +2097,9 @@
       "searchHint": "Un cuadro de búsqueda en lugar de una lista larga. Se activa solo a partir de {n} opciones.",
       "searchServer": "A partir de {n} opciones, el formulario público pide las coincidencias mientras se escribe, para que siga siendo rápido.",
       "longList": "{n} opciones de {name}. Edítalas en Lista de opciones.",
-      "searchLarge": "Siempre activa en una lista grande: sus opciones se cargan desde el servidor mientras se escribe."
+      "searchLarge": "Siempre activa en una lista grande: sus opciones se cargan desde el servidor mientras se escribe.",
+      "repeat": "Se puede enviar más de una vez",
+      "repeatHint": "Para formularios de contacto, soporte o pedidos. Desactivado: una respuesta por persona."
     },
     "shortcuts": {
       "title": "Atajos",
@@ -9405,6 +9407,9 @@
     "sent": "{name}: enviado",
     "sentNote": "Enviado. Puedes cerrar esta ventana.",
     "safe": "Una página de Formalie, mostrada dentro de la aplicación.",
-    "back": "Volver a Formalie"
+    "back": "Volver a Formalie",
+    "leaveTitle": "¿Salir sin enviar?",
+    "leaveDesc": "Lo que escribiste en este formulario se perderá.",
+    "leave": "Salir"
   }
 }

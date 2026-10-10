@@ -2097,7 +2097,9 @@
       "searchHint": "Ein Suchfeld statt einer langen Liste. Schaltet sich ab {n} Optionen automatisch ein.",
       "searchServer": "Ab {n} Optionen fragt das öffentliche Formular die Treffer während der Eingabe ab, damit es schnell bleibt.",
       "longList": "{n} Optionen aus {name}. Bearbeiten Sie sie in der Optionsliste.",
-      "searchLarge": "Bei einer großen Liste immer aktiv: Die Optionen werden beim Tippen vom Server geladen."
+      "searchLarge": "Bei einer großen Liste immer aktiv: Die Optionen werden beim Tippen vom Server geladen.",
+      "repeat": "Antwortende dürfen mehrmals senden",
+      "repeatHint": "Für Kontakt-, Support- oder Bestellformulare. Aus: eine Antwort pro Person."
     },
     "shortcuts": {
       "title": "Tastenkürzel",
@@ -9405,6 +9407,9 @@
     "sent": "{name}: gesendet",
     "sentNote": "Gesendet. Sie können dieses Fenster schließen.",
     "safe": "Eine Formalie-Seite, in der App angezeigt.",
-    "back": "Zurück zu Formalie"
+    "back": "Zurück zu Formalie",
+    "leaveTitle": "Ohne Senden verlassen?",
+    "leaveDesc": "Was Sie in diesem Formular eingegeben haben, geht verloren.",
+    "leave": "Verlassen"
   }
 }

@@ -2097,7 +2097,9 @@
       "searchHint": "用搜索框代替长列表。选项超过 {n} 个时自动开启。",
       "searchServer": "选项超过 {n} 个时，公开表单会在用户输入时请求匹配项，以保持流畅。",
       "longList": "来自 {name} 的 {n} 个选项。请在选项列表中编辑。",
-      "searchLarge": "大型列表始终开启：选项会在输入时从服务器加载。"
+      "searchLarge": "大型列表始终开启：选项会在输入时从服务器加载。",
+      "repeat": "填写者可以多次提交",
+      "repeatHint": "适用于联系、支持或订单表单。关闭时：每人只能提交一次。"
     },
     "shortcuts": {
       "title": "快捷键",
@@ -9405,6 +9407,9 @@
     "sent": "{name}：已发送",
     "sentNote": "已发送。您可以关闭此窗口。",
     "safe": "显示在应用内的 Formalie 页面。",
-    "back": "返回 Formalie"
+    "back": "返回 Formalie",
+    "leaveTitle": "不发送就离开？",
+    "leaveDesc": "您在此表单中输入的内容将会丢失。",
+    "leave": "离开"
   }
 }

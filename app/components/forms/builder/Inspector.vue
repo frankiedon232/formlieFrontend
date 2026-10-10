@@ -39,7 +39,7 @@ function setIcons(value: string | number) {
   builder.history.record()
   schema.value.settings = { ...schema.value.settings, field_icons: value !== 'hide' }
 }
-function setSetting(key: 'progress_bar' | 'save_resume', value: boolean) {
+function setSetting(key: 'progress_bar' | 'save_resume' | 'repeat', value: boolean) {
   if (!schema.value) return
   builder.history.record()
   schema.value.settings = { ...schema.value.settings, [key]: value }
@@ -201,6 +201,13 @@ function setThankYou(key: 'title' | 'message', value: string) {
             :description="t('builder.inspector.saveResumeHint')"
             color="neutral"
             @update:model-value="v => setSetting('save_resume', v)"
+          />
+          <USwitch
+            :model-value="!!schema.settings?.repeat"
+            :label="t('builder.inspector.repeat')"
+            :description="t('builder.inspector.repeatHint')"
+            color="neutral"
+            @update:model-value="v => setSetting('repeat', v)"
           />
         </section>
         <FormsBuilderIdentitySetting />

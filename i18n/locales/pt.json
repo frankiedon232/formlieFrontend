@@ -2097,7 +2097,9 @@
       "searchHint": "Uma caixa de pesquisa em vez de uma lista longa. Ativa-se sozinha acima de {n} opções.",
       "searchServer": "Acima de {n} opções, o formulário público busca as correspondências enquanto a pessoa digita, para continuar rápido.",
       "longList": "{n} opções de {name}. Edite-as em Lista de opções.",
-      "searchLarge": "Sempre ativo numa lista grande: as opções são carregadas do servidor enquanto se digita."
+      "searchLarge": "Sempre ativo numa lista grande: as opções são carregadas do servidor enquanto se digita.",
+      "repeat": "Quem responde pode enviar mais de uma vez",
+      "repeatHint": "Para formulários de contato, suporte ou pedidos. Desativado: uma resposta por pessoa."
     },
     "shortcuts": {
       "title": "Atalhos",
@@ -9405,6 +9407,9 @@
     "sent": "{name}: enviado",
     "sentNote": "Enviado. Você pode fechar esta janela.",
     "safe": "Uma página do Formalie, exibida dentro do app.",
-    "back": "Voltar ao Formalie"
+    "back": "Voltar ao Formalie",
+    "leaveTitle": "Sair sem enviar?",
+    "leaveDesc": "O que você digitou neste formulário será perdido.",
+    "leave": "Sair"
   }
 }

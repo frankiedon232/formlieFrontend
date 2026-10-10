@@ -2097,7 +2097,9 @@
       "searchHint": "Un champ de recherche au lieu d’une longue liste. S’active tout seul au-delà de {n} options.",
       "searchServer": "Au-delà de {n} options, le formulaire public demande les résultats pendant la saisie, pour rester rapide.",
       "longList": "{n} options issues de {name}. Modifiez-les dans Liste d’options.",
-      "searchLarge": "Toujours actif pour une grande liste : ses options se chargent depuis le serveur pendant la saisie."
+      "searchLarge": "Toujours actif pour une grande liste : ses options se chargent depuis le serveur pendant la saisie.",
+      "repeat": "Les répondants peuvent envoyer plusieurs fois",
+      "repeatHint": "Pour les formulaires de contact, d’assistance ou de commande. Désactivé : une réponse par personne."
     },
     "shortcuts": {
       "title": "Raccourcis",
@@ -9405,6 +9407,9 @@
     "sent": "{name} : envoyé",
     "sentNote": "Envoyé. Vous pouvez fermer cette fenêtre.",
     "safe": "Une page Formalie, affichée dans l’application.",
-    "back": "Retour à Formalie"
+    "back": "Retour à Formalie",
+    "leaveTitle": "Quitter sans envoyer ?",
+    "leaveDesc": "Ce que vous avez saisi dans ce formulaire sera perdu.",
+    "leave": "Quitter"
   }
 }

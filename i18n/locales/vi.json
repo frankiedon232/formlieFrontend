@@ -2097,7 +2097,9 @@
       "searchHint": "Một ô tìm kiếm thay cho danh sách dài. Tự động bật khi có hơn {n} tùy chọn.",
       "searchServer": "Khi có hơn {n} tùy chọn, biểu mẫu công khai sẽ lấy kết quả khớp khi người dùng nhập để luôn nhanh.",
       "longList": "{n} tùy chọn từ {name}. Chỉnh sửa trong Danh sách tùy chọn.",
-      "searchLarge": "Luôn bật với danh sách lớn: các tùy chọn được tải từ máy chủ khi người dùng gõ."
+      "searchLarge": "Luôn bật với danh sách lớn: các tùy chọn được tải từ máy chủ khi người dùng gõ.",
+      "repeat": "Người trả lời có thể gửi nhiều lần",
+      "repeatHint": "Dành cho biểu mẫu liên hệ, hỗ trợ hoặc đặt hàng. Tắt: mỗi người một phản hồi."
     },
     "shortcuts": {
       "title": "Phím tắt",
@@ -9405,6 +9407,9 @@
     "sent": "{name}: đã gửi",
     "sentNote": "Đã gửi. Bạn có thể đóng cửa sổ này.",
     "safe": "Một trang Formalie, hiển thị bên trong ứng dụng.",
-    "back": "Quay lại Formalie"
+    "back": "Quay lại Formalie",
+    "leaveTitle": "Rời đi mà không gửi?",
+    "leaveDesc": "Những gì bạn đã nhập trong biểu mẫu này sẽ bị mất.",
+    "leave": "Rời đi"
   }
 }

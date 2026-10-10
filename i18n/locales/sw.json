@@ -2097,7 +2097,9 @@
       "searchHint": "Kisanduku cha kutafuta badala ya orodha ndefu. Huwaka chenyewe zikizidi chaguo {n}.",
       "searchServer": "Zikizidi chaguo {n}, fomu ya umma huomba matokeo watu wanapoandika, ili iendelee kuwa haraka.",
       "longList": "Chaguo {n} kutoka {name}. Zihariri katika Orodha ya Chaguo.",
-      "searchLarge": "Huwashwa kila mara kwa orodha kubwa: chaguo hupakiwa kutoka kwa seva watu wanapoandika."
+      "searchLarge": "Huwashwa kila mara kwa orodha kubwa: chaguo hupakiwa kutoka kwa seva watu wanapoandika.",
+      "repeat": "Wajibuji wanaweza kutuma zaidi ya mara moja",
+      "repeatHint": "Kwa fomu za mawasiliano, msaada au oda. Imezimwa: jibu moja kwa kila mtu."
     },
     "shortcuts": {
       "title": "Njia za mkato",
@@ -9405,6 +9407,9 @@
     "sent": "{name}: imetumwa",
     "sentNote": "Imetumwa. Unaweza kufunga dirisha hili.",
     "safe": "Ukurasa wa Formalie, unaoonyeshwa ndani ya programu.",
-    "back": "Rudi kwa Formalie"
+    "back": "Rudi kwa Formalie",
+    "leaveTitle": "Ondoka bila kutuma?",
+    "leaveDesc": "Ulichoandika kwenye fomu hii kitapotea.",
+    "leave": "Ondoka"
   }
 }
