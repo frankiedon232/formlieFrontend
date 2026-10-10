@@ -1,0 +1,168 @@
+{
+ "JOB": "8Pytd1-WYeMdXaVB9B5ohUyochY",
+ "EMP": "XZ3Rl1GiOqgF26nXYK_lVuzplKE",
+ "shots": [
+  {
+   "id": "dashboard-overview",
+   "path": "/dashboard",
+   "target": "card:Activity overview"
+  },
+  {
+   "id": "dashboard-kpis",
+   "path": "/dashboard",
+   "target": "body:250"
+  },
+  {
+   "id": "form-builder",
+   "path": "/forms/JOB/build",
+   "target": "panel:900"
+  },
+  {
+   "id": "form-design",
+   "path": "/forms/JOB/design",
+   "target": "panel:900"
+  },
+  {
+   "id": "form-logic",
+   "path": "/forms/JOB/logic",
+   "target": "body:620"
+  },
+  {
+   "id": "share-channels",
+   "path": "/forms/JOB/share",
+   "target": "card:Where people can answer"
+  },
+  {
+   "id": "templates",
+   "path": "/templates",
+   "target": "body:560"
+  },
+  {
+   "id": "responses",
+   "path": "/forms/EMP/responses",
+   "target": "body:560"
+  },
+  {
+   "id": "response-detail",
+   "path": "/forms/EMP/responses",
+   "open": "row",
+   "target": "dialog"
+  },
+  {
+   "id": "analytics",
+   "path": "/analytics",
+   "target": "card:Conversion overview"
+  },
+  {
+   "id": "data-sources",
+   "path": "/data-sources",
+   "target": "body:620"
+  },
+  {
+   "id": "data-connections",
+   "path": "/data-sources/connections?sort=-name",
+   "target": "body:620"
+  },
+  {
+   "id": "api-service",
+   "path": "/api-service",
+   "target": "body:620"
+  },
+  {
+   "id": "api-docs",
+   "path": "/api-service/docs",
+   "target": "body:620"
+  },
+  {
+   "id": "roles-access",
+   "path": "/people/roles",
+   "target": "body:560"
+  },
+  {
+   "id": "help-centre",
+   "path": "/help",
+   "target": "body:560"
+  },
+  {
+   "id": "dashboard-overview-dark",
+   "path": "/dashboard",
+   "target": "card:Activity overview",
+   "mode": "dark"
+  },
+  {
+   "id": "dashboard-kpis-dark",
+   "path": "/dashboard",
+   "target": "body:250",
+   "mode": "dark"
+  },
+  {
+   "id": "form-builder-dark",
+   "path": "/forms/JOB/build",
+   "target": "panel:900",
+   "mode": "dark"
+  },
+  {
+   "id": "form-design-dark",
+   "path": "/forms/JOB/design",
+   "target": "panel:900",
+   "mode": "dark"
+  },
+  {
+   "id": "responses-dark",
+   "path": "/forms/EMP/responses",
+   "target": "body:560",
+   "mode": "dark"
+  },
+  {
+   "id": "analytics-dark",
+   "path": "/analytics",
+   "target": "card:Conversion overview",
+   "mode": "dark"
+  },
+  {
+   "id": "data-sources-dark",
+   "path": "/data-sources",
+   "target": "body:620",
+   "mode": "dark"
+  },
+  {
+   "id": "api-service-dark",
+   "path": "/api-service",
+   "target": "body:620",
+   "mode": "dark"
+  },
+  {
+   "id": "signin-flow",
+   "path": "/auth/signup?tenant=manage",
+   "target": "rect:12,12,728,880"
+  }
+ ],
+ "replace": {
+  "5EZkzrKiUD": "k7Q2mX9pLa",
+  "test-case-1-en-to-others": "event-registrations",
+  "procurment": "supplier-onboarding",
+  "Job application 2": "Job application",
+  "Venue booking 2": "Venue booking",
+  "Bug report 2": "Bug report",
+  "Employee onboarding 3": "Employee onboarding",
+  "Exit interview 3": "Exit interview",
+  "Lead capture 3": "Lead capture",
+  "Supplier KYC 3": "Supplier checks",
+  "NPS quarterly 2": "Customer survey",
+  "Date Service": "Partner portal",
+  "for all data service": "Orders that partners send in.",
+  "Pip Line Service": "Pipeline sync",
+  "SuperSales": "Sales app",
+  "accountdata": "account-data",
+  "Frankie Don": "Alex Morgan",
+  "admin@remedylegal.test": "alex@example.com",
+  "remedylegal": "northwind",
+  "Remedy Legal": "Northwind Group",
+  "Test Owner": "Sam Lee",
+  "ssdsdsds": "Finance warehouse",
+  "dsdsdsd:1433": "finance-sql.example.net:1433",
+  "net64.dbnet.com:5432": "pg-records.example.net:5432",
+  "supplier-onboardingDB": "Supplier records",
+  "procurmentDB": "Supplier records"
+ }
+}
