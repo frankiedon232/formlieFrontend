@@ -9613,6 +9613,49 @@
       "notDelivered": "Teslim edilmedi",
       "failedCalls": "Son başarısız çağrılar",
       "noFailed": "Başarısız çağrı yok. Her şey yolunda."
+    },
+    "filter": {
+      "label": "Filtre",
+      "folder": "Klasör",
+      "owner": "Sahip",
+      "anyFolder": "Herhangi bir klasör",
+      "anyOwner": "Herkes",
+      "noFolder": "Klasörde değil",
+      "clear": "Filtreleri temizle",
+      "remove": "{name} öğesini kaldır"
+    },
+    "start": {
+      "title": "Çalışma alanınıza hoş geldiniz",
+      "description": "Henüz gösterilecek bir şey yok. Bu adımlar birkaç dakikada yanıt toplamaya başlamanızı sağlar.",
+      "step": "Adım {n}",
+      "sharedTitle": "Henüz sizinle paylaşılan bir şey yok",
+      "sharedDesc": "Biri sizinle bir form veya klasör paylaştığında rakamları burada görünür.",
+      "steps": {
+        "form": {
+          "title": "İlk formunuzu oluşturun",
+          "desc": "Boş başlayın, yapay zekaya anlatın veya bir belge içe aktarın."
+        },
+        "template": {
+          "title": "Şablonla başlayın",
+          "desc": "Hazır bir form seçin ve gereken yerleri değiştirin."
+        },
+        "setup": {
+          "title": "Çalışma alanınızı ayarlayın",
+          "desc": "Şirket bilgileri, markalama, dil ve bölge."
+        },
+        "team": {
+          "title": "Ekibinizi davet edin",
+          "desc": "Kişileri ekleyin ve her rolün neler yapabileceğini seçin."
+        },
+        "database": {
+          "title": "Bir veritabanı bağlayın",
+          "desc": "Yanıtları geldikçe kendi veritabanınızda saklayın."
+        },
+        "help": {
+          "title": "Yardım merkezini ziyaret edin",
+          "desc": "Kılavuzlar, yanıtlar ve her alana kısa turlar."
+        }
+      }
     }
   }
 }

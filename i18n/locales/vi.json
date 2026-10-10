@@ -9613,6 +9613,49 @@
       "notDelivered": "Chưa gửi được",
       "failedCalls": "Các lượt gọi lỗi gần đây",
       "noFailed": "Không có lượt gọi lỗi. Mọi thứ đều ổn."
+    },
+    "filter": {
+      "label": "Bộ lọc",
+      "folder": "Thư mục",
+      "owner": "Chủ sở hữu",
+      "anyFolder": "Mọi thư mục",
+      "anyOwner": "Bất kỳ ai",
+      "noFolder": "Không thuộc thư mục",
+      "clear": "Xóa bộ lọc",
+      "remove": "Xóa {name}"
+    },
+    "start": {
+      "title": "Chào mừng đến không gian làm việc của bạn",
+      "description": "Chưa có gì để hiển thị. Các bước này giúp bạn bắt đầu thu phản hồi chỉ trong vài phút.",
+      "step": "Bước {n}",
+      "sharedTitle": "Chưa có gì được chia sẻ với bạn",
+      "sharedDesc": "Khi ai đó chia sẻ biểu mẫu hoặc thư mục với bạn, số liệu của nó sẽ hiện ở đây.",
+      "steps": {
+        "form": {
+          "title": "Tạo biểu mẫu đầu tiên",
+          "desc": "Bắt đầu từ trống, mô tả cho AI hoặc nhập một tài liệu."
+        },
+        "template": {
+          "title": "Bắt đầu từ mẫu",
+          "desc": "Chọn một biểu mẫu làm sẵn và chỉnh những gì bạn cần."
+        },
+        "setup": {
+          "title": "Thiết lập không gian làm việc",
+          "desc": "Thông tin công ty, thương hiệu, ngôn ngữ và khu vực."
+        },
+        "team": {
+          "title": "Mời nhóm của bạn",
+          "desc": "Thêm người và chọn quyền của từng vai trò."
+        },
+        "database": {
+          "title": "Kết nối cơ sở dữ liệu",
+          "desc": "Lưu phản hồi vào cơ sở dữ liệu của bạn ngay khi chúng đến."
+        },
+        "help": {
+          "title": "Ghé trung tâm trợ giúp",
+          "desc": "Hướng dẫn, câu trả lời và các chuyến tham quan ngắn của từng khu vực."
+        }
+      }
     }
   }
 }

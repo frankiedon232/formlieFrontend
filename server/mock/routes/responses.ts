@@ -164,7 +164,11 @@ export const formInsights = defineMockRoute(({ event, query }) => {
 /** GET /responses, the inbox: every form this person may see. */
 export const listResponses = defineMockRoute(({ event, query }) => {
   const { tenant, user } = requireAuth(event)
-  const { data, meta } = pageOf(workspaceResponses(tenant, form => responsesAllowed(form, user, 'view', tenant)), query, false)
+  // `filter[folder_id]` (a folder id or `none`) and `filter[owner_id]` narrow the forms (the dashboard's filter, F21 M5)
+  const folder = list(query, 'folder_id')
+  const owner = list(query, 'owner_id')
+  const wanted = (form: StoredForm) => (!folder || folder.includes(form.folder?.id ?? 'none')) && (!owner || owner.includes(form.owner.id))
+  const { data, meta } = pageOf(workspaceResponses(tenant, form => wanted(form) && responsesAllowed(form, user, 'view', tenant)), query, false)
   return ok(data.map(({ form, entry }) => rowOf(form, entry, false)), meta)
 })
 

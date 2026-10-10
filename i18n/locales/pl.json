@@ -9613,6 +9613,49 @@
       "notDelivered": "Niedostarczone",
       "failedCalls": "Ostatnie nieudane wywołania",
       "noFailed": "Brak nieudanych wywołań. Wszystko w porządku."
+    },
+    "filter": {
+      "label": "Filtr",
+      "folder": "Folder",
+      "owner": "Właściciel",
+      "anyFolder": "Dowolny folder",
+      "anyOwner": "Ktokolwiek",
+      "noFolder": "Poza folderem",
+      "clear": "Wyczyść filtry",
+      "remove": "Usuń {name}"
+    },
+    "start": {
+      "title": "Witaj w swojej przestrzeni roboczej",
+      "description": "Na razie nie ma nic do pokazania. Te kroki pozwolą Ci zbierać odpowiedzi w kilka minut.",
+      "step": "Krok {n}",
+      "sharedTitle": "Nic jeszcze Ci nie udostępniono",
+      "sharedDesc": "Gdy ktoś udostępni Ci formularz lub folder, jego liczby pojawią się tutaj.",
+      "steps": {
+        "form": {
+          "title": "Utwórz pierwszy formularz",
+          "desc": "Zacznij od pustego, opisz go AI lub zaimportuj dokument."
+        },
+        "template": {
+          "title": "Zacznij od szablonu",
+          "desc": "Wybierz gotowy formularz i zmień to, czego potrzebujesz."
+        },
+        "setup": {
+          "title": "Skonfiguruj przestrzeń roboczą",
+          "desc": "Dane firmy, branding, język i region."
+        },
+        "team": {
+          "title": "Zaproś zespół",
+          "desc": "Dodaj osoby i wybierz, co może każda rola."
+        },
+        "database": {
+          "title": "Połącz bazę danych",
+          "desc": "Zapisuj odpowiedzi we własnej bazie danych, gdy tylko nadejdą."
+        },
+        "help": {
+          "title": "Odwiedź centrum pomocy",
+          "desc": "Przewodniki, odpowiedzi i krótkie wycieczki po każdym obszarze."
+        }
+      }
     }
   }
 }

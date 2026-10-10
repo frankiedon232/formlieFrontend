@@ -9613,6 +9613,49 @@
       "notDelivered": "Non livrées",
       "failedCalls": "Derniers appels en échec",
       "noFailed": "Aucun appel en échec. Tout va bien."
+    },
+    "filter": {
+      "label": "Filtrer",
+      "folder": "Dossier",
+      "owner": "Propriétaire",
+      "anyFolder": "Tous les dossiers",
+      "anyOwner": "Tout le monde",
+      "noFolder": "Sans dossier",
+      "clear": "Effacer les filtres",
+      "remove": "Retirer {name}"
+    },
+    "start": {
+      "title": "Bienvenue dans votre espace de travail",
+      "description": "Rien à afficher pour l’instant. Ces étapes vous font recueillir des réponses en quelques minutes.",
+      "step": "Étape {n}",
+      "sharedTitle": "Rien n’est encore partagé avec vous",
+      "sharedDesc": "Quand quelqu’un partage un formulaire ou un dossier avec vous, ses chiffres apparaissent ici.",
+      "steps": {
+        "form": {
+          "title": "Créer votre premier formulaire",
+          "desc": "Partez de zéro, décrivez-le à l’IA ou importez un document."
+        },
+        "template": {
+          "title": "Partir d’un modèle",
+          "desc": "Choisissez un formulaire prêt à l’emploi et modifiez ce qu’il faut."
+        },
+        "setup": {
+          "title": "Configurer votre espace de travail",
+          "desc": "Informations de l’entreprise, identité visuelle, langue et région."
+        },
+        "team": {
+          "title": "Inviter votre équipe",
+          "desc": "Ajoutez des personnes et choisissez ce que chaque rôle peut faire."
+        },
+        "database": {
+          "title": "Connecter une base de données",
+          "desc": "Stockez les réponses dans votre propre base de données dès leur arrivée."
+        },
+        "help": {
+          "title": "Visiter le centre d’aide",
+          "desc": "Guides, réponses et courtes visites de chaque espace."
+        }
+      }
     }
   }
 }

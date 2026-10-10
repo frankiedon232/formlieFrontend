@@ -9613,6 +9613,49 @@
       "notDelivered": "Não entregues",
       "failedCalls": "Últimas chamadas com falha",
       "noFailed": "Nenhuma chamada com falha. Tudo certo."
+    },
+    "filter": {
+      "label": "Filtrar",
+      "folder": "Pasta",
+      "owner": "Responsável",
+      "anyFolder": "Qualquer pasta",
+      "anyOwner": "Qualquer pessoa",
+      "noFolder": "Sem pasta",
+      "clear": "Limpar filtros",
+      "remove": "Remover {name}"
+    },
+    "start": {
+      "title": "Boas-vindas ao seu espaço de trabalho",
+      "description": "Ainda não há nada para mostrar. Estes passos levam você a coletar respostas em poucos minutos.",
+      "step": "Passo {n}",
+      "sharedTitle": "Nada compartilhado com você ainda",
+      "sharedDesc": "Quando alguém compartilhar um formulário ou uma pasta com você, os números aparecem aqui.",
+      "steps": {
+        "form": {
+          "title": "Crie seu primeiro formulário",
+          "desc": "Comece do zero, descreva para a IA ou importe um documento."
+        },
+        "template": {
+          "title": "Comece por um modelo",
+          "desc": "Escolha um formulário pronto e mude o que precisar."
+        },
+        "setup": {
+          "title": "Configure seu espaço de trabalho",
+          "desc": "Dados da empresa, identidade visual, idioma e região."
+        },
+        "team": {
+          "title": "Convide sua equipe",
+          "desc": "Adicione pessoas e escolha o que cada função pode fazer."
+        },
+        "database": {
+          "title": "Conecte um banco de dados",
+          "desc": "Guarde as respostas no seu próprio banco de dados conforme chegam."
+        },
+        "help": {
+          "title": "Visite a central de ajuda",
+          "desc": "Guias, respostas e tours rápidos de cada área."
+        }
+      }
     }
   }
 }

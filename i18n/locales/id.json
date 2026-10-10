@@ -9613,6 +9613,49 @@
       "notDelivered": "Tidak terkirim",
       "failedCalls": "Panggilan gagal terbaru",
       "noFailed": "Tidak ada panggilan gagal. Semua baik."
+    },
+    "filter": {
+      "label": "Filter",
+      "folder": "Folder",
+      "owner": "Pemilik",
+      "anyFolder": "Folder apa pun",
+      "anyOwner": "Siapa saja",
+      "noFolder": "Tidak dalam folder",
+      "clear": "Hapus filter",
+      "remove": "Hapus {name}"
+    },
+    "start": {
+      "title": "Selamat datang di ruang kerja Anda",
+      "description": "Belum ada yang ditampilkan. Langkah-langkah ini membantu Anda mengumpulkan respons dalam beberapa menit.",
+      "step": "Langkah {n}",
+      "sharedTitle": "Belum ada yang dibagikan kepada Anda",
+      "sharedDesc": "Saat seseorang membagikan formulir atau folder kepada Anda, angkanya muncul di sini.",
+      "steps": {
+        "form": {
+          "title": "Buat formulir pertama Anda",
+          "desc": "Mulai kosong, jelaskan ke AI, atau impor dokumen."
+        },
+        "template": {
+          "title": "Mulai dari templat",
+          "desc": "Pilih formulir siap pakai dan ubah sesuai kebutuhan."
+        },
+        "setup": {
+          "title": "Siapkan ruang kerja Anda",
+          "desc": "Detail perusahaan, branding, bahasa, dan wilayah."
+        },
+        "team": {
+          "title": "Undang tim Anda",
+          "desc": "Tambahkan orang dan pilih apa yang boleh dilakukan setiap peran."
+        },
+        "database": {
+          "title": "Hubungkan basis data",
+          "desc": "Simpan respons di basis data Anda sendiri begitu masuk."
+        },
+        "help": {
+          "title": "Kunjungi pusat bantuan",
+          "desc": "Panduan, jawaban, dan tur singkat setiap area."
+        }
+      }
     }
   }
 }

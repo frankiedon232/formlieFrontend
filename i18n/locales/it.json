@@ -9613,6 +9613,49 @@
       "notDelivered": "Non consegnate",
       "failedCalls": "Ultime chiamate non riuscite",
       "noFailed": "Nessuna chiamata non riuscita. Tutto a posto."
+    },
+    "filter": {
+      "label": "Filtra",
+      "folder": "Cartella",
+      "owner": "Proprietario",
+      "anyFolder": "Qualsiasi cartella",
+      "anyOwner": "Chiunque",
+      "noFolder": "Senza cartella",
+      "clear": "Cancella filtri",
+      "remove": "Rimuovi {name}"
+    },
+    "start": {
+      "title": "Benvenuto nel tuo spazio di lavoro",
+      "description": "Ancora niente da mostrare. Questi passaggi ti portano a raccogliere risposte in pochi minuti.",
+      "step": "Passaggio {n}",
+      "sharedTitle": "Ancora nulla condiviso con te",
+      "sharedDesc": "Quando qualcuno condivide un modulo o una cartella con te, i numeri compaiono qui.",
+      "steps": {
+        "form": {
+          "title": "Crea il tuo primo modulo",
+          "desc": "Parti da zero, descrivilo all’IA o importa un documento."
+        },
+        "template": {
+          "title": "Parti da un modello",
+          "desc": "Scegli un modulo già pronto e cambia ciò che serve."
+        },
+        "setup": {
+          "title": "Configura il tuo spazio di lavoro",
+          "desc": "Dati dell’azienda, marchio, lingua e area geografica."
+        },
+        "team": {
+          "title": "Invita il tuo team",
+          "desc": "Aggiungi persone e scegli cosa può fare ogni ruolo."
+        },
+        "database": {
+          "title": "Collega un database",
+          "desc": "Salva le risposte nel tuo database man mano che arrivano."
+        },
+        "help": {
+          "title": "Visita il centro assistenza",
+          "desc": "Guide, risposte e brevi tour di ogni area."
+        }
+      }
     }
   }
 }

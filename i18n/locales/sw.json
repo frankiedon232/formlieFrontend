@@ -9613,6 +9613,49 @@
       "notDelivered": "Haijawasilishwa",
       "failedCalls": "Miito iliyoshindwa hivi karibuni",
       "noFailed": "Hakuna miito iliyoshindwa. Yote sawa."
+    },
+    "filter": {
+      "label": "Chuja",
+      "folder": "Folda",
+      "owner": "Mmiliki",
+      "anyFolder": "Folda yoyote",
+      "anyOwner": "Yeyote",
+      "noFolder": "Haiko kwenye folda",
+      "clear": "Futa vichujio",
+      "remove": "Ondoa {name}"
+    },
+    "start": {
+      "title": "Karibu kwenye eneo lako la kazi",
+      "description": "Bado hakuna cha kuonyesha. Hatua hizi zinakusaidia kuanza kukusanya majibu ndani ya dakika chache.",
+      "step": "Hatua ya {n}",
+      "sharedTitle": "Bado hakuna kilichoshirikiwa nawe",
+      "sharedDesc": "Mtu akikushirikisha fomu au folda, namba zake zitaonekana hapa.",
+      "steps": {
+        "form": {
+          "title": "Tengeneza fomu yako ya kwanza",
+          "desc": "Anza tupu, ieleze kwa AI au ingiza hati."
+        },
+        "template": {
+          "title": "Anza na kiolezo",
+          "desc": "Chagua fomu iliyo tayari na ubadilishe unachohitaji."
+        },
+        "setup": {
+          "title": "Weka mipangilio ya eneo lako la kazi",
+          "desc": "Maelezo ya kampuni, chapa, lugha na eneo."
+        },
+        "team": {
+          "title": "Alika timu yako",
+          "desc": "Ongeza watu na uchague kila jukumu linaweza kufanya nini."
+        },
+        "database": {
+          "title": "Unganisha hifadhidata",
+          "desc": "Hifadhi majibu kwenye hifadhidata yako mwenyewe yanapofika."
+        },
+        "help": {
+          "title": "Tembelea kituo cha msaada",
+          "desc": "Miongozo, majibu na ziara fupi za kila eneo."
+        }
+      }
     }
   }
 }

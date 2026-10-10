@@ -3,7 +3,7 @@
  * analyses them). Forms the person may see (role, sharing, folder access); responses only of forms whose
  * responses they may see.
  *
- *   GET /dashboard/forms?from&to&group → FormsDashboard
+ *   GET /dashboard/forms?from&to&group&folder&owner → FormsDashboard (folder / owner as on GET /dashboard)
  */
 import type { FormsDashboard } from '#shared/types/dashboard'
 import { bucketStart } from '#shared/utils/dashboard/buckets'
@@ -13,6 +13,7 @@ import { defineMockRoute } from '../core/route'
 import { canSee, responsesAllowed } from '../data/formPermissions'
 import { formsOf } from '../data/formStore'
 import { formResponses } from '../data/responseData'
+import { scopeFrom } from '#shared/utils/dashboard/scope'
 import { periodFrom } from './dashboard'
 
 const DAY = 86_400_000
@@ -23,7 +24,8 @@ export const formsDashboard = defineMockRoute(({ event, query }) => {
   const { tenant, user } = requireAuth(event)
   const { from, to, group, prevFrom, end, buckets } = periodFrom(query)
   const index = new Map(buckets.map((start, i) => [start, i]))
-  const forms = formsOf(tenant).forms.filter(form => !form.deleted_at && canSee(form, user))
+  const scope = scopeFrom(query)
+  const forms = formsOf(tenant).forms.filter(form => !form.deleted_at && canSee(form, user) && scope.matches(form))
   const now = Date.now()
 
   const created = buckets.map(start => ({ start, count: 0 }))
@@ -93,6 +95,7 @@ export const formsDashboard = defineMockRoute(({ event, query }) => {
     from: iso(from),
     to: iso(to),
     group,
+    new_workspace: !forms.length && !scope.filtered,
     kpis: {
       published: { value: byStatus('published'), previous: null },
       created: { value: createdNow, previous: createdBefore },

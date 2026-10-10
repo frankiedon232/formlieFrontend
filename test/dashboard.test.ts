@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { bucketStart, bucketsOf, groupFor } from '../shared/utils/dashboard/buckets'
+import { scopeFrom } from '../shared/utils/dashboard/scope'
 
 const at = (day: string) => Date.parse(`${day}T12:00:00Z`)
 const iso = (time: number) => new Date(time).toISOString().slice(0, 10)
@@ -25,5 +26,24 @@ describe('dashboard buckets', () => {
     expect(groupFor(90)).toBe('week')
     expect(groupFor(730)).toBe('month')
     expect(groupFor(3000)).toBe('year')
+  })
+})
+
+describe('dashboard forms filter', () => {
+  const hr = { folder: { id: 'hr' }, owner: { id: 'u1' } }
+  const loose = { folder: null, owner: { id: 'u2' } }
+
+  it('keeps every form without a filter', () => {
+    const scope = scopeFrom({})
+    expect(scope.filtered).toBe(false)
+    expect([hr, loose].filter(scope.matches)).toHaveLength(2)
+  })
+
+  it('narrows to a folder, forms in no folder, or an owner', () => {
+    expect([hr, loose].filter(scopeFrom({ folder: 'hr' }).matches)).toEqual([hr])
+    expect([hr, loose].filter(scopeFrom({ folder: 'none' }).matches)).toEqual([loose])
+    expect([hr, loose].filter(scopeFrom({ owner: 'u2' }).matches)).toEqual([loose])
+    expect([hr, loose].filter(scopeFrom({ folder: 'hr', owner: 'u2' }).matches)).toEqual([])
+    expect(scopeFrom({ owner: 'u2' }).filtered).toBe(true)
   })
 })

@@ -9613,6 +9613,49 @@
       "notDelivered": "Nicht zugestellt",
       "failedCalls": "Letzte fehlgeschlagene Aufrufe",
       "noFailed": "Keine fehlgeschlagenen Aufrufe. Alles in Ordnung."
+    },
+    "filter": {
+      "label": "Filter",
+      "folder": "Ordner",
+      "owner": "Besitzer",
+      "anyFolder": "Beliebiger Ordner",
+      "anyOwner": "Alle",
+      "noFolder": "In keinem Ordner",
+      "clear": "Filter löschen",
+      "remove": "{name} entfernen"
+    },
+    "start": {
+      "title": "Willkommen in Ihrem Arbeitsbereich",
+      "description": "Noch nichts anzuzeigen. Mit diesen Schritten sammeln Sie in wenigen Minuten Antworten.",
+      "step": "Schritt {n}",
+      "sharedTitle": "Noch nichts mit Ihnen geteilt",
+      "sharedDesc": "Wenn jemand ein Formular oder einen Ordner mit Ihnen teilt, erscheinen die Zahlen hier.",
+      "steps": {
+        "form": {
+          "title": "Erstes Formular erstellen",
+          "desc": "Leer beginnen, der KI beschreiben oder ein Dokument importieren."
+        },
+        "template": {
+          "title": "Mit einer Vorlage beginnen",
+          "desc": "Wählen Sie ein fertiges Formular und ändern Sie, was Sie brauchen."
+        },
+        "setup": {
+          "title": "Arbeitsbereich einrichten",
+          "desc": "Firmendaten, Branding, Sprache und Region."
+        },
+        "team": {
+          "title": "Team einladen",
+          "desc": "Fügen Sie Personen hinzu und legen Sie fest, was jede Rolle darf."
+        },
+        "database": {
+          "title": "Datenbank verbinden",
+          "desc": "Speichern Sie Antworten direkt in Ihrer eigenen Datenbank."
+        },
+        "help": {
+          "title": "Hilfecenter besuchen",
+          "desc": "Anleitungen, Antworten und kurze Rundgänge durch jeden Bereich."
+        }
+      }
     }
   }
 }

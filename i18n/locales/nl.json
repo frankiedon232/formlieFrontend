@@ -9613,6 +9613,49 @@
       "notDelivered": "Niet geleverd",
       "failedCalls": "Laatste mislukte aanroepen",
       "noFailed": "Geen mislukte aanroepen. Alles in orde."
+    },
+    "filter": {
+      "label": "Filteren",
+      "folder": "Map",
+      "owner": "Eigenaar",
+      "anyFolder": "Elke map",
+      "anyOwner": "Iedereen",
+      "noFolder": "Niet in een map",
+      "clear": "Filters wissen",
+      "remove": "{name} verwijderen"
+    },
+    "start": {
+      "title": "Welkom in je werkruimte",
+      "description": "Nog niets om te tonen. Met deze stappen verzamel je binnen enkele minuten reacties.",
+      "step": "Stap {n}",
+      "sharedTitle": "Nog niets met je gedeeld",
+      "sharedDesc": "Als iemand een formulier of map met je deelt, verschijnen de cijfers hier.",
+      "steps": {
+        "form": {
+          "title": "Maak je eerste formulier",
+          "desc": "Begin leeg, beschrijf het aan de AI of importeer een document."
+        },
+        "template": {
+          "title": "Begin met een sjabloon",
+          "desc": "Kies een kant-en-klaar formulier en pas aan wat nodig is."
+        },
+        "setup": {
+          "title": "Je werkruimte instellen",
+          "desc": "Bedrijfsgegevens, huisstijl, taal en regio."
+        },
+        "team": {
+          "title": "Je team uitnodigen",
+          "desc": "Voeg mensen toe en bepaal wat elke rol mag."
+        },
+        "database": {
+          "title": "Een database verbinden",
+          "desc": "Sla reacties direct op in je eigen database."
+        },
+        "help": {
+          "title": "Naar het helpcentrum",
+          "desc": "Handleidingen, antwoorden en korte rondleidingen door elk onderdeel."
+        }
+      }
     }
   }
 }

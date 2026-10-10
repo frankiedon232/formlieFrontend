@@ -2,8 +2,8 @@
   Dashboard (F21, design reference 2: docs/design/Screenshot 2026-10-02 092034.png): the workspace home. Header:
   the period (last 30 days by default, kept in the address) and Daily / Weekly / Monthly / Yearly, with New form.
   Below, a view switch: Workspace (every area at a glance, M1) · Forms (running the forms, M2) · Data sources (M3) ·
-  API service (M4), each shown to people whose role reaches it; the choice is remembered. Everything follows
-  the person's role and folder access.
+  API service (M4), each shown to people whose role reaches it; the choice is remembered. Workspace and Forms take
+  a folder / owner filter (M5, kept in the address). Everything follows the person's role and folder access.
 -->
 <script setup lang="ts">
 import { DASHBOARD_GROUPS, type DashboardGroup, type DashboardView } from '#shared/types/dashboard'
@@ -33,6 +33,12 @@ const loaded = (value: DashboardGroup) => {
   syncedAt.value = Date.now()
 }
 const syncedAt = ref<number | null>(null)
+
+// The forms filter (Workspace and Forms views)
+const text = (value: unknown) => (typeof value === 'string' && value ? value : undefined)
+const folder = computed(() => text(route.query.folder))
+const owner = computed(() => text(route.query.owner))
+const setFilter = (value: { folder?: string; owner?: string }) => void router.replace({ query: { ...route.query, folder: value.folder, owner: value.owner } })
 
 // Views: Workspace for everyone, the others for people whose role reaches the area
 const VIEW_KEY = 'formalie:dashboard-view'
@@ -73,12 +79,13 @@ const current = useTemplateRef<{ refresh: () => Promise<unknown> }>('current')
     <div class="flex flex-col gap-4">
       <div class="flex flex-wrap items-center justify-between gap-2">
         <UTabs v-if="views.length > 1" v-model="view" :items="views" :content="false" color="neutral" size="sm" :ui="SEGMENTED_UI" :aria-label="t('dashboard.views.label')" />
+        <DashboardFilter v-if="view === 'workspace' || view === 'forms'" :folder="folder" :owner="owner" @change="setFilter" />
         <UTabs v-model="chosenGroup" :items="groups" :content="false" color="neutral" size="xs" :ui="SEGMENTED_UI" class="ms-auto 2xl:hidden" :aria-label="t('dashboard.groupLabel')" />
       </div>
       <DashboardApi v-if="view === 'api'" ref="current" :from="from" :to="to" :group="group" @loaded="loaded" />
       <DashboardData v-else-if="view === 'data'" ref="current" :from="from" :to="to" :group="group" @loaded="loaded" />
-      <DashboardForms v-else-if="view === 'forms'" ref="current" :from="from" :to="to" :group="group" @loaded="loaded" />
-      <DashboardWorkspace v-else ref="current" :from="from" :to="to" :group="group" @loaded="loaded" />
+      <DashboardForms v-else-if="view === 'forms'" ref="current" :from="from" :to="to" :group="group" :folder="folder" :owner="owner" @loaded="loaded" />
+      <DashboardWorkspace v-else ref="current" :from="from" :to="to" :group="group" :folder="folder" :owner="owner" @loaded="loaded" />
     </div>
   </AppPanel>
 </template>

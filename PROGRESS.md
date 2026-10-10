@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-10 (F24 paused while the owner's Payoneer account is activated: subscriptions, plan limits, Formalie's own support and enquiry forms and payment safety are done; next: F21 Dashboard (M1 to M4 done, M5 next); back to F24 for Payoneer, form payments and the website project files when the account is ready)
+**Last updated:** 2026-10-10 (F24 paused while the owner's Payoneer account is activated: subscriptions, plan limits, Formalie's own support and enquiry forms and payment safety are done; F21 Dashboard done (M1 to M5), waiting for the owner's review; back to F24 for Payoneer, form payments and the website project files when the account is ready)
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend · ➖ dropped or merged
 
@@ -31,7 +31,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F18   | Analytics                                         | ✅     | 100% (waiting for review)                 |
 | F19   | AI assistant                                      | ✅     | 100% (waiting for review)                 |
 | F20   | Live collaboration (removed)                      | ➖     | -                                         |
-| F21   | Dashboard                                         | 🟡     | 85% (M1-M4 ✅, M5 next)                   |
+| F21   | Dashboard                                         | ✅     | 100% (M1-M5 ✅, owner review)             |
 | F22   | Roles & access                                    | ✅     | 100% (owner-tested 2026-10-10)            |
 | F23   | Platform admin (super admin, Formalie team)       | ➖     | separate projects (formaliePlatformFront / Back) |
 | F24   | Payments & subscriptions                          | ⏸️     | 65% (subscriptions, payment safety ✅; paused for Payoneer, then form payments) |
@@ -42,7 +42,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 1. ✅ **F19 AI assistant** (waiting for the owner's review)
 2. ✅ **F25 Help centre** (brought forward by the owner, 2026-10-10, while the payment processor accounts are set up; its content is posted from the platform admin; waiting for review)
 3. ⏸ **F24 Payments & subscriptions** (paused 2026-10-10 for the owner's Payoneer account; subscriptions, plan limits and payment safety done; left: Payoneer, form payments, then the Formalie website project files; form payments and plans together; processor: Payoneer, owner 2026-10-10; plan features to gate include the custom domain, own sending address / mail server and single sign-on)
-4. 🟡 **F21 Dashboard** (started 2026-10-10 while F24 waits for Payoneer; shows the plan and usage too)
+4. ✅ **F21 Dashboard** (built 2026-10-10 while F24 waits for Payoneer; Workspace, Forms, Data sources and API service views, filters, first steps; waiting for review)
 5. ⏸ **Switching to the real backend** (FastAPI, `formalieBackend`): the mock is replaced, API-CONTRACT is the spec
 6. **F23 Platform admin (super admin)**: a **separate project** with its own front end, backend and database that also reaches Formalie's database (owner, 2026-10-10). Its full plan lives in its own two projects, formaliePlatformFront (Nuxt) and formaliePlatformBack (FastAPI), not in this project.
 
@@ -965,7 +965,7 @@ Owner, 2026-10-08: "profiling and users are the same thing". One phase builds th
 
 ---
 
-## F21, Dashboard 🟡 (started 2026-10-10 while F24 waits for Payoneer)
+## F21, Dashboard ✅ (started and finished 2026-10-10 while F24 waits for Payoneer; waiting for the owner's review)
 
 - ✅ Separate dashboards for **Forms** ✅ (M2), **Data sources** ✅ (M3) and **API service** ✅ (M4) (owner, 2026-10-02), plus the workspace overview ✅ (M1); a view switch on the page (remembered), each view only for people whose role reaches it
 - ✅ **M2** Forms view (running the forms; Analytics analyses them): published, new forms, responses per active form, published without responses, unpublished edits; responses by form with change; forms by status (thin lines open the filtered list); where responses come from (link, embed, API); new forms over time; folders and owners; forms that need work (nearly full, closing, no responses, unpublished edits, old drafts) each with the step that fixes it
@@ -985,8 +985,9 @@ Owner, 2026-10-08: "profiling and users are the same thing". One phase builds th
 - ✅ **M1** Activity overview: started and sent over time with the design's hatched gap and tooltip (completion, sent, started, API calls)
 - ✅ **M1** Busiest forms one at a time (‹ › ↗) with responses, change, completion bar and responses to review; Coming up timeline (forms opening / closing, renewal, plan change)
 - ✅ **M1** Recent responses table (respondent, form, status, answered bar, received; a row opens the response) and Needs attention (payment due, failing connection or webhook, form nearly full or closing, plan's form limit, card expiring, responses to review) with each area at a glance (forms, data sources, API calls, plan)
-- ⬜ Filters (organisation, folder, owner)
-- ⬜ Empty state for new workspaces (links to onboarding / first form)
+- ✅ **M5** Filters: folder (or forms in no folder) and owner on the Workspace and Forms views (Filter button with pickers, a chip per filter that clears it, kept in the address); every number, the busiest forms and the recent responses follow it. Organisation: a workspace is one organisation today, so no picker (comes with several organisations per workspace)
+- ✅ **M5** First steps for new workspaces (Workspace and Forms views): first form, a template, workspace set-up, the team, a database, the help centre, each only when the role allows it; someone who can't create forms sees that nothing is shared with them yet
+- ✅ **M5** 20 languages; phase checks: desktop, phone, Arabic (right to left), keyboard (Filter, pickers, chips and steps reachable by Tab); the API view split into two parts (lower row `ApiUsage`); success rate shows – when there were no calls
 - ✅ **M1** Dashboard entry first in MAIN MENU (G then H), `/` and sign-in land on it
 
 ---
@@ -1637,3 +1638,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-10 | F21 M2 | Dashboard view switch (Workspace · Forms, remembered, by role) and the Forms view: `GET /dashboard/forms` (status, new forms per bucket, channels, top forms with change, folders, owners, forms that need work), KPI row, meters, status lines, columns; shared period parsing on the server; 20 languages. |
 | 2026-10-10 | F21 M3 | Dashboard Data sources view: `GET /dashboard/data` (needs data.view; operations from the connections' daily counts, stored responses from response storage, health checks, the audit trail's data area), KPI row, operations columns, connection health, what people did, response storage, latest activity; in the view switch for people with data access; 20 languages. |
 | 2026-10-10 | F21 M4 | Dashboard API service view: `GET /dashboard/api` (needs api.view; calls, errors and response times from the call log, tokens' calls and last use, webhook deliveries), KPI row, calls over time, busiest endpoints, answers by kind, tokens in use, webhooks, latest failed calls; in the view switch for people with API service access; 20 languages. |
+| 2026-10-10 | F21 M5 | Dashboard filters (folder or no folder, owner; `folder` / `owner` on `/dashboard` and `/dashboard/forms`, `filter[folder_id]` / `filter[owner_id]` on `/responses`, kept in the address, chips), first steps for new workspaces (`new_workspace`), API view split, 20 languages; checked on desktop, phone, Arabic and with a new test workspace. F21 done, stopped for the owner's review. |

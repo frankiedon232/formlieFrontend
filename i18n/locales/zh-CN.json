@@ -9613,6 +9613,49 @@
       "notDelivered": "未投递",
       "failedCalls": "最近失败的调用",
       "noFailed": "没有失败的调用。一切正常。"
+    },
+    "filter": {
+      "label": "筛选",
+      "folder": "文件夹",
+      "owner": "所有者",
+      "anyFolder": "任意文件夹",
+      "anyOwner": "所有人",
+      "noFolder": "不在文件夹中",
+      "clear": "清除筛选",
+      "remove": "移除 {name}"
+    },
+    "start": {
+      "title": "欢迎来到您的工作区",
+      "description": "暂时没有可显示的内容。按这些步骤，几分钟内就能开始收集回复。",
+      "step": "第 {n} 步",
+      "sharedTitle": "还没有人与您共享内容",
+      "sharedDesc": "有人与您共享表单或文件夹后，其数据会显示在这里。",
+      "steps": {
+        "form": {
+          "title": "创建第一个表单",
+          "desc": "从空白开始、向 AI 描述，或导入文档。"
+        },
+        "template": {
+          "title": "从模板开始",
+          "desc": "选择现成的表单，再修改需要的部分。"
+        },
+        "setup": {
+          "title": "设置工作区",
+          "desc": "公司信息、品牌、语言和地区。"
+        },
+        "team": {
+          "title": "邀请团队",
+          "desc": "添加成员，并选择每个角色可以做什么。"
+        },
+        "database": {
+          "title": "连接数据库",
+          "desc": "回复到达后直接存入您自己的数据库。"
+        },
+        "help": {
+          "title": "访问帮助中心",
+          "desc": "指南、解答，以及各个区域的简短导览。"
+        }
+      }
     }
   }
 }

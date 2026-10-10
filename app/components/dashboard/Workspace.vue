@@ -1,12 +1,13 @@
 <!--
   Dashboard → Workspace view (F21 M1): five KPI cards (responses, completion, active forms, to review, needs
   attention) with their change; the activity overview beside the busiest forms and what is coming up; the newest
-  responses beside what needs attention and each area at a glance. Loads for the period the page chose.
+  responses beside what needs attention and each area at a glance. Loads for the period and forms filter the page
+  chose; a workspace with no forms yet sees the first steps instead (M5).
 -->
 <script setup lang="ts">
 import type { DashboardGroup, WorkspaceDashboard } from '#shared/types/dashboard'
 
-const props = defineProps<{ from: string; to: string; group?: DashboardGroup }>()
+const props = defineProps<{ from: string; to: string; group?: DashboardGroup; folder?: string; owner?: string }>()
 const emit = defineEmits<{ loaded: [group: DashboardGroup] }>()
 const { t } = useI18n()
 const api = useApi()
@@ -19,14 +20,14 @@ const recent = useTemplateRef<{ reload: () => Promise<void> }>('recent')
 async function load() {
   failed.value = false
   try {
-    data.value = (await api.get<WorkspaceDashboard>('/dashboard', { from: props.from, to: props.to, group: props.group })).data
+    data.value = (await api.get<WorkspaceDashboard>('/dashboard', { from: props.from, to: props.to, group: props.group, folder: props.folder, owner: props.owner })).data
     emit('loaded', data.value.group)
   } catch (error) {
     failed.value = true
     handle(error)
   }
 }
-watch(() => [props.from, props.to, props.group], load, { immediate: true })
+watch(() => [props.from, props.to, props.group, props.folder, props.owner], load, { immediate: true })
 defineExpose({ refresh: () => Promise.all([load(), recent.value?.reload()]) })
 
 const change = (kpi: { value: number; previous: number | null } | undefined) => (kpi && kpi.previous ? Math.round(((kpi.value - kpi.previous) / kpi.previous) * 100) : null)
@@ -44,6 +45,7 @@ const kpis = computed(() => {
 
 <template>
   <AppEmpty v-if="failed && !data" icon="i-lucide-cloud-off" :title="t('dashboard.failed')" :actions="[{ label: t('common.retry'), icon: 'i-lucide-refresh-cw', color: 'neutral', variant: 'outline', onClick: load }]" />
+  <DashboardStart v-else-if="data?.new_workspace" />
   <div v-else class="flex flex-col gap-4" :class="data && failed ? 'opacity-60' : ''">
     <div class="flex shrink-0 snap-x gap-3 overflow-x-auto [scrollbar-width:none] sm:grid sm:grid-cols-3 sm:overflow-visible xl:grid-cols-5">
       <ChartsKpi v-for="kpi in kpis" :key="kpi.key" class="min-w-[13.5rem] snap-start sm:min-w-0" :label="kpi.label" :icon="kpi.icon" :value="kpi.value" :change="kpi.change" :hint="kpi.hint" :to="kpi.to" :lower-is-better="kpi.key === 'attention'" />
@@ -53,7 +55,7 @@ const kpis = computed(() => {
       <DashboardSide :data="data" />
     </div>
     <div class="grid grid-cols-1 gap-4 lg:grid-cols-3">
-      <DashboardRecent ref="recent" class="lg:col-span-2" />
+      <DashboardRecent ref="recent" class="lg:col-span-2" :folder="folder" :owner="owner" />
       <DashboardAttention :data="data" />
     </div>
   </div>

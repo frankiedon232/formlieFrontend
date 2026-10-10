@@ -9613,6 +9613,49 @@
       "notDelivered": "No entregadas",
       "failedCalls": "Últimas llamadas fallidas",
       "noFailed": "No hay llamadas fallidas. Todo en orden."
+    },
+    "filter": {
+      "label": "Filtrar",
+      "folder": "Carpeta",
+      "owner": "Propietario",
+      "anyFolder": "Cualquier carpeta",
+      "anyOwner": "Cualquiera",
+      "noFolder": "Sin carpeta",
+      "clear": "Borrar filtros",
+      "remove": "Quitar {name}"
+    },
+    "start": {
+      "title": "Te damos la bienvenida a tu espacio de trabajo",
+      "description": "Aún no hay nada que mostrar. Estos pasos te ayudan a recoger respuestas en pocos minutos.",
+      "step": "Paso {n}",
+      "sharedTitle": "Aún no hay nada compartido contigo",
+      "sharedDesc": "Cuando alguien comparta un formulario o una carpeta contigo, sus cifras aparecerán aquí.",
+      "steps": {
+        "form": {
+          "title": "Crea tu primer formulario",
+          "desc": "Empieza en blanco, descríbelo a la IA o importa un documento."
+        },
+        "template": {
+          "title": "Empieza con una plantilla",
+          "desc": "Elige un formulario ya hecho y cambia lo que necesites."
+        },
+        "setup": {
+          "title": "Configura tu espacio de trabajo",
+          "desc": "Datos de la empresa, marca, idioma y región."
+        },
+        "team": {
+          "title": "Invita a tu equipo",
+          "desc": "Añade personas y elige qué puede hacer cada rol."
+        },
+        "database": {
+          "title": "Conecta una base de datos",
+          "desc": "Guarda las respuestas en tu propia base de datos según lleguen."
+        },
+        "help": {
+          "title": "Visita el centro de ayuda",
+          "desc": "Guías, respuestas y recorridos breves de cada área."
+        }
+      }
     }
   }
 }

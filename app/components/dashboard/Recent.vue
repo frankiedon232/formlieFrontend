@@ -6,6 +6,7 @@
 <script setup lang="ts">
 import type { ResponseRow } from '#shared/types/responses'
 
+const props = defineProps<{ folder?: string; owner?: string }>()
 const { t } = useI18n()
 const api = useApi()
 const { handle } = useErrorHandler()
@@ -16,14 +17,14 @@ const rows = ref<ResponseRow[] | null>(null)
 async function load() {
   if (!can('responses.view')) return void (rows.value = [])
   try {
-    rows.value = (await api.list<ResponseRow>('/responses', { page_size: 6 }, { background: true })).data
+    rows.value = (await api.list<ResponseRow>('/responses', { page_size: 6, 'filter[folder_id]': props.folder, 'filter[owner_id]': props.owner }, { background: true })).data
   } catch (error) {
     handle(error, { silent: true })
     rows.value = []
   }
 }
 defineExpose({ reload: load })
-onMounted(load)
+watch(() => [props.folder, props.owner], load, { immediate: true })
 
 const who = (row: ResponseRow) => row.respondent.title || row.respondent.name || row.respondent.email || t('dashboard.recent.anonymous')
 const initials = (row: ResponseRow) =>

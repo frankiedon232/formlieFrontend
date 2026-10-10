@@ -3,11 +3,13 @@
  * the person's role and folder access (responses only of forms they may see responses of; data sources, the API
  * service and the plan only when their role reaches them).
  *
- *   GET /dashboard?from=YYYY-MM-DD&to=YYYY-MM-DD&group=day|week|month|year
- *     (default: the last 30 days, grouped to fit) → WorkspaceDashboard
+ *   GET /dashboard?from=YYYY-MM-DD&to=YYYY-MM-DD&group=day|week|month|year&folder&owner
+ *     (default: the last 30 days, grouped to fit; `folder` a folder id or `none`, `owner` a person's id narrow the
+ *     forms counted, M5) → WorkspaceDashboard
  */
 import { DASHBOARD_GROUPS, type AttentionItem, type DashboardGroup, type DashboardPoint, type TimelineItem, type WorkspaceDashboard } from '#shared/types/dashboard'
 import { bucketStart, bucketsOf, groupFor } from '#shared/utils/dashboard/buckets'
+import { scopeFrom } from '#shared/utils/dashboard/scope'
 import { requireAuth } from '../core/auth'
 import { ok } from '../core/respond'
 import { defineMockRoute } from '../core/route'
@@ -47,7 +49,9 @@ export const workspaceDashboard = defineMockRoute(({ event, query }) => {
   const series: DashboardPoint[] = buckets.map(start => ({ start, responses: 0, starts: 0, api_calls: 0 }))
 
   // Forms and their responses (only forms whose responses this person may see count)
-  const forms = formsOf(tenant).forms.filter(form => !form.deleted_at && canSee(form, user))
+  const visible = formsOf(tenant).forms.filter(form => !form.deleted_at && canSee(form, user))
+  const scope = scopeFrom(query)
+  const forms = visible.filter(scope.matches)
   const withResponses = forms.filter(form => responsesAllowed(form, user, 'view', tenant))
   let responses = 0
   let previous = 0
@@ -158,6 +162,7 @@ export const workspaceDashboard = defineMockRoute(({ event, query }) => {
     from: iso(from),
     to: iso(to),
     group,
+    new_workspace: !visible.length && !scope.filtered,
     kpis: {
       responses: { value: responses, previous },
       completion_rate: { value: rate(responses, starts), previous: prevStarts ? rate(previous, prevStarts) : null },

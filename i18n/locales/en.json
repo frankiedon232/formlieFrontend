@@ -9613,6 +9613,49 @@
       "notDelivered": "Not delivered",
       "failedCalls": "Latest failed calls",
       "noFailed": "No failed calls. All good."
+    },
+    "filter": {
+      "label": "Filter",
+      "folder": "Folder",
+      "owner": "Owner",
+      "anyFolder": "Any folder",
+      "anyOwner": "Anyone",
+      "noFolder": "Not in a folder",
+      "clear": "Clear filters",
+      "remove": "Remove {name}"
+    },
+    "start": {
+      "title": "Welcome to your workspace",
+      "description": "Nothing to show yet. These steps get you collecting responses in a few minutes.",
+      "step": "Step {n}",
+      "sharedTitle": "Nothing shared with you yet",
+      "sharedDesc": "When someone shares a form or a folder with you, its numbers show up here.",
+      "steps": {
+        "form": {
+          "title": "Create your first form",
+          "desc": "Start blank, describe it to the AI or import a document."
+        },
+        "template": {
+          "title": "Start from a template",
+          "desc": "Pick a ready-made form and change what you need."
+        },
+        "setup": {
+          "title": "Set up your workspace",
+          "desc": "Company details, branding, language and region."
+        },
+        "team": {
+          "title": "Invite your team",
+          "desc": "Add people and choose what each role can do."
+        },
+        "database": {
+          "title": "Connect a database",
+          "desc": "Store responses in your own database as they arrive."
+        },
+        "help": {
+          "title": "Visit the help centre",
+          "desc": "Guides, answers and short tours of each area."
+        }
+      }
     }
   }
 }

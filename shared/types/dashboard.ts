@@ -63,6 +63,8 @@ export interface WorkspaceDashboard {
   from: string
   to: string
   group: DashboardGroup
+  /** No forms yet that this person can see (and no filter): the page shows the first steps instead (M5). */
+  new_workspace: boolean
   kpis: {
     responses: DashboardKpi
     completion_rate: DashboardKpi
@@ -90,6 +92,8 @@ export interface FormsDashboard {
   from: string
   to: string
   group: DashboardGroup
+  /** No forms yet that this person can see (and no filter): the first steps instead (M5). */
+  new_workspace: boolean
   kpis: {
     published: DashboardKpi
     created: DashboardKpi
