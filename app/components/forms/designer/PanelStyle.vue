@@ -1,23 +1,43 @@
-<!-- Designer groups: Typography · Colours (with contrast hints) · Inputs · Buttons. -->
+<!-- Designer groups: Typography (the font from 21, leftovers L2) · Colours (with contrast hints) · Inputs · Buttons. -->
 <script setup lang="ts">
+import type { ThemeFont, WebFont } from '#shared/utils/forms/fonts'
 defineProps<{ group: 'typography' | 'colors' | 'inputs' | 'buttons' }>()
 const { t } = useI18n()
 const d = useDesigner()
 const theme = d.theme
 
 const options = (prefix: string, keys: readonly string[]) => keys.map(value => ({ value, label: t(`${prefix}.${value}`) }))
+// Fonts (leftovers L2): the five styles, then the web fonts by kind; each name shows in its own font
+const fontItems = computed(() => {
+  const styles = THEME_FONTS.filter(key => !isWebFont(key)).map(value => ({ value, label: t(`designer.font.${value}`) }))
+  const web = (kind: 'sans' | 'serif') => THEME_FONTS.filter(key => isWebFont(key) && WEB_FONTS[key].kind === kind).map(value => ({ value, label: WEB_FONTS[value as WebFont].family }))
+  return [
+    [{ type: 'label' as const, value: '', label: t('designer.font.groupStyles') }, ...styles],
+    [{ type: 'label' as const, value: '', label: t('designer.font.groupSans') }, ...web('sans')],
+    [{ type: 'label' as const, value: '', label: t('designer.font.groupSerif') }, ...web('serif')],
+  ]
+})
 </script>
 
 <template>
   <div class="flex flex-col gap-4">
     <template v-if="group === 'typography'">
       <UFormField :label="t('designer.font.label')">
-        <USelect
+        <USelectMenu
           :model-value="theme.typography.font"
-          :items="THEME_FONTS.map(value => ({ value, label: t(`designer.font.${value}`) }))"
+          :items="fontItems"
+          value-key="value"
+          :search-input="{ placeholder: t('common.search') }"
+          :ui="{ content: 'max-h-80' }"
           class="w-full"
-          @update:model-value="v => d.set('typography', 'font', v as (typeof THEME_FONTS)[number])"
-        />
+          :style="{ fontFamily: fontStack(theme.typography.font) }"
+          @update:model-value="v => v && d.set('typography', 'font', v as ThemeFont)"
+        >
+          <template #item-label="{ item }">
+            <span :style="item.value ? { fontFamily: fontStack(String(item.value)) } : undefined">{{ item.label }}</span>
+          </template>
+        </USelectMenu>
+        <template #help>{{ t('designer.font.hint') }}</template>
       </UFormField>
       <FormsDesignerChoice :label="t('designer.textSize')" :model-value="theme.typography.size" :items="options('designer.size', ['sm', 'md', 'lg'])" @update:model-value="v => d.set('typography', 'size', v as 'sm' | 'md' | 'lg')" />
       <FormsDesignerChoice :label="t('designer.headingWeight')" :model-value="theme.typography.heading_weight" :items="options('designer.weight', ['medium', 'semibold', 'bold'])" @update:model-value="v => d.set('typography', 'heading_weight', v as 'medium' | 'semibold' | 'bold')" />

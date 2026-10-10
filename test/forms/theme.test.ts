@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest'
+import { THEME_FONTS, WEB_FONTS, fontStack, isWebFont } from '../../shared/utils/forms/fonts'
 import {
   THEME_PRESETS,
   applyPatch,
@@ -93,5 +94,20 @@ describe('theme block styles (sections, dividers, paragraphs, images)', () => {
     const styles = new Set(THEME_PRESETS.filter(preset => preset.key !== 'workspace').map(preset => JSON.stringify(applyPatch(defaultTheme(), preset.patch).blocks)))
     expect(styles.size).toBeGreaterThan(5)
     for (const preset of THEME_PRESETS) expect(themeSchema.safeParse(applyPatch(defaultTheme(), preset.patch)).success).toBe(true)
+  })
+})
+
+describe('theme fonts (leftovers L2)', () => {
+  it('turn every font key into a stack with script fallbacks', () => {
+    for (const key of THEME_FONTS) expect(fontStack(key)).toMatch(/sans-serif|serif|monospace/)
+    expect(fontStack('playfair')).toMatch(/^'Playfair Display', 'Noto Serif'/)
+    expect(fontStack('inter')).toContain("'Noto Sans Arabic'")
+    expect(fontStack('nonsense')).toBe(fontStack('sans'))
+    expect(Object.keys(WEB_FONTS).every(isWebFont)).toBe(true)
+  })
+
+  it('a theme accepts the new fonts and refuses unknown ones', () => {
+    expect(themeSchema.safeParse({ ...defaultTheme(), typography: { ...defaultTheme().typography, font: 'lora' } }).success).toBe(true)
+    expect(themeSchema.safeParse({ ...defaultTheme(), typography: { ...defaultTheme().typography, font: 'comic' } }).success).toBe(false)
   })
 })

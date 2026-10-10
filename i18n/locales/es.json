@@ -3049,7 +3049,11 @@
       "system": "Del dispositivo",
       "serif": "Serif",
       "rounded": "Redondeada",
-      "mono": "Monoespaciada"
+      "mono": "Monoespaciada",
+      "groupStyles": "Estilos",
+      "groupSans": "Sin serifa",
+      "groupSerif": "Con serifa",
+      "hint": "Las fuentes las aloja Formalie. Los idiomas para los que la fuente no tiene letras usan una fuente equivalente."
     },
     "textSize": "Tamaño del texto",
     "headingWeight": "Grosor de títulos",

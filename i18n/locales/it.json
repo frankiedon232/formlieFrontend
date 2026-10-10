@@ -3049,7 +3049,11 @@
       "system": "Del dispositivo",
       "serif": "Serif",
       "rounded": "Arrotondato",
-      "mono": "Monospazio"
+      "mono": "Monospazio",
+      "groupStyles": "Stili",
+      "groupSans": "Senza grazie",
+      "groupSerif": "Con grazie",
+      "hint": "I caratteri sono ospitati da Formalie. Le lingue per cui il carattere non ha lettere usano un carattere corrispondente."
     },
     "textSize": "Dimensione testo",
     "headingWeight": "Spessore titoli",

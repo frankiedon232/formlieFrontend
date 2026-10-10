@@ -3049,7 +3049,11 @@
       "system": "设备默认",
       "serif": "衬线",
       "rounded": "圆体",
-      "mono": "等宽"
+      "mono": "等宽",
+      "groupStyles": "样式",
+      "groupSans": "无衬线",
+      "groupSerif": "衬线",
+      "hint": "字体由 Formalie 托管。字体中没有对应字符的语言会使用匹配的字体。"
     },
     "textSize": "文字大小",
     "headingWeight": "标题粗细",

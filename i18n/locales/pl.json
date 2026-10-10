@@ -3049,7 +3049,11 @@
       "system": "Domyślna urządzenia",
       "serif": "Szeryfowa",
       "rounded": "Zaokrąglona",
-      "mono": "Stałej szerokości"
+      "mono": "Stałej szerokości",
+      "groupStyles": "Style",
+      "groupSans": "Bezszeryfowe",
+      "groupSerif": "Szeryfowe",
+      "hint": "Czcionki są hostowane przez Formalie. Języki, dla których czcionka nie ma liter, używają pasującej czcionki."
     },
     "textSize": "Rozmiar tekstu",
     "headingWeight": "Grubość nagłówków",

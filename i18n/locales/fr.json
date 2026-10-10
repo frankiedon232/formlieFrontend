@@ -3049,7 +3049,11 @@
       "system": "Police de l’appareil",
       "serif": "Serif",
       "rounded": "Arrondie",
-      "mono": "Chasse fixe"
+      "mono": "Chasse fixe",
+      "groupStyles": "Styles",
+      "groupSans": "Sans empattement",
+      "groupSerif": "Avec empattement",
+      "hint": "Les polices sont hébergées par Formalie. Les langues pour lesquelles la police n’a pas de lettres utilisent une police adaptée."
     },
     "textSize": "Taille du texte",
     "headingWeight": "Graisse des titres",

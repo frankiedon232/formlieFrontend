@@ -3049,7 +3049,11 @@
       "system": "Mặc định thiết bị",
       "serif": "Có chân",
       "rounded": "Bo tròn",
-      "mono": "Đơn cách"
+      "mono": "Đơn cách",
+      "groupStyles": "Kiểu",
+      "groupSans": "Không chân",
+      "groupSerif": "Có chân",
+      "hint": "Phông chữ do Formalie lưu trữ. Những ngôn ngữ mà phông chữ không có chữ cái sẽ dùng phông chữ phù hợp."
     },
     "textSize": "Cỡ chữ",
     "headingWeight": "Độ đậm tiêu đề",

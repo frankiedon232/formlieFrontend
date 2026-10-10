@@ -3049,7 +3049,11 @@
       "system": "Apparaatstandaard",
       "serif": "Serif",
       "rounded": "Afgerond",
-      "mono": "Monospace"
+      "mono": "Monospace",
+      "groupStyles": "Stijlen",
+      "groupSans": "Schreefloos",
+      "groupSerif": "Met schreef",
+      "hint": "Lettertypen worden gehost door Formalie. Talen waarvoor het lettertype geen letters heeft, gebruiken een passend lettertype."
     },
     "textSize": "Tekstgrootte",
     "headingWeight": "Dikte van koppen",

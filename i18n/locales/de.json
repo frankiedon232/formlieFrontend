@@ -3049,7 +3049,11 @@
       "system": "Gerätestandard",
       "serif": "Serif",
       "rounded": "Abgerundet",
-      "mono": "Monospace"
+      "mono": "Monospace",
+      "groupStyles": "Stile",
+      "groupSans": "Serifenlos",
+      "groupSerif": "Serif",
+      "hint": "Schriften werden von Formalie gehostet. Sprachen, für die die Schrift keine Buchstaben hat, verwenden eine passende Schrift."
     },
     "textSize": "Textgröße",
     "headingWeight": "Überschriftenstärke",

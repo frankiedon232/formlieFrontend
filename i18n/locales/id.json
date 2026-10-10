@@ -3049,7 +3049,11 @@
       "system": "Default perangkat",
       "serif": "Serif",
       "rounded": "Membulat",
-      "mono": "Monospace"
+      "mono": "Monospace",
+      "groupStyles": "Gaya",
+      "groupSans": "Sans serif",
+      "groupSerif": "Serif",
+      "hint": "Font di-host oleh Formalie. Bahasa yang hurufnya tidak ada di font memakai font yang sesuai."
     },
     "textSize": "Ukuran teks",
     "headingWeight": "Ketebalan judul",

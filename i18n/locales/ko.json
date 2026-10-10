@@ -3049,7 +3049,11 @@
       "system": "기기 기본값",
       "serif": "세리프",
       "rounded": "둥근 글꼴",
-      "mono": "고정폭"
+      "mono": "고정폭",
+      "groupStyles": "스타일",
+      "groupSans": "산세리프",
+      "groupSerif": "세리프",
+      "hint": "글꼴은 Formalie가 호스팅합니다. 글꼴에 글자가 없는 언어는 어울리는 글꼴을 사용합니다."
     },
     "textSize": "텍스트 크기",
     "headingWeight": "제목 굵기",

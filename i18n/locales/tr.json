@@ -3049,7 +3049,11 @@
       "system": "Cihaz varsayılanı",
       "serif": "Serif",
       "rounded": "Yuvarlak",
-      "mono": "Eş aralıklı"
+      "mono": "Eş aralıklı",
+      "groupStyles": "Stiller",
+      "groupSans": "Tırnaksız",
+      "groupSerif": "Tırnaklı",
+      "hint": "Yazı tiplerini Formalie barındırır. Yazı tipinde harfleri bulunmayan diller, uygun bir yazı tipi kullanır."
     },
     "textSize": "Metin boyutu",
     "headingWeight": "Başlık kalınlığı",

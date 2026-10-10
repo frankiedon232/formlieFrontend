@@ -1,6 +1,7 @@
 import { randomUUID } from 'node:crypto'
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { APP_LOCALES, DEFAULT_LOCALE, LOCALE_COOKIE } from './shared/utils/i18n/locales'
+import { WEB_FONTS } from './shared/utils/forms/fonts'
 import pkg from './package.json'
 
 const isDev = process.env.NODE_ENV !== 'production'
@@ -140,7 +141,14 @@ export default defineNuxtConfig({
 
   fonts: {
     // Manrope (main.css), light 300 to bold 700; titles use 600, body 400/500.
-    defaults: { weights: [300, 400, 500, 600, 700] },
+    defaults: {
+      weights: [300, 400, 500, 600, 700],
+      // Latin, Cyrillic, Greek, Vietnamese, plus Arabic (Cairo) and Devanagari (Poppins, Noto Sans)
+      subsets: ['latin', 'latin-ext', 'cyrillic', 'cyrillic-ext', 'greek', 'greek-ext', 'vietnamese', 'arabic', 'devanagari'],
+    },
+    // The form designer's web fonts (shared/utils/forms/fonts.ts, leftovers L2): self-hosted under /_fonts, declared
+    // everywhere because a form picks its font at run time; a browser only downloads the one a form uses.
+    families: Object.values(WEB_FONTS).map(font => ({ name: font.family, provider: 'google', global: true, weights: [400, 500, 600, 700] })),
   },
 
   // Icon sets: lucide (UI), circle-flags (languages), simple-icons (sign-in providers).

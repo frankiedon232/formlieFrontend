@@ -3049,7 +3049,11 @@
       "system": "Ya kifaa",
       "serif": "Serif",
       "rounded": "Mviringo",
-      "mono": "Monospace"
+      "mono": "Monospace",
+      "groupStyles": "Mitindo",
+      "groupSans": "Bila serif",
+      "groupSerif": "Serif",
+      "hint": "Fonti zinahifadhiwa na Formalie. Lugha ambazo fonti haina herufi zake hutumia fonti inayolingana."
     },
     "textSize": "Ukubwa wa maandishi",
     "headingWeight": "Unene wa vichwa",

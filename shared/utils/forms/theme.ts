@@ -5,12 +5,12 @@
  * default (brand colour + logo from onboarding).
  */
 import { z } from 'zod'
+import { THEME_FONTS, fontStack } from './fonts'
 
 const hex = z.string().regex(/^#[0-9a-f]{6}$/i)
 const httpsUrl = z.string().max(2000).regex(/^(https:\/\/\S+|\/api\/v1\/files\/[\w-]+)$/i)
 const imageRef = httpsUrl.nullable()
 
-export const THEME_FONTS = ['sans', 'system', 'serif', 'rounded', 'mono'] as const
 export const THEME_LAYOUTS = ['card', 'plain', 'split', 'full'] as const
 /**
  * The page around the form on its public link (F10, owner 2026-10-03): the organisation's
@@ -389,13 +389,6 @@ export const readableOn = (color: string) => (contrastRatio(color, '#ffffff') >=
 const RADIUS: Record<string, string> = { none: '0px', sm: '0.25rem', md: '0.375rem', lg: '0.5rem', xl: '0.75rem', full: '9999px' }
 /** Nuxt UI rounds controls at 1.5 × --ui-radius, so the variable is the target ÷ 1.5. */
 const UI_RADIUS: Record<string, string> = { none: '0px', sm: '0.1667rem', md: '0.25rem', lg: '0.3333rem', xl: '0.5rem', full: '9999px' }
-const FONT: Record<string, string> = {
-  sans: "'Manrope', ui-sans-serif, system-ui, sans-serif",
-  system: "system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', sans-serif",
-  serif: "Georgia, Cambria, 'Times New Roman', 'Noto Serif', serif",
-  rounded: "ui-rounded, 'SF Pro Rounded', 'Nunito', 'Segoe UI', system-ui, sans-serif",
-  mono: "'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace",
-}
 const SIZE: Record<string, string> = { sm: '15px', md: '16px', lg: '17px' }
 
 /**
@@ -427,7 +420,7 @@ export function themeVars(theme: FormTheme): Record<string, string> {
     '--form-container-bg': theme.container.bg,
     '--form-button-radius': RADIUS[theme.buttons.radius]!,
     '--form-input-radius': RADIUS[theme.inputs.radius]!,
-    '--form-font': FONT[theme.typography.font]!,
+    '--form-font': fontStack(theme.typography.font),
     '--form-font-size': SIZE[theme.typography.size]!,
   }
 }

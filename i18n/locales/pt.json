@@ -3049,7 +3049,11 @@
       "system": "Padrão do dispositivo",
       "serif": "Serifada",
       "rounded": "Arredondada",
-      "mono": "Monoespaçada"
+      "mono": "Monoespaçada",
+      "groupStyles": "Estilos",
+      "groupSans": "Sem serifa",
+      "groupSerif": "Com serifa",
+      "hint": "As fontes são hospedadas pelo Formalie. Idiomas para os quais a fonte não tem letras usam uma fonte equivalente."
     },
     "textSize": "Tamanho do texto",
     "headingWeight": "Peso dos títulos",

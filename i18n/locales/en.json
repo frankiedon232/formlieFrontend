@@ -3049,7 +3049,11 @@
       "system": "Device default",
       "serif": "Serif",
       "rounded": "Rounded",
-      "mono": "Monospace"
+      "mono": "Monospace",
+      "groupStyles": "Styles",
+      "groupSans": "Sans serif",
+      "groupSerif": "Serif",
+      "hint": "Fonts are hosted by Formalie. Languages the font has no letters for use a matching font."
     },
     "textSize": "Text size",
     "headingWeight": "Heading weight",

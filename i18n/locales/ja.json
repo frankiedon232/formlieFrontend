@@ -3049,7 +3049,11 @@
       "system": "端末の既定",
       "serif": "明朝・セリフ",
       "rounded": "丸ゴシック",
-      "mono": "等幅"
+      "mono": "等幅",
+      "groupStyles": "スタイル",
+      "groupSans": "ゴシック体",
+      "groupSerif": "明朝体・セリフ",
+      "hint": "フォントは Formalie がホストしています。フォントに文字がない言語では、合うフォントが使われます。"
     },
     "textSize": "文字サイズ",
     "headingWeight": "見出しの太さ",
