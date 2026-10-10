@@ -1,0 +1,32 @@
+# Nuxt dev/build outputs
+.output
+.data
+.cache
+dist
+build/
+release/
+
+.vscode
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+*.db
+
+# Logs
+logs
+*.log
+
+# Misc
+.DS_Store
+.fleet
+.idea
+fmly/
+
+# Local env files
+.env
+.env.*
+.env.example
