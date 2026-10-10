@@ -33,7 +33,9 @@ export async function connect(port = 9333) {
     while (Date.now() < end) {
       try {
         if (await evaluate(expression)) return true
-      } catch {}
+      } catch {
+        // The page is still loading: try again
+      }
       await sleep(250)
     }
     return false
