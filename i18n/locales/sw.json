@@ -657,9 +657,7 @@
     "FRM-AUTH-1020": "Jaribu kuingia mara moja kabla ya kuliwasha.",
     "FRM-SET-1001": "Thibitisha au jaribu hili kwanza, kisha utaweza kulitumia.",
     "FRM-BILL-1001": "Malipo hayakukamilika. Jaribu kadi nyingine au wasiliana na benki yako.",
-    "FRM-BILL-1002": "Malipo haya yameisha muda. Anza tena.",
-    "FRM-BILL-1003": "Tayari tuna ombi lako. Tutawasiliana nawe hivi karibuni.",
-    "FRM-HELP-1001": "Tayari tuna ombi hili. Tutawasiliana nawe hivi karibuni."
+    "FRM-BILL-1002": "Malipo haya yameisha muda. Anza tena."
   },
   "errorUi": {
     "reference": "Kumbukumbu: {id}",
@@ -9126,39 +9124,7 @@
       "hint": "Bofya mara mbili au bonyeza + na - ili kukuza. Buruta ili kusogea. Esc hufunga."
     },
     "contact": {
-      "title": "Wasiliana na msaada",
-      "desc": "Tuambie unachohitaji. Timu ya Formalie hujibu kwa barua pepe, kwa kawaida ndani ya siku moja ya kazi.",
-      "topicLabel": "Ni kuhusu nini?",
-      "topic": {
-        "question": "Swali",
-        "problem": "Kitu hakifanyi kazi",
-        "billing": "Mipango na malipo",
-        "account": "Akaunti na kuingia",
-        "idea": "Wazo au ombi",
-        "other": "Jambo lingine"
-      },
-      "areaLabel": "Sehemu ya Formalie",
-      "anyArea": "Sina uhakika, au kadhaa",
-      "subject": "Mada",
-      "subjectPlaceholder": "Kwa maneno machache",
-      "subjectShort": "Ongeza mada fupi (angalau herufi 3).",
-      "message": "Ujumbe",
-      "messageHelp": "Ulichofanya, ulichotarajia na kilichotokea. Tukijua zaidi, tunaweza kusaidia haraka zaidi.",
-      "messageShort": "Tuambie zaidi kidogo (angalau herufi 10).",
-      "urgent": "Dharura",
-      "urgentHint": "Kuna kitu kimeharibika kwa timu nzima sasa hivi.",
-      "replyTo": "Jibu kwa",
-      "included": "Pia tunaona eneo lako la kazi na ukurasa uliokuwa ukitumia, kwa hivyo huhitaji kueleza ni wapi.",
-      "send": "Tuma kwa msaada",
-      "sentTitle": "Imetumwa. Namba yako ya kumbukumbu ni {reference}",
-      "sentDesc": "Timu ya Formalie itajibu {email}. Taja namba ya kumbukumbu ukiandika tena kuhusu hili.",
-      "another": "Tuma nyingine",
-      "yours": "Maombi yako",
-      "status": {
-        "open": "Wazi",
-        "answered": "Imejibiwa",
-        "closed": "Imefungwa"
-      }
+      "title": "Wasiliana na msaada"
     }
   },
   "billing": {
@@ -9427,65 +9393,18 @@
       "secure": "Unaandika maelezo ya kadi yako kwenye ukurasa salama wa Payoneer. Formalie huhifadhi tu chapa ya kadi, tarakimu zake nne za mwisho na tarehe ya kuisha muda."
     },
     "enquiry": {
-      "title": "Ombi la Enterprise",
-      "desc": "Tuambie unachohitaji. Timu ya Formalie hujibu ndani ya siku moja ya kazi.",
-      "you": "Kukuhusu",
-      "company": "Kampuni",
-      "name": "Jina lako",
-      "workEmail": "Barua pepe ya kazi",
-      "phone": "Simu",
-      "role": "Cheo",
-      "country": "Nchi",
-      "scale": "Ukubwa",
-      "sizeLabel": "Ukubwa wa kampuni",
-      "size": {
-        "1-50": "Watu 1 hadi 50",
-        "51-200": "Watu 51 hadi 200",
-        "201-1000": "Watu 201 hadi 1,000",
-        "1001-5000": "Watu 1,001 hadi 5,000",
-        "5000+": "Zaidi ya watu 5,000"
-      },
-      "volumeLabel": "Majibu kwa mwezi",
-      "volume": {
-        "under_100k": "Chini ya 100,000",
-        "100k_1m": "100,000 hadi milioni 1",
-        "1m_10m": "Milioni 1 hadi milioni 10",
-        "over_10m": "Zaidi ya milioni 10"
-      },
-      "startLabel": "Ungeanza lini?",
-      "startWhen": {
-        "now": "Mara moja",
-        "quarter": "Robo hii ya mwaka",
-        "later": "Baadaye mwaka huu"
-      },
-      "needsLabel": "Unahitaji nini?",
-      "need": {
-        "sso": "Kuingia mara moja",
-        "dedicated": "Miundombinu maalum",
-        "residency": "Data katika eneo mahususi",
-        "sla": "Makubaliano ya upatikanaji (SLA)",
-        "security": "Ukaguzi wa usalama na utiifu",
-        "invoice": "Lipa kwa ankara",
-        "onboarding": "Mafunzo ya kuanza na mafunzo",
-        "custom_limits": "Mipaka maalum"
-      },
-      "residency": "Data ibaki wapi?",
-      "residencyHelp": "Nchi au eneo, kwa mfano Umoja wa Ulaya.",
-      "message": "Kuna jambo lingine tunalopaswa kujua?",
-      "messageHelp": "Matumizi yako, miundo, muunganisho au mahitaji ya usalama.",
-      "messageShort": "Tuambie zaidi kidogo (angalau herufi 10).",
-      "required": "Tafadhali jaza hapa.",
-      "email": "Weka anwani halali ya barua pepe.",
-      "privacy": "Tunatumia maelezo haya tu kujibu ombi lako.",
-      "send": "Tuma ombi",
-      "sentTitle": "Asante, tumelipokea",
-      "sentDesc": "Timu ya Formalie itajibu {email} ndani ya siku moja ya kazi.",
-      "close": "Funga"
+      "title": "Ombi la Enterprise"
     },
     "limitAdmin": "Mpango wa juu zaidi unajumuisha zaidi. Linganisha mipango ili kuboresha.",
     "limitMember": "Muulize msimamizi wa eneo la kazi kuhusu mpango wa juu zaidi.",
     "seePlans": "Tazama mipango",
     "locked": "Kwenye {plan} na kuendelea",
     "lockedHint": "Mpango wako haujumuishi hiki. Boresha ili ukitumie."
+  },
+  "appBrowser": {
+    "sent": "{name}: imetumwa",
+    "sentNote": "Imetumwa. Unaweza kufunga dirisha hili.",
+    "safe": "Ukurasa wa Formalie, unaoonyeshwa ndani ya programu.",
+    "back": "Rudi kwa Formalie"
   }
 }

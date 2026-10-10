@@ -657,9 +657,7 @@
     "FRM-AUTH-1020": "Test single sign-on before turning it on.",
     "FRM-SET-1001": "Verify or test this first, then you can use it.",
     "FRM-BILL-1001": "The payment didn't go through. Try another card or contact your bank.",
-    "FRM-BILL-1002": "This checkout has expired. Start again.",
-    "FRM-BILL-1003": "We already have your enquiry. We'll be in touch soon.",
-    "FRM-HELP-1001": "We already have this request. We'll be in touch soon."
+    "FRM-BILL-1002": "This checkout has expired. Start again."
   },
   "errorUi": {
     "reference": "Reference: {id}",
@@ -9126,39 +9124,7 @@
       "hint": "Double-click or press + and - to zoom. Drag to move around. Esc closes."
     },
     "contact": {
-      "title": "Contact support",
-      "desc": "Tell us what you need. The Formalie team replies by email, usually within one business day.",
-      "topicLabel": "What is it about?",
-      "topic": {
-        "question": "A question",
-        "problem": "Something isn't working",
-        "billing": "Plans and billing",
-        "account": "Account and sign-in",
-        "idea": "An idea or a request",
-        "other": "Something else"
-      },
-      "areaLabel": "Part of Formalie",
-      "anyArea": "Not sure, or several",
-      "subject": "Subject",
-      "subjectPlaceholder": "In a few words",
-      "subjectShort": "Add a short subject (at least 3 characters).",
-      "message": "Message",
-      "messageHelp": "What you did, what you expected and what happened. The more we know, the faster we can help.",
-      "messageShort": "Tell us a little more (at least 10 characters).",
-      "urgent": "Urgent",
-      "urgentHint": "Something is broken for the whole team right now.",
-      "replyTo": "Reply to",
-      "included": "We also see your workspace and the page you were on, so you don't have to explain where.",
-      "send": "Send to support",
-      "sentTitle": "Sent. Your reference is {reference}",
-      "sentDesc": "The Formalie team will reply to {email}. Quote the reference if you write about it again.",
-      "another": "Send another",
-      "yours": "Your requests",
-      "status": {
-        "open": "Open",
-        "answered": "Answered",
-        "closed": "Closed"
-      }
+      "title": "Contact support"
     }
   },
   "billing": {
@@ -9427,65 +9393,18 @@
       "secure": "You type your card details on Payoneer's secure page. Formalie only keeps the card brand, its last four digits and its expiry date."
     },
     "enquiry": {
-      "title": "Enterprise enquiry",
-      "desc": "Tell us what you need. The Formalie team replies within one business day.",
-      "you": "About you",
-      "company": "Company",
-      "name": "Your name",
-      "workEmail": "Work email",
-      "phone": "Phone",
-      "role": "Job title",
-      "country": "Country",
-      "scale": "Scale",
-      "sizeLabel": "Company size",
-      "size": {
-        "1-50": "1 to 50 people",
-        "51-200": "51 to 200 people",
-        "201-1000": "201 to 1,000 people",
-        "1001-5000": "1,001 to 5,000 people",
-        "5000+": "More than 5,000 people"
-      },
-      "volumeLabel": "Responses a month",
-      "volume": {
-        "under_100k": "Under 100,000",
-        "100k_1m": "100,000 to 1 million",
-        "1m_10m": "1 to 10 million",
-        "over_10m": "More than 10 million"
-      },
-      "startLabel": "When would you start?",
-      "startWhen": {
-        "now": "Right away",
-        "quarter": "This quarter",
-        "later": "Later this year"
-      },
-      "needsLabel": "What do you need?",
-      "need": {
-        "sso": "Single sign-on",
-        "dedicated": "Dedicated infrastructure",
-        "residency": "Data in a specific region",
-        "sla": "Uptime agreement (SLA)",
-        "security": "Security and compliance review",
-        "invoice": "Pay by invoice",
-        "onboarding": "Onboarding and training",
-        "custom_limits": "Custom limits"
-      },
-      "residency": "Where should the data stay?",
-      "residencyHelp": "A country or region, for example the European Union.",
-      "message": "Anything else we should know?",
-      "messageHelp": "Your use, formats, integrations or security requirements.",
-      "messageShort": "Tell us a little more (at least 10 characters).",
-      "required": "Please fill this in.",
-      "email": "Enter a valid email address.",
-      "privacy": "We use these details only to answer your enquiry.",
-      "send": "Send enquiry",
-      "sentTitle": "Thank you, we've got it",
-      "sentDesc": "The Formalie team will reply to {email} within one business day.",
-      "close": "Close"
+      "title": "Enterprise enquiry"
     },
     "limitAdmin": "A higher plan includes more. Compare the plans to upgrade.",
     "limitMember": "Ask a workspace admin about a higher plan.",
     "seePlans": "See plans",
     "locked": "On {plan} and up",
     "lockedHint": "Your plan doesn't include this. Upgrade to use it."
+  },
+  "appBrowser": {
+    "sent": "{name}: sent",
+    "sentNote": "Sent. You can close this window.",
+    "safe": "A Formalie page, shown inside the app.",
+    "back": "Back to Formalie"
   }
 }

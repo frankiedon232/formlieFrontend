@@ -2,7 +2,7 @@
   Settings → Plans (F24, owner 2026-10-10): the four plans side by side with a Monthly / Quarterly / Annually
   switch that changes every price (per month, the period's total and what it saves), the workspace's own plan
   marked, then every feature compared. Choosing a plan confirms the change (and pays through the processor
-  when needed); Enterprise opens the enquiry form inside the app.
+  when needed); Enterprise opens Formalie's enquiry form in the app's browser window.
 -->
 <script setup lang="ts">
 import { BILLING_PERIODS, type PlanId } from '#shared/types/billing'
@@ -19,7 +19,7 @@ const periods = computed(() => BILLING_PERIODS.map(value => ({ value, label: t(`
 const sub = computed(() => overview.value?.subscription ?? null)
 const choosing = ref<PlanId | null>(null)
 const changeOpen = ref(false)
-const enquiryOpen = ref(false)
+const { enquire } = useSupport()
 function choose(plan: PlanId) {
   choosing.value = plan
   changeOpen.value = true
@@ -67,7 +67,7 @@ function choose(plan: PlanId) {
           :current-period="sub?.current_period_end ? sub.period : null"
           :scheduled="sub?.scheduled?.plan ?? (sub?.cancel_at_period_end ? 'starter' : null)"
           @choose="choose"
-          @contact="enquiryOpen = true"
+          @contact="enquire"
         />
       </div>
 
@@ -82,12 +82,11 @@ function choose(plan: PlanId) {
           <span class="text-sm font-semibold text-highlighted">{{ t('billing.enterpriseTitle') }}</span>
           <span class="text-xs text-muted">{{ t('billing.enterpriseDesc') }}</span>
         </span>
-        <UButton :label="t('billing.contactUs')" icon="i-lucide-messages-square" color="neutral" @click="enquiryOpen = true" />
+        <UButton :label="t('billing.contactUs')" icon="i-lucide-messages-square" color="neutral" @click="enquire" />
       </div>
     </div>
 
     <BillingChangeModal v-model:open="changeOpen" :plan="choosing" :period="choosing === 'starter' ? 'monthly' : period" />
     <BillingCheckoutModal />
-    <BillingEnterpriseModal v-model:open="enquiryOpen" />
   </SettingsPage>
 </template>

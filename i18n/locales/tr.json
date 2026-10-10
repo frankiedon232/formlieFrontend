@@ -657,9 +657,7 @@
     "FRM-AUTH-1020": "Açmadan önce çoklu oturum açmayı test edin.",
     "FRM-SET-1001": "Önce bunu doğrulayın veya test edin, sonra kullanabilirsiniz.",
     "FRM-BILL-1001": "Ödeme gerçekleşmedi. Başka bir kart deneyin veya bankanızla iletişime geçin.",
-    "FRM-BILL-1002": "Bu ödeme oturumunun süresi doldu. Yeniden başlayın.",
-    "FRM-BILL-1003": "Talebiniz zaten elimizde. Yakında size dönüş yapacağız.",
-    "FRM-HELP-1001": "Bu talep zaten elimizde. Yakında size dönüş yapacağız."
+    "FRM-BILL-1002": "Bu ödeme oturumunun süresi doldu. Yeniden başlayın."
   },
   "errorUi": {
     "reference": "Referans: {id}",
@@ -9126,39 +9124,7 @@
       "hint": "Yakınlaştırmak için çift tıklayın veya + ve - tuşlarına basın. Gezinmek için sürükleyin. Esc kapatır."
     },
     "contact": {
-      "title": "Destekle iletişime geçin",
-      "desc": "Neye ihtiyacınız olduğunu bize söyleyin. Formalie ekibi e-postayla yanıtlar, genellikle bir iş günü içinde.",
-      "topicLabel": "Konu nedir?",
-      "topic": {
-        "question": "Bir soru",
-        "problem": "Bir şey çalışmıyor",
-        "billing": "Planlar ve faturalama",
-        "account": "Hesap ve giriş",
-        "idea": "Bir fikir veya istek",
-        "other": "Başka bir şey"
-      },
-      "areaLabel": "Formalie’nin bir bölümü",
-      "anyArea": "Emin değilim veya birkaç tane",
-      "subject": "Konu",
-      "subjectPlaceholder": "Birkaç kelimeyle",
-      "subjectShort": "Kısa bir konu ekleyin (en az 3 karakter).",
-      "message": "Mesaj",
-      "messageHelp": "Ne yaptığınız, ne beklediğiniz ve ne olduğu. Ne kadar çok bilirsek o kadar hızlı yardımcı olabiliriz.",
-      "messageShort": "Biraz daha anlatın (en az 10 karakter).",
-      "urgent": "Acil",
-      "urgentHint": "Şu anda tüm ekip için bir şey bozuk.",
-      "replyTo": "Yanıtlanacak adres",
-      "included": "Çalışma alanınızı ve bulunduğunuz sayfayı da görüyoruz, böylece nerede olduğunu anlatmanız gerekmez.",
-      "send": "Desteğe gönder",
-      "sentTitle": "Gönderildi. Başvuru numaranız {reference}",
-      "sentDesc": "Formalie ekibi {email} adresine yanıt verecek. Bu konuda tekrar yazarsanız başvuru numarasını belirtin.",
-      "another": "Bir tane daha gönder",
-      "yours": "Taleplerin",
-      "status": {
-        "open": "Açık",
-        "answered": "Yanıtlandı",
-        "closed": "Kapalı"
-      }
+      "title": "Destekle iletişime geçin"
     }
   },
   "billing": {
@@ -9427,65 +9393,18 @@
       "secure": "Kart bilgilerinizi Payoneer’in güvenli sayfasında girersiniz. Formalie yalnızca kart markasını, son dört hanesini ve son kullanma tarihini saklar."
     },
     "enquiry": {
-      "title": "Enterprise talebi",
-      "desc": "Neye ihtiyacınız olduğunu bize söyleyin. Formalie ekibi bir iş günü içinde yanıtlar.",
-      "you": "Sizin hakkınızda",
-      "company": "Şirket",
-      "name": "Adınız",
-      "workEmail": "İş e-postası",
-      "phone": "Telefon",
-      "role": "Unvan",
-      "country": "Ülke",
-      "scale": "Ölçek",
-      "sizeLabel": "Şirket büyüklüğü",
-      "size": {
-        "1-50": "1 ile 50 kişi",
-        "51-200": "51 ile 200 kişi",
-        "201-1000": "201 ile 1.000 kişi",
-        "1001-5000": "1.001 ile 5.000 kişi",
-        "5000+": "5.000’den fazla kişi"
-      },
-      "volumeLabel": "Aylık yanıt sayısı",
-      "volume": {
-        "under_100k": "100.000’in altı",
-        "100k_1m": "100.000 ile 1 milyon",
-        "1m_10m": "1 ile 10 milyon",
-        "over_10m": "10 milyondan fazla"
-      },
-      "startLabel": "Ne zaman başlamak istersiniz?",
-      "startWhen": {
-        "now": "Hemen",
-        "quarter": "Bu çeyrekte",
-        "later": "Bu yılın ilerleyen aylarında"
-      },
-      "needsLabel": "Neye ihtiyacınız var?",
-      "need": {
-        "sso": "Çoklu oturum açma",
-        "dedicated": "Ayrılmış altyapı",
-        "residency": "Belirli bir bölgede veri",
-        "sla": "Hizmet sürekliliği anlaşması (SLA)",
-        "security": "Güvenlik ve uyum incelemesi",
-        "invoice": "Faturayla ödeme",
-        "onboarding": "Kurulum ve eğitim",
-        "custom_limits": "Özel sınırlar"
-      },
-      "residency": "Veriler nerede kalmalı?",
-      "residencyHelp": "Bir ülke veya bölge, örneğin Avrupa Birliği.",
-      "message": "Bilmemiz gereken başka bir şey var mı?",
-      "messageHelp": "Kullanımınız, biçimler, entegrasyonlar veya güvenlik gereksinimleri.",
-      "messageShort": "Biraz daha anlatın (en az 10 karakter).",
-      "required": "Lütfen bu alanı doldurun.",
-      "email": "Geçerli bir e-posta adresi girin.",
-      "privacy": "Bu bilgileri yalnızca talebinizi yanıtlamak için kullanırız.",
-      "send": "Talebi gönder",
-      "sentTitle": "Teşekkürler, aldık",
-      "sentDesc": "Formalie ekibi bir iş günü içinde {email} adresine yanıt verecek.",
-      "close": "Kapat"
+      "title": "Enterprise talebi"
     },
     "limitAdmin": "Daha yüksek bir plan daha fazlasını içerir. Yükseltmek için planları karşılaştırın.",
     "limitMember": "Daha yüksek bir plan için çalışma alanı yöneticisine sorun.",
     "seePlans": "Planları gör",
     "locked": "{plan} ve üzeri",
     "lockedHint": "Planınız bunu içermiyor. Kullanmak için yükseltin."
+  },
+  "appBrowser": {
+    "sent": "{name}: gönderildi",
+    "sentNote": "Gönderildi. Bu pencereyi kapatabilirsiniz.",
+    "safe": "Uygulamanın içinde gösterilen bir Formalie sayfası.",
+    "back": "Formalie’ye dön"
   }
 }

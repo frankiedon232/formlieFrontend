@@ -270,7 +270,7 @@ function restart() {
         <input v-if="submit && !preview" v-model="trap" type="text" name="formalie_hp" tabindex="-1" autocomplete="off" aria-hidden="true" class="pointer-events-none absolute -start-[200vw] top-0 size-px opacity-0">
         <div v-for="row in shownRows" :key="row.id" class="grid grid-cols-12 gap-x-4 gap-y-4">
           <div
-            v-for="field in row.fields"
+            v-for="field in row.fields.filter(item => preview || item.type !== 'hidden')"
             :key="field.id"
             class="col-span-12 @container"
             :class="FIELD_SPAN[field.width ?? 12]"

@@ -164,18 +164,3 @@ export interface CheckoutSession {
   expires_at: string
 }
 
-/** POST /billing/enterprise-enquiries (the Formalie team reads them in the platform admin). */
-export interface EnterpriseEnquiry {
-  company: string
-  name: string
-  email: string
-  phone: string | null
-  role: string | null
-  country: string | null
-  size: '1-50' | '51-200' | '201-1000' | '1001-5000' | '5000+'
-  responses_per_month: 'under_100k' | '100k_1m' | '1m_10m' | 'over_10m'
-  needs: ('sso' | 'dedicated' | 'residency' | 'sla' | 'security' | 'invoice' | 'onboarding' | 'custom_limits')[]
-  data_residency: string | null
-  message: string
-  start: 'now' | 'quarter' | 'later'
-}

@@ -7,6 +7,7 @@
  *   POST /public/forms/:key/submit   one response per fill-in session (Formalie-Key)
  *   POST /public/forms/:key/uploads  a pre-signed link for one file of a file question (+ /:id/complete)
  */
+import { ensurePlatformForms } from '../data/platformForms'
 import { responsesAllowed } from '../core/plan'
 import { reviewOf } from '../data/responseReview'
 import { createHmac, randomBytes, timingSafeEqual } from 'node:crypto'
@@ -31,7 +32,8 @@ import { emailResponse } from '../data/responseEmails'
 import { formLink, publicHosts, SHORT_CODE_PATTERN } from '#shared/utils/urls/public'
 import { frameAncestors } from '#shared/utils/urls/embed-domains'
 import { fingerprintOf, responseForSubmission, responsesOf, saveResponses } from '../data/responseStore'
-import { MOCK_TENANTS, type MockTenant } from '../data/tenants'
+import { MOCK_TENANTS, PLATFORM_TENANT_ID, type MockTenant } from '../data/tenants'
+import { PLATFORM_FORMS } from '#shared/utils/platform/forms'
 import { ensureSchema } from './formDraft'
 import { websiteOf } from './onboarding'
 import { draftOf, newResumeToken, putDraft, RESUME_TTL_DAYS } from '../data/resumeStore'
@@ -67,9 +69,14 @@ function deviceOf(event: Parameters<typeof tenantOf>[0]): string {
  * answered exactly like one that does not exist (owner, 2026-10-06: API-only forms have no address).
  */
 function locate(event: Parameters<typeof tenantOf>[0], key: string, channel?: 'link' | 'embed'): { tenant: MockTenant; form: StoredForm } {
+  // Formalie's own forms (Contact support, Enterprise enquiry) exist before anyone opens them
+  ensurePlatformForms()
   const { context, tenant } = tenantOf(event)
-  const found =
-    context.kind === 'tenant'
+  // ... and open from any workspace, since the app opens them for everyone
+  const platform = (Object.values(PLATFORM_FORMS) as string[]).includes(key) ? MOCK_TENANTS.find(item => item.id === PLATFORM_TENANT_ID) : undefined
+  const found = platform
+    ? findByPublicKey([platform], key)
+    : context.kind === 'tenant'
       ? tenant && tenant.status !== 'suspended'
         ? findByPublicKey([tenant], key)
         : null

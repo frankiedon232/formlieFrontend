@@ -9,6 +9,7 @@
 <script setup lang="ts">
 import { THEME_FRAMES, type ThemeFrame } from '#shared/utils/forms/theme'
 import { translateSchema } from '#shared/utils/forms/translations'
+import { withUrlPrefill } from '#shared/utils/forms/prefill'
 import { formLink, publicHosts } from '#shared/utils/urls/public'
 
 const props = defineProps<{ formKey: string; embed?: boolean }>()
@@ -20,7 +21,13 @@ const url = useRequestURL()
 const { form, errorCode, refresh } = await usePublicForm(props.formKey, props.embed ? 'embed' : 'link')
 const resumeOn = computed(() => !!form.value?.schema?.settings?.save_resume)
 const resume = usePublicResume(props.formKey, resumeOn)
-const { submit, alreadySent, another, confirmDifferent, sendCode, confirmCode, prepareProof } = usePublicSubmit(props.formKey, props.embed ? 'embed' : 'link', resume)
+const { submit: send, alreadySent, another, confirmDifferent, sendCode, confirmCode, prepareProof } = usePublicSubmit(props.formKey, props.embed ? 'embed' : 'link', resume)
+/** Sends; an embedded form tells the page around it (e.g. the app's browser window) that it was sent. */
+const submit: typeof send = async (...args) => {
+  const outcome = await send(...args)
+  if (outcome.done && import.meta.client && window.parent !== window) window.parent.postMessage({ type: 'formalie:submitted', key: props.formKey }, '*')
+  return outcome
+}
 const { upload } = usePublicUploads(props.formKey)
 const respondent = computed(() => ({
   org: form.value ? { name: form.value.workspace.name, website: form.value.workspace.website } : undefined,
@@ -47,7 +54,8 @@ const devFrame = import.meta.dev && THEME_FRAMES.includes(route.query.frame as T
 const schema = computed(() => {
   const base = form.value?.schema
   // The questions in the respondent's language (missing translations show the main language).
-  const value = base ? translateSchema(base, language.value) : null
+  // Hidden fields (and fields that allow it) take their starting value from the address (?key=value)
+  const value = base ? withUrlPrefill(translateSchema(base, language.value), route.query) : null
   if (!value || !devFrame) return value ?? null
   const theme = (value.theme ?? {}) as { frame?: Record<string, unknown> }
   return { ...value, theme: { ...theme, frame: { ...theme.frame, style: devFrame } } }

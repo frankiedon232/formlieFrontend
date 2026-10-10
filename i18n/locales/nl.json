@@ -657,9 +657,7 @@
     "FRM-AUTH-1020": "Test single sign-on voordat je het inschakelt.",
     "FRM-SET-1001": "Verifieer of test dit eerst, dan kun je het gebruiken.",
     "FRM-BILL-1001": "De betaling is niet gelukt. Probeer een andere kaart of neem contact op met je bank.",
-    "FRM-BILL-1002": "Deze betaalsessie is verlopen. Begin opnieuw.",
-    "FRM-BILL-1003": "We hebben je aanvraag al. We nemen snel contact op.",
-    "FRM-HELP-1001": "We hebben deze aanvraag al. We nemen snel contact op."
+    "FRM-BILL-1002": "Deze betaalsessie is verlopen. Begin opnieuw."
   },
   "errorUi": {
     "reference": "Referentie: {id}",
@@ -9126,39 +9124,7 @@
       "hint": "Dubbelklik of druk op + en - om te zoomen. Sleep om te verplaatsen. Esc sluit."
     },
     "contact": {
-      "title": "Contact opnemen met support",
-      "desc": "Vertel ons wat je nodig hebt. Het Formalie-team antwoordt per e-mail, meestal binnen één werkdag.",
-      "topicLabel": "Waar gaat het over?",
-      "topic": {
-        "question": "Een vraag",
-        "problem": "Iets werkt niet",
-        "billing": "Abonnementen en facturatie",
-        "account": "Account en aanmelden",
-        "idea": "Een idee of verzoek",
-        "other": "Iets anders"
-      },
-      "areaLabel": "Onderdeel van Formalie",
-      "anyArea": "Niet zeker, of meerdere",
-      "subject": "Onderwerp",
-      "subjectPlaceholder": "In een paar woorden",
-      "subjectShort": "Voeg een kort onderwerp toe (minstens 3 tekens).",
-      "message": "Bericht",
-      "messageHelp": "Wat je deed, wat je verwachtte en wat er gebeurde. Hoe meer we weten, hoe sneller we kunnen helpen.",
-      "messageShort": "Vertel ons iets meer (minstens 10 tekens).",
-      "urgent": "Dringend",
-      "urgentHint": "Er is nu iets kapot voor het hele team.",
-      "replyTo": "Antwoorden naar",
-      "included": "We zien ook je werkruimte en de pagina waar je was, dus je hoeft niet uit te leggen waar.",
-      "send": "Naar support sturen",
-      "sentTitle": "Verzonden. Je referentie is {reference}",
-      "sentDesc": "Het Formalie-team antwoordt naar {email}. Noem de referentie als je hier opnieuw over schrijft.",
-      "another": "Nog een versturen",
-      "yours": "Je aanvragen",
-      "status": {
-        "open": "Open",
-        "answered": "Beantwoord",
-        "closed": "Gesloten"
-      }
+      "title": "Contact opnemen met support"
     }
   },
   "billing": {
@@ -9427,65 +9393,18 @@
       "secure": "Je voert je kaartgegevens in op de beveiligde pagina van Payoneer. Formalie bewaart alleen het kaartmerk, de laatste vier cijfers en de vervaldatum."
     },
     "enquiry": {
-      "title": "Enterprise-aanvraag",
-      "desc": "Vertel ons wat je nodig hebt. Het Formalie-team antwoordt binnen één werkdag.",
-      "you": "Over jou",
-      "company": "Bedrijf",
-      "name": "Je naam",
-      "workEmail": "Zakelijk e-mailadres",
-      "phone": "Telefoon",
-      "role": "Functie",
-      "country": "Land",
-      "scale": "Schaal",
-      "sizeLabel": "Bedrijfsgrootte",
-      "size": {
-        "1-50": "1 tot 50 mensen",
-        "51-200": "51 tot 200 mensen",
-        "201-1000": "201 tot 1.000 mensen",
-        "1001-5000": "1.001 tot 5.000 mensen",
-        "5000+": "Meer dan 5.000 mensen"
-      },
-      "volumeLabel": "Reacties per maand",
-      "volume": {
-        "under_100k": "Minder dan 100.000",
-        "100k_1m": "100.000 tot 1 miljoen",
-        "1m_10m": "1 tot 10 miljoen",
-        "over_10m": "Meer dan 10 miljoen"
-      },
-      "startLabel": "Wanneer wil je beginnen?",
-      "startWhen": {
-        "now": "Direct",
-        "quarter": "Dit kwartaal",
-        "later": "Later dit jaar"
-      },
-      "needsLabel": "Wat heb je nodig?",
-      "need": {
-        "sso": "Single sign-on",
-        "dedicated": "Eigen infrastructuur",
-        "residency": "Gegevens in een bepaalde regio",
-        "sla": "Beschikbaarheidsovereenkomst (SLA)",
-        "security": "Beveiligings- en compliancebeoordeling",
-        "invoice": "Betalen op factuur",
-        "onboarding": "Onboarding en training",
-        "custom_limits": "Limieten op maat"
-      },
-      "residency": "Waar moeten de gegevens blijven?",
-      "residencyHelp": "Een land of regio, bijvoorbeeld de Europese Unie.",
-      "message": "Is er nog iets wat we moeten weten?",
-      "messageHelp": "Je gebruik, formaten, integraties of beveiligingsvereisten.",
-      "messageShort": "Vertel ons iets meer (minstens 10 tekens).",
-      "required": "Vul dit in.",
-      "email": "Voer een geldig e-mailadres in.",
-      "privacy": "We gebruiken deze gegevens alleen om je aanvraag te beantwoorden.",
-      "send": "Aanvraag versturen",
-      "sentTitle": "Bedankt, we hebben het ontvangen",
-      "sentDesc": "Het Formalie-team antwoordt binnen één werkdag naar {email}.",
-      "close": "Sluiten"
+      "title": "Enterprise-aanvraag"
     },
     "limitAdmin": "Een hoger abonnement bevat meer. Vergelijk de abonnementen om te upgraden.",
     "limitMember": "Vraag een beheerder van de werkruimte naar een hoger abonnement.",
     "seePlans": "Abonnementen bekijken",
     "locked": "Vanaf {plan}",
     "lockedHint": "Je abonnement bevat dit niet. Upgrade om het te gebruiken."
+  },
+  "appBrowser": {
+    "sent": "{name}: verzonden",
+    "sentNote": "Verzonden. Je kunt dit venster sluiten.",
+    "safe": "Een Formalie-pagina, weergegeven in de app.",
+    "back": "Terug naar Formalie"
   }
 }

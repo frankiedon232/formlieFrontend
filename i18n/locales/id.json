@@ -657,9 +657,7 @@
     "FRM-AUTH-1020": "Uji single sign-on sebelum mengaktifkannya.",
     "FRM-SET-1001": "Verifikasi atau uji ini dulu, lalu Anda bisa menggunakannya.",
     "FRM-BILL-1001": "Pembayaran tidak berhasil. Coba kartu lain atau hubungi bank Anda.",
-    "FRM-BILL-1002": "Pembayaran ini sudah kedaluwarsa. Mulai lagi.",
-    "FRM-BILL-1003": "Kami sudah menerima pertanyaan Anda. Kami akan segera menghubungi Anda.",
-    "FRM-HELP-1001": "Kami sudah menerima permintaan ini. Kami akan segera menghubungi Anda."
+    "FRM-BILL-1002": "Pembayaran ini sudah kedaluwarsa. Mulai lagi."
   },
   "errorUi": {
     "reference": "Referensi: {id}",
@@ -9126,39 +9124,7 @@
       "hint": "Klik dua kali atau tekan + dan - untuk zoom. Seret untuk menggeser. Esc menutup."
     },
     "contact": {
-      "title": "Hubungi dukungan",
-      "desc": "Ceritakan apa yang Anda butuhkan. Tim Formalie membalas lewat email, biasanya dalam satu hari kerja.",
-      "topicLabel": "Tentang apa?",
-      "topic": {
-        "question": "Pertanyaan",
-        "problem": "Ada yang tidak berfungsi",
-        "billing": "Paket dan penagihan",
-        "account": "Akun dan masuk",
-        "idea": "Ide atau permintaan",
-        "other": "Hal lain"
-      },
-      "areaLabel": "Bagian dari Formalie",
-      "anyArea": "Tidak yakin, atau beberapa",
-      "subject": "Subjek",
-      "subjectPlaceholder": "Dalam beberapa kata",
-      "subjectShort": "Tambahkan subjek singkat (minimal 3 karakter).",
-      "message": "Pesan",
-      "messageHelp": "Apa yang Anda lakukan, apa yang Anda harapkan, dan apa yang terjadi. Semakin banyak yang kami tahu, semakin cepat kami bisa membantu.",
-      "messageShort": "Ceritakan sedikit lagi (minimal 10 karakter).",
-      "urgent": "Mendesak",
-      "urgentHint": "Ada yang rusak untuk seluruh tim saat ini.",
-      "replyTo": "Balas ke",
-      "included": "Kami juga melihat ruang kerja Anda dan halaman yang sedang Anda buka, jadi Anda tidak perlu menjelaskan di mana.",
-      "send": "Kirim ke dukungan",
-      "sentTitle": "Terkirim. Referensi Anda adalah {reference}",
-      "sentDesc": "Tim Formalie akan membalas ke {email}. Sebutkan referensi jika Anda menulis lagi soal ini.",
-      "another": "Kirim yang lain",
-      "yours": "Permintaan Anda",
-      "status": {
-        "open": "Terbuka",
-        "answered": "Sudah dijawab",
-        "closed": "Ditutup"
-      }
+      "title": "Hubungi dukungan"
     }
   },
   "billing": {
@@ -9427,65 +9393,18 @@
       "secure": "Anda mengetik data kartu di halaman aman Payoneer. Formalie hanya menyimpan merek kartu, empat digit terakhir, dan tanggal kedaluwarsanya."
     },
     "enquiry": {
-      "title": "Pertanyaan Enterprise",
-      "desc": "Ceritakan apa yang Anda butuhkan. Tim Formalie membalas dalam satu hari kerja.",
-      "you": "Tentang Anda",
-      "company": "Perusahaan",
-      "name": "Nama Anda",
-      "workEmail": "Email kerja",
-      "phone": "Telepon",
-      "role": "Jabatan",
-      "country": "Negara",
-      "scale": "Skala",
-      "sizeLabel": "Ukuran perusahaan",
-      "size": {
-        "1-50": "1 sampai 50 orang",
-        "51-200": "51 sampai 200 orang",
-        "201-1000": "201 sampai 1.000 orang",
-        "1001-5000": "1.001 sampai 5.000 orang",
-        "5000+": "Lebih dari 5.000 orang"
-      },
-      "volumeLabel": "Respons per bulan",
-      "volume": {
-        "under_100k": "Di bawah 100.000",
-        "100k_1m": "100.000 sampai 1 juta",
-        "1m_10m": "1 sampai 10 juta",
-        "over_10m": "Lebih dari 10 juta"
-      },
-      "startLabel": "Kapan Anda ingin mulai?",
-      "startWhen": {
-        "now": "Segera",
-        "quarter": "Kuartal ini",
-        "later": "Nanti tahun ini"
-      },
-      "needsLabel": "Apa yang Anda butuhkan?",
-      "need": {
-        "sso": "Single sign-on",
-        "dedicated": "Infrastruktur khusus",
-        "residency": "Data di wilayah tertentu",
-        "sla": "Perjanjian waktu aktif (SLA)",
-        "security": "Tinjauan keamanan dan kepatuhan",
-        "invoice": "Bayar dengan faktur",
-        "onboarding": "Orientasi dan pelatihan",
-        "custom_limits": "Batas khusus"
-      },
-      "residency": "Di mana data harus disimpan?",
-      "residencyHelp": "Sebuah negara atau wilayah, misalnya Uni Eropa.",
-      "message": "Ada hal lain yang perlu kami ketahui?",
-      "messageHelp": "Penggunaan, format, integrasi, atau persyaratan keamanan Anda.",
-      "messageShort": "Ceritakan sedikit lagi (minimal 10 karakter).",
-      "required": "Harap isi kolom ini.",
-      "email": "Masukkan alamat email yang valid.",
-      "privacy": "Kami hanya menggunakan data ini untuk menjawab pertanyaan Anda.",
-      "send": "Kirim pertanyaan",
-      "sentTitle": "Terima kasih, sudah kami terima",
-      "sentDesc": "Tim Formalie akan membalas ke {email} dalam satu hari kerja.",
-      "close": "Tutup"
+      "title": "Pertanyaan Enterprise"
     },
     "limitAdmin": "Paket yang lebih tinggi mencakup lebih banyak. Bandingkan paket untuk meningkatkan.",
     "limitMember": "Tanyakan kepada admin ruang kerja tentang paket yang lebih tinggi.",
     "seePlans": "Lihat paket",
     "locked": "Di {plan} ke atas",
     "lockedHint": "Paket Anda tidak mencakup ini. Tingkatkan untuk menggunakannya."
+  },
+  "appBrowser": {
+    "sent": "{name}: terkirim",
+    "sentNote": "Terkirim. Anda dapat menutup jendela ini.",
+    "safe": "Halaman Formalie, ditampilkan di dalam aplikasi.",
+    "back": "Kembali ke Formalie"
   }
 }

@@ -657,9 +657,7 @@
     "FRM-AUTH-1020": "Hãy kiểm tra đăng nhập một lần trước khi bật.",
     "FRM-SET-1001": "Hãy xác minh hoặc kiểm tra trước, sau đó bạn có thể dùng.",
     "FRM-BILL-1001": "Thanh toán chưa thành công. Hãy thử thẻ khác hoặc liên hệ ngân hàng của bạn.",
-    "FRM-BILL-1002": "Phiên thanh toán này đã hết hạn. Hãy bắt đầu lại.",
-    "FRM-BILL-1003": "Chúng tôi đã nhận được yêu cầu của bạn. Chúng tôi sẽ sớm liên hệ.",
-    "FRM-HELP-1001": "Chúng tôi đã nhận được yêu cầu này. Chúng tôi sẽ sớm liên hệ."
+    "FRM-BILL-1002": "Phiên thanh toán này đã hết hạn. Hãy bắt đầu lại."
   },
   "errorUi": {
     "reference": "Mã tham chiếu: {id}",
@@ -9126,39 +9124,7 @@
       "hint": "Nhấp đúp hoặc nhấn + và - để thu phóng. Kéo để di chuyển. Esc để đóng."
     },
     "contact": {
-      "title": "Liên hệ hỗ trợ",
-      "desc": "Hãy cho chúng tôi biết bạn cần gì. Đội ngũ Formalie trả lời qua email, thường trong một ngày làm việc.",
-      "topicLabel": "Vấn đề về gì?",
-      "topic": {
-        "question": "Một câu hỏi",
-        "problem": "Có thứ không hoạt động",
-        "billing": "Gói và thanh toán",
-        "account": "Tài khoản và đăng nhập",
-        "idea": "Một ý tưởng hoặc yêu cầu",
-        "other": "Việc khác"
-      },
-      "areaLabel": "Phần của Formalie",
-      "anyArea": "Không chắc, hoặc nhiều phần",
-      "subject": "Tiêu đề",
-      "subjectPlaceholder": "Trong vài từ",
-      "subjectShort": "Thêm tiêu đề ngắn (ít nhất 3 ký tự).",
-      "message": "Nội dung",
-      "messageHelp": "Bạn đã làm gì, bạn mong đợi gì và điều gì đã xảy ra. Càng biết nhiều, chúng tôi càng giúp nhanh hơn.",
-      "messageShort": "Hãy cho chúng tôi biết thêm một chút (ít nhất 10 ký tự).",
-      "urgent": "Khẩn cấp",
-      "urgentHint": "Hiện có thứ bị hỏng với cả nhóm.",
-      "replyTo": "Trả lời đến",
-      "included": "Chúng tôi cũng thấy không gian làm việc của bạn và trang bạn đang xem, nên bạn không cần giải thích ở đâu.",
-      "send": "Gửi cho hỗ trợ",
-      "sentTitle": "Đã gửi. Mã tham chiếu của bạn là {reference}",
-      "sentDesc": "Đội ngũ Formalie sẽ trả lời {email}. Hãy nêu mã tham chiếu nếu bạn viết lại về việc này.",
-      "another": "Gửi thêm một yêu cầu",
-      "yours": "Các yêu cầu của bạn",
-      "status": {
-        "open": "Đang mở",
-        "answered": "Đã trả lời",
-        "closed": "Đã đóng"
-      }
+      "title": "Liên hệ hỗ trợ"
     }
   },
   "billing": {
@@ -9427,65 +9393,18 @@
       "secure": "Bạn nhập thông tin thẻ trên trang bảo mật của Payoneer. Formalie chỉ giữ loại thẻ, bốn số cuối và ngày hết hạn."
     },
     "enquiry": {
-      "title": "Yêu cầu Enterprise",
-      "desc": "Hãy cho chúng tôi biết bạn cần gì. Đội ngũ Formalie phản hồi trong một ngày làm việc.",
-      "you": "Về bạn",
-      "company": "Công ty",
-      "name": "Tên của bạn",
-      "workEmail": "Email công việc",
-      "phone": "Điện thoại",
-      "role": "Chức danh",
-      "country": "Quốc gia",
-      "scale": "Quy mô",
-      "sizeLabel": "Quy mô công ty",
-      "size": {
-        "1-50": "1 đến 50 người",
-        "51-200": "51 đến 200 người",
-        "201-1000": "201 đến 1.000 người",
-        "1001-5000": "1.001 đến 5.000 người",
-        "5000+": "Hơn 5.000 người"
-      },
-      "volumeLabel": "Phản hồi mỗi tháng",
-      "volume": {
-        "under_100k": "Dưới 100.000",
-        "100k_1m": "100.000 đến 1 triệu",
-        "1m_10m": "1 đến 10 triệu",
-        "over_10m": "Hơn 10 triệu"
-      },
-      "startLabel": "Bạn muốn bắt đầu khi nào?",
-      "startWhen": {
-        "now": "Ngay lập tức",
-        "quarter": "Quý này",
-        "later": "Cuối năm nay"
-      },
-      "needsLabel": "Bạn cần gì?",
-      "need": {
-        "sso": "Đăng nhập một lần",
-        "dedicated": "Hạ tầng riêng",
-        "residency": "Dữ liệu ở một khu vực cụ thể",
-        "sla": "Cam kết thời gian hoạt động (SLA)",
-        "security": "Đánh giá bảo mật và tuân thủ",
-        "invoice": "Thanh toán theo hóa đơn",
-        "onboarding": "Hướng dẫn làm quen và đào tạo",
-        "custom_limits": "Giới hạn tùy chỉnh"
-      },
-      "residency": "Dữ liệu nên ở đâu?",
-      "residencyHelp": "Một quốc gia hoặc khu vực, ví dụ Liên minh châu Âu.",
-      "message": "Còn điều gì khác chúng tôi nên biết không?",
-      "messageHelp": "Cách bạn sử dụng, định dạng, tích hợp hoặc yêu cầu bảo mật.",
-      "messageShort": "Hãy cho chúng tôi biết thêm một chút (ít nhất 10 ký tự).",
-      "required": "Vui lòng điền mục này.",
-      "email": "Nhập địa chỉ email hợp lệ.",
-      "privacy": "Chúng tôi chỉ dùng các thông tin này để trả lời yêu cầu của bạn.",
-      "send": "Gửi yêu cầu",
-      "sentTitle": "Cảm ơn, chúng tôi đã nhận được",
-      "sentDesc": "Đội ngũ Formalie sẽ trả lời {email} trong một ngày làm việc.",
-      "close": "Đóng"
+      "title": "Yêu cầu Enterprise"
     },
     "limitAdmin": "Gói cao hơn bao gồm nhiều hơn. Hãy so sánh các gói để nâng cấp.",
     "limitMember": "Hãy hỏi quản trị viên không gian làm việc về gói cao hơn.",
     "seePlans": "Xem các gói",
     "locked": "Từ {plan} trở lên",
     "lockedHint": "Gói của bạn không bao gồm tính năng này. Hãy nâng cấp để dùng."
+  },
+  "appBrowser": {
+    "sent": "{name}: đã gửi",
+    "sentNote": "Đã gửi. Bạn có thể đóng cửa sổ này.",
+    "safe": "Một trang Formalie, hiển thị bên trong ứng dụng.",
+    "back": "Quay lại Formalie"
   }
 }

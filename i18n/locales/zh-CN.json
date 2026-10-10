@@ -657,9 +657,7 @@
     "FRM-AUTH-1020": "开启前请先测试单点登录。",
     "FRM-SET-1001": "请先验证或测试，然后才能使用。",
     "FRM-BILL-1001": "付款未成功。请换一张卡试试，或联系您的银行。",
-    "FRM-BILL-1002": "此次结账已过期。请重新开始。",
-    "FRM-BILL-1003": "我们已收到您的咨询，会尽快与您联系。",
-    "FRM-HELP-1001": "我们已收到此请求，会尽快与您联系。"
+    "FRM-BILL-1002": "此次结账已过期。请重新开始。"
   },
   "errorUi": {
     "reference": "参考编号：{id}",
@@ -9126,39 +9124,7 @@
       "hint": "双击或按 + 和 - 缩放。拖动可移动。按 Esc 关闭。"
     },
     "contact": {
-      "title": "联系支持",
-      "desc": "请告诉我们您的需求。Formalie 团队会通过邮件回复，通常在一个工作日内。",
-      "topicLabel": "是关于什么的？",
-      "topic": {
-        "question": "一个问题",
-        "problem": "有东西无法使用",
-        "billing": "套餐和账单",
-        "account": "账户和登录",
-        "idea": "想法或请求",
-        "other": "其他"
-      },
-      "areaLabel": "Formalie 的哪个部分",
-      "anyArea": "不确定，或涉及多个",
-      "subject": "主题",
-      "subjectPlaceholder": "用几个词概括",
-      "subjectShort": "请添加简短的主题（至少 3 个字符）。",
-      "message": "消息",
-      "messageHelp": "您做了什么、期望什么以及发生了什么。我们了解得越多，就能越快帮到您。",
-      "messageShort": "请再多告诉我们一些（至少 10 个字符）。",
-      "urgent": "紧急",
-      "urgentHint": "目前整个团队都有东西无法使用。",
-      "replyTo": "回复至",
-      "included": "我们还能看到您的工作区和您所在的页面，因此无需说明位置。",
-      "send": "发送给支持",
-      "sentTitle": "已发送。您的参考编号是 {reference}",
-      "sentDesc": "Formalie 团队将回复到 {email}。如果您就此事再次来信，请注明参考编号。",
-      "another": "再发送一条",
-      "yours": "您的请求",
-      "status": {
-        "open": "待处理",
-        "answered": "已回复",
-        "closed": "已关闭"
-      }
+      "title": "联系支持"
     }
   },
   "billing": {
@@ -9427,65 +9393,18 @@
       "secure": "您在 Payoneer 的安全页面输入银行卡信息。Formalie 只保留卡的品牌、后四位数字和有效期。"
     },
     "enquiry": {
-      "title": "Enterprise 咨询",
-      "desc": "请告诉我们您的需求。Formalie 团队会在一个工作日内回复。",
-      "you": "关于您",
-      "company": "公司",
-      "name": "您的姓名",
-      "workEmail": "工作邮箱",
-      "phone": "电话",
-      "role": "职位",
-      "country": "国家或地区",
-      "scale": "规模",
-      "sizeLabel": "公司规模",
-      "size": {
-        "1-50": "1 至 50 人",
-        "51-200": "51 至 200 人",
-        "201-1000": "201 至 1000 人",
-        "1001-5000": "1001 至 5000 人",
-        "5000+": "5000 人以上"
-      },
-      "volumeLabel": "每月回复数",
-      "volume": {
-        "under_100k": "少于 100,000",
-        "100k_1m": "100,000 至 100 万",
-        "1m_10m": "100 万至 1000 万",
-        "over_10m": "超过 1000 万"
-      },
-      "startLabel": "您打算何时开始？",
-      "startWhen": {
-        "now": "立即",
-        "quarter": "本季度",
-        "later": "今年晚些时候"
-      },
-      "needsLabel": "您需要什么？",
-      "need": {
-        "sso": "单点登录",
-        "dedicated": "专属基础设施",
-        "residency": "数据存放在特定地区",
-        "sla": "可用性协议 (SLA)",
-        "security": "安全与合规评审",
-        "invoice": "按发票付款",
-        "onboarding": "入门引导和培训",
-        "custom_limits": "定制限额"
-      },
-      "residency": "数据应存放在哪里？",
-      "residencyHelp": "国家或地区，例如欧盟。",
-      "message": "还有什么我们需要了解的吗？",
-      "messageHelp": "您的使用场景、格式、集成或安全要求。",
-      "messageShort": "请再多告诉我们一些（至少 10 个字符）。",
-      "required": "请填写此项。",
-      "email": "请输入有效的邮箱地址。",
-      "privacy": "我们仅使用这些信息来回复您的咨询。",
-      "send": "发送咨询",
-      "sentTitle": "谢谢，我们已收到",
-      "sentDesc": "Formalie 团队将在一个工作日内回复到 {email}。",
-      "close": "关闭"
+      "title": "Enterprise 咨询"
     },
     "limitAdmin": "更高的套餐包含更多功能。比较各套餐即可升级。",
     "limitMember": "请向工作区管理员咨询更高的套餐。",
     "seePlans": "查看套餐",
     "locked": "{plan} 及以上",
     "lockedHint": "您的套餐不包含此功能。升级后即可使用。"
+  },
+  "appBrowser": {
+    "sent": "{name}：已发送",
+    "sentNote": "已发送。您可以关闭此窗口。",
+    "safe": "显示在应用内的 Formalie 页面。",
+    "back": "返回 Formalie"
   }
 }

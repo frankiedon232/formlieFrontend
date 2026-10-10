@@ -657,9 +657,7 @@
     "FRM-AUTH-1020": "Testez l’authentification unique avant de l’activer.",
     "FRM-SET-1001": "Vérifiez ou testez d’abord, puis vous pourrez l’utiliser.",
     "FRM-BILL-1001": "Le paiement n’a pas abouti. Essayez une autre carte ou contactez votre banque.",
-    "FRM-BILL-1002": "Ce paiement a expiré. Recommencez.",
-    "FRM-BILL-1003": "Nous avons déjà votre demande. Nous vous répondrons bientôt.",
-    "FRM-HELP-1001": "Nous avons déjà cette demande. Nous vous répondrons bientôt."
+    "FRM-BILL-1002": "Ce paiement a expiré. Recommencez."
   },
   "errorUi": {
     "reference": "Référence : {id}",
@@ -9126,39 +9124,7 @@
       "hint": "Double-cliquez ou appuyez sur + et - pour zoomer. Faites glisser pour vous déplacer. Échap ferme."
     },
     "contact": {
-      "title": "Contacter l’assistance",
-      "desc": "Dites-nous ce dont vous avez besoin. L’équipe Formalie répond par e-mail, en général sous un jour ouvré.",
-      "topicLabel": "De quoi s’agit-il ?",
-      "topic": {
-        "question": "Une question",
-        "problem": "Quelque chose ne fonctionne pas",
-        "billing": "Offres et facturation",
-        "account": "Compte et connexion",
-        "idea": "Une idée ou une demande",
-        "other": "Autre chose"
-      },
-      "areaLabel": "Partie de Formalie",
-      "anyArea": "Je ne sais pas, ou plusieurs",
-      "subject": "Objet",
-      "subjectPlaceholder": "En quelques mots",
-      "subjectShort": "Ajoutez un objet court (au moins 3 caractères).",
-      "message": "Message",
-      "messageHelp": "Ce que vous avez fait, ce que vous attendiez et ce qui s’est passé. Plus nous en savons, plus vite nous pouvons aider.",
-      "messageShort": "Dites-nous-en un peu plus (au moins 10 caractères).",
-      "urgent": "Urgent",
-      "urgentHint": "Quelque chose est en panne pour toute l’équipe en ce moment.",
-      "replyTo": "Répondre à",
-      "included": "Nous voyons aussi votre espace de travail et la page où vous étiez, vous n’avez donc pas à expliquer où.",
-      "send": "Envoyer à l’assistance",
-      "sentTitle": "Envoyé. Votre référence est {reference}",
-      "sentDesc": "L’équipe Formalie répondra à {email}. Indiquez la référence si vous écrivez de nouveau à ce sujet.",
-      "another": "En envoyer un autre",
-      "yours": "Vos demandes",
-      "status": {
-        "open": "Ouverte",
-        "answered": "Répondue",
-        "closed": "Fermée"
-      }
+      "title": "Contacter l’assistance"
     }
   },
   "billing": {
@@ -9427,65 +9393,18 @@
       "secure": "Vous saisissez les données de votre carte sur la page sécurisée de Payoneer. Formalie ne conserve que la marque de la carte, ses quatre derniers chiffres et sa date d’expiration."
     },
     "enquiry": {
-      "title": "Demande Enterprise",
-      "desc": "Dites-nous ce dont vous avez besoin. L’équipe Formalie répond sous un jour ouvré.",
-      "you": "À propos de vous",
-      "company": "Entreprise",
-      "name": "Votre nom",
-      "workEmail": "E-mail professionnel",
-      "phone": "Téléphone",
-      "role": "Fonction",
-      "country": "Pays",
-      "scale": "Échelle",
-      "sizeLabel": "Taille de l’entreprise",
-      "size": {
-        "1-50": "1 à 50 personnes",
-        "51-200": "51 à 200 personnes",
-        "201-1000": "201 à 1 000 personnes",
-        "1001-5000": "1 001 à 5 000 personnes",
-        "5000+": "Plus de 5 000 personnes"
-      },
-      "volumeLabel": "Réponses par mois",
-      "volume": {
-        "under_100k": "Moins de 100 000",
-        "100k_1m": "100 000 à 1 million",
-        "1m_10m": "1 à 10 millions",
-        "over_10m": "Plus de 10 millions"
-      },
-      "startLabel": "Quand souhaitez-vous commencer ?",
-      "startWhen": {
-        "now": "Immédiatement",
-        "quarter": "Ce trimestre",
-        "later": "Plus tard cette année"
-      },
-      "needsLabel": "De quoi avez-vous besoin ?",
-      "need": {
-        "sso": "Authentification unique",
-        "dedicated": "Infrastructure dédiée",
-        "residency": "Données dans une région précise",
-        "sla": "Accord de disponibilité (SLA)",
-        "security": "Revue de sécurité et de conformité",
-        "invoice": "Paiement sur facture",
-        "onboarding": "Prise en main et formation",
-        "custom_limits": "Limites sur mesure"
-      },
-      "residency": "Où les données doivent-elles rester ?",
-      "residencyHelp": "Un pays ou une région, par exemple l’Union européenne.",
-      "message": "Autre chose à nous dire ?",
-      "messageHelp": "Votre usage, vos formats, vos intégrations ou vos exigences de sécurité.",
-      "messageShort": "Dites-nous-en un peu plus (au moins 10 caractères).",
-      "required": "Veuillez remplir ce champ.",
-      "email": "Saisissez une adresse e-mail valide.",
-      "privacy": "Nous utilisons ces informations uniquement pour répondre à votre demande.",
-      "send": "Envoyer la demande",
-      "sentTitle": "Merci, nous l’avons bien reçue",
-      "sentDesc": "L’équipe Formalie répondra à {email} sous un jour ouvré.",
-      "close": "Fermer"
+      "title": "Demande Enterprise"
     },
     "limitAdmin": "Une offre supérieure inclut davantage. Comparez les offres pour passer à la supérieure.",
     "limitMember": "Demandez à un administrateur de l’espace de travail au sujet d’une offre supérieure.",
     "seePlans": "Voir les offres",
     "locked": "Dès {plan}",
     "lockedHint": "Votre offre n’inclut pas cette fonction. Passez à une offre supérieure pour l’utiliser."
+  },
+  "appBrowser": {
+    "sent": "{name} : envoyé",
+    "sentNote": "Envoyé. Vous pouvez fermer cette fenêtre.",
+    "safe": "Une page Formalie, affichée dans l’application.",
+    "back": "Retour à Formalie"
   }
 }

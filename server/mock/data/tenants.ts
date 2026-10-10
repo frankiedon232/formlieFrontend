@@ -79,7 +79,20 @@ export const MOCK_TENANTS: MockTenant[] = [
     auth_providers: ['password'],
     organisation: { id: '2c3d4e5f-6071-4c8d-8e9f-1a2b3c4d5e6f', name: 'Old Co' },
   },
+  // Formalie's own workspace: its forms collect our data (Contact support, Enterprise enquiry; data/platformForms.ts).
+  // Nobody signs in to it here; the Formalie team reads its responses in the platform admin.
+  {
+    id: 'f0a1b2c3-0000-4f00-8f00-00000000f0f0',
+    name: 'Formalie',
+    subdomain: 'formalie-team',
+    website: 'https://formalie.com',
+    status: 'active',
+    auth_providers: ['password'],
+    organisation: { id: 'f0a1b2c3-0000-4f00-8f00-00000000f0f1', name: 'Formalie' },
+  },
 ]
+/** Formalie's own workspace (the last one above). */
+export const PLATFORM_TENANT_ID = 'f0a1b2c3-0000-4f00-8f00-00000000f0f0'
 
 export const MOCK_USERS: MockUser[] = [
   {
