@@ -2672,7 +2672,8 @@
       "requireLocked": "无法将隐藏、只读或已禁用的字段设为必填",
       "self": "隐藏或清除了它所检查的问题",
       "backwards": "只能向前跳转",
-      "conflict": "同时隐藏并要求填写同一问题"
+      "conflict": "同时隐藏并要求填写同一问题",
+      "detail": "列表中已没有此详情。"
     },
     "op": {
       "eq": "等于",
@@ -2777,7 +2778,10 @@
       "guideMath": "可使用数字、+ − * / 和括号：{'{'}quantity{'}'} * {'{'}price{'}'}。",
       "guideOptions": "选择题按所选选项的编号计算（选项 → 为选项编号）；多选时相加。",
       "guideIf": "按条件选择值：if({'{'}plan{'}'} = \"Premium\", 50, 10)。比较运算符：= != > >= < <=。",
-      "guideFunctions": "还有：and()、or()、not()、min()、max()、sum()、round(x, 2)、floor()、ceil()、abs()。"
+      "guideFunctions": "还有：and()、or()、not()、min()、max()、sum()、round(x, 2)、floor()、ceil()、abs()。",
+      "unknownDetail": "{'{'}{key}{'}'} 不是该问题所用列表的详情。",
+      "details": "详情",
+      "guideDetails": "使用带详情的列表的问题可以引用这些详情：{'{'}product.price{'}'} 是所选选项的价格；选了多个时，价格相加。"
     },
     "yes": "是",
     "no": "否",

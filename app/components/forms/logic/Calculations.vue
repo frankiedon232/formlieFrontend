@@ -1,7 +1,8 @@
 <!--
   Calculated fields: one row per field with its formula and its problem (if any), chips that
   insert a field ({key}) or a function, and a short guide: choice answers count as the number
-  given to each option (Options → "Give options numbers"), and if() picks a value by condition.
+  given to each option (Options → "Give options numbers"), and if() picks a value by condition. Questions from a
+  list with details also offer each detail ({product.price}, leftovers L1).
 -->
 <script setup lang="ts">
 import type { FormField } from '#shared/utils/forms/build'
@@ -18,6 +19,9 @@ const insert = (field: FormField, piece: string) => setFormula(field, `${formula
 const usable = (field: FormField) => logic.formulaSources.value.filter(f => f.key !== field.key)
 const isChoice = (f: FormField) => !!f.options?.length
 const scored = (f: FormField) => !!f.options?.some(o => typeof o.score === 'number')
+/** Details of the questions this formula may use, as chips ({product.price}). */
+const detailChips = (field: FormField) =>
+  usable(field).flatMap(source => logic.detailsOf(source).map(d => ({ code: `{${source.key}.${d.key}}`, label: `${logic.label(source)} · ${d.label}` })))
 </script>
 
 <template>
@@ -72,6 +76,12 @@ const scored = (f: FormField) => !!f.options?.some(o => typeof o.score === 'numb
             />
           </UTooltip>
         </div>
+        <div v-if="detailChips(field).length" class="flex flex-wrap items-center gap-1">
+          <span class="me-1 text-xs text-muted">{{ t('logic.calc.details') }}</span>
+          <UTooltip v-for="chip in detailChips(field)" :key="chip.code" :text="chip.label">
+            <UButton :label="chip.code" icon="i-lucide-tag" color="neutral" variant="outline" size="xs" class="font-mono" @click="insert(field, chip.code)" />
+          </UTooltip>
+        </div>
         <div class="flex flex-wrap items-center gap-1">
           <span class="me-1 text-xs text-muted">{{ t('logic.calc.functions') }}</span>
           <UButton
@@ -97,6 +107,7 @@ const scored = (f: FormField) => !!f.options?.some(o => typeof o.score === 'numb
         <li>{{ t('logic.calc.guideMath') }}</li>
         <li>{{ t('logic.calc.guideOptions') }}</li>
         <li>{{ t('logic.calc.guideIf') }}</li>
+        <li>{{ t('logic.calc.guideDetails') }}</li>
         <li>{{ t('logic.calc.guideFunctions') }}</li>
       </ul>
     </details>

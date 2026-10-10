@@ -2672,7 +2672,8 @@
       "requireLocked": "Nie można wymagać pola ukrytego, tylko do odczytu lub wyłączonego",
       "self": "Ukrywa lub czyści pytanie, które sprawdza",
       "backwards": "Przejścia mogą prowadzić tylko do przodu",
-      "conflict": "Ukrywa i wymaga tego samego pytania"
+      "conflict": "Ukrywa i wymaga tego samego pytania",
+      "detail": "Lista nie ma już tego szczegółu."
     },
     "op": {
       "eq": "ma wartość",
@@ -2777,7 +2778,10 @@
       "guideMath": "Używaj liczb, + − * / i nawiasów: {'{'}quantity{'}'} * {'{'}price{'}'}.",
       "guideOptions": "Pytania wyboru liczą się jako liczba nadana wybranej opcji (Opcje → Nadaj opcjom liczby); kilka wybranych się sumuje.",
       "guideIf": "Wybierz wartość według warunku: if({'{'}plan{'}'} = \"Premium\", 50, 10). Porównuj za pomocą = != > >= < <=.",
-      "guideFunctions": "Także: and(), or(), not(), min(), max(), sum(), round(x, 2), floor(), ceil(), abs()."
+      "guideFunctions": "Także: and(), or(), not(), min(), max(), sum(), round(x, 2), floor(), ceil(), abs().",
+      "unknownDetail": "{'{'}{key}{'}'} nie jest szczegółem listy tego pytania.",
+      "details": "Szczegóły",
+      "guideDetails": "Pytanie z listy ze szczegółami może ich używać: {'{'}product.price{'}'} to cena wybranej opcji; przy kilku wybranych ich ceny się sumują."
     },
     "yes": "Tak",
     "no": "Nie",

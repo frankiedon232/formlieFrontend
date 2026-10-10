@@ -2672,7 +2672,8 @@
       "requireLocked": "Gizli, salt okunur veya devre dışı bir alan zorunlu yapılamaz",
       "self": "Kontrol ettiği soruyu gizliyor veya temizliyor",
       "backwards": "Atlamalar yalnızca ileri gidebilir",
-      "conflict": "Aynı soruyu hem gizliyor hem zorunlu yapıyor"
+      "conflict": "Aynı soruyu hem gizliyor hem zorunlu yapıyor",
+      "detail": "Listede artık bu ayrıntı yok."
     },
     "op": {
       "eq": "eşittir",
@@ -2777,7 +2778,10 @@
       "guideMath": "Sayılar, + − * / ve parantez kullanın: {'{'}quantity{'}'} * {'{'}price{'}'}.",
       "guideOptions": "Seçim soruları, seçilen seçeneğe verilen sayı olarak sayılır (Seçenekler → Seçeneklere sayı ver); birden fazla seçim toplanır.",
       "guideIf": "Koşula göre değer seçin: if({'{'}plan{'}'} = \"Premium\", 50, 10). Karşılaştırma: = != > >= < <=.",
-      "guideFunctions": "Ayrıca: and(), or(), not(), min(), max(), sum(), round(x, 2), floor(), ceil(), abs()."
+      "guideFunctions": "Ayrıca: and(), or(), not(), min(), max(), sum(), round(x, 2), floor(), ceil(), abs().",
+      "unknownDetail": "{'{'}{key}{'}'}, o sorunun listesinin bir ayrıntısı değil.",
+      "details": "Ayrıntılar",
+      "guideDetails": "Ayrıntılı bir listeden gelen bir soru bunları kullanabilir: {'{'}product.price{'}'} seçilen seçeneğin fiyatıdır; birden fazla seçildiyse fiyatları toplanır."
     },
     "yes": "Evet",
     "no": "Hayır",

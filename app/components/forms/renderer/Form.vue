@@ -91,7 +91,7 @@ watchEffect(() => {
   }
   for (const field of allFieldsByKey.value.values())
     if (field.type === 'calculated') {
-      const value = calculateResult(String(field.props?.formula ?? ''), answers.value, allFieldsByKey.value)
+      const value = calculateResult(String(field.props?.formula ?? ''), answers.value, allFieldsByKey.value, picked.value)
       if (answers.value[field.key] !== value) answers.value[field.key] = value
     }
 })

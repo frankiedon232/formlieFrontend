@@ -1,6 +1,7 @@
 import { allFields, cannotBeRequired, newId, type FormField } from '#shared/utils/forms/build'
 import { isInputField } from '#shared/utils/forms/fields'
-import { formulaKeys, isValidFormula } from '#shared/utils/forms/formula'
+import { detailKeysOf, isNumericDetail } from '#shared/utils/forms/details'
+import { formulaDetails, formulaKeys, isValidFormula } from '#shared/utils/forms/formula'
 import {
   actionTarget,
   needsValue,
@@ -23,6 +24,8 @@ import {
 export function useLogicRules() {
   const { t } = useI18n()
   const builder = useBuilder()
+  const library = useFieldLibrary()
+  void library.load()
 
   const rules = computed<LogicRule[]>(() => (builder.schema.value?.logic ?? []) as LogicRule[])
   const fields = computed(() => (builder.schema.value ? allFields(builder.schema.value) : []))
@@ -34,6 +37,20 @@ export function useLogicRules() {
   const pageLabel = (id: string) => {
     const i = pages.value.findIndex(p => p.id === id)
     return i < 0 ? t('logic.missing') : pages.value[i]!.title || t('builder.page.default', { n: i + 1 })
+  }
+
+  /** Detail columns of a choice field's list, with the list's labels (leftovers L1). */
+  function detailsOf(field: FormField | undefined): { key: string; label: string; numeric: boolean }[] {
+    if (!field || (!field.options?.length && !field.option_set_id)) return []
+    const list = field.option_set_id ? library.lists.value.find(item => item.id === field.option_set_id) : undefined
+    const columns = list?.columns?.length ? list.columns : detailKeysOf(field).map(key => ({ key, label: key }))
+    return columns.map(column => ({ key: column.key, label: column.label, numeric: isNumericDetail(field, column.key) }))
+  }
+  /** "Product · Price" for a condition on a detail, else the question's label. */
+  function conditionLabel(c: Pick<LogicCondition, 'field' | 'detail'>) {
+    const field = fieldById.value.get(c.field)
+    if (!c.detail) return label(field)
+    return `${label(field)} · ${detailsOf(field).find(item => item.key === c.detail)?.label ?? c.detail}`
   }
 
   /** What an action may point at. */
@@ -107,9 +124,10 @@ export function useLogicRules() {
     return value == null || value === '' ? '…' : one(value)
   }
   function conditionText(c: LogicCondition) {
-    const field = fieldById.value.get(c.field)
+    // A detail's value is its own text, never an option label
+    const field = c.detail ? undefined : fieldById.value.get(c.field)
     return t(`logic.sentence.${c.op}`, {
-      field: label(field),
+      field: conditionLabel(c),
       value: needsValue(c.op) ? (takesCount(c.op) ? String(c.value ?? '…') : valueText(field, c.value)) : '',
       value2: takesRange(c.op) ? valueText(field, c.value2 ?? null) : '',
     })
@@ -138,6 +156,7 @@ export function useLogicRules() {
     const conditions = conditionsOf(rule)
     for (const c of conditions) {
       if (!fieldById.value.has(c.field)) found.push(t('logic.problem.field'))
+      else if (c.detail && !detailsOf(fieldById.value.get(c.field)).some(item => item.key === c.detail)) found.push(t('logic.problem.detail'))
       else if (needsValue(c.op) && emptyValue(c.value) && !(takesRange(c.op) && !emptyValue(c.value2)))
         found.push(t('logic.problem.value'))
     }
@@ -184,12 +203,14 @@ export function useLogicRules() {
     const unknown = formulaKeys(formula).find(key => !fields.value.some(f => f.key === key))
     if (unknown) return t('logic.calc.unknown', { key: unknown })
     if (formulaKeys(formula).includes(field.key)) return t('logic.calc.self')
+    const missing = formulaDetails(formula).find(item => !detailsOf(fields.value.find(f => f.key === item.key)).some(d => d.key === item.detail))
+    if (missing) return t('logic.calc.unknownDetail', { key: `${missing.key}.${missing.detail}` })
     if (!isValidFormula(formula)) return t('logic.calc.syntax')
     return null
   }
 
   return {
-    rules, fields, sources, pages, fieldById, label, pageLabel, targetsFor,
+    rules, fields, sources, pages, fieldById, label, pageLabel, targetsFor, detailsOf, conditionLabel,
     addRule, update, removeRule, duplicateRule, moveRule,
     conditionsOf, matchOf, blankCondition, summary, problem, problems, valueText,
     calculated, formulaSources, formulaProblem,

@@ -2672,7 +2672,8 @@
       "requireLocked": "Een verborgen, alleen-lezen of uitgeschakeld veld kan niet verplicht zijn",
       "self": "Verbergt of wist de vraag die het controleert",
       "backwards": "Sprongen kunnen alleen vooruit",
-      "conflict": "Verbergt en verplicht dezelfde vraag"
+      "conflict": "Verbergt en verplicht dezelfde vraag",
+      "detail": "De lijst heeft dit detail niet meer."
     },
     "op": {
       "eq": "is",
@@ -2777,7 +2778,10 @@
       "guideMath": "Gebruik getallen, + − * / en haakjes: {'{'}quantity{'}'} * {'{'}price{'}'}.",
       "guideOptions": "Keuzevragen tellen als het nummer van de gekozen optie (Opties → Opties nummeren); meerdere keuzes worden opgeteld.",
       "guideIf": "Kies een waarde op basis van een voorwaarde: if({'{'}plan{'}'} = \"Premium\", 50, 10). Vergelijk met = != > >= < <=.",
-      "guideFunctions": "Ook: and(), or(), not(), min(), max(), sum(), round(x, 2), floor(), ceil(), abs()."
+      "guideFunctions": "Ook: and(), or(), not(), min(), max(), sum(), round(x, 2), floor(), ceil(), abs().",
+      "unknownDetail": "{'{'}{key}{'}'} is geen detail van de lijst van die vraag.",
+      "details": "Details",
+      "guideDetails": "Een vraag uit een lijst met details kan ze gebruiken: {'{'}product.price{'}'} is de prijs van de gekozen optie; bij meerdere gekozen worden hun prijzen opgeteld."
     },
     "yes": "Ja",
     "no": "Nee",

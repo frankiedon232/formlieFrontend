@@ -2672,7 +2672,8 @@
       "requireLocked": "Non si può rendere obbligatorio un campo nascosto, di sola lettura o disattivato",
       "self": "Nasconde o svuota la domanda che controlla",
       "backwards": "I salti possono andare solo in avanti",
-      "conflict": "Nasconde e rende obbligatoria la stessa domanda"
+      "conflict": "Nasconde e rende obbligatoria la stessa domanda",
+      "detail": "L’elenco non ha più questo dettaglio."
     },
     "op": {
       "eq": "è",
@@ -2777,7 +2778,10 @@
       "guideMath": "Usa numeri, + − * / e parentesi: {'{'}quantity{'}'} * {'{'}price{'}'}.",
       "guideOptions": "Le domande a scelta valgono il numero assegnato all’opzione scelta (Opzioni → Assegna numeri alle opzioni); più scelte si sommano.",
       "guideIf": "Scegli un valore in base a una condizione: if({'{'}plan{'}'} = \"Premium\", 50, 10). Confronta con = != > >= < <=.",
-      "guideFunctions": "Inoltre: and(), or(), not(), min(), max(), sum(), round(x, 2), floor(), ceil(), abs()."
+      "guideFunctions": "Inoltre: and(), or(), not(), min(), max(), sum(), round(x, 2), floor(), ceil(), abs().",
+      "unknownDetail": "{'{'}{key}{'}'} non è un dettaglio dell’elenco di quella domanda.",
+      "details": "Dettagli",
+      "guideDetails": "Una domanda da un elenco con dettagli può usarli: {'{'}product.price{'}'} è il prezzo dell’opzione scelta; se ne scegli più di una, i prezzi si sommano."
     },
     "yes": "Sì",
     "no": "No",

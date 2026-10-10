@@ -2672,7 +2672,8 @@
       "requireLocked": "Không thể bắt buộc trường bị ẩn, chỉ đọc hoặc đã tắt",
       "self": "Ẩn hoặc xóa chính câu hỏi mà quy tắc kiểm tra",
       "backwards": "Chỉ có thể chuyển tiếp về phía trước",
-      "conflict": "Vừa ẩn vừa bắt buộc cùng một câu hỏi"
+      "conflict": "Vừa ẩn vừa bắt buộc cùng một câu hỏi",
+      "detail": "Danh sách không còn chi tiết này."
     },
     "op": {
       "eq": "là",
@@ -2777,7 +2778,10 @@
       "guideMath": "Dùng số, + − * / và dấu ngoặc: {'{'}quantity{'}'} * {'{'}price{'}'}.",
       "guideOptions": "Câu hỏi lựa chọn được tính bằng số gán cho lựa chọn được chọn (Lựa chọn → Gán số cho lựa chọn); chọn nhiều thì cộng lại.",
       "guideIf": "Chọn giá trị theo điều kiện: if({'{'}plan{'}'} = \"Premium\", 50, 10). So sánh bằng = != > >= < <=.",
-      "guideFunctions": "Ngoài ra: and(), or(), not(), min(), max(), sum(), round(x, 2), floor(), ceil(), abs()."
+      "guideFunctions": "Ngoài ra: and(), or(), not(), min(), max(), sum(), round(x, 2), floor(), ceil(), abs().",
+      "unknownDetail": "{'{'}{key}{'}'} không phải là chi tiết của danh sách câu hỏi đó.",
+      "details": "Chi tiết",
+      "guideDetails": "Câu hỏi từ danh sách có chi tiết có thể dùng chúng: {'{'}product.price{'}'} là giá của lựa chọn đã chọn; nếu chọn nhiều, giá được cộng lại."
     },
     "yes": "Có",
     "no": "Không",

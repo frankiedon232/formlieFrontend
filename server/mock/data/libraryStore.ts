@@ -12,6 +12,7 @@ interface TenantLibrary {
   lists: OptionList[]
   /** The sample list with levels was added once (F15 M2); deleting it keeps it gone. */
   placesSeeded?: boolean
+  productsSeeded?: boolean
   /** Formalie's lists got their options' translations once (2026-10-10). */
   defaultsTranslated?: boolean
   /** Saved designs; `forms_count` is computed when listing. */
@@ -102,12 +103,31 @@ function placesList(): OptionList {
   return { id: 'lst_places', name: 'Places', description: 'Country, region and city', levels: [{ key: 'country', label: 'Country' }, { key: 'region', label: 'Region' }, { key: 'city', label: 'City' }], options, created_by: SYSTEM, created_at: at, updated_at: at }
 }
 
+/** Products with details (price, category), a sample list for formulas and logic on details (leftovers L1). */
+function productsList(): OptionList {
+  const items: [string, number, string][] = [
+    ['Standing desk', 420, 'Furniture'], ['Office chair', 189.5, 'Furniture'], ['Monitor 27 inch', 239, 'Equipment'],
+    ['Laptop stand', 45, 'Equipment'], ['Headset', 79, 'Equipment'], ['Desk lamp', 32.5, 'Furniture'],
+  ]
+  return {
+    id: 'lst_products',
+    name: 'Sample products',
+    description: 'Products with a price and a category, to try details in formulas and logic',
+    columns: [{ key: 'price', label: 'Price' }, { key: 'category', label: 'Category' }],
+    options: items.map(([label, price, category]) => ({ value: slug(label), label, attrs: { price, category } })),
+    created_by: SYSTEM,
+    created_at: at,
+    updated_at: at,
+  }
+}
+
 const SAMPLE_LISTS = () => [
   list('lst_priority', 'Priority', ['Low', 'Medium', 'High', 'Critical']),
   list('lst_departments', 'Departments', ['Finance', 'Operations', 'People', 'Sales', 'Support', 'Technology']),
   list('lst_weekdays', 'Days of the week', ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']),
   list('lst_satisfaction', 'Satisfaction', ['Very unhappy', 'Unhappy', 'Neutral', 'Happy', 'Very happy']),
   placesList(),
+  productsList(),
 ]
 
 export function libraryOf(tenant: MockTenant): TenantLibrary {
@@ -118,6 +138,16 @@ export function libraryOf(tenant: MockTenant): TenantLibrary {
   } else if (SEEDED_TENANT_IDS.has(tenant.id) && !store.lists.some(item => item.id === 'lst_places') && !store.placesSeeded) {
     store.lists.push(placesList())
     store.placesSeeded = true
+    saveLibrary()
+  }
+  if (SEEDED_TENANT_IDS.has(tenant.id) && !store.productsSeeded) {
+    if (!store.lists.some(item => item.id === 'lst_products')) store.lists.push(productsList())
+    store.productsSeeded = true
+    saveLibrary()
+  }
+  const sample = store.lists.find(item => item.id === 'lst_products' && item.name === 'Products')
+  if (sample) {
+    sample.name = 'Sample products'
     saveLibrary()
   }
   // Once: Formalie's lists made before 2026-10-10 get their options in every language

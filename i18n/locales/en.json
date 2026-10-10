@@ -2672,7 +2672,8 @@
       "requireLocked": "Can’t require a hidden, read-only or disabled field",
       "self": "Hides or clears the question it checks",
       "backwards": "Jumps can only go forward",
-      "conflict": "Hides and requires the same question"
+      "conflict": "Hides and requires the same question",
+      "detail": "The list no longer has this detail."
     },
     "op": {
       "eq": "is",
@@ -2777,7 +2778,10 @@
       "guideMath": "Use numbers, + − * / and brackets: {'{'}quantity{'}'} * {'{'}price{'}'}.",
       "guideOptions": "Choice questions count as the number given to the chosen option (Options → Give options numbers); several chosen add up.",
       "guideIf": "Pick a value by condition: if({'{'}plan{'}'} = \"Premium\", 50, 10). Compare with = != > >= < <=.",
-      "guideFunctions": "Also: and(), or(), not(), min(), max(), sum(), round(x, 2), floor(), ceil(), abs()."
+      "guideFunctions": "Also: and(), or(), not(), min(), max(), sum(), round(x, 2), floor(), ceil(), abs().",
+      "unknownDetail": "{'{'}{key}{'}'} is not a detail of that question's list.",
+      "details": "Details",
+      "guideDetails": "A question from a list with details can use them: {'{'}product.price{'}'} is the chosen option's price; with several chosen, their prices added up."
     },
     "yes": "Yes",
     "no": "No",

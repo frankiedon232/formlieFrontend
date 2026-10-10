@@ -2672,7 +2672,8 @@
       "requireLocked": "숨김, 읽기 전용 또는 사용 안 함 항목은 필수로 지정할 수 없습니다",
       "self": "확인하는 질문 자체를 숨기거나 지웁니다",
       "backwards": "이동은 앞쪽 페이지로만 가능합니다",
-      "conflict": "같은 질문을 숨기면서 필수로 지정합니다"
+      "conflict": "같은 질문을 숨기면서 필수로 지정합니다",
+      "detail": "목록에 더 이상 이 세부 정보가 없습니다."
     },
     "op": {
       "eq": "같음",
@@ -2777,7 +2778,10 @@
       "guideMath": "숫자, + − * / 와 괄호를 사용하세요: {'{'}quantity{'}'} * {'{'}price{'}'}.",
       "guideOptions": "선택형 질문은 선택한 옵션에 지정한 번호로 계산됩니다(옵션 → 옵션에 번호 지정). 여러 개를 선택하면 합산됩니다.",
       "guideIf": "조건에 따라 값 선택: if({'{'}plan{'}'} = \"Premium\", 50, 10). 비교에는 = != > >= < <= 를 사용합니다.",
-      "guideFunctions": "그 외: and(), or(), not(), min(), max(), sum(), round(x, 2), floor(), ceil(), abs()."
+      "guideFunctions": "그 외: and(), or(), not(), min(), max(), sum(), round(x, 2), floor(), ceil(), abs().",
+      "unknownDetail": "{'{'}{key}{'}'}은(는) 해당 질문 목록의 세부 정보가 아닙니다.",
+      "details": "세부 정보",
+      "guideDetails": "세부 정보가 있는 목록의 질문은 이를 사용할 수 있습니다. {'{'}product.price{'}'}은(는) 선택한 옵션의 가격이며, 여러 개를 선택하면 가격이 합산됩니다."
     },
     "yes": "예",
     "no": "아니요",

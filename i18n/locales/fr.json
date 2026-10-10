@@ -2672,7 +2672,8 @@
       "requireLocked": "Impossible de rendre obligatoire un champ masqué, en lecture seule ou désactivé",
       "self": "Masque ou vide la question qu’elle vérifie",
       "backwards": "Les sauts ne peuvent aller que vers l’avant",
-      "conflict": "Masque et rend obligatoire la même question"
+      "conflict": "Masque et rend obligatoire la même question",
+      "detail": "La liste n’a plus ce détail."
     },
     "op": {
       "eq": "est",
@@ -2777,7 +2778,10 @@
       "guideMath": "Utilisez des nombres, + − * / et des parenthèses : {'{'}quantity{'}'} * {'{'}price{'}'}.",
       "guideOptions": "Les questions à choix comptent comme le numéro de l’option choisie (Options → Numéroter les options) ; plusieurs choix s’additionnent.",
       "guideIf": "Choisir une valeur selon une condition : if({'{'}plan{'}'} = \"Premium\", 50, 10). Comparez avec = != > >= < <=.",
-      "guideFunctions": "Aussi : and(), or(), not(), min(), max(), sum(), round(x, 2), floor(), ceil(), abs()."
+      "guideFunctions": "Aussi : and(), or(), not(), min(), max(), sum(), round(x, 2), floor(), ceil(), abs().",
+      "unknownDetail": "{'{'}{key}{'}'} n’est pas un détail de la liste de cette question.",
+      "details": "Détails",
+      "guideDetails": "Une question issue d’une liste avec détails peut les utiliser : {'{'}product.price{'}'} est le prix de l’option choisie ; si plusieurs sont choisies, leurs prix s’additionnent."
     },
     "yes": "Oui",
     "no": "Non",

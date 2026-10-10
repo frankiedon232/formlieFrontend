@@ -2672,7 +2672,8 @@
       "requireLocked": "Kolom tersembunyi, hanya baca, atau nonaktif tidak dapat diwajibkan",
       "self": "Menyembunyikan atau mengosongkan pertanyaan yang diperiksanya",
       "backwards": "Lompatan hanya bisa ke depan",
-      "conflict": "Menyembunyikan dan mewajibkan pertanyaan yang sama"
+      "conflict": "Menyembunyikan dan mewajibkan pertanyaan yang sama",
+      "detail": "Daftar tidak lagi memiliki rincian ini."
     },
     "op": {
       "eq": "adalah",
@@ -2777,7 +2778,10 @@
       "guideMath": "Gunakan angka, + − * / dan tanda kurung: {'{'}quantity{'}'} * {'{'}price{'}'}.",
       "guideOptions": "Pertanyaan pilihan dihitung sebagai nomor opsi yang dipilih (Opsi → Beri nomor pada opsi); jika beberapa dipilih, nilainya dijumlahkan.",
       "guideIf": "Pilih nilai berdasarkan kondisi: if({'{'}plan{'}'} = \"Premium\", 50, 10). Bandingkan dengan = != > >= < <=.",
-      "guideFunctions": "Juga: and(), or(), not(), min(), max(), sum(), round(x, 2), floor(), ceil(), abs()."
+      "guideFunctions": "Juga: and(), or(), not(), min(), max(), sum(), round(x, 2), floor(), ceil(), abs().",
+      "unknownDetail": "{'{'}{key}{'}'} bukan rincian dari daftar pertanyaan itu.",
+      "details": "Rincian",
+      "guideDetails": "Pertanyaan dari daftar yang memiliki rincian dapat menggunakannya: {'{'}product.price{'}'} adalah harga opsi yang dipilih; jika beberapa dipilih, harganya dijumlahkan."
     },
     "yes": "Ya",
     "no": "Tidak",

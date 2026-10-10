@@ -4,12 +4,14 @@
  *
  *   rule = { id, when: { all | any: [{ field, op, value?, value2? }] }, then: [{ action, target?, value? }] }
  *
- * Conditions test answers (field ids, not keys). Actions: show / hide a field or a page,
+ * Conditions test answers (field ids, not keys), or with `detail` a detail of the chosen list option
+ * (leftovers L1, ./details.ts). Actions: show / hide a field or a page,
  * require / make optional, enable / disable, set / clear a value, jump to a page, skip to the end.
  * Calculated fields: see ./formula.ts.
  */
 import type { FormField } from './build'
 import type { FormSchemaV1 } from './schema'
+import { detailAnswer } from './details'
 import { applyFills, type PickedOptions } from './fills'
 
 export type LogicOperator =
@@ -28,6 +30,8 @@ export type LogicValue = string | number | null | string[]
 
 export interface LogicCondition {
   field: string
+  /** A detail column of the field's list (e.g. `price`): the condition tests the chosen option's detail. */
+  detail?: string
   op: LogicOperator
   value?: LogicValue
   /** Upper bound for between / not between. */
@@ -70,6 +74,12 @@ export function operatorsFor(type: string): LogicOperator[] {
     case 'presence': return ['not_empty', 'empty']
     default: return ['eq', 'neq', 'contains', 'not_contains', 'starts_with', 'ends_with', 'empty', 'not_empty']
   }
+}
+/** Operators for a condition on a list detail: numbers compare as numbers, texts as texts (several chosen: a list). */
+export function operatorsForDetail(numeric: boolean, several: boolean): LogicOperator[] {
+  if (numeric) return ['eq', 'neq', 'gt', 'gte', 'lt', 'lte', 'between', 'not_between', 'empty', 'not_empty']
+  if (several) return ['contains', 'not_contains', 'empty', 'not_empty']
+  return ['eq', 'neq', 'contains', 'not_contains', 'starts_with', 'ends_with', 'empty', 'not_empty']
 }
 export const needsValue = (op: LogicOperator) => !['empty', 'not_empty', 'true', 'false'].includes(op)
 /** Operators whose value is a list of options. */
@@ -158,11 +168,25 @@ function test(condition: LogicCondition, answer: unknown): boolean {
   return false
 }
 
-/** Does the rule's condition hold? `answers` are keyed by field key; conditions use field ids. */
-export function ruleMatches(rule: LogicRule, answers: Record<string, unknown>, keyOf: (id: string) => string | undefined) {
+/**
+ * Does the rule's condition hold? `answers` are keyed by field key; conditions use field ids. `fieldOf`
+ * (by id) lets conditions on a list detail find the chosen option's detail.
+ */
+export function ruleMatches(
+  rule: LogicRule,
+  answers: Record<string, unknown>,
+  keyOf: (id: string) => string | undefined,
+  fieldOf?: (id: string) => FormField | undefined,
+  picked?: PickedOptions,
+) {
   const check = (c: LogicCondition) => {
     const key = keyOf(c.field)
-    return key !== undefined && test(c, answers[key])
+    if (key === undefined) return false
+    if (c.detail) {
+      const field = fieldOf?.(c.field)
+      return !!field && test(c, detailAnswer(field, answers[key], c.detail, picked))
+    }
+    return test(c, answers[key])
   }
   if (rule.when.any?.length) return rule.when.any.some(check)
   if (rule.when.all?.length) return rule.when.all.every(check)
@@ -200,7 +224,7 @@ export function evaluateLogic(schema: FormSchemaV1, answers: Record<string, unkn
   }
 
   for (const rule of rules) {
-    const match = ruleMatches(rule, answers, keyOf)
+    const match = ruleMatches(rule, answers, keyOf, id => fields.get(id)?.field, picked)
     for (const effect of rule.then) {
       const target = effect.target ?? ''
       switch (effect.action) {

@@ -43,8 +43,11 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 2. ✅ **F25 Help centre** (brought forward by the owner, 2026-10-10, while the payment processor accounts are set up; its content is posted from the platform admin; waiting for review)
 3. ⏸ **F24 Payments & subscriptions** (paused 2026-10-10 for the owner's Payoneer account; subscriptions, plan limits and payment safety done; left: Payoneer, form payments, then the Formalie website project files; form payments and plans together; processor: Payoneer, owner 2026-10-10; plan features to gate include the custom domain, own sending address / mail server and single sign-on)
 4. ✅ **F21 Dashboard** (built 2026-10-10 while F24 waits for Payoneer; Workspace, Forms, Data sources and API service views, filters, first steps; waiting for review)
-5. ⏸ **Switching to the real backend** (FastAPI, `formalieBackend`): the mock is replaced, API-CONTRACT is the spec
-6. **F23 Platform admin (super admin)**: a **separate project** with its own front end, backend and database that also reaches Formalie's database (owner, 2026-10-10). Its full plan lives in its own two projects, formaliePlatformFront (Nuxt) and formaliePlatformBack (FastAPI), not in this project.
+5. 🟡 **Leftovers L1 to L7** (owner 2026-10-10, "deal with all"; the items still open in earlier phases): **L1** list details in formulas and logic (F15) · **L2** more fonts (F8) · **L3** light and dark colours per mode and a workspace default mode (F14) · **L4** access overview per form (F22) · **L5** custom CSS (F8) · **L6** allowed websites for browser callers of the API service (F13; HTTPS-only and CORS in the backend) · **L7** data residency (F14). Then the owner checks.
+6. ⬜ **Formalie website project files** (after the owner's check): Markdown files with instructions and full details for the website project, from this project.
+7. ⏸ **F24 Payoneer connection** when the account is ready (owner 2026-10-10: before switching to the backend).
+8. ⏸ **Switching to the real backend** (FastAPI, `formalieBackend`): the mock is replaced, API-CONTRACT is the spec
+9. **F23 Platform admin (super admin)**: a **separate project** with its own front end, backend and database that also reaches Formalie's database (owner, 2026-10-10). Its full plan lives in its own two projects, formaliePlatformFront (Nuxt) and formaliePlatformBack (FastAPI), not in this project.
 
 Formalie default data (below) is seeded by the backend and kept in mind in every phase.
 
@@ -387,8 +390,8 @@ Owner-tested 2026-10-03: all good. Open items below (fonts, custom CSS, workspac
 - ✅ Owner follow-ups 2026-10-03: "Folder" on New form explained in place (workspace folders, not template categories); typing masks for IP address (IPv4 dots, IPv6 groups) and MAC address (colon pairs in capitals; dash / dot notation kept); **field access** (Everyone · Departments · Roles · People, all or selected; restricted fields can't be required; lock icon on the field; answers later shown only to the same people, F11)
 - ✅ Sections and blocks (owner 2026-10-08): theme styles for sections (plain, underline, edge, band; accent or text colour; small capitals), dividers (line, colour, fade, dots, space; thin / thick), paragraphs (plain, soft, callout) and images (corners, shadow, border); a style per starting point and per template category; default = the earlier look
 - ✅ Form name and page name outside the form body (owner 2026-10-08): the form name under the organisation in the page frame (or the hero title), the page name with the step progress
-- ⬜ More fonts (self-hosted web fonts, needs a font package, ask first)
-- ⬜ Custom CSS (paid plans, sanitised), with billing
+- ⬜ More fonts (owner 2026-10-10: build, leftovers L2): self-hosted through `@nuxt/fonts` (already part of Nuxt UI, no new package), a wider set that covers every script of the 20 languages
+- ⬜ Custom CSS (owner 2026-10-10: build, leftovers L5): paid plans, sanitised on the server, fenced to the form, audited
 
 ---
 
@@ -707,7 +710,7 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 
 - ✅ Every change to services, endpoints, tokens and rules is audited (`api.*`); tokens shown again only after the password (owner 2026-10-06, replaces "never shown again")
 - ✅ Request size limits (1 MB), no secrets in logs (tokens masked), bodies only when switched on
-- ⬜ Backend: TLS only; CORS for apps that call straight from a web browser (not in the mock; server apps, mobile apps and Postman are not affected)
+- ⬜ Backend: TLS only; CORS for apps that call straight from a web browser (not in the mock; server apps, mobile apps and Postman are not affected). Owner 2026-10-10, leftovers L6: the allowed websites per API service are set in the portal now; HTTPS-only and the CORS answer are switched on in the backend
 - ➖ Permissions per role: in F22 (admins only until then)
 
 ### 9. Integrations (moved here from F15, owner 2026-10-03)
@@ -766,7 +769,7 @@ Organisations run on different brand colours, so each workspace can change the l
 - ✅ **Header (navbar):** show / hide breadcrumbs and the search field (search stays on Ctrl / ⌘ + K)
 - ✅ **Footer:** show / hide
 - ✅ **Main body:** spacing (compact / comfortable), content width (full / centred), font family and text size from a safe set; presets, live preview on the real portal and Reset to Formalie
-- ⬜ **Light and dark:** separate colours per mode and a workspace default mode (later; today one look serves both modes and each person switches light / dark, rule 9)
+- ⬜ **Light and dark** (owner 2026-10-10: build, leftovers L3): separate colours per mode and a workspace default mode; each person can still switch (rule 9)
 - ✅ Applied app-wide through Nuxt UI theme tokens (`app.config` / CSS variables at runtime), never per-page styling; the first-load screen (Formalie mark, bar and dots) uses the saved look too (2026-10-07)
 - ✅ Files and messages follow it too: the PDF export report (Appearance colour, 2026-10-07), email templates and the sign-in page (Branding)
 - ✅ Who may change it: workspace owners / admins (Roles & access, F22, refines this)
@@ -826,7 +829,7 @@ Every workspace sets up its own reference data here; the builder, field access a
 - ✅ Data retention per form / default (auto-delete responses after N days), with a preview of what a limit removes and a confirmation
 - ✅ Consent line above Submit and the organisation's privacy notice link in every public form's footer
 - ✅ Data requests: find a person's responses by email, export them (JSON) or delete them all (typed confirmation, audited)
-- ⬜ Data residency / storage region (if offered by the plan): with the plans in F23
+- ⬜ Data residency / storage region (owner 2026-10-10: build, leftovers L7): the region a workspace's data stays in, chosen when it is created (Enterprise for regions beyond the default), shown in Settings → Privacy; the regions themselves are infrastructure, set up with the real backend
 
 ### Themes & form defaults
 
@@ -856,7 +859,7 @@ Full plan: [docs/OPTION-LISTS.md](docs/OPTION-LISTS.md) (owner request 2026-10-0
   - ✅ API service: levels say what they depend on (`depends_on`, option `parent`), examples follow the levels, POST skips closed levels, PUT checks and clears levels
 - ✅ **F15b Large lists + search as you type (M3):** dropdowns and multi-selects search as you type above 50 options (or switched on / off per field); on the public form page lists above 300 options stay on the server and come 50 at a time as people type (`GET /public/forms/{key}/options`, accents and case ignored, starting matches first); long lists drawn as they scroll; the builder shows a summary of a long list's options; a form field may hold up to 20,000 options like a list
 - ✅ **F15d Details + auto-fill (M4):** lists get up to 10 detail columns (Details card; per option a Details button; import maps columns to details); fields from a list copy the details; field settings "Fill other fields" maps each detail to a question, locked by default (people can't change it); the logic engine fills in the browser and on the server alike, so a locked value can't be faked; an unlocked field is filled only while empty or still holding a filled-in value
-  - ⬜ Details in formulas and logic conditions (later)
+  - ✅ Details in formulas and logic conditions (owner 2026-10-10, leftovers L1): `{product.price}` in formulas (several chosen: their sum; a missing detail waits like an unanswered question), "Product · Price" in a rule's question picker with number or text comparisons, detail chips and a guide line in Calculations, checks for a detail the list no longer has; same on the form page, in the preview and on the server; sample list "Sample products" (price, category) in the demo workspaces; `shared/utils/forms/details.ts`, tests in test/forms/details.test.ts
 - ➖ **F15e Lists from live sources** (another form, a database query, a JSON or CSV link): dropped (owner 2026-10-08: lists are kept up to date by importing). Not to be confused with the owner's "dynamic lists" = lists with levels (M2), which are built
 - ✅ **Large dynamic lists (M5, owner 2026-10-08: "do 1 and 2"):** a list stays within 20,000 options by default; a list switched to "Large" holds up to 200,000 and stays on the server: a form loads each level only for the choice above (pick a country, then only its states load), searched as people type
   - ✅ The switch explains first what "Large" means (options load from the server level by level, a short wait as people choose, forms need to be online, the builder shows a summary instead of every option, copies in forms update on Save without "Update forms"), asks before turning it on, and an import above 20,000 offers it
@@ -996,7 +999,7 @@ Owner, 2026-10-08: "profiling and users are the same thing". One phase builds th
 
 - ✅ Roles and permissions editor (permission catalogue, custom roles; R1, redesigned in R2)
 - ✅ Role assignment per user (People: edit, approve, bulk); form-level access (sharing, folder access, the five reaches)
-- ⬜ Later: an access overview per form ("who can see this form"); today the role editor shows who holds each role and what it reaches, and folder access shows who sees each folder
+- ⬜ An access overview per form ("who can see this form"; owner 2026-10-10: build, leftovers L4); today the role editor shows who holds each role and what it reaches, and folder access shows who sees each folder
 - ✅ Permission to view and export the audit trail (`audit.view`, `audit.export`)
 - ✅ Data sources permissions (from F12, built in R2 M4): view the explorer · change rows and structure · run read queries · run changing queries · manage connections · send form data to a database; until then admins only
 - ✅ **Granular permissions with scope (owner 2026-10-10, "total control, beyond the basic"; maker-checker matters in an enterprise system).** Every action is its own permission, with a scope: **None · Own · All** (Own = what the person created; Own also restricts: a role may forbid editing even one's own forms); for forms and responses also **Shared** (only forms others shared with them) and **Own & shared** (owner 2026-10-10). The role is the ceiling everywhere: hidden or locked in every place the action appears (list menus, detail pages, overview, panels, shortcuts, bulk bars, command palette, empty-state buttons, the API)
@@ -1344,6 +1347,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-10 | Email support in Help & support opens a form inside the app (like Contact us on the plans), seen by the Formalie team in the platform admin | F25 | ✅ done |
 | 2026-10-10 | Use our own data collection forms (not modals) for Contact support and the Enterprise enquiry, shown in an in-app browser like the one on public forms, for the platform admin | F24, F25 | ✅ done |
 | 2026-10-10 | Payoneer account not active yet: update PROGRESS, move to the next phase and come back to F24 later | Order, F24, F21 | ✅ F24 paused, F21 started |
+| 2026-10-10 | Build every item still open in earlier phases ("deal with all"): list details in formulas and logic, more fonts, light / dark colours per mode, access overview per form, custom CSS, allowed websites for the API service, data residency; then the owner checks, then the website project files, then Payoneer, then the backend | F8, F13, F14, F15, F22 | 🟡 Leftovers L1 to L7 |
 
 ---
 

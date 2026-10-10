@@ -2672,7 +2672,8 @@
       "requireLocked": "非表示・読み取り専用・無効の項目は必須にできません",
       "self": "確認対象の質問自体を非表示またはクリアしています",
       "backwards": "移動先は後ろのページのみです",
-      "conflict": "同じ質問を非表示かつ必須にしています"
+      "conflict": "同じ質問を非表示かつ必須にしています",
+      "detail": "リストにこの詳細はもうありません。"
     },
     "op": {
       "eq": "が次と等しい",
@@ -2777,7 +2778,10 @@
       "guideMath": "数値、+ − * / とかっこを使えます: {'{'}quantity{'}'} * {'{'}price{'}'}。",
       "guideOptions": "選択式の質問は、選んだ選択肢に付けた数値として扱われます（選択肢 → 選択肢に数値を付ける）。複数選択すると合計されます。",
       "guideIf": "条件で値を選ぶ: if({'{'}plan{'}'} = \"Premium\", 50, 10)。比較には = != > >= < <= を使います。",
-      "guideFunctions": "ほかに: and(), or(), not(), min(), max(), sum(), round(x, 2), floor(), ceil(), abs()。"
+      "guideFunctions": "ほかに: and(), or(), not(), min(), max(), sum(), round(x, 2), floor(), ceil(), abs()。",
+      "unknownDetail": "{'{'}{key}{'}'} は、その質問のリストの詳細ではありません。",
+      "details": "詳細",
+      "guideDetails": "詳細を持つリストの質問では、それを使えます。{'{'}product.price{'}'} は選んだ選択肢の価格で、複数選ぶと価格が合計されます。"
     },
     "yes": "はい",
     "no": "いいえ",

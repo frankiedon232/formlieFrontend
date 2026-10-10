@@ -2672,7 +2672,8 @@
       "requireLocked": "Ein ausgeblendetes, schreibgeschütztes oder deaktiviertes Feld kann kein Pflichtfeld sein",
       "self": "Blendet die geprüfte Frage aus oder leert sie",
       "backwards": "Sprünge sind nur nach vorn möglich",
-      "conflict": "Blendet dieselbe Frage aus und macht sie zum Pflichtfeld"
+      "conflict": "Blendet dieselbe Frage aus und macht sie zum Pflichtfeld",
+      "detail": "Die Liste hat dieses Detail nicht mehr."
     },
     "op": {
       "eq": "ist",
@@ -2777,7 +2778,10 @@
       "guideMath": "Verwenden Sie Zahlen, + − * / und Klammern: {'{'}quantity{'}'} * {'{'}price{'}'}.",
       "guideOptions": "Auswahlfragen zählen als die Zahl der gewählten Option (Optionen → Optionen nummerieren); mehrere gewählte werden addiert.",
       "guideIf": "Wert nach Bedingung wählen: if({'{'}plan{'}'} = \"Premium\", 50, 10). Vergleichen mit = != > >= < <=.",
-      "guideFunctions": "Außerdem: and(), or(), not(), min(), max(), sum(), round(x, 2), floor(), ceil(), abs()."
+      "guideFunctions": "Außerdem: and(), or(), not(), min(), max(), sum(), round(x, 2), floor(), ceil(), abs().",
+      "unknownDetail": "{'{'}{key}{'}'} ist kein Detail der Liste dieser Frage.",
+      "details": "Details",
+      "guideDetails": "Eine Frage aus einer Liste mit Details kann diese verwenden: {'{'}product.price{'}'} ist der Preis der gewählten Option; bei mehreren gewählten werden ihre Preise addiert."
     },
     "yes": "Ja",
     "no": "Nein",

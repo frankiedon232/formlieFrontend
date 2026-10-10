@@ -9,15 +9,19 @@
  *   avg({q1}, {q2}, {q3})                           sum / min / max / avg / count skip unanswered fields
  *   days({check_in}, {check_out})                   whole days between two dates (or date-times)
  *   if({score} >= 15, "High", "Low")                a calculation may also give a text (calculateResult)
+ *   {product.price} * {quantity}                    a detail of the chosen list option (several: their sum;
+ *                                                   leftovers L1, see ./details.ts)
  *
  * Returns null when the formula is invalid or needs an answer that is still missing.
  */
 import type { FormField } from './build'
+import { chosenDetails } from './details'
+import type { PickedOptions } from './fills'
 
 type Node =
   | { k: 'num'; v: number }
   | { k: 'str'; v: string }
-  | { k: 'ref'; key: string }
+  | { k: 'ref'; key: string; detail?: string }
   | { k: 'neg'; a: Node }
   | { k: 'bin'; op: string; a: Node; b: Node }
   | { k: 'call'; name: string; args: Node[] }
@@ -26,7 +30,7 @@ export const FORMULA_FUNCTIONS = ['if', 'and', 'or', 'not', 'min', 'max', 'sum',
 const COMPARE = new Set(['=', '==', '!=', '<>', '>', '>=', '<', '<='])
 
 function tokenize(formula: string): string[] {
-  return formula.match(/\{[a-z][a-z0-9_]*\}|\d+(?:\.\d+)?|"[^"]*"|'[^']*'|[a-z_]+|>=|<=|!=|==|<>|[-+*/(),=<>]|\S/gi) ?? []
+  return formula.match(/\{[a-z][a-z0-9_]*(?:\.[a-z0-9_]+)?\}|\d+(?:\.\d+)?|"[^"]*"|'[^']*'|[a-z_]+|>=|<=|!=|==|<>|[-+*/(),=<>]|\S/gi) ?? []
 }
 
 /** Parses a formula into a tree; throws on any syntax error. */
@@ -50,7 +54,10 @@ export function parseFormula(formula: string): Node {
     if (token === '-') return { k: 'neg', a: primary() }
     if (/^\d/.test(token)) return { k: 'num', v: Number(token) }
     if (/^["']/.test(token)) return { k: 'str', v: token.slice(1, -1) }
-    if (token.startsWith('{')) return { k: 'ref', key: token.slice(1, -1) }
+    if (token.startsWith('{')) {
+      const [key, detail] = token.slice(1, -1).split('.')
+      return detail ? { k: 'ref', key: key!, detail } : { k: 'ref', key: key! }
+    }
     const name = token.toLowerCase()
     if ((FORMULA_FUNCTIONS as readonly string[]).includes(name) && peek() === '(') {
       take()
@@ -107,10 +114,16 @@ interface Value {
 const num = (n: number): Value => ({ n, s: [String(n)] })
 class Missing extends Error {}
 
-function resolve(key: string, answers: Record<string, unknown>, fields?: Map<string, FormField>): Value {
+function resolve(key: string, answers: Record<string, unknown>, fields?: Map<string, FormField>, detail?: string, picked?: PickedOptions): Value {
   const raw = answers[key]
   if (raw == null || raw === '' || (Array.isArray(raw) && !raw.length)) throw new Missing(key)
   const field = fields?.get(key)
+  if (detail) {
+    const details = field ? chosenDetails(field, raw, detail, picked) : null
+    if (!details?.length) throw new Missing(key)
+    const numbers = details.map(attr => (typeof attr === 'number' ? attr : Number(String(attr).replace(',', '.'))))
+    return { n: numbers.every(Number.isFinite) ? numbers.reduce((sum, n) => sum + n, 0) : null, s: details.map(String) }
+  }
   const options = field?.options ?? []
   const scored = options.some(o => typeof o.score === 'number')
   if (Array.isArray(raw)) {
@@ -127,8 +140,8 @@ function resolve(key: string, answers: Record<string, unknown>, fields?: Map<str
   return { n: Number.isNaN(n) ? null : n, s: [String(raw)] }
 }
 
-function evaluate(node: Node, answers: Record<string, unknown>, fields?: Map<string, FormField>): Value {
-  const ev = (n: Node) => evaluate(n, answers, fields)
+function evaluate(node: Node, answers: Record<string, unknown>, fields?: Map<string, FormField>, picked?: PickedOptions): Value {
+  const ev = (n: Node) => evaluate(n, answers, fields, picked)
   const number = (n: Node) => {
     const value = ev(n).n
     if (value === null) throw new Error('not a number')
@@ -153,7 +166,7 @@ function evaluate(node: Node, answers: Record<string, unknown>, fields?: Map<str
   switch (node.k) {
     case 'num': return num(node.v)
     case 'str': return { n: Number.isNaN(Number(node.v)) || node.v === '' ? null : Number(node.v), s: [node.v], literal: true }
-    case 'ref': return resolve(node.key, answers, fields)
+    case 'ref': return resolve(node.key, answers, fields, node.detail, picked)
     case 'neg': return num(-number(node.a))
     case 'bin': {
       if (COMPARE.has(node.op)) {
@@ -219,8 +232,8 @@ function evaluate(node: Node, answers: Record<string, unknown>, fields?: Map<str
  * Evaluates a formula against the answers (by field key). `fields` (by key) lets choice fields use
  * the numbers given to their options.
  */
-export function calculate(formula: string, answers: Record<string, unknown>, fields?: Map<string, FormField>): number | null {
-  const result = calculateResult(formula, answers, fields)
+export function calculate(formula: string, answers: Record<string, unknown>, fields?: Map<string, FormField>, picked?: PickedOptions): number | null {
+  const result = calculateResult(formula, answers, fields, picked)
   return typeof result === 'number' ? result : null
 }
 
@@ -229,9 +242,10 @@ export function calculateResult(
   formula: string,
   answers: Record<string, unknown>,
   fields?: Map<string, FormField>,
+  picked?: PickedOptions,
 ): number | string | null {
   try {
-    const value = evaluate(parseFormula(formula), answers, fields)
+    const value = evaluate(parseFormula(formula), answers, fields, picked)
     if (value.n === null) return value.literal && value.s[0] ? value.s[0] : null
     if (!Number.isFinite(value.n)) return null
     return Math.round(value.n * 1e6) / 1e6
@@ -241,4 +255,7 @@ export function calculateResult(
 }
 
 /** Field keys a formula refers to (to check they exist). */
-export const formulaKeys = (formula: string) => [...formula.matchAll(/\{([a-z][a-z0-9_]*)\}/g)].map(m => m[1]!)
+export const formulaKeys = (formula: string) => [...formula.matchAll(/\{([a-z][a-z0-9_]*)(?:\.[a-z0-9_]+)?\}/g)].map(m => m[1]!)
+
+/** Details a formula reads, as { key, detail } (to check the field's options carry them). */
+export const formulaDetails = (formula: string) => [...formula.matchAll(/\{([a-z][a-z0-9_]*)\.([a-z0-9_]+)\}/g)].map(m => ({ key: m[1]!, detail: m[2]! }))

@@ -2672,7 +2672,8 @@
       "requireLocked": "Não é possível exigir um campo oculto, somente leitura ou desativado",
       "self": "Oculta ou limpa a pergunta que verifica",
       "backwards": "Saltos só podem ir para a frente",
-      "conflict": "Oculta e exige a mesma pergunta"
+      "conflict": "Oculta e exige a mesma pergunta",
+      "detail": "A lista não tem mais este detalhe."
     },
     "op": {
       "eq": "é",
@@ -2777,7 +2778,10 @@
       "guideMath": "Use números, + − * / e parênteses: {'{'}quantity{'}'} * {'{'}price{'}'}.",
       "guideOptions": "Perguntas de escolha contam como o número dado à opção escolhida (Opções → Numerar as opções); várias escolhas são somadas.",
       "guideIf": "Escolha um valor por condição: if({'{'}plan{'}'} = \"Premium\", 50, 10). Compare com = != > >= < <=.",
-      "guideFunctions": "Também: and(), or(), not(), min(), max(), sum(), round(x, 2), floor(), ceil(), abs()."
+      "guideFunctions": "Também: and(), or(), not(), min(), max(), sum(), round(x, 2), floor(), ceil(), abs().",
+      "unknownDetail": "{'{'}{key}{'}'} não é um detalhe da lista dessa pergunta.",
+      "details": "Detalhes",
+      "guideDetails": "Uma pergunta de uma lista com detalhes pode usá-los: {'{'}product.price{'}'} é o preço da opção escolhida; com várias escolhidas, os preços são somados."
     },
     "yes": "Sim",
     "no": "Não",

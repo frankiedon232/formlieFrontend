@@ -2672,7 +2672,8 @@
       "requireLocked": "Haiwezekani kufanya sehemu iliyofichwa, ya kusoma tu au iliyozimwa kuwa lazima",
       "self": "Inaficha au kufuta swali inaloliangalia",
       "backwards": "Kuruka kunaweza kwenda mbele tu",
-      "conflict": "Inaficha na kulazimisha swali lilelile"
+      "conflict": "Inaficha na kulazimisha swali lilelile",
+      "detail": "Orodha haina tena maelezo haya."
     },
     "op": {
       "eq": "ni",
@@ -2777,7 +2778,10 @@
       "guideMath": "Tumia namba, + − * / na mabano: {'{'}quantity{'}'} * {'{'}price{'}'}.",
       "guideOptions": "Maswali ya kuchagua huhesabiwa kama namba iliyopewa chaguo lililochaguliwa (Chaguo → Pa chaguo namba); yakichaguliwa kadhaa hujumlishwa.",
       "guideIf": "Chagua thamani kwa sharti: if({'{'}plan{'}'} = \"Premium\", 50, 10). Linganisha kwa = != > >= < <=.",
-      "guideFunctions": "Pia: and(), or(), not(), min(), max(), sum(), round(x, 2), floor(), ceil(), abs()."
+      "guideFunctions": "Pia: and(), or(), not(), min(), max(), sum(), round(x, 2), floor(), ceil(), abs().",
+      "unknownDetail": "{'{'}{key}{'}'} si maelezo ya orodha ya swali hilo.",
+      "details": "Maelezo",
+      "guideDetails": "Swali kutoka kwenye orodha yenye maelezo linaweza kuyatumia: {'{'}product.price{'}'} ni bei ya chaguo lililochaguliwa; yakichaguliwa kadhaa, bei zake hujumlishwa."
     },
     "yes": "Ndiyo",
     "no": "Hapana",
