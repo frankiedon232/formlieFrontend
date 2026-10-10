@@ -9505,6 +9505,54 @@
       "plan": "套餐",
       "planForms": "{limit} 个表单中的 {n} 个",
       "planUnlimited": "{n} 个表单，无限制"
+    },
+    "views": {
+      "label": "仪表板视图",
+      "workspace": "工作区",
+      "forms": "表单",
+      "data": "数据源",
+      "api": "API 服务"
+    },
+    "formsView": {
+      "published": "已发布的表单",
+      "publishedHint": "正在接收回复",
+      "created": "新表单",
+      "perForm": "每个活跃表单",
+      "silent": "无回复",
+      "silentHint": "已发布，此期间",
+      "unpublished": "未发布的修改",
+      "unpublishedHint": "修改尚未生效",
+      "byForm": "按表单查看回复",
+      "byStatus": "按状态查看表单",
+      "live": "现有 {n} 个在线",
+      "channels": "回复来自哪里",
+      "channel": {
+        "link": "表单链接",
+        "embed": "嵌入网站",
+        "api": "API 服务"
+      },
+      "newForms": "新表单",
+      "noneCreated": "此期间没有新表单。",
+      "formsCount": "{n} 个表单 | {n} 个表单",
+      "folders": "文件夹",
+      "noFolder": "无文件夹",
+      "owners": "所有者",
+      "work": "需要处理的表单",
+      "allGood": "所有表单状态良好。",
+      "workKind": {
+        "nearly_full": "快满了：允许 {n} 条回复",
+        "closing": "将于 {date} 关闭",
+        "no_responses": "已发布，但此期间没有回复",
+        "unpublished_changes": "更改尚未发布",
+        "stale_draft": "草稿自 {date} 起未改动"
+      },
+      "workAction": {
+        "nearly_full": "提高限额",
+        "closing": "检查日期",
+        "no_responses": "分享",
+        "unpublished_changes": "审核并发布",
+        "stale_draft": "完成它"
+      }
     }
   }
 }

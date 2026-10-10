@@ -1,20 +1,17 @@
 <!--
-  Dashboard (F21 M1, design reference 2: docs/design/Screenshot 2026-10-02 092034.png): the workspace home. Header:
+  Dashboard (F21, design reference 2: docs/design/Screenshot 2026-10-02 092034.png): the workspace home. Header:
   the period (last 30 days by default, kept in the address) and Daily / Weekly / Monthly / Yearly, with New form.
-  Five KPI cards (responses, completion, active forms, to review, needs attention) with their change; the activity
-  overview beside the busiest forms and what is coming up; then the newest responses beside what needs attention
-  and each area at a glance. Everything follows the person's role and folder access.
+  Below, a view switch: Workspace (every area at a glance, M1) · Forms (running the forms, M2) · Data sources and
+  API service (M3, M4), each shown to people whose role reaches it; the choice is remembered. Everything follows
+  the person's role and folder access.
 -->
 <script setup lang="ts">
-import { DASHBOARD_GROUPS, type DashboardGroup, type WorkspaceDashboard } from '#shared/types/dashboard'
+import { DASHBOARD_GROUPS, type DashboardGroup, type DashboardView } from '#shared/types/dashboard'
 
 definePageMeta({ breadcrumb: 'nav.dashboard' })
 const { t } = useI18n()
-const api = useApi()
 const route = useRoute()
 const router = useRouter()
-const { handle } = useErrorHandler()
-const { number } = useFormat()
 const { can } = useCan()
 useHead({ title: () => t('nav.dashboard') })
 
@@ -25,64 +22,61 @@ const to = computed(() => (typeof route.query.to === 'string' && route.query.to 
 const group = computed<DashboardGroup | undefined>(() => (DASHBOARD_GROUPS.includes(route.query.group as DashboardGroup) ? (route.query.group as DashboardGroup) : undefined))
 const setPeriod = (start: string, end: string) => void router.replace({ query: { ...route.query, from: start || undefined, to: end || undefined } })
 const groups = computed(() => DASHBOARD_GROUPS.map(value => ({ value, label: t(`dashboard.group.${value}`) })))
+/** The group the server chose when none was asked for. */
+const shownGroup = ref<DashboardGroup>('day')
 const chosenGroup = computed({
-  get: () => data.value?.group ?? group.value ?? 'day',
+  get: () => group.value ?? shownGroup.value,
   set: value => void router.replace({ query: { ...route.query, group: value } }),
 })
-
-const data = ref<WorkspaceDashboard | null>(null)
-const failed = ref(false)
-const loadedAt = ref<number | null>(null)
-const recent = useTemplateRef<{ reload: () => Promise<void> }>('recent')
-async function load() {
-  failed.value = false
-  try {
-    data.value = (await api.get<WorkspaceDashboard>('/dashboard', { from: from.value, to: to.value, group: group.value })).data
-    loadedAt.value = Date.now()
-  } catch (error) {
-    failed.value = true
-    handle(error)
-  }
+const loaded = (value: DashboardGroup) => {
+  shownGroup.value = value
+  syncedAt.value = Date.now()
 }
-watch([from, to, group], load, { immediate: true })
-const refresh = () => Promise.all([load(), recent.value?.reload()])
+const syncedAt = ref<number | null>(null)
 
-const change = (kpi: { value: number; previous: number | null } | undefined) => (kpi && kpi.previous ? Math.round(((kpi.value - kpi.previous) / kpi.previous) * 100) : null)
-const kpis = computed(() => {
-  const k = data.value?.kpis
-  return [
-    { key: 'responses', icon: 'i-lucide-inbox', label: t('dashboard.kpi.responses'), value: k ? number(k.responses.value) : null, change: change(k?.responses), to: '/responses' },
-    { key: 'completion', icon: 'i-lucide-percent', label: t('dashboard.kpi.completion'), value: k ? `${number(k.completion_rate.value, { maximumFractionDigits: 1 })}%` : null, change: k && k.completion_rate.previous !== null ? Math.round((k.completion_rate.value - k.completion_rate.previous) * 10) / 10 : null, to: '/analytics' },
-    { key: 'active', icon: 'i-lucide-file-check-2', label: t('dashboard.kpi.active'), value: k ? number(k.active_forms.value) : null, change: change(k?.active_forms), to: '/forms?status=published' },
-    { key: 'review', icon: 'i-lucide-list-checks', label: t('dashboard.kpi.review'), value: k ? number(k.to_review.value) : null, change: null, to: '/responses?review=new', hint: t('dashboard.kpi.reviewHint') },
-    { key: 'attention', icon: 'i-lucide-triangle-alert', label: t('dashboard.kpi.attention'), value: k ? number(k.attention.value) : null, change: null, to: '#attention', hint: k?.attention.value ? t('dashboard.kpi.attentionHint') : t('dashboard.kpi.allGood') },
-  ]
+// Views: Workspace for everyone, the others for people whose role reaches the area
+const VIEW_KEY = 'formalie:dashboard-view'
+const views = computed(() => [{ value: 'workspace' as const, label: t('dashboard.views.workspace'), icon: 'i-lucide-layout-dashboard' }, ...(can('forms.view') ? [{ value: 'forms' as const, label: t('dashboard.views.forms'), icon: 'i-lucide-file-text' }] : [])])
+const stored = (() => {
+  try {
+    return localStorage.getItem(VIEW_KEY) as DashboardView | null
+  } catch {
+    return null
+  }
+})()
+const view = computed<DashboardView>({
+  get: () => {
+    const wanted = (typeof route.query.view === 'string' ? route.query.view : stored) as DashboardView | null
+    return views.value.some(item => item.value === wanted) ? wanted! : 'workspace'
+  },
+  set: value => {
+    try {
+      localStorage.setItem(VIEW_KEY, value)
+    } catch {
+      // Remembering is a convenience
+    }
+    void router.replace({ query: { ...route.query, view: value === 'workspace' ? undefined : value } })
+  },
 })
+const current = useTemplateRef<{ refresh: () => Promise<unknown> }>('current')
 </script>
 
 <template>
-  <AppPanel id="dashboard" :title="t('nav.dashboard')" :subtitle="loadedAt ? t('dashboard.synced') : t('dashboard.subtitle')" subtitle-icon="i-lucide-refresh-cw">
+  <AppPanel id="dashboard" :title="t('nav.dashboard')" :subtitle="syncedAt ? t('dashboard.synced') : t('dashboard.subtitle')" subtitle-icon="i-lucide-refresh-cw">
     <template #actions>
-      <UButton icon="i-lucide-refresh-cw" color="neutral" variant="ghost" square :aria-label="t('dashboard.refresh')" class="max-xl:hidden" @click="refresh" />
+      <UButton icon="i-lucide-refresh-cw" color="neutral" variant="ghost" square :aria-label="t('dashboard.refresh')" class="max-xl:hidden" @click="current?.refresh()" />
       <DataDateRangePicker :from="from" :to="to" @change="setPeriod" />
       <UTabs v-model="chosenGroup" :items="groups" :content="false" color="neutral" size="xs" :ui="SEGMENTED_UI" class="max-2xl:hidden" :aria-label="t('dashboard.groupLabel')" />
       <UButton v-if="can('forms.create')" :label="t('dashboard.newForm')" icon="i-lucide-plus" color="neutral" to="/forms/new" />
     </template>
 
-    <AppEmpty v-if="failed && !data" icon="i-lucide-cloud-off" :title="t('dashboard.failed')" :actions="[{ label: t('common.retry'), icon: 'i-lucide-refresh-cw', color: 'neutral', variant: 'outline', onClick: load }]" />
-    <div v-else class="flex flex-col gap-4" :class="data && failed ? 'opacity-60' : ''">
-      <div class="flex shrink-0 snap-x gap-3 overflow-x-auto [scrollbar-width:none] sm:grid sm:grid-cols-3 sm:overflow-visible xl:grid-cols-5">
-        <ChartsKpi v-for="kpi in kpis" :key="kpi.key" class="min-w-[13.5rem] snap-start sm:min-w-0" :label="kpi.label" :icon="kpi.icon" :value="kpi.value" :change="kpi.change" :hint="kpi.hint" :to="kpi.to" :lower-is-better="kpi.key === 'attention'" />
+    <div class="flex flex-col gap-4">
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <UTabs v-if="views.length > 1" v-model="view" :items="views" :content="false" color="neutral" size="sm" :ui="SEGMENTED_UI" :aria-label="t('dashboard.views.label')" />
+        <UTabs v-model="chosenGroup" :items="groups" :content="false" color="neutral" size="xs" :ui="SEGMENTED_UI" class="ms-auto 2xl:hidden" :aria-label="t('dashboard.groupLabel')" />
       </div>
-      <UTabs v-model="chosenGroup" :items="groups" :content="false" color="neutral" size="xs" :ui="SEGMENTED_UI" class="self-end 2xl:hidden" :aria-label="t('dashboard.groupLabel')" />
-      <div class="grid grid-cols-1 gap-4 lg:grid-cols-3">
-        <DashboardActivity :data="data" class="lg:col-span-2" />
-        <DashboardSide :data="data" />
-      </div>
-      <div class="grid grid-cols-1 gap-4 lg:grid-cols-3">
-        <DashboardRecent ref="recent" class="lg:col-span-2" />
-        <DashboardAttention :data="data" />
-      </div>
+      <DashboardForms v-if="view === 'forms'" ref="current" :from="from" :to="to" :group="group" @loaded="loaded" />
+      <DashboardWorkspace v-else ref="current" :from="from" :to="to" :group="group" @loaded="loaded" />
     </div>
   </AppPanel>
 </template>

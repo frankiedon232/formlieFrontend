@@ -9505,6 +9505,54 @@
       "plan": "Paket",
       "planForms": "{n} dari {limit} formulir",
       "planUnlimited": "{n} formulir, tanpa batas"
+    },
+    "views": {
+      "label": "Tampilan dasbor",
+      "workspace": "Ruang kerja",
+      "forms": "Formulir",
+      "data": "Sumber data",
+      "api": "Layanan API"
+    },
+    "formsView": {
+      "published": "Formulir yang dipublikasikan",
+      "publishedHint": "sedang menerima respons",
+      "created": "Formulir baru",
+      "perForm": "Per formulir aktif",
+      "silent": "Tanpa respons",
+      "silentHint": "dipublikasikan, pada periode ini",
+      "unpublished": "Edit belum terbit",
+      "unpublishedHint": "hasil edit belum tayang",
+      "byForm": "Respons menurut formulir",
+      "byStatus": "Formulir menurut status",
+      "live": "{n} tayang sekarang",
+      "channels": "Dari mana respons berasal",
+      "channel": {
+        "link": "Tautan formulir",
+        "embed": "Disematkan di situs web",
+        "api": "Layanan API"
+      },
+      "newForms": "Formulir baru",
+      "noneCreated": "Tidak ada formulir baru pada periode ini.",
+      "formsCount": "{n} formulir | {n} formulir",
+      "folders": "Folder",
+      "noFolder": "Tanpa folder",
+      "owners": "Pemilik",
+      "work": "Formulir yang perlu dikerjakan",
+      "allGood": "Semua formulir dalam kondisi baik.",
+      "workKind": {
+        "nearly_full": "Hampir penuh: {n} respons diizinkan",
+        "closing": "Ditutup pada {date}",
+        "no_responses": "Dipublikasikan, tetapi tidak ada respons pada periode ini",
+        "unpublished_changes": "Perubahan belum dipublikasikan",
+        "stale_draft": "Draf tidak disentuh sejak {date}"
+      },
+      "workAction": {
+        "nearly_full": "Naikkan batas",
+        "closing": "Periksa tanggal",
+        "no_responses": "Bagikan",
+        "unpublished_changes": "Tinjau dan publikasikan",
+        "stale_draft": "Selesaikan"
+      }
     }
   }
 }

@@ -27,9 +27,8 @@ const DAY = 86_400_000
 const iso = (time: number) => new Date(time).toISOString().slice(0, 10)
 const parseDay = (value: unknown) => (typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value) ? Date.parse(value) : NaN)
 
-export const workspaceDashboard = defineMockRoute(({ event, query }) => {
-  const { tenant, user } = requireAuth(event)
-  const can = permissionsOf(user, tenant)
+/** The period asked for (default the last 30 days), the one before it, and its buckets. */
+export function periodFrom(query: Record<string, unknown>) {
   const today = Date.parse(iso(Date.now()))
   let to = parseDay(query.to)
   let from = parseDay(query.from)
@@ -37,9 +36,13 @@ export const workspaceDashboard = defineMockRoute(({ event, query }) => {
   if (!Number.isFinite(from) || from > to) from = to - 29 * DAY
   const days = Math.round((to - from) / DAY) + 1
   const group: DashboardGroup = DASHBOARD_GROUPS.includes(query.group as DashboardGroup) ? (query.group as DashboardGroup) : groupFor(days)
-  const prevFrom = from - days * DAY
-  const end = to + DAY - 1
-  const buckets = bucketsOf(from, to, group)
+  return { from, to, days, group, prevFrom: from - days * DAY, end: to + DAY - 1, buckets: bucketsOf(from, to, group) }
+}
+
+export const workspaceDashboard = defineMockRoute(({ event, query }) => {
+  const { tenant, user } = requireAuth(event)
+  const can = permissionsOf(user, tenant)
+  const { from, to, group, prevFrom, end, buckets } = periodFrom(query)
   const index = new Map(buckets.map((start, i) => [start, i]))
   const series: DashboardPoint[] = buckets.map(start => ({ start, responses: 0, starts: 0, api_calls: 0 }))
 

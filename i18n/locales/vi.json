@@ -9505,6 +9505,54 @@
       "plan": "Gói",
       "planForms": "{n} trên {limit} biểu mẫu",
       "planUnlimited": "{n} biểu mẫu, không giới hạn"
+    },
+    "views": {
+      "label": "Chế độ xem bảng điều khiển",
+      "workspace": "Không gian làm việc",
+      "forms": "Biểu mẫu",
+      "data": "Nguồn dữ liệu",
+      "api": "Dịch vụ API"
+    },
+    "formsView": {
+      "published": "Biểu mẫu đã xuất bản",
+      "publishedHint": "đang nhận phản hồi",
+      "created": "Biểu mẫu mới",
+      "perForm": "Mỗi biểu mẫu hoạt động",
+      "silent": "Chưa có phản hồi",
+      "silentHint": "đã xuất bản, trong giai đoạn này",
+      "unpublished": "Chỉnh sửa chưa đăng",
+      "unpublishedHint": "chỉnh sửa chưa hiển thị",
+      "byForm": "Phản hồi theo biểu mẫu",
+      "byStatus": "Biểu mẫu theo trạng thái",
+      "live": "{n} đang hoạt động",
+      "channels": "Phản hồi đến từ đâu",
+      "channel": {
+        "link": "Liên kết biểu mẫu",
+        "embed": "Nhúng trên một trang web",
+        "api": "Dịch vụ API"
+      },
+      "newForms": "Biểu mẫu mới",
+      "noneCreated": "Không có biểu mẫu mới trong giai đoạn này.",
+      "formsCount": "{n} biểu mẫu | {n} biểu mẫu",
+      "folders": "Thư mục",
+      "noFolder": "Không có thư mục",
+      "owners": "Chủ sở hữu",
+      "work": "Biểu mẫu cần xử lý",
+      "allGood": "Mọi biểu mẫu đều ổn.",
+      "workKind": {
+        "nearly_full": "Gần đầy: cho phép {n} phản hồi",
+        "closing": "Đóng vào {date}",
+        "no_responses": "Đã xuất bản, nhưng chưa có phản hồi trong giai đoạn này",
+        "unpublished_changes": "Thay đổi chưa được xuất bản",
+        "stale_draft": "Bản nháp chưa chỉnh sửa từ {date}"
+      },
+      "workAction": {
+        "nearly_full": "Nâng giới hạn",
+        "closing": "Kiểm tra ngày",
+        "no_responses": "Chia sẻ",
+        "unpublished_changes": "Xem lại và xuất bản",
+        "stale_draft": "Hoàn thiện"
+      }
     }
   }
 }

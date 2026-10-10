@@ -9505,6 +9505,54 @@
       "plan": "Mpango",
       "planForms": "Fomu {n} kati ya {limit}",
       "planUnlimited": "Fomu {n}, bila kikomo"
+    },
+    "views": {
+      "label": "Mwonekano wa dashibodi",
+      "workspace": "Eneo la kazi",
+      "forms": "Fomu",
+      "data": "Vyanzo vya data",
+      "api": "Huduma ya API"
+    },
+    "formsView": {
+      "published": "Fomu zilizochapishwa",
+      "publishedHint": "zinapokea majibu sasa",
+      "created": "Fomu mpya",
+      "perForm": "Kwa fomu inayotumika",
+      "silent": "Hakuna majibu",
+      "silentHint": "zimechapishwa, kipindi hiki",
+      "unpublished": "Hariri za rasimu",
+      "unpublishedHint": "mabadiliko bado hayajaanza kutumika",
+      "byForm": "Majibu kwa fomu",
+      "byStatus": "Fomu kwa hali",
+      "live": "{n} zinatumika sasa",
+      "channels": "Majibu yanatoka wapi",
+      "channel": {
+        "link": "Kiungo cha fomu",
+        "embed": "Imepachikwa kwenye tovuti",
+        "api": "Huduma ya API"
+      },
+      "newForms": "Fomu mpya",
+      "noneCreated": "Hakuna fomu mpya katika kipindi hiki.",
+      "formsCount": "Fomu {n} | Fomu {n}",
+      "folders": "Folda",
+      "noFolder": "Hakuna folda",
+      "owners": "Wamiliki",
+      "work": "Fomu zinazohitaji kazi",
+      "allGood": "Kila fomu iko katika hali nzuri.",
+      "workKind": {
+        "nearly_full": "Karibu imejaa: majibu {n} yanaruhusiwa",
+        "closing": "Inafungwa tarehe {date}",
+        "no_responses": "Imechapishwa, lakini hakuna majibu katika kipindi hiki",
+        "unpublished_changes": "Mabadiliko bado hayajachapishwa",
+        "stale_draft": "Rasimu haijaguswa tangu {date}"
+      },
+      "workAction": {
+        "nearly_full": "Ongeza kikomo",
+        "closing": "Kagua tarehe",
+        "no_responses": "Ishiriki",
+        "unpublished_changes": "Kagua na uchapishe",
+        "stale_draft": "Ikamilishe"
+      }
     }
   }
 }

@@ -9505,6 +9505,54 @@
       "plan": "Tarif",
       "planForms": "{n} von {limit} Formularen",
       "planUnlimited": "{n} Formulare, ohne Limit"
+    },
+    "views": {
+      "label": "Dashboard-Ansicht",
+      "workspace": "Arbeitsbereich",
+      "forms": "Formulare",
+      "data": "Datenquellen",
+      "api": "API-Dienst"
+    },
+    "formsView": {
+      "published": "Veröffentlichte Formulare",
+      "publishedHint": "nehmen jetzt Antworten an",
+      "created": "Neue Formulare",
+      "perForm": "Pro aktivem Formular",
+      "silent": "Keine Antworten",
+      "silentHint": "veröffentlicht, in diesem Zeitraum",
+      "unpublished": "Offene Änderungen",
+      "unpublishedHint": "Änderungen noch nicht live",
+      "byForm": "Antworten nach Formular",
+      "byStatus": "Formulare nach Status",
+      "live": "{n} jetzt live",
+      "channels": "Woher die Antworten kommen",
+      "channel": {
+        "link": "Formularlink",
+        "embed": "Auf einer Website eingebettet",
+        "api": "API-Dienst"
+      },
+      "newForms": "Neue Formulare",
+      "noneCreated": "Keine neuen Formulare in diesem Zeitraum.",
+      "formsCount": "{n} Formular | {n} Formulare",
+      "folders": "Ordner",
+      "noFolder": "Kein Ordner",
+      "owners": "Besitzer",
+      "work": "Formulare, die Arbeit brauchen",
+      "allGood": "Jedes Formular ist in gutem Zustand.",
+      "workKind": {
+        "nearly_full": "Fast voll: {n} Antworten erlaubt",
+        "closing": "Schließt am {date}",
+        "no_responses": "Veröffentlicht, aber keine Antworten in diesem Zeitraum",
+        "unpublished_changes": "Änderungen noch nicht veröffentlicht",
+        "stale_draft": "Entwurf seit {date} nicht bearbeitet"
+      },
+      "workAction": {
+        "nearly_full": "Limit erhöhen",
+        "closing": "Daten prüfen",
+        "no_responses": "Teilen",
+        "unpublished_changes": "Prüfen und veröffentlichen",
+        "stale_draft": "Fertigstellen"
+      }
     }
   }
 }

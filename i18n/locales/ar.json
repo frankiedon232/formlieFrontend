@@ -9505,6 +9505,54 @@
       "plan": "الباقة",
       "planForms": "{n} من {limit} نماذج",
       "planUnlimited": "{n} نموذجاً، بلا حد"
+    },
+    "views": {
+      "label": "عرض لوحة التحكم",
+      "workspace": "مساحة العمل",
+      "forms": "النماذج",
+      "data": "مصادر البيانات",
+      "api": "خدمة API"
+    },
+    "formsView": {
+      "published": "النماذج المنشورة",
+      "publishedHint": "تستقبل الردود الآن",
+      "created": "نماذج جديدة",
+      "perForm": "لكل نموذج نشط",
+      "silent": "بلا ردود",
+      "silentHint": "منشورة، في هذه الفترة",
+      "unpublished": "تعديلات غير منشورة",
+      "unpublishedHint": "تعديلات لم تُنشر بعد",
+      "byForm": "الردود حسب النموذج",
+      "byStatus": "النماذج حسب الحالة",
+      "live": "{n} مباشر الآن",
+      "channels": "من أين تأتي الردود",
+      "channel": {
+        "link": "رابط النموذج",
+        "embed": "مضمّن في موقع ويب",
+        "api": "خدمة API"
+      },
+      "newForms": "نماذج جديدة",
+      "noneCreated": "لا توجد نماذج جديدة في هذه الفترة.",
+      "formsCount": "{n} نموذج | {n} نماذج",
+      "folders": "المجلدات",
+      "noFolder": "بلا مجلد",
+      "owners": "المالكون",
+      "work": "نماذج تحتاج إلى عمل",
+      "allGood": "كل نموذج في حالة جيدة.",
+      "workKind": {
+        "nearly_full": "شبه ممتلئ: المسموح {n} رداً",
+        "closing": "يُغلق في {date}",
+        "no_responses": "منشور، لكن لا ردود في هذه الفترة",
+        "unpublished_changes": "تغييرات لم تُنشر بعد",
+        "stale_draft": "مسودة لم تُعدَّل منذ {date}"
+      },
+      "workAction": {
+        "nearly_full": "رفع الحد",
+        "closing": "مراجعة التواريخ",
+        "no_responses": "مشاركته",
+        "unpublished_changes": "مراجعة ونشر",
+        "stale_draft": "إنهاؤه"
+      }
     }
   }
 }

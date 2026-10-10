@@ -9505,6 +9505,54 @@
       "plan": "Plan",
       "planForms": "{n} de {limit} formularios",
       "planUnlimited": "{n} formularios, sin límite"
+    },
+    "views": {
+      "label": "Vista del panel",
+      "workspace": "Espacio de trabajo",
+      "forms": "Formularios",
+      "data": "Fuentes de datos",
+      "api": "Servicio API"
+    },
+    "formsView": {
+      "published": "Formularios publicados",
+      "publishedHint": "recibiendo respuestas ahora",
+      "created": "Formularios nuevos",
+      "perForm": "Por formulario activo",
+      "silent": "Sin respuestas",
+      "silentHint": "publicados, en este periodo",
+      "unpublished": "Cambios pendientes",
+      "unpublishedHint": "ediciones aún no en vivo",
+      "byForm": "Respuestas por formulario",
+      "byStatus": "Formularios por estado",
+      "live": "{n} en vivo ahora",
+      "channels": "De dónde vienen las respuestas",
+      "channel": {
+        "link": "Enlace del formulario",
+        "embed": "Incrustado en un sitio web",
+        "api": "Servicio API"
+      },
+      "newForms": "Formularios nuevos",
+      "noneCreated": "No hay formularios nuevos en este periodo.",
+      "formsCount": "{n} formulario | {n} formularios",
+      "folders": "Carpetas",
+      "noFolder": "Sin carpeta",
+      "owners": "Propietarios",
+      "work": "Formularios que necesitan trabajo",
+      "allGood": "Todos los formularios están en buen estado.",
+      "workKind": {
+        "nearly_full": "Casi lleno: {n} respuestas permitidas",
+        "closing": "Se cierra el {date}",
+        "no_responses": "Publicado, pero sin respuestas en este periodo",
+        "unpublished_changes": "Cambios sin publicar todavía",
+        "stale_draft": "Borrador sin tocar desde el {date}"
+      },
+      "workAction": {
+        "nearly_full": "Subir el límite",
+        "closing": "Revisar fechas",
+        "no_responses": "Compartirlo",
+        "unpublished_changes": "Revisar y publicar",
+        "stale_draft": "Terminarlo"
+      }
     }
   }
 }

@@ -31,7 +31,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F18   | Analytics                                         | ✅     | 100% (waiting for review)                 |
 | F19   | AI assistant                                      | ✅     | 100% (waiting for review)                 |
 | F20   | Live collaboration (removed)                      | ➖     | -                                         |
-| F21   | Dashboard                                         | 🟡     | 30% (M1 Workspace view ✅)                 |
+| F21   | Dashboard                                         | 🟡     | 50% (M1 Workspace ✅, M2 Forms ✅)          |
 | F22   | Roles & access                                    | ✅     | 100% (owner-tested 2026-10-10)            |
 | F23   | Platform admin (super admin, Formalie team)       | ➖     | separate projects (formaliePlatformFront / Back) |
 | F24   | Payments & subscriptions                          | ⏸️     | 65% (subscriptions, payment safety ✅; paused for Payoneer, then form payments) |
@@ -967,7 +967,8 @@ Owner, 2026-10-08: "profiling and users are the same thing". One phase builds th
 
 ## F21, Dashboard 🟡 (started 2026-10-10 while F24 waits for Payoneer)
 
-- ⬜ Separate dashboards for **Forms**, **Data sources** and **API service** (owner, 2026-10-02), plus the workspace overview
+- 🟡 Separate dashboards for **Forms** ✅ (M2), **Data sources** and **API service** (owner, 2026-10-02), plus the workspace overview ✅ (M1); a view switch on the page (remembered), each view only for people whose role reaches it
+- ✅ **M2** Forms view (running the forms; Analytics analyses them): published, new forms, responses per active form, published without responses, unpublished edits; responses by form with change; forms by status (thin lines open the filtered list); where responses come from (link, embed, API); new forms over time; folders and owners; forms that need work (nearly full, closing, no responses, unpublished edits, old drafts) each with the step that fixes it
 
 **Goal:** the workspace home, built after everything else so it shows what matters (design reference 2, `docs/design/Screenshot 2026-10-02 092034.png`). Replaces the Forms redirect on `/` once done.
 
@@ -1631,3 +1632,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-10 | F24 | Payment safety (owner: no double charge, idempotency): request keys on every money-moving request (repeat = first result, other request = FRM-BILL-1005), billing lock per workspace (FRM-BILL-1004), one open checkout, a payments ledger written before charging with one reference per charge (renewals `renew:{workspace}:{period end}`), forward-only payment states, past-due retry under the same reference, Payoneer webhook receiver with signature, age, once-only and amount checks (FRM-BILL-1006). SECURITY-PROTOCOL §11, tests in test/billing/safety.test.ts. |
 | 2026-10-10 | F24 / F21 | F24 paused for the owner's Payoneer account (left: Payoneer connection, form payments, website project files, backend reconciliation). F21 Dashboard started: one page, first in MAIN MENU, with Workspace · Forms · Data sources · API service views in the design's layout; milestones M1 to M5 planned. |
 | 2026-10-10 | F21 M1 | Workspace dashboard in the design's layout: `GET /dashboard` (period, group, every number by role and folder access), KPI row, activity chart (ChartsFlow) with tooltip, busiest forms and Coming up, recent responses, Needs attention and areas at a glance; Dashboard first in the menu and the home page; 20 languages; bucketing tested. |
+| 2026-10-10 | F21 M2 | Dashboard view switch (Workspace · Forms, remembered, by role) and the Forms view: `GET /dashboard/forms` (status, new forms per bucket, channels, top forms with change, folders, owners, forms that need work), KPI row, meters, status lines, columns; shared period parsing on the server; 20 languages. |

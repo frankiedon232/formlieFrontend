@@ -9505,6 +9505,54 @@
       "plan": "Plan",
       "planForms": "{n} of {limit} forms",
       "planUnlimited": "{n} forms, no limit"
+    },
+    "views": {
+      "label": "Dashboard view",
+      "workspace": "Workspace",
+      "forms": "Forms",
+      "data": "Data sources",
+      "api": "API service"
+    },
+    "formsView": {
+      "published": "Published forms",
+      "publishedHint": "taking responses now",
+      "created": "New forms",
+      "perForm": "Per active form",
+      "silent": "No responses",
+      "silentHint": "published, in this period",
+      "unpublished": "Unpublished edits",
+      "unpublishedHint": "edits not live yet",
+      "byForm": "Responses by form",
+      "byStatus": "Forms by status",
+      "live": "{n} live now",
+      "channels": "Where responses come from",
+      "channel": {
+        "link": "Form link",
+        "embed": "Embedded on a website",
+        "api": "API service"
+      },
+      "newForms": "New forms",
+      "noneCreated": "No new forms in this period.",
+      "formsCount": "{n} form | {n} forms",
+      "folders": "Folders",
+      "noFolder": "No folder",
+      "owners": "Owners",
+      "work": "Forms that need work",
+      "allGood": "Every form is in good shape.",
+      "workKind": {
+        "nearly_full": "Nearly full: {n} responses allowed",
+        "closing": "Closes on {date}",
+        "no_responses": "Published, but no responses in this period",
+        "unpublished_changes": "Changes not published yet",
+        "stale_draft": "Draft not touched since {date}"
+      },
+      "workAction": {
+        "nearly_full": "Raise the limit",
+        "closing": "Check dates",
+        "no_responses": "Share it",
+        "unpublished_changes": "Review and publish",
+        "stale_draft": "Finish it"
+      }
     }
   }
 }

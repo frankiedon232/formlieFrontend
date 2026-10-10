@@ -82,3 +82,27 @@ export interface WorkspaceDashboard {
     plan: { plan: string; forms: number; forms_limit: number | null; ai_used: number; ai_limit: number | null } | null
   }
 }
+
+export type FormsWorkKind = 'stale_draft' | 'no_responses' | 'unpublished_changes' | 'closing' | 'nearly_full'
+
+/** GET /dashboard/forms?from&to&group (F21 M2): running the forms. */
+export interface FormsDashboard {
+  from: string
+  to: string
+  group: DashboardGroup
+  kpis: {
+    published: DashboardKpi
+    created: DashboardKpi
+    per_form: DashboardKpi
+    silent: DashboardKpi
+    unpublished: DashboardKpi
+  }
+  by_status: { draft: number; published: number; closed: number; archived: number }
+  /** Forms made per bucket. */
+  created: { start: string; count: number }[]
+  channels: { link: number; embed: number; api: number }
+  top: { id: string; name: string; status: string; responses: number; previous: number; completion_rate: number }[]
+  folders: { id: string | null; name: string | null; forms: number; responses: number }[]
+  owners: { id: string; name: string; forms: number; responses: number }[]
+  work: { kind: FormsWorkKind; form: { id: string; name: string }; at: string | null; count: number | null }[]
+}

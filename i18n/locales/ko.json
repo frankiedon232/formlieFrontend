@@ -9505,6 +9505,54 @@
       "plan": "요금제",
       "planForms": "양식 {limit}개 중 {n}개",
       "planUnlimited": "양식 {n}개, 제한 없음"
+    },
+    "views": {
+      "label": "대시보드 보기",
+      "workspace": "워크스페이스",
+      "forms": "양식",
+      "data": "데이터 소스",
+      "api": "API 서비스"
+    },
+    "formsView": {
+      "published": "게시된 양식",
+      "publishedHint": "지금 응답을 받는 중",
+      "created": "새 양식",
+      "perForm": "활성 양식당",
+      "silent": "응답 없음",
+      "silentHint": "게시됨, 이 기간",
+      "unpublished": "미게시 수정",
+      "unpublishedHint": "수정 내용이 아직 적용되지 않음",
+      "byForm": "양식별 응답",
+      "byStatus": "상태별 양식",
+      "live": "지금 {n}개 라이브",
+      "channels": "응답이 들어오는 경로",
+      "channel": {
+        "link": "양식 링크",
+        "embed": "웹사이트에 삽입",
+        "api": "API 서비스"
+      },
+      "newForms": "새 양식",
+      "noneCreated": "이 기간에는 새 양식이 없습니다.",
+      "formsCount": "양식 {n}개 | 양식 {n}개",
+      "folders": "폴더",
+      "noFolder": "폴더 없음",
+      "owners": "소유자",
+      "work": "손봐야 할 양식",
+      "allGood": "모든 양식이 양호합니다.",
+      "workKind": {
+        "nearly_full": "거의 참: 허용 응답 {n}개",
+        "closing": "{date}에 마감",
+        "no_responses": "게시됨, 이 기간에는 응답 없음",
+        "unpublished_changes": "변경 내용이 아직 게시되지 않음",
+        "stale_draft": "{date} 이후 손대지 않은 초안"
+      },
+      "workAction": {
+        "nearly_full": "한도 올리기",
+        "closing": "날짜 확인",
+        "no_responses": "공유하기",
+        "unpublished_changes": "검토 후 게시",
+        "stale_draft": "마무리하기"
+      }
     }
   }
 }

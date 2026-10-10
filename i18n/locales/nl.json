@@ -9505,6 +9505,54 @@
       "plan": "Abonnement",
       "planForms": "{n} van {limit} formulieren",
       "planUnlimited": "{n} formulieren, geen limiet"
+    },
+    "views": {
+      "label": "Dashboardweergave",
+      "workspace": "Werkruimte",
+      "forms": "Formulieren",
+      "data": "Gegevensbronnen",
+      "api": "API-service"
+    },
+    "formsView": {
+      "published": "Gepubliceerde formulieren",
+      "publishedHint": "nemen nu reacties aan",
+      "created": "Nieuwe formulieren",
+      "perForm": "Per actief formulier",
+      "silent": "Geen reacties",
+      "silentHint": "gepubliceerd, in deze periode",
+      "unpublished": "Open wijzigingen",
+      "unpublishedHint": "wijzigingen nog niet live",
+      "byForm": "Reacties per formulier",
+      "byStatus": "Formulieren per status",
+      "live": "{n} nu live",
+      "channels": "Waar reacties vandaan komen",
+      "channel": {
+        "link": "Formulierlink",
+        "embed": "Ingesloten op een website",
+        "api": "API-service"
+      },
+      "newForms": "Nieuwe formulieren",
+      "noneCreated": "Geen nieuwe formulieren in deze periode.",
+      "formsCount": "{n} formulier | {n} formulieren",
+      "folders": "Mappen",
+      "noFolder": "Geen map",
+      "owners": "Eigenaren",
+      "work": "Formulieren die aandacht nodig hebben",
+      "allGood": "Elk formulier is in goede staat.",
+      "workKind": {
+        "nearly_full": "Bijna vol: {n} reacties toegestaan",
+        "closing": "Sluit op {date}",
+        "no_responses": "Gepubliceerd, maar geen reacties in deze periode",
+        "unpublished_changes": "Wijzigingen nog niet gepubliceerd",
+        "stale_draft": "Concept niet aangeraakt sinds {date}"
+      },
+      "workAction": {
+        "nearly_full": "Limiet verhogen",
+        "closing": "Data controleren",
+        "no_responses": "Delen",
+        "unpublished_changes": "Bekijken en publiceren",
+        "stale_draft": "Afmaken"
+      }
     }
   }
 }

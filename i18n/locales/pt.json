@@ -9505,6 +9505,54 @@
       "plan": "Plano",
       "planForms": "{n} de {limit} formulários",
       "planUnlimited": "{n} formulários, sem limite"
+    },
+    "views": {
+      "label": "Visualização do painel",
+      "workspace": "Espaço de trabalho",
+      "forms": "Formulários",
+      "data": "Fontes de dados",
+      "api": "Serviço de API"
+    },
+    "formsView": {
+      "published": "Formulários publicados",
+      "publishedHint": "recebendo respostas agora",
+      "created": "Novos formulários",
+      "perForm": "Por formulário ativo",
+      "silent": "Sem respostas",
+      "silentHint": "publicados, neste período",
+      "unpublished": "Edições pendentes",
+      "unpublishedHint": "edições ainda não no ar",
+      "byForm": "Respostas por formulário",
+      "byStatus": "Formulários por status",
+      "live": "{n} no ar agora",
+      "channels": "De onde vêm as respostas",
+      "channel": {
+        "link": "Link do formulário",
+        "embed": "Incorporado em um site",
+        "api": "Serviço de API"
+      },
+      "newForms": "Novos formulários",
+      "noneCreated": "Nenhum formulário novo neste período.",
+      "formsCount": "{n} formulário | {n} formulários",
+      "folders": "Pastas",
+      "noFolder": "Sem pasta",
+      "owners": "Proprietários",
+      "work": "Formulários que precisam de atenção",
+      "allGood": "Todos os formulários estão em bom estado.",
+      "workKind": {
+        "nearly_full": "Quase cheio: {n} respostas permitidas",
+        "closing": "Fecha em {date}",
+        "no_responses": "Publicado, mas sem respostas neste período",
+        "unpublished_changes": "Alterações ainda não publicadas",
+        "stale_draft": "Rascunho sem alterações desde {date}"
+      },
+      "workAction": {
+        "nearly_full": "Aumentar o limite",
+        "closing": "Conferir as datas",
+        "no_responses": "Compartilhar",
+        "unpublished_changes": "Revisar e publicar",
+        "stale_draft": "Concluir"
+      }
     }
   }
 }

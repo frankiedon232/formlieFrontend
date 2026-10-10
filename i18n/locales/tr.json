@@ -9505,6 +9505,54 @@
       "plan": "Plan",
       "planForms": "{n} / {limit} form",
       "planUnlimited": "{n} form, sınır yok"
+    },
+    "views": {
+      "label": "Pano görünümü",
+      "workspace": "Çalışma alanı",
+      "forms": "Formlar",
+      "data": "Veri kaynakları",
+      "api": "API hizmeti"
+    },
+    "formsView": {
+      "published": "Yayındaki formlar",
+      "publishedHint": "şu an yanıt alıyor",
+      "created": "Yeni formlar",
+      "perForm": "Etkin form başına",
+      "silent": "Yanıt yok",
+      "silentHint": "yayında, bu dönemde",
+      "unpublished": "Yayınsız düzenleme",
+      "unpublishedHint": "düzenlemeler henüz yayında değil",
+      "byForm": "Forma göre yanıtlar",
+      "byStatus": "Duruma göre formlar",
+      "live": "{n} şu an yayında",
+      "channels": "Yanıtlar nereden geliyor",
+      "channel": {
+        "link": "Form bağlantısı",
+        "embed": "Bir web sitesine gömülü",
+        "api": "API hizmeti"
+      },
+      "newForms": "Yeni formlar",
+      "noneCreated": "Bu dönemde yeni form yok.",
+      "formsCount": "{n} form | {n} form",
+      "folders": "Klasörler",
+      "noFolder": "Klasör yok",
+      "owners": "Sahipler",
+      "work": "Çalışma gerektiren formlar",
+      "allGood": "Her form iyi durumda.",
+      "workKind": {
+        "nearly_full": "Neredeyse dolu: {n} yanıta izin var",
+        "closing": "{date} tarihinde kapanıyor",
+        "no_responses": "Yayında, ancak bu dönemde yanıt yok",
+        "unpublished_changes": "Değişiklikler henüz yayınlanmadı",
+        "stale_draft": "Taslağa {date} tarihinden beri dokunulmadı"
+      },
+      "workAction": {
+        "nearly_full": "Sınırı yükselt",
+        "closing": "Tarihleri kontrol et",
+        "no_responses": "Paylaş",
+        "unpublished_changes": "İncele ve yayınla",
+        "stale_draft": "Tamamla"
+      }
     }
   }
 }

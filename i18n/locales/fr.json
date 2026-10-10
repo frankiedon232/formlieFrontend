@@ -9505,6 +9505,54 @@
       "plan": "Offre",
       "planForms": "{n} formulaires sur {limit}",
       "planUnlimited": "{n} formulaires, sans limite"
+    },
+    "views": {
+      "label": "Vue du tableau de bord",
+      "workspace": "Espace de travail",
+      "forms": "Formulaires",
+      "data": "Sources de données",
+      "api": "Service API"
+    },
+    "formsView": {
+      "published": "Formulaires publiés",
+      "publishedHint": "reçoivent des réponses en ce moment",
+      "created": "Nouveaux formulaires",
+      "perForm": "Par formulaire actif",
+      "silent": "Sans réponses",
+      "silentHint": "publiés, sur cette période",
+      "unpublished": "Modifs non publiées",
+      "unpublishedHint": "modifications pas encore en ligne",
+      "byForm": "Réponses par formulaire",
+      "byStatus": "Formulaires par statut",
+      "live": "{n} en ligne maintenant",
+      "channels": "D’où viennent les réponses",
+      "channel": {
+        "link": "Lien du formulaire",
+        "embed": "Intégré sur un site web",
+        "api": "Service API"
+      },
+      "newForms": "Nouveaux formulaires",
+      "noneCreated": "Aucun nouveau formulaire sur cette période.",
+      "formsCount": "{n} formulaire | {n} formulaires",
+      "folders": "Dossiers",
+      "noFolder": "Sans dossier",
+      "owners": "Propriétaires",
+      "work": "Formulaires à retravailler",
+      "allGood": "Tous les formulaires sont en bon état.",
+      "workKind": {
+        "nearly_full": "Presque plein : {n} réponses autorisées",
+        "closing": "Ferme le {date}",
+        "no_responses": "Publié, mais sans réponses sur cette période",
+        "unpublished_changes": "Modifications pas encore publiées",
+        "stale_draft": "Brouillon non modifié depuis le {date}"
+      },
+      "workAction": {
+        "nearly_full": "Augmenter la limite",
+        "closing": "Vérifier les dates",
+        "no_responses": "Le partager",
+        "unpublished_changes": "Relire et publier",
+        "stale_draft": "Le terminer"
+      }
     }
   }
 }

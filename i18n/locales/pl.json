@@ -9505,6 +9505,54 @@
       "plan": "Plan",
       "planForms": "{n} z {limit} formularzy",
       "planUnlimited": "{n} formularzy, bez limitu"
+    },
+    "views": {
+      "label": "Widok pulpitu",
+      "workspace": "Przestrzeń robocza",
+      "forms": "Formularze",
+      "data": "Źródła danych",
+      "api": "Usługa API"
+    },
+    "formsView": {
+      "published": "Opublikowane formularze",
+      "publishedHint": "przyjmują teraz odpowiedzi",
+      "created": "Nowe formularze",
+      "perForm": "Na aktywny formularz",
+      "silent": "Brak odpowiedzi",
+      "silentHint": "opublikowane, w tym okresie",
+      "unpublished": "Niepubl. zmiany",
+      "unpublishedHint": "zmiany jeszcze nie na żywo",
+      "byForm": "Odpowiedzi według formularza",
+      "byStatus": "Formularze według statusu",
+      "live": "{n} na żywo teraz",
+      "channels": "Skąd pochodzą odpowiedzi",
+      "channel": {
+        "link": "Link do formularza",
+        "embed": "Osadzony na stronie internetowej",
+        "api": "Usługa API"
+      },
+      "newForms": "Nowe formularze",
+      "noneCreated": "Brak nowych formularzy w tym okresie.",
+      "formsCount": "{n} formularz | {n} formularzy",
+      "folders": "Foldery",
+      "noFolder": "Bez folderu",
+      "owners": "Właściciele",
+      "work": "Formularze wymagające pracy",
+      "allGood": "Każdy formularz jest w dobrym stanie.",
+      "workKind": {
+        "nearly_full": "Prawie pełny: dozwolonych odpowiedzi {n}",
+        "closing": "Zamyka się {date}",
+        "no_responses": "Opublikowany, ale bez odpowiedzi w tym okresie",
+        "unpublished_changes": "Zmiany jeszcze nieopublikowane",
+        "stale_draft": "Wersja robocza nietknięta od {date}"
+      },
+      "workAction": {
+        "nearly_full": "Zwiększ limit",
+        "closing": "Sprawdź daty",
+        "no_responses": "Udostępnij",
+        "unpublished_changes": "Przejrzyj i opublikuj",
+        "stale_draft": "Dokończ"
+      }
     }
   }
 }

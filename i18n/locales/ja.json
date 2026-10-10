@@ -9505,6 +9505,54 @@
       "plan": "プラン",
       "planForms": "フォーム {n} / {limit} 件",
       "planUnlimited": "フォーム {n} 件、上限なし"
+    },
+    "views": {
+      "label": "ダッシュボードの表示",
+      "workspace": "ワークスペース",
+      "forms": "フォーム",
+      "data": "データソース",
+      "api": "API サービス"
+    },
+    "formsView": {
+      "published": "公開中のフォーム",
+      "publishedHint": "現在回答を受け付け中",
+      "created": "新しいフォーム",
+      "perForm": "有効フォームあたり",
+      "silent": "回答なし",
+      "silentHint": "公開中、この期間",
+      "unpublished": "未公開の編集",
+      "unpublishedHint": "編集がまだ反映されていません",
+      "byForm": "フォーム別の回答",
+      "byStatus": "ステータス別のフォーム",
+      "live": "現在 {n} 件公開中",
+      "channels": "回答の経路",
+      "channel": {
+        "link": "フォームのリンク",
+        "embed": "ウェブサイトに埋め込み",
+        "api": "API サービス"
+      },
+      "newForms": "新しいフォーム",
+      "noneCreated": "この期間に新しいフォームはありません。",
+      "formsCount": "フォーム {n} 件 | フォーム {n} 件",
+      "folders": "フォルダ",
+      "noFolder": "フォルダなし",
+      "owners": "所有者",
+      "work": "手を入れるべきフォーム",
+      "allGood": "すべてのフォームが良好な状態です。",
+      "workKind": {
+        "nearly_full": "ほぼ満杯: 回答の上限 {n} 件",
+        "closing": "{date} に終了",
+        "no_responses": "公開中ですが、この期間の回答はありません",
+        "unpublished_changes": "変更がまだ公開されていません",
+        "stale_draft": "{date} から更新されていない下書き"
+      },
+      "workAction": {
+        "nearly_full": "上限を上げる",
+        "closing": "日付を確認",
+        "no_responses": "共有する",
+        "unpublished_changes": "確認して公開",
+        "stale_draft": "仕上げる"
+      }
     }
   }
 }

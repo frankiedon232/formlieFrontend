@@ -9505,6 +9505,54 @@
       "plan": "Piano",
       "planForms": "{n} di {limit} moduli",
       "planUnlimited": "{n} moduli, senza limite"
+    },
+    "views": {
+      "label": "Vista della dashboard",
+      "workspace": "Spazio di lavoro",
+      "forms": "Moduli",
+      "data": "Origini dati",
+      "api": "Servizio API"
+    },
+    "formsView": {
+      "published": "Moduli pubblicati",
+      "publishedHint": "ricevono risposte ora",
+      "created": "Nuovi moduli",
+      "perForm": "Per modulo attivo",
+      "silent": "Senza risposte",
+      "silentHint": "pubblicati, in questo periodo",
+      "unpublished": "Modifiche in attesa",
+      "unpublishedHint": "modifiche non ancora online",
+      "byForm": "Risposte per modulo",
+      "byStatus": "Moduli per stato",
+      "live": "{n} online ora",
+      "channels": "Da dove arrivano le risposte",
+      "channel": {
+        "link": "Link del modulo",
+        "embed": "Incorporato in un sito web",
+        "api": "Servizio API"
+      },
+      "newForms": "Nuovi moduli",
+      "noneCreated": "Nessun nuovo modulo in questo periodo.",
+      "formsCount": "{n} modulo | {n} moduli",
+      "folders": "Cartelle",
+      "noFolder": "Nessuna cartella",
+      "owners": "Proprietari",
+      "work": "Moduli da sistemare",
+      "allGood": "Ogni modulo è in buone condizioni.",
+      "workKind": {
+        "nearly_full": "Quasi pieno: {n} risposte consentite",
+        "closing": "Si chiude il {date}",
+        "no_responses": "Pubblicato, ma senza risposte in questo periodo",
+        "unpublished_changes": "Modifiche non ancora pubblicate",
+        "stale_draft": "Bozza non toccata dal {date}"
+      },
+      "workAction": {
+        "nearly_full": "Aumenta il limite",
+        "closing": "Controlla le date",
+        "no_responses": "Condividilo",
+        "unpublished_changes": "Rivedi e pubblica",
+        "stale_draft": "Completalo"
+      }
     }
   }
 }
