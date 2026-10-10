@@ -1,0 +1,1910 @@
+{
+  "articles": [
+    {
+      "id": "welcome",
+      "category": "start",
+      "start": 1,
+      "popular": true,
+      "minutes": 2,
+      "route": "/forms",
+      "related": [
+        "first-form",
+        "find-your-way",
+        "invite-your-team"
+      ],
+      "keywords": [
+        "empezar",
+        "comenzar",
+        "resumen",
+        "nuevo",
+        "qué es"
+      ],
+      "title": "Te damos la bienvenida a Formalie",
+      "summary": "Qué hace Formalie y cómo está organizado el portal.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Formalie ayuda a tu organización a recoger información con formularios, revisar lo que llega y enviarlo adonde haga falta: una base de datos, otro sistema mediante la API o un informe."
+        },
+        {
+          "type": "h",
+          "text": "Las partes principales"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Formularios**: crea formularios, compártelos y sigue sus respuestas.",
+            "**Fuentes de datos**: conecta tus propias bases de datos para guardar las respuestas y explorarlas.",
+            "**Servicio API**: deja que otros sistemas lean y envíen datos mediante tus propios puntos de acceso.",
+            "**Asistente de IA**: crea formularios, analiza respuestas y traduce con ayuda.",
+            "**Personas**: invita a tu equipo y decide qué puede hacer cada persona."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Pulsa **Ctrl + K** (o **⌘ + K** en Mac) en cualquier lugar para buscar una página, un formulario o un ajuste."
+        },
+        {
+          "type": "show",
+          "label": "Abrir tus formularios",
+          "to": "/forms"
+        }
+      ]
+    },
+    {
+      "id": "find-your-way",
+      "category": "start",
+      "start": 2,
+      "minutes": 2,
+      "route": null,
+      "related": [
+        "welcome",
+        "keyboard-and-search"
+      ],
+      "keywords": [
+        "menú",
+        "barra lateral",
+        "riel",
+        "navegación",
+        "dónde"
+      ],
+      "title": "Orientarte en el portal",
+      "summary": "El riel, el menú, la cabecera y la búsqueda.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "La columna estrecha del extremo izquierdo es el **riel**. Cada icono abre un área de Formalie: Formularios, Fuentes de datos, Servicio API, Asistente de IA y Personas. El menú de al lado cambia según el área en la que estés."
+        },
+        {
+          "type": "p",
+          "text": "En la parte superior de cada página encuentras su título, dónde estás (la ruta de navegación) y los botones de la página. El botón principal es siempre el oscuro de la derecha."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Contrae el menú** con el botón « o la tecla **[** para ganar espacio.",
+            "**El modo oscuro** está en la parte inferior del menú, en Sistema.",
+            "**Ayuda y soporte** está al pie del riel y en el grupo Sistema."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "En el teléfono, el menú se abre con el botón ☰ de arriba a la izquierda."
+        }
+      ]
+    },
+    {
+      "id": "first-form",
+      "category": "start",
+      "start": 3,
+      "popular": true,
+      "minutes": 3,
+      "route": "/forms/new",
+      "related": [
+        "builder-basics",
+        "share-a-form",
+        "use-a-template"
+      ],
+      "keywords": [
+        "crear",
+        "nuevo formulario",
+        "primero",
+        "hacer un formulario"
+      ],
+      "title": "Crear tu primer formulario",
+      "summary": "Desde una página en blanco, una plantilla o una descripción, en pocos minutos.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Puedes empezar un formulario de tres maneras: desde una página en blanco, desde una de las plantillas de Formalie o describiéndolo al asistente de IA."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Haz clic en **Nuevo formulario** arriba a la derecha de la página Formularios.",
+            "Elige **En blanco**, selecciona una **plantilla** o **importa** un archivo de formulario.",
+            "Ponle un nombre al formulario y, si quieres, una carpeta.",
+            "Se abre el editor: añade preguntas desde la lista de campos de la izquierda.",
+            "Cuando estés conforme, haz clic en **Publicar** y comparte el enlace."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "¿No sabes por dónde empezar? El asistente de IA puede redactar todo el formulario a partir de unas pocas palabras: abre **Asistente de IA → Crear un formulario**."
+        },
+        {
+          "type": "show",
+          "label": "Empezar un formulario nuevo",
+          "to": "/forms/new",
+          "target": "new-form"
+        }
+      ]
+    },
+    {
+      "id": "invite-your-team",
+      "category": "start",
+      "start": 4,
+      "minutes": 2,
+      "route": "/people",
+      "related": [
+        "sign-up-links",
+        "roles-and-access"
+      ],
+      "keywords": [
+        "invitar",
+        "equipo",
+        "compañeros",
+        "añadir usuario",
+        "personas"
+      ],
+      "title": "Incorporar a tu equipo",
+      "summary": "Añade compañeros con un perfil o comparte un enlace de registro.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Cada persona de tu espacio tiene un perfil con su departamento, su cargo y su rol. El rol decide lo que puede ver y hacer."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Abre **Personas** desde el riel.",
+            "Haz clic en **Añadir usuario** para crear un perfil: la persona recibe un correo para establecer su contraseña.",
+            "O abre **Enlaces de registro** para compartir un enlace: las personas que se registren con él esperan tu aprobación."
+          ]
+        },
+        {
+          "type": "show",
+          "label": "Abrir Personas",
+          "to": "/people",
+          "target": "add-user"
+        }
+      ]
+    },
+    {
+      "id": "keyboard-and-search",
+      "category": "start",
+      "start": 5,
+      "minutes": 1,
+      "route": null,
+      "related": [
+        "find-your-way"
+      ],
+      "keywords": [
+        "atajo",
+        "teclado",
+        "búsqueda",
+        "ctrl k",
+        "comando"
+      ],
+      "title": "Trabajar más rápido con la búsqueda y los atajos",
+      "summary": "Encuentra cualquier cosa con Ctrl + K y muévete con el teclado.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "La búsqueda se abre con **Ctrl + K** (**⌘ + K** en Mac). Escribe parte del nombre de una página, un formulario, un ajuste o una persona y pulsa Enter."
+        },
+        {
+          "type": "p",
+          "text": "Pulsa **?** para ver todos los atajos de teclado. Muchas páginas añaden los suyos, por ejemplo **J** y **K** para pasar de una respuesta a otra en un panel."
+        },
+        {
+          "type": "tip",
+          "text": "Todas las listas y paneles funcionan solo con el teclado: Tab se mueve, Enter abre, Esc cierra."
+        }
+      ]
+    },
+    {
+      "id": "forms-list",
+      "category": "forms",
+      "popular": true,
+      "minutes": 2,
+      "route": "/forms",
+      "related": [
+        "form-lifecycle",
+        "folders"
+      ],
+      "keywords": [
+        "lista de formularios",
+        "encontrar formulario",
+        "filtro",
+        "cuadrícula",
+        "tabla"
+      ],
+      "title": "Encontrar y organizar tus formularios",
+      "summary": "Busca, filtra, ordena y cambia entre tabla y tarjetas.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "La página Formularios muestra todos los formularios que puedes ver. Las dos tarjetas de arriba muestran las respuestas recientes y cómo se reparten tus formularios entre borrador, publicado y cerrado; haz clic en un estado de la leyenda para ver solo esos formularios."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Busca** por nombre, etiqueta o propietario.",
+            "**Filtra** por estado, carpeta, propietario o etiqueta; los filtros aparecen como fichas que puedes quitar.",
+            "**Columnas** te permite mostrar, ocultar y reordenar las columnas de la tabla.",
+            "**Tabla / Cuadrícula** cambia entre filas y tarjetas; Formalie recuerda tu elección.",
+            "Haz clic derecho en un formulario, o usa su menú **⋯**, para acciones como duplicar, mover o archivar."
+          ]
+        },
+        {
+          "type": "show",
+          "label": "Abrir la lista de formularios",
+          "to": "/forms",
+          "target": "view-switch"
+        }
+      ]
+    },
+    {
+      "id": "form-lifecycle",
+      "category": "forms",
+      "minutes": 3,
+      "route": "/forms",
+      "related": [
+        "publish-and-versions",
+        "trash"
+      ],
+      "keywords": [
+        "borrador",
+        "publicar",
+        "cerrar",
+        "archivar",
+        "estado",
+        "reabrir"
+      ],
+      "title": "Borrador, publicado, cerrado y archivado",
+      "summary": "Qué significa cada estado y cómo pasa un formulario de uno a otro.",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "**Borrador**: en construcción; nadie puede rellenarlo todavía.",
+            "**Publicado**: abierto a respuestas en su enlace.",
+            "**Cerrado**: el enlace sigue funcionando pero indica que el formulario está cerrado; no admite nuevas respuestas.",
+            "**Archivado**: guardado aparte; oculto de la lista principal, con las respuestas conservadas."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Un formulario publicado puede tener **cambios sin publicar**: tus ediciones se quedan en el borrador hasta que vuelvas a publicar, así que quien responde nunca ve un cambio a medias."
+        },
+        {
+          "type": "tip",
+          "text": "Define fechas de apertura y cierre en **Compartir → Disponibilidad** para que un formulario se abra y se cierre solo."
+        }
+      ]
+    },
+    {
+      "id": "folders",
+      "category": "forms",
+      "minutes": 2,
+      "route": "/forms",
+      "related": [
+        "forms-list",
+        "roles-and-access"
+      ],
+      "keywords": [
+        "carpeta",
+        "organizar",
+        "grupo",
+        "acceso",
+        "oculto"
+      ],
+      "title": "Carpetas y quién puede verlas",
+      "summary": "Agrupa formularios en carpetas y reserva algunas carpetas para ciertas personas.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Las carpetas agrupan formularios, por ejemplo por equipo o proyecto. Crea una con **+** junto a Carpetas en el menú y mueve formularios a ella desde su menú **⋯**."
+        },
+        {
+          "type": "p",
+          "text": "Los administradores pueden limitar una carpeta a algunos roles, departamentos o personas con **Acceso a la carpeta**. El resto no ve la carpeta, sus formularios ni sus respuestas en ningún sitio, ni siquiera en la búsqueda o en las exportaciones."
+        }
+      ]
+    },
+    {
+      "id": "trash",
+      "category": "forms",
+      "minutes": 1,
+      "route": "/forms/trash",
+      "related": [
+        "form-lifecycle"
+      ],
+      "keywords": [
+        "eliminar",
+        "papelera",
+        "restaurar",
+        "recuperar"
+      ],
+      "title": "Eliminar y restaurar formularios",
+      "summary": "Los formularios eliminados permanecen 30 días en la papelera.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Cuando eliminas un formulario, pasa a la **Papelera** durante 30 días, con sus respuestas. Puedes restaurarlo desde allí en cualquier momento durante esos 30 días."
+        },
+        {
+          "type": "warning",
+          "text": "**Eliminar para siempre** en la papelera borra el formulario y todas sus respuestas definitivamente. No se puede deshacer."
+        },
+        {
+          "type": "show",
+          "label": "Abrir la papelera",
+          "to": "/forms/trash"
+        }
+      ]
+    },
+    {
+      "id": "builder-basics",
+      "category": "builder",
+      "popular": true,
+      "minutes": 3,
+      "route": "/forms/:id/build",
+      "related": [
+        "field-types",
+        "builder-logic",
+        "publish-and-versions"
+      ],
+      "keywords": [
+        "editor",
+        "añadir campo",
+        "pregunta",
+        "arrastrar",
+        "página",
+        "diseño"
+      ],
+      "title": "Crear un formulario",
+      "summary": "Añade preguntas, organízalas en filas y páginas y cambia sus ajustes.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "El editor tiene tres partes: la **lista de campos** a la izquierda, el **formulario** en el centro y los **ajustes** de lo que has seleccionado a la derecha."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Arrastra un campo de la lista al formulario, o haz clic en él para añadirlo después del campo seleccionado.",
+            "Haz clic en un campo para cambiar su pregunta, su texto de ayuda, si es obligatorio y más.",
+            "Coloca campos uno junto a otro soltándolos al lado; usa **Ancho** para darles tamaño.",
+            "Añade páginas con **Añadir página** para dividir un formulario largo.",
+            "Tus cambios se guardan mientras trabajas; **Deshacer** y **Rehacer** están arriba."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "¿Sin ratón? Selecciona un campo y usa **Alt + ↑ / ↓** para moverlo, **Ctrl + D** para duplicarlo y **Delete** para quitarlo."
+        },
+        {
+          "type": "tip",
+          "text": "El botón **Asistente** del editor sugiere preguntas que faltan, escribe textos de ayuda y revisa tu formulario."
+        }
+      ]
+    },
+    {
+      "id": "field-types",
+      "category": "builder",
+      "minutes": 3,
+      "route": "/forms/:id/build",
+      "related": [
+        "builder-basics",
+        "lists-basics"
+      ],
+      "keywords": [
+        "campo",
+        "tipo",
+        "pregunta",
+        "subir archivo",
+        "firma",
+        "valoración",
+        "dirección"
+      ],
+      "title": "Qué campo usar",
+      "summary": "Los tipos de preguntas que ofrece Formalie y cuándo usar cada uno.",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "**Texto**: respuestas cortas y largas, correo, teléfono, número, importe, nombre completo.",
+            "**Fechas**: fecha, hora, fecha y hora, intervalo de fechas, duración.",
+            "**Opciones**: desplegable, opción única, casillas, sí / no, clasificación, matriz, conformidad.",
+            "**Valoraciones**: estrellas, una escala de 0 a 10, un control deslizante.",
+            "**Archivos**: subida de archivo, subida de foto, firma.",
+            "**Ubicación**: dirección, país, idioma, zona horaria.",
+            "**Avanzado**: valores ocultos y cálculos.",
+            "**Diseño**: títulos de sección, texto, imágenes y separadores."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Elige el campo más específico: un campo de correo comprueba la dirección mientras se escribe, un campo de fecha muestra un calendario, un campo de teléfono comprueba el número."
+        },
+        {
+          "type": "tip",
+          "text": "Las listas largas de opciones (países, departamentos) funcionan mejor como **Lista de opciones**, guardada una vez y usada en muchos formularios."
+        }
+      ]
+    },
+    {
+      "id": "builder-logic",
+      "category": "builder",
+      "minutes": 3,
+      "route": "/forms/:id/logic",
+      "related": [
+        "calculations",
+        "builder-basics"
+      ],
+      "keywords": [
+        "lógica",
+        "regla",
+        "mostrar",
+        "ocultar",
+        "condición",
+        "omitir",
+        "saltar"
+      ],
+      "title": "Mostrar las preguntas adecuadas con lógica",
+      "summary": "Muestra, oculta, exige u omite preguntas según las respuestas anteriores.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Las reglas de lógica cambian el formulario mientras se rellena: mostrar una pregunta de seguimiento solo tras un sí, exigir un teléfono en las solicitudes urgentes o saltar al final."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Abre la pestaña **Lógica** del formulario.",
+            "Haz clic en **Añadir regla** y elige **Cuando**: una pregunta, una condición y un valor.",
+            "Elige **Entonces**: mostrar, ocultar, exigir, establecer un valor o saltar a una página.",
+            "Añade más condiciones con **y** / **o** si hace falta."
+          ]
+        },
+        {
+          "type": "note",
+          "text": "Una pregunta que una regla oculta nunca es obligatoria, así que las personas siempre pueden enviar el formulario."
+        }
+      ]
+    },
+    {
+      "id": "calculations",
+      "category": "builder",
+      "minutes": 2,
+      "route": "/forms/:id/build",
+      "related": [
+        "builder-logic",
+        "field-types"
+      ],
+      "keywords": [
+        "cálculo",
+        "fórmula",
+        "total",
+        "puntuación",
+        "suma"
+      ],
+      "title": "Totales y puntuaciones con cálculos",
+      "summary": "Calcula totales, promedios y puntuaciones a partir de las respuestas.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Un campo **Cálculo** obtiene un valor a partir de otras respuestas, por ejemplo cantidad × precio, una valoración media o una puntuación de riesgo. Las personas ven el resultado mientras rellenan el formulario."
+        },
+        {
+          "type": "p",
+          "text": "Escribe la fórmula con las claves de las preguntas entre llaves, por ejemplo **{quantity} * {unit_price}**. Las opciones pueden llevar una puntuación para poder sumarlas."
+        }
+      ]
+    },
+    {
+      "id": "publish-and-versions",
+      "category": "builder",
+      "minutes": 2,
+      "route": "/forms/:id/versions",
+      "related": [
+        "form-lifecycle",
+        "share-a-form"
+      ],
+      "keywords": [
+        "publicar",
+        "versión",
+        "restaurar",
+        "comparar",
+        "historial"
+      ],
+      "title": "Publicar y versiones",
+      "summary": "Cada publicación se guarda como una versión que puedes comparar y restaurar.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Publicar** convierte tu borrador en el formulario en vivo. Cada publicación se guarda como una versión numerada con una nota opcional sobre lo que cambió."
+        },
+        {
+          "type": "p",
+          "text": "En **Versiones** puedes comparar cualquier versión con el borrador y restaurar una anterior en el borrador."
+        },
+        {
+          "type": "tip",
+          "text": "El botón Publicar aparece atenuado cuando no hay nada nuevo que publicar."
+        }
+      ]
+    },
+    {
+      "id": "design-a-form",
+      "category": "design",
+      "popular": true,
+      "minutes": 3,
+      "route": "/forms/:id/design",
+      "related": [
+        "themes",
+        "landing-pages"
+      ],
+      "keywords": [
+        "diseño",
+        "color",
+        "fuente",
+        "logotipo",
+        "tema",
+        "aspecto"
+      ],
+      "title": "Diseñar el aspecto de un formulario",
+      "summary": "Colores, fuentes, diseño, cabecera y página de agradecimiento.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Abre la pestaña **Diseño** de un formulario para cambiar su aspecto. La vista previa muestra el formulario tal como lo verán las personas, en ordenador, tableta o teléfono."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Empieza desde un **punto de partida** ya preparado y luego ajusta.",
+            "Cambia los colores, las fuentes y el tamaño de campos y botones.",
+            "Añade tu logotipo, una imagen de portada o una banda de color arriba.",
+            "Diseña la **página de agradecimiento** que se ve tras enviar."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Guarda un diseño como **tema** para usarlo en otros formularios con un clic."
+        }
+      ]
+    },
+    {
+      "id": "themes",
+      "category": "design",
+      "minutes": 2,
+      "route": "/settings/themes",
+      "related": [
+        "design-a-form",
+        "form-defaults"
+      ],
+      "keywords": [
+        "tema",
+        "marca",
+        "diseño guardado",
+        "predeterminado"
+      ],
+      "title": "Temas",
+      "summary": "Guarda diseños una vez y úsalos en cualquier formulario.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Los temas son diseños guardados. Formalie incluye un conjunto; tu espacio puede añadir los suyos desde el diseñador, o dejar que el asistente de IA sugiera diseños a partir del color de tu marca."
+        },
+        {
+          "type": "p",
+          "text": "Elige el tema con el que empiezan los formularios nuevos en **Configuración → Valores predeterminados de formularios**."
+        },
+        {
+          "type": "show",
+          "label": "Abrir los temas",
+          "to": "/settings/themes"
+        }
+      ]
+    },
+    {
+      "id": "landing-pages",
+      "category": "design",
+      "minutes": 1,
+      "route": "/settings/landing-pages",
+      "related": [
+        "design-a-form"
+      ],
+      "keywords": [
+        "página de destino",
+        "página alrededor del formulario",
+        "banner",
+        "marco"
+      ],
+      "title": "Páginas de destino",
+      "summary": "La página que rodea al formulario: banner, introducción y datos.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Una página de destino es la página en la que se muestra tu formulario: un banner con el título, una introducción, cuánto se tarda y tu organización. Elige una en el diseñador o guarda las tuyas en **Páginas de destino**."
+        }
+      ]
+    },
+    {
+      "id": "use-a-template",
+      "category": "templates",
+      "popular": true,
+      "minutes": 2,
+      "route": "/templates",
+      "related": [
+        "save-as-template",
+        "first-form"
+      ],
+      "keywords": [
+        "plantilla",
+        "galería",
+        "ejemplo",
+        "listo para usar"
+      ],
+      "title": "Empezar desde una plantilla",
+      "summary": "Formularios listos para muchos usos, en tu idioma.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "La galería de plantillas tiene formularios listos para RR. HH., salud y seguridad, eventos, ventas y más. Cada uno incluye sus preguntas, lógica, cálculos y un diseño a juego."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Abre **Plantillas** desde el menú.",
+            "Explora por categoría o busca.",
+            "Abre una plantilla para probarla en la vista previa.",
+            "Haz clic en **Usar plantilla**: se abre en el editor un nuevo formulario en borrador."
+          ]
+        },
+        {
+          "type": "show",
+          "label": "Explorar plantillas",
+          "to": "/templates"
+        }
+      ]
+    },
+    {
+      "id": "save-as-template",
+      "category": "templates",
+      "minutes": 1,
+      "route": "/templates",
+      "related": [
+        "use-a-template"
+      ],
+      "keywords": [
+        "guardar plantilla",
+        "plantilla del espacio",
+        "reutilizar"
+      ],
+      "title": "Crear tus propias plantillas",
+      "summary": "Guarda un formulario como plantilla para tu espacio.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Cualquier formulario puede convertirse en plantilla de tu espacio: abre su menú **⋯** y elige **Guardar como plantilla**. Ponle un nombre, una descripción y una categoría. Tus plantillas aparecen en **Tus plantillas**."
+        }
+      ]
+    },
+    {
+      "id": "share-a-form",
+      "category": "sharing",
+      "popular": true,
+      "minutes": 3,
+      "route": "/forms/:id/share",
+      "related": [
+        "who-can-fill-in",
+        "embed-a-form",
+        "form-languages"
+      ],
+      "keywords": [
+        "compartir",
+        "enlace",
+        "qr",
+        "correo",
+        "enviar"
+      ],
+      "title": "Compartir un formulario",
+      "summary": "Enlace, código QR, invitaciones por correo y enlaces cortos.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Abre la pestaña **Compartir** de un formulario publicado. Desde ahí puedes copiar su enlace, descargar un código QR, crear un enlace corto o enviar invitaciones por correo."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Enlace**: cópialo y pégalo donde quieras.",
+            "**Enlace personalizado**: elige una dirección legible.",
+            "**Código QR**: para carteles y material impreso.",
+            "**Invitaciones**: envía por correo un enlace personal y mira quién ha respondido."
+          ]
+        },
+        {
+          "type": "show",
+          "label": "Abrir tus formularios",
+          "to": "/forms"
+        }
+      ]
+    },
+    {
+      "id": "who-can-fill-in",
+      "category": "sharing",
+      "minutes": 2,
+      "route": "/forms/:id/share",
+      "related": [
+        "share-a-form"
+      ],
+      "keywords": [
+        "acceso",
+        "contraseña",
+        "solo por invitación",
+        "organización",
+        "limitar",
+        "disponibilidad"
+      ],
+      "title": "Quién puede rellenar un formulario y cuándo",
+      "summary": "Abierto a todos, con contraseña, solo por invitación o para tu organización.",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "**Cualquiera con el enlace**.",
+            "**Con contraseña** que tú facilitas.",
+            "**Solo por invitación**: únicamente las personas que invitaste por correo.",
+            "**Tu organización**: personas que han iniciado sesión en tu espacio."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "En **Disponibilidad** puedes abrir y cerrar el formulario en fechas concretas y detenerlo tras un número de respuestas."
+        }
+      ]
+    },
+    {
+      "id": "embed-a-form",
+      "category": "sharing",
+      "minutes": 1,
+      "route": "/forms/:id/share",
+      "related": [
+        "share-a-form"
+      ],
+      "keywords": [
+        "insertar",
+        "sitio web",
+        "iframe",
+        "widget"
+      ],
+      "title": "Poner un formulario en tu sitio web",
+      "summary": "Inserta el formulario en tus propias páginas.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "En **Compartir → Insertar** copia el código y pégalo en tu sitio web. Puedes limitar qué sitios web pueden mostrar el formulario."
+        }
+      ]
+    },
+    {
+      "id": "form-languages",
+      "category": "sharing",
+      "minutes": 2,
+      "route": "/forms/:id/build",
+      "related": [
+        "ai-translate",
+        "share-a-form"
+      ],
+      "keywords": [
+        "idioma",
+        "traducir",
+        "multilingüe",
+        "francés",
+        "árabe"
+      ],
+      "title": "Formularios en varios idiomas",
+      "summary": "Ofrece un formulario en más idiomas; las personas cambian arriba.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Un formulario tiene un idioma principal y puede ofrecer más. En el editor, abre los ajustes del formulario, añade un idioma en **Más idiomas** y traduce cada texto en paralelo."
+        },
+        {
+          "type": "tip",
+          "text": "**Traducir el resto con IA** completa lo que falta; tú revisas cada texto antes de publicar."
+        }
+      ]
+    },
+    {
+      "id": "responses-basics",
+      "category": "responses",
+      "popular": true,
+      "minutes": 3,
+      "route": "/responses",
+      "related": [
+        "review-responses",
+        "export-responses"
+      ],
+      "keywords": [
+        "respuestas",
+        "contestaciones",
+        "envíos",
+        "ver respuestas"
+      ],
+      "title": "Ver tus respuestas",
+      "summary": "Todas las respuestas, por formulario o de todos los formularios.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Respuestas** muestra tus formularios con sus respuestas. Abre un formulario para ver sus respuestas como tabla o como tarjetas; abre una respuesta para ver cada contestación en un panel."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Usa **J** y **K** para ir a la respuesta siguiente o anterior.",
+            "Filtra por estado, fecha, canal o respuesta.",
+            "**Análisis** muestra un resumen por pregunta: opciones, promedios y las últimas respuestas escritas."
+          ]
+        },
+        {
+          "type": "show",
+          "label": "Abrir las respuestas",
+          "to": "/responses"
+        }
+      ]
+    },
+    {
+      "id": "review-responses",
+      "category": "responses",
+      "minutes": 2,
+      "route": "/responses",
+      "related": [
+        "responses-basics"
+      ],
+      "keywords": [
+        "revisar",
+        "estado",
+        "aprobar",
+        "rechazar",
+        "etiqueta",
+        "nota"
+      ],
+      "title": "Revisar respuestas",
+      "summary": "Estados, etiquetas y notas para gestionar lo que llega.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Cada respuesta tiene un estado: **Nuevo**, **Revisado**, **Aprobado** o **Rechazado**. Cámbialo con un clic en la parte superior del panel de la respuesta."
+        },
+        {
+          "type": "p",
+          "text": "Añade etiquetas y notas para llevar el control. Corregir respuestas es un permiso aparte, así que tu rol puede permitirte revisar sin cambiar lo que escribieron las personas."
+        }
+      ]
+    },
+    {
+      "id": "export-responses",
+      "category": "responses",
+      "minutes": 2,
+      "route": "/responses/exports",
+      "related": [
+        "responses-basics",
+        "data-sources-basics"
+      ],
+      "keywords": [
+        "exportar",
+        "excel",
+        "csv",
+        "descargar",
+        "pdf"
+      ],
+      "title": "Exportar respuestas",
+      "summary": "Descarga las respuestas como hoja de cálculo o archivo.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Haz clic en **Exportar** en las respuestas de un formulario, elige el formato y qué incluir. Las exportaciones grandes se preparan en segundo plano; ves su progreso en **Exportaciones** y recibes un mensaje cuando el archivo está listo."
+        }
+      ]
+    },
+    {
+      "id": "analytics",
+      "category": "analytics",
+      "popular": true,
+      "minutes": 2,
+      "route": "/analytics",
+      "related": [
+        "responses-basics",
+        "ai-analysis"
+      ],
+      "keywords": [
+        "analítica",
+        "visitas",
+        "finalización",
+        "abandono",
+        "embudo"
+      ],
+      "title": "Cómo rinden tus formularios",
+      "summary": "Visitas, inicios, finalizaciones y dónde se detiene la gente.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Analítica** muestra cuántas personas abrieron, empezaron y completaron cada formulario, cuánto tardan y dónde se detienen. Abre un formulario para ver cada página y pregunta."
+        },
+        {
+          "type": "tip",
+          "text": "Una pregunta en la que se detienen muchas personas suele ser poco clara o pedir demasiado. Prueba con una pregunta más corta o hazla opcional."
+        }
+      ]
+    },
+    {
+      "id": "lists-basics",
+      "category": "lists",
+      "minutes": 3,
+      "route": "/option-sets",
+      "related": [
+        "field-types"
+      ],
+      "keywords": [
+        "lista",
+        "opción",
+        "opciones",
+        "desplegable",
+        "niveles",
+        "país",
+        "dinámica"
+      ],
+      "title": "Lista de opciones: guarda las opciones una vez",
+      "summary": "Listas de opciones que usas en muchos formularios, con niveles.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Una **Lista de opciones** guarda opciones que usas en muchos formularios, por ejemplo departamentos, productos o países. Cambia la lista una vez y todos los formularios que la usan la siguen."
+        },
+        {
+          "type": "p",
+          "text": "Las listas pueden tener **niveles**: eliges un país, luego solo se muestran sus regiones y después sus ciudades. Las listas muy grandes se quedan en el servidor y se cargan mientras se escribe."
+        },
+        {
+          "type": "note",
+          "text": "Las listas marcadas como **Formalie** se ofrecen a todos los espacios; puedes usarlas pero no cambiarlas."
+        }
+      ]
+    },
+    {
+      "id": "data-sources-basics",
+      "category": "data",
+      "minutes": 3,
+      "route": "/data-sources",
+      "related": [
+        "database-explorer",
+        "export-responses"
+      ],
+      "keywords": [
+        "base de datos",
+        "conexión",
+        "fuente de datos",
+        "almacenamiento",
+        "postgres",
+        "mysql"
+      ],
+      "title": "Guardar respuestas en tu propia base de datos",
+      "summary": "Conecta una base de datos y envíale las respuestas de un formulario.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Fuentes de datos** conecta Formalie con tus propias bases de datos. Así las respuestas también pueden guardarse allí, en tablas que Formalie crea y mantiene al día con el formulario."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Abre **Fuentes de datos** desde el riel y haz clic en **Añadir conexión**.",
+            "Elija el tipo de base de datos e introduzca sus datos; **Probar ahora** comprueba que funciona.",
+            "En el **Almacenamiento de respuestas** de un formulario, elija la conexión: las nuevas respuestas se guardan allí."
+          ]
+        },
+        {
+          "type": "warning",
+          "text": "Dale a Formalie un usuario de base de datos con solo los permisos que necesita."
+        }
+      ]
+    },
+    {
+      "id": "database-explorer",
+      "category": "data",
+      "minutes": 2,
+      "route": "/data-sources/explorer",
+      "related": [
+        "data-sources-basics"
+      ],
+      "keywords": [
+        "explorador",
+        "consulta",
+        "sql",
+        "tabla",
+        "filas"
+      ],
+      "title": "Explorar y consultar tus datos",
+      "summary": "Navega por las tablas y ejecuta consultas sin salir de Formalie.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "El **Explorador de BD** muestra las tablas de una conexión y sus filas. El **Editor de consultas** ejecuta SQL; las instrucciones que cambian datos necesitan su propio permiso y piden confirmación antes."
+        }
+      ]
+    },
+    {
+      "id": "api-basics",
+      "category": "api",
+      "minutes": 3,
+      "route": "/api-service",
+      "related": [
+        "api-tokens",
+        "webhooks"
+      ],
+      "keywords": [
+        "api",
+        "punto de acceso",
+        "integración",
+        "servicio",
+        "rest"
+      ],
+      "title": "El servicio API",
+      "summary": "Tus propios puntos de acceso para que otros sistemas lean y envíen datos.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "El **Servicio API** da a otros sistemas sus propios puntos de acceso: leer respuestas, enviar nuevas o consultar opciones de listas. Cada servicio agrupa puntos de acceso y tiene su propia página de documentación."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Abre **Servicio API** y crea un servicio.",
+            "Añade puntos de acceso para los formularios o datos que quieras ofrecer.",
+            "Crea un **token** para el sistema que lo llamará.",
+            "Prueba el punto de acceso desde la página de documentación."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "api-tokens",
+      "category": "api",
+      "minutes": 2,
+      "route": "/api-service/auth",
+      "related": [
+        "api-basics"
+      ],
+      "keywords": [
+        "token",
+        "clave",
+        "encabezado",
+        "secreto",
+        "reglas de acceso"
+      ],
+      "title": "Tokens y reglas de acceso",
+      "summary": "Quién puede llamar a tus puntos de acceso, desde dónde y con qué frecuencia.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Cada sistema que llama a tu API recibe un **token**. Los tokens pueden caducar y revocarse en cualquier momento. Las **reglas de acceso** limitan direcciones, horarios y cuántas llamadas se permiten."
+        },
+        {
+          "type": "warning",
+          "text": "Un token se muestra una sola vez. Guárdalo en un lugar seguro y nunca lo pongas en una página web pública."
+        }
+      ]
+    },
+    {
+      "id": "webhooks",
+      "category": "api",
+      "minutes": 2,
+      "route": "/api-service",
+      "related": [
+        "api-basics"
+      ],
+      "keywords": [
+        "webhook",
+        "notificar",
+        "evento",
+        "callback"
+      ],
+      "title": "Webhooks",
+      "summary": "Avisa a otro sistema en el momento en que ocurre algo.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Un webhook envía un mensaje a la dirección de otro sistema cuando ocurre algo, por ejemplo una nueva respuesta. Formalie reintenta los envíos fallidos y muestra cada envío para que veas qué se mandó."
+        }
+      ]
+    },
+    {
+      "id": "roles-and-access",
+      "category": "people",
+      "popular": true,
+      "minutes": 3,
+      "route": "/people/roles",
+      "related": [
+        "invite-your-team",
+        "folders"
+      ],
+      "keywords": [
+        "rol",
+        "permiso",
+        "acceso",
+        "administrador",
+        "miembro",
+        "propios",
+        "compartidos"
+      ],
+      "title": "Roles y acceso",
+      "summary": "Decide con precisión qué puede ver y hacer cada rol.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Cada persona tiene un solo rol. Propietario puede hacerlo todo; Administrador y Miembro están listos para usar y se pueden cambiar; puedes añadir tus propios roles."
+        },
+        {
+          "type": "p",
+          "text": "Cada acción tiene un alcance: **Ninguno**, **Propios** (lo que la persona creó), **Compartidos** (los formularios compartidos con ella), **Propios y compartidos** o **Todo**. Por ejemplo, un rol puede ver todas las respuestas pero solo cambiar sus propios formularios."
+        },
+        {
+          "type": "show",
+          "label": "Abrir Roles y acceso",
+          "to": "/people/roles"
+        }
+      ]
+    },
+    {
+      "id": "sign-up-links",
+      "category": "people",
+      "minutes": 2,
+      "route": "/people",
+      "related": [
+        "invite-your-team"
+      ],
+      "keywords": [
+        "registro",
+        "enlace",
+        "aprobación",
+        "unirse"
+      ],
+      "title": "Enlaces de registro y aprobaciones",
+      "summary": "Deja que las personas soliciten una cuenta; tú las apruebas.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Un enlace de registro permite que las personas creen su propia cuenta. Puedes limitarlo a las direcciones de correo de tu organización. Sus cuentas esperan en **Pendientes de aprobación** hasta que un administrador las aprueba y les da un rol."
+        }
+      ]
+    },
+    {
+      "id": "your-profile",
+      "category": "people",
+      "minutes": 2,
+      "route": "/profile",
+      "related": [
+        "two-step-sign-in"
+      ],
+      "keywords": [
+        "perfil",
+        "contraseña",
+        "foto",
+        "idioma",
+        "zona horaria"
+      ],
+      "title": "Tu perfil",
+      "summary": "Foto, nombre, idioma, zona horaria, contraseña e inicio de sesión.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Abre tu perfil desde tu nombre en la parte inferior del menú. Cambia tu foto, tu nombre, tu idioma, tu zona horaria y el formato de fecha, tu contraseña y tu inicio de sesión en dos pasos, y mira dónde has iniciado sesión."
+        }
+      ]
+    },
+    {
+      "id": "two-step-sign-in",
+      "category": "settings",
+      "minutes": 2,
+      "route": "/profile",
+      "related": [
+        "your-profile",
+        "security-settings"
+      ],
+      "keywords": [
+        "dos pasos",
+        "2fa",
+        "autenticador",
+        "código",
+        "recuperación"
+      ],
+      "title": "Inicio de sesión en dos pasos",
+      "summary": "Un código de una aplicación, del correo o de un mensaje de texto al iniciar sesión.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "El inicio de sesión en dos pasos pide un código después de tu contraseña. Configura una aplicación de autenticación en tu perfil para la opción más segura y guarda los códigos de recuperación en un lugar seguro."
+        }
+      ]
+    },
+    {
+      "id": "workspace-settings",
+      "category": "settings",
+      "minutes": 2,
+      "route": "/settings",
+      "related": [
+        "security-settings",
+        "form-defaults"
+      ],
+      "keywords": [
+        "configuración",
+        "ajustes",
+        "empresa",
+        "marca",
+        "idioma",
+        "apariencia"
+      ],
+      "title": "Configuración del espacio",
+      "summary": "Tu organización, marca, idioma, apariencia y más.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Configuración** reúne lo que se aplica a todo el espacio: datos de la empresa, marca, idioma y región, apariencia, inicio de sesión, seguridad, notificaciones, plantillas de correo, privacidad y valores predeterminados de formularios."
+        },
+        {
+          "type": "show",
+          "label": "Abrir la configuración",
+          "to": "/settings"
+        }
+      ]
+    },
+    {
+      "id": "security-settings",
+      "category": "settings",
+      "minutes": 2,
+      "route": "/settings/security",
+      "related": [
+        "two-step-sign-in",
+        "audit-trail"
+      ],
+      "keywords": [
+        "seguridad",
+        "reglas de contraseña",
+        "ip",
+        "sesión",
+        "lista de permitidos"
+      ],
+      "title": "Configuración de seguridad",
+      "summary": "Reglas de contraseña, inicio de sesión en dos pasos, sesiones y redes permitidas.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "En **Configuración → Seguridad**, los administradores fijan las reglas de contraseña, exigen el inicio de sesión en dos pasos, deciden cuánto tiempo permanecen conectadas las personas y, si hace falta, permiten iniciar sesión solo desde tus redes."
+        },
+        {
+          "type": "warning",
+          "text": "Antes de limitar las redes, añade tu propia dirección o podrías quedarte fuera."
+        }
+      ]
+    },
+    {
+      "id": "form-defaults",
+      "category": "settings",
+      "minutes": 1,
+      "route": "/settings/form-defaults",
+      "related": [
+        "themes"
+      ],
+      "keywords": [
+        "predeterminados",
+        "formulario nuevo",
+        "tema",
+        "agradecimiento"
+      ],
+      "title": "Valores predeterminados de formularios",
+      "summary": "Con qué empieza cada formulario nuevo.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Valores predeterminados de formularios** define el tema, la barra de progreso, las etiquetas, el mensaje de agradecimiento y los correos con los que empieza cada formulario nuevo. Los formularios que ya tienes no cambian."
+        }
+      ]
+    },
+    {
+      "id": "audit-trail",
+      "category": "audit",
+      "minutes": 2,
+      "route": "/audit",
+      "related": [
+        "security-settings"
+      ],
+      "keywords": [
+        "auditoría",
+        "registro",
+        "historial",
+        "quién hizo",
+        "actividad"
+      ],
+      "title": "El registro de auditoría",
+      "summary": "Quién hizo qué, cuándo y desde dónde.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "El **Registro de auditoría** guarda cada acción de tu espacio: inicios de sesión, cambios en formularios, respuestas, ajustes, personas y más, con quién lo hizo, cuándo y desde dónde."
+        },
+        {
+          "type": "p",
+          "text": "Filtra por área, persona o fecha y abre una entrada para ver qué cambió. Puedes exportar el registro si tu rol lo permite."
+        },
+        {
+          "type": "show",
+          "label": "Abrir el registro de auditoría",
+          "to": "/audit"
+        }
+      ]
+    },
+    {
+      "id": "ai-overview",
+      "category": "ai",
+      "popular": true,
+      "minutes": 2,
+      "route": "/ai",
+      "related": [
+        "ai-create-form",
+        "ai-analysis",
+        "ai-settings"
+      ],
+      "keywords": [
+        "ia",
+        "asistente",
+        "inteligencia artificial",
+        "ayúdame"
+      ],
+      "title": "El asistente de IA",
+      "summary": "Qué puede hacer y cómo mantienes el control.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "El asistente de IA crea formularios y plantillas, ayuda en el editor, analiza respuestas y traduce. Siempre **propone**: no se crea, cambia ni envía nada hasta que tú lo decidas."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Cada solicitud se guarda en el **Historial** con lo que devolvió.",
+            "Cada solicitud usa créditos de tu asignación mensual.",
+            "Los administradores eligen qué puede leer y pueden desactivarlo."
+          ]
+        },
+        {
+          "type": "show",
+          "label": "Abrir el asistente de IA",
+          "to": "/ai"
+        }
+      ]
+    },
+    {
+      "id": "ai-create-form",
+      "category": "ai",
+      "minutes": 2,
+      "route": "/ai/create-form",
+      "related": [
+        "ai-overview",
+        "first-form"
+      ],
+      "keywords": [
+        "formulario ia",
+        "describir",
+        "generar",
+        "borrador"
+      ],
+      "title": "Crear un formulario con el asistente",
+      "summary": "Descríbelo, revisa el borrador y créalo.",
+      "blocks": [
+        {
+          "type": "steps",
+          "items": [
+            "Abre **Asistente de IA → Crear un formulario**.",
+            "Describe el formulario, por ejemplo «un registro de visitas con nombre, empresa y hora de llegada», o pega un formulario en papel.",
+            "Haz clic en **Generar** y revisa la vista previa.",
+            "**Crear formulario** lo abre en el editor; **Intentar de nuevo** da otra versión."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Enumera lo que quieres preguntar, separado por comas: el asistente conserva tus palabras."
+        }
+      ]
+    },
+    {
+      "id": "ai-analysis",
+      "category": "ai",
+      "minutes": 2,
+      "route": "/ai/analysis",
+      "related": [
+        "ai-overview",
+        "analytics"
+      ],
+      "keywords": [
+        "analizar",
+        "temas",
+        "sentimiento",
+        "pregunta",
+        "resumen"
+      ],
+      "title": "Analizar respuestas con el asistente",
+      "summary": "Temas, tono y preguntas con palabras sencillas.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "En **Análisis de respuestas**, elige un formulario y un periodo. El asistente descubre de qué tratan las respuestas escritas, su tono y cómo cambiaron las valoraciones y las opciones."
+        },
+        {
+          "type": "p",
+          "text": "Haz preguntas con palabras sencillas, como «¿Cuántas respuestas hubo el mes pasado?». La respuesta siempre muestra qué se contó."
+        }
+      ]
+    },
+    {
+      "id": "ai-translate",
+      "category": "ai",
+      "minutes": 2,
+      "route": "/ai/translate",
+      "related": [
+        "form-languages"
+      ],
+      "keywords": [
+        "traducir",
+        "reescribir",
+        "lenguaje sencillo",
+        "tono"
+      ],
+      "title": "Traducir y reescribir con el asistente",
+      "summary": "Traducciones en paralelo y redacción más sencilla.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Traducciones** traduce un formulario a cualquiera de los 20 idiomas; revisas cada texto en paralelo antes de guardar. **Reescribir** sugiere una redacción más sencilla en el tono que elijas y muestra la edad de lectura antes y después."
+        }
+      ]
+    },
+    {
+      "id": "ai-settings",
+      "category": "ai",
+      "minutes": 1,
+      "route": "/ai/settings",
+      "related": [
+        "ai-overview"
+      ],
+      "keywords": [
+        "ajustes de ia",
+        "privacidad",
+        "créditos",
+        "desactivar"
+      ],
+      "title": "Ajustes y privacidad de la IA",
+      "summary": "Activarla o desactivarla, qué puede leer, créditos.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Los administradores activan o desactivan el asistente, eligen qué puede leer (formularios, respuestas, fuentes de datos), mantienen fuera los datos personales y deciden cuánto tiempo se guardan las solicitudes. El asistente nunca se entrena con tus datos."
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "id": "faq-free-respondents",
+      "category": "start",
+      "question": "¿Las personas necesitan una cuenta para rellenar un formulario?",
+      "answer": "No. Cualquiera con el enlace puede rellenar un formulario, salvo que lo limites a personas invitadas, a una contraseña o a tu organización.",
+      "article": "who-can-fill-in"
+    },
+    {
+      "id": "faq-mobile",
+      "category": "start",
+      "question": "¿Formalie funciona en el teléfono?",
+      "answer": "Sí. Los formularios y el portal funcionan en teléfonos, tabletas y ordenadores.",
+      "article": null
+    },
+    {
+      "id": "faq-languages",
+      "category": "start",
+      "question": "¿Qué idiomas habla Formalie?",
+      "answer": "El portal y los formularios funcionan en 20 idiomas, incluidos los que se escriben de derecha a izquierda, como el árabe. Cada persona elige su idioma en su perfil.",
+      "article": "form-languages"
+    },
+    {
+      "id": "faq-edit-live",
+      "category": "forms",
+      "question": "¿Puedo cambiar un formulario que ya está publicado?",
+      "answer": "Sí. Tus cambios se quedan en el borrador hasta que vuelvas a publicar, así que quien lo rellena nunca ve un cambio a medias.",
+      "article": "form-lifecycle"
+    },
+    {
+      "id": "faq-restore",
+      "category": "forms",
+      "question": "Eliminé un formulario por error. ¿Puedo recuperarlo?",
+      "answer": "Sí, desde la Papelera, en un plazo de 30 días, con sus respuestas.",
+      "article": "trash"
+    },
+    {
+      "id": "faq-copy-form",
+      "category": "forms",
+      "question": "¿Cómo copio un formulario?",
+      "answer": "Abre su menú ⋯ y elige Duplicar. La copia es un borrador nuevo con las mismas preguntas y el mismo diseño.",
+      "article": "forms-list"
+    },
+    {
+      "id": "faq-required",
+      "category": "builder",
+      "question": "¿Cómo hago obligatoria una pregunta?",
+      "answer": "Selecciónala en el editor y activa Obligatorio en sus ajustes.",
+      "article": "builder-basics"
+    },
+    {
+      "id": "faq-pages",
+      "category": "builder",
+      "question": "¿Cómo divido un formulario en páginas?",
+      "answer": "Haz clic en Añadir página en el editor y mueve preguntas a ella.",
+      "article": "builder-basics"
+    },
+    {
+      "id": "faq-conditional",
+      "category": "builder",
+      "question": "¿Puede una pregunta mostrarse solo después de cierta respuesta?",
+      "answer": "Sí, con una regla de lógica: Cuando la pregunta anterior tenga esa respuesta, Entonces mostrar la pregunta de seguimiento.",
+      "article": "builder-logic"
+    },
+    {
+      "id": "faq-logo",
+      "category": "design",
+      "question": "¿Cómo añado nuestro logotipo?",
+      "answer": "Añádelo una vez en Configuración → Marca; los formularios lo muestran en su cabecera. También puedes definirlo por formulario en Diseño.",
+      "article": "design-a-form"
+    },
+    {
+      "id": "faq-own-templates",
+      "category": "templates",
+      "question": "¿Podemos crear nuestras propias plantillas?",
+      "answer": "Sí. Guarda cualquier formulario como plantilla desde su menú ⋯.",
+      "article": "save-as-template"
+    },
+    {
+      "id": "faq-close-date",
+      "category": "sharing",
+      "question": "¿Puede un formulario cerrarse solo?",
+      "answer": "Sí. Define una fecha de cierre o un número máximo de respuestas en Compartir → Disponibilidad.",
+      "article": "who-can-fill-in"
+    },
+    {
+      "id": "faq-qr",
+      "category": "sharing",
+      "question": "¿Cómo consigo un código QR?",
+      "answer": "En la pestaña Compartir del formulario, descarga el código QR como imagen.",
+      "article": "share-a-form"
+    },
+    {
+      "id": "faq-notify",
+      "category": "responses",
+      "question": "¿Puedo recibir un correo por cada respuesta nueva?",
+      "answer": "Sí. Elige a quién se escribe en los ajustes del formulario y configura tus propias notificaciones en Configuración → Notificaciones.",
+      "article": "responses-basics"
+    },
+    {
+      "id": "faq-export-format",
+      "category": "responses",
+      "question": "¿Qué formatos puedo exportar?",
+      "answer": "Hojas de cálculo y otros formatos de archivo; elige en el cuadro de exportación.",
+      "article": "export-responses"
+    },
+    {
+      "id": "faq-edit-answer",
+      "category": "responses",
+      "question": "¿Puedo corregir una respuesta que dio alguien?",
+      "answer": "Sí, si tu rol permite corregir respuestas. El cambio queda registrado en el registro de auditoría.",
+      "article": "review-responses"
+    },
+    {
+      "id": "faq-drop-off",
+      "category": "analytics",
+      "question": "¿Dónde se detiene la gente al rellenar mi formulario?",
+      "answer": "Abre el formulario en Analítica: muestra cada página y pregunta con cuántas personas lo dejaron ahí.",
+      "article": "analytics"
+    },
+    {
+      "id": "faq-list-change",
+      "category": "lists",
+      "question": "Si cambio una lista, ¿cambian también mis formularios?",
+      "answer": "Sí. Todos los formularios que usan la lista la siguen.",
+      "article": "lists-basics"
+    },
+    {
+      "id": "faq-own-db",
+      "category": "data",
+      "question": "¿Pueden las respuestas ir directamente a nuestra propia base de datos?",
+      "answer": "Conéctela en Fuentes de datos y elíjala en Almacenamiento de respuestas del formulario.",
+      "article": "data-sources-basics"
+    },
+    {
+      "id": "faq-api-token",
+      "category": "api",
+      "question": "He perdido mi token de API. ¿Qué hago?",
+      "answer": "Los tokens se muestran una sola vez. Revoca el perdido y crea uno nuevo.",
+      "article": "api-tokens"
+    },
+    {
+      "id": "faq-roles-custom",
+      "category": "people",
+      "question": "¿Podemos crear nuestros propios roles?",
+      "answer": "Sí. En Personas → Roles y acceso, añade un rol y elige qué puede hacer y hasta dónde llega.",
+      "article": "roles-and-access"
+    },
+    {
+      "id": "faq-remove-person",
+      "category": "people",
+      "question": "Alguien se fue. ¿Cómo le quito el acceso?",
+      "answer": "Ábrelo en Personas y elige Desactivar. Se le cierra la sesión al instante; sus formularios y respuestas permanecen.",
+      "article": "invite-your-team"
+    },
+    {
+      "id": "faq-forgot-password",
+      "category": "settings",
+      "question": "Olvidé mi contraseña.",
+      "answer": "Haz clic en «Olvidé mi contraseña» en la página de inicio de sesión; recibirás un código por correo para establecer una nueva.",
+      "article": "your-profile"
+    },
+    {
+      "id": "faq-lost-phone",
+      "category": "settings",
+      "question": "Perdí el teléfono con mi aplicación de autenticación.",
+      "answer": "Inicia sesión con uno de tus códigos de recuperación o pide a un administrador que restablezca tu inicio de sesión en dos pasos.",
+      "article": "two-step-sign-in"
+    },
+    {
+      "id": "faq-audit-who",
+      "category": "audit",
+      "question": "¿Cómo veo quién cambió un formulario?",
+      "answer": "Abre el registro de auditoría y filtra por el formulario o por Formularios; cada entrada muestra quién, cuándo y qué cambió.",
+      "article": "audit-trail"
+    },
+    {
+      "id": "faq-ai-data",
+      "category": "ai",
+      "question": "¿El asistente de IA aprende de nuestros datos?",
+      "answer": "No. Las solicitudes solo se usan para responderlas y se conservan únicamente durante el tiempo fijado en los ajustes de IA.",
+      "article": "ai-settings"
+    },
+    {
+      "id": "faq-ai-credits",
+      "category": "ai",
+      "question": "¿Qué son los créditos de IA?",
+      "answer": "Cada solicitud usa unos pocos créditos de la asignación mensual de tu espacio. Consúltalos en Asistente de IA → Ajustes y uso.",
+      "article": "ai-settings"
+    },
+    {
+      "id": "faq-ai-off",
+      "category": "ai",
+      "question": "¿Podemos desactivar el asistente?",
+      "answer": "Sí. Los administradores lo desactivan en Asistente de IA → Ajustes y uso; mientras está desactivado no se le envía nada.",
+      "article": "ai-settings"
+    }
+  ],
+  "glossary": [
+    {
+      "id": "term-form",
+      "term": "Formulario",
+      "definition": "Un conjunto de preguntas que las personas rellenan, con su diseño, lógica y ajustes.",
+      "article": "builder-basics"
+    },
+    {
+      "id": "term-response",
+      "term": "Respuesta",
+      "definition": "El formulario rellenado por una persona, con todas sus contestaciones.",
+      "article": "responses-basics"
+    },
+    {
+      "id": "term-draft",
+      "term": "Borrador",
+      "definition": "La versión de un formulario en la que estás trabajando. Las personas solo la ven cuando publicas.",
+      "article": "form-lifecycle"
+    },
+    {
+      "id": "term-version",
+      "term": "Versión",
+      "definition": "Un estado publicado de un formulario, guardado para que puedas compararlo y restaurarlo.",
+      "article": "publish-and-versions"
+    },
+    {
+      "id": "term-field",
+      "term": "Campo",
+      "definition": "Una pregunta o bloque de un formulario, como un cuadro de texto, una opción o una firma.",
+      "article": "field-types"
+    },
+    {
+      "id": "term-key",
+      "term": "Clave",
+      "definition": "El nombre corto de una pregunta (como first_name), usado en fórmulas, exportaciones y en la API.",
+      "article": "calculations"
+    },
+    {
+      "id": "term-logic",
+      "term": "Regla de lógica",
+      "definition": "Una regla que muestra, oculta, exige u omite preguntas según las respuestas.",
+      "article": "builder-logic"
+    },
+    {
+      "id": "term-calculation",
+      "term": "Cálculo",
+      "definition": "Un campo que obtiene un valor, como un total o una puntuación, a partir de otras respuestas.",
+      "article": "calculations"
+    },
+    {
+      "id": "term-theme",
+      "term": "Tema",
+      "definition": "Un diseño guardado: colores, fuentes y disposición que puedes usar en cualquier formulario.",
+      "article": "themes"
+    },
+    {
+      "id": "term-template",
+      "term": "Plantilla",
+      "definition": "Un formulario ya preparado desde el que empiezas, con preguntas, lógica y diseño.",
+      "article": "use-a-template"
+    },
+    {
+      "id": "term-list",
+      "term": "Lista de opciones",
+      "definition": "Una lista de opciones guardada una vez y usada en muchos formularios; los cambios llegan a todos los formularios que la usan.",
+      "article": "lists-basics"
+    },
+    {
+      "id": "term-dynamic-list",
+      "term": "Lista con niveles (lista dinámica)",
+      "definition": "Una lista en la que una opción decide la siguiente, como país, luego región y luego ciudad.",
+      "article": "lists-basics"
+    },
+    {
+      "id": "term-folder",
+      "term": "Carpeta",
+      "definition": "Un grupo de formularios. Los administradores pueden limitar quién ve una carpeta.",
+      "article": "folders"
+    },
+    {
+      "id": "term-role",
+      "term": "Rol",
+      "definition": "Un conjunto de permisos que se da a las personas y que decide lo que pueden ver y hacer.",
+      "article": "roles-and-access"
+    },
+    {
+      "id": "term-reach",
+      "term": "Alcance (Propios, Compartidos, Todo)",
+      "definition": "Hasta dónde llega un permiso: solo lo que la persona creó, lo que se compartió con ella o todo.",
+      "article": "roles-and-access"
+    },
+    {
+      "id": "term-data-source",
+      "term": "Fuente de datos",
+      "definition": "Una conexión con una de tus bases de datos, usada para guardar respuestas y explorar datos.",
+      "article": "data-sources-basics"
+    },
+    {
+      "id": "term-endpoint",
+      "term": "Punto de acceso",
+      "definition": "Una dirección de tu servicio API a la que otro sistema llama para leer o enviar datos.",
+      "article": "api-basics"
+    },
+    {
+      "id": "term-token",
+      "term": "Token",
+      "definition": "Una clave secreta que un sistema usa para llamar a tu API. Se muestra una vez; puede caducar o revocarse.",
+      "article": "api-tokens"
+    },
+    {
+      "id": "term-webhook",
+      "term": "Webhook",
+      "definition": "Un mensaje que Formalie envía a otro sistema en el momento en que ocurre algo.",
+      "article": "webhooks"
+    },
+    {
+      "id": "term-audit",
+      "term": "Registro de auditoría",
+      "definition": "El registro de cada acción de tu espacio: quién, qué, cuándo y dónde.",
+      "article": "audit-trail"
+    },
+    {
+      "id": "term-two-step",
+      "term": "Inicio de sesión en dos pasos",
+      "definition": "Un código que se pide después de tu contraseña, desde una aplicación, el correo o un mensaje de texto.",
+      "article": "two-step-sign-in"
+    },
+    {
+      "id": "term-embed",
+      "term": "Insertar",
+      "definition": "Mostrar un formulario dentro de tu propio sitio web.",
+      "article": "embed-a-form"
+    },
+    {
+      "id": "term-ai-credit",
+      "term": "Crédito de IA",
+      "definition": "La unidad en que se cuenta la asignación mensual del asistente de IA; cada solicitud usa unos pocos.",
+      "article": "ai-settings"
+    },
+    {
+      "id": "term-workspace",
+      "term": "Espacio",
+      "definition": "El espacio propio de tu organización en Formalie, con su propia dirección, sus personas, formularios y ajustes.",
+      "article": "workspace-settings"
+    }
+  ],
+  "tours": [
+    {
+      "id": "forms-tour",
+      "route": "/forms",
+      "title": "Un recorrido rápido por tus formularios",
+      "steps": [
+        {
+          "target": "new-form",
+          "title": "Crear un formulario",
+          "text": "Empieza aquí un formulario nuevo: en blanco, desde una plantilla o importando uno."
+        },
+        {
+          "target": "list-search",
+          "title": "Encontrar un formulario",
+          "text": "Busca por nombre, etiqueta o propietario. Pulsa / para llegar aquí desde cualquier punto de la página."
+        },
+        {
+          "target": "view-switch",
+          "title": "Tabla o tarjetas",
+          "text": "Cambia entre filas y tarjetas. Formalie recuerda tu elección."
+        },
+        {
+          "target": "folders",
+          "title": "Carpetas",
+          "text": "Agrupa formularios en carpetas. Los administradores pueden decidir quién ve cada carpeta."
+        },
+        {
+          "target": "create",
+          "title": "Crear lo que quieras",
+          "text": "El botón + crea formularios, plantillas, conexiones y más desde cualquier lugar."
+        }
+      ]
+    },
+    {
+      "id": "people-tour",
+      "route": "/people",
+      "title": "Un recorrido rápido por Personas",
+      "steps": [
+        {
+          "target": "add-user",
+          "title": "Añadir a una persona",
+          "text": "Crea un perfil; la persona recibe un correo para establecer su contraseña."
+        },
+        {
+          "target": "signup-links",
+          "title": "Enlaces de registro",
+          "text": "Comparte un enlace para que las personas soliciten una cuenta; tú las apruebas."
+        },
+        {
+          "target": "list-search",
+          "title": "Encontrar a alguien",
+          "text": "Busca por nombre, correo, departamento o cargo."
+        }
+      ]
+    }
+  ]
+}

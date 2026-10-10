@@ -1,25 +1,8 @@
 <script setup lang="ts">
 const { t } = useI18n()
 const { shortcutsOpen } = useAppUi()
-const { destinations } = useNavigation()
-
-const sections = computed(() => [
-  {
-    title: t('shortcuts.general'),
-    items: [
-      { label: t('shortcuts.search'), keys: ['meta', 'k'] },
-      { label: t('shortcuts.help'), keys: ['?'] },
-      { label: t('shortcuts.toggleSidebar'), keys: ['['] },
-      { label: t('shortcuts.closeOverlay'), keys: ['escape'] },
-    ],
-  },
-  {
-    title: t('shortcuts.navigation'),
-    items: destinations.value
-      .filter(item => item.shortcut)
-      .map(item => ({ label: t(`nav.${item.key}`), keys: item.shortcut!.split('-'), chain: true })),
-  },
-])
+const { general, navigation } = useShortcutList()
+const sections = computed(() => [general.value, navigation.value])
 </script>
 
 <template>

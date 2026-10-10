@@ -90,7 +90,7 @@ function copyText() {
       <div v-else-if="digest" class="transition-opacity" :class="busy ? 'opacity-60' : ''" :aria-busy="busy || undefined">
         <AiAnalysisView :analysis="digest" />
       </div>
-      <UCard v-else variant="outline" :ui="{ body: 'p-6 sm:p-8' }">
+      <UCard v-else variant="outline" class="shrink-0" :ui="{ body: 'p-6 sm:p-8' }">
         <AppEmpty icon="i-lucide-lightbulb" :title="t('ai.insights.emptyTitle')" :description="t('ai.insights.emptyDesc')" />
       </UCard>
     </template>

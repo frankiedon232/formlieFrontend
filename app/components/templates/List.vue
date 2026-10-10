@@ -126,8 +126,9 @@ const mine = computed(() => props.source === 'workspace')
 
 <template>
   <DataView
-    :id="id"
+      :id="id"
     ref="dataView"
+    empty-help="use-a-template"
     :columns="columns"
     :fetcher="fetcher"
     :filters="filters"

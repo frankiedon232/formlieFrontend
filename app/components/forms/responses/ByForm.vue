@@ -75,7 +75,8 @@ const reviewedShare = (row: ResponseFormRow) => (row.total ? (row.total - row.st
 
 <template>
   <DataView
-    id="responses-by-form"
+      id="responses-by-form"
+    empty-help="responses-basics"
     :columns="columns"
     :fetcher="fetcher"
     :filters="filters"

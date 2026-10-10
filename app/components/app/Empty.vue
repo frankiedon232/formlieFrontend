@@ -18,6 +18,8 @@ const props = withDefaults(
     size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
     /** error / warning tint the icon; neutral otherwise (monochrome, as in the design). Unset: error icons tint themselves. */
     tone?: 'neutral' | 'error' | 'warning'
+    /** A help article that explains this (F25): "Learn how" opens it in the help panel. */
+    help?: string
   }>(),
   {
     icon: 'i-lucide-inbox',
@@ -27,9 +29,12 @@ const props = withDefaults(
     variant: 'naked',
     size: 'md',
     tone: undefined,
+    help: undefined,
   },
 )
 const slots = useSlots()
+const { t } = useI18n()
+const { openArticle } = useHelpPanel()
 const compact = computed(() => props.size === 'xs' || props.size === 'sm')
 /** xs: inside a small panel or list (no minimum height). */
 const tiny = computed(() => props.size === 'xs')
@@ -97,6 +102,9 @@ const tinted = computed(() => props.actions?.map(action => (!action.color || act
       </template>
       <template v-for="name in forwarded" :key="name" #[name]="slotProps">
         <slot :name="name" v-bind="slotProps ?? {}" />
+      </template>
+      <template v-if="help && !slots.footer" #footer>
+        <UButton :label="t('help.learnHow')" icon="i-lucide-book-open" color="neutral" variant="link" size="xs" @click="openArticle(help)" />
       </template>
     </UEmpty>
   </div>

@@ -1,0 +1,1909 @@
+{
+  "articles": [
+    {
+      "id": "welcome",
+      "category": "start",
+      "start": 1,
+      "popular": true,
+      "minutes": 2,
+      "route": "/forms",
+      "related": [
+        "first-form",
+        "find-your-way",
+        "invite-your-team"
+      ],
+      "keywords": [
+        "start",
+        "begin",
+        "overview",
+        "new",
+        "what is"
+      ],
+      "title": "Welcome to Formalie",
+      "summary": "What Formalie does and how the portal is laid out.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Formalie helps your organisation collect information with forms, review what comes in and send it where it is needed: a database, another system through the API, or a report."
+        },
+        {
+          "type": "h",
+          "text": "The main parts"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Forms**: build forms, share them and follow their responses.",
+            "**Data sources**: connect your own databases to store responses and explore them.",
+            "**API service**: let other systems read and send data through your own endpoints.",
+            "**AI assistant**: create forms, analyse answers and translate with help.",
+            "**People**: invite your team and decide what each person may do."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Press **Ctrl + K** (or **⌘ + K** on a Mac) anywhere to search for a page, a form or a setting."
+        },
+        {
+          "type": "show",
+          "label": "Open your forms",
+          "to": "/forms"
+        }
+      ]
+    },
+    {
+      "id": "find-your-way",
+      "category": "start",
+      "start": 2,
+      "minutes": 2,
+      "route": null,
+      "related": [
+        "welcome",
+        "keyboard-and-search"
+      ],
+      "keywords": [
+        "menu",
+        "sidebar",
+        "rail",
+        "navigation",
+        "where"
+      ],
+      "title": "Find your way around",
+      "summary": "The rail, the menu, the header and the search.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "The narrow column on the far left is the **rail**. Each icon opens an area of Formalie: Forms, Data sources, API service, AI assistant and People. The menu next to it changes with the area you are in."
+        },
+        {
+          "type": "p",
+          "text": "At the top of every page you find its title, where you are (the breadcrumbs) and the page’s buttons. The main button is always the dark one on the right."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Collapse the menu** with the « button or the **[** key to get more room.",
+            "**Dark mode** is at the bottom of the menu, under System.",
+            "**Help & support** is at the foot of the rail and in the System group."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "On a phone, the menu opens from the ☰ button at the top left."
+        }
+      ]
+    },
+    {
+      "id": "first-form",
+      "category": "start",
+      "start": 3,
+      "popular": true,
+      "minutes": 3,
+      "route": "/forms/new",
+      "related": [
+        "builder-basics",
+        "share-a-form",
+        "use-a-template"
+      ],
+      "keywords": [
+        "create",
+        "new form",
+        "first",
+        "make a form"
+      ],
+      "title": "Create your first form",
+      "summary": "From a blank page, a template or a description, in a few minutes.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "You can start a form in three ways: from a blank page, from one of Formalie’s templates, or by describing it to the AI assistant."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Click **New form** at the top right of the Forms page.",
+            "Choose **Blank**, pick a **template**, or **import** a form file.",
+            "Give the form a name and, if you like, a folder.",
+            "The builder opens: add questions from the field list on the left.",
+            "When you are happy, click **Publish** and share the link."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Not sure where to start? The AI assistant can draft the whole form from a few words: open **AI assistant → Create a form**."
+        },
+        {
+          "type": "show",
+          "label": "Start a new form",
+          "to": "/forms/new",
+          "target": "new-form"
+        }
+      ]
+    },
+    {
+      "id": "invite-your-team",
+      "category": "start",
+      "start": 4,
+      "minutes": 2,
+      "route": "/people",
+      "related": [
+        "sign-up-links",
+        "roles-and-access"
+      ],
+      "keywords": [
+        "invite",
+        "team",
+        "colleagues",
+        "add user",
+        "people"
+      ],
+      "title": "Bring in your team",
+      "summary": "Add colleagues with a profile, or share a sign-up link.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Everyone in your workspace has a profile with their department, job title and role. The role decides what they can see and do."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Open **People** from the rail.",
+            "Click **Add user** to create a profile: the person gets an email to set their password.",
+            "Or open **Sign-up links** to share a link: people who sign up with it wait for your approval."
+          ]
+        },
+        {
+          "type": "show",
+          "label": "Open People",
+          "to": "/people",
+          "target": "add-user"
+        }
+      ]
+    },
+    {
+      "id": "keyboard-and-search",
+      "category": "start",
+      "start": 5,
+      "minutes": 1,
+      "route": null,
+      "related": [
+        "find-your-way"
+      ],
+      "keywords": [
+        "shortcut",
+        "keyboard",
+        "search",
+        "ctrl k",
+        "command"
+      ],
+      "title": "Work faster with search and shortcuts",
+      "summary": "Find anything with Ctrl + K and move around with the keyboard.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Search opens with **Ctrl + K** (**⌘ + K** on a Mac). Type part of a page, form, setting or person and press Enter."
+        },
+        {
+          "type": "p",
+          "text": "Press **?** to see every keyboard shortcut. Many pages add their own, for example **J** and **K** to move between responses in a panel."
+        },
+        {
+          "type": "tip",
+          "text": "Every list and panel works with the keyboard alone: Tab moves, Enter opens, Esc closes."
+        }
+      ]
+    },
+    {
+      "id": "forms-list",
+      "category": "forms",
+      "popular": true,
+      "minutes": 2,
+      "route": "/forms",
+      "related": [
+        "form-lifecycle",
+        "folders"
+      ],
+      "keywords": [
+        "forms list",
+        "find form",
+        "filter",
+        "grid",
+        "table"
+      ],
+      "title": "Find and organise your forms",
+      "summary": "Search, filter, sort and switch between table and cards.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "The Forms page lists every form you may see. The two cards at the top show recent responses and how your forms are spread across draft, published and closed; click a status in the legend to show only those forms."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Search** by name, tag or owner.",
+            "**Filter** by status, folder, owner or tag; filters show as chips you can clear.",
+            "**Columns** lets you show, hide and reorder the table’s columns.",
+            "**Table / Grid** switches between rows and cards; Formalie remembers your choice.",
+            "Right-click a form, or use its **⋯** menu, for actions such as duplicate, move or archive."
+          ]
+        },
+        {
+          "type": "show",
+          "label": "Open the forms list",
+          "to": "/forms",
+          "target": "view-switch"
+        }
+      ]
+    },
+    {
+      "id": "form-lifecycle",
+      "category": "forms",
+      "minutes": 3,
+      "route": "/forms",
+      "related": [
+        "publish-and-versions",
+        "trash"
+      ],
+      "keywords": [
+        "draft",
+        "publish",
+        "close",
+        "archive",
+        "status",
+        "reopen"
+      ],
+      "title": "Draft, published, closed and archived",
+      "summary": "What each status means and how a form moves between them.",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "**Draft**: being built; nobody can fill it in yet.",
+            "**Published**: open for responses at its link.",
+            "**Closed**: the link still works but shows that the form is closed; no new responses.",
+            "**Archived**: put away; hidden from the main list, responses kept."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "A published form can have **unpublished changes**: your edits stay in the draft until you publish again, so respondents never see a half-finished change."
+        },
+        {
+          "type": "tip",
+          "text": "Set opening and closing dates in **Share → Availability** so a form opens and closes by itself."
+        }
+      ]
+    },
+    {
+      "id": "folders",
+      "category": "forms",
+      "minutes": 2,
+      "route": "/forms",
+      "related": [
+        "forms-list",
+        "roles-and-access"
+      ],
+      "keywords": [
+        "folder",
+        "organise",
+        "group",
+        "access",
+        "hidden"
+      ],
+      "title": "Folders and who can see them",
+      "summary": "Group forms in folders and keep some folders to certain people.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Folders group forms, for example by team or project. Create one with **+** next to Folders in the menu, then move forms into it from their **⋯** menu."
+        },
+        {
+          "type": "p",
+          "text": "Admins can limit a folder to some roles, departments or people with **Folder access**. Everyone else doesn’t see the folder, its forms or their responses anywhere, not even in search or exports."
+        }
+      ]
+    },
+    {
+      "id": "trash",
+      "category": "forms",
+      "minutes": 1,
+      "route": "/forms/trash",
+      "related": [
+        "form-lifecycle"
+      ],
+      "keywords": [
+        "delete",
+        "trash",
+        "restore",
+        "recover"
+      ],
+      "title": "Delete and restore forms",
+      "summary": "Deleted forms stay in the trash for 30 days.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "When you delete a form it goes to **Trash** for 30 days, with its responses. You can restore it from there at any time in those 30 days."
+        },
+        {
+          "type": "warning",
+          "text": "**Delete forever** in the trash removes the form and all its responses for good. It can’t be undone."
+        },
+        {
+          "type": "show",
+          "label": "Open the trash",
+          "to": "/forms/trash"
+        }
+      ]
+    },
+    {
+      "id": "builder-basics",
+      "category": "builder",
+      "popular": true,
+      "minutes": 3,
+      "route": "/forms/:id/build",
+      "related": [
+        "field-types",
+        "builder-logic",
+        "publish-and-versions"
+      ],
+      "keywords": [
+        "builder",
+        "add field",
+        "question",
+        "drag",
+        "page",
+        "layout"
+      ],
+      "title": "Build a form",
+      "summary": "Add questions, arrange them in rows and pages, and change their settings.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "The builder has three parts: the **field list** on the left, the **form** in the middle and the **settings** of what you selected on the right."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Drag a field from the list onto the form, or click it to add it after the selected field.",
+            "Click a field to change its question, help text, whether it’s required, and more.",
+            "Put fields side by side by dropping them next to each other; use **Width** to size them.",
+            "Add pages with **Add page** to split a long form.",
+            "Your changes save as you work; **Undo** and **Redo** are at the top."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "No mouse? Select a field and use **Alt + ↑ / ↓** to move it, **Ctrl + D** to duplicate and **Delete** to remove."
+        },
+        {
+          "type": "tip",
+          "text": "The **Assistant** button in the builder suggests missing questions, writes help texts and checks your form."
+        }
+      ]
+    },
+    {
+      "id": "field-types",
+      "category": "builder",
+      "minutes": 3,
+      "route": "/forms/:id/build",
+      "related": [
+        "builder-basics",
+        "lists-basics"
+      ],
+      "keywords": [
+        "field",
+        "type",
+        "question",
+        "upload",
+        "signature",
+        "rating",
+        "address"
+      ],
+      "title": "Which field to use",
+      "summary": "The kinds of questions Formalie offers and when to use each.",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "**Text**: short and long answers, email, phone, number, amount, full name.",
+            "**Dates**: date, time, date and time, date range, duration.",
+            "**Choices**: dropdown, radio, checkboxes, yes / no, ranking, matrix, agreement.",
+            "**Ratings**: stars, a 0 to 10 scale, a slider.",
+            "**Files**: file upload, photo upload, signature.",
+            "**Location**: address, country, language, time zone.",
+            "**Advanced**: hidden values and calculations.",
+            "**Layout**: section headings, text, images and dividers."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Pick the most specific field: an email field checks the address as people type, a date field shows a calendar, a phone field checks the number."
+        },
+        {
+          "type": "tip",
+          "text": "Long lists of choices (countries, departments) work best as a **List Option**, kept once and used in many forms."
+        }
+      ]
+    },
+    {
+      "id": "builder-logic",
+      "category": "builder",
+      "minutes": 3,
+      "route": "/forms/:id/logic",
+      "related": [
+        "calculations",
+        "builder-basics"
+      ],
+      "keywords": [
+        "logic",
+        "rule",
+        "show",
+        "hide",
+        "condition",
+        "skip",
+        "jump"
+      ],
+      "title": "Show the right questions with logic",
+      "summary": "Show, hide, require or skip questions depending on earlier answers.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Logic rules change the form while people fill it in: show a follow-up only after a yes, require a phone number for urgent requests, or jump to the end."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Open the **Logic** tab of the form.",
+            "Click **Add rule** and choose **When**: a question, a condition and a value.",
+            "Choose **Then**: show, hide, require, set a value or jump to a page.",
+            "Add more conditions with **and** / **or** if needed."
+          ]
+        },
+        {
+          "type": "note",
+          "text": "A question that a rule hides is never required, so people can always send the form."
+        }
+      ]
+    },
+    {
+      "id": "calculations",
+      "category": "builder",
+      "minutes": 2,
+      "route": "/forms/:id/build",
+      "related": [
+        "builder-logic",
+        "field-types"
+      ],
+      "keywords": [
+        "calculation",
+        "formula",
+        "total",
+        "score",
+        "sum"
+      ],
+      "title": "Totals and scores with calculations",
+      "summary": "Work out totals, averages and scores from the answers.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "A **Calculation** field works out a value from other answers, for example quantity × price, an average rating or a risk score. People see the result as they fill in the form."
+        },
+        {
+          "type": "p",
+          "text": "Write the formula with the questions’ keys in braces, for example **{quantity} * {unit_price}**. Choices can carry a score so they can be added up."
+        }
+      ]
+    },
+    {
+      "id": "publish-and-versions",
+      "category": "builder",
+      "minutes": 2,
+      "route": "/forms/:id/versions",
+      "related": [
+        "form-lifecycle",
+        "share-a-form"
+      ],
+      "keywords": [
+        "publish",
+        "version",
+        "restore",
+        "compare",
+        "history"
+      ],
+      "title": "Publish and versions",
+      "summary": "Every publish is kept as a version you can compare and restore.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Publish** makes your draft the live form. Each publish is saved as a numbered version with an optional note about what changed."
+        },
+        {
+          "type": "p",
+          "text": "In **Versions** you can compare any version with the draft and restore an older one into the draft."
+        },
+        {
+          "type": "tip",
+          "text": "The Publish button is greyed out when there is nothing new to publish."
+        }
+      ]
+    },
+    {
+      "id": "design-a-form",
+      "category": "design",
+      "popular": true,
+      "minutes": 3,
+      "route": "/forms/:id/design",
+      "related": [
+        "themes",
+        "landing-pages"
+      ],
+      "keywords": [
+        "design",
+        "colour",
+        "font",
+        "logo",
+        "theme",
+        "look"
+      ],
+      "title": "Design how a form looks",
+      "summary": "Colours, fonts, layout, header and thank-you page.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Open the **Design** tab of a form to change its look. The preview shows the form as people will see it, on a computer, tablet or phone."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Start from a ready **starting point**, then adjust.",
+            "Change colours, fonts, the size of fields and buttons.",
+            "Add your logo, a cover image or a coloured band at the top.",
+            "Design the **thank-you page** people see after sending."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Save a design as a **theme** to use it on other forms in one click."
+        }
+      ]
+    },
+    {
+      "id": "themes",
+      "category": "design",
+      "minutes": 2,
+      "route": "/settings/themes",
+      "related": [
+        "design-a-form",
+        "form-defaults"
+      ],
+      "keywords": [
+        "theme",
+        "brand",
+        "saved design",
+        "default"
+      ],
+      "title": "Themes",
+      "summary": "Keep designs once and use them on any form.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Themes are saved designs. Formalie ships a set; your workspace can add its own from the designer, or let the AI assistant suggest designs from your brand colour."
+        },
+        {
+          "type": "p",
+          "text": "Choose the theme new forms start with in **Settings → Form defaults**."
+        },
+        {
+          "type": "show",
+          "label": "Open themes",
+          "to": "/settings/themes"
+        }
+      ]
+    },
+    {
+      "id": "landing-pages",
+      "category": "design",
+      "minutes": 1,
+      "route": "/settings/landing-pages",
+      "related": [
+        "design-a-form"
+      ],
+      "keywords": [
+        "landing page",
+        "page around the form",
+        "banner",
+        "frame"
+      ],
+      "title": "Landing pages",
+      "summary": "The page around the form: banner, intro and facts.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "A landing page is the page your form sits on: a banner with the title, an introduction, how long it takes and your organisation. Pick one in the designer or keep your own in **Landing pages**."
+        }
+      ]
+    },
+    {
+      "id": "use-a-template",
+      "category": "templates",
+      "popular": true,
+      "minutes": 2,
+      "route": "/templates",
+      "related": [
+        "save-as-template",
+        "first-form"
+      ],
+      "keywords": [
+        "template",
+        "gallery",
+        "example",
+        "ready made"
+      ],
+      "title": "Start from a template",
+      "summary": "Ready forms for many uses, in your language.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "The template gallery has ready forms for HR, health and safety, events, sales and more. Each one comes with its questions, logic, calculations and a matching design."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Open **Templates** from the menu.",
+            "Browse by category or search.",
+            "Open a template to try it in the preview.",
+            "Click **Use template**: a new draft form opens in the builder."
+          ]
+        },
+        {
+          "type": "show",
+          "label": "Browse templates",
+          "to": "/templates"
+        }
+      ]
+    },
+    {
+      "id": "save-as-template",
+      "category": "templates",
+      "minutes": 1,
+      "route": "/templates",
+      "related": [
+        "use-a-template"
+      ],
+      "keywords": [
+        "save template",
+        "workspace template",
+        "reuse"
+      ],
+      "title": "Make your own templates",
+      "summary": "Save a form as a template for your workspace.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Any form can become a template for your workspace: open its **⋯** menu and choose **Save as template**. Give it a name, a description and a category. Your templates appear under **Your templates**."
+        }
+      ]
+    },
+    {
+      "id": "share-a-form",
+      "category": "sharing",
+      "popular": true,
+      "minutes": 3,
+      "route": "/forms/:id/share",
+      "related": [
+        "who-can-fill-in",
+        "embed-a-form",
+        "form-languages"
+      ],
+      "keywords": [
+        "share",
+        "link",
+        "qr",
+        "email",
+        "send"
+      ],
+      "title": "Share a form",
+      "summary": "Link, QR code, email invitations and short links.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Open the **Share** tab of a published form. From there you can copy its link, download a QR code, create a short link or send email invitations."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Link**: copy it and paste it anywhere.",
+            "**Custom link**: choose a readable address.",
+            "**QR code**: for posters and printed material.",
+            "**Invitations**: email people a personal link and see who has responded."
+          ]
+        },
+        {
+          "type": "show",
+          "label": "Open your forms",
+          "to": "/forms"
+        }
+      ]
+    },
+    {
+      "id": "who-can-fill-in",
+      "category": "sharing",
+      "minutes": 2,
+      "route": "/forms/:id/share",
+      "related": [
+        "share-a-form"
+      ],
+      "keywords": [
+        "access",
+        "password",
+        "invite only",
+        "organisation",
+        "limit",
+        "availability"
+      ],
+      "title": "Who can fill in a form, and when",
+      "summary": "Open to anyone, with a password, invite only, or your organisation.",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "**Anyone with the link**.",
+            "**With a password** you give out.",
+            "**Invite only**: only people you invited by email.",
+            "**Your organisation**: people signed in to your workspace."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "In **Availability** you can open and close the form on set dates and stop it after a number of responses."
+        }
+      ]
+    },
+    {
+      "id": "embed-a-form",
+      "category": "sharing",
+      "minutes": 1,
+      "route": "/forms/:id/share",
+      "related": [
+        "share-a-form"
+      ],
+      "keywords": [
+        "embed",
+        "website",
+        "iframe",
+        "widget"
+      ],
+      "title": "Put a form on your website",
+      "summary": "Embed the form in your own pages.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "In **Share → Embed** copy the code and paste it into your website. You can limit which websites may show the form."
+        }
+      ]
+    },
+    {
+      "id": "form-languages",
+      "category": "sharing",
+      "minutes": 2,
+      "route": "/forms/:id/build",
+      "related": [
+        "ai-translate",
+        "share-a-form"
+      ],
+      "keywords": [
+        "language",
+        "translate",
+        "multilingual",
+        "french",
+        "arabic"
+      ],
+      "title": "Forms in several languages",
+      "summary": "Offer a form in more languages; people switch at the top.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "A form has a main language and can offer more. In the builder, open the form settings, add a language under **More languages** and translate each text side by side."
+        },
+        {
+          "type": "tip",
+          "text": "**Translate the rest with AI** fills in what is still to do; you check every text before publishing."
+        }
+      ]
+    },
+    {
+      "id": "responses-basics",
+      "category": "responses",
+      "popular": true,
+      "minutes": 3,
+      "route": "/responses",
+      "related": [
+        "review-responses",
+        "export-responses"
+      ],
+      "keywords": [
+        "responses",
+        "answers",
+        "submissions",
+        "see answers"
+      ],
+      "title": "See your responses",
+      "summary": "Every answer, per form or across all forms.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Responses** lists your forms with their responses. Open a form to see its responses as a table or as cards; open a response to see every answer in a panel."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use **J** and **K** to move to the next or previous response.",
+            "Filter by status, date, channel or answer.",
+            "**Insights** shows a summary per question: choices, averages and the latest text answers."
+          ]
+        },
+        {
+          "type": "show",
+          "label": "Open responses",
+          "to": "/responses"
+        }
+      ]
+    },
+    {
+      "id": "review-responses",
+      "category": "responses",
+      "minutes": 2,
+      "route": "/responses",
+      "related": [
+        "responses-basics"
+      ],
+      "keywords": [
+        "review",
+        "status",
+        "approve",
+        "reject",
+        "tag",
+        "note"
+      ],
+      "title": "Review responses",
+      "summary": "Statuses, tags and notes to work through what comes in.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Each response has a status: **New**, **Reviewed**, **Approved** or **Rejected**. Change it with one click at the top of the response panel."
+        },
+        {
+          "type": "p",
+          "text": "Add tags and notes to keep track. Correcting answers is a separate permission, so your role may let you review without changing what people wrote."
+        }
+      ]
+    },
+    {
+      "id": "export-responses",
+      "category": "responses",
+      "minutes": 2,
+      "route": "/responses/exports",
+      "related": [
+        "responses-basics",
+        "data-sources-basics"
+      ],
+      "keywords": [
+        "export",
+        "excel",
+        "csv",
+        "download",
+        "pdf"
+      ],
+      "title": "Export responses",
+      "summary": "Download responses as a spreadsheet or file.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Click **Export** on a form’s responses, choose the format and what to include. Large exports are prepared in the background; you see their progress in **Exports** and get a message when the file is ready."
+        }
+      ]
+    },
+    {
+      "id": "analytics",
+      "category": "analytics",
+      "popular": true,
+      "minutes": 2,
+      "route": "/analytics",
+      "related": [
+        "responses-basics",
+        "ai-analysis"
+      ],
+      "keywords": [
+        "analytics",
+        "views",
+        "completion",
+        "drop off",
+        "funnel"
+      ],
+      "title": "How your forms perform",
+      "summary": "Views, starts, completions and where people stop.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Analytics** shows how many people opened, started and completed each form, how long it takes and where people stop. Open a form to see each page and question."
+        },
+        {
+          "type": "tip",
+          "text": "A question where many people stop is often unclear or asks too much. Try a shorter question or make it optional."
+        }
+      ]
+    },
+    {
+      "id": "lists-basics",
+      "category": "lists",
+      "minutes": 3,
+      "route": "/option-sets",
+      "related": [
+        "field-types"
+      ],
+      "keywords": [
+        "list",
+        "option",
+        "choices",
+        "dropdown",
+        "levels",
+        "country",
+        "dynamic"
+      ],
+      "title": "List Option: keep choices once",
+      "summary": "Lists of choices you use in many forms, with levels.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "A **List Option** holds choices you use in many forms, for example departments, products or countries. Change the list once and every form that uses it follows."
+        },
+        {
+          "type": "p",
+          "text": "Lists can have **levels**: pick a country, then only its regions show, then its cities. Very large lists stay on the server and load as people type."
+        },
+        {
+          "type": "note",
+          "text": "Lists marked **Formalie** are provided for every workspace; you can use them but not change them."
+        }
+      ]
+    },
+    {
+      "id": "data-sources-basics",
+      "category": "data",
+      "minutes": 3,
+      "route": "/data-sources",
+      "related": [
+        "database-explorer",
+        "export-responses"
+      ],
+      "keywords": [
+        "database",
+        "connection",
+        "data source",
+        "storage",
+        "postgres",
+        "mysql"
+      ],
+      "title": "Store responses in your own database",
+      "summary": "Connect a database and send a form’s responses to it.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Data sources** connects Formalie to your own databases. Responses can then be stored there too, in tables Formalie creates and keeps in step with the form."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Open **Data sources** from the rail and click **Add connection**.",
+            "Choose the database type and enter its details; **Test now** checks it works.",
+            "In a form’s **Response storage**, choose the connection: new responses are stored there."
+          ]
+        },
+        {
+          "type": "warning",
+          "text": "Give Formalie a database user with only the rights it needs."
+        }
+      ]
+    },
+    {
+      "id": "database-explorer",
+      "category": "data",
+      "minutes": 2,
+      "route": "/data-sources/explorer",
+      "related": [
+        "data-sources-basics"
+      ],
+      "keywords": [
+        "explorer",
+        "query",
+        "sql",
+        "table",
+        "rows"
+      ],
+      "title": "Explore and query your data",
+      "summary": "Browse tables and run queries without leaving Formalie.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "The **Database explorer** shows the tables of a connection and their rows. The **Query editor** runs SQL; statements that change data need their own permission and ask first."
+        }
+      ]
+    },
+    {
+      "id": "api-basics",
+      "category": "api",
+      "minutes": 3,
+      "route": "/api-service",
+      "related": [
+        "api-tokens",
+        "webhooks"
+      ],
+      "keywords": [
+        "api",
+        "endpoint",
+        "integration",
+        "service",
+        "rest"
+      ],
+      "title": "The API service",
+      "summary": "Your own endpoints for other systems to read and send data.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "The **API service** gives other systems their own endpoints: read responses, send new ones, or look up list options. Each service groups endpoints and has its own documentation page."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Open **API service** and create a service.",
+            "Add endpoints for the forms or data you want to offer.",
+            "Create a **token** for the system that will call it.",
+            "Try the endpoint from the documentation page."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "api-tokens",
+      "category": "api",
+      "minutes": 2,
+      "route": "/api-service/auth",
+      "related": [
+        "api-basics"
+      ],
+      "keywords": [
+        "token",
+        "key",
+        "header",
+        "secret",
+        "access rules"
+      ],
+      "title": "Tokens and access rules",
+      "summary": "Who may call your endpoints, from where and how often.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Each system that calls your API gets a **token**. Tokens can expire and be revoked at any time. **Access rules** limit addresses, times and how many calls are allowed."
+        },
+        {
+          "type": "warning",
+          "text": "A token is shown once. Keep it in a safe place and never put it in a public web page."
+        }
+      ]
+    },
+    {
+      "id": "webhooks",
+      "category": "api",
+      "minutes": 2,
+      "route": "/api-service",
+      "related": [
+        "api-basics"
+      ],
+      "keywords": [
+        "webhook",
+        "notify",
+        "event",
+        "callback"
+      ],
+      "title": "Webhooks",
+      "summary": "Tell another system the moment something happens.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "A webhook sends a message to another system’s address when something happens, for example a new response. Formalie retries failed deliveries and shows each delivery so you can see what was sent."
+        }
+      ]
+    },
+    {
+      "id": "roles-and-access",
+      "category": "people",
+      "popular": true,
+      "minutes": 3,
+      "route": "/people/roles",
+      "related": [
+        "invite-your-team",
+        "folders"
+      ],
+      "keywords": [
+        "role",
+        "permission",
+        "access",
+        "admin",
+        "member",
+        "own",
+        "shared"
+      ],
+      "title": "Roles and access",
+      "summary": "Decide exactly what each role may see and do.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Every person has one role. Owner can do everything; Admin and Member are ready to use and can be changed; you can add your own roles."
+        },
+        {
+          "type": "p",
+          "text": "Each action has a reach: **None**, **Own** (what they made), **Shared** (forms shared with them), **Own & shared** or **All**. For example, a role may see all responses but only change its own forms."
+        },
+        {
+          "type": "show",
+          "label": "Open Roles & access",
+          "to": "/people/roles"
+        }
+      ]
+    },
+    {
+      "id": "sign-up-links",
+      "category": "people",
+      "minutes": 2,
+      "route": "/people",
+      "related": [
+        "invite-your-team"
+      ],
+      "keywords": [
+        "sign up",
+        "link",
+        "approval",
+        "join"
+      ],
+      "title": "Sign-up links and approvals",
+      "summary": "Let people request an account; you approve them.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "A sign-up link lets people create their own account. You can limit it to your organisation’s email addresses. Their accounts wait in **Awaiting approval** until an admin approves them and gives them a role."
+        }
+      ]
+    },
+    {
+      "id": "your-profile",
+      "category": "people",
+      "minutes": 2,
+      "route": "/profile",
+      "related": [
+        "two-step-sign-in"
+      ],
+      "keywords": [
+        "profile",
+        "password",
+        "photo",
+        "language",
+        "time zone"
+      ],
+      "title": "Your profile",
+      "summary": "Photo, name, language, time zone, password and sign-in.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Open your profile from your name at the bottom of the menu. Change your photo, name, language, time zone and date format, your password and your two-step sign-in, and see where you are signed in."
+        }
+      ]
+    },
+    {
+      "id": "two-step-sign-in",
+      "category": "settings",
+      "minutes": 2,
+      "route": "/profile",
+      "related": [
+        "your-profile",
+        "security-settings"
+      ],
+      "keywords": [
+        "two-step",
+        "2fa",
+        "authenticator",
+        "code",
+        "recovery"
+      ],
+      "title": "Two-step sign-in",
+      "summary": "A code from an app, email or text message when you sign in.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Two-step sign-in asks for a code after your password. Set up an authenticator app in your profile for the safest option, and keep the recovery codes somewhere safe."
+        }
+      ]
+    },
+    {
+      "id": "workspace-settings",
+      "category": "settings",
+      "minutes": 2,
+      "route": "/settings",
+      "related": [
+        "security-settings",
+        "form-defaults"
+      ],
+      "keywords": [
+        "settings",
+        "company",
+        "branding",
+        "language",
+        "appearance"
+      ],
+      "title": "Workspace settings",
+      "summary": "Your organisation, branding, language, appearance and more.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Settings** holds what applies to the whole workspace: company details, branding, language and region, appearance, sign-in, security, notifications, email templates, privacy and form defaults."
+        },
+        {
+          "type": "show",
+          "label": "Open settings",
+          "to": "/settings"
+        }
+      ]
+    },
+    {
+      "id": "security-settings",
+      "category": "settings",
+      "minutes": 2,
+      "route": "/settings/security",
+      "related": [
+        "two-step-sign-in",
+        "audit-trail"
+      ],
+      "keywords": [
+        "security",
+        "password rules",
+        "ip",
+        "session",
+        "allowlist"
+      ],
+      "title": "Security settings",
+      "summary": "Password rules, two-step sign-in, sessions and allowed networks.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "In **Settings → Security** admins set password rules, require two-step sign-in, decide how long people stay signed in and, if needed, allow sign-in only from your networks."
+        },
+        {
+          "type": "warning",
+          "text": "Before limiting networks, add your own address, or you may lock yourself out."
+        }
+      ]
+    },
+    {
+      "id": "form-defaults",
+      "category": "settings",
+      "minutes": 1,
+      "route": "/settings/form-defaults",
+      "related": [
+        "themes"
+      ],
+      "keywords": [
+        "defaults",
+        "new form",
+        "theme",
+        "thank you"
+      ],
+      "title": "Form defaults",
+      "summary": "What every new form starts with.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Form defaults** sets the theme, progress bar, labels, thank-you message and emails every new form starts with. Forms you already have don’t change."
+        }
+      ]
+    },
+    {
+      "id": "audit-trail",
+      "category": "audit",
+      "minutes": 2,
+      "route": "/audit",
+      "related": [
+        "security-settings"
+      ],
+      "keywords": [
+        "audit",
+        "log",
+        "history",
+        "who did",
+        "activity"
+      ],
+      "title": "The audit trail",
+      "summary": "Who did what, when and from where.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "The **Audit trail** records every action in your workspace: sign-ins, changes to forms, responses, settings, people and more, with who did it, when and from where."
+        },
+        {
+          "type": "p",
+          "text": "Filter by area, person or date and open an entry to see what changed. You can export the trail if your role allows it."
+        },
+        {
+          "type": "show",
+          "label": "Open the audit trail",
+          "to": "/audit"
+        }
+      ]
+    },
+    {
+      "id": "ai-overview",
+      "category": "ai",
+      "popular": true,
+      "minutes": 2,
+      "route": "/ai",
+      "related": [
+        "ai-create-form",
+        "ai-analysis",
+        "ai-settings"
+      ],
+      "keywords": [
+        "ai",
+        "assistant",
+        "artificial intelligence",
+        "help me"
+      ],
+      "title": "The AI assistant",
+      "summary": "What it can do, and how you stay in control.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "The AI assistant creates forms and templates, helps in the builder, analyses responses and translates. It always **proposes**: nothing is created, changed or sent until you choose to."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Every request is kept in **History** with what came back.",
+            "Each request uses credits from your monthly allowance.",
+            "Admins choose what it may read and can switch it off."
+          ]
+        },
+        {
+          "type": "show",
+          "label": "Open the AI assistant",
+          "to": "/ai"
+        }
+      ]
+    },
+    {
+      "id": "ai-create-form",
+      "category": "ai",
+      "minutes": 2,
+      "route": "/ai/create-form",
+      "related": [
+        "ai-overview",
+        "first-form"
+      ],
+      "keywords": [
+        "ai form",
+        "describe",
+        "generate",
+        "draft"
+      ],
+      "title": "Create a form with the assistant",
+      "summary": "Describe it, check the draft, create it.",
+      "blocks": [
+        {
+          "type": "steps",
+          "items": [
+            "Open **AI assistant → Create a form**.",
+            "Describe the form, for example “a visitor sign-in with name, company and arrival time”, or paste a paper form.",
+            "Click **Generate** and check the preview.",
+            "**Create form** opens it in the builder; **Try again** gives another take."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "List what you want to ask, separated by commas: the assistant keeps your words."
+        }
+      ]
+    },
+    {
+      "id": "ai-analysis",
+      "category": "ai",
+      "minutes": 2,
+      "route": "/ai/analysis",
+      "related": [
+        "ai-overview",
+        "analytics"
+      ],
+      "keywords": [
+        "analyse",
+        "themes",
+        "sentiment",
+        "question",
+        "summary"
+      ],
+      "title": "Analyse responses with the assistant",
+      "summary": "Themes, tone and questions in plain words.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "In **Response analysis**, pick a form and a period. The assistant finds what written answers are about, their tone, and how ratings and choices changed."
+        },
+        {
+          "type": "p",
+          "text": "Ask questions in plain words, like “How many responses last month?”. The answer always shows what was counted."
+        }
+      ]
+    },
+    {
+      "id": "ai-translate",
+      "category": "ai",
+      "minutes": 2,
+      "route": "/ai/translate",
+      "related": [
+        "form-languages"
+      ],
+      "keywords": [
+        "translate",
+        "rewrite",
+        "plain language",
+        "tone"
+      ],
+      "title": "Translate and rewrite with the assistant",
+      "summary": "Side-by-side translations and plainer wording.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Translations** translates a form into any of the 20 languages; you check each text side by side before saving. **Rewrite** suggests plainer wording in the tone you choose and shows the reading age before and after."
+        }
+      ]
+    },
+    {
+      "id": "ai-settings",
+      "category": "ai",
+      "minutes": 1,
+      "route": "/ai/settings",
+      "related": [
+        "ai-overview"
+      ],
+      "keywords": [
+        "ai settings",
+        "privacy",
+        "credits",
+        "switch off"
+      ],
+      "title": "AI settings and privacy",
+      "summary": "Switch it on or off, what it may read, credits.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Admins switch the assistant on or off, choose what it may read (forms, responses, data sources), keep personal data out and choose how long requests are kept. The assistant never trains on your data."
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "id": "faq-free-respondents",
+      "category": "start",
+      "question": "Do people need an account to fill in a form?",
+      "answer": "No. Anyone with the link can fill in a form, unless you limit it to invited people, a password or your organisation.",
+      "article": "who-can-fill-in"
+    },
+    {
+      "id": "faq-mobile",
+      "category": "start",
+      "question": "Does Formalie work on phones?",
+      "answer": "Yes. Forms and the portal work on phones, tablets and computers.",
+      "article": null
+    },
+    {
+      "id": "faq-languages",
+      "category": "start",
+      "question": "Which languages does Formalie speak?",
+      "answer": "The portal and forms work in 20 languages, including right-to-left languages such as Arabic. Each person chooses their own language in their profile.",
+      "article": "form-languages"
+    },
+    {
+      "id": "faq-edit-live",
+      "category": "forms",
+      "question": "Can I change a form that is already published?",
+      "answer": "Yes. Your changes stay in the draft until you publish again, so people filling it in never see a half-finished change.",
+      "article": "form-lifecycle"
+    },
+    {
+      "id": "faq-restore",
+      "category": "forms",
+      "question": "I deleted a form by mistake. Can I get it back?",
+      "answer": "Yes, from the Trash, within 30 days, with its responses.",
+      "article": "trash"
+    },
+    {
+      "id": "faq-copy-form",
+      "category": "forms",
+      "question": "How do I copy a form?",
+      "answer": "Open its ⋯ menu and choose Duplicate. The copy is a new draft with the same questions and design.",
+      "article": "forms-list"
+    },
+    {
+      "id": "faq-required",
+      "category": "builder",
+      "question": "How do I make a question required?",
+      "answer": "Select it in the builder and switch on Required in its settings.",
+      "article": "builder-basics"
+    },
+    {
+      "id": "faq-pages",
+      "category": "builder",
+      "question": "How do I split a form into pages?",
+      "answer": "Click Add page in the builder and move questions to it.",
+      "article": "builder-basics"
+    },
+    {
+      "id": "faq-conditional",
+      "category": "builder",
+      "question": "Can a question only show after a certain answer?",
+      "answer": "Yes, with a logic rule: When the earlier question has that answer, Then show the follow-up.",
+      "article": "builder-logic"
+    },
+    {
+      "id": "faq-logo",
+      "category": "design",
+      "question": "How do I add our logo?",
+      "answer": "Add it once in Settings → Branding; forms show it in their header. You can also set it per form in Design.",
+      "article": "design-a-form"
+    },
+    {
+      "id": "faq-own-templates",
+      "category": "templates",
+      "question": "Can we make our own templates?",
+      "answer": "Yes. Save any form as a template from its ⋯ menu.",
+      "article": "save-as-template"
+    },
+    {
+      "id": "faq-close-date",
+      "category": "sharing",
+      "question": "Can a form close by itself?",
+      "answer": "Yes. Set a closing date or a maximum number of responses in Share → Availability.",
+      "article": "who-can-fill-in"
+    },
+    {
+      "id": "faq-qr",
+      "category": "sharing",
+      "question": "How do I get a QR code?",
+      "answer": "In the form’s Share tab, download the QR code as an image.",
+      "article": "share-a-form"
+    },
+    {
+      "id": "faq-notify",
+      "category": "responses",
+      "question": "Can I get an email for each new response?",
+      "answer": "Yes. Choose who is emailed in the form’s settings, and set your own notifications in Settings → Notifications.",
+      "article": "responses-basics"
+    },
+    {
+      "id": "faq-export-format",
+      "category": "responses",
+      "question": "Which formats can I export?",
+      "answer": "Spreadsheets and other file formats; choose in the export dialog.",
+      "article": "export-responses"
+    },
+    {
+      "id": "faq-edit-answer",
+      "category": "responses",
+      "question": "Can I correct an answer someone gave?",
+      "answer": "Yes, if your role allows correcting answers. The change is recorded in the audit trail.",
+      "article": "review-responses"
+    },
+    {
+      "id": "faq-drop-off",
+      "category": "analytics",
+      "question": "Where do people stop filling in my form?",
+      "answer": "Open the form in Analytics: it shows each page and question with how many people left there.",
+      "article": "analytics"
+    },
+    {
+      "id": "faq-list-change",
+      "category": "lists",
+      "question": "If I change a list, do my forms change too?",
+      "answer": "Yes. Every form that uses the list follows it.",
+      "article": "lists-basics"
+    },
+    {
+      "id": "faq-own-db",
+      "category": "data",
+      "question": "Can responses go straight to our own database?",
+      "answer": "Yes. Connect it in Data sources and choose it in the form’s Response storage.",
+      "article": "data-sources-basics"
+    },
+    {
+      "id": "faq-api-token",
+      "category": "api",
+      "question": "I lost my API token. What now?",
+      "answer": "Tokens are shown once. Revoke the lost one and create a new token.",
+      "article": "api-tokens"
+    },
+    {
+      "id": "faq-roles-custom",
+      "category": "people",
+      "question": "Can we make our own roles?",
+      "answer": "Yes. In People → Roles & access, add a role and choose what it may do and how far it reaches.",
+      "article": "roles-and-access"
+    },
+    {
+      "id": "faq-remove-person",
+      "category": "people",
+      "question": "Someone left. How do I remove their access?",
+      "answer": "Open them in People and choose Disable. They are signed out at once; their forms and responses stay.",
+      "article": "invite-your-team"
+    },
+    {
+      "id": "faq-forgot-password",
+      "category": "settings",
+      "question": "I forgot my password.",
+      "answer": "Click Forgot password on the sign-in page; you get a code by email to set a new one.",
+      "article": "your-profile"
+    },
+    {
+      "id": "faq-lost-phone",
+      "category": "settings",
+      "question": "I lost the phone with my authenticator app.",
+      "answer": "Sign in with one of your recovery codes, or ask an admin to reset your two-step sign-in.",
+      "article": "two-step-sign-in"
+    },
+    {
+      "id": "faq-audit-who",
+      "category": "audit",
+      "question": "How do I see who changed a form?",
+      "answer": "Open the audit trail and filter by the form or by Forms; each entry shows who, when and what changed.",
+      "article": "audit-trail"
+    },
+    {
+      "id": "faq-ai-data",
+      "category": "ai",
+      "question": "Does the AI assistant learn from our data?",
+      "answer": "No. Requests are only used to answer them and are kept only for the time set in AI settings.",
+      "article": "ai-settings"
+    },
+    {
+      "id": "faq-ai-credits",
+      "category": "ai",
+      "question": "What are AI credits?",
+      "answer": "Each request uses a few credits from your workspace’s monthly allowance. See them in AI assistant → Settings & usage.",
+      "article": "ai-settings"
+    },
+    {
+      "id": "faq-ai-off",
+      "category": "ai",
+      "question": "Can we switch the assistant off?",
+      "answer": "Yes. Admins switch it off in AI assistant → Settings & usage; nothing is sent to it while it is off.",
+      "article": "ai-settings"
+    }
+  ],
+  "glossary": [
+    {
+      "id": "term-form",
+      "term": "Form",
+      "definition": "A set of questions people fill in, with its design, logic and settings.",
+      "article": "builder-basics"
+    },
+    {
+      "id": "term-response",
+      "term": "Response",
+      "definition": "One person’s filled-in form, with all their answers.",
+      "article": "responses-basics"
+    },
+    {
+      "id": "term-draft",
+      "term": "Draft",
+      "definition": "The version of a form you are working on. People only see it once you publish.",
+      "article": "form-lifecycle"
+    },
+    {
+      "id": "term-version",
+      "term": "Version",
+      "definition": "A published state of a form, kept so you can compare and restore it.",
+      "article": "publish-and-versions"
+    },
+    {
+      "id": "term-field",
+      "term": "Field",
+      "definition": "One question or block in a form, such as a text box, a choice or a signature.",
+      "article": "field-types"
+    },
+    {
+      "id": "term-key",
+      "term": "Key",
+      "definition": "The short name of a question (like first_name), used in formulas, exports and the API.",
+      "article": "calculations"
+    },
+    {
+      "id": "term-logic",
+      "term": "Logic rule",
+      "definition": "A rule that shows, hides, requires or skips questions depending on answers.",
+      "article": "builder-logic"
+    },
+    {
+      "id": "term-calculation",
+      "term": "Calculation",
+      "definition": "A field that works out a value, such as a total or score, from other answers.",
+      "article": "calculations"
+    },
+    {
+      "id": "term-theme",
+      "term": "Theme",
+      "definition": "A saved design: colours, fonts and layout you can use on any form.",
+      "article": "themes"
+    },
+    {
+      "id": "term-template",
+      "term": "Template",
+      "definition": "A ready form you start from, with questions, logic and design.",
+      "article": "use-a-template"
+    },
+    {
+      "id": "term-list",
+      "term": "List Option",
+      "definition": "A list of choices kept once and used in many forms; changes reach every form using it.",
+      "article": "lists-basics"
+    },
+    {
+      "id": "term-dynamic-list",
+      "term": "List with levels (dynamic list)",
+      "definition": "A list where a choice decides the next one, such as country, then region, then city.",
+      "article": "lists-basics"
+    },
+    {
+      "id": "term-folder",
+      "term": "Folder",
+      "definition": "A group of forms. Admins can limit who sees a folder.",
+      "article": "folders"
+    },
+    {
+      "id": "term-role",
+      "term": "Role",
+      "definition": "A set of permissions given to people, deciding what they can see and do.",
+      "article": "roles-and-access"
+    },
+    {
+      "id": "term-reach",
+      "term": "Reach (Own, Shared, All)",
+      "definition": "How far a permission goes: only what the person made, what was shared with them, or everything.",
+      "article": "roles-and-access"
+    },
+    {
+      "id": "term-data-source",
+      "term": "Data source",
+      "definition": "A connection to one of your databases, used to store responses and explore data.",
+      "article": "data-sources-basics"
+    },
+    {
+      "id": "term-endpoint",
+      "term": "Endpoint",
+      "definition": "An address in your API service that another system calls to read or send data.",
+      "article": "api-basics"
+    },
+    {
+      "id": "term-token",
+      "term": "Token",
+      "definition": "A secret key a system uses to call your API. Shown once; can expire or be revoked.",
+      "article": "api-tokens"
+    },
+    {
+      "id": "term-webhook",
+      "term": "Webhook",
+      "definition": "A message Formalie sends to another system the moment something happens.",
+      "article": "webhooks"
+    },
+    {
+      "id": "term-audit",
+      "term": "Audit trail",
+      "definition": "The record of every action in your workspace: who, what, when and where.",
+      "article": "audit-trail"
+    },
+    {
+      "id": "term-two-step",
+      "term": "Two-step sign-in",
+      "definition": "A code asked for after your password, from an app, email or text message.",
+      "article": "two-step-sign-in"
+    },
+    {
+      "id": "term-embed",
+      "term": "Embed",
+      "definition": "Showing a form inside your own website.",
+      "article": "embed-a-form"
+    },
+    {
+      "id": "term-ai-credit",
+      "term": "AI credit",
+      "definition": "The unit the AI assistant’s monthly allowance is counted in; each request uses a few.",
+      "article": "ai-settings"
+    },
+    {
+      "id": "term-workspace",
+      "term": "Workspace",
+      "definition": "Your organisation’s own space in Formalie, at its own address, with its people, forms and settings.",
+      "article": "workspace-settings"
+    }
+  ],
+  "tours": [
+    {
+      "id": "forms-tour",
+      "route": "/forms",
+      "title": "A quick tour of your forms",
+      "steps": [
+        {
+          "target": "new-form",
+          "title": "Create a form",
+          "text": "Start a new form here: blank, from a template or by importing one."
+        },
+        {
+          "target": "list-search",
+          "title": "Find a form",
+          "text": "Search by name, tag or owner. Press / to jump here from anywhere on the page."
+        },
+        {
+          "target": "view-switch",
+          "title": "Table or cards",
+          "text": "Switch between rows and cards. Formalie remembers your choice."
+        },
+        {
+          "target": "folders",
+          "title": "Folders",
+          "text": "Group forms in folders. Admins can decide who sees each folder."
+        },
+        {
+          "target": "create",
+          "title": "Create anything",
+          "text": "The + button creates forms, templates, connections and more from anywhere."
+        }
+      ]
+    },
+    {
+      "id": "people-tour",
+      "route": "/people",
+      "title": "A quick tour of People",
+      "steps": [
+        {
+          "target": "add-user",
+          "title": "Add a person",
+          "text": "Create a profile; they get an email to set their password."
+        },
+        {
+          "target": "signup-links",
+          "title": "Sign-up links",
+          "text": "Share a link so people can request an account; you approve them."
+        },
+        {
+          "target": "list-search",
+          "title": "Find someone",
+          "text": "Search by name, email, department or job title."
+        }
+      ]
+    }
+  ]
+}

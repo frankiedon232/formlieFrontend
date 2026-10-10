@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-10 (F19 done, waiting for review; F25 Help centre brought forward while the owner sets up dLocal / Stripe sandboxes; then F24, F21)
+**Last updated:** 2026-10-10 (F19 AI assistant and F25 Help centre done, both waiting for the owner's review; next: F24 Payments & subscriptions with dLocal (Stripe possible) once the sandbox account is ready, then F21 Dashboard)
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend · ➖ dropped or merged
 
@@ -35,12 +35,12 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F22   | Roles & access                                    | ✅     | 100% (owner-tested 2026-10-10)            |
 | F23   | Platform admin (super admin, Formalie team)       | ➖     | separate projects (formaliePlatformFront / Back) |
 | F24   | Payments & subscriptions                          | ⬜     | 0%                                        |
-| F25   | Help centre (FAQs, knowledge base, videos)        | 🟡     | 0% (now, before F24)                      |
+| F25   | Help centre (FAQs, knowledge base, videos)        | ✅     | 100% (waiting for review)                 |
 
 **Order of what is left (owner, 2026-10-10; F22 done with F16 on 2026-10-09):**
 
 1. ✅ **F19 AI assistant** (waiting for the owner's review)
-2. **F25 Help centre** (brought forward by the owner, 2026-10-10, while the payment processor accounts are set up; its content is posted from the platform admin)
+2. ✅ **F25 Help centre** (brought forward by the owner, 2026-10-10, while the payment processor accounts are set up; its content is posted from the platform admin; waiting for review)
 3. **F24 Payments & subscriptions** (form payments and plans together; processor: dLocal most likely, Stripe possible, sandbox accounts first, owner 2026-10-10)
 4. **F21 Dashboard** (after F24, owner 2026-10-10, so it can show payments and plans too)
 5. ⏸ **Switching to the real backend** (FastAPI, `formalieBackend`): the mock is replaced, API-CONTRACT is the spec
@@ -1056,23 +1056,23 @@ Owner, 2026-10-08: payments come after the rest of the platform, form payments a
 
 ---
 
-## F25, Help centre 🟡 (brought forward before F24 by the owner, 2026-10-10)
+## F25, Help centre ✅ (brought forward before F24 by the owner, 2026-10-10; waiting for review)
 
 Owner, 2026-10-08: a Help section, FAQs and knowledge base with everything about the platform, so people can learn and teach themselves and find their way around; with videos and GIFs; built from everything we have built.
 
 **How it works (decided 2026-10-10):** help content is written and published by the Formalie team in the platform admin (formaliePlatformFront / Back) and served by Formalie's API (`/help/**`, read-only for workspaces). Until then the mock ships the content from files (`server/mock/data/help/`), English written here and translated into the 19 other languages. Articles are made of simple blocks (text, headings, steps, tips, "Show me" links, media), so the platform admin's editor can write the same thing. Screenshots, GIFs and videos are added by the Formalie team in the platform admin (the article page shows them with captions when they exist).
 
-**Milestones:** **M1** Help home, knowledge base, articles, search, feedback · **M2** FAQs, glossary, keyboard shortcuts · **M3** Help in context ("?" on pages and panels, empty states, "Show me where", guided tours) · **M4** Answers from the knowledge base (AI assistant) · **M5** 20 languages and phase checks.
+**Milestones:** **M1** ✅ Help home, knowledge base, articles, search, feedback · **M2** ✅ FAQs, glossary, keyboard shortcuts · **M3** ✅ Help in context ("?" on pages and panels, empty states, "Show me where", guided tours) · **M4** ✅ Answers from the knowledge base (AI assistant) · **M5** ✅ 20 languages and phase checks.
 
 - ✅ Entry points: the help icon at the foot of the rail, and **Help & support in the SYSTEM group below Audit trail, after a line** (2026-10-08); `/help` exists as a placeholder
-- ⬜ **M1** Help home: search across everything, popular topics, "new here?" path, contact support
-- ⬜ **M1** Knowledge base by area (Forms, builder, designer, templates, sharing, responses, analytics, lists, data sources, API service, settings, users, audit, AI; billing with F24): articles step by step, with screenshots, GIFs and short videos where the Formalie team adds them
-- ⬜ **M2** FAQs (by area, searchable), a glossary (dynamic list, endpoint, token …), keyboard shortcuts
-- ⬜ **M3** Guided tours and "show me where" links that open the real page (and highlight the control)
-- ⬜ **M3** Help in context: a "?" on each page and panel opens the matching article in a side panel; empty states link to their article
-- ⬜ **M5** Every article in all 20 languages; videos with captions; works on phones; RTL
-- ⬜ **M1** "Was this helpful?" feedback and what people searched without finding (kept for the Formalie team; managed in the platform admin)
-- ⬜ **M4** AI assistant (F19) answers from the knowledge base
+- ✅ **M1** Help home: search across everything, popular topics, "new here?" path, contact support
+- ✅ **M1** Knowledge base by area (Forms, builder, designer, templates, sharing, responses, analytics, lists, data sources, API service, settings, users, audit, AI; billing with F24): articles step by step, with screenshots, GIFs and short videos where the Formalie team adds them
+- ✅ **M2** FAQs (by area, searchable), a glossary (dynamic list, endpoint, token …), keyboard shortcuts
+- ✅ **M3** Guided tours and "show me where" links that open the real page (and highlight the control)
+- ✅ **M3** Help in context: a "?" on each page and panel opens the matching article in a side panel; empty states link to their article
+- ✅ **M5** Every article in all 20 languages; videos with captions (shown with their captions file when the Formalie team adds them); works on phones; RTL
+- ✅ **M1** "Was this helpful?" feedback and what people searched without finding (kept for the Formalie team; managed in the platform admin)
+- ✅ **M4** AI assistant (F19) answers from the knowledge base
 
 ---
 
@@ -1589,3 +1589,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-10 | F19 M4 | Analysing: Response analysis (a form and a period: responses with the change and per day, tone of written answers as thin lines, what stands out (more or fewer responses, busiest day, ratings up or down, the most criticised and most praised themes), themes with share bars, tone and examples, average ratings against the period before, most chosen answers); Ask about this form in plain words (count, top answers, average, trend per day / week / month; periods like last month, this year, in March, last 30 days; a named answer or review status filters; always shows what was counted); Insights & summaries (digest of the last 7 days, 30 days or 3 months, Copy as text); Summarise in a response's panel (key answers, tone, themes; names and contact details left out). Built-in word lists for themes and tone. Fixed in testing: dates were masked as numbers, a name showed in a summary, a theme was both praised and criticised, "which answer was chosen most" without a question named now uses the first choice question and says so |
 | 2026-10-10 | F19 M5 | Translating and writing: AI → Translations with Translate (a form you may edit and any of the 20 languages; side by side per language, original and translation editable, marked as translated by the assistant / already translated / needs a person; saved into the form's draft, the languages added; a form changed in the meantime is refused) and Rewrite (plain, friendly or formal; only the texts that change, original crossed out and suggestion editable, why (plainer words, shorter sentences, says who does what, no shouting capitals, tone), reading age before and after; chosen ones saved into the draft); the builder's translation screen has "Translate the rest with AI" (fills what is still to do, one undo step each). The mock translates with Formalie's own translations (the portal's interface texts in 20 languages, template content, and the texts the assistant itself writes into forms, added as translations); anything else is left for a person, never guessed; the backend's model translates the rest. Browser-checked: Contact us 2 in French, 19 of 20 texts translated, the typed title left; saved into a test form and seen in its builder; the builder button. Fixed in testing: reading age counted a list of labels as one long sentence |
 | 2026-10-10 | F19 M6 | Phase checks: every AI page at phone width (no page wider than the screen; History's table scrolls like every list), tablet and desktop; light and dark; Arabic right to left (mirrored, no English left except names and what people typed); every control named for keyboards and screen readers; role rules tested (members use the assistant, only managers change its settings; every assistant call has its own permission); switched-off and "may not read" states on every page that needs them (new: Response analysis, Insights and Translations say so up front when the workspace keeps forms or responses from the assistant). Fixed: titles Formalie writes in History ("Analysis of …", "Check my form", "Translate … into …") are now translated for the reader (requests kept from before converted once), translate and rewrite results carry translated notes. F19 stops here for the owner's review |
+| 2026-10-10 | F25 | Help centre: Help & support home (search across articles, questions and words in the address; "New here?" path of five articles; 14 areas; popular articles; FAQs, glossary and shortcuts links; email support from the platform settings), areas, articles (blocks: text, headings, numbered steps, lists, tips / notes / warnings, "Show me" links, media with captions; "On this page", related, "shown in English" note, "Was this helpful?" with what was missing), FAQs (28, by area, searchable), glossary (24 words, A to Z in the reader's language), keyboard shortcuts (all of them, shared with the ? dialog; two "Overview" entries now named by their area); help in context: a ? in every header opens the help panel with the page's article and its guided tour, empty lists offer "Learn how", "Show me" opens the page and points at the control (data-help markers), tours for Forms and People (keyboard: ← → Enter Esc); the AI assistant answers from the knowledge base in search (its steps or best paragraph, with the article it came from); feedback and searches that found nothing kept for the Formalie team. Content: 46 articles, 28 FAQs, 24 words, 2 tours in all 20 languages, using each language's own interface words. Found in testing: cards collapsing in some page bodies (search box on Help, two AI pages), the article's related list cramped, "Storage" and "Test" not matching the interface (now Response storage and Test now in every language). API `/help/**` |

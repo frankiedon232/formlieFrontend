@@ -65,7 +65,7 @@ defineShortcuts({ n: () => can('forms.create') && navigateTo('/forms/new') })
         variant="outline"
         :to="{ path: '/forms/new', query: { mode: 'import' } }"
       />
-      <UButton v-if="can('forms.create')" icon="i-lucide-plus" :label="t('nav.newForm')" color="neutral" to="/forms/new">
+      <UButton v-if="can('forms.create')" icon="i-lucide-plus" :label="t('nav.newForm')" color="neutral" to="/forms/new" data-help="new-form">
         <template #trailing>
           <UKbd value="N" class="hidden lg:inline-flex" />
         </template>

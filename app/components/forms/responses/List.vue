@@ -137,8 +137,9 @@ defineExpose({ refresh: () => view.value?.refresh(), rows: () => view.value?.sta
 
 <template>
   <DataView
-    :id="`responses-${formId}`"
+      :id="`responses-${formId}`"
     ref="view"
+    empty-help="share-a-form"
     :columns="columns"
     :fetcher="fetcher"
     :filters="filters"

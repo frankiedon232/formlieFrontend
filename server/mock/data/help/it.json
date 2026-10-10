@@ -1,0 +1,1909 @@
+{
+  "articles": [
+    {
+      "id": "welcome",
+      "category": "start",
+      "start": 1,
+      "popular": true,
+      "minutes": 2,
+      "route": "/forms",
+      "related": [
+        "first-form",
+        "find-your-way",
+        "invite-your-team"
+      ],
+      "keywords": [
+        "iniziare",
+        "cominciare",
+        "panoramica",
+        "nuovo",
+        "cos’è"
+      ],
+      "title": "Benvenuto in Formalie",
+      "summary": "Cosa fa Formalie e come è organizzato il portale.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Formalie aiuta la tua organizzazione a raccogliere informazioni con i moduli, a esaminare ciò che arriva e a inviarlo dove serve: un database, un altro sistema tramite l’API o un report."
+        },
+        {
+          "type": "h",
+          "text": "Le parti principali"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Moduli**: crea moduli, condividili e segui le risposte.",
+            "**Origini dati**: collega i tuoi database per salvarci le risposte ed esplorarle.",
+            "**Servizio API**: lascia che altri sistemi leggano e inviino dati tramite i tuoi endpoint.",
+            "**Assistente IA**: crea moduli, analizza le risposte e traduci con un aiuto.",
+            "**Persone**: invita il tuo team e decidi cosa può fare ciascuno."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Premi **Ctrl + K** (o **⌘ + K** su Mac) ovunque per cercare una pagina, un modulo o un’impostazione."
+        },
+        {
+          "type": "show",
+          "label": "Apri i tuoi moduli",
+          "to": "/forms"
+        }
+      ]
+    },
+    {
+      "id": "find-your-way",
+      "category": "start",
+      "start": 2,
+      "minutes": 2,
+      "route": null,
+      "related": [
+        "welcome",
+        "keyboard-and-search"
+      ],
+      "keywords": [
+        "menu",
+        "barra laterale",
+        "rail",
+        "navigazione",
+        "dove"
+      ],
+      "title": "Orientarsi nel portale",
+      "summary": "La barra laterale, il menu, l’intestazione e la ricerca.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "La colonna stretta all’estrema sinistra è il **rail**. Ogni icona apre un’area di Formalie: Moduli, Origini dati, Servizio API, Assistente IA e Persone. Il menu accanto cambia in base all’area in cui ti trovi."
+        },
+        {
+          "type": "p",
+          "text": "In cima a ogni pagina trovi il titolo, dove ti trovi (il percorso di navigazione) e i pulsanti della pagina. Il pulsante principale è sempre quello scuro a destra."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Comprimi il menu** con il pulsante « o il tasto **[** per avere più spazio.",
+            "**La modalità scura** è in fondo al menu, sotto Sistema.",
+            "**Aiuto e supporto** è in fondo al rail e nel gruppo Sistema."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Su telefono, il menu si apre con il pulsante ☰ in alto a sinistra."
+        }
+      ]
+    },
+    {
+      "id": "first-form",
+      "category": "start",
+      "start": 3,
+      "popular": true,
+      "minutes": 3,
+      "route": "/forms/new",
+      "related": [
+        "builder-basics",
+        "share-a-form",
+        "use-a-template"
+      ],
+      "keywords": [
+        "creare",
+        "nuovo modulo",
+        "primo",
+        "fare un modulo"
+      ],
+      "title": "Creare il tuo primo modulo",
+      "summary": "Da una pagina vuota, da un modello o da una descrizione, in pochi minuti.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Puoi iniziare un modulo in tre modi: da una pagina vuota, da uno dei modelli di Formalie o descrivendolo all’assistente IA."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Fai clic su **Nuovo modulo** in alto a destra nella pagina Moduli.",
+            "Scegli **Vuoto**, seleziona un **modello** o **importa** un file di modulo.",
+            "Dai un nome al modulo e, se vuoi, una cartella.",
+            "Si apre l’editor: aggiungi domande dall’elenco dei campi a sinistra.",
+            "Quando sei soddisfatto, fai clic su **Pubblica** e condividi il link."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Non sai da dove iniziare? L’assistente IA può abbozzare l’intero modulo partendo da poche parole: apri **Assistente IA → Crea un modulo**."
+        },
+        {
+          "type": "show",
+          "label": "Inizia un nuovo modulo",
+          "to": "/forms/new",
+          "target": "new-form"
+        }
+      ]
+    },
+    {
+      "id": "invite-your-team",
+      "category": "start",
+      "start": 4,
+      "minutes": 2,
+      "route": "/people",
+      "related": [
+        "sign-up-links",
+        "roles-and-access"
+      ],
+      "keywords": [
+        "invitare",
+        "team",
+        "colleghi",
+        "aggiungi utente",
+        "persone"
+      ],
+      "title": "Coinvolgere il tuo team",
+      "summary": "Aggiungi colleghi con un profilo oppure condividi un link di registrazione.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Ogni persona del tuo spazio ha un profilo con reparto, ruolo professionale e ruolo. Il ruolo decide cosa può vedere e fare."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Apri **Persone** dal rail.",
+            "Fai clic su **Aggiungi utente** per creare un profilo: la persona riceve un’e-mail per impostare la password.",
+            "Oppure apri **Link di registrazione** per condividere un link: chi si registra con esso attende la tua approvazione."
+          ]
+        },
+        {
+          "type": "show",
+          "label": "Apri Persone",
+          "to": "/people",
+          "target": "add-user"
+        }
+      ]
+    },
+    {
+      "id": "keyboard-and-search",
+      "category": "start",
+      "start": 5,
+      "minutes": 1,
+      "route": null,
+      "related": [
+        "find-your-way"
+      ],
+      "keywords": [
+        "scorciatoia",
+        "tastiera",
+        "ricerca",
+        "ctrl k",
+        "comando"
+      ],
+      "title": "Lavorare più in fretta con ricerca e scorciatoie",
+      "summary": "Trova tutto con Ctrl + K e muoviti con la tastiera.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "La ricerca si apre con **Ctrl + K** (**⌘ + K** su Mac). Digita parte del nome di una pagina, di un modulo, di un’impostazione o di una persona e premi Enter."
+        },
+        {
+          "type": "p",
+          "text": "Premi **?** per vedere tutte le scorciatoie da tastiera. Molte pagine ne aggiungono di proprie, per esempio **J** e **K** per passare da una risposta all’altra in un pannello."
+        },
+        {
+          "type": "tip",
+          "text": "Ogni elenco e ogni pannello funziona anche solo con la tastiera: Tab si sposta, Enter apre, Esc chiude."
+        }
+      ]
+    },
+    {
+      "id": "forms-list",
+      "category": "forms",
+      "popular": true,
+      "minutes": 2,
+      "route": "/forms",
+      "related": [
+        "form-lifecycle",
+        "folders"
+      ],
+      "keywords": [
+        "elenco moduli",
+        "trovare un modulo",
+        "filtro",
+        "griglia",
+        "tabella"
+      ],
+      "title": "Trovare e organizzare i tuoi moduli",
+      "summary": "Cerca, filtra, ordina e passa dalla tabella alle schede.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "La pagina Moduli elenca tutti i moduli che puoi vedere. Le due schede in alto mostrano le risposte recenti e come sono ripartiti i tuoi moduli tra bozza, pubblicato e chiuso; fai clic su uno stato nella legenda per mostrare solo quei moduli."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Cerca** per nome, tag o proprietario.",
+            "**Filtra** per stato, cartella, proprietario o tag; i filtri compaiono come chip che puoi rimuovere.",
+            "**Colonne** ti permette di mostrare, nascondere e riordinare le colonne della tabella.",
+            "**Tabella / Griglia** passa dalle righe alle schede; Formalie ricorda la tua scelta.",
+            "Fai clic con il tasto destro su un modulo, o usa il suo menu **⋯**, per azioni come duplicare, spostare o archiviare."
+          ]
+        },
+        {
+          "type": "show",
+          "label": "Apri l’elenco dei moduli",
+          "to": "/forms",
+          "target": "view-switch"
+        }
+      ]
+    },
+    {
+      "id": "form-lifecycle",
+      "category": "forms",
+      "minutes": 3,
+      "route": "/forms",
+      "related": [
+        "publish-and-versions",
+        "trash"
+      ],
+      "keywords": [
+        "bozza",
+        "pubblicare",
+        "chiudere",
+        "archiviare",
+        "stato",
+        "riaprire"
+      ],
+      "title": "Bozza, pubblicato, chiuso e archiviato",
+      "summary": "Cosa significa ogni stato e come un modulo passa dall’uno all’altro.",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "**Bozza**: in costruzione; nessuno può ancora compilarlo.",
+            "**Pubblicato**: aperto alle risposte al suo link.",
+            "**Chiuso**: il link funziona ancora ma indica che il modulo è chiuso; nessuna nuova risposta.",
+            "**Archiviato**: messo da parte; nascosto dall’elenco principale, risposte conservate."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Un modulo pubblicato può avere **modifiche non pubblicate**: le tue modifiche restano nella bozza finché non pubblichi di nuovo, così chi risponde non vede mai una modifica a metà."
+        },
+        {
+          "type": "tip",
+          "text": "Imposta le date di apertura e chiusura in **Condividi → Disponibilità** perché un modulo si apra e si chiuda da solo."
+        }
+      ]
+    },
+    {
+      "id": "folders",
+      "category": "forms",
+      "minutes": 2,
+      "route": "/forms",
+      "related": [
+        "forms-list",
+        "roles-and-access"
+      ],
+      "keywords": [
+        "cartella",
+        "organizzare",
+        "gruppo",
+        "accesso",
+        "nascosto"
+      ],
+      "title": "Le cartelle e chi può vederle",
+      "summary": "Raggruppa i moduli in cartelle e riserva alcune cartelle a certe persone.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Le cartelle raggruppano i moduli, per esempio per team o progetto. Creane una con **+** accanto a Cartelle nel menu, poi sposta i moduli al suo interno dal loro menu **⋯**."
+        },
+        {
+          "type": "p",
+          "text": "Gli amministratori possono limitare una cartella ad alcuni ruoli, reparti o persone con **Accesso alla cartella**. Tutti gli altri non vedono la cartella, i suoi moduli né le loro risposte da nessuna parte, nemmeno nella ricerca o nelle esportazioni."
+        }
+      ]
+    },
+    {
+      "id": "trash",
+      "category": "forms",
+      "minutes": 1,
+      "route": "/forms/trash",
+      "related": [
+        "form-lifecycle"
+      ],
+      "keywords": [
+        "eliminare",
+        "cestino",
+        "ripristinare",
+        "recuperare"
+      ],
+      "title": "Eliminare e ripristinare i moduli",
+      "summary": "I moduli eliminati restano nel cestino per 30 giorni.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Quando elimini un modulo, finisce nel **Cestino** per 30 giorni, con le sue risposte. Puoi ripristinarlo da lì in qualsiasi momento in quei 30 giorni."
+        },
+        {
+          "type": "warning",
+          "text": "**Eliminare definitivamente** nel cestino rimuove il modulo e tutte le sue risposte per sempre. Non si può annullare."
+        },
+        {
+          "type": "show",
+          "label": "Apri il cestino",
+          "to": "/forms/trash"
+        }
+      ]
+    },
+    {
+      "id": "builder-basics",
+      "category": "builder",
+      "popular": true,
+      "minutes": 3,
+      "route": "/forms/:id/build",
+      "related": [
+        "field-types",
+        "builder-logic",
+        "publish-and-versions"
+      ],
+      "keywords": [
+        "editor",
+        "aggiungi campo",
+        "domanda",
+        "trascina",
+        "pagina",
+        "layout"
+      ],
+      "title": "Costruire un modulo",
+      "summary": "Aggiungi domande, disponile in righe e pagine e cambia le loro impostazioni.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "L’editor ha tre parti: l’**elenco dei campi** a sinistra, il **modulo** al centro e le **impostazioni** di ciò che hai selezionato a destra."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Trascina un campo dall’elenco al modulo, oppure fai clic su di esso per aggiungerlo dopo il campo selezionato.",
+            "Fai clic su un campo per cambiare la domanda, il testo di aiuto, se è obbligatorio e altro.",
+            "Metti i campi affiancati rilasciandoli uno accanto all’altro; usa **Larghezza** per dimensionarli.",
+            "Aggiungi pagine con **Aggiungi pagina** per dividere un modulo lungo.",
+            "Le modifiche si salvano mentre lavori; **Annulla** e **Ripeti** sono in alto."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Niente mouse? Seleziona un campo e usa **Alt + ↑ / ↓** per spostarlo, **Ctrl + D** per duplicarlo e **Delete** per rimuoverlo."
+        },
+        {
+          "type": "tip",
+          "text": "Il pulsante **Assistente** nell’editor suggerisce le domande mancanti, scrive i testi di aiuto e controlla il tuo modulo."
+        }
+      ]
+    },
+    {
+      "id": "field-types",
+      "category": "builder",
+      "minutes": 3,
+      "route": "/forms/:id/build",
+      "related": [
+        "builder-basics",
+        "lists-basics"
+      ],
+      "keywords": [
+        "campo",
+        "tipo",
+        "domanda",
+        "caricamento",
+        "firma",
+        "valutazione",
+        "indirizzo"
+      ],
+      "title": "Quale campo usare",
+      "summary": "I tipi di domande offerti da Formalie e quando usare ciascuno.",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "**Testo**: risposte brevi e lunghe, e-mail, telefono, numero, importo, nome completo.",
+            "**Date**: data, ora, data e ora, intervallo di date, durata.",
+            "**Scelte**: menu a tendina, scelta singola, caselle, sì / no, classifica, matrice, accordo.",
+            "**Valutazioni**: stelle, una scala da 0 a 10, un cursore.",
+            "**File**: caricamento di file, caricamento di foto, firma.",
+            "**Luogo**: indirizzo, paese, lingua, fuso orario.",
+            "**Avanzato**: valori nascosti e calcoli.",
+            "**Layout**: titoli di sezione, testo, immagini e separatori."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Scegli il campo più specifico: un campo e-mail controlla l’indirizzo mentre si scrive, un campo data mostra un calendario, un campo telefono controlla il numero."
+        },
+        {
+          "type": "tip",
+          "text": "Le liste lunghe di scelte (paesi, reparti) funzionano meglio come **Elenco opzioni**, salvato una volta e usato in molti moduli."
+        }
+      ]
+    },
+    {
+      "id": "builder-logic",
+      "category": "builder",
+      "minutes": 3,
+      "route": "/forms/:id/logic",
+      "related": [
+        "calculations",
+        "builder-basics"
+      ],
+      "keywords": [
+        "logica",
+        "regola",
+        "mostrare",
+        "nascondere",
+        "condizione",
+        "saltare",
+        "vai a"
+      ],
+      "title": "Mostrare le domande giuste con la logica",
+      "summary": "Mostra, nascondi, rendi obbligatorie o salta domande in base alle risposte precedenti.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Le regole di logica cambiano il modulo mentre viene compilato: mostrare una domanda di approfondimento solo dopo un sì, richiedere un telefono per le richieste urgenti o saltare alla fine."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Apri la scheda **Logica** del modulo.",
+            "Fai clic su **Aggiungi regola** e scegli **Quando**: una domanda, una condizione e un valore.",
+            "Scegli **Allora**: mostra, nascondi, rendi obbligatoria, imposta un valore o vai a una pagina.",
+            "Aggiungi altre condizioni con **e** / **o**, se serve."
+          ]
+        },
+        {
+          "type": "note",
+          "text": "Una domanda nascosta da una regola non è mai obbligatoria, così le persone possono sempre inviare il modulo."
+        }
+      ]
+    },
+    {
+      "id": "calculations",
+      "category": "builder",
+      "minutes": 2,
+      "route": "/forms/:id/build",
+      "related": [
+        "builder-logic",
+        "field-types"
+      ],
+      "keywords": [
+        "calcolo",
+        "formula",
+        "totale",
+        "punteggio",
+        "somma"
+      ],
+      "title": "Totali e punteggi con i calcoli",
+      "summary": "Calcola totali, medie e punteggi dalle risposte.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Un campo **Calcolo** ricava un valore da altre risposte, per esempio quantità × prezzo, una valutazione media o un punteggio di rischio. Le persone vedono il risultato mentre compilano il modulo."
+        },
+        {
+          "type": "p",
+          "text": "Scrivi la formula con le chiavi delle domande tra parentesi graffe, per esempio **{quantity} * {unit_price}**. Le scelte possono avere un punteggio per poter essere sommate."
+        }
+      ]
+    },
+    {
+      "id": "publish-and-versions",
+      "category": "builder",
+      "minutes": 2,
+      "route": "/forms/:id/versions",
+      "related": [
+        "form-lifecycle",
+        "share-a-form"
+      ],
+      "keywords": [
+        "pubblicare",
+        "versione",
+        "ripristinare",
+        "confrontare",
+        "cronologia"
+      ],
+      "title": "Pubblicazione e versioni",
+      "summary": "Ogni pubblicazione viene conservata come versione che puoi confrontare e ripristinare.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Pubblica** rende la tua bozza il modulo attivo. Ogni pubblicazione è salvata come versione numerata con una nota facoltativa su cosa è cambiato."
+        },
+        {
+          "type": "p",
+          "text": "In **Versioni** puoi confrontare qualsiasi versione con la bozza e ripristinarne una precedente nella bozza."
+        },
+        {
+          "type": "tip",
+          "text": "Il pulsante Pubblica è disattivato quando non c’è nulla di nuovo da pubblicare."
+        }
+      ]
+    },
+    {
+      "id": "design-a-form",
+      "category": "design",
+      "popular": true,
+      "minutes": 3,
+      "route": "/forms/:id/design",
+      "related": [
+        "themes",
+        "landing-pages"
+      ],
+      "keywords": [
+        "design",
+        "colore",
+        "carattere",
+        "logo",
+        "tema",
+        "aspetto"
+      ],
+      "title": "Progettare l’aspetto di un modulo",
+      "summary": "Colori, caratteri, layout, intestazione e pagina di ringraziamento.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Apri la scheda **Design** di un modulo per cambiarne l’aspetto. L’anteprima mostra il modulo come lo vedranno le persone, su computer, tablet o telefono."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Parti da un **punto di partenza** pronto, poi regola.",
+            "Cambia colori, caratteri, dimensione di campi e pulsanti.",
+            "Aggiungi il tuo logo, un’immagine di copertina o una fascia colorata in alto.",
+            "Progetta la **pagina di ringraziamento** che le persone vedono dopo l’invio."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Salva un design come **tema** per usarlo su altri moduli con un clic."
+        }
+      ]
+    },
+    {
+      "id": "themes",
+      "category": "design",
+      "minutes": 2,
+      "route": "/settings/themes",
+      "related": [
+        "design-a-form",
+        "form-defaults"
+      ],
+      "keywords": [
+        "tema",
+        "brand",
+        "design salvato",
+        "predefinito"
+      ],
+      "title": "Temi",
+      "summary": "Conserva i design una volta e usali su qualsiasi modulo.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "I temi sono design salvati. Formalie ne fornisce una serie; il tuo spazio può aggiungere i propri dal designer, oppure lasciare che l’assistente IA suggerisca design a partire dal colore del tuo brand."
+        },
+        {
+          "type": "p",
+          "text": "Scegli il tema con cui iniziano i nuovi moduli in **Impostazioni → Impostazioni predefinite dei moduli**."
+        },
+        {
+          "type": "show",
+          "label": "Apri i temi",
+          "to": "/settings/themes"
+        }
+      ]
+    },
+    {
+      "id": "landing-pages",
+      "category": "design",
+      "minutes": 1,
+      "route": "/settings/landing-pages",
+      "related": [
+        "design-a-form"
+      ],
+      "keywords": [
+        "landing page",
+        "pagina attorno al modulo",
+        "banner",
+        "cornice"
+      ],
+      "title": "Landing page",
+      "summary": "La pagina attorno al modulo: banner, introduzione e informazioni.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Una landing page è la pagina su cui si trova il tuo modulo: un banner con il titolo, un’introduzione, quanto tempo richiede e la tua organizzazione. Scegline una nel designer o conserva le tue in **Landing page**."
+        }
+      ]
+    },
+    {
+      "id": "use-a-template",
+      "category": "templates",
+      "popular": true,
+      "minutes": 2,
+      "route": "/templates",
+      "related": [
+        "save-as-template",
+        "first-form"
+      ],
+      "keywords": [
+        "modello",
+        "galleria",
+        "esempio",
+        "già pronto"
+      ],
+      "title": "Partire da un modello",
+      "summary": "Moduli pronti per molti usi, nella tua lingua.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "La galleria dei modelli ha moduli pronti per HR, salute e sicurezza, eventi, vendite e altro. Ognuno include le sue domande, la logica, i calcoli e un design coordinato."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Apri **Modelli** dal menu.",
+            "Sfoglia per categoria o cerca.",
+            "Apri un modello per provarlo nell’anteprima.",
+            "Fai clic su **Usa modello**: nell’editor si apre un nuovo modulo in bozza."
+          ]
+        },
+        {
+          "type": "show",
+          "label": "Sfoglia i modelli",
+          "to": "/templates"
+        }
+      ]
+    },
+    {
+      "id": "save-as-template",
+      "category": "templates",
+      "minutes": 1,
+      "route": "/templates",
+      "related": [
+        "use-a-template"
+      ],
+      "keywords": [
+        "salva modello",
+        "modello dello spazio",
+        "riutilizzare"
+      ],
+      "title": "Creare i tuoi modelli",
+      "summary": "Salva un modulo come modello per il tuo spazio.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Qualsiasi modulo può diventare un modello per il tuo spazio: apri il suo menu **⋯** e scegli **Salva come modello**. Dagli un nome, una descrizione e una categoria. I tuoi modelli compaiono in **I tuoi modelli**."
+        }
+      ]
+    },
+    {
+      "id": "share-a-form",
+      "category": "sharing",
+      "popular": true,
+      "minutes": 3,
+      "route": "/forms/:id/share",
+      "related": [
+        "who-can-fill-in",
+        "embed-a-form",
+        "form-languages"
+      ],
+      "keywords": [
+        "condividere",
+        "link",
+        "qr",
+        "e-mail",
+        "inviare"
+      ],
+      "title": "Condividere un modulo",
+      "summary": "Link, codice QR, inviti via e-mail e link brevi.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Apri la scheda **Condividi** di un modulo pubblicato. Da lì puoi copiare il suo link, scaricare un codice QR, creare un link breve o inviare inviti via e-mail."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Link**: copialo e incollalo dove vuoi.",
+            "**Link personalizzato**: scegli un indirizzo leggibile.",
+            "**Codice QR**: per poster e materiale stampato.",
+            "**Inviti**: invia per e-mail un link personale e vedi chi ha risposto."
+          ]
+        },
+        {
+          "type": "show",
+          "label": "Apri i tuoi moduli",
+          "to": "/forms"
+        }
+      ]
+    },
+    {
+      "id": "who-can-fill-in",
+      "category": "sharing",
+      "minutes": 2,
+      "route": "/forms/:id/share",
+      "related": [
+        "share-a-form"
+      ],
+      "keywords": [
+        "accesso",
+        "password",
+        "solo su invito",
+        "organizzazione",
+        "limitare",
+        "disponibilità"
+      ],
+      "title": "Chi può compilare un modulo, e quando",
+      "summary": "Aperto a tutti, con password, solo su invito o per la tua organizzazione.",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "**Chiunque abbia il link**.",
+            "**Con una password** che fornisci tu.",
+            "**Solo su invito**: solo le persone che hai invitato via e-mail.",
+            "**La tua organizzazione**: persone che hanno effettuato l’accesso al tuo spazio."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "In **Disponibilità** puoi aprire e chiudere il modulo a date prestabilite e fermarlo dopo un certo numero di risposte."
+        }
+      ]
+    },
+    {
+      "id": "embed-a-form",
+      "category": "sharing",
+      "minutes": 1,
+      "route": "/forms/:id/share",
+      "related": [
+        "share-a-form"
+      ],
+      "keywords": [
+        "incorpora",
+        "sito web",
+        "iframe",
+        "widget"
+      ],
+      "title": "Mettere un modulo sul tuo sito web",
+      "summary": "Incorpora il modulo nelle tue pagine.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "In **Condividi → Incorpora** copia il codice e incollalo nel tuo sito web. Puoi limitare quali siti web possono mostrare il modulo."
+        }
+      ]
+    },
+    {
+      "id": "form-languages",
+      "category": "sharing",
+      "minutes": 2,
+      "route": "/forms/:id/build",
+      "related": [
+        "ai-translate",
+        "share-a-form"
+      ],
+      "keywords": [
+        "lingua",
+        "tradurre",
+        "multilingue",
+        "francese",
+        "arabo"
+      ],
+      "title": "Moduli in più lingue",
+      "summary": "Offri un modulo in più lingue; le persone cambiano in alto.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Un modulo ha una lingua principale e può offrirne altre. Nell’editor, apri le impostazioni del modulo, aggiungi una lingua in **Altre lingue** e traduci ogni testo affiancato."
+        },
+        {
+          "type": "tip",
+          "text": "**Traduci il resto con l’IA** compila ciò che manca; controlli ogni testo prima di pubblicare."
+        }
+      ]
+    },
+    {
+      "id": "responses-basics",
+      "category": "responses",
+      "popular": true,
+      "minutes": 3,
+      "route": "/responses",
+      "related": [
+        "review-responses",
+        "export-responses"
+      ],
+      "keywords": [
+        "risposte",
+        "invii",
+        "compilazioni",
+        "vedere le risposte"
+      ],
+      "title": "Vedere le tue risposte",
+      "summary": "Ogni risposta, per modulo o per tutti i moduli.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Risposte** elenca i tuoi moduli con le relative risposte. Apri un modulo per vederne le risposte come tabella o come schede; apri una risposta per vedere ogni dato in un pannello."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Usa **J** e **K** per passare alla risposta successiva o precedente.",
+            "Filtra per stato, data, canale o risposta.",
+            "**Analisi** mostra un riepilogo per domanda: scelte, medie e le ultime risposte scritte."
+          ]
+        },
+        {
+          "type": "show",
+          "label": "Apri le risposte",
+          "to": "/responses"
+        }
+      ]
+    },
+    {
+      "id": "review-responses",
+      "category": "responses",
+      "minutes": 2,
+      "route": "/responses",
+      "related": [
+        "responses-basics"
+      ],
+      "keywords": [
+        "esaminare",
+        "stato",
+        "approvare",
+        "respingere",
+        "tag",
+        "nota"
+      ],
+      "title": "Esaminare le risposte",
+      "summary": "Stati, tag e note per gestire ciò che arriva.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Ogni risposta ha uno stato: **Nuova**, **Esaminata**, **Approvata** o **Respinta**. Cambialo con un clic in alto nel pannello della risposta."
+        },
+        {
+          "type": "p",
+          "text": "Aggiungi tag e note per tenere traccia. Correggere le risposte è un’autorizzazione a parte, quindi il tuo ruolo può permetterti di esaminare senza modificare ciò che le persone hanno scritto."
+        }
+      ]
+    },
+    {
+      "id": "export-responses",
+      "category": "responses",
+      "minutes": 2,
+      "route": "/responses/exports",
+      "related": [
+        "responses-basics",
+        "data-sources-basics"
+      ],
+      "keywords": [
+        "esportare",
+        "excel",
+        "csv",
+        "scaricare",
+        "pdf"
+      ],
+      "title": "Esportare le risposte",
+      "summary": "Scarica le risposte come foglio di calcolo o file.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Fai clic su **Esporta** nelle risposte di un modulo, scegli il formato e cosa includere. Le esportazioni grandi vengono preparate in background; ne vedi l’avanzamento in **Esportazioni** e ricevi un messaggio quando il file è pronto."
+        }
+      ]
+    },
+    {
+      "id": "analytics",
+      "category": "analytics",
+      "popular": true,
+      "minutes": 2,
+      "route": "/analytics",
+      "related": [
+        "responses-basics",
+        "ai-analysis"
+      ],
+      "keywords": [
+        "analisi",
+        "visualizzazioni",
+        "completamento",
+        "abbandono",
+        "funnel"
+      ],
+      "title": "Come vanno i tuoi moduli",
+      "summary": "Visualizzazioni, avvii, completamenti e dove le persone si fermano.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Analisi** mostra quante persone hanno aperto, iniziato e completato ogni modulo, quanto tempo richiede e dove le persone si fermano. Apri un modulo per vedere ogni pagina e domanda."
+        },
+        {
+          "type": "tip",
+          "text": "Una domanda in cui molti si fermano è spesso poco chiara o chiede troppo. Prova una domanda più breve o rendila facoltativa."
+        }
+      ]
+    },
+    {
+      "id": "lists-basics",
+      "category": "lists",
+      "minutes": 3,
+      "route": "/option-sets",
+      "related": [
+        "field-types"
+      ],
+      "keywords": [
+        "elenco",
+        "opzione",
+        "scelte",
+        "menu a tendina",
+        "livelli",
+        "paese",
+        "dinamico"
+      ],
+      "title": "Elenco opzioni: conserva le scelte una volta",
+      "summary": "Elenchi di scelte che usi in molti moduli, con livelli.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Un **Elenco opzioni** contiene scelte che usi in molti moduli, per esempio reparti, prodotti o paesi. Cambia l’elenco una volta e tutti i moduli che lo usano lo seguono."
+        },
+        {
+          "type": "p",
+          "text": "Gli elenchi possono avere **livelli**: scegli un paese, poi compaiono solo le sue regioni, quindi le sue città. Gli elenchi molto grandi restano sul server e si caricano mentre si digita."
+        },
+        {
+          "type": "note",
+          "text": "Gli elenchi contrassegnati **Formalie** sono forniti a ogni spazio; puoi usarli ma non modificarli."
+        }
+      ]
+    },
+    {
+      "id": "data-sources-basics",
+      "category": "data",
+      "minutes": 3,
+      "route": "/data-sources",
+      "related": [
+        "database-explorer",
+        "export-responses"
+      ],
+      "keywords": [
+        "database",
+        "connessione",
+        "origine dati",
+        "archiviazione",
+        "postgres",
+        "mysql"
+      ],
+      "title": "Salvare le risposte nel tuo database",
+      "summary": "Collega un database e invia ad esso le risposte di un modulo.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Origini dati** collega Formalie ai tuoi database. Le risposte possono così essere salvate anche lì, in tabelle che Formalie crea e mantiene allineate al modulo."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Apri **Origini dati** dal rail e fai clic su **Aggiungi connessione**.",
+            "Scegli il tipo di database e inserisci i dettagli; **Testa ora** verifica che funzioni.",
+            "In **Archiviazione risposte** di un modulo, scegli la connessione: le nuove risposte vengono salvate lì."
+          ]
+        },
+        {
+          "type": "warning",
+          "text": "Dai a Formalie un utente del database con solo i diritti di cui ha bisogno."
+        }
+      ]
+    },
+    {
+      "id": "database-explorer",
+      "category": "data",
+      "minutes": 2,
+      "route": "/data-sources/explorer",
+      "related": [
+        "data-sources-basics"
+      ],
+      "keywords": [
+        "esplora",
+        "query",
+        "sql",
+        "tabella",
+        "righe"
+      ],
+      "title": "Esplorare e interrogare i tuoi dati",
+      "summary": "Sfoglia le tabelle ed esegui query senza uscire da Formalie.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Esplora database** mostra le tabelle di una connessione e le loro righe. L’**Editor di query** esegue SQL; le istruzioni che modificano i dati richiedono un’autorizzazione apposita e chiedono prima conferma."
+        }
+      ]
+    },
+    {
+      "id": "api-basics",
+      "category": "api",
+      "minutes": 3,
+      "route": "/api-service",
+      "related": [
+        "api-tokens",
+        "webhooks"
+      ],
+      "keywords": [
+        "api",
+        "endpoint",
+        "integrazione",
+        "servizio",
+        "rest"
+      ],
+      "title": "Il servizio API",
+      "summary": "I tuoi endpoint per consentire ad altri sistemi di leggere e inviare dati.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Il **Servizio API** dà ad altri sistemi i loro endpoint: leggere risposte, inviarne di nuove o consultare le opzioni degli elenchi. Ogni servizio raggruppa endpoint e ha la propria pagina di documentazione."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Apri **Servizio API** e crea un servizio.",
+            "Aggiungi endpoint per i moduli o i dati che vuoi offrire.",
+            "Crea un **token** per il sistema che lo chiamerà.",
+            "Prova l’endpoint dalla pagina di documentazione."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "api-tokens",
+      "category": "api",
+      "minutes": 2,
+      "route": "/api-service/auth",
+      "related": [
+        "api-basics"
+      ],
+      "keywords": [
+        "token",
+        "chiave",
+        "header",
+        "segreto",
+        "regole di accesso"
+      ],
+      "title": "Token e regole di accesso",
+      "summary": "Chi può chiamare i tuoi endpoint, da dove e con quale frequenza.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Ogni sistema che chiama la tua API riceve un **token**. I token possono scadere ed essere revocati in qualsiasi momento. Le **regole di accesso** limitano indirizzi, orari e quante chiamate sono consentite."
+        },
+        {
+          "type": "warning",
+          "text": "Un token viene mostrato una sola volta. Conservalo in un posto sicuro e non metterlo mai in una pagina web pubblica."
+        }
+      ]
+    },
+    {
+      "id": "webhooks",
+      "category": "api",
+      "minutes": 2,
+      "route": "/api-service",
+      "related": [
+        "api-basics"
+      ],
+      "keywords": [
+        "webhook",
+        "notificare",
+        "evento",
+        "callback"
+      ],
+      "title": "Webhook",
+      "summary": "Avvisa un altro sistema nel momento in cui accade qualcosa.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Un webhook invia un messaggio all’indirizzo di un altro sistema quando accade qualcosa, per esempio una nuova risposta. Formalie riprova gli invii falliti e mostra ogni invio così vedi cosa è stato mandato."
+        }
+      ]
+    },
+    {
+      "id": "roles-and-access",
+      "category": "people",
+      "popular": true,
+      "minutes": 3,
+      "route": "/people/roles",
+      "related": [
+        "invite-your-team",
+        "folders"
+      ],
+      "keywords": [
+        "ruolo",
+        "autorizzazione",
+        "accesso",
+        "amministratore",
+        "membro",
+        "propri",
+        "condivisi"
+      ],
+      "title": "Ruoli e accesso",
+      "summary": "Decidi con precisione cosa può vedere e fare ogni ruolo.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Ogni persona ha un solo ruolo. Proprietario può fare tutto; Amministratore e Membro sono pronti all’uso e modificabili; puoi aggiungere ruoli tuoi."
+        },
+        {
+          "type": "p",
+          "text": "Ogni azione ha un ambito: **Nessuno**, **Propri** (ciò che la persona ha creato), **Condivisi** (i moduli condivisi con lei), **Propri e condivisi** o **Tutto**. Per esempio, un ruolo può vedere tutte le risposte ma modificare solo i propri moduli."
+        },
+        {
+          "type": "show",
+          "label": "Apri Ruoli e accesso",
+          "to": "/people/roles"
+        }
+      ]
+    },
+    {
+      "id": "sign-up-links",
+      "category": "people",
+      "minutes": 2,
+      "route": "/people",
+      "related": [
+        "invite-your-team"
+      ],
+      "keywords": [
+        "registrazione",
+        "link",
+        "approvazione",
+        "unirsi"
+      ],
+      "title": "Link di registrazione e approvazioni",
+      "summary": "Lascia che le persone richiedano un account; tu le approvi.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Un link di registrazione permette alle persone di creare il proprio account. Puoi limitarlo agli indirizzi e-mail della tua organizzazione. I loro account restano in **In attesa di approvazione** finché un amministratore non li approva e assegna loro un ruolo."
+        }
+      ]
+    },
+    {
+      "id": "your-profile",
+      "category": "people",
+      "minutes": 2,
+      "route": "/profile",
+      "related": [
+        "two-step-sign-in"
+      ],
+      "keywords": [
+        "profilo",
+        "password",
+        "foto",
+        "lingua",
+        "fuso orario"
+      ],
+      "title": "Il tuo profilo",
+      "summary": "Foto, nome, lingua, fuso orario, password e accesso.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Apri il tuo profilo dal tuo nome in fondo al menu. Cambia foto, nome, lingua, fuso orario e formato della data, la password e l’accesso in due passaggi, e vedi dove hai effettuato l’accesso."
+        }
+      ]
+    },
+    {
+      "id": "two-step-sign-in",
+      "category": "settings",
+      "minutes": 2,
+      "route": "/profile",
+      "related": [
+        "your-profile",
+        "security-settings"
+      ],
+      "keywords": [
+        "due passaggi",
+        "2fa",
+        "autenticatore",
+        "codice",
+        "recupero"
+      ],
+      "title": "Accesso in due passaggi",
+      "summary": "Un codice da un’app, dall’e-mail o da un SMS quando accedi.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "L’accesso in due passaggi chiede un codice dopo la password. Configura un’app di autenticazione nel tuo profilo per l’opzione più sicura e conserva i codici di recupero in un posto sicuro."
+        }
+      ]
+    },
+    {
+      "id": "workspace-settings",
+      "category": "settings",
+      "minutes": 2,
+      "route": "/settings",
+      "related": [
+        "security-settings",
+        "form-defaults"
+      ],
+      "keywords": [
+        "impostazioni",
+        "azienda",
+        "branding",
+        "lingua",
+        "aspetto"
+      ],
+      "title": "Impostazioni dello spazio",
+      "summary": "La tua organizzazione, il branding, la lingua, l’aspetto e altro.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Impostazioni** raccoglie ciò che vale per l’intero spazio: dati dell’azienda, branding, lingua e regione, aspetto, accesso, sicurezza, notifiche, modelli di e-mail, privacy e impostazioni predefinite dei moduli."
+        },
+        {
+          "type": "show",
+          "label": "Apri le impostazioni",
+          "to": "/settings"
+        }
+      ]
+    },
+    {
+      "id": "security-settings",
+      "category": "settings",
+      "minutes": 2,
+      "route": "/settings/security",
+      "related": [
+        "two-step-sign-in",
+        "audit-trail"
+      ],
+      "keywords": [
+        "sicurezza",
+        "regole password",
+        "ip",
+        "sessione",
+        "lista consentiti"
+      ],
+      "title": "Impostazioni di sicurezza",
+      "summary": "Regole per le password, accesso in due passaggi, sessioni e reti consentite.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "In **Impostazioni → Sicurezza** gli amministratori definiscono le regole per le password, richiedono l’accesso in due passaggi, decidono per quanto tempo le persone restano connesse e, se serve, consentono l’accesso solo dalle vostre reti."
+        },
+        {
+          "type": "warning",
+          "text": "Prima di limitare le reti, aggiungi il tuo indirizzo, altrimenti potresti restare fuori."
+        }
+      ]
+    },
+    {
+      "id": "form-defaults",
+      "category": "settings",
+      "minutes": 1,
+      "route": "/settings/form-defaults",
+      "related": [
+        "themes"
+      ],
+      "keywords": [
+        "predefiniti",
+        "nuovo modulo",
+        "tema",
+        "ringraziamento"
+      ],
+      "title": "Impostazioni predefinite dei moduli",
+      "summary": "Con cosa inizia ogni nuovo modulo.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Impostazioni predefinite dei moduli** definisce il tema, la barra di avanzamento, le etichette, il messaggio di ringraziamento e le e-mail con cui inizia ogni nuovo modulo. I moduli che hai già non cambiano."
+        }
+      ]
+    },
+    {
+      "id": "audit-trail",
+      "category": "audit",
+      "minutes": 2,
+      "route": "/audit",
+      "related": [
+        "security-settings"
+      ],
+      "keywords": [
+        "audit",
+        "registro",
+        "cronologia",
+        "chi ha fatto",
+        "attività"
+      ],
+      "title": "Il registro di audit",
+      "summary": "Chi ha fatto cosa, quando e da dove.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Il **Registro di audit** registra ogni azione nel tuo spazio: accessi, modifiche a moduli, risposte, impostazioni, persone e altro, con chi l’ha fatta, quando e da dove."
+        },
+        {
+          "type": "p",
+          "text": "Filtra per area, persona o data e apri una voce per vedere cosa è cambiato. Puoi esportare il registro se il tuo ruolo lo consente."
+        },
+        {
+          "type": "show",
+          "label": "Apri il registro di audit",
+          "to": "/audit"
+        }
+      ]
+    },
+    {
+      "id": "ai-overview",
+      "category": "ai",
+      "popular": true,
+      "minutes": 2,
+      "route": "/ai",
+      "related": [
+        "ai-create-form",
+        "ai-analysis",
+        "ai-settings"
+      ],
+      "keywords": [
+        "ia",
+        "assistente",
+        "intelligenza artificiale",
+        "aiutami"
+      ],
+      "title": "L’assistente IA",
+      "summary": "Cosa sa fare e come mantieni il controllo.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "L’assistente IA crea moduli e modelli, aiuta nell’editor, analizza le risposte e traduce. **Propone** sempre: nulla viene creato, modificato o inviato finché non lo decidi tu."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Ogni richiesta è conservata nella **Cronologia** con ciò che è tornato.",
+            "Ogni richiesta usa crediti dal tuo limite mensile.",
+            "Gli amministratori scelgono cosa può leggere e possono disattivarlo."
+          ]
+        },
+        {
+          "type": "show",
+          "label": "Apri l’assistente IA",
+          "to": "/ai"
+        }
+      ]
+    },
+    {
+      "id": "ai-create-form",
+      "category": "ai",
+      "minutes": 2,
+      "route": "/ai/create-form",
+      "related": [
+        "ai-overview",
+        "first-form"
+      ],
+      "keywords": [
+        "modulo ia",
+        "descrivere",
+        "generare",
+        "bozza"
+      ],
+      "title": "Creare un modulo con l’assistente",
+      "summary": "Descrivilo, controlla la bozza, crealo.",
+      "blocks": [
+        {
+          "type": "steps",
+          "items": [
+            "Apri **Assistente IA → Crea un modulo**.",
+            "Descrivi il modulo, per esempio «un registro visitatori con nome, azienda e ora di arrivo», oppure incolla un modulo cartaceo.",
+            "Fai clic su **Genera** e controlla l’anteprima.",
+            "**Crea modulo** lo apre nell’editor; **Riprova** ne dà un’altra versione."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Elenca ciò che vuoi chiedere, separato da virgole: l’assistente mantiene le tue parole."
+        }
+      ]
+    },
+    {
+      "id": "ai-analysis",
+      "category": "ai",
+      "minutes": 2,
+      "route": "/ai/analysis",
+      "related": [
+        "ai-overview",
+        "analytics"
+      ],
+      "keywords": [
+        "analizzare",
+        "temi",
+        "sentiment",
+        "domanda",
+        "riepilogo"
+      ],
+      "title": "Analizzare le risposte con l’assistente",
+      "summary": "Temi, tono e domande in parole semplici.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "In **Analisi delle risposte**, scegli un modulo e un periodo. L’assistente individua di cosa parlano le risposte scritte, il loro tono e come sono cambiate valutazioni e scelte."
+        },
+        {
+          "type": "p",
+          "text": "Fai domande in parole semplici, come «Quante risposte il mese scorso?». La risposta mostra sempre cosa è stato contato."
+        }
+      ]
+    },
+    {
+      "id": "ai-translate",
+      "category": "ai",
+      "minutes": 2,
+      "route": "/ai/translate",
+      "related": [
+        "form-languages"
+      ],
+      "keywords": [
+        "tradurre",
+        "riscrivere",
+        "linguaggio semplice",
+        "tono"
+      ],
+      "title": "Tradurre e riscrivere con l’assistente",
+      "summary": "Traduzioni affiancate e formulazioni più semplici.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Traduzioni** traduce un modulo in una delle 20 lingue; controlli ogni testo affiancato prima di salvare. **Riscrivi** suggerisce formulazioni più semplici nel tono che scegli e mostra l’età di lettura prima e dopo."
+        }
+      ]
+    },
+    {
+      "id": "ai-settings",
+      "category": "ai",
+      "minutes": 1,
+      "route": "/ai/settings",
+      "related": [
+        "ai-overview"
+      ],
+      "keywords": [
+        "impostazioni ia",
+        "privacy",
+        "crediti",
+        "disattivare"
+      ],
+      "title": "Impostazioni e privacy dell’IA",
+      "summary": "Attivarla o disattivarla, cosa può leggere, crediti.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Gli amministratori attivano o disattivano l’assistente, scelgono cosa può leggere (moduli, risposte, origini dati), tengono fuori i dati personali e decidono per quanto tempo le richieste vengono conservate. L’assistente non si addestra mai sui tuoi dati."
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "id": "faq-free-respondents",
+      "category": "start",
+      "question": "Le persone hanno bisogno di un account per compilare un modulo?",
+      "answer": "No. Chiunque abbia il link può compilare un modulo, a meno che tu non lo limiti a persone invitate, a una password o alla tua organizzazione.",
+      "article": "who-can-fill-in"
+    },
+    {
+      "id": "faq-mobile",
+      "category": "start",
+      "question": "Formalie funziona sui telefoni?",
+      "answer": "Sì. I moduli e il portale funzionano su telefoni, tablet e computer.",
+      "article": null
+    },
+    {
+      "id": "faq-languages",
+      "category": "start",
+      "question": "Che lingue parla Formalie?",
+      "answer": "Il portale e i moduli funzionano in 20 lingue, comprese quelle che si scrivono da destra a sinistra come l’arabo. Ogni persona sceglie la propria lingua nel profilo.",
+      "article": "form-languages"
+    },
+    {
+      "id": "faq-edit-live",
+      "category": "forms",
+      "question": "Posso modificare un modulo già pubblicato?",
+      "answer": "Sì. Le tue modifiche restano nella bozza finché non pubblichi di nuovo, così chi lo compila non vede mai una modifica a metà.",
+      "article": "form-lifecycle"
+    },
+    {
+      "id": "faq-restore",
+      "category": "forms",
+      "question": "Ho eliminato un modulo per errore. Posso riaverlo?",
+      "answer": "Sì, dal Cestino, entro 30 giorni, con le sue risposte.",
+      "article": "trash"
+    },
+    {
+      "id": "faq-copy-form",
+      "category": "forms",
+      "question": "Come copio un modulo?",
+      "answer": "Apri il suo menu ⋯ e scegli Duplica. La copia è una nuova bozza con le stesse domande e lo stesso design.",
+      "article": "forms-list"
+    },
+    {
+      "id": "faq-required",
+      "category": "builder",
+      "question": "Come rendo obbligatoria una domanda?",
+      "answer": "Selezionala nell’editor e attiva Obbligatorio nelle sue impostazioni.",
+      "article": "builder-basics"
+    },
+    {
+      "id": "faq-pages",
+      "category": "builder",
+      "question": "Come divido un modulo in pagine?",
+      "answer": "Fai clic su Aggiungi pagina nell’editor e sposta le domande al suo interno.",
+      "article": "builder-basics"
+    },
+    {
+      "id": "faq-conditional",
+      "category": "builder",
+      "question": "Una domanda può comparire solo dopo una certa risposta?",
+      "answer": "Sì, con una regola di logica: Quando la domanda precedente ha quella risposta, Allora mostra la domanda successiva.",
+      "article": "builder-logic"
+    },
+    {
+      "id": "faq-logo",
+      "category": "design",
+      "question": "Come aggiungo il nostro logo?",
+      "answer": "Aggiungilo una volta in Impostazioni → Branding; i moduli lo mostrano nell’intestazione. Puoi anche impostarlo per singolo modulo in Design.",
+      "article": "design-a-form"
+    },
+    {
+      "id": "faq-own-templates",
+      "category": "templates",
+      "question": "Possiamo creare i nostri modelli?",
+      "answer": "Sì. Salva qualsiasi modulo come modello dal suo menu ⋯.",
+      "article": "save-as-template"
+    },
+    {
+      "id": "faq-close-date",
+      "category": "sharing",
+      "question": "Un modulo può chiudersi da solo?",
+      "answer": "Sì. Imposta una data di chiusura o un numero massimo di risposte in Condividi → Disponibilità.",
+      "article": "who-can-fill-in"
+    },
+    {
+      "id": "faq-qr",
+      "category": "sharing",
+      "question": "Come ottengo un codice QR?",
+      "answer": "Nella scheda Condividi del modulo, scarica il codice QR come immagine.",
+      "article": "share-a-form"
+    },
+    {
+      "id": "faq-notify",
+      "category": "responses",
+      "question": "Posso ricevere un’e-mail per ogni nuova risposta?",
+      "answer": "Sì. Scegli chi riceve l’e-mail nelle impostazioni del modulo e imposta le tue notifiche in Impostazioni → Notifiche.",
+      "article": "responses-basics"
+    },
+    {
+      "id": "faq-export-format",
+      "category": "responses",
+      "question": "Quali formati posso esportare?",
+      "answer": "Fogli di calcolo e altri formati di file; scegli nella finestra di esportazione.",
+      "article": "export-responses"
+    },
+    {
+      "id": "faq-edit-answer",
+      "category": "responses",
+      "question": "Posso correggere una risposta data da qualcuno?",
+      "answer": "Sì, se il tuo ruolo consente di correggere le risposte. La modifica viene registrata nel registro di audit.",
+      "article": "review-responses"
+    },
+    {
+      "id": "faq-drop-off",
+      "category": "analytics",
+      "question": "Dove si fermano le persone nel mio modulo?",
+      "answer": "Apri il modulo in Analisi: mostra ogni pagina e domanda con quante persone hanno abbandonato lì.",
+      "article": "analytics"
+    },
+    {
+      "id": "faq-list-change",
+      "category": "lists",
+      "question": "Se cambio un elenco, cambiano anche i miei moduli?",
+      "answer": "Sì. Ogni modulo che usa l’elenco lo segue.",
+      "article": "lists-basics"
+    },
+    {
+      "id": "faq-own-db",
+      "category": "data",
+      "question": "Le risposte possono andare direttamente nel nostro database?",
+      "answer": "Collegalo in Origini dati e sceglilo in Archiviazione risposte del modulo.",
+      "article": "data-sources-basics"
+    },
+    {
+      "id": "faq-api-token",
+      "category": "api",
+      "question": "Ho perso il mio token API. E adesso?",
+      "answer": "I token vengono mostrati una sola volta. Revoca quello perso e crea un nuovo token.",
+      "article": "api-tokens"
+    },
+    {
+      "id": "faq-roles-custom",
+      "category": "people",
+      "question": "Possiamo creare ruoli nostri?",
+      "answer": "Sì. In Persone → Ruoli e accesso, aggiungi un ruolo e scegli cosa può fare e fin dove arriva.",
+      "article": "roles-and-access"
+    },
+    {
+      "id": "faq-remove-person",
+      "category": "people",
+      "question": "Qualcuno se n’è andato. Come tolgo il suo accesso?",
+      "answer": "Aprilo in Persone e scegli Disattiva. Viene disconnesso subito; i suoi moduli e le sue risposte restano.",
+      "article": "invite-your-team"
+    },
+    {
+      "id": "faq-forgot-password",
+      "category": "settings",
+      "question": "Ho dimenticato la password.",
+      "answer": "Fai clic su Password dimenticata nella pagina di accesso; ricevi un codice via e-mail per impostarne una nuova.",
+      "article": "your-profile"
+    },
+    {
+      "id": "faq-lost-phone",
+      "category": "settings",
+      "question": "Ho perso il telefono con la mia app di autenticazione.",
+      "answer": "Accedi con uno dei tuoi codici di recupero oppure chiedi a un amministratore di reimpostare il tuo accesso in due passaggi.",
+      "article": "two-step-sign-in"
+    },
+    {
+      "id": "faq-audit-who",
+      "category": "audit",
+      "question": "Come vedo chi ha modificato un modulo?",
+      "answer": "Apri il registro di audit e filtra per il modulo o per Moduli; ogni voce mostra chi, quando e cosa è cambiato.",
+      "article": "audit-trail"
+    },
+    {
+      "id": "faq-ai-data",
+      "category": "ai",
+      "question": "L’assistente IA impara dai nostri dati?",
+      "answer": "No. Le richieste servono solo per rispondere e vengono conservate solo per il tempo impostato nelle impostazioni dell’IA.",
+      "article": "ai-settings"
+    },
+    {
+      "id": "faq-ai-credits",
+      "category": "ai",
+      "question": "Cosa sono i crediti IA?",
+      "answer": "Ogni richiesta usa alcuni crediti dal limite mensile del tuo spazio. Li vedi in Assistente IA → Impostazioni e utilizzo.",
+      "article": "ai-settings"
+    },
+    {
+      "id": "faq-ai-off",
+      "category": "ai",
+      "question": "Possiamo disattivare l’assistente?",
+      "answer": "Sì. Gli amministratori lo disattivano in Assistente IA → Impostazioni e utilizzo; finché è disattivato non gli viene inviato nulla.",
+      "article": "ai-settings"
+    }
+  ],
+  "glossary": [
+    {
+      "id": "term-form",
+      "term": "Modulo",
+      "definition": "Un insieme di domande che le persone compilano, con il suo design, la logica e le impostazioni.",
+      "article": "builder-basics"
+    },
+    {
+      "id": "term-response",
+      "term": "Risposta",
+      "definition": "Il modulo compilato da una persona, con tutte le sue risposte.",
+      "article": "responses-basics"
+    },
+    {
+      "id": "term-draft",
+      "term": "Bozza",
+      "definition": "La versione di un modulo su cui stai lavorando. Le persone la vedono solo dopo che pubblichi.",
+      "article": "form-lifecycle"
+    },
+    {
+      "id": "term-version",
+      "term": "Versione",
+      "definition": "Uno stato pubblicato di un modulo, conservato per poterlo confrontare e ripristinare.",
+      "article": "publish-and-versions"
+    },
+    {
+      "id": "term-field",
+      "term": "Campo",
+      "definition": "Una domanda o un blocco di un modulo, come una casella di testo, una scelta o una firma.",
+      "article": "field-types"
+    },
+    {
+      "id": "term-key",
+      "term": "Chiave",
+      "definition": "Il nome breve di una domanda (come first_name), usato in formule, esportazioni e nell’API.",
+      "article": "calculations"
+    },
+    {
+      "id": "term-logic",
+      "term": "Regola di logica",
+      "definition": "Una regola che mostra, nasconde, rende obbligatorie o salta domande in base alle risposte.",
+      "article": "builder-logic"
+    },
+    {
+      "id": "term-calculation",
+      "term": "Calcolo",
+      "definition": "Un campo che ricava un valore, come un totale o un punteggio, da altre risposte.",
+      "article": "calculations"
+    },
+    {
+      "id": "term-theme",
+      "term": "Tema",
+      "definition": "Un design salvato: colori, caratteri e layout che puoi usare su qualsiasi modulo.",
+      "article": "themes"
+    },
+    {
+      "id": "term-template",
+      "term": "Modello",
+      "definition": "Un modulo già pronto da cui partire, con domande, logica e design.",
+      "article": "use-a-template"
+    },
+    {
+      "id": "term-list",
+      "term": "Elenco opzioni",
+      "definition": "Un elenco di scelte conservato una volta e usato in molti moduli; le modifiche raggiungono ogni modulo che lo usa.",
+      "article": "lists-basics"
+    },
+    {
+      "id": "term-dynamic-list",
+      "term": "Elenco a livelli (elenco dinamico)",
+      "definition": "Un elenco in cui una scelta decide la successiva, come paese, poi regione, poi città.",
+      "article": "lists-basics"
+    },
+    {
+      "id": "term-folder",
+      "term": "Cartella",
+      "definition": "Un gruppo di moduli. Gli amministratori possono limitare chi vede una cartella.",
+      "article": "folders"
+    },
+    {
+      "id": "term-role",
+      "term": "Ruolo",
+      "definition": "Un insieme di autorizzazioni date alle persone, che decide cosa possono vedere e fare.",
+      "article": "roles-and-access"
+    },
+    {
+      "id": "term-reach",
+      "term": "Ambito (Propri, Condivisi, Tutto)",
+      "definition": "Fin dove arriva un’autorizzazione: solo ciò che la persona ha creato, ciò che è stato condiviso con lei, o tutto.",
+      "article": "roles-and-access"
+    },
+    {
+      "id": "term-data-source",
+      "term": "Origine dati",
+      "definition": "Una connessione a uno dei tuoi database, usata per salvare le risposte ed esplorare i dati.",
+      "article": "data-sources-basics"
+    },
+    {
+      "id": "term-endpoint",
+      "term": "Endpoint",
+      "definition": "Un indirizzo del tuo servizio API che un altro sistema chiama per leggere o inviare dati.",
+      "article": "api-basics"
+    },
+    {
+      "id": "term-token",
+      "term": "Token",
+      "definition": "Una chiave segreta che un sistema usa per chiamare la tua API. Mostrata una sola volta; può scadere o essere revocata.",
+      "article": "api-tokens"
+    },
+    {
+      "id": "term-webhook",
+      "term": "Webhook",
+      "definition": "Un messaggio che Formalie invia a un altro sistema nel momento in cui accade qualcosa.",
+      "article": "webhooks"
+    },
+    {
+      "id": "term-audit",
+      "term": "Registro di audit",
+      "definition": "La registrazione di ogni azione nel tuo spazio: chi, cosa, quando e dove.",
+      "article": "audit-trail"
+    },
+    {
+      "id": "term-two-step",
+      "term": "Accesso in due passaggi",
+      "definition": "Un codice richiesto dopo la password, da un’app, un’e-mail o un SMS.",
+      "article": "two-step-sign-in"
+    },
+    {
+      "id": "term-embed",
+      "term": "Incorporare",
+      "definition": "Mostrare un modulo all’interno del tuo sito web.",
+      "article": "embed-a-form"
+    },
+    {
+      "id": "term-ai-credit",
+      "term": "Credito IA",
+      "definition": "L’unità in cui si conta il limite mensile dell’assistente IA; ogni richiesta ne usa alcuni.",
+      "article": "ai-settings"
+    },
+    {
+      "id": "term-workspace",
+      "term": "Spazio",
+      "definition": "Lo spazio della tua organizzazione in Formalie, al suo indirizzo, con le sue persone, i suoi moduli e le sue impostazioni.",
+      "article": "workspace-settings"
+    }
+  ],
+  "tours": [
+    {
+      "id": "forms-tour",
+      "route": "/forms",
+      "title": "Un breve giro dei tuoi moduli",
+      "steps": [
+        {
+          "target": "new-form",
+          "title": "Crea un modulo",
+          "text": "Inizia qui un nuovo modulo: vuoto, da un modello o importandone uno."
+        },
+        {
+          "target": "list-search",
+          "title": "Trova un modulo",
+          "text": "Cerca per nome, tag o proprietario. Premi / per arrivare qui da qualsiasi punto della pagina."
+        },
+        {
+          "target": "view-switch",
+          "title": "Tabella o schede",
+          "text": "Passa dalle righe alle schede. Formalie ricorda la tua scelta."
+        },
+        {
+          "target": "folders",
+          "title": "Cartelle",
+          "text": "Raggruppa i moduli in cartelle. Gli amministratori possono decidere chi vede ciascuna cartella."
+        },
+        {
+          "target": "create",
+          "title": "Crea qualsiasi cosa",
+          "text": "Il pulsante + crea moduli, modelli, connessioni e altro da qualsiasi punto."
+        }
+      ]
+    },
+    {
+      "id": "people-tour",
+      "route": "/people",
+      "title": "Un breve giro di Persone",
+      "steps": [
+        {
+          "target": "add-user",
+          "title": "Aggiungi una persona",
+          "text": "Crea un profilo; la persona riceve un’e-mail per impostare la password."
+        },
+        {
+          "target": "signup-links",
+          "title": "Link di registrazione",
+          "text": "Condividi un link perché le persone richiedano un account; tu le approvi."
+        },
+        {
+          "target": "list-search",
+          "title": "Trova qualcuno",
+          "text": "Cerca per nome, e-mail, reparto o ruolo professionale."
+        }
+      ]
+    }
+  ]
+}

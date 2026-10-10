@@ -118,6 +118,7 @@ defineShortcuts({ n: { usingInput: false, handler: () => can('api.service_create
     <DataView
       id="api-services"
       ref="view"
+      empty-help="api-basics"
       :columns="columns"
       :fetcher="fetcher"
       :filters="filters"

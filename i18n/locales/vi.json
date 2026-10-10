@@ -484,7 +484,20 @@
     "help": "Hiện phím tắt",
     "toggleSidebar": "Thu gọn hoặc mở rộng thanh bên",
     "closeOverlay": "Đóng hộp thoại hoặc bảng",
-    "then": "rồi"
+    "then": "rồi",
+    "lists": "Trong danh sách và bảng điều khiển",
+    "searchList": "Tìm trong danh sách",
+    "nextItem": "Mục tiếp theo trong bảng",
+    "previousItem": "Mục trước trong bảng",
+    "openItem": "Mở mục đã chọn",
+    "builder": "Trong trình tạo biểu mẫu",
+    "duplicate": "Nhân đôi trường đã chọn",
+    "removeField": "Xóa trường đã chọn",
+    "moveUp": "Chuyển trường lên",
+    "moveDown": "Chuyển trường xuống",
+    "editing": "Khi chỉnh sửa",
+    "save": "Lưu",
+    "generate": "Hỏi trợ lý AI (trên các trang của trợ lý)"
   },
   "modal": {
     "move": "Di chuyển hộp thoại",
@@ -8738,5 +8751,166 @@
     "sampleVisit": "Chuyến thăm của bạn",
     "sampleHow": "Chuyến thăm của bạn thế nào?",
     "sampleBetter": "Chúng tôi có thể cải thiện điều gì không?"
+  },
+  "help": {
+    "subtitle": "Câu trả lời, hướng dẫn và mẹo cho mọi thứ trong Formalie",
+    "back": "Trợ giúp và hỗ trợ",
+    "areas": "Duyệt theo lĩnh vực",
+    "popular": "Bài viết phổ biến",
+    "articles": "{n} bài viết | {n} bài viết",
+    "minutes": "Đọc {n} phút | Đọc {n} phút",
+    "updated": "Cập nhật {date}",
+    "readMore": "Đọc bài viết",
+    "related": "Bài viết liên quan",
+    "onThisPage": "Trên trang này",
+    "notFound": "Bài viết này không tồn tại",
+    "notFoundDesc": "Có thể bài đã được di chuyển hoặc xóa. Hãy tìm trong trung tâm trợ giúp.",
+    "notTranslated": "Bài viết này chưa được dịch sang ngôn ngữ của bạn nên hiển thị bằng tiếng Anh.",
+    "category": {
+      "start": {
+        "name": "Bắt đầu",
+        "desc": "Những bước đầu: biểu mẫu đầu tiên, làm quen giao diện, nhóm của bạn."
+      },
+      "forms": {
+        "name": "Biểu mẫu",
+        "desc": "Tìm, sắp xếp, đóng, lưu trữ và khôi phục biểu mẫu."
+      },
+      "builder": {
+        "name": "Trình tạo",
+        "desc": "Câu hỏi, trang, logic, phép tính và phiên bản."
+      },
+      "design": {
+        "name": "Thiết kế",
+        "desc": "Màu sắc, phông chữ, chủ đề và trang đích."
+      },
+      "templates": {
+        "name": "Mẫu",
+        "desc": "Bắt đầu từ biểu mẫu có sẵn và tạo mẫu của riêng bạn."
+      },
+      "sharing": {
+        "name": "Chia sẻ",
+        "desc": "Liên kết, mã QR, lời mời, nhúng và ngôn ngữ."
+      },
+      "responses": {
+        "name": "Phản hồi",
+        "desc": "Xem, duyệt và xuất những gì gửi đến."
+      },
+      "analytics": {
+        "name": "Phân tích",
+        "desc": "Biểu mẫu của bạn hoạt động ra sao và mọi người dừng ở đâu."
+      },
+      "lists": {
+        "name": "List Option",
+        "desc": "Danh sách lựa chọn chỉ quản lý một lần, có nhiều cấp."
+      },
+      "data": {
+        "name": "Nguồn dữ liệu",
+        "desc": "Cơ sở dữ liệu của riêng bạn: lưu trữ, khám phá, truy vấn."
+      },
+      "api": {
+        "name": "Dịch vụ API",
+        "desc": "Endpoint, token, quy tắc truy cập và webhook."
+      },
+      "people": {
+        "name": "Mọi người",
+        "desc": "Nhóm, hồ sơ, vai trò và quyền truy cập."
+      },
+      "settings": {
+        "name": "Cài đặt",
+        "desc": "Cài đặt không gian làm việc, bảo mật và đăng nhập."
+      },
+      "audit": {
+        "name": "Nhật ký kiểm tra",
+        "desc": "Ai đã làm gì, khi nào và từ đâu."
+      },
+      "ai": {
+        "name": "Trợ lý AI",
+        "desc": "Tạo, phân tích và dịch cùng trợ lý."
+      }
+    },
+    "block": {
+      "tip": "Mẹo",
+      "note": "Nên biết",
+      "warning": "Lưu ý"
+    },
+    "start": {
+      "title": "Mới đến? Bắt đầu với những bài này"
+    },
+    "search": {
+      "title": "Chúng tôi có thể giúp gì?",
+      "placeholder": "Tìm bài viết, câu hỏi và thuật ngữ…",
+      "articles": "Bài viết",
+      "faqs": "Câu hỏi",
+      "terms": "Thuật ngữ",
+      "none": "Không tìm thấy kết quả cho “{q}”",
+      "noneDesc": "Hãy thử từ khác hoặc hỏi nhóm hỗ trợ. Chúng tôi ghi lại các lượt tìm không có kết quả để viết phần trợ giúp còn thiếu.",
+      "clear": "Xóa tìm kiếm",
+      "example": {
+        "publish": "xuất bản",
+        "logic": "logic",
+        "export": "xuất",
+        "roles": "vai trò",
+        "translate": "dịch"
+      }
+    },
+    "more": {
+      "title": "Thêm trợ giúp"
+    },
+    "faq": {
+      "title": "Câu hỏi thường gặp",
+      "desc": "Câu trả lời ngắn cho những câu hỏi được hỏi nhiều nhất.",
+      "search": "Tìm câu hỏi…",
+      "all": "Tất cả",
+      "none": "Không có câu hỏi phù hợp."
+    },
+    "glossary": {
+      "title": "Bảng thuật ngữ",
+      "desc": "Các từ Formalie sử dụng, kèm giải thích.",
+      "search": "Tìm thuật ngữ…",
+      "none": "Không có thuật ngữ phù hợp."
+    },
+    "shortcuts": {
+      "title": "Phím tắt",
+      "mac": "Trên Mac, dùng ⌘ ở chỗ ghi Ctrl."
+    },
+    "support": {
+      "title": "Nói chuyện với một người",
+      "desc": "Không tìm thấy điều bạn cần? Nhóm hỗ trợ của chúng tôi luôn sẵn lòng giúp.",
+      "email": "Gửi email cho hỗ trợ",
+      "site": "Trang hỗ trợ"
+    },
+    "feedback": {
+      "question": "Bài viết này có hữu ích không?",
+      "yes": "Có",
+      "no": "Không",
+      "missing": "Điều gì còn thiếu hoặc chưa rõ?",
+      "skip": "Bỏ qua",
+      "send": "Gửi",
+      "thanks": "Cảm ơn bạn. Câu trả lời giúp chúng tôi cải thiện trung tâm trợ giúp."
+    },
+    "learnHow": "Xem cách làm",
+    "panel": {
+      "title": "Trợ giúp cho trang này",
+      "desc": "Hướng dẫn và mẹo cho nơi bạn đang ở.",
+      "openFull": "Mở toàn bộ bài viết",
+      "none": "Chưa có hướng dẫn cho trang này",
+      "noneDesc": "Tìm trong trung tâm trợ giúp hoặc mở để xem mọi hướng dẫn.",
+      "more": "Thêm trợ giúp cho trang này",
+      "centre": "Trung tâm trợ giúp"
+    },
+    "tour": {
+      "start": "Bắt đầu tham quan: {title}",
+      "step": "{n} trên {total}",
+      "next": "Tiếp theo",
+      "back": "Quay lại",
+      "done": "Xong",
+      "end": "Kết thúc tham quan",
+      "hereTitle": "Đây rồi",
+      "hereText": "Đây là điều khiển mà bài viết nhắc đến."
+    },
+    "answer": {
+      "title": "Câu trả lời từ trung tâm trợ giúp",
+      "from": "Từ bài viết"
+    }
   }
 }

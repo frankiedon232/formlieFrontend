@@ -484,7 +484,20 @@
     "help": "Sneltoetsen tonen",
     "toggleSidebar": "Zijbalk in- of uitklappen",
     "closeOverlay": "Venster of paneel sluiten",
-    "then": "dan"
+    "then": "dan",
+    "lists": "In lijsten en panelen",
+    "searchList": "Zoeken in de lijst",
+    "nextItem": "Volgend item in een paneel",
+    "previousItem": "Vorig item in een paneel",
+    "openItem": "Het geselecteerde item openen",
+    "builder": "In de formulierbuilder",
+    "duplicate": "Het geselecteerde veld dupliceren",
+    "removeField": "Het geselecteerde veld verwijderen",
+    "moveUp": "Veld omhoog verplaatsen",
+    "moveDown": "Veld omlaag verplaatsen",
+    "editing": "Tijdens het bewerken",
+    "save": "Opslaan",
+    "generate": "De AI-assistent vragen (op zijn pagina’s)"
   },
   "modal": {
     "move": "Venster verplaatsen",
@@ -8738,5 +8751,166 @@
     "sampleVisit": "Uw bezoek",
     "sampleHow": "Hoe was uw bezoek?",
     "sampleBetter": "Kunnen wij iets beter doen?"
+  },
+  "help": {
+    "subtitle": "Antwoorden, handleidingen en tips over alles in Formalie",
+    "back": "Help en ondersteuning",
+    "areas": "Bladeren per onderdeel",
+    "popular": "Populaire artikelen",
+    "articles": "{n} artikel | {n} artikelen",
+    "minutes": "{n} min leestijd | {n} min leestijd",
+    "updated": "Bijgewerkt op {date}",
+    "readMore": "Lees het artikel",
+    "related": "Gerelateerde artikelen",
+    "onThisPage": "Op deze pagina",
+    "notFound": "Dit artikel bestaat niet",
+    "notFoundDesc": "Het is misschien verplaatst of verwijderd. Zoek in plaats daarvan in het helpcentrum.",
+    "notTranslated": "Dit artikel is nog niet vertaald naar jouw taal en wordt daarom in het Engels getoond.",
+    "category": {
+      "start": {
+        "name": "Aan de slag",
+        "desc": "De eerste stappen: je eerste formulier, je weg vinden, je team."
+      },
+      "forms": {
+        "name": "Formulieren",
+        "desc": "Formulieren zoeken, ordenen, sluiten, archiveren en herstellen."
+      },
+      "builder": {
+        "name": "Builder",
+        "desc": "Vragen, pagina’s, logica, berekeningen en versies."
+      },
+      "design": {
+        "name": "Ontwerp",
+        "desc": "Kleuren, lettertypen, thema’s en landingspagina’s."
+      },
+      "templates": {
+        "name": "Sjablonen",
+        "desc": "Begin met kant-en-klare formulieren en maak je eigen."
+      },
+      "sharing": {
+        "name": "Delen",
+        "desc": "Links, QR-codes, uitnodigingen, insluiten en talen."
+      },
+      "responses": {
+        "name": "Reacties",
+        "desc": "Bekijk, beoordeel en exporteer wat binnenkomt."
+      },
+      "analytics": {
+        "name": "Analyses",
+        "desc": "Hoe je formulieren presteren en waar mensen afhaken."
+      },
+      "lists": {
+        "name": "List Option",
+        "desc": "Keuzelijsten die je één keer beheert, met niveaus."
+      },
+      "data": {
+        "name": "Gegevensbronnen",
+        "desc": "Je eigen databases: opslaan, verkennen, bevragen."
+      },
+      "api": {
+        "name": "API-service",
+        "desc": "Endpoints, tokens, toegangsregels en webhooks."
+      },
+      "people": {
+        "name": "Mensen",
+        "desc": "Je team, profielen, rollen en toegang."
+      },
+      "settings": {
+        "name": "Instellingen",
+        "desc": "Werkruimte-instellingen, beveiliging en inloggen."
+      },
+      "audit": {
+        "name": "Auditlogboek",
+        "desc": "Wie wat deed, wanneer en vanaf waar."
+      },
+      "ai": {
+        "name": "AI-assistent",
+        "desc": "Maak, analyseer en vertaal met de assistent."
+      }
+    },
+    "block": {
+      "tip": "Tip",
+      "note": "Goed om te weten",
+      "warning": "Let op"
+    },
+    "start": {
+      "title": "Nieuw hier? Begin hiermee"
+    },
+    "search": {
+      "title": "Waarmee kunnen we helpen?",
+      "placeholder": "Zoek artikelen, vragen en woorden…",
+      "articles": "Artikelen",
+      "faqs": "Vragen",
+      "terms": "Woorden",
+      "none": "Niets gevonden voor “{q}”",
+      "noneDesc": "Probeer andere woorden of vraag het ons supportteam. We noteren zoekopdrachten zonder resultaat om de ontbrekende hulp te schrijven.",
+      "clear": "Zoekopdracht wissen",
+      "example": {
+        "publish": "publiceren",
+        "logic": "logica",
+        "export": "exporteren",
+        "roles": "rollen",
+        "translate": "vertalen"
+      }
+    },
+    "more": {
+      "title": "Meer hulp"
+    },
+    "faq": {
+      "title": "Veelgestelde vragen",
+      "desc": "Korte antwoorden op de meest gestelde vragen.",
+      "search": "Vragen zoeken…",
+      "all": "Alle",
+      "none": "Geen vragen gevonden."
+    },
+    "glossary": {
+      "title": "Woordenlijst",
+      "desc": "De woorden die Formalie gebruikt, uitgelegd.",
+      "search": "Woorden zoeken…",
+      "none": "Geen woorden gevonden."
+    },
+    "shortcuts": {
+      "title": "Sneltoetsen",
+      "mac": "Gebruik op een Mac ⌘ waar Ctrl staat."
+    },
+    "support": {
+      "title": "Praat met een mens",
+      "desc": "Vind je niet wat je zoekt? Ons supportteam helpt je graag.",
+      "email": "Mail de support",
+      "site": "Supportsite"
+    },
+    "feedback": {
+      "question": "Was dit artikel nuttig?",
+      "yes": "Ja",
+      "no": "Nee",
+      "missing": "Wat ontbrak er of was onduidelijk?",
+      "skip": "Overslaan",
+      "send": "Verzenden",
+      "thanks": "Bedankt. Je antwoord helpt ons het helpcentrum te verbeteren."
+    },
+    "learnHow": "Lees hoe het werkt",
+    "panel": {
+      "title": "Help voor deze pagina",
+      "desc": "Gidsen en tips voor waar je nu bent.",
+      "openFull": "Open het volledige artikel",
+      "none": "Nog geen gids voor deze pagina",
+      "noneDesc": "Zoek in het helpcentrum of open het voor alle gidsen.",
+      "more": "Meer hulp voor deze pagina",
+      "centre": "Helpcentrum"
+    },
+    "tour": {
+      "start": "Start de rondleiding: {title}",
+      "step": "{n} van {total}",
+      "next": "Volgende",
+      "back": "Terug",
+      "done": "Klaar",
+      "end": "Rondleiding stoppen",
+      "hereTitle": "Hier is het",
+      "hereText": "Dit is de knop waar het artikel over gaat."
+    },
+    "answer": {
+      "title": "Antwoord uit het helpcentrum",
+      "from": "Uit het artikel"
+    }
   }
 }

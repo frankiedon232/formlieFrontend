@@ -115,8 +115,9 @@ const rowActions = (row: Pick<AiRequestRow, 'id' | 'title' | 'title_key' | 'targ
       <AiOverviewCards :usage="usage" :by-kind="insights?.by_kind ?? null" :kind="kindFilter" :kinds-title="t('ai.history.byKind')" :kinds-note="insights ? t('ai.history.people', { n: number(insights.people) }, insights.people) : undefined" @kind="filterKind" />
 
       <DataView
-        id="ai-history"
+      id="ai-history"
         ref="view"
+        empty-help="ai-overview"
         :columns="columns"
         :fetcher="fetcher"
         :filters="filters"

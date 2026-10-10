@@ -70,11 +70,11 @@ const steps = computed(() => [t('ai.analysis.step.read'), t('ai.analysis.step.th
         <UAlert v-if="stale && !busy" color="neutral" variant="subtle" icon="i-lucide-refresh-cw" :title="t('ai.analysis.stale')" :actions="[{ label: t('ai.analysis.run'), color: 'neutral', onClick: run }]" />
         <AiAnalysisView :analysis="analysis" />
       </div>
-      <UCard v-else variant="outline" :ui="{ body: 'p-6 sm:p-8' }">
+      <UCard v-else variant="outline" class="shrink-0" :ui="{ body: 'p-6 sm:p-8' }">
         <AppEmpty icon="i-lucide-chart-scatter" :title="t('ai.analysis.emptyTitle')" :description="t('ai.analysis.emptyDesc')" />
       </UCard>
 
-      <AiAskBox v-if="formId" :form-id="formId" />
+      <AiAskBox v-if="formId" :form-id="formId" class="shrink-0" />
     </template>
   </AppPanel>
 </template>

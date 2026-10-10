@@ -70,6 +70,7 @@ const canPurge = computed(() => useCan().can('forms.purge'))
     <DataView
       id="forms-trash"
       ref="dataView"
+      empty-help="trash"
       :columns="columns"
       :fetcher="fetcher"
       :sort-options="sortOptions"

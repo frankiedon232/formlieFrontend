@@ -426,6 +426,20 @@ The assistant proposes, a person applies. Every call checks that the assistant i
 | POST | `/ai/forms/{id}/rewrite` | `{ tone (plain · friendly · formal), schema? }` → `AiRewrite { request_id, form, tone, items [{ key, text, rewrite, reasons (plain_words · long_sentence · passive · caps · tone_friendly · tone_formal) }], reading { before, after } (reading age in years), total, credits }`; only texts that change are listed. Apply: `POST /ai/requests/{id}/apply { texts { key: text } }` (into the saved draft) |
 | POST | `/ai/requests/{id}/discard` | your own `proposed` draft → `discarded` (it stays in the history) |
 
+## Help centre (F25)
+
+Read-only for every signed-in person (no permission needed); written and published by the Formalie team in the platform admin. Every call takes `lang` (one of the 20 codes): an item not translated yet comes in English with `language: "en"`. Articles are blocks: `p` / `h` `{ text }` · `steps` / `list` `{ items }` · `tip` / `note` / `warning` `{ text }` · `show` `{ label, to, target? }` (opens the page with `?show=<target>`, which points at the control marked `data-help="<target>"`) · `media` `{ kind (image · gif · video), src, caption, captions_src? }`. Text may hold `**bold**` (shown as text, never HTML).
+
+| Method | Path | Notes |
+| ------ | ---- | ----- |
+| GET | `/help/home?lang` | `HelpHome { categories [{ key, count }], start (the "New here?" path, in order), popular, updated, support { email, url } }` (support from the platform settings) |
+| GET | `/help/articles?category&lang` | `HelpArticleSummary { id, category, title, summary, minutes, updated_at, language }` |
+| GET | `/help/articles/{id}?lang` | `HelpArticle` = summary + `blocks`, `related` (summaries), `route` (the page it explains, `:id` for any form), `helpful` (your answer or null) |
+| POST | `/help/articles/{id}/feedback` | `{ helpful, comment? }`; one answer per person and article (kept for the Formalie team) |
+| GET | `/help/search?q&lang` | `HelpSearchResult { query, articles (with a matching `snippet`), faqs, terms, answer { article, blocks } \| null }` (`answer`: the best article's steps for a "how" question, else its best paragraph; the app shows it as the AI assistant's answer when the assistant is on). A search that finds nothing is recorded for the Formalie team |
+| GET | `/help/context?path&lang` | `HelpContext { article, more, tour }`: help for the page at `path` (the "?" in every header) |
+| GET | `/help/faqs?category&lang` · `/help/glossary?lang` | `HelpFaq { id, category, question, answer, article }` · `HelpTerm { id, term, definition, article }` (sorted in the reader's language) |
+
 ## Integrations, settings
 
 | GET · POST | `/webhooks` (q, sort, `filter[status]`, `filter[event]`) · `/webhooks/insights` | `Webhook { id, name, url, events, forms, enabled, status (active · failing · paused), paused_reason, secret_preview, deliveries_30d, failed_30d, success_rate, avg_ms, last_delivery, consecutive_failures, daily }`; POST `{ name, url, events, form_ids ([] = every form), enabled? }` → `{ webhook, secret }` (once). URL: HTTPS, public host, never Formalie (`FRM-GEN-1002` url: required · url · https · host · private) |

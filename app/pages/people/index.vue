@@ -115,8 +115,8 @@ const names = (items: { name: string }[]) => items.map(item => item.name).join('
 <template>
   <AppPanel id="people" :title="t('nav.people')" :subtitle="t('people.subtitle')">
     <template #actions>
-      <UButton v-if="canManage" :label="t('people.links.button')" icon="i-lucide-link" color="neutral" variant="outline" @click="linksOpen = true" />
-      <UButton v-if="canManage" :label="t('people.add.button')" icon="i-lucide-user-plus" color="neutral" @click="addOpen = true">
+      <UButton v-if="canManage" :label="t('people.links.button')" icon="i-lucide-link" color="neutral" variant="outline" data-help="signup-links" @click="linksOpen = true" />
+      <UButton v-if="canManage" :label="t('people.add.button')" icon="i-lucide-user-plus" color="neutral" data-help="add-user" @click="addOpen = true">
         <template #trailing><UKbd value="N" size="sm" class="hidden sm:inline-flex" /></template>
       </UButton>
     </template>
@@ -125,6 +125,7 @@ const names = (items: { name: string }[]) => items.map(item => item.name).join('
     <DataView
       id="people"
       ref="list"
+      empty-help="invite-your-team"
       :columns="columns"
       :fetcher="fetcher"
       :filters="filters"

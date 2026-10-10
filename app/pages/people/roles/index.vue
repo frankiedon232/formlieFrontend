@@ -100,6 +100,7 @@ const rowActions = (row: RoleRow): DropdownMenuItem[][] => [
     <DataView
       id="roles"
       ref="view"
+      empty-help="roles-and-access"
       :columns="columns"
       :fetcher="fetcher"
       :filters="filters"

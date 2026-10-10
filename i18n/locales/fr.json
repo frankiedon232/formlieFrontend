@@ -484,7 +484,20 @@
     "help": "Afficher les raccourcis",
     "toggleSidebar": "Réduire ou développer la barre latérale",
     "closeOverlay": "Fermer la fenêtre ou le panneau",
-    "then": "puis"
+    "then": "puis",
+    "lists": "Dans les listes et panneaux",
+    "searchList": "Rechercher dans la liste",
+    "nextItem": "Élément suivant du panneau",
+    "previousItem": "Élément précédent du panneau",
+    "openItem": "Ouvrir l’élément sélectionné",
+    "builder": "Dans l’éditeur de formulaires",
+    "duplicate": "Dupliquer le champ sélectionné",
+    "removeField": "Supprimer le champ sélectionné",
+    "moveUp": "Monter le champ",
+    "moveDown": "Descendre le champ",
+    "editing": "Pendant la modification",
+    "save": "Enregistrer",
+    "generate": "Demander à l’assistant IA (sur ses pages)"
   },
   "modal": {
     "move": "Déplacer la fenêtre",
@@ -8738,5 +8751,166 @@
     "sampleVisit": "Votre visite",
     "sampleHow": "Comment s’est passée votre visite ?",
     "sampleBetter": "Y a-t-il quelque chose que nous pourrions améliorer ?"
+  },
+  "help": {
+    "subtitle": "Réponses, guides et conseils sur tout Formalie",
+    "back": "Aide et assistance",
+    "areas": "Parcourir par thème",
+    "popular": "Articles populaires",
+    "articles": "{n} article | {n} articles",
+    "minutes": "{n} min de lecture | {n} min de lecture",
+    "updated": "Mis à jour le {date}",
+    "readMore": "Lire l’article",
+    "related": "Articles associés",
+    "onThisPage": "Sur cette page",
+    "notFound": "Cet article n’existe pas",
+    "notFoundDesc": "Il a peut-être été déplacé ou supprimé. Cherchez plutôt dans le centre d’aide.",
+    "notTranslated": "Cet article n’est pas encore traduit dans votre langue, il s’affiche donc en anglais.",
+    "category": {
+      "start": {
+        "name": "Premiers pas",
+        "desc": "Les premières étapes : votre premier formulaire, vous repérer, votre équipe."
+      },
+      "forms": {
+        "name": "Formulaires",
+        "desc": "Trouvez, organisez, fermez, archivez et restaurez vos formulaires."
+      },
+      "builder": {
+        "name": "Éditeur",
+        "desc": "Questions, pages, logique, calculs et versions."
+      },
+      "design": {
+        "name": "Design",
+        "desc": "Couleurs, polices, thèmes et pages d’atterrissage."
+      },
+      "templates": {
+        "name": "Modèles",
+        "desc": "Partez de formulaires prêts à l’emploi ou créez les vôtres."
+      },
+      "sharing": {
+        "name": "Partage",
+        "desc": "Liens, codes QR, invitations, intégration et langues."
+      },
+      "responses": {
+        "name": "Réponses",
+        "desc": "Consultez, examinez et exportez ce qui arrive."
+      },
+      "analytics": {
+        "name": "Analyses",
+        "desc": "Les performances de vos formulaires et où les gens s’arrêtent."
+      },
+      "lists": {
+        "name": "List Option",
+        "desc": "Des listes de choix gérées une seule fois, avec des niveaux."
+      },
+      "data": {
+        "name": "Sources de données",
+        "desc": "Vos propres bases de données : stocker, explorer, interroger."
+      },
+      "api": {
+        "name": "Service API",
+        "desc": "Points de terminaison, jetons, règles d’accès et webhooks."
+      },
+      "people": {
+        "name": "Personnes",
+        "desc": "Votre équipe, profils, rôles et accès."
+      },
+      "settings": {
+        "name": "Paramètres",
+        "desc": "Paramètres de l’espace de travail, sécurité et connexion."
+      },
+      "audit": {
+        "name": "Journal d’audit",
+        "desc": "Qui a fait quoi, quand et d’où."
+      },
+      "ai": {
+        "name": "Assistant IA",
+        "desc": "Créez, analysez et traduisez avec l’assistant."
+      }
+    },
+    "block": {
+      "tip": "Astuce",
+      "note": "Bon à savoir",
+      "warning": "Attention"
+    },
+    "start": {
+      "title": "Nouveau ? Commencez par ceci"
+    },
+    "search": {
+      "title": "Comment pouvons-nous vous aider ?",
+      "placeholder": "Rechercher des articles, questions et mots…",
+      "articles": "Articles",
+      "faqs": "Questions",
+      "terms": "Mots",
+      "none": "Aucun résultat pour « {q} »",
+      "noneDesc": "Essayez d’autres mots ou contactez notre équipe d’assistance. Nous notons les recherches sans résultat pour rédiger l’aide manquante.",
+      "clear": "Effacer la recherche",
+      "example": {
+        "publish": "publier",
+        "logic": "logique",
+        "export": "exporter",
+        "roles": "rôles",
+        "translate": "traduire"
+      }
+    },
+    "more": {
+      "title": "Plus d’aide"
+    },
+    "faq": {
+      "title": "Questions fréquentes",
+      "desc": "Des réponses courtes aux questions les plus posées.",
+      "search": "Rechercher des questions…",
+      "all": "Toutes",
+      "none": "Aucune question ne correspond."
+    },
+    "glossary": {
+      "title": "Glossaire",
+      "desc": "Les mots utilisés par Formalie, expliqués.",
+      "search": "Rechercher des mots…",
+      "none": "Aucun mot ne correspond."
+    },
+    "shortcuts": {
+      "title": "Raccourcis clavier",
+      "mac": "Sur Mac, utilisez ⌘ là où Ctrl est indiqué."
+    },
+    "support": {
+      "title": "Parler à une personne",
+      "desc": "Vous ne trouvez pas ce qu’il vous faut ? Notre équipe d’assistance vous aide volontiers.",
+      "email": "Écrire à l’assistance",
+      "site": "Site d’assistance"
+    },
+    "feedback": {
+      "question": "Cet article vous a-t-il aidé ?",
+      "yes": "Oui",
+      "no": "Non",
+      "missing": "Qu’est-ce qui manquait ou n’était pas clair ?",
+      "skip": "Passer",
+      "send": "Envoyer",
+      "thanks": "Merci. Votre réponse nous aide à améliorer le centre d’aide."
+    },
+    "learnHow": "Voir comment faire",
+    "panel": {
+      "title": "Aide pour cette page",
+      "desc": "Guides et astuces pour l’endroit où vous êtes.",
+      "openFull": "Ouvrir l’article complet",
+      "none": "Pas encore de guide pour cette page",
+      "noneDesc": "Cherchez dans le centre d’aide ou ouvrez-le pour voir tous les guides.",
+      "more": "Plus d’aide pour cette page",
+      "centre": "Centre d’aide"
+    },
+    "tour": {
+      "start": "Lancer la visite : {title}",
+      "step": "{n} sur {total}",
+      "next": "Suivant",
+      "back": "Retour",
+      "done": "Terminé",
+      "end": "Quitter la visite",
+      "hereTitle": "Le voici",
+      "hereText": "Voici le contrôle dont parle l’article."
+    },
+    "answer": {
+      "title": "Réponse du centre d’aide",
+      "from": "Extrait de l’article"
+    }
   }
 }

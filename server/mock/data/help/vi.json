@@ -1,0 +1,1909 @@
+{
+  "articles": [
+    {
+      "id": "welcome",
+      "category": "start",
+      "start": 1,
+      "popular": true,
+      "minutes": 2,
+      "route": "/forms",
+      "related": [
+        "first-form",
+        "find-your-way",
+        "invite-your-team"
+      ],
+      "keywords": [
+        "bắt đầu",
+        "khởi đầu",
+        "tổng quan",
+        "mới",
+        "là gì"
+      ],
+      "title": "Chào mừng bạn đến với Formalie",
+      "summary": "Formalie làm được gì và cổng thông tin được bố trí ra sao.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Formalie giúp tổ chức của bạn thu thập thông tin bằng biểu mẫu, xem lại những gì gửi về và chuyển đến nơi cần thiết: cơ sở dữ liệu, hệ thống khác qua API, hoặc một báo cáo."
+        },
+        {
+          "type": "h",
+          "text": "Các phần chính"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Forms**: build forms, share them and follow their responses.",
+            "**Data sources**: connect your own databases to store responses and explore them.",
+            "**API service**: let other systems read and send data through your own endpoints.",
+            "**AI assistant**: create forms, analyse answers and translate with help.",
+            "**People**: invite your team and decide what each person may do."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Nhấn **Ctrl + K** (hoặc **⌘ + K** trên máy Mac) ở bất kỳ đâu để tìm một trang, một biểu mẫu hay một cài đặt."
+        },
+        {
+          "type": "show",
+          "label": "Mở biểu mẫu của bạn",
+          "to": "/forms"
+        }
+      ]
+    },
+    {
+      "id": "find-your-way",
+      "category": "start",
+      "start": 2,
+      "minutes": 2,
+      "route": null,
+      "related": [
+        "welcome",
+        "keyboard-and-search"
+      ],
+      "keywords": [
+        "menu",
+        "thanh bên",
+        "thanh biểu tượng",
+        "điều hướng",
+        "ở đâu"
+      ],
+      "title": "Làm quen với giao diện",
+      "summary": "Thanh biểu tượng, menu, phần đầu trang và ô tìm kiếm.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Cột hẹp ở ngoài cùng bên trái là **thanh biểu tượng**. Mỗi biểu tượng mở một khu vực của Formalie: Biểu mẫu, Nguồn dữ liệu, Dịch vụ API, Trợ lý AI và Mọi người. Menu bên cạnh thay đổi theo khu vực bạn đang ở."
+        },
+        {
+          "type": "p",
+          "text": "Ở đầu mỗi trang bạn thấy tiêu đề, vị trí hiện tại (đường dẫn) và các nút của trang. Nút chính luôn là nút màu tối ở bên phải."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Collapse the menu** with the « button or the **[** key to get more room.",
+            "**Dark mode** is at the bottom of the menu, under System.",
+            "**Help & support** is at the foot of the rail and in the System group."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Trên điện thoại, menu mở bằng nút ☰ ở góc trên bên trái."
+        }
+      ]
+    },
+    {
+      "id": "first-form",
+      "category": "start",
+      "start": 3,
+      "popular": true,
+      "minutes": 3,
+      "route": "/forms/new",
+      "related": [
+        "builder-basics",
+        "share-a-form",
+        "use-a-template"
+      ],
+      "keywords": [
+        "tạo",
+        "biểu mẫu mới",
+        "đầu tiên",
+        "làm biểu mẫu"
+      ],
+      "title": "Tạo biểu mẫu đầu tiên của bạn",
+      "summary": "Từ trang trống, một mẫu có sẵn hoặc một mô tả, chỉ trong vài phút.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Bạn có thể bắt đầu một biểu mẫu theo ba cách: từ trang trống, từ một mẫu của Formalie, hoặc mô tả cho trợ lý AI."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Click **New form** at the top right of the Forms page.",
+            "Choose **Blank**, pick a **template**, or **import** a form file.",
+            "Give the form a name and, if you like, a folder.",
+            "The builder opens: add questions from the field list on the left.",
+            "When you are happy, click **Publish** and share the link."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Chưa biết bắt đầu từ đâu? Trợ lý AI có thể soạn cả biểu mẫu từ vài từ: mở **Trợ lý AI → Tạo biểu mẫu**."
+        },
+        {
+          "type": "show",
+          "label": "Bắt đầu biểu mẫu mới",
+          "to": "/forms/new",
+          "target": "new-form"
+        }
+      ]
+    },
+    {
+      "id": "invite-your-team",
+      "category": "start",
+      "start": 4,
+      "minutes": 2,
+      "route": "/people",
+      "related": [
+        "sign-up-links",
+        "roles-and-access"
+      ],
+      "keywords": [
+        "mời",
+        "nhóm",
+        "đồng nghiệp",
+        "thêm người dùng",
+        "mọi người"
+      ],
+      "title": "Mời nhóm của bạn tham gia",
+      "summary": "Thêm đồng nghiệp bằng hồ sơ, hoặc chia sẻ liên kết đăng ký.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Mỗi người trong không gian làm việc có một hồ sơ với phòng ban, chức danh và vai trò. Vai trò quyết định họ được xem và làm gì."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Open **People** from the rail.",
+            "Click **Add user** to create a profile: the person gets an email to set their password.",
+            "Or open **Sign-up links** to share a link: people who sign up with it wait for your approval."
+          ]
+        },
+        {
+          "type": "show",
+          "label": "Mở Mọi người",
+          "to": "/people",
+          "target": "add-user"
+        }
+      ]
+    },
+    {
+      "id": "keyboard-and-search",
+      "category": "start",
+      "start": 5,
+      "minutes": 1,
+      "route": null,
+      "related": [
+        "find-your-way"
+      ],
+      "keywords": [
+        "phím tắt",
+        "bàn phím",
+        "tìm kiếm",
+        "ctrl k",
+        "lệnh"
+      ],
+      "title": "Làm việc nhanh hơn với tìm kiếm và phím tắt",
+      "summary": "Tìm mọi thứ bằng Ctrl + K và di chuyển bằng bàn phím.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Tìm kiếm mở bằng **Ctrl + K** (**⌘ + K** trên máy Mac). Gõ một phần tên trang, biểu mẫu, cài đặt hoặc người rồi nhấn Enter."
+        },
+        {
+          "type": "p",
+          "text": "Nhấn **?** để xem mọi phím tắt. Nhiều trang có thêm phím tắt riêng, ví dụ **J** và **K** để chuyển giữa các phản hồi trong một bảng bên."
+        },
+        {
+          "type": "tip",
+          "text": "Mọi danh sách và bảng bên đều dùng được chỉ với bàn phím: Tab để di chuyển, Enter để mở, Esc để đóng."
+        }
+      ]
+    },
+    {
+      "id": "forms-list",
+      "category": "forms",
+      "popular": true,
+      "minutes": 2,
+      "route": "/forms",
+      "related": [
+        "form-lifecycle",
+        "folders"
+      ],
+      "keywords": [
+        "danh sách biểu mẫu",
+        "tìm biểu mẫu",
+        "bộ lọc",
+        "lưới",
+        "bảng"
+      ],
+      "title": "Tìm và sắp xếp biểu mẫu của bạn",
+      "summary": "Tìm kiếm, lọc, sắp xếp và chuyển giữa bảng và thẻ.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Trang Biểu mẫu liệt kê mọi biểu mẫu bạn được xem. Hai thẻ ở trên cùng cho thấy các phản hồi gần đây và cách biểu mẫu phân bố giữa bản nháp, đã xuất bản và đã đóng; nhấn một trạng thái trong chú giải để chỉ hiện các biểu mẫu đó."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Search** by name, tag or owner.",
+            "**Filter** by status, folder, owner or tag; filters show as chips you can clear.",
+            "**Columns** lets you show, hide and reorder the table’s columns.",
+            "**Table / Grid** switches between rows and cards; Formalie remembers your choice.",
+            "Right-click a form, or use its **⋯** menu, for actions such as duplicate, move or archive."
+          ]
+        },
+        {
+          "type": "show",
+          "label": "Mở danh sách biểu mẫu",
+          "to": "/forms",
+          "target": "view-switch"
+        }
+      ]
+    },
+    {
+      "id": "form-lifecycle",
+      "category": "forms",
+      "minutes": 3,
+      "route": "/forms",
+      "related": [
+        "publish-and-versions",
+        "trash"
+      ],
+      "keywords": [
+        "bản nháp",
+        "xuất bản",
+        "đóng",
+        "lưu trữ",
+        "trạng thái",
+        "mở lại"
+      ],
+      "title": "Bản nháp, đã xuất bản, đã đóng và đã lưu trữ",
+      "summary": "Ý nghĩa của từng trạng thái và cách biểu mẫu chuyển giữa chúng.",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "**Draft**: being built; nobody can fill it in yet.",
+            "**Published**: open for responses at its link.",
+            "**Closed**: the link still works but shows that the form is closed; no new responses.",
+            "**Archived**: put away; hidden from the main list, responses kept."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Một biểu mẫu đã xuất bản có thể có **thay đổi chưa xuất bản**: các chỉnh sửa của bạn nằm trong bản nháp cho đến khi bạn xuất bản lại, nên người điền không bao giờ thấy một thay đổi làm dở."
+        },
+        {
+          "type": "tip",
+          "text": "Đặt ngày mở và đóng ở **Chia sẻ → Thời gian mở** để biểu mẫu tự mở và tự đóng."
+        }
+      ]
+    },
+    {
+      "id": "folders",
+      "category": "forms",
+      "minutes": 2,
+      "route": "/forms",
+      "related": [
+        "forms-list",
+        "roles-and-access"
+      ],
+      "keywords": [
+        "thư mục",
+        "sắp xếp",
+        "nhóm",
+        "quyền truy cập",
+        "ẩn"
+      ],
+      "title": "Thư mục và ai được xem",
+      "summary": "Gom biểu mẫu vào thư mục và giới hạn một số thư mục cho những người nhất định.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Thư mục gom các biểu mẫu lại, ví dụ theo nhóm hoặc dự án. Tạo một thư mục bằng nút **+** cạnh Thư mục trong menu, rồi chuyển biểu mẫu vào đó từ menu **⋯** của biểu mẫu."
+        },
+        {
+          "type": "p",
+          "text": "Quản trị viên có thể giới hạn một thư mục cho một số vai trò, phòng ban hoặc người bằng **Quyền truy cập thư mục**. Những người khác không thấy thư mục, biểu mẫu hay phản hồi của nó ở bất kỳ đâu, kể cả trong tìm kiếm hay khi xuất."
+        }
+      ]
+    },
+    {
+      "id": "trash",
+      "category": "forms",
+      "minutes": 1,
+      "route": "/forms/trash",
+      "related": [
+        "form-lifecycle"
+      ],
+      "keywords": [
+        "xóa",
+        "thùng rác",
+        "khôi phục",
+        "lấy lại"
+      ],
+      "title": "Xóa và khôi phục biểu mẫu",
+      "summary": "Biểu mẫu đã xóa nằm trong thùng rác 30 ngày.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Khi bạn xóa một biểu mẫu, nó vào **Thùng rác** trong 30 ngày cùng các phản hồi. Bạn có thể khôi phục từ đó bất cứ lúc nào trong 30 ngày này."
+        },
+        {
+          "type": "warning",
+          "text": "**Xóa vĩnh viễn** trong thùng rác sẽ xóa hẳn biểu mẫu và mọi phản hồi của nó. Không thể hoàn tác."
+        },
+        {
+          "type": "show",
+          "label": "Mở thùng rác",
+          "to": "/forms/trash"
+        }
+      ]
+    },
+    {
+      "id": "builder-basics",
+      "category": "builder",
+      "popular": true,
+      "minutes": 3,
+      "route": "/forms/:id/build",
+      "related": [
+        "field-types",
+        "builder-logic",
+        "publish-and-versions"
+      ],
+      "keywords": [
+        "trình tạo",
+        "thêm trường",
+        "câu hỏi",
+        "kéo",
+        "trang",
+        "bố cục"
+      ],
+      "title": "Tạo một biểu mẫu",
+      "summary": "Thêm câu hỏi, sắp xếp thành hàng và trang, rồi đổi cài đặt của chúng.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Trình tạo có ba phần: **danh sách trường** ở bên trái, **biểu mẫu** ở giữa và **cài đặt** của mục bạn chọn ở bên phải."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Drag a field from the list onto the form, or click it to add it after the selected field.",
+            "Click a field to change its question, help text, whether it’s required, and more.",
+            "Put fields side by side by dropping them next to each other; use **Width** to size them.",
+            "Add pages with **Add page** to split a long form.",
+            "Your changes save as you work; **Undo** and **Redo** are at the top."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Không có chuột? Chọn một trường rồi dùng **Alt + ↑ / ↓** để di chuyển, **Ctrl + D** để nhân đôi và **Delete** để xóa."
+        },
+        {
+          "type": "tip",
+          "text": "Nút **Trợ lý** trong trình tạo gợi ý các câu hỏi còn thiếu, viết văn bản hướng dẫn và kiểm tra biểu mẫu của bạn."
+        }
+      ]
+    },
+    {
+      "id": "field-types",
+      "category": "builder",
+      "minutes": 3,
+      "route": "/forms/:id/build",
+      "related": [
+        "builder-basics",
+        "lists-basics"
+      ],
+      "keywords": [
+        "trường",
+        "loại",
+        "câu hỏi",
+        "tải lên",
+        "chữ ký",
+        "đánh giá",
+        "địa chỉ"
+      ],
+      "title": "Nên dùng trường nào",
+      "summary": "Các loại câu hỏi Formalie có và khi nào dùng từng loại.",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "**Text**: short and long answers, email, phone, number, amount, full name.",
+            "**Dates**: date, time, date and time, date range, duration.",
+            "**Choices**: dropdown, radio, checkboxes, yes / no, ranking, matrix, agreement.",
+            "**Ratings**: stars, a 0 to 10 scale, a slider.",
+            "**Files**: file upload, photo upload, signature.",
+            "**Location**: address, country, language, time zone.",
+            "**Advanced**: hidden values and calculations.",
+            "**Layout**: section headings, text, images and dividers."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Chọn trường cụ thể nhất: trường email kiểm tra địa chỉ khi người ta gõ, trường ngày hiện lịch, trường điện thoại kiểm tra số."
+        },
+        {
+          "type": "tip",
+          "text": "Danh sách lựa chọn dài (quốc gia, phòng ban) nên dùng **Danh sách tùy chọn**, tạo một lần và dùng trong nhiều biểu mẫu."
+        }
+      ]
+    },
+    {
+      "id": "builder-logic",
+      "category": "builder",
+      "minutes": 3,
+      "route": "/forms/:id/logic",
+      "related": [
+        "calculations",
+        "builder-basics"
+      ],
+      "keywords": [
+        "logic",
+        "quy tắc",
+        "hiện",
+        "ẩn",
+        "điều kiện",
+        "bỏ qua",
+        "nhảy"
+      ],
+      "title": "Hiện đúng câu hỏi bằng logic",
+      "summary": "Hiện, ẩn, bắt buộc hoặc bỏ qua câu hỏi tùy theo các câu trả lời trước.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Quy tắc logic thay đổi biểu mẫu trong lúc người ta điền: chỉ hiện câu hỏi tiếp theo sau khi trả lời có, bắt buộc nhập số điện thoại cho yêu cầu khẩn, hoặc nhảy thẳng đến cuối."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Open the **Logic** tab of the form.",
+            "Click **Add rule** and choose **When**: a question, a condition and a value.",
+            "Choose **Then**: show, hide, require, set a value or jump to a page.",
+            "Add more conditions with **and** / **or** if needed."
+          ]
+        },
+        {
+          "type": "note",
+          "text": "Câu hỏi bị một quy tắc ẩn đi thì không bao giờ bắt buộc, nên người ta luôn gửi được biểu mẫu."
+        }
+      ]
+    },
+    {
+      "id": "calculations",
+      "category": "builder",
+      "minutes": 2,
+      "route": "/forms/:id/build",
+      "related": [
+        "builder-logic",
+        "field-types"
+      ],
+      "keywords": [
+        "phép tính",
+        "công thức",
+        "tổng",
+        "điểm",
+        "cộng"
+      ],
+      "title": "Tổng và điểm bằng phép tính",
+      "summary": "Tính tổng, trung bình và điểm từ các câu trả lời.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Một trường **Phép tính** tính ra giá trị từ các câu trả lời khác, ví dụ số lượng × giá, điểm đánh giá trung bình hoặc điểm rủi ro. Người điền thấy kết quả ngay khi điền biểu mẫu."
+        },
+        {
+          "type": "p",
+          "text": "Viết công thức với khóa của câu hỏi đặt trong dấu ngoặc nhọn, ví dụ **{quantity} * {unit_price}**. Các lựa chọn có thể mang điểm để cộng lại được."
+        }
+      ]
+    },
+    {
+      "id": "publish-and-versions",
+      "category": "builder",
+      "minutes": 2,
+      "route": "/forms/:id/versions",
+      "related": [
+        "form-lifecycle",
+        "share-a-form"
+      ],
+      "keywords": [
+        "xuất bản",
+        "phiên bản",
+        "khôi phục",
+        "so sánh",
+        "lịch sử"
+      ],
+      "title": "Xuất bản và phiên bản",
+      "summary": "Mỗi lần xuất bản được lưu thành một phiên bản để so sánh và khôi phục.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Xuất bản** biến bản nháp của bạn thành biểu mẫu chính thức. Mỗi lần xuất bản được lưu thành một phiên bản đánh số, kèm ghi chú tùy chọn về những gì đã thay đổi."
+        },
+        {
+          "type": "p",
+          "text": "Trong **Phiên bản** bạn có thể so sánh bất kỳ phiên bản nào với bản nháp và khôi phục một phiên bản cũ vào bản nháp."
+        },
+        {
+          "type": "tip",
+          "text": "Nút Xuất bản bị mờ khi không có gì mới để xuất bản."
+        }
+      ]
+    },
+    {
+      "id": "design-a-form",
+      "category": "design",
+      "popular": true,
+      "minutes": 3,
+      "route": "/forms/:id/design",
+      "related": [
+        "themes",
+        "landing-pages"
+      ],
+      "keywords": [
+        "thiết kế",
+        "màu",
+        "phông chữ",
+        "logo",
+        "giao diện",
+        "kiểu dáng"
+      ],
+      "title": "Thiết kế diện mạo biểu mẫu",
+      "summary": "Màu sắc, phông chữ, bố cục, phần đầu và trang cảm ơn.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Mở thẻ **Thiết kế** của biểu mẫu để đổi diện mạo. Phần xem trước cho thấy biểu mẫu như người điền sẽ thấy, trên máy tính, máy tính bảng hoặc điện thoại."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Start from a ready **starting point**, then adjust.",
+            "Change colours, fonts, the size of fields and buttons.",
+            "Add your logo, a cover image or a coloured band at the top.",
+            "Design the **thank-you page** people see after sending."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Lưu một thiết kế thành **giao diện** để dùng cho các biểu mẫu khác chỉ với một cú nhấp."
+        }
+      ]
+    },
+    {
+      "id": "themes",
+      "category": "design",
+      "minutes": 2,
+      "route": "/settings/themes",
+      "related": [
+        "design-a-form",
+        "form-defaults"
+      ],
+      "keywords": [
+        "giao diện",
+        "thương hiệu",
+        "thiết kế đã lưu",
+        "mặc định"
+      ],
+      "title": "Giao diện biểu mẫu",
+      "summary": "Lưu thiết kế một lần và dùng cho bất kỳ biểu mẫu nào.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Giao diện là các thiết kế đã lưu. Formalie có sẵn một bộ; không gian làm việc của bạn có thể tự thêm từ trình thiết kế, hoặc nhờ trợ lý AI gợi ý thiết kế từ màu thương hiệu của bạn."
+        },
+        {
+          "type": "p",
+          "text": "Chọn giao diện mà biểu mẫu mới bắt đầu ở **Cài đặt → Mặc định của biểu mẫu**."
+        },
+        {
+          "type": "show",
+          "label": "Mở giao diện",
+          "to": "/settings/themes"
+        }
+      ]
+    },
+    {
+      "id": "landing-pages",
+      "category": "design",
+      "minutes": 1,
+      "route": "/settings/landing-pages",
+      "related": [
+        "design-a-form"
+      ],
+      "keywords": [
+        "trang đích",
+        "trang quanh biểu mẫu",
+        "biểu ngữ",
+        "khung"
+      ],
+      "title": "Trang đích",
+      "summary": "Trang bao quanh biểu mẫu: biểu ngữ, phần giới thiệu và thông tin nhanh.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Trang đích là trang chứa biểu mẫu của bạn: một biểu ngữ có tiêu đề, phần giới thiệu, thời gian điền và tổ chức của bạn. Chọn một trang trong trình thiết kế hoặc lưu trang riêng của bạn ở **Trang đích**."
+        }
+      ]
+    },
+    {
+      "id": "use-a-template",
+      "category": "templates",
+      "popular": true,
+      "minutes": 2,
+      "route": "/templates",
+      "related": [
+        "save-as-template",
+        "first-form"
+      ],
+      "keywords": [
+        "mẫu",
+        "thư viện",
+        "ví dụ",
+        "có sẵn"
+      ],
+      "title": "Bắt đầu từ một mẫu",
+      "summary": "Biểu mẫu có sẵn cho nhiều mục đích, bằng ngôn ngữ của bạn.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Thư viện mẫu có các biểu mẫu làm sẵn cho nhân sự, sức khỏe và an toàn, sự kiện, bán hàng và nhiều hơn nữa. Mỗi mẫu có đủ câu hỏi, logic, phép tính và một thiết kế phù hợp."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Open **Templates** from the menu.",
+            "Browse by category or search.",
+            "Open a template to try it in the preview.",
+            "Click **Use template**: a new draft form opens in the builder."
+          ]
+        },
+        {
+          "type": "show",
+          "label": "Duyệt các mẫu",
+          "to": "/templates"
+        }
+      ]
+    },
+    {
+      "id": "save-as-template",
+      "category": "templates",
+      "minutes": 1,
+      "route": "/templates",
+      "related": [
+        "use-a-template"
+      ],
+      "keywords": [
+        "lưu mẫu",
+        "mẫu của không gian làm việc",
+        "dùng lại"
+      ],
+      "title": "Tạo mẫu của riêng bạn",
+      "summary": "Lưu một biểu mẫu thành mẫu cho không gian làm việc của bạn.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Biểu mẫu nào cũng có thể thành mẫu cho không gian làm việc: mở menu **⋯** của nó và chọn **Lưu thành mẫu**. Đặt tên, mô tả và danh mục. Mẫu của bạn xuất hiện ở mục **Mẫu của bạn**."
+        }
+      ]
+    },
+    {
+      "id": "share-a-form",
+      "category": "sharing",
+      "popular": true,
+      "minutes": 3,
+      "route": "/forms/:id/share",
+      "related": [
+        "who-can-fill-in",
+        "embed-a-form",
+        "form-languages"
+      ],
+      "keywords": [
+        "chia sẻ",
+        "liên kết",
+        "qr",
+        "email",
+        "gửi"
+      ],
+      "title": "Chia sẻ biểu mẫu",
+      "summary": "Liên kết, mã QR, lời mời qua email và liên kết ngắn.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Mở thẻ **Chia sẻ** của một biểu mẫu đã xuất bản. Từ đó bạn có thể sao chép liên kết, tải mã QR, tạo liên kết ngắn hoặc gửi lời mời qua email."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Link**: copy it and paste it anywhere.",
+            "**Custom link**: choose a readable address.",
+            "**QR code**: for posters and printed material.",
+            "**Invitations**: email people a personal link and see who has responded."
+          ]
+        },
+        {
+          "type": "show",
+          "label": "Mở biểu mẫu của bạn",
+          "to": "/forms"
+        }
+      ]
+    },
+    {
+      "id": "who-can-fill-in",
+      "category": "sharing",
+      "minutes": 2,
+      "route": "/forms/:id/share",
+      "related": [
+        "share-a-form"
+      ],
+      "keywords": [
+        "truy cập",
+        "mật khẩu",
+        "chỉ người được mời",
+        "tổ chức",
+        "giới hạn",
+        "thời gian mở"
+      ],
+      "title": "Ai được điền biểu mẫu, và khi nào",
+      "summary": "Mở cho mọi người, có mật khẩu, chỉ người được mời, hoặc trong tổ chức của bạn.",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "**Anyone with the link**.",
+            "**With a password** you give out.",
+            "**Invite only**: only people you invited by email.",
+            "**Your organisation**: people signed in to your workspace."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Trong **Thời gian mở** bạn có thể mở và đóng biểu mẫu vào những ngày định sẵn và dừng nhận sau một số lượng phản hồi."
+        }
+      ]
+    },
+    {
+      "id": "embed-a-form",
+      "category": "sharing",
+      "minutes": 1,
+      "route": "/forms/:id/share",
+      "related": [
+        "share-a-form"
+      ],
+      "keywords": [
+        "nhúng",
+        "trang web",
+        "iframe",
+        "tiện ích"
+      ],
+      "title": "Đặt biểu mẫu lên trang web của bạn",
+      "summary": "Nhúng biểu mẫu vào các trang của riêng bạn.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Trong **Chia sẻ → Nhúng** hãy sao chép mã và dán vào trang web của bạn. Bạn có thể giới hạn những trang web nào được hiển thị biểu mẫu."
+        }
+      ]
+    },
+    {
+      "id": "form-languages",
+      "category": "sharing",
+      "minutes": 2,
+      "route": "/forms/:id/build",
+      "related": [
+        "ai-translate",
+        "share-a-form"
+      ],
+      "keywords": [
+        "ngôn ngữ",
+        "dịch",
+        "đa ngôn ngữ",
+        "tiếng pháp",
+        "tiếng ả rập"
+      ],
+      "title": "Biểu mẫu nhiều ngôn ngữ",
+      "summary": "Cung cấp biểu mẫu bằng nhiều ngôn ngữ hơn; người điền chuyển ở phía trên.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Một biểu mẫu có ngôn ngữ chính và có thể cung cấp thêm ngôn ngữ khác. Trong trình tạo, mở cài đặt biểu mẫu, thêm ngôn ngữ ở mục **Ngôn ngữ khác** và dịch từng văn bản cạnh nhau."
+        },
+        {
+          "type": "tip",
+          "text": "**Dịch phần còn lại bằng AI** điền những phần còn thiếu; bạn kiểm tra từng văn bản trước khi xuất bản."
+        }
+      ]
+    },
+    {
+      "id": "responses-basics",
+      "category": "responses",
+      "popular": true,
+      "minutes": 3,
+      "route": "/responses",
+      "related": [
+        "review-responses",
+        "export-responses"
+      ],
+      "keywords": [
+        "phản hồi",
+        "câu trả lời",
+        "bài gửi",
+        "xem câu trả lời"
+      ],
+      "title": "Xem các phản hồi của bạn",
+      "summary": "Mọi câu trả lời, theo từng biểu mẫu hoặc trên tất cả biểu mẫu.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Phản hồi** liệt kê các biểu mẫu của bạn cùng phản hồi của chúng. Mở một biểu mẫu để xem phản hồi dạng bảng hoặc thẻ; mở một phản hồi để xem mọi câu trả lời trong một bảng bên."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use **J** and **K** to move to the next or previous response.",
+            "Filter by status, date, channel or answer.",
+            "**Insights** shows a summary per question: choices, averages and the latest text answers."
+          ]
+        },
+        {
+          "type": "show",
+          "label": "Mở phản hồi",
+          "to": "/responses"
+        }
+      ]
+    },
+    {
+      "id": "review-responses",
+      "category": "responses",
+      "minutes": 2,
+      "route": "/responses",
+      "related": [
+        "responses-basics"
+      ],
+      "keywords": [
+        "xem xét",
+        "trạng thái",
+        "duyệt",
+        "từ chối",
+        "thẻ",
+        "ghi chú"
+      ],
+      "title": "Xem xét phản hồi",
+      "summary": "Trạng thái, thẻ và ghi chú để xử lý những gì gửi về.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Mỗi phản hồi có một trạng thái: **Mới**, **Đã xem**, **Đã duyệt** hoặc **Bị từ chối**. Đổi bằng một cú nhấp ở đầu bảng phản hồi."
+        },
+        {
+          "type": "p",
+          "text": "Thêm thẻ và ghi chú để theo dõi. Sửa câu trả lời là một quyền riêng, nên vai trò của bạn có thể được xem xét mà không được sửa những gì người ta đã viết."
+        }
+      ]
+    },
+    {
+      "id": "export-responses",
+      "category": "responses",
+      "minutes": 2,
+      "route": "/responses/exports",
+      "related": [
+        "responses-basics",
+        "data-sources-basics"
+      ],
+      "keywords": [
+        "xuất",
+        "excel",
+        "csv",
+        "tải xuống",
+        "pdf"
+      ],
+      "title": "Xuất phản hồi",
+      "summary": "Tải phản hồi về dưới dạng bảng tính hoặc tệp.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Nhấn **Xuất** ở phần phản hồi của một biểu mẫu, chọn định dạng và nội dung cần đưa vào. Các bản xuất lớn được chuẩn bị ở nền; bạn xem tiến độ trong **Xuất dữ liệu** và nhận thông báo khi tệp sẵn sàng."
+        }
+      ]
+    },
+    {
+      "id": "analytics",
+      "category": "analytics",
+      "popular": true,
+      "minutes": 2,
+      "route": "/analytics",
+      "related": [
+        "responses-basics",
+        "ai-analysis"
+      ],
+      "keywords": [
+        "phân tích",
+        "lượt xem",
+        "hoàn thành",
+        "bỏ dở",
+        "phễu"
+      ],
+      "title": "Biểu mẫu của bạn hoạt động thế nào",
+      "summary": "Lượt xem, lượt bắt đầu, lượt hoàn thành và nơi người ta dừng lại.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Phân tích** cho biết có bao nhiêu người đã mở, bắt đầu và hoàn thành từng biểu mẫu, mất bao lâu và người ta dừng ở đâu. Mở một biểu mẫu để xem từng trang và câu hỏi."
+        },
+        {
+          "type": "tip",
+          "text": "Câu hỏi mà nhiều người dừng lại thường chưa rõ hoặc hỏi quá nhiều. Hãy thử câu hỏi ngắn hơn hoặc để không bắt buộc."
+        }
+      ]
+    },
+    {
+      "id": "lists-basics",
+      "category": "lists",
+      "minutes": 3,
+      "route": "/option-sets",
+      "related": [
+        "field-types"
+      ],
+      "keywords": [
+        "danh sách",
+        "tùy chọn",
+        "lựa chọn",
+        "thả xuống",
+        "cấp",
+        "quốc gia",
+        "động"
+      ],
+      "title": "Danh sách tùy chọn: tạo lựa chọn một lần",
+      "summary": "Danh sách lựa chọn dùng trong nhiều biểu mẫu, có thể chia cấp.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Danh sách tùy chọn** chứa các lựa chọn bạn dùng trong nhiều biểu mẫu, ví dụ phòng ban, sản phẩm hay quốc gia. Sửa danh sách một lần và mọi biểu mẫu dùng nó đều thay đổi theo."
+        },
+        {
+          "type": "p",
+          "text": "Danh sách có thể có **cấp**: chọn một quốc gia, rồi chỉ hiện các vùng của nó, rồi đến các thành phố. Danh sách rất lớn nằm trên máy chủ và được tải khi người ta gõ."
+        },
+        {
+          "type": "note",
+          "text": "Các danh sách đánh dấu **Formalie** được cung cấp cho mọi không gian làm việc; bạn dùng được nhưng không sửa được."
+        }
+      ]
+    },
+    {
+      "id": "data-sources-basics",
+      "category": "data",
+      "minutes": 3,
+      "route": "/data-sources",
+      "related": [
+        "database-explorer",
+        "export-responses"
+      ],
+      "keywords": [
+        "cơ sở dữ liệu",
+        "kết nối",
+        "nguồn dữ liệu",
+        "lưu trữ",
+        "postgres",
+        "mysql"
+      ],
+      "title": "Lưu phản hồi trong cơ sở dữ liệu của riêng bạn",
+      "summary": "Kết nối một cơ sở dữ liệu và gửi phản hồi của biểu mẫu vào đó.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Nguồn dữ liệu** kết nối Formalie với cơ sở dữ liệu của riêng bạn. Khi đó phản hồi cũng có thể được lưu ở đó, trong các bảng do Formalie tạo và giữ khớp với biểu mẫu."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Open **Data sources** from the rail and click **Add connection**.",
+            "Chọn loại cơ sở dữ liệu và nhập thông tin chi tiết; **Kiểm tra ngay** sẽ kiểm tra xem nó có hoạt động không.",
+            "Trong **Nơi lưu phản hồi** của biểu mẫu, chọn kết nối: các phản hồi mới sẽ được lưu ở đó."
+          ]
+        },
+        {
+          "type": "warning",
+          "text": "Hãy cấp cho Formalie một người dùng cơ sở dữ liệu chỉ có những quyền cần thiết."
+        }
+      ]
+    },
+    {
+      "id": "database-explorer",
+      "category": "data",
+      "minutes": 2,
+      "route": "/data-sources/explorer",
+      "related": [
+        "data-sources-basics"
+      ],
+      "keywords": [
+        "trình duyệt",
+        "truy vấn",
+        "sql",
+        "bảng",
+        "hàng"
+      ],
+      "title": "Khám phá và truy vấn dữ liệu của bạn",
+      "summary": "Duyệt bảng và chạy truy vấn mà không cần rời Formalie.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Trình duyệt CSDL** hiển thị các bảng của một kết nối và các hàng của chúng. **Trình soạn truy vấn** chạy SQL; các câu lệnh làm thay đổi dữ liệu cần quyền riêng và sẽ hỏi trước."
+        }
+      ]
+    },
+    {
+      "id": "api-basics",
+      "category": "api",
+      "minutes": 3,
+      "route": "/api-service",
+      "related": [
+        "api-tokens",
+        "webhooks"
+      ],
+      "keywords": [
+        "api",
+        "endpoint",
+        "tích hợp",
+        "dịch vụ",
+        "rest"
+      ],
+      "title": "Dịch vụ API",
+      "summary": "Các endpoint của riêng bạn để hệ thống khác đọc và gửi dữ liệu.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Dịch vụ API** cung cấp cho hệ thống khác các endpoint riêng: đọc phản hồi, gửi phản hồi mới hoặc tra cứu các mục trong danh sách. Mỗi dịch vụ gom các endpoint lại và có trang tài liệu riêng."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Open **API service** and create a service.",
+            "Add endpoints for the forms or data you want to offer.",
+            "Create a **token** for the system that will call it.",
+            "Try the endpoint from the documentation page."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "api-tokens",
+      "category": "api",
+      "minutes": 2,
+      "route": "/api-service/auth",
+      "related": [
+        "api-basics"
+      ],
+      "keywords": [
+        "token",
+        "khóa",
+        "header",
+        "bí mật",
+        "quy tắc truy cập"
+      ],
+      "title": "Token và quy tắc truy cập",
+      "summary": "Ai được gọi các endpoint của bạn, từ đâu và bao nhiêu lần.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Mỗi hệ thống gọi API của bạn nhận một **token**. Token có thể hết hạn và bị thu hồi bất cứ lúc nào. **Quy tắc truy cập** giới hạn địa chỉ, thời gian và số lần gọi được phép."
+        },
+        {
+          "type": "warning",
+          "text": "Token chỉ hiện một lần. Hãy cất ở nơi an toàn và đừng bao giờ đặt nó vào một trang web công khai."
+        }
+      ]
+    },
+    {
+      "id": "webhooks",
+      "category": "api",
+      "minutes": 2,
+      "route": "/api-service",
+      "related": [
+        "api-basics"
+      ],
+      "keywords": [
+        "webhook",
+        "thông báo",
+        "sự kiện",
+        "callback"
+      ],
+      "title": "Webhook",
+      "summary": "Báo cho hệ thống khác ngay khi có việc xảy ra.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Webhook gửi một thông điệp đến địa chỉ của hệ thống khác khi có việc xảy ra, ví dụ một phản hồi mới. Formalie thử lại các lần gửi thất bại và hiển thị từng lần gửi để bạn thấy đã gửi gì."
+        }
+      ]
+    },
+    {
+      "id": "roles-and-access",
+      "category": "people",
+      "popular": true,
+      "minutes": 3,
+      "route": "/people/roles",
+      "related": [
+        "invite-your-team",
+        "folders"
+      ],
+      "keywords": [
+        "vai trò",
+        "quyền",
+        "truy cập",
+        "quản trị viên",
+        "thành viên",
+        "của mình",
+        "được chia sẻ"
+      ],
+      "title": "Vai trò và quyền truy cập",
+      "summary": "Quyết định chính xác mỗi vai trò được xem và làm gì.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Mỗi người có một vai trò. Owner làm được mọi việc; Admin và Member có sẵn để dùng và có thể thay đổi; bạn cũng có thể thêm vai trò riêng."
+        },
+        {
+          "type": "p",
+          "text": "Mỗi hành động có một phạm vi: **Không**, **Của mình** (những gì họ tạo), **Được chia sẻ** (biểu mẫu được chia sẻ với họ), **Của mình và được chia sẻ** hoặc **Tất cả**. Ví dụ, một vai trò có thể xem mọi phản hồi nhưng chỉ sửa biểu mẫu của chính mình."
+        },
+        {
+          "type": "show",
+          "label": "Mở Vai trò & quyền truy cập",
+          "to": "/people/roles"
+        }
+      ]
+    },
+    {
+      "id": "sign-up-links",
+      "category": "people",
+      "minutes": 2,
+      "route": "/people",
+      "related": [
+        "invite-your-team"
+      ],
+      "keywords": [
+        "đăng ký",
+        "liên kết",
+        "phê duyệt",
+        "tham gia"
+      ],
+      "title": "Liên kết đăng ký và phê duyệt",
+      "summary": "Để mọi người yêu cầu tài khoản; bạn là người phê duyệt.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Liên kết đăng ký cho phép mọi người tự tạo tài khoản. Bạn có thể giới hạn cho các địa chỉ email của tổ chức. Tài khoản của họ chờ ở **Chờ phê duyệt** cho đến khi quản trị viên phê duyệt và gán vai trò."
+        }
+      ]
+    },
+    {
+      "id": "your-profile",
+      "category": "people",
+      "minutes": 2,
+      "route": "/profile",
+      "related": [
+        "two-step-sign-in"
+      ],
+      "keywords": [
+        "hồ sơ",
+        "mật khẩu",
+        "ảnh",
+        "ngôn ngữ",
+        "múi giờ"
+      ],
+      "title": "Hồ sơ của bạn",
+      "summary": "Ảnh, tên, ngôn ngữ, múi giờ, mật khẩu và cách đăng nhập.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Mở hồ sơ từ tên của bạn ở cuối menu. Đổi ảnh, tên, ngôn ngữ, múi giờ và định dạng ngày, mật khẩu và đăng nhập hai bước, và xem bạn đang đăng nhập ở những đâu."
+        }
+      ]
+    },
+    {
+      "id": "two-step-sign-in",
+      "category": "settings",
+      "minutes": 2,
+      "route": "/profile",
+      "related": [
+        "your-profile",
+        "security-settings"
+      ],
+      "keywords": [
+        "hai bước",
+        "2fa",
+        "ứng dụng xác thực",
+        "mã",
+        "khôi phục"
+      ],
+      "title": "Đăng nhập hai bước",
+      "summary": "Một mã từ ứng dụng, email hoặc tin nhắn khi bạn đăng nhập.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Đăng nhập hai bước yêu cầu một mã sau mật khẩu. Hãy thiết lập ứng dụng xác thực trong hồ sơ để an toàn nhất, và cất mã khôi phục ở nơi an toàn."
+        }
+      ]
+    },
+    {
+      "id": "workspace-settings",
+      "category": "settings",
+      "minutes": 2,
+      "route": "/settings",
+      "related": [
+        "security-settings",
+        "form-defaults"
+      ],
+      "keywords": [
+        "cài đặt",
+        "công ty",
+        "thương hiệu",
+        "ngôn ngữ",
+        "giao diện"
+      ],
+      "title": "Cài đặt không gian làm việc",
+      "summary": "Tổ chức, thương hiệu, ngôn ngữ, giao diện và nhiều hơn nữa.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Cài đặt** chứa những gì áp dụng cho cả không gian làm việc: thông tin công ty, thương hiệu, ngôn ngữ và khu vực, giao diện, đăng nhập, bảo mật, thông báo, mẫu email, quyền riêng tư và mặc định của biểu mẫu."
+        },
+        {
+          "type": "show",
+          "label": "Mở cài đặt",
+          "to": "/settings"
+        }
+      ]
+    },
+    {
+      "id": "security-settings",
+      "category": "settings",
+      "minutes": 2,
+      "route": "/settings/security",
+      "related": [
+        "two-step-sign-in",
+        "audit-trail"
+      ],
+      "keywords": [
+        "bảo mật",
+        "quy tắc mật khẩu",
+        "ip",
+        "phiên",
+        "danh sách cho phép"
+      ],
+      "title": "Cài đặt bảo mật",
+      "summary": "Quy tắc mật khẩu, đăng nhập hai bước, phiên và mạng được phép.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Trong **Cài đặt → Bảo mật**, quản trị viên đặt quy tắc mật khẩu, bắt buộc đăng nhập hai bước, quyết định người dùng được giữ đăng nhập bao lâu và, nếu cần, chỉ cho đăng nhập từ mạng của bạn."
+        },
+        {
+          "type": "warning",
+          "text": "Trước khi giới hạn mạng, hãy thêm địa chỉ của chính bạn, nếu không bạn có thể bị khóa bên ngoài."
+        }
+      ]
+    },
+    {
+      "id": "form-defaults",
+      "category": "settings",
+      "minutes": 1,
+      "route": "/settings/form-defaults",
+      "related": [
+        "themes"
+      ],
+      "keywords": [
+        "mặc định",
+        "biểu mẫu mới",
+        "giao diện",
+        "cảm ơn"
+      ],
+      "title": "Mặc định của biểu mẫu",
+      "summary": "Những gì mọi biểu mẫu mới có sẵn khi bắt đầu.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Mặc định của biểu mẫu** đặt giao diện, thanh tiến độ, nhãn, lời cảm ơn và email mà mọi biểu mẫu mới có sẵn khi bắt đầu. Các biểu mẫu bạn đã có không thay đổi."
+        }
+      ]
+    },
+    {
+      "id": "audit-trail",
+      "category": "audit",
+      "minutes": 2,
+      "route": "/audit",
+      "related": [
+        "security-settings"
+      ],
+      "keywords": [
+        "kiểm tra",
+        "nhật ký",
+        "lịch sử",
+        "ai đã làm",
+        "hoạt động"
+      ],
+      "title": "Nhật ký kiểm tra",
+      "summary": "Ai đã làm gì, khi nào và từ đâu.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Nhật ký kiểm tra** ghi lại mọi hành động trong không gian làm việc: đăng nhập, thay đổi biểu mẫu, phản hồi, cài đặt, con người và nhiều hơn nữa, cùng với ai làm, khi nào và từ đâu."
+        },
+        {
+          "type": "p",
+          "text": "Lọc theo khu vực, người hoặc ngày và mở một mục để xem điều gì đã thay đổi. Bạn có thể xuất nhật ký nếu vai trò của bạn cho phép."
+        },
+        {
+          "type": "show",
+          "label": "Mở nhật ký kiểm tra",
+          "to": "/audit"
+        }
+      ]
+    },
+    {
+      "id": "ai-overview",
+      "category": "ai",
+      "popular": true,
+      "minutes": 2,
+      "route": "/ai",
+      "related": [
+        "ai-create-form",
+        "ai-analysis",
+        "ai-settings"
+      ],
+      "keywords": [
+        "ai",
+        "trợ lý",
+        "trí tuệ nhân tạo",
+        "giúp tôi"
+      ],
+      "title": "Trợ lý AI",
+      "summary": "Nó làm được gì, và bạn vẫn nắm quyền kiểm soát ra sao.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Trợ lý AI tạo biểu mẫu và mẫu, hỗ trợ trong trình tạo, phân tích phản hồi và dịch thuật. Nó luôn **đề xuất**: không có gì được tạo, thay đổi hay gửi đi cho đến khi bạn đồng ý."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Every request is kept in **History** with what came back.",
+            "Each request uses credits from your monthly allowance.",
+            "Admins choose what it may read and can switch it off."
+          ]
+        },
+        {
+          "type": "show",
+          "label": "Mở trợ lý AI",
+          "to": "/ai"
+        }
+      ]
+    },
+    {
+      "id": "ai-create-form",
+      "category": "ai",
+      "minutes": 2,
+      "route": "/ai/create-form",
+      "related": [
+        "ai-overview",
+        "first-form"
+      ],
+      "keywords": [
+        "biểu mẫu ai",
+        "mô tả",
+        "tạo ra",
+        "bản nháp"
+      ],
+      "title": "Tạo biểu mẫu với trợ lý",
+      "summary": "Mô tả, kiểm tra bản nháp, rồi tạo.",
+      "blocks": [
+        {
+          "type": "steps",
+          "items": [
+            "Open **AI assistant → Create a form**.",
+            "Describe the form, for example “a visitor sign-in with name, company and arrival time”, or paste a paper form.",
+            "Click **Generate** and check the preview.",
+            "**Create form** opens it in the builder; **Try again** gives another take."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Liệt kê những gì bạn muốn hỏi, cách nhau bằng dấu phẩy: trợ lý giữ nguyên lời của bạn."
+        }
+      ]
+    },
+    {
+      "id": "ai-analysis",
+      "category": "ai",
+      "minutes": 2,
+      "route": "/ai/analysis",
+      "related": [
+        "ai-overview",
+        "analytics"
+      ],
+      "keywords": [
+        "phân tích",
+        "chủ đề",
+        "cảm xúc",
+        "câu hỏi",
+        "tóm tắt"
+      ],
+      "title": "Phân tích phản hồi với trợ lý",
+      "summary": "Chủ đề, sắc thái và câu hỏi bằng lời đơn giản.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Trong **Phân tích phản hồi**, chọn một biểu mẫu và một khoảng thời gian. Trợ lý tìm ra các câu trả lời viết nói về điều gì, sắc thái của chúng, và các đánh giá cùng lựa chọn đã thay đổi ra sao."
+        },
+        {
+          "type": "p",
+          "text": "Hãy hỏi bằng lời đơn giản, như “Tháng trước có bao nhiêu phản hồi?”. Câu trả lời luôn cho thấy những gì đã được đếm."
+        }
+      ]
+    },
+    {
+      "id": "ai-translate",
+      "category": "ai",
+      "minutes": 2,
+      "route": "/ai/translate",
+      "related": [
+        "form-languages"
+      ],
+      "keywords": [
+        "dịch",
+        "viết lại",
+        "ngôn ngữ đơn giản",
+        "sắc thái"
+      ],
+      "title": "Dịch và viết lại với trợ lý",
+      "summary": "Bản dịch cạnh nhau và cách diễn đạt đơn giản hơn.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Bản dịch** dịch một biểu mẫu sang bất kỳ ngôn ngữ nào trong 20 ngôn ngữ; bạn kiểm tra từng văn bản cạnh nhau trước khi lưu. **Viết lại** gợi ý cách diễn đạt đơn giản hơn theo sắc thái bạn chọn và cho thấy độ tuổi đọc hiểu trước và sau."
+        }
+      ]
+    },
+    {
+      "id": "ai-settings",
+      "category": "ai",
+      "minutes": 1,
+      "route": "/ai/settings",
+      "related": [
+        "ai-overview"
+      ],
+      "keywords": [
+        "cài đặt ai",
+        "quyền riêng tư",
+        "tín dụng",
+        "tắt"
+      ],
+      "title": "Cài đặt AI và quyền riêng tư",
+      "summary": "Bật hoặc tắt, những gì nó được đọc, tín dụng.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Quản trị viên bật hoặc tắt trợ lý, chọn những gì nó được đọc (biểu mẫu, phản hồi, nguồn dữ liệu), loại bỏ dữ liệu cá nhân và chọn thời gian lưu các yêu cầu. Trợ lý không bao giờ huấn luyện bằng dữ liệu của bạn."
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "id": "faq-free-respondents",
+      "category": "start",
+      "question": "Người điền có cần tài khoản để điền biểu mẫu không?",
+      "answer": "Không. Bất kỳ ai có liên kết đều điền được, trừ khi bạn giới hạn cho người được mời, đặt mật khẩu hoặc giới hạn trong tổ chức.",
+      "article": "who-can-fill-in"
+    },
+    {
+      "id": "faq-mobile",
+      "category": "start",
+      "question": "Formalie có dùng được trên điện thoại không?",
+      "answer": "Có. Biểu mẫu và cổng thông tin hoạt động trên điện thoại, máy tính bảng và máy tính.",
+      "article": null
+    },
+    {
+      "id": "faq-languages",
+      "category": "start",
+      "question": "Formalie hỗ trợ những ngôn ngữ nào?",
+      "answer": "Cổng thông tin và biểu mẫu có 20 ngôn ngữ, gồm cả các ngôn ngữ viết từ phải sang trái như tiếng Ả Rập. Mỗi người tự chọn ngôn ngữ trong hồ sơ của mình.",
+      "article": "form-languages"
+    },
+    {
+      "id": "faq-edit-live",
+      "category": "forms",
+      "question": "Tôi có sửa được biểu mẫu đã xuất bản không?",
+      "answer": "Được. Thay đổi của bạn nằm trong bản nháp cho đến khi bạn xuất bản lại, nên người đang điền không bao giờ thấy một thay đổi làm dở.",
+      "article": "form-lifecycle"
+    },
+    {
+      "id": "faq-restore",
+      "category": "forms",
+      "question": "Tôi lỡ xóa một biểu mẫu. Có lấy lại được không?",
+      "answer": "Được, từ Thùng rác, trong vòng 30 ngày, cùng các phản hồi.",
+      "article": "trash"
+    },
+    {
+      "id": "faq-copy-form",
+      "category": "forms",
+      "question": "Làm sao để sao chép một biểu mẫu?",
+      "answer": "Mở menu ⋯ của nó và chọn Nhân bản. Bản sao là một bản nháp mới với cùng câu hỏi và thiết kế.",
+      "article": "forms-list"
+    },
+    {
+      "id": "faq-required",
+      "category": "builder",
+      "question": "Làm sao để một câu hỏi là bắt buộc?",
+      "answer": "Chọn nó trong trình tạo và bật Bắt buộc trong cài đặt của nó.",
+      "article": "builder-basics"
+    },
+    {
+      "id": "faq-pages",
+      "category": "builder",
+      "question": "Làm sao để chia biểu mẫu thành nhiều trang?",
+      "answer": "Nhấn Thêm trang trong trình tạo rồi chuyển các câu hỏi sang đó.",
+      "article": "builder-basics"
+    },
+    {
+      "id": "faq-conditional",
+      "category": "builder",
+      "question": "Câu hỏi có thể chỉ hiện sau một câu trả lời nhất định không?",
+      "answer": "Được, bằng một quy tắc logic: Khi câu hỏi trước có câu trả lời đó, Thì hiện câu hỏi tiếp theo.",
+      "article": "builder-logic"
+    },
+    {
+      "id": "faq-logo",
+      "category": "design",
+      "question": "Làm sao để thêm logo của chúng tôi?",
+      "answer": "Thêm một lần ở Cài đặt → Thương hiệu; biểu mẫu sẽ hiện nó ở phần đầu. Bạn cũng có thể đặt riêng cho từng biểu mẫu trong Thiết kế.",
+      "article": "design-a-form"
+    },
+    {
+      "id": "faq-own-templates",
+      "category": "templates",
+      "question": "Chúng tôi có thể tạo mẫu riêng không?",
+      "answer": "Được. Lưu bất kỳ biểu mẫu nào thành mẫu từ menu ⋯ của nó.",
+      "article": "save-as-template"
+    },
+    {
+      "id": "faq-close-date",
+      "category": "sharing",
+      "question": "Biểu mẫu có thể tự đóng không?",
+      "answer": "Được. Đặt ngày đóng hoặc số phản hồi tối đa ở Chia sẻ → Thời gian mở.",
+      "article": "who-can-fill-in"
+    },
+    {
+      "id": "faq-qr",
+      "category": "sharing",
+      "question": "Làm sao để có mã QR?",
+      "answer": "Ở thẻ Chia sẻ của biểu mẫu, tải mã QR về dưới dạng hình ảnh.",
+      "article": "share-a-form"
+    },
+    {
+      "id": "faq-notify",
+      "category": "responses",
+      "question": "Tôi có thể nhận email cho mỗi phản hồi mới không?",
+      "answer": "Được. Chọn người nhận email trong cài đặt của biểu mẫu, và đặt thông báo của riêng bạn ở Cài đặt → Thông báo.",
+      "article": "responses-basics"
+    },
+    {
+      "id": "faq-export-format",
+      "category": "responses",
+      "question": "Tôi xuất được những định dạng nào?",
+      "answer": "Bảng tính và các định dạng tệp khác; chọn trong hộp thoại xuất.",
+      "article": "export-responses"
+    },
+    {
+      "id": "faq-edit-answer",
+      "category": "responses",
+      "question": "Tôi có sửa được câu trả lời của người khác không?",
+      "answer": "Được, nếu vai trò của bạn cho phép sửa câu trả lời. Thay đổi được ghi vào nhật ký kiểm tra.",
+      "article": "review-responses"
+    },
+    {
+      "id": "faq-drop-off",
+      "category": "analytics",
+      "question": "Người ta dừng điền biểu mẫu của tôi ở đâu?",
+      "answer": "Mở biểu mẫu trong Phân tích: bạn sẽ thấy từng trang và câu hỏi cùng số người đã rời đi ở đó.",
+      "article": "analytics"
+    },
+    {
+      "id": "faq-list-change",
+      "category": "lists",
+      "question": "Nếu tôi đổi một danh sách, các biểu mẫu của tôi có đổi theo không?",
+      "answer": "Có. Mọi biểu mẫu dùng danh sách đó đều thay đổi theo.",
+      "article": "lists-basics"
+    },
+    {
+      "id": "faq-own-db",
+      "category": "data",
+      "question": "Phản hồi có thể vào thẳng cơ sở dữ liệu của chúng tôi không?",
+      "answer": "Kết nối nó trong Nguồn dữ liệu và chọn trong Nơi lưu phản hồi của biểu mẫu.",
+      "article": "data-sources-basics"
+    },
+    {
+      "id": "faq-api-token",
+      "category": "api",
+      "question": "Tôi mất token API. Làm sao bây giờ?",
+      "answer": "Token chỉ hiện một lần. Hãy thu hồi token đã mất và tạo token mới.",
+      "article": "api-tokens"
+    },
+    {
+      "id": "faq-roles-custom",
+      "category": "people",
+      "question": "Chúng tôi có thể tạo vai trò riêng không?",
+      "answer": "Được. Trong Mọi người → Vai trò & quyền truy cập, thêm một vai trò rồi chọn nó được làm gì và phạm vi đến đâu.",
+      "article": "roles-and-access"
+    },
+    {
+      "id": "faq-remove-person",
+      "category": "people",
+      "question": "Một người đã nghỉ việc. Làm sao để gỡ quyền truy cập của họ?",
+      "answer": "Mở họ trong Mọi người và chọn Tắt. Họ bị đăng xuất ngay; biểu mẫu và phản hồi của họ vẫn còn.",
+      "article": "invite-your-team"
+    },
+    {
+      "id": "faq-forgot-password",
+      "category": "settings",
+      "question": "Tôi quên mật khẩu.",
+      "answer": "Nhấn Quên mật khẩu ở trang đăng nhập; bạn sẽ nhận mã qua email để đặt mật khẩu mới.",
+      "article": "your-profile"
+    },
+    {
+      "id": "faq-lost-phone",
+      "category": "settings",
+      "question": "Tôi làm mất điện thoại có ứng dụng xác thực.",
+      "answer": "Đăng nhập bằng một mã khôi phục của bạn, hoặc nhờ quản trị viên đặt lại đăng nhập hai bước cho bạn.",
+      "article": "two-step-sign-in"
+    },
+    {
+      "id": "faq-audit-who",
+      "category": "audit",
+      "question": "Làm sao để biết ai đã sửa một biểu mẫu?",
+      "answer": "Mở nhật ký kiểm tra và lọc theo biểu mẫu hoặc theo Biểu mẫu; mỗi mục cho biết ai, khi nào và điều gì đã thay đổi.",
+      "article": "audit-trail"
+    },
+    {
+      "id": "faq-ai-data",
+      "category": "ai",
+      "question": "Trợ lý AI có học từ dữ liệu của chúng tôi không?",
+      "answer": "Không. Các yêu cầu chỉ dùng để trả lời và chỉ được giữ trong thời gian đặt ở Cài đặt AI.",
+      "article": "ai-settings"
+    },
+    {
+      "id": "faq-ai-credits",
+      "category": "ai",
+      "question": "Tín dụng AI là gì?",
+      "answer": "Mỗi yêu cầu dùng vài tín dụng từ hạn mức hằng tháng của không gian làm việc. Xem ở Trợ lý AI → Cài đặt & mức sử dụng.",
+      "article": "ai-settings"
+    },
+    {
+      "id": "faq-ai-off",
+      "category": "ai",
+      "question": "Chúng tôi có thể tắt trợ lý không?",
+      "answer": "Được. Quản trị viên tắt nó ở Trợ lý AI → Cài đặt & mức sử dụng; khi tắt sẽ không có gì được gửi đến nó.",
+      "article": "ai-settings"
+    }
+  ],
+  "glossary": [
+    {
+      "id": "term-form",
+      "term": "Biểu mẫu",
+      "definition": "Một bộ câu hỏi để người ta điền, kèm thiết kế, logic và cài đặt.",
+      "article": "builder-basics"
+    },
+    {
+      "id": "term-response",
+      "term": "Phản hồi",
+      "definition": "Một biểu mẫu đã được một người điền, cùng mọi câu trả lời của họ.",
+      "article": "responses-basics"
+    },
+    {
+      "id": "term-draft",
+      "term": "Bản nháp",
+      "definition": "Phiên bản của biểu mẫu bạn đang làm việc. Người ta chỉ thấy nó sau khi bạn xuất bản.",
+      "article": "form-lifecycle"
+    },
+    {
+      "id": "term-version",
+      "term": "Phiên bản",
+      "definition": "Một trạng thái đã xuất bản của biểu mẫu, được giữ lại để so sánh và khôi phục.",
+      "article": "publish-and-versions"
+    },
+    {
+      "id": "term-field",
+      "term": "Trường",
+      "definition": "Một câu hỏi hoặc khối trong biểu mẫu, như ô văn bản, một lựa chọn hay chữ ký.",
+      "article": "field-types"
+    },
+    {
+      "id": "term-key",
+      "term": "Khóa",
+      "definition": "Tên ngắn của một câu hỏi (như first_name), dùng trong công thức, khi xuất dữ liệu và trong API.",
+      "article": "calculations"
+    },
+    {
+      "id": "term-logic",
+      "term": "Quy tắc logic",
+      "definition": "Quy tắc hiện, ẩn, bắt buộc hoặc bỏ qua câu hỏi tùy theo câu trả lời.",
+      "article": "builder-logic"
+    },
+    {
+      "id": "term-calculation",
+      "term": "Phép tính",
+      "definition": "Một trường tính ra giá trị, như tổng hay điểm, từ các câu trả lời khác.",
+      "article": "calculations"
+    },
+    {
+      "id": "term-theme",
+      "term": "Giao diện",
+      "definition": "Một thiết kế đã lưu: màu sắc, phông chữ và bố cục dùng được cho bất kỳ biểu mẫu nào.",
+      "article": "themes"
+    },
+    {
+      "id": "term-template",
+      "term": "Mẫu",
+      "definition": "Một biểu mẫu làm sẵn để bắt đầu, có câu hỏi, logic và thiết kế.",
+      "article": "use-a-template"
+    },
+    {
+      "id": "term-list",
+      "term": "Danh sách tùy chọn",
+      "definition": "Danh sách lựa chọn tạo một lần và dùng trong nhiều biểu mẫu; thay đổi áp dụng cho mọi biểu mẫu đang dùng nó.",
+      "article": "lists-basics"
+    },
+    {
+      "id": "term-dynamic-list",
+      "term": "Danh sách có cấp (danh sách động)",
+      "definition": "Danh sách mà một lựa chọn quyết định lựa chọn kế tiếp, như quốc gia, rồi vùng, rồi thành phố.",
+      "article": "lists-basics"
+    },
+    {
+      "id": "term-folder",
+      "term": "Thư mục",
+      "definition": "Một nhóm biểu mẫu. Quản trị viên có thể giới hạn ai được xem một thư mục.",
+      "article": "folders"
+    },
+    {
+      "id": "term-role",
+      "term": "Vai trò",
+      "definition": "Một bộ quyền được gán cho mọi người, quyết định họ được xem và làm gì.",
+      "article": "roles-and-access"
+    },
+    {
+      "id": "term-reach",
+      "term": "Phạm vi (Của mình, Được chia sẻ, Tất cả)",
+      "definition": "Quyền áp dụng đến đâu: chỉ những gì người đó tạo, những gì được chia sẻ với họ, hoặc tất cả.",
+      "article": "roles-and-access"
+    },
+    {
+      "id": "term-data-source",
+      "term": "Nguồn dữ liệu",
+      "definition": "Một kết nối đến một cơ sở dữ liệu của bạn, dùng để lưu phản hồi và khám phá dữ liệu.",
+      "article": "data-sources-basics"
+    },
+    {
+      "id": "term-endpoint",
+      "term": "Endpoint",
+      "definition": "Một địa chỉ trong dịch vụ API của bạn mà hệ thống khác gọi để đọc hoặc gửi dữ liệu.",
+      "article": "api-basics"
+    },
+    {
+      "id": "term-token",
+      "term": "Token",
+      "definition": "Một khóa bí mật mà hệ thống dùng để gọi API của bạn. Chỉ hiện một lần; có thể hết hạn hoặc bị thu hồi.",
+      "article": "api-tokens"
+    },
+    {
+      "id": "term-webhook",
+      "term": "Webhook",
+      "definition": "Một thông điệp Formalie gửi đến hệ thống khác ngay khi có việc xảy ra.",
+      "article": "webhooks"
+    },
+    {
+      "id": "term-audit",
+      "term": "Nhật ký kiểm tra",
+      "definition": "Bản ghi mọi hành động trong không gian làm việc: ai, làm gì, khi nào và ở đâu.",
+      "article": "audit-trail"
+    },
+    {
+      "id": "term-two-step",
+      "term": "Đăng nhập hai bước",
+      "definition": "Một mã được hỏi sau mật khẩu, từ ứng dụng, email hoặc tin nhắn.",
+      "article": "two-step-sign-in"
+    },
+    {
+      "id": "term-embed",
+      "term": "Nhúng",
+      "definition": "Hiển thị biểu mẫu bên trong trang web của riêng bạn.",
+      "article": "embed-a-form"
+    },
+    {
+      "id": "term-ai-credit",
+      "term": "Tín dụng AI",
+      "definition": "Đơn vị dùng để tính hạn mức hằng tháng của trợ lý AI; mỗi yêu cầu dùng vài tín dụng.",
+      "article": "ai-settings"
+    },
+    {
+      "id": "term-workspace",
+      "term": "Không gian làm việc",
+      "definition": "Không gian riêng của tổ chức bạn trong Formalie, có địa chỉ riêng, cùng con người, biểu mẫu và cài đặt.",
+      "article": "workspace-settings"
+    }
+  ],
+  "tours": [
+    {
+      "id": "forms-tour",
+      "route": "/forms",
+      "title": "Tham quan nhanh biểu mẫu của bạn",
+      "steps": [
+        {
+          "target": "new-form",
+          "title": "Tạo biểu mẫu",
+          "text": "Bắt đầu biểu mẫu mới tại đây: trống, từ một mẫu hoặc nhập vào."
+        },
+        {
+          "target": "list-search",
+          "title": "Tìm biểu mẫu",
+          "text": "Tìm theo tên, thẻ hoặc chủ sở hữu. Nhấn / để nhảy đến đây từ bất kỳ đâu trên trang."
+        },
+        {
+          "target": "view-switch",
+          "title": "Bảng hoặc thẻ",
+          "text": "Chuyển giữa hàng và thẻ. Formalie nhớ lựa chọn của bạn."
+        },
+        {
+          "target": "folders",
+          "title": "Thư mục",
+          "text": "Gom biểu mẫu vào thư mục. Quản trị viên quyết định ai được xem từng thư mục."
+        },
+        {
+          "target": "create",
+          "title": "Tạo mọi thứ",
+          "text": "Nút + tạo biểu mẫu, mẫu, kết nối và nhiều hơn nữa từ bất kỳ đâu."
+        }
+      ]
+    },
+    {
+      "id": "people-tour",
+      "route": "/people",
+      "title": "Tham quan nhanh Mọi người",
+      "steps": [
+        {
+          "target": "add-user",
+          "title": "Thêm một người",
+          "text": "Tạo hồ sơ; họ nhận email để đặt mật khẩu."
+        },
+        {
+          "target": "signup-links",
+          "title": "Liên kết đăng ký",
+          "text": "Chia sẻ một liên kết để mọi người yêu cầu tài khoản; bạn là người phê duyệt."
+        },
+        {
+          "target": "list-search",
+          "title": "Tìm một người",
+          "text": "Tìm theo tên, email, phòng ban hoặc chức danh."
+        }
+      ]
+    }
+  ]
+}

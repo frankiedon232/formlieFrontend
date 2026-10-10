@@ -47,5 +47,7 @@ defineShortcuts({
     <AppShortcutsModal />
     <AppNavbarNotifications />
     <AppConfirmDialog />
+    <HelpPanel />
+    <HelpTour />
   </UDashboardGroup>
 </template>

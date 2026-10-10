@@ -106,6 +106,7 @@ const rowActions = (folder: FolderRow): DropdownMenuItem[][] =>
     <DataView
       id="folders"
       ref="view"
+      empty-help="folders"
       :columns="columns"
       :fetcher="fetcher"
       :sort-options="sortOptions"

@@ -1,0 +1,1909 @@
+{
+  "articles": [
+    {
+      "id": "welcome",
+      "category": "start",
+      "start": 1,
+      "popular": true,
+      "minutes": 2,
+      "route": "/forms",
+      "related": [
+        "first-form",
+        "find-your-way",
+        "invite-your-team"
+      ],
+      "keywords": [
+        "anza",
+        "mwanzo",
+        "muhtasari",
+        "mpya",
+        "ni nini"
+      ],
+      "title": "Karibu kwenye Formalie",
+      "summary": "Formalie hufanya nini na jinsi tovuti ilivyopangwa.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Formalie husaidia shirika lako kukusanya taarifa kwa fomu, kukagua kinachoingia na kukituma pale kinapohitajika: hifadhidata, mfumo mwingine kupitia API, au ripoti."
+        },
+        {
+          "type": "h",
+          "text": "Sehemu kuu"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Forms**: build forms, share them and follow their responses.",
+            "**Data sources**: connect your own databases to store responses and explore them.",
+            "**API service**: let other systems read and send data through your own endpoints.",
+            "**AI assistant**: create forms, analyse answers and translate with help.",
+            "**People**: invite your team and decide what each person may do."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Bonyeza **Ctrl + K** (au **⌘ + K** kwenye Mac) popote ili kutafuta ukurasa, fomu au mpangilio."
+        },
+        {
+          "type": "show",
+          "label": "Fungua fomu zako",
+          "to": "/forms"
+        }
+      ]
+    },
+    {
+      "id": "find-your-way",
+      "category": "start",
+      "start": 2,
+      "minutes": 2,
+      "route": null,
+      "related": [
+        "welcome",
+        "keyboard-and-search"
+      ],
+      "keywords": [
+        "menyu",
+        "upau wa pembeni",
+        "reli",
+        "urambazaji",
+        "wapi"
+      ],
+      "title": "Jifunze kuzunguka",
+      "summary": "Reli, menyu, kichwa cha ukurasa na utafutaji.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Safu nyembamba iliyo kushoto kabisa ni **reli**. Kila ikoni hufungua eneo la Formalie: Fomu, Vyanzo vya data, Huduma ya API, Msaidizi wa AI na Watu. Menyu iliyo kando yake hubadilika kulingana na eneo ulilomo."
+        },
+        {
+          "type": "p",
+          "text": "Juu ya kila ukurasa unaona kichwa chake, ulipo (njia ya kurasa) na vitufe vya ukurasa. Kitufe kikuu ni kile cheusi upande wa kulia kila wakati."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Collapse the menu** with the « button or the **[** key to get more room.",
+            "**Dark mode** is at the bottom of the menu, under System.",
+            "**Help & support** is at the foot of the rail and in the System group."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Kwenye simu, menyu hufunguliwa kwa kitufe cha ☰ juu kushoto."
+        }
+      ]
+    },
+    {
+      "id": "first-form",
+      "category": "start",
+      "start": 3,
+      "popular": true,
+      "minutes": 3,
+      "route": "/forms/new",
+      "related": [
+        "builder-basics",
+        "share-a-form",
+        "use-a-template"
+      ],
+      "keywords": [
+        "unda",
+        "fomu mpya",
+        "ya kwanza",
+        "tengeneza fomu"
+      ],
+      "title": "Unda fomu yako ya kwanza",
+      "summary": "Kutoka ukurasa mtupu, kiolezo au maelezo, kwa dakika chache.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Unaweza kuanza fomu kwa njia tatu: kutoka ukurasa mtupu, kutoka kwenye kiolezo cha Formalie, au kwa kuieleza kwa msaidizi wa AI."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Click **New form** at the top right of the Forms page.",
+            "Choose **Blank**, pick a **template**, or **import** a form file.",
+            "Give the form a name and, if you like, a folder.",
+            "The builder opens: add questions from the field list on the left.",
+            "When you are happy, click **Publish** and share the link."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Huna uhakika pa kuanzia? Msaidizi wa AI anaweza kuandaa fomu nzima kwa maneno machache: fungua **Msaidizi wa AI → Unda fomu**."
+        },
+        {
+          "type": "show",
+          "label": "Anza fomu mpya",
+          "to": "/forms/new",
+          "target": "new-form"
+        }
+      ]
+    },
+    {
+      "id": "invite-your-team",
+      "category": "start",
+      "start": 4,
+      "minutes": 2,
+      "route": "/people",
+      "related": [
+        "sign-up-links",
+        "roles-and-access"
+      ],
+      "keywords": [
+        "alika",
+        "timu",
+        "wafanyakazi wenzako",
+        "ongeza mtumiaji",
+        "watu"
+      ],
+      "title": "Leta timu yako",
+      "summary": "Ongeza wenzako kwa wasifu, au shiriki kiungo cha kujisajili.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Kila mtu katika eneo lako la kazi ana wasifu wenye idara, cheo cha kazi na jukumu. Jukumu huamua anachoweza kuona na kufanya."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Open **People** from the rail.",
+            "Click **Add user** to create a profile: the person gets an email to set their password.",
+            "Or open **Sign-up links** to share a link: people who sign up with it wait for your approval."
+          ]
+        },
+        {
+          "type": "show",
+          "label": "Fungua Watu",
+          "to": "/people",
+          "target": "add-user"
+        }
+      ]
+    },
+    {
+      "id": "keyboard-and-search",
+      "category": "start",
+      "start": 5,
+      "minutes": 1,
+      "route": null,
+      "related": [
+        "find-your-way"
+      ],
+      "keywords": [
+        "njia ya mkato",
+        "kibodi",
+        "utafutaji",
+        "ctrl k",
+        "amri"
+      ],
+      "title": "Fanya kazi haraka kwa utafutaji na njia za mkato",
+      "summary": "Pata chochote kwa Ctrl + K na zunguka kwa kibodi.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Utafutaji hufunguka kwa **Ctrl + K** (**⌘ + K** kwenye Mac). Andika sehemu ya jina la ukurasa, fomu, mpangilio au mtu kisha bonyeza Enter."
+        },
+        {
+          "type": "p",
+          "text": "Bonyeza **?** kuona njia zote za mkato za kibodi. Kurasa nyingi huongeza zake, kwa mfano **J** na **K** kuhamia kati ya majibu kwenye paneli."
+        },
+        {
+          "type": "tip",
+          "text": "Kila orodha na paneli hufanya kazi kwa kibodi pekee: Tab husogeza, Enter hufungua, Esc hufunga."
+        }
+      ]
+    },
+    {
+      "id": "forms-list",
+      "category": "forms",
+      "popular": true,
+      "minutes": 2,
+      "route": "/forms",
+      "related": [
+        "form-lifecycle",
+        "folders"
+      ],
+      "keywords": [
+        "orodha ya fomu",
+        "tafuta fomu",
+        "kichujio",
+        "kadi",
+        "jedwali"
+      ],
+      "title": "Tafuta na panga fomu zako",
+      "summary": "Tafuta, chuja, panga na badilisha kati ya jedwali na kadi.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Ukurasa wa Fomu huorodhesha kila fomu unayoruhusiwa kuona. Kadi mbili za juu zinaonyesha majibu ya hivi karibuni na jinsi fomu zako zilivyogawanyika kati ya rasimu, zilizochapishwa na zilizofungwa; bofya hali kwenye maelezo ya rangi ili kuonyesha fomu hizo tu."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Search** by name, tag or owner.",
+            "**Filter** by status, folder, owner or tag; filters show as chips you can clear.",
+            "**Columns** lets you show, hide and reorder the table’s columns.",
+            "**Table / Grid** switches between rows and cards; Formalie remembers your choice.",
+            "Right-click a form, or use its **⋯** menu, for actions such as duplicate, move or archive."
+          ]
+        },
+        {
+          "type": "show",
+          "label": "Fungua orodha ya fomu",
+          "to": "/forms",
+          "target": "view-switch"
+        }
+      ]
+    },
+    {
+      "id": "form-lifecycle",
+      "category": "forms",
+      "minutes": 3,
+      "route": "/forms",
+      "related": [
+        "publish-and-versions",
+        "trash"
+      ],
+      "keywords": [
+        "rasimu",
+        "chapisha",
+        "funga",
+        "hifadhi",
+        "hali",
+        "fungua tena"
+      ],
+      "title": "Rasimu, zilizochapishwa, zilizofungwa na zilizohifadhiwa",
+      "summary": "Maana ya kila hali na jinsi fomu inavyohama kati yake.",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "**Draft**: being built; nobody can fill it in yet.",
+            "**Published**: open for responses at its link.",
+            "**Closed**: the link still works but shows that the form is closed; no new responses.",
+            "**Archived**: put away; hidden from the main list, responses kept."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Fomu iliyochapishwa inaweza kuwa na **mabadiliko ambayo hayajachapishwa**: mabadiliko yako hubaki kwenye rasimu hadi uchapishe tena, kwa hiyo wanaojaza hawaoni mabadiliko ambayo hayajakamilika."
+        },
+        {
+          "type": "tip",
+          "text": "Weka tarehe za kufungua na kufunga katika **Shiriki → Upatikanaji** ili fomu ifunguke na kufungwa yenyewe."
+        }
+      ]
+    },
+    {
+      "id": "folders",
+      "category": "forms",
+      "minutes": 2,
+      "route": "/forms",
+      "related": [
+        "forms-list",
+        "roles-and-access"
+      ],
+      "keywords": [
+        "folda",
+        "panga",
+        "kundi",
+        "ufikiaji",
+        "imefichwa"
+      ],
+      "title": "Folda na nani anaweza kuziona",
+      "summary": "Kusanya fomu kwenye folda na weka folda fulani kwa watu maalum.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Folda hukusanya fomu, kwa mfano kwa timu au mradi. Unda moja kwa **+** kando ya Folda kwenye menyu, kisha hamishia fomu ndani yake kutoka menyu ya **⋯** ya fomu."
+        },
+        {
+          "type": "p",
+          "text": "Wasimamizi wanaweza kuweka folda kwa baadhi ya majukumu, idara au watu kwa **Ufikiaji wa folda**. Wengine hawaoni folda, fomu zake wala majibu yake popote, hata kwenye utafutaji au uhamishaji."
+        }
+      ]
+    },
+    {
+      "id": "trash",
+      "category": "forms",
+      "minutes": 1,
+      "route": "/forms/trash",
+      "related": [
+        "form-lifecycle"
+      ],
+      "keywords": [
+        "futa",
+        "tupio",
+        "rudisha",
+        "pata tena"
+      ],
+      "title": "Futa na rudisha fomu",
+      "summary": "Fomu zilizofutwa hukaa kwenye tupio kwa siku 30.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Ukifuta fomu huenda kwenye **Tupio** kwa siku 30, pamoja na majibu yake. Unaweza kuirudisha kutoka hapo wakati wowote ndani ya siku hizo 30."
+        },
+        {
+          "type": "warning",
+          "text": "**Kufuta kabisa** kwenye tupio huondoa fomu na majibu yake yote milele. Hakuwezi kutenguliwa."
+        },
+        {
+          "type": "show",
+          "label": "Fungua tupio",
+          "to": "/forms/trash"
+        }
+      ]
+    },
+    {
+      "id": "builder-basics",
+      "category": "builder",
+      "popular": true,
+      "minutes": 3,
+      "route": "/forms/:id/build",
+      "related": [
+        "field-types",
+        "builder-logic",
+        "publish-and-versions"
+      ],
+      "keywords": [
+        "kijenzi",
+        "ongeza sehemu",
+        "swali",
+        "buruta",
+        "ukurasa",
+        "mpangilio"
+      ],
+      "title": "Jenga fomu",
+      "summary": "Ongeza maswali, yapange kwa safu na kurasa, na ubadilishe mipangilio yake.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Kijenzi kina sehemu tatu: **orodha ya sehemu** upande wa kushoto, **fomu** katikati na **mipangilio** ya ulichochagua upande wa kulia."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Drag a field from the list onto the form, or click it to add it after the selected field.",
+            "Click a field to change its question, help text, whether it’s required, and more.",
+            "Put fields side by side by dropping them next to each other; use **Width** to size them.",
+            "Add pages with **Add page** to split a long form.",
+            "Your changes save as you work; **Undo** and **Redo** are at the top."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Huna kipanya? Chagua sehemu kisha tumia **Alt + ↑ / ↓** kuihamisha, **Ctrl + D** kuinakili na **Delete** kuiondoa."
+        },
+        {
+          "type": "tip",
+          "text": "Kitufe cha **Msaidizi** kwenye kijenzi hupendekeza maswali yanayokosekana, huandika maandishi ya msaada na hukagua fomu yako."
+        }
+      ]
+    },
+    {
+      "id": "field-types",
+      "category": "builder",
+      "minutes": 3,
+      "route": "/forms/:id/build",
+      "related": [
+        "builder-basics",
+        "lists-basics"
+      ],
+      "keywords": [
+        "sehemu",
+        "aina",
+        "swali",
+        "pakia",
+        "saini",
+        "ukadiriaji",
+        "anwani"
+      ],
+      "title": "Sehemu ipi ya kutumia",
+      "summary": "Aina za maswali ambazo Formalie inatoa na lini kutumia kila moja.",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "**Text**: short and long answers, email, phone, number, amount, full name.",
+            "**Dates**: date, time, date and time, date range, duration.",
+            "**Choices**: dropdown, radio, checkboxes, yes / no, ranking, matrix, agreement.",
+            "**Ratings**: stars, a 0 to 10 scale, a slider.",
+            "**Files**: file upload, photo upload, signature.",
+            "**Location**: address, country, language, time zone.",
+            "**Advanced**: hidden values and calculations.",
+            "**Layout**: section headings, text, images and dividers."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Chagua sehemu mahususi zaidi: sehemu ya barua pepe hukagua anwani watu wanapoandika, sehemu ya tarehe huonyesha kalenda, sehemu ya simu hukagua namba."
+        },
+        {
+          "type": "tip",
+          "text": "Orodha ndefu za chaguo (nchi, idara) hufaa zaidi kama **Orodha ya Chaguo**, inayohifadhiwa mara moja na kutumika katika fomu nyingi."
+        }
+      ]
+    },
+    {
+      "id": "builder-logic",
+      "category": "builder",
+      "minutes": 3,
+      "route": "/forms/:id/logic",
+      "related": [
+        "calculations",
+        "builder-basics"
+      ],
+      "keywords": [
+        "mantiki",
+        "sheria",
+        "onyesha",
+        "ficha",
+        "sharti",
+        "ruka",
+        "rukia"
+      ],
+      "title": "Onyesha maswali sahihi kwa mantiki",
+      "summary": "Onyesha, ficha, lazimisha au ruka maswali kulingana na majibu ya awali.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Sheria za mantiki hubadilisha fomu watu wanapoijaza: onyesha swali la ufuatiliaji baada ya jibu la ndiyo tu, lazimisha namba ya simu kwa maombi ya dharura, au rukia mwisho."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Open the **Logic** tab of the form.",
+            "Click **Add rule** and choose **When**: a question, a condition and a value.",
+            "Choose **Then**: show, hide, require, set a value or jump to a page.",
+            "Add more conditions with **and** / **or** if needed."
+          ]
+        },
+        {
+          "type": "note",
+          "text": "Swali lililofichwa na sheria halilazimiki kamwe, kwa hiyo watu wanaweza kutuma fomu kila wakati."
+        }
+      ]
+    },
+    {
+      "id": "calculations",
+      "category": "builder",
+      "minutes": 2,
+      "route": "/forms/:id/build",
+      "related": [
+        "builder-logic",
+        "field-types"
+      ],
+      "keywords": [
+        "hesabu",
+        "fomula",
+        "jumla",
+        "alama",
+        "ongeza"
+      ],
+      "title": "Jumla na alama kwa hesabu",
+      "summary": "Kokotoa jumla, wastani na alama kutoka kwenye majibu.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Sehemu ya **Hesabu** hukokotoa thamani kutoka kwenye majibu mengine, kwa mfano idadi × bei, wastani wa ukadiriaji au alama ya hatari. Watu huona matokeo wanapojaza fomu."
+        },
+        {
+          "type": "p",
+          "text": "Andika fomula kwa funguo za maswali ndani ya mabano ya mkunjo, kwa mfano **{quantity} * {unit_price}**. Chaguo zinaweza kubeba alama ili ziweze kujumlishwa."
+        }
+      ]
+    },
+    {
+      "id": "publish-and-versions",
+      "category": "builder",
+      "minutes": 2,
+      "route": "/forms/:id/versions",
+      "related": [
+        "form-lifecycle",
+        "share-a-form"
+      ],
+      "keywords": [
+        "chapisha",
+        "toleo",
+        "rudisha",
+        "linganisha",
+        "historia"
+      ],
+      "title": "Kuchapisha na matoleo",
+      "summary": "Kila uchapishaji huhifadhiwa kama toleo unaloweza kulinganisha na kurudisha.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Chapisha** hufanya rasimu yako kuwa fomu ya moja kwa moja. Kila uchapishaji huhifadhiwa kama toleo lenye namba, pamoja na dokezo la hiari kuhusu kilichobadilika."
+        },
+        {
+          "type": "p",
+          "text": "Katika **Matoleo** unaweza kulinganisha toleo lolote na rasimu na kurudisha toleo la zamani kwenye rasimu."
+        },
+        {
+          "type": "tip",
+          "text": "Kitufe cha Chapisha huwa kijivu pasipo jipya la kuchapisha."
+        }
+      ]
+    },
+    {
+      "id": "design-a-form",
+      "category": "design",
+      "popular": true,
+      "minutes": 3,
+      "route": "/forms/:id/design",
+      "related": [
+        "themes",
+        "landing-pages"
+      ],
+      "keywords": [
+        "muundo",
+        "rangi",
+        "fonti",
+        "nembo",
+        "mandhari",
+        "mwonekano"
+      ],
+      "title": "Buni jinsi fomu inavyoonekana",
+      "summary": "Rangi, fonti, mpangilio, kichwa na ukurasa wa shukrani.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Fungua kichupo cha **Muundo** cha fomu kubadilisha mwonekano wake. Hakiki huonyesha fomu kama watu watakavyoiona, kwenye kompyuta, kompyuta kibao au simu."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Start from a ready **starting point**, then adjust.",
+            "Change colours, fonts, the size of fields and buttons.",
+            "Add your logo, a cover image or a coloured band at the top.",
+            "Design the **thank-you page** people see after sending."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Hifadhi muundo kama **mandhari** ili uutumie kwenye fomu nyingine kwa mbofyo mmoja."
+        }
+      ]
+    },
+    {
+      "id": "themes",
+      "category": "design",
+      "minutes": 2,
+      "route": "/settings/themes",
+      "related": [
+        "design-a-form",
+        "form-defaults"
+      ],
+      "keywords": [
+        "mandhari",
+        "chapa",
+        "muundo uliohifadhiwa",
+        "chaguo-msingi"
+      ],
+      "title": "Mandhari",
+      "summary": "Hifadhi miundo mara moja na uitumie kwenye fomu yoyote.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Mandhari ni miundo iliyohifadhiwa. Formalie hutoa seti; eneo lako la kazi linaweza kuongeza yake kutoka kwenye kibunifu, au umruhusu msaidizi wa AI apendekeze miundo kutoka rangi ya chapa yako."
+        },
+        {
+          "type": "p",
+          "text": "Chagua mandhari ambayo fomu mpya huanza nayo katika **Mipangilio → Chaguo-msingi za fomu**."
+        },
+        {
+          "type": "show",
+          "label": "Fungua mandhari",
+          "to": "/settings/themes"
+        }
+      ]
+    },
+    {
+      "id": "landing-pages",
+      "category": "design",
+      "minutes": 1,
+      "route": "/settings/landing-pages",
+      "related": [
+        "design-a-form"
+      ],
+      "keywords": [
+        "ukurasa wa kutua",
+        "ukurasa unaozunguka fomu",
+        "bango",
+        "fremu"
+      ],
+      "title": "Kurasa za kutua",
+      "summary": "Ukurasa unaozunguka fomu: bango, utangulizi na ukweli muhimu.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Ukurasa wa kutua ni ukurasa ambamo fomu yako inakaa: bango lenye kichwa, utangulizi, muda unaochukua na shirika lako. Chagua mmoja kwenye kibunifu au hifadhi wako mwenyewe katika **Kurasa za kutua**."
+        }
+      ]
+    },
+    {
+      "id": "use-a-template",
+      "category": "templates",
+      "popular": true,
+      "minutes": 2,
+      "route": "/templates",
+      "related": [
+        "save-as-template",
+        "first-form"
+      ],
+      "keywords": [
+        "kiolezo",
+        "jumba la sanaa",
+        "mfano",
+        "tayari"
+      ],
+      "title": "Anza kwa kiolezo",
+      "summary": "Fomu tayari kwa matumizi mengi, kwa lugha yako.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Jumba la violezo lina fomu tayari za rasilimali watu, afya na usalama, matukio, mauzo na zaidi. Kila moja ina maswali yake, mantiki, hesabu na muundo unaoendana."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Open **Templates** from the menu.",
+            "Browse by category or search.",
+            "Open a template to try it in the preview.",
+            "Click **Use template**: a new draft form opens in the builder."
+          ]
+        },
+        {
+          "type": "show",
+          "label": "Vinjari violezo",
+          "to": "/templates"
+        }
+      ]
+    },
+    {
+      "id": "save-as-template",
+      "category": "templates",
+      "minutes": 1,
+      "route": "/templates",
+      "related": [
+        "use-a-template"
+      ],
+      "keywords": [
+        "hifadhi kiolezo",
+        "kiolezo cha eneo la kazi",
+        "tumia tena"
+      ],
+      "title": "Tengeneza violezo vyako",
+      "summary": "Hifadhi fomu kama kiolezo cha eneo lako la kazi.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Fomu yoyote inaweza kuwa kiolezo cha eneo lako la kazi: fungua menyu yake ya **⋯** na uchague **Hifadhi kama kiolezo**. Ipe jina, maelezo na kategoria. Violezo vyako huonekana chini ya **Violezo vyako**."
+        }
+      ]
+    },
+    {
+      "id": "share-a-form",
+      "category": "sharing",
+      "popular": true,
+      "minutes": 3,
+      "route": "/forms/:id/share",
+      "related": [
+        "who-can-fill-in",
+        "embed-a-form",
+        "form-languages"
+      ],
+      "keywords": [
+        "shiriki",
+        "kiungo",
+        "qr",
+        "barua pepe",
+        "tuma"
+      ],
+      "title": "Shiriki fomu",
+      "summary": "Kiungo, msimbo wa QR, mialiko ya barua pepe na viungo vifupi.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Fungua kichupo cha **Shiriki** cha fomu iliyochapishwa. Kutoka hapo unaweza kunakili kiungo chake, kupakua msimbo wa QR, kuunda kiungo kifupi au kutuma mialiko ya barua pepe."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Link**: copy it and paste it anywhere.",
+            "**Custom link**: choose a readable address.",
+            "**QR code**: for posters and printed material.",
+            "**Invitations**: email people a personal link and see who has responded."
+          ]
+        },
+        {
+          "type": "show",
+          "label": "Fungua fomu zako",
+          "to": "/forms"
+        }
+      ]
+    },
+    {
+      "id": "who-can-fill-in",
+      "category": "sharing",
+      "minutes": 2,
+      "route": "/forms/:id/share",
+      "related": [
+        "share-a-form"
+      ],
+      "keywords": [
+        "ufikiaji",
+        "nenosiri",
+        "kwa mwaliko tu",
+        "shirika",
+        "kikomo",
+        "upatikanaji"
+      ],
+      "title": "Nani anaweza kujaza fomu, na lini",
+      "summary": "Wazi kwa yeyote, kwa nenosiri, kwa mwaliko tu, au shirika lako.",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "**Anyone with the link**.",
+            "**With a password** you give out.",
+            "**Invite only**: only people you invited by email.",
+            "**Your organisation**: people signed in to your workspace."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Katika **Upatikanaji** unaweza kufungua na kufunga fomu kwa tarehe maalum na kuisimamisha baada ya idadi fulani ya majibu."
+        }
+      ]
+    },
+    {
+      "id": "embed-a-form",
+      "category": "sharing",
+      "minutes": 1,
+      "route": "/forms/:id/share",
+      "related": [
+        "share-a-form"
+      ],
+      "keywords": [
+        "pachika",
+        "tovuti",
+        "iframe",
+        "wijeti"
+      ],
+      "title": "Weka fomu kwenye tovuti yako",
+      "summary": "Pachika fomu kwenye kurasa zako mwenyewe.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Katika **Shiriki → Pachika** nakili msimbo na ubandike kwenye tovuti yako. Unaweza kuweka kikomo cha tovuti zipi zinaweza kuonyesha fomu."
+        }
+      ]
+    },
+    {
+      "id": "form-languages",
+      "category": "sharing",
+      "minutes": 2,
+      "route": "/forms/:id/build",
+      "related": [
+        "ai-translate",
+        "share-a-form"
+      ],
+      "keywords": [
+        "lugha",
+        "tafsiri",
+        "lugha nyingi",
+        "kifaransa",
+        "kiarabu"
+      ],
+      "title": "Fomu kwa lugha kadhaa",
+      "summary": "Toa fomu kwa lugha zaidi; watu hubadilisha juu.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Fomu ina lugha kuu na inaweza kutoa nyingine. Kwenye kijenzi, fungua mipangilio ya fomu, ongeza lugha chini ya **Lugha zaidi** na utafsiri kila maandishi kando kwa kando."
+        },
+        {
+          "type": "tip",
+          "text": "**Tafsiri zilizobaki kwa AI** hujaza kilichobaki; wewe hukagua kila maandishi kabla ya kuchapisha."
+        }
+      ]
+    },
+    {
+      "id": "responses-basics",
+      "category": "responses",
+      "popular": true,
+      "minutes": 3,
+      "route": "/responses",
+      "related": [
+        "review-responses",
+        "export-responses"
+      ],
+      "keywords": [
+        "majibu",
+        "jibu",
+        "uwasilishaji",
+        "ona majibu"
+      ],
+      "title": "Tazama majibu yako",
+      "summary": "Kila jibu, kwa kila fomu au kwa fomu zote.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Majibu** huorodhesha fomu zako pamoja na majibu yake. Fungua fomu kuona majibu yake kama jedwali au kadi; fungua jibu kuona kila jibu kwenye paneli."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use **J** and **K** to move to the next or previous response.",
+            "Filter by status, date, channel or answer.",
+            "**Insights** shows a summary per question: choices, averages and the latest text answers."
+          ]
+        },
+        {
+          "type": "show",
+          "label": "Fungua majibu",
+          "to": "/responses"
+        }
+      ]
+    },
+    {
+      "id": "review-responses",
+      "category": "responses",
+      "minutes": 2,
+      "route": "/responses",
+      "related": [
+        "responses-basics"
+      ],
+      "keywords": [
+        "kagua",
+        "hali",
+        "idhinisha",
+        "kataa",
+        "lebo",
+        "dokezo"
+      ],
+      "title": "Kagua majibu",
+      "summary": "Hali, lebo na madokezo ya kushughulikia yanayoingia.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Kila jibu lina hali: **Mpya**, **Imekaguliwa**, **Imeidhinishwa** au **Imekataliwa**. Ibadilishe kwa mbofyo mmoja juu ya paneli ya jibu."
+        },
+        {
+          "type": "p",
+          "text": "Ongeza lebo na madokezo ili kufuatilia. Kusahihisha majibu ni ruhusa tofauti, kwa hiyo jukumu lako linaweza kuruhusu kukagua bila kubadilisha walichoandika watu."
+        }
+      ]
+    },
+    {
+      "id": "export-responses",
+      "category": "responses",
+      "minutes": 2,
+      "route": "/responses/exports",
+      "related": [
+        "responses-basics",
+        "data-sources-basics"
+      ],
+      "keywords": [
+        "hamisha",
+        "excel",
+        "csv",
+        "pakua",
+        "pdf"
+      ],
+      "title": "Hamisha majibu",
+      "summary": "Pakua majibu kama lahajedwali au faili.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Bofya **Hamisha** kwenye majibu ya fomu, chagua muundo na kinachojumuishwa. Uhamishaji mkubwa huandaliwa chinichini; unaona maendeleo yake katika **Uhamishaji** na kupata ujumbe faili ikiwa tayari."
+        }
+      ]
+    },
+    {
+      "id": "analytics",
+      "category": "analytics",
+      "popular": true,
+      "minutes": 2,
+      "route": "/analytics",
+      "related": [
+        "responses-basics",
+        "ai-analysis"
+      ],
+      "keywords": [
+        "takwimu",
+        "mionekano",
+        "ukamilishaji",
+        "kuacha",
+        "mfereji"
+      ],
+      "title": "Fomu zako zinavyofanya kazi",
+      "summary": "Mionekano, walioanza, walioimaliza na pale watu wanapoacha.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Takwimu** zinaonyesha watu wangapi walifungua, kuanza na kukamilisha kila fomu, inachukua muda gani na pale watu wanapoacha. Fungua fomu kuona kila ukurasa na swali."
+        },
+        {
+          "type": "tip",
+          "text": "Swali ambalo watu wengi huacha hapo mara nyingi halieleweki au linaomba mengi mno. Jaribu swali fupi zaidi au liwe la hiari."
+        }
+      ]
+    },
+    {
+      "id": "lists-basics",
+      "category": "lists",
+      "minutes": 3,
+      "route": "/option-sets",
+      "related": [
+        "field-types"
+      ],
+      "keywords": [
+        "orodha",
+        "chaguo",
+        "uchaguzi",
+        "menyu kunjuzi",
+        "ngazi",
+        "nchi",
+        "inayobadilika"
+      ],
+      "title": "Orodha ya Chaguo: hifadhi chaguo mara moja",
+      "summary": "Orodha za chaguo unazotumia katika fomu nyingi, zenye ngazi.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Orodha ya Chaguo** ina chaguo unazotumia katika fomu nyingi, kwa mfano idara, bidhaa au nchi. Badilisha orodha mara moja na kila fomu inayoitumia inafuata."
+        },
+        {
+          "type": "p",
+          "text": "Orodha zinaweza kuwa na **ngazi**: chagua nchi, kisha mikoa yake tu ndiyo inaonekana, kisha miji yake. Orodha kubwa sana hubaki kwenye seva na hupakiwa watu wanapoandika."
+        },
+        {
+          "type": "note",
+          "text": "Orodha zilizowekwa alama **Formalie** hutolewa kwa kila eneo la kazi; unaweza kuzitumia lakini huwezi kuzibadilisha."
+        }
+      ]
+    },
+    {
+      "id": "data-sources-basics",
+      "category": "data",
+      "minutes": 3,
+      "route": "/data-sources",
+      "related": [
+        "database-explorer",
+        "export-responses"
+      ],
+      "keywords": [
+        "hifadhidata",
+        "muunganisho",
+        "chanzo cha data",
+        "uhifadhi",
+        "postgres",
+        "mysql"
+      ],
+      "title": "Hifadhi majibu kwenye hifadhidata yako mwenyewe",
+      "summary": "Unganisha hifadhidata na utume majibu ya fomu huko.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Vyanzo vya data** huunganisha Formalie na hifadhidata zako mwenyewe. Majibu yanaweza kuhifadhiwa huko pia, katika majedwali ambayo Formalie huunda na kuyaweka sambamba na fomu."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Open **Data sources** from the rail and click **Add connection**.",
+            "Chagua aina ya hifadhidata na uweke maelezo yake; **Jaribu sasa** hukagua kama inafanya kazi.",
+            "Katika **Hifadhi ya majibu** ya fomu, chagua muunganisho: majibu mapya huhifadhiwa humo."
+          ]
+        },
+        {
+          "type": "warning",
+          "text": "Mpe Formalie mtumiaji wa hifadhidata mwenye haki anazohitaji tu."
+        }
+      ]
+    },
+    {
+      "id": "database-explorer",
+      "category": "data",
+      "minutes": 2,
+      "route": "/data-sources/explorer",
+      "related": [
+        "data-sources-basics"
+      ],
+      "keywords": [
+        "kivinjari",
+        "hoja",
+        "sql",
+        "jedwali",
+        "safu"
+      ],
+      "title": "Chunguza na uulize data yako",
+      "summary": "Vinjari majedwali na endesha hoja bila kuondoka Formalie.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Kivinjari cha hifadhidata** huonyesha majedwali ya muunganisho na safu zake. **Kihariri cha hoja** huendesha SQL; amri zinazobadilisha data zinahitaji ruhusa yake na huuliza kwanza."
+        }
+      ]
+    },
+    {
+      "id": "api-basics",
+      "category": "api",
+      "minutes": 3,
+      "route": "/api-service",
+      "related": [
+        "api-tokens",
+        "webhooks"
+      ],
+      "keywords": [
+        "api",
+        "endpoint",
+        "miunganisho",
+        "huduma",
+        "rest"
+      ],
+      "title": "Huduma ya API",
+      "summary": "Endpoint zako mwenyewe ili mifumo mingine isome na kutuma data.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Huduma ya API** huipa mifumo mingine endpoint zake yenyewe: kusoma majibu, kutuma mapya, au kutafuta chaguo za orodha. Kila huduma hukusanya endpoint na ina ukurasa wake wa nyaraka."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Open **API service** and create a service.",
+            "Add endpoints for the forms or data you want to offer.",
+            "Create a **token** for the system that will call it.",
+            "Try the endpoint from the documentation page."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "api-tokens",
+      "category": "api",
+      "minutes": 2,
+      "route": "/api-service/auth",
+      "related": [
+        "api-basics"
+      ],
+      "keywords": [
+        "tokeni",
+        "ufunguo",
+        "kichwa",
+        "siri",
+        "sheria za ufikiaji"
+      ],
+      "title": "Tokeni na sheria za ufikiaji",
+      "summary": "Nani anaweza kuita endpoint zako, kutoka wapi na mara ngapi.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Kila mfumo unaoita API yako hupata **tokeni**. Tokeni zinaweza kuisha muda na kubatilishwa wakati wowote. **Sheria za ufikiaji** huweka kikomo cha anwani, nyakati na idadi ya miito inayoruhusiwa."
+        },
+        {
+          "type": "warning",
+          "text": "Tokeni huonyeshwa mara moja tu. Iweke mahali salama na usiiweke kamwe kwenye ukurasa wa wavuti wa umma."
+        }
+      ]
+    },
+    {
+      "id": "webhooks",
+      "category": "api",
+      "minutes": 2,
+      "route": "/api-service",
+      "related": [
+        "api-basics"
+      ],
+      "keywords": [
+        "webhook",
+        "arifu",
+        "tukio",
+        "callback"
+      ],
+      "title": "Webhooks",
+      "summary": "Mjulishe mfumo mwingine papo hapo jambo linapotokea.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Webhook hutuma ujumbe kwa anwani ya mfumo mwingine jambo linapotokea, kwa mfano jibu jipya. Formalie hujaribu tena uwasilishaji ulioshindwa na huonyesha kila uwasilishaji ili uone kilichotumwa."
+        }
+      ]
+    },
+    {
+      "id": "roles-and-access",
+      "category": "people",
+      "popular": true,
+      "minutes": 3,
+      "route": "/people/roles",
+      "related": [
+        "invite-your-team",
+        "folders"
+      ],
+      "keywords": [
+        "jukumu",
+        "ruhusa",
+        "ufikiaji",
+        "msimamizi",
+        "mwanachama",
+        "vyao",
+        "vilivyoshirikiwa"
+      ],
+      "title": "Majukumu na ufikiaji",
+      "summary": "Amua hasa kila jukumu linaweza kuona na kufanya nini.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Kila mtu ana jukumu moja. Owner anaweza kufanya kila kitu; Admin na Member ziko tayari kutumika na zinaweza kubadilishwa; unaweza kuongeza majukumu yako mwenyewe."
+        },
+        {
+          "type": "p",
+          "text": "Kila kitendo kina wigo: **Hakuna**, **Vyao** (walichotengeneza), **Vilivyoshirikiwa** (fomu walizoshirikishwa), **Zao na zilizoshirikiwa** au **Zote**. Kwa mfano, jukumu linaweza kuona majibu yote lakini likabadilisha fomu zake pekee."
+        },
+        {
+          "type": "show",
+          "label": "Fungua Majukumu na ufikiaji",
+          "to": "/people/roles"
+        }
+      ]
+    },
+    {
+      "id": "sign-up-links",
+      "category": "people",
+      "minutes": 2,
+      "route": "/people",
+      "related": [
+        "invite-your-team"
+      ],
+      "keywords": [
+        "jisajili",
+        "kiungo",
+        "idhini",
+        "jiunge"
+      ],
+      "title": "Viungo vya kujisajili na idhini",
+      "summary": "Waache watu waombe akaunti; wewe unawaidhinisha.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Kiungo cha kujisajili huwawezesha watu kujiundia akaunti. Unaweza kukiwekea kikomo cha anwani za barua pepe za shirika lako. Akaunti zao husubiri katika **Inasubiri idhini** hadi msimamizi awaidhinishe na kuwapa jukumu."
+        }
+      ]
+    },
+    {
+      "id": "your-profile",
+      "category": "people",
+      "minutes": 2,
+      "route": "/profile",
+      "related": [
+        "two-step-sign-in"
+      ],
+      "keywords": [
+        "wasifu",
+        "nenosiri",
+        "picha",
+        "lugha",
+        "saa za eneo"
+      ],
+      "title": "Wasifu wako",
+      "summary": "Picha, jina, lugha, saa za eneo, nenosiri na kuingia.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Fungua wasifu wako kutoka jina lako chini ya menyu. Badilisha picha, jina, lugha, saa za eneo na muundo wa tarehe, nenosiri lako na kuingia kwa hatua mbili, na uone ulipoingia."
+        }
+      ]
+    },
+    {
+      "id": "two-step-sign-in",
+      "category": "settings",
+      "minutes": 2,
+      "route": "/profile",
+      "related": [
+        "your-profile",
+        "security-settings"
+      ],
+      "keywords": [
+        "hatua mbili",
+        "2fa",
+        "kithibitishaji",
+        "msimbo",
+        "uokoaji"
+      ],
+      "title": "Kuingia kwa hatua mbili",
+      "summary": "Msimbo kutoka kwenye programu, barua pepe au ujumbe mfupi unapoingia.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Kuingia kwa hatua mbili huomba msimbo baada ya nenosiri lako. Weka programu ya kithibitishaji kwenye wasifu wako kwa chaguo salama zaidi, na uhifadhi misimbo ya uokoaji mahali salama."
+        }
+      ]
+    },
+    {
+      "id": "workspace-settings",
+      "category": "settings",
+      "minutes": 2,
+      "route": "/settings",
+      "related": [
+        "security-settings",
+        "form-defaults"
+      ],
+      "keywords": [
+        "mipangilio",
+        "kampuni",
+        "chapa",
+        "lugha",
+        "mwonekano"
+      ],
+      "title": "Mipangilio ya eneo la kazi",
+      "summary": "Shirika lako, chapa, lugha, mwonekano na zaidi.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Mipangilio** ina vitu vinavyotumika kwa eneo zima la kazi: maelezo ya kampuni, chapa, lugha na eneo, mwonekano, kuingia, usalama, arifa, violezo vya barua pepe, faragha na chaguo-msingi za fomu."
+        },
+        {
+          "type": "show",
+          "label": "Fungua mipangilio",
+          "to": "/settings"
+        }
+      ]
+    },
+    {
+      "id": "security-settings",
+      "category": "settings",
+      "minutes": 2,
+      "route": "/settings/security",
+      "related": [
+        "two-step-sign-in",
+        "audit-trail"
+      ],
+      "keywords": [
+        "usalama",
+        "kanuni za nenosiri",
+        "ip",
+        "kipindi",
+        "orodha ya kuruhusiwa"
+      ],
+      "title": "Mipangilio ya usalama",
+      "summary": "Kanuni za nenosiri, kuingia kwa hatua mbili, vipindi na mitandao inayoruhusiwa.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Katika **Mipangilio → Usalama** wasimamizi huweka kanuni za nenosiri, huhitaji kuingia kwa hatua mbili, huamua watu wakae wameingia kwa muda gani na, ikibidi, huruhusu kuingia kutoka mitandao yenu tu."
+        },
+        {
+          "type": "warning",
+          "text": "Kabla ya kuweka kikomo cha mitandao, ongeza anwani yako mwenyewe, la sivyo unaweza kujifungia nje."
+        }
+      ]
+    },
+    {
+      "id": "form-defaults",
+      "category": "settings",
+      "minutes": 1,
+      "route": "/settings/form-defaults",
+      "related": [
+        "themes"
+      ],
+      "keywords": [
+        "chaguo-msingi",
+        "fomu mpya",
+        "mandhari",
+        "asante"
+      ],
+      "title": "Chaguo-msingi za fomu",
+      "summary": "Kile ambacho kila fomu mpya huanza nacho.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Chaguo-msingi za fomu** huweka mandhari, upau wa maendeleo, lebo, ujumbe wa shukrani na barua pepe ambazo kila fomu mpya huanza nazo. Fomu ulizonazo tayari hazibadiliki."
+        }
+      ]
+    },
+    {
+      "id": "audit-trail",
+      "category": "audit",
+      "minutes": 2,
+      "route": "/audit",
+      "related": [
+        "security-settings"
+      ],
+      "keywords": [
+        "ukaguzi",
+        "kumbukumbu",
+        "historia",
+        "nani alifanya",
+        "shughuli"
+      ],
+      "title": "Kumbukumbu za ukaguzi",
+      "summary": "Nani alifanya nini, lini na kutoka wapi.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Kumbukumbu za ukaguzi** hurekodi kila kitendo katika eneo lako la kazi: kuingia, mabadiliko ya fomu, majibu, mipangilio, watu na zaidi, pamoja na nani alifanya, lini na kutoka wapi."
+        },
+        {
+          "type": "p",
+          "text": "Chuja kwa eneo, mtu au tarehe na ufungue kipengee kuona kilichobadilika. Unaweza kuhamisha kumbukumbu hizi ikiwa jukumu lako linaruhusu."
+        },
+        {
+          "type": "show",
+          "label": "Fungua kumbukumbu za ukaguzi",
+          "to": "/audit"
+        }
+      ]
+    },
+    {
+      "id": "ai-overview",
+      "category": "ai",
+      "popular": true,
+      "minutes": 2,
+      "route": "/ai",
+      "related": [
+        "ai-create-form",
+        "ai-analysis",
+        "ai-settings"
+      ],
+      "keywords": [
+        "ai",
+        "msaidizi",
+        "akili bandia",
+        "nisaidie"
+      ],
+      "title": "Msaidizi wa AI",
+      "summary": "Anachoweza kufanya, na jinsi unavyobaki na udhibiti.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Msaidizi wa AI huunda fomu na violezo, husaidia kwenye kijenzi, huchambua majibu na hutafsiri. Daima **hupendekeza**: hakuna kinachoundwa, kubadilishwa au kutumwa hadi uchague."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Every request is kept in **History** with what came back.",
+            "Each request uses credits from your monthly allowance.",
+            "Admins choose what it may read and can switch it off."
+          ]
+        },
+        {
+          "type": "show",
+          "label": "Fungua msaidizi wa AI",
+          "to": "/ai"
+        }
+      ]
+    },
+    {
+      "id": "ai-create-form",
+      "category": "ai",
+      "minutes": 2,
+      "route": "/ai/create-form",
+      "related": [
+        "ai-overview",
+        "first-form"
+      ],
+      "keywords": [
+        "fomu ya ai",
+        "eleza",
+        "zalisha",
+        "rasimu"
+      ],
+      "title": "Unda fomu kwa msaidizi",
+      "summary": "Eleza, kagua rasimu, kisha unda.",
+      "blocks": [
+        {
+          "type": "steps",
+          "items": [
+            "Open **AI assistant → Create a form**.",
+            "Describe the form, for example “a visitor sign-in with name, company and arrival time”, or paste a paper form.",
+            "Click **Generate** and check the preview.",
+            "**Create form** opens it in the builder; **Try again** gives another take."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Orodhesha unachotaka kuuliza, kikitenganishwa kwa koma: msaidizi hubakiza maneno yako."
+        }
+      ]
+    },
+    {
+      "id": "ai-analysis",
+      "category": "ai",
+      "minutes": 2,
+      "route": "/ai/analysis",
+      "related": [
+        "ai-overview",
+        "analytics"
+      ],
+      "keywords": [
+        "chambua",
+        "mada",
+        "hisia",
+        "swali",
+        "muhtasari"
+      ],
+      "title": "Chambua majibu kwa msaidizi",
+      "summary": "Mada, toni na maswali kwa maneno rahisi.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Katika **Uchambuzi wa majibu**, chagua fomu na kipindi. Msaidizi hugundua majibu yaliyoandikwa yanahusu nini, toni yake, na jinsi ukadiriaji na chaguo vilivyobadilika."
+        },
+        {
+          "type": "p",
+          "text": "Uliza maswali kwa maneno rahisi, kama “Majibu mangapi mwezi uliopita?”. Jibu daima huonyesha kilichohesabiwa."
+        }
+      ]
+    },
+    {
+      "id": "ai-translate",
+      "category": "ai",
+      "minutes": 2,
+      "route": "/ai/translate",
+      "related": [
+        "form-languages"
+      ],
+      "keywords": [
+        "tafsiri",
+        "andika upya",
+        "lugha rahisi",
+        "toni"
+      ],
+      "title": "Tafsiri na andika upya kwa msaidizi",
+      "summary": "Tafsiri kando kwa kando na maneno rahisi zaidi.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Tafsiri** hutafsiri fomu kwa lugha yoyote kati ya 20; unakagua kila maandishi kando kwa kando kabla ya kuhifadhi. **Andika upya** hupendekeza maneno rahisi zaidi kwa toni unayochagua na huonyesha kiwango cha usomaji kabla na baada."
+        }
+      ]
+    },
+    {
+      "id": "ai-settings",
+      "category": "ai",
+      "minutes": 1,
+      "route": "/ai/settings",
+      "related": [
+        "ai-overview"
+      ],
+      "keywords": [
+        "mipangilio ya ai",
+        "faragha",
+        "mikopo",
+        "zima"
+      ],
+      "title": "Mipangilio ya AI na faragha",
+      "summary": "Iwashe au uzime, kinachoweza kusoma, mikopo.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Wasimamizi huwasha au kuzima msaidizi, huchagua kinachoweza kusoma (fomu, majibu, vyanzo vya data), huzuia data binafsi na huchagua maombi yahifadhiwe kwa muda gani. Msaidizi hafunzwi kamwe kwa data yako."
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "id": "faq-free-respondents",
+      "category": "start",
+      "question": "Je, watu wanahitaji akaunti kujaza fomu?",
+      "answer": "Hapana. Yeyote mwenye kiungo anaweza kujaza fomu, isipokuwa uweke kikomo kwa walioalikwa, nenosiri au shirika lako.",
+      "article": "who-can-fill-in"
+    },
+    {
+      "id": "faq-mobile",
+      "category": "start",
+      "question": "Je, Formalie inafanya kazi kwenye simu?",
+      "answer": "Ndiyo. Fomu na tovuti hufanya kazi kwenye simu, kompyuta kibao na kompyuta.",
+      "article": null
+    },
+    {
+      "id": "faq-languages",
+      "category": "start",
+      "question": "Formalie inazungumza lugha zipi?",
+      "answer": "Tovuti na fomu zinapatikana kwa lugha 20, zikiwemo lugha zinazoandikwa kutoka kulia kwenda kushoto kama Kiarabu. Kila mtu huchagua lugha yake kwenye wasifu wake.",
+      "article": "form-languages"
+    },
+    {
+      "id": "faq-edit-live",
+      "category": "forms",
+      "question": "Je, naweza kubadilisha fomu ambayo tayari imechapishwa?",
+      "answer": "Ndiyo. Mabadiliko yako hubaki kwenye rasimu hadi uchapishe tena, kwa hiyo wanaojaza hawaoni mabadiliko ambayo hayajakamilika.",
+      "article": "form-lifecycle"
+    },
+    {
+      "id": "faq-restore",
+      "category": "forms",
+      "question": "Nilifuta fomu kimakosa. Naweza kuirudisha?",
+      "answer": "Ndiyo, kutoka Tupio, ndani ya siku 30, pamoja na majibu yake.",
+      "article": "trash"
+    },
+    {
+      "id": "faq-copy-form",
+      "category": "forms",
+      "question": "Ninanakili fomu vipi?",
+      "answer": "Fungua menyu yake ya ⋯ na uchague Nakili. Nakala ni rasimu mpya yenye maswali na muundo ule ule.",
+      "article": "forms-list"
+    },
+    {
+      "id": "faq-required",
+      "category": "builder",
+      "question": "Ninafanyaje swali liwe la lazima?",
+      "answer": "Lichague kwenye kijenzi na uwashe Lazima katika mipangilio yake.",
+      "article": "builder-basics"
+    },
+    {
+      "id": "faq-pages",
+      "category": "builder",
+      "question": "Ninagawaje fomu katika kurasa?",
+      "answer": "Bofya Ongeza ukurasa kwenye kijenzi kisha uhamishie maswali huko.",
+      "article": "builder-basics"
+    },
+    {
+      "id": "faq-conditional",
+      "category": "builder",
+      "question": "Je, swali linaweza kuonekana baada ya jibu fulani tu?",
+      "answer": "Ndiyo, kwa sheria ya mantiki: Wakati swali la awali lina jibu hilo, Basi onyesha swali la ufuatiliaji.",
+      "article": "builder-logic"
+    },
+    {
+      "id": "faq-logo",
+      "category": "design",
+      "question": "Ninaongezaje nembo yetu?",
+      "answer": "Iongeze mara moja katika Mipangilio → Chapa; fomu huionyesha kwenye kichwa chake. Unaweza pia kuiweka kwa kila fomu katika Muundo.",
+      "article": "design-a-form"
+    },
+    {
+      "id": "faq-own-templates",
+      "category": "templates",
+      "question": "Je, tunaweza kutengeneza violezo vyetu?",
+      "answer": "Ndiyo. Hifadhi fomu yoyote kama kiolezo kutoka menyu yake ya ⋯.",
+      "article": "save-as-template"
+    },
+    {
+      "id": "faq-close-date",
+      "category": "sharing",
+      "question": "Je, fomu inaweza kujifunga yenyewe?",
+      "answer": "Ndiyo. Weka tarehe ya kufunga au idadi ya juu ya majibu katika Shiriki → Upatikanaji.",
+      "article": "who-can-fill-in"
+    },
+    {
+      "id": "faq-qr",
+      "category": "sharing",
+      "question": "Ninapataje msimbo wa QR?",
+      "answer": "Kwenye kichupo cha Shiriki cha fomu, pakua msimbo wa QR kama picha.",
+      "article": "share-a-form"
+    },
+    {
+      "id": "faq-notify",
+      "category": "responses",
+      "question": "Je, naweza kupata barua pepe kwa kila jibu jipya?",
+      "answer": "Ndiyo. Chagua anayetumiwa barua pepe katika mipangilio ya fomu, na weka arifa zako mwenyewe katika Mipangilio → Arifa.",
+      "article": "responses-basics"
+    },
+    {
+      "id": "faq-export-format",
+      "category": "responses",
+      "question": "Ni miundo ipi naweza kuhamisha?",
+      "answer": "Lahajedwali na miundo mingine ya faili; chagua kwenye dirisha la uhamishaji.",
+      "article": "export-responses"
+    },
+    {
+      "id": "faq-edit-answer",
+      "category": "responses",
+      "question": "Je, naweza kusahihisha jibu alilotoa mtu?",
+      "answer": "Ndiyo, ikiwa jukumu lako linaruhusu kusahihisha majibu. Mabadiliko hurekodiwa kwenye kumbukumbu za ukaguzi.",
+      "article": "review-responses"
+    },
+    {
+      "id": "faq-drop-off",
+      "category": "analytics",
+      "question": "Watu huacha wapi kujaza fomu yangu?",
+      "answer": "Fungua fomu katika Takwimu: inaonyesha kila ukurasa na swali pamoja na watu wangapi waliondoka hapo.",
+      "article": "analytics"
+    },
+    {
+      "id": "faq-list-change",
+      "category": "lists",
+      "question": "Nikibadilisha orodha, fomu zangu hubadilika pia?",
+      "answer": "Ndiyo. Kila fomu inayotumia orodha hiyo inafuata.",
+      "article": "lists-basics"
+    },
+    {
+      "id": "faq-own-db",
+      "category": "data",
+      "question": "Je, majibu yanaweza kwenda moja kwa moja kwenye hifadhidata yetu?",
+      "answer": "Iunganishe katika Vyanzo vya data kisha uichague katika Hifadhi ya majibu ya fomu.",
+      "article": "data-sources-basics"
+    },
+    {
+      "id": "faq-api-token",
+      "category": "api",
+      "question": "Nimepoteza tokeni yangu ya API. Nifanye nini?",
+      "answer": "Tokeni huonyeshwa mara moja. Batilisha iliyopotea na uunde tokeni mpya.",
+      "article": "api-tokens"
+    },
+    {
+      "id": "faq-roles-custom",
+      "category": "people",
+      "question": "Je, tunaweza kutengeneza majukumu yetu?",
+      "answer": "Ndiyo. Katika Watu → Majukumu na ufikiaji, ongeza jukumu na uchague linaloweza kufanya na wigo wake.",
+      "article": "roles-and-access"
+    },
+    {
+      "id": "faq-remove-person",
+      "category": "people",
+      "question": "Mtu ameondoka. Ninaondoaje ufikiaji wake?",
+      "answer": "Mfungue katika Watu na uchague Zima. Anatolewa mara moja; fomu na majibu yake hubaki.",
+      "article": "invite-your-team"
+    },
+    {
+      "id": "faq-forgot-password",
+      "category": "settings",
+      "question": "Nimesahau nenosiri langu.",
+      "answer": "Bofya Nimesahau nenosiri kwenye ukurasa wa kuingia; utapata msimbo kwa barua pepe wa kuweka nenosiri jipya.",
+      "article": "your-profile"
+    },
+    {
+      "id": "faq-lost-phone",
+      "category": "settings",
+      "question": "Nimepoteza simu yenye programu yangu ya kithibitishaji.",
+      "answer": "Ingia kwa msimbo mmoja wa uokoaji, au mwombe msimamizi aweke upya kuingia kwako kwa hatua mbili.",
+      "article": "two-step-sign-in"
+    },
+    {
+      "id": "faq-audit-who",
+      "category": "audit",
+      "question": "Naonaje nani alibadilisha fomu?",
+      "answer": "Fungua kumbukumbu za ukaguzi na uchuje kwa fomu au kwa Fomu; kila kipengee kinaonyesha nani, lini na kilichobadilika.",
+      "article": "audit-trail"
+    },
+    {
+      "id": "faq-ai-data",
+      "category": "ai",
+      "question": "Je, msaidizi wa AI hujifunza kutoka kwenye data yetu?",
+      "answer": "Hapana. Maombi hutumika kuyajibu tu na huhifadhiwa kwa muda uliowekwa katika Mipangilio ya AI pekee.",
+      "article": "ai-settings"
+    },
+    {
+      "id": "faq-ai-credits",
+      "category": "ai",
+      "question": "Mikopo ya AI ni nini?",
+      "answer": "Kila ombi hutumia mikopo michache kutoka posho ya kila mwezi ya eneo lako la kazi. Iangalie katika Msaidizi wa AI → Mipangilio na matumizi.",
+      "article": "ai-settings"
+    },
+    {
+      "id": "faq-ai-off",
+      "category": "ai",
+      "question": "Je, tunaweza kuzima msaidizi?",
+      "answer": "Ndiyo. Wasimamizi huuzima katika Msaidizi wa AI → Mipangilio na matumizi; hakuna kinachotumwa kwake akiwa amezimwa.",
+      "article": "ai-settings"
+    }
+  ],
+  "glossary": [
+    {
+      "id": "term-form",
+      "term": "Fomu",
+      "definition": "Seti ya maswali ambayo watu hujaza, pamoja na muundo, mantiki na mipangilio yake.",
+      "article": "builder-basics"
+    },
+    {
+      "id": "term-response",
+      "term": "Jibu",
+      "definition": "Fomu iliyojazwa na mtu mmoja, pamoja na majibu yake yote.",
+      "article": "responses-basics"
+    },
+    {
+      "id": "term-draft",
+      "term": "Rasimu",
+      "definition": "Toleo la fomu unalolifanyia kazi. Watu hulioona tu baada ya kuchapisha.",
+      "article": "form-lifecycle"
+    },
+    {
+      "id": "term-version",
+      "term": "Toleo",
+      "definition": "Hali iliyochapishwa ya fomu, inayohifadhiwa ili uweze kuilinganisha na kuirudisha.",
+      "article": "publish-and-versions"
+    },
+    {
+      "id": "term-field",
+      "term": "Sehemu",
+      "definition": "Swali moja au kizuizi katika fomu, kama kisanduku cha maandishi, chaguo au saini.",
+      "article": "field-types"
+    },
+    {
+      "id": "term-key",
+      "term": "Ufunguo",
+      "definition": "Jina fupi la swali (kama first_name), linalotumika katika fomula, uhamishaji na API.",
+      "article": "calculations"
+    },
+    {
+      "id": "term-logic",
+      "term": "Sheria ya mantiki",
+      "definition": "Sheria inayoonyesha, kuficha, kulazimisha au kuruka maswali kulingana na majibu.",
+      "article": "builder-logic"
+    },
+    {
+      "id": "term-calculation",
+      "term": "Hesabu",
+      "definition": "Sehemu inayokokotoa thamani, kama jumla au alama, kutoka kwenye majibu mengine.",
+      "article": "calculations"
+    },
+    {
+      "id": "term-theme",
+      "term": "Mandhari",
+      "definition": "Muundo uliohifadhiwa: rangi, fonti na mpangilio unaoweza kutumia kwenye fomu yoyote.",
+      "article": "themes"
+    },
+    {
+      "id": "term-template",
+      "term": "Kiolezo",
+      "definition": "Fomu tayari unayoanzia, yenye maswali, mantiki na muundo.",
+      "article": "use-a-template"
+    },
+    {
+      "id": "term-list",
+      "term": "Orodha ya Chaguo",
+      "definition": "Orodha ya chaguo inayohifadhiwa mara moja na kutumika katika fomu nyingi; mabadiliko hufikia kila fomu inayoitumia.",
+      "article": "lists-basics"
+    },
+    {
+      "id": "term-dynamic-list",
+      "term": "Orodha yenye ngazi (orodha inayobadilika)",
+      "definition": "Orodha ambamo chaguo moja huamua linalofuata, kama nchi, kisha mkoa, kisha mji.",
+      "article": "lists-basics"
+    },
+    {
+      "id": "term-folder",
+      "term": "Folda",
+      "definition": "Kundi la fomu. Wasimamizi wanaweza kuweka kikomo cha nani anaona folda.",
+      "article": "folders"
+    },
+    {
+      "id": "term-role",
+      "term": "Jukumu",
+      "definition": "Seti ya ruhusa wanazopewa watu, inayoamua wanachoweza kuona na kufanya.",
+      "article": "roles-and-access"
+    },
+    {
+      "id": "term-reach",
+      "term": "Wigo (Vyao, Vilivyoshirikiwa, Zote)",
+      "definition": "Ruhusa inafika umbali gani: walichotengeneza tu, walichoshirikishwa, au kila kitu.",
+      "article": "roles-and-access"
+    },
+    {
+      "id": "term-data-source",
+      "term": "Chanzo cha data",
+      "definition": "Muunganisho kwa moja ya hifadhidata zako, unaotumika kuhifadhi majibu na kuchunguza data.",
+      "article": "data-sources-basics"
+    },
+    {
+      "id": "term-endpoint",
+      "term": "Endpoint",
+      "definition": "Anwani katika huduma yako ya API ambayo mfumo mwingine huiita kusoma au kutuma data.",
+      "article": "api-basics"
+    },
+    {
+      "id": "term-token",
+      "term": "Tokeni",
+      "definition": "Ufunguo wa siri ambao mfumo hutumia kuita API yako. Huonyeshwa mara moja; inaweza kuisha muda au kubatilishwa.",
+      "article": "api-tokens"
+    },
+    {
+      "id": "term-webhook",
+      "term": "Webhook",
+      "definition": "Ujumbe ambao Formalie hutuma kwa mfumo mwingine papo hapo jambo linapotokea.",
+      "article": "webhooks"
+    },
+    {
+      "id": "term-audit",
+      "term": "Kumbukumbu za ukaguzi",
+      "definition": "Rekodi ya kila kitendo katika eneo lako la kazi: nani, nini, lini na wapi.",
+      "article": "audit-trail"
+    },
+    {
+      "id": "term-two-step",
+      "term": "Kuingia kwa hatua mbili",
+      "definition": "Msimbo unaoombwa baada ya nenosiri lako, kutoka kwenye programu, barua pepe au ujumbe mfupi.",
+      "article": "two-step-sign-in"
+    },
+    {
+      "id": "term-embed",
+      "term": "Pachika",
+      "definition": "Kuonyesha fomu ndani ya tovuti yako mwenyewe.",
+      "article": "embed-a-form"
+    },
+    {
+      "id": "term-ai-credit",
+      "term": "Mkopo wa AI",
+      "definition": "Kipimo ambacho posho ya kila mwezi ya msaidizi wa AI huhesabiwa; kila ombi hutumia michache.",
+      "article": "ai-settings"
+    },
+    {
+      "id": "term-workspace",
+      "term": "Eneo la kazi",
+      "definition": "Nafasi ya shirika lako katika Formalie, yenye anwani yake, watu, fomu na mipangilio yake.",
+      "article": "workspace-settings"
+    }
+  ],
+  "tours": [
+    {
+      "id": "forms-tour",
+      "route": "/forms",
+      "title": "Ziara fupi ya fomu zako",
+      "steps": [
+        {
+          "target": "new-form",
+          "title": "Unda fomu",
+          "text": "Anza fomu mpya hapa: tupu, kutoka kiolezo au kwa kuleta."
+        },
+        {
+          "target": "list-search",
+          "title": "Tafuta fomu",
+          "text": "Tafuta kwa jina, lebo au mmiliki. Bonyeza / kuruka hapa kutoka popote kwenye ukurasa."
+        },
+        {
+          "target": "view-switch",
+          "title": "Jedwali au kadi",
+          "text": "Badilisha kati ya safu na kadi. Formalie hukumbuka chaguo lako."
+        },
+        {
+          "target": "folders",
+          "title": "Folda",
+          "text": "Kusanya fomu kwenye folda. Wasimamizi huamua nani anaona kila folda."
+        },
+        {
+          "target": "create",
+          "title": "Unda chochote",
+          "text": "Kitufe cha + huunda fomu, violezo, miunganisho na zaidi kutoka popote."
+        }
+      ]
+    },
+    {
+      "id": "people-tour",
+      "route": "/people",
+      "title": "Ziara fupi ya Watu",
+      "steps": [
+        {
+          "target": "add-user",
+          "title": "Ongeza mtu",
+          "text": "Unda wasifu; wanapata barua pepe ya kuweka nenosiri."
+        },
+        {
+          "target": "signup-links",
+          "title": "Viungo vya kujisajili",
+          "text": "Shiriki kiungo ili watu waombe akaunti; wewe unawaidhinisha."
+        },
+        {
+          "target": "list-search",
+          "title": "Tafuta mtu",
+          "text": "Tafuta kwa jina, barua pepe, idara au cheo cha kazi."
+        }
+      ]
+    }
+  ]
+}

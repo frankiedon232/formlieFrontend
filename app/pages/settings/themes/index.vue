@@ -144,8 +144,9 @@ const refreshAll = () => Promise.all([dataView.value?.refresh(), loadInsights()]
 
     <div class="flex flex-col gap-4">
       <DataView
-        id="themes"
+      id="themes"
         ref="dataView"
+        empty-help="themes"
         :columns="columns"
         :fetcher="fetcher"
         :filters="filters"

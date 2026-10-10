@@ -1,0 +1,1909 @@
+{
+  "articles": [
+    {
+      "id": "welcome",
+      "category": "start",
+      "start": 1,
+      "popular": true,
+      "minutes": 2,
+      "route": "/forms",
+      "related": [
+        "first-form",
+        "find-your-way",
+        "invite-your-team"
+      ],
+      "keywords": [
+        "mulai",
+        "awal",
+        "ikhtisar",
+        "baru",
+        "apa itu"
+      ],
+      "title": "Selamat datang di Formalie",
+      "summary": "Apa yang dilakukan Formalie dan bagaimana tata letak portalnya.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Formalie membantu organisasi Anda mengumpulkan informasi lewat formulir, meninjau yang masuk, dan mengirimkannya ke tempat yang dibutuhkan: database, sistem lain melalui API, atau laporan."
+        },
+        {
+          "type": "h",
+          "text": "Bagian utama"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Forms**: build forms, share them and follow their responses.",
+            "**Data sources**: connect your own databases to store responses and explore them.",
+            "**API service**: let other systems read and send data through your own endpoints.",
+            "**AI assistant**: create forms, analyse answers and translate with help.",
+            "**People**: invite your team and decide what each person may do."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Tekan **Ctrl + K** (atau **⌘ + K** di Mac) di mana saja untuk mencari halaman, formulir, atau pengaturan."
+        },
+        {
+          "type": "show",
+          "label": "Buka formulir Anda",
+          "to": "/forms"
+        }
+      ]
+    },
+    {
+      "id": "find-your-way",
+      "category": "start",
+      "start": 2,
+      "minutes": 2,
+      "route": null,
+      "related": [
+        "welcome",
+        "keyboard-and-search"
+      ],
+      "keywords": [
+        "menu",
+        "bilah samping",
+        "rel",
+        "navigasi",
+        "di mana"
+      ],
+      "title": "Mengenal tata letak portal",
+      "summary": "Rel, menu, header, dan pencarian.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Kolom sempit di paling kiri adalah **rel**. Setiap ikon membuka satu area Formalie: Formulir, Sumber data, Layanan API, Asisten AI, dan Orang. Menu di sebelahnya berubah sesuai area yang sedang Anda buka."
+        },
+        {
+          "type": "p",
+          "text": "Di bagian atas setiap halaman Anda menemukan judulnya, posisi Anda (breadcrumb), dan tombol-tombol halaman. Tombol utama selalu yang berwarna gelap di sebelah kanan."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Collapse the menu** with the « button or the **[** key to get more room.",
+            "**Dark mode** is at the bottom of the menu, under System.",
+            "**Help & support** is at the foot of the rail and in the System group."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Di ponsel, menu dibuka dari tombol ☰ di kiri atas."
+        }
+      ]
+    },
+    {
+      "id": "first-form",
+      "category": "start",
+      "start": 3,
+      "popular": true,
+      "minutes": 3,
+      "route": "/forms/new",
+      "related": [
+        "builder-basics",
+        "share-a-form",
+        "use-a-template"
+      ],
+      "keywords": [
+        "buat",
+        "formulir baru",
+        "pertama",
+        "membuat formulir"
+      ],
+      "title": "Buat formulir pertama Anda",
+      "summary": "Dari halaman kosong, templat, atau deskripsi, dalam beberapa menit.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Anda bisa memulai formulir dengan tiga cara: dari halaman kosong, dari salah satu templat Formalie, atau dengan mendeskripsikannya kepada asisten AI."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Click **New form** at the top right of the Forms page.",
+            "Choose **Blank**, pick a **template**, or **import** a form file.",
+            "Give the form a name and, if you like, a folder.",
+            "The builder opens: add questions from the field list on the left.",
+            "When you are happy, click **Publish** and share the link."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Bingung mulai dari mana? Asisten AI bisa menyusun seluruh formulir dari beberapa kata: buka **Asisten AI → Buat formulir**."
+        },
+        {
+          "type": "show",
+          "label": "Mulai formulir baru",
+          "to": "/forms/new",
+          "target": "new-form"
+        }
+      ]
+    },
+    {
+      "id": "invite-your-team",
+      "category": "start",
+      "start": 4,
+      "minutes": 2,
+      "route": "/people",
+      "related": [
+        "sign-up-links",
+        "roles-and-access"
+      ],
+      "keywords": [
+        "undang",
+        "tim",
+        "rekan kerja",
+        "tambah pengguna",
+        "orang"
+      ],
+      "title": "Ajak tim Anda",
+      "summary": "Tambahkan rekan kerja dengan profil, atau bagikan tautan pendaftaran.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Setiap orang di ruang kerja Anda memiliki profil dengan departemen, jabatan, dan peran. Peran menentukan apa yang bisa mereka lihat dan lakukan."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Open **People** from the rail.",
+            "Click **Add user** to create a profile: the person gets an email to set their password.",
+            "Or open **Sign-up links** to share a link: people who sign up with it wait for your approval."
+          ]
+        },
+        {
+          "type": "show",
+          "label": "Buka Orang",
+          "to": "/people",
+          "target": "add-user"
+        }
+      ]
+    },
+    {
+      "id": "keyboard-and-search",
+      "category": "start",
+      "start": 5,
+      "minutes": 1,
+      "route": null,
+      "related": [
+        "find-your-way"
+      ],
+      "keywords": [
+        "pintasan",
+        "keyboard",
+        "pencarian",
+        "ctrl k",
+        "perintah"
+      ],
+      "title": "Bekerja lebih cepat dengan pencarian dan pintasan",
+      "summary": "Temukan apa saja dengan Ctrl + K dan bergerak dengan keyboard.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Pencarian terbuka dengan **Ctrl + K** (**⌘ + K** di Mac). Ketik sebagian nama halaman, formulir, pengaturan, atau orang, lalu tekan Enter."
+        },
+        {
+          "type": "p",
+          "text": "Tekan **?** untuk melihat semua pintasan keyboard. Banyak halaman menambahkan pintasannya sendiri, misalnya **J** dan **K** untuk berpindah antartanggapan di panel."
+        },
+        {
+          "type": "tip",
+          "text": "Setiap daftar dan panel bisa dipakai hanya dengan keyboard: Tab untuk berpindah, Enter untuk membuka, Esc untuk menutup."
+        }
+      ]
+    },
+    {
+      "id": "forms-list",
+      "category": "forms",
+      "popular": true,
+      "minutes": 2,
+      "route": "/forms",
+      "related": [
+        "form-lifecycle",
+        "folders"
+      ],
+      "keywords": [
+        "daftar formulir",
+        "cari formulir",
+        "filter",
+        "kartu",
+        "tabel"
+      ],
+      "title": "Temukan dan atur formulir Anda",
+      "summary": "Cari, filter, urutkan, dan beralih antara tabel dan kartu.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Halaman Formulir menampilkan semua formulir yang boleh Anda lihat. Dua kartu di bagian atas menunjukkan tanggapan terbaru dan sebaran formulir Anda di antara draf, diterbitkan, dan ditutup; klik sebuah status di legenda untuk hanya menampilkan formulir dengan status itu."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Search** by name, tag or owner.",
+            "**Filter** by status, folder, owner or tag; filters show as chips you can clear.",
+            "**Columns** lets you show, hide and reorder the table’s columns.",
+            "**Table / Grid** switches between rows and cards; Formalie remembers your choice.",
+            "Right-click a form, or use its **⋯** menu, for actions such as duplicate, move or archive."
+          ]
+        },
+        {
+          "type": "show",
+          "label": "Buka daftar formulir",
+          "to": "/forms",
+          "target": "view-switch"
+        }
+      ]
+    },
+    {
+      "id": "form-lifecycle",
+      "category": "forms",
+      "minutes": 3,
+      "route": "/forms",
+      "related": [
+        "publish-and-versions",
+        "trash"
+      ],
+      "keywords": [
+        "draf",
+        "terbitkan",
+        "tutup",
+        "arsip",
+        "status",
+        "buka kembali"
+      ],
+      "title": "Draf, diterbitkan, ditutup, dan diarsipkan",
+      "summary": "Arti setiap status dan cara formulir berpindah di antaranya.",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "**Draft**: being built; nobody can fill it in yet.",
+            "**Published**: open for responses at its link.",
+            "**Closed**: the link still works but shows that the form is closed; no new responses.",
+            "**Archived**: put away; hidden from the main list, responses kept."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Formulir yang diterbitkan bisa memiliki **perubahan belum diterbitkan**: hasil edit Anda tetap berada di draf sampai Anda menerbitkan lagi, sehingga responden tidak pernah melihat perubahan yang setengah jadi."
+        },
+        {
+          "type": "tip",
+          "text": "Atur tanggal buka dan tutup di **Bagikan → Ketersediaan** agar formulir dibuka dan ditutup dengan sendirinya."
+        }
+      ]
+    },
+    {
+      "id": "folders",
+      "category": "forms",
+      "minutes": 2,
+      "route": "/forms",
+      "related": [
+        "forms-list",
+        "roles-and-access"
+      ],
+      "keywords": [
+        "folder",
+        "atur",
+        "kelompok",
+        "akses",
+        "tersembunyi"
+      ],
+      "title": "Folder dan siapa yang bisa melihatnya",
+      "summary": "Kelompokkan formulir dalam folder dan batasi beberapa folder untuk orang tertentu.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Folder mengelompokkan formulir, misalnya menurut tim atau proyek. Buat satu dengan **+** di sebelah Folder pada menu, lalu pindahkan formulir ke dalamnya dari menu **⋯** formulir tersebut."
+        },
+        {
+          "type": "p",
+          "text": "Admin dapat membatasi folder untuk beberapa peran, departemen, atau orang dengan **Akses folder**. Orang lain tidak melihat folder itu, formulirnya, maupun tanggapannya di mana pun, bahkan tidak di pencarian atau ekspor."
+        }
+      ]
+    },
+    {
+      "id": "trash",
+      "category": "forms",
+      "minutes": 1,
+      "route": "/forms/trash",
+      "related": [
+        "form-lifecycle"
+      ],
+      "keywords": [
+        "hapus",
+        "sampah",
+        "pulihkan",
+        "kembalikan"
+      ],
+      "title": "Hapus dan pulihkan formulir",
+      "summary": "Formulir yang dihapus tetap ada di sampah selama 30 hari.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Saat Anda menghapus formulir, formulir itu masuk ke **Sampah** selama 30 hari, beserta tanggapannya. Anda bisa memulihkannya dari sana kapan saja selama 30 hari tersebut."
+        },
+        {
+          "type": "warning",
+          "text": "**Menghapus permanen** di sampah menghilangkan formulir dan semua tanggapannya untuk selamanya. Tindakan ini tidak bisa dibatalkan."
+        },
+        {
+          "type": "show",
+          "label": "Buka sampah",
+          "to": "/forms/trash"
+        }
+      ]
+    },
+    {
+      "id": "builder-basics",
+      "category": "builder",
+      "popular": true,
+      "minutes": 3,
+      "route": "/forms/:id/build",
+      "related": [
+        "field-types",
+        "builder-logic",
+        "publish-and-versions"
+      ],
+      "keywords": [
+        "pembuat",
+        "tambah kolom",
+        "pertanyaan",
+        "seret",
+        "halaman",
+        "tata letak"
+      ],
+      "title": "Membuat formulir",
+      "summary": "Tambahkan pertanyaan, susun dalam baris dan halaman, lalu ubah pengaturannya.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Pembuat formulir terdiri dari tiga bagian: **daftar kolom** di kiri, **formulir** di tengah, dan **pengaturan** untuk item yang dipilih di kanan."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Drag a field from the list onto the form, or click it to add it after the selected field.",
+            "Click a field to change its question, help text, whether it’s required, and more.",
+            "Put fields side by side by dropping them next to each other; use **Width** to size them.",
+            "Add pages with **Add page** to split a long form.",
+            "Your changes save as you work; **Undo** and **Redo** are at the top."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Tanpa mouse? Pilih sebuah kolom lalu gunakan **Alt + ↑ / ↓** untuk memindahkannya, **Ctrl + D** untuk menggandakan, dan **Delete** untuk menghapus."
+        },
+        {
+          "type": "tip",
+          "text": "Tombol **Asisten** di pembuat formulir menyarankan pertanyaan yang kurang, menulis teks bantuan, dan memeriksa formulir Anda."
+        }
+      ]
+    },
+    {
+      "id": "field-types",
+      "category": "builder",
+      "minutes": 3,
+      "route": "/forms/:id/build",
+      "related": [
+        "builder-basics",
+        "lists-basics"
+      ],
+      "keywords": [
+        "kolom",
+        "jenis",
+        "pertanyaan",
+        "unggah",
+        "tanda tangan",
+        "penilaian",
+        "alamat"
+      ],
+      "title": "Kolom mana yang dipakai",
+      "summary": "Jenis pertanyaan yang tersedia di Formalie dan kapan memakainya.",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "**Text**: short and long answers, email, phone, number, amount, full name.",
+            "**Dates**: date, time, date and time, date range, duration.",
+            "**Choices**: dropdown, radio, checkboxes, yes / no, ranking, matrix, agreement.",
+            "**Ratings**: stars, a 0 to 10 scale, a slider.",
+            "**Files**: file upload, photo upload, signature.",
+            "**Location**: address, country, language, time zone.",
+            "**Advanced**: hidden values and calculations.",
+            "**Layout**: section headings, text, images and dividers."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Pilih kolom yang paling spesifik: kolom email memeriksa alamat saat orang mengetik, kolom tanggal menampilkan kalender, kolom telepon memeriksa nomornya."
+        },
+        {
+          "type": "tip",
+          "text": "Daftar pilihan yang panjang (negara, departemen) paling baik dibuat sebagai **Daftar Opsi**, disimpan sekali dan dipakai di banyak formulir."
+        }
+      ]
+    },
+    {
+      "id": "builder-logic",
+      "category": "builder",
+      "minutes": 3,
+      "route": "/forms/:id/logic",
+      "related": [
+        "calculations",
+        "builder-basics"
+      ],
+      "keywords": [
+        "logika",
+        "aturan",
+        "tampilkan",
+        "sembunyikan",
+        "kondisi",
+        "lewati",
+        "lompat"
+      ],
+      "title": "Tampilkan pertanyaan yang tepat dengan logika",
+      "summary": "Tampilkan, sembunyikan, wajibkan, atau lewati pertanyaan berdasarkan jawaban sebelumnya.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Aturan logika mengubah formulir saat orang mengisinya: tampilkan pertanyaan lanjutan hanya setelah jawaban ya, wajibkan nomor telepon untuk permintaan mendesak, atau lompat ke akhir."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Open the **Logic** tab of the form.",
+            "Click **Add rule** and choose **When**: a question, a condition and a value.",
+            "Choose **Then**: show, hide, require, set a value or jump to a page.",
+            "Add more conditions with **and** / **or** if needed."
+          ]
+        },
+        {
+          "type": "note",
+          "text": "Pertanyaan yang disembunyikan oleh sebuah aturan tidak pernah wajib, sehingga orang selalu bisa mengirim formulir."
+        }
+      ]
+    },
+    {
+      "id": "calculations",
+      "category": "builder",
+      "minutes": 2,
+      "route": "/forms/:id/build",
+      "related": [
+        "builder-logic",
+        "field-types"
+      ],
+      "keywords": [
+        "perhitungan",
+        "rumus",
+        "total",
+        "skor",
+        "jumlah"
+      ],
+      "title": "Total dan skor dengan perhitungan",
+      "summary": "Hitung total, rata-rata, dan skor dari jawaban.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Kolom **Perhitungan** menghitung nilai dari jawaban lain, misalnya jumlah × harga, rata-rata penilaian, atau skor risiko. Orang melihat hasilnya saat mengisi formulir."
+        },
+        {
+          "type": "p",
+          "text": "Tulis rumus dengan kunci pertanyaan di dalam kurung kurawal, misalnya **{quantity} * {unit_price}**. Pilihan bisa memiliki skor sehingga dapat dijumlahkan."
+        }
+      ]
+    },
+    {
+      "id": "publish-and-versions",
+      "category": "builder",
+      "minutes": 2,
+      "route": "/forms/:id/versions",
+      "related": [
+        "form-lifecycle",
+        "share-a-form"
+      ],
+      "keywords": [
+        "terbitkan",
+        "versi",
+        "pulihkan",
+        "bandingkan",
+        "riwayat"
+      ],
+      "title": "Menerbitkan dan versi",
+      "summary": "Setiap penerbitan disimpan sebagai versi yang bisa dibandingkan dan dipulihkan.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Terbitkan** menjadikan draf Anda sebagai formulir yang aktif. Setiap penerbitan disimpan sebagai versi bernomor dengan catatan opsional tentang apa yang berubah."
+        },
+        {
+          "type": "p",
+          "text": "Di **Versi** Anda bisa membandingkan versi mana pun dengan draf dan memulihkan versi lama ke dalam draf."
+        },
+        {
+          "type": "tip",
+          "text": "Tombol Terbitkan berwarna abu-abu saat tidak ada yang baru untuk diterbitkan."
+        }
+      ]
+    },
+    {
+      "id": "design-a-form",
+      "category": "design",
+      "popular": true,
+      "minutes": 3,
+      "route": "/forms/:id/design",
+      "related": [
+        "themes",
+        "landing-pages"
+      ],
+      "keywords": [
+        "desain",
+        "warna",
+        "font",
+        "logo",
+        "tema",
+        "tampilan"
+      ],
+      "title": "Atur tampilan formulir",
+      "summary": "Warna, font, tata letak, header, dan halaman terima kasih.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Buka tab **Desain** pada formulir untuk mengubah tampilannya. Pratinjau menampilkan formulir seperti yang akan dilihat orang, di komputer, tablet, atau ponsel."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Start from a ready **starting point**, then adjust.",
+            "Change colours, fonts, the size of fields and buttons.",
+            "Add your logo, a cover image or a coloured band at the top.",
+            "Design the **thank-you page** people see after sending."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Simpan desain sebagai **tema** untuk memakainya di formulir lain dengan satu klik."
+        }
+      ]
+    },
+    {
+      "id": "themes",
+      "category": "design",
+      "minutes": 2,
+      "route": "/settings/themes",
+      "related": [
+        "design-a-form",
+        "form-defaults"
+      ],
+      "keywords": [
+        "tema",
+        "merek",
+        "desain tersimpan",
+        "bawaan"
+      ],
+      "title": "Tema",
+      "summary": "Simpan desain sekali dan pakai di formulir mana pun.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Tema adalah desain yang tersimpan. Formalie menyediakan sejumlah tema; ruang kerja Anda bisa menambahkan sendiri dari desainer, atau meminta asisten AI menyarankan desain dari warna merek Anda."
+        },
+        {
+          "type": "p",
+          "text": "Pilih tema yang dipakai formulir baru di **Pengaturan → Bawaan formulir**."
+        },
+        {
+          "type": "show",
+          "label": "Buka tema",
+          "to": "/settings/themes"
+        }
+      ]
+    },
+    {
+      "id": "landing-pages",
+      "category": "design",
+      "minutes": 1,
+      "route": "/settings/landing-pages",
+      "related": [
+        "design-a-form"
+      ],
+      "keywords": [
+        "halaman arahan",
+        "halaman di sekitar formulir",
+        "banner",
+        "bingkai"
+      ],
+      "title": "Halaman arahan",
+      "summary": "Halaman di sekitar formulir: banner, pengantar, dan informasi singkat.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Halaman arahan adalah halaman tempat formulir Anda berada: banner berisi judul, pengantar, lama pengisian, dan organisasi Anda. Pilih satu di desainer atau simpan milik Anda sendiri di **Halaman arahan**."
+        }
+      ]
+    },
+    {
+      "id": "use-a-template",
+      "category": "templates",
+      "popular": true,
+      "minutes": 2,
+      "route": "/templates",
+      "related": [
+        "save-as-template",
+        "first-form"
+      ],
+      "keywords": [
+        "templat",
+        "galeri",
+        "contoh",
+        "siap pakai"
+      ],
+      "title": "Mulai dari templat",
+      "summary": "Formulir siap pakai untuk berbagai keperluan, dalam bahasa Anda.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Galeri templat berisi formulir siap pakai untuk SDM, kesehatan dan keselamatan kerja, acara, penjualan, dan lainnya. Masing-masing dilengkapi pertanyaan, logika, perhitungan, dan desain yang serasi."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Open **Templates** from the menu.",
+            "Browse by category or search.",
+            "Open a template to try it in the preview.",
+            "Click **Use template**: a new draft form opens in the builder."
+          ]
+        },
+        {
+          "type": "show",
+          "label": "Jelajahi templat",
+          "to": "/templates"
+        }
+      ]
+    },
+    {
+      "id": "save-as-template",
+      "category": "templates",
+      "minutes": 1,
+      "route": "/templates",
+      "related": [
+        "use-a-template"
+      ],
+      "keywords": [
+        "simpan templat",
+        "templat ruang kerja",
+        "pakai ulang"
+      ],
+      "title": "Buat templat sendiri",
+      "summary": "Simpan formulir sebagai templat untuk ruang kerja Anda.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Formulir apa pun bisa menjadi templat untuk ruang kerja Anda: buka menu **⋯** formulir itu dan pilih **Simpan sebagai templat**. Beri nama, deskripsi, dan kategori. Templat Anda muncul di bawah **Templat Anda**."
+        }
+      ]
+    },
+    {
+      "id": "share-a-form",
+      "category": "sharing",
+      "popular": true,
+      "minutes": 3,
+      "route": "/forms/:id/share",
+      "related": [
+        "who-can-fill-in",
+        "embed-a-form",
+        "form-languages"
+      ],
+      "keywords": [
+        "bagikan",
+        "tautan",
+        "qr",
+        "email",
+        "kirim"
+      ],
+      "title": "Bagikan formulir",
+      "summary": "Tautan, kode QR, undangan email, dan tautan pendek.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Buka tab **Bagikan** pada formulir yang sudah diterbitkan. Dari sana Anda bisa menyalin tautannya, mengunduh kode QR, membuat tautan pendek, atau mengirim undangan email."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Link**: copy it and paste it anywhere.",
+            "**Custom link**: choose a readable address.",
+            "**QR code**: for posters and printed material.",
+            "**Invitations**: email people a personal link and see who has responded."
+          ]
+        },
+        {
+          "type": "show",
+          "label": "Buka formulir Anda",
+          "to": "/forms"
+        }
+      ]
+    },
+    {
+      "id": "who-can-fill-in",
+      "category": "sharing",
+      "minutes": 2,
+      "route": "/forms/:id/share",
+      "related": [
+        "share-a-form"
+      ],
+      "keywords": [
+        "akses",
+        "kata sandi",
+        "hanya undangan",
+        "organisasi",
+        "batas",
+        "ketersediaan"
+      ],
+      "title": "Siapa yang bisa mengisi formulir, dan kapan",
+      "summary": "Terbuka untuk siapa saja, dengan kata sandi, hanya undangan, atau organisasi Anda.",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "**Anyone with the link**.",
+            "**With a password** you give out.",
+            "**Invite only**: only people you invited by email.",
+            "**Your organisation**: people signed in to your workspace."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Di **Ketersediaan** Anda bisa membuka dan menutup formulir pada tanggal tertentu dan menghentikannya setelah jumlah tanggapan tertentu."
+        }
+      ]
+    },
+    {
+      "id": "embed-a-form",
+      "category": "sharing",
+      "minutes": 1,
+      "route": "/forms/:id/share",
+      "related": [
+        "share-a-form"
+      ],
+      "keywords": [
+        "sematkan",
+        "situs web",
+        "iframe",
+        "widget"
+      ],
+      "title": "Pasang formulir di situs web Anda",
+      "summary": "Sematkan formulir di halaman Anda sendiri.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Di **Bagikan → Sematkan** salin kodenya dan tempelkan ke situs web Anda. Anda bisa membatasi situs web mana yang boleh menampilkan formulir."
+        }
+      ]
+    },
+    {
+      "id": "form-languages",
+      "category": "sharing",
+      "minutes": 2,
+      "route": "/forms/:id/build",
+      "related": [
+        "ai-translate",
+        "share-a-form"
+      ],
+      "keywords": [
+        "bahasa",
+        "terjemahkan",
+        "multibahasa",
+        "prancis",
+        "arab"
+      ],
+      "title": "Formulir dalam beberapa bahasa",
+      "summary": "Tawarkan formulir dalam lebih banyak bahasa; orang beralih di bagian atas.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Formulir memiliki bahasa utama dan bisa menawarkan bahasa lain. Di pembuat formulir, buka pengaturan formulir, tambahkan bahasa di bawah **Bahasa lain**, lalu terjemahkan setiap teks berdampingan."
+        },
+        {
+          "type": "tip",
+          "text": "**Terjemahkan sisanya dengan AI** mengisi yang masih tersisa; Anda memeriksa setiap teks sebelum menerbitkan."
+        }
+      ]
+    },
+    {
+      "id": "responses-basics",
+      "category": "responses",
+      "popular": true,
+      "minutes": 3,
+      "route": "/responses",
+      "related": [
+        "review-responses",
+        "export-responses"
+      ],
+      "keywords": [
+        "tanggapan",
+        "jawaban",
+        "kiriman",
+        "lihat jawaban"
+      ],
+      "title": "Lihat tanggapan Anda",
+      "summary": "Setiap jawaban, per formulir atau dari semua formulir.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Tanggapan** menampilkan daftar formulir Anda beserta tanggapannya. Buka sebuah formulir untuk melihat tanggapannya sebagai tabel atau kartu; buka sebuah tanggapan untuk melihat setiap jawaban di panel."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use **J** and **K** to move to the next or previous response.",
+            "Filter by status, date, channel or answer.",
+            "**Insights** shows a summary per question: choices, averages and the latest text answers."
+          ]
+        },
+        {
+          "type": "show",
+          "label": "Buka tanggapan",
+          "to": "/responses"
+        }
+      ]
+    },
+    {
+      "id": "review-responses",
+      "category": "responses",
+      "minutes": 2,
+      "route": "/responses",
+      "related": [
+        "responses-basics"
+      ],
+      "keywords": [
+        "tinjau",
+        "status",
+        "setujui",
+        "tolak",
+        "tag",
+        "catatan"
+      ],
+      "title": "Meninjau tanggapan",
+      "summary": "Status, tag, dan catatan untuk menindaklanjuti tanggapan yang masuk.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Setiap tanggapan memiliki status: **Baru**, **Ditinjau**, **Disetujui**, atau **Ditolak**. Ubah dengan satu klik di bagian atas panel tanggapan."
+        },
+        {
+          "type": "p",
+          "text": "Tambahkan tag dan catatan untuk melacaknya. Mengoreksi jawaban adalah izin tersendiri, jadi peran Anda mungkin boleh meninjau tanpa mengubah apa yang ditulis orang."
+        }
+      ]
+    },
+    {
+      "id": "export-responses",
+      "category": "responses",
+      "minutes": 2,
+      "route": "/responses/exports",
+      "related": [
+        "responses-basics",
+        "data-sources-basics"
+      ],
+      "keywords": [
+        "ekspor",
+        "excel",
+        "csv",
+        "unduh",
+        "pdf"
+      ],
+      "title": "Ekspor tanggapan",
+      "summary": "Unduh tanggapan sebagai spreadsheet atau file.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Klik **Ekspor** pada tanggapan sebuah formulir, pilih formatnya dan apa yang disertakan. Ekspor besar disiapkan di latar belakang; Anda melihat kemajuannya di **Ekspor** dan mendapat pesan saat file siap."
+        }
+      ]
+    },
+    {
+      "id": "analytics",
+      "category": "analytics",
+      "popular": true,
+      "minutes": 2,
+      "route": "/analytics",
+      "related": [
+        "responses-basics",
+        "ai-analysis"
+      ],
+      "keywords": [
+        "analitik",
+        "tampilan",
+        "penyelesaian",
+        "berhenti mengisi",
+        "corong"
+      ],
+      "title": "Kinerja formulir Anda",
+      "summary": "Tampilan, awal pengisian, penyelesaian, dan di mana orang berhenti.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Analitik** menunjukkan berapa banyak orang yang membuka, mulai mengisi, dan menyelesaikan setiap formulir, berapa lama pengisiannya, dan di mana orang berhenti. Buka sebuah formulir untuk melihat setiap halaman dan pertanyaan."
+        },
+        {
+          "type": "tip",
+          "text": "Pertanyaan tempat banyak orang berhenti sering kali kurang jelas atau meminta terlalu banyak. Coba pertanyaan yang lebih singkat atau jadikan opsional."
+        }
+      ]
+    },
+    {
+      "id": "lists-basics",
+      "category": "lists",
+      "minutes": 3,
+      "route": "/option-sets",
+      "related": [
+        "field-types"
+      ],
+      "keywords": [
+        "daftar",
+        "opsi",
+        "pilihan",
+        "dropdown",
+        "tingkat",
+        "negara",
+        "dinamis"
+      ],
+      "title": "Daftar Opsi: simpan pilihan sekali",
+      "summary": "Daftar pilihan yang Anda pakai di banyak formulir, dengan tingkat.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Daftar Opsi** menyimpan pilihan yang Anda pakai di banyak formulir, misalnya departemen, produk, atau negara. Ubah daftarnya sekali dan setiap formulir yang memakainya ikut berubah."
+        },
+        {
+          "type": "p",
+          "text": "Daftar bisa memiliki **tingkat**: pilih negara, lalu hanya wilayahnya yang tampil, lalu kotanya. Daftar yang sangat besar tetap berada di server dan dimuat saat orang mengetik."
+        },
+        {
+          "type": "note",
+          "text": "Daftar yang ditandai **Formalie** disediakan untuk setiap ruang kerja; Anda bisa memakainya tetapi tidak bisa mengubahnya."
+        }
+      ]
+    },
+    {
+      "id": "data-sources-basics",
+      "category": "data",
+      "minutes": 3,
+      "route": "/data-sources",
+      "related": [
+        "database-explorer",
+        "export-responses"
+      ],
+      "keywords": [
+        "database",
+        "koneksi",
+        "sumber data",
+        "penyimpanan",
+        "postgres",
+        "mysql"
+      ],
+      "title": "Simpan tanggapan di database Anda sendiri",
+      "summary": "Hubungkan database dan kirim tanggapan formulir ke sana.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Sumber data** menghubungkan Formalie ke database Anda sendiri. Tanggapan kemudian bisa disimpan di sana juga, dalam tabel yang dibuat Formalie dan dijaga tetap selaras dengan formulir."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Open **Data sources** from the rail and click **Add connection**.",
+            "Pilih jenis basis data dan isi detailnya; **Uji sekarang** memeriksa apakah sudah berfungsi.",
+            "Di **Penyimpanan respons** milik formulir, pilih koneksinya: respons baru disimpan di sana."
+          ]
+        },
+        {
+          "type": "warning",
+          "text": "Berikan Formalie pengguna database dengan hak akses yang dibutuhkan saja."
+        }
+      ]
+    },
+    {
+      "id": "database-explorer",
+      "category": "data",
+      "minutes": 2,
+      "route": "/data-sources/explorer",
+      "related": [
+        "data-sources-basics"
+      ],
+      "keywords": [
+        "penjelajah",
+        "kueri",
+        "sql",
+        "tabel",
+        "baris"
+      ],
+      "title": "Jelajahi dan kueri data Anda",
+      "summary": "Telusuri tabel dan jalankan kueri tanpa meninggalkan Formalie.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Penjelajah database** menampilkan tabel sebuah koneksi beserta barisnya. **Editor kueri** menjalankan SQL; pernyataan yang mengubah data membutuhkan izin tersendiri dan meminta konfirmasi dulu."
+        }
+      ]
+    },
+    {
+      "id": "api-basics",
+      "category": "api",
+      "minutes": 3,
+      "route": "/api-service",
+      "related": [
+        "api-tokens",
+        "webhooks"
+      ],
+      "keywords": [
+        "api",
+        "endpoint",
+        "integrasi",
+        "layanan",
+        "rest"
+      ],
+      "title": "Layanan API",
+      "summary": "Endpoint Anda sendiri agar sistem lain dapat membaca dan mengirim data.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Layanan API** memberi sistem lain endpoint mereka sendiri: membaca tanggapan, mengirim tanggapan baru, atau mencari opsi daftar. Setiap layanan mengelompokkan endpoint dan memiliki halaman dokumentasinya sendiri."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Open **API service** and create a service.",
+            "Add endpoints for the forms or data you want to offer.",
+            "Create a **token** for the system that will call it.",
+            "Try the endpoint from the documentation page."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "api-tokens",
+      "category": "api",
+      "minutes": 2,
+      "route": "/api-service/auth",
+      "related": [
+        "api-basics"
+      ],
+      "keywords": [
+        "token",
+        "kunci",
+        "header",
+        "rahasia",
+        "aturan akses"
+      ],
+      "title": "Token dan aturan akses",
+      "summary": "Siapa yang boleh memanggil endpoint Anda, dari mana, dan seberapa sering.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Setiap sistem yang memanggil API Anda mendapat **token**. Token bisa kedaluwarsa dan dicabut kapan saja. **Aturan akses** membatasi alamat, waktu, dan jumlah panggilan yang diizinkan."
+        },
+        {
+          "type": "warning",
+          "text": "Token hanya ditampilkan sekali. Simpan di tempat aman dan jangan pernah menaruhnya di halaman web publik."
+        }
+      ]
+    },
+    {
+      "id": "webhooks",
+      "category": "api",
+      "minutes": 2,
+      "route": "/api-service",
+      "related": [
+        "api-basics"
+      ],
+      "keywords": [
+        "webhook",
+        "pemberitahuan",
+        "peristiwa",
+        "callback"
+      ],
+      "title": "Webhook",
+      "summary": "Beri tahu sistem lain saat sesuatu terjadi.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Webhook mengirim pesan ke alamat sistem lain saat sesuatu terjadi, misalnya tanggapan baru. Formalie mencoba ulang pengiriman yang gagal dan menampilkan setiap pengiriman agar Anda bisa melihat apa yang dikirim."
+        }
+      ]
+    },
+    {
+      "id": "roles-and-access",
+      "category": "people",
+      "popular": true,
+      "minutes": 3,
+      "route": "/people/roles",
+      "related": [
+        "invite-your-team",
+        "folders"
+      ],
+      "keywords": [
+        "peran",
+        "izin",
+        "akses",
+        "admin",
+        "anggota",
+        "milik sendiri",
+        "dibagikan"
+      ],
+      "title": "Peran dan akses",
+      "summary": "Tentukan dengan tepat apa yang boleh dilihat dan dilakukan setiap peran.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Setiap orang memiliki satu peran. Owner bisa melakukan segalanya; Admin dan Member sudah siap dipakai dan bisa diubah; Anda juga bisa menambah peran sendiri."
+        },
+        {
+          "type": "p",
+          "text": "Setiap tindakan memiliki jangkauan: **Tidak ada**, **Milik sendiri** (yang mereka buat), **Dibagikan** (formulir yang dibagikan kepada mereka), **Milik sendiri dan dibagikan**, atau **Semua**. Misalnya, sebuah peran boleh melihat semua tanggapan tetapi hanya mengubah formulirnya sendiri."
+        },
+        {
+          "type": "show",
+          "label": "Buka Peran & akses",
+          "to": "/people/roles"
+        }
+      ]
+    },
+    {
+      "id": "sign-up-links",
+      "category": "people",
+      "minutes": 2,
+      "route": "/people",
+      "related": [
+        "invite-your-team"
+      ],
+      "keywords": [
+        "daftar",
+        "tautan",
+        "persetujuan",
+        "bergabung"
+      ],
+      "title": "Tautan pendaftaran dan persetujuan",
+      "summary": "Biarkan orang meminta akun; Anda yang menyetujuinya.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Tautan pendaftaran memungkinkan orang membuat akun sendiri. Anda bisa membatasinya untuk alamat email organisasi Anda. Akun mereka menunggu di **Menunggu persetujuan** sampai admin menyetujuinya dan memberi mereka peran."
+        }
+      ]
+    },
+    {
+      "id": "your-profile",
+      "category": "people",
+      "minutes": 2,
+      "route": "/profile",
+      "related": [
+        "two-step-sign-in"
+      ],
+      "keywords": [
+        "profil",
+        "kata sandi",
+        "foto",
+        "bahasa",
+        "zona waktu"
+      ],
+      "title": "Profil Anda",
+      "summary": "Foto, nama, bahasa, zona waktu, kata sandi, dan cara masuk.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Buka profil Anda dari nama Anda di bagian bawah menu. Ubah foto, nama, bahasa, zona waktu, dan format tanggal, kata sandi, serta masuk dua langkah Anda, dan lihat di mana saja Anda sedang masuk."
+        }
+      ]
+    },
+    {
+      "id": "two-step-sign-in",
+      "category": "settings",
+      "minutes": 2,
+      "route": "/profile",
+      "related": [
+        "your-profile",
+        "security-settings"
+      ],
+      "keywords": [
+        "dua langkah",
+        "2fa",
+        "authenticator",
+        "kode",
+        "pemulihan"
+      ],
+      "title": "Masuk dua langkah",
+      "summary": "Kode dari aplikasi, email, atau pesan teks saat Anda masuk.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Masuk dua langkah meminta kode setelah kata sandi Anda. Siapkan aplikasi authenticator di profil Anda untuk pilihan teraman, dan simpan kode pemulihan di tempat aman."
+        }
+      ]
+    },
+    {
+      "id": "workspace-settings",
+      "category": "settings",
+      "minutes": 2,
+      "route": "/settings",
+      "related": [
+        "security-settings",
+        "form-defaults"
+      ],
+      "keywords": [
+        "pengaturan",
+        "perusahaan",
+        "branding",
+        "bahasa",
+        "tampilan"
+      ],
+      "title": "Pengaturan ruang kerja",
+      "summary": "Organisasi, branding, bahasa, tampilan, dan lainnya.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Pengaturan** berisi hal-hal yang berlaku untuk seluruh ruang kerja: detail perusahaan, branding, bahasa dan wilayah, tampilan, cara masuk, keamanan, notifikasi, templat email, privasi, dan bawaan formulir."
+        },
+        {
+          "type": "show",
+          "label": "Buka pengaturan",
+          "to": "/settings"
+        }
+      ]
+    },
+    {
+      "id": "security-settings",
+      "category": "settings",
+      "minutes": 2,
+      "route": "/settings/security",
+      "related": [
+        "two-step-sign-in",
+        "audit-trail"
+      ],
+      "keywords": [
+        "keamanan",
+        "aturan kata sandi",
+        "ip",
+        "sesi",
+        "daftar izin"
+      ],
+      "title": "Pengaturan keamanan",
+      "summary": "Aturan kata sandi, masuk dua langkah, sesi, dan jaringan yang diizinkan.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Di **Pengaturan → Keamanan** admin menetapkan aturan kata sandi, mewajibkan masuk dua langkah, menentukan berapa lama orang tetap masuk, dan, jika perlu, hanya mengizinkan masuk dari jaringan Anda."
+        },
+        {
+          "type": "warning",
+          "text": "Sebelum membatasi jaringan, tambahkan alamat Anda sendiri, atau Anda bisa terkunci di luar."
+        }
+      ]
+    },
+    {
+      "id": "form-defaults",
+      "category": "settings",
+      "minutes": 1,
+      "route": "/settings/form-defaults",
+      "related": [
+        "themes"
+      ],
+      "keywords": [
+        "bawaan",
+        "formulir baru",
+        "tema",
+        "terima kasih"
+      ],
+      "title": "Bawaan formulir",
+      "summary": "Apa yang dimiliki setiap formulir baru sejak awal.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Bawaan formulir** menetapkan tema, bilah kemajuan, label, pesan terima kasih, dan email yang dimiliki setiap formulir baru sejak awal. Formulir yang sudah ada tidak berubah."
+        }
+      ]
+    },
+    {
+      "id": "audit-trail",
+      "category": "audit",
+      "minutes": 2,
+      "route": "/audit",
+      "related": [
+        "security-settings"
+      ],
+      "keywords": [
+        "audit",
+        "log",
+        "riwayat",
+        "siapa yang melakukan",
+        "aktivitas"
+      ],
+      "title": "Jejak audit",
+      "summary": "Siapa melakukan apa, kapan, dan dari mana.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Jejak audit** mencatat setiap tindakan di ruang kerja Anda: masuk, perubahan formulir, tanggapan, pengaturan, orang, dan lainnya, beserta siapa yang melakukannya, kapan, dan dari mana."
+        },
+        {
+          "type": "p",
+          "text": "Filter menurut area, orang, atau tanggal dan buka sebuah entri untuk melihat apa yang berubah. Anda dapat mengekspor jejak ini jika peran Anda mengizinkan."
+        },
+        {
+          "type": "show",
+          "label": "Buka jejak audit",
+          "to": "/audit"
+        }
+      ]
+    },
+    {
+      "id": "ai-overview",
+      "category": "ai",
+      "popular": true,
+      "minutes": 2,
+      "route": "/ai",
+      "related": [
+        "ai-create-form",
+        "ai-analysis",
+        "ai-settings"
+      ],
+      "keywords": [
+        "ai",
+        "asisten",
+        "kecerdasan buatan",
+        "bantu saya"
+      ],
+      "title": "Asisten AI",
+      "summary": "Apa yang bisa dilakukannya, dan bagaimana Anda tetap memegang kendali.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Asisten AI membuat formulir dan templat, membantu di pembuat formulir, menganalisis tanggapan, dan menerjemahkan. Asisten ini selalu **mengusulkan**: tidak ada yang dibuat, diubah, atau dikirim sebelum Anda memilihnya."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Every request is kept in **History** with what came back.",
+            "Each request uses credits from your monthly allowance.",
+            "Admins choose what it may read and can switch it off."
+          ]
+        },
+        {
+          "type": "show",
+          "label": "Buka asisten AI",
+          "to": "/ai"
+        }
+      ]
+    },
+    {
+      "id": "ai-create-form",
+      "category": "ai",
+      "minutes": 2,
+      "route": "/ai/create-form",
+      "related": [
+        "ai-overview",
+        "first-form"
+      ],
+      "keywords": [
+        "formulir ai",
+        "deskripsikan",
+        "hasilkan",
+        "draf"
+      ],
+      "title": "Buat formulir dengan asisten",
+      "summary": "Deskripsikan, periksa drafnya, lalu buat.",
+      "blocks": [
+        {
+          "type": "steps",
+          "items": [
+            "Open **AI assistant → Create a form**.",
+            "Describe the form, for example “a visitor sign-in with name, company and arrival time”, or paste a paper form.",
+            "Click **Generate** and check the preview.",
+            "**Create form** opens it in the builder; **Try again** gives another take."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Tuliskan apa yang ingin Anda tanyakan, dipisahkan koma: asisten mempertahankan kata-kata Anda."
+        }
+      ]
+    },
+    {
+      "id": "ai-analysis",
+      "category": "ai",
+      "minutes": 2,
+      "route": "/ai/analysis",
+      "related": [
+        "ai-overview",
+        "analytics"
+      ],
+      "keywords": [
+        "analisis",
+        "tema",
+        "sentimen",
+        "pertanyaan",
+        "ringkasan"
+      ],
+      "title": "Analisis tanggapan dengan asisten",
+      "summary": "Tema, nada, dan pertanyaan dalam bahasa sehari-hari.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Di **Analisis respons**, pilih formulir dan periode. Asisten mencari tahu tentang apa jawaban tertulis, nadanya, serta bagaimana penilaian dan pilihan berubah."
+        },
+        {
+          "type": "p",
+          "text": "Ajukan pertanyaan dengan bahasa sehari-hari, seperti “Berapa banyak tanggapan bulan lalu?”. Jawabannya selalu menunjukkan apa yang dihitung."
+        }
+      ]
+    },
+    {
+      "id": "ai-translate",
+      "category": "ai",
+      "minutes": 2,
+      "route": "/ai/translate",
+      "related": [
+        "form-languages"
+      ],
+      "keywords": [
+        "terjemahkan",
+        "tulis ulang",
+        "bahasa sederhana",
+        "nada"
+      ],
+      "title": "Terjemahkan dan tulis ulang dengan asisten",
+      "summary": "Terjemahan berdampingan dan kata-kata yang lebih sederhana.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Terjemahan** menerjemahkan formulir ke salah satu dari 20 bahasa; Anda memeriksa setiap teks berdampingan sebelum menyimpan. **Tulis ulang** menyarankan kata-kata yang lebih sederhana dalam nada pilihan Anda dan menunjukkan tingkat keterbacaan sebelum dan sesudahnya."
+        }
+      ]
+    },
+    {
+      "id": "ai-settings",
+      "category": "ai",
+      "minutes": 1,
+      "route": "/ai/settings",
+      "related": [
+        "ai-overview"
+      ],
+      "keywords": [
+        "pengaturan ai",
+        "privasi",
+        "kredit",
+        "matikan"
+      ],
+      "title": "Pengaturan AI dan privasi",
+      "summary": "Nyalakan atau matikan, apa yang boleh dibacanya, kredit.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Admin menyalakan atau mematikan asisten, memilih apa yang boleh dibacanya (formulir, tanggapan, sumber data), menjauhkan data pribadi, dan menentukan berapa lama permintaan disimpan. Asisten tidak pernah dilatih dengan data Anda."
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "id": "faq-free-respondents",
+      "category": "start",
+      "question": "Apakah orang perlu akun untuk mengisi formulir?",
+      "answer": "Tidak. Siapa pun yang memiliki tautan bisa mengisi formulir, kecuali Anda membatasinya untuk orang yang diundang, kata sandi, atau organisasi Anda.",
+      "article": "who-can-fill-in"
+    },
+    {
+      "id": "faq-mobile",
+      "category": "start",
+      "question": "Apakah Formalie berfungsi di ponsel?",
+      "answer": "Ya. Formulir dan portal berfungsi di ponsel, tablet, dan komputer.",
+      "article": null
+    },
+    {
+      "id": "faq-languages",
+      "category": "start",
+      "question": "Bahasa apa saja yang didukung Formalie?",
+      "answer": "Portal dan formulir tersedia dalam 20 bahasa, termasuk bahasa yang ditulis dari kanan ke kiri seperti Arab. Setiap orang memilih bahasanya sendiri di profilnya.",
+      "article": "form-languages"
+    },
+    {
+      "id": "faq-edit-live",
+      "category": "forms",
+      "question": "Bisakah saya mengubah formulir yang sudah diterbitkan?",
+      "answer": "Bisa. Perubahan Anda tetap berada di draf sampai Anda menerbitkan lagi, sehingga orang yang sedang mengisi tidak pernah melihat perubahan yang setengah jadi.",
+      "article": "form-lifecycle"
+    },
+    {
+      "id": "faq-restore",
+      "category": "forms",
+      "question": "Saya tidak sengaja menghapus formulir. Bisakah dikembalikan?",
+      "answer": "Bisa, dari Sampah, dalam 30 hari, beserta tanggapannya.",
+      "article": "trash"
+    },
+    {
+      "id": "faq-copy-form",
+      "category": "forms",
+      "question": "Bagaimana cara menyalin formulir?",
+      "answer": "Buka menu ⋯ formulir dan pilih Duplikat. Salinannya adalah draf baru dengan pertanyaan dan desain yang sama.",
+      "article": "forms-list"
+    },
+    {
+      "id": "faq-required",
+      "category": "builder",
+      "question": "Bagaimana cara membuat pertanyaan wajib diisi?",
+      "answer": "Pilih pertanyaan di pembuat formulir lalu aktifkan Wajib di pengaturannya.",
+      "article": "builder-basics"
+    },
+    {
+      "id": "faq-pages",
+      "category": "builder",
+      "question": "Bagaimana cara membagi formulir menjadi beberapa halaman?",
+      "answer": "Klik Tambah halaman di pembuat formulir lalu pindahkan pertanyaan ke halaman itu.",
+      "article": "builder-basics"
+    },
+    {
+      "id": "faq-conditional",
+      "category": "builder",
+      "question": "Bisakah pertanyaan hanya muncul setelah jawaban tertentu?",
+      "answer": "Bisa, dengan aturan logika: Jika pertanyaan sebelumnya memiliki jawaban itu, Maka tampilkan pertanyaan lanjutan.",
+      "article": "builder-logic"
+    },
+    {
+      "id": "faq-logo",
+      "category": "design",
+      "question": "Bagaimana cara menambahkan logo kami?",
+      "answer": "Tambahkan sekali di Pengaturan → Branding; formulir menampilkannya di header. Anda juga bisa mengaturnya per formulir di Desain.",
+      "article": "design-a-form"
+    },
+    {
+      "id": "faq-own-templates",
+      "category": "templates",
+      "question": "Bisakah kami membuat templat sendiri?",
+      "answer": "Bisa. Simpan formulir apa pun sebagai templat dari menu ⋯ formulir itu.",
+      "article": "save-as-template"
+    },
+    {
+      "id": "faq-close-date",
+      "category": "sharing",
+      "question": "Bisakah formulir menutup sendiri?",
+      "answer": "Bisa. Atur tanggal penutupan atau jumlah maksimum tanggapan di Bagikan → Ketersediaan.",
+      "article": "who-can-fill-in"
+    },
+    {
+      "id": "faq-qr",
+      "category": "sharing",
+      "question": "Bagaimana cara mendapatkan kode QR?",
+      "answer": "Di tab Bagikan formulir, unduh kode QR sebagai gambar.",
+      "article": "share-a-form"
+    },
+    {
+      "id": "faq-notify",
+      "category": "responses",
+      "question": "Bisakah saya mendapat email untuk setiap tanggapan baru?",
+      "answer": "Bisa. Pilih siapa yang dikirimi email di pengaturan formulir, dan atur notifikasi Anda sendiri di Pengaturan → Notifikasi.",
+      "article": "responses-basics"
+    },
+    {
+      "id": "faq-export-format",
+      "category": "responses",
+      "question": "Format apa saja yang bisa diekspor?",
+      "answer": "Spreadsheet dan format file lainnya; pilih di dialog ekspor.",
+      "article": "export-responses"
+    },
+    {
+      "id": "faq-edit-answer",
+      "category": "responses",
+      "question": "Bisakah saya mengoreksi jawaban yang diberikan seseorang?",
+      "answer": "Bisa, jika peran Anda mengizinkan koreksi jawaban. Perubahannya dicatat di jejak audit.",
+      "article": "review-responses"
+    },
+    {
+      "id": "faq-drop-off",
+      "category": "analytics",
+      "question": "Di mana orang berhenti mengisi formulir saya?",
+      "answer": "Buka formulir di Analitik: Anda akan melihat setiap halaman dan pertanyaan beserta jumlah orang yang berhenti di sana.",
+      "article": "analytics"
+    },
+    {
+      "id": "faq-list-change",
+      "category": "lists",
+      "question": "Jika saya mengubah daftar, apakah formulir saya ikut berubah?",
+      "answer": "Ya. Setiap formulir yang memakai daftar itu ikut berubah.",
+      "article": "lists-basics"
+    },
+    {
+      "id": "faq-own-db",
+      "category": "data",
+      "question": "Bisakah tanggapan langsung masuk ke database kami sendiri?",
+      "answer": "Hubungkan di Sumber data lalu pilih di Penyimpanan respons milik formulir.",
+      "article": "data-sources-basics"
+    },
+    {
+      "id": "faq-api-token",
+      "category": "api",
+      "question": "Saya kehilangan token API. Bagaimana sekarang?",
+      "answer": "Token hanya ditampilkan sekali. Cabut token yang hilang dan buat token baru.",
+      "article": "api-tokens"
+    },
+    {
+      "id": "faq-roles-custom",
+      "category": "people",
+      "question": "Bisakah kami membuat peran sendiri?",
+      "answer": "Bisa. Di Orang → Peran & akses, tambahkan peran lalu pilih apa yang boleh dilakukannya dan sejauh mana jangkauannya.",
+      "article": "roles-and-access"
+    },
+    {
+      "id": "faq-remove-person",
+      "category": "people",
+      "question": "Seseorang sudah pergi. Bagaimana cara mencabut aksesnya?",
+      "answer": "Buka orang tersebut di Orang dan pilih Nonaktifkan. Mereka langsung dikeluarkan; formulir dan tanggapan mereka tetap ada.",
+      "article": "invite-your-team"
+    },
+    {
+      "id": "faq-forgot-password",
+      "category": "settings",
+      "question": "Saya lupa kata sandi.",
+      "answer": "Klik Lupa kata sandi di halaman masuk; Anda akan mendapat kode lewat email untuk membuat kata sandi baru.",
+      "article": "your-profile"
+    },
+    {
+      "id": "faq-lost-phone",
+      "category": "settings",
+      "question": "Ponsel dengan aplikasi authenticator saya hilang.",
+      "answer": "Masuk dengan salah satu kode pemulihan Anda, atau minta admin mengatur ulang masuk dua langkah Anda.",
+      "article": "two-step-sign-in"
+    },
+    {
+      "id": "faq-audit-who",
+      "category": "audit",
+      "question": "Bagaimana cara melihat siapa yang mengubah formulir?",
+      "answer": "Buka jejak audit dan filter menurut formulir atau menurut Formulir; setiap entri menunjukkan siapa, kapan, dan apa yang berubah.",
+      "article": "audit-trail"
+    },
+    {
+      "id": "faq-ai-data",
+      "category": "ai",
+      "question": "Apakah asisten AI belajar dari data kami?",
+      "answer": "Tidak. Permintaan hanya dipakai untuk menjawabnya dan hanya disimpan selama waktu yang ditetapkan di Pengaturan AI.",
+      "article": "ai-settings"
+    },
+    {
+      "id": "faq-ai-credits",
+      "category": "ai",
+      "question": "Apa itu kredit AI?",
+      "answer": "Setiap permintaan memakai beberapa kredit dari jatah bulanan ruang kerja Anda. Lihat di Asisten AI → Pengaturan & penggunaan.",
+      "article": "ai-settings"
+    },
+    {
+      "id": "faq-ai-off",
+      "category": "ai",
+      "question": "Bisakah kami mematikan asisten?",
+      "answer": "Bisa. Admin mematikannya di Asisten AI → Pengaturan & penggunaan; tidak ada yang dikirim ke asisten selama dimatikan.",
+      "article": "ai-settings"
+    }
+  ],
+  "glossary": [
+    {
+      "id": "term-form",
+      "term": "Formulir",
+      "definition": "Sekumpulan pertanyaan yang diisi orang, lengkap dengan desain, logika, dan pengaturannya.",
+      "article": "builder-basics"
+    },
+    {
+      "id": "term-response",
+      "term": "Tanggapan",
+      "definition": "Satu formulir yang sudah diisi seseorang, beserta semua jawabannya.",
+      "article": "responses-basics"
+    },
+    {
+      "id": "term-draft",
+      "term": "Draf",
+      "definition": "Versi formulir yang sedang Anda kerjakan. Orang hanya melihatnya setelah Anda menerbitkan.",
+      "article": "form-lifecycle"
+    },
+    {
+      "id": "term-version",
+      "term": "Versi",
+      "definition": "Keadaan formulir yang telah diterbitkan, disimpan agar bisa dibandingkan dan dipulihkan.",
+      "article": "publish-and-versions"
+    },
+    {
+      "id": "term-field",
+      "term": "Kolom",
+      "definition": "Satu pertanyaan atau blok dalam formulir, seperti kotak teks, pilihan, atau tanda tangan.",
+      "article": "field-types"
+    },
+    {
+      "id": "term-key",
+      "term": "Kunci",
+      "definition": "Nama singkat sebuah pertanyaan (seperti first_name), dipakai dalam rumus, ekspor, dan API.",
+      "article": "calculations"
+    },
+    {
+      "id": "term-logic",
+      "term": "Aturan logika",
+      "definition": "Aturan yang menampilkan, menyembunyikan, mewajibkan, atau melewati pertanyaan berdasarkan jawaban.",
+      "article": "builder-logic"
+    },
+    {
+      "id": "term-calculation",
+      "term": "Perhitungan",
+      "definition": "Kolom yang menghitung nilai, seperti total atau skor, dari jawaban lain.",
+      "article": "calculations"
+    },
+    {
+      "id": "term-theme",
+      "term": "Tema",
+      "definition": "Desain tersimpan: warna, font, dan tata letak yang bisa dipakai di formulir mana pun.",
+      "article": "themes"
+    },
+    {
+      "id": "term-template",
+      "term": "Templat",
+      "definition": "Formulir siap pakai sebagai titik awal, lengkap dengan pertanyaan, logika, dan desain.",
+      "article": "use-a-template"
+    },
+    {
+      "id": "term-list",
+      "term": "Daftar Opsi",
+      "definition": "Daftar pilihan yang disimpan sekali dan dipakai di banyak formulir; perubahan berlaku untuk setiap formulir yang memakainya.",
+      "article": "lists-basics"
+    },
+    {
+      "id": "term-dynamic-list",
+      "term": "Daftar bertingkat (daftar dinamis)",
+      "definition": "Daftar yang pilihannya menentukan pilihan berikutnya, seperti negara, lalu wilayah, lalu kota.",
+      "article": "lists-basics"
+    },
+    {
+      "id": "term-folder",
+      "term": "Folder",
+      "definition": "Sekelompok formulir. Admin dapat membatasi siapa yang melihat sebuah folder.",
+      "article": "folders"
+    },
+    {
+      "id": "term-role",
+      "term": "Peran",
+      "definition": "Sekumpulan izin yang diberikan kepada orang, menentukan apa yang bisa mereka lihat dan lakukan.",
+      "article": "roles-and-access"
+    },
+    {
+      "id": "term-reach",
+      "term": "Jangkauan (Milik sendiri, Dibagikan, Semua)",
+      "definition": "Seberapa jauh sebuah izin berlaku: hanya yang dibuat orang itu, yang dibagikan kepadanya, atau semuanya.",
+      "article": "roles-and-access"
+    },
+    {
+      "id": "term-data-source",
+      "term": "Sumber data",
+      "definition": "Koneksi ke salah satu database Anda, dipakai untuk menyimpan tanggapan dan menjelajahi data.",
+      "article": "data-sources-basics"
+    },
+    {
+      "id": "term-endpoint",
+      "term": "Endpoint",
+      "definition": "Alamat di layanan API Anda yang dipanggil sistem lain untuk membaca atau mengirim data.",
+      "article": "api-basics"
+    },
+    {
+      "id": "term-token",
+      "term": "Token",
+      "definition": "Kunci rahasia yang dipakai sistem untuk memanggil API Anda. Ditampilkan sekali; bisa kedaluwarsa atau dicabut.",
+      "article": "api-tokens"
+    },
+    {
+      "id": "term-webhook",
+      "term": "Webhook",
+      "definition": "Pesan yang dikirim Formalie ke sistem lain saat sesuatu terjadi.",
+      "article": "webhooks"
+    },
+    {
+      "id": "term-audit",
+      "term": "Jejak audit",
+      "definition": "Catatan setiap tindakan di ruang kerja Anda: siapa, apa, kapan, dan di mana.",
+      "article": "audit-trail"
+    },
+    {
+      "id": "term-two-step",
+      "term": "Masuk dua langkah",
+      "definition": "Kode yang diminta setelah kata sandi Anda, dari aplikasi, email, atau pesan teks.",
+      "article": "two-step-sign-in"
+    },
+    {
+      "id": "term-embed",
+      "term": "Sematkan",
+      "definition": "Menampilkan formulir di dalam situs web Anda sendiri.",
+      "article": "embed-a-form"
+    },
+    {
+      "id": "term-ai-credit",
+      "term": "Kredit AI",
+      "definition": "Satuan untuk menghitung jatah bulanan asisten AI; setiap permintaan memakai beberapa kredit.",
+      "article": "ai-settings"
+    },
+    {
+      "id": "term-workspace",
+      "term": "Ruang kerja",
+      "definition": "Ruang milik organisasi Anda di Formalie, dengan alamatnya sendiri, beserta orang, formulir, dan pengaturannya.",
+      "article": "workspace-settings"
+    }
+  ],
+  "tours": [
+    {
+      "id": "forms-tour",
+      "route": "/forms",
+      "title": "Tur singkat formulir Anda",
+      "steps": [
+        {
+          "target": "new-form",
+          "title": "Buat formulir",
+          "text": "Mulai formulir baru di sini: kosong, dari templat, atau dengan mengimpornya."
+        },
+        {
+          "target": "list-search",
+          "title": "Cari formulir",
+          "text": "Cari menurut nama, tag, atau pemilik. Tekan / untuk langsung ke sini dari mana saja di halaman."
+        },
+        {
+          "target": "view-switch",
+          "title": "Tabel atau kartu",
+          "text": "Beralih antara baris dan kartu. Formalie mengingat pilihan Anda."
+        },
+        {
+          "target": "folders",
+          "title": "Folder",
+          "text": "Kelompokkan formulir dalam folder. Admin dapat menentukan siapa yang melihat setiap folder."
+        },
+        {
+          "target": "create",
+          "title": "Buat apa saja",
+          "text": "Tombol + membuat formulir, templat, koneksi, dan lainnya dari mana saja."
+        }
+      ]
+    },
+    {
+      "id": "people-tour",
+      "route": "/people",
+      "title": "Tur singkat Orang",
+      "steps": [
+        {
+          "target": "add-user",
+          "title": "Tambah orang",
+          "text": "Buat profil; mereka mendapat email untuk mengatur kata sandi."
+        },
+        {
+          "target": "signup-links",
+          "title": "Tautan pendaftaran",
+          "text": "Bagikan tautan agar orang bisa meminta akun; Anda yang menyetujuinya."
+        },
+        {
+          "target": "list-search",
+          "title": "Cari seseorang",
+          "text": "Cari menurut nama, email, departemen, atau jabatan."
+        }
+      ]
+    }
+  ]
+}

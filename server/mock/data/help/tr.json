@@ -1,0 +1,1910 @@
+{
+  "articles": [
+    {
+      "id": "welcome",
+      "category": "start",
+      "start": 1,
+      "popular": true,
+      "minutes": 2,
+      "route": "/forms",
+      "related": [
+        "first-form",
+        "find-your-way",
+        "invite-your-team"
+      ],
+      "keywords": [
+        "başlangıç",
+        "başlamak",
+        "genel bakış",
+        "yeni",
+        "bu nedir"
+      ],
+      "title": "Formalie’ye hoş geldiniz",
+      "summary": "Formalie’nin neler yaptığı ve portalın nasıl düzenlendiği.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Formalie, kuruluşunuzun formlarla bilgi toplamasına, gelenleri incelemesine ve gerektiği yere göndermesine yardımcı olur: bir veritabanına, API üzerinden başka bir sisteme ya da bir rapora."
+        },
+        {
+          "type": "h",
+          "text": "Ana bölümler"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Formlar**: form oluşturun, paylaşın ve yanıtlarını takip edin.",
+            "**Veri kaynakları**: yanıtları saklamak ve incelemek için kendi veritabanlarınızı bağlayın.",
+            "**API hizmeti**: diğer sistemlerin kendi uç noktalarınız üzerinden veri okumasına ve göndermesine izin verin.",
+            "**YZ asistanı**: form oluşturun, yanıtları analiz edin ve yardımla çeviri yapın.",
+            "**Kişiler**: ekibinizi davet edin ve her kişinin neler yapabileceğine karar verin."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Bir sayfayı, formu ya da ayarı aramak için herhangi bir yerde **Ctrl + K** (Mac’te **⌘ + K**) tuşlarına basın."
+        },
+        {
+          "type": "show",
+          "label": "Formlarınızı açın",
+          "to": "/forms"
+        }
+      ]
+    },
+    {
+      "id": "find-your-way",
+      "category": "start",
+      "start": 2,
+      "minutes": 2,
+      "route": null,
+      "related": [
+        "welcome",
+        "keyboard-and-search"
+      ],
+      "keywords": [
+        "menü",
+        "kenar çubuğu",
+        "ray",
+        "gezinme",
+        "nerede"
+      ],
+      "title": "Portalda yolunuzu bulun",
+      "summary": "Ray, menü, üst bölüm ve arama.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Ekranın en solundaki dar sütun **raydır**. Her simge Formalie’nin bir alanını açar: Formlar, Veri kaynakları, API hizmeti, YZ asistanı ve Kişiler. Yanındaki menü, bulunduğunuz alana göre değişir."
+        },
+        {
+          "type": "p",
+          "text": "Her sayfanın üstünde başlığını, nerede olduğunuzu (gezinti yolu) ve sayfanın düğmelerini bulursunuz. Ana düğme her zaman sağdaki koyu renkli düğmedir."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Daha fazla yer açmak için **menüyü daraltın**: « düğmesini ya da **[** tuşunu kullanın.",
+            "**Karanlık mod**, menünün altında, Sistem bölümündedir.",
+            "**Yardım ve destek**, rayın altında ve Sistem grubunda yer alır."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Telefonda menü, sol üstteki ☰ düğmesinden açılır."
+        }
+      ]
+    },
+    {
+      "id": "first-form",
+      "category": "start",
+      "start": 3,
+      "popular": true,
+      "minutes": 3,
+      "route": "/forms/new",
+      "related": [
+        "builder-basics",
+        "share-a-form",
+        "use-a-template"
+      ],
+      "keywords": [
+        "oluştur",
+        "yeni form",
+        "ilk",
+        "form yapmak"
+      ],
+      "title": "İlk formunuzu oluşturun",
+      "summary": "Boş bir sayfadan, bir şablondan ya da bir açıklamadan, birkaç dakikada.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Bir forma üç yolla başlayabilirsiniz: boş bir sayfadan, Formalie’nin şablonlarından birinden ya da YZ asistanına tarif ederek."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Formlar sayfasının sağ üstündeki **Yeni form** düğmesine tıklayın.",
+            "**Boş** seçeneğini seçin, bir **şablon** seçin ya da bir form dosyasını **içe aktarın**.",
+            "Forma bir ad verin ve isterseniz bir klasör seçin.",
+            "Oluşturucu açılır: soldaki alan listesinden sorular ekleyin.",
+            "Memnun kaldığınızda **Yayınla** düğmesine tıklayın ve bağlantıyı paylaşın."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Nereden başlayacağınızdan emin değil misiniz? YZ asistanı birkaç kelimeden tüm formu hazırlayabilir: **YZ asistanı → Form oluştur** bölümünü açın."
+        },
+        {
+          "type": "show",
+          "label": "Yeni form başlat",
+          "to": "/forms/new",
+          "target": "new-form"
+        }
+      ]
+    },
+    {
+      "id": "invite-your-team",
+      "category": "start",
+      "start": 4,
+      "minutes": 2,
+      "route": "/people",
+      "related": [
+        "sign-up-links",
+        "roles-and-access"
+      ],
+      "keywords": [
+        "davet",
+        "ekip",
+        "meslektaşlar",
+        "kullanıcı ekle",
+        "kişiler"
+      ],
+      "title": "Ekibinizi ekleyin",
+      "summary": "Meslektaşlarınızı bir profille ekleyin ya da bir kayıt bağlantısı paylaşın.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Çalışma alanınızdaki herkesin departmanı, unvanı ve rolü olan bir profili vardır. Rol, kişinin neleri görebileceğini ve yapabileceğini belirler."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Raydan **Kişiler** bölümünü açın.",
+            "Profil oluşturmak için **Kullanıcı ekle** düğmesine tıklayın: kişi, parolasını belirlemesi için bir e-posta alır.",
+            "Ya da **Kayıt bağlantıları** bölümünü açıp bir bağlantı paylaşın: bağlantıyla kaydolanlar onayınızı bekler."
+          ]
+        },
+        {
+          "type": "show",
+          "label": "Kişiler’i aç",
+          "to": "/people",
+          "target": "add-user"
+        }
+      ]
+    },
+    {
+      "id": "keyboard-and-search",
+      "category": "start",
+      "start": 5,
+      "minutes": 1,
+      "route": null,
+      "related": [
+        "find-your-way"
+      ],
+      "keywords": [
+        "kısayol",
+        "klavye",
+        "arama",
+        "ctrl k",
+        "komut"
+      ],
+      "title": "Arama ve kısayollarla daha hızlı çalışın",
+      "summary": "Ctrl + K ile her şeyi bulun ve klavyeyle gezinin.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Arama **Ctrl + K** (Mac’te **⌘ + K**) ile açılır. Bir sayfanın, formun, ayarın ya da kişinin adının bir kısmını yazın ve Enter’a basın."
+        },
+        {
+          "type": "p",
+          "text": "Tüm klavye kısayollarını görmek için **?** tuşuna basın. Birçok sayfa kendi kısayollarını da ekler, örneğin bir panelde yanıtlar arasında gezinmek için **J** ve **K**."
+        },
+        {
+          "type": "tip",
+          "text": "Her liste ve panel yalnızca klavyeyle de kullanılabilir: Tab gezdirir, Enter açar, Esc kapatır."
+        }
+      ]
+    },
+    {
+      "id": "forms-list",
+      "category": "forms",
+      "popular": true,
+      "minutes": 2,
+      "route": "/forms",
+      "related": [
+        "form-lifecycle",
+        "folders"
+      ],
+      "keywords": [
+        "form listesi",
+        "form bul",
+        "filtre",
+        "ızgara",
+        "tablo"
+      ],
+      "title": "Formlarınızı bulun ve düzenleyin",
+      "summary": "Arayın, filtreleyin, sıralayın ve tablo ile kartlar arasında geçiş yapın.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Formlar sayfası görmenize izin verilen tüm formları listeler. Üstteki iki kart son yanıtları ve formlarınızın taslak, yayında ve kapalı arasındaki dağılımını gösterir; yalnızca o formları göstermek için göstergedeki bir duruma tıklayın."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Ada, etikete veya sahibine göre **Ara**.",
+            "Duruma, klasöre, sahibe veya etikete göre **Filtrele**; filtreler, temizleyebileceğiniz çipler olarak görünür.",
+            "**Sütunlar**, tablonun sütunlarını göstermenizi, gizlemenizi ve yeniden sıralamanızı sağlar.",
+            "**Tablo / Izgara**, satırlar ile kartlar arasında geçiş yapar; Formalie seçiminizi hatırlar.",
+            "Çoğaltma, taşıma ya da arşivleme gibi işlemler için bir forma sağ tıklayın veya **⋯** menüsünü kullanın."
+          ]
+        },
+        {
+          "type": "show",
+          "label": "Form listesini aç",
+          "to": "/forms",
+          "target": "view-switch"
+        }
+      ]
+    },
+    {
+      "id": "form-lifecycle",
+      "category": "forms",
+      "minutes": 3,
+      "route": "/forms",
+      "related": [
+        "publish-and-versions",
+        "trash"
+      ],
+      "keywords": [
+        "taslak",
+        "yayınla",
+        "kapat",
+        "arşiv",
+        "durum",
+        "yeniden aç"
+      ],
+      "title": "Taslak, yayında, kapalı ve arşivlendi",
+      "summary": "Her durumun ne anlama geldiği ve bir formun bunlar arasında nasıl geçtiği.",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "**Taslak**: hazırlanıyor; henüz kimse dolduramaz.",
+            "**Yayında**: bağlantısında yanıtlara açık.",
+            "**Kapalı**: bağlantı hâlâ çalışır ama formun kapalı olduğunu gösterir; yeni yanıt alınmaz.",
+            "**Arşivlendi**: kaldırıldı; ana listeden gizlenir, yanıtlar saklanır."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Yayındaki bir formun **yayınlanmamış değişiklikleri** olabilir: düzenlemeleriniz yeniden yayınlayana kadar taslakta kalır, böylece yanıtlayanlar yarım kalmış bir değişikliği asla görmez."
+        },
+        {
+          "type": "tip",
+          "text": "Bir formun kendiliğinden açılıp kapanması için **Paylaş → Erişilebilirlik** bölümünde açılış ve kapanış tarihlerini belirleyin."
+        }
+      ]
+    },
+    {
+      "id": "folders",
+      "category": "forms",
+      "minutes": 2,
+      "route": "/forms",
+      "related": [
+        "forms-list",
+        "roles-and-access"
+      ],
+      "keywords": [
+        "klasör",
+        "düzenlemek",
+        "grup",
+        "erişim",
+        "gizli"
+      ],
+      "title": "Klasörler ve onları kimlerin görebileceği",
+      "summary": "Formları klasörlerde gruplayın ve bazı klasörleri yalnızca belirli kişilere açın.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Klasörler formları gruplar, örneğin ekibe ya da projeye göre. Menüde Klasörler’in yanındaki **+** ile bir klasör oluşturun, sonra formları **⋯** menülerinden ona taşıyın."
+        },
+        {
+          "type": "p",
+          "text": "Yöneticiler, **Klasör erişimi** ile bir klasörü bazı rollere, departmanlara veya kişilere sınırlayabilir. Diğer herkes klasörü, formlarını ve yanıtlarını hiçbir yerde, arama ve dışa aktarımlarda bile görmez."
+        }
+      ]
+    },
+    {
+      "id": "trash",
+      "category": "forms",
+      "minutes": 1,
+      "route": "/forms/trash",
+      "related": [
+        "form-lifecycle"
+      ],
+      "keywords": [
+        "sil",
+        "çöp kutusu",
+        "geri yükle",
+        "kurtar"
+      ],
+      "title": "Formları silin ve geri yükleyin",
+      "summary": "Silinen formlar çöp kutusunda 30 gün kalır.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Bir formu sildiğinizde yanıtlarıyla birlikte 30 günlüğüne **Çöp kutusuna** gider. Bu 30 gün içinde istediğiniz zaman oradan geri yükleyebilirsiniz."
+        },
+        {
+          "type": "warning",
+          "text": "Çöp kutusundaki **Kalıcı olarak sil**, formu ve tüm yanıtlarını tamamen kaldırır. Geri alınamaz."
+        },
+        {
+          "type": "show",
+          "label": "Çöp kutusunu aç",
+          "to": "/forms/trash"
+        }
+      ]
+    },
+    {
+      "id": "builder-basics",
+      "category": "builder",
+      "popular": true,
+      "minutes": 3,
+      "route": "/forms/:id/build",
+      "related": [
+        "field-types",
+        "builder-logic",
+        "publish-and-versions"
+      ],
+      "keywords": [
+        "oluşturucu",
+        "alan ekle",
+        "soru",
+        "sürükle",
+        "sayfa",
+        "düzen"
+      ],
+      "title": "Form oluşturun",
+      "summary": "Soru ekleyin, bunları satırlara ve sayfalara yerleştirin, ayarlarını değiştirin.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Oluşturucunun üç bölümü vardır: solda **alan listesi**, ortada **form** ve sağda seçtiğiniz öğenin **ayarları**."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Bir alanı listeden forma sürükleyin ya da seçili alanın arkasına eklemek için ona tıklayın.",
+            "Sorusunu, yardım metnini, zorunlu olup olmadığını ve daha fazlasını değiştirmek için bir alana tıklayın.",
+            "Alanları yan yana koymak için birbirinin yanına bırakın; boyutlandırmak için **Genişlik** seçeneğini kullanın.",
+            "Uzun bir formu bölmek için **Sayfa ekle** ile sayfa ekleyin.",
+            "Değişiklikleriniz siz çalışırken kaydedilir; **Geri al** ve **Yinele** üsttedir."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Fare yok mu? Bir alanı seçin; taşımak için **Alt + ↑ / ↓**, çoğaltmak için **Ctrl + D**, kaldırmak için **Delete** kullanın."
+        },
+        {
+          "type": "tip",
+          "text": "Oluşturucudaki **Asistan** düğmesi eksik soruları önerir, yardım metinleri yazar ve formunuzu kontrol eder."
+        }
+      ]
+    },
+    {
+      "id": "field-types",
+      "category": "builder",
+      "minutes": 3,
+      "route": "/forms/:id/build",
+      "related": [
+        "builder-basics",
+        "lists-basics"
+      ],
+      "keywords": [
+        "alan",
+        "tür",
+        "soru",
+        "yükleme",
+        "imza",
+        "puan",
+        "adres"
+      ],
+      "title": "Hangi alanı kullanmalı",
+      "summary": "Formalie’nin sunduğu soru türleri ve her birinin ne zaman kullanılacağı.",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "**Metin**: kısa ve uzun yanıtlar, e-posta, telefon, sayı, tutar, ad soyad.",
+            "**Tarihler**: tarih, saat, tarih ve saat, tarih aralığı, süre.",
+            "**Seçimler**: açılır liste, radyo düğmeleri, onay kutuları, evet / hayır, sıralama, matris, onay.",
+            "**Puanlar**: yıldızlar, 0 ile 10 arası ölçek, kaydırıcı.",
+            "**Dosyalar**: dosya yükleme, fotoğraf yükleme, imza.",
+            "**Konum**: adres, ülke, dil, saat dilimi.",
+            "**Gelişmiş**: gizli değerler ve hesaplamalar.",
+            "**Düzen**: bölüm başlıkları, metin, görseller ve ayırıcılar."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "En uygun alanı seçin: e-posta alanı yazarken adresi kontrol eder, tarih alanı takvim gösterir, telefon alanı numarayı kontrol eder."
+        },
+        {
+          "type": "tip",
+          "text": "Uzun seçenek listeleri (ülkeler, departmanlar) en iyi bir **Seçenek Listesi** olarak tutulur: bir kez saklanır ve birçok formda kullanılır."
+        }
+      ]
+    },
+    {
+      "id": "builder-logic",
+      "category": "builder",
+      "minutes": 3,
+      "route": "/forms/:id/logic",
+      "related": [
+        "calculations",
+        "builder-basics"
+      ],
+      "keywords": [
+        "mantık",
+        "kural",
+        "göster",
+        "gizle",
+        "koşul",
+        "atla",
+        "git"
+      ],
+      "title": "Mantıkla doğru soruları gösterin",
+      "summary": "Soruları önceki yanıtlara göre gösterin, gizleyin, zorunlu yapın veya atlayın.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Mantık kuralları, insanlar formu doldururken formu değiştirir: bir takip sorusunu yalnızca “evet” yanıtından sonra gösterin, acil talepler için telefon numarası isteyin veya doğrudan sona atlayın."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Formun **Mantık** sekmesini açın.",
+            "**Kural ekle** düğmesine tıklayın ve **Eğer** bölümünü belirleyin: bir soru, bir koşul ve bir değer.",
+            "**O zaman** bölümünü belirleyin: göster, gizle, zorunlu yap, bir değer ata veya bir sayfaya git.",
+            "Gerekirse **ve** / **veya** ile daha fazla koşul ekleyin."
+          ]
+        },
+        {
+          "type": "note",
+          "text": "Bir kuralın gizlediği soru asla zorunlu değildir, böylece insanlar formu her zaman gönderebilir."
+        }
+      ]
+    },
+    {
+      "id": "calculations",
+      "category": "builder",
+      "minutes": 2,
+      "route": "/forms/:id/build",
+      "related": [
+        "builder-logic",
+        "field-types"
+      ],
+      "keywords": [
+        "hesaplama",
+        "formül",
+        "toplam",
+        "puan",
+        "toplamak"
+      ],
+      "title": "Hesaplamalarla toplamlar ve puanlar",
+      "summary": "Yanıtlardan toplamları, ortalamaları ve puanları hesaplayın.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Bir **Hesaplama** alanı, diğer yanıtlardan bir değer hesaplar, örneğin miktar × fiyat, ortalama puan ya da risk puanı. İnsanlar sonucu formu doldururken görür."
+        },
+        {
+          "type": "p",
+          "text": "Formülü, soruların anahtarlarını süslü parantez içinde yazarak oluşturun, örneğin **{quantity} * {unit_price}**. Seçeneklere puan verilebilir, böylece toplanabilirler."
+        }
+      ]
+    },
+    {
+      "id": "publish-and-versions",
+      "category": "builder",
+      "minutes": 2,
+      "route": "/forms/:id/versions",
+      "related": [
+        "form-lifecycle",
+        "share-a-form"
+      ],
+      "keywords": [
+        "yayınla",
+        "sürüm",
+        "geri yükle",
+        "karşılaştır",
+        "geçmiş"
+      ],
+      "title": "Yayınlama ve sürümler",
+      "summary": "Her yayın, karşılaştırıp geri yükleyebileceğiniz bir sürüm olarak saklanır.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Yayınla**, taslağınızı canlı form yapar. Her yayın, nelerin değiştiğine dair isteğe bağlı bir notla numaralı bir sürüm olarak kaydedilir."
+        },
+        {
+          "type": "p",
+          "text": "**Sürümler** bölümünde herhangi bir sürümü taslakla karşılaştırabilir ve eski bir sürümü taslağa geri yükleyebilirsiniz."
+        },
+        {
+          "type": "tip",
+          "text": "Yayınlanacak yeni bir şey olmadığında Yayınla düğmesi soluk görünür."
+        }
+      ]
+    },
+    {
+      "id": "design-a-form",
+      "category": "design",
+      "popular": true,
+      "minutes": 3,
+      "route": "/forms/:id/design",
+      "related": [
+        "themes",
+        "landing-pages"
+      ],
+      "keywords": [
+        "tasarım",
+        "renk",
+        "yazı tipi",
+        "logo",
+        "tema",
+        "görünüm"
+      ],
+      "title": "Bir formun görünümünü tasarlayın",
+      "summary": "Renkler, yazı tipleri, düzen, üst bölüm ve teşekkür sayfası.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Görünümünü değiştirmek için formun **Tasarım** sekmesini açın. Önizleme, formu insanların bilgisayarda, tablette ya da telefonda göreceği şekilde gösterir."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Hazır bir **başlangıç noktasıyla** başlayın, sonra ayarlayın.",
+            "Renkleri, yazı tiplerini, alanların ve düğmelerin boyutunu değiştirin.",
+            "Logonuzu, bir kapak görselini veya üste renkli bir şerit ekleyin.",
+            "Gönderdikten sonra insanların gördüğü **teşekkür sayfasını** tasarlayın."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Bir tasarımı **tema** olarak kaydedin ve diğer formlarda tek tıkla kullanın."
+        }
+      ]
+    },
+    {
+      "id": "themes",
+      "category": "design",
+      "minutes": 2,
+      "route": "/settings/themes",
+      "related": [
+        "design-a-form",
+        "form-defaults"
+      ],
+      "keywords": [
+        "tema",
+        "marka",
+        "kayıtlı tasarım",
+        "varsayılan"
+      ],
+      "title": "Temalar",
+      "summary": "Tasarımları bir kez saklayın, her formda kullanın.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Temalar kayıtlı tasarımlardır. Formalie bir set ile gelir; çalışma alanınız tasarımcıdan kendi temalarını ekleyebilir ya da YZ asistanından marka renginize göre tasarım önermesini isteyebilir."
+        },
+        {
+          "type": "p",
+          "text": "Yeni formların hangi temayla başlayacağını **Ayarlar → Form varsayılanları** bölümünden seçin."
+        },
+        {
+          "type": "show",
+          "label": "Temaları aç",
+          "to": "/settings/themes"
+        }
+      ]
+    },
+    {
+      "id": "landing-pages",
+      "category": "design",
+      "minutes": 1,
+      "route": "/settings/landing-pages",
+      "related": [
+        "design-a-form"
+      ],
+      "keywords": [
+        "açılış sayfası",
+        "formun çevresindeki sayfa",
+        "afiş",
+        "çerçeve"
+      ],
+      "title": "Açılış sayfaları",
+      "summary": "Formun çevresindeki sayfa: afiş, giriş ve bilgiler.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Açılış sayfası, formunuzun bulunduğu sayfadır: başlıklı bir afiş, bir giriş, ne kadar süreceği ve kuruluşunuz. Tasarımcıdan birini seçin ya da kendinizinkileri **Açılış sayfaları** bölümünde saklayın."
+        }
+      ]
+    },
+    {
+      "id": "use-a-template",
+      "category": "templates",
+      "popular": true,
+      "minutes": 2,
+      "route": "/templates",
+      "related": [
+        "save-as-template",
+        "first-form"
+      ],
+      "keywords": [
+        "şablon",
+        "galeri",
+        "örnek",
+        "hazır"
+      ],
+      "title": "Bir şablonla başlayın",
+      "summary": "Birçok kullanım için hazır formlar, sizin dilinizde.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Şablon galerisinde İK, iş sağlığı ve güvenliği, etkinlikler, satış ve daha fazlası için hazır formlar vardır. Her biri soruları, mantığı, hesaplamaları ve uyumlu bir tasarımla gelir."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Menüden **Şablonlar** bölümünü açın.",
+            "Kategoriye göre gezinin ya da arayın.",
+            "Önizlemede denemek için bir şablonu açın.",
+            "**Şablonu kullan** düğmesine tıklayın: oluşturucuda yeni bir taslak form açılır."
+          ]
+        },
+        {
+          "type": "show",
+          "label": "Şablonlara göz at",
+          "to": "/templates"
+        }
+      ]
+    },
+    {
+      "id": "save-as-template",
+      "category": "templates",
+      "minutes": 1,
+      "route": "/templates",
+      "related": [
+        "use-a-template"
+      ],
+      "keywords": [
+        "şablon kaydet",
+        "çalışma alanı şablonu",
+        "yeniden kullanım"
+      ],
+      "title": "Kendi şablonlarınızı oluşturun",
+      "summary": "Bir formu çalışma alanınız için şablon olarak kaydedin.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Her form çalışma alanınız için bir şablon olabilir: **⋯** menüsünü açın ve **Şablon olarak kaydet** seçeneğini seçin. Bir ad, açıklama ve kategori verin. Şablonlarınız **Şablonlarınız** altında görünür."
+        }
+      ]
+    },
+    {
+      "id": "share-a-form",
+      "category": "sharing",
+      "popular": true,
+      "minutes": 3,
+      "route": "/forms/:id/share",
+      "related": [
+        "who-can-fill-in",
+        "embed-a-form",
+        "form-languages"
+      ],
+      "keywords": [
+        "paylaş",
+        "bağlantı",
+        "qr",
+        "e-posta",
+        "gönder"
+      ],
+      "title": "Bir formu paylaşın",
+      "summary": "Bağlantı, QR kodu, e-posta davetleri ve kısa bağlantılar.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Yayındaki bir formun **Paylaş** sekmesini açın. Buradan bağlantısını kopyalayabilir, QR kodunu indirebilir, kısa bağlantı oluşturabilir veya e-posta daveti gönderebilirsiniz."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Bağlantı**: kopyalayın ve istediğiniz yere yapıştırın.",
+            "**Özel bağlantı**: okunaklı bir adres seçin.",
+            "**QR kodu**: afişler ve basılı materyaller için.",
+            "**Davetler**: insanlara e-postayla kişisel bir bağlantı gönderin ve kimlerin yanıtladığını görün."
+          ]
+        },
+        {
+          "type": "show",
+          "label": "Formlarınızı açın",
+          "to": "/forms"
+        }
+      ]
+    },
+    {
+      "id": "who-can-fill-in",
+      "category": "sharing",
+      "minutes": 2,
+      "route": "/forms/:id/share",
+      "related": [
+        "share-a-form"
+      ],
+      "keywords": [
+        "erişim",
+        "parola",
+        "yalnızca davetle",
+        "kuruluş",
+        "sınırla",
+        "erişilebilirlik"
+      ],
+      "title": "Bir formu kimler ve ne zaman doldurabilir",
+      "summary": "Herkese açık, parolayla, yalnızca davetle ya da kuruluşunuza özel.",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "**Bağlantıya sahip herkes**.",
+            "Sizin verdiğiniz **parolayla**.",
+            "**Yalnızca davetle**: yalnızca e-postayla davet ettiğiniz kişiler.",
+            "**Kuruluşunuz**: çalışma alanınızda oturum açmış kişiler."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "**Erişilebilirlik** bölümünde formu belirli tarihlerde açıp kapatabilir ve belirli sayıda yanıttan sonra durdurabilirsiniz."
+        }
+      ]
+    },
+    {
+      "id": "embed-a-form",
+      "category": "sharing",
+      "minutes": 1,
+      "route": "/forms/:id/share",
+      "related": [
+        "share-a-form"
+      ],
+      "keywords": [
+        "gömme",
+        "web sitesi",
+        "iframe",
+        "widget"
+      ],
+      "title": "Formu web sitenize koyun",
+      "summary": "Formu kendi sayfalarınıza gömün.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Paylaş → Gömme** bölümünde kodu kopyalayıp web sitenize yapıştırın. Formu hangi sitelerin gösterebileceğini sınırlayabilirsiniz."
+        }
+      ]
+    },
+    {
+      "id": "form-languages",
+      "category": "sharing",
+      "minutes": 2,
+      "route": "/forms/:id/build",
+      "related": [
+        "ai-translate",
+        "share-a-form"
+      ],
+      "keywords": [
+        "dil",
+        "çeviri",
+        "çevir",
+        "çok dilli",
+        "fransızca",
+        "arapça"
+      ],
+      "title": "Birden çok dilde formlar",
+      "summary": "Formu daha fazla dilde sunun; kişiler dili üstten değiştirir.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Bir formun ana dili vardır ve daha fazlasını sunabilir. Oluşturucuda form ayarlarını açın, **Diğer diller** altına bir dil ekleyin ve her metni yan yana çevirin."
+        },
+        {
+          "type": "tip",
+          "text": "**Kalanı yapay zekayla çevir** henüz yapılmamış olanları doldurur; yayınlamadan önce her metni siz kontrol edersiniz."
+        }
+      ]
+    },
+    {
+      "id": "responses-basics",
+      "category": "responses",
+      "popular": true,
+      "minutes": 3,
+      "route": "/responses",
+      "related": [
+        "review-responses",
+        "export-responses"
+      ],
+      "keywords": [
+        "yanıtlar",
+        "cevaplar",
+        "gönderimler",
+        "yanıtları gör"
+      ],
+      "title": "Yanıtlarınızı görün",
+      "summary": "Her yanıt, form başına ya da tüm formlarda.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Yanıtlar**, formlarınızı yanıtlarıyla listeler. Yanıtlarını tablo ya da kart olarak görmek için bir formu açın; tüm cevapları bir panelde görmek için bir yanıtı açın."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Sonraki veya önceki yanıta geçmek için **J** ve **K** tuşlarını kullanın.",
+            "Duruma, tarihe, kanala veya yanıta göre filtreleyin.",
+            "**İçgörüler**, her soru için bir özet gösterir: seçimler, ortalamalar ve en son metin yanıtları."
+          ]
+        },
+        {
+          "type": "show",
+          "label": "Yanıtları aç",
+          "to": "/responses"
+        }
+      ]
+    },
+    {
+      "id": "review-responses",
+      "category": "responses",
+      "minutes": 2,
+      "route": "/responses",
+      "related": [
+        "responses-basics"
+      ],
+      "keywords": [
+        "inceleme",
+        "durum",
+        "onayla",
+        "reddet",
+        "etiket",
+        "not"
+      ],
+      "title": "Yanıtları inceleyin",
+      "summary": "Gelenleri değerlendirmek için durumlar, etiketler ve notlar.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Her yanıtın bir durumu vardır: **Yeni**, **İncelendi**, **Onaylandı** veya **Reddedildi**. Yanıt panelinin üstünden tek tıkla değiştirin."
+        },
+        {
+          "type": "p",
+          "text": "Takip için etiket ve not ekleyin. Yanıtları düzeltmek ayrı bir izindir, bu yüzden rolünüz insanların yazdıklarını değiştirmeden incelemenize izin verebilir."
+        }
+      ]
+    },
+    {
+      "id": "export-responses",
+      "category": "responses",
+      "minutes": 2,
+      "route": "/responses/exports",
+      "related": [
+        "responses-basics",
+        "data-sources-basics"
+      ],
+      "keywords": [
+        "dışa aktar",
+        "excel",
+        "csv",
+        "indir",
+        "pdf"
+      ],
+      "title": "Yanıtları dışa aktarın",
+      "summary": "Yanıtları elektronik tablo ya da dosya olarak indirin.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Bir formun yanıtlarında **Dışa aktar** düğmesine tıklayın, biçimi ve nelerin dahil edileceğini seçin. Büyük dışa aktarımlar arka planda hazırlanır; ilerlemeyi **Dışa aktarımlar** bölümünde görürsünüz ve dosya hazır olduğunda bir mesaj alırsınız."
+        }
+      ]
+    },
+    {
+      "id": "analytics",
+      "category": "analytics",
+      "popular": true,
+      "minutes": 2,
+      "route": "/analytics",
+      "related": [
+        "responses-basics",
+        "ai-analysis"
+      ],
+      "keywords": [
+        "analiz",
+        "görüntülenme",
+        "tamamlanma",
+        "bırakma",
+        "huni"
+      ],
+      "title": "Formlarınız nasıl performans gösteriyor",
+      "summary": "Görüntülenmeler, başlangıçlar, tamamlanmalar ve insanların nerede bıraktığı.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Analizler**, her formu kaç kişinin açtığını, başlattığını ve tamamladığını, ne kadar sürdüğünü ve insanların nerede bıraktığını gösterir. Her sayfayı ve soruyu görmek için bir formu açın."
+        },
+        {
+          "type": "tip",
+          "text": "Birçok kişinin bıraktığı bir soru çoğu zaman belirsizdir ya da çok şey ister. Daha kısa bir soru deneyin ya da isteğe bağlı yapın."
+        }
+      ]
+    },
+    {
+      "id": "lists-basics",
+      "category": "lists",
+      "minutes": 3,
+      "route": "/option-sets",
+      "related": [
+        "field-types"
+      ],
+      "keywords": [
+        "liste",
+        "seçenek",
+        "seçimler",
+        "açılır liste",
+        "düzeyler",
+        "ülke",
+        "dinamik"
+      ],
+      "title": "Seçenek Listesi: seçimleri bir kez saklayın",
+      "summary": "Birçok formda kullandığınız seçim listeleri, düzeyleriyle.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Bir **Seçenek Listesi**, birçok formda kullandığınız seçimleri tutar, örneğin departmanlar, ürünler veya ülkeler. Listeyi bir kez değiştirin, onu kullanan her form buna uyar."
+        },
+        {
+          "type": "p",
+          "text": "Listelerin **düzeyleri** olabilir: bir ülke seçin, sonra yalnızca bölgeleri, ardından şehirleri görünür. Çok büyük listeler sunucuda kalır ve siz yazdıkça yüklenir."
+        },
+        {
+          "type": "note",
+          "text": "**Formalie** olarak işaretli listeler her çalışma alanı için sağlanır; kullanabilirsiniz ama değiştiremezsiniz."
+        }
+      ]
+    },
+    {
+      "id": "data-sources-basics",
+      "category": "data",
+      "minutes": 3,
+      "route": "/data-sources",
+      "related": [
+        "database-explorer",
+        "export-responses"
+      ],
+      "keywords": [
+        "veritabanı",
+        "bağlantı",
+        "veri kaynağı",
+        "depolama",
+        "postgres",
+        "mysql"
+      ],
+      "title": "Yanıtları kendi veritabanınızda saklayın",
+      "summary": "Bir veritabanı bağlayın ve bir formun yanıtlarını oraya gönderin.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Veri kaynakları**, Formalie’yi kendi veritabanlarınıza bağlar. Yanıtlar böylece orada da saklanabilir; tabloları Formalie oluşturur ve formla uyumlu tutar."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "Raydan **Veri kaynakları** bölümünü açın ve **Bağlantı ekle** düğmesine tıklayın.",
+            "Veritabanı türünü seçin ve ayrıntılarını girin; **Şimdi test et** çalıştığını denetler.",
+            "Formun **Yanıt depolaması** bölümünde bağlantıyı seçin: yeni yanıtlar orada saklanır."
+          ]
+        },
+        {
+          "type": "warning",
+          "text": "Formalie’ye yalnızca ihtiyaç duyduğu haklara sahip bir veritabanı kullanıcısı verin."
+        }
+      ]
+    },
+    {
+      "id": "database-explorer",
+      "category": "data",
+      "minutes": 2,
+      "route": "/data-sources/explorer",
+      "related": [
+        "data-sources-basics"
+      ],
+      "keywords": [
+        "gezgin",
+        "sorgu",
+        "sql",
+        "tablo",
+        "satırlar"
+      ],
+      "title": "Verilerinizi gezin ve sorgulayın",
+      "summary": "Formalie’den ayrılmadan tabloları inceleyin ve sorgu çalıştırın.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Veritabanı gezgini** bir bağlantının tablolarını ve satırlarını gösterir. **Sorgu düzenleyici** SQL çalıştırır; veriyi değiştiren ifadeler ayrı bir izin gerektirir ve önce onay ister."
+        }
+      ]
+    },
+    {
+      "id": "api-basics",
+      "category": "api",
+      "minutes": 3,
+      "route": "/api-service",
+      "related": [
+        "api-tokens",
+        "webhooks"
+      ],
+      "keywords": [
+        "api",
+        "uç nokta",
+        "entegrasyon",
+        "hizmet",
+        "rest"
+      ],
+      "title": "API hizmeti",
+      "summary": "Diğer sistemlerin veri okuması ve göndermesi için kendi uç noktalarınız.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**API hizmeti** diğer sistemlere kendi uç noktalarını verir: yanıtları okumak, yenilerini göndermek ya da liste seçeneklerini aramak için. Her hizmet uç noktaları gruplar ve kendi belge sayfasına sahiptir."
+        },
+        {
+          "type": "steps",
+          "items": [
+            "**API hizmeti** bölümünü açın ve bir hizmet oluşturun.",
+            "Sunmak istediğiniz formlar veya veriler için uç noktalar ekleyin.",
+            "Onu çağıracak sistem için bir **token** oluşturun.",
+            "Uç noktayı belge sayfasından deneyin."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "api-tokens",
+      "category": "api",
+      "minutes": 2,
+      "route": "/api-service/auth",
+      "related": [
+        "api-basics"
+      ],
+      "keywords": [
+        "token",
+        "anahtar",
+        "başlık",
+        "gizli",
+        "erişim kuralları"
+      ],
+      "title": "Tokenlar ve erişim kuralları",
+      "summary": "Uç noktalarınızı kimin, nereden ve ne sıklıkta çağırabileceği.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "API’nizi çağıran her sistem bir **token** alır. Tokenların süresi dolabilir ve istediğiniz zaman iptal edilebilir. **Erişim kuralları** adresleri, saatleri ve izin verilen çağrı sayısını sınırlar."
+        },
+        {
+          "type": "warning",
+          "text": "Bir token yalnızca bir kez gösterilir. Güvenli bir yerde saklayın ve asla herkese açık bir web sayfasına koymayın."
+        }
+      ]
+    },
+    {
+      "id": "webhooks",
+      "category": "api",
+      "minutes": 2,
+      "route": "/api-service",
+      "related": [
+        "api-basics"
+      ],
+      "keywords": [
+        "webhook",
+        "bildirmek",
+        "olay",
+        "geri çağırma"
+      ],
+      "title": "Webhook’lar",
+      "summary": "Bir şey olduğu anda başka bir sisteme haber verin.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Bir webhook, bir şey olduğunda, örneğin yeni bir yanıt geldiğinde, başka bir sistemin adresine mesaj gönderir. Formalie başarısız teslimatları yeniden dener ve her teslimatı gösterir, böylece nelerin gönderildiğini görebilirsiniz."
+        }
+      ]
+    },
+    {
+      "id": "roles-and-access",
+      "category": "people",
+      "popular": true,
+      "minutes": 3,
+      "route": "/people/roles",
+      "related": [
+        "invite-your-team",
+        "folders"
+      ],
+      "keywords": [
+        "rol",
+        "izin",
+        "erişim",
+        "yönetici",
+        "üye",
+        "kendi",
+        "paylaşılan"
+      ],
+      "title": "Roller ve erişim",
+      "summary": "Her rolün tam olarak neleri görebileceğine ve yapabileceğine karar verin.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Her kişinin bir rolü vardır. Sahip her şeyi yapabilir; Yönetici ve Üye kullanıma hazırdır ve değiştirilebilir; kendi rollerinizi ekleyebilirsiniz."
+        },
+        {
+          "type": "p",
+          "text": "Her eylemin bir kapsamı vardır: **Yok**, **Kendi** (kişinin oluşturduğu), **Paylaşılan** (kendisiyle paylaşılan formlar), **Kendi ve paylaşılan** veya **Tümü**. Örneğin bir rol tüm yanıtları görebilir ama yalnızca kendi formlarını değiştirebilir."
+        },
+        {
+          "type": "show",
+          "label": "Roller ve erişim’i aç",
+          "to": "/people/roles"
+        }
+      ]
+    },
+    {
+      "id": "sign-up-links",
+      "category": "people",
+      "minutes": 2,
+      "route": "/people",
+      "related": [
+        "invite-your-team"
+      ],
+      "keywords": [
+        "kayıt",
+        "bağlantı",
+        "onay",
+        "katılmak"
+      ],
+      "title": "Kayıt bağlantıları ve onaylar",
+      "summary": "İnsanların hesap istemesine izin verin; siz onaylayın.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Kayıt bağlantısı, insanların kendi hesaplarını oluşturmasını sağlar. Bunu kuruluşunuzun e-posta adresleriyle sınırlayabilirsiniz. Hesaplar, bir yönetici onaylayıp rol verene kadar **Onay bekliyor** durumunda bekler."
+        }
+      ]
+    },
+    {
+      "id": "your-profile",
+      "category": "people",
+      "minutes": 2,
+      "route": "/profile",
+      "related": [
+        "two-step-sign-in"
+      ],
+      "keywords": [
+        "profil",
+        "parola",
+        "fotoğraf",
+        "dil",
+        "saat dilimi"
+      ],
+      "title": "Profiliniz",
+      "summary": "Fotoğraf, ad, dil, saat dilimi, parola ve oturum açma.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Profilinizi menünün altındaki adınızdan açın. Fotoğrafınızı, adınızı, dilinizi, saat dilimini ve tarih biçimini, parolanızı ve iki adımlı girişinizi değiştirin ve nerelerde oturum açtığınızı görün."
+        }
+      ]
+    },
+    {
+      "id": "two-step-sign-in",
+      "category": "settings",
+      "minutes": 2,
+      "route": "/profile",
+      "related": [
+        "your-profile",
+        "security-settings"
+      ],
+      "keywords": [
+        "iki adımlı",
+        "2fa",
+        "kimlik doğrulayıcı",
+        "kod",
+        "kurtarma"
+      ],
+      "title": "İki adımlı giriş",
+      "summary": "Oturum açarken bir uygulamadan, e-postadan veya kısa mesajdan gelen kod.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "İki adımlı giriş, parolanızdan sonra bir kod ister. En güvenli seçenek için profilinizde bir kimlik doğrulayıcı uygulaması kurun ve kurtarma kodlarını güvenli bir yerde saklayın."
+        }
+      ]
+    },
+    {
+      "id": "workspace-settings",
+      "category": "settings",
+      "minutes": 2,
+      "route": "/settings",
+      "related": [
+        "security-settings",
+        "form-defaults"
+      ],
+      "keywords": [
+        "ayarlar",
+        "şirket",
+        "marka",
+        "dil",
+        "görünüm"
+      ],
+      "title": "Çalışma alanı ayarları",
+      "summary": "Kuruluşunuz, markanız, dil, görünüm ve daha fazlası.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Ayarlar**, tüm çalışma alanı için geçerli olanları barındırır: şirket bilgileri, marka, dil ve bölge, görünüm, giriş, güvenlik, bildirimler, e-posta şablonları, gizlilik ve form varsayılanları."
+        },
+        {
+          "type": "show",
+          "label": "Ayarları aç",
+          "to": "/settings"
+        }
+      ]
+    },
+    {
+      "id": "security-settings",
+      "category": "settings",
+      "minutes": 2,
+      "route": "/settings/security",
+      "related": [
+        "two-step-sign-in",
+        "audit-trail"
+      ],
+      "keywords": [
+        "güvenlik",
+        "parola kuralları",
+        "ip",
+        "oturum",
+        "izin listesi"
+      ],
+      "title": "Güvenlik ayarları",
+      "summary": "Parola kuralları, iki adımlı giriş, oturumlar ve izin verilen ağlar.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Ayarlar → Güvenlik** bölümünde yöneticiler parola kurallarını belirler, iki adımlı girişi zorunlu kılar, insanların ne kadar süre oturum açık kalacağını seçer ve gerekirse girişe yalnızca ağlarınızdan izin verir."
+        },
+        {
+          "type": "warning",
+          "text": "Ağları sınırlamadan önce kendi adresinizi ekleyin, yoksa kendinizi dışarıda bırakabilirsiniz."
+        }
+      ]
+    },
+    {
+      "id": "form-defaults",
+      "category": "settings",
+      "minutes": 1,
+      "route": "/settings/form-defaults",
+      "related": [
+        "themes"
+      ],
+      "keywords": [
+        "varsayılanlar",
+        "yeni form",
+        "tema",
+        "teşekkürler"
+      ],
+      "title": "Form varsayılanları",
+      "summary": "Her yeni formun neyle başladığı.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Form varsayılanları**, her yeni formun başladığı temayı, ilerleme çubuğunu, etiketleri, teşekkür mesajını ve e-postaları belirler. Mevcut formlarınız değişmez."
+        }
+      ]
+    },
+    {
+      "id": "audit-trail",
+      "category": "audit",
+      "minutes": 2,
+      "route": "/audit",
+      "related": [
+        "security-settings"
+      ],
+      "keywords": [
+        "denetim",
+        "kayıt",
+        "geçmiş",
+        "kim yaptı",
+        "etkinlik"
+      ],
+      "title": "Denetim kaydı",
+      "summary": "Kim, neyi, ne zaman ve nereden yaptı.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Denetim kaydı**, çalışma alanınızdaki her eylemi kaydeder: oturum açmalar, formlarda, yanıtlarda, ayarlarda ve kişilerde yapılan değişiklikler ve daha fazlası; kimin, ne zaman ve nereden yaptığıyla birlikte."
+        },
+        {
+          "type": "p",
+          "text": "Alana, kişiye veya tarihe göre filtreleyin ve nelerin değiştiğini görmek için bir kaydı açın. Rolünüz izin veriyorsa kaydı dışa aktarabilirsiniz."
+        },
+        {
+          "type": "show",
+          "label": "Denetim kaydını aç",
+          "to": "/audit"
+        }
+      ]
+    },
+    {
+      "id": "ai-overview",
+      "category": "ai",
+      "popular": true,
+      "minutes": 2,
+      "route": "/ai",
+      "related": [
+        "ai-create-form",
+        "ai-analysis",
+        "ai-settings"
+      ],
+      "keywords": [
+        "yz",
+        "asistan",
+        "yapay zeka",
+        "bana yardım et"
+      ],
+      "title": "YZ asistanı",
+      "summary": "Neler yapabildiği ve kontrolü nasıl elinizde tuttuğunuz.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "YZ asistanı form ve şablon oluşturur, oluşturucuda yardım eder, yanıtları analiz eder ve çeviri yapar. Her zaman yalnızca **önerir**: siz seçmeden hiçbir şey oluşturulmaz, değiştirilmez ya da gönderilmez."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Her istek, dönen sonuçla birlikte **Geçmiş** bölümünde saklanır.",
+            "Her istek, aylık hakkınızdan kredi harcar.",
+            "Yöneticiler neleri okuyabileceğini seçer ve onu kapatabilir."
+          ]
+        },
+        {
+          "type": "show",
+          "label": "YZ asistanını aç",
+          "to": "/ai"
+        }
+      ]
+    },
+    {
+      "id": "ai-create-form",
+      "category": "ai",
+      "minutes": 2,
+      "route": "/ai/create-form",
+      "related": [
+        "ai-overview",
+        "first-form"
+      ],
+      "keywords": [
+        "yz formu",
+        "tarif et",
+        "oluştur",
+        "taslak"
+      ],
+      "title": "Asistanla form oluşturun",
+      "summary": "Tarif edin, taslağı kontrol edin, oluşturun.",
+      "blocks": [
+        {
+          "type": "steps",
+          "items": [
+            "**YZ asistanı → Form oluştur** bölümünü açın.",
+            "Formu tarif edin, örneğin “ad, şirket ve geliş saatiyle bir ziyaretçi girişi”, ya da kâğıt bir formu yapıştırın.",
+            "**Oluştur** düğmesine tıklayın ve önizlemeyi kontrol edin.",
+            "**Form oluştur** onu oluşturucuda açar; **Tekrar dene** başka bir yorum verir."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Sormak istediklerinizi virgülle ayırarak yazın: asistan sizin sözcüklerinizi korur."
+        }
+      ]
+    },
+    {
+      "id": "ai-analysis",
+      "category": "ai",
+      "minutes": 2,
+      "route": "/ai/analysis",
+      "related": [
+        "ai-overview",
+        "analytics"
+      ],
+      "keywords": [
+        "analiz",
+        "temalar",
+        "duygu",
+        "soru",
+        "özet"
+      ],
+      "title": "Yanıtları asistanla analiz edin",
+      "summary": "Temalar, ton ve sorular sade sözlerle.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Yanıt analizi** bölümünde bir form ve bir dönem seçin. Asistan yazılı yanıtların neyle ilgili olduğunu, tonunu ve puanların ile seçimlerin nasıl değiştiğini bulur."
+        },
+        {
+          "type": "p",
+          "text": "Sorularınızı sade sözlerle sorun, örneğin “Geçen ay kaç yanıt geldi?”. Yanıt her zaman nelerin sayıldığını gösterir."
+        }
+      ]
+    },
+    {
+      "id": "ai-translate",
+      "category": "ai",
+      "minutes": 2,
+      "route": "/ai/translate",
+      "related": [
+        "form-languages"
+      ],
+      "keywords": [
+        "çeviri",
+        "yeniden yaz",
+        "sade dil",
+        "ton"
+      ],
+      "title": "Asistanla çevirin ve yeniden yazın",
+      "summary": "Yan yana çeviriler ve daha sade ifadeler.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Çeviriler**, bir formu 20 dilden herhangi birine çevirir; kaydetmeden önce her metni yan yana kontrol edersiniz. **Yeniden yaz**, seçtiğiniz tonda daha sade ifadeler önerir ve öncesindeki ile sonrasındaki okuma yaşını gösterir."
+        }
+      ]
+    },
+    {
+      "id": "ai-settings",
+      "category": "ai",
+      "minutes": 1,
+      "route": "/ai/settings",
+      "related": [
+        "ai-overview"
+      ],
+      "keywords": [
+        "yz ayarları",
+        "gizlilik",
+        "kredi",
+        "kapat"
+      ],
+      "title": "YZ ayarları ve gizlilik",
+      "summary": "Açın veya kapatın, neleri okuyabileceği, krediler.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Yöneticiler asistanı açar veya kapatır, neleri okuyabileceğini seçer (formlar, yanıtlar, veri kaynakları), kişisel verileri dışarıda tutar ve isteklerin ne kadar süre saklanacağını belirler. Asistan verilerinizle asla eğitilmez."
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "id": "faq-free-respondents",
+      "category": "start",
+      "question": "İnsanların bir formu doldurmak için hesaba ihtiyacı var mı?",
+      "answer": "Hayır. Formu yalnızca davetlilere, bir parolaya veya kuruluşunuza sınırlamadıysanız bağlantıya sahip herkes doldurabilir.",
+      "article": "who-can-fill-in"
+    },
+    {
+      "id": "faq-mobile",
+      "category": "start",
+      "question": "Formalie telefonlarda çalışır mı?",
+      "answer": "Evet. Formlar ve portal telefonlarda, tabletlerde ve bilgisayarlarda çalışır.",
+      "article": null
+    },
+    {
+      "id": "faq-languages",
+      "category": "start",
+      "question": "Formalie hangi dilleri konuşur?",
+      "answer": "Portal ve formlar, Arapça gibi sağdan sola yazılan diller dahil 20 dilde çalışır. Herkes kendi dilini profilinde seçer.",
+      "article": "form-languages"
+    },
+    {
+      "id": "faq-edit-live",
+      "category": "forms",
+      "question": "Zaten yayınlanmış bir formu değiştirebilir miyim?",
+      "answer": "Evet. Değişiklikleriniz siz yeniden yayınlayana kadar taslakta kalır, böylece formu dolduranlar yarım kalmış bir değişikliği asla görmez.",
+      "article": "form-lifecycle"
+    },
+    {
+      "id": "faq-restore",
+      "category": "forms",
+      "question": "Yanlışlıkla bir formu sildim. Geri alabilir miyim?",
+      "answer": "Evet, 30 gün içinde Çöp kutusundan, yanıtlarıyla birlikte.",
+      "article": "trash"
+    },
+    {
+      "id": "faq-copy-form",
+      "category": "forms",
+      "question": "Bir formu nasıl kopyalarım?",
+      "answer": "⋯ menüsünü açın ve Çoğalt seçeneğini seçin. Kopya, aynı soruları ve tasarımı içeren yeni bir taslaktır.",
+      "article": "forms-list"
+    },
+    {
+      "id": "faq-required",
+      "category": "builder",
+      "question": "Bir soruyu nasıl zorunlu yaparım?",
+      "answer": "Oluşturucuda seçin ve ayarlarında Zorunlu seçeneğini açın.",
+      "article": "builder-basics"
+    },
+    {
+      "id": "faq-pages",
+      "category": "builder",
+      "question": "Bir formu sayfalara nasıl bölerim?",
+      "answer": "Oluşturucuda Sayfa ekle düğmesine tıklayın ve soruları ona taşıyın.",
+      "article": "builder-basics"
+    },
+    {
+      "id": "faq-conditional",
+      "category": "builder",
+      "question": "Bir soru yalnızca belirli bir yanıttan sonra görünebilir mi?",
+      "answer": "Evet, bir mantık kuralıyla: Eğer önceki soru bu yanıtı aldıysa, O zaman takip sorusunu göster.",
+      "article": "builder-logic"
+    },
+    {
+      "id": "faq-logo",
+      "category": "design",
+      "question": "Logomuzu nasıl eklerim?",
+      "answer": "Bir kez Ayarlar → Marka bölümünde ekleyin; formlar bunu üst bölümlerinde gösterir. Tasarım bölümünde form başına da ayarlayabilirsiniz.",
+      "article": "design-a-form"
+    },
+    {
+      "id": "faq-own-templates",
+      "category": "templates",
+      "question": "Kendi şablonlarımızı oluşturabilir miyiz?",
+      "answer": "Evet. Herhangi bir formu ⋯ menüsünden şablon olarak kaydedin.",
+      "article": "save-as-template"
+    },
+    {
+      "id": "faq-close-date",
+      "category": "sharing",
+      "question": "Bir form kendiliğinden kapanabilir mi?",
+      "answer": "Evet. Paylaş → Erişilebilirlik bölümünde bir kapanış tarihi veya en fazla yanıt sayısı belirleyin.",
+      "article": "who-can-fill-in"
+    },
+    {
+      "id": "faq-qr",
+      "category": "sharing",
+      "question": "QR kodunu nasıl alırım?",
+      "answer": "Formun Paylaş sekmesinde QR kodunu görsel olarak indirin.",
+      "article": "share-a-form"
+    },
+    {
+      "id": "faq-notify",
+      "category": "responses",
+      "question": "Her yeni yanıt için e-posta alabilir miyim?",
+      "answer": "Evet. Kime e-posta gideceğini formun ayarlarında seçin, kendi bildirimlerinizi ise Ayarlar → Bildirimler bölümünde belirleyin.",
+      "article": "responses-basics"
+    },
+    {
+      "id": "faq-export-format",
+      "category": "responses",
+      "question": "Hangi biçimlerde dışa aktarabilirim?",
+      "answer": "Elektronik tablolar ve diğer dosya biçimleri; dışa aktarma penceresinde seçin.",
+      "article": "export-responses"
+    },
+    {
+      "id": "faq-edit-answer",
+      "category": "responses",
+      "question": "Birinin verdiği yanıtı düzeltebilir miyim?",
+      "answer": "Evet, rolünüz yanıtları düzeltmeye izin veriyorsa. Değişiklik denetim kaydında tutulur.",
+      "article": "review-responses"
+    },
+    {
+      "id": "faq-drop-off",
+      "category": "analytics",
+      "question": "İnsanlar formumu doldurmayı nerede bırakıyor?",
+      "answer": "Formu Analizler bölümünde açın: her sayfayı ve soruyu, orada kaç kişinin ayrıldığıyla birlikte gösterir.",
+      "article": "analytics"
+    },
+    {
+      "id": "faq-list-change",
+      "category": "lists",
+      "question": "Bir listeyi değiştirirsem formlarım da değişir mi?",
+      "answer": "Evet. Listeyi kullanan her form ona uyar.",
+      "article": "lists-basics"
+    },
+    {
+      "id": "faq-own-db",
+      "category": "data",
+      "question": "Yanıtlar doğrudan kendi veritabanımıza gidebilir mi?",
+      "answer": "Bunu Veri kaynakları bölümünde bağlayın ve formun Yanıt depolaması bölümünde seçin.",
+      "article": "data-sources-basics"
+    },
+    {
+      "id": "faq-api-token",
+      "category": "api",
+      "question": "API tokenımı kaybettim. Şimdi ne yapmalı?",
+      "answer": "Tokenlar yalnızca bir kez gösterilir. Kaybolanı iptal edin ve yeni bir token oluşturun.",
+      "article": "api-tokens"
+    },
+    {
+      "id": "faq-roles-custom",
+      "category": "people",
+      "question": "Kendi rollerimizi oluşturabilir miyiz?",
+      "answer": "Evet. Kişiler → Roller ve erişim bölümünde bir rol ekleyin ve neler yapabileceğini ve kapsamının ne kadar geniş olacağını seçin.",
+      "article": "roles-and-access"
+    },
+    {
+      "id": "faq-remove-person",
+      "category": "people",
+      "question": "Biri ayrıldı. Erişimini nasıl kaldırırım?",
+      "answer": "Kişiler bölümünde onu açın ve Devre dışı bırak seçeneğini seçin. Oturumları hemen kapatılır; formları ve yanıtları kalır.",
+      "article": "invite-your-team"
+    },
+    {
+      "id": "faq-forgot-password",
+      "category": "settings",
+      "question": "Parolamı unuttum.",
+      "answer": "Giriş sayfasında Şifrenizi mi unuttunuz? bağlantısına tıklayın; yeni bir parola belirlemek için e-postayla bir kod alırsınız.",
+      "article": "your-profile"
+    },
+    {
+      "id": "faq-lost-phone",
+      "category": "settings",
+      "question": "Kimlik doğrulayıcı uygulamamın olduğu telefonu kaybettim.",
+      "answer": "Kurtarma kodlarınızdan biriyle oturum açın ya da bir yöneticiden iki adımlı girişinizi sıfırlamasını isteyin.",
+      "article": "two-step-sign-in"
+    },
+    {
+      "id": "faq-audit-who",
+      "category": "audit",
+      "question": "Bir formu kimin değiştirdiğini nasıl görürüm?",
+      "answer": "Denetim kaydını açın ve forma ya da Formlar alanına göre filtreleyin; her kayıt kimin, ne zaman ve neyi değiştirdiğini gösterir.",
+      "article": "audit-trail"
+    },
+    {
+      "id": "faq-ai-data",
+      "category": "ai",
+      "question": "YZ asistanı verilerimizden öğrenir mi?",
+      "answer": "Hayır. İstekler yalnızca yanıtlanmak için kullanılır ve yalnızca YZ ayarlarında belirlenen süre boyunca saklanır.",
+      "article": "ai-settings"
+    },
+    {
+      "id": "faq-ai-credits",
+      "category": "ai",
+      "question": "YZ kredisi nedir?",
+      "answer": "Her istek, çalışma alanınızın aylık hakkından birkaç kredi harcar. Bunları YZ asistanı → Ayarlar ve kullanım bölümünde görürsünüz.",
+      "article": "ai-settings"
+    },
+    {
+      "id": "faq-ai-off",
+      "category": "ai",
+      "question": "Asistanı kapatabilir miyiz?",
+      "answer": "Evet. Yöneticiler onu YZ asistanı → Ayarlar ve kullanım bölümünde kapatır; kapalıyken ona hiçbir şey gönderilmez.",
+      "article": "ai-settings"
+    }
+  ],
+  "glossary": [
+    {
+      "id": "term-form",
+      "term": "Form",
+      "definition": "İnsanların doldurduğu, tasarımı, mantığı ve ayarlarıyla birlikte bir dizi soru.",
+      "article": "builder-basics"
+    },
+    {
+      "id": "term-response",
+      "term": "Yanıt",
+      "definition": "Bir kişinin doldurduğu form ve tüm cevapları.",
+      "article": "responses-basics"
+    },
+    {
+      "id": "term-draft",
+      "term": "Taslak",
+      "definition": "Üzerinde çalıştığınız form sürümü. İnsanlar onu ancak siz yayınlayınca görür.",
+      "article": "form-lifecycle"
+    },
+    {
+      "id": "term-version",
+      "term": "Sürüm",
+      "definition": "Bir formun karşılaştırıp geri yükleyebilmeniz için saklanan yayınlanmış hâli.",
+      "article": "publish-and-versions"
+    },
+    {
+      "id": "term-field",
+      "term": "Alan",
+      "definition": "Bir formdaki tek bir soru veya blok, örneğin bir metin kutusu, bir seçim veya bir imza.",
+      "article": "field-types"
+    },
+    {
+      "id": "term-key",
+      "term": "Anahtar",
+      "definition": "Bir sorunun kısa adı (first_name gibi); formüllerde, dışa aktarımlarda ve API’de kullanılır.",
+      "article": "calculations"
+    },
+    {
+      "id": "term-logic",
+      "term": "Mantık kuralı",
+      "definition": "Yanıtlara göre soruları gösteren, gizleyen, zorunlu kılan veya atlayan kural.",
+      "article": "builder-logic"
+    },
+    {
+      "id": "term-calculation",
+      "term": "Hesaplama",
+      "definition": "Diğer yanıtlardan toplam veya puan gibi bir değer hesaplayan alan.",
+      "article": "calculations"
+    },
+    {
+      "id": "term-theme",
+      "term": "Tema",
+      "definition": "Kayıtlı bir tasarım: her formda kullanabileceğiniz renkler, yazı tipleri ve düzen.",
+      "article": "themes"
+    },
+    {
+      "id": "term-template",
+      "term": "Şablon",
+      "definition": "Sorularıyla, mantığıyla ve tasarımıyla birlikte başlangıç yapabileceğiniz hazır bir form.",
+      "article": "use-a-template"
+    },
+    {
+      "id": "term-list",
+      "term": "Seçenek Listesi",
+      "definition": "Bir kez saklanıp birçok formda kullanılan seçim listesi; değişiklikler onu kullanan her forma ulaşır.",
+      "article": "lists-basics"
+    },
+    {
+      "id": "term-dynamic-list",
+      "term": "Düzeyli liste (dinamik liste)",
+      "definition": "Bir seçimin bir sonrakini belirlediği liste, örneğin ülke, sonra bölge, sonra şehir.",
+      "article": "lists-basics"
+    },
+    {
+      "id": "term-folder",
+      "term": "Klasör",
+      "definition": "Bir form grubu. Yöneticiler bir klasörü kimlerin görebileceğini sınırlayabilir.",
+      "article": "folders"
+    },
+    {
+      "id": "term-role",
+      "term": "Rol",
+      "definition": "İnsanlara verilen, neleri görebileceklerini ve yapabileceklerini belirleyen bir izinler kümesi.",
+      "article": "roles-and-access"
+    },
+    {
+      "id": "term-reach",
+      "term": "Kapsam (Kendi, Paylaşılan, Tümü)",
+      "definition": "Bir iznin ne kadar geniş olduğu: yalnızca kişinin oluşturduğu, kendisiyle paylaşılan veya her şey.",
+      "article": "roles-and-access"
+    },
+    {
+      "id": "term-data-source",
+      "term": "Veri kaynağı",
+      "definition": "Yanıtları saklamak ve verileri incelemek için kullanılan, veritabanlarınızdan birine bağlantı.",
+      "article": "data-sources-basics"
+    },
+    {
+      "id": "term-endpoint",
+      "term": "Uç nokta",
+      "definition": "API hizmetinizde, başka bir sistemin veri okumak veya göndermek için çağırdığı bir adres.",
+      "article": "api-basics"
+    },
+    {
+      "id": "term-token",
+      "term": "Token",
+      "definition": "Bir sistemin API’nizi çağırmak için kullandığı gizli anahtar. Bir kez gösterilir; süresi dolabilir veya iptal edilebilir.",
+      "article": "api-tokens"
+    },
+    {
+      "id": "term-webhook",
+      "term": "Webhook",
+      "definition": "Bir şey olduğu anda Formalie’nin başka bir sisteme gönderdiği mesaj.",
+      "article": "webhooks"
+    },
+    {
+      "id": "term-audit",
+      "term": "Denetim kaydı",
+      "definition": "Çalışma alanınızdaki her eylemin kaydı: kim, ne, ne zaman ve nerede.",
+      "article": "audit-trail"
+    },
+    {
+      "id": "term-two-step",
+      "term": "İki adımlı giriş",
+      "definition": "Parolanızdan sonra bir uygulamadan, e-postadan veya kısa mesajdan gelen kodun istenmesi.",
+      "article": "two-step-sign-in"
+    },
+    {
+      "id": "term-embed",
+      "term": "Gömme",
+      "definition": "Bir formu kendi web sitenizin içinde göstermek.",
+      "article": "embed-a-form"
+    },
+    {
+      "id": "term-ai-credit",
+      "term": "YZ kredisi",
+      "definition": "YZ asistanının aylık hakkının sayıldığı birim; her istek birkaç kredi harcar.",
+      "article": "ai-settings"
+    },
+    {
+      "id": "term-workspace",
+      "term": "Çalışma alanı",
+      "definition": "Kuruluşunuzun Formalie’deki, kendi adresi, kişileri, formları ve ayarları olan kendi alanı.",
+      "article": "workspace-settings"
+    }
+  ],
+  "tours": [
+    {
+      "id": "forms-tour",
+      "route": "/forms",
+      "title": "Formlarınıza hızlı bir tur",
+      "steps": [
+        {
+          "target": "new-form",
+          "title": "Form oluşturun",
+          "text": "Yeni bir formu buradan başlatın: boş, bir şablondan veya içe aktararak."
+        },
+        {
+          "target": "list-search",
+          "title": "Bir form bulun",
+          "text": "Ada, etikete veya sahibine göre arayın. Sayfanın herhangi bir yerinden buraya atlamak için / tuşuna basın."
+        },
+        {
+          "target": "view-switch",
+          "title": "Tablo veya kartlar",
+          "text": "Satırlar ile kartlar arasında geçiş yapın. Formalie seçiminizi hatırlar."
+        },
+        {
+          "target": "folders",
+          "title": "Klasörler",
+          "text": "Formları klasörlerde gruplayın. Yöneticiler her klasörü kimlerin göreceğine karar verebilir."
+        },
+        {
+          "target": "create",
+          "title": "Her şeyi oluşturun",
+          "text": "+ düğmesi, her yerden form, şablon, bağlantı ve daha fazlasını oluşturur."
+        }
+      ]
+    },
+    {
+      "id": "people-tour",
+      "route": "/people",
+      "title": "Kişiler’e hızlı bir tur",
+      "steps": [
+        {
+          "target": "add-user",
+          "title": "Bir kişi ekleyin",
+          "text": "Bir profil oluşturun; kişi parolasını belirlemesi için bir e-posta alır."
+        },
+        {
+          "target": "signup-links",
+          "title": "Kayıt bağlantıları",
+          "text": "İnsanların hesap isteyebilmesi için bir bağlantı paylaşın; siz onaylayın."
+        },
+        {
+          "target": "list-search",
+          "title": "Birini bulun",
+          "text": "Ada, e-postaya, departmana veya unvana göre arayın."
+        }
+      ]
+    }
+  ]
+}

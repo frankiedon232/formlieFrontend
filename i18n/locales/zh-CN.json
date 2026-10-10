@@ -484,7 +484,20 @@
     "help": "显示快捷键",
     "toggleSidebar": "折叠或展开侧边栏",
     "closeOverlay": "关闭对话框或面板",
-    "then": "然后"
+    "then": "然后",
+    "lists": "在列表和面板中",
+    "searchList": "搜索列表",
+    "nextItem": "面板中的下一项",
+    "previousItem": "面板中的上一项",
+    "openItem": "打开所选项",
+    "builder": "在表单构建器中",
+    "duplicate": "复制所选字段",
+    "removeField": "删除所选字段",
+    "moveUp": "上移字段",
+    "moveDown": "下移字段",
+    "editing": "编辑时",
+    "save": "保存",
+    "generate": "询问 AI 助手（在其页面上）"
   },
   "modal": {
     "move": "移动对话框",
@@ -8738,5 +8751,166 @@
     "sampleVisit": "您的到访",
     "sampleHow": "您的到访体验如何？",
     "sampleBetter": "有什么我们可以改进的地方吗？"
+  },
+  "help": {
+    "subtitle": "关于 Formalie 一切功能的解答、指南和小贴士",
+    "back": "帮助与支持",
+    "areas": "按领域浏览",
+    "popular": "热门文章",
+    "articles": "{n} 篇文章 | {n} 篇文章",
+    "minutes": "阅读约 {n} 分钟 | 阅读约 {n} 分钟",
+    "updated": "更新于 {date}",
+    "readMore": "阅读文章",
+    "related": "相关文章",
+    "onThisPage": "本页内容",
+    "notFound": "这篇文章不存在",
+    "notFoundDesc": "它可能已被移动或删除。请改为在帮助中心搜索。",
+    "notTranslated": "这篇文章尚未翻译成您的语言，因此以英文显示。",
+    "category": {
+      "start": {
+        "name": "快速入门",
+        "desc": "最初几步：您的第一个表单、熟悉界面、您的团队。"
+      },
+      "forms": {
+        "name": "表单",
+        "desc": "查找、整理、关闭、归档和恢复表单。"
+      },
+      "builder": {
+        "name": "构建器",
+        "desc": "问题、页面、逻辑、计算和版本。"
+      },
+      "design": {
+        "name": "设计",
+        "desc": "颜色、字体、主题和落地页。"
+      },
+      "templates": {
+        "name": "模板",
+        "desc": "从现成表单开始，并创建自己的模板。"
+      },
+      "sharing": {
+        "name": "分享",
+        "desc": "链接、二维码、邀请、嵌入和语言。"
+      },
+      "responses": {
+        "name": "回复",
+        "desc": "查看、审阅并导出收到的内容。"
+      },
+      "analytics": {
+        "name": "分析",
+        "desc": "表单的表现，以及用户在哪里中途离开。"
+      },
+      "lists": {
+        "name": "List Option",
+        "desc": "只维护一次的选项列表，支持多级。"
+      },
+      "data": {
+        "name": "数据源",
+        "desc": "您自己的数据库：存储、浏览、查询。"
+      },
+      "api": {
+        "name": "API 服务",
+        "desc": "端点、令牌、访问规则和 Webhook。"
+      },
+      "people": {
+        "name": "成员",
+        "desc": "您的团队、资料、角色和访问权限。"
+      },
+      "settings": {
+        "name": "设置",
+        "desc": "工作区设置、安全和登录。"
+      },
+      "audit": {
+        "name": "审计追踪",
+        "desc": "谁在何时、从何处做了什么。"
+      },
+      "ai": {
+        "name": "AI 助手",
+        "desc": "借助助手创建、分析和翻译。"
+      }
+    },
+    "block": {
+      "tip": "提示",
+      "note": "须知",
+      "warning": "注意"
+    },
+    "start": {
+      "title": "初次使用？从这些开始"
+    },
+    "search": {
+      "title": "需要什么帮助？",
+      "placeholder": "搜索文章、问题和词语…",
+      "articles": "文章",
+      "faqs": "问题",
+      "terms": "词语",
+      "none": "未找到与“{q}”相关的内容",
+      "noneDesc": "请尝试其他词语，或联系支持团队。我们会记录没有结果的搜索，以补写缺少的帮助。",
+      "clear": "清除搜索",
+      "example": {
+        "publish": "发布",
+        "logic": "逻辑",
+        "export": "导出",
+        "roles": "角色",
+        "translate": "翻译"
+      }
+    },
+    "more": {
+      "title": "更多帮助"
+    },
+    "faq": {
+      "title": "常见问题",
+      "desc": "对最常被问到的问题的简短回答。",
+      "search": "搜索问题…",
+      "all": "全部",
+      "none": "没有匹配的问题。"
+    },
+    "glossary": {
+      "title": "术语表",
+      "desc": "Formalie 使用的词语及其解释。",
+      "search": "搜索词语…",
+      "none": "没有匹配的词语。"
+    },
+    "shortcuts": {
+      "title": "键盘快捷键",
+      "mac": "在 Mac 上，将 Ctrl 换成 ⌘。"
+    },
+    "support": {
+      "title": "联系真人",
+      "desc": "没找到需要的内容？我们的支持团队乐意帮忙。",
+      "email": "发邮件给支持团队",
+      "site": "支持网站"
+    },
+    "feedback": {
+      "question": "这篇文章对您有帮助吗？",
+      "yes": "是",
+      "no": "否",
+      "missing": "缺少了什么，或哪里不清楚？",
+      "skip": "跳过",
+      "send": "发送",
+      "thanks": "谢谢。您的回答有助于我们改进帮助中心。"
+    },
+    "learnHow": "了解方法",
+    "panel": {
+      "title": "本页帮助",
+      "desc": "适合你当前位置的指南和提示。",
+      "openFull": "打开完整文章",
+      "none": "本页暂无指南",
+      "noneDesc": "在帮助中心搜索，或打开查看所有指南。",
+      "more": "本页更多帮助",
+      "centre": "帮助中心"
+    },
+    "tour": {
+      "start": "开始导览：{title}",
+      "step": "第 {n} 步，共 {total} 步",
+      "next": "下一步",
+      "back": "上一步",
+      "done": "完成",
+      "end": "结束导览",
+      "hereTitle": "就在这里",
+      "hereText": "这就是文章中提到的控件。"
+    },
+    "answer": {
+      "title": "来自帮助中心的回答",
+      "from": "来自文章"
+    }
   }
 }

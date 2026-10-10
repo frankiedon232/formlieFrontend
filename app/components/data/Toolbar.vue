@@ -78,6 +78,7 @@ const viewItems = computed(() => [
     <UInput
       ref="searchInput"
       v-model="search"
+      data-help="list-search"
       icon="i-lucide-search"
       :placeholder="searchPlaceholder ?? t('dataView.search')"
       :aria-label="t('dataView.search')"
@@ -172,6 +173,7 @@ const viewItems = computed(() => [
       </UDropdownMenu>
       <UTabs
         v-if="views"
+        data-help="view-switch"
         :model-value="state.view.value"
         :items="viewItems"
         :content="false"

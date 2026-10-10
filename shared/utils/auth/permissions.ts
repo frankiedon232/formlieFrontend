@@ -330,7 +330,7 @@ export function permissionFor(method: string, path: string): Permission | null {
   const read = m === 'GET'
   const p = path.split('?')[0]!
   const rules: [RegExp, Permission | null | ((read: boolean) => Permission | null)][] = [
-    [/^\/(me|navigation|notifications|directory|auth|public|crypto|tenants|health|uploads|storage|files|downloads|response-files|response-exports|datasource-exports)(\/|$)/, null],
+    [/^\/(me|navigation|notifications|directory|auth|public|crypto|tenants|health|uploads|storage|files|downloads|response-files|response-exports|datasource-exports|help)(\/|$)/, null],
     // People and roles
     [/^\/roles(\/|$)/, r => (r ? 'people.view' : 'roles.manage')],
     [/^\/people\/[^/]+\/(approve|reject)$/, 'people.approve'],

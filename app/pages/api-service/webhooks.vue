@@ -178,6 +178,7 @@ defineShortcuts({ n: { usingInput: false, handler: () => can('api.webhooks') && 
       v-if="view === 'webhooks'"
       id="webhooks"
       ref="list"
+      empty-help="webhooks"
       :columns="columns"
       :fetcher="fetcher"
       :filters="filters"

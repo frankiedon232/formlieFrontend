@@ -133,6 +133,7 @@ const rowActions = (row: SavedQuery): DropdownMenuItem[][] => [
     <DataView
       id="data-saved-queries"
       ref="view"
+      empty-help="database-explorer"
       :columns="columns"
       :fetcher="fetcher"
       :filters="filters"

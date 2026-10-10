@@ -37,6 +37,8 @@ const props = withDefaults(
     emptyIcon?: string
     emptyTitle?: string
     emptyDescription?: string
+    /** A help article for the empty state (F25 "Learn how"). */
+    emptyHelp?: string
   }>(),
   {
     filters: () => [],
@@ -56,6 +58,7 @@ const props = withDefaults(
     emptyIcon: 'i-lucide-inbox',
     emptyTitle: undefined,
     emptyDescription: undefined,
+    emptyHelp: undefined,
   },
 )
 
@@ -326,6 +329,7 @@ defineExpose({ refresh: state.refresh, state, shownColumns: () => orderedColumns
         state.hasActiveFilters.value ? t('dataView.noResults') : (emptyTitle ?? t('dataView.noResults'))
       "
       :description="state.hasActiveFilters.value ? t('dataView.noResultsDesc') : emptyDescription"
+      :help="state.hasActiveFilters.value ? undefined : emptyHelp"
       :actions="
         state.hasActiveFilters.value
           ? [

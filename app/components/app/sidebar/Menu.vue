@@ -147,7 +147,7 @@ const menuUi = computed(() => ({
 
       <template v-if="area === 'forms'">
         <USeparator />
-        <nav :aria-label="t('nav.folders')">
+        <nav :aria-label="t('nav.folders')" data-help="folders">
           <div class="mb-1 flex items-center justify-between ps-2.5">
             <!-- The group folds away (remembered per person), like the other groups -->
             <button

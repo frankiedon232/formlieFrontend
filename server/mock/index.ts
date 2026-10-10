@@ -9,6 +9,7 @@ import * as aiCreate from './routes/aiCreate'
 import * as aiAssist from './routes/aiAssist'
 import * as aiAnalyse from './routes/aiAnalyse'
 import * as aiWrite from './routes/aiWrite'
+import * as help from './routes/help'
 import * as people from './routes/people'
 import * as invites from './routes/invites'
 import * as peopleManage from './routes/peopleManage'
@@ -213,6 +214,14 @@ const router = createRouter()
   .delete('/datasources/:id/query-history', query.clearQueryHistory)
   .post('/datasources/:id/query/export', query.exportQuery)
   .get('/datasources/activity/insights', dataActivity.dataActivityInsights)
+  .get('/help/home', help.helpHome)
+  .get('/help/articles', help.listHelpArticles)
+  .get('/help/articles/:id', help.getHelpArticle)
+  .post('/help/articles/:id/feedback', help.helpFeedback)
+  .get('/help/search', help.searchHelp)
+  .get('/help/faqs', help.listHelpFaqs)
+  .get('/help/glossary', help.listHelpGlossary)
+  .get('/help/context', help.helpContext)
   .get('/ai/settings', ai.getAiSettings)
   .patch('/ai/settings', ai.updateAiSettings)
   .get('/ai/usage', ai.getAiUsage)

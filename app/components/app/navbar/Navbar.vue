@@ -20,6 +20,7 @@ const { t } = useI18n()
 const { notificationsOpen } = useAppUi()
 // The bell's unread count, checked every minute (F14 M4)
 const notifications = useNotifications()
+const { openForPage } = useHelpPanel()
 onMounted(notifications.start)
 const unread = computed(() => notifications.feed.value?.unread ?? 0)
 const { items: crumbs } = useBreadcrumbs()
@@ -110,6 +111,10 @@ const languageItems = computed(() =>
           />
         </UTooltip>
       </UDropdownMenu>
+
+      <UTooltip :text="t('help.panel.title')">
+        <UButton icon="i-lucide-circle-help" color="neutral" variant="outline" square class="hidden sm:inline-flex" :aria-label="t('help.panel.title')" data-help="page-help" @click="openForPage()" />
+      </UTooltip>
 
       <UTooltip :text="t('navbar.notifications')">
         <UChip :show="!!unread" :text="unread > 9 ? '9+' : unread" color="error" size="3xl" inset>

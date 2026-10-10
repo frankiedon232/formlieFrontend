@@ -100,6 +100,7 @@ const rowActions = (row: OptionListRow): DropdownMenuItem[][] =>
     <DataView
       id="option-sets"
       ref="view"
+      empty-help="lists-basics"
       :columns="columns"
       :fetcher="fetcher"
       :filters="filters"

@@ -484,7 +484,20 @@
     "help": "Tastenkürzel anzeigen",
     "toggleSidebar": "Seitenleiste ein- oder ausklappen",
     "closeOverlay": "Dialog oder Bereich schließen",
-    "then": "dann"
+    "then": "dann",
+    "lists": "In Listen und Panels",
+    "searchList": "Liste durchsuchen",
+    "nextItem": "Nächstes Element im Panel",
+    "previousItem": "Vorheriges Element im Panel",
+    "openItem": "Ausgewähltes Element öffnen",
+    "builder": "Im Formular-Builder",
+    "duplicate": "Ausgewähltes Feld duplizieren",
+    "removeField": "Ausgewähltes Feld entfernen",
+    "moveUp": "Feld nach oben verschieben",
+    "moveDown": "Feld nach unten verschieben",
+    "editing": "Beim Bearbeiten",
+    "save": "Speichern",
+    "generate": "KI-Assistent fragen (auf seinen Seiten)"
   },
   "modal": {
     "move": "Dialog verschieben",
@@ -8738,5 +8751,166 @@
     "sampleVisit": "Ihr Besuch",
     "sampleHow": "Wie war Ihr Besuch?",
     "sampleBetter": "Können wir etwas besser machen?"
+  },
+  "help": {
+    "subtitle": "Antworten, Anleitungen und Tipps zu allem in Formalie",
+    "back": "Hilfe & Support",
+    "areas": "Nach Bereich durchsuchen",
+    "popular": "Beliebte Artikel",
+    "articles": "{n} Artikel | {n} Artikel",
+    "minutes": "{n} Min. Lesezeit | {n} Min. Lesezeit",
+    "updated": "Aktualisiert am {date}",
+    "readMore": "Artikel lesen",
+    "related": "Ähnliche Artikel",
+    "onThisPage": "Auf dieser Seite",
+    "notFound": "Dieser Artikel existiert nicht",
+    "notFoundDesc": "Er wurde vielleicht verschoben oder entfernt. Durchsuche stattdessen das Hilfezentrum.",
+    "notTranslated": "Dieser Artikel ist noch nicht in deine Sprache übersetzt und wird deshalb auf Englisch angezeigt.",
+    "category": {
+      "start": {
+        "name": "Erste Schritte",
+        "desc": "Die ersten Schritte: dein erstes Formular, Orientierung, dein Team."
+      },
+      "forms": {
+        "name": "Formulare",
+        "desc": "Formulare finden, ordnen, schließen, archivieren und wiederherstellen."
+      },
+      "builder": {
+        "name": "Builder",
+        "desc": "Fragen, Seiten, Logik, Berechnungen und Versionen."
+      },
+      "design": {
+        "name": "Design",
+        "desc": "Farben, Schriften, Themes und Landingpages."
+      },
+      "templates": {
+        "name": "Vorlagen",
+        "desc": "Mit fertigen Formularen starten und eigene erstellen."
+      },
+      "sharing": {
+        "name": "Teilen",
+        "desc": "Links, QR-Codes, Einladungen, Einbetten und Sprachen."
+      },
+      "responses": {
+        "name": "Antworten",
+        "desc": "Eingehendes ansehen, prüfen und exportieren."
+      },
+      "analytics": {
+        "name": "Analysen",
+        "desc": "Wie deine Formulare abschneiden und wo Leute abbrechen."
+      },
+      "lists": {
+        "name": "List Option",
+        "desc": "Auswahllisten, einmal gepflegt, mit Ebenen."
+      },
+      "data": {
+        "name": "Datenquellen",
+        "desc": "Deine eigenen Datenbanken: speichern, erkunden, abfragen."
+      },
+      "api": {
+        "name": "API-Dienst",
+        "desc": "Endpunkte, Tokens, Zugriffsregeln und Webhooks."
+      },
+      "people": {
+        "name": "Personen",
+        "desc": "Dein Team, Profile, Rollen und Zugriff."
+      },
+      "settings": {
+        "name": "Einstellungen",
+        "desc": "Workspace-Einstellungen, Sicherheit und Anmeldung."
+      },
+      "audit": {
+        "name": "Audit-Protokoll",
+        "desc": "Wer wann was getan hat und von wo."
+      },
+      "ai": {
+        "name": "KI-Assistent",
+        "desc": "Mit dem Assistenten erstellen, analysieren und übersetzen."
+      }
+    },
+    "block": {
+      "tip": "Tipp",
+      "note": "Gut zu wissen",
+      "warning": "Vorsicht"
+    },
+    "start": {
+      "title": "Neu hier? Starte mit diesen"
+    },
+    "search": {
+      "title": "Wie können wir helfen?",
+      "placeholder": "Artikel, Fragen und Begriffe suchen…",
+      "articles": "Artikel",
+      "faqs": "Fragen",
+      "terms": "Begriffe",
+      "none": "Nichts gefunden für „{q}“",
+      "noneDesc": "Versuche andere Wörter oder frag unser Support-Team. Suchen ohne Treffer notieren wir, um die fehlende Hilfe zu schreiben.",
+      "clear": "Suche löschen",
+      "example": {
+        "publish": "veröffentlichen",
+        "logic": "Logik",
+        "export": "Export",
+        "roles": "Rollen",
+        "translate": "übersetzen"
+      }
+    },
+    "more": {
+      "title": "Weitere Hilfe"
+    },
+    "faq": {
+      "title": "Häufige Fragen",
+      "desc": "Kurze Antworten auf die Fragen, die am häufigsten gestellt werden.",
+      "search": "Fragen suchen…",
+      "all": "Alle",
+      "none": "Keine passenden Fragen."
+    },
+    "glossary": {
+      "title": "Glossar",
+      "desc": "Die Begriffe, die Formalie verwendet, erklärt.",
+      "search": "Begriffe suchen…",
+      "none": "Keine passenden Begriffe."
+    },
+    "shortcuts": {
+      "title": "Tastenkürzel",
+      "mac": "Auf dem Mac nimmst du ⌘, wo Ctrl steht."
+    },
+    "support": {
+      "title": "Mit einem Menschen sprechen",
+      "desc": "Nichts Passendes gefunden? Unser Support-Team hilft gern.",
+      "email": "Support per E-Mail",
+      "site": "Support-Website"
+    },
+    "feedback": {
+      "question": "War dieser Artikel hilfreich?",
+      "yes": "Ja",
+      "no": "Nein",
+      "missing": "Was fehlte oder war unklar?",
+      "skip": "Überspringen",
+      "send": "Senden",
+      "thanks": "Danke. Deine Antwort hilft uns, das Hilfezentrum zu verbessern."
+    },
+    "learnHow": "So geht’s",
+    "panel": {
+      "title": "Hilfe zu dieser Seite",
+      "desc": "Anleitungen und Tipps für diese Seite.",
+      "openFull": "Ganzen Artikel öffnen",
+      "none": "Noch keine Anleitung für diese Seite",
+      "noneDesc": "Durchsuche das Hilfezentrum oder öffne es für alle Anleitungen.",
+      "more": "Mehr Hilfe zu dieser Seite",
+      "centre": "Hilfezentrum"
+    },
+    "tour": {
+      "start": "Tour starten: {title}",
+      "step": "{n} von {total}",
+      "next": "Weiter",
+      "back": "Zurück",
+      "done": "Fertig",
+      "end": "Tour beenden",
+      "hereTitle": "Hier ist es",
+      "hereText": "Das ist das Bedienelement, von dem der Artikel spricht."
+    },
+    "answer": {
+      "title": "Antwort aus dem Hilfezentrum",
+      "from": "Aus dem Artikel"
+    }
   }
 }

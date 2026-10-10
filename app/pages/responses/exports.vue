@@ -102,6 +102,7 @@ const newOpen = ref(false)
     <DataView
       id="responses-exports"
       ref="view"
+      empty-help="export-responses"
       :columns="columns"
       :fetcher="fetcher"
       :filters="filters"

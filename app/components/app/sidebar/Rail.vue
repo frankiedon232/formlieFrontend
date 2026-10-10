@@ -68,7 +68,7 @@ const workspaces = computed(() => [
       </UDropdownMenu>
 
       <UDropdownMenu v-if="createItems.length" :items="createItems" :content="{ side: 'right', align: 'start' }">
-        <UButton icon="i-lucide-plus" color="neutral" variant="solid" size="lg" square :aria-label="t('nav.create')" />
+        <UButton icon="i-lucide-plus" color="neutral" variant="solid" size="lg" square :aria-label="t('nav.create')" data-help="create" />
       </UDropdownMenu>
 
       <USeparator class="w-8" />

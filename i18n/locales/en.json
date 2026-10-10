@@ -484,7 +484,20 @@
     "help": "Show shortcuts",
     "toggleSidebar": "Collapse or expand sidebar",
     "closeOverlay": "Close dialog or panel",
-    "then": "then"
+    "then": "then",
+    "lists": "In lists and panels",
+    "searchList": "Search the list",
+    "nextItem": "Next item in a panel",
+    "previousItem": "Previous item in a panel",
+    "openItem": "Open the selected item",
+    "builder": "In the form builder",
+    "duplicate": "Duplicate the selected field",
+    "removeField": "Remove the selected field",
+    "moveUp": "Move the field up",
+    "moveDown": "Move the field down",
+    "editing": "While editing",
+    "save": "Save",
+    "generate": "Ask the AI assistant (on its pages)"
   },
   "modal": {
     "move": "Move dialog",
@@ -8738,5 +8751,166 @@
     "sampleVisit": "Your visit",
     "sampleHow": "How was your visit?",
     "sampleBetter": "Anything we could do better?"
+  },
+  "help": {
+    "subtitle": "Answers, guides and tips for everything in Formalie",
+    "back": "Help & support",
+    "areas": "Browse by area",
+    "popular": "Popular articles",
+    "articles": "{n} article | {n} articles",
+    "minutes": "{n} min read | {n} min read",
+    "updated": "Updated {date}",
+    "readMore": "Read the article",
+    "related": "Related articles",
+    "onThisPage": "On this page",
+    "notFound": "This article doesn’t exist",
+    "notFoundDesc": "It may have been moved or removed. Search the help centre instead.",
+    "notTranslated": "This article isn’t translated into your language yet, so it is shown in English.",
+    "category": {
+      "start": {
+        "name": "Getting started",
+        "desc": "The first steps: your first form, finding your way, your team."
+      },
+      "forms": {
+        "name": "Forms",
+        "desc": "Find, organise, close, archive and restore forms."
+      },
+      "builder": {
+        "name": "Builder",
+        "desc": "Questions, pages, logic, calculations and versions."
+      },
+      "design": {
+        "name": "Design",
+        "desc": "Colours, fonts, themes and landing pages."
+      },
+      "templates": {
+        "name": "Templates",
+        "desc": "Start from ready forms and make your own."
+      },
+      "sharing": {
+        "name": "Sharing",
+        "desc": "Links, QR codes, invitations, embedding and languages."
+      },
+      "responses": {
+        "name": "Responses",
+        "desc": "See, review and export what comes in."
+      },
+      "analytics": {
+        "name": "Analytics",
+        "desc": "How your forms perform and where people stop."
+      },
+      "lists": {
+        "name": "List Option",
+        "desc": "Lists of choices kept once, with levels."
+      },
+      "data": {
+        "name": "Data sources",
+        "desc": "Your own databases: storing, exploring, querying."
+      },
+      "api": {
+        "name": "API service",
+        "desc": "Endpoints, tokens, access rules and webhooks."
+      },
+      "people": {
+        "name": "People",
+        "desc": "Your team, profiles, roles and access."
+      },
+      "settings": {
+        "name": "Settings",
+        "desc": "Workspace settings, security and sign-in."
+      },
+      "audit": {
+        "name": "Audit trail",
+        "desc": "Who did what, when and from where."
+      },
+      "ai": {
+        "name": "AI assistant",
+        "desc": "Create, analyse and translate with the assistant."
+      }
+    },
+    "block": {
+      "tip": "Tip",
+      "note": "Good to know",
+      "warning": "Careful"
+    },
+    "start": {
+      "title": "New here? Start with these"
+    },
+    "search": {
+      "title": "How can we help?",
+      "placeholder": "Search articles, questions and words…",
+      "articles": "Articles",
+      "faqs": "Questions",
+      "terms": "Words",
+      "none": "Nothing found for “{q}”",
+      "noneDesc": "Try other words, or ask our support team. We note searches that find nothing to write the missing help.",
+      "clear": "Clear the search",
+      "example": {
+        "publish": "publish",
+        "logic": "logic",
+        "export": "export",
+        "roles": "roles",
+        "translate": "translate"
+      }
+    },
+    "more": {
+      "title": "More help"
+    },
+    "faq": {
+      "title": "Frequently asked questions",
+      "desc": "Short answers to the questions people ask most.",
+      "search": "Search questions…",
+      "all": "All",
+      "none": "No questions match."
+    },
+    "glossary": {
+      "title": "Glossary",
+      "desc": "The words Formalie uses, explained.",
+      "search": "Search words…",
+      "none": "No words match."
+    },
+    "shortcuts": {
+      "title": "Keyboard shortcuts",
+      "mac": "On a Mac, use ⌘ where Ctrl is shown."
+    },
+    "support": {
+      "title": "Talk to a person",
+      "desc": "Can’t find what you need? Our support team is happy to help.",
+      "email": "Email support",
+      "site": "Support site"
+    },
+    "feedback": {
+      "question": "Was this article helpful?",
+      "yes": "Yes",
+      "no": "No",
+      "missing": "What was missing or unclear?",
+      "skip": "Skip",
+      "send": "Send",
+      "thanks": "Thank you. Your answer helps us improve the help centre."
+    },
+    "learnHow": "Learn how",
+    "panel": {
+      "title": "Help for this page",
+      "desc": "Guides and tips for where you are.",
+      "openFull": "Open the full article",
+      "none": "No guide for this page yet",
+      "noneDesc": "Search the help centre or open it for every guide.",
+      "more": "More help for this page",
+      "centre": "Help centre"
+    },
+    "tour": {
+      "start": "Take the tour: {title}",
+      "step": "{n} of {total}",
+      "next": "Next",
+      "back": "Back",
+      "done": "Done",
+      "end": "End tour",
+      "hereTitle": "Here it is",
+      "hereText": "This is the control the article talks about."
+    },
+    "answer": {
+      "title": "Answer from the help centre",
+      "from": "From the article"
+    }
   }
 }

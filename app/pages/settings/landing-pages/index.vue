@@ -105,6 +105,7 @@ const isBusy = (page: PageDesign) => busy.value.has(page.id)
     <DataView
       id="pages"
       ref="dataView"
+      empty-help="landing-pages"
       :columns="columns"
       :fetcher="fetcher"
       :filters="filters"

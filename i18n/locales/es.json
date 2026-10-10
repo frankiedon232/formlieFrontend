@@ -484,7 +484,20 @@
     "help": "Mostrar atajos",
     "toggleSidebar": "Contraer o expandir la barra lateral",
     "closeOverlay": "Cerrar diálogo o panel",
-    "then": "luego"
+    "then": "luego",
+    "lists": "En listas y paneles",
+    "searchList": "Buscar en la lista",
+    "nextItem": "Siguiente elemento del panel",
+    "previousItem": "Elemento anterior del panel",
+    "openItem": "Abrir el elemento seleccionado",
+    "builder": "En el constructor de formularios",
+    "duplicate": "Duplicar el campo seleccionado",
+    "removeField": "Quitar el campo seleccionado",
+    "moveUp": "Subir el campo",
+    "moveDown": "Bajar el campo",
+    "editing": "Al editar",
+    "save": "Guardar",
+    "generate": "Preguntar al asistente de IA (en sus páginas)"
   },
   "modal": {
     "move": "Mover diálogo",
@@ -8738,5 +8751,166 @@
     "sampleVisit": "Su visita",
     "sampleHow": "¿Qué tal fue su visita?",
     "sampleBetter": "¿Hay algo que podríamos mejorar?"
+  },
+  "help": {
+    "subtitle": "Respuestas, guías y consejos sobre todo en Formalie",
+    "back": "Ayuda y soporte",
+    "areas": "Explorar por área",
+    "popular": "Artículos populares",
+    "articles": "{n} artículo | {n} artículos",
+    "minutes": "{n} min de lectura | {n} min de lectura",
+    "updated": "Actualizado el {date}",
+    "readMore": "Leer el artículo",
+    "related": "Artículos relacionados",
+    "onThisPage": "En esta página",
+    "notFound": "Este artículo no existe",
+    "notFoundDesc": "Puede que se haya movido o eliminado. Busca en el centro de ayuda.",
+    "notTranslated": "Este artículo aún no está traducido a tu idioma, así que se muestra en inglés.",
+    "category": {
+      "start": {
+        "name": "Primeros pasos",
+        "desc": "Lo primero: tu primer formulario, orientarte, tu equipo."
+      },
+      "forms": {
+        "name": "Formularios",
+        "desc": "Busca, organiza, cierra, archiva y restaura formularios."
+      },
+      "builder": {
+        "name": "Constructor",
+        "desc": "Preguntas, páginas, lógica, cálculos y versiones."
+      },
+      "design": {
+        "name": "Diseño",
+        "desc": "Colores, fuentes, temas y páginas de destino."
+      },
+      "templates": {
+        "name": "Plantillas",
+        "desc": "Empieza con formularios listos y crea los tuyos."
+      },
+      "sharing": {
+        "name": "Compartir",
+        "desc": "Enlaces, códigos QR, invitaciones, incrustación e idiomas."
+      },
+      "responses": {
+        "name": "Respuestas",
+        "desc": "Ve, revisa y exporta lo que llega."
+      },
+      "analytics": {
+        "name": "Analíticas",
+        "desc": "Cómo rinden tus formularios y dónde se detiene la gente."
+      },
+      "lists": {
+        "name": "List Option",
+        "desc": "Listas de opciones guardadas una vez, con niveles."
+      },
+      "data": {
+        "name": "Fuentes de datos",
+        "desc": "Tus propias bases de datos: guardar, explorar, consultar."
+      },
+      "api": {
+        "name": "Servicio API",
+        "desc": "Endpoints, tokens, reglas de acceso y webhooks."
+      },
+      "people": {
+        "name": "Personas",
+        "desc": "Tu equipo, perfiles, roles y acceso."
+      },
+      "settings": {
+        "name": "Ajustes",
+        "desc": "Ajustes del espacio de trabajo, seguridad e inicio de sesión."
+      },
+      "audit": {
+        "name": "Registro de auditoría",
+        "desc": "Quién hizo qué, cuándo y desde dónde."
+      },
+      "ai": {
+        "name": "Asistente de IA",
+        "desc": "Crea, analiza y traduce con el asistente."
+      }
+    },
+    "block": {
+      "tip": "Consejo",
+      "note": "Conviene saber",
+      "warning": "Cuidado"
+    },
+    "start": {
+      "title": "¿Eres nuevo? Empieza por aquí"
+    },
+    "search": {
+      "title": "¿En qué podemos ayudarte?",
+      "placeholder": "Busca artículos, preguntas y términos…",
+      "articles": "Artículos",
+      "faqs": "Preguntas",
+      "terms": "Términos",
+      "none": "No hay resultados para “{q}”",
+      "noneDesc": "Prueba con otras palabras o consulta a nuestro equipo de soporte. Anotamos las búsquedas sin resultados para escribir la ayuda que falta.",
+      "clear": "Borrar la búsqueda",
+      "example": {
+        "publish": "publicar",
+        "logic": "lógica",
+        "export": "exportar",
+        "roles": "roles",
+        "translate": "traducir"
+      }
+    },
+    "more": {
+      "title": "Más ayuda"
+    },
+    "faq": {
+      "title": "Preguntas frecuentes",
+      "desc": "Respuestas breves a las preguntas más habituales.",
+      "search": "Buscar preguntas…",
+      "all": "Todas",
+      "none": "Ninguna pregunta coincide."
+    },
+    "glossary": {
+      "title": "Glosario",
+      "desc": "Las palabras que usa Formalie, explicadas.",
+      "search": "Buscar términos…",
+      "none": "Ningún término coincide."
+    },
+    "shortcuts": {
+      "title": "Atajos de teclado",
+      "mac": "En Mac, usa ⌘ donde aparece Ctrl."
+    },
+    "support": {
+      "title": "Habla con una persona",
+      "desc": "¿No encuentras lo que necesitas? Nuestro equipo de soporte te ayuda encantado.",
+      "email": "Escribir a soporte",
+      "site": "Sitio de soporte"
+    },
+    "feedback": {
+      "question": "¿Te resultó útil este artículo?",
+      "yes": "Sí",
+      "no": "No",
+      "missing": "¿Qué faltaba o no estaba claro?",
+      "skip": "Omitir",
+      "send": "Enviar",
+      "thanks": "Gracias. Tu respuesta nos ayuda a mejorar el centro de ayuda."
+    },
+    "learnHow": "Aprende cómo",
+    "panel": {
+      "title": "Ayuda para esta página",
+      "desc": "Guías y consejos para donde estás.",
+      "openFull": "Abrir el artículo completo",
+      "none": "Aún no hay guía para esta página",
+      "noneDesc": "Busca en el centro de ayuda o ábrelo para ver todas las guías.",
+      "more": "Más ayuda para esta página",
+      "centre": "Centro de ayuda"
+    },
+    "tour": {
+      "start": "Iniciar el recorrido: {title}",
+      "step": "{n} de {total}",
+      "next": "Siguiente",
+      "back": "Atrás",
+      "done": "Listo",
+      "end": "Terminar recorrido",
+      "hereTitle": "Aquí está",
+      "hereText": "Este es el control del que habla el artículo."
+    },
+    "answer": {
+      "title": "Respuesta del centro de ayuda",
+      "from": "Del artículo"
+    }
   }
 }

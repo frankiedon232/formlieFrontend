@@ -484,7 +484,20 @@
     "help": "Onyesha njia za mkato",
     "toggleSidebar": "Kunja au panua upau wa pembeni",
     "closeOverlay": "Funga kidirisha au paneli",
-    "then": "kisha"
+    "then": "kisha",
+    "lists": "Kwenye orodha na paneli",
+    "searchList": "Tafuta kwenye orodha",
+    "nextItem": "Kipengee kinachofuata kwenye paneli",
+    "previousItem": "Kipengee kilichotangulia kwenye paneli",
+    "openItem": "Fungua kipengee kilichochaguliwa",
+    "builder": "Kwenye mjenzi wa fomu",
+    "duplicate": "Nakili sehemu iliyochaguliwa",
+    "removeField": "Ondoa sehemu iliyochaguliwa",
+    "moveUp": "Sogeza sehemu juu",
+    "moveDown": "Sogeza sehemu chini",
+    "editing": "Wakati wa kuhariri",
+    "save": "Hifadhi",
+    "generate": "Uliza msaidizi wa AI (kwenye kurasa zake)"
   },
   "modal": {
     "move": "Sogeza kidirisha",
@@ -8738,5 +8751,166 @@
     "sampleVisit": "Ziara yako",
     "sampleHow": "Ziara yako ilikuwaje?",
     "sampleBetter": "Je, kuna kitu tunachoweza kuboresha?"
+  },
+  "help": {
+    "subtitle": "Majibu, miongozo na vidokezo kuhusu kila kitu katika Formalie",
+    "back": "Msaada na usaidizi",
+    "areas": "Vinjari kwa eneo",
+    "popular": "Makala maarufu",
+    "articles": "Makala {n} | Makala {n}",
+    "minutes": "Dakika {n} za kusoma | Dakika {n} za kusoma",
+    "updated": "Imesasishwa {date}",
+    "readMore": "Soma makala",
+    "related": "Makala zinazohusiana",
+    "onThisPage": "Kwenye ukurasa huu",
+    "notFound": "Makala hii haipo",
+    "notFoundDesc": "Huenda imehamishwa au kuondolewa. Tafuta kwenye kituo cha msaada badala yake.",
+    "notTranslated": "Makala hii bado haijatafsiriwa kwa lugha yako, kwa hivyo inaonyeshwa kwa Kiingereza.",
+    "category": {
+      "start": {
+        "name": "Kuanza",
+        "desc": "Hatua za kwanza: fomu yako ya kwanza, kujua mahali pa kwenda, timu yako."
+      },
+      "forms": {
+        "name": "Fomu",
+        "desc": "Tafuta, panga, funga, hifadhi kwenye kumbukumbu na rejesha fomu."
+      },
+      "builder": {
+        "name": "Mjenzi",
+        "desc": "Maswali, kurasa, mantiki, hesabu na matoleo."
+      },
+      "design": {
+        "name": "Muundo",
+        "desc": "Rangi, fonti, mandhari na kurasa za kutua."
+      },
+      "templates": {
+        "name": "Violezo",
+        "desc": "Anza na fomu zilizo tayari na tengeneza zako."
+      },
+      "sharing": {
+        "name": "Kushiriki",
+        "desc": "Viungo, misimbo ya QR, mialiko, kupachika na lugha."
+      },
+      "responses": {
+        "name": "Majibu",
+        "desc": "Tazama, kagua na hamisha kinachoingia."
+      },
+      "analytics": {
+        "name": "Takwimu",
+        "desc": "Jinsi fomu zako zinavyofanya kazi na wapi watu wanaposimama."
+      },
+      "lists": {
+        "name": "List Option",
+        "desc": "Orodha za chaguo zinazotunzwa mara moja, zenye ngazi."
+      },
+      "data": {
+        "name": "Vyanzo vya data",
+        "desc": "Hifadhidata zako mwenyewe: kuhifadhi, kuchunguza, kuuliza."
+      },
+      "api": {
+        "name": "Huduma ya API",
+        "desc": "Vituo vya mwisho, tokeni, kanuni za ufikiaji na webhook."
+      },
+      "people": {
+        "name": "Watu",
+        "desc": "Timu yako, wasifu, majukumu na ufikiaji."
+      },
+      "settings": {
+        "name": "Mipangilio",
+        "desc": "Mipangilio ya eneo la kazi, usalama na kuingia."
+      },
+      "audit": {
+        "name": "Kumbukumbu ya ukaguzi",
+        "desc": "Nani alifanya nini, lini na kutoka wapi."
+      },
+      "ai": {
+        "name": "Msaidizi wa AI",
+        "desc": "Tengeneza, changanua na tafsiri kwa msaidizi."
+      }
+    },
+    "block": {
+      "tip": "Kidokezo",
+      "note": "Vizuri kujua",
+      "warning": "Tahadhari"
+    },
+    "start": {
+      "title": "Mgeni hapa? Anza na haya"
+    },
+    "search": {
+      "title": "Tunawezaje kusaidia?",
+      "placeholder": "Tafuta makala, maswali na maneno…",
+      "articles": "Makala",
+      "faqs": "Maswali",
+      "terms": "Maneno",
+      "none": "Hakuna kilichopatikana kwa “{q}”",
+      "noneDesc": "Jaribu maneno mengine, au uliza timu yetu ya usaidizi. Tunaandika utafutaji usio na matokeo ili kuandika msaada unaokosekana.",
+      "clear": "Futa utafutaji",
+      "example": {
+        "publish": "chapisha",
+        "logic": "mantiki",
+        "export": "hamisha",
+        "roles": "majukumu",
+        "translate": "tafsiri"
+      }
+    },
+    "more": {
+      "title": "Msaada zaidi"
+    },
+    "faq": {
+      "title": "Maswali yanayoulizwa mara kwa mara",
+      "desc": "Majibu mafupi kwa maswali yanayoulizwa zaidi.",
+      "search": "Tafuta maswali…",
+      "all": "Yote",
+      "none": "Hakuna maswali yanayolingana."
+    },
+    "glossary": {
+      "title": "Faharasa",
+      "desc": "Maneno ambayo Formalie hutumia, yakifafanuliwa.",
+      "search": "Tafuta maneno…",
+      "none": "Hakuna maneno yanayolingana."
+    },
+    "shortcuts": {
+      "title": "Njia za mkato za kibodi",
+      "mac": "Kwenye Mac, tumia ⌘ mahali panapoonyesha Ctrl."
+    },
+    "support": {
+      "title": "Ongea na mtu",
+      "desc": "Hujapata unachohitaji? Timu yetu ya usaidizi itafurahi kusaidia.",
+      "email": "Tuma barua pepe kwa usaidizi",
+      "site": "Tovuti ya usaidizi"
+    },
+    "feedback": {
+      "question": "Je, makala hii ilisaidia?",
+      "yes": "Ndiyo",
+      "no": "Hapana",
+      "missing": "Nini kilikosekana au hakikuwa wazi?",
+      "skip": "Ruka",
+      "send": "Tuma",
+      "thanks": "Asante. Jibu lako hutusaidia kuboresha kituo cha msaada."
+    },
+    "learnHow": "Jifunze jinsi",
+    "panel": {
+      "title": "Msaada wa ukurasa huu",
+      "desc": "Miongozo na vidokezo vya mahali ulipo.",
+      "openFull": "Fungua makala yote",
+      "none": "Bado hakuna mwongozo wa ukurasa huu",
+      "noneDesc": "Tafuta kwenye kituo cha msaada au kifungue kuona miongozo yote.",
+      "more": "Msaada zaidi wa ukurasa huu",
+      "centre": "Kituo cha msaada"
+    },
+    "tour": {
+      "start": "Anza ziara: {title}",
+      "step": "{n} kati ya {total}",
+      "next": "Endelea",
+      "back": "Rudi",
+      "done": "Imekamilika",
+      "end": "Maliza ziara",
+      "hereTitle": "Hiki hapa",
+      "hereText": "Hiki ndicho kidhibiti ambacho makala inakizungumzia."
+    },
+    "answer": {
+      "title": "Jibu kutoka kituo cha msaada",
+      "from": "Kutoka kwenye makala"
+    }
   }
 }

@@ -161,6 +161,7 @@ const download = () =>
     <DataView
       id="analytics-forms"
       ref="view"
+      empty-help="analytics"
       :columns="columns"
       :fetcher="fetcher"
       :filters="filters"

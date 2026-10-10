@@ -165,8 +165,9 @@ defineShortcuts({ n: { usingInput: false, handler: () => can('api.tokens') && ed
     <template v-if="view === 'tokens'">
       <ApiTokensOverview :insights="insights" :status="statusFilter" @status="pickStatus" />
       <DataView
-        id="api-tokens"
+      id="api-tokens"
         ref="list"
+        empty-help="api-tokens"
         :columns="columns"
         :fetcher="fetcher"
         :filters="filters"

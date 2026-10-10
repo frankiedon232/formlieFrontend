@@ -484,7 +484,20 @@
     "help": "Tampilkan pintasan",
     "toggleSidebar": "Ciutkan atau bentangkan bilah samping",
     "closeOverlay": "Tutup dialog atau panel",
-    "then": "lalu"
+    "then": "lalu",
+    "lists": "Di daftar dan panel",
+    "searchList": "Cari di daftar",
+    "nextItem": "Item berikutnya di panel",
+    "previousItem": "Item sebelumnya di panel",
+    "openItem": "Buka item yang dipilih",
+    "builder": "Di pembuat formulir",
+    "duplicate": "Duplikasi kolom yang dipilih",
+    "removeField": "Hapus kolom yang dipilih",
+    "moveUp": "Pindahkan kolom ke atas",
+    "moveDown": "Pindahkan kolom ke bawah",
+    "editing": "Saat mengedit",
+    "save": "Simpan",
+    "generate": "Tanya asisten AI (di halamannya)"
   },
   "modal": {
     "move": "Pindahkan dialog",
@@ -8738,5 +8751,166 @@
     "sampleVisit": "Kunjungan Anda",
     "sampleHow": "Bagaimana kunjungan Anda?",
     "sampleBetter": "Adakah yang bisa kami tingkatkan?"
+  },
+  "help": {
+    "subtitle": "Jawaban, panduan, dan tips untuk semua hal di Formalie",
+    "back": "Bantuan & dukungan",
+    "areas": "Jelajahi menurut area",
+    "popular": "Artikel populer",
+    "articles": "{n} artikel | {n} artikel",
+    "minutes": "{n} menit baca | {n} menit baca",
+    "updated": "Diperbarui {date}",
+    "readMore": "Baca artikel",
+    "related": "Artikel terkait",
+    "onThisPage": "Di halaman ini",
+    "notFound": "Artikel ini tidak ada",
+    "notFoundDesc": "Mungkin sudah dipindahkan atau dihapus. Coba cari di pusat bantuan.",
+    "notTranslated": "Artikel ini belum diterjemahkan ke bahasa Anda, jadi ditampilkan dalam bahasa Inggris.",
+    "category": {
+      "start": {
+        "name": "Memulai",
+        "desc": "Langkah pertama: formulir pertama Anda, mengenal tampilan, tim Anda."
+      },
+      "forms": {
+        "name": "Formulir",
+        "desc": "Temukan, atur, tutup, arsipkan, dan pulihkan formulir."
+      },
+      "builder": {
+        "name": "Pembuat",
+        "desc": "Pertanyaan, halaman, logika, perhitungan, dan versi."
+      },
+      "design": {
+        "name": "Desain",
+        "desc": "Warna, font, tema, dan halaman arahan."
+      },
+      "templates": {
+        "name": "Templat",
+        "desc": "Mulai dari formulir siap pakai dan buat sendiri."
+      },
+      "sharing": {
+        "name": "Berbagi",
+        "desc": "Tautan, kode QR, undangan, penyematan, dan bahasa."
+      },
+      "responses": {
+        "name": "Respons",
+        "desc": "Lihat, tinjau, dan ekspor yang masuk."
+      },
+      "analytics": {
+        "name": "Analitik",
+        "desc": "Kinerja formulir Anda dan di mana orang berhenti."
+      },
+      "lists": {
+        "name": "List Option",
+        "desc": "Daftar pilihan yang disimpan sekali, dengan tingkatan."
+      },
+      "data": {
+        "name": "Sumber data",
+        "desc": "Basis data Anda sendiri: menyimpan, menjelajah, meminta data."
+      },
+      "api": {
+        "name": "Layanan API",
+        "desc": "Endpoint, token, aturan akses, dan webhook."
+      },
+      "people": {
+        "name": "Orang",
+        "desc": "Tim, profil, peran, dan akses Anda."
+      },
+      "settings": {
+        "name": "Pengaturan",
+        "desc": "Pengaturan ruang kerja, keamanan, dan masuk."
+      },
+      "audit": {
+        "name": "Jejak audit",
+        "desc": "Siapa melakukan apa, kapan, dan dari mana."
+      },
+      "ai": {
+        "name": "Asisten AI",
+        "desc": "Buat, analisis, dan terjemahkan dengan asisten."
+      }
+    },
+    "block": {
+      "tip": "Tips",
+      "note": "Perlu diketahui",
+      "warning": "Hati-hati"
+    },
+    "start": {
+      "title": "Baru di sini? Mulai dari ini"
+    },
+    "search": {
+      "title": "Ada yang bisa kami bantu?",
+      "placeholder": "Cari artikel, pertanyaan, dan istilah…",
+      "articles": "Artikel",
+      "faqs": "Pertanyaan",
+      "terms": "Istilah",
+      "none": "Tidak ada hasil untuk “{q}”",
+      "noneDesc": "Coba kata lain, atau tanyakan ke tim dukungan kami. Kami mencatat pencarian tanpa hasil untuk menulis bantuan yang kurang.",
+      "clear": "Hapus pencarian",
+      "example": {
+        "publish": "publikasikan",
+        "logic": "logika",
+        "export": "ekspor",
+        "roles": "peran",
+        "translate": "terjemahkan"
+      }
+    },
+    "more": {
+      "title": "Bantuan lainnya"
+    },
+    "faq": {
+      "title": "Pertanyaan umum",
+      "desc": "Jawaban singkat untuk pertanyaan yang paling sering diajukan.",
+      "search": "Cari pertanyaan…",
+      "all": "Semua",
+      "none": "Tidak ada pertanyaan yang cocok."
+    },
+    "glossary": {
+      "title": "Glosarium",
+      "desc": "Istilah yang dipakai Formalie, beserta penjelasannya.",
+      "search": "Cari istilah…",
+      "none": "Tidak ada istilah yang cocok."
+    },
+    "shortcuts": {
+      "title": "Pintasan keyboard",
+      "mac": "Di Mac, gunakan ⌘ di tempat tertulis Ctrl."
+    },
+    "support": {
+      "title": "Bicara dengan seseorang",
+      "desc": "Tidak menemukan yang Anda butuhkan? Tim dukungan kami siap membantu.",
+      "email": "Email dukungan",
+      "site": "Situs dukungan"
+    },
+    "feedback": {
+      "question": "Apakah artikel ini membantu?",
+      "yes": "Ya",
+      "no": "Tidak",
+      "missing": "Apa yang kurang atau tidak jelas?",
+      "skip": "Lewati",
+      "send": "Kirim",
+      "thanks": "Terima kasih. Jawaban Anda membantu kami memperbaiki pusat bantuan."
+    },
+    "learnHow": "Pelajari caranya",
+    "panel": {
+      "title": "Bantuan untuk halaman ini",
+      "desc": "Panduan dan tips sesuai posisi Anda.",
+      "openFull": "Buka artikel lengkap",
+      "none": "Belum ada panduan untuk halaman ini",
+      "noneDesc": "Cari di pusat bantuan atau buka untuk melihat semua panduan.",
+      "more": "Bantuan lain untuk halaman ini",
+      "centre": "Pusat bantuan"
+    },
+    "tour": {
+      "start": "Mulai tur: {title}",
+      "step": "{n} dari {total}",
+      "next": "Berikutnya",
+      "back": "Kembali",
+      "done": "Selesai",
+      "end": "Akhiri tur",
+      "hereTitle": "Ini dia",
+      "hereText": "Ini adalah kontrol yang dibahas dalam artikel."
+    },
+    "answer": {
+      "title": "Jawaban dari pusat bantuan",
+      "from": "Dari artikel"
+    }
   }
 }

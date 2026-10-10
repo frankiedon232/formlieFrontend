@@ -170,8 +170,9 @@ defineExpose({ refresh, folders, foldersLoading, loadMeta })
 
 <template>
   <DataView
-    :id="folderId ? 'forms-folder' : 'forms'"
+      :id="folderId ? 'forms-folder' : 'forms'"
     ref="dataView"
+    empty-help="first-form"
     :columns="columns"
     :fetcher="fetcher"
     :filters="filters"

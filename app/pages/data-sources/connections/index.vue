@@ -142,6 +142,7 @@ const rowActions = (row: DataSourceRow): DropdownMenuItem[][] =>
     <DataView
       id="data-connections"
       ref="view"
+      empty-help="data-sources-basics"
       :columns="columns"
       :fetcher="fetcher"
       :filters="filters"

@@ -484,7 +484,20 @@
     "help": "Mostra scorciatoie",
     "toggleSidebar": "Comprimi o espandi la barra laterale",
     "closeOverlay": "Chiudi finestra o pannello",
-    "then": "poi"
+    "then": "poi",
+    "lists": "In elenchi e pannelli",
+    "searchList": "Cerca nell’elenco",
+    "nextItem": "Elemento successivo nel pannello",
+    "previousItem": "Elemento precedente nel pannello",
+    "openItem": "Apri l’elemento selezionato",
+    "builder": "Nell’editor di moduli",
+    "duplicate": "Duplica il campo selezionato",
+    "removeField": "Rimuovi il campo selezionato",
+    "moveUp": "Sposta il campo su",
+    "moveDown": "Sposta il campo giù",
+    "editing": "Durante la modifica",
+    "save": "Salva",
+    "generate": "Chiedi all’assistente IA (nelle sue pagine)"
   },
   "modal": {
     "move": "Sposta finestra",
@@ -8738,5 +8751,166 @@
     "sampleVisit": "La tua visita",
     "sampleHow": "Com’è stata la tua visita?",
     "sampleBetter": "C’è qualcosa che potremmo migliorare?"
+  },
+  "help": {
+    "subtitle": "Risposte, guide e consigli su tutto Formalie",
+    "back": "Aiuto e assistenza",
+    "areas": "Sfoglia per area",
+    "popular": "Articoli popolari",
+    "articles": "{n} articolo | {n} articoli",
+    "minutes": "{n} min di lettura | {n} min di lettura",
+    "updated": "Aggiornato il {date}",
+    "readMore": "Leggi l’articolo",
+    "related": "Articoli correlati",
+    "onThisPage": "In questa pagina",
+    "notFound": "Questo articolo non esiste",
+    "notFoundDesc": "Potrebbe essere stato spostato o rimosso. Cerca invece nel centro assistenza.",
+    "notTranslated": "Questo articolo non è ancora tradotto nella tua lingua, quindi viene mostrato in inglese.",
+    "category": {
+      "start": {
+        "name": "Per iniziare",
+        "desc": "I primi passi: il tuo primo modulo, orientarti, il tuo team."
+      },
+      "forms": {
+        "name": "Moduli",
+        "desc": "Trova, organizza, chiudi, archivia e ripristina i moduli."
+      },
+      "builder": {
+        "name": "Editor",
+        "desc": "Domande, pagine, logica, calcoli e versioni."
+      },
+      "design": {
+        "name": "Design",
+        "desc": "Colori, font, temi e pagine di destinazione."
+      },
+      "templates": {
+        "name": "Modelli",
+        "desc": "Parti da moduli pronti e crea i tuoi."
+      },
+      "sharing": {
+        "name": "Condivisione",
+        "desc": "Link, codici QR, inviti, incorporamento e lingue."
+      },
+      "responses": {
+        "name": "Risposte",
+        "desc": "Vedi, controlla ed esporta ciò che arriva."
+      },
+      "analytics": {
+        "name": "Analisi",
+        "desc": "Come vanno i tuoi moduli e dove le persone si fermano."
+      },
+      "lists": {
+        "name": "List Option",
+        "desc": "Elenchi di scelte gestiti una volta sola, con livelli."
+      },
+      "data": {
+        "name": "Origini dati",
+        "desc": "I tuoi database: archiviare, esplorare, interrogare."
+      },
+      "api": {
+        "name": "Servizio API",
+        "desc": "Endpoint, token, regole di accesso e webhook."
+      },
+      "people": {
+        "name": "Persone",
+        "desc": "Il tuo team, profili, ruoli e accessi."
+      },
+      "settings": {
+        "name": "Impostazioni",
+        "desc": "Impostazioni dello spazio di lavoro, sicurezza e accesso."
+      },
+      "audit": {
+        "name": "Registro di controllo",
+        "desc": "Chi ha fatto cosa, quando e da dove."
+      },
+      "ai": {
+        "name": "Assistente IA",
+        "desc": "Crea, analizza e traduci con l’assistente."
+      }
+    },
+    "block": {
+      "tip": "Suggerimento",
+      "note": "Da sapere",
+      "warning": "Attenzione"
+    },
+    "start": {
+      "title": "Sei nuovo? Inizia da qui"
+    },
+    "search": {
+      "title": "Come possiamo aiutarti?",
+      "placeholder": "Cerca articoli, domande e parole…",
+      "articles": "Articoli",
+      "faqs": "Domande",
+      "terms": "Parole",
+      "none": "Nessun risultato per “{q}”",
+      "noneDesc": "Prova altre parole o chiedi al nostro team di assistenza. Annotiamo le ricerche senza risultati per scrivere la guida mancante.",
+      "clear": "Cancella la ricerca",
+      "example": {
+        "publish": "pubblicare",
+        "logic": "logica",
+        "export": "esportare",
+        "roles": "ruoli",
+        "translate": "tradurre"
+      }
+    },
+    "more": {
+      "title": "Altro aiuto"
+    },
+    "faq": {
+      "title": "Domande frequenti",
+      "desc": "Risposte brevi alle domande più comuni.",
+      "search": "Cerca domande…",
+      "all": "Tutte",
+      "none": "Nessuna domanda corrisponde."
+    },
+    "glossary": {
+      "title": "Glossario",
+      "desc": "Le parole usate da Formalie, spiegate.",
+      "search": "Cerca parole…",
+      "none": "Nessuna parola corrisponde."
+    },
+    "shortcuts": {
+      "title": "Scorciatoie da tastiera",
+      "mac": "Su Mac, usa ⌘ dove compare Ctrl."
+    },
+    "support": {
+      "title": "Parla con una persona",
+      "desc": "Non trovi quello che cerchi? Il nostro team di assistenza ti aiuta volentieri.",
+      "email": "Scrivi all’assistenza",
+      "site": "Sito di assistenza"
+    },
+    "feedback": {
+      "question": "Questo articolo è stato utile?",
+      "yes": "Sì",
+      "no": "No",
+      "missing": "Cosa mancava o non era chiaro?",
+      "skip": "Salta",
+      "send": "Invia",
+      "thanks": "Grazie. La tua risposta ci aiuta a migliorare il centro assistenza."
+    },
+    "learnHow": "Scopri come",
+    "panel": {
+      "title": "Aiuto per questa pagina",
+      "desc": "Guide e consigli per dove ti trovi.",
+      "openFull": "Apri l’articolo completo",
+      "none": "Ancora nessuna guida per questa pagina",
+      "noneDesc": "Cerca nel centro assistenza o aprilo per vedere tutte le guide.",
+      "more": "Altro aiuto per questa pagina",
+      "centre": "Centro assistenza"
+    },
+    "tour": {
+      "start": "Avvia il tour: {title}",
+      "step": "{n} di {total}",
+      "next": "Avanti",
+      "back": "Indietro",
+      "done": "Fatto",
+      "end": "Termina il tour",
+      "hereTitle": "Eccolo",
+      "hereText": "Questo è il controllo di cui parla l’articolo."
+    },
+    "answer": {
+      "title": "Risposta dal centro assistenza",
+      "from": "Dall’articolo"
+    }
   }
 }

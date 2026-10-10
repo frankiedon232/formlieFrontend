@@ -1,0 +1,1909 @@
+{
+  "articles": [
+    {
+      "id": "welcome",
+      "category": "start",
+      "start": 1,
+      "popular": true,
+      "minutes": 2,
+      "route": "/forms",
+      "related": [
+        "first-form",
+        "find-your-way",
+        "invite-your-team"
+      ],
+      "keywords": [
+        "开始",
+        "入门",
+        "概览",
+        "新建",
+        "是什么"
+      ],
+      "title": "欢迎使用 Formalie",
+      "summary": "了解 Formalie 能做什么，以及门户的布局。",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Formalie 帮助你的组织用表单收集信息，查看收到的内容，并把它们发送到需要的地方：数据库、通过 API 连接的其他系统，或者一份报告。"
+        },
+        {
+          "type": "h",
+          "text": "主要功能"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**表单**：创建表单、分享表单，并跟进收到的回复。",
+            "**数据源**：连接你自己的数据库，用来存储回复并浏览数据。",
+            "**API 服务**：让其他系统通过你自己的端点读取和发送数据。",
+            "**AI 助手**：帮你创建表单、分析回答和翻译。",
+            "**成员**：邀请团队成员，并决定每个人可以做什么。"
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "在任何页面按 **Ctrl + K**（Mac 上按 **⌘ + K**），都可以搜索页面、表单或设置。"
+        },
+        {
+          "type": "show",
+          "label": "打开我的表单",
+          "to": "/forms"
+        }
+      ]
+    },
+    {
+      "id": "find-your-way",
+      "category": "start",
+      "start": 2,
+      "minutes": 2,
+      "route": null,
+      "related": [
+        "welcome",
+        "keyboard-and-search"
+      ],
+      "keywords": [
+        "菜单",
+        "侧边栏",
+        "导轨",
+        "导航",
+        "在哪里"
+      ],
+      "title": "熟悉界面",
+      "summary": "导轨、菜单、页眉和搜索。",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "最左边的窄栏是**导轨**。每个图标对应 Formalie 的一个区域：表单、数据源、API 服务、AI 助手和成员。旁边的菜单会随你所在的区域而变化。"
+        },
+        {
+          "type": "p",
+          "text": "每个页面顶部都有页面标题、你当前的位置（面包屑导航）和页面按钮。主按钮永远是右侧的深色按钮。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "用 « 按钮或 **[** 键可以**收起菜单**，获得更多空间。",
+            "**深色模式**在菜单底部的“系统”下面。",
+            "**帮助与支持**在导轨底部和“系统”分组里。"
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "在手机上，用左上角的 ☰ 按钮打开菜单。"
+        }
+      ]
+    },
+    {
+      "id": "first-form",
+      "category": "start",
+      "start": 3,
+      "popular": true,
+      "minutes": 3,
+      "route": "/forms/new",
+      "related": [
+        "builder-basics",
+        "share-a-form",
+        "use-a-template"
+      ],
+      "keywords": [
+        "创建",
+        "新建表单",
+        "第一个",
+        "制作表单"
+      ],
+      "title": "创建你的第一个表单",
+      "summary": "从空白页、模板或一段描述开始，几分钟就能完成。",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "你可以用三种方式开始一个表单：从空白页开始、从 Formalie 的模板开始，或者向 AI 助手描述你的需求。"
+        },
+        {
+          "type": "steps",
+          "items": [
+            "点击“表单”页面右上角的**新建表单**。",
+            "选择**空白**，挑选一个**模板**，或者**导入**表单文件。",
+            "给表单起个名字，也可以选一个文件夹。",
+            "生成器会打开：从左侧的字段列表添加问题。",
+            "满意后，点击**发布**并分享链接。"
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "不知道从哪里开始？AI 助手可以根据几句话起草整个表单：打开 **AI 助手 → 创建表单**。"
+        },
+        {
+          "type": "show",
+          "label": "开始新表单",
+          "to": "/forms/new",
+          "target": "new-form"
+        }
+      ]
+    },
+    {
+      "id": "invite-your-team",
+      "category": "start",
+      "start": 4,
+      "minutes": 2,
+      "route": "/people",
+      "related": [
+        "sign-up-links",
+        "roles-and-access"
+      ],
+      "keywords": [
+        "邀请",
+        "团队",
+        "同事",
+        "添加用户",
+        "成员"
+      ],
+      "title": "邀请你的团队",
+      "summary": "为同事创建个人资料，或分享一个注册链接。",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "工作区里的每个人都有一份个人资料，包含部门、职位和角色。角色决定他们能看到什么、能做什么。"
+        },
+        {
+          "type": "steps",
+          "items": [
+            "从导轨打开**成员**。",
+            "点击**添加用户**创建个人资料：对方会收到一封用来设置密码的邮件。",
+            "或者打开**注册链接**并分享链接：通过链接注册的人要等你批准。"
+          ]
+        },
+        {
+          "type": "show",
+          "label": "打开成员",
+          "to": "/people",
+          "target": "add-user"
+        }
+      ]
+    },
+    {
+      "id": "keyboard-and-search",
+      "category": "start",
+      "start": 5,
+      "minutes": 1,
+      "route": null,
+      "related": [
+        "find-your-way"
+      ],
+      "keywords": [
+        "快捷键",
+        "键盘",
+        "搜索",
+        "ctrl k",
+        "命令"
+      ],
+      "title": "用搜索和快捷键提高效率",
+      "summary": "用 Ctrl + K 查找任何内容，用键盘快速切换。",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "按 **Ctrl + K**（Mac 上按 **⌘ + K**）打开搜索。输入页面、表单、设置或人员名称的一部分，然后按 Enter。"
+        },
+        {
+          "type": "p",
+          "text": "按 **?** 可以查看所有键盘快捷键。很多页面还有自己的快捷键，例如在面板中用 **J** 和 **K** 在回复之间切换。"
+        },
+        {
+          "type": "tip",
+          "text": "所有列表和面板都可以只用键盘操作：Tab 移动，Enter 打开，Esc 关闭。"
+        }
+      ]
+    },
+    {
+      "id": "forms-list",
+      "category": "forms",
+      "popular": true,
+      "minutes": 2,
+      "route": "/forms",
+      "related": [
+        "form-lifecycle",
+        "folders"
+      ],
+      "keywords": [
+        "表单列表",
+        "查找表单",
+        "筛选",
+        "网格",
+        "表格"
+      ],
+      "title": "查找并整理你的表单",
+      "summary": "搜索、筛选、排序，并在表格和卡片之间切换。",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "“表单”页面列出了你有权查看的所有表单。顶部的两张卡片显示最近的回复，以及表单在草稿、已发布和已关闭之间的分布；点击图例中的状态，就只显示这些表单。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**搜索**：按名称、标签或所有者查找。",
+            "**筛选**：按状态、文件夹、所有者或标签筛选；筛选条件以标签形式显示，可以随时清除。",
+            "**列**：显示、隐藏表格的列，并调整列的顺序。",
+            "**表格 / 网格**：在行和卡片之间切换；Formalie 会记住你的选择。",
+            "右键点击表单，或使用它的 **⋯** 菜单，可以进行创建副本、移动或归档等操作。"
+          ]
+        },
+        {
+          "type": "show",
+          "label": "打开表单列表",
+          "to": "/forms",
+          "target": "view-switch"
+        }
+      ]
+    },
+    {
+      "id": "form-lifecycle",
+      "category": "forms",
+      "minutes": 3,
+      "route": "/forms",
+      "related": [
+        "publish-and-versions",
+        "trash"
+      ],
+      "keywords": [
+        "草稿",
+        "发布",
+        "关闭",
+        "归档",
+        "状态",
+        "重新开放"
+      ],
+      "title": "草稿、已发布、已关闭和已归档",
+      "summary": "每种状态的含义，以及表单如何在状态之间切换。",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "**草稿**：正在制作中，暂时还没有人可以填写。",
+            "**已发布**：通过链接开放回复。",
+            "**已关闭**：链接仍然可以打开，但会显示表单已关闭，不再接收新的回复。",
+            "**已归档**：已收起；不再显示在主列表中，回复会保留。"
+          ]
+        },
+        {
+          "type": "p",
+          "text": "已发布的表单可能有**未发布的更改**：你的修改会保留在草稿中，直到再次发布，所以填写的人永远不会看到改到一半的内容。"
+        },
+        {
+          "type": "tip",
+          "text": "在**分享 → 开放时间**中设置开放和关闭日期，表单就会自动开放和关闭。"
+        }
+      ]
+    },
+    {
+      "id": "folders",
+      "category": "forms",
+      "minutes": 2,
+      "route": "/forms",
+      "related": [
+        "forms-list",
+        "roles-and-access"
+      ],
+      "keywords": [
+        "文件夹",
+        "整理",
+        "分组",
+        "访问",
+        "隐藏"
+      ],
+      "title": "文件夹以及谁能看到它们",
+      "summary": "把表单放进文件夹，并让部分文件夹只对特定的人可见。",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "文件夹用来把表单分组，例如按团队或项目。点击菜单中“文件夹”旁边的 **+** 来创建，然后在表单的 **⋯** 菜单中把表单移进去。"
+        },
+        {
+          "type": "p",
+          "text": "管理员可以通过**文件夹访问权限**把文件夹限制给某些角色、部门或个人。其他人在任何地方都看不到这个文件夹、其中的表单和它们的回复，搜索和导出里也不会出现。"
+        }
+      ]
+    },
+    {
+      "id": "trash",
+      "category": "forms",
+      "minutes": 1,
+      "route": "/forms/trash",
+      "related": [
+        "form-lifecycle"
+      ],
+      "keywords": [
+        "删除",
+        "回收站",
+        "恢复",
+        "找回"
+      ],
+      "title": "删除和恢复表单",
+      "summary": "删除的表单会在回收站保留 30 天。",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "删除表单时，它连同回复会进入**回收站**，保留 30 天。在这 30 天内，你随时可以从那里恢复。"
+        },
+        {
+          "type": "warning",
+          "text": "在回收站中点击**永久删除**，会彻底移除该表单及其所有回复，无法撤销。"
+        },
+        {
+          "type": "show",
+          "label": "打开回收站",
+          "to": "/forms/trash"
+        }
+      ]
+    },
+    {
+      "id": "builder-basics",
+      "category": "builder",
+      "popular": true,
+      "minutes": 3,
+      "route": "/forms/:id/build",
+      "related": [
+        "field-types",
+        "builder-logic",
+        "publish-and-versions"
+      ],
+      "keywords": [
+        "生成器",
+        "添加字段",
+        "问题",
+        "拖动",
+        "页面",
+        "布局"
+      ],
+      "title": "制作表单",
+      "summary": "添加问题，把它们排成行和页面，并修改它们的设置。",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "生成器分为三部分：左侧是**字段列表**，中间是**表单**，右侧是所选内容的**设置**。"
+        },
+        {
+          "type": "steps",
+          "items": [
+            "把字段从列表拖到表单中，或者点击它，把它添加到所选字段的后面。",
+            "点击字段可以修改问题、帮助文字、是否必填等。",
+            "把字段并排放置，它们就会在同一行；用**宽度**调整大小。",
+            "用**添加页面**把较长的表单拆分成多页。",
+            "你的更改会在操作时自动保存；**撤销**和**重做**在顶部。"
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "不用鼠标？选中字段后，用 **Alt + ↑ / ↓** 移动，**Ctrl + D** 创建副本，**Delete** 删除。"
+        },
+        {
+          "type": "tip",
+          "text": "生成器里的**助手**按钮会建议缺少的问题、撰写帮助文字，并检查你的表单。"
+        }
+      ]
+    },
+    {
+      "id": "field-types",
+      "category": "builder",
+      "minutes": 3,
+      "route": "/forms/:id/build",
+      "related": [
+        "builder-basics",
+        "lists-basics"
+      ],
+      "keywords": [
+        "字段",
+        "类型",
+        "问题",
+        "上传",
+        "签名",
+        "评分",
+        "地址"
+      ],
+      "title": "该用哪种字段",
+      "summary": "Formalie 提供的问题类型，以及各自的使用场景。",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "**文本**：短回答和长回答、邮箱、电话、数字、金额、姓名。",
+            "**日期**：日期、时间、日期和时间、日期范围、时长。",
+            "**选择**：下拉菜单、单选、复选框、是 / 否、排序、矩阵、同意。",
+            "**评分**：星级、0 到 10 的量表、滑块。",
+            "**文件**：文件上传、照片上传、签名。",
+            "**位置**：地址、国家 / 地区、语言、时区。",
+            "**高级**：隐藏值和计算。",
+            "**布局**：章节标题、文本、图片和分隔线。"
+          ]
+        },
+        {
+          "type": "p",
+          "text": "选最具体的字段：邮箱字段会在输入时检查地址，日期字段会显示日历，电话字段会检查号码。"
+        },
+        {
+          "type": "tip",
+          "text": "很长的选项列表（国家、部门）最好做成 **List Option**，只需维护一次，就能在许多表单中使用。"
+        }
+      ]
+    },
+    {
+      "id": "builder-logic",
+      "category": "builder",
+      "minutes": 3,
+      "route": "/forms/:id/logic",
+      "related": [
+        "calculations",
+        "builder-basics"
+      ],
+      "keywords": [
+        "逻辑",
+        "规则",
+        "显示",
+        "隐藏",
+        "条件",
+        "跳过",
+        "跳转"
+      ],
+      "title": "用逻辑显示合适的问题",
+      "summary": "根据之前的回答显示、隐藏、设为必填或跳过问题。",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "逻辑规则会在人们填写时改变表单：回答“是”之后才显示后续问题，紧急请求必须填写电话号码，或者直接跳到末尾。"
+        },
+        {
+          "type": "steps",
+          "items": [
+            "打开表单的**逻辑**标签页。",
+            "点击**添加规则**并选择**当**：一个问题、一个条件和一个值。",
+            "选择**那么**：显示、隐藏、设为必填、设置值或跳转到某个页面。",
+            "需要时，用**并且** / **或者**添加更多条件。"
+          ]
+        },
+        {
+          "type": "note",
+          "text": "被规则隐藏的问题永远不是必填，因此人们总能提交表单。"
+        }
+      ]
+    },
+    {
+      "id": "calculations",
+      "category": "builder",
+      "minutes": 2,
+      "route": "/forms/:id/build",
+      "related": [
+        "builder-logic",
+        "field-types"
+      ],
+      "keywords": [
+        "计算",
+        "公式",
+        "合计",
+        "得分",
+        "求和"
+      ],
+      "title": "用计算得出合计和得分",
+      "summary": "根据回答算出合计、平均值和得分。",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**计算**字段会根据其他回答算出一个值，例如数量 × 单价、平均评分或风险得分。填写者在填写表单时就能看到结果。"
+        },
+        {
+          "type": "p",
+          "text": "写公式时，把问题的键放在花括号里，例如 **{quantity} * {unit_price}**。选项也可以带分值，这样就能相加。"
+        }
+      ]
+    },
+    {
+      "id": "publish-and-versions",
+      "category": "builder",
+      "minutes": 2,
+      "route": "/forms/:id/versions",
+      "related": [
+        "form-lifecycle",
+        "share-a-form"
+      ],
+      "keywords": [
+        "发布",
+        "版本",
+        "恢复",
+        "比较",
+        "历史"
+      ],
+      "title": "发布和版本",
+      "summary": "每次发布都会保存为一个版本，可以比较和恢复。",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**发布**会让你的草稿成为正式上线的表单。每次发布都会保存为带编号的版本，还可以附上一条说明改动内容的备注。"
+        },
+        {
+          "type": "p",
+          "text": "在**版本**中，你可以把任意版本与草稿比较，也可以把旧版本恢复到草稿中。"
+        },
+        {
+          "type": "tip",
+          "text": "没有新内容可发布时，“发布”按钮会变灰。"
+        }
+      ]
+    },
+    {
+      "id": "design-a-form",
+      "category": "design",
+      "popular": true,
+      "minutes": 3,
+      "route": "/forms/:id/design",
+      "related": [
+        "themes",
+        "landing-pages"
+      ],
+      "keywords": [
+        "设计",
+        "颜色",
+        "字体",
+        "徽标",
+        "主题",
+        "外观"
+      ],
+      "title": "设计表单的外观",
+      "summary": "颜色、字体、布局、页眉和感谢页面。",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "打开表单的**设计**标签页来修改外观。预览会显示填写者在电脑、平板或手机上看到的效果。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "从现成的**起点**开始，再慢慢调整。",
+            "修改颜色、字体，以及字段和按钮的大小。",
+            "添加你的徽标、封面图片或顶部的彩色横幅。",
+            "设计填写者提交后看到的**感谢页面**。"
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "把设计保存为**主题**，就能一键用到其他表单上。"
+        }
+      ]
+    },
+    {
+      "id": "themes",
+      "category": "design",
+      "minutes": 2,
+      "route": "/settings/themes",
+      "related": [
+        "design-a-form",
+        "form-defaults"
+      ],
+      "keywords": [
+        "主题",
+        "品牌",
+        "已保存的设计",
+        "默认"
+      ],
+      "title": "主题",
+      "summary": "设计只需保存一次，就能用在任何表单上。",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "主题就是保存好的设计。Formalie 自带一套主题；你的工作区也可以在设计器里添加自己的主题，或者让 AI 助手根据你的品牌色推荐设计。"
+        },
+        {
+          "type": "p",
+          "text": "在**设置 → 表单默认值**中选择新表单默认使用的主题。"
+        },
+        {
+          "type": "show",
+          "label": "打开主题",
+          "to": "/settings/themes"
+        }
+      ]
+    },
+    {
+      "id": "landing-pages",
+      "category": "design",
+      "minutes": 1,
+      "route": "/settings/landing-pages",
+      "related": [
+        "design-a-form"
+      ],
+      "keywords": [
+        "落地页",
+        "表单所在的页面",
+        "横幅",
+        "边框"
+      ],
+      "title": "落地页",
+      "summary": "表单所在的页面：横幅、简介和要点。",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "落地页是你的表单所在的页面：带标题的横幅、一段简介、填写所需时间，以及你的组织信息。在设计器里选择一个，或者在**落地页**中保存你自己的。"
+        }
+      ]
+    },
+    {
+      "id": "use-a-template",
+      "category": "templates",
+      "popular": true,
+      "minutes": 2,
+      "route": "/templates",
+      "related": [
+        "save-as-template",
+        "first-form"
+      ],
+      "keywords": [
+        "模板",
+        "图库",
+        "示例",
+        "现成"
+      ],
+      "title": "从模板开始",
+      "summary": "适用于多种场景的现成表单，支持你的语言。",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "模板库里有人力资源、健康与安全、活动、销售等多种现成表单。每个模板都带有问题、逻辑、计算和匹配的设计。"
+        },
+        {
+          "type": "steps",
+          "items": [
+            "从菜单打开**模板**。",
+            "按类别浏览或搜索。",
+            "打开一个模板，在预览中试用。",
+            "点击**使用模板**：生成器中会打开一个新的草稿表单。"
+          ]
+        },
+        {
+          "type": "show",
+          "label": "浏览模板",
+          "to": "/templates"
+        }
+      ]
+    },
+    {
+      "id": "save-as-template",
+      "category": "templates",
+      "minutes": 1,
+      "route": "/templates",
+      "related": [
+        "use-a-template"
+      ],
+      "keywords": [
+        "另存为模板",
+        "工作区模板",
+        "重复使用"
+      ],
+      "title": "制作你自己的模板",
+      "summary": "把表单保存为工作区模板。",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "任何表单都可以成为工作区的模板：打开它的 **⋯** 菜单，选择**另存为模板**，填写名称、说明和类别。你的模板会显示在**你的模板**下。"
+        }
+      ]
+    },
+    {
+      "id": "share-a-form",
+      "category": "sharing",
+      "popular": true,
+      "minutes": 3,
+      "route": "/forms/:id/share",
+      "related": [
+        "who-can-fill-in",
+        "embed-a-form",
+        "form-languages"
+      ],
+      "keywords": [
+        "分享",
+        "链接",
+        "二维码",
+        "邮件",
+        "发送"
+      ],
+      "title": "分享表单",
+      "summary": "链接、二维码、邮件邀请和短链接。",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "打开已发布表单的**分享**标签页。在这里可以复制链接、下载二维码、创建短链接或发送邮件邀请。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**链接**：复制后粘贴到任何地方。",
+            "**自定义链接**：选择一个易读的地址。",
+            "**二维码**：用于海报和印刷品。",
+            "**邀请**：给对方发一封带专属链接的邮件，并查看谁已经回复。"
+          ]
+        },
+        {
+          "type": "show",
+          "label": "打开我的表单",
+          "to": "/forms"
+        }
+      ]
+    },
+    {
+      "id": "who-can-fill-in",
+      "category": "sharing",
+      "minutes": 2,
+      "route": "/forms/:id/share",
+      "related": [
+        "share-a-form"
+      ],
+      "keywords": [
+        "访问",
+        "密码",
+        "仅限受邀者",
+        "组织",
+        "限制",
+        "开放时间"
+      ],
+      "title": "谁可以填写，以及何时",
+      "summary": "对所有人开放、需要密码、仅限受邀者，或仅限你的组织。",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "**任何拿到链接的人**。",
+            "**需要密码**，由你告诉对方。",
+            "**仅限受邀者**：只有你通过邮件邀请的人。",
+            "**你的组织**：已登录你的工作区的人。"
+          ]
+        },
+        {
+          "type": "p",
+          "text": "在**开放时间**中，你可以在设定的日期开放和关闭表单，也可以在回复数量达到上限后停止接收。"
+        }
+      ]
+    },
+    {
+      "id": "embed-a-form",
+      "category": "sharing",
+      "minutes": 1,
+      "route": "/forms/:id/share",
+      "related": [
+        "share-a-form"
+      ],
+      "keywords": [
+        "嵌入",
+        "网站",
+        "iframe",
+        "小组件"
+      ],
+      "title": "把表单放到你的网站上",
+      "summary": "把表单嵌入你自己的页面。",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "在**分享 → 嵌入**中复制代码，粘贴到你的网站里。你还可以限制哪些网站可以显示该表单。"
+        }
+      ]
+    },
+    {
+      "id": "form-languages",
+      "category": "sharing",
+      "minutes": 2,
+      "route": "/forms/:id/build",
+      "related": [
+        "ai-translate",
+        "share-a-form"
+      ],
+      "keywords": [
+        "语言",
+        "翻译",
+        "多语言",
+        "法语",
+        "阿拉伯语"
+      ],
+      "title": "多语言表单",
+      "summary": "用更多语言提供表单；填写者可以在顶部切换。",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "表单有一种主要语言，也可以提供更多语言。在生成器中打开表单设置，在**更多语言**下添加一种语言，然后并排翻译每一段文字。"
+        },
+        {
+          "type": "tip",
+          "text": "**用 AI 翻译剩余内容**会补全尚未翻译的部分；发布前请你检查每一段文字。"
+        }
+      ]
+    },
+    {
+      "id": "responses-basics",
+      "category": "responses",
+      "popular": true,
+      "minutes": 3,
+      "route": "/responses",
+      "related": [
+        "review-responses",
+        "export-responses"
+      ],
+      "keywords": [
+        "回复",
+        "回答",
+        "提交",
+        "查看回答"
+      ],
+      "title": "查看你的回复",
+      "summary": "每一条回答，按表单查看或跨所有表单查看。",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**回复**列出了你的表单及其回复。打开一个表单，可以用表格或卡片查看它的回复；打开一条回复，可以在面板中看到所有回答。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "用 **J** 和 **K** 跳到下一条或上一条回复。",
+            "按状态、日期、渠道或回答内容筛选。",
+            "**洞察**按问题给出摘要：选项、平均值和最新的文本回答。"
+          ]
+        },
+        {
+          "type": "show",
+          "label": "打开回复",
+          "to": "/responses"
+        }
+      ]
+    },
+    {
+      "id": "review-responses",
+      "category": "responses",
+      "minutes": 2,
+      "route": "/responses",
+      "related": [
+        "responses-basics"
+      ],
+      "keywords": [
+        "审阅",
+        "状态",
+        "批准",
+        "拒绝",
+        "标签",
+        "备注"
+      ],
+      "title": "审阅回复",
+      "summary": "用状态、标签和备注处理收到的回复。",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "每条回复都有一个状态：**新回复**、**已审阅**、**已批准**或**已拒绝**。在回复面板顶部一键即可更改。"
+        },
+        {
+          "type": "p",
+          "text": "添加标签和备注方便跟进。更正回答是一项单独的权限，所以你的角色可能只能审阅，而不能修改填写者写的内容。"
+        }
+      ]
+    },
+    {
+      "id": "export-responses",
+      "category": "responses",
+      "minutes": 2,
+      "route": "/responses/exports",
+      "related": [
+        "responses-basics",
+        "data-sources-basics"
+      ],
+      "keywords": [
+        "导出",
+        "excel",
+        "csv",
+        "下载",
+        "pdf"
+      ],
+      "title": "导出回复",
+      "summary": "把回复下载为电子表格或文件。",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "在表单的回复页面点击**导出**，选择格式和要包含的内容。大型导出会在后台准备，你可以在**导出**中查看进度，文件准备好后会收到消息。"
+        }
+      ]
+    },
+    {
+      "id": "analytics",
+      "category": "analytics",
+      "popular": true,
+      "minutes": 2,
+      "route": "/analytics",
+      "related": [
+        "responses-basics",
+        "ai-analysis"
+      ],
+      "keywords": [
+        "分析",
+        "浏览量",
+        "完成",
+        "流失",
+        "漏斗"
+      ],
+      "title": "表单的表现如何",
+      "summary": "浏览量、开始数、完成数，以及人们在哪里停下。",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**分析**会显示每个表单有多少人打开、开始和完成，平均耗时，以及人们在哪里停下。打开一个表单，可以看到每个页面和每个问题的情况。"
+        },
+        {
+          "type": "tip",
+          "text": "很多人在某个问题上停下，往往说明这个问题不清楚或要求太多。可以试试缩短问题，或者改成选填。"
+        }
+      ]
+    },
+    {
+      "id": "lists-basics",
+      "category": "lists",
+      "minutes": 3,
+      "route": "/option-sets",
+      "related": [
+        "field-types"
+      ],
+      "keywords": [
+        "列表",
+        "选项",
+        "选择",
+        "下拉菜单",
+        "层级",
+        "国家",
+        "动态"
+      ],
+      "title": "List Option：一次维护选项",
+      "summary": "在许多表单中使用的选项列表，可以分层级。",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**List Option** 存放你在许多表单中使用的选项，例如部门、产品或国家。只需修改一次列表，所有使用它的表单都会随之更新。"
+        },
+        {
+          "type": "p",
+          "text": "列表可以有**层级**：选择一个国家后，只显示它的地区，再选地区后显示它的城市。非常大的列表保存在服务器上，随着输入逐步加载。"
+        },
+        {
+          "type": "note",
+          "text": "标有 **Formalie** 的列表由系统提供给每个工作区；你可以使用，但不能修改。"
+        }
+      ]
+    },
+    {
+      "id": "data-sources-basics",
+      "category": "data",
+      "minutes": 3,
+      "route": "/data-sources",
+      "related": [
+        "database-explorer",
+        "export-responses"
+      ],
+      "keywords": [
+        "数据库",
+        "连接",
+        "数据源",
+        "存储",
+        "postgres",
+        "mysql"
+      ],
+      "title": "把回复存储到你自己的数据库",
+      "summary": "连接数据库，并把表单的回复发送过去。",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**数据源**把 Formalie 连接到你自己的数据库。这样，回复也可以存储在那里，存放在 Formalie 创建并与表单保持同步的表中。"
+        },
+        {
+          "type": "steps",
+          "items": [
+            "从导轨打开**数据源**，点击**添加连接**。",
+            "选择数据库类型并填写详细信息；点击**立即测试**可检查是否可用。",
+            "在表单的**回复存储**中选择该连接，新的回复将存储在那里。"
+          ]
+        },
+        {
+          "type": "warning",
+          "text": "给 Formalie 一个只拥有必要权限的数据库用户。"
+        }
+      ]
+    },
+    {
+      "id": "database-explorer",
+      "category": "data",
+      "minutes": 2,
+      "route": "/data-sources/explorer",
+      "related": [
+        "data-sources-basics"
+      ],
+      "keywords": [
+        "浏览器",
+        "查询",
+        "sql",
+        "表",
+        "行"
+      ],
+      "title": "浏览和查询你的数据",
+      "summary": "不离开 Formalie，就能浏览表并运行查询。",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**数据库浏览器**显示连接中的表和它们的行。**查询编辑器**运行 SQL；会修改数据的语句需要单独的权限，并且会先让你确认。"
+        }
+      ]
+    },
+    {
+      "id": "api-basics",
+      "category": "api",
+      "minutes": 3,
+      "route": "/api-service",
+      "related": [
+        "api-tokens",
+        "webhooks"
+      ],
+      "keywords": [
+        "api",
+        "端点",
+        "集成",
+        "服务",
+        "rest"
+      ],
+      "title": "API 服务",
+      "summary": "为其他系统读取和发送数据提供的专属端点。",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**API 服务**为其他系统提供专属端点：读取回复、发送新回复，或查询 List Option。每个服务把端点归为一组，并有自己的文档页面。"
+        },
+        {
+          "type": "steps",
+          "items": [
+            "打开 **API 服务**并创建一个服务。",
+            "为你想开放的表单或数据添加端点。",
+            "为将要调用它的系统创建一个**令牌**。",
+            "在文档页面试用端点。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "api-tokens",
+      "category": "api",
+      "minutes": 2,
+      "route": "/api-service/auth",
+      "related": [
+        "api-basics"
+      ],
+      "keywords": [
+        "令牌",
+        "密钥",
+        "请求头",
+        "机密",
+        "访问规则"
+      ],
+      "title": "令牌和访问规则",
+      "summary": "谁可以调用你的端点、从哪里调用，以及调用频率。",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "每个调用你的 API 的系统都会拿到一个**令牌**。令牌可以设置过期，也可以随时撤销。**访问规则**可以限制地址、时间段和允许的调用次数。"
+        },
+        {
+          "type": "warning",
+          "text": "令牌只显示一次。请妥善保管，千万不要放进公开的网页里。"
+        }
+      ]
+    },
+    {
+      "id": "webhooks",
+      "category": "api",
+      "minutes": 2,
+      "route": "/api-service",
+      "related": [
+        "api-basics"
+      ],
+      "keywords": [
+        "webhook",
+        "通知",
+        "事件",
+        "回调"
+      ],
+      "title": "Webhook",
+      "summary": "事情一发生，就立刻告诉另一个系统。",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Webhook 会在发生某件事（例如收到新回复）时，向另一个系统的地址发送一条消息。Formalie 会重试失败的投递，并显示每次投递，方便你查看发送了什么。"
+        }
+      ]
+    },
+    {
+      "id": "roles-and-access",
+      "category": "people",
+      "popular": true,
+      "minutes": 3,
+      "route": "/people/roles",
+      "related": [
+        "invite-your-team",
+        "folders"
+      ],
+      "keywords": [
+        "角色",
+        "权限",
+        "访问",
+        "管理员",
+        "成员",
+        "自己的",
+        "共享"
+      ],
+      "title": "角色与权限",
+      "summary": "精确决定每个角色能看到什么、能做什么。",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "每个人都有一个角色。所有者可以做任何事；管理员和成员开箱即用，也可以修改；你还可以添加自己的角色。"
+        },
+        {
+          "type": "p",
+          "text": "每项操作都有一个范围：**无**、**自己的**（自己创建的）、**共享的**（与自己共享的表单）、**自己的和共享的**或**全部**。例如，一个角色可以查看所有回复，但只能修改自己的表单。"
+        },
+        {
+          "type": "show",
+          "label": "打开角色与权限",
+          "to": "/people/roles"
+        }
+      ]
+    },
+    {
+      "id": "sign-up-links",
+      "category": "people",
+      "minutes": 2,
+      "route": "/people",
+      "related": [
+        "invite-your-team"
+      ],
+      "keywords": [
+        "注册",
+        "链接",
+        "批准",
+        "加入"
+      ],
+      "title": "注册链接和审批",
+      "summary": "让人们申请账户，由你批准。",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "注册链接让人们自己创建账户。你可以把它限制为只允许你组织的邮箱地址。他们的账户会停留在**等待批准**，直到管理员批准并为其分配角色。"
+        }
+      ]
+    },
+    {
+      "id": "your-profile",
+      "category": "people",
+      "minutes": 2,
+      "route": "/profile",
+      "related": [
+        "two-step-sign-in"
+      ],
+      "keywords": [
+        "个人资料",
+        "密码",
+        "照片",
+        "语言",
+        "时区"
+      ],
+      "title": "你的个人资料",
+      "summary": "照片、姓名、语言、时区、密码和登录。",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "点击菜单底部你的名字，打开个人资料。你可以修改照片、姓名、语言、时区和日期格式、密码以及两步登录，还可以查看你在哪些地方登录。"
+        }
+      ]
+    },
+    {
+      "id": "two-step-sign-in",
+      "category": "settings",
+      "minutes": 2,
+      "route": "/profile",
+      "related": [
+        "your-profile",
+        "security-settings"
+      ],
+      "keywords": [
+        "两步",
+        "2fa",
+        "验证器",
+        "验证码",
+        "恢复"
+      ],
+      "title": "两步登录",
+      "summary": "登录时，需要输入来自应用、邮件或短信的验证码。",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "两步登录会在输入密码后再要求输入验证码。最安全的做法是在个人资料中设置验证器应用，并把恢复码保存在安全的地方。"
+        }
+      ]
+    },
+    {
+      "id": "workspace-settings",
+      "category": "settings",
+      "minutes": 2,
+      "route": "/settings",
+      "related": [
+        "security-settings",
+        "form-defaults"
+      ],
+      "keywords": [
+        "设置",
+        "公司",
+        "品牌",
+        "语言",
+        "外观"
+      ],
+      "title": "工作区设置",
+      "summary": "你的组织、品牌、语言、外观等。",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**设置**包含适用于整个工作区的内容：公司信息、品牌、语言与地区、外观、登录、安全、通知、邮件模板、隐私与数据，以及表单默认值。"
+        },
+        {
+          "type": "show",
+          "label": "打开设置",
+          "to": "/settings"
+        }
+      ]
+    },
+    {
+      "id": "security-settings",
+      "category": "settings",
+      "minutes": 2,
+      "route": "/settings/security",
+      "related": [
+        "two-step-sign-in",
+        "audit-trail"
+      ],
+      "keywords": [
+        "安全",
+        "密码规则",
+        "ip",
+        "会话",
+        "允许列表"
+      ],
+      "title": "安全设置",
+      "summary": "密码规则、两步登录、会话和允许的网络。",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "在**设置 → 安全**中，管理员可以设置密码规则、要求两步登录、决定人们保持登录多长时间，必要时还可以只允许从你的网络登录。"
+        },
+        {
+          "type": "warning",
+          "text": "限制网络之前，请先添加你自己的地址，否则你可能会把自己锁在外面。"
+        }
+      ]
+    },
+    {
+      "id": "form-defaults",
+      "category": "settings",
+      "minutes": 1,
+      "route": "/settings/form-defaults",
+      "related": [
+        "themes"
+      ],
+      "keywords": [
+        "默认值",
+        "新建表单",
+        "主题",
+        "感谢"
+      ],
+      "title": "表单默认值",
+      "summary": "每个新表单的起始设置。",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**表单默认值**设置每个新表单起步时使用的主题、进度条、标签、感谢信息和邮件。已有的表单不会改变。"
+        }
+      ]
+    },
+    {
+      "id": "audit-trail",
+      "category": "audit",
+      "minutes": 2,
+      "route": "/audit",
+      "related": [
+        "security-settings"
+      ],
+      "keywords": [
+        "审计",
+        "日志",
+        "历史",
+        "谁做的",
+        "活动"
+      ],
+      "title": "审计日志",
+      "summary": "谁在何时从何处做了什么。",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**审计日志**记录你工作区中的每一项操作：登录，以及对表单、回复、设置、成员等的更改，包括谁做的、什么时候做的、从哪里做的。"
+        },
+        {
+          "type": "p",
+          "text": "按区域、人员或日期筛选，打开一条记录可以查看改了什么。如果你的角色允许，还可以导出审计日志。"
+        },
+        {
+          "type": "show",
+          "label": "打开审计日志",
+          "to": "/audit"
+        }
+      ]
+    },
+    {
+      "id": "ai-overview",
+      "category": "ai",
+      "popular": true,
+      "minutes": 2,
+      "route": "/ai",
+      "related": [
+        "ai-create-form",
+        "ai-analysis",
+        "ai-settings"
+      ],
+      "keywords": [
+        "ai",
+        "助手",
+        "人工智能",
+        "帮帮我"
+      ],
+      "title": "AI 助手",
+      "summary": "它能做什么，以及你如何掌控一切。",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "AI 助手可以创建表单和模板，在生成器中提供帮助，分析回复，以及翻译。它始终只是**提出建议**：在你确认之前，不会创建、修改或发送任何内容。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "每个请求及其返回的内容都保存在**历史记录**中。",
+            "每个请求都会消耗你每月额度中的积分。",
+            "管理员可以选择它能读取什么，也可以把它关闭。"
+          ]
+        },
+        {
+          "type": "show",
+          "label": "打开 AI 助手",
+          "to": "/ai"
+        }
+      ]
+    },
+    {
+      "id": "ai-create-form",
+      "category": "ai",
+      "minutes": 2,
+      "route": "/ai/create-form",
+      "related": [
+        "ai-overview",
+        "first-form"
+      ],
+      "keywords": [
+        "ai 表单",
+        "描述",
+        "生成",
+        "草稿"
+      ],
+      "title": "用助手创建表单",
+      "summary": "描述需求，检查草稿，然后创建。",
+      "blocks": [
+        {
+          "type": "steps",
+          "items": [
+            "打开 **AI 助手 → 创建表单**。",
+            "描述这个表单，例如“访客登记，包含姓名、公司和到达时间”，或者粘贴一份纸质表单。",
+            "点击**生成**并检查预览。",
+            "**创建表单**会在生成器中打开它；**重试**会给出另一个版本。"
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "列出你想询问的内容，用逗号分隔：助手会保留你的措辞。"
+        }
+      ]
+    },
+    {
+      "id": "ai-analysis",
+      "category": "ai",
+      "minutes": 2,
+      "route": "/ai/analysis",
+      "related": [
+        "ai-overview",
+        "analytics"
+      ],
+      "keywords": [
+        "分析",
+        "主题",
+        "情绪",
+        "问题",
+        "摘要"
+      ],
+      "title": "用助手分析回复",
+      "summary": "用平实的语言了解主题、语气和问题。",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "在**回复分析**中，选择一个表单和一个时间段。助手会找出文字回答的内容、语气，以及评分和选项的变化。"
+        },
+        {
+          "type": "p",
+          "text": "用平实的语言提问，例如“上个月有多少条回复？”。答案里总会显示统计了什么。"
+        }
+      ]
+    },
+    {
+      "id": "ai-translate",
+      "category": "ai",
+      "minutes": 2,
+      "route": "/ai/translate",
+      "related": [
+        "form-languages"
+      ],
+      "keywords": [
+        "翻译",
+        "改写",
+        "平实语言",
+        "语气"
+      ],
+      "title": "用助手翻译和改写",
+      "summary": "并排对照的翻译，以及更通俗的措辞。",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**翻译**可以把表单翻译成 20 种语言中的任意一种；保存前，请并排检查每一段文字。**改写**会按你选择的语气给出更通俗的措辞，并显示改写前后的阅读难度。"
+        }
+      ]
+    },
+    {
+      "id": "ai-settings",
+      "category": "ai",
+      "minutes": 1,
+      "route": "/ai/settings",
+      "related": [
+        "ai-overview"
+      ],
+      "keywords": [
+        "ai 设置",
+        "隐私",
+        "积分",
+        "关闭"
+      ],
+      "title": "AI 设置和隐私",
+      "summary": "开关、可读取的内容、积分。",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "管理员可以开启或关闭助手，选择它可以读取什么（表单、回复、数据源），排除个人数据，并决定请求保留多久。助手绝不会用你的数据进行训练。"
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "id": "faq-free-respondents",
+      "category": "start",
+      "question": "填写表单需要账户吗？",
+      "answer": "不需要。任何拿到链接的人都可以填写表单，除非你把它限制为受邀者、需要密码或仅限你的组织。",
+      "article": "who-can-fill-in"
+    },
+    {
+      "id": "faq-mobile",
+      "category": "start",
+      "question": "Formalie 能在手机上使用吗？",
+      "answer": "可以。表单和门户都可以在手机、平板和电脑上使用。",
+      "article": null
+    },
+    {
+      "id": "faq-languages",
+      "category": "start",
+      "question": "Formalie 支持哪些语言？",
+      "answer": "门户和表单支持 20 种语言，包括阿拉伯语等从右向左书写的语言。每个人都在自己的个人资料中选择自己的语言。",
+      "article": "form-languages"
+    },
+    {
+      "id": "faq-edit-live",
+      "category": "forms",
+      "question": "已经发布的表单还能修改吗？",
+      "answer": "可以。你的更改会保留在草稿中，直到再次发布，所以填写的人永远不会看到改到一半的内容。",
+      "article": "form-lifecycle"
+    },
+    {
+      "id": "faq-restore",
+      "category": "forms",
+      "question": "我误删了一个表单，能找回来吗？",
+      "answer": "可以，30 天内从回收站恢复，回复也会一起恢复。",
+      "article": "trash"
+    },
+    {
+      "id": "faq-copy-form",
+      "category": "forms",
+      "question": "怎么复制一个表单？",
+      "answer": "打开它的 ⋯ 菜单，选择“创建副本”。副本是一个新的草稿，问题和设计都和原来一样。",
+      "article": "forms-list"
+    },
+    {
+      "id": "faq-required",
+      "category": "builder",
+      "question": "怎么把一个问题设为必填？",
+      "answer": "在生成器中选中它，然后在它的设置里打开“必填”。",
+      "article": "builder-basics"
+    },
+    {
+      "id": "faq-pages",
+      "category": "builder",
+      "question": "怎么把表单分成多页？",
+      "answer": "在生成器中点击“添加页面”，然后把问题移到新页面里。",
+      "article": "builder-basics"
+    },
+    {
+      "id": "faq-conditional",
+      "category": "builder",
+      "question": "能让某个问题只在特定回答之后才显示吗？",
+      "answer": "可以，使用逻辑规则：当前面的问题是那个回答时，那么显示后续问题。",
+      "article": "builder-logic"
+    },
+    {
+      "id": "faq-logo",
+      "category": "design",
+      "question": "怎么添加我们的徽标？",
+      "answer": "在“设置 → 品牌”中添加一次，表单会在页眉显示它。你也可以在“设计”中为单个表单单独设置。",
+      "article": "design-a-form"
+    },
+    {
+      "id": "faq-own-templates",
+      "category": "templates",
+      "question": "我们能制作自己的模板吗？",
+      "answer": "可以。从任意表单的 ⋯ 菜单将其另存为模板。",
+      "article": "save-as-template"
+    },
+    {
+      "id": "faq-close-date",
+      "category": "sharing",
+      "question": "表单能自动关闭吗？",
+      "answer": "可以。在“分享 → 开放时间”中设置截止日期或最大回复数。",
+      "article": "who-can-fill-in"
+    },
+    {
+      "id": "faq-qr",
+      "category": "sharing",
+      "question": "怎么获取二维码？",
+      "answer": "在表单的“分享”标签页中，把二维码下载为图片。",
+      "article": "share-a-form"
+    },
+    {
+      "id": "faq-notify",
+      "category": "responses",
+      "question": "每有一条新回复，我能收到一封邮件吗？",
+      "answer": "可以。在表单设置中选择谁来收邮件，并在“设置 → 通知”中设置你自己的通知。",
+      "article": "responses-basics"
+    },
+    {
+      "id": "faq-export-format",
+      "category": "responses",
+      "question": "可以导出哪些格式？",
+      "answer": "电子表格和其他文件格式；在导出对话框中选择。",
+      "article": "export-responses"
+    },
+    {
+      "id": "faq-edit-answer",
+      "category": "responses",
+      "question": "我能更正别人填写的回答吗？",
+      "answer": "可以，只要你的角色允许更正回答。这项更改会记录在审计日志中。",
+      "article": "review-responses"
+    },
+    {
+      "id": "faq-drop-off",
+      "category": "analytics",
+      "question": "人们在我的表单的哪里停止填写？",
+      "answer": "在“分析”中打开该表单：它会显示每个页面和每个问题，以及有多少人在那里离开。",
+      "article": "analytics"
+    },
+    {
+      "id": "faq-list-change",
+      "category": "lists",
+      "question": "如果我修改了列表，我的表单也会变吗？",
+      "answer": "会。所有使用该列表的表单都会随之更新。",
+      "article": "lists-basics"
+    },
+    {
+      "id": "faq-own-db",
+      "category": "data",
+      "question": "回复能直接进入我们自己的数据库吗？",
+      "answer": "在数据源中连接它，然后在表单的回复存储中选择它。",
+      "article": "data-sources-basics"
+    },
+    {
+      "id": "faq-api-token",
+      "category": "api",
+      "question": "我弄丢了 API 令牌，怎么办？",
+      "answer": "令牌只显示一次。撤销丢失的那个，再创建一个新令牌。",
+      "article": "api-tokens"
+    },
+    {
+      "id": "faq-roles-custom",
+      "category": "people",
+      "question": "我们能创建自己的角色吗？",
+      "answer": "可以。在“成员 → 角色与权限”中添加角色，并选择它能做什么、范围有多大。",
+      "article": "roles-and-access"
+    },
+    {
+      "id": "faq-remove-person",
+      "category": "people",
+      "question": "有人离职了，怎么移除他们的访问权限？",
+      "answer": "在“成员”中打开他们，选择“停用”。他们会立即退出登录；他们的表单和回复会保留。",
+      "article": "invite-your-team"
+    },
+    {
+      "id": "faq-forgot-password",
+      "category": "settings",
+      "question": "我忘记密码了。",
+      "answer": "在登录页面点击“忘记密码”，你会通过邮件收到一个验证码，用来设置新密码。",
+      "article": "your-profile"
+    },
+    {
+      "id": "faq-lost-phone",
+      "category": "settings",
+      "question": "我丢了装有验证器应用的手机。",
+      "answer": "用一个恢复码登录，或者请管理员重置你的两步登录。",
+      "article": "two-step-sign-in"
+    },
+    {
+      "id": "faq-audit-who",
+      "category": "audit",
+      "question": "怎么查看是谁修改了表单？",
+      "answer": "打开审计日志，按该表单或“表单”筛选；每条记录都会显示是谁、什么时候、改了什么。",
+      "article": "audit-trail"
+    },
+    {
+      "id": "faq-ai-data",
+      "category": "ai",
+      "question": "AI 助手会从我们的数据中学习吗？",
+      "answer": "不会。请求只用于回答它们，并且只会保留 AI 设置中设定的时长。",
+      "article": "ai-settings"
+    },
+    {
+      "id": "faq-ai-credits",
+      "category": "ai",
+      "question": "什么是 AI 积分？",
+      "answer": "每个请求会消耗你工作区每月额度中的几个积分。可以在“AI 助手 → 设置与用量”中查看。",
+      "article": "ai-settings"
+    },
+    {
+      "id": "faq-ai-off",
+      "category": "ai",
+      "question": "我们能关闭助手吗？",
+      "answer": "可以。管理员在“AI 助手 → 设置与用量”中关闭它；关闭期间不会向它发送任何内容。",
+      "article": "ai-settings"
+    }
+  ],
+  "glossary": [
+    {
+      "id": "term-form",
+      "term": "表单",
+      "definition": "一组供人们填写的问题，带有自己的设计、逻辑和设置。",
+      "article": "builder-basics"
+    },
+    {
+      "id": "term-response",
+      "term": "回复",
+      "definition": "一个人填写完成的表单，包含他的所有回答。",
+      "article": "responses-basics"
+    },
+    {
+      "id": "term-draft",
+      "term": "草稿",
+      "definition": "你正在制作的表单版本。只有在你发布之后，别人才能看到它。",
+      "article": "form-lifecycle"
+    },
+    {
+      "id": "term-version",
+      "term": "版本",
+      "definition": "表单的某个已发布状态，保存下来方便你比较和恢复。",
+      "article": "publish-and-versions"
+    },
+    {
+      "id": "term-field",
+      "term": "字段",
+      "definition": "表单中的一个问题或区块，例如文本框、选项或签名。",
+      "article": "field-types"
+    },
+    {
+      "id": "term-key",
+      "term": "键",
+      "definition": "问题的简短名称（如 first_name），用于公式、导出和 API。",
+      "article": "calculations"
+    },
+    {
+      "id": "term-logic",
+      "term": "逻辑规则",
+      "definition": "一种根据回答来显示、隐藏、设为必填或跳过问题的规则。",
+      "article": "builder-logic"
+    },
+    {
+      "id": "term-calculation",
+      "term": "计算",
+      "definition": "一种根据其他回答算出合计或得分等数值的字段。",
+      "article": "calculations"
+    },
+    {
+      "id": "term-theme",
+      "term": "主题",
+      "definition": "保存好的设计：可用于任何表单的颜色、字体和布局。",
+      "article": "themes"
+    },
+    {
+      "id": "term-template",
+      "term": "模板",
+      "definition": "一个可以直接起步的现成表单，带有问题、逻辑和设计。",
+      "article": "use-a-template"
+    },
+    {
+      "id": "term-list",
+      "term": "List Option",
+      "definition": "只维护一次、可在许多表单中使用的选项列表；修改会同步到所有使用它的表单。",
+      "article": "lists-basics"
+    },
+    {
+      "id": "term-dynamic-list",
+      "term": "分层列表（动态列表）",
+      "definition": "一种由前一个选择决定下一个选项的列表，例如国家，然后是地区，再然后是城市。",
+      "article": "lists-basics"
+    },
+    {
+      "id": "term-folder",
+      "term": "文件夹",
+      "definition": "一组表单。管理员可以限制谁能看到某个文件夹。",
+      "article": "folders"
+    },
+    {
+      "id": "term-role",
+      "term": "角色",
+      "definition": "授予给人的一组权限，决定他们能看到什么、能做什么。",
+      "article": "roles-and-access"
+    },
+    {
+      "id": "term-reach",
+      "term": "范围（自己的、共享的、全部）",
+      "definition": "权限的涵盖范围：只有本人创建的、与本人共享的，或者全部。",
+      "article": "roles-and-access"
+    },
+    {
+      "id": "term-data-source",
+      "term": "数据源",
+      "definition": "与你的某个数据库的连接，用来存储回复和浏览数据。",
+      "article": "data-sources-basics"
+    },
+    {
+      "id": "term-endpoint",
+      "term": "端点",
+      "definition": "你的 API 服务中的一个地址，其他系统通过调用它来读取或发送数据。",
+      "article": "api-basics"
+    },
+    {
+      "id": "term-token",
+      "term": "令牌",
+      "definition": "系统调用你的 API 时使用的密钥。只显示一次；可以过期或被撤销。",
+      "article": "api-tokens"
+    },
+    {
+      "id": "term-webhook",
+      "term": "Webhook",
+      "definition": "事情发生的瞬间，Formalie 发送给另一个系统的一条消息。",
+      "article": "webhooks"
+    },
+    {
+      "id": "term-audit",
+      "term": "审计日志",
+      "definition": "你工作区中每项操作的记录：谁、做了什么、何时、在哪里。",
+      "article": "audit-trail"
+    },
+    {
+      "id": "term-two-step",
+      "term": "两步登录",
+      "definition": "输入密码后要求提供的验证码，来自应用、邮件或短信。",
+      "article": "two-step-sign-in"
+    },
+    {
+      "id": "term-embed",
+      "term": "嵌入",
+      "definition": "在你自己的网站里显示表单。",
+      "article": "embed-a-form"
+    },
+    {
+      "id": "term-ai-credit",
+      "term": "AI 积分",
+      "definition": "计算 AI 助手每月额度的单位；每个请求会消耗几个。",
+      "article": "ai-settings"
+    },
+    {
+      "id": "term-workspace",
+      "term": "工作区",
+      "definition": "你的组织在 Formalie 中专属的空间，有自己的地址，以及自己的成员、表单和设置。",
+      "article": "workspace-settings"
+    }
+  ],
+  "tours": [
+    {
+      "id": "forms-tour",
+      "route": "/forms",
+      "title": "表单快速导览",
+      "steps": [
+        {
+          "target": "new-form",
+          "title": "创建表单",
+          "text": "在这里开始新表单：空白、从模板开始，或导入一个。"
+        },
+        {
+          "target": "list-search",
+          "title": "查找表单",
+          "text": "按名称、标签或所有者搜索。在页面的任何位置按 / 都可以跳到这里。"
+        },
+        {
+          "target": "view-switch",
+          "title": "表格或卡片",
+          "text": "在行和卡片之间切换。Formalie 会记住你的选择。"
+        },
+        {
+          "target": "folders",
+          "title": "文件夹",
+          "text": "把表单放进文件夹。管理员可以决定谁能看到每个文件夹。"
+        },
+        {
+          "target": "create",
+          "title": "创建任何内容",
+          "text": "+ 按钮可以在任何位置创建表单、模板、连接等。"
+        }
+      ]
+    },
+    {
+      "id": "people-tour",
+      "route": "/people",
+      "title": "成员快速导览",
+      "steps": [
+        {
+          "target": "add-user",
+          "title": "添加成员",
+          "text": "创建个人资料；对方会收到一封用来设置密码的邮件。"
+        },
+        {
+          "target": "signup-links",
+          "title": "注册链接",
+          "text": "分享链接，让人们申请账户；由你批准。"
+        },
+        {
+          "target": "list-search",
+          "title": "查找成员",
+          "text": "按姓名、邮箱、部门或职位搜索。"
+        }
+      ]
+    }
+  ]
+}

@@ -484,7 +484,20 @@
     "help": "Kısayolları göster",
     "toggleSidebar": "Kenar çubuğunu daralt veya genişlet",
     "closeOverlay": "İletişim kutusunu veya paneli kapat",
-    "then": "sonra"
+    "then": "sonra",
+    "lists": "Listelerde ve panellerde",
+    "searchList": "Listede ara",
+    "nextItem": "Paneldeki sonraki öğe",
+    "previousItem": "Paneldeki önceki öğe",
+    "openItem": "Seçili öğeyi aç",
+    "builder": "Form oluşturucuda",
+    "duplicate": "Seçili alanı çoğalt",
+    "removeField": "Seçili alanı kaldır",
+    "moveUp": "Alanı yukarı taşı",
+    "moveDown": "Alanı aşağı taşı",
+    "editing": "Düzenlerken",
+    "save": "Kaydet",
+    "generate": "Yapay zekâ asistanına sor (kendi sayfalarında)"
   },
   "modal": {
     "move": "Pencereyi taşı",
@@ -8738,5 +8751,166 @@
     "sampleVisit": "Ziyaretiniz",
     "sampleHow": "Ziyaretiniz nasıldı?",
     "sampleBetter": "Daha iyi yapabileceğimiz bir şey var mı?"
+  },
+  "help": {
+    "subtitle": "Formalie’deki her şey için yanıtlar, rehberler ve ipuçları",
+    "back": "Yardım ve destek",
+    "areas": "Alana göre göz at",
+    "popular": "Popüler makaleler",
+    "articles": "{n} makale | {n} makale",
+    "minutes": "{n} dk okuma | {n} dk okuma",
+    "updated": "{date} tarihinde güncellendi",
+    "readMore": "Makaleyi oku",
+    "related": "İlgili makaleler",
+    "onThisPage": "Bu sayfada",
+    "notFound": "Bu makale mevcut değil",
+    "notFoundDesc": "Taşınmış veya kaldırılmış olabilir. Bunun yerine yardım merkezinde arayın.",
+    "notTranslated": "Bu makale henüz dilinize çevrilmedi, bu yüzden İngilizce gösteriliyor.",
+    "category": {
+      "start": {
+        "name": "Başlarken",
+        "desc": "İlk adımlar: ilk formunuz, yolunuzu bulmak, ekibiniz."
+      },
+      "forms": {
+        "name": "Formlar",
+        "desc": "Formları bulun, düzenleyin, kapatın, arşivleyin ve geri yükleyin."
+      },
+      "builder": {
+        "name": "Oluşturucu",
+        "desc": "Sorular, sayfalar, mantık, hesaplamalar ve sürümler."
+      },
+      "design": {
+        "name": "Tasarım",
+        "desc": "Renkler, yazı tipleri, temalar ve açılış sayfaları."
+      },
+      "templates": {
+        "name": "Şablonlar",
+        "desc": "Hazır formlarla başlayın ve kendinizinkini oluşturun."
+      },
+      "sharing": {
+        "name": "Paylaşım",
+        "desc": "Bağlantılar, QR kodları, davetler, gömme ve diller."
+      },
+      "responses": {
+        "name": "Yanıtlar",
+        "desc": "Gelenleri görün, inceleyin ve dışa aktarın."
+      },
+      "analytics": {
+        "name": "Analizler",
+        "desc": "Formlarınızın performansı ve insanların nerede bıraktığı."
+      },
+      "lists": {
+        "name": "List Option",
+        "desc": "Bir kez tutulan seçenek listeleri, düzeylerle."
+      },
+      "data": {
+        "name": "Veri kaynakları",
+        "desc": "Kendi veritabanlarınız: saklama, keşfetme, sorgulama."
+      },
+      "api": {
+        "name": "API hizmeti",
+        "desc": "Uç noktalar, belirteçler, erişim kuralları ve web kancaları."
+      },
+      "people": {
+        "name": "Kişiler",
+        "desc": "Ekibiniz, profiller, roller ve erişim."
+      },
+      "settings": {
+        "name": "Ayarlar",
+        "desc": "Çalışma alanı ayarları, güvenlik ve oturum açma."
+      },
+      "audit": {
+        "name": "Denetim izi",
+        "desc": "Kim, ne zaman, nereden ne yaptı."
+      },
+      "ai": {
+        "name": "Yapay zekâ asistanı",
+        "desc": "Asistanla oluşturun, analiz edin ve çevirin."
+      }
+    },
+    "block": {
+      "tip": "İpucu",
+      "note": "Bilmekte fayda var",
+      "warning": "Dikkat"
+    },
+    "start": {
+      "title": "Burada yeni misiniz? Bunlarla başlayın"
+    },
+    "search": {
+      "title": "Size nasıl yardımcı olabiliriz?",
+      "placeholder": "Makale, soru ve kelime arayın…",
+      "articles": "Makaleler",
+      "faqs": "Sorular",
+      "terms": "Kelimeler",
+      "none": "“{q}” için sonuç bulunamadı",
+      "noneDesc": "Başka kelimeler deneyin veya destek ekibimize sorun. Sonuç bulamayan aramaları, eksik yardımı yazmak için not ediyoruz.",
+      "clear": "Aramayı temizle",
+      "example": {
+        "publish": "yayınla",
+        "logic": "mantık",
+        "export": "dışa aktar",
+        "roles": "roller",
+        "translate": "çevir"
+      }
+    },
+    "more": {
+      "title": "Daha fazla yardım"
+    },
+    "faq": {
+      "title": "Sık sorulan sorular",
+      "desc": "En çok sorulan sorulara kısa yanıtlar.",
+      "search": "Soru ara…",
+      "all": "Tümü",
+      "none": "Eşleşen soru yok."
+    },
+    "glossary": {
+      "title": "Sözlük",
+      "desc": "Formalie’nin kullandığı kelimeler, açıklamalarıyla.",
+      "search": "Kelime ara…",
+      "none": "Eşleşen kelime yok."
+    },
+    "shortcuts": {
+      "title": "Klavye kısayolları",
+      "mac": "Mac’te Ctrl yazan yerde ⌘ kullanın."
+    },
+    "support": {
+      "title": "Bir insanla konuşun",
+      "desc": "İhtiyacınız olanı bulamadınız mı? Destek ekibimiz yardımcı olmaktan memnuniyet duyar.",
+      "email": "Destek ekibine e-posta",
+      "site": "Destek sitesi"
+    },
+    "feedback": {
+      "question": "Bu makale yardımcı oldu mu?",
+      "yes": "Evet",
+      "no": "Hayır",
+      "missing": "Ne eksikti veya belirsizdi?",
+      "skip": "Atla",
+      "send": "Gönder",
+      "thanks": "Teşekkürler. Yanıtınız yardım merkezini geliştirmemize yardımcı oluyor."
+    },
+    "learnHow": "Nasıl yapılır",
+    "panel": {
+      "title": "Bu sayfa için yardım",
+      "desc": "Bulunduğunuz yere uygun kılavuzlar ve ipuçları.",
+      "openFull": "Makalenin tamamını aç",
+      "none": "Bu sayfa için henüz kılavuz yok",
+      "noneDesc": "Yardım merkezinde arayın veya tüm kılavuzlar için açın.",
+      "more": "Bu sayfa için daha fazla yardım",
+      "centre": "Yardım merkezi"
+    },
+    "tour": {
+      "start": "Turu başlat: {title}",
+      "step": "{n} / {total}",
+      "next": "İleri",
+      "back": "Geri",
+      "done": "Bitti",
+      "end": "Turu bitir",
+      "hereTitle": "İşte burada",
+      "hereText": "Makalede bahsedilen kontrol bu."
+    },
+    "answer": {
+      "title": "Yardım merkezinden yanıt",
+      "from": "Makaleden"
+    }
   }
 }

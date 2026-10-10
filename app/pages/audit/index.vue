@@ -211,6 +211,7 @@ defineShortcuts({ e: () => canView.value && (exportOpen.value = true) })
     <DataView
       v-else
       id="audit"
+      empty-help="audit-trail"
       :columns="columns"
       :fetcher="fetcher"
       :filters="filters"
