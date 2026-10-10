@@ -8911,6 +8911,20 @@
     "answer": {
       "title": "Resposta da central de ajuda",
       "from": "Do artigo"
+    },
+    "bot": {
+      "open": "Pergunte ao assistente de ajuda",
+      "title": "Assistente de ajuda",
+      "desc": "Pergunte qualquer coisa sobre o Formalie ou escolha uma pergunta.",
+      "hello": "Olá! Escolha uma pergunta abaixo ou digite a sua, e eu procuro a resposta na central de ajuda.",
+      "found": "Veja como fazer:",
+      "maybe": "Não encontrei uma resposta exata, mas estes artigos podem ajudar:",
+      "none": "Ainda não encontrei nada sobre isso. Tente outras palavras ou fale com nossa equipe de suporte.",
+      "failed": "Algo deu errado. Tente novamente.",
+      "thinking": "Procurando…",
+      "placeholder": "Digite sua pergunta…",
+      "send": "Enviar",
+      "reset": "Recomeçar"
     }
   }
 }

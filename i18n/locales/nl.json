@@ -8911,6 +8911,20 @@
     "answer": {
       "title": "Antwoord uit het helpcentrum",
       "from": "Uit het artikel"
+    },
+    "bot": {
+      "open": "Vraag het aan de helpassistent",
+      "title": "Helpassistent",
+      "desc": "Vraag alles over Formalie, of kies een vraag.",
+      "hello": "Hoi! Kies hieronder een vraag of typ je eigen vraag, dan zoek ik het antwoord in het helpcentrum.",
+      "found": "Zo doe je dat:",
+      "maybe": "Ik vond geen exact antwoord, maar deze artikelen helpen je vast verder:",
+      "none": "Ik heb hier nog niets over gevonden. Probeer andere woorden of vraag het ons supportteam.",
+      "failed": "Er ging iets mis. Probeer het opnieuw.",
+      "thinking": "Even opzoeken…",
+      "placeholder": "Typ je vraag…",
+      "send": "Verzenden",
+      "reset": "Opnieuw beginnen"
     }
   }
 }

@@ -8911,6 +8911,20 @@
     "answer": {
       "title": "Antwort aus dem Hilfezentrum",
       "from": "Aus dem Artikel"
+    },
+    "bot": {
+      "open": "Hilfe-Assistenten fragen",
+      "title": "Hilfe-Assistent",
+      "desc": "Frag alles zu Formalie oder wähle eine Frage aus.",
+      "hello": "Hallo! Wähle unten eine Frage aus oder tippe deine eigene, ich suche die Antwort im Hilfecenter.",
+      "found": "So geht’s:",
+      "maybe": "Ich habe keine genaue Antwort gefunden, aber diese Artikel helfen dir bestimmt weiter:",
+      "none": "Dazu habe ich noch nichts gefunden. Versuche andere Wörter oder frag unser Support-Team.",
+      "failed": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
+      "thinking": "Ich schaue nach…",
+      "placeholder": "Stelle deine Frage…",
+      "send": "Senden",
+      "reset": "Neu starten"
     }
   }
 }

@@ -8911,6 +8911,20 @@
     "answer": {
       "title": "Câu trả lời từ trung tâm trợ giúp",
       "from": "Từ bài viết"
+    },
+    "bot": {
+      "open": "Hỏi trợ lý trợ giúp",
+      "title": "Trợ lý trợ giúp",
+      "desc": "Hỏi bất cứ điều gì về Formalie, hoặc chọn một câu hỏi.",
+      "hello": "Xin chào! Hãy chọn một câu hỏi bên dưới hoặc tự nhập câu hỏi, mình sẽ tìm câu trả lời trong trung tâm trợ giúp.",
+      "found": "Cách làm như sau:",
+      "maybe": "Mình chưa tìm thấy câu trả lời chính xác, nhưng những bài viết này có thể giúp bạn:",
+      "none": "Mình chưa tìm thấy gì về vấn đề này. Hãy thử từ khóa khác hoặc hỏi đội ngũ hỗ trợ.",
+      "failed": "Đã xảy ra lỗi. Vui lòng thử lại.",
+      "thinking": "Đang tìm…",
+      "placeholder": "Nhập câu hỏi của bạn…",
+      "send": "Gửi",
+      "reset": "Bắt đầu lại"
     }
   }
 }

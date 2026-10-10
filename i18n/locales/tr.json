@@ -8911,6 +8911,20 @@
     "answer": {
       "title": "Yardım merkezinden yanıt",
       "from": "Makaleden"
+    },
+    "bot": {
+      "open": "Yardım asistanına sor",
+      "title": "Yardım asistanı",
+      "desc": "Formalie hakkında her şeyi sorabilir ya da bir soru seçebilirsin.",
+      "hello": "Merhaba! Aşağıdan bir soru seç ya da kendi sorunu yaz, yanıtı yardım merkezinde bulayım.",
+      "found": "Şöyle yapabilirsin:",
+      "maybe": "Tam bir yanıt bulamadım ama bu makaleler işine yarayabilir:",
+      "none": "Bununla ilgili henüz bir şey bulamadım. Başka kelimeler dene ya da destek ekibimize sor.",
+      "failed": "Bir şeyler ters gitti. Lütfen tekrar dene.",
+      "thinking": "Araştırıyorum…",
+      "placeholder": "Sorunu yaz…",
+      "send": "Gönder",
+      "reset": "Baştan başla"
     }
   }
 }

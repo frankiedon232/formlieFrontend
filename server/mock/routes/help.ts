@@ -64,6 +64,7 @@ export const helpFeedback = defineMockRoute(({ event, body }) => {
   return ok({ saved: true })
 })
 
+const STOP = new Set('a an and are as at be by can do does for from get how i in is it me my of on or our the their there this to was we what when where which who why will with you your'.split(' '))
 const words = (text: string) => text.toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '').split(/[^\p{L}\p{N}]+/u).filter(word => word.length > 1)
 
 export const searchHelp = defineMockRoute(({ event, query }) => {
@@ -73,7 +74,9 @@ export const searchHelp = defineMockRoute(({ event, query }) => {
   const content = helpContent(lang)
   // English words find English articles too (the search box isn't always used in the reader's language)
   const english = lang === 'en' ? null : helpContent('en')
-  const asked = words(q)
+  // Little words (how, do, a, my …) don't decide what an answer is about; keep them only if nothing else is left
+  const meaningful = words(q).filter(word => !STOP.has(word))
+  const asked = meaningful.length ? meaningful : words(q)
   const score = (fields: [string, number][]) => {
     let total = 0
     for (const [text, weight] of fields) {
@@ -92,6 +95,8 @@ export const searchHelp = defineMockRoute(({ event, query }) => {
     })
     .filter(item => item.value > 0)
     .sort((a, b) => b.value - a.value)
+    // Weak matches (a common word like "form") stay out when something matches clearly
+    .filter((item, _, list) => item.value >= list[0]!.value * 0.35)
     .slice(0, 8)
     .map(item => ({ ...toSummary(item.article), snippet: item.snippet }))
   const faqs = content.faqs.map(item => ({ item, value: score([[item.question, 3], [item.answer, 1]]) })).filter(entry => entry.value > 0).sort((a, b) => b.value - a.value).slice(0, 5).map(entry => entry.item)

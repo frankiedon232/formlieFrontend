@@ -8911,6 +8911,20 @@
     "answer": {
       "title": "Jibu kutoka kituo cha msaada",
       "from": "Kutoka kwenye makala"
+    },
+    "bot": {
+      "open": "Muulize msaidizi wa msaada",
+      "title": "Msaidizi wa msaada",
+      "desc": "Uliza chochote kuhusu Formalie, au chagua swali.",
+      "hello": "Habari! Chagua swali hapa chini, au andika lako mwenyewe nami nitatafuta jibu kwenye kituo cha msaada.",
+      "found": "Hivi ndivyo:",
+      "maybe": "Sikupata jibu kamili, lakini makala haya yanaweza kusaidia:",
+      "none": "Sijapata chochote kuhusu hilo bado. Jaribu maneno mengine, au uliza timu yetu ya msaada.",
+      "failed": "Hitilafu imetokea. Tafadhali jaribu tena.",
+      "thinking": "Natafuta…",
+      "placeholder": "Andika swali lako…",
+      "send": "Tuma",
+      "reset": "Anza upya"
     }
   }
 }

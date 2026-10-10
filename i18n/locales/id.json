@@ -8911,6 +8911,20 @@
     "answer": {
       "title": "Jawaban dari pusat bantuan",
       "from": "Dari artikel"
+    },
+    "bot": {
+      "open": "Tanya asisten bantuan",
+      "title": "Asisten bantuan",
+      "desc": "Tanyakan apa saja tentang Formalie, atau pilih satu pertanyaan.",
+      "hello": "Hai! Pilih pertanyaan di bawah, atau ketik pertanyaanmu sendiri dan aku akan mencari jawabannya di pusat bantuan.",
+      "found": "Begini caranya:",
+      "maybe": "Aku tidak menemukan jawaban yang tepat, tetapi artikel ini mungkin membantu:",
+      "none": "Aku belum menemukan apa pun tentang itu. Coba kata lain, atau tanyakan ke tim dukungan kami.",
+      "failed": "Terjadi kesalahan. Silakan coba lagi.",
+      "thinking": "Sedang mencari…",
+      "placeholder": "Ketik pertanyaanmu…",
+      "send": "Kirim",
+      "reset": "Mulai ulang"
     }
   }
 }

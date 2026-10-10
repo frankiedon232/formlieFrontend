@@ -8911,6 +8911,20 @@
     "answer": {
       "title": "Réponse du centre d’aide",
       "from": "Extrait de l’article"
+    },
+    "bot": {
+      "open": "Demander à l’assistant d’aide",
+      "title": "Assistant d’aide",
+      "desc": "Posez vos questions sur Formalie, ou choisissez-en une.",
+      "hello": "Bonjour ! Choisissez une question ci-dessous ou écrivez la vôtre, je chercherai la réponse dans le centre d’aide.",
+      "found": "Voici comment faire :",
+      "maybe": "Je n’ai pas trouvé de réponse exacte, mais ces articles devraient vous aider :",
+      "none": "Je n’ai encore rien trouvé à ce sujet. Essayez d’autres mots ou contactez notre équipe d’assistance.",
+      "failed": "Une erreur s’est produite. Veuillez réessayer.",
+      "thinking": "Je cherche…",
+      "placeholder": "Écrivez votre question…",
+      "send": "Envoyer",
+      "reset": "Recommencer"
     }
   }
 }

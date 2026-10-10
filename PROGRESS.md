@@ -1073,6 +1073,8 @@ Owner, 2026-10-08: a Help section, FAQs and knowledge base with everything about
 - ✅ **M5** Every article in all 20 languages; videos with captions (shown with their captions file when the Formalie team adds them); works on phones; RTL
 - ✅ **M1** "Was this helpful?" feedback and what people searched without finding (kept for the Formalie team; managed in the platform admin)
 - ✅ **M4** AI assistant (F19) answers from the knowledge base
+- ✅ **Help assistant** (owner 2026-10-10): a floating button on every Help page opens a chat that starts with every question people ask (by area) and answers them, and answers typed questions from the knowledge base (steps or best paragraph, articles to read, a matching question; support email when nothing fits); works for everyone (it reads only the help centre). Search now ignores little words and drops weak matches
+- 🟡 **Screenshots for every article** (owner 2026-10-10, light mode): captured in the browser and added as media with captions in all 20 languages
 
 ---
 

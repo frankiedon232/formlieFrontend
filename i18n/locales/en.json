@@ -8911,6 +8911,20 @@
     "answer": {
       "title": "Answer from the help centre",
       "from": "From the article"
+    },
+    "bot": {
+      "open": "Ask the help assistant",
+      "title": "Help assistant",
+      "desc": "Ask anything about Formalie, or pick a question.",
+      "hello": "Hi! Pick a question below, or type your own and I’ll find the answer in the help centre.",
+      "found": "Here’s how:",
+      "maybe": "I couldn’t find an exact answer, but these articles should help:",
+      "none": "I couldn’t find anything about that yet. Try other words, or ask our support team.",
+      "failed": "Something went wrong. Please try again.",
+      "thinking": "Looking it up…",
+      "placeholder": "Type your question…",
+      "send": "Send",
+      "reset": "Start over"
     }
   }
 }
