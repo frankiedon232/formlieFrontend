@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-10 (F24 subscriptions M1 to M4 done: plans with Monthly / Quarterly / Annually, Settings → Subscription and Plans, card, renewal, reminders, invoices, plan limits, Enterprise enquiry; waiting for the owner's Payoneer methods and final prices; then form payments, the website project files and F21 Dashboard)
+**Last updated:** 2026-10-10 (F24 paused while the owner's Payoneer account is activated: subscriptions, plan limits, Formalie's own support and enquiry forms and payment safety are done; next: F21 Dashboard, started; back to F24 for Payoneer, form payments and the website project files when the account is ready)
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend · ➖ dropped or merged
 
@@ -31,18 +31,18 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F18   | Analytics                                         | ✅     | 100% (waiting for review)                 |
 | F19   | AI assistant                                      | ✅     | 100% (waiting for review)                 |
 | F20   | Live collaboration (removed)                      | ➖     | -                                         |
-| F21   | Dashboard                                         | ⬜     | 0%                                        |
+| F21   | Dashboard                                         | 🟡     | 0% (started 2026-10-10)                   |
 | F22   | Roles & access                                    | ✅     | 100% (owner-tested 2026-10-10)            |
 | F23   | Platform admin (super admin, Formalie team)       | ➖     | separate projects (formaliePlatformFront / Back) |
-| F24   | Payments & subscriptions                          | 🟡     | 60% (subscriptions M1 to M4 ✅; Payoneer and form payments next) |
+| F24   | Payments & subscriptions                          | ⏸️     | 65% (subscriptions, payment safety ✅; paused for Payoneer, then form payments) |
 | F25   | Help centre (FAQs, knowledge base, videos)        | ✅     | 100% (waiting for review)                 |
 
 **Order of what is left (owner, 2026-10-10; F22 done with F16 on 2026-10-09):**
 
 1. ✅ **F19 AI assistant** (waiting for the owner's review)
 2. ✅ **F25 Help centre** (brought forward by the owner, 2026-10-10, while the payment processor accounts are set up; its content is posted from the platform admin; waiting for review)
-3. **F24 Payments & subscriptions** (in progress; form payments and plans together; processor: Payoneer, owner 2026-10-10; plan features to gate include the custom domain, own sending address / mail server and single sign-on)
-4. **F21 Dashboard** (after F24, owner 2026-10-10, so it can show payments and plans too)
+3. ⏸ **F24 Payments & subscriptions** (paused 2026-10-10 for the owner's Payoneer account; subscriptions, plan limits and payment safety done; left: Payoneer, form payments, then the Formalie website project files; form payments and plans together; processor: Payoneer, owner 2026-10-10; plan features to gate include the custom domain, own sending address / mail server and single sign-on)
+4. 🟡 **F21 Dashboard** (started 2026-10-10 while F24 waits for Payoneer; shows the plan and usage too)
 5. ⏸ **Switching to the real backend** (FastAPI, `formalieBackend`): the mock is replaced, API-CONTRACT is the spec
 6. **F23 Platform admin (super admin)**: a **separate project** with its own front end, backend and database that also reaches Formalie's database (owner, 2026-10-10). Its full plan lives in its own two projects, formaliePlatformFront (Nuxt) and formaliePlatformBack (FastAPI), not in this project.
 
@@ -965,13 +965,17 @@ Owner, 2026-10-08: "profiling and users are the same thing". One phase builds th
 
 ---
 
-## F21, Dashboard ⬜
+## F21, Dashboard 🟡 (started 2026-10-10 while F24 waits for Payoneer)
 
 - ⬜ Separate dashboards for **Forms**, **Data sources** and **API service** (owner, 2026-10-02), plus the workspace overview
 
-**Goal:** the workspace home, built after everything else so it shows what matters (design reference 2). Replaces the Forms redirect on `/` once done.
+**Goal:** the workspace home, built after everything else so it shows what matters (design reference 2, `docs/design/Screenshot 2026-10-02 092034.png`). Replaces the Forms redirect on `/` once done.
 
 **Not replaced by Analytics or the Data sources overview** (owner, 2026-10-05): F18 Analytics is the forms' analysis page and the Data sources overview is that area's landing page; the dashboards here are still built, near the end, as planned. They may reuse `ChartsKpi`, `ChartsFlow` and the analytics endpoints.
+
+**Plan (2026-10-10):** one Dashboard page, first in MAIN MENU, with a view switch in the header: **Workspace · Forms · Data sources · API service** (each shown only to people whose role reaches that area; the choice is remembered). Same layout as the design for each view: KPI row with trends, date range + Daily / Weekly / Monthly / Yearly, the main chart with tooltip, a side card (overview + timeline), and a recent table. Folder access and roles apply to every number.
+
+**Milestones:** **M1** Workspace view (the home: forms, responses, data sources and API service at a glance, what needs attention, recent activity) and the page frame (route, menu, `/` → Dashboard, view switch, period controls) · **M2** Forms view · **M3** Data sources view · **M4** API service view · **M5** filters (folder, owner), empty states for new workspaces, 20 languages, phase checks.
 
 - ⬜ KPI cards with trend vs previous period (active forms, responses, completion rate, pending reviews, overdue / closing soon)
 - ⬜ Date range + Daily / Weekly / Monthly / Yearly switch
@@ -1036,7 +1040,7 @@ The owner's super admin portal is where Formalie's default data is made and kept
 
 ---
 
-## F24, Payments & subscriptions 🟡
+## F24, Payments & subscriptions 🟡 (paused 2026-10-10: waiting for the owner's Payoneer account; picks up with the Payoneer connection, form payments and the website project files)
 
 Owner, 2026-10-08: payments come after the rest of the platform, form payments and subscriptions together. **Processor (owner 2026-10-10, final): Payoneer.** The owner is opening the account and will bring the methods to use; until then the mock simulates the processor's hosted checkout. Card details never touch Formalie (the processor's checkout or hosted fields); we keep status, reference, brand, last four digits and amount.
 
@@ -1335,6 +1339,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-10 | Subscriptions: Starter (free), Professional, Business, Enterprise (contact us) with Monthly / Quarterly / Annually toggle; Settings → Subscription with automatic activation of the plan held, remove the card, automatic renewal, reminders by default; Enterprise enquiry form inside the app for the Formalie team (platform admin); processor Payoneer; afterwards generate the Formalie website project files | F24, website | 🟡 in progress |
 | 2026-10-10 | Email support in Help & support opens a form inside the app (like Contact us on the plans), seen by the Formalie team in the platform admin | F25 | ✅ done |
 | 2026-10-10 | Use our own data collection forms (not modals) for Contact support and the Enterprise enquiry, shown in an in-app browser like the one on public forms, for the platform admin | F24, F25 | ✅ done |
+| 2026-10-10 | Payoneer account not active yet: update PROGRESS, move to the next phase and come back to F24 later | Order, F24, F21 | ✅ F24 paused, F21 started |
 
 ---
 
@@ -1624,3 +1629,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-10 | F24 / F25 | Formalie's own forms: Contact support and Enterprise enquiry are published forms of a Formalie workspace, opened in the new app browser window (AppBrowser, the public link-browser design) and filled in through the address (new: `?key=value` prefills hidden fields and fields marked for it, full names split); an embedded form tells its page when it is sent. Hidden fields are no longer shown to respondents. The modal forms and their routes were removed. |
 | 2026-10-10 | F24 / F25 | Owner feedback on the form window: a click outside no longer closes it (only ✕, Esc, Back to Formalie); with something typed and not sent, closing or reloading asks "Leave without sending?" (the embedded form tells the window once something is typed). New form setting "People may send it more than once" (`settings.repeat`, Form settings → Experience) for contact, support and order forms: no one-per-person check, only the exact same answers twice are refused; on for Formalie's own forms. |
 | 2026-10-10 | F24 | Payment safety (owner: no double charge, idempotency): request keys on every money-moving request (repeat = first result, other request = FRM-BILL-1005), billing lock per workspace (FRM-BILL-1004), one open checkout, a payments ledger written before charging with one reference per charge (renewals `renew:{workspace}:{period end}`), forward-only payment states, past-due retry under the same reference, Payoneer webhook receiver with signature, age, once-only and amount checks (FRM-BILL-1006). SECURITY-PROTOCOL §11, tests in test/billing/safety.test.ts. |
+| 2026-10-10 | F24 / F21 | F24 paused for the owner's Payoneer account (left: Payoneer connection, form payments, website project files, backend reconciliation). F21 Dashboard started: one page, first in MAIN MENU, with Workspace · Forms · Data sources · API service views in the design's layout; milestones M1 to M5 planned. |
