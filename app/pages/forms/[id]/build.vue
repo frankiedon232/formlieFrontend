@@ -76,15 +76,15 @@ defineShortcuts({
 
     <div class="grid items-start gap-4" :class="columns">
       <template v-if="large">
-        <UCard v-if="paletteShown" class="sticky top-0" :ui="{ body: `p-3 sm:p-3 ${paneHeight}` }">
+        <UCard v-if="paletteShown" class="sticky top-0" data-help="builder-palette" :ui="{ body: `p-3 sm:p-3 ${paneHeight}` }">
           <FormsBuilderPalette id="builder-palette" />
         </UCard>
       </template>
-      <div class="min-w-0 rounded-xl bg-elevated/40 p-2 sm:p-3">
+      <div class="min-w-0 rounded-xl bg-elevated/40 p-2 sm:p-3" data-help="builder-canvas">
         <FormsBuilderCanvas :issues="issues" :min-height="canvasHeight" @add-field="showFieldList" />
       </div>
       <template v-if="large">
-        <UCard v-if="inspectorShown" class="sticky top-0" :ui="{ body: `p-4 sm:p-4 ${paneHeight}` }">
+        <UCard v-if="inspectorShown" class="sticky top-0" data-help="builder-inspector" :ui="{ body: `p-4 sm:p-4 ${paneHeight}` }">
           <FormsBuilderInspector />
         </UCard>
       </template>

@@ -2180,6 +2180,241 @@
           "text": "Cerca per nome, e-mail, reparto o ruolo professionale."
         }
       ]
+    },
+    {
+      "id": "dashboard-tour",
+      "route": "/dashboard",
+      "title": "La tua dashboard",
+      "steps": [
+        {
+          "target": "dashboard-views",
+          "title": "Quattro viste",
+          "text": "Spazio di lavoro mostra tutto a colpo d’occhio; Moduli, Origini dati e Servizio API hanno ciascuno una vista propria."
+        },
+        {
+          "target": "dashboard-period",
+          "title": "Scegli il periodo",
+          "text": "Scegli le date che i numeri coprono. Giornaliero, Settimanale, Mensile o Annuale li raggruppa."
+        },
+        {
+          "target": "dashboard-filter",
+          "title": "Restringi",
+          "text": "Mostra solo una cartella o i moduli di una persona."
+        },
+        {
+          "target": "create",
+          "title": "Crea qualsiasi cosa",
+          "text": "Avvia un modulo, un modello, una connessione o un servizio API da qui, in qualsiasi pagina."
+        },
+        {
+          "target": "page-help",
+          "title": "Aiuto in ogni pagina",
+          "text": "Apri l’aiuto della pagina in cui ti trovi o riavvia il suo tour."
+        }
+      ]
+    },
+    {
+      "id": "builder-tour",
+      "route": "/forms/:id/build",
+      "title": "Creare un modulo",
+      "steps": [
+        {
+          "target": "form-modes",
+          "title": "Crea, logica, design, condividi",
+          "text": "Muoviti tra le parti del tuo modulo. Tutto si salva man mano."
+        },
+        {
+          "target": "builder-palette",
+          "title": "Domande",
+          "text": "Fai clic su una domanda o trascinala nel modulo. Gli elenchi e le domande salvate sono nelle schede."
+        },
+        {
+          "target": "builder-canvas",
+          "title": "Il tuo modulo",
+          "text": "Disponi le domande in righe e pagine. Selezionane una per modificarla."
+        },
+        {
+          "target": "builder-inspector",
+          "title": "Impostazioni della domanda selezionata",
+          "text": "Etichetta, testo di aiuto, obbligatoria, chi la vede e altro."
+        },
+        {
+          "target": "form-preview",
+          "title": "Anteprima",
+          "text": "Guarda il modulo come lo vedranno le persone, su telefono, tablet o computer."
+        },
+        {
+          "target": "form-publish",
+          "title": "Pubblica",
+          "text": "Quando è pronto, pubblicalo per iniziare a raccogliere risposte."
+        }
+      ]
+    },
+    {
+      "id": "logic-tour",
+      "route": "/forms/:id/logic",
+      "title": "Regole e calcoli",
+      "steps": [
+        {
+          "target": "logic-add",
+          "title": "Aggiungi una regola",
+          "text": "Mostra, nascondi o rendi obbligatorie le domande, compila risposte o salta pagine, in base alle risposte precedenti."
+        },
+        {
+          "target": "logic-calculations",
+          "title": "Calcoli",
+          "text": "Totali, punteggi e prezzi calcolati dalle risposte mentre le persone compilano il modulo."
+        }
+      ]
+    },
+    {
+      "id": "design-tour",
+      "route": "/forms/:id/design",
+      "title": "Progettare il tuo modulo",
+      "steps": [
+        {
+          "target": "design-panel",
+          "title": "Rendilo tuo",
+          "text": "Parti da uno stile, poi cambia layout, colori, caratteri, intestazione e piè di pagina."
+        },
+        {
+          "target": "design-screens",
+          "title": "Domande e pagina di ringraziamento",
+          "text": "Controlla entrambe le schermate che vedranno le persone."
+        },
+        {
+          "target": "design-devices",
+          "title": "Ogni dimensione di schermo",
+          "text": "Visualizza l’anteprima su computer, tablet e telefono."
+        }
+      ]
+    },
+    {
+      "id": "share-tour",
+      "route": "/forms/:id/share",
+      "title": "Condividere il tuo modulo",
+      "steps": [
+        {
+          "target": "share-channels",
+          "title": "Dove rispondono le persone",
+          "text": "Un link, un’incorporazione nel tuo sito, l’API, o più opzioni insieme."
+        },
+        {
+          "target": "share-link",
+          "title": "Il tuo link",
+          "text": "Rendi l’indirizzo facile da leggere e imposta chi può rispondere e fino a quando."
+        },
+        {
+          "target": "share-open",
+          "title": "Apri, incorpora o codice QR",
+          "text": "Copia il link, ottieni il codice di incorporamento o stampa un codice QR."
+        },
+        {
+          "target": "share-who",
+          "title": "Chi può vederlo",
+          "text": "Tutte le persone del tuo spazio di lavoro, cosa possono fare con questo modulo e perché."
+        }
+      ]
+    },
+    {
+      "id": "responses-tour",
+      "route": "/responses",
+      "title": "Le tue risposte",
+      "steps": [
+        {
+          "target": "list-search",
+          "title": "Trova una risposta",
+          "text": "Cerca per nome, email o qualsiasi risposta."
+        },
+        {
+          "target": "view-switch",
+          "title": "Righe o schede",
+          "text": "Passa dalla tabella alle schede. La tua scelta viene ricordata."
+        }
+      ]
+    },
+    {
+      "id": "datasources-tour",
+      "route": "/data-sources",
+      "title": "Origini dati",
+      "steps": [
+        {
+          "target": "ds-add",
+          "title": "Collega un database",
+          "text": "Salva le risposte nel tuo database man mano che arrivano."
+        },
+        {
+          "target": "ds-query",
+          "title": "Editor di query",
+          "text": "Fai domande ai tuoi database in SQL, in sicurezza."
+        },
+        {
+          "target": "ds-health",
+          "title": "Stato delle connessioni",
+          "text": "Vedi a colpo d’occhio quali connessioni rispondono e con che velocità."
+        }
+      ]
+    },
+    {
+      "id": "api-tour",
+      "route": "/api-service",
+      "title": "Il servizio API",
+      "steps": [
+        {
+          "target": "api-setup",
+          "title": "Configuralo a passi",
+          "text": "Un servizio, poi endpoint, poi token: segui i passaggi in ordine."
+        },
+        {
+          "target": "api-new-endpoint",
+          "title": "Endpoint",
+          "text": "Trasforma un modulo in un indirizzo API a cui le app possono inviare risposte."
+        },
+        {
+          "target": "api-tokens",
+          "title": "Token",
+          "text": "Dai a ogni app la sua chiave e disattivala quando vuoi."
+        }
+      ]
+    },
+    {
+      "id": "settings-tour",
+      "route": "/settings",
+      "title": "Impostazioni",
+      "steps": [
+        {
+          "target": "settings-search",
+          "title": "Trova un’impostazione",
+          "text": "Scrivi ciò che cerchi, per esempio logo o password."
+        },
+        {
+          "target": "settings-sections",
+          "title": "Ogni parte del tuo spazio di lavoro",
+          "text": "Azienda, marchio, accesso, email, privacy, piani e altro."
+        }
+      ]
+    },
+    {
+      "id": "help-tour",
+      "route": "/help",
+      "title": "Assistenza e supporto",
+      "steps": [
+        {
+          "target": "help-search",
+          "title": "Chiedi qualsiasi cosa",
+          "text": "Cerca tra articoli, domande e parole, oppure chiedi all’assistente."
+        },
+        {
+          "target": "help-faq",
+          "title": "Domande frequenti",
+          "text": "Risposte brevi alle domande più comuni."
+        },
+        {
+          "target": "help-contact",
+          "title": "Contatta l’assistenza",
+          "text": "Invia un messaggio al team di Formalie; risponde via email."
+        }
+      ]
     }
   ]
 }

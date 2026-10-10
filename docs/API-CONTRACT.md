@@ -439,6 +439,8 @@ Read-only for every signed-in person (no permission needed); written and publish
 | POST | `/help/articles/{id}/feedback` | `{ helpful, comment? }`; one answer per person and article (kept for the Formalie team) |
 | GET | `/help/search?q&lang` | `HelpSearchResult { query, articles (with a matching `snippet`), faqs, terms, answer { article, blocks } \| null }` (`answer`: the best article's steps for a "how" question, else its best paragraph; the app shows it as the AI assistant's answer when the assistant is on). A search that finds nothing is recorded for the Formalie team |
 | GET | `/help/context?path&lang` | `HelpContext { article, more, tour }`: help for the page at `path` (the "?" in every header) |
+| GET | `/help/tours?lang` → `HelpTour[] { id, route, title, steps [{ target, title, text }] }` | Every guided tour, so the app offers a page's tour on the first visit (route patterns like `/forms/:id/build`) |
+| GET · PATCH | `/me/tours` → `MyTours { enabled, seen[] }`; PATCH `{ seen?: tour id, enabled?, reset?: true }` | Tips on new pages for the signed-in person: a tour offered (taken or skipped) isn't offered again; `reset` shows them all again |
 | GET | `/help/faqs?category&lang` · `/help/glossary?lang` | `HelpFaq { id, category, question, answer, article }` · `HelpTerm { id, term, definition, article }` (sorted in the reader's language) |
 
 ## Integrations, settings

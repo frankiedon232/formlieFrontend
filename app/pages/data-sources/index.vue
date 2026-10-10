@@ -69,8 +69,8 @@ const shortcuts = computed(() =>
 <template>
   <AppPanel id="data-sources" :title="t('nav.dataSources')" :subtitle="t('dataSources.subtitle')" subtitle-icon="i-lucide-database">
     <template #actions>
-      <UButton v-if="can('data.query')" :label="t('nav.dataQuery')" icon="i-lucide-square-terminal" color="neutral" variant="outline" to="/data-sources/query" class="hidden sm:inline-flex" />
-      <UButton v-if="can('data.create')" :label="t('dataSources.add')" icon="i-lucide-plus" color="neutral" to="/data-sources/connections/new" />
+      <UButton v-if="can('data.query')" :label="t('nav.dataQuery')" icon="i-lucide-square-terminal" color="neutral" variant="outline" to="/data-sources/query" data-help="ds-query" class="hidden sm:inline-flex" />
+      <UButton v-if="can('data.create')" :label="t('dataSources.add')" icon="i-lucide-plus" color="neutral" to="/data-sources/connections/new" data-help="ds-add" />
     </template>
 
     <AppEmpty
@@ -98,7 +98,7 @@ const shortcuts = computed(() =>
 
       <div class="grid shrink-0 gap-4 lg:grid-cols-3">
         <DatasourcesHomeTraffic class="lg:col-span-2" :sources="insights" :deliveries="deliveries" :activity="activity" />
-        <DatasourcesHomeConnection :sources="sources" />
+        <DatasourcesHomeConnection :sources="sources" data-help="ds-health" />
       </div>
 
       <DatasourcesHomeRecent class="shrink-0" />

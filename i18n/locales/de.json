@@ -449,7 +449,7 @@
     "peopleNotActivated": "Nicht aktiviert",
     "peopleAdd": "Benutzer hinzufügen",
     "dashboard": "Dashboard",
-    "orgBranding": "{name}: Branding öffnen"
+    "orgBranding": "{name}: Profil der Organisation öffnen"
   },
   "navbar": {
     "breadcrumb": "Brotkrümelnavigation",
@@ -8672,6 +8672,15 @@
       "recovery": "Wiederherstellungscode",
       "recoveryUse": "Anmelden",
       "title": "Geben Sie Ihren Code ein"
+    },
+    "tips": {
+      "title": "Tipps auf neuen Seiten",
+      "desc": "Eine kurze geführte Tour, wenn Sie eine Seite zum ersten Mal öffnen.",
+      "enabled": "Tipps auf neuen Seiten anzeigen",
+      "enabledHint": "Eine kleine Karte bietet die Tour der Seite einmal an. Sie können sie immer über das ? auf der Seite starten.",
+      "again": "Alle Tipps wieder anzeigen",
+      "seen": "Noch keine Tipps gesehen | {n} Tipp gesehen | {n} Tipps gesehen",
+      "reset": "Tipps werden auf jeder Seite wieder angezeigt"
     }
   },
   "access": {
@@ -9180,7 +9189,12 @@
       "done": "Fertig",
       "end": "Tour beenden",
       "hereTitle": "Hier ist es",
-      "hereText": "Das ist das Bedienelement, von dem der Artikel spricht."
+      "hereText": "Das ist das Bedienelement, von dem der Artikel spricht.",
+      "offerTitle": "Neu hier?",
+      "offerText": "Machen Sie eine Tour mit {n} Schritt: {title}. | Machen Sie eine Tour mit {n} Schritten: {title}.",
+      "take": "Tour starten",
+      "later": "Jetzt nicht",
+      "turnOff": "Tipps ausschalten"
     },
     "answer": {
       "title": "Antwort aus dem Hilfezentrum",

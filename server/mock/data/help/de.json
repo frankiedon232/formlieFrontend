@@ -2179,6 +2179,241 @@
           "text": "Suchen Sie nach Name, E-Mail, Abteilung oder Position."
         }
       ]
+    },
+    {
+      "id": "dashboard-tour",
+      "route": "/dashboard",
+      "title": "Ihr Dashboard",
+      "steps": [
+        {
+          "target": "dashboard-views",
+          "title": "Vier Ansichten",
+          "text": "Arbeitsbereich zeigt alles auf einen Blick; Formulare, Datenquellen und API-Dienst haben jeweils eine eigene Ansicht."
+        },
+        {
+          "target": "dashboard-period",
+          "title": "Zeitraum wählen",
+          "text": "Wählen Sie die Daten, die die Zahlen abdecken. Täglich, Wöchentlich, Monatlich oder Jährlich gruppiert sie."
+        },
+        {
+          "target": "dashboard-filter",
+          "title": "Eingrenzen",
+          "text": "Zeigen Sie nur einen Ordner oder die Formulare einer Person."
+        },
+        {
+          "target": "create",
+          "title": "Alles erstellen",
+          "text": "Starten Sie von jeder Seite aus ein Formular, eine Vorlage, eine Verbindung oder einen API-Dienst."
+        },
+        {
+          "target": "page-help",
+          "title": "Hilfe auf jeder Seite",
+          "text": "Öffnen Sie die Hilfe zur aktuellen Seite oder starten Sie ihre Tour erneut."
+        }
+      ]
+    },
+    {
+      "id": "builder-tour",
+      "route": "/forms/:id/build",
+      "title": "Ein Formular erstellen",
+      "steps": [
+        {
+          "target": "form-modes",
+          "title": "Erstellen, Logik, Design, Teilen",
+          "text": "Wechseln Sie zwischen den Teilen Ihres Formulars. Alles wird laufend gespeichert."
+        },
+        {
+          "target": "builder-palette",
+          "title": "Fragen",
+          "text": "Klicken Sie auf eine Frage oder ziehen Sie sie ins Formular. Listen und gespeicherte Fragen finden Sie in den Tabs."
+        },
+        {
+          "target": "builder-canvas",
+          "title": "Ihr Formular",
+          "text": "Ordnen Sie Fragen in Zeilen und Seiten an. Wählen Sie eine aus, um sie zu ändern."
+        },
+        {
+          "target": "builder-inspector",
+          "title": "Einstellungen der gewählten Frage",
+          "text": "Beschriftung, Hilfetext, Pflichtfeld, wer sie sieht und mehr."
+        },
+        {
+          "target": "form-preview",
+          "title": "Vorschau",
+          "text": "Sehen Sie das Formular so, wie Personen es sehen, auf Smartphone, Tablet oder Computer."
+        },
+        {
+          "target": "form-publish",
+          "title": "Veröffentlichen",
+          "text": "Wenn es fertig ist, veröffentlichen Sie es, um Antworten zu sammeln."
+        }
+      ]
+    },
+    {
+      "id": "logic-tour",
+      "route": "/forms/:id/logic",
+      "title": "Regeln und Berechnungen",
+      "steps": [
+        {
+          "target": "logic-add",
+          "title": "Eine Regel hinzufügen",
+          "text": "Fragen anzeigen, ausblenden oder zur Pflicht machen, Antworten ausfüllen oder Seiten überspringen, abhängig von früheren Antworten."
+        },
+        {
+          "target": "logic-calculations",
+          "title": "Berechnungen",
+          "text": "Summen, Punkte und Preise, die aus den Antworten berechnet werden, während Personen das Formular ausfüllen."
+        }
+      ]
+    },
+    {
+      "id": "design-tour",
+      "route": "/forms/:id/design",
+      "title": "Ihr Formular gestalten",
+      "steps": [
+        {
+          "target": "design-panel",
+          "title": "Machen Sie es zu Ihrem",
+          "text": "Beginnen Sie mit einem Look und ändern Sie dann Layout, Farben, Schriften, Kopf- und Fußzeile."
+        },
+        {
+          "target": "design-screens",
+          "title": "Fragen und Dankeseite",
+          "text": "Prüfen Sie beide Bildschirme, die Personen sehen werden."
+        },
+        {
+          "target": "design-devices",
+          "title": "Jede Bildschirmgröße",
+          "text": "Sehen Sie die Vorschau auf Computer, Tablet und Smartphone."
+        }
+      ]
+    },
+    {
+      "id": "share-tour",
+      "route": "/forms/:id/share",
+      "title": "Ihr Formular teilen",
+      "steps": [
+        {
+          "target": "share-channels",
+          "title": "Wo Personen antworten",
+          "text": "Ein Link, eine Einbettung auf Ihrer Website, die API oder mehrere gleichzeitig."
+        },
+        {
+          "target": "share-link",
+          "title": "Ihr Link",
+          "text": "Machen Sie die Adresse gut lesbar und legen Sie fest, wer bis wann antworten darf."
+        },
+        {
+          "target": "share-open",
+          "title": "Öffnen, einbetten oder QR-Code",
+          "text": "Kopieren Sie den Link, holen Sie sich den Einbettungscode oder drucken Sie einen QR-Code."
+        },
+        {
+          "target": "share-who",
+          "title": "Wer es sehen kann",
+          "text": "Alle in Ihrem Arbeitsbereich, was sie mit diesem Formular tun dürfen und warum."
+        }
+      ]
+    },
+    {
+      "id": "responses-tour",
+      "route": "/responses",
+      "title": "Ihre Antworten",
+      "steps": [
+        {
+          "target": "list-search",
+          "title": "Eine Antwort finden",
+          "text": "Suchen Sie nach Name, E-Mail oder einer beliebigen Antwort."
+        },
+        {
+          "target": "view-switch",
+          "title": "Zeilen oder Karten",
+          "text": "Wechseln Sie zwischen Tabelle und Karten. Ihre Wahl wird gemerkt."
+        }
+      ]
+    },
+    {
+      "id": "datasources-tour",
+      "route": "/data-sources",
+      "title": "Datenquellen",
+      "steps": [
+        {
+          "target": "ds-add",
+          "title": "Eine Datenbank verbinden",
+          "text": "Speichern Sie Antworten direkt in Ihrer eigenen Datenbank."
+        },
+        {
+          "target": "ds-query",
+          "title": "Abfrage-Editor",
+          "text": "Stellen Sie Ihren Datenbanken sicher Fragen in SQL."
+        },
+        {
+          "target": "ds-health",
+          "title": "Zustand der Verbindungen",
+          "text": "Sehen Sie auf einen Blick, welche Verbindungen antworten und wie schnell."
+        }
+      ]
+    },
+    {
+      "id": "api-tour",
+      "route": "/api-service",
+      "title": "Der API-Dienst",
+      "steps": [
+        {
+          "target": "api-setup",
+          "title": "In Schritten einrichten",
+          "text": "Ein Dienst, dann Endpunkte, dann Tokens: Folgen Sie den Schritten der Reihe nach."
+        },
+        {
+          "target": "api-new-endpoint",
+          "title": "Endpunkte",
+          "text": "Machen Sie aus einem Formular eine API-Adresse, an die Apps Antworten senden können."
+        },
+        {
+          "target": "api-tokens",
+          "title": "Tokens",
+          "text": "Geben Sie jeder App einen eigenen Schlüssel und schalten Sie ihn jederzeit ab."
+        }
+      ]
+    },
+    {
+      "id": "settings-tour",
+      "route": "/settings",
+      "title": "Einstellungen",
+      "steps": [
+        {
+          "target": "settings-search",
+          "title": "Eine Einstellung finden",
+          "text": "Geben Sie ein, was Sie suchen, zum Beispiel Logo oder Passwort."
+        },
+        {
+          "target": "settings-sections",
+          "title": "Jeder Teil Ihres Arbeitsbereichs",
+          "text": "Firma, Branding, Anmeldung, E-Mails, Datenschutz, Tarife und mehr."
+        }
+      ]
+    },
+    {
+      "id": "help-tour",
+      "route": "/help",
+      "title": "Hilfe und Support",
+      "steps": [
+        {
+          "target": "help-search",
+          "title": "Alles fragen",
+          "text": "Durchsuchen Sie Artikel, Fragen und Begriffe oder fragen Sie den Assistenten."
+        },
+        {
+          "target": "help-faq",
+          "title": "Häufige Fragen",
+          "text": "Kurze Antworten auf die häufigsten Fragen."
+        },
+        {
+          "target": "help-contact",
+          "title": "Support kontaktieren",
+          "text": "Senden Sie dem Formalie-Team eine Nachricht; die Antwort kommt per E-Mail."
+        }
+      ]
     }
   ]
 }

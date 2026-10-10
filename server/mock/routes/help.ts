@@ -12,6 +12,7 @@
 import { z } from 'zod'
 import { HELP_CATEGORIES, type HelpArticle, type HelpContext, type HelpHome, type HelpSearchResult } from '#shared/types/help'
 import { APP_LOCALES } from '#shared/utils/i18n/locales'
+import { routeMatches } from '#shared/utils/help/routes'
 import { requireAuth } from '../core/auth'
 import { MockError, ok } from '../core/respond'
 import { defineMockRoute } from '../core/route'
@@ -107,7 +108,13 @@ export const searchHelp = defineMockRoute(({ event, query }) => {
 })
 
 /** Patterns like /forms/:id/build match any form's page. */
-const matches = (pattern: string, path: string) => new RegExp(`^${pattern.replace(/:[a-z]+/g, '[^/]+')}/?$`).test(path)
+const matches = routeMatches
+
+/** GET /help/tours?lang: every guided tour, so the app can offer a page's tour on the first visit. */
+export const helpTours = defineMockRoute(({ event, query }) => {
+  requireAuth(event)
+  return ok(helpContent(langOf(query)).tours)
+})
 
 /** GET /help/context?path: the article for the page someone is on, more for it, and its tour. */
 export const helpContext = defineMockRoute(({ event, query }) => {

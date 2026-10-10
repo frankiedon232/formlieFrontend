@@ -449,7 +449,7 @@
     "peopleNotActivated": "Chưa kích hoạt",
     "peopleAdd": "Thêm người dùng",
     "dashboard": "Bảng điều khiển",
-    "orgBranding": "{name}: mở Thương hiệu"
+    "orgBranding": "{name}: mở hồ sơ của tổ chức"
   },
   "navbar": {
     "breadcrumb": "Đường dẫn",
@@ -8672,6 +8672,15 @@
       "recovery": "Mã khôi phục",
       "recoveryUse": "Đăng nhập",
       "title": "Nhập mã của bạn"
+    },
+    "tips": {
+      "title": "Mẹo ở trang mới",
+      "desc": "Một chuyến tham quan có hướng dẫn ngắn khi bạn mở một trang lần đầu.",
+      "enabled": "Hiện mẹo ở trang mới",
+      "enabledHint": "Một thẻ nhỏ đề xuất chuyến tham quan của trang một lần. Bạn luôn có thể bắt đầu từ dấu ? trên trang.",
+      "again": "Hiện lại tất cả mẹo",
+      "seen": "Chưa xem mẹo nào | Đã xem {n} mẹo | Đã xem {n} mẹo",
+      "reset": "Mẹo sẽ hiện lại ở mỗi trang"
     }
   },
   "access": {
@@ -9180,7 +9189,12 @@
       "done": "Xong",
       "end": "Kết thúc tham quan",
       "hereTitle": "Đây rồi",
-      "hereText": "Đây là điều khiển mà bài viết nhắc đến."
+      "hereText": "Đây là điều khiển mà bài viết nhắc đến.",
+      "offerTitle": "Bạn mới đến?",
+      "offerText": "Hãy tham quan {n} bước: {title}. | Hãy tham quan {n} bước: {title}.",
+      "take": "Bắt đầu tham quan",
+      "later": "Để sau",
+      "turnOff": "Tắt mẹo"
     },
     "answer": {
       "title": "Câu trả lời từ trung tâm trợ giúp",

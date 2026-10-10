@@ -449,7 +449,7 @@
     "peopleNotActivated": "Not activated",
     "peopleAdd": "Add user",
     "dashboard": "Dashboard",
-    "orgBranding": "{name}: open Branding"
+    "orgBranding": "{name}: open the organisation's profile"
   },
   "navbar": {
     "breadcrumb": "Breadcrumb",
@@ -8672,6 +8672,15 @@
       "recovery": "Recovery code",
       "recoveryUse": "Sign in",
       "title": "Enter your code"
+    },
+    "tips": {
+      "title": "Tips on new pages",
+      "desc": "A short guided tour the first time you open a page.",
+      "enabled": "Show tips on new pages",
+      "enabledHint": "A small card offers the page's tour once. You can always start it from ? on the page.",
+      "again": "Show all tips again",
+      "seen": "No tips seen yet | {n} tip seen | {n} tips seen",
+      "reset": "Tips will show again on each page"
     }
   },
   "access": {
@@ -9180,7 +9189,12 @@
       "done": "Done",
       "end": "End tour",
       "hereTitle": "Here it is",
-      "hereText": "This is the control the article talks about."
+      "hereText": "This is the control the article talks about.",
+      "offerTitle": "New here?",
+      "offerText": "Take a {n}-step tour: {title}. | Take a {n}-step tour: {title}.",
+      "take": "Take the tour",
+      "later": "Not now",
+      "turnOff": "Turn off tips"
     },
     "answer": {
       "title": "Answer from the help centre",

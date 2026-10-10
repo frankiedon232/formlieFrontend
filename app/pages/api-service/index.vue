@@ -70,11 +70,11 @@ const shortcuts = [
 <template>
   <AppPanel id="api-service" :title="t('nav.apiService')" :subtitle="t('apiService.subtitle')" subtitle-icon="i-lucide-code-xml">
     <template #actions>
-      <UButton v-if="can('api.tokens')" :label="t('apiService.tokens.newTitle')" icon="i-lucide-key-round" color="neutral" variant="outline" to="/api-service/auth" class="hidden sm:inline-flex" />
-      <UButton v-if="can('api.endpoints')" :label="t('apiService.actions.newEndpoint')" icon="i-lucide-plus" color="neutral" to="/api-service/endpoints/new" />
+      <UButton v-if="can('api.tokens')" :label="t('apiService.tokens.newTitle')" icon="i-lucide-key-round" color="neutral" variant="outline" to="/api-service/auth" data-help="api-tokens" class="hidden sm:inline-flex" />
+      <UButton v-if="can('api.endpoints')" :label="t('apiService.actions.newEndpoint')" icon="i-lucide-plus" color="neutral" to="/api-service/endpoints/new" data-help="api-new-endpoint" />
     </template>
 
-    <UCard v-if="setup.summary.value && !setupDone" variant="outline" class="shrink-0" :ui="{ body: 'flex flex-col gap-4 p-4 sm:p-5' }">
+    <UCard v-if="setup.summary.value && !setupDone" variant="outline" class="shrink-0" data-help="api-setup" :ui="{ body: 'flex flex-col gap-4 p-4 sm:p-5' }">
       <div class="flex flex-wrap items-start justify-between gap-2">
         <div class="flex flex-col gap-0.5">
           <h2 class="text-sm font-semibold text-highlighted">{{ t('apiService.journey.title') }}</h2>

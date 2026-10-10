@@ -449,7 +449,7 @@
     "peopleNotActivated": "Sin activar",
     "peopleAdd": "Añadir usuario",
     "dashboard": "Panel",
-    "orgBranding": "{name}: abrir Marca"
+    "orgBranding": "{name}: abrir el perfil de la organización"
   },
   "navbar": {
     "breadcrumb": "Ruta de navegación",
@@ -8672,6 +8672,15 @@
       "recovery": "Código de recuperación",
       "recoveryUse": "Iniciar sesión",
       "title": "Introduce tu código"
+    },
+    "tips": {
+      "title": "Consejos en páginas nuevas",
+      "desc": "Un breve recorrido guiado la primera vez que abres una página.",
+      "enabled": "Mostrar consejos en páginas nuevas",
+      "enabledHint": "Una pequeña tarjeta ofrece el recorrido de la página una sola vez. Siempre puedes iniciarlo desde ? en la página.",
+      "again": "Mostrar todos los consejos otra vez",
+      "seen": "Aún no has visto consejos | {n} consejo visto | {n} consejos vistos",
+      "reset": "Los consejos volverán a mostrarse en cada página"
     }
   },
   "access": {
@@ -9180,7 +9189,12 @@
       "done": "Listo",
       "end": "Terminar recorrido",
       "hereTitle": "Aquí está",
-      "hereText": "Este es el control del que habla el artículo."
+      "hereText": "Este es el control del que habla el artículo.",
+      "offerTitle": "¿Eres nuevo aquí?",
+      "offerText": "Haz un recorrido de {n} paso: {title}. | Haz un recorrido de {n} pasos: {title}.",
+      "take": "Iniciar el recorrido",
+      "later": "Ahora no",
+      "turnOff": "Desactivar los consejos"
     },
     "answer": {
       "title": "Respuesta del centro de ayuda",

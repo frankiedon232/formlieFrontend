@@ -48,6 +48,7 @@ defineShortcuts({ n: { handler: () => canAdd.value && add(), usingInput: false }
         <UButton
           icon="i-lucide-plus"
           :label="t('logic.add')"
+          data-help="logic-add"
           color="neutral"
           size="sm"
           class="ms-auto"
@@ -100,7 +101,7 @@ defineShortcuts({ n: { handler: () => canAdd.value && add(), usingInput: false }
     </UCard>
 
     <div class="flex flex-col gap-4 lg:sticky lg:top-0">
-      <FormsLogicCalculations />
+      <FormsLogicCalculations data-help="logic-calculations" />
       <UAlert icon="i-lucide-lightbulb" color="neutral" variant="outline" :title="t('logic.tipTitle')" :description="t('logic.tipDesc')" />
     </div>
   </div>

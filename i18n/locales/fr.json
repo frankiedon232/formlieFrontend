@@ -449,7 +449,7 @@
     "peopleNotActivated": "Non activés",
     "peopleAdd": "Ajouter un utilisateur",
     "dashboard": "Tableau de bord",
-    "orgBranding": "{name} : ouvrir Image de marque"
+    "orgBranding": "{name} : ouvrir le profil de l’organisation"
   },
   "navbar": {
     "breadcrumb": "Fil d'Ariane",
@@ -8672,6 +8672,15 @@
       "recovery": "Code de récupération",
       "recoveryUse": "Se connecter",
       "title": "Saisissez votre code"
+    },
+    "tips": {
+      "title": "Conseils sur les nouvelles pages",
+      "desc": "Une courte visite guidée la première fois que vous ouvrez une page.",
+      "enabled": "Afficher les conseils sur les nouvelles pages",
+      "enabledHint": "Une petite carte propose une seule fois la visite de la page. Vous pouvez toujours la lancer avec ? sur la page.",
+      "again": "Réafficher tous les conseils",
+      "seen": "Aucun conseil vu pour l’instant | {n} conseil vu | {n} conseils vus",
+      "reset": "Les conseils s’afficheront de nouveau sur chaque page"
     }
   },
   "access": {
@@ -9180,7 +9189,12 @@
       "done": "Terminé",
       "end": "Quitter la visite",
       "hereTitle": "Le voici",
-      "hereText": "Voici le contrôle dont parle l’article."
+      "hereText": "Voici le contrôle dont parle l’article.",
+      "offerTitle": "Nouveau ici ?",
+      "offerText": "Faites une visite en {n} étape : {title}. | Faites une visite en {n} étapes : {title}.",
+      "take": "Lancer la visite",
+      "later": "Pas maintenant",
+      "turnOff": "Désactiver les conseils"
     },
     "answer": {
       "title": "Réponse du centre d’aide",

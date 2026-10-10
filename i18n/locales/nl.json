@@ -449,7 +449,7 @@
     "peopleNotActivated": "Niet geactiveerd",
     "peopleAdd": "Gebruiker toevoegen",
     "dashboard": "Dashboard",
-    "orgBranding": "{name}: Huisstijl openen"
+    "orgBranding": "{name}: profiel van de organisatie openen"
   },
   "navbar": {
     "breadcrumb": "Kruimelpad",
@@ -8672,6 +8672,15 @@
       "recovery": "Herstelcode",
       "recoveryUse": "Aanmelden",
       "title": "Voer je code in"
+    },
+    "tips": {
+      "title": "Tips op nieuwe pagina’s",
+      "desc": "Een korte rondleiding de eerste keer dat je een pagina opent.",
+      "enabled": "Tips tonen op nieuwe pagina’s",
+      "enabledHint": "Een kleine kaart biedt de rondleiding van de pagina één keer aan. Je kunt hem altijd starten via ? op de pagina.",
+      "again": "Alle tips opnieuw tonen",
+      "seen": "Nog geen tips gezien | {n} tip gezien | {n} tips gezien",
+      "reset": "Tips worden op elke pagina weer getoond"
     }
   },
   "access": {
@@ -9180,7 +9189,12 @@
       "done": "Klaar",
       "end": "Rondleiding stoppen",
       "hereTitle": "Hier is het",
-      "hereText": "Dit is de knop waar het artikel over gaat."
+      "hereText": "Dit is de knop waar het artikel over gaat.",
+      "offerTitle": "Nieuw hier?",
+      "offerText": "Maak een rondleiding van {n} stap: {title}. | Maak een rondleiding van {n} stappen: {title}.",
+      "take": "Start de rondleiding",
+      "later": "Nu niet",
+      "turnOff": "Tips uitzetten"
     },
     "answer": {
       "title": "Antwoord uit het helpcentrum",

@@ -449,7 +449,7 @@
     "peopleNotActivated": "未激活",
     "peopleAdd": "添加用户",
     "dashboard": "仪表板",
-    "orgBranding": "{name}：打开品牌"
+    "orgBranding": "{name}：打开组织资料"
   },
   "navbar": {
     "breadcrumb": "面包屑导航",
@@ -8672,6 +8672,15 @@
       "recovery": "恢复码",
       "recoveryUse": "登录",
       "title": "输入你的验证码"
+    },
+    "tips": {
+      "title": "新页面提示",
+      "desc": "第一次打开页面时提供简短的引导导览。",
+      "enabled": "在新页面显示提示",
+      "enabledHint": "一张小卡片只会提供一次该页面的导览。您随时可以在页面上通过 ? 开始。",
+      "again": "再次显示所有提示",
+      "seen": "尚未查看提示 | 已查看 {n} 条提示 | 已查看 {n} 条提示",
+      "reset": "每个页面将再次显示提示"
     }
   },
   "access": {
@@ -9180,7 +9189,12 @@
       "done": "完成",
       "end": "结束导览",
       "hereTitle": "就在这里",
-      "hereText": "这就是文章中提到的控件。"
+      "hereText": "这就是文章中提到的控件。",
+      "offerTitle": "第一次来？",
+      "offerText": "参加 {n} 步导览：{title}。 | 参加 {n} 步导览：{title}。",
+      "take": "开始导览",
+      "later": "暂不",
+      "turnOff": "关闭提示"
     },
     "answer": {
       "title": "来自帮助中心的回答",

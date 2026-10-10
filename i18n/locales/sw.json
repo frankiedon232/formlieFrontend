@@ -449,7 +449,7 @@
     "peopleNotActivated": "Haijawashwa",
     "peopleAdd": "Ongeza mtumiaji",
     "dashboard": "Dashibodi",
-    "orgBranding": "{name}: fungua Chapa"
+    "orgBranding": "{name}: fungua wasifu wa shirika"
   },
   "navbar": {
     "breadcrumb": "Njia ya urambazaji",
@@ -8672,6 +8672,15 @@
       "recovery": "Msimbo wa kurejesha",
       "recoveryUse": "Ingia",
       "title": "Weka msimbo wako"
+    },
+    "tips": {
+      "title": "Vidokezo kwenye kurasa mpya",
+      "desc": "Ziara fupi ya kuongozwa unapofungua ukurasa kwa mara ya kwanza.",
+      "enabled": "Onyesha vidokezo kwenye kurasa mpya",
+      "enabledHint": "Kadi ndogo hutoa ziara ya ukurasa mara moja. Unaweza kuianza wakati wowote kupitia ? kwenye ukurasa.",
+      "again": "Onyesha vidokezo vyote tena",
+      "seen": "Bado hakuna vidokezo vilivyoonekana | Kidokezo {n} kimeonekana | Vidokezo {n} vimeonekana",
+      "reset": "Vidokezo vitaonyeshwa tena kwenye kila ukurasa"
     }
   },
   "access": {
@@ -9180,7 +9189,12 @@
       "done": "Imekamilika",
       "end": "Maliza ziara",
       "hereTitle": "Hiki hapa",
-      "hereText": "Hiki ndicho kidhibiti ambacho makala inakizungumzia."
+      "hereText": "Hiki ndicho kidhibiti ambacho makala inakizungumzia.",
+      "offerTitle": "Mpya hapa?",
+      "offerText": "Chukua ziara ya hatua {n}: {title}. | Chukua ziara ya hatua {n}: {title}.",
+      "take": "Anza ziara",
+      "later": "Si sasa",
+      "turnOff": "Zima vidokezo"
     },
     "answer": {
       "title": "Jibu kutoka kituo cha msaada",

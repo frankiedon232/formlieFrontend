@@ -2180,6 +2180,241 @@
           "text": "Cari menurut nama, email, departemen, atau jabatan."
         }
       ]
+    },
+    {
+      "id": "dashboard-tour",
+      "route": "/dashboard",
+      "title": "Dasbor Anda",
+      "steps": [
+        {
+          "target": "dashboard-views",
+          "title": "Empat tampilan",
+          "text": "Ruang kerja menampilkan semuanya sekilas; Formulir, Sumber data, dan Layanan API masing-masing punya tampilan sendiri."
+        },
+        {
+          "target": "dashboard-period",
+          "title": "Pilih periode",
+          "text": "Pilih tanggal yang dicakup angka-angka. Harian, Mingguan, Bulanan, atau Tahunan mengelompokkannya."
+        },
+        {
+          "target": "dashboard-filter",
+          "title": "Persempit",
+          "text": "Tampilkan hanya satu folder atau formulir milik satu pemilik."
+        },
+        {
+          "target": "create",
+          "title": "Buat apa saja",
+          "text": "Mulai formulir, templat, koneksi, atau layanan API dari sini, di halaman mana pun."
+        },
+        {
+          "target": "page-help",
+          "title": "Bantuan di setiap halaman",
+          "text": "Buka bantuan untuk halaman yang sedang Anda lihat, atau mulai lagi tur halamannya."
+        }
+      ]
+    },
+    {
+      "id": "builder-tour",
+      "route": "/forms/:id/build",
+      "title": "Membuat formulir",
+      "steps": [
+        {
+          "target": "form-modes",
+          "title": "Buat, logika, desain, bagikan",
+          "text": "Berpindah antarbagian formulir Anda. Semuanya tersimpan saat Anda bekerja."
+        },
+        {
+          "target": "builder-palette",
+          "title": "Pertanyaan",
+          "text": "Klik atau seret pertanyaan ke formulir. Daftar dan pertanyaan tersimpan ada di tab."
+        },
+        {
+          "target": "builder-canvas",
+          "title": "Formulir Anda",
+          "text": "Susun pertanyaan dalam baris dan halaman. Pilih satu untuk mengubahnya."
+        },
+        {
+          "target": "builder-inspector",
+          "title": "Pengaturan pertanyaan yang dipilih",
+          "text": "Label, teks bantuan, wajib diisi, siapa yang melihatnya, dan lainnya."
+        },
+        {
+          "target": "form-preview",
+          "title": "Pratinjau",
+          "text": "Lihat formulir seperti yang dilihat orang, di ponsel, tablet, atau komputer."
+        },
+        {
+          "target": "form-publish",
+          "title": "Publikasikan",
+          "text": "Jika sudah siap, publikasikan untuk mulai mengumpulkan respons."
+        }
+      ]
+    },
+    {
+      "id": "logic-tour",
+      "route": "/forms/:id/logic",
+      "title": "Aturan dan perhitungan",
+      "steps": [
+        {
+          "target": "logic-add",
+          "title": "Tambah aturan",
+          "text": "Tampilkan, sembunyikan, atau wajibkan pertanyaan, isi jawaban, atau lewati halaman berdasarkan jawaban sebelumnya."
+        },
+        {
+          "target": "logic-calculations",
+          "title": "Perhitungan",
+          "text": "Total, skor, dan harga yang dihitung dari jawaban saat orang mengisi formulir."
+        }
+      ]
+    },
+    {
+      "id": "design-tour",
+      "route": "/forms/:id/design",
+      "title": "Mendesain formulir Anda",
+      "steps": [
+        {
+          "target": "design-panel",
+          "title": "Buat jadi milik Anda",
+          "text": "Mulai dari satu tampilan, lalu ubah tata letak, warna, font, header, dan footer."
+        },
+        {
+          "target": "design-screens",
+          "title": "Pertanyaan dan halaman terima kasih",
+          "text": "Periksa kedua layar yang akan dilihat orang."
+        },
+        {
+          "target": "design-devices",
+          "title": "Semua ukuran layar",
+          "text": "Pratinjau di komputer, tablet, dan ponsel."
+        }
+      ]
+    },
+    {
+      "id": "share-tour",
+      "route": "/forms/:id/share",
+      "title": "Membagikan formulir Anda",
+      "steps": [
+        {
+          "target": "share-channels",
+          "title": "Tempat orang menjawab",
+          "text": "Tautan, sematan di situs web Anda, API, atau beberapa sekaligus."
+        },
+        {
+          "target": "share-link",
+          "title": "Tautan Anda",
+          "text": "Buat alamatnya mudah dibaca, dan atur siapa yang boleh menjawab serta sampai kapan."
+        },
+        {
+          "target": "share-open",
+          "title": "Buka, sematkan, atau kode QR",
+          "text": "Salin tautan, ambil kode sematan, atau cetak kode QR."
+        },
+        {
+          "target": "share-who",
+          "title": "Siapa yang dapat melihatnya",
+          "text": "Semua orang di ruang kerja Anda, apa yang boleh mereka lakukan dengan formulir ini, dan alasannya."
+        }
+      ]
+    },
+    {
+      "id": "responses-tour",
+      "route": "/responses",
+      "title": "Respons Anda",
+      "steps": [
+        {
+          "target": "list-search",
+          "title": "Temukan respons",
+          "text": "Cari berdasarkan nama, email, atau jawaban apa pun."
+        },
+        {
+          "target": "view-switch",
+          "title": "Baris atau kartu",
+          "text": "Beralih antara tabel dan kartu. Pilihan Anda diingat."
+        }
+      ]
+    },
+    {
+      "id": "datasources-tour",
+      "route": "/data-sources",
+      "title": "Sumber data",
+      "steps": [
+        {
+          "target": "ds-add",
+          "title": "Hubungkan basis data",
+          "text": "Simpan respons di basis data Anda sendiri begitu masuk."
+        },
+        {
+          "target": "ds-query",
+          "title": "Editor kueri",
+          "text": "Ajukan pertanyaan ke basis data Anda dalam SQL, dengan aman."
+        },
+        {
+          "target": "ds-health",
+          "title": "Kesehatan koneksi",
+          "text": "Lihat sekilas koneksi mana yang menjawab dan seberapa cepat."
+        }
+      ]
+    },
+    {
+      "id": "api-tour",
+      "route": "/api-service",
+      "title": "Layanan API",
+      "steps": [
+        {
+          "target": "api-setup",
+          "title": "Siapkan bertahap",
+          "text": "Layanan, lalu endpoint, lalu token: ikuti langkah-langkahnya secara berurutan."
+        },
+        {
+          "target": "api-new-endpoint",
+          "title": "Endpoint",
+          "text": "Ubah formulir menjadi alamat API tempat aplikasi dapat mengirim jawaban."
+        },
+        {
+          "target": "api-tokens",
+          "title": "Token",
+          "text": "Beri setiap aplikasi kuncinya sendiri, dan matikan kapan saja."
+        }
+      ]
+    },
+    {
+      "id": "settings-tour",
+      "route": "/settings",
+      "title": "Pengaturan",
+      "steps": [
+        {
+          "target": "settings-search",
+          "title": "Temukan pengaturan",
+          "text": "Ketik yang Anda cari, misalnya logo atau kata sandi."
+        },
+        {
+          "target": "settings-sections",
+          "title": "Setiap bagian ruang kerja Anda",
+          "text": "Perusahaan, branding, masuk, email, privasi, paket, dan lainnya."
+        }
+      ]
+    },
+    {
+      "id": "help-tour",
+      "route": "/help",
+      "title": "Bantuan dan dukungan",
+      "steps": [
+        {
+          "target": "help-search",
+          "title": "Tanyakan apa saja",
+          "text": "Cari artikel, pertanyaan, dan istilah, atau tanya asisten."
+        },
+        {
+          "target": "help-faq",
+          "title": "Pertanyaan yang sering diajukan",
+          "text": "Jawaban singkat untuk pertanyaan paling umum."
+        },
+        {
+          "target": "help-contact",
+          "title": "Hubungi dukungan",
+          "text": "Kirim pesan ke tim Formalie; mereka membalas lewat email."
+        }
+      ]
     }
   ]
 }

@@ -2180,6 +2180,241 @@
           "text": "Recherchez par nom, e-mail, service ou intitulé de poste."
         }
       ]
+    },
+    {
+      "id": "dashboard-tour",
+      "route": "/dashboard",
+      "title": "Votre tableau de bord",
+      "steps": [
+        {
+          "target": "dashboard-views",
+          "title": "Quatre vues",
+          "text": "Espace de travail montre tout d’un coup d’œil ; Formulaires, Sources de données et Service API ont chacun leur vue."
+        },
+        {
+          "target": "dashboard-period",
+          "title": "Choisir la période",
+          "text": "Choisissez les dates couvertes par les chiffres. Par jour, par semaine, par mois ou par an les regroupe."
+        },
+        {
+          "target": "dashboard-filter",
+          "title": "Affiner",
+          "text": "Affichez un seul dossier ou les formulaires d’une seule personne."
+        },
+        {
+          "target": "create",
+          "title": "Tout créer",
+          "text": "Lancez un formulaire, un modèle, une connexion ou un service API ici, sur n’importe quelle page."
+        },
+        {
+          "target": "page-help",
+          "title": "De l’aide sur chaque page",
+          "text": "Ouvrez l’aide de la page où vous êtes, ou relancez sa visite."
+        }
+      ]
+    },
+    {
+      "id": "builder-tour",
+      "route": "/forms/:id/build",
+      "title": "Créer un formulaire",
+      "steps": [
+        {
+          "target": "form-modes",
+          "title": "Créer, logique, design, partage",
+          "text": "Passez d’une partie de votre formulaire à l’autre. Tout est enregistré au fur et à mesure."
+        },
+        {
+          "target": "builder-palette",
+          "title": "Questions",
+          "text": "Cliquez sur une question ou faites-la glisser dans le formulaire. Les listes et les questions enregistrées sont dans les onglets."
+        },
+        {
+          "target": "builder-canvas",
+          "title": "Votre formulaire",
+          "text": "Organisez les questions en lignes et en pages. Sélectionnez-en une pour la modifier."
+        },
+        {
+          "target": "builder-inspector",
+          "title": "Paramètres de la question sélectionnée",
+          "text": "Libellé, texte d’aide, obligatoire, qui la voit, et plus encore."
+        },
+        {
+          "target": "form-preview",
+          "title": "Aperçu",
+          "text": "Voyez le formulaire comme le verront les gens, sur téléphone, tablette ou ordinateur."
+        },
+        {
+          "target": "form-publish",
+          "title": "Publier",
+          "text": "Quand il est prêt, publiez-le pour commencer à recueillir des réponses."
+        }
+      ]
+    },
+    {
+      "id": "logic-tour",
+      "route": "/forms/:id/logic",
+      "title": "Règles et calculs",
+      "steps": [
+        {
+          "target": "logic-add",
+          "title": "Ajouter une règle",
+          "text": "Affichez, masquez ou rendez obligatoires des questions, remplissez des réponses ou passez des pages, selon les réponses précédentes."
+        },
+        {
+          "target": "logic-calculations",
+          "title": "Calculs",
+          "text": "Totaux, scores et prix calculés à partir des réponses pendant que les gens remplissent le formulaire."
+        }
+      ]
+    },
+    {
+      "id": "design-tour",
+      "route": "/forms/:id/design",
+      "title": "Concevoir votre formulaire",
+      "steps": [
+        {
+          "target": "design-panel",
+          "title": "Personnalisez-le",
+          "text": "Partez d’un style, puis modifiez la mise en page, les couleurs, les polices, l’en-tête et le pied de page."
+        },
+        {
+          "target": "design-screens",
+          "title": "Questions et page de remerciement",
+          "text": "Vérifiez les deux écrans que verront les gens."
+        },
+        {
+          "target": "design-devices",
+          "title": "Toutes les tailles d’écran",
+          "text": "Prévisualisez sur ordinateur, tablette et téléphone."
+        }
+      ]
+    },
+    {
+      "id": "share-tour",
+      "route": "/forms/:id/share",
+      "title": "Partager votre formulaire",
+      "steps": [
+        {
+          "target": "share-channels",
+          "title": "Où les gens répondent",
+          "text": "Un lien, une intégration sur votre site, l’API, ou plusieurs à la fois."
+        },
+        {
+          "target": "share-link",
+          "title": "Votre lien",
+          "text": "Rendez l’adresse facile à lire et définissez qui peut répondre et jusqu’à quand."
+        },
+        {
+          "target": "share-open",
+          "title": "Ouvrir, intégrer ou code QR",
+          "text": "Copiez le lien, obtenez le code d’intégration ou imprimez un code QR."
+        },
+        {
+          "target": "share-who",
+          "title": "Qui peut le voir",
+          "text": "Tous les membres de votre espace de travail, ce qu’ils peuvent faire avec ce formulaire et pourquoi."
+        }
+      ]
+    },
+    {
+      "id": "responses-tour",
+      "route": "/responses",
+      "title": "Vos réponses",
+      "steps": [
+        {
+          "target": "list-search",
+          "title": "Trouver une réponse",
+          "text": "Recherchez par nom, e-mail ou n’importe quelle réponse."
+        },
+        {
+          "target": "view-switch",
+          "title": "Lignes ou cartes",
+          "text": "Passez du tableau aux cartes. Votre choix est mémorisé."
+        }
+      ]
+    },
+    {
+      "id": "datasources-tour",
+      "route": "/data-sources",
+      "title": "Sources de données",
+      "steps": [
+        {
+          "target": "ds-add",
+          "title": "Connecter une base de données",
+          "text": "Stockez les réponses dans votre propre base de données dès leur arrivée."
+        },
+        {
+          "target": "ds-query",
+          "title": "Éditeur de requêtes",
+          "text": "Interrogez vos bases de données en SQL, en toute sécurité."
+        },
+        {
+          "target": "ds-health",
+          "title": "État des connexions",
+          "text": "Voyez en un coup d’œil quelles connexions répondent et à quelle vitesse."
+        }
+      ]
+    },
+    {
+      "id": "api-tour",
+      "route": "/api-service",
+      "title": "Le service API",
+      "steps": [
+        {
+          "target": "api-setup",
+          "title": "Configurer par étapes",
+          "text": "Un service, puis des points d’accès, puis des jetons : suivez les étapes dans l’ordre."
+        },
+        {
+          "target": "api-new-endpoint",
+          "title": "Points d’accès",
+          "text": "Transformez un formulaire en adresse d’API vers laquelle les applications envoient des réponses."
+        },
+        {
+          "target": "api-tokens",
+          "title": "Jetons",
+          "text": "Donnez à chaque application sa propre clé et désactivez-la à tout moment."
+        }
+      ]
+    },
+    {
+      "id": "settings-tour",
+      "route": "/settings",
+      "title": "Paramètres",
+      "steps": [
+        {
+          "target": "settings-search",
+          "title": "Trouver un paramètre",
+          "text": "Saisissez ce que vous cherchez, par exemple logo ou mot de passe."
+        },
+        {
+          "target": "settings-sections",
+          "title": "Chaque partie de votre espace de travail",
+          "text": "Entreprise, image de marque, connexion, e-mails, confidentialité, offres et plus encore."
+        }
+      ]
+    },
+    {
+      "id": "help-tour",
+      "route": "/help",
+      "title": "Aide et assistance",
+      "steps": [
+        {
+          "target": "help-search",
+          "title": "Demandez ce que vous voulez",
+          "text": "Cherchez dans les articles, les questions et les mots, ou interrogez l’assistant."
+        },
+        {
+          "target": "help-faq",
+          "title": "Les questions fréquentes",
+          "text": "De courtes réponses aux questions les plus courantes."
+        },
+        {
+          "target": "help-contact",
+          "title": "Contacter l’assistance",
+          "text": "Envoyez un message à l’équipe Formalie ; elle répond par e-mail."
+        }
+      ]
     }
   ]
 }

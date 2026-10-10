@@ -2181,6 +2181,241 @@
           "text": "Ada, e-postaya, departmana veya unvana göre arayın."
         }
       ]
+    },
+    {
+      "id": "dashboard-tour",
+      "route": "/dashboard",
+      "title": "Panonuz",
+      "steps": [
+        {
+          "target": "dashboard-views",
+          "title": "Dört görünüm",
+          "text": "Çalışma alanı her şeyi tek bakışta gösterir; Formlar, Veri kaynakları ve API hizmetinin her birinin kendi görünümü vardır."
+        },
+        {
+          "target": "dashboard-period",
+          "title": "Dönemi seçin",
+          "text": "Rakamların kapsadığı tarihleri seçin. Günlük, Haftalık, Aylık veya Yıllık bunları gruplar."
+        },
+        {
+          "target": "dashboard-filter",
+          "title": "Daraltın",
+          "text": "Yalnızca bir klasörü veya bir sahibin formlarını gösterin."
+        },
+        {
+          "target": "create",
+          "title": "Her şeyi oluşturun",
+          "text": "Buradan, her sayfada bir form, şablon, bağlantı veya API hizmeti başlatın."
+        },
+        {
+          "target": "page-help",
+          "title": "Her sayfada yardım",
+          "text": "Bulunduğunuz sayfanın yardımını açın veya turunu yeniden başlatın."
+        }
+      ]
+    },
+    {
+      "id": "builder-tour",
+      "route": "/forms/:id/build",
+      "title": "Form oluşturma",
+      "steps": [
+        {
+          "target": "form-modes",
+          "title": "Oluştur, mantık, tasarım, paylaş",
+          "text": "Formunuzun bölümleri arasında gezinin. Her şey siz ilerledikçe kaydedilir."
+        },
+        {
+          "target": "builder-palette",
+          "title": "Sorular",
+          "text": "Bir soruya tıklayın veya forma sürükleyin. Listeler ve kayıtlı sorular sekmelerde."
+        },
+        {
+          "target": "builder-canvas",
+          "title": "Formunuz",
+          "text": "Soruları satırlara ve sayfalara düzenleyin. Değiştirmek için birini seçin."
+        },
+        {
+          "target": "builder-inspector",
+          "title": "Seçili sorunun ayarları",
+          "text": "Etiket, yardım metni, zorunlu, kimin gördüğü ve daha fazlası."
+        },
+        {
+          "target": "form-preview",
+          "title": "Önizleme",
+          "text": "Formu insanların göreceği gibi telefonda, tablette veya bilgisayarda görün."
+        },
+        {
+          "target": "form-publish",
+          "title": "Yayınla",
+          "text": "Hazır olduğunda, yanıt toplamaya başlamak için yayınlayın."
+        }
+      ]
+    },
+    {
+      "id": "logic-tour",
+      "route": "/forms/:id/logic",
+      "title": "Kurallar ve hesaplamalar",
+      "steps": [
+        {
+          "target": "logic-add",
+          "title": "Kural ekleyin",
+          "text": "Önceki yanıtlara göre soruları gösterin, gizleyin veya zorunlu yapın, yanıtları doldurun ya da sayfaları atlayın."
+        },
+        {
+          "target": "logic-calculations",
+          "title": "Hesaplamalar",
+          "text": "İnsanlar formu doldururken yanıtlardan hesaplanan toplamlar, puanlar ve fiyatlar."
+        }
+      ]
+    },
+    {
+      "id": "design-tour",
+      "route": "/forms/:id/design",
+      "title": "Formunuzu tasarlama",
+      "steps": [
+        {
+          "target": "design-panel",
+          "title": "Kendinize göre yapın",
+          "text": "Bir görünümle başlayın, sonra düzeni, renkleri, yazı tiplerini, üst ve alt bilgiyi değiştirin."
+        },
+        {
+          "target": "design-screens",
+          "title": "Sorular ve teşekkür sayfası",
+          "text": "İnsanların göreceği iki ekranı da kontrol edin."
+        },
+        {
+          "target": "design-devices",
+          "title": "Her ekran boyutu",
+          "text": "Bilgisayarda, tablette ve telefonda önizleyin."
+        }
+      ]
+    },
+    {
+      "id": "share-tour",
+      "route": "/forms/:id/share",
+      "title": "Formunuzu paylaşma",
+      "steps": [
+        {
+          "target": "share-channels",
+          "title": "İnsanlar nerede yanıtlar",
+          "text": "Bir bağlantı, web sitenize gömme, API veya birkaçı birlikte."
+        },
+        {
+          "target": "share-link",
+          "title": "Bağlantınız",
+          "text": "Adresi okunaklı yapın ve kimin ne zamana kadar yanıtlayabileceğini belirleyin."
+        },
+        {
+          "target": "share-open",
+          "title": "Aç, göm veya QR kodu",
+          "text": "Bağlantıyı kopyalayın, gömme kodunu alın veya QR kodu yazdırın."
+        },
+        {
+          "target": "share-who",
+          "title": "Kimler görebilir",
+          "text": "Çalışma alanınızdaki herkes, bu formla neler yapabilecekleri ve nedenleri."
+        }
+      ]
+    },
+    {
+      "id": "responses-tour",
+      "route": "/responses",
+      "title": "Yanıtlarınız",
+      "steps": [
+        {
+          "target": "list-search",
+          "title": "Bir yanıt bulun",
+          "text": "Ada, e-postaya veya herhangi bir yanıta göre arayın."
+        },
+        {
+          "target": "view-switch",
+          "title": "Satırlar veya kartlar",
+          "text": "Tablo ile kartlar arasında geçiş yapın. Seçiminiz hatırlanır."
+        }
+      ]
+    },
+    {
+      "id": "datasources-tour",
+      "route": "/data-sources",
+      "title": "Veri kaynakları",
+      "steps": [
+        {
+          "target": "ds-add",
+          "title": "Bir veritabanı bağlayın",
+          "text": "Yanıtları geldikçe kendi veritabanınızda saklayın."
+        },
+        {
+          "target": "ds-query",
+          "title": "Sorgu düzenleyici",
+          "text": "Veritabanlarınıza SQL ile güvenle sorular sorun."
+        },
+        {
+          "target": "ds-health",
+          "title": "Bağlantı durumu",
+          "text": "Hangi bağlantıların yanıt verdiğini ve ne kadar hızlı olduğunu tek bakışta görün."
+        }
+      ]
+    },
+    {
+      "id": "api-tour",
+      "route": "/api-service",
+      "title": "API hizmeti",
+      "steps": [
+        {
+          "target": "api-setup",
+          "title": "Adım adım kurun",
+          "text": "Önce bir hizmet, sonra uç noktalar, sonra belirteçler: adımları sırayla izleyin."
+        },
+        {
+          "target": "api-new-endpoint",
+          "title": "Uç noktalar",
+          "text": "Bir formu, uygulamaların yanıt gönderebileceği bir API adresine dönüştürün."
+        },
+        {
+          "target": "api-tokens",
+          "title": "Belirteçler",
+          "text": "Her uygulamaya kendi anahtarını verin ve istediğiniz zaman kapatın."
+        }
+      ]
+    },
+    {
+      "id": "settings-tour",
+      "route": "/settings",
+      "title": "Ayarlar",
+      "steps": [
+        {
+          "target": "settings-search",
+          "title": "Bir ayar bulun",
+          "text": "Aradığınızı yazın, örneğin logo veya parola."
+        },
+        {
+          "target": "settings-sections",
+          "title": "Çalışma alanınızın her bölümü",
+          "text": "Şirket, markalama, giriş, e-postalar, gizlilik, planlar ve daha fazlası."
+        }
+      ]
+    },
+    {
+      "id": "help-tour",
+      "route": "/help",
+      "title": "Yardım ve destek",
+      "steps": [
+        {
+          "target": "help-search",
+          "title": "İstediğinizi sorun",
+          "text": "Makalelerde, sorularda ve sözcüklerde arayın veya asistana sorun."
+        },
+        {
+          "target": "help-faq",
+          "title": "İnsanların sorduğu sorular",
+          "text": "En sık sorulan sorulara kısa yanıtlar."
+        },
+        {
+          "target": "help-contact",
+          "title": "Destekle iletişime geçin",
+          "text": "Formalie ekibine mesaj gönderin; e-postayla yanıt verir."
+        }
+      ]
     }
   ]
 }

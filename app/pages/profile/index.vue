@@ -25,6 +25,7 @@ const changedPassword = () => Promise.all([load(), sessions.value?.reload()])
       <ProfileTwoStep :profile="profile" @changed="load" />
       <ProfileSessions ref="sessions" />
       <ProfileNotifications :profile="profile" :saving="saving" @save="save" />
+      <ProfileTips />
     </div>
   </AppPanel>
 </template>

@@ -17,6 +17,7 @@ import { z } from 'zod'
 import type { MyProfile, MySession, ProfileNotification } from '#shared/types/profile'
 import { PROFILE_DATE_FORMATS, PROFILE_NOTIFICATIONS } from '#shared/types/profile'
 import type { AuditAction } from '#shared/utils/audit/events'
+import type { MyTours } from '#shared/types/help'
 import { actorOf, recordAudit } from '../core/audit'
 import { activeSessions, currentSessionId, requireAuth, revokeSessions } from '../core/auth'
 import { MockError, ok } from '../core/respond'
@@ -232,4 +233,30 @@ export const endOtherSessions = defineMockRoute(({ event }) => {
   if (ids.length) revokeSessions(tenant, { ids })
   audit(event, tenant, user, 'auth.session.revoked', { sessions: String(ids.length) })
   return ok(sessionsOf(event, tenant, user))
+})
+
+// ── Tips on new pages (first-visit tours) ─────────────────────────────────────────────────
+const toursOf = (person: StoredPerson): MyTours => ({ enabled: !person.tours?.off, seen: person.tours?.seen ?? [] })
+
+/** GET /me/tours */
+export const myTours = defineMockRoute(({ event }) => ok(toursOf(mine(event).person)))
+
+const toursBody = z.object({
+  /** A tour offered (taken or skipped): not offered again. */
+  seen: z.string().trim().min(1).max(60).optional(),
+  enabled: z.boolean().optional(),
+  /** "Show all tips again". */
+  reset: z.literal(true).optional(),
+})
+/** PATCH /me/tours */
+export const updateMyTours = defineMockRoute(({ event, body }) => {
+  const { person } = mine(event)
+  const input = parseBody(toursBody, body)
+  const tours = { off: person.tours?.off, seen: [...(person.tours?.seen ?? [])] }
+  if (input.enabled !== undefined) tours.off = !input.enabled
+  if (input.reset) tours.seen = []
+  if (input.seen && !tours.seen.includes(input.seen)) tours.seen.push(input.seen)
+  person.tours = { ...(tours.off ? { off: true } : {}), seen: tours.seen.slice(-100) }
+  savePeople()
+  return ok(toursOf(person))
 })

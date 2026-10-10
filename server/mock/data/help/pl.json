@@ -2180,6 +2180,241 @@
           "text": "Szukaj według imienia i nazwiska, e-maila, działu lub stanowiska."
         }
       ]
+    },
+    {
+      "id": "dashboard-tour",
+      "route": "/dashboard",
+      "title": "Twój pulpit",
+      "steps": [
+        {
+          "target": "dashboard-views",
+          "title": "Cztery widoki",
+          "text": "Przestrzeń robocza pokazuje wszystko w skrócie; Formularze, Źródła danych i Usługa API mają własne widoki."
+        },
+        {
+          "target": "dashboard-period",
+          "title": "Wybierz okres",
+          "text": "Wybierz daty, które obejmują liczby. Dziennie, Tygodniowo, Miesięcznie lub Rocznie grupuje je."
+        },
+        {
+          "target": "dashboard-filter",
+          "title": "Zawęź",
+          "text": "Pokaż tylko jeden folder lub formularze jednej osoby."
+        },
+        {
+          "target": "create",
+          "title": "Utwórz cokolwiek",
+          "text": "Zacznij formularz, szablon, połączenie lub usługę API stąd, na dowolnej stronie."
+        },
+        {
+          "target": "page-help",
+          "title": "Pomoc na każdej stronie",
+          "text": "Otwórz pomoc do bieżącej strony lub uruchom jej wycieczkę ponownie."
+        }
+      ]
+    },
+    {
+      "id": "builder-tour",
+      "route": "/forms/:id/build",
+      "title": "Tworzenie formularza",
+      "steps": [
+        {
+          "target": "form-modes",
+          "title": "Twórz, logika, projekt, udostępnij",
+          "text": "Przechodź między częściami formularza. Wszystko zapisuje się na bieżąco."
+        },
+        {
+          "target": "builder-palette",
+          "title": "Pytania",
+          "text": "Kliknij pytanie lub przeciągnij je do formularza. Listy i zapisane pytania są w kartach."
+        },
+        {
+          "target": "builder-canvas",
+          "title": "Twój formularz",
+          "text": "Układaj pytania w wiersze i strony. Zaznacz jedno, aby je zmienić."
+        },
+        {
+          "target": "builder-inspector",
+          "title": "Ustawienia wybranego pytania",
+          "text": "Etykieta, tekst pomocy, wymagane, kto je widzi i więcej."
+        },
+        {
+          "target": "form-preview",
+          "title": "Podgląd",
+          "text": "Zobacz formularz tak, jak zobaczą go ludzie, na telefonie, tablecie lub komputerze."
+        },
+        {
+          "target": "form-publish",
+          "title": "Opublikuj",
+          "text": "Gdy będzie gotowy, opublikuj go, aby zacząć zbierać odpowiedzi."
+        }
+      ]
+    },
+    {
+      "id": "logic-tour",
+      "route": "/forms/:id/logic",
+      "title": "Reguły i obliczenia",
+      "steps": [
+        {
+          "target": "logic-add",
+          "title": "Dodaj regułę",
+          "text": "Pokazuj, ukrywaj lub wymagaj pytań, wypełniaj odpowiedzi lub pomijaj strony na podstawie wcześniejszych odpowiedzi."
+        },
+        {
+          "target": "logic-calculations",
+          "title": "Obliczenia",
+          "text": "Sumy, wyniki i ceny liczone z odpowiedzi, gdy ludzie wypełniają formularz."
+        }
+      ]
+    },
+    {
+      "id": "design-tour",
+      "route": "/forms/:id/design",
+      "title": "Projektowanie formularza",
+      "steps": [
+        {
+          "target": "design-panel",
+          "title": "Dostosuj do siebie",
+          "text": "Zacznij od wyglądu, potem zmień układ, kolory, czcionki, nagłówek i stopkę."
+        },
+        {
+          "target": "design-screens",
+          "title": "Pytania i strona z podziękowaniem",
+          "text": "Sprawdź oba ekrany, które zobaczą ludzie."
+        },
+        {
+          "target": "design-devices",
+          "title": "Każdy rozmiar ekranu",
+          "text": "Podgląd na komputerze, tablecie i telefonie."
+        }
+      ]
+    },
+    {
+      "id": "share-tour",
+      "route": "/forms/:id/share",
+      "title": "Udostępnianie formularza",
+      "steps": [
+        {
+          "target": "share-channels",
+          "title": "Gdzie ludzie odpowiadają",
+          "text": "Link, osadzenie na stronie, API lub kilka naraz."
+        },
+        {
+          "target": "share-link",
+          "title": "Twój link",
+          "text": "Zadbaj o czytelny adres i ustaw, kto może odpowiadać i do kiedy."
+        },
+        {
+          "target": "share-open",
+          "title": "Otwórz, osadź lub kod QR",
+          "text": "Skopiuj link, pobierz kod osadzenia lub wydrukuj kod QR."
+        },
+        {
+          "target": "share-who",
+          "title": "Kto może go zobaczyć",
+          "text": "Wszyscy w przestrzeni roboczej, co mogą robić z tym formularzem i dlaczego."
+        }
+      ]
+    },
+    {
+      "id": "responses-tour",
+      "route": "/responses",
+      "title": "Twoje odpowiedzi",
+      "steps": [
+        {
+          "target": "list-search",
+          "title": "Znajdź odpowiedź",
+          "text": "Szukaj po imieniu, e-mailu lub dowolnej odpowiedzi."
+        },
+        {
+          "target": "view-switch",
+          "title": "Wiersze lub karty",
+          "text": "Przełączaj się między tabelą a kartami. Twój wybór zostanie zapamiętany."
+        }
+      ]
+    },
+    {
+      "id": "datasources-tour",
+      "route": "/data-sources",
+      "title": "Źródła danych",
+      "steps": [
+        {
+          "target": "ds-add",
+          "title": "Połącz bazę danych",
+          "text": "Zapisuj odpowiedzi we własnej bazie danych, gdy tylko nadejdą."
+        },
+        {
+          "target": "ds-query",
+          "title": "Edytor zapytań",
+          "text": "Zadawaj swoim bazom danych pytania w SQL, bezpiecznie."
+        },
+        {
+          "target": "ds-health",
+          "title": "Stan połączeń",
+          "text": "Zobacz od razu, które połączenia odpowiadają i jak szybko."
+        }
+      ]
+    },
+    {
+      "id": "api-tour",
+      "route": "/api-service",
+      "title": "Usługa API",
+      "steps": [
+        {
+          "target": "api-setup",
+          "title": "Skonfiguruj krok po kroku",
+          "text": "Usługa, potem endpointy, potem tokeny: wykonuj kroki po kolei."
+        },
+        {
+          "target": "api-new-endpoint",
+          "title": "Endpointy",
+          "text": "Zamień formularz w adres API, na który aplikacje mogą wysyłać odpowiedzi."
+        },
+        {
+          "target": "api-tokens",
+          "title": "Tokeny",
+          "text": "Daj każdej aplikacji własny klucz i wyłącz go w dowolnej chwili."
+        }
+      ]
+    },
+    {
+      "id": "settings-tour",
+      "route": "/settings",
+      "title": "Ustawienia",
+      "steps": [
+        {
+          "target": "settings-search",
+          "title": "Znajdź ustawienie",
+          "text": "Wpisz, czego szukasz, na przykład logo lub hasło."
+        },
+        {
+          "target": "settings-sections",
+          "title": "Każda część przestrzeni roboczej",
+          "text": "Firma, branding, logowanie, e-maile, prywatność, plany i więcej."
+        }
+      ]
+    },
+    {
+      "id": "help-tour",
+      "route": "/help",
+      "title": "Pomoc i wsparcie",
+      "steps": [
+        {
+          "target": "help-search",
+          "title": "Zapytaj o cokolwiek",
+          "text": "Przeszukuj artykuły, pytania i pojęcia lub zapytaj asystenta."
+        },
+        {
+          "target": "help-faq",
+          "title": "Pytania, które zadają ludzie",
+          "text": "Krótkie odpowiedzi na najczęstsze pytania."
+        },
+        {
+          "target": "help-contact",
+          "title": "Skontaktuj się z pomocą",
+          "text": "Wyślij wiadomość do zespołu Formalie; odpowiada e-mailem."
+        }
+      ]
     }
   ]
 }

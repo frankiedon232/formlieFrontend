@@ -2180,6 +2180,241 @@
           "text": "按姓名、邮箱、部门或职位搜索。"
         }
       ]
+    },
+    {
+      "id": "dashboard-tour",
+      "route": "/dashboard",
+      "title": "您的仪表板",
+      "steps": [
+        {
+          "target": "dashboard-views",
+          "title": "四种视图",
+          "text": "工作区一目了然地展示所有内容；表单、数据源和 API 服务各有自己的视图。"
+        },
+        {
+          "target": "dashboard-period",
+          "title": "选择时间段",
+          "text": "选择数据所覆盖的日期。按日、按周、按月或按年可对其分组。"
+        },
+        {
+          "target": "dashboard-filter",
+          "title": "缩小范围",
+          "text": "只显示某个文件夹或某位所有者的表单。"
+        },
+        {
+          "target": "create",
+          "title": "创建任何内容",
+          "text": "在任何页面，都可从这里开始创建表单、模板、连接或 API 服务。"
+        },
+        {
+          "target": "page-help",
+          "title": "每个页面都有帮助",
+          "text": "打开当前页面的帮助，或重新开始它的导览。"
+        }
+      ]
+    },
+    {
+      "id": "builder-tour",
+      "route": "/forms/:id/build",
+      "title": "创建表单",
+      "steps": [
+        {
+          "target": "form-modes",
+          "title": "构建、逻辑、设计、分享",
+          "text": "在表单的各个部分之间切换。所有内容都会随操作自动保存。"
+        },
+        {
+          "target": "builder-palette",
+          "title": "问题",
+          "text": "点击或拖动问题到表单中。列表和已保存的问题在标签页里。"
+        },
+        {
+          "target": "builder-canvas",
+          "title": "您的表单",
+          "text": "将问题排成行和页。选中一个即可修改。"
+        },
+        {
+          "target": "builder-inspector",
+          "title": "所选问题的设置",
+          "text": "标签、帮助文字、是否必填、谁能看到等。"
+        },
+        {
+          "target": "form-preview",
+          "title": "预览",
+          "text": "以大家看到的样子查看表单，可在手机、平板或电脑上预览。"
+        },
+        {
+          "target": "form-publish",
+          "title": "发布",
+          "text": "准备好后发布，即可开始收集回复。"
+        }
+      ]
+    },
+    {
+      "id": "logic-tour",
+      "route": "/forms/:id/logic",
+      "title": "规则与计算",
+      "steps": [
+        {
+          "target": "logic-add",
+          "title": "添加规则",
+          "text": "根据之前的回答显示、隐藏或要求某些问题，填入答案或跳过页面。"
+        },
+        {
+          "target": "logic-calculations",
+          "title": "计算",
+          "text": "在大家填写表单时，根据回答算出总计、分数和价格。"
+        }
+      ]
+    },
+    {
+      "id": "design-tour",
+      "route": "/forms/:id/design",
+      "title": "设计表单",
+      "steps": [
+        {
+          "target": "design-panel",
+          "title": "打造专属风格",
+          "text": "先选一种外观，再修改布局、颜色、字体、页眉和页脚。"
+        },
+        {
+          "target": "design-screens",
+          "title": "问题页与感谢页",
+          "text": "检查大家会看到的两个界面。"
+        },
+        {
+          "target": "design-devices",
+          "title": "各种屏幕尺寸",
+          "text": "在电脑、平板和手机上预览。"
+        }
+      ]
+    },
+    {
+      "id": "share-tour",
+      "route": "/forms/:id/share",
+      "title": "分享表单",
+      "steps": [
+        {
+          "target": "share-channels",
+          "title": "大家在哪里回答",
+          "text": "链接、嵌入您的网站、API，或同时使用多种。"
+        },
+        {
+          "target": "share-link",
+          "title": "您的链接",
+          "text": "让地址易读，并设置谁可以回答以及截止时间。"
+        },
+        {
+          "target": "share-open",
+          "title": "打开、嵌入或二维码",
+          "text": "复制链接、获取嵌入代码或打印二维码。"
+        },
+        {
+          "target": "share-who",
+          "title": "谁能看到",
+          "text": "工作区中的所有人、他们可以对此表单做什么，以及原因。"
+        }
+      ]
+    },
+    {
+      "id": "responses-tour",
+      "route": "/responses",
+      "title": "您的回复",
+      "steps": [
+        {
+          "target": "list-search",
+          "title": "查找回复",
+          "text": "按姓名、邮箱或任意回答搜索。"
+        },
+        {
+          "target": "view-switch",
+          "title": "行或卡片",
+          "text": "在表格和卡片之间切换。系统会记住您的选择。"
+        }
+      ]
+    },
+    {
+      "id": "datasources-tour",
+      "route": "/data-sources",
+      "title": "数据源",
+      "steps": [
+        {
+          "target": "ds-add",
+          "title": "连接数据库",
+          "text": "回复到达后直接存入您自己的数据库。"
+        },
+        {
+          "target": "ds-query",
+          "title": "查询编辑器",
+          "text": "用 SQL 安全地向您的数据库提问。"
+        },
+        {
+          "target": "ds-health",
+          "title": "连接状态",
+          "text": "一眼看出哪些连接有响应、速度如何。"
+        }
+      ]
+    },
+    {
+      "id": "api-tour",
+      "route": "/api-service",
+      "title": "API 服务",
+      "steps": [
+        {
+          "target": "api-setup",
+          "title": "分步骤设置",
+          "text": "先是服务，再是端点，然后是令牌：请按顺序完成步骤。"
+        },
+        {
+          "target": "api-new-endpoint",
+          "title": "端点",
+          "text": "把表单变成 API 地址，供应用提交回答。"
+        },
+        {
+          "target": "api-tokens",
+          "title": "令牌",
+          "text": "为每个应用提供专属密钥，并可随时关闭。"
+        }
+      ]
+    },
+    {
+      "id": "settings-tour",
+      "route": "/settings",
+      "title": "设置",
+      "steps": [
+        {
+          "target": "settings-search",
+          "title": "查找设置",
+          "text": "输入您要找的内容，例如徽标或密码。"
+        },
+        {
+          "target": "settings-sections",
+          "title": "工作区的每个部分",
+          "text": "公司、品牌、登录、邮件、隐私、套餐等。"
+        }
+      ]
+    },
+    {
+      "id": "help-tour",
+      "route": "/help",
+      "title": "帮助与支持",
+      "steps": [
+        {
+          "target": "help-search",
+          "title": "随便问",
+          "text": "搜索文章、问题和词条，或询问助手。"
+        },
+        {
+          "target": "help-faq",
+          "title": "常见问题",
+          "text": "对最常见问题的简短解答。"
+        },
+        {
+          "target": "help-contact",
+          "title": "联系支持",
+          "text": "向 Formalie 团队发送消息，他们会通过邮件回复。"
+        }
+      ]
     }
   ]
 }

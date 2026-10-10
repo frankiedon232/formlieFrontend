@@ -71,15 +71,16 @@ const current = useTemplateRef<{ refresh: () => Promise<unknown> }>('current')
   <AppPanel id="dashboard" :title="t('nav.dashboard')" :subtitle="syncedAt ? t('dashboard.synced') : t('dashboard.subtitle')" subtitle-icon="i-lucide-refresh-cw">
     <template #actions>
       <UButton icon="i-lucide-refresh-cw" color="neutral" variant="ghost" square :aria-label="t('dashboard.refresh')" class="max-xl:hidden" @click="current?.refresh()" />
-      <DataDateRangePicker :from="from" :to="to" @change="setPeriod" />
+      <!-- The picker has no single root for a tour marker: it sits on this wrapper -->
+      <div class="inline-flex" data-help="dashboard-period"><DataDateRangePicker :from="from" :to="to" @change="setPeriod" /></div>
       <UTabs v-model="chosenGroup" :items="groups" :content="false" color="neutral" size="xs" :ui="SEGMENTED_UI" class="max-2xl:hidden" :aria-label="t('dashboard.groupLabel')" />
       <UButton v-if="can('forms.create')" :label="t('dashboard.newForm')" icon="i-lucide-plus" color="neutral" to="/forms/new" />
     </template>
 
     <div class="flex flex-col gap-4">
       <div class="flex flex-wrap items-center justify-between gap-2">
-        <UTabs v-if="views.length > 1" v-model="view" :items="views" :content="false" color="neutral" size="sm" :ui="SEGMENTED_UI" :aria-label="t('dashboard.views.label')" />
-        <DashboardFilter v-if="view === 'workspace' || view === 'forms'" :folder="folder" :owner="owner" @change="setFilter" />
+        <UTabs v-if="views.length > 1" v-model="view" :items="views" :content="false" color="neutral" size="sm" :ui="SEGMENTED_UI" :aria-label="t('dashboard.views.label')" data-help="dashboard-views" />
+        <DashboardFilter v-if="view === 'workspace' || view === 'forms'" :folder="folder" :owner="owner" data-help="dashboard-filter" @change="setFilter" />
         <UTabs v-model="chosenGroup" :items="groups" :content="false" color="neutral" size="xs" :ui="SEGMENTED_UI" class="ms-auto 2xl:hidden" :aria-label="t('dashboard.groupLabel')" />
       </div>
       <DashboardApi v-if="view === 'api'" ref="current" :from="from" :to="to" :group="group" @loaded="loaded" />

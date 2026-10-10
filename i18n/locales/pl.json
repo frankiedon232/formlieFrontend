@@ -449,7 +449,7 @@
     "peopleNotActivated": "Nieaktywowani",
     "peopleAdd": "Dodaj użytkownika",
     "dashboard": "Pulpit",
-    "orgBranding": "{name}: otwórz Branding"
+    "orgBranding": "{name}: otwórz profil organizacji"
   },
   "navbar": {
     "breadcrumb": "Ścieżka nawigacji",
@@ -8672,6 +8672,15 @@
       "recovery": "Kod odzyskiwania",
       "recoveryUse": "Zaloguj się",
       "title": "Wpisz swój kod"
+    },
+    "tips": {
+      "title": "Wskazówki na nowych stronach",
+      "desc": "Krótka wycieczka z przewodnikiem przy pierwszym otwarciu strony.",
+      "enabled": "Pokazuj wskazówki na nowych stronach",
+      "enabledHint": "Mała karta jednorazowo proponuje wycieczkę po stronie. Zawsze możesz ją uruchomić przyciskiem ? na stronie.",
+      "again": "Pokaż wszystkie wskazówki ponownie",
+      "seen": "Nie widziano jeszcze wskazówek | Widziano {n} wskazówkę | Widziano {n} wskazówek",
+      "reset": "Wskazówki będą znów pokazywane na każdej stronie"
     }
   },
   "access": {
@@ -9180,7 +9189,12 @@
       "done": "Gotowe",
       "end": "Zakończ wycieczkę",
       "hereTitle": "Tutaj",
-      "hereText": "To element, o którym mówi artykuł."
+      "hereText": "To element, o którym mówi artykuł.",
+      "offerTitle": "Nowy tutaj?",
+      "offerText": "Zrób wycieczkę z {n} krokiem: {title}. | Zrób wycieczkę z {n} krokami: {title}.",
+      "take": "Rozpocznij wycieczkę",
+      "later": "Nie teraz",
+      "turnOff": "Wyłącz wskazówki"
     },
     "answer": {
       "title": "Odpowiedź z centrum pomocy",

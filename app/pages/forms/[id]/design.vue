@@ -42,17 +42,18 @@ const paneHeight = computed(() => (session.fullscreen.value ? 'h-[calc(100dvh-5.
     </template>
 
     <div class="grid items-start gap-4 lg:grid-cols-[340px_minmax(0,1fr)]">
-      <UCard v-if="large" class="sticky top-0" :ui="{ body: `p-4 sm:p-4 overflow-y-auto ${paneHeight}` }">
+      <UCard v-if="large" class="sticky top-0" data-help="design-panel" :ui="{ body: `p-4 sm:p-4 overflow-y-auto ${paneHeight}` }">
         <FormsDesignerPanel />
       </UCard>
 
       <!-- The preview fills the pane like a real page (owner, 2026-10-03): the form's background reaches the bottom, the page scrolls inside. -->
       <div class="mb-20 flex min-w-0 flex-col gap-3 rounded-xl bg-elevated/40 p-2 sm:p-3 lg:mb-0" :class="large ? paneHeight : 'min-h-[70dvh]'">
         <div class="flex flex-wrap items-center justify-between gap-2">
-          <UTabs v-model="screen" :items="screens" :content="false" color="neutral" size="xs" :ui="SEGMENTED_UI" :aria-label="t('designer.screen.label')" />
+          <UTabs v-model="screen" :items="screens" :content="false" color="neutral" size="xs" :ui="SEGMENTED_UI" :aria-label="t('designer.screen.label')" data-help="design-screens" />
           <UTabs
             v-model="device"
             :items="devices"
+            data-help="design-devices"
             :content="false"
             color="neutral"
             size="xs"

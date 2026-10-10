@@ -2180,6 +2180,241 @@
           "text": "名前、メール、部署、役職で検索します。"
         }
       ]
+    },
+    {
+      "id": "dashboard-tour",
+      "route": "/dashboard",
+      "title": "ダッシュボード",
+      "steps": [
+        {
+          "target": "dashboard-views",
+          "title": "4 つのビュー",
+          "text": "ワークスペースはすべてをひと目で表示します。フォーム、データソース、API サービスにはそれぞれ専用のビューがあります。"
+        },
+        {
+          "target": "dashboard-period",
+          "title": "期間を選ぶ",
+          "text": "数値の対象となる日付を選びます。日別、週別、月別、年別でまとめられます。"
+        },
+        {
+          "target": "dashboard-filter",
+          "title": "絞り込む",
+          "text": "1 つのフォルダ、または 1 人の所有者のフォームだけを表示します。"
+        },
+        {
+          "target": "create",
+          "title": "何でも作成",
+          "text": "どのページからでも、ここからフォーム、テンプレート、接続、API サービスを作成できます。"
+        },
+        {
+          "target": "page-help",
+          "title": "すべてのページにヘルプ",
+          "text": "今いるページのヘルプを開くか、そのツアーをもう一度開始できます。"
+        }
+      ]
+    },
+    {
+      "id": "builder-tour",
+      "route": "/forms/:id/build",
+      "title": "フォームの作成",
+      "steps": [
+        {
+          "target": "form-modes",
+          "title": "作成、ロジック、デザイン、共有",
+          "text": "フォームの各パートを行き来できます。すべて自動で保存されます。"
+        },
+        {
+          "target": "builder-palette",
+          "title": "質問",
+          "text": "質問をクリックまたはドラッグしてフォームに追加します。リストと保存済みの質問はタブにあります。"
+        },
+        {
+          "target": "builder-canvas",
+          "title": "フォーム",
+          "text": "質問を行やページに並べます。選択すると変更できます。"
+        },
+        {
+          "target": "builder-inspector",
+          "title": "選択した質問の設定",
+          "text": "ラベル、ヘルプテキスト、必須、表示する相手などを設定します。"
+        },
+        {
+          "target": "form-preview",
+          "title": "プレビュー",
+          "text": "回答者に表示されるとおりに、スマートフォン、タブレット、パソコンで確認できます。"
+        },
+        {
+          "target": "form-publish",
+          "title": "公開",
+          "text": "準備ができたら公開して、回答の収集を始めましょう。"
+        }
+      ]
+    },
+    {
+      "id": "logic-tour",
+      "route": "/forms/:id/logic",
+      "title": "ルールと計算",
+      "steps": [
+        {
+          "target": "logic-add",
+          "title": "ルールを追加",
+          "text": "これまでの回答に応じて、質問の表示・非表示・必須の切り替え、回答の自動入力、ページのスキップができます。"
+        },
+        {
+          "target": "logic-calculations",
+          "title": "計算",
+          "text": "回答者が入力するのに合わせて、回答から合計、スコア、価格を計算します。"
+        }
+      ]
+    },
+    {
+      "id": "design-tour",
+      "route": "/forms/:id/design",
+      "title": "フォームのデザイン",
+      "steps": [
+        {
+          "target": "design-panel",
+          "title": "自分らしく",
+          "text": "ルックを選んでから、レイアウト、色、フォント、ヘッダー、フッターを変更します。"
+        },
+        {
+          "target": "design-screens",
+          "title": "質問画面とサンクスページ",
+          "text": "回答者に表示される 2 つの画面を確認します。"
+        },
+        {
+          "target": "design-devices",
+          "title": "あらゆる画面サイズ",
+          "text": "パソコン、タブレット、スマートフォンでプレビューします。"
+        }
+      ]
+    },
+    {
+      "id": "share-tour",
+      "route": "/forms/:id/share",
+      "title": "フォームの共有",
+      "steps": [
+        {
+          "target": "share-channels",
+          "title": "回答してもらう場所",
+          "text": "リンク、ウェブサイトへの埋め込み、API、またはそれらの組み合わせ。"
+        },
+        {
+          "target": "share-link",
+          "title": "リンク",
+          "text": "アドレスを読みやすくし、誰がいつまで回答できるかを設定します。"
+        },
+        {
+          "target": "share-open",
+          "title": "開く、埋め込む、QR コード",
+          "text": "リンクをコピーする、埋め込みコードを取得する、QR コードを印刷するができます。"
+        },
+        {
+          "target": "share-who",
+          "title": "見られるユーザー",
+          "text": "ワークスペースの全員が、このフォームで何をできるか、そしてその理由です。"
+        }
+      ]
+    },
+    {
+      "id": "responses-tour",
+      "route": "/responses",
+      "title": "回答",
+      "steps": [
+        {
+          "target": "list-search",
+          "title": "回答を探す",
+          "text": "名前、メールアドレス、または回答内容で検索します。"
+        },
+        {
+          "target": "view-switch",
+          "title": "行またはカード",
+          "text": "表とカードを切り替えます。選択は保存されます。"
+        }
+      ]
+    },
+    {
+      "id": "datasources-tour",
+      "route": "/data-sources",
+      "title": "データソース",
+      "steps": [
+        {
+          "target": "ds-add",
+          "title": "データベースを接続",
+          "text": "届いた回答を、お使いのデータベースに保存します。"
+        },
+        {
+          "target": "ds-query",
+          "title": "クエリエディター",
+          "text": "SQL でデータベースに安全に問い合わせできます。"
+        },
+        {
+          "target": "ds-health",
+          "title": "接続の状態",
+          "text": "どの接続が応答しているか、どれくらい速いかをひと目で確認できます。"
+        }
+      ]
+    },
+    {
+      "id": "api-tour",
+      "route": "/api-service",
+      "title": "API サービス",
+      "steps": [
+        {
+          "target": "api-setup",
+          "title": "手順に沿って設定",
+          "text": "サービス、エンドポイント、トークンの順に、手順どおり進めます。"
+        },
+        {
+          "target": "api-new-endpoint",
+          "title": "エンドポイント",
+          "text": "フォームを、アプリが回答を送れる API アドレスに変えます。"
+        },
+        {
+          "target": "api-tokens",
+          "title": "トークン",
+          "text": "アプリごとに専用のキーを発行し、いつでも無効にできます。"
+        }
+      ]
+    },
+    {
+      "id": "settings-tour",
+      "route": "/settings",
+      "title": "設定",
+      "steps": [
+        {
+          "target": "settings-search",
+          "title": "設定を探す",
+          "text": "探したい内容を入力します。例: ロゴ、パスワード。"
+        },
+        {
+          "target": "settings-sections",
+          "title": "ワークスペースのすべて",
+          "text": "会社情報、ブランディング、ログイン、メール、プライバシー、プランなど。"
+        }
+      ]
+    },
+    {
+      "id": "help-tour",
+      "route": "/help",
+      "title": "ヘルプとサポート",
+      "steps": [
+        {
+          "target": "help-search",
+          "title": "何でも質問",
+          "text": "記事、質問、用語を検索するか、アシスタントに質問できます。"
+        },
+        {
+          "target": "help-faq",
+          "title": "よくある質問",
+          "text": "よくある質問への短い回答です。"
+        },
+        {
+          "target": "help-contact",
+          "title": "サポートに問い合わせ",
+          "text": "Formalie チームにメッセージを送ると、メールで返信します。"
+        }
+      ]
     }
   ]
 }

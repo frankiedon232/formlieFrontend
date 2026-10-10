@@ -21,13 +21,13 @@ const shown = computed(() => groups.map(group => ({ ...group, items: group.items
 <template>
   <nav class="flex min-h-0 flex-1 flex-col" :aria-label="t('settings.title')">
     <div class="shrink-0 p-3 pb-2">
-      <UInput v-model="q" icon="i-lucide-search" :placeholder="t('settings.search')" size="sm" class="w-full" :aria-label="t('settings.search')">
+      <UInput v-model="q" icon="i-lucide-search" :placeholder="t('settings.search')" size="sm" class="w-full" :aria-label="t('settings.search')" data-help="settings-search">
         <template v-if="q" #trailing>
           <UButton icon="i-lucide-x" color="neutral" variant="link" size="xs" :aria-label="t('common.clear')" @click="q = ''" />
         </template>
       </UInput>
     </div>
-    <div class="min-h-0 flex-1 overflow-y-auto px-3 pb-4">
+    <div class="min-h-0 flex-1 overflow-y-auto px-3 pb-4" data-help="settings-sections">
       <p v-if="!shown.length" class="px-2 py-6 text-center text-xs text-muted">{{ t('settings.noMatch') }}</p>
       <div v-for="group in shown" :key="group.key" class="flex flex-col gap-0.5 pt-3 first:pt-1">
         <span class="px-2 pb-1 text-[11px] font-medium tracking-wide text-muted uppercase">{{ t(`settings.group.${group.key}`) }}</span>

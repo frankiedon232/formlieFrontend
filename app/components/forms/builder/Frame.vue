@@ -104,6 +104,7 @@ defineShortcuts({
         :ui="{ ...SEGMENTED_UI, label: 'hidden xl:inline' }"
         class="hidden md:flex"
         :aria-label="t('builder.mode.label')"
+        data-help="form-modes"
         @update:model-value="go"
       />
       <UButton v-if="canAssist" class="hidden md:inline-flex" icon="i-lucide-sparkles" :label="t('ai.assist.button')" color="neutral" variant="outline" :ui="{ label: 'hidden xl:inline' }" :aria-label="t('ai.assist.title')" @click="assistOpen = true" />
@@ -113,7 +114,7 @@ defineShortcuts({
         <UButton class="hidden lg:inline-flex" icon="i-lucide-maximize-2" color="neutral" variant="outline" square :aria-label="t('builder.fullscreen.enter')" @click="s.toggleFullscreen(true)" />
       </UTooltip>
       <UTooltip v-if="allowed('preview')" :text="t('builder.preview.button')">
-        <UButton class="hidden sm:inline-flex" icon="i-lucide-eye" color="neutral" variant="outline" square :aria-label="t('builder.preview.button')" @click="previewOpen = true" />
+        <UButton class="hidden sm:inline-flex" icon="i-lucide-eye" color="neutral" variant="outline" square :aria-label="t('builder.preview.button')" data-help="form-preview" @click="previewOpen = true" />
       </UTooltip>
       <!-- Phones / small tablets: modes, undo / redo and preview fold into one menu. -->
       <UDropdownMenu :items="phoneMenu" :content="{ align: 'end' }" class="md:hidden">
@@ -122,7 +123,7 @@ defineShortcuts({
       <!-- Nothing new since the last publish: not clickable, and it says why on hover (owner 2026-10-08) -->
       <UTooltip v-if="allowed('publish')" :text="t('builder.publish.nothing')" :disabled="!s.nothingToPublish.value">
         <span class="inline-flex" :tabindex="s.nothingToPublish.value ? 0 : undefined" :aria-label="s.nothingToPublish.value ? t('builder.publish.nothing') : undefined">
-          <UButton icon="i-lucide-globe" :label="t('builder.publish.button')" color="neutral" :loading="s.publishing.value" :disabled="s.nothingToPublish.value" :class="s.nothingToPublish.value ? 'opacity-50!' : ''" @click="publishOpen = true" />
+          <UButton icon="i-lucide-globe" :label="t('builder.publish.button')" color="neutral" :loading="s.publishing.value" :disabled="s.nothingToPublish.value" :class="s.nothingToPublish.value ? 'opacity-50!' : ''" data-help="form-publish" @click="publishOpen = true" />
         </span>
       </UTooltip>
     </template>

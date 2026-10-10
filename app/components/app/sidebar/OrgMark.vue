@@ -1,7 +1,8 @@
 <!--
   The organisation in the rail (F5, owner 2026-10-10): its logo above Help & support, with its name in the
   tooltip, so people see whose workspace they work in. The dark-background logo in a dark rail or dark mode;
-  without a logo, its initials on its brand colour. Admins open Settings → Branding from it.
+  without a logo, its initials on its brand colour. It opens the organisation's profile (Settings → Company) for
+  people who may see the settings (owner 2026-10-10).
 -->
 <script setup lang="ts">
 const props = defineProps<{ dark?: boolean }>()
@@ -32,12 +33,12 @@ watch(logo, () => (broken.value = false))
 <template>
   <UTooltip v-if="name" :text="name" :content="{ side: 'right' }">
     <component
-      :is="can('settings.manage') ? 'NuxtLink' : 'span'"
-      :to="can('settings.manage') ? '/settings/branding' : undefined"
+      :is="can('settings.view') ? 'NuxtLink' : 'span'"
+      :to="can('settings.view') ? '/settings/company' : undefined"
       class="flex size-10 items-center justify-center overflow-hidden rounded-(--ui-radius) border border-default p-1 focus-visible:outline-2 focus-visible:outline-(--ui-border-inverted)"
       :class="logo && !broken ? (darkLogo ? 'bg-elevated' : 'bg-white') : 'border-transparent'"
       :style="logo && !broken ? undefined : { backgroundColor: brand ?? 'var(--ui-bg-inverted)' }"
-      :aria-label="can('settings.manage') ? t('nav.orgBranding', { name }) : name"
+      :aria-label="can('settings.view') ? t('nav.orgBranding', { name }) : name"
     >
       <img v-if="logo && !broken" :src="logo" :alt="name" class="size-full object-contain" @error="broken = true">
       <span v-else class="text-xs font-semibold" :class="brand ? 'text-white' : 'text-inverted'">{{ initials }}</span>

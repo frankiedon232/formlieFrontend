@@ -449,7 +449,7 @@
     "peopleNotActivated": "활성화되지 않음",
     "peopleAdd": "사용자 추가",
     "dashboard": "대시보드",
-    "orgBranding": "{name}: 브랜딩 열기"
+    "orgBranding": "{name}: 조직 프로필 열기"
   },
   "navbar": {
     "breadcrumb": "이동 경로",
@@ -8672,6 +8672,15 @@
       "recovery": "복구 코드",
       "recoveryUse": "로그인",
       "title": "코드를 입력하세요"
+    },
+    "tips": {
+      "title": "새 페이지의 팁",
+      "desc": "페이지를 처음 열 때 짧은 안내 둘러보기를 제공합니다.",
+      "enabled": "새 페이지에서 팁 표시",
+      "enabledHint": "작은 카드가 페이지 둘러보기를 한 번 제안합니다. 페이지의 ?에서 언제든 시작할 수 있습니다.",
+      "again": "모든 팁 다시 표시",
+      "seen": "본 팁 없음 | 팁 {n}개 확인 | 팁 {n}개 확인",
+      "reset": "모든 페이지에서 팁이 다시 표시됩니다"
     }
   },
   "access": {
@@ -9180,7 +9189,12 @@
       "done": "완료",
       "end": "둘러보기 종료",
       "hereTitle": "여기입니다",
-      "hereText": "문서에서 설명한 컨트롤이 바로 이것입니다."
+      "hereText": "문서에서 설명한 컨트롤이 바로 이것입니다.",
+      "offerTitle": "처음이신가요?",
+      "offerText": "{n}단계 둘러보기를 해 보세요: {title}. | {n}단계 둘러보기를 해 보세요: {title}.",
+      "take": "둘러보기 시작",
+      "later": "나중에",
+      "turnOff": "팁 끄기"
     },
     "answer": {
       "title": "도움말 센터의 답변",

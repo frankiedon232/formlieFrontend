@@ -449,7 +449,7 @@
     "peopleNotActivated": "Non attivati",
     "peopleAdd": "Aggiungi utente",
     "dashboard": "Dashboard",
-    "orgBranding": "{name}: apri Branding"
+    "orgBranding": "{name}: apri il profilo dell’organizzazione"
   },
   "navbar": {
     "breadcrumb": "Percorso di navigazione",
@@ -8672,6 +8672,15 @@
       "recovery": "Codice di recupero",
       "recoveryUse": "Accedi",
       "title": "Inserisci il tuo codice"
+    },
+    "tips": {
+      "title": "Suggerimenti sulle nuove pagine",
+      "desc": "Un breve tour guidato la prima volta che apri una pagina.",
+      "enabled": "Mostra i suggerimenti sulle nuove pagine",
+      "enabledHint": "Una piccola scheda propone il tour della pagina una sola volta. Puoi sempre avviarlo da ? nella pagina.",
+      "again": "Mostra di nuovo tutti i suggerimenti",
+      "seen": "Ancora nessun suggerimento visto | {n} suggerimento visto | {n} suggerimenti visti",
+      "reset": "I suggerimenti verranno mostrati di nuovo in ogni pagina"
     }
   },
   "access": {
@@ -9180,7 +9189,12 @@
       "done": "Fatto",
       "end": "Termina il tour",
       "hereTitle": "Eccolo",
-      "hereText": "Questo è il controllo di cui parla l’articolo."
+      "hereText": "Questo è il controllo di cui parla l’articolo.",
+      "offerTitle": "Sei nuovo qui?",
+      "offerText": "Fai un tour di {n} passaggio: {title}. | Fai un tour di {n} passaggi: {title}.",
+      "take": "Avvia il tour",
+      "later": "Non ora",
+      "turnOff": "Disattiva i suggerimenti"
     },
     "answer": {
       "title": "Risposta dal centro assistenza",

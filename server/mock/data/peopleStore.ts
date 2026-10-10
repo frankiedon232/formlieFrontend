@@ -40,6 +40,8 @@ export interface StoredPerson {
   time_zone?: string | null
   date_format?: DateFormat | null
   notifications?: Record<string, boolean>
+  /** Tips on new pages (first-visit tours): switched off, and the tours already offered (shown or skipped). */
+  tours?: { off?: boolean; seen: string[] }
   /** An open invitation (F16 M2): only a hash of the link's token is kept. */
   invite?: { kind?: 'invite' | 'activation'; token_hash: string; expires_at: string; sent_at: string; invited_by: { id: string; name: string }; message: string | null }
   /** Signed up with a link, waiting for approval (R3 / R4). */

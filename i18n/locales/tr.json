@@ -449,7 +449,7 @@
     "peopleNotActivated": "Etkinleştirilmedi",
     "peopleAdd": "Kullanıcı ekle",
     "dashboard": "Pano",
-    "orgBranding": "{name}: Marka'yı aç"
+    "orgBranding": "{name}: kuruluş profilini aç"
   },
   "navbar": {
     "breadcrumb": "İçerik haritası",
@@ -8672,6 +8672,15 @@
       "recovery": "Kurtarma kodu",
       "recoveryUse": "Giriş yap",
       "title": "Kodunuzu girin"
+    },
+    "tips": {
+      "title": "Yeni sayfalarda ipuçları",
+      "desc": "Bir sayfayı ilk açtığınızda kısa bir rehberli tur.",
+      "enabled": "Yeni sayfalarda ipuçlarını göster",
+      "enabledHint": "Küçük bir kart sayfanın turunu bir kez önerir. Her zaman sayfadaki ? ile başlatabilirsiniz.",
+      "again": "Tüm ipuçlarını yeniden göster",
+      "seen": "Henüz ipucu görülmedi | {n} ipucu görüldü | {n} ipucu görüldü",
+      "reset": "İpuçları her sayfada yeniden gösterilecek"
     }
   },
   "access": {
@@ -9180,7 +9189,12 @@
       "done": "Bitti",
       "end": "Turu bitir",
       "hereTitle": "İşte burada",
-      "hereText": "Makalede bahsedilen kontrol bu."
+      "hereText": "Makalede bahsedilen kontrol bu.",
+      "offerTitle": "Burada yeni misiniz?",
+      "offerText": "{n} adımlık bir tura çıkın: {title}. | {n} adımlık bir tura çıkın: {title}.",
+      "take": "Turu başlat",
+      "later": "Şimdi değil",
+      "turnOff": "İpuçlarını kapat"
     },
     "answer": {
       "title": "Yardım merkezinden yanıt",

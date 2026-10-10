@@ -163,21 +163,21 @@ onBeforeRouteLeave(async () => (dirty.value ? await useConfirm()({ title: t('sha
         <UAlert v-if="!canChange" icon="i-lucide-lock" color="neutral" variant="subtle" :title="t('share.readOnly')" :description="t('share.readOnlyDesc')" />
         <!-- Two worlds, kept apart (owner, 2026-10-04): the people the form is sent to, and your team. -->
         <FormsShareSection icon="i-lucide-send" :title="t('share.section.answering')" :description="t('share.section.answeringDesc')" />
-        <FormsShareChannelsCard v-model:draft="draft" />
+        <FormsShareChannelsCard v-model:draft="draft" data-help="share-channels" />
         <FormsShareAccessCard v-if="web" v-model:draft="draft" :settings="settings" :form-id="form.id" />
         <FormsShareLimitsCard v-model:draft="draft" :settings="settings" @availability="availabilityOpen = true" />
         <template v-if="draft.channels.includes('link')">
           <FormsShareLinksGuide :settings="settings" :form="form" />
-          <FormsShareLinkCard v-model:draft="draft" v-model:ok="linkOk" :settings="settings" :form="form" />
+          <FormsShareLinkCard v-model:draft="draft" v-model:ok="linkOk" :settings="settings" :form="form" data-help="share-link" />
           <FormsShareShortLinkCard :settings="settings" :form="form" @changed="shortChanged" />
         </template>
         <FormsShareEmbedCard v-if="draft.channels.includes('embed')" v-model:draft="draft" :settings="settings" :form="form" />
         <FormsShareSeoCard v-if="draft.channels.includes('link')" v-model:draft="draft" :settings="settings" :form="form" />
         <FormsShareSection icon="i-lucide-users" :title="t('share.section.team')" :description="t('share.section.teamDesc')" class="mt-4" />
         <FormsSharePeopleCard v-model:draft="draft" :settings="settings" />
-        <FormsShareWhoCanSee :form-id="form.id" :settings="settings" />
+        <FormsShareWhoCanSee :form-id="form.id" :settings="settings" data-help="share-who" />
       </fieldset>
-      <FormsOverviewShare :form="form" class="lg:sticky lg:top-4" />
+      <FormsOverviewShare :form="form" class="lg:sticky lg:top-4" data-help="share-open" />
     </div>
 
     <!-- Unsaved changes: one bar for the whole page. -->

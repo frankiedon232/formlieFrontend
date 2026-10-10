@@ -2180,6 +2180,241 @@
           "text": "Tafuta kwa jina, barua pepe, idara au cheo cha kazi."
         }
       ]
+    },
+    {
+      "id": "dashboard-tour",
+      "route": "/dashboard",
+      "title": "Dashibodi yako",
+      "steps": [
+        {
+          "target": "dashboard-views",
+          "title": "Mionekano minne",
+          "text": "Eneo la kazi linaonyesha kila kitu kwa muhtasari; Fomu, Vyanzo vya data na Huduma ya API kila kimoja kina mwonekano wake."
+        },
+        {
+          "target": "dashboard-period",
+          "title": "Chagua kipindi",
+          "text": "Chagua tarehe ambazo namba zinashughulikia. Kila siku, Kila wiki, Kila mwezi au Kila mwaka huzipanga."
+        },
+        {
+          "target": "dashboard-filter",
+          "title": "Punguza",
+          "text": "Onyesha folda moja tu au fomu za mmiliki mmoja."
+        },
+        {
+          "target": "create",
+          "title": "Tengeneza chochote",
+          "text": "Anza fomu, kiolezo, muunganisho au huduma ya API kutoka hapa, kwenye ukurasa wowote."
+        },
+        {
+          "target": "page-help",
+          "title": "Msaada kwenye kila ukurasa",
+          "text": "Fungua msaada wa ukurasa ulipo, au anza tena ziara yake."
+        }
+      ]
+    },
+    {
+      "id": "builder-tour",
+      "route": "/forms/:id/build",
+      "title": "Kutengeneza fomu",
+      "steps": [
+        {
+          "target": "form-modes",
+          "title": "Jenga, mantiki, muundo, shiriki",
+          "text": "Sogea kati ya sehemu za fomu yako. Kila kitu huhifadhiwa unapoendelea."
+        },
+        {
+          "target": "builder-palette",
+          "title": "Maswali",
+          "text": "Bofya au buruta swali kwenye fomu. Orodha na maswali yaliyohifadhiwa yako kwenye vichupo."
+        },
+        {
+          "target": "builder-canvas",
+          "title": "Fomu yako",
+          "text": "Panga maswali kwa safu na kurasa. Chagua moja ili kulibadilisha."
+        },
+        {
+          "target": "builder-inspector",
+          "title": "Mipangilio ya swali lililochaguliwa",
+          "text": "Lebo, maandishi ya msaada, lazima, nani anaona na zaidi."
+        },
+        {
+          "target": "form-preview",
+          "title": "Onyesho la awali",
+          "text": "Ona fomu kama watu watakavyoiona, kwenye simu, kompyuta kibao au kompyuta."
+        },
+        {
+          "target": "form-publish",
+          "title": "Chapisha",
+          "text": "Ikiwa tayari, ichapishe ili kuanza kukusanya majibu."
+        }
+      ]
+    },
+    {
+      "id": "logic-tour",
+      "route": "/forms/:id/logic",
+      "title": "Kanuni na hesabu",
+      "steps": [
+        {
+          "target": "logic-add",
+          "title": "Ongeza kanuni",
+          "text": "Onyesha, ficha au lazimisha maswali, jaza majibu au ruka kurasa kulingana na majibu ya awali."
+        },
+        {
+          "target": "logic-calculations",
+          "title": "Hesabu",
+          "text": "Jumla, alama na bei zinazohesabiwa kutoka kwa majibu watu wanapojaza fomu."
+        }
+      ]
+    },
+    {
+      "id": "design-tour",
+      "route": "/forms/:id/design",
+      "title": "Kubuni fomu yako",
+      "steps": [
+        {
+          "target": "design-panel",
+          "title": "Ifanye iwe yako",
+          "text": "Anza na mwonekano, kisha badilisha mpangilio, rangi, fonti, kichwa na kijachini."
+        },
+        {
+          "target": "design-screens",
+          "title": "Maswali na ukurasa wa shukrani",
+          "text": "Kagua skrini zote mbili ambazo watu wataona."
+        },
+        {
+          "target": "design-devices",
+          "title": "Kila ukubwa wa skrini",
+          "text": "Angalia onyesho la awali kwenye kompyuta, kompyuta kibao na simu."
+        }
+      ]
+    },
+    {
+      "id": "share-tour",
+      "route": "/forms/:id/share",
+      "title": "Kushiriki fomu yako",
+      "steps": [
+        {
+          "target": "share-channels",
+          "title": "Mahali watu wanapojibu",
+          "text": "Kiungo, kupachika kwenye tovuti yako, API, au kadhaa kwa pamoja."
+        },
+        {
+          "target": "share-link",
+          "title": "Kiungo chako",
+          "text": "Fanya anwani isomeke kwa urahisi, na weka nani anaweza kujibu na hadi lini."
+        },
+        {
+          "target": "share-open",
+          "title": "Fungua, pachika au msimbo wa QR",
+          "text": "Nakili kiungo, pata msimbo wa kupachika au chapisha msimbo wa QR."
+        },
+        {
+          "target": "share-who",
+          "title": "Nani anaweza kuona",
+          "text": "Kila mtu kwenye eneo la kazi, wanachoweza kufanya na fomu hii na kwa nini."
+        }
+      ]
+    },
+    {
+      "id": "responses-tour",
+      "route": "/responses",
+      "title": "Majibu yako",
+      "steps": [
+        {
+          "target": "list-search",
+          "title": "Tafuta jibu",
+          "text": "Tafuta kwa jina, barua pepe au jibu lolote."
+        },
+        {
+          "target": "view-switch",
+          "title": "Safu au kadi",
+          "text": "Badilisha kati ya jedwali na kadi. Chaguo lako hukumbukwa."
+        }
+      ]
+    },
+    {
+      "id": "datasources-tour",
+      "route": "/data-sources",
+      "title": "Vyanzo vya data",
+      "steps": [
+        {
+          "target": "ds-add",
+          "title": "Unganisha hifadhidata",
+          "text": "Hifadhi majibu kwenye hifadhidata yako mwenyewe yanapofika."
+        },
+        {
+          "target": "ds-query",
+          "title": "Kihariri cha hoja",
+          "text": "Uliza hifadhidata zako maswali kwa SQL, kwa usalama."
+        },
+        {
+          "target": "ds-health",
+          "title": "Afya ya miunganisho",
+          "text": "Ona kwa muhtasari ni miunganisho ipi inajibu na kwa kasi gani."
+        }
+      ]
+    },
+    {
+      "id": "api-tour",
+      "route": "/api-service",
+      "title": "Huduma ya API",
+      "steps": [
+        {
+          "target": "api-setup",
+          "title": "Weka kwa hatua",
+          "text": "Huduma, kisha vituo, kisha tokeni: fuata hatua kwa mpangilio."
+        },
+        {
+          "target": "api-new-endpoint",
+          "title": "Vituo",
+          "text": "Geuza fomu kuwa anwani ya API ambayo programu zinaweza kutuma majibu."
+        },
+        {
+          "target": "api-tokens",
+          "title": "Tokeni",
+          "text": "Mpe kila programu ufunguo wake, na uuzime wakati wowote."
+        }
+      ]
+    },
+    {
+      "id": "settings-tour",
+      "route": "/settings",
+      "title": "Mipangilio",
+      "steps": [
+        {
+          "target": "settings-search",
+          "title": "Tafuta mpangilio",
+          "text": "Andika unachotafuta, kwa mfano nembo au nenosiri."
+        },
+        {
+          "target": "settings-sections",
+          "title": "Kila sehemu ya eneo lako la kazi",
+          "text": "Kampuni, chapa, kuingia, barua pepe, faragha, mipango na zaidi."
+        }
+      ]
+    },
+    {
+      "id": "help-tour",
+      "route": "/help",
+      "title": "Msaada na usaidizi",
+      "steps": [
+        {
+          "target": "help-search",
+          "title": "Uliza chochote",
+          "text": "Tafuta makala, maswali na maneno, au mwulize msaidizi."
+        },
+        {
+          "target": "help-faq",
+          "title": "Maswali ambayo watu huuliza",
+          "text": "Majibu mafupi kwa maswali ya kawaida zaidi."
+        },
+        {
+          "target": "help-contact",
+          "title": "Wasiliana na msaada",
+          "text": "Tuma ujumbe kwa timu ya Formalie; hujibu kwa barua pepe."
+        }
+      ]
     }
   ]
 }

@@ -70,13 +70,13 @@ defineShortcuts({ '/': { handler: () => input.value?.inputRef?.focus() } })
 <template>
   <AppPanel id="help" :title="t('nav.help')" :subtitle="t('help.subtitle')" subtitle-icon="i-lucide-circle-help">
     <template #actions>
-      <UButton :label="t('help.faq.title')" icon="i-lucide-messages-square" color="neutral" variant="outline" to="/help/faq" class="max-sm:hidden" />
-      <UButton :label="t('help.support.contact')" icon="i-lucide-life-buoy" color="neutral" @click="contact()" />
+      <UButton :label="t('help.faq.title')" icon="i-lucide-messages-square" color="neutral" variant="outline" to="/help/faq" class="max-sm:hidden" data-help="help-faq" />
+      <UButton :label="t('help.support.contact')" icon="i-lucide-life-buoy" color="neutral" data-help="help-contact" @click="contact()" />
     </template>
 
     <UCard variant="outline" class="shrink-0" :ui="{ body: 'flex flex-col gap-3 p-4 sm:p-6' }">
       <h2 class="text-lg font-semibold text-highlighted">{{ t('help.search.title') }}</h2>
-      <UInput ref="input" v-model="query" icon="i-lucide-search" size="xl" :placeholder="t('help.search.placeholder')" class="w-full" :aria-label="t('help.search.title')">
+      <UInput ref="input" v-model="query" data-help="help-search" icon="i-lucide-search" size="xl" :placeholder="t('help.search.placeholder')" class="w-full" :aria-label="t('help.search.title')">
         <template #trailing><UKbd value="/" /></template>
       </UInput>
       <div class="flex flex-wrap gap-1.5">

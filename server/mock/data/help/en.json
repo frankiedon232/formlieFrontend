@@ -2180,6 +2180,241 @@
           "text": "Search by name, email, department or job title."
         }
       ]
+    },
+    {
+      "id": "dashboard-tour",
+      "route": "/dashboard",
+      "title": "Your dashboard",
+      "steps": [
+        {
+          "target": "dashboard-views",
+          "title": "Four views",
+          "text": "Workspace shows everything at a glance; Forms, Data sources and API service each have their own view."
+        },
+        {
+          "target": "dashboard-period",
+          "title": "Choose the period",
+          "text": "Pick the dates the numbers cover. Daily, Weekly, Monthly or Yearly groups them."
+        },
+        {
+          "target": "dashboard-filter",
+          "title": "Narrow it down",
+          "text": "Show only one folder or one owner's forms."
+        },
+        {
+          "target": "create",
+          "title": "Create anything",
+          "text": "Start a form, a template, a connection or an API service from here, on any page."
+        },
+        {
+          "target": "page-help",
+          "title": "Help on every page",
+          "text": "Open help for the page you are on, or start its tour again."
+        }
+      ]
+    },
+    {
+      "id": "builder-tour",
+      "route": "/forms/:id/build",
+      "title": "Building a form",
+      "steps": [
+        {
+          "target": "form-modes",
+          "title": "Build, logic, design, share",
+          "text": "Move between the parts of your form. Everything saves as you go."
+        },
+        {
+          "target": "builder-palette",
+          "title": "Questions",
+          "text": "Click or drag a question into the form. Lists and saved questions are in the tabs."
+        },
+        {
+          "target": "builder-canvas",
+          "title": "Your form",
+          "text": "Arrange questions in rows and pages. Select one to change it."
+        },
+        {
+          "target": "builder-inspector",
+          "title": "Settings of the selected question",
+          "text": "Label, help text, required, who sees it and more."
+        },
+        {
+          "target": "form-preview",
+          "title": "Preview",
+          "text": "See the form as people will, on a phone, tablet or computer."
+        },
+        {
+          "target": "form-publish",
+          "title": "Publish",
+          "text": "When it is ready, publish it to start collecting answers."
+        }
+      ]
+    },
+    {
+      "id": "logic-tour",
+      "route": "/forms/:id/logic",
+      "title": "Rules and calculations",
+      "steps": [
+        {
+          "target": "logic-add",
+          "title": "Add a rule",
+          "text": "Show, hide or require questions, fill in answers or skip pages, based on earlier answers."
+        },
+        {
+          "target": "logic-calculations",
+          "title": "Calculations",
+          "text": "Totals, scores and prices worked out from the answers as people fill in the form."
+        }
+      ]
+    },
+    {
+      "id": "design-tour",
+      "route": "/forms/:id/design",
+      "title": "Designing your form",
+      "steps": [
+        {
+          "target": "design-panel",
+          "title": "Make it yours",
+          "text": "Start from a look, then change the layout, colours, fonts, header and footer."
+        },
+        {
+          "target": "design-screens",
+          "title": "Questions and thank-you page",
+          "text": "Check both screens people will see."
+        },
+        {
+          "target": "design-devices",
+          "title": "Every screen size",
+          "text": "Preview on a computer, tablet and phone."
+        }
+      ]
+    },
+    {
+      "id": "share-tour",
+      "route": "/forms/:id/share",
+      "title": "Sharing your form",
+      "steps": [
+        {
+          "target": "share-channels",
+          "title": "Where people answer",
+          "text": "A link, an embed on your website, the API, or several at once."
+        },
+        {
+          "target": "share-link",
+          "title": "Your link",
+          "text": "Make the address easy to read, and set who may answer and until when."
+        },
+        {
+          "target": "share-open",
+          "title": "Open, embed or QR code",
+          "text": "Copy the link, get the embed code or print a QR code."
+        },
+        {
+          "target": "share-who",
+          "title": "Who can see it",
+          "text": "Everyone in your workspace, what they may do with this form and why."
+        }
+      ]
+    },
+    {
+      "id": "responses-tour",
+      "route": "/responses",
+      "title": "Your responses",
+      "steps": [
+        {
+          "target": "list-search",
+          "title": "Find a response",
+          "text": "Search by name, email or any answer."
+        },
+        {
+          "target": "view-switch",
+          "title": "Rows or cards",
+          "text": "Switch between the table and cards. Your choice is remembered."
+        }
+      ]
+    },
+    {
+      "id": "datasources-tour",
+      "route": "/data-sources",
+      "title": "Data sources",
+      "steps": [
+        {
+          "target": "ds-add",
+          "title": "Connect a database",
+          "text": "Store responses in your own database as they arrive."
+        },
+        {
+          "target": "ds-query",
+          "title": "Query editor",
+          "text": "Ask your databases questions in SQL, safely."
+        },
+        {
+          "target": "ds-health",
+          "title": "Connection health",
+          "text": "See at a glance which connections answer and how fast."
+        }
+      ]
+    },
+    {
+      "id": "api-tour",
+      "route": "/api-service",
+      "title": "The API service",
+      "steps": [
+        {
+          "target": "api-setup",
+          "title": "Set it up in steps",
+          "text": "A service, then endpoints, then tokens: follow the steps in order."
+        },
+        {
+          "target": "api-new-endpoint",
+          "title": "Endpoints",
+          "text": "Turn a form into an API address that apps can send answers to."
+        },
+        {
+          "target": "api-tokens",
+          "title": "Tokens",
+          "text": "Give each app its own key, and switch it off at any time."
+        }
+      ]
+    },
+    {
+      "id": "settings-tour",
+      "route": "/settings",
+      "title": "Settings",
+      "steps": [
+        {
+          "target": "settings-search",
+          "title": "Find a setting",
+          "text": "Type what you are looking for, for example logo or password."
+        },
+        {
+          "target": "settings-sections",
+          "title": "Every part of your workspace",
+          "text": "Company, branding, sign-in, emails, privacy, plans and more."
+        }
+      ]
+    },
+    {
+      "id": "help-tour",
+      "route": "/help",
+      "title": "Help and support",
+      "steps": [
+        {
+          "target": "help-search",
+          "title": "Ask anything",
+          "text": "Search articles, questions and words, or ask the assistant."
+        },
+        {
+          "target": "help-faq",
+          "title": "Questions people ask",
+          "text": "Short answers to the most common questions."
+        },
+        {
+          "target": "help-contact",
+          "title": "Contact support",
+          "text": "Send a message to the Formalie team; they reply by email."
+        }
+      ]
     }
   ]
 }

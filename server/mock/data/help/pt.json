@@ -2181,6 +2181,241 @@
           "text": "Pesquise por nome, e-mail, departamento ou cargo."
         }
       ]
+    },
+    {
+      "id": "dashboard-tour",
+      "route": "/dashboard",
+      "title": "Seu painel",
+      "steps": [
+        {
+          "target": "dashboard-views",
+          "title": "Quatro visualizações",
+          "text": "Espaço de trabalho mostra tudo de relance; Formulários, Fontes de dados e Serviço de API têm cada um sua própria visualização."
+        },
+        {
+          "target": "dashboard-period",
+          "title": "Escolha o período",
+          "text": "Escolha as datas que os números cobrem. Diário, Semanal, Mensal ou Anual os agrupa."
+        },
+        {
+          "target": "dashboard-filter",
+          "title": "Refine",
+          "text": "Mostre só uma pasta ou os formulários de uma pessoa."
+        },
+        {
+          "target": "create",
+          "title": "Crie qualquer coisa",
+          "text": "Comece um formulário, um modelo, uma conexão ou um serviço de API aqui, em qualquer página."
+        },
+        {
+          "target": "page-help",
+          "title": "Ajuda em todas as páginas",
+          "text": "Abra a ajuda da página em que você está ou reinicie o tour dela."
+        }
+      ]
+    },
+    {
+      "id": "builder-tour",
+      "route": "/forms/:id/build",
+      "title": "Criar um formulário",
+      "steps": [
+        {
+          "target": "form-modes",
+          "title": "Criar, lógica, design, compartilhar",
+          "text": "Alterne entre as partes do seu formulário. Tudo é salvo conforme você avança."
+        },
+        {
+          "target": "builder-palette",
+          "title": "Perguntas",
+          "text": "Clique em uma pergunta ou arraste-a para o formulário. Listas e perguntas salvas estão nas abas."
+        },
+        {
+          "target": "builder-canvas",
+          "title": "Seu formulário",
+          "text": "Organize as perguntas em linhas e páginas. Selecione uma para alterá-la."
+        },
+        {
+          "target": "builder-inspector",
+          "title": "Configurações da pergunta selecionada",
+          "text": "Rótulo, texto de ajuda, obrigatória, quem a vê e mais."
+        },
+        {
+          "target": "form-preview",
+          "title": "Pré-visualização",
+          "text": "Veja o formulário como as pessoas verão, no celular, tablet ou computador."
+        },
+        {
+          "target": "form-publish",
+          "title": "Publicar",
+          "text": "Quando estiver pronto, publique para começar a coletar respostas."
+        }
+      ]
+    },
+    {
+      "id": "logic-tour",
+      "route": "/forms/:id/logic",
+      "title": "Regras e cálculos",
+      "steps": [
+        {
+          "target": "logic-add",
+          "title": "Adicionar uma regra",
+          "text": "Mostre, oculte ou exija perguntas, preencha respostas ou pule páginas com base em respostas anteriores."
+        },
+        {
+          "target": "logic-calculations",
+          "title": "Cálculos",
+          "text": "Totais, pontuações e preços calculados a partir das respostas enquanto as pessoas preenchem o formulário."
+        }
+      ]
+    },
+    {
+      "id": "design-tour",
+      "route": "/forms/:id/design",
+      "title": "Projetar seu formulário",
+      "steps": [
+        {
+          "target": "design-panel",
+          "title": "Deixe com a sua cara",
+          "text": "Comece por um visual e depois mude layout, cores, fontes, cabeçalho e rodapé."
+        },
+        {
+          "target": "design-screens",
+          "title": "Perguntas e página de agradecimento",
+          "text": "Confira as duas telas que as pessoas verão."
+        },
+        {
+          "target": "design-devices",
+          "title": "Todos os tamanhos de tela",
+          "text": "Pré-visualize no computador, tablet e celular."
+        }
+      ]
+    },
+    {
+      "id": "share-tour",
+      "route": "/forms/:id/share",
+      "title": "Compartilhar seu formulário",
+      "steps": [
+        {
+          "target": "share-channels",
+          "title": "Onde as pessoas respondem",
+          "text": "Um link, uma incorporação no seu site, a API ou vários ao mesmo tempo."
+        },
+        {
+          "target": "share-link",
+          "title": "Seu link",
+          "text": "Deixe o endereço fácil de ler e defina quem pode responder e até quando."
+        },
+        {
+          "target": "share-open",
+          "title": "Abrir, incorporar ou código QR",
+          "text": "Copie o link, pegue o código de incorporação ou imprima um código QR."
+        },
+        {
+          "target": "share-who",
+          "title": "Quem pode ver",
+          "text": "Todos no seu espaço de trabalho, o que podem fazer com este formulário e por quê."
+        }
+      ]
+    },
+    {
+      "id": "responses-tour",
+      "route": "/responses",
+      "title": "Suas respostas",
+      "steps": [
+        {
+          "target": "list-search",
+          "title": "Encontrar uma resposta",
+          "text": "Busque por nome, e-mail ou qualquer resposta."
+        },
+        {
+          "target": "view-switch",
+          "title": "Linhas ou cartões",
+          "text": "Alterne entre a tabela e os cartões. Sua escolha é lembrada."
+        }
+      ]
+    },
+    {
+      "id": "datasources-tour",
+      "route": "/data-sources",
+      "title": "Fontes de dados",
+      "steps": [
+        {
+          "target": "ds-add",
+          "title": "Conectar um banco de dados",
+          "text": "Guarde as respostas no seu próprio banco de dados conforme chegam."
+        },
+        {
+          "target": "ds-query",
+          "title": "Editor de consultas",
+          "text": "Faça perguntas aos seus bancos de dados em SQL, com segurança."
+        },
+        {
+          "target": "ds-health",
+          "title": "Saúde das conexões",
+          "text": "Veja de relance quais conexões respondem e com que rapidez."
+        }
+      ]
+    },
+    {
+      "id": "api-tour",
+      "route": "/api-service",
+      "title": "O serviço de API",
+      "steps": [
+        {
+          "target": "api-setup",
+          "title": "Configure em etapas",
+          "text": "Um serviço, depois endpoints, depois tokens: siga as etapas em ordem."
+        },
+        {
+          "target": "api-new-endpoint",
+          "title": "Endpoints",
+          "text": "Transforme um formulário em um endereço de API para o qual os apps possam enviar respostas."
+        },
+        {
+          "target": "api-tokens",
+          "title": "Tokens",
+          "text": "Dê a cada app sua própria chave e desative-a quando quiser."
+        }
+      ]
+    },
+    {
+      "id": "settings-tour",
+      "route": "/settings",
+      "title": "Configurações",
+      "steps": [
+        {
+          "target": "settings-search",
+          "title": "Encontrar uma configuração",
+          "text": "Digite o que procura, por exemplo logo ou senha."
+        },
+        {
+          "target": "settings-sections",
+          "title": "Cada parte do seu espaço de trabalho",
+          "text": "Empresa, identidade visual, login, e-mails, privacidade, planos e mais."
+        }
+      ]
+    },
+    {
+      "id": "help-tour",
+      "route": "/help",
+      "title": "Ajuda e suporte",
+      "steps": [
+        {
+          "target": "help-search",
+          "title": "Pergunte qualquer coisa",
+          "text": "Busque em artigos, perguntas e palavras, ou pergunte ao assistente."
+        },
+        {
+          "target": "help-faq",
+          "title": "Perguntas frequentes",
+          "text": "Respostas curtas às perguntas mais comuns."
+        },
+        {
+          "target": "help-contact",
+          "title": "Falar com o suporte",
+          "text": "Envie uma mensagem à equipe do Formalie; ela responde por e-mail."
+        }
+      ]
     }
   ]
 }

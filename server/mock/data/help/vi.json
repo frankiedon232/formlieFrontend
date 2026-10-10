@@ -2180,6 +2180,241 @@
           "text": "Tìm theo tên, email, phòng ban hoặc chức danh."
         }
       ]
+    },
+    {
+      "id": "dashboard-tour",
+      "route": "/dashboard",
+      "title": "Bảng điều khiển của bạn",
+      "steps": [
+        {
+          "target": "dashboard-views",
+          "title": "Bốn chế độ xem",
+          "text": "Không gian làm việc cho thấy mọi thứ trong một cái nhìn; Biểu mẫu, Nguồn dữ liệu và Dịch vụ API đều có chế độ xem riêng."
+        },
+        {
+          "target": "dashboard-period",
+          "title": "Chọn giai đoạn",
+          "text": "Chọn các ngày mà số liệu bao phủ. Theo ngày, tuần, tháng hoặc năm sẽ nhóm chúng."
+        },
+        {
+          "target": "dashboard-filter",
+          "title": "Thu hẹp",
+          "text": "Chỉ hiện một thư mục hoặc biểu mẫu của một chủ sở hữu."
+        },
+        {
+          "target": "create",
+          "title": "Tạo mọi thứ",
+          "text": "Bắt đầu một biểu mẫu, mẫu, kết nối hoặc dịch vụ API từ đây, trên mọi trang."
+        },
+        {
+          "target": "page-help",
+          "title": "Trợ giúp ở mọi trang",
+          "text": "Mở trợ giúp cho trang bạn đang xem, hoặc bắt đầu lại chuyến tham quan của trang."
+        }
+      ]
+    },
+    {
+      "id": "builder-tour",
+      "route": "/forms/:id/build",
+      "title": "Tạo biểu mẫu",
+      "steps": [
+        {
+          "target": "form-modes",
+          "title": "Xây dựng, logic, thiết kế, chia sẻ",
+          "text": "Chuyển giữa các phần của biểu mẫu. Mọi thứ được lưu khi bạn làm."
+        },
+        {
+          "target": "builder-palette",
+          "title": "Câu hỏi",
+          "text": "Nhấp hoặc kéo một câu hỏi vào biểu mẫu. Danh sách và câu hỏi đã lưu nằm trong các tab."
+        },
+        {
+          "target": "builder-canvas",
+          "title": "Biểu mẫu của bạn",
+          "text": "Sắp xếp câu hỏi theo hàng và trang. Chọn một câu để thay đổi."
+        },
+        {
+          "target": "builder-inspector",
+          "title": "Cài đặt của câu hỏi đã chọn",
+          "text": "Nhãn, văn bản trợ giúp, bắt buộc, ai thấy được và nhiều hơn."
+        },
+        {
+          "target": "form-preview",
+          "title": "Xem trước",
+          "text": "Xem biểu mẫu như mọi người sẽ thấy, trên điện thoại, máy tính bảng hoặc máy tính."
+        },
+        {
+          "target": "form-publish",
+          "title": "Xuất bản",
+          "text": "Khi sẵn sàng, hãy xuất bản để bắt đầu thu phản hồi."
+        }
+      ]
+    },
+    {
+      "id": "logic-tour",
+      "route": "/forms/:id/logic",
+      "title": "Quy tắc và phép tính",
+      "steps": [
+        {
+          "target": "logic-add",
+          "title": "Thêm quy tắc",
+          "text": "Hiện, ẩn hoặc bắt buộc câu hỏi, điền câu trả lời hoặc bỏ qua trang dựa trên các câu trả lời trước."
+        },
+        {
+          "target": "logic-calculations",
+          "title": "Phép tính",
+          "text": "Tổng, điểm và giá được tính từ câu trả lời khi mọi người điền biểu mẫu."
+        }
+      ]
+    },
+    {
+      "id": "design-tour",
+      "route": "/forms/:id/design",
+      "title": "Thiết kế biểu mẫu",
+      "steps": [
+        {
+          "target": "design-panel",
+          "title": "Biến nó thành của bạn",
+          "text": "Bắt đầu từ một kiểu giao diện, rồi đổi bố cục, màu sắc, phông chữ, đầu trang và chân trang."
+        },
+        {
+          "target": "design-screens",
+          "title": "Câu hỏi và trang cảm ơn",
+          "text": "Kiểm tra cả hai màn hình mà mọi người sẽ thấy."
+        },
+        {
+          "target": "design-devices",
+          "title": "Mọi kích thước màn hình",
+          "text": "Xem trước trên máy tính, máy tính bảng và điện thoại."
+        }
+      ]
+    },
+    {
+      "id": "share-tour",
+      "route": "/forms/:id/share",
+      "title": "Chia sẻ biểu mẫu",
+      "steps": [
+        {
+          "target": "share-channels",
+          "title": "Nơi mọi người trả lời",
+          "text": "Một liên kết, nhúng vào trang web của bạn, API, hoặc nhiều cách cùng lúc."
+        },
+        {
+          "target": "share-link",
+          "title": "Liên kết của bạn",
+          "text": "Làm địa chỉ dễ đọc, và đặt ai được trả lời và đến khi nào."
+        },
+        {
+          "target": "share-open",
+          "title": "Mở, nhúng hoặc mã QR",
+          "text": "Sao chép liên kết, lấy mã nhúng hoặc in mã QR."
+        },
+        {
+          "target": "share-who",
+          "title": "Ai có thể xem",
+          "text": "Mọi người trong không gian làm việc, họ được làm gì với biểu mẫu này và vì sao."
+        }
+      ]
+    },
+    {
+      "id": "responses-tour",
+      "route": "/responses",
+      "title": "Phản hồi của bạn",
+      "steps": [
+        {
+          "target": "list-search",
+          "title": "Tìm một phản hồi",
+          "text": "Tìm theo tên, email hoặc bất kỳ câu trả lời nào."
+        },
+        {
+          "target": "view-switch",
+          "title": "Hàng hoặc thẻ",
+          "text": "Chuyển giữa bảng và thẻ. Lựa chọn của bạn được ghi nhớ."
+        }
+      ]
+    },
+    {
+      "id": "datasources-tour",
+      "route": "/data-sources",
+      "title": "Nguồn dữ liệu",
+      "steps": [
+        {
+          "target": "ds-add",
+          "title": "Kết nối cơ sở dữ liệu",
+          "text": "Lưu phản hồi vào cơ sở dữ liệu của bạn ngay khi chúng đến."
+        },
+        {
+          "target": "ds-query",
+          "title": "Trình soạn truy vấn",
+          "text": "Đặt câu hỏi cho cơ sở dữ liệu bằng SQL một cách an toàn."
+        },
+        {
+          "target": "ds-health",
+          "title": "Tình trạng kết nối",
+          "text": "Xem nhanh kết nối nào phản hồi và nhanh đến đâu."
+        }
+      ]
+    },
+    {
+      "id": "api-tour",
+      "route": "/api-service",
+      "title": "Dịch vụ API",
+      "steps": [
+        {
+          "target": "api-setup",
+          "title": "Thiết lập theo bước",
+          "text": "Một dịch vụ, rồi điểm cuối, rồi token: làm theo các bước theo thứ tự."
+        },
+        {
+          "target": "api-new-endpoint",
+          "title": "Điểm cuối",
+          "text": "Biến biểu mẫu thành địa chỉ API để ứng dụng gửi câu trả lời tới."
+        },
+        {
+          "target": "api-tokens",
+          "title": "Token",
+          "text": "Cấp cho mỗi ứng dụng một khóa riêng, và tắt nó bất cứ lúc nào."
+        }
+      ]
+    },
+    {
+      "id": "settings-tour",
+      "route": "/settings",
+      "title": "Cài đặt",
+      "steps": [
+        {
+          "target": "settings-search",
+          "title": "Tìm một cài đặt",
+          "text": "Nhập điều bạn tìm, ví dụ logo hoặc mật khẩu."
+        },
+        {
+          "target": "settings-sections",
+          "title": "Mọi phần của không gian làm việc",
+          "text": "Công ty, thương hiệu, đăng nhập, email, quyền riêng tư, gói và nhiều hơn."
+        }
+      ]
+    },
+    {
+      "id": "help-tour",
+      "route": "/help",
+      "title": "Trợ giúp và hỗ trợ",
+      "steps": [
+        {
+          "target": "help-search",
+          "title": "Hỏi bất cứ điều gì",
+          "text": "Tìm trong bài viết, câu hỏi và thuật ngữ, hoặc hỏi trợ lý."
+        },
+        {
+          "target": "help-faq",
+          "title": "Những câu hỏi thường gặp",
+          "text": "Câu trả lời ngắn cho các câu hỏi phổ biến nhất."
+        },
+        {
+          "target": "help-contact",
+          "title": "Liên hệ hỗ trợ",
+          "text": "Gửi tin nhắn cho đội ngũ Formalie; họ trả lời qua email."
+        }
+      ]
     }
   ]
 }

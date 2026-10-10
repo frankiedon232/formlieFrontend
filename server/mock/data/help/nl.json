@@ -2180,6 +2180,241 @@
           "text": "Zoek op naam, e-mail, afdeling of functietitel."
         }
       ]
+    },
+    {
+      "id": "dashboard-tour",
+      "route": "/dashboard",
+      "title": "Je dashboard",
+      "steps": [
+        {
+          "target": "dashboard-views",
+          "title": "Vier weergaven",
+          "text": "Werkruimte toont alles in één oogopslag; Formulieren, Gegevensbronnen en API-service hebben elk een eigen weergave."
+        },
+        {
+          "target": "dashboard-period",
+          "title": "Kies de periode",
+          "text": "Kies de data die de cijfers beslaan. Dagelijks, Wekelijks, Maandelijks of Jaarlijks groepeert ze."
+        },
+        {
+          "target": "dashboard-filter",
+          "title": "Verfijn",
+          "text": "Toon alleen één map of de formulieren van één eigenaar."
+        },
+        {
+          "target": "create",
+          "title": "Maak alles",
+          "text": "Start hier op elke pagina een formulier, sjabloon, verbinding of API-service."
+        },
+        {
+          "target": "page-help",
+          "title": "Hulp op elke pagina",
+          "text": "Open de hulp voor de pagina waar je bent, of start de rondleiding opnieuw."
+        }
+      ]
+    },
+    {
+      "id": "builder-tour",
+      "route": "/forms/:id/build",
+      "title": "Een formulier maken",
+      "steps": [
+        {
+          "target": "form-modes",
+          "title": "Bouwen, logica, ontwerp, delen",
+          "text": "Wissel tussen de onderdelen van je formulier. Alles wordt onderweg opgeslagen."
+        },
+        {
+          "target": "builder-palette",
+          "title": "Vragen",
+          "text": "Klik op een vraag of sleep hem in het formulier. Lijsten en opgeslagen vragen staan in de tabbladen."
+        },
+        {
+          "target": "builder-canvas",
+          "title": "Je formulier",
+          "text": "Rangschik vragen in rijen en pagina’s. Selecteer er een om hem te wijzigen."
+        },
+        {
+          "target": "builder-inspector",
+          "title": "Instellingen van de geselecteerde vraag",
+          "text": "Label, helptekst, verplicht, wie hem ziet en meer."
+        },
+        {
+          "target": "form-preview",
+          "title": "Voorbeeld",
+          "text": "Bekijk het formulier zoals mensen het zien, op telefoon, tablet of computer."
+        },
+        {
+          "target": "form-publish",
+          "title": "Publiceren",
+          "text": "Publiceer het als het klaar is om reacties te verzamelen."
+        }
+      ]
+    },
+    {
+      "id": "logic-tour",
+      "route": "/forms/:id/logic",
+      "title": "Regels en berekeningen",
+      "steps": [
+        {
+          "target": "logic-add",
+          "title": "Een regel toevoegen",
+          "text": "Toon, verberg of verplicht vragen, vul antwoorden in of sla pagina’s over, op basis van eerdere antwoorden."
+        },
+        {
+          "target": "logic-calculations",
+          "title": "Berekeningen",
+          "text": "Totalen, scores en prijzen berekend uit de antwoorden terwijl mensen het formulier invullen."
+        }
+      ]
+    },
+    {
+      "id": "design-tour",
+      "route": "/forms/:id/design",
+      "title": "Je formulier ontwerpen",
+      "steps": [
+        {
+          "target": "design-panel",
+          "title": "Maak het van jou",
+          "text": "Begin met een look en pas dan lay-out, kleuren, lettertypen, kop- en voettekst aan."
+        },
+        {
+          "target": "design-screens",
+          "title": "Vragen en bedankpagina",
+          "text": "Controleer beide schermen die mensen te zien krijgen."
+        },
+        {
+          "target": "design-devices",
+          "title": "Elke schermgrootte",
+          "text": "Bekijk een voorbeeld op computer, tablet en telefoon."
+        }
+      ]
+    },
+    {
+      "id": "share-tour",
+      "route": "/forms/:id/share",
+      "title": "Je formulier delen",
+      "steps": [
+        {
+          "target": "share-channels",
+          "title": "Waar mensen antwoorden",
+          "text": "Een link, een insluiting op je website, de API, of meerdere tegelijk."
+        },
+        {
+          "target": "share-link",
+          "title": "Je link",
+          "text": "Maak het adres makkelijk leesbaar en bepaal wie mag antwoorden en tot wanneer."
+        },
+        {
+          "target": "share-open",
+          "title": "Openen, insluiten of QR-code",
+          "text": "Kopieer de link, haal de insluitcode op of print een QR-code."
+        },
+        {
+          "target": "share-who",
+          "title": "Wie het kan zien",
+          "text": "Iedereen in je werkruimte, wat ze met dit formulier mogen doen en waarom."
+        }
+      ]
+    },
+    {
+      "id": "responses-tour",
+      "route": "/responses",
+      "title": "Je reacties",
+      "steps": [
+        {
+          "target": "list-search",
+          "title": "Een reactie vinden",
+          "text": "Zoek op naam, e-mail of een willekeurig antwoord."
+        },
+        {
+          "target": "view-switch",
+          "title": "Rijen of kaarten",
+          "text": "Wissel tussen de tabel en kaarten. Je keuze wordt onthouden."
+        }
+      ]
+    },
+    {
+      "id": "datasources-tour",
+      "route": "/data-sources",
+      "title": "Gegevensbronnen",
+      "steps": [
+        {
+          "target": "ds-add",
+          "title": "Een database verbinden",
+          "text": "Sla reacties direct op in je eigen database."
+        },
+        {
+          "target": "ds-query",
+          "title": "Queryeditor",
+          "text": "Stel je databases veilig vragen in SQL."
+        },
+        {
+          "target": "ds-health",
+          "title": "Gezondheid van verbindingen",
+          "text": "Zie in één oogopslag welke verbindingen antwoorden en hoe snel."
+        }
+      ]
+    },
+    {
+      "id": "api-tour",
+      "route": "/api-service",
+      "title": "De API-service",
+      "steps": [
+        {
+          "target": "api-setup",
+          "title": "In stappen instellen",
+          "text": "Een service, dan endpoints, dan tokens: volg de stappen in volgorde."
+        },
+        {
+          "target": "api-new-endpoint",
+          "title": "Endpoints",
+          "text": "Maak van een formulier een API-adres waar apps reacties naartoe kunnen sturen."
+        },
+        {
+          "target": "api-tokens",
+          "title": "Tokens",
+          "text": "Geef elke app een eigen sleutel en schakel hem op elk moment uit."
+        }
+      ]
+    },
+    {
+      "id": "settings-tour",
+      "route": "/settings",
+      "title": "Instellingen",
+      "steps": [
+        {
+          "target": "settings-search",
+          "title": "Een instelling vinden",
+          "text": "Typ wat je zoekt, bijvoorbeeld logo of wachtwoord."
+        },
+        {
+          "target": "settings-sections",
+          "title": "Elk onderdeel van je werkruimte",
+          "text": "Bedrijf, huisstijl, aanmelden, e-mails, privacy, abonnementen en meer."
+        }
+      ]
+    },
+    {
+      "id": "help-tour",
+      "route": "/help",
+      "title": "Hulp en support",
+      "steps": [
+        {
+          "target": "help-search",
+          "title": "Vraag wat je wilt",
+          "text": "Doorzoek artikelen, vragen en woorden, of vraag het de assistent."
+        },
+        {
+          "target": "help-faq",
+          "title": "Vragen die mensen stellen",
+          "text": "Korte antwoorden op de meest gestelde vragen."
+        },
+        {
+          "target": "help-contact",
+          "title": "Contact met support",
+          "text": "Stuur een bericht naar het Formalie-team; zij antwoorden per e-mail."
+        }
+      ]
     }
   ]
 }

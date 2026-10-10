@@ -85,6 +85,13 @@ export interface HelpTour {
   steps: { target: string; title: string; text: string }[]
 }
 
+/** GET /me/tours: tips on new pages (first-visit tours) for the signed-in person. */
+export interface MyTours {
+  enabled: boolean
+  /** Tours already offered to them (taken or skipped). */
+  seen: string[]
+}
+
 /** GET /help/context: help for the page someone is on. */
 export interface HelpContext {
   article: HelpArticle | null

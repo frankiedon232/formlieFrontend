@@ -449,7 +449,7 @@
     "peopleNotActivated": "Belum diaktifkan",
     "peopleAdd": "Tambah pengguna",
     "dashboard": "Dasbor",
-    "orgBranding": "{name}: buka Branding"
+    "orgBranding": "{name}: buka profil organisasi"
   },
   "navbar": {
     "breadcrumb": "Jejak navigasi",
@@ -8672,6 +8672,15 @@
       "recovery": "Kode pemulihan",
       "recoveryUse": "Masuk",
       "title": "Masukkan kode Anda"
+    },
+    "tips": {
+      "title": "Tips di halaman baru",
+      "desc": "Tur singkat dengan panduan saat pertama kali Anda membuka halaman.",
+      "enabled": "Tampilkan tips di halaman baru",
+      "enabledHint": "Kartu kecil menawarkan tur halaman satu kali. Anda selalu bisa memulainya dari ? di halaman.",
+      "again": "Tampilkan semua tips lagi",
+      "seen": "Belum ada tips yang dilihat | {n} tips dilihat | {n} tips dilihat",
+      "reset": "Tips akan tampil lagi di setiap halaman"
     }
   },
   "access": {
@@ -9180,7 +9189,12 @@
       "done": "Selesai",
       "end": "Akhiri tur",
       "hereTitle": "Ini dia",
-      "hereText": "Ini adalah kontrol yang dibahas dalam artikel."
+      "hereText": "Ini adalah kontrol yang dibahas dalam artikel.",
+      "offerTitle": "Baru di sini?",
+      "offerText": "Ikuti tur {n} langkah: {title}. | Ikuti tur {n} langkah: {title}.",
+      "take": "Mulai tur",
+      "later": "Nanti saja",
+      "turnOff": "Matikan tips"
     },
     "answer": {
       "title": "Jawaban dari pusat bantuan",
