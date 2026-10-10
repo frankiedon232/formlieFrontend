@@ -25,8 +25,9 @@ export function useSettingsStatus(settings: Ref<WorkspaceSettings | null>) {
   })
   const branding = computed(() => {
     const b = settings.value?.branding
-    if (!b) return { done: 0, total: 5 }
-    const fields = [b.logo_url, b.brand_color, b.favicon_url, b.signin_image_url, b.signin_message]
+    if (!b) return { done: 0, total: 4 }
+    // The sign-in picture is gone (owner 2026-10-10): logo, colour, tab icon and welcome make it complete
+    const fields = [b.logo_url, b.brand_color, b.favicon_url, b.signin_message]
     return { done: fields.filter(Boolean).length, total: fields.length }
   })
   const languageChecked = computed(() => !!settings.value?.updated.localisation)

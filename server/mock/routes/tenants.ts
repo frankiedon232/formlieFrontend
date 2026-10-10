@@ -44,7 +44,6 @@ export const publicProfile = defineMockRoute(({ event }) => {
     logo_url: branding.logo_url,
     logo_dark_url: branding.logo_dark_url,
     favicon_url: branding.favicon_url,
-    signin_image_url: branding.signin_image_url,
     signin_message: branding.signin_message,
     colors: { primary: branding.brand_color },
     website: websiteOf(tenant),

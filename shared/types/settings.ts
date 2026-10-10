@@ -46,8 +46,6 @@ export interface BrandingSettings {
   /** The browser tab icon; falls back to the logo. */
   favicon_url: string | null
   brand_color: string | null
-  /** The picture on the workspace sign-in page (desktop). */
-  signin_image_url: string | null
   /** A short welcome on the workspace sign-in page. */
   signin_message: string | null
 }
@@ -57,7 +55,6 @@ export interface BrandingSaveRequest {
   logo_upload_id?: string | null
   logo_dark_upload_id?: string | null
   favicon_upload_id?: string | null
-  signin_image_upload_id?: string | null
   brand_color: string | null
   signin_message: string | null
 }

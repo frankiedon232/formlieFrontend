@@ -53,7 +53,6 @@ export const brandingSchema = z.object({
   logo_upload_id: uploadId,
   logo_dark_upload_id: uploadId,
   favicon_upload_id: uploadId,
-  signin_image_upload_id: uploadId,
   brand_color: z
     .string()
     .regex(/^#[0-9a-fA-F]{6}$/, 'color')

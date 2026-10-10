@@ -7,7 +7,7 @@
 <script setup lang="ts">
 import type { AuthProvider } from '#shared/types/auth'
 
-const props = defineProps<{ name: string; logo: string | null; logoDark: string | null; image: string | null; message: string | null; color: string | null; favicon: string | null; methods?: AuthProvider[] }>()
+const props = defineProps<{ name: string; logo: string | null; logoDark: string | null; message: string | null; color: string | null; favicon: string | null; methods?: AuthProvider[] }>()
 const social = computed(() => (props.methods ?? []).filter((item): item is SocialProvider => item !== 'password'))
 const password = computed(() => !props.methods || props.methods.includes('password'))
 const { t } = useI18n()
@@ -39,9 +39,7 @@ const formLogo = computed(() => (mode.value === 'dark' ? (props.logoDark ?? prop
       <div class="grid aspect-[16/9] grid-cols-[1.1fr_1fr]" :class="mode === 'dark' ? 'bg-neutral-950 text-white' : 'bg-white text-neutral-900'">
         <!-- showcase -->
         <div class="relative m-1.5 flex flex-col justify-between overflow-hidden rounded-lg bg-neutral-950 p-3 text-white">
-          <img v-if="image" :src="image" alt="" class="absolute inset-0 size-full object-cover">
-          <div v-if="image" class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-black/10" />
-          <div v-else class="pointer-events-none absolute -right-8 -bottom-10 size-32 rounded-full opacity-50 blur-2xl" :style="{ backgroundColor: accent }" />
+          <div class="pointer-events-none absolute -right-8 -bottom-10 size-32 rounded-full opacity-50 blur-2xl" :style="{ backgroundColor: accent }" />
           <div class="relative flex items-center gap-1.5">
             <span v-if="logoDark ?? logo" class="flex size-5 items-center justify-center overflow-hidden rounded bg-white/90 p-0.5"><img :src="(logoDark ?? logo)!" alt="" class="max-h-full max-w-full object-contain"></span>
             <span v-else class="flex size-5 items-center justify-center rounded bg-white text-neutral-950"><UIcon name="i-lucide-file-check-2" class="size-3" /></span>

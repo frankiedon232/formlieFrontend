@@ -16,7 +16,7 @@ const own = computed(() => (tenant.profile.value?.mode === 'tenant' ? tenant.pro
 <template>
   <div class="flex min-h-dvh bg-default lg:p-3">
     <aside class="hidden w-[52%] max-w-[760px] shrink-0 lg:block">
-      <AuthShowcase :workspace="!!own" :brand="brand" :logo="own?.logo_dark_url ?? own?.logo_url" :image="own?.signin_image_url" :message="own?.signin_message" :color="own?.colors.primary" />
+      <AuthShowcase :workspace="!!own" :brand="brand" :logo="own?.logo_dark_url ?? own?.logo_url" :message="own?.signin_message" :color="own?.colors.primary" />
     </aside>
 
     <div class="flex min-w-0 flex-1 flex-col">

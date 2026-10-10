@@ -4,14 +4,14 @@
   and email; owner 2026-10-10), then the trust badges. Motion only for people who allow it. Decorative: hidden
   from assistive tech except the copy.
   A workspace's own branding (Settings → Branding, F14) takes over: its logo for dark backgrounds,
-  its welcome as the headline, its brand colour in the glow; with a sign-in picture, the picture
-  fills the panel under the logo and the welcome.
+  its welcome as the headline, its brand colour in the glow. No organisation picture fills the panel (owner
+  2026-10-10: the design stays; their logo at the top is enough).
 -->
 <script setup lang="ts">
 // Explicit import: shared constant (a new shared/utils folder is only auto-imported after a dev restart).
 import { SUPPORTED_DATABASES } from '#shared/utils/integrations/databases'
 
-const props = defineProps<{ brand: string; logo?: string | null; image?: string | null; message?: string | null; color?: string | null; workspace?: boolean }>()
+const props = defineProps<{ brand: string; logo?: string | null; message?: string | null; color?: string | null; workspace?: boolean }>()
 const { t } = useI18n()
 const databaseCount = SUPPORTED_DATABASES.length
 const badges = computed(() => [
@@ -24,19 +24,7 @@ const badges = computed(() => [
 </script>
 
 <template>
-  <!-- The workspace's own picture: logo and welcome over it -->
-  <div v-if="props.image" class="relative flex h-full flex-col justify-between overflow-hidden rounded-3xl bg-neutral-950 p-10 text-white ring-1 ring-white/10 xl:p-12">
-    <img :src="props.image" alt="" class="absolute inset-0 size-full object-cover">
-    <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-black/20" />
-    <div class="relative flex items-center gap-3">
-      <span v-if="props.logo" class="flex size-10 items-center justify-center overflow-hidden rounded-xl bg-white/95 p-1"><img :src="props.logo" alt="" class="max-h-full max-w-full object-contain"></span>
-      <span class="text-lg font-semibold tracking-tight">{{ props.brand }}</span>
-      <AppPoweredBy v-if="workspace" tone="light" class="ms-auto" />
-    </div>
-    <h2 class="relative max-w-lg text-4xl leading-[1.08] font-semibold tracking-tight xl:text-[44px]">{{ props.message || t('authLayout.headline') }}</h2>
-  </div>
   <div
-    v-else
     class="relative flex h-full flex-col overflow-hidden rounded-3xl bg-neutral-950 p-10 text-white ring-1 ring-white/10 xl:p-12"
   >
     <!-- depth: faint grid fading out at the edges + two soft glows -->

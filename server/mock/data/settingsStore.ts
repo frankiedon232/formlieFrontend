@@ -58,7 +58,7 @@ function seed(tenant: MockTenant): WorkspaceSettings {
       support_phone: null,
       address: { line1: null, line2: null, city: null, region: null, postal_code: null, country: null },
     },
-    branding: { logo_url: tenant.logo_url ?? null, logo_dark_url: null, favicon_url: null, brand_color: tenant.brand_color ?? null, signin_image_url: null, signin_message: null },
+    branding: { logo_url: tenant.logo_url ?? null, logo_dark_url: null, favicon_url: null, brand_color: tenant.brand_color ?? null, signin_message: null },
     localisation: { language: 'en', timezone: 'UTC', currency: 'USD', date_format: 'DD/MM/YYYY', number_format: '1,234.56', week_start: 'monday', form_languages: APP_LOCALES.map(item => item.code) },
     signin: seedSignin(tenant),
     security: seedSecurity(),

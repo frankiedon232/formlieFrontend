@@ -3,6 +3,7 @@
 -->
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@nuxt/ui'
+import type { Onboarding } from '#shared/types/onboarding'
 
 const props = defineProps<{ compact?: boolean; large?: boolean }>()
 const { t } = useI18n()
@@ -26,6 +27,18 @@ async function logout() {
 const { can } = useCan()
 const avatar = computed(() => ({ alt: user.value.name, src: session.user.value?.avatar_url ?? undefined }))
 
+// "Workspace setup" only while the set-up isn't finished (owner 2026-10-10); asked once, quietly
+const api = useApi()
+const setupOpen = ref(false)
+onMounted(async () => {
+  if (!can('settings.manage')) return
+  try {
+    setupOpen.value = (await api.get<Onboarding>('/onboarding', undefined, { background: true })).data.status !== 'completed'
+  } catch {
+    // Unknown: the item stays hidden; the set-up is still reachable from Settings
+  }
+})
+
 const themeItem = (value: 'light' | 'dark' | 'system', icon: string): DropdownMenuItem => ({
   label: t(`user.${value}`),
   icon,
@@ -42,9 +55,7 @@ const items = computed<DropdownMenuItem[][]>(() => [
   [
     { label: t('user.profile'), icon: 'i-lucide-circle-user', to: '/profile' },
     ...(can('settings.view') ? [{ label: t('nav.settings'), icon: 'i-lucide-settings', to: '/settings' }] : []),
-    ...(!can('settings.manage')
-      ? []
-      : [{ label: t('onboarding.menu'), icon: 'i-lucide-list-checks', to: '/onboarding' }]),
+    ...(can('settings.manage') && setupOpen.value ? [{ label: t('onboarding.menu'), icon: 'i-lucide-list-checks', to: '/onboarding' }] : []),
   ],
   [
     {

@@ -10,6 +10,8 @@ const { t } = useI18n()
 const { profile } = useTenant()
 const { can } = useCan()
 const colorMode = useColorMode()
+// A real link component (a plain 'NuxtLink' string would render an unknown tag that goes nowhere)
+const NuxtLink = resolveComponent('NuxtLink')
 
 const name = computed(() => profile.value?.name ?? '')
 const onDark = computed(() => props.dark || colorMode.value === 'dark')
@@ -33,7 +35,7 @@ watch(logo, () => (broken.value = false))
 <template>
   <UTooltip v-if="name" :text="name" :content="{ side: 'right' }">
     <component
-      :is="can('settings.view') ? 'NuxtLink' : 'span'"
+      :is="can('settings.view') ? NuxtLink : 'span'"
       :to="can('settings.view') ? '/settings/company' : undefined"
       class="flex size-10 items-center justify-center overflow-hidden rounded-(--ui-radius) border border-default p-1 focus-visible:outline-2 focus-visible:outline-(--ui-border-inverted)"
       :class="logo && !broken ? (darkLogo ? 'bg-elevated' : 'bg-white') : 'border-transparent'"

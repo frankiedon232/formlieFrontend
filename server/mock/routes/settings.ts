@@ -89,7 +89,6 @@ export const patchSection = defineMockRoute(({ event, body }) => {
       logo_url: picture(tenant, 'logo', values.logo_upload_id, before.logo_url),
       logo_dark_url: picture(tenant, 'logo_dark', values.logo_dark_upload_id, before.logo_dark_url),
       favicon_url: picture(tenant, 'favicon', values.favicon_upload_id, before.favicon_url),
-      signin_image_url: picture(tenant, 'signin_image', values.signin_image_upload_id, before.signin_image_url),
       brand_color: values.brand_color ? values.brand_color.toUpperCase() : null,
       signin_message: values.signin_message,
     }
@@ -99,7 +98,6 @@ export const patchSection = defineMockRoute(({ event, body }) => {
       ...pictureChange('logo_url', before.logo_url, value.logo_url),
       ...pictureChange('logo_dark_url', before.logo_dark_url, value.logo_dark_url),
       ...pictureChange('favicon_url', before.favicon_url, value.favicon_url),
-      ...pictureChange('signin_image_url', before.signin_image_url, value.signin_image_url),
       ...settingsChanges({ brand_color: before.brand_color, signin_message: before.signin_message }, { brand_color: value.brand_color, signin_message: value.signin_message }),
     ]
     next = writeSettings(tenant, 'branding', value, by).branding

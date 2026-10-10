@@ -91,7 +91,7 @@ const name = computed(() => store.settings.value?.company.display_name ?? '')
 
       <aside class="w-full max-w-xl 2xl:sticky 2xl:top-0 2xl:max-w-none 2xl:self-start">
         <div class="flex flex-col gap-3 rounded-xl border border-default bg-elevated/30 p-4">
-          <SettingsSigninPreview :name="name" :logo="brand?.logo_url ?? null" :logo-dark="brand?.logo_dark_url ?? null" :image="brand?.signin_image_url ?? null" :message="brand?.signin_message ?? null" :color="brand?.brand_color ?? null" :favicon="brand?.favicon_url ?? null" :methods="draft.methods" />
+          <SettingsSigninPreview :name="name" :logo="brand?.logo_url ?? null" :logo-dark="brand?.logo_dark_url ?? null" :message="brand?.signin_message ?? null" :color="brand?.brand_color ?? null" :favicon="brand?.favicon_url ?? null" :methods="draft.methods" />
           <ul class="flex flex-col gap-1.5 text-xs text-muted">
             <li class="flex items-start gap-1.5"><UIcon name="i-lucide-log-in" class="mt-0.5 size-3.5 shrink-0" />{{ t('settings.signin.sumMethods', { n: draft.methods.length }, draft.methods.length) }}</li>
             <li class="flex items-start gap-1.5"><UIcon name="i-lucide-shield-check" class="mt-0.5 size-3.5 shrink-0" />{{ t('settings.signin.sumCode', { minutes: draft.code.expiry_minutes, tries: draft.code.max_attempts }) }}</li>
