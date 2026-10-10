@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-10 (owner re-ordered what is left: F19 AI, F21 Dashboard (to confirm), F24 Payments, F25 Help centre, real backend, then F23 Platform admin as a separate project; next: F19) later; stop for owner review)
+**Last updated:** 2026-10-10 (owner re-ordered what is left: F19 AI, F21 Dashboard, F24 Payments, F25 Help centre, real backend, then F23 Platform admin as a separate project; next: F19) later; stop for owner review)
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend · ➖ dropped or merged
 
@@ -40,7 +40,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 **Order of what is left (owner, 2026-10-10; F22 done with F16 on 2026-10-09):**
 
 1. **F19 AI assistant**
-2. **F21 Dashboard** (not in the owner's 2026-10-10 list; kept here until the owner says where it goes)
+2. **F21 Dashboard** (confirmed by the owner, 2026-10-10)
 3. **F24 Payments & subscriptions** (form payments and plans together, once the owner has chosen the payment processor)
 4. **F25 Help centre** (built from everything that exists by then; its content is posted from the platform admin)
 5. ⏸ **Switching to the real backend** (FastAPI, `formalieBackend`): the mock is replaced, API-CONTRACT is the spec
@@ -1572,4 +1572,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-10 | F22 R2 | Milestone 3: "Manage resources" split into Templates, Lists, Themes, Landing pages and Saved fields (see · create · change own/all · duplicate · delete own/all); each item carries `can`; Formalie's items use-only; library pages and menus guarded by "see"; saved roles migrated (manage resources → every change at all; everyone sees); fixed on the way: Save as template no longer needs manage resources, the list editor had no checks at all. Browser-checked: Formalie's Places list read-only even for the owner, workspace list menus offer Delete only where allowed |
 | 2026-10-10 | F22 R2 | Milestone 4: Data sources (connections own · all, explorer browse / rows / tables / export, read vs changing queries, saved queries, response storage), API service (services own · all, endpoints, try, tokens, workspace key, access rules, log settings, webhooks) and AI (use plus each part) split from view / query / manage; every page, menu, panel, switch and shortcut in both areas follows it; menus and search drop what the role can't open; saved roles converted with the same effect. Fixed on the way: exports couldn't be polled or downloaded with export rights, saving a query needed manage, changing statements had no permission of their own, Activity needed the audit trail, test / try / reveal needed manage. Browser-checked as Lena with see + browse only |
 | 2026-10-10 | i18n | Owner: names Formalie provides follow the viewer's language, what workspaces type stays as typed. Built-in roles (Owner, Admin, Member, while not renamed) and their descriptions translated everywhere they show (roles table, grid, editor, people table and cards, panels, pickers, filters, account menu, profile, join page, folder access); Formalie's default lists: name, description, level labels, and their options in all 20 languages (seeded and filled once for existing workspaces) |
-| 2026-10-10 | Plan | Owner re-ordered what is left: F19, F24, F25, real backend, then F23 Platform admin as a separate project (own repo, front end, FastAPI backend, database; dev `platformadm.formalie.dev:2203`, API `platformapi.formalie.dev:5601`). F21 Dashboard kept after F19 until the owner places it |
+| 2026-10-10 | Plan | Owner re-ordered what is left: F19, F24, F25, real backend, then F23 Platform admin as a separate project (own repo, front end, FastAPI backend, database; dev `platformadm.formalie.dev:2203`, API `platformapi.formalie.dev:5601`). F21 Dashboard stays after F19 (owner confirmed) |
