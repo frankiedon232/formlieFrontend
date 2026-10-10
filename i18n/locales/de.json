@@ -4940,7 +4940,14 @@
       "template": "Ausgangspunkt war die Formalie-Vorlage „{name}“, die Ihrer Beschreibung am nächsten kommt.",
       "try_again": "Versuchen Sie es erneut für einen anderen Ausgangspunkt.",
       "basic": "Es gab wenig Anhaltspunkte, daher ist dies ein einfaches Formular. Beschreiben Sie die gewünschten Fragen für einen passenderen Entwurf.",
-      "themes": "{n} Design, das Ihre Farbe gut lesbar hält. | {n} Designs, die Ihre Farbe gut lesbar halten: Buttons nutzen einen Farbton, auf dem weißer Text gut lesbar ist."
+      "themes": "{n} Design, das Ihre Farbe gut lesbar hält. | {n} Designs, die Ihre Farbe gut lesbar halten: Buttons nutzen einen Farbton, auf dem weißer Text gut lesbar ist.",
+      "low_rating": "„{field}“ erscheint nur bei einer niedrigen Bewertung für „{after}“.",
+      "other_option": "„{field}“ erscheint nur, wenn bei „{after}“ Sonstiges gewählt ist.",
+      "from_template": "Wird in solchen Formularen oft gefragt (Formalie-Vorlage „{name}“).",
+      "common": "Eine Frage, die die meisten Formulare dieser Art enthalten.",
+      "consent": "Das Formular fragt nach persönlichen Daten, daher sollten die Personen der Verwendung zustimmen.",
+      "assist_found": "{n} Vorschlag gefunden. | {n} Vorschläge gefunden.",
+      "assist_applied": "{n} von {total} Vorschlägen angewendet. | {n} von {total} Vorschlägen angewendet."
     },
     "create": {
       "describe": "Formular beschreiben",
@@ -5054,6 +5061,72 @@
       "emptyTitle": "Designs aus Ihrer Markenfarbe",
       "emptyDesc": "Wählen Sie eine Farbe und, wenn Sie möchten, die gewünschte Stimmung. Der Assistent schlägt drei Designs vor, die Sie an einem Beispielformular ausprobieren können.",
       "optional": "Optional"
+    },
+    "problem": {
+      "email_type": "„{label}“ fragt nach einer E-Mail-Adresse",
+      "phone_type": "„{label}“ fragt nach einer Telefonnummer",
+      "date_type": "„{label}“ fragt nach einem Datum",
+      "number_type": "„{label}“ fragt nach einer Zahl",
+      "duplicate": "„{label}“ wird zweimal gefragt",
+      "image_alt": "„{label}“ hat keine Beschreibung",
+      "long_label": "„{label}“ ist eine sehr lange Frage",
+      "no_required": "Nichts in diesem Formular ist erforderlich",
+      "few_options": "„{label}“ hat weniger als zwei Auswahlmöglichkeiten",
+      "long_page": "„{label}“ hat viele Fragen auf einer Seite",
+      "no_label": "Eine Frage hat keinen Text"
+    },
+    "problemFix": {
+      "email_type": "Als E-Mail-Feld festlegen, damit Adressen beim Tippen geprüft werden.",
+      "phone_type": "Als Telefonfeld festlegen, damit Nummern geprüft werden und anrufbar sind.",
+      "date_type": "Als Datumsfeld mit Kalender festlegen, damit Datumsangaben immer gültig sind.",
+      "number_type": "Als Zahlenfeld festlegen, damit nur Zahlen eingegeben werden können.",
+      "duplicate": "Die zweite entfernen; es könnte verwirren, dasselbe zweimal zu beantworten.",
+      "image_alt": "Eine kurze Beschreibung für Personen mit Screenreader hinzufügen.",
+      "long_label": "Die Frage kurz halten und den Rest in den Hilfetext verschieben.",
+      "no_required": "Die erste Frage zur Pflicht machen, damit jede Antwort etwas aussagt.",
+      "few_options": "Auswahlmöglichkeiten in den Feldeinstellungen hinzufügen.",
+      "long_page": "In zwei Seiten aufteilen, damit es sich am Handy leichter ausfüllen lässt.",
+      "no_label": "Einen Text für die Frage in den Feldeinstellungen eingeben."
+    },
+    "assist": {
+      "button": "Assistent",
+      "title": "KI-Assistent",
+      "desc": "Vorschläge für dieses Formular. Du entscheidest, was angewendet wird.",
+      "action": {
+        "fields": "Felder vorschlagen",
+        "help": "Hilfetexte schreiben",
+        "logic": "Logik hinzufügen",
+        "check": "Mein Formular prüfen"
+      },
+      "actionHint": {
+        "fields": "Fragen, die diesem Formular fehlen könnten",
+        "help": "Kurze Hinweise unter Fragen",
+        "logic": "Folgefragen nur bei Bedarf zeigen",
+        "check": "Probleme und wie man sie behebt"
+      },
+      "found": "{n} Vorschlag | {n} Vorschläge",
+      "none": {
+        "fields": "Dieses Formular fragt bereits, was ähnliche Formulare üblicherweise fragen.",
+        "help": "Jede Frage, die Hilfe braucht, hat sie bereits.",
+        "logic": "Keine Folgefragen hinzuzufügen. Setze eine Detailfrage direkt nach eine Ja / Nein-Frage, um eine zu erhalten.",
+        "check": "Keine Probleme gefunden. Gut gemacht."
+      },
+      "addField": "„{label}“ hinzufügen",
+      "addRule": "Regel hinzufügen",
+      "thisPage": "Diese Seite",
+      "apply": "Anwenden",
+      "fix": "Beheben",
+      "remove": "Entfernen",
+      "skip": "Überspringen",
+      "applied": "Angewendet",
+      "skipped": "Übersprungen",
+      "applyAll": "Alle anwenden ({n})",
+      "appliedAll": "{n} Änderung angewendet | {n} Änderungen angewendet",
+      "appliedCount": "{n} Änderung angewendet | {n} Änderungen angewendet",
+      "undoHint": "Jede Änderung lässt sich mit Rückgängig zurücknehmen.",
+      "done": "Fertig",
+      "emptyTitle": "Wie kann der Assistent helfen?",
+      "emptyDesc": "Wähle oben eine Option. Er betrachtet das Formular so, wie es jetzt ist, inklusive ungespeicherter Änderungen."
     }
   },
   "public": {

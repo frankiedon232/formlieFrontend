@@ -4940,7 +4940,14 @@
       "template": "Point de départ : le modèle « {name} » de Formalie, le plus proche de votre description.",
       "try_again": "Réessayez pour un autre point de départ.",
       "basic": "Il y avait peu d’éléments, voici donc un formulaire de base. Décrivez les questions voulues pour un brouillon plus proche.",
-      "themes": "{n} design qui garde votre couleur lisible. | {n} designs qui gardent votre couleur lisible : les boutons utilisent une teinte sur laquelle le texte blanc se lit bien."
+      "themes": "{n} design qui garde votre couleur lisible. | {n} designs qui gardent votre couleur lisible : les boutons utilisent une teinte sur laquelle le texte blanc se lit bien.",
+      "low_rating": "«{field}» s’affiche seulement après une note basse pour «{after}».",
+      "other_option": "«{field}» s’affiche seulement quand «{after}» vaut Autre.",
+      "from_template": "Souvent demandé dans ce type de formulaires (modèle «{name}» de Formalie).",
+      "common": "Une question que la plupart des formulaires de ce type contiennent.",
+      "consent": "Le formulaire demande des données personnelles, les personnes devraient donc accepter leur utilisation.",
+      "assist_found": "{n} suggestion trouvée. | {n} suggestions trouvées.",
+      "assist_applied": "{n} suggestion sur {total} appliquée. | {n} suggestions sur {total} appliquées."
     },
     "create": {
       "describe": "Décrivez le formulaire",
@@ -5054,6 +5061,72 @@
       "emptyTitle": "Des designs à partir de votre couleur de marque",
       "emptyDesc": "Choisissez une couleur et, si vous le souhaitez, l’ambiance voulue. L’assistant propose trois designs à essayer sur un formulaire d’exemple.",
       "optional": "Facultatif"
+    },
+    "problem": {
+      "email_type": "«{label}» demande une adresse e-mail",
+      "phone_type": "«{label}» demande un numéro de téléphone",
+      "date_type": "«{label}» demande une date",
+      "number_type": "«{label}» demande un nombre",
+      "duplicate": "«{label}» est posée deux fois",
+      "image_alt": "«{label}» n’a pas de description",
+      "long_label": "«{label}» est une question très longue",
+      "no_required": "Rien n’est obligatoire dans ce formulaire",
+      "few_options": "«{label}» a moins de deux choix",
+      "long_page": "«{label}» contient beaucoup de questions sur une page",
+      "no_label": "Une question n’a pas de texte"
+    },
+    "problemFix": {
+      "email_type": "En faire un champ e-mail, pour que les adresses soient vérifiées pendant la saisie.",
+      "phone_type": "En faire un champ téléphone, pour que les numéros soient vérifiés et appelables.",
+      "date_type": "En faire un champ date avec calendrier, pour que les dates soient toujours valides.",
+      "number_type": "En faire un champ nombre, pour que seuls des nombres puissent être saisis.",
+      "duplicate": "Supprimez la seconde ; répondre deux fois à la même chose peut prêter à confusion.",
+      "image_alt": "Ajoutez une courte description pour les personnes qui utilisent un lecteur d’écran.",
+      "long_label": "Gardez la question courte et déplacez le reste dans son texte d’aide.",
+      "no_required": "Rendez la première question obligatoire pour que chaque réponse dise quelque chose.",
+      "few_options": "Ajoutez des choix dans les réglages du champ.",
+      "long_page": "Scindez-la en deux pages pour la remplir plus facilement sur téléphone.",
+      "no_label": "Donnez un texte à la question dans les réglages du champ."
+    },
+    "assist": {
+      "button": "Assistant",
+      "title": "Assistant IA",
+      "desc": "Des suggestions pour ce formulaire. Vous choisissez ce qui s’applique.",
+      "action": {
+        "fields": "Suggérer des champs",
+        "help": "Rédiger des textes d’aide",
+        "logic": "Ajouter de la logique",
+        "check": "Vérifier mon formulaire"
+      },
+      "actionHint": {
+        "fields": "Questions qui manquent peut-être à ce formulaire",
+        "help": "Courts conseils sous les questions",
+        "logic": "Afficher les questions de suivi seulement si besoin",
+        "check": "Les problèmes et comment les corriger"
+      },
+      "found": "{n} suggestion | {n} suggestions",
+      "none": {
+        "fields": "Ce formulaire pose déjà ce que posent d’ordinaire les formulaires similaires.",
+        "help": "Chaque question qui a besoin d’aide en a déjà une.",
+        "logic": "Aucune question de suivi à ajouter. Placez une question de détails juste après une question oui / non pour en obtenir une.",
+        "check": "Aucun problème trouvé. Beau travail."
+      },
+      "addField": "Ajouter «{label}»",
+      "addRule": "Ajouter une règle",
+      "thisPage": "Cette page",
+      "apply": "Appliquer",
+      "fix": "Corriger",
+      "remove": "Supprimer",
+      "skip": "Ignorer",
+      "applied": "Appliqué",
+      "skipped": "Ignoré",
+      "applyAll": "Tout appliquer ({n})",
+      "appliedAll": "{n} modification appliquée | {n} modifications appliquées",
+      "appliedCount": "{n} modification appliquée | {n} modifications appliquées",
+      "undoHint": "Chaque modification peut être annulée avec Annuler.",
+      "done": "Terminé",
+      "emptyTitle": "Comment l’assistant peut-il aider ?",
+      "emptyDesc": "Choisissez une option ci-dessus. Il examine le formulaire tel qu’il est maintenant, modifications non enregistrées comprises."
     }
   },
   "public": {

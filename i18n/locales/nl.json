@@ -4940,7 +4940,14 @@
       "template": "Gestart vanuit de Formalie-sjabloon “{name}”, het dichtst bij je beschrijving.",
       "try_again": "Probeer opnieuw voor een ander beginpunt.",
       "basic": "Er was weinig om op te bouwen, dus dit is een eenvoudig formulier. Beschrijf de vragen die je nodig hebt voor een beter concept.",
-      "themes": "{n} ontwerp dat je kleur leesbaar houdt. | {n} ontwerpen die je kleur leesbaar houden: knoppen gebruiken een tint waarop witte tekst goed leesbaar is."
+      "themes": "{n} ontwerp dat je kleur leesbaar houdt. | {n} ontwerpen die je kleur leesbaar houden: knoppen gebruiken een tint waarop witte tekst goed leesbaar is.",
+      "low_rating": "“{field}” verschijnt alleen na een lage score bij “{after}”.",
+      "other_option": "“{field}” verschijnt alleen als “{after}” Anders is.",
+      "from_template": "Wordt vaak gevraagd in formulieren zoals dit (Formalie-sjabloon “{name}”).",
+      "common": "Een vraag die de meeste formulieren van dit soort bevatten.",
+      "consent": "Het formulier vraagt persoonlijke gegevens, dus mensen moeten akkoord gaan met het gebruik ervan.",
+      "assist_found": "{n} suggestie gevonden. | {n} suggesties gevonden.",
+      "assist_applied": "{n} van {total} suggesties toegepast. | {n} van {total} suggesties toegepast."
     },
     "create": {
       "describe": "Beschrijf het formulier",
@@ -5054,6 +5061,72 @@
       "emptyTitle": "Ontwerpen vanuit je merkkleur",
       "emptyDesc": "Kies een kleur en, als je wilt, de gewenste sfeer. De assistent stelt drie ontwerpen voor die je kunt proberen op een voorbeeldformulier.",
       "optional": "Optioneel"
+    },
+    "problem": {
+      "email_type": "“{label}” vraagt om een e-mailadres",
+      "phone_type": "“{label}” vraagt om een telefoonnummer",
+      "date_type": "“{label}” vraagt om een datum",
+      "number_type": "“{label}” vraagt om een getal",
+      "duplicate": "“{label}” wordt twee keer gevraagd",
+      "image_alt": "“{label}” heeft geen beschrijving",
+      "long_label": "“{label}” is een erg lange vraag",
+      "no_required": "Niets in dit formulier is verplicht",
+      "few_options": "“{label}” heeft minder dan twee keuzes",
+      "long_page": "“{label}” heeft veel vragen op één pagina",
+      "no_label": "Een vraag heeft geen tekst"
+    },
+    "problemFix": {
+      "email_type": "Maak er een e-mailveld van, zodat adressen tijdens het typen worden gecontroleerd.",
+      "phone_type": "Maak er een telefoonveld van, zodat nummers worden gecontroleerd en gebeld kunnen worden.",
+      "date_type": "Maak er een datumveld met kalender van, zodat datums altijd geldig zijn.",
+      "number_type": "Maak er een getalveld van, zodat alleen getallen kunnen worden ingevoerd.",
+      "duplicate": "Verwijder de tweede; mensen raken misschien in de war door twee keer hetzelfde te beantwoorden.",
+      "image_alt": "Voeg een korte beschrijving toe voor mensen die een schermlezer gebruiken.",
+      "long_label": "Houd de vraag kort en verplaats de rest naar de helptekst.",
+      "no_required": "Maak de eerste vraag verplicht zodat elke reactie iets zegt.",
+      "few_options": "Voeg keuzes toe in de instellingen van het veld.",
+      "long_page": "Splits het in twee pagina’s zodat het makkelijker in te vullen is op een telefoon.",
+      "no_label": "Geef de vraag een tekst in de instellingen van het veld."
+    },
+    "assist": {
+      "button": "Assistent",
+      "title": "AI-assistent",
+      "desc": "Suggesties voor dit formulier. Jij kiest wat je toepast.",
+      "action": {
+        "fields": "Velden voorstellen",
+        "help": "Helpteksten schrijven",
+        "logic": "Logica toevoegen",
+        "check": "Mijn formulier controleren"
+      },
+      "actionHint": {
+        "fields": "Vragen die dit formulier mogelijk mist",
+        "help": "Korte hints onder vragen",
+        "logic": "Vervolgvragen alleen tonen als dat nodig is",
+        "check": "Problemen en hoe je ze oplost"
+      },
+      "found": "{n} suggestie | {n} suggesties",
+      "none": {
+        "fields": "Dit formulier vraagt al wat vergelijkbare formulieren meestal vragen.",
+        "help": "Elke vraag die hulp nodig heeft, heeft die al.",
+        "logic": "Geen vervolgvragen toe te voegen. Zet een detailvraag direct na een ja / nee-vraag om er een te krijgen.",
+        "check": "Geen problemen gevonden. Goed gedaan."
+      },
+      "addField": "“{label}” toevoegen",
+      "addRule": "Een regel toevoegen",
+      "thisPage": "Deze pagina",
+      "apply": "Toepassen",
+      "fix": "Herstellen",
+      "remove": "Verwijderen",
+      "skip": "Overslaan",
+      "applied": "Toegepast",
+      "skipped": "Overgeslagen",
+      "applyAll": "Alles toepassen ({n})",
+      "appliedAll": "{n} wijziging toegepast | {n} wijzigingen toegepast",
+      "appliedCount": "{n} wijziging toegepast | {n} wijzigingen toegepast",
+      "undoHint": "Elke wijziging kan ongedaan worden gemaakt met Ongedaan maken.",
+      "done": "Klaar",
+      "emptyTitle": "Hoe kan de assistent helpen?",
+      "emptyDesc": "Kies hierboven een optie. Hij kijkt naar het formulier zoals het nu is, inclusief niet-opgeslagen wijzigingen."
     }
   },
   "public": {

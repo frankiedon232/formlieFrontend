@@ -1,3 +1,4 @@
+import type { FormField } from '../utils/forms/build'
 import type { FormSchemaV1 } from '../utils/forms/schema'
 
 /**
@@ -97,7 +98,7 @@ export interface AiRequestInsights {
 
 /** One thing the assistant did, translated in the app (`ai.note.<code>`). */
 export interface AiNote {
-  code: 'follow_up' | 'total' | 'pages' | 'document_questions' | 'document_sections' | 'document_none' | 'added_contact' | 'from_list' | 'template' | 'try_again' | 'basic' | 'themes'
+  code: 'follow_up' | 'total' | 'pages' | 'document_questions' | 'document_sections' | 'document_none' | 'added_contact' | 'from_list' | 'template' | 'try_again' | 'basic' | 'themes' | 'low_rating' | 'other_option' | 'from_template' | 'common' | 'consent' | 'assist_found' | 'assist_applied'
   params?: Record<string, string | number>
 }
 
@@ -148,4 +149,26 @@ export interface AiThemeDraft {
 /** POST /ai/requests/{id}/apply: what was made. */
 export interface AiApplyResult {
   target: AiTarget
+}
+
+/** In the builder (F19 M3): what the assistant is asked to do with the form being edited. */
+export const AI_ASSIST_ACTIONS = ['fields', 'help', 'logic', 'check'] as const
+export type AiAssistAction = (typeof AI_ASSIST_ACTIONS)[number]
+
+/** Problems "Check my form" looks for (translated in the app: ai.problem.<code>). */
+export type AiProblem = 'email_type' | 'phone_type' | 'date_type' | 'number_type' | 'duplicate' | 'image_alt' | 'long_label' | 'no_required' | 'few_options' | 'long_page' | 'no_label'
+
+/** One proposed change; the builder applies it (one undo step each) or skips it. */
+export type AiSuggestion =
+  | { id: string; kind: 'add_field'; field: FormField; page_id: string; after_id: string | null; note: AiNote }
+  | { id: string; kind: 'set_help'; field_id: string; label: string; help: string }
+  | { id: string; kind: 'add_rule'; rule: Record<string, unknown>; note: AiNote }
+  | { id: string; kind: 'fix'; field_id: string | null; label: string; problem: AiProblem; patch: Partial<FormField> | null; remove?: boolean }
+
+/** POST /ai/forms/{id}/assist */
+export interface AiAssistResult {
+  request_id: string
+  action: AiAssistAction
+  suggestions: AiSuggestion[]
+  credits: number
 }

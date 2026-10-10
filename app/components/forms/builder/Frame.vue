@@ -37,6 +37,12 @@ const go = (mode: string | number) => navigateTo(`/forms/${s.formId}/${mode === 
 
 const publishOpen = ref(false)
 const previewOpen = ref(false)
+// The AI assistant's help (F19 M3): on Build and Logic, for people who may edit the form and use builder help
+const { can } = useCan()
+const canAssist = computed(() => (props.mode === 'build' || props.mode === 'logic') && s.canEdit.value && can('ai.assist'))
+const assistOpen = ref(false)
+const assistUsed = ref(false)
+watch(assistOpen, v => v && (assistUsed.value = true))
 // Both dialogs load on first use (lazy components), then stay mounted for their close animation.
 const publishUsed = ref(false)
 const previewUsed = ref(false)
@@ -55,6 +61,7 @@ const phoneMenu = computed<DropdownMenuItem[][]>(() => [
       ]
     : [],
   allowed('preview') ? [{ label: t('builder.preview.button'), icon: 'i-lucide-eye', onSelect: () => { previewOpen.value = true } }] : [],
+  canAssist.value ? [{ label: t('ai.assist.title'), icon: 'i-lucide-sparkles', onSelect: () => { assistOpen.value = true } }] : [],
 ].filter(group => group.length))
 
 defineShortcuts({
@@ -99,6 +106,7 @@ defineShortcuts({
         :aria-label="t('builder.mode.label')"
         @update:model-value="go"
       />
+      <UButton v-if="canAssist" class="hidden md:inline-flex" icon="i-lucide-sparkles" :label="t('ai.assist.button')" color="neutral" variant="outline" :ui="{ label: 'hidden xl:inline' }" :aria-label="t('ai.assist.title')" @click="assistOpen = true" />
       <UButton v-if="s.canEdit.value" class="hidden sm:inline-flex" icon="i-lucide-undo-2" color="neutral" variant="outline" square :disabled="!builder.history.canUndo.value" :aria-label="t('builder.undo')" @click="builder.history.undo()" />
       <UButton v-if="s.canEdit.value" class="hidden sm:inline-flex" icon="i-lucide-redo-2" color="neutral" variant="outline" square :disabled="!builder.history.canRedo.value" :aria-label="t('builder.redo')" @click="builder.history.redo()" />
       <UTooltip v-if="s.canEdit.value" :text="t('builder.fullscreen.enter')" :kbds="['meta', 'shift', 'f']">
@@ -179,6 +187,7 @@ defineShortcuts({
                 :aria-label="t('builder.mode.label')"
                 @update:model-value="go"
               />
+              <UButton v-if="canAssist" icon="i-lucide-sparkles" color="neutral" variant="ghost" size="sm" square :aria-label="t('ai.assist.title')" @click="assistOpen = true" />
               <UButton v-if="s.canEdit.value" icon="i-lucide-undo-2" color="neutral" variant="ghost" size="sm" square :disabled="!builder.history.canUndo.value" :aria-label="t('builder.undo')" @click="builder.history.undo()" />
               <UButton v-if="s.canEdit.value" icon="i-lucide-redo-2" color="neutral" variant="ghost" size="sm" square :disabled="!builder.history.canRedo.value" :aria-label="t('builder.redo')" @click="builder.history.redo()" />
               <UButton v-if="allowed('preview')" icon="i-lucide-eye" :label="t('builder.preview.button')" color="neutral" variant="outline" size="sm" class="hidden sm:inline-flex" @click="previewOpen = true" />
@@ -201,5 +210,6 @@ defineShortcuts({
 
     <LazyFormsBuilderPublishModal v-if="publishUsed" v-model:open="publishOpen" :busy="s.publishing.value" :republish="form?.status === 'published'" :form-id="s.formId" @publish="publish" />
     <LazyFormsBuilderPreviewModal v-if="previewUsed" v-model:open="previewOpen" :form-name="form?.name" />
+    <LazyAiBuilderAssistant v-if="assistUsed && canAssist" v-model:open="assistOpen" :form-id="s.formId" />
   </AppPanel>
 </template>

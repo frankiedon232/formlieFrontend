@@ -4940,7 +4940,14 @@
       "template": "Tarifinize en yakın Formalie şablonu “{name}” ile başlandı.",
       "try_again": "Farklı bir başlangıç için tekrar deneyin.",
       "basic": "Elde az bilgi vardı, bu yüzden bu temel bir form. Daha yakın bir taslak için ihtiyacınız olan soruları anlatın.",
-      "themes": "Renginizi okunaklı tutan {n} tasarım. | Renginizi okunaklı tutan {n} tasarım: düğmeler, üzerinde beyaz yazının rahat okunduğu bir ton kullanır."
+      "themes": "Renginizi okunaklı tutan {n} tasarım. | Renginizi okunaklı tutan {n} tasarım: düğmeler, üzerinde beyaz yazının rahat okunduğu bir ton kullanır.",
+      "low_rating": "“{field}” yalnızca “{after}” için düşük puan verildikten sonra görünür.",
+      "other_option": "“{field}” yalnızca “{after}” Diğer olduğunda görünür.",
+      "from_template": "Bunun gibi formlarda sık sorulur (Formalie’nin “{name}” şablonu).",
+      "common": "Bu türdeki çoğu formda bulunan bir soru.",
+      "consent": "Form kişisel bilgi istiyor, bu yüzden kişilerin kullanımına onay vermesi gerekir.",
+      "assist_found": "{n} öneri bulundu. | {n} öneri bulundu.",
+      "assist_applied": "{total} öneriden {n} tanesi uygulandı. | {total} öneriden {n} tanesi uygulandı."
     },
     "create": {
       "describe": "Formu anlatın",
@@ -5054,6 +5061,72 @@
       "emptyTitle": "Marka renginizden tasarımlar",
       "emptyDesc": "Bir renk seçin ve isterseniz istediğiniz hissi yazın. Asistan, örnek form üzerinde deneyebileceğiniz üç tasarım önerir.",
       "optional": "İsteğe bağlı"
+    },
+    "problem": {
+      "email_type": "“{label}” e-posta adresi istiyor",
+      "phone_type": "“{label}” telefon numarası istiyor",
+      "date_type": "“{label}” tarih istiyor",
+      "number_type": "“{label}” sayı istiyor",
+      "duplicate": "“{label}” iki kez soruluyor",
+      "image_alt": "“{label}” için açıklama yok",
+      "long_label": "“{label}” çok uzun bir soru",
+      "no_required": "Bu formda hiçbir şey zorunlu değil",
+      "few_options": "“{label}” için ikiden az seçenek var",
+      "long_page": "“{label}” tek sayfada çok soru içeriyor",
+      "no_label": "Bir sorunun metni yok"
+    },
+    "problemFix": {
+      "email_type": "E-posta alanı yapın, böylece adresler yazılırken kontrol edilir.",
+      "phone_type": "Telefon alanı yapın, böylece numaralar kontrol edilir ve aranabilir.",
+      "date_type": "Takvimli tarih alanı yapın, böylece tarihler her zaman geçerli olur.",
+      "number_type": "Sayı alanı yapın, böylece yalnızca sayı girilebilir.",
+      "duplicate": "İkincisini kaldırın; aynı şeyi iki kez yanıtlamak kafa karıştırabilir.",
+      "image_alt": "Ekran okuyucu kullananlar için kısa bir açıklama ekleyin.",
+      "long_label": "Soruyu kısa tutun, gerisini yardım metnine taşıyın.",
+      "no_required": "İlk soruyu zorunlu yapın, böylece her yanıt bir şey söyler.",
+      "few_options": "Alanın ayarlarından seçenek ekleyin.",
+      "long_page": "İki sayfaya bölün, telefonda doldurması daha kolay olur.",
+      "no_label": "Alanın ayarlarında soruya bir metin verin."
+    },
+    "assist": {
+      "button": "Asistan",
+      "title": "AI asistanı",
+      "desc": "Bu form için öneriler. Neyin uygulanacağını siz seçersiniz.",
+      "action": {
+        "fields": "Alan öner",
+        "help": "Yardım metinleri yaz",
+        "logic": "Mantık ekle",
+        "check": "Formumu kontrol et"
+      },
+      "actionHint": {
+        "fields": "Bu formda eksik olabilecek sorular",
+        "help": "Soruların altında kısa ipuçları",
+        "logic": "Devam sorularını yalnızca gerektiğinde göster",
+        "check": "Sorunlar ve nasıl düzeltileceği"
+      },
+      "found": "{n} öneri | {n} öneri",
+      "none": {
+        "fields": "Bu form, benzer formların genelde sorduğunu zaten soruyor.",
+        "help": "Yardıma ihtiyacı olan her sorunun zaten yardımı var.",
+        "logic": "Eklenecek devam sorusu yok. Bir tane almak için ayrıntı sorusunu evet / hayır sorusunun hemen arkasına koyun.",
+        "check": "Sorun bulunamadı. Güzel iş."
+      },
+      "addField": "“{label}” ekle",
+      "addRule": "Kural ekle",
+      "thisPage": "Bu sayfa",
+      "apply": "Uygula",
+      "fix": "Düzelt",
+      "remove": "Kaldır",
+      "skip": "Atla",
+      "applied": "Uygulandı",
+      "skipped": "Atlandı",
+      "applyAll": "Tümünü uygula ({n})",
+      "appliedAll": "{n} değişiklik uygulandı | {n} değişiklik uygulandı",
+      "appliedCount": "{n} değişiklik uygulandı | {n} değişiklik uygulandı",
+      "undoHint": "Her değişiklik Geri al ile geri alınabilir.",
+      "done": "Bitti",
+      "emptyTitle": "Asistan nasıl yardımcı olabilir?",
+      "emptyDesc": "Yukarıdan birini seçin. Formu şu anki haliyle, kaydedilmemiş değişiklikler dahil inceler."
     }
   },
   "public": {

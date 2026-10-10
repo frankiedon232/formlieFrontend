@@ -203,6 +203,14 @@ export const applyAiRequest = defineMockRoute(({ event, body }) => {
     if (!suggestion) throw new MockError('FRM-GEN-1002', [{ field: 'key', message: 'Choose one of the designs.' }])
     const theme = addTheme(event, tenant, user, { name: values.name, tokens: suggestion.tokens as never, source: 'created' })
     result = { target: { type: 'theme', id: theme.id, name: theme.name } }
+  } else if (request.kind === 'builder') {
+    // The builder made the changes in the form's draft (saved as usual); this records how many were taken
+    const values = parseBody(z.object({ count: z.number().int().min(1).max(500) }), body)
+    if (!request.target) throw new MockError('FRM-AI-1004')
+    const total = (request.output as { count: number }).count
+    request.result = `${values.count} of ${total} suggestions applied.`
+    request.notes = [{ code: 'assist_applied', params: { n: values.count, total } }]
+    result = { target: request.target }
   } else throw new MockError('FRM-AI-1004')
   request.status = 'applied'
   request.applied_at = new Date().toISOString()

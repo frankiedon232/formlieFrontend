@@ -4940,7 +4940,14 @@
       "template": "Dimulai dari template “{name}” milik Formalie, yang paling dekat dengan deskripsi Anda.",
       "try_again": "Coba lagi untuk titik awal yang berbeda.",
       "basic": "Informasinya sedikit, jadi ini formulir dasar. Jelaskan pertanyaan yang Anda perlukan untuk draf yang lebih tepat.",
-      "themes": "{n} desain yang menjaga warna Anda tetap terbaca. | {n} desain yang menjaga warna Anda tetap terbaca: tombol memakai warna yang nyaman dibaca dengan teks putih."
+      "themes": "{n} desain yang menjaga warna Anda tetap terbaca. | {n} desain yang menjaga warna Anda tetap terbaca: tombol memakai warna yang nyaman dibaca dengan teks putih.",
+      "low_rating": "“{field}” hanya muncul setelah nilai rendah untuk “{after}”.",
+      "other_option": "“{field}” hanya muncul jika “{after}” dipilih Lainnya.",
+      "from_template": "Sering ditanyakan di formulir seperti ini (templat “{name}” dari Formalie).",
+      "common": "Pertanyaan yang ada di sebagian besar formulir sejenis.",
+      "consent": "Formulir meminta data pribadi, jadi orang sebaiknya menyetujui cara penggunaannya.",
+      "assist_found": "Ditemukan {n} saran. | Ditemukan {n} saran.",
+      "assist_applied": "{n} dari {total} saran diterapkan. | {n} dari {total} saran diterapkan."
     },
     "create": {
       "describe": "Jelaskan formulirnya",
@@ -5054,6 +5061,72 @@
       "emptyTitle": "Desain dari warna merek Anda",
       "emptyDesc": "Pilih warna dan, jika mau, kesan yang diinginkan. Asisten menyarankan tiga desain yang bisa dicoba pada formulir contoh.",
       "optional": "Opsional"
+    },
+    "problem": {
+      "email_type": "“{label}” meminta alamat email",
+      "phone_type": "“{label}” meminta nomor telepon",
+      "date_type": "“{label}” meminta tanggal",
+      "number_type": "“{label}” meminta angka",
+      "duplicate": "“{label}” ditanyakan dua kali",
+      "image_alt": "“{label}” tidak punya deskripsi",
+      "long_label": "“{label}” adalah pertanyaan yang sangat panjang",
+      "no_required": "Tidak ada yang wajib diisi di formulir ini",
+      "few_options": "“{label}” punya kurang dari dua pilihan",
+      "long_page": "“{label}” punya banyak pertanyaan dalam satu halaman",
+      "no_label": "Ada pertanyaan tanpa teks"
+    },
+    "problemFix": {
+      "email_type": "Jadikan kolom email, agar alamat diperiksa saat diketik.",
+      "phone_type": "Jadikan kolom telepon, agar nomor diperiksa dan bisa dihubungi.",
+      "date_type": "Jadikan kolom tanggal dengan kalender, agar tanggal selalu valid.",
+      "number_type": "Jadikan kolom angka, agar hanya angka yang bisa dimasukkan.",
+      "duplicate": "Hapus yang kedua; menjawab hal yang sama dua kali bisa membingungkan.",
+      "image_alt": "Tambahkan deskripsi singkat untuk orang yang memakai pembaca layar.",
+      "long_label": "Buat pertanyaan singkat dan pindahkan sisanya ke teks bantuan.",
+      "no_required": "Jadikan pertanyaan pertama wajib agar setiap respons berarti.",
+      "few_options": "Tambahkan pilihan di pengaturan kolom.",
+      "long_page": "Pisahkan menjadi dua halaman agar lebih mudah diisi di ponsel.",
+      "no_label": "Beri teks pada pertanyaan di pengaturan kolom."
+    },
+    "assist": {
+      "button": "Asisten",
+      "title": "Asisten AI",
+      "desc": "Saran untuk formulir ini. Anda memilih mana yang diterapkan.",
+      "action": {
+        "fields": "Sarankan kolom",
+        "help": "Tulis teks bantuan",
+        "logic": "Tambah logika",
+        "check": "Periksa formulir saya"
+      },
+      "actionHint": {
+        "fields": "Pertanyaan yang mungkin belum ada di formulir ini",
+        "help": "Petunjuk singkat di bawah pertanyaan",
+        "logic": "Tampilkan pertanyaan lanjutan hanya bila perlu",
+        "check": "Masalah dan cara memperbaikinya"
+      },
+      "found": "{n} saran | {n} saran",
+      "none": {
+        "fields": "Formulir ini sudah menanyakan apa yang biasa ditanyakan formulir sejenis.",
+        "help": "Setiap pertanyaan yang butuh bantuan sudah memilikinya.",
+        "logic": "Tidak ada pertanyaan lanjutan untuk ditambahkan. Letakkan pertanyaan detail tepat setelah pertanyaan ya / tidak untuk mendapatkannya.",
+        "check": "Tidak ada masalah ditemukan. Kerja bagus."
+      },
+      "addField": "Tambah “{label}”",
+      "addRule": "Tambah aturan",
+      "thisPage": "Halaman ini",
+      "apply": "Terapkan",
+      "fix": "Perbaiki",
+      "remove": "Hapus",
+      "skip": "Lewati",
+      "applied": "Diterapkan",
+      "skipped": "Dilewati",
+      "applyAll": "Terapkan semua ({n})",
+      "appliedAll": "{n} perubahan diterapkan | {n} perubahan diterapkan",
+      "appliedCount": "{n} perubahan diterapkan | {n} perubahan diterapkan",
+      "undoHint": "Setiap perubahan bisa dibatalkan dengan Urungkan.",
+      "done": "Selesai",
+      "emptyTitle": "Bagaimana asisten bisa membantu?",
+      "emptyDesc": "Pilih satu di atas. Asisten melihat formulir seperti sekarang, termasuk perubahan yang belum disimpan."
     }
   },
   "public": {

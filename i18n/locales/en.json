@@ -4940,7 +4940,14 @@
       "template": "Started from Formalie’s “{name}” template, the closest to what you described.",
       "try_again": "Try again for a different starting point.",
       "basic": "There was not much to go on, so this is a basic form. Describe the questions you need for a closer draft.",
-      "themes": "{n} design that keeps your colour readable. | {n} designs that keep your colour readable: buttons use a shade that white text reads well on."
+      "themes": "{n} design that keeps your colour readable. | {n} designs that keep your colour readable: buttons use a shade that white text reads well on.",
+      "low_rating": "“{field}” only shows after a low score for “{after}”.",
+      "other_option": "“{field}” only shows when “{after}” is Other.",
+      "from_template": "Often asked in forms like this (Formalie’s “{name}” template).",
+      "common": "A question most forms of this kind include.",
+      "consent": "The form asks for personal details, so people should agree to how they are used.",
+      "assist_found": "Found {n} suggestion. | Found {n} suggestions.",
+      "assist_applied": "{n} of {total} suggestions applied. | {n} of {total} suggestions applied."
     },
     "create": {
       "describe": "Describe the form",
@@ -5054,6 +5061,72 @@
       "emptyTitle": "Designs from your brand colour",
       "emptyDesc": "Pick a colour and, if you like, the feel you want. The assistant suggests three designs you can try on a sample form.",
       "optional": "Optional"
+    },
+    "problem": {
+      "email_type": "“{label}” asks for an email address",
+      "phone_type": "“{label}” asks for a phone number",
+      "date_type": "“{label}” asks for a date",
+      "number_type": "“{label}” asks for a number",
+      "duplicate": "“{label}” is asked twice",
+      "image_alt": "“{label}” has no description",
+      "long_label": "“{label}” is a very long question",
+      "no_required": "Nothing in this form is required",
+      "few_options": "“{label}” has fewer than two choices",
+      "long_page": "“{label}” has a lot of questions on one page",
+      "no_label": "A question has no text"
+    },
+    "problemFix": {
+      "email_type": "Make it an email field, so addresses are checked as people type.",
+      "phone_type": "Make it a phone field, so numbers are checked and can be called.",
+      "date_type": "Make it a date field with a calendar, so dates are always valid.",
+      "number_type": "Make it a number field, so only numbers can be entered.",
+      "duplicate": "Remove the second one; people may be confused answering the same thing twice.",
+      "image_alt": "Add a short description for people who use a screen reader.",
+      "long_label": "Keep the question short and move the rest into its help text.",
+      "no_required": "Make the first question required so every response says something.",
+      "few_options": "Add choices in the field’s settings.",
+      "long_page": "Split it into two pages so it is easier to fill in on a phone.",
+      "no_label": "Give the question a text in the field’s settings."
+    },
+    "assist": {
+      "button": "Assistant",
+      "title": "AI assistant",
+      "desc": "Suggestions for this form. You choose what to apply.",
+      "action": {
+        "fields": "Suggest fields",
+        "help": "Write help texts",
+        "logic": "Add logic",
+        "check": "Check my form"
+      },
+      "actionHint": {
+        "fields": "Questions this form may be missing",
+        "help": "Short hints under questions",
+        "logic": "Show follow-ups only when needed",
+        "check": "Problems and how to fix them"
+      },
+      "found": "{n} suggestion | {n} suggestions",
+      "none": {
+        "fields": "This form already asks what forms like it usually ask.",
+        "help": "Every question that needs help already has it.",
+        "logic": "No follow-ups to add. Put a details question right after a yes / no question to get one.",
+        "check": "No problems found. Nice work."
+      },
+      "addField": "Add “{label}”",
+      "addRule": "Add a rule",
+      "thisPage": "This page",
+      "apply": "Apply",
+      "fix": "Fix",
+      "remove": "Remove",
+      "skip": "Skip",
+      "applied": "Applied",
+      "skipped": "Skipped",
+      "applyAll": "Apply all ({n})",
+      "appliedAll": "{n} change applied | {n} changes applied",
+      "appliedCount": "{n} change applied | {n} changes applied",
+      "undoHint": "Every change can be undone with Undo.",
+      "done": "Done",
+      "emptyTitle": "How can the assistant help?",
+      "emptyDesc": "Pick one above. It looks at the form as it is now, unsaved changes included."
     }
   },
   "public": {

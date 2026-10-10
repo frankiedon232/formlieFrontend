@@ -4940,7 +4940,14 @@
       "template": "Começamos pelo modelo «{name}» da Formalie, o mais próximo do que você descreveu.",
       "try_again": "Tente de novo para ter um ponto de partida diferente.",
       "basic": "Havia pouco para trabalhar, então este é um formulário básico. Descreva as perguntas de que precisa para um rascunho mais próximo.",
-      "themes": "{n} design que mantém sua cor legível. | {n} designs que mantêm sua cor legível: os botões usam um tom em que o texto branco se lê bem."
+      "themes": "{n} design que mantém sua cor legível. | {n} designs que mantêm sua cor legível: os botões usam um tom em que o texto branco se lê bem.",
+      "low_rating": "“{field}” só aparece depois de uma nota baixa em “{after}”.",
+      "other_option": "“{field}” só aparece quando “{after}” é Outro.",
+      "from_template": "Perguntado com frequência em formulários como este (modelo “{name}” da Formalie).",
+      "common": "Uma pergunta que a maioria dos formulários deste tipo inclui.",
+      "consent": "O formulário pede dados pessoais, por isso as pessoas devem concordar com o seu uso.",
+      "assist_found": "{n} sugestão encontrada. | {n} sugestões encontradas.",
+      "assist_applied": "{n} de {total} sugestões aplicadas. | {n} de {total} sugestões aplicadas."
     },
     "create": {
       "describe": "Descreva o formulário",
@@ -5054,6 +5061,72 @@
       "emptyTitle": "Designs a partir da cor da sua marca",
       "emptyDesc": "Escolha uma cor e, se quiser, o estilo desejado. O assistente sugere três designs que você pode testar em um formulário de exemplo.",
       "optional": "Opcional"
+    },
+    "problem": {
+      "email_type": "“{label}” pede um e-mail",
+      "phone_type": "“{label}” pede um número de telefone",
+      "date_type": "“{label}” pede uma data",
+      "number_type": "“{label}” pede um número",
+      "duplicate": "“{label}” é perguntado duas vezes",
+      "image_alt": "“{label}” não tem descrição",
+      "long_label": "“{label}” é uma pergunta muito longa",
+      "no_required": "Nada neste formulário é obrigatório",
+      "few_options": "“{label}” tem menos de duas opções",
+      "long_page": "“{label}” tem muitas perguntas numa página",
+      "no_label": "Uma pergunta não tem texto"
+    },
+    "problemFix": {
+      "email_type": "Transforme em campo de e-mail, para que os endereços sejam verificados enquanto se escreve.",
+      "phone_type": "Transforme em campo de telefone, para que os números sejam verificados e possam ser chamados.",
+      "date_type": "Transforme em campo de data com calendário, para que as datas sejam sempre válidas.",
+      "number_type": "Transforme em campo numérico, para que só se possam inserir números.",
+      "duplicate": "Remova a segunda; responder o mesmo duas vezes pode confundir.",
+      "image_alt": "Adicione uma breve descrição para quem usa leitor de ecrã.",
+      "long_label": "Mantenha a pergunta curta e mova o resto para o texto de ajuda.",
+      "no_required": "Torne a primeira pergunta obrigatória para que cada resposta diga algo.",
+      "few_options": "Adicione opções nas definições do campo.",
+      "long_page": "Divida em duas páginas para ser mais fácil de preencher no telemóvel.",
+      "no_label": "Dê um texto à pergunta nas definições do campo."
+    },
+    "assist": {
+      "button": "Assistente",
+      "title": "Assistente de IA",
+      "desc": "Sugestões para este formulário. Você escolhe o que aplicar.",
+      "action": {
+        "fields": "Sugerir campos",
+        "help": "Escrever textos de ajuda",
+        "logic": "Adicionar lógica",
+        "check": "Verificar meu formulário"
+      },
+      "actionHint": {
+        "fields": "Perguntas que podem faltar neste formulário",
+        "help": "Dicas curtas sob as perguntas",
+        "logic": "Mostrar perguntas de seguimento só quando necessário",
+        "check": "Problemas e como corrigi-los"
+      },
+      "found": "{n} sugestão | {n} sugestões",
+      "none": {
+        "fields": "Este formulário já pergunta o que formulários semelhantes costumam perguntar.",
+        "help": "Toda pergunta que precisa de ajuda já a tem.",
+        "logic": "Sem seguimentos para adicionar. Coloque uma pergunta de detalhes logo após uma pergunta de sim / não para obter um.",
+        "check": "Nenhum problema encontrado. Bom trabalho."
+      },
+      "addField": "Adicionar “{label}”",
+      "addRule": "Adicionar uma regra",
+      "thisPage": "Esta página",
+      "apply": "Aplicar",
+      "fix": "Corrigir",
+      "remove": "Remover",
+      "skip": "Ignorar",
+      "applied": "Aplicado",
+      "skipped": "Ignorado",
+      "applyAll": "Aplicar tudo ({n})",
+      "appliedAll": "{n} alteração aplicada | {n} alterações aplicadas",
+      "appliedCount": "{n} alteração aplicada | {n} alterações aplicadas",
+      "undoHint": "Qualquer alteração pode ser desfeita com Desfazer.",
+      "done": "Concluído",
+      "emptyTitle": "Como o assistente pode ajudar?",
+      "emptyDesc": "Escolha uma opção acima. Ele analisa o formulário como está agora, incluindo alterações não guardadas."
     }
   },
   "public": {

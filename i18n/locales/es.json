@@ -4940,7 +4940,14 @@
       "template": "Se partió de la plantilla «{name}» de Formalie, la más cercana a lo que describiste.",
       "try_again": "Inténtalo de nuevo para obtener otro punto de partida.",
       "basic": "Había poco para trabajar, así que este es un formulario básico. Describe las preguntas que necesitas para un borrador más ajustado.",
-      "themes": "{n} diseño que mantiene tu color legible. | {n} diseños que mantienen tu color legible: los botones usan un tono sobre el que el texto blanco se lee bien."
+      "themes": "{n} diseño que mantiene tu color legible. | {n} diseños que mantienen tu color legible: los botones usan un tono sobre el que el texto blanco se lee bien.",
+      "low_rating": "“{field}” solo aparece tras una puntuación baja en “{after}”.",
+      "other_option": "“{field}” solo aparece cuando “{after}” es Otro.",
+      "from_template": "Se pregunta a menudo en formularios como este (plantilla “{name}” de Formalie).",
+      "common": "Una pregunta que incluyen la mayoría de los formularios de este tipo.",
+      "consent": "El formulario pide datos personales, así que las personas deberían aceptar cómo se usan.",
+      "assist_found": "Se encontró {n} sugerencia. | Se encontraron {n} sugerencias.",
+      "assist_applied": "{n} de {total} sugerencias aplicadas. | {n} de {total} sugerencias aplicadas."
     },
     "create": {
       "describe": "Describe el formulario",
@@ -5054,6 +5061,72 @@
       "emptyTitle": "Diseños a partir del color de tu marca",
       "emptyDesc": "Elige un color y, si quieres, el estilo que buscas. El asistente sugiere tres diseños que puedes probar en un formulario de ejemplo.",
       "optional": "Opcional"
+    },
+    "problem": {
+      "email_type": "“{label}” pide un correo electrónico",
+      "phone_type": "“{label}” pide un número de teléfono",
+      "date_type": "“{label}” pide una fecha",
+      "number_type": "“{label}” pide un número",
+      "duplicate": "“{label}” se pregunta dos veces",
+      "image_alt": "“{label}” no tiene descripción",
+      "long_label": "“{label}” es una pregunta muy larga",
+      "no_required": "Nada en este formulario es obligatorio",
+      "few_options": "“{label}” tiene menos de dos opciones",
+      "long_page": "“{label}” tiene muchas preguntas en una página",
+      "no_label": "Una pregunta no tiene texto"
+    },
+    "problemFix": {
+      "email_type": "Conviértelo en un campo de correo, para que las direcciones se comprueben al escribir.",
+      "phone_type": "Conviértelo en un campo de teléfono, para que los números se comprueben y se puedan llamar.",
+      "date_type": "Conviértelo en un campo de fecha con calendario, para que las fechas sean siempre válidas.",
+      "number_type": "Conviértelo en un campo numérico, para que solo se puedan escribir números.",
+      "duplicate": "Elimina la segunda; responder lo mismo dos veces puede confundir.",
+      "image_alt": "Añade una descripción breve para quienes usan un lector de pantalla.",
+      "long_label": "Mantén la pregunta corta y pasa el resto a su texto de ayuda.",
+      "no_required": "Haz obligatoria la primera pregunta para que cada respuesta diga algo.",
+      "few_options": "Añade opciones en los ajustes del campo.",
+      "long_page": "Divídela en dos páginas para que sea más fácil de rellenar en el móvil.",
+      "no_label": "Dale un texto a la pregunta en los ajustes del campo."
+    },
+    "assist": {
+      "button": "Asistente",
+      "title": "Asistente de IA",
+      "desc": "Sugerencias para este formulario. Tú eliges qué aplicar.",
+      "action": {
+        "fields": "Sugerir campos",
+        "help": "Escribir textos de ayuda",
+        "logic": "Añadir lógica",
+        "check": "Revisar mi formulario"
+      },
+      "actionHint": {
+        "fields": "Preguntas que quizá falten en este formulario",
+        "help": "Pistas breves bajo las preguntas",
+        "logic": "Mostrar preguntas de seguimiento solo si hacen falta",
+        "check": "Problemas y cómo solucionarlos"
+      },
+      "found": "{n} sugerencia | {n} sugerencias",
+      "none": {
+        "fields": "Este formulario ya pregunta lo que suelen preguntar los formularios similares.",
+        "help": "Todas las preguntas que necesitan ayuda ya la tienen.",
+        "logic": "No hay seguimientos que añadir. Pon una pregunta de detalles justo después de una pregunta de sí / no para obtener uno.",
+        "check": "No se encontraron problemas. Buen trabajo."
+      },
+      "addField": "Añadir “{label}”",
+      "addRule": "Añadir una regla",
+      "thisPage": "Esta página",
+      "apply": "Aplicar",
+      "fix": "Corregir",
+      "remove": "Quitar",
+      "skip": "Omitir",
+      "applied": "Aplicado",
+      "skipped": "Omitido",
+      "applyAll": "Aplicar todo ({n})",
+      "appliedAll": "{n} cambio aplicado | {n} cambios aplicados",
+      "appliedCount": "{n} cambio aplicado | {n} cambios aplicados",
+      "undoHint": "Cualquier cambio se puede deshacer con Deshacer.",
+      "done": "Hecho",
+      "emptyTitle": "¿Cómo puede ayudar el asistente?",
+      "emptyDesc": "Elige una opción arriba. Revisa el formulario tal como está ahora, con los cambios sin guardar."
     }
   },
   "public": {

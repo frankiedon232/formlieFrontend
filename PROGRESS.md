@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-10 (F19 AI assistant M1 and M2 done: settings, usage, history, overview; creating forms, template ideas and designs; next: M3 builder help)
+**Last updated:** 2026-10-10 (F19 AI assistant M1 to M3 done: settings, usage, history; creating forms, templates, designs; help in the builder; next: M4 analysing responses)
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend · ➖ dropped or merged
 
@@ -29,7 +29,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F16   | Users & profiles (Profile + Users)                | ✅     | 100% (owner-approved 2026-10-09)          |
 | F17   | Users (merged into F16)                           | ➖     | -                                         |
 | F18   | Analytics                                         | ✅     | 100% (waiting for review)                 |
-| F19   | AI assistant                                      | 🟡     | ~35% (M1, M2 done)                        |
+| F19   | AI assistant                                      | 🟡     | ~50% (M1 to M3 done)                      |
 | F20   | Live collaboration (removed)                      | ➖     | -                                         |
 | F21   | Dashboard                                         | ⬜     | 0%                                        |
 | F22   | Roles & access                                    | ✅     | 100% (owner-tested 2026-10-10)            |
@@ -926,7 +926,7 @@ Owner, 2026-10-08: "profiling and users are the same thing". One phase builds th
 
 **How it works until the real backend (decided 2026-10-10):** the mock has its own built-in assistant engine (`server/mock/ai/`), no outside service: it builds forms from Formalie's template catalogue and a dictionary of common questions, finds themes and sentiment in answers with word lists, and translates with Formalie's own translated texts. Same request and answer shapes as the real one (API-CONTRACT → AI assistant), so the screens don't change when the backend's model takes over. The model / provider is a backend decision for the owner (recommendation in docs/03-DECISIONS-AND-NOTES.md).
 
-**Milestones:** **M1** ✅ Foundation (settings, usage, history, overview) · **M2** ✅ Creating (form from a description or a document, template ideas, theme from a brand colour) · **M3** Builder help · **M4** Analysing (response analysis, questions in plain words, summaries) · **M5** Translating and writing · **M6** Phase checks (phone, keyboard, RTL, 20 languages).
+**Milestones:** **M1** ✅ Foundation (settings, usage, history, overview) · **M2** ✅ Creating (form from a description or a document, template ideas, theme from a brand colour) · **M3** ✅ Builder help · **M4** Analysing (response analysis, questions in plain words, summaries) · **M5** Translating and writing · **M6** Phase checks (phone, keyboard, RTL, 20 languages).
 
 ### 1. Area and navigation
 
@@ -936,7 +936,7 @@ Owner, 2026-10-08: "profiling and users are the same thing". One phase builds th
 ### 2. Creating (M2, M3)
 
 - ✅ **M2** Describe a form in plain words (or paste a document / old form) → a draft with pages, fields, options, validation, logic and calculations, shown as a preview to accept, edit or regenerate; then opened in the builder
-- ⬜ **M3** In the builder: "Suggest fields", "Write help texts", "Add logic", "Check my form" (accessibility, missing validation, duplicate questions), each shown as changes to apply one by one or all
+- ✅ **M3** In the builder: "Suggest fields", "Write help texts", "Add logic", "Check my form" (accessibility, missing validation, duplicate questions), each shown as changes to apply one by one or all
 - ✅ **M2** Template ideas: generate a template for an industry / use case, with a matching theme; save to the workspace templates (F9)
 - ✅ **M2** Design help: suggest a theme from a brand colour (the workspace's by default) and the feel wanted; from a logo or a website comes with the backend (reading an image or a page is the model's job)
 
@@ -1580,3 +1580,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-10 | Plan | Owner: no Docker (services installed directly; production on AWS or dedicated servers, 04-HOSTING.md). The plan split into two projects to drop into their own folders: formaliePlatformFront (Nuxt) and formaliePlatformBack (FastAPI), each with README, CLAUDE.md, STARTUP-PROMPT.md, its own PROGRESS.md and the shared docs |
 | 2026-10-10 | F19 M1 | AI assistant foundation: settings (on / off, what it may read: forms, responses, data sources; keep personal data out; keep requests 30 to 365 days), monthly credits (500 until plans), usage, history in the locked list format (two chart cards, DataView with kind, status, person and date filters, cards, detail panel with what was asked and what came back, K / J), overview with what it can do and the latest requests, switched-off state everywhere; API `/ai/settings`, `/ai/usage`, `/ai/requests` with `FRM-AI-1001..1003`, audit `ai.*`; built-in mock engine decided (no outside service until the backend); browser-checked as the owner: off and on again, audit rows |
 | 2026-10-10 | F19 M2 | Creating with the assistant: Create a form (describe it, or paste a document / old form; pages auto / one / several; examples; a draft with the questions in your words, name and email first when it is about people, follow-ups after a yes, totals for quantity × price, pages when long, agreement and signature last, else the closest Formalie template; live preview on desktop / tablet / phone; name and folder, Create form opens the builder; Try again gives another take; Put aside), Template ideas (template with the design of its kind, category, saved to the workspace's templates) and Design from a colour (three designs, calm / bold / minimal, readable buttons, preview on a sample form, saved to Themes); every draft is kept as a request (proposed → applied / put aside) with what it did shown translated; API `/ai/forms|templates|themes/draft`, `/ai/requests/{id}/apply|discard`, `FRM-AI-1004`, audit `ai.applied`; the mock's engine is built in (Formalie's templates and a question dictionary, no outside service); browser-checked as the owner: visitor form created and opened in the builder, a design saved to Themes, a template saved; phone layout fixed |
+| 2026-10-10 | F19 M3 | Builder help: Assistant button in the builder header on Build and Logic (and the full-screen bar and phone menu) for people who may edit the form and use builder help; a side panel with Suggest fields (from the template that matches the form's name, plus email, "anything else" and agreement when personal details are asked), Write help texts (by kind of question), Add logic (details after a yes, "what went wrong" after a low score, "other" after Other) and Check my form (wrong kind of field for email / phone / date / number, duplicates, images without a description, very long questions, nothing required, too few choices, long pages); each suggestion applied or skipped, Apply all, every change one undo step and saved with the draft; the history records how many were taken; API `POST /ai/forms/{id}/assist`; browser-checked: suggestions applied and undone, check and logic on sample forms (a wrong follow-up found in testing and fixed) |

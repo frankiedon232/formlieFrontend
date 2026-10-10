@@ -4940,7 +4940,14 @@
       "template": "Punktem wyjścia był szablon Formalie „{name}”, najbliższy Twojemu opisowi.",
       "try_again": "Spróbuj ponownie, aby uzyskać inny punkt wyjścia.",
       "basic": "Było mało wskazówek, więc to prosty formularz. Opisz potrzebne pytania, aby szkic był trafniejszy.",
-      "themes": "{n} projekt, który zachowuje czytelność Twojego koloru. | {n} projektów, które zachowują czytelność Twojego koloru: przyciski mają odcień, na którym dobrze widać biały tekst."
+      "themes": "{n} projekt, który zachowuje czytelność Twojego koloru. | {n} projektów, które zachowują czytelność Twojego koloru: przyciski mają odcień, na którym dobrze widać biały tekst.",
+      "low_rating": "„{field}” pojawia się tylko po niskiej ocenie w „{after}”.",
+      "other_option": "„{field}” pojawia się tylko, gdy w „{after}” wybrano Inne.",
+      "from_template": "Często pytane w takich formularzach (szablon Formalie „{name}”).",
+      "common": "Pytanie, które zawiera większość takich formularzy.",
+      "consent": "Formularz pyta o dane osobowe, więc osoby powinny zgodzić się na ich wykorzystanie.",
+      "assist_found": "Znaleziono {n} sugestię. | Znaleziono sugestie: {n}.",
+      "assist_applied": "Zastosowano {n} z {total} sugestii. | Zastosowano {n} z {total} sugestii."
     },
     "create": {
       "describe": "Opisz formularz",
@@ -5054,6 +5061,72 @@
       "emptyTitle": "Projekty z koloru Twojej marki",
       "emptyDesc": "Wybierz kolor i, jeśli chcesz, pożądany charakter. Asystent proponuje trzy projekty, które możesz wypróbować na przykładowym formularzu.",
       "optional": "Opcjonalne"
+    },
+    "problem": {
+      "email_type": "„{label}” pyta o adres e-mail",
+      "phone_type": "„{label}” pyta o numer telefonu",
+      "date_type": "„{label}” pyta o datę",
+      "number_type": "„{label}” pyta o liczbę",
+      "duplicate": "„{label}” jest zadane dwa razy",
+      "image_alt": "„{label}” nie ma opisu",
+      "long_label": "„{label}” to bardzo długie pytanie",
+      "no_required": "Nic w tym formularzu nie jest wymagane",
+      "few_options": "„{label}” ma mniej niż dwie opcje",
+      "long_page": "„{label}” ma dużo pytań na jednej stronie",
+      "no_label": "Pytanie nie ma tekstu"
+    },
+    "problemFix": {
+      "email_type": "Zmień na pole e-mail, aby adresy były sprawdzane podczas pisania.",
+      "phone_type": "Zmień na pole telefonu, aby numery były sprawdzane i można było pod nie dzwonić.",
+      "date_type": "Zmień na pole daty z kalendarzem, aby daty były zawsze poprawne.",
+      "number_type": "Zmień na pole liczbowe, aby można było wpisać tylko liczby.",
+      "duplicate": "Usuń drugie; odpowiadanie dwa razy na to samo może mylić.",
+      "image_alt": "Dodaj krótki opis dla osób korzystających z czytnika ekranu.",
+      "long_label": "Skróć pytanie, a resztę przenieś do tekstu pomocy.",
+      "no_required": "Ustaw pierwsze pytanie jako wymagane, aby każda odpowiedź coś mówiła.",
+      "few_options": "Dodaj opcje w ustawieniach pola.",
+      "long_page": "Podziel na dwie strony, aby łatwiej wypełniać na telefonie.",
+      "no_label": "Wpisz tekst pytania w ustawieniach pola."
+    },
+    "assist": {
+      "button": "Asystent",
+      "title": "Asystent AI",
+      "desc": "Sugestie dla tego formularza. Ty wybierasz, co zastosować.",
+      "action": {
+        "fields": "Zaproponuj pola",
+        "help": "Napisz teksty pomocy",
+        "logic": "Dodaj logikę",
+        "check": "Sprawdź mój formularz"
+      },
+      "actionHint": {
+        "fields": "Pytania, których może brakować w tym formularzu",
+        "help": "Krótkie wskazówki pod pytaniami",
+        "logic": "Pokazuj pytania uzupełniające tylko w razie potrzeby",
+        "check": "Problemy i jak je naprawić"
+      },
+      "found": "{n} sugestia | {n} sugestii",
+      "none": {
+        "fields": "Ten formularz już pyta o to, o co zwykle pytają podobne formularze.",
+        "help": "Każde pytanie, które potrzebuje pomocy, już ją ma.",
+        "logic": "Brak pytań uzupełniających do dodania. Umieść pytanie o szczegóły zaraz po pytaniu tak / nie, aby je uzyskać.",
+        "check": "Nie znaleziono problemów. Dobra robota."
+      },
+      "addField": "Dodaj „{label}”",
+      "addRule": "Dodaj regułę",
+      "thisPage": "Ta strona",
+      "apply": "Zastosuj",
+      "fix": "Napraw",
+      "remove": "Usuń",
+      "skip": "Pomiń",
+      "applied": "Zastosowano",
+      "skipped": "Pominięto",
+      "applyAll": "Zastosuj wszystko ({n})",
+      "appliedAll": "Zastosowano {n} zmianę | Zastosowano {n} zmian",
+      "appliedCount": "Zastosowano {n} zmianę | Zastosowano {n} zmian",
+      "undoHint": "Każdą zmianę można cofnąć przyciskiem Cofnij.",
+      "done": "Gotowe",
+      "emptyTitle": "Jak asystent może pomóc?",
+      "emptyDesc": "Wybierz coś powyżej. Asystent patrzy na formularz takim, jaki jest teraz, razem z niezapisanymi zmianami."
     }
   },
   "public": {

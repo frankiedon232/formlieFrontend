@@ -4940,7 +4940,14 @@
       "template": "Si è partiti dal modello «{name}» di Formalie, il più vicino a quanto hai descritto.",
       "try_again": "Riprova per un punto di partenza diverso.",
       "basic": "C’erano pochi elementi, quindi questo è un modulo di base. Descrivi le domande che ti servono per una bozza più precisa.",
-      "themes": "{n} design che mantiene leggibile il tuo colore. | {n} design che mantengono leggibile il tuo colore: i pulsanti usano una tonalità su cui il testo bianco si legge bene."
+      "themes": "{n} design che mantiene leggibile il tuo colore. | {n} design che mantengono leggibile il tuo colore: i pulsanti usano una tonalità su cui il testo bianco si legge bene.",
+      "low_rating": "“{field}” appare solo dopo un punteggio basso in “{after}”.",
+      "other_option": "“{field}” appare solo quando “{after}” è Altro.",
+      "from_template": "Spesso richiesto in moduli come questo (modello “{name}” di Formalie).",
+      "common": "Una domanda che la maggior parte dei moduli di questo tipo include.",
+      "consent": "Il modulo chiede dati personali, quindi le persone dovrebbero accettare come vengono usati.",
+      "assist_found": "Trovato {n} suggerimento. | Trovati {n} suggerimenti.",
+      "assist_applied": "{n} suggerimenti su {total} applicati. | {n} suggerimenti su {total} applicati."
     },
     "create": {
       "describe": "Descrivi il modulo",
@@ -5054,6 +5061,72 @@
       "emptyTitle": "Design dal colore del tuo brand",
       "emptyDesc": "Scegli un colore e, se vuoi, lo stile desiderato. L’assistente suggerisce tre design da provare su un modulo di esempio.",
       "optional": "Facoltativo"
+    },
+    "problem": {
+      "email_type": "“{label}” chiede un indirizzo e-mail",
+      "phone_type": "“{label}” chiede un numero di telefono",
+      "date_type": "“{label}” chiede una data",
+      "number_type": "“{label}” chiede un numero",
+      "duplicate": "“{label}” è chiesto due volte",
+      "image_alt": "“{label}” non ha una descrizione",
+      "long_label": "“{label}” è una domanda molto lunga",
+      "no_required": "Nulla in questo modulo è obbligatorio",
+      "few_options": "“{label}” ha meno di due scelte",
+      "long_page": "“{label}” ha molte domande in una pagina",
+      "no_label": "Una domanda non ha testo"
+    },
+    "problemFix": {
+      "email_type": "Trasformalo in un campo e-mail, così gli indirizzi vengono controllati mentre si scrive.",
+      "phone_type": "Trasformalo in un campo telefono, così i numeri vengono controllati e si possono chiamare.",
+      "date_type": "Trasformalo in un campo data con calendario, così le date sono sempre valide.",
+      "number_type": "Trasformalo in un campo numerico, così si possono inserire solo numeri.",
+      "duplicate": "Rimuovi la seconda; rispondere due volte alla stessa cosa può confondere.",
+      "image_alt": "Aggiungi una breve descrizione per chi usa uno screen reader.",
+      "long_label": "Mantieni la domanda breve e sposta il resto nel testo di aiuto.",
+      "no_required": "Rendi obbligatoria la prima domanda, così ogni risposta dice qualcosa.",
+      "few_options": "Aggiungi scelte nelle impostazioni del campo.",
+      "long_page": "Dividila in due pagine per compilarla più facilmente da telefono.",
+      "no_label": "Dai un testo alla domanda nelle impostazioni del campo."
+    },
+    "assist": {
+      "button": "Assistente",
+      "title": "Assistente IA",
+      "desc": "Suggerimenti per questo modulo. Scegli tu cosa applicare.",
+      "action": {
+        "fields": "Suggerisci campi",
+        "help": "Scrivi testi di aiuto",
+        "logic": "Aggiungi logica",
+        "check": "Controlla il mio modulo"
+      },
+      "actionHint": {
+        "fields": "Domande che potrebbero mancare a questo modulo",
+        "help": "Brevi suggerimenti sotto le domande",
+        "logic": "Mostra le domande successive solo se servono",
+        "check": "Problemi e come risolverli"
+      },
+      "found": "{n} suggerimento | {n} suggerimenti",
+      "none": {
+        "fields": "Questo modulo chiede già ciò che chiedono di solito i moduli simili.",
+        "help": "Ogni domanda che ha bisogno di aiuto ce l’ha già.",
+        "logic": "Nessuna domanda successiva da aggiungere. Metti una domanda di dettaglio subito dopo una domanda sì / no per ottenerne una.",
+        "check": "Nessun problema trovato. Ottimo lavoro."
+      },
+      "addField": "Aggiungi “{label}”",
+      "addRule": "Aggiungi una regola",
+      "thisPage": "Questa pagina",
+      "apply": "Applica",
+      "fix": "Correggi",
+      "remove": "Rimuovi",
+      "skip": "Salta",
+      "applied": "Applicato",
+      "skipped": "Saltato",
+      "applyAll": "Applica tutto ({n})",
+      "appliedAll": "{n} modifica applicata | {n} modifiche applicate",
+      "appliedCount": "{n} modifica applicata | {n} modifiche applicate",
+      "undoHint": "Ogni modifica può essere annullata con Annulla.",
+      "done": "Fatto",
+      "emptyTitle": "Come può aiutare l’assistente?",
+      "emptyDesc": "Scegline uno qui sopra. Guarda il modulo com’è ora, modifiche non salvate comprese."
     }
   },
   "public": {

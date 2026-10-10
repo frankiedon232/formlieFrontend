@@ -4940,7 +4940,14 @@
       "template": "Tulianza na kiolezo cha Formalie “{name}”, kilicho karibu zaidi na ulichoeleza.",
       "try_again": "Jaribu tena kupata mwanzo tofauti.",
       "basic": "Kulikuwa na taarifa chache, kwa hiyo huu ni fomu ya msingi. Eleza maswali unayohitaji ili upate rasimu iliyo karibu zaidi.",
-      "themes": "Muundo {n} unaofanya rangi yako isomeke vizuri. | Miundo {n} inayofanya rangi yako isomeke vizuri: vitufe hutumia kivuli ambacho maandishi meupe husomeka vizuri juu yake."
+      "themes": "Muundo {n} unaofanya rangi yako isomeke vizuri. | Miundo {n} inayofanya rangi yako isomeke vizuri: vitufe hutumia kivuli ambacho maandishi meupe husomeka vizuri juu yake.",
+      "low_rating": "“{field}” huonekana tu baada ya alama ya chini kwa “{after}”.",
+      "other_option": "“{field}” huonekana tu “{after}” inapokuwa Nyingine.",
+      "from_template": "Mara nyingi huulizwa katika fomu kama hii (kiolezo cha Formalie “{name}”).",
+      "common": "Swali ambalo fomu nyingi za aina hii huwa nalo.",
+      "consent": "Fomu inaomba taarifa binafsi, kwa hiyo watu wanapaswa kukubali jinsi zinavyotumika.",
+      "assist_found": "Pendekezo {n} limepatikana. | Mapendekezo {n} yamepatikana.",
+      "assist_applied": "Mapendekezo {n} kati ya {total} yametumika. | Mapendekezo {n} kati ya {total} yametumika."
     },
     "create": {
       "describe": "Eleza fomu",
@@ -5054,6 +5061,72 @@
       "emptyTitle": "Miundo kutoka rangi ya chapa yako",
       "emptyDesc": "Chagua rangi na, ukipenda, hisia unayotaka. Msaidizi hupendekeza miundo mitatu unayoweza kujaribu kwenye fomu ya mfano.",
       "optional": "Hiari"
+    },
+    "problem": {
+      "email_type": "“{label}” inaomba anwani ya barua pepe",
+      "phone_type": "“{label}” inaomba nambari ya simu",
+      "date_type": "“{label}” inaomba tarehe",
+      "number_type": "“{label}” inaomba nambari",
+      "duplicate": "“{label}” linaulizwa mara mbili",
+      "image_alt": "“{label}” halina maelezo",
+      "long_label": "“{label}” ni swali refu sana",
+      "no_required": "Hakuna kinachohitajika katika fomu hii",
+      "few_options": "“{label}” lina chaguo chini ya mbili",
+      "long_page": "“{label}” lina maswali mengi kwenye ukurasa mmoja",
+      "no_label": "Swali moja halina maandishi"
+    },
+    "problemFix": {
+      "email_type": "Ligeuze kuwa sehemu ya barua pepe, ili anwani zikaguliwe wakati wa kuandika.",
+      "phone_type": "Ligeuze kuwa sehemu ya simu, ili nambari zikaguliwe na ziweze kupigiwa.",
+      "date_type": "Ligeuze kuwa sehemu ya tarehe yenye kalenda, ili tarehe ziwe sahihi kila wakati.",
+      "number_type": "Ligeuze kuwa sehemu ya nambari, ili nambari tu ziweze kuingizwa.",
+      "duplicate": "Ondoa la pili; watu wanaweza kuchanganyikiwa kujibu jambo lilelile mara mbili.",
+      "image_alt": "Ongeza maelezo mafupi kwa watu wanaotumia kisoma skrini.",
+      "long_label": "Weka swali fupi na uhamishe mengine kwenye maandishi ya msaada.",
+      "no_required": "Fanya swali la kwanza liwe la lazima ili kila jibu liseme kitu.",
+      "few_options": "Ongeza chaguo katika mipangilio ya sehemu.",
+      "long_page": "Ligawe kuwa kurasa mbili ili iwe rahisi kujaza kwenye simu.",
+      "no_label": "Lipe swali maandishi katika mipangilio ya sehemu."
+    },
+    "assist": {
+      "button": "Msaidizi",
+      "title": "Msaidizi wa AI",
+      "desc": "Mapendekezo ya fomu hii. Wewe huchagua cha kutumia.",
+      "action": {
+        "fields": "Pendekeza sehemu",
+        "help": "Andika maandishi ya msaada",
+        "logic": "Ongeza mantiki",
+        "check": "Kagua fomu yangu"
+      },
+      "actionHint": {
+        "fields": "Maswali ambayo fomu hii inaweza kukosa",
+        "help": "Vidokezo vifupi chini ya maswali",
+        "logic": "Onyesha maswali ya ufuatiliaji inapohitajika tu",
+        "check": "Matatizo na jinsi ya kuyarekebisha"
+      },
+      "found": "Pendekezo {n} | Mapendekezo {n}",
+      "none": {
+        "fields": "Fomu hii tayari inauliza yale ambayo fomu zinazofanana huuliza kwa kawaida.",
+        "help": "Kila swali linalohitaji msaada tayari lina msaada.",
+        "logic": "Hakuna maswali ya ufuatiliaji ya kuongeza. Weka swali la maelezo mara baada ya swali la ndiyo / hapana ili kupata moja.",
+        "check": "Hakuna tatizo lililopatikana. Kazi nzuri."
+      },
+      "addField": "Ongeza “{label}”",
+      "addRule": "Ongeza kanuni",
+      "thisPage": "Ukurasa huu",
+      "apply": "Tumia",
+      "fix": "Rekebisha",
+      "remove": "Ondoa",
+      "skip": "Ruka",
+      "applied": "Imetumika",
+      "skipped": "Imerukwa",
+      "applyAll": "Tumia yote ({n})",
+      "appliedAll": "Badiliko {n} limetumika | Mabadiliko {n} yametumika",
+      "appliedCount": "Badiliko {n} limetumika | Mabadiliko {n} yametumika",
+      "undoHint": "Kila badiliko linaweza kutenduliwa kwa Tendua.",
+      "done": "Imekamilika",
+      "emptyTitle": "Msaidizi anawezaje kusaidia?",
+      "emptyDesc": "Chagua moja hapo juu. Hutazama fomu kama ilivyo sasa, pamoja na mabadiliko ambayo hayajahifadhiwa."
     }
   },
   "public": {

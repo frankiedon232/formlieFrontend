@@ -4940,7 +4940,14 @@
       "template": "Bắt đầu từ mẫu “{name}” của Formalie, gần nhất với mô tả của bạn.",
       "try_again": "Thử lại để có điểm xuất phát khác.",
       "basic": "Có ít thông tin để làm việc nên đây là biểu mẫu cơ bản. Hãy mô tả các câu hỏi bạn cần để có bản nháp sát hơn.",
-      "themes": "{n} thiết kế giữ màu của bạn dễ đọc. | {n} thiết kế giữ màu của bạn dễ đọc: nút dùng sắc độ mà chữ trắng đọc rõ."
+      "themes": "{n} thiết kế giữ màu của bạn dễ đọc. | {n} thiết kế giữ màu của bạn dễ đọc: nút dùng sắc độ mà chữ trắng đọc rõ.",
+      "low_rating": "“{field}” chỉ hiện sau khi “{after}” bị chấm điểm thấp.",
+      "other_option": "“{field}” chỉ hiện khi “{after}” là Khác.",
+      "from_template": "Thường được hỏi trong các biểu mẫu như thế này (mẫu “{name}” của Formalie).",
+      "common": "Một câu hỏi mà hầu hết biểu mẫu loại này đều có.",
+      "consent": "Biểu mẫu hỏi thông tin cá nhân, nên mọi người cần đồng ý với cách dùng chúng.",
+      "assist_found": "Đã tìm thấy {n} đề xuất. | Đã tìm thấy {n} đề xuất.",
+      "assist_applied": "Đã áp dụng {n} trên {total} đề xuất. | Đã áp dụng {n} trên {total} đề xuất."
     },
     "create": {
       "describe": "Mô tả biểu mẫu",
@@ -5054,6 +5061,72 @@
       "emptyTitle": "Thiết kế từ màu thương hiệu của bạn",
       "emptyDesc": "Chọn một màu và, nếu muốn, cảm giác bạn muốn. Trợ lý gợi ý ba thiết kế để bạn thử trên biểu mẫu mẫu.",
       "optional": "Tùy chọn"
+    },
+    "problem": {
+      "email_type": "“{label}” hỏi địa chỉ email",
+      "phone_type": "“{label}” hỏi số điện thoại",
+      "date_type": "“{label}” hỏi ngày",
+      "number_type": "“{label}” hỏi một con số",
+      "duplicate": "“{label}” bị hỏi hai lần",
+      "image_alt": "“{label}” chưa có mô tả",
+      "long_label": "“{label}” là một câu hỏi rất dài",
+      "no_required": "Không có gì trong biểu mẫu này là bắt buộc",
+      "few_options": "“{label}” có ít hơn hai lựa chọn",
+      "long_page": "“{label}” có nhiều câu hỏi trong một trang",
+      "no_label": "Có một câu hỏi chưa có nội dung"
+    },
+    "problemFix": {
+      "email_type": "Đổi thành trường email để địa chỉ được kiểm tra khi gõ.",
+      "phone_type": "Đổi thành trường điện thoại để số được kiểm tra và có thể gọi.",
+      "date_type": "Đổi thành trường ngày có lịch để ngày luôn hợp lệ.",
+      "number_type": "Đổi thành trường số để chỉ nhập được số.",
+      "duplicate": "Xóa câu thứ hai; trả lời cùng một điều hai lần có thể gây nhầm lẫn.",
+      "image_alt": "Thêm mô tả ngắn cho người dùng trình đọc màn hình.",
+      "long_label": "Giữ câu hỏi ngắn và chuyển phần còn lại vào văn bản trợ giúp.",
+      "no_required": "Đặt câu hỏi đầu tiên là bắt buộc để mỗi phản hồi đều có nội dung.",
+      "few_options": "Thêm lựa chọn trong cài đặt của trường.",
+      "long_page": "Tách thành hai trang để dễ điền hơn trên điện thoại.",
+      "no_label": "Nhập nội dung cho câu hỏi trong cài đặt của trường."
+    },
+    "assist": {
+      "button": "Trợ lý",
+      "title": "Trợ lý AI",
+      "desc": "Gợi ý cho biểu mẫu này. Bạn chọn điều gì sẽ được áp dụng.",
+      "action": {
+        "fields": "Gợi ý trường",
+        "help": "Viết văn bản trợ giúp",
+        "logic": "Thêm logic",
+        "check": "Kiểm tra biểu mẫu của tôi"
+      },
+      "actionHint": {
+        "fields": "Những câu hỏi biểu mẫu này có thể còn thiếu",
+        "help": "Gợi ý ngắn dưới câu hỏi",
+        "logic": "Chỉ hiện câu hỏi tiếp theo khi cần",
+        "check": "Vấn đề và cách khắc phục"
+      },
+      "found": "{n} gợi ý | {n} gợi ý",
+      "none": {
+        "fields": "Biểu mẫu này đã hỏi những gì các biểu mẫu tương tự thường hỏi.",
+        "help": "Mọi câu hỏi cần trợ giúp đều đã có.",
+        "logic": "Không có câu hỏi tiếp theo để thêm. Đặt câu hỏi chi tiết ngay sau câu hỏi có / không để có một câu.",
+        "check": "Không tìm thấy vấn đề. Làm tốt lắm."
+      },
+      "addField": "Thêm “{label}”",
+      "addRule": "Thêm quy tắc",
+      "thisPage": "Trang này",
+      "apply": "Áp dụng",
+      "fix": "Sửa",
+      "remove": "Xóa",
+      "skip": "Bỏ qua",
+      "applied": "Đã áp dụng",
+      "skipped": "Đã bỏ qua",
+      "applyAll": "Áp dụng tất cả ({n})",
+      "appliedAll": "Đã áp dụng {n} thay đổi | Đã áp dụng {n} thay đổi",
+      "appliedCount": "Đã áp dụng {n} thay đổi | Đã áp dụng {n} thay đổi",
+      "undoHint": "Mọi thay đổi đều có thể hoàn tác bằng Hoàn tác.",
+      "done": "Xong",
+      "emptyTitle": "Trợ lý có thể giúp gì?",
+      "emptyDesc": "Chọn một mục ở trên. Trợ lý xem biểu mẫu như hiện tại, kể cả các thay đổi chưa lưu."
     }
   },
   "public": {
