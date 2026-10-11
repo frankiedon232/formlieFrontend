@@ -25,7 +25,10 @@ def _record(tenant=None, org=None, **extra):  # noqa: ANN001, ANN003, ANN202
             "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/131.0.0.0 Safari/537.36", **extra}
 
 
-async def test_batches_are_written_and_each_workspace_reads_only_its_own(engines, two_workspaces, owner) -> None:  # noqa: ANN001
+async def test_batches_are_written_and_each_workspace_reads_only_its_own(engines, two_workspaces, owner, monkeypatch, tmp_path) -> None:  # noqa: ANN001, E501
+    from app.core.logging.geo import GeoLookup
+
+    monkeypatch.setattr("app.modules.logs.service.get_geo", lambda: GeoLookup(tmp_path))  # no MaxMind files: the same on every machine
     a, b = two_workspaces
     records = [_record(a.tenant_id, a.organisation_id), _record(b.tenant_id, b.organisation_id), _record()]
     assert await write_batch_async(records) == 3
