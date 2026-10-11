@@ -4,7 +4,8 @@ sections, onboarding and the founding person as Owner. Used by sign-up and by th
 
 The rest of Formalie's default data (FRONTEND-REFERENCE → Default data) is seeded by each module as it is built:
 the module registers a seeder with `register_seeder`, and every new workspace runs them all in the same
-transaction (system lists and templates: B6, default folders: B5, email templates: B11).
+transaction (default folders: B5, email templates: B11). Formalie's templates are a catalogue in code
+(app/modules/templates), not rows; the sample lists go to the seeded development workspaces only (scripts/seed_dev.py).
 """
 
 from __future__ import annotations

@@ -12,10 +12,11 @@ Statuses: **Done** (built and verified), **Built** (code and tests written, wait
 | B2 | Audit trail and logs | **Done** (owner: "continue to next", 2026-10-11) | 6 / 6 |
 | B3 | Onboarding, settings base and default data | **Done** (owner: "keep going", 2026-10-11) | 37 / 39 (form defaults theme: B5; navigation counts complete with the later areas) |
 | B4 | People, roles and access | **Done** (owner: "keep going", 2026-10-11) | 44 / 44 |
-| B5 | Forms core | **Built**; waiting for the owner's review | 27 / 28 (creating from a template: B6) |
-| B6 to B17 | See BACKEND-ROADMAP.md | Later | 0 |
+| B5 | Forms core | **Done** (owner: "continue", 2026-10-11) | 28 / 28 |
+| B6 | Design, templates and lists | **Built**; waiting for the owner's review | 38 / 38 |
+| B7 to B17 | See BACKEND-ROADMAP.md | Later | 0 |
 
-Portal endpoints: 135 of 401 ticked in `ENDPOINTS.md`.
+Portal endpoints: 174 of 411 ticked in `ENDPOINTS.md`.
 
 ## B0, Foundation (2026-10-10)
 
@@ -99,9 +100,20 @@ Portal endpoints: 135 of 401 ticked in `ENDPOINTS.md`.
 | FormSchema v1, blank forms, slugs (zod's answers) | Done | `app/modules/forms/schema.py`, `slugs.py`, `scripts/dump_forms_rules.py` | The thank-you redirect takes web addresses only |
 | Tables: folders with access, forms, immutable versions, per-form sharing | Done | migration 0012 | Purging stamps `purged_at` |
 | Form permissions (folder access, role scope, ownership, sharing) | Done | `app/modules/forms/access.py` | One answer for every route and list |
-| Forms and folders routes | Done | `app/modules/forms/router.py` | From a template: B6 |
+| Forms and folders routes | Done | `app/modules/forms/router.py` | From a template: done in B6 |
 | Builder: draft, publish checks, versions, discard, preview, restore | Done | `app/modules/forms/builder.py` | Publish checks held to the frontend's answers |
 | Form overview, folder pages, directory, sidebar counts for forms and folders | Done | `app/modules/forms/overview.py`, `app/modules/dashboard/router.py` | Response numbers: B8 |
+
+## B6, Design, templates and lists (2026-10-11)
+
+| Item | Status | Where | Notes |
+| --- | --- | --- | --- |
+| Themes (light / dark, fonts), page designs, saved fields | Done | `app/modules/design/`, migration 0013 | Formalie's are use-only; new forms get the default theme from Settings → Form defaults |
+| Option lists: plain, levels, details, large lists, lookups, forms follow a list | Done | `app/modules/lists/`, migration 0014 | Lists with more than 20 active options stay on the server (API-CONTRACT, owner 2026-10-08) |
+| Formalie's sample lists in the seeded workspaces | Done | `app/modules/lists/samples.py`, `scripts/seed_dev.py` | Options in 20 languages, copied by `scripts/sync_frontend_data.py` |
+| Template catalogue: 84 templates, 20 languages, workspace branding | Done | `app/modules/templates/catalogue.py`, `scripts/dump_templates_rules.py` | 3,360 recorded answers from the frontend match |
+| Templates: gallery, categories, insights, facets, translate content, the workspace's own (save a form, edit, update from its form, duplicate, delete) | Done | `app/modules/templates/`, migration 0015 | Workspace template keys leave the server encrypted, like ids |
+| New forms from a template; template in form facets, form overview and sidebar counts | Done | `app/modules/forms/router.py`, `overview.py`, `app/modules/dashboard/router.py` | |
 
 ## Open questions
 
@@ -116,6 +128,8 @@ Portal endpoints: 135 of 401 ticked in `ENDPOINTS.md`.
 - **CLAUDE.md layout** still names `api_keys/` and `option_sets/`; the product now has API tokens (`/api-tokens`) and option lists (`/option-lists`).
 
 ## Log
+
+- **2026-10-11:** B6 built: themes, page designs, saved fields, option lists (large lists kept on the server), template catalogue with the frontend's answers in 20 languages, templates routes, forms from templates, sample lists in the seeded workspaces; migrations 0013 to 0015. 1090 tests. **Stopped for the owner's review.**
 
 - **2026-10-11:** B5 built: form schema with zod's answers, forms tables (migration 0012), form permissions, forms and folders routes, builder (draft, publish checks, versions), overview, folder pages, directory, sidebar counts for forms. 993 tests. **Stopped for the owner's review.**
 

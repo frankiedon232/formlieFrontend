@@ -1,0 +1,424 @@
+{
+ "templates": {
+  "items": {
+   "customer_feedback": {
+    "name": "客户反馈",
+    "description": "了解客户对您服务的看法，客户不满意时会追加提问。"
+   },
+   "csat_nps": {
+    "name": "客户满意度（CSAT / NPS）调查",
+    "description": "衡量满意度（CSAT）、费力度和忠诚度（NPS）。每个回答都会归入推荐者、被动者或贬损者。"
+   },
+   "product_review": {
+    "name": "产品评价",
+    "description": "收集详细的产品评价，包含星级评分、平均分、照片和发布同意。"
+   },
+   "contact_lead": {
+    "name": "联系 / 咨询表",
+    "description": "简单友好的联系表单，按主题分派每条咨询。"
+   },
+   "quote_request": {
+    "name": "报价申请",
+    "description": "客户自行组合需求，并根据套餐、附加项和数量查看参考报价。"
+   },
+   "order_form": {
+    "name": "订购单",
+    "description": "接收订单，最多三个商品行，可选配送方式并实时显示合计。"
+   },
+   "complaint_dispute": {
+    "name": "投诉 / 争议表",
+    "description": "记录投诉和争议，附带证据、期望结果和此前的联系记录。"
+   },
+   "service_request": {
+    "name": "服务申请",
+    "description": "预约上门服务，注明优先级、偏好时间并附上问题照片。"
+   },
+   "lead_capture_newsletter": {
+    "name": "潜在客户收集 / 订阅新闻通讯",
+    "description": "内置同意、兴趣和营销活动追踪，帮您扩大名单。"
+   },
+   "return_refund": {
+    "name": "退货 / 退款申请",
+    "description": "处理退货，包括原因、照片、期望结果和自动计算的退款金额。"
+   },
+   "job_application": {
+    "name": "求职申请表",
+    "description": "完整的申请：个人信息、应聘职位、简历上传、期望薪资和同意。"
+   },
+   "employee_onboarding": {
+    "name": "新员工入职",
+    "description": "新员工在入职前需提供的一切：个人信息、紧急联系人、设备和薪资发放。"
+   },
+   "exit_interview": {
+    "name": "离职面谈",
+    "description": "了解员工离职的原因以及什么能让他们留下，并对整体员工体验进行评分。"
+   },
+   "leave_request": {
+    "name": "请假申请",
+    "description": "申请休假，根据日期自动计算天数，并填写代理人和证明材料。"
+   },
+   "performance_review": {
+    "name": "绩效考核",
+    "description": "对六项能力进行评分；平均分和评级档次会自动计算。"
+   },
+   "engagement_survey": {
+    "name": "员工敬业度调查",
+    "description": "关于自豪感、使命感、成长和支持的匿名脉搏调查，附 0 至 100 的敬业度指数。"
+   },
+   "expense_reimbursement": {
+    "name": "费用报销",
+    "description": "附收据报销最多三笔费用；报销总额自动合计。"
+   },
+   "timesheet": {
+    "name": "工时表",
+    "description": "按天记录每周工时，显示合计以及相对合同工时的加班时长。"
+   },
+   "training_feedback": {
+    "name": "培训反馈",
+    "description": "对课程内容、讲师、资料和实用性进行评分，并附平均分。"
+   },
+   "reference_check": {
+    "name": "背景调查",
+    "description": "面向推荐人的结构化问题、带平均分的技能评分，以及是否愿意再次雇用的明确回答。"
+   },
+   "student_enrolment": {
+    "name": "学生报名 / 入学",
+    "description": "收集学生和监护人信息、所选课程、教育背景、证明材料及同意书。"
+   },
+   "course_evaluation": {
+    "name": "课程评价",
+    "description": "学生对六项陈述进行评分，总分反映课程的受欢迎程度。"
+   },
+   "quiz_assessment": {
+    "name": "测验 / 考核",
+    "description": "自动评分的选择题，显示得分率和及格线。"
+   },
+   "scholarship_application": {
+    "name": "奖学金申请",
+    "description": "学业成绩、经济需求和个人陈述，并为评审组提供资格评分。"
+   },
+   "permission_slip": {
+    "name": "家长同意书 / 许可单",
+    "description": "外出或活动许可，附健康备注、紧急联系人和监护人签名。"
+   },
+   "attendance_register": {
+    "name": "考勤登记",
+    "description": "最多标记八名学员出勤、迟到或缺勤，出勤人数和出勤率自动统计。"
+   },
+   "academic_survey": {
+    "name": "学业调查",
+    "description": "面向各阶段学生的简短调查，了解学习体验、支持与身心状况。"
+   },
+   "it_support_ticket": {
+    "name": "IT 支持工单",
+    "description": "报告 IT 问题；按影响 × 紧急程度确定优先级，让重要工单优先处理。"
+   },
+   "change_request": {
+    "name": "变更申请",
+    "description": "描述计划变更，根据影响和可能性计算风险分，并附回滚计划和审批。"
+   },
+   "asset_checkout": {
+    "name": "资产借用 / 盘点",
+    "description": "记录设备借出或归还，包括资产标签、状况、归还日期和签名。"
+   },
+   "work_order": {
+    "name": "维修 / 工单",
+    "description": "提交维修请求，附位置、优先级和照片；工时和配件得出作业成本。"
+   },
+   "purchase_requisition": {
+    "name": "采购申请",
+    "description": "最多申请四项物品并填写数量和价格，总额决定所需的审批级别。"
+   },
+   "vendor_registration": {
+    "name": "供应商注册",
+    "description": "收集公司信息、联系人、税务和银行信息（IBAN / SWIFT）及相关文件，用于供应商准入。"
+   },
+   "site_inspection": {
+    "name": "现场 / 实地检查报告",
+    "description": "现场合格 / 不合格检查，附合格率、结论、发现问题和照片。"
+   },
+   "proof_of_delivery": {
+    "name": "交付确认 / 签收证明",
+    "description": "确认到货内容、状况、照片和收货人签名；如有损坏需填写详情。"
+   },
+   "quality_control": {
+    "name": "质量控制检查表",
+    "description": "批次信息、合格 / 不合格标准和测量值，合格率决定是否放行。"
+   },
+   "loan_application": {
+    "name": "贷款 / 信贷申请",
+    "description": "申请人、就业和财务信息，并计算负债收入比和预估月供。"
+   },
+   "kyc_verification": {
+    "name": "KYC / 身份验证",
+    "description": "在明确用途并获得同意的前提下，收集身份信息、身份证件和地址证明。"
+   },
+   "invoice_submission": {
+    "name": "发票提交",
+    "description": "供应商提交含明细的发票，自动计算小计、税额和总额。"
+   },
+   "insurance_claim": {
+    "name": "保险理赔",
+    "description": "保单、事故、证据和逐项损失；录入各项时理赔总额随之累加。"
+   },
+   "nda_signoff": {
+    "name": "NDA / 协议签署",
+    "description": "展示协议，逐项确认要点后签署；代表公司签署时需填写公司信息。"
+   },
+   "risk_assessment": {
+    "name": "风险评估",
+    "description": "按可能性 × 严重程度为每项危害打分；自动算出风险等级，风险为中或高时显示行动计划。"
+   },
+   "incident_report": {
+    "name": "事件 / 事故报告",
+    "description": "记录发生了什么、谁受了伤以及采取的初步措施。严重事件会被标记以便紧急审查。"
+   },
+   "near_miss_report": {
+    "name": "未遂事件报告",
+    "description": "快速上报险情。根据潜在严重程度和复发可能确定优先级，让预防先行。"
+   },
+   "safety_inspection": {
+    "name": "安全检查清单",
+    "description": "通过 / 不通过检查项，附合规百分比和结果；不通过的项目需填写详情并上传照片。"
+   },
+   "patient_intake": {
+    "name": "患者登记",
+    "description": "新患者信息、就诊原因、疼痛程度、过敏情况，以及根据身高体重算出的 BMI。"
+   },
+   "medical_history": {
+    "name": "病史",
+    "description": "疾病、手术、用药、家族史和生活方式，并为临床医生统计病症数量。"
+   },
+   "health_screening": {
+    "name": "健康筛查 / 声明",
+    "description": "入场前的快速是 / 否筛查；任何一项回答“是”，都需先经审核才能进入。"
+   },
+   "consent_form": {
+    "name": "知情同意书",
+    "description": "清晰的同意声明并附签名；未满 18 岁者由父母或监护人签字。"
+   },
+   "event_registration": {
+    "name": "活动报名",
+    "description": "登记参会者的票种、数量和实时总额，以及场次和无障碍需求。"
+   },
+   "rsvp": {
+    "name": "出席回复",
+    "description": "简单的参加 / 不参加 / 待定回复，仅对参加者询问人数和饮食需求。"
+   },
+   "appointment_booking": {
+    "name": "预约服务",
+    "description": "按首选日期和时间预约服务，可填备选时间并接收提醒。"
+   },
+   "venue_booking": {
+    "name": "场地 / 会议室预订",
+    "description": "按小时预订房间并加选设备，费用随选择实时计算。"
+   },
+   "volunteer_signup": {
+    "name": "志愿者报名",
+    "description": "收集志愿者信息、兴趣和可用时间。未满 18 岁需监护人同意。"
+   },
+   "speaker_sponsor_application": {
+    "name": "演讲嘉宾 / 赞助商申请",
+    "description": "一张表单两用：演讲嘉宾提交议题，赞助商选择套餐和附加项并显示总额。"
+   },
+   "post_event_feedback": {
+    "name": "活动反馈",
+    "description": "对内容、嘉宾、场地和组织进行评分，给出平均分和推荐意愿。"
+   },
+   "guest_registration": {
+    "name": "住客登记表",
+    "description": "入住信息，并根据抵达和离开日期算出入住晚数。"
+   },
+   "hotel_booking_request": {
+    "name": "酒店预订申请",
+    "description": "根据日期、房型和房间数算出晚数和预估价格；还可填写附加服务和特殊要求。"
+   },
+   "guest_feedback": {
+    "name": "住客反馈表",
+    "description": "为清洁、舒适度、员工、餐饮和性价比打分，给出平均分和推荐意愿。"
+   },
+   "service_evaluation": {
+    "name": "服务评估表",
+    "description": "从四个方面评估某个部门或员工；服务得分以百分比显示。"
+   },
+   "special_requirements": {
+    "name": "特殊需求表",
+    "description": "饮食与无障碍需求、过敏情况和庆祝活动，在客人抵达前准备就绪。"
+   },
+   "event_catering_request": {
+    "name": "活动餐饮申请",
+    "description": "按人均菜单和附加项乘以宾客人数，立即得出估价。"
+   },
+   "restaurant_reservation": {
+    "name": "餐厅订位申请",
+    "description": "日期、时间、人数、座位和用餐场合：接待所需的一切信息。"
+   },
+   "hospitality_complaint": {
+    "name": "服务投诉表",
+    "description": "让客人说明哪里出了问题、在哪里，以及希望如何解决。"
+   },
+   "membership_application": {
+    "name": "会员申请",
+    "description": "加入俱乐部或协会：会员信息、会员级别、附加项目和年费。"
+   },
+   "donation_form": {
+    "name": "捐款表",
+    "description": "选择金额或自定义，按月或一次性捐款，可选择承担手续费。"
+   },
+   "petition": {
+    "name": "请愿书",
+    "description": "说明诉求，收集姓名和所在地，并让大家写下这件事对他们为何重要。"
+   },
+   "poll_ballot": {
+    "name": "投票 / 选票",
+    "description": "每人一票：一个问题加一项排序选择，可附评论。"
+   },
+   "property_viewing": {
+    "name": "看房预约",
+    "description": "预约看房：房源、两个偏好时间、到访人员及联系方式。"
+   },
+   "tenant_application": {
+    "name": "租客申请",
+    "description": "申请人、工作、收入和推荐人，并为房东计算收入与租金比。"
+   },
+   "rental_application": {
+    "name": "租房申请",
+    "description": "针对具体房源的简短申请：入住日期、租期、同住人员和支付能力。"
+   },
+   "property_inspection": {
+    "name": "房屋检查",
+    "description": "逐个房间记录状况（良好 / 一般 / 较差）、表计读数和照片，并给出状况评分。"
+   },
+   "property_maintenance": {
+    "name": "维修申请",
+    "description": "租客报修：位置、紧急程度、照片以及可上门的时间。"
+   },
+   "property_information": {
+    "name": "房源信息",
+    "description": "业主为挂牌描述房源：类型、面积、房间、配套、价格和照片。"
+   },
+   "landlord_information": {
+    "name": "房东信息",
+    "description": "联系方式、收款信息、对租客的要求以及维修负责人。"
+   },
+   "tenant_feedback": {
+    "name": "租客反馈",
+    "description": "租客为房屋、维修、沟通和性价比打分；平均分体现整体满意度。"
+   },
+   "sales_lead_capture": {
+    "name": "潜在客户收集",
+    "description": "姓名、公司、规模和意向。简短到可放在落地页上，并记录来源。"
+   },
+   "sales_quote_request": {
+    "name": "询价",
+    "description": "选择方案、席位和服务；系统为销售团队估算年度总价。"
+   },
+   "sales_qualification": {
+    "name": "销售线索评估",
+    "description": "为团队对预算、决策权、需求和时间打分，得出热 / 温 / 冷的结果。"
+   },
+   "demo_request": {
+    "name": "产品演示预约",
+    "description": "预约在线演示：参加人员、重点内容、时区和偏好时间。"
+   },
+   "customer_discovery": {
+    "name": "客户需求调研",
+    "description": "在提出方案前，了解目标、现有工具、痛点以及成功的标准。"
+   },
+   "proposal_request": {
+    "name": "方案申请",
+    "description": "范围、交付物、预算、截止日期和决策流程，用于定制方案。"
+   },
+   "order_request": {
+    "name": "订购申请",
+    "description": "企业客户按产品编码和数量下单，含批量折扣和订单总额。"
+   },
+   "sales_follow_up": {
+    "name": "销售跟进",
+    "description": "记录电话或会议：结果、商机阶段、下一步及日期。手机上也能快速填写。"
+   }
+  },
+  "categories": {
+   "business": "商业与客户",
+   "hr": "人力资源与职场",
+   "health_safety": "健康与安全",
+   "events": "活动与预订",
+   "hospitality": "酒店与餐饮",
+   "education": "教育",
+   "operations_it": "运营与 IT",
+   "finance_legal": "财务与法务",
+   "community": "社区及其他",
+   "real_estate": "房地产",
+   "sales": "销售"
+  }
+ },
+ "builder": {
+  "field": {
+   "short_text": "单行文本",
+   "long_text": "多行文本",
+   "rich_text": "富文本",
+   "email": "电子邮箱",
+   "phone": "电话",
+   "url": "网址 / URL",
+   "number": "数字",
+   "currency": "金额",
+   "date": "日期",
+   "time": "时间",
+   "datetime": "日期和时间",
+   "date_range": "日期范围",
+   "dropdown": "下拉列表",
+   "multi_select": "多选列表",
+   "radio": "单选",
+   "checkbox": "复选框",
+   "toggle": "是 / 否",
+   "ranking": "排序",
+   "matrix": "矩阵 / 表格",
+   "rating": "星级评分",
+   "scale": "量表 / NPS",
+   "slider": "滑块",
+   "file_upload": "文件上传",
+   "image_upload": "图片上传",
+   "signature": "签名",
+   "address": "地址",
+   "country": "国家/地区",
+   "hidden": "隐藏字段",
+   "calculated": "计算字段",
+   "payment": "付款",
+   "section": "分节",
+   "paragraph": "段落",
+   "divider": "分隔线",
+   "image": "图片",
+   "full_name": "全名",
+   "percentage": "百分比",
+   "duration": "时长",
+   "consent": "同意 / 条款",
+   "language": "语言",
+   "timezone": "时区",
+   "currency_code": "货币",
+   "ip_address": "IP 地址",
+   "domain": "域名",
+   "mac_address": "MAC 地址",
+   "color": "颜色",
+   "iban": "IBAN",
+   "bic": "SWIFT / BIC"
+  },
+  "defaults": {
+   "option": "选项 {n}",
+   "row": "行 {n}"
+  },
+  "page": {
+   "default": "第 {n} 页",
+   "tabs": "页面",
+   "add": "添加页面",
+   "menu": "页面选项",
+   "moveLeft": "左移页面",
+   "moveRight": "右移页面",
+   "delete": "删除页面",
+   "deleteTitle": "删除此页面？",
+   "deleteDesc": "其中的 {count} 个字段也会被删除，可以撤销。 | 其中的 {count} 个字段也会被删除，可以撤销。",
+   "stepOf": "第 {n} 步，共 {total} 步",
+   "title": "页面名称",
+   "rename": "重命名页面"
+  }
+ }
+}

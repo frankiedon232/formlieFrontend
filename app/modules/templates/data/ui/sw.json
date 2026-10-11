@@ -1,0 +1,424 @@
+{
+ "templates": {
+  "items": {
+   "customer_feedback": {
+    "name": "Maoni ya Wateja",
+    "description": "Sikia wateja wanavyofikiri kuhusu huduma yako, pamoja na swali la ufuatiliaji mtu asiporidhika."
+   },
+   "csat_nps": {
+    "name": "Utafiti wa Kuridhika kwa Wateja (CSAT / NPS)",
+    "description": "Pima kuridhika (CSAT), juhudi na uaminifu (NPS). Kila jibu linapangwa kama mtetezi, wa kati au mkosoaji."
+   },
+   "product_review": {
+    "name": "Tathmini ya Bidhaa",
+    "description": "Kusanya tathmini za kina za bidhaa zenye nyota, wastani wa alama, picha na idhini ya kuchapisha."
+   },
+   "contact_lead": {
+    "name": "Fomu ya Mawasiliano / Maulizo",
+    "description": "Fomu rahisi na ya kirafiki ya mawasiliano inayoelekeza kila ulizo kulingana na mada."
+   },
+   "quote_request": {
+    "name": "Ombi la Bei / Makadirio",
+    "description": "Wateja wanaandaa ombi lao na kuona makadirio ya awali kulingana na kifurushi, nyongeza na idadi."
+   },
+   "order_form": {
+    "name": "Fomu ya Oda",
+    "description": "Pokea oda zenye hadi mistari mitatu ya bidhaa, chaguo la usafirishaji na jumla inayojisasisha."
+   },
+   "complaint_dispute": {
+    "name": "Fomu ya Malalamiko / Mzozo",
+    "description": "Rekodi malalamiko na mizozo pamoja na ushahidi, matokeo yanayotakiwa na mawasiliano ya awali."
+   },
+   "service_request": {
+    "name": "Ombi la Huduma",
+    "description": "Panga ziara ya huduma kwa kipaumbele, muda unaopendelewa na picha za tatizo."
+   },
+   "lead_capture_newsletter": {
+    "name": "Kukusanya Wateja Watarajiwa / Kujisajili kwa Jarida",
+    "description": "Kuza orodha yako ukiwa na idhini, mambo yanayowavutia na ufuatiliaji wa kampeni vilivyojengwa ndani."
+   },
+   "return_refund": {
+    "name": "Ombi la Kurejesha Bidhaa / Fedha",
+    "description": "Shughulikia urejeshaji kwa sababu, picha, matokeo yanayotakiwa na kiasi cha marejesho kilichokokotolewa."
+   },
+   "job_application": {
+    "name": "Maombi ya Kazi",
+    "description": "Maombi kamili: taarifa binafsi, nafasi, kupakia CV, matarajio ya mshahara na idhini."
+   },
+   "employee_onboarding": {
+    "name": "Kumkaribisha Mfanyakazi Mpya",
+    "description": "Kila kitu mfanyakazi mpya hushiriki kabla ya siku ya kwanza: taarifa, mtu wa dharura, vifaa na malipo."
+   },
+   "exit_interview": {
+    "name": "Mahojiano ya Kuondoka Kazini",
+    "description": "Jua kwa nini watu wanaondoka na nini kingewabakiza, kwa tathmini za uzoefu mzima wa mfanyakazi."
+   },
+   "leave_request": {
+    "name": "Ombi la Likizo",
+    "description": "Omba likizo huku idadi ya siku ikikokotolewa kutoka tarehe, pamoja na mbadala na nyaraka za kuunga mkono."
+   },
+   "performance_review": {
+    "name": "Tathmini ya Utendaji Kazi",
+    "description": "Pima umahiri sita; wastani wa alama na kiwango cha tathmini vinakokotolewa kwa ajili yako."
+   },
+   "engagement_survey": {
+    "name": "Utafiti wa Ushiriki wa Wafanyakazi",
+    "description": "Utafiti mfupi usio na majina kuhusu fahari, kusudi, ukuaji na usaidizi, pamoja na fahirisi ya ushiriki kutoka 0 hadi 100."
+   },
+   "expense_reimbursement": {
+    "name": "Kurejeshewa Gharama",
+    "description": "Dai hadi gharama tatu pamoja na risiti; jumla ya dai inajumlishwa yenyewe."
+   },
+   "timesheet": {
+    "name": "Jedwali la Saa za Kazi",
+    "description": "Saa za kila siku za wiki pamoja na jumla na saa za ziada ikilinganishwa na saa za mkataba."
+   },
+   "training_feedback": {
+    "name": "Maoni ya Mafunzo",
+    "description": "Pima maudhui, mkufunzi, nyenzo na umuhimu wa kozi, pamoja na wastani wa alama."
+   },
+   "reference_check": {
+    "name": "Uhakiki wa Wadhamini",
+    "description": "Maswali yaliyopangwa kwa wadhamini, ujuzi uliopimwa wenye wastani na jibu wazi kuhusu kumwajiri tena."
+   },
+   "student_enrolment": {
+    "name": "Usajili / Udahili wa Wanafunzi",
+    "description": "Taarifa za mwanafunzi na mlezi, programu iliyochaguliwa, elimu ya awali, nyaraka na idhini."
+   },
+   "course_evaluation": {
+    "name": "Tathmini ya Kozi",
+    "description": "Wanafunzi wanakadiria kozi kwa kauli sita; alama ya jumla inaonyesha jinsi kozi inavyopokelewa."
+   },
+   "quiz_assessment": {
+    "name": "Jaribio / Tathmini",
+    "description": "Maswali ya kuchagua yanayosahihishwa kiotomatiki, yenye asilimia na alama ya kufaulu."
+   },
+   "scholarship_application": {
+    "name": "Ombi la Ufadhili wa Masomo",
+    "description": "Rekodi ya kitaaluma, hitaji la kifedha na maelezo binafsi, pamoja na alama ya ustahiki kwa jopo."
+   },
+   "permission_slip": {
+    "name": "Idhini ya Mzazi / Fomu ya Ruhusa",
+    "description": "Ruhusa ya safari au shughuli pamoja na maelezo ya kiafya, mawasiliano ya dharura na sahihi ya mlezi."
+   },
+   "attendance_register": {
+    "name": "Daftari la Mahudhurio",
+    "description": "Weka alama kwa hadi wanafunzi wanane kama wapo, wamechelewa au hawapo; idadi na kiwango cha mahudhurio hujumlishwa kiotomatiki."
+   },
+   "academic_survey": {
+    "name": "Utafiti wa Kitaaluma",
+    "description": "Utafiti mfupi kuhusu uzoefu wa masomo, msaada na ustawi kwa wanafunzi wa ngazi yoyote."
+   },
+   "it_support_ticket": {
+    "name": "Tiketi ya Msaada wa IT",
+    "description": "Ripoti tatizo la IT; athari × uharaka huweka kipaumbele ili tiketi muhimu zishughulikiwe kwanza."
+   },
+   "change_request": {
+    "name": "Ombi la Mabadiliko",
+    "description": "Eleza mabadiliko yaliyopangwa pamoja na alama ya hatari kutokana na athari na uwezekano, mpango wa kurejesha na idhini."
+   },
+   "asset_checkout": {
+    "name": "Utoaji wa Mali / Orodha ya Mali",
+    "description": "Rekodi utoaji au urejeshaji wa vifaa pamoja na lebo ya mali, hali, tarehe ya kurejesha na sahihi."
+   },
+   "work_order": {
+    "name": "Matengenezo / Agizo la Kazi",
+    "description": "Omba matengenezo pamoja na mahali, kipaumbele na picha; saa na vipuri hutoa gharama ya kazi."
+   },
+   "purchase_requisition": {
+    "name": "Ombi la Ununuzi",
+    "description": "Omba hadi bidhaa nne pamoja na idadi na bei; jumla huamua idhini inayohitajika."
+   },
+   "vendor_registration": {
+    "name": "Usajili wa Muuzaji / Msambazaji",
+    "description": "Kampuni, watu wa mawasiliano, taarifa za kodi na benki (IBAN / SWIFT) na nyaraka za kusajili wasambazaji."
+   },
+   "site_inspection": {
+    "name": "Ripoti ya Ukaguzi wa Eneo / Uwandani",
+    "description": "Ukaguzi wa kufaulu / kushindwa eneo la kazi pamoja na kiwango cha kufaulu, matokeo, matokeo ya uchunguzi na picha."
+   },
+   "proof_of_delivery": {
+    "name": "Uthibitisho wa Uwasilishaji / Ushahidi wa Kupokea",
+    "description": "Thibitisha kilichofika, hali yake, picha na sahihi ya mpokeaji. Uharibifu huomba maelezo zaidi."
+   },
+   "quality_control": {
+    "name": "Orodha ya Ukaguzi wa Ubora",
+    "description": "Taarifa za bechi, vigezo vya kufaulu / kushindwa na vipimo; kiwango cha kufaulu hutoa uamuzi wa kuachilia."
+   },
+   "loan_application": {
+    "name": "Ombi la Mkopo / Mikopo",
+    "description": "Mwombaji, ajira na fedha, pamoja na uwiano wa deni kwa mapato na makadirio ya malipo ya kila mwezi."
+   },
+   "kyc_verification": {
+    "name": "KYC / Uthibitishaji wa Utambulisho",
+    "description": "Taarifa za utambulisho, hati ya utambulisho na uthibitisho wa anwani, kwa madhumuni wazi na idhini."
+   },
+   "invoice_submission": {
+    "name": "Uwasilishaji wa Ankara",
+    "description": "Wasambazaji huwasilisha ankara yenye bidhaa; jumla ndogo, kodi na jumla kuu hukokotolewa."
+   },
+   "insurance_claim": {
+    "name": "Dai la Bima",
+    "description": "Sera, tukio, ushahidi na hasara kwa kila kipengele; jumla ya dai huongezeka kadri vipengele vinavyoingizwa."
+   },
+   "nda_signoff": {
+    "name": "NDA / Kusaini Makubaliano",
+    "description": "Onyesha makubaliano, thibitisha kila hoja kuu na usaini, pamoja na taarifa za kampuni unaposaini kwa niaba yake."
+   },
+   "risk_assessment": {
+    "name": "Tathmini ya Hatari",
+    "description": "Pima kila hatari kwa uwezekano × ukubwa; kiwango cha hatari kinakokotolewa na mpango wa hatua unaonekana hatari ikiwa ya wastani au ya juu."
+   },
+   "incident_report": {
+    "name": "Ripoti ya Tukio / Ajali",
+    "description": "Rekodi kilichotokea, aliyeumia na hatua za kwanza zilizochukuliwa. Matukio makubwa yanawekewa alama kwa ukaguzi wa haraka."
+   },
+   "near_miss_report": {
+    "name": "Ripoti ya Karibu Ajali",
+    "description": "Ripoti matukio ya karibu ajali haraka. Ukubwa unaowezekana na kujirudia hutoa kipaumbele ili kinga ije kwanza."
+   },
+   "safety_inspection": {
+    "name": "Orodha ya Ukaguzi wa Usalama",
+    "description": "Ukaguzi wa imepita / imeshindwa wenye asilimia ya utiifu na matokeo; ukaguzi ulioshindwa huomba maelezo na picha."
+   },
+   "patient_intake": {
+    "name": "Usajili wa Mgonjwa",
+    "description": "Taarifa za mgonjwa mpya, sababu ya kuja, kiwango cha maumivu, mzio na BMI inayokokotolewa kutoka urefu na uzito."
+   },
+   "medical_history": {
+    "name": "Historia ya Matibabu",
+    "description": "Magonjwa, upasuaji, dawa, historia ya familia na mtindo wa maisha, pamoja na idadi ya magonjwa kwa mtaalamu wa afya."
+   },
+   "health_screening": {
+    "name": "Uchunguzi / Tamko la Afya",
+    "description": "Uchunguzi wa haraka wa ndiyo / hapana kabla ya kuingia; \"ndiyo\" yoyote humpeleka mtu kukaguliwa kabla ya kuingia."
+   },
+   "consent_form": {
+    "name": "Fomu ya Idhini",
+    "description": "Kauli za idhini zilizo wazi pamoja na sahihi; mzazi au mlezi husaini kwa yeyote aliye chini ya miaka 18."
+   },
+   "event_registration": {
+    "name": "Usajili wa Tukio",
+    "description": "Sajili washiriki kwa aina ya tiketi, idadi na jumla inayosasishwa, vipindi na mahitaji ya ufikiaji."
+   },
+   "rsvp": {
+    "name": "Uthibitisho wa Kuhudhuria",
+    "description": "Majibu rahisi ya ndiyo / hapana / labda, pamoja na idadi ya watu na mahitaji ya chakula kwa wanaokuja tu."
+   },
+   "appointment_booking": {
+    "name": "Kuweka Miadi",
+    "description": "Weka huduma kwa tarehe na saa unayopendelea, pamoja na chaguo la pili na vikumbusho."
+   },
+   "venue_booking": {
+    "name": "Kuhifadhi Ukumbi / Chumba",
+    "description": "Hifadhi chumba kwa saa pamoja na vifaa vya ziada; gharama inakokotolewa unapochagua."
+   },
+   "volunteer_signup": {
+    "name": "Usajili wa Wajitolea",
+    "description": "Kusanya wajitolea, mambo wanayopenda na upatikanaji wao, kwa idhini ya mlezi kwa walio chini ya miaka 18."
+   },
+   "speaker_sponsor_application": {
+    "name": "Ombi la Mzungumzaji / Mfadhili",
+    "description": "Fomu moja kwa wote: wazungumzaji wanapendekeza kipindi, wafadhili wanachagua kifurushi na ziada pamoja na jumla."
+   },
+   "post_event_feedback": {
+    "name": "Maoni Baada ya Tukio",
+    "description": "Alama za maudhui, wazungumzaji, ukumbi na uandaaji pamoja na wastani na pendekezo."
+   },
+   "guest_registration": {
+    "name": "Fomu ya Usajili wa Mgeni",
+    "description": "Taarifa za kuingia pamoja na idadi ya usiku inayokokotolewa kutoka kuwasili na kuondoka."
+   },
+   "hotel_booking_request": {
+    "name": "Ombi la Kuhifadhi Hoteli",
+    "description": "Tarehe, aina na idadi ya vyumba hutoa usiku na bei inayokadiriwa; pia ziada na maombi maalum."
+   },
+   "guest_feedback": {
+    "name": "Fomu ya Maoni ya Mgeni",
+    "description": "Pima usafi, starehe, wafanyakazi, chakula na thamani kwa wastani na pendekezo."
+   },
+   "service_evaluation": {
+    "name": "Fomu ya Tathmini ya Huduma",
+    "description": "Tathmini idara au mfanyakazi kwa sifa nne; alama ya huduma inaonyeshwa kwa asilimia."
+   },
+   "special_requirements": {
+    "name": "Fomu ya Mahitaji Maalum",
+    "description": "Mahitaji ya chakula na ufikiaji, mzio na sherehe, ili kila kitu kiwe tayari kabla ya kuwasili."
+   },
+   "event_catering_request": {
+    "name": "Ombi la Huduma ya Chakula kwa Tukio",
+    "description": "Menyu na ziada kwa kila mtu mara idadi ya wageni hutoa makadirio papo hapo."
+   },
+   "restaurant_reservation": {
+    "name": "Kuhifadhi Meza ya Mgahawa",
+    "description": "Tarehe, saa, idadi ya watu, mahali pa kukaa na tukio: kila kitu mwenyeji anachohitaji."
+   },
+   "hospitality_complaint": {
+    "name": "Fomu ya Malalamiko ya Huduma",
+    "description": "Waache wageni waeleze kilichoharibika, wapi na jinsi wangependa kirekebishwe."
+   },
+   "membership_application": {
+    "name": "Ombi la Uanachama",
+    "description": "Jiunge na klabu au chama: taarifa za mwanachama, kiwango cha uanachama, nyongeza na ada ya mwaka."
+   },
+   "donation_form": {
+    "name": "Fomu ya Mchango",
+    "description": "Kiasi kilichopendekezwa (au chako), kila mwezi au mara moja, na chaguo la kulipia ada ya muamala."
+   },
+   "petition": {
+    "name": "Ombi la Pamoja",
+    "description": "Eleza lengo, kusanya majina na maeneo, na waache watu waseme kwa nini jambo hili ni muhimu kwao."
+   },
+   "poll_ballot": {
+    "name": "Kura ya Maoni / Karatasi ya Kura",
+    "description": "Kura moja kwa kila mtu kwenye swali na chaguo kwa mpangilio, pamoja na maoni ya hiari."
+   },
+   "property_viewing": {
+    "name": "Ombi la Kuona Nyumba",
+    "description": "Panga kuona nyumba: mali husika, nyakati mbili unazopendelea, nani anakuja na jinsi ya kuwafikia."
+   },
+   "tenant_application": {
+    "name": "Ombi la Mpangaji",
+    "description": "Mwombaji, ajira, kipato na wadhamini, pamoja na uwiano wa kipato na kodi kwa mwenye nyumba."
+   },
+   "rental_application": {
+    "name": "Ombi la Kupanga",
+    "description": "Ombi fupi kwa tangazo mahususi: tarehe ya kuhamia, muda, kaya na uwezo wa kulipa."
+   },
+   "property_inspection": {
+    "name": "Ukaguzi wa Nyumba",
+    "description": "Hali ya kila chumba (nzuri / wastani / mbaya), usomaji wa mita na picha, pamoja na alama ya hali."
+   },
+   "property_maintenance": {
+    "name": "Ombi la Matengenezo",
+    "description": "Wapangaji huripoti tatizo pamoja na eneo, uharaka, picha na lini mtu anaweza kuja."
+   },
+   "property_information": {
+    "name": "Taarifa za Nyumba",
+    "description": "Wamiliki huelezea nyumba kwa ajili ya tangazo: aina, ukubwa, vyumba, sifa, bei na picha."
+   },
+   "landlord_information": {
+    "name": "Taarifa za Mwenye Nyumba",
+    "description": "Mawasiliano, taarifa za malipo, mapendeleo kuhusu wapangaji na nani anashughulikia matengenezo."
+   },
+   "tenant_feedback": {
+    "name": "Maoni ya Mpangaji",
+    "description": "Wapangaji hupima nyumba, matengenezo, mawasiliano na thamani; wastani huonyesha kuridhika kwa jumla."
+   },
+   "sales_lead_capture": {
+    "name": "Kukusanya Wateja Watarajiwa",
+    "description": "Jina, kampuni, ukubwa na hamu. Fupi kwa ukurasa wa kutua, na chanzo kinafuatiliwa."
+   },
+   "sales_quote_request": {
+    "name": "Ombi la Bei",
+    "description": "Chagua mpango, idadi ya watumiaji na huduma; jumla ya makadirio ya mwaka hukokotolewa kwa timu ya mauzo."
+   },
+   "sales_qualification": {
+    "name": "Tathmini ya Mauzo",
+    "description": "Bajeti, mamlaka, hitaji na muda hupimwa kwa timu, na matokeo ya moto / vuguvugu / baridi."
+   },
+   "demo_request": {
+    "name": "Ombi la Maonyesho ya Bidhaa",
+    "description": "Panga maonyesho ya moja kwa moja: nani atahudhuria, kipaumbele, saa za eneo na nyakati unazopendelea."
+   },
+   "customer_discovery": {
+    "name": "Kuelewa Mahitaji ya Mteja",
+    "description": "Elewa malengo, zana za sasa, changamoto na mafanikio yanavyoonekana kabla ya kupendekeza."
+   },
+   "proposal_request": {
+    "name": "Ombi la Pendekezo",
+    "description": "Wigo, matokeo, bajeti, tarehe ya mwisho na mchakato wa uamuzi kwa pendekezo maalum."
+   },
+   "order_request": {
+    "name": "Ombi la Oda",
+    "description": "Wateja wa jumla huagiza kwa msimbo wa bidhaa na idadi, na punguzo la wingi na jumla ya oda."
+   },
+   "sales_follow_up": {
+    "name": "Ufuatiliaji wa Mauzo",
+    "description": "Rekodi simu au mkutano: matokeo, hatua ya mauzo, hatua inayofuata na tarehe yake. Haraka hata kwa simu."
+   }
+  },
+  "categories": {
+   "business": "Biashara na wateja",
+   "hr": "Rasilimali watu na kazini",
+   "health_safety": "Afya na usalama",
+   "events": "Matukio na uhifadhi",
+   "hospitality": "Ukarimu",
+   "education": "Elimu",
+   "operations_it": "Uendeshaji na TEHAMA",
+   "finance_legal": "Fedha na sheria",
+   "community": "Jamii na mengineyo",
+   "real_estate": "Mali isiyohamishika",
+   "sales": "Mauzo"
+  }
+ },
+ "builder": {
+  "field": {
+   "short_text": "Maandishi mafupi",
+   "long_text": "Maandishi marefu",
+   "rich_text": "Maandishi yaliyopangwa",
+   "email": "Barua pepe",
+   "phone": "Simu",
+   "url": "Tovuti / URL",
+   "number": "Namba",
+   "currency": "Kiasi",
+   "date": "Tarehe",
+   "time": "Saa",
+   "datetime": "Tarehe na saa",
+   "date_range": "Kipindi cha tarehe",
+   "dropdown": "Orodha kunjuzi",
+   "multi_select": "Chaguo nyingi",
+   "radio": "Chaguo moja",
+   "checkbox": "Visanduku vya kuteua",
+   "toggle": "Ndiyo / Hapana",
+   "ranking": "Mpangilio",
+   "matrix": "Jedwali la chaguo",
+   "rating": "Ukadiriaji wa nyota",
+   "scale": "Kipimo / NPS",
+   "slider": "Kitelezi",
+   "file_upload": "Pakia faili",
+   "image_upload": "Pakia picha",
+   "signature": "Sahihi",
+   "address": "Anwani",
+   "country": "Nchi",
+   "hidden": "Sehemu iliyofichwa",
+   "calculated": "Inayokokotolewa",
+   "payment": "Malipo",
+   "section": "Sehemu kuu",
+   "paragraph": "Aya",
+   "divider": "Kitenganishi",
+   "image": "Picha",
+   "full_name": "Jina kamili",
+   "percentage": "Asilimia",
+   "duration": "Muda",
+   "consent": "Idhini / masharti",
+   "language": "Lugha",
+   "timezone": "Saa za eneo",
+   "currency_code": "Sarafu",
+   "ip_address": "Anwani ya IP",
+   "domain": "Jina la kikoa",
+   "mac_address": "Anwani ya MAC",
+   "color": "Rangi",
+   "iban": "IBAN",
+   "bic": "SWIFT / BIC"
+  },
+  "defaults": {
+   "option": "Chaguo {n}",
+   "row": "Safu {n}"
+  },
+  "page": {
+   "default": "Ukurasa {n}",
+   "tabs": "Kurasa",
+   "add": "Ongeza ukurasa",
+   "menu": "Chaguo za ukurasa",
+   "moveLeft": "Sogeza kushoto",
+   "moveRight": "Sogeza kulia",
+   "delete": "Futa ukurasa",
+   "deleteTitle": "Futa ukurasa huu?",
+   "deleteDesc": "Sehemu yake {count} pia itafutwa. Unaweza kutendua. | Sehemu zake {count} pia zitafutwa. Unaweza kutendua.",
+   "stepOf": "Hatua {n} kati ya {total}",
+   "title": "Jina la ukurasa",
+   "rename": "Badilisha jina la ukurasa"
+  }
+ }
+}

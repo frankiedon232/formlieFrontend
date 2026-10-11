@@ -1,0 +1,424 @@
+{
+ "templates": {
+  "items": {
+   "customer_feedback": {
+    "name": "Customer Feedback",
+    "description": "Hear what customers think of your service, with a follow-up when someone is unhappy."
+   },
+   "csat_nps": {
+    "name": "Customer Satisfaction (CSAT / NPS) Survey",
+    "description": "Measure satisfaction (CSAT), effort and loyalty (NPS). Each answer is grouped as promoter, passive or detractor."
+   },
+   "product_review": {
+    "name": "Product Review",
+    "description": "Collect detailed product reviews with star ratings, an average score, photos and publishing consent."
+   },
+   "contact_lead": {
+    "name": "Contact / Inquiry Form",
+    "description": "A simple, friendly contact form that routes each inquiry by topic."
+   },
+   "quote_request": {
+    "name": "Quote / Estimate Request",
+    "description": "Let customers build a request and see an indicative estimate from package, add-ons and quantity."
+   },
+   "order_form": {
+    "name": "Order Form",
+    "description": "Take orders with up to three product lines, delivery choice and a running total."
+   },
+   "complaint_dispute": {
+    "name": "Complaint / Dispute Form",
+    "description": "Record complaints and disputes with evidence, the outcome wanted and earlier contact."
+   },
+   "service_request": {
+    "name": "Service Request",
+    "description": "Book a service visit with priority, preferred time and photos of the problem."
+   },
+   "lead_capture_newsletter": {
+    "name": "Lead Capture / Newsletter Signup",
+    "description": "Grow your list with consent, interests and campaign tracking built in."
+   },
+   "return_refund": {
+    "name": "Return / Refund Request",
+    "description": "Handle returns with the reason, photos, the outcome wanted and the refund amount worked out."
+   },
+   "job_application": {
+    "name": "Job Application",
+    "description": "A complete application: personal details, the role, CV upload, salary expectation and consent."
+   },
+   "employee_onboarding": {
+    "name": "Employee Onboarding",
+    "description": "Everything a new starter shares before day one: details, emergency contact, equipment and payment."
+   },
+   "exit_interview": {
+    "name": "Exit Interview",
+    "description": "Learn why people leave and what would make them stay, with ratings across the employee experience."
+   },
+   "leave_request": {
+    "name": "Leave / Time-Off Request",
+    "description": "Request leave with the number of days worked out from the dates, cover and supporting documents."
+   },
+   "performance_review": {
+    "name": "Performance Review / Appraisal",
+    "description": "Rate six competencies; the average score and rating band are calculated for you."
+   },
+   "engagement_survey": {
+    "name": "Employee Engagement Survey",
+    "description": "An anonymous pulse on pride, purpose, growth and support, with an engagement index from 0 to 100."
+   },
+   "expense_reimbursement": {
+    "name": "Expense Reimbursement",
+    "description": "Claim up to three expenses with receipts; the claim total adds itself up."
+   },
+   "timesheet": {
+    "name": "Timesheet",
+    "description": "Weekly hours per day with total and overtime against contracted hours."
+   },
+   "training_feedback": {
+    "name": "Training Feedback",
+    "description": "Rate the content, trainer, materials and relevance of a course, with an average score."
+   },
+   "reference_check": {
+    "name": "Reference Check",
+    "description": "Structured questions for referees, rated skills with an average and a clear hire-again answer."
+   },
+   "risk_assessment": {
+    "name": "Risk Assessment",
+    "description": "Score each hazard by likelihood × severity; the risk level is worked out and an action plan appears when the risk is medium or high."
+   },
+   "incident_report": {
+    "name": "Incident / Accident Report",
+    "description": "Record what happened, who was hurt and the first actions taken. Serious incidents are flagged for urgent review."
+   },
+   "near_miss_report": {
+    "name": "Near-Miss Report",
+    "description": "Report close calls quickly. Potential severity and recurrence give a priority so prevention comes first."
+   },
+   "safety_inspection": {
+    "name": "Safety Inspection Checklist",
+    "description": "Pass / fail checks with a compliance percentage and result; failed checks ask for details and photos."
+   },
+   "patient_intake": {
+    "name": "Patient Intake",
+    "description": "New-patient details, reason for visit, pain level, allergies and BMI worked out from height and weight."
+   },
+   "medical_history": {
+    "name": "Medical History",
+    "description": "Conditions, operations, medicines, family history and lifestyle, with a count of conditions for the clinician."
+   },
+   "health_screening": {
+    "name": "Health Screening / Declaration",
+    "description": "A quick yes / no screening before entry; any \"yes\" refers the person for review before they go in."
+   },
+   "consent_form": {
+    "name": "Consent Form",
+    "description": "Clear consent statements with signature; a parent or guardian signs for anyone under 18."
+   },
+   "event_registration": {
+    "name": "Event Registration",
+    "description": "Register attendees with ticket type, quantity and a running total, sessions and access needs."
+   },
+   "rsvp": {
+    "name": "RSVP",
+    "description": "Simple yes / no / maybe replies with party size and dietary needs only for those coming."
+   },
+   "appointment_booking": {
+    "name": "Appointment Booking",
+    "description": "Book a service on a preferred date and time, with a second choice and reminders."
+   },
+   "venue_booking": {
+    "name": "Venue / Room Reservation",
+    "description": "Reserve a room by the hour with equipment add-ons and a cost worked out as you choose."
+   },
+   "volunteer_signup": {
+    "name": "Volunteer Signup",
+    "description": "Collect volunteers, their interests and availability, with guardian consent for under-18s."
+   },
+   "speaker_sponsor_application": {
+    "name": "Speaker / Sponsor Application",
+    "description": "One form for both: speakers propose a session, sponsors pick a package and add-ons with a total."
+   },
+   "post_event_feedback": {
+    "name": "Post-Event Feedback",
+    "description": "Ratings for content, speakers, venue and organisation with an average score and a recommendation."
+   },
+   "guest_registration": {
+    "name": "Guest Registration Form",
+    "description": "Check-in details with the number of nights worked out from arrival and departure."
+   },
+   "hotel_booking_request": {
+    "name": "Hotel Booking Request Form",
+    "description": "Dates, room type and rooms give the nights and an estimated price; extras and special requests too."
+   },
+   "guest_feedback": {
+    "name": "Guest Feedback Form",
+    "description": "Rate cleanliness, comfort, staff, food and value with an average and a recommendation."
+   },
+   "service_evaluation": {
+    "name": "Service Evaluation Form",
+    "description": "Evaluate a department or team member on four qualities; the service score is shown as a percentage."
+   },
+   "special_requirements": {
+    "name": "Special Requirements Form",
+    "description": "Dietary and access needs, allergies and celebrations, so the stay is ready before arrival."
+   },
+   "event_catering_request": {
+    "name": "Event Catering Request",
+    "description": "Menu and extras per head times the number of guests give an estimate straight away."
+   },
+   "restaurant_reservation": {
+    "name": "Restaurant Reservation Request",
+    "description": "Date, time, party size, seating and the occasion: everything the host needs."
+   },
+   "hospitality_complaint": {
+    "name": "Hospitality Complaint Form",
+    "description": "Let guests tell you what went wrong, where and how they would like it put right."
+   },
+   "student_enrolment": {
+    "name": "Student Enrolment / Admission",
+    "description": "Student and guardian details, programme choice, previous education, documents and consent."
+   },
+   "course_evaluation": {
+    "name": "Course Evaluation",
+    "description": "Students rate the course on six statements; an overall score shows how the course is landing."
+   },
+   "quiz_assessment": {
+    "name": "Quiz / Assessment",
+    "description": "Multiple-choice questions scored automatically, with a percentage and a pass mark."
+   },
+   "scholarship_application": {
+    "name": "Scholarship Application",
+    "description": "Academic record, financial need and a personal statement, with an eligibility score for the panel."
+   },
+   "permission_slip": {
+    "name": "Parent Consent / Permission Slip",
+    "description": "Permission for a trip or activity with medical notes, emergency contact and a guardian signature."
+   },
+   "attendance_register": {
+    "name": "Attendance Register",
+    "description": "Mark up to eight learners present, late or absent; the present count and rate add up automatically."
+   },
+   "academic_survey": {
+    "name": "Academic Survey",
+    "description": "A short survey on study experience, support and wellbeing for students of any level."
+   },
+   "it_support_ticket": {
+    "name": "IT Support Ticket",
+    "description": "Report an IT problem; impact × urgency sets the priority so the right tickets go first."
+   },
+   "change_request": {
+    "name": "Change Request",
+    "description": "Describe a planned change with a risk score from impact and likelihood, a rollback plan and approval."
+   },
+   "asset_checkout": {
+    "name": "Asset Check-out / Inventory",
+    "description": "Check equipment in or out with asset tag, condition, return date and signature."
+   },
+   "work_order": {
+    "name": "Maintenance / Work Order",
+    "description": "Request maintenance with location, priority and photos; hours and parts give the job cost."
+   },
+   "purchase_requisition": {
+    "name": "Purchase Requisition",
+    "description": "Request up to four items with quantity and price; the total decides which approval is needed."
+   },
+   "vendor_registration": {
+    "name": "Vendor / Supplier Registration",
+    "description": "Company, contacts, tax and bank details (IBAN / SWIFT) and documents for supplier onboarding."
+   },
+   "site_inspection": {
+    "name": "Site / Field Inspection Report",
+    "description": "On-site pass / fail checks with a pass rate, an outcome, findings and photos."
+   },
+   "proof_of_delivery": {
+    "name": "Delivery Confirmation / Proof of Delivery",
+    "description": "Confirm what arrived, its condition, a photo and the receiver’s signature. Damage asks for details."
+   },
+   "quality_control": {
+    "name": "Quality Control Checklist",
+    "description": "Batch details, pass / fail criteria and measurements; the pass rate gives a release decision."
+   },
+   "loan_application": {
+    "name": "Loan / Credit Application",
+    "description": "Applicant, employment and finances, with a debt-to-income ratio and an estimated monthly payment."
+   },
+   "kyc_verification": {
+    "name": "KYC / Identity Verification",
+    "description": "Identity details, ID document and proof of address, with clear purpose and consent."
+   },
+   "invoice_submission": {
+    "name": "Invoice Submission",
+    "description": "Suppliers submit an invoice with line items; subtotal, tax and total are worked out."
+   },
+   "insurance_claim": {
+    "name": "Insurance Claim",
+    "description": "Policy, incident, evidence and itemised losses; the claim total adds up as items are entered."
+   },
+   "nda_signoff": {
+    "name": "NDA / Agreement Sign-off",
+    "description": "Show the agreement, confirm each key point and sign, with company details when signing for one."
+   },
+   "membership_application": {
+    "name": "Membership Application",
+    "description": "Join a club or association: member details, membership level, extras and the yearly fee."
+   },
+   "donation_form": {
+    "name": "Donation Form",
+    "description": "A gift amount (or your own), monthly or once, with an option to cover the processing fee."
+   },
+   "petition": {
+    "name": "Petition",
+    "description": "State the cause, collect names and locations, and let people say why it matters to them."
+   },
+   "poll_ballot": {
+    "name": "Poll / Voting Ballot",
+    "description": "One vote per person on a question and a ranked choice, with an optional comment."
+   },
+   "property_viewing": {
+    "name": "Property Viewing Request",
+    "description": "Book a viewing: the property, two preferred times, who is coming and how to reach them."
+   },
+   "tenant_application": {
+    "name": "Tenant Application",
+    "description": "Applicant, employment, income and references, with an income-to-rent ratio for the landlord."
+   },
+   "rental_application": {
+    "name": "Rental Application",
+    "description": "A shorter application for a specific listing: move-in date, term, household and affordability."
+   },
+   "property_inspection": {
+    "name": "Property Inspection",
+    "description": "Room-by-room condition (good / fair / poor), meter readings and photos, with a condition score."
+   },
+   "property_maintenance": {
+    "name": "Maintenance Request",
+    "description": "Tenants report a repair with the area, urgency, photos and when someone can come in."
+   },
+   "property_information": {
+    "name": "Property Information",
+    "description": "Owners describe a property for listing: type, size, rooms, features, price and photos."
+   },
+   "landlord_information": {
+    "name": "Landlord Information",
+    "description": "Landlord contact, payment details, preferences for tenants and who handles repairs."
+   },
+   "tenant_feedback": {
+    "name": "Tenant Feedback",
+    "description": "Tenants rate the home, repairs, communication and value; an average shows overall satisfaction."
+   },
+   "sales_lead_capture": {
+    "name": "Lead Capture",
+    "description": "Name, company, size and interest. Short enough for a landing page, with the source tracked."
+   },
+   "sales_quote_request": {
+    "name": "Quote Request",
+    "description": "Pick a plan, seats and services; an indicative yearly total is worked out for the sales team."
+   },
+   "sales_qualification": {
+    "name": "Sales Qualification",
+    "description": "Budget, authority, need and timing scored for the team, with a hot / warm / cold result."
+   },
+   "demo_request": {
+    "name": "Product Demo Request",
+    "description": "Book a live demo: who is attending, what to focus on, time zone and preferred times."
+   },
+   "customer_discovery": {
+    "name": "Customer Discovery",
+    "description": "Understand goals, current tools, pain points and what success looks like before proposing."
+   },
+   "proposal_request": {
+    "name": "Proposal Request",
+    "description": "Scope, deliverables, budget, deadline and decision process for a tailored proposal."
+   },
+   "order_request": {
+    "name": "Order Request",
+    "description": "Trade customers order by product code and quantity, with a volume discount and order total."
+   },
+   "sales_follow_up": {
+    "name": "Sales Follow-up",
+    "description": "Log a call or meeting: outcome, deal stage, next step and its date. Quick enough for phones."
+   }
+  },
+  "categories": {
+   "business": "Business & customer",
+   "hr": "HR & workplace",
+   "health_safety": "Health & safety",
+   "events": "Events & bookings",
+   "hospitality": "Hospitality",
+   "education": "Education",
+   "operations_it": "Operations & IT",
+   "finance_legal": "Finance & legal",
+   "community": "Community & other",
+   "real_estate": "Real estate",
+   "sales": "Sales"
+  }
+ },
+ "builder": {
+  "field": {
+   "short_text": "Short text",
+   "long_text": "Long text",
+   "rich_text": "Rich text",
+   "email": "Email",
+   "phone": "Phone",
+   "url": "Website / URL",
+   "number": "Number",
+   "currency": "Amount",
+   "date": "Date",
+   "time": "Time",
+   "datetime": "Date & time",
+   "date_range": "Date range",
+   "dropdown": "Dropdown",
+   "multi_select": "Multi-select",
+   "radio": "Single choice",
+   "checkbox": "Checkboxes",
+   "toggle": "Yes / No",
+   "ranking": "Ranking",
+   "matrix": "Matrix / grid",
+   "rating": "Star rating",
+   "scale": "Scale / NPS",
+   "slider": "Slider",
+   "file_upload": "File upload",
+   "image_upload": "Image upload",
+   "signature": "Signature",
+   "address": "Address",
+   "country": "Country",
+   "hidden": "Hidden field",
+   "calculated": "Calculated",
+   "payment": "Payment",
+   "section": "Section",
+   "paragraph": "Paragraph",
+   "divider": "Divider",
+   "image": "Image",
+   "full_name": "Full name",
+   "percentage": "Percentage",
+   "duration": "Duration",
+   "consent": "Consent / terms",
+   "language": "Language",
+   "timezone": "Time zone",
+   "currency_code": "Currency",
+   "ip_address": "IP address",
+   "domain": "Domain name",
+   "mac_address": "MAC address",
+   "color": "Colour",
+   "iban": "IBAN",
+   "bic": "SWIFT / BIC"
+  },
+  "defaults": {
+   "option": "Option {n}",
+   "row": "Row {n}"
+  },
+  "page": {
+   "default": "Page {n}",
+   "tabs": "Pages",
+   "add": "Add page",
+   "menu": "Page options",
+   "moveLeft": "Move page left",
+   "moveRight": "Move page right",
+   "delete": "Delete page",
+   "deleteTitle": "Delete this page?",
+   "deleteDesc": "Its {count} field is deleted too. You can undo this. | Its {count} fields are deleted too. You can undo this.",
+   "stepOf": "Step {n} of {total}",
+   "title": "Page name",
+   "rename": "Rename page"
+  }
+ }
+}

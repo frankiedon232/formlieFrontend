@@ -1,0 +1,424 @@
+{
+ "templates": {
+  "items": {
+   "customer_feedback": {
+    "name": "Klantfeedback",
+    "description": "Ontdek wat klanten van je service vinden, met een vervolgvraag als iemand ontevreden is."
+   },
+   "csat_nps": {
+    "name": "Klanttevredenheidsonderzoek (CSAT / NPS)",
+    "description": "Meet tevredenheid (CSAT), inspanning en loyaliteit (NPS). Elk antwoord wordt ingedeeld als promotor, passief of criticaster."
+   },
+   "product_review": {
+    "name": "Productbeoordeling",
+    "description": "Verzamel uitgebreide productbeoordelingen met sterren, een gemiddelde score, foto’s en toestemming voor publicatie."
+   },
+   "contact_lead": {
+    "name": "Contact- / informatieformulier",
+    "description": "Een eenvoudig, vriendelijk contactformulier dat elke vraag op onderwerp doorstuurt."
+   },
+   "quote_request": {
+    "name": "Offerteaanvraag",
+    "description": "Klanten stellen hun aanvraag samen en zien een indicatieve prijs op basis van pakket, extra’s en aantal."
+   },
+   "order_form": {
+    "name": "Bestelformulier",
+    "description": "Neem bestellingen op met maximaal drie productregels, bezorgkeuze en een lopend totaal."
+   },
+   "complaint_dispute": {
+    "name": "Klachten- / geschillenformulier",
+    "description": "Leg klachten en geschillen vast met bewijs, de gewenste uitkomst en eerder contact."
+   },
+   "service_request": {
+    "name": "Serviceaanvraag",
+    "description": "Plan een servicebezoek met prioriteit, voorkeurstijd en foto’s van het probleem."
+   },
+   "lead_capture_newsletter": {
+    "name": "Leads verzamelen / aanmelding nieuwsbrief",
+    "description": "Laat je lijst groeien met ingebouwde toestemming, interesses en campagnetracking."
+   },
+   "return_refund": {
+    "name": "Retour- / terugbetalingsverzoek",
+    "description": "Verwerk retouren met de reden, foto’s, de gewenste uitkomst en het berekende terugbetalingsbedrag."
+   },
+   "job_application": {
+    "name": "Sollicitatie",
+    "description": "Een complete sollicitatie: persoonlijke gegevens, functie, cv-upload, salarisindicatie en toestemming."
+   },
+   "employee_onboarding": {
+    "name": "Onboarding van medewerkers",
+    "description": "Alles wat een nieuwe medewerker vóór de eerste dag doorgeeft: gegevens, noodcontact, uitrusting en betaling."
+   },
+   "exit_interview": {
+    "name": "Exitgesprek",
+    "description": "Ontdek waarom mensen vertrekken en wat hen zou laten blijven, met beoordelingen van de hele medewerkerservaring."
+   },
+   "leave_request": {
+    "name": "Verlofaanvraag",
+    "description": "Vraag verlof aan. Het aantal dagen wordt berekend uit de data, met vervanging en onderbouwende documenten."
+   },
+   "performance_review": {
+    "name": "Beoordelingsgesprek",
+    "description": "Beoordeel zes competenties; de gemiddelde score en beoordelingsklasse worden voor je berekend."
+   },
+   "engagement_survey": {
+    "name": "Medewerkersbetrokkenheidsonderzoek",
+    "description": "Een anonieme pulsmeting over trots, zingeving, groei en steun, met een betrokkenheidsindex van 0 tot 100."
+   },
+   "expense_reimbursement": {
+    "name": "Onkostendeclaratie",
+    "description": "Declareer tot drie uitgaven met bonnetjes; het totaal wordt automatisch opgeteld."
+   },
+   "timesheet": {
+    "name": "Urenregistratie",
+    "description": "Wekelijkse uren per dag met totaal en overuren ten opzichte van de contracturen."
+   },
+   "training_feedback": {
+    "name": "Trainingsevaluatie",
+    "description": "Beoordeel de inhoud, trainer, materialen en relevantie van een cursus, met een gemiddelde score."
+   },
+   "reference_check": {
+    "name": "Referentiecheck",
+    "description": "Gestructureerde vragen voor referenten, beoordeelde vaardigheden met een gemiddelde en een duidelijk antwoord over opnieuw aannemen."
+   },
+   "student_enrolment": {
+    "name": "Inschrijving / Toelating studenten",
+    "description": "Gegevens van student en ouder/voogd, gekozen opleiding, eerdere opleiding, documenten en toestemming."
+   },
+   "course_evaluation": {
+    "name": "Cursusevaluatie",
+    "description": "Studenten beoordelen de cursus op zes stellingen; een totaalscore laat zien hoe de cursus valt."
+   },
+   "quiz_assessment": {
+    "name": "Quiz / Toets",
+    "description": "Meerkeuzevragen die automatisch worden nagekeken, met percentage en slaaggrens."
+   },
+   "scholarship_application": {
+    "name": "Beursaanvraag",
+    "description": "Studieresultaten, financiële behoefte en een motivatie, met een geschiktheidsscore voor de commissie."
+   },
+   "permission_slip": {
+    "name": "Toestemmingsformulier ouders",
+    "description": "Toestemming voor een uitstap of activiteit met medische info, noodcontact en handtekening van ouder/voogd."
+   },
+   "attendance_register": {
+    "name": "Presentielijst",
+    "description": "Markeer tot acht deelnemers als aanwezig, te laat of afwezig; aantal en percentage worden automatisch berekend."
+   },
+   "academic_survey": {
+    "name": "Onderwijsenquête",
+    "description": "Een korte enquête over studie-ervaring, begeleiding en welzijn voor studenten van elk niveau."
+   },
+   "it_support_ticket": {
+    "name": "IT-supportticket",
+    "description": "Meld een IT-probleem; impact × urgentie bepaalt de prioriteit, zodat de juiste tickets eerst gaan."
+   },
+   "change_request": {
+    "name": "Wijzigingsverzoek",
+    "description": "Beschrijf een geplande wijziging met een risicoscore uit impact en kans, een rollbackplan en goedkeuring."
+   },
+   "asset_checkout": {
+    "name": "Uitlenen middelen / Inventaris",
+    "description": "Registreer uitgifte of inname van apparatuur met assettag, staat, retourdatum en handtekening."
+   },
+   "work_order": {
+    "name": "Onderhoud / Werkorder",
+    "description": "Vraag onderhoud aan met locatie, prioriteit en foto’s; uren en onderdelen bepalen de kosten."
+   },
+   "purchase_requisition": {
+    "name": "Inkoopaanvraag",
+    "description": "Vraag tot vier artikelen aan met aantal en prijs; het totaal bepaalt welke goedkeuring nodig is."
+   },
+   "vendor_registration": {
+    "name": "Registratie leverancier",
+    "description": "Bedrijf, contactpersonen, fiscale en bankgegevens (IBAN / SWIFT) en documenten voor het onboarden van leveranciers."
+   },
+   "site_inspection": {
+    "name": "Inspectierapport locatie / veld",
+    "description": "Goed/fout-controles ter plaatse met slagingspercentage, uitkomst, bevindingen en foto’s."
+   },
+   "proof_of_delivery": {
+    "name": "Leveringsbevestiging / Afleverbewijs",
+    "description": "Bevestig wat er is aangekomen, de staat, een foto en de handtekening van de ontvanger. Bij schade worden details gevraagd."
+   },
+   "quality_control": {
+    "name": "Checklist kwaliteitscontrole",
+    "description": "Batchgegevens, goed/fout-criteria en metingen; het slagingspercentage bepaalt of de batch wordt vrijgegeven."
+   },
+   "loan_application": {
+    "name": "Lening- / Kredietaanvraag",
+    "description": "Aanvrager, werk en financiën, met schuld-inkomenratio en een geschat maandbedrag."
+   },
+   "kyc_verification": {
+    "name": "KYC / Identiteitsverificatie",
+    "description": "Identiteitsgegevens, identiteitsbewijs en adresbewijs, met een duidelijk doel en toestemming."
+   },
+   "invoice_submission": {
+    "name": "Factuur indienen",
+    "description": "Leveranciers dienen een factuur met regels in; subtotaal, btw en totaal worden berekend."
+   },
+   "insurance_claim": {
+    "name": "Schadeclaim",
+    "description": "Polis, incident, bewijs en gespecificeerde schade; het totaal loopt op terwijl je posten invoert."
+   },
+   "nda_signoff": {
+    "name": "NDA / Overeenkomst ondertekenen",
+    "description": "Toon de overeenkomst, bevestig elk kernpunt en teken. Met bedrijfsgegevens als je namens een bedrijf tekent."
+   },
+   "risk_assessment": {
+    "name": "Risicobeoordeling",
+    "description": "Beoordeel elk gevaar op kans × ernst; het risiconiveau wordt berekend en bij een gemiddeld of hoog risico verschijnt een actieplan."
+   },
+   "incident_report": {
+    "name": "Incident- / ongevalsrapport",
+    "description": "Leg vast wat er gebeurde, wie gewond raakte en welke eerste acties zijn genomen. Ernstige incidenten worden gemarkeerd voor spoedige beoordeling."
+   },
+   "near_miss_report": {
+    "name": "Bijna-ongevalmelding",
+    "description": "Meld bijna-ongevallen snel. Mogelijke ernst en herhaling bepalen de prioriteit, zodat preventie voorop staat."
+   },
+   "safety_inspection": {
+    "name": "Checklist veiligheidsinspectie",
+    "description": "Goed/fout-controles met een nalevingspercentage en uitslag; bij afgekeurde punten vraag je om details en foto's."
+   },
+   "patient_intake": {
+    "name": "Patiëntintake",
+    "description": "Gegevens van nieuwe patiënten, reden van bezoek, pijnniveau, allergieën en BMI berekend uit lengte en gewicht."
+   },
+   "medical_history": {
+    "name": "Medische voorgeschiedenis",
+    "description": "Aandoeningen, operaties, medicijnen, familiegeschiedenis en leefstijl, met het aantal aandoeningen voor de zorgverlener."
+   },
+   "health_screening": {
+    "name": "Gezondheidscheck / -verklaring",
+    "description": "Een snelle ja/nee-check vooraf; bij een 'ja' wordt de persoon eerst beoordeeld voordat hij of zij naar binnen gaat."
+   },
+   "consent_form": {
+    "name": "Toestemmingsformulier",
+    "description": "Duidelijke toestemmingsverklaringen met handtekening; een ouder of voogd tekent voor iedereen onder de 18."
+   },
+   "event_registration": {
+    "name": "Evenementregistratie",
+    "description": "Registreer deelnemers met tickettype, aantal en een lopend totaal, sessies en toegankelijkheidsbehoeften."
+   },
+   "rsvp": {
+    "name": "RSVP",
+    "description": "Eenvoudige antwoorden ja/nee/misschien, met groepsgrootte en dieetwensen alleen voor wie komt."
+   },
+   "appointment_booking": {
+    "name": "Afspraak boeken",
+    "description": "Boek een dienst op een gewenste datum en tijd, met een tweede keus en herinneringen."
+   },
+   "venue_booking": {
+    "name": "Locatie- / zaalreservering",
+    "description": "Reserveer een zaal per uur met extra apparatuur; de kosten worden berekend terwijl je kiest."
+   },
+   "volunteer_signup": {
+    "name": "Aanmelding vrijwilligers",
+    "description": "Verzamel vrijwilligers, hun interesses en beschikbaarheid, met toestemming van een voogd voor minderjarigen."
+   },
+   "speaker_sponsor_application": {
+    "name": "Aanmelding spreker / sponsor",
+    "description": "Eén formulier voor beide: sprekers stellen een sessie voor, sponsors kiezen een pakket en extra's met een totaal."
+   },
+   "post_event_feedback": {
+    "name": "Feedback na evenement",
+    "description": "Beoordelingen voor inhoud, sprekers, locatie en organisatie met een gemiddelde score en een aanbeveling."
+   },
+   "guest_registration": {
+    "name": "Gastregistratieformulier",
+    "description": "Incheckgegevens met het aantal nachten berekend uit aankomst en vertrek."
+   },
+   "hotel_booking_request": {
+    "name": "Aanvraag hotelboeking",
+    "description": "Data, kamertype en aantal kamers geven de nachten en een geschatte prijs; ook extra's en speciale wensen."
+   },
+   "guest_feedback": {
+    "name": "Gastfeedbackformulier",
+    "description": "Beoordeel netheid, comfort, personeel, eten en prijs-kwaliteit met een gemiddelde en een aanbeveling."
+   },
+   "service_evaluation": {
+    "name": "Evaluatie dienstverlening",
+    "description": "Beoordeel een afdeling of medewerker op vier kwaliteiten; de servicescore wordt als percentage getoond."
+   },
+   "special_requirements": {
+    "name": "Formulier speciale wensen",
+    "description": "Dieet- en toegankelijkheidswensen, allergieën en feestelijke gelegenheden, zodat alles klaarstaat vóór aankomst."
+   },
+   "event_catering_request": {
+    "name": "Cateringaanvraag evenement",
+    "description": "Menu en extra's per persoon maal het aantal gasten geven direct een schatting."
+   },
+   "restaurant_reservation": {
+    "name": "Restaurantreservering",
+    "description": "Datum, tijd, groepsgrootte, zitplaats en gelegenheid: alles wat de gastheer nodig heeft."
+   },
+   "hospitality_complaint": {
+    "name": "Klachtenformulier gastvrijheid",
+    "description": "Laat gasten vertellen wat er misging, waar, en hoe ze het graag opgelost zien."
+   },
+   "membership_application": {
+    "name": "Lidmaatschapsaanvraag",
+    "description": "Word lid van een club of vereniging: gegevens, type lidmaatschap, extra's en de jaarlijkse contributie."
+   },
+   "donation_form": {
+    "name": "Donatieformulier",
+    "description": "Een vast of eigen bedrag, maandelijks of eenmalig, met de optie om de transactiekosten te dekken."
+   },
+   "petition": {
+    "name": "Petitie",
+    "description": "Beschrijf het doel, verzamel namen en woonplaatsen en laat mensen vertellen waarom het voor hen telt."
+   },
+   "poll_ballot": {
+    "name": "Peiling / Stembiljet",
+    "description": "Eén stem per persoon op een vraag en een rangschikking, met een optionele opmerking."
+   },
+   "property_viewing": {
+    "name": "Aanvraag bezichtiging",
+    "description": "Plan een bezichtiging: de woning, twee voorkeurstijden, wie er komt en hoe je diegene bereikt."
+   },
+   "tenant_application": {
+    "name": "Huurdersaanvraag",
+    "description": "Aanvrager, werk, inkomen en referenties, met een verhouding inkomen-huur voor de verhuurder."
+   },
+   "rental_application": {
+    "name": "Huuraanvraag",
+    "description": "Een kortere aanvraag voor een specifieke woning: ingangsdatum, looptijd, huishouden en betaalbaarheid."
+   },
+   "property_inspection": {
+    "name": "Woninginspectie",
+    "description": "Staat per kamer (goed / redelijk / slecht), meterstanden en foto's, met een conditiescore."
+   },
+   "property_maintenance": {
+    "name": "Onderhoudsverzoek",
+    "description": "Huurders melden een reparatie met ruimte, urgentie, foto's en wanneer iemand langs kan komen."
+   },
+   "property_information": {
+    "name": "Woninginformatie",
+    "description": "Eigenaren beschrijven een woning voor de advertentie: type, oppervlakte, kamers, kenmerken, prijs en foto's."
+   },
+   "landlord_information": {
+    "name": "Gegevens verhuurder",
+    "description": "Contactgegevens, betaalgegevens, voorkeuren voor huurders en wie reparaties regelt."
+   },
+   "tenant_feedback": {
+    "name": "Huurdersfeedback",
+    "description": "Huurders beoordelen woning, reparaties, communicatie en prijs-kwaliteit; een gemiddelde toont de tevredenheid."
+   },
+   "sales_lead_capture": {
+    "name": "Leads verzamelen",
+    "description": "Naam, bedrijf, omvang en interesse: kort genoeg voor een landingspagina, met de bron bijgehouden."
+   },
+   "sales_quote_request": {
+    "name": "Offerteaanvraag",
+    "description": "Kies een abonnement, gebruikers en diensten; er wordt een indicatief jaartotaal berekend voor het salesteam."
+   },
+   "sales_qualification": {
+    "name": "Salesqualificatie",
+    "description": "Budget, beslissingsbevoegdheid, behoefte en timing gescoord voor het team, met een uitkomst heet / warm / koud."
+   },
+   "demo_request": {
+    "name": "Productdemo aanvragen",
+    "description": "Plan een live demo: wie er meedoet, waar de focus ligt, tijdzone en voorkeurstijden."
+   },
+   "customer_discovery": {
+    "name": "Klantverkenning",
+    "description": "Breng doelen, huidige tools, knelpunten en succescriteria in kaart voordat je een voorstel doet."
+   },
+   "proposal_request": {
+    "name": "Voorstel aanvragen",
+    "description": "Scope, opleveringen, budget, deadline en besluitvorming voor een voorstel op maat."
+   },
+   "order_request": {
+    "name": "Bestelaanvraag",
+    "description": "Zakelijke klanten bestellen op productcode en aantal, met staffelkorting en ordertotaal."
+   },
+   "sales_follow_up": {
+    "name": "Sales-opvolging",
+    "description": "Leg een gesprek of afspraak vast: resultaat, dealfase, volgende stap en datum. Snel genoeg voor mobiel."
+   }
+  },
+  "categories": {
+   "business": "Zakelijk & klanten",
+   "hr": "HR & werkplek",
+   "health_safety": "Gezondheid & veiligheid",
+   "events": "Evenementen & boekingen",
+   "hospitality": "Horeca",
+   "education": "Onderwijs",
+   "operations_it": "Operaties & IT",
+   "finance_legal": "Financiën & juridisch",
+   "community": "Gemeenschap & overig",
+   "real_estate": "Vastgoed",
+   "sales": "Verkoop"
+  }
+ },
+ "builder": {
+  "field": {
+   "short_text": "Korte tekst",
+   "long_text": "Lange tekst",
+   "rich_text": "Opgemaakte tekst",
+   "email": "E-mail",
+   "phone": "Telefoon",
+   "url": "Website / URL",
+   "number": "Getal",
+   "currency": "Bedrag",
+   "date": "Datum",
+   "time": "Tijd",
+   "datetime": "Datum en tijd",
+   "date_range": "Periode",
+   "dropdown": "Keuzelijst",
+   "multi_select": "Meerkeuze",
+   "radio": "Eén keuze",
+   "checkbox": "Selectievakjes",
+   "toggle": "Ja / Nee",
+   "ranking": "Rangschikking",
+   "matrix": "Matrix / raster",
+   "rating": "Sterrenbeoordeling",
+   "scale": "Schaal / NPS",
+   "slider": "Schuifregelaar",
+   "file_upload": "Bestand uploaden",
+   "image_upload": "Afbeelding uploaden",
+   "signature": "Handtekening",
+   "address": "Adres",
+   "country": "Land",
+   "hidden": "Verborgen veld",
+   "calculated": "Berekend",
+   "payment": "Betaling",
+   "section": "Sectie",
+   "paragraph": "Alinea",
+   "divider": "Scheidingslijn",
+   "image": "Afbeelding",
+   "full_name": "Volledige naam",
+   "percentage": "Percentage",
+   "duration": "Duur",
+   "consent": "Toestemming / voorwaarden",
+   "language": "Taal",
+   "timezone": "Tijdzone",
+   "currency_code": "Valuta",
+   "ip_address": "IP-adres",
+   "domain": "Domeinnaam",
+   "mac_address": "MAC-adres",
+   "color": "Kleur",
+   "iban": "IBAN",
+   "bic": "SWIFT / BIC"
+  },
+  "defaults": {
+   "option": "Optie {n}",
+   "row": "Rij {n}"
+  },
+  "page": {
+   "default": "Pagina {n}",
+   "tabs": "Pagina’s",
+   "add": "Pagina toevoegen",
+   "menu": "Pagina-opties",
+   "moveLeft": "Naar links",
+   "moveRight": "Naar rechts",
+   "delete": "Pagina verwijderen",
+   "deleteTitle": "Deze pagina verwijderen?",
+   "deleteDesc": "Het veld ({count}) wordt ook verwijderd. Je kunt dit ongedaan maken. | De {count} velden worden ook verwijderd. Je kunt dit ongedaan maken.",
+   "stepOf": "Stap {n} van {total}",
+   "title": "Paginanaam",
+   "rename": "Pagina hernoemen"
+  }
+ }
+}

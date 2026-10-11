@@ -93,6 +93,14 @@ async def seed_org(session: AsyncSession, ws: dict) -> int:
     return len(DEPARTMENTS) + len(JOB_TITLES)
 
 
+async def seed_lists(session: AsyncSession, ws: dict) -> int:
+    """Formalie's sample lists (the mock gives them to every seeded workspace)."""
+    from app.modules.lists.samples import seed_sample_lists
+
+    await set_rls_context(session, ws["id"], ws["org"], None)
+    return await seed_sample_lists(session, ws["id"], ws["org"])
+
+
 async def seed(database: str) -> None:
     settings = get_settings()
     if settings.is_production:
@@ -106,7 +114,9 @@ async def seed(database: str) -> None:
                 exists = (await session.execute(text("SELECT 1 FROM platform.tenants WHERE id = :id"), {"id": ws["id"]})).first()
                 if exists:
                     added = await seed_org(session, ws) if ws["subdomain"] in ORG_SAMPLES else 0
-                    print(f"  {ws['subdomain']}: already there" + (f" (added {added} departments and job titles)" if added else ""))
+                    lists = await seed_lists(session, ws)
+                    extra = [f"{added} departments and job titles"] * bool(added) + [f"{lists} sample lists"] * bool(lists)
+                    print(f"  {ws['subdomain']}: already there" + (f" (added {', '.join(extra)})" if extra else ""))
                     continue
                 people = [u for u in USERS if u[1] == ws["subdomain"]]
                 founder_row = people[0] if people else None
@@ -126,6 +136,7 @@ async def seed(database: str) -> None:
                                      password_hash=password_hash, password_changed_at=now, joined_at=now))
                 if ws["subdomain"] in ORG_SAMPLES:
                     await seed_org(session, ws)
+                await seed_lists(session, ws)
                 if ws["status"] != "active":
                     await session.execute(text("UPDATE platform.tenants SET status = :s WHERE id = :id"),
                                           {"s": ws["status"], "id": ws["id"]})

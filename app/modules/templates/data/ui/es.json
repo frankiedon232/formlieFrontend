@@ -1,0 +1,424 @@
+{
+ "templates": {
+  "items": {
+   "customer_feedback": {
+    "name": "Opiniones de clientes",
+    "description": "Descubre qué piensan los clientes de tu servicio, con un seguimiento cuando alguien no está satisfecho."
+   },
+   "csat_nps": {
+    "name": "Encuesta de satisfacción del cliente (CSAT / NPS)",
+    "description": "Mida la satisfacción (CSAT), el esfuerzo y la lealtad (NPS): cada respuesta se clasifica como promotor, pasivo o detractor."
+   },
+   "product_review": {
+    "name": "Reseña de producto",
+    "description": "Recopile reseñas detalladas con valoración por estrellas, puntuación media, fotos y consentimiento de publicación."
+   },
+   "contact_lead": {
+    "name": "Formulario de contacto / consulta",
+    "description": "Un formulario de contacto sencillo y cercano que dirige cada consulta según el tema."
+   },
+   "quote_request": {
+    "name": "Solicitud de presupuesto",
+    "description": "Los clientes arman su solicitud y ven un presupuesto orientativo según el paquete, los extras y la cantidad."
+   },
+   "order_form": {
+    "name": "Formulario de pedido",
+    "description": "Reciba pedidos con hasta tres líneas de producto, opción de entrega y total acumulado."
+   },
+   "complaint_dispute": {
+    "name": "Formulario de reclamación / disputa",
+    "description": "Registre reclamaciones y disputas con pruebas, la solución deseada y los contactos previos."
+   },
+   "service_request": {
+    "name": "Solicitud de servicio",
+    "description": "Reserve una visita técnica con prioridad, horario preferido y fotos del problema."
+   },
+   "lead_capture_newsletter": {
+    "name": "Captación de leads / suscripción al boletín",
+    "description": "Haz crecer tu lista con consentimiento, intereses y seguimiento de campañas integrados."
+   },
+   "return_refund": {
+    "name": "Solicitud de devolución / reembolso",
+    "description": "Gestione devoluciones con el motivo, fotos, la solución deseada y el importe del reembolso calculado."
+   },
+   "job_application": {
+    "name": "Solicitud de empleo",
+    "description": "Una solicitud completa: datos personales, puesto, carga del CV, expectativa salarial y consentimiento."
+   },
+   "employee_onboarding": {
+    "name": "Incorporación de empleados",
+    "description": "Todo lo que comparte una nueva incorporación antes del primer día: datos, contacto de emergencia, equipo y pago."
+   },
+   "exit_interview": {
+    "name": "Entrevista de salida",
+    "description": "Descubra por qué se van las personas y qué las haría quedarse, con valoraciones de toda la experiencia del empleado."
+   },
+   "leave_request": {
+    "name": "Solicitud de vacaciones / permiso",
+    "description": "Solicite un permiso con los días calculados a partir de las fechas, sustituto y documentos justificativos."
+   },
+   "performance_review": {
+    "name": "Evaluación del desempeño",
+    "description": "Valore seis competencias; la puntuación media y el nivel de desempeño se calculan automáticamente."
+   },
+   "engagement_survey": {
+    "name": "Encuesta de compromiso de los empleados",
+    "description": "Un pulso anónimo sobre orgullo, propósito, crecimiento y apoyo, con un índice de compromiso de 0 a 100."
+   },
+   "expense_reimbursement": {
+    "name": "Reembolso de gastos",
+    "description": "Declare hasta tres gastos con recibos; el total se suma automáticamente."
+   },
+   "timesheet": {
+    "name": "Hoja de horas",
+    "description": "Horas semanales por día con total y horas extra respecto a las horas contratadas."
+   },
+   "training_feedback": {
+    "name": "Evaluación de la formación",
+    "description": "Valore el contenido, el formador, los materiales y la utilidad de un curso, con una puntuación media."
+   },
+   "reference_check": {
+    "name": "Verificación de referencias",
+    "description": "Preguntas estructuradas para referencias, habilidades valoradas con una media y una respuesta clara sobre volver a contratar."
+   },
+   "student_enrolment": {
+    "name": "Matrícula / Admisión de estudiantes",
+    "description": "Datos del estudiante y del tutor, programa elegido, estudios previos, documentos y consentimiento."
+   },
+   "course_evaluation": {
+    "name": "Evaluación del curso",
+    "description": "Los estudiantes valoran el curso en seis afirmaciones; una puntuación global muestra cómo se está recibiendo."
+   },
+   "quiz_assessment": {
+    "name": "Cuestionario / Evaluación",
+    "description": "Preguntas de opción múltiple corregidas automáticamente, con porcentaje y nota mínima para aprobar."
+   },
+   "scholarship_application": {
+    "name": "Solicitud de beca",
+    "description": "Expediente académico, necesidad económica y carta de motivación, con una puntuación de elegibilidad para el comité."
+   },
+   "permission_slip": {
+    "name": "Autorización / Consentimiento de los padres",
+    "description": "Permiso para una excursión o actividad con notas médicas, contacto de emergencia y firma del tutor."
+   },
+   "attendance_register": {
+    "name": "Registro de asistencia",
+    "description": "Marca hasta ocho estudiantes como presentes, con retraso o ausentes; el total y el porcentaje se calculan solos."
+   },
+   "academic_survey": {
+    "name": "Encuesta académica",
+    "description": "Encuesta breve sobre la experiencia de estudio, el apoyo y el bienestar para estudiantes de cualquier nivel."
+   },
+   "it_support_ticket": {
+    "name": "Ticket de soporte de IT",
+    "description": "Informa de un problema de IT; impacto × urgencia fija la prioridad para atender primero lo importante."
+   },
+   "change_request": {
+    "name": "Solicitud de cambio",
+    "description": "Describe un cambio previsto con una puntuación de riesgo según impacto y probabilidad, plan de reversión y aprobación."
+   },
+   "asset_checkout": {
+    "name": "Préstamo de equipos / Inventario",
+    "description": "Registra la entrega o devolución de equipos con etiqueta de activo, estado, fecha de devolución y firma."
+   },
+   "work_order": {
+    "name": "Mantenimiento / Orden de trabajo",
+    "description": "Solicita mantenimiento con ubicación, prioridad y fotos; las horas y los repuestos dan el coste del trabajo."
+   },
+   "purchase_requisition": {
+    "name": "Solicitud de compra",
+    "description": "Pide hasta cuatro artículos con cantidad y precio; el total determina qué aprobación se necesita."
+   },
+   "vendor_registration": {
+    "name": "Registro de proveedores",
+    "description": "Empresa, contactos, datos fiscales y bancarios (IBAN / SWIFT) y documentos para dar de alta proveedores."
+   },
+   "site_inspection": {
+    "name": "Informe de inspección de sitio / campo",
+    "description": "Comprobaciones apto / no apto in situ con tasa de aprobación, resultado, hallazgos y fotos."
+   },
+   "proof_of_delivery": {
+    "name": "Confirmación / Comprobante de entrega",
+    "description": "Confirma qué llegó, en qué estado, con foto y firma del receptor; si hay daños, se piden detalles."
+   },
+   "quality_control": {
+    "name": "Lista de control de calidad",
+    "description": "Datos del lote, criterios apto / no apto y mediciones; la tasa de aprobación indica si se libera."
+   },
+   "loan_application": {
+    "name": "Solicitud de préstamo / crédito",
+    "description": "Solicitante, empleo y finanzas, con ratio de endeudamiento y cuota mensual estimada."
+   },
+   "kyc_verification": {
+    "name": "KYC / Verificación de identidad",
+    "description": "Datos de identidad, documento de identidad y comprobante de domicilio, con finalidad clara y consentimiento."
+   },
+   "invoice_submission": {
+    "name": "Envío de facturas",
+    "description": "Los proveedores envían una factura con sus líneas; se calculan subtotal, impuestos y total."
+   },
+   "insurance_claim": {
+    "name": "Reclamación de seguro",
+    "description": "Póliza, incidente, pruebas y pérdidas detalladas; el total de la reclamación se actualiza con cada partida."
+   },
+   "nda_signoff": {
+    "name": "NDA / Firma de acuerdo",
+    "description": "Muestra el acuerdo, confirma cada punto clave y firma, con los datos de la empresa si firmas en su nombre."
+   },
+   "risk_assessment": {
+    "name": "Evaluación de riesgos",
+    "description": "Puntúa cada peligro por probabilidad × gravedad; el nivel de riesgo se calcula solo y aparece un plan de acción si el riesgo es medio o alto."
+   },
+   "incident_report": {
+    "name": "Informe de incidente / accidente",
+    "description": "Registra qué pasó, quién resultó herido y las primeras medidas tomadas; los incidentes graves se marcan para revisión urgente."
+   },
+   "near_miss_report": {
+    "name": "Informe de casi accidente",
+    "description": "Informa rápido de los casi accidentes: la gravedad potencial y la repetición fijan una prioridad para que la prevención vaya primero."
+   },
+   "safety_inspection": {
+    "name": "Lista de inspección de seguridad",
+    "description": "Controles de apto / no apto con porcentaje de cumplimiento y resultado; los controles no superados piden detalles y fotos."
+   },
+   "patient_intake": {
+    "name": "Admisión de pacientes",
+    "description": "Datos del nuevo paciente, motivo de la visita, nivel de dolor, alergias e IMC calculado a partir de la altura y el peso."
+   },
+   "medical_history": {
+    "name": "Historial médico",
+    "description": "Enfermedades, operaciones, medicamentos, antecedentes familiares y estilo de vida, con un recuento de enfermedades para el profesional sanitario."
+   },
+   "health_screening": {
+    "name": "Cribado / declaración de salud",
+    "description": "Un cribado rápido de sí / no antes de entrar; cualquier «sí» envía a la persona a revisión antes de pasar."
+   },
+   "consent_form": {
+    "name": "Formulario de consentimiento",
+    "description": "Declaraciones de consentimiento claras con firma; un padre, madre o tutor firma por los menores de 18."
+   },
+   "event_registration": {
+    "name": "Inscripción a eventos",
+    "description": "Inscribe asistentes con tipo de entrada, cantidad y total acumulado, sesiones y necesidades de accesibilidad."
+   },
+   "rsvp": {
+    "name": "Confirmación de asistencia",
+    "description": "Respuestas sencillas de sí / no / quizá, con número de acompañantes y necesidades alimentarias solo para quienes vienen."
+   },
+   "appointment_booking": {
+    "name": "Reserva de citas",
+    "description": "Reserva un servicio en la fecha y hora que prefieras, con una segunda opción y recordatorios."
+   },
+   "venue_booking": {
+    "name": "Reserva de espacio / sala",
+    "description": "Reserva una sala por horas con equipamiento adicional y un coste calculado mientras eliges."
+   },
+   "volunteer_signup": {
+    "name": "Inscripción de voluntarios",
+    "description": "Reúne voluntarios, sus intereses y disponibilidad, con consentimiento del tutor para menores de 18."
+   },
+   "speaker_sponsor_application": {
+    "name": "Solicitud de ponente / patrocinador",
+    "description": "Un formulario para ambos: los ponentes proponen una sesión y los patrocinadores eligen un paquete y extras con total."
+   },
+   "post_event_feedback": {
+    "name": "Opinión tras el evento",
+    "description": "Valoraciones de contenido, ponentes, lugar y organización con puntuación media y recomendación."
+   },
+   "guest_registration": {
+    "name": "Formulario de registro de huéspedes",
+    "description": "Datos de check-in con el número de noches calculado a partir de la llegada y la salida."
+   },
+   "hotel_booking_request": {
+    "name": "Solicitud de reserva de hotel",
+    "description": "Fechas, tipo y número de habitaciones dan las noches y un precio estimado; también extras y peticiones especiales."
+   },
+   "guest_feedback": {
+    "name": "Opinión de huéspedes",
+    "description": "Valora limpieza, comodidad, personal, comida y relación calidad-precio con una media y una recomendación."
+   },
+   "service_evaluation": {
+    "name": "Evaluación del servicio",
+    "description": "Evalúa a un departamento o miembro del equipo en cuatro cualidades; la puntuación del servicio se muestra en porcentaje."
+   },
+   "special_requirements": {
+    "name": "Necesidades especiales",
+    "description": "Necesidades alimentarias y de accesibilidad, alergias y celebraciones, para tener todo listo antes de la llegada."
+   },
+   "event_catering_request": {
+    "name": "Solicitud de catering para eventos",
+    "description": "Menú y extras por persona multiplicados por el número de invitados dan un presupuesto al instante."
+   },
+   "restaurant_reservation": {
+    "name": "Solicitud de reserva en restaurante",
+    "description": "Fecha, hora, número de personas, ubicación y ocasión: todo lo que necesita el anfitrión."
+   },
+   "hospitality_complaint": {
+    "name": "Formulario de reclamación",
+    "description": "Deja que los huéspedes te cuenten qué salió mal, dónde y cómo les gustaría que se solucionara."
+   },
+   "membership_application": {
+    "name": "Solicitud de membresía",
+    "description": "Únete a un club o asociación: datos del miembro, nivel de membresía, extras y cuota anual."
+   },
+   "donation_form": {
+    "name": "Formulario de donación",
+    "description": "Un importe (o el que tú elijas), mensual o único, con la opción de cubrir la comisión de pago."
+   },
+   "petition": {
+    "name": "Petición",
+    "description": "Explica la causa, recoge nombres y ubicaciones, y deja que la gente diga por qué le importa."
+   },
+   "poll_ballot": {
+    "name": "Encuesta / Papeleta de votación",
+    "description": "Un voto por persona sobre una pregunta y una elección por orden de preferencia, con comentario opcional."
+   },
+   "property_viewing": {
+    "name": "Solicitud de visita a inmueble",
+    "description": "Reserva una visita: el inmueble, dos horarios preferidos, quién viene y cómo contactarle."
+   },
+   "tenant_application": {
+    "name": "Solicitud de inquilino",
+    "description": "Solicitante, empleo, ingresos y referencias, con la relación ingresos-alquiler para el propietario."
+   },
+   "rental_application": {
+    "name": "Solicitud de alquiler",
+    "description": "Una solicitud más breve para un anuncio concreto: fecha de entrada, plazo, hogar y capacidad de pago."
+   },
+   "property_inspection": {
+    "name": "Inspección de inmueble",
+    "description": "Estado de cada estancia (bueno / regular / malo), lecturas de contadores y fotos, con una puntuación."
+   },
+   "property_maintenance": {
+    "name": "Solicitud de mantenimiento",
+    "description": "Los inquilinos informan de una reparación con la zona, la urgencia, fotos y cuándo se puede entrar."
+   },
+   "property_information": {
+    "name": "Información del inmueble",
+    "description": "Los propietarios describen el inmueble para publicarlo: tipo, tamaño, habitaciones, características, precio y fotos."
+   },
+   "landlord_information": {
+    "name": "Información del propietario",
+    "description": "Contacto del propietario, datos de pago, preferencias sobre inquilinos y quién se encarga de las reparaciones."
+   },
+   "tenant_feedback": {
+    "name": "Opinión de inquilinos",
+    "description": "Los inquilinos valoran la vivienda, las reparaciones, la comunicación y la relación calidad-precio; una media muestra la satisfacción general."
+   },
+   "sales_lead_capture": {
+    "name": "Captación de leads",
+    "description": "Nombre, empresa, tamaño e interés: lo bastante corto para una landing page, con la fuente registrada."
+   },
+   "sales_quote_request": {
+    "name": "Solicitud de presupuesto",
+    "description": "Elige un plan, usuarios y servicios; se calcula un total anual orientativo para el equipo de ventas."
+   },
+   "sales_qualification": {
+    "name": "Calificación de ventas",
+    "description": "Presupuesto, autoridad, necesidad y plazo puntuados para el equipo, con un resultado caliente / templado / frío."
+   },
+   "demo_request": {
+    "name": "Solicitud de demo del producto",
+    "description": "Reserva una demo en directo: quién asiste, en qué centrarse, zona horaria y horarios preferidos."
+   },
+   "customer_discovery": {
+    "name": "Descubrimiento del cliente",
+    "description": "Conoce objetivos, herramientas actuales, problemas y cómo se ve el éxito antes de proponer."
+   },
+   "proposal_request": {
+    "name": "Solicitud de propuesta",
+    "description": "Alcance, entregables, presupuesto, plazo y proceso de decisión para una propuesta a medida."
+   },
+   "order_request": {
+    "name": "Solicitud de pedido",
+    "description": "Los clientes profesionales piden por código de producto y cantidad, con descuento por volumen y total del pedido."
+   },
+   "sales_follow_up": {
+    "name": "Seguimiento de ventas",
+    "description": "Registra una llamada o reunión: resultado, etapa del trato, siguiente paso y su fecha; rápido desde el móvil."
+   }
+  },
+  "categories": {
+   "business": "Negocio y clientes",
+   "hr": "RR. HH. y trabajo",
+   "health_safety": "Salud y seguridad",
+   "events": "Eventos y reservas",
+   "hospitality": "Hostelería",
+   "education": "Educación",
+   "operations_it": "Operaciones y TI",
+   "finance_legal": "Finanzas y legal",
+   "community": "Comunidad y otros",
+   "real_estate": "Inmobiliaria",
+   "sales": "Ventas"
+  }
+ },
+ "builder": {
+  "field": {
+   "short_text": "Texto corto",
+   "long_text": "Texto largo",
+   "rich_text": "Texto enriquecido",
+   "email": "Correo electrónico",
+   "phone": "Teléfono",
+   "url": "Sitio web / URL",
+   "number": "Número",
+   "currency": "Importe",
+   "date": "Fecha",
+   "time": "Hora",
+   "datetime": "Fecha y hora",
+   "date_range": "Rango de fechas",
+   "dropdown": "Desplegable",
+   "multi_select": "Selección múltiple",
+   "radio": "Opción única",
+   "checkbox": "Casillas",
+   "toggle": "Sí / No",
+   "ranking": "Clasificación",
+   "matrix": "Matriz / cuadrícula",
+   "rating": "Valoración con estrellas",
+   "scale": "Escala / NPS",
+   "slider": "Control deslizante",
+   "file_upload": "Subir archivo",
+   "image_upload": "Subir imagen",
+   "signature": "Firma",
+   "address": "Dirección",
+   "country": "País",
+   "hidden": "Campo oculto",
+   "calculated": "Calculado",
+   "payment": "Pago",
+   "section": "Sección",
+   "paragraph": "Párrafo",
+   "divider": "Separador",
+   "image": "Imagen",
+   "full_name": "Nombre completo",
+   "percentage": "Porcentaje",
+   "duration": "Duración",
+   "consent": "Consentimiento / términos",
+   "language": "Idioma",
+   "timezone": "Zona horaria",
+   "currency_code": "Moneda",
+   "ip_address": "Dirección IP",
+   "domain": "Nombre de dominio",
+   "mac_address": "Dirección MAC",
+   "color": "Color",
+   "iban": "IBAN",
+   "bic": "SWIFT / BIC"
+  },
+  "defaults": {
+   "option": "Opción {n}",
+   "row": "Fila {n}"
+  },
+  "page": {
+   "default": "Página {n}",
+   "tabs": "Páginas",
+   "add": "Añadir página",
+   "menu": "Opciones de página",
+   "moveLeft": "Mover a la izquierda",
+   "moveRight": "Mover a la derecha",
+   "delete": "Eliminar página",
+   "deleteTitle": "¿Eliminar esta página?",
+   "deleteDesc": "También se elimina su campo ({count}). Puedes deshacerlo. | También se eliminan sus {count} campos. Puedes deshacerlo.",
+   "stepOf": "Paso {n} de {total}",
+   "title": "Nombre de la página",
+   "rename": "Cambiar nombre de la página"
+  }
+ }
+}

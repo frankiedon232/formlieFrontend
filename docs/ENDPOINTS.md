@@ -58,7 +58,7 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 
 - [x] `GET /api/v1/forms` (`listForms`) (`storage` is Formalie's own until response storage, B9)
 - [ ] `POST /api/v1/forms` (`createForm`) (blank and in a language now; from a template: B6)
-- [x] `GET /api/v1/forms/facets` (`formFacets`) (`templates` fill in with templates, B6)
+- [x] `GET /api/v1/forms/facets` (`formFacets`)
 - [x] `POST /api/v1/forms/import` (`importForm`)
 - [x] `POST /api/v1/forms/bulk` (`bulkForms`)
 - [x] `DELETE /api/v1/forms/trash` (`emptyTrash`)
@@ -566,24 +566,24 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 - **Guards:** `requireAction`, `requireAuth`, `requireResource`
 - **Audit:** `forms.template_created`, `forms.template_deleted`, `forms.template_duplicated`, `forms.template_updated`
 
-- [ ] `GET /api/v1/templates` (`listTemplates`)
-- [ ] `GET /api/v1/templates/facets` (`templateFacets`)
-- [ ] `GET /api/v1/templates/insights` (`templateInsights`)
-- [ ] `GET /api/v1/templates/categories` (`listTemplateCategories`)
-- [ ] `POST /api/v1/templates/translate-content` (`translateFormContent`)
-- [ ] `POST /api/v1/templates` (`createTemplate`)
-- [ ] `GET /api/v1/templates/{key}` (`getTemplate`)
-- [ ] `PATCH /api/v1/templates/{key}` (`updateTemplate`)
-- [ ] `POST /api/v1/templates/{key}/duplicate` (`duplicateTemplate`)
-- [ ] `POST /api/v1/templates/{key}/sync` (`syncTemplate`)
-- [ ] `DELETE /api/v1/templates/{key}` (`deleteTemplate`)
+- [x] `GET /api/v1/templates` (`listTemplates`)
+- [x] `GET /api/v1/templates/facets` (`templateFacets`)
+- [x] `GET /api/v1/templates/insights` (`templateInsights`)
+- [x] `GET /api/v1/templates/categories` (`listTemplateCategories`)
+- [x] `POST /api/v1/templates/translate-content` (`translateFormContent`)
+- [x] `POST /api/v1/templates` (`createTemplate`)
+- [x] `GET /api/v1/templates/{key}` (`getTemplate`)
+- [x] `PATCH /api/v1/templates/{key}` (`updateTemplate`)
+- [x] `POST /api/v1/templates/{key}/duplicate` (`duplicateTemplate`)
+- [x] `POST /api/v1/templates/{key}/sync` (`syncTemplate`)
+- [x] `DELETE /api/v1/templates/{key}` (`deleteTemplate`)
 
 ## `routes/navigation.ts`
 
 - **Guards:** `requireAuth`
 - **Permissions:** `people.view`
 
-- [ ] `GET /api/v1/navigation/counts` (`navigationCounts`) (people and organisation data counted now; forms, responses, folders, templates, themes, data sources fill in with their phases)
+- [ ] `GET /api/v1/navigation/counts` (`navigationCounts`) (people, organisation data, forms, folders, templates, themes and page designs counted now; responses (B8), destinations (B9) and data sources (B9) fill in with their phases)
 
 ## `routes/notifications.ts`
 

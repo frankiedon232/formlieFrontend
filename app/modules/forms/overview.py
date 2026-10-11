@@ -5,8 +5,7 @@
     GET /folders/{id}            one folder with its numbers
     GET /directory               departments, job titles, roles and people (field access, people pickers, logic)
 
-Numbers come from responses, which arrive in B8 (until then: none, so views, starts and the trend are zero), and the
-template a form came from with templates (B6).
+Numbers come from responses, which arrive in B8 (until then: none, so views, starts and the trend are zero).
 """
 
 from __future__ import annotations
@@ -75,6 +74,15 @@ async def form_overview(form_id: str, principal: Principal = Depends(require_aut
         access.require_level(form, viewer, "responses")
         schema = _draft(form)
         versions = await _versions(db, form)
+        template = None
+        if form.template_key:
+            from app.modules.templates import catalogue
+            from app.modules.templates.service import find_own
+
+            found = catalogue.system_template(form.template_key)
+            own = None if found else await find_own(db, principal.tenant.id, form.template_key)
+            name = found["name"] if found else own.name if own else None
+            template = {"key": form.template_key, "name": name} if name else None
     today = datetime.now(UTC).replace(hour=0, minute=0, second=0, microsecond=0)
     return ok({
         "stats": {"views": 0, "starts": 0, "responses": 0, "completion_rate": 0, "avg_seconds": None,
@@ -82,7 +90,7 @@ async def form_overview(form_id: str, principal: Principal = Depends(require_aut
         "daily": _days(today - timedelta(days=29)),
         "structure": schema_stats(schema),
         "versions": [{k: v for k, v in _version_view(version).items() if k != "change_summary"} for version in versions[:3]],
-        "template": None,  # the template it came from: B6
+        "template": template,
         "theme": schema.get("theme") or {},
         "preview": preview_labels(schema),
     })

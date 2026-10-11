@@ -1,0 +1,424 @@
+{
+ "templates": {
+  "items": {
+   "customer_feedback": {
+    "name": "Phản hồi của khách hàng",
+    "description": "Lắng nghe khách hàng nghĩ gì về dịch vụ của bạn, kèm câu hỏi tiếp theo khi ai đó không hài lòng."
+   },
+   "csat_nps": {
+    "name": "Khảo sát mức độ hài lòng của khách hàng (CSAT / NPS)",
+    "description": "Đo mức độ hài lòng (CSAT), công sức và lòng trung thành (NPS). Mỗi câu trả lời được xếp nhóm ủng hộ, trung lập hoặc phản đối."
+   },
+   "product_review": {
+    "name": "Đánh giá sản phẩm",
+    "description": "Thu thập đánh giá sản phẩm chi tiết với điểm sao, điểm trung bình, ảnh và sự đồng ý công khai."
+   },
+   "contact_lead": {
+    "name": "Biểu mẫu liên hệ / yêu cầu thông tin",
+    "description": "Biểu mẫu liên hệ đơn giản, thân thiện, chuyển từng yêu cầu theo chủ đề."
+   },
+   "quote_request": {
+    "name": "Yêu cầu báo giá",
+    "description": "Khách hàng tự tạo yêu cầu và xem báo giá ước tính theo gói, dịch vụ bổ sung và số lượng."
+   },
+   "order_form": {
+    "name": "Phiếu đặt hàng",
+    "description": "Nhận đơn hàng với tối đa ba dòng sản phẩm, lựa chọn giao hàng và tổng tiền cập nhật liên tục."
+   },
+   "complaint_dispute": {
+    "name": "Biểu mẫu khiếu nại / tranh chấp",
+    "description": "Ghi nhận khiếu nại và tranh chấp kèm bằng chứng, kết quả mong muốn và lần liên hệ trước."
+   },
+   "service_request": {
+    "name": "Yêu cầu dịch vụ",
+    "description": "Đặt lịch dịch vụ với mức ưu tiên, thời gian mong muốn và ảnh về sự cố."
+   },
+   "lead_capture_newsletter": {
+    "name": "Thu thập khách hàng tiềm năng / đăng ký bản tin",
+    "description": "Mở rộng danh sách với sự đồng ý, sở thích và theo dõi chiến dịch được tích hợp sẵn."
+   },
+   "return_refund": {
+    "name": "Yêu cầu đổi trả / hoàn tiền",
+    "description": "Xử lý đổi trả với lý do, ảnh, kết quả mong muốn và số tiền hoàn được tính sẵn."
+   },
+   "job_application": {
+    "name": "Đơn ứng tuyển",
+    "description": "Một đơn ứng tuyển đầy đủ: thông tin cá nhân, vị trí, tải lên CV, mức lương mong muốn và sự đồng ý."
+   },
+   "employee_onboarding": {
+    "name": "Tiếp nhận nhân viên mới",
+    "description": "Mọi thông tin nhân viên mới cung cấp trước ngày đầu tiên: thông tin cá nhân, liên hệ khẩn cấp, thiết bị và thanh toán."
+   },
+   "exit_interview": {
+    "name": "Phỏng vấn nghỉ việc",
+    "description": "Tìm hiểu lý do mọi người rời đi và điều gì giữ họ ở lại, với đánh giá toàn bộ trải nghiệm nhân viên."
+   },
+   "leave_request": {
+    "name": "Đơn xin nghỉ phép",
+    "description": "Xin nghỉ phép với số ngày được tính từ ngày bắt đầu và kết thúc, người thay thế và giấy tờ kèm theo."
+   },
+   "performance_review": {
+    "name": "Đánh giá hiệu suất",
+    "description": "Chấm điểm sáu năng lực; điểm trung bình và mức xếp loại được tính sẵn cho bạn."
+   },
+   "engagement_survey": {
+    "name": "Khảo sát mức độ gắn kết của nhân viên",
+    "description": "Khảo sát nhanh ẩn danh về niềm tự hào, mục đích, phát triển và hỗ trợ, với chỉ số gắn kết từ 0 đến 100."
+   },
+   "expense_reimbursement": {
+    "name": "Hoàn ứng chi phí",
+    "description": "Kê khai tối đa ba khoản chi kèm hóa đơn; tổng số tiền được tự động cộng."
+   },
+   "timesheet": {
+    "name": "Bảng chấm công",
+    "description": "Số giờ mỗi ngày trong tuần với tổng giờ và giờ làm thêm so với giờ theo hợp đồng."
+   },
+   "training_feedback": {
+    "name": "Phản hồi về đào tạo",
+    "description": "Đánh giá nội dung, giảng viên, tài liệu và mức độ phù hợp của khóa học, kèm điểm trung bình."
+   },
+   "reference_check": {
+    "name": "Kiểm tra người tham chiếu",
+    "description": "Câu hỏi có cấu trúc cho người tham chiếu, chấm điểm kỹ năng với điểm trung bình và câu trả lời rõ ràng về việc tuyển lại."
+   },
+   "student_enrolment": {
+    "name": "Ghi danh / Tuyển sinh",
+    "description": "Thông tin học sinh và phụ huynh, chương trình chọn học, quá trình học trước, giấy tờ và sự đồng ý."
+   },
+   "course_evaluation": {
+    "name": "Đánh giá khóa học",
+    "description": "Học viên chấm khóa học qua sáu nhận định; điểm tổng cho thấy khóa học được đón nhận thế nào."
+   },
+   "quiz_assessment": {
+    "name": "Câu đố / Bài kiểm tra",
+    "description": "Câu hỏi trắc nghiệm chấm điểm tự động, có tỷ lệ phần trăm và điểm đạt."
+   },
+   "scholarship_application": {
+    "name": "Đơn xin học bổng",
+    "description": "Thành tích học tập, nhu cầu tài chính và bài luận cá nhân, kèm điểm đủ điều kiện cho hội đồng."
+   },
+   "permission_slip": {
+    "name": "Giấy đồng ý / Cho phép của phụ huynh",
+    "description": "Cho phép tham gia chuyến đi hoặc hoạt động, kèm ghi chú y tế, liên hệ khẩn cấp và chữ ký phụ huynh."
+   },
+   "attendance_register": {
+    "name": "Sổ điểm danh",
+    "description": "Đánh dấu tối đa tám học viên có mặt, đi muộn hoặc vắng; số người và tỷ lệ có mặt được tính tự động."
+   },
+   "academic_survey": {
+    "name": "Khảo sát học tập",
+    "description": "Khảo sát ngắn về trải nghiệm học tập, hỗ trợ và sức khỏe tinh thần cho học viên mọi cấp độ."
+   },
+   "it_support_ticket": {
+    "name": "Phiếu hỗ trợ IT",
+    "description": "Báo cáo sự cố IT; mức ảnh hưởng × mức khẩn cấp xác định ưu tiên để xử lý đúng phiếu trước."
+   },
+   "change_request": {
+    "name": "Yêu cầu thay đổi",
+    "description": "Mô tả thay đổi dự kiến với điểm rủi ro từ mức ảnh hưởng và khả năng xảy ra, kế hoạch khôi phục và phê duyệt."
+   },
+   "asset_checkout": {
+    "name": "Mượn tài sản / Kiểm kê",
+    "description": "Ghi nhận cho mượn hoặc trả thiết bị với mã tài sản, tình trạng, ngày trả và chữ ký."
+   },
+   "work_order": {
+    "name": "Bảo trì / Lệnh công việc",
+    "description": "Yêu cầu bảo trì với vị trí, mức ưu tiên và ảnh; giờ công và phụ tùng cho ra chi phí công việc."
+   },
+   "purchase_requisition": {
+    "name": "Đề nghị mua hàng",
+    "description": "Đề nghị tối đa bốn mặt hàng với số lượng và giá; tổng tiền quyết định cấp phê duyệt cần thiết."
+   },
+   "vendor_registration": {
+    "name": "Đăng ký nhà cung cấp",
+    "description": "Thông tin công ty, người liên hệ, thuế và ngân hàng (IBAN / SWIFT) cùng giấy tờ để tiếp nhận nhà cung cấp."
+   },
+   "site_inspection": {
+    "name": "Báo cáo kiểm tra công trường / hiện trường",
+    "description": "Kiểm tra đạt / không đạt tại chỗ, kèm tỷ lệ đạt, kết luận, phát hiện và ảnh."
+   },
+   "proof_of_delivery": {
+    "name": "Xác nhận giao hàng / Bằng chứng giao hàng",
+    "description": "Xác nhận hàng đã đến, tình trạng, ảnh và chữ ký người nhận. Nếu hư hỏng sẽ yêu cầu chi tiết."
+   },
+   "quality_control": {
+    "name": "Danh sách kiểm tra chất lượng",
+    "description": "Thông tin lô, tiêu chí đạt / không đạt và số đo; tỷ lệ đạt cho ra quyết định xuất xưởng."
+   },
+   "loan_application": {
+    "name": "Đơn vay / Tín dụng",
+    "description": "Người vay, việc làm và tài chính, kèm tỷ lệ nợ trên thu nhập và khoản trả hàng tháng ước tính."
+   },
+   "kyc_verification": {
+    "name": "KYC / Xác minh danh tính",
+    "description": "Thông tin danh tính, giấy tờ tùy thân và bằng chứng địa chỉ, với mục đích rõ ràng và sự đồng ý."
+   },
+   "invoice_submission": {
+    "name": "Gửi hóa đơn",
+    "description": "Nhà cung cấp gửi hóa đơn kèm từng dòng hàng; tạm tính, thuế và tổng cộng được tính sẵn."
+   },
+   "insurance_claim": {
+    "name": "Yêu cầu bồi thường bảo hiểm",
+    "description": "Hợp đồng, sự cố, bằng chứng và tổn thất từng khoản; tổng yêu cầu được cộng dần khi nhập các khoản."
+   },
+   "nda_signoff": {
+    "name": "NDA / Ký thỏa thuận",
+    "description": "Hiển thị thỏa thuận, xác nhận từng điểm chính và ký, kèm thông tin công ty khi ký thay mặt công ty."
+   },
+   "risk_assessment": {
+    "name": "Đánh giá rủi ro",
+    "description": "Chấm điểm từng mối nguy theo khả năng × mức độ nghiêm trọng; mức rủi ro được tính tự động và kế hoạch hành động hiện ra khi rủi ro ở mức trung bình hoặc cao."
+   },
+   "incident_report": {
+    "name": "Báo cáo sự cố / tai nạn",
+    "description": "Ghi lại sự việc, ai bị thương và các biện pháp ban đầu. Sự cố nghiêm trọng được đánh dấu để xem xét khẩn."
+   },
+   "near_miss_report": {
+    "name": "Báo cáo suýt xảy ra sự cố",
+    "description": "Báo cáo nhanh các tình huống suýt xảy ra. Mức độ tiềm ẩn và khả năng lặp lại xác định mức ưu tiên để phòng ngừa đi trước."
+   },
+   "safety_inspection": {
+    "name": "Danh sách kiểm tra an toàn",
+    "description": "Các mục đạt / không đạt với tỷ lệ tuân thủ và kết quả; mục không đạt yêu cầu thêm chi tiết và ảnh."
+   },
+   "patient_intake": {
+    "name": "Tiếp nhận bệnh nhân",
+    "description": "Thông tin bệnh nhân mới, lý do khám, mức độ đau, dị ứng và BMI tính từ chiều cao, cân nặng."
+   },
+   "medical_history": {
+    "name": "Tiền sử bệnh",
+    "description": "Bệnh lý, phẫu thuật, thuốc, tiền sử gia đình và lối sống, kèm số bệnh lý cho bác sĩ."
+   },
+   "health_screening": {
+    "name": "Sàng lọc / khai báo y tế",
+    "description": "Sàng lọc có / không nhanh trước khi vào; bất kỳ câu \"có\" nào sẽ chuyển người đó đi xem xét trước khi vào."
+   },
+   "consent_form": {
+    "name": "Mẫu đồng ý",
+    "description": "Các điều khoản đồng ý rõ ràng có chữ ký; cha mẹ hoặc người giám hộ ký thay cho người dưới 18 tuổi."
+   },
+   "event_registration": {
+    "name": "Đăng ký sự kiện",
+    "description": "Đăng ký người tham dự với loại vé, số lượng và tổng tiền cập nhật, phiên tham dự và nhu cầu hỗ trợ tiếp cận."
+   },
+   "rsvp": {
+    "name": "Xác nhận tham dự",
+    "description": "Trả lời có / không / có thể đơn giản, số người đi cùng và nhu cầu ăn uống chỉ dành cho người tham dự."
+   },
+   "appointment_booking": {
+    "name": "Đặt lịch hẹn",
+    "description": "Đặt dịch vụ vào ngày giờ mong muốn, kèm lựa chọn thứ hai và lời nhắc."
+   },
+   "venue_booking": {
+    "name": "Đặt địa điểm / phòng",
+    "description": "Đặt phòng theo giờ cùng thiết bị bổ sung; chi phí được tính ngay khi bạn chọn."
+   },
+   "volunteer_signup": {
+    "name": "Đăng ký tình nguyện viên",
+    "description": "Thu thập tình nguyện viên, sở thích và thời gian rảnh, có sự đồng ý của người giám hộ cho người dưới 18 tuổi."
+   },
+   "speaker_sponsor_application": {
+    "name": "Đăng ký diễn giả / nhà tài trợ",
+    "description": "Một biểu mẫu cho cả hai: diễn giả đề xuất phiên, nhà tài trợ chọn gói và hạng mục bổ sung kèm tổng tiền."
+   },
+   "post_event_feedback": {
+    "name": "Phản hồi sau sự kiện",
+    "description": "Đánh giá nội dung, diễn giả, địa điểm và khâu tổ chức với điểm trung bình và mức độ giới thiệu."
+   },
+   "guest_registration": {
+    "name": "Phiếu đăng ký khách",
+    "description": "Thông tin nhận phòng với số đêm tính từ ngày đến và ngày đi."
+   },
+   "hotel_booking_request": {
+    "name": "Yêu cầu đặt phòng khách sạn",
+    "description": "Ngày, loại phòng và số phòng cho ra số đêm và giá ước tính; kèm dịch vụ thêm và yêu cầu đặc biệt."
+   },
+   "guest_feedback": {
+    "name": "Phiếu góp ý của khách",
+    "description": "Đánh giá sự sạch sẽ, tiện nghi, nhân viên, đồ ăn và giá trị với điểm trung bình và mức độ giới thiệu."
+   },
+   "service_evaluation": {
+    "name": "Phiếu đánh giá dịch vụ",
+    "description": "Đánh giá một bộ phận hoặc nhân viên theo bốn tiêu chí; điểm dịch vụ hiển thị dưới dạng phần trăm."
+   },
+   "special_requirements": {
+    "name": "Phiếu yêu cầu đặc biệt",
+    "description": "Nhu cầu ăn uống và hỗ trợ tiếp cận, dị ứng và dịp kỷ niệm, để mọi thứ sẵn sàng trước khi khách đến."
+   },
+   "event_catering_request": {
+    "name": "Yêu cầu tiệc cho sự kiện",
+    "description": "Thực đơn và món thêm theo đầu người nhân với số khách cho ra ước tính ngay lập tức."
+   },
+   "restaurant_reservation": {
+    "name": "Đặt bàn nhà hàng",
+    "description": "Ngày, giờ, số người, chỗ ngồi và dịp đặc biệt: mọi thứ nhà hàng cần."
+   },
+   "hospitality_complaint": {
+    "name": "Phiếu khiếu nại dịch vụ",
+    "description": "Để khách cho bạn biết điều gì chưa ổn, ở đâu và họ muốn được khắc phục thế nào."
+   },
+   "membership_application": {
+    "name": "Đơn đăng ký hội viên",
+    "description": "Tham gia câu lạc bộ hoặc hiệp hội: thông tin hội viên, hạng hội viên, dịch vụ thêm và phí hằng năm."
+   },
+   "donation_form": {
+    "name": "Mẫu quyên góp",
+    "description": "Số tiền gợi ý (hoặc tự nhập), hằng tháng hoặc một lần, có tùy chọn chi trả phí giao dịch."
+   },
+   "petition": {
+    "name": "Kiến nghị",
+    "description": "Nêu mục đích, thu thập tên và địa điểm, để mọi người chia sẻ vì sao điều này quan trọng với họ."
+   },
+   "poll_ballot": {
+    "name": "Thăm dò / Phiếu bầu",
+    "description": "Mỗi người một phiếu cho một câu hỏi và một lựa chọn xếp hạng, kèm nhận xét tùy chọn."
+   },
+   "property_viewing": {
+    "name": "Yêu cầu xem nhà",
+    "description": "Đặt lịch xem nhà: bất động sản, hai khung giờ mong muốn, ai sẽ đến và cách liên hệ."
+   },
+   "tenant_application": {
+    "name": "Hồ sơ người thuê",
+    "description": "Người nộp đơn, công việc, thu nhập và người tham chiếu, kèm tỷ lệ thu nhập trên tiền thuê cho chủ nhà."
+   },
+   "rental_application": {
+    "name": "Đơn xin thuê nhà",
+    "description": "Đơn ngắn hơn cho một tin đăng cụ thể: ngày dọn vào, thời hạn, hộ gia đình và khả năng chi trả."
+   },
+   "property_inspection": {
+    "name": "Kiểm tra nhà",
+    "description": "Tình trạng từng phòng (tốt / trung bình / kém), chỉ số đồng hồ và ảnh, kèm điểm tình trạng."
+   },
+   "property_maintenance": {
+    "name": "Yêu cầu bảo trì",
+    "description": "Người thuê báo sửa chữa kèm khu vực, mức độ khẩn, ảnh và thời gian có thể đến."
+   },
+   "property_information": {
+    "name": "Thông tin bất động sản",
+    "description": "Chủ nhà mô tả bất động sản để đăng tin: loại, diện tích, số phòng, tiện ích, giá và ảnh."
+   },
+   "landlord_information": {
+    "name": "Thông tin chủ nhà",
+    "description": "Liên hệ, thông tin thanh toán, yêu cầu về người thuê và ai phụ trách sửa chữa."
+   },
+   "tenant_feedback": {
+    "name": "Phản hồi người thuê",
+    "description": "Người thuê đánh giá nhà, sửa chữa, giao tiếp và giá trị; điểm trung bình cho thấy mức hài lòng chung."
+   },
+   "sales_lead_capture": {
+    "name": "Thu thập khách hàng tiềm năng",
+    "description": "Tên, công ty, quy mô và nhu cầu. Đủ ngắn cho trang đích, có theo dõi nguồn."
+   },
+   "sales_quote_request": {
+    "name": "Yêu cầu báo giá",
+    "description": "Chọn gói, số người dùng và dịch vụ; tổng chi phí năm dự kiến được tính cho đội bán hàng."
+   },
+   "sales_qualification": {
+    "name": "Đánh giá khách hàng tiềm năng",
+    "description": "Ngân sách, thẩm quyền, nhu cầu và thời điểm được chấm điểm cho đội, với kết quả nóng / ấm / lạnh."
+   },
+   "demo_request": {
+    "name": "Yêu cầu demo sản phẩm",
+    "description": "Đặt lịch demo trực tiếp: ai tham dự, nội dung cần tập trung, múi giờ và thời gian mong muốn."
+   },
+   "customer_discovery": {
+    "name": "Tìm hiểu khách hàng",
+    "description": "Nắm rõ mục tiêu, công cụ hiện tại, vấn đề và tiêu chí thành công trước khi đề xuất."
+   },
+   "proposal_request": {
+    "name": "Yêu cầu đề xuất",
+    "description": "Phạm vi, sản phẩm bàn giao, ngân sách, hạn chót và quy trình ra quyết định cho đề xuất riêng."
+   },
+   "order_request": {
+    "name": "Yêu cầu đặt hàng",
+    "description": "Khách hàng doanh nghiệp đặt theo mã sản phẩm và số lượng, có chiết khấu theo số lượng và tổng đơn."
+   },
+   "sales_follow_up": {
+    "name": "Theo dõi bán hàng",
+    "description": "Ghi lại cuộc gọi hoặc cuộc họp: kết quả, giai đoạn giao dịch, bước tiếp theo và ngày. Nhanh cả trên điện thoại."
+   }
+  },
+  "categories": {
+   "business": "Kinh doanh & khách hàng",
+   "hr": "Nhân sự & nơi làm việc",
+   "health_safety": "Sức khỏe & an toàn",
+   "events": "Sự kiện & đặt chỗ",
+   "hospitality": "Nhà hàng và khách sạn",
+   "education": "Giáo dục",
+   "operations_it": "Vận hành & CNTT",
+   "finance_legal": "Tài chính & pháp lý",
+   "community": "Cộng đồng & khác",
+   "real_estate": "Bất động sản",
+   "sales": "Bán hàng"
+  }
+ },
+ "builder": {
+  "field": {
+   "short_text": "Văn bản ngắn",
+   "long_text": "Văn bản dài",
+   "rich_text": "Văn bản định dạng",
+   "email": "Email",
+   "phone": "Điện thoại",
+   "url": "Trang web / URL",
+   "number": "Số",
+   "currency": "Số tiền",
+   "date": "Ngày",
+   "time": "Giờ",
+   "datetime": "Ngày và giờ",
+   "date_range": "Khoảng ngày",
+   "dropdown": "Danh sách thả xuống",
+   "multi_select": "Chọn nhiều",
+   "radio": "Chọn một",
+   "checkbox": "Hộp kiểm",
+   "toggle": "Có / Không",
+   "ranking": "Xếp hạng",
+   "matrix": "Ma trận / bảng",
+   "rating": "Đánh giá sao",
+   "scale": "Thang đo / NPS",
+   "slider": "Thanh trượt",
+   "file_upload": "Tải tệp lên",
+   "image_upload": "Tải ảnh lên",
+   "signature": "Chữ ký",
+   "address": "Địa chỉ",
+   "country": "Quốc gia",
+   "hidden": "Trường ẩn",
+   "calculated": "Tự tính",
+   "payment": "Thanh toán",
+   "section": "Phần",
+   "paragraph": "Đoạn văn",
+   "divider": "Đường phân cách",
+   "image": "Hình ảnh",
+   "full_name": "Họ và tên",
+   "percentage": "Phần trăm",
+   "duration": "Thời lượng",
+   "consent": "Đồng ý / điều khoản",
+   "language": "Ngôn ngữ",
+   "timezone": "Múi giờ",
+   "currency_code": "Tiền tệ",
+   "ip_address": "Địa chỉ IP",
+   "domain": "Tên miền",
+   "mac_address": "Địa chỉ MAC",
+   "color": "Màu",
+   "iban": "IBAN",
+   "bic": "SWIFT / BIC"
+  },
+  "defaults": {
+   "option": "Lựa chọn {n}",
+   "row": "Hàng {n}"
+  },
+  "page": {
+   "default": "Trang {n}",
+   "tabs": "Các trang",
+   "add": "Thêm trang",
+   "menu": "Tùy chọn trang",
+   "moveLeft": "Chuyển trang sang trái",
+   "moveRight": "Chuyển trang sang phải",
+   "delete": "Xóa trang",
+   "deleteTitle": "Xóa trang này?",
+   "deleteDesc": "{count} trường trong trang cũng bị xóa. Bạn có thể hoàn tác. | {count} trường trong trang cũng bị xóa. Bạn có thể hoàn tác.",
+   "stepOf": "Bước {n}/{total}",
+   "title": "Tên trang",
+   "rename": "Đổi tên trang"
+  }
+ }
+}

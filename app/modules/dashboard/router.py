@@ -1,8 +1,8 @@
 """Navigation counts (mock: routes/navigation.ts): cheap counters and short lists for the sidebar.
 
-Each area fills its part as it is built: people and organisation data (B3), forms and folders (B5); responses (B8),
-templates, themes and page designs (B6), data sources and response storage (B9). Until then those count nothing of
-the workspace's own, and Formalie's own lists by their size.
+Each area fills its part as it is built: people and organisation data (B3), forms and folders (B5), templates,
+themes and page designs (B6); responses (B8), data sources and response storage (B9). Until then those count
+nothing.
 """
 
 from __future__ import annotations
@@ -26,11 +26,36 @@ from app.modules.users.models import USER_STATUSES, User
 router = APIRouter(tags=["navigation"])
 
 
-def _template_categories() -> list[dict[str, Any]]:
-    """Formalie's categories, most used first (forms made from them: none yet), then the largest."""
+def _template_categories(used: dict[str, dict[str, Any]]) -> list[dict[str, Any]]:
+    """Formalie's categories, most used first (forms made from their templates), then the largest."""
     sizes = Counter(t["category"] for t in SYSTEM_TEMPLATES)
-    items = [{"key": key, "count": sizes[key]} for key in TEMPLATE_CATEGORY_KEYS if sizes[key] > 0]
-    return sorted(items, key=lambda item: -item["count"])
+    forms: Counter[str] = Counter()
+    for template in SYSTEM_TEMPLATES:
+        forms[template["category"]] += (used.get(template["key"]) or {}).get("forms", 0)
+    items = [{"key": key, "count": sizes[key], "forms": forms[key]} for key in TEMPLATE_CATEGORY_KEYS if sizes[key] > 0]
+    return [{"key": i["key"], "count": i["count"]} for i in sorted(items, key=lambda i: (-i["forms"], -i["count"]))]
+
+
+async def _library(principal: Principal) -> dict[str, Any]:
+    """The workspace's own templates, themes and page designs next to Formalie's."""
+    from app.modules.design.models import PageDesign, Theme
+    from app.modules.templates.models import WorkspaceTemplate
+    from app.modules.templates.service import usage
+
+    tenant_id = principal.tenant.id
+    async with db_session("read", tenant_id=tenant_id, organisation_id=principal.tenant.organisation_id,
+                          user_id=principal.user.id) as db:
+        used = await usage(db, tenant_id)
+        mine = (await db.execute(select(func.count()).select_from(WorkspaceTemplate).where(
+            WorkspaceTemplate.tenant_id == tenant_id, WorkspaceTemplate.deleted_at.is_(None)))).scalar_one()
+        sources: dict[Any, dict[str, int]] = {}
+        for model, system in ((Theme, SYSTEM_THEME_COUNT), (PageDesign, SYSTEM_PAGE_COUNT)):
+            by = dict((await db.execute(select(model.source, func.count()).where(
+                model.tenant_id == tenant_id, model.deleted_at.is_(None)).group_by(model.source))).all())
+            sources[model] = {"total": sum(by.values()) + system, "system": system, "saved": by.get("saved", 0),
+                              "created": by.get("created", 0)}
+    return {"templates": {"total": len(SYSTEM_TEMPLATES), "mine": mine, "categories": _template_categories(used)},
+            "themes": sources[Theme], "pages": sources[PageDesign]}
 
 
 async def _forms(principal: Principal) -> tuple[dict[str, int], list[dict[str, Any]]]:
@@ -70,12 +95,11 @@ async def navigation_counts(principal: Principal = Depends(require_auth)) -> Any
         people = {"total": sum(by_status.values()), **{s: by_status.get(s, 0) for s in USER_STATUSES},
                   "departments": by_kind.get("departments", 0), "job_titles": by_kind.get("job_titles", 0)}
     forms_part, folders = await _forms(principal)
+    library = await _library(principal)
     return ok({
         "forms": forms_part,
         "responses": {"all": 0, "new": 0, "reviewed": 0, "approved": 0, "rejected": 0},
-        "templates": {"total": len(SYSTEM_TEMPLATES), "mine": 0, "categories": _template_categories()},
-        "themes": {"total": SYSTEM_THEME_COUNT, "system": SYSTEM_THEME_COUNT, "saved": 0, "created": 0},
-        "pages": {"total": SYSTEM_PAGE_COUNT, "system": SYSTEM_PAGE_COUNT, "saved": 0, "created": 0},
+        **library,
         "folders": folders,
         "destinations": {"total": 0, "failing": 0},
         "people": people,

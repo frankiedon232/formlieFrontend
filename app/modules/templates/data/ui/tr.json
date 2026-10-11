@@ -1,0 +1,424 @@
+{
+ "templates": {
+  "items": {
+   "customer_feedback": {
+    "name": "Müşteri Geri Bildirimi",
+    "description": "Müşterilerin hizmetiniz hakkında ne düşündüğünü öğrenin. Memnun olmayanlara ek bir soru sorulur."
+   },
+   "csat_nps": {
+    "name": "Müşteri Memnuniyeti (CSAT / NPS) Anketi",
+    "description": "Memnuniyeti (CSAT), çabayı ve sadakati (NPS) ölçün. Her yanıt destekçi, pasif veya eleştirmen olarak gruplanır."
+   },
+   "product_review": {
+    "name": "Ürün Değerlendirmesi",
+    "description": "Yıldız puanları, ortalama skor, fotoğraflar ve yayın onayıyla ayrıntılı ürün değerlendirmeleri toplayın."
+   },
+   "contact_lead": {
+    "name": "İletişim / Bilgi Talep Formu",
+    "description": "Her talebi konusuna göre yönlendiren basit ve samimi bir iletişim formu."
+   },
+   "quote_request": {
+    "name": "Teklif / Fiyat Talebi",
+    "description": "Müşteriler talebini oluşturur ve paket, ek hizmetler ve miktara göre tahmini bir fiyat görür."
+   },
+   "order_form": {
+    "name": "Sipariş Formu",
+    "description": "En fazla üç ürün satırı, teslimat seçimi ve anlık toplamla sipariş alın."
+   },
+   "complaint_dispute": {
+    "name": "Şikâyet / İtiraz Formu",
+    "description": "Şikâyetleri ve itirazları kanıtlar, istenen sonuç ve önceki iletişimle kaydedin."
+   },
+   "service_request": {
+    "name": "Servis Talebi",
+    "description": "Öncelik, tercih edilen zaman ve sorunun fotoğraflarıyla servis ziyareti planlayın."
+   },
+   "lead_capture_newsletter": {
+    "name": "Potansiyel Müşteri Toplama / Bülten Kaydı",
+    "description": "Onay, ilgi alanları ve kampanya takibi yerleşik olarak listenizi büyütün."
+   },
+   "return_refund": {
+    "name": "İade / Para İadesi Talebi",
+    "description": "İadeleri neden, fotoğraflar, istenen sonuç ve hesaplanan iade tutarıyla yönetin."
+   },
+   "job_application": {
+    "name": "İş Başvurusu",
+    "description": "Eksiksiz bir başvuru: kişisel bilgiler, pozisyon, özgeçmiş yükleme, maaş beklentisi ve onay."
+   },
+   "employee_onboarding": {
+    "name": "Çalışan İşe Alıştırma",
+    "description": "Yeni çalışanın ilk günden önce paylaştığı her şey: bilgiler, acil durum kişisi, ekipman ve ödeme."
+   },
+   "exit_interview": {
+    "name": "Çıkış Görüşmesi",
+    "description": "Çalışanların neden ayrıldığını ve onları neyin tutacağını, tüm çalışan deneyimine dair puanlarla öğrenin."
+   },
+   "leave_request": {
+    "name": "İzin Talebi",
+    "description": "Gün sayısı tarihlerden hesaplanarak, yerine bakacak kişi ve destekleyici belgelerle izin talep edin."
+   },
+   "performance_review": {
+    "name": "Performans Değerlendirmesi",
+    "description": "Altı yetkinliği puanlayın; ortalama skor ve değerlendirme seviyesi sizin için hesaplanır."
+   },
+   "engagement_survey": {
+    "name": "Çalışan Bağlılığı Anketi",
+    "description": "Gurur, amaç, gelişim ve destek üzerine anonim bir nabız anketi; 0 ile 100 arasında bağlılık endeksiyle."
+   },
+   "expense_reimbursement": {
+    "name": "Masraf Beyanı",
+    "description": "Fişleriyle birlikte en fazla üç masraf bildirin; toplam kendiliğinden hesaplanır."
+   },
+   "timesheet": {
+    "name": "Puantaj Formu",
+    "description": "Günlük olarak haftalık saatler, toplam ve sözleşmedeki saatlere göre fazla mesai."
+   },
+   "training_feedback": {
+    "name": "Eğitim Değerlendirmesi",
+    "description": "Bir kursun içeriğini, eğitmenini, materyallerini ve uygunluğunu ortalama skorla puanlayın."
+   },
+   "reference_check": {
+    "name": "Referans Kontrolü",
+    "description": "Referanslar için yapılandırılmış sorular, ortalamalı beceri puanları ve yeniden işe alım hakkında net bir yanıt."
+   },
+   "student_enrolment": {
+    "name": "Öğrenci Kaydı / Kabul",
+    "description": "Öğrenci ve veli bilgileri, program seçimi, önceki eğitim, belgeler ve onay."
+   },
+   "course_evaluation": {
+    "name": "Ders Değerlendirmesi",
+    "description": "Öğrenciler dersi altı ifadeyle puanlar; genel puan dersin nasıl karşılandığını gösterir."
+   },
+   "quiz_assessment": {
+    "name": "Quiz / Sınav",
+    "description": "Otomatik puanlanan çoktan seçmeli sorular; yüzde ve geçme notuyla."
+   },
+   "scholarship_application": {
+    "name": "Burs Başvurusu",
+    "description": "Akademik geçmiş, maddi ihtiyaç ve kişisel beyan; kurul için uygunluk puanıyla."
+   },
+   "permission_slip": {
+    "name": "Veli Onayı / İzin Belgesi",
+    "description": "Gezi veya etkinlik izni; sağlık notları, acil durum kişisi ve veli imzasıyla."
+   },
+   "attendance_register": {
+    "name": "Yoklama Listesi",
+    "description": "En fazla sekiz öğrenciyi var, geç veya yok olarak işaretleyin; katılım sayısı ve oranı otomatik hesaplanır."
+   },
+   "academic_survey": {
+    "name": "Akademik Anket",
+    "description": "Her düzeydeki öğrenciler için öğrenim deneyimi, destek ve iyi oluş üzerine kısa bir anket."
+   },
+   "it_support_ticket": {
+    "name": "IT Destek Talebi",
+    "description": "Bir IT sorunu bildirin; etki × aciliyet önceliği belirler, böylece doğru talepler önce ele alınır."
+   },
+   "change_request": {
+    "name": "Değişiklik Talebi",
+    "description": "Planlanan bir değişikliği etki ve olasılıktan gelen risk puanı, geri alma planı ve onayla açıklayın."
+   },
+   "asset_checkout": {
+    "name": "Demirbaş Zimmeti / Envanter",
+    "description": "Ekipman teslim ve iadesini demirbaş etiketi, durum, iade tarihi ve imzayla kaydedin."
+   },
+   "work_order": {
+    "name": "Bakım / İş Emri",
+    "description": "Konum, öncelik ve fotoğraflarla bakım talep edin; saat ve parçalar iş maliyetini verir."
+   },
+   "purchase_requisition": {
+    "name": "Satın Alma Talebi",
+    "description": "Miktar ve fiyatla en fazla dört kalem talep edin; toplam, hangi onayın gerektiğini belirler."
+   },
+   "vendor_registration": {
+    "name": "Tedarikçi Kaydı",
+    "description": "Tedarikçi kaydı için şirket, iletişim kişileri, vergi ve banka bilgileri (IBAN / SWIFT) ve belgeler."
+   },
+   "site_inspection": {
+    "name": "Saha / Yerinde Denetim Raporu",
+    "description": "Yerinde geçti / kaldı kontrolleri; başarı oranı, sonuç, bulgular ve fotoğraflarla."
+   },
+   "proof_of_delivery": {
+    "name": "Teslimat Onayı / Teslim Belgesi",
+    "description": "Neyin geldiğini, durumunu, fotoğrafı ve teslim alanın imzasını onaylayın. Hasar varsa ayrıntı istenir."
+   },
+   "quality_control": {
+    "name": "Kalite Kontrol Listesi",
+    "description": "Parti bilgileri, geçti / kaldı kriterleri ve ölçümler; başarı oranı sevk kararını verir."
+   },
+   "loan_application": {
+    "name": "Kredi Başvurusu",
+    "description": "Başvuru sahibi, istihdam ve mali durum; borç-gelir oranı ve tahmini aylık taksitle."
+   },
+   "kyc_verification": {
+    "name": "KYC / Kimlik Doğrulama",
+    "description": "Kimlik bilgileri, kimlik belgesi ve adres kanıtı; açık bir amaç ve onayla."
+   },
+   "invoice_submission": {
+    "name": "Fatura Gönderimi",
+    "description": "Tedarikçiler kalemli fatura gönderir; ara toplam, vergi ve genel toplam hesaplanır."
+   },
+   "insurance_claim": {
+    "name": "Sigorta Hasar Talebi",
+    "description": "Poliçe, olay, kanıtlar ve kalem kalem kayıplar; kalemler girildikçe talep toplamı güncellenir."
+   },
+   "nda_signoff": {
+    "name": "NDA / Sözleşme Onayı",
+    "description": "Sözleşmeyi gösterin, her ana maddeyi onaylayın ve imzalayın. Şirket adına imzalanıyorsa şirket bilgileri de alınır."
+   },
+   "risk_assessment": {
+    "name": "Risk Değerlendirmesi",
+    "description": "Her tehlikeyi olasılık × şiddete göre puanlayın; risk seviyesi hesaplanır ve risk orta veya yüksekse bir eylem planı görünür."
+   },
+   "incident_report": {
+    "name": "Olay / Kaza Raporu",
+    "description": "Ne olduğunu, kimin yaralandığını ve alınan ilk önlemleri kaydedin. Ciddi olaylar acil inceleme için işaretlenir."
+   },
+   "near_miss_report": {
+    "name": "Ramak Kala Bildirimi",
+    "description": "Ramak kala olayları hızla bildirin. Olası şiddet ve tekrarlanma önceliği belirler, böylece önleme önce gelir."
+   },
+   "safety_inspection": {
+    "name": "Güvenlik Denetimi Kontrol Listesi",
+    "description": "Uygunluk yüzdesi ve sonuçla geçti / kaldı kontrolleri; kalan kontroller ayrıntı ve fotoğraf ister."
+   },
+   "patient_intake": {
+    "name": "Hasta Kabul Formu",
+    "description": "Yeni hasta bilgileri, geliş nedeni, ağrı düzeyi, alerjiler ve boy ile kilodan hesaplanan VKİ."
+   },
+   "medical_history": {
+    "name": "Tıbbi Geçmiş",
+    "description": "Hastalıklar, ameliyatlar, ilaçlar, aile geçmişi ve yaşam tarzı; hekim için hastalık sayısıyla birlikte."
+   },
+   "health_screening": {
+    "name": "Sağlık Taraması / Beyanı",
+    "description": "Girişten önce hızlı bir evet / hayır taraması; herhangi bir \"evet\" kişiyi içeri girmeden önce incelemeye yönlendirir."
+   },
+   "consent_form": {
+    "name": "Onam Formu",
+    "description": "İmzalı, açık onay beyanları; 18 yaş altındakiler için ebeveyn veya vasi imzalar."
+   },
+   "event_registration": {
+    "name": "Etkinlik Kaydı",
+    "description": "Katılımcıları bilet türü, adet ve güncel toplamla, oturumlar ve erişim ihtiyaçlarıyla kaydedin."
+   },
+   "rsvp": {
+    "name": "Katılım Bildirimi",
+    "description": "Basit evet / hayır / belki yanıtları; kişi sayısı ve beslenme ihtiyaçları yalnızca gelenler için."
+   },
+   "appointment_booking": {
+    "name": "Randevu Alma",
+    "description": "Tercih edilen tarih ve saatte bir hizmet ayırtın; ikinci seçenek ve hatırlatıcılarla."
+   },
+   "venue_booking": {
+    "name": "Mekân / Salon Rezervasyonu",
+    "description": "Ek ekipmanlarla saatlik salon ayırtın; maliyet siz seçtikçe hesaplanır."
+   },
+   "volunteer_signup": {
+    "name": "Gönüllü Kaydı",
+    "description": "Gönüllüleri, ilgi alanlarını ve uygunluklarını toplayın; 18 yaş altı için vasi onayıyla."
+   },
+   "speaker_sponsor_application": {
+    "name": "Konuşmacı / Sponsor Başvurusu",
+    "description": "İkisi için tek form: konuşmacılar oturum önerir, sponsorlar paket ve ekleri toplamla seçer."
+   },
+   "post_event_feedback": {
+    "name": "Etkinlik Sonrası Geri Bildirim",
+    "description": "İçerik, konuşmacılar, mekân ve organizasyon için puanlar; ortalama puan ve tavsiye ile."
+   },
+   "guest_registration": {
+    "name": "Misafir Kayıt Formu",
+    "description": "Varış ve ayrılıştan hesaplanan gece sayısıyla giriş bilgileri."
+   },
+   "hotel_booking_request": {
+    "name": "Otel Rezervasyon Talebi",
+    "description": "Tarihler, oda türü ve oda sayısı geceleri ve tahmini fiyatı verir; ekstralar ve özel istekler de dahil."
+   },
+   "guest_feedback": {
+    "name": "Misafir Geri Bildirim Formu",
+    "description": "Temizlik, konfor, personel, yemek ve fiyat-performansı ortalama ve tavsiyeyle puanlayın."
+   },
+   "service_evaluation": {
+    "name": "Hizmet Değerlendirme Formu",
+    "description": "Bir departmanı veya çalışanı dört nitelikte değerlendirin; hizmet puanı yüzde olarak gösterilir."
+   },
+   "special_requirements": {
+    "name": "Özel İstekler Formu",
+    "description": "Beslenme ve erişim ihtiyaçları, alerjiler ve kutlamalar. Konaklama varıştan önce hazır olsun."
+   },
+   "event_catering_request": {
+    "name": "Etkinlik İkram Talebi",
+    "description": "Kişi başı menü ve ekstralar, misafir sayısıyla çarpılarak anında tahmin verir."
+   },
+   "restaurant_reservation": {
+    "name": "Restoran Rezervasyon Talebi",
+    "description": "Tarih, saat, kişi sayısı, oturma yeri ve vesile: ev sahibinin ihtiyacı olan her şey."
+   },
+   "hospitality_complaint": {
+    "name": "Konaklama Şikâyet Formu",
+    "description": "Misafirlerin neyin, nerede ters gittiğini ve nasıl düzeltilmesini istediklerini anlatmasını sağlayın."
+   },
+   "membership_application": {
+    "name": "Üyelik Başvurusu",
+    "description": "Bir kulübe veya derneğe katılın: üye bilgileri, üyelik türü, ekstralar ve yıllık aidat."
+   },
+   "donation_form": {
+    "name": "Bağış Formu",
+    "description": "Önerilen ya da kendi belirlediğiniz tutar, aylık veya tek seferlik, işlem ücretini karşılama seçeneğiyle."
+   },
+   "petition": {
+    "name": "Dilekçe Kampanyası",
+    "description": "Amacı anlatın, isim ve konum toplayın, insanlar bunun neden önemli olduğunu yazsın."
+   },
+   "poll_ballot": {
+    "name": "Anket / Oy Pusulası",
+    "description": "Bir soru ve sıralı tercih için kişi başı tek oy, isteğe bağlı yorumla."
+   },
+   "property_viewing": {
+    "name": "Mülk Görme Talebi",
+    "description": "Görme randevusu alın: mülk, tercih edilen iki zaman, kimin geleceği ve nasıl ulaşılacağı."
+   },
+   "tenant_application": {
+    "name": "Kiracı Başvurusu",
+    "description": "Başvuran, iş, gelir ve referanslar; ev sahibi için gelir-kira oranıyla."
+   },
+   "rental_application": {
+    "name": "Kiralama Başvurusu",
+    "description": "Belirli bir ilan için kısa başvuru: taşınma tarihi, süre, hane ve ödeme gücü."
+   },
+   "property_inspection": {
+    "name": "Mülk Denetimi",
+    "description": "Oda oda durum (iyi / orta / kötü), sayaç okumaları ve fotoğraflar, durum puanıyla."
+   },
+   "property_maintenance": {
+    "name": "Bakım Talebi",
+    "description": "Kiracılar arızayı alan, aciliyet, fotoğraf ve ne zaman gelinebileceğiyle bildirir."
+   },
+   "property_information": {
+    "name": "Mülk Bilgileri",
+    "description": "Mülk sahipleri ilan için mülkü tanımlar: tür, büyüklük, odalar, özellikler, fiyat ve fotoğraflar."
+   },
+   "landlord_information": {
+    "name": "Ev Sahibi Bilgileri",
+    "description": "İletişim, ödeme bilgileri, kiracı tercihleri ve onarımlarla kimin ilgilendiği."
+   },
+   "tenant_feedback": {
+    "name": "Kiracı Geri Bildirimi",
+    "description": "Kiracılar evi, onarımları, iletişimi ve fiyat-değeri puanlar; ortalama genel memnuniyeti gösterir."
+   },
+   "sales_lead_capture": {
+    "name": "Potansiyel Müşteri Toplama",
+    "description": "Ad, şirket, büyüklük ve ilgi alanı. Açılış sayfası için yeterince kısa, kaynak takibiyle."
+   },
+   "sales_quote_request": {
+    "name": "Teklif Talebi",
+    "description": "Plan, kullanıcı sayısı ve hizmet seçin; satış ekibi için tahmini yıllık toplam hesaplanır."
+   },
+   "sales_qualification": {
+    "name": "Satış Niteliklendirme",
+    "description": "Bütçe, yetki, ihtiyaç ve zamanlama ekip için puanlanır; sonuç sıcak / ılık / soğuk."
+   },
+   "demo_request": {
+    "name": "Ürün Demosu Talebi",
+    "description": "Canlı demo planlayın: kimler katılacak, odak konusu, saat dilimi ve tercih edilen zamanlar."
+   },
+   "customer_discovery": {
+    "name": "Müşteri Keşfi",
+    "description": "Teklif sunmadan önce hedefleri, mevcut araçları, sorunları ve başarının tanımını anlayın."
+   },
+   "proposal_request": {
+    "name": "Teklif Dosyası Talebi",
+    "description": "Kişiye özel teklif için kapsam, çıktılar, bütçe, son tarih ve karar süreci."
+   },
+   "order_request": {
+    "name": "Sipariş Talebi",
+    "description": "Kurumsal müşteriler ürün kodu ve adetle sipariş verir; hacim indirimi ve sipariş toplamıyla."
+   },
+   "sales_follow_up": {
+    "name": "Satış Takibi",
+    "description": "Bir görüşmeyi veya toplantıyı kaydedin: sonuç, satış aşaması, sonraki adım ve tarihi. Telefonda bile hızlı."
+   }
+  },
+  "categories": {
+   "business": "İş ve müşteri",
+   "hr": "İK ve çalışma ortamı",
+   "health_safety": "Sağlık ve güvenlik",
+   "events": "Etkinlikler ve rezervasyonlar",
+   "hospitality": "Konaklama ve ağırlama",
+   "education": "Eğitim",
+   "operations_it": "Operasyon ve BT",
+   "finance_legal": "Finans ve hukuk",
+   "community": "Topluluk ve diğer",
+   "real_estate": "Gayrimenkul",
+   "sales": "Satış"
+  }
+ },
+ "builder": {
+  "field": {
+   "short_text": "Kısa metin",
+   "long_text": "Uzun metin",
+   "rich_text": "Biçimli metin",
+   "email": "E-posta",
+   "phone": "Telefon",
+   "url": "Web sitesi / URL",
+   "number": "Sayı",
+   "currency": "Tutar",
+   "date": "Tarih",
+   "time": "Saat",
+   "datetime": "Tarih ve saat",
+   "date_range": "Tarih aralığı",
+   "dropdown": "Açılır liste",
+   "multi_select": "Çoklu seçim",
+   "radio": "Tek seçim",
+   "checkbox": "Onay kutuları",
+   "toggle": "Evet / Hayır",
+   "ranking": "Sıralama",
+   "matrix": "Matris / tablo",
+   "rating": "Yıldız puanı",
+   "scale": "Ölçek / NPS",
+   "slider": "Kaydırıcı",
+   "file_upload": "Dosya yükleme",
+   "image_upload": "Görsel yükleme",
+   "signature": "İmza",
+   "address": "Adres",
+   "country": "Ülke",
+   "hidden": "Gizli alan",
+   "calculated": "Hesaplanan",
+   "payment": "Ödeme",
+   "section": "Bölüm",
+   "paragraph": "Paragraf",
+   "divider": "Ayırıcı",
+   "image": "Görsel",
+   "full_name": "Ad soyad",
+   "percentage": "Yüzde",
+   "duration": "Süre",
+   "consent": "Onay / koşullar",
+   "language": "Dil",
+   "timezone": "Saat dilimi",
+   "currency_code": "Para birimi",
+   "ip_address": "IP adresi",
+   "domain": "Alan adı",
+   "mac_address": "MAC adresi",
+   "color": "Renk",
+   "iban": "IBAN",
+   "bic": "SWIFT / BIC"
+  },
+  "defaults": {
+   "option": "Seçenek {n}",
+   "row": "Satır {n}"
+  },
+  "page": {
+   "default": "Sayfa {n}",
+   "tabs": "Sayfalar",
+   "add": "Sayfa ekle",
+   "menu": "Sayfa seçenekleri",
+   "moveLeft": "Sola taşı",
+   "moveRight": "Sağa taşı",
+   "delete": "Sayfayı sil",
+   "deleteTitle": "Bu sayfa silinsin mi?",
+   "deleteDesc": "İçindeki {count} alan da silinir. Geri alabilirsiniz. | İçindeki {count} alan da silinir. Geri alabilirsiniz.",
+   "stepOf": "Adım {n}/{total}",
+   "title": "Sayfa adı",
+   "rename": "Sayfayı yeniden adlandır"
+  }
+ }
+}

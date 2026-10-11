@@ -1,0 +1,424 @@
+{
+ "templates": {
+  "items": {
+   "customer_feedback": {
+    "name": "Umpan Balik Pelanggan",
+    "description": "Ketahui pendapat pelanggan tentang layanan Anda, dengan pertanyaan lanjutan saat ada yang tidak puas."
+   },
+   "csat_nps": {
+    "name": "Survei Kepuasan Pelanggan (CSAT / NPS)",
+    "description": "Ukur kepuasan (CSAT), usaha, dan loyalitas (NPS). Setiap jawaban dikelompokkan sebagai promotor, pasif, atau detraktor."
+   },
+   "product_review": {
+    "name": "Ulasan Produk",
+    "description": "Kumpulkan ulasan produk terperinci dengan rating bintang, skor rata-rata, foto, dan persetujuan publikasi."
+   },
+   "contact_lead": {
+    "name": "Formulir Kontak / Pertanyaan",
+    "description": "Formulir kontak yang sederhana dan ramah, yang meneruskan setiap pertanyaan sesuai topiknya."
+   },
+   "quote_request": {
+    "name": "Permintaan Penawaran Harga",
+    "description": "Pelanggan menyusun permintaan dan melihat perkiraan harga berdasarkan paket, tambahan, dan jumlah."
+   },
+   "order_form": {
+    "name": "Formulir Pemesanan",
+    "description": "Terima pesanan dengan hingga tiga baris produk, pilihan pengiriman, dan total berjalan."
+   },
+   "complaint_dispute": {
+    "name": "Formulir Keluhan / Sengketa",
+    "description": "Catat keluhan dan sengketa dengan bukti, hasil yang diinginkan, dan kontak sebelumnya."
+   },
+   "service_request": {
+    "name": "Permintaan Layanan",
+    "description": "Jadwalkan kunjungan layanan dengan prioritas, waktu pilihan, dan foto masalah."
+   },
+   "lead_capture_newsletter": {
+    "name": "Pengumpulan Prospek / Pendaftaran Buletin",
+    "description": "Kembangkan daftar Anda dengan persetujuan, minat, dan pelacakan kampanye bawaan."
+   },
+   "return_refund": {
+    "name": "Permintaan Retur / Pengembalian Dana",
+    "description": "Tangani retur dengan alasan, foto, hasil yang diinginkan, dan jumlah pengembalian dana yang dihitung."
+   },
+   "job_application": {
+    "name": "Lamaran Kerja",
+    "description": "Lamaran lengkap: data pribadi, posisi, unggah CV, ekspektasi gaji, dan persetujuan."
+   },
+   "employee_onboarding": {
+    "name": "Orientasi Karyawan Baru",
+    "description": "Semua yang dibagikan karyawan baru sebelum hari pertama: data diri, kontak darurat, perlengkapan, dan pembayaran."
+   },
+   "exit_interview": {
+    "name": "Wawancara Keluar",
+    "description": "Pahami alasan orang keluar dan apa yang membuat mereka bertahan, dengan penilaian atas seluruh pengalaman karyawan."
+   },
+   "leave_request": {
+    "name": "Permohonan Cuti",
+    "description": "Ajukan cuti dengan jumlah hari yang dihitung dari tanggal, pengganti, dan dokumen pendukung."
+   },
+   "performance_review": {
+    "name": "Penilaian Kinerja",
+    "description": "Nilai enam kompetensi; skor rata-rata dan kategori penilaian dihitung untuk Anda."
+   },
+   "engagement_survey": {
+    "name": "Survei Keterlibatan Karyawan",
+    "description": "Survei singkat anonim tentang kebanggaan, tujuan, pengembangan, dan dukungan, dengan indeks keterlibatan 0 hingga 100."
+   },
+   "expense_reimbursement": {
+    "name": "Penggantian Biaya",
+    "description": "Ajukan hingga tiga pengeluaran beserta kuitansi; totalnya dijumlahkan otomatis."
+   },
+   "timesheet": {
+    "name": "Lembar Jam Kerja",
+    "description": "Jam mingguan per hari dengan total dan lembur dibandingkan jam kerja kontrak."
+   },
+   "training_feedback": {
+    "name": "Umpan Balik Pelatihan",
+    "description": "Nilai materi, pelatih, bahan, dan relevansi kursus, dengan skor rata-rata."
+   },
+   "reference_check": {
+    "name": "Pemeriksaan Referensi",
+    "description": "Pertanyaan terstruktur untuk pemberi referensi, penilaian keterampilan dengan rata-rata, dan jawaban jelas soal mempekerjakan kembali."
+   },
+   "student_enrolment": {
+    "name": "Pendaftaran / Penerimaan Siswa",
+    "description": "Data siswa dan wali, pilihan program, pendidikan sebelumnya, dokumen, dan persetujuan."
+   },
+   "course_evaluation": {
+    "name": "Evaluasi Kursus",
+    "description": "Siswa menilai kursus melalui enam pernyataan; skor keseluruhan menunjukkan bagaimana kursus diterima."
+   },
+   "quiz_assessment": {
+    "name": "Kuis / Penilaian",
+    "description": "Soal pilihan ganda yang dinilai otomatis, dengan persentase dan nilai kelulusan."
+   },
+   "scholarship_application": {
+    "name": "Pengajuan Beasiswa",
+    "description": "Catatan akademik, kebutuhan finansial, dan pernyataan pribadi, dengan skor kelayakan untuk panel."
+   },
+   "permission_slip": {
+    "name": "Persetujuan / Surat Izin Orang Tua",
+    "description": "Izin untuk perjalanan atau kegiatan dengan catatan medis, kontak darurat, dan tanda tangan wali."
+   },
+   "attendance_register": {
+    "name": "Daftar Hadir",
+    "description": "Tandai hingga delapan peserta sebagai hadir, terlambat, atau absen; jumlah dan tingkat kehadiran dihitung otomatis."
+   },
+   "academic_survey": {
+    "name": "Survei Akademik",
+    "description": "Survei singkat tentang pengalaman belajar, dukungan, dan kesejahteraan untuk siswa di semua jenjang."
+   },
+   "it_support_ticket": {
+    "name": "Tiket Dukungan IT",
+    "description": "Laporkan masalah IT; dampak × urgensi menentukan prioritas agar tiket yang tepat ditangani lebih dulu."
+   },
+   "change_request": {
+    "name": "Permintaan Perubahan",
+    "description": "Jelaskan perubahan yang direncanakan dengan skor risiko dari dampak dan kemungkinan, rencana rollback, dan persetujuan."
+   },
+   "asset_checkout": {
+    "name": "Peminjaman Aset / Inventaris",
+    "description": "Catat peminjaman atau pengembalian peralatan dengan tag aset, kondisi, tanggal kembali, dan tanda tangan."
+   },
+   "work_order": {
+    "name": "Pemeliharaan / Perintah Kerja",
+    "description": "Ajukan pemeliharaan dengan lokasi, prioritas, dan foto; jam kerja dan suku cadang menentukan biaya pekerjaan."
+   },
+   "purchase_requisition": {
+    "name": "Permintaan Pembelian",
+    "description": "Minta hingga empat barang dengan jumlah dan harga; total menentukan persetujuan yang diperlukan."
+   },
+   "vendor_registration": {
+    "name": "Registrasi Vendor / Pemasok",
+    "description": "Data perusahaan, kontak, pajak dan bank (IBAN / SWIFT), serta dokumen untuk onboarding pemasok."
+   },
+   "site_inspection": {
+    "name": "Laporan Inspeksi Lokasi / Lapangan",
+    "description": "Pemeriksaan lulus / gagal di lokasi dengan tingkat kelulusan, hasil, temuan, dan foto."
+   },
+   "proof_of_delivery": {
+    "name": "Konfirmasi / Bukti Pengiriman",
+    "description": "Konfirmasi barang yang diterima, kondisinya, foto, dan tanda tangan penerima. Jika rusak, detail akan diminta."
+   },
+   "quality_control": {
+    "name": "Checklist Kontrol Kualitas",
+    "description": "Detail batch, kriteria lulus / gagal, dan pengukuran; tingkat kelulusan menentukan keputusan rilis."
+   },
+   "loan_application": {
+    "name": "Pengajuan Pinjaman / Kredit",
+    "description": "Data pemohon, pekerjaan, dan keuangan, dengan rasio utang terhadap pendapatan dan perkiraan cicilan bulanan."
+   },
+   "kyc_verification": {
+    "name": "KYC / Verifikasi Identitas",
+    "description": "Data identitas, dokumen identitas, dan bukti alamat, dengan tujuan yang jelas dan persetujuan."
+   },
+   "invoice_submission": {
+    "name": "Pengajuan Faktur",
+    "description": "Pemasok mengajukan faktur dengan rincian item; subtotal, pajak, dan total dihitung otomatis."
+   },
+   "insurance_claim": {
+    "name": "Klaim Asuransi",
+    "description": "Polis, insiden, bukti, dan rincian kerugian; total klaim bertambah seiring item dimasukkan."
+   },
+   "nda_signoff": {
+    "name": "NDA / Penandatanganan Perjanjian",
+    "description": "Tampilkan perjanjian, konfirmasi setiap poin utama, lalu tanda tangani. Data perusahaan diminta jika menandatangani atas namanya."
+   },
+   "risk_assessment": {
+    "name": "Penilaian Risiko",
+    "description": "Beri skor setiap bahaya berdasarkan kemungkinan × keparahan; tingkat risiko dihitung otomatis dan rencana tindakan muncul saat risikonya sedang atau tinggi."
+   },
+   "incident_report": {
+    "name": "Laporan Insiden / Kecelakaan",
+    "description": "Catat apa yang terjadi, siapa yang terluka, dan tindakan pertama yang diambil. Insiden serius ditandai untuk ditinjau segera."
+   },
+   "near_miss_report": {
+    "name": "Laporan Nyaris Celaka",
+    "description": "Laporkan kejadian nyaris celaka dengan cepat. Potensi keparahan dan kemungkinan terulang menentukan prioritas agar pencegahan didahulukan."
+   },
+   "safety_inspection": {
+    "name": "Daftar Periksa Inspeksi Keselamatan",
+    "description": "Pemeriksaan lulus / gagal dengan persentase kepatuhan dan hasil; pemeriksaan yang gagal meminta detail dan foto."
+   },
+   "patient_intake": {
+    "name": "Pendaftaran Pasien",
+    "description": "Data pasien baru, alasan kunjungan, tingkat nyeri, alergi, dan BMI yang dihitung dari tinggi dan berat badan."
+   },
+   "medical_history": {
+    "name": "Riwayat Medis",
+    "description": "Penyakit, operasi, obat, riwayat keluarga, dan gaya hidup, dengan jumlah penyakit untuk tenaga medis."
+   },
+   "health_screening": {
+    "name": "Skrining / Pernyataan Kesehatan",
+    "description": "Skrining ya / tidak singkat sebelum masuk; jawaban \"ya\" mana pun membuat orang tersebut ditinjau dulu sebelum masuk."
+   },
+   "consent_form": {
+    "name": "Formulir Persetujuan",
+    "description": "Pernyataan persetujuan yang jelas dengan tanda tangan; orang tua atau wali menandatangani untuk yang berusia di bawah 18 tahun."
+   },
+   "event_registration": {
+    "name": "Pendaftaran Acara",
+    "description": "Daftarkan peserta dengan jenis tiket, jumlah, dan total berjalan, sesi, serta kebutuhan aksesibilitas."
+   },
+   "rsvp": {
+    "name": "RSVP",
+    "description": "Balasan ya / tidak / mungkin yang sederhana, dengan jumlah rombongan dan kebutuhan makanan hanya untuk yang hadir."
+   },
+   "appointment_booking": {
+    "name": "Pemesanan Janji Temu",
+    "description": "Pesan layanan pada tanggal dan jam pilihan, dengan pilihan kedua dan pengingat."
+   },
+   "venue_booking": {
+    "name": "Reservasi Tempat / Ruangan",
+    "description": "Pesan ruangan per jam dengan tambahan peralatan dan biaya yang dihitung saat Anda memilih."
+   },
+   "volunteer_signup": {
+    "name": "Pendaftaran Relawan",
+    "description": "Kumpulkan relawan, minat, dan ketersediaan mereka, dengan izin wali untuk yang di bawah 18 tahun."
+   },
+   "speaker_sponsor_application": {
+    "name": "Pengajuan Pembicara / Sponsor",
+    "description": "Satu formulir untuk keduanya: pembicara mengusulkan sesi, sponsor memilih paket dan tambahan beserta totalnya."
+   },
+   "post_event_feedback": {
+    "name": "Umpan Balik Pascaacara",
+    "description": "Penilaian untuk materi, pembicara, tempat, dan penyelenggaraan dengan skor rata-rata dan rekomendasi."
+   },
+   "guest_registration": {
+    "name": "Formulir Registrasi Tamu",
+    "description": "Data check-in dengan jumlah malam yang dihitung dari tanggal kedatangan dan keberangkatan."
+   },
+   "hotel_booking_request": {
+    "name": "Formulir Permintaan Pemesanan Hotel",
+    "description": "Tanggal, tipe kamar, dan jumlah kamar menghasilkan jumlah malam dan perkiraan harga; juga tambahan dan permintaan khusus."
+   },
+   "guest_feedback": {
+    "name": "Formulir Umpan Balik Tamu",
+    "description": "Nilai kebersihan, kenyamanan, staf, makanan, dan harga dengan rata-rata dan rekomendasi."
+   },
+   "service_evaluation": {
+    "name": "Formulir Evaluasi Layanan",
+    "description": "Evaluasi departemen atau anggota tim pada empat kualitas; skor layanan ditampilkan dalam persen."
+   },
+   "special_requirements": {
+    "name": "Formulir Kebutuhan Khusus",
+    "description": "Kebutuhan makanan dan aksesibilitas, alergi, dan perayaan, agar semuanya siap sebelum kedatangan."
+   },
+   "event_catering_request": {
+    "name": "Permintaan Katering Acara",
+    "description": "Menu dan tambahan per orang dikali jumlah tamu langsung memberi perkiraan biaya."
+   },
+   "restaurant_reservation": {
+    "name": "Permintaan Reservasi Restoran",
+    "description": "Tanggal, jam, jumlah orang, tempat duduk, dan acaranya: semua yang dibutuhkan tuan rumah."
+   },
+   "hospitality_complaint": {
+    "name": "Formulir Keluhan Layanan Tamu",
+    "description": "Biarkan tamu memberi tahu apa yang salah, di mana, dan bagaimana mereka ingin hal itu diperbaiki."
+   },
+   "membership_application": {
+    "name": "Pendaftaran Anggota",
+    "description": "Bergabung dengan klub atau asosiasi: data anggota, tingkat keanggotaan, tambahan, dan iuran tahunan."
+   },
+   "donation_form": {
+    "name": "Formulir Donasi",
+    "description": "Nominal donasi (atau nominal sendiri), bulanan atau sekali, dengan opsi menanggung biaya pemrosesan."
+   },
+   "petition": {
+    "name": "Petisi",
+    "description": "Jelaskan tujuannya, kumpulkan nama dan lokasi, dan biarkan orang menyampaikan mengapa hal ini penting bagi mereka."
+   },
+   "poll_ballot": {
+    "name": "Jajak Pendapat / Surat Suara",
+    "description": "Satu suara per orang untuk sebuah pertanyaan dan pilihan berperingkat, dengan komentar opsional."
+   },
+   "property_viewing": {
+    "name": "Permintaan Kunjungan Properti",
+    "description": "Jadwalkan kunjungan: properti, dua waktu pilihan, siapa yang datang, dan cara menghubungi mereka."
+   },
+   "tenant_application": {
+    "name": "Aplikasi Penyewa",
+    "description": "Pemohon, pekerjaan, penghasilan, dan referensi, dengan rasio penghasilan terhadap sewa untuk pemilik."
+   },
+   "rental_application": {
+    "name": "Aplikasi Sewa",
+    "description": "Aplikasi singkat untuk listing tertentu: tanggal pindah, jangka waktu, anggota rumah tangga, dan kemampuan bayar."
+   },
+   "property_inspection": {
+    "name": "Inspeksi Properti",
+    "description": "Kondisi tiap ruangan (baik / cukup / buruk), angka meteran, dan foto, dengan skor kondisi."
+   },
+   "property_maintenance": {
+    "name": "Permintaan Perbaikan",
+    "description": "Penyewa melaporkan perbaikan beserta area, tingkat urgensi, foto, dan kapan petugas bisa datang."
+   },
+   "property_information": {
+    "name": "Informasi Properti",
+    "description": "Pemilik menjelaskan properti untuk dipasarkan: jenis, luas, ruangan, fasilitas, harga, dan foto."
+   },
+   "landlord_information": {
+    "name": "Informasi Pemilik",
+    "description": "Kontak pemilik, detail pembayaran, preferensi penyewa, dan siapa yang menangani perbaikan."
+   },
+   "tenant_feedback": {
+    "name": "Masukan Penyewa",
+    "description": "Penyewa menilai hunian, perbaikan, komunikasi, dan nilai; rata-rata menunjukkan kepuasan keseluruhan."
+   },
+   "sales_lead_capture": {
+    "name": "Pengumpulan Prospek",
+    "description": "Nama, perusahaan, ukuran, dan minat. Cukup singkat untuk landing page, dengan sumber yang tercatat."
+   },
+   "sales_quote_request": {
+    "name": "Permintaan Penawaran Harga",
+    "description": "Pilih paket, jumlah pengguna, dan layanan; perkiraan total tahunan dihitung untuk tim penjualan."
+   },
+   "sales_qualification": {
+    "name": "Kualifikasi Penjualan",
+    "description": "Skor anggaran, wewenang, kebutuhan, dan waktu untuk tim, dengan hasil panas / hangat / dingin."
+   },
+   "demo_request": {
+    "name": "Permintaan Demo Produk",
+    "description": "Jadwalkan demo langsung: siapa yang hadir, fokus pembahasan, zona waktu, dan waktu pilihan."
+   },
+   "customer_discovery": {
+    "name": "Penggalian Kebutuhan Pelanggan",
+    "description": "Pahami tujuan, alat yang dipakai, kendala, dan seperti apa keberhasilan sebelum mengajukan penawaran."
+   },
+   "proposal_request": {
+    "name": "Permintaan Proposal",
+    "description": "Cakupan, hasil kerja, anggaran, tenggat, dan proses keputusan untuk proposal yang disesuaikan."
+   },
+   "order_request": {
+    "name": "Permintaan Pesanan",
+    "description": "Pelanggan bisnis memesan dengan kode produk dan jumlah, dengan diskon volume dan total pesanan."
+   },
+   "sales_follow_up": {
+    "name": "Tindak Lanjut Penjualan",
+    "description": "Catat panggilan atau rapat: hasil, tahap kesepakatan, langkah berikutnya, dan tanggalnya. Cepat di ponsel."
+   }
+  },
+  "categories": {
+   "business": "Bisnis & pelanggan",
+   "hr": "SDM & tempat kerja",
+   "health_safety": "Kesehatan & keselamatan",
+   "events": "Acara & pemesanan",
+   "hospitality": "Perhotelan",
+   "education": "Pendidikan",
+   "operations_it": "Operasional & TI",
+   "finance_legal": "Keuangan & hukum",
+   "community": "Komunitas & lainnya",
+   "real_estate": "Properti",
+   "sales": "Penjualan"
+  }
+ },
+ "builder": {
+  "field": {
+   "short_text": "Teks pendek",
+   "long_text": "Teks panjang",
+   "rich_text": "Teks berformat",
+   "email": "Email",
+   "phone": "Telepon",
+   "url": "Situs web / URL",
+   "number": "Angka",
+   "currency": "Jumlah uang",
+   "date": "Tanggal",
+   "time": "Waktu",
+   "datetime": "Tanggal & waktu",
+   "date_range": "Rentang tanggal",
+   "dropdown": "Dropdown",
+   "multi_select": "Pilihan ganda",
+   "radio": "Pilihan tunggal",
+   "checkbox": "Kotak centang",
+   "toggle": "Ya / Tidak",
+   "ranking": "Peringkat",
+   "matrix": "Matriks / tabel",
+   "rating": "Rating bintang",
+   "scale": "Skala / NPS",
+   "slider": "Penggeser",
+   "file_upload": "Unggah file",
+   "image_upload": "Unggah gambar",
+   "signature": "Tanda tangan",
+   "address": "Alamat",
+   "country": "Negara",
+   "hidden": "Kolom tersembunyi",
+   "calculated": "Terhitung",
+   "payment": "Pembayaran",
+   "section": "Bagian",
+   "paragraph": "Paragraf",
+   "divider": "Pemisah",
+   "image": "Gambar",
+   "full_name": "Nama lengkap",
+   "percentage": "Persentase",
+   "duration": "Durasi",
+   "consent": "Persetujuan / ketentuan",
+   "language": "Bahasa",
+   "timezone": "Zona waktu",
+   "currency_code": "Mata uang",
+   "ip_address": "Alamat IP",
+   "domain": "Nama domain",
+   "mac_address": "Alamat MAC",
+   "color": "Warna",
+   "iban": "IBAN",
+   "bic": "SWIFT / BIC"
+  },
+  "defaults": {
+   "option": "Opsi {n}",
+   "row": "Baris {n}"
+  },
+  "page": {
+   "default": "Halaman {n}",
+   "tabs": "Halaman",
+   "add": "Tambah halaman",
+   "menu": "Opsi halaman",
+   "moveLeft": "Geser ke kiri",
+   "moveRight": "Geser ke kanan",
+   "delete": "Hapus halaman",
+   "deleteTitle": "Hapus halaman ini?",
+   "deleteDesc": "{count} kolom di dalamnya juga dihapus. Anda bisa mengurungkannya. | {count} kolom di dalamnya juga dihapus. Anda bisa mengurungkannya.",
+   "stepOf": "Langkah {n} dari {total}",
+   "title": "Nama halaman",
+   "rename": "Ganti nama halaman"
+  }
+ }
+}

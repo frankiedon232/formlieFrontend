@@ -47,7 +47,7 @@ async def test_forms_from_start_to_finish(app) -> None:  # noqa: ANN001
         schema = full["data"]["schema"]
         assert schema["settings"]["language"] == "fr" and schema["settings"]["label_position"] == "left"
         assert schema["thank_you"]["title"] == "Merci !" and schema["pages"][0]["id"].startswith("pg_")
-        _, reply = await owner.request("POST", "/forms", body={"name": "From a template", "template_key": "customer_feedback"})
+        _, reply = await owner.request("POST", "/forms", body={"name": "From a template", "template_key": "no_such_template"})
         assert reply["error"]["details"] == [{"field": "template_key", "message": "Choose a template from the gallery."}]
 
         _, reply = await owner.request("POST", "/forms/import", body={"name": "Imported", "schema": schema})

@@ -57,9 +57,9 @@ Then stop for the owner's review. Day-to-day status lives in `PROGRESS.md`.
 
 ## B6, Design, templates and lists (F8, F9, F15)
 
-- [ ] Themes (light / dark, 21 fonts), page designs and landing pages.
-- [ ] Templates (system and workspace, save as, use).
-- [ ] Option lists: simple, with levels, large lists up to 200,000 items loaded level by level (OPTION-LISTS.md); details used in formulas and logic.
+- [x] Themes (light / dark, 21 fonts), page designs and landing pages.
+- [x] Templates (system and workspace, save as, use).
+- [x] Option lists: simple, with levels, large lists up to 200,000 items loaded level by level (OPTION-LISTS.md); details used in formulas and logic.
 
 ## B7, Public forms, sharing and links (F10)
 

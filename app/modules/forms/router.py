@@ -3,7 +3,7 @@ is FRM-GEN-1009) and is recorded in the audit trail with before / after values. 
 (F22 R2): name → rename, folder → move, dates → availability, tags → edit; lifecycle: unpublish · close · reopen →
 close, archive · unarchive → archive, restore → delete; purging → purge.
 
-Forms from a template (system templates, the workspace's own, the onboarding starters) arrive with templates (B6).
+Forms from a template: Formalie's (in the person's language) or the workspace's own (templates module).
 """
 
 from __future__ import annotations
@@ -142,11 +142,16 @@ async def form_facets(principal: Principal = Depends(require_auth)) -> Any:
         names = await Names().load(db, principal.tenant.id)
         forms = [f for f in await service.forms_of(db, principal.tenant.id)
                  if f.deleted_at is None and access.can_see(f, viewer)]
+        from app.modules.templates.service import all_templates
+
+        made_from = {f.template_key for f in forms if f.template_key}
+        templates = [{"key": t["key"], "name": t["name"]} for t in await all_templates(db, principal.tenant.id, "en", names)
+                     if t["key"] in made_from] if made_from else []
     owners = {f.owner_id: names.ref(f.owner_id) for f in forms}
     return ok({
         "owners": sorted(owners.values(), key=lambda o: o["name"].casefold()),  # type: ignore[index]
         "tags": sorted({t for f in forms for t in f.tags}),
-        "templates": [],  # the templates forms were made from: B6
+        "templates": sorted(templates, key=lambda t: t["name"].casefold()),
     })
 
 
@@ -167,16 +172,20 @@ async def get_form(form_id: str, principal: Principal = Depends(require_auth)) -
 @router.post("/forms", status_code=201, dependencies=[rate_limit("forms-create", per_minute=30)])
 async def create_form(request: Request, principal: Principal = Depends(require_auth)) -> Any:
     body = create_schema.parse(await request.json())
-    if body.get("template_key"):
-        # Templates (Formalie's, the workspace's own, the onboarding starters) arrive in B6
-        raise FrmError("FRM-GEN-1002", [{"field": "template_key", "message": "Choose a template from the gallery."}])
+    key, language = body.get("template_key"), body.get("language") or "en"
+    from app.modules.templates.service import schema_for_template
+
     async with db_session("write", **_scope(principal)) as db:
+        # Templates: Formalie's (in the person's language, over the workspace's branding) or the workspace's own
+        schema = await schema_for_template(db, principal.tenant.id, key, language) if key else blank_schema(language)
+        if schema is None:
+            raise FrmError("FRM-GEN-1002", [{"field": "template_key", "message": "Choose a template from the gallery."}])
         viewer = await viewer_for(db, principal)
         folder = service.visible_folder(viewer, body.get("folder_id"))
-        form = await service.new_form(db, viewer, name=body["name"], folder=folder,
-                                      schema=blank_schema(body.get("language") or "en"))
+        form = await service.new_form(db, viewer, name=body["name"], folder=folder, schema=schema, template_key=key)
         await service.with_form_defaults(db, form, body.get("label_position"))
-        await service.audit(db, viewer, "forms.created", form, metadata={"source": "blank"})
+        await service.audit(db, viewer, "forms.created", form,
+                            metadata={"source": "template", "template": key} if key else {"source": "blank"})
         return ok(service.summary(form, viewer, await Names().load(db, principal.tenant.id)))
 
 
