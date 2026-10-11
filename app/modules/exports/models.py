@@ -23,12 +23,12 @@ class ExportJob(UuidPkMixin, TenantMixin, AuditMixin, SoftDeleteMixin, Base):
     __tablename__ = "export_jobs"
     __table_args__ = tenant_table_args(
         CheckConstraint(f"status IN {EXPORT_STATUSES}", name="status"),
-        CheckConstraint("format IN ('xlsx', 'csv')", name="format"),
+        CheckConstraint("format IN ('xlsx', 'csv', 'pdf')", name="format"),
         Index("ix_export_jobs_creator", "tenant_id", "created_by", "created_at"),
         Index("uq_export_jobs_token", "token_hash", unique=True, postgresql_where=text("token_hash IS NOT NULL")),
     )
 
-    kind: Mapped[str] = mapped_column(String(32), nullable=False)  # audit · (responses, data sources: later)
+    kind: Mapped[str] = mapped_column(String(32), nullable=False)  # audit · responses · (data sources: later)
     format: Mapped[str] = mapped_column(String(4), nullable=False)
     file_name: Mapped[str] = mapped_column(String(200), nullable=False)
     status: Mapped[str] = mapped_column(String(10), nullable=False, server_default="queued")

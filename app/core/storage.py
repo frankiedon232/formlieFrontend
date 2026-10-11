@@ -36,3 +36,10 @@ def put(key: str, content: bytes) -> int:
 def get(key: str) -> bytes | None:
     path = _path(key)
     return path.read_bytes() if path.is_file() else None
+
+
+def remove(key: str) -> None:
+    """A file people asked to remove (an export's file): the bytes go; the row that described it stays."""
+    path = _path(key)
+    if path.is_file():
+        path.unlink()

@@ -28,15 +28,19 @@ from app.modules.exports.models import ExportJob
 log = logging.getLogger("formalie.exports")
 
 CONTENT_TYPES = {"xlsx": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                 "csv": "text/csv; charset=utf-8"}
+                 "csv": "text/csv; charset=utf-8", "pdf": "application/pdf"}
 
 # kind → async builder(db, job) → (file bytes, rows)
 Builder = Callable[[AsyncSession, ExportJob], Awaitable[tuple[bytes, int]]]
 _BUILDERS: dict[str, Builder] = {}
+# Kinds whose file is kept for some days and downloaded through links of their own (response exports: 7 days)
+_KEEP_DAYS: dict[str, int] = {}
 
 
-def register(kind: str, builder: Builder) -> None:
+def register(kind: str, builder: Builder, keep_days: int | None = None) -> None:
     _BUILDERS[kind] = builder
+    if keep_days:
+        _KEEP_DAYS[kind] = keep_days
 
 
 def _hash(token: str) -> str:
@@ -96,8 +100,15 @@ async def build(job_id: uuid.UUID, tenant_id: uuid.UUID, organisation_id: uuid.U
             await db.execute(update(ExportJob).where(ExportJob.id == job_id, ExportJob.tenant_id == tenant_id)
                              .values(status="failed", error_code="FRM-GEN-5000"))
         return
-    token = secrets.token_urlsafe(32)
     now = datetime.now(UTC)
+    if job.kind in _KEEP_DAYS:  # kept, no single link: each download asks for its own
+        async with db_session("write", **scope) as db:
+            await db.execute(update(ExportJob).where(ExportJob.id == job_id, ExportJob.tenant_id == tenant_id).values(
+                status="done", progress=100, rows=rows, file_key=key, file_size=size, ready_at=now,
+                expires_at=job.created_at + timedelta(days=_KEEP_DAYS[job.kind])))
+        log.info("export ready", extra={"export_id": str(job_id), "rows": rows, "bytes": size})
+        return
+    token = secrets.token_urlsafe(32)
     async with db_session("write", **scope) as db:
         await db.execute(update(ExportJob).where(ExportJob.id == job_id, ExportJob.tenant_id == tenant_id).values(
             status="done", progress=100, rows=rows, file_key=key, file_size=size, token_hash=_hash(token),

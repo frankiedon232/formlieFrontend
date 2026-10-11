@@ -241,12 +241,12 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 - **Guards:** `requireAuth`
 - **Audit:** `responses.export_deleted`, `responses.export_downloaded`, `responses.exported`
 
-- [ ] `POST /api/v1/forms/{id}/responses/export` (`exportFormResponses`)
-- [ ] `GET /api/v1/responses/exports` (`listResponseExports`)
-- [ ] `GET /api/v1/responses/exports/{id}` (`getResponseExport`)
-- [ ] `POST /api/v1/responses/exports/{id}/link` (`responseExportLink`)
-- [ ] `DELETE /api/v1/responses/exports/{id}` (`deleteResponseExport`)
-- [ ] `GET /api/v1/response-exports/{token}` (`downloadResponseExport`)
+- [x] `POST /api/v1/forms/{id}/responses/export` (`exportFormResponses`)
+- [x] `GET /api/v1/responses/exports` (`listResponseExports`)
+- [x] `GET /api/v1/responses/exports/{id}` (`getResponseExport`)
+- [x] `POST /api/v1/responses/exports/{id}/link` (`responseExportLink`)
+- [x] `DELETE /api/v1/responses/exports/{id}` (`deleteResponseExport`)
+- [x] `GET /api/v1/response-exports/{token}` (`downloadResponseExport`)
 
 ## `routes/responseFiles.ts`
 
