@@ -11,10 +11,11 @@ Statuses: **Done** (built and verified), **Built** (code and tests written, wait
 | B1 | Secure channel, workspaces and sign-in | **Done** (owner: "go ahead", 2026-10-11); social sign-in checked live up to the providers' pages; the owner's click-through and the frontend switch-over still to do | 20 / 20 |
 | B2 | Audit trail and logs | **Done** (owner: "continue to next", 2026-10-11) | 6 / 6 |
 | B3 | Onboarding, settings base and default data | **Done** (owner: "keep going", 2026-10-11) | 37 / 39 (form defaults theme: B5; navigation counts complete with the later areas) |
-| B4 | People, roles and access | **Built**; waiting for the owner's review | 44 / 44 |
-| B5 to B17 | See BACKEND-ROADMAP.md | Later | 0 |
+| B4 | People, roles and access | **Done** (owner: "keep going", 2026-10-11) | 44 / 44 |
+| B5 | Forms core | **Built**; waiting for the owner's review | 27 / 28 (creating from a template: B6) |
+| B6 to B17 | See BACKEND-ROADMAP.md | Later | 0 |
 
-Portal endpoints: 108 of 401 ticked in `ENDPOINTS.md`.
+Portal endpoints: 135 of 401 ticked in `ENDPOINTS.md`.
 
 ## B0, Foundation (2026-10-10)
 
@@ -91,6 +92,17 @@ Portal endpoints: 108 of 401 ticked in `ENDPOINTS.md`.
 | Ways in: profiles, personal links, shared link, approval, public join page | Done | `app/modules/people/invites.py`, migration 0010 | Emails through Mailpit |
 | My profile: profile and photo, password, authenticator app, recovery codes, phone, my sessions, tours | Done | `app/modules/people/me.py`, migration 0011 | Text messages: no SMS provider yet (B11), nothing is sent outside tests |
 
+## B5, Forms core (2026-10-11)
+
+| Item | Status | Where | Notes |
+| --- | --- | --- | --- |
+| FormSchema v1, blank forms, slugs (zod's answers) | Done | `app/modules/forms/schema.py`, `slugs.py`, `scripts/dump_forms_rules.py` | The thank-you redirect takes web addresses only |
+| Tables: folders with access, forms, immutable versions, per-form sharing | Done | migration 0012 | Purging stamps `purged_at` |
+| Form permissions (folder access, role scope, ownership, sharing) | Done | `app/modules/forms/access.py` | One answer for every route and list |
+| Forms and folders routes | Done | `app/modules/forms/router.py` | From a template: B6 |
+| Builder: draft, publish checks, versions, discard, preview, restore | Done | `app/modules/forms/builder.py` | Publish checks held to the frontend's answers |
+| Form overview, folder pages, directory, sidebar counts for forms and folders | Done | `app/modules/forms/overview.py`, `app/modules/dashboard/router.py` | Response numbers: B8 |
+
 ## Open questions
 
 - **Privacy erasure without hard deletes:** "delete a person's data" (Settings → Privacy, F14) and response retention must still remove personal data. Proposal: anonymise in place (overwrite answers and personal fields, keep the row, its relations and the audit entry). To decide before B11.
@@ -100,9 +112,12 @@ Portal endpoints: 108 of 401 ticked in `ENDPOINTS.md`.
 - **Onboarding website (frontend):** the onboarding step accepts any address zod's `z.url()` takes, including `javascript:` and `mailto:`. The backend accepts web addresses only (http, https) and answers `Invalid URL` otherwise; the frontend's check could match (Settings → Company already uses http / https only).
 - **API docs page (`/docs`):** on in development only. Its "Try it out" can't call most routes (they only take encrypted requests). Options: protect the page with a username and password, or add a development-only helper that seals requests from it. Which one?
 - **SMS provider:** codes by text message need one (for example Twilio or Vonage) before workspaces can switch them on.
+- **Thank-you redirect (frontend):** the form schema's `thank_you.redirect_url` uses zod's `z.url()`, which also takes `javascript:`. The backend takes web addresses only (http, https); the frontend's check could match.
 - **CLAUDE.md layout** still names `api_keys/` and `option_sets/`; the product now has API tokens (`/api-tokens`) and option lists (`/option-lists`).
 
 ## Log
+
+- **2026-10-11:** B5 built: form schema with zod's answers, forms tables (migration 0012), form permissions, forms and folders routes, builder (draft, publish checks, versions), overview, folder pages, directory, sidebar counts for forms. 993 tests. **Stopped for the owner's review.**
 
 - **2026-10-11:** B4 built: roles, people, ways in, my profile; migrations 0010 and 0011. 892 tests. **Stopped for the owner's review.**
 

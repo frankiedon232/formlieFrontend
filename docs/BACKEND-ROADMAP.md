@@ -51,9 +51,9 @@ Then stop for the owner's review. Day-to-day status lives in `PROGRESS.md`.
 
 ## B5, Forms core (F6, F7)
 
-- [ ] Folders, forms list with its two chart cards' data, lifecycle (draft, publish, close, reopen, archive, trash, restore), duplicate.
-- [ ] Draft autosave with `row_version`, versions and restore, publish checks (`forms/validate.ts`), FormSchema models (`forms/schema.ts`), logic and formulas (`forms/logic.ts`, `forms/formula.ts`, `forms/details.ts`).
-- [ ] Form overview and the directory.
+- [x] Folders, forms list with its two chart cards' data, lifecycle (draft, publish, close, reopen, archive, trash, restore), duplicate. The chart cards read responses and the dashboard (B8, B12); forms from a template and the mock's sample forms arrive with templates (B6).
+- [x] Draft autosave with `row_version`, versions and restore, publish checks (`forms/validate.ts`), FormSchema models (`forms/schema.ts`), logic and formulas (`forms/logic.ts`, `forms/formula.ts`, `forms/details.ts`). The publish checks are `publishIssues` (`forms/build.ts`); `validate.ts` checks answers, so it comes with submitting (B7) together with logic and formulas, which only the server's re-check of a submission needs.
+- [x] Form overview and the directory.
 
 ## B6, Design, templates and lists (F8, F9, F15)
 

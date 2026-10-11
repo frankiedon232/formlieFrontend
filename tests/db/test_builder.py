@@ -18,7 +18,7 @@ pytestmark = pytest.mark.db
 def with_field(schema: dict, key: str, label: str, **extra) -> dict:  # noqa: ANN003
     out = copy.deepcopy(schema)
     out["pages"][0]["rows"].append({"id": f"row_{key}", "fields": [
-        {"id": f"fld_{key}", "key": key, "type": "short_text", "label": label, **extra}]})
+        {"id": f"fld_{key}", "key": key, "label": label, **{"type": "short_text", **extra}}]})
     return out
 
 
@@ -95,3 +95,44 @@ async def test_draft_publish_versions(app) -> None:  # noqa: ANN001
         changes = [e["metadata"].get("change") for e in trail["data"] if e["action"] == "forms.updated"]
         assert {"draft_edited", "draft_discarded", "version_restored"} <= set(changes)
         assert changes.count("draft_edited") == 1  # one per form and person per 10 minutes
+
+
+async def test_overview_folders_and_directory(app) -> None:  # noqa: ANN001
+    sub, email = await new_workspace(app)
+    async with client_for(app, host=f"{sub}.formalie.dev") as http:
+        owner = SecureClient(http)
+        await sign_in(owner, email, PASSWORD)
+        _, folder = await owner.request("POST", "/folders", body={"name": "Sales"})
+        _, form = await owner.request("POST", "/forms", body={"name": "Leads", "folder_id": folder["data"]["id"]})
+        form = form["data"]
+        _, builder = await owner.request("GET", f"/forms/{form['id']}/builder")
+        draft = with_field(builder["data"]["schema"], "company", "Company")
+        draft = with_field(draft, "secret", "Secret", type="hidden")
+        await owner.request("PUT", f"/forms/{form['id']}/draft", body={"row_version": 1, "schema": draft})
+        await owner.request("POST", f"/forms/{form['id']}/publish", body={"row_version": 2})
+
+        status, reply = await owner.request("GET", f"/forms/{form['id']}/overview")
+        assert status == 200, reply
+        data = reply["data"]
+        assert data["structure"] == {"pages": 1, "fields": 1, "logic": 0, "calculations": 0}
+        assert data["preview"] == ["Company"] and len(data["daily"]) == 30 and data["stats"]["responses"] == 0
+        assert [v["number"] for v in data["versions"]] == [1] and "change_summary" not in data["versions"][0]
+
+        _, reply = await owner.request("GET", "/folders/overview")
+        row = reply["data"][0]
+        assert (row["name"], row["forms_count"], row["status_counts"]["published"]) == ("Sales", 1, 1)
+        assert row["owners"] == [{"id": form["owner"]["id"], "name": "Olu Ade"}] and row["completion_rate"] == 0
+        _, reply = await owner.request("GET", f"/folders/{folder['data']['id']}")
+        assert reply["data"]["name"] == "Sales"
+
+        await owner.request("POST", "/org/departments", body={"name": "Ops", "code": "OP", "description": None,
+                                                              "member_ids": []})
+        _, reply = await owner.request("GET", "/directory")
+        data = reply["data"]
+        assert data["departments"] == [{"id": data["departments"][0]["id"], "name": "Ops", "detail": "OP"}]
+        assert [r["id"] for r in data["roles"]] == ["owner", "admin", "member"]
+        assert data["users"] == [{"id": form["owner"]["id"], "name": "Olu Ade", "detail": email}]
+
+        _, counts = await owner.request("GET", "/navigation/counts")
+        assert counts["data"]["forms"] == {"all": 1, "draft": 0, "published": 1, "closed": 0, "archived": 0, "trash": 0}
+        assert [(f["name"], f["count"]) for f in counts["data"]["folders"]] == [("Sales", 1)]

@@ -108,7 +108,7 @@ All from the project folder:
 | Refresh the location databases (MaxMind; Beat also does it weekly) | `fmly\Scripts\python.exe scripts\geoip_update.py` |
 | Load request logs that went to the fallback files | `fmly\Scripts\python.exe scripts\replay_request_logs.py` |
 | Check the encryption against the frontend's own code | `fmly\Scripts\python.exe scripts\check_envelope_vectors.py` |
-| Record the frontend's rules again after its `shared/` changed, then rebuild the catalogues | `fmly\Scripts\python.exe scripts\dump_frontend_rules.py`, `fmly\Scripts\python.exe scripts\dump_settings_rules.py`, then `fmly\Scripts\python.exe scripts\gen_frontend_catalogues.py` |
+| Record the frontend's rules again after its `shared/` changed, then rebuild the catalogues | `fmly\Scripts\python.exe scripts\dump_frontend_rules.py`, `fmly\Scripts\python.exe scripts\dump_settings_rules.py`, `fmly\Scripts\python.exe scripts\dump_forms_rules.py`, then `fmly\Scripts\python.exe scripts\gen_frontend_catalogues.py` |
 | Rebuild error codes after the frontend added some | `fmly\Scripts\python.exe scripts\gen_error_codes.py` |
 | Install packages (new machine) | `fmly\Scripts\python.exe -m pip install -r requirements-dev.txt` |
 

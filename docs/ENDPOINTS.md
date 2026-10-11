@@ -88,7 +88,7 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 
 - **Guards:** `requireAuth`, `requireLevel`
 
-- [ ] `GET /api/v1/forms/{id}/overview` (`getFormOverview`)
+- [x] `GET /api/v1/forms/{id}/overview` (`getFormOverview`) (numbers from responses fill in with B8; the template with B6)
 
 ## `routes/formShare.ts`
 
@@ -259,8 +259,8 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 
 - **Guards:** `requireAuth`
 
-- [ ] `GET /api/v1/folders/overview` (`folderOverview`)
-- [ ] `GET /api/v1/folders/{id}` (`getFolder`)
+- [x] `GET /api/v1/folders/overview` (`folderOverview`)
+- [x] `GET /api/v1/folders/{id}` (`getFolder`)
 
 ## `routes/dataSources.ts`
 
@@ -541,7 +541,7 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 
 - **Guards:** `requireAuth`
 
-- [ ] `GET /api/v1/directory` (`getDirectory`)
+- [x] `GET /api/v1/directory` (`getDirectory`)
 
 ## `routes/publicForms.ts`
 
