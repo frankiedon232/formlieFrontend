@@ -56,22 +56,22 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 - **Guards:** `requireAction`, `requireAuth`, `requireFormSlot`
 - **Audit:** `forms.archived`, `forms.closed`, `forms.created`, `forms.deleted`, `forms.folder_access_changed`, `forms.folder_created`, `forms.folder_deleted`, `forms.folder_renamed`, `forms.purged`, `forms.reopened`, `forms.restored`, `forms.unarchived`, `forms.unpublished`, `forms.updated`
 
-- [ ] `GET /api/v1/forms` (`listForms`)
-- [ ] `POST /api/v1/forms` (`createForm`)
-- [ ] `GET /api/v1/forms/facets` (`formFacets`)
-- [ ] `POST /api/v1/forms/import` (`importForm`)
-- [ ] `POST /api/v1/forms/bulk` (`bulkForms`)
-- [ ] `DELETE /api/v1/forms/trash` (`emptyTrash`)
-- [ ] `GET /api/v1/forms/{id}` (`getForm`)
-- [ ] `PATCH /api/v1/forms/{id}` (`patchForm`)
-- [ ] `DELETE /api/v1/forms/{id}` (`deleteForm`)
-- [ ] `POST /api/v1/forms/{id}/duplicate` (`duplicateForm`)
-- [ ] `POST /api/v1/forms/{id}/{action}` (`formLifecycle`)
-- [ ] `GET /api/v1/folders` (`listFolders`)
-- [ ] `POST /api/v1/folders` (`createFolder`)
-- [ ] `PATCH /api/v1/folders/{id}` (`renameFolder`)
-- [ ] `DELETE /api/v1/folders/{id}` (`deleteFolder`)
-- [ ] `PUT /api/v1/folders/{id}/access` (`setFolderAccess`)
+- [x] `GET /api/v1/forms` (`listForms`) (`storage` is Formalie's own until response storage, B9)
+- [ ] `POST /api/v1/forms` (`createForm`) (blank and in a language now; from a template: B6)
+- [x] `GET /api/v1/forms/facets` (`formFacets`) (`templates` fill in with templates, B6)
+- [x] `POST /api/v1/forms/import` (`importForm`)
+- [x] `POST /api/v1/forms/bulk` (`bulkForms`)
+- [x] `DELETE /api/v1/forms/trash` (`emptyTrash`)
+- [x] `GET /api/v1/forms/{id}` (`getForm`)
+- [x] `PATCH /api/v1/forms/{id}` (`patchForm`)
+- [x] `DELETE /api/v1/forms/{id}` (`deleteForm`)
+- [x] `POST /api/v1/forms/{id}/duplicate` (`duplicateForm`)
+- [x] `POST /api/v1/forms/{id}/{action}` (`formLifecycle`)
+- [x] `GET /api/v1/folders` (`listFolders`)
+- [x] `POST /api/v1/folders` (`createFolder`)
+- [x] `PATCH /api/v1/folders/{id}` (`renameFolder`)
+- [x] `DELETE /api/v1/folders/{id}` (`deleteFolder`)
+- [x] `PUT /api/v1/folders/{id}/access` (`setFolderAccess`)
 
 ## `routes/formInvites.ts`
 

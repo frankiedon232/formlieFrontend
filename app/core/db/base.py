@@ -48,6 +48,10 @@ class TenantMixin:
 
 
 class AuditMixin:
+    # The database sets created_at / updated_at: read them back with the INSERT / UPDATE itself (RETURNING), so an
+    # async session never has to load them later on its own
+    __mapper_args__ = {"eager_defaults": True}
+
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
     updated_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False
