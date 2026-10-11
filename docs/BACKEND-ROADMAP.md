@@ -77,11 +77,12 @@ Then stop for the owner's review. Day-to-day status lives in `PROGRESS.md`.
 - [x] Connections per engine (plan-limited), encrypted credentials, test.
 - [x] Response storage in Formalie's prefixed tables in the customer's database (`datasources/ddl.ts`), Celery writers, retries, failures surfaced.
 - [x] Explorer (schema, rows, edits), query editor with safety checks and limits, saved queries, activity (the dashboard's Data sources view comes with B12).
-- [ ] Destinations and webhooks (HMAC, retries, dead-letter queue).
+- [x] Destinations: response storage above. Webhooks moved to B10 (2026-10-11): each delivery sends a webhook token from the API service's Tokens & headers and names answers like the API endpoints, both built in B10.
 
 ## B10, API service (F13)
 
 - [ ] Management: services, endpoints, field choices, tokens (static and client credentials), access rules, allowed websites, traffic, docs.
+- [ ] Webhooks (moved from B9): response events to the organisation's address with its webhook token, retries after 1, 5, 15, 60 and 360 minutes, a pause after 20 failures in a row, delivery logs with personal answers masked, send again (`routes/webhooks.ts`).
 - [ ] The public gateway on `api.formalie.*` as its own service: the order of checks in ENDPOINTS.md, CORS preflights, idempotent POST, signing, rate limits, traffic logs.
 
 ## B11, Settings, the rest (F14)

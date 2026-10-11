@@ -222,6 +222,8 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 
 ## `routes/webhooks.ts`
 
+Built with B10 (moved from B9): a webhook sends a webhook token from the API service's Tokens & headers and names answers like the API endpoints.
+
 - **Guards:** `requireAdmin`
 - **Audit:** `api.token_created`, `integrations.webhook_created`, `integrations.webhook_deleted`, `integrations.webhook_disabled`, `integrations.webhook_enabled`, `integrations.webhook_resent`, `integrations.webhook_updated`
 
