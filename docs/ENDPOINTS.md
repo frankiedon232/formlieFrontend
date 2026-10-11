@@ -307,10 +307,10 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 - [x] `GET /api/v1/datasources/{id}/explorer/columns` (`tableColumns`)
 - [x] `GET /api/v1/datasources/{id}/explorer/rows` (`tableRows`)
 - [x] `GET /api/v1/datasources/{id}/explorer/facets` (`tableFacets`)
-- [ ] `POST /api/v1/datasources/{id}/explorer/exports` (`startTableExport`)
-- [ ] `GET /api/v1/explorer-exports/{id}` (`getTableExport`)
-- [ ] `POST /api/v1/explorer-exports/{id}/link` (`tableExportLink`)
-- [ ] `GET /api/v1/datasource-exports/{token}` (`downloadTableExport`)
+- [x] `POST /api/v1/datasources/{id}/explorer/exports` (`startTableExport`)
+- [x] `GET /api/v1/explorer-exports/{id}` (`getTableExport`)
+- [x] `POST /api/v1/explorer-exports/{id}/link` (`tableExportLink`)
+- [x] `GET /api/v1/datasource-exports/{token}` (`downloadTableExport`)
 - [x] `POST /api/v1/datasources/{id}/explorer/rows` (`insertRow`)
 - [x] `PATCH /api/v1/datasources/{id}/explorer/rows` (`updateRow`)
 - [x] `DELETE /api/v1/datasources/{id}/explorer/rows` (`deleteRow`)
@@ -328,16 +328,16 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 - **Guards:** `requireAdmin`
 - **Audit:** `data.query_exported`, `data.query_run`
 
-- [ ] `POST /api/v1/datasources/{id}/query` (`runQuery`)
-- [ ] `GET /api/v1/datasources/{id}/query-history` (`queryHistory`)
-- [ ] `DELETE /api/v1/datasources/{id}/query-history` (`clearQueryHistory`)
-- [ ] `POST /api/v1/datasources/{id}/query/export` (`exportQuery`)
+- [x] `POST /api/v1/datasources/{id}/query` (`runQuery`)
+- [x] `GET /api/v1/datasources/{id}/query-history` (`queryHistory`)
+- [x] `DELETE /api/v1/datasources/{id}/query-history` (`clearQueryHistory`)
+- [x] `POST /api/v1/datasources/{id}/query/export` (`exportQuery`)
 
 ## `routes/dataActivity.ts`
 
 - **Guards:** `requireAdmin`
 
-- [ ] `GET /api/v1/datasources/activity/insights` (`dataActivityInsights`)
+- [x] `GET /api/v1/datasources/activity/insights` (`dataActivityInsights`)
 
 ## `routes/help.ts`
 
@@ -405,12 +405,12 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 - **Guards:** `requireAdmin`
 - **Audit:** `data.saved_query_deleted`, `data.saved_query_saved`
 
-- [ ] `GET /api/v1/saved-queries` (`listSavedQueries`)
-- [ ] `GET /api/v1/saved-queries/insights` (`savedQueryInsights`)
-- [ ] `GET /api/v1/saved-queries/{id}` (`getSavedQuery`)
-- [ ] `POST /api/v1/saved-queries` (`createSavedQuery`)
-- [ ] `PATCH /api/v1/saved-queries/{id}` (`updateSavedQuery`)
-- [ ] `DELETE /api/v1/saved-queries/{id}` (`deleteSavedQuery`)
+- [x] `GET /api/v1/saved-queries` (`listSavedQueries`)
+- [x] `GET /api/v1/saved-queries/insights` (`savedQueryInsights`)
+- [x] `GET /api/v1/saved-queries/{id}` (`getSavedQuery`)
+- [x] `POST /api/v1/saved-queries` (`createSavedQuery`)
+- [x] `PATCH /api/v1/saved-queries/{id}` (`updateSavedQuery`)
+- [x] `DELETE /api/v1/saved-queries/{id}` (`deleteSavedQuery`)
 
 ## `routes/library.ts`
 
@@ -678,7 +678,7 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 
 - **Guards:** `requireAuth`
 
-- [ ] `GET /api/v1/dashboard/data` (`dataDashboard`)
+- [ ] `GET /api/v1/dashboard/data` (`dataDashboard`) (with the other dashboard views, B12)
 
 ## `routes/dashboardApi.ts`
 

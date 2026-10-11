@@ -16,10 +16,10 @@ Statuses: **Done** (built and verified), **Built** (code and tests written, wait
 | B6 | Design, templates and lists | **Done** (owner: "continue", 2026-10-11) | 38 / 38 |
 | B7 | Public forms, sharing and links | **Done** (owner: "continue", 2026-10-11) | 24 / 24 |
 | B8 | Responses | **Done** (owner: "CONTINUE", 2026-10-11) | 23 / 23 |
-| B9 | Data sources and destinations | **In progress**: connections and response storage built; explorer, query and webhooks next | 33 / 59 so far |
+| B9 | Data sources and destinations | **In progress**: connections, response storage, explorer and Query editor built; webhooks next | 48 / 59 so far |
 | B10 to B17 | See BACKEND-ROADMAP.md | Later | 0 |
 
-Portal endpoints: 255 of 411 ticked in `ENDPOINTS.md`.
+Portal endpoints: 270 of 411 ticked in `ENDPOINTS.md`.
 
 ## B0, Foundation (2026-10-10)
 
@@ -154,7 +154,8 @@ Still to come with later phases: the log of sent emails and a workspace's own se
 | Connections: engines per plan, field checks, encrypted secrets, tests step by step, health checks | Done | `app/modules/data_sources/`, migrations 0023 and 0024 | Rules with the frontend's answers (1,377 cases); tested live against PostgreSQL; MariaDB live once `setup-mariadb.sh` has run; SQL Server and Oracle checked against the frontend's answers only |
 | Response storage: a table Formalie creates or an existing one, writing every response, edits, pause, retries, backfills, new columns | Done | `app/modules/destinations/`, `app/modules/data_sources/tables.py`, `catalog.py`, migration 0025 | Table rules with the frontend's answers (261 tests); tested live against PostgreSQL end to end |
 | Explorer: tree, structure, rows, filters, row changes, structure changes | Done | `app/modules/explorer/`, `app/modules/data_sources/sql.py`, `ddl.py` | Rules with the frontend's answers; one page per query, a count up to 10,000, a 5 second limit per statement; tested live against PostgreSQL |
-| Explorer exports, query editor, saved queries, activity, the Data sources dashboard | Next | | |
+| Exports (CSV, Excel, JSON, SQL), Query editor, history, saved queries, Activity | Done | `app/modules/explorer/exports.py`, `app/modules/query/`, `app/modules/data_sources/runner.py`, migration 0026 | Parameters bound by the database (typed on PostgreSQL); reading in a read-only transaction with a row cap; a changing statement's estimate from a dry run rolled back; exports are export jobs with one-time 5-minute links; tested live against PostgreSQL |
+| The dashboard's Data sources view | With B12 | | It shares its periods and buckets with the other dashboard views |
 | Webhooks (HMAC, retries, dead-letter queue) | Next | | |
 
 How a response reaches a customer's table: its delivery is recorded in the same transaction as the response, then the worker writes it right after the commit (`destinations` queue); Beat's sweep (every 30 seconds) sends what was missed and retries failures after 1 min, 5 min, 15 min, 1 h, then every 6 h. An edit or a review change sends the response again when the table keeps one row per response (update-or-insert, found by its key column first, so no unique index is needed on their tables). Files are written as links to the response in the workspace (signing in shows them); the files themselves never leave Formalie.
@@ -177,6 +178,8 @@ How a response reaches a customer's table: its delivery is recorded in the same 
 - **CLAUDE.md layout** still names `api_keys/` and `option_sets/`; the product now has API tokens (`/api-tokens`) and option lists (`/option-lists`).
 
 ## Log
+
+- **2026-10-11:** B9 step 3: the explorer (tree, structure, rows, filters, row and structure changes), its exports, the Query editor (runs, history, exports), saved queries and Activity; migration 0026. 17,378 tests.
 
 - **2026-10-11:** B9 steps 1 and 2: data source connections (0023, 0024) and response storage in customers' databases (0025): tables created or mapped, deliveries with retries, backfills, new columns, storage marks on the form and response lists, sidebar counts complete. 17,320 tests.
 

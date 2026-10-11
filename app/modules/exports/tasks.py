@@ -13,6 +13,7 @@ from app.workers.celery_app import celery_app
 async def _run(job_id: str, tenant_id: str, organisation_id: str) -> None:
     import app.modules.audit.export  # noqa: F401  (registers the audit trail's file)
     import app.modules.responses.exports  # noqa: F401  (registers responses' files)
+    import app.modules.explorer.exports  # noqa: F401  (registers the explorer's and the Query editor's files)
 
     try:
         await service.build(uuid.UUID(job_id), uuid.UUID(tenant_id), uuid.UUID(organisation_id))

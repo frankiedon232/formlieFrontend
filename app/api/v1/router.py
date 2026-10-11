@@ -9,7 +9,9 @@ from app.modules.auth.router import router as auth_router
 from app.modules.dashboard.router import router as navigation_router
 from app.modules.data_sources.router import router as data_sources_router
 from app.modules.destinations.router import router as destinations_router
+from app.modules.explorer.exports import router as explorer_exports_router
 from app.modules.explorer.router import router as explorer_router
+from app.modules.query.router import router as query_router
 from app.modules.design.router import router as design_router
 from app.modules.exports.router import router as exports_router
 from app.modules.forms.builder import router as builder_router
@@ -58,6 +60,8 @@ api_router.include_router(design_router)
 api_router.include_router(data_sources_router)
 api_router.include_router(destinations_router)
 api_router.include_router(explorer_router)
+api_router.include_router(explorer_exports_router)
+api_router.include_router(query_router)
 api_router.include_router(lists_router)
 api_router.include_router(templates_router)
 api_router.include_router(notifications_router)

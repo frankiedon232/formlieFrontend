@@ -76,7 +76,7 @@ Then stop for the owner's review. Day-to-day status lives in `PROGRESS.md`.
 
 - [x] Connections per engine (plan-limited), encrypted credentials, test.
 - [x] Response storage in Formalie's prefixed tables in the customer's database (`datasources/ddl.ts`), Celery writers, retries, failures surfaced.
-- [ ] Explorer (schema, rows, edits), query editor with safety checks and limits, saved queries, activity.
+- [x] Explorer (schema, rows, edits), query editor with safety checks and limits, saved queries, activity (the dashboard's Data sources view comes with B12).
 - [ ] Destinations and webhooks (HMAC, retries, dead-letter queue).
 
 ## B10, API service (F13)

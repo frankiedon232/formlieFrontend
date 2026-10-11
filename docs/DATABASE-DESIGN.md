@@ -215,9 +215,9 @@ Source: `shared/types/datasources.ts`, `destinations.ts`, `query.ts`, `explorer.
 | `response_destinations` | form_id (one per form), datasource_id, table_schema, table_name, table_created, columns jsonb (`DestinationColumn[]`: column, type, source field or meta, nullable, existing), settings jsonb (write_mode `insert` / `upsert`, key_column, multi_value `json` / `text`, choices `value` / `label`), paused_at, covers_from, row_version |
 | `destination_deliveries` | destination_id, response_id, response_submitted_at, status (`pending`, `sent`, `failed`, `held`), attempts, error_code, at (last attempt), sent_at, next_attempt_at. Recorded with the response (same transaction); a response without one is `not_sent` (before the destination covered it). Retries wait 1 min, 5 min, 15 min, 1 h, then 6 h |
 | `destination_backfills` | destination_id, range_from, range_to, total, done, status (`running`, `done`), started_at, finished_at |
-| `saved_queries` | name, description, sql, datasource_id, shared, owner_id, last_run_at |
+| `saved_queries` | name, description, sql, datasource_id, shared, owner_id, last_run_at, deleted_at |
 | `saved_query_runs_daily` | saved_query_id, day, runs |
-| `query_history` | user_id, datasource_id, sql, kind, ran_at, duration_ms, rows, ok, error_code. Last 50 per person and connection |
+| `query_history` | user_id, datasource_id, sql, kind, ran_at, duration_ms, rows, ok, error_code, deleted_at (cleared). The editor shows the last 50 per person and connection |
 
 **In the customer's database** (not Formalie's): one table per form named `{prefix}{form}` in `tables_schema`, with the meta columns `response_id` (key), `submitted_at`, `form_version`, `language`, `response_number`, `respondent_email`, `review_status`, then one column per mapped question. Explorer row edits and structure changes (create, alter, truncate, drop) run directly against the customer's database; Formalie keeps no copy, only the `audit_logs` entry (area `data`, before / after) that feeds Data sources → Activity.
 

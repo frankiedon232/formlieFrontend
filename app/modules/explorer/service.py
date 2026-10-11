@@ -300,16 +300,16 @@ def _where(engine: str, c: Connection, columns: list[dict[str, Any]], q: str, fi
     return f" WHERE {' AND '.join(parts)}" if parts else ""
 
 
-async def rows(c: Connection, engine: str, struct: dict[str, Any], query: dict[str, str], page: int,
-               page_size: int) -> tuple[list[dict[str, Any]], int, bool]:
-    """One page of rows, the count (up to 10,000) and whether it was capped."""
+def _select(c: Connection, engine: str, struct: dict[str, Any], query: dict[str, Any]) -> tuple[str, str, str, list[Any]]:
+    """(columns, FROM … WHERE …, ORDER BY …, params) for the list's search, filters and sort."""
     columns = struct["columns"]
     names = [col["name"] for col in columns]
-    filters = {k[7:-1]: v for k, v in query.items() if k.startswith("filter[") and k.endswith("]")}
+    raw = query.get("filter")
+    filters = dict(raw) if isinstance(raw, dict) else {k[7:-1]: v for k, v in query.items() if k.startswith("filter[") and k.endswith("]")}
     params: list[Any] = []
-    where = _where(engine, c, columns, (query.get("q") or "").strip(), filters, params)
+    where = _where(engine, c, columns, js.to_string(query.get("q") or "").strip(), filters, params)
     target = T.qualified(engine, struct["schema"], struct["name"])
-    sort = query.get("sort") or ""
+    sort = js.to_string(query.get("sort") or "")
     order = []
     key = sort.lstrip("-")
     if key in names:
@@ -321,19 +321,40 @@ async def rows(c: Connection, engine: str, struct: dict[str, Any], query: dict[s
     if not order and engine in ("sqlserver", "oracle"):
         order.append("(SELECT NULL)" if engine == "sqlserver" else "ROWNUM")
     order_by = f" ORDER BY {', '.join(order)}" if order else ""
-    listed = ", ".join(_q(engine, n) for n in names)
+    return ", ".join(_q(engine, n) for n in names), f" FROM {target}{where}", order_by, params
+
+
+async def select_rows(c: Connection, engine: str, struct: dict[str, Any], query: dict[str, Any], limit: int,
+                      offset: int) -> list[dict[str, Any]]:
+    """Rows of the list, `limit` from `offset`, as the browser gets them (with `__key`)."""
+    listed, source, order_by, params = _select(c, engine, struct, query)
     try:
-        found = await c.fetch(f"SELECT {listed} FROM {target}{where}{order_by}{_page(engine, page_size, (page - 1) * page_size)}",
-                              params)
-        counted = await c.fetch(_capped(engine, f"SELECT 1 FROM {target}{where}", COUNT_CAP + 1), params)
+        found = await c.fetch(f"SELECT {listed}{source}{order_by}{_page(engine, limit, offset)}", params)
     except Exception as error:  # noqa: BLE001
         raise _failed(error) from None
-    total = int(counted[0]["n"]) if counted else 0
     out = []
     for r in found:
-        row = {n: plain(r.get(n) if n in r else r.get(n.lower())) for n in names}
+        row = {col["name"]: plain(r[col["name"]] if col["name"] in r else r.get(col["name"].lower())) for col in struct["columns"]}
         out.append({**row, "__key": key_of(struct["primary_key"], row)})
-    return out, min(total, COUNT_CAP), total > COUNT_CAP
+    return out
+
+
+async def count_rows(c: Connection, engine: str, struct: dict[str, Any], query: dict[str, Any], cap: int = COUNT_CAP) -> int:
+    """How many rows match, counted up to `cap` + 1."""
+    _, source, _, params = _select(c, engine, struct, query)
+    try:
+        counted = await c.fetch(_capped(engine, f"SELECT 1{source}", cap + 1), params)
+    except Exception as error:  # noqa: BLE001
+        raise _failed(error) from None
+    return int(counted[0]["n"]) if counted else 0
+
+
+async def rows(c: Connection, engine: str, struct: dict[str, Any], query: dict[str, Any], page: int,
+               page_size: int) -> tuple[list[dict[str, Any]], int, bool]:
+    """One page of rows, the count (up to 10,000) and whether it was capped."""
+    found = await select_rows(c, engine, struct, query, page_size, (page - 1) * page_size)
+    total = await count_rows(c, engine, struct, query)
+    return found, min(total, COUNT_CAP), total > COUNT_CAP
 
 
 async def facets(c: Connection, engine: str, struct: dict[str, Any]) -> list[dict[str, Any]]:
