@@ -1,8 +1,8 @@
 """Workspace settings: Formalie's defaults (port of the mock's data/settingsStore.ts seed) and reading a section.
 
-B1 reads company, branding, localisation, signin and security; the other sections and their validation
-(shared/utils/settings/schemas.ts) arrive with their pages (B3, B11). A section with no row yet reads as its
-default, exactly like the mock fills in a section it doesn't have.
+All ten sections (shared/types/settings.ts SETTINGS_SECTIONS). A section with no row yet reads as its default,
+exactly like the mock fills in a section it doesn't have. Saving: `save_section` (validated by the caller with
+app/modules/settings/schemas.py); who saved it last is the row's updated_by and updated_at.
 """
 
 from __future__ import annotations
@@ -11,11 +11,14 @@ import copy
 import uuid
 from typing import Any
 
+from datetime import UTC, datetime
+
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.locales import APP_LOCALE_CODES
 from app.core.security.passwords import DEFAULT_PASSWORD_POLICY
+from app.modules.settings.catalogues import FORMALIE_APPEARANCE, NOTIFICATION_EVENTS, SETTINGS_SECTIONS
 from app.modules.settings.models import WorkspaceSetting
 
 
@@ -41,7 +44,24 @@ def defaults(*, name: str, website: str | None = None, signin_methods: list[str]
             "sessions": {"idle_minutes": 60, "max_hours": 168},
             "ip_allowlist": {"enabled": False, "entries": []},
         },
+        # Responses in the app for everyone; problems also by email to admins (F14 M4)
+        "notifications": {
+            "events": {event: {"in_app": True, "email": event in _EMAILED, "to": "everyone" if event == "response_new"
+                               else "admins", "people": []} for event in NOTIFICATION_EVENTS},
+            "digest": {"enabled": False, "hour": 8},
+        },
+        "emails": {"sender_name": None, "reply_to": None, "footer": None, "custom": {}},
+        # Keep responses; no notice or consent line until set (F14 M5)
+        "privacy": {"retention_days": 0, "notice_url": None, "consent": False, "consent_text": None},
+        "form_defaults": {
+            "settings": {"progress_bar": True, "save_resume": False, "field_icons": True, "label_position": "top"},
+            "theme_id": None, "thank_you": {"title": None, "message": None}, "team_emails": [], "embed_domains": [],
+        },
+        "appearance": copy.deepcopy(FORMALIE_APPEARANCE),
     }
+
+
+_EMAILED = ("form_limit", "form_closing", "webhook_failing", "security_alert")
 
 
 _FALLBACK = defaults(name="")
@@ -60,3 +80,38 @@ async def get_section(session: AsyncSession, tenant_id: uuid.UUID, section: str)
 def seed_rows(tenant_id: uuid.UUID, organisation_id: uuid.UUID, sections: dict[str, dict[str, Any]]) -> list[WorkspaceSetting]:
     return [WorkspaceSetting(tenant_id=tenant_id, organisation_id=organisation_id, section=name, value=value)
             for name, value in sections.items()]
+
+
+async def all_settings(session: AsyncSession, tenant_id: uuid.UUID) -> dict[str, Any]:
+    """GET /settings: every section, and who changed each one last ({at, by} or null)."""
+    from app.modules.users.models import User
+
+    rows = {r.section: r for r in (await session.execute(
+        select(WorkspaceSetting).where(WorkspaceSetting.tenant_id == tenant_id))).scalars()}
+    editors = {u.id: f"{u.first_name} {u.last_name}".strip() for u in (await session.execute(
+        select(User).where(User.id.in_([r.updated_by for r in rows.values() if r.updated_by])))).scalars()}
+    out: dict[str, Any] = {}
+    updated: dict[str, Any] = {}
+    for section in SETTINGS_SECTIONS:
+        row = rows.get(section)
+        out[section] = row.value if row is not None else copy.deepcopy(_FALLBACK[section])
+        updated[section] = ({"at": row.updated_at.astimezone(UTC).isoformat(timespec="milliseconds").replace("+00:00", "Z"),
+                             "by": editors.get(row.updated_by, "")} if row is not None and row.updated_by else None)
+    out["updated"] = updated
+    return out
+
+
+async def save_section(session: AsyncSession, tenant_id: uuid.UUID, organisation_id: uuid.UUID, section: str,
+                       value: dict[str, Any], user_id: uuid.UUID) -> dict[str, Any]:
+    row = (await session.execute(select(WorkspaceSetting).where(
+        WorkspaceSetting.tenant_id == tenant_id, WorkspaceSetting.section == section))).scalar_one_or_none()
+    if row is None:
+        row = WorkspaceSetting(tenant_id=tenant_id, organisation_id=organisation_id, section=section, value=value,
+                               created_by=user_id)
+        session.add(row)
+    else:
+        row.value = value
+        row.row_version += 1
+    row.updated_by, row.updated_at = user_id, datetime.now(UTC)
+    await session.flush()
+    return value

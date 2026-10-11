@@ -65,5 +65,33 @@ def main() -> None:
           ])
 
 
+def settings_catalogues() -> None:
+    path = ROOT / "tests" / "vectors" / "settings_rules.json"
+    if not path.exists():
+        return
+    r = json.loads(path.read_text(encoding="utf-8"))
+    write("app/modules/settings/catalogues.py", "What the workspace settings choose from.",
+          "shared/types (onboarding, appearance, emails, notifications, privacy, settings) and utils/platform/countries", [
+              ("SETTINGS_SECTIONS", tuple(r["settings_sections"])),
+              ("INDUSTRIES", tuple(r["industries"])),
+              ("COMPANY_SIZES", tuple(r["company_sizes"])),
+              ("DATE_FORMATS", tuple(r["date_formats"])),
+              ("NUMBER_FORMATS", tuple(r["number_formats"])),
+              ("APPEARANCE_PRIMARIES", tuple(r["appearance_primaries"])),
+              ("APPEARANCE_NEUTRALS", tuple(r["appearance_neutrals"])),
+              ("APPEARANCE_RADII", tuple(r["appearance_radii"])),
+              ("APPEARANCE_FONTS", tuple(r["appearance_fonts"])),
+              ("FORMALIE_APPEARANCE", r["formalie_appearance"]),
+              ("EMAIL_TEMPLATES", tuple(r["email_templates"])),
+              ("NOTIFICATION_EVENTS", tuple(r["notification_events"])),
+              ("RETENTION_DAYS", tuple(r["retention_days"])),
+              ("IDLE_MINUTES", tuple(r["idle_minutes"])),
+              ("MAX_SESSION_HOURS", tuple(r["max_session_hours"])),
+              ("COUNTRY_CURRENCIES", r["country_currencies"]),
+              ("CURRENCY_CODES", tuple(r["currency_codes"])),
+          ])
+
+
 if __name__ == "__main__":
     main()
+    settings_catalogues()

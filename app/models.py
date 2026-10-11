@@ -11,4 +11,5 @@ def import_all_models() -> None:
     import app.modules.logs.models  # noqa: F401
     import app.modules.settings.models  # noqa: F401
     import app.modules.tenants.models  # noqa: F401
+    import app.modules.uploads.models  # noqa: F401
     import app.modules.users.models  # noqa: F401

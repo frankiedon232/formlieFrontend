@@ -255,3 +255,56 @@ async def require_auth(request: Request) -> Principal:
     if ctx is not None:
         ctx.user_id, ctx.session_id = user.id, session.id
     return principal
+
+
+async def require_admin(request: Request) -> Principal:
+    """requireAdmin(): the route's own permission when it has one (checked by require_auth), otherwise someone who
+    manages the workspace (`settings.manage`)."""
+    principal = await require_auth(request)
+    path = request.url.path
+    prefix = get_settings().api_prefix
+    if permission_for(request.method, path[len(prefix):] if path.startswith(prefix) else path) is None \
+            and not principal.can("settings.manage"):
+        raise FrmError("FRM-PERM-1001")
+    return principal
+
+
+async def active_sessions(db: AsyncSession, tenant_id: uuid.UUID, current: uuid.UUID | None) -> list[dict[str, Any]]:
+    """activeSessions(): the workspace's open sessions within its limits, most recently active first."""
+    idle, longest = await _limits(db, tenant_id)
+    now = _now()
+    rows = (await db.execute(
+        select(UserSession, User).join(User, (User.id == UserSession.user_id) & (User.tenant_id == UserSession.tenant_id))
+        .where(UserSession.tenant_id == tenant_id, UserSession.revoked_at.is_(None), UserSession.deleted_at.is_(None),
+               UserSession.last_active_at >= now - idle, UserSession.started_at >= now - longest)
+        .order_by(UserSession.last_active_at.desc()))).all()
+
+    def iso(value: datetime) -> str:
+        return value.astimezone(UTC).isoformat(timespec="milliseconds").replace("+00:00", "Z")
+
+    return [{
+        "id": str(s.id), "user": {"name": f"{u.first_name} {u.last_name}".strip(), "email": u.email},
+        "current": s.id == current, "started_at": iso(s.started_at), "last_active_at": iso(s.last_active_at),
+        "ip": str(s.ip) if s.ip else "unknown", "device": s.device or {"type": "unknown", "browser": None, "os": None},
+    } for s, u in rows]
+
+
+async def revoke_sessions(db: AsyncSession, tenant_id: uuid.UUID, *, ids: list[uuid.UUID] | None,
+                          keep: uuid.UUID | None, reason: str = "signed_out_by_admin") -> list[tuple[UserSession, User]]:
+    """revokeSessions(): the chosen open sessions (or all) of the workspace, never `keep` (the caller's own)."""
+    query = (select(UserSession, User)
+             .join(User, (User.id == UserSession.user_id) & (User.tenant_id == UserSession.tenant_id))
+             .where(UserSession.tenant_id == tenant_id, UserSession.revoked_at.is_(None),
+                    UserSession.deleted_at.is_(None)))
+    if keep is not None:
+        query = query.where(UserSession.id != keep)
+    if ids is not None:
+        query = query.where(UserSession.id.in_(ids))
+    ended = [(row[0], row[1]) for row in (await db.execute(query)).all()]
+    now = _now()
+    for session, _ in ended:
+        session.revoked_at, session.revoked_reason = now, reason
+    if ended:
+        await db.execute(update(RefreshToken).where(RefreshToken.session_id.in_([s.id for s, _ in ended]),
+                                                    RefreshToken.revoked_at.is_(None)).values(revoked_at=now))
+    return ended

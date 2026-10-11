@@ -1,0 +1,6069 @@
+{
+ "industries": [
+  "professional_services",
+  "legal",
+  "finance",
+  "healthcare",
+  "education",
+  "government",
+  "non_profit",
+  "technology",
+  "retail",
+  "manufacturing",
+  "hospitality",
+  "real_estate",
+  "logistics",
+  "energy",
+  "media",
+  "other"
+ ],
+ "company_sizes": [
+  "1-10",
+  "11-50",
+  "51-200",
+  "201-1000",
+  "1000+"
+ ],
+ "date_formats": [
+  "DD/MM/YYYY",
+  "MM/DD/YYYY",
+  "YYYY-MM-DD",
+  "DD.MM.YYYY"
+ ],
+ "number_formats": [
+  "1,234.56",
+  "1.234,56",
+  "1 234,56",
+  "1'234.56"
+ ],
+ "appearance_primaries": [
+  "mono",
+  "brand",
+  "indigo",
+  "blue",
+  "sky",
+  "teal",
+  "emerald",
+  "green",
+  "amber",
+  "orange",
+  "red",
+  "rose",
+  "pink",
+  "violet",
+  "purple"
+ ],
+ "appearance_neutrals": [
+  "zinc",
+  "slate",
+  "gray",
+  "neutral",
+  "stone"
+ ],
+ "appearance_radii": [
+  "none",
+  "sm",
+  "md",
+  "lg",
+  "xl"
+ ],
+ "appearance_fonts": [
+  "manrope",
+  "system",
+  "serif",
+  "rounded"
+ ],
+ "formalie_appearance": {
+  "preset": "formalie",
+  "primary": "mono",
+  "neutral": "zinc",
+  "background": "plain",
+  "radius": "md",
+  "font": "manrope",
+  "text_size": "md",
+  "rail": "light",
+  "menu": "light",
+  "menu_badges": true,
+  "header": {
+   "breadcrumbs": true,
+   "search": true
+  },
+  "footer": true,
+  "content_width": "full",
+  "density": "comfortable",
+  "default_mode": "system",
+  "dark": null
+ },
+ "email_templates": [
+  "signin_code",
+  "password_reset",
+  "invitation",
+  "response_notification",
+  "response_receipt",
+  "notification",
+  "daily_digest"
+ ],
+ "notification_events": [
+  "response_new",
+  "response_duplicate",
+  "form_limit",
+  "form_closing",
+  "export_ready",
+  "webhook_failing",
+  "security_alert"
+ ],
+ "retention_days": [
+  0,
+  30,
+  90,
+  180,
+  365,
+  730,
+  1825
+ ],
+ "settings_sections": [
+  "company",
+  "branding",
+  "localisation",
+  "signin",
+  "security",
+  "notifications",
+  "emails",
+  "privacy",
+  "form_defaults",
+  "appearance"
+ ],
+ "country_currencies": {
+  "AD": "EUR",
+  "AE": "AED",
+  "AF": "AFN",
+  "AG": "XCD",
+  "AI": "XCD",
+  "AL": "ALL",
+  "AM": "AMD",
+  "AO": "AOA",
+  "AR": "ARS",
+  "AS": "USD",
+  "AT": "EUR",
+  "AU": "AUD",
+  "AW": "AWG",
+  "AX": "EUR",
+  "AZ": "AZN",
+  "BA": "BAM",
+  "BB": "BBD",
+  "BD": "BDT",
+  "BE": "EUR",
+  "BF": "XOF",
+  "BG": "BGN",
+  "BH": "BHD",
+  "BI": "BIF",
+  "BJ": "XOF",
+  "BL": "EUR",
+  "BM": "BMD",
+  "BN": "BND",
+  "BO": "BOB",
+  "BQ": "USD",
+  "BR": "BRL",
+  "BS": "BSD",
+  "BT": "BTN",
+  "BW": "BWP",
+  "BY": "BYN",
+  "BZ": "BZD",
+  "CA": "CAD",
+  "CC": "AUD",
+  "CD": "CDF",
+  "CF": "XAF",
+  "CG": "XAF",
+  "CH": "CHF",
+  "CI": "XOF",
+  "CK": "NZD",
+  "CL": "CLP",
+  "CM": "XAF",
+  "CN": "CNY",
+  "CO": "COP",
+  "CR": "CRC",
+  "CU": "CUP",
+  "CV": "CVE",
+  "CW": "ANG",
+  "CX": "AUD",
+  "CY": "EUR",
+  "CZ": "CZK",
+  "DE": "EUR",
+  "DJ": "DJF",
+  "DK": "DKK",
+  "DM": "XCD",
+  "DO": "DOP",
+  "DZ": "DZD",
+  "EC": "USD",
+  "EE": "EUR",
+  "EG": "EGP",
+  "EH": "MAD",
+  "ER": "ERN",
+  "ES": "EUR",
+  "ET": "ETB",
+  "FI": "EUR",
+  "FJ": "FJD",
+  "FK": "FKP",
+  "FM": "USD",
+  "FO": "DKK",
+  "FR": "EUR",
+  "GA": "XAF",
+  "GB": "GBP",
+  "GD": "XCD",
+  "GE": "GEL",
+  "GF": "EUR",
+  "GG": "GBP",
+  "GH": "GHS",
+  "GI": "GIP",
+  "GL": "DKK",
+  "GM": "GMD",
+  "GN": "GNF",
+  "GP": "EUR",
+  "GQ": "XAF",
+  "GR": "EUR",
+  "GT": "GTQ",
+  "GU": "USD",
+  "GW": "XOF",
+  "GY": "GYD",
+  "HK": "HKD",
+  "HN": "HNL",
+  "HR": "EUR",
+  "HT": "HTG",
+  "HU": "HUF",
+  "ID": "IDR",
+  "IE": "EUR",
+  "IL": "ILS",
+  "IM": "GBP",
+  "IN": "INR",
+  "IO": "USD",
+  "IQ": "IQD",
+  "IR": "IRR",
+  "IS": "ISK",
+  "IT": "EUR",
+  "JE": "GBP",
+  "JM": "JMD",
+  "JO": "JOD",
+  "JP": "JPY",
+  "KE": "KES",
+  "KG": "KGS",
+  "KH": "KHR",
+  "KI": "AUD",
+  "KM": "KMF",
+  "KN": "XCD",
+  "KP": "KPW",
+  "KR": "KRW",
+  "KW": "KWD",
+  "KY": "KYD",
+  "KZ": "KZT",
+  "LA": "LAK",
+  "LB": "LBP",
+  "LC": "XCD",
+  "LI": "CHF",
+  "LK": "LKR",
+  "LR": "LRD",
+  "LS": "LSL",
+  "LT": "EUR",
+  "LU": "EUR",
+  "LV": "EUR",
+  "LY": "LYD",
+  "MA": "MAD",
+  "MC": "EUR",
+  "MD": "MDL",
+  "ME": "EUR",
+  "MF": "EUR",
+  "MG": "MGA",
+  "MH": "USD",
+  "MK": "MKD",
+  "ML": "XOF",
+  "MM": "MMK",
+  "MN": "MNT",
+  "MO": "MOP",
+  "MP": "USD",
+  "MQ": "EUR",
+  "MR": "MRU",
+  "MS": "XCD",
+  "MT": "EUR",
+  "MU": "MUR",
+  "MV": "MVR",
+  "MW": "MWK",
+  "MX": "MXN",
+  "MY": "MYR",
+  "MZ": "MZN",
+  "NA": "NAD",
+  "NC": "XPF",
+  "NE": "XOF",
+  "NF": "AUD",
+  "NG": "NGN",
+  "NI": "NIO",
+  "NL": "EUR",
+  "NO": "NOK",
+  "NP": "NPR",
+  "NR": "AUD",
+  "NU": "NZD",
+  "NZ": "NZD",
+  "OM": "OMR",
+  "PA": "PAB",
+  "PE": "PEN",
+  "PF": "XPF",
+  "PG": "PGK",
+  "PH": "PHP",
+  "PK": "PKR",
+  "PL": "PLN",
+  "PM": "EUR",
+  "PN": "NZD",
+  "PR": "USD",
+  "PS": "ILS",
+  "PT": "EUR",
+  "PW": "USD",
+  "PY": "PYG",
+  "QA": "QAR",
+  "RE": "EUR",
+  "RO": "RON",
+  "RS": "RSD",
+  "RU": "RUB",
+  "RW": "RWF",
+  "SA": "SAR",
+  "SB": "SBD",
+  "SC": "SCR",
+  "SD": "SDG",
+  "SE": "SEK",
+  "SG": "SGD",
+  "SH": "SHP",
+  "SI": "EUR",
+  "SK": "EUR",
+  "SL": "SLE",
+  "SM": "EUR",
+  "SN": "XOF",
+  "SO": "SOS",
+  "SR": "SRD",
+  "SS": "SSP",
+  "ST": "STN",
+  "SV": "USD",
+  "SX": "ANG",
+  "SY": "SYP",
+  "SZ": "SZL",
+  "TC": "USD",
+  "TD": "XAF",
+  "TG": "XOF",
+  "TH": "THB",
+  "TJ": "TJS",
+  "TK": "NZD",
+  "TL": "USD",
+  "TM": "TMT",
+  "TN": "TND",
+  "TO": "TOP",
+  "TR": "TRY",
+  "TT": "TTD",
+  "TV": "AUD",
+  "TW": "TWD",
+  "TZ": "TZS",
+  "UA": "UAH",
+  "UG": "UGX",
+  "US": "USD",
+  "UY": "UYU",
+  "UZ": "UZS",
+  "VA": "EUR",
+  "VC": "XCD",
+  "VE": "VES",
+  "VG": "USD",
+  "VI": "USD",
+  "VN": "VND",
+  "VU": "VUV",
+  "WF": "XPF",
+  "WS": "WST",
+  "XK": "EUR",
+  "YE": "YER",
+  "YT": "EUR",
+  "ZA": "ZAR",
+  "ZM": "ZMW",
+  "ZW": "ZWG"
+ },
+ "currency_codes": [
+  "AED",
+  "AFN",
+  "ALL",
+  "AMD",
+  "ANG",
+  "AOA",
+  "ARS",
+  "AUD",
+  "AWG",
+  "AZN",
+  "BAM",
+  "BBD",
+  "BDT",
+  "BGN",
+  "BHD",
+  "BIF",
+  "BMD",
+  "BND",
+  "BOB",
+  "BRL",
+  "BSD",
+  "BTN",
+  "BWP",
+  "BYN",
+  "BZD",
+  "CAD",
+  "CDF",
+  "CHF",
+  "CLP",
+  "CNY",
+  "COP",
+  "CRC",
+  "CUP",
+  "CVE",
+  "CZK",
+  "DJF",
+  "DKK",
+  "DOP",
+  "DZD",
+  "EGP",
+  "ERN",
+  "ETB",
+  "EUR",
+  "FJD",
+  "FKP",
+  "GBP",
+  "GEL",
+  "GHS",
+  "GIP",
+  "GMD",
+  "GNF",
+  "GTQ",
+  "GYD",
+  "HKD",
+  "HNL",
+  "HTG",
+  "HUF",
+  "IDR",
+  "ILS",
+  "INR",
+  "IQD",
+  "IRR",
+  "ISK",
+  "JMD",
+  "JOD",
+  "JPY",
+  "KES",
+  "KGS",
+  "KHR",
+  "KMF",
+  "KPW",
+  "KRW",
+  "KWD",
+  "KYD",
+  "KZT",
+  "LAK",
+  "LBP",
+  "LKR",
+  "LRD",
+  "LSL",
+  "LYD",
+  "MAD",
+  "MDL",
+  "MGA",
+  "MKD",
+  "MMK",
+  "MNT",
+  "MOP",
+  "MRU",
+  "MUR",
+  "MVR",
+  "MWK",
+  "MXN",
+  "MYR",
+  "MZN",
+  "NAD",
+  "NGN",
+  "NIO",
+  "NOK",
+  "NPR",
+  "NZD",
+  "OMR",
+  "PAB",
+  "PEN",
+  "PGK",
+  "PHP",
+  "PKR",
+  "PLN",
+  "PYG",
+  "QAR",
+  "RON",
+  "RSD",
+  "RUB",
+  "RWF",
+  "SAR",
+  "SBD",
+  "SCR",
+  "SDG",
+  "SEK",
+  "SGD",
+  "SHP",
+  "SLE",
+  "SOS",
+  "SRD",
+  "SSP",
+  "STN",
+  "SYP",
+  "SZL",
+  "THB",
+  "TJS",
+  "TMT",
+  "TND",
+  "TOP",
+  "TRY",
+  "TTD",
+  "TWD",
+  "TZS",
+  "UAH",
+  "UGX",
+  "USD",
+  "UYU",
+  "UZS",
+  "VES",
+  "VND",
+  "VUV",
+  "WST",
+  "XAF",
+  "XCD",
+  "XOF",
+  "XPF",
+  "YER",
+  "ZAR",
+  "ZMW",
+  "ZWG"
+ ],
+ "idle_minutes": [
+  15,
+  30,
+  60,
+  120,
+  240,
+  480,
+  720
+ ],
+ "max_session_hours": [
+  8,
+  12,
+  24,
+  72,
+  168
+ ],
+ "signin_methods": [
+  "password",
+  "google",
+  "microsoft",
+  "facebook"
+ ],
+ "schemas": {
+  "company": [
+   {
+    "input": {
+     "legal_name": "Remedy Legal Ltd",
+     "display_name": "Remedy Legal",
+     "industry": null,
+     "size": null,
+     "website": null,
+     "registration_number": null,
+     "tax_number": null,
+     "support_email": null,
+     "support_phone": null,
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": null,
+      "region": null,
+      "postal_code": null,
+      "country": null
+     }
+    },
+    "ok": true,
+    "data": {
+     "legal_name": "Remedy Legal Ltd",
+     "display_name": "Remedy Legal",
+     "industry": null,
+     "size": null,
+     "website": null,
+     "registration_number": null,
+     "tax_number": null,
+     "support_email": null,
+     "support_phone": null,
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": null,
+      "region": null,
+      "postal_code": null,
+      "country": null
+     }
+    }
+   },
+   {
+    "input": {
+     "legal_name": "  R  ",
+     "display_name": "Remedy Legal",
+     "industry": null,
+     "size": null,
+     "website": null,
+     "registration_number": null,
+     "tax_number": null,
+     "support_email": null,
+     "support_phone": null,
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": null,
+      "region": null,
+      "postal_code": null,
+      "country": null
+     }
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "legal_name",
+      "message": "Too small: expected string to have >=2 characters"
+     }
+    ]
+   },
+   {
+    "input": {
+     "legal_name": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+     "display_name": "Remedy Legal",
+     "industry": null,
+     "size": null,
+     "website": null,
+     "registration_number": null,
+     "tax_number": null,
+     "support_email": null,
+     "support_phone": null,
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": null,
+      "region": null,
+      "postal_code": null,
+      "country": null
+     }
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "legal_name",
+      "message": "Too big: expected string to have <=160 characters"
+     }
+    ]
+   },
+   {
+    "input": {
+     "legal_name": "Remedy Legal Ltd",
+     "display_name": "  Remedy  ",
+     "industry": null,
+     "size": null,
+     "website": null,
+     "registration_number": null,
+     "tax_number": null,
+     "support_email": null,
+     "support_phone": null,
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": null,
+      "region": null,
+      "postal_code": null,
+      "country": null
+     }
+    },
+    "ok": true,
+    "data": {
+     "legal_name": "Remedy Legal Ltd",
+     "display_name": "Remedy",
+     "industry": null,
+     "size": null,
+     "website": null,
+     "registration_number": null,
+     "tax_number": null,
+     "support_email": null,
+     "support_phone": null,
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": null,
+      "region": null,
+      "postal_code": null,
+      "country": null
+     }
+    }
+   },
+   {
+    "input": {
+     "legal_name": "Remedy Legal Ltd",
+     "display_name": "R",
+     "industry": null,
+     "size": null,
+     "website": null,
+     "registration_number": null,
+     "tax_number": null,
+     "support_email": null,
+     "support_phone": null,
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": null,
+      "region": null,
+      "postal_code": null,
+      "country": null
+     }
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "display_name",
+      "message": "Too small: expected string to have >=2 characters"
+     }
+    ]
+   },
+   {
+    "input": {
+     "legal_name": 5,
+     "display_name": "Remedy Legal",
+     "industry": null,
+     "size": null,
+     "website": null,
+     "registration_number": null,
+     "tax_number": null,
+     "support_email": null,
+     "support_phone": null,
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": null,
+      "region": null,
+      "postal_code": null,
+      "country": null
+     }
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "legal_name",
+      "message": "Invalid input: expected string, received number"
+     }
+    ]
+   },
+   {
+    "input": {
+     "legal_name": "Remedy Legal Ltd",
+     "display_name": "Remedy Legal",
+     "industry": "professional_services",
+     "size": null,
+     "website": null,
+     "registration_number": null,
+     "tax_number": null,
+     "support_email": null,
+     "support_phone": null,
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": null,
+      "region": null,
+      "postal_code": null,
+      "country": null
+     }
+    },
+    "ok": true,
+    "data": {
+     "legal_name": "Remedy Legal Ltd",
+     "display_name": "Remedy Legal",
+     "industry": "professional_services",
+     "size": null,
+     "website": null,
+     "registration_number": null,
+     "tax_number": null,
+     "support_email": null,
+     "support_phone": null,
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": null,
+      "region": null,
+      "postal_code": null,
+      "country": null
+     }
+    }
+   },
+   {
+    "input": {
+     "legal_name": "Remedy Legal Ltd",
+     "display_name": "Remedy Legal",
+     "industry": "space",
+     "size": null,
+     "website": null,
+     "registration_number": null,
+     "tax_number": null,
+     "support_email": null,
+     "support_phone": null,
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": null,
+      "region": null,
+      "postal_code": null,
+      "country": null
+     }
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "industry",
+      "message": "Invalid option: expected one of \"professional_services\"|\"legal\"|\"finance\"|\"healthcare\"|\"education\"|\"government\"|\"non_profit\"|\"technology\"|\"retail\"|\"manufacturing\"|\"hospitality\"|\"real_estate\"|\"logistics\"|\"energy\"|\"media\"|\"other\""
+     }
+    ]
+   },
+   {
+    "input": {
+     "legal_name": "Remedy Legal Ltd",
+     "display_name": "Remedy Legal",
+     "industry": null,
+     "size": "11-50",
+     "website": null,
+     "registration_number": null,
+     "tax_number": null,
+     "support_email": null,
+     "support_phone": null,
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": null,
+      "region": null,
+      "postal_code": null,
+      "country": null
+     }
+    },
+    "ok": true,
+    "data": {
+     "legal_name": "Remedy Legal Ltd",
+     "display_name": "Remedy Legal",
+     "industry": null,
+     "size": "11-50",
+     "website": null,
+     "registration_number": null,
+     "tax_number": null,
+     "support_email": null,
+     "support_phone": null,
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": null,
+      "region": null,
+      "postal_code": null,
+      "country": null
+     }
+    }
+   },
+   {
+    "input": {
+     "legal_name": "Remedy Legal Ltd",
+     "display_name": "Remedy Legal",
+     "industry": null,
+     "size": "12",
+     "website": null,
+     "registration_number": null,
+     "tax_number": null,
+     "support_email": null,
+     "support_phone": null,
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": null,
+      "region": null,
+      "postal_code": null,
+      "country": null
+     }
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "size",
+      "message": "Invalid option: expected one of \"1-10\"|\"11-50\"|\"51-200\"|\"201-1000\"|\"1000+\""
+     }
+    ]
+   },
+   {
+    "input": {
+     "legal_name": "Remedy Legal Ltd",
+     "display_name": "Remedy Legal",
+     "industry": null,
+     "size": null,
+     "website": "https://remedy.example",
+     "registration_number": null,
+     "tax_number": null,
+     "support_email": null,
+     "support_phone": null,
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": null,
+      "region": null,
+      "postal_code": null,
+      "country": null
+     }
+    },
+    "ok": true,
+    "data": {
+     "legal_name": "Remedy Legal Ltd",
+     "display_name": "Remedy Legal",
+     "industry": null,
+     "size": null,
+     "website": "https://remedy.example",
+     "registration_number": null,
+     "tax_number": null,
+     "support_email": null,
+     "support_phone": null,
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": null,
+      "region": null,
+      "postal_code": null,
+      "country": null
+     }
+    }
+   },
+   {
+    "input": {
+     "legal_name": "Remedy Legal Ltd",
+     "display_name": "Remedy Legal",
+     "industry": null,
+     "size": null,
+     "website": "remedy.example",
+     "registration_number": null,
+     "tax_number": null,
+     "support_email": null,
+     "support_phone": null,
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": null,
+      "region": null,
+      "postal_code": null,
+      "country": null
+     }
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "website",
+      "message": "website"
+     }
+    ]
+   },
+   {
+    "input": {
+     "legal_name": "Remedy Legal Ltd",
+     "display_name": "Remedy Legal",
+     "industry": null,
+     "size": null,
+     "website": "",
+     "registration_number": null,
+     "tax_number": null,
+     "support_email": null,
+     "support_phone": null,
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": null,
+      "region": null,
+      "postal_code": null,
+      "country": null
+     }
+    },
+    "ok": true,
+    "data": {
+     "legal_name": "Remedy Legal Ltd",
+     "display_name": "Remedy Legal",
+     "industry": null,
+     "size": null,
+     "website": null,
+     "registration_number": null,
+     "tax_number": null,
+     "support_email": null,
+     "support_phone": null,
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": null,
+      "region": null,
+      "postal_code": null,
+      "country": null
+     }
+    }
+   },
+   {
+    "input": {
+     "legal_name": "Remedy Legal Ltd",
+     "display_name": "Remedy Legal",
+     "industry": null,
+     "size": null,
+     "website": "  https://a.b/c  ",
+     "registration_number": null,
+     "tax_number": null,
+     "support_email": null,
+     "support_phone": null,
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": null,
+      "region": null,
+      "postal_code": null,
+      "country": null
+     }
+    },
+    "ok": true,
+    "data": {
+     "legal_name": "Remedy Legal Ltd",
+     "display_name": "Remedy Legal",
+     "industry": null,
+     "size": null,
+     "website": "https://a.b/c",
+     "registration_number": null,
+     "tax_number": null,
+     "support_email": null,
+     "support_phone": null,
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": null,
+      "region": null,
+      "postal_code": null,
+      "country": null
+     }
+    }
+   },
+   {
+    "input": {
+     "legal_name": "Remedy Legal Ltd",
+     "display_name": "Remedy Legal",
+     "industry": null,
+     "size": null,
+     "website": "http://localhost",
+     "registration_number": null,
+     "tax_number": null,
+     "support_email": null,
+     "support_phone": null,
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": null,
+      "region": null,
+      "postal_code": null,
+      "country": null
+     }
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "website",
+      "message": "website"
+     }
+    ]
+   },
+   {
+    "input": {
+     "legal_name": "Remedy Legal Ltd",
+     "display_name": "Remedy Legal",
+     "industry": null,
+     "size": null,
+     "website": null,
+     "registration_number": "  ",
+     "tax_number": null,
+     "support_email": null,
+     "support_phone": null,
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": null,
+      "region": null,
+      "postal_code": null,
+      "country": null
+     }
+    },
+    "ok": true,
+    "data": {
+     "legal_name": "Remedy Legal Ltd",
+     "display_name": "Remedy Legal",
+     "industry": null,
+     "size": null,
+     "website": null,
+     "registration_number": null,
+     "tax_number": null,
+     "support_email": null,
+     "support_phone": null,
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": null,
+      "region": null,
+      "postal_code": null,
+      "country": null
+     }
+    }
+   },
+   {
+    "input": {
+     "legal_name": "Remedy Legal Ltd",
+     "display_name": "Remedy Legal",
+     "industry": null,
+     "size": null,
+     "website": null,
+     "registration_number": null,
+     "tax_number": "GB123",
+     "support_email": null,
+     "support_phone": null,
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": null,
+      "region": null,
+      "postal_code": null,
+      "country": null
+     }
+    },
+    "ok": true,
+    "data": {
+     "legal_name": "Remedy Legal Ltd",
+     "display_name": "Remedy Legal",
+     "industry": null,
+     "size": null,
+     "website": null,
+     "registration_number": null,
+     "tax_number": "GB123",
+     "support_email": null,
+     "support_phone": null,
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": null,
+      "region": null,
+      "postal_code": null,
+      "country": null
+     }
+    }
+   },
+   {
+    "input": {
+     "legal_name": "Remedy Legal Ltd",
+     "display_name": "Remedy Legal",
+     "industry": null,
+     "size": null,
+     "website": null,
+     "registration_number": null,
+     "tax_number": null,
+     "support_email": "help@remedy.example",
+     "support_phone": null,
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": null,
+      "region": null,
+      "postal_code": null,
+      "country": null
+     }
+    },
+    "ok": true,
+    "data": {
+     "legal_name": "Remedy Legal Ltd",
+     "display_name": "Remedy Legal",
+     "industry": null,
+     "size": null,
+     "website": null,
+     "registration_number": null,
+     "tax_number": null,
+     "support_email": "help@remedy.example",
+     "support_phone": null,
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": null,
+      "region": null,
+      "postal_code": null,
+      "country": null
+     }
+    }
+   },
+   {
+    "input": {
+     "legal_name": "Remedy Legal Ltd",
+     "display_name": "Remedy Legal",
+     "industry": null,
+     "size": null,
+     "website": null,
+     "registration_number": null,
+     "tax_number": null,
+     "support_email": "nope",
+     "support_phone": null,
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": null,
+      "region": null,
+      "postal_code": null,
+      "country": null
+     }
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "support_email",
+      "message": "email"
+     }
+    ]
+   },
+   {
+    "input": {
+     "legal_name": "Remedy Legal Ltd",
+     "display_name": "Remedy Legal",
+     "industry": null,
+     "size": null,
+     "website": null,
+     "registration_number": null,
+     "tax_number": null,
+     "support_email": "",
+     "support_phone": null,
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": null,
+      "region": null,
+      "postal_code": null,
+      "country": null
+     }
+    },
+    "ok": true,
+    "data": {
+     "legal_name": "Remedy Legal Ltd",
+     "display_name": "Remedy Legal",
+     "industry": null,
+     "size": null,
+     "website": null,
+     "registration_number": null,
+     "tax_number": null,
+     "support_email": null,
+     "support_phone": null,
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": null,
+      "region": null,
+      "postal_code": null,
+      "country": null
+     }
+    }
+   },
+   {
+    "input": {
+     "legal_name": "Remedy Legal Ltd",
+     "display_name": "Remedy Legal",
+     "industry": null,
+     "size": null,
+     "website": null,
+     "registration_number": null,
+     "tax_number": null,
+     "support_email": null,
+     "support_phone": "+44 7700 900123",
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": null,
+      "region": null,
+      "postal_code": null,
+      "country": null
+     }
+    },
+    "ok": true,
+    "data": {
+     "legal_name": "Remedy Legal Ltd",
+     "display_name": "Remedy Legal",
+     "industry": null,
+     "size": null,
+     "website": null,
+     "registration_number": null,
+     "tax_number": null,
+     "support_email": null,
+     "support_phone": "+44 7700 900123",
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": null,
+      "region": null,
+      "postal_code": null,
+      "country": null
+     }
+    }
+   },
+   {
+    "input": {
+     "legal_name": "Remedy Legal Ltd",
+     "display_name": "Remedy Legal",
+     "industry": null,
+     "size": null,
+     "website": null,
+     "registration_number": null,
+     "tax_number": null,
+     "support_email": null,
+     "support_phone": "call me",
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": null,
+      "region": null,
+      "postal_code": null,
+      "country": null
+     }
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "support_phone",
+      "message": "phone"
+     }
+    ]
+   },
+   {
+    "input": {
+     "legal_name": "Remedy Legal Ltd",
+     "display_name": "Remedy Legal",
+     "industry": null,
+     "size": null,
+     "website": null,
+     "registration_number": null,
+     "tax_number": null,
+     "support_email": null,
+     "support_phone": "12345",
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": null,
+      "region": null,
+      "postal_code": null,
+      "country": null
+     }
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "support_phone",
+      "message": "phone"
+     }
+    ]
+   },
+   {
+    "input": {
+     "legal_name": "Remedy Legal Ltd",
+     "display_name": "Remedy Legal",
+     "industry": null,
+     "size": null,
+     "website": null,
+     "registration_number": null,
+     "tax_number": null,
+     "support_email": null,
+     "support_phone": null,
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": null,
+      "region": null,
+      "postal_code": null,
+      "country": "GB"
+     }
+    },
+    "ok": true,
+    "data": {
+     "legal_name": "Remedy Legal Ltd",
+     "display_name": "Remedy Legal",
+     "industry": null,
+     "size": null,
+     "website": null,
+     "registration_number": null,
+     "tax_number": null,
+     "support_email": null,
+     "support_phone": null,
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": null,
+      "region": null,
+      "postal_code": null,
+      "country": "GB"
+     }
+    }
+   },
+   {
+    "input": {
+     "legal_name": "Remedy Legal Ltd",
+     "display_name": "Remedy Legal",
+     "industry": null,
+     "size": null,
+     "website": null,
+     "registration_number": null,
+     "tax_number": null,
+     "support_email": null,
+     "support_phone": null,
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": null,
+      "region": null,
+      "postal_code": null,
+      "country": "gb"
+     }
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "address.country",
+      "message": "country"
+     }
+    ]
+   },
+   {
+    "input": {
+     "legal_name": "Remedy Legal Ltd",
+     "display_name": "Remedy Legal",
+     "industry": null,
+     "size": null,
+     "website": null,
+     "registration_number": null,
+     "tax_number": null,
+     "support_email": null,
+     "support_phone": null,
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": null,
+      "region": null,
+      "postal_code": null,
+      "country": "XX"
+     }
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "address.country",
+      "message": "country"
+     }
+    ]
+   },
+   {
+    "input": {
+     "legal_name": "Remedy Legal Ltd",
+     "display_name": "Remedy Legal",
+     "industry": null,
+     "size": null,
+     "website": null,
+     "registration_number": null,
+     "tax_number": null,
+     "support_email": null,
+     "support_phone": null,
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": null,
+      "region": null,
+      "postal_code": null,
+      "country": ""
+     }
+    },
+    "ok": true,
+    "data": {
+     "legal_name": "Remedy Legal Ltd",
+     "display_name": "Remedy Legal",
+     "industry": null,
+     "size": null,
+     "website": null,
+     "registration_number": null,
+     "tax_number": null,
+     "support_email": null,
+     "support_phone": null,
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": null,
+      "region": null,
+      "postal_code": null,
+      "country": ""
+     }
+    }
+   },
+   {
+    "input": {
+     "legal_name": "Remedy Legal Ltd",
+     "display_name": "Remedy Legal",
+     "industry": null,
+     "size": null,
+     "website": null,
+     "registration_number": null,
+     "tax_number": null,
+     "support_email": null,
+     "support_phone": null,
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": "  London ",
+      "region": null,
+      "postal_code": null,
+      "country": null
+     }
+    },
+    "ok": true,
+    "data": {
+     "legal_name": "Remedy Legal Ltd",
+     "display_name": "Remedy Legal",
+     "industry": null,
+     "size": null,
+     "website": null,
+     "registration_number": null,
+     "tax_number": null,
+     "support_email": null,
+     "support_phone": null,
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": "London",
+      "region": null,
+      "postal_code": null,
+      "country": null
+     }
+    }
+   },
+   {
+    "input": {
+     "legal_name": "Remedy Legal Ltd",
+     "display_name": "Remedy Legal",
+     "industry": null,
+     "size": null,
+     "website": null,
+     "registration_number": null,
+     "tax_number": null,
+     "support_email": null,
+     "support_phone": null
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "address",
+      "message": "Invalid input: expected object, received undefined"
+     }
+    ]
+   },
+   {
+    "input": {
+     "legal_name": "Remedy Legal Ltd",
+     "display_name": "Remedy Legal",
+     "industry": null,
+     "size": null,
+     "website": null,
+     "registration_number": null,
+     "tax_number": null,
+     "support_email": null,
+     "support_phone": null,
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": null,
+      "region": null,
+      "postal_code": "xxxxxxxxxxxxxxxxxxxxx",
+      "country": null
+     }
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "address.postal_code",
+      "message": "Too big: expected string to have <=20 characters"
+     }
+    ]
+   },
+   {
+    "input": {
+     "legal_name": "Remedy Legal Ltd",
+     "display_name": "Remedy Legal",
+     "industry": null,
+     "size": null,
+     "website": null,
+     "registration_number": null,
+     "tax_number": null,
+     "support_email": null,
+     "support_phone": null,
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": null,
+      "region": null,
+      "postal_code": null,
+      "country": null
+     },
+     "extra_field": "ignored"
+    },
+    "ok": true,
+    "data": {
+     "legal_name": "Remedy Legal Ltd",
+     "display_name": "Remedy Legal",
+     "industry": null,
+     "size": null,
+     "website": null,
+     "registration_number": null,
+     "tax_number": null,
+     "support_email": null,
+     "support_phone": null,
+     "address": {
+      "line1": null,
+      "line2": null,
+      "city": null,
+      "region": null,
+      "postal_code": null,
+      "country": null
+     }
+    }
+   },
+   {
+    "input": "nonsense",
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received string"
+     }
+    ]
+   },
+   {
+    "input": null,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received null"
+     }
+    ]
+   },
+   {
+    "input": 42,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received number"
+     }
+    ]
+   },
+   {
+    "input": [],
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received array"
+     }
+    ]
+   }
+  ],
+  "branding": [
+   {
+    "input": {
+     "brand_color": null,
+     "signin_message": null
+    },
+    "ok": true,
+    "data": {
+     "brand_color": null,
+     "signin_message": null
+    }
+   },
+   {
+    "input": {
+     "brand_color": "#1a2B3c",
+     "signin_message": null
+    },
+    "ok": true,
+    "data": {
+     "brand_color": "#1a2B3c",
+     "signin_message": null
+    }
+   },
+   {
+    "input": {
+     "brand_color": "#123",
+     "signin_message": null
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "brand_color",
+      "message": "color"
+     }
+    ]
+   },
+   {
+    "input": {
+     "brand_color": "red",
+     "signin_message": null
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "brand_color",
+      "message": "color"
+     }
+    ]
+   },
+   {
+    "input": {
+     "brand_color": null,
+     "signin_message": "  Welcome  "
+    },
+    "ok": true,
+    "data": {
+     "brand_color": null,
+     "signin_message": "Welcome"
+    }
+   },
+   {
+    "input": {
+     "brand_color": null,
+     "signin_message": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "signin_message",
+      "message": "Too big: expected string to have <=160 characters"
+     }
+    ]
+   },
+   {
+    "input": {
+     "brand_color": null,
+     "signin_message": null,
+     "logo_upload_id": null
+    },
+    "ok": true,
+    "data": {
+     "logo_upload_id": null,
+     "brand_color": null,
+     "signin_message": null
+    }
+   },
+   {
+    "input": {
+     "brand_color": null,
+     "signin_message": null,
+     "logo_upload_id": "abc"
+    },
+    "ok": true,
+    "data": {
+     "logo_upload_id": "abc",
+     "brand_color": null,
+     "signin_message": null
+    }
+   },
+   {
+    "input": {
+     "brand_color": null,
+     "signin_message": null,
+     "logo_upload_id": ""
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "logo_upload_id",
+      "message": "Too small: expected string to have >=1 characters"
+     }
+    ]
+   },
+   {
+    "input": {
+     "brand_color": null,
+     "signin_message": null,
+     "favicon_upload_id": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "favicon_upload_id",
+      "message": "Too big: expected string to have <=100 characters"
+     }
+    ]
+   },
+   {
+    "input": {
+     "brand_color": null,
+     "signin_message": null,
+     "logo_dark_upload_id": 7
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "logo_dark_upload_id",
+      "message": "Invalid input: expected string, received number"
+     }
+    ]
+   },
+   {
+    "input": {
+     "signin_message": null
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "brand_color",
+      "message": "Invalid input: expected string, received undefined"
+     }
+    ]
+   },
+   {
+    "input": "nonsense",
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received string"
+     }
+    ]
+   },
+   {
+    "input": null,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received null"
+     }
+    ]
+   },
+   {
+    "input": 42,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received number"
+     }
+    ]
+   },
+   {
+    "input": [],
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received array"
+     }
+    ]
+   }
+  ],
+  "localisation": [
+   {
+    "input": {
+     "language": "en",
+     "timezone": "UTC",
+     "currency": "USD",
+     "date_format": "DD/MM/YYYY",
+     "number_format": "1,234.56",
+     "week_start": "monday",
+     "form_languages": [
+      "en",
+      "fr"
+     ]
+    },
+    "ok": true,
+    "data": {
+     "language": "en",
+     "timezone": "UTC",
+     "currency": "USD",
+     "date_format": "DD/MM/YYYY",
+     "number_format": "1,234.56",
+     "week_start": "monday",
+     "form_languages": [
+      "en",
+      "fr"
+     ]
+    }
+   },
+   {
+    "input": {
+     "language": "fr",
+     "timezone": "UTC",
+     "currency": "USD",
+     "date_format": "DD/MM/YYYY",
+     "number_format": "1,234.56",
+     "week_start": "monday",
+     "form_languages": [
+      "en",
+      "fr"
+     ]
+    },
+    "ok": true,
+    "data": {
+     "language": "fr",
+     "timezone": "UTC",
+     "currency": "USD",
+     "date_format": "DD/MM/YYYY",
+     "number_format": "1,234.56",
+     "week_start": "monday",
+     "form_languages": [
+      "en",
+      "fr"
+     ]
+    }
+   },
+   {
+    "input": {
+     "language": "xx",
+     "timezone": "UTC",
+     "currency": "USD",
+     "date_format": "DD/MM/YYYY",
+     "number_format": "1,234.56",
+     "week_start": "monday",
+     "form_languages": [
+      "en",
+      "fr"
+     ]
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "language",
+      "message": "Invalid option: expected one of \"en\"|\"fr\"|\"es\"|\"pt\"|\"de\"|\"it\"|\"nl\"|\"pl\"|\"ru\"|\"uk\"|\"tr\"|\"ar\"|\"hi\"|\"bn\"|\"zh-CN\"|\"ja\"|\"ko\"|\"id\"|\"vi\"|\"sw\""
+     }
+    ]
+   },
+   {
+    "input": {
+     "language": "en",
+     "timezone": "Europe/London",
+     "currency": "USD",
+     "date_format": "DD/MM/YYYY",
+     "number_format": "1,234.56",
+     "week_start": "monday",
+     "form_languages": [
+      "en",
+      "fr"
+     ]
+    },
+    "ok": true,
+    "data": {
+     "language": "en",
+     "timezone": "Europe/London",
+     "currency": "USD",
+     "date_format": "DD/MM/YYYY",
+     "number_format": "1,234.56",
+     "week_start": "monday",
+     "form_languages": [
+      "en",
+      "fr"
+     ]
+    }
+   },
+   {
+    "input": {
+     "language": "en",
+     "timezone": "europe/london",
+     "currency": "USD",
+     "date_format": "DD/MM/YYYY",
+     "number_format": "1,234.56",
+     "week_start": "monday",
+     "form_languages": [
+      "en",
+      "fr"
+     ]
+    },
+    "ok": true,
+    "data": {
+     "language": "en",
+     "timezone": "europe/london",
+     "currency": "USD",
+     "date_format": "DD/MM/YYYY",
+     "number_format": "1,234.56",
+     "week_start": "monday",
+     "form_languages": [
+      "en",
+      "fr"
+     ]
+    }
+   },
+   {
+    "input": {
+     "language": "en",
+     "timezone": "Mars/Base",
+     "currency": "USD",
+     "date_format": "DD/MM/YYYY",
+     "number_format": "1,234.56",
+     "week_start": "monday",
+     "form_languages": [
+      "en",
+      "fr"
+     ]
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "timezone",
+      "message": "timezone"
+     }
+    ]
+   },
+   {
+    "input": {
+     "language": "en",
+     "timezone": "",
+     "currency": "USD",
+     "date_format": "DD/MM/YYYY",
+     "number_format": "1,234.56",
+     "week_start": "monday",
+     "form_languages": [
+      "en",
+      "fr"
+     ]
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "timezone",
+      "message": "Too small: expected string to have >=1 characters"
+     },
+     {
+      "path": "timezone",
+      "message": "timezone"
+     }
+    ]
+   },
+   {
+    "input": {
+     "language": "en",
+     "timezone": "America/Argentina/Buenos_Aires",
+     "currency": "USD",
+     "date_format": "DD/MM/YYYY",
+     "number_format": "1,234.56",
+     "week_start": "monday",
+     "form_languages": [
+      "en",
+      "fr"
+     ]
+    },
+    "ok": true,
+    "data": {
+     "language": "en",
+     "timezone": "America/Argentina/Buenos_Aires",
+     "currency": "USD",
+     "date_format": "DD/MM/YYYY",
+     "number_format": "1,234.56",
+     "week_start": "monday",
+     "form_languages": [
+      "en",
+      "fr"
+     ]
+    }
+   },
+   {
+    "input": {
+     "language": "en",
+     "timezone": "Asia/Calcutta",
+     "currency": "USD",
+     "date_format": "DD/MM/YYYY",
+     "number_format": "1,234.56",
+     "week_start": "monday",
+     "form_languages": [
+      "en",
+      "fr"
+     ]
+    },
+    "ok": true,
+    "data": {
+     "language": "en",
+     "timezone": "Asia/Calcutta",
+     "currency": "USD",
+     "date_format": "DD/MM/YYYY",
+     "number_format": "1,234.56",
+     "week_start": "monday",
+     "form_languages": [
+      "en",
+      "fr"
+     ]
+    }
+   },
+   {
+    "input": {
+     "language": "en",
+     "timezone": "GMT",
+     "currency": "USD",
+     "date_format": "DD/MM/YYYY",
+     "number_format": "1,234.56",
+     "week_start": "monday",
+     "form_languages": [
+      "en",
+      "fr"
+     ]
+    },
+    "ok": true,
+    "data": {
+     "language": "en",
+     "timezone": "GMT",
+     "currency": "USD",
+     "date_format": "DD/MM/YYYY",
+     "number_format": "1,234.56",
+     "week_start": "monday",
+     "form_languages": [
+      "en",
+      "fr"
+     ]
+    }
+   },
+   {
+    "input": {
+     "language": "en",
+     "timezone": "Etc/GMT+5",
+     "currency": "USD",
+     "date_format": "DD/MM/YYYY",
+     "number_format": "1,234.56",
+     "week_start": "monday",
+     "form_languages": [
+      "en",
+      "fr"
+     ]
+    },
+    "ok": true,
+    "data": {
+     "language": "en",
+     "timezone": "Etc/GMT+5",
+     "currency": "USD",
+     "date_format": "DD/MM/YYYY",
+     "number_format": "1,234.56",
+     "week_start": "monday",
+     "form_languages": [
+      "en",
+      "fr"
+     ]
+    }
+   },
+   {
+    "input": {
+     "language": "en",
+     "timezone": "UTC",
+     "currency": "GBP",
+     "date_format": "DD/MM/YYYY",
+     "number_format": "1,234.56",
+     "week_start": "monday",
+     "form_languages": [
+      "en",
+      "fr"
+     ]
+    },
+    "ok": true,
+    "data": {
+     "language": "en",
+     "timezone": "UTC",
+     "currency": "GBP",
+     "date_format": "DD/MM/YYYY",
+     "number_format": "1,234.56",
+     "week_start": "monday",
+     "form_languages": [
+      "en",
+      "fr"
+     ]
+    }
+   },
+   {
+    "input": {
+     "language": "en",
+     "timezone": "UTC",
+     "currency": "XYZ",
+     "date_format": "DD/MM/YYYY",
+     "number_format": "1,234.56",
+     "week_start": "monday",
+     "form_languages": [
+      "en",
+      "fr"
+     ]
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "currency",
+      "message": "currency"
+     }
+    ]
+   },
+   {
+    "input": {
+     "language": "en",
+     "timezone": "UTC",
+     "currency": "gbp",
+     "date_format": "DD/MM/YYYY",
+     "number_format": "1,234.56",
+     "week_start": "monday",
+     "form_languages": [
+      "en",
+      "fr"
+     ]
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "currency",
+      "message": "currency"
+     }
+    ]
+   },
+   {
+    "input": {
+     "language": "en",
+     "timezone": "UTC",
+     "currency": "USD",
+     "date_format": "YYYY-MM-DD",
+     "number_format": "1,234.56",
+     "week_start": "monday",
+     "form_languages": [
+      "en",
+      "fr"
+     ]
+    },
+    "ok": true,
+    "data": {
+     "language": "en",
+     "timezone": "UTC",
+     "currency": "USD",
+     "date_format": "YYYY-MM-DD",
+     "number_format": "1,234.56",
+     "week_start": "monday",
+     "form_languages": [
+      "en",
+      "fr"
+     ]
+    }
+   },
+   {
+    "input": {
+     "language": "en",
+     "timezone": "UTC",
+     "currency": "USD",
+     "date_format": "D/M/Y",
+     "number_format": "1,234.56",
+     "week_start": "monday",
+     "form_languages": [
+      "en",
+      "fr"
+     ]
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "date_format",
+      "message": "Invalid option: expected one of \"DD/MM/YYYY\"|\"MM/DD/YYYY\"|\"YYYY-MM-DD\"|\"DD.MM.YYYY\""
+     }
+    ]
+   },
+   {
+    "input": {
+     "language": "en",
+     "timezone": "UTC",
+     "currency": "USD",
+     "date_format": "DD/MM/YYYY",
+     "number_format": "1'234.56",
+     "week_start": "monday",
+     "form_languages": [
+      "en",
+      "fr"
+     ]
+    },
+    "ok": true,
+    "data": {
+     "language": "en",
+     "timezone": "UTC",
+     "currency": "USD",
+     "date_format": "DD/MM/YYYY",
+     "number_format": "1'234.56",
+     "week_start": "monday",
+     "form_languages": [
+      "en",
+      "fr"
+     ]
+    }
+   },
+   {
+    "input": {
+     "language": "en",
+     "timezone": "UTC",
+     "currency": "USD",
+     "date_format": "DD/MM/YYYY",
+     "number_format": "1234",
+     "week_start": "monday",
+     "form_languages": [
+      "en",
+      "fr"
+     ]
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "number_format",
+      "message": "Invalid option: expected one of \"1,234.56\"|\"1.234,56\"|\"1 234,56\"|\"1'234.56\""
+     }
+    ]
+   },
+   {
+    "input": {
+     "language": "en",
+     "timezone": "UTC",
+     "currency": "USD",
+     "date_format": "DD/MM/YYYY",
+     "number_format": "1,234.56",
+     "week_start": "sunday",
+     "form_languages": [
+      "en",
+      "fr"
+     ]
+    },
+    "ok": true,
+    "data": {
+     "language": "en",
+     "timezone": "UTC",
+     "currency": "USD",
+     "date_format": "DD/MM/YYYY",
+     "number_format": "1,234.56",
+     "week_start": "sunday",
+     "form_languages": [
+      "en",
+      "fr"
+     ]
+    }
+   },
+   {
+    "input": {
+     "language": "en",
+     "timezone": "UTC",
+     "currency": "USD",
+     "date_format": "DD/MM/YYYY",
+     "number_format": "1,234.56",
+     "week_start": "friday",
+     "form_languages": [
+      "en",
+      "fr"
+     ]
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "week_start",
+      "message": "Invalid option: expected one of \"monday\"|\"sunday\"|\"saturday\""
+     }
+    ]
+   },
+   {
+    "input": {
+     "language": "en",
+     "timezone": "UTC",
+     "currency": "USD",
+     "date_format": "DD/MM/YYYY",
+     "number_format": "1,234.56",
+     "week_start": "monday",
+     "form_languages": []
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "form_languages",
+      "message": "form_languages"
+     }
+    ]
+   },
+   {
+    "input": {
+     "language": "en",
+     "timezone": "UTC",
+     "currency": "USD",
+     "date_format": "DD/MM/YYYY",
+     "number_format": "1,234.56",
+     "week_start": "monday",
+     "form_languages": [
+      "en",
+      "xx"
+     ]
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "form_languages.1",
+      "message": "Invalid option: expected one of \"en\"|\"fr\"|\"es\"|\"pt\"|\"de\"|\"it\"|\"nl\"|\"pl\"|\"ru\"|\"uk\"|\"tr\"|\"ar\"|\"hi\"|\"bn\"|\"zh-CN\"|\"ja\"|\"ko\"|\"id\"|\"vi\"|\"sw\""
+     }
+    ]
+   },
+   {
+    "input": {
+     "language": "en",
+     "timezone": "UTC",
+     "currency": "USD",
+     "date_format": "DD/MM/YYYY",
+     "number_format": "1,234.56",
+     "week_start": "monday",
+     "form_languages": [
+      "en",
+      "en"
+     ]
+    },
+    "ok": true,
+    "data": {
+     "language": "en",
+     "timezone": "UTC",
+     "currency": "USD",
+     "date_format": "DD/MM/YYYY",
+     "number_format": "1,234.56",
+     "week_start": "monday",
+     "form_languages": [
+      "en",
+      "en"
+     ]
+    }
+   },
+   {
+    "input": "nonsense",
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received string"
+     }
+    ]
+   },
+   {
+    "input": null,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received null"
+     }
+    ]
+   },
+   {
+    "input": 42,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received number"
+     }
+    ]
+   },
+   {
+    "input": [],
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received array"
+     }
+    ]
+   }
+  ],
+  "signin": [
+   {
+    "input": {
+     "methods": [
+      "password"
+     ],
+     "code": {
+      "sms": false,
+      "expiry_minutes": 5,
+      "max_attempts": 5
+     },
+     "allowed_domains": []
+    },
+    "ok": true,
+    "data": {
+     "methods": [
+      "password"
+     ],
+     "code": {
+      "sms": false,
+      "expiry_minutes": 5,
+      "max_attempts": 5
+     },
+     "allowed_domains": []
+    }
+   },
+   {
+    "input": {
+     "methods": [],
+     "code": {
+      "sms": false,
+      "expiry_minutes": 5,
+      "max_attempts": 5
+     },
+     "allowed_domains": []
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "methods",
+      "message": "methods"
+     }
+    ]
+   },
+   {
+    "input": {
+     "methods": [
+      "google",
+      "password"
+     ],
+     "code": {
+      "sms": false,
+      "expiry_minutes": 5,
+      "max_attempts": 5
+     },
+     "allowed_domains": []
+    },
+    "ok": true,
+    "data": {
+     "methods": [
+      "password",
+      "google"
+     ],
+     "code": {
+      "sms": false,
+      "expiry_minutes": 5,
+      "max_attempts": 5
+     },
+     "allowed_domains": []
+    }
+   },
+   {
+    "input": {
+     "methods": [
+      "facebook",
+      "facebook",
+      "microsoft"
+     ],
+     "code": {
+      "sms": false,
+      "expiry_minutes": 5,
+      "max_attempts": 5
+     },
+     "allowed_domains": []
+    },
+    "ok": true,
+    "data": {
+     "methods": [
+      "microsoft",
+      "facebook"
+     ],
+     "code": {
+      "sms": false,
+      "expiry_minutes": 5,
+      "max_attempts": 5
+     },
+     "allowed_domains": []
+    }
+   },
+   {
+    "input": {
+     "methods": [
+      "apple"
+     ],
+     "code": {
+      "sms": false,
+      "expiry_minutes": 5,
+      "max_attempts": 5
+     },
+     "allowed_domains": []
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "methods.0",
+      "message": "Invalid option: expected one of \"password\"|\"google\"|\"microsoft\"|\"facebook\""
+     }
+    ]
+   },
+   {
+    "input": {
+     "methods": [
+      "password"
+     ],
+     "code": {
+      "sms": false,
+      "expiry_minutes": 10,
+      "max_attempts": 5
+     },
+     "allowed_domains": []
+    },
+    "ok": true,
+    "data": {
+     "methods": [
+      "password"
+     ],
+     "code": {
+      "sms": false,
+      "expiry_minutes": 10,
+      "max_attempts": 5
+     },
+     "allowed_domains": []
+    }
+   },
+   {
+    "input": {
+     "methods": [
+      "password"
+     ],
+     "code": {
+      "sms": false,
+      "expiry_minutes": 7,
+      "max_attempts": 5
+     },
+     "allowed_domains": []
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "code.expiry_minutes",
+      "message": "Invalid input"
+     }
+    ]
+   },
+   {
+    "input": {
+     "methods": [
+      "password"
+     ],
+     "code": {
+      "sms": false,
+      "expiry_minutes": 5,
+      "max_attempts": 3
+     },
+     "allowed_domains": []
+    },
+    "ok": true,
+    "data": {
+     "methods": [
+      "password"
+     ],
+     "code": {
+      "sms": false,
+      "expiry_minutes": 5,
+      "max_attempts": 3
+     },
+     "allowed_domains": []
+    }
+   },
+   {
+    "input": {
+     "methods": [
+      "password"
+     ],
+     "code": {
+      "sms": false,
+      "expiry_minutes": 5,
+      "max_attempts": 4
+     },
+     "allowed_domains": []
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "code.max_attempts",
+      "message": "Invalid input"
+     }
+    ]
+   },
+   {
+    "input": {
+     "methods": [
+      "password"
+     ],
+     "code": {
+      "sms": "yes",
+      "expiry_minutes": 5,
+      "max_attempts": 5
+     },
+     "allowed_domains": []
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "code.sms",
+      "message": "Invalid input: expected boolean, received string"
+     }
+    ]
+   },
+   {
+    "input": {
+     "methods": [
+      "password"
+     ],
+     "code": {
+      "sms": false,
+      "expiry_minutes": 5,
+      "max_attempts": 5
+     },
+     "allowed_domains": [
+      "Example.COM",
+      "@example.com",
+      " sub.example.co.uk "
+     ]
+    },
+    "ok": true,
+    "data": {
+     "methods": [
+      "password"
+     ],
+     "code": {
+      "sms": false,
+      "expiry_minutes": 5,
+      "max_attempts": 5
+     },
+     "allowed_domains": [
+      "example.com",
+      "sub.example.co.uk"
+     ]
+    }
+   },
+   {
+    "input": {
+     "methods": [
+      "password"
+     ],
+     "code": {
+      "sms": false,
+      "expiry_minutes": 5,
+      "max_attempts": 5
+     },
+     "allowed_domains": [
+      "localhost"
+     ]
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "allowed_domains.0",
+      "message": "domain"
+     }
+    ]
+   },
+   {
+    "input": {
+     "methods": [
+      "password"
+     ],
+     "code": {
+      "sms": false,
+      "expiry_minutes": 5,
+      "max_attempts": 5
+     },
+     "allowed_domains": [
+      "a@b.com"
+     ]
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "allowed_domains.0",
+      "message": "domain"
+     }
+    ]
+   },
+   {
+    "input": {
+     "methods": [
+      "password"
+     ],
+     "code": {
+      "sms": false,
+      "expiry_minutes": 5,
+      "max_attempts": 5
+     },
+     "allowed_domains": [
+      "d0.example",
+      "d1.example",
+      "d2.example",
+      "d3.example",
+      "d4.example",
+      "d5.example",
+      "d6.example",
+      "d7.example",
+      "d8.example",
+      "d9.example",
+      "d10.example",
+      "d11.example",
+      "d12.example",
+      "d13.example",
+      "d14.example",
+      "d15.example",
+      "d16.example",
+      "d17.example",
+      "d18.example",
+      "d19.example",
+      "d20.example",
+      "d21.example",
+      "d22.example",
+      "d23.example",
+      "d24.example",
+      "d25.example",
+      "d26.example",
+      "d27.example",
+      "d28.example",
+      "d29.example",
+      "d30.example",
+      "d31.example",
+      "d32.example",
+      "d33.example",
+      "d34.example",
+      "d35.example",
+      "d36.example",
+      "d37.example",
+      "d38.example",
+      "d39.example",
+      "d40.example",
+      "d41.example",
+      "d42.example",
+      "d43.example",
+      "d44.example",
+      "d45.example",
+      "d46.example",
+      "d47.example",
+      "d48.example",
+      "d49.example",
+      "d50.example"
+     ]
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "allowed_domains",
+      "message": "Too big: expected array to have <=50 items"
+     }
+    ]
+   },
+   {
+    "input": "nonsense",
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received string"
+     }
+    ]
+   },
+   {
+    "input": null,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received null"
+     }
+    ]
+   },
+   {
+    "input": 42,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received number"
+     }
+    ]
+   },
+   {
+    "input": [],
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received array"
+     }
+    ]
+   }
+  ],
+  "security": [
+   {
+    "input": {
+     "password": {
+      "min_length": 10,
+      "lower": true,
+      "upper": true,
+      "number": true,
+      "symbol": false,
+      "reuse_last": 0,
+      "expiry_days": 0
+     },
+     "sessions": {
+      "idle_minutes": 60,
+      "max_hours": 168
+     },
+     "ip_allowlist": {
+      "enabled": false,
+      "entries": []
+     }
+    },
+    "ok": true,
+    "data": {
+     "password": {
+      "min_length": 10,
+      "lower": true,
+      "upper": true,
+      "number": true,
+      "symbol": false,
+      "reuse_last": 0,
+      "expiry_days": 0
+     },
+     "sessions": {
+      "idle_minutes": 60,
+      "max_hours": 168
+     },
+     "ip_allowlist": {
+      "enabled": false,
+      "entries": []
+     }
+    }
+   },
+   {
+    "input": {
+     "password": {
+      "min_length": 7,
+      "lower": true,
+      "upper": true,
+      "number": true,
+      "symbol": false,
+      "reuse_last": 0,
+      "expiry_days": 0
+     },
+     "sessions": {
+      "idle_minutes": 60,
+      "max_hours": 168
+     },
+     "ip_allowlist": {
+      "enabled": false,
+      "entries": []
+     }
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "password.min_length",
+      "message": "Too small: expected number to be >=8"
+     }
+    ]
+   },
+   {
+    "input": {
+     "password": {
+      "min_length": 8,
+      "lower": true,
+      "upper": true,
+      "number": true,
+      "symbol": false,
+      "reuse_last": 0,
+      "expiry_days": 0
+     },
+     "sessions": {
+      "idle_minutes": 60,
+      "max_hours": 168
+     },
+     "ip_allowlist": {
+      "enabled": false,
+      "entries": []
+     }
+    },
+    "ok": true,
+    "data": {
+     "password": {
+      "min_length": 8,
+      "lower": true,
+      "upper": true,
+      "number": true,
+      "symbol": false,
+      "reuse_last": 0,
+      "expiry_days": 0
+     },
+     "sessions": {
+      "idle_minutes": 60,
+      "max_hours": 168
+     },
+     "ip_allowlist": {
+      "enabled": false,
+      "entries": []
+     }
+    }
+   },
+   {
+    "input": {
+     "password": {
+      "min_length": 64,
+      "lower": true,
+      "upper": true,
+      "number": true,
+      "symbol": false,
+      "reuse_last": 0,
+      "expiry_days": 0
+     },
+     "sessions": {
+      "idle_minutes": 60,
+      "max_hours": 168
+     },
+     "ip_allowlist": {
+      "enabled": false,
+      "entries": []
+     }
+    },
+    "ok": true,
+    "data": {
+     "password": {
+      "min_length": 64,
+      "lower": true,
+      "upper": true,
+      "number": true,
+      "symbol": false,
+      "reuse_last": 0,
+      "expiry_days": 0
+     },
+     "sessions": {
+      "idle_minutes": 60,
+      "max_hours": 168
+     },
+     "ip_allowlist": {
+      "enabled": false,
+      "entries": []
+     }
+    }
+   },
+   {
+    "input": {
+     "password": {
+      "min_length": 65,
+      "lower": true,
+      "upper": true,
+      "number": true,
+      "symbol": false,
+      "reuse_last": 0,
+      "expiry_days": 0
+     },
+     "sessions": {
+      "idle_minutes": 60,
+      "max_hours": 168
+     },
+     "ip_allowlist": {
+      "enabled": false,
+      "entries": []
+     }
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "password.min_length",
+      "message": "Too big: expected number to be <=64"
+     }
+    ]
+   },
+   {
+    "input": {
+     "password": {
+      "min_length": 10.5,
+      "lower": true,
+      "upper": true,
+      "number": true,
+      "symbol": false,
+      "reuse_last": 0,
+      "expiry_days": 0
+     },
+     "sessions": {
+      "idle_minutes": 60,
+      "max_hours": 168
+     },
+     "ip_allowlist": {
+      "enabled": false,
+      "entries": []
+     }
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "password.min_length",
+      "message": "Invalid input: expected int, received number"
+     }
+    ]
+   },
+   {
+    "input": {
+     "password": {
+      "min_length": 10,
+      "lower": true,
+      "upper": true,
+      "number": true,
+      "symbol": false,
+      "reuse_last": 3,
+      "expiry_days": 0
+     },
+     "sessions": {
+      "idle_minutes": 60,
+      "max_hours": 168
+     },
+     "ip_allowlist": {
+      "enabled": false,
+      "entries": []
+     }
+    },
+    "ok": true,
+    "data": {
+     "password": {
+      "min_length": 10,
+      "lower": true,
+      "upper": true,
+      "number": true,
+      "symbol": false,
+      "reuse_last": 3,
+      "expiry_days": 0
+     },
+     "sessions": {
+      "idle_minutes": 60,
+      "max_hours": 168
+     },
+     "ip_allowlist": {
+      "enabled": false,
+      "entries": []
+     }
+    }
+   },
+   {
+    "input": {
+     "password": {
+      "min_length": 10,
+      "lower": true,
+      "upper": true,
+      "number": true,
+      "symbol": false,
+      "reuse_last": 4,
+      "expiry_days": 0
+     },
+     "sessions": {
+      "idle_minutes": 60,
+      "max_hours": 168
+     },
+     "ip_allowlist": {
+      "enabled": false,
+      "entries": []
+     }
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "password.reuse_last",
+      "message": "Invalid input"
+     }
+    ]
+   },
+   {
+    "input": {
+     "password": {
+      "min_length": 10,
+      "lower": true,
+      "upper": true,
+      "number": true,
+      "symbol": false,
+      "reuse_last": 0,
+      "expiry_days": 90
+     },
+     "sessions": {
+      "idle_minutes": 60,
+      "max_hours": 168
+     },
+     "ip_allowlist": {
+      "enabled": false,
+      "entries": []
+     }
+    },
+    "ok": true,
+    "data": {
+     "password": {
+      "min_length": 10,
+      "lower": true,
+      "upper": true,
+      "number": true,
+      "symbol": false,
+      "reuse_last": 0,
+      "expiry_days": 90
+     },
+     "sessions": {
+      "idle_minutes": 60,
+      "max_hours": 168
+     },
+     "ip_allowlist": {
+      "enabled": false,
+      "entries": []
+     }
+    }
+   },
+   {
+    "input": {
+     "password": {
+      "min_length": 10,
+      "lower": true,
+      "upper": true,
+      "number": true,
+      "symbol": false,
+      "reuse_last": 0,
+      "expiry_days": 30
+     },
+     "sessions": {
+      "idle_minutes": 60,
+      "max_hours": 168
+     },
+     "ip_allowlist": {
+      "enabled": false,
+      "entries": []
+     }
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "password.expiry_days",
+      "message": "Invalid input"
+     }
+    ]
+   },
+   {
+    "input": {
+     "password": {
+      "min_length": 10,
+      "lower": true,
+      "upper": true,
+      "number": true,
+      "symbol": false,
+      "reuse_last": 0,
+      "expiry_days": 0
+     },
+     "sessions": {
+      "idle_minutes": 15,
+      "max_hours": 168
+     },
+     "ip_allowlist": {
+      "enabled": false,
+      "entries": []
+     }
+    },
+    "ok": true,
+    "data": {
+     "password": {
+      "min_length": 10,
+      "lower": true,
+      "upper": true,
+      "number": true,
+      "symbol": false,
+      "reuse_last": 0,
+      "expiry_days": 0
+     },
+     "sessions": {
+      "idle_minutes": 15,
+      "max_hours": 168
+     },
+     "ip_allowlist": {
+      "enabled": false,
+      "entries": []
+     }
+    }
+   },
+   {
+    "input": {
+     "password": {
+      "min_length": 10,
+      "lower": true,
+      "upper": true,
+      "number": true,
+      "symbol": false,
+      "reuse_last": 0,
+      "expiry_days": 0
+     },
+     "sessions": {
+      "idle_minutes": 45,
+      "max_hours": 168
+     },
+     "ip_allowlist": {
+      "enabled": false,
+      "entries": []
+     }
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "sessions.idle_minutes",
+      "message": "Invalid input"
+     }
+    ]
+   },
+   {
+    "input": {
+     "password": {
+      "min_length": 10,
+      "lower": true,
+      "upper": true,
+      "number": true,
+      "symbol": false,
+      "reuse_last": 0,
+      "expiry_days": 0
+     },
+     "sessions": {
+      "idle_minutes": 60,
+      "max_hours": 8
+     },
+     "ip_allowlist": {
+      "enabled": false,
+      "entries": []
+     }
+    },
+    "ok": true,
+    "data": {
+     "password": {
+      "min_length": 10,
+      "lower": true,
+      "upper": true,
+      "number": true,
+      "symbol": false,
+      "reuse_last": 0,
+      "expiry_days": 0
+     },
+     "sessions": {
+      "idle_minutes": 60,
+      "max_hours": 8
+     },
+     "ip_allowlist": {
+      "enabled": false,
+      "entries": []
+     }
+    }
+   },
+   {
+    "input": {
+     "password": {
+      "min_length": 10,
+      "lower": true,
+      "upper": true,
+      "number": true,
+      "symbol": false,
+      "reuse_last": 0,
+      "expiry_days": 0
+     },
+     "sessions": {
+      "idle_minutes": 60,
+      "max_hours": 9
+     },
+     "ip_allowlist": {
+      "enabled": false,
+      "entries": []
+     }
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "sessions.max_hours",
+      "message": "Invalid input"
+     }
+    ]
+   },
+   {
+    "input": {
+     "password": {
+      "min_length": 10,
+      "lower": true,
+      "upper": true,
+      "number": true,
+      "symbol": false,
+      "reuse_last": 0,
+      "expiry_days": 0
+     },
+     "sessions": {
+      "idle_minutes": 60,
+      "max_hours": 168
+     },
+     "ip_allowlist": {
+      "enabled": true,
+      "entries": []
+     }
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "ip_allowlist.entries",
+      "message": "ip_empty"
+     }
+    ]
+   },
+   {
+    "input": {
+     "password": {
+      "min_length": 10,
+      "lower": true,
+      "upper": true,
+      "number": true,
+      "symbol": false,
+      "reuse_last": 0,
+      "expiry_days": 0
+     },
+     "sessions": {
+      "idle_minutes": 60,
+      "max_hours": 168
+     },
+     "ip_allowlist": {
+      "enabled": true,
+      "entries": [
+       {
+        "value": "203.0.113.0/24",
+        "label": "  Office "
+       },
+       {
+        "value": "  ",
+        "label": null
+       },
+       {
+        "value": "2001:db8::/32",
+        "label": ""
+       }
+      ]
+     }
+    },
+    "ok": true,
+    "data": {
+     "password": {
+      "min_length": 10,
+      "lower": true,
+      "upper": true,
+      "number": true,
+      "symbol": false,
+      "reuse_last": 0,
+      "expiry_days": 0
+     },
+     "sessions": {
+      "idle_minutes": 60,
+      "max_hours": 168
+     },
+     "ip_allowlist": {
+      "enabled": true,
+      "entries": [
+       {
+        "value": "203.0.113.0/24",
+        "label": "Office"
+       },
+       {
+        "value": "2001:db8::/32",
+        "label": null
+       }
+      ]
+     }
+    }
+   },
+   {
+    "input": {
+     "password": {
+      "min_length": 10,
+      "lower": true,
+      "upper": true,
+      "number": true,
+      "symbol": false,
+      "reuse_last": 0,
+      "expiry_days": 0
+     },
+     "sessions": {
+      "idle_minutes": 60,
+      "max_hours": 168
+     },
+     "ip_allowlist": {
+      "enabled": true,
+      "entries": [
+       {
+        "value": "300.1.1.1",
+        "label": null
+       }
+      ]
+     }
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "ip_allowlist.entries.0.value",
+      "message": "ip"
+     }
+    ]
+   },
+   {
+    "input": {
+     "password": {
+      "min_length": 10,
+      "lower": true,
+      "upper": true,
+      "number": true,
+      "symbol": false,
+      "reuse_last": 0,
+      "expiry_days": 0
+     },
+     "sessions": {
+      "idle_minutes": 60,
+      "max_hours": 168
+     },
+     "ip_allowlist": {
+      "enabled": false,
+      "entries": [
+       {
+        "value": "10.0.0.1/33",
+        "label": null
+       }
+      ]
+     }
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "ip_allowlist.entries.0.value",
+      "message": "ip"
+     }
+    ]
+   },
+   {
+    "input": {
+     "password": {
+      "min_length": 10,
+      "lower": true,
+      "upper": true,
+      "number": true,
+      "symbol": false,
+      "reuse_last": 0,
+      "expiry_days": 0
+     },
+     "sessions": {
+      "idle_minutes": 60,
+      "max_hours": 168
+     },
+     "ip_allowlist": {
+      "enabled": true,
+      "entries": [
+       {
+        "value": "",
+        "label": "x"
+       }
+      ]
+     }
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "ip_allowlist.entries",
+      "message": "ip_empty"
+     }
+    ]
+   },
+   {
+    "input": "nonsense",
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received string"
+     }
+    ]
+   },
+   {
+    "input": null,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received null"
+     }
+    ]
+   },
+   {
+    "input": 42,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received number"
+     }
+    ]
+   },
+   {
+    "input": [],
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received array"
+     }
+    ]
+   }
+  ],
+  "notifications": [
+   {
+    "input": {
+     "events": {
+      "response_new": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "response_duplicate": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "form_limit": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "form_closing": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "export_ready": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "webhook_failing": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "security_alert": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      }
+     },
+     "digest": {
+      "enabled": false,
+      "hour": 8
+     }
+    },
+    "ok": true,
+    "data": {
+     "events": {
+      "response_new": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "response_duplicate": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "form_limit": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "form_closing": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "export_ready": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "webhook_failing": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "security_alert": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      }
+     },
+     "digest": {
+      "enabled": false,
+      "hour": 8
+     }
+    }
+   },
+   {
+    "input": {
+     "events": {
+      "response_new": {
+       "in_app": true,
+       "email": false,
+       "to": "everyone",
+       "people": []
+      },
+      "response_duplicate": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "form_limit": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "form_closing": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "export_ready": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "webhook_failing": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "security_alert": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      }
+     },
+     "digest": {
+      "enabled": false,
+      "hour": 8
+     }
+    },
+    "ok": true,
+    "data": {
+     "events": {
+      "response_new": {
+       "in_app": true,
+       "email": false,
+       "to": "everyone",
+       "people": []
+      },
+      "response_duplicate": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "form_limit": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "form_closing": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "export_ready": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "webhook_failing": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "security_alert": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      }
+     },
+     "digest": {
+      "enabled": false,
+      "hour": 8
+     }
+    }
+   },
+   {
+    "input": {
+     "events": {
+      "response_new": {
+       "in_app": true,
+       "email": false,
+       "to": "people",
+       "people": []
+      },
+      "response_duplicate": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "form_limit": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "form_closing": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "export_ready": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "webhook_failing": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "security_alert": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      }
+     },
+     "digest": {
+      "enabled": false,
+      "hour": 8
+     }
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "events.response_new.people",
+      "message": "people"
+     }
+    ]
+   },
+   {
+    "input": {
+     "events": {
+      "response_new": {
+       "in_app": true,
+       "email": true,
+       "to": "people",
+       "people": [
+        "u1"
+       ]
+      },
+      "response_duplicate": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "form_limit": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "form_closing": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "export_ready": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "webhook_failing": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "security_alert": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      }
+     },
+     "digest": {
+      "enabled": false,
+      "hour": 8
+     }
+    },
+    "ok": true,
+    "data": {
+     "events": {
+      "response_new": {
+       "in_app": true,
+       "email": true,
+       "to": "people",
+       "people": [
+        "u1"
+       ]
+      },
+      "response_duplicate": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "form_limit": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "form_closing": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "export_ready": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "webhook_failing": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "security_alert": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      }
+     },
+     "digest": {
+      "enabled": false,
+      "hour": 8
+     }
+    }
+   },
+   {
+    "input": {
+     "events": {
+      "response_new": {
+       "in_app": true,
+       "email": false,
+       "to": "nobody",
+       "people": []
+      },
+      "response_duplicate": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "form_limit": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "form_closing": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "export_ready": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "webhook_failing": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "security_alert": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      }
+     },
+     "digest": {
+      "enabled": false,
+      "hour": 8
+     }
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "events.response_new.to",
+      "message": "Invalid option: expected one of \"admins\"|\"everyone\"|\"people\""
+     }
+    ]
+   },
+   {
+    "input": {
+     "events": {
+      "response_new": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "response_duplicate": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "form_closing": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "export_ready": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "webhook_failing": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "security_alert": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      }
+     },
+     "digest": {
+      "enabled": false,
+      "hour": 8
+     }
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "events.form_limit",
+      "message": "Invalid input: expected object, received undefined"
+     }
+    ]
+   },
+   {
+    "input": {
+     "events": {
+      "response_new": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "response_duplicate": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "form_limit": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "form_closing": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "export_ready": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "webhook_failing": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "security_alert": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      }
+     },
+     "digest": {
+      "enabled": false,
+      "hour": 24
+     }
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "digest.hour",
+      "message": "Too big: expected number to be <=23"
+     }
+    ]
+   },
+   {
+    "input": {
+     "events": {
+      "response_new": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "response_duplicate": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "form_limit": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "form_closing": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "export_ready": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "webhook_failing": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "security_alert": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      }
+     },
+     "digest": {
+      "enabled": false,
+      "hour": 0
+     }
+    },
+    "ok": true,
+    "data": {
+     "events": {
+      "response_new": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "response_duplicate": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "form_limit": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "form_closing": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "export_ready": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "webhook_failing": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "security_alert": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      }
+     },
+     "digest": {
+      "enabled": false,
+      "hour": 0
+     }
+    }
+   },
+   {
+    "input": {
+     "events": {
+      "response_new": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "response_duplicate": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "form_limit": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "form_closing": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "export_ready": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "webhook_failing": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "security_alert": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      }
+     },
+     "digest": {
+      "enabled": false,
+      "hour": 7.5
+     }
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "digest.hour",
+      "message": "Invalid input: expected int, received number"
+     }
+    ]
+   },
+   {
+    "input": {
+     "events": {
+      "response_new": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "response_duplicate": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "form_limit": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "form_closing": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "export_ready": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "webhook_failing": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "security_alert": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "extra": {
+       "in_app": true,
+       "email": true,
+       "to": "admins",
+       "people": []
+      }
+     },
+     "digest": {
+      "enabled": false,
+      "hour": 8
+     }
+    },
+    "ok": true,
+    "data": {
+     "events": {
+      "response_new": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "response_duplicate": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "form_limit": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "form_closing": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "export_ready": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "webhook_failing": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      },
+      "security_alert": {
+       "in_app": true,
+       "email": false,
+       "to": "admins",
+       "people": []
+      }
+     },
+     "digest": {
+      "enabled": false,
+      "hour": 8
+     }
+    }
+   },
+   {
+    "input": "nonsense",
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received string"
+     }
+    ]
+   },
+   {
+    "input": null,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received null"
+     }
+    ]
+   },
+   {
+    "input": 42,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received number"
+     }
+    ]
+   },
+   {
+    "input": [],
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received array"
+     }
+    ]
+   }
+  ],
+  "emails": [
+   {
+    "input": {
+     "sender_name": null,
+     "reply_to": null,
+     "footer": null,
+     "custom": {}
+    },
+    "ok": true,
+    "data": {
+     "sender_name": null,
+     "reply_to": null,
+     "footer": null,
+     "custom": {}
+    }
+   },
+   {
+    "input": {
+     "sender_name": "  Remedy  ",
+     "reply_to": null,
+     "footer": null,
+     "custom": {}
+    },
+    "ok": true,
+    "data": {
+     "sender_name": "Remedy",
+     "reply_to": null,
+     "footer": null,
+     "custom": {}
+    }
+   },
+   {
+    "input": {
+     "sender_name": null,
+     "reply_to": "hello@remedy.example",
+     "footer": null,
+     "custom": {}
+    },
+    "ok": true,
+    "data": {
+     "sender_name": null,
+     "reply_to": "hello@remedy.example",
+     "footer": null,
+     "custom": {}
+    }
+   },
+   {
+    "input": {
+     "sender_name": null,
+     "reply_to": "bad",
+     "footer": null,
+     "custom": {}
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "reply_to",
+      "message": "email"
+     }
+    ]
+   },
+   {
+    "input": {
+     "sender_name": null,
+     "reply_to": null,
+     "footer": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+     "custom": {}
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "footer",
+      "message": "Too big: expected string to have <=300 characters"
+     }
+    ]
+   },
+   {
+    "input": {
+     "sender_name": null,
+     "reply_to": null,
+     "footer": null,
+     "custom": {
+      "signin_code": {
+       "en": {
+        "subject": " Your code ",
+        "body": "Code: {{code}}"
+       }
+      }
+     }
+    },
+    "ok": true,
+    "data": {
+     "sender_name": null,
+     "reply_to": null,
+     "footer": null,
+     "custom": {
+      "signin_code": {
+       "en": {
+        "subject": "Your code",
+        "body": "Code: {{code}}"
+       }
+      }
+     }
+    }
+   },
+   {
+    "input": {
+     "sender_name": null,
+     "reply_to": null,
+     "footer": null,
+     "custom": {
+      "signin_code": {
+       "xx": {
+        "subject": "a",
+        "body": "b"
+       }
+      }
+     }
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "custom.signin_code",
+      "message": "Unrecognized key: \"xx\""
+     }
+    ]
+   },
+   {
+    "input": {
+     "sender_name": null,
+     "reply_to": null,
+     "footer": null,
+     "custom": {
+      "unknown": {
+       "en": {
+        "subject": "a",
+        "body": "b"
+       }
+      }
+     }
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "custom",
+      "message": "Unrecognized key: \"unknown\""
+     }
+    ]
+   },
+   {
+    "input": {
+     "sender_name": null,
+     "reply_to": null,
+     "footer": null,
+     "custom": {
+      "invitation": {
+       "fr": {
+        "subject": "",
+        "body": "b"
+       }
+      }
+     }
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "custom.invitation.fr.subject",
+      "message": "subject"
+     }
+    ]
+   },
+   {
+    "input": {
+     "sender_name": null,
+     "reply_to": null,
+     "footer": null,
+     "custom": {
+      "invitation": {
+       "fr": {
+        "subject": "a",
+        "body": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+       }
+      }
+     }
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "custom.invitation.fr.body",
+      "message": "Too big: expected string to have <=10000 characters"
+     }
+    ]
+   },
+   {
+    "input": "nonsense",
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received string"
+     }
+    ]
+   },
+   {
+    "input": null,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received null"
+     }
+    ]
+   },
+   {
+    "input": 42,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received number"
+     }
+    ]
+   },
+   {
+    "input": [],
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received array"
+     }
+    ]
+   }
+  ],
+  "privacy": [
+   {
+    "input": {
+     "retention_days": 0,
+     "notice_url": null,
+     "consent": false,
+     "consent_text": null
+    },
+    "ok": true,
+    "data": {
+     "retention_days": 0,
+     "notice_url": null,
+     "consent": false,
+     "consent_text": null
+    }
+   },
+   {
+    "input": {
+     "retention_days": 30,
+     "notice_url": null,
+     "consent": false,
+     "consent_text": null
+    },
+    "ok": true,
+    "data": {
+     "retention_days": 30,
+     "notice_url": null,
+     "consent": false,
+     "consent_text": null
+    }
+   },
+   {
+    "input": {
+     "retention_days": 31,
+     "notice_url": null,
+     "consent": false,
+     "consent_text": null
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "retention_days",
+      "message": "retention"
+     }
+    ]
+   },
+   {
+    "input": {
+     "retention_days": 0,
+     "notice_url": "https://remedy.example/privacy",
+     "consent": false,
+     "consent_text": null
+    },
+    "ok": true,
+    "data": {
+     "retention_days": 0,
+     "notice_url": "https://remedy.example/privacy",
+     "consent": false,
+     "consent_text": null
+    }
+   },
+   {
+    "input": {
+     "retention_days": 0,
+     "notice_url": "http://remedy.example/privacy",
+     "consent": false,
+     "consent_text": null
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "notice_url",
+      "message": "https"
+     }
+    ]
+   },
+   {
+    "input": {
+     "retention_days": 0,
+     "notice_url": "",
+     "consent": false,
+     "consent_text": null
+    },
+    "ok": true,
+    "data": {
+     "retention_days": 0,
+     "notice_url": null,
+     "consent": false,
+     "consent_text": null
+    }
+   },
+   {
+    "input": {
+     "retention_days": 0,
+     "notice_url": null,
+     "consent": true,
+     "consent_text": null
+    },
+    "ok": true,
+    "data": {
+     "retention_days": 0,
+     "notice_url": null,
+     "consent": true,
+     "consent_text": null
+    }
+   },
+   {
+    "input": {
+     "retention_days": 0,
+     "notice_url": null,
+     "consent": false,
+     "consent_text": "  I agree  "
+    },
+    "ok": true,
+    "data": {
+     "retention_days": 0,
+     "notice_url": null,
+     "consent": false,
+     "consent_text": "I agree"
+    }
+   },
+   {
+    "input": {
+     "retention_days": 0,
+     "notice_url": null,
+     "consent": false,
+     "consent_text": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "consent_text",
+      "message": "Too big: expected string to have <=400 characters"
+     }
+    ]
+   },
+   {
+    "input": "nonsense",
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received string"
+     }
+    ]
+   },
+   {
+    "input": null,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received null"
+     }
+    ]
+   },
+   {
+    "input": 42,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received number"
+     }
+    ]
+   },
+   {
+    "input": [],
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received array"
+     }
+    ]
+   }
+  ],
+  "form_defaults": [
+   {
+    "input": {
+     "settings": {
+      "progress_bar": true,
+      "save_resume": false,
+      "field_icons": true,
+      "label_position": "top"
+     },
+     "theme_id": null,
+     "thank_you": {
+      "title": null,
+      "message": null
+     },
+     "team_emails": [],
+     "embed_domains": []
+    },
+    "ok": true,
+    "data": {
+     "settings": {
+      "progress_bar": true,
+      "save_resume": false,
+      "field_icons": true,
+      "label_position": "top"
+     },
+     "theme_id": null,
+     "thank_you": {
+      "title": null,
+      "message": null
+     },
+     "team_emails": [],
+     "embed_domains": []
+    }
+   },
+   {
+    "input": {
+     "settings": {
+      "progress_bar": true,
+      "save_resume": false,
+      "field_icons": true,
+      "label_position": "left"
+     },
+     "theme_id": null,
+     "thank_you": {
+      "title": null,
+      "message": null
+     },
+     "team_emails": [],
+     "embed_domains": []
+    },
+    "ok": true,
+    "data": {
+     "settings": {
+      "progress_bar": true,
+      "save_resume": false,
+      "field_icons": true,
+      "label_position": "left"
+     },
+     "theme_id": null,
+     "thank_you": {
+      "title": null,
+      "message": null
+     },
+     "team_emails": [],
+     "embed_domains": []
+    }
+   },
+   {
+    "input": {
+     "settings": {
+      "progress_bar": true,
+      "save_resume": false,
+      "field_icons": true,
+      "label_position": "right"
+     },
+     "theme_id": null,
+     "thank_you": {
+      "title": null,
+      "message": null
+     },
+     "team_emails": [],
+     "embed_domains": []
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "settings.label_position",
+      "message": "Invalid option: expected one of \"top\"|\"left\""
+     }
+    ]
+   },
+   {
+    "input": {
+     "settings": {
+      "progress_bar": true,
+      "save_resume": false,
+      "field_icons": true,
+      "label_position": "top"
+     },
+     "theme_id": "abc",
+     "thank_you": {
+      "title": null,
+      "message": null
+     },
+     "team_emails": [],
+     "embed_domains": []
+    },
+    "ok": true,
+    "data": {
+     "settings": {
+      "progress_bar": true,
+      "save_resume": false,
+      "field_icons": true,
+      "label_position": "top"
+     },
+     "theme_id": "abc",
+     "thank_you": {
+      "title": null,
+      "message": null
+     },
+     "team_emails": [],
+     "embed_domains": []
+    }
+   },
+   {
+    "input": {
+     "settings": {
+      "progress_bar": true,
+      "save_resume": false,
+      "field_icons": true,
+      "label_position": "top"
+     },
+     "theme_id": null,
+     "thank_you": {
+      "title": "  Thanks!  ",
+      "message": null
+     },
+     "team_emails": [],
+     "embed_domains": []
+    },
+    "ok": true,
+    "data": {
+     "settings": {
+      "progress_bar": true,
+      "save_resume": false,
+      "field_icons": true,
+      "label_position": "top"
+     },
+     "theme_id": null,
+     "thank_you": {
+      "title": "Thanks!",
+      "message": null
+     },
+     "team_emails": [],
+     "embed_domains": []
+    }
+   },
+   {
+    "input": {
+     "settings": {
+      "progress_bar": true,
+      "save_resume": false,
+      "field_icons": true,
+      "label_position": "top"
+     },
+     "theme_id": null,
+     "thank_you": {
+      "title": null,
+      "message": null
+     },
+     "team_emails": [
+      "u1",
+      "u2"
+     ],
+     "embed_domains": []
+    },
+    "ok": true,
+    "data": {
+     "settings": {
+      "progress_bar": true,
+      "save_resume": false,
+      "field_icons": true,
+      "label_position": "top"
+     },
+     "theme_id": null,
+     "thank_you": {
+      "title": null,
+      "message": null
+     },
+     "team_emails": [
+      "u1",
+      "u2"
+     ],
+     "embed_domains": []
+    }
+   },
+   {
+    "input": {
+     "settings": {
+      "progress_bar": true,
+      "save_resume": false,
+      "field_icons": true,
+      "label_position": "top"
+     },
+     "theme_id": null,
+     "thank_you": {
+      "title": null,
+      "message": null
+     },
+     "team_emails": [],
+     "embed_domains": [
+      "https://Shop.Example.com/page",
+      "*.example.org",
+      "example.org",
+      "example.org"
+     ]
+    },
+    "ok": true,
+    "data": {
+     "settings": {
+      "progress_bar": true,
+      "save_resume": false,
+      "field_icons": true,
+      "label_position": "top"
+     },
+     "theme_id": null,
+     "thank_you": {
+      "title": null,
+      "message": null
+     },
+     "team_emails": [],
+     "embed_domains": [
+      "shop.example.com",
+      "*.example.org",
+      "example.org"
+     ]
+    }
+   },
+   {
+    "input": {
+     "settings": {
+      "progress_bar": true,
+      "save_resume": false,
+      "field_icons": true,
+      "label_position": "top"
+     },
+     "theme_id": null,
+     "thank_you": {
+      "title": null,
+      "message": null
+     },
+     "team_emails": [],
+     "embed_domains": [
+      "not a domain"
+     ]
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "embed_domains.0",
+      "message": "domain"
+     }
+    ]
+   },
+   {
+    "input": {
+     "settings": {
+      "progress_bar": true,
+      "save_resume": false,
+      "field_icons": true,
+      "label_position": "top"
+     },
+     "theme_id": null,
+     "thank_you": {
+      "title": null,
+      "message": null
+     },
+     "team_emails": [],
+     "embed_domains": [
+      "**.example.com"
+     ]
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "embed_domains.0",
+      "message": "domain"
+     }
+    ]
+   },
+   {
+    "input": "nonsense",
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received string"
+     }
+    ]
+   },
+   {
+    "input": null,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received null"
+     }
+    ]
+   },
+   {
+    "input": 42,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received number"
+     }
+    ]
+   },
+   {
+    "input": [],
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received array"
+     }
+    ]
+   }
+  ],
+  "appearance": [
+   {
+    "input": {
+     "preset": "formalie",
+     "primary": "mono",
+     "neutral": "zinc",
+     "background": "plain",
+     "radius": "md",
+     "font": "manrope",
+     "text_size": "md",
+     "rail": "light",
+     "menu": "light",
+     "menu_badges": true,
+     "header": {
+      "breadcrumbs": true,
+      "search": true
+     },
+     "footer": true,
+     "content_width": "full",
+     "density": "comfortable",
+     "default_mode": "system",
+     "dark": null
+    },
+    "ok": true,
+    "data": {
+     "preset": "formalie",
+     "primary": "mono",
+     "neutral": "zinc",
+     "background": "plain",
+     "radius": "md",
+     "font": "manrope",
+     "text_size": "md",
+     "rail": "light",
+     "menu": "light",
+     "menu_badges": true,
+     "header": {
+      "breadcrumbs": true,
+      "search": true
+     },
+     "footer": true,
+     "content_width": "full",
+     "density": "comfortable",
+     "default_mode": "system",
+     "dark": null
+    }
+   },
+   {
+    "input": {
+     "preset": "formalie",
+     "primary": "blue",
+     "neutral": "zinc",
+     "background": "plain",
+     "radius": "md",
+     "font": "manrope",
+     "text_size": "md",
+     "rail": "light",
+     "menu": "light",
+     "menu_badges": true,
+     "header": {
+      "breadcrumbs": true,
+      "search": true
+     },
+     "footer": true,
+     "content_width": "full",
+     "density": "comfortable",
+     "default_mode": "system",
+     "dark": null
+    },
+    "ok": true,
+    "data": {
+     "preset": "formalie",
+     "primary": "blue",
+     "neutral": "zinc",
+     "background": "plain",
+     "radius": "md",
+     "font": "manrope",
+     "text_size": "md",
+     "rail": "light",
+     "menu": "light",
+     "menu_badges": true,
+     "header": {
+      "breadcrumbs": true,
+      "search": true
+     },
+     "footer": true,
+     "content_width": "full",
+     "density": "comfortable",
+     "default_mode": "system",
+     "dark": null
+    }
+   },
+   {
+    "input": {
+     "preset": "formalie",
+     "primary": "chartreuse",
+     "neutral": "zinc",
+     "background": "plain",
+     "radius": "md",
+     "font": "manrope",
+     "text_size": "md",
+     "rail": "light",
+     "menu": "light",
+     "menu_badges": true,
+     "header": {
+      "breadcrumbs": true,
+      "search": true
+     },
+     "footer": true,
+     "content_width": "full",
+     "density": "comfortable",
+     "default_mode": "system",
+     "dark": null
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "primary",
+      "message": "Invalid option: expected one of \"mono\"|\"brand\"|\"indigo\"|\"blue\"|\"sky\"|\"teal\"|\"emerald\"|\"green\"|\"amber\"|\"orange\"|\"red\"|\"rose\"|\"pink\"|\"violet\"|\"purple\""
+     }
+    ]
+   },
+   {
+    "input": {
+     "preset": "formalie",
+     "primary": "mono",
+     "neutral": "slate",
+     "background": "plain",
+     "radius": "md",
+     "font": "manrope",
+     "text_size": "md",
+     "rail": "light",
+     "menu": "light",
+     "menu_badges": true,
+     "header": {
+      "breadcrumbs": true,
+      "search": true
+     },
+     "footer": true,
+     "content_width": "full",
+     "density": "comfortable",
+     "default_mode": "system",
+     "dark": null
+    },
+    "ok": true,
+    "data": {
+     "preset": "formalie",
+     "primary": "mono",
+     "neutral": "slate",
+     "background": "plain",
+     "radius": "md",
+     "font": "manrope",
+     "text_size": "md",
+     "rail": "light",
+     "menu": "light",
+     "menu_badges": true,
+     "header": {
+      "breadcrumbs": true,
+      "search": true
+     },
+     "footer": true,
+     "content_width": "full",
+     "density": "comfortable",
+     "default_mode": "system",
+     "dark": null
+    }
+   },
+   {
+    "input": {
+     "preset": "formalie",
+     "primary": "mono",
+     "neutral": "zinc",
+     "background": "plain",
+     "radius": "xl",
+     "font": "manrope",
+     "text_size": "md",
+     "rail": "light",
+     "menu": "light",
+     "menu_badges": true,
+     "header": {
+      "breadcrumbs": true,
+      "search": true
+     },
+     "footer": true,
+     "content_width": "full",
+     "density": "comfortable",
+     "default_mode": "system",
+     "dark": null
+    },
+    "ok": true,
+    "data": {
+     "preset": "formalie",
+     "primary": "mono",
+     "neutral": "zinc",
+     "background": "plain",
+     "radius": "xl",
+     "font": "manrope",
+     "text_size": "md",
+     "rail": "light",
+     "menu": "light",
+     "menu_badges": true,
+     "header": {
+      "breadcrumbs": true,
+      "search": true
+     },
+     "footer": true,
+     "content_width": "full",
+     "density": "comfortable",
+     "default_mode": "system",
+     "dark": null
+    }
+   },
+   {
+    "input": {
+     "preset": "formalie",
+     "primary": "mono",
+     "neutral": "zinc",
+     "background": "plain",
+     "radius": "md",
+     "font": "serif",
+     "text_size": "md",
+     "rail": "light",
+     "menu": "light",
+     "menu_badges": true,
+     "header": {
+      "breadcrumbs": true,
+      "search": true
+     },
+     "footer": true,
+     "content_width": "full",
+     "density": "comfortable",
+     "default_mode": "system",
+     "dark": null
+    },
+    "ok": true,
+    "data": {
+     "preset": "formalie",
+     "primary": "mono",
+     "neutral": "zinc",
+     "background": "plain",
+     "radius": "md",
+     "font": "serif",
+     "text_size": "md",
+     "rail": "light",
+     "menu": "light",
+     "menu_badges": true,
+     "header": {
+      "breadcrumbs": true,
+      "search": true
+     },
+     "footer": true,
+     "content_width": "full",
+     "density": "comfortable",
+     "default_mode": "system",
+     "dark": null
+    }
+   },
+   {
+    "input": {
+     "preset": "formalie",
+     "primary": "mono",
+     "neutral": "zinc",
+     "background": "plain",
+     "radius": "md",
+     "font": "manrope",
+     "text_size": "xl",
+     "rail": "light",
+     "menu": "light",
+     "menu_badges": true,
+     "header": {
+      "breadcrumbs": true,
+      "search": true
+     },
+     "footer": true,
+     "content_width": "full",
+     "density": "comfortable",
+     "default_mode": "system",
+     "dark": null
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "text_size",
+      "message": "Invalid option: expected one of \"sm\"|\"md\"|\"lg\""
+     }
+    ]
+   },
+   {
+    "input": {
+     "preset": "formalie",
+     "primary": "mono",
+     "neutral": "zinc",
+     "background": "plain",
+     "radius": "md",
+     "font": "manrope",
+     "text_size": "md",
+     "rail": "light",
+     "menu": "light",
+     "menu_badges": true,
+     "header": {
+      "breadcrumbs": true,
+      "search": true
+     },
+     "footer": true,
+     "content_width": "full",
+     "density": "comfortable",
+     "default_mode": "system",
+     "dark": {
+      "primary": "mono",
+      "neutral": "zinc",
+      "background": "plain"
+     }
+    },
+    "ok": true,
+    "data": {
+     "preset": "formalie",
+     "primary": "mono",
+     "neutral": "zinc",
+     "background": "plain",
+     "radius": "md",
+     "font": "manrope",
+     "text_size": "md",
+     "rail": "light",
+     "menu": "light",
+     "menu_badges": true,
+     "header": {
+      "breadcrumbs": true,
+      "search": true
+     },
+     "footer": true,
+     "content_width": "full",
+     "density": "comfortable",
+     "default_mode": "system",
+     "dark": {
+      "primary": "mono",
+      "neutral": "zinc",
+      "background": "plain"
+     }
+    }
+   },
+   {
+    "input": {
+     "preset": "formalie",
+     "primary": "mono",
+     "neutral": "zinc",
+     "background": "plain",
+     "radius": "md",
+     "font": "manrope",
+     "text_size": "md",
+     "rail": "light",
+     "menu": "light",
+     "menu_badges": true,
+     "header": {
+      "breadcrumbs": true,
+      "search": true
+     },
+     "footer": true,
+     "content_width": "full",
+     "density": "comfortable",
+     "default_mode": "system",
+     "dark": {
+      "primary": "mono",
+      "neutral": "zinc"
+     }
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "dark.background",
+      "message": "Invalid option: expected one of \"plain\"|\"tinted\""
+     }
+    ]
+   },
+   {
+    "input": {
+     "preset": "formalie",
+     "primary": "mono",
+     "neutral": "zinc",
+     "background": "plain",
+     "radius": "md",
+     "font": "manrope",
+     "text_size": "md",
+     "rail": "light",
+     "menu": "light",
+     "menu_badges": true,
+     "header": {
+      "breadcrumbs": true,
+      "search": true
+     },
+     "footer": true,
+     "content_width": "full",
+     "density": "comfortable",
+     "default_mode": "auto",
+     "dark": null
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "default_mode",
+      "message": "Invalid option: expected one of \"system\"|\"light\"|\"dark\""
+     }
+    ]
+   },
+   {
+    "input": {
+     "preset": "formalie",
+     "primary": "mono",
+     "neutral": "zinc",
+     "background": "plain",
+     "radius": "md",
+     "font": "manrope",
+     "text_size": "md",
+     "rail": "light",
+     "menu": "light",
+     "menu_badges": true,
+     "header": {
+      "breadcrumbs": true,
+      "search": "no"
+     },
+     "footer": true,
+     "content_width": "full",
+     "density": "comfortable",
+     "default_mode": "system",
+     "dark": null
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "header.search",
+      "message": "Invalid input: expected boolean, received string"
+     }
+    ]
+   },
+   {
+    "input": {
+     "preset": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+     "primary": "mono",
+     "neutral": "zinc",
+     "background": "plain",
+     "radius": "md",
+     "font": "manrope",
+     "text_size": "md",
+     "rail": "light",
+     "menu": "light",
+     "menu_badges": true,
+     "header": {
+      "breadcrumbs": true,
+      "search": true
+     },
+     "footer": true,
+     "content_width": "full",
+     "density": "comfortable",
+     "default_mode": "system",
+     "dark": null
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "preset",
+      "message": "Too big: expected string to have <=40 characters"
+     }
+    ]
+   },
+   {
+    "input": "nonsense",
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received string"
+     }
+    ]
+   },
+   {
+    "input": null,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received null"
+     }
+    ]
+   },
+   {
+    "input": 42,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received number"
+     }
+    ]
+   },
+   {
+    "input": [],
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received array"
+     }
+    ]
+   }
+  ]
+ },
+ "settings_changes": [
+  {
+   "before": {
+    "legal_name": "Remedy Legal Ltd",
+    "display_name": "Remedy Legal",
+    "industry": null,
+    "size": null,
+    "website": null,
+    "registration_number": null,
+    "tax_number": null,
+    "support_email": null,
+    "support_phone": null,
+    "address": {
+     "line1": null,
+     "line2": null,
+     "city": null,
+     "region": null,
+     "postal_code": null,
+     "country": null
+    }
+   },
+   "after": {
+    "legal_name": "Remedy Legal Ltd",
+    "display_name": "Remedy",
+    "industry": null,
+    "size": null,
+    "website": null,
+    "registration_number": null,
+    "tax_number": null,
+    "support_email": null,
+    "support_phone": null,
+    "address": {
+     "line1": null,
+     "line2": null,
+     "city": null,
+     "region": null,
+     "postal_code": null,
+     "country": null
+    }
+   },
+   "changes": [
+    {
+     "field": "display_name",
+     "before": "Remedy Legal",
+     "after": "Remedy"
+    }
+   ]
+  },
+  {
+   "before": {
+    "legal_name": "Remedy Legal Ltd",
+    "display_name": "Remedy Legal",
+    "industry": null,
+    "size": null,
+    "website": null,
+    "registration_number": null,
+    "tax_number": null,
+    "support_email": null,
+    "support_phone": null,
+    "address": {
+     "line1": null,
+     "line2": null,
+     "city": null,
+     "region": null,
+     "postal_code": null,
+     "country": null
+    }
+   },
+   "after": {
+    "legal_name": "Remedy Legal Ltd",
+    "display_name": "Remedy Legal",
+    "industry": null,
+    "size": null,
+    "website": "https://a.example",
+    "registration_number": null,
+    "tax_number": null,
+    "support_email": null,
+    "support_phone": null,
+    "address": {
+     "line1": null,
+     "line2": null,
+     "city": "London",
+     "region": null,
+     "postal_code": null,
+     "country": null
+    }
+   },
+   "changes": [
+    {
+     "field": "website",
+     "before": null,
+     "after": "https://a.example"
+    },
+    {
+     "field": "address.city",
+     "before": null,
+     "after": "London"
+    }
+   ]
+  },
+  {
+   "before": {
+    "methods": [
+     "password"
+    ],
+    "code": {
+     "sms": false,
+     "expiry_minutes": 5,
+     "max_attempts": 5
+    },
+    "allowed_domains": []
+   },
+   "after": {
+    "methods": [
+     "password",
+     "google"
+    ],
+    "code": {
+     "sms": false,
+     "expiry_minutes": 5,
+     "max_attempts": 5
+    },
+    "allowed_domains": []
+   },
+   "changes": [
+    {
+     "field": "methods",
+     "before": "password",
+     "after": "password, google"
+    }
+   ]
+  },
+  {
+   "before": {
+    "password": {
+     "min_length": 10,
+     "lower": true,
+     "upper": true,
+     "number": true,
+     "symbol": false,
+     "reuse_last": 0,
+     "expiry_days": 0
+    },
+    "sessions": {
+     "idle_minutes": 60,
+     "max_hours": 168
+    },
+    "ip_allowlist": {
+     "enabled": false,
+     "entries": []
+    }
+   },
+   "after": {
+    "password": {
+     "min_length": 10,
+     "lower": true,
+     "upper": true,
+     "number": true,
+     "symbol": true,
+     "reuse_last": 0,
+     "expiry_days": 0
+    },
+    "sessions": {
+     "idle_minutes": 30,
+     "max_hours": 168
+    },
+    "ip_allowlist": {
+     "enabled": false,
+     "entries": []
+    }
+   },
+   "changes": [
+    {
+     "field": "password.symbol",
+     "before": "false",
+     "after": "true"
+    },
+    {
+     "field": "sessions.idle_minutes",
+     "before": "60",
+     "after": "30"
+    }
+   ]
+  },
+  {
+   "before": {
+    "a": 1,
+    "b": ""
+   },
+   "after": {
+    "a": 1,
+    "b": null,
+    "c": false
+   },
+   "changes": [
+    {
+     "field": "c",
+     "before": null,
+     "after": "false"
+    }
+   ]
+  }
+ ],
+ "ip_ranges": [
+  {
+   "value": "203.0.113.7",
+   "valid": true
+  },
+  {
+   "value": "203.0.113.0/24",
+   "valid": true
+  },
+  {
+   "value": "10.0.0.1/33",
+   "valid": false
+  },
+  {
+   "value": "300.1.1.1",
+   "valid": false
+  },
+  {
+   "value": "::1",
+   "valid": true
+  },
+  {
+   "value": "2001:db8::/32",
+   "valid": true
+  },
+  {
+   "value": "2001:db8::1/129",
+   "valid": false
+  },
+  {
+   "value": "::ffff:10.0.0.1",
+   "valid": true
+  },
+  {
+   "value": "1:2:3:4:5:6:7:8",
+   "valid": true
+  },
+  {
+   "value": "1::2::3",
+   "valid": false
+  },
+  {
+   "value": "fe80::1%eth0",
+   "valid": false
+  },
+  {
+   "value": "abc",
+   "valid": false
+  },
+  {
+   "value": "",
+   "valid": false
+  },
+  {
+   "value": " 10.0.0.0/8 ",
+   "valid": true
+  },
+  {
+   "value": "10.0.0.0/08",
+   "valid": true
+  },
+  {
+   "value": "10.0.0.0/",
+   "valid": false
+  },
+  {
+   "value": "1.2.3.4/32/5",
+   "valid": true
+  }
+ ],
+ "ip_matches": [
+  {
+   "ip": "203.0.113.7",
+   "cidr": "203.0.113.0/24",
+   "match": true
+  },
+  {
+   "ip": "203.0.114.7",
+   "cidr": "203.0.113.0/24",
+   "match": false
+  },
+  {
+   "ip": "::ffff:203.0.113.7",
+   "cidr": "203.0.113.0/24",
+   "match": true
+  },
+  {
+   "ip": "2001:db8::5",
+   "cidr": "2001:db8::/32",
+   "match": true
+  },
+  {
+   "ip": "10.1.2.3",
+   "cidr": "0.0.0.0/0",
+   "match": true
+  },
+  {
+   "ip": "10.1.2.3",
+   "cidr": "::/0",
+   "match": false
+  },
+  {
+   "ip": "127.0.0.1",
+   "cidr": "127.0.0.1",
+   "match": true
+  }
+ ],
+ "time_zones": [
+  {
+   "value": "UTC",
+   "valid": true
+  },
+  {
+   "value": "Europe/London",
+   "valid": true
+  },
+  {
+   "value": "europe/london",
+   "valid": true
+  },
+  {
+   "value": "Asia/Calcutta",
+   "valid": true
+  },
+  {
+   "value": "Asia/Kolkata",
+   "valid": true
+  },
+  {
+   "value": "US/Eastern",
+   "valid": true
+  },
+  {
+   "value": "GMT",
+   "valid": true
+  },
+  {
+   "value": "Etc/GMT+5",
+   "valid": true
+  },
+  {
+   "value": "Mars/Base",
+   "valid": false
+  },
+  {
+   "value": "",
+   "valid": false
+  },
+  {
+   "value": "EST",
+   "valid": true
+  },
+  {
+   "value": "America/Argentina/Buenos_Aires",
+   "valid": true
+  },
+  {
+   "value": "Africa/Lagos",
+   "valid": true
+  }
+ ],
+ "about": "Recorded from the frontend's shared/ code by scripts/dump_settings_rules.py. Do not edit."
+}

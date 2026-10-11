@@ -22,3 +22,4 @@ xlsxwriter==3.2.9
 uuid-utils==1.0.0
 user-agents==2.2.0
 httpx==0.28.1
+tzdata==2026.5  # time zones on Windows (zoneinfo), the same database as the browsers

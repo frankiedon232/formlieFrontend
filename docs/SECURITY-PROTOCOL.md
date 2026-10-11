@@ -46,7 +46,7 @@ Same structure (`kid, iv, ts, nonce, ct`), encrypted with the session key. Clien
 - File uploads: browser uploads directly to object storage via **pre-signed, expiring URLs** (TLS); the request that obtains the URL is enveloped. Files are encrypted at rest. Respondents' files (public forms) are checked by their bytes (real pictures for image questions, no programs for file questions), never served from a public address, and attached to exactly one response (03-DECISIONS → 88).
 - File downloads/exports: signed, short-lived URLs.
 - `/api/v1/health` and the handshake endpoint.
-- Browser redirects (`/auth/oauth/{provider}/start` and its `/callback`, `/auth/sso/start`), single-use download links (`/downloads/{token}`, `/response-exports/{token}`, `/response-files/{token}`, `/datasource-exports/{token}`), the processor's signed webhook (`/billing/webhooks/payoneer`) and service-to-service routes (`/internal/*`, never reachable through the public proxy). The backend's list is `plaintext_patterns()` in `app/core/middleware/envelope.py`; nothing else is plain.
+- Browser redirects (`/auth/oauth/{provider}/start` and its `/callback`, `/auth/sso/start`), upload bytes with a pre-signed single-use token (`/storage/{token}`), finished files by reference (`/files/{ref}`: logos and form images on pages), single-use download links (`/downloads/{token}`, `/response-exports/{token}`, `/response-files/{token}`, `/datasource-exports/{token}`), the processor's signed webhook (`/billing/webhooks/payoneer`) and service-to-service routes (`/internal/*`, never reachable through the public proxy). The backend's list is `plaintext_patterns()` in `app/core/middleware/envelope.py`; nothing else is plain.
 
 ## 5. Authentication tokens (Fernet)
 

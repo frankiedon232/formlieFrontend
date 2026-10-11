@@ -382,3 +382,7 @@ The portal shows the mark as the icon `i-formalie-mark`, a custom Nuxt Icon coll
 - That's the point of social sign-in. People who sign up directly use a password.
 - A social method is offered on a workspace's sign-in page when the workspace has it switched on and either its plan includes social sign-in or someone there already has that provider linked (typically the Owner who signed up with it, on Starter). Without the plan, only people whose own account is linked get in; no new links are made (`FRM-AUTH-1008`).
 - Export jobs: the person who started an export can follow it and get the file, as well as anyone with `settings.manage` (the mock allows only the latter). Owner: "whatever you pick is fine".
+
+**Shared zod schemas are ported with a zod-compatible validator (backend, 2026-10-11).**
+
+- `app/core/zod.py` follows zod's rules (unknown keys dropped, every problem reported, its built-in messages, checks that keep going after a failed length but stop after a wrong type), and each port of a shared schema is held to zod's own answers recorded from the frontend (`scripts/dump_settings_rules.py`, 189 cases for the settings). So a refused save answers with the same fields and messages as the mock. Simple route bodies still use Pydantic.

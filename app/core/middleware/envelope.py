@@ -52,6 +52,8 @@ def plaintext_patterns(prefix: str) -> list[re.Pattern[str]]:
         rf"^{p}/auth/oauth/[a-z]+/(start|callback)$",  # browser redirects (to the provider and back)
         rf"^{p}/auth/sso/start$",  # browser redirect
         rf"^{p}/downloads/[^/]+$",  # single-use signed download links
+        rf"^{p}/storage/[^/]+$",  # upload bytes with a pre-signed, single-use token
+        rf"^{p}/files/[^/]+$",  # finished files by reference (images on pages)
         rf"^{p}/response-exports/[^/]+$",
         rf"^{p}/response-files/[^/]+$",
         rf"^{p}/datasource-exports/[^/]+$",

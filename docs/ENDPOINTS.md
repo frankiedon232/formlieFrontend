@@ -616,26 +616,26 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 - **Guards:** `requireAdmin`, `requireAuth`, `requireFeature`
 - **Audit:** `auth.login.blocked`, `auth.login.failed`, `auth.login.succeeded`, `auth.otp.failed`, `auth.otp.locked`, `auth.session.revoked`, `settings.updated`
 
-- [ ] `GET /api/v1/settings` (`getSettings`)
-- [ ] `GET /api/v1/settings/localisation` (`getLocalisation`)
-- [ ] `PATCH /api/v1/settings/localisation` (`patchSection`)
-- [ ] `GET /api/v1/settings/security` (`getSection`)
-- [ ] `GET /api/v1/settings/appearance` (`getAppearance`)
-- [ ] `PATCH /api/v1/settings/appearance` (`patchSection`)
-- [ ] `GET /api/v1/settings/privacy` (`getSection`)
-- [ ] `PATCH /api/v1/settings/privacy` (`patchSection`)
-- [ ] `GET /api/v1/settings/form_defaults` (`getFormDefaults`)
-- [ ] `PATCH /api/v1/settings/form_defaults` (`patchSection`)
-- [ ] `GET /api/v1/settings/emails` (`getSection`)
-- [ ] `PATCH /api/v1/settings/emails` (`patchSection`)
-- [ ] `GET /api/v1/settings/notifications` (`getSection`)
-- [ ] `PATCH /api/v1/settings/notifications` (`patchSection`)
-- [ ] `PATCH /api/v1/settings/security` (`patchSection`)
-- [ ] `GET /api/v1/settings/security/sessions` (`listSessions`)
-- [ ] `POST /api/v1/settings/security/sessions/sign-out` (`signOutSessions`)
-- [ ] `GET /api/v1/settings/security/activity` (`securityActivity`)
-- [ ] `GET /api/v1/settings/{section}` (`getSection`)
-- [ ] `PATCH /api/v1/settings/{section}` (`patchSection`)
+- [x] `GET /api/v1/settings` (`getSettings`)
+- [x] `GET /api/v1/settings/localisation` (`getLocalisation`)
+- [x] `PATCH /api/v1/settings/localisation` (`patchSection`)
+- [x] `GET /api/v1/settings/security` (`getSection`)
+- [x] `GET /api/v1/settings/appearance` (`getAppearance`)
+- [x] `PATCH /api/v1/settings/appearance` (`patchSection`)
+- [x] `GET /api/v1/settings/privacy` (`getSection`)
+- [x] `PATCH /api/v1/settings/privacy` (`patchSection`) (retention is applied once responses exist, B7)
+- [x] `GET /api/v1/settings/form_defaults` (`getFormDefaults`)
+- [ ] `PATCH /api/v1/settings/form_defaults` (`patchSection`) (until themes exist, B5: a default theme is refused with `theme`)
+- [x] `GET /api/v1/settings/emails` (`getSection`)
+- [x] `PATCH /api/v1/settings/emails` (`patchSection`)
+- [x] `GET /api/v1/settings/notifications` (`getSection`)
+- [x] `PATCH /api/v1/settings/notifications` (`patchSection`)
+- [x] `PATCH /api/v1/settings/security` (`patchSection`)
+- [x] `GET /api/v1/settings/security/sessions` (`listSessions`)
+- [x] `POST /api/v1/settings/security/sessions/sign-out` (`signOutSessions`)
+- [x] `GET /api/v1/settings/security/activity` (`securityActivity`)
+- [x] `GET /api/v1/settings/{section}` (`getSection`)
+- [x] `PATCH /api/v1/settings/{section}` (`patchSection`)
 
 ## `routes/emails.ts`
 
@@ -757,10 +757,10 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 
 - **Guards:** `requireAdmin`, `requireAuth`
 
-- [ ] `POST /api/v1/uploads` (`createUpload`)
-- [ ] `POST /api/v1/uploads/{id}/complete` (`completeUpload`)
-- [ ] `PUT /api/v1/storage/{token}` (`storeUpload`)
-- [ ] `GET /api/v1/files/{id}` (`serveFile`)
+- [x] `POST /api/v1/uploads` (`createUpload`)
+- [x] `POST /api/v1/uploads/{id}/complete` (`completeUpload`)
+- [x] `PUT /api/v1/storage/{token}` (`storeUpload`)
+- [x] `GET /api/v1/files/{id}` (`serveFile`)
 
 ## `routes/audit.ts`
 

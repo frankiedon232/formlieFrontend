@@ -1309,6 +1309,16 @@
   ],
   [
    "GET",
+   "/auth/oauth/Xb7QmV2kP0aZr9LwE4tYh1sN3cU/callback",
+   null
+  ],
+  [
+   "GET",
+   "/auth/oauth/challenge",
+   null
+  ],
+  [
+   "GET",
    "/me",
    null
   ],

@@ -96,22 +96,28 @@ def endpoint_routes() -> list[list[str]]:
     return routes
 
 
-def main() -> None:
+def run_in_node(entry_js: str, argument: object = None) -> dict:
+    """Bundles `entry_js` (`__SHARED__` = the frontend's shared/) with the frontend's esbuild, runs it with Node and
+    returns what it printed as JSON. `argument` is handed over as a JSON file path (process.argv[2])."""
     esbuild = FRONTEND / "node_modules" / ".bin" / ("esbuild.cmd" if os.name == "nt" else "esbuild")
     shared = (FRONTEND / "shared").as_posix()
     with tempfile.TemporaryDirectory(prefix="formalie-rules-") as tmp:
         entry = Path(tmp) / "entry.ts"
-        entry.write_text(ENTRY.replace("__SHARED__", shared), encoding="utf-8")
+        entry.write_text(entry_js.replace("__SHARED__", shared), encoding="utf-8")
         bundle = Path(tmp) / "rules.mjs"
         subprocess.run([str(esbuild), str(entry), "--bundle", "--format=esm", "--platform=node",
                         f"--alias:#shared={shared}", f"--outfile={bundle}", "--log-level=warning"],
                        check=True, cwd=FRONTEND)
-        routes_file = Path(tmp) / "routes.json"
-        routes_file.write_text(json.dumps(endpoint_routes()), encoding="utf-8")
-        run = subprocess.run(["node", str(bundle), str(routes_file)], capture_output=True, text=True, encoding="utf-8")
+        arg_file = Path(tmp) / "argument.json"
+        arg_file.write_text(json.dumps(argument), encoding="utf-8")
+        run = subprocess.run(["node", str(bundle), str(arg_file)], capture_output=True, text=True, encoding="utf-8")
     if run.returncode != 0:
         raise SystemExit(run.stderr)
-    data = json.loads(run.stdout)
+    return json.loads(run.stdout)
+
+
+def main() -> None:
+    data = run_in_node(ENTRY, endpoint_routes())
     data["about"] = "Recorded from the frontend's shared/ code by scripts/dump_frontend_rules.py. Do not edit."
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(data, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")

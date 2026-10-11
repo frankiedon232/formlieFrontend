@@ -226,3 +226,14 @@ def to_xlsx(rows: list[list[str]], sheet: str = "Audit trail") -> bytes:
     book.close()
     return buffer.getvalue()
 
+
+
+SIGNIN_ACTIONS = ("auth.login.succeeded", "auth.login.failed", "auth.login.blocked", "auth.otp.failed", "auth.otp.locked")
+
+
+async def signin_activity(db: AsyncSession, tenant_id: uuid.UUID, since: datetime) -> list[AuditLog]:
+    """Sign-in events since a moment, newest first (Settings → Security → Activity)."""
+    return list((await db.execute(
+        select(AuditLog).where(AuditLog.tenant_id == tenant_id, AuditLog.action.in_(SIGNIN_ACTIONS),
+                               AuditLog.occurred_at >= since)
+        .order_by(AuditLog.occurred_at.desc(), AuditLog.id.desc()))).scalars())
