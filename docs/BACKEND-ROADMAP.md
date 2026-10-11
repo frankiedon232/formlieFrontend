@@ -69,8 +69,8 @@ Then stop for the owner's review. Day-to-day status lives in `PROGRESS.md`.
 
 ## B8, Responses (F11)
 
-- [ ] Responses list and inbox, filters per field, detail, review status, notes, answer edits with history, files and the file viewer.
-- [ ] Exports (XLSX, CSV, PDF) as Celery jobs with progress; response emails and in-app notifications.
+- [x] Responses list and inbox, filters per field, detail, review status, notes, answer edits with history, files and the file viewer.
+- [x] Exports (XLSX, CSV, PDF) as Celery jobs with progress; response emails and in-app notifications.
 
 ## B9, Data sources and destinations (F12)
 

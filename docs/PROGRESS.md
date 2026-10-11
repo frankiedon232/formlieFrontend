@@ -14,10 +14,11 @@ Statuses: **Done** (built and verified), **Built** (code and tests written, wait
 | B4 | People, roles and access | **Done** (owner: "keep going", 2026-10-11) | 44 / 44 |
 | B5 | Forms core | **Done** (owner: "continue", 2026-10-11) | 28 / 28 |
 | B6 | Design, templates and lists | **Done** (owner: "continue", 2026-10-11) | 38 / 38 |
-| B7 | Public forms, sharing and links | **Built**; waiting for the owner's review | 24 / 24 |
-| B8 to B17 | See BACKEND-ROADMAP.md | Later | 0 |
+| B7 | Public forms, sharing and links | **Done** (owner: "continue", 2026-10-11) | 24 / 24 |
+| B8 | Responses | **Built**; waiting for the owner's review | 23 / 23 |
+| B9 to B17 | See BACKEND-ROADMAP.md | Later | 0 |
 
-Portal endpoints: 198 of 411 ticked in `ENDPOINTS.md`.
+Portal endpoints: 221 of 411 ticked in `ENDPOINTS.md`.
 
 ## B0, Foundation (2026-10-10)
 
@@ -131,6 +132,20 @@ Portal endpoints: 198 of 411 ticked in `ENDPOINTS.md`.
 
 Still to come with later phases: after a response is stored, the team and receipt emails, notifications and events for webhooks and destinations (B8, B9, B11); Formalie's own forms (Contact support, Enterprise enquiry) opening from any workspace (with Help); clearing expired drafts and email codes (a Beat job with B8).
 
+## B8, Responses (2026-10-11)
+
+| Item | Status | Where | Notes |
+| --- | --- | --- | --- |
+| Lists, filters by answer, search, tags, insights, inbox, page by form | Done | `app/modules/responses/router.py`, `service.py` | Answer rules with the frontend's answers (1,654 cases); insights read all of a form's responses for now (rollups with analytics, B12) |
+| Detail, review, edited answers with history, notes, bulk, delete | Done | migration 0020 | Edits checked like a submission; the original answer stays in the history |
+| Files in responses | Done | `app/modules/responses/files.py` | 5-minute private links (encrypted token), only on the workspace's own host |
+| Exports: CSV, Excel, PDF report | Done | `app/modules/responses/exports.py`, `report.py`, migration 0021 | Kept 7 days; one-time 5-minute link per download; the PDF is byte for byte the frontend's |
+| Response emails and notifications | Done | `app/modules/responses/after.py`, `app/modules/notifications/`, `app/modules/emails/workspace.py`, migration 0022 | In the `notifications` queue after a submission; feed, read, clear, daily summary |
+| Form overview, folder pages, sidebar counts from responses | Done | `app/modules/forms/overview.py`, `app/modules/dashboard/router.py` | Visits counted with analytics (B12); until then a start is a response |
+| Lists kept on the server, on public forms | Fixed | `app/modules/lists/service.py` `full_schema` | B7 read their options from the form, which holds none: lookups, list details in formulas and labels now read the list |
+
+Still to come with later phases: the log of sent emails and a workspace's own sending domain (B11); events for webhooks and destinations are in the outbox, their consumers come with B9; Formalie's own forms (Help).
+
 ## Open questions
 
 - **Privacy erasure without hard deletes:** "delete a person's data" (Settings → Privacy, F14) and response retention must still remove personal data. Proposal: anonymise in place (overwrite answers and personal fields, keep the row, its relations and the audit entry). To decide before B11.
@@ -145,9 +160,12 @@ Still to come with later phases: after a response is stored, the team and receip
 - **Switch-over, social sign-in click-through (2026-10-11):** the three providers are set up and the backend sends each button to its provider (checked). With the frontend's `NUXT_PUBLIC_API_MOCK=false`, the sign-up page stayed on its loading screen and never called the backend; to look into at the switch-over, then click through Google, Microsoft and Facebook. The frontend stays on the mock until then.
 - **Switch-over:** put the same value as `INTERNAL_TOKEN` (backend `.env`) into the frontend's `NUXT_INTERNAL_TOKEN`, so server-rendered form pages can read published forms.
 - **IP addresses on responses** are stored as they arrive; DATABASE-DESIGN says "masked per settings", but no setting exists yet. Mask them always (last part removed), or add a privacy setting?
+- **PDF exports in every script:** the report uses the PDF's built-in Helvetica, like the mock, so text outside Latin-1 (Cyrillic, Arabic, Chinese…) shows as "?". The fix is embedding fonts (Noto, about 20 MB for every script) with a PDF library such as fpdf2. Go ahead with that?
 - **CLAUDE.md layout** still names `api_keys/` and `option_sets/`; the product now has API tokens (`/api-tokens`) and option lists (`/option-lists`).
 
 ## Log
+
+- **2026-10-11:** B8 built: responses (lists, filters, insights, inbox, detail, review, edits with history, notes, bulk, delete), files, exports (CSV, Excel, PDF), response emails and notifications; migrations 0020 to 0022; fixed B7's long lists kept on the server. 15,680 tests. **Stopped for the owner's review.**
 
 - **2026-10-11:** B7 built: sharing, short links and keys across organisations (0016), invitations and passes (0017), the submission rules with the frontend's answers, responses and public filling tables (0018, 0019), every public route and the internal reads. 14,017 tests. **Stopped for the owner's review.**
 
