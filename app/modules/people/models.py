@@ -51,3 +51,4 @@ class SignupLink(UuidPkMixin, TenantMixin, AuditMixin, SoftDeleteMixin, Base):
     token_enc: Mapped[str] = mapped_column(Text, nullable=False)
     token_hash: Mapped[str] = mapped_column(String(64), nullable=False)
     domains: Mapped[list[Any]] = mapped_column(JSONB, nullable=False, server_default=text("'[]'::jsonb"))
+ 

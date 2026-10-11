@@ -302,26 +302,26 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 - **Guards:** `requireAdmin`
 - **Audit:** `data.row_deleted`, `data.row_inserted`, `data.row_updated`, `data.table_exported`
 
-- [ ] `GET /api/v1/datasources/{id}/explorer/tables` (`explorerTables`)
-- [ ] `GET /api/v1/datasources/{id}/explorer/structure` (`tableStructure`)
-- [ ] `GET /api/v1/datasources/{id}/explorer/columns` (`tableColumns`)
-- [ ] `GET /api/v1/datasources/{id}/explorer/rows` (`tableRows`)
-- [ ] `GET /api/v1/datasources/{id}/explorer/facets` (`tableFacets`)
+- [x] `GET /api/v1/datasources/{id}/explorer/tables` (`explorerTables`)
+- [x] `GET /api/v1/datasources/{id}/explorer/structure` (`tableStructure`)
+- [x] `GET /api/v1/datasources/{id}/explorer/columns` (`tableColumns`)
+- [x] `GET /api/v1/datasources/{id}/explorer/rows` (`tableRows`)
+- [x] `GET /api/v1/datasources/{id}/explorer/facets` (`tableFacets`)
 - [ ] `POST /api/v1/datasources/{id}/explorer/exports` (`startTableExport`)
 - [ ] `GET /api/v1/explorer-exports/{id}` (`getTableExport`)
 - [ ] `POST /api/v1/explorer-exports/{id}/link` (`tableExportLink`)
 - [ ] `GET /api/v1/datasource-exports/{token}` (`downloadTableExport`)
-- [ ] `POST /api/v1/datasources/{id}/explorer/rows` (`insertRow`)
-- [ ] `PATCH /api/v1/datasources/{id}/explorer/rows` (`updateRow`)
-- [ ] `DELETE /api/v1/datasources/{id}/explorer/rows` (`deleteRow`)
+- [x] `POST /api/v1/datasources/{id}/explorer/rows` (`insertRow`)
+- [x] `PATCH /api/v1/datasources/{id}/explorer/rows` (`updateRow`)
+- [x] `DELETE /api/v1/datasources/{id}/explorer/rows` (`deleteRow`)
 
 ## `routes/explorerSchema.ts`
 
 - **Guards:** `requireAdmin`
 - **Audit:** `data.table_altered`, `data.table_dropped`, `data.table_truncated`, `data.user_table_created`
 
-- [ ] `POST /api/v1/datasources/{id}/explorer/tables` (`createTable`)
-- [ ] `POST /api/v1/datasources/{id}/explorer/changes` (`changeTable`)
+- [x] `POST /api/v1/datasources/{id}/explorer/tables` (`createTable`)
+- [x] `POST /api/v1/datasources/{id}/explorer/changes` (`changeTable`)
 
 ## `routes/query.ts`
 

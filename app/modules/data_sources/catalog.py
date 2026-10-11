@@ -30,8 +30,14 @@ class WriteError(Exception):
         self.code, self.detail = code, detail
 
 
+TIMED_OUT = ("statement timeout", "max_statement_time", "maximum statement execution time", "call timeout", "dpy-4024",
+             "ora-03156", "query timeout", "timed out", "timeout expired")
+
+
 def refused(error: Exception) -> WriteError:
     text = str(error).lower()
+    if any(w in text for w in TIMED_OUT) or isinstance(error, TimeoutError):
+        return WriteError("FRM-DEST-1011", str(error)[:300])
     denied = any(w in text for w in ("permission denied", "access denied", "command denied", "insufficient privileges",
                                      "ora-01031", "ora-01950", "1142", "permission was denied"))
     return WriteError("FRM-DEST-1012" if denied else "FRM-DEST-1025", str(error)[:300])

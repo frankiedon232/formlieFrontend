@@ -171,6 +171,9 @@ class Connection:
     async def version(self) -> str | None:
         return None
 
+    async def limit(self, seconds: float) -> None:
+        """A time limit on every statement from now on (answers FRM-DEST-1011 when over it)."""
+
     async def close(self) -> None:
         raise NotImplementedError
 
@@ -196,6 +199,9 @@ class _Postgres(Connection):
 
     async def version(self) -> str | None:
         return str(self.raw.get_server_version().major) + "." + str(self.raw.get_server_version().minor)
+
+    async def limit(self, seconds: float) -> None:
+        await self.raw.execute(f"SET statement_timeout = {int(seconds * 1000)}")
 
     async def close(self) -> None:
         await self.raw.close()
@@ -223,6 +229,15 @@ class _MySQL(Connection):
 
     async def version(self) -> str | None:
         return str(self.raw.get_server_info())
+
+    async def limit(self, seconds: float) -> None:
+        statement = (f"SET SESSION max_statement_time = {seconds:g}" if self.engine == "mariadb"
+                     else f"SET SESSION MAX_EXECUTION_TIME = {int(seconds * 1000)}")
+        try:
+            async with self.raw.cursor() as cursor:
+                await cursor.execute(statement)
+        except Exception:  # noqa: BLE001 (older servers without it: the driver's own time-out still applies)
+            pass
 
     async def close(self) -> None:
         self.raw.close()
@@ -256,6 +271,12 @@ class _Threaded(Connection):
         rows = await self.fetch("SELECT CAST(SERVERPROPERTY('ProductVersion') AS nvarchar(64)) AS v")
         return str(rows[0]["v"]) if rows else None
 
+    async def limit(self, seconds: float) -> None:
+        try:
+            self.raw._conn.query_timeout = max(1, int(seconds))  # pymssql's command time-out
+        except Exception:  # noqa: BLE001
+            pass
+
     async def close(self) -> None:
         await asyncio.to_thread(self.raw.close)
 
@@ -283,6 +304,9 @@ class _Oracle(Connection):
 
     async def version(self) -> str | None:
         return str(self.raw.version)
+
+    async def limit(self, seconds: float) -> None:
+        self.raw.call_timeout = int(seconds * 1000)
 
     async def close(self) -> None:
         await self.raw.close()
