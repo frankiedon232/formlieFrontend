@@ -185,3 +185,22 @@ def utf16_slice(text: str, end: int) -> str:
         return ""
     data = text.encode("utf-16-le", "surrogatepass")
     return data[: end * 2].decode("utf-16-le", "surrogatepass")
+
+
+def stringify_pretty(value: Any, indent: str = "  ", level: int = 0) -> str:
+    """JSON.stringify(value, null, 2)."""
+    import json
+
+    pad, inner = indent * level, indent * (level + 1)
+    if isinstance(value, list):
+        if not value:
+            return "[]"
+        items = ["null" if v is UNDEFINED else stringify_pretty(v, indent, level + 1) for v in value]
+        return "[\n" + ",\n".join(inner + item for item in items) + "\n" + pad + "]"
+    if isinstance(value, dict):
+        items = [f"{json.dumps(str(k), ensure_ascii=False)}: {stringify_pretty(v, indent, level + 1)}"
+                 for k, v in value.items() if v is not UNDEFINED]
+        if not items:
+            return "{}"
+        return "{\n" + ",\n".join(inner + item for item in items) + "\n" + pad + "}"
+    return stringify(value)

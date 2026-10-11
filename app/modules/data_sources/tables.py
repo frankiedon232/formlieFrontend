@@ -451,3 +451,81 @@ def kind_of_type(type_: str) -> str:
 def length_of(type_: str) -> int | None:
     match = re.search(r"CHAR2?\((\d+)", type_, re.IGNORECASE)
     return int(match.group(1)) if match else None
+
+
+YES = {"true", "yes", "1", "y", "on"}
+NO = {"false", "no", "0", "n", "off"}
+_DATE = re.compile(r"[0-9]{4}-[0-9]{2}-[0-9]{2}")
+_TIME = re.compile(r"[0-9]{2}:[0-9]{2}(:[0-9]{2})?")
+
+
+def js_date_parse(text: str) -> float | None:
+    """Date.parse for the ISO forms (date, date and time, with Z or an offset; without one, UTC): ms, or None.
+    Like V8, a day up to 31 is taken in any month (2026-02-30 is 2 March)."""
+    from datetime import UTC, datetime, timedelta
+
+    m = re.fullmatch(r"([0-9]{4})-([0-9]{2})-([0-9]{2})(?:T([0-9]{2}):([0-9]{2})(?::([0-9]{2})(?:\.([0-9]{1,9}))?)?"
+                     r"(Z|[+-][0-9]{2}:[0-9]{2})?)?", js.trim(text))
+    if not m:
+        return None
+    year, month, day = int(m.group(1)), int(m.group(2)), int(m.group(3))
+    hour, minute, second = int(m.group(4) or 0), int(m.group(5) or 0), int(m.group(6) or 0)
+    if not (1 <= month <= 12 and 1 <= day <= 31 and minute <= 59 and second <= 59
+            and (hour <= 23 or (hour == 24 and minute == 0 and second == 0 and not int(m.group(7) or 0)))):
+        return None
+    ms = int((m.group(7) or "0")[:3].ljust(3, "0"))
+    moment = datetime(year, month, 1, tzinfo=UTC) + timedelta(days=day - 1, hours=hour, minutes=minute, seconds=second,
+                                                              milliseconds=ms)
+    zone = m.group(8)
+    if zone and zone != "Z":
+        sign = 1 if zone[0] == "+" else -1
+        moment -= sign * timedelta(hours=int(zone[1:3]), minutes=int(zone[4:6]))
+    return moment.timestamp() * 1000
+
+
+def parse_value(column: dict[str, Any], raw: Any) -> dict[str, Any]:
+    """Typed text as a column's value (values.ts parseValue): {"value": …} or {"problem": …}."""
+    from datetime import UTC, datetime
+
+    text = "" if js.nullish(raw) else (js.trim(raw) if isinstance(raw, str) else raw)
+    if text == "" and isinstance(text, str) or text is None:
+        return {"value": None} if column.get("nullable") or column.get("has_default") else {"problem": "required"}
+    kind = kind_of_type(column["type"])
+    if kind == "integer":
+        number = js.to_number(text)
+        return {"value": number} if number == number and number not in (float("inf"), float("-inf")) and number == int(number)             else {"problem": "integer"}
+    if kind == "decimal":
+        number = js.to_number(re.sub(f"[{js._WS}]", "", text) if isinstance(text, str) else text)
+        return {"value": number} if number == number and number not in (float("inf"), float("-inf")) else {"problem": "number"}
+    if kind == "boolean":
+        if isinstance(text, bool):
+            return {"value": text}
+        word = js.to_string(text).lower()
+        return {"value": True} if word in YES else {"value": False} if word in NO else {"problem": "boolean"}
+    if kind == "date":
+        s = js.to_string(text)
+        return {"value": s} if _DATE.fullmatch(s) and js_date_parse(s) is not None else {"problem": "date"}
+    if kind == "datetime":
+        ms = js_date_parse(js.to_string(text))
+        if ms is None:
+            return {"problem": "datetime"}
+        moment = datetime.fromtimestamp(ms / 1000, UTC)
+        return {"value": moment.isoformat(timespec="milliseconds").replace("+00:00", "Z")}
+    if kind == "time":
+        s = js.to_string(text)
+        return {"value": s} if _TIME.fullmatch(s) else {"problem": "time"}
+    if kind == "json":
+        if isinstance(text, (dict, list)):
+            return {"value": js.stringify(text)}
+        import json
+
+        def refuse(_: str) -> Any:
+            raise ValueError
+        try:
+            json.loads(js.to_string(text), parse_constant=refuse)
+            return {"value": js.to_string(text)}
+        except ValueError:
+            return {"problem": "json"}
+    value = js.to_string(text)
+    limit = length_of(column["type"])
+    return {"problem": "length"} if limit is not None and js.utf16_len(value) > limit else {"value": value}
