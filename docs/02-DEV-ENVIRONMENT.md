@@ -62,7 +62,7 @@ Installed directly on the machine, **no Docker** (owner, 2026-10-10). Production
 | Redis 7 | WSL (Ubuntu) | 6379 | cache, rate limits, nonces, session keys |
 | RabbitMQ 3 + management UI | WSL | 5672, 15672 | Celery broker and the `formalie.events` exchange |
 | PgBouncer | WSL | 6432 | transaction pooling; then `DB_PGBOUNCER=true` |
-| MinIO (S3) | WSL | 9000, 9001 | uploads and exports (from B3) |
+| Object storage (S3) | chosen in B3 | | uploads and exports (from B3). MinIO's download server stopped serving its binary (410 Gone, 2026-10-11), so the server is picked when storage is built |
 | Mailpit | WSL | 1025 (SMTP), 8025 (UI) | catches OTP and other emails (from B1) |
 
 ### 1. PostgreSQL: roles and databases (once)
@@ -81,7 +81,7 @@ Installed directly on the machine, **no Docker** (owner, 2026-10-10). Production
    networkingMode=mirrored
    ```
    then `wsl --shutdown`. (Windows 11 22H2 or later. Without it, use the WSL address from `wsl hostname -I`.)
-3. In Ubuntu: `bash /mnt/c/UNETPROJECTS/formlyBackend/scripts/wsl/setup-services.sh` installs and starts Redis, RabbitMQ (with a `formalie` vhost and user), PgBouncer, MinIO and Mailpit as systemd services. It prints the values to put in `.env`.
+3. In Ubuntu: `bash /mnt/c/UNETPROJECTS/formlyBackend/scripts/wsl/setup-services.sh` installs and starts Redis, RabbitMQ (with a `formalie` vhost and user), PgBouncer and Mailpit as systemd services. It prints the values to put in `.env`.
 4. Workers on Windows: Celery has no official Windows pool, so run them with `--pool=solo` (or `--pool=threads`):
    `fmly\Scripts\celery.exe -A app.workers.celery_app worker -Q scheduled --pool=solo -l info` and `fmly\Scripts\celery.exe -A app.workers.celery_app beat -l info`.
 

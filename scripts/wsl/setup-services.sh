@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Formalie development services inside WSL (Ubuntu 24.04): Redis 7, RabbitMQ 3, PgBouncer, MinIO, Mailpit.
+# Formalie development services inside WSL (Ubuntu 24.04): Redis 7, RabbitMQ 3, PgBouncer, Mailpit (object storage: B3).
 # Run inside Ubuntu:  bash /mnt/c/UNETPROJECTS/formlyBackend/scripts/wsl/setup-services.sh
 # Safe to run again. Needs systemd (default on new WSL installs; check /etc/wsl.conf has [boot] systemd=true).
 set -euo pipefail
@@ -7,8 +7,6 @@ set -euo pipefail
 RABBIT_USER="${RABBIT_USER:-formalie}"
 RABBIT_VHOST="${RABBIT_VHOST:-formalie}"
 RABBIT_PASS="${RABBIT_PASS:-$(openssl rand -hex 16)}"
-MINIO_USER="${MINIO_USER:-formalie}"
-MINIO_PASS="${MINIO_PASS:-$(openssl rand -hex 16)}"
 PG_HOST="${PG_HOST:-127.0.0.1}"   # Windows PostgreSQL 18 (mirrored networking)
 PG_PORT="${PG_PORT:-5432}"
 
@@ -33,6 +31,7 @@ else
 fi
 sudo rabbitmqctl set_user_tags "$RABBIT_USER" management
 sudo rabbitmqctl set_permissions -p "$RABBIT_VHOST" "$RABBIT_USER" ".*" ".*" ".*"
+echo "   RABBITMQ_URL=amqp://${RABBIT_USER}:${RABBIT_PASS}@127.0.0.1:5672/${RABBIT_VHOST}   <- copy this line into .env"
 
 echo "== pgbouncer (6432, transaction pooling to Windows PostgreSQL ${PG_HOST}:${PG_PORT})"
 sudo tee /etc/pgbouncer/pgbouncer.ini >/dev/null <<EOF
@@ -59,29 +58,9 @@ sudo chown postgres:postgres /etc/pgbouncer/userlist.txt 2>/dev/null || true
 sudo systemctl enable --now pgbouncer
 sudo systemctl restart pgbouncer
 
-echo "== minio (9000, console 9001)"
-if ! command -v minio >/dev/null; then
-  curl -fsSL https://dl.min.io/server/minio/release/linux-amd64/minio -o /tmp/minio
-  sudo install -m 0755 /tmp/minio /usr/local/bin/minio
-fi
-sudo mkdir -p /srv/minio
-sudo tee /etc/default/minio >/dev/null <<EOF
-MINIO_ROOT_USER=${MINIO_USER}
-MINIO_ROOT_PASSWORD=${MINIO_PASS}
-MINIO_VOLUMES=/srv/minio
-MINIO_OPTS="--address 127.0.0.1:9000 --console-address 127.0.0.1:9001"
-EOF
-sudo tee /etc/systemd/system/minio.service >/dev/null <<'EOF'
-[Unit]
-Description=MinIO
-After=network-online.target
-[Service]
-EnvironmentFile=/etc/default/minio
-ExecStart=/usr/local/bin/minio server $MINIO_OPTS $MINIO_VOLUMES
-Restart=always
-[Install]
-WantedBy=multi-user.target
-EOF
+# Object storage (MinIO or another S3-compatible server) is chosen in B3: MinIO's download server stopped
+# serving its binary (410 Gone, 2026-10-11). Nothing here needs it before then.
+echo "== object storage: skipped until B3"
 
 echo "== mailpit (SMTP 1025, UI 8025)"
 if ! command -v mailpit >/dev/null; then
@@ -99,8 +78,8 @@ WantedBy=multi-user.target
 EOF
 
 sudo systemctl daemon-reload
-sudo systemctl enable --now minio mailpit
-sudo systemctl restart minio mailpit
+sudo systemctl enable --now mailpit
+sudo systemctl restart mailpit
 
 cat <<EOF
 
@@ -108,5 +87,5 @@ Done. Put these in C:\\UNETPROJECTS\\formlyBackend\\.env:
   REDIS_URL=redis://127.0.0.1:6379/0
   CELERY_RESULT_BACKEND=redis://127.0.0.1:6379/1
   RABBITMQ_URL=amqp://${RABBIT_USER}:${RABBIT_PASS}@127.0.0.1:5672/${RABBIT_VHOST}
-  (MinIO: user ${MINIO_USER}, password ${MINIO_PASS}; console http://127.0.0.1:9001. Mailpit: http://127.0.0.1:8025)
+  Mailpit (emails): http://127.0.0.1:8025
 EOF
