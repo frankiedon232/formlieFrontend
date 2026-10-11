@@ -68,6 +68,10 @@ Live co-editing was removed by the owner (2026-10-08). People work together thro
 
 Company profile, branding, subdomain, authentication providers (Google, Microsoft, Facebook, email/password), OTP policy, predefined select lists (option sets), themes, data destinations/connections, webhooks, API keys, notification and email templates, data retention, localisation (language, timezone, date/number formats, currency), embed defaults, security policies (password rules, session timeout, IP allowlist), billing/subscription.
 
+**Two kinds of sign-in besides email and password** (owner, 2026-10-11):
+- **Social sign-in** (Google, Microsoft, Facebook) is Formalie's own, shared by every workspace. It serves sign-up on `manage.` (the new workspace's Owner) and a workspace's sign-in page (anyone with an account there, when the admin switched the method on and the plan includes it).
+- **Single sign-on** (SAML 2.0 / OpenID Connect: Okta, Microsoft Entra ID, Google Workspace …) is the workspace's own corporate sign-in. Its admins connect their identity provider, and can make it required for their email domains.
+
 ### 10. Users, roles, access (RBAC)
 
 Brought forward into F16 (owner, 2026-10-09). Org admin (all access by default) profiles people in their organisation (department, job titles, roles), defines roles whose permissions carry a scope per action (None, Own, Shared, Own & shared, All), resets passwords/accounts, enables/disables users, forces MFA, enables auth providers shown on their subdomain login page.

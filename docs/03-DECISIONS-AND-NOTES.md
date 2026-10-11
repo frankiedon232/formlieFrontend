@@ -358,3 +358,13 @@ The portal shows the mark as the icon `i-formalie-mark`, a custom Nuxt Icon coll
 - **Email validation.** Email fields use zod's own `z.email()` rule, so the `.test` sample accounts work. The email-validator package refused them.
 
 **No Apple sign-in (owner 2026-10-11).** Social sign-in is Google, Microsoft and Facebook only. Apple was removed from the sign-in methods, the provider buttons, the translations and the mock. Settings saved while it was offered drop it when they are read.
+
+**Social sign-in and single sign-on are two different things (owner 2026-10-11).**
+
+- **Social sign-in** (Google, Microsoft, Facebook) uses Formalie's own app registrations, one for each provider, shared by every workspace. It serves two places:
+  - **sign-up on `manage.`:** the person who creates a workspace, who becomes its Owner;
+  - **a workspace's sign-in page:** anyone who already has an account there (owner, admins and members), for the methods the workspace's admin switched on in Settings → Sign-in, and only on plans with social sign-in (Professional and up).
+
+  It never creates accounts in an existing workspace: people are still invited or approved, and the provider's email must match an existing account.
+- **Single sign-on** (Settings → Sign-in → Single sign-on, B11; mock `routes/sso.ts`) is corporate sign-in. Each workspace connects its own identity provider (Okta, Microsoft Entra ID, Google Workspace, OneLogin, or any SAML 2.0 / OpenID Connect provider) with its own details. It can be required for the workspace's email domains; those addresses then sign in only through it, never with a password or a social button (`FRM-AUTH-1019`). It needs the plan's `sso` feature. Formalie registers nothing for it: each customer's IT sets it up.
+- So the "Microsoft" button and Microsoft Entra single sign-on are not the same. The button uses Formalie's Microsoft app for anyone with a Microsoft account; Entra single sign-on uses the customer's own app, under their IT's control.
