@@ -589,10 +589,10 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 
 - **Guards:** `requireAdmin`, `requireAuth`
 
-- [ ] `GET /api/v1/notifications` (`getFeed`)
-- [ ] `POST /api/v1/notifications/read` (`readNotifications`)
-- [ ] `DELETE /api/v1/notifications/read` (`clearNotifications`)
-- [ ] `POST /api/v1/notifications/digest/send` (`sendDigest`)
+- [x] `GET /api/v1/notifications` (`getFeed`)
+- [x] `POST /api/v1/notifications/read` (`readNotifications`)
+- [x] `DELETE /api/v1/notifications/read` (`clearNotifications`)
+- [x] `POST /api/v1/notifications/digest/send` (`sendDigest`)
 
 ## `routes/org.ts`
 

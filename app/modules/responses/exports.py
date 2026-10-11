@@ -154,7 +154,18 @@ async def build_response_file(db: AsyncSession, job: ExportJob) -> tuple[bytes, 
     return text.encode("utf-8"), len(picked)
 
 
-jobs.register("responses", build_response_file, keep_days=KEEP_DAYS)
+async def tell_ready(db: AsyncSession, job: ExportJob) -> None:
+    """"Your export is ready", only to whoever asked for it."""
+    from app.modules.notifications.service import notify
+
+    if job.created_by is None:
+        return
+    await notify(db, job.tenant_id, job.organisation_id, {"name": job.params["org"], "subdomain": job.params["subdomain"]},
+                 "export_ready", {"file": job.file_name, "form": job.params["form_name"]}, "/responses/exports",
+                 only=[job.created_by])
+
+
+jobs.register("responses", build_response_file, keep_days=KEEP_DAYS, on_ready=tell_ready)
 
 
 # ── Views ───────────────────────────────────────────────────────────────────────
@@ -210,6 +221,7 @@ async def export_form_responses(form_id: str, request: Request, principal: Princ
         params = {"form_id": str(form.id), "form_name": form.name, "scope": data["scope"],
                   "query": data.get("query") or {}, "ids": data.get("ids") or [], "columns": data.get("columns") or [],
                   "details": data.get("details", True), "org": principal.tenant.name,
+                  "subdomain": principal.tenant.subdomain,
                   "by": f"{principal.user.first_name} {principal.user.last_name}".strip()}
         picked = await _picked(db, form, params)
         if not picked:

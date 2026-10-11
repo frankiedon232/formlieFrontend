@@ -14,6 +14,7 @@ import re
 import smtplib
 import ssl
 from email.message import EmailMessage
+from email.utils import formataddr, parseaddr
 from functools import lru_cache
 from pathlib import Path
 from typing import Any
@@ -58,8 +59,12 @@ def deliver(message: dict[str, str]) -> None:
     """SMTP delivery (the Celery task, or direct). Raises on failure so the task retries."""
     settings = get_settings()
     email = EmailMessage()
-    email["From"] = settings.email_from
+    # A workspace's emails carry its name; the address stays Formalie's until its own domain is set up (B11)
+    email["From"] = formataddr((message["from_name"], parseaddr(settings.email_from)[1])) if message.get("from_name") \
+        else settings.email_from
     email["To"] = message["to"]
+    if message.get("reply_to"):
+        email["Reply-To"] = message["reply_to"]
     email["Subject"] = message["subject"]
     email.set_content(message["text"])
     email.add_alternative(message["html"], subtype="html")
@@ -78,7 +83,11 @@ def deliver(message: dict[str, str]) -> None:
 
 def send(to: str, key: str, language: str | None, values: dict[str, Any]) -> None:
     """Queue one templated email. Never raises: a sending problem is logged (the person can ask for a resend)."""
-    message = {"to": to, **render(key, language, values)}
+    queue({"to": to, **render(key, language, values)}, key=key, values=values)
+
+
+def queue(message: dict[str, str], *, key: str, values: dict[str, Any]) -> None:
+    """One rendered email to the `notifications` queue (memory: kept in SENT; direct: sent now). Never raises."""
     mode = get_settings().email_delivery
     try:
         if mode == "memory":

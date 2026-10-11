@@ -606,12 +606,16 @@ async def submit_public_form(key: str, request: Request, response: Response) -> 
             await record(db, tenant_id=tenant.id, organisation_id=tenant.organisation_id, action="responses.submitted",
                          actor=RESPONDENT, resource={"type": "form", "id": str(form.id), "name": form.name},
                          changes=[{"field": "channel", "before": None, "after": channel}])
-            stored = True
+            stored, stored_id = True, stored_response.id
             response.status_code = 201
             return ok({"response_id": str(stored_response.id), "duplicate": False, "thank_you": thank_you})
     finally:
         if salt and not stored:
             await _release_challenge(salt)
+        if stored:  # emails and notifications, after the response is committed
+            from app.modules.responses import after
+
+            after.dispatch(tenant, form.id, stored_id)
 
 
 # ── Short links ─────────────────────────────────────────────────────────────────

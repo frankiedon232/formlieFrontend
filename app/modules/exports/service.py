@@ -35,12 +35,17 @@ Builder = Callable[[AsyncSession, ExportJob], Awaitable[tuple[bytes, int]]]
 _BUILDERS: dict[str, Builder] = {}
 # Kinds whose file is kept for some days and downloaded through links of their own (response exports: 7 days)
 _KEEP_DAYS: dict[str, int] = {}
+# What to do once a kind's file is ready (tell the person who asked)
+_ON_READY: dict[str, Callable[[AsyncSession, ExportJob], Awaitable[None]]] = {}
 
 
-def register(kind: str, builder: Builder, keep_days: int | None = None) -> None:
+def register(kind: str, builder: Builder, keep_days: int | None = None,
+             on_ready: Callable[[AsyncSession, ExportJob], Awaitable[None]] | None = None) -> None:
     _BUILDERS[kind] = builder
     if keep_days:
         _KEEP_DAYS[kind] = keep_days
+    if on_ready:
+        _ON_READY[kind] = on_ready
 
 
 def _hash(token: str) -> str:
@@ -106,6 +111,11 @@ async def build(job_id: uuid.UUID, tenant_id: uuid.UUID, organisation_id: uuid.U
             await db.execute(update(ExportJob).where(ExportJob.id == job_id, ExportJob.tenant_id == tenant_id).values(
                 status="done", progress=100, rows=rows, file_key=key, file_size=size, ready_at=now,
                 expires_at=job.created_at + timedelta(days=_KEEP_DAYS[job.kind])))
+            if job.kind in _ON_READY:
+                try:
+                    await _ON_READY[job.kind](db, job)
+                except Exception:  # noqa: BLE001 (telling people never fails the export)
+                    log.exception("export ready hook failed", extra={"export_id": str(job_id)})
         log.info("export ready", extra={"export_id": str(job_id), "rows": rows, "bytes": size})
         return
     token = secrets.token_urlsafe(32)

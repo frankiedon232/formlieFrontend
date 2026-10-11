@@ -21,7 +21,7 @@ celery_app = Celery(
     broker=settings.rabbitmq_url.get_secret_value(),
     backend=settings.celery_result_backend.get_secret_value(),
     include=["app.core.events.tasks", "app.core.db.tasks", "app.modules.logs.tasks", "app.modules.emails.tasks",
-             "app.modules.exports.tasks"],
+             "app.modules.exports.tasks", "app.modules.responses.after"],
 )
 
 celery_app.conf.update(
@@ -49,6 +49,7 @@ celery_app.conf.update(
         "logs.ingest_error_files": {"queue": "scheduled"},
         "notifications.send_email": {"queue": "notifications"},
         "exports.build": {"queue": "exports"},
+        "responses.after_submit": {"queue": "notifications"},
     },
     beat_schedule={
         "relay-outbox": {"task": "events.relay_outbox", "schedule": 2.0},

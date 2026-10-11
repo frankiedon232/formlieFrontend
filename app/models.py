@@ -13,6 +13,7 @@ def import_all_models() -> None:
     import app.modules.links.models  # noqa: F401
     import app.modules.lists.models  # noqa: F401
     import app.modules.logs.models  # noqa: F401
+    import app.modules.notifications.models  # noqa: F401
     import app.modules.org.models  # noqa: F401
     import app.modules.people.models  # noqa: F401
     import app.modules.public.models  # noqa: F401

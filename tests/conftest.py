@@ -68,6 +68,20 @@ def _closed_redis_breaker():  # noqa: ANN202
     breaker.reset()
 
 
+@pytest.fixture(autouse=True)
+def _after_submit_kept(monkeypatch: pytest.MonkeyPatch):  # noqa: ANN202
+    """No Celery in tests: work after a submission waits in AFTER_SUBMIT (see run_after_submit)."""
+    from app.modules.responses import after
+    from tests.after_queue import AFTER_SUBMIT
+
+    AFTER_SUBMIT.clear()
+    monkeypatch.setattr(after, "dispatch", lambda tenant, form_id, response_id: AFTER_SUBMIT.append(
+        ({"id": tenant.id, "organisation_id": tenant.organisation_id, "name": tenant.name, "subdomain": tenant.subdomain},
+         form_id, response_id)))
+    yield
+    AFTER_SUBMIT.clear()
+
+
 @pytest.fixture
 def frontend_dir() -> Path:
     if not (FRONTEND_DIR / "shared").is_dir():
