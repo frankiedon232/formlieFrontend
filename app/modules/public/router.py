@@ -603,6 +603,9 @@ async def submit_public_form(key: str, request: Request, response: Response) -> 
             await record_event(db, "response.created", {"form_id": str(form.id), "response_id": str(stored_response.id),
                                                          "submitted_at": _iso(now)},
                                tenant_id=tenant.id, organisation_id=tenant.organisation_id)
+            from app.modules.destinations.service import response_stored
+
+            await response_stored(db, locked, stored_response)  # the form's database table, when it has one
             await record(db, tenant_id=tenant.id, organisation_id=tenant.organisation_id, action="responses.submitted",
                          actor=RESPONDENT, resource={"type": "form", "id": str(form.id), "name": form.name},
                          changes=[{"field": "channel", "before": None, "after": channel}])

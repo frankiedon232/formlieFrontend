@@ -98,6 +98,25 @@ async def _forms(principal: Principal) -> tuple[dict[str, int], list[dict[str, A
     return counts, folders
 
 
+async def _data(principal: Principal) -> tuple[dict[str, int], dict[str, int]]:
+    """Connections by status, and forms storing in a database (with those failing)."""
+    from app.modules.data_sources import service as sources
+    from app.modules.destinations import service as destinations
+    from app.modules.forms.service import Names
+
+    async with db_session("read", tenant_id=principal.tenant.id, organisation_id=principal.tenant.organisation_id,
+                          user_id=principal.user.id) as db:
+        found = await sources.sources_of(db, principal.tenant.id)
+        tests = await sources.Facts().load(db, principal.tenant.id, found)
+        statuses = [sources.status_of_source(s, tests.test_of(s)) for s in found]
+        items = await destinations.destinations_of(db, principal.tenant.id)
+        facts = await destinations.Facts().load(db, principal.tenant.id, items)
+        names = await Names().load(db, principal.tenant.id)
+        rows = [r for r in (destinations.row_of(d, facts, names) for d in items) if r is not None]
+    return ({"total": len(found), **{status: statuses.count(status) for status in DATASOURCE_STATUSES}},
+            {"total": len(rows), "failing": sum(1 for r in rows if r["status"] == "failing")})
+
+
 @router.get("/navigation/counts", dependencies=[rate_limit("navigation-counts", per_minute=240)])
 async def navigation_counts(principal: Principal = Depends(require_auth)) -> Any:
     tenant_id = principal.tenant.id
@@ -115,12 +134,13 @@ async def navigation_counts(principal: Principal = Depends(require_auth)) -> Any
                   "departments": by_kind.get("departments", 0), "job_titles": by_kind.get("job_titles", 0)}
     forms_part, folders = await _forms(principal)
     library = await _library(principal)
+    datasources, stored = await _data(principal)
     return ok({
         "forms": forms_part,
         "responses": await _responses(principal),
         **library,
         "folders": folders,
-        "destinations": {"total": 0, "failing": 0},
+        "destinations": stored,
         "people": people,
-        "datasources": {"total": 0, **{status: 0 for status in DATASOURCE_STATUSES}},
+        "datasources": datasources,
     })

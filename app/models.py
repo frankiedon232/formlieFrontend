@@ -8,6 +8,7 @@ def import_all_models() -> None:
     import app.modules.audit.models  # noqa: F401
     import app.modules.auth.models  # noqa: F401
     import app.modules.data_sources.models  # noqa: F401
+    import app.modules.destinations.models  # noqa: F401
     import app.modules.design.models  # noqa: F401
     import app.modules.exports.models  # noqa: F401
     import app.modules.forms.models  # noqa: F401

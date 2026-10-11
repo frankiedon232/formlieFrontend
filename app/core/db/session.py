@@ -14,9 +14,9 @@ from __future__ import annotations
 
 import logging
 import uuid
-from collections.abc import AsyncIterator
+from collections.abc import AsyncIterator, Callable
 from contextlib import asynccontextmanager
-from typing import Literal
+from typing import Any, Literal
 
 from redis.exceptions import RedisError
 from sqlalchemy import text
@@ -74,6 +74,11 @@ async def _pin_after_write(user_id: uuid.UUID | None) -> None:
         log.warning("read-your-writes pin failed", extra={"error": str(exc)})
 
 
+def after_commit(session: AsyncSession, callback: Callable[[], Any]) -> None:
+    """Runs `callback` once this session's transaction committed (queueing work that reads what it wrote)."""
+    session.info.setdefault("after_commit", []).append(callback)
+
+
 @asynccontextmanager
 async def db_session(
     intent: Intent = "write",
@@ -93,6 +98,11 @@ async def db_session(
             await set_rls_context(session, tenant_id, organisation_id, user_id)
             yield session
             await session.commit()
+            for callback in session.info.pop("after_commit", []):
+                try:
+                    callback()
+                except Exception:  # noqa: BLE001 (the change is committed; a sweep picks up what was missed)
+                    log.exception("after-commit callback failed")
         except FrmError as exc:
             # An error marked commit=True keeps what was done (audit of a failed sign-in, a revoked session).
             await (session.commit() if exc.commit else session.rollback())

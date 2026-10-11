@@ -213,8 +213,8 @@ Source: `shared/types/datasources.ts`, `destinations.ts`, `query.ts`, `explorer.
 | `datasource_tests` | datasource_id (null before save), status, steps jsonb (network, ssh, tls, sign_in, database, permissions), permissions jsonb, findings text[], server_version, latency_ms, schemas text[], tables_count, started_at, finished_at |
 | `datasource_checks` | datasource_id, at, status (`passed`, `warning`, `failed`), latency_ms, error_code. Health checks; uptime and status (`connected`, `attention`, `failing`, `disabled`, `untested`) derive from them |
 | `response_destinations` | form_id (one per form), datasource_id, table_schema, table_name, table_created, columns jsonb (`DestinationColumn[]`: column, type, source field or meta, nullable, existing), settings jsonb (write_mode `insert` / `upsert`, key_column, multi_value `json` / `text`, choices `value` / `label`), paused_at, covers_from, row_version |
-| `destination_deliveries` | destination_id, response_id, status (`pending`, `sent`, `failed`, `held`, `not_sent`), attempts, error_code, next_retry_at, sent_at |
-| `destination_backfills` | destination_id, from, to, total, done, status (`running`, `done`), started_at, finished_at |
+| `destination_deliveries` | destination_id, response_id, response_submitted_at, status (`pending`, `sent`, `failed`, `held`), attempts, error_code, at (last attempt), sent_at, next_attempt_at. Recorded with the response (same transaction); a response without one is `not_sent` (before the destination covered it). Retries wait 1 min, 5 min, 15 min, 1 h, then 6 h |
+| `destination_backfills` | destination_id, range_from, range_to, total, done, status (`running`, `done`), started_at, finished_at |
 | `saved_queries` | name, description, sql, datasource_id, shared, owner_id, last_run_at |
 | `saved_query_runs_daily` | saved_query_id, day, runs |
 | `query_history` | user_id, datasource_id, sql, kind, ran_at, duration_ms, rows, ok, error_code. Last 50 per person and connection |

@@ -74,8 +74,8 @@ Then stop for the owner's review. Day-to-day status lives in `PROGRESS.md`.
 
 ## B9, Data sources and destinations (F12)
 
-- [ ] Connections per engine (plan-limited), encrypted credentials, test.
-- [ ] Response storage in Formalie's prefixed tables in the customer's database (`datasources/ddl.ts`), Celery writers, retries, failures surfaced.
+- [x] Connections per engine (plan-limited), encrypted credentials, test.
+- [x] Response storage in Formalie's prefixed tables in the customer's database (`datasources/ddl.ts`), Celery writers, retries, failures surfaced.
 - [ ] Explorer (schema, rows, edits), query editor with safety checks and limits, saved queries, activity.
 - [ ] Destinations and webhooks (HMAC, retries, dead-letter queue).
 

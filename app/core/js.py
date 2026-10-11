@@ -177,3 +177,11 @@ def stringify(value: Any) -> str:
         return "{" + ",".join(f"{json.dumps(str(k), ensure_ascii=False)}:{stringify(v)}" for k, v in value.items()
                               if v is not UNDEFINED) + "}"
     return "null"
+
+
+def utf16_slice(text: str, end: int) -> str:
+    """text.slice(0, end) as JavaScript counts (UTF-16 code units; a pair cut in half keeps its first half)."""
+    if end <= 0:
+        return ""
+    data = text.encode("utf-16-le", "surrogatepass")
+    return data[: end * 2].decode("utf-16-le", "surrogatepass")

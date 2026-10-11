@@ -284,18 +284,18 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 - **Guards:** `requireAdmin`, `requireAuth`
 - **Audit:** `data.backfill_started`, `data.column_added`, `data.deliveries_retried`, `data.destination_created`, `data.destination_paused`, `data.destination_removed`, `data.destination_resumed`, `data.destination_updated`, `data.table_created`
 
-- [ ] `GET /api/v1/datasources/{id}/tables` (`listTables`)
-- [ ] `GET /api/v1/forms/{id}/storage` (`formStorage`)
-- [ ] `GET /api/v1/destinations` (`listDestinations`)
-- [ ] `GET /api/v1/destinations/insights` (`destinationInsights`)
-- [ ] `POST /api/v1/destinations` (`createDestination`)
-- [ ] `GET /api/v1/destinations/{id}` (`getDestination`)
-- [ ] `PATCH /api/v1/destinations/{id}` (`patchDestination`)
-- [ ] `DELETE /api/v1/destinations/{id}` (`removeDestination`)
-- [ ] `POST /api/v1/destinations/{id}/columns` (`addColumns`)
-- [ ] `GET /api/v1/destinations/{id}/deliveries` (`listDeliveries`)
-- [ ] `POST /api/v1/destinations/{id}/retry` (`retryDeliveries`)
-- [ ] `POST /api/v1/destinations/{id}/backfill` (`startBackfill`)
+- [x] `GET /api/v1/datasources/{id}/tables` (`listTables`)
+- [x] `GET /api/v1/forms/{id}/storage` (`formStorage`)
+- [x] `GET /api/v1/destinations` (`listDestinations`)
+- [x] `GET /api/v1/destinations/insights` (`destinationInsights`)
+- [x] `POST /api/v1/destinations` (`createDestination`)
+- [x] `GET /api/v1/destinations/{id}` (`getDestination`)
+- [x] `PATCH /api/v1/destinations/{id}` (`patchDestination`)
+- [x] `DELETE /api/v1/destinations/{id}` (`removeDestination`)
+- [x] `POST /api/v1/destinations/{id}/columns` (`addColumns`)
+- [x] `GET /api/v1/destinations/{id}/deliveries` (`listDeliveries`)
+- [x] `POST /api/v1/destinations/{id}/retry` (`retryDeliveries`)
+- [x] `POST /api/v1/destinations/{id}/backfill` (`startBackfill`)
 
 ## `routes/explorer.ts`
 
@@ -583,7 +583,7 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 - **Guards:** `requireAuth`
 - **Permissions:** `people.view`
 
-- [ ] `GET /api/v1/navigation/counts` (`navigationCounts`) (people, organisation data, forms, folders, templates, themes and page designs counted now; responses (B8), destinations (B9) and data sources (B9) fill in with their phases)
+- [x] `GET /api/v1/navigation/counts` (`navigationCounts`) (every count: people, organisation data, forms, folders, the library, responses, destinations and data sources)
 
 ## `routes/notifications.ts`
 

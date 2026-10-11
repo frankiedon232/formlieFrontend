@@ -40,6 +40,7 @@ from app.modules.forms.service import Names, forms_of, iso
 from app.modules.public.submit import all_fields
 from app.modules.responses import service
 from app.modules.responses.answers import ANSWER_FILTER_PREFIX, answer_matches, can_edit_answer, is_empty_answer
+from app.modules.destinations.service import FORMALIE_MARK, storage_marks
 from app.modules.responses.models import RESPONSE_STATUSES, Response, ResponseChange, ResponseNote
 from app.modules.responses.service import Entry
 
@@ -238,6 +239,7 @@ async def list_response_forms(request: Request, principal: Principal = Depends(r
                  and (not folder or (str(f.folder_id) if f.folder_id else "none") in folder)
                  and (not q or q in f.name.lower())]
         responses = await service.responses_of(db, principal.tenant.id, [f.id for f in forms])
+        marks = await storage_marks(db, principal.tenant.id)
     by_form: dict[uuid.UUID, list[Response]] = {}
     for r in responses:
         if (start is None or r.submitted_at >= start) and (end is None or r.submitted_at <= end):
@@ -263,7 +265,7 @@ async def list_response_forms(request: Request, principal: Principal = Depends(r
             "owner": names.ref(form.owner_id), "public_key": form.public_key, "custom_link": form.custom_link,
             "completion_rate": form.completion_rate, "total": len(items), "status_counts": counts,
             "last_at": iso(items[0].submitted_at), "daily": daily,
-            "can": access.response_actions_of(form, viewer),
+            "storage": marks.get(form.id, FORMALIE_MARK), "can": access.response_actions_of(form, viewer),
         })
     sort = query.get("sort") or "-new"
     desc, key = sort.startswith("-"), sort.lstrip("-")
@@ -320,6 +322,10 @@ async def _event(db: Any, kind: str, entry: Entry, extra: dict[str, Any] | None 
     """For webhooks and destinations (B9): ids only, never answers."""
     await record_event(db, kind, {"form_id": str(entry.form.id), "response_id": str(entry.response.id),
                                   "submitted_at": iso(entry.response.submitted_at), **(extra or {})})
+    if kind in ("response.updated", "response.status_changed"):
+        from app.modules.destinations.service import response_changed
+
+        await response_changed(db, entry.form, entry.response)  # the row in the form's table follows
 
 
 async def _history(db: Any, principal: Principal, entry: Entry, changes: list[dict[str, Any]]) -> None:

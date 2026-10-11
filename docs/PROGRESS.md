@@ -15,10 +15,11 @@ Statuses: **Done** (built and verified), **Built** (code and tests written, wait
 | B5 | Forms core | **Done** (owner: "continue", 2026-10-11) | 28 / 28 |
 | B6 | Design, templates and lists | **Done** (owner: "continue", 2026-10-11) | 38 / 38 |
 | B7 | Public forms, sharing and links | **Done** (owner: "continue", 2026-10-11) | 24 / 24 |
-| B8 | Responses | **Built**; waiting for the owner's review | 23 / 23 |
-| B9 to B17 | See BACKEND-ROADMAP.md | Later | 0 |
+| B8 | Responses | **Done** (owner: "CONTINUE", 2026-10-11) | 23 / 23 |
+| B9 | Data sources and destinations | **In progress**: connections and response storage built; explorer, query and webhooks next | 23 / 59 so far |
+| B10 to B17 | See BACKEND-ROADMAP.md | Later | 0 |
 
-Portal endpoints: 221 of 411 ticked in `ENDPOINTS.md`.
+Portal endpoints: 245 of 411 ticked in `ENDPOINTS.md`.
 
 ## B0, Foundation (2026-10-10)
 
@@ -146,6 +147,17 @@ Still to come with later phases: after a response is stored, the team and receip
 
 Still to come with later phases: the log of sent emails and a workspace's own sending domain (B11); events for webhooks and destinations are in the outbox, their consumers come with B9; Formalie's own forms (Help).
 
+## B9, Data sources and destinations (from 2026-10-11)
+
+| Item | Status | Where | Notes |
+| --- | --- | --- | --- |
+| Connections: engines per plan, field checks, encrypted secrets, tests step by step, health checks | Done | `app/modules/data_sources/`, migrations 0023 and 0024 | Rules with the frontend's answers (1,377 cases); tested live against PostgreSQL; MariaDB live once `setup-mariadb.sh` has run; SQL Server and Oracle checked against the frontend's answers only |
+| Response storage: a table Formalie creates or an existing one, writing every response, edits, pause, retries, backfills, new columns | Done | `app/modules/destinations/`, `app/modules/data_sources/tables.py`, `catalog.py`, migration 0025 | Table rules with the frontend's answers (261 tests); tested live against PostgreSQL end to end |
+| Explorer, query editor, saved queries, activity | Next | | |
+| Webhooks (HMAC, retries, dead-letter queue) | Next | | |
+
+How a response reaches a customer's table: its delivery is recorded in the same transaction as the response, then the worker writes it right after the commit (`destinations` queue); Beat's sweep (every 30 seconds) sends what was missed and retries failures after 1 min, 5 min, 15 min, 1 h, then every 6 h. An edit or a review change sends the response again when the table keeps one row per response (update-or-insert, found by its key column first, so no unique index is needed on their tables). Files are written as links to the response in the workspace (signing in shows them); the files themselves never leave Formalie.
+
 ## Open questions
 
 - **Privacy erasure without hard deletes:** "delete a person's data" (Settings → Privacy, F14) and response retention must still remove personal data. Proposal: anonymise in place (overwrite answers and personal fields, keep the row, its relations and the audit entry). To decide before B11.
@@ -164,6 +176,8 @@ Still to come with later phases: the log of sent emails and a workspace's own se
 - **CLAUDE.md layout** still names `api_keys/` and `option_sets/`; the product now has API tokens (`/api-tokens`) and option lists (`/option-lists`).
 
 ## Log
+
+- **2026-10-11:** B9 steps 1 and 2: data source connections (0023, 0024) and response storage in customers' databases (0025): tables created or mapped, deliveries with retries, backfills, new columns, storage marks on the form and response lists, sidebar counts complete. 17,320 tests.
 
 - **2026-10-11:** B8 built: responses (lists, filters, insights, inbox, detail, review, edits with history, notes, bulk, delete), files, exports (CSV, Excel, PDF), response emails and notifications; migrations 0020 to 0022; fixed B7's long lists kept on the server. 15,680 tests. **Stopped for the owner's review.**
 

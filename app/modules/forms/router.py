@@ -27,6 +27,7 @@ from app.modules.auth.sessions import Principal, require_auth
 from app.modules.forms import access, service
 from app.modules.forms.access import Viewer, viewer_for
 from app.modules.forms.catalogues import FOLDER_COLOR_KEYS
+from app.modules.destinations.service import FORMALIE_MARK, storage_marks
 from app.modules.forms.models import Folder, Form
 from app.modules.forms.schema import blank_schema, form_schema_v1
 from app.modules.forms.service import Names, iso
@@ -114,6 +115,7 @@ async def list_forms(request: Request, principal: Principal = Depends(require_au
         await service.sweep_trash(db, principal.tenant.id)
         viewer = await viewer_for(db, principal)
         names = await Names().load(db, principal.tenant.id)
+        marks = await storage_marks(db, principal.tenant.id)
         forms = [f for f in await service.forms_of(db, principal.tenant.id) if access.can_see(f, viewer)
                  and (f.deleted_at is not None) == trash
                  and (trash or (f.status in status if status else f.status != "archived"))
@@ -131,7 +133,7 @@ async def list_forms(request: Request, principal: Principal = Depends(require_au
     rows.sort(key=lambda r: _natural(r.get(key)), reverse=sort.startswith("-"))
     params = PageParams.from_query(query.get("page"), query.get("page_size"))
     for row in rows:
-        row["storage"] = {"mode": "formalie", "datasource": None, "engine": None}  # response storage: B9
+        row["storage"] = marks.get(uuid.UUID(row["id"]), FORMALIE_MARK)
     return ok(rows[params.offset:params.offset + params.page_size], params.meta(len(rows)))
 
 

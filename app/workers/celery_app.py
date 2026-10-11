@@ -22,7 +22,7 @@ celery_app = Celery(
     backend=settings.celery_result_backend.get_secret_value(),
     include=["app.core.events.tasks", "app.core.db.tasks", "app.modules.logs.tasks", "app.modules.emails.tasks",
              "app.modules.exports.tasks", "app.modules.responses.after",
-             "app.modules.data_sources.tasks"],
+             "app.modules.data_sources.tasks", "app.modules.destinations.tasks"],
 )
 
 celery_app.conf.update(
@@ -53,6 +53,9 @@ celery_app.conf.update(
         "responses.after_submit": {"queue": "notifications"},
         "datasources.test": {"queue": "destinations"},
         "datasources.health": {"queue": "destinations"},
+        "destinations.deliver": {"queue": "destinations"},
+        "destinations.backfill": {"queue": "destinations"},
+        "destinations.sweep": {"queue": "destinations"},
     },
     beat_schedule={
         "relay-outbox": {"task": "events.relay_outbox", "schedule": 2.0},
@@ -60,6 +63,7 @@ celery_app.conf.update(
         "update-geoip": {"task": "logs.update_geoip", "schedule": 7 * 24 * 3600.0},
         "ingest-error-files": {"task": "logs.ingest_error_files", "schedule": 30.0},
         "datasource-health": {"task": "datasources.health", "schedule": 5 * 60.0},
+        "destinations-sweep": {"task": "destinations.sweep", "schedule": 30.0},
     },
 )
 
