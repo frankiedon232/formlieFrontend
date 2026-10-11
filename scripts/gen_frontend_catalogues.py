@@ -103,6 +103,25 @@ def settings_catalogues() -> None:
           ])
 
 
+def forms_catalogues() -> None:
+    path = ROOT / "tests" / "vectors" / "forms_rules.json"
+    if not path.exists():
+        return
+    r = json.loads(path.read_text(encoding="utf-8"))
+    write("app/modules/forms/catalogues.py", "What forms are made of: actions, channels, folder colours, limits, blank forms.",
+          "shared/types/forms, utils/forms (folders, options, build) and the mock's blankFormSchema", [
+              ("FORM_ACTIONS", tuple(r["form_actions"])),
+              ("RESPONSE_ACTIONS", tuple(r["response_actions"])),
+              ("FORM_CHANNELS", tuple(r["form_channels"])),
+              ("TRASH_RETENTION_DAYS", r["trash_retention_days"]),
+              ("FOLDER_COLOR_KEYS", tuple(r["folder_color_keys"])),
+              ("MAX_LARGE_OPTIONS", r["max_large_options"]),
+              ("MAX_LIST_LEVELS", r["max_list_levels"]),
+              ("BLANK_SCHEMAS", r["blank_schemas"]),
+          ])
+
+
 if __name__ == "__main__":
     main()
     settings_catalogues()
+    forms_catalogues()

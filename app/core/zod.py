@@ -27,6 +27,10 @@ _JS_SPACE = "".join(chr(c) for c in (0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x20, 0xA0, 0
 MISSING: Any = type("Missing", (), {"__repr__": lambda self: "undefined"})()
 
 
+class _StopChecks(Exception):
+    """A format problem that ends the value's other checks."""
+
+
 class Invalid(Exception):
     """Raised inside parsing when a value can't be used further (the issues are already recorded)."""
 
@@ -255,14 +259,19 @@ class Number(Schema):
                 isinstance(value, float) and not math.isfinite(value)):
             _issue(issues, path, f"Invalid input: expected number, received {received(value)}")
             return None
-        for check in self._checks:
-            check(value, path, issues)
+        try:
+            for check in self._checks:
+                check(value, path, issues)
+        except _StopChecks:
+            pass
         return int(value) if isinstance(value, float) and value.is_integer() else value
 
     def int(self) -> Number:
+        """Not a whole number: that is the only problem reported for it (zod's int is a format, not a check)."""
         def check(v: float, p: Path, i: Issues) -> None:
             if not float(v).is_integer():
-                _issue(i, p, "Invalid input: expected int, received number", check=True)
+                _issue(i, p, "Invalid input: expected int, received number")
+                raise _StopChecks
         self._checks.append(check)
         return self
 
@@ -442,6 +451,69 @@ def obj(shape: dict[str, Schema] | None = None, /, **fields: Schema) -> Object:
 
 def partial_record(keys: Sequence[str], value: Schema) -> PartialRecord:
     return PartialRecord(keys, value)
+
+
+class Record(Schema):
+    """z.record(keySchema, valueSchema): a bad key is "Invalid key in record" at that key."""
+
+    def __init__(self, key: Schema, value: Schema) -> None:
+        super().__init__()
+        self.key, self.value = key, value
+
+    def _base(self, value: Any, path: Path, issues: Issues) -> Any:
+        if not isinstance(value, dict):
+            _issue(issues, path, f"Invalid input: expected record, received {received(value)}")
+            return None
+        out: dict[str, Any] = {}
+        for key, item in value.items():
+            ok, _ = self.key.safe_parse(key)
+            if not ok:
+                _issue(issues, path + (key,), "Invalid key in record")
+                continue
+            try:
+                out[key] = self.value.run(item, path + (key,), issues)
+            except Invalid:
+                pass
+        return out
+
+
+class Literal(Schema):
+    def __init__(self, value: Any) -> None:
+        super().__init__()
+        self.value = value
+
+    def _base(self, value: Any, path: Path, issues: Issues) -> Any:
+        if not _same(value, self.value):
+            _issue(issues, path, f"Invalid input: expected {_quote(self.value)}")
+        return value
+
+
+class Union(Schema):
+    """z.union([...]): the first option that takes the value; none → "Invalid input"."""
+
+    def __init__(self, options: Sequence[Schema]) -> None:
+        super().__init__()
+        self.options = list(options)
+
+    def _base(self, value: Any, path: Path, issues: Issues) -> Any:
+        for option in self.options:
+            ok, result = option.safe_parse(value)
+            if ok:
+                return result
+        _issue(issues, path, "Invalid input")
+        return None
+
+
+def record(key: Schema, value: Schema) -> Record:
+    return Record(key, value)
+
+
+def literal(value: Any) -> Literal:
+    return Literal(value)
+
+
+def union(options: Sequence[Schema]) -> Union:
+    return Union(options)
 
 
 class Unknown(Schema):
