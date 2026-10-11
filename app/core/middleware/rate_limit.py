@@ -13,9 +13,11 @@ import time
 from dataclasses import dataclass
 
 from redis.asyncio import Redis
+from redis.exceptions import ConnectionError as RedisConnectionError
 from redis.exceptions import RedisError
+from redis.exceptions import TimeoutError as RedisTimeoutError
 
-from app.core.cache.redis import get_redis
+from app.core.cache.redis import breaker, get_redis
 from app.core.config import Settings
 from app.core.context import get_context
 from app.core.ids import uuid7
@@ -47,6 +49,8 @@ class SlidingWindowLimiter:
         return self._redis or get_redis()
 
     async def hit(self, bucket: str, limit: int, window_seconds: int) -> LimitResult:
+        if breaker.is_open:  # Redis known to be down: don't wait for timeouts
+            raise RateLimiterUnavailable("circuit open")
         key = f"{KEY_PREFIX}:{bucket}"
         now_ms = int(time.time() * 1000)
         window_ms = window_seconds * 1000
@@ -65,6 +69,9 @@ class SlidingWindowLimiter:
                 pipe.pexpire(key, window_ms)
                 await pipe.execute()
             return LimitResult(True, limit, max(0, limit - count - 1), 0)
+        except (RedisConnectionError, RedisTimeoutError) as exc:
+            breaker.trip(exc)
+            raise RateLimiterUnavailable(str(exc)) from exc
         except RedisError as exc:
             raise RateLimiterUnavailable(str(exc)) from exc
 
@@ -87,7 +94,7 @@ class IpRateLimitMiddleware:
             result = await self.limiter.hit(f"ip:{ip}", self.settings.rate_limit_ip_per_minute, 60)
         except RateLimiterUnavailable as exc:
             if self.settings.rate_limit_fail_open:
-                log.critical("rate limiter unavailable, allowing request", extra={"error": str(exc)})
+                log.warning("rate limiter unavailable, allowing request", extra={"error": str(exc)})
                 await self.app(scope, receive, send)
             else:
                 log.critical("rate limiter unavailable, refusing request", extra={"error": str(exc)})

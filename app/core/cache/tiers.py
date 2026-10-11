@@ -119,7 +119,7 @@ class RedisCache:
             finally:
                 await self.redis.delete(lock_key)
         except RedisError as exc:
-            log.warning("cache unavailable, loading directly", extra={"module": module, "error": str(exc)})
+            log.warning("cache unavailable, loading directly", extra={"cache_module": module, "error": str(exc)})
             return await loader()
 
     async def invalidate(self, tenant_id: uuid.UUID | str | None, module: str) -> None:
@@ -127,11 +127,11 @@ class RedisCache:
         try:
             await self.redis.incr(version_key(tenant_id, module))
         except RedisError as exc:
-            log.error("cache invalidation failed", extra={"module": module, "error": str(exc)})
+            log.error("cache invalidation failed", extra={"cache_module": module, "error": str(exc)})
 
     async def delete(self, tenant_id: uuid.UUID | str | None, module: str, item: str) -> None:
         try:
             version = await self._version(tenant_id, module)
             await self.redis.delete(cache_key(tenant_id, module, item, version))
         except RedisError as exc:
-            log.error("cache delete failed", extra={"module": module, "error": str(exc)})
+            log.error("cache delete failed", extra={"cache_module": module, "error": str(exc)})

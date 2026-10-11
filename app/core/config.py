@@ -49,6 +49,7 @@ class Settings(BaseSettings):
     redis_url: SecretStr = SecretStr("redis://127.0.0.1:6379/0")
     rabbitmq_url: SecretStr = SecretStr("amqp://guest:guest@127.0.0.1:5672//")
     celery_result_backend: SecretStr = SecretStr("redis://127.0.0.1:6379/1")
+    redis_breaker_seconds: float = 15.0  # after a connection failure, skip Redis this long (fail fast)
     events_exchange: str = "formalie.events"
     outbox_relay_batch: int = 200
 

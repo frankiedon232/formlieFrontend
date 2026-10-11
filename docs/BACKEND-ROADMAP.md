@@ -19,9 +19,9 @@ Then stop for the owner's review. Day-to-day status lives in `PROGRESS.md`.
 - [x] Request log, every request in full (`formaly.request_logs`, BACKEND-SPEC §8.1): brought forward from B2 by the owner (2026-10-11).
 - [x] Logging (files by level and date, structured, trace_id), error codes from `shared/utils/errors/codes.ts`, exception handlers, standard response models.
 - [x] Middleware chain (BACKEND-SPEC §1): request context, security headers, IP rate limit, tenant, envelope gate (fails closed), request log. Envelope crypto and encrypted references are B1's first items.
-- [ ] DB: primary / replica engines, session router, RLS context, mixins, Alembic with the `enable_tenant_rls` helper, DB roles (including `platform_reader` / `platform_writer`).
+- [x] DB: primary / replica engines, session router, RLS context, mixins, Alembic with the `enable_tenant_rls` helper, DB roles (including `platform_reader` / `platform_writer`).
 - [ ] Redis cache tiers, the Celery app and queues, the event bus and the outbox relay.
-- [ ] CI test asserting RLS is forced on every tenant table.
+- [x] CI test asserting RLS is forced on every tenant table.
 
 ## B1, Secure channel, workspaces and sign-in (F2, F3)
 

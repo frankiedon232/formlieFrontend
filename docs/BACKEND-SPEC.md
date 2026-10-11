@@ -49,6 +49,7 @@ Updated 2026-10-10 after the frontend was finished. The frontend's mock (`C:/UNE
 - **L1** in-process TTL cache (seconds): tenant directory, feature flags.
 - **L2** Redis (minutes–hours): tenant public profile, published form versions, themes, option sets, permission sets, plan limits, analytics counters, short links.
 - Keys: `fm:v1:t:{tenant_id}:{module}:{id}:{version}`. Cache-aside; invalidation via domain events; stampede protection with short locks; never cache secrets.
+- Redis outage: a circuit breaker (`REDIS_BREAKER_SECONDS`) fails Redis calls at once after the first connection failure, so callers fall back (DB, rate-limit setting) without waiting on timeouts; logged once per outage.
 - Target: absorb the bulk of read traffic (public form loads, lookups) so the primary handles writes.
 
 ## 5. Event-driven processing

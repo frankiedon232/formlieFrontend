@@ -13,7 +13,7 @@ idempotent with `processed_events` (`claim_event`). `formalie_app` may only INSE
 from __future__ import annotations
 
 import uuid
-from datetime import datetime
+from datetime import UTC, datetime
 from typing import Any
 
 from sqlalchemy import DateTime, Index, Integer, PrimaryKeyConstraint, String, Text, Uuid, text
@@ -84,8 +84,9 @@ async def record_event(
         organisation_id = organisation_id or ctx.tenant.organisation_id
     actor_id = actor_id or (ctx.user_id if ctx else None)
     event_id = uuid7()
+    # created_at is set here, not by the database: reading a server default back needs SELECT, which the app lacks.
     await session.execute(insert(EventOutbox).values(
-        id=event_id, tenant_id=tenant_id, organisation_id=organisation_id, actor_id=actor_id, type=type_,
+        id=event_id, created_at=datetime.now(UTC), tenant_id=tenant_id, organisation_id=organisation_id, actor_id=actor_id, type=type_,
         routing_key=type_, payload=payload or {}, trace_id=ctx.trace_id if ctx else None,
     ))
     return event_id

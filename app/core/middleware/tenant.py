@@ -127,6 +127,9 @@ class TenantMiddleware:
             manage_subdomain=self.settings.manage_subdomain,
             tenant_override=override,
         )
+        if ctx is not None:  # recorded before the lookup, so a failed lookup still shows the host it was for
+            ctx.host_kind = context.kind
+            ctx.extra["host_context"] = context
         tenant: TenantInfo | None = None
         try:
             if context.kind == "tenant" and context.subdomain:
@@ -137,11 +140,8 @@ class TenantMiddleware:
             log.exception("FRM-GEN-5003 tenant directory unavailable", extra={"error_code": "FRM-GEN-5003"})
             await send_error(send, "FRM-GEN-5003")
             return
-
         if ctx is not None:
-            ctx.host_kind = context.kind
             ctx.tenant = tenant
-            ctx.extra["host_context"] = context
 
         needs_workspace = context.kind in ("tenant", "custom", "invalid")
         if needs_workspace and tenant is None and not path.startswith(self.host_free):

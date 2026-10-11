@@ -19,7 +19,7 @@ S = get_settings().db_schema
 def _record(tenant=None, org=None, **extra):  # noqa: ANN001, ANN003, ANN202
     trace = str(uuid7())
     return {"id": trace, "trace_id": trace, "occurred_at": "2026-10-11T09:00:00+00:00", "method": "POST",
-            "path": "/api/v1/forms", "status": 201, "client_ip": "198.51.100.7", "proxy_trusted": False,
+            "path": "/api/v1/forms", "status": 201, "client_ip": "81.2.69.160", "proxy_trusted": False,
             "tenant_id": str(tenant) if tenant else None, "organisation_id": str(org) if org else None,
             "request_headers": {"content-type": "application/json"}, "request_body": {"name": "Survey"},
             "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/131.0.0.0 Safari/537.36", **extra}

@@ -53,6 +53,16 @@ class FakeTenantResolver:
         return None
 
 
+@pytest.fixture(autouse=True)
+def _closed_redis_breaker():  # noqa: ANN202
+    """The Redis breaker is process-wide: every test starts (and leaves) it closed."""
+    from app.core.cache.redis import breaker
+
+    breaker.reset()
+    yield
+    breaker.reset()
+
+
 @pytest.fixture
 def frontend_dir() -> Path:
     if not (FRONTEND_DIR / "shared").is_dir():

@@ -141,3 +141,26 @@ def test_route_template_keeps_the_prefix() -> None:
     scope = {"route": route, "path": "/api/v1/forms/abc", "path_params": {"id": "abc"}}
     assert route_template(scope) == "/api/v1/forms/{id}"
     assert route_template({"path": "/x"}) is None
+
+
+async def test_redis_down_fails_fast_and_the_cache_falls_back_to_the_loader() -> None:
+    import time
+
+    from app.core.cache.redis import breaker, make_redis
+
+    dead = make_redis("redis://127.0.0.1:1/0")
+    cache = RedisCache(dead)
+
+    async def loader() -> dict[str, str]:
+        return {"from": "database"}
+
+    try:
+        assert await cache.get_or_set(None, "tenant_directory", "acme", loader) == {"from": "database"}
+        assert breaker.is_open  # the first failure opened the breaker
+        started = time.perf_counter()
+        for _ in range(20):  # while open: no waiting on timeouts
+            assert await cache.get_or_set(None, "tenant_directory", "acme", loader) == {"from": "database"}
+        await cache.invalidate(None, "tenant_directory")  # logged, never raised
+        assert time.perf_counter() - started < 0.5
+    finally:
+        await dead.aclose()
