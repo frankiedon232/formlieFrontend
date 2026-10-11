@@ -13,6 +13,8 @@ Roles (DATABASE-DESIGN → DB roles, BACKEND-SPEC §2):
   formalie_readonly  NOLOGIN                reporting on replicas (LOGIN set when reporting starts)
   platform_reader    NOLOGIN BYPASSRLS      the platform admin on the replica (LOGIN in B16)
   platform_writer    NOLOGIN                the platform admin on global tables (LOGIN in B16)
+  formalie_directory NOLOGIN BYPASSRLS      owns the cross-workspace lookup functions (find my workspace,
+                                            subdomain taken); reads only the columns those need
 """
 
 from __future__ import annotations
@@ -71,6 +73,9 @@ def main() -> None:
         _ensure_role(cur, "formalie_readonly", "NOLOGIN NOSUPERUSER NOBYPASSRLS", None)
         _ensure_role(cur, "platform_reader", "NOLOGIN NOSUPERUSER BYPASSRLS", None)
         _ensure_role(cur, "platform_writer", "NOLOGIN NOSUPERUSER NOBYPASSRLS", None)
+        _ensure_role(cur, "formalie_directory", "NOLOGIN NOSUPERUSER BYPASSRLS", None)
+        # Migrations hand the lookup functions to formalie_directory, so the owner must be able to act as it.
+        cur.execute("GRANT formalie_directory TO formalie_owner")
         cur.execute("ALTER ROLE platform_reader SET default_transaction_read_only = on")
         cur.execute("ALTER ROLE platform_reader SET statement_timeout = '15s'")
         cur.execute("ALTER ROLE formalie_readonly SET default_transaction_read_only = on")
