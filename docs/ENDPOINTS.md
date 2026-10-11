@@ -252,8 +252,8 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 
 - **Guards:** `requireAuth`
 
-- [ ] `POST /api/v1/responses/{id}/files` (`fileLink`)
-- [ ] `GET /api/v1/response-files/{token}` (`serveResponseFile`)
+- [x] `POST /api/v1/responses/{id}/files` (`fileLink`)
+- [x] `GET /api/v1/response-files/{token}` (`serveResponseFile`)
 
 ## `routes/folders.ts`
 
