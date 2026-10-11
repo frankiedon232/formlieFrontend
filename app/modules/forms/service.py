@@ -92,9 +92,13 @@ def folder_view(folder: Folder, viewer: Viewer, names: Names) -> dict[str, Any]:
 async def sweep_trash(db: AsyncSession, tenant_id: uuid.UUID) -> None:
     """Forms in Trash longer than 30 days are purged (the rows stay, with purged_at)."""
     cutoff = datetime.now(UTC) - timedelta(days=TRASH_RETENTION_DAYS)
-    await db.execute(update(Form).where(Form.tenant_id == tenant_id, Form.deleted_at.is_not(None),
-                                        Form.deleted_at < cutoff, Form.purged_at.is_(None))
-                     .values(purged_at=datetime.now(UTC)))
+    codes = (await db.execute(update(Form).where(Form.tenant_id == tenant_id, Form.deleted_at.is_not(None),
+                                                 Form.deleted_at < cutoff, Form.purged_at.is_(None))
+                              .values(purged_at=datetime.now(UTC)).returning(Form.short_code))).scalars()
+    from app.modules.links.directory import retire_short_code
+
+    for code in [c for c in codes if c]:
+        await retire_short_code(db, code)
 
 
 async def forms_of(db: AsyncSession, tenant_id: uuid.UUID) -> list[Form]:
@@ -175,6 +179,9 @@ async def new_form(db: AsyncSession, viewer: Viewer, *, name: str, folder: Folde
                 created_by=viewer.user_id, created_at=now, updated_at=now)
     db.add(form)
     await db.flush()
+    from app.modules.links.directory import register_form_key
+
+    await register_form_key(db, form.public_key, form.id)  # the shared forms host finds it by its key
     await db.refresh(form)  # the database's defaults (row_version, access …)
     return form
 

@@ -96,18 +96,18 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 - **Permissions:** `forms.view`
 - **Audit:** `forms.shared`
 
-- [ ] `GET /api/v1/forms/{id}/share` (`getShare`)
-- [ ] `PUT /api/v1/forms/{id}/share` (`saveShare`)
-- [ ] `GET /api/v1/forms/{id}/share/link-check` (`checkLink`)
-- [ ] `POST /api/v1/forms/{id}/short-link` (`createShortLink`)
-- [ ] `DELETE /api/v1/forms/{id}/short-link` (`removeShortLink`)
+- [x] `GET /api/v1/forms/{id}/share` (`getShare`)
+- [x] `PUT /api/v1/forms/{id}/share` (`saveShare`)
+- [x] `GET /api/v1/forms/{id}/share/link-check` (`checkLink`)
+- [x] `POST /api/v1/forms/{id}/short-link` (`createShortLink`)
+- [x] `DELETE /api/v1/forms/{id}/short-link` (`removeShortLink`)
 
 ## `routes/formAccess.ts`
 
 - **Guards:** `requireAction`, `requireAuth`
 - **Permissions:** `forms.view`
 
-- [ ] `GET /api/v1/forms/{id}/access` (`formAccess`)
+- [x] `GET /api/v1/forms/{id}/access` (`formAccess`)
 
 ## `routes/formDraft.ts`
 

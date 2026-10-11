@@ -280,6 +280,10 @@ def _apply_lifecycle(form: Form, action: str) -> list[dict[str, Any]]:
 async def _purge(db: Any, viewer: Viewer, form: Form) -> None:
     """Gone from Trash and every list for good; the row stays (purged_at). Its short code is never reused."""
     form.purged_at = datetime.now(UTC)
+    if form.short_code:
+        from app.modules.links.directory import retire_short_code
+
+        await retire_short_code(db, form.short_code)
 
 
 @router.post("/forms/bulk", dependencies=[rate_limit("forms-bulk", per_minute=20)])

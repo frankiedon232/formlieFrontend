@@ -1,0 +1,432 @@
+{
+ "about": "Recorded from the frontend by scripts/dump_links_rules.py. Do not edit.",
+ "custom_links": [
+  {
+   "value": "feedback",
+   "problem": null,
+   "address": true
+  },
+  {
+   "value": "procurement-request",
+   "problem": null,
+   "address": true
+  },
+  {
+   "value": "ab",
+   "problem": "invalid",
+   "address": false
+  },
+  {
+   "value": "abc",
+   "problem": null,
+   "address": true
+  },
+  {
+   "value": "a-b",
+   "problem": null,
+   "address": true
+  },
+  {
+   "value": "a--b",
+   "problem": "invalid",
+   "address": false
+  },
+  {
+   "value": "-abc",
+   "problem": "invalid",
+   "address": false
+  },
+  {
+   "value": "abc-",
+   "problem": "invalid",
+   "address": false
+  },
+  {
+   "value": "ABC",
+   "problem": "invalid",
+   "address": false
+  },
+  {
+   "value": "admin",
+   "problem": "reserved",
+   "address": true
+  },
+  {
+   "value": "forms",
+   "problem": "reserved",
+   "address": true
+  },
+  {
+   "value": "s",
+   "problem": "invalid",
+   "address": false
+  },
+  {
+   "value": "fill",
+   "problem": "reserved",
+   "address": true
+  },
+  {
+   "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+   "problem": null,
+   "address": true
+  },
+  {
+   "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+   "problem": "invalid",
+   "address": false
+  },
+  {
+   "value": "café",
+   "problem": "invalid",
+   "address": false
+  },
+  {
+   "value": "with space",
+   "problem": "invalid",
+   "address": false
+  },
+  {
+   "value": "abc\n",
+   "problem": "invalid",
+   "address": false
+  },
+  {
+   "value": "",
+   "problem": "invalid",
+   "address": false
+  },
+  {
+   "value": "123",
+   "problem": null,
+   "address": true
+  },
+  {
+   "value": "a_b",
+   "problem": "invalid",
+   "address": false
+  },
+  {
+   "value": "help-desk",
+   "problem": null,
+   "address": true
+  },
+  {
+   "value": "www",
+   "problem": "reserved",
+   "address": true
+  },
+  {
+   "value": "new-form-2026",
+   "problem": null,
+   "address": true
+  }
+ ],
+ "tidy": [
+  {
+   "value": "  Procurement Request  ",
+   "tidy": "procurement-request"
+  },
+  {
+   "value": "Café Olé!",
+   "tidy": "cafe-ole"
+  },
+  {
+   "value": "---a---b---",
+   "tidy": "a-b"
+  },
+  {
+   "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+   "tidy": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  {
+   "value": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA b",
+   "tidy": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  {
+   "value": "Ünïcödé",
+   "tidy": "unicode"
+  },
+  {
+   "value": "",
+   "tidy": ""
+  },
+  {
+   "value": "!!!",
+   "tidy": ""
+  },
+  {
+   "value": "Already-fine",
+   "tidy": "already-fine"
+  },
+  {
+   "value": "two  spaces",
+   "tidy": "two-spaces"
+  },
+  {
+   "value": "end-yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy--z",
+   "tidy": "end-yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy"
+  },
+  {
+   "value": "Ελληνικά",
+   "tidy": ""
+  }
+ ],
+ "addresses": [
+  {
+   "value": "AbCdEfGh12",
+   "address": true,
+   "key": true
+  },
+  {
+   "value": "abcdefgh12",
+   "address": true,
+   "key": true
+  },
+  {
+   "value": "AbCdEfGh1",
+   "address": false,
+   "key": false
+  },
+  {
+   "value": "feedback",
+   "address": true,
+   "key": false
+  },
+  {
+   "value": "Feedback",
+   "address": false,
+   "key": false
+  },
+  {
+   "value": "AbCdEfGh12x",
+   "address": false,
+   "key": false
+  },
+  {
+   "value": "ab",
+   "address": false,
+   "key": false
+  }
+ ],
+ "short_codes": [
+  {
+   "value": "abcde",
+   "ok": true
+  },
+  {
+   "value": "abcd0",
+   "ok": false
+  },
+  {
+   "value": "abcdl",
+   "ok": false
+  },
+  {
+   "value": "ab2z9",
+   "ok": true
+  },
+  {
+   "value": "ABCDE",
+   "ok": false
+  },
+  {
+   "value": "abcdef",
+   "ok": false
+  },
+  {
+   "value": "abci5",
+   "ok": false
+  },
+  {
+   "value": "ppppp",
+   "ok": true
+  },
+  {
+   "value": "oxxxx",
+   "ok": false
+  }
+ ],
+ "embed_domains": [
+  {
+   "value": "https://www.example.com/contact",
+   "domain": "example.com"
+  },
+  {
+   "value": "Example.com",
+   "domain": "example.com"
+  },
+  {
+   "value": "*.example.com",
+   "domain": "*.example.com"
+  },
+  {
+   "value": "localhost:3000",
+   "domain": "localhost:3000"
+  },
+  {
+   "value": "127.0.0.1:8080",
+   "domain": "127.0.0.1:8080"
+  },
+  {
+   "value": "http://user:pw@shop.example.co.uk/path?q=1#x",
+   "domain": "shop.example.co.uk"
+  },
+  {
+   "value": "example.com.",
+   "domain": "example.com"
+  },
+  {
+   "value": "example",
+   "domain": null
+  },
+  {
+   "value": "exa_mple.com",
+   "domain": null
+  },
+  {
+   "value": "example.com:99999",
+   "domain": "example.com:99999"
+  },
+  {
+   "value": "a:b:c",
+   "domain": null
+  },
+  {
+   "value": "  WWW.Example.ORG  ",
+   "domain": "example.org"
+  },
+  {
+   "value": "",
+   "domain": null
+  },
+  {
+   "value": "ftp://files.example.net",
+   "domain": "files.example.net"
+  },
+  {
+   "value": "*.www.example.com",
+   "domain": "*.www.example.com"
+  },
+  {
+   "value": "www.localhost",
+   "domain": "localhost"
+  },
+  {
+   "value": "example.com:80/x",
+   "domain": "example.com:80"
+  },
+  {
+   "value": "sub.-bad.com",
+   "domain": null
+  },
+  {
+   "value": "xn--bcher-kva.example",
+   "domain": "xn--bcher-kva.example"
+  },
+  {
+   "value": "a.b",
+   "domain": null
+  },
+  {
+   "value": "localhost",
+   "domain": "localhost"
+  },
+  {
+   "value": "-a.com",
+   "domain": null
+  },
+  {
+   "value": "https://",
+   "domain": null
+  },
+  {
+   "value": "example.com?x",
+   "domain": "example.com"
+  },
+  {
+   "value": "example.com#y",
+   "domain": "example.com"
+  }
+ ],
+ "frame_ancestors": [
+  {
+   "domains": [],
+   "value": "*"
+  },
+  {
+   "domains": [
+    "example.com"
+   ],
+   "value": "'self' https://formalie.dev https://*.formalie.dev https://example.com https://www.example.com"
+  },
+  {
+   "domains": [
+    "*.example.com",
+    "localhost:3000"
+   ],
+   "value": "'self' https://formalie.dev https://*.formalie.dev https://*.example.com http://localhost:3000 https://localhost:3000"
+  },
+  {
+   "domains": [
+    "shop.example.co.uk",
+    "example.com",
+    "example.com"
+   ],
+   "value": "'self' https://formalie.dev https://*.formalie.dev https://shop.example.co.uk https://www.shop.example.co.uk https://example.com https://www.example.com"
+  },
+  {
+   "domains": [
+    "127.0.0.1:8080",
+    "www.example.org"
+   ],
+   "value": "'self' https://formalie.dev https://*.formalie.dev http://127.0.0.1:8080 https://127.0.0.1:8080 https://www.example.org https://www.www.example.org"
+  },
+  {
+   "domains": [
+    "localhost"
+   ],
+   "value": "'self' https://formalie.dev https://*.formalie.dev http://localhost https://localhost"
+  }
+ ],
+ "max_embed_domains": 20,
+ "reserved": [
+  "admin",
+  "ai",
+  "analytics",
+  "api",
+  "api-service",
+  "app",
+  "audit",
+  "auth",
+  "billing",
+  "dashboard",
+  "data-sources",
+  "embed",
+  "files",
+  "fill",
+  "form",
+  "formalie",
+  "forms",
+  "help",
+  "login",
+  "logout",
+  "manage",
+  "new",
+  "onboarding",
+  "option-sets",
+  "profile",
+  "public",
+  "responses",
+  "s",
+  "settings",
+  "signin",
+  "signup",
+  "static",
+  "storage",
+  "support",
+  "templates",
+  "workspace-not-found",
+  "www"
+ ]
+}
