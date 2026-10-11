@@ -838,7 +838,6 @@
     "providers": {
       "google": "Tiếp tục với Google",
       "microsoft": "Tiếp tục với Microsoft",
-      "apple": "Tiếp tục với Apple",
       "facebook": "Tiếp tục với Facebook",
       "signUpWith": "Đăng ký bằng",
       "signInWith": "Đăng nhập bằng"
@@ -9305,7 +9304,7 @@
       "databases": "Dùng cơ sở dữ liệu của bạn: {list}",
       "databasesAll": "Dùng bất kỳ cơ sở dữ liệu nào: MySQL, PostgreSQL, MariaDB, SQL Server, Oracle",
       "signinEmail": "Đăng nhập bằng email và mật khẩu",
-      "signinAll": "Google, Apple, Microsoft, Facebook và đăng nhập một lần (Okta và các loại khác)",
+      "signinAll": "Google, Microsoft, Facebook và đăng nhập một lần (Okta và các loại khác)",
       "subdomain": "Tên miền phụ Formalie riêng của bạn",
       "domain": "Một tên miền riêng",
       "domains": "Các tên miền riêng",
@@ -9358,7 +9357,7 @@
       "customEmail": "Địa chỉ gửi và máy chủ thư riêng",
       "dataResidency": "Dữ liệu được lưu tại khu vực bạn chọn",
       "emailSignin": "Email và mật khẩu",
-      "socialSignin": "Google, Apple, Microsoft, Facebook",
+      "socialSignin": "Google, Microsoft, Facebook",
       "sso": "Đăng nhập một lần (Okta và các loại khác)",
       "helpCentre": "Trung tâm trợ giúp và trợ lý",
       "prioritySupport": "Hỗ trợ email ưu tiên",
@@ -9475,7 +9474,7 @@
       "customDomain": "Tên miền riêng của bạn sẽ không còn được phục vụ",
       "customEmail": "Email quay lại gửi từ địa chỉ của Formalie",
       "sso": "Đăng nhập một lần bị tắt",
-      "socialSignin": "Đăng nhập bằng Google, Apple, Microsoft và Facebook bị tắt"
+      "socialSignin": "Đăng nhập bằng Google, Microsoft và Facebook bị tắt"
     },
     "confirmChange": "Xác nhận thay đổi",
     "continuePay": "Tiếp tục đến thanh toán",

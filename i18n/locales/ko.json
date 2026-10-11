@@ -838,7 +838,6 @@
     "providers": {
       "google": "Google로 계속",
       "microsoft": "Microsoft로 계속",
-      "apple": "Apple로 계속",
       "facebook": "Facebook으로 계속",
       "signUpWith": "다음으로 가입",
       "signInWith": "다음으로 로그인"
@@ -9305,7 +9304,7 @@
       "databases": "내 데이터베이스 사용: {list}",
       "databasesAll": "모든 데이터베이스 사용: MySQL, PostgreSQL, MariaDB, SQL Server, Oracle",
       "signinEmail": "이메일과 비밀번호로 로그인",
-      "signinAll": "Google, Apple, Microsoft, Facebook, 싱글 사인온(Okta 등)",
+      "signinAll": "Google, Microsoft, Facebook, 싱글 사인온(Okta 등)",
       "subdomain": "나만의 Formalie 서브도메인",
       "domain": "사용자 지정 도메인 1개",
       "domains": "사용자 지정 도메인",
@@ -9358,7 +9357,7 @@
       "customEmail": "자체 보내는 주소와 메일 서버",
       "dataResidency": "선택한 리전에 보관되는 데이터",
       "emailSignin": "이메일과 비밀번호",
-      "socialSignin": "Google, Apple, Microsoft, Facebook",
+      "socialSignin": "Google, Microsoft, Facebook",
       "sso": "싱글 사인온(Okta 등)",
       "helpCentre": "도움말 센터와 어시스턴트",
       "prioritySupport": "우선 이메일 지원",
@@ -9475,7 +9474,7 @@
       "customDomain": "사용자 지정 도메인이 더 이상 제공되지 않습니다",
       "customEmail": "이메일이 다시 Formalie 주소에서 발송됩니다",
       "sso": "싱글 사인온이 꺼집니다",
-      "socialSignin": "Google, Apple, Microsoft, Facebook 로그인이 꺼집니다"
+      "socialSignin": "Google, Microsoft, Facebook 로그인이 꺼집니다"
     },
     "confirmChange": "변경 확인",
     "continuePay": "결제로 계속",

@@ -838,7 +838,6 @@
     "providers": {
       "google": "Lanjutkan dengan Google",
       "microsoft": "Lanjutkan dengan Microsoft",
-      "apple": "Lanjutkan dengan Apple",
       "facebook": "Lanjutkan dengan Facebook",
       "signUpWith": "Daftar dengan",
       "signInWith": "Masuk dengan"
@@ -9305,7 +9304,7 @@
       "databases": "Gunakan basis data Anda: {list}",
       "databasesAll": "Gunakan basis data apa pun: MySQL, PostgreSQL, MariaDB, SQL Server, Oracle",
       "signinEmail": "Masuk dengan email dan kata sandi",
-      "signinAll": "Google, Apple, Microsoft, Facebook, dan single sign-on (Okta dan lainnya)",
+      "signinAll": "Google, Microsoft, Facebook, dan single sign-on (Okta dan lainnya)",
       "subdomain": "Subdomain Formalie Anda sendiri",
       "domain": "Satu domain khusus",
       "domains": "Domain khusus",
@@ -9358,7 +9357,7 @@
       "customEmail": "Alamat pengirim dan server email sendiri",
       "dataResidency": "Data disimpan di wilayah pilihan Anda",
       "emailSignin": "Email dan kata sandi",
-      "socialSignin": "Google, Apple, Microsoft, Facebook",
+      "socialSignin": "Google, Microsoft, Facebook",
       "sso": "Single sign-on (Okta dan lainnya)",
       "helpCentre": "Pusat bantuan dan asisten",
       "prioritySupport": "Dukungan email prioritas",
@@ -9475,7 +9474,7 @@
       "customDomain": "Domain khusus Anda tidak lagi dilayani",
       "customEmail": "Email kembali dikirim dari alamat Formalie",
       "sso": "Single sign-on dimatikan",
-      "socialSignin": "Masuk dengan Google, Apple, Microsoft, dan Facebook dimatikan"
+      "socialSignin": "Masuk dengan Google, Microsoft, dan Facebook dimatikan"
     },
     "confirmChange": "Konfirmasi perubahan",
     "continuePay": "Lanjut ke pembayaran",

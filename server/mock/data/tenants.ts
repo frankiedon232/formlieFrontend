@@ -68,7 +68,7 @@ export const MOCK_TENANTS: MockTenant[] = [
     subdomain: 'samathtax',
     website: 'https://www.samathtax.example',
     status: 'active',
-    auth_providers: ['password', 'google', 'apple', 'facebook'],
+    auth_providers: ['password', 'google', 'facebook'],
     organisation: { id: '1b2c3d4e-5f60-4b7c-9d8e-0f1a2b3c4d5e', name: 'Samath Tax' },
   },
   {

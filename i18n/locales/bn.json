@@ -838,7 +838,6 @@
     "providers": {
       "google": "Google দিয়ে চালিয়ে যান",
       "microsoft": "Microsoft দিয়ে চালিয়ে যান",
-      "apple": "Apple দিয়ে চালিয়ে যান",
       "facebook": "Facebook দিয়ে চালিয়ে যান",
       "signUpWith": "যা দিয়ে সাইন আপ করুন",
       "signInWith": "যা দিয়ে সাইন ইন করুন"
@@ -9305,7 +9304,7 @@
       "databases": "নিজের ডেটাবেস আনুন: {list}",
       "databasesAll": "যেকোনো ডেটাবেস আনুন: MySQL, PostgreSQL, MariaDB, SQL Server, Oracle",
       "signinEmail": "ইমেল ও পাসওয়ার্ড দিয়ে সাইন-ইন",
-      "signinAll": "Google, Apple, Microsoft, Facebook এবং সিঙ্গল সাইন-অন (Okta ও অন্যান্য)",
+      "signinAll": "Google, Microsoft, Facebook এবং সিঙ্গল সাইন-অন (Okta ও অন্যান্য)",
       "subdomain": "আপনার নিজের Formalie সাবডোমেইন",
       "domain": "একটি কাস্টম ডোমেইন",
       "domains": "কাস্টম ডোমেইন",
@@ -9358,7 +9357,7 @@
       "customEmail": "নিজস্ব পাঠানোর ঠিকানা ও মেইল সার্ভার",
       "dataResidency": "আপনার বেছে নেওয়া অঞ্চলে রাখা ডেটা",
       "emailSignin": "ইমেল ও পাসওয়ার্ড",
-      "socialSignin": "Google, Apple, Microsoft, Facebook",
+      "socialSignin": "Google, Microsoft, Facebook",
       "sso": "সিঙ্গল সাইন-অন (Okta ও অন্যান্য)",
       "helpCentre": "সহায়তা কেন্দ্র ও সহকারী",
       "prioritySupport": "অগ্রাধিকার ইমেল সহায়তা",
@@ -9475,7 +9474,7 @@
       "customDomain": "আপনার কাস্টম ডোমেইন আর চালু থাকবে না",
       "customEmail": "ইমেল আবার Formalie-এর ঠিকানা থেকে যাবে",
       "sso": "সিঙ্গল সাইন-অন বন্ধ হয়ে যাবে",
-      "socialSignin": "Google, Apple, Microsoft ও Facebook দিয়ে সাইন-ইন বন্ধ হয়ে যাবে"
+      "socialSignin": "Google, Microsoft ও Facebook দিয়ে সাইন-ইন বন্ধ হয়ে যাবে"
     },
     "confirmChange": "পরিবর্তন নিশ্চিত করুন",
     "continuePay": "পেমেন্টে যান",

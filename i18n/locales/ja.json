@@ -838,7 +838,6 @@
     "providers": {
       "google": "Google で続ける",
       "microsoft": "Microsoft で続ける",
-      "apple": "Apple で続ける",
       "facebook": "Facebook で続ける",
       "signUpWith": "次の方法で登録",
       "signInWith": "次の方法でログイン"
@@ -9305,7 +9304,7 @@
       "databases": "自分のデータベースを使う: {list}",
       "databasesAll": "任意のデータベースを使う: MySQL、PostgreSQL、MariaDB、SQL Server、Oracle",
       "signinEmail": "メールとパスワードでログイン",
-      "signinAll": "Google、Apple、Microsoft、Facebook、シングルサインオン (Okta など)",
+      "signinAll": "Google、Microsoft、Facebook、シングルサインオン (Okta など)",
       "subdomain": "独自の Formalie サブドメイン",
       "domain": "独自ドメイン 1 つ",
       "domains": "独自ドメイン",
@@ -9358,7 +9357,7 @@
       "customEmail": "独自の送信元アドレスとメールサーバー",
       "dataResidency": "選択したリージョンに保管されるデータ",
       "emailSignin": "メールとパスワード",
-      "socialSignin": "Google、Apple、Microsoft、Facebook",
+      "socialSignin": "Google、Microsoft、Facebook",
       "sso": "シングルサインオン (Okta など)",
       "helpCentre": "ヘルプセンターとアシスタント",
       "prioritySupport": "優先メールサポート",
@@ -9475,7 +9474,7 @@
       "customDomain": "独自ドメインが提供されなくなります",
       "customEmail": "メールは再び Formalie のアドレスから送信されます",
       "sso": "シングルサインオンがオフになります",
-      "socialSignin": "Google、Apple、Microsoft、Facebook でのログインがオフになります"
+      "socialSignin": "Google、Microsoft、Facebook でのログインがオフになります"
     },
     "confirmChange": "変更を確定",
     "continuePay": "お支払いに進む",

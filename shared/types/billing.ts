@@ -17,7 +17,7 @@ export interface PlanLimits {
   responses_per_form: number | null
   /** The databases a workspace may connect (Bring your database). */
   databases: DbEngine[]
-  /** Google, Apple, Microsoft, Facebook and single sign-on; off = email and password only. */
+  /** Google, Microsoft, Facebook and single sign-on; off = email and password only. */
   social_signin: boolean
   sso: boolean
   /** 0 = none. */

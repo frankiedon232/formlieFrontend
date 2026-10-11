@@ -838,7 +838,6 @@
     "providers": {
       "google": "使用 Google 继续",
       "microsoft": "使用 Microsoft 继续",
-      "apple": "使用 Apple 继续",
       "facebook": "使用 Facebook 继续",
       "signUpWith": "使用以下方式注册",
       "signInWith": "使用以下方式登录"
@@ -9305,7 +9304,7 @@
       "databases": "使用您自己的数据库：{list}",
       "databasesAll": "使用任意数据库：MySQL、PostgreSQL、MariaDB、SQL Server、Oracle",
       "signinEmail": "使用邮箱和密码登录",
-      "signinAll": "Google、Apple、Microsoft、Facebook 和单点登录（Okta 等）",
+      "signinAll": "Google、Microsoft、Facebook 和单点登录（Okta 等）",
       "subdomain": "您自己的 Formalie 子域名",
       "domain": "一个自定义域名",
       "domains": "自定义域名",
@@ -9358,7 +9357,7 @@
       "customEmail": "自有发件地址和邮件服务器",
       "dataResidency": "数据保存在您选择的区域",
       "emailSignin": "邮箱和密码",
-      "socialSignin": "Google、Apple、Microsoft、Facebook",
+      "socialSignin": "Google、Microsoft、Facebook",
       "sso": "单点登录（Okta 等）",
       "helpCentre": "帮助中心和助手",
       "prioritySupport": "优先邮件支持",
@@ -9475,7 +9474,7 @@
       "customDomain": "您的自定义域名将不再提供服务",
       "customEmail": "邮件将改回从 Formalie 的地址发出",
       "sso": "单点登录将被关闭",
-      "socialSignin": "使用 Google、Apple、Microsoft 和 Facebook 登录将被关闭"
+      "socialSignin": "使用 Google、Microsoft 和 Facebook 登录将被关闭"
     },
     "confirmChange": "确认更改",
     "continuePay": "继续付款",

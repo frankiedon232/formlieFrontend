@@ -838,7 +838,6 @@
     "providers": {
       "google": "Doorgaan met Google",
       "microsoft": "Doorgaan met Microsoft",
-      "apple": "Doorgaan met Apple",
       "facebook": "Doorgaan met Facebook",
       "signUpWith": "Aanmelden met",
       "signInWith": "Inloggen met"
@@ -9305,7 +9304,7 @@
       "databases": "Gebruik je eigen database: {list}",
       "databasesAll": "Gebruik elke database: MySQL, PostgreSQL, MariaDB, SQL Server, Oracle",
       "signinEmail": "Aanmelden met e-mail en wachtwoord",
-      "signinAll": "Google, Apple, Microsoft, Facebook en single sign-on (Okta en andere)",
+      "signinAll": "Google, Microsoft, Facebook en single sign-on (Okta en andere)",
       "subdomain": "Je eigen Formalie-subdomein",
       "domain": "Eén eigen domein",
       "domains": "Eigen domeinen",
@@ -9358,7 +9357,7 @@
       "customEmail": "Eigen afzenderadres en mailserver",
       "dataResidency": "Gegevens bewaard in de regio van je keuze",
       "emailSignin": "E-mail en wachtwoord",
-      "socialSignin": "Google, Apple, Microsoft, Facebook",
+      "socialSignin": "Google, Microsoft, Facebook",
       "sso": "Single sign-on (Okta en andere)",
       "helpCentre": "Helpcentrum en assistent",
       "prioritySupport": "E-mailondersteuning met voorrang",
@@ -9475,7 +9474,7 @@
       "customDomain": "Je eigen domein wordt niet meer geserveerd",
       "customEmail": "E-mails gaan weer uit van het adres van Formalie",
       "sso": "Single sign-on wordt uitgezet",
-      "socialSignin": "Aanmelden met Google, Apple, Microsoft en Facebook wordt uitgezet"
+      "socialSignin": "Aanmelden met Google, Microsoft en Facebook wordt uitgezet"
     },
     "confirmChange": "Wijziging bevestigen",
     "continuePay": "Verder naar betaling",

@@ -838,7 +838,6 @@
     "providers": {
       "google": "Продолжить с Google",
       "microsoft": "Продолжить с Microsoft",
-      "apple": "Продолжить с Apple",
       "facebook": "Продолжить с Facebook",
       "signUpWith": "Регистрация через",
       "signInWith": "Войти через"
@@ -9305,7 +9304,7 @@
       "databases": "Подключите свою базу данных: {list}",
       "databasesAll": "Подключите любую базу данных: MySQL, PostgreSQL, MariaDB, SQL Server, Oracle",
       "signinEmail": "Вход по email и паролю",
-      "signinAll": "Google, Apple, Microsoft, Facebook и единый вход (Okta и другие)",
+      "signinAll": "Google, Microsoft, Facebook и единый вход (Okta и другие)",
       "subdomain": "Собственный поддомен Formalie",
       "domain": "Один собственный домен",
       "domains": "Собственные домены",
@@ -9358,7 +9357,7 @@
       "customEmail": "Собственный адрес отправителя и почтовый сервер",
       "dataResidency": "Данные хранятся в выбранном вами регионе",
       "emailSignin": "Email и пароль",
-      "socialSignin": "Google, Apple, Microsoft, Facebook",
+      "socialSignin": "Google, Microsoft, Facebook",
       "sso": "Единый вход (Okta и другие)",
       "helpCentre": "Центр помощи и ассистент",
       "prioritySupport": "Приоритетная поддержка по email",
@@ -9475,7 +9474,7 @@
       "customDomain": "Ваш собственный домен перестанет обслуживаться",
       "customEmail": "Письма снова будут уходить с адреса Formalie",
       "sso": "Единый вход будет выключен",
-      "socialSignin": "Вход через Google, Apple, Microsoft и Facebook будет выключен"
+      "socialSignin": "Вход через Google, Microsoft и Facebook будет выключен"
     },
     "confirmChange": "Подтвердить изменение",
     "continuePay": "Перейти к оплате",

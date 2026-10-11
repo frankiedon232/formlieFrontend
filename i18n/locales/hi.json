@@ -838,7 +838,6 @@
     "providers": {
       "google": "Google से जारी रखें",
       "microsoft": "Microsoft से जारी रखें",
-      "apple": "Apple से जारी रखें",
       "facebook": "Facebook से जारी रखें",
       "signUpWith": "इससे साइन अप करें",
       "signInWith": "इससे साइन इन करें"
@@ -9305,7 +9304,7 @@
       "databases": "अपना डेटाबेस लाएँ: {list}",
       "databasesAll": "कोई भी डेटाबेस लाएँ: MySQL, PostgreSQL, MariaDB, SQL Server, Oracle",
       "signinEmail": "ईमेल और पासवर्ड से साइन-इन",
-      "signinAll": "Google, Apple, Microsoft, Facebook और सिंगल साइन-ऑन (Okta और अन्य)",
+      "signinAll": "Google, Microsoft, Facebook और सिंगल साइन-ऑन (Okta और अन्य)",
       "subdomain": "आपका अपना Formalie सबडोमेन",
       "domain": "एक कस्टम डोमेन",
       "domains": "कस्टम डोमेन",
@@ -9358,7 +9357,7 @@
       "customEmail": "अपना भेजने का पता और मेल सर्वर",
       "dataResidency": "आपके चुने क्षेत्र में रखा गया डेटा",
       "emailSignin": "ईमेल और पासवर्ड",
-      "socialSignin": "Google, Apple, Microsoft, Facebook",
+      "socialSignin": "Google, Microsoft, Facebook",
       "sso": "सिंगल साइन-ऑन (Okta और अन्य)",
       "helpCentre": "सहायता केंद्र और असिस्टेंट",
       "prioritySupport": "प्राथमिकता वाली ईमेल सहायता",
@@ -9475,7 +9474,7 @@
       "customDomain": "आपका कस्टम डोमेन चलना बंद हो जाएगा",
       "customEmail": "ईमेल फिर से Formalie के पते से जाएँगे",
       "sso": "सिंगल साइन-ऑन बंद कर दिया जाएगा",
-      "socialSignin": "Google, Apple, Microsoft और Facebook से साइन-इन बंद कर दिया जाएगा"
+      "socialSignin": "Google, Microsoft और Facebook से साइन-इन बंद कर दिया जाएगा"
     },
     "confirmChange": "बदलाव की पुष्टि करें",
     "continuePay": "भुगतान पर जाएँ",

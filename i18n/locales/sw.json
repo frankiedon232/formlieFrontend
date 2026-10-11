@@ -838,7 +838,6 @@
     "providers": {
       "google": "Endelea na Google",
       "microsoft": "Endelea na Microsoft",
-      "apple": "Endelea na Apple",
       "facebook": "Endelea na Facebook",
       "signUpWith": "Jisajili kwa",
       "signInWith": "Ingia kwa"
@@ -9305,7 +9304,7 @@
       "databases": "Leta hifadhidata yako: {list}",
       "databasesAll": "Leta hifadhidata yoyote: MySQL, PostgreSQL, MariaDB, SQL Server, Oracle",
       "signinEmail": "Kuingia kwa barua pepe na nenosiri",
-      "signinAll": "Google, Apple, Microsoft, Facebook na kuingia mara moja (Okta na nyinginezo)",
+      "signinAll": "Google, Microsoft, Facebook na kuingia mara moja (Okta na nyinginezo)",
       "subdomain": "Kikoa kidogo chako cha Formalie",
       "domain": "Kikoa kimoja maalum",
       "domains": "Vikoa maalum",
@@ -9358,7 +9357,7 @@
       "customEmail": "Anwani ya kutuma na seva ya barua ya kwako",
       "dataResidency": "Data inayohifadhiwa katika eneo unalochagua",
       "emailSignin": "Barua pepe na nenosiri",
-      "socialSignin": "Google, Apple, Microsoft, Facebook",
+      "socialSignin": "Google, Microsoft, Facebook",
       "sso": "Kuingia mara moja (Okta na nyinginezo)",
       "helpCentre": "Kituo cha msaada na msaidizi",
       "prioritySupport": "Msaada wa kipaumbele kwa barua pepe",
@@ -9475,7 +9474,7 @@
       "customDomain": "Kikoa chako maalum hakitahudumiwa tena",
       "customEmail": "Barua pepe zinarudi kutoka anwani ya Formalie",
       "sso": "Kuingia mara moja kunazimwa",
-      "socialSignin": "Kuingia kwa Google, Apple, Microsoft na Facebook kunazimwa"
+      "socialSignin": "Kuingia kwa Google, Microsoft na Facebook kunazimwa"
     },
     "confirmChange": "Thibitisha mabadiliko",
     "continuePay": "Endelea kwenye malipo",

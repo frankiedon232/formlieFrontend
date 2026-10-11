@@ -9,6 +9,7 @@ import type { SecuritySettings, SettingsChange, SettingsSection, SigninSettings,
 import { FORMALIE_APPEARANCE } from '#shared/types/appearance'
 import { DEFAULT_PASSWORD_POLICY } from '#shared/utils/auth/password'
 import { APP_LOCALES } from '#shared/utils/i18n/locales'
+import { SIGNIN_METHODS } from '#shared/utils/settings/schemas'
 import { loadPersisted, savePersisted } from '../core/persist'
 import type { MockTenant } from './tenants'
 
@@ -93,6 +94,11 @@ export function settingsOf(tenant: MockTenant): WorkspaceSettings {
     settings.updated.signin ??= null
     settings.updated.security ??= null
     settings.updated.notifications ??= null
+    saveSettings()
+  }
+  // Sign-in methods that are no longer offered (Apple, removed 2026-10-11)
+  if (settings.signin && settings.signin.methods.some(method => !(SIGNIN_METHODS as readonly string[]).includes(method))) {
+    settings.signin.methods = settings.signin.methods.filter(method => (SIGNIN_METHODS as readonly string[]).includes(method))
     saveSettings()
   }
   // Appearance saved before light / dark (leftovers L3)

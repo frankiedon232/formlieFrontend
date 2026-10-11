@@ -838,7 +838,6 @@
     "providers": {
       "google": "Continuer avec Google",
       "microsoft": "Continuer avec Microsoft",
-      "apple": "Continuer avec Apple",
       "facebook": "Continuer avec Facebook",
       "signUpWith": "S’inscrire avec",
       "signInWith": "Se connecter avec"
@@ -9305,7 +9304,7 @@
       "databases": "Utilisez votre base de données : {list}",
       "databasesAll": "Utilisez n’importe quelle base de données : MySQL, PostgreSQL, MariaDB, SQL Server, Oracle",
       "signinEmail": "Connexion par e-mail et mot de passe",
-      "signinAll": "Google, Apple, Microsoft, Facebook et authentification unique (Okta et autres)",
+      "signinAll": "Google, Microsoft, Facebook et authentification unique (Okta et autres)",
       "subdomain": "Votre propre sous-domaine Formalie",
       "domain": "Un domaine personnalisé",
       "domains": "Domaines personnalisés",
@@ -9358,7 +9357,7 @@
       "customEmail": "Adresse d’envoi et serveur de messagerie personnels",
       "dataResidency": "Données conservées dans la région de votre choix",
       "emailSignin": "E-mail et mot de passe",
-      "socialSignin": "Google, Apple, Microsoft, Facebook",
+      "socialSignin": "Google, Microsoft, Facebook",
       "sso": "Authentification unique (Okta et autres)",
       "helpCentre": "Centre d’aide et assistant",
       "prioritySupport": "Assistance par e-mail prioritaire",
@@ -9475,7 +9474,7 @@
       "customDomain": "Votre domaine personnalisé n’est plus servi",
       "customEmail": "Les e-mails repartent de l’adresse de Formalie",
       "sso": "L’authentification unique est désactivée",
-      "socialSignin": "La connexion avec Google, Apple, Microsoft et Facebook est désactivée"
+      "socialSignin": "La connexion avec Google, Microsoft et Facebook est désactivée"
     },
     "confirmChange": "Confirmer le changement",
     "continuePay": "Continuer vers le paiement",

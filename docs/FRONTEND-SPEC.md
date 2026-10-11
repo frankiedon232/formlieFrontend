@@ -54,7 +54,7 @@ Breadcrumbs (all segments clickable), search / command palette (`⌘K`/`Ctrl+K` 
 ## 4. Tenant detection and auth screens
 
 - `middleware/tenant.global.ts` reads `window.location.host`: `manage.*` → default entry mode; `{sub}.*` → fetch tenant public profile (`GET /api/v1/tenants/public`): name, logo, colours, enabled auth providers, status. Unknown subdomain → friendly "workspace not found" page with link to manage.
-- **Login** (`/auth/login`): tenant branding; email + password; enabled providers as buttons (Google, Microsoft, Apple, Facebook, SAML/OIDC later) only those the tenant enabled; "forgot password"; on manage.\* also "find my workspace".
+- **Login** (`/auth/login`): tenant branding; email + password; enabled providers as buttons (Google, Microsoft, Facebook, SAML/OIDC later) only those the tenant enabled; "forgot password"; on manage.\* also "find my workspace".
 - **OTP** (`/auth/otp`): 6-box input (`UPinInput`), auto-advance, paste support, resend countdown, switch channel, attempts left. Required on **every** login.
 - **Signup** (`/auth/signup`, on manage.\* only): name, email, password (strength meter) or social signup → OTP → choose subdomain (live availability check, reserved names blocked) → workspace created → redirect to `{sub}` → onboarding.
 - **Onboarding wizard** (`/onboarding`): company details, logo/branding, country/timezone/currency, team invites (optional), first form from a template. Skippable steps, progress indicator.

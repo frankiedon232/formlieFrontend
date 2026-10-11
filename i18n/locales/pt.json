@@ -838,7 +838,6 @@
     "providers": {
       "google": "Continuar com Google",
       "microsoft": "Continuar com Microsoft",
-      "apple": "Continuar com Apple",
       "facebook": "Continuar com Facebook",
       "signUpWith": "Cadastre-se com",
       "signInWith": "Entre com"
@@ -9305,7 +9304,7 @@
       "databases": "Use seu banco de dados: {list}",
       "databasesAll": "Use qualquer banco de dados: MySQL, PostgreSQL, MariaDB, SQL Server, Oracle",
       "signinEmail": "Login com e-mail e senha",
-      "signinAll": "Google, Apple, Microsoft, Facebook e login único (Okta e outros)",
+      "signinAll": "Google, Microsoft, Facebook e login único (Okta e outros)",
       "subdomain": "Seu próprio subdomínio do Formalie",
       "domain": "Um domínio próprio",
       "domains": "Domínios próprios",
@@ -9358,7 +9357,7 @@
       "customEmail": "Endereço de envio e servidor de e-mail próprios",
       "dataResidency": "Dados mantidos na região que você escolher",
       "emailSignin": "E-mail e senha",
-      "socialSignin": "Google, Apple, Microsoft, Facebook",
+      "socialSignin": "Google, Microsoft, Facebook",
       "sso": "Login único (Okta e outros)",
       "helpCentre": "Central de ajuda e assistente",
       "prioritySupport": "Suporte prioritário por e-mail",
@@ -9475,7 +9474,7 @@
       "customDomain": "Seu domínio próprio deixa de ser atendido",
       "customEmail": "Os e-mails voltam a sair do endereço do Formalie",
       "sso": "O login único é desativado",
-      "socialSignin": "O login com Google, Apple, Microsoft e Facebook é desativado"
+      "socialSignin": "O login com Google, Microsoft e Facebook é desativado"
     },
     "confirmChange": "Confirmar mudança",
     "continuePay": "Continuar para o pagamento",

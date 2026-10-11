@@ -1,5 +1,5 @@
 <!--
-  Create a workspace (manage.* only): Account (Google / Microsoft / Apple / Facebook or email) →
+  Create a workspace (manage.* only): Account (Google / Microsoft / Facebook or email) →
   Verify email → Workspace → new subdomain. Social signup skips the code step (provider-verified
   email, backend). The new workspace then enables more sign-in methods in Settings → Authentication.
 -->

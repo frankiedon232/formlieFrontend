@@ -838,7 +838,6 @@
     "providers": {
       "google": "Google ile devam et",
       "microsoft": "Microsoft ile devam et",
-      "apple": "Apple ile devam et",
       "facebook": "Facebook ile devam et",
       "signUpWith": "Şununla kaydol",
       "signInWith": "Şununla giriş yap"
@@ -9305,7 +9304,7 @@
       "databases": "Kendi veritabanınızı getirin: {list}",
       "databasesAll": "Herhangi bir veritabanını getirin: MySQL, PostgreSQL, MariaDB, SQL Server, Oracle",
       "signinEmail": "E-posta ve şifreyle giriş",
-      "signinAll": "Google, Apple, Microsoft, Facebook ve çoklu oturum açma (Okta ve diğerleri)",
+      "signinAll": "Google, Microsoft, Facebook ve çoklu oturum açma (Okta ve diğerleri)",
       "subdomain": "Kendi Formalie alt alan adınız",
       "domain": "Bir özel alan adı",
       "domains": "Özel alan adları",
@@ -9358,7 +9357,7 @@
       "customEmail": "Kendi gönderen adresi ve posta sunucusu",
       "dataResidency": "Seçtiğiniz bölgede tutulan veriler",
       "emailSignin": "E-posta ve şifre",
-      "socialSignin": "Google, Apple, Microsoft, Facebook",
+      "socialSignin": "Google, Microsoft, Facebook",
       "sso": "Çoklu oturum açma (Okta ve diğerleri)",
       "helpCentre": "Yardım merkezi ve asistan",
       "prioritySupport": "Öncelikli e-posta desteği",
@@ -9475,7 +9474,7 @@
       "customDomain": "Özel alan adınız artık sunulmaz",
       "customEmail": "E-postalar yeniden Formalie’nin adresinden gider",
       "sso": "Çoklu oturum açma kapatılır",
-      "socialSignin": "Google, Apple, Microsoft ve Facebook ile giriş kapatılır"
+      "socialSignin": "Google, Microsoft ve Facebook ile giriş kapatılır"
     },
     "confirmChange": "Değişikliği onayla",
     "continuePay": "Ödemeye devam et",

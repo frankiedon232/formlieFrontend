@@ -838,7 +838,6 @@
     "providers": {
       "google": "Continue with Google",
       "microsoft": "Continue with Microsoft",
-      "apple": "Continue with Apple",
       "facebook": "Continue with Facebook",
       "signUpWith": "Sign up with",
       "signInWith": "Sign in with"
@@ -9305,7 +9304,7 @@
       "databases": "Bring your database: {list}",
       "databasesAll": "Bring any database: MySQL, PostgreSQL, MariaDB, SQL Server, Oracle",
       "signinEmail": "Sign-in with email and password",
-      "signinAll": "Google, Apple, Microsoft, Facebook and single sign-on (Okta and others)",
+      "signinAll": "Google, Microsoft, Facebook and single sign-on (Okta and others)",
       "subdomain": "Your own Formalie subdomain",
       "domain": "One custom domain",
       "domains": "Custom domains",
@@ -9358,7 +9357,7 @@
       "customEmail": "Own sending address and mail server",
       "dataResidency": "Data kept in the region you choose",
       "emailSignin": "Email and password",
-      "socialSignin": "Google, Apple, Microsoft, Facebook",
+      "socialSignin": "Google, Microsoft, Facebook",
       "sso": "Single sign-on (Okta and others)",
       "helpCentre": "Help centre and assistant",
       "prioritySupport": "Priority email support",
@@ -9475,7 +9474,7 @@
       "customDomain": "Your custom domain stops being served",
       "customEmail": "Emails go back to Formalie's address",
       "sso": "Single sign-on is turned off",
-      "socialSignin": "Google, Apple, Microsoft and Facebook sign-in are turned off"
+      "socialSignin": "Google, Microsoft and Facebook sign-in are turned off"
     },
     "confirmChange": "Confirm change",
     "continuePay": "Continue to payment",

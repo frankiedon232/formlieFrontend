@@ -2,7 +2,7 @@ import type { DateFormat } from './onboarding'
 import type { SsoPublic } from './sso'
 /** Auth + tenant shapes (docs/API-CONTRACT.md → Tenants, Auth). */
 
-export type AuthProvider = 'password' | 'google' | 'microsoft' | 'apple' | 'facebook'
+export type AuthProvider = 'password' | 'google' | 'microsoft' | 'facebook'
 export type OtpChannel = 'email' | 'sms' | 'totp'
 export type TenantStatus = 'active' | 'suspended'
 /** Simple workspace role until Roles & access (F22): owner and admin manage the workspace. */

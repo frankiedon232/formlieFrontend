@@ -30,7 +30,7 @@ export const publicProfile = defineMockRoute(({ event }) => {
       logo_url: null,
       colors: { primary: null },
       // manage.* offers every provider for the first signup.
-      auth_providers: ['password', 'google', 'microsoft', 'apple', 'facebook'],
+      auth_providers: ['password', 'google', 'microsoft', 'facebook'],
       status: 'active',
     })
   }

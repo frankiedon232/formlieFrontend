@@ -838,7 +838,6 @@
     "providers": {
       "google": "المتابعة باستخدام Google",
       "microsoft": "المتابعة باستخدام Microsoft",
-      "apple": "المتابعة باستخدام Apple",
       "facebook": "المتابعة باستخدام Facebook",
       "signUpWith": "سجّل باستخدام",
       "signInWith": "سجّل الدخول باستخدام"
@@ -9305,7 +9304,7 @@
       "databases": "استخدم قاعدة بياناتك: {list}",
       "databasesAll": "استخدم أي قاعدة بيانات: MySQL وPostgreSQL وMariaDB وSQL Server وOracle",
       "signinEmail": "تسجيل الدخول بالبريد الإلكتروني وكلمة المرور",
-      "signinAll": "Google وApple وMicrosoft وFacebook وتسجيل الدخول الموحّد (Okta وغيرها)",
+      "signinAll": "Google وMicrosoft وFacebook وتسجيل الدخول الموحّد (Okta وغيرها)",
       "subdomain": "نطاق فرعي خاص بك على Formalie",
       "domain": "نطاق مخصص واحد",
       "domains": "نطاقات مخصصة",
@@ -9358,7 +9357,7 @@
       "customEmail": "عنوان إرسال وخادم بريد خاصان بك",
       "dataResidency": "بيانات محفوظة في المنطقة التي تختارها",
       "emailSignin": "البريد الإلكتروني وكلمة المرور",
-      "socialSignin": "Google وApple وMicrosoft وFacebook",
+      "socialSignin": "Google وMicrosoft وFacebook",
       "sso": "تسجيل الدخول الموحّد (Okta وغيرها)",
       "helpCentre": "مركز المساعدة والمساعد",
       "prioritySupport": "دعم بريد إلكتروني ذو أولوية",
@@ -9475,7 +9474,7 @@
       "customDomain": "لن يُخدَّم نطاقك المخصص بعد الآن",
       "customEmail": "تعود الرسائل إلى الصدور من عنوان Formalie",
       "sso": "سيتم إيقاف تسجيل الدخول الموحّد",
-      "socialSignin": "سيتم إيقاف تسجيل الدخول عبر Google وApple وMicrosoft وFacebook"
+      "socialSignin": "سيتم إيقاف تسجيل الدخول عبر Google وMicrosoft وFacebook"
     },
     "confirmChange": "تأكيد التغيير",
     "continuePay": "المتابعة إلى الدفع",

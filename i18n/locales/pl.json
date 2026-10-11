@@ -838,7 +838,6 @@
     "providers": {
       "google": "Kontynuuj z Google",
       "microsoft": "Kontynuuj z Microsoft",
-      "apple": "Kontynuuj z Apple",
       "facebook": "Kontynuuj z Facebookiem",
       "signUpWith": "Zarejestruj się przez",
       "signInWith": "Zaloguj się przez"
@@ -9305,7 +9304,7 @@
       "databases": "Użyj własnej bazy danych: {list}",
       "databasesAll": "Użyj dowolnej bazy danych: MySQL, PostgreSQL, MariaDB, SQL Server, Oracle",
       "signinEmail": "Logowanie e-mailem i hasłem",
-      "signinAll": "Google, Apple, Microsoft, Facebook i jednokrotne logowanie (Okta i inne)",
+      "signinAll": "Google, Microsoft, Facebook i jednokrotne logowanie (Okta i inne)",
       "subdomain": "Własna subdomena Formalie",
       "domain": "Jedna własna domena",
       "domains": "Własne domeny",
@@ -9358,7 +9357,7 @@
       "customEmail": "Własny adres nadawcy i serwer poczty",
       "dataResidency": "Dane przechowywane w wybranym regionie",
       "emailSignin": "E-mail i hasło",
-      "socialSignin": "Google, Apple, Microsoft, Facebook",
+      "socialSignin": "Google, Microsoft, Facebook",
       "sso": "Jednokrotne logowanie (Okta i inne)",
       "helpCentre": "Centrum pomocy i asystent",
       "prioritySupport": "Priorytetowe wsparcie e-mail",
@@ -9475,7 +9474,7 @@
       "customDomain": "Twoja własna domena przestaje być obsługiwana",
       "customEmail": "E-maile znów wychodzą z adresu Formalie",
       "sso": "Jednokrotne logowanie zostanie wyłączone",
-      "socialSignin": "Logowanie przez Google, Apple, Microsoft i Facebook zostanie wyłączone"
+      "socialSignin": "Logowanie przez Google, Microsoft i Facebook zostanie wyłączone"
     },
     "confirmChange": "Potwierdź zmianę",
     "continuePay": "Przejdź do płatności",

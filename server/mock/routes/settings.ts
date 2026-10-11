@@ -109,7 +109,7 @@ export const patchSection = defineMockRoute(({ event, body }) => {
     const value = parseBody(signinSchema, body)
     const domain = user.email.split('@').pop()!.toLowerCase()
     if (value.allowed_domains.length && !value.allowed_domains.some(item => domain === item || domain.endsWith(`.${item}`))) throw lockedOut('allowed_domains', 'own_domain')
-    // Subscription (F24): Google, Apple, Microsoft and Facebook come with Professional and up
+    // Subscription (F24): Google, Microsoft and Facebook come with Professional and up
     if (value.methods.some(method => method !== 'password' && !settings.signin.methods.includes(method))) requireFeature(tenant, 'social_signin')
     changes = settingsChanges(settings.signin as unknown as Record<string, unknown>, value as unknown as Record<string, unknown>)
     next = writeSettings(tenant, 'signin', value, by).signin

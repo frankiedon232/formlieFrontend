@@ -14,7 +14,7 @@ const access = usePlanAccess()
 
 const isOn = (method: AuthProvider) => model.value.includes(method)
 const isLast = (method: AuthProvider) => isOn(method) && model.value.length === 1
-/** Google, Apple, Microsoft and Facebook come with a higher plan (F24); one that is on can still be switched off. */
+/** Google, Microsoft and Facebook come with a higher plan (F24); one that is on can still be switched off. */
 const locked = (method: AuthProvider) => method !== 'password' && !isOn(method) && !access.allows('social_signin')
 const nameOf = (method: AuthProvider) => (method === 'password' ? t('settings.signin.password') : PROVIDER_NAMES[method])
 

@@ -209,7 +209,7 @@ Formalie default data (below) is seeded by the backend and kept in mind in every
 
 ### Waiting on backend
 
-- ⏸ Real Google / Microsoft / Apple / Facebook sign-in (OAuth)
+- ⏸ Real Google / Microsoft / Facebook sign-in (OAuth)
 - ⏸ Social signup callback: skip the code step, go straight to the workspace step
 - ⏸ SAML / OIDC single sign-on (later)
 - ⏸ Real email / SMS delivery of codes; authenticator-app (TOTP) codes
@@ -800,7 +800,7 @@ Every workspace sets up its own reference data here; the builder, field access a
 
 ### Authentication
 
-- ✅ Sign-in methods: enable / disable email + password, Google, Microsoft, Apple, Facebook, only enabled ones appear on the workspace sign-in page (at least one; turning off email and password asks first; live sign-in page preview, also on Branding)
+- ✅ Sign-in methods: enable / disable email + password, Google, Microsoft, Facebook, only enabled ones appear on the workspace sign-in page (at least one; turning off email and password asks first; live sign-in page preview, also on Branding)
 - ✅ Single sign-on (owner, 2026-10-10): Okta, Microsoft Entra ID, Google Workspace, OneLogin, any SAML 2.0 or OpenID Connect provider; Formalie's values to copy, the provider's values (OIDC issuer, client ID, write-only secret; SAML metadata address or values by hand), a real test (OIDC discovery / SAML metadata), then on; button text, email domains, required for them (password refused, FRM-AUTH-1019), accounts on first sign-in with a role; the sign-in page shows "Continue with …" and sends those domains to the provider. The real SAML / OIDC round trip is the backend's (the mock says it isn't connected yet)
 - ✅ One-time code policy: email always, text message optional (off for new workspaces), expiry 5 / 10 / 15 min, wrong tries 3 / 5 / 10 (no authenticator app, owner 2026-10-07)
 - ✅ Multi-factor authentication: always on for everyone (every sign-in asks for a code), shown as such
@@ -1060,7 +1060,7 @@ Owner, 2026-10-08: payments come after the rest of the platform, form payments a
 | Forms                                                                                                                                                                                                              | 5                  | 20                                                 | Unlimited | Unlimited  |
 | Responses per form                                                                                                                                                                                                 | 10,000             | 200,000                                            | Unlimited | Unlimited  |
 | Bring your database                                                                                                                                                                                                | MySQL              | MySQL, PostgreSQL, MariaDB                         | All five  | All five   |
-| Sign-in                                                                                                                                                                                                            | Email and password | + Google, Apple, Microsoft, Facebook, SSO (Okta …) | Same      | Same       |
+| Sign-in                                                                                                                                                                                                            | Email and password | + Google, Microsoft, Facebook, SSO (Okta …) | Same      | Same       |
 | Custom domain                                                                                                                                                                                                      | No                 | 1                                                  | Yes       | Yes        |
 | Own sending address / mail server                                                                                                                                                                                  | No                 | Yes                                                | Yes       | Yes        |
 | Everything else (analytics, templates, lists, themes and pages, explorer, Query editor, destinations, API service, webhooks, docs, AI assistant, branding, subdomain, 20 languages, versions, folders, fill later) | Yes                | Yes                                                | Yes       | Yes        |

@@ -71,7 +71,7 @@ export const localisationSchema = z.object({
 })
 
 /** Sign-in methods, in the order the sign-in page shows them. */
-export const SIGNIN_METHODS = ['password', 'google', 'microsoft', 'apple', 'facebook'] as const
+export const SIGNIN_METHODS = ['password', 'google', 'microsoft', 'facebook'] as const
 /** example.com, sub.example.co.uk (no scheme, no @). */
 export const isEmailDomain = (value: string) => /^(?=.{3,253}$)([a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,63}$/.test(value)
 /** An IPv4 / IPv6 address or CIDR range. */

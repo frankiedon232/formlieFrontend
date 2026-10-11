@@ -31,7 +31,7 @@ The mock API (`NUXT_PUBLIC_API_MOCK=true`) is seeded in [server/mock/data/tenant
 | Remedy Legal | Frankie Don, workspace owner           | `admin@remedylegal.test`           | Normal sign-in; code by email or SMS; sees the **Audit trail**                     |
 | Remedy Legal | Marcus Reid, account disabled by admin | `marcus.reid@remedylegal.test`     | Correct password, but "Account disabled. Contact your administrator."              |
 | Remedy Legal | Lena Novak, staff member (Reviewer)    | `staff@remedylegal.test`           | **Form test:** opening a form set to "Only my organisation" (Share tab), see below |
-| Samath Tax   | Elena Rossi, workspace owner           | `admin@samathtax.test`             | Sign-in with Google, Apple and Facebook buttons shown                              |
+| Samath Tax   | Elena Rossi, workspace owner           | `admin@samathtax.test`             | Sign-in with Google and Facebook buttons shown                              |
 | Both         | James Carter, external consultant      | `james.carter@carterpartners.test` | Member of both workspaces; **Find my workspace** lists both; no audit trail access |
 | Old Co       | ,                                      | ,                                  | Suspended workspace page (`https://oldco.formalie.dev:2202/`, needs a hosts entry) |
 
