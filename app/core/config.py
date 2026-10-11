@@ -89,6 +89,12 @@ class Settings(BaseSettings):
                 ipaddress.ip_network(item, strict=False)
         return value
 
+    @field_validator("log_dir", "geoip_dir")
+    @classmethod
+    def _inside_project(cls, value: Path) -> Path:
+        # A relative path in .env means inside this project, wherever the server is started from.
+        return value if value.is_absolute() else ROOT_DIR / value
+
     @field_validator("db_schema")
     @classmethod
     def _plain_identifier(cls, value: str) -> str:
