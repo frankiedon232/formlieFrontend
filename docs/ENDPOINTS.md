@@ -453,21 +453,21 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 - **Guards:** `requireAuth`
 - **Audit:** `auth.password.changed`, `auth.recovery_codes.created`, `auth.session.revoked`, `auth.two_step.disabled`, `auth.two_step.enabled`, `users.profile_updated`
 
-- [ ] `GET /api/v1/me/profile` (`getProfile`)
-- [ ] `GET /api/v1/me/tours` (`myTours`)
-- [ ] `PATCH /api/v1/me/tours` (`updateMyTours`)
-- [ ] `PATCH /api/v1/me/profile` (`updateProfile`)
-- [ ] `POST /api/v1/me/password` (`changePassword`)
-- [ ] `POST /api/v1/me/two-step/app` (`startApp`)
-- [ ] `POST /api/v1/me/two-step/app/confirm` (`confirmApp`)
-- [ ] `POST /api/v1/me/two-step/app/remove` (`removeApp`)
-- [ ] `POST /api/v1/me/two-step/recovery` (`newRecovery`)
-- [ ] `POST /api/v1/me/two-step/phone` (`startPhone`)
-- [ ] `POST /api/v1/me/two-step/phone/confirm` (`confirmPhone`)
-- [ ] `DELETE /api/v1/me/two-step/phone` (`removePhone`)
-- [ ] `GET /api/v1/me/sessions` (`mySessions`)
-- [ ] `DELETE /api/v1/me/sessions/{id}` (`endMySession`)
-- [ ] `POST /api/v1/me/sessions/sign-out-others` (`endOtherSessions`)
+- [x] `GET /api/v1/me/profile` (`getProfile`)
+- [x] `GET /api/v1/me/tours` (`myTours`)
+- [x] `PATCH /api/v1/me/tours` (`updateMyTours`)
+- [x] `PATCH /api/v1/me/profile` (`updateProfile`)
+- [x] `POST /api/v1/me/password` (`changePassword`)
+- [x] `POST /api/v1/me/two-step/app` (`startApp`)
+- [x] `POST /api/v1/me/two-step/app/confirm` (`confirmApp`)
+- [x] `POST /api/v1/me/two-step/app/remove` (`removeApp`)
+- [x] `POST /api/v1/me/two-step/recovery` (`newRecovery`)
+- [x] `POST /api/v1/me/two-step/phone` (`startPhone`)
+- [x] `POST /api/v1/me/two-step/phone/confirm` (`confirmPhone`)
+- [x] `DELETE /api/v1/me/two-step/phone` (`removePhone`)
+- [x] `GET /api/v1/me/sessions` (`mySessions`)
+- [x] `DELETE /api/v1/me/sessions/{id}` (`endMySession`)
+- [x] `POST /api/v1/me/sessions/sign-out-others` (`endOtherSessions`)
 
 ## `routes/roles.ts`
 

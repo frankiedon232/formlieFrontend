@@ -11,7 +11,7 @@ from sqlalchemy.orm import Mapped, mapped_column
 
 from app.core.db.base import AuditMixin, Base, SoftDeleteMixin, TenantMixin, UuidPkMixin, tenant_table_args
 
-PURPOSES = ("logo", "share_image", "form_image")
+PURPOSES = ("logo", "share_image", "form_image", "avatar")  # avatar: My profile photo
 
 
 class Upload(UuidPkMixin, TenantMixin, AuditMixin, SoftDeleteMixin, Base):

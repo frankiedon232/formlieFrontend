@@ -127,3 +127,17 @@ class UserIdentity(UuidPkMixin, TenantMixin, AuditMixin, SoftDeleteMixin, Base):
     provider: Mapped[str] = mapped_column(String(16), nullable=False)
     provider_user_id: Mapped[str] = mapped_column(String(255), nullable=False)
     email: Mapped[str | None] = mapped_column(String(254))
+
+
+class UserTour(UuidPkMixin, TenantMixin, AuditMixin, SoftDeleteMixin, Base):
+    """Tips on new pages (first-visit tours): switched off, and the tours already offered (taken or skipped)."""
+
+    __tablename__ = "user_tours"
+    __table_args__ = tenant_table_args(
+        tenant_fk("user_id", "users"),
+        Index("uq_user_tours_user", "tenant_id", "user_id", unique=True, postgresql_where=text("deleted_at IS NULL")),
+    )
+
+    user_id: Mapped[uuid.UUID] = mapped_column(Uuid, nullable=False)
+    tours_off: Mapped[bool] = mapped_column(Boolean, nullable=False, server_default="false")
+    seen: Mapped[list[str]] = mapped_column(JSONB, nullable=False, server_default=text("'[]'::jsonb"))

@@ -45,9 +45,9 @@ Then stop for the owner's review. Day-to-day status lives in `PROGRESS.md`.
 
 ## B4, People, roles and access (F16, F22 brought forward)
 
-- [ ] Roles with the permission catalogue and scopes, Owner built in (`shared/utils/auth/permissions.ts`).
-- [ ] People: profiles with departments, job titles and role, invitations, enable / disable, reset, force MFA; my profile (`/me`, tips and tours seen).
-- [ ] The permission dependency on every route from here on (BACKEND-SPEC §11).
+- [x] Roles with the permission catalogue and scopes, Owner built in (`shared/utils/auth/permissions.ts`).
+- [x] People: profiles with departments, job titles and role, invitations, enable / disable, reset, force MFA; my profile (`/me`, tips and tours seen). Two steps for everyone: every sign-in asks for a code (or the authenticator app); admins can reset someone's two-step sign-in.
+- [x] The permission dependency on every route from here on (BACKEND-SPEC §11): `require_auth` checks the route's permission (`permission_for`), `require_admin` falls back to `settings.manage`, as the mock's requireAdmin.
 
 ## B5, Forms core (F6, F7)
 

@@ -11,10 +11,10 @@ Statuses: **Done** (built and verified), **Built** (code and tests written, wait
 | B1 | Secure channel, workspaces and sign-in | **Done** (owner: "go ahead", 2026-10-11); social sign-in checked live up to the providers' pages; the owner's click-through and the frontend switch-over still to do | 20 / 20 |
 | B2 | Audit trail and logs | **Done** (owner: "continue to next", 2026-10-11) | 6 / 6 |
 | B3 | Onboarding, settings base and default data | **Done** (owner: "keep going", 2026-10-11) | 37 / 39 (form defaults theme: B5; navigation counts complete with the later areas) |
-| B4 | People, roles and access | **In progress**: roles, people, invitations done; my profile next | 29 / 44 |
+| B4 | People, roles and access | **Built**; waiting for the owner's review | 44 / 44 |
 | B5 to B17 | See BACKEND-ROADMAP.md | Later | 0 |
 
-Portal endpoints: 93 of 401 ticked in `ENDPOINTS.md`.
+Portal endpoints: 108 of 401 ticked in `ENDPOINTS.md`.
 
 ## B0, Foundation (2026-10-10)
 
@@ -82,6 +82,15 @@ Portal endpoints: 93 of 401 ticked in `ENDPOINTS.md`.
 | Navigation counts | Built (part) | `app/modules/dashboard/router.py` | People and organisation data now; each later area adds its counts |
 | Default data hook, reference data | Done | `register_seeder` in `app/modules/tenants/workspace.py`; generated catalogues | Folders, lists, templates, email templates seed themselves in their phases |
 
+## B4, People, roles and access (2026-10-11)
+
+| Item | Status | Where | Notes |
+| --- | --- | --- | --- |
+| Roles | Done | `app/modules/rbac/router.py` | Built-in roles keep their keys (owner, admin, member) |
+| People: list, insights, detail, edit, disable, enable, sign out, new password, two-step reset, bulk | Done | `app/modules/people/router.py`, `service.py` | Owner guards; activity from the audit trail and sessions |
+| Ways in: profiles, personal links, shared link, approval, public join page | Done | `app/modules/people/invites.py`, migration 0010 | Emails through Mailpit |
+| My profile: profile and photo, password, authenticator app, recovery codes, phone, my sessions, tours | Done | `app/modules/people/me.py`, migration 0011 | Text messages: no SMS provider yet (B11), nothing is sent outside tests |
+
 ## Open questions
 
 - **Privacy erasure without hard deletes:** "delete a person's data" (Settings → Privacy, F14) and response retention must still remove personal data. Proposal: anonymise in place (overwrite answers and personal fields, keep the row, its relations and the audit entry). To decide before B11.
@@ -89,9 +98,13 @@ Portal endpoints: 93 of 401 ticked in `ENDPOINTS.md`.
 - **Request bodies for the platform admin:** `platform_reader` reads every request-log column except the bodies (answers may be in them, PLATFORM-ADMIN-INTEGRATION §1). Say if the platform should read bodies too.
 - **File storage:** files are kept in a folder (`data/storage`) behind `app/core/storage.py`. Before going live they need object storage (S3 compatible: for example AWS S3, Cloudflare R2, or MinIO on our own servers). MinIO could not be installed in WSL (its download server answered 410). Which one?
 - **Onboarding website (frontend):** the onboarding step accepts any address zod's `z.url()` takes, including `javascript:` and `mailto:`. The backend accepts web addresses only (http, https) and answers `Invalid URL` otherwise; the frontend's check could match (Settings → Company already uses http / https only).
+- **API docs page (`/docs`):** on in development only. Its "Try it out" can't call most routes (they only take encrypted requests). Options: protect the page with a username and password, or add a development-only helper that seals requests from it. Which one?
+- **SMS provider:** codes by text message need one (for example Twilio or Vonage) before workspaces can switch them on.
 - **CLAUDE.md layout** still names `api_keys/` and `option_sets/`; the product now has API tokens (`/api-tokens`) and option lists (`/option-lists`).
 
 ## Log
+
+- **2026-10-11:** B4 built: roles, people, ways in, my profile; migrations 0010 and 0011. 892 tests. **Stopped for the owner's review.**
 
 - **2026-10-11:** B4: people (list, insights, detail, edit, disable, enable, sign out, new password, two-step reset, bulk) with the owner guards; ways in (profiles with activation, personal sign-up links, the shared link with domains, approval, rejection, withdrawing; migration 0010). 891 tests.
 
