@@ -25,7 +25,8 @@ OUT = ROOT / "tests" / "vectors" / "forms_rules.json"
 ENTRY = r"""
 import { readFileSync } from 'node:fs'
 import { formSchemaV1, countFields } from '__SHARED__/utils/forms/schema.ts'
-import { blankSchema } from '__SHARED__/utils/forms/build.ts'
+import { blankSchema, publishIssues, allFields } from '__SHARED__/utils/forms/build.ts'
+import { FIELD_TYPES } from '__SHARED__/utils/forms/fields.ts'
 import { SYSTEM_TEMPLATES, templateSchema, localiseSchema } from '__SHARED__/templates/index.ts'
 import { FOLDER_COLOR_KEYS } from '__SHARED__/utils/forms/folders.ts'
 import { FORM_ACTIONS, RESPONSE_ACTIONS, TRASH_RETENTION_DAYS, FORM_CHANNELS } from '__SHARED__/types/forms.ts'
@@ -92,6 +93,27 @@ for (const { code } of APP_LOCALES) {
   blank[code] = schema
 }
 
+// Publish checks: the base form, and each problem made on purpose
+const fieldsOf = schema => allFields(schema)
+const inputs = fieldsOf(base).filter(f => FIELD_TYPES[f.type]?.input)
+const choice = fieldsOf(base).find(f => FIELD_TYPES[f.type]?.options)
+const edit = (fn) => { const out = clone(base); fn(out); return out }
+const find = (schema, id) => fieldsOf(schema).find(f => f.id === id)
+const publishCases = [
+  base,
+  edit(s => { s.pages = [{ id: 'p1', rows: [{ id: 'r1', fields: [{ id: 'f1', key: 'intro', type: 'heading', label: 'Hello' }] }] }] }),
+  edit(s => { find(s, inputs[0].id).label = '   ' }),
+  edit(s => { find(s, inputs[1].id).key = inputs[0].key }),
+  ...(choice ? [edit(s => { const f = find(s, choice.id); f.options = []; delete f.option_set_id }),
+               edit(s => { const f = find(s, choice.id); f.options = []; f.option_set_id = 'list_1' })] : []),
+  edit(s => { Object.assign(find(s, inputs[0].id), { required: true, readonly: true }) }),
+  edit(s => { Object.assign(find(s, inputs[0].id), { required: true, disabled: true }) }),
+  edit(s => { Object.assign(find(s, inputs[0].id), { required: true, audience: { mode: 'department', ids: ['d1'] } }) }),
+  edit(s => { Object.assign(find(s, inputs[0].id), { required: true, audience: { mode: 'everyone' } }) }),
+  edit(s => { Object.assign(find(s, inputs[0].id), { required: true, type: 'hidden' }) }),
+  edit(s => { s.pages[0].rows[0].fields.push({ id: 'zz', key: 'mystery', type: 'not_a_type', label: '' }) }),
+]
+
 const slugify = value => value.toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '').slice(0, 60) || 'form'
 const slugs = ['Customer feedback', '  Café — Orders!  ', 'Ünïcödé Fòrm', '日本語のフォーム', '---', 'x'.repeat(80), 'A/B test 2026']
 
@@ -102,6 +124,8 @@ process.stdout.write(JSON.stringify({
   schema_cases: cases.map(run), count_fields: countFields(base),
   blank_schemas: blank,
   slugs: slugs.map(value => ({ value, slug: slugify(value) })),
+  field_types: Object.fromEntries(Object.entries(FIELD_TYPES).map(([k, v]) => [k, { input: !!v.input, options: !!v.options }])),
+  publish_cases: publishCases.map(schema => ({ schema, issues: publishIssues(schema) })),
 }))
 """
 

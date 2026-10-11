@@ -53,3 +53,10 @@ def test_blank_forms(language: str) -> None:
 @pytest.mark.parametrize("case", RULES["slugs"], ids=lambda c: c["slug"])
 def test_slugs(case: dict) -> None:
     assert slugify(case["value"]) == case["slug"]
+
+
+@pytest.mark.parametrize("case", RULES["publish_cases"], ids=lambda c: str(len(c["issues"])))
+def test_publish_checks(case: dict) -> None:
+    from app.modules.forms.builder import publish_issues
+
+    assert publish_issues(case["schema"]) == case["issues"]

@@ -24891,5 +24891,3772 @@
    "slug": "a-b-test-2026"
   }
  ],
+ "field_types": {
+  "short_text": {
+   "input": true,
+   "options": false
+  },
+  "long_text": {
+   "input": true,
+   "options": false
+  },
+  "rich_text": {
+   "input": true,
+   "options": false
+  },
+  "email": {
+   "input": true,
+   "options": false
+  },
+  "phone": {
+   "input": true,
+   "options": false
+  },
+  "url": {
+   "input": true,
+   "options": false
+  },
+  "number": {
+   "input": true,
+   "options": false
+  },
+  "currency": {
+   "input": true,
+   "options": false
+  },
+  "full_name": {
+   "input": true,
+   "options": false
+  },
+  "percentage": {
+   "input": true,
+   "options": false
+  },
+  "date": {
+   "input": true,
+   "options": false
+  },
+  "time": {
+   "input": true,
+   "options": false
+  },
+  "datetime": {
+   "input": true,
+   "options": false
+  },
+  "date_range": {
+   "input": true,
+   "options": false
+  },
+  "duration": {
+   "input": true,
+   "options": false
+  },
+  "dropdown": {
+   "input": true,
+   "options": true
+  },
+  "multi_select": {
+   "input": true,
+   "options": true
+  },
+  "radio": {
+   "input": true,
+   "options": true
+  },
+  "checkbox": {
+   "input": true,
+   "options": true
+  },
+  "toggle": {
+   "input": true,
+   "options": false
+  },
+  "ranking": {
+   "input": true,
+   "options": true
+  },
+  "matrix": {
+   "input": true,
+   "options": true
+  },
+  "consent": {
+   "input": true,
+   "options": false
+  },
+  "rating": {
+   "input": true,
+   "options": false
+  },
+  "scale": {
+   "input": true,
+   "options": false
+  },
+  "slider": {
+   "input": true,
+   "options": false
+  },
+  "file_upload": {
+   "input": true,
+   "options": false
+  },
+  "image_upload": {
+   "input": true,
+   "options": false
+  },
+  "signature": {
+   "input": true,
+   "options": false
+  },
+  "address": {
+   "input": true,
+   "options": false
+  },
+  "country": {
+   "input": true,
+   "options": false
+  },
+  "language": {
+   "input": true,
+   "options": false
+  },
+  "timezone": {
+   "input": true,
+   "options": false
+  },
+  "currency_code": {
+   "input": true,
+   "options": false
+  },
+  "ip_address": {
+   "input": true,
+   "options": false
+  },
+  "domain": {
+   "input": true,
+   "options": false
+  },
+  "mac_address": {
+   "input": true,
+   "options": false
+  },
+  "color": {
+   "input": true,
+   "options": false
+  },
+  "iban": {
+   "input": true,
+   "options": false
+  },
+  "bic": {
+   "input": true,
+   "options": false
+  },
+  "hidden": {
+   "input": true,
+   "options": false
+  },
+  "calculated": {
+   "input": true,
+   "options": false
+  },
+  "payment": {
+   "input": true,
+   "options": false
+  },
+  "section": {
+   "input": false,
+   "options": false
+  },
+  "paragraph": {
+   "input": false,
+   "options": false
+  },
+  "divider": {
+   "input": false,
+   "options": false
+  },
+  "image": {
+   "input": false,
+   "options": false
+  }
+ },
+ "publish_cases": [
+  {
+   "schema": {
+    "schema_version": 1,
+    "settings": {
+     "progress_bar": false,
+     "save_resume": false,
+     "language": "en"
+    },
+    "pages": [
+     {
+      "id": "p1",
+      "title": "Your feedback",
+      "rows": [
+       {
+        "id": "r1",
+        "fields": [
+         {
+          "id": "f_recommend",
+          "key": "recommend",
+          "type": "scale",
+          "label": "How likely are you to recommend us to a friend or colleague?",
+          "width": 12,
+          "required": true,
+          "props": {
+           "min": 0,
+           "max": 10,
+           "min_label": "Not likely",
+           "max_label": "Very likely"
+          }
+         }
+        ]
+       },
+       {
+        "id": "r2",
+        "fields": [
+         {
+          "id": "f_disappointed",
+          "key": "disappointed",
+          "type": "long_text",
+          "label": "We are sorry to hear that. What disappointed you?",
+          "width": 12,
+          "required": false,
+          "props": {
+           "rows": 4
+          }
+         }
+        ]
+       },
+       {
+        "id": "r3",
+        "fields": [
+         {
+          "id": "f_overall",
+          "key": "overall",
+          "type": "rating",
+          "label": "How satisfied are you overall?",
+          "width": 12,
+          "required": true,
+          "props": {
+           "max": 5
+          }
+         }
+        ]
+       },
+       {
+        "id": "r4",
+        "fields": [
+         {
+          "id": "f_what_did_you_mainly_use",
+          "key": "what_did_you_mainly_use",
+          "type": "radio",
+          "label": "What did you mainly use?",
+          "width": 12,
+          "required": false,
+          "options": [
+           {
+            "value": "website",
+            "label": "Website"
+           },
+           {
+            "value": "mobile_app",
+            "label": "Mobile app"
+           },
+           {
+            "value": "customer_support",
+            "label": "Customer support"
+           },
+           {
+            "value": "in_person",
+            "label": "In person"
+           },
+           {
+            "value": "other",
+            "label": "Other"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "id": "r5",
+        "fields": [
+         {
+          "id": "f_how_would_you_rate_us_on",
+          "key": "how_would_you_rate_us_on",
+          "type": "matrix",
+          "label": "How would you rate us on…",
+          "width": 12,
+          "required": false,
+          "props": {
+           "rows": [
+            "Quality",
+            "Speed",
+            "Value for money",
+            "Friendliness"
+           ]
+          },
+          "options": [
+           {
+            "value": "poor",
+            "label": "Poor"
+           },
+           {
+            "value": "fair",
+            "label": "Fair"
+           },
+           {
+            "value": "good",
+            "label": "Good"
+           },
+           {
+            "value": "excellent",
+            "label": "Excellent"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "id": "r6",
+        "fields": [
+         {
+          "id": "f_what_could_we_do_better",
+          "key": "what_could_we_do_better",
+          "type": "long_text",
+          "label": "What could we do better?",
+          "width": 12,
+          "required": false,
+          "props": {
+           "rows": 4
+          }
+         }
+        ]
+       },
+       {
+        "id": "r7",
+        "fields": [
+         {
+          "id": "f_name",
+          "key": "name",
+          "type": "short_text",
+          "label": "Name",
+          "width": 6,
+          "required": false
+         },
+         {
+          "id": "f_email",
+          "key": "email",
+          "type": "email",
+          "label": "Email",
+          "width": 6,
+          "required": false
+         }
+        ]
+       },
+       {
+        "id": "r8",
+        "fields": [
+         {
+          "id": "f_you_may_contact_me_about_my_feedback",
+          "key": "you_may_contact_me_about_my_feedback",
+          "type": "toggle",
+          "label": "You may contact me about my feedback",
+          "width": 12,
+          "required": false
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "logic": [
+     {
+      "id": "rule1",
+      "when": {
+       "all": [
+        {
+         "field": "f_recommend",
+         "op": "lte",
+         "value": 6
+        }
+       ]
+      },
+      "then": [
+       {
+        "action": "show",
+        "target": "f_disappointed"
+       }
+      ]
+     }
+    ],
+    "calculations": [],
+    "thank_you": {
+     "title": "Thank you for your feedback!",
+     "message": "Every answer is read by our team and helps us improve.",
+     "redirect_url": null
+    },
+    "theme": {
+     "layout": "card",
+     "page": {
+      "bg_type": "color",
+      "bg": "#f5f3ff",
+      "bg_to": "#e4e4e7",
+      "gradient_angle": 135,
+      "bg_image": null,
+      "overlay": 0
+     },
+     "container": {
+      "width": "md",
+      "padding": "md",
+      "radius": "xl",
+      "border": false,
+      "shadow": "md",
+      "bg": "#ffffff"
+     },
+     "typography": {
+      "font": "sans",
+      "size": "md",
+      "heading_weight": "semibold"
+     },
+     "colors": {
+      "primary": "#4f46e5",
+      "text": "#18181b",
+      "muted": "#71717a",
+      "input_bg": "#ffffff",
+      "input_border": "#ddd6fe",
+      "error": "#dc2626"
+     },
+     "inputs": {
+      "radius": "md",
+      "size": "md",
+      "style": "outline"
+     },
+     "buttons": {
+      "radius": "md",
+      "variant": "solid",
+      "full_width": false
+     },
+     "header": {
+      "show_logo": false,
+      "logo": null,
+      "cover": null,
+      "cover_height": "md",
+      "show_title": true,
+      "subtitle": "",
+      "align": "center",
+      "band": "gradient",
+      "band_bg": "#4f46e5",
+      "band_to": "#9333ea"
+     },
+     "split": {
+      "image": null,
+      "side": "start",
+      "panel": "image",
+      "bg": "#18181b",
+      "bg_to": "#3f3f46"
+     },
+     "footer": {
+      "enabled": false,
+      "text": "",
+      "links": [],
+      "show_logo": false,
+      "align": "center",
+      "style": "plain",
+      "bg": "#18181b"
+     },
+     "thank_you": {
+      "show_icon": true
+     },
+     "blocks": {
+      "section": "underline",
+      "section_color": "primary",
+      "section_caps": false,
+      "divider": "line",
+      "divider_weight": "thin",
+      "paragraph": "plain",
+      "image_radius": "md",
+      "image_shadow": false,
+      "image_border": false
+     },
+     "frame": {
+      "style": "branded",
+      "show_website": true,
+      "show_facts": true,
+      "tone": "light"
+     }
+    }
+   },
+   "issues": []
+  },
+  {
+   "schema": {
+    "schema_version": 1,
+    "settings": {
+     "progress_bar": false,
+     "save_resume": false,
+     "language": "en"
+    },
+    "pages": [
+     {
+      "id": "p1",
+      "rows": [
+       {
+        "id": "r1",
+        "fields": [
+         {
+          "id": "f1",
+          "key": "intro",
+          "type": "heading",
+          "label": "Hello"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "logic": [
+     {
+      "id": "rule1",
+      "when": {
+       "all": [
+        {
+         "field": "f_recommend",
+         "op": "lte",
+         "value": 6
+        }
+       ]
+      },
+      "then": [
+       {
+        "action": "show",
+        "target": "f_disappointed"
+       }
+      ]
+     }
+    ],
+    "calculations": [],
+    "thank_you": {
+     "title": "Thank you for your feedback!",
+     "message": "Every answer is read by our team and helps us improve.",
+     "redirect_url": null
+    },
+    "theme": {
+     "layout": "card",
+     "page": {
+      "bg_type": "color",
+      "bg": "#f5f3ff",
+      "bg_to": "#e4e4e7",
+      "gradient_angle": 135,
+      "bg_image": null,
+      "overlay": 0
+     },
+     "container": {
+      "width": "md",
+      "padding": "md",
+      "radius": "xl",
+      "border": false,
+      "shadow": "md",
+      "bg": "#ffffff"
+     },
+     "typography": {
+      "font": "sans",
+      "size": "md",
+      "heading_weight": "semibold"
+     },
+     "colors": {
+      "primary": "#4f46e5",
+      "text": "#18181b",
+      "muted": "#71717a",
+      "input_bg": "#ffffff",
+      "input_border": "#ddd6fe",
+      "error": "#dc2626"
+     },
+     "inputs": {
+      "radius": "md",
+      "size": "md",
+      "style": "outline"
+     },
+     "buttons": {
+      "radius": "md",
+      "variant": "solid",
+      "full_width": false
+     },
+     "header": {
+      "show_logo": false,
+      "logo": null,
+      "cover": null,
+      "cover_height": "md",
+      "show_title": true,
+      "subtitle": "",
+      "align": "center",
+      "band": "gradient",
+      "band_bg": "#4f46e5",
+      "band_to": "#9333ea"
+     },
+     "split": {
+      "image": null,
+      "side": "start",
+      "panel": "image",
+      "bg": "#18181b",
+      "bg_to": "#3f3f46"
+     },
+     "footer": {
+      "enabled": false,
+      "text": "",
+      "links": [],
+      "show_logo": false,
+      "align": "center",
+      "style": "plain",
+      "bg": "#18181b"
+     },
+     "thank_you": {
+      "show_icon": true
+     },
+     "blocks": {
+      "section": "underline",
+      "section_color": "primary",
+      "section_caps": false,
+      "divider": "line",
+      "divider_weight": "thin",
+      "paragraph": "plain",
+      "image_radius": "md",
+      "image_shadow": false,
+      "image_border": false
+     },
+     "frame": {
+      "style": "branded",
+      "show_website": true,
+      "show_facts": true,
+      "tone": "light"
+     }
+    }
+   },
+   "issues": [
+    {
+     "code": "no_inputs",
+     "field_id": null
+    }
+   ]
+  },
+  {
+   "schema": {
+    "schema_version": 1,
+    "settings": {
+     "progress_bar": false,
+     "save_resume": false,
+     "language": "en"
+    },
+    "pages": [
+     {
+      "id": "p1",
+      "title": "Your feedback",
+      "rows": [
+       {
+        "id": "r1",
+        "fields": [
+         {
+          "id": "f_recommend",
+          "key": "recommend",
+          "type": "scale",
+          "label": "   ",
+          "width": 12,
+          "required": true,
+          "props": {
+           "min": 0,
+           "max": 10,
+           "min_label": "Not likely",
+           "max_label": "Very likely"
+          }
+         }
+        ]
+       },
+       {
+        "id": "r2",
+        "fields": [
+         {
+          "id": "f_disappointed",
+          "key": "disappointed",
+          "type": "long_text",
+          "label": "We are sorry to hear that. What disappointed you?",
+          "width": 12,
+          "required": false,
+          "props": {
+           "rows": 4
+          }
+         }
+        ]
+       },
+       {
+        "id": "r3",
+        "fields": [
+         {
+          "id": "f_overall",
+          "key": "overall",
+          "type": "rating",
+          "label": "How satisfied are you overall?",
+          "width": 12,
+          "required": true,
+          "props": {
+           "max": 5
+          }
+         }
+        ]
+       },
+       {
+        "id": "r4",
+        "fields": [
+         {
+          "id": "f_what_did_you_mainly_use",
+          "key": "what_did_you_mainly_use",
+          "type": "radio",
+          "label": "What did you mainly use?",
+          "width": 12,
+          "required": false,
+          "options": [
+           {
+            "value": "website",
+            "label": "Website"
+           },
+           {
+            "value": "mobile_app",
+            "label": "Mobile app"
+           },
+           {
+            "value": "customer_support",
+            "label": "Customer support"
+           },
+           {
+            "value": "in_person",
+            "label": "In person"
+           },
+           {
+            "value": "other",
+            "label": "Other"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "id": "r5",
+        "fields": [
+         {
+          "id": "f_how_would_you_rate_us_on",
+          "key": "how_would_you_rate_us_on",
+          "type": "matrix",
+          "label": "How would you rate us on…",
+          "width": 12,
+          "required": false,
+          "props": {
+           "rows": [
+            "Quality",
+            "Speed",
+            "Value for money",
+            "Friendliness"
+           ]
+          },
+          "options": [
+           {
+            "value": "poor",
+            "label": "Poor"
+           },
+           {
+            "value": "fair",
+            "label": "Fair"
+           },
+           {
+            "value": "good",
+            "label": "Good"
+           },
+           {
+            "value": "excellent",
+            "label": "Excellent"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "id": "r6",
+        "fields": [
+         {
+          "id": "f_what_could_we_do_better",
+          "key": "what_could_we_do_better",
+          "type": "long_text",
+          "label": "What could we do better?",
+          "width": 12,
+          "required": false,
+          "props": {
+           "rows": 4
+          }
+         }
+        ]
+       },
+       {
+        "id": "r7",
+        "fields": [
+         {
+          "id": "f_name",
+          "key": "name",
+          "type": "short_text",
+          "label": "Name",
+          "width": 6,
+          "required": false
+         },
+         {
+          "id": "f_email",
+          "key": "email",
+          "type": "email",
+          "label": "Email",
+          "width": 6,
+          "required": false
+         }
+        ]
+       },
+       {
+        "id": "r8",
+        "fields": [
+         {
+          "id": "f_you_may_contact_me_about_my_feedback",
+          "key": "you_may_contact_me_about_my_feedback",
+          "type": "toggle",
+          "label": "You may contact me about my feedback",
+          "width": 12,
+          "required": false
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "logic": [
+     {
+      "id": "rule1",
+      "when": {
+       "all": [
+        {
+         "field": "f_recommend",
+         "op": "lte",
+         "value": 6
+        }
+       ]
+      },
+      "then": [
+       {
+        "action": "show",
+        "target": "f_disappointed"
+       }
+      ]
+     }
+    ],
+    "calculations": [],
+    "thank_you": {
+     "title": "Thank you for your feedback!",
+     "message": "Every answer is read by our team and helps us improve.",
+     "redirect_url": null
+    },
+    "theme": {
+     "layout": "card",
+     "page": {
+      "bg_type": "color",
+      "bg": "#f5f3ff",
+      "bg_to": "#e4e4e7",
+      "gradient_angle": 135,
+      "bg_image": null,
+      "overlay": 0
+     },
+     "container": {
+      "width": "md",
+      "padding": "md",
+      "radius": "xl",
+      "border": false,
+      "shadow": "md",
+      "bg": "#ffffff"
+     },
+     "typography": {
+      "font": "sans",
+      "size": "md",
+      "heading_weight": "semibold"
+     },
+     "colors": {
+      "primary": "#4f46e5",
+      "text": "#18181b",
+      "muted": "#71717a",
+      "input_bg": "#ffffff",
+      "input_border": "#ddd6fe",
+      "error": "#dc2626"
+     },
+     "inputs": {
+      "radius": "md",
+      "size": "md",
+      "style": "outline"
+     },
+     "buttons": {
+      "radius": "md",
+      "variant": "solid",
+      "full_width": false
+     },
+     "header": {
+      "show_logo": false,
+      "logo": null,
+      "cover": null,
+      "cover_height": "md",
+      "show_title": true,
+      "subtitle": "",
+      "align": "center",
+      "band": "gradient",
+      "band_bg": "#4f46e5",
+      "band_to": "#9333ea"
+     },
+     "split": {
+      "image": null,
+      "side": "start",
+      "panel": "image",
+      "bg": "#18181b",
+      "bg_to": "#3f3f46"
+     },
+     "footer": {
+      "enabled": false,
+      "text": "",
+      "links": [],
+      "show_logo": false,
+      "align": "center",
+      "style": "plain",
+      "bg": "#18181b"
+     },
+     "thank_you": {
+      "show_icon": true
+     },
+     "blocks": {
+      "section": "underline",
+      "section_color": "primary",
+      "section_caps": false,
+      "divider": "line",
+      "divider_weight": "thin",
+      "paragraph": "plain",
+      "image_radius": "md",
+      "image_shadow": false,
+      "image_border": false
+     },
+     "frame": {
+      "style": "branded",
+      "show_website": true,
+      "show_facts": true,
+      "tone": "light"
+     }
+    }
+   },
+   "issues": [
+    {
+     "code": "empty_label",
+     "field_id": "f_recommend"
+    }
+   ]
+  },
+  {
+   "schema": {
+    "schema_version": 1,
+    "settings": {
+     "progress_bar": false,
+     "save_resume": false,
+     "language": "en"
+    },
+    "pages": [
+     {
+      "id": "p1",
+      "title": "Your feedback",
+      "rows": [
+       {
+        "id": "r1",
+        "fields": [
+         {
+          "id": "f_recommend",
+          "key": "recommend",
+          "type": "scale",
+          "label": "How likely are you to recommend us to a friend or colleague?",
+          "width": 12,
+          "required": true,
+          "props": {
+           "min": 0,
+           "max": 10,
+           "min_label": "Not likely",
+           "max_label": "Very likely"
+          }
+         }
+        ]
+       },
+       {
+        "id": "r2",
+        "fields": [
+         {
+          "id": "f_disappointed",
+          "key": "recommend",
+          "type": "long_text",
+          "label": "We are sorry to hear that. What disappointed you?",
+          "width": 12,
+          "required": false,
+          "props": {
+           "rows": 4
+          }
+         }
+        ]
+       },
+       {
+        "id": "r3",
+        "fields": [
+         {
+          "id": "f_overall",
+          "key": "overall",
+          "type": "rating",
+          "label": "How satisfied are you overall?",
+          "width": 12,
+          "required": true,
+          "props": {
+           "max": 5
+          }
+         }
+        ]
+       },
+       {
+        "id": "r4",
+        "fields": [
+         {
+          "id": "f_what_did_you_mainly_use",
+          "key": "what_did_you_mainly_use",
+          "type": "radio",
+          "label": "What did you mainly use?",
+          "width": 12,
+          "required": false,
+          "options": [
+           {
+            "value": "website",
+            "label": "Website"
+           },
+           {
+            "value": "mobile_app",
+            "label": "Mobile app"
+           },
+           {
+            "value": "customer_support",
+            "label": "Customer support"
+           },
+           {
+            "value": "in_person",
+            "label": "In person"
+           },
+           {
+            "value": "other",
+            "label": "Other"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "id": "r5",
+        "fields": [
+         {
+          "id": "f_how_would_you_rate_us_on",
+          "key": "how_would_you_rate_us_on",
+          "type": "matrix",
+          "label": "How would you rate us on…",
+          "width": 12,
+          "required": false,
+          "props": {
+           "rows": [
+            "Quality",
+            "Speed",
+            "Value for money",
+            "Friendliness"
+           ]
+          },
+          "options": [
+           {
+            "value": "poor",
+            "label": "Poor"
+           },
+           {
+            "value": "fair",
+            "label": "Fair"
+           },
+           {
+            "value": "good",
+            "label": "Good"
+           },
+           {
+            "value": "excellent",
+            "label": "Excellent"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "id": "r6",
+        "fields": [
+         {
+          "id": "f_what_could_we_do_better",
+          "key": "what_could_we_do_better",
+          "type": "long_text",
+          "label": "What could we do better?",
+          "width": 12,
+          "required": false,
+          "props": {
+           "rows": 4
+          }
+         }
+        ]
+       },
+       {
+        "id": "r7",
+        "fields": [
+         {
+          "id": "f_name",
+          "key": "name",
+          "type": "short_text",
+          "label": "Name",
+          "width": 6,
+          "required": false
+         },
+         {
+          "id": "f_email",
+          "key": "email",
+          "type": "email",
+          "label": "Email",
+          "width": 6,
+          "required": false
+         }
+        ]
+       },
+       {
+        "id": "r8",
+        "fields": [
+         {
+          "id": "f_you_may_contact_me_about_my_feedback",
+          "key": "you_may_contact_me_about_my_feedback",
+          "type": "toggle",
+          "label": "You may contact me about my feedback",
+          "width": 12,
+          "required": false
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "logic": [
+     {
+      "id": "rule1",
+      "when": {
+       "all": [
+        {
+         "field": "f_recommend",
+         "op": "lte",
+         "value": 6
+        }
+       ]
+      },
+      "then": [
+       {
+        "action": "show",
+        "target": "f_disappointed"
+       }
+      ]
+     }
+    ],
+    "calculations": [],
+    "thank_you": {
+     "title": "Thank you for your feedback!",
+     "message": "Every answer is read by our team and helps us improve.",
+     "redirect_url": null
+    },
+    "theme": {
+     "layout": "card",
+     "page": {
+      "bg_type": "color",
+      "bg": "#f5f3ff",
+      "bg_to": "#e4e4e7",
+      "gradient_angle": 135,
+      "bg_image": null,
+      "overlay": 0
+     },
+     "container": {
+      "width": "md",
+      "padding": "md",
+      "radius": "xl",
+      "border": false,
+      "shadow": "md",
+      "bg": "#ffffff"
+     },
+     "typography": {
+      "font": "sans",
+      "size": "md",
+      "heading_weight": "semibold"
+     },
+     "colors": {
+      "primary": "#4f46e5",
+      "text": "#18181b",
+      "muted": "#71717a",
+      "input_bg": "#ffffff",
+      "input_border": "#ddd6fe",
+      "error": "#dc2626"
+     },
+     "inputs": {
+      "radius": "md",
+      "size": "md",
+      "style": "outline"
+     },
+     "buttons": {
+      "radius": "md",
+      "variant": "solid",
+      "full_width": false
+     },
+     "header": {
+      "show_logo": false,
+      "logo": null,
+      "cover": null,
+      "cover_height": "md",
+      "show_title": true,
+      "subtitle": "",
+      "align": "center",
+      "band": "gradient",
+      "band_bg": "#4f46e5",
+      "band_to": "#9333ea"
+     },
+     "split": {
+      "image": null,
+      "side": "start",
+      "panel": "image",
+      "bg": "#18181b",
+      "bg_to": "#3f3f46"
+     },
+     "footer": {
+      "enabled": false,
+      "text": "",
+      "links": [],
+      "show_logo": false,
+      "align": "center",
+      "style": "plain",
+      "bg": "#18181b"
+     },
+     "thank_you": {
+      "show_icon": true
+     },
+     "blocks": {
+      "section": "underline",
+      "section_color": "primary",
+      "section_caps": false,
+      "divider": "line",
+      "divider_weight": "thin",
+      "paragraph": "plain",
+      "image_radius": "md",
+      "image_shadow": false,
+      "image_border": false
+     },
+     "frame": {
+      "style": "branded",
+      "show_website": true,
+      "show_facts": true,
+      "tone": "light"
+     }
+    }
+   },
+   "issues": [
+    {
+     "code": "duplicate_key",
+     "field_id": "f_recommend"
+    },
+    {
+     "code": "duplicate_key",
+     "field_id": "f_disappointed"
+    }
+   ]
+  },
+  {
+   "schema": {
+    "schema_version": 1,
+    "settings": {
+     "progress_bar": false,
+     "save_resume": false,
+     "language": "en"
+    },
+    "pages": [
+     {
+      "id": "p1",
+      "title": "Your feedback",
+      "rows": [
+       {
+        "id": "r1",
+        "fields": [
+         {
+          "id": "f_recommend",
+          "key": "recommend",
+          "type": "scale",
+          "label": "How likely are you to recommend us to a friend or colleague?",
+          "width": 12,
+          "required": true,
+          "props": {
+           "min": 0,
+           "max": 10,
+           "min_label": "Not likely",
+           "max_label": "Very likely"
+          }
+         }
+        ]
+       },
+       {
+        "id": "r2",
+        "fields": [
+         {
+          "id": "f_disappointed",
+          "key": "disappointed",
+          "type": "long_text",
+          "label": "We are sorry to hear that. What disappointed you?",
+          "width": 12,
+          "required": false,
+          "props": {
+           "rows": 4
+          }
+         }
+        ]
+       },
+       {
+        "id": "r3",
+        "fields": [
+         {
+          "id": "f_overall",
+          "key": "overall",
+          "type": "rating",
+          "label": "How satisfied are you overall?",
+          "width": 12,
+          "required": true,
+          "props": {
+           "max": 5
+          }
+         }
+        ]
+       },
+       {
+        "id": "r4",
+        "fields": [
+         {
+          "id": "f_what_did_you_mainly_use",
+          "key": "what_did_you_mainly_use",
+          "type": "radio",
+          "label": "What did you mainly use?",
+          "width": 12,
+          "required": false,
+          "options": []
+         }
+        ]
+       },
+       {
+        "id": "r5",
+        "fields": [
+         {
+          "id": "f_how_would_you_rate_us_on",
+          "key": "how_would_you_rate_us_on",
+          "type": "matrix",
+          "label": "How would you rate us on…",
+          "width": 12,
+          "required": false,
+          "props": {
+           "rows": [
+            "Quality",
+            "Speed",
+            "Value for money",
+            "Friendliness"
+           ]
+          },
+          "options": [
+           {
+            "value": "poor",
+            "label": "Poor"
+           },
+           {
+            "value": "fair",
+            "label": "Fair"
+           },
+           {
+            "value": "good",
+            "label": "Good"
+           },
+           {
+            "value": "excellent",
+            "label": "Excellent"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "id": "r6",
+        "fields": [
+         {
+          "id": "f_what_could_we_do_better",
+          "key": "what_could_we_do_better",
+          "type": "long_text",
+          "label": "What could we do better?",
+          "width": 12,
+          "required": false,
+          "props": {
+           "rows": 4
+          }
+         }
+        ]
+       },
+       {
+        "id": "r7",
+        "fields": [
+         {
+          "id": "f_name",
+          "key": "name",
+          "type": "short_text",
+          "label": "Name",
+          "width": 6,
+          "required": false
+         },
+         {
+          "id": "f_email",
+          "key": "email",
+          "type": "email",
+          "label": "Email",
+          "width": 6,
+          "required": false
+         }
+        ]
+       },
+       {
+        "id": "r8",
+        "fields": [
+         {
+          "id": "f_you_may_contact_me_about_my_feedback",
+          "key": "you_may_contact_me_about_my_feedback",
+          "type": "toggle",
+          "label": "You may contact me about my feedback",
+          "width": 12,
+          "required": false
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "logic": [
+     {
+      "id": "rule1",
+      "when": {
+       "all": [
+        {
+         "field": "f_recommend",
+         "op": "lte",
+         "value": 6
+        }
+       ]
+      },
+      "then": [
+       {
+        "action": "show",
+        "target": "f_disappointed"
+       }
+      ]
+     }
+    ],
+    "calculations": [],
+    "thank_you": {
+     "title": "Thank you for your feedback!",
+     "message": "Every answer is read by our team and helps us improve.",
+     "redirect_url": null
+    },
+    "theme": {
+     "layout": "card",
+     "page": {
+      "bg_type": "color",
+      "bg": "#f5f3ff",
+      "bg_to": "#e4e4e7",
+      "gradient_angle": 135,
+      "bg_image": null,
+      "overlay": 0
+     },
+     "container": {
+      "width": "md",
+      "padding": "md",
+      "radius": "xl",
+      "border": false,
+      "shadow": "md",
+      "bg": "#ffffff"
+     },
+     "typography": {
+      "font": "sans",
+      "size": "md",
+      "heading_weight": "semibold"
+     },
+     "colors": {
+      "primary": "#4f46e5",
+      "text": "#18181b",
+      "muted": "#71717a",
+      "input_bg": "#ffffff",
+      "input_border": "#ddd6fe",
+      "error": "#dc2626"
+     },
+     "inputs": {
+      "radius": "md",
+      "size": "md",
+      "style": "outline"
+     },
+     "buttons": {
+      "radius": "md",
+      "variant": "solid",
+      "full_width": false
+     },
+     "header": {
+      "show_logo": false,
+      "logo": null,
+      "cover": null,
+      "cover_height": "md",
+      "show_title": true,
+      "subtitle": "",
+      "align": "center",
+      "band": "gradient",
+      "band_bg": "#4f46e5",
+      "band_to": "#9333ea"
+     },
+     "split": {
+      "image": null,
+      "side": "start",
+      "panel": "image",
+      "bg": "#18181b",
+      "bg_to": "#3f3f46"
+     },
+     "footer": {
+      "enabled": false,
+      "text": "",
+      "links": [],
+      "show_logo": false,
+      "align": "center",
+      "style": "plain",
+      "bg": "#18181b"
+     },
+     "thank_you": {
+      "show_icon": true
+     },
+     "blocks": {
+      "section": "underline",
+      "section_color": "primary",
+      "section_caps": false,
+      "divider": "line",
+      "divider_weight": "thin",
+      "paragraph": "plain",
+      "image_radius": "md",
+      "image_shadow": false,
+      "image_border": false
+     },
+     "frame": {
+      "style": "branded",
+      "show_website": true,
+      "show_facts": true,
+      "tone": "light"
+     }
+    }
+   },
+   "issues": [
+    {
+     "code": "no_options",
+     "field_id": "f_what_did_you_mainly_use"
+    }
+   ]
+  },
+  {
+   "schema": {
+    "schema_version": 1,
+    "settings": {
+     "progress_bar": false,
+     "save_resume": false,
+     "language": "en"
+    },
+    "pages": [
+     {
+      "id": "p1",
+      "title": "Your feedback",
+      "rows": [
+       {
+        "id": "r1",
+        "fields": [
+         {
+          "id": "f_recommend",
+          "key": "recommend",
+          "type": "scale",
+          "label": "How likely are you to recommend us to a friend or colleague?",
+          "width": 12,
+          "required": true,
+          "props": {
+           "min": 0,
+           "max": 10,
+           "min_label": "Not likely",
+           "max_label": "Very likely"
+          }
+         }
+        ]
+       },
+       {
+        "id": "r2",
+        "fields": [
+         {
+          "id": "f_disappointed",
+          "key": "disappointed",
+          "type": "long_text",
+          "label": "We are sorry to hear that. What disappointed you?",
+          "width": 12,
+          "required": false,
+          "props": {
+           "rows": 4
+          }
+         }
+        ]
+       },
+       {
+        "id": "r3",
+        "fields": [
+         {
+          "id": "f_overall",
+          "key": "overall",
+          "type": "rating",
+          "label": "How satisfied are you overall?",
+          "width": 12,
+          "required": true,
+          "props": {
+           "max": 5
+          }
+         }
+        ]
+       },
+       {
+        "id": "r4",
+        "fields": [
+         {
+          "id": "f_what_did_you_mainly_use",
+          "key": "what_did_you_mainly_use",
+          "type": "radio",
+          "label": "What did you mainly use?",
+          "width": 12,
+          "required": false,
+          "options": [],
+          "option_set_id": "list_1"
+         }
+        ]
+       },
+       {
+        "id": "r5",
+        "fields": [
+         {
+          "id": "f_how_would_you_rate_us_on",
+          "key": "how_would_you_rate_us_on",
+          "type": "matrix",
+          "label": "How would you rate us on…",
+          "width": 12,
+          "required": false,
+          "props": {
+           "rows": [
+            "Quality",
+            "Speed",
+            "Value for money",
+            "Friendliness"
+           ]
+          },
+          "options": [
+           {
+            "value": "poor",
+            "label": "Poor"
+           },
+           {
+            "value": "fair",
+            "label": "Fair"
+           },
+           {
+            "value": "good",
+            "label": "Good"
+           },
+           {
+            "value": "excellent",
+            "label": "Excellent"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "id": "r6",
+        "fields": [
+         {
+          "id": "f_what_could_we_do_better",
+          "key": "what_could_we_do_better",
+          "type": "long_text",
+          "label": "What could we do better?",
+          "width": 12,
+          "required": false,
+          "props": {
+           "rows": 4
+          }
+         }
+        ]
+       },
+       {
+        "id": "r7",
+        "fields": [
+         {
+          "id": "f_name",
+          "key": "name",
+          "type": "short_text",
+          "label": "Name",
+          "width": 6,
+          "required": false
+         },
+         {
+          "id": "f_email",
+          "key": "email",
+          "type": "email",
+          "label": "Email",
+          "width": 6,
+          "required": false
+         }
+        ]
+       },
+       {
+        "id": "r8",
+        "fields": [
+         {
+          "id": "f_you_may_contact_me_about_my_feedback",
+          "key": "you_may_contact_me_about_my_feedback",
+          "type": "toggle",
+          "label": "You may contact me about my feedback",
+          "width": 12,
+          "required": false
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "logic": [
+     {
+      "id": "rule1",
+      "when": {
+       "all": [
+        {
+         "field": "f_recommend",
+         "op": "lte",
+         "value": 6
+        }
+       ]
+      },
+      "then": [
+       {
+        "action": "show",
+        "target": "f_disappointed"
+       }
+      ]
+     }
+    ],
+    "calculations": [],
+    "thank_you": {
+     "title": "Thank you for your feedback!",
+     "message": "Every answer is read by our team and helps us improve.",
+     "redirect_url": null
+    },
+    "theme": {
+     "layout": "card",
+     "page": {
+      "bg_type": "color",
+      "bg": "#f5f3ff",
+      "bg_to": "#e4e4e7",
+      "gradient_angle": 135,
+      "bg_image": null,
+      "overlay": 0
+     },
+     "container": {
+      "width": "md",
+      "padding": "md",
+      "radius": "xl",
+      "border": false,
+      "shadow": "md",
+      "bg": "#ffffff"
+     },
+     "typography": {
+      "font": "sans",
+      "size": "md",
+      "heading_weight": "semibold"
+     },
+     "colors": {
+      "primary": "#4f46e5",
+      "text": "#18181b",
+      "muted": "#71717a",
+      "input_bg": "#ffffff",
+      "input_border": "#ddd6fe",
+      "error": "#dc2626"
+     },
+     "inputs": {
+      "radius": "md",
+      "size": "md",
+      "style": "outline"
+     },
+     "buttons": {
+      "radius": "md",
+      "variant": "solid",
+      "full_width": false
+     },
+     "header": {
+      "show_logo": false,
+      "logo": null,
+      "cover": null,
+      "cover_height": "md",
+      "show_title": true,
+      "subtitle": "",
+      "align": "center",
+      "band": "gradient",
+      "band_bg": "#4f46e5",
+      "band_to": "#9333ea"
+     },
+     "split": {
+      "image": null,
+      "side": "start",
+      "panel": "image",
+      "bg": "#18181b",
+      "bg_to": "#3f3f46"
+     },
+     "footer": {
+      "enabled": false,
+      "text": "",
+      "links": [],
+      "show_logo": false,
+      "align": "center",
+      "style": "plain",
+      "bg": "#18181b"
+     },
+     "thank_you": {
+      "show_icon": true
+     },
+     "blocks": {
+      "section": "underline",
+      "section_color": "primary",
+      "section_caps": false,
+      "divider": "line",
+      "divider_weight": "thin",
+      "paragraph": "plain",
+      "image_radius": "md",
+      "image_shadow": false,
+      "image_border": false
+     },
+     "frame": {
+      "style": "branded",
+      "show_website": true,
+      "show_facts": true,
+      "tone": "light"
+     }
+    }
+   },
+   "issues": []
+  },
+  {
+   "schema": {
+    "schema_version": 1,
+    "settings": {
+     "progress_bar": false,
+     "save_resume": false,
+     "language": "en"
+    },
+    "pages": [
+     {
+      "id": "p1",
+      "title": "Your feedback",
+      "rows": [
+       {
+        "id": "r1",
+        "fields": [
+         {
+          "id": "f_recommend",
+          "key": "recommend",
+          "type": "scale",
+          "label": "How likely are you to recommend us to a friend or colleague?",
+          "width": 12,
+          "required": true,
+          "props": {
+           "min": 0,
+           "max": 10,
+           "min_label": "Not likely",
+           "max_label": "Very likely"
+          },
+          "readonly": true
+         }
+        ]
+       },
+       {
+        "id": "r2",
+        "fields": [
+         {
+          "id": "f_disappointed",
+          "key": "disappointed",
+          "type": "long_text",
+          "label": "We are sorry to hear that. What disappointed you?",
+          "width": 12,
+          "required": false,
+          "props": {
+           "rows": 4
+          }
+         }
+        ]
+       },
+       {
+        "id": "r3",
+        "fields": [
+         {
+          "id": "f_overall",
+          "key": "overall",
+          "type": "rating",
+          "label": "How satisfied are you overall?",
+          "width": 12,
+          "required": true,
+          "props": {
+           "max": 5
+          }
+         }
+        ]
+       },
+       {
+        "id": "r4",
+        "fields": [
+         {
+          "id": "f_what_did_you_mainly_use",
+          "key": "what_did_you_mainly_use",
+          "type": "radio",
+          "label": "What did you mainly use?",
+          "width": 12,
+          "required": false,
+          "options": [
+           {
+            "value": "website",
+            "label": "Website"
+           },
+           {
+            "value": "mobile_app",
+            "label": "Mobile app"
+           },
+           {
+            "value": "customer_support",
+            "label": "Customer support"
+           },
+           {
+            "value": "in_person",
+            "label": "In person"
+           },
+           {
+            "value": "other",
+            "label": "Other"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "id": "r5",
+        "fields": [
+         {
+          "id": "f_how_would_you_rate_us_on",
+          "key": "how_would_you_rate_us_on",
+          "type": "matrix",
+          "label": "How would you rate us on…",
+          "width": 12,
+          "required": false,
+          "props": {
+           "rows": [
+            "Quality",
+            "Speed",
+            "Value for money",
+            "Friendliness"
+           ]
+          },
+          "options": [
+           {
+            "value": "poor",
+            "label": "Poor"
+           },
+           {
+            "value": "fair",
+            "label": "Fair"
+           },
+           {
+            "value": "good",
+            "label": "Good"
+           },
+           {
+            "value": "excellent",
+            "label": "Excellent"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "id": "r6",
+        "fields": [
+         {
+          "id": "f_what_could_we_do_better",
+          "key": "what_could_we_do_better",
+          "type": "long_text",
+          "label": "What could we do better?",
+          "width": 12,
+          "required": false,
+          "props": {
+           "rows": 4
+          }
+         }
+        ]
+       },
+       {
+        "id": "r7",
+        "fields": [
+         {
+          "id": "f_name",
+          "key": "name",
+          "type": "short_text",
+          "label": "Name",
+          "width": 6,
+          "required": false
+         },
+         {
+          "id": "f_email",
+          "key": "email",
+          "type": "email",
+          "label": "Email",
+          "width": 6,
+          "required": false
+         }
+        ]
+       },
+       {
+        "id": "r8",
+        "fields": [
+         {
+          "id": "f_you_may_contact_me_about_my_feedback",
+          "key": "you_may_contact_me_about_my_feedback",
+          "type": "toggle",
+          "label": "You may contact me about my feedback",
+          "width": 12,
+          "required": false
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "logic": [
+     {
+      "id": "rule1",
+      "when": {
+       "all": [
+        {
+         "field": "f_recommend",
+         "op": "lte",
+         "value": 6
+        }
+       ]
+      },
+      "then": [
+       {
+        "action": "show",
+        "target": "f_disappointed"
+       }
+      ]
+     }
+    ],
+    "calculations": [],
+    "thank_you": {
+     "title": "Thank you for your feedback!",
+     "message": "Every answer is read by our team and helps us improve.",
+     "redirect_url": null
+    },
+    "theme": {
+     "layout": "card",
+     "page": {
+      "bg_type": "color",
+      "bg": "#f5f3ff",
+      "bg_to": "#e4e4e7",
+      "gradient_angle": 135,
+      "bg_image": null,
+      "overlay": 0
+     },
+     "container": {
+      "width": "md",
+      "padding": "md",
+      "radius": "xl",
+      "border": false,
+      "shadow": "md",
+      "bg": "#ffffff"
+     },
+     "typography": {
+      "font": "sans",
+      "size": "md",
+      "heading_weight": "semibold"
+     },
+     "colors": {
+      "primary": "#4f46e5",
+      "text": "#18181b",
+      "muted": "#71717a",
+      "input_bg": "#ffffff",
+      "input_border": "#ddd6fe",
+      "error": "#dc2626"
+     },
+     "inputs": {
+      "radius": "md",
+      "size": "md",
+      "style": "outline"
+     },
+     "buttons": {
+      "radius": "md",
+      "variant": "solid",
+      "full_width": false
+     },
+     "header": {
+      "show_logo": false,
+      "logo": null,
+      "cover": null,
+      "cover_height": "md",
+      "show_title": true,
+      "subtitle": "",
+      "align": "center",
+      "band": "gradient",
+      "band_bg": "#4f46e5",
+      "band_to": "#9333ea"
+     },
+     "split": {
+      "image": null,
+      "side": "start",
+      "panel": "image",
+      "bg": "#18181b",
+      "bg_to": "#3f3f46"
+     },
+     "footer": {
+      "enabled": false,
+      "text": "",
+      "links": [],
+      "show_logo": false,
+      "align": "center",
+      "style": "plain",
+      "bg": "#18181b"
+     },
+     "thank_you": {
+      "show_icon": true
+     },
+     "blocks": {
+      "section": "underline",
+      "section_color": "primary",
+      "section_caps": false,
+      "divider": "line",
+      "divider_weight": "thin",
+      "paragraph": "plain",
+      "image_radius": "md",
+      "image_shadow": false,
+      "image_border": false
+     },
+     "frame": {
+      "style": "branded",
+      "show_website": true,
+      "show_facts": true,
+      "tone": "light"
+     }
+    }
+   },
+   "issues": [
+    {
+     "code": "locked_required",
+     "field_id": "f_recommend"
+    }
+   ]
+  },
+  {
+   "schema": {
+    "schema_version": 1,
+    "settings": {
+     "progress_bar": false,
+     "save_resume": false,
+     "language": "en"
+    },
+    "pages": [
+     {
+      "id": "p1",
+      "title": "Your feedback",
+      "rows": [
+       {
+        "id": "r1",
+        "fields": [
+         {
+          "id": "f_recommend",
+          "key": "recommend",
+          "type": "scale",
+          "label": "How likely are you to recommend us to a friend or colleague?",
+          "width": 12,
+          "required": true,
+          "props": {
+           "min": 0,
+           "max": 10,
+           "min_label": "Not likely",
+           "max_label": "Very likely"
+          },
+          "disabled": true
+         }
+        ]
+       },
+       {
+        "id": "r2",
+        "fields": [
+         {
+          "id": "f_disappointed",
+          "key": "disappointed",
+          "type": "long_text",
+          "label": "We are sorry to hear that. What disappointed you?",
+          "width": 12,
+          "required": false,
+          "props": {
+           "rows": 4
+          }
+         }
+        ]
+       },
+       {
+        "id": "r3",
+        "fields": [
+         {
+          "id": "f_overall",
+          "key": "overall",
+          "type": "rating",
+          "label": "How satisfied are you overall?",
+          "width": 12,
+          "required": true,
+          "props": {
+           "max": 5
+          }
+         }
+        ]
+       },
+       {
+        "id": "r4",
+        "fields": [
+         {
+          "id": "f_what_did_you_mainly_use",
+          "key": "what_did_you_mainly_use",
+          "type": "radio",
+          "label": "What did you mainly use?",
+          "width": 12,
+          "required": false,
+          "options": [
+           {
+            "value": "website",
+            "label": "Website"
+           },
+           {
+            "value": "mobile_app",
+            "label": "Mobile app"
+           },
+           {
+            "value": "customer_support",
+            "label": "Customer support"
+           },
+           {
+            "value": "in_person",
+            "label": "In person"
+           },
+           {
+            "value": "other",
+            "label": "Other"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "id": "r5",
+        "fields": [
+         {
+          "id": "f_how_would_you_rate_us_on",
+          "key": "how_would_you_rate_us_on",
+          "type": "matrix",
+          "label": "How would you rate us on…",
+          "width": 12,
+          "required": false,
+          "props": {
+           "rows": [
+            "Quality",
+            "Speed",
+            "Value for money",
+            "Friendliness"
+           ]
+          },
+          "options": [
+           {
+            "value": "poor",
+            "label": "Poor"
+           },
+           {
+            "value": "fair",
+            "label": "Fair"
+           },
+           {
+            "value": "good",
+            "label": "Good"
+           },
+           {
+            "value": "excellent",
+            "label": "Excellent"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "id": "r6",
+        "fields": [
+         {
+          "id": "f_what_could_we_do_better",
+          "key": "what_could_we_do_better",
+          "type": "long_text",
+          "label": "What could we do better?",
+          "width": 12,
+          "required": false,
+          "props": {
+           "rows": 4
+          }
+         }
+        ]
+       },
+       {
+        "id": "r7",
+        "fields": [
+         {
+          "id": "f_name",
+          "key": "name",
+          "type": "short_text",
+          "label": "Name",
+          "width": 6,
+          "required": false
+         },
+         {
+          "id": "f_email",
+          "key": "email",
+          "type": "email",
+          "label": "Email",
+          "width": 6,
+          "required": false
+         }
+        ]
+       },
+       {
+        "id": "r8",
+        "fields": [
+         {
+          "id": "f_you_may_contact_me_about_my_feedback",
+          "key": "you_may_contact_me_about_my_feedback",
+          "type": "toggle",
+          "label": "You may contact me about my feedback",
+          "width": 12,
+          "required": false
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "logic": [
+     {
+      "id": "rule1",
+      "when": {
+       "all": [
+        {
+         "field": "f_recommend",
+         "op": "lte",
+         "value": 6
+        }
+       ]
+      },
+      "then": [
+       {
+        "action": "show",
+        "target": "f_disappointed"
+       }
+      ]
+     }
+    ],
+    "calculations": [],
+    "thank_you": {
+     "title": "Thank you for your feedback!",
+     "message": "Every answer is read by our team and helps us improve.",
+     "redirect_url": null
+    },
+    "theme": {
+     "layout": "card",
+     "page": {
+      "bg_type": "color",
+      "bg": "#f5f3ff",
+      "bg_to": "#e4e4e7",
+      "gradient_angle": 135,
+      "bg_image": null,
+      "overlay": 0
+     },
+     "container": {
+      "width": "md",
+      "padding": "md",
+      "radius": "xl",
+      "border": false,
+      "shadow": "md",
+      "bg": "#ffffff"
+     },
+     "typography": {
+      "font": "sans",
+      "size": "md",
+      "heading_weight": "semibold"
+     },
+     "colors": {
+      "primary": "#4f46e5",
+      "text": "#18181b",
+      "muted": "#71717a",
+      "input_bg": "#ffffff",
+      "input_border": "#ddd6fe",
+      "error": "#dc2626"
+     },
+     "inputs": {
+      "radius": "md",
+      "size": "md",
+      "style": "outline"
+     },
+     "buttons": {
+      "radius": "md",
+      "variant": "solid",
+      "full_width": false
+     },
+     "header": {
+      "show_logo": false,
+      "logo": null,
+      "cover": null,
+      "cover_height": "md",
+      "show_title": true,
+      "subtitle": "",
+      "align": "center",
+      "band": "gradient",
+      "band_bg": "#4f46e5",
+      "band_to": "#9333ea"
+     },
+     "split": {
+      "image": null,
+      "side": "start",
+      "panel": "image",
+      "bg": "#18181b",
+      "bg_to": "#3f3f46"
+     },
+     "footer": {
+      "enabled": false,
+      "text": "",
+      "links": [],
+      "show_logo": false,
+      "align": "center",
+      "style": "plain",
+      "bg": "#18181b"
+     },
+     "thank_you": {
+      "show_icon": true
+     },
+     "blocks": {
+      "section": "underline",
+      "section_color": "primary",
+      "section_caps": false,
+      "divider": "line",
+      "divider_weight": "thin",
+      "paragraph": "plain",
+      "image_radius": "md",
+      "image_shadow": false,
+      "image_border": false
+     },
+     "frame": {
+      "style": "branded",
+      "show_website": true,
+      "show_facts": true,
+      "tone": "light"
+     }
+    }
+   },
+   "issues": [
+    {
+     "code": "locked_required",
+     "field_id": "f_recommend"
+    }
+   ]
+  },
+  {
+   "schema": {
+    "schema_version": 1,
+    "settings": {
+     "progress_bar": false,
+     "save_resume": false,
+     "language": "en"
+    },
+    "pages": [
+     {
+      "id": "p1",
+      "title": "Your feedback",
+      "rows": [
+       {
+        "id": "r1",
+        "fields": [
+         {
+          "id": "f_recommend",
+          "key": "recommend",
+          "type": "scale",
+          "label": "How likely are you to recommend us to a friend or colleague?",
+          "width": 12,
+          "required": true,
+          "props": {
+           "min": 0,
+           "max": 10,
+           "min_label": "Not likely",
+           "max_label": "Very likely"
+          },
+          "audience": {
+           "mode": "department",
+           "ids": [
+            "d1"
+           ]
+          }
+         }
+        ]
+       },
+       {
+        "id": "r2",
+        "fields": [
+         {
+          "id": "f_disappointed",
+          "key": "disappointed",
+          "type": "long_text",
+          "label": "We are sorry to hear that. What disappointed you?",
+          "width": 12,
+          "required": false,
+          "props": {
+           "rows": 4
+          }
+         }
+        ]
+       },
+       {
+        "id": "r3",
+        "fields": [
+         {
+          "id": "f_overall",
+          "key": "overall",
+          "type": "rating",
+          "label": "How satisfied are you overall?",
+          "width": 12,
+          "required": true,
+          "props": {
+           "max": 5
+          }
+         }
+        ]
+       },
+       {
+        "id": "r4",
+        "fields": [
+         {
+          "id": "f_what_did_you_mainly_use",
+          "key": "what_did_you_mainly_use",
+          "type": "radio",
+          "label": "What did you mainly use?",
+          "width": 12,
+          "required": false,
+          "options": [
+           {
+            "value": "website",
+            "label": "Website"
+           },
+           {
+            "value": "mobile_app",
+            "label": "Mobile app"
+           },
+           {
+            "value": "customer_support",
+            "label": "Customer support"
+           },
+           {
+            "value": "in_person",
+            "label": "In person"
+           },
+           {
+            "value": "other",
+            "label": "Other"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "id": "r5",
+        "fields": [
+         {
+          "id": "f_how_would_you_rate_us_on",
+          "key": "how_would_you_rate_us_on",
+          "type": "matrix",
+          "label": "How would you rate us on…",
+          "width": 12,
+          "required": false,
+          "props": {
+           "rows": [
+            "Quality",
+            "Speed",
+            "Value for money",
+            "Friendliness"
+           ]
+          },
+          "options": [
+           {
+            "value": "poor",
+            "label": "Poor"
+           },
+           {
+            "value": "fair",
+            "label": "Fair"
+           },
+           {
+            "value": "good",
+            "label": "Good"
+           },
+           {
+            "value": "excellent",
+            "label": "Excellent"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "id": "r6",
+        "fields": [
+         {
+          "id": "f_what_could_we_do_better",
+          "key": "what_could_we_do_better",
+          "type": "long_text",
+          "label": "What could we do better?",
+          "width": 12,
+          "required": false,
+          "props": {
+           "rows": 4
+          }
+         }
+        ]
+       },
+       {
+        "id": "r7",
+        "fields": [
+         {
+          "id": "f_name",
+          "key": "name",
+          "type": "short_text",
+          "label": "Name",
+          "width": 6,
+          "required": false
+         },
+         {
+          "id": "f_email",
+          "key": "email",
+          "type": "email",
+          "label": "Email",
+          "width": 6,
+          "required": false
+         }
+        ]
+       },
+       {
+        "id": "r8",
+        "fields": [
+         {
+          "id": "f_you_may_contact_me_about_my_feedback",
+          "key": "you_may_contact_me_about_my_feedback",
+          "type": "toggle",
+          "label": "You may contact me about my feedback",
+          "width": 12,
+          "required": false
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "logic": [
+     {
+      "id": "rule1",
+      "when": {
+       "all": [
+        {
+         "field": "f_recommend",
+         "op": "lte",
+         "value": 6
+        }
+       ]
+      },
+      "then": [
+       {
+        "action": "show",
+        "target": "f_disappointed"
+       }
+      ]
+     }
+    ],
+    "calculations": [],
+    "thank_you": {
+     "title": "Thank you for your feedback!",
+     "message": "Every answer is read by our team and helps us improve.",
+     "redirect_url": null
+    },
+    "theme": {
+     "layout": "card",
+     "page": {
+      "bg_type": "color",
+      "bg": "#f5f3ff",
+      "bg_to": "#e4e4e7",
+      "gradient_angle": 135,
+      "bg_image": null,
+      "overlay": 0
+     },
+     "container": {
+      "width": "md",
+      "padding": "md",
+      "radius": "xl",
+      "border": false,
+      "shadow": "md",
+      "bg": "#ffffff"
+     },
+     "typography": {
+      "font": "sans",
+      "size": "md",
+      "heading_weight": "semibold"
+     },
+     "colors": {
+      "primary": "#4f46e5",
+      "text": "#18181b",
+      "muted": "#71717a",
+      "input_bg": "#ffffff",
+      "input_border": "#ddd6fe",
+      "error": "#dc2626"
+     },
+     "inputs": {
+      "radius": "md",
+      "size": "md",
+      "style": "outline"
+     },
+     "buttons": {
+      "radius": "md",
+      "variant": "solid",
+      "full_width": false
+     },
+     "header": {
+      "show_logo": false,
+      "logo": null,
+      "cover": null,
+      "cover_height": "md",
+      "show_title": true,
+      "subtitle": "",
+      "align": "center",
+      "band": "gradient",
+      "band_bg": "#4f46e5",
+      "band_to": "#9333ea"
+     },
+     "split": {
+      "image": null,
+      "side": "start",
+      "panel": "image",
+      "bg": "#18181b",
+      "bg_to": "#3f3f46"
+     },
+     "footer": {
+      "enabled": false,
+      "text": "",
+      "links": [],
+      "show_logo": false,
+      "align": "center",
+      "style": "plain",
+      "bg": "#18181b"
+     },
+     "thank_you": {
+      "show_icon": true
+     },
+     "blocks": {
+      "section": "underline",
+      "section_color": "primary",
+      "section_caps": false,
+      "divider": "line",
+      "divider_weight": "thin",
+      "paragraph": "plain",
+      "image_radius": "md",
+      "image_shadow": false,
+      "image_border": false
+     },
+     "frame": {
+      "style": "branded",
+      "show_website": true,
+      "show_facts": true,
+      "tone": "light"
+     }
+    }
+   },
+   "issues": [
+    {
+     "code": "locked_required",
+     "field_id": "f_recommend"
+    }
+   ]
+  },
+  {
+   "schema": {
+    "schema_version": 1,
+    "settings": {
+     "progress_bar": false,
+     "save_resume": false,
+     "language": "en"
+    },
+    "pages": [
+     {
+      "id": "p1",
+      "title": "Your feedback",
+      "rows": [
+       {
+        "id": "r1",
+        "fields": [
+         {
+          "id": "f_recommend",
+          "key": "recommend",
+          "type": "scale",
+          "label": "How likely are you to recommend us to a friend or colleague?",
+          "width": 12,
+          "required": true,
+          "props": {
+           "min": 0,
+           "max": 10,
+           "min_label": "Not likely",
+           "max_label": "Very likely"
+          },
+          "audience": {
+           "mode": "everyone"
+          }
+         }
+        ]
+       },
+       {
+        "id": "r2",
+        "fields": [
+         {
+          "id": "f_disappointed",
+          "key": "disappointed",
+          "type": "long_text",
+          "label": "We are sorry to hear that. What disappointed you?",
+          "width": 12,
+          "required": false,
+          "props": {
+           "rows": 4
+          }
+         }
+        ]
+       },
+       {
+        "id": "r3",
+        "fields": [
+         {
+          "id": "f_overall",
+          "key": "overall",
+          "type": "rating",
+          "label": "How satisfied are you overall?",
+          "width": 12,
+          "required": true,
+          "props": {
+           "max": 5
+          }
+         }
+        ]
+       },
+       {
+        "id": "r4",
+        "fields": [
+         {
+          "id": "f_what_did_you_mainly_use",
+          "key": "what_did_you_mainly_use",
+          "type": "radio",
+          "label": "What did you mainly use?",
+          "width": 12,
+          "required": false,
+          "options": [
+           {
+            "value": "website",
+            "label": "Website"
+           },
+           {
+            "value": "mobile_app",
+            "label": "Mobile app"
+           },
+           {
+            "value": "customer_support",
+            "label": "Customer support"
+           },
+           {
+            "value": "in_person",
+            "label": "In person"
+           },
+           {
+            "value": "other",
+            "label": "Other"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "id": "r5",
+        "fields": [
+         {
+          "id": "f_how_would_you_rate_us_on",
+          "key": "how_would_you_rate_us_on",
+          "type": "matrix",
+          "label": "How would you rate us on…",
+          "width": 12,
+          "required": false,
+          "props": {
+           "rows": [
+            "Quality",
+            "Speed",
+            "Value for money",
+            "Friendliness"
+           ]
+          },
+          "options": [
+           {
+            "value": "poor",
+            "label": "Poor"
+           },
+           {
+            "value": "fair",
+            "label": "Fair"
+           },
+           {
+            "value": "good",
+            "label": "Good"
+           },
+           {
+            "value": "excellent",
+            "label": "Excellent"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "id": "r6",
+        "fields": [
+         {
+          "id": "f_what_could_we_do_better",
+          "key": "what_could_we_do_better",
+          "type": "long_text",
+          "label": "What could we do better?",
+          "width": 12,
+          "required": false,
+          "props": {
+           "rows": 4
+          }
+         }
+        ]
+       },
+       {
+        "id": "r7",
+        "fields": [
+         {
+          "id": "f_name",
+          "key": "name",
+          "type": "short_text",
+          "label": "Name",
+          "width": 6,
+          "required": false
+         },
+         {
+          "id": "f_email",
+          "key": "email",
+          "type": "email",
+          "label": "Email",
+          "width": 6,
+          "required": false
+         }
+        ]
+       },
+       {
+        "id": "r8",
+        "fields": [
+         {
+          "id": "f_you_may_contact_me_about_my_feedback",
+          "key": "you_may_contact_me_about_my_feedback",
+          "type": "toggle",
+          "label": "You may contact me about my feedback",
+          "width": 12,
+          "required": false
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "logic": [
+     {
+      "id": "rule1",
+      "when": {
+       "all": [
+        {
+         "field": "f_recommend",
+         "op": "lte",
+         "value": 6
+        }
+       ]
+      },
+      "then": [
+       {
+        "action": "show",
+        "target": "f_disappointed"
+       }
+      ]
+     }
+    ],
+    "calculations": [],
+    "thank_you": {
+     "title": "Thank you for your feedback!",
+     "message": "Every answer is read by our team and helps us improve.",
+     "redirect_url": null
+    },
+    "theme": {
+     "layout": "card",
+     "page": {
+      "bg_type": "color",
+      "bg": "#f5f3ff",
+      "bg_to": "#e4e4e7",
+      "gradient_angle": 135,
+      "bg_image": null,
+      "overlay": 0
+     },
+     "container": {
+      "width": "md",
+      "padding": "md",
+      "radius": "xl",
+      "border": false,
+      "shadow": "md",
+      "bg": "#ffffff"
+     },
+     "typography": {
+      "font": "sans",
+      "size": "md",
+      "heading_weight": "semibold"
+     },
+     "colors": {
+      "primary": "#4f46e5",
+      "text": "#18181b",
+      "muted": "#71717a",
+      "input_bg": "#ffffff",
+      "input_border": "#ddd6fe",
+      "error": "#dc2626"
+     },
+     "inputs": {
+      "radius": "md",
+      "size": "md",
+      "style": "outline"
+     },
+     "buttons": {
+      "radius": "md",
+      "variant": "solid",
+      "full_width": false
+     },
+     "header": {
+      "show_logo": false,
+      "logo": null,
+      "cover": null,
+      "cover_height": "md",
+      "show_title": true,
+      "subtitle": "",
+      "align": "center",
+      "band": "gradient",
+      "band_bg": "#4f46e5",
+      "band_to": "#9333ea"
+     },
+     "split": {
+      "image": null,
+      "side": "start",
+      "panel": "image",
+      "bg": "#18181b",
+      "bg_to": "#3f3f46"
+     },
+     "footer": {
+      "enabled": false,
+      "text": "",
+      "links": [],
+      "show_logo": false,
+      "align": "center",
+      "style": "plain",
+      "bg": "#18181b"
+     },
+     "thank_you": {
+      "show_icon": true
+     },
+     "blocks": {
+      "section": "underline",
+      "section_color": "primary",
+      "section_caps": false,
+      "divider": "line",
+      "divider_weight": "thin",
+      "paragraph": "plain",
+      "image_radius": "md",
+      "image_shadow": false,
+      "image_border": false
+     },
+     "frame": {
+      "style": "branded",
+      "show_website": true,
+      "show_facts": true,
+      "tone": "light"
+     }
+    }
+   },
+   "issues": []
+  },
+  {
+   "schema": {
+    "schema_version": 1,
+    "settings": {
+     "progress_bar": false,
+     "save_resume": false,
+     "language": "en"
+    },
+    "pages": [
+     {
+      "id": "p1",
+      "title": "Your feedback",
+      "rows": [
+       {
+        "id": "r1",
+        "fields": [
+         {
+          "id": "f_recommend",
+          "key": "recommend",
+          "type": "hidden",
+          "label": "How likely are you to recommend us to a friend or colleague?",
+          "width": 12,
+          "required": true,
+          "props": {
+           "min": 0,
+           "max": 10,
+           "min_label": "Not likely",
+           "max_label": "Very likely"
+          }
+         }
+        ]
+       },
+       {
+        "id": "r2",
+        "fields": [
+         {
+          "id": "f_disappointed",
+          "key": "disappointed",
+          "type": "long_text",
+          "label": "We are sorry to hear that. What disappointed you?",
+          "width": 12,
+          "required": false,
+          "props": {
+           "rows": 4
+          }
+         }
+        ]
+       },
+       {
+        "id": "r3",
+        "fields": [
+         {
+          "id": "f_overall",
+          "key": "overall",
+          "type": "rating",
+          "label": "How satisfied are you overall?",
+          "width": 12,
+          "required": true,
+          "props": {
+           "max": 5
+          }
+         }
+        ]
+       },
+       {
+        "id": "r4",
+        "fields": [
+         {
+          "id": "f_what_did_you_mainly_use",
+          "key": "what_did_you_mainly_use",
+          "type": "radio",
+          "label": "What did you mainly use?",
+          "width": 12,
+          "required": false,
+          "options": [
+           {
+            "value": "website",
+            "label": "Website"
+           },
+           {
+            "value": "mobile_app",
+            "label": "Mobile app"
+           },
+           {
+            "value": "customer_support",
+            "label": "Customer support"
+           },
+           {
+            "value": "in_person",
+            "label": "In person"
+           },
+           {
+            "value": "other",
+            "label": "Other"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "id": "r5",
+        "fields": [
+         {
+          "id": "f_how_would_you_rate_us_on",
+          "key": "how_would_you_rate_us_on",
+          "type": "matrix",
+          "label": "How would you rate us on…",
+          "width": 12,
+          "required": false,
+          "props": {
+           "rows": [
+            "Quality",
+            "Speed",
+            "Value for money",
+            "Friendliness"
+           ]
+          },
+          "options": [
+           {
+            "value": "poor",
+            "label": "Poor"
+           },
+           {
+            "value": "fair",
+            "label": "Fair"
+           },
+           {
+            "value": "good",
+            "label": "Good"
+           },
+           {
+            "value": "excellent",
+            "label": "Excellent"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "id": "r6",
+        "fields": [
+         {
+          "id": "f_what_could_we_do_better",
+          "key": "what_could_we_do_better",
+          "type": "long_text",
+          "label": "What could we do better?",
+          "width": 12,
+          "required": false,
+          "props": {
+           "rows": 4
+          }
+         }
+        ]
+       },
+       {
+        "id": "r7",
+        "fields": [
+         {
+          "id": "f_name",
+          "key": "name",
+          "type": "short_text",
+          "label": "Name",
+          "width": 6,
+          "required": false
+         },
+         {
+          "id": "f_email",
+          "key": "email",
+          "type": "email",
+          "label": "Email",
+          "width": 6,
+          "required": false
+         }
+        ]
+       },
+       {
+        "id": "r8",
+        "fields": [
+         {
+          "id": "f_you_may_contact_me_about_my_feedback",
+          "key": "you_may_contact_me_about_my_feedback",
+          "type": "toggle",
+          "label": "You may contact me about my feedback",
+          "width": 12,
+          "required": false
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "logic": [
+     {
+      "id": "rule1",
+      "when": {
+       "all": [
+        {
+         "field": "f_recommend",
+         "op": "lte",
+         "value": 6
+        }
+       ]
+      },
+      "then": [
+       {
+        "action": "show",
+        "target": "f_disappointed"
+       }
+      ]
+     }
+    ],
+    "calculations": [],
+    "thank_you": {
+     "title": "Thank you for your feedback!",
+     "message": "Every answer is read by our team and helps us improve.",
+     "redirect_url": null
+    },
+    "theme": {
+     "layout": "card",
+     "page": {
+      "bg_type": "color",
+      "bg": "#f5f3ff",
+      "bg_to": "#e4e4e7",
+      "gradient_angle": 135,
+      "bg_image": null,
+      "overlay": 0
+     },
+     "container": {
+      "width": "md",
+      "padding": "md",
+      "radius": "xl",
+      "border": false,
+      "shadow": "md",
+      "bg": "#ffffff"
+     },
+     "typography": {
+      "font": "sans",
+      "size": "md",
+      "heading_weight": "semibold"
+     },
+     "colors": {
+      "primary": "#4f46e5",
+      "text": "#18181b",
+      "muted": "#71717a",
+      "input_bg": "#ffffff",
+      "input_border": "#ddd6fe",
+      "error": "#dc2626"
+     },
+     "inputs": {
+      "radius": "md",
+      "size": "md",
+      "style": "outline"
+     },
+     "buttons": {
+      "radius": "md",
+      "variant": "solid",
+      "full_width": false
+     },
+     "header": {
+      "show_logo": false,
+      "logo": null,
+      "cover": null,
+      "cover_height": "md",
+      "show_title": true,
+      "subtitle": "",
+      "align": "center",
+      "band": "gradient",
+      "band_bg": "#4f46e5",
+      "band_to": "#9333ea"
+     },
+     "split": {
+      "image": null,
+      "side": "start",
+      "panel": "image",
+      "bg": "#18181b",
+      "bg_to": "#3f3f46"
+     },
+     "footer": {
+      "enabled": false,
+      "text": "",
+      "links": [],
+      "show_logo": false,
+      "align": "center",
+      "style": "plain",
+      "bg": "#18181b"
+     },
+     "thank_you": {
+      "show_icon": true
+     },
+     "blocks": {
+      "section": "underline",
+      "section_color": "primary",
+      "section_caps": false,
+      "divider": "line",
+      "divider_weight": "thin",
+      "paragraph": "plain",
+      "image_radius": "md",
+      "image_shadow": false,
+      "image_border": false
+     },
+     "frame": {
+      "style": "branded",
+      "show_website": true,
+      "show_facts": true,
+      "tone": "light"
+     }
+    }
+   },
+   "issues": [
+    {
+     "code": "locked_required",
+     "field_id": "f_recommend"
+    }
+   ]
+  },
+  {
+   "schema": {
+    "schema_version": 1,
+    "settings": {
+     "progress_bar": false,
+     "save_resume": false,
+     "language": "en"
+    },
+    "pages": [
+     {
+      "id": "p1",
+      "title": "Your feedback",
+      "rows": [
+       {
+        "id": "r1",
+        "fields": [
+         {
+          "id": "f_recommend",
+          "key": "recommend",
+          "type": "scale",
+          "label": "How likely are you to recommend us to a friend or colleague?",
+          "width": 12,
+          "required": true,
+          "props": {
+           "min": 0,
+           "max": 10,
+           "min_label": "Not likely",
+           "max_label": "Very likely"
+          }
+         },
+         {
+          "id": "zz",
+          "key": "mystery",
+          "type": "not_a_type",
+          "label": ""
+         }
+        ]
+       },
+       {
+        "id": "r2",
+        "fields": [
+         {
+          "id": "f_disappointed",
+          "key": "disappointed",
+          "type": "long_text",
+          "label": "We are sorry to hear that. What disappointed you?",
+          "width": 12,
+          "required": false,
+          "props": {
+           "rows": 4
+          }
+         }
+        ]
+       },
+       {
+        "id": "r3",
+        "fields": [
+         {
+          "id": "f_overall",
+          "key": "overall",
+          "type": "rating",
+          "label": "How satisfied are you overall?",
+          "width": 12,
+          "required": true,
+          "props": {
+           "max": 5
+          }
+         }
+        ]
+       },
+       {
+        "id": "r4",
+        "fields": [
+         {
+          "id": "f_what_did_you_mainly_use",
+          "key": "what_did_you_mainly_use",
+          "type": "radio",
+          "label": "What did you mainly use?",
+          "width": 12,
+          "required": false,
+          "options": [
+           {
+            "value": "website",
+            "label": "Website"
+           },
+           {
+            "value": "mobile_app",
+            "label": "Mobile app"
+           },
+           {
+            "value": "customer_support",
+            "label": "Customer support"
+           },
+           {
+            "value": "in_person",
+            "label": "In person"
+           },
+           {
+            "value": "other",
+            "label": "Other"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "id": "r5",
+        "fields": [
+         {
+          "id": "f_how_would_you_rate_us_on",
+          "key": "how_would_you_rate_us_on",
+          "type": "matrix",
+          "label": "How would you rate us on…",
+          "width": 12,
+          "required": false,
+          "props": {
+           "rows": [
+            "Quality",
+            "Speed",
+            "Value for money",
+            "Friendliness"
+           ]
+          },
+          "options": [
+           {
+            "value": "poor",
+            "label": "Poor"
+           },
+           {
+            "value": "fair",
+            "label": "Fair"
+           },
+           {
+            "value": "good",
+            "label": "Good"
+           },
+           {
+            "value": "excellent",
+            "label": "Excellent"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "id": "r6",
+        "fields": [
+         {
+          "id": "f_what_could_we_do_better",
+          "key": "what_could_we_do_better",
+          "type": "long_text",
+          "label": "What could we do better?",
+          "width": 12,
+          "required": false,
+          "props": {
+           "rows": 4
+          }
+         }
+        ]
+       },
+       {
+        "id": "r7",
+        "fields": [
+         {
+          "id": "f_name",
+          "key": "name",
+          "type": "short_text",
+          "label": "Name",
+          "width": 6,
+          "required": false
+         },
+         {
+          "id": "f_email",
+          "key": "email",
+          "type": "email",
+          "label": "Email",
+          "width": 6,
+          "required": false
+         }
+        ]
+       },
+       {
+        "id": "r8",
+        "fields": [
+         {
+          "id": "f_you_may_contact_me_about_my_feedback",
+          "key": "you_may_contact_me_about_my_feedback",
+          "type": "toggle",
+          "label": "You may contact me about my feedback",
+          "width": 12,
+          "required": false
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "logic": [
+     {
+      "id": "rule1",
+      "when": {
+       "all": [
+        {
+         "field": "f_recommend",
+         "op": "lte",
+         "value": 6
+        }
+       ]
+      },
+      "then": [
+       {
+        "action": "show",
+        "target": "f_disappointed"
+       }
+      ]
+     }
+    ],
+    "calculations": [],
+    "thank_you": {
+     "title": "Thank you for your feedback!",
+     "message": "Every answer is read by our team and helps us improve.",
+     "redirect_url": null
+    },
+    "theme": {
+     "layout": "card",
+     "page": {
+      "bg_type": "color",
+      "bg": "#f5f3ff",
+      "bg_to": "#e4e4e7",
+      "gradient_angle": 135,
+      "bg_image": null,
+      "overlay": 0
+     },
+     "container": {
+      "width": "md",
+      "padding": "md",
+      "radius": "xl",
+      "border": false,
+      "shadow": "md",
+      "bg": "#ffffff"
+     },
+     "typography": {
+      "font": "sans",
+      "size": "md",
+      "heading_weight": "semibold"
+     },
+     "colors": {
+      "primary": "#4f46e5",
+      "text": "#18181b",
+      "muted": "#71717a",
+      "input_bg": "#ffffff",
+      "input_border": "#ddd6fe",
+      "error": "#dc2626"
+     },
+     "inputs": {
+      "radius": "md",
+      "size": "md",
+      "style": "outline"
+     },
+     "buttons": {
+      "radius": "md",
+      "variant": "solid",
+      "full_width": false
+     },
+     "header": {
+      "show_logo": false,
+      "logo": null,
+      "cover": null,
+      "cover_height": "md",
+      "show_title": true,
+      "subtitle": "",
+      "align": "center",
+      "band": "gradient",
+      "band_bg": "#4f46e5",
+      "band_to": "#9333ea"
+     },
+     "split": {
+      "image": null,
+      "side": "start",
+      "panel": "image",
+      "bg": "#18181b",
+      "bg_to": "#3f3f46"
+     },
+     "footer": {
+      "enabled": false,
+      "text": "",
+      "links": [],
+      "show_logo": false,
+      "align": "center",
+      "style": "plain",
+      "bg": "#18181b"
+     },
+     "thank_you": {
+      "show_icon": true
+     },
+     "blocks": {
+      "section": "underline",
+      "section_color": "primary",
+      "section_caps": false,
+      "divider": "line",
+      "divider_weight": "thin",
+      "paragraph": "plain",
+      "image_radius": "md",
+      "image_shadow": false,
+      "image_border": false
+     },
+     "frame": {
+      "style": "branded",
+      "show_website": true,
+      "show_facts": true,
+      "tone": "light"
+     }
+    }
+   },
+   "issues": []
+  }
+ ],
  "about": "Recorded from the frontend's shared/ code by scripts/dump_forms_rules.py. Do not edit."
 }

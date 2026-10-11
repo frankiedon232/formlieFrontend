@@ -8,6 +8,7 @@ from app.modules.audit.router import router as audit_router
 from app.modules.auth.router import router as auth_router
 from app.modules.dashboard.router import router as navigation_router
 from app.modules.exports.router import router as exports_router
+from app.modules.forms.builder import router as builder_router
 from app.modules.forms.router import router as forms_router
 from app.modules.onboarding.router import router as onboarding_router
 from app.modules.org.router import router as org_router
@@ -34,5 +35,6 @@ api_router.include_router(roles_router)
 api_router.include_router(invites_router)  # before people: /people/signup-link, /people/invites
 api_router.include_router(people_router)
 api_router.include_router(me_router)
+api_router.include_router(builder_router)  # before forms: /forms/{id}/publish is not a lifecycle step
 api_router.include_router(forms_router)
 api_router.include_router(settings_router)  # after any module with its own /settings/{name} route (sso, B11)

@@ -114,14 +114,14 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 - **Guards:** `requireAction`, `requireAuth`
 - **Audit:** `forms.published`, `forms.updated`
 
-- [ ] `GET /api/v1/forms/{id}/builder` (`getBuilder`)
-- [ ] `GET /api/v1/forms/{id}/preview` (`previewForm`)
-- [ ] `PUT /api/v1/forms/{id}/draft` (`saveDraft`)
-- [ ] `POST /api/v1/forms/{id}/publish` (`publishForm`)
-- [ ] `POST /api/v1/forms/{id}/discard` (`discardDraft`)
-- [ ] `GET /api/v1/forms/{id}/versions` (`listVersions`)
-- [ ] `GET /api/v1/forms/{id}/versions/{vid}` (`getVersion`)
-- [ ] `POST /api/v1/forms/{id}/versions/{vid}/restore` (`restoreVersion`)
+- [x] `GET /api/v1/forms/{id}/builder` (`getBuilder`)
+- [x] `GET /api/v1/forms/{id}/preview` (`previewForm`)
+- [x] `PUT /api/v1/forms/{id}/draft` (`saveDraft`)
+- [x] `POST /api/v1/forms/{id}/publish` (`publishForm`)
+- [x] `POST /api/v1/forms/{id}/discard` (`discardDraft`)
+- [x] `GET /api/v1/forms/{id}/versions` (`listVersions`)
+- [x] `GET /api/v1/forms/{id}/versions/{vid}` (`getVersion`)
+- [x] `POST /api/v1/forms/{id}/versions/{vid}/restore` (`restoreVersion`)
 
 ## `routes/responses.ts`
 

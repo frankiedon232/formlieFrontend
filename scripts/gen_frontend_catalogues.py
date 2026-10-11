@@ -117,6 +117,7 @@ def forms_catalogues() -> None:
               ("FOLDER_COLOR_KEYS", tuple(r["folder_color_keys"])),
               ("MAX_LARGE_OPTIONS", r["max_large_options"]),
               ("MAX_LIST_LEVELS", r["max_list_levels"]),
+              ("FIELD_TYPES", r["field_types"]),
               ("BLANK_SCHEMAS", r["blank_schemas"]),
           ])
 
