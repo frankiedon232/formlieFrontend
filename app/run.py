@@ -1,4 +1,12 @@
-"""Formalie API. `uvicorn app.run:app --host 0.0.0.0 --port 5004 --ssl-certfile … --ssl-keyfile …`"""
+r"""Formalie API.
+
+    fmly\Scripts\python.exe -m app.run
+    uvicorn app.run:app --host 0.0.0.0 --port 5004 --no-proxy-headers --ssl-certfile ... --ssl-keyfile ...
+
+`--no-proxy-headers` is required: the app reads X-Forwarded-For / X-Forwarded-Host itself, and only from
+TRUSTED_PROXIES (request_context.py). Uvicorn's own handling would replace the proxy's address with the visitor's
+before the app sees it, so the proxy would no longer be recognised and workspaces not found from their host.
+"""
 
 from __future__ import annotations
 
@@ -76,3 +84,18 @@ def create_app(
 
 
 app = create_app()
+
+
+if __name__ == "__main__":
+    import uvicorn
+
+    run_settings = get_settings()
+    uvicorn.run(
+        "app.run:app",
+        host=run_settings.server_host,
+        port=run_settings.server_port,
+        ssl_certfile=run_settings.ssl_certfile,
+        ssl_keyfile=run_settings.ssl_keyfile,
+        proxy_headers=False,  # see the module docstring
+        log_config=None,  # our JSON logging (configure_logging) handles uvicorn's loggers
+    )

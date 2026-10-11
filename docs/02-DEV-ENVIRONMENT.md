@@ -8,7 +8,7 @@
 | Frontend URL     | `https://formalie.dev:2202/`                                                                                                        |
 | Frontend run     | `pnpm dev --host 0.0.0.0 --port 2202 --https --https.cert=C:\devcerts\formalie.pem --https.key=C:\devcerts\formalie-key.pem`        |
 | Backend project  | `formlyBackend`, Python 3.11.9, venv, `pip install fastapi[all]`                                                                    |
-| Backend run      | `uvicorn app.run:app --host 0.0.0.0 --port 5004 --ssl-certfile C:\devcerts\formalie.pem --ssl-keyfile C:\devcerts\formalie-key.pem` |
+| Backend run      | `uvicorn app.run:app --host 0.0.0.0 --port 5004 --no-proxy-headers --ssl-certfile C:\devcerts\formalie.pem --ssl-keyfile C:\devcerts\formalie-key.pem` (or `fmly\Scripts\python.exe -m app.run`). **`--no-proxy-headers` is required:** the app reads `X-Forwarded-*` itself, only from `TRUSTED_PROXIES`; uvicorn's own handling would hide the real proxy, and workspaces would no longer be found from `X-Forwarded-Host` |
 | API docs         | `https://formalie.dev:5004/docs`, `https://formalie.dev:5004/redoc`                                                                 |
 | Certificate      | mkcert: `formalie.dev *.formalie.dev localhost *.localhost 127.0.0.1 ::1 <LAN IP>` (see Access matrix)                              |
 

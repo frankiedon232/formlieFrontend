@@ -22,6 +22,11 @@ class Settings(BaseSettings):
     app_release: str = "0.0.0-dev"
     api_prefix: str = "/api/v1"
     docs_enabled: bool = True
+    # `python -m app.run` (uvicorn with --no-proxy-headers); certificates from mkcert in development
+    server_host: str = "0.0.0.0"
+    server_port: int = 5004
+    ssl_certfile: str | None = r"C:\devcerts\formalie.pem"
+    ssl_keyfile: str | None = r"C:\devcerts\formalie-key.pem"
 
     # ── Hosts and tenancy (01-ARCHITECTURE, shared/utils/tenant/host.ts) ──────
     root_domain: str = "formalie.dev"
