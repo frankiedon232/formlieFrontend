@@ -1,0 +1,81 @@
+{
+  "about": "Fixed test vectors for the encryption envelope (SECURITY-PROTOCOL 1 to 3). Test keys only.",
+  "client_private_jwk": {
+    "kty": "EC",
+    "crv": "P-256",
+    "d": "Hy49TFtqeYgBAgMEBQYHCAkKCwwNDg8QERITFBUWFxg",
+    "x": "lFuvv-Sbv_5cM9Sc0IPadc6AWq8fKoLPsBDgloFjWCo",
+    "y": "QPf2kqMlBp4izA_gTA5oMi9EWeRRBtVDJe4juMZr0YQ"
+  },
+  "client_public_key": "BJRbr7/km7/+XDPUnNCD2nXOgFqvHyqCz7AQ4JaBY1gqQPf2kqMlBp4izA/gTA5oMi9EWeRRBtVDJe4juMZr0YQ=",
+  "server_private_scalar": "0x2a3b4c5d6e7f8091a2b3c4d5e6f708192a3b4c5d6e7f8091a2b3c4d5e6f70819",
+  "server_public_key": "BH2hBtym49cv0lVil+fRoC/21bbQo4h/VEQvDlf92KevHkRfkmW/Yr5N9dc9lD8Hh26QngNaG0YJfNEnRin+1Lk=",
+  "salt": "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8=",
+  "session_key_hex": "c51a3cb9f6ba260032aaa0ffcb936955bf7fcf6748f8e6311e878bcd37a4226a",
+  "cases": [
+    {
+      "name": "get with query",
+      "payload": {
+        "method": "GET",
+        "path": "/api/v1/forms",
+        "query": {
+          "page": 2,
+          "q": "café ✓"
+        },
+        "body": null
+      },
+      "envelope": {
+        "kid": "0190f0b2-1111-4222-8333-444455556666",
+        "iv": "AQEBAQEBAQEBAQEB",
+        "ts": 1790000000000,
+        "nonce": "oKCgoKCgoKCgoKCgoKCgoA==",
+        "ct": "mn+fFhdqCODsNvT1bsKva3Zy6+ZN0ZKa56EKsAUijORR0I5YkcCOq/+oWu/aO9gup9Jqc313q1ptBWVQWf13UCSg+4KpwyS/fcLeLf0oyWYJxcp+bPHzOMLpqttVfI+7nltyfQXg"
+      },
+      "header": "eyJraWQiOiIwMTkwZjBiMi0xMTExLTQyMjItODMzMy00NDQ0NTU1NTY2NjYiLCJpdiI6IkFRRUJBUUVCQVFFQkFRRUIiLCJ0cyI6MTc5MDAwMDAwMDAwMCwibm9uY2UiOiJvS0Nnb0tDZ29LQ2dvS0Nnb0tDZ29BPT0iLCJjdCI6Im1uK2ZGaGRxQ09Ec052VDFic0t2YTNaeTYrWk4wWkthNTZFS3NBVWlqT1JSMEk1WWtjQ09xLytvV3UvYU85Z3VwOUpxYzMxM3ExcHRCV1ZRV2YxM1VDU2crNEtwd3lTL2ZjTGVMZjBveVdZSnhjcCtiUEh6T01McHF0dFZmSSs3bmx0eWZRWGcifQ"
+    },
+    {
+      "name": "post with body",
+      "payload": {
+        "method": "POST",
+        "path": "/api/v1/auth/login",
+        "query": {},
+        "body": {
+          "email": "ada@example.com",
+          "password": "Correct-Horse-9"
+        }
+      },
+      "envelope": {
+        "kid": "0190f0b2-1111-4222-8333-444455556666",
+        "iv": "AgICAgICAgICAgIC",
+        "ts": 1790000000001,
+        "nonce": "oaGhoaGhoaGhoaGhoaGhoQ==",
+        "ct": "zszlUGxCAyMwnZzleHjb1WZC3HuaqhhoY11MmXCUrevFag90Ngz0bpGdkfu1uJIVxkhwyrM/PFE/ZlMJ0l8dpE1hz7+1PcDW3YP4J9CHzbyb8mW6MpavhqFY1WcYvax3D/13c9smTPjwAV40guRaUjkjdiNLgorG+eaQJBP8z4ntWis3STywpg=="
+      },
+      "header": "eyJraWQiOiIwMTkwZjBiMi0xMTExLTQyMjItODMzMy00NDQ0NTU1NTY2NjYiLCJpdiI6IkFnSUNBZ0lDQWdJQ0FnSUMiLCJ0cyI6MTc5MDAwMDAwMDAwMSwibm9uY2UiOiJvYUdob2FHaG9hR2hvYUdob2FHaG9RPT0iLCJjdCI6InpzemxVR3hDQXlNd25aemxlSGpiMVdaQzNIdWFxaGhvWTExTW1YQ1VyZXZGYWc5ME5nejBicEdka2Z1MXVKSVZ4a2h3eXJNL1BGRS9abE1KMGw4ZHBFMWh6NysxUGNEVzNZUDRKOUNIemJ5YjhtVzZNcGF2aHFGWTFXY1l2YXgzRC8xM2M5c21UUGp3QVY0MGd1UmFVamtqZGlOTGdvckcrZWFRSkJQOHo0bnRXaXMzU1R5d3BnPT0ifQ"
+    },
+    {
+      "name": "reply",
+      "payload": {
+        "success": true,
+        "data": {
+          "id": "Xb7QmV2kP0aZr9LwE4tYh1sN3cU",
+          "items": [
+            1,
+            2.5,
+            null,
+            true
+          ]
+        },
+        "meta": {}
+      },
+      "envelope": {
+        "kid": "0190f0b2-1111-4222-8333-444455556666",
+        "iv": "AwMDAwMDAwMDAwMD",
+        "ts": 1790000000002,
+        "nonce": "oqKioqKioqKioqKioqKiog==",
+        "ct": "8JAnaxe4iI4Wfem837Bnv9FOIvZXDalsEbJ3AwdsNukkV0+63Gp7tqz345HId7W+io4Oplq2C197v5jUHkXwIIILNQ5OcIBax2ElxluPiHCF32RoOlf8UUDsdoy/JwIo8jUzYQ8k9O3ZYxoSrGUEVA=="
+      },
+      "header": "eyJraWQiOiIwMTkwZjBiMi0xMTExLTQyMjItODMzMy00NDQ0NTU1NTY2NjYiLCJpdiI6IkF3TURBd01EQXdNREF3TUQiLCJ0cyI6MTc5MDAwMDAwMDAwMiwibm9uY2UiOiJvcUtpb3FLaW9xS2lvcUtpb3FLaW9nPT0iLCJjdCI6IjhKQW5heGU0aUk0V2ZlbTgzN0JudjlGT0l2WlhEYWxzRWJKM0F3ZHNOdWtrVjArNjNHcDd0cXozNDVISWQ3VytpbzRPcGxxMkMxOTd2NWpVSGtYd0lJSUxOUTVPY0lCYXgyRWx4bHVQaUhDRjMyUm9PbGY4VVVEc2RveS9Kd0lvOGpVellROGs5TzNaWXhvU3JHVUVWQT09In0"
+    }
+  ]
+}

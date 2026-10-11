@@ -111,7 +111,8 @@ class TenantMiddleware:
         self.resolver = resolver
         prefix = settings.api_prefix
         # Routes that answer on any host, workspace or not.
-        self.host_free = (f"{prefix}/health",)
+        # The handshake too: the client needs the secure channel to be told a workspace does not exist.
+        self.host_free = (f"{prefix}/health", f"{prefix}/crypto/handshake")
 
     async def __call__(self, scope: Scope, receive: Receive, send: Send) -> None:
         path = route_path(scope)

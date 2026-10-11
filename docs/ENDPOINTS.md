@@ -9,8 +9,8 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 ## `routes/system.ts`
 
 - [x] `GET /api/v1/health` (`health`)
-- [ ] `POST /api/v1/crypto/handshake` (`handshake`)
-- [ ] `GET /api/v1/auth/csrf` (`csrf`)
+- [x] `POST /api/v1/crypto/handshake` (`handshake`)
+- [x] `GET /api/v1/auth/csrf` (`csrf`)
 
 ## `routes/tenants.ts`
 

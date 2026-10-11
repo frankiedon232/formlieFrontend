@@ -1,35 +1,46 @@
-"""5. Envelope: every API request and response is encrypted (SECURITY-PROTOCOL §2, §3, CLAUDE.md rule 3).
+"""5 + 5b. Envelope and encrypted references: every API request and response is encrypted (SECURITY-PROTOCOL §2,
+§3, §10; CLAUDE.md rules 3 and 7). Port of the mock's server/mock/core/route.ts, in the same order:
 
-B0 builds the gate and the list of documented plaintext exceptions; it fails closed:
-  - no envelope, or a malformed one              → FRM-SEC-1001 (plaintext, like the mock)
-  - an envelope whose `kid` is not a live key    → FRM-SEC-1004 (plaintext, the client re-handshakes)
-B1 adds the handshake (which stores the keys), freshness (FRM-SEC-1002), the nonce store (FRM-SEC-1003),
-AES-GCM decryption with method+path binding (FRM-SEC-1005), the CSRF check and sealing every response.
+  1. no or malformed envelope                        → FRM-SEC-1001 (plain)
+  2. unknown / expired key, or a key of another host → FRM-SEC-1004 (plain: the client re-handshakes)
+  3. older or newer than 60 s                        → FRM-SEC-1002 (sealed, from here on)
+  4. nonce seen before (Redis SET NX EX 120)         → FRM-SEC-1003
+  5. decryption fails, or method / path not the ones the envelope was sealed for → FRM-SEC-1005
+  6. POST / PUT / PATCH / DELETE without a valid CSRF token for this key → FRM-SEC-1006
+then references in the path, query and body become ids, the app gets the decrypted body as plain JSON, and its
+reply is sealed with the same key after every id in it became a reference. Documented plaintext routes pass.
 """
 
 from __future__ import annotations
 
-import base64
-import binascii
 import json
 import logging
 import re
 from typing import Any
+from urllib.parse import quote, urlencode
 
 from redis.exceptions import RedisError
 
-from app.core.cache.redis import get_redis
 from app.core.config import Settings
 from app.core.context import get_context
-from app.core.middleware.asgi import ASGIApp, Receive, Scope, Send, header, route_path, send_error
+from app.core.errors.codes import ERROR_CODES
+from app.core.errors.exceptions import error_body
+from app.core.middleware.asgi import ASGIApp, Message, Receive, Scope, Send, header, route_path, send_error
+from app.core.middleware.tenant import normalise_host
+from app.core.security import envelope as env
+from app.core.security.csrf import HEADER as CSRF_HEADER
+from app.core.security.csrf import csrf_token_valid
+from app.core.security.refs import get_codec
+from app.core.security.session_keys import claim_nonce, use_session_key
 
 log = logging.getLogger("formalie.envelope")
 
-ENVELOPE_HEADER = "x-formalie-envelope"
-ENVELOPE_CONTENT_TYPE = "application/vnd.formalie.enc+json"
+ENVELOPE_HEADER = env.ENVELOPE_HEADER
+ENVELOPE_CONTENT_TYPE = env.ENVELOPE_CONTENT_TYPE
 SESSION_KEY_PREFIX = "fm:v1:sec:key:"
 MAX_ENVELOPE_BYTES = 2 * 1024 * 1024
 BODY_METHODS = {"POST", "PUT", "PATCH"}
+STATE_CHANGING = {"POST", "PUT", "PATCH", "DELETE"}
 
 
 def plaintext_patterns(prefix: str) -> list[re.Pattern[str]]:
@@ -49,38 +60,46 @@ def plaintext_patterns(prefix: str) -> list[re.Pattern[str]]:
     )]
 
 
-def _b64url_decode(value: str) -> bytes:
-    return base64.urlsafe_b64decode(value + "=" * (-len(value) % 4))
-
-
-def _b64_len(value: Any) -> int | None:
-    if not isinstance(value, str):
-        return None
+def _well_formed(data: Any) -> bool:
+    if not env.is_envelope(data) or not 8 <= len(data["kid"]) <= 64 or data["ts"] <= 0:
+        return False
     try:
-        return len(base64.b64decode(value, validate=True))
-    except (binascii.Error, ValueError):
-        return None
+        return (len(env.b64decode(data["iv"])) == 12 and len(env.b64decode(data["nonce"])) == 16
+                and len(env.b64decode(data["ct"])) >= 16)
+    except ValueError:
+        return False
 
 
 def parse_envelope(raw: bytes) -> dict[str, Any] | None:
-    """Checks the envelope's structure: {kid, iv (12 bytes), ts (ms), nonce (16 bytes), ct}."""
+    """A well-formed envelope: the five fields, iv 12 bytes, nonce 16 bytes, ct at least a GCM tag."""
     try:
         data = json.loads(raw)
     except (ValueError, UnicodeDecodeError):
         return None
-    if not isinstance(data, dict):
-        return None
-    kid, ts = data.get("kid"), data.get("ts")
-    if not isinstance(kid, str) or not 8 <= len(kid) <= 64:
-        return None
-    if not isinstance(ts, int) or isinstance(ts, bool) or ts <= 0:
-        return None
-    if _b64_len(data.get("iv")) != 12 or _b64_len(data.get("nonce")) != 16:
-        return None
-    ct_len = _b64_len(data.get("ct"))
-    if ct_len is None or ct_len < 16:  # at least the GCM tag
-        return None
-    return data
+    return data if _well_formed(data) else None
+
+
+def flatten_query(query: dict[str, Any]) -> list[tuple[str, str]]:
+    """The decrypted query back into `key=value` pairs. Lists repeat the key; nested objects become key[sub]."""
+    pairs: list[tuple[str, str]] = []
+
+    def add(key: str, value: Any) -> None:
+        if value is None:
+            return
+        if isinstance(value, dict):
+            for sub, item in value.items():
+                add(f"{key}[{sub}]", item)
+        elif isinstance(value, list):
+            for item in value:
+                add(key, item)
+        elif isinstance(value, bool):
+            pairs.append((key, "true" if value else "false"))
+        else:
+            pairs.append((key, str(value)))
+
+    for k, v in query.items():
+        add(str(k), v)
+    return pairs
 
 
 async def _read_body(receive: Receive, limit: int) -> bytes | None:
@@ -105,6 +124,21 @@ def _flag(name: str) -> None:
         ctx.flags.add(name)
 
 
+async def _send_sealed(send: Send, status: int, body: Any, key: bytes, kid: str) -> None:
+    sealed = env.to_json(env.seal(key, kid, get_codec().encode_ids(body)))
+    await send({"type": "http.response.start", "status": status, "headers": [
+        (b"content-type", ENVELOPE_CONTENT_TYPE.encode()), (b"content-length", str(len(sealed)).encode()),
+    ]})
+    await send({"type": "http.response.body", "body": sealed})
+
+
+async def _sealed_error(send: Send, code: str, key: bytes, kid: str) -> None:
+    ctx = get_context()
+    if ctx is not None:
+        ctx.error_code = code
+    await _send_sealed(send, ERROR_CODES[code].status, error_body(code, ctx.trace_id if ctx else None), key, kid)
+
+
 class EnvelopeMiddleware:
     def __init__(self, app: ASGIApp, settings: Settings) -> None:
         self.app = app
@@ -125,6 +159,7 @@ class EnvelopeMiddleware:
             await send_error(send, "FRM-GEN-1004")
             return
 
+        # 1. The envelope
         envelope: dict[str, Any] | None = None
         if method in BODY_METHODS:
             content_type = (header(scope, "content-type") or "").split(";")[0].strip().lower()
@@ -135,31 +170,114 @@ class EnvelopeMiddleware:
                 envelope = parse_envelope(raw)
         else:
             encoded = header(scope, ENVELOPE_HEADER)
-            if encoded:
-                try:
-                    envelope = parse_envelope(_b64url_decode(encoded))
-                except (binascii.Error, ValueError):
-                    envelope = None
-
+            decoded = env.decode_header(encoded) if encoded else None
+            envelope = decoded if decoded is not None and _well_formed(decoded) else None
         if envelope is None:
-            log.warning("FRM-SEC-1001 missing or malformed envelope", extra={"error_code": "FRM-SEC-1001", "method": method})
             _flag("invalid_envelope")
+            log.warning("FRM-SEC-1001 missing or malformed envelope", extra={"error_code": "FRM-SEC-1001", "method": method})
             await send_error(send, "FRM-SEC-1001")
             return
 
+        # 2. Its key, made by a handshake on this same host
+        kid = envelope["kid"]
         try:
-            key = await get_redis().get(SESSION_KEY_PREFIX + envelope["kid"])
+            session = await use_session_key(kid)
         except RedisError:
-            log.exception("FRM-GEN-5003 session key store unavailable", extra={"error_code": "FRM-GEN-5003"})
+            log.error("FRM-GEN-5003 session key store unavailable", extra={"error_code": "FRM-GEN-5003"})
             await send_error(send, "FRM-GEN-5003")
             return
-        if key is None:
-            log.info("FRM-SEC-1004 unknown or expired session key", extra={"error_code": "FRM-SEC-1004"})
+        ctx = get_context()
+        host = normalise_host(ctx.host) if ctx and ctx.host else ""
+        if session is None or (session.host and host and normalise_host(session.host) != host):
             _flag("unknown_session_key")
+            log.info("FRM-SEC-1004 unknown or expired session key", extra={"error_code": "FRM-SEC-1004"})
             await send_error(send, "FRM-SEC-1004")
             return
+        key = session.key
 
-        # B1 replaces this: freshness, nonce, decrypt, bind method+path, CSRF, hand the decrypted payload to the
-        # app and seal the response. Before B1 no key can exist (there is no handshake), so this fails closed.
-        log.error("FRM-SEC-1005 envelope decryption arrives in B1", extra={"error_code": "FRM-SEC-1005"})
-        await send_error(send, "FRM-SEC-1005")
+        # 3. Fresh  4. Not replayed
+        if not env.is_fresh(int(envelope["ts"])):
+            log.info("FRM-SEC-1002 envelope expired", extra={"error_code": "FRM-SEC-1002"})
+            await _sealed_error(send, "FRM-SEC-1002", key, kid)
+            return
+        try:
+            first_use = await claim_nonce(envelope["nonce"])
+        except RedisError:
+            await _sealed_error(send, "FRM-GEN-5003", key, kid)
+            return
+        if not first_use:
+            _flag("replay")
+            log.warning("FRM-SEC-1003 replayed envelope", extra={"error_code": "FRM-SEC-1003"})
+            await _sealed_error(send, "FRM-SEC-1003", key, kid)
+            return
+
+        # 5. Decrypts, and was sealed for this method and this address
+        try:
+            payload = env.open_envelope(key, envelope)
+        except env.EnvelopeError:
+            log.warning("FRM-SEC-1005 envelope did not decrypt", extra={"error_code": "FRM-SEC-1005"})
+            await _sealed_error(send, "FRM-SEC-1005", key, kid)
+            return
+        if (not isinstance(payload, dict) or str(payload.get("method", "")).upper() != method
+                or payload.get("path") != scope.get("path")):
+            _flag("envelope_mismatch")
+            log.warning("FRM-SEC-1005 envelope bound to another method or path", extra={"error_code": "FRM-SEC-1005"})
+            await _sealed_error(send, "FRM-SEC-1005", key, kid)
+            return
+
+        # 6. CSRF on state-changing requests
+        if method in STATE_CHANGING and not csrf_token_valid(header(scope, CSRF_HEADER), kid):
+            log.info("FRM-SEC-1006 CSRF token missing or expired", extra={"error_code": "FRM-SEC-1006"})
+            await _sealed_error(send, "FRM-SEC-1006", key, kid)
+            return
+
+        # References → ids (path, query, body); the app sees plain JSON and real ids.
+        codec = get_codec()
+        seen: set[str] = set()
+        raw_query = payload.get("query")
+        query = codec.decode_ids(raw_query if isinstance(raw_query, dict) else {}, seen)
+        body = codec.decode_ids(payload.get("body"), seen)
+        new_path = codec.decode_path(scope["path"], seen)
+        if ctx is not None:
+            ctx.kid = kid
+            ctx.ref_ids = seen
+            ctx.decrypted_payload = {"method": method, "path": payload.get("path"), "query": query, "body": body}
+
+        body_bytes = env.to_json(body) if body is not None else b""
+        scope["path"] = new_path
+        scope["raw_path"] = quote(new_path).encode()
+        scope["query_string"] = urlencode(flatten_query(query)).encode()
+        scope["headers"] = [(k, v) for k, v in scope.get("headers", [])
+                            if k not in (b"content-type", b"content-length")] + [
+            (b"content-type", b"application/json"), (b"content-length", str(len(body_bytes)).encode())]
+
+        delivered = False
+
+        async def plain_receive() -> Message:
+            nonlocal delivered
+            if not delivered:
+                delivered = True
+                return {"type": "http.request", "body": body_bytes, "more_body": False}
+            return await receive()
+
+        # The reply: collected, ids → references, sealed with the same key.
+        response: dict[str, Any] = {"status": 500, "chunks": []}
+
+        async def sealing_send(message: Message) -> None:
+            if message["type"] == "http.response.start":
+                response["status"] = message["status"]
+                return
+            if message["type"] == "http.response.body":
+                response["chunks"].append(message.get("body", b""))
+                if not message.get("more_body"):
+                    raw_reply = b"".join(response["chunks"])
+                    try:
+                        reply: Any = json.loads(raw_reply) if raw_reply else None
+                    except ValueError:
+                        log.error("FRM-GEN-5000 non-JSON reply on an enveloped route", extra={"error_code": "FRM-GEN-5000"})
+                        reply, response["status"] = error_body("FRM-GEN-5000", ctx.trace_id if ctx else None), 500
+                    await _send_sealed(send, response["status"], reply, key, kid)
+                return
+            await send(message)
+
+        await self.app(scope, plain_receive, sealing_send)

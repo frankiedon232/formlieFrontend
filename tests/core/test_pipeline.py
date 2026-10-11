@@ -12,7 +12,7 @@ from pydantic import BaseModel
 
 from app.core.config import Settings
 from app.core.errors import FrmError
-from app.core.middleware.envelope import ENVELOPE_CONTENT_TYPE, ENVELOPE_HEADER, SESSION_KEY_PREFIX
+from app.core.middleware.envelope import ENVELOPE_CONTENT_TYPE, ENVELOPE_HEADER
 from tests.conftest import build_app, client_for
 
 
@@ -255,12 +255,6 @@ async def test_unknown_session_key_asks_for_a_new_handshake(client) -> None:
     response = await client.post("/api/v1/forms", content=json.dumps(_envelope()),
                                  headers={"content-type": ENVELOPE_CONTENT_TYPE})
     assert response.json()["error"]["code"] == "FRM-SEC-1004"
-
-
-async def test_known_key_still_fails_closed_until_b1(client, redis) -> None:
-    await redis.set(SESSION_KEY_PREFIX + "0190f0b2-0000-7000-8000-000000000001", "k")
-    response = await client.get("/api/v1/forms", headers={ENVELOPE_HEADER: _header(_envelope())})
-    assert response.json()["error"]["code"] == "FRM-SEC-1005"
 
 
 @pytest.mark.parametrize("path", [

@@ -58,6 +58,15 @@ class Settings(BaseSettings):
     events_exchange: str = "formalie.events"
     outbox_relay_batch: int = 200
 
+    # ── Secure channel, references, tokens (SECURITY-PROTOCOL) ──────────────
+    # Make them with scripts/gen_keys.py. Never logged, never sent anywhere.
+    id_ref_enc_key: SecretStr | None = None  # 32 bytes, base64: encrypted references (§10)
+    id_ref_mac_key: SecretStr | None = None  # 32 bytes, base64: their 4-byte tag
+    # Fernet keys, newest first (MultiFernet: old ones still decrypt during a rotation): CSRF and auth tokens
+    fernet_keys: Annotated[list[SecretStr], NoDecode] = Field(default_factory=list)
+    session_key_ttl_seconds: int = 1800  # handshake keys, sliding (§1)
+    csrf_ttl_seconds: int = 7200  # §6
+
     # ── Rate limiting (Redis sliding window) ─────────────────────────────────
     rate_limit_enabled: bool = True
     rate_limit_ip_per_minute: int = 600
@@ -106,6 +115,13 @@ class Settings(BaseSettings):
         # Used inside SQL (migrations, search_path), so only a plain lower-case identifier is accepted.
         if not re.fullmatch(r"[a-z_][a-z0-9_]{0,62}", value) or value in ("public", "platform"):
             raise ValueError("DB_SCHEMA must be a lower-case identifier other than public and platform")
+        return value
+
+    @field_validator("fernet_keys", mode="before")
+    @classmethod
+    def _split_fernet_keys(cls, value: object) -> object:
+        if isinstance(value, str):
+            return [item.strip() for item in value.split(",") if item.strip()]
         return value
 
     @field_validator("db_replica_urls", mode="before")

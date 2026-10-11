@@ -11,6 +11,8 @@ WebCrypto-compatible, works in all modern browsers.
 3. Server generates its own ephemeral P-256 key pair, derives the shared secret, runs **HKDF-SHA256** (salt = random 32 bytes, info = `formalie-envelope-v1`) → 256-bit key. Stores `{key_id → key, tenant_host, expires_at}` in Redis (TTL 30 min, sliding).
 4. Response: `{ key_id, server_public_key, salt, expires_at }`. Client derives the same key and keeps it **in memory only** (never localStorage).
 5. When the key expires or the server returns `FRM-SEC-1004`, the client re-handshakes transparently and retries once.
+6. A key only works on the host it was made for (backend, 2026-10-11): an envelope sealed with it on another host answers `FRM-SEC-1004`, so the client simply makes a new one there.
+7. Test vectors: `tests/vectors/envelope.json` in the backend; `scripts/check_envelope_vectors.py` runs the frontend's own `envelope.ts` against them in both directions.
 
 Anonymous public-form respondents perform the same handshake (scoped to the form's tenant host).
 
@@ -59,7 +61,7 @@ Same structure (`kid, iv, ts, nonce, ct`), encrypted with the session key. Clien
 
 ## 6. CSRF
 
-- `GET /api/v1/auth/csrf` returns a CSRF token = Fernet token `{ sid, nonce, iat }`, **TTL 2 h**.
+- `GET /api/v1/auth/csrf` returns `{ csrf_token, expires_at }`: a Fernet token `{ kid, sid, nonce }` (its time is inside the Fernet token), **TTL 2 h**, stateless. Bound to the handshake key (`kid`) always and to the session (`sid`) once signed in.
 - Sent in header `X-CSRF-Token` on every state-changing request; must match the session; expired → `FRM-SEC-1006`.
 - Pre-login forms (login, signup, OTP, forgot password, public form submit) use a pre-session CSRF token bound to the handshake `kid`.
 - Client order: obtain the CSRF token **before** sealing a state-changing envelope (fetching it may re-handshake; the envelope must use the final key).
@@ -94,7 +96,8 @@ Applications call form endpoints at `https://api.formalie.com/{apiKey}/{endpoint
 
 - The API never sends a database id to a browser. Every id in every response (`id`, `*_id`, ids inside lists, file addresses such as `/files/{ref}`) is an **encrypted reference**: one AES-256 block of the id under a server-only key plus a 4-byte HMAC-SHA256 tag, base64url → 27 characters (`server/mock/core/ids.ts` is the reference implementation).
 - Stable: the same record always has the same reference, so bookmarks and shared portal links keep working. Opaque: a reference reveals nothing about the id, and without the key nobody can make one for another record.
-- Requests: references in route params, query and body are decrypted at the API edge; a reference with a wrong tag is rejected before any lookup; a raw id typed into an address is **never** accepted.
+- Requests: references in route params, query and body are decrypted at the API edge; a reference with a wrong tag is rejected before any lookup; a raw id typed into an address is **never** accepted (`404 FRM-GEN-1004`), nor in a query or body (`422 FRM-GEN-1002`: the backend only takes ids that arrived as references).
+- `error.trace_id` is not an id and stays readable, so support can find the request in the logs (the mock encodes it too; the frontend doesn't depend on either).
 - Public form links use a separate random `public_key` (decision 80), not an encrypted id.
 - Keys live only on the API (managed secret, versioned for rotation). Access checks still run on every request, references stop guessing and leaking ids; permissions decide access.
 - Not secret on purpose: catalogue names (`risk_assessment`, `sys_preset_soft`) and plain list options in the address bar (`?status=draft`, `?view=table`), they carry no record ids or personal data.

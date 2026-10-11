@@ -37,6 +37,9 @@ class RequestContext:
     flags: set[str] = field(default_factory=set)
     # Set by the envelope layer (B1) once decrypted: {method, path, query, body}, logged instead of the ciphertext.
     decrypted_payload: dict[str, object] | None = None
+    kid: str | None = None  # the handshake key that opened this request's envelope
+    # Ids that arrived as encrypted references (route, query, body); `RefId` accepts only these (no raw ids).
+    ref_ids: set[str] = field(default_factory=set)
     extra: dict[str, object] = field(default_factory=dict)
 
 

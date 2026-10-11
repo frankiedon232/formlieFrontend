@@ -8,13 +8,13 @@ Statuses: **Done** (built and verified), **Built** (code and tests written, wait
 | Phase | Title | Status | Endpoints ticked |
 | --- | --- | --- | --- |
 | B0 | Foundation | **Done**, verified live; waiting for the owner's review | 1 / 1 (`GET /health`) |
-| B1 | Secure channel, workspaces and sign-in | Next | 0 / 18 (handshake, CSRF, tenants, auth) |
+| B1 | Secure channel, workspaces and sign-in | **In progress**: secure channel done | 2 / 18 (handshake, CSRF) |
 | B2 | Audit trail and logs | Later | 0 |
 | B3 | Onboarding, settings base and default data | Later | 0 |
 | B4 | People, roles and access | Later | 0 |
 | B5 to B17 | See BACKEND-ROADMAP.md | Later | 0 |
 
-Portal endpoints: 1 of 399 ticked in `ENDPOINTS.md`.
+Portal endpoints: 3 of 399 ticked in `ENDPOINTS.md`.
 
 ## B0, Foundation (2026-10-10)
 
@@ -45,6 +45,17 @@ Portal endpoints: 1 of 399 ticked in `ENDPOINTS.md`.
 4. ~~MaxMind GeoLite2 City + ASN in `data/geoip/`.~~ Done 2026-10-11 (weekly refresh by Celery Beat once workers run).
 5. Owner review of the phase and of migrations 0001 and 0002.
 
+## B1, Secure channel, workspaces and sign-in (from 2026-10-11)
+
+| Item | Status | Where | Notes |
+| --- | --- | --- | --- |
+| Handshake, envelope (all six checks in the mock's order), sealed replies | Done | `app/core/security/envelope.py`, `app/core/middleware/envelope.py`, `app/modules/platform/router.py` | Verified with the frontend's own `envelope.ts` (vectors, both ways) and live through Redis |
+| Encrypted references in and out, `RefId` (no raw ids) | Done | `app/core/security/refs.py`, `app/core/refs_types.py` | Port of the mock's `core/ids.ts` |
+| CSRF tokens (stateless Fernet, bound to the key and the session) | Done | `app/core/security/csrf.py` | `GET /auth/csrf` |
+| Tenant public profile, subdomain availability, find workspace | Next | | |
+| Sign-up, login, OTP, refresh, logout, reset, sessions, two-step | Next | | |
+| OAuth providers, lockouts, development seed | Next | | |
+
 ## Open questions
 
 - **Privacy erasure without hard deletes:** "delete a person's data" (Settings → Privacy, F14) and response retention must still remove personal data. Proposal: anonymise in place (overwrite answers and personal fields, keep the row, its relations and the audit entry). To decide before B11.
@@ -54,6 +65,7 @@ Portal endpoints: 1 of 399 ticked in `ENDPOINTS.md`.
 
 ## Log
 
+- **2026-10-11:** B1 secure channel: handshake, envelope, references, CSRF; frontend `envelope.ts` agrees with the backend on fixed vectors both ways. 124 tests.
 - **2026-10-11:** WSL services installed (MinIO skipped: its download server answers 410; storage chosen in B3). Live checks passed. Found and fixed: events never reached RabbitMQ (`content_type` made kombu skip JSON encoding; the outbox kept the event and delivered it once fixed); rate-limited requests now record their workspace host. **B0 complete, stopped for the owner's review.**
 - **2026-10-11:** MaxMind GeoLite2 City + ASN downloaded into `data/geoip/` (git-ignored, per machine); request locations verified live. Found: uvicorn's own proxy-header handling hid the real proxy, so `X-Forwarded-Host` (workspace) and the client IP were wrong behind Nginx or the dev proxy; the server must run with `--no-proxy-headers` (now in `python -m app.run` and 02-DEV-ENVIRONMENT).
 - **2026-10-11:** Database verified: roles, `formalie` + `formalie_test`, migrations 0001 and 0002, 103 tests. Found and fixed against the real DB: the outbox and request-log inserts needed SELECT (now insert-only); the cache's fallback crashed when Redis was down (reserved log field); added a Redis circuit breaker so a Redis outage costs one timeout, not seconds per request.

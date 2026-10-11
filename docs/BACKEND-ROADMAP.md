@@ -25,8 +25,8 @@ Then stop for the owner's review. Day-to-day status lives in `PROGRESS.md`.
 
 ## B1, Secure channel, workspaces and sign-in (F2, F3)
 
-- [ ] Handshake (ECDH P-256 + HKDF + AES-GCM), nonce store, test vectors shared with the frontend (`shared/utils/crypto/*`).
-- [ ] Encrypted references (SECURITY-PROTOCOL §10) on every id in and out.
+- [x] Handshake (ECDH P-256 + HKDF + AES-GCM), nonce store, test vectors shared with the frontend (`shared/utils/crypto/*`): `tests/vectors/envelope.json`, checked against the frontend's own `envelope.ts` by `scripts/check_envelope_vectors.py`.
+- [x] Encrypted references (SECURITY-PROTOCOL §10) on every id in and out (`RefId` refuses raw ids in path, query and body).
 - [ ] Tenant public profile, subdomain availability, find workspace.
 - [ ] Sign-up (tenant + organisation + admin + subdomain), login, OTP (Mailpit), resend, forgot / reset, logout, refresh rotation with reuse detection, CSRF, sessions, TOTP and recovery codes.
 - [ ] OAuth providers (Google, Microsoft, Apple, Facebook) and per-workspace provider settings; rate limits and lockouts.

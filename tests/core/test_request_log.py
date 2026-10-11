@@ -55,7 +55,7 @@ async def test_every_request_is_recorded_in_full(logged) -> None:  # noqa: ANN00
 
 async def test_json_bodies_are_kept_with_secrets_masked(logged) -> None:  # noqa: ANN001
     client, records = logged
-    await client.post("/api/v1/crypto/handshake", json={  # plaintext route: reaches routing (404 until B1)
+    await client.post("/api/v1/billing/webhooks/payoneer", json={  # plaintext route without a handler yet: 404
         "client_public_key": "BAAA", "client_ts": 1, "password": "hunter2", "profile": {"api_key": "k", "name": "Ada"},
     })
     r = records[0]

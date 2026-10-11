@@ -50,6 +50,9 @@ async def _frm_error(_: Request, exc: FrmError) -> JSONResponse:
 
 
 async def _validation_error(_: Request, exc: RequestValidationError) -> JSONResponse:
+    if any(tuple(e.get("loc", ()))[:1] == ("path",) for e in exc.errors()):
+        # A bad id in the address (a raw id or an altered reference) is simply an unknown address, as in the mock.
+        return error_response("FRM-GEN-1004")
     details = [{"field": _field_path(tuple(e.get("loc", ()))), "message": str(e.get("msg", ""))} for e in exc.errors()]
     log.info("FRM-GEN-1002 validation failed", extra={"error_code": "FRM-GEN-1002", "details": details})
     return error_response("FRM-GEN-1002", details)
