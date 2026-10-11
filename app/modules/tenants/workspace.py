@@ -1,8 +1,10 @@
 """Making a workspace, in one transaction (BACKEND-SPEC §7, DATABASE-DESIGN → Seeded default data):
 the directory row (platform.create_tenant), the primary organisation, the built-in roles, the default settings
-sections and the founding person as Owner. Used by sign-up and by the development seed.
+sections, onboarding and the founding person as Owner. Used by sign-up and by the development seed.
 
-B3 adds the rest of Formalie's default data (system lists, folders, email templates, onboarding, API key …).
+The rest of Formalie's default data (FRONTEND-REFERENCE → Default data) is seeded by each module as it is built:
+the module registers a seeder with `register_seeder`, and every new workspace runs them all in the same
+transaction (system lists and templates: B6, default folders: B5, email templates: B11).
 """
 
 from __future__ import annotations
@@ -10,6 +12,8 @@ from __future__ import annotations
 import uuid
 from dataclasses import dataclass
 from datetime import UTC, datetime
+
+from collections.abc import Awaitable, Callable
 
 from sqlalchemy import text
 from sqlalchemy.exc import IntegrityError
@@ -78,7 +82,10 @@ async def create_workspace(
     session.add_all(seed_rows(tenant_id, organisation_id, sections))
     await session.flush()
     if founder is None:  # Formalie's own workspace: nobody signs in to it
-        return NewWorkspace(tenant_id, organisation_id, None, subdomain, name)
+        made = NewWorkspace(tenant_id, organisation_id, None, subdomain, name)
+        for seeder in _SEEDERS:
+            await seeder(session, made)
+        return made
     owner_role = next(r for r in roles if r.built_in == "owner")
     now = datetime.now(UTC)
     session.add(User(id=owner_id, tenant_id=tenant_id, organisation_id=organisation_id, email=founder.email.lower(),
@@ -86,4 +93,17 @@ async def create_workspace(
                      password_hash=founder.password_hash, password_changed_at=now if founder.password_hash else None,
                      joined_at=now, created_by=owner_id))
     await session.flush()
-    return NewWorkspace(tenant_id, organisation_id, owner_id, subdomain, name)
+    made = NewWorkspace(tenant_id, organisation_id, owner_id, subdomain, name)
+    for seeder in _SEEDERS:
+        await seeder(session, made)
+    return made
+
+
+# A module's default data for every new workspace: async seeder(session, workspace), in the workspace's RLS context.
+Seeder = Callable[[AsyncSession, NewWorkspace], Awaitable[None]]
+_SEEDERS: list[Seeder] = []
+
+
+def register_seeder(seeder: Seeder) -> Seeder:
+    _SEEDERS.append(seeder)
+    return seeder

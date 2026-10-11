@@ -208,3 +208,21 @@ async def test_sessions_and_activity(app, superuser) -> None:  # noqa: ANN001
         status, _ = await owner.request("GET", "/me")
         assert status == 200  # never the caller's own
         assert "auth.session.revoked" in audit_actions(superuser, email)
+
+
+async def test_new_workspaces_run_every_default_data_seeder(app, monkeypatch) -> None:  # noqa: ANN001
+    """Modules add their default data (lists, folders, templates …) through register_seeder (B5, B6, B11)."""
+    from sqlalchemy import text
+
+    from app.modules.tenants import workspace
+
+    seen: list[tuple[str, str]] = []
+
+    async def seeder(session, made) -> None:  # noqa: ANN001
+        # Runs in the new workspace's transaction and RLS context: it sees its settings, nobody else's
+        sections = (await session.execute(text("SELECT count(*) FROM workspace_settings"))).scalar_one()
+        seen.append((made.subdomain, str(sections)))
+
+    monkeypatch.setattr(workspace, "_SEEDERS", [seeder])
+    sub, _ = await new_workspace(app)
+    assert seen == [(sub, "11")]  # ten settings sections and onboarding

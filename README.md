@@ -108,12 +108,13 @@ All from the project folder:
 | Refresh the location databases (MaxMind; Beat also does it weekly) | `fmly\Scripts\python.exe scripts\geoip_update.py` |
 | Load request logs that went to the fallback files | `fmly\Scripts\python.exe scripts\replay_request_logs.py` |
 | Check the encryption against the frontend's own code | `fmly\Scripts\python.exe scripts\check_envelope_vectors.py` |
+| Record the frontend's rules again after its `shared/` changed, then rebuild the catalogues | `fmly\Scripts\python.exe scripts\dump_frontend_rules.py`, `fmly\Scripts\python.exe scripts\dump_settings_rules.py`, then `fmly\Scripts\python.exe scripts\gen_frontend_catalogues.py` |
 | Rebuild error codes after the frontend added some | `fmly\Scripts\python.exe scripts\gen_error_codes.py` |
 | Install packages (new machine) | `fmly\Scripts\python.exe -m pip install -r requirements-dev.txt` |
 
 ## Test workspaces and accounts (development)
 
-`scripts/seed_dev.py` creates the same ones as the frontend's mock:
+`scripts/seed_dev.py` creates the same ones as the frontend's mock, with the mock's sample departments and job titles in Remedy Legal and Samath Tax:
 - **Workspaces:** `remedylegal` (Business plan), `samathtax` (Starter), `oldco` (suspended) and `formalie-team` (Formalie's own).
 - **Accounts:** `admin@remedylegal.test` (owner), `admin@samathtax.test` (owner) and `james.carter@carterpartners.test` (a member of both, for "find my workspace").
 - **Password:** the mock's test password, `MOCK_PASSWORD` in the frontend's `server/mock/data/tenants.ts`.
@@ -134,7 +135,7 @@ All from the project folder:
 - **Redis** (Ubuntu, 6379): cache, rate limits and secure-channel keys. If it goes down, the API keeps working: it falls back and logs the outage once.
 - **RabbitMQ** (Ubuntu, 5672): Celery jobs and the `formalie.events` exchange, fed by the event outbox.
 - **Celery** (Windows, `--pool=solo`): worker queues `scheduled` (outbox relay, partitions, GeoIP refresh, error log loading), `logs` (request log), `notifications` (emails) and `exports` (export files), plus Beat for the timers.
-- **Stored files** (exports for now): `data/storage/tenants/{workspace}/orgs/{organisation}/{module}/{id}` (not in git). Object storage replaces the folder in B3.
+- **Stored files** (uploads such as logos, and exports): `data/storage/tenants/{workspace}/orgs/{organisation}/{module}/{id}` (not in git). Object storage replaces the folder before going live (to choose: see PROGRESS, open questions).
 - **Request log** (`formaly.request_logs`): every request in full (headers, body, response, real IP, location, device), with secrets masked.
 - **Mailpit** (Ubuntu, 8025): catches every email in development, such as sign-in codes, so nothing is really sent.
 - **MaxMind GeoLite2** (`data/geoip/`, not in git): locations for the request log.

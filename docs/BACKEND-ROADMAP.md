@@ -39,9 +39,9 @@ Then stop for the owner's review. Day-to-day status lives in `PROGRESS.md`.
 
 ## B3, Onboarding, settings base and default data (F5, F14 base)
 
-- [ ] Onboarding steps and status; company, branding (logo, dark logo, tab icon, colour, welcome), localisation.
-- [ ] Platform reference data (countries, languages, currencies, timezones, regions) and **Formalie default data** seeded for each new workspace: system lists, default folders, roles, email templates, system templates (FRONTEND-REFERENCE → Default data).
-- [ ] Uploads (pre-signed, scanned), organisations (`routes/org.ts`), navigation counts.
+- [x] Onboarding steps and status; company, branding (logo, dark logo, tab icon, colour, welcome), localisation.
+- [x] Platform reference data (countries, languages, currencies, timezones, regions) and **Formalie default data** seeded for each new workspace: system lists, default folders, roles, email templates, system templates (FRONTEND-REFERENCE → Default data). Reference data: generated from the frontend (countries and currencies, the 20 languages, IANA time zones through tzdata); the platform admin's editable copies are global tables (B16). Default data: roles, settings and onboarding now; every later module adds its own through `register_seeder` (default folders B5, system lists and templates B6, email templates B11).
+- [x] Uploads (pre-signed, scanned), organisations (`routes/org.ts`), navigation counts. Scanning: the bytes must be the declared image (SVG a plain drawing); ClamAV joins `scan_status` when installed. Navigation counts: each area fills its part in its phase.
 
 ## B4, People, roles and access (F16, F22 brought forward)
 

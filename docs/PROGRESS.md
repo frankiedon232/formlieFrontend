@@ -9,12 +9,12 @@ Statuses: **Done** (built and verified), **Built** (code and tests written, wait
 | --- | --- | --- | --- |
 | B0 | Foundation | **Done**, verified live; waiting for the owner's review | 1 / 1 (`GET /health`) |
 | B1 | Secure channel, workspaces and sign-in | **Done** (owner: "go ahead", 2026-10-11); social sign-in checked live up to the providers' pages; the owner's click-through and the frontend switch-over still to do | 20 / 20 |
-| B2 | Audit trail and logs | **Built**, verified live; waiting for the owner's review | 6 / 6 |
-| B3 | Onboarding, settings base and default data | Later | 0 |
+| B2 | Audit trail and logs | **Done** (owner: "continue to next", 2026-10-11) | 6 / 6 |
+| B3 | Onboarding, settings base and default data | **Built**; waiting for the owner's review | 37 / 39 (form defaults theme: B5; navigation counts complete with the later areas) |
 | B4 | People, roles and access | Later | 0 |
 | B5 to B17 | See BACKEND-ROADMAP.md | Later | 0 |
 
-Portal endpoints: 27 of 401 ticked in `ENDPOINTS.md`.
+Portal endpoints: 64 of 401 ticked in `ENDPOINTS.md`.
 
 ## B0, Foundation (2026-10-10)
 
@@ -66,18 +66,34 @@ Portal endpoints: 27 of 401 ticked in `ENDPOINTS.md`.
 | --- | --- | --- | --- |
 | Audit list, filters, search, sort, facets, one entry | Done | `app/modules/audit/router.py`, `queries.py` | The mock's AuditEvent shape; `audit.view`; other workspaces see nothing (RLS + explicit filter) |
 | Export: job, file (CSV, Excel), one-time link | Done | `app/modules/exports/`, `app/modules/audit/export.py`, migration 0006 | `exports` Celery queue; the mock's columns, cells and formula guard; `audit.exported`; live through the real worker |
-| File storage under workspace paths | Done (folder) | `app/core/storage.py` | `data/storage/` in development; object storage in B3 |
+| File storage under workspace paths | Done (folder) | `app/core/storage.py` | `data/storage/` in development; object storage before going live (open question) |
 | Error logs in the database, critical alerts | Done | `app/modules/logs/errors.py`, migration 0007 | Beat loads the warning / error / critical files every 30 s, once (ids from file, position and content); `ALERT_EMAILS`; live: 48 lines loaded from today's files |
 | Security events | Done | `error_logs.security_event`, `audit_logs` (`security.alert` events, blocked sign-ins) | e.g. `token_tenant_mismatch` |
+
+## B3, Onboarding, settings base and default data (2026-10-11)
+
+| Item | Status | Where | Notes |
+| --- | --- | --- | --- |
+| zod-compatible validator for the frontend's shared schemas | Done | `app/core/zod.py`, `scripts/dump_settings_rules.py`, `tests/parity/test_settings_rules.py` | 305 recorded answers match (accepted or not, cleaned value, every problem's field and message) |
+| Settings: all ten sections, who changed each last, lock-out guards, plan check, sessions, sign-out, activity | Done | `app/modules/settings/` | Audit `settings.updated` field by field, `auth.session.revoked` |
+| Uploads and files (ticket, plain PUT, complete, `/files/{ref}` on any host) | Done | `app/modules/uploads/`, migration 0008 | Real-image checks; ClamAV not installed (`scan_status` ready) |
+| Onboarding | Done | `app/modules/onboarding/` | New workspaces start at step one; seeded ones are set up. The team step records invitations like the mock; sending them is B4 |
+| Organisation data (departments, job titles) | Done | `app/modules/org/`, migration 0009 | Form usage and merging fields fill in with forms (B5); dev seed has the mock's samples |
+| Navigation counts | Built (part) | `app/modules/dashboard/router.py` | People and organisation data now; each later area adds its counts |
+| Default data hook, reference data | Done | `register_seeder` in `app/modules/tenants/workspace.py`; generated catalogues | Folders, lists, templates, email templates seed themselves in their phases |
 
 ## Open questions
 
 - **Privacy erasure without hard deletes:** "delete a person's data" (Settings → Privacy, F14) and response retention must still remove personal data. Proposal: anonymise in place (overwrite answers and personal fields, keep the row, its relations and the audit entry). To decide before B11.
 - **Shared docs:** these were changed here and need the same change in the frontend's copies: API-CONTRACT, ERROR-CODES, SECURITY-PROTOCOL, 02-DEV-ENVIRONMENT, 03-DECISIONS-AND-NOTES.
 - **Request bodies for the platform admin:** `platform_reader` reads every request-log column except the bodies (answers may be in them, PLATFORM-ADMIN-INTEGRATION §1). Say if the platform should read bodies too.
+- **File storage:** files are kept in a folder (`data/storage`) behind `app/core/storage.py`. Before going live they need object storage (S3 compatible: for example AWS S3, Cloudflare R2, or MinIO on our own servers). MinIO could not be installed in WSL (its download server answered 410). Which one?
+- **Onboarding website (frontend):** the onboarding step accepts any address zod's `z.url()` takes, including `javascript:` and `mailto:`. The backend accepts web addresses only (http, https) and answers `Invalid URL` otherwise; the frontend's check could match (Settings → Company already uses http / https only).
 - **CLAUDE.md layout** still names `api_keys/` and `option_sets/`; the product now has API tokens (`/api-tokens`) and option lists (`/option-lists`).
 
 ## Log
+
+- **2026-10-11:** B3 built: settings (ten sections, sessions, activity), uploads and files, onboarding, organisation data, navigation counts (people part), the default-data hook; zod-compatible validator with 305 recorded answers; migrations 0008 and 0009. 886 tests. **Stopped for the owner's review.**
 
 - **2026-10-11:** Owner: people who came in with a social account keep using it with no password, whatever the plan; export jobs can be followed by whoever started them. Both in 03-DECISIONS. 570 tests.
 

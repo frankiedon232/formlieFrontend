@@ -1,7 +1,7 @@
 """Stored files, always under a workspace path (CLAUDE.md rule 13): tenants/{tenant_id}/orgs/{organisation_id}/{module}/{uuid}.
 
-Development keeps them in a folder (STORAGE_DIR, git-ignored). Object storage replaces this in B3 behind the same
-three calls, so callers only ever handle keys, never paths.
+Development keeps them in a folder (STORAGE_DIR, git-ignored). Object storage replaces this before going live,
+behind the same three calls, so callers only ever handle keys, never paths.
 """
 
 from __future__ import annotations

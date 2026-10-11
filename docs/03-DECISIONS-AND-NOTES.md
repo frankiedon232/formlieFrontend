@@ -386,3 +386,9 @@ The portal shows the mark as the icon `i-formalie-mark`, a custom Nuxt Icon coll
 **Shared zod schemas are ported with a zod-compatible validator (backend, 2026-10-11).**
 
 - `app/core/zod.py` follows zod's rules (unknown keys dropped, every problem reported, its built-in messages, checks that keep going after a failed length but stop after a wrong type), and each port of a shared schema is held to zod's own answers recorded from the frontend (`scripts/dump_settings_rules.py`, 189 cases for the settings). So a refused save answers with the same fields and messages as the mock. Simple route bodies still use Pydantic.
+
+**Onboarding in the backend (2026-10-11).**
+
+- The onboarding website must be a web address (http or https). zod's `z.url()` in the mock also takes `javascript:` and `mailto:`, which a public page must never link to, so the backend answers `Invalid URL` for those.
+- The team step records the invitations (`users.invited`), as the mock does; sending them comes with People (B4).
+- Workspaces made by sign-up start onboarding at the first step; the seeded ones count as set up.
