@@ -426,27 +426,27 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 - **Guards:** `requireAdmin`
 - **Audit:** `auth.login.succeeded`
 
-- [ ] `GET /api/v1/people` (`listPeople`)
-- [ ] `GET /api/v1/people/insights` (`peopleInsights`)
-- [ ] `GET /api/v1/people/{id}` (`getPerson`)
+- [x] `GET /api/v1/people` (`listPeople`)
+- [x] `GET /api/v1/people/insights` (`peopleInsights`)
+- [x] `GET /api/v1/people/{id}` (`getPerson`)
 
 ## `routes/invites.ts`
 
 - **Guards:** `requireAdmin`
 - **Audit:** `users.approved`, `users.invite_link`, `users.invite_resent`, `users.invite_revoked`, `users.invited`, `users.joined`, `users.profile_created`, `users.rejected`, `users.requested`, `users.signup_link_changed`
 
-- [ ] `GET /api/v1/people/signup-link` (`getSignupLink`)
-- [ ] `POST /api/v1/people` (`createProfile`)
-- [ ] `PUT /api/v1/people/signup-link` (`updateSignupLink`)
-- [ ] `POST /api/v1/people/signup-link/new` (`renewSignupLink`)
-- [ ] `POST /api/v1/people/{id}/approve` (`approvePerson`)
-- [ ] `POST /api/v1/people/{id}/reject` (`rejectPerson`)
-- [ ] `POST /api/v1/people/invites` (`invitePeople`)
-- [ ] `POST /api/v1/people/{id}/invite/resend` (`resendInvite`)
-- [ ] `POST /api/v1/people/{id}/invite/link` (`inviteLink`)
-- [ ] `DELETE /api/v1/people/{id}/invite` (`revokeInvite`)
-- [ ] `GET /api/v1/public/invites/{token}` (`previewInvite`)
-- [ ] `POST /api/v1/public/invites/{token}/accept` (`acceptInvite`)
+- [x] `GET /api/v1/people/signup-link` (`getSignupLink`)
+- [x] `POST /api/v1/people` (`createProfile`)
+- [x] `PUT /api/v1/people/signup-link` (`updateSignupLink`)
+- [x] `POST /api/v1/people/signup-link/new` (`renewSignupLink`)
+- [x] `POST /api/v1/people/{id}/approve` (`approvePerson`)
+- [x] `POST /api/v1/people/{id}/reject` (`rejectPerson`)
+- [x] `POST /api/v1/people/invites` (`invitePeople`)
+- [x] `POST /api/v1/people/{id}/invite/resend` (`resendInvite`)
+- [x] `POST /api/v1/people/{id}/invite/link` (`inviteLink`)
+- [x] `DELETE /api/v1/people/{id}/invite` (`revokeInvite`)
+- [x] `GET /api/v1/public/invites/{token}` (`previewInvite`)
+- [x] `POST /api/v1/public/invites/{token}/accept` (`acceptInvite`)
 
 ## `routes/me.ts`
 
@@ -487,13 +487,13 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 - **Guards:** `requireAdmin`
 - **Audit:** `users.disabled`, `users.enabled`, `users.password_requested`, `users.role_changed`, `users.signed_out`, `users.two_step_reset`, `users.updated`
 
-- [ ] `POST /api/v1/people/bulk` (`bulkPeople`)
-- [ ] `PATCH /api/v1/people/{id}` (`updatePerson`)
-- [ ] `POST /api/v1/people/{id}/disable` (`disablePerson`)
-- [ ] `POST /api/v1/people/{id}/enable` (`enablePerson`)
-- [ ] `POST /api/v1/people/{id}/sign-out` (`signOutPerson`)
-- [ ] `POST /api/v1/people/{id}/password` (`requestPassword`)
-- [ ] `POST /api/v1/people/{id}/two-step/reset` (`resetTwoStep`)
+- [x] `POST /api/v1/people/bulk` (`bulkPeople`)
+- [x] `PATCH /api/v1/people/{id}` (`updatePerson`)
+- [x] `POST /api/v1/people/{id}/disable` (`disablePerson`)
+- [x] `POST /api/v1/people/{id}/enable` (`enablePerson`)
+- [x] `POST /api/v1/people/{id}/sign-out` (`signOutPerson`)
+- [x] `POST /api/v1/people/{id}/password` (`requestPassword`)
+- [x] `POST /api/v1/people/{id}/two-step/reset` (`resetTwoStep`)
 
 ## `routes/optionLists.ts`
 

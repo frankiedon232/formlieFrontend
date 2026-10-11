@@ -290,8 +290,9 @@ async def active_sessions(db: AsyncSession, tenant_id: uuid.UUID, current: uuid.
 
 
 async def revoke_sessions(db: AsyncSession, tenant_id: uuid.UUID, *, ids: list[uuid.UUID] | None,
-                          keep: uuid.UUID | None, reason: str = "signed_out_by_admin") -> list[tuple[UserSession, User]]:
-    """revokeSessions(): the chosen open sessions (or all) of the workspace, never `keep` (the caller's own)."""
+                          keep: uuid.UUID | None, reason: str = "signed_out_by_admin",
+                          user_id: uuid.UUID | None = None) -> list[tuple[UserSession, User]]:
+    """revokeSessions(): the chosen open sessions (or all, or all of one person) of the workspace, never `keep`."""
     query = (select(UserSession, User)
              .join(User, (User.id == UserSession.user_id) & (User.tenant_id == UserSession.tenant_id))
              .where(UserSession.tenant_id == tenant_id, UserSession.revoked_at.is_(None),
@@ -300,6 +301,8 @@ async def revoke_sessions(db: AsyncSession, tenant_id: uuid.UUID, *, ids: list[u
         query = query.where(UserSession.id != keep)
     if ids is not None:
         query = query.where(UserSession.id.in_(ids))
+    if user_id is not None:
+        query = query.where(UserSession.user_id == user_id)
     ended = [(row[0], row[1]) for row in (await db.execute(query)).all()]
     now = _now()
     for session, _ in ended:

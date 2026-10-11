@@ -87,3 +87,40 @@ async def set_members(db: AsyncSession, unit: OrgUnit, member_ids: list[str], by
             db.add(OrgUnitMember(tenant_id=unit.tenant_id, organisation_id=unit.organisation_id, org_unit_id=unit.id,
                                  user_id=uuid.UUID(user_id), created_by=by))
     await db.flush()
+
+
+async def set_person_units(db: AsyncSession, tenant_id: uuid.UUID, organisation_id: uuid.UUID, user_id: uuid.UUID,
+                           kind: str, ids: list[str], by: uuid.UUID) -> dict[str, Any] | None:
+    """setMemberships(): the person is in exactly these active entries of a kind (archived ones are left as they
+    are) → the audit change (names before and after), or None when nothing changed."""
+    units = await units_of(db, tenant_id, kind)
+    members = await members_of(db, tenant_id, [u.id for u in units])
+    before = [u.name for u in units if str(user_id) in members[u.id]]
+    now = datetime.now(UTC)
+    for unit in units:
+        wanted = str(unit.id) in ids and not unit.archived_at
+        has = str(user_id) in members[unit.id]
+        if wanted and not has:
+            db.add(OrgUnitMember(tenant_id=tenant_id, organisation_id=organisation_id, org_unit_id=unit.id,
+                                 user_id=user_id, created_by=by))
+            members[unit.id].append(str(user_id))
+        elif not wanted and has and not unit.archived_at:
+            for row in (await db.execute(select(OrgUnitMember).where(
+                    OrgUnitMember.tenant_id == tenant_id, OrgUnitMember.org_unit_id == unit.id,
+                    OrgUnitMember.user_id == user_id, OrgUnitMember.deleted_at.is_(None)))).scalars():
+                row.deleted_at, row.deleted_by = now, by
+            members[unit.id].remove(str(user_id))
+    await db.flush()
+    after = [u.name for u in units if str(user_id) in members[u.id]]
+    if before == after:
+        return None
+    return {"field": kind, "before": ", ".join(before) or None, "after": ", ".join(after) or None}
+
+
+async def leave_all(db: AsyncSession, tenant_id: uuid.UUID, user_id: uuid.UUID, by: uuid.UUID) -> None:
+    """Someone removed from the workspace leaves every entry (their rows keep deleted_at)."""
+    now = datetime.now(UTC)
+    for row in (await db.execute(select(OrgUnitMember).where(
+            OrgUnitMember.tenant_id == tenant_id, OrgUnitMember.user_id == user_id,
+            OrgUnitMember.deleted_at.is_(None)))).scalars():
+        row.deleted_at, row.deleted_by = now, by

@@ -10,6 +10,8 @@ from app.modules.dashboard.router import router as navigation_router
 from app.modules.exports.router import router as exports_router
 from app.modules.onboarding.router import router as onboarding_router
 from app.modules.org.router import router as org_router
+from app.modules.people.invites import router as invites_router
+from app.modules.people.router import router as people_router
 from app.modules.platform.router import router as platform_router
 from app.modules.rbac.router import router as roles_router
 from app.modules.settings.router import router as settings_router
@@ -27,4 +29,6 @@ api_router.include_router(onboarding_router)
 api_router.include_router(org_router)
 api_router.include_router(navigation_router)
 api_router.include_router(roles_router)
+api_router.include_router(invites_router)  # before people: /people/signup-link, /people/invites
+api_router.include_router(people_router)
 api_router.include_router(settings_router)  # after any module with its own /settings/{name} route (sso, B11)
