@@ -126,7 +126,7 @@ All from the project folder:
 - **Sign-up** (https://manage.formalie.dev:2202/auth/signup): the button skips the email code (the provider checked the address) and goes straight to naming the workspace.
 - **Sign-in** on a workspace: only for someone who already has an account there with the same email, and it still asks for the 6-digit code. The test accounts are `.test` addresses, so add your own address first:
   `fmly\Scripts\python.exe scripts\seed_dev.py --person you@gmail.com` adds it to Remedy Legal as an Admin and switches on all three buttons there. Then sign in at https://remedylegal.formalie.dev:2202/auth/login with the button.
-- **Starter plan** has no social sign-in: its sign-in page shows only email and password, even when the workspace saved other methods.
+- **Starter plan** has no social sign-in for new people, but whoever came in with Google, Microsoft or Facebook (the Owner who signed up with it) keeps using it, with no password.
 
 ## How the pieces fit
 

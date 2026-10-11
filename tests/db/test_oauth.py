@@ -264,3 +264,38 @@ def test_redirect_uri(monkeypatch) -> None:  # noqa: ANN001
         "https://login.formalie.example/api/v1/auth/oauth/google/callback"
 
 
+
+
+async def test_who_signed_up_with_a_provider_keeps_using_it_on_starter(app, providers, superuser) -> None:  # noqa: ANN001
+    """Owner, 2026-10-11: social accounts need no password, whatever the plan. Starter adds no new social links."""
+    sub = f"st{uuid.uuid4().hex[:8]}"
+    email = f"founder@{sub}.test"
+    providers.profile = {"id": "fb-founder-" + sub, "email": email, "first_name": "Kay", "last_name": "Lee"}
+    async with client_for(app, host="manage.formalie.dev") as http:
+        ref = query(await round_trip(app, http, "facebook", "signup"))["oauth_challenge"]  # type: ignore[arg-type]
+        _, reply = await SecureClient(http).request("POST", "/auth/signup/complete", body={
+            "challenge_id": ref, "company_name": "Starter Co", "subdomain": sub})
+        assert reply["success"], reply
+    async with client_for(app, host=f"{sub}.formalie.dev") as http:
+        client = SecureClient(http)
+        _, profile = await client.request("GET", "/tenants/public")
+        assert profile["data"]["auth_providers"] == ["password", "facebook"]  # Starter, but the Owner uses Facebook
+        location = await round_trip(app, http, "facebook")
+        ref = query(location)["oauth_challenge"]  # type: ignore[arg-type]
+        await client.request("GET", "/auth/oauth/challenge", query={"challenge_id": ref})
+        status, reply = await client.request("POST", "/auth/otp/verify", body={"challenge_id": ref,
+                                                                                "code": last_code(email)})
+        assert status == 200 and reply["data"]["user"]["role"] == "owner"
+
+        # Someone else whose address matches but who never linked Facebook: not on Starter
+        tenant = superuser.execute("SELECT id, primary_organisation_id FROM platform.tenants WHERE subdomain = %s",
+                                   (sub,)).fetchone()
+        superuser.execute("SELECT set_config('app.tenant_id', %s, false), set_config('app.organisation_id', %s, false)",
+                          (str(tenant[0]), str(tenant[1])))
+        role = superuser.execute("SELECT id FROM formaly.roles WHERE tenant_id = %s AND built_in = 'member'",
+                                 (tenant[0],)).fetchone()[0]
+        superuser.execute("INSERT INTO formaly.users (id, tenant_id, organisation_id, email, first_name, last_name, "
+                          "status, role_id) VALUES (%s, %s, %s, %s, 'Mo', 'Ng', 'active', %s)",
+                          (uuid.uuid4(), tenant[0], tenant[1], f"mo@{sub}.test", role))
+        providers.profile = {"id": "fb-mo-" + sub, "email": f"mo@{sub}.test", "first_name": "Mo"}
+        assert query(await round_trip(app, http, "facebook"))["code"] == "FRM-AUTH-1008"  # type: ignore[arg-type]

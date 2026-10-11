@@ -22,6 +22,7 @@ from app.modules.auth import challenges
 from app.modules.billing.service import has_feature
 from app.modules.emails import service as emails
 from app.modules.settings.service import SIGNIN_METHODS, get_section
+from app.modules.users.identities import linked_providers, offered_methods
 
 router = APIRouter(tags=["tenants"])
 
@@ -59,6 +60,7 @@ async def public_profile() -> Any:
         branding = await get_section(db, tenant.id, "branding")
         signin = await get_section(db, tenant.id, "signin")
         security = await get_section(db, tenant.id, "security")
+        linked = await linked_providers(db, tenant.id)
     rules = security["password"]
     return ok({
         "mode": "tenant",
@@ -70,10 +72,8 @@ async def public_profile() -> Any:
         "signin_message": branding.get("signin_message"),
         "colors": {"primary": branding.get("brand_color")},
         "website": company.get("website"),
-        # Subscription: other sign-in methods and single sign-on only while the plan has them
-        # Only methods that exist (a setting saved while Apple was offered drops it), as far as the plan allows
-        "auth_providers": [m for m in signin["methods"] if m in SIGNIN_METHODS]
-        if has_feature(tenant.plan_id, "social_signin") else ["password"],
+        # Social methods while the plan has them, and always the ones people here already sign in with
+        "auth_providers": offered_methods(signin, tenant.plan_id, linked),
         "sso": None,  # single sign-on connections arrive in B11 (settings/sso)
         "password_policy": {k: rules[k] for k in ("min_length", "lower", "upper", "number", "symbol")},
         "status": tenant.status if tenant.status in ("active", "suspended") else "active",

@@ -75,10 +75,11 @@ Portal endpoints: 27 of 401 ticked in `ENDPOINTS.md`.
 - **Privacy erasure without hard deletes:** "delete a person's data" (Settings → Privacy, F14) and response retention must still remove personal data. Proposal: anonymise in place (overwrite answers and personal fields, keep the row, its relations and the audit entry). To decide before B11.
 - **Shared docs:** these were changed here and need the same change in the frontend's copies: API-CONTRACT, ERROR-CODES, SECURITY-PROTOCOL, 02-DEV-ENVIRONMENT, 03-DECISIONS-AND-NOTES.
 - **Request bodies for the platform admin:** `platform_reader` reads every request-log column except the bodies (answers may be in them, PLATFORM-ADMIN-INTEGRATION §1). Say if the platform should read bodies too.
-- **Export progress for others:** the mock lets only someone with `settings.manage` follow an export job; here the person who started it can follow it too (a role with `audit.export` but not `settings.manage` could otherwise start an export and never get the file). Say if it should be exactly the mock.
 - **CLAUDE.md layout** still names `api_keys/` and `option_sets/`; the product now has API tokens (`/api-tokens`) and option lists (`/option-lists`).
 
 ## Log
+
+- **2026-10-11:** Owner: people who came in with a social account keep using it with no password, whatever the plan; export jobs can be followed by whoever started them. Both in 03-DECISIONS. 570 tests.
 
 - **2026-10-11:** B2 built: audit trail list, filters, facets, one entry, export jobs (CSV and Excel, one-time links, `exports` queue), error logs loaded into `formaly.error_logs` with critical alerts; migrations 0006 and 0007. 569 tests. Live: export through the real worker, downloaded once (second click refused); 48 error lines loaded by Beat. **Stopped for the owner's review.**
 

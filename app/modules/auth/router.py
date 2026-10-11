@@ -44,6 +44,7 @@ from app.modules.settings.service import get_section
 from app.modules.tenants.router import workspace_url
 from app.modules.tenants.service import TenantDirectory
 from app.modules.tenants.workspace import Founder, create_workspace
+from app.modules.users.identities import linked_providers, offered_methods
 from app.modules.users.models import User, UserIdentity, UserPasswordHistory, UserRecoveryCode, UserTwoStep
 
 router = APIRouter(tags=["auth"])
@@ -547,7 +548,8 @@ async def oauth_start(provider: str, intent: str | None = None) -> Any:
             return _refused(None, intent, provider, "FRM-TEN-1002" if tenant else "FRM-TEN-1001")
         async with db_session("read", **_scope(tenant)) as db:
             signin = await get_section(db, tenant.id, "signin")
-        if provider not in signin["methods"] or not has_feature(tenant.plan_id, "social_signin"):
+            linked = await linked_providers(db, tenant.id)
+        if provider not in offered_methods(signin, tenant.plan_id, linked):
             return _refused(None, intent, provider, "FRM-AUTH-1008")
         state.subdomain = tenant.subdomain
     uri = oauth.redirect_uri(provider, ctx.host if ctx else None, host.kind if host else None)
@@ -603,8 +605,10 @@ async def _social_login(provider: str, profile: oauth.Profile, saved: oauth.OAut
     async with db_session("write", **_scope(tenant)) as db:
         signin = await get_section(db, tenant.id, "signin")
         security = await get_section(db, tenant.id, "security")
-        if provider not in signin["methods"] or not has_feature(tenant.plan_id, "social_signin"):
+        if provider not in signin["methods"]:
             raise FrmError("FRM-AUTH-1008")
+        # Without the plan's social sign-in, only people who already sign in this way (owner, 2026-10-11)
+        plan_allows = has_feature(tenant.plan_id, "social_signin")
         if not ip_allowed(security, ctx.client_ip if ctx else None):
             await _audit(db, tenant, "auth.login.blocked", Actor.anonymous(profile.email), outcome="blocked",
                          reason="FRM-AUTH-1016", metadata={"method": provider, "cause": "ip_not_allowed"})
@@ -614,6 +618,8 @@ async def _social_login(provider: str, profile: oauth.Profile, saved: oauth.OAut
             UserIdentity.provider == provider, UserIdentity.provider_user_id == profile.subject,
             UserIdentity.deleted_at.is_(None)))).scalar_one_or_none()
         user = await db.get(User, linked.user_id) if linked is not None else await _find_user(db, profile.email)
+        if linked is None and not plan_allows and user is not None:
+            raise FrmError("FRM-AUTH-1008")  # no new links without the plan
         if user is None or user.deleted_at is not None:
             await _audit(db, tenant, "auth.login.failed", Actor.anonymous(profile.email), outcome="failure",
                          reason="FRM-AUTH-1022", metadata={"method": provider, "account": "not_found"})

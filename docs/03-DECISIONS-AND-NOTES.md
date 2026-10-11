@@ -376,3 +376,9 @@ The portal shows the mark as the icon `i-formalie-mark`, a custom Nuxt Icon coll
 - Sign-up with a provider skips the code (the provider verified the email) and goes straight to naming the workspace. That Owner has no password until they set one with Forgot password.
 - Microsoft: only addresses Microsoft has checked are trusted (personal accounts, or a directory that marks the domain as verified), so nobody can claim someone else's address through their own directory.
 - The frontend was changed for this with the owner's go-ahead: `useAuth().resumeOAuth()`, the sign-in and sign-up pages read `?oauth_challenge=` and `?oauth=error&code=`, and three codes `FRM-AUTH-1021` to `1023`.
+
+**People who came in with Google, Microsoft or Facebook keep using it, with no password (owner 2026-10-11).**
+
+- That's the point of social sign-in. People who sign up directly use a password.
+- A social method is offered on a workspace's sign-in page when the workspace has it switched on and either its plan includes social sign-in or someone there already has that provider linked (typically the Owner who signed up with it, on Starter). Without the plan, only people whose own account is linked get in; no new links are made (`FRM-AUTH-1008`).
+- Export jobs: the person who started an export can follow it and get the file, as well as anyone with `settings.manage` (the mock allows only the latter). Owner: "whatever you pick is fine".
