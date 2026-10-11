@@ -116,6 +116,34 @@ def apply_patch(theme: dict[str, Any], patch: Any) -> dict[str, Any]:
     return merge(theme, patch)
 
 
+def resolve_theme(stored: Any, logo_url: str | None = None, primary: str | None = None) -> dict[str, Any]:
+    """The full theme for a form (resolveTheme): workspace default ← stored tokens. Anything invalid in the stored
+    tokens falls back to the default value, group by group, so a broken import can never break the form page."""
+    base = default_theme(logo_url, primary)
+    merged = merge(base, stored)
+    ok, parsed = theme_schema.safe_parse(merged)
+    if ok:
+        return _without_side_panel(parsed)
+    out = dict(base)
+    for key in base:
+        good, group = theme_schema.shape[key].safe_parse(merged.get(key))
+        if good:
+            out[key] = group
+    return _without_side_panel(out)
+
+
+def _without_side_panel(theme: dict[str, Any]) -> dict[str, Any]:
+    """No side panel beside the form any more (owner, 2026-10-04): a split layout becomes a card."""
+    if theme.get("layout") != "split":
+        return theme
+    header = theme["header"]
+    if header.get("band") == "none" and theme["split"].get("panel") != "image":
+        header = {**header, "band": "accent", "band_bg": theme["split"].get("bg")}
+    width = theme["container"].get("width")
+    return {**theme, "layout": "card", "container": {**theme["container"], "width": "lg" if width == "xl" else width},
+            "header": header}
+
+
 def page_tokens(base: dict[str, Any], patch: dict[str, Any]) -> dict[str, Any]:
     """presetTokens(): a preset as full page tokens over a base theme."""
     return {"frame": {**base["frame"], **(patch.get("frame") or {})}, "page": {**base["page"], **(patch.get("page") or {})}}

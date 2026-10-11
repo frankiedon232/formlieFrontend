@@ -30,6 +30,14 @@ def trim(text: str) -> str:
     return text.strip(_WS)
 
 
+def trim_start(text: str) -> str:
+    return text.lstrip(_WS)
+
+
+def trim_end(text: str) -> str:
+    return text.rstrip(_WS)
+
+
 def nullish(value: Any) -> bool:
     """`value == null`: null or undefined."""
     return value is None or value is UNDEFINED
@@ -148,3 +156,24 @@ def js_less(a: str, b: str) -> bool:
 
 def utf16_len(text: str) -> int:
     return len(text.encode("utf-16-le")) // 2
+
+
+def stringify(value: Any) -> str:
+    """JSON.stringify(value): numbers as JavaScript writes them (7 not 7.0, NaN and Infinity as null), keys in
+    their order, undefined left out of objects and null in lists."""
+    import json
+
+    if value is None or value is UNDEFINED:
+        return "null"
+    if isinstance(value, bool):
+        return "true" if value else "false"
+    if isinstance(value, (int, float)):
+        return "null" if isinstance(value, float) and not math.isfinite(value) else number_to_string(value)
+    if isinstance(value, str):
+        return json.dumps(value, ensure_ascii=False)
+    if isinstance(value, list):
+        return "[" + ",".join(stringify(v) for v in value) + "]"
+    if isinstance(value, dict):
+        return "{" + ",".join(f"{json.dumps(str(k), ensure_ascii=False)}:{stringify(v)}" for k, v in value.items()
+                              if v is not UNDEFINED) + "}"
+    return "null"
