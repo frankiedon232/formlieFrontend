@@ -16,7 +16,10 @@ class FrmError(Exception):
         *,
         headers: Mapping[str, str] | None = None,
         log_context: Mapping[str, Any] | None = None,
+        commit: bool = False,
     ) -> None:
+        """`commit=True`: the request fails, but what the transaction did so far is saved (an audit entry of a
+        failed sign-in, a session revoked after a reused refresh token). Every other error rolls back."""
         if code not in ERROR_CODES:
             raise ValueError(f"Unknown error code {code}; add it to docs/ERROR-CODES.md and regenerate")
         super().__init__(code)
@@ -24,6 +27,7 @@ class FrmError(Exception):
         self.details = [{"field": str(d["field"]), "message": str(d["message"])} for d in (details or [])]
         self.headers = dict(headers or {})
         self.log_context = dict(log_context or {})
+        self.commit = commit
 
     @property
     def definition(self) -> ErrorDef:

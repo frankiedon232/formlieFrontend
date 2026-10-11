@@ -32,6 +32,15 @@ def make_token(payload: dict[str, Any]) -> str:
     return _fernet().encrypt(json.dumps(payload, separators=(",", ":")).encode()).decode()
 
 
+def encrypt_secret(value: str) -> str:
+    """A secret kept in the database (`*_enc` columns: authenticator secrets, credentials). Readable after rotation."""
+    return _fernet().encrypt(value.encode()).decode()
+
+
+def decrypt_secret(value: str) -> str:
+    return _fernet().decrypt(value.encode()).decode()
+
+
 def read_token(token: str, ttl_seconds: int) -> dict[str, Any] | None:
     """The payload, or None when the token is altered, made with an unknown key or older than `ttl_seconds`."""
     try:

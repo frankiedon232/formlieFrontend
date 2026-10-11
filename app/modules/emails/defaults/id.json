@@ -1,0 +1,76 @@
+{
+  "templates": {
+    "signin_code": {
+      "subject": "Kode masuk Anda untuk {{workspace}}",
+      "body": "Halo {{name}},\n\nKode Anda adalah {{code}}. Berlaku selama {{minutes}} menit.\n\nJika Anda tidak mencoba masuk, ubah kata sandi Anda dan beri tahu administrator."
+    },
+    "password_reset": {
+      "subject": "Reset kata sandi {{workspace}} Anda",
+      "body": "Halo {{name}},\n\nGunakan kode {{code}} untuk memilih kata sandi baru. Berlaku selama {{minutes}} menit.\n\nJika Anda tidak memintanya, abaikan email ini. Kata sandi Anda tidak berubah."
+    },
+    "invitation": {
+      "subject": "{{inviter}} mengundang Anda ke {{workspace}}",
+      "body": "Halo {{name}},\n\n{{inviter}} mengundang Anda untuk bekerja bersama di {{workspace}} pada Formalie.\n\nTerima undangan: {{link}}"
+    },
+    "response_receipt": {
+      "subject": "Jawaban Anda untuk {{form}}",
+      "body": "Terima kasih telah mengisi {{form}}.\n\nBerikut salinan yang Anda kirim pada {{date}} (referensi {{number}}):\n\n{{answers}}\n\nSimpan email ini untuk arsip Anda."
+    },
+    "response_notification": {
+      "subject": "Respons baru untuk {{form}}",
+      "body": "{{form}} memiliki respons baru (nomor {{number}}, {{date}}).\n\n{{answers}}\n\nBuka di Formalie: {{link}}"
+    },
+    "notification": {
+      "subject": "{{title}}",
+      "body": "{{message}}\n\nBuka Formalie: {{link}}"
+    },
+    "daily_digest": {
+      "subject": "Hari Anda di {{workspace}}",
+      "body": "Halo {{name}},\n\nBerikut yang terjadi sejak kemarin:\n\n{{summary}}\n\nBuka Formalie: {{link}}"
+    }
+  },
+  "events": {
+    "response_new": {
+      "title": "Respons baru untuk {{form}}",
+      "message": "{{form}} memiliki respons baru."
+    },
+    "response_duplicate": {
+      "title": "Kemungkinan duplikat di {{form}}",
+      "message": "Respons baru untuk {{form}} mirip dengan yang sebelumnya. Periksa dulu sebelum menghitungnya."
+    },
+    "form_limit": {
+      "title": "{{form}} sudah penuh",
+      "message": "{{form}} telah mencapai batas {{limit}} respons dan tidak menerima lagi."
+    },
+    "form_closing": {
+      "title": "{{form}} segera ditutup",
+      "message": "{{form}} berhenti menerima respons pada {{date}}."
+    },
+    "export_ready": {
+      "title": "Ekspor Anda sudah siap",
+      "message": "{{file}} siap diunduh."
+    },
+    "webhook_failing": {
+      "title": "Webhook {{name}} gagal",
+      "message": "Pengiriman ke {{name}} terus gagal, sehingga dijeda. Periksa alamat dan tokennya."
+    },
+    "security_alert": {
+      "title": "Login diblokir di {{workspace}}",
+      "message": "Login oleh {{email}} diblokir: {{reason}}."
+    }
+  },
+  "layout": {
+    "footer": "Anda menerima email ini karena akun Anda di {{workspace}}.",
+    "answers": "Jawaban",
+    "open": "Buka",
+    "summary": "{{count}} × {{title}}",
+    "footer_form": "Anda menerima email ini karena sebuah formulir dari {{workspace}}."
+  },
+  "reasons": {
+    "ip_not_allowed": "jaringan tidak ada dalam daftar yang diizinkan",
+    "email_domain": "domain email tidak diizinkan",
+    "code_locked": "terlalu banyak kode yang salah",
+    "account_disabled": "akun dinonaktifkan",
+    "password_expired": "kata sandi sudah kedaluwarsa"
+  }
+}

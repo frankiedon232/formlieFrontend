@@ -26,6 +26,7 @@ from app.core.cache.redis import get_redis
 from app.core.config import get_settings
 from app.core.context import get_context
 from app.core.db.engines import get_engines
+from app.core.errors.exceptions import FrmError
 
 log = logging.getLogger("formalie.db")
 
@@ -81,14 +82,24 @@ async def db_session(
     organisation_id: uuid.UUID | None = None,
     user_id: uuid.UUID | None = None,
 ) -> AsyncIterator[AsyncSession]:
-    """One transaction with the RLS context set. Commits on success, rolls back on any error."""
+    """One transaction with the RLS context set. Commits on success, rolls back on any error (but see
+    FrmError(commit=True))."""
     engines = get_engines()
     use_primary = intent == "write" or await _pinned_to_primary(user_id)
     engine = engines.primary if use_primary else engines.replica()
     async with AsyncSession(engine, expire_on_commit=False) as session:
-        async with session.begin():
+        await session.begin()
+        try:
             await set_rls_context(session, tenant_id, organisation_id, user_id)
             yield session
+            await session.commit()
+        except FrmError as exc:
+            # An error marked commit=True keeps what was done (audit of a failed sign-in, a revoked session).
+            await (session.commit() if exc.commit else session.rollback())
+            raise
+        except BaseException:
+            await session.rollback()
+            raise
     if intent == "write":
         await _pin_after_write(user_id)
 

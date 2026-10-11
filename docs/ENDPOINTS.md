@@ -14,28 +14,28 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 
 ## `routes/tenants.ts`
 
-- [ ] `GET /api/v1/tenants/public` (`publicProfile`)
-- [ ] `GET /api/v1/tenants/subdomain-availability` (`subdomainAvailability`)
-- [ ] `POST /api/v1/tenants/find-workspace` (`findWorkspace`)
-- [ ] `POST /api/v1/tenants/find-workspace/verify` (`findWorkspaceVerify`)
+- [x] `GET /api/v1/tenants/public` (`publicProfile`)
+- [x] `GET /api/v1/tenants/subdomain-availability` (`subdomainAvailability`)
+- [x] `POST /api/v1/tenants/find-workspace` (`findWorkspace`)
+- [x] `POST /api/v1/tenants/find-workspace/verify` (`findWorkspaceVerify`)
 
 ## `routes/auth.ts`
 
 - **Guards:** `requireAuth`, `requireTenant`
 - **Audit:** `auth.login.blocked`, `auth.login.failed`, `auth.login.succeeded`, `auth.logout`, `auth.otp.failed`, `auth.otp.locked`, `auth.otp.sent`, `auth.password.reset`, `auth.password.reset_requested`, `workspace.created`
 
-- [ ] `POST /api/v1/auth/login` (`login`)
-- [ ] `POST /api/v1/auth/otp/verify` (`verifyOtp`)
-- [ ] `POST /api/v1/auth/otp/resend` (`resendOtp`)
-- [ ] `POST /api/v1/auth/refresh` (`refresh`)
-- [ ] `POST /api/v1/auth/logout` (`logout`)
-- [ ] `POST /api/v1/auth/signup` (`signup`)
-- [ ] `POST /api/v1/auth/signup/complete` (`signupComplete`)
-- [ ] `POST /api/v1/auth/exchange-ticket` (`exchangeTicket`)
-- [ ] `POST /api/v1/auth/password/forgot` (`forgotPassword`)
-- [ ] `POST /api/v1/auth/password/reset` (`resetPassword`)
-- [ ] `GET /api/v1/auth/oauth/{provider}/start` (`oauthStart`)
-- [ ] `GET /api/v1/me` (`me`)
+- [x] `POST /api/v1/auth/login` (`login`)
+- [x] `POST /api/v1/auth/otp/verify` (`verifyOtp`)
+- [x] `POST /api/v1/auth/otp/resend` (`resendOtp`)
+- [x] `POST /api/v1/auth/refresh` (`refresh`)
+- [x] `POST /api/v1/auth/logout` (`logout`)
+- [x] `POST /api/v1/auth/signup` (`signup`)
+- [x] `POST /api/v1/auth/signup/complete` (`signupComplete`)
+- [x] `POST /api/v1/auth/exchange-ticket` (`exchangeTicket`)
+- [x] `POST /api/v1/auth/password/forgot` (`forgotPassword`)
+- [x] `POST /api/v1/auth/password/reset` (`resetPassword`)
+- [ ] `GET /api/v1/auth/oauth/{provider}/start` (`oauthStart`): answers like the mock (`?oauth=unavailable`) until the providers' client ids are set (B1 OAuth step)
+- [x] `GET /api/v1/me` (`me`)
 
 ## `routes/sso.ts`
 

@@ -67,6 +67,15 @@ class Settings(BaseSettings):
     session_key_ttl_seconds: int = 1800  # handshake keys, sliding (§1)
     csrf_ttl_seconds: int = 7200  # §6
 
+    # ── Email (B1: Formalie's own address; workspace domains and SMTP servers in B11) ──
+    email_delivery: Literal["celery", "direct", "memory"] = "celery"  # memory: tests only
+    email_from: str = "Formalie <no-reply@formalie.dev>"
+    smtp_host: str = "127.0.0.1"
+    smtp_port: int = 1025
+    smtp_security: Literal["none", "starttls", "tls"] = "none"
+    smtp_username: str | None = None
+    smtp_password: SecretStr | None = None
+
     # ── Rate limiting (Redis sliding window) ─────────────────────────────────
     rate_limit_enabled: bool = True
     rate_limit_ip_per_minute: int = 600

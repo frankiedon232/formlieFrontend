@@ -11,6 +11,7 @@ from pathlib import Path
 os.environ.setdefault("APP_ENV", "test")
 os.environ["LOG_CONSOLE"] = "false"
 os.environ["LOG_DIR"] = str(Path(tempfile.gettempdir()) / "formalie-test-logs")
+os.environ["EMAIL_DELIVERY"] = "memory"  # tests read the codes from app.modules.emails.service.SENT
 # Fixed test keys, so tests never depend on (or touch) the developer's .env secrets.
 os.environ["FERNET_KEYS"] = "x6m5uO1r7ZbBoQkZf4o2r5d8Wq3T0cY9vLhP2sJ7kNe="
 os.environ["ID_REF_ENC_KEY"] = "AQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyA="

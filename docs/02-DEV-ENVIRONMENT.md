@@ -107,7 +107,7 @@ It wakes Ubuntu and keeps it running in the background, so its services stay up 
 Start the workers and Flower, each in its own terminal from the project folder (Ubuntu window open):
 
 ```powershell
-fmly\Scripts\celery.exe -A app.workers.celery_app worker -Q scheduled,logs --pool=solo -E -n worker1@%h -l info
+fmly\Scripts\celery.exe -A app.workers.celery_app worker -Q scheduled,logs,notifications --pool=solo -E -n worker1@%h -l info
 fmly\Scripts\celery.exe -A app.workers.celery_app beat -s logs/celerybeat-schedule -l info
 fmly\Scripts\celery.exe -A app.workers.celery_app flower --address=127.0.0.1 --port=5555
 ```

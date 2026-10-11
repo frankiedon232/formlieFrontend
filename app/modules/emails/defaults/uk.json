@@ -1,0 +1,76 @@
+{
+  "templates": {
+    "signin_code": {
+      "subject": "Ваш код для входу в {{workspace}}",
+      "body": "Вітаємо, {{name}}!\n\nВаш код: {{code}}. Він діє {{minutes}} хвилин.\n\nЯкщо ви не намагалися увійти, змініть пароль і повідомте адміністратора."
+    },
+    "password_reset": {
+      "subject": "Скидання пароля в {{workspace}}",
+      "body": "Вітаємо, {{name}}!\n\nВикористайте код {{code}}, щоб вибрати новий пароль. Він діє {{minutes}} хвилин.\n\nЯкщо ви цього не просили, просто проігноруйте лист. Ваш пароль не зміниться."
+    },
+    "invitation": {
+      "subject": "{{inviter}} запрошує вас до {{workspace}}",
+      "body": "Вітаємо, {{name}}!\n\n{{inviter}} запрошує вас працювати разом у {{workspace}} у Formalie.\n\nПрийняти запрошення: {{link}}"
+    },
+    "response_receipt": {
+      "subject": "Ваші відповіді у формі {{form}}",
+      "body": "Дякуємо, що заповнили форму {{form}}.\n\nОсь копія того, що ви надіслали {{date}} (номер {{number}}):\n\n{{answers}}\n\nЗбережіть цей лист для своїх записів."
+    },
+    "response_notification": {
+      "subject": "Нова відповідь у формі {{form}}",
+      "body": "У формі {{form}} нова відповідь (номер {{number}}, {{date}}).\n\n{{answers}}\n\nВідкрити у Formalie: {{link}}"
+    },
+    "notification": {
+      "subject": "{{title}}",
+      "body": "{{message}}\n\nВідкрити Formalie: {{link}}"
+    },
+    "daily_digest": {
+      "subject": "Ваш день у {{workspace}}",
+      "body": "Вітаємо, {{name}}!\n\nОсь що сталося від учора:\n\n{{summary}}\n\nВідкрити Formalie: {{link}}"
+    }
+  },
+  "events": {
+    "response_new": {
+      "title": "Нова відповідь у формі {{form}}",
+      "message": "У формі {{form}} нова відповідь."
+    },
+    "response_duplicate": {
+      "title": "Можливий дублікат у формі {{form}}",
+      "message": "Нова відповідь у формі {{form}} схожа на попередню. Перегляньте її, перш ніж зараховувати."
+    },
+    "form_limit": {
+      "title": "Форму {{form}} заповнено",
+      "message": "Форма {{form}} досягла ліміту в {{limit}} відповідей і більше їх не приймає."
+    },
+    "form_closing": {
+      "title": "Форма {{form}} скоро закриється",
+      "message": "Форма {{form}} перестане приймати відповіді {{date}}."
+    },
+    "export_ready": {
+      "title": "Ваш експорт готовий",
+      "message": "Файл {{file}} готовий до завантаження."
+    },
+    "webhook_failing": {
+      "title": "Вебхук {{name}} дає збої",
+      "message": "Доставки на {{name}} постійно не вдаються, тому його призупинено. Перевірте його адресу й токен."
+    },
+    "security_alert": {
+      "title": "Вхід заблоковано в {{workspace}}",
+      "message": "Вхід користувача {{email}} заблоковано: {{reason}}."
+    }
+  },
+  "layout": {
+    "footer": "Ви отримали цей лист через свій обліковий запис у {{workspace}}.",
+    "answers": "Відповіді",
+    "open": "Відкрити",
+    "summary": "{{count}} × {{title}}",
+    "footer_form": "Ви отримали цей лист через форму з {{workspace}}."
+  },
+  "reasons": {
+    "ip_not_allowed": "мережі немає у списку дозволених",
+    "email_domain": "домен пошти не дозволений",
+    "code_locked": "забагато неправильних кодів",
+    "account_disabled": "обліковий запис вимкнено",
+    "password_expired": "термін дії пароля минув"
+  }
+}

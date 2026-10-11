@@ -1,0 +1,76 @@
+{
+  "templates": {
+    "signin_code": {
+      "subject": "Il tuo codice di accesso per {{workspace}}",
+      "body": "Ciao {{name}},\n\nIl tuo codice è {{code}}. Vale per {{minutes}} minuti.\n\nSe non hai provato ad accedere, cambia la password e avvisa il tuo amministratore."
+    },
+    "password_reset": {
+      "subject": "Reimposta la tua password di {{workspace}}",
+      "body": "Ciao {{name}},\n\nUsa il codice {{code}} per scegliere una nuova password. Vale per {{minutes}} minuti.\n\nSe non l'hai richiesto, puoi ignorare questa e-mail. La tua password resta invariata."
+    },
+    "invitation": {
+      "subject": "{{inviter}} ti ha invitato in {{workspace}}",
+      "body": "Ciao {{name}},\n\n{{inviter}} ti ha invitato a lavorare insieme in {{workspace}} su Formalie.\n\nAccetta l'invito: {{link}}"
+    },
+    "response_receipt": {
+      "subject": "Le tue risposte a {{form}}",
+      "body": "Grazie per aver compilato {{form}}.\n\nEcco una copia di ciò che hai inviato il {{date}} (riferimento {{number}}):\n\n{{answers}}\n\nConserva questa e-mail per i tuoi archivi."
+    },
+    "response_notification": {
+      "subject": "Nuova risposta a {{form}}",
+      "body": "{{form}} ha una nuova risposta (numero {{number}}, {{date}}).\n\n{{answers}}\n\nApri in Formalie: {{link}}"
+    },
+    "notification": {
+      "subject": "{{title}}",
+      "body": "{{message}}\n\nApri Formalie: {{link}}"
+    },
+    "daily_digest": {
+      "subject": "La tua giornata in {{workspace}}",
+      "body": "Ciao {{name}},\n\nEcco cosa è successo da ieri:\n\n{{summary}}\n\nApri Formalie: {{link}}"
+    }
+  },
+  "events": {
+    "response_new": {
+      "title": "Nuova risposta a {{form}}",
+      "message": "{{form}} ha una nuova risposta."
+    },
+    "response_duplicate": {
+      "title": "Possibile duplicato in {{form}}",
+      "message": "Una nuova risposta a {{form}} somiglia a una precedente. Dai un'occhiata prima di contarla."
+    },
+    "form_limit": {
+      "title": "{{form}} è pieno",
+      "message": "{{form}} ha raggiunto il limite di {{limit}} risposte e non ne accetta altre."
+    },
+    "form_closing": {
+      "title": "{{form}} chiude presto",
+      "message": "{{form}} smette di accettare risposte il {{date}}."
+    },
+    "export_ready": {
+      "title": "La tua esportazione è pronta",
+      "message": "{{file}} è pronto per il download."
+    },
+    "webhook_failing": {
+      "title": "Il webhook {{name}} non funziona",
+      "message": "Le consegne a {{name}} continuano a fallire, quindi è stato messo in pausa. Controlla indirizzo e token."
+    },
+    "security_alert": {
+      "title": "Accesso bloccato in {{workspace}}",
+      "message": "Un accesso di {{email}} è stato bloccato: {{reason}}."
+    }
+  },
+  "layout": {
+    "footer": "Ricevi questa e-mail per il tuo account in {{workspace}}.",
+    "answers": "Risposte",
+    "open": "Apri",
+    "summary": "{{count}} × {{title}}",
+    "footer_form": "Ricevi questa e-mail a causa di un modulo di {{workspace}}."
+  },
+  "reasons": {
+    "ip_not_allowed": "la rete non è nell'elenco consentito",
+    "email_domain": "il dominio dell'e-mail non è consentito",
+    "code_locked": "troppi codici errati",
+    "account_disabled": "l'account è disattivato",
+    "password_expired": "la password è scaduta"
+  }
+}

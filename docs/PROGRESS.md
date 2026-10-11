@@ -8,13 +8,13 @@ Statuses: **Done** (built and verified), **Built** (code and tests written, wait
 | Phase | Title | Status | Endpoints ticked |
 | --- | --- | --- | --- |
 | B0 | Foundation | **Done**, verified live; waiting for the owner's review | 1 / 1 (`GET /health`) |
-| B1 | Secure channel, workspaces and sign-in | **In progress**: secure channel done | 2 / 18 (handshake, CSRF) |
+| B1 | Secure channel, workspaces and sign-in | **In progress**: secure channel and sign-in done; OAuth providers and the frontend switch-over left | 17 / 18 (OAuth start answers like the mock) |
 | B2 | Audit trail and logs | Later | 0 |
 | B3 | Onboarding, settings base and default data | Later | 0 |
 | B4 | People, roles and access | Later | 0 |
 | B5 to B17 | See BACKEND-ROADMAP.md | Later | 0 |
 
-Portal endpoints: 3 of 399 ticked in `ENDPOINTS.md`.
+Portal endpoints: 18 of 399 ticked in `ENDPOINTS.md`.
 
 ## B0, Foundation (2026-10-10)
 
@@ -52,9 +52,13 @@ Portal endpoints: 3 of 399 ticked in `ENDPOINTS.md`.
 | Handshake, envelope (all six checks in the mock's order), sealed replies | Done | `app/core/security/envelope.py`, `app/core/middleware/envelope.py`, `app/modules/platform/router.py` | Verified with the frontend's own `envelope.ts` (vectors, both ways) and live through Redis |
 | Encrypted references in and out, `RefId` (no raw ids) | Done | `app/core/security/refs.py`, `app/core/refs_types.py` | Port of the mock's `core/ids.ts` |
 | CSRF tokens (stateless Fernet, bound to the key and the session) | Done | `app/core/security/csrf.py` | `GET /auth/csrf` |
-| Tenant public profile, subdomain availability, find workspace | Next | | |
-| Sign-up, login, OTP, refresh, logout, reset, sessions, two-step | Next | | |
-| OAuth providers, lockouts, development seed | Next | | |
+| Access rules, catalogues, password policy (held to the frontend's own answers) | Done | `app/modules/rbac/`, `app/modules/audit/events.py`, `app/modules/billing/plans.py`, `app/core/security/passwords.py` | 412 parity checks: `permission_for` on all 406 routes, `with_needs`, `set_grant`, passwords |
+| Identity schema (migrations 0003, 0004), settings defaults, audit `record()`, workspace creation | Done | `app/modules/users`, `auth`, `settings`, `audit`, `tenants` | 10 new tables, RLS forced, audit insert-only |
+| Tenant public profile, subdomain availability, find workspace | Done | `app/modules/tenants/router.py` | |
+| Sign-up, login, codes (email via Mailpit), refresh with reuse detection, logout, /me, reset, lockouts, rate limits | Done | `app/modules/auth/` | 13 end-to-end tests on the test DB; verified live with a real email |
+| Development seed (the mock's workspaces and accounts) | Done | `scripts/seed_dev.py` | |
+| OAuth providers (Google, Microsoft, Apple, Facebook) | Waiting | | Needs each provider's client id and secret from the owner |
+| Frontend switch-over for sign-in (`NUXT_PUBLIC_API_MOCK=false`) | Next | | The owner runs the frontend against this backend |
 
 ## Open questions
 
@@ -65,6 +69,7 @@ Portal endpoints: 3 of 399 ticked in `ENDPOINTS.md`.
 
 ## Log
 
+- **2026-10-11:** B1 sign-in: rules ported with parity, migrations 0003 and 0004, services, routes, dev seed, email through Celery to Mailpit. 551 tests. Found: the email-validator package refused `.test` addresses the frontend accepts (now zod's rule); sealed replies dropped Set-Cookie (fixed).
 - **2026-10-11:** B1 secure channel: handshake, envelope, references, CSRF; frontend `envelope.ts` agrees with the backend on fixed vectors both ways. 124 tests.
 - **2026-10-11:** WSL services installed (MinIO skipped: its download server answers 410; storage chosen in B3). Live checks passed. Found and fixed: events never reached RabbitMQ (`content_type` made kombu skip JSON encoding; the outbox kept the event and delivered it once fixed); rate-limited requests now record their workspace host. **B0 complete, stopped for the owner's review.**
 - **2026-10-11:** MaxMind GeoLite2 City + ASN downloaded into `data/geoip/` (git-ignored, per machine); request locations verified live. Found: uvicorn's own proxy-header handling hid the real proxy, so `X-Forwarded-Host` (workspace) and the client IP were wrong behind Nginx or the dev proxy; the server must run with `--no-proxy-headers` (now in `python -m app.run` and 02-DEV-ENVIRONMENT).

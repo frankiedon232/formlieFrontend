@@ -27,10 +27,10 @@ Then stop for the owner's review. Day-to-day status lives in `PROGRESS.md`.
 
 - [x] Handshake (ECDH P-256 + HKDF + AES-GCM), nonce store, test vectors shared with the frontend (`shared/utils/crypto/*`): `tests/vectors/envelope.json`, checked against the frontend's own `envelope.ts` by `scripts/check_envelope_vectors.py`.
 - [x] Encrypted references (SECURITY-PROTOCOL §10) on every id in and out (`RefId` refuses raw ids in path, query and body).
-- [ ] Tenant public profile, subdomain availability, find workspace.
-- [ ] Sign-up (tenant + organisation + admin + subdomain), login, OTP (Mailpit), resend, forgot / reset, logout, refresh rotation with reuse detection, CSRF, sessions, TOTP and recovery codes.
+- [x] Tenant public profile, subdomain availability, find workspace.
+- [x] Sign-up (tenant + organisation + admin + subdomain), login, OTP (Mailpit), resend, forgot / reset, logout, refresh rotation with reuse detection, CSRF, sessions, TOTP and recovery codes at sign-in (setting them up is the `/me/two-step` routes, B4).
 - [ ] OAuth providers (Google, Microsoft, Apple, Facebook) and per-workspace provider settings; rate limits and lockouts.
-- [ ] Development seed with the same test workspaces and accounts as the mock (`server/mock/data/tenants.ts`), so the frontend's flows work unchanged.
+- [x] Development seed with the same test workspaces and accounts as the mock (`server/mock/data/tenants.ts`), so the frontend's flows work unchanged (`scripts/seed_dev.py`).
 
 ## B2, Audit trail and logs (F4)
 

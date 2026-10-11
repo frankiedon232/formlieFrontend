@@ -96,7 +96,7 @@ Source: `shared/types/auth.ts`, `profile.ts`, `server/mock/data/peopleStore.ts`,
 | `user_recovery_codes` | user_id, code_hash, used_at (ten per set; a new set replaces the old) |
 | `user_sessions` | user_id, started_at, last_active_at, ip, device jsonb (type, browser, os), city, country, revoked_at |
 | `refresh_tokens` | session_id, family_id, token_hash, issued_at, expires_at, used_at, revoked_at, replaced_by. Reuse → family revoked (`FRM-AUTH-1012`) |
-| `otp_challenges` | user_id or email, purpose (`login`, `signup`, `reset`, `find_workspace`, `phone_verify`), channel (`email`, `sms`, `totp`), code_hash, attempts, max_attempts, resend_after, expires_at, consumed_at |
+| (sign-in codes) | **In Redis, not a table** (backend, 2026-10-11): `fm:v1:auth:ch:{id}` with purpose, email, channel(s), code hash, attempts, resends, expiry; 30 minutes at most. They are short-lived and often exist before any workspace is known (sign-up, find my workspace). One-time hand-off tickets likewise (`fm:v1:auth:ticket:{hash}`, 2 minutes). Every code sent, failed or locked is in `audit_logs`. |
 
 Session encryption keys (ECDH) and access tokens are not stored in PostgreSQL (Redis with TTL; Fernet tokens are checked against `user_sessions.revoked_at`). Sign-in attempts, lockouts and blocked IPs are `audit_logs` rows (area `auth`), which feed Settings → Security activity.
 

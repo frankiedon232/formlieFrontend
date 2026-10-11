@@ -53,6 +53,8 @@ Envelope failures (SECURITY-PROTOCOL §2): no or malformed envelope `400 FRM-SEC
 
 **`user`** (in tokens and `/me`): `{ id, first_name, last_name, email, avatar_url, role: owner|admin|member }`. `role` is the simple workspace role until Roles & access (F22); owner and admin manage the workspace (e.g. the audit trail).
 
+**Backend notes on sign-in (2026-10-11):** codes are never returned (the mock's `meta.dev_code`); they arrive by email (Mailpit in development). Sign-in routes have their own rate limits per address and per email (`429 FRM-GEN-1029` with `Retry-After`). Email fields accept exactly zod's `z.email()` rule. A code challenge used on another workspace's host answers `FRM-AUTH-1003`; a refresh cookie of another workspace is simply unknown there (`FRM-AUTH-1010`). `sso` in the public profile stays `null` until single sign-on is built (B11).
+
 **Refresh cookie:** `formalie_rt`, `HttpOnly; Secure; SameSite=Strict; Path=/api/v1/auth` (covers refresh + logout).
 **Mock only:** challenge responses carry `meta.dev_code` so the dev code screen can show it; the real API never returns codes. The mock honours the dev header `X-Formalie-Dev-Tenant` (localhost / LAN-IP testing).
 

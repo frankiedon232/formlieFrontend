@@ -55,7 +55,7 @@ $python = Join-Path $root "fmly\Scripts\python.exe"
 $celery = Join-Path $root "fmly\Scripts\celery.exe"
 $windows = [ordered]@{
     "Formalie API"    = "& '$python' -m app.run"
-    "Celery worker"   = "& '$celery' -A app.workers.celery_app worker -Q scheduled,logs --pool=solo -E -n worker1@%h -l info"
+    "Celery worker"   = "& '$celery' -A app.workers.celery_app worker -Q scheduled,logs,notifications --pool=solo -E -n worker1@%h -l info"
     "Celery beat"     = "& '$celery' -A app.workers.celery_app beat -s logs/celerybeat-schedule -l info"
     "Flower"          = "& '$celery' -A app.workers.celery_app flower --address=127.0.0.1 --port=5555"
 }

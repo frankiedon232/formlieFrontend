@@ -19,7 +19,7 @@ from app.core.db.session import db_session
 
 log = logging.getLogger("formalie.tenants")
 
-CACHE_MODULE = "tenant_directory"
+CACHE_MODULE = "tenant_directory_v2"  # v2: rows carry plan_id
 _MISSING: dict[str, Any] = {"missing": True}
 
 
@@ -30,13 +30,14 @@ def _to_info(row: dict[str, Any]) -> TenantInfo:
         name=row["name"],
         status=row["status"],
         organisation_id=uuid.UUID(str(row["organisation_id"])),
+        plan_id=row.get("plan_id") or "starter",
     )
 
 
 async def _load_by_subdomain(subdomain: str) -> dict[str, Any]:
     async with db_session("read") as session:
         result = await session.execute(
-            text("SELECT id, subdomain, name, status, organisation_id FROM platform.resolve_tenant(:subdomain)"),
+            text("SELECT id, subdomain, name, status, organisation_id, plan_id FROM platform.resolve_tenant(:subdomain)"),
             {"subdomain": subdomain},
         )
         row = result.mappings().first()

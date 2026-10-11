@@ -1,0 +1,76 @@
+{
+  "templates": {
+    "signin_code": {
+      "subject": "你在 {{workspace}} 的登录验证码",
+      "body": "{{name}},你好:\n\n你的验证码是 {{code}},有效期 {{minutes}} 分钟。\n\n如果不是你本人在尝试登录,请修改密码并告知管理员。"
+    },
+    "password_reset": {
+      "subject": "重置你的 {{workspace}} 密码",
+      "body": "{{name}},你好:\n\n请使用验证码 {{code}} 设置新密码,有效期 {{minutes}} 分钟。\n\n如果这不是你的操作,可以忽略此邮件,你的密码不会改变。"
+    },
+    "invitation": {
+      "subject": "{{inviter}} 邀请你加入 {{workspace}}",
+      "body": "{{name}},你好:\n\n{{inviter}} 邀请你在 Formalie 的 {{workspace}} 中一起工作。\n\n接受邀请:{{link}}"
+    },
+    "response_receipt": {
+      "subject": "你对 {{form}} 的答案",
+      "body": "感谢你填写 {{form}}。\n\n以下是你在 {{date}} 提交内容的副本(参考编号 {{number}}):\n\n{{answers}}\n\n请保留这封邮件作为记录。"
+    },
+    "response_notification": {
+      "subject": "{{form}} 有新回复",
+      "body": "{{form}} 收到一条新回复(编号 {{number}},{{date}})。\n\n{{answers}}\n\n在 Formalie 中打开:{{link}}"
+    },
+    "notification": {
+      "subject": "{{title}}",
+      "body": "{{message}}\n\n打开 Formalie:{{link}}"
+    },
+    "daily_digest": {
+      "subject": "你在 {{workspace}} 的一天",
+      "body": "{{name}},你好:\n\n以下是自昨天以来发生的事:\n\n{{summary}}\n\n打开 Formalie:{{link}}"
+    }
+  },
+  "events": {
+    "response_new": {
+      "title": "{{form}} 有新回复",
+      "message": "{{form}} 收到一条新回复。"
+    },
+    "response_duplicate": {
+      "title": "{{form}} 中可能有重复回复",
+      "message": "{{form}} 的一条新回复与之前的回复很相似。统计前请先看一下。"
+    },
+    "form_limit": {
+      "title": "{{form}} 已满",
+      "message": "{{form}} 已达到 {{limit}} 条回复的上限,不再接收新回复。"
+    },
+    "form_closing": {
+      "title": "{{form}} 即将关闭",
+      "message": "{{form}} 将在 {{date}} 停止接收回复。"
+    },
+    "export_ready": {
+      "title": "你的导出已就绪",
+      "message": "{{file}} 已可下载。"
+    },
+    "webhook_failing": {
+      "title": "Webhook {{name}} 出现故障",
+      "message": "向 {{name}} 的投递持续失败,因此已暂停。请检查其地址和令牌。"
+    },
+    "security_alert": {
+      "title": "{{workspace}} 中的登录已被拦截",
+      "message": "{{email}} 的一次登录已被拦截:{{reason}}。"
+    }
+  },
+  "layout": {
+    "footer": "你收到这封邮件,是因为你在 {{workspace}} 中拥有账户。",
+    "answers": "答案",
+    "open": "打开",
+    "summary": "{{count}} × {{title}}",
+    "footer_form": "你收到这封邮件,是因为 {{workspace}} 的一个表单。"
+  },
+  "reasons": {
+    "ip_not_allowed": "该网络不在允许列表中",
+    "email_domain": "该邮箱域名不被允许",
+    "code_locked": "错误验证码次数过多",
+    "account_disabled": "账户已被停用",
+    "password_expired": "密码已过期"
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "templates": {
+    "signin_code": {
+      "subject": "{{workspace}} のログインコード",
+      "body": "{{name}} さん、こんにちは。\n\nコードは {{code}} です。有効期間は {{minutes}} 分です。\n\nログインを試みていない場合は、パスワードを変更し、管理者に連絡してください。"
+    },
+    "password_reset": {
+      "subject": "{{workspace}} のパスワードを再設定",
+      "body": "{{name}} さん、こんにちは。\n\n新しいパスワードを設定するには、コード {{code}} を使用してください。有効期間は {{minutes}} 分です。\n\n心当たりがない場合は、このメールを無視してください。パスワードは変更されません。"
+    },
+    "invitation": {
+      "subject": "{{inviter}} さんが {{workspace}} に招待しました",
+      "body": "{{name}} さん、こんにちは。\n\n{{inviter}} さんが、Formalie の {{workspace}} で一緒に作業するようあなたを招待しました。\n\n招待を承諾する: {{link}}"
+    },
+    "response_receipt": {
+      "subject": "{{form}} への回答",
+      "body": "{{form}} にご回答いただきありがとうございます。\n\n{{date}} に送信された内容のコピーです(参照番号 {{number}}):\n\n{{answers}}\n\n記録として、このメールを保管してください。"
+    },
+    "response_notification": {
+      "subject": "{{form}} に新しい回答",
+      "body": "{{form}} に新しい回答がありました(番号 {{number}}、{{date}})。\n\n{{answers}}\n\nFormalie で開く: {{link}}"
+    },
+    "notification": {
+      "subject": "{{title}}",
+      "body": "{{message}}\n\nFormalie を開く: {{link}}"
+    },
+    "daily_digest": {
+      "subject": "{{workspace}} の今日の動き",
+      "body": "{{name}} さん、こんにちは。\n\n昨日からの出来事です:\n\n{{summary}}\n\nFormalie を開く: {{link}}"
+    }
+  },
+  "events": {
+    "response_new": {
+      "title": "{{form}} に新しい回答",
+      "message": "{{form}} に新しい回答がありました。"
+    },
+    "response_duplicate": {
+      "title": "{{form}} に重複の可能性",
+      "message": "{{form}} への新しい回答が以前のものと似ています。カウントする前にご確認ください。"
+    },
+    "form_limit": {
+      "title": "{{form}} が上限に達しました",
+      "message": "{{form}} は回答数の上限 {{limit}} 件に達し、これ以上受け付けません。"
+    },
+    "form_closing": {
+      "title": "{{form}} がまもなく終了します",
+      "message": "{{form}} は {{date}} に回答の受付を終了します。"
+    },
+    "export_ready": {
+      "title": "エクスポートの準備ができました",
+      "message": "{{file}} をダウンロードできます。"
+    },
+    "webhook_failing": {
+      "title": "Webhook {{name}} が失敗しています",
+      "message": "{{name}} への配信が失敗し続けたため、一時停止しました。アドレスとトークンを確認してください。"
+    },
+    "security_alert": {
+      "title": "{{workspace}} でログインがブロックされました",
+      "message": "{{email}} のログインがブロックされました: {{reason}}。"
+    }
+  },
+  "layout": {
+    "footer": "このメールは、{{workspace}} のアカウントに基づいて送信されています。",
+    "answers": "回答",
+    "open": "開く",
+    "summary": "{{count}} × {{title}}",
+    "footer_form": "このメールは、{{workspace}} のフォームに基づいて送信されています。"
+  },
+  "reasons": {
+    "ip_not_allowed": "ネットワークが許可リストにありません",
+    "email_domain": "メールのドメインが許可されていません",
+    "code_locked": "誤ったコードの入力が多すぎます",
+    "account_disabled": "アカウントが無効です",
+    "password_expired": "パスワードの有効期限が切れています"
+  }
+}

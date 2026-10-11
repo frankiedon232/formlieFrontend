@@ -70,6 +70,16 @@ def owner(owner_dsn: str) -> Iterator[psycopg.Connection]:
 
 
 @pytest.fixture
+def superuser(migrated: None) -> Iterator[psycopg.Connection]:
+    """For assertions across workspaces only (it bypasses RLS). Never used by the code under test."""
+    settings = get_settings()
+    if settings.db_superuser_url is None:
+        pytest.skip("DB_SUPERUSER_URL is not set")
+    with psycopg.connect(_test_url(settings.db_superuser_url), autocommit=True) as conn:  # type: ignore[arg-type]
+        yield conn
+
+
+@pytest.fixture
 async def engines(db_settings: Settings, migrated: None, redis) -> AsyncIterator[Engines]:  # noqa: ANN001
     engines = Engines(db_settings)
     set_engines(engines)

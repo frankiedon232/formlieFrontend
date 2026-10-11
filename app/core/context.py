@@ -16,6 +16,7 @@ class TenantInfo:
     name: str
     status: str  # active, suspended, read_only, closing
     organisation_id: uuid.UUID
+    plan_id: str = "starter"
 
 
 @dataclass(slots=True)

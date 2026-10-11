@@ -1,0 +1,76 @@
+{
+  "templates": {
+    "signin_code": {
+      "subject": "Mã đăng nhập của bạn cho {{workspace}}",
+      "body": "Xin chào {{name}},\n\nMã của bạn là {{code}}. Mã có hiệu lực trong {{minutes}} phút.\n\nNếu bạn không thử đăng nhập, hãy đổi mật khẩu và báo cho quản trị viên."
+    },
+    "password_reset": {
+      "subject": "Đặt lại mật khẩu {{workspace}} của bạn",
+      "body": "Xin chào {{name}},\n\nDùng mã {{code}} để chọn mật khẩu mới. Mã có hiệu lực trong {{minutes}} phút.\n\nNếu bạn không yêu cầu, có thể bỏ qua email này. Mật khẩu của bạn không thay đổi."
+    },
+    "invitation": {
+      "subject": "{{inviter}} đã mời bạn vào {{workspace}}",
+      "body": "Xin chào {{name}},\n\n{{inviter}} đã mời bạn cùng làm việc trong {{workspace}} trên Formalie.\n\nChấp nhận lời mời: {{link}}"
+    },
+    "response_receipt": {
+      "subject": "Câu trả lời của bạn cho {{form}}",
+      "body": "Cảm ơn bạn đã điền {{form}}.\n\nĐây là bản sao những gì bạn đã gửi vào {{date}} (mã tham chiếu {{number}}):\n\n{{answers}}\n\nHãy giữ email này để lưu hồ sơ."
+    },
+    "response_notification": {
+      "subject": "Phản hồi mới cho {{form}}",
+      "body": "{{form}} có một phản hồi mới (số {{number}}, {{date}}).\n\n{{answers}}\n\nMở trong Formalie: {{link}}"
+    },
+    "notification": {
+      "subject": "{{title}}",
+      "body": "{{message}}\n\nMở Formalie: {{link}}"
+    },
+    "daily_digest": {
+      "subject": "Một ngày của bạn trong {{workspace}}",
+      "body": "Xin chào {{name}},\n\nĐây là những gì đã xảy ra từ hôm qua:\n\n{{summary}}\n\nMở Formalie: {{link}}"
+    }
+  },
+  "events": {
+    "response_new": {
+      "title": "Phản hồi mới cho {{form}}",
+      "message": "{{form}} có một phản hồi mới."
+    },
+    "response_duplicate": {
+      "title": "Có thể trùng lặp trong {{form}}",
+      "message": "Một phản hồi mới cho {{form}} trông giống phản hồi trước đó. Hãy xem lại trước khi tính nó."
+    },
+    "form_limit": {
+      "title": "{{form}} đã đầy",
+      "message": "{{form}} đã đạt giới hạn {{limit}} phản hồi và không nhận thêm."
+    },
+    "form_closing": {
+      "title": "{{form}} sắp đóng",
+      "message": "{{form}} sẽ ngừng nhận phản hồi vào {{date}}."
+    },
+    "export_ready": {
+      "title": "Bản xuất của bạn đã sẵn sàng",
+      "message": "{{file}} đã sẵn sàng để tải xuống."
+    },
+    "webhook_failing": {
+      "title": "Webhook {{name}} đang lỗi",
+      "message": "Việc gửi đến {{name}} liên tục thất bại nên đã bị tạm dừng. Hãy kiểm tra địa chỉ và mã thông báo của nó."
+    },
+    "security_alert": {
+      "title": "Đăng nhập bị chặn trong {{workspace}}",
+      "message": "Một lần đăng nhập của {{email}} đã bị chặn: {{reason}}."
+    }
+  },
+  "layout": {
+    "footer": "Bạn nhận email này vì tài khoản của bạn trong {{workspace}}.",
+    "answers": "Câu trả lời",
+    "open": "Mở",
+    "summary": "{{count}} × {{title}}",
+    "footer_form": "Bạn nhận email này vì một biểu mẫu từ {{workspace}}."
+  },
+  "reasons": {
+    "ip_not_allowed": "mạng không nằm trong danh sách cho phép",
+    "email_domain": "tên miền email không được phép",
+    "code_locked": "quá nhiều mã sai",
+    "account_disabled": "tài khoản đã bị vô hiệu hóa",
+    "password_expired": "mật khẩu đã hết hạn"
+  }
+}

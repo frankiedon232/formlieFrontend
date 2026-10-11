@@ -264,4 +264,6 @@ async def test_unknown_session_key_asks_for_a_new_handshake(client) -> None:
 ])
 async def test_documented_plaintext_exceptions_pass_the_gate(client, path: str) -> None:
     response = await client.get(path)
+    if response.status_code in (301, 302, 303, 307):  # a browser redirect (OAuth start)
+        return
     assert response.json()["error"]["code"] != "FRM-SEC-1001"  # reaches routing (404 until the route exists)

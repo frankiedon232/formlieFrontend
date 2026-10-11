@@ -347,3 +347,12 @@ The portal shows the mark as the icon `i-formalie-mark`, a custom Nuxt Icon coll
 - **Access:** `platform_reader` reads everything except the body columns.
 
 **Object storage chosen in B3 (2026-10-11).** MinIO's download server no longer serves its binary (410 Gone). Uploads and exports start in B3, so the S3-compatible server for development is chosen then. Production uses the cloud provider's S3.
+
+**Backend B1 sign-in decisions (2026-10-11).**
+
+- **Codes and tickets in Redis.** Sign-in codes and one-time tickets live in Redis, not an `otp_challenges` table. They last minutes, and many exist before a workspace does.
+- **Errors that keep their record.** A failed sign-in answers with its error code, and its audit entry is still saved. So are a session ended by a reused refresh token and an expired session (`FrmError(commit=True)`).
+- **Blocked sign-ins.** A blocked sign-in publishes a `security.alert` event. The notifications module (B8) turns it into the admins' notice.
+- **Not yet built.** Text-message codes need an SMS provider (B11). Single sign-on is B11. OAuth providers need each provider's client id and secret.
+- **Cross-workspace lookups before sign-in.** These go through `platform.workspaces_for_email` and `platform.subdomain_taken`, owned by the `formalie_directory` role.
+- **Email validation.** Email fields use zod's own `z.email()` rule, so the `.test` sample accounts work. The email-validator package refused them.
