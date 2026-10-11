@@ -5701,6 +5701,1498 @@
    }
   ]
  },
+ "system_templates": [
+  {
+   "key": "customer_feedback",
+   "category": "business"
+  },
+  {
+   "key": "csat_nps",
+   "category": "business"
+  },
+  {
+   "key": "product_review",
+   "category": "business"
+  },
+  {
+   "key": "contact_lead",
+   "category": "business"
+  },
+  {
+   "key": "quote_request",
+   "category": "business"
+  },
+  {
+   "key": "order_form",
+   "category": "business"
+  },
+  {
+   "key": "complaint_dispute",
+   "category": "business"
+  },
+  {
+   "key": "service_request",
+   "category": "business"
+  },
+  {
+   "key": "lead_capture_newsletter",
+   "category": "business"
+  },
+  {
+   "key": "return_refund",
+   "category": "business"
+  },
+  {
+   "key": "job_application",
+   "category": "hr"
+  },
+  {
+   "key": "employee_onboarding",
+   "category": "hr"
+  },
+  {
+   "key": "exit_interview",
+   "category": "hr"
+  },
+  {
+   "key": "leave_request",
+   "category": "hr"
+  },
+  {
+   "key": "performance_review",
+   "category": "hr"
+  },
+  {
+   "key": "engagement_survey",
+   "category": "hr"
+  },
+  {
+   "key": "expense_reimbursement",
+   "category": "hr"
+  },
+  {
+   "key": "timesheet",
+   "category": "hr"
+  },
+  {
+   "key": "training_feedback",
+   "category": "hr"
+  },
+  {
+   "key": "reference_check",
+   "category": "hr"
+  },
+  {
+   "key": "risk_assessment",
+   "category": "health_safety"
+  },
+  {
+   "key": "incident_report",
+   "category": "health_safety"
+  },
+  {
+   "key": "near_miss_report",
+   "category": "health_safety"
+  },
+  {
+   "key": "safety_inspection",
+   "category": "health_safety"
+  },
+  {
+   "key": "patient_intake",
+   "category": "health_safety"
+  },
+  {
+   "key": "medical_history",
+   "category": "health_safety"
+  },
+  {
+   "key": "health_screening",
+   "category": "health_safety"
+  },
+  {
+   "key": "consent_form",
+   "category": "health_safety"
+  },
+  {
+   "key": "event_registration",
+   "category": "events"
+  },
+  {
+   "key": "rsvp",
+   "category": "events"
+  },
+  {
+   "key": "appointment_booking",
+   "category": "events"
+  },
+  {
+   "key": "venue_booking",
+   "category": "events"
+  },
+  {
+   "key": "volunteer_signup",
+   "category": "events"
+  },
+  {
+   "key": "speaker_sponsor_application",
+   "category": "events"
+  },
+  {
+   "key": "post_event_feedback",
+   "category": "events"
+  },
+  {
+   "key": "guest_registration",
+   "category": "hospitality"
+  },
+  {
+   "key": "hotel_booking_request",
+   "category": "hospitality"
+  },
+  {
+   "key": "guest_feedback",
+   "category": "hospitality"
+  },
+  {
+   "key": "service_evaluation",
+   "category": "hospitality"
+  },
+  {
+   "key": "special_requirements",
+   "category": "hospitality"
+  },
+  {
+   "key": "event_catering_request",
+   "category": "hospitality"
+  },
+  {
+   "key": "restaurant_reservation",
+   "category": "hospitality"
+  },
+  {
+   "key": "hospitality_complaint",
+   "category": "hospitality"
+  },
+  {
+   "key": "student_enrolment",
+   "category": "education"
+  },
+  {
+   "key": "course_evaluation",
+   "category": "education"
+  },
+  {
+   "key": "quiz_assessment",
+   "category": "education"
+  },
+  {
+   "key": "scholarship_application",
+   "category": "education"
+  },
+  {
+   "key": "permission_slip",
+   "category": "education"
+  },
+  {
+   "key": "attendance_register",
+   "category": "education"
+  },
+  {
+   "key": "academic_survey",
+   "category": "education"
+  },
+  {
+   "key": "it_support_ticket",
+   "category": "operations_it"
+  },
+  {
+   "key": "change_request",
+   "category": "operations_it"
+  },
+  {
+   "key": "asset_checkout",
+   "category": "operations_it"
+  },
+  {
+   "key": "work_order",
+   "category": "operations_it"
+  },
+  {
+   "key": "purchase_requisition",
+   "category": "operations_it"
+  },
+  {
+   "key": "vendor_registration",
+   "category": "operations_it"
+  },
+  {
+   "key": "site_inspection",
+   "category": "operations_it"
+  },
+  {
+   "key": "proof_of_delivery",
+   "category": "operations_it"
+  },
+  {
+   "key": "quality_control",
+   "category": "operations_it"
+  },
+  {
+   "key": "loan_application",
+   "category": "finance_legal"
+  },
+  {
+   "key": "kyc_verification",
+   "category": "finance_legal"
+  },
+  {
+   "key": "invoice_submission",
+   "category": "finance_legal"
+  },
+  {
+   "key": "insurance_claim",
+   "category": "finance_legal"
+  },
+  {
+   "key": "nda_signoff",
+   "category": "finance_legal"
+  },
+  {
+   "key": "membership_application",
+   "category": "community"
+  },
+  {
+   "key": "donation_form",
+   "category": "community"
+  },
+  {
+   "key": "petition",
+   "category": "community"
+  },
+  {
+   "key": "poll_ballot",
+   "category": "community"
+  },
+  {
+   "key": "property_viewing",
+   "category": "real_estate"
+  },
+  {
+   "key": "tenant_application",
+   "category": "real_estate"
+  },
+  {
+   "key": "rental_application",
+   "category": "real_estate"
+  },
+  {
+   "key": "property_inspection",
+   "category": "real_estate"
+  },
+  {
+   "key": "property_maintenance",
+   "category": "real_estate"
+  },
+  {
+   "key": "property_information",
+   "category": "real_estate"
+  },
+  {
+   "key": "landlord_information",
+   "category": "real_estate"
+  },
+  {
+   "key": "tenant_feedback",
+   "category": "real_estate"
+  },
+  {
+   "key": "sales_lead_capture",
+   "category": "sales"
+  },
+  {
+   "key": "sales_quote_request",
+   "category": "sales"
+  },
+  {
+   "key": "sales_qualification",
+   "category": "sales"
+  },
+  {
+   "key": "demo_request",
+   "category": "sales"
+  },
+  {
+   "key": "customer_discovery",
+   "category": "sales"
+  },
+  {
+   "key": "proposal_request",
+   "category": "sales"
+  },
+  {
+   "key": "order_request",
+   "category": "sales"
+  },
+  {
+   "key": "sales_follow_up",
+   "category": "sales"
+  }
+ ],
+ "template_category_keys": [
+  "business",
+  "hr",
+  "health_safety",
+  "events",
+  "hospitality",
+  "education",
+  "operations_it",
+  "finance_legal",
+  "community",
+  "real_estate",
+  "sales"
+ ],
+ "system_theme_count": 22,
+ "system_page_count": 22,
+ "datasource_statuses": [
+  "connected",
+  "attention",
+  "failing",
+  "disabled",
+  "untested"
+ ],
+ "org_kinds": [
+  "departments",
+  "job_titles"
+ ],
+ "starter_template_keys": [
+  "customer_feedback",
+  "event_registration",
+  "job_application",
+  "employee_onboarding",
+  "contact_lead",
+  "incident_report"
+ ],
+ "onboarding_steps": [
+  "company",
+  "branding",
+  "localisation",
+  "team",
+  "first_form"
+ ],
+ "onboarding": {
+  "company": [
+   {
+    "input": {
+     "name": "Acme Labs",
+     "industry": null,
+     "size": null,
+     "country": null,
+     "website": null
+    },
+    "ok": true,
+    "data": {
+     "name": "Acme Labs",
+     "industry": null,
+     "size": null,
+     "country": null,
+     "website": null
+    }
+   },
+   {
+    "input": {
+     "name": " A ",
+     "industry": null,
+     "size": null,
+     "country": null,
+     "website": null
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "name",
+      "message": "Too small: expected string to have >=2 characters"
+     }
+    ]
+   },
+   {
+    "input": {
+     "name": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+     "industry": null,
+     "size": null,
+     "country": null,
+     "website": null
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "name",
+      "message": "Too big: expected string to have <=120 characters"
+     }
+    ]
+   },
+   {
+    "input": {
+     "name": "Acme Labs",
+     "industry": null,
+     "size": null,
+     "country": "GB",
+     "website": null
+    },
+    "ok": true,
+    "data": {
+     "name": "Acme Labs",
+     "industry": null,
+     "size": null,
+     "country": "GB",
+     "website": null
+    }
+   },
+   {
+    "input": {
+     "name": "Acme Labs",
+     "industry": null,
+     "size": null,
+     "country": "XX",
+     "website": null
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "country",
+      "message": "Choose a country."
+     }
+    ]
+   },
+   {
+    "input": {
+     "name": "Acme Labs",
+     "industry": "legal",
+     "size": null,
+     "country": null,
+     "website": null
+    },
+    "ok": true,
+    "data": {
+     "name": "Acme Labs",
+     "industry": "legal",
+     "size": null,
+     "country": null,
+     "website": null
+    }
+   },
+   {
+    "input": {
+     "name": "Acme Labs",
+     "industry": null,
+     "size": null,
+     "country": null,
+     "website": "https://acme.example"
+    },
+    "ok": true,
+    "data": {
+     "name": "Acme Labs",
+     "industry": null,
+     "size": null,
+     "country": null,
+     "website": "https://acme.example"
+    }
+   },
+   {
+    "input": {
+     "name": "Acme Labs",
+     "industry": null,
+     "size": null,
+     "country": null,
+     "website": "http://acme.example/path?q=1"
+    },
+    "ok": true,
+    "data": {
+     "name": "Acme Labs",
+     "industry": null,
+     "size": null,
+     "country": null,
+     "website": "http://acme.example/path?q=1"
+    }
+   },
+   {
+    "input": {
+     "name": "Acme Labs",
+     "industry": null,
+     "size": null,
+     "country": null,
+     "website": "acme.example"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "website",
+      "message": "Invalid URL"
+     }
+    ]
+   },
+   {
+    "input": {
+     "name": "Acme Labs",
+     "industry": null,
+     "size": null,
+     "country": null,
+     "website": "ftp://files.example"
+    },
+    "ok": true,
+    "data": {
+     "name": "Acme Labs",
+     "industry": null,
+     "size": null,
+     "country": null,
+     "website": "ftp://files.example"
+    }
+   },
+   {
+    "input": {
+     "name": "Acme Labs",
+     "industry": null,
+     "size": null,
+     "country": null,
+     "website": "mailto:hi@acme.example"
+    },
+    "ok": true,
+    "data": {
+     "name": "Acme Labs",
+     "industry": null,
+     "size": null,
+     "country": null,
+     "website": "mailto:hi@acme.example"
+    }
+   },
+   {
+    "input": {
+     "name": "Acme Labs",
+     "industry": null,
+     "size": null,
+     "country": null,
+     "website": "https://"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "website",
+      "message": "Invalid URL"
+     }
+    ]
+   },
+   {
+    "input": {
+     "name": "Acme Labs",
+     "industry": null,
+     "size": null,
+     "country": null,
+     "website": "https://localhost"
+    },
+    "ok": true,
+    "data": {
+     "name": "Acme Labs",
+     "industry": null,
+     "size": null,
+     "country": null,
+     "website": "https://localhost"
+    }
+   },
+   {
+    "input": {
+     "name": "Acme Labs",
+     "industry": null,
+     "size": null,
+     "country": null,
+     "website": "https://acme"
+    },
+    "ok": true,
+    "data": {
+     "name": "Acme Labs",
+     "industry": null,
+     "size": null,
+     "country": null,
+     "website": "https://acme"
+    }
+   },
+   {
+    "input": {
+     "name": "Acme Labs",
+     "industry": null,
+     "size": null,
+     "country": null,
+     "website": "javascript:alert(1)"
+    },
+    "ok": true,
+    "data": {
+     "name": "Acme Labs",
+     "industry": null,
+     "size": null,
+     "country": null,
+     "website": "javascript:alert(1)"
+    }
+   },
+   {
+    "input": {
+     "name": "Acme Labs",
+     "industry": null,
+     "size": null,
+     "country": null,
+     "website": "https://exa mple.com"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "website",
+      "message": "Invalid URL"
+     }
+    ]
+   },
+   {
+    "input": {
+     "name": "Acme Labs",
+     "industry": null,
+     "size": null,
+     "country": null,
+     "website": " https://acme.example "
+    },
+    "ok": true,
+    "data": {
+     "name": "Acme Labs",
+     "industry": null,
+     "size": null,
+     "country": null,
+     "website": "https://acme.example"
+    }
+   },
+   {
+    "input": {
+     "name": "Acme Labs",
+     "industry": null,
+     "size": null,
+     "country": null,
+     "website": "https://acme.example:99999"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "website",
+      "message": "Invalid URL"
+     }
+    ]
+   },
+   {
+    "input": {
+     "name": "Acme Labs",
+     "industry": null,
+     "size": null,
+     "country": null,
+     "website": "HTTPS://ACME.EXAMPLE"
+    },
+    "ok": true,
+    "data": {
+     "name": "Acme Labs",
+     "industry": null,
+     "size": null,
+     "country": null,
+     "website": "HTTPS://ACME.EXAMPLE"
+    }
+   },
+   {
+    "input": {
+     "name": "Acme Labs",
+     "industry": null,
+     "size": null,
+     "country": null,
+     "website": "https://ünï.example"
+    },
+    "ok": true,
+    "data": {
+     "name": "Acme Labs",
+     "industry": null,
+     "size": null,
+     "country": null,
+     "website": "https://ünï.example"
+    }
+   },
+   {
+    "input": {
+     "name": "Acme Labs",
+     "industry": null,
+     "size": null,
+     "country": null,
+     "website": "https://acme.example/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "website",
+      "message": "Too big: expected string to have <=200 characters"
+     }
+    ]
+   },
+   {
+    "input": {
+     "name": "Acme Labs",
+     "industry": null,
+     "size": null,
+     "country": null,
+     "website": "urn:isbn:123"
+    },
+    "ok": true,
+    "data": {
+     "name": "Acme Labs",
+     "industry": null,
+     "size": null,
+     "country": null,
+     "website": "urn:isbn:123"
+    }
+   },
+   {
+    "input": {
+     "name": "Acme Labs",
+     "industry": null,
+     "size": null,
+     "country": null,
+     "website": "https://[::1]/"
+    },
+    "ok": true,
+    "data": {
+     "name": "Acme Labs",
+     "industry": null,
+     "size": null,
+     "country": null,
+     "website": "https://[::1]/"
+    }
+   },
+   {
+    "input": {
+     "name": "Acme Labs",
+     "industry": null,
+     "size": null,
+     "country": null,
+     "website": "https://user:pw@acme.example"
+    },
+    "ok": true,
+    "data": {
+     "name": "Acme Labs",
+     "industry": null,
+     "size": null,
+     "country": null,
+     "website": "https://user:pw@acme.example"
+    }
+   },
+   {
+    "input": "nonsense",
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received string"
+     }
+    ]
+   },
+   {
+    "input": null,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received null"
+     }
+    ]
+   },
+   {
+    "input": 42,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received number"
+     }
+    ]
+   },
+   {
+    "input": [],
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received array"
+     }
+    ]
+   }
+  ],
+  "branding": [
+   {
+    "input": {
+     "logo_upload_id": null,
+     "brand_color": null
+    },
+    "ok": true,
+    "data": {
+     "logo_upload_id": null,
+     "brand_color": null
+    }
+   },
+   {
+    "input": {
+     "logo_upload_id": null,
+     "brand_color": "#ABCDEF"
+    },
+    "ok": true,
+    "data": {
+     "logo_upload_id": null,
+     "brand_color": "#ABCDEF"
+    }
+   },
+   {
+    "input": {
+     "logo_upload_id": null,
+     "brand_color": "blue"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "brand_color",
+      "message": "Invalid string: must match pattern /^#[0-9a-fA-F]{6}$/"
+     }
+    ]
+   },
+   {
+    "input": {
+     "logo_upload_id": "abc",
+     "brand_color": null
+    },
+    "ok": true,
+    "data": {
+     "logo_upload_id": "abc",
+     "brand_color": null
+    }
+   },
+   {
+    "input": {
+     "brand_color": null
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "logo_upload_id",
+      "message": "Invalid input: expected string, received undefined"
+     }
+    ]
+   },
+   {
+    "input": "nonsense",
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received string"
+     }
+    ]
+   },
+   {
+    "input": null,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received null"
+     }
+    ]
+   },
+   {
+    "input": 42,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received number"
+     }
+    ]
+   },
+   {
+    "input": [],
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received array"
+     }
+    ]
+   }
+  ],
+  "localisation": [
+   {
+    "input": {
+     "language": "en",
+     "timezone": "UTC",
+     "currency": "USD",
+     "date_format": "DD/MM/YYYY",
+     "number_format": "1,234.56",
+     "week_start": "monday"
+    },
+    "ok": true,
+    "data": {
+     "language": "en",
+     "timezone": "UTC",
+     "currency": "USD",
+     "date_format": "DD/MM/YYYY",
+     "number_format": "1,234.56",
+     "week_start": "monday"
+    }
+   },
+   {
+    "input": {
+     "language": "en",
+     "timezone": "Mars/Base",
+     "currency": "USD",
+     "date_format": "DD/MM/YYYY",
+     "number_format": "1,234.56",
+     "week_start": "monday"
+    },
+    "ok": true,
+    "data": {
+     "language": "en",
+     "timezone": "Mars/Base",
+     "currency": "USD",
+     "date_format": "DD/MM/YYYY",
+     "number_format": "1,234.56",
+     "week_start": "monday"
+    }
+   },
+   {
+    "input": {
+     "language": "en",
+     "timezone": "",
+     "currency": "USD",
+     "date_format": "DD/MM/YYYY",
+     "number_format": "1,234.56",
+     "week_start": "monday"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "timezone",
+      "message": "Too small: expected string to have >=1 characters"
+     }
+    ]
+   },
+   {
+    "input": {
+     "language": "en",
+     "timezone": "UTC",
+     "currency": "XYZ",
+     "date_format": "DD/MM/YYYY",
+     "number_format": "1,234.56",
+     "week_start": "monday"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "currency",
+      "message": "Choose a currency."
+     }
+    ]
+   },
+   {
+    "input": {
+     "language": "xx",
+     "timezone": "UTC",
+     "currency": "USD",
+     "date_format": "DD/MM/YYYY",
+     "number_format": "1,234.56",
+     "week_start": "monday"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "language",
+      "message": "Invalid option: expected one of \"en\"|\"fr\"|\"es\"|\"pt\"|\"de\"|\"it\"|\"nl\"|\"pl\"|\"ru\"|\"uk\"|\"tr\"|\"ar\"|\"hi\"|\"bn\"|\"zh-CN\"|\"ja\"|\"ko\"|\"id\"|\"vi\"|\"sw\""
+     }
+    ]
+   },
+   {
+    "input": "nonsense",
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received string"
+     }
+    ]
+   },
+   {
+    "input": null,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received null"
+     }
+    ]
+   },
+   {
+    "input": 42,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received number"
+     }
+    ]
+   },
+   {
+    "input": [],
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received array"
+     }
+    ]
+   }
+  ],
+  "team": [
+   {
+    "input": {
+     "invites": []
+    },
+    "ok": true,
+    "data": {
+     "invites": []
+    }
+   },
+   {
+    "input": {
+     "invites": [
+      {
+       "email": "a@b.example",
+       "role": "admin"
+      },
+      {
+       "email": "A@B.example",
+       "role": "member"
+      }
+     ]
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "invites",
+      "message": "Each email once."
+     }
+    ]
+   },
+   {
+    "input": {
+     "invites": [
+      {
+       "email": "nope",
+       "role": "member"
+      }
+     ]
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "invites.0.email",
+      "message": "Invalid email address"
+     }
+    ]
+   },
+   {
+    "input": {
+     "invites": [
+      {
+       "email": "a@b.example",
+       "role": "owner"
+      }
+     ]
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "invites.0.role",
+      "message": "Invalid option: expected one of \"admin\"|\"member\""
+     }
+    ]
+   },
+   {
+    "input": {
+     "invites": [
+      {
+       "email": "p0@b.example",
+       "role": "member"
+      },
+      {
+       "email": "p1@b.example",
+       "role": "member"
+      },
+      {
+       "email": "p2@b.example",
+       "role": "member"
+      },
+      {
+       "email": "p3@b.example",
+       "role": "member"
+      },
+      {
+       "email": "p4@b.example",
+       "role": "member"
+      },
+      {
+       "email": "p5@b.example",
+       "role": "member"
+      },
+      {
+       "email": "p6@b.example",
+       "role": "member"
+      },
+      {
+       "email": "p7@b.example",
+       "role": "member"
+      },
+      {
+       "email": "p8@b.example",
+       "role": "member"
+      },
+      {
+       "email": "p9@b.example",
+       "role": "member"
+      },
+      {
+       "email": "p10@b.example",
+       "role": "member"
+      },
+      {
+       "email": "p11@b.example",
+       "role": "member"
+      },
+      {
+       "email": "p12@b.example",
+       "role": "member"
+      },
+      {
+       "email": "p13@b.example",
+       "role": "member"
+      },
+      {
+       "email": "p14@b.example",
+       "role": "member"
+      },
+      {
+       "email": "p15@b.example",
+       "role": "member"
+      },
+      {
+       "email": "p16@b.example",
+       "role": "member"
+      },
+      {
+       "email": "p17@b.example",
+       "role": "member"
+      },
+      {
+       "email": "p18@b.example",
+       "role": "member"
+      },
+      {
+       "email": "p19@b.example",
+       "role": "member"
+      },
+      {
+       "email": "p20@b.example",
+       "role": "member"
+      }
+     ]
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "invites",
+      "message": "Too big: expected array to have <=20 items"
+     }
+    ]
+   },
+   {
+    "input": {
+     "invites": [
+      {
+       "email": "ada@lovelace.test",
+       "role": "member"
+      },
+      {
+       "email": "grace@hopper.test",
+       "role": "admin"
+      }
+     ]
+    },
+    "ok": true,
+    "data": {
+     "invites": [
+      {
+       "email": "ada@lovelace.test",
+       "role": "member"
+      },
+      {
+       "email": "grace@hopper.test",
+       "role": "admin"
+      }
+     ]
+    }
+   },
+   {
+    "input": "nonsense",
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received string"
+     }
+    ]
+   },
+   {
+    "input": null,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received null"
+     }
+    ]
+   },
+   {
+    "input": 42,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received number"
+     }
+    ]
+   },
+   {
+    "input": [],
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received array"
+     }
+    ]
+   }
+  ],
+  "first_form": [
+   {
+    "input": {
+     "choice": null,
+     "template_key": null
+    },
+    "ok": true,
+    "data": {
+     "choice": null,
+     "template_key": null
+    }
+   },
+   {
+    "input": {
+     "choice": "template",
+     "template_key": null
+    },
+    "ok": true,
+    "data": {
+     "choice": "template",
+     "template_key": null
+    }
+   },
+   {
+    "input": {
+     "choice": null,
+     "template_key": "customer_feedback"
+    },
+    "ok": true,
+    "data": {
+     "choice": null,
+     "template_key": "customer_feedback"
+    }
+   },
+   {
+    "input": {
+     "choice": null,
+     "template_key": "nope"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "template_key",
+      "message": "Invalid option: expected one of \"customer_feedback\"|\"event_registration\"|\"job_application\"|\"employee_onboarding\"|\"contact_lead\"|\"incident_report\""
+     }
+    ]
+   },
+   {
+    "input": {
+     "choice": "copy",
+     "template_key": null
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "choice",
+      "message": "Invalid option: expected one of \"blank\"|\"template\""
+     }
+    ]
+   },
+   {
+    "input": "nonsense",
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received string"
+     }
+    ]
+   },
+   {
+    "input": null,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received null"
+     }
+    ]
+   },
+   {
+    "input": 42,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received number"
+     }
+    ]
+   },
+   {
+    "input": [],
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received array"
+     }
+    ]
+   }
+  ],
+  "patch": [
+   {
+    "input": {
+     "step": "company",
+     "action": "save",
+     "data": {}
+    },
+    "ok": true,
+    "data": {
+     "step": "company",
+     "action": "save",
+     "data": {}
+    }
+   },
+   {
+    "input": {
+     "step": "billing",
+     "action": "save",
+     "data": {}
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "step",
+      "message": "Invalid option: expected one of \"company\"|\"branding\"|\"localisation\"|\"team\"|\"first_form\""
+     }
+    ]
+   },
+   {
+    "input": {
+     "step": "company",
+     "action": "later",
+     "data": {}
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "action",
+      "message": "Invalid option: expected one of \"save\"|\"skip\""
+     }
+    ]
+   },
+   {
+    "input": {
+     "step": "company",
+     "action": "save"
+    },
+    "ok": true,
+    "data": {
+     "step": "company",
+     "action": "save"
+    }
+   },
+   {
+    "input": {
+     "step": "company",
+     "action": "save",
+     "data": null
+    },
+    "ok": true,
+    "data": {
+     "step": "company",
+     "action": "save",
+     "data": null
+    }
+   },
+   {
+    "input": "nonsense",
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received string"
+     }
+    ]
+   },
+   {
+    "input": null,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received null"
+     }
+    ]
+   },
+   {
+    "input": 42,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received number"
+     }
+    ]
+   },
+   {
+    "input": [],
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received array"
+     }
+    ]
+   }
+  ]
+ },
  "settings_changes": [
   {
    "before": {

@@ -495,3 +495,14 @@ CURRENCY_CODES = ('AED',
  'ZAR',
  'ZMW',
  'ZWG')
+
+ONBOARDING_STEPS = ('company', 'branding', 'localisation', 'team', 'first_form')
+
+STARTER_TEMPLATE_KEYS = ('customer_feedback',
+ 'event_registration',
+ 'job_application',
+ 'employee_onboarding',
+ 'contact_lead',
+ 'incident_report')
+
+ORG_KINDS = ('departments', 'job_titles')

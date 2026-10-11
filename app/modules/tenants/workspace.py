@@ -18,6 +18,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.core.db.session import set_rls_context
 from app.core.errors import FrmError
 from app.core.ids import uuid7
+from app.modules.onboarding.state import SECTION, new_state
 from app.modules.rbac.service import built_in_roles
 from app.modules.settings.service import defaults, seed_rows
 from app.modules.tenants.models import Organisation
@@ -53,6 +54,7 @@ async def create_workspace(
     tenant_id: uuid.UUID | None = None,
     organisation_id: uuid.UUID | None = None,
     owner_id: uuid.UUID | None = None,
+    onboarding: bool = True,
 ) -> NewWorkspace:
     """Inside the caller's transaction; leaves the session's RLS context on the new workspace."""
     tenant_id = tenant_id or uuid7()
@@ -70,7 +72,10 @@ async def create_workspace(
                              legal_name=name, is_primary=True))
     roles = built_in_roles(tenant_id, organisation_id)
     session.add_all(roles)
-    session.add_all(seed_rows(tenant_id, organisation_id, defaults(name=name, website=website, signin_methods=signin_methods)))
+    sections = defaults(name=name, website=website, signin_methods=signin_methods)
+    if onboarding:  # the seeded workspaces count as set up (no onboarding row)
+        sections[SECTION] = new_state()
+    session.add_all(seed_rows(tenant_id, organisation_id, sections))
     await session.flush()
     if founder is None:  # Formalie's own workspace: nobody signs in to it
         return NewWorkspace(tenant_id, organisation_id, None, subdomain, name)

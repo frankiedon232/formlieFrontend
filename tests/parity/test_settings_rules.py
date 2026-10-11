@@ -46,3 +46,25 @@ def test_time_zones(case: dict) -> None:
 @pytest.mark.parametrize("case", RULES["settings_changes"], ids=lambda c: str(len(c["changes"])))
 def test_settings_changes(case: dict) -> None:
     assert settings_changes(case["before"], case["after"]) == case["changes"]
+
+
+ONBOARDING = [(name, i, case) for name, cases in RULES["onboarding"].items() for i, case in enumerate(cases)]
+# Ours takes web addresses only (zod's z.url() also takes these schemes); see app/modules/onboarding/schemas.py
+NOT_WEB = ("ftp:", "mailto:", "javascript:", "urn:")
+
+
+@pytest.mark.parametrize(("name", "index", "case"), ONBOARDING, ids=[f"onboarding-{n}-{i}" for n, i, _ in ONBOARDING])
+def test_onboarding_answers_like_zod(name: str, index: int, case: dict) -> None:  # noqa: ARG001
+    from app.modules.onboarding import schemas as onboarding
+
+    ok, result = onboarding.SCHEMAS[name].safe_parse(case["input"])
+    website = case["input"].get("website") if isinstance(case["input"], dict) else None
+    if name == "company" and isinstance(website, str) and website.lower().startswith(NOT_WEB):
+        assert not ok and result == [{"field": "website", "message": "Invalid URL"}]
+        return
+    if case["ok"]:
+        assert ok, result
+        assert result == case["data"]
+    else:
+        assert not ok, result
+        assert [(i["field"], i["message"]) for i in result] == [(i["path"], i["message"]) for i in case["issues"]]

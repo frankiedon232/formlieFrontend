@@ -89,6 +89,17 @@ def settings_catalogues() -> None:
               ("MAX_SESSION_HOURS", tuple(r["max_session_hours"])),
               ("COUNTRY_CURRENCIES", r["country_currencies"]),
               ("CURRENCY_CODES", tuple(r["currency_codes"])),
+              ("ONBOARDING_STEPS", tuple(r["onboarding_steps"])),
+              ("STARTER_TEMPLATE_KEYS", tuple(r["starter_template_keys"])),
+              ("ORG_KINDS", tuple(r["org_kinds"])),
+          ])
+    write("app/modules/dashboard/catalogues.py", "The sizes of Formalie's own lists, for the navigation counts.",
+          "shared/templates, utils/forms/theme and page-design, types/datasources", [
+              ("SYSTEM_TEMPLATES", r["system_templates"]),
+              ("TEMPLATE_CATEGORY_KEYS", tuple(r["template_category_keys"])),
+              ("SYSTEM_THEME_COUNT", r["system_theme_count"]),
+              ("SYSTEM_PAGE_COUNT", r["system_page_count"]),
+              ("DATASOURCE_STATUSES", tuple(r["datasource_statuses"])),
           ])
 
 

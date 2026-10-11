@@ -64,6 +64,35 @@ USERS = [
 ]
 
 
+# The mock's sample organisation data (data/orgStore.ts seed): everyone in one department, the last two empty
+ORG_SAMPLES = ("remedylegal", "samathtax")  # the mock's seeded workspaces with people
+DEPARTMENTS = ["Finance", "Operations", "People", "Sales", "Support", "Technology", "Legal", "Compliance"]
+JOB_TITLES = ["Manager", "Team lead", "Specialist", "Coordinator", "Analyst", "Assistant"]
+
+
+async def seed_org(session: AsyncSession, ws: dict) -> int:
+    """Departments and job titles with their people, once (skipped when the workspace has any)."""
+    from app.modules.org.models import OrgUnit, OrgUnitMember
+
+    await set_rls_context(session, ws["id"], ws["org"], None)
+    if (await session.execute(text("SELECT 1 FROM org_units LIMIT 1"))).first():
+        return 0
+    people = [u[0] for u in USERS if u[1] == ws["subdomain"] and u[7] != "disabled"]
+
+    def add(kind: str, name: str, members: list[uuid.UUID]) -> None:
+        unit = OrgUnit(id=uuid7(), tenant_id=ws["id"], organisation_id=ws["org"], kind=kind, name=name)
+        session.add(unit)
+        for member in members:
+            session.add(OrgUnitMember(tenant_id=ws["id"], organisation_id=ws["org"], org_unit_id=unit.id, user_id=member))
+
+    for i, name in enumerate(DEPARTMENTS):
+        add("departments", name, [p for n, p in enumerate(people) if n % 6 == i] if i < 6 else [])
+    for i, name in enumerate(JOB_TITLES):
+        add("job_titles", name, [p for n, p in enumerate(people) if n % len(JOB_TITLES) == i])
+    await session.flush()
+    return len(DEPARTMENTS) + len(JOB_TITLES)
+
+
 async def seed(database: str) -> None:
     settings = get_settings()
     if settings.is_production:
@@ -76,7 +105,8 @@ async def seed(database: str) -> None:
             async with AsyncSession(engine, expire_on_commit=False) as session, session.begin():
                 exists = (await session.execute(text("SELECT 1 FROM platform.tenants WHERE id = :id"), {"id": ws["id"]})).first()
                 if exists:
-                    print(f"  {ws['subdomain']}: already there")
+                    added = await seed_org(session, ws) if ws["subdomain"] in ORG_SAMPLES else 0
+                    print(f"  {ws['subdomain']}: already there" + (f" (added {added} departments and job titles)" if added else ""))
                     continue
                 people = [u for u in USERS if u[1] == ws["subdomain"]]
                 founder_row = people[0] if people else None
@@ -84,7 +114,7 @@ async def seed(database: str) -> None:
                 await create_workspace(session, name=ws["name"], subdomain=ws["subdomain"], founder=founder,
                                        plan_id=ws["plan"], signin_methods=ws["methods"], website=ws["website"],
                                        tenant_id=ws["id"], organisation_id=ws["org"],
-                                       owner_id=founder_row[0] if founder_row else None)
+                                       owner_id=founder_row[0] if founder_row else None, onboarding=False)
                 if founder_row and founder_row[5]:
                     await session.execute(text("UPDATE users SET phone = :p WHERE id = :id"),
                                           {"p": founder_row[5], "id": founder_row[0]})
@@ -94,6 +124,8 @@ async def seed(database: str) -> None:
                     session.add(User(id=uid, tenant_id=ws["id"], organisation_id=ws["org"], email=email, first_name=first,
                                      last_name=last, phone=phone, status=status, role_id=member.id,  # type: ignore[union-attr]
                                      password_hash=password_hash, password_changed_at=now, joined_at=now))
+                if ws["subdomain"] in ORG_SAMPLES:
+                    await seed_org(session, ws)
                 if ws["status"] != "active":
                     await session.execute(text("UPDATE platform.tenants SET status = :s WHERE id = :id"),
                                           {"s": ws["status"], "id": ws["id"]})

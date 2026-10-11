@@ -34,6 +34,15 @@ import { SETTINGS_SECTIONS } from '__SHARED__/types/settings.ts'
 import { COUNTRY_CURRENCIES, CURRENCY_CODES } from '__SHARED__/utils/platform/countries.ts'
 import { isTimeZone } from '__SHARED__/utils/forms/catalogues.ts'
 import { parseCidr, ipInCidr } from '__SHARED__/utils/apiService/access.ts'
+import { STARTER_TEMPLATE_KEYS } from '__SHARED__/utils/templates/starters.ts'
+import { ONBOARDING_STEPS } from '__SHARED__/types/onboarding.ts'
+import { z } from '__SHARED__/../node_modules/zod'
+import { APP_LOCALES } from '__SHARED__/utils/i18n/locales.ts'
+import { SYSTEM_TEMPLATES, TEMPLATE_CATEGORIES, TEMPLATE_CATEGORY_KEYS } from '__SHARED__/templates/index.ts'
+import { THEME_PRESETS } from '__SHARED__/utils/forms/theme.ts'
+import { PAGE_PRESETS } from '__SHARED__/utils/forms/page-design.ts'
+import { DATASOURCE_STATUSES } from '__SHARED__/types/datasources.ts'
+import { ORG_KINDS } from '__SHARED__/types/org.ts'
 
 const clone = v => JSON.parse(JSON.stringify(v))
 const set = (base, path, value) => {
@@ -135,6 +144,37 @@ const appearanceCases = variants(clone(A.FORMALIE_APPEARANCE), [
   ['header.search', 'no'], ['preset', 'x'.repeat(41)],
 ])
 
+// Onboarding (server/mock/routes/onboarding.ts: the schemas live in the mock route, copied here as they are)
+const ob = {
+  company: z.object({ name: z.string().trim().min(2).max(120), industry: z.enum(O.INDUSTRIES).nullable(), size: z.enum(O.COMPANY_SIZES).nullable(),
+    country: z.string().refine(v => v in COUNTRY_CURRENCIES, 'Choose a country.').nullable(), website: z.url().max(200).nullable() }),
+  branding: z.object({ logo_upload_id: z.string().nullable(), brand_color: z.string().regex(/^#[0-9a-fA-F]{6}$/).nullable() }),
+  localisation: z.object({ language: z.enum(APP_LOCALES.map(item => item.code)),
+    timezone: z.string().min(1).max(64), currency: z.string().refine(code => CURRENCY_CODES.includes(code), 'Choose a currency.'),
+    date_format: z.enum(O.DATE_FORMATS), number_format: z.enum(O.NUMBER_FORMATS), week_start: z.enum(['monday', 'sunday', 'saturday']) }),
+  team: z.object({ invites: z.array(z.object({ email: z.email(), role: z.enum(['admin', 'member']) })).max(20)
+    .refine(list => new Set(list.map(i => i.email.toLowerCase())).size === list.length, 'Each email once.') }),
+  first_form: z.object({ choice: z.enum(['blank', 'template']).nullable(), template_key: z.enum(STARTER_TEMPLATE_KEYS).nullable() }),
+  patch: z.object({ step: z.enum(ONBOARDING_STEPS), action: z.enum(['save', 'skip']), data: z.unknown().optional() }),
+}
+const obCompany = { name: 'Acme Labs', industry: null, size: null, country: null, website: null }
+const urls = ['https://acme.example', 'http://acme.example/path?q=1', 'acme.example', 'ftp://files.example', 'mailto:hi@acme.example',
+  'https://', 'https://localhost', 'https://acme', 'javascript:alert(1)', 'https://exa mple.com', ' https://acme.example ', 'https://acme.example:99999',
+  'HTTPS://ACME.EXAMPLE', 'https://ünï.example', 'https://acme.example/' + 'x'.repeat(200), 'urn:isbn:123', 'https://[::1]/', 'https://user:pw@acme.example']
+const onboardingCases = {
+  company: variants(obCompany, [['name', ' A '], ['name', 'x'.repeat(121)], ['country', 'GB'], ['country', 'XX'], ['industry', 'legal'],
+    ...urls.map(u => ['website', u])]),
+  branding: variants({ logo_upload_id: null, brand_color: null }, [['brand_color', '#ABCDEF'], ['brand_color', 'blue'], ['logo_upload_id', 'abc'], ['logo_upload_id', '__DELETE__']]),
+  localisation: variants({ language: 'en', timezone: 'UTC', currency: 'USD', date_format: 'DD/MM/YYYY', number_format: '1,234.56', week_start: 'monday' },
+    [['timezone', 'Mars/Base'], ['timezone', ''], ['currency', 'XYZ'], ['language', 'xx']]),
+  team: variants({ invites: [] }, [['invites', [{ email: 'a@b.example', role: 'admin' }, { email: 'A@B.example', role: 'member' }]],
+    ['invites', [{ email: 'nope', role: 'member' }]], ['invites', [{ email: 'a@b.example', role: 'owner' }]],
+    ['invites', Array.from({ length: 21 }, (_, i) => ({ email: `p${i}@b.example`, role: 'member' }))],
+    ['invites', [{ email: 'ada@lovelace.test', role: 'member' }, { email: 'grace@hopper.test', role: 'admin' }]]]),
+  first_form: variants({ choice: null, template_key: null }, [['choice', 'template'], ['template_key', STARTER_TEMPLATE_KEYS[0]], ['template_key', 'nope'], ['choice', 'copy']]),
+  patch: variants({ step: 'company', action: 'save', data: {} }, [['step', 'billing'], ['action', 'later'], ['data', '__DELETE__'], ['data', null]]),
+}
+
 const settingsChanges = (before, after, prefix = '') => Object.keys(after).flatMap(key => {
   const a = before[key]; const b = after[key]
   if (b && typeof b === 'object' && !Array.isArray(b)) return settingsChanges(a ?? {}, b, `${prefix}${key}.`)
@@ -174,6 +214,12 @@ process.stdout.write(JSON.stringify({
     form_defaults: formDefaultCases.map(i => run(S.formDefaultsSchema, i)),
     appearance: appearanceCases.map(i => run(S.appearanceSchema, i)),
   },
+  // Navigation counts (server/mock/routes/navigation.ts): the system lists' sizes
+  system_templates: SYSTEM_TEMPLATES.map(t => ({ key: t.key, category: t.category })), template_category_keys: TEMPLATE_CATEGORY_KEYS,
+  system_theme_count: THEME_PRESETS.length - 1 + TEMPLATE_CATEGORIES.length, system_page_count: PAGE_PRESETS.length,
+  datasource_statuses: DATASOURCE_STATUSES, org_kinds: ORG_KINDS,
+  starter_template_keys: STARTER_TEMPLATE_KEYS, onboarding_steps: ONBOARDING_STEPS,
+  onboarding: Object.fromEntries(Object.entries(onboardingCases).map(([k, cases]) => [k, cases.map(i => run(ob[k], i))])),
   settings_changes: changeCases,
   ip_ranges: ips.map(v => ({ value: v, valid: !!parseCidr(v) })),
   ip_matches: ipMatches.map(([ip, cidr]) => ({ ip, cidr, match: ipInCidr(ip, cidr) })),

@@ -209,6 +209,37 @@ class String(Schema):
         return self
 
 
+    def email(self, message: str = "Invalid email address") -> String:
+        """z.email() (zod 4's own pattern, app/core/validation.py)."""
+        from app.core.validation import ZOD_EMAIL
+
+        def check(v: str, p: Path, i: Issues) -> str:
+            if not ZOD_EMAIL.match(v):
+                _issue(i, p, message, check=True)
+            return v
+        self._checks.append(check)
+        return self
+
+    def url(self, schemes: Sequence[str] = ("http", "https"), message: str = "Invalid URL") -> String:
+        """z.url(), trimmed like zod does, but only web addresses (zod also takes javascript:, mailto: … which a
+        page must never link to)."""
+        from urllib.parse import urlsplit
+
+        def check(v: str, p: Path, i: Issues) -> str:
+            v = v.strip(_JS_SPACE)
+            try:
+                parts = urlsplit(v)
+                good = (parts.scheme.lower() in schemes and bool(parts.hostname) and not any(c.isspace() for c in v)
+                        and (parts.port is None or 0 <= parts.port <= 65535))
+            except ValueError:
+                good = False
+            if not good:
+                _issue(i, p, message, check=True)
+            return v
+        self._checks.append(check)
+        return self
+
+
 def _length(value: str) -> int:
     """JavaScript's length: UTF-16 code units (an emoji counts 2)."""
     return len(value.encode("utf-16-le")) // 2
@@ -411,6 +442,15 @@ def obj(shape: dict[str, Schema] | None = None, /, **fields: Schema) -> Object:
 
 def partial_record(keys: Sequence[str], value: Schema) -> PartialRecord:
     return PartialRecord(keys, value)
+
+
+class Unknown(Schema):
+    def _base(self, value: Any, path: Path, issues: Issues) -> Any:
+        return value
+
+
+def unknown() -> Unknown:
+    return Unknown()
 
 
 def preprocess(fn: Callable[[Any], Any], inner: Schema) -> Preprocess:

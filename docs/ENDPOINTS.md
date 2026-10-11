@@ -583,7 +583,7 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 - **Guards:** `requireAuth`
 - **Permissions:** `people.view`
 
-- [ ] `GET /api/v1/navigation/counts` (`navigationCounts`)
+- [ ] `GET /api/v1/navigation/counts` (`navigationCounts`) (people and organisation data counted now; forms, responses, folders, templates, themes, data sources fill in with their phases)
 
 ## `routes/notifications.ts`
 
@@ -599,17 +599,17 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 - **Guards:** `requireAdmin`
 - **Audit:** `settings.org_archived`, `settings.org_created`, `settings.org_deleted`, `settings.org_imported`, `settings.org_merged`, `settings.org_restored`, `settings.org_updated`
 
-- [ ] `GET /api/v1/org/{kind}` (`listOrg`)
-- [ ] `GET /api/v1/org/{kind}/insights` (`orgInsights`)
-- [ ] `POST /api/v1/org/{kind}` (`createOrgItem`)
-- [ ] `POST /api/v1/org/{kind}/merge` (`mergeOrgItems`)
-- [ ] `POST /api/v1/org/{kind}/import` (`importOrgItems`)
-- [ ] `GET /api/v1/org/{kind}/{id}` (`getOrgItem`)
-- [ ] `GET /api/v1/org/{kind}/{id}/usage` (`orgUsage`)
-- [ ] `PATCH /api/v1/org/{kind}/{id}` (`updateOrgItem`)
-- [ ] `POST /api/v1/org/{kind}/{id}/archive` (`archiveOrgItem`)
-- [ ] `POST /api/v1/org/{kind}/{id}/restore` (`restoreOrgItem`)
-- [ ] `DELETE /api/v1/org/{kind}/{id}` (`deleteOrgItem`)
+- [x] `GET /api/v1/org/{kind}` (`listOrg`)
+- [x] `GET /api/v1/org/{kind}/insights` (`orgInsights`)
+- [x] `POST /api/v1/org/{kind}` (`createOrgItem`)
+- [x] `POST /api/v1/org/{kind}/merge` (`mergeOrgItems`)
+- [x] `POST /api/v1/org/{kind}/import` (`importOrgItems`)
+- [x] `GET /api/v1/org/{kind}/{id}` (`getOrgItem`)
+- [x] `GET /api/v1/org/{kind}/{id}/usage` (`orgUsage`)
+- [x] `PATCH /api/v1/org/{kind}/{id}` (`updateOrgItem`)
+- [x] `POST /api/v1/org/{kind}/{id}/archive` (`archiveOrgItem`)
+- [x] `POST /api/v1/org/{kind}/{id}/restore` (`restoreOrgItem`)
+- [x] `DELETE /api/v1/org/{kind}/{id}` (`deleteOrgItem`)
 
 ## `routes/settings.ts`
 
@@ -749,9 +749,9 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 - **Guards:** `requireAdmin`
 - **Audit:** `settings.updated`, `users.invited`, `workspace.setup_completed`, `workspace.updated`
 
-- [ ] `GET /api/v1/onboarding` (`getOnboarding`)
-- [ ] `PATCH /api/v1/onboarding` (`patchOnboarding`)
-- [ ] `POST /api/v1/onboarding/finish` (`finishOnboarding`)
+- [x] `GET /api/v1/onboarding` (`getOnboarding`)
+- [x] `PATCH /api/v1/onboarding` (`patchOnboarding`)
+- [x] `POST /api/v1/onboarding/finish` (`finishOnboarding`)
 
 ## `routes/uploads.ts`
 
