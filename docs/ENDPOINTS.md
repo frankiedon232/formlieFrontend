@@ -267,17 +267,17 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 - **Guards:** `requireAdmin`, `requireDatabase`, `requireOwned`
 - **Audit:** `data.connection_created`, `data.connection_deleted`, `data.connection_disabled`, `data.connection_duplicated`, `data.connection_enabled`, `data.connection_tested`, `data.connection_updated`, `data.credentials_changed`
 
-- [ ] `GET /api/v1/datasources` (`listDataSources`)
-- [ ] `GET /api/v1/datasources/insights` (`dataSourceInsights`)
-- [ ] `GET /api/v1/datasources/meta` (`dataSourceMeta`)
-- [ ] `POST /api/v1/datasources/test` (`startConnectionTest`)
-- [ ] `GET /api/v1/datasources/tests/{id}` (`getConnectionTest`)
-- [ ] `POST /api/v1/datasources` (`createDataSource`)
-- [ ] `GET /api/v1/datasources/{id}` (`getDataSource`)
-- [ ] `PATCH /api/v1/datasources/{id}` (`patchDataSource`)
-- [ ] `POST /api/v1/datasources/{id}/test` (`testSavedConnection`)
-- [ ] `POST /api/v1/datasources/{id}/duplicate` (`duplicateDataSource`)
-- [ ] `DELETE /api/v1/datasources/{id}` (`deleteDataSource`)
+- [x] `GET /api/v1/datasources` (`listDataSources`)
+- [x] `GET /api/v1/datasources/insights` (`dataSourceInsights`)
+- [x] `GET /api/v1/datasources/meta` (`dataSourceMeta`)
+- [x] `POST /api/v1/datasources/test` (`startConnectionTest`)
+- [x] `GET /api/v1/datasources/tests/{id}` (`getConnectionTest`)
+- [x] `POST /api/v1/datasources` (`createDataSource`)
+- [x] `GET /api/v1/datasources/{id}` (`getDataSource`)
+- [x] `PATCH /api/v1/datasources/{id}` (`patchDataSource`)
+- [x] `POST /api/v1/datasources/{id}/test` (`testSavedConnection`)
+- [x] `POST /api/v1/datasources/{id}/duplicate` (`duplicateDataSource`)
+- [x] `DELETE /api/v1/datasources/{id}` (`deleteDataSource`)
 
 ## `routes/destinations.ts`
 

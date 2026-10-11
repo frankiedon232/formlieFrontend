@@ -70,7 +70,7 @@ if (-not $NoApi) {
         $jobs["api"] = @{ exe = $python; args = "-m app.run"; match = "-m app\.run" }
     }
 }
-$jobs["worker"] = @{ exe = $celery; args = "-A app.workers.celery_app worker -Q scheduled,logs,notifications,exports --pool=solo -E -n worker1@%h -l info"; match = "celery_app worker" }
+$jobs["worker"] = @{ exe = $celery; args = "-A app.workers.celery_app worker -Q scheduled,logs,notifications,exports,destinations,webhooks --pool=solo -E -n worker1@%h -l info"; match = "celery_app worker" }
 $jobs["beat"] = @{ exe = $celery; args = "-A app.workers.celery_app beat -s logs/celerybeat-schedule -l info"; match = "celery_app beat" }
 $jobs["flower"] = @{ exe = $celery; args = "-A app.workers.celery_app flower --address=127.0.0.1 --port=5555"; match = "celery_app flower" }
 

@@ -21,7 +21,8 @@ celery_app = Celery(
     broker=settings.rabbitmq_url.get_secret_value(),
     backend=settings.celery_result_backend.get_secret_value(),
     include=["app.core.events.tasks", "app.core.db.tasks", "app.modules.logs.tasks", "app.modules.emails.tasks",
-             "app.modules.exports.tasks", "app.modules.responses.after"],
+             "app.modules.exports.tasks", "app.modules.responses.after",
+             "app.modules.data_sources.tasks"],
 )
 
 celery_app.conf.update(
@@ -50,12 +51,15 @@ celery_app.conf.update(
         "notifications.send_email": {"queue": "notifications"},
         "exports.build": {"queue": "exports"},
         "responses.after_submit": {"queue": "notifications"},
+        "datasources.test": {"queue": "destinations"},
+        "datasources.health": {"queue": "destinations"},
     },
     beat_schedule={
         "relay-outbox": {"task": "events.relay_outbox", "schedule": 2.0},
         "ensure-partitions": {"task": "db.ensure_partitions", "schedule": 6 * 3600.0},
         "update-geoip": {"task": "logs.update_geoip", "schedule": 7 * 24 * 3600.0},
         "ingest-error-files": {"task": "logs.ingest_error_files", "schedule": 30.0},
+        "datasource-health": {"task": "datasources.health", "schedule": 5 * 60.0},
     },
 )
 

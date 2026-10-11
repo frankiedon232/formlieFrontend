@@ -7,6 +7,7 @@ from fastapi import APIRouter
 from app.modules.audit.router import router as audit_router
 from app.modules.auth.router import router as auth_router
 from app.modules.dashboard.router import router as navigation_router
+from app.modules.data_sources.router import router as data_sources_router
 from app.modules.design.router import router as design_router
 from app.modules.exports.router import router as exports_router
 from app.modules.forms.builder import router as builder_router
@@ -52,6 +53,7 @@ api_router.include_router(builder_router)  # before forms: /forms/{id}/publish i
 api_router.include_router(forms_router)
 api_router.include_router(overview_router)
 api_router.include_router(design_router)
+api_router.include_router(data_sources_router)
 api_router.include_router(lists_router)
 api_router.include_router(templates_router)
 api_router.include_router(notifications_router)

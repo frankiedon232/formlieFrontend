@@ -105,6 +105,15 @@ class Settings(BaseSettings):
     legal_terms_url: str = "https://formalie.com/terms"
     legal_privacy_url: str = "https://formalie.com/privacy"
 
+    # ── Data sources: customers' own databases (B9) ───────────────────────────
+    # Development and tests only: allow connections to this machine (loopback). Production always refuses them.
+    datasources_allow_local: bool = False
+    # Formalie's outgoing addresses, shown so customers can allow them in their database's firewall
+    egress_ips: Annotated[list[str], NoDecode] = Field(default_factory=list)
+    # Tests: "customer" databases to connect to (scripts/setup_customer_pg.py, scripts/wsl/setup-mariadb.sh)
+    test_postgres_url: SecretStr | None = None
+    test_mysql_url: SecretStr | None = None
+
     # ── Logging (BACKEND-SPEC §8) ─────────────────────────────────────────────
     log_dir: Path = ROOT_DIR / "logs"
     log_level: str = "INFO"
@@ -140,7 +149,7 @@ class Settings(BaseSettings):
                 ipaddress.ip_network(item, strict=False)
         return value
 
-    @field_validator("alert_emails", mode="before")
+    @field_validator("alert_emails", "egress_ips", mode="before")
     @classmethod
     def _split_emails(cls, value: object) -> object:
         return [item.strip() for item in value.split(",") if item.strip()] if isinstance(value, str) else value
