@@ -63,9 +63,9 @@ Then stop for the owner's review. Day-to-day status lives in `PROGRESS.md`.
 
 ## B7, Public forms, sharing and links (F10)
 
-- [ ] Internal published-form endpoint for server-rendered `/{formKey}/fill` and `/embed` (server-only token), short links `/s/{code}`.
-- [ ] Share settings, form invites, who can see this form (`/forms/{id}/access`), embed rules (frame-ancestors), SEO.
-- [ ] Sessions and resume, pre-signed uploads, submit with the ported validation, proof of work, availability and limits.
+- [x] Internal published-form endpoint for server-rendered `/{formKey}/fill` and `/embed` (server-only token), short links `/s/{code}`.
+- [x] Share settings, form invites, who can see this form (`/forms/{id}/access`), embed rules (frame-ancestors), SEO.
+- [x] Sessions and resume, pre-signed uploads, submit with the ported validation, proof of work, availability and limits.
 
 ## B8, Responses (F11)
 

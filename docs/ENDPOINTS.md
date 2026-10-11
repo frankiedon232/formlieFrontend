@@ -88,7 +88,7 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 
 - **Guards:** `requireAuth`, `requireLevel`
 
-- [x] `GET /api/v1/forms/{id}/overview` (`getFormOverview`) (numbers from responses fill in with B8; the template with B6)
+- [x] `GET /api/v1/forms/{id}/overview` (`getFormOverview`) (numbers from responses fill in with B8)
 
 ## `routes/formShare.ts`
 

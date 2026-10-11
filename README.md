@@ -93,6 +93,7 @@ The setup script `scripts/wsl/setup-services.sh` was a one-time install. Don't r
 - `.env.example` is the committed template with `CHANGE_ME` placeholders. Never put real passwords in it.
 - A new setting goes into both: the real value in `.env`, a placeholder in `.env.example`.
 - Secret keys (references, tokens): `fmly\Scripts\python.exe scripts\gen_keys.py --write` adds any missing ones to `.env` and keeps existing ones.
+- Public form pages: `INTERNAL_TOKEN` (made by `gen_keys.py`) must have the same value as `NUXT_INTERNAL_TOKEN` in the frontend, so its server can read published forms through `/api/v1/internal/*`.
 
 ## Common commands
 
@@ -108,7 +109,7 @@ All from the project folder:
 | Refresh the location databases (MaxMind; Beat also does it weekly) | `fmly\Scripts\python.exe scripts\geoip_update.py` |
 | Load request logs that went to the fallback files | `fmly\Scripts\python.exe scripts\replay_request_logs.py` |
 | Check the encryption against the frontend's own code | `fmly\Scripts\python.exe scripts\check_envelope_vectors.py` |
-| Record the frontend's rules again after its `shared/` changed, then rebuild the catalogues | `fmly\Scripts\python.exe scripts\dump_frontend_rules.py`, `fmly\Scripts\python.exe scripts\dump_settings_rules.py`, `fmly\Scripts\python.exe scripts\dump_forms_rules.py`, `fmly\Scripts\python.exe scripts\dump_design_rules.py`, `fmly\Scripts\python.exe scripts\dump_templates_rules.py`, then `fmly\Scripts\python.exe scripts\gen_frontend_catalogues.py` |
+| Record the frontend's rules again after its `shared/` changed, then rebuild the catalogues | `fmly\Scripts\python.exe scripts\dump_frontend_rules.py`, `fmly\Scripts\python.exe scripts\dump_settings_rules.py`, `fmly\Scripts\python.exe scripts\dump_forms_rules.py`, `fmly\Scripts\python.exe scripts\dump_design_rules.py`, `fmly\Scripts\python.exe scripts\dump_templates_rules.py`, `fmly\Scripts\python.exe scripts\dump_links_rules.py`, `fmly\Scripts\python.exe scripts\dump_submission_rules.py`, `fmly\Scripts\python.exe scripts\dump_public_rules.py`, then `fmly\Scripts\python.exe scripts\gen_frontend_catalogues.py` |
 | Copy the frontend's data files again (email templates, template text in 20 languages, sample list translations) | `fmly\Scripts\python.exe scripts\sync_frontend_data.py` |
 | Rebuild error codes after the frontend added some | `fmly\Scripts\python.exe scripts\gen_error_codes.py` |
 | Install packages (new machine) | `fmly\Scripts\python.exe -m pip install -r requirements-dev.txt` |

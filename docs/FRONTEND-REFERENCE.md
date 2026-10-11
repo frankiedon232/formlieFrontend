@@ -19,10 +19,10 @@ Port each file to Python under the named module. For each one, write a test that
 | `audit/events.ts` | Every audit action key, its area and severity | `modules/audit` (catalogue + `record()`) |
 | `forms/schema.ts`, `forms/fields.ts`, `forms/build.ts`, `forms/catalogues.ts` | The FormSchema and field types | `modules/forms/schema.py` (Pydantic) |
 | `forms/validate.ts` | Publish checks | `modules/forms/publish.py` |
-| `forms/submission.ts`, `forms/masks.ts`, `forms/file-types.ts`, `forms/file-answers.ts` | Submission validation: types, masks, required, files | `modules/public/submit.py` |
-| `forms/logic.ts`, `forms/details.ts`, `forms/cascade.ts` | Show / hide / skip / require logic, list details, cascading lists | `modules/forms/logic.py` |
-| `forms/formula.ts` | Calculations (`{field}`, `{field.detail}`) | `modules/forms/formula.py` |
-| `forms/availability.ts`, `forms/access.ts`, `forms/identity.ts`, `forms/fills.ts` | Whether a form is open, who may fill it, one response per person | `modules/public/availability.py` |
+| `forms/submission.ts`, `forms/validate.ts` (answers), `forms/file-types.ts`, `forms/file-answers.ts` | Submission validation: types, required, files (`masks.ts` only shapes typing in the browser) | `modules/public/submit.py`, `modules/forms/answers.py`, `modules/public/rules.py` (parity: `tests/parity/test_submission_rules.py`, `test_public_rules.py`) |
+| `forms/logic.ts`, `forms/fills.ts`, `forms/cascade.ts` | Show / hide / skip / require logic, auto-fill, cascading lists | `modules/forms/logic.py` |
+| `forms/formula.ts`, `forms/details.ts` | Calculations (`{field}`, `{field.detail}`), list details | `modules/forms/formula.py` |
+| `forms/availability.ts`, `forms/identity.ts`, `forms/translations.ts`, `forms/options.ts` (lookups) | Whether a form is open, one response per person, forms in several languages, long lists | `modules/public/rules.py`; who may open a form: `modules/links/access_tokens.py` |
 | `forms/proof-of-work.ts` | The anti-bot proof of work on public submit | `modules/public/pow.py` |
 | `forms/prefill.ts` | URL prefill | `modules/public` |
 | `forms/answer-edit.ts`, `forms/answer-filter.ts`, `forms/answer-text.ts` | Editing answers, response filters, answers as text (exports) | `modules/responses` |
@@ -35,7 +35,7 @@ Port each file to Python under the named module. For each one, write a test that
 | `settings/schemas.ts`, `settings/appearance-ink.ts` | Settings validation per section, appearance contrast | `modules/settings` |
 | `dashboard/buckets.ts`, `dashboard/scope.ts` | Dashboard periods and folder / owner scope | `modules/dashboard` |
 | `templates/starters.ts`, `help/categories.ts`, `help/routes.ts`, `ai/kinds.ts` | Template starters, help categories, tour pages, AI kinds | matching modules |
-| `tenant/host.ts`, `urls/public.ts`, `urls/embed.ts`, `urls/embed-domains.ts` | Tenant from the host, public link building, embed rules | `core/middleware/tenant.py`, `modules/links` |
+| `tenant/host.ts`, `urls/public.ts`, `urls/embed.ts`, `urls/embed-domains.ts` | Tenant from the host, public link building, embed rules | `core/middleware/tenant.py`, `modules/links/urls.py` (parity: `tests/parity/test_links_rules.py`) |
 | `i18n/locales.ts` | The 20 languages | platform seed |
 
 The types in `shared/types/*.ts` are the response shapes. The Pydantic models must produce exactly these fields (snake_case, the same nullability).

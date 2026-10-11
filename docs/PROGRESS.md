@@ -13,10 +13,11 @@ Statuses: **Done** (built and verified), **Built** (code and tests written, wait
 | B3 | Onboarding, settings base and default data | **Done** (owner: "keep going", 2026-10-11) | 37 / 39 (form defaults theme: B5; navigation counts complete with the later areas) |
 | B4 | People, roles and access | **Done** (owner: "keep going", 2026-10-11) | 44 / 44 |
 | B5 | Forms core | **Done** (owner: "continue", 2026-10-11) | 28 / 28 |
-| B6 | Design, templates and lists | **Built**; waiting for the owner's review | 38 / 38 |
-| B7 to B17 | See BACKEND-ROADMAP.md | Later | 0 |
+| B6 | Design, templates and lists | **Done** (owner: "continue", 2026-10-11) | 38 / 38 |
+| B7 | Public forms, sharing and links | **Built**; waiting for the owner's review | 24 / 24 |
+| B8 to B17 | See BACKEND-ROADMAP.md | Later | 0 |
 
-Portal endpoints: 174 of 411 ticked in `ENDPOINTS.md`.
+Portal endpoints: 198 of 411 ticked in `ENDPOINTS.md`.
 
 ## B0, Foundation (2026-10-10)
 
@@ -115,6 +116,21 @@ Portal endpoints: 174 of 411 ticked in `ENDPOINTS.md`.
 | Templates: gallery, categories, insights, facets, translate content, the workspace's own (save a form, edit, update from its form, duplicate, delete) | Done | `app/modules/templates/`, migration 0015 | Workspace template keys leave the server encrypted, like ids |
 | New forms from a template; template in form facets, form overview and sidebar counts | Done | `app/modules/forms/router.py`, `overview.py`, `app/modules/dashboard/router.py` | |
 
+## B7, Public forms, sharing and links (2026-10-11)
+
+| Item | Status | Where | Notes |
+| --- | --- | --- | --- |
+| Share settings: channels, access and password, limit, custom links with suggestions, embed websites, people access, search & link preview | Done | `app/modules/links/router.py` | Passwords are argon2 hashes; a new one locks everyone out again |
+| Short links and form keys across organisations | Done | `app/modules/links/directory.py`, migration 0016 | Platform tables reached only through SECURITY DEFINER functions; a removed code is never handed out again |
+| Who can see a form | Done | `app/modules/links/router.py` | The same checks every route uses |
+| Invitations and member passes | Done | `app/modules/links/invites.py`, migration 0017 | Emailed with the generic notification template (see open questions) |
+| Submission rules: formulas, logic, auto-fill, levels, answers, whole submissions, proof of work | Done | `app/modules/forms/formula.py`, `logic.py`, `answers.py`, `app/modules/public/submit.py`, `pow.py` | 12,698 recorded answers from the frontend match; `app/core/js.py` gives JavaScript's number and text rules |
+| Public page rules: identity, translations, long lists, file types, theme, fingerprint | Done | `app/modules/public/rules.py`, `design/theme.py` | 141 recorded answers match |
+| Responses, sessions, drafts, email codes, respondent files | Done | migrations 0018, 0019 | Responses partitioned by month; respondents' files are never public |
+| Public routes and the server-rendered page's internal reads | Done | `app/modules/public/router.py`, `service.py` | Internal reads need `INTERNAL_TOKEN` (the frontend's `NUXT_INTERNAL_TOKEN`) |
+
+Still to come with later phases: after a response is stored, the team and receipt emails, notifications and events for webhooks and destinations (B8, B9, B11); Formalie's own forms (Contact support, Enterprise enquiry) opening from any workspace (with Help); clearing expired drafts and email codes (a Beat job with B8).
+
 ## Open questions
 
 - **Privacy erasure without hard deletes:** "delete a person's data" (Settings → Privacy, F14) and response retention must still remove personal data. Proposal: anonymise in place (overwrite answers and personal fields, keep the row, its relations and the audit entry). To decide before B11.
@@ -125,9 +141,14 @@ Portal endpoints: 174 of 411 ticked in `ENDPOINTS.md`.
 - **API docs page (`/docs`):** on in development only. Its "Try it out" can't call most routes (they only take encrypted requests). Options: protect the page with a username and password, or add a development-only helper that seals requests from it. Which one?
 - **SMS provider:** codes by text message need one (for example Twilio or Vonage) before workspaces can switch them on.
 - **Thank-you redirect (frontend):** the form schema's `thank_you.redirect_url` uses zod's `z.url()`, which also takes `javascript:`. The backend takes web addresses only (http, https); the frontend's check could match.
+- **Emails for respondents:** the frontend has no email templates for a form invitation, a respondent's email code or a "continue later" link. The backend sends them with the generic `notification` template and English wording for now. Should these become their own templates (20 languages, editable in Settings → Emails)?
+- **Switch-over:** put the same value as `INTERNAL_TOKEN` (backend `.env`) into the frontend's `NUXT_INTERNAL_TOKEN`, so server-rendered form pages can read published forms.
+- **IP addresses on responses** are stored as they arrive; DATABASE-DESIGN says "masked per settings", but no setting exists yet. Mask them always (last part removed), or add a privacy setting?
 - **CLAUDE.md layout** still names `api_keys/` and `option_sets/`; the product now has API tokens (`/api-tokens`) and option lists (`/option-lists`).
 
 ## Log
+
+- **2026-10-11:** B7 built: sharing, short links and keys across organisations (0016), invitations and passes (0017), the submission rules with the frontend's answers, responses and public filling tables (0018, 0019), every public route and the internal reads. 14,017 tests. **Stopped for the owner's review.**
 
 - **2026-10-11:** B6 built: themes, page designs, saved fields, option lists (large lists kept on the server), template catalogue with the frontend's answers in 20 languages, templates routes, forms from templates, sample lists in the seeded workspaces; migrations 0013 to 0015. 1090 tests. **Stopped for the owner's review.**
 
