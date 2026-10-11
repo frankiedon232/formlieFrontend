@@ -37,6 +37,9 @@ Format: `FRM-<DOMAIN>-<NNNN>`. Ranges: 1000–1999 client/validation, 5000–599
 | FRM-AUTH-1018 | 422  | You used this password recently. Choose another one.             | INFO     |
 | FRM-AUTH-1019 | 403  | This email address signs in with single sign-on (Settings → Sign-in → Single sign-on, required). | INFO |
 | FRM-AUTH-1020 | 409  | Test single sign-on before turning it on.                        | INFO     |
+| FRM-AUTH-1021 | 422 | Google, Microsoft or Facebook didn't share a verified email address. | INFO |
+| FRM-AUTH-1022 | 404 | There's no account with this email address in this workspace. Ask an admin to invite you. | INFO |
+| FRM-AUTH-1023 | 502 | Signing in with this provider didn't finish. Try again. | WARNING |
 | FRM-PERM-1001 | 403  | You don't have access to this.                                    | WARNING  |
 | FRM-TEN-1001  | 404  | Workspace not found.                                              | INFO     |
 | FRM-TEN-1002  | 403  | Workspace suspended.                                              | WARNING  |

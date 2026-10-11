@@ -8,13 +8,13 @@ Statuses: **Done** (built and verified), **Built** (code and tests written, wait
 | Phase | Title | Status | Endpoints ticked |
 | --- | --- | --- | --- |
 | B0 | Foundation | **Done**, verified live; waiting for the owner's review | 1 / 1 (`GET /health`) |
-| B1 | Secure channel, workspaces and sign-in | **In progress**: secure channel and sign-in done; OAuth providers and the frontend switch-over left | 17 / 18 (OAuth start answers like the mock) |
+| B1 | Secure channel, workspaces and sign-in | **In progress**: secure channel, sign-in and social sign-in done; the owner's live check and the frontend switch-over left | 20 / 20 |
 | B2 | Audit trail and logs | Later | 0 |
 | B3 | Onboarding, settings base and default data | Later | 0 |
 | B4 | People, roles and access | Later | 0 |
 | B5 to B17 | See BACKEND-ROADMAP.md | Later | 0 |
 
-Portal endpoints: 18 of 399 ticked in `ENDPOINTS.md`.
+Portal endpoints: 21 of 401 ticked in `ENDPOINTS.md`.
 
 ## B0, Foundation (2026-10-10)
 
@@ -57,7 +57,7 @@ Portal endpoints: 18 of 399 ticked in `ENDPOINTS.md`.
 | Tenant public profile, subdomain availability, find workspace | Done | `app/modules/tenants/router.py` | |
 | Sign-up, login, codes (email via Mailpit), refresh with reuse detection, logout, /me, reset, lockouts, rate limits | Done | `app/modules/auth/` | 13 end-to-end tests on the test DB; verified live with a real email |
 | Development seed (the mock's workspaces and accounts) | Done | `scripts/seed_dev.py` | |
-| OAuth providers (Google, Microsoft, Facebook) | Waiting | | Needs each provider's client id and secret from the owner |
+| Social sign-in (Google, Microsoft, Facebook): start, callback, pick-up on the page | Built | `app/modules/auth/oauth.py`, `app/modules/auth/router.py`; frontend `useAuth().resumeOAuth`, login and signup pages | 10 tests with the providers faked. Google and Facebook keys set; Microsoft waits for its app registration. Waiting on the owner's live check |
 | Frontend switch-over for sign-in (`NUXT_PUBLIC_API_MOCK=false`) | Next | | The owner runs the frontend against this backend |
 
 ## Open questions
@@ -68,6 +68,8 @@ Portal endpoints: 18 of 399 ticked in `ENDPOINTS.md`.
 - **CLAUDE.md layout** still names `api_keys/` and `option_sets/`; the product now has API tokens (`/api-tokens`) and option lists (`/option-lists`).
 
 ## Log
+
+- **2026-10-11:** Social sign-in (Google, Microsoft, Facebook): start → provider → one callback on `manage.` → back to the page; sign-in still asks for the code and links the account the first time; sign-up skips the code. New codes `FRM-AUTH-1021` to `1023` (frontend, 20 languages). Frontend changed with the owner's go-ahead (pick-up after the provider, error notices, mock route). `seed_dev.py --person` adds your own address to Remedy Legal for trying it. 563 backend tests, 629 frontend tests.
 
 - **2026-10-11:** B1 sign-in: rules ported with parity, migrations 0003 and 0004, services, routes, dev seed, email through Celery to Mailpit. 551 tests. Found: the email-validator package refused `.test` addresses the frontend accepts (now zod's rule); sealed replies dropped Set-Cookie (fixed).
 - **2026-10-11:** B1 secure channel: handshake, envelope, references, CSRF; frontend `envelope.ts` agrees with the backend on fixed vectors both ways. 124 tests.

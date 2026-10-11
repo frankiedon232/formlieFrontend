@@ -13,7 +13,7 @@ import re
 import uuid
 from datetime import UTC, datetime, timedelta
 from typing import Any
-from urllib.parse import quote
+from urllib.parse import quote, urlencode
 
 import pyotp
 from fastapi import APIRouter, Depends, Request
@@ -27,22 +27,24 @@ from app.core.errors import FrmError
 from app.core.events.outbox import record_event
 from app.core.middleware.tenant import current_host_context, is_valid_subdomain, require_tenant
 from app.core.responses import ok
+from app.core.security.refs import get_codec
 from app.core.validation import Email
 from app.core.security.fernet_tokens import decrypt_secret
 from app.core.security.limits import per_value, rate_limit
 from app.core.security.passwords import DUMMY_HASH, check_password, hash_password, meets_password_policy, verify_password
 from app.modules.audit.service import Actor, record
-from app.modules.auth import challenges
+from app.modules.auth import challenges, oauth
 from app.modules.auth.sessions import (
     REFRESH_COOKIE, REFRESH_COOKIE_PATH, Principal, end_session, ip_allowed, refresh_cookie, require_auth,
     rotate_refresh, start_session,
 )
+from app.modules.billing.service import has_feature
 from app.modules.emails import service as emails
 from app.modules.settings.service import get_section
 from app.modules.tenants.router import workspace_url
 from app.modules.tenants.service import TenantDirectory
 from app.modules.tenants.workspace import Founder, create_workspace
-from app.modules.users.models import User, UserPasswordHistory, UserRecoveryCode, UserTwoStep
+from app.modules.users.models import User, UserIdentity, UserPasswordHistory, UserRecoveryCode, UserTwoStep
 
 router = APIRouter(tags=["auth"])
 
@@ -134,6 +136,38 @@ def _password_expired(security: dict[str, Any], user: User) -> bool:
     return bool(days and user.password_changed_at and datetime.now(UTC) - user.password_changed_at > timedelta(days=days))
 
 
+async def _admit(db: Any, tenant: TenantInfo, user: User, signin: dict[str, Any], method: str) -> None:
+    """Awaiting approval, switched off, or an email domain the workspace doesn't allow: refused, and recorded."""
+    blocked = [("pending", "FRM-USER-1010", "awaiting_approval", False), ("disabled", "FRM-AUTH-1005", None, True)]
+    for status, code, cause, alert in blocked:
+        if user.status == status:
+            await _audit(db, tenant, "auth.login.blocked", Actor.user(user), outcome="blocked", severity="notice",
+                         reason=code, metadata={"method": method, **({"cause": cause} if cause else {})})
+            if alert:
+                await _security_alert(db, user.email, "account_disabled")
+            raise FrmError(code, commit=True)
+    if not _domain_allowed(signin, user.email):
+        await _audit(db, tenant, "auth.login.blocked", Actor.user(user), outcome="blocked", severity="notice",
+                     reason="FRM-AUTH-1014", metadata={"method": method, "cause": "email_domain"})
+        await _security_alert(db, user.email, "email_domain")
+        raise FrmError("FRM-AUTH-1014", commit=True)
+
+
+async def _login_challenge(db: Any, tenant: TenantInfo, user: User, signin: dict[str, Any],
+                           method: str) -> challenges.Challenge:
+    """The second step of every sign-in: the authenticator app when set up, else a 6-digit code by email."""
+    two_step = (await db.execute(select(UserTwoStep).where(UserTwoStep.user_id == user.id,
+                                                           UserTwoStep.deleted_at.is_(None)))).scalar_one_or_none()
+    has_app = bool(two_step and two_step.totp_secret_enc and two_step.totp_confirmed_at)
+    channels = (["totp"] if has_app else []) + ["email"] + (["sms"] if user.phone and signin["code"].get("sms") else [])
+    challenge, code = await challenges.create_challenge(
+        purpose="login", email=user.email, channel="totp" if has_app else "email", channels=channels,
+        tenant=_tenant_dict(tenant), user=user, code_rules=signin["code"], language=user.language, method=method)
+    await _audit(db, tenant, "auth.otp.sent", Actor.user(user), metadata={"channel": challenge.channel, "method": method})
+    await _send_code(db, tenant, challenge, code, user)
+    return challenge
+
+
 # ── Login and codes ──────────────────────────────────────────────────────────────
 
 class LoginBody(BaseModel):
@@ -166,32 +200,12 @@ async def login(body: LoginBody) -> Any:
                          outcome="failure", reason="FRM-AUTH-1002",
                          metadata={"method": "password", **({} if user else {"account": "not_found"})})
             raise FrmError("FRM-AUTH-1002", commit=True)
-        blocked = [("pending", "FRM-USER-1010", "awaiting_approval", False), ("disabled", "FRM-AUTH-1005", None, True)]
-        for status, code, cause, alert in blocked:
-            if user.status == status:
-                await _audit(db, tenant, "auth.login.blocked", Actor.user(user), outcome="blocked", severity="notice",
-                             reason=code, metadata={"method": "password", **({"cause": cause} if cause else {})})
-                if alert:
-                    await _security_alert(db, user.email, "account_disabled")
-                raise FrmError(code, commit=True)
-        if not _domain_allowed(signin, user.email):
-            await _audit(db, tenant, "auth.login.blocked", Actor.user(user), outcome="blocked", severity="notice",
-                         reason="FRM-AUTH-1014", metadata={"method": "password", "cause": "email_domain"})
-            await _security_alert(db, user.email, "email_domain")
-            raise FrmError("FRM-AUTH-1014", commit=True)
+        await _admit(db, tenant, user, signin, "password")
         if _password_expired(security, user):
             await _audit(db, tenant, "auth.login.blocked", Actor.user(user), outcome="blocked", severity="notice",
                          reason="FRM-AUTH-1015", metadata={"method": "password", "cause": "password_expired"})
             raise FrmError("FRM-AUTH-1015", commit=True)
-        two_step = (await db.execute(select(UserTwoStep).where(UserTwoStep.user_id == user.id,
-                                                               UserTwoStep.deleted_at.is_(None)))).scalar_one_or_none()
-        has_app = bool(two_step and two_step.totp_secret_enc and two_step.totp_confirmed_at)
-        channels = (["totp"] if has_app else []) + ["email"] + (["sms"] if user.phone and signin["code"].get("sms") else [])
-        challenge, code = await challenges.create_challenge(
-            purpose="login", email=user.email, channel="totp" if has_app else "email", channels=channels,
-            tenant=_tenant_dict(tenant), user=user, code_rules=signin["code"], language=user.language)
-        await _audit(db, tenant, "auth.otp.sent", Actor.user(user), metadata={"channel": challenge.channel})
-        await _send_code(db, tenant, challenge, code, user)
+        challenge = await _login_challenge(db, tenant, user, signin, "password")
     return ok(challenges.describe(challenge))
 
 
@@ -242,8 +256,8 @@ async def verify_otp(body: VerifyBody) -> Any:
         if user is None or user.deleted_at is not None:
             raise FrmError("FRM-AUTH-1003")
         await _audit(db, tenant, "auth.login.succeeded", Actor.user(user),
-                     metadata={"method": "password", "channel": challenge.channel})
-        tokens, refresh = await start_session(db, user, tenant, "password")
+                     metadata={"method": challenge.method, "channel": challenge.channel})
+        tokens, refresh = await start_session(db, user, tenant, challenge.method)
     return _with_cookie({"success": True, "data": tokens, "meta": {}}, refresh)
 
 
@@ -371,15 +385,23 @@ async def signup_complete(body: CompleteBody) -> Any:
         raise FrmError("FRM-AUTH-1003")
     if not is_valid_subdomain(body.subdomain):
         raise FrmError("FRM-TEN-1004", [{"field": "subdomain", "message": "This subdomain is taken."}])
+    provider = challenge.signup.get("provider")  # signed up with Google, Microsoft or Facebook: no password yet
     async with db_session("write") as db:
-        made = await create_workspace(db, name=body.company_name, subdomain=body.subdomain, founder=Founder(
-            challenge.signup["first_name"], challenge.signup["last_name"], challenge.email, challenge.signup["password_hash"]))
+        made = await create_workspace(
+            db, name=body.company_name, subdomain=body.subdomain,
+            founder=Founder(challenge.signup["first_name"], challenge.signup["last_name"], challenge.email,
+                            challenge.signup["password_hash"]),
+            signin_methods=["password", provider] if provider else None)
+        if provider:
+            db.add(UserIdentity(tenant_id=made.tenant_id, organisation_id=made.organisation_id, user_id=made.owner_id,
+                                provider=provider, provider_user_id=challenge.signup["subject"], email=challenge.email,
+                                created_by=made.owner_id))
         tenant = TenantInfo(id=made.tenant_id, subdomain=made.subdomain, name=made.name, status="active",
                             organisation_id=made.organisation_id)
         owner = await db.get(User, made.owner_id)
         await _audit(db, tenant, "workspace.created", Actor.user(owner),
                      resource={"type": "workspace", "id": str(tenant.id), "name": tenant.name},
-                     metadata={"subdomain": tenant.subdomain})
+                     metadata={"subdomain": tenant.subdomain, "method": provider or "password"})
         await record_event(db, "tenant.signed_up", {"subdomain": tenant.subdomain, "plan": "starter"},
                            tenant_id=tenant.id, organisation_id=tenant.organisation_id, actor_id=made.owner_id)
     await challenges.consume(challenge.id)
@@ -490,11 +512,137 @@ async def reset_password(body: ResetBody) -> Any:
     return ok({"reset": True})
 
 
-# ── OAuth (plaintext browser redirect) ───────────────────────────────────────────
+# ── Social sign-in (plaintext browser redirects; app/modules/auth/oauth.py) ──────────
 
-@router.get("/auth/oauth/{provider}/start")
+def _page(intent: str) -> str:
+    return "/auth/signup" if intent == "signup" else "/auth/login"
+
+
+def _back(host: str | None, intent: str, query: dict[str, str]) -> RedirectResponse:
+    """To the sign-in or sign-up page the person came from (a relative address when that is this host)."""
+    target = f"{_page(intent)}?{urlencode(query)}"
+    return RedirectResponse(f"https://{host}{target}" if host else target, status_code=302)
+
+
+def _refused(host: str | None, intent: str, provider: str, code: str) -> RedirectResponse:
+    return _back(host, intent, {"oauth": "error", "provider": provider, "code": code})
+
+
+@router.get("/auth/oauth/{provider}/start", dependencies=[rate_limit("oauth-start", per_minute=20)])
 async def oauth_start(provider: str, intent: str | None = None) -> Any:
-    """No identity provider is configured yet: back to the page with oauth=unavailable, exactly like the mock.
-    Google, Microsoft, Apple and Facebook sign-in need each provider's client id and secret (B1, last step)."""
-    page = "/auth/signup" if intent == "signup" else "/auth/login"
-    return RedirectResponse(f"{page}?oauth=unavailable&provider={quote(provider)}", status_code=302)
+    """→ the provider's sign-in page. Not set up yet: back with oauth=unavailable, like the mock. Sign-up only on
+    manage.*; sign-in only where the workspace switched the method on and its plan includes social sign-in."""
+    intent = "signup" if intent == "signup" else "login"
+    if oauth.credentials(provider) is None:
+        return _back(None, intent, {"oauth": "unavailable", "provider": provider})
+    ctx = get_context()
+    host = current_host_context()
+    state = oauth.OAuthState(provider=provider, intent=intent, host=(ctx.host if ctx else None) or "")
+    if intent == "signup":
+        if host is None or host.kind != "manage":
+            return _refused(None, intent, provider, "FRM-PERM-1001")
+    else:
+        tenant = ctx.tenant if ctx else None
+        if tenant is None or tenant.status == "suspended":
+            return _refused(None, intent, provider, "FRM-TEN-1002" if tenant else "FRM-TEN-1001")
+        async with db_session("read", **_scope(tenant)) as db:
+            signin = await get_section(db, tenant.id, "signin")
+        if provider not in signin["methods"] or not has_feature(tenant.plan_id, "social_signin"):
+            return _refused(None, intent, provider, "FRM-AUTH-1008")
+        state.subdomain = tenant.subdomain
+    uri = oauth.redirect_uri(provider, ctx.host if ctx else None, host.kind if host else None)
+    return RedirectResponse(await oauth.begin(state, uri), status_code=302)
+
+
+@router.get("/auth/oauth/{provider}/callback", dependencies=[rate_limit("oauth-callback", per_minute=20)])
+async def oauth_callback(provider: str, code: str | None = None, state: str | None = None,
+                         error: str | None = None) -> Any:
+    """The provider sends the browser back here (manage.*). Sign-up → a verified sign-up waiting for the workspace
+    step; sign-in → the usual 6-digit code for the matching account. Either way back to the page, with the
+    challenge's reference."""
+    saved = await oauth.take_state(state)
+    if saved is None or saved.provider != provider:
+        return _refused(None, "login", provider, "FRM-AUTH-1023")
+    if error or not code:
+        # The person pressed Cancel (access_denied): nothing to say
+        return (_back(saved.host, saved.intent, {"oauth": "cancelled", "provider": provider}) if error == "access_denied"
+                else _refused(saved.host, saved.intent, provider, "FRM-AUTH-1023"))
+    ctx = get_context()
+    host = current_host_context()
+    try:
+        profile = await oauth.fetch_profile(provider, code, saved, oauth.redirect_uri(
+            provider, ctx.host if ctx else None, host.kind if host else None))
+        if saved.intent == "signup":
+            challenge = await _social_signup(provider, profile)
+        else:
+            challenge = await _social_login(provider, profile, saved)
+    except FrmError as refused:
+        return _refused(saved.host, saved.intent, provider, refused.code)
+    return _back(saved.host, saved.intent, {"oauth_challenge": get_codec().encode_id(challenge.id), "provider": provider})
+
+
+async def _social_signup(provider: str, profile: oauth.Profile) -> challenges.Challenge:
+    """The provider checked the address, so no code: straight to naming the workspace (signup/complete)."""
+    await per_value("signup", profile.email, limit=5, window_seconds=3600)
+    challenge, _ = await challenges.create_challenge(
+        purpose="signup", email=profile.email, channel="email", channels=["email"], method=provider, verified=True,
+        signup={"first_name": profile.first_name or profile.email.split("@")[0][:60], "last_name": profile.last_name,
+                "password_hash": None, "provider": provider, "subject": profile.subject})
+    return challenge
+
+
+async def _social_login(provider: str, profile: oauth.Profile, saved: oauth.OAuthState) -> challenges.Challenge:
+    """Only someone who already has an account in the workspace, then the same checks as a password sign-in."""
+    tenant = await TenantDirectory().by_subdomain(saved.subdomain or "")
+    if tenant is None:
+        raise FrmError("FRM-TEN-1001")
+    if tenant.status == "suspended":
+        raise FrmError("FRM-TEN-1002")
+    await per_value("login", profile.email, limit=10, window_seconds=600)
+    ctx = get_context()
+    async with db_session("write", **_scope(tenant)) as db:
+        signin = await get_section(db, tenant.id, "signin")
+        security = await get_section(db, tenant.id, "security")
+        if provider not in signin["methods"] or not has_feature(tenant.plan_id, "social_signin"):
+            raise FrmError("FRM-AUTH-1008")
+        if not ip_allowed(security, ctx.client_ip if ctx else None):
+            await _audit(db, tenant, "auth.login.blocked", Actor.anonymous(profile.email), outcome="blocked",
+                         reason="FRM-AUTH-1016", metadata={"method": provider, "cause": "ip_not_allowed"})
+            await _security_alert(db, profile.email, "ip_not_allowed")
+            raise FrmError("FRM-AUTH-1016", commit=True)
+        linked = (await db.execute(select(UserIdentity).where(
+            UserIdentity.provider == provider, UserIdentity.provider_user_id == profile.subject,
+            UserIdentity.deleted_at.is_(None)))).scalar_one_or_none()
+        user = await db.get(User, linked.user_id) if linked is not None else await _find_user(db, profile.email)
+        if user is None or user.deleted_at is not None:
+            await _audit(db, tenant, "auth.login.failed", Actor.anonymous(profile.email), outcome="failure",
+                         reason="FRM-AUTH-1022", metadata={"method": provider, "account": "not_found"})
+            raise FrmError("FRM-AUTH-1022", commit=True)
+        await _admit(db, tenant, user, signin, provider)
+        if linked is None:
+            db.add(UserIdentity(tenant_id=tenant.id, organisation_id=tenant.organisation_id, user_id=user.id,
+                                provider=provider, provider_user_id=profile.subject, email=profile.email,
+                                created_by=user.id))
+        return await _login_challenge(db, tenant, user, signin, provider)
+
+
+@router.get("/auth/oauth/challenge", dependencies=[rate_limit("oauth-challenge", per_minute=20)])
+async def oauth_challenge(challenge_id: str) -> Any:
+    """Back from the provider: the challenge the page carries, so the code screen (sign-in) or the workspace step
+    (sign-up) can carry on. Only on the host it was made for."""
+    challenge = await challenges.get_challenge(challenge_id)
+    if challenge is None or challenge.method not in oauth.PROVIDERS:
+        raise FrmError("FRM-AUTH-1003")
+    host = current_host_context()
+    if challenge.purpose == "signup":
+        if host is None or host.kind != "manage" or not challenge.verified or not challenge.signup:
+            raise FrmError("FRM-AUTH-1003")
+    else:
+        ctx = get_context()
+        tenant = ctx.tenant if ctx else None
+        if challenge.purpose != "login" or tenant is None or challenge.tenant_id != str(tenant.id):
+            raise FrmError("FRM-AUTH-1003")
+    names = challenge.signup or {}
+    return ok({"purpose": challenge.purpose, "provider": challenge.method, "email": challenge.email,
+               "first_name": names.get("first_name") or challenge.user_name, "last_name": names.get("last_name"),
+               "challenge": challenges.describe(challenge)})

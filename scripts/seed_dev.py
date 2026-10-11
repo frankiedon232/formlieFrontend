@@ -3,6 +3,10 @@ frontend's flows work unchanged against this backend. Safe to run again (existin
 
     fmly\\Scripts\\python.exe scripts\\seed_dev.py            # the development database
     fmly\\Scripts\\python.exe scripts\\seed_dev.py --test     # the test database
+    fmly\\Scripts\\python.exe scripts\\seed_dev.py --person you@gmail.com   # try social sign-in (below)
+
+--person adds that address as an Admin of Remedy Legal (no password) and switches on Google, Microsoft and
+Facebook there, so you can sign in with your own Google, Microsoft or Facebook account. Development only.
 
 Every seeded account signs in with the mock's test password (MOCK_PASSWORD in the mock's data/tenants.ts); codes
 arrive in Mailpit (http://127.0.0.1:8025). Never run against production: it refuses when APP_ENV=production.
@@ -24,6 +28,8 @@ from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine  # noqa: E4
 
 from app.core.config import get_settings  # noqa: E402
 from app.core.db.engines import async_url  # noqa: E402
+from app.core.db.session import set_rls_context  # noqa: E402
+from app.core.ids import uuid7  # noqa: E402
 from app.core.security.passwords import hash_password  # noqa: E402
 from app.modules.rbac.service import role_by_key  # noqa: E402
 from app.modules.tenants.workspace import Founder, create_workspace  # noqa: E402
@@ -96,12 +102,45 @@ async def seed(database: str) -> None:
         await engine.dispose()
 
 
+async def add_person(database: str, email: str) -> None:
+    """Your own address as an Admin of Remedy Legal, with every social sign-in method switched on there."""
+    settings = get_settings()
+    if settings.is_production:
+        raise SystemExit("Refusing to seed test accounts in production.")
+    ws = WORKSPACES[0]
+    url = make_url(async_url(settings.db_owner_url.get_secret_value())).set(database=database)  # type: ignore[union-attr]
+    engine = create_async_engine(url.render_as_string(hide_password=False))
+    try:
+        async with AsyncSession(engine, expire_on_commit=False) as session, session.begin():
+            await set_rls_context(session, ws["id"], ws["org"], None)
+            await session.execute(text(
+                "UPDATE workspace_settings SET value = jsonb_set(value, '{methods}', "
+                "'[\"password\", \"google\", \"microsoft\", \"facebook\"]'::jsonb), updated_at = now() "
+                "WHERE section = 'signin'"))
+            known = (await session.execute(text("SELECT 1 FROM users WHERE lower(email) = :e AND deleted_at IS NULL"),
+                                           {"e": email})).first()
+            if known:
+                print(f"  {email}: already in Remedy Legal")
+            else:
+                admin = await role_by_key(session, "admin")
+                now = datetime.now(UTC)
+                session.add(User(id=uuid7(), tenant_id=ws["id"], organisation_id=ws["org"], email=email,
+                                 first_name=email.split("@")[0][:60], last_name="", status="active",
+                                 role_id=admin.id, joined_at=now))  # type: ignore[union-attr]
+                print(f"  {email}: added to Remedy Legal as an Admin")
+    finally:
+        await engine.dispose()
+
+
 def main() -> None:
     settings = get_settings()
     database = settings.db_test_database if "--test" in sys.argv else make_url(
         settings.db_owner_url.get_secret_value()).database  # type: ignore[union-attr]
     print(f"Seeding {database}")
     asyncio.run(seed(database or "formalie"))
+    if "--person" in sys.argv:
+        email = sys.argv[sys.argv.index("--person") + 1].strip().lower()
+        asyncio.run(add_person(database or "formalie", email))
     print("Done. Sign in on https://remedylegal.formalie.dev:2202 with admin@remedylegal.test (codes in Mailpit).")
 
 

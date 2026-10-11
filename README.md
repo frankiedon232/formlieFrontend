@@ -118,6 +118,15 @@ All from the project folder:
 - **Password:** the mock's test password, `MOCK_PASSWORD` in the frontend's `server/mock/data/tenants.ts`.
 - **Sign-in codes:** they arrive in Mailpit (http://127.0.0.1:8025).
 
+## Social sign-in (Google, Microsoft, Facebook)
+
+- **Keys:** `OAUTH_GOOGLE_*`, `OAUTH_MICROSOFT_*` and `OAUTH_FACEBOOK_*` in `.env`. A provider with empty keys shows "not available yet" on its button, like the mock. Restart the API after changing them.
+- **Address registered at each provider** (development): `https://manage.formalie.dev:2202/api/v1/auth/oauth/{google|microsoft|facebook}/callback`. Every provider sends people back to `manage.`; the API then sends them to the page they started on. `OAUTH_REDIRECT_BASE` changes the first part if needed.
+- **Sign-up** (https://manage.formalie.dev:2202/auth/signup): the button skips the email code (the provider checked the address) and goes straight to naming the workspace.
+- **Sign-in** on a workspace: only for someone who already has an account there with the same email, and it still asks for the 6-digit code. The test accounts are `.test` addresses, so add your own address first:
+  `fmly\Scripts\python.exe scripts\seed_dev.py --person you@gmail.com` adds it to Remedy Legal as an Admin and switches on all three buttons there. Then sign in at https://remedylegal.formalie.dev:2202/auth/login with the button.
+- **Starter plan** has no social sign-in: its sign-in page shows only email and password, even when the workspace saved other methods.
+
 ## How the pieces fit
 
 - **PostgreSQL 18** (Windows, port 5432): databases `formalie` (development) and `formalie_test` (tests). Workspace tables live in the `formaly` schema, global tables in `platform`. Every workspace table has row-level security forced. Nothing is ever hard deleted.

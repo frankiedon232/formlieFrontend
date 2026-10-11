@@ -49,7 +49,7 @@ def plaintext_patterns(prefix: str) -> list[re.Pattern[str]]:
     return [re.compile(rx) for rx in (
         rf"^{p}/health$",
         rf"^{p}/crypto/handshake$",
-        rf"^{p}/auth/oauth/[a-z]+/start$",  # browser redirect
+        rf"^{p}/auth/oauth/[a-z]+/(start|callback)$",  # browser redirects (to the provider and back)
         rf"^{p}/auth/sso/start$",  # browser redirect
         rf"^{p}/downloads/[^/]+$",  # single-use signed download links
         rf"^{p}/response-exports/[^/]+$",

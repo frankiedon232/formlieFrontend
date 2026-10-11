@@ -76,6 +76,17 @@ class Settings(BaseSettings):
     smtp_username: str | None = None
     smtp_password: SecretStr | None = None
 
+    # ── Social sign-in (Formalie's own app at each provider; empty = that button answers "unavailable") ──
+    oauth_google_client_id: str | None = None
+    oauth_google_client_secret: SecretStr | None = None
+    oauth_microsoft_client_id: str | None = None
+    oauth_microsoft_client_secret: SecretStr | None = None
+    oauth_facebook_client_id: str | None = None
+    oauth_facebook_client_secret: SecretStr | None = None
+    # Where providers send people back (…/auth/oauth/{provider}/callback). Empty: https://manage.<root domain> with
+    # the port the browser used (or the bare root domain when the API is called on it directly).
+    oauth_redirect_base: str | None = None
+
     # ── Rate limiting (Redis sliding window) ─────────────────────────────────
     rate_limit_enabled: bool = True
     rate_limit_ip_per_minute: int = 600

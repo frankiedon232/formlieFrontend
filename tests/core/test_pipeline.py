@@ -258,7 +258,8 @@ async def test_unknown_session_key_asks_for_a_new_handshake(client) -> None:
 
 
 @pytest.mark.parametrize("path", [
-    "/api/v1/crypto/handshake", "/api/v1/auth/oauth/google/start", "/api/v1/auth/sso/start",
+    "/api/v1/crypto/handshake", "/api/v1/auth/oauth/google/start", "/api/v1/auth/oauth/google/callback",
+    "/api/v1/auth/sso/start",
     "/api/v1/downloads/tok", "/api/v1/response-exports/tok", "/api/v1/response-files/tok",
     "/api/v1/datasource-exports/tok", "/api/v1/billing/webhooks/payoneer", "/api/v1/internal/public-forms/abc",
 ])

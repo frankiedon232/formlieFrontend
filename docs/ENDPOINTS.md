@@ -34,7 +34,9 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 - [x] `POST /api/v1/auth/exchange-ticket` (`exchangeTicket`)
 - [x] `POST /api/v1/auth/password/forgot` (`forgotPassword`)
 - [x] `POST /api/v1/auth/password/reset` (`resetPassword`)
-- [ ] `GET /api/v1/auth/oauth/{provider}/start` (`oauthStart`): answers like the mock (`?oauth=unavailable`) until the providers' client ids are set (B1 OAuth step)
+- [x] `GET /api/v1/auth/oauth/{provider}/start` (`oauthStart`): to Google, Microsoft or Facebook; `?oauth=unavailable` while a provider's keys are empty, like the mock
+- [x] `GET /api/v1/auth/oauth/{provider}/callback` (backend only, the providers call it): audit `auth.otp.sent`, `auth.login.failed` / `auth.login.blocked` with `method: <provider>`
+- [x] `GET /api/v1/auth/oauth/challenge` (`oauthChallenge`, mock answers `FRM-AUTH-1003`)
 - [x] `GET /api/v1/me` (`me`)
 
 ## `routes/sso.ts`

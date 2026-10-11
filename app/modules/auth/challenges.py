@@ -52,7 +52,8 @@ class Challenge:
     verified: bool = False
     ttl_ms: int = OTP_TTL_MS
     max_attempts: int = OTP_MAX_ATTEMPTS
-    signup: dict[str, Any] | None = field(default=None)  # first_name, last_name, password_hash
+    signup: dict[str, Any] | None = field(default=None)  # first_name, last_name, password_hash (+ provider, subject)
+    method: str = "password"  # how the person proved who they are: password, google, microsoft, facebook
 
 
 def _now_ms() -> int:
@@ -92,7 +93,8 @@ def _new_code(ch: Challenge) -> str:
 async def create_challenge(*, purpose: str, email: str, channel: str, channels: list[str],
                            tenant: dict[str, Any] | None = None, user: Any | None = None,
                            code_rules: dict[str, Any] | None = None, language: str | None = None,
-                           signup: dict[str, Any] | None = None) -> tuple[Challenge, str | None]:
+                           signup: dict[str, Any] | None = None, method: str = "password",
+                           verified: bool = False) -> tuple[Challenge, str | None]:
     """The challenge and its code (None for the authenticator app: nothing is sent)."""
     ch = Challenge(
         id=str(uuid.uuid4()), purpose=purpose, email=email, channel=channel, channels=channels,
@@ -105,6 +107,8 @@ async def create_challenge(*, purpose: str, email: str, channel: str, channels: 
         ttl_ms=int(code_rules["expiry_minutes"]) * 60_000 if code_rules else OTP_TTL_MS,
         max_attempts=int(code_rules["max_attempts"]) if code_rules else OTP_MAX_ATTEMPTS,
         signup=signup,
+        method=method,
+        verified=verified,
     )
     code = _new_code(ch)
     await _save(ch)
