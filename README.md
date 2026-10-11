@@ -76,11 +76,20 @@ All from the project folder:
 | Tests without the database | `fmly\Scripts\python.exe -m pytest -m "not db"` |
 | Apply database migrations (development, then test) | `fmly\Scripts\alembic.exe upgrade head`, then `fmly\Scripts\alembic.exe -x db=test upgrade head` |
 | Create roles and databases (new machine, or to change their passwords) | `fmly\Scripts\python.exe scripts\db_bootstrap.py` |
+| Add the test workspaces and accounts (same as the frontend's mock; safe to repeat) | `fmly\Scripts\python.exe scripts\seed_dev.py` |
 | Refresh the location databases (MaxMind; Beat also does it weekly) | `fmly\Scripts\python.exe scripts\geoip_update.py` |
 | Load request logs that went to the fallback files | `fmly\Scripts\python.exe scripts\replay_request_logs.py` |
 | Check the encryption against the frontend's own code | `fmly\Scripts\python.exe scripts\check_envelope_vectors.py` |
 | Rebuild error codes after the frontend added some | `fmly\Scripts\python.exe scripts\gen_error_codes.py` |
 | Install packages (new machine) | `fmly\Scripts\python.exe -m pip install -r requirements-dev.txt` |
+
+## Test workspaces and accounts (development)
+
+`scripts/seed_dev.py` creates the same ones as the frontend's mock:
+- **Workspaces:** `remedylegal` (Business plan), `samathtax` (Starter), `oldco` (suspended) and `formalie-team` (Formalie's own).
+- **Accounts:** `admin@remedylegal.test` (owner), `admin@samathtax.test` (owner) and `james.carter@carterpartners.test` (a member of both, for "find my workspace").
+- **Password:** the mock's test password, `MOCK_PASSWORD` in the frontend's `server/mock/data/tenants.ts`.
+- **Sign-in codes:** they arrive in Mailpit (http://127.0.0.1:8025).
 
 ## How the pieces fit
 

@@ -61,3 +61,9 @@ def test_password_policy_cases() -> None:
 
 def test_reserved_subdomains() -> None:
     assert list(RESERVED_SUBDOMAINS) == R["reserved_subdomains"]
+
+
+def test_locales() -> None:
+    from app.core.locales import APP_LOCALE_CODES, APP_LOCALES
+
+    assert APP_LOCALES == R["app_locales"] and list(APP_LOCALE_CODES) == [x["code"] for x in R["app_locales"]]

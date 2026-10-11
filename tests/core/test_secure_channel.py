@@ -37,6 +37,14 @@ def _app(settings):  # noqa: ANN001, ANN202
     async def echo_post(body: EchoBody) -> Any:
         return ok({"form_id": str(body.form_id), "note": body.note})
 
+    @router.get("/check/cookie")
+    async def cookie() -> Any:
+        from fastapi.responses import JSONResponse
+
+        response = JSONResponse({"success": True, "data": {"ok": True}, "meta": {}})
+        response.set_cookie("formalie_rt", "abc", httponly=True, secure=True, samesite="strict", path="/api/v1/auth")
+        return response
+
     @router.get("/check/forms/{form_id}")
     async def one_form(form_id: RefId) -> Any:
         return ok({"id": str(form_id)})
@@ -163,3 +171,12 @@ async def test_request_log_records_the_decrypted_request(settings, redis) -> Non
     assert record["request_body"] == {"body": {"email": "ada@example.com", "password": "***"}, "envelope": True}
     assert record["request_body_keys"] == ["email", "password"] and record["status"] == 200
     assert "Secret-1" not in str(record)
+
+
+async def test_sealed_replies_keep_the_routes_own_headers(secure: SecureClient) -> None:
+    await secure.handshake()
+    response = await secure.send("GET", "/check/cookie", secure.seal("GET", "/check/cookie"))
+    assert secure.open(response)["data"] == {"ok": True}
+    cookie = response.headers["set-cookie"]
+    assert "formalie_rt=abc" in cookie and "HttpOnly" in cookie and "Path=/api/v1/auth" in cookie
+    assert response.headers["content-type"] == "application/vnd.formalie.enc+json"

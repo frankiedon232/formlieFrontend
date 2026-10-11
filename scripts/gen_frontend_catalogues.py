@@ -53,6 +53,10 @@ def main() -> None:
               ("AUDIT_AREAS", tuple(r["audit_areas"])),
               ("AUDIT_EVENTS", r["audit_events"]),
           ])
+    write("app/core/locales.py", "The 20 portal and form languages.", "shared/utils/i18n/locales.ts", [
+        ("APP_LOCALES", r["app_locales"]),
+        ("APP_LOCALE_CODES", tuple(item["code"] for item in r["app_locales"])),
+    ])
     write("app/modules/billing/plans.py", "The plans: prices per period, limits and features.",
           "shared/utils/billing/plans.ts", [
               ("PLANS", r["plans"]),

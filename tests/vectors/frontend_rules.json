@@ -15870,5 +15870,187 @@
   "staging",
   "test"
  ],
+ "app_locales": [
+  {
+   "code": "en",
+   "language": "en-US",
+   "name": "English",
+   "englishName": "English",
+   "flag": "i-circle-flags-us",
+   "dir": "ltr",
+   "uiLocale": "en"
+  },
+  {
+   "code": "fr",
+   "language": "fr-FR",
+   "name": "Français",
+   "englishName": "French",
+   "flag": "i-circle-flags-fr",
+   "dir": "ltr",
+   "uiLocale": "fr"
+  },
+  {
+   "code": "es",
+   "language": "es-ES",
+   "name": "Español",
+   "englishName": "Spanish",
+   "flag": "i-circle-flags-es",
+   "dir": "ltr",
+   "uiLocale": "es"
+  },
+  {
+   "code": "pt",
+   "language": "pt-BR",
+   "name": "Português",
+   "englishName": "Portuguese",
+   "flag": "i-circle-flags-br",
+   "dir": "ltr",
+   "uiLocale": "pt_br"
+  },
+  {
+   "code": "de",
+   "language": "de-DE",
+   "name": "Deutsch",
+   "englishName": "German",
+   "flag": "i-circle-flags-de",
+   "dir": "ltr",
+   "uiLocale": "de"
+  },
+  {
+   "code": "it",
+   "language": "it-IT",
+   "name": "Italiano",
+   "englishName": "Italian",
+   "flag": "i-circle-flags-it",
+   "dir": "ltr",
+   "uiLocale": "it"
+  },
+  {
+   "code": "nl",
+   "language": "nl-NL",
+   "name": "Nederlands",
+   "englishName": "Dutch",
+   "flag": "i-circle-flags-nl",
+   "dir": "ltr",
+   "uiLocale": "nl"
+  },
+  {
+   "code": "pl",
+   "language": "pl-PL",
+   "name": "Polski",
+   "englishName": "Polish",
+   "flag": "i-circle-flags-pl",
+   "dir": "ltr",
+   "uiLocale": "pl"
+  },
+  {
+   "code": "ru",
+   "language": "ru-RU",
+   "name": "Русский",
+   "englishName": "Russian",
+   "flag": "i-circle-flags-ru",
+   "dir": "ltr",
+   "uiLocale": "ru"
+  },
+  {
+   "code": "uk",
+   "language": "uk-UA",
+   "name": "Українська",
+   "englishName": "Ukrainian",
+   "flag": "i-circle-flags-ua",
+   "dir": "ltr",
+   "uiLocale": "uk"
+  },
+  {
+   "code": "tr",
+   "language": "tr-TR",
+   "name": "Türkçe",
+   "englishName": "Turkish",
+   "flag": "i-circle-flags-tr",
+   "dir": "ltr",
+   "uiLocale": "tr"
+  },
+  {
+   "code": "ar",
+   "language": "ar-SA",
+   "name": "العربية",
+   "englishName": "Arabic",
+   "flag": "i-circle-flags-sa",
+   "dir": "rtl",
+   "uiLocale": "ar"
+  },
+  {
+   "code": "hi",
+   "language": "hi-IN",
+   "name": "हिन्दी",
+   "englishName": "Hindi",
+   "flag": "i-circle-flags-in",
+   "dir": "ltr",
+   "uiLocale": "hi"
+  },
+  {
+   "code": "bn",
+   "language": "bn-BD",
+   "name": "বাংলা",
+   "englishName": "Bengali",
+   "flag": "i-circle-flags-bd",
+   "dir": "ltr",
+   "uiLocale": "bn"
+  },
+  {
+   "code": "zh-CN",
+   "language": "zh-CN",
+   "name": "简体中文",
+   "englishName": "Chinese (Simplified)",
+   "flag": "i-circle-flags-cn",
+   "dir": "ltr",
+   "uiLocale": "zh_cn"
+  },
+  {
+   "code": "ja",
+   "language": "ja-JP",
+   "name": "日本語",
+   "englishName": "Japanese",
+   "flag": "i-circle-flags-jp",
+   "dir": "ltr",
+   "uiLocale": "ja"
+  },
+  {
+   "code": "ko",
+   "language": "ko-KR",
+   "name": "한국어",
+   "englishName": "Korean",
+   "flag": "i-circle-flags-kr",
+   "dir": "ltr",
+   "uiLocale": "ko"
+  },
+  {
+   "code": "id",
+   "language": "id-ID",
+   "name": "Bahasa Indonesia",
+   "englishName": "Indonesian",
+   "flag": "i-circle-flags-id",
+   "dir": "ltr",
+   "uiLocale": "id"
+  },
+  {
+   "code": "vi",
+   "language": "vi-VN",
+   "name": "Tiếng Việt",
+   "englishName": "Vietnamese",
+   "flag": "i-circle-flags-vn",
+   "dir": "ltr",
+   "uiLocale": "vi"
+  },
+  {
+   "code": "sw",
+   "language": "sw-KE",
+   "name": "Kiswahili",
+   "englishName": "Swahili",
+   "flag": "i-circle-flags-ke",
+   "dir": "ltr",
+   "uiLocale": "en"
+  }
+ ],
  "about": "Recorded from the frontend's shared/ code by scripts/dump_frontend_rules.py. Do not edit."
 }

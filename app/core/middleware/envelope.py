@@ -124,10 +124,13 @@ def _flag(name: str) -> None:
         ctx.flags.add(name)
 
 
-async def _send_sealed(send: Send, status: int, body: Any, key: bytes, kid: str) -> None:
+async def _send_sealed(send: Send, status: int, body: Any, key: bytes, kid: str,
+                       headers: list[tuple[bytes, bytes]] | None = None) -> None:
     sealed = env.to_json(env.seal(key, kid, get_codec().encode_ids(body)))
+    # The route's own headers stay (Set-Cookie for the refresh cookie, Cache-Control …); only the body changes.
+    kept = [(k, v) for k, v in (headers or []) if k.lower() not in (b"content-type", b"content-length")]
     await send({"type": "http.response.start", "status": status, "headers": [
-        (b"content-type", ENVELOPE_CONTENT_TYPE.encode()), (b"content-length", str(len(sealed)).encode()),
+        *kept, (b"content-type", ENVELOPE_CONTENT_TYPE.encode()), (b"content-length", str(len(sealed)).encode()),
     ]})
     await send({"type": "http.response.body", "body": sealed})
 
@@ -261,11 +264,12 @@ class EnvelopeMiddleware:
             return await receive()
 
         # The reply: collected, ids → references, sealed with the same key.
-        response: dict[str, Any] = {"status": 500, "chunks": []}
+        response: dict[str, Any] = {"status": 500, "chunks": [], "headers": []}
 
         async def sealing_send(message: Message) -> None:
             if message["type"] == "http.response.start":
                 response["status"] = message["status"]
+                response["headers"] = list(message.get("headers", []))
                 return
             if message["type"] == "http.response.body":
                 response["chunks"].append(message.get("body", b""))
@@ -276,7 +280,7 @@ class EnvelopeMiddleware:
                     except ValueError:
                         log.error("FRM-GEN-5000 non-JSON reply on an enveloped route", extra={"error_code": "FRM-GEN-5000"})
                         reply, response["status"] = error_body("FRM-GEN-5000", ctx.trace_id if ctx else None), 500
-                    await _send_sealed(send, response["status"], reply, key, kid)
+                    await _send_sealed(send, response["status"], reply, key, kid, response["headers"])
                 return
             await send(message)
 

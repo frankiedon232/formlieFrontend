@@ -32,6 +32,7 @@ import * as E from '__SHARED__/utils/audit/events.ts'
 import * as B from '__SHARED__/utils/billing/plans.ts'
 import * as W from '__SHARED__/utils/auth/password.ts'
 import * as H from '__SHARED__/utils/tenant/host.ts'
+import * as L from '__SHARED__/utils/i18n/locales.ts'
 
 const routes = JSON.parse(readFileSync(process.argv[2], 'utf8'))
 const singles = []
@@ -73,6 +74,7 @@ const out = {
   password_length_range: W.PASSWORD_LENGTH_RANGE,
   password_cases: passwordCases,
   reserved_subdomains: H.RESERVED_SUBDOMAINS,
+  app_locales: L.APP_LOCALES,
 }
 process.stdout.write(JSON.stringify(out))
 """
