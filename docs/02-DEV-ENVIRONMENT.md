@@ -85,6 +85,25 @@ Installed directly on the machine, **no Docker** (owner, 2026-10-10). Production
 4. Workers on Windows: Celery has no official Windows pool, so run them with `--pool=solo` (or `--pool=threads`):
    `fmly\Scripts\celery.exe -A app.workers.celery_app worker -Q scheduled --pool=solo -l info` and `fmly\Scripts\celery.exe -A app.workers.celery_app beat -l info`.
 
+### Dashboards (development)
+
+| What | Address | Sign in |
+| --- | --- | --- |
+| RabbitMQ (queues, exchanges, messages) | http://127.0.0.1:15672 | user `formalie`, the password inside `RABBITMQ_URL` in `.env` (between `formalie:` and `@`) |
+| Celery (workers, tasks, failures): Flower | http://127.0.0.1:5555 | none (bound to 127.0.0.1 only) |
+| Emails caught in development: Mailpit | http://127.0.0.1:8025 | none |
+| Redis (keys, memory): Redis Insight desktop app (redis.io/insight) | connect to `127.0.0.1:6379` | none |
+
+Start the workers and Flower, each in its own terminal from the project folder (Ubuntu window open):
+
+```powershell
+fmly\Scripts\celery.exe -A app.workers.celery_app worker -Q scheduled,logs --pool=solo -E -n worker1@%h -l info
+fmly\Scripts\celery.exe -A app.workers.celery_app beat -s logs/celerybeat-schedule -l info
+fmly\Scripts\celery.exe -A app.workers.celery_app flower --address=127.0.0.1 --port=5555
+```
+
+(`-E` sends task events, so Flower shows each task. Redis from Ubuntu without an app: `redis-cli --scan --pattern 'fm:v1:*'` lists Formalie's keys.)
+
 ### 3. Locations for the request log (MaxMind GeoLite2)
 
 1. Create a free account at maxmind.com, then make a license key (GeoLite2).
