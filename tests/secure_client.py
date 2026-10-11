@@ -63,7 +63,7 @@ class SecureClient:
         return body
 
     async def request(self, method: str, path: str, *, query: dict[str, Any] | None = None,
-                      body: Any = None) -> tuple[int, dict[str, Any]]:
+                      body: Any = None, headers: dict[str, str] | None = None) -> tuple[int, dict[str, Any]]:
         if self.key is None:
             await self.handshake()
         csrf = None
@@ -73,5 +73,5 @@ class SecureClient:
                 assert status == 200, reply
                 self.csrf = reply["data"]["csrf_token"]
             csrf = self.csrf
-        response = await self.send(method, path, self.seal(method, path, query, body), csrf=csrf)
+        response = await self.send(method, path, self.seal(method, path, query, body), csrf=csrf, headers=headers)
         return response.status_code, self.open(response)

@@ -48,16 +48,20 @@ async def store_upload(token: str, request: Request) -> Response:
     """Plain bytes, like an object-storage pre-signed address; the token is the permission (once, 5 minutes)."""
     ctx = get_context()
     tenant = ctx.tenant if ctx else None
-    if tenant is None or len(token) > 100:
+    # Respondents' links say which workspace they are for (the shared forms host has none of its own)
+    workspace = service.workspace_of_token(token) if "." in token else None
+    if workspace is None and tenant is not None:
+        workspace = (tenant.id, tenant.organisation_id)
+    if workspace is None or (tenant is not None and workspace[0] != tenant.id) or len(token) > 200:
         return JSONResponse({"error": "Upload link expired."}, status_code=403)
-    limit = max(p["max_bytes"] for p in service.PURPOSES.values())
+    limit = max(service.MAX_RESPONDENT_BYTES, *(p["max_bytes"] for p in service.PURPOSES.values()))
     data = b""
     async for chunk in request.stream():
         data += chunk
         if len(data) > limit:
             return JSONResponse({"error": "Unexpected file size."}, status_code=400)
-    async with db_session("write", tenant_id=tenant.id, organisation_id=tenant.organisation_id) as db:
-        status, message = await service.store(db, tenant.id, token, request.headers.get("content-type"), data)
+    async with db_session("write", tenant_id=workspace[0], organisation_id=workspace[1]) as db:
+        status, message = await service.store(db, workspace[0], token, request.headers.get("content-type"), data)
     return Response(status_code=204) if status == 204 else JSONResponse({"error": message}, status_code=status)
 
 

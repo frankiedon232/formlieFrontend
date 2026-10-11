@@ -547,19 +547,19 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 
 - **Audit:** `responses.submitted`
 
-- [ ] `GET /api/v1/public/forms/{key}` (`getPublicForm`)
-- [ ] `GET /api/v1/public/forms/{key}/options` (`lookupOptions`)
-- [ ] `POST /api/v1/public/forms/{key}/submit` (`submitPublicForm`)
-- [ ] `POST /api/v1/public/forms/{key}/verify` (`sendVerification`)
-- [ ] `POST /api/v1/public/forms/{key}/sessions` (`startDraft`)
-- [ ] `PUT /api/v1/public/forms/{key}/sessions/{token}` (`saveDraft`)
-- [ ] `GET /api/v1/public/forms/{key}/sessions/{token}` (`getDraft`)
-- [ ] `POST /api/v1/public/forms/{key}/verify/confirm` (`confirmVerification`)
-- [ ] `POST /api/v1/public/forms/{key}/uploads` (`requestUpload`)
-- [ ] `POST /api/v1/public/forms/{key}/challenge` (`issueChallenge`)
-- [ ] `POST /api/v1/public/forms/{key}/unlock` (`unlockForm`)
-- [ ] `GET /api/v1/public/short/{code}` (`getShortLink`)
-- [ ] `POST /api/v1/public/forms/{key}/uploads/{id}/complete` (`completeUpload`)
+- [x] `GET /api/v1/public/forms/{key}` (`getPublicForm`)
+- [x] `GET /api/v1/public/forms/{key}/options` (`lookupOptions`)
+- [x] `POST /api/v1/public/forms/{key}/submit` (`submitPublicForm`)
+- [x] `POST /api/v1/public/forms/{key}/verify` (`sendVerification`)
+- [x] `POST /api/v1/public/forms/{key}/sessions` (`startDraft`)
+- [x] `PUT /api/v1/public/forms/{key}/sessions/{token}` (`saveDraft`)
+- [x] `GET /api/v1/public/forms/{key}/sessions/{token}` (`getDraft`)
+- [x] `POST /api/v1/public/forms/{key}/verify/confirm` (`confirmVerification`)
+- [x] `POST /api/v1/public/forms/{key}/uploads` (`requestUpload`)
+- [x] `POST /api/v1/public/forms/{key}/challenge` (`issueChallenge`)
+- [x] `POST /api/v1/public/forms/{key}/unlock` (`unlockForm`)
+- [x] `GET /api/v1/public/short/{code}` (`getShortLink`)
+- [x] `POST /api/v1/public/forms/{key}/uploads/{id}/complete` (`completeUpload`)
 
 ## `routes/templates.ts`
 

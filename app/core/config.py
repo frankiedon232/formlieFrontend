@@ -97,6 +97,14 @@ class Settings(BaseSettings):
     rate_limit_ip_per_minute: int = 600
     rate_limit_fail_open: bool = True  # when Redis is down: allow and log CRITICAL (False = refuse with FRM-GEN-5003)
 
+    # ── Public form pages (B7) ────────────────────────────────────────────────
+    # The Nuxt server reads published forms through /internal/* with this server-only token (NUXT_INTERNAL_TOKEN
+    # there). Empty: the internal routes refuse everything.
+    internal_token: SecretStr | None = None
+    # Formalie's legal pages in the footer of every public form (platform settings take over in the platform admin)
+    legal_terms_url: str = "https://formalie.com/terms"
+    legal_privacy_url: str = "https://formalie.com/privacy"
+
     # ── Logging (BACKEND-SPEC §8) ─────────────────────────────────────────────
     log_dir: Path = ROOT_DIR / "logs"
     log_level: str = "INFO"

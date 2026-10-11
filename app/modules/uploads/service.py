@@ -97,13 +97,119 @@ async def store(db: AsyncSession, tenant_id: uuid.UUID, token: str, content_type
         return 400, "Unexpected file type."
     if not data or len(data) > upload.max_bytes or len(data) != upload.size:
         return 400, "Unexpected file size."
-    if not looks_like(upload.content_type, data):
+    if not bytes_allowed(upload, data):
         upload.scan_status = "refused"
-        return 400, "The file is not a valid image."
-    key = storage.key_for(upload.tenant_id, upload.organisation_id, "uploads", upload.id)
+        return 400, "This kind of file is not allowed." if upload.file_kind == "file" else "The file is not a valid image."
+    module = "responses" if upload.purpose == "response_file" else "uploads"
+    key = storage.key_for(upload.tenant_id, upload.organisation_id, module, upload.id)
     storage.put(key, data)
     upload.file_key, upload.stored_at, upload.token_hash, upload.scan_status = key, datetime.now(UTC), None, "clean"
     return 204, None
+
+
+# ── Respondents' files (public forms) ───────────────────────────────────────────
+
+MAX_RESPONDENT_BYTES = 25 * MB
+
+
+def is_picture(data: bytes) -> bool:
+    """Common photo formats by their bytes (SVG is never accepted from respondents)."""
+    return any(looks_like(t, data) for t in ("image/png", "image/jpeg", "image/webp", "image/gif")) \
+        or data.startswith(b"BM") or data.startswith(b"II*\x00") or data.startswith(b"MM\x00*") \
+        or (data[4:8] == b"ftyp" and data[8:12] in (b"avif", b"avis", b"heic", b"heix", b"hevc", b"mif1", b"msf1"))
+
+
+def is_program(data: bytes) -> bool:
+    """Programs (Windows, Linux, macOS) and scripts with a `#!` line."""
+    return data.startswith((b"MZ", b"\x7fELF", b"\xcf\xfa\xed\xfe", b"\xce\xfa\xed\xfe", b"\xfe\xed\xfa\xcf",
+                            b"\xca\xfe\xba\xbe", b"#!"))
+
+
+def bytes_allowed(upload: Upload, data: bytes) -> bool:
+    """Respondent files: a picture for image questions, never a program unless the question lists its type; other
+    uploads: the declared image."""
+    if upload.purpose != "response_file":
+        return looks_like(upload.content_type, data)
+    if upload.file_kind == "image":
+        return is_picture(data)
+    found = re.search(r"\.[a-z0-9]+$", upload.file_name.lower())
+    return not is_program(data) or (found is not None and found.group(0) in (upload.listed or []))
+
+
+def respondent_token(tenant_id: uuid.UUID, organisation_id: uuid.UUID, secret: str) -> str:
+    """`{workspace}.{organisation}.{secret}`: the shared forms host has no workspace of its own, so the link says
+    which one (as references, never ids)."""
+    from app.core.security.refs import get_codec
+
+    codec = get_codec()
+    return f"{codec.encode_id(str(tenant_id))}.{codec.encode_id(str(organisation_id))}.{secret}"
+
+
+def workspace_of_token(token: str) -> tuple[uuid.UUID, uuid.UUID] | None:
+    from app.core.security.refs import get_codec
+
+    parts = token.split(".")
+    if len(parts) != 3:
+        return None
+    codec = get_codec()
+    tenant, organisation = codec.decode_id(parts[0]), codec.decode_id(parts[1])
+    try:
+        return (uuid.UUID(str(tenant)), uuid.UUID(str(organisation))) if tenant and organisation else None
+    except ValueError:
+        return None
+
+
+async def create_respondent_ticket(db: AsyncSession, *, tenant_id: uuid.UUID, organisation_id: uuid.UUID,
+                                   form_id: uuid.UUID, field_key: str, file_name: str, content_type: str, size: int,
+                                   max_bytes: int, kind: str, listed: list[str]) -> dict[str, Any]:
+    token = respondent_token(tenant_id, organisation_id, secrets.token_urlsafe(32))
+    expires = datetime.now(UTC) + timedelta(minutes=TICKET_MINUTES)
+    upload = Upload(tenant_id=tenant_id, organisation_id=organisation_id, purpose="response_file", file_name=file_name,
+                    content_type=content_type, size=size, max_bytes=min(max_bytes, MAX_RESPONDENT_BYTES),
+                    token_hash=_hash(token), expires_at=expires, form_id=form_id, field_key=field_key, file_kind=kind,
+                    listed=listed)
+    db.add(upload)
+    await db.flush()
+    return {
+        "upload_id": str(upload.id), "upload_url": f"{get_settings().api_prefix}/storage/{token}", "method": "PUT",
+        "headers": {"content-type": content_type}, "max_bytes": upload.max_bytes,
+        "expires_at": expires.isoformat(timespec="milliseconds").replace("+00:00", "Z"),
+    }
+
+
+def answer_of(upload: Upload) -> dict[str, Any]:
+    return {"id": str(upload.id), "name": upload.file_name, "size": upload.size, "type": upload.content_type}
+
+
+async def complete_respondent_upload(db: AsyncSession, tenant_id: uuid.UUID, upload_id: str,
+                                     form_id: uuid.UUID) -> dict[str, Any] | None:
+    upload = await _respondent_upload(db, tenant_id, upload_id)
+    if upload is None or upload.form_id != form_id or upload.stored_at is None:
+        return None
+    if upload.completed_at is None:
+        upload.completed_at = datetime.now(UTC)
+    return answer_of(upload)
+
+
+async def respondent_file(db: AsyncSession, tenant_id: uuid.UUID, upload_id: Any, form_id: uuid.UUID,
+                          field_key: str) -> Upload | None:
+    """A finished file of this form and question that no other response uses."""
+    upload = await _respondent_upload(db, tenant_id, str(upload_id))
+    if upload is None or upload.completed_at is None or upload.form_id != form_id or upload.field_key != field_key \
+            or upload.response_id is not None:
+        return None
+    return upload
+
+
+async def _respondent_upload(db: AsyncSession, tenant_id: uuid.UUID, upload_id: str) -> Upload | None:
+    try:
+        wanted = uuid.UUID(upload_id)
+    except ValueError:
+        return None
+    upload = await db.get(Upload, wanted)
+    if upload is None or upload.tenant_id != tenant_id or upload.purpose != "response_file" or upload.deleted_at:
+        return None
+    return upload
 
 
 async def complete(db: AsyncSession, tenant_id: uuid.UUID, upload_id: uuid.UUID) -> dict[str, Any]:
@@ -123,7 +229,7 @@ async def completed_url(db: AsyncSession, tenant_id: uuid.UUID, upload_id: str) 
         return None
     upload = await db.get(Upload, wanted)
     ok = upload is not None and upload.tenant_id == tenant_id and upload.completed_at is not None \
-        and upload.deleted_at is None and upload.scan_status == "clean"
+        and upload.deleted_at is None and upload.scan_status == "clean" and upload.purpose != "response_file"
     return file_url(wanted) if ok else None
 
 

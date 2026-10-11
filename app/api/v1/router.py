@@ -14,6 +14,7 @@ from app.modules.forms.overview import router as overview_router
 from app.modules.forms.router import router as forms_router
 from app.modules.links.invites import router as form_invites_router
 from app.modules.links.router import router as links_router
+from app.modules.public.router import router as public_router
 from app.modules.lists.router import router as lists_router
 from app.modules.templates.router import router as templates_router
 from app.modules.onboarding.router import router as onboarding_router
@@ -49,4 +50,5 @@ api_router.include_router(overview_router)
 api_router.include_router(design_router)
 api_router.include_router(lists_router)
 api_router.include_router(templates_router)
+api_router.include_router(public_router)
 api_router.include_router(settings_router)  # after any module with its own /settings/{name} route (sso, B11)

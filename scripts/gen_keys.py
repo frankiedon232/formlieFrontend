@@ -25,6 +25,7 @@ def new_keys() -> dict[str, str]:
         "ID_REF_ENC_KEY": base64.b64encode(os.urandom(32)).decode(),
         "ID_REF_MAC_KEY": base64.b64encode(os.urandom(32)).decode(),
         "FERNET_KEYS": Fernet.generate_key().decode(),
+        "INTERNAL_TOKEN": __import__("secrets").token_urlsafe(32),  # also NUXT_INTERNAL_TOKEN in the frontend
     }
 
 
