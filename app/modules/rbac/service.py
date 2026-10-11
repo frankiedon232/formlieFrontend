@@ -52,3 +52,26 @@ def role_key(role: Role | None) -> str:
 
 def role_name(role: Role | None) -> str:
     return role.name if role is not None else ""
+
+
+async def find_role(session: AsyncSession, tenant_id: uuid.UUID, key: str | None) -> Role | None:
+    """A role by what the app calls it: owner · admin · member, or a workspace role's id."""
+    if not key:
+        return None
+    if key in BUILT_IN_ROLES:
+        query = select(Role).where(Role.tenant_id == tenant_id, Role.built_in == key, Role.deleted_at.is_(None))
+    else:
+        try:
+            wanted = uuid.UUID(key)
+        except ValueError:
+            return None
+        query = select(Role).where(Role.tenant_id == tenant_id, Role.id == wanted, Role.deleted_at.is_(None))
+    return (await session.execute(query)).scalar_one_or_none()
+
+
+async def roles_of(session: AsyncSession, tenant_id: uuid.UUID) -> list[Role]:
+    """Owner, Admin, Member, then the workspace's own in the order they were made."""
+    order = {key: i for i, key in enumerate(BUILT_IN_ROLES)}
+    roles = (await session.execute(select(Role).where(Role.tenant_id == tenant_id, Role.deleted_at.is_(None))
+                                   .order_by(Role.created_at, Role.id))).scalars().all()
+    return sorted(roles, key=lambda r: order.get(r.built_in or "", len(order)))

@@ -474,13 +474,13 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 - **Guards:** `requireAdmin`
 - **Audit:** `users.role_created`, `users.role_deleted`, `users.role_updated`
 
-- [ ] `GET /api/v1/roles` (`listRoles`)
-- [ ] `GET /api/v1/roles/insights` (`rolesInsights`)
-- [ ] `POST /api/v1/roles` (`createRole`)
-- [ ] `GET /api/v1/roles/{id}` (`getRole`)
-- [ ] `PATCH /api/v1/roles/{id}` (`updateRole`)
-- [ ] `POST /api/v1/roles/{id}/duplicate` (`duplicateRole`)
-- [ ] `DELETE /api/v1/roles/{id}` (`deleteRole`)
+- [x] `GET /api/v1/roles` (`listRoles`)
+- [x] `GET /api/v1/roles/insights` (`rolesInsights`)
+- [x] `POST /api/v1/roles` (`createRole`)
+- [x] `GET /api/v1/roles/{id}` (`getRole`)
+- [x] `PATCH /api/v1/roles/{id}` (`updateRole`)
+- [x] `POST /api/v1/roles/{id}/duplicate` (`duplicateRole`)
+- [x] `DELETE /api/v1/roles/{id}` (`deleteRole`)
 
 ## `routes/peopleManage.ts`
 

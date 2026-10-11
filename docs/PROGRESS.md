@@ -10,11 +10,11 @@ Statuses: **Done** (built and verified), **Built** (code and tests written, wait
 | B0 | Foundation | **Done**, verified live; waiting for the owner's review | 1 / 1 (`GET /health`) |
 | B1 | Secure channel, workspaces and sign-in | **Done** (owner: "go ahead", 2026-10-11); social sign-in checked live up to the providers' pages; the owner's click-through and the frontend switch-over still to do | 20 / 20 |
 | B2 | Audit trail and logs | **Done** (owner: "continue to next", 2026-10-11) | 6 / 6 |
-| B3 | Onboarding, settings base and default data | **Built**; waiting for the owner's review | 37 / 39 (form defaults theme: B5; navigation counts complete with the later areas) |
-| B4 | People, roles and access | Later | 0 |
+| B3 | Onboarding, settings base and default data | **Done** (owner: "keep going", 2026-10-11) | 37 / 39 (form defaults theme: B5; navigation counts complete with the later areas) |
+| B4 | People, roles and access | **In progress**: roles done; people, invitations, my profile next | 7 / 44 |
 | B5 to B17 | See BACKEND-ROADMAP.md | Later | 0 |
 
-Portal endpoints: 64 of 401 ticked in `ENDPOINTS.md`.
+Portal endpoints: 71 of 401 ticked in `ENDPOINTS.md`.
 
 ## B0, Foundation (2026-10-10)
 
@@ -92,6 +92,8 @@ Portal endpoints: 64 of 401 ticked in `ENDPOINTS.md`.
 - **CLAUDE.md layout** still names `api_keys/` and `option_sets/`; the product now has API tokens (`/api-tokens`) and option lists (`/option-lists`).
 
 ## Log
+
+- **2026-10-11:** B4 started: roles (list, insights, one, create or copy, update with audit lines, duplicate, delete); built-in roles keep their keys (owner, admin, member) as the frontend expects. 888 tests.
 
 - **2026-10-11:** B3 built: settings (ten sections, sessions, activity), uploads and files, onboarding, organisation data, navigation counts (people part), the default-data hook; zod-compatible validator with 305 recorded answers; migrations 0008 and 0009. 886 tests. **Stopped for the owner's review.**
 

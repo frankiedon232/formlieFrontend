@@ -11,6 +11,7 @@ from app.modules.exports.router import router as exports_router
 from app.modules.onboarding.router import router as onboarding_router
 from app.modules.org.router import router as org_router
 from app.modules.platform.router import router as platform_router
+from app.modules.rbac.router import router as roles_router
 from app.modules.settings.router import router as settings_router
 from app.modules.tenants.router import router as tenants_router
 from app.modules.uploads.router import router as uploads_router
@@ -25,4 +26,5 @@ api_router.include_router(uploads_router)
 api_router.include_router(onboarding_router)
 api_router.include_router(org_router)
 api_router.include_router(navigation_router)
+api_router.include_router(roles_router)
 api_router.include_router(settings_router)  # after any module with its own /settings/{name} route (sso, B11)
