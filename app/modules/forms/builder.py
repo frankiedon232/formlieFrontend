@@ -153,6 +153,10 @@ async def save_draft(form_id: str, request: Request, principal: Principal = Depe
         form = await _find(db, viewer, form_id, "edit")
         body = draft_schema.parse(await request.json())
         service.check_version(form, body["row_version"])
+        # Fields from lists kept on the server carry none of their options (they follow the list)
+        from app.modules.lists.service import fill_schema
+
+        await fill_schema(db, form.tenant_id, body["schema"])
         form.draft_schema = body["schema"]
         form.has_unpublished_changes = form.status != "draft"
         service.touch(form, viewer)

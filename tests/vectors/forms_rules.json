@@ -25081,6 +25081,813 @@
    "options": false
   }
  },
+ "option_lists": {
+  "places": {
+   "levels": [
+    {
+     "key": "country",
+     "label": "Country"
+    },
+    {
+     "key": "region",
+     "label": "Region"
+    },
+    {
+     "key": "city",
+     "label": "City"
+    }
+   ],
+   "options": [
+    {
+     "value": "brazil",
+     "label": "Brazil"
+    },
+    {
+     "value": "brazil_sao_paulo",
+     "label": "São Paulo",
+     "level": 1,
+     "parent": "brazil"
+    },
+    {
+     "value": "brazil_sao_paulo_sao_paulo",
+     "label": "São Paulo",
+     "level": 2,
+     "parent": "brazil_sao_paulo",
+     "score": 2
+    },
+    {
+     "value": "brazil_sao_paulo_campinas",
+     "label": "Campinas",
+     "level": 2,
+     "parent": "brazil_sao_paulo",
+     "score": 2
+    },
+    {
+     "value": "brazil_rio_de_janeiro",
+     "label": "Rio de Janeiro",
+     "level": 1,
+     "parent": "brazil"
+    },
+    {
+     "value": "brazil_rio_de_janeiro_niteroi",
+     "label": "Niterói",
+     "level": 2,
+     "parent": "brazil_rio_de_janeiro",
+     "score": 2
+    },
+    {
+     "value": "japan",
+     "label": "Japan"
+    },
+    {
+     "value": "japan_tokyo",
+     "label": "Tokyo",
+     "level": 1,
+     "parent": "japan"
+    },
+    {
+     "value": "japan_tokyo_shinjuku",
+     "label": "Shinjuku",
+     "level": 2,
+     "parent": "japan_tokyo",
+     "score": 2
+    },
+    {
+     "value": "japan_tokyo_shibuya",
+     "label": "Shibuya",
+     "level": 2,
+     "parent": "japan_tokyo",
+     "score": 2
+    },
+    {
+     "value": "japan_osaka",
+     "label": "Osaka",
+     "level": 1,
+     "parent": "japan",
+     "active": false
+    },
+    {
+     "value": "japan_osaka_sakai",
+     "label": "Sakai",
+     "level": 2,
+     "parent": "japan_osaka",
+     "score": 2
+    }
+   ]
+  },
+  "products": {
+   "columns": [
+    {
+     "key": "price",
+     "label": "Price"
+    },
+    {
+     "key": "category",
+     "label": "Category"
+    }
+   ],
+   "options": [
+    {
+     "value": "desk",
+     "label": "Standing desk",
+     "attrs": {
+      "price": 420,
+      "category": "Furniture",
+      "stray": "x"
+     }
+    },
+    {
+     "value": "chair",
+     "label": "Office chair",
+     "score": 1,
+     "attrs": {
+      "price": 189.5,
+      "category": ""
+     }
+    },
+    {
+     "value": "lamp",
+     "label": "Desk lamp",
+     "active": false
+    }
+   ]
+  },
+  "plain": {
+   "options": [
+    {
+     "value": "a",
+     "label": "A"
+    }
+   ]
+  },
+  "big": {
+   "options": [
+    {
+     "value": "v0",
+     "label": "L0"
+    },
+    {
+     "value": "v1",
+     "label": "L1"
+    },
+    {
+     "value": "v2",
+     "label": "L2"
+    },
+    {
+     "value": "v3",
+     "label": "L3"
+    },
+    {
+     "value": "v4",
+     "label": "L4"
+    },
+    {
+     "value": "v5",
+     "label": "L5"
+    },
+    {
+     "value": "v6",
+     "label": "L6"
+    },
+    {
+     "value": "v7",
+     "label": "L7"
+    },
+    {
+     "value": "v8",
+     "label": "L8"
+    },
+    {
+     "value": "v9",
+     "label": "L9"
+    },
+    {
+     "value": "v10",
+     "label": "L10"
+    },
+    {
+     "value": "v11",
+     "label": "L11"
+    },
+    {
+     "value": "v12",
+     "label": "L12"
+    },
+    {
+     "value": "v13",
+     "label": "L13"
+    },
+    {
+     "value": "v14",
+     "label": "L14"
+    },
+    {
+     "value": "v15",
+     "label": "L15"
+    },
+    {
+     "value": "v16",
+     "label": "L16"
+    },
+    {
+     "value": "v17",
+     "label": "L17"
+    },
+    {
+     "value": "v18",
+     "label": "L18"
+    },
+    {
+     "value": "v19",
+     "label": "L19"
+    },
+    {
+     "value": "v20",
+     "label": "L20"
+    }
+   ]
+  }
+ },
+ "option_offered": {
+  "places": [
+   [
+    {
+     "value": "brazil",
+     "label": "Brazil"
+    },
+    {
+     "value": "japan",
+     "label": "Japan"
+    }
+   ],
+   [
+    {
+     "value": "brazil_sao_paulo",
+     "label": "São Paulo",
+     "parent": "brazil"
+    },
+    {
+     "value": "brazil_rio_de_janeiro",
+     "label": "Rio de Janeiro",
+     "parent": "brazil"
+    },
+    {
+     "value": "japan_tokyo",
+     "label": "Tokyo",
+     "parent": "japan"
+    }
+   ],
+   [
+    {
+     "value": "brazil_sao_paulo_sao_paulo",
+     "label": "São Paulo",
+     "score": 2,
+     "parent": "brazil_sao_paulo"
+    },
+    {
+     "value": "brazil_sao_paulo_campinas",
+     "label": "Campinas",
+     "score": 2,
+     "parent": "brazil_sao_paulo"
+    },
+    {
+     "value": "brazil_rio_de_janeiro_niteroi",
+     "label": "Niterói",
+     "score": 2,
+     "parent": "brazil_rio_de_janeiro"
+    },
+    {
+     "value": "japan_tokyo_shinjuku",
+     "label": "Shinjuku",
+     "score": 2,
+     "parent": "japan_tokyo"
+    },
+    {
+     "value": "japan_tokyo_shibuya",
+     "label": "Shibuya",
+     "score": 2,
+     "parent": "japan_tokyo"
+    }
+   ]
+  ],
+  "products": [
+   [
+    {
+     "value": "desk",
+     "label": "Standing desk",
+     "attrs": {
+      "price": 420,
+      "category": "Furniture"
+     }
+    },
+    {
+     "value": "chair",
+     "label": "Office chair",
+     "score": 1,
+     "attrs": {
+      "price": 189.5
+     }
+    }
+   ],
+   [],
+   []
+  ],
+  "plain": [
+   [
+    {
+     "value": "a",
+     "label": "A"
+    }
+   ],
+   [],
+   []
+  ],
+  "big": [
+   [
+    {
+     "value": "v0",
+     "label": "L0"
+    },
+    {
+     "value": "v1",
+     "label": "L1"
+    },
+    {
+     "value": "v2",
+     "label": "L2"
+    },
+    {
+     "value": "v3",
+     "label": "L3"
+    },
+    {
+     "value": "v4",
+     "label": "L4"
+    },
+    {
+     "value": "v5",
+     "label": "L5"
+    },
+    {
+     "value": "v6",
+     "label": "L6"
+    },
+    {
+     "value": "v7",
+     "label": "L7"
+    },
+    {
+     "value": "v8",
+     "label": "L8"
+    },
+    {
+     "value": "v9",
+     "label": "L9"
+    },
+    {
+     "value": "v10",
+     "label": "L10"
+    },
+    {
+     "value": "v11",
+     "label": "L11"
+    },
+    {
+     "value": "v12",
+     "label": "L12"
+    },
+    {
+     "value": "v13",
+     "label": "L13"
+    },
+    {
+     "value": "v14",
+     "label": "L14"
+    },
+    {
+     "value": "v15",
+     "label": "L15"
+    },
+    {
+     "value": "v16",
+     "label": "L16"
+    },
+    {
+     "value": "v17",
+     "label": "L17"
+    },
+    {
+     "value": "v18",
+     "label": "L18"
+    },
+    {
+     "value": "v19",
+     "label": "L19"
+    },
+    {
+     "value": "v20",
+     "label": "L20"
+    }
+   ],
+   [],
+   []
+  ]
+ },
+ "option_level_counts": {
+  "places": [
+   2,
+   3,
+   5
+  ],
+  "products": [
+   2
+  ],
+  "plain": [
+   1
+  ],
+  "big": [
+   21
+  ]
+ },
+ "option_kept": {
+  "places": false,
+  "products": false,
+  "plain": false,
+  "big": true
+ },
+ "option_matches": [
+  {
+   "list": "products",
+   "level": 0,
+   "options": [
+    {
+     "value": "desk",
+     "label": "Standing desk",
+     "attrs": {
+      "price": 420,
+      "category": "Furniture"
+     }
+    },
+    {
+     "value": "chair",
+     "label": "Office chair",
+     "score": 1,
+     "attrs": {
+      "price": 189.5
+     }
+    }
+   ],
+   "match": true
+  },
+  {
+   "list": "products",
+   "level": 0,
+   "options": [
+    {
+     "value": "desk",
+     "label": "Standing desk!",
+     "attrs": {
+      "price": 420,
+      "category": "Furniture"
+     }
+    },
+    {
+     "value": "chair",
+     "label": "Office chair!",
+     "score": 1,
+     "attrs": {
+      "price": 189.5
+     }
+    }
+   ],
+   "match": false
+  },
+  {
+   "list": "products",
+   "level": 0,
+   "options": [
+    {
+     "value": "desk",
+     "label": "Standing desk",
+     "attrs": {
+      "price": 420,
+      "category": "Furniture"
+     }
+    }
+   ],
+   "match": false
+  },
+  {
+   "list": "products",
+   "level": 0,
+   "options": null,
+   "match": false
+  },
+  {
+   "list": "places",
+   "level": 1,
+   "options": [
+    {
+     "value": "brazil_sao_paulo",
+     "label": "São Paulo",
+     "parent": "brazil"
+    },
+    {
+     "value": "brazil_rio_de_janeiro",
+     "label": "Rio de Janeiro",
+     "parent": "brazil"
+    },
+    {
+     "value": "japan_tokyo",
+     "label": "Tokyo",
+     "parent": "japan"
+    }
+   ],
+   "match": true
+  },
+  {
+   "list": "places",
+   "level": 1,
+   "options": [
+    {
+     "value": "brazil_sao_paulo",
+     "label": "São Paulo"
+    },
+    {
+     "value": "brazil_rio_de_janeiro",
+     "label": "Rio de Janeiro"
+    },
+    {
+     "value": "japan_tokyo",
+     "label": "Tokyo"
+    }
+   ],
+   "match": false
+  },
+  {
+   "list": "products",
+   "level": 0,
+   "options": [
+    {
+     "value": "desk",
+     "label": "Standing desk"
+    },
+    {
+     "value": "chair",
+     "label": "Office chair",
+     "score": 1
+    }
+   ],
+   "match": false
+  }
+ ],
+ "option_lookups": [
+  {
+   "query": {
+    "q": "sao"
+   },
+   "result": {
+    "items": [
+     {
+      "value": "brazil_sao_paulo_sao_paulo",
+      "label": "São Paulo"
+     }
+    ],
+    "total": 1
+   }
+  },
+  {
+   "query": {
+    "q": "SÃO"
+   },
+   "result": {
+    "items": [
+     {
+      "value": "brazil_sao_paulo_sao_paulo",
+      "label": "São Paulo"
+     }
+    ],
+    "total": 1
+   }
+  },
+  {
+   "query": {
+    "q": "shi"
+   },
+   "result": {
+    "items": [
+     {
+      "value": "japan_tokyo_shinjuku",
+      "label": "Shinjuku"
+     },
+     {
+      "value": "japan_tokyo_shibuya",
+      "label": "Shibuya"
+     }
+    ],
+    "total": 2
+   }
+  },
+  {
+   "query": {
+    "q": ""
+   },
+   "result": {
+    "items": [
+     {
+      "value": "brazil_sao_paulo_sao_paulo",
+      "label": "São Paulo"
+     },
+     {
+      "value": "brazil_sao_paulo_campinas",
+      "label": "Campinas"
+     },
+     {
+      "value": "brazil_rio_de_janeiro_niteroi",
+      "label": "Niterói"
+     },
+     {
+      "value": "japan_tokyo_shinjuku",
+      "label": "Shinjuku"
+     },
+     {
+      "value": "japan_tokyo_shibuya",
+      "label": "Shibuya"
+     }
+    ],
+    "total": 5
+   }
+  },
+  {
+   "query": {
+    "q": "  "
+   },
+   "result": {
+    "items": [
+     {
+      "value": "brazil_sao_paulo_sao_paulo",
+      "label": "São Paulo"
+     },
+     {
+      "value": "brazil_sao_paulo_campinas",
+      "label": "Campinas"
+     },
+     {
+      "value": "brazil_rio_de_janeiro_niteroi",
+      "label": "Niterói"
+     },
+     {
+      "value": "japan_tokyo_shinjuku",
+      "label": "Shinjuku"
+     },
+     {
+      "value": "japan_tokyo_shibuya",
+      "label": "Shibuya"
+     }
+    ],
+    "total": 5
+   }
+  },
+  {
+   "query": {
+    "values": [
+     "japan_tokyo_shibuya",
+     "nope"
+    ]
+   },
+   "result": {
+    "items": [
+     {
+      "value": "japan_tokyo_shibuya",
+      "label": "Shibuya"
+     }
+    ],
+    "total": 2
+   }
+  },
+  {
+   "query": {
+    "parents": [
+     "brazil_sao_paulo"
+    ]
+   },
+   "result": {
+    "items": [
+     {
+      "value": "brazil_sao_paulo_sao_paulo",
+      "label": "São Paulo"
+     },
+     {
+      "value": "brazil_sao_paulo_campinas",
+      "label": "Campinas"
+     }
+    ],
+    "total": 2
+   }
+  },
+  {
+   "query": {
+    "parents": [
+     "brazil_sao_paulo"
+    ],
+    "q": "camp"
+   },
+   "result": {
+    "items": [
+     {
+      "value": "brazil_sao_paulo_campinas",
+      "label": "Campinas"
+     }
+    ],
+    "total": 1
+   }
+  }
+ ],
+ "option_values": [
+  {
+   "label": "Very happy",
+   "value": "very_happy"
+  },
+  {
+   "label": "São Paulo",
+   "value": "sao_paulo"
+  },
+  {
+   "label": "日本",
+   "value": "option"
+  },
+  {
+   "label": "  --  ",
+   "value": "option"
+  },
+  {
+   "label": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+   "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  {
+   "label": "Option 1",
+   "value": "option_1"
+  }
+ ],
+ "option_unique": [
+  {
+   "wanted": "a",
+   "taken": [
+    "A",
+    "a_2"
+   ],
+   "value": "a_3"
+  },
+  {
+   "wanted": "b",
+   "taken": [
+    "a"
+   ],
+   "value": "b"
+  },
+  {
+   "wanted": "x",
+   "taken": [
+    "X",
+    "x_2",
+    "X_3"
+   ],
+   "value": "x_4"
+  }
+ ],
+ "text_hashes": [
+  {
+   "text": "",
+   "hash": "ztntfp"
+  },
+  {
+   "text": "Hello",
+   "hash": "1w2u0qz"
+  },
+  {
+   "text": "São Paulo",
+   "hash": "1b0zit7"
+  },
+  {
+   "text": "日本語",
+   "hash": "nbamha"
+  },
+  {
+   "text": "emoji 😀 here",
+   "hash": "bygp3k"
+  },
+  {
+   "text": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+   "hash": "9hj2mt"
+  }
+ ],
+ "option_limits": {
+  "LIVE_FROM": 20,
+  "MAX_OPTIONS": 20000,
+  "SEARCH_FROM": 50,
+  "LONG_FROM": 100
+ },
  "publish_cases": [
   {
    "schema": {

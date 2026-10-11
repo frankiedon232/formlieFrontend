@@ -164,6 +164,9 @@ async def new_form(db: AsyncSession, viewer: Viewer, *, name: str, folder: Folde
                    template_key: str | None = None) -> Form:
     await require_form_slot(db, viewer)
     tenant = viewer.principal.tenant
+    from app.modules.lists.service import fill_schema
+
+    await fill_schema(db, tenant.id, schema)
     taken = (await db.execute(select(Form.slug).where(Form.tenant_id == tenant.id, Form.purged_at.is_(None)))).scalars()
     now = datetime.now(UTC)
     form = Form(tenant_id=tenant.id, organisation_id=tenant.organisation_id, folder_id=folder.id if folder else None,

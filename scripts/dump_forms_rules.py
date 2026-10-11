@@ -30,6 +30,8 @@ import { FIELD_TYPES } from '__SHARED__/utils/forms/fields.ts'
 import { SYSTEM_TEMPLATES, templateSchema, localiseSchema } from '__SHARED__/templates/index.ts'
 import { FOLDER_COLOR_KEYS } from '__SHARED__/utils/forms/folders.ts'
 import { FORM_ACTIONS, RESPONSE_ACTIONS, TRASH_RETENTION_DAYS, FORM_CHANNELS } from '__SHARED__/types/forms.ts'
+import * as OPT from '__SHARED__/utils/forms/options.ts'
+import { textHash } from '__SHARED__/utils/forms/translations.ts'
 import { MAX_LARGE_OPTIONS, MAX_LIST_LEVELS } from '__SHARED__/utils/forms/options.ts'
 import { APP_LOCALES } from '__SHARED__/utils/i18n/locales.ts'
 
@@ -114,6 +116,36 @@ const publishCases = [
   edit(s => { s.pages[0].rows[0].fields.push({ id: 'zz', key: 'mystery', type: 'not_a_type', label: '' }) }),
 ]
 
+// Option lists (shared/utils/forms/options.ts) over a list with levels and one with details
+const slug = text => text.normalize('NFKD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '')
+const PLACES = { Brazil: { 'São Paulo': ['São Paulo', 'Campinas'], 'Rio de Janeiro': ['Niterói'] }, Japan: { Tokyo: ['Shinjuku', 'Shibuya'], Osaka: ['Sakai'] } }
+const placeOptions = []
+for (const [country, regions] of Object.entries(PLACES)) {
+  placeOptions.push({ value: slug(country), label: country })
+  for (const [region, cities] of Object.entries(regions)) {
+    placeOptions.push({ value: `${slug(country)}_${slug(region)}`, label: region, level: 1, parent: slug(country) })
+    for (const city of cities) placeOptions.push({ value: `${slug(country)}_${slug(region)}_${slug(city)}`, label: city, level: 2, parent: `${slug(country)}_${slug(region)}`, score: 2 })
+  }
+}
+placeOptions.find(o => o.value === 'japan_osaka').active = false
+const places = { levels: [{ key: 'country', label: 'Country' }, { key: 'region', label: 'Region' }, { key: 'city', label: 'City' }], options: placeOptions }
+const products = { columns: [{ key: 'price', label: 'Price' }, { key: 'category', label: 'Category' }], options: [
+  { value: 'desk', label: 'Standing desk', attrs: { price: 420, category: 'Furniture', stray: 'x' } },
+  { value: 'chair', label: 'Office chair', score: 1, attrs: { price: 189.5, category: '' } },
+  { value: 'lamp', label: 'Desk lamp', active: false } ] }
+const lists = { places, products, plain: { options: [{ value: 'a', label: 'A' }] }, big: { options: Array.from({ length: 21 }, (_, i) => ({ value: `v${i}`, label: `L${i}` })) } }
+const offered = Object.fromEntries(Object.entries(lists).map(([k, l]) => [k, [0, 1, 2].map(level => OPT.offeredOptions(l, level))]))
+const matchCases = [
+  ['products', 0, OPT.offeredOptions(products, 0)], ['products', 0, OPT.offeredOptions(products, 0).map(o => ({ ...o, label: o.label + '!' }))],
+  ['products', 0, OPT.offeredOptions(products, 0).slice(0, 1)], ['products', 0, null], ['places', 1, OPT.offeredOptions(places, 1)],
+  ['places', 1, OPT.offeredOptions(places, 1).map(({ parent, ...o }) => o)], ['products', 0, OPT.offeredOptions(products, 0).map(({ attrs, ...o }) => o)],
+].map(([k, level, options]) => ({ list: k, level, options, match: OPT.matchesList(options, lists[k], level) }))
+const cities = OPT.offeredOptions(places, 2)
+const lookups = [
+  { q: 'sao' }, { q: 'SÃO' }, { q: 'shi' }, { q: '' }, { q: '  ' }, { values: ['japan_tokyo_shibuya', 'nope'] }, { parents: ['brazil_sao_paulo'] }, { parents: ['brazil_sao_paulo'], q: 'camp' },
+].map(query => ({ query, result: OPT.lookupOptions(cities, query) }))
+const labels = ['Very happy', 'São Paulo', '日本', '  --  ', 'x'.repeat(70), 'Option 1']
+
 const slugify = value => value.toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '').slice(0, 60) || 'form'
 const slugs = ['Customer feedback', '  Café — Orders!  ', 'Ünïcödé Fòrm', '日本語のフォーム', '---', 'x'.repeat(80), 'A/B test 2026']
 
@@ -125,6 +157,13 @@ process.stdout.write(JSON.stringify({
   blank_schemas: blank,
   slugs: slugs.map(value => ({ value, slug: slugify(value) })),
   field_types: Object.fromEntries(Object.entries(FIELD_TYPES).map(([k, v]) => [k, { input: !!v.input, options: !!v.options }])),
+  option_lists: lists, option_offered: offered, option_level_counts: Object.fromEntries(Object.entries(lists).map(([k, l]) => [k, OPT.levelCounts(l)])),
+  option_kept: Object.fromEntries(Object.entries(lists).map(([k, l]) => [k, OPT.keptOnServer(l)])),
+  option_matches: matchCases, option_lookups: lookups,
+  option_values: labels.map(label => ({ label, value: OPT.valueFromLabel(label) })),
+  option_unique: [['a', ['A', 'a_2']], ['b', ['a']], ['x', ['X', 'x_2', 'X_3']]].map(([w, t]) => ({ wanted: w, taken: t, value: OPT.uniqueValue(w, t) })),
+  text_hashes: ['', 'Hello', 'São Paulo', '日本語', 'emoji 😀 here', 'x'.repeat(500)].map(t => ({ text: t, hash: textHash(t) })),
+  option_limits: { LIVE_FROM: OPT.LIVE_FROM, MAX_OPTIONS: OPT.MAX_OPTIONS, SEARCH_FROM: OPT.SEARCH_FROM, LONG_FROM: OPT.LONG_FROM },
   publish_cases: publishCases.map(schema => ({ schema, issues: publishIssues(schema) })),
 }))
 """

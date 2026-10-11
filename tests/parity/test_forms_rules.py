@@ -60,3 +60,40 @@ def test_publish_checks(case: dict) -> None:
     from app.modules.forms.builder import publish_issues
 
     assert publish_issues(case["schema"]) == case["issues"]
+
+
+# ── Option lists (shared/utils/forms/options.ts) ────────────────────────────────
+
+from app.modules.lists import rules as lists  # noqa: E402
+
+
+@pytest.mark.parametrize("name", sorted(RULES["option_lists"]))
+def test_list_levels_and_counts(name: str) -> None:
+    lst = RULES["option_lists"][name]
+    assert [lists.offered_options(lst, level) for level in (0, 1, 2)] == RULES["option_offered"][name]
+    assert lists.level_counts(lst) == RULES["option_level_counts"][name]
+    assert lists.kept_on_server(lst) == RULES["option_kept"][name]
+
+
+@pytest.mark.parametrize("case", RULES["option_matches"], ids=lambda c: f"{c['list']}-{c['match']}")
+def test_list_matches(case: dict) -> None:
+    assert lists.matches_list(case["options"], RULES["option_lists"][case["list"]], case["level"]) == case["match"]
+
+
+@pytest.mark.parametrize("case", RULES["option_lookups"], ids=lambda c: json.dumps(c["query"], ensure_ascii=True))
+def test_list_lookups(case: dict) -> None:
+    cities = lists.offered_options(RULES["option_lists"]["places"], 2)
+    query = case["query"]
+    got = lists.lookup_options(cities, q=query.get("q", ""), values=query.get("values"), parents=query.get("parents"))
+    assert got == case["result"]
+
+
+def test_list_values_and_hashes() -> None:
+    for case in RULES["option_values"]:
+        assert lists.value_from_label(case["label"]) == case["value"]
+    for case in RULES["option_unique"]:
+        assert lists.unique_value(case["wanted"], case["taken"]) == case["value"]
+    for case in RULES["text_hashes"]:
+        assert lists.text_hash(case["text"]) == case["hash"], case["text"]
+    assert RULES["option_limits"] == {"LIVE_FROM": lists.LIVE_FROM, "MAX_OPTIONS": lists.MAX_OPTIONS,
+                                      "SEARCH_FROM": lists.SEARCH_FROM, "LONG_FROM": lists.LONG_FROM}

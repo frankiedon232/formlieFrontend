@@ -500,16 +500,16 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 - **Guards:** `requireAuth`, `requireResource`
 - **Audit:** `forms.list_created`, `forms.list_deleted`, `forms.list_synced`, `forms.list_updated`
 
-- [ ] `GET /api/v1/option-lists` (`listOptionLists`)
-- [ ] `GET /api/v1/option-lists/insights` (`optionListInsights`)
-- [ ] `POST /api/v1/option-lists` (`createOptionList`)
-- [ ] `GET /api/v1/option-lists/{id}` (`getOptionList`)
-- [ ] `PATCH /api/v1/option-lists/{id}` (`updateOptionList`)
-- [ ] `DELETE /api/v1/option-lists/{id}` (`deleteOptionList`)
-- [ ] `GET /api/v1/option-lists/{id}/usage` (`optionListUsage`)
-- [ ] `GET /api/v1/option-lists/{id}/options` (`lookupListOptions`)
-- [ ] `POST /api/v1/option-lists/{id}/sync` (`syncOptionList`)
-- [ ] `POST /api/v1/option-lists/{id}/duplicate` (`duplicateOptionList`)
+- [x] `GET /api/v1/option-lists` (`listOptionLists`)
+- [x] `GET /api/v1/option-lists/insights` (`optionListInsights`)
+- [x] `POST /api/v1/option-lists` (`createOptionList`)
+- [x] `GET /api/v1/option-lists/{id}` (`getOptionList`)
+- [x] `PATCH /api/v1/option-lists/{id}` (`updateOptionList`)
+- [x] `DELETE /api/v1/option-lists/{id}` (`deleteOptionList`)
+- [x] `GET /api/v1/option-lists/{id}/usage` (`optionListUsage`)
+- [x] `GET /api/v1/option-lists/{id}/options` (`lookupListOptions`)
+- [x] `POST /api/v1/option-lists/{id}/sync` (`syncOptionList`)
+- [x] `POST /api/v1/option-lists/{id}/duplicate` (`duplicateOptionList`)
 
 ## `routes/themes.ts`
 
