@@ -3,6 +3,8 @@ soft delete only.
 
 - `responses` is partitioned by month on `submitted_at`; its key is (tenant_id, id, submitted_at), so tables that
   point at a response carry `response_submitted_at` too. `platform_reader` never reads `data` (the answers).
+- `response_notes` (the team's notes) and `response_changes` (status, tags and answers changed, newest first; an
+  answer corrected in `responses.data` keeps its original here) point at a response with its `submitted_at`.
 - `response_submissions` keeps one row per fill-in session (`Formalie-Key`) of a form: a partitioned table can't
   hold that unique key itself, so this small table does, and a repeat of the same session finds its response.
 """
@@ -13,7 +15,10 @@ import uuid
 from datetime import datetime
 from typing import Any
 
-from sqlalchemy import Boolean, CheckConstraint, DateTime, Index, Integer, PrimaryKeyConstraint, String, Uuid, text
+from sqlalchemy import (
+    Boolean, CheckConstraint, DateTime, ForeignKeyConstraint, Index, Integer, PrimaryKeyConstraint, String, Text, Uuid,
+    text,
+)
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -82,3 +87,37 @@ class ResponseSubmission(UuidPkMixin, TenantMixin, AuditMixin, Base):
     submission_id: Mapped[str] = mapped_column(String(64), nullable=False)
     response_id: Mapped[uuid.UUID] = mapped_column(Uuid, nullable=False)
     response_submitted_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+
+
+def _response_fk() -> ForeignKeyConstraint:
+    return ForeignKeyConstraint(["tenant_id", "response_id", "response_submitted_at"],
+                                ["responses.tenant_id", "responses.id", "responses.submitted_at"], ondelete="RESTRICT")
+
+
+class ResponseNote(UuidPkMixin, TenantMixin, AuditMixin, SoftDeleteMixin, Base):
+    """A note for the team, never shown to the respondent."""
+
+    __tablename__ = "response_notes"
+    __table_args__ = tenant_table_args(_response_fk(), Index("ix_response_notes_response", "tenant_id", "response_id"))
+
+    response_id: Mapped[uuid.UUID] = mapped_column(Uuid, nullable=False)
+    response_submitted_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    author_id: Mapped[uuid.UUID | None] = mapped_column(Uuid)
+    author_name: Mapped[str] = mapped_column(String(200), nullable=False)
+    text: Mapped[str] = mapped_column(Text, nullable=False)
+
+
+class ResponseChange(UuidPkMixin, TenantMixin, Base):
+    """One change to a response (status, tags, duplicate flag, an edited answer). Kept as it is: insert only."""
+
+    __tablename__ = "response_changes"
+    __table_args__ = tenant_table_args(_response_fk(), Index("ix_response_changes_response", "tenant_id", "response_id", "at"))
+
+    response_id: Mapped[uuid.UUID] = mapped_column(Uuid, nullable=False)
+    response_submitted_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    by_id: Mapped[uuid.UUID | None] = mapped_column(Uuid)
+    by_name: Mapped[str] = mapped_column(String(200), nullable=False)
+    field: Mapped[str] = mapped_column(String(100), nullable=False)
+    before: Mapped[Any] = mapped_column(JSONB)
+    after: Mapped[Any] = mapped_column(JSONB)

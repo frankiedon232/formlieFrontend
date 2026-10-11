@@ -132,6 +132,13 @@ def state_of(tenant: TenantInfo, form: Form, ignore_limit: bool = False) -> str:
     return "closed" if form.status in ("closed", "archived") else "not_published"
 
 
+async def live_schema(db: AsyncSession, form: Form) -> dict[str, Any] | None:
+    """The published version with the options of lists kept on the server filled in."""
+    from app.modules.lists.service import full_schema
+
+    return await full_schema(db, form.tenant_id, await published_schema(db, form))
+
+
 def unlock_cookie(form: Form) -> str:
     return f"formalie_unlock_{form.public_key}"
 
@@ -166,7 +173,7 @@ async def taking_responses(db: AsyncSession, request: Request, tenant: TenantInf
     """The form takes responses from this visitor right now: open and unlocked for them, or why not."""
     form = await find_form(db, tenant, key, channel)
     state = state_of(tenant, form, ignore_limit)
-    schema = await published_schema(db, form) if state == "open" else None
+    schema = await live_schema(db, form) if state == "open" else None
     if schema is None:
         raise FrmError(STATE_ERRORS.get(state, "FRM-FORM-1001"))
     visitor = await visitor_of(db, request, form)
@@ -202,7 +209,7 @@ async def public_view(db: AsyncSession, request: Request, tenant: TenantInfo, ke
     visitor = await visitor_of(db, request, form) if state == "open" else None
     locked = state == "open" and visitor is None
     identity = visitor.identity() if visitor else None
-    published = await published_schema(db, form) if state == "open" else None
+    published = await live_schema(db, form) if state == "open" else None
     logo, primary = await branding(db, tenant.id)
     schema = None
     if published is not None:

@@ -419,9 +419,7 @@ async def lookup_options(key: str, request: Request) -> Any:
             raise FrmError("FRM-GEN-1004")
         if await service.visitor_of(db, request, form) is None:
             raise FrmError("FRM-PERM-1001")
-        from app.modules.links.seo import published_schema
-
-        published = await published_schema(db, form)
+        published = await service.live_schema(db, form)
     if published is None:
         raise FrmError("FRM-GEN-1004")
     own = next((f for f in all_fields(published) if f["key"] == str(query.get("field") or "")), None)
@@ -600,6 +598,11 @@ async def submit_public_form(key: str, request: Request, response: Response) -> 
                     draft.closed_at, draft.data = now, {}
             await db.execute(update(Form).where(Form.id == form.id).values(
                 responses_count=Form.responses_count + 1, next_response_number=Form.next_response_number + 1))
+            from app.core.events.outbox import record_event
+
+            await record_event(db, "response.created", {"form_id": str(form.id), "response_id": str(stored_response.id),
+                                                         "submitted_at": _iso(now)},
+                               tenant_id=tenant.id, organisation_id=tenant.organisation_id)
             await record(db, tenant_id=tenant.id, organisation_id=tenant.organisation_id, action="responses.submitted",
                          actor=RESPONDENT, resource={"type": "form", "id": str(form.id), "name": form.name},
                          changes=[{"field": "channel", "before": None, "after": channel}])

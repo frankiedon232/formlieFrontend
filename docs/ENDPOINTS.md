@@ -88,7 +88,7 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 
 - **Guards:** `requireAuth`, `requireLevel`
 
-- [x] `GET /api/v1/forms/{id}/overview` (`getFormOverview`) (numbers from responses fill in with B8)
+- [x] `GET /api/v1/forms/{id}/overview` (`getFormOverview`) (views and starts are counted with analytics, B12)
 
 ## `routes/formShare.ts`
 
@@ -128,17 +128,17 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 - **Guards:** `requireAuth`, `requireResponses`
 - **Audit:** `responses.deleted`, `responses.updated`
 
-- [ ] `GET /api/v1/forms/{id}/responses` (`listFormResponses`)
-- [ ] `GET /api/v1/forms/{id}/responses/insights` (`formInsights`)
-- [ ] `GET /api/v1/forms/{id}/responses/tags` (`formResponseTags`)
-- [ ] `GET /api/v1/responses/insights` (`inboxInsights`)
-- [ ] `GET /api/v1/responses/forms` (`listResponseForms`)
-- [ ] `POST /api/v1/responses/bulk` (`bulkResponses`)
-- [ ] `GET /api/v1/responses` (`listResponses`)
-- [ ] `GET /api/v1/responses/{id}` (`getResponse`)
-- [ ] `PATCH /api/v1/responses/{id}` (`patchResponse`)
-- [ ] `DELETE /api/v1/responses/{id}` (`deleteResponse`)
-- [ ] `POST /api/v1/responses/{id}/notes` (`addNote`)
+- [x] `GET /api/v1/forms/{id}/responses` (`listFormResponses`)
+- [x] `GET /api/v1/forms/{id}/responses/insights` (`formInsights`)
+- [x] `GET /api/v1/forms/{id}/responses/tags` (`formResponseTags`)
+- [x] `GET /api/v1/responses/insights` (`inboxInsights`)
+- [x] `GET /api/v1/responses/forms` (`listResponseForms`)
+- [x] `POST /api/v1/responses/bulk` (`bulkResponses`)
+- [x] `GET /api/v1/responses` (`listResponses`)
+- [x] `GET /api/v1/responses/{id}` (`getResponse`)
+- [x] `PATCH /api/v1/responses/{id}` (`patchResponse`)
+- [x] `DELETE /api/v1/responses/{id}` (`deleteResponse`)
+- [x] `POST /api/v1/responses/{id}/notes` (`addNote`)
 
 ## `routes/analytics.ts`
 

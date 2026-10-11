@@ -258,3 +258,21 @@ async def fill_schema(db: AsyncSession, tenant_id: uuid.UUID, schema: dict[str, 
         fill_large_lists(schema, await lists_by_id(db, tenant_id, ids))
 
 
+
+
+async def full_schema(db: AsyncSession, tenant_id: uuid.UUID, schema: dict[str, Any] | None) -> dict[str, Any] | None:
+    """A copy of a form with the options of its lists kept on the server filled in (stored forms carry none): what
+    the server works with when it checks answers, looks up options, fills details or labels answers, the way the
+    mock's forms always hold them. `options_large` stays, so replies can still leave the options out."""
+    if not schema:
+        return schema
+    wanted = {str(f["option_set_id"]) for f in all_fields(schema) if f.get("options_large") and f.get("option_set_id")}
+    if not wanted:
+        return schema
+    lists = await lists_by_id(db, tenant_id, wanted)
+    out = copy.deepcopy(schema)
+    for field in all_fields(out):
+        lst = lists.get(str(field.get("option_set_id"))) if field.get("options_large") else None
+        if lst:
+            field["options"] = rules.offered_options(lst, field.get("option_level") or 0)
+    return out

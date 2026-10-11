@@ -1,7 +1,7 @@
 """Navigation counts (mock: routes/navigation.ts): cheap counters and short lists for the sidebar.
 
 Each area fills its part as it is built: people and organisation data (B3), forms and folders (B5), templates,
-themes and page designs (B6); responses (B8), data sources and response storage (B9). Until then those count
+themes and page designs (B6), responses (B8); data sources and response storage (B9). Until then those count
 nothing.
 """
 
@@ -34,6 +34,25 @@ def _template_categories(used: dict[str, dict[str, Any]]) -> list[dict[str, Any]
         forms[template["category"]] += (used.get(template["key"]) or {}).get("forms", 0)
     items = [{"key": key, "count": sizes[key], "forms": forms[key]} for key in TEMPLATE_CATEGORY_KEYS if sizes[key] > 0]
     return [{"key": i["key"], "count": i["count"]} for i in sorted(items, key=lambda i: (-i["forms"], -i["count"]))]
+
+
+async def _responses(principal: Principal) -> dict[str, int]:
+    """Responses by review status, of the forms whose responses this person may see."""
+    from app.modules.forms import access
+    from app.modules.forms.access import viewer_for
+    from app.modules.forms.service import forms_of
+    from app.modules.responses.models import Response
+
+    async with db_session("read", tenant_id=principal.tenant.id, organisation_id=principal.tenant.organisation_id,
+                          user_id=principal.user.id) as db:
+        viewer = await viewer_for(db, principal)
+        forms = [f.id for f in await forms_of(db, principal.tenant.id)
+                 if f.deleted_at is None and access.responses_allowed(f, viewer, "view")]
+        by_status = dict((await db.execute(select(Response.status, func.count()).where(
+            Response.tenant_id == principal.tenant.id, Response.form_id.in_(forms), Response.deleted_at.is_(None))
+            .group_by(Response.status))).all()) if forms else {}
+    counts = {s: by_status.get(s, 0) for s in ("new", "reviewed", "approved", "rejected")}
+    return {"all": sum(counts.values()), **counts}
 
 
 async def _library(principal: Principal) -> dict[str, Any]:
@@ -98,7 +117,7 @@ async def navigation_counts(principal: Principal = Depends(require_auth)) -> Any
     library = await _library(principal)
     return ok({
         "forms": forms_part,
-        "responses": {"all": 0, "new": 0, "reviewed": 0, "approved": 0, "rejected": 0},
+        "responses": await _responses(principal),
         **library,
         "folders": folders,
         "destinations": {"total": 0, "failing": 0},

@@ -5,7 +5,7 @@
     GET /folders/{id}            one folder with its numbers
     GET /directory               departments, job titles, roles and people (field access, people pickers, logic)
 
-Numbers come from responses, which arrive in B8 (until then: none, so views, starts and the trend are zero).
+Numbers come from the responses; visits are counted with analytics (B12), until then a start is a response.
 """
 
 from __future__ import annotations
@@ -83,11 +83,27 @@ async def form_overview(form_id: str, principal: Principal = Depends(require_aut
             own = None if found else await find_own(db, principal.tenant.id, form.template_key)
             name = found["name"] if found else own.name if own else None
             template = {"key": form.template_key, "name": name} if name else None
+        from app.modules.responses.service import responses_of
+
+        responses = await responses_of(db, principal.tenant.id, [form.id])
     today = datetime.now(UTC).replace(hour=0, minute=0, second=0, microsecond=0)
+    daily = _days(today - timedelta(days=29))
+    for r in responses:
+        index = 29 - (today.date() - r.submitted_at.astimezone(UTC).date()).days
+        if 0 <= index < 30:
+            daily[index]["count"] += 1
+    times = sorted(r.duration_seconds for r in responses if r.duration_seconds is not None)
+    middle = len(times) // 2
+    median = (times[middle] if len(times) % 2 else round((times[middle - 1] + times[middle]) / 2)) if times else None
+    live = bool(responses)
+    completion = form.completion_rate or 100
     return ok({
-        "stats": {"views": 0, "starts": 0, "responses": 0, "completion_rate": 0, "avg_seconds": None,
-                  "last_response_at": None},
-        "daily": _days(today - timedelta(days=29)),
+        # Visits aren't counted until analytics (B12): until then a start is a response
+        "stats": {"views": round(len(responses) / max(0.05, completion / 100)) if live else 0,
+                  "starts": round(len(responses) / max(0.05, completion / 100)) if live else 0,
+                  "responses": len(responses), "completion_rate": completion if live else 0, "avg_seconds": median,
+                  "last_response_at": iso(responses[0].submitted_at) if responses else None},
+        "daily": daily,
         "structure": schema_stats(schema),
         "versions": [{k: v for k, v in _version_view(version).items() if k != "change_summary"} for version in versions[:3]],
         "template": template,
@@ -96,8 +112,10 @@ async def form_overview(form_id: str, principal: Principal = Depends(require_aut
     })
 
 
-def _folder_row(folder: Folder, forms: list[Form], viewer: Viewer, names: Names) -> dict[str, Any]:
-    """FolderRow: its numbers over the forms this person can see (responses: B8)."""
+def _folder_row(folder: Folder, forms: list[Form], viewer: Viewer, names: Names,
+                times: dict[uuid.UUID, list[datetime]]) -> dict[str, Any]:
+    """FolderRow: its numbers over the forms this person can see: forms by status, responses all time and in the
+    last 30 days (day by day, and the 30 days before)."""
     shown = service.folder_view(folder, viewer, names)
     counts = {"draft": 0, "published": 0, "closed": 0, "archived": 0}
     owners: dict[uuid.UUID, dict[str, str]] = {}
@@ -108,10 +126,23 @@ def _folder_row(folder: Folder, forms: list[Form], viewer: Viewer, names: Names)
         last = max(last, form.updated_at) if last else form.updated_at
     published = [f for f in forms if f.status == "published"]
     today = datetime.now(UTC).replace(hour=0, minute=0, second=0, microsecond=0)
+    start = today - timedelta(days=29)
+    daily = _days(start)
+    responses = previous = 0
+    for form in forms:
+        for at in times.get(form.id, []):
+            responses += 1
+            last = max(last, at) if last else at
+            day = (at.astimezone(UTC).date() - start.date()).days
+            if 0 <= day < 30:
+                daily[day]["count"] += 1
+            elif -30 <= day < 0:
+                previous += 1
     return {
         "id": str(folder.id), "name": folder.name, "color": folder.color,
         "forms_count": sum(1 for f in forms if f.status != "archived"), "status_counts": counts,
-        "responses_count": 0, "responses_30d": 0, "previous_30d": 0, "daily": _days(today - timedelta(days=29)),
+        "responses_count": responses, "responses_30d": sum(d["count"] for d in daily), "previous_30d": previous,
+        "daily": daily,
         "completion_rate": round(sum(f.completion_rate for f in published) / len(published)) if published else None,
         "last_activity_at": iso(last), "owners": list(owners.values())[:5],
         "created_by": shown["created_by"], "access": shown["access"], "can": shown["can"],
@@ -122,7 +153,17 @@ async def _rows(db: Any, principal: Principal) -> tuple[Viewer, list[dict[str, A
     viewer = await viewer_for(db, principal)
     names = await Names().load(db, principal.tenant.id)
     forms = [f for f in await service.forms_of(db, principal.tenant.id) if f.deleted_at is None and access.can_see(f, viewer)]
-    rows = [_folder_row(folder, [f for f in forms if f.folder_id == folder.id], viewer, names)
+    from sqlalchemy import select
+
+    from app.modules.responses.models import Response
+
+    times: dict[uuid.UUID, list[datetime]] = {}
+    if forms:
+        for form_id, at in (await db.execute(select(Response.form_id, Response.submitted_at).where(
+                Response.tenant_id == principal.tenant.id, Response.form_id.in_([f.id for f in forms]),
+                Response.deleted_at.is_(None)))).all():
+            times.setdefault(form_id, []).append(at)
+    rows = [_folder_row(folder, [f for f in forms if f.folder_id == folder.id], viewer, names, times)
             for folder in viewer.folders.values() if access.folder_visible(folder, viewer)]
     return viewer, rows
 
