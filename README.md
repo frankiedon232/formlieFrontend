@@ -62,7 +62,8 @@ or `fmly\Scripts\python.exe -m app.run`, which does the same with the host, port
 | `scripts\dev-logs.ps1`, or `logs\dev\*.log` | The live output of the API, worker, Beat and Flower: one readable line per entry, with details after the message (`{name}.err.log` holds Python warnings and crashes) |
 | `logs\{level}\{date}.log`, for example `logs\error\2026-10-11.log` | Everything, as JSON lines, per level and day, kept 90 days; also when you run the API yourself |
 | The `formaly.request_logs` table | Every request in full: headers, body, response, real IP, location, device |
-| The `formaly.audit_logs` table | Who did what: sign-ins (failed ones too), changes |
+| The `formaly.audit_logs` table | Who did what: sign-ins (failed ones too), changes; in the app under Audit trail |
+| The `formaly.error_logs` table | Every warning, error and critical line of every process, loaded from the files above every 30 seconds by Beat (search by `trace_id`). Critical ones are also emailed to `ALERT_EMAILS` |
 | Flower, http://127.0.0.1:5555 | Every background task: what ran, how long it took, what failed |
 | Mailpit, http://127.0.0.1:8025 | Every email the backend sent (sign-in codes and others) |
 
@@ -132,7 +133,8 @@ All from the project folder:
 - **PostgreSQL 18** (Windows, port 5432): databases `formalie` (development) and `formalie_test` (tests). Workspace tables live in the `formaly` schema, global tables in `platform`. Every workspace table has row-level security forced. Nothing is ever hard deleted.
 - **Redis** (Ubuntu, 6379): cache, rate limits and secure-channel keys. If it goes down, the API keeps working: it falls back and logs the outage once.
 - **RabbitMQ** (Ubuntu, 5672): Celery jobs and the `formalie.events` exchange, fed by the event outbox.
-- **Celery** (Windows, `--pool=solo`): worker queues `scheduled` (outbox relay, partitions, GeoIP refresh) and `logs` (request log), plus Beat for the timers.
+- **Celery** (Windows, `--pool=solo`): worker queues `scheduled` (outbox relay, partitions, GeoIP refresh, error log loading), `logs` (request log), `notifications` (emails) and `exports` (export files), plus Beat for the timers.
+- **Stored files** (exports for now): `data/storage/tenants/{workspace}/orgs/{organisation}/{module}/{id}` (not in git). Object storage replaces the folder in B3.
 - **Request log** (`formaly.request_logs`): every request in full (headers, body, response, real IP, location, device), with secrets masked.
 - **Mailpit** (Ubuntu, 8025): catches every email in development, such as sign-in codes, so nothing is really sent.
 - **MaxMind GeoLite2** (`data/geoip/`, not in git): locations for the request log.

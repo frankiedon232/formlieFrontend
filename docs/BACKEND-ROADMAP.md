@@ -34,8 +34,8 @@ Then stop for the owner's review. Day-to-day status lives in `PROGRESS.md`.
 
 ## B2, Audit trail and logs (F4)
 
-- [ ] `audit_logs` with the catalogue from `shared/utils/audit/events.ts`, `record()` used by B1 sign-in events and every later phase.
-- [ ] Audit list, filters, detail, export (`routes/audit.ts`), error logs, security events. (The request log with geo is built in B0.)
+- [x] `audit_logs` with the catalogue from `shared/utils/audit/events.ts`, `record()` used by B1 sign-in events and every later phase.
+- [x] Audit list, filters, detail, export (`routes/audit.ts`), error logs, security events. (The request log with geo is built in B0.)
 
 ## B3, Onboarding, settings base and default data (F5, F14 base)
 

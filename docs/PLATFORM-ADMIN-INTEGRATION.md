@@ -9,6 +9,7 @@ The platform admin reads Formalie through its read replica, changes Formalie thr
 - On Formalie's **read replica** only. `SELECT` on every table the platform lists or analyses (tenants, organisations, users, memberships, roles, sessions, sign-in attempts, forms, form versions (metadata only), responses (counts and timestamps, **not answers**), files (sizes only), data source connections (metadata), API service objects (metadata), subscriptions, invoices, payments (processor references, amounts, status), audit logs, request logs, error logs, global tables).
 - `BYPASSRLS` on the replica (it reads across tenants), `statement_timeout = 15s`, `default_transaction_read_only = on`, connection limit.
 - **Request logs** (`formaly.request_logs`, BACKEND-SPEC §8.1): every request with headers, location, device and flags, for traffic analytics and investigations. The body columns (`request_body`, `request_body_text`, `response_body`) are excluded because answers can sit in them.
+- **Error logs** (`formaly.error_logs`, BACKEND-SPEC §8.3): warning, error and critical lines of every process with level, error code, security event, trace id, workspace, user, method, path, stack and context; search by `trace_id` to match a request log.
 - Column-level privileges exclude secrets (password hashes, TOTP secrets, recovery hashes, connection credentials, token hashes, webhook secrets) and answer content (`responses.data`, file contents).
 
 ### `platform_writer` (global tables only)

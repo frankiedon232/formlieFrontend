@@ -28,6 +28,8 @@ class RequestContext:
     proxy_trusted: bool = False  # the peer is a trusted proxy, so its forwarding and geo headers count
     user_agent: str | None = None
     host: str | None = None
+    method: str | None = None
+    path: str | None = None  # as it arrived (an enveloped request's real path is in decrypted_payload)
     host_kind: str | None = None  # manage, tenant, forms, custom, invalid
     tenant: TenantInfo | None = None
     user_id: uuid.UUID | None = None

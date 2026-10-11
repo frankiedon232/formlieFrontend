@@ -101,6 +101,8 @@ class Settings(BaseSettings):
     log_dir: Path = ROOT_DIR / "logs"
     log_level: str = "INFO"
     log_retention_days: int = 90
+    # CRITICAL lines are emailed here (comma separated); empty = no email
+    alert_emails: Annotated[list[str], NoDecode] = Field(default_factory=list)
     log_console: bool = True
     # Console only (files are always JSON): readable lines, or JSON. Default: readable in development, JSON elsewhere.
     log_console_format: Literal["pretty", "json"] | None = None
@@ -130,12 +132,17 @@ class Settings(BaseSettings):
                 ipaddress.ip_network(item, strict=False)
         return value
 
+    @field_validator("alert_emails", mode="before")
+    @classmethod
+    def _split_emails(cls, value: object) -> object:
+        return [item.strip() for item in value.split(",") if item.strip()] if isinstance(value, str) else value
+
     @field_validator("log_console_format", mode="before")
     @classmethod
     def _empty_is_default(cls, value: object) -> object:
         return None if value == "" else value
 
-    @field_validator("log_dir", "geoip_dir")
+    @field_validator("log_dir", "geoip_dir", "storage_dir")
     @classmethod
     def _inside_project(cls, value: Path) -> Path:
         # A relative path in .env means inside this project, wherever the server is started from.

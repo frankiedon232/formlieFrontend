@@ -80,6 +80,8 @@ class JsonFormatter(logging.Formatter):
                 entry["organisation_id"] = str(ctx.tenant.organisation_id)
             if ctx.user_id is not None:
                 entry["user_id"] = str(ctx.user_id)
+            if ctx.method:
+                entry["method"], entry["path"] = ctx.method, ctx.path
         for key, value in record.__dict__.items():
             if key not in _STANDARD_ATTRS and not key.startswith("_"):
                 entry[key] = MASK if is_sensitive(key) else mask(value)

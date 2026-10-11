@@ -18,7 +18,8 @@ from app.workers.db import worker_engine
 
 log = logging.getLogger("formalie.db")
 
-MONTHLY_TABLES = tuple(f"{get_settings().db_schema}.{t}" for t in ("event_outbox", "request_logs", "audit_logs"))
+MONTHLY_TABLES = tuple(f"{get_settings().db_schema}.{t}" for t in ("event_outbox", "request_logs", "audit_logs",
+                                                                   "error_logs"))
 MONTHS_AHEAD = 3
 
 

@@ -87,6 +87,8 @@ class RequestContextMiddleware:
             proxy_trusted=self.proxies.trusts(peer),
             user_agent=(header(scope, "user-agent") or "")[:512] or None,
             host=self.proxies.host(peer, scope),
+            method=scope.get("method"),
+            path=str(scope.get("path") or "")[:500] or None,
         )
         scope.setdefault("state", {})["ctx"] = ctx
         token = set_context(ctx)

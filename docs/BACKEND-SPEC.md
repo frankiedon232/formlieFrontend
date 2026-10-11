@@ -107,6 +107,7 @@ Who (user, role, impersonation), what (action, entity type, entity id), before/a
 - Levels: `DEBUG`, `INFO`, `WARNING`, `ERROR`, `CRITICAL` (emergency). Separate files per level: `logs/{level}/{YYYY-MM-DD}.log`, daily rotation, 90-day local retention, shipped to central storage.
 - Every entry: timestamp, level, error code, message, trace_id, tenant/org/user, endpoint, input summary, stack trace (server only), what the user was doing (route + action), environment, release version.
 - Central DB table for search in an admin console later; CRITICAL also alerts (email/Slack).
+- Built (B2): `formaly.error_logs`, loaded from the WARNING / ERROR / CRITICAL files every 30 s by the `logs.ingest_error_files` Beat task (`app/modules/logs/errors.py`), from where it stopped, never twice (ids from file, position and content). Logging never writes to the database itself. CRITICAL lines are emailed to `ALERT_EMAILS`. Security events are the lines with `security_event` (for example `token_tenant_mismatch`).
 - API error response (never leaks internals):
   ```json
   {

@@ -46,6 +46,7 @@ celery_app.conf.update(
         "db.ensure_partitions": {"queue": "scheduled"},
         "logs.write_request_logs": {"queue": "logs"},
         "logs.update_geoip": {"queue": "scheduled"},
+        "logs.ingest_error_files": {"queue": "scheduled"},
         "notifications.send_email": {"queue": "notifications"},
         "exports.build": {"queue": "exports"},
     },
@@ -53,6 +54,7 @@ celery_app.conf.update(
         "relay-outbox": {"task": "events.relay_outbox", "schedule": 2.0},
         "ensure-partitions": {"task": "db.ensure_partitions", "schedule": 6 * 3600.0},
         "update-geoip": {"task": "logs.update_geoip", "schedule": 7 * 24 * 3600.0},
+        "ingest-error-files": {"task": "logs.ingest_error_files", "schedule": 30.0},
     },
 )
 
