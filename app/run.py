@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
-from collections.abc import AsyncIterator
+from collections.abc import AsyncIterator, Callable
 from contextlib import asynccontextmanager
+from typing import Any
 
 from fastapi import FastAPI
 
@@ -21,11 +22,16 @@ from app.core.middleware.security_headers import SecurityHeadersMiddleware
 from app.core.middleware.tenant import TenantMiddleware, TenantResolver
 
 
-@asynccontextmanager
-async def lifespan(_: FastAPI) -> AsyncIterator[None]:
-    yield
-    await dispose_engines()
-    await close_redis()
+def make_lifespan(shipper: Any | None) -> Callable[[FastAPI], Any]:
+    @asynccontextmanager
+    async def lifespan(_: FastAPI) -> AsyncIterator[None]:
+        yield
+        if shipper is not None:
+            await shipper.drain()  # write what is still queued before the pools close
+        await dispose_engines()
+        await close_redis()
+
+    return lifespan
 
 
 def create_app(
@@ -33,18 +39,23 @@ def create_app(
     *,
     tenant_resolver: TenantResolver | None = None,
     limiter: SlidingWindowLimiter | None = None,
+    request_log_shipper: Any | None = None,
 ) -> FastAPI:
     settings = settings or get_settings()
     configure_logging(settings)
 
     docs = settings.docs_enabled and not settings.is_production
+    if request_log_shipper is None and settings.request_log_enabled:
+        from app.modules.logs.service import RequestLogShipper
+
+        request_log_shipper = RequestLogShipper(settings.request_log_sink)
     app = FastAPI(
         title="Formalie API",
         version=settings.app_release,
         docs_url="/docs" if docs else None,
         redoc_url="/redoc" if docs else None,
         openapi_url="/openapi.json" if docs else None,
-        lifespan=lifespan,
+        lifespan=make_lifespan(request_log_shipper),
     )
     install_exception_handlers(app)
     app.include_router(api_router, prefix=settings.api_prefix)
@@ -59,7 +70,7 @@ def create_app(
     app.add_middleware(TenantMiddleware, settings=settings, resolver=tenant_resolver)  # 4
     app.add_middleware(IpRateLimitMiddleware, settings=settings, limiter=limiter)  # 3
     app.add_middleware(SecurityHeadersMiddleware, settings=settings)  # 2
-    app.add_middleware(RequestLogMiddleware)  # 10, kept outside the rejecting layers so every request is logged
+    app.add_middleware(RequestLogMiddleware, shipper=request_log_shipper, settings=settings)  # 10, outside the rejecting layers: every request is recorded
     app.add_middleware(RequestContextMiddleware, settings=settings)  # 1
     return app
 

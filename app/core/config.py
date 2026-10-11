@@ -63,6 +63,21 @@ class Settings(BaseSettings):
     log_retention_days: int = 90
     log_console: bool = True
 
+    # ── Request log: every request, in full (BACKEND-SPEC §8.1, owner 2026-10-11) ──
+    request_log_enabled: bool = True
+    # database: the API writes batches itself · celery: through the `logs` queue · file: JSON lines only
+    request_log_sink: Literal["database", "celery", "file"] = "database"
+    request_log_body_max_bytes: int = 65_536  # request / response bodies kept up to this size (then truncated)
+    request_log_response_bodies: Literal["none", "errors", "all"] = "errors"
+    request_log_batch_size: int = 200
+    request_log_flush_seconds: float = 1.0
+    request_log_queue_max: int = 20_000  # in-memory; beyond this records go straight to the fallback file
+
+    # ── GeoIP (MaxMind GeoLite2 City + ASN; Cloudflare headers are the fallback) ──
+    geoip_dir: Path = ROOT_DIR / "data" / "geoip"
+    maxmind_account_id: str | None = None
+    maxmind_license_key: SecretStr | None = None
+
     @field_validator("trusted_proxies", mode="before")
     @classmethod
     def _split_proxies(cls, value: object) -> object:

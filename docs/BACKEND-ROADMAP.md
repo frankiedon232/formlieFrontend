@@ -16,6 +16,7 @@ Then stop for the owner's review. Day-to-day status lives in `PROGRESS.md`.
 
 - [x] Project layout per CLAUDE.md, `app/run.py` app factory, settings from `.env` (+ `.env.example`), requirements pinned.
 - [ ] Development services installed directly on the machine, **no Docker** (owner, 2026-10-10; 02-DEV-ENVIRONMENT): PostgreSQL 18 on Windows (primary + replica), and in WSL: PgBouncer, Redis 7, RabbitMQ, MinIO, Mailpit.
+- [x] Request log, every request in full (`formaly.request_logs`, BACKEND-SPEC §8.1): brought forward from B2 by the owner (2026-10-11).
 - [x] Logging (files by level and date, structured, trace_id), error codes from `shared/utils/errors/codes.ts`, exception handlers, standard response models.
 - [x] Middleware chain (BACKEND-SPEC §1): request context, security headers, IP rate limit, tenant, envelope gate (fails closed), request log. Envelope crypto and encrypted references are B1's first items.
 - [ ] DB: primary / replica engines, session router, RLS context, mixins, Alembic with the `enable_tenant_rls` helper, DB roles (including `platform_reader` / `platform_writer`).
@@ -34,7 +35,7 @@ Then stop for the owner's review. Day-to-day status lives in `PROGRESS.md`.
 ## B2, Audit trail and logs (F4)
 
 - [ ] `audit_logs` with the catalogue from `shared/utils/audit/events.ts`, `record()` used by B1 sign-in events and every later phase.
-- [ ] Audit list, filters, detail, export (`routes/audit.ts`), request logs with geo (MaxMind), error logs, security events.
+- [ ] Audit list, filters, detail, export (`routes/audit.ts`), error logs, security events. (The request log with geo is built in B0.)
 
 ## B3, Onboarding, settings base and default data (F5, F14 base)
 

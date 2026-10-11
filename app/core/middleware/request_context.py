@@ -83,6 +83,8 @@ class RequestContextMiddleware:
             trace_id=str(uuid7()),
             started_at=time.perf_counter(),
             client_ip=self.proxies.client_ip(peer, scope),
+            peer_ip=peer,
+            proxy_trusted=self.proxies.trusts(peer),
             user_agent=(header(scope, "user-agent") or "")[:512] or None,
             host=self.proxies.host(peer, scope),
         )

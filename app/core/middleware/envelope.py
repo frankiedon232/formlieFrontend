@@ -20,6 +20,7 @@ from redis.exceptions import RedisError
 
 from app.core.cache.redis import get_redis
 from app.core.config import Settings
+from app.core.context import get_context
 from app.core.middleware.asgi import ASGIApp, Receive, Scope, Send, header, route_path, send_error
 
 log = logging.getLogger("formalie.envelope")
@@ -98,6 +99,12 @@ async def _read_body(receive: Receive, limit: int) -> bytes | None:
             return b"".join(chunks)
 
 
+def _flag(name: str) -> None:
+    ctx = get_context()
+    if ctx is not None:
+        ctx.flags.add(name)
+
+
 class EnvelopeMiddleware:
     def __init__(self, app: ASGIApp, settings: Settings) -> None:
         self.app = app
@@ -136,6 +143,7 @@ class EnvelopeMiddleware:
 
         if envelope is None:
             log.warning("FRM-SEC-1001 missing or malformed envelope", extra={"error_code": "FRM-SEC-1001", "method": method})
+            _flag("invalid_envelope")
             await send_error(send, "FRM-SEC-1001")
             return
 
@@ -147,6 +155,7 @@ class EnvelopeMiddleware:
             return
         if key is None:
             log.info("FRM-SEC-1004 unknown or expired session key", extra={"error_code": "FRM-SEC-1004"})
+            _flag("unknown_session_key")
             await send_error(send, "FRM-SEC-1004")
             return
 

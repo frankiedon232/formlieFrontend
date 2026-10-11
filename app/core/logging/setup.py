@@ -27,7 +27,7 @@ _LEVELS = {"DEBUG": logging.DEBUG, "INFO": logging.INFO, "NOTICE": NOTICE, "WARN
 SENSITIVE_KEYS = (
     "password", "passwd", "secret", "token", "authorization", "cookie", "otp", "code_hash", "totp",
     "api_key", "apikey", "private_key", "client_secret", "refresh", "csrf", "recovery", "card_number", "cvv",
-    "fernet", "credential", "session_key", "set-cookie",
+    "fernet", "credential", "session_key", "set-cookie", "ticket", "signature",
 )
 _STANDARD_ATTRS = set(vars(logging.LogRecord("", 0, "", 0, "", (), None))) | {"message", "asctime", "taskName"}
 MASK = "***"

@@ -30,3 +30,6 @@ fmly/
 .env
 .env.*
 !.env.example
+
+# GeoIP databases (downloaded weekly)
+data/geoip/

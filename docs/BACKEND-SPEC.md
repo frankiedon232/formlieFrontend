@@ -80,7 +80,18 @@ Updated 2026-10-10 after the frontend was finished. The frontend's mock (`C:/UNE
 
 ## 8. Logging, errors, audit
 
-### 8.1 Request logs (`request_logs`, partitioned monthly)
+### 8.1 Request logs (`formaly.request_logs`, partitioned monthly; built 2026-10-11)
+
+Every request in full, separate from the audit trail and the application logs (owner, 2026-10-11): a copy of the real traffic for the platform admin's analytics and investigations. One row per request, id = trace_id.
+
+- **Captured** (`app/core/middleware/request_log.py`, `app/modules/logs/capture.py`): workspace, user, session; scheme, HTTP version, method, host, host kind, subdomain, path, route template, query; **every request header**; the **request body** (JSON and form bodies as JSON, other text as text, binary as type + size + SHA-256; enveloped bodies decrypted from B1), its keys, field count and SHA-256 over the whole body, kept up to `REQUEST_LOG_BODY_MAX_BYTES`; status, sizes, duration, error code, rate-limit hit; response headers and the response body of errors (`REQUEST_LOG_RESPONSE_BODIES`); real client IP, peer IP, `X-Forwarded-For` chain; flags (`invalid_envelope`, `unknown_session_key`, `sqli`, `xss`, `path_traversal`, `oversized`, from B1 `replay`).
+- **Added by the writer** (`app/modules/logs/service.py`): location from MaxMind GeoLite2 City + ASN (continent, country, region, city, postcode, time zone, latitude / longitude with accuracy, ASN and network), Cloudflare's location headers as the fallback (trusted proxy only); device type, brand, model, OS, browser and versions, bot.
+- **Never stored:** secrets are masked at capture (Authorization keeps its scheme, cookie names without values, CSRF, internal and platform signatures, passwords, tokens, secrets, tickets, one-time and recovery codes on sign-in paths).
+- **Off the request path:** an in-memory queue per process, written in batches by the API itself (`REQUEST_LOG_SINK=database`) or by the `logs` Celery queue (`celery`); anything that can't be written goes to `logs/requests/{date}.jsonl`, loaded later by `scripts/replay_request_logs.py`. Inserts are idempotent.
+- **Access:** `formalie_app` and `formalie_worker` may only INSERT; nobody updates or deletes. RLS is forced (reads per workspace). `platform_reader` reads every column except the three body columns.
+
+The fields below are the original list; all of them are covered:
+
 
 trace_id, timestamp (UTC, ms), tenant_id, organisation_id, user_id, session_id, method, path, route template, query (masked), status, duration_ms, request/response size, client IP, country, region/state, city, timezone, lat/long (approx), ASN/ISP, user agent, parsed device/OS/browser, referer, origin, host/subdomain, client app & version header, **body summary** (content type, size, SHA-256, top-level keys, field count, first 512 chars with sensitive keys masked, flags: oversized, malformed, invalid envelope, SQLi/XSS/path-traversal patterns, replay attempt), rate-limit hits, error code.
 Geo: MaxMind GeoLite2 City + ASN databases (auto-updated weekly by a Celery Beat job); Cloudflare headers used when present.

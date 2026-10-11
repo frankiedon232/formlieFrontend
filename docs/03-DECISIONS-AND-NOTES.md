@@ -337,3 +337,11 @@ The portal shows the mark as the icon `i-formalie-mark`, a custom Nuxt Icon coll
 - **Event outbox.** The outbox is a tenant table with RLS forced. The app may only INSERT into it and can never read it. The relay reads it as `formalie_worker`.
 - **Subdomain change.** An old subdomain keeps working for 90 days (F14 M7). PLATFORM-ADMIN-INTEGRATION said 30.
 - **Database schema `formaly` (owner 2026-10-10).** Every workspace table, the event outbox and `alembic_version` live in the `formaly` schema (`DB_SCHEMA`). Global and tenant-directory tables live in `platform`. Nothing lives in `public`, and no one may create objects there. Each role's default `search_path` is `formaly, platform`; `scripts/db_bootstrap.py` sets it, so it holds through PgBouncer.
+
+**Request log, every request in full (owner 2026-10-11).** This log is separate from the audit trail and the application logs. It is a copy of the real traffic for the platform admin's analytics: one row per request in `formaly.request_logs`. Each row holds the headers, the body, the response, the real client IP, location (MaxMind GeoLite2, with Cloudflare's headers as the fallback), device and security flags (BACKEND-SPEC §8.1). It was brought forward from B2 into B0.
+
+- **Secrets:** always masked at capture, never stored.
+- **Bodies:** kept up to 64 KB and hashed in full.
+- **Responses:** kept only for errors by default.
+- **Writing:** in batches off the request path, with a file fallback and a replay script.
+- **Access:** `platform_reader` reads everything except the body columns.

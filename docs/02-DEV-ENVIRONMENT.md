@@ -85,7 +85,15 @@ Installed directly on the machine, **no Docker** (owner, 2026-10-10). Production
 4. Workers on Windows: Celery has no official Windows pool, so run them with `--pool=solo` (or `--pool=threads`):
    `fmly\Scripts\celery.exe -A app.workers.celery_app worker -Q scheduled --pool=solo -l info` and `fmly\Scripts\celery.exe -A app.workers.celery_app beat -l info`.
 
-### 3. Replica on Windows (optional, later)
+### 3. Locations for the request log (MaxMind GeoLite2)
+
+1. Create a free account at maxmind.com, then make a license key (GeoLite2).
+2. Put `MAXMIND_ACCOUNT_ID` and `MAXMIND_LICENSE_KEY` in `.env`.
+3. `fmly\Scripts\python.exe scripts\geoip_update.py` downloads City + ASN into `data/geoip/` (Celery Beat refreshes them weekly).
+
+Without them requests are still logged; only the location fields stay empty. Local addresses (`127.0.0.1`, your LAN) never have a location.
+
+### 4. Replica on Windows (optional, later)
 
 As administrator, with the primary running: allow replication for `formalie_replicator` in `pg_hba.conf`, then
 `"C:\Program Files\PostgreSQL\18\bin\pg_basebackup.exe" -h 127.0.0.1 -p 5432 -U formalie_replicator -D C:\pgdata\replica18 -R -X stream`,

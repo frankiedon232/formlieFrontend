@@ -23,6 +23,8 @@ class RequestContext:
     trace_id: str
     started_at: float
     client_ip: str | None = None
+    peer_ip: str | None = None  # the direct socket peer (Nginx, the dev proxy, or the client itself)
+    proxy_trusted: bool = False  # the peer is a trusted proxy, so its forwarding and geo headers count
     user_agent: str | None = None
     host: str | None = None
     host_kind: str | None = None  # manage, tenant, forms, custom, invalid
@@ -31,6 +33,10 @@ class RequestContext:
     session_id: uuid.UUID | None = None
     error_code: str | None = None
     rate_limited: bool = False
+    # Security flags for the request log: invalid_envelope, unknown_session_key, replay, sqli, xss, path_traversal …
+    flags: set[str] = field(default_factory=set)
+    # Set by the envelope layer (B1) once decrypted: {method, path, query, body}, logged instead of the ciphertext.
+    decrypted_payload: dict[str, object] | None = None
     extra: dict[str, object] = field(default_factory=dict)
 
 

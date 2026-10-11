@@ -24,7 +24,7 @@ Rewritten 2026-10-10 from the finished portal (`C:\UNETPROJECTS\formalieFrontend
 | --- | --- |
 | `formalie_owner` | Owns the schema; used only by migrations (Alembic). Roles are created once per cluster by `scripts/db_bootstrap.py`. |
 | `formalie_app` | API and Celery workers. `NOBYPASSRLS`; SELECT, INSERT, UPDATE on tenant tables (no DELETE: soft delete only), INSERT only on `event_outbox`, `SELECT` on global tables, `INSERT` only on log tables (`audit_logs`, `request_logs`, `error_logs`, `api_request_logs`, `form_fill_events`). Cannot list `tenants` except through `platform.resolve_tenant(host)` (SECURITY DEFINER). |
-| `formalie_worker` | Outbox relay and partition upkeep only. `BYPASSRLS`, SELECT and UPDATE on `event_outbox`, EXECUTE on `platform.ensure_monthly_partitions`; nothing else. |
+| `formalie_worker` | Outbox relay, partition upkeep and log writing only. `BYPASSRLS`, SELECT and UPDATE on `event_outbox`, INSERT on `request_logs`, EXECUTE on `platform.ensure_monthly_partitions`; nothing else. |
 | `formalie_readonly` | Reporting on replicas: SELECT, `default_transaction_read_only = on`, `NOBYPASSRLS`. |
 | `platform_reader` | Read replica only. `BYPASSRLS`, `default_transaction_read_only = on`, `statement_timeout = 15s`, connection limit. Column privileges exclude secrets (`*_hash`, `*_enc`, TOTP secrets, recovery codes, connection credentials, webhook secrets) and answer content (`responses.data`, file contents, `resume_drafts.data`). |
 | `platform_writer` | `INSERT`, `UPDATE` (no `DELETE`; retire with `retired_at`) on the platform-owned global tables marked **(P)** below. Every write carries `published_by_staff_id`, `published_at`; then `platform.published { table, ids, version }` on the bus drops Formalie's caches. |
@@ -331,7 +331,7 @@ Source: `shared/types/audit.ts`, `shared/utils/audit/events.ts`, `server/mock/da
 | Table | Key columns |
 | --- | --- |
 | `audit_logs` | **partitioned monthly**, insert-only; occurred_at, action, area, outcome (`success`, `failure`, `blocked`), severity (`info`, `notice`, `warning`, `critical`), actor_type (`user`, `api_key`, `system`, `platform_support`), actor_id, actor_name, actor_email, resource_type, resource_id, resource_name, ip, city, country, device jsonb, changes jsonb (field, before, after), metadata jsonb, reason (FRM code), request_id; for `platform_support`: staff_id, staff_name, approval_id |
-| `request_logs` | **partitioned monthly**; nullable tenant_id (failures before the tenant is known), method, path template, status, duration_ms, request_id, ip, at |
+| `request_logs` | schema `formaly`, **partitioned monthly** on `occurred_at`; id = trace_id; nullable tenant_id (failures before the tenant is known). Every request in full: who, method, host, path, route, query, all headers, body (JSON / text, masked, capped) and its SHA-256, status, sizes, duration, error code, response headers and error bodies, real client IP, peer, forwarding chain, location (MaxMind / Cloudflare), device, flags. BACKEND-SPEC §8.1. INSERT only (`formalie_app`, `formalie_worker`); `platform_reader` reads all but the body columns |
 | `error_logs` | **partitioned monthly**; nullable tenant_id, code, message, stack, request_id, at |
 
 RLS lets a workspace read only its own `audit_logs`; `platform_reader` reads all. Every state-changing endpoint and every sign-in attempt writes one `audit_logs` row.

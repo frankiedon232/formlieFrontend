@@ -29,6 +29,19 @@ OLDCO = TenantInfo(id=uuid.UUID("01900000-0000-7000-8000-00000000000b"), subdoma
                    status="suspended", organisation_id=uuid.UUID("01900000-0000-7000-8000-0000000000b1"))
 
 
+class MemoryShipper:
+    """Collects request-log records instead of writing them."""
+
+    def __init__(self) -> None:
+        self.records: list[dict] = []
+
+    def submit(self, record: dict) -> None:
+        self.records.append(record)
+
+    async def drain(self) -> None:
+        pass
+
+
 class FakeTenantResolver:
     def __init__(self, *tenants: TenantInfo) -> None:
         self.tenants = {t.subdomain: t for t in tenants}
@@ -60,11 +73,11 @@ def settings() -> Settings:
     return get_settings().model_copy(update={"rate_limit_ip_per_minute": 1000})
 
 
-def build_app(settings: Settings, **overrides: object) -> FastAPI:
+def build_app(settings: Settings, shipper: MemoryShipper | None = None, **overrides: object) -> FastAPI:
     from app.run import create_app
 
     return create_app(settings.model_copy(update=overrides) if overrides else settings,
-                      tenant_resolver=FakeTenantResolver(ACME, OLDCO))
+                      tenant_resolver=FakeTenantResolver(ACME, OLDCO), request_log_shipper=shipper or MemoryShipper())
 
 
 @pytest.fixture
