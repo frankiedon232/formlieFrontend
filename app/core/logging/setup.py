@@ -96,6 +96,32 @@ class _DropClientResets(logging.Filter):
         return not isinstance(exc, (ConnectionResetError, ConnectionAbortedError))
 
 
+class PrettyFormatter(logging.Formatter):
+    """One readable line per entry for the development console: time level logger: message  key=value ..."""
+
+    ESC = "\033["
+    COLORS = {"DEBUG": "90m", "INFO": "36m", "NOTICE": "34m", "WARNING": "33m", "ERROR": "31m", "CRITICAL": "1;31m"}
+
+    def __init__(self, settings: Settings) -> None:
+        super().__init__()
+        self.json = JsonFormatter(settings)
+
+    def format(self, record: logging.LogRecord) -> str:
+        entry = json.loads(self.json.format(record))
+        stack = entry.pop("stack", None)
+        color = self.ESC + self.COLORS.get(record.levelname, "0m")
+        reset, grey = self.ESC + "0m", self.ESC + "90m"
+        head = (f"{entry.pop('time')[11:23]} {color}{entry.pop('level'):<8}{reset} "
+                f"{entry.pop('logger')}: {entry.pop('message')}")
+        for key in ("env", "release"):
+            entry.pop(key, None)
+        details = " ".join(
+            f"{k}={v if isinstance(v, str) else json.dumps(v, ensure_ascii=False, default=str)}"
+            for k, v in entry.items() if v not in (None, "", [], {}))
+        line = f"{head}  {grey}{details}{reset}" if details else head
+        return f"{line}\n{stack}" if stack else line
+
+
 _configured = False
 
 
@@ -116,7 +142,8 @@ def configure_logging(settings: Settings) -> None:
 
     if settings.log_console:
         console = logging.StreamHandler(sys.stdout)
-        console.setFormatter(formatter)
+        style = settings.log_console_format or ("pretty" if settings.is_development else "json")
+        console.setFormatter(PrettyFormatter(settings) if style == "pretty" else formatter)
         root.addHandler(console)
 
     logging.getLogger("asyncio").addFilter(_DropClientResets())

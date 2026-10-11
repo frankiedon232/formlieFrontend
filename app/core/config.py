@@ -77,6 +77,8 @@ class Settings(BaseSettings):
     log_level: str = "INFO"
     log_retention_days: int = 90
     log_console: bool = True
+    # Console only (files are always JSON): readable lines, or JSON. Default: readable in development, JSON elsewhere.
+    log_console_format: Literal["pretty", "json"] | None = None
 
     # ── Request log: every request, in full (BACKEND-SPEC §8.1, owner 2026-10-11) ──
     request_log_enabled: bool = True
@@ -102,6 +104,11 @@ class Settings(BaseSettings):
             for item in value:
                 ipaddress.ip_network(item, strict=False)
         return value
+
+    @field_validator("log_console_format", mode="before")
+    @classmethod
+    def _empty_is_default(cls, value: object) -> object:
+        return None if value == "" else value
 
     @field_validator("log_dir", "geoip_dir")
     @classmethod

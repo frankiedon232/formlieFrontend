@@ -93,7 +93,7 @@ The setup script runs once only. After a restart or shutdown, one command from t
 powershell -ExecutionPolicy Bypass -File scripts\dev-up.ps1
 ```
 
-It wakes Ubuntu and keeps it running in the background, so its services stay up without an Ubuntu window: Redis, RabbitMQ, PgBouncer and Mailpit start with Ubuntu, and PostgreSQL starts with Windows. It checks that each one answers, then opens a window each for the API, the Celery worker, Beat and Flower. Add `-NoApp` for the services only. `scripts\dev-down.ps1` stops the API, the workers and the keep-alive; data is never touched.
+It wakes Ubuntu and keeps it running in the background, so its services stay up without an Ubuntu window: Redis, RabbitMQ, PgBouncer and Mailpit start with Ubuntu, and PostgreSQL starts with Windows. It checks that each one answers, then opens a window each for the API, the Celery worker, Beat and Flower. Add `-NoApp` for the services only, or `-NoApi` for everything except the API (when you start the API in your own terminal, always with `--no-proxy-headers`). `scripts\dev-down.ps1` stops the API, the workers and the keep-alive; data is never touched.
 
 ### Dashboards (development)
 

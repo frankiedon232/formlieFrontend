@@ -2,6 +2,7 @@
 #
 #   powershell -ExecutionPolicy Bypass -File scripts\dev-up.ps1          # services + API + workers + Flower
 #   powershell -ExecutionPolicy Bypass -File scripts\dev-up.ps1 -NoApp   # services only
+#   powershell -ExecutionPolicy Bypass -File scripts\dev-up.ps1 -NoApi   # all but the API (you start it yourself)
 #
 # 1. Wakes Ubuntu (WSL) and keeps it running in the background, so Redis, RabbitMQ, PgBouncer and Mailpit
 #    (systemd services, they start with Ubuntu) stay up even with no Ubuntu window open.
@@ -9,7 +10,7 @@
 # 3. Opens one window each for the API (https://formalie.dev:5004), the Celery worker, Celery Beat and Flower.
 # Stop everything with scripts\dev-down.ps1.
 
-param([switch]$NoApp)
+param([switch]$NoApp, [switch]$NoApi)
 
 $ErrorActionPreference = "Stop"
 $root = Split-Path -Parent $PSScriptRoot
@@ -58,6 +59,7 @@ $windows = [ordered]@{
     "Celery beat"     = "& '$celery' -A app.workers.celery_app beat -s logs/celerybeat-schedule -l info"
     "Flower"          = "& '$celery' -A app.workers.celery_app flower --address=127.0.0.1 --port=5555"
 }
+if ($NoApi) { $windows.Remove("Formalie API") }
 foreach ($title in $windows.Keys) {
     $command = "`$host.UI.RawUI.WindowTitle = 'formalie: $title'; Set-Location '$root'; $($windows[$title])"
     Start-Process powershell -ArgumentList "-NoExit", "-Command", $command | Out-Null

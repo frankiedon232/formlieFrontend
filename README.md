@@ -19,9 +19,27 @@ It wakes Ubuntu (WSL) and keeps it running in the background, checks that every 
 
 | To | Run |
 | --- | --- |
+| Everything but the API (you start the API yourself, see below) | `powershell -ExecutionPolicy Bypass -File scripts\dev-up.ps1 -NoApi` |
 | Start services only (no API or workers) | `powershell -ExecutionPolicy Bypass -File scripts\dev-up.ps1 -NoApp` |
 | Stop the API, workers and the keep-alive (data is never touched) | `powershell -ExecutionPolicy Bypass -File scripts\dev-down.ps1` |
 | Start only the API | `fmly\Scripts\python.exe -m app.run` |
+
+### Starting the API yourself (to watch its log)
+
+If you prefer to run the API in your own terminal, run `dev-up.ps1 -NoApi` for the rest, then:
+
+```powershell
+uvicorn app.run:app --host 0.0.0.0 --port 5004 --no-proxy-headers --ssl-certfile C:\devcertsormalie.pem --ssl-keyfile C:\devcertsormalie-key.pem
+```
+
+**`--no-proxy-headers` is required.** The API reads the forwarded headers itself, and only from trusted proxies. Without the flag, workspaces are not found from their subdomain behind the Nuxt dev proxy. `fmly\Scripts\python.exe -m app.run` does the same, with the certificates from `.env`.
+
+### Where to see the logs
+
+- **The API's terminal**, or the "formalie: Formalie API" window from `dev-up`: one readable line per request and event, in colour, with the details after the message. Set `LOG_CONSOLE_FORMAT=json` in `.env` for raw JSON instead.
+- **Files**, kept 90 days: `logs/{level}/{date}.log`, one JSON object per line (for example `logs/error/2026-10-11.log`).
+- **Every request in full**: the `formaly.request_logs` table (headers, body, response, location).
+- **Background jobs**: the Celery worker window, and Flower (http://127.0.0.1:5555).
 
 The setup script `scripts/wsl/setup-services.sh` was a one-time install. Don't run it again unless you set up a new machine.
 
