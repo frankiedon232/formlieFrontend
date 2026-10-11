@@ -85,7 +85,8 @@ async def test_public_profiles(app) -> None:  # noqa: ANN001
     assert reply["data"]["auth_providers"] == ["password"]  # Starter: password only
     async with client_for(app, host="manage.formalie.dev") as http:
         _, reply = await SecureClient(http).request("GET", "/tenants/public")
-    assert reply["data"]["mode"] == "manage" and len(reply["data"]["auth_providers"]) == 5
+    assert reply["data"]["mode"] == "manage"
+    assert reply["data"]["auth_providers"] == ["password", "google", "microsoft", "facebook"]  # no Apple
     async with client_for(app, host="oldco.formalie.dev") as http:
         _, reply = await SecureClient(http).request("GET", "/tenants/public")
     assert reply["data"]["status"] == "suspended"

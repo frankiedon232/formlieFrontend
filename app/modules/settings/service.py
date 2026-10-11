@@ -19,6 +19,8 @@ from app.core.security.passwords import DEFAULT_PASSWORD_POLICY
 from app.modules.settings.models import WorkspaceSetting
 
 
+SIGNIN_METHODS = ("password", "google", "microsoft", "facebook")  # shared/utils/settings/schemas.ts (parity test)
+
 
 def defaults(*, name: str, website: str | None = None, signin_methods: list[str] | None = None) -> dict[str, dict[str, Any]]:
     """The sections a new workspace starts with (settingsStore.ts seed)."""

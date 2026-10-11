@@ -66,7 +66,7 @@ Live co-editing was removed by the owner (2026-10-08). People work together thro
 
 ### 9. Settings (handles everything)
 
-Company profile, branding, subdomain, authentication providers (Google, Microsoft, Apple, Facebook, email/password), OTP policy, predefined select lists (option sets), themes, data destinations/connections, webhooks, API keys, notification and email templates, data retention, localisation (language, timezone, date/number formats, currency), embed defaults, security policies (password rules, session timeout, IP allowlist), billing/subscription.
+Company profile, branding, subdomain, authentication providers (Google, Microsoft, Facebook, email/password), OTP policy, predefined select lists (option sets), themes, data destinations/connections, webhooks, API keys, notification and email templates, data retention, localisation (language, timezone, date/number formats, currency), embed defaults, security policies (password rules, session timeout, IP allowlist), billing/subscription.
 
 ### 10. Users, roles, access (RBAC)
 

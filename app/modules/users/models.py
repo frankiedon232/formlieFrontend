@@ -118,7 +118,7 @@ class UserIdentity(UuidPkMixin, TenantMixin, AuditMixin, SoftDeleteMixin, Base):
     __tablename__ = "user_identities"
     __table_args__ = tenant_table_args(
         tenant_fk("user_id", "users"),
-        CheckConstraint("provider IN ('google', 'microsoft', 'apple', 'facebook', 'sso')", name="provider"),
+        CheckConstraint("provider IN ('google', 'microsoft', 'facebook', 'sso')", name="provider"),
         Index("uq_user_identities_provider_subject", "tenant_id", "provider", "provider_user_id", unique=True,
               postgresql_where=text("deleted_at IS NULL")),
     )

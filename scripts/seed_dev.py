@@ -38,7 +38,7 @@ WORKSPACES = [
      "status": "active", "plan": "business", "methods": ["password", "google", "microsoft"]},
     {"id": U("7a1f3b25-4d3c-4e66-8b10-2c3d4e5f6071"), "org": U("1b2c3d4e-5f60-4b7c-9d8e-0f1a2b3c4d5e"),
      "name": "Samath Tax", "subdomain": "samathtax", "website": "https://www.samathtax.example",
-     "status": "active", "plan": "starter", "methods": ["password", "google", "apple", "facebook"]},
+     "status": "active", "plan": "starter", "methods": ["password", "google", "facebook"]},
     {"id": U("8b2a4c36-5e4d-4f77-9c21-3d4e5f607182"), "org": U("2c3d4e5f-6071-4c8d-8e9f-1a2b3c4d5e6f"),
      "name": "Old Co", "subdomain": "oldco", "website": None, "status": "suspended", "plan": "starter",
      "methods": ["password"]},

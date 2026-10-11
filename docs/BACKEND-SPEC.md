@@ -75,7 +75,7 @@ Updated 2026-10-10 after the frontend was finished. The frontend's mock (`C:/UNE
 
 - Email/password signup on manage.\* → OTP → create tenant + organisation + admin user + subdomain (transaction) → issue tokens.
 - Workspace single sign-on (`/settings/sso`: SAML or OIDC, test, switch on / off; mock `routes/sso.ts`).
-- OAuth (Google, Microsoft, Apple, Facebook) via Authlib; per-tenant provider configs (client id/secret encrypted) shown on that tenant's login page; OAuth login still requires OTP unless the tenant enables IdP-MFA trust.
+- OAuth (Google, Microsoft, Facebook) via Authlib; per-tenant provider configs (client id/secret encrypted) shown on that tenant's login page; OAuth login still requires OTP unless the tenant enables IdP-MFA trust.
 - Find-my-workspace: email → OTP → list of tenants → redirect.
 - Sessions table (device, IP, geo, last seen) with remote revoke.
 

@@ -33,6 +33,7 @@ import * as B from '__SHARED__/utils/billing/plans.ts'
 import * as W from '__SHARED__/utils/auth/password.ts'
 import * as H from '__SHARED__/utils/tenant/host.ts'
 import * as L from '__SHARED__/utils/i18n/locales.ts'
+import { SIGNIN_METHODS } from '__SHARED__/utils/settings/schemas.ts'
 
 const routes = JSON.parse(readFileSync(process.argv[2], 'utf8'))
 const singles = []
@@ -75,6 +76,7 @@ const out = {
   password_cases: passwordCases,
   reserved_subdomains: H.RESERVED_SUBDOMAINS,
   app_locales: L.APP_LOCALES,
+  signin_methods: SIGNIN_METHODS,
 }
 process.stdout.write(JSON.stringify(out))
 """
@@ -102,7 +104,8 @@ def main() -> None:
         entry.write_text(ENTRY.replace("__SHARED__", shared), encoding="utf-8")
         bundle = Path(tmp) / "rules.mjs"
         subprocess.run([str(esbuild), str(entry), "--bundle", "--format=esm", "--platform=node",
-                        f"--outfile={bundle}", "--log-level=warning"], check=True, cwd=FRONTEND)
+                        f"--alias:#shared={shared}", f"--outfile={bundle}", "--log-level=warning"],
+                       check=True, cwd=FRONTEND)
         routes_file = Path(tmp) / "routes.json"
         routes_file.write_text(json.dumps(endpoint_routes()), encoding="utf-8")
         run = subprocess.run(["node", str(bundle), str(routes_file)], capture_output=True, text=True, encoding="utf-8")

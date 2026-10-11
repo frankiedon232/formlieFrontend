@@ -16052,5 +16052,11 @@
    "uiLocale": "en"
   }
  ],
+ "signin_methods": [
+  "password",
+  "google",
+  "microsoft",
+  "facebook"
+ ],
  "about": "Recorded from the frontend's shared/ code by scripts/dump_frontend_rules.py. Do not edit."
 }

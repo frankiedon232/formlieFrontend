@@ -57,7 +57,7 @@ Portal endpoints: 18 of 399 ticked in `ENDPOINTS.md`.
 | Tenant public profile, subdomain availability, find workspace | Done | `app/modules/tenants/router.py` | |
 | Sign-up, login, codes (email via Mailpit), refresh with reuse detection, logout, /me, reset, lockouts, rate limits | Done | `app/modules/auth/` | 13 end-to-end tests on the test DB; verified live with a real email |
 | Development seed (the mock's workspaces and accounts) | Done | `scripts/seed_dev.py` | |
-| OAuth providers (Google, Microsoft, Apple, Facebook) | Waiting | | Needs each provider's client id and secret from the owner |
+| OAuth providers (Google, Microsoft, Facebook) | Waiting | | Needs each provider's client id and secret from the owner |
 | Frontend switch-over for sign-in (`NUXT_PUBLIC_API_MOCK=false`) | Next | | The owner runs the frontend against this backend |
 
 ## Open questions

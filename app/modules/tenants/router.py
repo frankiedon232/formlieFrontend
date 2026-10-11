@@ -21,11 +21,11 @@ from app.core.security.limits import per_value, rate_limit
 from app.modules.auth import challenges
 from app.modules.billing.service import has_feature
 from app.modules.emails import service as emails
-from app.modules.settings.service import get_section
+from app.modules.settings.service import SIGNIN_METHODS, get_section
 
 router = APIRouter(tags=["tenants"])
 
-ALL_PROVIDERS = ["password", "google", "microsoft", "apple", "facebook"]
+ALL_PROVIDERS = list(SIGNIN_METHODS)  # manage.* offers every method for the first sign-up
 
 
 def host_port() -> str:
@@ -71,7 +71,9 @@ async def public_profile() -> Any:
         "colors": {"primary": branding.get("brand_color")},
         "website": company.get("website"),
         # Subscription: other sign-in methods and single sign-on only while the plan has them
-        "auth_providers": signin["methods"] if has_feature(tenant.plan_id, "social_signin") else ["password"],
+        # Only methods that exist (a setting saved while Apple was offered drops it), as far as the plan allows
+        "auth_providers": [m for m in signin["methods"] if m in SIGNIN_METHODS]
+        if has_feature(tenant.plan_id, "social_signin") else ["password"],
         "sso": None,  # single sign-on connections arrive in B11 (settings/sso)
         "password_policy": {k: rules[k] for k in ("min_length", "lower", "upper", "number", "symbol")},
         "status": tenant.status if tenant.status in ("active", "suspended") else "active",

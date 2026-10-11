@@ -67,3 +67,9 @@ def test_locales() -> None:
     from app.core.locales import APP_LOCALE_CODES, APP_LOCALES
 
     assert APP_LOCALES == R["app_locales"] and list(APP_LOCALE_CODES) == [x["code"] for x in R["app_locales"]]
+
+
+def test_signin_methods() -> None:
+    from app.modules.settings.service import SIGNIN_METHODS
+
+    assert list(SIGNIN_METHODS) == R["signin_methods"]
