@@ -120,6 +120,10 @@ class Schema:
         self._after.append(("transform", fn))
         return self
 
+    def catch(self, fallback: Any) -> Schema:
+        """.catch(value): anything that fails becomes `fallback`, without a problem."""
+        return Catch(self, fallback)
+
     def nullable(self) -> Schema:
         return Nullable(self)
 
@@ -139,6 +143,16 @@ class Schema:
             return True, self.run(value, (), issues)
         except Invalid:
             return False, [{"field": i["field"], "message": i["message"]} for i in issues]
+
+
+class Catch(Schema):
+    def __init__(self, inner: Schema, fallback: Any) -> None:
+        super().__init__()
+        self.inner, self.fallback = inner, fallback
+
+    def _base(self, value: Any, path: Path, issues: Issues) -> Any:
+        ok, result = self.inner.safe_parse(value)
+        return result if ok else self.fallback
 
 
 class Nullable(Schema):
@@ -202,12 +216,13 @@ class String(Schema):
         self._checks.append(check)
         return self
 
-    def regex(self, pattern: str | re.Pattern[str], message: str | None = None) -> String:
-        rx = re.compile(pattern) if isinstance(pattern, str) else pattern
+    def regex(self, pattern: str | re.Pattern[str], message: str | None = None, flags: str = "") -> String:
+        """A JavaScript pattern (its source, e.g. `^#[0-9a-f]{6}$` with flags "i"); the message shows it like zod."""
+        rx = re.compile(pattern, re.IGNORECASE if "i" in flags else 0) if isinstance(pattern, str) else pattern
 
         def check(v: str, p: Path, i: Issues) -> str:
             if not rx.search(v):
-                _issue(i, p, message or f"Invalid string: must match pattern /{rx.pattern}/", check=True)
+                _issue(i, p, message or f"Invalid string: must match pattern /{rx.pattern}/{flags}", check=True)
             return v
         self._checks.append(check)
         return self

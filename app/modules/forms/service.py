@@ -177,9 +177,9 @@ async def new_form(db: AsyncSession, viewer: Viewer, *, name: str, folder: Folde
 
 
 async def with_form_defaults(db: AsyncSession, form: Form, label_position: str | None = None) -> None:
-    """Settings → Form defaults: a new blank or template form starts with the workspace's settings, thank-you
-    text, response emails and allowed websites; what the dialog chose (label position) wins. (Default themes come
-    with themes, B6.)"""
+    """Settings → Form defaults: a new blank or template form starts with the workspace's settings, theme (not for a
+    template, which keeps its own design), thank-you text, response emails and allowed websites; what the dialog
+    chose (label position) wins."""
     defaults = await get_section(db, form.tenant_id, "form_defaults")
     schema = copy.deepcopy(form.draft_schema) if form.draft_schema else None
     if schema is not None:
@@ -191,6 +191,12 @@ async def with_form_defaults(db: AsyncSession, form: Form, label_position: str |
             **({"emails": {"team": list(defaults["team_emails"]), "others": [], "others_personal": False,
                            "receipt_field": None}} if defaults["team_emails"] else {}),
         }
+        if not form.template_key:
+            from app.modules.design.router import theme_for_new_form
+
+            chosen_theme = await theme_for_new_form(db, form.tenant_id, defaults.get("theme_id"))
+            if chosen_theme:
+                schema["theme"], schema["theme_id"] = chosen_theme["tokens"], chosen_theme["id"]
         thanks = defaults["thank_you"]
         if thanks.get("title") or thanks.get("message"):
             schema["thank_you"] = {**(schema.get("thank_you") or {}),

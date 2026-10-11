@@ -417,9 +417,9 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 - **Guards:** `requireAuth`, `requireResource`
 - **Audit:** `forms.field_removed`, `forms.field_saved`
 
-- [ ] `GET /api/v1/field-library` (`listSavedFields`)
-- [ ] `POST /api/v1/field-library` (`saveField`)
-- [ ] `DELETE /api/v1/field-library/{id}` (`deleteSavedField`)
+- [x] `GET /api/v1/field-library` (`listSavedFields`)
+- [x] `POST /api/v1/field-library` (`saveField`)
+- [x] `DELETE /api/v1/field-library/{id}` (`deleteSavedField`)
 
 ## `routes/people.ts`
 
@@ -516,26 +516,26 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 - **Guards:** `requireAuth`, `requireResource`
 - **Audit:** `forms.theme_created`, `forms.theme_deleted`, `forms.theme_updated`
 
-- [ ] `GET /api/v1/themes` (`listThemes`)
-- [ ] `GET /api/v1/themes/insights` (`themeInsights`)
-- [ ] `GET /api/v1/themes/{id}` (`getTheme`)
-- [ ] `POST /api/v1/themes` (`createTheme`)
-- [ ] `PATCH /api/v1/themes/{id}` (`updateTheme`)
-- [ ] `POST /api/v1/themes/{id}/duplicate` (`duplicateTheme`)
-- [ ] `DELETE /api/v1/themes/{id}` (`deleteTheme`)
+- [x] `GET /api/v1/themes` (`listThemes`)
+- [x] `GET /api/v1/themes/insights` (`themeInsights`)
+- [x] `GET /api/v1/themes/{id}` (`getTheme`)
+- [x] `POST /api/v1/themes` (`createTheme`)
+- [x] `PATCH /api/v1/themes/{id}` (`updateTheme`)
+- [x] `POST /api/v1/themes/{id}/duplicate` (`duplicateTheme`)
+- [x] `DELETE /api/v1/themes/{id}` (`deleteTheme`)
 
 ## `routes/pageDesigns.ts`
 
 - **Guards:** `requireAuth`, `requireResource`
 - **Audit:** `forms.page_design_created`, `forms.page_design_deleted`, `forms.page_design_updated`
 
-- [ ] `GET /api/v1/page-designs` (`listPageDesigns`)
-- [ ] `GET /api/v1/page-designs/insights` (`pageDesignInsights`)
-- [ ] `GET /api/v1/page-designs/{id}` (`getPageDesign`)
-- [ ] `POST /api/v1/page-designs` (`createPageDesign`)
-- [ ] `PATCH /api/v1/page-designs/{id}` (`updatePageDesign`)
-- [ ] `POST /api/v1/page-designs/{id}/duplicate` (`duplicatePageDesign`)
-- [ ] `DELETE /api/v1/page-designs/{id}` (`deletePageDesign`)
+- [x] `GET /api/v1/page-designs` (`listPageDesigns`)
+- [x] `GET /api/v1/page-designs/insights` (`pageDesignInsights`)
+- [x] `GET /api/v1/page-designs/{id}` (`getPageDesign`)
+- [x] `POST /api/v1/page-designs` (`createPageDesign`)
+- [x] `PATCH /api/v1/page-designs/{id}` (`updatePageDesign`)
+- [x] `POST /api/v1/page-designs/{id}/duplicate` (`duplicatePageDesign`)
+- [x] `DELETE /api/v1/page-designs/{id}` (`deletePageDesign`)
 
 ## `routes/directory.ts`
 
@@ -625,7 +625,7 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 - [x] `GET /api/v1/settings/privacy` (`getSection`)
 - [x] `PATCH /api/v1/settings/privacy` (`patchSection`) (retention is applied once responses exist, B7)
 - [x] `GET /api/v1/settings/form_defaults` (`getFormDefaults`)
-- [ ] `PATCH /api/v1/settings/form_defaults` (`patchSection`) (until themes exist, B5: a default theme is refused with `theme`)
+- [x] `PATCH /api/v1/settings/form_defaults` (`patchSection`)
 - [x] `GET /api/v1/settings/emails` (`getSection`)
 - [x] `PATCH /api/v1/settings/emails` (`patchSection`)
 - [x] `GET /api/v1/settings/notifications` (`getSection`)

@@ -247,8 +247,10 @@ async def patch_section(section: str, request: Request, principal: Principal = D
             changes = settings_changes(_flat_notifications(before), _flat_notifications(value))
         elif section == "form_defaults":
             if value["theme_id"] is not None:
-                # Themes arrive with the forms (B5); until then no theme can be the default
-                raise FrmError("FRM-GEN-1002", [{"field": "theme_id", "message": "theme"}])
+                from app.modules.design.router import theme_for_new_form
+
+                if await theme_for_new_form(db, tenant.id, value["theme_id"]) is None:
+                    raise FrmError("FRM-GEN-1002", [{"field": "theme_id", "message": "theme"}])
             changes = settings_changes(before, value)
         else:
             changes = settings_changes(before, value)

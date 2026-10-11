@@ -122,7 +122,24 @@ def forms_catalogues() -> None:
           ])
 
 
+def design_catalogues() -> None:
+    path = ROOT / "tests" / "vectors" / "design_rules.json"
+    if not path.exists():
+        return
+    r = json.loads(path.read_text(encoding="utf-8"))
+    write("app/modules/design/catalogues.py", "Form design: fonts, layouts, frames, theme presets, template category designs, page presets.",
+          "shared/utils/forms (theme, fonts, page-design) and shared/templates/categories", [
+              ("THEME_FONTS", tuple(r["theme_fonts"])),
+              ("THEME_LAYOUTS", tuple(r["theme_layouts"])),
+              ("THEME_FRAMES", tuple(r["theme_frames"])),
+              ("THEME_PRESETS", r["theme_presets"]),
+              ("TEMPLATE_CATEGORIES", r["template_categories"]),
+              ("PAGE_PRESETS", r["page_presets"]),
+          ])
+
+
 if __name__ == "__main__":
     main()
     settings_catalogues()
     forms_catalogues()
+    design_catalogues()
