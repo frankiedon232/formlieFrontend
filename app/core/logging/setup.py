@@ -113,13 +113,24 @@ class PrettyFormatter(logging.Formatter):
         reset, grey = self.ESC + "0m", self.ESC + "90m"
         head = (f"{entry.pop('time')[11:23]} {color}{entry.pop('level'):<8}{reset} "
                 f"{entry.pop('logger')}: {entry.pop('message')}")
-        for key in ("env", "release"):
+        for key in ("env", "release", "color_message", "data"):
             entry.pop(key, None)
         details = " ".join(
             f"{k}={v if isinstance(v, str) else json.dumps(v, ensure_ascii=False, default=str)}"
             for k, v in entry.items() if v not in (None, "", [], {}))
         line = f"{head}  {grey}{details}{reset}" if details else head
         return f"{line}\n{stack}" if stack else line
+
+
+class _DropIdleRelay(logging.Filter):
+    """The outbox relay runs every 2 s; a run with nothing to send is not worth a log line (one that sends logs
+    "outbox relayed")."""
+
+    def filter(self, record: logging.LogRecord) -> bool:
+        message = record.getMessage()
+        if "events.relay_outbox" not in message:
+            return True
+        return not (message.endswith(" received") or message.endswith(": 0"))
 
 
 _configured = False
@@ -147,6 +158,8 @@ def configure_logging(settings: Settings) -> None:
         root.addHandler(console)
 
     logging.getLogger("asyncio").addFilter(_DropClientResets())
+    for name in ("celery.app.trace", "celery.worker.strategy"):
+        logging.getLogger(name).addFilter(_DropIdleRelay())
     # Uvicorn's access log is replaced by the request log middleware.
     logging.getLogger("uvicorn.access").disabled = True
     for name in ("uvicorn", "uvicorn.error"):

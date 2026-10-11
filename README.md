@@ -7,45 +7,72 @@ The backend of Formalie. It replaces the mock API the finished frontend (`C:\UNE
 
 ---
 
-## Every day: start after a restart
+## Every day: start, watch, stop
 
-Open PowerShell in `C:\UNETPROJECTS\formlyBackend` and run:
+Everything runs **quietly in the background, no windows open**. From `C:\UNETPROJECTS\formlyBackend`, in PowerShell:
 
-```powershell
-powershell -ExecutionPolicy Bypass -File scripts\dev-up.ps1
-```
+### Start: `scripts\dev-up.ps1`
 
-It wakes Ubuntu (WSL) and keeps it running in the background, checks that every service answers, then opens one window each for the API, the Celery worker, Celery Beat and Flower. Nothing else to do: the services start by themselves (Redis, RabbitMQ, PgBouncer and Mailpit with Ubuntu; PostgreSQL with Windows).
-
-| To | Run |
+| Command | Starts |
 | --- | --- |
-| Everything but the API (you start the API yourself, see below) | `powershell -ExecutionPolicy Bypass -File scripts\dev-up.ps1 -NoApi` |
-| Start services only (no API or workers) | `powershell -ExecutionPolicy Bypass -File scripts\dev-up.ps1 -NoApp` |
-| Stop the API, workers and the keep-alive (data is never touched) | `powershell -ExecutionPolicy Bypass -File scripts\dev-down.ps1` |
-| Start only the API | `fmly\Scripts\python.exe -m app.run` |
+| `powershell -ExecutionPolicy Bypass -File scripts\dev-up.ps1` | **Everything:** the services, the API (https://formalie.dev:5004), the Celery worker, Celery Beat and Flower |
+| `powershell -ExecutionPolicy Bypass -File scripts\dev-up.ps1 -NoApi` | Everything **except the API**, when you prefer to run the API yourself in your terminal (see below) |
+| `powershell -ExecutionPolicy Bypass -File scripts\dev-up.ps1 -NoApp` | **Services only** (Ubuntu with Redis, RabbitMQ, PgBouncer and Mailpit; PostgreSQL), no API and no workers |
 
-### Starting the API yourself (to watch its log)
+What it does:
+1. **Wakes Ubuntu (WSL)** and keeps it running in the background. Redis, RabbitMQ, PgBouncer and Mailpit start with Ubuntu; PostgreSQL starts with Windows.
+2. **Checks every service answers.** If one doesn't, it says which and how to fix it.
+3. **Starts the API, worker, Beat and Flower hidden**, writing their output to `logs\dev\{api,worker,beat,flower}.log`.
 
-If you prefer to run the API in your own terminal, run `dev-up.ps1 -NoApi` for the rest, then:
+It's **safe to run again**: anything already running is left as it is. If port 5004 is already taken (an API you started yourself), it leaves it alone and says so.
+
+### Watch the logs live: `scripts\dev-logs.ps1`
+
+It runs in the terminal you start it from, with no other windows. Each line starts with where it came from (`api`, `worker`, `beat`, `flower`). It shows the last 20 lines first, then new lines as they happen. **Ctrl+C** stops watching; the services keep running.
+
+| Command | Shows |
+| --- | --- |
+| `powershell -ExecutionPolicy Bypass -File scripts\dev-logs.ps1` | **All:** API, worker, Beat and Flower together |
+| `powershell -ExecutionPolicy Bypass -File scripts\dev-logs.ps1 api` | Only the API (every request, one line each) |
+| `powershell -ExecutionPolicy Bypass -File scripts\dev-logs.ps1 worker` | Only the Celery worker (emails, request-log writes, events) |
+| `powershell -ExecutionPolicy Bypass -File scripts\dev-logs.ps1 api worker` | Any mix of `api`, `worker`, `beat`, `flower` |
+| `powershell -ExecutionPolicy Bypass -File scripts\dev-logs.ps1 -Errors` | Only problems (ERROR, CRITICAL, tracebacks) from all of them |
+| `powershell -ExecutionPolicy Bypass -File scripts\dev-logs.ps1 api -Errors` | Only the API's problems |
+
+### Stop: `scripts\dev-down.ps1`
+
+| Command | Stops |
+| --- | --- |
+| `powershell -ExecutionPolicy Bypass -File scripts\dev-down.ps1` | The API (if dev-up started it), the worker, Beat, Flower, and the keep-alive. Ubuntu then stops on its own. **Data is never touched.** An API you started yourself is left alone (Ctrl+C it). |
+
+### Running the API yourself instead
+
+Use `dev-up.ps1 -NoApi`, then in your own terminal:
 
 ```powershell
-uvicorn app.run:app --host 0.0.0.0 --port 5004 --no-proxy-headers --ssl-certfile C:\devcertsormalie.pem --ssl-keyfile C:\devcertsormalie-key.pem
+uvicorn app.run:app --host 0.0.0.0 --port 5004 --no-proxy-headers --ssl-certfile C:\devcerts\formalie.pem --ssl-keyfile C:\devcerts\formalie-key.pem
 ```
 
-**`--no-proxy-headers` is required.** The API reads the forwarded headers itself, and only from trusted proxies. Without the flag, workspaces are not found from their subdomain behind the Nuxt dev proxy. `fmly\Scripts\python.exe -m app.run` does the same, with the certificates from `.env`.
+or `fmly\Scripts\python.exe -m app.run`, which does the same with the host, port and certificates from `.env`. **`--no-proxy-headers` is required.** The API reads the forwarded headers itself, and only from trusted proxies; without the flag, workspaces are not found from their subdomain behind the Nuxt dev proxy.
 
-### Where to see the logs
+### Every log there is
 
-- **The API's terminal**, or the "formalie: Formalie API" window from `dev-up`: one readable line per request and event, in colour, with the details after the message. Set `LOG_CONSOLE_FORMAT=json` in `.env` for raw JSON instead.
-- **Files**, kept 90 days: `logs/{level}/{date}.log`, one JSON object per line (for example `logs/error/2026-10-11.log`).
-- **Every request in full**: the `formaly.request_logs` table (headers, body, response, location).
-- **Background jobs**: the Celery worker window, and Flower (http://127.0.0.1:5555).
+| Where | What |
+| --- | --- |
+| `scripts\dev-logs.ps1`, or `logs\dev\*.log` | The live output of the API, worker, Beat and Flower: one readable line per entry, with details after the message (`{name}.err.log` holds Python warnings and crashes) |
+| `logs\{level}\{date}.log`, for example `logs\error\2026-10-11.log` | Everything, as JSON lines, per level and day, kept 90 days; also when you run the API yourself |
+| The `formaly.request_logs` table | Every request in full: headers, body, response, real IP, location, device |
+| The `formaly.audit_logs` table | Who did what: sign-ins (failed ones too), changes |
+| Flower, http://127.0.0.1:5555 | Every background task: what ran, how long it took, what failed |
+| Mailpit, http://127.0.0.1:8025 | Every email the backend sent (sign-in codes and others) |
 
-The setup script `scripts/wsl/setup-services.sh` was a one-time install. Don't run it again unless you set up a new machine.
+The console format is set with `LOG_CONSOLE_FORMAT` in `.env`: empty or `pretty` for readable lines, `json` for raw JSON.
 
 If a service is down, `dev-up` says which one. To fix it:
 - Redis, RabbitMQ, PgBouncer or Mailpit: in an Ubuntu window, `sudo systemctl restart redis-server rabbitmq-server pgbouncer mailpit`.
 - PostgreSQL: in PowerShell as administrator, `Restart-Service postgresql-x64-18`.
+
+The setup script `scripts/wsl/setup-services.sh` was a one-time install. Don't run it again unless you set up a new machine.
 
 ## Addresses
 

@@ -87,13 +87,10 @@ Installed directly on the machine, **no Docker** (owner, 2026-10-10). Production
 
 ### After a restart (every day)
 
-The setup script runs once only. After a restart or shutdown, one command from the project folder brings everything back:
-
-```powershell
-powershell -ExecutionPolicy Bypass -File scripts\dev-up.ps1
-```
-
-It wakes Ubuntu and keeps it running in the background, so its services stay up without an Ubuntu window: Redis, RabbitMQ, PgBouncer and Mailpit start with Ubuntu, and PostgreSQL starts with Windows. It checks that each one answers, then opens a window each for the API, the Celery worker, Beat and Flower. Add `-NoApp` for the services only, or `-NoApi` for everything except the API (when you start the API in your own terminal, always with `--no-proxy-headers`). `scripts\dev-down.ps1` stops the API, the workers and the keep-alive; data is never touched.
+The setup script runs once only. Everything else is in the README's "Every day" section:
+- `scripts\dev-up.ps1` starts the services, API, worker, Beat and Flower hidden, with no windows (`-NoApi`, `-NoApp`).
+- `scripts\dev-logs.ps1` follows their logs live in one terminal (`api`, `worker`, `beat`, `flower`, `-Errors`).
+- `scripts\dev-down.ps1` stops them.
 
 ### Dashboards (development)
 
@@ -104,7 +101,7 @@ It wakes Ubuntu and keeps it running in the background, so its services stay up 
 | Emails caught in development: Mailpit | http://127.0.0.1:8025 | none |
 | Redis (keys, memory): Redis Insight desktop app (redis.io/insight) | connect to `127.0.0.1:6379` | none |
 
-Start the workers and Flower, each in its own terminal from the project folder (Ubuntu window open):
+Started by `scripts\dev-up.ps1` (hidden). By hand, each in its own terminal from the project folder:
 
 ```powershell
 fmly\Scripts\celery.exe -A app.workers.celery_app worker -Q scheduled,logs,notifications --pool=solo -E -n worker1@%h -l info
