@@ -85,6 +85,16 @@ Installed directly on the machine, **no Docker** (owner, 2026-10-10). Production
 4. Workers on Windows: Celery has no official Windows pool, so run them with `--pool=solo` (or `--pool=threads`):
    `fmly\Scripts\celery.exe -A app.workers.celery_app worker -Q scheduled --pool=solo -l info` and `fmly\Scripts\celery.exe -A app.workers.celery_app beat -l info`.
 
+### After a restart (every day)
+
+The setup script runs once only. After a restart or shutdown, one command from the project folder brings everything back:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts\dev-up.ps1
+```
+
+It wakes Ubuntu and keeps it running in the background, so its services stay up without an Ubuntu window: Redis, RabbitMQ, PgBouncer and Mailpit start with Ubuntu, and PostgreSQL starts with Windows. It checks that each one answers, then opens a window each for the API, the Celery worker, Beat and Flower. Add `-NoApp` for the services only. `scripts\dev-down.ps1` stops the API, the workers and the keep-alive; data is never touched.
+
 ### Dashboards (development)
 
 | What | Address | Sign in |
