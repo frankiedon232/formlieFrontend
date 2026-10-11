@@ -78,11 +78,11 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 - **Guards:** `requireAction`, `requireAuth`
 - **Audit:** `forms.shared`
 
-- [ ] `POST /api/v1/forms/pass` (`formPass`)
-- [ ] `GET /api/v1/forms/{id}/invites` (`listInvites`)
-- [ ] `POST /api/v1/forms/{id}/invites` (`createInvites`)
-- [ ] `POST /api/v1/forms/{id}/invites/{inviteId}/resend` (`resendInvite`)
-- [ ] `DELETE /api/v1/forms/{id}/invites/{inviteId}` (`revokeInvite`)
+- [x] `POST /api/v1/forms/pass` (`formPass`)
+- [x] `GET /api/v1/forms/{id}/invites` (`listInvites`)
+- [x] `POST /api/v1/forms/{id}/invites` (`createInvites`)
+- [x] `POST /api/v1/forms/{id}/invites/{inviteId}/resend` (`resendInvite`)
+- [x] `DELETE /api/v1/forms/{id}/invites/{inviteId}` (`revokeInvite`)
 
 ## `routes/formOverview.ts`
 

@@ -12,6 +12,7 @@ from app.modules.exports.router import router as exports_router
 from app.modules.forms.builder import router as builder_router
 from app.modules.forms.overview import router as overview_router
 from app.modules.forms.router import router as forms_router
+from app.modules.links.invites import router as form_invites_router
 from app.modules.links.router import router as links_router
 from app.modules.lists.router import router as lists_router
 from app.modules.templates.router import router as templates_router
@@ -40,6 +41,7 @@ api_router.include_router(roles_router)
 api_router.include_router(invites_router)  # before people: /people/signup-link, /people/invites
 api_router.include_router(people_router)
 api_router.include_router(me_router)
+api_router.include_router(form_invites_router)  # before forms: /forms/pass
 api_router.include_router(links_router)  # before forms: /forms/{id}/share, /access, /short-link
 api_router.include_router(builder_router)  # before forms: /forms/{id}/publish is not a lifecycle step
 api_router.include_router(forms_router)
