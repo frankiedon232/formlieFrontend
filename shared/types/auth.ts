@@ -98,6 +98,20 @@ export interface SubdomainAvailability {
   reason: 'taken' | 'reserved' | 'invalid' | null
 }
 
+/**
+ * GET /auth/oauth/challenge?challenge_id=, back from Google, Microsoft or Facebook with `?oauth_challenge=`.
+ * Sign-in: the usual code challenge (social sign-in still asks for the 6-digit code).
+ * Sign-up: the provider verified the email, so the next step is naming the workspace.
+ */
+export interface OAuthChallenge {
+  purpose: 'login' | 'signup'
+  provider: Exclude<AuthProvider, 'password'>
+  email: string
+  first_name: string | null
+  last_name: string | null
+  challenge: LoginChallenge
+}
+
 export interface SignupComplete {
   /** Open this URL to land signed-in on the new workspace (one-time ticket inside). */
   redirect_url: string

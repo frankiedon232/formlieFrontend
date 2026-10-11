@@ -8,16 +8,18 @@ import type { OtpChannel } from '#shared/types/auth'
 
 definePageMeta({ layout: 'auth', auth: 'guest', manage: 'only' })
 
-const { t } = useI18n()
+const { t, te } = useI18n()
 const auth = useAuth()
 const route = useRoute()
 const tenant = useTenant()
 const providers = computed(() => tenant.profile.value?.auth_providers ?? [])
-const oauthNotice = computed(() =>
-  route.query.oauth === 'unavailable'
-    ? t('auth.signup.oauthUnavailable', { provider: providerName(route.query.provider) })
-    : null,
-)
+const oauthNotice = computed(() => {
+  if (route.query.oauth === 'unavailable')
+    return t('auth.signup.oauthUnavailable', { provider: providerName(route.query.provider) })
+  if (route.query.oauth === 'error' && typeof route.query.code === 'string')
+    return te(`errors.${route.query.code}`) ? t(`errors.${route.query.code}`) : t('errors.FRM-AUTH-1023')
+  return null
+})
 const { handle } = useErrorHandler()
 const providerName = (value: unknown) => PROVIDER_NAMES[String(value ?? '') as SocialProvider] ?? String(value ?? '')
 
@@ -56,6 +58,19 @@ async function resend(channel?: OtpChannel) {
   } catch (error) {
     handle(error)
   }
+}
+
+// Back from Google, Microsoft or Facebook: the email is verified, so straight to the workspace step
+const oauthChallenge = typeof route.query.oauth_challenge === 'string' ? route.query.oauth_challenge : null
+if (oauthChallenge && import.meta.client) {
+  onMounted(async () => {
+    try {
+      await auth.resumeOAuth(oauthChallenge)
+      step.value = 2
+    } catch (error) {
+      handle(error)
+    }
+  })
 }
 
 function finish(url: string) {

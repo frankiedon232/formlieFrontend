@@ -9,7 +9,7 @@ import { SSO_ICONS } from '#shared/types/sso'
 
 definePageMeta({ layout: 'auth', auth: 'guest', manage: true })
 
-const { t } = useI18n()
+const { t, te } = useI18n()
 const route = useRoute()
 const tenant = useTenant()
 const auth = useAuth()
@@ -47,6 +47,13 @@ const notice = computed(() => {
       title: t('auth.login.oauthUnavailable', { provider: providerName(route.query.provider) }),
     }
   }
+  if (route.query.oauth === 'error' && typeof route.query.code === 'string') {
+    return {
+      color: 'warning' as const,
+      icon: 'i-lucide-circle-alert',
+      title: te(`errors.${route.query.code}`) ? t(`errors.${route.query.code}`) : t('errors.FRM-AUTH-1023'),
+    }
+  }
   if (route.query.sso === 'unavailable')
     return { color: 'neutral' as const, icon: 'i-lucide-info', title: t('auth.login.ssoUnavailable') }
   if (route.query.joined)
@@ -55,6 +62,18 @@ const notice = computed(() => {
     return { color: 'success' as const, icon: 'i-lucide-circle-check', title: t('auth.login.passwordReset') }
   return null
 })
+
+// Back from Google, Microsoft or Facebook: the same code screen as a password sign-in
+const oauthChallenge = typeof route.query.oauth_challenge === 'string' ? route.query.oauth_challenge : null
+if (oauthChallenge && import.meta.client) {
+  onMounted(async () => {
+    const ok = await run(async () => {
+      await auth.resumeOAuth(oauthChallenge, redirect)
+      return true
+    })
+    if (ok) await navigateTo('/auth/otp', { replace: true })
+  })
+}
 
 async function onSubmit(event: FormSubmitEvent<{ email: string; password?: string }>) {
   if (ssoOnly.value) return navigateTo(ssoUrl.value, { external: true })

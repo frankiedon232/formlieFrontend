@@ -321,3 +321,11 @@ The portal shows the mark as the icon `i-formalie-mark`, a custom Nuxt Icon coll
   It never creates accounts in an existing workspace: people are still invited or approved, and the provider's email must match an existing account.
 - **Single sign-on** (Settings → Sign-in → Single sign-on, B11; mock `routes/sso.ts`) is corporate sign-in. Each workspace connects its own identity provider (Okta, Microsoft Entra ID, Google Workspace, OneLogin, or any SAML 2.0 / OpenID Connect provider) with its own details. It can be required for the workspace's email domains; those addresses then sign in only through it, never with a password or a social button (`FRM-AUTH-1019`). It needs the plan's `sso` feature. Formalie registers nothing for it: each customer's IT sets it up.
 - So the "Microsoft" button and Microsoft Entra single sign-on are not the same. The button uses Formalie's Microsoft app for anyone with a Microsoft account; Entra single sign-on uses the customer's own app, under their IT's control.
+
+**Social sign-in, how it runs (owner 2026-10-11, "yes to both").**
+
+- Every provider sends people back to one address on `manage.` (`/api/v1/auth/oauth/{provider}/callback`): providers don't accept wildcard subdomains. The server remembers where the person started (Redis, 10 minutes, read once) and sends them back there.
+- Sign-in with Google, Microsoft or Facebook still asks for the 6-digit code (or the authenticator app), like a password sign-in. It never creates an account: the provider's verified email must match someone in the workspace (`FRM-AUTH-1022`). The provider account is linked to the person the first time.
+- Sign-up with a provider skips the code (the provider verified the email) and goes straight to naming the workspace. That Owner has no password until they set one with Forgot password.
+- Microsoft: only addresses Microsoft has checked are trusted (personal accounts, or a directory that marks the domain as verified), so nobody can claim someone else's address through their own directory.
+- The frontend was changed for this with the owner's go-ahead: `useAuth().resumeOAuth()`, the sign-in and sign-up pages read `?oauth_challenge=` and `?oauth=error&code=`, and three codes `FRM-AUTH-1021` to `1023`.

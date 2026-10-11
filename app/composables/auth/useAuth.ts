@@ -1,6 +1,7 @@
 import type {
   AuthTokens,
   LoginChallenge,
+  OAuthChallenge,
   OtpChannel,
   SignupComplete,
   WorkspaceLink,
@@ -96,6 +97,13 @@ export function useAuth() {
     setPending(current.purpose, current.email, response, current.redirect)
   }
 
+  /** Back from Google, Microsoft or Facebook: picks up the challenge the server made there. */
+  async function resumeOAuth(challengeId: string, redirect?: string) {
+    const { data, meta } = await api.get<OAuthChallenge>('/auth/oauth/challenge', { challenge_id: challengeId })
+    setPending(data.purpose, data.email, { data: data.challenge, meta }, redirect)
+    return data
+  }
+
   async function signup(input: { first_name: string; last_name: string; email: string; password: string }) {
     const response = await api.post<LoginChallenge>('/auth/signup', input)
     setPending('signup', input.email, response)
@@ -162,6 +170,7 @@ export function useAuth() {
     resend,
     signup,
     completeSignup,
+    resumeOAuth,
     exchangeTicket,
     findWorkspace,
     forgotPassword,

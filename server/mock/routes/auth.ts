@@ -404,6 +404,11 @@ export const resetPassword = defineMockRoute(({ event, body }) => {
   return ok({ reset: true })
 })
 
+/** GET /auth/oauth/challenge, the mock never sends anyone to a provider, so there is nothing to pick up. */
+export const oauthChallenge = defineEventHandler(() => {
+  throw new MockError('FRM-AUTH-1003')
+})
+
 /** GET /auth/oauth/:provider/start, the mock has no identity providers configured. */
 export const oauthStart = defineEventHandler(event => {
   const provider = getRouterParam(event, 'provider') ?? ''
