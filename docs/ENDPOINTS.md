@@ -767,12 +767,12 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 - **Guards:** `requireAdmin`
 - **Audit:** `audit.exported`
 
-- [ ] `GET /api/v1/audit-logs` (`listAuditLogs`)
-- [ ] `GET /api/v1/audit-logs/facets` (`auditFacets`)
-- [ ] `POST /api/v1/audit-logs/export` (`exportAuditLogs`)
-- [ ] `GET /api/v1/audit-logs/{id}` (`getAuditLog`)
-- [ ] `GET /api/v1/exports/{id}` (`getExportJob`)
-- [ ] `GET /api/v1/downloads/{token}` (`download`)
+- [x] `GET /api/v1/audit-logs` (`listAuditLogs`)
+- [x] `GET /api/v1/audit-logs/facets` (`auditFacets`)
+- [x] `POST /api/v1/audit-logs/export` (`exportAuditLogs`)
+- [x] `GET /api/v1/audit-logs/{id}` (`getAuditLog`)
+- [x] `GET /api/v1/exports/{id}` (`getExportJob`)
+- [x] `GET /api/v1/downloads/{token}` (`download`)
 
 ## Public API service (`publicApi.ts`, host `api.formalie.dev`, no envelope, SECURITY-PROTOCOL §9)
 

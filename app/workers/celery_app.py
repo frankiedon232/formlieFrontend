@@ -20,7 +20,8 @@ celery_app = Celery(
     "formalie",
     broker=settings.rabbitmq_url.get_secret_value(),
     backend=settings.celery_result_backend.get_secret_value(),
-    include=["app.core.events.tasks", "app.core.db.tasks", "app.modules.logs.tasks", "app.modules.emails.tasks"],
+    include=["app.core.events.tasks", "app.core.db.tasks", "app.modules.logs.tasks", "app.modules.emails.tasks",
+             "app.modules.exports.tasks"],
 )
 
 celery_app.conf.update(
@@ -46,6 +47,7 @@ celery_app.conf.update(
         "logs.write_request_logs": {"queue": "logs"},
         "logs.update_geoip": {"queue": "scheduled"},
         "notifications.send_email": {"queue": "notifications"},
+        "exports.build": {"queue": "exports"},
     },
     beat_schedule={
         "relay-outbox": {"task": "events.relay_outbox", "schedule": 2.0},

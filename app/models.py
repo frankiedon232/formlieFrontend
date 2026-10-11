@@ -7,6 +7,7 @@ def import_all_models() -> None:
     import app.core.events.outbox  # noqa: F401
     import app.modules.audit.models  # noqa: F401
     import app.modules.auth.models  # noqa: F401
+    import app.modules.exports.models  # noqa: F401
     import app.modules.logs.models  # noqa: F401
     import app.modules.settings.models  # noqa: F401
     import app.modules.tenants.models  # noqa: F401

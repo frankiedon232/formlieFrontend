@@ -33,3 +33,6 @@ fmly/
 
 # GeoIP databases (downloaded weekly)
 data/geoip/
+
+# Stored files in development (exports, uploads): tenants/{tenant}/orgs/{organisation}/{module}/{uuid}
+data/storage/

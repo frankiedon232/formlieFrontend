@@ -267,4 +267,6 @@ async def test_documented_plaintext_exceptions_pass_the_gate(client, path: str) 
     response = await client.get(path)
     if response.status_code in (301, 302, 303, 307):  # a browser redirect (OAuth start)
         return
+    if response.headers.get("content-type", "").startswith("text/plain"):  # a download link's plain answer
+        return
     assert response.json()["error"]["code"] != "FRM-SEC-1001"  # reaches routing (404 until the route exists)

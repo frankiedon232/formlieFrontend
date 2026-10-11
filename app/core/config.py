@@ -87,6 +87,11 @@ class Settings(BaseSettings):
     # the port the browser used (or the bare root domain when the API is called on it directly).
     oauth_redirect_base: str | None = None
 
+    # ── Files (development: a folder; object storage replaces it in B3) and exports ──
+    storage_dir: Path = ROOT_DIR / "data" / "storage"
+    export_download_minutes: int = 10  # a finished export's one-time link lasts this long (mock: 10 minutes)
+    export_max_rows: int = 100_000
+
     # ── Rate limiting (Redis sliding window) ─────────────────────────────────
     rate_limit_enabled: bool = True
     rate_limit_ip_per_minute: int = 600
