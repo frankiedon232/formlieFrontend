@@ -7,7 +7,7 @@ Statuses: **Done** (built and verified), **Built** (code and tests written, wait
 
 | Phase | Title | Status | Endpoints ticked |
 | --- | --- | --- | --- |
-| B0 | Foundation | **Database verified**; waiting on WSL services (Redis, RabbitMQ) for the last live checks | 1 / 1 (`GET /health`) |
+| B0 | Foundation | **Done**, verified live; waiting for the owner's review | 1 / 1 (`GET /health`) |
 | B1 | Secure channel, workspaces and sign-in | Next | 0 / 18 (handshake, CSRF, tenants, auth) |
 | B2 | Audit trail and logs | Later | 0 |
 | B3 | Onboarding, settings base and default data | Later | 0 |
@@ -30,10 +30,10 @@ Portal endpoints: 1 of 399 ticked in `ENDPOINTS.md`.
 | Alembic + `enable_tenant_rls` + migration 0001 | Done | `alembic/`, `app/core/db/rls.py` | Tenant directory, `resolve_tenant()`, organisations, event outbox (monthly partitions), processed events |
 | DB roles | Done | `scripts/db_bootstrap.py` | owner, app, worker, readonly, platform_reader, platform_writer |
 | Redis cache tiers (L1 + L2, versioned tenant keys, stampede lock), circuit breaker | Done | `app/core/cache/` | Tested with fakeredis and with Redis down (fails fast, falls back to the DB); real Redis comes with WSL |
-| Celery app, queues with dead-letter queues, beat | Built | `app/workers/` | Needs RabbitMQ (WSL) to run |
-| Event bus, outbox, relay, idempotent consumers | Built | `app/core/events/` | Outbox and relay verified against the DB (fake bus); publishing to RabbitMQ waits for WSL |
+| Celery app, queues with dead-letter queues, beat | Done | `app/workers/` | Worker (`--pool=solo`) and Beat verified live on RabbitMQ |
+| Event bus, outbox, relay, idempotent consumers | Done | `app/core/events/` | Verified live: an event recorded in the DB reached `formalie.events` once, and a failing publish was retried until it went through |
 | CI test: RLS forced on every tenant table, no DELETE grant, no cascades | Done | `tests/db/test_rls.py` | Passing |
-| Dev services | Waiting | `docs/02-DEV-ENVIRONMENT.md`, `scripts/wsl/setup-services.sh` | PostgreSQL 18 installed; WSL services pending |
+| Dev services | Done | `docs/02-DEV-ENVIRONMENT.md`, `scripts/wsl/setup-services.sh` | PostgreSQL 18 (Windows); Redis 7.0, RabbitMQ 3.12, PgBouncer 1.22, Mailpit 1.31 (WSL, mirrored networking). Object storage: B3 |
 
 **Tests:** 103 pass, including 21 against PostgreSQL 18 (forced RLS, cross-tenant, no deletes, outbox, request log).
 
@@ -41,7 +41,7 @@ Portal endpoints: 1 of 399 ticked in `ENDPOINTS.md`.
 
 1. ~~Database: bootstrap, migrations 0001 and 0002 on `formalie` and `formalie_test`, full test suite.~~ Done 2026-10-11.
 2. ~~Owner: reset the `postgres` password.~~ Done 2026-10-11.
-3. Owner: install WSL and run `scripts/wsl/setup-services.sh` (02-DEV-ENVIRONMENT §2); then a live check of Redis, the Celery worker, beat and the outbox relay to RabbitMQ.
+3. ~~WSL services and live checks (Redis cache and rate limits, Celery worker and Beat, outbox relay to RabbitMQ, request log through the `logs` queue, Mailpit).~~ Done 2026-10-11.
 4. ~~MaxMind GeoLite2 City + ASN in `data/geoip/`.~~ Done 2026-10-11 (weekly refresh by Celery Beat once workers run).
 5. Owner review of the phase and of migrations 0001 and 0002.
 
@@ -54,6 +54,7 @@ Portal endpoints: 1 of 399 ticked in `ENDPOINTS.md`.
 
 ## Log
 
+- **2026-10-11:** WSL services installed (MinIO skipped: its download server answers 410; storage chosen in B3). Live checks passed. Found and fixed: events never reached RabbitMQ (`content_type` made kombu skip JSON encoding; the outbox kept the event and delivered it once fixed); rate-limited requests now record their workspace host. **B0 complete, stopped for the owner's review.**
 - **2026-10-11:** MaxMind GeoLite2 City + ASN downloaded into `data/geoip/` (git-ignored, per machine); request locations verified live. Found: uvicorn's own proxy-header handling hid the real proxy, so `X-Forwarded-Host` (workspace) and the client IP were wrong behind Nginx or the dev proxy; the server must run with `--no-proxy-headers` (now in `python -m app.run` and 02-DEV-ENVIRONMENT).
 - **2026-10-11:** Database verified: roles, `formalie` + `formalie_test`, migrations 0001 and 0002, 103 tests. Found and fixed against the real DB: the outbox and request-log inserts needed SELECT (now insert-only); the cache's fallback crashed when Redis was down (reserved log field); added a Redis circuit breaker so a Redis outage costs one timeout, not seconds per request.
 - **2026-10-11:** Request log built (owner: every request in full, for the platform admin): `formaly.request_logs`, migration 0002. Bootstrap blocked: `postgres` password refused.

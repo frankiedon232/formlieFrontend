@@ -84,6 +84,7 @@ async def test_refused_requests_are_recorded_with_their_reason(settings, redis, 
     assert (first["status"], first["error_code"], first["host_kind"]) == (404, "FRM-TEN-1001", "tenant")
     assert first["subdomain"] == "nobody"
     assert (second["status"], second["error_code"], second["rate_limited"]) == (429, "FRM-GEN-1029", True)
+    assert (second["subdomain"], second["host_kind"]) == ("nobody", "tenant")  # known even though refused early
 
 
 async def test_workspace_is_recorded(settings, redis, shipper) -> None:  # noqa: ANN001

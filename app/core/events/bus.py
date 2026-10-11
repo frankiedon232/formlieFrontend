@@ -37,7 +37,7 @@ class EventBus:
             routing_key=event.type,
             delivery_mode=2,
             message_id=str(event.event_id),
-            content_type="application/json",
+            # No content_type here: with one, kombu skips its serializer and sends the dict as is.
             retry=True,
             retry_policy={"max_retries": 3, "interval_start": 0.2, "interval_step": 0.5},
         )

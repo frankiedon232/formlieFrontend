@@ -345,3 +345,5 @@ The portal shows the mark as the icon `i-formalie-mark`, a custom Nuxt Icon coll
 - **Responses:** kept only for errors by default.
 - **Writing:** in batches off the request path, with a file fallback and a replay script.
 - **Access:** `platform_reader` reads everything except the body columns.
+
+**Object storage chosen in B3 (2026-10-11).** MinIO's download server no longer serves its binary (410 Gone). Uploads and exports start in B3, so the S3-compatible server for development is chosen then. Production uses the cloud provider's S3.

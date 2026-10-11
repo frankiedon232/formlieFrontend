@@ -20,6 +20,7 @@ from urllib.parse import urlencode
 from app.core.config import Settings, get_settings
 from app.core.context import get_context
 from app.core.middleware.asgi import ASGIApp, Message, Receive, Scope, Send, header
+from app.core.middleware.tenant import resolve_host_context
 from app.modules.logs.capture import attack_flags, body_record, mask_headers, parse_query, response_body
 
 log = logging.getLogger("formalie.request")
@@ -154,6 +155,10 @@ class RequestLogMiddleware:
         client = request_headers.get("x-formalie-client") or ""
         client_app, _, client_version = client.partition("/")
         host_context = ctx.extra.get("host_context") if ctx else None
+        if host_context is None and ctx is not None and ctx.host:
+            # Refused before the tenant layer (rate limit): still record which workspace host it was for.
+            host_context = resolve_host_context(ctx.host, root_domain=self.settings.root_domain,
+                                                manage_subdomain=self.settings.manage_subdomain)
         tenant = ctx.tenant if ctx else None
 
         record: dict[str, Any] = {
@@ -168,7 +173,7 @@ class RequestLogMiddleware:
             "http_version": scope.get("http_version"),
             "method": scope.get("method", ""),
             "host": ctx.host if ctx else request_headers.get("host"),
-            "host_kind": ctx.host_kind if ctx else None,
+            "host_kind": (ctx.host_kind if ctx else None) or getattr(host_context, "kind", None),
             "subdomain": (tenant.subdomain if tenant else getattr(host_context, "subdomain", None)),
             "path": path,
             "route": route_template(scope),
