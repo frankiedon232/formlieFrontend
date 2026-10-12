@@ -28,6 +28,7 @@ from app.modules.exports.router import router as exports_router
 from app.modules.forms.builder import router as builder_router
 from app.modules.forms.overview import router as overview_router
 from app.modules.forms.router import router as forms_router
+from app.modules.help.router import router as help_router
 from app.modules.links.invites import router as form_invites_router
 from app.modules.links.router import router as links_router
 from app.modules.notifications.router import router as notifications_router
@@ -98,6 +99,7 @@ api_router.include_router(ai_router)
 api_router.include_router(ai_create_router)
 api_router.include_router(ai_write_router)
 api_router.include_router(ai_analyse_router)
+api_router.include_router(help_router)
 api_router.include_router(emails_router)  # unsubscribe links (public)
 api_router.include_router(email_settings_router)  # B11: /settings/emails/templates, /sent, /sending
 api_router.include_router(sso_router)  # before settings: /settings/sso

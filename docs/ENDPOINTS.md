@@ -348,15 +348,15 @@ Built with B10 (moved from B9): a webhook sends a webhook token from the API ser
 
 - **Guards:** `requireAuth`
 
-- ⬜ `GET /api/v1/help/home` (`helpHome`)
-- ⬜ `GET /api/v1/help/articles` (`listHelpArticles`)
-- ⬜ `GET /api/v1/help/articles/{id}` (`getHelpArticle`)
-- ⬜ `POST /api/v1/help/articles/{id}/feedback` (`helpFeedback`)
-- ⬜ `GET /api/v1/help/search` (`searchHelp`)
-- ⬜ `GET /api/v1/help/faqs` (`listHelpFaqs`)
-- ⬜ `GET /api/v1/help/glossary` (`listHelpGlossary`)
-- ⬜ `GET /api/v1/help/context` (`helpContext`)
-- ⬜ `GET /api/v1/help/tours` (`helpTours`)
+- ✅ `GET /api/v1/help/home` (`helpHome`)
+- ✅ `GET /api/v1/help/articles` (`listHelpArticles`)
+- ✅ `GET /api/v1/help/articles/{id}` (`getHelpArticle`)
+- ✅ `POST /api/v1/help/articles/{id}/feedback` (`helpFeedback`)
+- ✅ `GET /api/v1/help/search` (`searchHelp`)
+- ✅ `GET /api/v1/help/faqs` (`listHelpFaqs`)
+- ✅ `GET /api/v1/help/glossary` (`listHelpGlossary`)
+- ✅ `GET /api/v1/help/context` (`helpContext`)
+- ✅ `GET /api/v1/help/tours` (`helpTours`)
 
 ## `routes/ai.ts`
 

@@ -57,11 +57,13 @@ Source: `shared/utils/platform/*`, `shared/utils/billing/plans.ts`, `shared/util
 | `system_templates`, `system_template_translations` **(P)** | key, category, icon, tags, minutes, schema jsonb (FormSchema v1); language, name, description, content jsonb |
 | `system_themes`, `system_page_designs` **(P)** | key, name_key, tokens jsonb, retired_at |
 | `help_categories` **(P)** | key (`HELP_CATEGORIES`: start, forms, builder, design, templates, sharing, responses, analytics, lists, data, api, people, settings, audit, ai), sort |
-| `help_articles`, `help_article_translations` **(P)** | id, category, route, related text[], keywords text[], start_order, popular, minutes, updated_at; language, title, summary, blocks jsonb (`HelpBlock[]`: p, h, steps, list, tip / note / warning, show, media) |
-| `help_faqs`, `help_glossary` **(P)** | category, article_id, per language question / answer or term / definition |
-| `help_tours` **(P)** | id, route pattern (`/forms/:id/build`), per language title, steps jsonb (target, title, text) |
-| `help_feedback` | article_id, tenant_id, user_id, helpful, comment, at; one row per person and article (written by Formalie, read by the platform) |
-| `help_search_misses` | language, query_norm, count, last_at |
+| `help_articles`, `help_article_translations` **(P)** | id (text, e.g. `first-form`), category, route (page pattern, `/forms/:id/build`), related text[], start_order ("New here?" order), popular, minutes, sort, retired_at; per (article_id, language): title, summary, keywords text[], blocks jsonb (`HelpBlock[]`: p, h, steps, list, tip / note / warning, show, media), generated `body` (the readable text) and `search` (tsvector: title A, keywords B, summary C, body D, in the language's text search configuration) |
+| `help_faqs`, `help_faq_translations` **(P)** | id, category, article_id, sort, retired_at; per language question, answer, generated `search` (question A, answer D) |
+| `help_glossary`, `help_glossary_translations` **(P)** | id, article_id, sort, retired_at; per language term, definition, generated `search` (term A, definition D) |
+| `help_tours`, `help_tour_translations` **(P)** | id, route pattern, targets text[] (the controls the steps point at, `data-help`), sort, retired_at; per language title, steps jsonb ([{ title, text }], in the targets' order) |
+| `help_search_misses` **(P)** | language, query_norm (lower case, at most 120 characters), count, first_at, last_at; unique (language, query_norm). Written by `formalie_app`, read by the platform |
+
+Every `help_*` content table also has created_at, updated_at, `published_at` and `published_by_staff_id` (null: shipped with Formalie). Helpers for the generated columns: `platform.help_fold()`, `help_join()`, `help_blocks_text()`, `help_search_config()` (migration 0033).
 | `billing_webhook_events` | event_id (unique), type (`payment.succeeded`, `payment.failed`, `payment.refunded`), received_at, tenant_id (resolved from the payment reference), outcome, payload jsonb. Each event handled once |
 
 ## Tenant directory (schema `platform`, restricted)
@@ -114,6 +116,7 @@ Source: `shared/types/people.ts`, `org.ts`, `shared/utils/auth/permissions.ts`, 
 | `folder_access` | folder_id, restricted, role_ids uuid[], org_unit_ids uuid[], user_ids uuid[] |
 | `form_grants` | form_id, user_id, level (`responses`, `view`, `edit`), granted_at; `forms.team_access` holds the workspace default |
 | `user_tours` | user_id, tours_off, seen text[] (tour ids from `help_tours`) |
+| `help_feedback` | user_id, article_id (→ `platform.help_articles`), language, helpful, comment; one row per person and article while not deleted (a new answer replaces the old); read by the platform for the Formalie team |
 
 Access is computed per request (role scope, maker, form grants, folder access) and returned as `can`; nothing is denormalised.
 
@@ -321,7 +324,7 @@ Monthly credits come from `plan_limits.ai_credits` (else `ai_settings.monthly_cr
 
 Source: `shared/types/help.ts`, `server/mock/data/helpStore.ts`, `shared/utils/platform/forms.ts`.
 
-Help content is read from the global `help_*` tables (cached, dropped on `platform.published`). Per person: `user_tours` (People section). Feedback and missed searches go to the global `help_feedback` and `help_search_misses`. Contact support and the Enterprise enquiry are published forms of Formalie's own workspace (`PLATFORM_FORMS`); what people send is an ordinary `responses` row there, so there is no support table.
+Help content is read from the global `help_*` tables (cached in Redis, dropped on `platform.published`), item by item in the reader's language with English for what isn't translated yet. They are filled from the shipped help files (`app/modules/help/data`, the mock's) by migration 0033 and `scripts/seed_help.py`, which never overwrite rows the Formalie team published. Search is PostgreSQL full text search on the generated `search` vectors. Per person, in tenant tables with RLS: `user_tours` and `help_feedback` (People section). Searches that found nothing go to the global `help_search_misses` (no person in them). Contact support and the Enterprise enquiry are published forms of Formalie's own workspace (`PLATFORM_FORMS`); what people send is an ordinary `responses` row there, so there is no support table.
 
 ### Audit and logs
 

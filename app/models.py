@@ -17,6 +17,7 @@ def import_all_models() -> None:
     import app.modules.design.models  # noqa: F401
     import app.modules.exports.models  # noqa: F401
     import app.modules.forms.models  # noqa: F401
+    import app.modules.help.models  # noqa: F401
     import app.modules.links.models  # noqa: F401
     import app.modules.lists.models  # noqa: F401
     import app.modules.logs.models  # noqa: F401

@@ -121,6 +121,9 @@ class Settings(BaseSettings):
     # Formalie's legal pages in the footer of every public form (platform settings take over in the platform admin)
     legal_terms_url: str = "https://formalie.com/terms"
     legal_privacy_url: str = "https://formalie.com/privacy"
+    # Where people reach Formalie's support team from the help centre (platform settings take over later)
+    support_email: str | None = "support@formalie.com"
+    support_url: str | None = None
 
     # ── Data sources: customers' own databases (B9) ───────────────────────────
     # Development and tests only: allow connections to this machine (loopback). Production always refuses them.

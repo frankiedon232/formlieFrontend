@@ -35,7 +35,7 @@ Port each file to Python under the named module. For each one, write a test that
 | `settings/schemas.ts`, `settings/appearance-ink.ts` | Settings validation per section, appearance contrast | `modules/settings` |
 | `types/emails.ts` (`EMAIL_VARIABLES`), `types/sso.ts` (`SSO_PROVIDERS`, `SSO_PROTOCOL`), `platform/regions.ts` (`DATA_REGIONS`), `types/privacy.ts`, and the request schemas of the mock's `emails.ts`, `emailSending.ts`, `sso.ts`, `address.ts`, `dataPrivacy.ts` | Settings, the rest (B11): template placeholders, single sign-on providers, regions, the routes' validation | `modules/emails`, `modules/sso`, `modules/address`, `modules/privacy` (parity: `scripts/dump_settings_more_rules.py`, `tests/parity/test_settings_more_rules.py`) |
 | `dashboard/buckets.ts`, `dashboard/scope.ts` | Dashboard periods and folder / owner scope | `modules/dashboard` |
-| `templates/starters.ts`, `help/categories.ts`, `help/routes.ts`, `ai/kinds.ts` | Template starters, help categories, tour pages, AI kinds | matching modules |
+| `templates/starters.ts`, `help/categories.ts`, `help/routes.ts`, `ai/kinds.ts` | Template starters, help categories, tour pages, AI kinds | matching modules (help: `modules/help/rules.py` with the mock's search words, snippets and short answers; parity: `scripts/dump_help_rules.py`, `tests/parity/test_help_rules.py`) |
 | `tenant/host.ts`, `urls/public.ts`, `urls/embed.ts`, `urls/embed-domains.ts` | Tenant from the host, public link building, embed rules | `core/middleware/tenant.py`, `modules/links/urls.py` (parity: `tests/parity/test_links_rules.py`) |
 | `i18n/locales.ts` | The 20 languages | platform seed |
 
@@ -49,7 +49,7 @@ Every new workspace starts from Formalie's default data, which the backend seeds
 - `formStore.ts` / `forms.ts`: default folders.
 - `emailDefaults/`: email templates.
 - `templateStore.ts`: system templates.
-- `helpStore.ts` and `help/`: help articles and the 12 tours. The platform admin later edits these through the global tables (PLATFORM-ADMIN-INTEGRATION.md).
+- `helpStore.ts` and `help/`: help articles and the 12 tours. Copied by `scripts/sync_frontend_data.py` and loaded into the global help tables by migration 0033 (`scripts/seed_help.py` after a sync). The platform admin later edits these through the global tables (PLATFORM-ADMIN-INTEGRATION.md).
 - `platformStore.ts`: platform settings, such as legal links.
 
 ## Things the mock fakes that the real backend does for real

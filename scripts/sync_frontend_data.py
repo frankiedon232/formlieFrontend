@@ -5,10 +5,12 @@
     shared/templates/vocabulary/*.json     →  app/modules/templates/data/vocabulary/  (everyday form words)
     i18n/locales/*.json (template names, categories, the builder's default texts) → app/modules/templates/data/ui/
     server/mock/data/libraryStore.ts (DEFAULT_OPTION_TRANSLATIONS) → app/modules/lists/data/option_translations.json
+    server/mock/data/help/*.json           →  app/modules/help/data/      (help centre: articles, FAQs, glossary, tours;
+                                              then `scripts/seed_help.py` loads them into the global help tables)
 
     fmly\\Scripts\\python.exe scripts\\sync_frontend_data.py [path\\to\\formalieFrontend]
 
-Run again when the frontend changes them. Later phases add their data here (system lists, templates, help).
+Run again when the frontend changes them. Later phases add their data here.
 """
 
 from __future__ import annotations
@@ -26,6 +28,7 @@ COPIES = [
     (FRONTEND / "server" / "mock" / "data" / "emailDefaults", ROOT / "app" / "modules" / "emails" / "defaults", "*.json"),
     (FRONTEND / "shared" / "templates" / "messages", TEMPLATES / "messages", "*.json"),
     (FRONTEND / "shared" / "templates" / "vocabulary", TEMPLATES / "vocabulary", "*.json"),
+    (FRONTEND / "server" / "mock" / "data" / "help", ROOT / "app" / "modules" / "help" / "data", "*.json"),
 ]
 
 

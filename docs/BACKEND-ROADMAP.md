@@ -100,9 +100,9 @@ Then stop for the owner's review. Day-to-day status lives in `PROGRESS.md`.
 
 - ✅ Settings and allowance, create / assist / analyse / write / translate with Anthropic Claude (the built-in stand-in without a key), request history and removal, usage per month, everything audited.
 
-## B14, Help centre and tours ⬜ (F25)
+## B14, Help centre and tours ✅ (F25)
 
-- ⬜ Help categories and articles, search, the 12 tours and who has seen them, all read from global tables the platform admin edits.
+- ✅ Help categories and articles, search, the 12 tours and who has seen them, all read from global tables the platform admin edits (cached in Redis, dropped on `platform.published`); PostgreSQL full text search in the reader's language; "Was this helpful?" per person.
 
 ## B15, Subscriptions and payments ⬜ (F24)
 
