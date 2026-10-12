@@ -48,6 +48,7 @@ Generate fresh keys with `fmly\Scripts\python.exe scripts\gen_keys.py --write` o
 | `LEGAL_TERMS_URL`, `LEGAL_PRIVACY_URL` | formalie.com pages | ⬜ check the pages exist on the website |
 | `STORAGE_DIR` | `data/storage` | ⬜ replaced by the object storage settings (to be added when storage is chosen) |
 | `DATASOURCES_ALLOW_LOCAL` | `false` | ⬜ `false` (never true in production) |
+| `WEBHOOKS_ALLOW_LOCAL` | `false` (`true` while trying a receiver on this machine) | ⬜ `false` (never true in production; ignored there anyway) |
 | `EGRESS_IPS` | empty | ⬜ Formalie's fixed outgoing addresses, shown to customers for their database firewall |
 | `RATE_LIMIT_ENABLED`, `RATE_LIMIT_FAIL_OPEN` | `true`, `true` | ⬜ `true`; decide fail open or closed when Redis is down |
 | `ALERT_EMAILS` | empty | ⬜ the team's address for CRITICAL errors |

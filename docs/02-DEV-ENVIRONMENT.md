@@ -106,7 +106,7 @@ The setup script runs once only. Everything else is in the README's "Every day" 
 Started by `scripts\dev-up.ps1` (hidden). By hand, each in its own terminal from the project folder:
 
 ```powershell
-fmly\Scripts\celery.exe -A app.workers.celery_app worker -Q scheduled,logs,notifications --pool=solo -E -n worker1@%h -l info
+fmly\Scripts\celery.exe -A app.workers.celery_app worker -Q scheduled,logs,notifications,exports,destinations,webhooks --pool=solo -E -n worker1@%h -l info
 fmly\Scripts\celery.exe -A app.workers.celery_app beat -s logs/celerybeat-schedule -l info
 fmly\Scripts\celery.exe -A app.workers.celery_app flower --address=127.0.0.1 --port=5555
 ```
@@ -188,7 +188,7 @@ With `NUXT_PUBLIC_API_MOCK=true` the mock answers real calls to your endpoints (
 8. API Documentation has every call ready as code and a Download OpenAPI button (Postman: Import → the file).
 
 9. Management API: API service → API keys → New API key, then `GET https://localhost:2202/public-api/v1/forms` with `Authorization: Bearer formalie_key_…` (see API-CONTRACT → Management API).
-10. Webhooks: a receiver on your machine works while developing (`http://localhost:{port}/…`); any small server that logs the request and answers 200 will do. Send a test from the webhook's panel, then check the signature with the code under Checking the signature.
+10. Webhooks: a receiver on your machine works while developing (`http://localhost:{port}/…`); any small server that logs the request and answers 200 will do. Against the real backend, set `WEBHOOKS_ALLOW_LOCAL=true` in its `.env` first (development only). Send a test from the webhook's panel, then check the signature with the code under Checking the signature.
 
 A response sent with a live token shows up under the form's Responses (channel API). The mock keeps tokens and responses in `.data/mock`.
 

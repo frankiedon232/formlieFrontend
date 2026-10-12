@@ -1155,7 +1155,7 @@ The backend (`formlyBackend`) is built in phases B0 to B17; its own tracker is `
 
 ### SB M3, Areas switched on as the backend builds them ⬜
 
-- ⬜ API service and webhooks, the public gateway on `api.formalie.dev` (B10)
+- 🟡 API service and webhooks, the public gateway on `api.formalie.dev` (B10: management ✅, traffic and webhooks ✅, the gateway and Try it next)
 - ⬜ Settings: emails and sending, single sign-on, address and own domain, privacy requests, data region (B11)
 - ⬜ Analytics and the dashboard (B12)
 - ⬜ AI assistant (B13)
@@ -1176,7 +1176,7 @@ The backend (`formlyBackend`) is built in phases B0 to B17; its own tracker is `
 
 - ✅ The approved Formalie email layout for all 13 emails, 20 languages, backend and mock (2026-10-12)
 - ✅ Unsubscribe, frontend and mock: optional emails (new responses per form, notifications per event except security alerts, the daily summary, form invitations) carry a signed Unsubscribe link; the page `/email/unsubscribe` with Unsubscribe and Undo; sending skips stopped addresses; audit `settings.email_unsubscribed` / `email_resubscribed` (2026-10-12)
-- ⬜ Unsubscribe in the backend: the four endpoints, the `List-Unsubscribe` headers, the check before sending (after B10 step 2's migration)
+- ✅ Unsubscribe in the backend: the four endpoints, the `List-Unsubscribe` / `List-Unsubscribe-Post` headers, the check before sending, migration 0029, 5 tests (2026-10-12)
 
 ### SB M6, Going live ⬜
 
@@ -1718,3 +1718,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-12 | Switch-over started (SB) | Backend at B0 to B9 (273 of 411 endpoints). Review against its real routes: all match; two fixes (proxy forwards the visitor's IP, internal token for server-rendered form pages), codes on screen only with the mock, shared docs synced both ways. Mock off in `.env`. New phase SB in this file with every area to test, and the backend's PROGRESS now breaks down B10 to B17. |
 | 2026-10-12 | Social sign-in tested, sign-up and password hints | The owner's first test passed: sign-up and sign-in with Google, Microsoft and Facebook against the real backend. Two fixes on the way: the dev proxy hands redirects to the browser, and the Microsoft client id was the Secret ID (backend README updated, the unused `:5004` redirect address removed). New: existing workspaces listed on sign-up (`GET /auth/signup/workspaces`) and a general hint after a wrong password where social buttons exist; the backend part is handed to the backend session. |
 | 2026-10-12 | SB M4 done | Web addresses `http(s)` only (onboarding website, thank-you redirect), six new email templates (form invitation, respondent's code, continue later, activate account, account approved, request declined; 20 languages, Settings → Emails, mock and backend), mock catch-all like the backend. The backend's rules recorder reads the ✅ / ⬜ marks again (it had dropped to 7 routes after the marks change). Next: backend B10. |
+| 2026-10-12 | Emails and B10 steps 1 and 2 | The approved email layout for every email; unsubscribe for optional emails, frontend, mock and backend (signed links, one-click headers, Undo, audit). Backend B10 step 1 (API service management) and step 2 (traffic and webhooks with retries and pause): 330 of 416 endpoints. Webhook contract row corrected to the webhook token. |
