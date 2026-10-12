@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-10 (F21 Dashboard done; the items left open in earlier phases built as leftovers L1 to L7 and waiting for the owner's check; website project files and the Formalie brand kit done; next: Payoneer when the account is ready, then the real backend)
+**Last updated:** 2026-10-12 (F21 Dashboard done; the items left open in earlier phases built as leftovers L1 to L7 and waiting for the owner's check; website project files and the Formalie brand kit done; 2026-10-12: switching to the real backend started, phase SB)
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend · ➖ dropped or merged
 
@@ -36,6 +36,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F23   | Platform admin (super admin, Formalie team)       | ➖     | separate projects (formaliePlatformFront / Back)                                |
 | F24   | Payments & subscriptions                          | ⏸️     | 65% (subscriptions, payment safety ✅; paused for Payoneer, then form payments) |
 | F25   | Help centre (FAQs, knowledge base, videos)        | ✅     | 100% (waiting for review)                                                       |
+| SB    | Switching to the real backend                     | 🟡     | M1 ✅; B0 to B9 areas being tested by the owner (2026-10-12) |
 
 **Order of what is left (owner, 2026-10-10; F22 done with F16 on 2026-10-09):**
 
@@ -48,7 +49,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 6b. ✅ **Formalie brand kit** (2026-10-10, owner's choice: Field F): `docs/brand/` (BRAND.md, SVG, PNG, web icons, OG image), used everywhere in the portal and zipped as `formalie-brand.zip` for the website and the platform admin.
 6c. ✅ **Backend files aligned** (2026-10-10): formlyBackend's docs updated to match the finished frontend (ENDPOINTS.md checklist, FRONTEND-REFERENCE.md, new roadmap B0 to B17).
 7. ⏸ **F24 Payoneer connection** when the account is ready (owner 2026-10-10: before switching to the backend).
-8. ⏸ **Switching to the real backend** (FastAPI, `formlyBackend`): the mock is replaced, API-CONTRACT is the spec
+8. 🟡 **Switching to the real backend** (FastAPI, `formlyBackend`, phase SB below): started 2026-10-12 with the B0 to B9 areas (mock off); later areas switch on as the backend builds them
 9. **F23 Platform admin (super admin)**: a **separate project** with its own front end, backend and database that also reaches Formalie's database (owner, 2026-10-10). Its full plan lives in its own two projects, formaliePlatformFront (Nuxt) and formaliePlatformBack (FastAPI), not in this project.
 
 Formalie default data (below) is seeded by the backend and kept in mind in every phase.
@@ -1125,11 +1126,49 @@ Every new workspace starts with Formalie's own data, so nothing is empty on day 
 
 ---
 
-## Switching to the real backend ⏸
+## SB, Switching to the real backend 🟡 (started 2026-10-12)
 
-- ⏸ Turn off the mock and point the proxy at FastAPI
-- ⏸ Run the encryption tests against backend test vectors
-- ⏸ Compare `API-CONTRACT.md` with the backend's generated contract
+The backend (`formlyBackend`) is built in phases B0 to B17; its own tracker is `formlyBackend/docs/PROGRESS.md`, and every endpoint is in `formlyBackend/docs/ENDPOINTS.md` (273 of 411 built on 2026-10-12). This phase switches the frontend over area by area: each area is ✅ here once the owner has tested it against the real backend with the mock off.
+
+### SB M1, Preparation ✅ (2026-10-12)
+
+- ✅ Encryption: the backend checks the frontend's own `envelope.ts` against shared test vectors in both directions (`formlyBackend/tests/vectors/envelope.json`)
+- ✅ Contract compared with the backend's real routes (all B0 to B9 routes match the mock's method and path); shared docs synced in both projects
+- ✅ Dev proxy forwards the visitor's IP (`x-forwarded-for`), so rate limits, audit and the request log see the person, not 127.0.0.1
+- ✅ `NUXT_INTERNAL_TOKEN` (equal to the backend's `INTERNAL_TOKEN`) for the server-rendered form pages; `.env.example` documents it
+- ✅ Sign-in codes on screen only with the mock (the backend sends them by email: Mailpit in development)
+- ✅ `.env`: `NUXT_PUBLIC_API_MOCK=false`; `NODE_EXTRA_CA_CERTS` as a Windows user variable (Node reads it at start)
+
+### SB M2, Areas the backend has built (B0 to B9): owner testing ⬜
+
+- ⬜ Sign-in, sign-up, find workspace, codes, forgot / reset password, social sign-in (Google, Microsoft, Facebook), sessions (B1)
+- ⬜ Audit trail: list, filters, detail, export (B2)
+- ⬜ Onboarding; Settings: company, branding, localisation, appearance, security, form defaults; uploads; organisation data (B3)
+- ⬜ People, invitations, roles and scopes, my profile, two-step sign-in (B4)
+- ⬜ Forms list, folders, lifecycle, builder (autosave, versions, publish), overview, directory (B5)
+- ⬜ Designer (themes, page designs), templates, lists (simple, levels, large) (B6)
+- ⬜ Public forms (`/{formKey}/fill`, `/embed`, `/s/{code}`), share settings, invites, who can see, resume, uploads, submit (B7)
+- ⬜ Responses: list, filters, detail, review, edits, notes, files, exports, response emails, notifications (B8)
+- ⬜ Data sources: connections, response storage, explorer, query editor, saved queries, activity (B9)
+
+### SB M3, Areas switched on as the backend builds them ⬜
+
+- ⬜ API service and webhooks, the public gateway on `api.formalie.dev` (B10)
+- ⬜ Settings: emails and sending, single sign-on, address and own domain, privacy requests, data region (B11)
+- ⬜ Analytics and the dashboard (B12)
+- ⬜ AI assistant (B13)
+- ⬜ Help centre and tours (B14)
+- ⬜ Subscriptions and Payoneer (B15, with F24)
+
+### SB M4, Frontend items found by the backend ⬜
+
+- ⬜ Web addresses: the onboarding website field and the thank-you redirect (`thank_you.redirect_url`) accept any address zod's `z.url()` takes, including `javascript:` and `mailto:`; allow `http(s)` only, as the backend does
+- ⬜ Emails for respondents: email templates for a form invitation, a respondent's email code and a "continue later" link (the backend sends them; the frontend has no templates to edit yet)
+- ⬜ Mock in line with the backend: an unknown `/api/v1` address without an envelope answers `400 FRM-SEC-1001`
+
+### SB M5, Mock off for good ⬜
+
+- ⬜ Every area above ✅, every ENDPOINTS.md box ticked; `NUXT_PUBLIC_API_MOCK` kept only for offline work and tests
 
 ---
 
@@ -1354,6 +1393,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-10 | Remove custom CSS from the designer and the docs: no code for customers, the designs and templates are enough                                                                                                                                                                                                                                                                                                      | F8                                                                                                                                         | ✅ Removed (designer group, form page, server checks, plan flag, translations, SECURITY-PROTOCOL §12)   |
 | 2026-10-10 | Before the backend: the organisation logo opens Settings → Company; hide Workspace setup once done; remove the sign-in picture from Branding; a Formalie brand kit (logo, icon, favicon) used everywhere, zipped for the website and platform admin |
 | 2026-10-10 | Review the backend project's day-one files (formlyBackend) against the finished frontend and update them before backend work starts; write straight into the backend folder |
+| 2026-10-12 | Switch the frontend to formlyBackend now for the areas it has built (B0 to B9); the owner tests; PROGRESS must show the breakdown of what is done and what is left |
 
 ---
 
@@ -1657,3 +1697,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-10 | Owner fixes before the backend | The organisation logo in the rail now really opens Settings → Company (it rendered an empty link); "Workspace setup" leaves the profile menu once the set-up is completed; the sign-in page picture is removed everywhere (Branding, the sign-in page, the preview, the server, the completion count is now logo, colour, tab icon and welcome). |
 | 2026-10-10 | Brand kit (Field F) | The owner chose Field F from six concepts. `docs/brand/` holds the SVG sources (mark, inverse, accent, glyph, lockups), PNG sizes, favicon.ico / favicon.svg, apple-touch and PWA icons, manifest, OG image and BRAND.md; `scripts/brand/render.mjs` renders them. The portal uses it everywhere: `i-formalie-mark` (custom icon collection) in the menu, sign-in hub and showcase, Secured by Formalie, onboarding, the in-app browser, the email sender and the sign-in preview; the first-load screen; the browser tab icons and manifest (a workspace's own tab icon still replaces them). Copied into `formalieSite/docs/brand/` and zipped as `formalie-brand.zip` for the website and the platform admin. |
 | 2026-10-10 | Backend files aligned | formlyBackend's day-one docs (2 Oct) were far behind: its API contract listed about 70 endpoints, while the mock answers 399, plus the public API service. Refreshed the shared docs from this project: overview (live collaboration removed; RBAC, dashboard and audit trail updated; Payoneer plans), architecture, dev environment (no Docker), decisions, API contract, error codes (121), security protocol, option lists. Added ENDPOINTS.md, a checklist generated from the mock router with guards, permissions and audit actions per file. Added FRONTEND-REFERENCE.md: the `shared/` rules to port with parity tests, the default data to seed, and what the mock fakes. Also added PLATFORM-ADMIN-INTEGRATION.md. Updated BACKEND-SPEC (references, permissions with scope, audit, public forms, API service, data sources, AI, emails, settings, Payoneer, platform bridge). Rebuilt DATABASE-DESIGN, and reordered BACKEND-ROADMAP (B0 to B17) to follow the frontend. CLAUDE.md and START-PROMPT updated. The project is called formlyBackend everywhere. |
+| 2026-10-12 | Switch-over started (SB) | Backend at B0 to B9 (273 of 411 endpoints). Review against its real routes: all match; two fixes (proxy forwards the visitor's IP, internal token for server-rendered form pages), codes on screen only with the mock, shared docs synced both ways. Mock off in `.env`. New phase SB in this file with every area to test, and the backend's PROGRESS now breaks down B10 to B17. |
