@@ -90,7 +90,7 @@ Every item below exists in the app today. Use it as the source for the feature p
   - invites, sign-up links with approval, departments, job titles and managers;
   - roles with fine-grained permissions (own, shared or all), and your own roles;
   - folder access, per-form sharing, and "who can see this form".
-- **Sign-in:** email and password, Google, Apple, Microsoft or Facebook, single sign-on (Okta and others), two-step sign-in (an authenticator app or text message), and session control.
+- **Sign-in:** email and password, Google or Facebook on every plan; a company's single sign-on (Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0 or OpenID Connect) on paid plans; two-step sign-in (an authenticator app or text message), and session control.
 - **Settings:** password rules, an allowed IP list, and session length.
 - **Audit trail** of every action, with export.
 - **Encryption:**

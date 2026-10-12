@@ -32,8 +32,8 @@ The big number on each card is the **price per month** for the chosen period, an
 | Forms | 5 | 20 | Unlimited | Unlimited |
 | Responses on each form | 10,000 | 200,000 | Unlimited | Unlimited |
 | Your own database | MySQL | MySQL, PostgreSQL, MariaDB | All five | All five |
-| Sign-in with Google, Apple, Microsoft, Facebook | – | ✓ | ✓ | ✓ |
-| Single sign-on (Okta and others) | – | ✓ | ✓ | ✓ |
+| Sign-in with Google and Facebook | ✓ | ✓ | ✓ | ✓ |
+| Single sign-on (Okta, Microsoft Entra ID, Google Workspace and others) | – | ✓ | ✓ | ✓ |
 | Custom domains | – | 1 | Unlimited | Unlimited |
 | Own sending address and mail server | – | ✓ | ✓ | ✓ |
 | AI credits a month | 100 | 500 | 2,000 | Custom |
@@ -47,7 +47,7 @@ The big number on each card is the **price per month** for the chosen period, an
 3. **Your data:** Bring your database (one row per engine) · Database explorer · Live query editor · Data destinations.
 4. **API service:** API service, endpoints, tokens and access rules · Webhooks · API documentation.
 5. **Brand and address:** Branding · Formalie subdomain · Custom domain · Own sending address and mail server · Data kept in the region you choose.
-6. **Sign-in:** Email and password · Google, Apple, Microsoft, Facebook · Single sign-on (Okta and others).
+6. **Sign-in:** Email and password · Google, Facebook (every plan) · Single sign-on with Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0 or OpenID Connect (paid plans). Microsoft accounts come in through a company's single sign-on (owner, 2026-10-12).
 7. **Support:** Help centre and assistant · Priority email support (Professional and up) · Dedicated account team (Enterprise) · Security and compliance review (Enterprise).
 
 ## Buttons

@@ -36,7 +36,7 @@ Each tab has a title, two lines, four checkmark points (from `FEATURES.md`), **S
 
 **Security band** (dark): "Security you can show your auditors." Points: encrypted in transit and at rest · two-step sign-in and single sign-on · roles and permissions · audit trail · data in the region you choose (Enterprise). Link: **Read about security**.
 
-**Integrations orbit** (reference 2): "Works with the systems you already have." The five databases, webhooks, the API service, and Google, Microsoft, Apple and Okta sign-in.
+**Integrations orbit** (reference 2): "Works with the systems you already have." The five databases, webhooks, the API service, Google and Facebook sign-in, and single sign-on with Okta, Microsoft Entra ID, Google Workspace and OneLogin.
 
 **Languages strip:** the 20 language names in their own scripts, scrolling slowly.
 
