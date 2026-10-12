@@ -128,6 +128,23 @@ All from the project folder:
 - **Password:** the mock's test password, `MOCK_PASSWORD` in the frontend's `server/mock/data/tenants.ts`.
 - **Sign-in codes:** they arrive in Mailpit (http://127.0.0.1:8025).
 
+## Single sign-on for a workspace (Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0, OpenID Connect)
+
+A workspace's admin connects the company's identity provider in **Settings → Sign-in → Single sign-on**; its people then press "Continue with …" on `https://{workspace}.formalie.dev:2202/auth/login` (production: `https://{workspace}.formalie.com`). Single sign-on needs a plan with it (Professional, Business, Enterprise).
+
+**The full step-by-step for every provider is in [`docs/SSO-SETUP-GUIDE.md`](docs/SSO-SETUP-GUIDE.md)**: free test accounts, where to click in each provider's console, what to copy into Formalie, the sign-in test and a troubleshooting table.
+
+In short, for a development test:
+1. Add the workspace to the Windows hosts file (`127.0.0.1   {workspace}.formalie.dev`).
+2. Sign up the workspace at `https://manage.formalie.dev:2202/auth/signup` with your own email (outside the SSO domain).
+3. Give it a plan with single sign-on (payments aren't connected yet), in formlyBackend:
+   ```
+   fmly\Scripts\python.exe scripts\dev_set_plan.py {workspace}
+   ```
+4. In the provider, add Formalie with the addresses the Formalie screen shows (OIDC: the sign-in redirect address; SAML: the reply (ACS) address and entity ID).
+5. Paste the provider's values into Formalie (OIDC: issuer, client ID, client secret; SAML: metadata address, or entity ID, sign-on address and certificate), add the email domains, then **Save → Test → Turn on**.
+6. Sign in as one of the provider's people in a private window.
+
 ## Social sign-in (Google, Facebook)
 
 People can sign up and sign in with Google or Facebook, on every workspace and in every plan (owner, 2026-10-12). Each provider needs an "app" registered on its developer site, which gives a **client ID** and a **client secret**. Those two values go in `.env`. This section is the full setup, step by step, for development and for going live.
