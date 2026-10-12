@@ -12,13 +12,13 @@ SECURITY-PROTOCOL §9): what apps and Postman call on `api.formalie.*`. Plain HT
 
 Order of checks (keep it, ENDPOINTS.md): address key → endpoint → access rules (IP, Origin domain, country, anonymous
 networks) → rate limit per IP → token → rate limits per token and endpoint → switched on → method → scope → required
-headers (Formalie-Key) → signature → the form's rules. Browsers: an Origin from the service's allowed websites gets CORS
+headers (Formalie-Key) → the form's rules. Browsers: an Origin from the service's allowed websites gets CORS
 headers (that origin, `Vary: Origin`, never `*`) and its preflight a 204; other websites' preflights → FRM-API-1015.
 Test tokens never touch real responses: writes are checked and answered, nothing is stored. Every call (not a
 preflight) goes to the workspace's request log (`traffic.record_call`), never its token; bodies only when switched on.
 
 Record ids are encrypted references, like everywhere (SECURITY-PROTOCOL §10). The reads and writes are in
-gateway_records.py; tokens and signatures in gateway_auth.py; the caller (IP, country, networks) in callers.py.
+gateway_records.py; tokens in gateway_auth.py; the caller (IP, country, networks) in callers.py.
 """
 
 from __future__ import annotations
@@ -452,12 +452,6 @@ async def _handle(request: Request, call: Call) -> tuple[int, Any]:
             if problem:
                 raise GatewayError("FRM-API-1011", [{"field": "Formalie-Key", "message": problem}])
         call.call_key = call_key or None
-        try:
-            await AUTH.check_signature(token, tenant.id, request.headers, method,
-                                       "/" + "/".join(p for p in parts if p), call.raw)
-        except AUTH.Refused as refused:
-            raise GatewayError(refused.code, refused.details) from None
-
         # Choices may be sent by label as records show them (owner 2026-10-08): labels become option values
         body = choices_in(list(fields.values()), body)
         work = Work(db=db, request=request, call=call, tenant=tenant, endpoint=endpoint, form=form, schema=schema,

@@ -6,15 +6,12 @@ another's data."""
 
 from __future__ import annotations
 
-import hashlib
-import hmac
 import json
 import time
 import uuid
 
 import pytest
 
-from app.core.security.fernet_tokens import encrypt_secret
 from tests.conftest import MemoryShipper, client_for
 from tests.db.test_api_service import errors, job_form
 from tests.db.test_auth_flows import app, seeded, sign_in  # noqa: F401  (fixtures)
@@ -278,29 +275,10 @@ async def test_rate_limits_signing_and_cross_tenant(app, superuser) -> None:  # 
                                  (tenant_id,)).fetchone()[0] == 2
         await owner.request("PUT", "/api-service/limits", body={"per_token": None, "per_ip": None, "per_endpoint": None})
 
-        # Signed calls: only for a token with signing on (none can switch it on in the portal since 2026-10-06)
-        secret = "formalie_sign_live_" + "k" * 40
-        superuser.execute("UPDATE formaly.api_tokens SET signing = true, signing_secret_enc = %s WHERE id = %s",
-                          (encrypt_secret(secret), real(made["live"]["id"])))
-        _, reply, _ = await call(api, "GET", path, token=live)
-        assert errors(reply) == ("FRM-API-1012", {"X-Formalie-Signature": "missing"})
-
-        def signed(stamp: int, body: bytes = b"", method: str = "GET") -> dict[str, str]:
-            mac = hmac.new(secret.encode(), f"{stamp}.{method}.{path}.".encode() + body, hashlib.sha256).hexdigest()
-            return {"X-Formalie-Timestamp": str(stamp), "X-Formalie-Signature": f"sha256={mac}"}
-        now = int(time.time())
-        status, _, _ = await call(api, "GET", path, token=live, headers=signed(now))
+        # No signed calls (owner, 2026-10-06): signature headers are simply ignored
+        status, _, _ = await call(api, "GET", path, token=live,
+                                  headers={"X-Formalie-Timestamp": "1", "X-Formalie-Signature": "sha256=00"})
         assert status == 200
-        _, reply, _ = await call(api, "GET", path, token=live, headers=signed(now))
-        assert errors(reply) == ("FRM-API-1012", {"X-Formalie-Signature": "replayed"})
-        _, reply, _ = await call(api, "GET", path, token=live, headers=signed(now - 301))
-        assert errors(reply) == ("FRM-API-1012", {"X-Formalie-Timestamp": "too_old"})
-        _, reply, _ = await call(api, "GET", path, token=live, headers={**signed(now + 1), "X-Formalie-Timestamp": str(now + 2)})
-        assert errors(reply) == ("FRM-API-1012", {"X-Formalie-Signature": "wrong"})
-        body = json.dumps({"first_name": "Signed"}).encode()
-        status, reply, _ = await call(api, "POST", path, token=live, body=body,
-                                      headers={**signed(now + 3, body, "POST"), **key()})
-        assert status == 201, reply
 
 
 async def test_records_test_tokens_replays_files_and_try(app, superuser) -> None:  # noqa: ANN001, F811

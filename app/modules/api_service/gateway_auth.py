@@ -1,6 +1,6 @@
 """Who calls the public API (mock: publicApi.ts `issueAccessToken`, `callerToken`, `issueConsoleToken`;
 SECURITY-PROTOCOL §9): the token behind `Authorization: Bearer …`, the short-lived tokens of client credentials and of
-the Docs console, and the optional request signature.
+and the Docs console.
 
 - **Static tokens:** looked up by the SHA-256 of the secret (the old secret too while a rotation's grace lasts).
 - **Client credentials:** `POST /{apiKey}/token` with the client id and secret gives a short-lived token
@@ -9,15 +9,11 @@ the Docs console, and the optional request signature.
 - **The Docs console** (Try it): a test token that may call everything, lives a minute and is never stored.
 - Two ways to sign in, never both (owner, 2026-10-06): a client id or secret sent as Bearer, or a bearer token sent to
   /token, is refused with a detail saying how to do it; a webhook token only identifies Formalie's calls to webhooks.
-- **Signed calls** (SECURITY-PROTOCOL §9, API-CONTRACT): for a token with signing on, `X-Formalie-Timestamp` (unix
-  seconds, within 5 minutes) and `X-Formalie-Signature: sha256=<hex>` (HMAC-SHA256 with the token's signing secret of
-  `{timestamp}.{METHOD}.{path}.{raw body}`); a signature seen before is refused (Redis, 10 minutes). The portal no
-  longer switches signing on (owner, 2026-10-06), so today no token asks for it.
+- **No signed calls** (owner, 2026-10-06): tokens only. `signing` stays in a token's shape, always false.
 """
 
 from __future__ import annotations
 
-import hashlib
 import hmac
 import re
 import time
@@ -29,8 +25,7 @@ from typing import Any
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.core.cache.redis import get_redis
-from app.core.security.fernet_tokens import decrypt_secret, make_token, read_token
+from app.core.security.fernet_tokens import make_token, read_token
 from app.modules.api_service import tokens as T
 from app.modules.api_service.models import ApiToken
 from app.modules.api_service.traffic import CONSOLE_TOKEN_ID
@@ -38,10 +33,7 @@ from app.modules.api_service.traffic import CONSOLE_TOKEN_ID
 ACCESS_PURPOSE = "api_access"
 CONSOLE_SECONDS = 60
 MAX_LIFETIME_MINUTES = max(T.TOKEN_LIFETIMES)
-SIGNATURE_WINDOW_S = 300
-SIGNATURE_SEEN_S = 600
 _BEARER = re.compile(r"^Bearer\s+(\S+)$", re.IGNORECASE)
-_SIGNATURE = re.compile(r"^sha256=([0-9a-fA-F]{64})$")
 
 
 class Refused(Exception):
@@ -64,7 +56,6 @@ class ConsoleToken:
     scopes: dict[str, list[str]] = field(default_factory=lambda: {"services": [], "endpoints": [], "methods": []})
     expires_at: datetime | None = None
     signing: bool = False
-    signing_secret_enc: str | None = None
 
 
 Caller = ApiToken | ConsoleToken
@@ -163,32 +154,3 @@ async def caller_token(db: AsyncSession, tenant_id: uuid.UUID, headers: Any) -> 
     if token is None or (isinstance(token, ApiToken) and not live(token)):
         raise Refused("FRM-API-1010")
     return token
-
-
-# ── Signed calls ────────────────────────────────────────────────────────────────
-
-def signature_of(secret: str, timestamp: str, method: str, path: str, body: bytes) -> str:
-    """`sha256=` + hex HMAC-SHA256 of `{timestamp}.{METHOD}.{path}.{raw body}`."""
-    message = f"{timestamp}.{method.upper()}.{path}.".encode() + body
-    return "sha256=" + hmac.new(secret.encode(), message, hashlib.sha256).hexdigest()
-
-
-async def check_signature(token: Caller, tenant_id: uuid.UUID, headers: Any, method: str, path: str,
-                          body: bytes) -> None:
-    """Only for a token with signing on: the signature is there, fresh, right and not seen before (FRM-API-1012)."""
-    if not token.signing or not token.signing_secret_enc:
-        return
-    stamp = (headers.get("x-formalie-timestamp") or "").strip()
-    sent = (headers.get("x-formalie-signature") or "").strip()
-    found = _SIGNATURE.match(sent)
-    if not stamp.isdigit() or not found:
-        raise Refused("FRM-API-1012", [{"field": "X-Formalie-Signature", "message": "missing"}])
-    if abs(time.time() - int(stamp)) > SIGNATURE_WINDOW_S:
-        raise Refused("FRM-API-1012", [{"field": "X-Formalie-Timestamp", "message": "too_old"}])
-    wanted = signature_of(decrypt_secret(token.signing_secret_enc), stamp, method, path, body)
-    if not _same(wanted, "sha256=" + found.group(1).lower()):
-        raise Refused("FRM-API-1012", [{"field": "X-Formalie-Signature", "message": "wrong"}])
-    seen = await get_redis().set(f"fm:v1:api:sig:{tenant_id}:{found.group(1).lower()}", "1", nx=True,
-                                 ex=SIGNATURE_SEEN_S)
-    if not seen:
-        raise Refused("FRM-API-1012", [{"field": "X-Formalie-Signature", "message": "replayed"}])
