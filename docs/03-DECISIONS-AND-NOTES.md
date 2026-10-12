@@ -126,6 +126,13 @@ Edit this file whenever a decision changes.
 103. **Responses page grouped by form** (owner, 2026-10-04: "group them; only when clicked show the list of responses"; grouped only, no flat list). `/responses` shows the two chart cards for all forms, then every form with responses as table or grid (locked card: last response pill, form status, red flag when new responses wait, responses / new / approved / rejected, Reviewed with a black bar, owner, key, 30-day sparkline). A form opens its own Responses page. A review status (chart legend or the sidebar's New / Reviewed / Approved / Rejected, `?review=`) lists the forms that have such responses and opens them filtered (`?status=`). Insights (trend, status, busiest forms) stay behind the switch on the toolbar line. `GET /responses/forms` returns one row per form, paged. Sample responses of closed and archived forms end weeks before today (they stopped taking responses).
 104. **Editing submitted answers** (F11 M2, owner 2026-10-04 "go ahead"). Only people with "Can edit" on the form, and only answers that are the respondent's own input: files, signatures and payments are evidence, calculated answers follow from the others and hidden values come from the link, so they stay as sent (`shared/utils/forms/answer-edit.ts`). The pencil on an answer tile opens a draggable dialog with the renderer's own control for that question, checked by the same `validateAnswer` as a submission (again on the server). Each change keeps who, when, before and after in the response's history and the audit trail; the tile shows an "Edited" mark whose tooltip says who changed it, when and what it was. The full history stays in the audit trail (decision 101: no history list in the panel). A corrected name or email becomes the respondent shown in lists and the panel header.
 
+**Production hosting and addresses (owner, 2026-10-12).**
+- **Front ends are static files on Cloudflare.** The portal (formalieFrontend, with the public form pages), the website (formalieSite) and the platform admin (formaliePlatformFront) are each built with `nuxt generate` as a single-page app and served as static files from Cloudflare. No Node server runs in production; the Nuxt `server/` folder (mock, dev proxy, API-host middleware, server-rendered form pages) is development only.
+- **Form pages:** rendered in the browser like the rest. A small Cloudflare Worker adds each form's title and preview image to `/{formKey}/fill` and `/{formKey}/embed`, so shared links still preview well, and answers short links `/s/{code}` with a redirect. This replaces the server-rendered form pages (CLAUDE.md rule 15) at the switch-over.
+- **Formalie's backend API is `https://services.formalie.com`** (`/api/v1/…`); every front end calls it there. In development the portal calls `/api/v1` on its own address and the dev server passes it on to `https://formalie.dev:5004`. The API service for customers stays `https://api.formalie.com/{apiKey}/{endpoint}`.
+- **What this needs before go-live (B17 and phase SB):** the backend recognises the workspace from the browser's `Origin` header instead of the request host; CORS with credentials for Formalie's own hosts and verified workspace domains; the refresh cookie on `services.` kept apart per workspace; the sign-in providers' return addresses on `services.`; the portal's `NUXT_PUBLIC_API_BASE` set to `https://services.formalie.com/api/v1` at build time.
+- **Every production build points at production only:** no `formalie.dev`, dev port or `localhost` may be left in a build (PRODUCTION-CHECKLIST, build-time reminder).
+
 ## Corrections to the dev setup
 
 - Hosts use `*.medique.dev` but the app runs on `formalie.dev` → switch to `*.formalie.dev` (see 02-DEV-ENVIRONMENT.md).
@@ -135,7 +142,7 @@ Edit this file whenever a decision changes.
 
 - Production domains: `formalie.com` (website), `manage.formalie.com`, `*.formalie.com`, short-link domain? Check domain and trademark availability for "formalie", several products use that name.
 - Email provider for OTP/notifications (Amazon SES, Postmark, Resend, Mailgun) and SMS provider.
-- Hosting target (VPS/Kubernetes/cloud) and object storage provider.
+- Hosting target for the back ends (VPS/Kubernetes/cloud) and object storage provider. Front ends: static on Cloudflare (decided 2026-10-12).
 - GeoIP: MaxMind GeoLite2 needs a free account and licence key.
 - Payment providers for subscriptions (Paystack for NGN, Stripe for international).
 - Data residency requirements for early customers.
