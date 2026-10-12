@@ -70,8 +70,8 @@ async def _audit(db: Any, tenant: TenantInfo, action: str, actor: Actor, **kwarg
 async def _security_alert(db: Any, email: str, reason: str) -> None:
     """Settings → Notifications: a blocked sign-in tells the workspace's admins (the notifications module, B8,
     turns this event into the in-app notice and email)."""
-    await record_event(db, "security.alert", {"email": email, "reason": reason,
-                                              "link": "/audit?area=auth&outcome=failure,blocked"})
+    _ = email  # kept in the audit entry; events never carry personal data (PLATFORM-ADMIN-INTEGRATION §4)
+    await record_event(db, "security.alert", {"reason": reason, "link": "/audit?area=auth&outcome=failure,blocked"})
 
 
 def _with_cookie(body: dict[str, Any], refresh: str) -> JSONResponse:
@@ -358,12 +358,17 @@ async def logout(request: Request) -> Any:
 async def me(principal: Principal = Depends(require_auth)) -> Any:
     from app.modules.rbac.service import permissions_of, role_key, role_name
 
+    from app.modules.platform_bridge.support import banner
+
     user = principal.user
     return ok({
         "id": str(user.id), "first_name": user.first_name, "last_name": user.last_name, "email": user.email,
         "avatar_url": None, "role": role_key(principal.role), "role_name": role_name(principal.role) or role_key(principal.role),
         "permissions": permissions_of(principal.grants), "grants": principal.grants,
         "language": user.language, "time_zone": user.time_zone, "date_format": user.date_format,
+        # B16: Formalie support in the workspace right now (the banner), and whether this is that support session
+        "support_session": await banner(principal.tenant.id, principal.tenant.organisation_id),
+        "is_support": getattr(user, "support_staff", None) is not None,
     })
 
 
@@ -437,7 +442,9 @@ async def signup_complete(body: CompleteBody) -> Any:
     challenge = await challenges.get_challenge(body.challenge_id)
     if challenge is None or challenge.purpose != "signup" or not challenge.verified or not challenge.signup:
         raise FrmError("FRM-AUTH-1003")
-    if not is_valid_subdomain(body.subdomain):
+    from app.modules.platform_bridge.globals import is_reserved
+
+    if not is_valid_subdomain(body.subdomain) or await is_reserved(body.subdomain):
         raise FrmError("FRM-TEN-1004", [{"field": "subdomain", "message": "This subdomain is taken."}])
     provider = challenge.signup.get("provider")  # signed up with Google or Facebook: no password yet
     async with db_session("write") as db:
@@ -455,8 +462,10 @@ async def signup_complete(body: CompleteBody) -> Any:
         await _audit(db, tenant, "workspace.created", Actor.user(owner),
                      resource={"type": "workspace", "id": str(tenant.id), "name": tenant.name},
                      metadata={"subdomain": tenant.subdomain, "method": provider or "password"})
-        await record_event(db, "tenant.signed_up", {"subdomain": tenant.subdomain, "plan": "starter"},
-                           tenant_id=tenant.id, organisation_id=tenant.organisation_id, actor_id=made.owner_id)
+        from app.modules.platform_bridge.events import emit
+
+        await emit(db, "tenant.signed_up", {"plan": "starter", "method": provider or "password"},
+                   tenant_id=tenant.id, organisation_id=tenant.organisation_id, actor_id=made.owner_id)
     await challenges.consume(challenge.id)
     await TenantDirectory().forget(made.subdomain)  # a lookup of the new host before now may be cached as unknown
     ticket = await challenges.issue_ticket(made.owner_id, made.tenant_id, made.organisation_id)  # type: ignore[arg-type]

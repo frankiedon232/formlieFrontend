@@ -23,7 +23,7 @@ class ExportJob(UuidPkMixin, TenantMixin, AuditMixin, SoftDeleteMixin, Base):
     __tablename__ = "export_jobs"
     __table_args__ = tenant_table_args(
         CheckConstraint(f"status IN {EXPORT_STATUSES}", name="status"),
-        CheckConstraint("format IN ('xlsx', 'csv', 'pdf', 'json', 'sql')", name="format"),
+        CheckConstraint("format IN ('xlsx', 'csv', 'pdf', 'json', 'sql', 'zip')", name="format"),
         Index("ix_export_jobs_creator", "tenant_id", "created_by", "created_at"),
         Index("uq_export_jobs_token", "token_hash", unique=True, postgresql_where=text("token_hash IS NOT NULL")),
     )

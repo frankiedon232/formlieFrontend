@@ -152,6 +152,16 @@ async def record_call(db: AsyncSession, tenant_id: uuid.UUID, organisation_id: u
     if call.rule_id is not None:
         await db.execute(update(ApiAccessRule).where(ApiAccessRule.tenant_id == tenant_id, ApiAccessRule.id == call.rule_id)
                          .values(last_hit_at=at))
+    from app.core.config import get_settings
+    from app.modules.platform_bridge.events import emit, sampled
+
+    rate = get_settings().platform_events_api_sample
+    if sampled(rate):  # the platform's usage analytics (PLATFORM-ADMIN-INTEGRATION §4), counts and timings only
+        await emit(db, "api.called", {
+            "endpoint_id": str(entry.endpoint_id) if entry.endpoint_id else None,
+            "service_id": str(entry.service_id) if entry.service_id else None, "method": entry.method,
+            "status": entry.status, "duration_ms": entry.duration_ms, "token_mode": entry.token_mode,
+            "sample_rate": rate}, tenant_id=tenant_id, organisation_id=organisation_id, source="api")
     await db.flush()
     return entry.id
 

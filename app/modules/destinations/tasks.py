@@ -120,6 +120,13 @@ async def deliver(tenant_id: uuid.UUID, organisation_id: uuid.UUID, delivery_ids
                 from app.modules.data_sources.service import count_op
 
                 await count_op(db, source, len(items))
+            failures = sum(1 for d in items if results.get(d.id) is not None)
+            if failures:  # the platform's operations analytics (PLATFORM-ADMIN-INTEGRATION §4)
+                from app.modules.platform_bridge.events import emit
+
+                await emit(db, "destination.failed", {"destination_id": str(destination.id), "failed": failures,
+                                                      "sent": len(items) - failures},
+                           tenant_id=tenant_id, organisation_id=organisation_id, source="worker")
     return {"sent": sent, "failed": failed}
 
 

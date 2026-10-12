@@ -71,6 +71,10 @@ def create_app(
     )
     install_exception_handlers(app)
     app.include_router(api_router, prefix=settings.api_prefix)
+    # The platform admin's internal API (B16): /internal/admin/v1, signed, private network (mutual TLS in production)
+    from app.modules.platform_bridge.admin_routes import router as platform_admin_router
+
+    app.include_router(platform_admin_router)
 
     if tenant_resolver is None:
         from app.modules.tenants.service import TenantDirectory

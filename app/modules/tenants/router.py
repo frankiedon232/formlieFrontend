@@ -62,6 +62,9 @@ async def public_profile() -> Any:
         from app.modules.sso.service import public_of
 
         sso = await public_of(db, tenant)
+        # B16: why Formalie suspended the workspace, written by the Formalie team (platform admin)
+        reason = (await db.execute(text("SELECT suspended_reason FROM platform.admin_tenant(:id)"),
+                                   {"id": tenant.id})).scalar_one_or_none() if tenant.status == "suspended" else None
     rules = security["password"]
     return ok({
         "mode": "tenant",
@@ -77,14 +80,17 @@ async def public_profile() -> Any:
         "sso": sso,  # single sign-on while it is on and the plan has it (Settings → Sign-in)
         "password_policy": {k: rules[k] for k in ("min_length", "lower", "upper", "number", "symbol")},
         "status": tenant.status if tenant.status in ("active", "suspended") else "active",
+        "status_reason": reason,
     })
 
 
 @router.get("/tenants/subdomain-availability", dependencies=[rate_limit("subdomain-availability", per_minute=60)])
 async def subdomain_availability(subdomain: str = "") -> Any:
     value = subdomain.strip().lower()
+    from app.modules.platform_bridge.globals import is_reserved
+
     reason = None
-    if value in RESERVED_SUBDOMAINS:
+    if value in RESERVED_SUBDOMAINS or (value and await is_reserved(value)):  # the host rules and the platform admin's list
         reason = "reserved"
     elif not is_valid_subdomain(value) or len(value) < 3:
         reason = "invalid"

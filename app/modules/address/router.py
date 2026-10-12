@@ -100,6 +100,10 @@ async def change_subdomain(request: Request, principal: Principal = Depends(requ
     new = body["subdomain"]
     if not is_valid_subdomain(new):
         raise FrmError("FRM-TEN-1004", [{"field": "subdomain", "message": "invalid"}])
+    from app.modules.platform_bridge.globals import is_reserved
+
+    if await is_reserved(new):  # reserved by the Formalie team (platform admin)
+        raise FrmError("FRM-TEN-1004", [{"field": "subdomain", "message": "taken"}])
     async with db_session("write", **_scope(principal)) as db:
         current = (await db.execute(text("SELECT subdomain FROM platform.tenant_profile()"))).scalar_one()
         if new == current:

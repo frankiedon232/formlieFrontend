@@ -41,6 +41,9 @@ class Settings(BaseSettings):
     db_app_url: SecretStr | None = None  # runtime, primary (NOBYPASSRLS)
     db_replica_urls: Annotated[list[SecretStr], NoDecode] = Field(default_factory=list)  # runtime, replicas
     db_relay_url: SecretStr | None = None  # outbox relay worker
+    # scripts/db_bootstrap.py only: the platform admin's roles get LOGIN with these passwords (B16); never used here
+    db_platform_reader_url: SecretStr | None = None
+    db_platform_writer_url: SecretStr | None = None
     db_schema: str = "formaly"  # every workspace table lives here; global tables in `platform`; nothing in `public`
     db_test_database: str = "formalie_test"
     db_pgbouncer: bool = False
@@ -158,6 +161,29 @@ class Settings(BaseSettings):
     # Opus and Sonnet: a request the model declines is answered by Anthropic's recommended fallback model
     anthropic_fallbacks: bool = True
 
+    # ── Platform admin bridge (B16, PLATFORM-ADMIN-INTEGRATION) ───────────────
+    # Internal admin API (/internal/admin/v1): the platform admin's signing keys, "key_id:secret" pairs, comma
+    # separated (two during a rotation). Empty: every internal admin call is refused.
+    platform_admin_keys: Annotated[list[SecretStr], NoDecode] = Field(default_factory=list)
+    platform_admin_window_seconds: int = 300  # a signed request older or newer than this is refused
+    # Production: the platform's client certificate, checked by Nginx (ssl_verify_client on), which passes the
+    # result in these headers; only these certificate fingerprints, as Nginx passes them (hex, colons optional).
+    platform_admin_require_mtls: bool = False
+    platform_admin_cert_fingerprints: Annotated[list[str], NoDecode] = Field(default_factory=list)
+    platform_admin_verify_header: str = "x-client-verify"
+    platform_admin_fingerprint_header: str = "x-client-cert-fingerprint"
+    # Only callers on these networks reach the internal admin API (Formalie's private network)
+    platform_admin_networks: Annotated[list[str], NoDecode] = Field(default_factory=lambda: [
+        "127.0.0.1/32", "::1/128", "10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16"])
+    # Support access (§3): a ticket must be redeemed within this time; a session lasts at most this long
+    support_ticket_seconds: int = 120
+    support_session_minutes: int = 60
+    support_request_days: int = 7  # a request nobody answered expires
+    # api.called events: the share of calls sent to the platform (1 = every call)
+    platform_events_api_sample: float = 1.0
+    # The queue the platform.published consumer reads (bound to EVENTS_EXCHANGE, routing key platform.published)
+    platform_published_queue: str = "formalie.platform_published"
+
     # ── Logging (BACKEND-SPEC §8) ─────────────────────────────────────────────
     log_dir: Path = ROOT_DIR / "logs"
     log_level: str = "INFO"
@@ -192,6 +218,12 @@ class Settings(BaseSettings):
             for item in value:
                 ipaddress.ip_network(item, strict=False)
         return value
+
+    @field_validator("platform_admin_keys", "platform_admin_cert_fingerprints", "platform_admin_networks",
+                     mode="before")
+    @classmethod
+    def _split_platform(cls, value: object) -> object:
+        return [item.strip() for item in value.split(",") if item.strip()] if isinstance(value, str) else value
 
     @field_validator("alert_emails", "egress_ips", mode="before")
     @classmethod

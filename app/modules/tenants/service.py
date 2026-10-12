@@ -58,10 +58,21 @@ async def _load_by_domain(domain: str) -> dict[str, Any]:
     return {k: str(v) if isinstance(v, uuid.UUID) else v for k, v in row.items()}
 
 
+_L1: L1Cache[str, dict[str, Any]] | None = None
+
+
+def _shared_l1() -> L1Cache[str, dict[str, Any]]:
+    """One L1 per process, so `forget()` from any instance (a settings change, the platform admin) reaches the one
+    the tenant middleware reads."""
+    global _L1
+    if _L1 is None:
+        _L1 = L1Cache(get_settings().tenant_cache_seconds)
+    return _L1
+
+
 class TenantDirectory:
     def __init__(self, cache: RedisCache | None = None) -> None:
-        settings = get_settings()
-        self.l1: L1Cache[str, dict[str, Any]] = L1Cache(settings.tenant_cache_seconds)
+        self.l1: L1Cache[str, dict[str, Any]] = _shared_l1()
         self.l2 = cache or RedisCache()
 
     async def by_subdomain(self, subdomain: str) -> TenantInfo | None:

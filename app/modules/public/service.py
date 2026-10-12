@@ -223,6 +223,8 @@ async def public_view(db: AsyncSession, request: Request, tenant: TenantInfo, ke
     privacy = await get_section(db, tenant.id, "privacy")
     company = await get_section(db, tenant.id, "company")
     settings = get_settings()
+    from app.modules.platform_bridge.globals import legal_links
+
     return {
         "key": form.custom_link or form.public_key, "name": form.name,
         "state": state if schema is not None else "not_published" if state == "open" else state,
@@ -233,7 +235,7 @@ async def public_view(db: AsyncSession, request: Request, tenant: TenantInfo, ke
         "seo": {"title": seo["title"], "description": seo["description"],
                 "image": f"https://{host}{image_path}" if image_path and host else None,
                 "noindex": state != "open" or seo["noindex"]},
-        "legal": {"terms_url": settings.legal_terms_url, "privacy_url": settings.legal_privacy_url},
+        "legal": await legal_links(),  # platform settings (B16): published by the Formalie team, else the server's
         "privacy": {"notice_url": privacy.get("notice_url"), "consent": bool(privacy.get("consent")),
                     "consent_text": privacy.get("consent_text")},
         "languages": languages, "language": languages[0], "locked": locked,

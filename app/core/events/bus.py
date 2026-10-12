@@ -33,7 +33,7 @@ class EventBus:
     def publish(self, event: EventEnvelope) -> None:
         producer = self._ensure()
         producer.publish(
-            event.model_dump(mode="json"),
+            event.wire(),  # PLATFORM-ADMIN-INTEGRATION §4: ids, counts, plans, timings; never personal data
             routing_key=event.type,
             delivery_mode=2,
             message_id=str(event.event_id),

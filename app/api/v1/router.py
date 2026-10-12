@@ -44,6 +44,7 @@ from app.modules.people.invites import router as invites_router
 from app.modules.people.me import router as me_router
 from app.modules.people.router import router as people_router
 from app.modules.platform.router import router as platform_router
+from app.modules.platform_bridge.portal import router as platform_bridge_router
 from app.modules.rbac.router import router as roles_router
 from app.modules.emails.router import router as emails_router
 from app.modules.emails.settings_router import router as email_settings_router
@@ -102,6 +103,7 @@ api_router.include_router(ai_analyse_router)
 api_router.include_router(help_router)
 api_router.include_router(emails_router)  # unsubscribe links (public)
 api_router.include_router(email_settings_router)  # B11: /settings/emails/templates, /sent, /sending
+api_router.include_router(platform_bridge_router)  # B16, before settings: /settings/security/support-access
 api_router.include_router(sso_router)  # before settings: /settings/sso
 api_router.include_router(address_router)  # before settings: /settings/address
 api_router.include_router(privacy_router)  # before settings: /settings/data-region, /settings/privacy/…

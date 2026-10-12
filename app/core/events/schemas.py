@@ -21,3 +21,9 @@ class EventEnvelope(BaseModel):
     trace_id: str | None = None
     payload: dict[str, Any] = Field(default_factory=dict)
     version: int = 1
+
+    def wire(self) -> dict[str, Any]:
+        """The message body on `formalie.events`: personal data stripped (app/core/events/wire.py, B16)."""
+        from app.core.events.wire import to_wire
+
+        return to_wire(self)

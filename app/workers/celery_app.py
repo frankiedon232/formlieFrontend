@@ -23,7 +23,8 @@ celery_app = Celery(
     include=["app.core.events.tasks", "app.core.db.tasks", "app.modules.logs.tasks", "app.modules.emails.tasks",
              "app.modules.exports.tasks", "app.modules.responses.after",
              "app.modules.data_sources.tasks", "app.modules.destinations.tasks", "app.modules.webhooks.tasks",
-             "app.modules.api_service.tasks", "app.modules.ai.tasks", "app.modules.privacy.tasks"],
+             "app.modules.api_service.tasks", "app.modules.ai.tasks", "app.modules.privacy.tasks",
+             "app.modules.platform_bridge.tasks"],
 )
 
 celery_app.conf.update(
@@ -63,6 +64,7 @@ celery_app.conf.update(
         "api_service.expire_call_keys": {"queue": "scheduled"},
         "ai.expire_requests": {"queue": "scheduled"},
         "privacy.apply_retention": {"queue": "scheduled"},
+        "platform.expire_support_access": {"queue": "scheduled"},
     },
     beat_schedule={
         "relay-outbox": {"task": "events.relay_outbox", "schedule": 2.0},
@@ -76,6 +78,7 @@ celery_app.conf.update(
         "api-call-keys": {"task": "api_service.expire_call_keys", "schedule": 3600.0},
         "ai-requests-expire": {"task": "ai.expire_requests", "schedule": 3600.0},
         "response-retention": {"task": "privacy.apply_retention", "schedule": 24 * 3600.0},
+        "support-access-expiry": {"task": "platform.expire_support_access", "schedule": 60.0},
     },
 )
 

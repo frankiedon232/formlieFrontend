@@ -11,8 +11,10 @@ Roles (DATABASE-DESIGN → DB roles, BACKEND-SPEC §2):
   formalie_app       LOGIN NOBYPASSRLS      the API and per-workspace workers; no DELETE on tenant tables
   formalie_worker    LOGIN BYPASSRLS        outbox relay and partition upkeep; privileges on those only
   formalie_readonly  NOLOGIN                reporting on replicas (LOGIN set when reporting starts)
-  platform_reader    NOLOGIN BYPASSRLS      the platform admin on the replica (LOGIN in B16)
-  platform_writer    NOLOGIN                the platform admin on global tables (LOGIN in B16)
+  platform_reader    BYPASSRLS              the platform admin on the replica: LOGIN with DB_PLATFORM_READER_URL's
+                                            password (else NOLOGIN), read only, 15 s statements, 10 connections
+  platform_writer    NOBYPASSRLS            the platform admin on global tables: LOGIN with DB_PLATFORM_WRITER_URL's
+                                            password (else NOLOGIN), 5 connections
   formalie_directory NOLOGIN BYPASSRLS      owns the cross-workspace lookup functions (find my workspace,
                                             subdomain taken); reads only the columns those need
 """
@@ -71,8 +73,18 @@ def main() -> None:
         _ensure_role(cur, "formalie_app", "LOGIN NOSUPERUSER NOCREATEDB NOCREATEROLE NOBYPASSRLS", app_pw)
         _ensure_role(cur, "formalie_worker", "LOGIN NOSUPERUSER NOCREATEDB NOCREATEROLE BYPASSRLS", worker_pw)
         _ensure_role(cur, "formalie_readonly", "NOLOGIN NOSUPERUSER NOBYPASSRLS", None)
-        _ensure_role(cur, "platform_reader", "NOLOGIN NOSUPERUSER BYPASSRLS", None)
-        _ensure_role(cur, "platform_writer", "NOLOGIN NOSUPERUSER NOBYPASSRLS", None)
+        # The platform admin's roles (B16): LOGIN only when their URL is set; column privileges come from migrations
+        for role, label, limit, bypass in (("platform_reader", "DB_PLATFORM_READER_URL", 10, "BYPASSRLS"),
+                                           ("platform_writer", "DB_PLATFORM_WRITER_URL", 5, "NOBYPASSRLS")):
+            secret = getattr(settings, label.lower())
+            if secret is None:
+                _ensure_role(cur, role, f"NOLOGIN NOSUPERUSER {bypass}", None)
+            else:
+                user, password, _ = _creds(secret, label)
+                if user != role:
+                    raise SystemExit(f"{label} must connect as {role}, not {user}")
+                _ensure_role(cur, role, f"LOGIN NOSUPERUSER NOCREATEDB NOCREATEROLE {bypass} CONNECTION LIMIT {limit}",
+                             password)
         _ensure_role(cur, "formalie_directory", "NOLOGIN NOSUPERUSER BYPASSRLS", None)
         # Migrations hand the lookup functions to formalie_directory, so the owner must be able to act as it.
         cur.execute("GRANT formalie_directory TO formalie_owner")

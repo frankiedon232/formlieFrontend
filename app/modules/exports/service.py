@@ -28,7 +28,7 @@ from app.modules.exports.models import ExportJob
 log = logging.getLogger("formalie.exports")
 
 CONTENT_TYPES = {"xlsx": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                 "csv": "text/csv; charset=utf-8", "pdf": "application/pdf"}
+                 "csv": "text/csv; charset=utf-8", "pdf": "application/pdf", "zip": "application/zip"}
 
 # kind → async builder(db, job) → (file bytes, rows)
 Builder = Callable[[AsyncSession, ExportJob], Awaitable[tuple[bytes, int]]]
@@ -84,6 +84,15 @@ def dispatch(job: ExportJob) -> None:
     build_export.apply_async(args=[str(job.id), str(job.tenant_id), str(job.organisation_id)], queue="exports")
 
 
+async def _completed(db: AsyncSession, job: ExportJob, rows: int, size: int) -> None:
+    """export.completed for the platform's analytics (PLATFORM-ADMIN-INTEGRATION §4)."""
+    from app.modules.platform_bridge.events import emit
+
+    await emit(db, "export.completed", {"export_id": str(job.id), "kind": job.kind, "format": job.format,
+                                        "rows": rows, "bytes": size},
+               tenant_id=job.tenant_id, organisation_id=job.organisation_id, source="worker")
+
+
 async def build(job_id: uuid.UUID, tenant_id: uuid.UUID, organisation_id: uuid.UUID) -> None:
     """Makes the file (the worker): running → done with a link, or failed with a code."""
     scope = {"tenant_id": tenant_id, "organisation_id": organisation_id}
@@ -111,6 +120,7 @@ async def build(job_id: uuid.UUID, tenant_id: uuid.UUID, organisation_id: uuid.U
             await db.execute(update(ExportJob).where(ExportJob.id == job_id, ExportJob.tenant_id == tenant_id).values(
                 status="done", progress=100, rows=rows, file_key=key, file_size=size, ready_at=now,
                 expires_at=job.created_at + timedelta(days=_KEEP_DAYS[job.kind])))
+            await _completed(db, job, rows, size)
             if job.kind in _ON_READY:
                 try:
                     await _ON_READY[job.kind](db, job)
@@ -124,6 +134,7 @@ async def build(job_id: uuid.UUID, tenant_id: uuid.UUID, organisation_id: uuid.U
             status="done", progress=100, rows=rows, file_key=key, file_size=size, token_hash=_hash(token),
             token_enc=encrypt_secret(token), ready_at=now,
             expires_at=now + timedelta(minutes=get_settings().export_download_minutes)))
+        await _completed(db, job, rows, size)
     log.info("export ready", extra={"export_id": str(job_id), "rows": rows, "bytes": size})
 
 

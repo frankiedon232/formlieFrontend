@@ -234,7 +234,9 @@ async def data_source_insights(principal: Principal = Depends(require_admin)) ->
 
 @router.get("/datasources/meta", dependencies=[rate_limit("datasources-meta", per_minute=60)])
 async def data_source_meta(principal: Principal = Depends(require_admin)) -> Any:
-    return ok({"egress_ips": list(get_settings().egress_ips)})
+    from app.modules.platform_bridge.globals import egress_ips
+
+    return ok({"egress_ips": await egress_ips()})  # platform settings (B16), else the server's EGRESS_IPS
 
 
 # ── Create, read, change, duplicate, delete ─────────────────────────────────────

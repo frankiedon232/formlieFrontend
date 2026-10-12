@@ -597,11 +597,11 @@ async def submit_public_form(key: str, request: Request, response: Response) -> 
                     draft.closed_at, draft.data = now, {}
             await db.execute(update(Form).where(Form.id == form.id).values(
                 responses_count=Form.responses_count + 1, next_response_number=Form.next_response_number + 1))
-            from app.core.events.outbox import record_event
+            from app.modules.platform_bridge.events import emit
 
-            await record_event(db, "response.created", {"form_id": str(form.id), "response_id": str(stored_response.id),
-                                                         "submitted_at": _iso(now)},
-                               tenant_id=tenant.id, organisation_id=tenant.organisation_id)
+            await emit(db, "response.created", {"form_id": str(form.id), "response_id": str(stored_response.id),
+                                                "submitted_at": _iso(now), "channel": channel},
+                       tenant_id=tenant.id, organisation_id=tenant.organisation_id, source="public")
             from app.modules.destinations.service import response_stored
 
             await response_stored(db, locked, stored_response)  # the form's database table, when it has one

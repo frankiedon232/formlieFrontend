@@ -380,13 +380,13 @@ async def _store(work: Work, answers: dict[str, Any], fingerprint: str, identity
         upload_row.response_id, upload_row.response_submitted_at = response.id, moment
     await db.execute(update(Form).where(Form.id == form.id).values(
         responses_count=Form.responses_count + 1, next_response_number=Form.next_response_number + 1))
-    from app.core.events.outbox import record_event
     from app.modules.destinations.service import response_stored
+    from app.modules.platform_bridge.events import emit
     from app.modules.webhooks.service import response_event
 
-    await record_event(db, "response.created", {"form_id": str(form.id), "response_id": str(response.id),
-                                                "submitted_at": iso(moment)},
-                       tenant_id=tenant.id, organisation_id=tenant.organisation_id)
+    await emit(db, "response.created", {"form_id": str(form.id), "response_id": str(response.id),
+                                        "submitted_at": iso(moment), "channel": "api"},
+               tenant_id=tenant.id, organisation_id=tenant.organisation_id, source="api")
     await response_stored(db, locked, response)  # the form's database table, when it has one
     await response_event(db, "response.created", locked, response)  # the workspace's webhooks
     await record(db, tenant_id=tenant.id, organisation_id=tenant.organisation_id, action="responses.submitted",

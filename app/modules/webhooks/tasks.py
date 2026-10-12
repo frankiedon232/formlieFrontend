@@ -203,6 +203,12 @@ async def _record(tenant_id: uuid.UUID, organisation_id: uuid.UUID, delivery_id:
             values.update(status="retrying", next_retry_at=at + timedelta(minutes=WEBHOOK_RETRY_MINUTES[len(history) - 1]))
         else:
             values.update(status="failed", next_retry_at=None)
+            if not test:  # the platform's operations analytics (PLATFORM-ADMIN-INTEGRATION §4)
+                from app.modules.platform_bridge.events import emit
+
+                await emit(db, "webhook.failed", {"webhook_id": str(hook.id), "delivery_id": str(delivery_id),
+                                                  "attempts": len(history), "status_code": entry["status_code"]},
+                           tenant_id=tenant_id, organisation_id=organisation_id, source="worker")
         await db.execute(update(WebhookDelivery).where(
             WebhookDelivery.tenant_id == tenant_id, WebhookDelivery.id == delivery_id).values(**values))
         if not good and not test:

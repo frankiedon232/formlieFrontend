@@ -805,6 +805,42 @@ Order of checks (keep it): address key, endpoint, access rules (IP, Origin domai
 
 Built in B10 step 3: `app/gateway.py` (its own app: `python -m app.gateway`, port 5005; the main app forwards requests for `api.<ROOT_DOMAIN>` to it), `app/modules/api_service/gateway.py` (the checks), `gateway_records.py` (reads and writes), `gateway_auth.py` (tokens, signing), `callers.py` (IP, country, anonymous networks); tests in `tests/db/test_api_gateway.py`.
 
+## Platform admin bridge, portal side (B16; no mock file: new endpoints, API-CONTRACT → Formalie support access)
+
+- **Guards:** `requireAdmin` (settings.view to read, settings.manage to change), `requireAuth` (status, announcements, switches), `requireTenant` (redeem, end)
+- **Audit:** `settings.updated`, `auth.login.succeeded`, `auth.logout`, `auth.session.revoked`
+
+- ✅ `GET /api/v1/settings/security/support-access` (`getSupportAccess`)
+- ✅ `POST /api/v1/settings/security/support-access` (`allowSupportAccess`)
+- ✅ `DELETE /api/v1/settings/security/support-access` (`revokeSupportAccess`)
+- ✅ `POST /api/v1/settings/security/support-access/requests/{id}/decline` (`declineSupportRequest`)
+- ✅ `GET /api/v1/support-access/status` (`supportStatus`)
+- ✅ `POST /api/v1/auth/support/redeem` (`redeemSupportTicket`)
+- ✅ `POST /api/v1/auth/support/end` (`endSupportSession`)
+- ✅ `GET /api/v1/platform/announcements` (`platformAnnouncements`)
+- ✅ `GET /api/v1/platform/feature-flags` (`platformFeatureFlags`)
+
+Built in B16: `app/modules/platform_bridge/portal.py`, `support.py`, `globals.py`; tests in `tests/db/test_platform_bridge.py`. The frontend has no screens for these yet (Settings → Security → Formalie support access, the `/support` ticket page, the support banner, announcements, switches).
+
+## Internal admin API (B16; host-free, `/internal/admin/v1`, plain JSON, signed, PLATFORM-ADMIN-INTEGRATION §2)
+
+- **Guards:** private network, mutual TLS in production, HMAC signature (timestamp window, nonce), staff headers and `Idempotency-Key` on changes
+- **Audit (as Formalie support):** `workspace.updated`, `settings.updated`, `settings.data_exported`, `users.signed_out`, `users.two_step_reset`, `users.password_requested`, `users.disabled`, `users.enabled`, `users.updated`
+
+- ✅ `POST /internal/admin/v1/tenants/{id}/suspend` · `/restore` · `/read-only` · `/close` · `/cancel-close`
+- ✅ `POST /internal/admin/v1/tenants/{id}/subdomain`
+- ✅ `POST /internal/admin/v1/tenants/{id}/plan`
+- ✅ `POST /internal/admin/v1/tenants/{id}/export`
+- ✅ `POST /internal/admin/v1/users/{id}/sign-out` · `/two-step/reset` · `/password-reset` · `/disable` · `/enable` · `/unlock`
+- ⏸ `POST /internal/admin/v1/subscriptions/{id}/activate` · `/extend` · `/credit` · `/cancel`, `POST /internal/admin/v1/payments/{id}/refund` (answer "not available yet" until B15)
+- ✅ `POST /internal/admin/v1/support-access/requests`
+- ✅ `POST /internal/admin/v1/support-access/{grant_id}/session`
+- ✅ `POST /internal/admin/v1/communications/send`
+- ✅ `POST /internal/admin/v1/cache/invalidate`
+- ✅ `GET /internal/admin/v1/health/services`
+
+Built in B16: `app/modules/platform_bridge/internal.py` (gate, idempotency, audit), `admin_routes.py`, `signing.py`, `health.py`, `workspace_export.py`; tests in `tests/db/test_platform_bridge.py`, `tests/db/test_platform_grants.py`, `tests/core/test_platform_units.py`.
+
 ## Server-rendered public pages (internal, service to service)
 
 - ✅ Internal published-form fetch for `/{formKey}/fill` and `/{formKey}/embed` (`server/routes/_ssr/public-forms/[key].get.ts`), only with the server-only internal token header `x-formalie-internal`

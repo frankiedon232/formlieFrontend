@@ -114,6 +114,8 @@ fmly\Scripts\celery.exe -A app.workers.celery_app flower --address=127.0.0.1 --p
 
 (`-E` sends task events, so Flower shows each task. Redis from Ubuntu without an app: `redis-cli --scan --pattern 'fm:v1:*'` lists Formalie's keys.)
 
+Once the platform admin publishes to Formalie (B16), also run its consumer, which drops Formalie's caches when the platform writes global tables: `fmly\Scripts\python.exe -m app.modules.platform_bridge.consumer`. Without it, those caches expire within 10 minutes (or the platform calls `/internal/admin/v1/cache/invalidate`).
+
 ### 3. Locations for the request log (MaxMind GeoLite2)
 
 1. Create a free account at maxmind.com, then make a license key (GeoLite2).

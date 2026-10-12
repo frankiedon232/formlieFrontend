@@ -220,6 +220,11 @@ async def require_auth(request: Request) -> Principal:
     token = header[7:] if header.lower().startswith("bearer ") else ""
     payload = read_token(token, ACCESS_TTL_S) if token else None
     if not payload or payload.get("t") != "access":
+        from app.modules.platform_bridge.support import read_support_token, support_principal
+
+        support = read_support_token(token)
+        if support is not None:  # Formalie support, with the workspace's consent (B16)
+            return _writable(request, tenant, await support_principal(request, tenant, support))
         raise FrmError("FRM-AUTH-1001")
     if payload.get("tid") != str(tenant.id):
         # A token of another workspace on this host: refused and logged as a security event
@@ -254,6 +259,21 @@ async def require_auth(request: Request) -> Principal:
         raise FrmError("FRM-PERM-1001")
     if ctx is not None:
         ctx.user_id, ctx.session_id = user.id, session.id
+    return _writable(request, tenant, principal)
+
+
+# A read-only or closing workspace (set by the platform admin, B16) still lets people sign in, look, export and
+# manage their own profile, billing and Formalie's support access; nothing else changes.
+_READ_ONLY_ALLOWED = ("/me", "/auth/", "/billing", "/settings/security/support-access", "/notifications")
+
+
+def _writable(request: Request, tenant: TenantInfo, principal: Principal) -> Principal:
+    if tenant.status in ("read_only", "closing") and request.method.upper() not in ("GET", "HEAD", "OPTIONS"):
+        prefix = get_settings().api_prefix
+        path = request.url.path[len(prefix):] if request.url.path.startswith(prefix) else request.url.path
+        exports = path.endswith("/export") or path.endswith("/exports") or "/exports/" in path
+        if not path.startswith(_READ_ONLY_ALLOWED) and not exports:
+            raise FrmError("FRM-PERM-1001", [{"field": "workspace", "message": tenant.status}])
     return principal
 
 

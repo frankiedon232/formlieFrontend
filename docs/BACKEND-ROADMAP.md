@@ -109,9 +109,9 @@ Then stop for the owner's review. Day-to-day status lives in `PROGRESS.md`.
 - ⬜ Plans, preview, change, cancel, resume, scheduled changes, invoices, billing settings, payment method.
 - ⬜ Payoneer checkout, the signed webhook, every rule in SECURITY-PROTOCOL §11, daily reconciliation. Plan limits enforced across all modules.
 
-## B16, Platform admin bridge ⬜
+## B16, Platform admin bridge ✅
 
-- ⬜ Everything in PLATFORM-ADMIN-INTEGRATION.md §5: DB roles, global tables (announcements, feature flags, platform settings, help, default data) with cache invalidation, the internal admin API (mTLS, HMAC, idempotency), support access with consent, events, health.
+- ✅ Everything in PLATFORM-ADMIN-INTEGRATION.md §5: DB roles, global tables (announcements, feature flags, platform settings, help, default data) with cache invalidation, the internal admin API (mTLS, HMAC, idempotency), support access with consent, events, health. Plans and the default catalogues are in their global tables; the portal reads plans from them with B15 and the default catalogues with B17.
 
 ## B17, Hardening and switch-over ⬜
 

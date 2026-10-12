@@ -5,6 +5,7 @@
 
 turns RLS on and FORCES it (so even the table owner obeys it), adds the isolation policy on tenant_id AND
 organisation_id, and grants `formalie_app` SELECT, INSERT, UPDATE: never DELETE (soft delete only, rule 6).
+`platform_reader` gets every column but secrets and answers (app/modules/platform_bridge/grants.py, B16).
 tests/db/test_rls.py fails if any table with a tenant_id column misses any of this.
 """
 
@@ -35,13 +36,16 @@ def enable_tenant_rls(
     *,
     app_privileges: str = "SELECT, INSERT, UPDATE",
 ) -> list[str]:
+    from app.modules.platform_bridge.grants import reader_sql
+
     name = _qualified(table, schema or get_settings().db_schema)
     return [
         f"ALTER TABLE {name} ENABLE ROW LEVEL SECURITY",
         f"ALTER TABLE {name} FORCE ROW LEVEL SECURITY",
         f"CREATE POLICY {table}_isolation ON {name} USING ({TENANT_MATCH}) WITH CHECK ({TENANT_MATCH})",
         f"GRANT {app_privileges} ON {name} TO {APP_ROLE}",
-        f"GRANT SELECT ON {name} TO {READONLY_ROLE}, {PLATFORM_READER_ROLE}",
+        f"GRANT SELECT ON {name} TO {READONLY_ROLE}",
+        reader_sql(name),  # platform_reader: every column but secrets and answers
     ]
 
 

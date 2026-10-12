@@ -31,11 +31,24 @@ class Actor:
     id: uuid.UUID | None
     name: str | None
     email: str | None
+    # Formalie staff acting through the platform admin (B16): their id and name, and the approval behind the action
+    staff_id: str | None = None
+    staff_name: str | None = None
+    approval_id: str | None = None
 
     @classmethod
     def user(cls, user: Any) -> Actor:
-        """actorOf(): a person with an account."""
+        """actorOf(): a person with an account (or Formalie support in a support session, B16)."""
+        support = getattr(user, "support_staff", None)
+        if support is not None:
+            return cls.support(support["staff_id"], support["staff_name"], support.get("approval_id"))
         return cls("user", user.id, f"{user.first_name} {user.last_name}".strip(), user.email)
+
+    @classmethod
+    def support(cls, staff_id: str | None, staff_name: str | None, approval_id: str | None = None) -> Actor:
+        """Formalie support (platform admin staff): shown as Formalie under the staff member's name."""
+        name = f"Formalie support ({staff_name})" if staff_name else "Formalie support"
+        return cls("platform_support", None, name, None, staff_id, staff_name, approval_id)
 
     @classmethod
     def anonymous(cls, email: str) -> Actor:
@@ -104,5 +117,12 @@ async def record(
         metadata_={k: str(v) for k, v in (metadata or {}).items()},
         reason=reason,
         request_id=ctx.trace_id if ctx else None,
+        staff_id=actor.staff_id,
+        staff_name=actor.staff_name,
+        approval_id=actor.approval_id,
     ))
+    from app.modules.platform_bridge.events import after_audit  # the platform's analytics event, if any (B16)
+
+    await after_audit(session, action=action, actor=actor, tenant_id=tenant_id, organisation_id=organisation_id,
+                      outcome=outcome, resource=resource, metadata=metadata, reason=reason)
     return entry_id

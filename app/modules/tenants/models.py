@@ -8,10 +8,12 @@ from __future__ import annotations
 
 import uuid
 from datetime import datetime
+from typing import Any
 
 from sqlalchemy import (
     Boolean, CheckConstraint, DateTime, ForeignKeyConstraint, Index, String, Text, Uuid, text,
 )
+from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.core.db.base import AuditMixin, Base, SoftDeleteMixin, TenantMixin, UuidPkMixin, tenant_table_args
@@ -37,6 +39,9 @@ class Tenant(UuidPkMixin, AuditMixin, SoftDeleteMixin, Base):
     data_region: Mapped[str] = mapped_column(String(20), nullable=False, server_default="default")
     plan_id: Mapped[str] = mapped_column(String(40), nullable=False, server_default="starter")
     setup_completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    # Set by the platform admin (B16): the trial's end, and limits that replace the plan's (enforced with B15)
+    trial_ends_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    plan_limits: Mapped[dict[str, Any] | None] = mapped_column(JSONB)
 
 
 class TenantSubdomainHistory(UuidPkMixin, Base):

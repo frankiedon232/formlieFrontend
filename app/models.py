@@ -24,6 +24,7 @@ def import_all_models() -> None:
     import app.modules.notifications.models  # noqa: F401
     import app.modules.org.models  # noqa: F401
     import app.modules.people.models  # noqa: F401
+    import app.modules.platform_bridge.models  # noqa: F401
     import app.modules.public.models  # noqa: F401
     import app.modules.responses.models  # noqa: F401
     import app.modules.settings.models  # noqa: F401
