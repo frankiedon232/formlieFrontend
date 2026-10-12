@@ -1172,6 +1172,10 @@ The backend (`formlyBackend`) is built in phases B0 to B17; its own tracker is `
 - ✅ Sign-in: a general hint under "Invalid email or password" where the workspace offers Google, Microsoft or Facebook (use that button, or set a password); the screen still says nothing about the account (owner 2026-10-12)
 - ✅ Backend: `GET /auth/signup/workspaces`, and the email to an account with no password when someone tries one (at most once an hour; wording in `emailDefaults` → `account.password_social`, 20 languages); built in formlyBackend 2026-10-12 with 3 tests (17381 pass)
 
+### SB M6, Going live ⬜
+
+- ⬜ Every line of `docs/PRODUCTION-CHECKLIST.md` done on the production servers (owner 2026-10-12: one list of everything that changes for production, in all five projects, walked through with the owner before going live)
+
 ### SB M5, Mock off for good ⬜
 
 - ⬜ Every area above ✅, every ENDPOINTS.md box ticked; `NUXT_PUBLIC_API_MOCK` kept only for offline work and tests
@@ -1401,6 +1405,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-10 | Review the backend project's day-one files (formlyBackend) against the finished frontend and update them before backend work starts; write straight into the backend folder |
 | 2026-10-12 | Switch the frontend to formlyBackend now for the areas it has built (B0 to B9); the owner tests; PROGRESS must show the breakdown of what is done and what is left |
 | 2026-10-12 | Sign-up: warn when the email already has a workspace (open it, or create another). Password tried on an account made with Google, Microsoft or Facebook: a general hint on screen and an email to the real owner, nothing revealed to strangers |
+| 2026-10-12 | Document every change needed for production, for all projects, and remind the owner and instruct them before going live |
 
 ---
 

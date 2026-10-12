@@ -93,3 +93,7 @@ test/       vitest unit tests, mirroring source folders
 ## Code style
 
 TypeScript strict, `<script setup lang="ts">`, small components, composables for logic, descriptive names, no `any` without a comment. Keep components under ~250 lines; split otherwise.
+
+## Going live
+
+`docs/PRODUCTION-CHECKLIST.md` (the same file in all five Formalie projects) lists everything that changes for production. Whenever you add a setting, key, address or service that differs between development and production, add it there, in every project's copy. Before any production deployment, walk the owner through it.
