@@ -58,6 +58,8 @@ Same structure (`kid, iv, ts, nonce, ct`), encrypted with the session key. Clien
 - Access tokens can be revoked early via a session (`sid`) deny-list in Redis (logout, password change, admin reset).
 - Browser storage: access token in memory; refresh token in the `formalie_rt` cookie, `HttpOnly; Secure; SameSite=Strict`, scoped to the tenant subdomain, path `/api/v1/auth` (refresh and logout both need it; as the mock does).
 - Keys: `FERNET_KEYS` list (MultiFernet) to allow key rotation.
+- **Support token (B16):** Formalie support's session in a workspace, with the workspace's consent (Settings → Security → Formalie support access). Made by `POST /auth/support/redeem` from a one-time ticket (2 minutes, single use, kept as a hash) that the platform admin gets for an active consent; the ticket travels in the address's fragment (`/support#ticket=…`), never to a server log. Payload `{ t: support, sub, tid, oid, sid (the support session) }`; no refresh token; valid until the session ends (the consent's end or 60 minutes), checked on every call against the session and the consent, so turning the consent off ends it at once (`FRM-AUTH-1011`). It acts with the Owner's role, read only unless the consent and the session allow changes, never on the profile, the consent, privacy requests, single sign-on or secrets; every change is audited as Formalie support with the staff member's name.
+- **Internal admin API (B16):** `/internal/admin/v1`, outside the browser channel, for the platform admin only: private network, mutual TLS (Nginx checks the client certificate), HMAC-SHA256 signature over method, path, timestamp, nonce, body hash and the staff headers (5 minute window, nonce used once), idempotency keys. Details: PLATFORM-ADMIN-INTEGRATION §2.
 
 ## 6. CSRF
 
