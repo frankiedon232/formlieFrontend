@@ -4,7 +4,7 @@ Everything that is set for development and must change before Formalie goes live
 
 **Keep it current.** Whenever a project adds a setting, a key, an address or a service that differs between development and production, add a line here, in every project's copy (this file is shared and identical in formalieFrontend, formlyBackend, formalieSite, formaliePlatformFront and formaliePlatformBack).
 
-**Reminder.** Before any production deployment, walk the owner through this file from top to bottom. Each line gets ✅ once it's done on the production servers, never before.
+**Reminder.** Before any production deployment, walk the owner through this file from top to bottom. The step-by-step instructions (servers, Nginx, Cloudflare, building and deploying each project, first checks, later releases) are in [`DEPLOYMENT-GUIDE.md`](DEPLOYMENT-GUIDE.md). Each line gets ✅ once it's done on the production servers, never before.
 
 Marks: ⬜ to do · ✅ done in production · ⏸ waiting on a decision or an account.
 
