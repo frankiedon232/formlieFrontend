@@ -6,7 +6,7 @@
 
 | Part | Runs as | Notes |
 | --- | --- | --- |
-| Front end (`formaliePlatformFront`) | static files from `nuxt generate` (client-rendered SPA), served by Nginx | no Node process in production |
+| Front end (`formaliePlatformFront`) | static files from `nuxt generate` (client-rendered SPA), hosted on Cloudflare (owner, 2026-10-12; DEPLOYMENT-GUIDE Part 8c), behind Cloudflare Access | no Node process in production |
 | API (`formaliePlatformBack`) | `uvicorn --workers N` under **systemd**, behind Nginx | listens on `127.0.0.1:5601` (or a private address); stateless, add servers to scale |
 | Workers | `celery worker` per queue group under **systemd** | `ingest`, `rollups`, `publish`, `actions`, `reports`, `mail`, `maintenance` |
 | Scheduler | `celery beat` under **systemd**, exactly **one** running | |
