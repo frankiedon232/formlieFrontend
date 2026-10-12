@@ -67,3 +67,7 @@ Same as Formalie: `app/` with `components/{app,data,charts,analytics,workspaces,
 ## Done means
 
 Phone / tablet / desktop checked · keyboard only · light and dark · Arabic RTL · loading feedback complete · empty and error states · every string in 20 languages · matches `docs/design` · permissions followed everywhere · typecheck, lint, tests green · `PROGRESS.md` and docs updated · committed and pushed. Check every UI change in the browser yourself before reporting it.
+
+## Git
+
+This project is the branch `formaliePlatformFront` of https://github.com/frankiedon232/formlieFrontend (one branch per project, like `formalieFrontend` and `formalieBackend`). Commit and push there after each verified milestone: `git push origin formaliePlatformFront`.
