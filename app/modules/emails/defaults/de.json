@@ -27,6 +27,30 @@
     "daily_digest": {
       "subject": "Ihr Tag in {{workspace}}",
       "body": "Hallo {{name}},\n\nDas ist seit gestern passiert:\n\n{{summary}}\n\nFormalie öffnen: {{link}}"
+    },
+    "form_invitation": {
+      "subject": "{{workspace}} hat Sie eingeladen, {{form}} auszufüllen",
+      "body": "Hallo {{name}},\n\n{{workspace}} hat Sie eingeladen, {{form}} auszufüllen.\n\nFormular öffnen: {{link}}\n\nDieser Link ist persönlich. Bitte geben Sie ihn nicht weiter."
+    },
+    "respondent_code": {
+      "subject": "Ihr Code für {{form}}: {{code}}",
+      "body": "Geben Sie {{code}} im Formular ein, um Ihre E-Mail-Adresse zu bestätigen. Er gilt {{minutes}} Minuten.\n\nWenn Sie ihn nicht angefordert haben, können Sie diese E-Mail ignorieren."
+    },
+    "resume_link": {
+      "subject": "{{form}} fortsetzen",
+      "body": "Ihre Antworten zu {{form}} sind gespeichert.\n\nMachen Sie dort weiter, wo Sie aufgehört haben: {{link}}\n\nDer Link gilt {{days}} Tage. Wer ihn hat, sieht Ihre gespeicherten Antworten, also behalten Sie ihn für sich."
+    },
+    "account_activation": {
+      "subject": "Aktivieren Sie Ihr Konto bei {{workspace}}",
+      "body": "Hallo {{name}},\n\n{{inviter}} hat Ihr Profil bei {{workspace}} angelegt. Öffnen Sie innerhalb von {{days}} Tagen diesen Link, wählen Sie Ihr Passwort und melden Sie sich an: {{link}}"
+    },
+    "account_approved": {
+      "subject": "Sie können sich bei {{workspace}} anmelden",
+      "body": "Hallo {{name}},\n\n{{inviter}} hat Ihr Konto bei {{workspace}} freigegeben. Melden Sie sich mit Ihrer E-Mail-Adresse und Ihrem Passwort an: {{link}}"
+    },
+    "account_rejected": {
+      "subject": "Ihre Anfrage, {{workspace}} beizutreten",
+      "body": "Hallo {{name}},\n\nIhre Anfrage, {{workspace}} beizutreten, wurde nicht genehmigt.\n\n{{reason}}\n\nWenn Sie das für einen Fehler halten, fragen Sie die Person, die Ihnen den Link geschickt hat."
     }
   },
   "events": {

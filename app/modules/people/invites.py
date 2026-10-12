@@ -141,10 +141,8 @@ async def _mail(db: Any, principal: Principal, user: User, link: str) -> None:
     tenant, by = principal.tenant, service.name_of(principal.user)
     language = await _language(db, tenant.id)
     if user.status == "not_activated":
-        emails.send(user.email, "notification", language, {
-            "title": f"Activate your account at {tenant.name}", "workspace": tenant.name, "link": link,
-            "message": f"{by} made your profile at {tenant.name}. Open the link within {DAYS} days to choose your "
-                       "password, then sign in."})
+        emails.send(user.email, "account_activation", language, {"name": user.first_name or user.email, "inviter": by,
+                                                                  "workspace": tenant.name, "link": link, "days": DAYS})
     else:
         emails.send(user.email, "invitation", language, {"name": user.first_name or user.email, "inviter": by,
                                                          "workspace": tenant.name, "link": link})
@@ -355,10 +353,9 @@ async def approve_person(person_id: str, request: Request, principal: Principal 
             await Manager(db, principal).set_manager(user, body["manager_id"])
         await _join_org(db, principal, user, body.get("department_ids") or [], body.get("job_title_ids") or [])
         ctx = get_context()
-        emails.send(user.email, "notification", await _language(db, tenant.id), {
-            "title": f"You can sign in to {tenant.name}", "workspace": tenant.name,
-            "message": f"{service.name_of(principal.user)} approved your account. Sign in with your email address and "
-                       "password.", "link": f"https://{(ctx.host if ctx else '') or ''}/auth/login"})
+        emails.send(user.email, "account_approved", await _language(db, tenant.id), {
+            "name": user.first_name or user.email, "inviter": service.name_of(principal.user), "workspace": tenant.name,
+            "link": f"https://{(ctx.host if ctx else '') or ''}/auth/login"})
         await _audit(db, principal, "users.approved", user, {"role": role_key(role)})
         await db.flush()
         return ok(await service.detail_of(db, tenant.id, user.id))
@@ -373,10 +370,8 @@ async def reject_person(person_id: str, request: Request, principal: Principal =
         user = await _pending(db, tenant.id, person_id)
         await _remove(db, principal, user)
         reason = body.get("reason")
-        emails.send(user.email, "notification", await _language(db, tenant.id), {
-            "title": f"Your request to join {tenant.name}", "workspace": tenant.name, "link": "",
-            "message": f"It was not approved: {reason}" if reason else
-                       "It was not approved. Ask the person who sent you the link if you think this is a mistake."})
+        emails.send(user.email, "account_rejected", await _language(db, tenant.id), {
+            "name": user.first_name or user.email, "workspace": tenant.name, "reason": reason or ""})
         await _audit(db, principal, "users.rejected", user, {"reason": reason} if reason else {})
         return ok({"id": str(user.id)})
 

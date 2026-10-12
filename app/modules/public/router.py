@@ -233,11 +233,8 @@ async def send_verification(key: str, request: Request) -> Any:
         db.add(RespondentVerification(tenant_id=tenant.id, organisation_id=tenant.organisation_id, form_id=form.id,
                                       email_hash=_sha(email), code_hash=_sha(f"{form.id}:{email}:{code}"),
                                       expires_at=now + timedelta(seconds=VERIFY_TTL_S)))
-        emails.send(email, "notification", rules.main_language(schema), {
-            "title": f"Your code for {form.name}: {code}", "workspace": tenant.name,
-            "link": urls.form_link(tenant.subdomain, form.custom_link or form.public_key),
-            "message": f"Enter {code} on the form to confirm your email. It works for {VERIFY_TTL_S // 60} minutes. "
-                       "If you didn't ask for it, you can ignore this email."})
+        emails.send(email, "respondent_code", rules.main_language(schema), {
+            "code": code, "minutes": VERIFY_TTL_S // 60, "form": form.name, "workspace": tenant.name})
         dev = {} if get_settings().is_production else {"dev_code": code}
         return ok({"sent_to": rules.mask_email(email), "expires_in": VERIFY_TTL_S}, dev)
 
@@ -308,10 +305,8 @@ def _resume_link(form: Form, tenant: Any, token: str) -> str:
 
 
 def _send_resume(tenant: Any, form: Form, email: str, link: str, language: str) -> None:
-    emails.send(email, "notification", language, {
-        "title": f"Continue {form.name}", "workspace": tenant.name, "link": link,
-        "message": f"Your answers to {form.name} are saved. Open the link to carry on where you left off "
-                   f"(it works for {RESUME_DAYS} days)."})
+    emails.send(email, "resume_link", language, {"form": form.name, "link": link, "days": RESUME_DAYS,
+                                                  "workspace": tenant.name})
 
 
 @router.post("/public/forms/{key}/sessions", status_code=201, dependencies=[rate_limit("public-drafts", per_minute=30)])

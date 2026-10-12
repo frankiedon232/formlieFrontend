@@ -27,6 +27,30 @@
     "daily_digest": {
       "subject": "你在 {{workspace}} 的一天",
       "body": "{{name}},你好:\n\n以下是自昨天以来发生的事:\n\n{{summary}}\n\n打开 Formalie:{{link}}"
+    },
+    "form_invitation": {
+      "subject": "{{workspace}} 邀请您填写 {{form}}",
+      "body": "{{name}}，您好：\n\n{{workspace}} 邀请您填写 {{form}}。\n\n打开表单：{{link}}\n\n此链接仅供您个人使用，请勿分享。"
+    },
+    "respondent_code": {
+      "subject": "您的 {{form}} 验证码：{{code}}",
+      "body": "请在表单中输入 {{code}} 以确认您的邮箱地址。验证码 {{minutes}} 分钟内有效。\n\n如果不是您本人请求，请忽略此邮件。"
+    },
+    "resume_link": {
+      "subject": "继续填写 {{form}}",
+      "body": "您在 {{form}} 中的回答已保存。\n\n从上次离开的地方继续：{{link}}\n\n链接 {{days}} 天内有效。任何拿到链接的人都能看到您保存的回答，请妥善保管。"
+    },
+    "account_activation": {
+      "subject": "激活您在 {{workspace}} 的账户",
+      "body": "{{name}}，您好：\n\n{{inviter}} 已在 {{workspace}} 为您创建了个人资料。请在 {{days}} 天内打开此链接设置密码，然后登录：{{link}}"
+    },
+    "account_approved": {
+      "subject": "您现在可以登录 {{workspace}}",
+      "body": "{{name}}，您好：\n\n{{inviter}} 已批准您在 {{workspace}} 的账户。请使用您的邮箱地址和密码登录：{{link}}"
+    },
+    "account_rejected": {
+      "subject": "您加入 {{workspace}} 的申请",
+      "body": "{{name}}，您好：\n\n您加入 {{workspace}} 的申请未获批准。\n\n{{reason}}\n\n如果您认为这是误会，请联系向您发送链接的人。"
     }
   },
   "events": {

@@ -82,10 +82,8 @@ def _dev(links: list[dict[str, str]]) -> dict[str, Any]:
 async def _send(db: Any, principal: Principal, form: Form, email: str, name: str | None, link: str) -> None:
     tenant = principal.tenant
     language = (await get_section(db, tenant.id, "localisation")).get("language") or "en"
-    emails.send(email, "notification", language, {
-        "title": f"{tenant.name} invited you to fill in {form.name}", "workspace": tenant.name, "link": link,
-        "message": f"Hello {name or email},\n\n{tenant.name} invited you to fill in {form.name}. "
-                   "The link below is personal: please don't share it."})
+    emails.send(email, "form_invitation", language, {"name": name or email, "form": form.name,
+                                                      "workspace": tenant.name, "link": link})
 
 
 async def _form(db: Any, principal: Principal, form_id: str, action: str) -> Any:

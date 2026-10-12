@@ -27,6 +27,30 @@
     "daily_digest": {
       "subject": "La tua giornata in {{workspace}}",
       "body": "Ciao {{name}},\n\nEcco cosa è successo da ieri:\n\n{{summary}}\n\nApri Formalie: {{link}}"
+    },
+    "form_invitation": {
+      "subject": "{{workspace}} ti ha invitato a compilare {{form}}",
+      "body": "Ciao {{name}},\n\n{{workspace}} ti ha invitato a compilare {{form}}.\n\nApri il modulo: {{link}}\n\nQuesto link è personale. Per favore non condividerlo."
+    },
+    "respondent_code": {
+      "subject": "Il tuo codice per {{form}}: {{code}}",
+      "body": "Inserisci {{code}} nel modulo per confermare il tuo indirizzo email. Vale {{minutes}} minuti.\n\nSe non l'hai richiesto, puoi ignorare questa email."
+    },
+    "resume_link": {
+      "subject": "Continua {{form}}",
+      "body": "Le tue risposte a {{form}} sono salvate.\n\nRiprendi da dove avevi lasciato: {{link}}\n\nIl link vale {{days}} giorni. Chiunque lo abbia può vedere le tue risposte salvate, quindi tienilo per te."
+    },
+    "account_activation": {
+      "subject": "Attiva il tuo account in {{workspace}}",
+      "body": "Ciao {{name}},\n\n{{inviter}} ha creato il tuo profilo in {{workspace}}. Entro {{days}} giorni apri questo link per scegliere la password, poi accedi: {{link}}"
+    },
+    "account_approved": {
+      "subject": "Puoi accedere a {{workspace}}",
+      "body": "Ciao {{name}},\n\n{{inviter}} ha approvato il tuo account in {{workspace}}. Accedi con il tuo indirizzo email e la tua password: {{link}}"
+    },
+    "account_rejected": {
+      "subject": "La tua richiesta di unirti a {{workspace}}",
+      "body": "Ciao {{name}},\n\nLa tua richiesta di unirti a {{workspace}} non è stata approvata.\n\n{{reason}}\n\nSe pensi che sia un errore, chiedi alla persona che ti ha inviato il link."
     }
   },
   "events": {

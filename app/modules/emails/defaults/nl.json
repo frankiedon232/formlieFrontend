@@ -27,6 +27,30 @@
     "daily_digest": {
       "subject": "Je dag in {{workspace}}",
       "body": "Hallo {{name}},\n\nDit is er sinds gisteren gebeurd:\n\n{{summary}}\n\nOpen Formalie: {{link}}"
+    },
+    "form_invitation": {
+      "subject": "{{workspace}} nodigt je uit om {{form}} in te vullen",
+      "body": "Hallo {{name}},\n\n{{workspace}} nodigt je uit om {{form}} in te vullen.\n\nOpen het formulier: {{link}}\n\nDeze link is persoonlijk. Deel hem alsjeblieft niet."
+    },
+    "respondent_code": {
+      "subject": "Je code voor {{form}}: {{code}}",
+      "body": "Vul {{code}} in op het formulier om je e-mailadres te bevestigen. De code werkt {{minutes}} minuten.\n\nHeb je hem niet aangevraagd, dan kun je deze e-mail negeren."
+    },
+    "resume_link": {
+      "subject": "Ga verder met {{form}}",
+      "body": "Je antwoorden op {{form}} zijn bewaard.\n\nGa verder waar je gebleven was: {{link}}\n\nDe link werkt {{days}} dagen. Iedereen met de link kan je bewaarde antwoorden zien, dus houd hem voor jezelf."
+    },
+    "account_activation": {
+      "subject": "Activeer je account bij {{workspace}}",
+      "body": "Hallo {{name}},\n\n{{inviter}} heeft je profiel bij {{workspace}} aangemaakt. Open binnen {{days}} dagen deze link om je wachtwoord te kiezen en meld je daarna aan: {{link}}"
+    },
+    "account_approved": {
+      "subject": "Je kunt je aanmelden bij {{workspace}}",
+      "body": "Hallo {{name}},\n\n{{inviter}} heeft je account bij {{workspace}} goedgekeurd. Meld je aan met je e-mailadres en wachtwoord: {{link}}"
+    },
+    "account_rejected": {
+      "subject": "Je verzoek om lid te worden van {{workspace}}",
+      "body": "Hallo {{name}},\n\nJe verzoek om lid te worden van {{workspace}} is niet goedgekeurd.\n\n{{reason}}\n\nDenk je dat dit een vergissing is, vraag het dan aan de persoon die je de link stuurde."
     }
   },
   "events": {

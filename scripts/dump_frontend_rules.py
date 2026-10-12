@@ -86,7 +86,8 @@ def endpoint_routes() -> list[list[str]]:
     """Every method + path of docs/ENDPOINTS.md (without /api/v1), params filled with sample values."""
     routes: list[list[str]] = []
     for line in (ROOT / "docs" / "ENDPOINTS.md").read_text(encoding="utf-8").splitlines():
-        m = re.match(r"^- \[[ x]\] `(GET|POST|PUT|PATCH|DELETE) /api/v1(/[^`]*)`", line)
+        # Marked ✅ / ⬜ like the frontend's PROGRESS (2026-10-12); the old [x] / [ ] boxes still read
+        m = re.match(r"^- (?:\[[ x]\]|✅|⬜) `(GET|POST|PUT|PATCH|DELETE) /api/v1(/[^`]*)`", line)
         if m:
             path = re.sub(r"\{[^}]+\}", "Xb7QmV2kP0aZr9LwE4tYh1sN3cU", m.group(2))
             routes.append([m.group(1), path])

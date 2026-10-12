@@ -27,6 +27,30 @@
     "daily_digest": {
       "subject": "Siku yako katika {{workspace}}",
       "body": "Habari {{name}},\n\nHaya ndiyo yaliyotokea tangu jana:\n\n{{summary}}\n\nFungua Formalie: {{link}}"
+    },
+    "form_invitation": {
+      "subject": "{{workspace}} imekualika ujaze {{form}}",
+      "body": "Habari {{name}},\n\n{{workspace}} imekualika ujaze {{form}}.\n\nFungua fomu: {{link}}\n\nKiungo hiki ni chako binafsi. Tafadhali usikishiriki."
+    },
+    "respondent_code": {
+      "subject": "Msimbo wako wa {{form}}: {{code}}",
+      "body": "Weka {{code}} kwenye fomu ili kuthibitisha anwani yako ya barua pepe. Unafanya kazi kwa dakika {{minutes}}.\n\nIkiwa hukuuomba, unaweza kupuuza barua pepe hii."
+    },
+    "resume_link": {
+      "subject": "Endelea na {{form}}",
+      "body": "Majibu yako ya {{form}} yamehifadhiwa.\n\nEndelea ulipoishia: {{link}}\n\nKiungo kinafanya kazi kwa siku {{days}}. Yeyote mwenye kiungo anaweza kuona majibu yako yaliyohifadhiwa, kwa hivyo kiweke kwako."
+    },
+    "account_activation": {
+      "subject": "Washa akaunti yako kwenye {{workspace}}",
+      "body": "Habari {{name}},\n\n{{inviter}} ameunda wasifu wako kwenye {{workspace}}. Ndani ya siku {{days}}, fungua kiungo hiki uchague nenosiri, kisha uingie: {{link}}"
+    },
+    "account_approved": {
+      "subject": "Unaweza kuingia kwenye {{workspace}}",
+      "body": "Habari {{name}},\n\n{{inviter}} ameidhinisha akaunti yako kwenye {{workspace}}. Ingia kwa anwani yako ya barua pepe na nenosiri: {{link}}"
+    },
+    "account_rejected": {
+      "subject": "Ombi lako la kujiunga na {{workspace}}",
+      "body": "Habari {{name}},\n\nOmbi lako la kujiunga na {{workspace}} halikuidhinishwa.\n\n{{reason}}\n\nUkidhani ni kosa, muulize aliyekutumia kiungo."
     }
   },
   "events": {

@@ -27,6 +27,30 @@
     "daily_digest": {
       "subject": "{{workspace}} の今日の動き",
       "body": "{{name}} さん、こんにちは。\n\n昨日からの出来事です:\n\n{{summary}}\n\nFormalie を開く: {{link}}"
+    },
+    "form_invitation": {
+      "subject": "{{workspace}} から {{form}} への記入の招待が届いています",
+      "body": "{{name}} さん\n\n{{workspace}} から {{form}} への記入の招待が届いています。\n\nフォームを開く: {{link}}\n\nこのリンクはあなた専用です。共有しないでください。"
+    },
+    "respondent_code": {
+      "subject": "{{form}} の確認コード: {{code}}",
+      "body": "メールアドレスを確認するため、フォームに {{code}} を入力してください。有効期間は {{minutes}} 分です。\n\n心当たりがない場合は、このメールを無視してください。"
+    },
+    "resume_link": {
+      "subject": "{{form}} の続きを入力する",
+      "body": "{{form}} への回答は保存されています。\n\n中断したところから続けられます: {{link}}\n\nリンクの有効期間は {{days}} 日です。リンクを持っている人は保存された回答を見られるため、他の人に教えないでください。"
+    },
+    "account_activation": {
+      "subject": "{{workspace}} のアカウントを有効にしてください",
+      "body": "{{name}} さん\n\n{{inviter}} さんが {{workspace}} にあなたのプロフィールを作成しました。{{days}} 日以内にこのリンクを開いてパスワードを設定し、サインインしてください: {{link}}"
+    },
+    "account_approved": {
+      "subject": "{{workspace}} にサインインできるようになりました",
+      "body": "{{name}} さん\n\n{{inviter}} さんが {{workspace}} のあなたのアカウントを承認しました。メールアドレスとパスワードでサインインしてください: {{link}}"
+    },
+    "account_rejected": {
+      "subject": "{{workspace}} への参加リクエストについて",
+      "body": "{{name}} さん\n\n{{workspace}} への参加リクエストは承認されませんでした。\n\n{{reason}}\n\n誤りだと思われる場合は、リンクを送ってきた方にお問い合わせください。"
     }
   },
   "events": {

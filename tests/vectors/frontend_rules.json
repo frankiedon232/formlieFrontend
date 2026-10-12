@@ -1283,6 +1283,11 @@
    null
   ],
   [
+   "GET",
+   "/auth/signup/workspaces",
+   null
+  ],
+  [
    "POST",
    "/auth/signup/complete",
    null

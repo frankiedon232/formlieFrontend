@@ -27,6 +27,30 @@
     "daily_digest": {
       "subject": "Hari Anda di {{workspace}}",
       "body": "Halo {{name}},\n\nBerikut yang terjadi sejak kemarin:\n\n{{summary}}\n\nBuka Formalie: {{link}}"
+    },
+    "form_invitation": {
+      "subject": "{{workspace}} mengundang Anda mengisi {{form}}",
+      "body": "Halo {{name}},\n\n{{workspace}} mengundang Anda mengisi {{form}}.\n\nBuka formulir: {{link}}\n\nTautan ini bersifat pribadi. Mohon jangan dibagikan."
+    },
+    "respondent_code": {
+      "subject": "Kode Anda untuk {{form}}: {{code}}",
+      "body": "Masukkan {{code}} pada formulir untuk mengonfirmasi alamat email Anda. Kode berlaku {{minutes}} menit.\n\nJika Anda tidak memintanya, abaikan email ini."
+    },
+    "resume_link": {
+      "subject": "Lanjutkan {{form}}",
+      "body": "Jawaban Anda untuk {{form}} sudah tersimpan.\n\nLanjutkan dari tempat terakhir: {{link}}\n\nTautan berlaku {{days}} hari. Siapa pun yang memilikinya dapat melihat jawaban tersimpan Anda, jadi simpan untuk diri sendiri."
+    },
+    "account_activation": {
+      "subject": "Aktifkan akun Anda di {{workspace}}",
+      "body": "Halo {{name}},\n\n{{inviter}} membuat profil Anda di {{workspace}}. Dalam {{days}} hari, buka tautan ini untuk memilih kata sandi, lalu masuk: {{link}}"
+    },
+    "account_approved": {
+      "subject": "Anda dapat masuk ke {{workspace}}",
+      "body": "Halo {{name}},\n\n{{inviter}} menyetujui akun Anda di {{workspace}}. Masuk dengan alamat email dan kata sandi Anda: {{link}}"
+    },
+    "account_rejected": {
+      "subject": "Permintaan Anda untuk bergabung dengan {{workspace}}",
+      "body": "Halo {{name}},\n\nPermintaan Anda untuk bergabung dengan {{workspace}} tidak disetujui.\n\n{{reason}}\n\nJika menurut Anda ini keliru, tanyakan kepada orang yang mengirimkan tautan kepada Anda."
     }
   },
   "events": {

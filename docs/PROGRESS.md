@@ -218,11 +218,11 @@ Each item is ticked here and in BACKEND-ROADMAP.md when done; the endpoint count
 - ~~**Shared docs:** changed here, needed in the frontend too.~~ Done 2026-10-12: all eight shared docs are identical in both projects.
 - **Request bodies for the platform admin:** `platform_reader` reads every request-log column except the bodies (answers may be in them, PLATFORM-ADMIN-INTEGRATION §1). Say if the platform should read bodies too.
 - **File storage:** files are kept in a folder (`data/storage`) behind `app/core/storage.py`. Before going live they need object storage (S3 compatible: for example AWS S3, Cloudflare R2, or MinIO on our own servers). MinIO could not be installed in WSL (its download server answered 410). Which one?
-- **Onboarding website (frontend):** the onboarding step accepts any address zod's `z.url()` takes, including `javascript:` and `mailto:`. The backend accepts web addresses only (http, https) and answers `Invalid URL` otherwise; the frontend's check could match (Settings → Company already uses http / https only).
+- ~~**Onboarding website (frontend):** `javascript:` accepted.~~ Done 2026-10-12: http / https only.
 - **API docs page (`/docs`):** on in development only. Its "Try it out" can't call most routes (they only take encrypted requests). Options: protect the page with a username and password, or add a development-only helper that seals requests from it. Which one?
 - **SMS provider:** codes by text message need one (for example Twilio or Vonage) before workspaces can switch them on.
-- **Thank-you redirect (frontend):** the form schema's `thank_you.redirect_url` uses zod's `z.url()`, which also takes `javascript:`. The backend takes web addresses only (http, https); the frontend's check could match.
-- **Emails for respondents:** the frontend has no email templates for a form invitation, a respondent's email code or a "continue later" link. The backend sends them with the generic `notification` template and English wording for now. Should these become their own templates (20 languages, editable in Settings → Emails)?
+- ~~**Thank-you redirect (frontend):** `javascript:` accepted.~~ Done 2026-10-12: http / https only.
+- ~~**Emails for respondents:** their own templates?~~ Done 2026-10-12: six own templates (respondents and people), 20 languages, editable in Settings → Emails.
 - **Switch-over, social sign-in click-through (2026-10-11):** the three providers are set up and the backend sends each button to its provider (checked). With the frontend's `NUXT_PUBLIC_API_MOCK=false`, the sign-up page stayed on its loading screen and never called the backend; to look into at the switch-over, then click through Google, Microsoft and Facebook. The frontend stays on the mock until then.
 - ~~**Switch-over:** `NUXT_INTERNAL_TOKEN` in the frontend equal to `INTERNAL_TOKEN`.~~ Done 2026-10-12.
 - **IP addresses on responses** are stored as they arrive; DATABASE-DESIGN says "masked per settings", but no setting exists yet. Mask them always (last part removed), or add a privacy setting?
@@ -230,6 +230,8 @@ Each item is ticked here and in BACKEND-ROADMAP.md when done; the endpoint count
 - **CLAUDE.md layout** still names `api_keys/` and `option_sets/`; the product now has API tokens (`/api-tokens`) and option lists (`/option-lists`).
 
 ## Log
+
+- **2026-10-12:** Every email has its own template (owner): `form_invitation`, `respondent_code`, `resume_link`, `account_activation`, `account_approved`, `account_rejected` replace the generic `notification` with English text; texts synced from the frontend (20 languages), catalogues regenerated, test `tests/core/test_email_templates.py` (every template in every language, no placeholder left). `scripts/dump_frontend_rules.py` reads the ✅ / ⬜ marks in ENDPOINTS.md (it had found only 7 routes after the marks change; 409 again). 17,643 tests.
 
 - **2026-10-12:** Sign-up and sign-in, owner's requests: `GET /auth/signup/workspaces` (a verified sign-up email's existing workspaces, manage.* only, never before verification) and an email to an account with no password when someone tries one (the same `401 FRM-AUTH-1002` on screen; at most once an hour; texts in the frontend's `emailDefaults` → `account.password_social`, 20 languages, synced). 3 new tests; 17381 pass.
 
