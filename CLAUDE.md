@@ -55,3 +55,7 @@ Tests for services, routes (through the envelope), permissions (every route × r
 ## Git
 
 This project is the branch `formaliePlatformBack` of https://github.com/frankiedon232/formlieFrontend (one branch per project, like `formalieFrontend` and `formalieBackend`). Commit and push there after each verified milestone: `git push origin formaliePlatformBack`.
+
+## Going live
+
+`docs/PRODUCTION-CHECKLIST.md` (the same file in all five Formalie projects) lists everything that changes for production. Whenever you add a setting, key, address or service that differs between development and production, add it there, in every project's copy. Before any production deployment, walk the owner through it.
