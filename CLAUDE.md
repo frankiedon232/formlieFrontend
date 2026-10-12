@@ -19,7 +19,7 @@ The platform admin (`formaliePlatformFront` + `formaliePlatformBack`) and the we
 
 ## Stack (fixed)
 
-Python 3.11 · FastAPI · Pydantic v2 + pydantic-settings · SQLAlchemy 2.0 async (asyncpg) · Alembic · PostgreSQL 16 (primary + read replicas, PgBouncer) · Redis 7 (`redis.asyncio`) · Celery 5 + RabbitMQ · cryptography (Fernet/MultiFernet, ECDH, AES-GCM, HKDF) · argon2-cffi · pyotp · Authlib (OAuth/OIDC) · geoip2 · openpyxl/xlsxwriter · structlog or std logging · pytest + httpx + pytest-asyncio.
+Python 3.11 · FastAPI · Pydantic v2 + pydantic-settings · SQLAlchemy 2.0 async (asyncpg) · Alembic · PostgreSQL 16 (primary + read replicas, PgBouncer) · Redis 7 (`redis.asyncio`) · Celery 5 + RabbitMQ · cryptography (Fernet/MultiFernet, ECDH, AES-GCM, HKDF) · argon2-cffi · pyotp · Authlib (OAuth/OIDC) · geoip2 · openpyxl/xlsxwriter · structlog or std logging · pytest + httpx + pytest-asyncio. Owner-approved additions (2026-10-12): `python3-saml` (with `xmlsec`) for SAML single sign-on (B11), and Anthropic's `anthropic` SDK for the AI assistant (B13).
 
 Entry point: `uvicorn app.run:app --host 0.0.0.0 --port 5004 --ssl-certfile ... --ssl-keyfile ...` (venv `fmly`). Dev URL `https://formalie.dev:5004` (docs at `/docs`, `/redoc`; disable both in production or protect them). Development services run directly on the machine, **no Docker** (owner, 2026-10-10; see 02-DEV-ENVIRONMENT).
 
