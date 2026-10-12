@@ -8,6 +8,8 @@ The platform admin reads Formalie through its read replica, changes Formalie thr
 
 - On Formalie's **read replica** only. `SELECT` on every table the platform lists or analyses (tenants, organisations, users, memberships, roles, sessions, sign-in attempts, forms, form versions (metadata only), responses (counts and timestamps, **not answers**), files (sizes only), data source connections (metadata), API service objects (metadata), subscriptions, invoices, payments (processor references, amounts, status), audit logs, request logs, error logs, global tables).
 - `BYPASSRLS` on the replica (it reads across tenants), `statement_timeout = 15s`, `default_transaction_read_only = on`, connection limit.
+- **Request logs** (`formaly.request_logs`, BACKEND-SPEC §8.1): every request with headers, location, device and flags, for traffic analytics and investigations. The body columns (`request_body`, `request_body_text`, `response_body`) are excluded because answers can sit in them.
+- **Error logs** (`formaly.error_logs`, BACKEND-SPEC §8.3): warning, error and critical lines of every process with level, error code, security event, trace id, workspace, user, method, path, stack and context; search by `trace_id` to match a request log.
 - Column-level privileges exclude secrets (password hashes, TOTP secrets, recovery hashes, connection credentials, token hashes, webhook secrets) and answer content (`responses.data`, file contents).
 
 ### `platform_writer` (global tables only)
@@ -37,7 +39,7 @@ After writing, the platform publishes `platform.published { table, ids, version 
 | Method | Path | Does |
 | --- | --- | --- |
 | POST | `/tenants/{id}/suspend` · `/restore` | Suspend (reason shown to the workspace) or restore |
-| POST | `/tenants/{id}/subdomain` | Change subdomain (old one redirects for 30 days) |
+| POST | `/tenants/{id}/subdomain` | Change subdomain (old one keeps working for 90 days, 03-DECISIONS F14 M7) |
 | POST | `/tenants/{id}/read-only` · `/close` · `/cancel-close` | Read-only mode; close with a deletion date; undo |
 | POST | `/tenants/{id}/plan` | Change plan / limits / trial end (from the platform's subscription actions) |
 | POST | `/tenants/{id}/export` | Start a full data export for the workspace (download for the workspace owner) |
@@ -61,7 +63,7 @@ Formalie publishes on RabbitMQ exchange `formalie.events` (topic). The platform 
 
 | Routing key | When |
 | --- | --- |
-| `auth.signed_in` · `auth.sign_in_failed` · `auth.signed_out` · `auth.two_step_used` | Every sign-in attempt and result |
+| `auth.signed_in` · `auth.sign_in_failed` · `auth.signed_out` · `auth.two_step_used` | Every sign-in attempt and result. `properties.method`: `password`, `google`, `facebook` (social sign-in, Formalie's own apps; `microsoft` only in events before 2026-10-12), `sso` (the workspace's own single sign-on) or `signup_handoff` (first sign-in after creating a workspace) |
 | `session.page_viewed` | Portal page views (path template, not ids), for engagement |
 | `tenant.signed_up` · `tenant.setup_completed` · `tenant.suspended` · `tenant.closed` | Workspace lifecycle (sign-up with UTM source / referrer) |
 | `user.invited` · `user.joined` · `user.approved` · `user.disabled` | People |
@@ -76,10 +78,10 @@ Delivery: at least once; the platform deduplicates by `id`. Formalie keeps 7 day
 
 ## 5. Formalie tasks (add to Formalie's backend plan)
 
-- [ ] Database roles `platform_reader` (replica) and `platform_writer` (global tables) with the privileges above, created by migrations.
-- [ ] Global tables listed in §1, read by the portal with caching and invalidation on `platform.published`.
-- [ ] Internal admin API (§2) with mTLS, HMAC signing, idempotency and `platform_support` audit entries.
-- [ ] Support access consent in Settings → Security, support session tickets, banner (§3).
-- [ ] Event publishing on `formalie.events` (§4), personal data stripped.
-- [ ] Health endpoint for the operations module.
-- [ ] Portal screens read announcements, feature flags, platform settings and help articles from the global tables (most already exist as mocks: legal links, default lists).
+- ⬜ Database roles `platform_reader` (replica) and `platform_writer` (global tables) with the privileges above, created by migrations.
+- ⬜ Global tables listed in §1, read by the portal with caching and invalidation on `platform.published`.
+- ⬜ Internal admin API (§2) with mTLS, HMAC signing, idempotency and `platform_support` audit entries.
+- ⬜ Support access consent in Settings → Security, support session tickets, banner (§3).
+- ⬜ Event publishing on `formalie.events` (§4), personal data stripped.
+- ⬜ Health endpoint for the operations module.
+- ⬜ Portal screens read announcements, feature flags, platform settings and help articles from the global tables (most already exist as mocks: legal links, default lists).
