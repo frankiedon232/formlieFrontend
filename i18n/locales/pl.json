@@ -513,7 +513,8 @@
     "workspaceTitle": "Nie znaleziono obszaru roboczego",
     "workspaceDesc": "Pod adresem {host} nie ma obszaru roboczego. Sprawdź adres lub znajdź swój obszar.",
     "findWorkspace": "Znajdź mój obszar roboczy",
-    "workspaceSuspendedDesc": "Ten obszar roboczy jest wstrzymany. Skontaktuj się z administratorem lub pomocą."
+    "workspaceSuspendedDesc": "Ten obszar roboczy jest wstrzymany. Skontaktuj się z administratorem lub pomocą.",
+    "workspaceSuspendedReason": "Ten obszar roboczy jest wstrzymany. Powód: {reason}. Skontaktuj się z administratorem lub naszym zespołem wsparcia."
   },
   "errors": {
     "FRM-GEN-1001": "Nieprawidłowe żądanie.",
@@ -665,7 +666,13 @@
     "FRM-BILL-1002": "Ta sesja płatności wygasła. Zacznij od nowa.",
     "FRM-BILL-1004": "Dla tej przestrzeni roboczej trwa już inna zmiana rozliczeń. Spróbuj ponownie za chwilę.",
     "FRM-BILL-1005": "To żądanie zostało już użyte do czegoś innego. Odśwież stronę i spróbuj ponownie.",
-    "FRM-BILL-1006": "Nie udało się zweryfikować powiadomienia o płatności."
+    "FRM-BILL-1006": "Nie udało się zweryfikować powiadomienia o płatności.",
+    "detail": {
+      "supportReadOnly": "Ta sesja wsparcia jest tylko do odczytu, więc nic nie zostało zmienione.",
+      "notInSupportSessions": "Sesje wsparcia nie mogą otworzyć tej części obszaru roboczego.",
+      "workspaceReadOnly": "Ten obszar roboczy jest na razie tylko do odczytu. Nadal możesz przeglądać i eksportować.",
+      "workspaceClosing": "Ten obszar roboczy jest zamykany, więc nic nie można zmienić. Nadal możesz przeglądać i eksportować swoje dane."
+    }
   },
   "errorUi": {
     "reference": "Identyfikator: {id}",
@@ -8102,6 +8109,14 @@
       "security_alert": {
         "title": "Logowanie zablokowane",
         "message": "Logowanie użytkownika {email} zostało zablokowane: {reason}."
+      },
+      "support_request": {
+        "title": "Wsparcie Formalie prosi o dostęp",
+        "message": "{staff} prosi o dostęp ({mode}, {hours}). Zatwierdź lub odrzuć w Ustawienia → Bezpieczeństwo."
+      },
+      "platform_message": {
+        "title": "{title}",
+        "message": "{message}"
       }
     },
     "reason": {
@@ -9784,6 +9799,87 @@
       "updates": "te powiadomienia",
       "daily_digest": "dzienne podsumowanie",
       "form_invitation": "zaproszenia do formularzy"
+    }
+  },
+  "support": {
+    "banner": {
+      "region": "Komunikaty od Formalie",
+      "read": "Wsparcie Formalie ({name}) ma dostęp tylko do odczytu do {time}",
+      "write": "Wsparcie Formalie ({name}) może wprowadzać zmiany do {time}",
+      "left": "Pozostało {time} w tej sesji wsparcia",
+      "end": "Zakończ sesję"
+    },
+    "announcements": {
+      "dismiss": "Ukryj",
+      "more": "Czytaj więcej"
+    },
+    "page": {
+      "title": "Otwieranie sesji wsparcia",
+      "desc": "Sprawdzanie linku wsparcia…",
+      "invalid": "Tego linku wsparcia nie można użyć",
+      "invalidDesc": "Został już użyty, wygasł albo dostęp wyłączono. Pobierz nowy link w panelu administracyjnym platformy.",
+      "error": "Nie udało się rozpocząć sesji wsparcia",
+      "errorDesc": "Coś poszło nie tak po naszej stronie. Spróbuj użyć linku za chwilę.",
+      "ended": {
+        "off": "Obszar roboczy wyłączył dostęp wsparcia",
+        "time": "Sesja wsparcia dobiegła końca",
+        "signed_out": "Opuszczono sesję wsparcia"
+      },
+      "endedDesc": "Aby zajrzeć ponownie, rozpocznij nową sesję w panelu administracyjnym platformy."
+    },
+    "access": {
+      "title": "Dostęp wsparcia Formalie",
+      "hint": "Wpuść zespół Formalie na jakiś czas do swojego obszaru roboczego, aby pomógł z pytaniem lub problemem.",
+      "offExplain": "Wyłączony. Wsparcie Formalie nie widzi niczego w Twoim obszarze roboczym. Włącz go na jakiś czas, gdy prosisz nas o pomoc: widzimy to, co widzi Właściciel, wszystko, co robimy, trafia do dziennika audytu, a dostęp kończy się sam.",
+      "on": "Włączony",
+      "mode": {
+        "read": "Tylko odczyt",
+        "write": "Może zmieniać"
+      },
+      "modeHint": {
+        "read": "Wsparcie może przeglądać formularze, odpowiedzi i ustawienia, niczego nie zmieniając.",
+        "write": "Wsparcie może też coś dla Ciebie naprawić. Każda zmiana trafia do dziennika audytu."
+      },
+      "timeLeft": "Pozostały czas",
+      "grantedBy": "Włączył(a)",
+      "someone": "Administrator",
+      "ends": "Koniec",
+      "extend": "Przedłuż lub zmień",
+      "turnOff": "Wyłącz",
+      "turnOn": "Włącz",
+      "save": "Zapisz",
+      "howLong": "Na jak długo",
+      "howMuch": "Co może wsparcie",
+      "extendHint": "Dostęp skończy się za {time} od teraz. Już otwarta sesja wsparcia trwa dalej.",
+      "onHint": "Kończy się sam. Możesz go wyłączyć w każdej chwili, a każda otwarta sesja wsparcia od razu się kończy.",
+      "viewOnly": "Zmienić to mogą tylko osoby zarządzające ustawieniami.",
+      "failed": "Nie udało się wczytać dostępu wsparcia",
+      "requestGone": "Na tę prośbę już odpowiedziano lub wygasła",
+      "changed": "Zmieniono dostęp wsparcia",
+      "turnedOn": "Włączono dostęp wsparcia",
+      "turnedOff": "Wyłączono dostęp wsparcia",
+      "approved": "Zatwierdzono: {name} może teraz otworzyć sesję wsparcia",
+      "declined": "Prośbę odrzucono",
+      "offTitle": "Wyłączyć dostęp wsparcia?",
+      "offDesc": "Wsparcie Formalie nie otworzy Twojego obszaru roboczego, dopóki nie włączysz dostępu ponownie.",
+      "offDescLive": "Właśnie trwa sesja wsparcia. Skończy się od razu, a wsparcie nie wróci, dopóki nie włączysz dostępu ponownie.",
+      "requests": "Prośby od Formalie ({n})",
+      "asks": "{name} ze wsparcia Formalie prosi o dostęp",
+      "requestEnds": "wygasa {when}",
+      "decline": "Odrzuć",
+      "approve": "Zatwierdź",
+      "sessions": "Ostatnie sesje wsparcia",
+      "inAudit": "Dziennik audytu",
+      "noSessions": "Nie było jeszcze sesji wsparcia",
+      "noSessionsDesc": "Gdy wsparcie Formalie otworzy Twój obszar roboczy, pojawi się to tutaj.",
+      "live": "Trwa",
+      "endedReason": {
+        "signed_out": "opuszczona",
+        "expired": "czas minął",
+        "access_ended": "dostęp wyłączony",
+        "not_used": "link nieużyty"
+      },
+      "endedAt": "zakończona {when}"
     }
   }
 }

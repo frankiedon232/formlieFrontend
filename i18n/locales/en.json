@@ -513,7 +513,8 @@
     "workspaceTitle": "Workspace not found",
     "workspaceDesc": "There is no workspace at {host}. Check the address, or find your workspace.",
     "findWorkspace": "Find my workspace",
-    "workspaceSuspendedDesc": "This workspace is paused. Contact your administrator or our support team."
+    "workspaceSuspendedDesc": "This workspace is paused. Contact your administrator or our support team.",
+    "workspaceSuspendedReason": "This workspace is paused. Reason: {reason}. Contact your administrator or our support team."
   },
   "errors": {
     "FRM-GEN-1001": "Invalid request.",
@@ -665,7 +666,13 @@
     "FRM-BILL-1002": "This checkout has expired. Start again.",
     "FRM-BILL-1004": "Another billing change for this workspace is in progress. Try again in a moment.",
     "FRM-BILL-1005": "This request was already used for something else. Reload the page and try again.",
-    "FRM-BILL-1006": "The payment notification could not be verified."
+    "FRM-BILL-1006": "The payment notification could not be verified.",
+    "detail": {
+      "supportReadOnly": "This support session is read only, so nothing was changed.",
+      "notInSupportSessions": "Support sessions can't open this part of the workspace.",
+      "workspaceReadOnly": "This workspace is read only for now. You can still look and export.",
+      "workspaceClosing": "This workspace is closing, so nothing can be changed. You can still look and export your data."
+    }
   },
   "errorUi": {
     "reference": "Reference: {id}",
@@ -8102,6 +8109,14 @@
       "security_alert": {
         "title": "Sign-in blocked",
         "message": "A sign-in by {email} was blocked: {reason}."
+      },
+      "support_request": {
+        "title": "Formalie support asks for access",
+        "message": "{staff} asks for access ({mode}, {hours}). Approve or decline it in Settings → Security."
+      },
+      "platform_message": {
+        "title": "{title}",
+        "message": "{message}"
       }
     },
     "reason": {
@@ -9784,6 +9799,87 @@
       "updates": "these updates",
       "daily_digest": "the daily summary",
       "form_invitation": "form invitations"
+    }
+  },
+  "support": {
+    "banner": {
+      "region": "Notices from Formalie",
+      "read": "Formalie support ({name}) has read-only access until {time}",
+      "write": "Formalie support ({name}) can make changes until {time}",
+      "left": "{time} left in this support session",
+      "end": "End session"
+    },
+    "announcements": {
+      "dismiss": "Dismiss",
+      "more": "Read more"
+    },
+    "page": {
+      "title": "Opening the support session",
+      "desc": "Checking the support link…",
+      "invalid": "This support link can't be used",
+      "invalidDesc": "It was already used, it ran out, or access was turned off. Get a new link from the platform admin.",
+      "error": "The support session could not start",
+      "errorDesc": "Something went wrong on our side. Try the link again in a moment.",
+      "ended": {
+        "off": "The workspace turned support access off",
+        "time": "The support session has ended",
+        "signed_out": "You left the support session"
+      },
+      "endedDesc": "To look again, start a new session from the platform admin."
+    },
+    "access": {
+      "title": "Formalie support access",
+      "hint": "Let the Formalie team into your workspace for a while, to help with a question or a problem.",
+      "offExplain": "Off. Formalie support can't see anything in your workspace. Turn it on for a while when you ask us for help: we see what an Owner sees, everything we do is in the audit trail, and it ends by itself.",
+      "on": "On",
+      "mode": {
+        "read": "Read only",
+        "write": "Can make changes"
+      },
+      "modeHint": {
+        "read": "Support can look at forms, responses and settings, and changes nothing.",
+        "write": "Support can also fix things for you. Every change is in the audit trail."
+      },
+      "timeLeft": "Time left",
+      "grantedBy": "Turned on by",
+      "someone": "An admin",
+      "ends": "Ends",
+      "extend": "Extend or change",
+      "turnOff": "Turn off",
+      "turnOn": "Turn on",
+      "save": "Save",
+      "howLong": "For how long",
+      "howMuch": "What support may do",
+      "extendHint": "Access will end {time} from now. A support session that is already open goes on.",
+      "onHint": "It ends by itself. You can turn it off at any time, which ends any open support session at once.",
+      "viewOnly": "Only people who manage the settings can change this.",
+      "failed": "Support access could not be loaded",
+      "requestGone": "That request was already answered or has run out",
+      "changed": "Support access changed",
+      "turnedOn": "Support access turned on",
+      "turnedOff": "Support access turned off",
+      "approved": "Approved: {name} can now open a support session",
+      "declined": "Request declined",
+      "offTitle": "Turn off support access?",
+      "offDesc": "Formalie support won't be able to open your workspace until you turn it on again.",
+      "offDescLive": "A support session is open right now. It ends at once, and support can't come back until you turn access on again.",
+      "requests": "Requests from Formalie ({n})",
+      "asks": "{name} from Formalie support asks for access",
+      "requestEnds": "runs out {when}",
+      "decline": "Decline",
+      "approve": "Approve",
+      "sessions": "Recent support sessions",
+      "inAudit": "Audit trail",
+      "noSessions": "No support sessions yet",
+      "noSessionsDesc": "When Formalie support opens your workspace, it shows here.",
+      "live": "Live",
+      "endedReason": {
+        "signed_out": "left",
+        "expired": "time ran out",
+        "access_ended": "access turned off",
+        "not_used": "link not used"
+      },
+      "endedAt": "ended {when}"
     }
   }
 }

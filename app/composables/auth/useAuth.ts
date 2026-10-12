@@ -6,6 +6,7 @@ import type {
   SignupComplete,
   WorkspaceLink,
 } from '#shared/types/auth'
+import type { SupportRedeemResult } from '#shared/types/support'
 
 export type ChallengePurpose = 'login' | 'signup' | 'find' | 'reset'
 
@@ -138,6 +139,29 @@ export function useAuth() {
     restored = true
   }
 
+  /**
+   * Formalie support (B16): the one-time ticket from `/support#ticket=…` → a support session. Tokens stay
+   * in memory like any session; there is no refresh cookie, so a reload needs a new ticket.
+   */
+  async function redeemSupport(ticket: string) {
+    const { data } = await api.post<SupportRedeemResult>('/auth/support/redeem', { ticket })
+    session.applyTokens({ ...data, user: { ...data.user, support: true } })
+    restored = true
+    return data.support
+  }
+
+  /** The support person leaves: ends the session on the server, then locally. */
+  async function endSupport() {
+    try {
+      await api.post('/auth/support/end')
+    } finally {
+      session.clear()
+      useNavCounts().clear()
+      api.resetSecureSession()
+      restored = true
+    }
+  }
+
   async function findWorkspace(email: string) {
     const response = await api.post<LoginChallenge>('/tenants/find-workspace', { email })
     setPending('find', email, response)
@@ -181,6 +205,8 @@ export function useAuth() {
     completeSignup,
     resumeOAuth,
     exchangeTicket,
+    redeemSupport,
+    endSupport,
     findWorkspace,
     forgotPassword,
     resetPassword,

@@ -45,6 +45,8 @@ function getClient(): ApiClient {
     getExtraHeaders: (): Record<string, string> =>
       import.meta.dev && devTenant.value ? { 'x-formalie-dev-tenant': devTenant.value } : {},
     refreshAccessToken: async () => {
+      // A Formalie support session (B16) has no refresh cookie: when it ends, it ends
+      if (session.user.value?.support) return false
       try {
         const { data } = await client!.request<AuthTokens>('POST', '/auth/refresh', { skipAuthRefresh: true })
         session.applyTokens(data)
@@ -53,10 +55,16 @@ function getClient(): ApiClient {
         return false
       }
     },
-    onUnauthenticated: () => {
+    onUnauthenticated: error => {
       const wasSignedIn = session.isAuthenticated.value
+      const wasSupport = !!session.user.value?.support
       session.clear()
       const route = router.currentRoute.value
+      // Support sessions: the page says why it ended (access turned off, or time up); no sign-in page
+      if (wasSupport) {
+        router.replace({ path: '/support', query: { ended: error.code === 'FRM-AUTH-1011' ? 'off' : 'time' } })
+        return
+      }
       if (wasSignedIn && route.meta.auth !== 'guest' && route.meta.auth !== false) {
         router.replace({ path: '/auth/login', query: { expired: '1', redirect: route.fullPath } })
       }

@@ -513,7 +513,8 @@
     "workspaceTitle": "Arbeitsbereich nicht gefunden",
     "workspaceDesc": "Unter {host} gibt es keinen Arbeitsbereich. Prüfen Sie die Adresse oder finden Sie Ihren Arbeitsbereich.",
     "findWorkspace": "Meinen Arbeitsbereich finden",
-    "workspaceSuspendedDesc": "Dieser Arbeitsbereich ist pausiert. Wenden Sie sich an Ihren Administrator oder unseren Support."
+    "workspaceSuspendedDesc": "Dieser Arbeitsbereich ist pausiert. Wenden Sie sich an Ihren Administrator oder unseren Support.",
+    "workspaceSuspendedReason": "Dieser Arbeitsbereich ist pausiert. Grund: {reason}. Wenden Sie sich an Ihren Administrator oder unseren Support."
   },
   "errors": {
     "FRM-GEN-1001": "Ungültige Anfrage.",
@@ -665,7 +666,13 @@
     "FRM-BILL-1002": "Dieser Bezahlvorgang ist abgelaufen. Beginnen Sie neu.",
     "FRM-BILL-1004": "Eine andere Abrechnungsänderung für diesen Arbeitsbereich läuft gerade. Versuchen Sie es gleich noch einmal.",
     "FRM-BILL-1005": "Diese Anfrage wurde bereits für etwas anderes verwendet. Laden Sie die Seite neu und versuchen Sie es erneut.",
-    "FRM-BILL-1006": "Die Zahlungsbenachrichtigung konnte nicht verifiziert werden."
+    "FRM-BILL-1006": "Die Zahlungsbenachrichtigung konnte nicht verifiziert werden.",
+    "detail": {
+      "supportReadOnly": "Diese Support-Sitzung ist nur zum Lesen, daher wurde nichts geändert.",
+      "notInSupportSessions": "Support-Sitzungen können diesen Teil des Arbeitsbereichs nicht öffnen.",
+      "workspaceReadOnly": "Dieser Arbeitsbereich ist vorerst nur lesbar. Ansehen und Exportieren geht weiterhin.",
+      "workspaceClosing": "Dieser Arbeitsbereich wird geschlossen, daher lässt sich nichts ändern. Ansehen und Exportieren Ihrer Daten geht weiterhin."
+    }
   },
   "errorUi": {
     "reference": "Referenz: {id}",
@@ -8102,6 +8109,14 @@
       "security_alert": {
         "title": "Anmeldung blockiert",
         "message": "Eine Anmeldung von {email} wurde blockiert: {reason}."
+      },
+      "support_request": {
+        "title": "Formalie-Support bittet um Zugriff",
+        "message": "{staff} bittet um Zugriff ({mode}, {hours}). Genehmigen oder ablehnen unter Einstellungen → Sicherheit."
+      },
+      "platform_message": {
+        "title": "{title}",
+        "message": "{message}"
       }
     },
     "reason": {
@@ -9784,6 +9799,87 @@
       "updates": "diese Benachrichtigungen",
       "daily_digest": "tägliche Zusammenfassung",
       "form_invitation": "Formular-Einladungen"
+    }
+  },
+  "support": {
+    "banner": {
+      "region": "Hinweise von Formalie",
+      "read": "Formalie-Support ({name}) hat bis {time} Lesezugriff",
+      "write": "Formalie-Support ({name}) kann bis {time} Änderungen vornehmen",
+      "left": "Noch {time} in dieser Support-Sitzung",
+      "end": "Sitzung beenden"
+    },
+    "announcements": {
+      "dismiss": "Ausblenden",
+      "more": "Mehr lesen"
+    },
+    "page": {
+      "title": "Support-Sitzung wird geöffnet",
+      "desc": "Support-Link wird geprüft…",
+      "invalid": "Dieser Support-Link kann nicht verwendet werden",
+      "invalidDesc": "Er wurde schon benutzt, ist abgelaufen oder der Zugriff wurde ausgeschaltet. Holen Sie einen neuen Link im Plattform-Admin.",
+      "error": "Die Support-Sitzung konnte nicht starten",
+      "errorDesc": "Bei uns ist etwas schiefgelaufen. Versuchen Sie den Link gleich noch einmal.",
+      "ended": {
+        "off": "Der Arbeitsbereich hat den Support-Zugriff ausgeschaltet",
+        "time": "Die Support-Sitzung ist beendet",
+        "signed_out": "Sie haben die Support-Sitzung verlassen"
+      },
+      "endedDesc": "Um erneut hineinzusehen, starten Sie im Plattform-Admin eine neue Sitzung."
+    },
+    "access": {
+      "title": "Formalie-Support-Zugriff",
+      "hint": "Lassen Sie das Formalie-Team für eine Weile in Ihren Arbeitsbereich, um bei einer Frage oder einem Problem zu helfen.",
+      "offExplain": "Aus. Der Formalie-Support sieht nichts in Ihrem Arbeitsbereich. Schalten Sie ihn für eine Weile ein, wenn Sie uns um Hilfe bitten: Wir sehen, was ein Inhaber sieht, alles steht im Audit-Protokoll, und der Zugriff endet von selbst.",
+      "on": "An",
+      "mode": {
+        "read": "Nur lesen",
+        "write": "Darf ändern"
+      },
+      "modeHint": {
+        "read": "Der Support kann Formulare, Antworten und Einstellungen ansehen und ändert nichts.",
+        "write": "Der Support kann auch Dinge für Sie beheben. Jede Änderung steht im Audit-Protokoll."
+      },
+      "timeLeft": "Verbleibende Zeit",
+      "grantedBy": "Eingeschaltet von",
+      "someone": "Ein Admin",
+      "ends": "Endet",
+      "extend": "Verlängern oder ändern",
+      "turnOff": "Ausschalten",
+      "turnOn": "Einschalten",
+      "save": "Speichern",
+      "howLong": "Wie lange",
+      "howMuch": "Was der Support darf",
+      "extendHint": "Der Zugriff endet in {time} ab jetzt. Eine bereits offene Support-Sitzung läuft weiter.",
+      "onHint": "Er endet von selbst. Sie können ihn jederzeit ausschalten, dann endet jede offene Support-Sitzung sofort.",
+      "viewOnly": "Nur Personen, die die Einstellungen verwalten, können das ändern.",
+      "failed": "Der Support-Zugriff konnte nicht geladen werden",
+      "requestGone": "Diese Anfrage wurde schon beantwortet oder ist abgelaufen",
+      "changed": "Support-Zugriff geändert",
+      "turnedOn": "Support-Zugriff eingeschaltet",
+      "turnedOff": "Support-Zugriff ausgeschaltet",
+      "approved": "Genehmigt: {name} kann jetzt eine Support-Sitzung öffnen",
+      "declined": "Anfrage abgelehnt",
+      "offTitle": "Support-Zugriff ausschalten?",
+      "offDesc": "Der Formalie-Support kann Ihren Arbeitsbereich erst wieder öffnen, wenn Sie ihn erneut einschalten.",
+      "offDescLive": "Gerade ist eine Support-Sitzung offen. Sie endet sofort, und der Support kann erst zurück, wenn Sie den Zugriff wieder einschalten.",
+      "requests": "Anfragen von Formalie ({n})",
+      "asks": "{name} vom Formalie-Support bittet um Zugriff",
+      "requestEnds": "läuft ab {when}",
+      "decline": "Ablehnen",
+      "approve": "Genehmigen",
+      "sessions": "Letzte Support-Sitzungen",
+      "inAudit": "Audit-Protokoll",
+      "noSessions": "Noch keine Support-Sitzungen",
+      "noSessionsDesc": "Wenn der Formalie-Support Ihren Arbeitsbereich öffnet, steht es hier.",
+      "live": "Aktiv",
+      "endedReason": {
+        "signed_out": "verlassen",
+        "expired": "Zeit abgelaufen",
+        "access_ended": "Zugriff ausgeschaltet",
+        "not_used": "Link nicht benutzt"
+      },
+      "endedAt": "beendet {when}"
     }
   }
 }

@@ -513,7 +513,8 @@
     "workspaceTitle": "Çalışma alanı bulunamadı",
     "workspaceDesc": "{host} adresinde bir çalışma alanı yok. Adresi kontrol edin veya çalışma alanınızı bulun.",
     "findWorkspace": "Çalışma alanımı bul",
-    "workspaceSuspendedDesc": "Bu çalışma alanı duraklatıldı. Yöneticinize veya destek ekibimize başvurun."
+    "workspaceSuspendedDesc": "Bu çalışma alanı duraklatıldı. Yöneticinize veya destek ekibimize başvurun.",
+    "workspaceSuspendedReason": "Bu çalışma alanı duraklatıldı. Neden: {reason}. Yöneticinize veya destek ekibimize başvurun."
   },
   "errors": {
     "FRM-GEN-1001": "Geçersiz istek.",
@@ -665,7 +666,13 @@
     "FRM-BILL-1002": "Bu ödeme oturumunun süresi doldu. Yeniden başlayın.",
     "FRM-BILL-1004": "Bu çalışma alanı için başka bir faturalama değişikliği sürüyor. Birazdan tekrar deneyin.",
     "FRM-BILL-1005": "Bu istek zaten başka bir iş için kullanıldı. Sayfayı yenileyip tekrar deneyin.",
-    "FRM-BILL-1006": "Ödeme bildirimi doğrulanamadı."
+    "FRM-BILL-1006": "Ödeme bildirimi doğrulanamadı.",
+    "detail": {
+      "supportReadOnly": "Bu destek oturumu salt okunur, bu yüzden hiçbir şey değiştirilmedi.",
+      "notInSupportSessions": "Destek oturumları çalışma alanının bu bölümünü açamaz.",
+      "workspaceReadOnly": "Bu çalışma alanı şimdilik salt okunur. Yine de görüntüleyebilir ve dışa aktarabilirsiniz.",
+      "workspaceClosing": "Bu çalışma alanı kapanıyor, bu yüzden hiçbir şey değiştirilemez. Verilerinizi yine de görüntüleyebilir ve dışa aktarabilirsiniz."
+    }
   },
   "errorUi": {
     "reference": "Referans: {id}",
@@ -8102,6 +8109,14 @@
       "security_alert": {
         "title": "Giriş engellendi",
         "message": "{email} adresinin girişi engellendi: {reason}."
+      },
+      "support_request": {
+        "title": "Formalie desteği erişim istiyor",
+        "message": "{staff} erişim istiyor ({mode}, {hours}). Ayarlar → Güvenlik bölümünden onaylayın veya reddedin."
+      },
+      "platform_message": {
+        "title": "{title}",
+        "message": "{message}"
       }
     },
     "reason": {
@@ -9784,6 +9799,87 @@
       "updates": "bu güncellemeler",
       "daily_digest": "günlük özet",
       "form_invitation": "form davetleri"
+    }
+  },
+  "support": {
+    "banner": {
+      "region": "Formalie bildirimleri",
+      "read": "Formalie desteği ({name}) {time} saatine kadar salt okunur erişime sahip",
+      "write": "Formalie desteği ({name}) {time} saatine kadar değişiklik yapabilir",
+      "left": "Bu destek oturumunda {time} kaldı",
+      "end": "Oturumu bitir"
+    },
+    "announcements": {
+      "dismiss": "Kapat",
+      "more": "Devamını oku"
+    },
+    "page": {
+      "title": "Destek oturumu açılıyor",
+      "desc": "Destek bağlantısı kontrol ediliyor…",
+      "invalid": "Bu destek bağlantısı kullanılamaz",
+      "invalidDesc": "Zaten kullanıldı, süresi doldu ya da erişim kapatıldı. Platform yönetiminden yeni bir bağlantı alın.",
+      "error": "Destek oturumu başlatılamadı",
+      "errorDesc": "Bizim tarafımızda bir sorun oluştu. Bağlantıyı birazdan tekrar deneyin.",
+      "ended": {
+        "off": "Çalışma alanı destek erişimini kapattı",
+        "time": "Destek oturumu sona erdi",
+        "signed_out": "Destek oturumundan çıktınız"
+      },
+      "endedDesc": "Tekrar bakmak için platform yönetiminden yeni bir oturum başlatın."
+    },
+    "access": {
+      "title": "Formalie destek erişimi",
+      "hint": "Bir soru ya da sorunda yardımcı olması için Formalie ekibini bir süreliğine çalışma alanınıza alın.",
+      "offExplain": "Kapalı. Formalie desteği çalışma alanınızda hiçbir şey göremez. Bizden yardım istediğinizde bir süreliğine açın: bir Sahibin gördüğünü görürüz, yaptığımız her şey denetim kaydında yer alır ve erişim kendiliğinden sona erer.",
+      "on": "Açık",
+      "mode": {
+        "read": "Salt okunur",
+        "write": "Değişiklik yapabilir"
+      },
+      "modeHint": {
+        "read": "Destek formlara, yanıtlara ve ayarlara bakabilir, hiçbir şeyi değiştirmez.",
+        "write": "Destek sizin için bir şeyleri düzeltebilir de. Her değişiklik denetim kaydında yer alır."
+      },
+      "timeLeft": "Kalan süre",
+      "grantedBy": "Açan",
+      "someone": "Bir yönetici",
+      "ends": "Bitiş",
+      "extend": "Uzat veya değiştir",
+      "turnOff": "Kapat",
+      "turnOn": "Aç",
+      "save": "Kaydet",
+      "howLong": "Ne kadar süreyle",
+      "howMuch": "Destek neler yapabilir",
+      "extendHint": "Erişim şu andan itibaren {time} sonra sona erecek. Zaten açık olan bir destek oturumu devam eder.",
+      "onHint": "Kendiliğinden sona erer. İstediğiniz zaman kapatabilirsiniz; açık olan her destek oturumu hemen sona erer.",
+      "viewOnly": "Bunu yalnızca ayarları yöneten kişiler değiştirebilir.",
+      "failed": "Destek erişimi yüklenemedi",
+      "requestGone": "Bu talep zaten yanıtlandı veya süresi doldu",
+      "changed": "Destek erişimi değiştirildi",
+      "turnedOn": "Destek erişimi açıldı",
+      "turnedOff": "Destek erişimi kapatıldı",
+      "approved": "Onaylandı: {name} artık bir destek oturumu açabilir",
+      "declined": "Talep reddedildi",
+      "offTitle": "Destek erişimi kapatılsın mı?",
+      "offDesc": "Siz tekrar açana kadar Formalie desteği çalışma alanınızı açamaz.",
+      "offDescLive": "Şu anda açık bir destek oturumu var. Hemen sona erer ve siz erişimi tekrar açana kadar destek geri dönemez.",
+      "requests": "Formalie talepleri ({n})",
+      "asks": "Formalie desteğinden {name} erişim istiyor",
+      "requestEnds": "süresi doluyor: {when}",
+      "decline": "Reddet",
+      "approve": "Onayla",
+      "sessions": "Son destek oturumları",
+      "inAudit": "Denetim kaydı",
+      "noSessions": "Henüz destek oturumu yok",
+      "noSessionsDesc": "Formalie desteği çalışma alanınızı açtığında burada görünür.",
+      "live": "Sürüyor",
+      "endedReason": {
+        "signed_out": "çıktı",
+        "expired": "süre doldu",
+        "access_ended": "erişim kapatıldı",
+        "not_used": "bağlantı kullanılmadı"
+      },
+      "endedAt": "bitti: {when}"
     }
   }
 }

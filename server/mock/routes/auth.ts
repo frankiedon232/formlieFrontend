@@ -43,6 +43,7 @@ import {
 import type { H3Event } from 'h3'
 import type { Challenge, ChallengePurpose } from '../core/auth'
 import { grantsOf, permissionsOf, roleOf } from '../data/rolesStore'
+import { isSupportRequest, supportBannerOf } from './support'
 
 /** Settings → Notifications: a blocked sign-in tells the admins (who, and why in words). */
 const securityAlert = (event: H3Event, tenant: MockTenant, email: string, reason: string) => notify(event, tenant, 'security_alert', { email, reason }, '/audit?area=auth&outcome=failure,blocked')
@@ -237,6 +238,9 @@ export const me = defineMockRoute(({ event }) => {
     language: user.language ?? null,
     time_zone: user.time_zone ?? null,
     date_format: user.date_format ?? null,
+    // B16: the live Formalie support session (banner) and whether this caller is it
+    support_session: supportBannerOf(tenant),
+    is_support: isSupportRequest(event),
   })
 })
 

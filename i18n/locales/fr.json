@@ -513,7 +513,8 @@
     "workspaceTitle": "Espace de travail introuvable",
     "workspaceDesc": "Aucun espace de travail à l'adresse {host}. Vérifiez l'adresse ou retrouvez votre espace.",
     "findWorkspace": "Trouver mon espace",
-    "workspaceSuspendedDesc": "Cet espace est suspendu. Contactez votre administrateur ou notre support."
+    "workspaceSuspendedDesc": "Cet espace est suspendu. Contactez votre administrateur ou notre support.",
+    "workspaceSuspendedReason": "Cet espace de travail est en pause. Motif : {reason}. Contactez votre administrateur ou notre équipe de support."
   },
   "errors": {
     "FRM-GEN-1001": "Requête invalide.",
@@ -665,7 +666,13 @@
     "FRM-BILL-1002": "Ce paiement a expiré. Recommencez.",
     "FRM-BILL-1004": "Une autre modification de facturation est en cours pour cet espace de travail. Réessayez dans un instant.",
     "FRM-BILL-1005": "Cette demande a déjà été utilisée pour autre chose. Rechargez la page et réessayez.",
-    "FRM-BILL-1006": "La notification de paiement n’a pas pu être vérifiée."
+    "FRM-BILL-1006": "La notification de paiement n’a pas pu être vérifiée.",
+    "detail": {
+      "supportReadOnly": "Cette session de support est en lecture seule, rien n’a donc été modifié.",
+      "notInSupportSessions": "Les sessions de support ne peuvent pas ouvrir cette partie de l’espace de travail.",
+      "workspaceReadOnly": "Cet espace de travail est en lecture seule pour le moment. Vous pouvez toujours consulter et exporter.",
+      "workspaceClosing": "Cet espace de travail est en cours de fermeture, rien ne peut donc être modifié. Vous pouvez toujours consulter et exporter vos données."
+    }
   },
   "errorUi": {
     "reference": "Référence : {id}",
@@ -8102,6 +8109,14 @@
       "security_alert": {
         "title": "Connexion bloquée",
         "message": "Une connexion de {email} a été bloquée : {reason}."
+      },
+      "support_request": {
+        "title": "Le support Formalie demande l’accès",
+        "message": "{staff} demande l’accès ({mode}, {hours}). Approuvez ou refusez dans Paramètres → Sécurité."
+      },
+      "platform_message": {
+        "title": "{title}",
+        "message": "{message}"
       }
     },
     "reason": {
@@ -9784,6 +9799,87 @@
       "updates": "ces nouvelles",
       "daily_digest": "le résumé quotidien",
       "form_invitation": "les invitations à des formulaires"
+    }
+  },
+  "support": {
+    "banner": {
+      "region": "Avis de Formalie",
+      "read": "Le support Formalie ({name}) a un accès en lecture seule jusqu’à {time}",
+      "write": "Le support Formalie ({name}) peut faire des modifications jusqu’à {time}",
+      "left": "Il reste {time} dans cette session de support",
+      "end": "Terminer la session"
+    },
+    "announcements": {
+      "dismiss": "Masquer",
+      "more": "En savoir plus"
+    },
+    "page": {
+      "title": "Ouverture de la session de support",
+      "desc": "Vérification du lien de support…",
+      "invalid": "Ce lien de support ne peut pas être utilisé",
+      "invalidDesc": "Il a déjà servi, il a expiré ou l’accès a été désactivé. Obtenez un nouveau lien dans l’admin de la plateforme.",
+      "error": "La session de support n’a pas pu démarrer",
+      "errorDesc": "Un problème est survenu de notre côté. Réessayez le lien dans un instant.",
+      "ended": {
+        "off": "L’espace de travail a désactivé l’accès du support",
+        "time": "La session de support est terminée",
+        "signed_out": "Vous avez quitté la session de support"
+      },
+      "endedDesc": "Pour regarder de nouveau, démarrez une nouvelle session depuis l’admin de la plateforme."
+    },
+    "access": {
+      "title": "Accès du support Formalie",
+      "hint": "Laissez l’équipe Formalie entrer dans votre espace de travail un moment, pour vous aider sur une question ou un problème.",
+      "offExplain": "Désactivé. Le support Formalie ne voit rien de votre espace de travail. Activez-le un moment quand vous nous demandez de l’aide : nous voyons ce que voit un Propriétaire, tout ce que nous faisons figure dans le journal d’audit, et l’accès se termine tout seul.",
+      "on": "Activé",
+      "mode": {
+        "read": "Lecture seule",
+        "write": "Peut modifier"
+      },
+      "modeHint": {
+        "read": "Le support peut consulter les formulaires, les réponses et les paramètres, sans rien changer.",
+        "write": "Le support peut aussi corriger des choses pour vous. Chaque modification figure dans le journal d’audit."
+      },
+      "timeLeft": "Temps restant",
+      "grantedBy": "Activé par",
+      "someone": "Un admin",
+      "ends": "Fin",
+      "extend": "Prolonger ou modifier",
+      "turnOff": "Désactiver",
+      "turnOn": "Activer",
+      "save": "Enregistrer",
+      "howLong": "Pour combien de temps",
+      "howMuch": "Ce que le support peut faire",
+      "extendHint": "L’accès se terminera dans {time}. Une session de support déjà ouverte continue.",
+      "onHint": "Il se termine tout seul. Vous pouvez le désactiver à tout moment, ce qui met fin aussitôt à toute session de support ouverte.",
+      "viewOnly": "Seules les personnes qui gèrent les paramètres peuvent modifier ceci.",
+      "failed": "L’accès du support n’a pas pu être chargé",
+      "requestGone": "Cette demande a déjà reçu une réponse ou a expiré",
+      "changed": "Accès du support modifié",
+      "turnedOn": "Accès du support activé",
+      "turnedOff": "Accès du support désactivé",
+      "approved": "Approuvé : {name} peut maintenant ouvrir une session de support",
+      "declined": "Demande refusée",
+      "offTitle": "Désactiver l’accès du support ?",
+      "offDesc": "Le support Formalie ne pourra plus ouvrir votre espace de travail tant que vous ne l’aurez pas réactivé.",
+      "offDescLive": "Une session de support est ouverte en ce moment. Elle se termine aussitôt, et le support ne pourra revenir que si vous réactivez l’accès.",
+      "requests": "Demandes de Formalie ({n})",
+      "asks": "{name}, du support Formalie, demande l’accès",
+      "requestEnds": "expire {when}",
+      "decline": "Refuser",
+      "approve": "Approuver",
+      "sessions": "Sessions de support récentes",
+      "inAudit": "Journal d’audit",
+      "noSessions": "Aucune session de support pour l’instant",
+      "noSessionsDesc": "Quand le support Formalie ouvre votre espace de travail, cela apparaît ici.",
+      "live": "En cours",
+      "endedReason": {
+        "signed_out": "quittée",
+        "expired": "temps écoulé",
+        "access_ended": "accès désactivé",
+        "not_used": "lien non utilisé"
+      },
+      "endedAt": "terminée {when}"
     }
   }
 }

@@ -55,6 +55,8 @@ export const publicProfile = defineMockRoute(({ event }) => {
     sso: hasFeature(tenant, 'sso') ? ssoPublic(tenant) : null,
     password_policy: { min_length: security.password.min_length, lower: security.password.lower, upper: security.password.upper, number: security.password.number, symbol: security.password.symbol },
     status: tenant.status,
+    // B16: the platform admin's reason for a suspension; the mock has no platform admin
+    status_reason: null,
   })
 })
 

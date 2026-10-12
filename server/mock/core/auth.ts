@@ -226,6 +226,8 @@ export interface Session {
   startedAt: number
   ip: string
   device: AuditDevice
+  /** Formalie support's session (B16): never saved across dev reloads, no refresh token. */
+  support?: boolean
 }
 
 interface StoredSessions {
@@ -260,7 +262,7 @@ function persistSessions() {
     const now = Date.now()
     return {
       sessions: [...sessions.values()]
-        .filter(s => !s.revoked && now - s.lastActiveAt < sessionLimits(s.tenant).idle)
+        .filter(s => !s.revoked && !s.support && now - s.lastActiveAt < sessionLimits(s.tenant).idle)
         .map(s => ({
           id: s.id,
           userId: s.user.id,
@@ -303,12 +305,15 @@ function setRefreshCookie(event: H3Event, token: string) {
   })
 }
 
-function tokensFor(event: H3Event, session: Session): AuthTokens {
+function tokensFor(event: H3Event, session: Session, accessUntil?: number): AuthTokens {
   const access = randomToken()
-  accessTokens.set(access, { sid: session.id, expiresAt: Date.now() + ACCESS_TTL_S * 1000 })
-  const refresh = randomToken()
-  refreshTokens.set(refresh, { sid: session.id, used: false, expiresAt: Date.now() + REFRESH_TTL_S * 1000 })
-  setRefreshCookie(event, refresh)
+  accessTokens.set(access, { sid: session.id, expiresAt: accessUntil ?? Date.now() + ACCESS_TTL_S * 1000 })
+  // Support sessions (B16) get no refresh token
+  if (!session.support) {
+    const refresh = randomToken()
+    refreshTokens.set(refresh, { sid: session.id, used: false, expiresAt: Date.now() + REFRESH_TTL_S * 1000 })
+    setRefreshCookie(event, refresh)
+  }
   touch(session)
   const { user, tenant } = session
   return {
@@ -339,6 +344,28 @@ export function startSession(event: H3Event, user: MockUser, tenant: MockTenant)
   sessions.set(session.id, session)
   return tokensFor(event, session)
 }
+
+/**
+ * Formalie support (B16): a session acting as `user` (the Owner, named as support) with an access token
+ * valid until `endsAt` and no refresh cookie. Ending it (revokeSessions) answers FRM-AUTH-1011 at once.
+ */
+export function startSupportSession(event: H3Event, user: MockUser, tenant: MockTenant, endsAt: number): { sessionId: string; tokens: AuthTokens } {
+  const now = Date.now()
+  const session: Session = { id: crypto.randomUUID(), user, tenant, revoked: false, lastActiveAt: now, startedAt: now, ip: callerIp(event), device: deviceFrom(getHeader(event, 'user-agent') ?? ''), support: true }
+  sessions.set(session.id, session)
+  const tokens = tokensFor(event, session, endsAt)
+  return { sessionId: session.id, tokens: { ...tokens, expires_in: Math.max(1, Math.round((endsAt - now) / 1000)) } }
+}
+
+/** The support session behind this request's bearer, if it is one (for POST /auth/support/end). */
+export function bearerSessionId(event: H3Event): string | null {
+  const bearer = getHeader(event, 'authorization')?.replace(/^Bearer /, '')
+  return (bearer && accessTokens.get(bearer)?.sid) || null
+}
+
+/** Checks every authenticated call of a support session (read only, never some areas); set by the support routes. */
+let supportGuard: ((sessionId: string, method: string, path: string) => void) | null = null
+export const whenSupportRequest = (guard: typeof supportGuard) => (supportGuard = guard)
 
 /** POST /auth/refresh: single use; reusing an old token revokes the whole session (FRM-AUTH-1012). */
 export function rotateRefresh(event: H3Event): AuthTokens {
@@ -396,6 +423,7 @@ export function requireAuth(event: H3Event): { user: MockUser; tenant: MockTenan
   if (!session || session.revoked) throw new MockError('FRM-AUTH-1011')
   if (idleExpired(session)) throw new MockError('FRM-AUTH-1001')
   if (session.tenant.id !== requireTenant(event).id) throw new MockError('FRM-TEN-1003')
+  if (session.support) supportGuard?.(session.id, event.method, event.path)
   // Settings → Security: only from the allowed networks
   if (!ipAllowed(session.tenant, callerIp(event))) throw new MockError('FRM-AUTH-1016')
   // Throttled: activity is recorded at most once a minute per session.

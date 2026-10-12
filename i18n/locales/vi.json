@@ -513,7 +513,8 @@
     "workspaceTitle": "Không tìm thấy không gian làm việc",
     "workspaceDesc": "Không có không gian làm việc tại {host}. Hãy kiểm tra địa chỉ hoặc tìm không gian của bạn.",
     "findWorkspace": "Tìm không gian của tôi",
-    "workspaceSuspendedDesc": "Không gian làm việc này đang tạm dừng. Hãy liên hệ quản trị viên hoặc bộ phận hỗ trợ."
+    "workspaceSuspendedDesc": "Không gian làm việc này đang tạm dừng. Hãy liên hệ quản trị viên hoặc bộ phận hỗ trợ.",
+    "workspaceSuspendedReason": "Không gian làm việc này đang tạm dừng. Lý do: {reason}. Hãy liên hệ quản trị viên hoặc đội hỗ trợ của chúng tôi."
   },
   "errors": {
     "FRM-GEN-1001": "Yêu cầu không hợp lệ.",
@@ -665,7 +666,13 @@
     "FRM-BILL-1002": "Phiên thanh toán này đã hết hạn. Hãy bắt đầu lại.",
     "FRM-BILL-1004": "Một thay đổi thanh toán khác cho không gian làm việc này đang diễn ra. Hãy thử lại sau giây lát.",
     "FRM-BILL-1005": "Yêu cầu này đã được dùng cho việc khác. Hãy tải lại trang và thử lại.",
-    "FRM-BILL-1006": "Không thể xác minh thông báo thanh toán."
+    "FRM-BILL-1006": "Không thể xác minh thông báo thanh toán.",
+    "detail": {
+      "supportReadOnly": "Phiên hỗ trợ này chỉ được xem, nên không có gì thay đổi.",
+      "notInSupportSessions": "Phiên hỗ trợ không thể mở phần này của không gian làm việc.",
+      "workspaceReadOnly": "Không gian làm việc này tạm thời chỉ được xem. Bạn vẫn có thể xem và xuất dữ liệu.",
+      "workspaceClosing": "Không gian làm việc này đang đóng, nên không thể thay đổi gì. Bạn vẫn có thể xem và xuất dữ liệu của mình."
+    }
   },
   "errorUi": {
     "reference": "Mã tham chiếu: {id}",
@@ -8102,6 +8109,14 @@
       "security_alert": {
         "title": "Đăng nhập bị chặn",
         "message": "Lượt đăng nhập của {email} đã bị chặn: {reason}."
+      },
+      "support_request": {
+        "title": "Hỗ trợ Formalie xin quyền truy cập",
+        "message": "{staff} xin quyền truy cập ({mode}, {hours}). Duyệt hoặc từ chối trong Cài đặt → Bảo mật."
+      },
+      "platform_message": {
+        "title": "{title}",
+        "message": "{message}"
       }
     },
     "reason": {
@@ -9784,6 +9799,87 @@
       "updates": "các cập nhật này",
       "daily_digest": "bản tóm tắt hằng ngày",
       "form_invitation": "lời mời điền biểu mẫu"
+    }
+  },
+  "support": {
+    "banner": {
+      "region": "Thông báo từ Formalie",
+      "read": "Bộ phận hỗ trợ Formalie ({name}) có quyền chỉ xem đến {time}",
+      "write": "Bộ phận hỗ trợ Formalie ({name}) có thể thay đổi đến {time}",
+      "left": "Còn {time} trong phiên hỗ trợ này",
+      "end": "Kết thúc phiên"
+    },
+    "announcements": {
+      "dismiss": "Ẩn",
+      "more": "Xem thêm"
+    },
+    "page": {
+      "title": "Đang mở phiên hỗ trợ",
+      "desc": "Đang kiểm tra liên kết hỗ trợ…",
+      "invalid": "Không thể dùng liên kết hỗ trợ này",
+      "invalidDesc": "Liên kết đã được dùng, đã hết hạn, hoặc quyền truy cập đã bị tắt. Hãy lấy liên kết mới từ trang quản trị nền tảng.",
+      "error": "Không thể bắt đầu phiên hỗ trợ",
+      "errorDesc": "Đã có lỗi phía chúng tôi. Hãy thử lại liên kết sau ít phút.",
+      "ended": {
+        "off": "Không gian làm việc đã tắt quyền truy cập hỗ trợ",
+        "time": "Phiên hỗ trợ đã kết thúc",
+        "signed_out": "Bạn đã rời phiên hỗ trợ"
+      },
+      "endedDesc": "Để xem lại, hãy bắt đầu phiên mới từ trang quản trị nền tảng."
+    },
+    "access": {
+      "title": "Quyền truy cập của hỗ trợ Formalie",
+      "hint": "Cho đội Formalie vào không gian làm việc của bạn trong một thời gian để giúp giải đáp câu hỏi hoặc xử lý sự cố.",
+      "offExplain": "Đang tắt. Hỗ trợ Formalie không thấy gì trong không gian làm việc của bạn. Hãy bật trong một thời gian khi bạn nhờ chúng tôi giúp: chúng tôi thấy những gì Chủ sở hữu thấy, mọi thao tác đều có trong nhật ký kiểm tra, và quyền tự kết thúc.",
+      "on": "Đang bật",
+      "mode": {
+        "read": "Chỉ xem",
+        "write": "Được thay đổi"
+      },
+      "modeHint": {
+        "read": "Hỗ trợ có thể xem biểu mẫu, phản hồi và cài đặt, không thay đổi gì.",
+        "write": "Hỗ trợ cũng có thể sửa giúp bạn. Mọi thay đổi đều có trong nhật ký kiểm tra."
+      },
+      "timeLeft": "Thời gian còn lại",
+      "grantedBy": "Người bật",
+      "someone": "Một quản trị viên",
+      "ends": "Kết thúc",
+      "extend": "Gia hạn hoặc thay đổi",
+      "turnOff": "Tắt",
+      "turnOn": "Bật",
+      "save": "Lưu",
+      "howLong": "Trong bao lâu",
+      "howMuch": "Hỗ trợ được làm gì",
+      "extendHint": "Quyền truy cập sẽ kết thúc sau {time} kể từ bây giờ. Phiên hỗ trợ đang mở vẫn tiếp tục.",
+      "onHint": "Quyền tự kết thúc. Bạn có thể tắt bất cứ lúc nào, và mọi phiên hỗ trợ đang mở sẽ kết thúc ngay.",
+      "viewOnly": "Chỉ những người quản lý cài đặt mới có thể thay đổi mục này.",
+      "failed": "Không thể tải quyền truy cập hỗ trợ",
+      "requestGone": "Yêu cầu đó đã được trả lời hoặc đã hết hạn",
+      "changed": "Đã thay đổi quyền truy cập hỗ trợ",
+      "turnedOn": "Đã bật quyền truy cập hỗ trợ",
+      "turnedOff": "Đã tắt quyền truy cập hỗ trợ",
+      "approved": "Đã duyệt: {name} giờ có thể mở phiên hỗ trợ",
+      "declined": "Đã từ chối yêu cầu",
+      "offTitle": "Tắt quyền truy cập hỗ trợ?",
+      "offDesc": "Hỗ trợ Formalie sẽ không thể mở không gian làm việc của bạn cho đến khi bạn bật lại.",
+      "offDescLive": "Đang có một phiên hỗ trợ mở. Phiên đó kết thúc ngay, và hỗ trợ không thể quay lại cho đến khi bạn bật lại quyền truy cập.",
+      "requests": "Yêu cầu từ Formalie ({n})",
+      "asks": "{name} từ bộ phận hỗ trợ Formalie xin quyền truy cập",
+      "requestEnds": "hết hạn {when}",
+      "decline": "Từ chối",
+      "approve": "Duyệt",
+      "sessions": "Các phiên hỗ trợ gần đây",
+      "inAudit": "Nhật ký kiểm tra",
+      "noSessions": "Chưa có phiên hỗ trợ nào",
+      "noSessionsDesc": "Khi hỗ trợ Formalie mở không gian làm việc của bạn, sẽ hiện ở đây.",
+      "live": "Đang diễn ra",
+      "endedReason": {
+        "signed_out": "đã rời",
+        "expired": "hết giờ",
+        "access_ended": "quyền đã tắt",
+        "not_used": "liên kết chưa dùng"
+      },
+      "endedAt": "kết thúc {when}"
     }
   }
 }

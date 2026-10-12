@@ -513,7 +513,8 @@
     "workspaceTitle": "Espaço de trabalho não encontrado",
     "workspaceDesc": "Não há espaço de trabalho em {host}. Verifique o endereço ou encontre seu espaço.",
     "findWorkspace": "Encontrar meu espaço",
-    "workspaceSuspendedDesc": "Este espaço está pausado. Fale com seu administrador ou com nosso suporte."
+    "workspaceSuspendedDesc": "Este espaço está pausado. Fale com seu administrador ou com nosso suporte.",
+    "workspaceSuspendedReason": "Este espaço de trabalho está pausado. Motivo: {reason}. Fale com seu administrador ou com nossa equipe de suporte."
   },
   "errors": {
     "FRM-GEN-1001": "Solicitação inválida.",
@@ -665,7 +666,13 @@
     "FRM-BILL-1002": "Este pagamento expirou. Comece de novo.",
     "FRM-BILL-1004": "Outra alteração de cobrança deste espaço de trabalho está em andamento. Tente de novo em instantes.",
     "FRM-BILL-1005": "Esta solicitação já foi usada para outra coisa. Recarregue a página e tente de novo.",
-    "FRM-BILL-1006": "Não foi possível verificar a notificação de pagamento."
+    "FRM-BILL-1006": "Não foi possível verificar a notificação de pagamento.",
+    "detail": {
+      "supportReadOnly": "Esta sessão de suporte é somente leitura, então nada foi alterado.",
+      "notInSupportSessions": "Sessões de suporte não podem abrir esta parte do espaço de trabalho.",
+      "workspaceReadOnly": "Este espaço de trabalho está somente leitura por enquanto. Você ainda pode ver e exportar.",
+      "workspaceClosing": "Este espaço de trabalho está sendo encerrado, então nada pode ser alterado. Você ainda pode ver e exportar seus dados."
+    }
   },
   "errorUi": {
     "reference": "Referência: {id}",
@@ -8102,6 +8109,14 @@
       "security_alert": {
         "title": "Login bloqueado",
         "message": "Um login de {email} foi bloqueado: {reason}."
+      },
+      "support_request": {
+        "title": "O suporte da Formalie pede acesso",
+        "message": "{staff} pede acesso ({mode}, {hours}). Aprove ou recuse em Configurações → Segurança."
+      },
+      "platform_message": {
+        "title": "{title}",
+        "message": "{message}"
       }
     },
     "reason": {
@@ -9784,6 +9799,87 @@
       "updates": "estas novidades",
       "daily_digest": "o resumo diário",
       "form_invitation": "convites para formulários"
+    }
+  },
+  "support": {
+    "banner": {
+      "region": "Avisos da Formalie",
+      "read": "O suporte da Formalie ({name}) tem acesso somente leitura até {time}",
+      "write": "O suporte da Formalie ({name}) pode fazer alterações até {time}",
+      "left": "Restam {time} nesta sessão de suporte",
+      "end": "Encerrar sessão"
+    },
+    "announcements": {
+      "dismiss": "Dispensar",
+      "more": "Saiba mais"
+    },
+    "page": {
+      "title": "Abrindo a sessão de suporte",
+      "desc": "Verificando o link de suporte…",
+      "invalid": "Este link de suporte não pode ser usado",
+      "invalidDesc": "Ele já foi usado, expirou ou o acesso foi desligado. Peça um link novo no admin da plataforma.",
+      "error": "Não foi possível iniciar a sessão de suporte",
+      "errorDesc": "Algo deu errado do nosso lado. Tente o link de novo daqui a pouco.",
+      "ended": {
+        "off": "O espaço de trabalho desligou o acesso do suporte",
+        "time": "A sessão de suporte terminou",
+        "signed_out": "Você saiu da sessão de suporte"
+      },
+      "endedDesc": "Para olhar de novo, inicie uma nova sessão no admin da plataforma."
+    },
+    "access": {
+      "title": "Acesso do suporte da Formalie",
+      "hint": "Deixe a equipe da Formalie entrar no seu espaço de trabalho por um tempo, para ajudar com uma dúvida ou um problema.",
+      "offExplain": "Desligado. O suporte da Formalie não vê nada do seu espaço de trabalho. Ligue por um tempo quando pedir ajuda: vemos o que um Proprietário vê, tudo o que fazemos fica na trilha de auditoria e o acesso termina sozinho.",
+      "on": "Ligado",
+      "mode": {
+        "read": "Somente leitura",
+        "write": "Pode alterar"
+      },
+      "modeHint": {
+        "read": "O suporte pode ver formulários, respostas e configurações, sem alterar nada.",
+        "write": "O suporte também pode corrigir coisas para você. Cada alteração fica na trilha de auditoria."
+      },
+      "timeLeft": "Tempo restante",
+      "grantedBy": "Ligado por",
+      "someone": "Um administrador",
+      "ends": "Termina",
+      "extend": "Estender ou alterar",
+      "turnOff": "Desligar",
+      "turnOn": "Ligar",
+      "save": "Salvar",
+      "howLong": "Por quanto tempo",
+      "howMuch": "O que o suporte pode fazer",
+      "extendHint": "O acesso termina daqui a {time}. Uma sessão de suporte já aberta continua.",
+      "onHint": "Termina sozinho. Você pode desligar a qualquer momento, e qualquer sessão de suporte aberta termina na hora.",
+      "viewOnly": "Só quem gerencia as configurações pode alterar isto.",
+      "failed": "Não foi possível carregar o acesso do suporte",
+      "requestGone": "Esse pedido já foi respondido ou expirou",
+      "changed": "Acesso do suporte alterado",
+      "turnedOn": "Acesso do suporte ligado",
+      "turnedOff": "Acesso do suporte desligado",
+      "approved": "Aprovado: {name} já pode abrir uma sessão de suporte",
+      "declined": "Pedido recusado",
+      "offTitle": "Desligar o acesso do suporte?",
+      "offDesc": "O suporte da Formalie não poderá abrir seu espaço de trabalho até você ligar de novo.",
+      "offDescLive": "Há uma sessão de suporte aberta agora. Ela termina na hora, e o suporte só volta quando você ligar o acesso de novo.",
+      "requests": "Pedidos da Formalie ({n})",
+      "asks": "{name}, do suporte da Formalie, pede acesso",
+      "requestEnds": "expira {when}",
+      "decline": "Recusar",
+      "approve": "Aprovar",
+      "sessions": "Sessões de suporte recentes",
+      "inAudit": "Trilha de auditoria",
+      "noSessions": "Nenhuma sessão de suporte ainda",
+      "noSessionsDesc": "Quando o suporte da Formalie abrir seu espaço de trabalho, aparece aqui.",
+      "live": "Em andamento",
+      "endedReason": {
+        "signed_out": "saiu",
+        "expired": "tempo esgotado",
+        "access_ended": "acesso desligado",
+        "not_used": "link não usado"
+      },
+      "endedAt": "terminou {when}"
     }
   }
 }

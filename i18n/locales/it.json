@@ -513,7 +513,8 @@
     "workspaceTitle": "Spazio di lavoro non trovato",
     "workspaceDesc": "Non esiste uno spazio su {host}. Controlla l'indirizzo o trova il tuo spazio.",
     "findWorkspace": "Trova il mio spazio",
-    "workspaceSuspendedDesc": "Questo spazio è sospeso. Contatta l’amministratore o il nostro supporto."
+    "workspaceSuspendedDesc": "Questo spazio è sospeso. Contatta l’amministratore o il nostro supporto.",
+    "workspaceSuspendedReason": "Questo spazio di lavoro è in pausa. Motivo: {reason}. Contatta il tuo amministratore o il nostro supporto."
   },
   "errors": {
     "FRM-GEN-1001": "Richiesta non valida.",
@@ -665,7 +666,13 @@
     "FRM-BILL-1002": "Questo pagamento è scaduto. Ricomincia.",
     "FRM-BILL-1004": "È in corso un’altra modifica di fatturazione per questo spazio di lavoro. Riprova tra un momento.",
     "FRM-BILL-1005": "Questa richiesta è già stata usata per altro. Ricarica la pagina e riprova.",
-    "FRM-BILL-1006": "Non è stato possibile verificare la notifica di pagamento."
+    "FRM-BILL-1006": "Non è stato possibile verificare la notifica di pagamento.",
+    "detail": {
+      "supportReadOnly": "Questa sessione di supporto è in sola lettura, quindi non è stato modificato nulla.",
+      "notInSupportSessions": "Le sessioni di supporto non possono aprire questa parte dello spazio di lavoro.",
+      "workspaceReadOnly": "Questo spazio di lavoro per ora è in sola lettura. Puoi ancora consultare ed esportare.",
+      "workspaceClosing": "Questo spazio di lavoro sta per chiudere, quindi non si può modificare nulla. Puoi ancora consultare ed esportare i tuoi dati."
+    }
   },
   "errorUi": {
     "reference": "Riferimento: {id}",
@@ -8102,6 +8109,14 @@
       "security_alert": {
         "title": "Accesso bloccato",
         "message": "Un accesso di {email} è stato bloccato: {reason}."
+      },
+      "support_request": {
+        "title": "Il supporto Formalie chiede l’accesso",
+        "message": "{staff} chiede l’accesso ({mode}, {hours}). Approva o rifiuta in Impostazioni → Sicurezza."
+      },
+      "platform_message": {
+        "title": "{title}",
+        "message": "{message}"
       }
     },
     "reason": {
@@ -9784,6 +9799,87 @@
       "updates": "questi aggiornamenti",
       "daily_digest": "il riepilogo giornaliero",
       "form_invitation": "gli inviti ai moduli"
+    }
+  },
+  "support": {
+    "banner": {
+      "region": "Avvisi da Formalie",
+      "read": "Il supporto Formalie ({name}) ha accesso in sola lettura fino alle {time}",
+      "write": "Il supporto Formalie ({name}) può apportare modifiche fino alle {time}",
+      "left": "Restano {time} in questa sessione di supporto",
+      "end": "Termina sessione"
+    },
+    "announcements": {
+      "dismiss": "Nascondi",
+      "more": "Leggi di più"
+    },
+    "page": {
+      "title": "Apertura della sessione di supporto",
+      "desc": "Verifica del link di supporto…",
+      "invalid": "Questo link di supporto non si può usare",
+      "invalidDesc": "È già stato usato, è scaduto oppure l’accesso è stato disattivato. Ottieni un nuovo link dall’admin della piattaforma.",
+      "error": "Non è stato possibile avviare la sessione di supporto",
+      "errorDesc": "Qualcosa è andato storto da parte nostra. Riprova il link tra un momento.",
+      "ended": {
+        "off": "Lo spazio di lavoro ha disattivato l’accesso del supporto",
+        "time": "La sessione di supporto è terminata",
+        "signed_out": "Hai lasciato la sessione di supporto"
+      },
+      "endedDesc": "Per guardare di nuovo, avvia una nuova sessione dall’admin della piattaforma."
+    },
+    "access": {
+      "title": "Accesso del supporto Formalie",
+      "hint": "Fai entrare il team Formalie nel tuo spazio di lavoro per un po’, per aiutarti con una domanda o un problema.",
+      "offExplain": "Disattivato. Il supporto Formalie non vede nulla del tuo spazio di lavoro. Attivalo per un po’ quando ci chiedi aiuto: vediamo ciò che vede un Proprietario, tutto ciò che facciamo è nel registro di audit e l’accesso termina da solo.",
+      "on": "Attivo",
+      "mode": {
+        "read": "Sola lettura",
+        "write": "Può modificare"
+      },
+      "modeHint": {
+        "read": "Il supporto può vedere moduli, risposte e impostazioni, senza cambiare nulla.",
+        "write": "Il supporto può anche sistemare le cose per te. Ogni modifica è nel registro di audit."
+      },
+      "timeLeft": "Tempo rimasto",
+      "grantedBy": "Attivato da",
+      "someone": "Un amministratore",
+      "ends": "Termina",
+      "extend": "Estendi o modifica",
+      "turnOff": "Disattiva",
+      "turnOn": "Attiva",
+      "save": "Salva",
+      "howLong": "Per quanto tempo",
+      "howMuch": "Cosa può fare il supporto",
+      "extendHint": "L’accesso terminerà tra {time}. Una sessione di supporto già aperta continua.",
+      "onHint": "Termina da solo. Puoi disattivarlo in qualsiasi momento, e ogni sessione di supporto aperta termina subito.",
+      "viewOnly": "Solo chi gestisce le impostazioni può modificarlo.",
+      "failed": "Non è stato possibile caricare l’accesso del supporto",
+      "requestGone": "Questa richiesta ha già avuto risposta o è scaduta",
+      "changed": "Accesso del supporto modificato",
+      "turnedOn": "Accesso del supporto attivato",
+      "turnedOff": "Accesso del supporto disattivato",
+      "approved": "Approvato: {name} ora può aprire una sessione di supporto",
+      "declined": "Richiesta rifiutata",
+      "offTitle": "Disattivare l’accesso del supporto?",
+      "offDesc": "Il supporto Formalie non potrà aprire il tuo spazio di lavoro finché non lo riattivi.",
+      "offDescLive": "In questo momento è aperta una sessione di supporto. Termina subito, e il supporto non potrà tornare finché non riattivi l’accesso.",
+      "requests": "Richieste da Formalie ({n})",
+      "asks": "{name} del supporto Formalie chiede l’accesso",
+      "requestEnds": "scade {when}",
+      "decline": "Rifiuta",
+      "approve": "Approva",
+      "sessions": "Sessioni di supporto recenti",
+      "inAudit": "Registro di audit",
+      "noSessions": "Ancora nessuna sessione di supporto",
+      "noSessionsDesc": "Quando il supporto Formalie apre il tuo spazio di lavoro, compare qui.",
+      "live": "In corso",
+      "endedReason": {
+        "signed_out": "uscito",
+        "expired": "tempo scaduto",
+        "access_ended": "accesso disattivato",
+        "not_used": "link non usato"
+      },
+      "endedAt": "terminata {when}"
     }
   }
 }

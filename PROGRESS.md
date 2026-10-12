@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-12 (F21 Dashboard done; the items left open in earlier phases built as leftovers L1 to L7 and waiting for the owner's check; website project files and the Formalie brand kit done; 2026-10-12: switching to the real backend started, phase SB)
+**Last updated:** 2026-10-12 (F21 Dashboard done; the items left open in earlier phases built as leftovers L1 to L7 and waiting for the owner's check; website project files and the Formalie brand kit done; 2026-10-12: switching to the real backend started, phase SB; Formalie support access screens for B16 built)
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend · ➖ dropped or merged
 
@@ -36,7 +36,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F23   | Platform admin (super admin, Formalie team)       | ➖     | separate projects (formaliePlatformFront / Back)                                |
 | F24   | Payments & subscriptions                          | ⏸️     | 65% (subscriptions, payment safety ✅; paused for Payoneer, then form payments) |
 | F25   | Help centre (FAQs, knowledge base, videos)        | ✅     | 100% (waiting for review)                                                       |
-| SB    | Switching to the real backend                     | 🟡     | M1 ✅; B0 to B9 areas being tested by the owner (2026-10-12) |
+| SB    | Switching to the real backend                     | 🟡     | M1 ✅; B0 to B9 areas being tested by the owner; B16 support access screens built (2026-10-12) |
 
 **Order of what is left (owner, 2026-10-10; F22 done with F16 on 2026-10-09):**
 
@@ -1161,6 +1161,7 @@ The backend (`formlyBackend`) is built in phases B0 to B17; its own tracker is `
 - ⬜ AI assistant (B13)
 - ⬜ Help centre and tours (B14)
 - ⬜ Subscriptions and Payoneer (B15, with F24)
+- ✅ Formalie support access, announcements and switches, frontend for B16 (2026-10-12): Settings → Security → Formalie support access (turn on for 1 hour, 24 hours or 7 days, read only or with changes, live countdown, extend, turn off, Formalie's requests with Approve / Decline, recent sessions); the `/support#ticket=…` page (ticket read from the fragment and cleared at once, memory-only session, no refresh cookie); the support banner above the shell for everyone (End session for the support person); Formalie's announcements by tone (dismissible, remembered per person); `useFeatureFlags()`; notices `support_request` and `platform_message` in the bell, 20 languages; friendly messages for read-only support sessions, areas closed to support, read-only and closing workspaces; the suspension reason on the paused-workspace page; mock in step. Checked in the browser against the real backend (redeem, banner on desktop and phone, read-only refusal, End session, access turned off); owner testing next
 
 ### SB M4, Frontend items found by the backend ⬜
 
@@ -1728,3 +1729,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-12 | Emails and B10 steps 1 and 2 | The approved email layout for every email; unsubscribe for optional emails, frontend, mock and backend (signed links, one-click headers, Undo, audit). Backend B10 step 1 (API service management) and step 2 (traffic and webhooks with retries and pause): 330 of 416 endpoints. Webhook contract row corrected to the webhook token. |
 | 2026-10-12 | Production hosting recorded | Owner: the backend API on `https://services.formalie.com`; front ends (portal, website, platform admin) as static SPA files on Cloudflare with a small Worker for form link previews and `/s/` short links (owner chose this over a Node server); a build-time reminder that no dev address is left in any build. Written into PRODUCTION-CHECKLIST (all 5 projects), 03-DECISIONS (frontend and backend) and SB M6. |
 | 2026-10-12 | Deployment guide; B14 and B16 synced | `docs/DEPLOYMENT-GUIDE.md` in all five projects, linked from PRODUCTION-CHECKLIST: 13 parts from accounts to day-to-day running, with systemd units, Nginx and Cloudflare set-up, front-end build and deploy (after B17), first launch checks and release / roll back. Backend B14 (help centre) and B16 (platform admin bridge, support access) committed in formlyBackend; shared docs synced; dev backend restarted at migration 0034. |
+| 2026-10-12 | SB / B16 | Formalie support access in the portal: the Settings → Security card (`SettingsSecuritySupportAccess`, requests and sessions lists), the `/support` page, the shell banners (`AppBanners`: live support session for everyone, End session for the support person, announcements), `useSupportSession`, `useAnnouncements`, `useFeatureFlags`, bell texts for `support_request` and `platform_message`, `errors.detail.*` picked by the error's details (`errorDetailKey`), the suspension reason on the paused-workspace page, all in 20 languages; mock routes for every B16 portal endpoint (requests seeded, the support link printed in the Nuxt terminal). Backend: `scripts/dev_support_ticket.py` plays the platform admin locally. Tests: `test/support/support.test.ts` (10). |

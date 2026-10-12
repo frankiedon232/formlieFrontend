@@ -513,7 +513,8 @@
     "workspaceTitle": "Werkruimte niet gevonden",
     "workspaceDesc": "Er is geen werkruimte op {host}. Controleer het adres of zoek je werkruimte.",
     "findWorkspace": "Mijn werkruimte zoeken",
-    "workspaceSuspendedDesc": "Deze werkruimte is gepauzeerd. Neem contact op met je beheerder of onze support."
+    "workspaceSuspendedDesc": "Deze werkruimte is gepauzeerd. Neem contact op met je beheerder of onze support.",
+    "workspaceSuspendedReason": "Deze werkruimte is gepauzeerd. Reden: {reason}. Neem contact op met je beheerder of ons supportteam."
   },
   "errors": {
     "FRM-GEN-1001": "Ongeldig verzoek.",
@@ -665,7 +666,13 @@
     "FRM-BILL-1002": "Deze betaalsessie is verlopen. Begin opnieuw.",
     "FRM-BILL-1004": "Er is al een andere factureringswijziging bezig voor deze werkruimte. Probeer het zo meteen opnieuw.",
     "FRM-BILL-1005": "Dit verzoek is al voor iets anders gebruikt. Laad de pagina opnieuw en probeer het nog eens.",
-    "FRM-BILL-1006": "De betaalmelding kon niet worden geverifieerd."
+    "FRM-BILL-1006": "De betaalmelding kon niet worden geverifieerd.",
+    "detail": {
+      "supportReadOnly": "Deze supportsessie is alleen-lezen, dus er is niets gewijzigd.",
+      "notInSupportSessions": "Supportsessies kunnen dit deel van de werkruimte niet openen.",
+      "workspaceReadOnly": "Deze werkruimte is voorlopig alleen-lezen. Bekijken en exporteren kan nog wel.",
+      "workspaceClosing": "Deze werkruimte wordt gesloten, dus er kan niets worden gewijzigd. Je kunt je gegevens nog bekijken en exporteren."
+    }
   },
   "errorUi": {
     "reference": "Referentie: {id}",
@@ -8102,6 +8109,14 @@
       "security_alert": {
         "title": "Inloggen geblokkeerd",
         "message": "Een inlogpoging van {email} is geblokkeerd: {reason}."
+      },
+      "support_request": {
+        "title": "Formalie-support vraagt om toegang",
+        "message": "{staff} vraagt om toegang ({mode}, {hours}). Keur goed of wijs af in Instellingen → Beveiliging."
+      },
+      "platform_message": {
+        "title": "{title}",
+        "message": "{message}"
       }
     },
     "reason": {
@@ -9784,6 +9799,87 @@
       "updates": "deze updates",
       "daily_digest": "de dagelijkse samenvatting",
       "form_invitation": "formulieruitnodigingen"
+    }
+  },
+  "support": {
+    "banner": {
+      "region": "Berichten van Formalie",
+      "read": "Formalie-support ({name}) heeft tot {time} alleen-lezen toegang",
+      "write": "Formalie-support ({name}) kan tot {time} wijzigingen maken",
+      "left": "Nog {time} in deze supportsessie",
+      "end": "Sessie beëindigen"
+    },
+    "announcements": {
+      "dismiss": "Verbergen",
+      "more": "Meer lezen"
+    },
+    "page": {
+      "title": "Supportsessie openen",
+      "desc": "Supportlink controleren…",
+      "invalid": "Deze supportlink kan niet worden gebruikt",
+      "invalidDesc": "Hij is al gebruikt, verlopen, of de toegang is uitgezet. Haal een nieuwe link op in de platformbeheer.",
+      "error": "De supportsessie kon niet starten",
+      "errorDesc": "Er ging bij ons iets mis. Probeer de link zo opnieuw.",
+      "ended": {
+        "off": "De werkruimte heeft de supporttoegang uitgezet",
+        "time": "De supportsessie is afgelopen",
+        "signed_out": "Je hebt de supportsessie verlaten"
+      },
+      "endedDesc": "Om opnieuw te kijken, start je een nieuwe sessie vanuit het platformbeheer."
+    },
+    "access": {
+      "title": "Toegang voor Formalie-support",
+      "hint": "Laat het Formalie-team een tijdje in je werkruimte, om te helpen met een vraag of probleem.",
+      "offExplain": "Uit. Formalie-support ziet niets in je werkruimte. Zet het een tijdje aan als je ons om hulp vraagt: we zien wat een Eigenaar ziet, alles wat we doen staat in de audittrail, en het stopt vanzelf.",
+      "on": "Aan",
+      "mode": {
+        "read": "Alleen lezen",
+        "write": "Mag wijzigen"
+      },
+      "modeHint": {
+        "read": "Support kan formulieren, reacties en instellingen bekijken en verandert niets.",
+        "write": "Support kan ook dingen voor je oplossen. Elke wijziging staat in de audittrail."
+      },
+      "timeLeft": "Resterende tijd",
+      "grantedBy": "Aangezet door",
+      "someone": "Een beheerder",
+      "ends": "Eindigt",
+      "extend": "Verlengen of wijzigen",
+      "turnOff": "Uitzetten",
+      "turnOn": "Aanzetten",
+      "save": "Opslaan",
+      "howLong": "Hoe lang",
+      "howMuch": "Wat support mag doen",
+      "extendHint": "De toegang eindigt over {time}. Een supportsessie die al open is, loopt door.",
+      "onHint": "Het stopt vanzelf. Je kunt het altijd uitzetten, dan stopt elke open supportsessie meteen.",
+      "viewOnly": "Alleen mensen die de instellingen beheren kunnen dit wijzigen.",
+      "failed": "Supporttoegang kon niet worden geladen",
+      "requestGone": "Dat verzoek is al beantwoord of verlopen",
+      "changed": "Supporttoegang gewijzigd",
+      "turnedOn": "Supporttoegang aangezet",
+      "turnedOff": "Supporttoegang uitgezet",
+      "approved": "Goedgekeurd: {name} kan nu een supportsessie openen",
+      "declined": "Verzoek afgewezen",
+      "offTitle": "Supporttoegang uitzetten?",
+      "offDesc": "Formalie-support kan je werkruimte niet openen tot je het weer aanzet.",
+      "offDescLive": "Er is nu een supportsessie open. Die stopt meteen, en support kan pas terug als je de toegang weer aanzet.",
+      "requests": "Verzoeken van Formalie ({n})",
+      "asks": "{name} van Formalie-support vraagt om toegang",
+      "requestEnds": "verloopt {when}",
+      "decline": "Afwijzen",
+      "approve": "Goedkeuren",
+      "sessions": "Recente supportsessies",
+      "inAudit": "Audittrail",
+      "noSessions": "Nog geen supportsessies",
+      "noSessionsDesc": "Als Formalie-support je werkruimte opent, zie je het hier.",
+      "live": "Actief",
+      "endedReason": {
+        "signed_out": "verlaten",
+        "expired": "tijd voorbij",
+        "access_ended": "toegang uitgezet",
+        "not_used": "link niet gebruikt"
+      },
+      "endedAt": "gestopt {when}"
     }
   }
 }

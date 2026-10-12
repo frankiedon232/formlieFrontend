@@ -513,7 +513,8 @@
     "workspaceTitle": "Espacio de trabajo no encontrado",
     "workspaceDesc": "No hay ningún espacio en {host}. Revisa la dirección o busca tu espacio.",
     "findWorkspace": "Buscar mi espacio",
-    "workspaceSuspendedDesc": "Este espacio está en pausa. Contacta con tu administrador o con soporte."
+    "workspaceSuspendedDesc": "Este espacio está en pausa. Contacta con tu administrador o con soporte.",
+    "workspaceSuspendedReason": "Este espacio de trabajo está en pausa. Motivo: {reason}. Contacta con tu administrador o con nuestro equipo de soporte."
   },
   "errors": {
     "FRM-GEN-1001": "Solicitud no válida.",
@@ -665,7 +666,13 @@
     "FRM-BILL-1002": "Este pago ha caducado. Empieza de nuevo.",
     "FRM-BILL-1004": "Hay otro cambio de facturación en curso para este espacio de trabajo. Inténtalo de nuevo en un momento.",
     "FRM-BILL-1005": "Esta solicitud ya se usó para otra cosa. Recarga la página e inténtalo de nuevo.",
-    "FRM-BILL-1006": "No se pudo verificar la notificación de pago."
+    "FRM-BILL-1006": "No se pudo verificar la notificación de pago.",
+    "detail": {
+      "supportReadOnly": "Esta sesión de soporte es de solo lectura, así que no se cambió nada.",
+      "notInSupportSessions": "Las sesiones de soporte no pueden abrir esta parte del espacio de trabajo.",
+      "workspaceReadOnly": "Este espacio de trabajo es de solo lectura por ahora. Aún puedes ver y exportar.",
+      "workspaceClosing": "Este espacio de trabajo se está cerrando, así que no se puede cambiar nada. Aún puedes ver y exportar tus datos."
+    }
   },
   "errorUi": {
     "reference": "Referencia: {id}",
@@ -8102,6 +8109,14 @@
       "security_alert": {
         "title": "Inicio de sesión bloqueado",
         "message": "Se bloqueó un inicio de sesión de {email}: {reason}."
+      },
+      "support_request": {
+        "title": "El soporte de Formalie pide acceso",
+        "message": "{staff} pide acceso ({mode}, {hours}). Apruébalo o recházalo en Configuración → Seguridad."
+      },
+      "platform_message": {
+        "title": "{title}",
+        "message": "{message}"
       }
     },
     "reason": {
@@ -9784,6 +9799,87 @@
       "updates": "estas novedades",
       "daily_digest": "el resumen diario",
       "form_invitation": "invitaciones a formularios"
+    }
+  },
+  "support": {
+    "banner": {
+      "region": "Avisos de Formalie",
+      "read": "El soporte de Formalie ({name}) tiene acceso de solo lectura hasta las {time}",
+      "write": "El soporte de Formalie ({name}) puede hacer cambios hasta las {time}",
+      "left": "Quedan {time} en esta sesión de soporte",
+      "end": "Terminar sesión"
+    },
+    "announcements": {
+      "dismiss": "Descartar",
+      "more": "Leer más"
+    },
+    "page": {
+      "title": "Abriendo la sesión de soporte",
+      "desc": "Comprobando el enlace de soporte…",
+      "invalid": "Este enlace de soporte no se puede usar",
+      "invalidDesc": "Ya se usó, caducó o se desactivó el acceso. Pide un enlace nuevo en el panel de la plataforma.",
+      "error": "No se pudo iniciar la sesión de soporte",
+      "errorDesc": "Algo falló por nuestra parte. Prueba el enlace de nuevo en un momento.",
+      "ended": {
+        "off": "El espacio de trabajo desactivó el acceso de soporte",
+        "time": "La sesión de soporte ha terminado",
+        "signed_out": "Saliste de la sesión de soporte"
+      },
+      "endedDesc": "Para volver a mirar, inicia una sesión nueva desde el panel de la plataforma."
+    },
+    "access": {
+      "title": "Acceso del soporte de Formalie",
+      "hint": "Deja entrar al equipo de Formalie en tu espacio de trabajo durante un tiempo para ayudarte con una duda o un problema.",
+      "offExplain": "Desactivado. El soporte de Formalie no ve nada de tu espacio de trabajo. Actívalo un tiempo cuando nos pidas ayuda: vemos lo que ve un Propietario, todo lo que hacemos queda en el registro de auditoría y termina solo.",
+      "on": "Activado",
+      "mode": {
+        "read": "Solo lectura",
+        "write": "Puede hacer cambios"
+      },
+      "modeHint": {
+        "read": "El soporte puede ver formularios, respuestas y configuración, y no cambia nada.",
+        "write": "El soporte también puede arreglar cosas por ti. Cada cambio queda en el registro de auditoría."
+      },
+      "timeLeft": "Tiempo restante",
+      "grantedBy": "Activado por",
+      "someone": "Un administrador",
+      "ends": "Termina",
+      "extend": "Ampliar o cambiar",
+      "turnOff": "Desactivar",
+      "turnOn": "Activar",
+      "save": "Guardar",
+      "howLong": "Durante cuánto tiempo",
+      "howMuch": "Qué puede hacer el soporte",
+      "extendHint": "El acceso terminará dentro de {time}. Una sesión de soporte ya abierta continúa.",
+      "onHint": "Termina solo. Puedes desactivarlo cuando quieras, y cualquier sesión de soporte abierta termina al momento.",
+      "viewOnly": "Solo quienes gestionan la configuración pueden cambiar esto.",
+      "failed": "No se pudo cargar el acceso de soporte",
+      "requestGone": "Esa solicitud ya se respondió o ha caducado",
+      "changed": "Acceso de soporte cambiado",
+      "turnedOn": "Acceso de soporte activado",
+      "turnedOff": "Acceso de soporte desactivado",
+      "approved": "Aprobado: {name} ya puede abrir una sesión de soporte",
+      "declined": "Solicitud rechazada",
+      "offTitle": "¿Desactivar el acceso de soporte?",
+      "offDesc": "El soporte de Formalie no podrá abrir tu espacio de trabajo hasta que lo vuelvas a activar.",
+      "offDescLive": "Ahora mismo hay una sesión de soporte abierta. Termina al momento y el soporte no podrá volver hasta que reactives el acceso.",
+      "requests": "Solicitudes de Formalie ({n})",
+      "asks": "{name}, del soporte de Formalie, pide acceso",
+      "requestEnds": "caduca {when}",
+      "decline": "Rechazar",
+      "approve": "Aprobar",
+      "sessions": "Sesiones de soporte recientes",
+      "inAudit": "Registro de auditoría",
+      "noSessions": "Aún no hay sesiones de soporte",
+      "noSessionsDesc": "Cuando el soporte de Formalie abra tu espacio de trabajo, aparecerá aquí.",
+      "live": "En curso",
+      "endedReason": {
+        "signed_out": "salió",
+        "expired": "se acabó el tiempo",
+        "access_ended": "acceso desactivado",
+        "not_used": "enlace sin usar"
+      },
+      "endedAt": "terminó {when}"
     }
   }
 }

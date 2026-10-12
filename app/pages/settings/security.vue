@@ -2,7 +2,8 @@
   Settings → Security (F14 M3): sign-in activity on top (last 14 days, latest attempts, links to the
   audit trail), then the password rules, how long sessions last with who is signed in now, and the IP
   allowlist. Save applies the rules at once: new passwords, every request (idle and maximum session
-  length, allowed networks) and sign-in (expired passwords set a new one first).
+  length, allowed networks) and sign-in (expired passwords set a new one first). Last, Formalie support
+  access (B16), which acts at once instead of through Save.
 -->
 <script setup lang="ts">
 import type { SecurityActivity } from '#shared/types/settings'
@@ -45,6 +46,10 @@ onMounted(loadActivity)
         <SettingsBlock :title="t('settings.security.network')" :description="t('settings.security.networkHint')" icon="i-lucide-network">
           <SettingsSecurityNetwork v-model="draft.ip_allowlist" :my-ip="activity?.my_ip ?? null" />
           <p v-if="errorOf('ip_allowlist.entries')" class="text-xs text-error">{{ errorOf('ip_allowlist.entries') }}</p>
+        </SettingsBlock>
+        <!-- Acts at once (not through Save): Formalie support access with the workspace's consent (B16) -->
+        <SettingsBlock :title="t('support.access.title')" :description="t('support.access.hint')" icon="i-lucide-life-buoy">
+          <SettingsSecuritySupportAccess />
         </SettingsBlock>
       </div>
     </div>

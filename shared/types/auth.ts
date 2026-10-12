@@ -31,6 +31,8 @@ export interface TenantPublicProfile {
   /** The workspace's password rules, for new passwords (reset); absent = the default. */
   password_policy?: PasswordPolicy
   status: TenantStatus
+  /** B16: when suspended, the reason the Formalie team gave (else null), shown on the sign-in page. */
+  status_reason?: string | null
 }
 
 /** A workspace's password rules (Settings → Security; manage.* uses the default). */
@@ -68,6 +70,8 @@ export interface SessionUser {
   language?: string | null
   time_zone?: string | null
   date_format?: DateFormat | null
+  /** Formalie support's session in this workspace (B16): acts with the Owner's role, no refresh cookie. */
+  support?: boolean
 }
 
 export interface SessionTenant {

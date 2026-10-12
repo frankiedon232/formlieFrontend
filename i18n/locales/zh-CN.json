@@ -513,7 +513,8 @@
     "workspaceTitle": "未找到工作区",
     "workspaceDesc": "{host} 上没有工作区。请检查地址或查找您的工作区。",
     "findWorkspace": "查找我的工作区",
-    "workspaceSuspendedDesc": "该工作区已暂停。请联系管理员或我们的支持团队。"
+    "workspaceSuspendedDesc": "该工作区已暂停。请联系管理员或我们的支持团队。",
+    "workspaceSuspendedReason": "此工作区已暂停。原因：{reason}。请联系你的管理员或我们的支持团队。"
   },
   "errors": {
     "FRM-GEN-1001": "请求无效。",
@@ -665,7 +666,13 @@
     "FRM-BILL-1002": "此次结账已过期。请重新开始。",
     "FRM-BILL-1004": "此工作区的另一项账单变更正在进行中。请稍后再试。",
     "FRM-BILL-1005": "此请求已被用于其他用途。请刷新页面后重试。",
-    "FRM-BILL-1006": "无法验证付款通知。"
+    "FRM-BILL-1006": "无法验证付款通知。",
+    "detail": {
+      "supportReadOnly": "此支持会话为只读，因此没有任何更改。",
+      "notInSupportSessions": "支持会话无法打开工作区的这一部分。",
+      "workspaceReadOnly": "此工作区目前为只读。你仍然可以查看和导出。",
+      "workspaceClosing": "此工作区正在关闭，因此无法进行任何更改。你仍然可以查看和导出你的数据。"
+    }
   },
   "errorUi": {
     "reference": "参考编号：{id}",
@@ -8102,6 +8109,14 @@
       "security_alert": {
         "title": "登录已被阻止",
         "message": "{email} 的登录已被阻止：{reason}。"
+      },
+      "support_request": {
+        "title": "Formalie 支持人员请求访问",
+        "message": "{staff} 请求访问（{mode}，{hours}）。请在 设置 → 安全 中批准或拒绝。"
+      },
+      "platform_message": {
+        "title": "{title}",
+        "message": "{message}"
       }
     },
     "reason": {
@@ -9784,6 +9799,87 @@
       "updates": "这些通知",
       "daily_digest": "每日摘要",
       "form_invitation": "表单邀请"
+    }
+  },
+  "support": {
+    "banner": {
+      "region": "来自 Formalie 的通知",
+      "read": "Formalie 支持人员（{name}）在 {time} 前拥有只读访问权限",
+      "write": "Formalie 支持人员（{name}）在 {time} 前可以进行更改",
+      "left": "本次支持会话还剩 {time}",
+      "end": "结束会话"
+    },
+    "announcements": {
+      "dismiss": "关闭",
+      "more": "了解更多"
+    },
+    "page": {
+      "title": "正在打开支持会话",
+      "desc": "正在检查支持链接…",
+      "invalid": "此支持链接无法使用",
+      "invalidDesc": "它已被使用、已过期，或访问已被关闭。请从平台管理获取新链接。",
+      "error": "无法启动支持会话",
+      "errorDesc": "我们这边出了点问题。请稍后再试一次链接。",
+      "ended": {
+        "off": "工作区已关闭支持访问",
+        "time": "支持会话已结束",
+        "signed_out": "你已离开支持会话"
+      },
+      "endedDesc": "如需再次查看，请从平台管理开始新的会话。"
+    },
+    "access": {
+      "title": "Formalie 支持访问",
+      "hint": "让 Formalie 团队在一段时间内进入你的工作区，帮助解答问题或解决故障。",
+      "offExplain": "已关闭。Formalie 支持人员看不到你工作区中的任何内容。向我们求助时请开启一段时间：我们看到的与所有者相同，我们的每个操作都记录在审计日志中，并且到期自动结束。",
+      "on": "已开启",
+      "mode": {
+        "read": "只读",
+        "write": "可以更改"
+      },
+      "modeHint": {
+        "read": "支持人员可以查看表单、回复和设置，不做任何更改。",
+        "write": "支持人员还可以替你修复问题。每项更改都记录在审计日志中。"
+      },
+      "timeLeft": "剩余时间",
+      "grantedBy": "开启人",
+      "someone": "一位管理员",
+      "ends": "结束于",
+      "extend": "延长或更改",
+      "turnOff": "关闭",
+      "turnOn": "开启",
+      "save": "保存",
+      "howLong": "时长",
+      "howMuch": "支持人员可以做什么",
+      "extendHint": "访问将在 {time} 后结束。已打开的支持会话会继续。",
+      "onHint": "到期自动结束。你可以随时关闭，关闭后所有打开的支持会话会立即结束。",
+      "viewOnly": "只有管理设置的人可以更改此项。",
+      "failed": "无法加载支持访问",
+      "requestGone": "该请求已被处理或已过期",
+      "changed": "支持访问已更改",
+      "turnedOn": "支持访问已开启",
+      "turnedOff": "支持访问已关闭",
+      "approved": "已批准：{name} 现在可以打开支持会话",
+      "declined": "已拒绝请求",
+      "offTitle": "关闭支持访问？",
+      "offDesc": "在你再次开启之前，Formalie 支持人员无法打开你的工作区。",
+      "offDescLive": "当前有一个支持会话正在进行。它会立即结束，在你再次开启访问之前支持人员无法返回。",
+      "requests": "来自 Formalie 的请求（{n}）",
+      "asks": "Formalie 支持人员 {name} 请求访问",
+      "requestEnds": "{when}过期",
+      "decline": "拒绝",
+      "approve": "批准",
+      "sessions": "最近的支持会话",
+      "inAudit": "审计日志",
+      "noSessions": "还没有支持会话",
+      "noSessionsDesc": "当 Formalie 支持人员打开你的工作区时，会显示在这里。",
+      "live": "进行中",
+      "endedReason": {
+        "signed_out": "已离开",
+        "expired": "时间已到",
+        "access_ended": "访问已关闭",
+        "not_used": "链接未使用"
+      },
+      "endedAt": "{when}结束"
     }
   }
 }

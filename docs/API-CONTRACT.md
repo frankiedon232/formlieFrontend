@@ -494,7 +494,7 @@ Read-only for every signed-in person (no permission needed); written and publish
 
 ## Formalie support access, announcements and switches (B16, platform admin bridge)
 
-Backend built 2026-10-12 (PLATFORM-ADMIN-INTEGRATION §3); the portal screens are still to build. Through the encrypted channel like every portal call; ids are references.
+Backend built 2026-10-12 (PLATFORM-ADMIN-INTEGRATION §3); portal screens built 2026-10-12 (Settings → Security → Formalie support access, `/support`, the shell banners) and the mock answers every route below. Through the encrypted channel like every portal call; ids are references.
 
 | Method | Path | Body · answer |
 | --- | --- | --- |

@@ -64,6 +64,7 @@ import * as notifications from './routes/notifications'
 import * as optionLists from './routes/optionLists'
 import * as privacy from './routes/dataPrivacy'
 import * as settings from './routes/settings'
+import * as support from './routes/support'
 import * as org from './routes/org'
 import * as uploads from './routes/uploads'
 import { csrf, handshake, health } from './routes/system'
@@ -102,6 +103,12 @@ const router = createRouter()
   .get('/auth/oauth/:provider/start', auth.oauthStart)
   .get('/auth/sso/start', sso.ssoStart)
   .get('/me', auth.me)
+  // Formalie support access, announcements and switches (B16)
+  .post('/auth/support/redeem', support.redeemSupportTicket)
+  .post('/auth/support/end', support.endSupportSession)
+  .get('/support-access/status', support.supportStatus)
+  .get('/platform/announcements', support.platformAnnouncements)
+  .get('/platform/feature-flags', support.platformFeatureFlags)
   // forms
   .get('/forms', forms.listForms)
   .post('/forms', forms.createForm)
@@ -474,6 +481,10 @@ const router = createRouter()
   .get('/settings/security/sessions', settings.listSessions)
   .post('/settings/security/sessions/sign-out', settings.signOutSessions)
   .get('/settings/security/activity', settings.securityActivity)
+  .get('/settings/security/support-access', support.getSupportAccess)
+  .post('/settings/security/support-access', support.allowSupportAccess)
+  .delete('/settings/security/support-access', support.revokeSupportAccess)
+  .post('/settings/security/support-access/requests/:id/decline', support.declineSupportRequest)
   .get('/settings/:section', settings.getSection)
   .patch('/settings/:section', settings.patchSection)
   .get('/onboarding', onboarding.getOnboarding)

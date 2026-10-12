@@ -513,7 +513,8 @@
     "workspaceTitle": "Eneo la kazi halikupatikana",
     "workspaceDesc": "Hakuna eneo la kazi kwenye {host}. Kagua anwani au tafuta eneo lako la kazi.",
     "findWorkspace": "Tafuta eneo langu la kazi",
-    "workspaceSuspendedDesc": "Eneo hili la kazi limesitishwa. Wasiliana na msimamizi au timu yetu ya msaada."
+    "workspaceSuspendedDesc": "Eneo hili la kazi limesitishwa. Wasiliana na msimamizi au timu yetu ya msaada.",
+    "workspaceSuspendedReason": "Eneo hili la kazi limesitishwa. Sababu: {reason}. Wasiliana na msimamizi wako au timu yetu ya usaidizi."
   },
   "errors": {
     "FRM-GEN-1001": "Ombi si sahihi.",
@@ -665,7 +666,13 @@
     "FRM-BILL-1002": "Malipo haya yameisha muda. Anza tena.",
     "FRM-BILL-1004": "Mabadiliko mengine ya malipo kwa eneo hili la kazi yanaendelea. Jaribu tena baada ya muda mfupi.",
     "FRM-BILL-1005": "Ombi hili tayari limetumika kwa jambo lingine. Pakia upya ukurasa na ujaribu tena.",
-    "FRM-BILL-1006": "Arifa ya malipo haikuweza kuthibitishwa."
+    "FRM-BILL-1006": "Arifa ya malipo haikuweza kuthibitishwa.",
+    "detail": {
+      "supportReadOnly": "Kipindi hiki cha usaidizi ni cha kusoma tu, kwa hiyo hakuna kilichobadilishwa.",
+      "notInSupportSessions": "Vipindi vya usaidizi haviwezi kufungua sehemu hii ya eneo la kazi.",
+      "workspaceReadOnly": "Eneo hili la kazi ni la kusoma tu kwa sasa. Bado unaweza kuangalia na kuhamisha.",
+      "workspaceClosing": "Eneo hili la kazi linafungwa, kwa hiyo hakuna kinachoweza kubadilishwa. Bado unaweza kuangalia na kuhamisha data yako."
+    }
   },
   "errorUi": {
     "reference": "Kumbukumbu: {id}",
@@ -8102,6 +8109,14 @@
       "security_alert": {
         "title": "Kuingia kumezuiwa",
         "message": "Kuingia kwa {email} kumezuiwa: {reason}."
+      },
+      "support_request": {
+        "title": "Usaidizi wa Formalie unaomba ruhusa",
+        "message": "{staff} anaomba ruhusa ({mode}, {hours}). Idhinisha au kataa katika Mipangilio → Usalama."
+      },
+      "platform_message": {
+        "title": "{title}",
+        "message": "{message}"
       }
     },
     "reason": {
@@ -9784,6 +9799,87 @@
       "updates": "taarifa hizi",
       "daily_digest": "muhtasari wa kila siku",
       "form_invitation": "mialiko ya fomu"
+    }
+  },
+  "support": {
+    "banner": {
+      "region": "Taarifa kutoka Formalie",
+      "read": "Usaidizi wa Formalie ({name}) una ruhusa ya kusoma tu hadi {time}",
+      "write": "Usaidizi wa Formalie ({name}) unaweza kufanya mabadiliko hadi {time}",
+      "left": "Zimebaki {time} katika kipindi hiki cha usaidizi",
+      "end": "Maliza kipindi"
+    },
+    "announcements": {
+      "dismiss": "Ondoa",
+      "more": "Soma zaidi"
+    },
+    "page": {
+      "title": "Inafungua kipindi cha usaidizi",
+      "desc": "Inakagua kiungo cha usaidizi…",
+      "invalid": "Kiungo hiki cha usaidizi hakiwezi kutumika",
+      "invalidDesc": "Kimeshatumika, muda wake umekwisha, au ruhusa imezimwa. Pata kiungo kipya kutoka kwa msimamizi wa jukwaa.",
+      "error": "Kipindi cha usaidizi hakikuweza kuanza",
+      "errorDesc": "Kuna hitilafu upande wetu. Jaribu kiungo tena baada ya muda mfupi.",
+      "ended": {
+        "off": "Eneo la kazi limezima ruhusa ya usaidizi",
+        "time": "Kipindi cha usaidizi kimekwisha",
+        "signed_out": "Umetoka kwenye kipindi cha usaidizi"
+      },
+      "endedDesc": "Ili kuangalia tena, anzisha kipindi kipya kutoka kwa msimamizi wa jukwaa."
+    },
+    "access": {
+      "title": "Ruhusa ya usaidizi wa Formalie",
+      "hint": "Ruhusu timu ya Formalie iingie kwenye eneo lako la kazi kwa muda, ili kusaidia kwa swali au tatizo.",
+      "offExplain": "Imezimwa. Usaidizi wa Formalie hauoni chochote katika eneo lako la kazi. Iwashe kwa muda unapotuomba msaada: tunaona kile Mmiliki anachoona, kila tunachofanya kiko kwenye kumbukumbu za ukaguzi, na inaisha yenyewe.",
+      "on": "Imewashwa",
+      "mode": {
+        "read": "Kusoma tu",
+        "write": "Inaweza kubadilisha"
+      },
+      "modeHint": {
+        "read": "Usaidizi unaweza kuangalia fomu, majibu na mipangilio, bila kubadilisha chochote.",
+        "write": "Usaidizi unaweza pia kukurekebishia mambo. Kila badiliko liko kwenye kumbukumbu za ukaguzi."
+      },
+      "timeLeft": "Muda uliobaki",
+      "grantedBy": "Imewashwa na",
+      "someone": "Msimamizi",
+      "ends": "Inaisha",
+      "extend": "Ongeza au badilisha",
+      "turnOff": "Zima",
+      "turnOn": "Washa",
+      "save": "Hifadhi",
+      "howLong": "Kwa muda gani",
+      "howMuch": "Usaidizi unaweza kufanya nini",
+      "extendHint": "Ruhusa itaisha baada ya {time} kuanzia sasa. Kipindi cha usaidizi kilicho wazi kinaendelea.",
+      "onHint": "Inaisha yenyewe. Unaweza kuizima wakati wowote, na kila kipindi cha usaidizi kilicho wazi kinaisha mara moja.",
+      "viewOnly": "Ni wanaosimamia mipangilio tu wanaoweza kubadilisha hili.",
+      "failed": "Ruhusa ya usaidizi haikuweza kupakiwa",
+      "requestGone": "Ombi hilo limeshajibiwa au muda wake umekwisha",
+      "changed": "Ruhusa ya usaidizi imebadilishwa",
+      "turnedOn": "Ruhusa ya usaidizi imewashwa",
+      "turnedOff": "Ruhusa ya usaidizi imezimwa",
+      "approved": "Imeidhinishwa: {name} sasa anaweza kufungua kipindi cha usaidizi",
+      "declined": "Ombi limekataliwa",
+      "offTitle": "Zima ruhusa ya usaidizi?",
+      "offDesc": "Usaidizi wa Formalie hautaweza kufungua eneo lako la kazi hadi uiwashe tena.",
+      "offDescLive": "Kipindi cha usaidizi kiko wazi sasa hivi. Kinaisha mara moja, na usaidizi hautaweza kurudi hadi uwashe ruhusa tena.",
+      "requests": "Maombi kutoka Formalie ({n})",
+      "asks": "{name} wa usaidizi wa Formalie anaomba ruhusa",
+      "requestEnds": "inaisha {when}",
+      "decline": "Kataa",
+      "approve": "Idhinisha",
+      "sessions": "Vipindi vya usaidizi vya hivi karibuni",
+      "inAudit": "Kumbukumbu za ukaguzi",
+      "noSessions": "Bado hakuna vipindi vya usaidizi",
+      "noSessionsDesc": "Usaidizi wa Formalie ukifungua eneo lako la kazi, itaonekana hapa.",
+      "live": "Kinaendelea",
+      "endedReason": {
+        "signed_out": "ametoka",
+        "expired": "muda umekwisha",
+        "access_ended": "ruhusa imezimwa",
+        "not_used": "kiungo hakikutumika"
+      },
+      "endedAt": "kiliisha {when}"
     }
   }
 }

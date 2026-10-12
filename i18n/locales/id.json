@@ -513,7 +513,8 @@
     "workspaceTitle": "Ruang kerja tidak ditemukan",
     "workspaceDesc": "Tidak ada ruang kerja di {host}. Periksa alamatnya atau temukan ruang kerja Anda.",
     "findWorkspace": "Temukan ruang kerja saya",
-    "workspaceSuspendedDesc": "Ruang kerja ini dijeda. Hubungi administrator atau tim dukungan kami."
+    "workspaceSuspendedDesc": "Ruang kerja ini dijeda. Hubungi administrator atau tim dukungan kami.",
+    "workspaceSuspendedReason": "Ruang kerja ini dijeda. Alasan: {reason}. Hubungi administrator Anda atau tim dukungan kami."
   },
   "errors": {
     "FRM-GEN-1001": "Permintaan tidak valid.",
@@ -665,7 +666,13 @@
     "FRM-BILL-1002": "Pembayaran ini sudah kedaluwarsa. Mulai lagi.",
     "FRM-BILL-1004": "Perubahan penagihan lain untuk ruang kerja ini sedang berlangsung. Coba lagi sebentar lagi.",
     "FRM-BILL-1005": "Permintaan ini sudah dipakai untuk hal lain. Muat ulang halaman dan coba lagi.",
-    "FRM-BILL-1006": "Pemberitahuan pembayaran tidak dapat diverifikasi."
+    "FRM-BILL-1006": "Pemberitahuan pembayaran tidak dapat diverifikasi.",
+    "detail": {
+      "supportReadOnly": "Sesi dukungan ini baca saja, jadi tidak ada yang diubah.",
+      "notInSupportSessions": "Sesi dukungan tidak dapat membuka bagian ruang kerja ini.",
+      "workspaceReadOnly": "Ruang kerja ini baca saja untuk sementara. Anda tetap dapat melihat dan mengekspor.",
+      "workspaceClosing": "Ruang kerja ini sedang ditutup, jadi tidak ada yang dapat diubah. Anda tetap dapat melihat dan mengekspor data Anda."
+    }
   },
   "errorUi": {
     "reference": "Referensi: {id}",
@@ -8102,6 +8109,14 @@
       "security_alert": {
         "title": "Masuk diblokir",
         "message": "Percobaan masuk oleh {email} diblokir: {reason}."
+      },
+      "support_request": {
+        "title": "Dukungan Formalie meminta akses",
+        "message": "{staff} meminta akses ({mode}, {hours}). Setujui atau tolak di Pengaturan → Keamanan."
+      },
+      "platform_message": {
+        "title": "{title}",
+        "message": "{message}"
       }
     },
     "reason": {
@@ -9784,6 +9799,87 @@
       "updates": "pembaruan ini",
       "daily_digest": "ringkasan harian",
       "form_invitation": "undangan formulir"
+    }
+  },
+  "support": {
+    "banner": {
+      "region": "Pemberitahuan dari Formalie",
+      "read": "Dukungan Formalie ({name}) punya akses baca saja sampai {time}",
+      "write": "Dukungan Formalie ({name}) dapat membuat perubahan sampai {time}",
+      "left": "Sisa {time} dalam sesi dukungan ini",
+      "end": "Akhiri sesi"
+    },
+    "announcements": {
+      "dismiss": "Tutup",
+      "more": "Baca selengkapnya"
+    },
+    "page": {
+      "title": "Membuka sesi dukungan",
+      "desc": "Memeriksa tautan dukungan…",
+      "invalid": "Tautan dukungan ini tidak dapat digunakan",
+      "invalidDesc": "Tautan sudah dipakai, kedaluwarsa, atau akses telah dimatikan. Minta tautan baru dari admin platform.",
+      "error": "Sesi dukungan tidak dapat dimulai",
+      "errorDesc": "Ada masalah di pihak kami. Coba tautannya lagi sebentar lagi.",
+      "ended": {
+        "off": "Ruang kerja mematikan akses dukungan",
+        "time": "Sesi dukungan telah berakhir",
+        "signed_out": "Anda keluar dari sesi dukungan"
+      },
+      "endedDesc": "Untuk melihat lagi, mulai sesi baru dari admin platform."
+    },
+    "access": {
+      "title": "Akses dukungan Formalie",
+      "hint": "Izinkan tim Formalie masuk ke ruang kerja Anda untuk sementara, untuk membantu pertanyaan atau masalah.",
+      "offExplain": "Mati. Dukungan Formalie tidak dapat melihat apa pun di ruang kerja Anda. Nyalakan sebentar saat Anda meminta bantuan: kami melihat apa yang dilihat Pemilik, semua yang kami lakukan tercatat di jejak audit, dan akses berakhir dengan sendirinya.",
+      "on": "Aktif",
+      "mode": {
+        "read": "Baca saja",
+        "write": "Boleh mengubah"
+      },
+      "modeHint": {
+        "read": "Dukungan dapat melihat formulir, respons, dan pengaturan, tanpa mengubah apa pun.",
+        "write": "Dukungan juga dapat memperbaiki sesuatu untuk Anda. Setiap perubahan tercatat di jejak audit."
+      },
+      "timeLeft": "Sisa waktu",
+      "grantedBy": "Dinyalakan oleh",
+      "someone": "Seorang admin",
+      "ends": "Berakhir",
+      "extend": "Perpanjang atau ubah",
+      "turnOff": "Matikan",
+      "turnOn": "Nyalakan",
+      "save": "Simpan",
+      "howLong": "Berapa lama",
+      "howMuch": "Apa yang boleh dilakukan dukungan",
+      "extendHint": "Akses akan berakhir {time} dari sekarang. Sesi dukungan yang sudah terbuka tetap berjalan.",
+      "onHint": "Akses berakhir dengan sendirinya. Anda dapat mematikannya kapan saja, dan sesi dukungan yang terbuka langsung berakhir.",
+      "viewOnly": "Hanya orang yang mengelola pengaturan yang dapat mengubah ini.",
+      "failed": "Akses dukungan tidak dapat dimuat",
+      "requestGone": "Permintaan itu sudah dijawab atau kedaluwarsa",
+      "changed": "Akses dukungan diubah",
+      "turnedOn": "Akses dukungan dinyalakan",
+      "turnedOff": "Akses dukungan dimatikan",
+      "approved": "Disetujui: {name} sekarang dapat membuka sesi dukungan",
+      "declined": "Permintaan ditolak",
+      "offTitle": "Matikan akses dukungan?",
+      "offDesc": "Dukungan Formalie tidak dapat membuka ruang kerja Anda sampai Anda menyalakannya lagi.",
+      "offDescLive": "Ada sesi dukungan yang sedang terbuka. Sesi itu langsung berakhir, dan dukungan tidak dapat kembali sampai Anda menyalakan akses lagi.",
+      "requests": "Permintaan dari Formalie ({n})",
+      "asks": "{name} dari dukungan Formalie meminta akses",
+      "requestEnds": "kedaluwarsa {when}",
+      "decline": "Tolak",
+      "approve": "Setujui",
+      "sessions": "Sesi dukungan terbaru",
+      "inAudit": "Jejak audit",
+      "noSessions": "Belum ada sesi dukungan",
+      "noSessionsDesc": "Saat dukungan Formalie membuka ruang kerja Anda, akan tampil di sini.",
+      "live": "Berlangsung",
+      "endedReason": {
+        "signed_out": "keluar",
+        "expired": "waktu habis",
+        "access_ended": "akses dimatikan",
+        "not_used": "tautan tidak dipakai"
+      },
+      "endedAt": "berakhir {when}"
     }
   }
 }

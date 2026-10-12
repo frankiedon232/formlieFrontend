@@ -2,13 +2,13 @@
  * The signed-in person's notifications (F14 M4): one shared feed for the bell and its panel, checked
  * every minute in the background and whenever the panel opens. Texts come from `kind` + `params`.
  */
-import type { AppNotification, NotificationEvent, NotificationFeed } from '#shared/types/notifications'
+import type { AppNotification, FeedEvent, NotificationFeed } from '#shared/types/notifications'
 
 const feed = ref<NotificationFeed | null>(null)
 const failed = ref(false)
 let started = false
 
-export const NOTIFICATION_ICONS: Record<NotificationEvent, string> = {
+export const NOTIFICATION_ICONS: Record<FeedEvent, string> = {
   response_new: 'i-lucide-inbox',
   response_duplicate: 'i-lucide-copy',
   form_limit: 'i-lucide-gauge',
@@ -16,6 +16,8 @@ export const NOTIFICATION_ICONS: Record<NotificationEvent, string> = {
   export_ready: 'i-lucide-file-down',
   webhook_failing: 'i-lucide-webhook',
   security_alert: 'i-lucide-shield-alert',
+  support_request: 'i-lucide-life-buoy',
+  platform_message: 'i-lucide-megaphone',
 }
 
 export function useNotifications() {
@@ -56,6 +58,11 @@ export function useNotifications() {
   /** The translated title and line of a notification. */
   function textOf(item: AppNotification) {
     const params = { ...item.params, date: item.params.date ? dateTime(String(item.params.date)) : '', reason: item.params.reason ? t(`notifications.reason.${item.params.reason}`) : '' }
+    // Formalie support asks for access (B16): how much and how long in the reader's words
+    if (item.event === 'support_request') {
+      const hours = Number(item.params.hours) || 0
+      Object.assign(params, { mode: t(`support.access.mode.${item.params.mode === 'write' ? 'write' : 'read'}`), hours: hours >= 24 ? t('settings.security.days', { n: hours / 24 }, hours / 24) : t('settings.security.hours', { n: hours }, hours) })
+    }
     return { title: t(`notifications.event.${item.event}.title`, params), message: t(`notifications.event.${item.event}.message`, params) }
   }
 

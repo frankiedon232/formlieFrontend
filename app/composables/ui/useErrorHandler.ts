@@ -24,6 +24,9 @@ export function useErrorHandler() {
   }
 
   function messageFor(error: ApiError): string {
+    // Some codes mean different things by their details (support session read only, workspace closing…)
+    const detailKey = errorDetailKey(error.code, error.details)
+    if (detailKey && te(detailKey)) return t(detailKey)
     const key = `errors.${error.code}`
     if (te(key)) return t(key)
     return error.message || t('errors.FRM-GEN-5000')
@@ -43,6 +46,12 @@ export function useErrorHandler() {
         icon: 'i-lucide-gem',
         actions: admin ? [{ label: t('billing.seePlans'), icon: 'i-lucide-arrow-up-right', color: 'neutral', variant: 'outline', onClick: () => void navigateTo('/settings/plans') }] : undefined,
       })
+      return normalised
+    }
+
+    // Not a fault either: a read-only support session or a workspace the Formalie team set read only
+    if (errorDetailKey(normalised.code, normalised.details)) {
+      toast.add({ title: options.title ?? messageFor(normalised), color: 'warning', icon: 'i-lucide-lock' })
       return normalised
     }
 
