@@ -72,5 +72,11 @@
     "code_locked": "zu viele falsche Codes",
     "account_disabled": "das Konto ist deaktiviert",
     "password_expired": "das Passwort ist abgelaufen"
+  },
+  "account": {
+    "password_social": {
+      "title": "Jemand hat ein Passwort für Ihr {{workspace}}-Konto versucht",
+      "message": "Jemand hat versucht, sich als {{email}} mit einem Passwort bei {{workspace}} anzumelden. Ihr Konto meldet sich mit {{provider}} an, daher wurde kein Passwort akzeptiert.\n\nNutzen Sie zum Anmelden die Schaltfläche {{provider}} auf der Anmeldeseite. Wenn Sie auch ein Passwort nutzen möchten, wählen Sie dort \"Passwort vergessen?\" und legen Sie eines fest.\n\nWaren Sie das nicht, hat sich nichts geändert und Sie müssen nichts tun."
+    }
   }
 }

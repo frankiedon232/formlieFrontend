@@ -72,5 +72,11 @@
     "code_locked": "muitos códigos errados",
     "account_disabled": "a conta está desativada",
     "password_expired": "a senha expirou"
+  },
+  "account": {
+    "password_social": {
+      "title": "Alguém tentou uma senha na sua conta do {{workspace}}",
+      "message": "Alguém tentou entrar no {{workspace}} como {{email}} com uma senha. Sua conta entra com {{provider}}, por isso nenhuma senha foi aceita.\n\nPara entrar, use o botão {{provider}} na página de login. Para usar também uma senha, escolha \"Esqueceu a senha?\" nessa página e defina uma.\n\nSe não foi você, nada mudou e você não precisa fazer nada."
+    }
   }
 }

@@ -72,5 +72,11 @@
     "code_locked": "misimbo mingi mno isiyo sahihi",
     "account_disabled": "akaunti imezimwa",
     "password_expired": "nenosiri limeisha muda"
+  },
+  "account": {
+    "password_social": {
+      "title": "Mtu alijaribu nenosiri kwenye akaunti yako ya {{workspace}}",
+      "message": "Mtu alijaribu kuingia kwenye {{workspace}} kama {{email}} kwa nenosiri. Akaunti yako huingia kwa {{provider}}, kwa hivyo hakuna nenosiri lililokubaliwa.\n\nIli kuingia, tumia kitufe cha {{provider}} kwenye ukurasa wa kuingia. Ili kutumia nenosiri pia, chagua \"Umesahau nenosiri?\" hapo na uweke moja.\n\nIkiwa si wewe, hakuna kilichobadilika na huhitaji kufanya chochote."
+    }
   }
 }

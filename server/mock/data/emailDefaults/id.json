@@ -72,5 +72,11 @@
     "code_locked": "terlalu banyak kode yang salah",
     "account_disabled": "akun dinonaktifkan",
     "password_expired": "kata sandi sudah kedaluwarsa"
+  },
+  "account": {
+    "password_social": {
+      "title": "Seseorang mencoba kata sandi pada akun {{workspace}} Anda",
+      "message": "Seseorang mencoba masuk ke {{workspace}} sebagai {{email}} dengan kata sandi. Akun Anda masuk dengan {{provider}}, jadi tidak ada kata sandi yang diterima.\n\nUntuk masuk, gunakan tombol {{provider}} di halaman masuk. Untuk juga memakai kata sandi, pilih \"Lupa kata sandi?\" di sana dan atur satu.\n\nJika itu bukan Anda, tidak ada yang berubah dan Anda tidak perlu melakukan apa pun."
+    }
   }
 }

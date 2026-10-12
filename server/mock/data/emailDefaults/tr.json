@@ -72,5 +72,11 @@
     "code_locked": "çok fazla yanlış kod",
     "account_disabled": "hesap devre dışı",
     "password_expired": "parolanın süresi doldu"
+  },
+  "account": {
+    "password_social": {
+      "title": "Biri {{workspace}} hesabınızda bir parola denedi",
+      "message": "Biri {{email}} olarak parolayla {{workspace}} hesabına girmeye çalıştı. Hesabınız {{provider}} ile giriş yapıyor, bu yüzden hiçbir parola kabul edilmedi.\n\nGiriş yapmak için giriş sayfasındaki {{provider}} düğmesini kullanın. Parola da kullanmak isterseniz orada \"Parolanızı mı unuttunuz?\" seçeneğini seçip bir parola belirleyin.\n\nBu siz değilseniz hiçbir şey değişmedi ve bir şey yapmanız gerekmiyor."
+    }
   }
 }

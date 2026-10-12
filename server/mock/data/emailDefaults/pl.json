@@ -72,5 +72,11 @@
     "code_locked": "zbyt wiele błędnych kodów",
     "account_disabled": "konto jest wyłączone",
     "password_expired": "hasło wygasło"
+  },
+  "account": {
+    "password_social": {
+      "title": "Ktoś próbował użyć hasła na Twoim koncie {{workspace}}",
+      "message": "Ktoś próbował zalogować się do {{workspace}} jako {{email}} przy użyciu hasła. Twoje konto loguje się przez {{provider}}, więc żadne hasło nie zostało przyjęte.\n\nAby się zalogować, użyj przycisku {{provider}} na stronie logowania. Jeśli chcesz też używać hasła, wybierz tam „Nie pamiętasz hasła?” i je ustaw.\n\nJeśli to nie Ty, nic się nie zmieniło i nie musisz nic robić."
+    }
   }
 }

@@ -1170,7 +1170,7 @@ The backend (`formlyBackend`) is built in phases B0 to B17; its own tracker is `
 
 - ✅ Sign-up: when the verified email already has workspaces, the workspace step lists them with Open before making another (`GET /auth/signup/workspaces`, mock and contract; owner 2026-10-12)
 - ✅ Sign-in: a general hint under "Invalid email or password" where the workspace offers Google, Microsoft or Facebook (use that button, or set a password); the screen still says nothing about the account (owner 2026-10-12)
-- ⬜ Backend: `GET /auth/signup/workspaces`, and the email to an account with no password when someone tries one (at most once an hour); until then the sign-up panel simply stays hidden
+- ✅ Backend: `GET /auth/signup/workspaces`, and the email to an account with no password when someone tries one (at most once an hour; wording in `emailDefaults` → `account.password_social`, 20 languages); built in formlyBackend 2026-10-12 with 3 tests (17381 pass)
 
 ### SB M5, Mock off for good ⬜
 

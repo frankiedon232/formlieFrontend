@@ -72,5 +72,11 @@
     "code_locked": "te veel foute codes",
     "account_disabled": "het account is uitgeschakeld",
     "password_expired": "het wachtwoord is verlopen"
+  },
+  "account": {
+    "password_social": {
+      "title": "Iemand probeerde een wachtwoord op je {{workspace}}-account",
+      "message": "Iemand probeerde zich bij {{workspace}} aan te melden als {{email}} met een wachtwoord. Je account meldt zich aan met {{provider}}, dus er is geen wachtwoord geaccepteerd.\n\nGebruik om je aan te melden de knop {{provider}} op de aanmeldpagina. Wil je ook een wachtwoord gebruiken, kies daar dan \"Wachtwoord vergeten?\" en stel er een in.\n\nWas jij dit niet, dan is er niets veranderd en hoef je niets te doen."
+    }
   }
 }
