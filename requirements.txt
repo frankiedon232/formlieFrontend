@@ -26,7 +26,7 @@ httpx==0.28.1
 tzdata==2026.5  # time zones on Windows (zoneinfo), the same database as the browsers
 # Customers' own databases (B9, data sources): MySQL / MariaDB, SQL Server, Oracle (thin mode, no client), SSH tunnels
 aiomysql==0.2.0
-PyMySQL==2.2.8
+PyMySQL==1.2.3
 pymssql==2.3.2
 oracledb==2.5.1
 asyncssh==2.19.0
