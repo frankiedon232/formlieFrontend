@@ -155,53 +155,53 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 - **Permissions:** `api.service_delete`, `api.service_edit`
 - **Audit:** `api.endpoint_created`, `api.endpoint_deleted`, `api.endpoint_disabled`, `api.endpoint_enabled`, `api.endpoint_updated`, `api.key_rotated`, `api.service_created`, `api.service_deleted`, `api.service_disabled`, `api.service_enabled`, `api.service_updated`, `api.token_created`, `api.token_deleted`, `api.token_revealed`, `api.token_revoked`, `api.token_rotated`, `api.token_updated`
 
-- ⬜ `GET /api/v1/api-service/settings` (`apiSettings`)
-- ⬜ `GET /api/v1/api-service/setup` (`apiSetup`)
-- ⬜ `POST /api/v1/api-service/key/rotate` (`rotateApiKey`)
-- ⬜ `GET /api/v1/api-tokens` (`listApiTokens`)
-- ⬜ `GET /api/v1/api-tokens/insights` (`apiTokenInsights`)
-- ⬜ `POST /api/v1/api-tokens` (`createApiToken`)
-- ⬜ `GET /api/v1/api-tokens/{id}` (`getApiToken`)
-- ⬜ `PATCH /api/v1/api-tokens/{id}` (`updateApiToken`)
-- ⬜ `DELETE /api/v1/api-tokens/{id}` (`deleteApiToken`)
-- ⬜ `POST /api/v1/api-tokens/{id}/rotate` (`rotateApiToken`)
-- ⬜ `POST /api/v1/api-tokens/{id}/revoke` (`revokeApiToken`)
-- ⬜ `POST /api/v1/api-tokens/{id}/reveal` (`revealApiToken`)
-- ⬜ `GET /api/v1/api-services` (`listApiServices`)
-- ⬜ `GET /api/v1/api-services/insights` (`apiServiceInsights`)
-- ⬜ `POST /api/v1/api-services` (`createApiService`)
-- ⬜ `GET /api/v1/api-services/{id}` (`getApiService`)
-- ⬜ `PATCH /api/v1/api-services/{id}` (`updateApiService`)
-- ⬜ `DELETE /api/v1/api-services/{id}` (`deleteApiService`)
-- ⬜ `POST /api/v1/api-services/{id}/duplicate` (`duplicateApiService`)
-- ⬜ `GET /api/v1/api-endpoints` (`listApiEndpoints`)
-- ⬜ `GET /api/v1/api-endpoints/insights` (`apiEndpointInsights`)
-- ⬜ `GET /api/v1/api-endpoints/form-fields` (`apiEndpointFormFields`)
-- ⬜ `POST /api/v1/api-endpoints` (`createApiEndpoint`)
-- ⬜ `GET /api/v1/api-endpoints/{id}` (`getApiEndpoint`)
-- ⬜ `PATCH /api/v1/api-endpoints/{id}` (`updateApiEndpoint`)
-- ⬜ `DELETE /api/v1/api-endpoints/{id}` (`deleteApiEndpoint`)
+- ✅ `GET /api/v1/api-service/settings` (`apiSettings`)
+- ✅ `GET /api/v1/api-service/setup` (`apiSetup`)
+- ✅ `POST /api/v1/api-service/key/rotate` (`rotateApiKey`)
+- ✅ `GET /api/v1/api-tokens` (`listApiTokens`)
+- ✅ `GET /api/v1/api-tokens/insights` (`apiTokenInsights`)
+- ✅ `POST /api/v1/api-tokens` (`createApiToken`)
+- ✅ `GET /api/v1/api-tokens/{id}` (`getApiToken`)
+- ✅ `PATCH /api/v1/api-tokens/{id}` (`updateApiToken`)
+- ✅ `DELETE /api/v1/api-tokens/{id}` (`deleteApiToken`)
+- ✅ `POST /api/v1/api-tokens/{id}/rotate` (`rotateApiToken`)
+- ✅ `POST /api/v1/api-tokens/{id}/revoke` (`revokeApiToken`)
+- ✅ `POST /api/v1/api-tokens/{id}/reveal` (`revealApiToken`)
+- ✅ `GET /api/v1/api-services` (`listApiServices`)
+- ✅ `GET /api/v1/api-services/insights` (`apiServiceInsights`)
+- ✅ `POST /api/v1/api-services` (`createApiService`)
+- ✅ `GET /api/v1/api-services/{id}` (`getApiService`)
+- ✅ `PATCH /api/v1/api-services/{id}` (`updateApiService`)
+- ✅ `DELETE /api/v1/api-services/{id}` (`deleteApiService`)
+- ✅ `POST /api/v1/api-services/{id}/duplicate` (`duplicateApiService`)
+- ✅ `GET /api/v1/api-endpoints` (`listApiEndpoints`)
+- ✅ `GET /api/v1/api-endpoints/insights` (`apiEndpointInsights`)
+- ✅ `GET /api/v1/api-endpoints/form-fields` (`apiEndpointFormFields`)
+- ✅ `POST /api/v1/api-endpoints` (`createApiEndpoint`)
+- ✅ `GET /api/v1/api-endpoints/{id}` (`getApiEndpoint`)
+- ✅ `PATCH /api/v1/api-endpoints/{id}` (`updateApiEndpoint`)
+- ✅ `DELETE /api/v1/api-endpoints/{id}` (`deleteApiEndpoint`)
 
 ## `routes/apiConnections.ts`
 
 - **Guards:** `requireAdmin`
 
-- ⬜ `GET /api/v1/api-service/connections` (`apiConnections`)
+- ✅ `GET /api/v1/api-service/connections` (`apiConnections`)
 
 ## `routes/apiAccess.ts`
 
 - **Guards:** `requireAdmin`
 - **Audit:** `api.limits_changed`, `api.rule_created`, `api.rule_deleted`, `api.rule_disabled`, `api.rule_enabled`, `api.rule_updated`
 
-- ⬜ `GET /api/v1/api-service/limits` (`getRateLimits`)
-- ⬜ `PUT /api/v1/api-service/limits` (`updateRateLimits`)
-- ⬜ `GET /api/v1/api-access-rules` (`listAccessRules`)
-- ⬜ `GET /api/v1/api-access-rules/insights` (`accessInsights`)
-- ⬜ `POST /api/v1/api-access-rules` (`createAccessRule`)
-- ⬜ `POST /api/v1/api-access-rules/test` (`testAccess`)
-- ⬜ `GET /api/v1/api-access-rules/{id}` (`getAccessRule`)
-- ⬜ `PATCH /api/v1/api-access-rules/{id}` (`updateAccessRule`)
-- ⬜ `DELETE /api/v1/api-access-rules/{id}` (`deleteAccessRule`)
+- ✅ `GET /api/v1/api-service/limits` (`getRateLimits`)
+- ✅ `PUT /api/v1/api-service/limits` (`updateRateLimits`)
+- ✅ `GET /api/v1/api-access-rules` (`listAccessRules`)
+- ✅ `GET /api/v1/api-access-rules/insights` (`accessInsights`)
+- ✅ `POST /api/v1/api-access-rules` (`createAccessRule`)
+- ✅ `POST /api/v1/api-access-rules/test` (`testAccess`)
+- ✅ `GET /api/v1/api-access-rules/{id}` (`getAccessRule`)
+- ✅ `PATCH /api/v1/api-access-rules/{id}` (`updateAccessRule`)
+- ✅ `DELETE /api/v1/api-access-rules/{id}` (`deleteAccessRule`)
 
 ## `routes/apiTraffic.ts`
 
@@ -219,7 +219,7 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 
 - **Guards:** `requireAdmin`
 
-- ⬜ `POST /api/v1/api-endpoints/{id}/try` (`tryEndpoint`)
+- ⬜ `POST /api/v1/api-endpoints/{id}/try` (`tryEndpoint`) (B10 step 3: the call runs through the public gateway)
 
 ## `routes/webhooks.ts`
 

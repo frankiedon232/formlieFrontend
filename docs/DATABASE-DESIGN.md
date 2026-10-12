@@ -75,10 +75,10 @@ Source: `server/mock/data/tenants.ts`, `addressStore.ts`, `shortCodeStore.ts`, `
 | `tenant_domains` | tenant_id, domain (unique), status (`pending`, `verified`, `failed`), records jsonb (`DnsRecord[]`), verify_token, problem (`not_found`, `wrong_target`, `dns_error`), added_at, checked_at |
 | `public_form_routes` | public_key (10 chars, unique), custom_link (unique on the shared `forms.*` host), tenant_id, form_id. Lets `forms.*` find the workspace from a key |
 | `short_link_codes` | code (unique), tenant_id, form_id, retired_at. A retired code is never reused, even after the form is purged |
-| `api_keys_directory` | api_key (unique, path part of `api.formalie.*/{apiKey}/…`), tenant_id, previous_key, previous_until |
+| `api_keys_directory` | api_key (primary key, path part of `api.formalie.*/{apiKey}/…`), tenant_id, created_at, retired_at (null = current; set = answers until then). One row per handle a workspace ever had, so none is handed out twice. Reached through `platform.claim_api_key()`, `retire_api_key()`, `resolve_api_key()` (migration 0027) |
 | `signup_tickets` | ticket_hash, tenant_id, user_id, expires_at (2 min), used_at (cross-host sign-up and social sign-up tokens) |
 
-Access only through `platform.resolve_tenant()`, `platform.resolve_form_key()` and platform services; `formalie_app` cannot list tenants.
+Access only through `platform.resolve_tenant()`, `platform.resolve_form_key()`, `platform.resolve_api_key()` and platform services; `formalie_app` cannot list tenants.
 
 ## Tenant tables (tenant_id + organisation_id + RLS)
 
@@ -227,12 +227,12 @@ Source: `shared/types/apiService.ts`, `shared/utils/apiService/*`, `server/mock/
 
 | Table | Key columns |
 | --- | --- |
-| `api_settings` | one per tenant: api_key (also in `api_keys_directory`), previous_key, previous_until, rotated_at, rate_per_token, rate_per_ip, rate_per_endpoint, log_keep_bodies, log_days (1, 7, 30) |
-| `api_services` | name, description, status (`active`, `disabled`), allowed_origins text[] (CORS), created_by, deleted_at |
-| `api_endpoints` | service_id, name (lower-case words with hyphens, unique per service), description, form_id, pinned_version (null = latest), methods text[], fields jsonb (key, name, accept, required, returned, filter), page_size (≤ 100), required_headers jsonb (name, value_enc), status |
-| `api_tokens` | name, kind (`static`, `client`, `webhook`), mode (`live`, `test`), secret_hash, previous_hash, rotating_until, preview, client_id, lifetime_minutes, signing, signing_secret_enc, scopes jsonb (services, endpoints, methods), expires_at, last_used_at, revoked_at, created_by |
-| `api_access_rules` | action (`allow`, `block`), kind (`ip`, `domain`, `country`, `region`, `network`), values text[], scope_type (`all`, `service`, `endpoint`), scope_id, note, enabled, last_hit_at |
-| `api_rule_hits_daily`, `api_rate_limited_daily` | rule_id or limit kind, day, count |
+| `api_settings` | one per tenant (unique tenant_id): api_key (also in `api_keys_directory`), previous_key, previous_until, rotated_at, rate_per_token, rate_per_ip, rate_per_endpoint (calls a minute, null = no limit; 600, 120, 1200 to start), limits_updated_at, log_keep_bodies, log_days (1, 7, 30; 7 to start) |
+| `api_services` | name (unique per tenant, case-insensitive, while not deleted), description, status (`active`, `disabled`), allowed_origins jsonb (CORS), created_by, deleted_at |
+| `api_endpoints` | service_id, name (lower-case words with hyphens, unique per tenant while not deleted: it is the address), description, form_id, version (pinned form version, null = latest), methods jsonb, fields jsonb (key, name, accept, required, returned, filter), page_size (≤ 100), headers jsonb (name, value_enc; empty since custom headers were dropped, owner 2026-10-06), status, deleted_at |
+| `api_tokens` | name, kind (`static`, `client`, `webhook`), mode (`live`, `test`), secret_hash (SHA-256, looked up), secret_enc (Fernet, only for Reveal after the password), previous_hash, rotating_until, preview (prefix and last 4), client_id (unique per tenant), lifetime_minutes, signing, signing_secret_enc, scopes jsonb (services, endpoints, methods; ids kept after a delete so a token never widens), expires_at, last_used_at, revoked_at, created_by, deleted_at |
+| `api_access_rules` | action (`allow`, `block`), kind (`ip`, `domain`, `country`, `region`, `network`), values jsonb, scope_type (`all`, `service`, `endpoint`), scope_id, note, enabled, last_hit_at, deleted_at (also when its service or endpoint is deleted) |
+| `api_rule_hits_daily`, `api_rate_limited_daily` | rule_id or limit kind, day, count (B10 step 2) |
 | `api_idempotency` | endpoint_id, formalie_key, body_hash, response_id, answer jsonb (test tokens store nothing else), at. Kept 24 hours; unique (tenant_id, endpoint_id, formalie_key) |
 | `api_request_logs` | **partitioned daily**; at, method, path, status, code, duration_ms, endpoint_id, service_id, token_id, ip, country, user_agent, request_id, request_headers jsonb, request_body / response_body jsonb (only with `log_keep_bodies`, personal answers masked). Dropped after `log_days` |
 
@@ -344,7 +344,7 @@ RLS lets a workspace read only its own `audit_logs`; `platform_reader` reads all
 - `option_items (tenant_id, list_id, level, parent_value, sort_order)`; GIN trigram `option_items (label)` for search as people type
 - `form_field_refs (tenant_id, ref_type, ref_id)`
 - `refresh_tokens (token_hash)`, `otp_challenges (tenant_id, user_id, purpose, expires_at)`, `user_invites (token_hash)`, `form_invitations (token_hash)`, `resume_drafts (token_hash)`, `download_tokens (token_hash)`
-- `api_tokens (secret_hash)`, `api_tokens (client_id)`, `api_endpoints (tenant_id, service_id, name) UNIQUE`, `api_request_logs (tenant_id, at desc)`
+- `api_tokens (tenant_id, secret_hash)`, `api_tokens (tenant_id, previous_hash)`, `api_tokens (tenant_id, client_id) UNIQUE`, `api_endpoints (tenant_id, name) UNIQUE WHERE deleted_at IS NULL`, `api_request_logs (tenant_id, at desc)`
 - `destination_deliveries (tenant_id, status, next_retry_at)`, `webhook_deliveries (tenant_id, webhook_id, at desc)`, `event_outbox (published_at) WHERE published_at IS NULL`
 - `notifications (tenant_id, user_id, read_at, created_at desc)`
 - `audit_logs (tenant_id, occurred_at desc)`, `(tenant_id, area, occurred_at desc)`, `(tenant_id, actor_id, occurred_at desc)`, `(tenant_id, resource_type, resource_id)`; `request_logs (created_at desc, tenant_id)`

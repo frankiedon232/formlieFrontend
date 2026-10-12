@@ -27,7 +27,7 @@ Port each file to Python under the named module. For each one, write a test that
 | `forms/prefill.ts` | URL prefill | `modules/public` |
 | `forms/answer-edit.ts`, `forms/answer-filter.ts`, `forms/answer-text.ts` | Editing answers, response filters, answers as text (exports) | `modules/responses` |
 | `forms/options.ts`, `forms/translations.ts`, `forms/emails.ts`, `forms/theme.ts`, `forms/page-design.ts`, `forms/fonts.ts`, `forms/folders.ts` | Options, form translations, response emails, theme and page design tokens, the 21 font keys, folders | matching modules |
-| `apiService/*` (`access`, `choices`, `endpoints`, `origins`, `tokens`, `snippets`) | The public API service: access rules, choices in and out, endpoint shapes, allowed websites (CORS), tokens | `modules/api_service` |
+| `apiService/*` (`access`, `choices`, `endpoints`, `origins`, `tokens`, `snippets`) | The public API service: access rules, choices in and out, endpoint shapes, allowed websites (CORS), tokens (with `forms/build.ts` keyFromLabel and `forms/label-icons.ts`; `snippets` only writes the Docs page's code samples and is not ported) | `modules/api_service` (`access.py`, `choices.py`, `endpoints.py`, `origins.py`, `tokens.py`, `labels.py`; parity: `tests/parity/test_api_rules.py`) |
 | `datasources/*` (`ddl`, `engines`, `sql`, `tables`, `values`, `permissions`, `activity`, `exportFormats`) | Response storage tables in the customer's database, engines, SQL safety, value mapping | `modules/data_sources` |
 | `integrations/databases.ts`, `integrations/webhooks.ts` | Database connections and webhook signing | `modules/destinations`, `modules/webhooks` |
 | `billing/plans.ts` | Plans, prices per period, limits and features | `modules/billing` (seed + enforcement) |

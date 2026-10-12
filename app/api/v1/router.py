@@ -4,6 +4,9 @@ from __future__ import annotations
 
 from fastapi import APIRouter
 
+from app.modules.api_service.access_router import router as api_access_router
+from app.modules.api_service.router import router as api_service_router
+from app.modules.api_service.tokens_router import router as api_tokens_router
 from app.modules.audit.router import router as audit_router
 from app.modules.auth.router import router as auth_router
 from app.modules.dashboard.router import router as navigation_router
@@ -69,4 +72,7 @@ api_router.include_router(public_router)
 api_router.include_router(response_exports_router)  # before responses: /responses/exports
 api_router.include_router(response_files_router)
 api_router.include_router(responses_router)
+api_router.include_router(api_service_router)
+api_router.include_router(api_tokens_router)
+api_router.include_router(api_access_router)
 api_router.include_router(settings_router)  # after any module with its own /settings/{name} route (sso, B11)

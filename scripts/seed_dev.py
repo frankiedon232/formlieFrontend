@@ -101,6 +101,15 @@ async def seed_lists(session: AsyncSession, ws: dict) -> int:
     return await seed_sample_lists(session, ws["id"], ws["org"])
 
 
+async def seed_api(session: AsyncSession, ws: dict) -> int:
+    """The mock's sample API service (data/apiStore.ts), once; endpoints on the workspace's published forms."""
+    from app.modules.api_service.samples import seed_api_samples
+
+    await set_rls_context(session, ws["id"], ws["org"], None)
+    owner = next((u[0] for u in USERS if u[1] == ws["subdomain"]), None)
+    return await seed_api_samples(session, ws["id"], ws["org"], owner)
+
+
 async def seed(database: str) -> None:
     settings = get_settings()
     if settings.is_production:
@@ -115,7 +124,8 @@ async def seed(database: str) -> None:
                 if exists:
                     added = await seed_org(session, ws) if ws["subdomain"] in ORG_SAMPLES else 0
                     lists = await seed_lists(session, ws)
-                    extra = [f"{added} departments and job titles"] * bool(added) + [f"{lists} sample lists"] * bool(lists)
+                    api = await seed_api(session, ws)
+                    extra = [f"{added} departments and job titles"] * bool(added) + [f"{lists} sample lists"] * bool(lists)                         + [f"{api} API service samples"] * bool(api)
                     print(f"  {ws['subdomain']}: already there" + (f" (added {', '.join(extra)})" if extra else ""))
                     continue
                 people = [u for u in USERS if u[1] == ws["subdomain"]]
@@ -137,6 +147,7 @@ async def seed(database: str) -> None:
                 if ws["subdomain"] in ORG_SAMPLES:
                     await seed_org(session, ws)
                 await seed_lists(session, ws)
+                await seed_api(session, ws)
                 if ws["status"] != "active":
                     await session.execute(text("UPDATE platform.tenants SET status = :s WHERE id = :id"),
                                           {"s": ws["status"], "id": ws["id"]})
