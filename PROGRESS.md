@@ -1185,6 +1185,7 @@ The backend (`formlyBackend`) is built in phases B0 to B17; its own tracker is `
 - ⬜ Cloudflare Worker for form pages: each form's title and preview image on `/{formKey}/fill` and `/embed`, short links `/s/{code}` redirected
 - ⬜ API on `https://services.formalie.com` (owner 2026-10-12): `NUXT_PUBLIC_API_BASE` at build time; backend (B17) recognises the workspace from `Origin`, CORS for Formalie's hosts, refresh cookie per workspace, sign-in return addresses on `services.`
 - ⬜ Build-time check: no `formalie.dev`, dev port or `localhost` in any production build (`.output/public` searched, the release stops on a hit)
+- ✅ Step-by-step deployment guide `docs/DEPLOYMENT-GUIDE.md` (owner 2026-10-12; shared in all 5 projects): accounts, servers, databases, backend install and systemd units, Nginx, Cloudflare (DNS, TLS, WAF, Worker routes), building and deploying each front end, outside services, platform admin, first launch checks, later releases and roll back, day-to-day running
 
 ### SB M5, Mock off for good ⬜
 
@@ -1417,6 +1418,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-12 | Sign-up: warn when the email already has a workspace (open it, or create another). Password tried on an account made with Google, Microsoft or Facebook: a general hint on screen and an email to the real owner, nothing revealed to strangers |
 | 2026-10-12 | Document every change needed for production, for all projects, and remind the owner and instruct them before going live | `docs/PRODUCTION-CHECKLIST.md` (all 5 projects), SB M6 | ✅ list kept current; walk-through before go-live |
 | 2026-10-12 | Production: the backend API on `https://services.formalie.com`; every dev address removed at build time; the portal, website and platform admin built as static SPA files on Cloudflare (a small Worker for form link previews and short links) | SB M6, PRODUCTION-CHECKLIST (all 5 projects), decisions | ✅ recorded; ⬜ built at the switch-over (B17) |
+| 2026-10-12 | Full step-by-step instructions for deploying everything after the build | `docs/DEPLOYMENT-GUIDE.md` (all 5 projects), SB M6 | ✅ written; walked through with the owner before go-live |
 
 ---
 
@@ -1725,3 +1727,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-12 | SB M4 done | Web addresses `http(s)` only (onboarding website, thank-you redirect), six new email templates (form invitation, respondent's code, continue later, activate account, account approved, request declined; 20 languages, Settings → Emails, mock and backend), mock catch-all like the backend. The backend's rules recorder reads the ✅ / ⬜ marks again (it had dropped to 7 routes after the marks change). Next: backend B10. |
 | 2026-10-12 | Emails and B10 steps 1 and 2 | The approved email layout for every email; unsubscribe for optional emails, frontend, mock and backend (signed links, one-click headers, Undo, audit). Backend B10 step 1 (API service management) and step 2 (traffic and webhooks with retries and pause): 330 of 416 endpoints. Webhook contract row corrected to the webhook token. |
 | 2026-10-12 | Production hosting recorded | Owner: the backend API on `https://services.formalie.com`; front ends (portal, website, platform admin) as static SPA files on Cloudflare with a small Worker for form link previews and `/s/` short links (owner chose this over a Node server); a build-time reminder that no dev address is left in any build. Written into PRODUCTION-CHECKLIST (all 5 projects), 03-DECISIONS (frontend and backend) and SB M6. |
+| 2026-10-12 | Deployment guide; B14 and B16 synced | `docs/DEPLOYMENT-GUIDE.md` in all five projects, linked from PRODUCTION-CHECKLIST: 13 parts from accounts to day-to-day running, with systemd units, Nginx and Cloudflare set-up, front-end build and deploy (after B17), first launch checks and release / roll back. Backend B14 (help centre) and B16 (platform admin bridge, support access) committed in formlyBackend; shared docs synced; dev backend restarted at migration 0034. |
