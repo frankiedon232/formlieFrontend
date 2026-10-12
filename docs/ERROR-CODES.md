@@ -42,7 +42,7 @@ Format: `FRM-<DOMAIN>-<NNNN>`. Ranges: 1000–1999 client/validation, 5000–599
 | FRM-AUTH-1023 | 502 | Signing in with this provider didn't finish. Try again. | WARNING |
 | FRM-PERM-1001 | 403  | You don't have access to this.                                    | WARNING  |
 | FRM-TEN-1001  | 404  | Workspace not found.                                              | INFO     |
-| FRM-TEN-1002  | 403  | Workspace suspended.                                              | WARNING  |
+| FRM-TEN-1002  | 403  | Workspace suspended. (also a closed workspace: details `workspace: closed`) | WARNING  |
 | FRM-TEN-1003  | 403  | Access denied for this workspace. (token/subdomain mismatch)      | CRITICAL |
 | FRM-TEN-1004  | 409  | Subdomain not available.                                          | INFO     |
 | FRM-FORM-1001 | 404  | Form not found or not published.                                  | INFO     |

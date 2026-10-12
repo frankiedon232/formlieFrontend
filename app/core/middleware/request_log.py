@@ -169,7 +169,7 @@ class RequestLogMiddleware:
             "organisation_id": str(tenant.organisation_id) if tenant else None,
             "user_id": str(ctx.user_id) if ctx and ctx.user_id else None,
             "session_id": str(ctx.session_id) if ctx and ctx.session_id else None,
-            "scheme": scope.get("scheme"),
+            "scheme": (ctx.scheme if ctx else None) or scope.get("scheme"),
             "http_version": scope.get("http_version"),
             "method": scope.get("method", ""),
             "host": ctx.host if ctx else request_headers.get("host"),

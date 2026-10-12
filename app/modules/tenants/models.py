@@ -18,7 +18,7 @@ from sqlalchemy.orm import Mapped, mapped_column
 
 from app.core.db.base import AuditMixin, Base, SoftDeleteMixin, TenantMixin, UuidPkMixin, tenant_table_args
 
-TENANT_STATUSES = ("active", "suspended", "read_only", "closing")
+TENANT_STATUSES = ("active", "suspended", "read_only", "closing", "closed")
 
 
 class Tenant(UuidPkMixin, AuditMixin, SoftDeleteMixin, Base):

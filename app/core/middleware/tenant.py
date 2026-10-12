@@ -6,7 +6,11 @@
 The middleware resolves `{sub}.formalie.*` to a workspace through the tenant directory (L1 → Redis → DB via
 `platform.resolve_tenant`). An unknown or malformed workspace host answers FRM-TEN-1001. A suspended workspace
 is still resolved, so its public profile can say so; `require_tenant` refuses it with FRM-TEN-1002, like the
-mock's requireTenant(). The token/subdomain match (FRM-TEN-1003) is checked by the auth dependency (B1).
+mock's requireTenant(). A closed workspace (its closing date passed, B16) is refused the same way, with the detail
+`workspace: closed`. The token/subdomain match (FRM-TEN-1003) is checked by the auth dependency (B1).
+
+The API's own address (SERVICES_HOST, production services.formalie.com) is a host with no workspace, like the bare
+root domain: the edge (the Worker) names the portal host in X-Forwarded-Host, so only direct calls land here.
 """
 
 from __future__ import annotations
@@ -31,6 +35,17 @@ _SUBDOMAIN_PATTERN = re.compile(r"^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$")
 _IPV4 = re.compile(r"^\d{1,3}(?:\.\d{1,3}){3}$")
 
 DEV_TENANT_HEADER = "x-formalie-dev-tenant"
+# Workspaces that are refused everywhere: sign-in, the API, public forms (suspended by Formalie, or closed)
+BLOCKED_STATUSES: tuple[str, ...] = ("suspended", "closed")
+
+
+def is_blocked(tenant: TenantInfo | None) -> bool:
+    return tenant is not None and tenant.status in BLOCKED_STATUSES
+
+
+def blocked_error(tenant: TenantInfo) -> FrmError:
+    """FRM-TEN-1002 for a suspended or closed workspace; a closed one says so in its details."""
+    return FrmError("FRM-TEN-1002", [{"field": "workspace", "message": "closed"}] if tenant.status == "closed" else None)
 
 
 @dataclass(frozen=True, slots=True)
@@ -113,6 +128,7 @@ class TenantMiddleware:
         # Routes that answer on any host, workspace or not.
         # The handshake too: the client needs the secure channel to be told a workspace does not exist.
         self.host_free = (f"{prefix}/health", f"{prefix}/crypto/handshake")
+        self.services_host = normalise_host(settings.services_host) if settings.services_host else ""
 
     async def __call__(self, scope: Scope, receive: Receive, send: Send) -> None:
         path = route_path(scope)
@@ -122,12 +138,15 @@ class TenantMiddleware:
         ctx = get_context()
         raw_host = (ctx.host if ctx else None) or header(scope, "host") or ""
         override = header(scope, DEV_TENANT_HEADER) if self.settings.is_development else None
-        context = resolve_host_context(
-            raw_host,
-            root_domain=self.settings.root_domain,
-            manage_subdomain=self.settings.manage_subdomain,
-            tenant_override=override,
-        )
+        if self.services_host and normalise_host(raw_host) == self.services_host:
+            context = HostContext("manage", normalise_host(raw_host), reason="root")  # no workspace, like the root
+        else:
+            context = resolve_host_context(
+                raw_host,
+                root_domain=self.settings.root_domain,
+                manage_subdomain=self.settings.manage_subdomain,
+                tenant_override=override,
+            )
         if ctx is not None:  # recorded before the lookup, so a failed lookup still shows the host it was for
             ctx.host_kind = context.kind
             ctx.extra["host_context"] = context
@@ -165,7 +184,7 @@ def require_tenant() -> TenantInfo:
     tenant = ctx.tenant if ctx else None
     if tenant is None:
         raise FrmError("FRM-TEN-1001")
-    if tenant.status == "suspended":
-        raise FrmError("FRM-TEN-1002")
+    if is_blocked(tenant):
+        raise blocked_error(tenant)
     return tenant
 

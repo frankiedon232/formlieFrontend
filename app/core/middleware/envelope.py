@@ -61,6 +61,7 @@ def plaintext_patterns(prefix: str) -> list[re.Pattern[str]]:
         rf"^{p}/billing/webhooks/payoneer$",  # signed by the processor
         rf"^{p}/email/one-click$",  # mail apps' own Unsubscribe button (RFC 8058), a signed token in the address
         rf"^{p}/internal/",  # service to service (server-only token / mTLS), never through the public proxy
+        rf"^{p}/edge/",  # Formalie's edge (the Worker), only with the right X-Formalie-Edge (public/edge.py)
     )]
 
 

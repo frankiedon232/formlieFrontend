@@ -65,6 +65,7 @@ celery_app.conf.update(
         "ai.expire_requests": {"queue": "scheduled"},
         "privacy.apply_retention": {"queue": "scheduled"},
         "platform.expire_support_access": {"queue": "scheduled"},
+        "platform.close_due_workspaces": {"queue": "scheduled"},
     },
     beat_schedule={
         "relay-outbox": {"task": "events.relay_outbox", "schedule": 2.0},
@@ -79,6 +80,7 @@ celery_app.conf.update(
         "ai-requests-expire": {"task": "ai.expire_requests", "schedule": 3600.0},
         "response-retention": {"task": "privacy.apply_retention", "schedule": 24 * 3600.0},
         "support-access-expiry": {"task": "platform.expire_support_access", "schedule": 60.0},
+        "close-due-workspaces": {"task": "platform.close_due_workspaces", "schedule": 10 * 60.0},
     },
 )
 

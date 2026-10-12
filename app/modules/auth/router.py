@@ -25,7 +25,9 @@ from app.core.context import TenantInfo, get_context
 from app.core.db.session import db_session
 from app.core.errors import FrmError
 from app.core.events.outbox import record_event
-from app.core.middleware.tenant import current_host_context, is_valid_subdomain, require_tenant
+from app.core.middleware.tenant import (
+    BLOCKED_STATUSES, blocked_error, current_host_context, is_blocked, is_valid_subdomain, require_tenant,
+)
 from app.core.responses import ok
 from app.core.security.refs import get_codec
 from app.core.validation import Email
@@ -606,7 +608,7 @@ async def oauth_start(provider: str, intent: str | None = None) -> Any:
             return _refused(None, intent, provider, "FRM-PERM-1001")
     else:
         tenant = ctx.tenant if ctx else None
-        if tenant is None or tenant.status == "suspended":
+        if tenant is None or tenant.status in BLOCKED_STATUSES:
             return _refused(None, intent, provider, "FRM-TEN-1002" if tenant else "FRM-TEN-1001")
         state.subdomain = tenant.subdomain
     uri = oauth.redirect_uri(provider, ctx.host if ctx else None, host.kind if host else None)
@@ -655,8 +657,8 @@ async def _social_login(provider: str, profile: oauth.Profile, saved: oauth.OAut
     tenant = await TenantDirectory().by_subdomain(saved.subdomain or "")
     if tenant is None:
         raise FrmError("FRM-TEN-1001")
-    if tenant.status == "suspended":
-        raise FrmError("FRM-TEN-1002")
+    if is_blocked(tenant):
+        raise blocked_error(tenant)
     await per_value("login", profile.email, limit=10, window_seconds=600)
     ctx = get_context()
     async with db_session("write", **_scope(tenant)) as db:
@@ -695,8 +697,8 @@ async def sso_login(tenant: TenantInfo, profile: oauth.Profile, *, domains: list
     connection's domains; with `auto_create`, someone new from those domains gets an account with the default role."""
     from app.modules.rbac.service import find_role
 
-    if tenant.status == "suspended":
-        raise FrmError("FRM-TEN-1002")
+    if is_blocked(tenant):
+        raise blocked_error(tenant)
     await per_value("login", profile.email, limit=10, window_seconds=600)
     ctx = get_context()
     async with db_session("write", **_scope(tenant)) as db:

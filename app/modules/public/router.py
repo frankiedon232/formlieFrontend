@@ -34,6 +34,7 @@ from app.core.config import get_settings
 from app.core.context import get_context
 from app.core.db.session import db_session
 from app.core.errors import FrmError
+from app.core.middleware.tenant import BLOCKED_STATUSES
 from app.core.responses import ok
 from app.core.security.fernet_tokens import make_token, read_token
 from app.core.security.limits import per_value, rate_limit
@@ -631,7 +632,7 @@ async def resolve_short_link(code: str) -> str:
         raise FrmError("FRM-FORM-1001")
     async with db_session("read") as db:
         found = await directory.resolve_short_code(db, code)
-    if found is None or found.status == "suspended":
+    if found is None or found.status in BLOCKED_STATUSES:
         raise FrmError("FRM-FORM-1001")
     async with db_session("write", tenant_id=found.tenant_id, organisation_id=found.organisation_id) as db:
         form = await db.get(Form, found.form_id)

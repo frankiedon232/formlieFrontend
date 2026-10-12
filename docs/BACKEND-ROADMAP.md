@@ -115,6 +115,8 @@ Then stop for the owner's review. Day-to-day status lives in `PROGRESS.md`.
 
 ## B17, Hardening and switch-over ⬜
 
+- ✅ Edge proxy trust for the portal's Cloudflare Worker (`EDGE_SECRET`, `SERVICES_HOST`) and its two routes `/edge/forms/{formKey}/preview`, `/edge/links/{code}` (2026-10-12).
+- ✅ Closing workspaces become `closed` on their date (Beat, soft state, no deletion; 2026-10-12).
 - ⬜ The frontend's mock turned off for good (every ENDPOINTS.md box ticked).
 - ⬜ Load tests, query review, backups and a restore drill, security review / pen test, production Nginx and Cloudflare, observability dashboards.
 

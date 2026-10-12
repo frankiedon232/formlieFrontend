@@ -34,6 +34,12 @@ class Settings(BaseSettings):
     # Only these peers may set X-Forwarded-For / X-Forwarded-Host / CF-Connecting-IP (Nginx, the Nuxt dev proxy).
     trusted_proxies: Annotated[list[str], NoDecode] = Field(default_factory=lambda: ["127.0.0.1/32", "::1/128"])
     tenant_cache_seconds: int = 30
+    # Formalie's edge (production: the Cloudflare Worker of each front end) proxies `/api/*` from every portal host
+    # to SERVICES_HOST and proves itself with this shared secret in X-Formalie-Edge; with it, X-Forwarded-Host /
+    # -Proto / -For count (request_context.py). Empty: off (development). Never logged, never sent back.
+    edge_secret: SecretStr | None = None
+    # The API's own address (production services.formalie.com): a host with no workspace, like the bare root domain
+    services_host: str = "services.formalie.dev"
 
     # ── PostgreSQL (primary + replicas, PgBouncer) ────────────────────────────
     db_superuser_url: SecretStr | None = None  # scripts/db_bootstrap.py only, never used by the app

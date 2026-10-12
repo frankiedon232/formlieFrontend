@@ -21,7 +21,7 @@ from app.core.config import get_settings
 from app.core.context import TenantInfo, get_context
 from app.core.db.session import db_session
 from app.core.errors import FrmError
-from app.core.middleware.tenant import current_host_context
+from app.core.middleware.tenant import BLOCKED_STATUSES, current_host_context
 from app.modules.billing.service import limits_of
 from app.modules.design.theme import resolve_theme
 from app.modules.forms.models import Form
@@ -82,16 +82,16 @@ async def workspace_for(key: str) -> TenantInfo:
     host = current_host_context()
     if host and host.kind in ("tenant", "custom"):
         tenant = ctx.tenant if ctx else None
-        if tenant is None or tenant.status == "suspended":
+        if tenant is None or tenant.status in BLOCKED_STATUSES:
             raise FrmError("FRM-FORM-1001")
         return tenant
     if host and host.kind == "forms":
         async with db_session("read") as db:
             found = await directory.resolve_form_key(db, key)
-        if found is None or found.status == "suspended":
+        if found is None or found.status in BLOCKED_STATUSES:
             raise FrmError("FRM-FORM-1001")
         tenant = await _tenant_by_subdomain(found.subdomain)
-        if tenant is None or tenant.status == "suspended":
+        if tenant is None or tenant.status in BLOCKED_STATUSES:
             raise FrmError("FRM-FORM-1001")
         return tenant
     raise FrmError("FRM-FORM-1001")

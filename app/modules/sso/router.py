@@ -31,7 +31,7 @@ from app.core import zod as z
 from app.core.context import get_context
 from app.core.db.session import db_session
 from app.core.errors import FrmError
-from app.core.middleware.tenant import require_tenant
+from app.core.middleware.tenant import BLOCKED_STATUSES, require_tenant
 from app.core.responses import ok
 from app.core.security.fernet_tokens import encrypt_secret
 from app.core.security.limits import rate_limit
@@ -190,7 +190,7 @@ async def sso_start(email: str | None = None) -> Any:
     """→ the identity provider. Not set up, not on, or not in the plan: back with sso=unavailable, like the mock."""
     ctx = get_context()
     tenant = ctx.tenant if ctx else None
-    if tenant is None or tenant.status == "suspended" or not has_feature(tenant.plan_id, "sso"):
+    if tenant is None or tenant.status in BLOCKED_STATUSES or not has_feature(tenant.plan_id, "sso"):
         return _login({"sso": "unavailable"})
     async with db_session("write", tenant_id=tenant.id, organisation_id=tenant.organisation_id) as db:
         row = await sso.row_of(db, tenant.id)

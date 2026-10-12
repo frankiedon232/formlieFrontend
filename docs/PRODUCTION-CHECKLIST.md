@@ -16,9 +16,9 @@ Marks: ⬜ to do · ✅ done in production · ⏸ waiting on a decision or an ac
 
 - ⬜ **Hosting model (owner, 2026-10-12):**
   - The three front ends are **static SPA files on Cloudflare**, with no Node server: formalieFrontend (portal and public forms), formalieSite (website) and formaliePlatformFront (platform admin). Each is built with `nuxt generate` and deployed to Cloudflare (Workers static assets or Pages).
-  - **Formalie's backend API is `https://services.formalie.com`** (`/api/v1/…`). Every front end calls it there, never `formalie.dev:5004`.
+  - **Formalie's backend API is `https://services.formalie.com`** (`/api/v1/…`), never `formalie.dev:5004`. The portal reaches it through its Worker: every portal host (`*.formalie.com`, `manage.`, `forms.`, workspaces' verified own domains) answers `/api/*` itself and the Worker forwards it to `services.formalie.com` with the edge secret (`EDGE_SECRET`, section 2). So the browser stays on one origin: no CORS, the cookies stay host-only per workspace as today, and the backend still recognises the workspace from the (forwarded) host.
   - The API service for customers stays `https://api.formalie.com/{apiKey}/{endpoint}` (the gateway).
-  - A small **Cloudflare Worker** on the form pages adds each form's title and preview image to `/{formKey}/fill` and `/{formKey}/embed` (link previews), and answers short links `/s/{code}` with a redirect. Everything else is the static app.
+  - One **Cloudflare Worker** per front end serves the static app. The portal's Worker also proxies `/api/*` to `services.formalie.com` (adding `X-Formalie-Edge` and `X-Forwarded-Host / -Proto / -For`), adds each form's title and preview image to `/{formKey}/fill` and `/{formKey}/embed` (link previews, from `GET /api/v1/edge/forms/{formKey}/preview`), and answers short links `/s/{code}` with a redirect (from `GET /api/v1/edge/links/{code}`).
 - ⬜ **Hosting for the back ends:** AWS or dedicated servers (decided per deployment, 02-DEV-ENVIRONMENT). Servers for: the API (`services.formalie.com`), the API service gateway (`api.formalie.com`), Celery workers and Beat, PostgreSQL (primary and replica), PgBouncer, Redis, RabbitMQ.
 - ⬜ **Domain and DNS:** `formalie.com` on Cloudflare. Static front ends on Cloudflare: wildcard `*.formalie.com`, `manage.formalie.com` and `forms.formalie.com` (the portal build), `formalie.com` and `www` (the website build), the platform admin's own host (its build). To the servers through Nginx: `services.formalie.com` (the API) and `api.formalie.com` (the API service gateway).
 - ⬜ **TLS certificates:** real certificates (Cloudflare origin certificates or Let's Encrypt), wildcard included. The mkcert certificates (`C:\devcerts\…`) and `NODE_EXTRA_CA_CERTS` are development only.
@@ -79,9 +79,12 @@ Generate fresh keys with `fmly\Scripts\python.exe scripts\gen_keys.py --write` o
 | `PLATFORM_ADMIN_REQUIRE_MTLS`, `PLATFORM_ADMIN_CERT_FINGERPRINTS` (B16) | `false`, empty | ⬜ `true` (the API refuses every internal admin call in production without it) and the platform's client certificate fingerprint as Nginx passes it (`$ssl_client_fingerprint`) |
 | `PLATFORM_ADMIN_NETWORKS` (B16) | local and private ranges | ⬜ only the platform admin's private addresses |
 | `PLATFORM_ADMIN_WINDOW_SECONDS`, `SUPPORT_TICKET_SECONDS`, `SUPPORT_SESSION_MINUTES`, `SUPPORT_REQUEST_DAYS`, `PLATFORM_EVENTS_API_SAMPLE`, `PLATFORM_PUBLISHED_QUEUE` (B16) | `300`, `120`, `60`, `7`, `1.0`, `formalie.platform_published` | ⬜ keep (lower the API sample rate if `api.called` volume is too high) |
+| `EDGE_SECRET` (2026-10-12) | empty (off) | ⬜ a long random value (`python -c "import secrets; print(secrets.token_urlsafe(48))"`), the same in each Worker's secret `EDGE_SECRET` (`wrangler secret put EDGE_SECRET`); rotate both together |
+| `SERVICES_HOST` (2026-10-12) | `services.formalie.dev` | ⬜ `services.formalie.com` |
 
 Also on the backend side:
-- ⬜ **The API answers on `https://services.formalie.com`** (owner, 2026-10-12), not on each workspace's address. Backend work before go-live (B17): recognise the workspace from the `Origin` header (set by the browser, scripts can't change it) instead of the request host; CORS with credentials for `https://*.formalie.com`, `forms.` and verified workspace domains only; the refresh cookie on `services.` kept apart per workspace (still HttpOnly, Secure, SameSite=Strict, which holds because every host is on `formalie.com`); the sign-in providers' return addresses move to `services.` (section 5).
+- ⬜ **The API runs on `https://services.formalie.com`** (owner, 2026-10-12) and is reached through the portal's Worker (built 2026-10-12, nothing else to build): the Worker proxies `/api/*` from every portal host with `X-Formalie-Edge: <EDGE_SECRET>`, and only with that secret does the API trust `X-Forwarded-Host`, `X-Forwarded-Proto` and `X-Forwarded-For` (SECURITY-PROTOCOL, Edge trust). No CORS, no Origin-based lookup, the cookies stay as they are, workspaces' own domains work the same way, and the sign-in providers' return addresses stay on `manage.` (section 5). Direct calls to `services.formalie.com` (health, the platform admin) answer as a host with no workspace.
+- ⬜ Check once after deploying: a call through a portal host shows the workspace; the same call straight to `services.formalie.com` with a made-up `X-Forwarded-Host` and no secret does not.
 - ⬜ Database roles and schema: run `scripts/db_bootstrap.py` and `alembic upgrade head` against production; never seed development data (`scripts/seed_dev.py`) there.
 - ⬜ Services: the API (several instances), the API service gateway (`app.gateway:app`, its own instances on `GATEWAY_PORT`), Celery workers per queue, Celery Beat, the outbox relay; restart on failure (systemd).
 - ⬜ The development-only headers `X-Debug-Country` and `X-Debug-Network` are ignored when `APP_ENV=production` (nothing to set; check once with a call).
@@ -89,6 +92,7 @@ Also on the backend side:
 - ⬜ Flower and the RabbitMQ management page: not public (VPN or SSH tunnel only).
 - ⬜ Celery Beat runs `privacy.apply_retention` once a day (response retention; nothing to set).
 - ⬜ B16: the `platform.published` consumer runs as its own service (`python -m app.modules.platform_bridge.consumer`, restart on failure); Beat runs `platform.expire_support_access` every minute (nothing to set).
+- ⬜ Beat runs `platform.close_due_workspaces` every 10 minutes: a closing workspace past its date becomes `closed` (refuses sign-in, the API and answers; nothing is deleted). Nothing to set.
 - ⬜ The servers' Python has `xmlsec` working (python3-saml): `python -c "import xmlsec"`; on Linux the wheel needs `libxmlsec1` (`apt install libxmlsec1-openssl`) and `lxml` built against the same libxml2.
 
 ## 3. Frontend (formalieFrontend, the production build and its environment)
@@ -96,7 +100,8 @@ Also on the backend side:
 | Setting | Development | Production |
 | --- | --- | --- |
 | `NUXT_PUBLIC_API_MOCK` | `false` (mock off since 2026-10-12) | ⬜ `false`; the mock is never deployed |
-| `NUXT_PUBLIC_API_BASE` | `/api/v1` (the dev server passes it on to `https://formalie.dev:5004`) | ⬜ `https://services.formalie.com/api/v1`, set at build time (a static build bakes it in) |
+| `NUXT_PUBLIC_API_BASE` | `/api/v1` (the dev server passes it on to `https://formalie.dev:5004`) | ⬜ stays `/api/v1`: the Worker forwards it to `https://services.formalie.com` |
+| Worker secret `EDGE_SECRET` | not used | ⬜ `wrangler secret put EDGE_SECRET`, the backend's `EDGE_SECRET` value (never in the build or in `wrangler.toml`) |
 | `NUXT_API_PROXY_TARGET` | `https://formalie.dev:5004` | ⬜ not used (static build, no server) |
 | `NUXT_INTERNAL_TOKEN` | the backend's development value | ⬜ the same new value as the backend's `INTERNAL_TOKEN` |
 | `NUXT_PUBLIC_ROOT_DOMAIN` | `formalie.dev` | ⬜ `formalie.com` |
@@ -116,7 +121,7 @@ Also:
 ## 4. Nginx and Cloudflare
 
 - ⬜ Hosts on Nginx: `services.formalie.com` → the API; `api.formalie.com` → the API service gateway (`GATEWAY_PORT`, every path, no `/api/` prefix; it sets its own CORS headers, so Nginx adds none); the front-end hosts (`*.formalie.com`, `manage.`, `forms.`, `formalie.com`, `www`, the platform admin) are static on Cloudflare and never reach Nginx.
-- ⬜ Forward `X-Forwarded-Host`, `X-Forwarded-Proto` and the visitor's IP (`X-Forwarded-For`, or Cloudflare's `CF-Connecting-IP`).
+- ⬜ On `services.formalie.com`, pass the Worker's `X-Formalie-Edge`, `X-Forwarded-Host`, `X-Forwarded-Proto` and `X-Forwarded-For` through unchanged (never overwrite `X-Forwarded-Host` with `$host`; the API checks the secret itself) and keep `Host $host` (DEPLOYMENT-GUIDE Part 6). Nginx on app-1 accepts Cloudflare's addresses only.
 - ⬜ HSTS, gzip / brotli, request size limits, the Content-Security-Policy from SECURITY-PROTOCOL (per-form `frame-ancestors` for embeds; Payoneer's frame hosts when connected).
 - ⬜ Cloudflare: proxy on, SSL "Full (strict)", WAF and rate limiting rules, cache static assets only (never `/api`).
 
@@ -124,7 +129,7 @@ Also:
 
 ## 5. Sign-in providers (their consoles)
 
-The production return addresses (backend README, "The addresses to register"). With the API on `services.formalie.com` they become `https://services.formalie.com/api/v1/auth/oauth/{google | facebook}/callback`; B17 confirms the final form before they are registered:
+The production return addresses (backend README, "The addresses to register"). They stay on `manage.formalie.com`: the browser comes back to the portal host and its Worker forwards the call to the API (2026-10-12):
 - `https://manage.formalie.com/api/v1/auth/oauth/google/callback`
 - `https://manage.formalie.com/api/v1/auth/oauth/facebook/callback`
 

@@ -144,7 +144,7 @@ async def suspend(tenant_id: str, call: PlatformCall = Depends(platform_call)) -
 
 @router.post("/tenants/{tenant_id}/restore")
 async def restore(tenant_id: str, call: PlatformCall = Depends(platform_call)) -> JSONResponse:
-    return await _set_status(call, tenant_id, "active", only_from=("suspended", "read_only"))
+    return await _set_status(call, tenant_id, "active", only_from=("suspended", "read_only", "closed"))
 
 
 @router.post("/tenants/{tenant_id}/read-only")

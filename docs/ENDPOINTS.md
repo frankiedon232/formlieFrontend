@@ -845,3 +845,13 @@ Built in B16: `app/modules/platform_bridge/internal.py` (gate, idempotency, audi
 
 - ✅ Internal published-form fetch for `/{formKey}/fill` and `/{formKey}/embed` (`server/routes/_ssr/public-forms/[key].get.ts`), only with the server-only internal token header `x-formalie-internal`
 - ✅ Internal short-link resolve for `/s/{code}` (`server/routes/_ssr/short/[code].get.ts`)
+
+## Edge routes for the Cloudflare Worker (2026-10-12; plain JSON, only with `X-Formalie-Edge`)
+
+- **Guards:** the right `X-Formalie-Edge` (EDGE_SECRET, constant-time compare), otherwise a plain 404 as if absent; the workspace from the forwarded host, as for the public form page
+- **Audit:** none (reads; a short link counts its visit like `/public/short/{code}`)
+
+- ✅ `GET /api/v1/edge/forms/{formKey}/preview`: a published public form's link preview (`app/modules/public/edge.py`)
+- ✅ `GET /api/v1/edge/links/{code}`: where a short link leads
+
+Built 2026-10-12: `app/modules/public/edge.py`, edge trust in `app/core/middleware/request_context.py`; tests in `tests/core/test_edge_trust.py` and `tests/db/test_edge.py`.

@@ -14,7 +14,7 @@ class TenantInfo:
     id: uuid.UUID
     subdomain: str
     name: str
-    status: str  # active, suspended, read_only, closing
+    status: str  # active, suspended, read_only, closing, closed
     organisation_id: uuid.UUID
     plan_id: str = "starter"
 
@@ -26,6 +26,8 @@ class RequestContext:
     client_ip: str | None = None
     peer_ip: str | None = None  # the direct socket peer (Nginx, the dev proxy, or the client itself)
     proxy_trusted: bool = False  # the peer is a trusted proxy, so its forwarding and geo headers count
+    edge_trusted: bool = False  # it came through Formalie's edge (the Worker) with the right X-Formalie-Edge
+    scheme: str | None = None  # http / https as the visitor used it (X-Forwarded-Proto from a trusted sender)
     user_agent: str | None = None
     host: str | None = None
     method: str | None = None

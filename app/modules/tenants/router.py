@@ -64,7 +64,7 @@ async def public_profile() -> Any:
         sso = await public_of(db, tenant)
         # B16: why Formalie suspended the workspace, written by the Formalie team (platform admin)
         reason = (await db.execute(text("SELECT suspended_reason FROM platform.admin_tenant(:id)"),
-                                   {"id": tenant.id})).scalar_one_or_none() if tenant.status == "suspended" else None
+                                   {"id": tenant.id})).scalar_one_or_none() if tenant.status in ("suspended", "closed") else None
     rules = security["password"]
     return ok({
         "mode": "tenant",
@@ -79,7 +79,9 @@ async def public_profile() -> Any:
         "auth_providers": ALL_PROVIDERS,  # always all of them, whatever the plan
         "sso": sso,  # single sign-on while it is on and the plan has it (Settings → Sign-in)
         "password_policy": {k: rules[k] for k in ("min_length", "lower", "upper", "number", "symbol")},
-        "status": tenant.status if tenant.status in ("active", "suspended") else "active",
+        # A closed workspace (its closing date passed) shows as suspended: nobody gets in, the reason says why
+        "status": "suspended" if tenant.status == "closed" else tenant.status if tenant.status == "suspended" else "active",
+        "closed": tenant.status == "closed",
         "status_reason": reason,
     })
 

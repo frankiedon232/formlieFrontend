@@ -23,7 +23,6 @@ from fastapi import APIRouter, Depends, Request
 from sqlalchemy import select, text
 
 from app.core import zod as z
-from app.core.config import get_settings
 from app.core.db.session import db_session
 from app.core.errors import FrmError
 from app.core.ids import uuid7
@@ -35,6 +34,7 @@ from app.modules.help import content as C
 from app.modules.help import search as S
 from app.modules.help.models import HelpFeedback
 from app.modules.help.rules import HELP_CATEGORIES, answer_for, article_text, route_matches, search_terms, snippet
+from app.modules.platform_bridge.globals import support_contact
 
 router = APIRouter(tags=["help"])
 log = logging.getLogger("formalie.help")
@@ -75,7 +75,6 @@ def _full(article: dict[str, Any], articles: list[dict[str, Any]], helpful: bool
 @router.get("/help/home", dependencies=[rate_limit("help-home", per_minute=120)])
 async def help_home(request: Request, principal: Principal = Depends(require_auth)) -> Any:
     articles = (await _content(principal, C.lang_of(_query(request))))["articles"]
-    settings = get_settings()
     start = sorted((a for a in articles if a["start"]), key=lambda a: a["start"])
     # Recently updated: newest first; equal times keep the reverse of the articles' order (the mock's last four)
     updated = sorted(enumerate(articles), key=lambda item: (item[1]["updated_at"], item[0]), reverse=True)[:4]
@@ -85,7 +84,7 @@ async def help_home(request: Request, principal: Principal = Depends(require_aut
         "start": [C.summary(a) for a in start],
         "popular": [C.summary(a) for a in articles if a["popular"] and not a["start"]][:8],
         "updated": [C.summary(a) for _, a in updated],
-        "support": {"email": settings.support_email or None, "url": settings.support_url or None},
+        "support": await support_contact(),  # platform settings (B16), else the server's own
     })
 
 

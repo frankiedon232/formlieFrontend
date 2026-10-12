@@ -2,7 +2,8 @@
 portal layer (envelope, workspace host, CSRF). In production the API service runs as its own process behind its own
 host; this keeps one development server answering both, so the frontend's dev proxy and Postman work unchanged.
 
-The host is the request's Host, or X-Forwarded-Host from a trusted proxy (the same rule as request_context.py).
+The host is the request's Host, or X-Forwarded-Host from a trusted proxy or Formalie's edge (the same rule as
+request_context.py).
 """
 
 from __future__ import annotations
@@ -20,7 +21,7 @@ class ApiHostMiddleware:
                  request_log_shipper: Any | None = None) -> None:
         self.app = app
         self.settings = settings
-        self.proxies = TrustedProxies(settings.trusted_proxies)
+        self.proxies = TrustedProxies.from_settings(settings)
         self.api_host = f"api.{settings.root_domain}".lower()
         self.gateway = gateway
         self.shipper = request_log_shipper

@@ -43,6 +43,7 @@ from app.core.db.session import db_session
 from app.core.errors import FrmError
 from app.core.errors.codes import ERROR_CODES
 from app.core.middleware.rate_limit import RateLimiterUnavailable, SlidingWindowLimiter
+from app.core.middleware.tenant import BLOCKED_STATUSES
 from app.modules.api_service import access as A
 from app.modules.api_service import gateway_auth as AUTH
 from app.modules.api_service import traffic as TR
@@ -151,12 +152,12 @@ async def workspace_of(key: str) -> TenantInfo | None:
         return None
     async with db_session("read") as db:
         row = (await db.execute(text("SELECT subdomain, status FROM platform.resolve_api_key(:k)"), {"k": key})).first()
-    if row is None or row.status == "suspended":
+    if row is None or row.status in BLOCKED_STATUSES:
         return None
     from app.modules.public.service import _tenant_by_subdomain
 
     tenant = await _tenant_by_subdomain(row.subdomain)
-    return None if tenant is None or tenant.status == "suspended" else tenant
+    return None if tenant is None or tenant.status in BLOCKED_STATUSES else tenant
 
 
 # ── Rate limits (per IP, token and endpoint; calls per minute) ───────────────────
