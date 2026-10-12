@@ -91,9 +91,10 @@ def redirect_uri(provider: str, host: str | None, host_kind: str | None) -> str:
     settings = get_settings()
     base = (settings.oauth_redirect_base or "").rstrip("/")
     if not base:
-        bare = (host or "").split(":")[0].lower() == settings.root_domain
-        name = settings.root_domain if bare and host_kind == "manage" else f"{settings.manage_subdomain}.{settings.root_domain}"
-        base = f"https://{name}{host_port()}"
+        # Always manage.*, the one address registered at the providers, whichever host the person started on
+        # (also the bare root domain or www, which open the manage pages too: owner, 2026-10-12, a sign-up started on
+        # https://formalie.dev:2202 sent Google an unregistered address, Error 400 redirect_uri_mismatch)
+        base = f"https://{settings.manage_subdomain}.{settings.root_domain}{host_port()}"
     return f"{base}{settings.api_prefix}/auth/oauth/{provider}/callback"
 
 

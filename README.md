@@ -250,7 +250,7 @@ Usual lengths: Google ID about 72, Google secret 35, Microsoft ID 36, Microsoft 
 | What you see | Why | Fix |
 | --- | --- | --- |
 | Button says "not available yet" | Keys empty, or the API wasn't restarted | Fill in `.env`, restart the API |
-| Google: `Error 400: redirect_uri_mismatch` | The address registered differs | Copy the address from the table exactly (port, `https`, no end slash) into **Authorised redirect URIs** |
+| Google: `Error 400: redirect_uri_mismatch` | The address registered differs | Copy the address from the table exactly (port, `https`, no end slash) into **Authorised redirect URIs**. (Starting on `https://formalie.dev:2202` without `manage.` used to send an unregistered address; since 2026-10-12 the API always sends the `manage.` one.) |
 | Google: "Access blocked: this app's request is invalid" or "has not completed the Google verification process" | You aren't a test user while the app is in Testing | Add the address under **Test users**, or publish the app |
 | Microsoft: `AADSTS50011` | Redirect address not registered | Add it under **Authentication** → **Web** |
 | Microsoft: `AADSTS50194` or "not configured as a multi-tenant application" | Wrong supported account type | **Authentication** (or **Manifest**): set to "any organizational directory and personal Microsoft accounts" |

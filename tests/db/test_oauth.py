@@ -299,3 +299,15 @@ async def test_who_signed_up_with_a_provider_keeps_using_it_on_starter(app, prov
                           (uuid.uuid4(), tenant[0], tenant[1], f"mo@{sub}.test", role))
         providers.profile = {"id": "fb-mo-" + sub, "email": f"mo@{sub}.test", "first_name": "Mo"}
         assert query(await round_trip(app, http, "facebook"))["code"] == "FRM-AUTH-1008"  # type: ignore[arg-type]
+
+
+def test_redirect_uri_is_always_the_registered_manage_address(monkeypatch) -> None:  # noqa: ANN001
+    """Starting on the bare root domain (or www, or a workspace) still sends the provider to manage.* (owner,
+    2026-10-12: a sign-up started on https://formalie.dev:2202 got Google's Error 400 redirect_uri_mismatch)."""
+    settings = get_settings().model_copy(update={"oauth_redirect_base": None, "root_domain": "formalie.dev"})
+    monkeypatch.setattr(oauth, "get_settings", lambda: settings)
+    monkeypatch.setattr(oauth, "host_port", lambda: ":2202")
+    for host, kind in (("formalie.dev:2202", "manage"), ("www.formalie.dev:2202", "manage"),
+                       ("manage.formalie.dev:2202", "manage"), ("acme.formalie.dev:2202", "tenant")):
+        assert oauth.redirect_uri("google", host, kind) == \
+            "https://manage.formalie.dev:2202/api/v1/auth/oauth/google/callback", host
