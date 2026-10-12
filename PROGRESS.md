@@ -1155,7 +1155,7 @@ The backend (`formlyBackend`) is built in phases B0 to B17; its own tracker is `
 
 ### SB M3, Areas switched on as the backend builds them ⬜
 
-- 🟡 API service and webhooks, the public gateway on `api.formalie.dev` (B10: management ✅, traffic and webhooks ✅, the gateway and Try it next)
+- 🟡 API service and webhooks, the public gateway on `api.formalie.dev` (B10 ✅ in the backend: management, traffic, webhooks, the gateway and Try it; the dev server passes `api.formalie.dev:2202` to the backend when the mock is off, so Postman keeps its address; owner testing next)
 - ⬜ Settings: emails and sending, single sign-on, address and own domain, privacy requests, data region (B11)
 - ⬜ Analytics and the dashboard (B12)
 - ⬜ AI assistant (B13)

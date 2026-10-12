@@ -50,6 +50,9 @@ Generate fresh keys with `fmly\Scripts\python.exe scripts\gen_keys.py --write` o
 | `DATASOURCES_ALLOW_LOCAL` | `false` | ⬜ `false` (never true in production) |
 | `WEBHOOKS_ALLOW_LOCAL` | `false` (`true` while trying a receiver on this machine) | ⬜ `false` (never true in production; ignored there anyway) |
 | `EGRESS_IPS` | empty | ⬜ Formalie's fixed outgoing addresses, shown to customers for their database firewall |
+| `GATEWAY_PORT` | `5005` (`python -m app.gateway`; the main app on 5004 also answers `api.formalie.dev`) | ⬜ the port Nginx sends `api.formalie.com` to (its own process, `uvicorn app.gateway:app --no-proxy-headers`) |
+| `GATEWAY_IP_PER_MINUTE` | `6000` | ⬜ the ceiling per caller IP across all workspaces (keep 6000 or set from real traffic) |
+| `API_NETWORKS_DIR` | empty (`data/geoip/networks`, usually no lists) | ⬜ a folder with `vpn.txt`, `proxy.txt`, `tor.txt`, `hosting.txt` (an IP or range per line) kept up to date, so access rules on anonymous networks match; without them only hosting providers are known (by network number) |
 | `RATE_LIMIT_ENABLED`, `RATE_LIMIT_FAIL_OPEN` | `true`, `true` | ⬜ `true`; decide fail open or closed when Redis is down |
 | `ALERT_EMAILS` | empty | ⬜ the team's address for CRITICAL errors |
 | `LOG_CONSOLE_FORMAT` | pretty | ⬜ `json` |
@@ -59,7 +62,8 @@ Generate fresh keys with `fmly\Scripts\python.exe scripts\gen_keys.py --write` o
 
 Also on the backend side:
 - ⬜ Database roles and schema: run `scripts/db_bootstrap.py` and `alembic upgrade head` against production; never seed development data (`scripts/seed_dev.py`) there.
-- ⬜ Services: the API (several instances), the API service gateway, Celery workers per queue, Celery Beat, the outbox relay; restart on failure (systemd).
+- ⬜ Services: the API (several instances), the API service gateway (`app.gateway:app`, its own instances on `GATEWAY_PORT`), Celery workers per queue, Celery Beat, the outbox relay; restart on failure (systemd).
+- ⬜ The development-only headers `X-Debug-Country` and `X-Debug-Network` are ignored when `APP_ENV=production` (nothing to set; check once with a call).
 - ⬜ Backups: continuous WAL archiving plus a daily full backup, encrypted, off-site, 30 days; a restore drill before launch and monthly after.
 - ⬜ Flower and the RabbitMQ management page: not public (VPN or SSH tunnel only).
 
@@ -85,7 +89,7 @@ Also:
 
 ## 4. Nginx and Cloudflare
 
-- ⬜ Hosts: `*.formalie.com` and `manage.formalie.com` → Nuxt, with `/api/` → the API; `forms.formalie.com` → Nuxt; `api.formalie.com` → the API service gateway; `formalie.com`, `www` → the website.
+- ⬜ Hosts: `*.formalie.com` and `manage.formalie.com` → Nuxt, with `/api/` → the API; `forms.formalie.com` → Nuxt; `api.formalie.com` → the API service gateway (`GATEWAY_PORT`, every path, no `/api/` prefix; it sets its own CORS headers, so Nginx adds none); `formalie.com`, `www` → the website.
 - ⬜ Forward `X-Forwarded-Host`, `X-Forwarded-Proto` and the visitor's IP (`X-Forwarded-For`, or Cloudflare's `CF-Connecting-IP`).
 - ⬜ HSTS, gzip / brotli, request size limits, the Content-Security-Policy from SECURITY-PROTOCOL (per-form `frame-ancestors` for embeds; Payoneer's frame hosts when connected).
 - ⬜ Cloudflare: proxy on, SSL "Full (strict)", WAF and rate limiting rules, cache static assets only (never `/api`).
