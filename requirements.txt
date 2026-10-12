@@ -37,3 +37,6 @@ xmlsec==1.3.17
 lxml==6.1.3
 isodate==0.7.2
 dnspython==2.9.0
+# The AI assistant (B13, owner-approved 2026-10-12): Anthropic's official SDK (Claude; it brings httpx2, its own HTTP
+# client, next to httpx)
+anthropic==1.13.0

@@ -96,9 +96,9 @@ Then stop for the owner's review. Day-to-day status lives in `PROGRESS.md`.
 - ✅ Per-form analytics (views, starts, completions, drop-off, timing) and insights, counted in SQL from the existing tables (views and starts estimated as the mock does until fill-in events are recorded).
 - ✅ Dashboard: Workspace, Forms, Data sources and API service views with period, folder and owner filters and first steps.
 
-## B13, AI assistant ⬜ (F19)
+## B13, AI assistant ✅ (F19)
 
-- ⬜ Settings and allowance, create / assist / analyse / write / translate with the chosen provider, request history and removal, everything audited.
+- ✅ Settings and allowance, create / assist / analyse / write / translate with Anthropic Claude (the built-in stand-in without a key), request history and removal, usage per month, everything audited.
 
 ## B14, Help centre and tours ⬜ (F25)
 

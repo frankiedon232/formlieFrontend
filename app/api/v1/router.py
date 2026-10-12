@@ -4,6 +4,10 @@ from __future__ import annotations
 
 from fastapi import APIRouter
 
+from app.modules.ai.analyse import router as ai_analyse_router
+from app.modules.ai.create import router as ai_create_router
+from app.modules.ai.router import router as ai_router
+from app.modules.ai.write import router as ai_write_router
 from app.modules.analytics.router import router as analytics_router
 from app.modules.api_service.access_router import router as api_access_router
 from app.modules.api_service.router import router as api_service_router
@@ -90,6 +94,10 @@ api_router.include_router(api_access_router)
 api_router.include_router(api_traffic_router)
 api_router.include_router(api_try_router)
 api_router.include_router(webhooks_router)
+api_router.include_router(ai_router)
+api_router.include_router(ai_create_router)
+api_router.include_router(ai_write_router)
+api_router.include_router(ai_analyse_router)
 api_router.include_router(emails_router)  # unsubscribe links (public)
 api_router.include_router(email_settings_router)  # B11: /settings/emails/templates, /sent, /sending
 api_router.include_router(sso_router)  # before settings: /settings/sso

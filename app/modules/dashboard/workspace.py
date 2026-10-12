@@ -5,7 +5,7 @@ may see; data sources with `data.view`, the API service with `api.view`, the pla
 `owner` narrow the forms counted (data sources, the API service and the plan stay workspace-wide).
 
 Until subscriptions arrive (B15) the plan is the workspace's `plan_id`: no payment due, card or renewal items yet;
-AI credits used read 0 until the assistant (B13).
+AI credits used are this month's (the assistant's usage, B13).
 """
 
 from __future__ import annotations
@@ -135,7 +135,10 @@ async def workspace_view(principal: Principal, query: dict[str, Any]) -> dict[st
             limit = plan["limits"]["forms"]
             if limit is not None and all_forms >= limit * 0.8:
                 attention.append({"kind": "plan_forms", "name": None, "count": limit, "at": None, "link": "/settings/plans"})
-            plan_area = {"plan": plan["id"], "forms": all_forms, "forms_limit": limit, "ai_used": 0,
+            from app.modules.ai.service import credits_used
+
+            plan_area = {"plan": plan["id"], "forms": all_forms, "forms_limit": limit,
+                         "ai_used": await credits_used(db, tenant_id),
                          "ai_limit": plan["limits"]["ai_credits"]}
     attention.sort(key=lambda item: RANK[item["kind"]])
     if review:

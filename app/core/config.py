@@ -146,6 +146,16 @@ class Settings(BaseSettings):
     # {geoip_dir}/networks). Hosting providers are also known by their network number (networks.py).
     api_networks_dir: Path | None = None
 
+    # ── AI assistant (B13): Anthropic Claude (owner, 2026-10-12) ───────────────
+    # Server only. Empty: the built-in stand-in answers (the mock's local engines), so the portal works without a key
+    anthropic_api_key: SecretStr | None = None
+    anthropic_model: str = "claude-opus-5-5"  # creating forms, templates, translating, rewriting, builder help
+    anthropic_fast_model: str = "claude-haiku-5-5"  # quick tasks: designs, reading answers, questions, summaries
+    anthropic_timeout_seconds: float = 90.0  # one call, retried by the SDK on connection errors, 429 and 5xx
+    anthropic_max_retries: int = 2
+    # Opus and Sonnet: a request the model declines is answered by Anthropic's recommended fallback model
+    anthropic_fallbacks: bool = True
+
     # ── Logging (BACKEND-SPEC §8) ─────────────────────────────────────────────
     log_dir: Path = ROOT_DIR / "logs"
     log_level: str = "INFO"

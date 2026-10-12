@@ -307,14 +307,15 @@ Workers roll events up nightly (and the current day on read). The dashboard (Wor
 
 ### AI usage
 
-Source: `shared/types/ai.ts`, `shared/utils/ai/kinds.ts`, `server/mock/data/aiStore.ts`.
+Source: `shared/types/ai.ts`, `shared/utils/ai/kinds.ts`, `server/mock/data/aiStore.ts`. Migration 0032 (B13).
 
 | Table | Key columns |
 | --- | --- |
-| `ai_settings` | one per tenant: enabled, sources jsonb (forms, responses, data), mask_personal, keep_days (30, 90, 180, 365), updated_at, updated_by |
-| `ai_requests` | kind (`form`, `template`, `theme`, `builder`, `analysis`, `question`, `summary`, `translate`, `rewrite`), status (`proposed`, `applied`, `discarded`, `failed`), title, title_key jsonb, user_id, target_type (`form`, `template`, `theme`, `response`), target_id, target_name, credits, prompt (masked), result, output jsonb, notes jsonb, stats jsonb, read_sources text[], masked, model, created_at, applied_at. Purged after `keep_days` |
+| `ai_settings` | one per tenant (unique while not deleted): enabled, sources jsonb (forms, responses, data), mask_personal, keep_days (30, 90, 180, 365), monthly_credits (the agreed amount for a plan without one), updated_by_name, updated_at, updated_by. No row = the defaults (on; forms and responses read, data not; masking on; 90 days); the row is written on the first change |
+| `ai_requests` | kind (`form`, `template`, `theme`, `builder`, `analysis`, `question`, `summary`, `translate`, `rewrite`), status (`proposed`, `applied`, `discarded`, `failed`), title, title_key jsonb, by_id, by_name, target jsonb { type (`form`, `template`, `theme`, `response`), id, name }, credits, prompt (masked when the workspace asks), result, read jsonb (the sources it read), masked, applied_at, output jsonb (the draft while it waits for a person), notes jsonb, stats jsonb, engine (`model`, `standin`, `fallback`), model, fallback_reason, input_tokens, output_tokens, cache_read_tokens, cache_write_tokens. Index (tenant_id, created_at), (tenant_id, by_id). Past `keep_days`, or removed by a person: soft deleted with prompt, result, output and notes emptied (Beat hourly through `platform.ai_requests_expired()`, which lists workspaces only) |
+| `ai_usage` | one per tenant and month (`month` = its first day, UTC; unique): requests, credits, model_calls, input_tokens, output_tokens, cache_read_tokens, cache_write_tokens (bigint). Never deleted |
 
-Monthly credits come from `plan_limits.ai_credits`; used credits are summed from `ai_requests` for the period.
+Monthly credits come from `plan_limits.ai_credits` (else `ai_settings.monthly_credits`); the credits used are read from `ai_usage` for the month, so a removed or expired request still counts.
 
 ### Help and tours
 
@@ -365,4 +366,4 @@ Celery Beat creates the next 3 periods ahead and detaches expired ones. Other sc
 
 Global (migrations or the platform admin): countries, currencies, time zones, the 20 languages, data regions, plans with prices, limits and features, the permission catalogue, audit event types, error codes, reserved subdomains, Formalie's system lists (simple: countries, regions, cities, languages, currencies; with levels: Countries → States → Cities, Countries → Cities → Regions; Large where needed), system folders, system email templates (20 languages), system templates, themes and page designs, help content.
 
-Per new workspace (backend, at sign-up, one transaction): the primary organisation; roles `owner`, `admin`, `member` with `DEFAULT_ROLE_GRANTS`; the founding user as Owner; `workspace_settings` sections with Formalie's defaults (language `en`, timezone `UTC`, currency `USD`, password policy, sessions 60 min idle and 168 h max, notification rules, retention 0, appearance `formalie`); default folders (Operations, Customers, Compliance, Marketing, Leads, Projects) with `system_key`; locked copies or references of the system lists; `subscriptions` on Starter (active at once); `ai_settings` (forms and responses on, data off, masking on, 90 days); `api_settings` with a new API key; `signup_links` off; `onboarding` not started; `email_sending` mode `formalie`; `tenants.data_region = 'default'`. Defaults are use-only: no edit, no delete.
+Per new workspace (backend, at sign-up, one transaction): the primary organisation; roles `owner`, `admin`, `member` with `DEFAULT_ROLE_GRANTS`; the founding user as Owner; `workspace_settings` sections with Formalie's defaults (language `en`, timezone `UTC`, currency `USD`, password policy, sessions 60 min idle and 168 h max, notification rules, retention 0, appearance `formalie`); default folders (Operations, Customers, Compliance, Marketing, Leads, Projects) with `system_key`; locked copies or references of the system lists; `subscriptions` on Starter (active at once); `ai_settings` defaults (forms and responses on, data off, masking on, 90 days; the row is written on the first change); `api_settings` with a new API key; `signup_links` off; `onboarding` not started; `email_sending` mode `formalie`; `tenants.data_region = 'default'`. Defaults are use-only: no edit, no delete.

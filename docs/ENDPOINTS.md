@@ -363,13 +363,13 @@ Built with B10 (moved from B9): a webhook sends a webhook token from the API ser
 - **Guards:** `requireAuth`
 - **Audit:** `ai.disabled`, `ai.enabled`, `ai.request_deleted`, `ai.settings_updated`
 
-- ⬜ `GET /api/v1/ai/settings` (`getAiSettings`)
-- ⬜ `PATCH /api/v1/ai/settings` (`updateAiSettings`)
-- ⬜ `GET /api/v1/ai/usage` (`getAiUsage`)
-- ⬜ `GET /api/v1/ai/requests` (`listAiRequests`)
-- ⬜ `GET /api/v1/ai/requests/insights` (`aiRequestInsights`)
-- ⬜ `GET /api/v1/ai/requests/{id}` (`getAiRequest`)
-- ⬜ `DELETE /api/v1/ai/requests/{id}` (`deleteAiRequest`)
+- ✅ `GET /api/v1/ai/settings` (`getAiSettings`)
+- ✅ `PATCH /api/v1/ai/settings` (`updateAiSettings`)
+- ✅ `GET /api/v1/ai/usage` (`getAiUsage`)
+- ✅ `GET /api/v1/ai/requests` (`listAiRequests`)
+- ✅ `GET /api/v1/ai/requests/insights` (`aiRequestInsights`)
+- ✅ `GET /api/v1/ai/requests/{id}` (`getAiRequest`)
+- ✅ `DELETE /api/v1/ai/requests/{id}` (`deleteAiRequest`)
 
 ## `routes/aiCreate.ts`
 
@@ -377,33 +377,33 @@ Built with B10 (moved from B9): a webhook sends a webhook token from the API ser
 - **Permissions:** `forms.create`, `forms.save_template`
 - **Audit:** `ai.applied`, `forms.updated`
 
-- ⬜ `POST /api/v1/ai/requests/{id}/apply` (`applyAiRequest`)
-- ⬜ `POST /api/v1/ai/requests/{id}/discard` (`discardAiRequest`)
-- ⬜ `POST /api/v1/ai/forms/draft` (`draftFormRoute`)
-- ⬜ `POST /api/v1/ai/templates/draft` (`draftTemplateRoute`)
-- ⬜ `POST /api/v1/ai/themes/draft` (`draftThemeRoute`)
+- ✅ `POST /api/v1/ai/requests/{id}/apply` (`applyAiRequest`)
+- ✅ `POST /api/v1/ai/requests/{id}/discard` (`discardAiRequest`)
+- ✅ `POST /api/v1/ai/forms/draft` (`draftFormRoute`)
+- ✅ `POST /api/v1/ai/templates/draft` (`draftTemplateRoute`)
+- ✅ `POST /api/v1/ai/themes/draft` (`draftThemeRoute`)
 
 ## `routes/aiAssist.ts`
 
 - **Guards:** `requireAction`, `requireAi`, `requireAuth`
 
-- ⬜ `POST /api/v1/ai/forms/{id}/assist` (`assistFormRoute`)
+- ✅ `POST /api/v1/ai/forms/{id}/assist` (`assistFormRoute`)
 
 ## `routes/aiWrite.ts`
 
 - **Guards:** `requireAction`, `requireAi`, `requireAuth`
 
-- ⬜ `POST /api/v1/ai/forms/{id}/translate` (`translateFormRoute`)
-- ⬜ `POST /api/v1/ai/forms/{id}/rewrite` (`rewriteFormRoute`)
+- ✅ `POST /api/v1/ai/forms/{id}/translate` (`translateFormRoute`)
+- ✅ `POST /api/v1/ai/forms/{id}/rewrite` (`rewriteFormRoute`)
 
 ## `routes/aiAnalyse.ts`
 
 - **Guards:** `requireAi`, `requireAuth`
 
-- ⬜ `POST /api/v1/ai/analysis` (`analysisRoute`)
-- ⬜ `POST /api/v1/ai/digest` (`digestRoute`)
-- ⬜ `POST /api/v1/ai/ask` (`askRoute`)
-- ⬜ `POST /api/v1/ai/responses/{id}/summary` (`responseSummaryRoute`)
+- ✅ `POST /api/v1/ai/analysis` (`analysisRoute`)
+- ✅ `POST /api/v1/ai/digest` (`digestRoute`)
+- ✅ `POST /api/v1/ai/ask` (`askRoute`)
+- ✅ `POST /api/v1/ai/responses/{id}/summary` (`responseSummaryRoute`)
 
 ## `routes/savedQueries.ts`
 

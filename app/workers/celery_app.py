@@ -23,7 +23,7 @@ celery_app = Celery(
     include=["app.core.events.tasks", "app.core.db.tasks", "app.modules.logs.tasks", "app.modules.emails.tasks",
              "app.modules.exports.tasks", "app.modules.responses.after",
              "app.modules.data_sources.tasks", "app.modules.destinations.tasks", "app.modules.webhooks.tasks",
-             "app.modules.api_service.tasks", "app.modules.privacy.tasks"],
+             "app.modules.api_service.tasks", "app.modules.ai.tasks", "app.modules.privacy.tasks"],
 )
 
 celery_app.conf.update(
@@ -61,6 +61,7 @@ celery_app.conf.update(
         "webhooks.sweep": {"queue": "webhooks"},
         "api_service.prune_log_bodies": {"queue": "scheduled"},
         "api_service.expire_call_keys": {"queue": "scheduled"},
+        "ai.expire_requests": {"queue": "scheduled"},
         "privacy.apply_retention": {"queue": "scheduled"},
     },
     beat_schedule={
@@ -73,6 +74,7 @@ celery_app.conf.update(
         "webhooks-sweep": {"task": "webhooks.sweep", "schedule": 30.0},
         "api-log-bodies": {"task": "api_service.prune_log_bodies", "schedule": 3600.0},
         "api-call-keys": {"task": "api_service.expire_call_keys", "schedule": 3600.0},
+        "ai-requests-expire": {"task": "ai.expire_requests", "schedule": 3600.0},
         "response-retention": {"task": "privacy.apply_retention", "schedule": 24 * 3600.0},
     },
 )
