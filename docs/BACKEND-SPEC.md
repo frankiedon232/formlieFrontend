@@ -75,8 +75,8 @@ Updated 2026-10-10 after the frontend was finished. The frontend's mock (`C:/UNE
 
 - Email/password signup on manage.\* → OTP → create tenant + organisation + admin user + subdomain (transaction) → issue tokens.
 - Workspace single sign-on (`/settings/sso`: SAML or OIDC, test, switch on / off; mock `routes/sso.ts`).
-- Social sign-in is **not** single sign-on (03-DECISIONS, 2026-10-11). It runs through Formalie's own Google, Microsoft and Facebook app registrations, shared by every workspace, and serves sign-up on `manage.` and the sign-in page of any workspace that switched the method on. It only signs in existing accounts (or the new Owner at sign-up), never creating people in a workspace.
-- OAuth (Google, Microsoft, Facebook) via Authlib; per-tenant provider configs (client id/secret encrypted) shown on that tenant's login page; OAuth login still requires OTP unless the tenant enables IdP-MFA trust.
+- Social sign-in is **not** single sign-on (03-DECISIONS, 2026-10-11). It runs through Formalie's own Google and Facebook app registrations, shared by every workspace, and serves sign-up on `manage.` and the sign-in page of every workspace, in every plan (owner, 2026-10-12). Microsoft accounts come in through the workspace's single sign-on (Entra ID), never as a social button. It only signs in existing accounts (or the new Owner at sign-up), never creating people in a workspace.
+- OAuth (Google, Facebook) through Formalie's own apps (no per-workspace provider settings); OAuth login still requires OTP unless the tenant enables IdP-MFA trust.
 - Find-my-workspace: email → OTP → list of tenants → redirect.
 - Sessions table (device, IP, geo, last seen) with remote revoke.
 

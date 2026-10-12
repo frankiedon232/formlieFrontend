@@ -19,14 +19,14 @@ from app.core.responses import ok
 from app.core.validation import Email
 from app.core.security.limits import per_value, rate_limit
 from app.modules.auth import challenges
-from app.modules.billing.service import has_feature
 from app.modules.emails import service as emails
-from app.modules.settings.service import SIGNIN_METHODS, get_section
-from app.modules.users.identities import linked_providers, offered_methods
+from app.modules.settings.service import SIGNIN_PROVIDERS, get_section
 
 router = APIRouter(tags=["tenants"])
 
-ALL_PROVIDERS = list(SIGNIN_METHODS)  # manage.* offers every method for the first sign-up
+# Sign-up on manage.* and every workspace's sign-in page: email and password, Google, Facebook (owner, 2026-10-12).
+# Microsoft accounts come in through a workspace's single sign-on (Entra ID), which shows as `sso` once switched on.
+ALL_PROVIDERS = list(SIGNIN_PROVIDERS)
 
 
 def host_port() -> str:
@@ -45,8 +45,8 @@ def workspace_url(subdomain: str, path: str) -> str:
 
 @router.get("/tenants/public")
 async def public_profile() -> Any:
-    """What the sign-in page of this host may show (no secrets): manage.* offers every provider for the first
-    sign-up; a workspace shows its name, branding, enabled methods (as far as its plan allows) and password rules."""
+    """What the sign-in page of this host may show (no secrets): manage.* offers the sign-up providers; a workspace
+    shows its name, branding, the same providers, its single sign-on when switched on, and its password rules."""
     ctx = get_context()
     host = current_host_context()
     if host is not None and host.kind == "manage":
@@ -58,9 +58,7 @@ async def public_profile() -> Any:
     async with db_session("read", tenant_id=tenant.id, organisation_id=tenant.organisation_id) as db:
         company = await get_section(db, tenant.id, "company")
         branding = await get_section(db, tenant.id, "branding")
-        signin = await get_section(db, tenant.id, "signin")
         security = await get_section(db, tenant.id, "security")
-        linked = await linked_providers(db, tenant.id)
         from app.modules.sso.service import public_of
 
         sso = await public_of(db, tenant)
@@ -75,8 +73,7 @@ async def public_profile() -> Any:
         "signin_message": branding.get("signin_message"),
         "colors": {"primary": branding.get("brand_color")},
         "website": company.get("website"),
-        # Social methods while the plan has them, and always the ones people here already sign in with
-        "auth_providers": offered_methods(signin, tenant.plan_id, linked),
+        "auth_providers": ALL_PROVIDERS,  # always all of them, whatever the plan
         "sso": sso,  # single sign-on while it is on and the plan has it (Settings → Sign-in)
         "password_policy": {k: rules[k] for k in ("min_length", "lower", "upper", "number", "symbol")},
         "status": tenant.status if tenant.status in ("active", "suspended") else "active",

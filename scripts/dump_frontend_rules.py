@@ -33,7 +33,7 @@ import * as B from '__SHARED__/utils/billing/plans.ts'
 import * as W from '__SHARED__/utils/auth/password.ts'
 import * as H from '__SHARED__/utils/tenant/host.ts'
 import * as L from '__SHARED__/utils/i18n/locales.ts'
-import { SIGNIN_METHODS } from '__SHARED__/utils/settings/schemas.ts'
+import { SIGNIN_PROVIDERS } from '__SHARED__/utils/settings/schemas.ts'
 
 const routes = JSON.parse(readFileSync(process.argv[2], 'utf8'))
 const singles = []
@@ -76,7 +76,7 @@ const out = {
   password_cases: passwordCases,
   reserved_subdomains: H.RESERVED_SUBDOMAINS,
   app_locales: L.APP_LOCALES,
-  signin_methods: SIGNIN_METHODS,
+  signin_providers: SIGNIN_PROVIDERS,
 }
 process.stdout.write(JSON.stringify(out))
 """

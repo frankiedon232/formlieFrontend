@@ -22,10 +22,12 @@ from app.modules.settings.catalogues import FORMALIE_APPEARANCE, NOTIFICATION_EV
 from app.modules.settings.models import WorkspaceSetting
 
 
-SIGNIN_METHODS = ("password", "google", "microsoft", "facebook")  # shared/utils/settings/schemas.ts (parity test)
+# The ways in on sign-up and on every workspace's sign-in page, always all of them (owner, 2026-10-12): a workspace
+# doesn't choose them, its admin can only add single sign-on. shared/utils/settings/schemas.ts (parity test)
+SIGNIN_PROVIDERS = ("password", "google", "facebook")
 
 
-def defaults(*, name: str, website: str | None = None, signin_methods: list[str] | None = None) -> dict[str, dict[str, Any]]:
+def defaults(*, name: str, website: str | None = None) -> dict[str, dict[str, Any]]:
     """The sections a new workspace starts with (settingsStore.ts seed)."""
     return {
         "company": {
@@ -37,8 +39,7 @@ def defaults(*, name: str, website: str | None = None, signin_methods: list[str]
         "localisation": {"language": "en", "timezone": "UTC", "currency": "USD", "date_format": "DD/MM/YYYY",
                          "number_format": "1,234.56", "week_start": "monday", "form_languages": list(APP_LOCALE_CODES)},
         # Codes by email; text messages only when switched on (owner, 2026-10-07)
-        "signin": {"methods": list(signin_methods or ["password"]),
-                   "code": {"sms": False, "expiry_minutes": 5, "max_attempts": 5}, "allowed_domains": []},
+        "signin": {"code": {"sms": False, "expiry_minutes": 5, "max_attempts": 5}, "allowed_domains": []},
         "security": {
             "password": {**DEFAULT_PASSWORD_POLICY, "reuse_last": 0, "expiry_days": 0},
             "sessions": {"idle_minutes": 60, "max_hours": 168},
@@ -67,13 +68,21 @@ _EMAILED = ("form_limit", "form_closing", "webhook_failing", "security_alert")
 _FALLBACK = defaults(name="")
 
 
+def _current(section: str, value: dict[str, Any]) -> dict[str, Any]:
+    """A stored value in today's shape: sign-in rows saved before 2026-10-12 still hold `methods` (the workspace's
+    old ways in), which no longer exist; the row keeps it until the next save, the answer never shows it."""
+    if section == "signin" and "methods" in value:
+        return {k: v for k, v in value.items() if k != "methods"}
+    return value
+
+
 async def get_section(session: AsyncSession, tenant_id: uuid.UUID, section: str) -> dict[str, Any]:
     """The section's value (RLS keeps it to the workspace in the session's context); its default when not saved."""
     row = (await session.execute(
         select(WorkspaceSetting.value).where(WorkspaceSetting.tenant_id == tenant_id, WorkspaceSetting.section == section)
     )).scalar_one_or_none()
     if row is not None:
-        return row
+        return _current(section, row)
     return copy.deepcopy(_FALLBACK.get(section, {}))
 
 
@@ -94,7 +103,7 @@ async def all_settings(session: AsyncSession, tenant_id: uuid.UUID) -> dict[str,
     updated: dict[str, Any] = {}
     for section in SETTINGS_SECTIONS:
         row = rows.get(section)
-        out[section] = row.value if row is not None else copy.deepcopy(_FALLBACK[section])
+        out[section] = _current(section, row.value) if row is not None else copy.deepcopy(_FALLBACK[section])
         updated[section] = ({"at": row.updated_at.astimezone(UTC).isoformat(timespec="milliseconds").replace("+00:00", "Z"),
                              "by": editors.get(row.updated_by, "")} if row is not None and row.updated_by else None)
     out["updated"] = updated

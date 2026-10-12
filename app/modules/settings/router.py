@@ -24,7 +24,6 @@ from app.core.security.limits import rate_limit
 from app.modules.audit import queries as audit_queries
 from app.modules.audit.service import Actor, record
 from app.modules.auth.sessions import Principal, active_sessions, require_admin, require_auth, revoke_sessions
-from app.modules.billing.service import require_feature
 from app.modules.settings import schemas
 from app.modules.settings.catalogues import SETTINGS_SECTIONS
 from app.modules.settings.changes import settings_changes
@@ -227,9 +226,6 @@ async def patch_section(section: str, request: Request, principal: Principal = D
             domain = principal.user.email.rsplit("@", 1)[-1].lower()
             if value["allowed_domains"] and not any(domain == d or domain.endswith(f".{d}") for d in value["allowed_domains"]):
                 raise _locked_out("allowed_domains", "own_domain")
-            # Google, Microsoft and Facebook come with Professional and up
-            if any(m != "password" and m not in before["methods"] for m in value["methods"]):
-                require_feature(tenant.plan_id, "social_signin")
             changes = settings_changes(before, value)
         elif section == "security":
             ctx = get_context()

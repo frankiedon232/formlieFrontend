@@ -54,7 +54,6 @@ async def create_workspace(
     subdomain: str,
     founder: Founder | None,
     plan_id: str = "starter",
-    signin_methods: list[str] | None = None,
     website: str | None = None,
     tenant_id: uuid.UUID | None = None,
     organisation_id: uuid.UUID | None = None,
@@ -77,7 +76,7 @@ async def create_workspace(
                              legal_name=name, is_primary=True))
     roles = built_in_roles(tenant_id, organisation_id)
     session.add_all(roles)
-    sections = defaults(name=name, website=website, signin_methods=signin_methods)
+    sections = defaults(name=name, website=website)
     if onboarding:  # the seeded workspaces count as set up (no onboarding row)
         sections[SECTION] = new_state()
     session.add_all(seed_rows(tenant_id, organisation_id, sections))

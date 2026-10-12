@@ -29,7 +29,7 @@ Then stop for the owner's review. Day-to-day status lives in `PROGRESS.md`.
 - ✅ Encrypted references (SECURITY-PROTOCOL §10) on every id in and out (`RefId` refuses raw ids in path, query and body).
 - ✅ Tenant public profile, subdomain availability, find workspace.
 - ✅ Sign-up (tenant + organisation + admin + subdomain), login, OTP (Mailpit), resend, forgot / reset, logout, refresh rotation with reuse detection, CSRF, sessions, TOTP and recovery codes at sign-in (setting them up is the `/me/two-step` routes, B4).
-- ✅ OAuth providers (Google, Microsoft, Facebook; no Apple, owner 2026-10-11) and per-workspace provider settings. Rate limits and lockouts: done. Google and Facebook keys set; Microsoft waits for its app registration.
+- ✅ OAuth providers (Google, Facebook; no Apple, owner 2026-10-11; no Microsoft, owner 2026-10-12: Microsoft accounts use the workspace's single sign-on). Every workspace offers them; no per-workspace choice. Rate limits and lockouts: done. Google and Facebook keys set.
 - ✅ Development seed with the same test workspaces and accounts as the mock (`server/mock/data/tenants.ts`), so the frontend's flows work unchanged (`scripts/seed_dev.py`).
 
 ## B2, Audit trail and logs ✅ (F4)

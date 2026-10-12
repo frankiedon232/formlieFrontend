@@ -63,7 +63,7 @@ Formalie publishes on RabbitMQ exchange `formalie.events` (topic). The platform 
 
 | Routing key | When |
 | --- | --- |
-| `auth.signed_in` · `auth.sign_in_failed` · `auth.signed_out` · `auth.two_step_used` | Every sign-in attempt and result. `properties.method`: `password`, `google`, `microsoft`, `facebook` (social sign-in, Formalie's own apps), `sso` (the workspace's own single sign-on) or `signup_handoff` (first sign-in after creating a workspace) |
+| `auth.signed_in` · `auth.sign_in_failed` · `auth.signed_out` · `auth.two_step_used` | Every sign-in attempt and result. `properties.method`: `password`, `google`, `facebook` (social sign-in, Formalie's own apps; `microsoft` only in events before 2026-10-12), `sso` (the workspace's own single sign-on) or `signup_handoff` (first sign-in after creating a workspace) |
 | `session.page_viewed` | Portal page views (path template, not ids), for engagement |
 | `tenant.signed_up` · `tenant.setup_completed` · `tenant.suspended` · `tenant.closed` | Workspace lifecycle (sign-up with UTM source / referrer) |
 | `user.invited` · `user.joined` · `user.approved` · `user.disabled` | People |

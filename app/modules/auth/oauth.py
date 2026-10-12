@@ -1,4 +1,7 @@
-"""Social sign-in (Google, Microsoft, Facebook) through Formalie's own app at each provider (03-DECISIONS 2026-10-11).
+"""Social sign-in (Google, Facebook) through Formalie's own app at each provider (03-DECISIONS 2026-10-11).
+
+Microsoft is not a social button (owner, 2026-10-12): Microsoft accounts come in only through a workspace's single
+sign-on (Entra ID, app/modules/sso). /auth/oauth/microsoft/start answers like any unknown provider.
 
 The browser goes to /auth/oauth/{provider}/start, then to the provider, which sends it back to one fixed address,
 /auth/oauth/{provider}/callback on manage.* (providers don't take wildcard subdomains). What the start knew (the
@@ -16,7 +19,6 @@ import json
 import logging
 import secrets
 from dataclasses import asdict, dataclass
-from typing import Any
 from urllib.parse import urlencode
 
 import httpx
@@ -31,8 +33,6 @@ log = logging.getLogger("formalie.auth.oauth")
 STATE_PREFIX = "fm:v1:auth:oauth:"
 STATE_TTL_S = 600
 TIMEOUT_S = 10.0
-# Microsoft personal accounts (outlook.com, hotmail.com …) all sign in through this directory
-MICROSOFT_CONSUMERS_TID = "9188040d-6c67-4c5b-b112-36a304b66dad"
 
 # Tests swap in an httpx.MockTransport here; never set in the running app.
 transport: httpx.AsyncBaseTransport | None = None
@@ -50,9 +50,6 @@ class Provider:
 PROVIDERS: dict[str, Provider] = {
     "google": Provider("https://accounts.google.com/o/oauth2/v2/auth", "https://oauth2.googleapis.com/token",
                        "https://openidconnect.googleapis.com/v1/userinfo", "openid email profile", True),
-    "microsoft": Provider("https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
-                          "https://login.microsoftonline.com/common/oauth2/v2.0/token",
-                          "https://graph.microsoft.com/oidc/userinfo", "openid email profile", True),
     "facebook": Provider("https://www.facebook.com/dialog/oauth", "https://graph.facebook.com/oauth/access_token",
                          "https://graph.facebook.com/me", "email public_profile", False),
 }
@@ -112,7 +109,7 @@ async def begin(state: OAuthState, uri: str) -> str:
         state.verifier = secrets.token_urlsafe(48)
         params |= {"code_challenge": _b64(hashlib.sha256(state.verifier.encode()).digest()),
                    "code_challenge_method": "S256"}
-    if state.provider in ("google", "microsoft"):
+    if state.provider == "google":
         params["prompt"] = "select_account"  # someone signed in to two accounts picks one
     await get_redis().set(STATE_PREFIX + hashlib.sha256(key.encode()).hexdigest(), json.dumps(asdict(state)),
                           ex=STATE_TTL_S)
@@ -125,16 +122,6 @@ async def take_state(key: str | None) -> OAuthState | None:
         return None
     raw = await get_redis().getdel(STATE_PREFIX + hashlib.sha256(key.encode()).hexdigest())
     return OAuthState(**json.loads(raw)) if raw else None
-
-
-def _claims(id_token: str | None) -> dict[str, Any]:
-    """The ID token's claims. It came straight from the provider's token endpoint over TLS, which OpenID Connect
-    accepts in place of checking its signature (Core §3.1.3.7)."""
-    try:
-        payload = (id_token or "").split(".")[1]
-        return dict(json.loads(base64.urlsafe_b64decode(payload + "=" * (-len(payload) % 4))))
-    except (IndexError, ValueError):
-        return {}
 
 
 async def fetch_profile(provider_name: str, code: str, state: OAuthState, uri: str) -> Profile:
@@ -169,14 +156,8 @@ async def fetch_profile(provider_name: str, code: str, state: OAuthState, uri: s
     if provider_name == "facebook":
         # Facebook only shares an address the person confirmed
         subject, email, verified = str(info.get("id") or ""), info.get("email"), bool(info.get("email"))
-    elif provider_name == "google":
-        subject, email, verified = str(info.get("sub") or ""), info.get("email"), info.get("email_verified") is True
     else:
-        # Microsoft: any directory can type in an unchecked address, so only personal accounts (Microsoft checks
-        # those) or a directory that says it checked the domain (optional claim xms_edov) are trusted.
-        claims = _claims(tokens.get("id_token"))
-        subject, email = str(claims.get("oid") or info.get("sub") or ""), info.get("email") or claims.get("email")
-        verified = claims.get("tid") == MICROSOFT_CONSUMERS_TID or claims.get("xms_edov") in (True, 1, "1", "true")
+        subject, email, verified = str(info.get("sub") or ""), info.get("email"), info.get("email_verified") is True
     if not subject:
         raise FrmError("FRM-AUTH-1023")
     if not email or not verified or "@" not in str(email):

@@ -17,7 +17,6 @@ from app.modules.settings.catalogues import (
     CURRENCY_CODES, DATE_FORMATS, EMAIL_TEMPLATES, IDLE_MINUTES, INDUSTRIES, MAX_SESSION_HOURS, NOTIFICATION_EVENTS,
     NUMBER_FORMATS, RETENTION_DAYS,
 )
-from app.modules.settings.service import SIGNIN_METHODS
 
 _WEBSITE = re.compile(r"^https?://[^\s.]+\.[^\s]+$", re.IGNORECASE)
 _HTTPS = re.compile(r"^https://[^\s.]+\.[^\s]+$", re.IGNORECASE)
@@ -103,8 +102,6 @@ localisation = z.obj(
 )
 
 signin = z.obj(
-    methods=z.array(z.enum(SIGNIN_METHODS)).min(1, "methods")
-    .transform(lambda items: [m for m in SIGNIN_METHODS if m in items]),
     code=z.obj(
         sms=z.boolean(),
         expiry_minutes=z.literals([5, 10, 15]),

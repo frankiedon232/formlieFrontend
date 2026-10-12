@@ -88,9 +88,10 @@ const localisationCases = variants(localisation, [
   ['form_languages', []], ['form_languages', ['en', 'xx']], ['form_languages', ['en', 'en']],
 ])
 
-const signin = { methods: ['password'], code: { sms: false, expiry_minutes: 5, max_attempts: 5 }, allowed_domains: [] }
+const signin = { code: { sms: false, expiry_minutes: 5, max_attempts: 5 }, allowed_domains: [] }
 const signinCases = variants(signin, [
-  ['methods', []], ['methods', ['google', 'password']], ['methods', ['facebook', 'facebook', 'microsoft']], ['methods', ['apple']],
+  // Workspaces no longer choose their ways in (owner, 2026-10-12): an old `methods` is simply left out
+  ['methods', ['password']], ['methods', ['microsoft']],
   ['code.expiry_minutes', 10], ['code.expiry_minutes', 7], ['code.max_attempts', 3], ['code.max_attempts', 4], ['code.sms', 'yes'],
   ['allowed_domains', ['Example.COM', '@example.com', ' sub.example.co.uk ']], ['allowed_domains', ['localhost']], ['allowed_domains', ['a@b.com']],
   ['allowed_domains', Array.from({ length: 51 }, (_, i) => `d${i}.example`)],
@@ -184,7 +185,7 @@ const settingsChanges = (before, after, prefix = '') => Object.keys(after).flatM
 const changeCases = [
   [company, set(company, 'display_name', 'Remedy')],
   [company, set(set(company, 'address.city', 'London'), 'website', 'https://a.example')],
-  [signin, set(signin, 'methods', ['password', 'google'])],
+  [signin, set(signin, 'allowed_domains', ['example.com'])],
   [security, set(set(security, 'sessions.idle_minutes', 30), 'password.symbol', true)],
   [{ a: 1, b: '' }, { a: 1.0, b: null, c: false }],
 ].map(([b, a]) => ({ before: b, after: a, changes: settingsChanges(b, a) }))
@@ -201,7 +202,7 @@ process.stdout.write(JSON.stringify({
   appearance_fonts: A.APPEARANCE_FONTS, formalie_appearance: A.FORMALIE_APPEARANCE, email_templates: EMAIL_TEMPLATES,
   notification_events: NOTIFICATION_EVENTS, retention_days: RETENTION_DAYS, settings_sections: SETTINGS_SECTIONS,
   country_currencies: COUNTRY_CURRENCIES, currency_codes: CURRENCY_CODES, idle_minutes: S.IDLE_MINUTES,
-  max_session_hours: S.MAX_SESSION_HOURS, signin_methods: S.SIGNIN_METHODS,
+  max_session_hours: S.MAX_SESSION_HOURS, signin_providers: S.SIGNIN_PROVIDERS,
   schemas: {
     company: companyCases.map(i => run(S.companySchema, i)),
     branding: brandingCases.map(i => run(S.brandingSchema, i)),

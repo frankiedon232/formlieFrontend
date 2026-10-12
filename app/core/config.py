@@ -92,10 +92,9 @@ class Settings(BaseSettings):
     saml_sp_key: SecretStr | None = None
 
     # ── Social sign-in (Formalie's own app at each provider; empty = that button answers "unavailable") ──
+    # Google and Facebook only: Microsoft accounts come in through a workspace's single sign-on (owner, 2026-10-12)
     oauth_google_client_id: str | None = None
     oauth_google_client_secret: SecretStr | None = None
-    oauth_microsoft_client_id: str | None = None
-    oauth_microsoft_client_secret: SecretStr | None = None
     oauth_facebook_client_id: str | None = None
     oauth_facebook_client_secret: SecretStr | None = None
     # Where providers send people back (…/auth/oauth/{provider}/callback). Empty: https://manage.<root domain> with

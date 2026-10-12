@@ -88,8 +88,10 @@ async def test_sections_validation_and_audit(app, superuser) -> None:  # noqa: A
         signin = {**data["signin"], "allowed_domains": ["other.example"]}
         _, reply = await owner.request("PATCH", "/settings/signin", body=signin)
         assert reply["error"]["code"] == "FRM-AUTH-1017" and reply["error"]["details"][0]["message"] == "own_domain"
-        _, reply = await owner.request("PATCH", "/settings/signin", body={**data["signin"], "methods": ["password", "google"]})
-        assert reply["error"]["code"] == "FRM-PLAN-1002"  # Starter: no new social sign-in
+        # Workspaces no longer choose their ways in (owner, 2026-10-12): an old `methods` is left out, on any plan
+        assert "methods" not in data["signin"]
+        status, reply = await owner.request("PATCH", "/settings/signin", body={**data["signin"], "methods": ["password"]})
+        assert status == 200 and "methods" not in reply["data"], reply
         security = data["security"]
         _, reply = await owner.request("PATCH", "/settings/security", body={
             **security, "ip_allowlist": {"enabled": True, "entries": [{"value": "10.0.0.0/8", "label": None}]}})

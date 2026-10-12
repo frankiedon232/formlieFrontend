@@ -14630,7 +14630,6 @@
     "databases": [
      "mysql"
     ],
-    "social_signin": false,
     "sso": false,
     "custom_domains": 0,
     "custom_email": false,
@@ -14675,7 +14674,6 @@
      "postgresql",
      "mariadb"
     ],
-    "social_signin": true,
     "sso": true,
     "custom_domains": 1,
     "custom_email": true,
@@ -14728,7 +14726,6 @@
      "oracle",
      "mariadb"
     ],
-    "social_signin": true,
     "sso": true,
     "custom_domains": null,
     "custom_email": true,
@@ -14776,7 +14773,6 @@
      "oracle",
      "mariadb"
     ],
-    "social_signin": true,
     "sso": true,
     "custom_domains": null,
     "custom_email": true,
@@ -16095,10 +16091,9 @@
    "uiLocale": "en"
   }
  ],
- "signin_methods": [
+ "signin_providers": [
   "password",
   "google",
-  "microsoft",
   "facebook"
  ],
  "about": "Recorded from the frontend's shared/ code by scripts/dump_frontend_rules.py. Do not edit."

@@ -77,16 +77,17 @@ async def test_public_profiles(app) -> None:  # noqa: ANN001
         _, reply = await SecureClient(http).request("GET", "/tenants/public")
     profile = reply["data"]
     assert profile["mode"] == "tenant" and profile["name"] == "Remedy Legal" and profile["subdomain"] == "remedylegal"
-    assert profile["auth_providers"] == ["password", "google", "microsoft"]  # Business plan: social sign-in
+    # Always email and password, Google, Facebook (owner, 2026-10-12), whatever the plan or an old saved `methods`
+    assert profile["auth_providers"] == ["password", "google", "facebook"]
     assert profile["password_policy"] == {"min_length": 10, "lower": True, "upper": True, "number": True, "symbol": False}
     assert profile["website"] == "https://www.remedylegal.example" and profile["status"] == "active"
     async with client_for(app, host="samathtax.formalie.dev") as http:
         _, reply = await SecureClient(http).request("GET", "/tenants/public")
-    assert reply["data"]["auth_providers"] == ["password"]  # Starter: password only
+    assert reply["data"]["auth_providers"] == ["password", "google", "facebook"]  # Starter too
     async with client_for(app, host="manage.formalie.dev") as http:
         _, reply = await SecureClient(http).request("GET", "/tenants/public")
     assert reply["data"]["mode"] == "manage"
-    assert reply["data"]["auth_providers"] == ["password", "google", "microsoft", "facebook"]  # no Apple
+    assert reply["data"]["auth_providers"] == ["password", "google", "facebook"]  # sign-up: no Apple, no Microsoft
     async with client_for(app, host="oldco.formalie.dev") as http:
         _, reply = await SecureClient(http).request("GET", "/tenants/public")
     assert reply["data"]["status"] == "suspended"

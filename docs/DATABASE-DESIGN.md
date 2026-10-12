@@ -41,7 +41,7 @@ Source: `shared/utils/platform/*`, `shared/utils/billing/plans.ts`, `shared/util
 | `data_regions` | code (`default`, `eu`, `uk`, `us`, `ca`, `au`, `in`, `sg`, `br`), name, is_active |
 | `plans` **(P)** | id (`starter`, `professional`, `business`, `enterprise`), currency, recommended, sort, retired_at |
 | `plan_prices` **(P)** | plan_id, period (`monthly`, `quarterly`, `annually`), amount numeric(12,2); none = "Contact us" (Enterprise) |
-| `plan_limits` **(P)** | plan_id, forms, responses_per_form, databases text[], social_signin, sso, custom_domains, custom_email, data_residency, ai_credits, languages (null = no limit) |
+| `plan_limits` **(P)** | plan_id, forms, responses_per_form, databases text[], sso, custom_domains, custom_email, data_residency, ai_credits, languages (null = no limit) |
 | `plan_features` **(P)** | plan_id, feature (`PLAN_FEATURES`: analytics, templates, lists, themes, explorer, query, destinations, api, webhooks, apiDocs, ai, branding, subdomain, languages, visits, versions, folders, fillLater, socialSignin, sso, customDomain, customEmail, dataResidency, prioritySupport, dedicatedSupport, securityReview) |
 | `permissions` | code (`forms.publish`, `data.query_write` …), area, group, scopes text[] (`own`, `shared`, `own_shared`, `all`; empty = on/off), needs text[] (`PERMISSION_NEEDS`). Mirror of the catalogue, seeded by migration |
 | `audit_event_types` | action (`forms.published` …), area (`auth`, `workspace`, `forms`, `responses`, `settings`, `users`, `integrations`, `api`, `data`, `ai`, `audit`), severity |

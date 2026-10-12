@@ -358,7 +358,7 @@ The portal shows the mark as the icon `i-formalie-mark`, a custom Nuxt Icon coll
 
 **No Apple sign-in (owner 2026-10-11).** Social sign-in is Google, Microsoft and Facebook only. Apple was removed from the sign-in methods, the provider buttons, the translations and the mock. Settings saved while it was offered drop it when they are read.
 
-**Social sign-in and single sign-on are two different things (owner 2026-10-11).**
+**Social sign-in and single sign-on are two different things (owner 2026-10-11).** (Microsoft button and per-workspace methods removed 2026-10-12, see "Sign-in cleanup" below.)
 
 - **Social sign-in** (Google, Microsoft, Facebook) uses Formalie's own app registrations, one for each provider, shared by every workspace. It serves two places:
   - **sign-up on `manage.`:** the person who creates a workspace, who becomes its Owner;
@@ -376,7 +376,7 @@ The portal shows the mark as the icon `i-formalie-mark`, a custom Nuxt Icon coll
 - Microsoft: only addresses Microsoft has checked are trusted (personal accounts, or a directory that marks the domain as verified), so nobody can claim someone else's address through their own directory.
 - The frontend was changed for this with the owner's go-ahead: `useAuth().resumeOAuth()`, the sign-in and sign-up pages read `?oauth_challenge=` and `?oauth=error&code=`, and three codes `FRM-AUTH-1021` to `1023`.
 
-**People who came in with Google, Microsoft or Facebook keep using it, with no password (owner 2026-10-11).**
+**People who came in with Google, Microsoft or Facebook keep using it, with no password (owner 2026-10-11).** (The plan gating below is gone since 2026-10-12, see "Sign-in cleanup".)
 
 - That's the point of social sign-in. People who sign up directly use a password.
 - A social method is offered on a workspace's sign-in page when the workspace has it switched on and either its plan includes social sign-in or someone there already has that provider linked (typically the Owner who signed up with it, on Starter). Without the plan, only people whose own account is linked get in; no new links are made (`FRM-AUTH-1008`).
@@ -410,3 +410,11 @@ The portal shows the mark as the icon `i-formalie-mark`, a custom Nuxt Icon coll
 - **Subdomain change:** the old one answers 90 days through the tenant directory; at most the five latest old ones answer. Another workspace's current or old subdomain is taken; a workspace's own old one may come back. Each process may name the old subdomain for up to 30 seconds after a change (its directory cache); the workspace is the same.
 - **Own web domain:** the workspace whose DNS records prove it (CNAME to `custom.{root}` and the TXT token) answers on it, whoever held it before; it stops answering when a check fails, it is removed, or the plan no longer includes a custom domain.
 - **Privacy export** is answered in the request, as the mock and the page expect (the page saves it as a file), not as an export job.
+
+**Sign-in cleanup (owner 2026-10-12).**
+
+- **Sign-up on `manage.`** offers only email and password, Google and Facebook.
+- **No Microsoft button anywhere.** Microsoft accounts come in only through a company's single sign-on (Microsoft Entra ID, set up by the customer in Settings → Sign-in → Single sign-on). The Microsoft provider is gone from social sign-in: `/auth/oauth/microsoft/start` answers like any unknown provider (`?oauth=unavailable&provider=microsoft`), a callback for it is refused, and `OAUTH_MICROSOFT_*` are no longer settings (the API ignores them if still in `.env`). Old `user_identities` rows with `microsoft` stay (no hard deletes; the check constraint is unchanged), but nothing links new ones. People who signed in with Microsoft before use **Forgot password?** on their workspace's sign-in page to set a password (or Google / Facebook with the same address); a password tried on such an account still answers like a wrong password, and the hint email no longer names Microsoft.
+- **Workspaces no longer choose "ways to sign in".** The Settings part is removed: `signin` has no `methods`. Every workspace's sign-in page always offers email and password, Google and Facebook (`GET /tenants/public` → `auth_providers` always `['password', 'google', 'facebook']`); single sign-on shows as well once the admin turns it on (`sso`, B11). Rows saved before keep their `methods` until the next save, but every answer leaves it out; a `methods` sent in a PATCH is ignored. No migration.
+- **Google and Facebook are in every plan.** The plan feature `social_signin` is gone (plan limits, usage and over-limit lists); only `sso` stays a plan feature. Password sign-in is never refused for the method, and social sign-in works in every workspace for people who already have an account there, with the usual checks (account, IP allowlist, allowed domains, single sign-on required for the domain `FRM-AUTH-1019`, the code step).
+- `FRM-AUTH-1008` stays registered, but nothing raises it any more.

@@ -152,6 +152,8 @@ Format: `FRM-<DOMAIN>-<NNNN>`. Ranges: 1000–1999 client/validation, 5000–599
 | FRM-BILL-1006 | 400  | A payment webhook failed verification (signature, age or format); nothing is changed. | WARNING |
 | FRM-SET-1001  | 409  | Verify or test this first (an email domain before sending from it, a mail server before using it). | INFO |
 
+FRM-AUTH-1008 stays registered, but nothing raises it since 2026-10-12 (every workspace offers email and password, Google and Facebook).
+
 ### Client-side codes (raised by the portal, never sent by the server)
 
 | Code         | When                                     | Message                                        |

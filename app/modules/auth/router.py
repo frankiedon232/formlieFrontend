@@ -38,7 +38,6 @@ from app.modules.auth.sessions import (
     REFRESH_COOKIE, REFRESH_COOKIE_PATH, Principal, end_session, ip_allowed, refresh_cookie, require_auth,
     rotate_refresh, start_session,
 )
-from app.modules.billing.service import has_feature
 from app.core.cache.redis import get_redis
 from app.modules.emails import service as emails
 from app.modules.emails import workspace as workspace_mail
@@ -47,7 +46,6 @@ from app.modules.sso import service as sso_service
 from app.modules.tenants.router import workspace_url, workspaces_for
 from app.modules.tenants.service import TenantDirectory
 from app.modules.tenants.workspace import Founder, create_workspace
-from app.modules.users.identities import linked_providers, offered_methods
 from app.modules.users.models import User, UserIdentity, UserPasswordHistory, UserRecoveryCode, UserTwoStep
 
 router = APIRouter(tags=["auth"])
@@ -127,17 +125,18 @@ async def _send_code(db: Any, tenant: TenantInfo | None, challenge: challenges.C
                               reason=challenge.purpose, language=await _language(db, tenant, user), hidden=("code",))
 
 
-PROVIDER_NAMES = {"google": "Google", "microsoft": "Microsoft", "facebook": "Facebook"}
+PROVIDER_NAMES = {"google": "Google", "facebook": "Facebook"}
 PASSWORD_SOCIAL_EVERY_S = 3600
 
 
 async def _password_tried_without_one(db: Any, tenant: TenantInfo, user: User) -> None:
-    """A password was typed for an account that signs in with Google, Microsoft or Facebook (it has none). The screen
+    """A password was typed for an account that signs in with Google or Facebook (it has none). The screen
     answers like any wrong password, so it reveals nothing; the real owner gets an email, at most once an hour, saying
     which button to use or how to set a password (owner, 2026-10-12). Never breaks the sign-in answer."""
     try:
+        # Old Microsoft links have no button any more (owner, 2026-10-12): those people use "Forgot password?"
         providers = sorted(set((await db.execute(select(UserIdentity.provider).where(
-            UserIdentity.user_id == user.id, UserIdentity.deleted_at.is_(None)))).scalars()))
+            UserIdentity.user_id == user.id, UserIdentity.deleted_at.is_(None)))).scalars()) - {"microsoft"})
         if not providers:
             return
         if not await get_redis().set(f"auth:password-social:{user.id}", "1", nx=True, ex=PASSWORD_SOCIAL_EVERY_S):
@@ -222,8 +221,6 @@ async def login(body: LoginBody) -> Any:
     async with db_session("write", **_scope(tenant)) as db:
         signin = await get_section(db, tenant.id, "signin")
         security = await get_section(db, tenant.id, "security")
-        if "password" not in signin["methods"]:
-            raise FrmError("FRM-AUTH-1008")
         if not ip_allowed(security, ctx.client_ip if ctx else None):
             await _audit(db, tenant, "auth.login.blocked", Actor.anonymous(email), outcome="blocked",
                          reason="FRM-AUTH-1016", metadata={"method": "password", "cause": "ip_not_allowed"})
@@ -423,7 +420,7 @@ class CompleteBody(BaseModel):
 
 @router.get("/auth/signup/workspaces", dependencies=[rate_limit("signup-workspaces", per_minute=20)])
 async def signup_workspaces(challenge_id: str) -> Any:
-    """Once the sign-up email is verified (its code, or Google, Microsoft or Facebook): the active workspaces it already
+    """Once the sign-up email is verified (its code, or Google or Facebook): the active workspaces it already
     has, so the workspace step can offer them before making another (owner, 2026-10-12). Never before verification,
     so it tells nobody which workspaces an address they don't own belongs to."""
     host = current_host_context()
@@ -442,13 +439,12 @@ async def signup_complete(body: CompleteBody) -> Any:
         raise FrmError("FRM-AUTH-1003")
     if not is_valid_subdomain(body.subdomain):
         raise FrmError("FRM-TEN-1004", [{"field": "subdomain", "message": "This subdomain is taken."}])
-    provider = challenge.signup.get("provider")  # signed up with Google, Microsoft or Facebook: no password yet
+    provider = challenge.signup.get("provider")  # signed up with Google or Facebook: no password yet
     async with db_session("write") as db:
         made = await create_workspace(
             db, name=body.company_name, subdomain=body.subdomain,
             founder=Founder(challenge.signup["first_name"], challenge.signup["last_name"], challenge.email,
-                            challenge.signup["password_hash"]),
-            signin_methods=["password", provider] if provider else None)
+                            challenge.signup["password_hash"]))
         if provider:
             db.add(UserIdentity(tenant_id=made.tenant_id, organisation_id=made.organisation_id, user_id=made.owner_id,
                                 provider=provider, provider_user_id=challenge.signup["subject"], email=challenge.email,
@@ -587,8 +583,9 @@ def _refused(host: str | None, intent: str, provider: str, code: str) -> Redirec
 
 @router.get("/auth/oauth/{provider}/start", dependencies=[rate_limit("oauth-start", per_minute=20)])
 async def oauth_start(provider: str, intent: str | None = None) -> Any:
-    """→ the provider's sign-in page. Not set up yet: back with oauth=unavailable, like the mock. Sign-up only on
-    manage.*; sign-in only where the workspace switched the method on and its plan includes social sign-in."""
+    """→ the provider's sign-in page. Not set up yet, or not a provider (Microsoft included: its accounts come through
+    the workspace's single sign-on): back with oauth=unavailable, like the mock. Sign-up only on manage.*; sign-in on
+    any active workspace (Google and Facebook in every plan, owner 2026-10-12)."""
     intent = "signup" if intent == "signup" else "login"
     if oauth.credentials(provider) is None:
         return _back(None, intent, {"oauth": "unavailable", "provider": provider})
@@ -602,11 +599,6 @@ async def oauth_start(provider: str, intent: str | None = None) -> Any:
         tenant = ctx.tenant if ctx else None
         if tenant is None or tenant.status == "suspended":
             return _refused(None, intent, provider, "FRM-TEN-1002" if tenant else "FRM-TEN-1001")
-        async with db_session("read", **_scope(tenant)) as db:
-            signin = await get_section(db, tenant.id, "signin")
-            linked = await linked_providers(db, tenant.id)
-        if provider not in offered_methods(signin, tenant.plan_id, linked):
-            return _refused(None, intent, provider, "FRM-AUTH-1008")
         state.subdomain = tenant.subdomain
     uri = oauth.redirect_uri(provider, ctx.host if ctx else None, host.kind if host else None)
     return RedirectResponse(await oauth.begin(state, uri), status_code=302)
@@ -619,7 +611,7 @@ async def oauth_callback(provider: str, code: str | None = None, state: str | No
     step; sign-in → the usual 6-digit code for the matching account. Either way back to the page, with the
     challenge's reference."""
     saved = await oauth.take_state(state)
-    if saved is None or saved.provider != provider:
+    if saved is None or saved.provider != provider or provider not in oauth.PROVIDERS:
         return _refused(None, "login", provider, "FRM-AUTH-1023")
     if error or not code:
         # The person pressed Cancel (access_denied): nothing to say
@@ -661,10 +653,6 @@ async def _social_login(provider: str, profile: oauth.Profile, saved: oauth.OAut
     async with db_session("write", **_scope(tenant)) as db:
         signin = await get_section(db, tenant.id, "signin")
         security = await get_section(db, tenant.id, "security")
-        if provider not in signin["methods"]:
-            raise FrmError("FRM-AUTH-1008")
-        # Without the plan's social sign-in, only people who already sign in this way (owner, 2026-10-11)
-        plan_allows = has_feature(tenant.plan_id, "social_signin")
         if not ip_allowed(security, ctx.client_ip if ctx else None):
             await _audit(db, tenant, "auth.login.blocked", Actor.anonymous(profile.email), outcome="blocked",
                          reason="FRM-AUTH-1016", metadata={"method": provider, "cause": "ip_not_allowed"})
@@ -679,8 +667,6 @@ async def _social_login(provider: str, profile: oauth.Profile, saved: oauth.OAut
             UserIdentity.provider == provider, UserIdentity.provider_user_id == profile.subject,
             UserIdentity.deleted_at.is_(None)))).scalar_one_or_none()
         user = await db.get(User, linked.user_id) if linked is not None else await _find_user(db, profile.email)
-        if linked is None and not plan_allows and user is not None:
-            raise FrmError("FRM-AUTH-1008")  # no new links without the plan
         if user is None or user.deleted_at is not None:
             await _audit(db, tenant, "auth.login.failed", Actor.anonymous(profile.email), outcome="failure",
                          reason="FRM-AUTH-1022", metadata={"method": provider, "account": "not_found"})

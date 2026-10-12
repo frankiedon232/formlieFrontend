@@ -5,8 +5,8 @@ frontend's flows work unchanged against this backend. Safe to run again (existin
     fmly\\Scripts\\python.exe scripts\\seed_dev.py --test     # the test database
     fmly\\Scripts\\python.exe scripts\\seed_dev.py --person you@gmail.com   # try social sign-in (below)
 
---person adds that address as an Admin of Remedy Legal (no password) and switches on Google, Microsoft and
-Facebook there, so you can sign in with your own Google, Microsoft or Facebook account. Development only.
+--person adds that address as an Admin of Remedy Legal (no password), so you can sign in there with your own Google
+or Facebook account (every workspace offers both, owner 2026-10-12). Development only.
 
 Every seeded account signs in with the mock's test password (MOCK_PASSWORD in the mock's data/tenants.ts); codes
 arrive in Mailpit (http://127.0.0.1:8025). Never run against production: it refuses when APP_ENV=production.
@@ -41,17 +41,16 @@ U = uuid.UUID
 WORKSPACES = [
     {"id": U("6f0e2a14-3c2b-4d55-9a0f-1b2c3d4e5f60"), "org": U("0a1b2c3d-4e5f-4a6b-8c7d-9e0f1a2b3c4d"),
      "name": "Remedy Legal", "subdomain": "remedylegal", "website": "https://www.remedylegal.example",
-     "status": "active", "plan": "business", "methods": ["password", "google", "microsoft"]},
+     "status": "active", "plan": "business"},
     {"id": U("7a1f3b25-4d3c-4e66-8b10-2c3d4e5f6071"), "org": U("1b2c3d4e-5f60-4b7c-9d8e-0f1a2b3c4d5e"),
      "name": "Samath Tax", "subdomain": "samathtax", "website": "https://www.samathtax.example",
-     "status": "active", "plan": "starter", "methods": ["password", "google", "facebook"]},
+     "status": "active", "plan": "starter"},
     {"id": U("8b2a4c36-5e4d-4f77-9c21-3d4e5f607182"), "org": U("2c3d4e5f-6071-4c8d-8e9f-1a2b3c4d5e6f"),
-     "name": "Old Co", "subdomain": "oldco", "website": None, "status": "suspended", "plan": "starter",
-     "methods": ["password"]},
+     "name": "Old Co", "subdomain": "oldco", "website": None, "status": "suspended", "plan": "starter"},
     # Formalie's own workspace: its forms collect our data (support, enquiries). Nobody signs in to it.
     {"id": U("f0a1b2c3-0000-4f00-8f00-00000000f0f0"), "org": U("f0a1b2c3-0000-4f00-8f00-00000000f0f1"),
      "name": "Formalie", "subdomain": "formalie-team", "website": "https://formalie.com", "status": "active",
-     "plan": "starter", "methods": ["password"]},
+     "plan": "starter"},
 ]
 # (id, workspace, first, last, email, phone, role, status); the first of each workspace is its founder (owner)
 USERS = [
@@ -139,7 +138,7 @@ async def seed(database: str) -> None:
                 founder_row = people[0] if people else None
                 founder = Founder(founder_row[2], founder_row[3], founder_row[4], password_hash) if founder_row else None
                 await create_workspace(session, name=ws["name"], subdomain=ws["subdomain"], founder=founder,
-                                       plan_id=ws["plan"], signin_methods=ws["methods"], website=ws["website"],
+                                       plan_id=ws["plan"], website=ws["website"],
                                        tenant_id=ws["id"], organisation_id=ws["org"],
                                        owner_id=founder_row[0] if founder_row else None, onboarding=False)
                 if founder_row and founder_row[5]:
@@ -164,7 +163,7 @@ async def seed(database: str) -> None:
 
 
 async def add_person(database: str, email: str) -> None:
-    """Your own address as an Admin of Remedy Legal, with every social sign-in method switched on there."""
+    """Your own address as an Admin of Remedy Legal (signs in with Google or Facebook)."""
     settings = get_settings()
     if settings.is_production:
         raise SystemExit("Refusing to seed test accounts in production.")
@@ -174,10 +173,6 @@ async def add_person(database: str, email: str) -> None:
     try:
         async with AsyncSession(engine, expire_on_commit=False) as session, session.begin():
             await set_rls_context(session, ws["id"], ws["org"], None)
-            await session.execute(text(
-                "UPDATE workspace_settings SET value = jsonb_set(value, '{methods}', "
-                "'[\"password\", \"google\", \"microsoft\", \"facebook\"]'::jsonb), updated_at = now() "
-                "WHERE section = 'signin'"))
             known = (await session.execute(text("SELECT 1 FROM users WHERE lower(email) = :e AND deleted_at IS NULL"),
                                            {"e": email})).first()
             if known:

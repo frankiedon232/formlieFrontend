@@ -1,4 +1,4 @@
-"""Social sign-in end to end (Google, Microsoft, Facebook) against the seeded test database. The providers are an
+"""Social sign-in end to end (Google, Facebook) against the seeded test database. The providers are an
 httpx.MockTransport: nothing leaves the machine, and the keys are fixed test values, never the ones in .env."""
 
 from __future__ import annotations
@@ -24,7 +24,6 @@ pytestmark = pytest.mark.db
 
 TEST_KEYS = {
     "oauth_google_client_id": "test-google-client.apps.example", "oauth_google_client_secret": SecretStr("g-secret"),
-    "oauth_microsoft_client_id": "test-microsoft-client", "oauth_microsoft_client_secret": SecretStr("m-secret"),
     "oauth_facebook_client_id": "1000000000000001", "oauth_facebook_client_secret": SecretStr("f-secret"),
     "oauth_redirect_base": None,
 }
@@ -106,15 +105,20 @@ async def test_start_sends_the_browser_to_the_provider(app, providers) -> None: 
 
 async def test_start_refusals(app, providers, monkeypatch) -> None:  # noqa: ANN001
     async with client_for(app, host="remedylegal.formalie.dev") as http:
-        # Facebook isn't switched on at Remedy Legal
-        assert (await start(http, "facebook")).headers["location"] == \
-            "/auth/login?oauth=error&provider=facebook&code=FRM-AUTH-1008"
+        # Google and Facebook in every workspace (owner, 2026-10-12), whatever its old saved methods
+        assert urlsplit((await start(http, "facebook")).headers["location"]).netloc == "www.facebook.com"
         # Sign-up only on manage.*
         assert (await start(http, "google", "signup")).headers["location"] == \
             "/auth/signup?oauth=error&provider=google&code=FRM-PERM-1001"
+        # Microsoft is no button any more: its accounts come through the workspace's single sign-on
+        assert (await start(http, "microsoft")).headers["location"] == \
+            "/auth/login?oauth=unavailable&provider=microsoft"
+    async with client_for(app, host="manage.formalie.dev") as http:
+        assert (await start(http, "microsoft", "signup")).headers["location"] == \
+            "/auth/signup?oauth=unavailable&provider=microsoft"
     async with client_for(app, host="samathtax.formalie.dev") as http:
-        # Starter: Google is in the saved methods but the plan has no social sign-in
-        assert query((await start(http, "google")).headers["location"])["code"] == "FRM-AUTH-1008"
+        # Starter: Google too (no plan feature for it any more)
+        assert urlsplit((await start(http, "google")).headers["location"]).netloc == "accounts.google.com"
     async with client_for(app, host="oldco.formalie.dev") as http:
         assert query((await start(http, "google")).headers["location"])["code"] == "FRM-TEN-1002"
     settings = get_settings().model_copy(update={**TEST_KEYS, "oauth_google_client_id": None})
@@ -228,33 +232,27 @@ async def test_facebook_sign_up_skips_the_code_and_links_the_owner(app, provider
     row = superuser.execute("SELECT u.password_hash, i.provider, i.provider_user_id FROM formaly.users u "
                             "JOIN formaly.user_identities i ON i.user_id = u.id WHERE u.email = %s", (email,)).fetchone()
     assert row == (None, "facebook", "1234567890")
-    methods = superuser.execute("SELECT s.value -> 'methods' FROM formaly.workspace_settings s "
+    # A new workspace saves no ways in (owner, 2026-10-12): every sign-in page offers them all
+    methods = superuser.execute("SELECT s.value ? 'methods' FROM formaly.workspace_settings s "
                                 "JOIN platform.tenants t ON t.id = s.tenant_id WHERE t.subdomain = %s "
                                 "AND s.section = 'signin'", (sub,)).fetchone()
-    assert methods == (["password", "facebook"],)
+    assert methods == (False,)
 
 
-# ── Microsoft: which addresses are trusted ───────────────────────────────────
+# ── Microsoft: no social sign-in any more ─────────────────────────────────────
 
-@pytest.mark.parametrize(("claims", "expected"), [
-    ({"oid": "o-1", "tid": oauth.MICROSOFT_CONSUMERS_TID}, "ok"),  # a personal Microsoft account
-    ({"oid": "o-2", "tid": "11111111-2222-3333-4444-555555555555", "xms_edov": True}, "ok"),  # domain checked
-    ({"oid": "o-3", "tid": "11111111-2222-3333-4444-555555555555"}, "FRM-AUTH-1021"),  # anyone could type it in
-])
-async def test_microsoft_only_trusts_checked_addresses(providers, redis, claims: dict, expected: str) -> None:  # noqa: ANN001
-    from app.core.errors import FrmError
+async def test_a_microsoft_callback_is_refused(app, providers, redis) -> None:  # noqa: ANN001
+    """Even with a state saved for Microsoft (before the change), the callback never reaches a provider."""
+    import hashlib
 
-    providers.id_token = claims
-    providers.profile = {"sub": "pairwise", "email": "Someone@Contoso.example", "given_name": "Sam"}
-    state = oauth.OAuthState(provider="microsoft", intent="login", host="x", verifier="v" * 43)
-    try:
-        profile = await oauth.fetch_profile("microsoft", "c", state, "https://manage.formalie.dev/cb")
-    except FrmError as error:
-        assert error.code == expected
-    else:
-        assert expected == "ok" and (profile.subject, profile.email) == (claims["oid"], "someone@contoso.example")
-    token_call = providers.calls[0]
-    assert b"code_verifier=" + b"v" * 43 in token_call.content
+    key = "s" * 43
+    await redis.set(oauth.STATE_PREFIX + hashlib.sha256(key.encode()).hexdigest(), json.dumps(
+        {"provider": "microsoft", "intent": "login", "host": "remedylegal.formalie.dev", "verifier": None,
+         "subdomain": "remedylegal"}), ex=60)
+    async with client_for(app, host="manage.formalie.dev") as manage:
+        back = await manage.get("/api/v1/auth/oauth/microsoft/callback", params={"state": key, "code": "c"})
+    assert back.headers["location"] == "/auth/login?oauth=error&provider=microsoft&code=FRM-AUTH-1023"
+    assert providers.calls == [] and "microsoft" not in oauth.PROVIDERS
 
 
 def test_redirect_uri(monkeypatch) -> None:  # noqa: ANN001
@@ -266,8 +264,9 @@ def test_redirect_uri(monkeypatch) -> None:  # noqa: ANN001
 
 
 
-async def test_who_signed_up_with_a_provider_keeps_using_it_on_starter(app, providers, superuser) -> None:  # noqa: ANN001
-    """Owner, 2026-10-11: social accounts need no password, whatever the plan. Starter adds no new social links."""
+async def test_social_sign_in_in_every_plan(app, providers, superuser) -> None:  # noqa: ANN001
+    """Owner, 2026-10-12: Google and Facebook in every plan. On Starter the Owner who signed up with Facebook keeps
+    using it, and someone else with an account there signs in with Facebook too (their account gets linked)."""
     sub = f"st{uuid.uuid4().hex[:8]}"
     email = f"founder@{sub}.test"
     providers.profile = {"id": "fb-founder-" + sub, "email": email, "first_name": "Kay", "last_name": "Lee"}
@@ -279,7 +278,7 @@ async def test_who_signed_up_with_a_provider_keeps_using_it_on_starter(app, prov
     async with client_for(app, host=f"{sub}.formalie.dev") as http:
         client = SecureClient(http)
         _, profile = await client.request("GET", "/tenants/public")
-        assert profile["data"]["auth_providers"] == ["password", "facebook"]  # Starter, but the Owner uses Facebook
+        assert profile["data"]["auth_providers"] == ["password", "google", "facebook"]
         location = await round_trip(app, http, "facebook")
         ref = query(location)["oauth_challenge"]  # type: ignore[arg-type]
         await client.request("GET", "/auth/oauth/challenge", query={"challenge_id": ref})
@@ -287,7 +286,7 @@ async def test_who_signed_up_with_a_provider_keeps_using_it_on_starter(app, prov
                                                                                 "code": last_code(email)})
         assert status == 200 and reply["data"]["user"]["role"] == "owner"
 
-        # Someone else whose address matches but who never linked Facebook: not on Starter
+        # Someone else whose address matches and who never linked Facebook: in as well, on Starter
         tenant = superuser.execute("SELECT id, primary_organisation_id FROM platform.tenants WHERE subdomain = %s",
                                    (sub,)).fetchone()
         superuser.execute("SELECT set_config('app.tenant_id', %s, false), set_config('app.organisation_id', %s, false)",
@@ -298,7 +297,55 @@ async def test_who_signed_up_with_a_provider_keeps_using_it_on_starter(app, prov
                           "status, role_id) VALUES (%s, %s, %s, %s, 'Mo', 'Ng', 'active', %s)",
                           (uuid.uuid4(), tenant[0], tenant[1], f"mo@{sub}.test", role))
         providers.profile = {"id": "fb-mo-" + sub, "email": f"mo@{sub}.test", "first_name": "Mo"}
-        assert query(await round_trip(app, http, "facebook"))["code"] == "FRM-AUTH-1008"  # type: ignore[arg-type]
+        assert "oauth_challenge" in query(await round_trip(app, http, "facebook"))  # type: ignore[arg-type]
+    linked = superuser.execute("SELECT count(*) FROM formaly.user_identities WHERE provider = 'facebook' "
+                               "AND provider_user_id = %s", ("fb-mo-" + sub,)).fetchone()
+    assert linked == (1,)
+
+
+async def test_an_old_saved_methods_list_changes_nothing(app, providers, superuser) -> None:  # noqa: ANN001
+    """A workspace whose stored sign-in settings still say `methods: ['password']` (saved before 2026-10-12) offers
+    Google and Facebook, takes a Google sign-in for an existing account and a password sign-in, never FRM-AUTH-1008;
+    its settings answer without `methods`."""
+    sub = f"old{uuid.uuid4().hex[:8]}"
+    email = f"owner@{sub}.test"
+    password = "Correct-Horse-9"
+    async with client_for(app, host="manage.formalie.dev") as http:
+        manage = SecureClient(http)
+        _, reply = await manage.request("POST", "/auth/signup", body={
+            "first_name": "Ola", "last_name": "Nwosu", "email": email, "password": password})
+        challenge = reply["data"]["challenge_id"]
+        await manage.request("POST", "/auth/otp/verify", body={"challenge_id": challenge, "code": last_code(email)})
+        _, reply = await manage.request("POST", "/auth/signup/complete", body={
+            "challenge_id": challenge, "company_name": "Old Settings Co", "subdomain": sub})
+        assert reply["success"], reply
+    superuser.execute("UPDATE formaly.workspace_settings s SET value = s.value || %s::jsonb FROM platform.tenants t "
+                      "WHERE t.id = s.tenant_id AND t.subdomain = %s AND s.section = 'signin'",
+                      ('{"methods": ["password"]}', sub))
+    stored = superuser.execute("SELECT s.value -> 'methods' FROM formaly.workspace_settings s JOIN platform.tenants t "
+                               "ON t.id = s.tenant_id WHERE t.subdomain = %s AND s.section = 'signin'", (sub,)).fetchone()
+    assert stored == (["password"],)
+    async with client_for(app, host=f"{sub}.formalie.dev") as http:
+        client = SecureClient(http)
+        _, profile = await client.request("GET", "/tenants/public")
+        assert profile["data"]["auth_providers"] == ["password", "google", "facebook"]
+        status, reply = await client.request("POST", "/auth/login", body={"email": email, "password": password})
+        assert status == 200 and reply["data"]["challenge_id"], reply  # never FRM-AUTH-1008
+        status, reply = await client.request("POST", "/auth/otp/verify", body={
+            "challenge_id": reply["data"]["challenge_id"], "code": last_code(email)})
+        assert status == 200, reply
+        client.access_token = reply["data"]["access_token"]
+        _, reply = await client.request("GET", "/settings/signin")
+        assert "methods" not in reply["data"] and reply["data"]["code"]["expiry_minutes"] == 5
+        _, reply = await client.request("GET", "/settings")
+        assert "methods" not in reply["data"]["signin"]
+
+        providers.profile = {"sub": f"g-{sub}", "email": email, "email_verified": True, "given_name": "Ola"}
+        ref = query(await round_trip(app, http, "google"))["oauth_challenge"]  # type: ignore[arg-type]
+        await client.request("GET", "/auth/oauth/challenge", query={"challenge_id": ref})
+        status, reply = await client.request("POST", "/auth/otp/verify", body={"challenge_id": ref,
+                                                                                "code": last_code(email)})
+        assert status == 200 and reply["data"]["user"]["email"] == email, reply
 
 
 def test_redirect_uri_is_always_the_registered_manage_address(monkeypatch) -> None:  # noqa: ANN001
