@@ -147,6 +147,8 @@ People can sign up and sign in with Google, Microsoft or Facebook. Each provider
 
 Register **both** lines with each provider (one app can hold several addresses), so the same app works on your machine and live. The address must match character for character: `https`, no slash at the end, the port `:2202` only in development.
 
+**Register only these addresses.** Never register the API's own address (`https://formalie.dev:5004/…`): people's browsers always come back through `manage.` (the portal on `:2202` in development), never to the API directly, so a `:5004` address is never used. An unused address at a provider is only a risk, so remove it if one was added (owner, 2026-10-12: removed from the Microsoft app).
+
 The API builds this address from `ROOT_DOMAIN` (`formalie.dev` in development, `formalie.com` in production) and the port the browser used. If it ever has to be different, set `OAUTH_REDIRECT_BASE` in `.env` (for example `OAUTH_REDIRECT_BASE=https://manage.formalie.com`) and register the matching address.
 
 ### Google
@@ -178,7 +180,7 @@ Site: https://entra.microsoft.com (or https://portal.azure.com → **Microsoft E
    - Name `Formalie`.
    - **Supported account types**: **Accounts in any organizational directory and personal Microsoft accounts** (the third option). This must be the one: Formalie signs people in through the `common` address, which serves both work and personal accounts. Any other choice fails at sign-in.
    - **Redirect URI**: platform **Web**, then the development Microsoft address from the table → **Register**.
-2. **Copy the client ID**: on the app's **Overview**, **Application (client) ID** (36 characters, like `1a2b3c4d-…`). This is `OAUTH_MICROSOFT_CLIENT_ID`. (The "Directory (tenant) ID" is not needed.)
+2. **Copy the client ID**: on the app's **Overview**, **Application (client) ID** (36 characters, like `1a2b3c4d-…`). This is `OAUTH_MICROSOFT_CLIENT_ID`. (The "Directory (tenant) ID" is not needed.) **Careful:** the **Secret ID** on the Certificates & secrets page looks the same (also 36 characters) but is **not** the client ID. Putting it here gives `AADSTS700016` (found 2026-10-12).
 3. **Add the production address**: **Authentication** → under **Web**, **Redirect URIs** → **Add URI** → the production Microsoft address → **Save**. Leave "Access tokens" and "ID tokens" (implicit grant) **unticked**: Formalie uses the safer code flow.
 4. **Client secret**: **Certificates & secrets** → **Client secrets** → **New client secret** → description `Formalie API`, expires **24 months** → **Add**. Copy the **Value** column at once (it's shown only this one time; the "Secret ID" next to it is not the secret). This is `OAUTH_MICROSOFT_CLIENT_SECRET`.
    - **Put a reminder in your calendar** one month before it expires: make a new secret, put it in `.env`, restart the API, then delete the old one. When a secret expires, Microsoft sign-in stops working.
@@ -252,6 +254,9 @@ Usual lengths: Google ID about 72, Google secret 35, Microsoft ID 36, Microsoft 
 | Google: "Access blocked: this app's request is invalid" or "has not completed the Google verification process" | You aren't a test user while the app is in Testing | Add the address under **Test users**, or publish the app |
 | Microsoft: `AADSTS50011` | Redirect address not registered | Add it under **Authentication** → **Web** |
 | Microsoft: `AADSTS50194` or "not configured as a multi-tenant application" | Wrong supported account type | **Authentication** (or **Manifest**): set to "any organizational directory and personal Microsoft accounts" |
+| Microsoft: `AADSTS700016` "Application with identifier '…' was not found in the directory" | `OAUTH_MICROSOFT_CLIENT_ID` isn't the app's ID: often the **Secret ID** from Certificates & secrets was copied | Copy **Overview** → **Application (client) ID** into `.env`, restart the API |
+| Microsoft: `unauthorized_client` "The client does not exist or is not enabled for consumers" | A wrong client ID (as above), or supported account types without personal accounts | Check the client ID first, then **Authentication** → **Supported accounts**: "Any Entra ID Tenant + Personal Microsoft accounts" |
+| Microsoft: a work account from another company can't approve the app ("needs admin approval" / unverified publisher) | Multi-tenant apps without a verified publisher can't be approved by other companies' people | Testing: use your own organisation's or a personal account. Before launch: step 7 (publisher verification) |
 | Microsoft: `AADSTS7000215` / `AADSTS7000222` | Wrong or expired secret (the Secret ID was copied instead of the Value?) | Make a new secret, copy its **Value**, restart |
 | Facebook: "URL blocked" / "Can't load URL" | Redirect address or app domain missing | Facebook step 3 and 4 |
 | Facebook: "App not active" / "feature unavailable" | App in Development and you have no role | Add yourself under **App roles**, or switch the app to Live |

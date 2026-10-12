@@ -19,7 +19,7 @@
    ```powershell
    mkcert -cert-file C:\devcerts\formalie.pem -key-file C:\devcerts\formalie-key.pem formalie.dev "*.formalie.dev" localhost 127.0.0.1
    ```
-3. **Venv name.** It was created as `fmly` but activated as `fmly\scripts\activate.ps1`. Pick one name (suggest `fmly`) and use it consistently.
+3. **Venv name.** Done: the venv is `fmly` (`fmly\Scripts\Activate.ps1`).
 
 ## Hosts file (`C:\Windows\System32\drivers\etc\hosts`)
 
@@ -49,7 +49,9 @@ Add more lines as new test tenants are created.
 - Allow the subdomains in Vite: `vite.server.allowedHosts: ['.formalie.dev']`.
 - Proxy `/api` to the backend, preserving the original host so the backend can read the subdomain:
   `nitro.devProxy` / `routeRules: { '/api/**': { proxy: 'https://formalie.dev:5004/api/**' } }` with `X-Forwarded-Host` forwarded (implemented in Phase F0).
-- Node must trust the mkcert root when proxying: set `NODE_EXTRA_CA_CERTS` to the mkcert `rootCA.pem` (find it with `mkcert -CAROOT`).
+- Node must trust the mkcert root when proxying: set `NODE_EXTRA_CA_CERTS` to the mkcert `rootCA.pem` (find it with `mkcert -CAROOT`). Node reads it only when it starts, so it can't go in `.env`. Set it once as a Windows user variable: `setx NODE_EXTRA_CA_CERTS "C:\Users\<you>\AppData\Local\mkcert\rootCA.pem"`.
+  - **VS Code:** its terminals keep the settings VS Code started with, so close every VS Code window and open it again after `setx`. Or set it for one start: `$env:NODE_EXTRA_CA_CERTS="…\rootCA.pem"; pnpm dev …`.
+  - **Symptom when it's missing:** every `/api/**` call answers `502 Bad Gateway`, and the portal only shows the sign-in page (found 2026-10-12).
 
 ## Backend dev services (Phase B0)
 
@@ -62,7 +64,7 @@ Installed directly on the machine, **no Docker** (owner, 2026-10-10). Production
 | Redis 7 | WSL (Ubuntu) | 6379 | cache, rate limits, nonces, session keys |
 | RabbitMQ 3 + management UI | WSL | 5672, 15672 | Celery broker and the `formalie.events` exchange |
 | PgBouncer | WSL | 6432 | transaction pooling; then `DB_PGBOUNCER=true` |
-| Object storage (S3) | chosen in B3 | | uploads and exports (from B3). MinIO's download server stopped serving its binary (410 Gone, 2026-10-11), so the server is picked when storage is built |
+| Object storage (S3) | local folder in development | | uploads and exports: `STORAGE_DIR=data/storage` (git-ignored) in development; production uses the cloud provider's S3. MinIO's download server stopped serving its binary (410 Gone, 2026-10-11). |
 | Mailpit | WSL | 1025 (SMTP), 8025 (UI) | catches OTP and other emails (from B1) |
 
 ### 1. PostgreSQL: roles and databases (once)

@@ -78,10 +78,10 @@ Delivery: at least once; the platform deduplicates by `id`. Formalie keeps 7 day
 
 ## 5. Formalie tasks (add to Formalie's backend plan)
 
-- [ ] Database roles `platform_reader` (replica) and `platform_writer` (global tables) with the privileges above, created by migrations.
-- [ ] Global tables listed in §1, read by the portal with caching and invalidation on `platform.published`.
-- [ ] Internal admin API (§2) with mTLS, HMAC signing, idempotency and `platform_support` audit entries.
-- [ ] Support access consent in Settings → Security, support session tickets, banner (§3).
-- [ ] Event publishing on `formalie.events` (§4), personal data stripped.
-- [ ] Health endpoint for the operations module.
-- [ ] Portal screens read announcements, feature flags, platform settings and help articles from the global tables (most already exist as mocks: legal links, default lists).
+- ⬜ Database roles `platform_reader` (replica) and `platform_writer` (global tables) with the privileges above, created by migrations.
+- ⬜ Global tables listed in §1, read by the portal with caching and invalidation on `platform.published`.
+- ⬜ Internal admin API (§2) with mTLS, HMAC signing, idempotency and `platform_support` audit entries.
+- ⬜ Support access consent in Settings → Security, support session tickets, banner (§3).
+- ⬜ Event publishing on `formalie.events` (§4), personal data stripped.
+- ⬜ Health endpoint for the operations module.
+- ⬜ Portal screens read announcements, feature flags, platform settings and help articles from the global tables (most already exist as mocks: legal links, default lists).

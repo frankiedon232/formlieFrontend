@@ -12,111 +12,111 @@ Rewritten on 2026-10-10, after the frontend (formalieFrontend) was finished agai
 
 Then stop for the owner's review. Day-to-day status lives in `PROGRESS.md`.
 
-## B0, Foundation
+## B0, Foundation ✅
 
-- [x] Project layout per CLAUDE.md, `app/run.py` app factory, settings from `.env` (+ `.env.example`), requirements pinned.
-- [x] Development services installed directly on the machine, **no Docker** (owner, 2026-10-10; 02-DEV-ENVIRONMENT): PostgreSQL 18 on Windows, and in WSL: PgBouncer, Redis 7, RabbitMQ, Mailpit. Still to come: the replica (optional, when reports need it) and object storage (chosen in B3: MinIO no longer serves its binary).
-- [x] Request log, every request in full (`formaly.request_logs`, BACKEND-SPEC §8.1): brought forward from B2 by the owner (2026-10-11).
-- [x] Logging (files by level and date, structured, trace_id), error codes from `shared/utils/errors/codes.ts`, exception handlers, standard response models.
-- [x] Middleware chain (BACKEND-SPEC §1): request context, security headers, IP rate limit, tenant, envelope gate (fails closed), request log. Envelope crypto and encrypted references are B1's first items.
-- [x] DB: primary / replica engines, session router, RLS context, mixins, Alembic with the `enable_tenant_rls` helper, DB roles (including `platform_reader` / `platform_writer`).
-- [x] Redis cache tiers, the Celery app and queues, the event bus and the outbox relay.
-- [x] CI test asserting RLS is forced on every tenant table.
+- ✅ Project layout per CLAUDE.md, `app/run.py` app factory, settings from `.env` (+ `.env.example`), requirements pinned.
+- ✅ Development services installed directly on the machine, **no Docker** (owner, 2026-10-10; 02-DEV-ENVIRONMENT): PostgreSQL 18 on Windows, and in WSL: PgBouncer, Redis 7, RabbitMQ, Mailpit. Still to come: the replica (optional, when reports need it) and object storage (chosen in B3: MinIO no longer serves its binary).
+- ✅ Request log, every request in full (`formaly.request_logs`, BACKEND-SPEC §8.1): brought forward from B2 by the owner (2026-10-11).
+- ✅ Logging (files by level and date, structured, trace_id), error codes from `shared/utils/errors/codes.ts`, exception handlers, standard response models.
+- ✅ Middleware chain (BACKEND-SPEC §1): request context, security headers, IP rate limit, tenant, envelope gate (fails closed), request log. Envelope crypto and encrypted references are B1's first items.
+- ✅ DB: primary / replica engines, session router, RLS context, mixins, Alembic with the `enable_tenant_rls` helper, DB roles (including `platform_reader` / `platform_writer`).
+- ✅ Redis cache tiers, the Celery app and queues, the event bus and the outbox relay.
+- ✅ CI test asserting RLS is forced on every tenant table.
 
-## B1, Secure channel, workspaces and sign-in (F2, F3)
+## B1, Secure channel, workspaces and sign-in ✅ (F2, F3)
 
-- [x] Handshake (ECDH P-256 + HKDF + AES-GCM), nonce store, test vectors shared with the frontend (`shared/utils/crypto/*`): `tests/vectors/envelope.json`, checked against the frontend's own `envelope.ts` by `scripts/check_envelope_vectors.py`.
-- [x] Encrypted references (SECURITY-PROTOCOL §10) on every id in and out (`RefId` refuses raw ids in path, query and body).
-- [x] Tenant public profile, subdomain availability, find workspace.
-- [x] Sign-up (tenant + organisation + admin + subdomain), login, OTP (Mailpit), resend, forgot / reset, logout, refresh rotation with reuse detection, CSRF, sessions, TOTP and recovery codes at sign-in (setting them up is the `/me/two-step` routes, B4).
-- [x] OAuth providers (Google, Microsoft, Facebook; no Apple, owner 2026-10-11) and per-workspace provider settings. Rate limits and lockouts: done. Google and Facebook keys set; Microsoft waits for its app registration.
-- [x] Development seed with the same test workspaces and accounts as the mock (`server/mock/data/tenants.ts`), so the frontend's flows work unchanged (`scripts/seed_dev.py`).
+- ✅ Handshake (ECDH P-256 + HKDF + AES-GCM), nonce store, test vectors shared with the frontend (`shared/utils/crypto/*`): `tests/vectors/envelope.json`, checked against the frontend's own `envelope.ts` by `scripts/check_envelope_vectors.py`.
+- ✅ Encrypted references (SECURITY-PROTOCOL §10) on every id in and out (`RefId` refuses raw ids in path, query and body).
+- ✅ Tenant public profile, subdomain availability, find workspace.
+- ✅ Sign-up (tenant + organisation + admin + subdomain), login, OTP (Mailpit), resend, forgot / reset, logout, refresh rotation with reuse detection, CSRF, sessions, TOTP and recovery codes at sign-in (setting them up is the `/me/two-step` routes, B4).
+- ✅ OAuth providers (Google, Microsoft, Facebook; no Apple, owner 2026-10-11) and per-workspace provider settings. Rate limits and lockouts: done. Google and Facebook keys set; Microsoft waits for its app registration.
+- ✅ Development seed with the same test workspaces and accounts as the mock (`server/mock/data/tenants.ts`), so the frontend's flows work unchanged (`scripts/seed_dev.py`).
 
-## B2, Audit trail and logs (F4)
+## B2, Audit trail and logs ✅ (F4)
 
-- [x] `audit_logs` with the catalogue from `shared/utils/audit/events.ts`, `record()` used by B1 sign-in events and every later phase.
-- [x] Audit list, filters, detail, export (`routes/audit.ts`), error logs, security events. (The request log with geo is built in B0.)
+- ✅ `audit_logs` with the catalogue from `shared/utils/audit/events.ts`, `record()` used by B1 sign-in events and every later phase.
+- ✅ Audit list, filters, detail, export (`routes/audit.ts`), error logs, security events. (The request log with geo is built in B0.)
 
-## B3, Onboarding, settings base and default data (F5, F14 base)
+## B3, Onboarding, settings base and default data ✅ (F5, F14 base)
 
-- [x] Onboarding steps and status; company, branding (logo, dark logo, tab icon, colour, welcome), localisation.
-- [x] Platform reference data (countries, languages, currencies, timezones, regions) and **Formalie default data** seeded for each new workspace: system lists, default folders, roles, email templates, system templates (FRONTEND-REFERENCE → Default data). Reference data: generated from the frontend (countries and currencies, the 20 languages, IANA time zones through tzdata); the platform admin's editable copies are global tables (B16). Default data: roles, settings and onboarding now; every later module adds its own through `register_seeder` (default folders B5, system lists and templates B6, email templates B11).
-- [x] Uploads (pre-signed, scanned), organisations (`routes/org.ts`), navigation counts. Scanning: the bytes must be the declared image (SVG a plain drawing); ClamAV joins `scan_status` when installed. Navigation counts: each area fills its part in its phase.
+- ✅ Onboarding steps and status; company, branding (logo, dark logo, tab icon, colour, welcome), localisation.
+- ✅ Platform reference data (countries, languages, currencies, timezones, regions) and **Formalie default data** seeded for each new workspace: system lists, default folders, roles, email templates, system templates (FRONTEND-REFERENCE → Default data). Reference data: generated from the frontend (countries and currencies, the 20 languages, IANA time zones through tzdata); the platform admin's editable copies are global tables (B16). Default data: roles, settings and onboarding now; every later module adds its own through `register_seeder` (default folders B5, system lists and templates B6, email templates B11).
+- ✅ Uploads (pre-signed, scanned), organisations (`routes/org.ts`), navigation counts. Scanning: the bytes must be the declared image (SVG a plain drawing); ClamAV joins `scan_status` when installed. Navigation counts: each area fills its part in its phase.
 
-## B4, People, roles and access (F16, F22 brought forward)
+## B4, People, roles and access ✅ (F16, F22 brought forward)
 
-- [x] Roles with the permission catalogue and scopes, Owner built in (`shared/utils/auth/permissions.ts`).
-- [x] People: profiles with departments, job titles and role, invitations, enable / disable, reset, force MFA; my profile (`/me`, tips and tours seen). Two steps for everyone: every sign-in asks for a code (or the authenticator app); admins can reset someone's two-step sign-in.
-- [x] The permission dependency on every route from here on (BACKEND-SPEC §11): `require_auth` checks the route's permission (`permission_for`), `require_admin` falls back to `settings.manage`, as the mock's requireAdmin.
+- ✅ Roles with the permission catalogue and scopes, Owner built in (`shared/utils/auth/permissions.ts`).
+- ✅ People: profiles with departments, job titles and role, invitations, enable / disable, reset, force MFA; my profile (`/me`, tips and tours seen). Two steps for everyone: every sign-in asks for a code (or the authenticator app); admins can reset someone's two-step sign-in.
+- ✅ The permission dependency on every route from here on (BACKEND-SPEC §11): `require_auth` checks the route's permission (`permission_for`), `require_admin` falls back to `settings.manage`, as the mock's requireAdmin.
 
-## B5, Forms core (F6, F7)
+## B5, Forms core ✅ (F6, F7)
 
-- [x] Folders, forms list with its two chart cards' data, lifecycle (draft, publish, close, reopen, archive, trash, restore), duplicate. The chart cards read responses and the dashboard (B8, B12); forms from a template and the mock's sample forms arrive with templates (B6).
-- [x] Draft autosave with `row_version`, versions and restore, publish checks (`forms/validate.ts`), FormSchema models (`forms/schema.ts`), logic and formulas (`forms/logic.ts`, `forms/formula.ts`, `forms/details.ts`). The publish checks are `publishIssues` (`forms/build.ts`); `validate.ts` checks answers, so it comes with submitting (B7) together with logic and formulas, which only the server's re-check of a submission needs.
-- [x] Form overview and the directory.
+- ✅ Folders, forms list with its two chart cards' data, lifecycle (draft, publish, close, reopen, archive, trash, restore), duplicate. The chart cards read responses and the dashboard (B8, B12); forms from a template and the mock's sample forms arrive with templates (B6).
+- ✅ Draft autosave with `row_version`, versions and restore, publish checks (`forms/validate.ts`), FormSchema models (`forms/schema.ts`), logic and formulas (`forms/logic.ts`, `forms/formula.ts`, `forms/details.ts`). The publish checks are `publishIssues` (`forms/build.ts`); `validate.ts` checks answers, so it comes with submitting (B7) together with logic and formulas, which only the server's re-check of a submission needs.
+- ✅ Form overview and the directory.
 
-## B6, Design, templates and lists (F8, F9, F15)
+## B6, Design, templates and lists ✅ (F8, F9, F15)
 
-- [x] Themes (light / dark, 21 fonts), page designs and landing pages.
-- [x] Templates (system and workspace, save as, use).
-- [x] Option lists: simple, with levels, large lists up to 200,000 items loaded level by level (OPTION-LISTS.md); details used in formulas and logic.
+- ✅ Themes (light / dark, 21 fonts), page designs and landing pages.
+- ✅ Templates (system and workspace, save as, use).
+- ✅ Option lists: simple, with levels, large lists up to 200,000 items loaded level by level (OPTION-LISTS.md); details used in formulas and logic.
 
-## B7, Public forms, sharing and links (F10)
+## B7, Public forms, sharing and links ✅ (F10)
 
-- [x] Internal published-form endpoint for server-rendered `/{formKey}/fill` and `/embed` (server-only token), short links `/s/{code}`.
-- [x] Share settings, form invites, who can see this form (`/forms/{id}/access`), embed rules (frame-ancestors), SEO.
-- [x] Sessions and resume, pre-signed uploads, submit with the ported validation, proof of work, availability and limits.
+- ✅ Internal published-form endpoint for server-rendered `/{formKey}/fill` and `/embed` (server-only token), short links `/s/{code}`.
+- ✅ Share settings, form invites, who can see this form (`/forms/{id}/access`), embed rules (frame-ancestors), SEO.
+- ✅ Sessions and resume, pre-signed uploads, submit with the ported validation, proof of work, availability and limits.
 
-## B8, Responses (F11)
+## B8, Responses ✅ (F11)
 
-- [x] Responses list and inbox, filters per field, detail, review status, notes, answer edits with history, files and the file viewer.
-- [x] Exports (XLSX, CSV, PDF) as Celery jobs with progress; response emails and in-app notifications.
+- ✅ Responses list and inbox, filters per field, detail, review status, notes, answer edits with history, files and the file viewer.
+- ✅ Exports (XLSX, CSV, PDF) as Celery jobs with progress; response emails and in-app notifications.
 
-## B9, Data sources and destinations (F12)
+## B9, Data sources and destinations 🟡 (F12)
 
-- [x] Connections per engine (plan-limited), encrypted credentials, test.
-- [x] Response storage in Formalie's prefixed tables in the customer's database (`datasources/ddl.ts`), Celery writers, retries, failures surfaced.
-- [x] Explorer (schema, rows, edits), query editor with safety checks and limits, saved queries, activity (the dashboard's Data sources view comes with B12).
-- [x] Destinations: response storage above. Webhooks moved to B10 (2026-10-11): each delivery sends a webhook token from the API service's Tokens & headers and names answers like the API endpoints, both built in B10.
+- ✅ Connections per engine (plan-limited), encrypted credentials, test.
+- ✅ Response storage in Formalie's prefixed tables in the customer's database (`datasources/ddl.ts`), Celery writers, retries, failures surfaced.
+- ✅ Explorer (schema, rows, edits), query editor with safety checks and limits, saved queries, activity (the dashboard's Data sources view comes with B12).
+- ✅ Destinations: response storage above. Webhooks moved to B10 (2026-10-11): each delivery sends a webhook token from the API service's Tokens & headers and names answers like the API endpoints, both built in B10.
 
-## B10, API service (F13)
+## B10, API service ⬜ (F13)
 
-- [ ] Management: services, endpoints, field choices, tokens (static and client credentials), access rules, allowed websites, traffic, docs.
-- [ ] Webhooks (moved from B9): response events to the organisation's address with its webhook token, retries after 1, 5, 15, 60 and 360 minutes, a pause after 20 failures in a row, delivery logs with personal answers masked, send again (`routes/webhooks.ts`).
-- [ ] The public gateway on `api.formalie.*` as its own service: the order of checks in ENDPOINTS.md, CORS preflights, idempotent POST, signing, rate limits, traffic logs.
+- ⬜ Management: services, endpoints, field choices, tokens (static and client credentials), access rules, allowed websites, traffic, docs.
+- ⬜ Webhooks (moved from B9): response events to the organisation's address with its webhook token, retries after 1, 5, 15, 60 and 360 minutes, a pause after 20 failures in a row, delivery logs with personal answers masked, send again (`routes/webhooks.ts`).
+- ⬜ The public gateway on `api.formalie.*` as its own service: the order of checks in ENDPOINTS.md, CORS preflights, idempotent POST, signing, rate limits, traffic logs.
 
-## B11, Settings, the rest (F14)
+## B11, Settings, the rest ⬜ (F14)
 
-- [ ] Emails: templates, preview, test, sent log; sending as the Formalie address, an own domain (DNS checks) or SMTP.
-- [ ] SSO (SAML / OIDC), address (subdomain change, own domain), appearance (light / dark colours, default mode), form defaults.
-- [ ] Security (sessions, sign out everywhere, activity, IP allowlist, idle timeout), privacy (retention with preview, find / export / delete a person's data), data region.
+- ⬜ Emails: templates, preview, test, sent log; sending as the Formalie address, an own domain (DNS checks) or SMTP.
+- ⬜ SSO (SAML / OIDC), address (subdomain change, own domain), appearance (light / dark colours, default mode), form defaults.
+- ⬜ Security (sessions, sign out everywhere, activity, IP allowlist, idle timeout), privacy (retention with preview, find / export / delete a person's data), data region.
 
-## B12, Analytics and dashboard (F18, F21)
+## B12, Analytics and dashboard ⬜ (F18, F21)
 
-- [ ] Per-form analytics rollups (views, starts, completions, drop-off, timing) and insights.
-- [ ] Dashboard: Workspace, Forms, Data sources and API service views with period, folder and owner filters and first steps.
+- ⬜ Per-form analytics rollups (views, starts, completions, drop-off, timing) and insights.
+- ⬜ Dashboard: Workspace, Forms, Data sources and API service views with period, folder and owner filters and first steps.
 
-## B13, AI assistant (F19)
+## B13, AI assistant ⬜ (F19)
 
-- [ ] Settings and allowance, create / assist / analyse / write / translate with the chosen provider, request history and removal, everything audited.
+- ⬜ Settings and allowance, create / assist / analyse / write / translate with the chosen provider, request history and removal, everything audited.
 
-## B14, Help centre and tours (F25)
+## B14, Help centre and tours ⬜ (F25)
 
-- [ ] Help categories and articles, search, the 12 tours and who has seen them, all read from global tables the platform admin edits.
+- ⬜ Help categories and articles, search, the 12 tours and who has seen them, all read from global tables the platform admin edits.
 
-## B15, Subscriptions and payments (F24)
+## B15, Subscriptions and payments ⬜ (F24)
 
-- [ ] Plans, preview, change, cancel, resume, scheduled changes, invoices, billing settings, payment method.
-- [ ] Payoneer checkout, the signed webhook, every rule in SECURITY-PROTOCOL §11, daily reconciliation. Plan limits enforced across all modules.
+- ⬜ Plans, preview, change, cancel, resume, scheduled changes, invoices, billing settings, payment method.
+- ⬜ Payoneer checkout, the signed webhook, every rule in SECURITY-PROTOCOL §11, daily reconciliation. Plan limits enforced across all modules.
 
-## B16, Platform admin bridge
+## B16, Platform admin bridge ⬜
 
-- [ ] Everything in PLATFORM-ADMIN-INTEGRATION.md §5: DB roles, global tables (announcements, feature flags, platform settings, help, default data) with cache invalidation, the internal admin API (mTLS, HMAC, idempotency), support access with consent, events, health.
+- ⬜ Everything in PLATFORM-ADMIN-INTEGRATION.md §5: DB roles, global tables (announcements, feature flags, platform settings, help, default data) with cache invalidation, the internal admin API (mTLS, HMAC, idempotency), support access with consent, events, health.
 
-## B17, Hardening and switch-over
+## B17, Hardening and switch-over ⬜
 
-- [ ] The frontend's mock turned off for good (every ENDPOINTS.md box ticked).
-- [ ] Load tests, query review, backups and a restore drill, security review / pen test, production Nginx and Cloudflare, observability dashboards.
+- ⬜ The frontend's mock turned off for good (every ENDPOINTS.md box ticked).
+- ⬜ Load tests, query review, backups and a restore drill, security review / pen test, production Nginx and Cloudflare, observability dashboards.
 
 ## Hand-over pack
 

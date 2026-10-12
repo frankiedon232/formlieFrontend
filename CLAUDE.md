@@ -13,7 +13,7 @@ The platform admin (`formaliePlatformFront` + `formaliePlatformBack`) and the we
 
 ## Keep docs in sync
 
-- **Roadmap:** tick tasks in `docs/BACKEND-ROADMAP.md` and boxes in `docs/ENDPOINTS.md` as they're done.
+- **Roadmap:** mark tasks ✅ in `docs/BACKEND-ROADMAP.md`, `docs/PROGRESS.md` and `docs/ENDPOINTS.md` as they're done (⬜ not started, 🟡 built or in progress, ⏸ waiting), the same marks as the frontend's PROGRESS. Never `[x]` / `[ ]` boxes or status words alone.
 - **Shared docs:** these are the same files as in the frontend: `00-OVERVIEW`, `01-ARCHITECTURE`, `02-DEV-ENVIRONMENT`, `03-DECISIONS-AND-NOTES`, `API-CONTRACT`, `ERROR-CODES`, `SECURITY-PROTOCOL` and `OPTION-LISTS`. A change to one is a change to both.
 - **Phase end:** stop for the owner's review at the end of each phase.
 
