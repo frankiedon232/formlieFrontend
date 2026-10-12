@@ -88,7 +88,10 @@
     "answers": "Antworten",
     "open": "Öffnen",
     "summary": "{{count}} × {{title}}",
-    "footer_form": "Sie erhalten diese E-Mail wegen eines Formulars von {{workspace}}."
+    "footer_form": "Sie erhalten diese E-Mail wegen eines Formulars von {{workspace}}.",
+    "via": "Gesendet mit Formalie",
+    "tagline": "Formulare, Daten und Zugriffe unter Ihrer Kontrolle.",
+    "privacy": "Datenschutz"
   },
   "reasons": {
     "ip_not_allowed": "das Netzwerk steht nicht auf der Liste erlaubter Netzwerke",

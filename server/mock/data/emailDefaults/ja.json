@@ -88,7 +88,10 @@
     "answers": "回答",
     "open": "開く",
     "summary": "{{count}} × {{title}}",
-    "footer_form": "このメールは、{{workspace}} のフォームに基づいて送信されています。"
+    "footer_form": "このメールは、{{workspace}} のフォームに基づいて送信されています。",
+    "via": "Formalie から送信",
+    "tagline": "フォーム、データ、アクセスを思いのままに。",
+    "privacy": "プライバシー"
   },
   "reasons": {
     "ip_not_allowed": "ネットワークが許可リストにありません",

@@ -88,7 +88,10 @@
     "answers": "Réponses",
     "open": "Ouvrir",
     "summary": "{{count}} × {{title}}",
-    "footer_form": "Vous recevez cet e-mail à cause d'un formulaire de {{workspace}}."
+    "footer_form": "Vous recevez cet e-mail à cause d'un formulaire de {{workspace}}.",
+    "via": "Envoyé avec Formalie",
+    "tagline": "Formulaires, données et accès : sous votre contrôle.",
+    "privacy": "Confidentialité"
   },
   "reasons": {
     "ip_not_allowed": "le réseau ne figure pas sur la liste autorisée",

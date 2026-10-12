@@ -48,3 +48,25 @@ In code, the portal uses the glyph as an icon: `<UIcon name="i-formalie-mark" />
 ## Regenerating
 
 The SVGs are the sources. `node scripts/brand/render.mjs` (in formalieFrontend, with headless Chrome on port 9333) renders every PNG, the favicon and the OG image again.
+
+## Emails
+
+Every email Formalie sends uses one layout. The owner approved the design on 2026-10-12, and it is the same in the backend (`formlyBackend/app/modules/emails/layout.py`) and the mock (`server/mock/core/emailLayout.ts`). Examples are in `email/`.
+
+- **Header:** an ink band (`#0a0a0a`, 18 px corners) holding:
+  - the workspace's tile: a white tile with its logo or its initial, or the Field F glyph on Formalie's own emails;
+  - its name, with "Sent with Formalie" underneath;
+  - the **fields motif** on the end side: two pills and a dot, taken from the mark.
+
+  The dot and a 3 px rule under the band take the workspace's brand colour. Without one, the dot is white.
+- **Card:** white with a 1 px `#e7e7e5` border. The subject is the title (23 px, weight 800).
+  - A line ending in a link becomes an ink button with the line's own words, with the full link under it in small text.
+  - Codes sit in a large spaced box.
+  - Answers go in a bordered table.
+- **Footer:** centred and muted, in this order:
+  1. the mark with "Formalie";
+  2. the tagline;
+  3. a short divider;
+  4. why the person got the email;
+  5. Privacy · formalie.com, plus Unsubscribe on emails people can turn off.
+- **Technique:** tables and inline styles only. Light colour scheme, right to left for Arabic. The mark images come from the portal's `public/brand/`; in the backend the address is set by `EMAIL_ASSETS_URL`.
