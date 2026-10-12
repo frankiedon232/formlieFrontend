@@ -70,3 +70,7 @@ app/
   workers/ celery_app.py · queues.py
 alembic/  tests/  scripts/  logs/ (gitignored)
 ```
+
+## Going live
+
+`docs/PRODUCTION-CHECKLIST.md` (the same file in all five Formalie projects) lists everything that changes for production. Whenever you add a setting, key, address or service that differs between development and production, add it there, in every project's copy. Before any production deployment, walk the owner through it.

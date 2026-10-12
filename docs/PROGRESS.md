@@ -17,7 +17,7 @@ Marks (as in the frontend's PROGRESS): ✅ done (built and verified) · 🟡 bui
 | B7 | Public forms, sharing and links | ✅ **Done** (owner: "continue", 2026-10-11) | 24 / 24 |
 | B8 | Responses | ✅ **Done** (owner: "CONTINUE", 2026-10-11) | 23 / 23 |
 | B9 | Data sources and destinations | 🟡 **Built**; waiting for the owner's review. Webhooks moved to B10, the dashboard's Data sources view to B12 | 48 / 48 (webhooks 10 and the dashboard view 1 counted with B10 and B12) |
-| B10 | API service (management, webhooks, the public gateway) | ⬜ **Next** | 0 / 61 (53 portal + 8 public gateway) |
+| B10 | API service (management, webhooks, the public gateway) | 🟡 **Step 1 built** (management: services, endpoints, tokens, access rules, limits, connections); step 2 traffic and webhooks, step 3 the public gateway and Try it | 36 / 61 (53 portal + 8 public gateway) |
 | B11 | Settings, the rest (emails and sending, SSO, address, privacy, data region) | ⬜ Later | 0 / 29 |
 | B12 | Analytics and dashboard | ⬜ Later | 0 / 7 |
 | B13 | AI assistant | ⬜ Later | 0 / 19 |
@@ -26,7 +26,7 @@ Marks (as in the frontend's PROGRESS): ✅ done (built and verified) · 🟡 bui
 | B16 | Platform admin bridge | ⬜ Later | (PLATFORM-ADMIN-INTEGRATION §5) |
 | B17 | Hardening and switch-over | ⬜ Later; the frontend switch-over started 2026-10-12 (mock off, B0 to B9 being tested by the owner) | |
 
-Portal endpoints: 274 of 412 ticked in `ENDPOINTS.md` (2026-10-12: creating a form from a template and the two server-rendered page routes were built in B5 to B7 but not ticked; ticked after checking the routes and their tests). 138 left, all in B10 to B15.
+Portal endpoints: 310 of 412 ticked in `ENDPOINTS.md` (2026-10-12: creating a form from a template and the two server-rendered page routes were built in B5 to B7 but not ticked; ticked after checking the routes and their tests; B10 step 1 added 36). 102 left, all in B10 to B15.
 
 ## B0, Foundation ✅ (2026-10-10)
 
@@ -159,14 +159,23 @@ How a response reaches a customer's table: its delivery is recorded in the same 
 
 Each item is ticked here and in BACKEND-ROADMAP.md when done; the endpoint counts come from ENDPOINTS.md.
 
-### B10, API service (Next)
+### B10, API service (step 1 built 2026-10-12)
 
-- ⬜ Services and endpoints (create, edit, field choices, go live, docs). Endpoints: 27 · Frontend reference: `routes/apiService.ts`, `routes/apiDocs.ts`
-- ⬜ Tokens (static and client credentials), Tokens & headers. Endpoints: (in the 27) · Frontend reference: `shared/utils/apiService/tokens.ts`
-- ⬜ Access rules (IP, domain, country, anonymous networks) and allowed websites (CORS). Endpoints: 9 · Frontend reference: `routes/apiAccess.ts`, `apiService/access.ts`, `apiService/origins.ts`
-- ⬜ Connections and traffic (logs, insights). Endpoints: 7 · Frontend reference: `routes/apiConnections.ts`, `routes/apiTraffic.ts`
+- 🟡 Services and endpoints (create, edit, field choices, go live, docs). Endpoints: 27 · Frontend reference: `routes/apiService.ts`, `routes/apiDocs.ts` · 26 built (step 1): settings, setup, key rotation, services, endpoints, form fields. Where: `app/modules/api_service/` (`router.py`, `service.py`, `endpoints.py`), migration 0027. `POST /api-endpoints/{id}/try` waits for the gateway (step 3); calls, errors and answer times read 0 until the request log (step 2)
+- ✅ Tokens (static and client credentials), Tokens & headers. Endpoints: (in the 27) · Frontend reference: `shared/utils/apiService/tokens.ts` · Where: `app/modules/api_service/tokens_router.py`, `tokens.py`; secrets returned once, looked up by SHA-256, kept Fernet-encrypted for reveal after the password (`app/modules/auth/confirm.py`: 5 tries in 15 minutes)
+- 🟡 Access rules (IP, domain, country, anonymous networks) and allowed websites (CORS). Endpoints: 9 · Frontend reference: `routes/apiAccess.ts`, `apiService/access.ts`, `apiService/origins.ts` · All 9 built: rules, the access test, rate limits, allowed websites on services. Where: `app/modules/api_service/access_router.py`, `access.py`, `origins.py`. Enforcing them on calls (and rule hits, refused and limited counts) comes with the gateway and the request log (steps 2 and 3)
+- 🟡 Connections and traffic (logs, insights). Endpoints: 7 · Frontend reference: `routes/apiConnections.ts`, `routes/apiTraffic.ts` · Connections built (1); traffic (6) is step 2
 - ⬜ Webhooks (moved from B9): deliveries with the webhook token, retries, pause, redeliver. Endpoints: 10 · Frontend reference: `routes/webhooks.ts`, `integrations/webhooks.ts`
 - ⬜ Public gateway on `api.formalie.*` as its own service, order of checks, CORS preflights, idempotent POST, signing, rate limits. Endpoints: 8 · Frontend reference: `server/mock/publicApi.ts`
+
+Decisions made in B10 step 1 (backend only; the frontend's answers are unchanged):
+- **Address handles in the tenant directory:** `platform.api_keys_directory` keeps every handle a workspace ever had (current, or retired with the time it stops answering), so a handle is never handed out twice and the gateway finds the workspace before it has a tenant context (`platform.resolve_api_key`). Rotating with a grace period keeps the old handle answering until then; a second rotation stops the earlier one at once, like the mock (it keeps only one previous handle).
+- **Token secrets:** looked up by SHA-256 only; the secret itself is kept Fernet-encrypted so Reveal can show it after the password (the mock's `secret`). Five wrong passwords in 15 minutes lock Reveal for that person (FRM-AUTH-1004), counted in Redis.
+- **Endpoint names are unique in the workspace** (they are the address; the mock's FRM-API-1001), not per service as DATABASE-DESIGN said (fixed there).
+- **Ids in bodies must arrive as references** (service, form, endpoint, token scopes, rule scope): a raw id is FRM-GEN-1002, as SECURITY-PROTOCOL §10 asks.
+- **Sample API service only for the seeded development workspaces** (`scripts/seed_dev.py`: 3 services, endpoints on up to five published forms, 4 tokens, 3 rules). The mock also seeds every new workspace on first read; a real new workspace starts empty, with its handle and default rate limits (600 / 120 / 1200 a minute).
+- **Traffic reads 0 until step 2:** calls, errors, answer times, rule hits, refused and limited counts keep their shapes (30 days of 0, None for times). Token `last_used_at` is a stored column (the seeded tokens carry the mock's sample times).
+- **One rule not copied:** an IPv6 value with too many groups around `::` (`1:2:3:4:5:6:7:8:9::`) makes the frontend throw; here it is simply not an address (`ip`).
 
 ### B11, Settings, the rest (Later)
 
@@ -209,6 +218,7 @@ Each item is ticked here and in BACKEND-ROADMAP.md when done; the endpoint count
 
 - 🟡 Frontend switch-over, B0 to B9 areas (mock off, owner testing) (Started 2026-10-12)
 - ⬜ Frontend switch-over, B10 to B15 areas (each as its phase is done)
+- ⬜ Production settings: every line of docs/PRODUCTION-CHECKLIST.md (all five projects), walked through with the owner
 - ⬜ Mock turned off for good (every ENDPOINTS.md box ticked)
 - ⬜ Load tests, query review, backups and restore drill, security review, production Nginx and Cloudflare, observability
 
@@ -230,6 +240,8 @@ Each item is ticked here and in BACKEND-ROADMAP.md when done; the endpoint count
 - **CLAUDE.md layout** still names `api_keys/` and `option_sets/`; the product now has API tokens (`/api-tokens`) and option lists (`/option-lists`).
 
 ## Log
+
+- **2026-10-12:** B10 step 1: API service management. 36 endpoints (services, endpoints, field choices, tokens, access rules, rate limits, connections, the address handle and its rotation); migration 0027 (`api_settings`, `api_services`, `api_endpoints`, `api_tokens`, `api_access_rules`, `platform.api_keys_directory` with `claim_api_key` / `retire_api_key` / `resolve_api_key`); the frontend's `apiService` rules ported with parity (`scripts/dump_api_rules.py`, `tests/vectors/api_rules.json`, 2,498 recorded cases in 58 tests; `snippets.ts` not ported: only the portal's Docs page uses it); sign-up makes the handle; the seed adds the mock's sample API service. Try it waits for the gateway (step 3), traffic for the request log (step 2). TESTS_LINE
 
 - **2026-10-12:** Every email has its own template (owner): `form_invitation`, `respondent_code`, `resume_link`, `account_activation`, `account_approved`, `account_rejected` replace the generic `notification` with English text; texts synced from the frontend (20 languages), catalogues regenerated, test `tests/core/test_email_templates.py` (every template in every language, no placeholder left). `scripts/dump_frontend_rules.py` reads the ✅ / ⬜ marks in ENDPOINTS.md (it had found only 7 routes after the marks change; 409 again). 17,643 tests.
 
