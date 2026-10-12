@@ -48,6 +48,59 @@
 | L1 to L22 | Low | See the Low section |
 | I1 to I12 | Info | See the Info section |
 
+## Status (2026-10-12, after the fixes)
+
+Fixed in migrations 0036 (security) and 0037 (query review). Every fix has a regression test; the full suite is green.
+
+| # | Status | How |
+| --- | --- | --- |
+| C1 | ✅ fixed | `app/modules/data_sources/drivers.py`: aiomysql's LOCAL INFILE handler replaced at import (an empty reply, nothing opened, the query fails); refuses to run if the driver changes shape. Connections drop CLIENT_LOCAL_FILES and CLIENT_MULTI_STATEMENTS. asyncpg always gets a password (no `.pgpass`), Oracle descriptors are written by Formalie (no tnsnames, wallets, proxies), SQL Server gets an address (no FreeTDS alias). PyMySQL 1.2.3 already refuses. Test: a fake MySQL server asks for a file (`tests/core/test_datasource_hardening.py`). Point 3 (a separate worker user) is a deployment item in PRODUCTION-CHECKLIST |
+| H1 | ✅ fixed | One blocklist (`outbound.blocked`: `not is_global`, multicast, 6to4, NAT64, relay anycast) for mail, SSO, webhooks and data sources; drivers connect to the checked address with the name kept for TLS (`NamedTLSContext`); SSH to the checked address; Oracle descriptors parsed (one address, no extras); private networks only through SSH; `*_ALLOW_LOCAL` only in development and tests; SSH host keys pinned on the first good test (`datasources.ssh_host_key`), a changed key is `FRM-DEST-1004` `host_key_changed` (also L13) |
+| H2 | ✅ fixed | `POST /datasources/test` with a saved connection needs `data.edit` on it; stored secrets reused (test and PATCH) only for the same host, port, instance, descriptor, user and SSH server and user; weaker TLS than the saved connection's is refused while they are reused (`FRM-DEST-1003`). Weak modes the connection already had stay allowed (no new exposure). Test: `tests/db/test_datasource_security.py` |
+| H3 | ✅ fixed | Codes, reset, invitation, activation, respondent code and resume mail always through Formalie's relay with Formalie's wording; `/settings/emails/sending` in `SUPPORT_NEVER` |
+| M1 | ✅ fixed | Redis `INCR` per challenge before comparing; resend keeps the count; one success per code (`SET NX`) |
+| M2 | ✅ fixed | With an authenticator app, `channels: ["totp"]`; resend to another channel `FRM-AUTH-1008` `not_offered`; recovery codes stay. Same response shape |
+| M3 | ✅ fixed | Reset revokes every session in the same transaction, audited |
+| M4 | ✅ fixed | Support sessions (write mode too) can't change people, invitations, roles, API tokens and services, webhooks, workspace, security, sign-in or address settings, or create or change connections and storage (`not_in_support_sessions`); the sign-up link reads empty |
+| M5 | ✅ fixed | `APP_ENV` defaults to production; staging and production refuse to start without their keys or with `*_ALLOW_LOCAL` on; `dev_*` only with exactly `development`; docs, debug headers and local switches only in development and tests |
+| M6 | ✅ fixed | New login role `formalie_admin_api` (`DB_ADMIN_API_URL`, member of `formalie_app`) is the only one with EXECUTE on the four admin functions; the portal's suspension reason uses `platform.current_suspended_reason()` |
+| M7 | ✅ fixed | Engine-aware second check (`sql_guard.read_is_safe`): MySQL `#` and backslash escapes (both sql_modes), executable comments, PostgreSQL `E''` and nested comments, T-SQL batches; a failing "read" takes the change path. MySQL without multi-statements and READ ONLY must start; PostgreSQL changes always prepared. The shared parity rules are unchanged |
+| M8 | ✅ fixed | Per-route body policy (names only on answer and secret routes, none for uploads), masking by name, value pattern and `name` / `value` pairs; `request_logs` retention 30 days by dropping partitions (`platform.drop_expired_partitions`) |
+| M9 | ✅ fixed | Path tokens masked from the route template (and a fallback before routing); also in the JSON log lines |
+| M10 | ✅ fixed | No bodies for the token address; a fixed mask list in `record_call` |
+| M11 | ✅ fixed | `platform_reader` no longer reads `audit_logs.changes` and `metadata` (grants.py and its CI test) |
+| M12 | ✅ fixed | `REQUEST_BODY_MAX_BYTES` (2 MB) answered `413 FRM-FILE-1002` before buffering; the request log keeps only its limit as bytes stream; uploads exempt with their own limit, collected in a bytearray. The IP limit stays where it is: nothing outside it reads a body any more |
+| M13 | ✅ fixed | Outgoing replies streamed with a cap (1 MB, webhooks 64 KB) and a total limit (15 s, inside the 120 s lease) |
+| M14 | ✅ fixed | DEPLOYMENT-GUIDE Part 6: Nginx overwrites `CF-Connecting-IP`, clears `CF-IPCountry` from non-Cloudflare peers and the client-certificate headers on public listeners, Authenticated Origin Pulls. The app now prefers the last `X-Forwarded-For` hop Nginx writes; the edge path takes the Worker's hop only with the secret |
+| M15 | ✅ fixed | One `ip_bucket()`: IPv6 counted per /64 in every per-IP limit (middleware, route limits, gateway, public form limits) |
+| M16 | ⏸ owner decision | Webhook signing changes the 2026-10-06 decision; not changed |
+| L1 | ⬜ open | Needs a peek-only limiter (count failures only); not cheap |
+| L2 | ✅ fixed | Dummy hash for accounts without a password |
+| L3 | ⬜ open | Equal work for unknown addresses needs the mail moved after commit; not cheap |
+| L4 | ✅ fixed | Resend refuses another workspace's challenge (`FRM-AUTH-1003`) |
+| L5 | 🟡 partly | TOTP steps single use and recovery codes claimed atomically; refresh rotation left (two tabs refreshing together would sign one out, needs a frontend lock) |
+| L6, L7, L8 | ⬜ open | Browser-bound OAuth / SSO state, linking after verification, SAML replay: touch the sign-in flows and need testing against real providers |
+| L9 | 🟡 mitigated | Every respondent file now has a sandbox CSP; a real SVG sanitiser needs a dependency (owner) |
+| L10 | ✅ fixed | Inline only for previewable types, sandbox CSP on every file |
+| L11 | ✅ fixed | Export links fail closed without Redis, check `deleted_at`, and the localhost / bare-address exception is development only |
+| L12 | ✅ fixed | ASCII `filename=` plus `filename*=UTF-8''` (`app/core/disposition.py`) |
+| L13 | ✅ fixed | With H1 (pinned SSH host keys) |
+| L14 | ✅ fixed | Sliding window in one MULTI round trip (fakeredis has no Lua); auth and code routes fail closed |
+| L15 | ✅ fixed | Nginx returns 404 for `/api/v1/internal/`; `INTERNAL_TOKEN` retired (empty refuses both routes) |
+| L16 | ⬜ open | The request log's INSERT policy: the batch writer has no workspace context; needs the writer moved to the worker role |
+| L17 | ⏸ owner decision | Separate keyrings per purpose means a key rotation plan |
+| L18 | ✅ fixed | `hide_parameters=True` on every engine |
+| L19 | ⬜ open | Per-recipient caps and a suppression list are a product rule |
+| L20 | ✅ fixed | Control characters refused in single-line email settings |
+| L21 | ⬜ open | Changes the gateway's documented check order and the mock's answers |
+| L22 | ⬜ open | Changes the unsubscribe token format already in sent mail |
+| I3 | ✅ fixed | One blocklist |
+| I6 | ✅ fixed | Body sizes per Nginx location (DEPLOYMENT-GUIDE) |
+| I12 | ✅ gone | The gateway answers normally (its tests pass) |
+| Other Info | ⬜ open | Doc or operations notes, kept as written |
+
+Query review (`2026-10-query-review.md`): I1 to I5 and I8 created (I6, I7, I10 wait for `pg_trgm`); Q2 and Q3 in bounded SQL; Q1 partly (lists filtered, sorted and paged in SQL except search, answer filters and the respondent sort; insights and exports still in memory, plan in PROGRESS); Q11 moved to Beat; Q12 `processed_events` pruned after 7 days (the batched relay update is still open); Q4 to Q10 and Q13 open.
+
 The two fixes that matter most:
 - **C1 and H1:** the data source connector is the one place where a tenant chooses the far end of a database protocol. It needs the same care the HTTP path already gets in `app/core/outbound.py`.
 - **H3, M1 and M2:** sign-in codes must always travel through Formalie's own channel and be counted atomically.

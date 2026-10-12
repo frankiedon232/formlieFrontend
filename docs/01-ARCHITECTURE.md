@@ -7,10 +7,14 @@ Browser (Nuxt 4 portal / public form renderer)
    │  HTTPS (TLS) + app-layer encrypted envelope (see SECURITY-PROTOCOL.md)
    ▼
 Cloudflare (DNS, wildcard *.formalie.com, WAF, DDoS, TLS)
+   ├── portal hosts ({subdomain}., manage., forms., workspaces' own domains):
+   │     static SPA files + the portal's Worker (form previews, /s/ short links)
+   │     └── /api/* → the Worker forwards it to services.formalie.com
+   │                  (X-Formalie-Edge, X-Forwarded-Host / -Proto / -For)
    ▼
-Nginx (TLS, reverse proxy, routes by host and path, forwards X-Forwarded-Host)
-   ├── /            → Nuxt (SSR/SPA) for {subdomain}.formalie.com and manage.formalie.com
-   └── /api/        → FastAPI cluster (N instances, stateless)
+Nginx (TLS, reverse proxy by host; services.formalie.com and api.formalie.com only)
+   ├── services.formalie.com /api/ → FastAPI cluster (N instances, stateless)
+   └── api.formalie.com            → API service gateway (customers' API, own instances)
                          ├── PostgreSQL primary (writes)  ──replication──▶ read replicas (reads)
                          │        via PgBouncer (transaction pooling)
                          ├── Redis (cache tiers, rate limits, nonces, sessions, pub/sub)
@@ -20,7 +24,7 @@ Celery workers (separate services per queue): exports, destinations, webhooks, e
 analytics aggregation, logging pipeline, file processing, scheduled jobs (Celery Beat)
 ```
 
-**Same-origin API:** in production the API is served at `https://{sub}.formalie.com/api/...` or seperate API URL like `https://api.formalie.com/....` through Nginx, so browser requests are same-origin (simpler CSRF/cookies, no CORS). In development, Nuxt proxies `/api` to `https://formalie.dev:5004` (see 02-DEV-ENVIRONMENT.md).
+**Same-origin API:** the browser calls `/api/v1/...` on the portal host it is on (`https://{sub}.formalie.com`, `manage.`, `forms.`, a workspace's own domain). In production the portal's Cloudflare Worker forwards that call to `https://services.formalie.com` with the edge secret, and the API takes the workspace from the forwarded host (03-DECISIONS → Production hosting and addresses; SECURITY-PROTOCOL, Edge trust). So browser requests are same-origin (simpler CSRF and cookies, no CORS). In development, the Nuxt dev server passes `/api` on to `https://formalie.dev:5004` (see 02-DEV-ENVIRONMENT.md). The customers' API service (`https://api.formalie.com/{apiKey}/{endpoint}`) is a separate gateway that sends its own CORS headers for customers' websites.
 
 ## Service style
 
@@ -65,7 +69,7 @@ Start as a **modular monolith API + independent worker services** connected by R
 
 Request handling:
 
-1. Nginx passes the host; FastAPI **TenantMiddleware** extracts the subdomain, looks it up (Redis cache → DB), rejects unknown/suspended subdomains (`FRM-TEN-1001`).
+1. The Worker passes the portal host as `X-Forwarded-Host` (trusted only with the edge secret; in development the dev proxy, a trusted proxy, does the same); FastAPI **TenantMiddleware** extracts the subdomain, looks it up (Redis cache → DB), rejects unknown/suspended subdomains (`FRM-TEN-1001`).
 2. **Never trust the subdomain alone.** After authentication, the token's `tenant_id`/`organisation_id` must match the subdomain's tenant, otherwise `FRM-TEN-1003` and the attempt is logged as a security event.
 3. Each DB transaction sets `app.tenant_id`, `app.organisation_id`, `app.user_id` so RLS policies apply.
 

@@ -156,7 +156,7 @@ Tenant-leading composite indexes `(tenant_id, organisation_id, …)` · partial 
 
 ## 13. Public forms (F10)
 
-- **Links:** `/{formKey}/fill` and `/{formKey}/embed` on `forms.formalie.*` or the workspace subdomain, and `/s/{code}` short links (01-ARCHITECTURE → Public URLs). Nuxt renders them on the server through an internal endpoint, guarded by a server-only token (`x-formalie-internal`).
+- **Links:** `/{formKey}/fill` and `/{formKey}/embed` on `forms.formalie.*` or the workspace subdomain, and `/s/{code}` short links (01-ARCHITECTURE → Public URLs). Every page is client-rendered (static build, 2026-10-12): the browser reads the form through `/public/forms/{key}`, and in production the Cloudflare Worker adds the link-preview tags and answers `/s/{code}` from the edge routes (`/edge/forms/{key}/preview`, `/edge/links/{code}`, only with `X-Formalie-Edge`). The old server-rendered reads (`/internal/public-forms/{key}`, `/internal/short/{code}`, server-only token `x-formalie-internal`) are retired: no caller, refused while `INTERNAL_TOKEN` is empty, blocked by Nginx.
 - **Submit:**
   - validation with the ported rules (`forms/submission.ts`, logic, formula);
   - proof of work (`forms/proof-of-work.ts`);

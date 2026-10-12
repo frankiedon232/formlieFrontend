@@ -26,7 +26,8 @@ Rewritten 2026-10-10 from the finished portal (`C:\UNETPROJECTS\formalieFrontend
 | `formalie_app` | API and Celery workers. `NOBYPASSRLS`; SELECT, INSERT, UPDATE on tenant tables (no DELETE: soft delete only), INSERT only on `event_outbox`, `SELECT` on global tables, `INSERT` only on log tables (`audit_logs`, `request_logs`, `error_logs`, `form_fill_events`); `api_request_logs` also UPDATE (bodies cleared after their days). Cannot list `tenants` except through `platform.resolve_tenant(host)` (SECURITY DEFINER). |
 | `formalie_worker` | Outbox relay, partition upkeep and log writing only. `BYPASSRLS`, SELECT and UPDATE on `event_outbox`, INSERT on `request_logs`, EXECUTE on `platform.ensure_monthly_partitions`; nothing else. |
 | `formalie_readonly` | Reporting on replicas: SELECT, `default_transaction_read_only = on`, `NOBYPASSRLS`. |
-| `platform_reader` | Read replica only. `BYPASSRLS`, `default_transaction_read_only = on`, `statement_timeout = 15s`, connection limit 10 (LOGIN through `DB_PLATFORM_READER_URL`, `scripts/db_bootstrap.py`). Column privileges on every table of both schemas (B16, migration 0034; later tables through `enable_tenant_rls`), excluding secrets (every `*_hash` and `*_enc` column: password, token, code and secret hashes, TOTP secrets, encrypted credentials) and answer content (`responses.data` and the respondent's name and emails, `resume_drafts.data` and email, `response_changes.before / after`, `response_notes.text`, request / API / webhook bodies, `api_idempotency.answer`, `sent_emails.html / text`, `ai_requests.prompt / result / output`, saved and run SQL, `forms.draft_schema`, `form_versions.schema`, `custom_domains.token`). The list: `app/modules/platform_bridge/grants.py`; CI: `tests/db/test_platform_grants.py`. |
+| `platform_reader` | Read replica only. `BYPASSRLS`, `default_transaction_read_only = on`, `statement_timeout = 15s`, connection limit 10 (LOGIN through `DB_PLATFORM_READER_URL`, `scripts/db_bootstrap.py`). Column privileges on every table of both schemas (B16, migration 0034; later tables through `enable_tenant_rls`), excluding secrets (every `*_hash` and `*_enc` column: password, token, code and secret hashes, TOTP secrets, encrypted credentials) and answer content (`responses.data` and the respondent's name and emails, `resume_drafts.data` and email, `response_changes.before / after`, `response_notes.text`, request / API / webhook bodies, `api_idempotency.answer`, `sent_emails.html / text`, `ai_requests.prompt / result / output`, saved and run SQL, `audit_logs.changes` and `metadata` (edited answers, the Query editor's SQL; B17), `forms.draft_schema`, `form_versions.schema`, `custom_domains.token`). The list: `app/modules/platform_bridge/grants.py`; CI: `tests/db/test_platform_grants.py`. |
+| `formalie_admin_api` | The internal admin API (B17, M6): LOGIN through `DB_ADMIN_API_URL` (`scripts/db_bootstrap.py`), member of `formalie_app` (its privileges, RLS applies), and the only role with EXECUTE on `platform.admin_tenant`, `admin_set_status`, `admin_set_plan` and `communication_workspaces` (migration 0036). The portal reads its suspension reason through `platform.current_suspended_reason()` (the workspace in `app.tenant_id` only). |
 | `platform_writer` | `INSERT`, `UPDATE` (no `DELETE`; retire with `retired_at`) on the platform-owned global tables marked **(P)** below, nothing else (connection limit 5, LOGIN through `DB_PLATFORM_WRITER_URL`). Every write carries `published_by_staff_id` (the trigger `platform.stamp_published` refuses one without it and stamps `published_at`; B14's help tables are stamped by the platform); then `platform.published { table, ids, version }` on the bus drops Formalie's caches. |
 
 ## Platform / global tables (schema `platform`, no tenant, no RLS)
@@ -210,6 +211,8 @@ Source: `shared/types/responses.ts` (`ResponseExport`), `audit.ts` (`ExportJob`)
 
 ### Data sources, response storage, explorer and query
 
+`datasources.ssh_host_key` / `datasource_tests.ssh_host_key` (B17, migration 0036): the pinned SSH host key, `host:port SHA256:...`.
+
 Source: `shared/types/datasources.ts`, `destinations.ts`, `query.ts`, `explorer.ts`, `shared/utils/datasources/*`, `server/mock/data/dataSourceStore.ts`, `destinationStore.ts`, `savedQueryStore.ts`, `routes/query.ts`.
 
 | Table | Key columns |
@@ -354,6 +357,7 @@ RLS lets a workspace read only its own `audit_logs`; `platform_reader` reads all
 - `destination_deliveries (tenant_id, status, next_retry_at)`, `webhook_deliveries (tenant_id, webhook_id, at)`, `(tenant_id, id)`, `(next_retry_at) WHERE status = 'retrying'`; `api_request_logs (tenant_id, endpoint_id, at)`, `(tenant_id, token_id, at)`, `(tenant_id, rule_id, at) WHERE rule_id IS NOT NULL`, `event_outbox (published_at) WHERE published_at IS NULL`
 - `notifications (tenant_id, user_id, read_at, created_at desc)`
 - `audit_logs (tenant_id, occurred_at desc)`, `(tenant_id, area, occurred_at desc)`, `(tenant_id, actor_id, occurred_at desc)`, `(tenant_id, resource_type, resource_id)`; `request_logs (created_at desc, tenant_id)`
+- B17 query review (migration 0037): `responses` live-row partial indexes `ix_responses_form_live (tenant_id, form_id, submitted_at desc, id desc)`, `ix_responses_respondent (tenant_id, form_id, respondent_kind, respondent_ref_id)`, `ix_responses_new (tenant_id, form_id) WHERE status = 'new'`, `ix_responses_identity_live`, `ix_responses_device_live`, `ix_responses_fingerprint_live` (these three replace the old full ones), GIN `ix_responses_tags (tags jsonb_path_ops)`; `forms`: `ix_forms_live`, `ix_forms_trash`, GIN `ix_forms_tags`, `ix_forms_closing`; `processed_events (processed_at)`. Trigram indexes wait for the owner's approval of `pg_trgm`.
 - `payments (reference) UNIQUE`, `checkout_sessions (tenant_id) UNIQUE WHERE status = 'open'`, `billing_idempotency_keys (tenant_id, key) UNIQUE`
 
 ## Partitioning and maintenance
@@ -361,13 +365,15 @@ RLS lets a workspace read only its own `audit_logs`; `platform_reader` reads all
 | Table | Partition | Kept |
 | --- | --- | --- |
 | `responses` (+ notes, changes by FK) | monthly on `submitted_at` | per form `settings.retention_days`, else the workspace's `privacy.retention_days` (0 = forever); applied when the setting is saved and daily (Beat `privacy.apply_retention`): due responses are erased in place (above) and `settings.retention_applied` recorded |
-| `audit_logs`, `request_logs`, `error_logs` | monthly | 12 months hot, then detached to cold storage |
+| `audit_logs`, `error_logs` | monthly | 12 months hot, then detached to cold storage |
+| `request_logs` | monthly | `REQUEST_LOG_RETENTION_DAYS` (30): Beat `db.drop_expired_partitions` drops whole partitions older than that through `platform.drop_expired_partitions` (request_logs only, never under 7 days; B17, migration 0036) |
 | `api_request_logs` | monthly | calls: 12 months like the other logs; bodies only `api_settings.log_days` (1, 7, 30), cleared hourly |
 | `form_fill_events` | daily | 90 days (rolled up into `form_analytics_daily` and `form_funnel_daily` first) |
 | `webhook_deliveries` | monthly | 90 days |
 | `event_outbox` | monthly | 7 days after publish |
+| `processed_events` | none | 7 days after processing: Beat `events.prune_processed` daily through `platform.prune_processed_events` (B17, migration 0037; a technical dedup table, no workspace data) |
 
-Celery Beat creates the next 3 periods ahead and detaches expired ones. Other scheduled jobs: Trash purge (30 days); expired resume drafts, invites, OTP challenges, download tokens and idempotency keys (24 h); AI requests after `keep_days`; renewals and reminders; daily Payoneer reconciliation; destination and webhook retries; datasource health checks; domain and sending-domain checks; the daily digest.
+Celery Beat creates the next 3 periods ahead and detaches expired ones. Other scheduled jobs: Trash purge (30 days; Beat `forms.sweep_trash` every 5 minutes over `platform.trash_due_workspaces()`); due-date announcements (Beat `notifications.announce_due` every minute over `platform.notification_due_workspaces()`); expired resume drafts, invites, OTP challenges, download tokens and idempotency keys (24 h); AI requests after `keep_days`; renewals and reminders; daily Payoneer reconciliation; destination and webhook retries; datasource health checks; domain and sending-domain checks; the daily digest.
 
 ## Seeded default data
 

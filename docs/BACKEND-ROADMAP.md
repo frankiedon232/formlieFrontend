@@ -118,7 +118,9 @@ Then stop for the owner's review. Day-to-day status lives in `PROGRESS.md`.
 - ✅ Edge proxy trust for the portal's Cloudflare Worker (`EDGE_SECRET`, `SERVICES_HOST`) and its two routes `/edge/forms/{formKey}/preview`, `/edge/links/{code}` (2026-10-12).
 - ✅ Closing workspaces become `closed` on their date (Beat, soft state, no deletion; 2026-10-12).
 - ⬜ The frontend's mock turned off for good (every ENDPOINTS.md box ticked).
-- ⬜ Load tests, query review, backups and a restore drill, security review / pen test, production Nginx and Cloudflare, observability dashboards.
+- ✅ Security review fixes (2026-10-12, migration 0036): C1, H1 to H3, M1 to M15 and the cheap lows; status per finding in `docs/reviews/2026-10-security-review.md`. M16 (webhook signing) and L17 wait for the owner.
+- 🟡 Query review fixes (2026-10-12, migration 0037): indexes I1 to I5 and I8, Q2, Q3, Q11, Q12 pruning, Q1 in part. Open: the rest of Q1, Q4 to Q10, Q13; trigram indexes need `pg_trgm` (owner).
+- ⬜ Backups and a restore drill, a pen test, production Nginx and Cloudflare, observability dashboards (load test and reviews done 2026-10-12).
 
 ## Hand-over pack
 

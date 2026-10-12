@@ -24,7 +24,7 @@ Marks (as in the frontend's PROGRESS): ✅ done (built and verified) · 🟡 bui
 | B14 | Help centre and tours | ✅ **Built** (2026-10-12); waiting for the owner's review | 9 / 9 |
 | B15 | Subscriptions and payments (Payoneer) | ⬜ Later | 0 / 13 |
 | B16 | Platform admin bridge | ✅ **Built** (2026-10-12); waiting for the owner's review. Portal screens for support access, announcements and switches: the frontend's | 9 / 9 portal (new) + 24 internal admin API routes (5 billing ⏸ until B15) |
-| B17 | Hardening and switch-over | ⬜ Later; the frontend switch-over started 2026-10-12 (mock off, B0 to B9 being tested by the owner) | |
+| B17 | Hardening and switch-over | 🟡 Started: security review fixed and query review mostly fixed (2026-10-12, migrations 0036 and 0037); the frontend switch-over started 2026-10-12 (mock off, B0 to B9 being tested by the owner) | |
 
 Portal endpoints: 395 of 416 ticked in `ENDPOINTS.md` (2026-10-12: creating a form from a template and the two server-rendered page routes were built in B5 to B7 but not ticked; ticked after checking the routes and their tests; B10 step 1 added 36, step 2 added 16, step 3 added Try it; B12 added 7; B11 added 29; B13 added 19; B14 added 9), plus the 8 public gateway endpoints and B11's 4 plain single sign-on routes. The 13 endpoints still ⬜ in `ENDPOINTS.md` are all B15's. B16 added 9 portal endpoints the mock never had (support access, its banner and ticket, announcements, switches) and the internal admin API (`/internal/admin/v1`, 24 routes).
 
@@ -321,7 +321,9 @@ Decisions made in B16 (backend; contract additions in API-CONTRACT → "Formalie
 - ⬜ Frontend switch-over, B10 to B15 areas (each as its phase is done)
 - ⬜ Production settings: every line of docs/PRODUCTION-CHECKLIST.md (all five projects), walked through with the owner
 - ⬜ Mock turned off for good (every ENDPOINTS.md box ticked)
-- ⬜ Load tests, query review, backups and restore drill, security review, production Nginx and Cloudflare, observability
+- ✅ Security review fixed (2026-10-12): C1, H1 to H3, M1 to M15, lows L2, L4, L5 (part), L10 to L15, L18, L20; migration 0036 (admin function grants for the new `formalie_admin_api` role, audit columns hidden from `platform_reader`, SSH host key columns, request log retention function). Open: M16 and L17 (owner), L1, L3, L5 (refresh), L6 to L9, L16, L19, L21, L22 (reasons in the review's Status table)
+- 🟡 Query review (2026-10-12): migration 0037 (indexes I1 to I5, I8; Beat functions; processed_events pruning), Q2 and Q3 bounded SQL, Q11 upkeep in Beat, Q1 in part. Plan for the rest of Q1: a stored lower-case `search_text` and `title_sort` (trigram index once `pg_trgm` is approved), answer filters as jsonb expressions with a parity test, insights with `count(*) FILTER` and `date_trunc` as `dashboard/common.py` does, exports streamed with `yield_per`, schema reads batched (Q7)
+- ⬜ Backups and restore drill, pen test, production Nginx and Cloudflare, observability
 
 ## Open questions
 
@@ -378,6 +380,7 @@ Decisions made in B16 (backend; contract additions in API-CONTRACT → "Formalie
 
 - **2026-10-12:** Sign-up and sign-in, owner's requests: `GET /auth/signup/workspaces` (a verified sign-up email's existing workspaces, manage.* only, never before verification) and an email to an account with no password when someone tries one (the same `401 FRM-AUTH-1002` on screen; at most once an hour; texts in the frontend's `emailDefaults` → `account.password_social`, 20 languages, synced). 3 new tests; 17381 pass.
 
+- **2026-10-12:** B17 security and query review fixes: migrations 0036 and 0037, every finding's status in `docs/reviews/2026-10-security-review.md`. New settings `DB_ADMIN_API_URL`, `REQUEST_LOG_RETENTION_DAYS`, `REQUEST_BODY_MAX_BYTES`; `APP_ENV` now fails safe. Frontend notes: app users see only `totp`, the four account email templates use Formalie's wording, support sessions get `not_in_support_sessions`, the edge preview has `embed_ancestors`. Owner: M16 webhook signing, `pg_trgm`, L17 keyrings, the processed_events and request log deletions.
 - **2026-10-12:** PROGRESS now breaks down B10 to B17 (items, endpoint counts, frontend references). Three built routes ticked in ENDPOINTS.md (273 of 411). The frontend switched to this backend for the B0 to B9 areas (mock off): the proxy forwards the visitor's IP, `NUXT_INTERNAL_TOKEN` matches `INTERNAL_TOKEN`; shared docs synced both ways.
 
 - **2026-10-11:** B9 built: data sources, response storage in customers' databases, the explorer, the Query editor, saved queries and Activity; migrations 0023 to 0026; 48 endpoints. Webhooks moved to B10, the dashboard's Data sources view to B12. MariaDB live tests wait for `setup-mariadb.sh`. **Stopped for the owner's review.**

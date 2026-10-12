@@ -121,6 +121,47 @@ Payments go through the processor (Payoneer). Formalie never sees, stores or log
 10. **The checkout frame** only loads the processor's own pages (Content-Security-Policy `frame-src` limited to Payoneer's hosts when connected).
 11. **Access and record.** Reading billing needs `settings.view`, changing it `settings.manage`; every change, payment and notification is in the audit trail (notifications as the system actor "Payoneer").
 
-## 12. Honest note
+## 12. Hardening from the B17 security review (2026-10-12)
+
+The review is `docs/reviews/2026-10-security-review.md` (in the backend), with a status for every finding.
+
+**Sign-in and codes**
+- Every code (sign-in, two-step, reset, sign-up, find my workspace) counts its tries atomically before comparing (Redis `INCR` per challenge, 5 tries); a resend never resets them; one right code wins once (`SET NX`), then the challenge is gone.
+- When someone has an authenticator app, the app is the only second step offered (`channels: ["totp"]`); recovery codes still work at the same step. Asking to resend through a channel not offered answers `400 FRM-AUTH-1008` (`channel: not_offered`). Each TOTP step is accepted once per user; recovery codes are claimed atomically.
+- "Forgot password" and its reset end every other session of that person, in the same transaction, audited.
+- Security mail (sign-in and reset codes, invitations, activation links, respondent codes and resume links) always goes through Formalie's own relay, never through a workspace's own mail server, and the account templates use Formalie's built-in wording (a workspace's custom text is ignored for them).
+- An account without a password is checked against a dummy hash, so timing shows nothing; a code is resent only on its own workspace's host.
+
+**Formalie support sessions** (B16): never `/settings/emails/sending`, besides the earlier list; and in any support session, write mode included, no change to people, invitations, roles, API tokens and services, webhooks, workspace, security, sign-in or address settings, nor creating or changing data source connections and response storage (`403 FRM-PERM-1001`, `support: not_in_support_sessions`). The sign-up link reads as empty to support.
+
+**Development conveniences fail closed**
+- `APP_ENV` must be set; unset means `production`, which refuses to start without its keys (`FERNET_KEYS`, `ID_REF_*`, `DB_APP_URL`, broker and Redis credentials) or with any `*_ALLOW_LOCAL` on.
+- `dev_code`, `dev_resume_url` and `dev_links` appear only when `APP_ENV` is exactly `development`; the API docs, the `*_ALLOW_LOCAL` switches and the `X-Debug-*` headers count in development and tests only, never in staging.
+
+**Outgoing connections** (mail servers, identity providers, webhooks, customers' databases)
+- One blocklist (`app/core/outbound.py`, `blocked`): anything not globally routable (private, loopback, link-local, CGNAT, unique local, documentation and benchmark ranges, metadata addresses), multicast, and the ranges that embed another address (6to4, NAT64). Every address a name resolves to is checked, and the connection goes to the checked address (no DNS rebinding); the name is kept for TLS (SNI and the certificate's name check).
+- Customers' private networks are reached only through an SSH tunnel whose server is public. SSH host keys are pinned on the first good test; a different key is refused (`FRM-DEST-1004`, `ssh_host: host_key_changed`) until the SSH settings change.
+- Oracle descriptors are parsed: one address, TCP or TCPS, a service name or SID, nothing else; Formalie writes the descriptor it connects with.
+- Database drivers never read local files for the far end: MySQL / MariaDB refuse LOAD DATA LOCAL INFILE and run without multiple statements; PostgreSQL always gets a password (no `.pgpass`).
+- A saved connection's stored secrets are reused only by someone with `data.edit` on it, only for the same server and account (host, port, instance, descriptor, user, SSH server and user), and never with weaker encryption than it already had (`FRM-DEST-1003`, `tls_required_with_saved_secrets`).
+- Replies are read as a stream with a size cap (1 MB; webhooks keep 64 KB) and a total time limit (15 s).
+
+**Query editor:** a statement the shared rules call a read is checked again the way its own engine reads it (MySQL `#` comments and backslash escapes, PostgreSQL `E''` strings and nested comments, T-SQL batches without `;`); if the engine would see more than a read, it takes the change path (permission, Read only setting, confirm, audit). PostgreSQL statements are always prepared (one statement), MySQL reads need a READ ONLY transaction.
+
+**Logs**
+- Request logs keep only field names (never values) on routes that carry answers or secrets (public, responses, API service, data sources, query, webhooks, mail and sign-in settings, privacy, AI, uploads), no body for uploads, and masked bodies elsewhere. Secrets are masked by name, by value pattern (tokens, keys, bearer values, PEM keys) and as `value` next to `name`. Tokens in paths (invites, resume links, file and export links) are written as `***`.
+- The API service log never keeps the token address's bodies and always masks `client_secret`, `access_token`, `refresh_token`, `password`, `token`, `secret`.
+- `request_logs` is kept `REQUEST_LOG_RETENTION_DAYS` (30) and its old monthly partitions are dropped daily.
+- Logged SQL errors never carry bound values.
+
+**Requests:** bodies over `REQUEST_BODY_MAX_BYTES` (2 MB) answer `413 FRM-FILE-1002` before they are read (uploads keep their own limit). Rate limits count IPv6 callers by their /64, add and count in one round trip, and sign-in and code routes fail closed (`503 FRM-GEN-5003`) when Redis is down. Behind Nginx the visitor's address is the last `X-Forwarded-For` hop Nginx wrote; `CF-Connecting-IP` counts only without it (Nginx overwrites it).
+
+**Files:** respondents' files are shown inline only for the types the viewer previews, otherwise downloaded, always with a sandbox CSP. Export links fail closed when Redis is down.
+
+**Database roles:** only `formalie_admin_api` (the internal admin API's own login) may run the platform admin functions; `platform_reader` doesn't read `audit_logs.changes` or `metadata`.
+
+**Still open (owner decisions):** webhook signing (M16), trigram search (`pg_trgm`), and the rest listed in the review's status table.
+
+## 13. Honest note
 
 App-layer encryption protects against TLS-terminating proxies, logging leaks and traffic inspection; it does not protect against a compromised browser or device. It adds CPU cost, so keep payloads lean and paginate.

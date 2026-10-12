@@ -4,7 +4,7 @@ Every endpoint the finished frontend calls, taken from the mock router (`C:/UNET
 
 Per file: **Guards** are the checks the mock makes (`requireAuth` signed in, `requireAdmin` admin only, `requireAction` / `requireLevel` / `requireResponses` per-form access, `requireOwned` / `requireResource` scope on an item, `requireFeature` / `requireFormSlot` / `requireDatabase` plan limits, `requireAi` AI allowance). **Permissions** are codes from `shared/utils/auth/permissions.ts` used in that file. **Audit** lists actions from `shared/utils/audit/events.ts` that the file records.
 
-Total: 399 endpoints in the portal API, plus the public API service and the server-rendered form routes at the end.
+Total: 399 endpoints in the portal API, plus the public API service, the retired server-rendered form routes and the edge routes at the end.
 
 ## `routes/system.ts`
 
@@ -841,7 +841,9 @@ Built in B16: `app/modules/platform_bridge/portal.py`, `support.py`, `globals.py
 
 Built in B16: `app/modules/platform_bridge/internal.py` (gate, idempotency, audit), `admin_routes.py`, `signing.py`, `health.py`, `workspace_export.py`; tests in `tests/db/test_platform_bridge.py`, `tests/db/test_platform_grants.py`, `tests/core/test_platform_units.py`.
 
-## Server-rendered public pages (internal, service to service)
+## Server-rendered public pages (internal, service to service; retired 2026-10-12)
+
+The frontend is a static build with every page client-rendered and no longer calls these (no `NUXT_INTERNAL_TOKEN`). They stay in `app/modules/public/router.py`, refuse everything while `INTERNAL_TOKEN` is empty (production) and are blocked by Nginx (`location /api/v1/internal/ { return 404; }`, DEPLOYMENT-GUIDE Part 6). The edge routes below replace them.
 
 - ✅ Internal published-form fetch for `/{formKey}/fill` and `/{formKey}/embed` (`server/routes/_ssr/public-forms/[key].get.ts`), only with the server-only internal token header `x-formalie-internal`
 - ✅ Internal short-link resolve for `/s/{code}` (`server/routes/_ssr/short/[code].get.ts`)

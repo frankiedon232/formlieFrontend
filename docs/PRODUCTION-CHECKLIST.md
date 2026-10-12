@@ -35,7 +35,7 @@ Generate fresh keys with `fmly\Scripts\python.exe scripts\gen_keys.py --write` o
 
 | Setting | Development | Production |
 | --- | --- | --- |
-| `APP_ENV` | `development` | ⬜ `production` |
+| `APP_ENV` | `development` | ⬜ `production`, always set explicitly (B17: unset means production; staging and production refuse to start without `FERNET_KEYS`, `ID_REF_*`, `DB_APP_URL`, broker and Redis credentials, or with any `*_ALLOW_LOCAL` on; `dev_*` helpers only with exactly `development`) |
 | `APP_RELEASE` | `0.0.0-dev` | ⬜ the release version |
 | `DOCS_ENABLED` | `true` | ⬜ `false` (no `/docs`, `/redoc`) |
 | `SSL_CERTFILE` / `SSL_KEYFILE` | mkcert files | ⬜ empty when Nginx ends TLS; otherwise the real certificate |
@@ -55,7 +55,7 @@ Generate fresh keys with `fmly\Scripts\python.exe scripts\gen_keys.py --write` o
 | `EMAIL_SMTP_ALLOW_LOCAL`, `SSO_ALLOW_LOCAL` (B11) | `false` (`true` only while trying a mail server or identity provider on this machine) | ⬜ `false` (never true in production; ignored there anyway) |
 | `SAML_SP_CERT`, `SAML_SP_KEY` (B11) | empty (SAML requests unsigned) | ⬜ a certificate and private key (PEM) made for Formalie's SAML service provider, e.g. `openssl req -x509 -newkey rsa:2048 -nodes -days 1095 -subj "/CN=formalie.com"`; renew before it expires (workspaces' identity providers then import the new metadata) |
 | `DNS_TIMEOUT_SECONDS` (B11) | `4` | ⬜ keep; the servers need a working DNS resolver (own domain and sending domain checks) |
-| `INTERNAL_TOKEN` | development value | ⬜ a new random value, the same as the frontend's `NUXT_INTERNAL_TOKEN` |
+| `INTERNAL_TOKEN` | development value | ⬜ **retired:** leave it empty. The frontend no longer uses it (static build, no Nuxt server, no `NUXT_INTERNAL_TOKEN`); its only remaining use is the two unused routes `GET /api/v1/internal/public-forms/{key}` and `GET /api/v1/internal/short/{code}` (the old server-rendered form and short-link reads, `app/modules/public/router.py`), which refuse everything while it is empty, and Nginx blocks `/api/v1/internal/` anyway (section 4) |
 | `LEGAL_TERMS_URL`, `LEGAL_PRIVACY_URL` | formalie.com pages | ⬜ check the pages exist on the website |
 | `SUPPORT_EMAIL`, `SUPPORT_URL` (B14) | `support@formalie.com`, empty | ⬜ the real support mailbox (it must receive mail) and, if there is one, the support page; shown on the help centre's home until the platform settings take over |
 | `STORAGE_DIR` | `data/storage` | ⬜ replaced by the object storage settings (to be added when storage is chosen) |
@@ -75,6 +75,9 @@ Generate fresh keys with `fmly\Scripts\python.exe scripts\gen_keys.py --write` o
 | `MAXMIND_ACCOUNT_ID`, `MAXMIND_LICENSE_KEY` | maybe empty | ⬜ set; Beat refreshes the databases weekly |
 | `TEST_MYSQL_URL`, `DB_TEST_DATABASE` | test only | ⬜ not set in production |
 | `DB_PLATFORM_READER_URL`, `DB_PLATFORM_WRITER_URL` (B16) | empty (roles without LOGIN) | ⬜ long random passwords; reader on the read replica's address, writer on the primary. `scripts/db_bootstrap.py` gives the roles LOGIN with them; the same URLs go into the platform admin's backend (formaliePlatformBack) |
+| `DB_ADMIN_API_URL` (B17) | `formalie_admin_api` on the local database | ⬜ a long random password, on the primary; run `scripts/db_bootstrap.py` before `alembic upgrade head` (it creates the role, member of `formalie_app`, and gives it the platform admin functions, which the portal's role no longer has) |
+| `REQUEST_LOG_RETENTION_DAYS` (B17) | `30` | ⬜ the period the privacy policy states (30 by default; 7 at least); Beat drops older `request_logs` partitions daily |
+| `REQUEST_BODY_MAX_BYTES` (B17) | `2097152` (2 MB) | ⬜ keep; Nginx's `client_max_body_size` per location matches it (DEPLOYMENT-GUIDE Part 6), uploads have their own |
 | `PLATFORM_ADMIN_KEYS` (B16) | a development pair, also in the platform admin's settings (or empty: internal admin API refused) | ⬜ a new `key_id:secret` pair (secret 32+ random characters), the same in formaliePlatformBack; rotate by adding the new pair first, then removing the old |
 | `PLATFORM_ADMIN_REQUIRE_MTLS`, `PLATFORM_ADMIN_CERT_FINGERPRINTS` (B16) | `false`, empty | ⬜ `true` (the API refuses every internal admin call in production without it) and the platform's client certificate fingerprint as Nginx passes it (`$ssl_client_fingerprint`) |
 | `PLATFORM_ADMIN_NETWORKS` (B16) | local and private ranges | ⬜ only the platform admin's private addresses |
@@ -91,6 +94,8 @@ Also on the backend side:
 - ⬜ Backups: continuous WAL archiving plus a daily full backup, encrypted, off-site, 30 days; a restore drill before launch and monthly after.
 - ⬜ Flower and the RabbitMQ management page: not public (VPN or SSH tunnel only).
 - ⬜ Celery Beat runs `privacy.apply_retention` once a day (response retention; nothing to set).
+- ⬜ B17: Beat also runs `forms.sweep_trash` (every 5 minutes), `notifications.announce_due` (every minute), `events.prune_processed` and `db.drop_expired_partitions` (daily). Nothing to set.
+- ⬜ B17: the workers that connect to customers' databases (queue `destinations`, and the API for the explorer and the Query editor) run as a system user without `~/.pgpass`, `~/.postgresql/`, `~/.my.cnf` or `freetds.conf` aliases, and without `PG*`, `TDSDUMP` or `TNS_ADMIN` in their environment; ideally a separate worker user that can't read `.env` (review C1, point 3).
 - ⬜ B16: the `platform.published` consumer runs as its own service (`python -m app.modules.platform_bridge.consumer`, restart on failure); Beat runs `platform.expire_support_access` every minute (nothing to set).
 - ⬜ Beat runs `platform.close_due_workspaces` every 10 minutes: a closing workspace past its date becomes `closed` (refuses sign-in, the API and answers; nothing is deleted). Nothing to set.
 - ⬜ The servers' Python has `xmlsec` working (python3-saml): `python -c "import xmlsec"`; on Linux the wheel needs `libxmlsec1` (`apt install libxmlsec1-openssl`) and `lxml` built against the same libxml2.
@@ -101,20 +106,20 @@ Also on the backend side:
 | --- | --- | --- |
 | `NUXT_PUBLIC_API_MOCK` | `false` (mock off since 2026-10-12) | ⬜ `false`; the mock is never deployed |
 | `NUXT_PUBLIC_API_BASE` | `/api/v1` (the dev server passes it on to `https://formalie.dev:5004`) | ⬜ stays `/api/v1`: the Worker forwards it to `https://services.formalie.com` |
-| Worker secret `EDGE_SECRET` | not used | ⬜ `wrangler secret put EDGE_SECRET`, the backend's `EDGE_SECRET` value (never in the build or in `wrangler.toml`) |
+| Worker secret `EDGE_SECRET` | not used | ⬜ `npx wrangler@4 secret put EDGE_SECRET`, the backend's `EDGE_SECRET` value (never in the build or in `wrangler.jsonc`) |
 | `NUXT_API_PROXY_TARGET` | `https://formalie.dev:5004` | ⬜ not used (static build, no server) |
-| `NUXT_INTERNAL_TOKEN` | the backend's development value | ⬜ the same new value as the backend's `INTERNAL_TOKEN` |
 | `NUXT_PUBLIC_ROOT_DOMAIN` | `formalie.dev` | ⬜ `formalie.com` |
 | `NUXT_PUBLIC_FORMS_HOST` | `forms.formalie.dev` | ⬜ `forms.formalie.com` |
 | `NUXT_PUBLIC_API_SERVICE_URL` | `https://api.formalie.dev` | ⬜ `https://api.formalie.com` |
 | `NUXT_PUBLIC_LEGAL_*` | formalie.com pages | ⬜ check they exist |
 | `NUXT_PAYONEER_WEBHOOK_SECRET` | empty | ⏸ Payoneer's webhook secret |
 | `NODE_EXTRA_CA_CERTS`, `DEV_HTTPS_*` | mkcert | ⬜ not used |
-| Dev port `:2202` | in every development address | ⬜ gone (443 through Nginx) |
+| Dev port `:2202` | in every development address | ⬜ gone (443 on Cloudflare) |
 
 Also:
-- ⬜ **Build as static SPA files** (owner, 2026-10-12): `pnpm generate` with the production values above, then deploy `.output/public` to Cloudflare; every unknown path falls back to `index.html`. One build serves `manage.`, `forms.` and every workspace subdomain. To do before this works (switch-over, B17 and phase SB): public form pages become client-rendered (the `ssr: true` route rules go); `server/` (mock, dev proxy, `api-host` middleware, `_ssr` routes) stays development only; the Cloudflare Worker (section 1) takes over form link previews and `/s/` short links.
-- ⬜ No development address in the build: search `.output/public` for `formalie.dev`, `:2202`, `:5004`, `localhost` (build-time reminder at the top).
+- ⬜ **Build as static SPA files** (owner, 2026-10-12; built 2026-10-12): `pnpm generate --dotenv .env.production` with the production values above, then `npx wrangler@4 deploy` (DEPLOYMENT-GUIDE Part 8a); every unknown path falls back to `index.html`. One build serves `manage.`, `forms.` and every workspace subdomain. Every page is client-rendered (also the public form pages and `/s/`); `server/` (mock, dev proxy, `api-host`, `embed-frame`) is development only; the Cloudflare Worker (`edge/worker.ts`, section 1) proxies `/api/*` and adds form link previews and `/s/` short-link redirects.
+- ⬜ No development address in the build: `pnpm release:check` must say clean (it searches `.output/public`, and `.output/edge` when the Worker bundle was made, for `formalie.dev`, `:2202`, `:3033`, `:5004`, `:5005`, `localhost`, `127.0.0.1`, `mkcert`, `devcerts`).
+- ⬜ The Worker routes in `wrangler.jsonc` (`manage.formalie.com/*`, `forms.formalie.com/*`, `*.formalie.com/*`) are commented out until go-live; uncomment them then, with `api.formalie.com/*` and `services.formalie.com/*` set to Worker "None" in Cloudflare (DEPLOYMENT-GUIDE Part 7).
 - ⬜ The capture tools (`scripts/site-screenshots/`, `scripts/brand/`) are development only.
 - ⬜ The brand images in `public/brand/` are served (emails load the Formalie mark from `https://manage.formalie.com/brand/…`).
 
@@ -122,10 +127,13 @@ Also:
 
 - ⬜ Hosts on Nginx: `services.formalie.com` → the API; `api.formalie.com` → the API service gateway (`GATEWAY_PORT`, every path, no `/api/` prefix; it sets its own CORS headers, so Nginx adds none); the front-end hosts (`*.formalie.com`, `manage.`, `forms.`, `formalie.com`, `www`, the platform admin) are static on Cloudflare and never reach Nginx.
 - ⬜ On `services.formalie.com`, pass the Worker's `X-Formalie-Edge`, `X-Forwarded-Host`, `X-Forwarded-Proto` and `X-Forwarded-For` through unchanged (never overwrite `X-Forwarded-Host` with `$host`; the API checks the secret itself) and keep `Host $host` (DEPLOYMENT-GUIDE Part 6). Nginx on app-1 accepts Cloudflare's addresses only.
+- ⬜ Visitor address and location headers (security review M14; DEPLOYMENT-GUIDE Part 6): `real_ip` from Cloudflare's ranges, then `CF-Connecting-IP` overwritten with `$remote_addr` and Cloudflare's location headers (`CF-IPCountry` and the other `CF-IP*` / `CF-Region*` / `CF-Postal-Code` / `CF-Timezone`) cleared unless the peer is Cloudflare; `X-Client-Verify` and `X-Client-Cert-Fingerprint` cleared on the public listeners; Cloudflare Authenticated Origin Pulls on.
+- ⬜ `location /api/v1/internal/ { return 404; }` and `location /internal/ { return 404; }` on the public server blocks (review L15).
+- ⬜ `client_max_body_size` per location, sized to what each route needs (review M12 and I6; the `api.` block needs its own for gateway uploads).
 - ⬜ HSTS, gzip / brotli, request size limits, the Content-Security-Policy from SECURITY-PROTOCOL (per-form `frame-ancestors` for embeds; Payoneer's frame hosts when connected).
 - ⬜ Cloudflare: proxy on, SSL "Full (strict)", WAF and rate limiting rules, cache static assets only (never `/api`).
 
-- ⬜ **Workspaces' own web domains (B11):** `custom.formalie.com` → Nginx (the CNAME target workspaces point their domain at), Nginx answers any host on it, and HTTPS certificates are issued per verified domain (Cloudflare for SaaS custom hostnames, or Caddy / certbot on demand, allowing only domains in `platform.custom_domains_directory` that are not released). The app maps the host to the workspace itself.
+- ⬜ **Workspaces' own web domains (B11):** Cloudflare for SaaS on the zone with the fallback origin `custom.formalie.com` (the CNAME target workspaces point their domain at); each verified domain (only domains in `platform.custom_domains_directory` that are not released) is a custom hostname with its own certificate from Cloudflare, and the portal's Worker answers it like a workspace subdomain: the static app, and `/api/*` forwarded to `services.formalie.com` with `X-Forwarded-Host` = that domain, which the API maps to the workspace (DEPLOYMENT-GUIDE 8d). Nginx is not involved.
 
 ## 5. Sign-in providers (their consoles)
 
