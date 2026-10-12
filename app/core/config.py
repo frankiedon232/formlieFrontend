@@ -122,6 +122,15 @@ class Settings(BaseSettings):
     test_postgres_url: SecretStr | None = None
     test_mysql_url: SecretStr | None = None
 
+    # ── The public API service (B10 step 3): its own app on api.<ROOT_DOMAIN> (app/gateway.py) ──
+    # `python -m app.gateway` serves it on this port; the main app also forwards requests for api.<ROOT_DOMAIN> to it
+    gateway_port: int = 5005
+    # A ceiling per caller IP across every workspace (each workspace sets its own, lower, limits)
+    gateway_ip_per_minute: int = 6000
+    # Lists of anonymous networks, one IP or range per line: vpn.txt, proxy.txt, tor.txt, hosting.txt (None =
+    # {geoip_dir}/networks). Hosting providers are also known by their network number (networks.py).
+    api_networks_dir: Path | None = None
+
     # ── Logging (BACKEND-SPEC §8) ─────────────────────────────────────────────
     log_dir: Path = ROOT_DIR / "logs"
     log_level: str = "INFO"
@@ -167,11 +176,11 @@ class Settings(BaseSettings):
     def _empty_is_default(cls, value: object) -> object:
         return None if value == "" else value
 
-    @field_validator("log_dir", "geoip_dir", "storage_dir")
+    @field_validator("log_dir", "geoip_dir", "storage_dir", "api_networks_dir")
     @classmethod
-    def _inside_project(cls, value: Path) -> Path:
+    def _inside_project(cls, value: Path | None) -> Path | None:
         # A relative path in .env means inside this project, wherever the server is started from.
-        return value if value.is_absolute() else ROOT_DIR / value
+        return value if value is None or value.is_absolute() else ROOT_DIR / value
 
     @field_validator("db_schema")
     @classmethod

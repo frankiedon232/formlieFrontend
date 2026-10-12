@@ -10,6 +10,7 @@
 | Backend project  | `formlyBackend`, Python 3.11.9, venv, `pip install fastapi[all]`                                                                    |
 | Backend run      | `uvicorn app.run:app --host 0.0.0.0 --port 5004 --no-proxy-headers --ssl-certfile C:\devcerts\formalie.pem --ssl-keyfile C:\devcerts\formalie-key.pem` (or `fmly\Scripts\python.exe -m app.run`). **`--no-proxy-headers` is required:** the app reads `X-Forwarded-*` itself, only from `TRUSTED_PROXIES`; uvicorn's own handling would hide the real proxy, and workspaces would no longer be found from `X-Forwarded-Host` |
 | API docs         | `https://formalie.dev:5004/docs`, `https://formalie.dev:5004/redoc`                                                                 |
+| API service run  | Nothing extra: the backend on 5004 answers `https://api.formalie.dev:5004/{apiKey}/{endpoint}` itself (it hands every request for `api.formalie.dev` to the API service's app). As its own process, like production: `fmly\Scripts\python.exe -m app.gateway` (or `uvicorn app.gateway:app --host 0.0.0.0 --port 5005 --no-proxy-headers --ssl-certfile C:\devcerts\formalie.pem --ssl-keyfile C:\devcerts\formalie-key.pem`) → `https://api.formalie.dev:5005/…`. Needs the hosts line `127.0.0.1 api.formalie.dev` |
 | Certificate      | mkcert: `formalie.dev *.formalie.dev localhost *.localhost 127.0.0.1 ::1 <LAN IP>` (see Access matrix)                              |
 
 ## Fixes before subdomain work (1–2 done 2026-10-02)
@@ -40,7 +41,7 @@ Add more lines as new test tenants are created.
 
 - Default entry: `https://manage.formalie.dev:2202/`
 - Public form links (from F10): `https://forms.formalie.dev:2202/{formKey}/fill` · `/embed`, or `https://{sub}.formalie.dev:2202/{formKey}/fill` (production drops the port; see 01-ARCHITECTURE → Public URLs)
-- API service (from F13): `https://api.formalie.dev/{apiKey}/{endpoint}`, served by the backend API service; the wildcard certificate already covers `api.` and `forms.`
+- API service (from F13): `https://api.formalie.dev/{apiKey}/{endpoint}`, served by the backend API service; the wildcard certificate already covers `api.` and `forms.`. In development add the backend's port: `https://api.formalie.dev:5004/{apiKey}/{endpoint}` (the main backend forwards it), or `:5005` when the API service runs as its own process (`python -m app.gateway`). The portal shows the address without a port (production's).
 - Tenant workspaces: `https://remedylegal.formalie.dev:2202/`, `https://samathtax.formalie.dev:2202/`
 - API (direct): `https://formalie.dev:5004/`, the browser should call `/api/...` on its own origin; Nuxt proxies it (below).
 
@@ -191,6 +192,8 @@ With `NUXT_PUBLIC_API_MOCK=true` the mock answers real calls to your endpoints (
 10. Webhooks: a receiver on your machine works while developing (`http://localhost:{port}/…`); any small server that logs the request and answers 200 will do. Against the real backend, set `WEBHOOKS_ALLOW_LOCAL=true` in its `.env` first (development only). Send a test from the webhook's panel, then check the signature with the code under Checking the signature.
 
 A response sent with a live token shows up under the form's Responses (channel API). The mock keeps tokens and responses in `.data/mock`.
+
+**Against the real backend (mock off, B10 step 3):** the same steps, at `https://api.formalie.dev:5004/{apiKey}/{endpoint}` (or `:5005` with `python -m app.gateway`). Differences: `X-Forwarded-For` counts only from this machine (a trusted proxy), which is what Postman on this machine is; `X-Debug-Country` and `X-Debug-Network` work in development only; rate limits live in Redis, so they last across restarts; responses, tokens and the request log are in the database (the portal shows them at once).
 
 ## Project env (`.env`, copy from `.env.example`)
 

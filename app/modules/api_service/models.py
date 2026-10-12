@@ -13,6 +13,9 @@
   one service or endpoint.
 - `api_request_logs` (B10 step 2): every call to the public API, partitioned by month. Every count of calls, errors,
   answer times, rule hits and limited calls the portal shows is read from it.
+- `api_idempotency` (B10 step 3): the `Formalie-Key` of each POST through an endpoint for 24 hours, so a retry with
+  the same key and body answers with the first record (another body: FRM-API-1020). Unique per endpoint and key, so
+  two retries at the same moment make one record. Test tokens keep their made-up answer here and nothing else.
 """
 
 from __future__ import annotations
@@ -178,3 +181,23 @@ class ApiRequestLog(TenantMixin, Base):
     request_headers: Mapped[dict[str, Any]] = mapped_column(JSONB, nullable=False, server_default=text("'{}'::jsonb"))
     request_body: Mapped[Any | None] = mapped_column(JSONB(none_as_null=True))
     response_body: Mapped[Any | None] = mapped_column(JSONB(none_as_null=True))
+
+
+class ApiIdempotency(UuidPkMixin, TenantMixin, AuditMixin, SoftDeleteMixin, Base):
+    """A POST's `Formalie-Key` (mock: apiStore `replays`), kept 24 hours. `response_id` is the record a real call made;
+    `answer` the made-up answer of a test call. Older keys are soft deleted when the key is used again."""
+
+    __tablename__ = "api_idempotency"
+    __table_args__ = tenant_table_args(
+        tenant_fk("endpoint_id", "api_endpoints"),
+        Index("uq_api_idempotency_key", "tenant_id", "endpoint_id", "formalie_key", unique=True,
+              postgresql_where=text("deleted_at IS NULL")),
+        Index("ix_api_idempotency_at", "tenant_id", "at"),
+    )
+
+    endpoint_id: Mapped[uuid.UUID] = mapped_column(Uuid, nullable=False)
+    formalie_key: Mapped[str] = mapped_column(String(100), nullable=False)
+    body_hash: Mapped[str] = mapped_column(String(64), nullable=False)
+    response_id: Mapped[uuid.UUID | None] = mapped_column(Uuid)
+    answer: Mapped[Any | None] = mapped_column(JSONB(none_as_null=True))
+    at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)

@@ -23,6 +23,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.core import storage
 from app.core.config import get_settings
 from app.core.errors import FrmError
+from app.core.ids import uuid7
 from app.modules.uploads.models import Upload
 
 MB = 1024 * 1024
@@ -179,6 +180,31 @@ async def create_respondent_ticket(db: AsyncSession, *, tenant_id: uuid.UUID, or
 
 def answer_of(upload: Upload) -> dict[str, Any]:
     return {"id": str(upload.id), "name": upload.file_name, "size": upload.size, "type": upload.content_type}
+
+
+async def store_api_file(db: AsyncSession, *, tenant_id: uuid.UUID, organisation_id: uuid.UUID, form_id: uuid.UUID,
+                         field_key: str, file_name: str, content_type: str, data: bytes, max_bytes: int, kind: str,
+                         listed: list[str], check: bool = False) -> Upload | str:
+    """One file sent through the public API (mock: storeApiFile): checked like a respondent's file and stored at once,
+    finished, for this form and question. `size` or `type` when it is refused; `check` (test tokens): checked, never
+    stored (the Upload returned is not saved)."""
+    upload = Upload(id=uuid7(), tenant_id=tenant_id, organisation_id=organisation_id, purpose="response_file",
+                    file_name=file_name, content_type=content_type, size=len(data),
+                    max_bytes=min(max_bytes, MAX_RESPONDENT_BYTES), expires_at=datetime.now(UTC), form_id=form_id,
+                    field_key=field_key, file_kind=kind, listed=listed)
+    if not data or len(data) > upload.max_bytes:
+        return "size"
+    if not bytes_allowed(upload, data):
+        return "type"
+    if check:
+        return upload
+    key = storage.key_for(tenant_id, organisation_id, "responses", upload.id)
+    storage.put(key, data)
+    now = datetime.now(UTC)
+    upload.file_key, upload.stored_at, upload.completed_at, upload.scan_status = key, now, now, "clean"
+    db.add(upload)
+    await db.flush()
+    return upload
 
 
 async def complete_respondent_upload(db: AsyncSession, tenant_id: uuid.UUID, upload_id: str,

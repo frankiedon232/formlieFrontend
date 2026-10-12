@@ -60,6 +60,7 @@ celery_app.conf.update(
         "webhooks.deliver": {"queue": "webhooks"},
         "webhooks.sweep": {"queue": "webhooks"},
         "api_service.prune_log_bodies": {"queue": "scheduled"},
+        "api_service.expire_call_keys": {"queue": "scheduled"},
     },
     beat_schedule={
         "relay-outbox": {"task": "events.relay_outbox", "schedule": 2.0},
@@ -70,6 +71,7 @@ celery_app.conf.update(
         "destinations-sweep": {"task": "destinations.sweep", "schedule": 30.0},
         "webhooks-sweep": {"task": "webhooks.sweep", "schedule": 30.0},
         "api-log-bodies": {"task": "api_service.prune_log_bodies", "schedule": 3600.0},
+        "api-call-keys": {"task": "api_service.expire_call_keys", "schedule": 3600.0},
     },
 )
 

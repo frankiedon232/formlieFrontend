@@ -1,7 +1,7 @@
 """API traffic (B10 step 2; mock: data/apiTraffic.ts, routes/apiTraffic.ts): the request log of the public API and
 every number read from it.
 
-- `record_call` is the write path: the gateway (B10 step 3) calls it once per call, inside the workspace's context.
+- `record_call` is the write path: the gateway (gateway.py) calls it once per call, inside the workspace's context.
   It keeps the call's facts, the names of what was called as they were then, headers with secrets masked and, only
   while the workspace keeps them, the bodies with personal answers masked. Never the token itself.
 - `load_usage` reads, in three grouped queries, what every list of services, endpoints, tokens and access rules
@@ -28,6 +28,8 @@ from app.modules.api_service import tokens as T
 from app.modules.api_service.models import ApiAccessRule, ApiEndpoint, ApiRequestLog, ApiService, ApiSettings, ApiToken
 
 PERSONAL_TYPES = frozenset({"email", "phone", "full_name", "address", "iban", "bic", "ip_address", "signature", "date"})
+# The Docs console's token (Try it): never stored, so its calls carry only its name and mode (mock: `__console__`)
+CONSOLE_TOKEN_ID = "__console__"
 SECRET_HEADERS = frozenset({"authorization", "x-formalie-signature", "cookie"})
 DROPPED_HEADERS = frozenset({"cookie", "host", "connection"})
 BODY_TEXT_MAX = 2000
@@ -99,6 +101,7 @@ class ApiCall:
     endpoint_id: uuid.UUID | None = None
     service_id: uuid.UUID | None = None
     token_id: uuid.UUID | None = None
+    token_label: tuple[str, str] | None = None  # (name, mode) of a token that is not stored (the Docs console)
     rule_id: uuid.UUID | None = None  # the access rule that decided the call
     rate_limited: bool = False
     country: str | None = None
@@ -135,8 +138,9 @@ async def record_call(db: AsyncSession, tenant_id: uuid.UUID, organisation_id: u
         path=call.path.split("?")[0], status=call.status, code=call.code, duration_ms=max(0, int(call.duration_ms)),
         endpoint_id=endpoint.id if endpoint else None, endpoint_name=endpoint.name if endpoint else None,
         service_id=service.id if service else None, service_name=service.name if service else None,
-        token_id=token.id if token else None, token_name=token.name if token else None,
-        token_mode=token.mode if token else None, rule_id=call.rule_id, rate_limited=call.rate_limited,
+        token_id=token.id if token else None,
+        token_name=token.name if token else call.token_label[0] if call.token_label else None,
+        token_mode=token.mode if token else call.token_label[1] if call.token_label else None, rule_id=call.rule_id, rate_limited=call.rate_limited,
         ip=call.ip[:64] or "0.0.0.0", country=(call.country or None) and call.country.upper()[:2],
         origin=(call.origin or None) and call.origin[:300], user_agent=(call.user_agent or "")[:200],
         request_id=call.request_id[:100], request_headers=masked_headers(call.headers, call.secret_headers),
@@ -280,7 +284,8 @@ def entry_view(row: Any) -> dict[str, Any]:
         "endpoint": {"id": str(row.endpoint_id), "name": row.endpoint_name or ""} if row.endpoint_id else None,
         "service": {"id": str(row.service_id), "name": row.service_name or ""} if row.service_id else None,
         "token": {"id": str(row.token_id), "name": row.token_name or "", "mode": row.token_mode or "live"}
-        if row.token_id else None,
+        if row.token_id else {"id": CONSOLE_TOKEN_ID, "name": row.token_name, "mode": row.token_mode or "test"}
+        if row.token_name else None,
         "ip": row.ip, "country": row.country, "user_agent": row.user_agent, "request_id": row.request_id,
     }
 
@@ -334,7 +339,7 @@ async def list_logs(db: AsyncSession, tenant_id: uuid.UUID, query: dict[str, str
         where.append("token_id = ANY(:tokens)")
         params["tokens"] = _ids(query["filter[token]"])
     if query.get("filter[mode]"):
-        where.append("token_id IS NOT NULL AND token_mode = ANY(:modes)")
+        where.append("(token_id IS NOT NULL OR token_name IS NOT NULL) AND token_mode = ANY(:modes)")  # the console too
         params["modes"] = query["filter[mode]"].split(",")
     q = (query.get("q") or "").strip().lower()
     if q:

@@ -8,6 +8,7 @@ from app.modules.api_service.access_router import router as api_access_router
 from app.modules.api_service.router import router as api_service_router
 from app.modules.api_service.tokens_router import router as api_tokens_router
 from app.modules.api_service.traffic_router import router as api_traffic_router
+from app.modules.api_service.try_router import router as api_try_router
 from app.modules.audit.router import router as audit_router
 from app.modules.auth.router import router as auth_router
 from app.modules.dashboard.router import router as navigation_router
@@ -79,6 +80,7 @@ api_router.include_router(api_service_router)
 api_router.include_router(api_tokens_router)
 api_router.include_router(api_access_router)
 api_router.include_router(api_traffic_router)
+api_router.include_router(api_try_router)
 api_router.include_router(webhooks_router)
 api_router.include_router(emails_router)  # unsubscribe links (public)
 api_router.include_router(settings_router)  # after any module with its own /settings/{name} route (sso, B11)

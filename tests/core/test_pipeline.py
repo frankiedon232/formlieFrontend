@@ -176,13 +176,27 @@ async def test_forwarded_headers_are_used_from_the_trusted_proxy(settings, redis
 
 # ── Tenant ─────────────────────────────────────────────────────────────────────
 
-@pytest.mark.parametrize("host", ["nobody.formalie.dev", "api.formalie.dev", "a.b.formalie.dev", "shop.example.com"])
+@pytest.mark.parametrize("host", ["nobody.formalie.dev", "a.b.formalie.dev", "shop.example.com"])
 async def test_unknown_or_invalid_workspace_hosts_are_frm_ten_1001(app, host: str) -> None:
     async with client_for(app, host=host) as c:
         response = await c.get("/api/v1/forms")
         assert response.status_code == 404
         assert response.json()["error"]["code"] == "FRM-TEN-1001"
         assert (await c.get("/api/v1/health")).status_code == 200  # health answers on any host
+
+
+@pytest.mark.parametrize("host", ["api.formalie.dev", "API.formalie.dev:5004"])
+async def test_the_api_host_is_the_public_api_service(app, host: str) -> None:
+    """api.<root> goes to the API service's own app (app/gateway.py): no envelope, its own error shape."""
+    async with client_for(app, host=host) as c:
+        response = await c.get("/api/v1/forms")
+        assert response.status_code == 404
+        assert response.json() == {"error": {"code": "FRM-API-1006", "message": "There is no endpoint at this address.",
+                                              "details": [{"field": "address_key", "message": "unknown"}]}}
+        assert response.headers["cache-control"] == "no-store" and response.headers["x-trace-id"]
+    async with client_for(app, host="formalie.dev", peer="127.0.0.1") as proxy:  # the dev proxy's X-Forwarded-Host
+        response = await proxy.get("/x/y", headers={"x-forwarded-host": "api.formalie.dev"})
+        assert response.json()["error"]["code"] == "FRM-API-1006"
 
 
 @pytest.mark.parametrize("host", ["acme.formalie.dev", "oldco.formalie.dev", "manage.formalie.dev",

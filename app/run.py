@@ -6,6 +6,9 @@ r"""Formalie API.
 `--no-proxy-headers` is required: the app reads X-Forwarded-For / X-Forwarded-Host itself, and only from
 TRUSTED_PROXIES (request_context.py). Uvicorn's own handling would replace the proxy's address with the visitor's
 before the app sees it, so the proxy would no longer be recognised and workspaces not found from their host.
+
+Requests for api.<ROOT_DOMAIN> (the public API service) are handed to app/gateway.py, which also runs on its own:
+`fmly\Scripts\python.exe -m app.gateway` (port GATEWAY_PORT, 5005).
 """
 
 from __future__ import annotations
@@ -22,6 +25,7 @@ from app.core.config import Settings, get_settings
 from app.core.db.engines import dispose_engines
 from app.core.errors.handlers import install_exception_handlers
 from app.core.logging.setup import configure_logging
+from app.core.middleware.api_host import ApiHostMiddleware
 from app.core.middleware.envelope import EnvelopeMiddleware
 from app.core.middleware.rate_limit import IpRateLimitMiddleware, SlidingWindowLimiter
 from app.core.middleware.request_context import RequestContextMiddleware
@@ -80,6 +84,8 @@ def create_app(
     app.add_middleware(SecurityHeadersMiddleware, settings=settings)  # 2
     app.add_middleware(RequestLogMiddleware, shipper=request_log_shipper, settings=settings)  # 10, outside the rejecting layers: every request is recorded
     app.add_middleware(RequestContextMiddleware, settings=settings)  # 1
+    # 0: api.<ROOT_DOMAIN> is the public API service's own app (app/gateway.py), no portal layer
+    app.add_middleware(ApiHostMiddleware, settings=settings, request_log_shipper=request_log_shipper)
     return app
 
 

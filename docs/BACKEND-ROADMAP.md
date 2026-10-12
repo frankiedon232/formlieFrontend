@@ -79,11 +79,11 @@ Then stop for the owner's review. Day-to-day status lives in `PROGRESS.md`.
 - ✅ Explorer (schema, rows, edits), query editor with safety checks and limits, saved queries, activity (the dashboard's Data sources view comes with B12).
 - ✅ Destinations: response storage above. Webhooks moved to B10 (2026-10-11): each delivery sends a webhook token from the API service's Tokens & headers and names answers like the API endpoints, both built in B10.
 
-## B10, API service 🟡 (F13)
+## B10, API service ✅ (F13)
 
-- 🟡 Management: services, endpoints, field choices, tokens (static and client credentials), access rules, allowed websites, traffic, docs. Step 1 built 2026-10-12; step 2 (traffic: the request log, its insights and analytics, real counts everywhere) built 2026-10-12. Try it waits for the gateway.
+- ✅ Management: services, endpoints, field choices, tokens (static and client credentials), access rules, allowed websites, traffic, docs. Step 1 built 2026-10-12; step 2 (traffic: the request log, its insights and analytics, real counts everywhere) built 2026-10-12; Try it with the gateway (step 3).
 - ✅ Webhooks (moved from B9, built 2026-10-12 in step 2): response events to the organisation's address with its webhook token, retries after 1, 5, 15, 60 and 360 minutes, a pause after 20 failures in a row, delivery logs with personal answers masked, send again (`routes/webhooks.ts`).
-- ⬜ The public gateway on `api.formalie.*` as its own service: the order of checks in ENDPOINTS.md, CORS preflights, idempotent POST, signing, rate limits, traffic logs.
+- ✅ The public gateway on `api.formalie.*` as its own service: the order of checks in ENDPOINTS.md, CORS preflights, idempotent POST, signing, rate limits, traffic logs (step 3, built 2026-10-12: `app/gateway.py`, `python -m app.gateway`; the main app forwards `api.<ROOT_DOMAIN>` to it).
 
 ## B11, Settings, the rest ⬜ (F14)
 

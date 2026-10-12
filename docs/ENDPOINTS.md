@@ -219,7 +219,7 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 
 - **Guards:** `requireAdmin`
 
-- ⬜ `POST /api/v1/api-endpoints/{id}/try` (`tryEndpoint`) (B10 step 3: the call runs through the public gateway)
+- ✅ `POST /api/v1/api-endpoints/{id}/try` (`tryEndpoint`) (B10 step 3: a real call through the public gateway with the Docs console's test token; `app/modules/api_service/try_router.py`)
 
 ## `routes/webhooks.ts`
 
@@ -790,16 +790,18 @@ Built with B10 (moved from B9): a webhook sends a webhook token from the API ser
 
 - **Audit:** `responses.deleted`, `responses.submitted`, `responses.updated`
 
-- ⬜ `POST /{apiKey}/token` client id + secret to a short-lived access token
-- ⬜ `GET /{apiKey}/{endpoint}` list (page, per_page, sort, filters)
-- ⬜ `GET /{apiKey}/{endpoint}/{recordId}` one record
-- ⬜ `POST /{apiKey}/{endpoint}` new response (`Formalie-Key` idempotent replays)
-- ⬜ `PUT /{apiKey}/{endpoint}/{recordId}` change accepted answers
-- ⬜ `DELETE /{apiKey}/{endpoint}/{recordId}` remove (kept in the audit trail)
-- ⬜ `POST /{apiKey}/{endpoint}/files?field=` one file (multipart)
-- ⬜ `OPTIONS` preflight: 204 with CORS headers for allowed websites, else `FRM-API-1015`
+- ✅ `POST /{apiKey}/token` client id + secret to a short-lived access token
+- ✅ `GET /{apiKey}/{endpoint}` list (page, per_page, sort, filters)
+- ✅ `GET /{apiKey}/{endpoint}/{recordId}` one record
+- ✅ `POST /{apiKey}/{endpoint}` new response (`Formalie-Key` idempotent replays)
+- ✅ `PUT /{apiKey}/{endpoint}/{recordId}` change accepted answers
+- ✅ `DELETE /{apiKey}/{endpoint}/{recordId}` remove (kept in the audit trail)
+- ✅ `POST /{apiKey}/{endpoint}/files?field=` one file (multipart)
+- ✅ `OPTIONS` preflight: 204 with CORS headers for allowed websites, else `FRM-API-1015`
 
 Order of checks (keep it): address key, endpoint, access rules (IP, Origin domain, country), rate limit per IP, token, rate limits per token and endpoint, switched on, method, scope, required headers, signature, the form's rules.
+
+Built in B10 step 3: `app/gateway.py` (its own app: `python -m app.gateway`, port 5005; the main app forwards requests for `api.<ROOT_DOMAIN>` to it), `app/modules/api_service/gateway.py` (the checks), `gateway_records.py` (reads and writes), `gateway_auth.py` (tokens, signing), `callers.py` (IP, country, anonymous networks); tests in `tests/db/test_api_gateway.py`.
 
 ## Server-rendered public pages (internal, service to service)
 
