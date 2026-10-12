@@ -91,10 +91,10 @@ Then stop for the owner's review. Day-to-day status lives in `PROGRESS.md`.
 - ⬜ SSO (SAML / OIDC), address (subdomain change, own domain), appearance (light / dark colours, default mode), form defaults.
 - ⬜ Security (sessions, sign out everywhere, activity, IP allowlist, idle timeout), privacy (retention with preview, find / export / delete a person's data), data region.
 
-## B12, Analytics and dashboard ⬜ (F18, F21)
+## B12, Analytics and dashboard ✅ (F18, F21)
 
-- ⬜ Per-form analytics rollups (views, starts, completions, drop-off, timing) and insights.
-- ⬜ Dashboard: Workspace, Forms, Data sources and API service views with period, folder and owner filters and first steps.
+- ✅ Per-form analytics (views, starts, completions, drop-off, timing) and insights, counted in SQL from the existing tables (views and starts estimated as the mock does until fill-in events are recorded).
+- ✅ Dashboard: Workspace, Forms, Data sources and API service views with period, folder and owner filters and first steps.
 
 ## B13, AI assistant ⬜ (F19)
 

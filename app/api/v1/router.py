@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from fastapi import APIRouter
 
+from app.modules.analytics.router import router as analytics_router
 from app.modules.api_service.access_router import router as api_access_router
 from app.modules.api_service.router import router as api_service_router
 from app.modules.api_service.tokens_router import router as api_tokens_router
@@ -12,6 +13,7 @@ from app.modules.api_service.try_router import router as api_try_router
 from app.modules.audit.router import router as audit_router
 from app.modules.auth.router import router as auth_router
 from app.modules.dashboard.router import router as navigation_router
+from app.modules.dashboard.views import router as dashboard_router
 from app.modules.data_sources.router import router as data_sources_router
 from app.modules.destinations.router import router as destinations_router
 from app.modules.explorer.exports import router as explorer_exports_router
@@ -54,6 +56,8 @@ api_router.include_router(uploads_router)
 api_router.include_router(onboarding_router)
 api_router.include_router(org_router)
 api_router.include_router(navigation_router)
+api_router.include_router(dashboard_router)
+api_router.include_router(analytics_router)
 api_router.include_router(roles_router)
 api_router.include_router(invites_router)  # before people: /people/signup-link, /people/invites
 api_router.include_router(people_router)

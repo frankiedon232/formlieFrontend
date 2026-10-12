@@ -19,14 +19,14 @@ Marks (as in the frontend's PROGRESS): ✅ done (built and verified) · 🟡 bui
 | B9 | Data sources and destinations | 🟡 **Built**; waiting for the owner's review. Webhooks moved to B10, the dashboard's Data sources view to B12 | 48 / 48 (webhooks 10 and the dashboard view 1 counted with B10 and B12) |
 | B10 | API service (management, webhooks, the public gateway) | ✅ **Built** (step 1 management, step 2 traffic and webhooks, step 3 the public gateway on `api.formalie.*` and Try it); waiting for the owner's review | 61 / 61 (53 portal + 8 public gateway) |
 | B11 | Settings, the rest (emails and sending, SSO, address, privacy, data region) | ⬜ Later | 0 / 29 |
-| B12 | Analytics and dashboard | ⬜ Later | 0 / 7 |
+| B12 | Analytics and dashboard | ✅ **Built** (2026-10-12); waiting for the owner's review | 7 / 7 |
 | B13 | AI assistant | ⬜ Later | 0 / 19 |
 | B14 | Help centre and tours | ⬜ Later | 0 / 9 |
 | B15 | Subscriptions and payments (Payoneer) | ⬜ Later | 0 / 13 |
 | B16 | Platform admin bridge | ⬜ Later | (PLATFORM-ADMIN-INTEGRATION §5) |
 | B17 | Hardening and switch-over | ⬜ Later; the frontend switch-over started 2026-10-12 (mock off, B0 to B9 being tested by the owner) | |
 
-Portal endpoints: 331 of 416 ticked in `ENDPOINTS.md` (2026-10-12: creating a form from a template and the two server-rendered page routes were built in B5 to B7 but not ticked; ticked after checking the routes and their tests; B10 step 1 added 36, step 2 added 16, step 3 added Try it), plus the 8 public gateway endpoints. 85 left, all in B11 to B15.
+Portal endpoints: 338 of 416 ticked in `ENDPOINTS.md` (2026-10-12: creating a form from a template and the two server-rendered page routes were built in B5 to B7 but not ticked; ticked after checking the routes and their tests; B10 step 1 added 36, step 2 added 16, step 3 added Try it; B12 added 7), plus the 8 public gateway endpoints. 78 left, all in B11 and B13 to B15.
 
 ## B0, Foundation ✅ (2026-10-10)
 
@@ -142,7 +142,7 @@ Still to come with later phases: the log of sent emails and a workspace's own se
 - ✅ Response storage: a table Formalie creates or an existing one, writing every response, edits, pause, retries, backfills, new columns. Where: `app/modules/destinations/`, `app/modules/data_sources/tables.py`, `catalog.py`, migration 0025 · Table rules with the frontend's answers (261 tests); tested live against PostgreSQL end to end
 - ✅ Explorer: tree, structure, rows, filters, row changes, structure changes. Where: `app/modules/explorer/`, `app/modules/data_sources/sql.py`, `ddl.py` · Rules with the frontend's answers; one page per query, a count up to 10,000, a 5 second limit per statement; tested live against PostgreSQL
 - ✅ Exports (CSV, Excel, JSON, SQL), Query editor, history, saved queries, Activity. Where: `app/modules/explorer/exports.py`, `app/modules/query/`, `app/modules/data_sources/runner.py`, migration 0026 · Parameters bound by the database (typed on PostgreSQL); reading in a read-only transaction with a row cap; a changing statement's estimate from a dry run rolled back; exports are export jobs with one-time 5-minute links; tested live against PostgreSQL
-- ➡️ The dashboard's Data sources view (With B12). It shares its periods and buckets with the other dashboard views
+- ➡️ The dashboard's Data sources view (With B12, built there 2026-10-12). It shares its periods and buckets with the other dashboard views
 - ➡️ Webhooks (Moved to B10). Each delivery sends a webhook token from the API service's Tokens & headers (owner 2026-10-06: no separate signing secrets) and names answers like the API endpoints; both are B10, so webhooks are built there instead of making half of the token store twice
 
 Decisions made in B9 (backend only; the frontend's answers are unchanged):
@@ -213,10 +213,21 @@ Decisions made in B10 step 3 (backend only; the frontend's answers are unchanged
 - ⬜ Privacy requests (find, export, delete a person's data) and retention preview; data region. Endpoints: 5 · Frontend reference: `routes/dataPrivacy.ts`, `routes/dataRegion.ts`
 - ⏸ SMS provider for text-message codes (Waiting (owner picks a provider))
 
-### B12, Analytics and dashboard (Later)
+### B12, Analytics and dashboard ✅ (built 2026-10-12)
 
-- ⬜ Per-form analytics rollups and insights. Endpoints: 3 · Frontend reference: `routes/analytics.ts`
-- ⬜ Dashboard: Workspace, Forms, Data sources, API service views. Endpoints: 4 · Frontend reference: `routes/dashboard*.ts`, `shared/utils/dashboard/*`
+- ✅ Per-form analytics and insights (overview, the forms list, the funnel). Endpoints: 3 · Frontend reference: `routes/analytics.ts` · Where: `app/modules/analytics/` (`router.py`; `rules.py`: `periodOf`, `seeded`, `daysOf`, `totalsOf`, `funnelOf` with parity)
+- ✅ Dashboard: Workspace, Forms, Data sources, API service views with period, groups, folder and owner filters and first steps. Endpoints: 4 · Frontend reference: `routes/dashboard*.ts`, `shared/utils/dashboard/*` · Where: `app/modules/dashboard/` (`views.py` the routes; `workspace.py`, `forms_view.py`, `data_view.py`, `api_view.py`; `common.py` the time zone, forms a person may see, counts in SQL; `rules.py` buckets, `periodFrom`, `scopeFrom` with parity)
+- ✅ Parity: `scripts/dump_dashboard_rules.py` → `tests/vectors/dashboard_rules.json` (bucket starts and lists, groups, 1,992 periods, filters, 532 analytics periods, seeds, 18 forms' days, totals and funnels), `tests/parity/test_dashboard_rules.py`. API, cross-tenant and member tests: `tests/db/test_dashboard.py`
+
+Decisions made in B12 (backend only; the shapes are the mock's):
+- **No new tables:** every number is read from what is there (responses, forms, folders, connections and their daily operations, response storage deliveries, the audit trail, `api_request_logs`, webhooks and deliveries) with grouped SQL on the read replica; nothing is read row by row. If the logs grow large, a nightly rollup can come later (B17 query review).
+- **Views and starts are the mock's estimates:** Formalie does not record the fill-in page's own events (opened, first answer, left on a question) yet, and no table holds them. Analytics therefore keeps the mock's repeatable estimates around the real completions (the same for a form and a day every time; seeded on the form's id), and the funnel spreads the leavers over the questions as the mock does. Completions, their days, channels, times to fill in and every dashboard number are real. Owner: record fill-in events (a `form_events` table, a migration) so views, starts and stops become real?
+- **Days in the workspace's time zone** (Settings → Localisation, UTC when unset): today, the period's days and the day a response, call or audit entry falls on. API-CONTRACT says the buckets are UTC (the mock's clock); for a workspace on UTC the answers are the same. Connections' daily operations are kept by UTC day (B9) and are counted as kept.
+- **Who counts:** analytics covers the forms whose responses the person may see (API-CONTRACT), not every form they may see as the mock does; a form whose responses they can't see is "not found" (FRM-GEN-1004) on the funnel and with `form`. The dashboard as the mock: forms the person may see, responses only of those whose responses they may see; data sources with `data.view`, the API service with `api.view`, the plan with `settings.view`.
+- **Ids in filters must arrive as references:** `folder` and `owner` (and analytics' `form`) count only when they came in as references; anything else matches no form (the mock compares the text).
+- **Until B15 and B13:** the plan is the workspace's `plan_id`; there is no subscription yet, so no payment due, card expiring, renewal or plan change items; AI credits used read 0.
+- **The analytics list's sort** takes the contract's columns (name, views, starts, completions, completion rate, median time) plus status and change; any other key keeps the order. Drop-off is worked out for the rows on the page only (it reads each form's questions).
+- **The Data sources view** shows a connection's latest health check as its Connections list does (the last check, else its last test).
 
 ### B13, AI assistant (Later)
 
@@ -251,6 +262,8 @@ Decisions made in B10 step 3 (backend only; the frontend's answers are unchanged
 
 ## Open questions
 
+- **Fill-in events for analytics (B12):** views, starts and where people stop are the mock's estimates around real completions, because nothing records the fill-in page's events. Record them (a `form_events` table, monthly partitions, one view and one start per session, the last question answered when someone leaves) so the numbers become real? It needs a migration and a small call from the fill-in page.
+- **Dashboard days (B12):** the backend counts days in the workspace's time zone; API-CONTRACT (shared with the frontend) says the buckets are UTC. Change the contract line in both copies to "the workspace's time zone", or count in UTC?
 - **Privacy erasure without hard deletes:** "delete a person's data" (Settings → Privacy, F14) and response retention must still remove personal data. Proposal: anonymise in place (overwrite answers and personal fields, keep the row, its relations and the audit entry). To decide before B11.
 - ~~**Shared docs:** changed here, needed in the frontend too.~~ Done 2026-10-12: all eight shared docs are identical in both projects.
 - **Signed calls to the API service (B10 step 3):** the task asked for optional HMAC signing; 03-DECISIONS (2026-10-06) says signed calls are gone and FRM-API-1012 is retired. The gateway checks a signature only for a token with `signing` on, which nothing can set today, so it changes no answer. Keep it dormant (ready if signing comes back), or remove it?
@@ -269,6 +282,8 @@ Decisions made in B10 step 3 (backend only; the frontend's answers are unchanged
 - **CLAUDE.md layout** still names `api_keys/` and `option_sets/`; the product now has API tokens (`/api-tokens`) and option lists (`/option-lists`).
 
 ## Log
+
+- **2026-10-12:** B12: analytics and dashboard. 7 endpoints (`/analytics/overview`, `/analytics/forms`, `/analytics/forms/{id}/funnel`; `/dashboard`, `/dashboard/forms`, `/dashboard/data`, `/dashboard/api`) with the mock's shapes, counted in SQL on the read replica, days in the workspace's time zone, people's form access respected, no migration. The dashboard rules (`buckets.ts`, `scope.ts`, `periodFrom`) and the analytics rules (`periodOf`, `seeded`, `daysOf`, `totalsOf`, `funnelOf`) ported with parity (`scripts/dump_dashboard_rules.py`, `tests/vectors/dashboard_rules.json`, 29 tests). Views and starts stay the mock's estimates until fill-in events are recorded (open question). B12 ✅, waiting for the owner's review. New tests: `tests/parity/test_dashboard_rules.py` (29), `tests/db/test_dashboard.py` (2); 17,896 tests pass (1 skipped).
 
 - **2026-10-12:** B10 step 3: the public API service gateway. 8 public endpoints on `api.formalie.*` (`/{apiKey}/token`, list, one, POST with Formalie-Key replays, PUT, DELETE, files, OPTIONS preflights) and Try it (`POST /api-endpoints/{id}/try`); the mock's order of checks, CORS for allowed websites only, static tokens and client credentials (signed short-lived tokens), signed calls for tokens with signing on, rate limits per IP, token and endpoint with `Retry-After`, access rules with GeoIP and our own network lists, test tokens storing nothing, every call in the API log. Its own app (`app/gateway.py`, `python -m app.gateway`, port 5005), forwarded by the main app for `api.<ROOT_DOMAIN>`; migration 0030 (`api_idempotency`, `platform.api_idempotency_expired`). B10 ✅, waiting for the owner's review. New tests: `tests/db/test_api_gateway.py` (4) and the API host check in `tests/core/test_pipeline.py`; 17,865 tests pass (1 skipped).
 

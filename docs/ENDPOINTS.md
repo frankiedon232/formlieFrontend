@@ -145,9 +145,9 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 
 - **Guards:** `requireAuth`, `requireLevel`
 
-- ⬜ `GET /api/v1/analytics/overview` (`analyticsOverview`)
-- ⬜ `GET /api/v1/analytics/forms` (`analyticsForms`)
-- ⬜ `GET /api/v1/analytics/forms/{id}/funnel` (`formFunnel`)
+- ✅ `GET /api/v1/analytics/overview` (`analyticsOverview`)
+- ✅ `GET /api/v1/analytics/forms` (`analyticsForms`)
+- ✅ `GET /api/v1/analytics/forms/{id}/funnel` (`formFunnel`)
 
 ## `routes/apiService.ts`
 
@@ -669,26 +669,26 @@ Built with B10 (moved from B9): a webhook sends a webhook token from the API ser
 - **Guards:** `requireAuth`
 - **Permissions:** `api.view`
 
-- ⬜ `GET /api/v1/dashboard` (`workspaceDashboard`)
+- ✅ `GET /api/v1/dashboard` (`workspaceDashboard`)
 
 ## `routes/dashboardForms.ts`
 
 - **Guards:** `requireAuth`
 
-- ⬜ `GET /api/v1/dashboard/forms` (`formsDashboard`)
+- ✅ `GET /api/v1/dashboard/forms` (`formsDashboard`)
 
 ## `routes/dashboardData.ts`
 
 - **Guards:** `requireAuth`
 
-- ⬜ `GET /api/v1/dashboard/data` (`dataDashboard`) (with the other dashboard views, B12)
+- ✅ `GET /api/v1/dashboard/data` (`dataDashboard`) (built with the other dashboard views, B12)
 
 ## `routes/dashboardApi.ts`
 
 - **Guards:** `requireAuth`
 - **Permissions:** `api.view`
 
-- ⬜ `GET /api/v1/dashboard/api` (`apiDashboard`)
+- ✅ `GET /api/v1/dashboard/api` (`apiDashboard`)
 
 ## `routes/billing.ts`
 
