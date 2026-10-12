@@ -5,11 +5,12 @@
   people will see it. Decorative: hidden from assistive tech.
 -->
 <script setup lang="ts">
-import type { AuthProvider } from '#shared/types/auth'
+import { SIGNIN_PROVIDERS } from '#shared/utils/settings/schemas'
 
-const props = defineProps<{ name: string; logo: string | null; logoDark: string | null; message: string | null; color: string | null; favicon: string | null; methods?: AuthProvider[] }>()
-const social = computed(() => (props.methods ?? []).filter((item): item is SocialProvider => item !== 'password'))
-const password = computed(() => !props.methods || props.methods.includes('password'))
+const props = defineProps<{ name: string; logo: string | null; logoDark: string | null; message: string | null; color: string | null; favicon: string | null }>()
+// Every sign-in page offers the same ways in (owner, 2026-10-12)
+const social = SIGNIN_PROVIDERS.filter((item): item is SocialProvider => item !== 'password')
+const password = true
 const { t } = useI18n()
 const mode = ref<'light' | 'dark'>('light')
 const modes = computed(() => [

@@ -70,7 +70,6 @@ const GROUPS = computed<{ key: string; rows: Row[] }[]>(() => [
     key: 'access',
     rows: [
       { key: 'emailSignin', cell: () => true },
-      { key: 'socialSignin', cell: plan => plan.limits.social_signin },
       { key: 'sso', cell: plan => plan.limits.sso },
     ],
   },

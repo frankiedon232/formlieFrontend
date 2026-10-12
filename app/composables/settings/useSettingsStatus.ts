@@ -45,8 +45,7 @@ export function useSettingsStatus(settings: Ref<WorkspaceSettings | null>) {
       return { text: `${name} · ${s.localisation.timezone} · ${s.localisation.currency}`, tone: languageChecked.value ? 'done' : 'partial' }
     }
     if (key === 'signin') {
-      const ways = s.signin.methods.length
-      return { text: t('settings.status.signin', { n: ways }, ways) + (s.signin.allowed_domains.length ? ` · ${s.signin.allowed_domains.join(', ')}` : ''), tone: 'info' }
+      return { text: s.signin.allowed_domains.length ? s.signin.allowed_domains.join(', ') : t('settings.signin.anyDomain'), tone: 'info' }
     }
     if (key === 'security') {
       const idle = s.security.sessions.idle_minutes

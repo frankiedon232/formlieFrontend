@@ -70,8 +70,11 @@ export const localisationSchema = z.object({
   form_languages: z.array(z.enum(LOCALE_CODES)).min(1, 'form_languages').max(LOCALE_CODES.length),
 })
 
-/** Sign-in methods, in the order the sign-in page shows them. */
-export const SIGNIN_METHODS = ['password', 'google', 'microsoft', 'facebook'] as const
+/**
+ * The ways in on sign-up and on every workspace's sign-in page, in this order (owner, 2026-10-12): always all of them.
+ * A workspace doesn't choose them; its admin can only add single sign-on (Settings → Sign-in), which then shows too.
+ */
+export const SIGNIN_PROVIDERS = ['password', 'google', 'facebook'] as const
 /** example.com, sub.example.co.uk (no scheme, no @). */
 export const isEmailDomain = (value: string) => /^(?=.{3,253}$)([a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,63}$/.test(value)
 /** An IPv4 / IPv6 address or CIDR range. */
@@ -82,10 +85,6 @@ export const IDLE_MINUTES_SAFE = 60
 export const MAX_SESSION_HOURS = [8, 12, 24, 72, 168] as const
 
 export const signinSchema = z.object({
-  methods: z
-    .array(z.enum(SIGNIN_METHODS))
-    .min(1, 'methods')
-    .transform(list => SIGNIN_METHODS.filter(method => list.includes(method))),
   code: z.object({
     sms: z.boolean(),
     expiry_minutes: z.union([z.literal(5), z.literal(10), z.literal(15)]),

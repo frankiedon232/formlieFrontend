@@ -4,7 +4,7 @@
  */
 import type { AppearanceSettings } from './appearance'
 import type { AuditDevice } from './audit'
-import type { AuthProvider, PasswordPolicy } from './auth'
+import type { PasswordPolicy } from './auth'
 import type { EmailSettings } from './emails'
 import type { NotificationSettings } from './notifications'
 import type { FormDefaults, PrivacySettings } from './privacy'
@@ -72,8 +72,6 @@ export interface LocalisationSettings {
 
 /** Settings → Sign-in (F14 M3): how people sign in to the workspace. */
 export interface SigninSettings {
-  /** Shown on the workspace sign-in page; at least one. */
-  methods: AuthProvider[]
   /** The one-time code every sign-in asks for (always on; email always offered). */
   code: {
     /** Also offer a text message to people with a phone number. */

@@ -11,7 +11,7 @@ describe('billing plans', () => {
 
   it('follows the owner\'s limits', () => {
     expect(planOf('starter').limits).toMatchObject({ forms: 5, responses_per_form: 10_000, databases: ['mysql'], sso: false, custom_domains: 0, custom_email: false })
-    expect(planOf('professional').limits).toMatchObject({ forms: 20, responses_per_form: 200_000, databases: ['mysql', 'postgresql', 'mariadb'], sso: true, social_signin: true, custom_domains: 1, custom_email: true })
+    expect(planOf('professional').limits).toMatchObject({ forms: 20, responses_per_form: 200_000, databases: ['mysql', 'postgresql', 'mariadb'], sso: true, custom_domains: 1, custom_email: true })
     expect(planOf('business').limits).toMatchObject({ forms: null, responses_per_form: null, sso: true })
     expect(planOf('business').limits.databases).toHaveLength(5)
   })

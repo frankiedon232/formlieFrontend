@@ -2,7 +2,9 @@ import type { DateFormat } from './onboarding'
 import type { SsoPublic } from './sso'
 /** Auth + tenant shapes (docs/API-CONTRACT.md → Tenants, Auth). */
 
-export type AuthProvider = 'password' | 'google' | 'microsoft' | 'facebook'
+/** How people sign in on Formalie's pages (owner, 2026-10-12): email and password, Google, Facebook. Microsoft accounts
+ *  come in through a company's single sign-on (Entra ID), never as a personal button. */
+export type AuthProvider = 'password' | 'google' | 'facebook'
 export type OtpChannel = 'email' | 'sms' | 'totp'
 export type TenantStatus = 'active' | 'suspended'
 /** Simple workspace role until Roles & access (F22): owner and admin manage the workspace. */

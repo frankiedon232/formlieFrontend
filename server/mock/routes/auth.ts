@@ -107,7 +107,6 @@ function passwordExpired(tenant: MockTenant, user: MockUser) {
 export const login = defineMockRoute(({ event, body }) => {
   const tenant = requireTenant(event)
   const { signin } = settingsOf(tenant)
-  if (!signin.methods.includes('password')) throw new MockError('FRM-AUTH-1008')
   const input = parseBody(loginSchema, body)
   // Settings → Security: only from the allowed networks (checked first, says nothing about the account)
   if (!ipAllowed(tenant, callerIp(event))) {
@@ -303,7 +302,6 @@ export const signupComplete = defineMockRoute(({ event, body }) => {
     status: 'active',
     // New workspaces start with email + password; the admin enables more in Settings → Authentication (F14).
     // (Social signup will also enable the provider used, backend.)
-    auth_providers: ['password'],
     organisation: { id: crypto.randomUUID(), name: input.company_name },
   }
   MOCK_TENANTS.push(tenant)

@@ -68,19 +68,19 @@ describe('language and region', () => {
 })
 
 describe('sign-in settings', () => {
-  const signin = { methods: ['google', 'password'], code: { sms: true, expiry_minutes: 10, max_attempts: 5 }, allowed_domains: [' @Example.com ', 'example.com', 'Branch.Example.co.uk'] }
+  const signin = { code: { sms: true, expiry_minutes: 10, max_attempts: 5 }, allowed_domains: [' @Example.com ', 'example.com', 'Branch.Example.co.uk'] }
 
-  it('keep the sign-in page order and tidy the domains', () => {
+  it('tidy the domains (the ways in are fixed, not a setting: owner 2026-10-12)', () => {
     const result = signinSchema.parse(signin)
-    expect(result.methods).toEqual(['password', 'google'])
+    expect('methods' in result).toBe(false)
     expect(result.allowed_domains).toEqual(['example.com', 'branch.example.co.uk'])
   })
 
-  it('need one way to sign in, known code rules and real domains', () => {
-    const result = signinSchema.safeParse({ ...signin, methods: [], code: { ...signin.code, expiry_minutes: 7 }, allowed_domains: ['not a domain'] })
+  it('need known code rules and real domains', () => {
+    const result = signinSchema.safeParse({ ...signin, code: { ...signin.code, expiry_minutes: 7 }, allowed_domains: ['not a domain'] })
     expect(result.success).toBe(false)
     const fields = (result.error?.issues ?? []).map(issue => issue.path.join('.'))
-    expect(fields).toEqual(expect.arrayContaining(['methods', 'code.expiry_minutes', 'allowed_domains.0']))
+    expect(fields).toEqual(expect.arrayContaining(['code.expiry_minutes', 'allowed_domains.0']))
   })
 })
 

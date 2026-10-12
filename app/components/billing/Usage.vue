@@ -21,7 +21,6 @@ const meters = computed(() =>
 )
 const barColor = (ratio: number) => (ratio >= 1 ? 'bg-error' : ratio >= 0.8 ? 'bg-warning' : 'bg-inverted')
 const features = computed(() => [
-  { key: 'socialSignin', used: usage.value.social_signin, allowed: limits.value.social_signin },
   { key: 'sso', used: usage.value.sso, allowed: limits.value.sso },
   { key: 'customDomain', used: usage.value.custom_domain, allowed: limits.value.custom_domains !== 0 },
   { key: 'customEmail', used: usage.value.custom_email, allowed: limits.value.custom_email },

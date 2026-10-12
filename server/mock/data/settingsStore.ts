@@ -9,15 +9,14 @@ import type { SecuritySettings, SettingsChange, SettingsSection, SigninSettings,
 import { FORMALIE_APPEARANCE } from '#shared/types/appearance'
 import { DEFAULT_PASSWORD_POLICY } from '#shared/utils/auth/password'
 import { APP_LOCALES } from '#shared/utils/i18n/locales'
-import { SIGNIN_METHODS } from '#shared/utils/settings/schemas'
 import { loadPersisted, savePersisted } from '../core/persist'
 import type { MockTenant } from './tenants'
 
 const stores = new Map<string, WorkspaceSettings>(Object.entries(loadPersisted<Record<string, WorkspaceSettings>>('settings', {})))
 export const saveSettings = () => savePersisted('settings', () => Object.fromEntries(stores))
 
-/** Sign-in and security start from the workspace's methods and Formalie's defaults (F14 M3); codes by email, text messages only when switched on (owner, 2026-10-07). */
-const seedSignin = (tenant: MockTenant): SigninSettings => ({ methods: [...tenant.auth_providers], code: { sms: false, expiry_minutes: 5, max_attempts: 5 }, allowed_domains: [] })
+/** Sign-in and security start from Formalie's defaults (F14 M3); codes by email, text messages only when switched on (owner, 2026-10-07). */
+const seedSignin = (): SigninSettings => ({ code: { sms: false, expiry_minutes: 5, max_attempts: 5 }, allowed_domains: [] })
 const seedSecurity = (): SecuritySettings => ({
   password: { ...DEFAULT_PASSWORD_POLICY, reuse_last: 0, expiry_days: 0 },
   sessions: { idle_minutes: 60, max_hours: 168 },
@@ -61,7 +60,7 @@ function seed(tenant: MockTenant): WorkspaceSettings {
     },
     branding: { logo_url: tenant.logo_url ?? null, logo_dark_url: null, favicon_url: null, brand_color: tenant.brand_color ?? null, signin_message: null },
     localisation: { language: 'en', timezone: 'UTC', currency: 'USD', date_format: 'DD/MM/YYYY', number_format: '1,234.56', week_start: 'monday', form_languages: APP_LOCALES.map(item => item.code) },
-    signin: seedSignin(tenant),
+    signin: seedSignin(),
     security: seedSecurity(),
     notifications: seedNotifications(),
     emails: { sender_name: null, reply_to: null, footer: null, custom: {} },
@@ -80,7 +79,7 @@ export function settingsOf(tenant: MockTenant): WorkspaceSettings {
     saveSettings()
   } else if (!settings.signin || !settings.security || !settings.notifications || !settings.emails || !settings.privacy || !settings.form_defaults || !settings.appearance) {
     // Saved before these sections existed (F14 M3, M4)
-    settings.signin ??= seedSignin(tenant)
+    settings.signin ??= seedSignin()
     settings.security ??= seedSecurity()
     settings.notifications ??= seedNotifications()
     settings.emails ??= { sender_name: null, reply_to: null, footer: null, custom: {} }
@@ -96,9 +95,9 @@ export function settingsOf(tenant: MockTenant): WorkspaceSettings {
     settings.updated.notifications ??= null
     saveSettings()
   }
-  // Sign-in methods that are no longer offered (Apple, removed 2026-10-11)
-  if (settings.signin && settings.signin.methods.some(method => !(SIGNIN_METHODS as readonly string[]).includes(method))) {
-    settings.signin.methods = settings.signin.methods.filter(method => (SIGNIN_METHODS as readonly string[]).includes(method))
+  // Workspaces no longer choose their ways in (owner, 2026-10-12): drop the old list
+  if (settings.signin && 'methods' in settings.signin) {
+    delete (settings.signin as SigninSettings & { methods?: unknown }).methods
     saveSettings()
   }
   // Appearance saved before light / dark (leftovers L3)
@@ -107,8 +106,6 @@ export function settingsOf(tenant: MockTenant): WorkspaceSettings {
     settings.appearance.dark ??= null
     saveSettings()
   }
-  // The sign-in methods live here; the workspace record follows them
-  tenant.auth_providers = [...settings.signin.methods]
   return settings
 }
 

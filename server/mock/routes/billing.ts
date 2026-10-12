@@ -31,7 +31,6 @@ import { once, recordPayment, settlePayment, withBillingLock } from '../billing/
 import { dataSourcesOf } from '../data/dataSourceStore'
 import { formsOf } from '../data/formStore'
 import { sendingOf } from '../data/sendingStore'
-import { settingsOf } from '../data/settingsStore'
 import { ssoOf } from '../data/ssoStore'
 import type { MockTenant, MockUser } from '../data/tenants'
 
@@ -46,7 +45,6 @@ export function usageOf(tenant: MockTenant): PlanUsage {
     custom_domain: !!addressOf(tenant).domain,
     custom_email: sendingOf(tenant).mode !== 'formalie',
     sso: !!ssoOf(tenant),
-    social_signin: settingsOf(tenant).signin.methods.some(method => method !== 'password'),
   }
 }
 
@@ -62,7 +60,6 @@ export function impactOf(tenant: MockTenant, plan: Plan): DowngradeImpact {
   if (usage.custom_domain && limits.custom_domains === 0) over.push({ key: 'customDomain', current: 1, allowed: 0 })
   if (usage.custom_email && !limits.custom_email) over.push({ key: 'customEmail', current: 1, allowed: 0 })
   if (usage.sso && !limits.sso) over.push({ key: 'sso', current: 1, allowed: 0 })
-  if (usage.social_signin && !limits.social_signin) over.push({ key: 'socialSignin', current: 1, allowed: 0 })
   return { plan: plan.id, over }
 }
 

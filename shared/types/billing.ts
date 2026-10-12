@@ -18,7 +18,6 @@ export interface PlanLimits {
   /** The databases a workspace may connect (Bring your database). */
   databases: DbEngine[]
   /** Google, Microsoft, Facebook and single sign-on; off = email and password only. */
-  social_signin: boolean
   sso: boolean
   /** 0 = none. */
   custom_domains: number | null
@@ -123,7 +122,6 @@ export interface PlanUsage {
   custom_domain: boolean
   custom_email: boolean
   sso: boolean
-  social_signin: boolean
 }
 
 /** GET /billing */

@@ -6,7 +6,7 @@ import type { DateFormat } from '#shared/types/onboarding'
  *   OTP       shown on the code screen in dev (mock returns `dev_code`) and logged to the server console
  */
 import { createHash } from 'node:crypto'
-import type { AuthProvider, TenantStatus, WorkspaceRole } from '#shared/types/auth'
+import type { TenantStatus, WorkspaceRole } from '#shared/types/auth'
 import { loadPersisted, savePersisted } from '../core/persist'
 
 export const MOCK_PASSWORD = 'Formalie!2026'
@@ -16,7 +16,6 @@ export interface MockTenant {
   name: string
   subdomain: string
   status: TenantStatus
-  auth_providers: AuthProvider[]
   organisation: { id: string; name: string }
   /** Set from Settings / onboarding → Branding. */
   logo_url?: string | null
@@ -59,7 +58,6 @@ export const MOCK_TENANTS: MockTenant[] = [
     subdomain: 'remedylegal',
     website: 'https://www.remedylegal.example',
     status: 'active',
-    auth_providers: ['password', 'google', 'microsoft'],
     organisation: { id: '0a1b2c3d-4e5f-4a6b-8c7d-9e0f1a2b3c4d', name: 'Remedy Legal' },
   },
   {
@@ -68,7 +66,6 @@ export const MOCK_TENANTS: MockTenant[] = [
     subdomain: 'samathtax',
     website: 'https://www.samathtax.example',
     status: 'active',
-    auth_providers: ['password', 'google', 'facebook'],
     organisation: { id: '1b2c3d4e-5f60-4b7c-9d8e-0f1a2b3c4d5e', name: 'Samath Tax' },
   },
   {
@@ -76,7 +73,6 @@ export const MOCK_TENANTS: MockTenant[] = [
     name: 'Old Co',
     subdomain: 'oldco',
     status: 'suspended',
-    auth_providers: ['password'],
     organisation: { id: '2c3d4e5f-6071-4c8d-8e9f-1a2b3c4d5e6f', name: 'Old Co' },
   },
   // Formalie's own workspace: its forms collect our data (Contact support, Enterprise enquiry; data/platformForms.ts).
@@ -87,7 +83,6 @@ export const MOCK_TENANTS: MockTenant[] = [
     subdomain: 'formalie-team',
     website: 'https://formalie.com',
     status: 'active',
-    auth_providers: ['password'],
     organisation: { id: 'f0a1b2c3-0000-4f00-8f00-00000000f0f1', name: 'Formalie' },
   },
 ]

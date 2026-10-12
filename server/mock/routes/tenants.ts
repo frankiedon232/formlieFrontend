@@ -15,6 +15,7 @@ import { MockError, ok } from '../core/respond'
 import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
 import { MOCK_TENANTS, MOCK_USERS } from '../data/tenants'
+import { SIGNIN_PROVIDERS } from '#shared/utils/settings/schemas'
 import { websiteOf } from './onboarding'
 import { settingsOf } from '../data/settingsStore'
 import { subdomainTaken } from '../data/addressStore'
@@ -30,14 +31,14 @@ export const publicProfile = defineMockRoute(({ event }) => {
       subdomain: 'manage',
       logo_url: null,
       colors: { primary: null },
-      // manage.* offers every provider for the first signup.
-      auth_providers: ['password', 'google', 'microsoft', 'facebook'],
+      // Sign-up: email and password, Google, Facebook (owner, 2026-10-12)
+      auth_providers: [...SIGNIN_PROVIDERS],
       status: 'active',
     })
   }
   if (!tenant) throw new MockError('FRM-TEN-1001')
   // The workspace's own name and branding from Settings (F14)
-  const { company, branding, signin, security } = settingsOf(tenant)
+  const { company, branding, security } = settingsOf(tenant)
   return ok<TenantPublicProfile>({
     mode: 'tenant',
     name: company.display_name || tenant.name,
@@ -49,7 +50,8 @@ export const publicProfile = defineMockRoute(({ event }) => {
     colors: { primary: branding.brand_color },
     website: websiteOf(tenant),
     // Subscription (F24): other sign-in methods and single sign-on only while the plan has them
-    auth_providers: hasFeature(tenant, 'social_signin') ? signin.methods : ['password'],
+    // Always all of them; single sign-on shows too once the admin turns it on (sso below)
+    auth_providers: [...SIGNIN_PROVIDERS],
     sso: hasFeature(tenant, 'sso') ? ssoPublic(tenant) : null,
     password_policy: { min_length: security.password.min_length, lower: security.password.lower, upper: security.password.upper, number: security.password.number, symbol: security.password.symbol },
     status: tenant.status,

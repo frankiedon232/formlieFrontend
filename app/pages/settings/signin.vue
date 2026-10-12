@@ -1,6 +1,7 @@
 <!--
-  Settings → Sign-in (F14 M3): the ways people sign in (only these show on the workspace sign-in page),
-  single sign-on with the company's identity provider (Okta and others, owner 2026-10-10; saves on its own),
+  Settings → Sign-in (F14 M3): single sign-on with the company's identity provider (Okta, Microsoft Entra ID, Google
+  Workspace, OneLogin, SAML 2.0, OpenID Connect; saves on its own). The workspace doesn't choose its other ways in: the
+  sign-in page always offers email and password, Google and Facebook, and single sign-on once it is on (owner, 2026-10-12);
   the one-time code every sign-in asks for (by email; text message optional), how long it lasts, how many tries, and the email
   domains allowed to sign in. A live miniature of the sign-in page sits beside it. The server refuses a
   domain list without the admin's own domain (FRM-AUTH-1017); the page says so before saving.
@@ -39,11 +40,6 @@ const name = computed(() => store.settings.value?.company.display_name ?? '')
     <div v-else-if="!draft" class="flex flex-col gap-6"><USkeleton v-for="n in 3" :key="n" class="h-36 rounded-lg" /></div>
     <div v-else class="grid gap-8 2xl:grid-cols-[minmax(0,1fr)_22rem]">
       <div class="flex min-w-0 flex-col gap-6">
-        <SettingsBlock :title="t('settings.signin.methods')" :description="t('settings.signin.methodsHint')" icon="i-lucide-log-in">
-          <SettingsSigninMethods v-model="draft.methods" />
-          <p class="flex items-start gap-1.5 text-xs text-muted"><UIcon name="i-lucide-info" class="mt-0.5 size-3.5 shrink-0" />{{ t('settings.signin.providersNote') }}</p>
-        </SettingsBlock>
-
         <SettingsBlock :title="t('settings.sso.title')" :description="t('settings.sso.titleHint')" icon="i-lucide-building-2">
           <SettingsSigninSso />
         </SettingsBlock>
@@ -91,9 +87,8 @@ const name = computed(() => store.settings.value?.company.display_name ?? '')
 
       <aside class="w-full max-w-xl 2xl:sticky 2xl:top-0 2xl:max-w-none 2xl:self-start">
         <div class="flex flex-col gap-3 rounded-xl border border-default bg-elevated/30 p-4">
-          <SettingsSigninPreview :name="name" :logo="brand?.logo_url ?? null" :logo-dark="brand?.logo_dark_url ?? null" :message="brand?.signin_message ?? null" :color="brand?.brand_color ?? null" :favicon="brand?.favicon_url ?? null" :methods="draft.methods" />
+          <SettingsSigninPreview :name="name" :logo="brand?.logo_url ?? null" :logo-dark="brand?.logo_dark_url ?? null" :message="brand?.signin_message ?? null" :color="brand?.brand_color ?? null" :favicon="brand?.favicon_url ?? null" />
           <ul class="flex flex-col gap-1.5 text-xs text-muted">
-            <li class="flex items-start gap-1.5"><UIcon name="i-lucide-log-in" class="mt-0.5 size-3.5 shrink-0" />{{ t('settings.signin.sumMethods', { n: draft.methods.length }, draft.methods.length) }}</li>
             <li class="flex items-start gap-1.5"><UIcon name="i-lucide-shield-check" class="mt-0.5 size-3.5 shrink-0" />{{ t('settings.signin.sumCode', { minutes: draft.code.expiry_minutes, tries: draft.code.max_attempts }) }}</li>
             <li class="flex items-start gap-1.5"><UIcon name="i-lucide-at-sign" class="mt-0.5 size-3.5 shrink-0" />{{ domains.length ? t('settings.signin.sumDomains', { list: domains.join(', ') }) : t('settings.signin.anyDomain') }}</li>
           </ul>
