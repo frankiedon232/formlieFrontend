@@ -1167,7 +1167,9 @@
       "ai_disabled": "AI 어시스턴트를 껐습니다",
       "ai_settings_updated": "AI 설정이 변경되었습니다",
       "ai_request_deleted": "AI 요청을 기록에서 삭제했습니다",
-      "ai_applied": "AI 초안이 적용되었습니다"
+      "ai_applied": "AI 초안이 적용되었습니다",
+      "settings_email_unsubscribed": "이메일 수신 거부",
+      "settings_email_resubscribed": "이메일 다시 수신"
     },
     "detail": {
       "who": "누가",
@@ -9774,6 +9776,26 @@
           "desc": "가이드, 답변, 각 영역의 짧은 둘러보기."
         }
       }
+    }
+  },
+  "emailPrefs": {
+    "title": "이메일 설정",
+    "invalidTitle": "이 링크는 작동하지 않습니다",
+    "invalidDesc": "링크가 불완전하거나 오래되었을 수 있습니다. 가장 최근 이메일의 수신 거부 링크를 사용하세요.",
+    "askTitle": "이 이메일을 그만 받으시겠어요?",
+    "askDesc": "{email}은(는) 더 이상 {workspace}의 {what}을(를) 받지 않습니다.",
+    "doneTitle": "수신 거부되었습니다",
+    "doneDesc": "{email}은(는) 이제 {workspace}의 {what}을(를) 받지 않습니다. 마음이 바뀌셨나요? 되돌리세요.",
+    "stop": "수신 거부",
+    "undo": "되돌리기",
+    "kept": "로그인 코드나 본인 답변 사본처럼 꼭 필요한 이메일은 계속 받습니다.",
+    "what": {
+      "responsesTo": "{form} 새 응답 이메일",
+      "responses": "새 응답 이메일",
+      "notification": "'{event}' 이메일",
+      "updates": "이 소식",
+      "daily_digest": "일일 요약",
+      "form_invitation": "양식 초대"
     }
   }
 }

@@ -1167,7 +1167,9 @@
       "ai_disabled": "AI assistant switched off",
       "ai_settings_updated": "AI settings changed",
       "ai_request_deleted": "AI request deleted from the history",
-      "ai_applied": "AI draft applied"
+      "ai_applied": "AI draft applied",
+      "settings_email_unsubscribed": "Unsubscribed from emails",
+      "settings_email_resubscribed": "Subscribed to emails again"
     },
     "detail": {
       "who": "Who",
@@ -9774,6 +9776,26 @@
           "desc": "Guides, answers and short tours of each area."
         }
       }
+    }
+  },
+  "emailPrefs": {
+    "title": "Email preferences",
+    "invalidTitle": "This link doesn't work",
+    "invalidDesc": "It may be incomplete or out of date. Use the Unsubscribe link in the latest email.",
+    "askTitle": "Stop these emails?",
+    "askDesc": "{email} will stop getting {what} from {workspace}.",
+    "doneTitle": "You're unsubscribed",
+    "doneDesc": "{email} won't get {what} from {workspace} any more. Changed your mind? Undo it.",
+    "stop": "Unsubscribe",
+    "undo": "Undo",
+    "kept": "Emails you need, such as sign-in codes and copies of your own answers, still arrive.",
+    "what": {
+      "responsesTo": "new-response emails for {form}",
+      "responses": "new-response emails",
+      "notification": "{event} emails",
+      "updates": "these updates",
+      "daily_digest": "the daily summary",
+      "form_invitation": "form invitations"
     }
   }
 }

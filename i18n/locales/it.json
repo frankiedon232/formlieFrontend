@@ -1167,7 +1167,9 @@
       "ai_disabled": "Assistente IA disattivato",
       "ai_settings_updated": "Impostazioni IA modificate",
       "ai_request_deleted": "Richiesta IA eliminata dalla cronologia",
-      "ai_applied": "Bozza IA applicata"
+      "ai_applied": "Bozza IA applicata",
+      "settings_email_unsubscribed": "Disiscrizione dalle email",
+      "settings_email_resubscribed": "Iscrizione alle email di nuovo"
     },
     "detail": {
       "who": "Chi",
@@ -9774,6 +9776,26 @@
           "desc": "Guide, risposte e brevi tour di ogni area."
         }
       }
+    }
+  },
+  "emailPrefs": {
+    "title": "Preferenze email",
+    "invalidTitle": "Questo link non funziona",
+    "invalidDesc": "Potrebbe essere incompleto o scaduto. Usa il link di disiscrizione nell'email più recente.",
+    "askTitle": "Non ricevere più queste email?",
+    "askDesc": "{email} non riceverà più {what} da {workspace}.",
+    "doneTitle": "Disiscrizione completata",
+    "doneDesc": "{email} non riceverà più {what} da {workspace}. Hai cambiato idea? Annulla.",
+    "stop": "Disiscriviti",
+    "undo": "Annulla",
+    "kept": "Le email necessarie, come i codici di accesso e le copie delle tue risposte, continuano ad arrivare.",
+    "what": {
+      "responsesTo": "le email delle nuove risposte a {form}",
+      "responses": "le email delle nuove risposte",
+      "notification": "le email «{event}»",
+      "updates": "questi aggiornamenti",
+      "daily_digest": "il riepilogo giornaliero",
+      "form_invitation": "gli inviti ai moduli"
     }
   }
 }

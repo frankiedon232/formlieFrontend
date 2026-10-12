@@ -1167,7 +1167,9 @@
       "ai_disabled": "Wyłączono asystenta AI",
       "ai_settings_updated": "Zmieniono ustawienia AI",
       "ai_request_deleted": "Usunięto zapytanie AI z historii",
-      "ai_applied": "Zastosowano szkic AI"
+      "ai_applied": "Zastosowano szkic AI",
+      "settings_email_unsubscribed": "Wypisanie z e-maili",
+      "settings_email_resubscribed": "Ponowny zapis na e-maile"
     },
     "detail": {
       "who": "Kto",
@@ -9774,6 +9776,26 @@
           "desc": "Przewodniki, odpowiedzi i krótkie wycieczki po każdym obszarze."
         }
       }
+    }
+  },
+  "emailPrefs": {
+    "title": "Ustawienia e-mail",
+    "invalidTitle": "Ten link nie działa",
+    "invalidDesc": "Może być niepełny lub nieaktualny. Użyj linku do wypisania się z najnowszej wiadomości.",
+    "askTitle": "Zatrzymać te wiadomości?",
+    "askDesc": "{email} nie będzie już otrzymywać: {what} od {workspace}.",
+    "doneTitle": "Wypisano Cię",
+    "doneDesc": "{email} nie będzie już otrzymywać: {what} od {workspace}. Zmiana zdania? Cofnij.",
+    "stop": "Wypisz się",
+    "undo": "Cofnij",
+    "kept": "Potrzebne wiadomości, np. kody logowania i kopie Twoich odpowiedzi, nadal będą przychodzić.",
+    "what": {
+      "responsesTo": "e-maile o nowych odpowiedziach w {form}",
+      "responses": "e-maile o nowych odpowiedziach",
+      "notification": "e-maile „{event}”",
+      "updates": "te powiadomienia",
+      "daily_digest": "dzienne podsumowanie",
+      "form_invitation": "zaproszenia do formularzy"
     }
   }
 }

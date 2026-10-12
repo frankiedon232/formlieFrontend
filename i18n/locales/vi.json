@@ -1167,7 +1167,9 @@
       "ai_disabled": "Đã tắt trợ lý AI",
       "ai_settings_updated": "Đã thay đổi cài đặt AI",
       "ai_request_deleted": "Đã xóa yêu cầu AI khỏi lịch sử",
-      "ai_applied": "Đã áp dụng bản nháp AI"
+      "ai_applied": "Đã áp dụng bản nháp AI",
+      "settings_email_unsubscribed": "Đã hủy đăng ký email",
+      "settings_email_resubscribed": "Đã đăng ký lại email"
     },
     "detail": {
       "who": "Ai",
@@ -9774,6 +9776,26 @@
           "desc": "Hướng dẫn, câu trả lời và các chuyến tham quan ngắn của từng khu vực."
         }
       }
+    }
+  },
+  "emailPrefs": {
+    "title": "Tùy chọn email",
+    "invalidTitle": "Liên kết này không dùng được",
+    "invalidDesc": "Có thể liên kết bị thiếu hoặc đã cũ. Hãy dùng liên kết hủy đăng ký trong email mới nhất.",
+    "askTitle": "Ngừng nhận các email này?",
+    "askDesc": "{email} sẽ không nhận {what} từ {workspace} nữa.",
+    "doneTitle": "Bạn đã hủy đăng ký",
+    "doneDesc": "{email} sẽ không nhận {what} từ {workspace} nữa. Đổi ý? Hoàn tác.",
+    "stop": "Hủy đăng ký",
+    "undo": "Hoàn tác",
+    "kept": "Các email cần thiết, như mã đăng nhập và bản sao câu trả lời của bạn, vẫn được gửi.",
+    "what": {
+      "responsesTo": "email về câu trả lời mới cho {form}",
+      "responses": "email về câu trả lời mới",
+      "notification": "email \"{event}\"",
+      "updates": "các cập nhật này",
+      "daily_digest": "bản tóm tắt hằng ngày",
+      "form_invitation": "lời mời điền biểu mẫu"
     }
   }
 }

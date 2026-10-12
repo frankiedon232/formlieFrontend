@@ -145,3 +145,20 @@ export interface SmtpSaveRequest {
   password?: string | null
   from_address: string
 }
+
+/**
+ * Emails a person can stop with the Unsubscribe link (owner, 2026-10-12): optional updates only, never sign-in,
+ * account or respondent emails. `ref` narrows it: the form (new responses) or the event (notifications).
+ */
+export const UNSUBSCRIBE_KINDS = ['response_notification', 'notification', 'daily_digest', 'form_invitation'] as const
+export type UnsubscribeKind = (typeof UNSUBSCRIBE_KINDS)[number]
+
+/** GET /public/unsubscribe?t= : what the link stops, for whom (masked), and whether it is stopped now. */
+export interface UnsubscribeView {
+  workspace: string
+  email: string
+  kind: UnsubscribeKind
+  /** The form's name (new responses) or the notification event key; null for the daily summary and invitations. */
+  subject: string | null
+  unsubscribed: boolean
+}

@@ -86,7 +86,7 @@ export function notify(event: H3Event | null, tenant: MockTenant, type: Notifica
         if (notifications.digest.enabled) {
           const entry = (store.digest[person.email] ??= { name: person.name, lines: [] })
           entry.lines.push(title)
-        } else sendEmail(tenant, { to: person.email, key: 'notification', vars: { title, message: fillIn(texts.events[type]!.message, vars), link: workspaceUrl(event, tenant, link ?? '/') }, reason: type })
+        } else sendEmail(tenant, { to: person.email, key: 'notification', vars: { title, message: fillIn(texts.events[type]!.message, vars), link: workspaceUrl(event, tenant, link ?? '/') }, reason: type, unsubscribe: type === 'security_alert' ? undefined : { kind: 'notification', ref: type } })
       }
     }
     save()
@@ -108,7 +108,7 @@ export function flushDigest(event: H3Event | null, tenant: MockTenant, force = f
     const counts = new Map<string, number>()
     for (const line of entry.lines) counts.set(line, (counts.get(line) ?? 0) + 1)
     const summary = [...counts].map(([title, count]) => (count > 1 ? fillIn(texts.layout.summary, { count, title }) : title)).join('\n')
-    if (sendEmail(tenant, { to: email, key: 'daily_digest', vars: { name: entry.name, summary, link: workspaceUrl(event, tenant, '/') }, reason: 'daily_digest' })) sent++
+    if (sendEmail(tenant, { to: email, key: 'daily_digest', vars: { name: entry.name, summary, link: workspaceUrl(event, tenant, '/') }, reason: 'daily_digest', unsubscribe: { kind: 'daily_digest' } })) sent++
   }
   store.digest = {}
   store.digest_sent_on = today

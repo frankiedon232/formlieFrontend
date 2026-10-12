@@ -1167,7 +1167,9 @@
       "ai_disabled": "Asisten AI dimatikan",
       "ai_settings_updated": "Pengaturan AI diubah",
       "ai_request_deleted": "Permintaan AI dihapus dari riwayat",
-      "ai_applied": "Draf AI diterapkan"
+      "ai_applied": "Draf AI diterapkan",
+      "settings_email_unsubscribed": "Berhenti berlangganan email",
+      "settings_email_resubscribed": "Berlangganan email lagi"
     },
     "detail": {
       "who": "Siapa",
@@ -9774,6 +9776,26 @@
           "desc": "Panduan, jawaban, dan tur singkat setiap area."
         }
       }
+    }
+  },
+  "emailPrefs": {
+    "title": "Preferensi email",
+    "invalidTitle": "Tautan ini tidak berfungsi",
+    "invalidDesc": "Mungkin tidak lengkap atau sudah lama. Gunakan tautan berhenti berlangganan di email terbaru.",
+    "askTitle": "Berhenti menerima email ini?",
+    "askDesc": "{email} tidak akan menerima {what} dari {workspace} lagi.",
+    "doneTitle": "Anda sudah berhenti berlangganan",
+    "doneDesc": "{email} tidak akan menerima {what} dari {workspace} lagi. Berubah pikiran? Batalkan.",
+    "stop": "Berhenti berlangganan",
+    "undo": "Batalkan",
+    "kept": "Email yang Anda perlukan, seperti kode masuk dan salinan jawaban Anda sendiri, tetap dikirim.",
+    "what": {
+      "responsesTo": "email respons baru untuk {form}",
+      "responses": "email respons baru",
+      "notification": "email {event}",
+      "updates": "pembaruan ini",
+      "daily_digest": "ringkasan harian",
+      "form_invitation": "undangan formulir"
     }
   }
 }

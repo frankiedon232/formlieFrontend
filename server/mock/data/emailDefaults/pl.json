@@ -91,7 +91,8 @@
     "footer_form": "Dostajesz ten e-mail z powodu formularza z {{workspace}}.",
     "via": "Wysłano przez Formalie",
     "tagline": "Formularze, dane i dostęp pod Twoją kontrolą.",
-    "privacy": "Prywatność"
+    "privacy": "Prywatność",
+    "unsubscribe": "Wypisz się"
   },
   "reasons": {
     "ip_not_allowed": "sieć nie znajduje się na liście dozwolonych",

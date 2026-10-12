@@ -1167,7 +1167,9 @@
       "ai_disabled": "AI-assistent uitgeschakeld",
       "ai_settings_updated": "AI-instellingen gewijzigd",
       "ai_request_deleted": "AI-verzoek verwijderd uit de geschiedenis",
-      "ai_applied": "AI-concept toegepast"
+      "ai_applied": "AI-concept toegepast",
+      "settings_email_unsubscribed": "Afgemeld voor e-mails",
+      "settings_email_resubscribed": "Weer aangemeld voor e-mails"
     },
     "detail": {
       "who": "Wie",
@@ -9774,6 +9776,26 @@
           "desc": "Handleidingen, antwoorden en korte rondleidingen door elk onderdeel."
         }
       }
+    }
+  },
+  "emailPrefs": {
+    "title": "E-mailvoorkeuren",
+    "invalidTitle": "Deze link werkt niet",
+    "invalidDesc": "Misschien is hij onvolledig of verouderd. Gebruik de afmeldlink in de nieuwste e-mail.",
+    "askTitle": "Deze e-mails stoppen?",
+    "askDesc": "{email} krijgt geen {what} meer van {workspace}.",
+    "doneTitle": "Je bent afgemeld",
+    "doneDesc": "{email} krijgt geen {what} meer van {workspace}. Toch niet? Maak het ongedaan.",
+    "stop": "Afmelden",
+    "undo": "Ongedaan maken",
+    "kept": "E-mails die je nodig hebt, zoals aanmeldcodes en kopieën van je eigen antwoorden, blijven komen.",
+    "what": {
+      "responsesTo": "e-mails over nieuwe antwoorden op {form}",
+      "responses": "e-mails over nieuwe antwoorden",
+      "notification": "e-mails over ‘{event}’",
+      "updates": "deze updates",
+      "daily_digest": "de dagelijkse samenvatting",
+      "form_invitation": "formulieruitnodigingen"
     }
   }
 }

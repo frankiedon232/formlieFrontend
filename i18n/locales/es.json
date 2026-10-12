@@ -1167,7 +1167,9 @@
       "ai_disabled": "Asistente de IA desactivado",
       "ai_settings_updated": "Ajustes de IA cambiados",
       "ai_request_deleted": "Solicitud de IA eliminada del historial",
-      "ai_applied": "Borrador de IA aplicado"
+      "ai_applied": "Borrador de IA aplicado",
+      "settings_email_unsubscribed": "Baja de correos",
+      "settings_email_resubscribed": "Alta de nuevo en correos"
     },
     "detail": {
       "who": "Quién",
@@ -9774,6 +9776,26 @@
           "desc": "Guías, respuestas y recorridos breves de cada área."
         }
       }
+    }
+  },
+  "emailPrefs": {
+    "title": "Preferencias de correo",
+    "invalidTitle": "Este enlace no funciona",
+    "invalidDesc": "Puede estar incompleto o caducado. Usa el enlace para darte de baja del correo más reciente.",
+    "askTitle": "¿Dejar de recibir estos correos?",
+    "askDesc": "{email} dejará de recibir {what} de {workspace}.",
+    "doneTitle": "Te has dado de baja",
+    "doneDesc": "{email} ya no recibirá {what} de {workspace}. ¿Cambiaste de idea? Deshazlo.",
+    "stop": "Darse de baja",
+    "undo": "Deshacer",
+    "kept": "Los correos que necesitas, como los códigos de inicio de sesión y las copias de tus respuestas, siguen llegando.",
+    "what": {
+      "responsesTo": "correos de nuevas respuestas de {form}",
+      "responses": "correos de nuevas respuestas",
+      "notification": "correos de «{event}»",
+      "updates": "estas novedades",
+      "daily_digest": "el resumen diario",
+      "form_invitation": "invitaciones a formularios"
     }
   }
 }

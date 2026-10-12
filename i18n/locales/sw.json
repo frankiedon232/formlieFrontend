@@ -1167,7 +1167,9 @@
       "ai_disabled": "Msaidizi wa AI umezimwa",
       "ai_settings_updated": "Mipangilio ya AI imebadilishwa",
       "ai_request_deleted": "Ombi la AI limefutwa kwenye historia",
-      "ai_applied": "Rasimu ya AI imetumika"
+      "ai_applied": "Rasimu ya AI imetumika",
+      "settings_email_unsubscribed": "Amejiondoa kwenye barua pepe",
+      "settings_email_resubscribed": "Amejiunga tena na barua pepe"
     },
     "detail": {
       "who": "Nani",
@@ -9774,6 +9776,26 @@
           "desc": "Miongozo, majibu na ziara fupi za kila eneo."
         }
       }
+    }
+  },
+  "emailPrefs": {
+    "title": "Mapendeleo ya barua pepe",
+    "invalidTitle": "Kiungo hiki hakifanyi kazi",
+    "invalidDesc": "Huenda hakijakamilika au ni cha zamani. Tumia kiungo cha kujiondoa kwenye barua pepe ya karibuni.",
+    "askTitle": "Ungependa kusimamisha barua pepe hizi?",
+    "askDesc": "{email} haitapokea tena {what} kutoka {workspace}.",
+    "doneTitle": "Umejiondoa",
+    "doneDesc": "{email} haitapokea tena {what} kutoka {workspace}. Umebadili nia? Tendua.",
+    "stop": "Jiondoe",
+    "undo": "Tendua",
+    "kept": "Barua pepe muhimu, kama misimbo ya kuingia na nakala za majibu yako, zitaendelea kufika.",
+    "what": {
+      "responsesTo": "barua pepe za majibu mapya ya {form}",
+      "responses": "barua pepe za majibu mapya",
+      "notification": "barua pepe za {event}",
+      "updates": "taarifa hizi",
+      "daily_digest": "muhtasari wa kila siku",
+      "form_invitation": "mialiko ya fomu"
     }
   }
 }

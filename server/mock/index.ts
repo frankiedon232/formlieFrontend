@@ -68,12 +68,18 @@ import * as org from './routes/org'
 import * as uploads from './routes/uploads'
 import { csrf, handshake, health } from './routes/system'
 import * as tenants from './routes/tenants'
+import * as unsubscribes from './routes/unsubscribe'
 import * as webhooks from './routes/webhooks'
 
 const router = createRouter()
   // system
   .get('/health', health)
   .post('/crypto/handshake', handshake)
+  // unsubscribe links in emails (public; the one-click address is plain for mail apps)
+  .get('/public/unsubscribe', unsubscribes.getUnsubscribe)
+  .post('/public/unsubscribe', unsubscribes.unsubscribe)
+  .post('/public/unsubscribe/undo', unsubscribes.resubscribe)
+  .post('/email/one-click', unsubscribes.oneClick)
   .get('/auth/csrf', csrf)
   // tenants
   .get('/tenants/public', tenants.publicProfile)

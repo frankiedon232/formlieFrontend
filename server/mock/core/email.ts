@@ -65,7 +65,7 @@ export interface EmailAnswer {
 }
 
 /** Subject, HTML and plain text, ready to send. `{{answers}}` becomes a table (HTML) or lines (text). */
-export function renderEmail(tenant: MockTenant, key: EmailTemplateKey, language: string, vars: Record<string, string | number>, options: { text?: EmailText; answers?: EmailAnswer[]; footer?: 'account' | 'form' } = {}) {
+export function renderEmail(tenant: MockTenant, key: EmailTemplateKey, language: string, vars: Record<string, string | number>, options: { text?: EmailText; answers?: EmailAnswer[]; footer?: 'account' | 'form'; unsubscribeUrl?: string | null } = {}) {
   const settings = settingsOf(tenant)
   const name = settings.company.display_name || tenant.name
   const defaults = emailDefaults(language)
@@ -75,6 +75,6 @@ export function renderEmail(tenant: MockTenant, key: EmailTemplateKey, language:
   const answers = options.answers ?? []
   const body = fillIn(source.body, { ...all, answers: ANSWERS })
   const footer = [settings.emails.footer, fillIn(options.footer === 'form' ? defaults.layout.footer_form : defaults.layout.footer, all)].filter(Boolean) as string[]
-  const { html, text } = emailPage(subject, body, all, { workspace: name, logoUrl: settings.branding.logo_url, brandColor: settings.branding.brand_color, footerLines: footer, texts: defaults.layout, language }, answers)
+  const { html, text } = emailPage(subject, body, all, { workspace: name, logoUrl: settings.branding.logo_url, brandColor: settings.branding.brand_color, footerLines: footer, texts: defaults.layout, language, unsubscribeUrl: options.unsubscribeUrl }, answers)
   return { subject, html, text, from: `${settings.emails.sender_name || name} <${fromAddress(tenant)}>`, reply_to: settings.emails.reply_to }
 }

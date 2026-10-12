@@ -1167,7 +1167,9 @@
       "ai_disabled": "KI-Assistent ausgeschaltet",
       "ai_settings_updated": "KI-Einstellungen geändert",
       "ai_request_deleted": "KI-Anfrage aus dem Verlauf gelöscht",
-      "ai_applied": "KI-Entwurf übernommen"
+      "ai_applied": "KI-Entwurf übernommen",
+      "settings_email_unsubscribed": "Von E-Mails abgemeldet",
+      "settings_email_resubscribed": "E-Mails wieder angemeldet"
     },
     "detail": {
       "who": "Wer",
@@ -9774,6 +9776,26 @@
           "desc": "Anleitungen, Antworten und kurze Rundgänge durch jeden Bereich."
         }
       }
+    }
+  },
+  "emailPrefs": {
+    "title": "E-Mail-Einstellungen",
+    "invalidTitle": "Dieser Link funktioniert nicht",
+    "invalidDesc": "Er ist vielleicht unvollständig oder veraltet. Nutzen Sie den Abmeldelink in der neuesten E-Mail.",
+    "askTitle": "Diese E-Mails abbestellen?",
+    "askDesc": "{email} erhält keine {what} mehr von {workspace}.",
+    "doneTitle": "Sie sind abgemeldet",
+    "doneDesc": "{email} erhält keine {what} mehr von {workspace}. Doch nicht? Rückgängig machen.",
+    "stop": "Abmelden",
+    "undo": "Rückgängig",
+    "kept": "Wichtige E-Mails wie Anmeldecodes und Kopien Ihrer eigenen Antworten kommen weiterhin.",
+    "what": {
+      "responsesTo": "E-Mails zu neuen Antworten für {form}",
+      "responses": "E-Mails zu neuen Antworten",
+      "notification": "E-Mails zu „{event}“",
+      "updates": "diese Benachrichtigungen",
+      "daily_digest": "tägliche Zusammenfassung",
+      "form_invitation": "Formular-Einladungen"
     }
   }
 }

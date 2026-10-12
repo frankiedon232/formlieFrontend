@@ -91,7 +91,8 @@
     "footer_form": "Unapokea barua pepe hii kwa sababu ya fomu kutoka {{workspace}}.",
     "via": "Imetumwa kwa Formalie",
     "tagline": "Fomu, data na ufikiaji chini ya udhibiti wako.",
-    "privacy": "Faragha"
+    "privacy": "Faragha",
+    "unsubscribe": "Jiondoe"
   },
   "reasons": {
     "ip_not_allowed": "mtandao hauko kwenye orodha inayoruhusiwa",

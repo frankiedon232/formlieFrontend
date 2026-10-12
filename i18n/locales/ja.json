@@ -1167,7 +1167,9 @@
       "ai_disabled": "AIアシスタントをオフにしました",
       "ai_settings_updated": "AI設定を変更しました",
       "ai_request_deleted": "AIリクエストを履歴から削除しました",
-      "ai_applied": "AI の下書きを適用しました"
+      "ai_applied": "AI の下書きを適用しました",
+      "settings_email_unsubscribed": "メールの配信を停止",
+      "settings_email_resubscribed": "メールの配信を再開"
     },
     "detail": {
       "who": "誰が",
@@ -9774,6 +9776,26 @@
           "desc": "ガイド、回答、各エリアの簡単なツアー。"
         }
       }
+    }
+  },
+  "emailPrefs": {
+    "title": "メールの設定",
+    "invalidTitle": "このリンクは使えません",
+    "invalidDesc": "不完全か古い可能性があります。最新のメールにある配信停止リンクを使ってください。",
+    "askTitle": "これらのメールを停止しますか？",
+    "askDesc": "{email} は {workspace} からの{what}を受け取らなくなります。",
+    "doneTitle": "配信を停止しました",
+    "doneDesc": "{email} は今後 {workspace} からの{what}を受け取りません。気が変わったら元に戻せます。",
+    "stop": "配信停止",
+    "undo": "元に戻す",
+    "kept": "サインインコードやご自身の回答のコピーなど、必要なメールは引き続き届きます。",
+    "what": {
+      "responsesTo": "{form} の新しい回答メール",
+      "responses": "新しい回答メール",
+      "notification": "「{event}」のメール",
+      "updates": "これらのお知らせ",
+      "daily_digest": "毎日のまとめ",
+      "form_invitation": "フォームへの招待"
     }
   }
 }

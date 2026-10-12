@@ -1172,6 +1172,12 @@ The backend (`formlyBackend`) is built in phases B0 to B17; its own tracker is `
 - ✅ Sign-in: a general hint under "Invalid email or password" where the workspace offers Google, Microsoft or Facebook (use that button, or set a password); the screen still says nothing about the account (owner 2026-10-12)
 - ✅ Backend: `GET /auth/signup/workspaces`, and the email to an account with no password when someone tries one (at most once an hour; wording in `emailDefaults` → `account.password_social`, 20 languages); built in formlyBackend 2026-10-12 with 3 tests (17381 pass)
 
+### SB M5b, Emails ✅ / ⬜
+
+- ✅ The approved Formalie email layout for all 13 emails, 20 languages, backend and mock (2026-10-12)
+- ✅ Unsubscribe, frontend and mock: optional emails (new responses per form, notifications per event except security alerts, the daily summary, form invitations) carry a signed Unsubscribe link; the page `/email/unsubscribe` with Unsubscribe and Undo; sending skips stopped addresses; audit `settings.email_unsubscribed` / `email_resubscribed` (2026-10-12)
+- ⬜ Unsubscribe in the backend: the four endpoints, the `List-Unsubscribe` headers, the check before sending (after B10 step 2's migration)
+
 ### SB M6, Going live ⬜
 
 - ⬜ Every line of `docs/PRODUCTION-CHECKLIST.md` done on the production servers (owner 2026-10-12: one list of everything that changes for production, in all five projects, walked through with the owner before going live)

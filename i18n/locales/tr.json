@@ -1167,7 +1167,9 @@
       "ai_disabled": "Yapay zeka asistanı kapatıldı",
       "ai_settings_updated": "Yapay zeka ayarları değişti",
       "ai_request_deleted": "Yapay zeka isteği geçmişten silindi",
-      "ai_applied": "Yapay zekâ taslağı uygulandı"
+      "ai_applied": "Yapay zekâ taslağı uygulandı",
+      "settings_email_unsubscribed": "E-posta aboneliğinden çıkıldı",
+      "settings_email_resubscribed": "E-postalara yeniden abone olundu"
     },
     "detail": {
       "who": "Kim",
@@ -9774,6 +9776,26 @@
           "desc": "Kılavuzlar, yanıtlar ve her alana kısa turlar."
         }
       }
+    }
+  },
+  "emailPrefs": {
+    "title": "E-posta tercihleri",
+    "invalidTitle": "Bu bağlantı çalışmıyor",
+    "invalidDesc": "Eksik ya da eski olabilir. En son e-postadaki abonelikten çık bağlantısını kullanın.",
+    "askTitle": "Bu e-postalar durdurulsun mu?",
+    "askDesc": "{email}, {workspace} kaynağından artık {what} almayacak.",
+    "doneTitle": "Abonelikten çıktınız",
+    "doneDesc": "{email}, {workspace} kaynağından artık {what} almayacak. Fikrinizi mi değiştirdiniz? Geri alın.",
+    "stop": "Abonelikten çık",
+    "undo": "Geri al",
+    "kept": "Giriş kodları ve kendi yanıtlarınızın kopyaları gibi gerekli e-postalar gelmeye devam eder.",
+    "what": {
+      "responsesTo": "{form} için yeni yanıt e-postaları",
+      "responses": "yeni yanıt e-postaları",
+      "notification": "'{event}' e-postaları",
+      "updates": "bu güncellemeler",
+      "daily_digest": "günlük özet",
+      "form_invitation": "form davetleri"
     }
   }
 }

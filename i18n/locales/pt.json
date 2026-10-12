@@ -1167,7 +1167,9 @@
       "ai_disabled": "Assistente de IA desativado",
       "ai_settings_updated": "Configurações de IA alteradas",
       "ai_request_deleted": "Solicitação de IA excluída do histórico",
-      "ai_applied": "Rascunho de IA aplicado"
+      "ai_applied": "Rascunho de IA aplicado",
+      "settings_email_unsubscribed": "Inscrição de e-mails cancelada",
+      "settings_email_resubscribed": "Inscrito de novo nos e-mails"
     },
     "detail": {
       "who": "Quem",
@@ -9774,6 +9776,26 @@
           "desc": "Guias, respostas e tours rápidos de cada área."
         }
       }
+    }
+  },
+  "emailPrefs": {
+    "title": "Preferências de e-mail",
+    "invalidTitle": "Este link não funciona",
+    "invalidDesc": "Pode estar incompleto ou desatualizado. Use o link de cancelar inscrição do e-mail mais recente.",
+    "askTitle": "Parar estes e-mails?",
+    "askDesc": "{email} deixará de receber {what} de {workspace}.",
+    "doneTitle": "Inscrição cancelada",
+    "doneDesc": "{email} não receberá mais {what} de {workspace}. Mudou de ideia? Desfaça.",
+    "stop": "Cancelar inscrição",
+    "undo": "Desfazer",
+    "kept": "E-mails necessários, como códigos de acesso e cópias das suas respostas, continuam chegando.",
+    "what": {
+      "responsesTo": "e-mails de novas respostas de {form}",
+      "responses": "e-mails de novas respostas",
+      "notification": "e-mails de \"{event}\"",
+      "updates": "estas novidades",
+      "daily_digest": "o resumo diário",
+      "form_invitation": "convites para formulários"
     }
   }
 }

@@ -1167,7 +1167,9 @@
       "ai_disabled": "已关闭 AI 助手",
       "ai_settings_updated": "AI 设置已更改",
       "ai_request_deleted": "已从历史记录中删除 AI 请求",
-      "ai_applied": "已应用 AI 草稿"
+      "ai_applied": "已应用 AI 草稿",
+      "settings_email_unsubscribed": "已退订邮件",
+      "settings_email_resubscribed": "已重新订阅邮件"
     },
     "detail": {
       "who": "谁",
@@ -9774,6 +9776,26 @@
           "desc": "指南、解答，以及各个区域的简短导览。"
         }
       }
+    }
+  },
+  "emailPrefs": {
+    "title": "邮件偏好",
+    "invalidTitle": "此链接无效",
+    "invalidDesc": "链接可能不完整或已过期。请使用最新邮件中的退订链接。",
+    "askTitle": "停止接收这些邮件？",
+    "askDesc": "{email} 将不再收到来自 {workspace} 的{what}。",
+    "doneTitle": "您已退订",
+    "doneDesc": "{email} 将不再收到来自 {workspace} 的{what}。改主意了？可以撤销。",
+    "stop": "退订",
+    "undo": "撤销",
+    "kept": "必要的邮件（如登录验证码和您自己回答的副本）仍会照常发送。",
+    "what": {
+      "responsesTo": "{form} 的新回复邮件",
+      "responses": "新回复邮件",
+      "notification": "“{event}”邮件",
+      "updates": "这些通知",
+      "daily_digest": "每日摘要",
+      "form_invitation": "表单邀请"
     }
   }
 }

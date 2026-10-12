@@ -39,13 +39,13 @@ export function emailResponse(event: H3Event | null, tenant: MockTenant, form: {
     const language = emailLanguage(tenant)
     const link = workspaceUrl(event, tenant, `/forms/${encodeId(form.id)}/responses?response=${encodeId(response.id)}`)
     for (const person of peopleOf(tenant).filter(item => settings.team.includes(item.id)))
-      sendEmail(tenant, { to: person.email, key: 'response_notification', language, vars: { ...vars(language), link }, answers: answers(false), reason: 'response' })
+      sendEmail(tenant, { to: person.email, key: 'response_notification', language, vars: { ...vars(language), link }, answers: answers(false), reason: 'response', unsubscribe: { kind: 'response_notification', ref: form.id } })
 
     // Outside addresses: no link into the portal, personal answers masked unless allowed
     if (settings.others.length) {
       const text = templateText(tenant, 'response_notification', language).text
       const withoutLink = { subject: text.subject, body: text.body.split('\n').filter(line => !line.includes('{{link}}')).join('\n') }
-      for (const to of settings.others) sendEmail(tenant, { to, key: 'response_notification', language, vars: vars(language), answers: answers(!settings.others_personal), text: withoutLink, reason: 'response_outside', footer: 'form' })
+      for (const to of settings.others) sendEmail(tenant, { to, key: 'response_notification', language, vars: vars(language), answers: answers(!settings.others_personal), text: withoutLink, reason: 'response_outside', footer: 'form', unsubscribe: { kind: 'response_notification', ref: form.id } })
     }
 
     // The respondent: their own answers, in their language

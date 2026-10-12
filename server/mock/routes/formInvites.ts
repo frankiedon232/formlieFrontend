@@ -76,7 +76,7 @@ const inviteBody = z.object({
 /** POST /forms/:id/invites, people already invited (and not revoked) are skipped, not invited twice. */
 /** The personal invitation to fill in the form (template "form_invitation"). */
 function mailInvite(tenant: MockTenant, form: StoredForm, email: string, name: string | null, link: string) {
-  sendEmail(tenant, { to: email, key: 'form_invitation', vars: { name: name || email, form: form.name, workspace: tenant.name, link }, reason: 'form_invitation', footer: 'form' })
+  sendEmail(tenant, { to: email, key: 'form_invitation', vars: { name: name || email, form: form.name, workspace: tenant.name, link }, reason: 'form_invitation', footer: 'form', unsubscribe: { kind: 'form_invitation' } })
 }
 
 export const createInvites = defineMockRoute(({ event, body }) => {

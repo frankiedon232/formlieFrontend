@@ -4,7 +4,8 @@
  * Email templates shows it, so emails can be checked before a real mail service exists.
  */
 import type { EmailAnswer } from '../core/email'
-import type { EmailTemplateKey, SentEmail } from '#shared/types/emails'
+import type { EmailTemplateKey, SentEmail, UnsubscribeKind } from '#shared/types/emails'
+import { isUnsubscribed, unsubscribeToken } from './unsubscribeStore'
 import { loadPersisted, savePersisted } from '../core/persist'
 import { emailLanguage, renderEmail } from '../core/email'
 import type { MockTenant } from './tenants'
@@ -26,13 +27,19 @@ export interface SendInput {
   text?: { subject: string; body: string }
   /** People without an account (outside addresses, respondents): "because of a form" instead of "your account". */
   footer?: 'account' | 'form'
+  /** Optional emails only: what the Unsubscribe link stops (the form for new responses, the event for notifications). */
+  unsubscribe?: { kind: UnsubscribeKind; ref?: string | null }
 }
 
 /** "Sends" an email: rendered in the workspace's look and put in its sent log. Never throws. */
 export function sendEmail(tenant: MockTenant, input: SendInput): SentEmail | null {
   try {
+    const target = input.unsubscribe ? { tenantId: tenant.id, email: input.to, kind: input.unsubscribe.kind, ref: input.unsubscribe.ref ?? null } : null
+    // They used the Unsubscribe link for this kind of email: not sent
+    if (target && isUnsubscribed(target)) return null
     const language = emailLanguage(tenant, input.language)
-    const rendered = renderEmail(tenant, input.key, language, input.vars, { answers: input.answers, text: input.text, footer: input.footer })
+    const unsubscribeUrl = target ? `/email/unsubscribe?t=${unsubscribeToken(target)}` : null
+    const rendered = renderEmail(tenant, input.key, language, input.vars, { answers: input.answers, text: input.text, footer: input.footer, unsubscribeUrl })
     const email: SentEmail = { id: crypto.randomUUID(), at: new Date().toISOString(), to: input.to, subject: rendered.subject, template: input.key, language, reason: input.reason, html: rendered.html, text: rendered.text }
     stores.set(tenant.id, [email, ...outboxOf(tenant)].slice(0, KEEP))
     save()

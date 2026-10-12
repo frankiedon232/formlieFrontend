@@ -1167,7 +1167,9 @@
       "ai_disabled": "AI असिस्टेंट बंद किया गया",
       "ai_settings_updated": "AI सेटिंग्स बदली गईं",
       "ai_request_deleted": "AI अनुरोध इतिहास से हटाया गया",
-      "ai_applied": "AI ड्राफ़्ट लागू किया गया"
+      "ai_applied": "AI ड्राफ़्ट लागू किया गया",
+      "settings_email_unsubscribed": "ईमेल की सदस्यता छोड़ी",
+      "settings_email_resubscribed": "ईमेल की सदस्यता फिर से ली"
     },
     "detail": {
       "who": "किसने",
@@ -9774,6 +9776,26 @@
           "desc": "गाइड, जवाब और हर हिस्से के छोटे टूर।"
         }
       }
+    }
+  },
+  "emailPrefs": {
+    "title": "ईमेल पसंद",
+    "invalidTitle": "यह लिंक काम नहीं करता",
+    "invalidDesc": "यह अधूरा या पुराना हो सकता है। सबसे नए ईमेल के सदस्यता छोड़ें लिंक का इस्तेमाल करें।",
+    "askTitle": "ये ईमेल बंद करें?",
+    "askDesc": "{email} को अब {workspace} से {what} नहीं मिलेंगे।",
+    "doneTitle": "आपकी सदस्यता छोड़ दी गई",
+    "doneDesc": "{email} को अब {workspace} से {what} नहीं मिलेंगे। मन बदल गया? पहले जैसा करें।",
+    "stop": "सदस्यता छोड़ें",
+    "undo": "पहले जैसा करें",
+    "kept": "ज़रूरी ईमेल, जैसे साइन-इन कोड और आपके अपने उत्तरों की कॉपी, आते रहेंगे।",
+    "what": {
+      "responsesTo": "{form} के नए उत्तरों के ईमेल",
+      "responses": "नए उत्तरों के ईमेल",
+      "notification": "{event} ईमेल",
+      "updates": "ये अपडेट",
+      "daily_digest": "दैनिक सारांश",
+      "form_invitation": "फ़ॉर्म आमंत्रण"
     }
   }
 }

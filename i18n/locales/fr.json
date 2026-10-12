@@ -1167,7 +1167,9 @@
       "ai_disabled": "Assistant IA désactivé",
       "ai_settings_updated": "Paramètres IA modifiés",
       "ai_request_deleted": "Demande IA supprimée de l’historique",
-      "ai_applied": "Brouillon IA appliqué"
+      "ai_applied": "Brouillon IA appliqué",
+      "settings_email_unsubscribed": "Désabonnement des e-mails",
+      "settings_email_resubscribed": "Réabonnement aux e-mails"
     },
     "detail": {
       "who": "Qui",
@@ -9774,6 +9776,26 @@
           "desc": "Guides, réponses et courtes visites de chaque espace."
         }
       }
+    }
+  },
+  "emailPrefs": {
+    "title": "Préférences d'e-mail",
+    "invalidTitle": "Ce lien ne fonctionne pas",
+    "invalidDesc": "Il est peut-être incomplet ou périmé. Utilisez le lien de désabonnement du dernier e-mail.",
+    "askTitle": "Ne plus recevoir ces e-mails ?",
+    "askDesc": "{email} ne recevra plus {what} de {workspace}.",
+    "doneTitle": "Vous êtes désabonné",
+    "doneDesc": "{email} ne recevra plus {what} de {workspace}. Vous changez d'avis ? Annulez.",
+    "stop": "Se désabonner",
+    "undo": "Annuler",
+    "kept": "Les e-mails nécessaires, comme les codes de connexion et les copies de vos réponses, continuent d'arriver.",
+    "what": {
+      "responsesTo": "les e-mails de nouvelles réponses pour {form}",
+      "responses": "les e-mails de nouvelles réponses",
+      "notification": "les e-mails « {event} »",
+      "updates": "ces nouvelles",
+      "daily_digest": "le résumé quotidien",
+      "form_invitation": "les invitations à des formulaires"
     }
   }
 }

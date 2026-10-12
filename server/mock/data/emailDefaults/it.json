@@ -91,7 +91,8 @@
     "footer_form": "Ricevi questa e-mail a causa di un modulo di {{workspace}}.",
     "via": "Inviato con Formalie",
     "tagline": "Moduli, dati e accessi: sotto il tuo controllo.",
-    "privacy": "Privacy"
+    "privacy": "Privacy",
+    "unsubscribe": "Disiscriviti"
   },
   "reasons": {
     "ip_not_allowed": "la rete non è nell'elenco consentito",
