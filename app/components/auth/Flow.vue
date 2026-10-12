@@ -93,14 +93,16 @@ const CARDS = [
       <!-- Points of light: one per route, one after another -->
       <template v-if="!still">
         <g v-for="(to, from) in ROUTES" :key="`dot-${from}`">
-          <!-- Hidden until its turn: before it starts, a point would sit in the corner -->
+          <!-- Hidden until its turn: before it starts, a point would sit in the corner. keyPoints pairs the two keyTimes
+               with the start and end of the route: without it Firefox reads one key time per path point, finds a
+               mismatch and drops the motion (the point stayed in the corner, owner 2026-10-12) -->
           <circle r="7" :fill="light" opacity="0" filter="url(#flow-glow)">
             <set attributeName="opacity" to="0.5" :begin="`${from * STAGGER}s`" />
-            <animateMotion :path="route(from, to)" :dur="`${CYCLE}s`" :begin="`${from * STAGGER}s`" repeatCount="indefinite" calcMode="spline" keyTimes="0;1" keySplines="0.45 0 0.55 1" />
+            <animateMotion :path="route(from, to)" :dur="`${CYCLE}s`" :begin="`${from * STAGGER}s`" repeatCount="indefinite" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.45 0 0.55 1" />
           </circle>
           <circle r="3" fill="white" opacity="0">
             <set attributeName="opacity" to="1" :begin="`${from * STAGGER}s`" />
-            <animateMotion :path="route(from, to)" :dur="`${CYCLE}s`" :begin="`${from * STAGGER}s`" repeatCount="indefinite" calcMode="spline" keyTimes="0;1" keySplines="0.45 0 0.55 1" />
+            <animateMotion :path="route(from, to)" :dur="`${CYCLE}s`" :begin="`${from * STAGGER}s`" repeatCount="indefinite" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.45 0 0.55 1" />
           </circle>
           <!-- The destination lights up as it arrives -->
           <rect :x="TARGET_X - HALF" :y="TARGETS[to]!.y - 17" :width="HALF * 2" height="34" rx="17" fill="none" :stroke="light" stroke-width="1.5" opacity="0">
