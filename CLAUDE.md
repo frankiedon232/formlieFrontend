@@ -51,3 +51,7 @@ Run: `uvicorn app.run:app --host 0.0.0.0 --port 5601 --ssl-certfile C:\devcerts\
 ## Done means
 
 Tests for services, routes (through the envelope), permissions (every route × role), approvals, audit chain, bridge (against a fake Formalie), analytics rollups · ruff, mypy, pytest green · `PROGRESS.md` and docs updated · committed and pushed.
+
+## Git
+
+This project is the branch `formaliePlatformBack` of https://github.com/frankiedon232/formlieFrontend (one branch per project, like `formalieFrontend` and `formalieBackend`). Commit and push there after each verified milestone: `git push origin formaliePlatformBack`.
