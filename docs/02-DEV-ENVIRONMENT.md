@@ -225,3 +225,14 @@ Production has no Node server: the portal is a static build (`pnpm generate` →
 2. `pnpm generate --dotenv .env.production` (without `--dotenv`, Nuxt reads `.env`, which holds the development values). Output: `.output/public` with `index.html`, `200.html`, `404.html` and `_headers` (the security headers for Cloudflare).
 3. `pnpm release:check` searches `.output/public` (and `.output/edge`, the Worker bundle, if you made one with `npx wrangler@4 deploy --dry-run --outdir .output/edge`) for development addresses: `formalie.dev`, `:2202`, `:3033`, `:5004`, `:5005`, `localhost`, `127.0.0.1`, `mkcert`, `devcerts`. Any hit lists the file and exits 1; never deploy then. Fix the source (values belong in runtime config), not the check.
 4. Deploy with `npx wrangler@4 deploy` (DEPLOYMENT-GUIDE). The Worker's tests run with `pnpm test` (`test/edge/`), its types with `pnpm typecheck`.
+
+Nothing calls the old server-rendered form read any more: `INTERNAL_TOKEN` (the backend's half of the retired `NUXT_INTERNAL_TOKEN`) only guards the unused `GET /api/v1/internal/public-forms/{key}` and `GET /api/v1/internal/short/{code}` and stays empty in production (PRODUCTION-CHECKLIST section 2).
+
+
+## B17 security fixes: what changes on a development machine (2026-10-12)
+
+- **`DB_ADMIN_API_URL`** (new, in `.env`): the internal admin API's own login, `formalie_admin_api`. After adding it, run `fmly\Scripts\python.exe scripts\db_bootstrap.py` once (it creates the role and gives it the platform admin functions), then `alembic upgrade head` (migrations 0036 and 0037). Without it the internal admin API (and `scripts/dev_support_ticket.py`) can't run.
+- **`APP_ENV`** must be set (`development` here); unset means production, which refuses to start without production keys. `dev_code` and the other `dev_*` helpers only appear with `APP_ENV=development`.
+- **Local addresses:** `DATASOURCES_ALLOW_LOCAL`, `WEBHOOKS_ALLOW_LOCAL`, `EMAIL_SMTP_ALLOW_LOCAL` and `SSO_ALLOW_LOCAL` count in development and tests only. Documentation addresses (192.0.2.0/24, 198.51.100.0/24, 203.0.113.0/24) are blocked like private ones; tests that fake DNS use a public address.
+- **New settings:** `REQUEST_LOG_RETENTION_DAYS` (30) and `REQUEST_BODY_MAX_BYTES` (2 MB).
+- **New Beat jobs:** `forms.sweep_trash` (5 min), `notifications.announce_due` (1 min), `events.prune_processed` (daily), `db.drop_expired_partitions` (daily).

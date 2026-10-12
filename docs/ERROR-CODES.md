@@ -42,7 +42,7 @@ Format: `FRM-<DOMAIN>-<NNNN>`. Ranges: 1000–1999 client/validation, 5000–599
 | FRM-AUTH-1023 | 502 | Signing in with this provider didn't finish. Try again. | WARNING |
 | FRM-PERM-1001 | 403  | You don't have access to this.                                    | WARNING  |
 | FRM-TEN-1001  | 404  | Workspace not found.                                              | INFO     |
-| FRM-TEN-1002  | 403  | Workspace suspended.                                              | WARNING  |
+| FRM-TEN-1002  | 403  | Workspace suspended. (also a closed workspace: details `workspace: closed`) | WARNING  |
 | FRM-TEN-1003  | 403  | Access denied for this workspace. (token/subdomain mismatch)      | CRITICAL |
 | FRM-TEN-1004  | 409  | Subdomain not available.                                          | INFO     |
 | FRM-FORM-1001 | 404  | Form not found or not published.                                  | INFO     |
@@ -152,7 +152,9 @@ Format: `FRM-<DOMAIN>-<NNNN>`. Ranges: 1000–1999 client/validation, 5000–599
 | FRM-BILL-1006 | 400  | A payment webhook failed verification (signature, age or format); nothing is changed. | WARNING |
 | FRM-SET-1001  | 409  | Verify or test this first (an email domain before sending from it, a mail server before using it). | INFO |
 
-FRM-AUTH-1008 stays registered, but nothing raises it since 2026-10-12 (every workspace offers email and password, Google and Facebook).
+FRM-AUTH-1008 is no longer raised for sign-in methods (every workspace offers email and password, Google and Facebook, 2026-10-12). Since the B17 security review it answers a code resend through a channel the challenge doesn't offer (`details: channel not_offered`, e.g. email when the person has an authenticator app).
+
+B17 security review (2026-10-12): `FRM-FILE-1002` (413) is also the answer to any request body over `REQUEST_BODY_MAX_BYTES`; `FRM-GEN-5003` (503) answers sign-in and code routes while Redis is down (they fail closed); `FRM-DEST-1003` with `tls_required_with_saved_secrets`, `FRM-DEST-1004` with `ssh_host: host_key_changed`, `FRM-DEST-1001` with `descriptor`, and `FRM-PERM-1001` with `support: not_in_support_sessions` are new details on existing codes.
 
 ### Client-side codes (raised by the portal, never sent by the server)
 
