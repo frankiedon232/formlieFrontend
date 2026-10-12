@@ -65,3 +65,7 @@ content/     (nuxt/content: blog, changelog, fallback legal placeholders)
 i18n/        locales/{20 codes}.json
 public/      screenshots/ (copied from docs/screenshots, WebP) · og/ · favicon
 ```
+
+## Git
+
+This project is the branch `formalieSite` of https://github.com/frankiedon232/formlieFrontend (one branch per project, like `formalieFrontend` and `formalieBackend`). Commit and push there after each verified milestone: `git push origin formalieSite`.
