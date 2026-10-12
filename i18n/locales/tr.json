@@ -7991,7 +7991,9 @@
       "problem": {
         "unreachable": "Sunucuya bağlanamadık. Adresi, bağlantı noktasını ve sunucunun Formalie’den gelen bağlantıları kabul ettiğini kontrol edin.",
         "timeout": "Sunucu zamanında yanıt vermedi.",
-        "not_smtp": "Bir şey yanıt verdi ama bu bir posta sunucusu değil. Bağlantı noktasını kontrol edin."
+        "not_smtp": "Bir şey yanıt verdi ama bu bir posta sunucusu değil. Bağlantı noktasını kontrol edin.",
+        "auth_failed": "Sunucu kullanıcı adını veya parolayı reddetti.",
+        "sender_refused": "Sunucu bu adresten e-posta göndermiyor. Gönderen adresini veya hesabın gönderme izinlerini kontrol edin."
       },
       "remove": "Sunucuyu kaldır"
     },

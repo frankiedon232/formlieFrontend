@@ -7991,7 +7991,9 @@
       "problem": {
         "unreachable": "Chúng tôi không kết nối được với máy chủ. Hãy kiểm tra địa chỉ, cổng và xem máy chủ có chấp nhận kết nối từ Formalie không.",
         "timeout": "Máy chủ không phản hồi kịp thời.",
-        "not_smtp": "Có phản hồi, nhưng đó không phải máy chủ thư. Hãy kiểm tra cổng."
+        "not_smtp": "Có phản hồi, nhưng đó không phải máy chủ thư. Hãy kiểm tra cổng.",
+        "auth_failed": "Máy chủ đã từ chối tên người dùng hoặc mật khẩu.",
+        "sender_refused": "Máy chủ không gửi email từ địa chỉ này. Hãy kiểm tra địa chỉ người gửi hoặc quyền gửi của tài khoản."
       },
       "remove": "Xóa máy chủ"
     },

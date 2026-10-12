@@ -7991,7 +7991,9 @@
       "problem": {
         "unreachable": "We couldn't connect to the server. Check the address, port and that it accepts connections from Formalie.",
         "timeout": "The server didn't answer in time.",
-        "not_smtp": "Something answered, but it isn't a mail server. Check the port."
+        "not_smtp": "Something answered, but it isn't a mail server. Check the port.",
+        "auth_failed": "The server refused the user name or password.",
+        "sender_refused": "The server won't send emails from this address. Check the sender address or the account's sending rights."
       },
       "remove": "Remove server"
     },

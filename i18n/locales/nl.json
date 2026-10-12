@@ -7991,7 +7991,9 @@
       "problem": {
         "unreachable": "We konden geen verbinding maken met de server. Controleer het adres, de poort en of de server verbindingen van Formalie accepteert.",
         "timeout": "De server antwoordde niet op tijd.",
-        "not_smtp": "Er antwoordde iets, maar het is geen mailserver. Controleer de poort."
+        "not_smtp": "Er antwoordde iets, maar het is geen mailserver. Controleer de poort.",
+        "auth_failed": "De server weigerde de gebruikersnaam of het wachtwoord.",
+        "sender_refused": "De server verstuurt geen e-mails vanaf dit adres. Controleer het afzenderadres of de verzendrechten van het account."
       },
       "remove": "Server verwijderen"
     },

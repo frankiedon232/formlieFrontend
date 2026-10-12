@@ -7991,7 +7991,9 @@
       "problem": {
         "unreachable": "Kami tidak dapat terhubung ke server. Periksa alamat, port, dan apakah server menerima koneksi dari Formalie.",
         "timeout": "Server tidak menjawab tepat waktu.",
-        "not_smtp": "Ada yang menjawab, tetapi bukan server email. Periksa port."
+        "not_smtp": "Ada yang menjawab, tetapi bukan server email. Periksa port.",
+        "auth_failed": "Server menolak nama pengguna atau kata sandi.",
+        "sender_refused": "Server tidak mau mengirim email dari alamat ini. Periksa alamat pengirim atau hak kirim akun."
       },
       "remove": "Hapus server"
     },

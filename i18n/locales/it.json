@@ -7991,7 +7991,9 @@
       "problem": {
         "unreachable": "Non siamo riusciti a connetterci al server. Controlla indirizzo e porta e che accetti connessioni da Formalie.",
         "timeout": "Il server non ha risposto in tempo.",
-        "not_smtp": "Qualcosa ha risposto, ma non è un server di posta. Controlla la porta."
+        "not_smtp": "Qualcosa ha risposto, ma non è un server di posta. Controlla la porta.",
+        "auth_failed": "Il server ha rifiutato nome utente o password.",
+        "sender_refused": "Il server non invia email da questo indirizzo. Controlla l'indirizzo del mittente o i permessi di invio dell'account."
       },
       "remove": "Rimuovi server"
     },

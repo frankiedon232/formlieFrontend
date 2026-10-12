@@ -123,7 +123,8 @@ export interface SmtpServer {
   from_address: string
   status: 'untested' | 'working' | 'failed'
   checked_at: string | null
-  problem: 'unreachable' | 'timeout' | 'not_smtp' | null
+  // auth_failed: the user name or password was refused; sender_refused: the server won't send as this address (backend B11)
+  problem: 'unreachable' | 'timeout' | 'not_smtp' | 'auth_failed' | 'sender_refused' | null
 }
 
 /** GET /settings/emails/sending */

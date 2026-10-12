@@ -7991,7 +7991,9 @@
       "problem": {
         "unreachable": "No pudimos conectar con el servidor. Revisa la dirección, el puerto y que acepte conexiones de Formalie.",
         "timeout": "El servidor no respondió a tiempo.",
-        "not_smtp": "Algo respondió, pero no es un servidor de correo. Revisa el puerto."
+        "not_smtp": "Algo respondió, pero no es un servidor de correo. Revisa el puerto.",
+        "auth_failed": "El servidor rechazó el usuario o la contraseña.",
+        "sender_refused": "El servidor no envía correos desde esta dirección. Revisa la dirección del remitente o los permisos de envío de la cuenta."
       },
       "remove": "Quitar servidor"
     },

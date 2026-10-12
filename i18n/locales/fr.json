@@ -7991,7 +7991,9 @@
       "problem": {
         "unreachable": "Impossible de se connecter au serveur. Vérifiez l’adresse, le port et que le serveur accepte les connexions de Formalie.",
         "timeout": "Le serveur n’a pas répondu à temps.",
-        "not_smtp": "Quelque chose a répondu, mais ce n’est pas un serveur de messagerie. Vérifiez le port."
+        "not_smtp": "Quelque chose a répondu, mais ce n’est pas un serveur de messagerie. Vérifiez le port.",
+        "auth_failed": "Le serveur a refusé le nom d'utilisateur ou le mot de passe.",
+        "sender_refused": "Le serveur n'envoie pas d'e-mails depuis cette adresse. Vérifiez l'adresse d'expéditeur ou les droits d'envoi du compte."
       },
       "remove": "Supprimer le serveur"
     },

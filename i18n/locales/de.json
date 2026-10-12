@@ -7991,7 +7991,9 @@
       "problem": {
         "unreachable": "Wir konnten keine Verbindung zum Server herstellen. Prüfen Sie Adresse und Port und ob er Verbindungen von Formalie zulässt.",
         "timeout": "Der Server hat nicht rechtzeitig geantwortet.",
-        "not_smtp": "Etwas hat geantwortet, aber es ist kein Mailserver. Prüfen Sie den Port."
+        "not_smtp": "Etwas hat geantwortet, aber es ist kein Mailserver. Prüfen Sie den Port.",
+        "auth_failed": "Der Server hat Benutzername oder Passwort abgelehnt.",
+        "sender_refused": "Der Server versendet keine E-Mails von dieser Adresse. Prüfen Sie die Absenderadresse oder die Senderechte des Kontos."
       },
       "remove": "Server entfernen"
     },

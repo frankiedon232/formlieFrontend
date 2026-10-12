@@ -7991,7 +7991,9 @@
       "problem": {
         "unreachable": "Nie udało się połączyć z serwerem. Sprawdź adres, port i czy serwer przyjmuje połączenia z Formalie.",
         "timeout": "Serwer nie odpowiedział na czas.",
-        "not_smtp": "Coś odpowiedziało, ale to nie jest serwer poczty. Sprawdź port."
+        "not_smtp": "Coś odpowiedziało, ale to nie jest serwer poczty. Sprawdź port.",
+        "auth_failed": "Serwer odrzucił nazwę użytkownika lub hasło.",
+        "sender_refused": "Serwer nie wysyła wiadomości z tego adresu. Sprawdź adres nadawcy lub uprawnienia konta do wysyłania."
       },
       "remove": "Usuń serwer"
     },

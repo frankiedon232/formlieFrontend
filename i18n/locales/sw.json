@@ -7991,7 +7991,9 @@
       "problem": {
         "unreachable": "Hatukuweza kuunganisha na seva. Kagua anwani, mlango na kama seva inakubali miunganisho kutoka Formalie.",
         "timeout": "Seva haikujibu kwa wakati.",
-        "not_smtp": "Kuna kitu kimejibu, lakini si seva ya barua. Kagua mlango."
+        "not_smtp": "Kuna kitu kimejibu, lakini si seva ya barua. Kagua mlango.",
+        "auth_failed": "Seva imekataa jina la mtumiaji au nenosiri.",
+        "sender_refused": "Seva haitatuma barua pepe kutoka anwani hii. Kagua anwani ya mtumaji au ruhusa za kutuma za akaunti."
       },
       "remove": "Ondoa seva"
     },
