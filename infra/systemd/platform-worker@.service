@@ -1,0 +1,24 @@
+# Formalie Platform Celery worker, one unit per queue group (docs/04-HOSTING.md).
+# Start e.g.: systemctl enable --now platform-worker@ingest platform-worker@rollups platform-worker@actions
+# Groups: ingest, rollups, publish, actions, reports, mail, maintenance
+[Unit]
+Description=Formalie Platform worker (%i)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=platform
+Group=platform
+WorkingDirectory=/srv/platformapi/current
+EnvironmentFile=/etc/platformapi/env
+ExecStart=/srv/platformapi/current/padm/bin/celery -A app.workers.celery_app worker -Q %i -n %i@%%h --concurrency 4
+Restart=always
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/log/platformapi
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,22 @@
+# Formalie Platform scheduler (docs/04-HOSTING.md). Exactly one instance across all servers.
+[Unit]
+Description=Formalie Platform scheduler (Celery Beat)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=platform
+Group=platform
+WorkingDirectory=/srv/platformapi/current
+EnvironmentFile=/etc/platformapi/env
+ExecStart=/srv/platformapi/current/padm/bin/celery -A app.workers.celery_app beat --schedule /var/lib/platformapi/beat-schedule
+Restart=always
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/platformapi /var/log/platformapi
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,22 @@
+# Formalie Platform API (docs/04-HOSTING.md). Sketch: adjust paths, user and worker count.
+[Unit]
+Description=Formalie Platform API
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=platform
+Group=platform
+WorkingDirectory=/srv/platformapi/current
+EnvironmentFile=/etc/platformapi/env
+ExecStart=/srv/platformapi/current/padm/bin/uvicorn app.run:app --host 127.0.0.1 --port 5601 --workers 4 --proxy-headers --forwarded-allow-ips 127.0.0.1 --timeout-graceful-shutdown 30
+Restart=always
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/log/platformapi
+
+[Install]
+WantedBy=multi-user.target
