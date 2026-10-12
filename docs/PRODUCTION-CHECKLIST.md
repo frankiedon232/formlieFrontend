@@ -50,6 +50,7 @@ Generate fresh keys with `fmly\Scripts\python.exe scripts\gen_keys.py --write` o
 | `DNS_TIMEOUT_SECONDS` (B11) | `4` | ⬜ keep; the servers need a working DNS resolver (own domain and sending domain checks) |
 | `INTERNAL_TOKEN` | development value | ⬜ a new random value, the same as the frontend's `NUXT_INTERNAL_TOKEN` |
 | `LEGAL_TERMS_URL`, `LEGAL_PRIVACY_URL` | formalie.com pages | ⬜ check the pages exist on the website |
+| `SUPPORT_EMAIL`, `SUPPORT_URL` (B14) | `support@formalie.com`, empty | ⬜ the real support mailbox (it must receive mail) and, if there is one, the support page; shown on the help centre's home until the platform settings take over |
 | `STORAGE_DIR` | `data/storage` | ⬜ replaced by the object storage settings (to be added when storage is chosen) |
 | `DATASOURCES_ALLOW_LOCAL` | `false` | ⬜ `false` (never true in production) |
 | `WEBHOOKS_ALLOW_LOCAL` | `false` (`true` while trying a receiver on this machine) | ⬜ `false` (never true in production; ignored there anyway) |

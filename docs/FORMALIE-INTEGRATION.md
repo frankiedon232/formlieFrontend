@@ -26,7 +26,20 @@ The platform admin reads Formalie through its read replica, changes Formalie thr
 | `system_folders` | default folders |
 | `system_email_templates` | default email templates (20 languages) |
 | `system_templates`, `system_themes`, `system_page_designs` | catalogue items (publish, retire) |
-| `help_categories`, `help_articles`, `help_article_translations`, `help_faqs`, `help_glossary`, `help_tours` | published help centre |
+| `help_categories`, `help_articles`, `help_article_translations`, `help_faqs`, `help_faq_translations`, `help_glossary`, `help_glossary_translations`, `help_tours`, `help_tour_translations` | published help centre (shape fixed in B14, below) |
+
+**Help centre tables (B14, migration 0033; schema `platform`, text ids such as `first-form`).** Structure once, words per language (`language` is one of the 20 codes; English is the source and the fallback):
+
+| Table | Columns the platform writes |
+| --- | --- |
+| `help_categories` | key (one of `HELP_CATEGORIES`), sort |
+| `help_articles` | id, category, route (page pattern, `/forms/:id/build`, or null), related text[] (article ids), start_order ("New here?" order or null), popular, minutes, sort, retired_at |
+| `help_article_translations` | (article_id, language), title, summary, keywords text[], blocks jsonb (`HelpBlock[]`, shared/types/help.ts). `body` and `search` are generated: never written |
+| `help_faqs` · `help_faq_translations` | id, category, article_id, sort, retired_at · (faq_id, language), question, answer (`search` generated) |
+| `help_glossary` · `help_glossary_translations` | id, article_id, sort, retired_at · (term_id, language), term, definition (`search` generated) |
+| `help_tours` · `help_tour_translations` | id, route, targets text[] (the `data-help` controls, in step order), sort, retired_at · (tour_id, language), title, steps jsonb `[{ title, text }]` in the targets' order |
+
+Every one also has `created_at`, `updated_at` (set it when publishing: articles show the later of the article's and the translation's), `published_at` and `published_by_staff_id`. Retire with `retired_at` (no deletes). Formalie's seeder never overwrites a row with `published_by_staff_id` set. The platform reads (with `platform_reader`) what people send back: `formaly.help_feedback` (tenant table: tenant, person, article, language, helpful, comment, one row per person and article) and `platform.help_search_misses` (language, query_norm, count, first_at, last_at). After publishing help tables, send `platform.published` with the table names; Formalie drops its help cache (`app/modules/platform/published.py`).
 
 After writing, the platform publishes `platform.published { table, ids, version }` on the bus; Formalie drops its caches for those keys. Every write carries `published_by_staff_id` and `published_at`.
 
@@ -79,9 +92,9 @@ Delivery: at least once; the platform deduplicates by `id`. Formalie keeps 7 day
 ## 5. Formalie tasks (add to Formalie's backend plan)
 
 - ⬜ Database roles `platform_reader` (replica) and `platform_writer` (global tables) with the privileges above, created by migrations.
-- ⬜ Global tables listed in §1, read by the portal with caching and invalidation on `platform.published`.
+- 🟡 Global tables listed in §1, read by the portal with caching and invalidation on `platform.published` (the help centre's tables built in B14 with the invalidation hook; the bus consumer and the others with B16).
 - ⬜ Internal admin API (§2) with mTLS, HMAC signing, idempotency and `platform_support` audit entries.
 - ⬜ Support access consent in Settings → Security, support session tickets, banner (§3).
 - ⬜ Event publishing on `formalie.events` (§4), personal data stripped.
 - ⬜ Health endpoint for the operations module.
-- ⬜ Portal screens read announcements, feature flags, platform settings and help articles from the global tables (most already exist as mocks: legal links, default lists).
+- 🟡 Portal screens read announcements, feature flags, platform settings and help articles from the global tables (most already exist as mocks: legal links, default lists). Help articles: done in B14.
