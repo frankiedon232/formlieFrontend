@@ -805,7 +805,9 @@
       "ssoContinue": "Doorgaan met {label}",
       "ssoSuggested": "Adressen bij {domain} kunnen inloggen met {label}.",
       "ssoRequired": "Adressen bij {domain} loggen in met {label}.",
-      "ssoUnavailable": "Single sign-on werkt zodra de server van Formalie is verbonden. Log voorlopig in met je e-mail."
+      "ssoUnavailable": "Single sign-on werkt zodra de server van Formalie is verbonden. Log voorlopig in met je e-mail.",
+      "socialHint": "Aangemeld met Google, Microsoft of Facebook? Gebruik die knop hierboven, of",
+      "socialHintLink": "stel een wachtwoord in"
     },
     "otp": {
       "label": "Code van 6 cijfers",
@@ -865,7 +867,10 @@
       "redirecting": "Je nieuwe werkruimte wordt geopend…",
       "haveAccount": "Heb je al een werkruimte?",
       "orEmail": "of meld je aan met e-mail",
-      "oauthUnavailable": "Aanmelden met {provider} is nog niet gekoppeld. Gebruik voorlopig je e-mailadres."
+      "oauthUnavailable": "Aanmelden met {provider} is nog niet gekoppeld. Gebruik voorlopig je e-mailadres.",
+      "existingTitle": "Dit e-mailadres heeft al een werkruimte: | Dit e-mailadres heeft al {n} werkruimtes:",
+      "existingOpen": "Openen",
+      "existingOr": "Of maak hieronder nog een werkruimte aan."
     },
     "find": {
       "title": "Vind je werkruimte",

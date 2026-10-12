@@ -805,7 +805,9 @@
       "ssoContinue": "Kontynuuj z {label}",
       "ssoSuggested": "Adresy w domenie {domain} mogą logować się przez {label}.",
       "ssoRequired": "Adresy w domenie {domain} logują się przez {label}.",
-      "ssoUnavailable": "Jednokrotne logowanie zadziała po połączeniu z serwerem Formalie. Na razie zaloguj się e-mailem."
+      "ssoUnavailable": "Jednokrotne logowanie zadziała po połączeniu z serwerem Formalie. Na razie zaloguj się e-mailem.",
+      "socialHint": "Zarejestrowano przez Google, Microsoft lub Facebook? Użyj tego przycisku powyżej albo",
+      "socialHintLink": "ustaw hasło"
     },
     "otp": {
       "label": "6-cyfrowy kod",
@@ -865,7 +867,10 @@
       "redirecting": "Otwieranie nowego obszaru roboczego…",
       "haveAccount": "Masz już obszar roboczy?",
       "orEmail": "lub zarejestruj się e-mailem",
-      "oauthUnavailable": "Rejestracja przez {provider} nie jest jeszcze podłączona. Na razie użyj adresu e-mail."
+      "oauthUnavailable": "Rejestracja przez {provider} nie jest jeszcze podłączona. Na razie użyj adresu e-mail.",
+      "existingTitle": "Ten adres ma już przestrzeń roboczą: | Ten adres ma już przestrzenie robocze ({n}):",
+      "existingOpen": "Otwórz",
+      "existingOr": "Albo utwórz poniżej kolejną przestrzeń roboczą."
     },
     "find": {
       "title": "Znajdź swój obszar roboczy",

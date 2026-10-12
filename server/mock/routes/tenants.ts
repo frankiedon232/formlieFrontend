@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import type { H3Event } from 'h3'
 import { hasFeature } from '../core/plan'
 import type { SubdomainAvailability, TenantPublicProfile, WorkspaceLink } from '#shared/types/auth'
 import { isValidSubdomain, RESERVED_SUBDOMAINS } from '#shared/utils/tenant/host'
@@ -86,22 +87,23 @@ export const findWorkspace = defineMockRoute(({ body }) => {
 const verifySchema = z.object({ challenge_id: z.string(), code: z.string().regex(/^\d{6}$/) })
 
 /** POST /tenants/find-workspace/verify → every workspace this email belongs to. */
+/** The active workspaces this (already verified) email has an account in, with a sign-in link to each. */
+export function workspacesOf(event: H3Event, email: string): WorkspaceLink[] {
+  const { public: config } = useRuntimeConfig(event)
+  const port = getRequestURL(event).port
+  const address = email.toLowerCase()
+  return MOCK_TENANTS.filter(
+    tenant => tenant.status === 'active' && MOCK_USERS.some(u => u.tenant_id === tenant.id && u.email.toLowerCase() === address),
+  ).map(tenant => ({
+    name: tenant.name,
+    subdomain: tenant.subdomain,
+    url: `https://${tenant.subdomain}.${config.rootDomain}${port ? `:${port}` : ''}/auth/login?email=${encodeURIComponent(email)}`,
+  }))
+}
+
 export const findWorkspaceVerify = defineMockRoute(({ event, body }) => {
   const { challenge_id, code } = parseBody(verifySchema, body)
   const challenge = verifyChallenge(challenge_id, code, 'find')
   consumeChallenge(challenge_id)
-  const { public: config } = useRuntimeConfig(event)
-  const port = getRequestURL(event).port
-  const workspaces: WorkspaceLink[] = MOCK_TENANTS.filter(
-    tenant =>
-      tenant.status === 'active' &&
-      MOCK_USERS.some(
-        u => u.tenant_id === tenant.id && u.email.toLowerCase() === challenge.email.toLowerCase(),
-      ),
-  ).map(tenant => ({
-    name: tenant.name,
-    subdomain: tenant.subdomain,
-    url: `https://${tenant.subdomain}.${config.rootDomain}${port ? `:${port}` : ''}/auth/login?email=${encodeURIComponent(challenge.email)}`,
-  }))
-  return ok(workspaces)
+  return ok(workspacesOf(event, challenge.email))
 })

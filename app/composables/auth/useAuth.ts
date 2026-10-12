@@ -109,6 +109,14 @@ export function useAuth() {
     setPending('signup', input.email, response)
   }
 
+  /** After the email is verified: the workspaces it already has (none for most people). */
+  async function signupWorkspaces() {
+    const current = pending.value
+    if (!current || current.purpose !== 'signup') return []
+    const { data } = await api.get<WorkspaceLink[]>('/auth/signup/workspaces', { challenge_id: current.challenge.challenge_id })
+    return data
+  }
+
   /** Creates the workspace; resolves to the new workspace URL (one-time ticket inside). */
   async function completeSignup(companyName: string, subdomain: string) {
     const current = pending.value
@@ -169,6 +177,7 @@ export function useAuth() {
     verify,
     resend,
     signup,
+    signupWorkspaces,
     completeSignup,
     resumeOAuth,
     exchangeTicket,

@@ -805,7 +805,9 @@
       "ssoContinue": "Continue with {label}",
       "ssoSuggested": "Addresses at {domain} can sign in with {label}.",
       "ssoRequired": "Addresses at {domain} sign in with {label}.",
-      "ssoUnavailable": "Single sign-on works once Formalie's server is connected. Sign in with your email for now."
+      "ssoUnavailable": "Single sign-on works once Formalie's server is connected. Sign in with your email for now.",
+      "socialHint": "Signed up with Google, Microsoft or Facebook? Use that button above, or",
+      "socialHintLink": "set a password"
     },
     "otp": {
       "label": "6-digit code",
@@ -865,7 +867,10 @@
       "redirecting": "Opening your new workspace…",
       "haveAccount": "Already have a workspace?",
       "orEmail": "or sign up with email",
-      "oauthUnavailable": "Sign-up with {provider} isn't connected yet. Use your email address for now."
+      "oauthUnavailable": "Sign-up with {provider} isn't connected yet. Use your email address for now.",
+      "existingTitle": "This email already has a workspace: | This email already has {n} workspaces:",
+      "existingOpen": "Open",
+      "existingOr": "Or create another workspace below."
     },
     "find": {
       "title": "Find your workspace",

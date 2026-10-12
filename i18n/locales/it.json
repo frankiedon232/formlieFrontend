@@ -805,7 +805,9 @@
       "ssoContinue": "Continua con {label}",
       "ssoSuggested": "Gli indirizzi di {domain} possono accedere con {label}.",
       "ssoRequired": "Gli indirizzi di {domain} accedono con {label}.",
-      "ssoUnavailable": "Il single sign-on funziona quando il server di Formalie è collegato. Per ora accedi con la tua email."
+      "ssoUnavailable": "Il single sign-on funziona quando il server di Formalie è collegato. Per ora accedi con la tua email.",
+      "socialHint": "Ti sei registrato con Google, Microsoft o Facebook? Usa quel pulsante qui sopra, oppure",
+      "socialHintLink": "imposta una password"
     },
     "otp": {
       "label": "Codice a 6 cifre",
@@ -865,7 +867,10 @@
       "redirecting": "Apertura del tuo nuovo spazio…",
       "haveAccount": "Hai già uno spazio?",
       "orEmail": "oppure registrati con l’email",
-      "oauthUnavailable": "La registrazione con {provider} non è ancora collegata. Per ora usa il tuo indirizzo email."
+      "oauthUnavailable": "La registrazione con {provider} non è ancora collegata. Per ora usa il tuo indirizzo email.",
+      "existingTitle": "Questa email ha già uno spazio di lavoro: | Questa email ha già {n} spazi di lavoro:",
+      "existingOpen": "Apri",
+      "existingOr": "Oppure crea un altro spazio di lavoro qui sotto."
     },
     "find": {
       "title": "Trova il tuo spazio",

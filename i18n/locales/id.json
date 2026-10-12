@@ -805,7 +805,9 @@
       "ssoContinue": "Lanjutkan dengan {label}",
       "ssoSuggested": "Alamat di {domain} dapat masuk dengan {label}.",
       "ssoRequired": "Alamat di {domain} masuk dengan {label}.",
-      "ssoUnavailable": "Single sign-on berfungsi setelah server Formalie terhubung. Untuk sementara, masuk dengan email Anda."
+      "ssoUnavailable": "Single sign-on berfungsi setelah server Formalie terhubung. Untuk sementara, masuk dengan email Anda.",
+      "socialHint": "Mendaftar dengan Google, Microsoft, atau Facebook? Gunakan tombol itu di atas, atau",
+      "socialHintLink": "atur kata sandi"
     },
     "otp": {
       "label": "Kode 6 digit",
@@ -865,7 +867,10 @@
       "redirecting": "Membuka ruang kerja baru Anda…",
       "haveAccount": "Sudah punya ruang kerja?",
       "orEmail": "atau daftar dengan email",
-      "oauthUnavailable": "Pendaftaran dengan {provider} belum terhubung. Untuk sementara gunakan alamat email Anda."
+      "oauthUnavailable": "Pendaftaran dengan {provider} belum terhubung. Untuk sementara gunakan alamat email Anda.",
+      "existingTitle": "Email ini sudah memiliki ruang kerja: | Email ini sudah memiliki {n} ruang kerja:",
+      "existingOpen": "Buka",
+      "existingOr": "Atau buat ruang kerja lain di bawah."
     },
     "find": {
       "title": "Temukan ruang kerja Anda",

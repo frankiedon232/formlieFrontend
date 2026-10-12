@@ -212,6 +212,20 @@ async function onSubmit(event: FormSubmitEvent<{ email: string; password?: strin
       </UButton>
     </UForm>
 
+    <!-- Wrong password where the workspace also offers Google, Microsoft or Facebook: people who signed up that
+         way have no password. Shown to everyone after the same error, so it says nothing about the account. -->
+    <p
+      v-if="!isManage && hasSocial && error?.code === 'FRM-AUTH-1002'"
+      class="mt-4 flex items-start gap-2 rounded-lg bg-elevated/50 p-3 text-xs text-muted"
+      aria-live="polite"
+    >
+      <UIcon name="i-lucide-info" class="mt-0.5 size-3.5 shrink-0" />
+      <span>
+        {{ t('auth.login.socialHint') }}
+        <ULink to="/auth/forgot-password" class="font-medium text-highlighted underline-offset-4 hover:underline">{{ t('auth.login.socialHintLink') }}</ULink>
+      </span>
+    </p>
+
     <p class="mt-6 flex items-center justify-center gap-1.5 text-xs text-muted">
       <UIcon name="i-lucide-shield-check" class="size-3.5 shrink-0" />
       {{ t('auth.login.secureNote') }}

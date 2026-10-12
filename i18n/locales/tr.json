@@ -805,7 +805,9 @@
       "ssoContinue": "{label} ile devam et",
       "ssoSuggested": "{domain} adresleri {label} ile giriş yapabilir.",
       "ssoRequired": "{domain} adresleri {label} ile giriş yapar.",
-      "ssoUnavailable": "Çoklu oturum açma, Formalie sunucusu bağlandığında çalışır. Şimdilik e-postanızla giriş yapın."
+      "ssoUnavailable": "Çoklu oturum açma, Formalie sunucusu bağlandığında çalışır. Şimdilik e-postanızla giriş yapın.",
+      "socialHint": "Google, Microsoft veya Facebook ile mi kaydoldunuz? Yukarıdaki o düğmeyi kullanın ya da",
+      "socialHintLink": "bir parola belirleyin"
     },
     "otp": {
       "label": "6 haneli kod",
@@ -865,7 +867,10 @@
       "redirecting": "Yeni çalışma alanınız açılıyor…",
       "haveAccount": "Zaten bir çalışma alanınız var mı?",
       "orEmail": "ya da e-postayla kaydolun",
-      "oauthUnavailable": "{provider} ile kayıt henüz bağlı değil. Şimdilik e-posta adresinizi kullanın."
+      "oauthUnavailable": "{provider} ile kayıt henüz bağlı değil. Şimdilik e-posta adresinizi kullanın.",
+      "existingTitle": "Bu e-postanın zaten bir çalışma alanı var: | Bu e-postanın zaten {n} çalışma alanı var:",
+      "existingOpen": "Aç",
+      "existingOr": "Ya da aşağıda başka bir çalışma alanı oluşturun."
     },
     "find": {
       "title": "Çalışma alanınızı bulun",

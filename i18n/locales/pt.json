@@ -805,7 +805,9 @@
       "ssoContinue": "Continuar com {label}",
       "ssoSuggested": "Endereços em {domain} podem entrar com {label}.",
       "ssoRequired": "Endereços em {domain} entram com {label}.",
-      "ssoUnavailable": "O login único funciona quando o servidor do Formalie estiver conectado. Por enquanto, entre com seu e-mail."
+      "ssoUnavailable": "O login único funciona quando o servidor do Formalie estiver conectado. Por enquanto, entre com seu e-mail.",
+      "socialHint": "Cadastrou-se com Google, Microsoft ou Facebook? Use esse botão acima, ou",
+      "socialHintLink": "defina uma senha"
     },
     "otp": {
       "label": "Código de 6 dígitos",
@@ -865,7 +867,10 @@
       "redirecting": "Abrindo seu novo espaço…",
       "haveAccount": "Já tem um espaço?",
       "orEmail": "ou cadastre-se com e-mail",
-      "oauthUnavailable": "O cadastro com {provider} ainda não está conectado. Use seu endereço de e-mail por enquanto."
+      "oauthUnavailable": "O cadastro com {provider} ainda não está conectado. Use seu endereço de e-mail por enquanto.",
+      "existingTitle": "Este e-mail já tem um espaço de trabalho: | Este e-mail já tem {n} espaços de trabalho:",
+      "existingOpen": "Abrir",
+      "existingOr": "Ou crie outro espaço de trabalho abaixo."
     },
     "find": {
       "title": "Encontre seu espaço",

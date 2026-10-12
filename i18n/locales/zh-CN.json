@@ -805,7 +805,9 @@
       "ssoContinue": "使用 {label} 继续",
       "ssoSuggested": "{domain} 的地址可以使用 {label} 登录。",
       "ssoRequired": "{domain} 的地址使用 {label} 登录。",
-      "ssoUnavailable": "Formalie 服务器连接后，单点登录才可使用。目前请使用邮箱登录。"
+      "ssoUnavailable": "Formalie 服务器连接后，单点登录才可使用。目前请使用邮箱登录。",
+      "socialHint": "是用 Google、Microsoft 或 Facebook 注册的吗？请使用上方对应的按钮，或",
+      "socialHintLink": "设置密码"
     },
     "otp": {
       "label": "6 位验证码",
@@ -865,7 +867,10 @@
       "redirecting": "正在打开新工作区…",
       "haveAccount": "已有工作区？",
       "orEmail": "或使用邮箱注册",
-      "oauthUnavailable": "使用 {provider} 注册尚未接通，请暂时使用电子邮箱地址。"
+      "oauthUnavailable": "使用 {provider} 注册尚未接通，请暂时使用电子邮箱地址。",
+      "existingTitle": "此邮箱已有一个工作区： | 此邮箱已有 {n} 个工作区：",
+      "existingOpen": "打开",
+      "existingOr": "或在下方创建另一个工作区。"
     },
     "find": {
       "title": "找到您的工作区",

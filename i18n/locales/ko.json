@@ -805,7 +805,9 @@
       "ssoContinue": "{label}(으)로 계속",
       "ssoSuggested": "{domain} 주소는 {label}(으)로 로그인할 수 있습니다.",
       "ssoRequired": "{domain} 주소는 {label}(으)로 로그인합니다.",
-      "ssoUnavailable": "싱글 사인온은 Formalie 서버가 연결되면 작동합니다. 지금은 이메일로 로그인하세요."
+      "ssoUnavailable": "싱글 사인온은 Formalie 서버가 연결되면 작동합니다. 지금은 이메일로 로그인하세요.",
+      "socialHint": "Google, Microsoft 또는 Facebook으로 가입하셨나요? 위의 해당 버튼을 사용하거나",
+      "socialHintLink": "비밀번호를 설정하세요"
     },
     "otp": {
       "label": "6자리 코드",
@@ -865,7 +867,10 @@
       "redirecting": "새 워크스페이스를 여는 중…",
       "haveAccount": "이미 워크스페이스가 있나요?",
       "orEmail": "또는 이메일로 가입",
-      "oauthUnavailable": "{provider}로 가입하는 기능은 아직 연결되지 않았습니다. 지금은 이메일 주소를 사용하세요."
+      "oauthUnavailable": "{provider}로 가입하는 기능은 아직 연결되지 않았습니다. 지금은 이메일 주소를 사용하세요.",
+      "existingTitle": "이 이메일에는 이미 워크스페이스가 있습니다: | 이 이메일에는 이미 워크스페이스가 {n}개 있습니다:",
+      "existingOpen": "열기",
+      "existingOr": "또는 아래에서 다른 워크스페이스를 만드세요."
     },
     "find": {
       "title": "워크스페이스 찾기",

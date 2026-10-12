@@ -805,7 +805,9 @@
       "ssoContinue": "Tiếp tục với {label}",
       "ssoSuggested": "Địa chỉ thuộc {domain} có thể đăng nhập bằng {label}.",
       "ssoRequired": "Địa chỉ thuộc {domain} đăng nhập bằng {label}.",
-      "ssoUnavailable": "Đăng nhập một lần hoạt động khi máy chủ của Formalie được kết nối. Tạm thời hãy đăng nhập bằng email."
+      "ssoUnavailable": "Đăng nhập một lần hoạt động khi máy chủ của Formalie được kết nối. Tạm thời hãy đăng nhập bằng email.",
+      "socialHint": "Bạn đã đăng ký bằng Google, Microsoft hoặc Facebook? Hãy dùng nút đó ở trên, hoặc",
+      "socialHintLink": "đặt mật khẩu"
     },
     "otp": {
       "label": "Mã 6 chữ số",
@@ -865,7 +867,10 @@
       "redirecting": "Đang mở không gian làm việc mới…",
       "haveAccount": "Đã có không gian làm việc?",
       "orEmail": "hoặc đăng ký bằng email",
-      "oauthUnavailable": "Đăng ký bằng {provider} chưa được kết nối. Tạm thời hãy dùng địa chỉ email."
+      "oauthUnavailable": "Đăng ký bằng {provider} chưa được kết nối. Tạm thời hãy dùng địa chỉ email.",
+      "existingTitle": "Email này đã có một không gian làm việc: | Email này đã có {n} không gian làm việc:",
+      "existingOpen": "Mở",
+      "existingOr": "Hoặc tạo thêm một không gian làm việc bên dưới."
     },
     "find": {
       "title": "Tìm không gian làm việc",

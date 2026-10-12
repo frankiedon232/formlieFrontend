@@ -805,7 +805,9 @@
       "ssoContinue": "Endelea na {label}",
       "ssoSuggested": "Anwani za {domain} zinaweza kuingia kwa {label}.",
       "ssoRequired": "Anwani za {domain} huingia kwa {label}.",
-      "ssoUnavailable": "Kuingia mara moja hufanya kazi seva ya Formalie ikishaunganishwa. Kwa sasa, ingia kwa barua pepe yako."
+      "ssoUnavailable": "Kuingia mara moja hufanya kazi seva ya Formalie ikishaunganishwa. Kwa sasa, ingia kwa barua pepe yako.",
+      "socialHint": "Ulijisajili kwa Google, Microsoft au Facebook? Tumia kitufe hicho hapo juu, au",
+      "socialHintLink": "weka nenosiri"
     },
     "otp": {
       "label": "Msimbo wa tarakimu 6",
@@ -865,7 +867,10 @@
       "redirecting": "Inafungua eneo lako jipya la kazi…",
       "haveAccount": "Tayari una eneo la kazi?",
       "orEmail": "au jisajili kwa barua pepe",
-      "oauthUnavailable": "Usajili kwa {provider} bado haujaunganishwa. Kwa sasa tumia anwani yako ya barua pepe."
+      "oauthUnavailable": "Usajili kwa {provider} bado haujaunganishwa. Kwa sasa tumia anwani yako ya barua pepe.",
+      "existingTitle": "Barua pepe hii tayari ina eneo la kazi: | Barua pepe hii tayari ina maeneo ya kazi {n}:",
+      "existingOpen": "Fungua",
+      "existingOr": "Au unda eneo jingine la kazi hapa chini."
     },
     "find": {
       "title": "Tafuta eneo lako la kazi",

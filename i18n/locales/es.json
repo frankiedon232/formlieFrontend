@@ -805,7 +805,9 @@
       "ssoContinue": "Continuar con {label}",
       "ssoSuggested": "Las direcciones de {domain} pueden iniciar sesión con {label}.",
       "ssoRequired": "Las direcciones de {domain} inician sesión con {label}.",
-      "ssoUnavailable": "El inicio de sesión único funciona cuando el servidor de Formalie está conectado. Por ahora, inicia sesión con tu correo."
+      "ssoUnavailable": "El inicio de sesión único funciona cuando el servidor de Formalie está conectado. Por ahora, inicia sesión con tu correo.",
+      "socialHint": "¿Te registraste con Google, Microsoft o Facebook? Usa ese botón de arriba, o",
+      "socialHintLink": "crea una contraseña"
     },
     "otp": {
       "label": "Código de 6 dígitos",
@@ -865,7 +867,10 @@
       "redirecting": "Abriendo tu nuevo espacio…",
       "haveAccount": "¿Ya tienes un espacio?",
       "orEmail": "o regístrate con tu correo",
-      "oauthUnavailable": "El registro con {provider} aún no está conectado. Usa tu correo electrónico por ahora."
+      "oauthUnavailable": "El registro con {provider} aún no está conectado. Usa tu correo electrónico por ahora.",
+      "existingTitle": "Este correo ya tiene un espacio de trabajo: | Este correo ya tiene {n} espacios de trabajo:",
+      "existingOpen": "Abrir",
+      "existingOr": "O crea otro espacio de trabajo abajo."
     },
     "find": {
       "title": "Encuentra tu espacio",

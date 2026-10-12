@@ -805,7 +805,9 @@
       "ssoContinue": "{label} で続ける",
       "ssoSuggested": "{domain} のアドレスは {label} でログインできます。",
       "ssoRequired": "{domain} のアドレスは {label} でログインします。",
-      "ssoUnavailable": "シングルサインオンは、Formalie のサーバーに接続すると使えます。今はメールアドレスでログインしてください。"
+      "ssoUnavailable": "シングルサインオンは、Formalie のサーバーに接続すると使えます。今はメールアドレスでログインしてください。",
+      "socialHint": "Google、Microsoft、Facebook で登録しましたか？上のそのボタンを使うか、",
+      "socialHintLink": "パスワードを設定してください"
     },
     "otp": {
       "label": "6 桁のコード",
@@ -865,7 +867,10 @@
       "redirecting": "新しいワークスペースを開いています…",
       "haveAccount": "すでにワークスペースをお持ちですか？",
       "orEmail": "またはメールアドレスで登録",
-      "oauthUnavailable": "{provider} での登録はまだ接続されていません。当面はメールアドレスをご利用ください。"
+      "oauthUnavailable": "{provider} での登録はまだ接続されていません。当面はメールアドレスをご利用ください。",
+      "existingTitle": "このメールアドレスにはすでにワークスペースがあります: | このメールアドレスにはすでに {n} 件のワークスペースがあります:",
+      "existingOpen": "開く",
+      "existingOr": "または、下で別のワークスペースを作成します。"
     },
     "find": {
       "title": "ワークスペースを探す",

@@ -1141,7 +1141,9 @@ The backend (`formlyBackend`) is built in phases B0 to B17; its own tracker is `
 
 ### SB M2, Areas the backend has built (B0 to B9): owner testing ⬜
 
-- ⬜ Sign-in, sign-up, find workspace, codes, forgot / reset password, social sign-in (Google, Microsoft, Facebook), sessions (B1)
+- ✅ Social sign-up and sign-in with Google, Microsoft and Facebook (owner-tested 2026-10-12; fixed on the way: the dev proxy now hands redirects to the browser, and the Microsoft client id in the backend `.env` was the Secret ID)
+- ⬜ Sign-in and sign-up with email and password, find workspace, codes, forgot / reset password, sessions (B1)
+- ⬜ Workspace sign-in options added and switched on by the workspace itself (single sign-on, providers per workspace): with backend B11
 - ⬜ Audit trail: list, filters, detail, export (B2)
 - ⬜ Onboarding; Settings: company, branding, localisation, appearance, security, form defaults; uploads; organisation data (B3)
 - ⬜ People, invitations, roles and scopes, my profile, two-step sign-in (B4)
@@ -1165,6 +1167,10 @@ The backend (`formlyBackend`) is built in phases B0 to B17; its own tracker is `
 - ⬜ Web addresses: the onboarding website field and the thank-you redirect (`thank_you.redirect_url`) accept any address zod's `z.url()` takes, including `javascript:` and `mailto:`; allow `http(s)` only, as the backend does
 - ⬜ Emails for respondents: email templates for a form invitation, a respondent's email code and a "continue later" link (the backend sends them; the frontend has no templates to edit yet)
 - ⬜ Mock in line with the backend: an unknown `/api/v1` address without an envelope answers `400 FRM-SEC-1001`
+
+- ✅ Sign-up: when the verified email already has workspaces, the workspace step lists them with Open before making another (`GET /auth/signup/workspaces`, mock and contract; owner 2026-10-12)
+- ✅ Sign-in: a general hint under "Invalid email or password" where the workspace offers Google, Microsoft or Facebook (use that button, or set a password); the screen still says nothing about the account (owner 2026-10-12)
+- ⬜ Backend: `GET /auth/signup/workspaces`, and the email to an account with no password when someone tries one (at most once an hour); until then the sign-up panel simply stays hidden
 
 ### SB M5, Mock off for good ⬜
 
@@ -1394,6 +1400,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-10 | Before the backend: the organisation logo opens Settings → Company; hide Workspace setup once done; remove the sign-in picture from Branding; a Formalie brand kit (logo, icon, favicon) used everywhere, zipped for the website and platform admin |
 | 2026-10-10 | Review the backend project's day-one files (formlyBackend) against the finished frontend and update them before backend work starts; write straight into the backend folder |
 | 2026-10-12 | Switch the frontend to formlyBackend now for the areas it has built (B0 to B9); the owner tests; PROGRESS must show the breakdown of what is done and what is left |
+| 2026-10-12 | Sign-up: warn when the email already has a workspace (open it, or create another). Password tried on an account made with Google, Microsoft or Facebook: a general hint on screen and an email to the real owner, nothing revealed to strangers |
 
 ---
 
@@ -1698,3 +1705,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-10 | Brand kit (Field F) | The owner chose Field F from six concepts. `docs/brand/` holds the SVG sources (mark, inverse, accent, glyph, lockups), PNG sizes, favicon.ico / favicon.svg, apple-touch and PWA icons, manifest, OG image and BRAND.md; `scripts/brand/render.mjs` renders them. The portal uses it everywhere: `i-formalie-mark` (custom icon collection) in the menu, sign-in hub and showcase, Secured by Formalie, onboarding, the in-app browser, the email sender and the sign-in preview; the first-load screen; the browser tab icons and manifest (a workspace's own tab icon still replaces them). Copied into `formalieSite/docs/brand/` and zipped as `formalie-brand.zip` for the website and the platform admin. |
 | 2026-10-10 | Backend files aligned | formlyBackend's day-one docs (2 Oct) were far behind: its API contract listed about 70 endpoints, while the mock answers 399, plus the public API service. Refreshed the shared docs from this project: overview (live collaboration removed; RBAC, dashboard and audit trail updated; Payoneer plans), architecture, dev environment (no Docker), decisions, API contract, error codes (121), security protocol, option lists. Added ENDPOINTS.md, a checklist generated from the mock router with guards, permissions and audit actions per file. Added FRONTEND-REFERENCE.md: the `shared/` rules to port with parity tests, the default data to seed, and what the mock fakes. Also added PLATFORM-ADMIN-INTEGRATION.md. Updated BACKEND-SPEC (references, permissions with scope, audit, public forms, API service, data sources, AI, emails, settings, Payoneer, platform bridge). Rebuilt DATABASE-DESIGN, and reordered BACKEND-ROADMAP (B0 to B17) to follow the frontend. CLAUDE.md and START-PROMPT updated. The project is called formlyBackend everywhere. |
 | 2026-10-12 | Switch-over started (SB) | Backend at B0 to B9 (273 of 411 endpoints). Review against its real routes: all match; two fixes (proxy forwards the visitor's IP, internal token for server-rendered form pages), codes on screen only with the mock, shared docs synced both ways. Mock off in `.env`. New phase SB in this file with every area to test, and the backend's PROGRESS now breaks down B10 to B17. |
+| 2026-10-12 | Social sign-in tested, sign-up and password hints | The owner's first test passed: sign-up and sign-in with Google, Microsoft and Facebook against the real backend. Two fixes on the way: the dev proxy hands redirects to the browser, and the Microsoft client id was the Secret ID (backend README updated, the unused `:5004` redirect address removed). New: existing workspaces listed on sign-up (`GET /auth/signup/workspaces`) and a general hint after a wrong password where social buttons exist; the backend part is handed to the backend session. |

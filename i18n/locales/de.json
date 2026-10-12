@@ -805,7 +805,9 @@
       "ssoContinue": "Weiter mit {label}",
       "ssoSuggested": "Adressen bei {domain} können sich mit {label} anmelden.",
       "ssoRequired": "Adressen bei {domain} melden sich mit {label} an.",
-      "ssoUnavailable": "Single Sign-on funktioniert, sobald der Formalie-Server verbunden ist. Melden Sie sich vorerst mit Ihrer E-Mail an."
+      "ssoUnavailable": "Single Sign-on funktioniert, sobald der Formalie-Server verbunden ist. Melden Sie sich vorerst mit Ihrer E-Mail an.",
+      "socialHint": "Mit Google, Microsoft oder Facebook registriert? Nutzen Sie oben diese Schaltfläche, oder",
+      "socialHintLink": "legen Sie ein Passwort fest"
     },
     "otp": {
       "label": "6-stelliger Code",
@@ -865,7 +867,10 @@
       "redirecting": "Ihr neuer Arbeitsbereich wird geöffnet…",
       "haveAccount": "Sie haben schon einen Arbeitsbereich?",
       "orEmail": "oder mit E-Mail registrieren",
-      "oauthUnavailable": "Die Registrierung mit {provider} ist noch nicht verbunden. Nutzen Sie vorerst Ihre E-Mail-Adresse."
+      "oauthUnavailable": "Die Registrierung mit {provider} ist noch nicht verbunden. Nutzen Sie vorerst Ihre E-Mail-Adresse.",
+      "existingTitle": "Diese E-Mail hat bereits einen Workspace: | Diese E-Mail hat bereits {n} Workspaces:",
+      "existingOpen": "Öffnen",
+      "existingOr": "Oder legen Sie unten einen weiteren Workspace an."
     },
     "find": {
       "title": "Arbeitsbereich finden",

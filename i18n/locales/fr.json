@@ -805,7 +805,9 @@
       "ssoContinue": "Continuer avec {label}",
       "ssoSuggested": "Les adresses du domaine {domain} peuvent se connecter avec {label}.",
       "ssoRequired": "Les adresses du domaine {domain} se connectent avec {label}.",
-      "ssoUnavailable": "L’authentification unique fonctionne une fois le serveur de Formalie connecté. Connectez-vous avec votre e-mail pour le moment."
+      "ssoUnavailable": "L’authentification unique fonctionne une fois le serveur de Formalie connecté. Connectez-vous avec votre e-mail pour le moment.",
+      "socialHint": "Inscrit avec Google, Microsoft ou Facebook ? Utilisez ce bouton ci-dessus, ou",
+      "socialHintLink": "définissez un mot de passe"
     },
     "otp": {
       "label": "Code à 6 chiffres",
@@ -865,7 +867,10 @@
       "redirecting": "Ouverture de votre nouvel espace…",
       "haveAccount": "Vous avez déjà un espace ?",
       "orEmail": "ou inscrivez-vous par e-mail",
-      "oauthUnavailable": "L’inscription avec {provider} n’est pas encore connectée. Utilisez votre adresse e-mail pour le moment."
+      "oauthUnavailable": "L’inscription avec {provider} n’est pas encore connectée. Utilisez votre adresse e-mail pour le moment.",
+      "existingTitle": "Cette adresse a déjà un espace de travail : | Cette adresse a déjà {n} espaces de travail :",
+      "existingOpen": "Ouvrir",
+      "existingOr": "Ou créez un autre espace de travail ci-dessous."
     },
     "find": {
       "title": "Retrouvez votre espace",

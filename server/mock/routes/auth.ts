@@ -22,6 +22,7 @@ import {
   verifyChallenge,
 } from '../core/auth'
 import { actorOf, anonymousActor, recordAudit } from '../core/audit'
+import { workspacesOf } from './tenants'
 import { MockError, ok } from '../core/respond'
 import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
@@ -274,6 +275,18 @@ const completeSchema = z.object({
 })
 
 /** POST /auth/signup/complete → creates tenant + organisation + admin; returns a ticket URL on the new subdomain. */
+/**
+ * Sign-up, once the email is verified (by its code, or by Google, Microsoft or Facebook): the workspaces this
+ * email already has, so the person can open one instead of making a second by mistake (owner, 2026-10-12).
+ * Only after verification, so it never tells a stranger which workspaces an address belongs to.
+ */
+export const signupWorkspaces = defineMockRoute(({ event }) => {
+  const id = getQuery(event).challenge_id
+  const challenge = typeof id === 'string' ? getChallenge(id) : null
+  if (!challenge || challenge.purpose !== 'signup' || !challenge.verified) throw new MockError('FRM-AUTH-1003')
+  return ok(workspacesOf(event, challenge.email))
+})
+
 export const signupComplete = defineMockRoute(({ event, body }) => {
   const input = parseBody(completeSchema, body)
   const challenge = getChallenge(input.challenge_id)
