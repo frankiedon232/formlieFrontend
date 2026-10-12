@@ -15,14 +15,16 @@ Everything runs **quietly in the background, no windows open**. From `C:\UNETPRO
 
 | Command | Starts |
 | --- | --- |
-| `powershell -ExecutionPolicy Bypass -File scripts\dev-up.ps1` | **Everything:** the services, the API (https://formalie.dev:5004), the Celery worker, Celery Beat and Flower |
+| `powershell -ExecutionPolicy Bypass -File scripts\dev-up.ps1 -Restart` | **After new code (the usual one):** stops the API and workers, brings the database up to date, seeds the sample workspaces, starts everything again |
+| `powershell -ExecutionPolicy Bypass -File scripts\dev-up.ps1` | **Everything:** the services, the database brought up to date, the API (https://formalie.dev:5004), the Celery worker, Celery Beat and Flower |
 | `powershell -ExecutionPolicy Bypass -File scripts\dev-up.ps1 -NoApi` | Everything **except the API**, when you prefer to run the API yourself in your terminal (see below) |
 | `powershell -ExecutionPolicy Bypass -File scripts\dev-up.ps1 -NoApp` | **Services only** (Ubuntu with Redis, RabbitMQ, PgBouncer and Mailpit; PostgreSQL), no API and no workers |
 
 What it does:
 1. **Wakes Ubuntu (WSL)** and keeps it running in the background. Redis, RabbitMQ, PgBouncer and Mailpit start with Ubuntu; PostgreSQL starts with Windows.
 2. **Checks every service answers.** If one doesn't, it says which and how to fix it.
-3. **Starts the API, worker, Beat and Flower hidden**, writing their output to `logs\dev\{api,worker,beat,flower}.log`.
+3. **Brings the database up to date** (`alembic upgrade head`) and **seeds the sample workspaces** (`scripts/seed_dev.py`; existing workspaces and data are kept), so new tables never need a separate step (owner, 2026-10-12). `-NoMigrate` skips it.
+4. **Starts the API, worker, Beat and Flower hidden**, writing their output to `logs\dev\{api,worker,beat,flower}.log`.
 
 It's **safe to run again**: anything already running is left as it is. If port 5004 is already taken (an API you started yourself), it leaves it alone and says so.
 

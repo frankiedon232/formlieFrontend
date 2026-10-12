@@ -3,6 +3,8 @@
 #   powershell -ExecutionPolicy Bypass -File scripts\dev-up.ps1           # services, API, Celery worker, Beat, Flower
 #   powershell -ExecutionPolicy Bypass -File scripts\dev-up.ps1 -NoApi    # the same without the API
 #   powershell -ExecutionPolicy Bypass -File scripts\dev-up.ps1 -NoApp    # services only
+#   powershell -ExecutionPolicy Bypass -File scripts\dev-up.ps1 -Restart  # stop the API and workers first, then start them
+#                                                                       # again (after new code): the one command to use
 #
 # Watch the logs live (in the terminal you run it in):  powershell -ExecutionPolicy Bypass -File scripts\dev-logs.ps1
 # Stop everything:                                      powershell -ExecutionPolicy Bypass -File scripts\dev-down.ps1
@@ -12,8 +14,11 @@
 # 2. Checks every service answers.
 # 3. Starts the API (https://formalie.dev:5004), the Celery worker, Beat and Flower hidden; their output goes to
 #    logs\dev\*.log. Safe to run again: anything already running is left as it is.
+# Before 3, the database is brought up to date (`alembic upgrade head`) and the sample workspaces are seeded
+# (scripts/seed_dev.py: existing workspaces and data are kept), so new tables never need a separate step
+# (owner, 2026-10-12). Skip it with -NoMigrate.
 
-param([switch]$NoApp, [switch]$NoApi)
+param([switch]$NoApp, [switch]$NoApi, [switch]$Restart, [switch]$NoMigrate)
 
 $ErrorActionPreference = "Stop"
 $root = Split-Path -Parent $PSScriptRoot
@@ -54,6 +59,29 @@ if ($missing.Count -gt 0) {
     exit 1
 }
 if ($NoApp) { Write-Host "Services are up."; exit 0 }
+
+$python = Join-Path $root "fmly\Scripts\python.exe"
+if ($Restart) {
+    Write-Host "== Restart: stopping the API and the Celery processes" -ForegroundColor Cyan
+    $stopped = 0
+    Get-CimInstance Win32_Process | Where-Object {
+        $_.CommandLine -and (($_.CommandLine -match "celery_app (worker|beat|flower)") -or
+            ($_.CommandLine -match [regex]::Escape($root) -and $_.CommandLine -match "-m app\.run"))
+    } | ForEach-Object { Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue; $stopped++ }
+    Write-Host "   stopped $stopped process(es)"
+    Start-Sleep -Seconds 2
+}
+
+if (-not $NoMigrate) {
+    Write-Host "== Database: migrations and sample workspaces" -ForegroundColor Cyan
+    Push-Location $root
+    try {
+        & $python -m alembic upgrade head
+        if ($LASTEXITCODE -ne 0) { Write-Host "   migrations failed: see above (nothing was started)" -ForegroundColor Red; exit 1 }
+        & $python scripts\seed_dev.py
+        if ($LASTEXITCODE -ne 0) { Write-Host "   seeding failed: see above (the database is up to date; starting anyway)" -ForegroundColor Yellow }
+    } finally { Pop-Location }
+}
 
 Write-Host "== Background processes (hidden; output in logs\dev\)" -ForegroundColor Cyan
 New-Item -ItemType Directory -Force -Path $devLogs | Out-Null
