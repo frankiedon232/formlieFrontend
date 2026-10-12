@@ -14,7 +14,7 @@ const schema = z.object({
     .string()
     .trim()
     .max(200)
-    .refine(value => !value || z.url().safeParse(value).success, t('onboarding.company.websiteInvalid'))
+    .refine(value => !value || z.url({ protocol: /^https?$/ }).safeParse(value).success, t('onboarding.company.websiteInvalid'))
     .nullable(),
 })
 

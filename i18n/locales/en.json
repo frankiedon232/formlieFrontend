@@ -7599,7 +7599,13 @@
         "response_notification": "New response (team)",
         "response_receipt": "Copy for the respondent",
         "notification": "Notification",
-        "daily_digest": "Daily summary"
+        "daily_digest": "Daily summary",
+        "account_activation": "Activate account",
+        "account_approved": "Account approved",
+        "account_rejected": "Request declined",
+        "form_invitation": "Form invitation",
+        "respondent_code": "Respondent's code",
+        "resume_link": "Continue later"
       },
       "when": {
         "signin_code": "Sent when someone signs in and asks for the code by email.",
@@ -7608,7 +7614,13 @@
         "response_notification": "Sent to the people a form emails its new responses to.",
         "response_receipt": "Sent to respondents when a form sends them a copy of their answers, in the language they filled in.",
         "notification": "Sent for the events in Settings → Notifications that are set to email.",
-        "daily_digest": "Sent once a day when the daily summary is on."
+        "daily_digest": "Sent once a day when the daily summary is on.",
+        "account_activation": "Sent when the organisation makes someone's profile, so they can choose a password.",
+        "account_approved": "Sent when an admin approves someone who asked to join through the sign-up link.",
+        "account_rejected": "Sent when an admin declines someone who asked to join through the sign-up link.",
+        "form_invitation": "Sent to the people invited to fill in an invite-only form, with their personal link.",
+        "respondent_code": "Sent when a form asks respondents to confirm their email address.",
+        "resume_link": "Sent when a respondent saves their answers to finish later."
       },
       "own": "Your own text",
       "ownIn": "Own text in {n} language | Own text in {n} languages",
@@ -7631,7 +7643,9 @@
         "answers": "answers table",
         "title": "title",
         "message": "message",
-        "summary": "summary"
+        "summary": "summary",
+        "days": "days",
+        "reason": "reason"
       },
       "preview": "Preview",
       "from": "From",

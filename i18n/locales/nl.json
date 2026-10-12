@@ -7599,7 +7599,13 @@
         "response_notification": "Nieuwe reactie (team)",
         "response_receipt": "Kopie voor de invuller",
         "notification": "Melding",
-        "daily_digest": "Dagelijks overzicht"
+        "daily_digest": "Dagelijks overzicht",
+        "account_activation": "Account activeren",
+        "account_approved": "Account goedgekeurd",
+        "account_rejected": "Verzoek afgewezen",
+        "form_invitation": "Uitnodiging voor formulier",
+        "respondent_code": "Code voor respondent",
+        "resume_link": "Later verdergaan"
       },
       "when": {
         "signin_code": "Verstuurd wanneer iemand inlogt en de code per e-mail vraagt.",
@@ -7608,7 +7614,13 @@
         "response_notification": "Verstuurd naar de mensen naar wie een formulier zijn nieuwe reacties mailt.",
         "response_receipt": "Verstuurd naar invullers wanneer een formulier hun een kopie van hun antwoorden stuurt, in de taal waarin ze het invulden.",
         "notification": "Verstuurd voor de gebeurtenissen in Instellingen → Meldingen die op e-mail staan.",
-        "daily_digest": "Eén keer per dag verstuurd wanneer het dagelijkse overzicht aan staat."
+        "daily_digest": "Eén keer per dag verstuurd wanneer het dagelijkse overzicht aan staat.",
+        "account_activation": "Verstuurd wanneer de organisatie iemands profiel aanmaakt, zodat die een wachtwoord kan kiezen.",
+        "account_approved": "Verstuurd wanneer een beheerder iemand goedkeurt die via de aanmeldlink wilde meedoen.",
+        "account_rejected": "Verstuurd wanneer een beheerder iemand afwijst die via de aanmeldlink wilde meedoen.",
+        "form_invitation": "Verstuurd naar de mensen die zijn uitgenodigd voor een formulier alleen op uitnodiging, met hun persoonlijke link.",
+        "respondent_code": "Verstuurd wanneer een formulier respondenten vraagt hun e-mailadres te bevestigen.",
+        "resume_link": "Verstuurd wanneer een respondent zijn antwoorden bewaart om later af te maken."
       },
       "own": "Je eigen tekst",
       "ownIn": "Eigen tekst in {n} taal | Eigen tekst in {n} talen",
@@ -7631,7 +7643,9 @@
         "answers": "antwoordentabel",
         "title": "titel",
         "message": "bericht",
-        "summary": "samenvatting"
+        "summary": "samenvatting",
+        "days": "dagen",
+        "reason": "reden"
       },
       "preview": "Voorbeeld",
       "from": "Van",

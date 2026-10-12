@@ -21,8 +21,14 @@ const ICONS: Record<EmailTemplateKey, string> = {
   signin_code: 'i-lucide-key-round',
   password_reset: 'i-lucide-rotate-ccw-key',
   invitation: 'i-lucide-user-plus',
+  account_activation: 'i-lucide-user-check',
+  account_approved: 'i-lucide-badge-check',
+  account_rejected: 'i-lucide-user-x',
   response_notification: 'i-lucide-inbox',
   response_receipt: 'i-lucide-receipt-text',
+  form_invitation: 'i-lucide-send',
+  respondent_code: 'i-lucide-shield-check',
+  resume_link: 'i-lucide-bookmark',
   notification: 'i-lucide-bell',
   daily_digest: 'i-lucide-mails',
 }
@@ -70,7 +76,7 @@ const customCount = (key: EmailTemplateKey) => Object.keys(draft.value?.custom[k
             <USelect v-model="selected" :items="EMAIL_TEMPLATES.map(key => ({ value: key, label: t(`settings.emails.template.${key}`), icon: ICONS[key] }))" :icon="ICONS[selected]" class="w-full sm:hidden" :aria-label="t('settings.emails.templates')" />
             <USelect v-model="language" :items="languages" :icon="languages.find(item => item.value === language)?.icon" class="w-full sm:w-48" :aria-label="t('settings.emails.language')" />
           </div>
-          <div class="hidden gap-2 sm:grid sm:grid-cols-4 2xl:grid-cols-7">
+          <div class="hidden gap-2 sm:grid sm:grid-cols-4 lg:grid-cols-5 2xl:grid-cols-7">
             <button v-for="key in EMAIL_TEMPLATES" :key="key" type="button" class="flex min-w-0 flex-col items-start gap-1.5 rounded-lg border p-2.5 text-start transition-colors focus-visible:outline-2 focus-visible:outline-primary" :class="selected === key ? 'border-inverted bg-elevated/60' : 'border-default hover:border-accented'" @click="selected = key">
               <UIcon :name="ICONS[key]" class="size-4 text-muted" />
               <span class="line-clamp-2 text-xs font-medium text-highlighted">{{ t(`settings.emails.template.${key}`) }}</span>

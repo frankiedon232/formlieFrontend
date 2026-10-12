@@ -27,6 +27,30 @@
     "daily_digest": {
       "subject": "Twój dzień w {{workspace}}",
       "body": "Cześć {{name}},\n\nOto, co wydarzyło się od wczoraj:\n\n{{summary}}\n\nOtwórz Formalie: {{link}}"
+    },
+    "form_invitation": {
+      "subject": "{{workspace}} zaprasza Cię do wypełnienia formularza {{form}}",
+      "body": "Dzień dobry {{name}},\n\n{{workspace}} zaprasza Cię do wypełnienia formularza {{form}}.\n\nOtwórz formularz: {{link}}\n\nTen link jest osobisty. Nie udostępniaj go."
+    },
+    "respondent_code": {
+      "subject": "Twój kod do formularza {{form}}: {{code}}",
+      "body": "Wpisz {{code}} w formularzu, aby potwierdzić adres e-mail. Kod działa przez {{minutes}} min.\n\nJeśli nie prosiłeś(-aś) o kod, zignoruj tę wiadomość."
+    },
+    "resume_link": {
+      "subject": "Kontynuuj formularz {{form}}",
+      "body": "Twoje odpowiedzi w formularzu {{form}} są zapisane.\n\nWróć tam, gdzie skończyłeś(-aś): {{link}}\n\nLink działa przez {{days}} dni. Każdy, kto go ma, zobaczy zapisane odpowiedzi, więc zachowaj go dla siebie."
+    },
+    "account_activation": {
+      "subject": "Aktywuj swoje konto w {{workspace}}",
+      "body": "Dzień dobry {{name}},\n\n{{inviter}} utworzył(a) Twój profil w {{workspace}}. W ciągu {{days}} dni otwórz ten link, ustaw hasło i zaloguj się: {{link}}"
+    },
+    "account_approved": {
+      "subject": "Możesz zalogować się do {{workspace}}",
+      "body": "Dzień dobry {{name}},\n\n{{inviter}} zatwierdził(a) Twoje konto w {{workspace}}. Zaloguj się adresem e-mail i hasłem: {{link}}"
+    },
+    "account_rejected": {
+      "subject": "Twoja prośba o dołączenie do {{workspace}}",
+      "body": "Dzień dobry {{name}},\n\nTwoja prośba o dołączenie do {{workspace}} nie została zatwierdzona.\n\n{{reason}}\n\nJeśli uważasz, że to pomyłka, zapytaj osobę, która przesłała Ci link."
     }
   },
   "events": {

@@ -7599,7 +7599,13 @@
         "response_notification": "Yeni yanıt (ekip)",
         "response_receipt": "Yanıtlayan için kopya",
         "notification": "Bildirim",
-        "daily_digest": "Günlük özet"
+        "daily_digest": "Günlük özet",
+        "account_activation": "Hesabı etkinleştir",
+        "account_approved": "Hesap onaylandı",
+        "account_rejected": "İstek reddedildi",
+        "form_invitation": "Form daveti",
+        "respondent_code": "Yanıtlayan kodu",
+        "resume_link": "Sonra devam et"
       },
       "when": {
         "signin_code": "Biri giriş yapıp kodu e-posta ile istediğinde gönderilir.",
@@ -7608,7 +7614,13 @@
         "response_notification": "Bir formun yeni yanıtlarını e-postayla ilettiği kişilere gönderilir.",
         "response_receipt": "Bir form yanıtlayanlara yanıtlarının kopyasını gönderdiğinde, formu doldurdukları dilde gönderilir.",
         "notification": "Ayarlar → Bildirimler içinde e-postaya ayarlanmış olaylar için gönderilir.",
-        "daily_digest": "Günlük özet açıkken günde bir kez gönderilir."
+        "daily_digest": "Günlük özet açıkken günde bir kez gönderilir.",
+        "account_activation": "Kuruluş birinin profilini oluşturduğunda, kişinin parola belirlemesi için gönderilir.",
+        "account_approved": "Bir yönetici, kayıt bağlantısıyla katılmak isteyen birini onayladığında gönderilir.",
+        "account_rejected": "Bir yönetici, kayıt bağlantısıyla katılmak isteyen birini reddettiğinde gönderilir.",
+        "form_invitation": "Yalnızca davetlilere açık bir formu doldurmaya davet edilenlere, kişisel bağlantılarıyla gönderilir.",
+        "respondent_code": "Bir form yanıtlayanlardan e-posta adreslerini doğrulamalarını istediğinde gönderilir.",
+        "resume_link": "Bir yanıtlayan sonra bitirmek için yanıtlarını kaydettiğinde gönderilir."
       },
       "own": "Kendi metniniz",
       "ownIn": "{n} dilde özel metin | {n} dilde özel metin",
@@ -7631,7 +7643,9 @@
         "answers": "yanıt tablosu",
         "title": "başlık",
         "message": "mesaj",
-        "summary": "özet"
+        "summary": "özet",
+        "days": "gün",
+        "reason": "neden"
       },
       "preview": "Önizleme",
       "from": "Kimden",

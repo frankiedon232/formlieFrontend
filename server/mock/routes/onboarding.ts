@@ -78,7 +78,7 @@ const company = z.object({
   industry: z.enum(INDUSTRIES).nullable(),
   size: z.enum(COMPANY_SIZES).nullable(),
   country: z.string().refine(isCountryCode, 'Choose a country.').nullable(),
-  website: z.url().max(200).nullable(),
+  website: z.url({ protocol: /^https?$/ }).max(200).nullable(),
 })
 const branding = z.object({
   logo_upload_id: z.string().nullable(),

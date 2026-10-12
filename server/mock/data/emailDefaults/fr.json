@@ -27,6 +27,30 @@
     "daily_digest": {
       "subject": "Votre journée dans {{workspace}}",
       "body": "Bonjour {{name}},\n\nVoici ce qui s'est passé depuis hier :\n\n{{summary}}\n\nOuvrir Formalie : {{link}}"
+    },
+    "form_invitation": {
+      "subject": "{{workspace}} vous invite à remplir {{form}}",
+      "body": "Bonjour {{name}},\n\n{{workspace}} vous invite à remplir {{form}}.\n\nOuvrir le formulaire : {{link}}\n\nCe lien est personnel. Merci de ne pas le partager."
+    },
+    "respondent_code": {
+      "subject": "Votre code pour {{form}} : {{code}}",
+      "body": "Saisissez {{code}} dans le formulaire pour confirmer votre adresse e-mail. Il est valable {{minutes}} minutes.\n\nSi vous ne l'avez pas demandé, vous pouvez ignorer cet e-mail."
+    },
+    "resume_link": {
+      "subject": "Reprendre {{form}}",
+      "body": "Vos réponses à {{form}} sont enregistrées.\n\nReprenez là où vous en étiez : {{link}}\n\nLe lien est valable {{days}} jours. Toute personne qui l'a peut voir vos réponses enregistrées, gardez-le pour vous."
+    },
+    "account_activation": {
+      "subject": "Activez votre compte {{workspace}}",
+      "body": "Bonjour {{name}},\n\n{{inviter}} a créé votre profil dans {{workspace}}. Dans les {{days}} jours, ouvrez ce lien pour choisir votre mot de passe, puis connectez-vous : {{link}}"
+    },
+    "account_approved": {
+      "subject": "Vous pouvez vous connecter à {{workspace}}",
+      "body": "Bonjour {{name}},\n\n{{inviter}} a approuvé votre compte dans {{workspace}}. Connectez-vous avec votre adresse e-mail et votre mot de passe : {{link}}"
+    },
+    "account_rejected": {
+      "subject": "Votre demande pour rejoindre {{workspace}}",
+      "body": "Bonjour {{name}},\n\nVotre demande pour rejoindre {{workspace}} n'a pas été approuvée.\n\n{{reason}}\n\nSi vous pensez qu'il s'agit d'une erreur, demandez à la personne qui vous a envoyé le lien."
     }
   },
   "events": {

@@ -4,7 +4,21 @@
  * Template text uses `{{variable}}` placeholders; `{{answers}}` becomes the answers table.
  */
 
-export const EMAIL_TEMPLATES = ['signin_code', 'password_reset', 'invitation', 'response_notification', 'response_receipt', 'notification', 'daily_digest'] as const
+export const EMAIL_TEMPLATES = [
+  'signin_code',
+  'password_reset',
+  'invitation',
+  'account_activation',
+  'account_approved',
+  'account_rejected',
+  'response_notification',
+  'response_receipt',
+  'form_invitation',
+  'respondent_code',
+  'resume_link',
+  'notification',
+  'daily_digest',
+] as const
 export type EmailTemplateKey = (typeof EMAIL_TEMPLATES)[number]
 
 /** The placeholders each template can use. */
@@ -12,8 +26,16 @@ export const EMAIL_VARIABLES: Record<EmailTemplateKey, string[]> = {
   signin_code: ['name', 'code', 'minutes', 'workspace'],
   password_reset: ['name', 'code', 'minutes', 'workspace'],
   invitation: ['name', 'inviter', 'workspace', 'link'],
+  // People the organisation profiled (activate), or who asked to join through the sign-up link (approved / declined)
+  account_activation: ['name', 'inviter', 'workspace', 'link', 'days'],
+  account_approved: ['name', 'inviter', 'workspace', 'link'],
+  account_rejected: ['name', 'workspace', 'reason'],
   response_notification: ['form', 'number', 'date', 'answers', 'link', 'workspace'],
   response_receipt: ['form', 'number', 'date', 'answers', 'workspace'],
+  // Respondents (owner, 2026-10-12: every email Formalie sends has its own template, in every language)
+  form_invitation: ['name', 'form', 'workspace', 'link'],
+  respondent_code: ['code', 'minutes', 'form', 'workspace'],
+  resume_link: ['form', 'link', 'days', 'workspace'],
   notification: ['title', 'message', 'link', 'workspace'],
   daily_digest: ['name', 'summary', 'link', 'workspace'],
 }

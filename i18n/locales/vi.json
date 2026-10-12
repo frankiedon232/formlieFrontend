@@ -7599,7 +7599,13 @@
         "response_notification": "Phản hồi mới (nhóm)",
         "response_receipt": "Bản sao cho người trả lời",
         "notification": "Thông báo",
-        "daily_digest": "Tóm tắt hằng ngày"
+        "daily_digest": "Tóm tắt hằng ngày",
+        "account_activation": "Kích hoạt tài khoản",
+        "account_approved": "Tài khoản được duyệt",
+        "account_rejected": "Yêu cầu bị từ chối",
+        "form_invitation": "Lời mời điền biểu mẫu",
+        "respondent_code": "Mã của người trả lời",
+        "resume_link": "Tiếp tục sau"
       },
       "when": {
         "signin_code": "Gửi khi ai đó đăng nhập và yêu cầu mã qua email.",
@@ -7608,7 +7614,13 @@
         "response_notification": "Gửi cho những người mà biểu mẫu chuyển phản hồi mới qua email.",
         "response_receipt": "Gửi cho người trả lời khi biểu mẫu gửi họ bản sao câu trả lời, bằng ngôn ngữ họ đã dùng để điền.",
         "notification": "Gửi cho các sự kiện trong Cài đặt → Thông báo được đặt là email.",
-        "daily_digest": "Gửi mỗi ngày một lần khi bật tóm tắt hằng ngày."
+        "daily_digest": "Gửi mỗi ngày một lần khi bật tóm tắt hằng ngày.",
+        "account_activation": "Gửi khi tổ chức tạo hồ sơ cho ai đó, để họ chọn mật khẩu.",
+        "account_approved": "Gửi khi quản trị viên duyệt người đã xin tham gia qua liên kết đăng ký.",
+        "account_rejected": "Gửi khi quản trị viên từ chối người đã xin tham gia qua liên kết đăng ký.",
+        "form_invitation": "Gửi cho những người được mời điền biểu mẫu chỉ dành cho người được mời, kèm liên kết riêng của họ.",
+        "respondent_code": "Gửi khi biểu mẫu yêu cầu người trả lời xác nhận địa chỉ email.",
+        "resume_link": "Gửi khi người trả lời lưu câu trả lời để hoàn thành sau."
       },
       "own": "Nội dung riêng của bạn",
       "ownIn": "Nội dung riêng bằng {n} ngôn ngữ | Nội dung riêng bằng {n} ngôn ngữ",
@@ -7631,7 +7643,9 @@
         "answers": "bảng câu trả lời",
         "title": "tiêu đề",
         "message": "tin nhắn",
-        "summary": "tóm tắt"
+        "summary": "tóm tắt",
+        "days": "số ngày",
+        "reason": "lý do"
       },
       "preview": "Xem trước",
       "from": "Từ",

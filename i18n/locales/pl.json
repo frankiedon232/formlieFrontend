@@ -7599,7 +7599,13 @@
         "response_notification": "Nowa odpowiedź (zespół)",
         "response_receipt": "Kopia dla odpowiadającego",
         "notification": "Powiadomienie",
-        "daily_digest": "Podsumowanie dnia"
+        "daily_digest": "Podsumowanie dnia",
+        "account_activation": "Aktywacja konta",
+        "account_approved": "Konto zatwierdzone",
+        "account_rejected": "Prośba odrzucona",
+        "form_invitation": "Zaproszenie do formularza",
+        "respondent_code": "Kod respondenta",
+        "resume_link": "Dokończ później"
       },
       "when": {
         "signin_code": "Wysyłany, gdy ktoś się loguje i prosi o kod e-mailem.",
@@ -7608,7 +7614,13 @@
         "response_notification": "Wysyłany osobom, do których formularz przesyła nowe odpowiedzi e-mailem.",
         "response_receipt": "Wysyłany odpowiadającym, gdy formularz wysyła im kopię ich odpowiedzi, w języku, w którym go wypełnili.",
         "notification": "Wysyłany dla zdarzeń z Ustawienia → Powiadomienia ustawionych na e-mail.",
-        "daily_digest": "Wysyłany raz dziennie, gdy podsumowanie dnia jest włączone."
+        "daily_digest": "Wysyłany raz dziennie, gdy podsumowanie dnia jest włączone.",
+        "account_activation": "Wysyłane, gdy organizacja tworzy czyjś profil, aby ta osoba mogła ustawić hasło.",
+        "account_approved": "Wysyłane, gdy administrator zatwierdzi osobę, która poprosiła o dołączenie przez link rejestracyjny.",
+        "account_rejected": "Wysyłane, gdy administrator odrzuci osobę, która poprosiła o dołączenie przez link rejestracyjny.",
+        "form_invitation": "Wysyłane do osób zaproszonych do formularza tylko dla zaproszonych, z ich osobistym linkiem.",
+        "respondent_code": "Wysyłane, gdy formularz prosi respondentów o potwierdzenie adresu e-mail.",
+        "resume_link": "Wysyłane, gdy respondent zapisze odpowiedzi, aby dokończyć później."
       },
       "own": "Twój własny tekst",
       "ownIn": "Własny tekst w {n} języku | Własny tekst w {n} językach",
@@ -7631,7 +7643,9 @@
         "answers": "tabela odpowiedzi",
         "title": "tytuł",
         "message": "wiadomość",
-        "summary": "podsumowanie"
+        "summary": "podsumowanie",
+        "days": "dni",
+        "reason": "powód"
       },
       "preview": "Podgląd",
       "from": "Od",

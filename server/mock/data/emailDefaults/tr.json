@@ -27,6 +27,30 @@
     "daily_digest": {
       "subject": "{{workspace}} içinde gününüz",
       "body": "Merhaba {{name}},\n\nDünden bu yana olanlar:\n\n{{summary}}\n\nFormalie'yi açın: {{link}}"
+    },
+    "form_invitation": {
+      "subject": "{{workspace}} sizi {{form}} formunu doldurmaya davet etti",
+      "body": "Merhaba {{name}},\n\n{{workspace}} sizi {{form}} formunu doldurmaya davet etti.\n\nFormu açın: {{link}}\n\nBu bağlantı size özeldir. Lütfen paylaşmayın."
+    },
+    "respondent_code": {
+      "subject": "{{form}} için kodunuz: {{code}}",
+      "body": "E-posta adresinizi doğrulamak için forma {{code}} kodunu girin. Kod {{minutes}} dakika geçerlidir.\n\nBu kodu siz istemediyseniz bu e-postayı yok sayabilirsiniz."
+    },
+    "resume_link": {
+      "subject": "{{form}} formuna devam edin",
+      "body": "{{form}} formundaki yanıtlarınız kaydedildi.\n\nKaldığınız yerden devam edin: {{link}}\n\nBağlantı {{days}} gün geçerlidir. Bağlantıya sahip olan herkes kayıtlı yanıtlarınızı görebilir, bu yüzden kendinize saklayın."
+    },
+    "account_activation": {
+      "subject": "{{workspace}} hesabınızı etkinleştirin",
+      "body": "Merhaba {{name}},\n\n{{inviter}}, {{workspace}} içinde profilinizi oluşturdu. {{days}} gün içinde bu bağlantıyı açıp parolanızı belirleyin, ardından giriş yapın: {{link}}"
+    },
+    "account_approved": {
+      "subject": "Artık {{workspace}} hesabına giriş yapabilirsiniz",
+      "body": "Merhaba {{name}},\n\n{{inviter}}, {{workspace}} içindeki hesabınızı onayladı. E-posta adresiniz ve parolanızla giriş yapın: {{link}}"
+    },
+    "account_rejected": {
+      "subject": "{{workspace}} katılım isteğiniz",
+      "body": "Merhaba {{name}},\n\n{{workspace}} katılım isteğiniz onaylanmadı.\n\n{{reason}}\n\nBunun bir hata olduğunu düşünüyorsanız size bağlantıyı gönderen kişiye sorun."
     }
   },
   "events": {

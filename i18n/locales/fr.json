@@ -7599,7 +7599,13 @@
         "response_notification": "Nouvelle réponse (équipe)",
         "response_receipt": "Copie pour le répondant",
         "notification": "Notification",
-        "daily_digest": "Résumé quotidien"
+        "daily_digest": "Résumé quotidien",
+        "account_activation": "Activer le compte",
+        "account_approved": "Compte approuvé",
+        "account_rejected": "Demande refusée",
+        "form_invitation": "Invitation à un formulaire",
+        "respondent_code": "Code du répondant",
+        "resume_link": "Reprendre plus tard"
       },
       "when": {
         "signin_code": "Envoyé quand quelqu'un se connecte et demande le code par e-mail.",
@@ -7608,7 +7614,13 @@
         "response_notification": "Envoyé aux personnes à qui un formulaire transmet ses nouvelles réponses par e-mail.",
         "response_receipt": "Envoyé aux répondants quand un formulaire leur envoie une copie de leurs réponses, dans la langue utilisée pour le remplir.",
         "notification": "Envoyé pour les événements de Paramètres → Notifications réglés sur l'e-mail.",
-        "daily_digest": "Envoyé une fois par jour quand le résumé quotidien est activé."
+        "daily_digest": "Envoyé une fois par jour quand le résumé quotidien est activé.",
+        "account_activation": "Envoyé quand l'organisation crée le profil de quelqu'un, pour qu'il choisisse un mot de passe.",
+        "account_approved": "Envoyé quand un admin approuve une personne qui a demandé à rejoindre via le lien d'inscription.",
+        "account_rejected": "Envoyé quand un admin refuse une personne qui a demandé à rejoindre via le lien d'inscription.",
+        "form_invitation": "Envoyé aux personnes invitées à remplir un formulaire sur invitation, avec leur lien personnel.",
+        "respondent_code": "Envoyé quand un formulaire demande aux répondants de confirmer leur adresse e-mail.",
+        "resume_link": "Envoyé quand un répondant enregistre ses réponses pour terminer plus tard."
       },
       "own": "Votre propre texte",
       "ownIn": "Texte personnalisé en {n} langue | Texte personnalisé en {n} langues",
@@ -7631,7 +7643,9 @@
         "answers": "tableau des réponses",
         "title": "titre",
         "message": "message",
-        "summary": "résumé"
+        "summary": "résumé",
+        "days": "jours",
+        "reason": "motif"
       },
       "preview": "Aperçu",
       "from": "De",

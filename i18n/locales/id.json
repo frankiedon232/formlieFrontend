@@ -7599,7 +7599,13 @@
         "response_notification": "Respons baru (tim)",
         "response_receipt": "Salinan untuk pengisi",
         "notification": "Notifikasi",
-        "daily_digest": "Ringkasan harian"
+        "daily_digest": "Ringkasan harian",
+        "account_activation": "Aktifkan akun",
+        "account_approved": "Akun disetujui",
+        "account_rejected": "Permintaan ditolak",
+        "form_invitation": "Undangan formulir",
+        "respondent_code": "Kode responden",
+        "resume_link": "Lanjutkan nanti"
       },
       "when": {
         "signin_code": "Dikirim saat seseorang masuk dan meminta kode lewat email.",
@@ -7608,7 +7614,13 @@
         "response_notification": "Dikirim ke orang yang menerima respons baru dari formulir lewat email.",
         "response_receipt": "Dikirim ke pengisi saat formulir mengirimkan salinan jawaban mereka, dalam bahasa yang mereka gunakan.",
         "notification": "Dikirim untuk peristiwa di Pengaturan → Notifikasi yang diatur lewat email.",
-        "daily_digest": "Dikirim sekali sehari saat ringkasan harian aktif."
+        "daily_digest": "Dikirim sekali sehari saat ringkasan harian aktif.",
+        "account_activation": "Dikirim saat organisasi membuat profil seseorang, agar ia dapat memilih kata sandi.",
+        "account_approved": "Dikirim saat admin menyetujui seseorang yang meminta bergabung lewat tautan pendaftaran.",
+        "account_rejected": "Dikirim saat admin menolak seseorang yang meminta bergabung lewat tautan pendaftaran.",
+        "form_invitation": "Dikirim kepada orang yang diundang mengisi formulir khusus undangan, beserta tautan pribadinya.",
+        "respondent_code": "Dikirim saat formulir meminta responden mengonfirmasi alamat email.",
+        "resume_link": "Dikirim saat responden menyimpan jawabannya untuk diselesaikan nanti."
       },
       "own": "Teks Anda sendiri",
       "ownIn": "Teks sendiri dalam {n} bahasa | Teks sendiri dalam {n} bahasa",
@@ -7631,7 +7643,9 @@
         "answers": "tabel jawaban",
         "title": "judul",
         "message": "pesan",
-        "summary": "ringkasan"
+        "summary": "ringkasan",
+        "days": "hari",
+        "reason": "alasan"
       },
       "preview": "Pratinjau",
       "from": "Dari",

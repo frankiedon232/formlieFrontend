@@ -2,6 +2,7 @@
  * Mock API entry (NUXT_PUBLIC_API_MOCK=true). Mounted at /api/** by nuxt.config.ts.
  * Shapes follow docs/API-CONTRACT.md exactly; add one file per domain in ./routes.
  */
+import { ENVELOPE_CONTENT_TYPE, ENVELOPE_HEADER } from '#shared/utils/crypto/envelope'
 import { fail } from './core/respond'
 import * as audit from './routes/audit'
 import * as ai from './routes/ai'
@@ -486,7 +487,14 @@ const router = createRouter()
   .use(
     '/**',
     defineEventHandler(event => {
-      const reply = fail('FRM-GEN-1004')
+      // Like the backend, the envelope is checked before the address: an unknown address without one is
+      // refused as an insecure request (400 FRM-SEC-1001), with one it is simply not found.
+      const method = event.method.toUpperCase()
+      const sealed =
+        method === 'GET' || method === 'DELETE'
+          ? !!getHeader(event, ENVELOPE_HEADER)
+          : !!getHeader(event, 'content-type')?.startsWith(ENVELOPE_CONTENT_TYPE)
+      const reply = fail(sealed ? 'FRM-GEN-1004' : 'FRM-SEC-1001')
       setResponseStatus(event, reply.status)
       return reply.body
     }),

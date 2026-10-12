@@ -117,7 +117,8 @@ export const formSchemaV1 = z.object({
     .object({
       title: text(200).optional(),
       message: text(5000).optional(),
-      redirect_url: z.url().nullable().optional(),
+      // Web addresses only (never javascript: or mailto:), as the backend checks (owner, 2026-10-12)
+      redirect_url: z.url({ protocol: /^https?$/ }).nullable().optional(),
     })
     .optional(),
 })

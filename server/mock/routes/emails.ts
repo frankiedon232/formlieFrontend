@@ -44,6 +44,8 @@ function sampleValues(event: H3Event, tenant: MockTenant, user: MockUser, key: E
     inviter: `${user.first_name} ${user.last_name}`,
     form,
     number: 128,
+    days: key === 'resume_link' ? 30 : 7,
+    reason: 'Only people from our organisation can join this workspace.',
     date: emailDate(tenant, language),
     link: workspaceUrl(event, tenant, key === 'invitation' ? '/auth/login' : '/'),
     title: texts.events.response_new!.title.replace('{{form}}', form),

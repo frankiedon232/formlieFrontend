@@ -7599,7 +7599,13 @@
         "response_notification": "新しい回答(チーム向け)",
         "response_receipt": "回答者へのコピー",
         "notification": "通知",
-        "daily_digest": "日次サマリー"
+        "daily_digest": "日次サマリー",
+        "account_activation": "アカウントの有効化",
+        "account_approved": "アカウント承認",
+        "account_rejected": "リクエスト却下",
+        "form_invitation": "フォームへの招待",
+        "respondent_code": "回答者の確認コード",
+        "resume_link": "あとで続ける"
       },
       "when": {
         "signin_code": "ログイン時にメールでコードが要求されたときに送信されます。",
@@ -7608,7 +7614,13 @@
         "response_notification": "フォームが新しい回答をメールで送る相手に送信されます。",
         "response_receipt": "フォームが回答のコピーを回答者に送るときに、入力した言語で送信されます。",
         "notification": "設定 → 通知 でメールに設定されたイベントのときに送信されます。",
-        "daily_digest": "日次サマリーがオンのとき、1 日 1 回送信されます。"
+        "daily_digest": "日次サマリーがオンのとき、1 日 1 回送信されます。",
+        "account_activation": "組織が誰かのプロフィールを作成したときに送信され、本人がパスワードを設定できます。",
+        "account_approved": "登録リンクから参加を申請した人を管理者が承認したときに送信されます。",
+        "account_rejected": "登録リンクから参加を申請した人を管理者が却下したときに送信されます。",
+        "form_invitation": "招待者のみのフォームに招待された人へ、個人用リンクとともに送信されます。",
+        "respondent_code": "フォームが回答者にメールアドレスの確認を求めるときに送信されます。",
+        "resume_link": "回答者があとで完了するために回答を保存したときに送信されます。"
       },
       "own": "独自のテキスト",
       "ownIn": "{n} 言語で独自テキスト | {n} 言語で独自テキスト",
@@ -7631,7 +7643,9 @@
         "answers": "回答の表",
         "title": "タイトル",
         "message": "メッセージ",
-        "summary": "サマリー"
+        "summary": "サマリー",
+        "days": "日数",
+        "reason": "理由"
       },
       "preview": "プレビュー",
       "from": "差出人",

@@ -7599,7 +7599,13 @@
         "response_notification": "Neue Antwort (Team)",
         "response_receipt": "Kopie für die antwortende Person",
         "notification": "Benachrichtigung",
-        "daily_digest": "Tägliche Zusammenfassung"
+        "daily_digest": "Tägliche Zusammenfassung",
+        "account_activation": "Konto aktivieren",
+        "account_approved": "Konto freigegeben",
+        "account_rejected": "Anfrage abgelehnt",
+        "form_invitation": "Formular-Einladung",
+        "respondent_code": "Code für Teilnehmende",
+        "resume_link": "Später fortsetzen"
       },
       "when": {
         "signin_code": "Wird gesendet, wenn sich jemand anmeldet und den Code per E-Mail anfordert.",
@@ -7608,7 +7614,13 @@
         "response_notification": "Wird an die Personen gesendet, an die ein Formular seine neuen Antworten mailt.",
         "response_receipt": "Wird an Antwortende gesendet, wenn ein Formular ihnen eine Kopie ihrer Antworten schickt, in der Sprache, in der sie es ausgefüllt haben.",
         "notification": "Wird für die Ereignisse in Einstellungen → Benachrichtigungen gesendet, die per E-Mail laufen.",
-        "daily_digest": "Wird einmal täglich gesendet, wenn die tägliche Zusammenfassung aktiv ist."
+        "daily_digest": "Wird einmal täglich gesendet, wenn die tägliche Zusammenfassung aktiv ist.",
+        "account_activation": "Wird gesendet, wenn die Organisation ein Profil anlegt, damit die Person ein Passwort wählen kann.",
+        "account_approved": "Wird gesendet, wenn ein Admin jemanden freigibt, der über den Registrierungslink beitreten wollte.",
+        "account_rejected": "Wird gesendet, wenn ein Admin jemanden ablehnt, der über den Registrierungslink beitreten wollte.",
+        "form_invitation": "Wird an die Personen gesendet, die zu einem Formular nur mit Einladung eingeladen sind, mit ihrem persönlichen Link.",
+        "respondent_code": "Wird gesendet, wenn ein Formular die Teilnehmenden bittet, ihre E-Mail-Adresse zu bestätigen.",
+        "resume_link": "Wird gesendet, wenn jemand seine Antworten speichert, um später weiterzumachen."
       },
       "own": "Ihr eigener Text",
       "ownIn": "Eigener Text in {n} Sprache | Eigener Text in {n} Sprachen",
@@ -7631,7 +7643,9 @@
         "answers": "Antworttabelle",
         "title": "Titel",
         "message": "Nachricht",
-        "summary": "Zusammenfassung"
+        "summary": "Zusammenfassung",
+        "days": "Tage",
+        "reason": "Grund"
       },
       "preview": "Vorschau",
       "from": "Von",

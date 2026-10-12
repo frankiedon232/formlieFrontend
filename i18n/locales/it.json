@@ -7599,7 +7599,13 @@
         "response_notification": "Nuova risposta (team)",
         "response_receipt": "Copia per chi risponde",
         "notification": "Notifica",
-        "daily_digest": "Riepilogo giornaliero"
+        "daily_digest": "Riepilogo giornaliero",
+        "account_activation": "Attiva account",
+        "account_approved": "Account approvato",
+        "account_rejected": "Richiesta rifiutata",
+        "form_invitation": "Invito a un modulo",
+        "respondent_code": "Codice del rispondente",
+        "resume_link": "Continua più tardi"
       },
       "when": {
         "signin_code": "Inviata quando qualcuno accede e chiede il codice via e-mail.",
@@ -7608,7 +7614,13 @@
         "response_notification": "Inviata alle persone a cui un modulo manda le nuove risposte via e-mail.",
         "response_receipt": "Inviata a chi risponde quando un modulo gli manda una copia delle sue risposte, nella lingua in cui l'ha compilato.",
         "notification": "Inviata per gli eventi di Impostazioni → Notifiche impostati su e-mail.",
-        "daily_digest": "Inviata una volta al giorno quando il riepilogo giornaliero è attivo."
+        "daily_digest": "Inviata una volta al giorno quando il riepilogo giornaliero è attivo.",
+        "account_activation": "Inviata quando l'organizzazione crea il profilo di qualcuno, perché scelga una password.",
+        "account_approved": "Inviata quando un admin approva chi ha chiesto di unirsi con il link di registrazione.",
+        "account_rejected": "Inviata quando un admin rifiuta chi ha chiesto di unirsi con il link di registrazione.",
+        "form_invitation": "Inviata alle persone invitate a compilare un modulo solo su invito, con il loro link personale.",
+        "respondent_code": "Inviata quando un modulo chiede ai rispondenti di confermare l'indirizzo email.",
+        "resume_link": "Inviata quando un rispondente salva le risposte per finire più tardi."
       },
       "own": "Il tuo testo",
       "ownIn": "Testo personalizzato in {n} lingua | Testo personalizzato in {n} lingue",
@@ -7631,7 +7643,9 @@
         "answers": "tabella delle risposte",
         "title": "titolo",
         "message": "messaggio",
-        "summary": "riepilogo"
+        "summary": "riepilogo",
+        "days": "giorni",
+        "reason": "motivo"
       },
       "preview": "Anteprima",
       "from": "Da",

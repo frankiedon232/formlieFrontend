@@ -7599,7 +7599,13 @@
         "response_notification": "Nueva respuesta (equipo)",
         "response_receipt": "Copia para quien responde",
         "notification": "Notificación",
-        "daily_digest": "Resumen diario"
+        "daily_digest": "Resumen diario",
+        "account_activation": "Activar cuenta",
+        "account_approved": "Cuenta aprobada",
+        "account_rejected": "Solicitud rechazada",
+        "form_invitation": "Invitación a un formulario",
+        "respondent_code": "Código del encuestado",
+        "resume_link": "Continuar más tarde"
       },
       "when": {
         "signin_code": "Se envía cuando alguien inicia sesión y pide el código por correo.",
@@ -7608,7 +7614,13 @@
         "response_notification": "Se envía a las personas a las que un formulario envía sus nuevas respuestas por correo.",
         "response_receipt": "Se envía a quienes responden cuando un formulario les manda una copia de sus respuestas, en el idioma en que lo rellenaron.",
         "notification": "Se envía para los eventos de Ajustes → Notificaciones configurados por correo.",
-        "daily_digest": "Se envía una vez al día cuando el resumen diario está activado."
+        "daily_digest": "Se envía una vez al día cuando el resumen diario está activado.",
+        "account_activation": "Se envía cuando la organización crea el perfil de alguien, para que elija una contraseña.",
+        "account_approved": "Se envía cuando un administrador aprueba a alguien que pidió unirse con el enlace de registro.",
+        "account_rejected": "Se envía cuando un administrador rechaza a alguien que pidió unirse con el enlace de registro.",
+        "form_invitation": "Se envía a las personas invitadas a un formulario solo por invitación, con su enlace personal.",
+        "respondent_code": "Se envía cuando un formulario pide a los encuestados confirmar su correo.",
+        "resume_link": "Se envía cuando un encuestado guarda sus respuestas para terminar más tarde."
       },
       "own": "Tu propio texto",
       "ownIn": "Texto propio en {n} idioma | Texto propio en {n} idiomas",
@@ -7631,7 +7643,9 @@
         "answers": "tabla de respuestas",
         "title": "título",
         "message": "mensaje",
-        "summary": "resumen"
+        "summary": "resumen",
+        "days": "días",
+        "reason": "motivo"
       },
       "preview": "Vista previa",
       "from": "De",

@@ -27,6 +27,30 @@
     "daily_digest": {
       "subject": "{{workspace}}의 오늘",
       "body": "{{name}}님, 안녕하세요.\n\n어제 이후 있었던 일입니다:\n\n{{summary}}\n\nFormalie 열기: {{link}}"
+    },
+    "form_invitation": {
+      "subject": "{{workspace}}에서 {{form}} 작성을 요청했습니다",
+      "body": "{{name}}님, 안녕하세요.\n\n{{workspace}}에서 {{form}} 작성을 요청했습니다.\n\n양식 열기: {{link}}\n\n이 링크는 개인용입니다. 다른 사람과 공유하지 마세요."
+    },
+    "respondent_code": {
+      "subject": "{{form}} 확인 코드: {{code}}",
+      "body": "이메일 주소를 확인하려면 양식에 {{code}}을(를) 입력하세요. {{minutes}}분 동안 유효합니다.\n\n요청하지 않으셨다면 이 이메일은 무시하셔도 됩니다."
+    },
+    "resume_link": {
+      "subject": "{{form}} 이어서 작성하기",
+      "body": "{{form}}에 대한 답변이 저장되었습니다.\n\n중단한 곳부터 이어서 작성하세요: {{link}}\n\n링크는 {{days}}일 동안 유효합니다. 링크를 가진 사람은 누구나 저장된 답변을 볼 수 있으니 혼자만 보관하세요."
+    },
+    "account_activation": {
+      "subject": "{{workspace}} 계정을 활성화하세요",
+      "body": "{{name}}님, 안녕하세요.\n\n{{inviter}}님이 {{workspace}}에 회원님의 프로필을 만들었습니다. {{days}}일 안에 이 링크를 열어 비밀번호를 정한 뒤 로그인하세요: {{link}}"
+    },
+    "account_approved": {
+      "subject": "{{workspace}}에 로그인할 수 있습니다",
+      "body": "{{name}}님, 안녕하세요.\n\n{{inviter}}님이 {{workspace}}의 회원님 계정을 승인했습니다. 이메일 주소와 비밀번호로 로그인하세요: {{link}}"
+    },
+    "account_rejected": {
+      "subject": "{{workspace}} 가입 요청 결과",
+      "body": "{{name}}님, 안녕하세요.\n\n{{workspace}} 가입 요청이 승인되지 않았습니다.\n\n{{reason}}\n\n잘못된 결정이라고 생각되면 링크를 보낸 분께 문의하세요."
     }
   },
   "events": {

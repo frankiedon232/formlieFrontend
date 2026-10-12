@@ -55,8 +55,7 @@ function freshLink(event: H3Event, tenant: MockTenant, person: StoredPerson, by:
 function mail(tenant: MockTenant, person: StoredPerson, by: MockUser, link: string) {
   // A profile the organisation made: activate it (set a password); a sign-up link: the invitation email
   if (person.status === 'not_activated') {
-    const message = `${nameOf(by)} made your profile at ${tenant.name}. Open the link within ${DAYS} days to choose your password, then sign in.`
-    return sendEmail(tenant, { to: person.email, key: 'notification', vars: { title: `Activate your account at ${tenant.name}`, message, link, workspace: tenant.name }, reason: 'invitation' })
+    return sendEmail(tenant, { to: person.email, key: 'account_activation', vars: { name: person.first_name || person.email, inviter: nameOf(by), workspace: tenant.name, link, days: DAYS }, reason: 'invitation' })
   }
   sendEmail(tenant, { to: person.email, key: 'invitation', vars: { name: person.first_name || person.email, inviter: nameOf(by), workspace: tenant.name, link }, reason: 'invitation' })
 }
@@ -237,7 +236,7 @@ export const approvePerson = defineMockRoute(({ event, body }) => {
   saveOrg()
   saveCreatedWorkspaces()
   const url = getRequestURL(event, { xForwardedHost: true })
-  sendEmail(tenant, { to: person.email, key: 'notification', vars: { title: `You can sign in to ${tenant.name}`, message: `${nameOf(user)} approved your account. Sign in with your email address and password.`, link: `${url.origin}/auth/login`, workspace: tenant.name }, reason: 'approval' })
+  sendEmail(tenant, { to: person.email, key: 'account_approved', vars: { name: person.first_name || person.email, inviter: nameOf(user), workspace: tenant.name, link: `${url.origin}/auth/login` }, reason: 'approval' })
   audit(event, tenant, user, 'users.approved', person, { role: input.role })
   return ok(personDetail(tenant, person.id))
 })
@@ -248,7 +247,7 @@ export const rejectPerson = defineMockRoute(({ event, body }) => {
   const person = pendingOf(tenant, getRouterParam(event, 'id'))
   const { reason } = parseBody(rejectBody, body ?? {})
   removePerson(tenant, person)
-  sendEmail(tenant, { to: person.email, key: 'notification', vars: { title: `Your request to join ${tenant.name}`, message: reason ? `It was not approved: ${reason}` : 'It was not approved. Ask the person who sent you the link if you think this is a mistake.', link: '', workspace: tenant.name }, reason: 'approval' })
+  sendEmail(tenant, { to: person.email, key: 'account_rejected', vars: { name: person.first_name || person.email, workspace: tenant.name, reason: reason ?? '' }, reason: 'approval' })
   audit(event, tenant, user, 'users.rejected', person, reason ? { reason } : {})
   return ok({ id: person.id })
 })

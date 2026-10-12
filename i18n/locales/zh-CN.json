@@ -7599,7 +7599,13 @@
         "response_notification": "新回复(团队)",
         "response_receipt": "回复者的副本",
         "notification": "通知",
-        "daily_digest": "每日摘要"
+        "daily_digest": "每日摘要",
+        "account_activation": "激活账户",
+        "account_approved": "账户已批准",
+        "account_rejected": "申请被拒绝",
+        "form_invitation": "表单邀请",
+        "respondent_code": "答卷人验证码",
+        "resume_link": "稍后继续"
       },
       "when": {
         "signin_code": "有人登录并要求通过邮件接收验证码时发送。",
@@ -7608,7 +7614,13 @@
         "response_notification": "发送给表单接收新回复邮件的人员。",
         "response_receipt": "表单向回复者发送其答案副本时发送,使用其填写时的语言。",
         "notification": "针对设置 → 通知中设为邮件的事件发送。",
-        "daily_digest": "开启每日摘要后,每天发送一次。"
+        "daily_digest": "开启每日摘要后,每天发送一次。",
+        "account_activation": "组织为某人创建个人资料时发送，以便对方设置密码。",
+        "account_approved": "管理员批准通过注册链接申请加入的人时发送。",
+        "account_rejected": "管理员拒绝通过注册链接申请加入的人时发送。",
+        "form_invitation": "发送给受邀填写仅限受邀者表单的人，附带其个人链接。",
+        "respondent_code": "表单要求答卷人确认邮箱地址时发送。",
+        "resume_link": "答卷人保存回答以便稍后完成时发送。"
       },
       "own": "你自己的文本",
       "ownIn": "{n} 种语言有自定义文本 | {n} 种语言有自定义文本",
@@ -7631,7 +7643,9 @@
         "answers": "答案表",
         "title": "标题",
         "message": "消息",
-        "summary": "摘要"
+        "summary": "摘要",
+        "days": "天数",
+        "reason": "原因"
       },
       "preview": "预览",
       "from": "发件人",

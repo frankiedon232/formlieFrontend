@@ -7599,7 +7599,13 @@
         "response_notification": "Nova resposta (equipe)",
         "response_receipt": "Cópia para quem respondeu",
         "notification": "Notificação",
-        "daily_digest": "Resumo diário"
+        "daily_digest": "Resumo diário",
+        "account_activation": "Ativar conta",
+        "account_approved": "Conta aprovada",
+        "account_rejected": "Pedido recusado",
+        "form_invitation": "Convite para formulário",
+        "respondent_code": "Código do respondente",
+        "resume_link": "Continuar depois"
       },
       "when": {
         "signin_code": "Enviado quando alguém entra e pede o código por e-mail.",
@@ -7608,7 +7614,13 @@
         "response_notification": "Enviado às pessoas para quem um formulário envia as novas respostas por e-mail.",
         "response_receipt": "Enviado a quem respondeu quando um formulário manda uma cópia das respostas, no idioma em que foi preenchido.",
         "notification": "Enviado para os eventos de Configurações → Notificações definidos como e-mail.",
-        "daily_digest": "Enviado uma vez por dia quando o resumo diário está ativado."
+        "daily_digest": "Enviado uma vez por dia quando o resumo diário está ativado.",
+        "account_activation": "Enviado quando a organização cria o perfil de alguém, para que escolha uma senha.",
+        "account_approved": "Enviado quando um administrador aprova quem pediu para entrar pelo link de cadastro.",
+        "account_rejected": "Enviado quando um administrador recusa quem pediu para entrar pelo link de cadastro.",
+        "form_invitation": "Enviado às pessoas convidadas a preencher um formulário só para convidados, com o link pessoal delas.",
+        "respondent_code": "Enviado quando um formulário pede aos respondentes que confirmem o e-mail.",
+        "resume_link": "Enviado quando um respondente salva as respostas para terminar depois."
       },
       "own": "Seu próprio texto",
       "ownIn": "Texto próprio em {n} idioma | Texto próprio em {n} idiomas",
@@ -7631,7 +7643,9 @@
         "answers": "tabela de respostas",
         "title": "título",
         "message": "mensagem",
-        "summary": "resumo"
+        "summary": "resumo",
+        "days": "dias",
+        "reason": "motivo"
       },
       "preview": "Pré-visualização",
       "from": "De",

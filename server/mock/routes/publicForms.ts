@@ -29,6 +29,7 @@ import { parseBody } from '../core/validate'
 import { findByPublicKey, findByShortCode, formsOf, saveForms, type StoredForm } from '../data/formStore'
 import { notifyResponse } from '../data/notificationStore'
 import { emailResponse } from '../data/responseEmails'
+import { sendEmail } from '../data/outboxStore'
 import { formLink, publicHosts, SHORT_CODE_PATTERN } from '#shared/utils/urls/public'
 import { frameAncestors } from '#shared/utils/urls/embed-domains'
 import { fingerprintOf, responseForSubmission, responsesOf, saveResponses } from '../data/responseStore'
@@ -421,7 +422,7 @@ function useVerification(formId: string, email: string, token: string | undefine
 const verifyBody = z.object({ email: z.email().max(200) })
 /** POST /public/forms/:key/verify, send a 6-digit code to the respondent's email. */
 export const sendVerification = defineMockRoute(({ event, body }) => {
-  const { form } = takingResponses(event, getRouterParam(event, 'key') ?? '')
+  const { tenant, form, schema } = takingResponses(event, getRouterParam(event, 'key') ?? '')
   const email = normaliseEmail(parseBody(verifyBody, body).email)
   if (!email) throw new MockError('FRM-GEN-1002', [{ field: 'email', message: 'Enter a valid email.' }])
   // At most 5 codes an hour for one email on one form.
@@ -430,7 +431,8 @@ export const sendVerification = defineMockRoute(({ event, body }) => {
   sentAt.set(slot(form.id, email), [...recent, Date.now()])
   const code = String(Math.floor(100000 + Math.random() * 900000))
   verifications.set(slot(form.id, email), { formId: form.id, email, code, expiresAt: Date.now() + VERIFY_TTL, attempts: 0 })
-  // A real backend emails the code; the mock hands it to the dev screen only.
+  // Emailed in the form's language (the sent log shows it); development also shows the code on screen
+  sendEmail(tenant, { to: email, key: 'respondent_code', language: mainLanguage(schema), vars: { code, minutes: VERIFY_TTL / 60_000, form: form.name, workspace: tenant.name }, reason: 'respondent_code', footer: 'form' })
   return ok({ sent_to: maskEmail(email), expires_in: VERIFY_TTL / 1000 }, import.meta.dev ? { dev_code: code } : {})
 })
 
@@ -464,15 +466,22 @@ const draftBody = z.object({
 function resumable(event: Parameters<typeof tenantOf>[0]) {
   const { tenant, form, schema } = takingResponses(event, getRouterParam(event, 'key') ?? '')
   if (!schema.settings?.save_resume) throw new MockError('FRM-PERM-1001')
-  return { tenant, form }
+  return { tenant, form, schema }
 }
 /** The resume link, sent by email (a real backend); the mock returns it to the dev screen. */
 const resumeLink = (event: Parameters<typeof tenantOf>[0], key: string, token: string) =>
   `https://${getRequestHost(event, { xForwardedHost: true })}/${key}/fill?resume=${encodeURIComponent(token)}`
 
+/** The "continue later" email, in the form's language (development also shows the link on screen). */
+function mailResumeLink(event: Parameters<typeof tenantOf>[0], found: ReturnType<typeof resumable>, email: string, token: string) {
+  const { tenant, form, schema } = found
+  sendEmail(tenant, { to: email, key: 'resume_link', language: mainLanguage(schema), vars: { form: form.name, link: resumeLink(event, form.public_key, token), days: RESUME_TTL_DAYS, workspace: tenant.name }, reason: 'resume_link', footer: 'form' })
+}
+
 /** POST /public/forms/:key/sessions, start a draft → its resume token. */
 export const startDraft = defineMockRoute(({ event, body }) => {
-  const { tenant, form } = resumable(event)
+  const found = resumable(event)
+  const { tenant, form } = found
   const input = parseBody(draftBody, body)
   const now = new Date()
   const token = newResumeToken()
@@ -487,18 +496,21 @@ export const startDraft = defineMockRoute(({ event, body }) => {
     expires_at: new Date(now.getTime() + RESUME_TTL_DAYS * 86_400_000).toISOString(),
     closed: false,
   })
+  if (input.email) mailResumeLink(event, found, input.email, token)
   const meta = import.meta.dev && input.email ? { dev_resume_url: resumeLink(event, form.public_key, token) } : {}
   return ok({ resume_token: token, expires_at: new Date(now.getTime() + RESUME_TTL_DAYS * 86_400_000).toISOString(), sent_to: input.email ? maskEmail(input.email) : null }, meta, 201)
 })
 
 /** PUT /public/forms/:key/sessions/:token, save the answers so far (and send the link when an email is given). */
 export const saveDraft = defineMockRoute(({ event, body }) => {
-  const { form } = resumable(event)
+  const found = resumable(event)
+  const { form } = found
   const token = getRouterParam(event, 'token') ?? ''
   const draft = draftOf(token, form.id)
   if (!draft) throw new MockError('FRM-GEN-1004')
   if (draft.closed) throw new MockError('FRM-RESP-1003')
   const input = parseBody(draftBody, body)
+  if (input.email) mailResumeLink(event, found, input.email, token)
   putDraft(token, { ...draft, data: input.data, page: input.page, email: input.email ?? draft.email, updated_at: new Date().toISOString() })
   const meta = import.meta.dev && input.email ? { dev_resume_url: resumeLink(event, form.public_key, token) } : {}
   return ok({ saved_at: new Date().toISOString(), expires_at: draft.expires_at, sent_to: input.email ? maskEmail(input.email) : null }, meta)

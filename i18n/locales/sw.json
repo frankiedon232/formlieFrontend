@@ -7599,7 +7599,13 @@
         "response_notification": "Jibu jipya (timu)",
         "response_receipt": "Nakala kwa aliyejibu",
         "notification": "Arifa",
-        "daily_digest": "Muhtasari wa kila siku"
+        "daily_digest": "Muhtasari wa kila siku",
+        "account_activation": "Washa akaunti",
+        "account_approved": "Akaunti imeidhinishwa",
+        "account_rejected": "Ombi limekataliwa",
+        "form_invitation": "Mwaliko wa fomu",
+        "respondent_code": "Msimbo wa mjibuji",
+        "resume_link": "Endelea baadaye"
       },
       "when": {
         "signin_code": "Hutumwa mtu anapoingia na kuomba msimbo kwa barua pepe.",
@@ -7608,7 +7614,13 @@
         "response_notification": "Hutumwa kwa watu ambao fomu huwatumia majibu mapya kwa barua pepe.",
         "response_receipt": "Hutumwa kwa waliojibu fomu inapowatumia nakala ya majibu yao, kwa lugha waliyotumia kuijaza.",
         "notification": "Hutumwa kwa matukio ya Mipangilio → Arifa yaliyowekwa kuwa barua pepe.",
-        "daily_digest": "Hutumwa mara moja kwa siku muhtasari wa kila siku ukiwa umewashwa."
+        "daily_digest": "Hutumwa mara moja kwa siku muhtasari wa kila siku ukiwa umewashwa.",
+        "account_activation": "Hutumwa shirika linapounda wasifu wa mtu, ili achague nenosiri.",
+        "account_approved": "Hutumwa msimamizi anapomwidhinisha aliyeomba kujiunga kupitia kiungo cha usajili.",
+        "account_rejected": "Hutumwa msimamizi anapomkataa aliyeomba kujiunga kupitia kiungo cha usajili.",
+        "form_invitation": "Hutumwa kwa walioalikwa kujaza fomu ya walioalikwa pekee, pamoja na kiungo chao binafsi.",
+        "respondent_code": "Hutumwa fomu inapowaomba wajibuji kuthibitisha anwani ya barua pepe.",
+        "resume_link": "Hutumwa mjibuji anapohifadhi majibu ili kumaliza baadaye."
       },
       "own": "Maandishi yako mwenyewe",
       "ownIn": "Maandishi yako kwa lugha {n} | Maandishi yako kwa lugha {n}",
@@ -7631,7 +7643,9 @@
         "answers": "jedwali la majibu",
         "title": "kichwa",
         "message": "ujumbe",
-        "summary": "muhtasari"
+        "summary": "muhtasari",
+        "days": "siku",
+        "reason": "sababu"
       },
       "preview": "Hakiki",
       "from": "Kutoka",

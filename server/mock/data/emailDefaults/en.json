@@ -27,6 +27,30 @@
     "daily_digest": {
       "subject": "Your day in {{workspace}}",
       "body": "Hello {{name}},\n\nHere is what happened since yesterday:\n\n{{summary}}\n\nOpen Formalie: {{link}}"
+    },
+    "form_invitation": {
+      "subject": "{{workspace}} invited you to fill in {{form}}",
+      "body": "Hello {{name}},\n\n{{workspace}} invited you to fill in {{form}}.\n\nOpen the form: {{link}}\n\nThis link is personal. Please don't share it."
+    },
+    "respondent_code": {
+      "subject": "Your code for {{form}}: {{code}}",
+      "body": "Enter {{code}} on the form to confirm your email address. It works for {{minutes}} minutes.\n\nIf you didn't ask for it, you can ignore this email."
+    },
+    "resume_link": {
+      "subject": "Continue {{form}}",
+      "body": "Your answers to {{form}} are saved.\n\nCarry on where you left off: {{link}}\n\nThe link works for {{days}} days. Anyone with it can see your saved answers, so keep it to yourself."
+    },
+    "account_activation": {
+      "subject": "Activate your account at {{workspace}}",
+      "body": "Hello {{name}},\n\n{{inviter}} made your profile at {{workspace}}. Within {{days}} days, open this link to choose your password, then sign in: {{link}}"
+    },
+    "account_approved": {
+      "subject": "You can sign in to {{workspace}}",
+      "body": "Hello {{name}},\n\n{{inviter}} approved your account at {{workspace}}. Sign in with your email address and password: {{link}}"
+    },
+    "account_rejected": {
+      "subject": "Your request to join {{workspace}}",
+      "body": "Hello {{name}},\n\nYour request to join {{workspace}} wasn't approved.\n\n{{reason}}\n\nIf you think this is a mistake, ask the person who sent you the link."
     }
   },
   "events": {

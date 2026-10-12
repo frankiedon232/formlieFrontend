@@ -7599,7 +7599,13 @@
         "response_notification": "새 응답(팀)",
         "response_receipt": "응답자용 사본",
         "notification": "알림",
-        "daily_digest": "일일 요약"
+        "daily_digest": "일일 요약",
+        "account_activation": "계정 활성화",
+        "account_approved": "계정 승인",
+        "account_rejected": "요청 거절",
+        "form_invitation": "양식 초대",
+        "respondent_code": "응답자 확인 코드",
+        "resume_link": "나중에 계속"
       },
       "when": {
         "signin_code": "누군가 로그인하며 이메일로 코드를 요청할 때 전송됩니다.",
@@ -7608,7 +7614,13 @@
         "response_notification": "양식이 새 응답을 이메일로 보내는 사람들에게 전송됩니다.",
         "response_receipt": "양식이 응답자에게 답변 사본을 보낼 때, 응답자가 작성한 언어로 전송됩니다.",
         "notification": "설정 → 알림에서 이메일로 설정된 이벤트에 대해 전송됩니다.",
-        "daily_digest": "일일 요약이 켜져 있으면 하루에 한 번 전송됩니다."
+        "daily_digest": "일일 요약이 켜져 있으면 하루에 한 번 전송됩니다.",
+        "account_activation": "조직이 누군가의 프로필을 만들 때 보내며, 받는 사람이 비밀번호를 정할 수 있습니다.",
+        "account_approved": "가입 링크로 참여를 요청한 사람을 관리자가 승인할 때 보냅니다.",
+        "account_rejected": "가입 링크로 참여를 요청한 사람을 관리자가 거절할 때 보냅니다.",
+        "form_invitation": "초대받은 사람만 작성하는 양식에 초대된 사람에게 개인 링크와 함께 보냅니다.",
+        "respondent_code": "양식이 응답자에게 이메일 주소 확인을 요청할 때 보냅니다.",
+        "resume_link": "응답자가 나중에 마치려고 답변을 저장할 때 보냅니다."
       },
       "own": "직접 작성한 텍스트",
       "ownIn": "{n}개 언어의 자체 텍스트 | {n}개 언어의 자체 텍스트",
@@ -7631,7 +7643,9 @@
         "answers": "답변 표",
         "title": "제목",
         "message": "메시지",
-        "summary": "요약"
+        "summary": "요약",
+        "days": "일수",
+        "reason": "사유"
       },
       "preview": "미리보기",
       "from": "보낸 사람",

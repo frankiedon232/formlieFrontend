@@ -27,6 +27,30 @@
     "daily_digest": {
       "subject": "Một ngày của bạn trong {{workspace}}",
       "body": "Xin chào {{name}},\n\nĐây là những gì đã xảy ra từ hôm qua:\n\n{{summary}}\n\nMở Formalie: {{link}}"
+    },
+    "form_invitation": {
+      "subject": "{{workspace}} mời bạn điền {{form}}",
+      "body": "Xin chào {{name}},\n\n{{workspace}} mời bạn điền {{form}}.\n\nMở biểu mẫu: {{link}}\n\nLiên kết này là riêng của bạn. Vui lòng không chia sẻ."
+    },
+    "respondent_code": {
+      "subject": "Mã của bạn cho {{form}}: {{code}}",
+      "body": "Nhập {{code}} vào biểu mẫu để xác nhận địa chỉ email. Mã có hiệu lực trong {{minutes}} phút.\n\nNếu bạn không yêu cầu, hãy bỏ qua email này."
+    },
+    "resume_link": {
+      "subject": "Tiếp tục {{form}}",
+      "body": "Câu trả lời của bạn cho {{form}} đã được lưu.\n\nTiếp tục từ chỗ bạn dừng lại: {{link}}\n\nLiên kết có hiệu lực trong {{days}} ngày. Ai có liên kết cũng xem được câu trả lời đã lưu của bạn, vì vậy hãy giữ riêng cho mình."
+    },
+    "account_activation": {
+      "subject": "Kích hoạt tài khoản của bạn tại {{workspace}}",
+      "body": "Xin chào {{name}},\n\n{{inviter}} đã tạo hồ sơ của bạn tại {{workspace}}. Trong vòng {{days}} ngày, hãy mở liên kết này để chọn mật khẩu rồi đăng nhập: {{link}}"
+    },
+    "account_approved": {
+      "subject": "Bạn có thể đăng nhập vào {{workspace}}",
+      "body": "Xin chào {{name}},\n\n{{inviter}} đã duyệt tài khoản của bạn tại {{workspace}}. Đăng nhập bằng địa chỉ email và mật khẩu của bạn: {{link}}"
+    },
+    "account_rejected": {
+      "subject": "Yêu cầu tham gia {{workspace}} của bạn",
+      "body": "Xin chào {{name}},\n\nYêu cầu tham gia {{workspace}} của bạn chưa được chấp thuận.\n\n{{reason}}\n\nNếu bạn nghĩ đây là nhầm lẫn, hãy hỏi người đã gửi liên kết cho bạn."
     }
   },
   "events": {

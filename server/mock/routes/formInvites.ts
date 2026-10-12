@@ -19,6 +19,7 @@ import { hashToken, issuePass, newInviteToken, type FormInvite } from '../data/f
 import { requireAction } from '../data/formPermissions'
 import { formsOf, saveForms, type StoredForm } from '../data/formStore'
 import type { MockTenant, MockUser } from '../data/tenants'
+import { sendEmail } from '../data/outboxStore'
 
 const MAX_INVITES = 500
 
@@ -73,6 +74,11 @@ const inviteBody = z.object({
 })
 
 /** POST /forms/:id/invites, people already invited (and not revoked) are skipped, not invited twice. */
+/** The personal invitation to fill in the form (template "form_invitation"). */
+function mailInvite(tenant: MockTenant, form: StoredForm, email: string, name: string | null, link: string) {
+  sendEmail(tenant, { to: email, key: 'form_invitation', vars: { name: name || email, form: form.name, workspace: tenant.name, link }, reason: 'form_invitation', footer: 'form' })
+}
+
 export const createInvites = defineMockRoute(({ event, body }) => {
   const { user, tenant } = requireAuth(event)
   const form = findForm(tenant, user, getRouterParam(event, 'id'), 'share')
@@ -92,10 +98,12 @@ export const createInvites = defineMockRoute(({ event, body }) => {
     const token = newInviteToken()
     const now = new Date().toISOString()
     form.invites.push({ id: crypto.randomUUID(), email, name: person.name || null, token_hash: hashToken(token), created_at: now, sent_at: now, opened_at: null, responded_at: null, revoked_at: null })
-    links.push({ email, url: personalLink(event, tenant, form, token) })
+    const url = personalLink(event, tenant, form, token)
+    links.push({ email, url })
+    mailInvite(tenant, form, email, person.name || null, url)
   }
   if (links.length) audit(event, tenant, user, form, 'invitations', `${links.length} invited`)
-  // A real backend emails each link; development shows them so they can be copied.
+  // Each link is emailed; development also shows them so they can be copied.
   return ok({ invitations: listOf(form), created: links.length, skipped }, import.meta.dev ? { dev_links: links } : {}, 201)
 })
 
@@ -115,7 +123,9 @@ export const resendInvite = defineMockRoute(({ event }) => {
   invite.token_hash = hashToken(token)
   invite.sent_at = new Date().toISOString()
   audit(event, tenant, user, form, 'invitation_resent', invite.email)
-  return ok({ invitations: listOf(form) }, import.meta.dev ? { dev_links: [{ email: invite.email, url: personalLink(event, tenant, form, token) }] } : {})
+  const url = personalLink(event, tenant, form, token)
+  mailInvite(tenant, form, invite.email, invite.name, url)
+  return ok({ invitations: listOf(form) }, import.meta.dev ? { dev_links: [{ email: invite.email, url }] } : {})
 })
 
 /**
