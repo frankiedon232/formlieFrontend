@@ -39,9 +39,11 @@ from app.modules.auth.sessions import (
     rotate_refresh, start_session,
 )
 from app.modules.billing.service import has_feature
+from app.core.cache.redis import get_redis
 from app.modules.emails import service as emails
+from app.modules.emails import workspace as workspace_mail
 from app.modules.settings.service import get_section
-from app.modules.tenants.router import workspace_url
+from app.modules.tenants.router import workspace_url, workspaces_for
 from app.modules.tenants.service import TenantDirectory
 from app.modules.tenants.workspace import Founder, create_workspace
 from app.modules.users.identities import linked_providers, offered_methods
@@ -117,6 +119,34 @@ async def _send_code(db: Any, tenant: TenantInfo | None, challenge: challenges.C
     emails.send(challenge.email, template, language, {
         "workspace": tenant.name if tenant else "Formalie", "name": user.first_name if user else challenge.email.split("@")[0],
         "code": code, "minutes": challenge.ttl_ms // 60_000})
+
+
+PROVIDER_NAMES = {"google": "Google", "microsoft": "Microsoft", "facebook": "Facebook"}
+PASSWORD_SOCIAL_EVERY_S = 3600
+
+
+async def _password_tried_without_one(db: Any, tenant: TenantInfo, user: User) -> None:
+    """A password was typed for an account that signs in with Google, Microsoft or Facebook (it has none). The screen
+    answers like any wrong password, so it reveals nothing; the real owner gets an email, at most once an hour, saying
+    which button to use or how to set a password (owner, 2026-10-12). Never breaks the sign-in answer."""
+    try:
+        providers = sorted(set((await db.execute(select(UserIdentity.provider).where(
+            UserIdentity.user_id == user.id, UserIdentity.deleted_at.is_(None)))).scalars()))
+        if not providers:
+            return
+        if not await get_redis().set(f"auth:password-social:{user.id}", "1", nx=True, ex=PASSWORD_SOCIAL_EVERY_S):
+            return
+        language = await _language(db, tenant, user)
+        texts = workspace_mail.defaults(language)["account"]["password_social"]
+        values = {"workspace": tenant.name, "email": user.email,
+                  "provider": " / ".join(PROVIDER_NAMES.get(p, p.title()) for p in providers)}
+        await workspace_mail.send(db, tenant.id, tenant.name, to=user.email, key="notification",
+                                  reason="password_social", language=language, values={
+                                      "title": workspace_mail.fill_in(texts["title"], values),
+                                      "message": workspace_mail.fill_in(texts["message"], values),
+                                      "link": workspace_url(tenant.subdomain, "/auth/login")})
+    except Exception:  # noqa: BLE001
+        emails.log.exception("password-on-social notice could not be sent")
 
 
 async def _find_user(db: Any, email: str) -> User | None:
@@ -200,6 +230,8 @@ async def login(body: LoginBody) -> Any:
             await _audit(db, tenant, "auth.login.failed", Actor.user(user) if user else Actor.anonymous(email),
                          outcome="failure", reason="FRM-AUTH-1002",
                          metadata={"method": "password", **({} if user else {"account": "not_found"})})
+            if user is not None and not user.password_hash:
+                await _password_tried_without_one(db, tenant, user)
             raise FrmError("FRM-AUTH-1002", commit=True)
         await _admit(db, tenant, user, signin, "password")
         if _password_expired(security, user):
@@ -376,6 +408,19 @@ class CompleteBody(BaseModel):
     @classmethod
     def _lower(cls, value: Any) -> Any:
         return value.strip().lower() if isinstance(value, str) else value
+
+
+@router.get("/auth/signup/workspaces", dependencies=[rate_limit("signup-workspaces", per_minute=20)])
+async def signup_workspaces(challenge_id: str) -> Any:
+    """Once the sign-up email is verified (its code, or Google, Microsoft or Facebook): the active workspaces it already
+    has, so the workspace step can offer them before making another (owner, 2026-10-12). Never before verification,
+    so it tells nobody which workspaces an address they don't own belongs to."""
+    host = current_host_context()
+    challenge = await challenges.get_challenge(challenge_id)
+    if host is None or host.kind != "manage" or challenge is None or challenge.purpose != "signup" \
+            or not challenge.verified:
+        raise FrmError("FRM-AUTH-1003")
+    return ok(await workspaces_for(challenge.email))
 
 
 @router.post("/auth/signup/complete", dependencies=[rate_limit("signup-complete", per_minute=5)])

@@ -115,13 +115,18 @@ class VerifyBody(BaseModel):
     code: str = Field(pattern=r"^\d{6}$")
 
 
+async def workspaces_for(email: str) -> list[dict[str, str]]:
+    """Every active workspace this (already verified) email belongs to, with a link to its sign-in page."""
+    async with db_session("read") as db:
+        rows = (await db.execute(text("SELECT name, subdomain FROM platform.workspaces_for_email(:e)"),
+                                 {"e": email})).all()
+    return [{"name": name, "subdomain": sub, "url": workspace_url(sub, f"/auth/login?email={quote(email)}")}
+            for name, sub in rows]
+
+
 @router.post("/tenants/find-workspace/verify", dependencies=[rate_limit("find-workspace-verify", per_minute=20)])
 async def find_workspace_verify(body: VerifyBody) -> Any:
     """Every active workspace this email belongs to, with a link to its sign-in page."""
     challenge = await challenges.verify_code(body.challenge_id, body.code, "find")
     await challenges.consume(challenge.id)
-    async with db_session("read") as db:
-        rows = (await db.execute(text("SELECT name, subdomain FROM platform.workspaces_for_email(:e)"),
-                                 {"e": challenge.email})).all()
-    return ok([{"name": name, "subdomain": sub,
-                "url": workspace_url(sub, f"/auth/login?email={quote(challenge.email)}")} for name, sub in rows])
+    return ok(await workspaces_for(challenge.email))

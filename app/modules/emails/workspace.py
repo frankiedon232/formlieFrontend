@@ -35,7 +35,7 @@ def defaults(language: str) -> dict[str, Any]:
     own = emails._catalogue(language) if language != "en" else None
     if not own:
         return en
-    return {part: {**en.get(part, {}), **own.get(part, {})} for part in ("templates", "events", "layout", "reasons")}
+    return {part: {**en.get(part, {}), **own.get(part, {})} for part in ("templates", "events", "layout", "reasons", "account")}
 
 
 def fill_in(text: str, values: dict[str, Any]) -> str:

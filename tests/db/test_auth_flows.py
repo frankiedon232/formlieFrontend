@@ -272,3 +272,79 @@ async def test_login_is_rate_limited(remedy: SecureClient) -> None:
         status, _ = await remedy.request("POST", "/auth/login", body={"email": "nobody@x.test", "password": "x"})
         statuses.append(status)
     assert statuses[-1] == 429
+
+
+# ── Sign-up: the workspaces an email already has; a password tried on a social account (owner, 2026-10-12) ─────
+
+async def _new_workspace(app, email: str, password: str = "Correct-Horse-9") -> str:  # noqa: ANN001
+    """Signs up a fresh workspace for this email → its subdomain."""
+    import uuid
+
+    sub = f"ws{uuid.uuid4().hex[:8]}"
+    async with client_for(app, host="manage.formalie.dev:2202") as http:
+        manage = SecureClient(http)
+        _, reply = await manage.request("POST", "/auth/signup", body={
+            "first_name": "Ada", "last_name": "Lovelace", "email": email, "password": password})
+        challenge_id = reply["data"]["challenge_id"]
+        await manage.request("POST", "/auth/otp/verify", body={"challenge_id": challenge_id, "code": last_code(email)})
+        _, reply = await manage.request("POST", "/auth/signup/complete", body={
+            "challenge_id": challenge_id, "company_name": "Social Co", "subdomain": sub})
+        assert "redirect_url" in reply["data"], reply
+    return sub
+
+
+async def test_signup_lists_the_emails_workspaces_only_once_verified(app, remedy: SecureClient) -> None:  # noqa: ANN001
+    email = "james.carter@carterpartners.test"  # has remedylegal and samathtax
+    async with client_for(app, host="manage.formalie.dev:2202") as http:
+        manage = SecureClient(http)
+        _, reply = await manage.request("POST", "/auth/signup", body={
+            "first_name": "James", "last_name": "Carter", "email": email, "password": "Correct-Horse-9"})
+        challenge_id = reply["data"]["challenge_id"]
+        _, before = await manage.request("GET", "/auth/signup/workspaces", query={"challenge_id": challenge_id})
+        assert before["error"]["code"] == "FRM-AUTH-1003"  # not before the code: no discovery for strangers
+        await manage.request("POST", "/auth/otp/verify", body={"challenge_id": challenge_id, "code": last_code(email)})
+        status, reply = await manage.request("GET", "/auth/signup/workspaces", query={"challenge_id": challenge_id})
+        assert status == 200, reply
+        assert [w["subdomain"] for w in reply["data"]] == ["remedylegal", "samathtax"]
+        assert reply["data"][0]["url"].endswith("/auth/login?email=james.carter%40carterpartners.test")
+        _, unknown = await manage.request("GET", "/auth/signup/workspaces", query={"challenge_id": "nope"})
+        assert unknown["error"]["code"] == "FRM-AUTH-1003"
+    _, elsewhere = await remedy.request("GET", "/auth/signup/workspaces", query={"challenge_id": challenge_id})
+    assert elsewhere["error"]["code"] == "FRM-AUTH-1003"  # manage.* only
+
+
+async def test_password_tried_on_a_social_account_answers_the_same_and_emails_the_owner(app, superuser) -> None:  # noqa: ANN001
+    import uuid
+
+    email = f"social-{uuid.uuid4().hex[:8]}@example.test"
+    sub = await _new_workspace(app, email)
+    # This account came in with Facebook: no password, one linked identity
+    superuser.execute("UPDATE formaly.users SET password_hash = NULL WHERE email = %s", (email,))
+    superuser.execute(
+        "INSERT INTO formaly.user_identities (id, tenant_id, organisation_id, user_id, provider, provider_user_id, email,"
+        " created_by) SELECT gen_random_uuid(), tenant_id, organisation_id, id, 'facebook', %s, email, id"
+        " FROM formaly.users WHERE email = %s", (f"fb-{uuid.uuid4().hex}", email))
+    sent_before = len(SENT)
+    async with client_for(app, host=f"{sub}.formalie.dev") as http:
+        client = SecureClient(http)
+        status, reply = await client.request("POST", "/auth/login", body={"email": email, "password": "Guess-123"})
+        assert (status, reply["error"]["code"]) == (401, "FRM-AUTH-1002")  # the same answer as any wrong password
+        _, again = await client.request("POST", "/auth/login", body={"email": email, "password": "Guess-456"})
+        assert again["error"]["code"] == "FRM-AUTH-1002"
+    notices = [m for m in SENT[sent_before:] if m["to"] == email and m["values"].get("reason") == "password_social"]
+    assert len(notices) == 1  # at most once an hour
+    assert "Facebook" in notices[0]["text"] and "Guess-123" not in notices[0]["text"]
+    assert f"https://{sub}.formalie.dev" in notices[0]["text"]  # the way back to the sign-in page
+    assert "auth.login.failed" in audit_actions(superuser, email)
+
+
+async def test_no_notice_for_a_wrong_password_on_an_account_that_has_one(app) -> None:  # noqa: ANN001
+    import uuid
+
+    email = f"plain-{uuid.uuid4().hex[:8]}@example.test"
+    sub = await _new_workspace(app, email)
+    sent_before = len(SENT)
+    async with client_for(app, host=f"{sub}.formalie.dev") as http:
+        _, reply = await SecureClient(http).request("POST", "/auth/login", body={"email": email, "password": "Guess-123"})
+    assert reply["error"]["code"] == "FRM-AUTH-1002"
+    assert not [m for m in SENT[sent_before:] if m["values"].get("reason") == "password_social"]

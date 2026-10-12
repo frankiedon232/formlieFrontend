@@ -72,5 +72,11 @@
     "code_locked": "错误验证码次数过多",
     "account_disabled": "账户已被停用",
     "password_expired": "密码已过期"
+  },
+  "account": {
+    "password_social": {
+      "title": "有人在您的 {{workspace}} 账户上尝试了密码",
+      "message": "有人尝试以 {{email}} 的身份使用密码登录 {{workspace}}。您的账户通过 {{provider}} 登录，因此没有接受任何密码。\n\n要登录，请在登录页面使用 {{provider}} 按钮。如果也想使用密码，请在该页面选择“忘记密码？”并设置一个。\n\n如果不是您本人操作，则没有任何变化，您无需采取任何行动。"
+    }
   }
 }

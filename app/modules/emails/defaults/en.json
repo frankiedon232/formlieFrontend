@@ -72,5 +72,11 @@
     "code_locked": "too many wrong codes",
     "account_disabled": "the account is disabled",
     "password_expired": "the password has expired"
+  },
+  "account": {
+    "password_social": {
+      "title": "Someone tried a password on your {{workspace}} account",
+      "message": "Someone tried to sign in to {{workspace}} as {{email}} with a password. Your account signs in with {{provider}}, so no password was accepted.\n\nTo sign in, use the {{provider}} button on the sign-in page. To use a password as well, choose \"Forgot password?\" there and set one.\n\nIf this wasn't you, nothing has changed and you don't need to do anything."
+    }
   }
 }

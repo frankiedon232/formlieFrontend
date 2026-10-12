@@ -72,5 +72,11 @@
     "code_locked": "trop de codes erronés",
     "account_disabled": "le compte est désactivé",
     "password_expired": "le mot de passe a expiré"
+  },
+  "account": {
+    "password_social": {
+      "title": "Quelqu'un a essayé un mot de passe sur votre compte {{workspace}}",
+      "message": "Quelqu'un a essayé de se connecter à {{workspace}} en tant que {{email}} avec un mot de passe. Votre compte se connecte avec {{provider}}, aucun mot de passe n'a donc été accepté.\n\nPour vous connecter, utilisez le bouton {{provider}} sur la page de connexion. Pour utiliser aussi un mot de passe, choisissez « Mot de passe oublié ? » sur cette page et définissez-en un.\n\nSi ce n'était pas vous, rien n'a changé et vous n'avez rien à faire."
+    }
   }
 }

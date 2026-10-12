@@ -72,5 +72,11 @@
     "code_locked": "quá nhiều mã sai",
     "account_disabled": "tài khoản đã bị vô hiệu hóa",
     "password_expired": "mật khẩu đã hết hạn"
+  },
+  "account": {
+    "password_social": {
+      "title": "Có người đã thử mật khẩu trên tài khoản {{workspace}} của bạn",
+      "message": "Có người đã thử đăng nhập vào {{workspace}} bằng {{email}} với mật khẩu. Tài khoản của bạn đăng nhập bằng {{provider}}, nên không có mật khẩu nào được chấp nhận.\n\nĐể đăng nhập, hãy dùng nút {{provider}} trên trang đăng nhập. Nếu muốn dùng thêm mật khẩu, hãy chọn \"Quên mật khẩu?\" ở đó và đặt một mật khẩu.\n\nNếu đó không phải bạn, không có gì thay đổi và bạn không cần làm gì."
+    }
   }
 }

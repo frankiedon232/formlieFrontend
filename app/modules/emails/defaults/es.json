@@ -72,5 +72,11 @@
     "code_locked": "demasiados códigos incorrectos",
     "account_disabled": "la cuenta está desactivada",
     "password_expired": "la contraseña ha caducado"
+  },
+  "account": {
+    "password_social": {
+      "title": "Alguien probó una contraseña en tu cuenta de {{workspace}}",
+      "message": "Alguien intentó iniciar sesión en {{workspace}} como {{email}} con una contraseña. Tu cuenta inicia sesión con {{provider}}, así que no se aceptó ninguna contraseña.\n\nPara iniciar sesión, usa el botón de {{provider}} en la página de inicio de sesión. Si también quieres usar una contraseña, elige \"¿Olvidaste tu contraseña?\" allí y crea una.\n\nSi no fuiste tú, no ha cambiado nada y no tienes que hacer nada."
+    }
   }
 }
