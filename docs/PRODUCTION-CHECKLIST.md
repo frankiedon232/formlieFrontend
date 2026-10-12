@@ -57,6 +57,9 @@ Generate fresh keys with `fmly\Scripts\python.exe scripts\gen_keys.py --write` o
 | `GATEWAY_PORT` | `5005` (`python -m app.gateway`; the main app on 5004 also answers `api.formalie.dev`) | ⬜ the port Nginx sends `api.formalie.com` to (its own process, `uvicorn app.gateway:app --no-proxy-headers`) |
 | `GATEWAY_IP_PER_MINUTE` | `6000` | ⬜ the ceiling per caller IP across all workspaces (keep 6000 or set from real traffic) |
 | `API_NETWORKS_DIR` | empty (`data/geoip/networks`, usually no lists) | ⬜ a folder with `vpn.txt`, `proxy.txt`, `tor.txt`, `hosting.txt` (an IP or range per line) kept up to date, so access rules on anonymous networks match; without them only hosting providers are known (by network number) |
+| `ANTHROPIC_API_KEY` (B13) | empty (the built-in assistant answers) or a development key | ⬜ the production key from console.anthropic.com (backend only, never in the frontend or logs), with a monthly spending limit set on the Anthropic account |
+| `ANTHROPIC_MODEL`, `ANTHROPIC_FAST_MODEL` (B13) | `claude-opus-5-5`, `claude-haiku-5-5` | ⬜ keep, or the models the owner chooses (the fast one answers designs, reading answers, questions and summaries) |
+| `ANTHROPIC_TIMEOUT_SECONDS`, `ANTHROPIC_MAX_RETRIES`, `ANTHROPIC_FALLBACKS` (B13) | `90`, `2`, `true` | ⬜ keep; the API servers must reach `api.anthropic.com` (outgoing HTTPS) |
 | `RATE_LIMIT_ENABLED`, `RATE_LIMIT_FAIL_OPEN` | `true`, `true` | ⬜ `true`; decide fail open or closed when Redis is down |
 | `ALERT_EMAILS` | empty | ⬜ the team's address for CRITICAL errors |
 | `LOG_CONSOLE_FORMAT` | pretty | ⬜ `json` |
@@ -106,13 +109,12 @@ Also:
 
 The production return addresses (backend README, "The addresses to register"):
 - `https://manage.formalie.com/api/v1/auth/oauth/google/callback`
-- `https://manage.formalie.com/api/v1/auth/oauth/microsoft/callback`
 - `https://manage.formalie.com/api/v1/auth/oauth/facebook/callback`
 
 - ⬜ **Google:** add the production address under Authorised redirect URIs; publish the app (out of Testing) and complete Google's verification of the consent screen.
-- ⬜ **Microsoft:** add the production address under Authentication; publisher verification (Branding & properties → Add MPN ID, and the `.well-known/microsoft-identity-association.json` file on formalie.com); the `xms_edov` optional claim; renew the client secret before it expires (calendar reminder).
 - ⬜ **Facebook:** add the production address under Valid OAuth Redirect URIs and `formalie.com` under App domains; switch the app to Live; complete Business verification if asked.
 - ⬜ Remove development-only addresses you no longer need (the `:2202` ones can stay on a separate development app).
+- No Microsoft app (owner, 2026-10-12): Microsoft accounts come in through each workspace's own single sign-on with Entra ID, set up by the customer in Settings → Sign-in. If a Microsoft social sign-in app was registered earlier, it can be deleted in Entra (and `OAUTH_MICROSOFT_*` removed from the server's environment; the API ignores them).
 
 ## 6. Email deliverability
 
@@ -126,7 +128,7 @@ The production return addresses (backend README, "The addresses to register"):
 - ⬜ Production address `https://formalie.com` (the site's CLAUDE.md lists development as `https://formalie.dev:3033`).
 - ⬜ Legal pages content from the platform admin; the links used by the portal and emails resolve.
 - ⬜ Sign-up links go to `https://manage.formalie.com/auth/signup`.
-- ⬜ The Microsoft `.well-known` file (section 5) and SEO settings (sitemap, robots, canonical addresses on `.com`).
+- ⬜ SEO settings (sitemap, robots, canonical addresses on `.com`).
 
 ## 8. Platform admin (formaliePlatformFront / formaliePlatformBack)
 
