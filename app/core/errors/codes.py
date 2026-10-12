@@ -48,7 +48,7 @@ ERROR_CODES: dict[str, ErrorDef] = {
     'FRM-AUTH-1018': ErrorDef(422, 'You used this password recently. Choose another one.', 'INFO'),
     'FRM-AUTH-1019': ErrorDef(403, 'This email address signs in with single sign-on.', 'INFO'),
     'FRM-AUTH-1020': ErrorDef(409, 'Test single sign-on before turning it on.', 'INFO'),
-    'FRM-AUTH-1021': ErrorDef(422, "Google, Microsoft or Facebook didn't share a verified email address.", 'INFO'),
+    'FRM-AUTH-1021': ErrorDef(422, "Google or Facebook didn't share a verified email address.", 'INFO'),
     'FRM-AUTH-1022': ErrorDef(404, "There's no account with this email address in this workspace. Ask an admin to invite you.", 'INFO'),
     'FRM-AUTH-1023': ErrorDef(502, "Signing in with this provider didn't finish. Try again.", 'WARNING'),
     'FRM-PERM-1001': ErrorDef(403, "You don't have access to this.", 'WARNING'),
