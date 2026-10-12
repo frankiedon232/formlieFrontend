@@ -74,6 +74,11 @@ Generate fresh keys with `fmly\Scripts\python.exe scripts\gen_keys.py --write` o
 | `REQUEST_LOG_SINK` | `database` | ⬜ `celery` (the `logs` queue) at volume |
 | `MAXMIND_ACCOUNT_ID`, `MAXMIND_LICENSE_KEY` | maybe empty | ⬜ set; Beat refreshes the databases weekly |
 | `TEST_MYSQL_URL`, `DB_TEST_DATABASE` | test only | ⬜ not set in production |
+| `DB_PLATFORM_READER_URL`, `DB_PLATFORM_WRITER_URL` (B16) | empty (roles without LOGIN) | ⬜ long random passwords; reader on the read replica's address, writer on the primary. `scripts/db_bootstrap.py` gives the roles LOGIN with them; the same URLs go into the platform admin's backend (formaliePlatformBack) |
+| `PLATFORM_ADMIN_KEYS` (B16) | a development pair, also in the platform admin's settings (or empty: internal admin API refused) | ⬜ a new `key_id:secret` pair (secret 32+ random characters), the same in formaliePlatformBack; rotate by adding the new pair first, then removing the old |
+| `PLATFORM_ADMIN_REQUIRE_MTLS`, `PLATFORM_ADMIN_CERT_FINGERPRINTS` (B16) | `false`, empty | ⬜ `true` (the API refuses every internal admin call in production without it) and the platform's client certificate fingerprint as Nginx passes it (`$ssl_client_fingerprint`) |
+| `PLATFORM_ADMIN_NETWORKS` (B16) | local and private ranges | ⬜ only the platform admin's private addresses |
+| `PLATFORM_ADMIN_WINDOW_SECONDS`, `SUPPORT_TICKET_SECONDS`, `SUPPORT_SESSION_MINUTES`, `SUPPORT_REQUEST_DAYS`, `PLATFORM_EVENTS_API_SAMPLE`, `PLATFORM_PUBLISHED_QUEUE` (B16) | `300`, `120`, `60`, `7`, `1.0`, `formalie.platform_published` | ⬜ keep (lower the API sample rate if `api.called` volume is too high) |
 
 Also on the backend side:
 - ⬜ **The API answers on `https://services.formalie.com`** (owner, 2026-10-12), not on each workspace's address. Backend work before go-live (B17): recognise the workspace from the `Origin` header (set by the browser, scripts can't change it) instead of the request host; CORS with credentials for `https://*.formalie.com`, `forms.` and verified workspace domains only; the refresh cookie on `services.` kept apart per workspace (still HttpOnly, Secure, SameSite=Strict, which holds because every host is on `formalie.com`); the sign-in providers' return addresses move to `services.` (section 5).
@@ -83,6 +88,7 @@ Also on the backend side:
 - ⬜ Backups: continuous WAL archiving plus a daily full backup, encrypted, off-site, 30 days; a restore drill before launch and monthly after.
 - ⬜ Flower and the RabbitMQ management page: not public (VPN or SSH tunnel only).
 - ⬜ Celery Beat runs `privacy.apply_retention` once a day (response retention; nothing to set).
+- ⬜ B16: the `platform.published` consumer runs as its own service (`python -m app.modules.platform_bridge.consumer`, restart on failure); Beat runs `platform.expire_support_access` every minute (nothing to set).
 - ⬜ The servers' Python has `xmlsec` working (python3-saml): `python -c "import xmlsec"`; on Linux the wheel needs `libxmlsec1` (`apt install libxmlsec1-openssl`) and `lxml` built against the same libxml2.
 
 ## 3. Frontend (formalieFrontend, the production build and its environment)
@@ -146,8 +152,9 @@ The production return addresses (backend README, "The addresses to register"). W
 
 - ⬜ Their own production settings: `docs/04-HOSTING.md` in each project.
 - ⬜ formaliePlatformFront built as static SPA files (`nuxt generate`) on Cloudflare, calling formaliePlatformBack's production address; no development address left in the build.
-- ⬜ Database roles `platform_reader` / `platform_writer` in Formalie's production database (PLATFORM-ADMIN-INTEGRATION §5).
-- ⬜ The internal admin API between the two systems with mTLS and HMAC keys made for production.
+- ⬜ Database roles `platform_reader` / `platform_writer` in Formalie's production database (PLATFORM-ADMIN-INTEGRATION §5): LOGIN through `DB_PLATFORM_READER_URL` / `DB_PLATFORM_WRITER_URL` and `scripts/db_bootstrap.py`; `platform_reader` connects to the read replica only.
+- ⬜ The internal admin API between the two systems: a private Nginx listener for `/internal/admin/v1/` only (never on the public hosts) with `ssl_verify_client on`, the platform's CA, and `X-Client-Verify` / `X-Client-Cert-Fingerprint` passed to the API; HMAC keys made for production (`PLATFORM_ADMIN_KEYS`, the same pair in formaliePlatformBack).
+- ⬜ RabbitMQ: the platform's own user with permission to bind its queue `platform.analytics` to `formalie.events` and to publish `platform.published` there; Formalie's consumer reads `formalie.platform_published`.
 
 ## 9. Last checks on launch day
 
