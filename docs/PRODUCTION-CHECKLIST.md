@@ -19,7 +19,7 @@ Marks: ⬜ to do · ✅ done in production · ⏸ waiting on a decision or an ac
 - ⬜ **Object storage:** the cloud provider's S3 for uploads and exports. Development keeps them in the `data/storage` folder.
 - ⏸ **Payments:** the owner's Payoneer account (F24): live keys and the webhook secret.
 - ⏸ **SMS provider** for text-message codes (for example Twilio or Vonage), when workspaces should be able to use them.
-- ⏸ **AI provider** for the assistant (B13): its key and the data agreement.
+- ⬜ **AI provider: Anthropic Claude** (owner 2026-10-12) for the assistant (B13): a production API key at console.anthropic.com (`ANTHROPIC_API_KEY`, backend only, separate from any development key), the model (`ANTHROPIC_MODEL`), spending limits on the Anthropic account, and Anthropic's commercial terms / data processing agreement accepted.
 - ⬜ **MaxMind GeoLite2:** account ID and licence key for request locations.
 
 ## 2. Backend (formlyBackend `.env` on the production servers)
