@@ -289,7 +289,10 @@ async def test_seeded_workspace_has_the_mock_samples(app) -> None:  # noqa: ANN0
             ("Customer onboarding", "active"), ("Internal tools", "disabled"), ("Partner bookings", "active")]
         _, reply = await admin.request("GET", "/api-tokens", query={"sort": "name"})
         tokens = {t["name"]: t for t in reply["data"]}
-        assert {n: t["status"] for n, t in tokens.items() if n != "Mobile app"} == {
+        # The sample webhooks (B10 step 2) each send a webhook token of their own
+        assert sorted(n for n, t in tokens.items() if t["kind"] == "webhook") == [
+            "CRM sync · webhook", "Data warehouse · webhook", "Old ticketing bridge · webhook"]
+        assert {n: t["status"] for n, t in tokens.items() if n != "Mobile app" and t["kind"] != "webhook"} == {
             "Old import script": "revoked", "Partner sandbox": "active", "Website sign-ups": "active"}
         assert tokens["Mobile app"]["status"] in ("expiring", "expired")  # 9 days from when the test database was seeded
         assert tokens["Website sign-ups"]["scope_names"]["services"] == ["Customer onboarding"] and tokens["Website sign-ups"]["viewable"]

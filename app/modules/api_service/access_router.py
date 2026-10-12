@@ -22,6 +22,7 @@ from app.core.responses import ok
 from app.core.security.limits import rate_limit
 from app.modules.api_service import access as A
 from app.modules.api_service import service as S
+from app.modules.api_service import traffic as TR
 from app.modules.api_service.models import ApiAccessRule
 from app.modules.api_service.origins import parse_url
 from app.modules.api_service.router import audit, page, scope
@@ -94,11 +95,13 @@ async def access_insights(principal: Principal = Depends(require_admin)) -> Any:
     async with db_session("read", **scope(principal)) as db:
         store = await S.Store(principal.tenant.id).load(db, forms=False)
     rules = store.rules
+    refused = TR.sum_usage([TR.usage_view(store.traffic.rules.get(r.id)) for r in rules if r.action == "block"])
     return ok({
         "total": len(rules), "by_action": {a: sum(1 for r in rules if r.action == a) for a in ("allow", "block")},
         "by_kind": {k: sum(1 for r in rules if r.kind == k) for k in A.API_RULE_KINDS},
-        # TODO(B10 step 2): refused and rate-limited calls from api_rule_hits_daily / api_rate_limited_daily
-        "refused_30d": 0, "previous_30d": 0, "daily": S.thirty_days(), "limited_30d": 0,
+        # Calls refused by the block rules there are now (the 30 days before for the change), calls over a rate limit
+        "refused_30d": refused["calls_30d"], "previous_30d": refused["previous_30d"], "daily": refused["daily"],
+        "limited_30d": sum(store.traffic.limited.get(d, 0) for d in TR.days_back(30)),
     })
 
 

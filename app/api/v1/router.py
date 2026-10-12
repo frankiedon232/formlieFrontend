@@ -7,6 +7,7 @@ from fastapi import APIRouter
 from app.modules.api_service.access_router import router as api_access_router
 from app.modules.api_service.router import router as api_service_router
 from app.modules.api_service.tokens_router import router as api_tokens_router
+from app.modules.api_service.traffic_router import router as api_traffic_router
 from app.modules.audit.router import router as audit_router
 from app.modules.auth.router import router as auth_router
 from app.modules.dashboard.router import router as navigation_router
@@ -39,6 +40,7 @@ from app.modules.rbac.router import router as roles_router
 from app.modules.settings.router import router as settings_router
 from app.modules.tenants.router import router as tenants_router
 from app.modules.uploads.router import router as uploads_router
+from app.modules.webhooks.router import router as webhooks_router
 
 api_router = APIRouter()
 api_router.include_router(platform_router)
@@ -75,4 +77,6 @@ api_router.include_router(responses_router)
 api_router.include_router(api_service_router)
 api_router.include_router(api_tokens_router)
 api_router.include_router(api_access_router)
+api_router.include_router(api_traffic_router)
+api_router.include_router(webhooks_router)
 api_router.include_router(settings_router)  # after any module with its own /settings/{name} route (sso, B11)

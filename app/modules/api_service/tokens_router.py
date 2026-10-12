@@ -25,6 +25,7 @@ from app.core.security.fernet_tokens import decrypt_secret, encrypt_secret
 from app.core.security.limits import rate_limit
 from app.modules.api_service import service as S
 from app.modules.api_service import tokens as T
+from app.modules.api_service import traffic as TR
 from app.modules.api_service.models import ApiToken
 from app.modules.api_service.router import audit, page, scope
 from app.modules.auth.confirm import confirm_password
@@ -103,7 +104,7 @@ async def api_token_insights(principal: Principal = Depends(require_admin)) -> A
     async with db_session("read", **scope(principal)) as db:
         store = await S.Store(principal.tenant.id).load(db, forms=False)
     views = [S.token_view(store, t) for t in store.tokens]
-    use = S.usage()
+    use = TR.sum_usage([store.token_usage(t) for t in store.tokens])
     cutoff = datetime.now(UTC) - timedelta(days=90)
     return ok({
         "total": len(views), "by_status": {s: sum(1 for v in views if v["status"] == s) for s in T.API_TOKEN_STATUSES},
@@ -111,7 +112,7 @@ async def api_token_insights(principal: Principal = Depends(require_admin)) -> A
         "calls_30d": use["calls_30d"], "previous_30d": use["previous_30d"], "daily": use["daily"],
         # Tokens unused for 90 days (worth revoking)
         "unused_90d": sum(1 for t in store.tokens if S.token_status(t) in ("active", "expiring")
-                          and (t.last_used_at or t.created_at) < cutoff),
+                          and (store.token_last_used(t) or t.created_at) < cutoff),
     })
 
 

@@ -326,6 +326,9 @@ async def _event(db: Any, kind: str, entry: Entry, extra: dict[str, Any] | None 
         from app.modules.destinations.service import response_changed
 
         await response_changed(db, entry.form, entry.response)  # the row in the form's table follows
+    from app.modules.webhooks.service import response_event
+
+    await response_event(db, kind, entry.form, entry.response, (extra or {}).get("before"))  # the workspace's webhooks
 
 
 async def _history(db: Any, principal: Principal, entry: Entry, changes: list[dict[str, Any]]) -> None:

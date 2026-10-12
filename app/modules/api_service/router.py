@@ -32,6 +32,7 @@ from app.core.errors import FrmError
 from app.core.responses import PageParams, ok
 from app.core.security.limits import rate_limit
 from app.modules.api_service import service as S
+from app.modules.api_service import traffic as TR
 from app.modules.api_service.endpoints import API_PAGE_SIZE_MAX, check_api_name, check_endpoint_name, endpoint_fields_of
 from app.modules.api_service.models import ApiAccessRule, ApiEndpoint, ApiService
 from app.modules.api_service.origins import MAX_ALLOWED_ORIGINS, normalise_origin
@@ -140,7 +141,7 @@ async def rotate_api_key(request: Request, principal: Principal = Depends(requir
 @router.get("/api-service/setup", dependencies=[rate_limit("api-setup", per_minute=120)])
 async def api_setup(principal: Principal = Depends(require_admin)) -> Any:
     async with db_session("read", **scope(principal)) as db:
-        store = await S.Store(principal.tenant.id).load(db, forms=False)
+        store = await S.Store(principal.tenant.id).load(db, forms=False, traffic=False)
     tokens = [t for t in store.tokens if t.kind != "webhook" and t.revoked_at is None
               and (t.expires_at is None or t.expires_at > now())]
     return ok({"services": len(store.services), "endpoints": len(store.endpoints),
@@ -273,7 +274,8 @@ async def api_service_insights(principal: Principal = Depends(require_admin)) ->
     async with db_session("read", **scope(principal)) as db:
         store = await S.Store(principal.tenant.id).load(db, forms=False)
     views = [S.service_view(store, s) for s in store.services]
-    return ok(S.insights_of([v["status"] for v in views], [v["methods"] for v in views]))
+    return ok(S.insights_of([v["status"] for v in views], [v["methods"] for v in views],
+                            TR.sum_usage([store.service_usage(s) for s in store.services])))
 
 
 @router.get("/api-services/{service_id}", dependencies=[rate_limit("api-services", per_minute=240)])
@@ -436,7 +438,8 @@ async def api_endpoint_insights(request: Request, principal: Principal = Depends
     async with db_session("read", **scope(principal)) as db:
         store = await S.Store(principal.tenant.id).load(db, forms=False)
     endpoints = [e for e in store.endpoints if S.in_list(wanted, str(e.service_id))]
-    return ok(S.insights_of([e.status for e in endpoints], [list(e.methods) for e in endpoints]))
+    return ok(S.insights_of([e.status for e in endpoints], [list(e.methods) for e in endpoints],
+                            TR.sum_usage([store.endpoint_usage(e) for e in endpoints])))
 
 
 @router.get("/api-endpoints/form-fields", dependencies=[rate_limit("api-endpoints", per_minute=120)])

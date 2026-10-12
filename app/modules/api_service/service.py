@@ -1,9 +1,8 @@
 """The API service as the portal sees it (mock: data/apiStore.ts): the workspace's address handle, and every service,
 endpoint, token and access rule in the shapes of shared/types/apiService.ts.
 
-Traffic is B10 step 2: until the request log exists, every count of calls is 0, `daily` is 30 days of 0, answer times
-and the last call are None, and access rules have no hits. The shapes are the final ones, so nothing changes for the
-portal when the numbers arrive.
+Every count of calls, errors, answer times, last calls and rule hits is read from the request log of the public API
+(`api_request_logs`, traffic.py), once per request with the rest of the workspace's API service (`Store.load`).
 """
 
 from __future__ import annotations
@@ -24,6 +23,7 @@ from app.core.context import get_context
 from app.core.ids import uuid7
 from app.modules.api_service import access as A
 from app.modules.api_service import tokens as T
+from app.modules.api_service import traffic as TR
 from app.modules.api_service.endpoints import endpoint_fields_of
 from app.modules.api_service.models import ApiAccessRule, ApiEndpoint, ApiService, ApiSettings, ApiToken
 from app.modules.forms.models import Form, FormVersion
@@ -67,22 +67,15 @@ def path_uuid(value: Any) -> uuid.UUID | None:
         return None
 
 
-# ── Usage (B10 step 2) ────────────────────────────────────────────────────────────
+# ── Usage (from the request log, traffic.py) ──────────────────────────────────────
 
 def thirty_days() -> list[dict[str, Any]]:
     today = datetime.now(UTC).date()
     return [{"date": (today - timedelta(days=29 - i)).isoformat(), "count": 0} for i in range(30)]
 
 
-def usage(last_call_at: str | None = None) -> dict[str, Any]:
-    """ApiUsage. TODO(B10 step 2): counted from the request log (api_usage_daily); zeros until then."""
-    return {"calls_30d": 0, "previous_30d": 0, "errors_30d": 0, "daily": thirty_days(), "avg_ms": None,
-            "last_call_at": last_call_at}
-
-
-def insights_of(statuses: list[str], methods: list[list[str]]) -> dict[str, Any]:
-    """ApiInsights, the chart cards of Services and Endpoints."""
-    use = usage()
+def insights_of(statuses: list[str], methods: list[list[str]], use: dict[str, Any]) -> dict[str, Any]:
+    """ApiInsights, the chart cards of Services and Endpoints (`use`: the items' usage added up)."""
     return {"total": len(statuses),
             "by_status": {"active": statuses.count("active"), "disabled": statuses.count("disabled")},
             "by_method": {m: sum(1 for ms in methods if m in ms) for m in API_METHODS},
@@ -197,8 +190,9 @@ class Store:
     rules: list[ApiAccessRule] = field(default_factory=list)
     forms: dict[uuid.UUID, FormFacts] = field(default_factory=dict)
     names: Names = field(default_factory=Names)
+    traffic: TR.Traffic = field(default_factory=TR.Traffic)
 
-    async def load(self, db: AsyncSession, *, forms: bool = True) -> Store:
+    async def load(self, db: AsyncSession, *, forms: bool = True, traffic: bool = True) -> Store:
         t = self.tenant_id
         self.settings = (await db.execute(select(ApiSettings).where(ApiSettings.tenant_id == t))).scalar_one_or_none()
         self.services = list((await db.execute(select(ApiService).where(
@@ -212,6 +206,8 @@ class Store:
         if forms:
             await self.load_forms(db, {e.form_id for e in self.endpoints})
         await self.names.load(db, t)
+        if traffic:
+            self.traffic = await TR.load_usage(db, t)
         return self
 
     async def load_forms(self, db: AsyncSession, ids: set[uuid.UUID]) -> None:
@@ -236,6 +232,21 @@ class Store:
 
     def by(self, user_id: uuid.UUID | None) -> dict[str, str]:
         return self.names.ref(user_id) or {"id": "", "name": "Formalie"}
+
+    def endpoint_usage(self, endpoint: ApiEndpoint) -> dict[str, Any]:
+        return TR.usage_view(self.traffic.endpoints.get(endpoint.id))
+
+    def service_usage(self, service: ApiService) -> dict[str, Any]:
+        """sumUsage() of its endpoints."""
+        return TR.sum_usage([self.endpoint_usage(e) for e in self.endpoints if e.service_id == service.id])
+
+    def token_usage(self, token: ApiToken) -> dict[str, Any]:
+        return TR.usage_view(self.traffic.tokens.get(token.id), token.last_used_at)
+
+    def token_last_used(self, token: ApiToken) -> datetime | None:
+        """Its stamp, or its last call in the log when that is later."""
+        found = self.traffic.tokens.get(token.id)
+        return max((v for v in (token.last_used_at, found.last if found else None) if v is not None), default=None)
 
 
 async def schema_of(db: AsyncSession, tenant_id: uuid.UUID, form: FormFacts | Form, version: int | None) -> dict[str, Any] | None:
@@ -288,7 +299,7 @@ def service_view(store: Store, service: ApiService) -> dict[str, Any]:
         "allowed_origins": list(service.allowed_origins or []), "endpoints_count": len(endpoints),
         "methods": [m for m in API_METHODS if any(e.status == "active" and m in e.methods for e in endpoints)],
         "created_by": store.by(service.created_by), "created_at": iso(service.created_at), "updated_at": iso(service.updated_at),
-        **usage(),
+        **store.service_usage(service),
     }
 
 
@@ -309,7 +320,7 @@ def endpoint_view(store: Store, endpoint: ApiEndpoint) -> dict[str, Any]:
         "fields_returned": sum(1 for f in endpoint.fields if f.get("returned")) if "GET" in endpoint.methods else 0,
         "required_headers": [h["name"] for h in endpoint.headers or []],
         "created_at": iso(endpoint.created_at), "updated_at": iso(endpoint.updated_at),
-        **usage(),
+        **store.endpoint_usage(endpoint),
     }
 
 
@@ -364,13 +375,14 @@ def token_view(store: Store, token: ApiToken) -> dict[str, Any]:
                    "methods": list(scopes["methods"])},
         "scope_names": {"services": [live_services[i] for i in scopes["services"] if i in live_services],
                         "endpoints": [live_endpoints[i] for i in scopes["endpoints"] if i in live_endpoints]},
-        "expires_at": iso(token.expires_at), "rotating_until": iso(rotating), "last_used_at": iso(token.last_used_at),
+        "expires_at": iso(token.expires_at), "rotating_until": iso(rotating),
+        "last_used_at": iso(store.token_last_used(token)),
         "created_by": store.by(token.created_by), "created_at": iso(token.created_at), "revoked_at": iso(token.revoked_at),
         "viewable": bool(token.secret_enc) and token.revoked_at is None,
         # Deleted services or endpoints still in its scope: kept (dropping them would widen the token), shown as such
         "scope_gone": sum(1 for i in scopes["services"] if i not in live_services)
         + sum(1 for i in scopes["endpoints"] if i not in live_endpoints),
-        **usage(iso(token.last_used_at)),
+        **store.token_usage(token),
     }
 
 
@@ -386,8 +398,7 @@ def rule_view(store: Store, rule: ApiAccessRule) -> dict[str, Any]:
         "id": str(rule.id), "action": rule.action, "kind": rule.kind, "values": list(rule.values),
         "scope": {"type": rule.scope_type, "id": str(rule.scope_id) if rule.scope_id else None, "name": name},
         "note": rule.note, "enabled": rule.enabled,
-        # TODO(B10 step 2): hits from api_rule_hits_daily
-        "hits_30d": 0, "daily": thirty_days(), "last_hit_at": iso(rule.last_hit_at),
+        **TR.hits_view(store.traffic.rules.get(rule.id), rule.last_hit_at),
         "created_by": store.by(rule.created_by), "created_at": iso(rule.created_at), "updated_at": iso(rule.updated_at),
     }
 

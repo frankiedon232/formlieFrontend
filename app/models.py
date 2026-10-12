@@ -27,3 +27,4 @@ def import_all_models() -> None:
     import app.modules.tenants.models  # noqa: F401
     import app.modules.uploads.models  # noqa: F401
     import app.modules.users.models  # noqa: F401
+    import app.modules.webhooks.models  # noqa: F401

@@ -102,12 +102,19 @@ async def seed_lists(session: AsyncSession, ws: dict) -> int:
 
 
 async def seed_api(session: AsyncSession, ws: dict) -> int:
-    """The mock's sample API service (data/apiStore.ts), once; endpoints on the workspace's published forms."""
+    """The mock's sample API service (data/apiStore.ts), sample webhooks with a month of deliveries
+    (integrationStore.ts) and 60 days of sample traffic (apiTraffic.ts), each once; endpoints on published forms."""
     from app.modules.api_service.samples import seed_api_samples
 
     await set_rls_context(session, ws["id"], ws["org"], None)
+    from app.modules.api_service.traffic_samples import seed_sample_traffic
+    from app.modules.webhooks.samples import seed_sample_webhooks
+
     owner = next((u[0] for u in USERS if u[1] == ws["subdomain"]), None)
-    return await seed_api_samples(session, ws["id"], ws["org"], owner)
+    added = await seed_api_samples(session, ws["id"], ws["org"], owner)
+    added += await seed_sample_webhooks(session, ws["id"], ws["org"], owner)
+    calls = await seed_sample_traffic(session, ws["id"], ws["org"])
+    return added + (1 if calls else 0)
 
 
 async def seed(database: str) -> None:

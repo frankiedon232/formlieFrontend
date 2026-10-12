@@ -17,7 +17,7 @@ Marks (as in the frontend's PROGRESS): ✅ done (built and verified) · 🟡 bui
 | B7 | Public forms, sharing and links | ✅ **Done** (owner: "continue", 2026-10-11) | 24 / 24 |
 | B8 | Responses | ✅ **Done** (owner: "CONTINUE", 2026-10-11) | 23 / 23 |
 | B9 | Data sources and destinations | 🟡 **Built**; waiting for the owner's review. Webhooks moved to B10, the dashboard's Data sources view to B12 | 48 / 48 (webhooks 10 and the dashboard view 1 counted with B10 and B12) |
-| B10 | API service (management, webhooks, the public gateway) | 🟡 **Step 1 built** (management: services, endpoints, tokens, access rules, limits, connections); step 2 traffic and webhooks, step 3 the public gateway and Try it | 36 / 61 (53 portal + 8 public gateway) |
+| B10 | API service (management, webhooks, the public gateway) | 🟡 **Steps 1 and 2 built** (management: services, endpoints, tokens, access rules, limits, connections; traffic: the request log, insights, analytics; webhooks with deliveries, retries and the pause); step 3 the public gateway and Try it | 52 / 61 (53 portal + 8 public gateway) |
 | B11 | Settings, the rest (emails and sending, SSO, address, privacy, data region) | ⬜ Later | 0 / 29 |
 | B12 | Analytics and dashboard | ⬜ Later | 0 / 7 |
 | B13 | AI assistant | ⬜ Later | 0 / 19 |
@@ -26,7 +26,7 @@ Marks (as in the frontend's PROGRESS): ✅ done (built and verified) · 🟡 bui
 | B16 | Platform admin bridge | ⬜ Later | (PLATFORM-ADMIN-INTEGRATION §5) |
 | B17 | Hardening and switch-over | ⬜ Later; the frontend switch-over started 2026-10-12 (mock off, B0 to B9 being tested by the owner) | |
 
-Portal endpoints: 310 of 412 ticked in `ENDPOINTS.md` (2026-10-12: creating a form from a template and the two server-rendered page routes were built in B5 to B7 but not ticked; ticked after checking the routes and their tests; B10 step 1 added 36). 102 left, all in B10 to B15.
+Portal endpoints: 326 of 412 ticked in `ENDPOINTS.md` (2026-10-12: creating a form from a template and the two server-rendered page routes were built in B5 to B7 but not ticked; ticked after checking the routes and their tests; B10 step 1 added 36, step 2 added 16). 86 left, all in B10 to B15.
 
 ## B0, Foundation ✅ (2026-10-10)
 
@@ -159,13 +159,13 @@ How a response reaches a customer's table: its delivery is recorded in the same 
 
 Each item is ticked here and in BACKEND-ROADMAP.md when done; the endpoint counts come from ENDPOINTS.md.
 
-### B10, API service (step 1 built 2026-10-12)
+### B10, API service (steps 1 and 2 built 2026-10-12)
 
-- 🟡 Services and endpoints (create, edit, field choices, go live, docs). Endpoints: 27 · Frontend reference: `routes/apiService.ts`, `routes/apiDocs.ts` · 26 built (step 1): settings, setup, key rotation, services, endpoints, form fields. Where: `app/modules/api_service/` (`router.py`, `service.py`, `endpoints.py`), migration 0027. `POST /api-endpoints/{id}/try` waits for the gateway (step 3); calls, errors and answer times read 0 until the request log (step 2)
+- 🟡 Services and endpoints (create, edit, field choices, go live, docs). Endpoints: 27 · Frontend reference: `routes/apiService.ts`, `routes/apiDocs.ts` · 26 built (step 1): settings, setup, key rotation, services, endpoints, form fields. Where: `app/modules/api_service/` (`router.py`, `service.py`, `endpoints.py`), migration 0027. `POST /api-endpoints/{id}/try` waits for the gateway (step 3). Calls, errors, answer times and last calls are read from the request log (step 2)
 - ✅ Tokens (static and client credentials), Tokens & headers. Endpoints: (in the 27) · Frontend reference: `shared/utils/apiService/tokens.ts` · Where: `app/modules/api_service/tokens_router.py`, `tokens.py`; secrets returned once, looked up by SHA-256, kept Fernet-encrypted for reveal after the password (`app/modules/auth/confirm.py`: 5 tries in 15 minutes)
-- 🟡 Access rules (IP, domain, country, anonymous networks) and allowed websites (CORS). Endpoints: 9 · Frontend reference: `routes/apiAccess.ts`, `apiService/access.ts`, `apiService/origins.ts` · All 9 built: rules, the access test, rate limits, allowed websites on services. Where: `app/modules/api_service/access_router.py`, `access.py`, `origins.py`. Enforcing them on calls (and rule hits, refused and limited counts) comes with the gateway and the request log (steps 2 and 3)
-- 🟡 Connections and traffic (logs, insights). Endpoints: 7 · Frontend reference: `routes/apiConnections.ts`, `routes/apiTraffic.ts` · Connections built (1); traffic (6) is step 2
-- ⬜ Webhooks (moved from B9): deliveries with the webhook token, retries, pause, redeliver. Endpoints: 10 · Frontend reference: `routes/webhooks.ts`, `integrations/webhooks.ts`
+- 🟡 Access rules (IP, domain, country, anonymous networks) and allowed websites (CORS). Endpoints: 9 · Frontend reference: `routes/apiAccess.ts`, `apiService/access.ts`, `apiService/origins.ts` · All 9 built: rules, the access test, rate limits, allowed websites on services. Where: `app/modules/api_service/access_router.py`, `access.py`, `origins.py`. Rule hits, refused and limited counts are read from the request log (step 2); enforcing the rules on calls comes with the gateway (step 3)
+- ✅ Connections and traffic (logs, insights). Endpoints: 7 · Frontend reference: `routes/apiConnections.ts`, `routes/apiTraffic.ts`, `data/apiTraffic.ts` · Connections (step 1); traffic (6, step 2). Where: `app/modules/api_service/traffic.py` (the write path `record_call` the gateway calls, usage, the log, insights, analytics), `traffic_router.py`, `traffic_samples.py`, `tasks.py` (bodies cleared after their days); table `api_request_logs`, migration 0028
+- ✅ Webhooks (moved from B9): deliveries with the webhook token, retries, pause, redeliver. Endpoints: 10 · Frontend reference: `routes/webhooks.ts`, `data/integrationStore.ts`, `integrations/webhooks.ts` · Where: `app/modules/webhooks/` (`router.py`, `service.py`, `tasks.py` on the `webhooks` queue, `rules.py` with parity: `scripts/dump_webhook_rules.py`, `tests/vectors/webhook_rules.json`, 138 cases), tables `webhooks`, `webhook_deliveries`, migration 0028
 - ⬜ Public gateway on `api.formalie.*` as its own service, order of checks, CORS preflights, idempotent POST, signing, rate limits. Endpoints: 8 · Frontend reference: `server/mock/publicApi.ts`
 
 Decisions made in B10 step 1 (backend only; the frontend's answers are unchanged):
@@ -176,6 +176,19 @@ Decisions made in B10 step 1 (backend only; the frontend's answers are unchanged
 - **Sample API service only for the seeded development workspaces** (`scripts/seed_dev.py`: 3 services, endpoints on up to five published forms, 4 tokens, 3 rules). The mock also seeds every new workspace on first read; a real new workspace starts empty, with its handle and default rate limits (600 / 120 / 1200 a minute).
 - **Traffic reads 0 until step 2:** calls, errors, answer times, rule hits, refused and limited counts keep their shapes (30 days of 0, None for times). Token `last_used_at` is a stored column (the seeded tokens carry the mock's sample times).
 - **One rule not copied:** an IPv6 value with too many groups around `::` (`1:2:3:4:5:6:7:8:9::`) makes the frontend throw; here it is simply not an address (`ip`).
+
+Decisions made in B10 step 2 (backend only; the frontend's answers are unchanged):
+- **One request log, real numbers everywhere:** every count the API service screens show (calls, the 30 days before, errors, median answer time, last call, rule hits, refused and limited calls, token use) is read from `api_request_logs` (monthly partitions, like `request_logs`), in three grouped queries per request. The separate daily tables DATABASE-DESIGN planned (`api_rule_hits_daily`, `api_rate_limited_daily`) are not needed: a call row carries the deciding rule (`rule_id`) and `rate_limited`. A nightly rollup (`api_usage_daily`) can come with the dashboard (B12) if the log grows large.
+- **Calls stay, bodies go:** the log settings' days (1, 7, 30) are how long bodies are kept (the mock's meaning); a Beat task (`api_service.prune_log_bodies`, hourly) clears older bodies, the call itself stays for the counts. Headers are always kept, secrets masked (the bearer as its preview, signatures and the endpoint's required headers as dots, no cookies).
+- **The log keeps names as they were** (endpoint, service, token name and mode at the time of the call), like the mock's log entries; the token itself never.
+- **The write path:** `traffic.record_call(db, tenant, organisation, ApiCall(...))` inside the workspace's context; it also stamps the token's `last_used_at` and the rule's `last_hit_at`. The gateway (step 3) calls it once per call.
+- **Webhook forms as a list:** `webhooks.form_ids` (jsonb) instead of the `webhook_forms` table DATABASE-DESIGN planned, like the mock and `api_tokens.scopes`.
+- **Deliveries:** queued in the same transaction as the response change (like destinations in B9) and sent by `webhooks.deliver` on the `webhooks` queue after the commit; retries and first tries the worker never got are taken by `webhooks.sweep` every 30 seconds (`platform.webhook_deliveries_due`), with a 2-minute claim (`claimed_until`) so two workers never send the same delivery. The test ping and Send again wait for the receiver's answer in the request, like the mock.
+- **The body as sent is kept encrypted** (Fernet, `body_enc`) for retries and Send again; the log's copy masks personal answers. Deleting a webhook soft deletes it and takes its deliveries out of every list (the mock removes them).
+- **Outgoing safety:** the address is checked like the portal checks it (`rules.check_webhook_url`), the name is resolved by the worker and every address it resolves to is checked (private, loopback, link-local, reserved, carrier-grade NAT), and the call goes to the checked address with the name as Host and for the certificate (no second lookup an attacker could change). A refused address fails the try with `refused`, an unknown name with `dns`. `WEBHOOKS_ALLOW_LOCAL` (development only, ignored in production) lets `http://localhost` through, like the mock in development.
+- **The pause's reason** is in the audit entry's metadata (`{ reason: "20 failed deliveries in a row" }`): the `reason` column holds FRM codes only.
+- **No token shown:** a delivery whose webhook has no token logs `Authorization: Bearer (none)` (the mock writes a dash).
+- **Samples for the seeded development workspaces:** 60 days of calls on the live endpoints, calls refused by the sample block rules and some over a rate limit (`traffic_samples.py`), and the mock's three sample webhooks with their own webhook tokens and a month of deliveries (`webhooks/samples.py`). Past months' partitions for them: `platform.ensure_monthly_partitions_back` (owner only).
 
 ### B11, Settings, the rest (Later)
 
@@ -240,6 +253,8 @@ Decisions made in B10 step 1 (backend only; the frontend's answers are unchanged
 - **CLAUDE.md layout** still names `api_keys/` and `option_sets/`; the product now has API tokens (`/api-tokens`) and option lists (`/option-lists`).
 
 ## Log
+
+- **2026-10-12:** B10 step 2: API traffic and webhooks. 16 endpoints (the request log, its insights and settings, one call, analytics; webhooks, their insights, test ping, deliveries and Send again); migration 0028 (`api_request_logs` and `webhook_deliveries` in monthly partitions, `webhooks`, `platform.webhook_deliveries_due`, `platform.api_log_body_settings`, `platform.ensure_monthly_partitions_back`). The write path the gateway will call (`traffic.record_call`); step 1's zeros are real counts now (calls, errors, answer times, last calls, rule hits, refused and limited calls). Deliveries on the `webhooks` queue with the webhook token, retries after 1, 5, 15, 60 and 360 minutes, the pause after 20 failures (notification and audit), outgoing calls only to public addresses (`WEBHOOKS_ALLOW_LOCAL` for development, added to PRODUCTION-CHECKLIST). Webhook rules ported with parity (`scripts/dump_webhook_rules.py`, 138 cases); the seed adds sample traffic and the mock's sample webhooks. 17,851 tests pass (1 skipped).
 
 - **2026-10-12:** B10 step 1: API service management. 36 endpoints (services, endpoints, field choices, tokens, access rules, rate limits, connections, the address handle and its rotation); migration 0027 (`api_settings`, `api_services`, `api_endpoints`, `api_tokens`, `api_access_rules`, `platform.api_keys_directory` with `claim_api_key` / `retire_api_key` / `resolve_api_key`); the frontend's `apiService` rules ported with parity (`scripts/dump_api_rules.py`, `tests/vectors/api_rules.json`, 2,498 recorded cases in 58 tests; `snippets.ts` not ported: only the portal's Docs page uses it); sign-up makes the handle; the seed adds the mock's sample API service. Try it waits for the gateway (step 3), traffic for the request log (step 2). 17,706 tests pass (1 skipped).
 

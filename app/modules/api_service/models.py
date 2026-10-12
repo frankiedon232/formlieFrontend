@@ -11,6 +11,8 @@
   The visible part is the prefix and last 4 characters.
 - `api_access_rules`: allow / block by IP or range, domain, country, region or anonymous network, everywhere or for
   one service or endpoint.
+- `api_request_logs` (B10 step 2): every call to the public API, partitioned by month. Every count of calls, errors,
+  answer times, rule hits and limited calls the portal shows is read from it.
 """
 
 from __future__ import annotations
@@ -19,11 +21,14 @@ import uuid
 from datetime import datetime
 from typing import Any
 
-from sqlalchemy import Boolean, CheckConstraint, DateTime, Index, Integer, String, Text, Uuid, text
+from sqlalchemy import (
+    Boolean, CheckConstraint, DateTime, Index, Integer, PrimaryKeyConstraint, SmallInteger, String, Text, Uuid, text,
+)
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.core.db.base import AuditMixin, Base, SoftDeleteMixin, TenantMixin, UuidPkMixin, tenant_fk, tenant_table_args
+from app.core.ids import uuid7
 
 
 class ApiSettings(UuidPkMixin, TenantMixin, AuditMixin, Base):
@@ -127,3 +132,49 @@ class ApiAccessRule(UuidPkMixin, TenantMixin, AuditMixin, SoftDeleteMixin, Base)
     note: Mapped[str | None] = mapped_column(String(300))
     enabled: Mapped[bool] = mapped_column(Boolean, nullable=False, server_default="true")
     last_hit_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+
+
+class ApiRequestLog(TenantMixin, Base):
+    """One call to the public API (B10 step 2; mock: data/apiTraffic.ts), written by the gateway through
+    `traffic.record_call`. Partitioned by month on `at`; the key is (tenant_id, id, at). Never the token itself:
+    its id, name and mode at the time of the call. Names of the endpoint, service and token are kept as they were then
+    (the log shows what was called). `rule_id` is the access rule that decided the call (allowed in or refused);
+    `rate_limited` marks a call refused by a rate limit. Bodies only while the workspace keeps them
+    (`api_settings.log_keep_bodies`), personal answers masked, cleared after `log_days`; headers always, secrets masked.
+    """
+
+    __tablename__ = "api_request_logs"
+    __table_args__ = (
+        PrimaryKeyConstraint("tenant_id", "id", "at"),
+        Index("ix_api_request_logs_at", "tenant_id", "at"),
+        Index("ix_api_request_logs_endpoint", "tenant_id", "endpoint_id", "at"),
+        Index("ix_api_request_logs_token", "tenant_id", "token_id", "at"),
+        Index("ix_api_request_logs_rule", "tenant_id", "rule_id", "at", postgresql_where=text("rule_id IS NOT NULL")),
+        Index("ix_api_request_logs_id", "tenant_id", "id"),
+        {"postgresql_partition_by": "RANGE (at)"},
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(Uuid, default=uuid7)
+    at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    method: Mapped[str] = mapped_column(String(10), nullable=False)
+    path: Mapped[str] = mapped_column(Text, nullable=False)
+    status: Mapped[int] = mapped_column(SmallInteger, nullable=False)
+    code: Mapped[str | None] = mapped_column(String(20))
+    duration_ms: Mapped[int] = mapped_column(Integer, nullable=False)
+    endpoint_id: Mapped[uuid.UUID | None] = mapped_column(Uuid)
+    endpoint_name: Mapped[str | None] = mapped_column(String(64))
+    service_id: Mapped[uuid.UUID | None] = mapped_column(Uuid)
+    service_name: Mapped[str | None] = mapped_column(String(80))
+    token_id: Mapped[uuid.UUID | None] = mapped_column(Uuid)
+    token_name: Mapped[str | None] = mapped_column(String(80))
+    token_mode: Mapped[str | None] = mapped_column(String(4))
+    rule_id: Mapped[uuid.UUID | None] = mapped_column(Uuid)
+    rate_limited: Mapped[bool] = mapped_column(Boolean, nullable=False, server_default="false")
+    ip: Mapped[str] = mapped_column(String(64), nullable=False)
+    country: Mapped[str | None] = mapped_column(String(2))
+    origin: Mapped[str | None] = mapped_column(String(300))
+    user_agent: Mapped[str] = mapped_column(String(200), nullable=False, server_default="")
+    request_id: Mapped[str] = mapped_column(String(100), nullable=False)
+    request_headers: Mapped[dict[str, Any]] = mapped_column(JSONB, nullable=False, server_default=text("'{}'::jsonb"))
+    request_body: Mapped[Any | None] = mapped_column(JSONB(none_as_null=True))
+    response_body: Mapped[Any | None] = mapped_column(JSONB(none_as_null=True))

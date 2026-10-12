@@ -208,12 +208,12 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 - **Guards:** `requireAdmin`
 - **Audit:** `api.logging_changed`
 
-- ⬜ `GET /api/v1/api-logs` (`listApiLogs`)
-- ⬜ `GET /api/v1/api-logs/insights` (`apiLogInsights`)
-- ⬜ `GET /api/v1/api-logs/settings` (`getApiLogSettings`)
-- ⬜ `PUT /api/v1/api-logs/settings` (`updateApiLogSettings`)
-- ⬜ `GET /api/v1/api-logs/{id}` (`getApiLog`)
-- ⬜ `GET /api/v1/api-analytics` (`apiAnalytics`)
+- ✅ `GET /api/v1/api-logs` (`listApiLogs`)
+- ✅ `GET /api/v1/api-logs/insights` (`apiLogInsights`)
+- ✅ `GET /api/v1/api-logs/settings` (`getApiLogSettings`)
+- ✅ `PUT /api/v1/api-logs/settings` (`updateApiLogSettings`)
+- ✅ `GET /api/v1/api-logs/{id}` (`getApiLog`)
+- ✅ `GET /api/v1/api-analytics` (`apiAnalytics`)
 
 ## `routes/apiDocs.ts`
 
@@ -228,16 +228,16 @@ Built with B10 (moved from B9): a webhook sends a webhook token from the API ser
 - **Guards:** `requireAdmin`
 - **Audit:** `api.token_created`, `integrations.webhook_created`, `integrations.webhook_deleted`, `integrations.webhook_disabled`, `integrations.webhook_enabled`, `integrations.webhook_resent`, `integrations.webhook_updated`
 
-- ⬜ `GET /api/v1/webhooks` (`listWebhooks`)
-- ⬜ `GET /api/v1/webhooks/insights` (`webhookInsights`)
-- ⬜ `POST /api/v1/webhooks` (`createWebhook`)
-- ⬜ `GET /api/v1/webhooks/{id}` (`getWebhook`)
-- ⬜ `PATCH /api/v1/webhooks/{id}` (`updateWebhook`)
-- ⬜ `DELETE /api/v1/webhooks/{id}` (`deleteWebhook`)
-- ⬜ `POST /api/v1/webhooks/{id}/test` (`testWebhook`)
-- ⬜ `GET /api/v1/webhook-deliveries` (`listDeliveries`)
-- ⬜ `GET /api/v1/webhook-deliveries/{id}` (`getDelivery`)
-- ⬜ `POST /api/v1/webhook-deliveries/{id}/resend` (`resendDelivery`)
+- ✅ `GET /api/v1/webhooks` (`listWebhooks`)
+- ✅ `GET /api/v1/webhooks/insights` (`webhookInsights`)
+- ✅ `POST /api/v1/webhooks` (`createWebhook`)
+- ✅ `GET /api/v1/webhooks/{id}` (`getWebhook`)
+- ✅ `PATCH /api/v1/webhooks/{id}` (`updateWebhook`)
+- ✅ `DELETE /api/v1/webhooks/{id}` (`deleteWebhook`)
+- ✅ `POST /api/v1/webhooks/{id}/test` (`testWebhook`)
+- ✅ `GET /api/v1/webhook-deliveries` (`listDeliveries`)
+- ✅ `GET /api/v1/webhook-deliveries/{id}` (`getDelivery`)
+- ✅ `POST /api/v1/webhook-deliveries/{id}/resend` (`resendDelivery`)
 
 ## `routes/responseExports.ts`
 

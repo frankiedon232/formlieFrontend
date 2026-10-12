@@ -111,6 +111,11 @@ class Settings(BaseSettings):
     # ── Data sources: customers' own databases (B9) ───────────────────────────
     # Development and tests only: allow connections to this machine (loopback). Production always refuses them.
     datasources_allow_local: bool = False
+
+    # ── Webhooks (B10) ────────────────────────────────────────────────────────
+    # Development and tests only: let webhooks call http://localhost (a receiver on this machine), like the mock in
+    # development. Production always refuses local and private addresses.
+    webhooks_allow_local: bool = False
     # Formalie's outgoing addresses, shown so customers can allow them in their database's firewall
     egress_ips: Annotated[list[str], NoDecode] = Field(default_factory=list)
     # Tests: "customer" databases to connect to (scripts/setup_customer_pg.py, scripts/wsl/setup-mariadb.sh)

@@ -23,7 +23,7 @@ Rewritten 2026-10-10 from the finished portal (`C:\UNETPROJECTS\formalieFrontend
 | Role | Grants |
 | --- | --- |
 | `formalie_owner` | Owns the schema; used only by migrations (Alembic). Roles are created once per cluster by `scripts/db_bootstrap.py`. |
-| `formalie_app` | API and Celery workers. `NOBYPASSRLS`; SELECT, INSERT, UPDATE on tenant tables (no DELETE: soft delete only), INSERT only on `event_outbox`, `SELECT` on global tables, `INSERT` only on log tables (`audit_logs`, `request_logs`, `error_logs`, `api_request_logs`, `form_fill_events`). Cannot list `tenants` except through `platform.resolve_tenant(host)` (SECURITY DEFINER). |
+| `formalie_app` | API and Celery workers. `NOBYPASSRLS`; SELECT, INSERT, UPDATE on tenant tables (no DELETE: soft delete only), INSERT only on `event_outbox`, `SELECT` on global tables, `INSERT` only on log tables (`audit_logs`, `request_logs`, `error_logs`, `form_fill_events`); `api_request_logs` also UPDATE (bodies cleared after their days). Cannot list `tenants` except through `platform.resolve_tenant(host)` (SECURITY DEFINER). |
 | `formalie_worker` | Outbox relay, partition upkeep and log writing only. `BYPASSRLS`, SELECT and UPDATE on `event_outbox`, INSERT on `request_logs`, EXECUTE on `platform.ensure_monthly_partitions`; nothing else. |
 | `formalie_readonly` | Reporting on replicas: SELECT, `default_transaction_read_only = on`, `NOBYPASSRLS`. |
 | `platform_reader` | Read replica only. `BYPASSRLS`, `default_transaction_read_only = on`, `statement_timeout = 15s`, connection limit. Column privileges exclude secrets (`*_hash`, `*_enc`, TOTP secrets, recovery codes, connection credentials, webhook secrets) and answer content (`responses.data`, file contents, `resume_drafts.data`). |
@@ -232,9 +232,8 @@ Source: `shared/types/apiService.ts`, `shared/utils/apiService/*`, `server/mock/
 | `api_endpoints` | service_id, name (lower-case words with hyphens, unique per tenant while not deleted: it is the address), description, form_id, version (pinned form version, null = latest), methods jsonb, fields jsonb (key, name, accept, required, returned, filter), page_size (≤ 100), headers jsonb (name, value_enc; empty since custom headers were dropped, owner 2026-10-06), status, deleted_at |
 | `api_tokens` | name, kind (`static`, `client`, `webhook`), mode (`live`, `test`), secret_hash (SHA-256, looked up), secret_enc (Fernet, only for Reveal after the password), previous_hash, rotating_until, preview (prefix and last 4), client_id (unique per tenant), lifetime_minutes, signing, signing_secret_enc, scopes jsonb (services, endpoints, methods; ids kept after a delete so a token never widens), expires_at, last_used_at, revoked_at, created_by, deleted_at |
 | `api_access_rules` | action (`allow`, `block`), kind (`ip`, `domain`, `country`, `region`, `network`), values jsonb, scope_type (`all`, `service`, `endpoint`), scope_id, note, enabled, last_hit_at, deleted_at (also when its service or endpoint is deleted) |
-| `api_rule_hits_daily`, `api_rate_limited_daily` | rule_id or limit kind, day, count (B10 step 2) |
 | `api_idempotency` | endpoint_id, formalie_key, body_hash, response_id, answer jsonb (test tokens store nothing else), at. Kept 24 hours; unique (tenant_id, endpoint_id, formalie_key) |
-| `api_request_logs` | **partitioned daily**; at, method, path, status, code, duration_ms, endpoint_id, service_id, token_id, ip, country, user_agent, request_id, request_headers jsonb, request_body / response_body jsonb (only with `log_keep_bodies`, personal answers masked). Dropped after `log_days` |
+| `api_request_logs` | **partitioned monthly** on `at`, key (tenant_id, id, at); one row per call to the public API, written by the gateway (`traffic.record_call`): at, method, path, status, code, duration_ms, endpoint_id + endpoint_name, service_id + service_name, token_id + token_name + token_mode (as they were at the call; never the token), rule_id (the access rule that decided it), rate_limited, ip, country, origin, user_agent, request_id, request_headers jsonb (secrets masked), request_body / response_body jsonb (only with `log_keep_bodies`, personal answers masked, cleared after `log_days`). Every count of calls, errors, answer times, rule hits and limited calls is read from it (B10 step 2) |
 
 ### Webhooks and the event outbox
 
@@ -242,9 +241,8 @@ Source: `shared/types/integrations.ts`, `shared/utils/integrations/webhooks.ts`,
 
 | Table | Key columns |
 | --- | --- |
-| `webhooks` | name, url, events text[] (`response.created`, `response.updated`, `response.status_changed`, `response.deleted`), enabled, paused_reason (`manual`, `failures`), token_id (an `api_tokens` row of kind `webhook` that signs), consecutive_failures, created_by |
-| `webhook_forms` | webhook_id, form_id |
-| `webhook_deliveries` | **partitioned monthly**; webhook_id, event (or `ping`), test, form_id, response_id, status (`delivered`, `retrying`, `failed`), attempts, history jsonb (at, status_code, duration_ms, error), next_retry_at (retries after 1, 5, 15, 60, 360 min), request_headers jsonb, body, response jsonb |
+| `webhooks` | name, url, events jsonb (`response.created`, `response.updated`, `response.status_changed`, `response.deleted`), form_ids jsonb (empty = every form), enabled, paused_reason (`manual`, `failures`), token_id (an `api_tokens` row of kind `webhook`, sent as Bearer), consecutive_failures, created_by, deleted_at |
+| `webhook_deliveries` | **partitioned monthly** on `at`, key (tenant_id, id, at); webhook_id, event (or `ping`), test, form_id, response_id, status (`delivered`, `retrying`, `failed`), attempts, status_code and duration_ms of the last try, history jsonb (at, status_code, duration_ms, error), next_retry_at (retries after 1, 5, 15, 60, 360 min), claimed_until (a worker has it), body_enc (the body as sent, Fernet, for retries and Send again), logged_body (personal answers masked), request_headers jsonb (the token as its preview), response jsonb (headers and the first 2,000 characters). `platform.webhook_deliveries_due(n)` lists those due for the sweep |
 | `event_outbox` | **partitioned monthly**; type (`response.created`, `form.published` …), routing_key, payload jsonb (refs only, never answers), created_at, published_at. Feeds webhooks, destinations and the `formalie.events` exchange; kept 7 days for replay |
 | `processed_events` | consumer, event_id, processed_at |
 
@@ -302,7 +300,7 @@ Source: `shared/types/analytics.ts`, `dashboard.ts`, `shared/utils/dashboard/*`,
 | `form_fill_events` | **partitioned daily**; form_id, session_id, kind (`view`, `start`, `page`, `stop`), page, field_key, channel, at. One view and one start per session; nothing names a respondent |
 | `form_analytics_daily` | form_id, day, views, starts, completions, median_seconds, channels jsonb (link, embed, api) |
 | `form_funnel_daily` | form_id, day, page or field_key, reached, answered, left, seconds_median |
-| `api_usage_daily` | service_id, endpoint_id, token_id, day, calls, errors, avg_ms |
+| `api_usage_daily` | service_id, endpoint_id, token_id, day, calls, errors, avg_ms (not built: B10 reads `api_request_logs` directly; a rollup if the log grows large) |
 | `datasource_ops_daily` | datasource_id, day, kind (queries, rows, structure, exports, storage, connections), count |
 
 Workers roll events up nightly (and the current day on read). The dashboard (Workspace, Forms, Data sources, API service views) is computed from these rollups, `responses`, `subscriptions` and `audit_logs`; it stores nothing of its own.
@@ -345,7 +343,7 @@ RLS lets a workspace read only its own `audit_logs`; `platform_reader` reads all
 - `form_field_refs (tenant_id, ref_type, ref_id)`
 - `refresh_tokens (token_hash)`, `otp_challenges (tenant_id, user_id, purpose, expires_at)`, `user_invites (token_hash)`, `form_invitations (token_hash)`, `resume_drafts (token_hash)`, `download_tokens (token_hash)`
 - `api_tokens (tenant_id, secret_hash)`, `api_tokens (tenant_id, previous_hash)`, `api_tokens (tenant_id, client_id) UNIQUE`, `api_endpoints (tenant_id, name) UNIQUE WHERE deleted_at IS NULL`, `api_request_logs (tenant_id, at desc)`
-- `destination_deliveries (tenant_id, status, next_retry_at)`, `webhook_deliveries (tenant_id, webhook_id, at desc)`, `event_outbox (published_at) WHERE published_at IS NULL`
+- `destination_deliveries (tenant_id, status, next_retry_at)`, `webhook_deliveries (tenant_id, webhook_id, at)`, `(tenant_id, id)`, `(next_retry_at) WHERE status = 'retrying'`; `api_request_logs (tenant_id, endpoint_id, at)`, `(tenant_id, token_id, at)`, `(tenant_id, rule_id, at) WHERE rule_id IS NOT NULL`, `event_outbox (published_at) WHERE published_at IS NULL`
 - `notifications (tenant_id, user_id, read_at, created_at desc)`
 - `audit_logs (tenant_id, occurred_at desc)`, `(tenant_id, area, occurred_at desc)`, `(tenant_id, actor_id, occurred_at desc)`, `(tenant_id, resource_type, resource_id)`; `request_logs (created_at desc, tenant_id)`
 - `payments (reference) UNIQUE`, `checkout_sessions (tenant_id) UNIQUE WHERE status = 'open'`, `billing_idempotency_keys (tenant_id, key) UNIQUE`
@@ -356,7 +354,7 @@ RLS lets a workspace read only its own `audit_logs`; `platform_reader` reads all
 | --- | --- | --- |
 | `responses` (+ notes, changes by FK) | monthly on `submitted_at` | per workspace `privacy.retention_days` (0 = forever); a nightly job deletes due rows and records `retention_runs` and `settings.retention_applied` |
 | `audit_logs`, `request_logs`, `error_logs` | monthly | 12 months hot, then detached to cold storage |
-| `api_request_logs` | daily | `api_settings.log_days` (1, 7, 30) |
+| `api_request_logs` | monthly | calls: 12 months like the other logs; bodies only `api_settings.log_days` (1, 7, 30), cleared hourly |
 | `form_fill_events` | daily | 90 days (rolled up into `form_analytics_daily` and `form_funnel_daily` first) |
 | `webhook_deliveries`, `sent_emails` | monthly | 90 days |
 | `event_outbox` | monthly | 7 days after publish |

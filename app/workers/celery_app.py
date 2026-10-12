@@ -22,7 +22,8 @@ celery_app = Celery(
     backend=settings.celery_result_backend.get_secret_value(),
     include=["app.core.events.tasks", "app.core.db.tasks", "app.modules.logs.tasks", "app.modules.emails.tasks",
              "app.modules.exports.tasks", "app.modules.responses.after",
-             "app.modules.data_sources.tasks", "app.modules.destinations.tasks"],
+             "app.modules.data_sources.tasks", "app.modules.destinations.tasks", "app.modules.webhooks.tasks",
+             "app.modules.api_service.tasks"],
 )
 
 celery_app.conf.update(
@@ -56,6 +57,9 @@ celery_app.conf.update(
         "destinations.deliver": {"queue": "destinations"},
         "destinations.backfill": {"queue": "destinations"},
         "destinations.sweep": {"queue": "destinations"},
+        "webhooks.deliver": {"queue": "webhooks"},
+        "webhooks.sweep": {"queue": "webhooks"},
+        "api_service.prune_log_bodies": {"queue": "scheduled"},
     },
     beat_schedule={
         "relay-outbox": {"task": "events.relay_outbox", "schedule": 2.0},
@@ -64,6 +68,8 @@ celery_app.conf.update(
         "ingest-error-files": {"task": "logs.ingest_error_files", "schedule": 30.0},
         "datasource-health": {"task": "datasources.health", "schedule": 5 * 60.0},
         "destinations-sweep": {"task": "destinations.sweep", "schedule": 30.0},
+        "webhooks-sweep": {"task": "webhooks.sweep", "schedule": 30.0},
+        "api-log-bodies": {"task": "api_service.prune_log_bodies", "schedule": 3600.0},
     },
 )
 
