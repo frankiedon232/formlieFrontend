@@ -31,6 +31,9 @@ HIDDEN: dict[str, frozenset[str]] = {
     "sent_emails": frozenset({"html", "text"}),
     "ai_requests": frozenset({"prompt", "result", "output"}),
     "query_history": frozenset({"sql"}),
+    # the audit trail: edited answers' before / after (changes) and the Query editor's SQL (metadata.statement);
+    # the rest of each entry (who, what, when, the resource, the outcome) stays readable (B17 review M11)
+    "audit_logs": frozenset({"changes", "metadata"}),
     "saved_queries": frozenset({"sql"}),
     # form versions: metadata only (§1)
     "forms": frozenset({"draft_schema"}),

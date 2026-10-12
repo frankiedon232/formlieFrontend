@@ -34,6 +34,8 @@ def db_settings() -> Settings:
     return settings.model_copy(update={
         "db_app_url": type(settings.db_app_url)(_test_url(settings.db_app_url)),
         "db_relay_url": type(settings.db_relay_url)(_test_url(settings.db_relay_url)),
+        "db_admin_api_url": type(settings.db_relay_url)(_test_url(settings.db_admin_api_url))
+        if settings.db_admin_api_url else None,
         "db_replica_urls": [],
     })
 

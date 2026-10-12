@@ -6,6 +6,12 @@ the body), the outcome (status, sizes, duration, error code, response headers, t
 where from (real client IP, peer, forwarding chain; location and device are added by the writer) and security
 flags. Secrets are masked at capture (app/modules/logs/capture.py). The record goes to the request-log shipper
 (database, Celery or file; never blocking), and a one-line summary goes to the normal log files.
+
+Bodies stream through (B17 review M12): the log keeps only the first REQUEST_LOG_BODY_MAX_BYTES as they pass and
+hashes the rest, never holding a whole body. A body no route read (404, refused requests) is read up to that size
+when the answer starts, the rest is left unread. What is kept follows the route's body policy (capture.body_policy:
+field names only on routes with answers or secrets, nothing for uploads). Tokens in paths (`{token}`, `{code}`,
+`{ticket}` ...) are recorded as `***` (M9).
 """
 
 from __future__ import annotations
@@ -19,9 +25,10 @@ from urllib.parse import urlencode
 
 from app.core.config import Settings, get_settings
 from app.core.context import get_context
+from app.core.logging.redact import mask_path
 from app.core.middleware.asgi import ASGIApp, Message, Receive, Scope, Send, header
 from app.core.middleware.tenant import resolve_host_context
-from app.modules.logs.capture import attack_flags, body_record, mask_headers, parse_query, response_body
+from app.modules.logs.capture import attack_flags, body_policy, body_record, mask_headers, parse_query, response_body
 
 log = logging.getLogger("formalie.request")
 
@@ -41,12 +48,14 @@ def route_template(scope: Scope) -> str | None:
 
 
 def _masked_url(url: str | None, path: str) -> str | None:
-    """A referer keeps its query, with secret values (tickets, tokens, codes) masked."""
-    if not url or "?" not in url:
+    """A referer keeps its query, with secret values (tickets, tokens, codes) masked, and tokens in its path too."""
+    if not url:
         return url
+    if "?" not in url:
+        return mask_path(url)
     base, query = url.split("?", 1)
     masked = parse_query(query, path) or {}
-    return f"{base}?{urlencode(masked, doseq=True)}"
+    return f"{mask_path(base)}?{urlencode(masked, doseq=True)}"
 
 
 class _BodyTap:
@@ -57,6 +66,8 @@ class _BodyTap:
         self.size = 0
         self.kept = bytearray()
         self.sha = hashlib.sha256()
+        self.done = False  # the whole body has passed
+        self.left_unread = False  # the log stopped reading before the end (nobody needed the rest)
 
     def add(self, chunk: bytes) -> None:
         if not chunk:
@@ -69,51 +80,61 @@ class _BodyTap:
 
     @property
     def truncated(self) -> bool:
-        return self.size > len(self.kept)
+        return self.left_unread or self.size > len(self.kept)
 
 
 class RequestLogMiddleware:
-    def __init__(self, app: ASGIApp, shipper: Any | None = None, settings: Settings | None = None) -> None:
+    def __init__(self, app: ASGIApp, shipper: Any | None = None, settings: Settings | None = None,
+                 body_policy: str | None = None) -> None:
         self.app = app
         self.shipper = shipper
         self.settings = settings or get_settings()
+        self.body_policy = body_policy  # None: by route (capture.body_policy); "none" on the API service's app
 
     async def __call__(self, scope: Scope, receive: Receive, send: Send) -> None:
         if scope["type"] != "http":
             await self.app(scope, receive, send)
             return
         occurred_at = datetime.now(UTC)
-        limit = self.settings.request_log_body_max_bytes
+        policy = self.body_policy or body_policy(scope.get("path", ""))
+        limit = 0 if policy == "none" else self.settings.request_log_body_max_bytes
         request_tap = _BodyTap(limit)
         response_tap = _BodyTap(limit)
         response: dict[str, Any] = {"status": 500, "headers": []}
-        keep_response = self.settings.request_log_response_bodies
+        keep_response = self.settings.request_log_response_bodies if policy != "none" else "none"
+        has_body = scope.get("method") in ("POST", "PUT", "PATCH", "DELETE")
+        request_tap.done = not has_body
 
-        # Read the whole body first, so it is recorded even when no route reads it (404, refused requests),
-        # then hand the same messages to the app. API bodies are small: files go straight to storage.
-        buffered: list[Message] = []
-        if scope.get("method") in ("POST", "PUT", "PATCH", "DELETE"):
-            while True:
-                message = await receive()
-                buffered.append(message)
-                if message["type"] != "http.request":
-                    break
-                request_tap.add(message.get("body", b""))
-                if not message.get("more_body"):
-                    break
-
-        async def tapped_receive() -> Message:
-            if buffered:
-                return buffered.pop(0)
-            message = await receive()
+        def tap(message: Message) -> None:
             if message["type"] == "http.request":
                 request_tap.add(message.get("body", b""))
+                if not message.get("more_body"):
+                    request_tap.done = True
+            else:  # http.disconnect
+                request_tap.done = True
+
+        async def tapped_receive() -> Message:
+            message = await receive()
+            tap(message)
             return message
+
+        async def read_unread() -> None:
+            """A body nobody read (404, refused requests): read what the log keeps, leave the rest unread."""
+            while not request_tap.done:
+                if len(request_tap.kept) >= limit:
+                    request_tap.left_unread = True
+                    return
+                tap(await receive())
 
         async def tapped_send(message: Message) -> None:
             if message["type"] == "http.response.start":
                 response["status"] = message["status"]
                 response["headers"] = list(message.get("headers", []))
+                if not request_tap.done:
+                    try:
+                        await read_unread()
+                    except Exception:  # noqa: BLE001 (logging must never break a request)
+                        request_tap.left_unread = True
             elif message["type"] == "http.response.body":
                 body = message.get("body", b"")
                 if keep_response == "all" or (keep_response == "errors" and response["status"] >= 400):
@@ -126,14 +147,16 @@ class RequestLogMiddleware:
             await self.app(scope, tapped_receive, tapped_send)
         finally:
             try:
-                self._record(scope, occurred_at, request_tap, response_tap, response)
+                self._record(scope, occurred_at, request_tap, response_tap, response, policy)
             except Exception:  # noqa: BLE001 (logging must never break a request)
                 log.exception("request log record failed")
 
     def _record(self, scope: Scope, occurred_at: datetime, request_tap: _BodyTap, response_tap: _BodyTap,
-                response: dict[str, Any]) -> None:
+                response: dict[str, Any], policy: str) -> None:
         ctx = get_context()
         path: str = scope.get("path", "")
+        template = route_template(scope)
+        shown_path = mask_path(path, template) or path  # never a token in a path (M9)
         query_string = scope.get("query_string", b"").decode("latin-1")
         status: int = response["status"]
         request_headers = mask_headers(scope.get("headers") or [])
@@ -142,7 +165,7 @@ class RequestLogMiddleware:
         response_headers = mask_headers(response["headers"])
         decrypted = ctx.decrypted_payload if ctx else None
         body = body_record(request_headers.get("content-type"), bytes(request_tap.kept), request_tap.size,
-                           request_tap.sha.hexdigest(), request_tap.truncated, path, decrypted)
+                           request_tap.sha.hexdigest(), request_tap.truncated, path, decrypted, policy)
         if decrypted is not None and isinstance(decrypted.get("query"), dict):
             query: Any = parse_query(urlencode(decrypted["query"], doseq=True), path)
         else:
@@ -175,8 +198,8 @@ class RequestLogMiddleware:
             "host": ctx.host if ctx else request_headers.get("host"),
             "host_kind": (ctx.host_kind if ctx else None) or getattr(host_context, "kind", None),
             "subdomain": (tenant.subdomain if tenant else getattr(host_context, "subdomain", None)),
-            "path": path,
-            "route": route_template(scope),
+            "path": shown_path,
+            "route": template,
             "query": query,
             "status": status,
             "duration_ms": round((time.perf_counter() - ctx.started_at) * 1000, 2) if ctx else None,
@@ -199,13 +222,13 @@ class RequestLogMiddleware:
             "response_headers": response_headers,
             "response_content_type": response_headers.get("content-type"),
             "response_body": response_body(response_headers.get("content-type"), bytes(response_tap.kept),
-                                           response_tap.truncated) if response_tap.kept else None,
+                                           response_tap.truncated, policy) if response_tap.kept else None,
         }
         if self.shipper is not None and self.settings.request_log_enabled:
             self.shipper.submit(record)
 
         level = logging.ERROR if status >= 500 else logging.WARNING if status in (401, 403, 429) else logging.INFO
-        log.log(level, "%s %s %s", record["method"], path, status, extra={"request": {
+        log.log(level, "%s %s %s", record["method"], shown_path, status, extra={"request": {
             "route": record["route"], "status": status, "duration_ms": record["duration_ms"],
             "client_ip": record["client_ip"], "host": record["host"], "error_code": record["error_code"],
             "flags": record["flags"],

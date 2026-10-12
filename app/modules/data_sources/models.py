@@ -40,6 +40,7 @@ class DataSource(UuidPkMixin, TenantMixin, AuditMixin, SoftDeleteMixin, RowVersi
     access: Mapped[dict[str, Any]] = mapped_column(JSONB, nullable=False)
     enabled: Mapped[bool] = mapped_column(Boolean, nullable=False, server_default="true")
     last_test_id: Mapped[uuid.UUID | None] = mapped_column(Uuid)
+    ssh_host_key: Mapped[str | None] = mapped_column(String(400))  # pinned: "host:port SHA256:..." (first good test)
 
 
 class DataSourceTest(UuidPkMixin, TenantMixin, AuditMixin, Base):
@@ -60,6 +61,7 @@ class DataSourceTest(UuidPkMixin, TenantMixin, AuditMixin, Base):
     latency_ms: Mapped[int | None] = mapped_column(Integer)
     tables_count: Mapped[int | None] = mapped_column(Integer)
     config_enc: Mapped[str | None] = mapped_column(Text)  # engine, settings, access and secrets while it runs
+    ssh_host_key: Mapped[str | None] = mapped_column(String(400))  # the SSH server's key this test saw
     audited: Mapped[bool] = mapped_column(Boolean, nullable=False, server_default="false")
     started_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
     finished_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))

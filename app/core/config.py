@@ -18,7 +18,9 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=ROOT_DIR / ".env", env_file_encoding="utf-8", extra="ignore")
 
     # ── Application ────────────────────────────────────────────────────────────
-    app_env: Literal["development", "test", "staging", "production"] = "development"
+    # Fails safe (security review M5): unset means production. The server refuses to start without it set
+    # explicitly, and in staging or production without its secrets (app/core/startup.py).
+    app_env: Literal["development", "test", "staging", "production"] = "production"
     app_release: str = "0.0.0-dev"
     api_prefix: str = "/api/v1"
     docs_enabled: bool = True
@@ -47,6 +49,9 @@ class Settings(BaseSettings):
     db_app_url: SecretStr | None = None  # runtime, primary (NOBYPASSRLS)
     db_replica_urls: Annotated[list[SecretStr], NoDecode] = Field(default_factory=list)  # runtime, replicas
     db_relay_url: SecretStr | None = None  # outbox relay worker
+    # The internal admin API's own login (B17, M6): the only role that may call the platform admin functions
+    # (un-suspend, change plan, read any workspace). Member of formalie_app for everything else.
+    db_admin_api_url: SecretStr | None = None
     # scripts/db_bootstrap.py only: the platform admin's roles get LOGIN with these passwords (B16); never used here
     db_platform_reader_url: SecretStr | None = None
     db_platform_writer_url: SecretStr | None = None
@@ -209,6 +214,10 @@ class Settings(BaseSettings):
     request_log_batch_size: int = 200
     request_log_flush_seconds: float = 1.0
     request_log_queue_max: int = 20_000  # in-memory; beyond this records go straight to the fallback file
+    request_log_retention_days: int = 30  # request_logs partitions wholly older than this are dropped (Beat, daily)
+    # Request bodies over this are refused with 413 FRM-FILE-1002 before they are held (uploads to /storage/* have
+    # their own, larger limit)
+    request_body_max_bytes: int = 2 * 1024 * 1024
 
     # ── GeoIP (MaxMind GeoLite2 City + ASN; Cloudflare headers are the fallback) ──
     geoip_dir: Path = ROOT_DIR / "data" / "geoip"
@@ -271,7 +280,14 @@ class Settings(BaseSettings):
 
     @property
     def is_development(self) -> bool:
+        """Development or tests: server-side conveniences (docs, local addresses, debug headers). Never staging."""
         return self.app_env in ("development", "test")
+
+    @property
+    def dev_replies(self) -> bool:
+        """Development conveniences inside API replies (`dev_code`, `dev_resume_url`, `dev_links`): only when
+        APP_ENV is exactly `development`; tests read codes and links from the sent emails instead."""
+        return self.app_env == "development"
 
     @property
     def is_production(self) -> bool:

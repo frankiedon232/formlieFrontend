@@ -26,11 +26,12 @@ import uuid
 from datetime import UTC, datetime, timedelta
 from typing import Any
 
-from sqlalchemy import select, update
+from sqlalchemy import func, select, text, update
 from sqlalchemy.dialects.postgresql import insert
 from starlette.requests import Request
 
 from app.core import js
+from app.core.db.session import db_session
 from app.core.security.refs import get_codec
 from app.modules.api_service.choices import choice_filter, choice_out
 from app.modules.api_service.endpoints import example_record
@@ -89,13 +90,6 @@ def record_of(work: Work, response: Response) -> dict[str, Any]:
             "data": {f["name"]: value(f["key"]) for f in work.choices if f.get("returned")}}
 
 
-async def responses_of(work: Work) -> list[Response]:
-    """The form's responses that still exist, newest first."""
-    return list((await work.db.execute(select(Response).where(
-        Response.tenant_id == work.tenant.id, Response.form_id == work.form.id, Response.deleted_at.is_(None))
-        .order_by(Response.submitted_at.desc(), Response.id.desc()))).scalars())
-
-
 async def one_of(work: Work) -> Response | None:
     wanted = decode(work.record_ref)
     if wanted is None:
@@ -135,30 +129,70 @@ async def read(work: Work) -> tuple[int, Any]:
         return 200, {"data": record_of(work, found)}
     query = work.request.query_params
     filters = [f for f in work.choices if f.get("filter") and len(query.getlist(f["name"])) == 1]
-    entries = await responses_of(work)
-    if filters:
-        def keep(entry: Response) -> bool:
-            data = entry.data or {}
-            for f in filters:
-                value = data.get(f["key"])
-                definition = work.fields.get(f["key"])
-                sent = query.get(f["name"]) or ""
-                wanted = choice_filter(definition, sent) if definition else sent
-                if isinstance(value, list):
-                    if wanted not in [js.to_string(v) for v in value]:
-                        return False
-                elif ("" if value is None else js.to_string(value)) != wanted:
-                    return False
-            return True
-        entries = [e for e in entries if keep(e)]
-    entries.sort(key=lambda e: e.submitted_at, reverse=query.get("sort") != "submitted_at")
+    where: list[Any] = [Response.tenant_id == work.tenant.id, Response.form_id == work.form.id,
+                        Response.deleted_at.is_(None)]
+    for n, f in enumerate(filters):
+        definition = work.fields.get(f["key"])
+        sent = query.get(f["name"]) or ""
+        where.append(_answer_is(f["key"], choice_filter(definition, sent) if definition else sent, n))
     size = work.endpoint.page_size
     per_page = min(size, max(1, _number(query.get("per_page")) or min(20, size)))
     page = max(1, _number(query.get("page")) or 1)
     start, end = int((page - 1) * per_page), int(page * per_page)
-    return 200, {"data": [record_of(work, e) for e in entries[start:end]],
-                 "meta": {"page": _plain(page), "per_page": _plain(per_page), "total": len(entries),
-                          "total_pages": max(1, math.ceil(len(entries) / per_page))}}
+    # Oldest first keeps newest-first order among equal times, as the stable sort over the newest-first list did
+    order = (Response.submitted_at.asc() if query.get("sort") == "submitted_at" else Response.submitted_at.desc(),
+             Response.id.desc())
+    # Filtered, sorted and paged in SQL (query review Q3), on a read connection: nothing here writes
+    async with db_session("read", tenant_id=work.tenant.id, organisation_id=work.tenant.organisation_id) as db:
+        total = (await db.execute(select(func.count()).select_from(Response).where(*where))).scalar_one()
+        rows = list((await db.execute(select(Response).where(*where).order_by(*order)
+                                      .offset(start).limit(max(0, end - start)))).scalars()) if end > start else []
+    return 200, {"data": [record_of(work, e) for e in rows],
+                 "meta": {"page": _plain(page), "per_page": _plain(per_page), "total": total,
+                          "total_pages": max(1, math.ceil(total / per_page))}}
+
+
+def _same_text(item: str, wanted: str, at: str, top: bool) -> str:
+    """SQL for js.to_string(value) == wanted, for one jsonb value `item` (the answer, or one item of a list).
+
+    A string by its text, true / false, a number when `wanted` is how JavaScript writes that number (the same double
+    then gives the same text), an object as "[object Object]", nothing as "" (an answer) or "null" (a list item)."""
+    parts = [f"(jsonb_typeof({item}) = 'string' AND {item} #>> '{{}}' = :w{at})"]
+    if wanted in ("true", "false"):
+        parts.append(f"(jsonb_typeof({item}) = 'boolean' AND {item} #>> '{{}}' = :w{at})")
+    if _js_number(wanted) is not None:
+        parts.append(f"(CASE WHEN jsonb_typeof({item}) = 'number' THEN ({item} #>> '{{}}')::float8 = :n{at} "
+                     "ELSE false END)")
+    if wanted == "[object Object]":
+        parts.append(f"jsonb_typeof({item}) = 'object'")
+    if top and wanted == "":
+        parts.append(f"({item} IS NULL OR jsonb_typeof({item}) = 'null')")
+    if not top and wanted == "null":
+        parts.append(f"jsonb_typeof({item}) = 'null'")
+    return "(" + " OR ".join(parts) + ")"
+
+
+def _js_number(wanted: str) -> float | None:
+    n = js.to_number(wanted) if wanted.strip() else math.nan
+    if js.is_nan(n) or n in (float("inf"), float("-inf")) or js.number_to_string(n) != wanted:
+        return None
+    return n
+
+
+def _answer_is(key: str, wanted: str, at: int) -> Any:
+    """The mock's filter for one question: a list holds the wanted text as one of its items, any other answer reads
+    as it (nothing reads as ""). Filter questions hold text, numbers, true / false or lists of choices."""
+    answer = f"({Response.__table__.fullname}.data -> :k{at})"
+    item = f"e{at}"
+    sql = (f"(CASE WHEN jsonb_typeof({answer}) = 'array' "
+           f"THEN EXISTS (SELECT 1 FROM jsonb_array_elements({answer}) AS {item}(v) "
+           f"WHERE {_same_text(f'{item}.v', wanted, str(at), False)}) "
+           f"ELSE {_same_text(answer, wanted, str(at), True)} END)")
+    params: dict[str, Any] = {f"k{at}": key, f"w{at}": wanted}
+    number = _js_number(wanted)
+    if number is not None:
+        params[f"n{at}"] = number
+    return text(sql).bindparams(**params)
 
 
 # ── Files ────────────────────────────────────────────────────────────────────────
@@ -289,10 +323,9 @@ async def _create(work: Work, files: list[Any]) -> tuple[int, Any]:
     possible: dict[str, Any] | None = None
     identity = rules.identity_of(schema)
     if identity["email"]:
-        rows = (await db.execute(select(Response.id, Response.submitted_at, Response.data).where(*live)
-                                 .order_by(Response.submitted_at.desc()))).all()
-        earlier_records = [{"id": str(r.id), "submitted_at": iso(r.submitted_at), "data": r.data} for r in rows]
-        match = rules.match_identity(schema, answers, earlier_records, identity)
+        from app.modules.public.duplicates import match_earlier
+
+        match = await match_earlier(db, work.tenant.id, form.id, schema, answers, identity)  # query review Q2
         if match["level"] == "clear":
             found = match["record"] or {}
             raise GatewayError("FRM-RESP-1006", [{"field": identity["email"], "message": "already_submitted",
@@ -461,6 +494,9 @@ async def _change(work: Work, files: list[Any]) -> tuple[int, Any]:
                               response_submitted_at=entry.submitted_at, at=moment, by_id=None, by_name=actor.name or "",
                               field=f"answer:{key}", before=before.get(key), after=value))
     entry.data, entry.edited = {**before, **body}, True
+    from app.modules.responses.service import sync_identity
+
+    sync_identity(entry, work.schema, body)
     entry.updated_at, entry.row_version = moment, entry.row_version + 1
     await record(db, tenant_id=work.tenant.id, organisation_id=work.tenant.organisation_id, action="responses.updated",
                  actor=actor, resource={"type": "response", "id": str(entry.id), "name": work.form.name},

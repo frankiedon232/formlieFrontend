@@ -300,7 +300,10 @@ async def _link_view(db: Any, tenant_id: uuid.UUID, link: SignupLink) -> dict[st
 async def get_signup_link(principal: Principal = Depends(require_admin)) -> Any:
     async with db_session("write", **_scope(principal)) as db:
         link = await _signup_link(db, principal.tenant.id, principal.tenant.organisation_id)
-        return ok(await _link_view(db, principal.tenant.id, link))
+        view = await _link_view(db, principal.tenant.id, link)
+    if getattr(principal.user, "support_staff", None) is not None:
+        view["link"] = ""  # Formalie support sees whether it is on, never the link itself (security review M4)
+    return ok(view)
 
 
 @router.put("/people/signup-link", dependencies=[rate_limit("signup-link", per_minute=30)])

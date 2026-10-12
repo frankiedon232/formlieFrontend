@@ -35,6 +35,7 @@ from app.core.middleware.rate_limit import RateLimiterUnavailable, SlidingWindow
 from app.core.middleware.request_context import RequestContextMiddleware
 from app.core.middleware.request_log import RequestLogMiddleware
 from app.core.middleware.security_headers import SecurityHeadersMiddleware
+from app.core.net import ip_bucket
 from app.core.errors.codes import ERROR_CODES
 
 log = logging.getLogger("formalie.api.gateway")
@@ -70,7 +71,7 @@ class GatewayIpLimit:
             await self.app(scope, receive, send)
             return
         ctx = get_context()
-        ip = (ctx.client_ip if ctx else None) or "unknown"
+        ip = ip_bucket(ctx.client_ip if ctx else None)  # IPv6 by its /64 (M15)
         try:
             result = await self.limiter.hit(f"gw:ip:{ip}", self.settings.gateway_ip_per_minute, 60)
         except RateLimiterUnavailable as exc:
@@ -107,6 +108,9 @@ async def _endpoint(request: Any) -> Any:
 def _lifespan(shipper: Any | None) -> Any:
     @asynccontextmanager
     async def lifespan(_: Starlette) -> AsyncIterator[None]:
+        from app.core.startup import ensure_safe_start
+
+        ensure_safe_start(get_settings())  # APP_ENV explicit; staging and production with their secrets (M5)
         yield
         if shipper is not None:
             await shipper.drain()
@@ -130,8 +134,9 @@ def create_gateway_app(settings: Settings | None = None, *, request_log_shipper:
     # Starlette runs the last added first, so this list is innermost → outermost.
     app.add_middleware(GatewayIpLimit, settings=settings, limiter=limiter)
     app.add_middleware(SecurityHeadersMiddleware, settings=settings)
+    # No bodies at all, and none held while they stream: the gateway reads its own, capped (M12)
     app.add_middleware(RequestLogMiddleware, shipper=BodylessShipper(request_log_shipper) if request_log_shipper else None,
-                       settings=settings)
+                       settings=settings, body_policy="none")
     app.add_middleware(RequestContextMiddleware, settings=settings)
     return app
 

@@ -26,6 +26,7 @@ from app.core.db.engines import dispose_engines
 from app.core.errors.handlers import install_exception_handlers
 from app.core.logging.setup import configure_logging
 from app.core.middleware.api_host import ApiHostMiddleware
+from app.core.middleware.body_limit import BodyLimitMiddleware
 from app.core.middleware.envelope import EnvelopeMiddleware
 from app.core.middleware.rate_limit import IpRateLimitMiddleware, SlidingWindowLimiter
 from app.core.middleware.request_context import RequestContextMiddleware
@@ -34,9 +35,12 @@ from app.core.middleware.security_headers import SecurityHeadersMiddleware
 from app.core.middleware.tenant import TenantMiddleware, TenantResolver
 
 
-def make_lifespan(shipper: Any | None) -> Callable[[FastAPI], Any]:
+def make_lifespan(shipper: Any | None, settings: Settings | None = None) -> Callable[[FastAPI], Any]:
     @asynccontextmanager
     async def lifespan(_: FastAPI) -> AsyncIterator[None]:
+        from app.core.startup import ensure_safe_start
+
+        ensure_safe_start(settings or get_settings())  # APP_ENV explicit; staging and production with their secrets
         yield
         if shipper is not None:
             await shipper.drain()  # write what is still queued before the pools close
@@ -56,7 +60,7 @@ def create_app(
     settings = settings or get_settings()
     configure_logging(settings)
 
-    docs = settings.docs_enabled and not settings.is_production
+    docs = settings.docs_enabled and settings.is_development  # never in staging or production (M5)
     if request_log_shipper is None and settings.request_log_enabled:
         from app.modules.logs.service import RequestLogShipper
 
@@ -67,7 +71,7 @@ def create_app(
         docs_url="/docs" if docs else None,
         redoc_url="/redoc" if docs else None,
         openapi_url="/openapi.json" if docs else None,
-        lifespan=make_lifespan(request_log_shipper),
+        lifespan=make_lifespan(request_log_shipper, settings),
     )
     install_exception_handlers(app)
     app.include_router(api_router, prefix=settings.api_prefix)
@@ -84,6 +88,9 @@ def create_app(
     # Pure ASGI middleware, BACKEND-SPEC §1. Starlette runs the last added first, so this list is innermost → outermost.
     app.add_middleware(EnvelopeMiddleware, settings=settings)  # 5 (5b references: B1)
     app.add_middleware(TenantMiddleware, settings=settings, resolver=tenant_resolver)  # 4
+    # Bodies over REQUEST_BODY_MAX_BYTES: 413 before anything holds them (M12). Nothing outside reads a body (the
+    # request log streams it), so the IP limit is the first layer that costs anything.
+    app.add_middleware(BodyLimitMiddleware, settings=settings)
     app.add_middleware(IpRateLimitMiddleware, settings=settings, limiter=limiter)  # 3
     app.add_middleware(SecurityHeadersMiddleware, settings=settings)  # 2
     app.add_middleware(RequestLogMiddleware, shipper=request_log_shipper, settings=settings)  # 10, outside the rejecting layers: every request is recorded

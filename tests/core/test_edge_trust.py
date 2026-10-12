@@ -115,3 +115,14 @@ def test_closed_workspaces_are_refused_like_suspended_ones(status, details) -> N
     finally:
         reset_context(token)
     assert refused.value.code == "FRM-TEN-1002" and (refused.value.details or None) == details
+
+
+async def test_behind_nginx_the_hop_it_wrote_beats_a_client_sent_cf_connecting_ip(settings, redis, shipper) -> None:  # noqa: ANN001
+    """Security review B17, M14: a client that reaches Nginx directly can send its own CF-Connecting-IP and
+    X-Forwarded-For; the address Nginx appended last is the one that counts."""
+    app = build_app(settings, shipper)
+    async with client_for(app, host="acme.formalie.dev", peer="127.0.0.1") as http:
+        await http.get("/api/v1/health", headers={"cf-connecting-ip": "192.0.2.1", "x-forwarded-for": f"192.0.2.2, {VISITOR}"})
+        await http.get("/api/v1/health", headers={"cf-connecting-ip": VISITOR})  # no X-Forwarded-For: Nginx's own value
+    forged, plain = shipper.records
+    assert forged["client_ip"] == VISITOR and plain["client_ip"] == VISITOR

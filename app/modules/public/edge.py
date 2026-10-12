@@ -1,7 +1,8 @@
 """Edge routes (2026-10-12): what Formalie's Cloudflare Worker asks while it serves the static front end.
 
     GET /edge/forms/{key}/preview   a public form's link preview (title, description, image, language) for the
-                                    page's <head>, so shared links and search engines see the form, not an empty SPA
+                                    page's <head>, so shared links and search engines see the form, not an empty SPA;
+                                    `embed_ancestors`: the websites allowed to frame its /embed page (frame-ancestors)
     GET /edge/links/{code}          where a short link leads (`/s/{code}` answers with a redirect there)
 
 Plain JSON (envelope.py plaintext list). They answer only a request that carries the right X-Formalie-Edge
@@ -18,11 +19,13 @@ from fastapi import APIRouter, Depends
 from fastapi.responses import JSONResponse
 from starlette.exceptions import HTTPException
 
+from app.core.config import get_settings
 from app.core.context import get_context
 from app.core.db.session import db_session
 from app.core.errors import FrmError
 from app.core.security.limits import rate_limit
 from app.modules.links.seo import published_schema, seo_of
+from app.modules.links.urls import frame_ancestors
 from app.modules.public import rules, service
 from app.modules.public.router import resolve_short_link
 from app.modules.uploads.service import completed_url
@@ -70,6 +73,8 @@ async def form_preview(key: str) -> Any:
         "language": rules.form_languages(published)[0],
         "indexable": state == "open" and not seo["noindex"],  # the same rule as the page's own noindex
         "site_name": tenant.name,
+        # The embed page's frame-ancestors, the same CSP source list the public form gives (PublicForm.embed_ancestors)
+        "embed_ancestors": frame_ancestors(list(form.embed_domains or []), get_settings().root_domain),
     }, headers=CACHE)
 
 

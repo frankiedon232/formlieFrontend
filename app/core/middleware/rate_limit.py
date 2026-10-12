@@ -3,6 +3,10 @@
 SlidingWindowLimiter is the Redis sliding window (a sorted set of hit times per key) used by every tier:
 this middleware for IPs, and per-route dependencies for user / tenant / route from B1 on.
 Over the limit: 429 FRM-GEN-1029 with Retry-After.
+
+A hit is counted in one MULTI round trip (trim, add, count, expire), so a parallel burst cannot all read the same
+count and pass (B17 review L14); a refused hit is taken out again, so refusals never extend a ban. Callers are
+counted by `app.core.net.ip_bucket`: IPv6 by its /64 (M15).
 """
 
 from __future__ import annotations
@@ -22,6 +26,7 @@ from app.core.config import Settings
 from app.core.context import get_context
 from app.core.ids import uuid7
 from app.core.middleware.asgi import ASGIApp, Receive, Scope, Send, send_error
+from app.core.net import ip_bucket
 
 log = logging.getLogger("formalie.ratelimit")
 
@@ -54,21 +59,24 @@ class SlidingWindowLimiter:
         key = f"{KEY_PREFIX}:{bucket}"
         now_ms = int(time.time() * 1000)
         window_ms = window_seconds * 1000
+        member = f"{now_ms}:{uuid7().hex[-8:]}"
         try:
+            # One atomic round trip: every hit of a burst sees the others (the count includes this hit)
             async with self.redis.pipeline(transaction=True) as pipe:
                 pipe.zremrangebyscore(key, 0, now_ms - window_ms)
+                pipe.zadd(key, {member: now_ms})
                 pipe.zcard(key)
-                _, count = await pipe.execute()
-            if count >= limit:
-                oldest = await self.redis.zrange(key, 0, 0, withscores=True)
+                pipe.pexpire(key, window_ms)
+                _, _, count, _ = await pipe.execute()
+            if count > limit:
+                async with self.redis.pipeline(transaction=True) as pipe:
+                    pipe.zrem(key, member)  # a refused hit does not count
+                    pipe.zrange(key, 0, 0, withscores=True)
+                    _, oldest = await pipe.execute()
                 oldest_ms = int(oldest[0][1]) if oldest else now_ms
                 retry = max(1, math.ceil((oldest_ms + window_ms - now_ms) / 1000))
                 return LimitResult(False, limit, 0, retry)
-            async with self.redis.pipeline(transaction=True) as pipe:
-                pipe.zadd(key, {f"{now_ms}:{uuid7().hex[-8:]}": now_ms})
-                pipe.pexpire(key, window_ms)
-                await pipe.execute()
-            return LimitResult(True, limit, max(0, limit - count - 1), 0)
+            return LimitResult(True, limit, max(0, limit - count), 0)
         except (RedisConnectionError, RedisTimeoutError) as exc:
             breaker.trip(exc)
             raise RateLimiterUnavailable(str(exc)) from exc
@@ -89,7 +97,7 @@ class IpRateLimitMiddleware:
             await self.app(scope, receive, send)
             return
         ctx = get_context()
-        ip = (ctx.client_ip if ctx else None) or "unknown"
+        ip = ip_bucket(ctx.client_ip if ctx else None)  # IPv6 by its /64 (M15)
         try:
             result = await self.limiter.hit(f"ip:{ip}", self.settings.rate_limit_ip_per_minute, 60)
         except RateLimiterUnavailable as exc:

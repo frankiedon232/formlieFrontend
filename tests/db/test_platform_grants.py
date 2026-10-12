@@ -120,3 +120,27 @@ def test_shipped_rows_are_there(owner: psycopg.Connection) -> None:
     assert shipped_only == {"feature_flags": 0, "announcements": 0, "system_folders": 0}  # none shipped
     shipped = owner.execute("SELECT count(*) FROM platform.platform_settings WHERE published_by_staff_id IS NULL").fetchone()[0]
     assert shipped == counts["platform_settings"]
+
+
+ADMIN_FUNCTIONS = ("platform.admin_tenant(uuid)", "platform.admin_set_status(text, text, timestamptz)",
+                   "platform.admin_set_plan(text, jsonb, timestamptz, boolean, boolean)",
+                   "platform.communication_workspaces(text[], uuid[])")
+
+
+def test_only_the_admin_api_runs_the_platform_admin_functions(owner: psycopg.Connection) -> None:
+    """Security review B17, M6: formalie_app (the portal) can't un-suspend a workspace, change its plan or list
+    every workspace; only formalie_admin_api, the internal admin API's own login, can."""
+    for fn in ADMIN_FUNCTIONS:
+        assert not owner.execute("SELECT has_function_privilege('formalie_app', %s, 'EXECUTE')", (fn,)).fetchone()[0], fn
+        assert owner.execute("SELECT has_function_privilege('formalie_admin_api', %s, 'EXECUTE')", (fn,)).fetchone()[0], fn
+    assert owner.execute("SELECT has_function_privilege('formalie_app', 'platform.current_suspended_reason()', "
+                         "'EXECUTE')").fetchone()[0]
+
+
+def test_platform_reader_never_reads_audit_answers_or_sql(owner: psycopg.Connection) -> None:
+    """Security review B17, M11: edited answers (changes) and the Query editor's SQL (metadata) stay hidden."""
+    for column in ("changes", "metadata"):
+        assert not owner.execute("SELECT has_column_privilege('platform_reader', %s, %s, 'SELECT')",
+                                 (f"{S}.audit_logs", column)).fetchone()[0], column
+    assert owner.execute("SELECT has_column_privilege('platform_reader', %s, 'action', 'SELECT')",
+                         (f"{S}.audit_logs",)).fetchone()[0]

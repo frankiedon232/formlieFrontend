@@ -3,7 +3,8 @@ every number read from it.
 
 - `record_call` is the write path: the gateway (gateway.py) calls it once per call, inside the workspace's context.
   It keeps the call's facts, the names of what was called as they were then, headers with secrets masked and, only
-  while the workspace keeps them, the bodies with personal answers masked. Never the token itself.
+  while the workspace keeps them, the bodies with personal answers masked. Never the token itself: whatever the
+  workspace chose, ALWAYS_MASKED fields and secret-looking values (B17 review M10) are masked in every body.
 - `load_usage` reads, in three grouped queries, what every list of services, endpoints, tokens and access rules
   shows: calls per day for 60 days (this window and the one before), errors, the median answer time, the last call,
   rule hits. Days are UTC days; "30 days" is today and the 29 days before, like the mock.
@@ -24,6 +25,7 @@ from sqlalchemy import text, update
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.ids import uuid7
+from app.core.logging.redact import redact_text
 from app.modules.api_service import tokens as T
 from app.modules.api_service.models import ApiAccessRule, ApiEndpoint, ApiRequestLog, ApiService, ApiSettings, ApiToken
 
@@ -33,6 +35,10 @@ CONSOLE_TOKEN_ID = "__console__"
 SECRET_HEADERS = frozenset({"authorization", "x-formalie-signature", "cookie"})
 DROPPED_HEADERS = frozenset({"cookie", "host", "connection"})
 BODY_TEXT_MAX = 2000
+# Masked in every kept body at any depth, whatever the workspace chose (the token address's client secret and the
+# tokens it issues): SECURITY-PROTOCOL §9, request logs never store tokens
+ALWAYS_MASKED = frozenset({"client_secret", "access_token", "refresh_token", "id_token", "password", "token", "secret",
+                           "api_key", "authorization"})
 _BEARER = re.compile(r"^Bearer\s+", re.IGNORECASE)
 
 
@@ -64,6 +70,20 @@ def mask_answers(value: Any, personal: set[str] | frozenset[str]) -> Any:
     if not isinstance(value, dict):
         return value
     return {k: _mask_text(v) if k in personal else mask_answers(v, personal) for k, v in value.items()}
+
+
+def mask_secrets(value: Any, depth: int = 0) -> Any:
+    """ALWAYS_MASKED fields as `••••` at any depth, and secret-looking values (tokens, keys) in any string."""
+    if depth > 8:
+        return value
+    if isinstance(value, dict):
+        return {k: "••••" if str(k).lower() in ALWAYS_MASKED and v is not None else mask_secrets(v, depth + 1)
+                for k, v in value.items()}
+    if isinstance(value, list):
+        return [mask_secrets(v, depth + 1) for v in value]
+    if isinstance(value, str):
+        return redact_text(value)
+    return value
 
 
 def masked_headers(headers: dict[str, str], secret_names: set[str] | None = None) -> dict[str, str]:
@@ -130,9 +150,9 @@ async def record_call(db: AsyncSession, tenant_id: uuid.UUID, organisation_id: u
     request_body: Any = None
     if keep and call.request_raw:
         try:
-            request_body = mask_answers(json.loads(call.request_raw), call.personal)
+            request_body = mask_secrets(mask_answers(json.loads(call.request_raw), call.personal))
         except ValueError:
-            request_body = call.request_raw[:BODY_TEXT_MAX]
+            request_body = redact_text(call.request_raw[:BODY_TEXT_MAX])
     entry = ApiRequestLog(
         id=uuid7(), tenant_id=tenant_id, organisation_id=organisation_id, at=at, method=call.method.upper()[:10],
         path=call.path.split("?")[0], status=call.status, code=call.code, duration_ms=max(0, int(call.duration_ms)),
@@ -144,7 +164,8 @@ async def record_call(db: AsyncSession, tenant_id: uuid.UUID, organisation_id: u
         ip=call.ip[:64] or "0.0.0.0", country=(call.country or None) and call.country.upper()[:2],
         origin=(call.origin or None) and call.origin[:300], user_agent=(call.user_agent or "")[:200],
         request_id=call.request_id[:100], request_headers=masked_headers(call.headers, call.secret_headers),
-        request_body=request_body, response_body=mask_answers(call.response_body, call.personal) if keep else None)
+        request_body=request_body,
+        response_body=mask_secrets(mask_answers(call.response_body, call.personal)) if keep else None)
     db.add(entry)
     if token is not None:
         await db.execute(update(ApiToken).where(ApiToken.tenant_id == tenant_id, ApiToken.id == token.id)

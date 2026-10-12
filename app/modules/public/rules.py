@@ -119,6 +119,9 @@ def _emails_near(a: str, b: str) -> bool:
     return domain_close and edit_distance(la, lb) <= allowed
 
 
+emails_near = _emails_near  # public/duplicates.py picks the candidates with it
+
+
 def _name_of(fields: list[dict[str, Any]], data: dict[str, Any]) -> str:
     full = next((f for f in fields if f.get("type") == "full_name"), None)
     if full:

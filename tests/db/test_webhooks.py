@@ -35,7 +35,7 @@ class Receiver:
     def __init__(self, *answers: int) -> None:
         self.answers = list(answers) or [200]
         self.requests: list[httpx.Request] = []
-        self.addresses = ["203.0.113.50"]
+        self.addresses = ["93.184.215.14"]  # a public address (documentation ranges are blocked)
 
     def handle(self, request: httpx.Request) -> httpx.Response:
         self.requests.append(request)
@@ -120,7 +120,7 @@ async def test_webhooks_from_start_to_finish(app, superuser, receiver, queued) -
         assert ping["event"] == "ping" and ping["test"] is True and ping["status"] == "delivered" and ping["attempts"] == 1
         assert ping["status_code"] == 200 and ping["form"] == {"id": form["id"], "name": "Job application"}
         sent = receiver.requests[-1]
-        assert sent.url.host == "203.0.113.50" and sent.headers["host"] == "hooks.example.com"
+        assert sent.url.host == "93.184.215.14" and sent.headers["host"] == "hooks.example.com"
         assert sent.headers["authorization"] == f"Bearer {token['secret']}"
         assert sent.headers["user-agent"] == "Formalie-Webhooks/1.0" and sent.headers["formalie-key"] == f"dlv_{ping['id']}"
         payload = json.loads(sent.content)

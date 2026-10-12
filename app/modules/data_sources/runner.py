@@ -168,10 +168,8 @@ async def read(c: Connection, engine: str, sql: str, params: dict[str, str], cap
             rows = [[_plain(v) for v in r] for r in found]
         elif engine in ("mysql", "mariadb"):
             async with c.raw.cursor() as cursor:
-                try:
-                    await cursor.execute("START TRANSACTION READ ONLY")
-                except Exception:  # noqa: BLE001 (older servers: the statement's kind was checked already)
-                    pass
+                # Must start: a server without read-only transactions doesn't run Query editor reads (B17, M7)
+                await cursor.execute("START TRANSACTION READ ONLY")
                 body = f"SELECT * FROM ({text}) formalie_result LIMIT {cap}" if _WRAPPABLE.match(text) else text
                 await cursor.execute(body, values or None)
                 columns = [{"name": d[0], "type": _type_name(engine, d[1])} for d in cursor.description or []]
@@ -222,12 +220,11 @@ async def change(c: Connection, engine: str, sql: str, params: dict[str, str], d
             transaction = c.raw.transaction()
             await transaction.start()
             try:
-                if values:
-                    stmt, typed = await _pg_prepared(c, text, values)
-                    await stmt.fetch(*typed)
-                    affected = _count(stmt.get_statusmsg())
-                else:
-                    affected = _count(await c.raw.execute(text))
+                # Always prepared (the extended protocol runs exactly one statement), so nothing hidden from the
+                # splitter (E'' strings, nested comments) can run a second one, such as a COMMIT in a dry run (B17, M7)
+                stmt, typed = await _pg_prepared(c, text, values)
+                await stmt.fetch(*typed)
+                affected = _count(stmt.get_statusmsg())
             except BaseException:
                 await transaction.rollback()
                 raise

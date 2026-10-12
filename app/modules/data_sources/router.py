@@ -81,6 +81,35 @@ def _validate(engine: str, settings: dict[str, Any], secrets: dict[str, str], se
         raise FrmError("FRM-GEN-1002", [{"field": k, "message": v} for k, v in problems.items()])
 
 
+_IDENTITY = ("host", "port", "instance", "descriptor", "username", "ssh", "ssh_host", "ssh_port", "ssh_username")
+_TLS_MODE = {"postgresql": "ssl_mode", "mysql": "ssl_mode", "mariadb": "ssl_mode", "sqlserver": "encrypt",
+             "oracle": "protocol"}
+
+
+def _identity(settings: dict[str, Any]) -> list[str]:
+    return [str(settings.get(k) if settings.get(k) is not None else "").strip().lower() for k in _IDENTITY]
+
+
+def reusable_secrets(engine: str, saved: DataSource | None, settings: dict[str, Any]) -> dict[str, str]:
+    """Stored secrets a test or change may reuse (security review B17, H2): only for the same engine and the same
+    server and account (host, port, instance, descriptor, user name, SSH server and user). Pointing a saved
+    connection anywhere else needs its secrets typed again, so they can't be sent to another server."""
+    if saved is None or saved.engine != engine or _identity(saved.settings) != _identity(settings):
+        return {}
+    return E.clean_secrets(engine, settings, service.open_secrets(saved.secrets_enc))
+
+
+def refuse_tls_downgrade(engine: str, saved: DataSource, settings: dict[str, Any], reused: dict[str, str]) -> None:
+    """While stored secrets are reused, the encryption can't be weakened (PostgreSQL disable / allow / prefer,
+    MySQL disabled / preferred, SQL Server optional, Oracle plain TCP) unless the saved connection already used
+    exactly that mode: otherwise a password could be sent in the clear to be read on the way."""
+    if not reused or E.is_encrypted(engine, settings):
+        return
+    key = _TLS_MODE.get(engine, "ssl_mode")
+    if str(settings.get(key) or "") != str(saved.settings.get(key) or ""):
+        raise FrmError("FRM-DEST-1003", [{"field": key, "message": "tls_required_with_saved_secrets"}])
+
+
 def _plan_allows(principal: Principal, engine: str) -> None:
     """Subscription: the databases the plan lets the workspace bring."""
     if engine not in (limits_of(principal.tenant.plan_id).get("databases") or []):
@@ -144,16 +173,19 @@ async def start_connection_test(request: Request, principal: Principal = Depends
     _plan_allows(principal, engine)
     async with db_session("write", **_scope(principal)) as db:
         saved = await _find(db, principal, data["datasource_id"]) if data.get("datasource_id") else None
+        if saved is not None:
+            _require(principal, "data.edit", saved)  # testing with a saved connection's secrets is editing it (H2)
         settings = E.clean_settings(engine, data["settings"])
         given = E.clean_secrets(engine, settings, data.get("secrets"))
-        # Secrets left empty on a saved connection keep the stored ones
-        kept = E.clean_secrets(engine, settings, service.open_secrets(saved.secrets_enc)) \
-            if saved is not None and saved.engine == engine else {}
-        _validate(engine, settings, given, list({**kept, **given}) if saved is not None and saved.engine == engine else [])
+        # Secrets left empty on a saved connection keep the stored ones, for the same server and account only
+        kept = reusable_secrets(engine, saved, settings)
+        _validate(engine, settings, given, list({**kept, **given}) if kept else [])
+        if saved is not None:
+            refuse_tls_downgrade(engine, saved, settings, {k: v for k, v in kept.items() if k not in given})
         label = saved.name if saved else E.address_of(engine, settings)
         test = service.new_test(principal.tenant.id, principal.tenant.organisation_id, principal.user.id,
                                 saved.id if saved else None, label, engine, settings, _access(engine, data["access"]),
-                                {**kept, **given})
+                                {**kept, **given}, host_key=saved.ssh_host_key if saved is not None else None)
         db.add(test)
         await db.flush()
         test_id = test.id
@@ -177,7 +209,7 @@ async def test_saved_connection(datasource_id: str, principal: Principal = Depen
             raise FrmError("FRM-DEST-1009")
         test = service.new_test(principal.tenant.id, principal.tenant.organisation_id, principal.user.id, source.id,
                                 source.name, source.engine, source.settings, source.access,
-                                service.open_secrets(source.secrets_enc))
+                                service.open_secrets(source.secrets_enc), host_key=source.ssh_host_key)
         db.add(test)
         await db.flush()
         source.last_test_id = test.id  # "Test now" updates its status straight away
@@ -258,7 +290,8 @@ async def create_data_source(request: Request, principal: Principal = Depends(re
                             name=data["name"], engine=engine, settings=service.json_safe(settings),
                             secrets_enc=service.seal_secrets(secrets), secrets_set=sorted(secrets),
                             secrets_changed_at=now, access=_access(engine, data["access"]), enabled=True,
-                            last_test_id=test.id if test else None, created_by=principal.user.id)
+                            last_test_id=test.id if test else None, created_by=principal.user.id,
+                            ssh_host_key=test.ssh_host_key if test is not None and test.status != "failed" else None)
         db.add(source)
         await db.flush()
         if test is not None:
@@ -300,8 +333,10 @@ async def patch_data_source(datasource_id: str, request: Request, principal: Pri
             settings = E.clean_settings(source.engine, data.get("settings", source.settings))
             access = _access(source.engine, data.get("access", source.access))
             given = E.clean_secrets(source.engine, settings, data.get("secrets"))
-            kept = E.clean_secrets(source.engine, settings, stored)
+            # Stored secrets stay only for the same server and account (H2); elsewhere they must be typed again
+            kept = reusable_secrets(source.engine, source, settings)
             _validate(source.engine, settings, given, list(kept))
+            refuse_tls_downgrade(source.engine, source, settings, {k: v for k, v in kept.items() if k not in given})
             before, after = E.address_of(source.engine, source.settings), E.address_of(source.engine, settings)
             if before != after:
                 changes.append({"field": "host", "before": before, "after": after})
@@ -345,7 +380,8 @@ async def duplicate_data_source(datasource_id: str, principal: Principal = Depen
         copy = DataSource(tenant_id=source.tenant_id, organisation_id=source.organisation_id, name=name[:80],
                           engine=source.engine, settings=dict(source.settings), secrets_enc=source.secrets_enc,
                           secrets_set=list(source.secrets_set or []), secrets_changed_at=source.secrets_changed_at,
-                          access=dict(source.access), enabled=source.enabled, created_by=principal.user.id)
+                          access=dict(source.access), enabled=source.enabled, created_by=principal.user.id,
+                          ssh_host_key=source.ssh_host_key)
         db.add(copy)
         await db.flush()
         await _audit(db, principal, "data.connection_duplicated", copy, metadata={"from": source.name})

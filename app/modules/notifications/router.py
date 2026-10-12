@@ -1,6 +1,6 @@
 """Notifications (mock: routes/notifications.ts; API-CONTRACT → Notifications): the signed-in person's feed.
 
-    GET    /notifications                newest first (100), unread count; announces due events first
+    GET    /notifications                newest first (100), unread count (due events: Beat, tasks.py)
     POST   /notifications/read           { ids } or { all: true }
     DELETE /notifications/read           clears the ones already read
     POST   /notifications/digest/send    admins: send the waiting daily summaries now
@@ -36,8 +36,8 @@ def _workspace(principal: Principal) -> dict[str, str]:
 
 @router.get("/notifications", dependencies=[rate_limit("notifications", per_minute=240)])
 async def get_feed(principal: Principal = Depends(require_auth)) -> Any:
-    async with db_session("write", **_scope(principal)) as db:
-        await service.announce_due(db, principal.tenant.id, principal.tenant.organisation_id, _workspace(principal))
+    # Only reads (query review Q11): due events are announced by Beat every minute (notifications.announce_due)
+    async with db_session("read", **_scope(principal)) as db:
         return ok(await service.feed_of(db, principal.tenant.id, principal.user.id))
 
 

@@ -16,7 +16,6 @@ production refuses it whatever the setting.
 from __future__ import annotations
 
 import asyncio
-import ipaddress
 import logging
 import socket
 import uuid
@@ -30,11 +29,10 @@ from app.core.config import get_settings
 from app.core.db.session import db_session
 from app.core.security.fernet_tokens import decrypt_secret
 from app.modules.api_service import tokens as T
-from app.modules.api_service.access import ip_in_cidr
 from app.modules.api_service.models import ApiToken
 from app.modules.webhooks.models import Webhook, WebhookDelivery
 from app.modules.webhooks.rules import (
-    PRIVATE, WEBHOOK_AUTO_PAUSE, WEBHOOK_RETRY_MINUTES, WEBHOOK_TIMEOUT_MS, check_webhook_url, webhook_url_parts,
+    WEBHOOK_AUTO_PAUSE, WEBHOOK_RETRY_MINUTES, WEBHOOK_TIMEOUT_MS, check_webhook_url, webhook_url_parts,
 )
 from app.modules.webhooks.service import NO_TOKEN, delivery_headers
 from app.workers.celery_app import celery_app
@@ -60,17 +58,20 @@ def _iso(value: datetime) -> str:
 
 
 def allow_local() -> bool:
-    settings = get_settings()
-    return settings.webhooks_allow_local and not settings.is_production
+    from app.core.outbound import local_allowed
+
+    return local_allowed(get_settings().webhooks_allow_local)
 
 
 def _blocked(address: str) -> bool:
-    ip = ipaddress.ip_address(address.split("%")[0])
-    if isinstance(ip, ipaddress.IPv6Address) and ip.ipv4_mapped:
-        ip = ip.ipv4_mapped
-    if ip.is_loopback or ip.is_link_local or ip.is_multicast or ip.is_unspecified or ip.is_reserved:
-        return True
-    return any(ip_in_cidr(str(ip), network) for network in PRIVATE)
+    """The one blocklist for outgoing connections (app.core.outbound.blocked)."""
+    from app.core import outbound
+
+    return outbound.blocked(address)
+
+
+REPLY_MAX_BYTES = 64 * 1024  # of the receiver's answer; the history keeps 2,000 characters of it
+TOTAL_SECONDS = 15.0  # the whole delivery, well inside LEASE, so a slow receiver is never sent the same event twice
 
 
 async def _resolve(host: str, port: int) -> list[str]:
@@ -107,14 +108,25 @@ async def send(url: str, headers: dict[str, str], body: str) -> tuple[dict[str, 
         return failed("refused")
     target = httpx.URL(url.strip())
     pinned = target.copy_with(host=addresses[0])
-    try:
+    async def post() -> tuple[httpx.Response, str]:
+        from app.core.outbound import read_capped
+
         async with httpx.AsyncClient(timeout=WEBHOOK_TIMEOUT_MS / 1000, follow_redirects=False, transport=transport,
                                      trust_env=False) as http:
-            answer = await http.post(pinned, content=body.encode("utf-8"),
-                                     headers={**headers, "Host": target.netloc.decode("ascii")},
-                                     extensions={"sni_hostname": host})
-            text_ = answer.text[:2000]
-    except httpx.TimeoutException:
+            request = http.build_request("POST", pinned, content=body.encode("utf-8"),
+                                         headers={**headers, "Host": target.netloc.decode("ascii")},
+                                         extensions={"sni_hostname": host})
+            answer = await http.send(request, stream=True)
+            try:
+                raw = await read_capped(answer, REPLY_MAX_BYTES, cut=True)
+            finally:
+                await answer.aclose()
+            # Only the start of an answer is kept; a larger one is cut, never read to its end
+            return answer, (raw or b"").decode(answer.encoding or "utf-8", "replace")[:2000]
+
+    try:
+        answer, text_ = await asyncio.wait_for(post(), TOTAL_SECONDS)
+    except (httpx.TimeoutException, TimeoutError):
         return failed("timeout")
     except httpx.ConnectError as error:
         reason = str(error).upper()

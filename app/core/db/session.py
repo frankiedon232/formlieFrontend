@@ -6,7 +6,8 @@ Every transaction starts with
 transaction-local, so it is safe with PgBouncer transaction pooling. Without a tenant the settings are empty
 and RLS matches no tenant row (fail closed).
 
-intent="write" → primary. intent="read" → a replica, unless this user wrote in the last few seconds
+intent="admin" → the primary as formalie_admin_api (the internal admin API only: the one role that may run the
+platform admin functions, B17 M6). intent="write" → primary. intent="read" → a replica, unless this user wrote in the last few seconds
 (read-your-writes: Redis flag `fm:v1:rw:{user_id}`), then the primary.
 """
 
@@ -30,7 +31,7 @@ from app.core.errors.exceptions import FrmError
 
 log = logging.getLogger("formalie.db")
 
-Intent = Literal["read", "write"]
+Intent = Literal["read", "write", "admin"]
 
 _SET_CONTEXT = text(
     "SELECT set_config('app.tenant_id', :tenant_id, true), "
@@ -90,8 +91,11 @@ async def db_session(
     """One transaction with the RLS context set. Commits on success, rolls back on any error (but see
     FrmError(commit=True))."""
     engines = get_engines()
-    use_primary = intent == "write" or await _pinned_to_primary(user_id)
-    engine = engines.primary if use_primary else engines.replica()
+    if intent == "admin":
+        engine = engines.admin_api()
+    else:
+        use_primary = intent == "write" or await _pinned_to_primary(user_id)
+        engine = engines.primary if use_primary else engines.replica()
     async with AsyncSession(engine, expire_on_commit=False) as session:
         await session.begin()
         try:
@@ -110,7 +114,7 @@ async def db_session(
         except BaseException:
             await session.rollback()
             raise
-    if intent == "write":
+    if intent in ("write", "admin"):
         await _pin_after_write(user_id)
 
 

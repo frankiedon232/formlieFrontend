@@ -16,6 +16,7 @@ from typing import Any
 
 from app.core.config import Settings
 from app.core.context import get_context
+from app.core.logging.redact import mask_path, redact_text
 from app.core.logging.sinks import DailyLevelFileHandler
 
 NOTICE = 25
@@ -27,7 +28,8 @@ _LEVELS = {"DEBUG": logging.DEBUG, "INFO": logging.INFO, "NOTICE": NOTICE, "WARN
 SENSITIVE_KEYS = (
     "password", "passwd", "secret", "token", "authorization", "cookie", "otp", "code_hash", "totp",
     "api_key", "apikey", "private_key", "client_secret", "refresh", "csrf", "recovery", "card_number", "cvv",
-    "fernet", "credential", "session_key", "set-cookie", "ticket", "signature",
+    "fernet", "credential", "session_key", "set-cookie", "ticket", "signature", "passphrase", "dsn",
+    "connection_string", "access_key",
 )
 _STANDARD_ATTRS = set(vars(logging.LogRecord("", 0, "", 0, "", (), None))) | {"message", "asctime", "taskName"}
 MASK = "***"
@@ -50,9 +52,10 @@ def mask(value: Any, depth: int = 0) -> Any:
         return {str(k): (MASK if is_sensitive(str(k)) else mask(v, depth + 1)) for k, v in value.items()}
     if isinstance(value, (list, tuple, set)):
         return [mask(v, depth + 1) for v in list(value)[:50]]
-    if isinstance(value, str) and len(value) > 512:
-        return value[:512] + "…"
-    if isinstance(value, (str, int, float, bool)) or value is None:
+    if isinstance(value, str):  # secrets found by their value too (tokens, keys, passwords in URLs)
+        value = redact_text(value[:4096])
+        return value[:512] + "…" if len(value) > 512 else value
+    if isinstance(value, (int, float, bool)) or value is None:
         return value
     return str(value)
 
@@ -68,7 +71,7 @@ class JsonFormatter(logging.Formatter):
             "time": datetime.fromtimestamp(record.created, UTC).isoformat(timespec="milliseconds").replace("+00:00", "Z"),
             "level": record.levelname,
             "logger": record.name,
-            "message": record.getMessage(),
+            "message": redact_text(record.getMessage()),
             "env": self.environment,
             "release": self.release,
         }
@@ -81,12 +84,12 @@ class JsonFormatter(logging.Formatter):
             if ctx.user_id is not None:
                 entry["user_id"] = str(ctx.user_id)
             if ctx.method:
-                entry["method"], entry["path"] = ctx.method, ctx.path
+                entry["method"], entry["path"] = ctx.method, mask_path(ctx.path)  # never a token in a path
         for key, value in record.__dict__.items():
             if key not in _STANDARD_ATTRS and not key.startswith("_"):
                 entry[key] = MASK if is_sensitive(key) else mask(value)
         if record.exc_info:
-            entry["stack"] = "".join(traceback.format_exception(*record.exc_info))[-8000:]
+            entry["stack"] = redact_text("".join(traceback.format_exception(*record.exc_info))[-8000:])
         return json.dumps(entry, ensure_ascii=False, default=str)
 
 

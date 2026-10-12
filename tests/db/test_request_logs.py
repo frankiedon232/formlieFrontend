@@ -79,3 +79,21 @@ def test_request_logs_are_partitioned_by_month(owner: psycopg.Connection) -> Non
     count = owner.execute("SELECT count(*) FROM pg_inherits WHERE inhparent = %s::regclass",
                           (f"{S}.request_logs",)).fetchone()[0]
     assert count >= 4
+
+
+def test_only_old_request_log_partitions_can_be_dropped(worker_dsn: str, owner: psycopg.Connection) -> None:
+    """B17 M8: the retention function drops request_logs partitions only, never newer than 7 days, and nothing
+    else (audit, responses and the other logs never expire this way)."""
+    schema = get_settings().db_schema
+    with psycopg.connect(worker_dsn.replace("postgresql+asyncpg://", "postgresql://")) as worker:
+        for table, days in (("audit_logs", 400), ("request_logs", 1)):
+            with pytest.raises(psycopg.errors.RaiseException):
+                worker.execute("SELECT platform.drop_expired_partitions(%s::regclass, now() - make_interval(days => %s))",
+                               (f"{schema}.{table}", days))
+            worker.rollback()
+        before = owner.execute("SELECT count(*) FROM pg_inherits WHERE inhparent = %s::regclass",
+                               (f"{schema}.request_logs",)).fetchone()[0]
+        dropped = worker.execute("SELECT platform.drop_expired_partitions(%s::regclass, now() - interval '30 days')",
+                                 (f"{schema}.request_logs",)).fetchone()[0]
+        worker.rollback()  # nothing kept: the test database's partitions stay
+    assert dropped >= 0 and before >= 1

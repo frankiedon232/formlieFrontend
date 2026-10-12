@@ -28,6 +28,7 @@ from fastapi.responses import JSONResponse
 from sqlalchemy import select, update
 
 from app.core import js
+from app.core.net import ip_bucket
 from app.core import zod as z
 from app.core.cache.redis import get_redis
 from app.core.config import get_settings
@@ -143,7 +144,7 @@ async def unlock_form(key: str, request: Request, response: Response) -> Any:
         form = await service.find_form(db, tenant, key, None)
         if form.access == "public":
             return ok({"unlocked": True})
-        await per_value("public-unlock-tries", f"{form.id}:{_ip()}", limit=10, window_seconds=600)
+        await per_value("public-unlock-tries", f"{form.id}:{ip_bucket(_ip())}", limit=10, window_seconds=600)
         data = unlock_schema.parse(body)
         who = None
         if form.access == "password" and "password" in data and form.password_hash:
@@ -238,7 +239,7 @@ async def send_verification(key: str, request: Request) -> Any:
                                   language=rules.main_language(schema), reason="respondent_code", footer="form",
                                   values={"code": code, "minutes": VERIFY_TTL_S // 60, "form": form.name},
                                   hidden=("code",))
-        dev = {} if get_settings().is_production else {"dev_code": code}
+        dev = {"dev_code": code} if get_settings().dev_replies else {}  # exactly APP_ENV=development (M5)
         return ok({"sent_to": rules.mask_email(email), "expires_in": VERIFY_TTL_S}, dev)
 
 
@@ -329,7 +330,7 @@ async def start_draft(key: str, request: Request) -> Any:
         if data.get("email"):
             link = _resume_link(form, tenant, token)
             await _send_resume(db, tenant, form, data["email"], link, rules.main_language(form.draft_schema))
-            meta = {} if get_settings().is_production else {"dev_resume_url": link}
+            meta = {"dev_resume_url": link} if get_settings().dev_replies else {}
         return ok({"resume_token": token, "expires_at": _iso(expires),
                    "sent_to": rules.mask_email(data["email"]) if data.get("email") else None}, meta)
 
@@ -350,7 +351,7 @@ async def save_draft(key: str, token: str, request: Request) -> Any:
         if data.get("email"):
             link = _resume_link(form, tenant, token)
             await _send_resume(db, tenant, form, data["email"], link, rules.main_language(form.draft_schema))
-            meta = {} if get_settings().is_production else {"dev_resume_url": link}
+            meta = {"dev_resume_url": link} if get_settings().dev_replies else {}
         return ok({"saved_at": _iso(now), "expires_at": _iso(draft.expires_at),
                    "sent_to": rules.mask_email(data["email"]) if data.get("email") else None}, meta)
 
@@ -376,7 +377,7 @@ async def request_upload(key: str, request: Request) -> Any:
         fld = next((f for f in all_fields(schema) if f["key"] == data["field"]), None)
         if fld is None or fld["type"] not in FILE_FIELDS or is_locked(fld):
             raise FrmError("FRM-GEN-1002", [{"field": "field", "message": "This question takes no files."}])
-        await per_value("public-upload-files", f"{form.id}:{_ip()}", limit=60, window_seconds=600)
+        await per_value("public-upload-files", f"{form.id}:{ip_bucket(_ip())}", limit=60, window_seconds=600)
         props = fld.get("props") or {}
         raw_accept = props.get("accept", js.UNDEFINED)
         accept = "" if js.nullish(raw_accept) else js.to_string(raw_accept)
@@ -487,7 +488,7 @@ async def submit_public_form(key: str, request: Request, response: Response) -> 
             if js.trim(data.get("trap") or ""):
                 response.status_code = 201
                 return ok({"response_id": str(uuid.uuid4()), "duplicate": False, "thank_you": thank_you})
-            await per_value("public-submits", f"{form.id}:{_ip()}", limit=20, window_seconds=600)
+            await per_value("public-submits", f"{form.id}:{ip_bucket(_ip())}", limit=20, window_seconds=600)
             salt = _proven_salt(form, data.get("challenge"))
             if not salt or not await _reserve_challenge(salt):
                 salt = None
@@ -541,10 +542,10 @@ async def submit_public_form(key: str, request: Request, response: Response) -> 
                     raise FrmError("FRM-RESP-1006", [{"field": "", "message": hint(_iso(prior), known["email"])}])
             elif identity["email"]:
                 key_ = identity["email"]
-                rows = (await db.execute(select(StoredResponse.id, StoredResponse.submitted_at, StoredResponse.data)
-                                         .where(*live).order_by(StoredResponse.submitted_at.desc()))).all()
-                earlier_records = [{"id": str(r.id), "submitted_at": _iso(r.submitted_at), "data": r.data} for r in rows]
-                match = rules.match_identity(schema, answers, earlier_records, identity)
+                from app.modules.public.duplicates import match_earlier
+
+                # Only the earlier emails that can match, through the identity index (query review Q2)
+                match = await match_earlier(db, tenant.id, form.id, schema, answers, identity)
                 if match["level"] != "none":
                     found_record = match["record"]
                     message = hint(found_record["submitted_at"], found_record["data"].get(key_))

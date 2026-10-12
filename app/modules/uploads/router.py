@@ -55,13 +55,16 @@ async def store_upload(token: str, request: Request) -> Response:
     if workspace is None or (tenant is not None and workspace[0] != tenant.id) or len(token) > 200:
         return JSONResponse({"error": "Upload link expired."}, status_code=403)
     limit = max(service.MAX_RESPONDENT_BYTES, *(p["max_bytes"] for p in service.PURPOSES.values()))
-    data = b""
+    declared = request.headers.get("content-length") or ""
+    if declared.isdigit() and int(declared) > limit:  # refused before a byte is read
+        return JSONResponse({"error": "Unexpected file size."}, status_code=400)
+    data = bytearray()  # grows in place (B17 review M12: `bytes +=` copied the whole file on every chunk)
     async for chunk in request.stream():
-        data += chunk
-        if len(data) > limit:
+        if len(data) + len(chunk) > limit:
             return JSONResponse({"error": "Unexpected file size."}, status_code=400)
+        data += chunk
     async with db_session("write", tenant_id=workspace[0], organisation_id=workspace[1]) as db:
-        status, message = await service.store(db, workspace[0], token, request.headers.get("content-type"), data)
+        status, message = await service.store(db, workspace[0], token, request.headers.get("content-type"), bytes(data))
     return Response(status_code=204) if status == 204 else JSONResponse({"error": message}, status_code=status)
 
 

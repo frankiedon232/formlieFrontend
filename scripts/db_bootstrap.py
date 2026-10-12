@@ -17,6 +17,9 @@ Roles (DATABASE-DESIGN → DB roles, BACKEND-SPEC §2):
                                             password (else NOLOGIN), 5 connections
   formalie_directory NOLOGIN BYPASSRLS      owns the cross-workspace lookup functions (find my workspace,
                                             subdomain taken); reads only the columns those need
+  formalie_admin_api LOGIN NOBYPASSRLS      the internal admin API (B17, M6): member of formalie_app, and the only
+                                            role that may run the platform admin functions; LOGIN with
+                                            DB_ADMIN_API_URL's password (else NOLOGIN)
 """
 
 from __future__ import annotations
@@ -50,6 +53,20 @@ def _ensure_role(cur: psycopg.Cursor, name: str, options: str, password: str | N
         statement = statement + sql.SQL(" PASSWORD {}").format(sql.Literal(password))
     cur.execute(statement)
     print(f"  role {name}: {'updated' if exists else 'created'}")
+
+
+def _admin_function_grants(superuser_dsn: str, database: str) -> None:
+    """Migration 0036's grants on the platform admin functions, for a database migrated before the role existed."""
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "alembic" / "versions"))
+    from importlib import import_module
+
+    migration = import_module("0036_security_fixes")
+    dsn = make_url(superuser_dsn).set(database=database).render_as_string(hide_password=False)
+    with psycopg.connect(dsn, autocommit=True) as conn:
+        if conn.execute("SELECT to_regprocedure('platform.admin_tenant(uuid)')").fetchone()[0] is None:
+            return  # not migrated yet: migration 0036 grants them
+        conn.execute(migration.admin_grants_sql())
+        print(f"  database {database}: platform admin functions granted to formalie_admin_api only")
 
 
 def main() -> None:
@@ -86,6 +103,16 @@ def main() -> None:
                 _ensure_role(cur, role, f"LOGIN NOSUPERUSER NOCREATEDB NOCREATEROLE {bypass} CONNECTION LIMIT {limit}",
                              password)
         _ensure_role(cur, "formalie_directory", "NOLOGIN NOSUPERUSER BYPASSRLS", None)
+        # The internal admin API's own login (B17, M6): formalie_app's privileges, plus the admin functions
+        if settings.db_admin_api_url is None:
+            _ensure_role(cur, "formalie_admin_api", "NOLOGIN NOSUPERUSER NOBYPASSRLS", None)
+        else:
+            user, password, _ = _creds(settings.db_admin_api_url, "DB_ADMIN_API_URL")
+            if user != "formalie_admin_api":
+                raise SystemExit(f"DB_ADMIN_API_URL must connect as formalie_admin_api, not {user}")
+            _ensure_role(cur, "formalie_admin_api", "LOGIN NOSUPERUSER NOCREATEDB NOCREATEROLE NOBYPASSRLS "
+                         "CONNECTION LIMIT 10", password)
+        cur.execute("GRANT formalie_app TO formalie_admin_api")
         # Migrations hand the lookup functions to formalie_directory, so the owner must be able to act as it.
         cur.execute("GRANT formalie_directory TO formalie_owner")
         cur.execute("ALTER ROLE platform_reader SET default_transaction_read_only = on")
@@ -100,13 +127,14 @@ def main() -> None:
                             .format(sql.Identifier(name)))
             cur.execute(sql.SQL("REVOKE ALL ON DATABASE {} FROM PUBLIC").format(sql.Identifier(name)))
             cur.execute(sql.SQL("GRANT CONNECT ON DATABASE {} TO formalie_app, formalie_worker, formalie_readonly, "
-                                "platform_reader, platform_writer").format(sql.Identifier(name)))
+                                "platform_reader, platform_writer, formalie_admin_api").format(sql.Identifier(name)))
             # Default search_path per role and database, so it holds through PgBouncer too.
             for role in ("formalie_owner", "formalie_app", "formalie_worker", "formalie_readonly",
-                         "platform_reader", "platform_writer"):
+                         "platform_reader", "platform_writer", "formalie_admin_api"):
                 cur.execute(sql.SQL("ALTER ROLE {} IN DATABASE {} SET search_path = {}, platform").format(
                     sql.Identifier(role), sql.Identifier(name), sql.Identifier(settings.db_schema)))
             print(f"  database {name}: {'exists' if exists else 'created'} (schema {settings.db_schema})")
+            _admin_function_grants(dsn, name)
     print("Done. Next: alembic upgrade head  and  alembic -x db=test upgrade head")
 
 

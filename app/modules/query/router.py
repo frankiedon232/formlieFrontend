@@ -38,6 +38,7 @@ from app.modules.data_sources.activity import ACTIVITY_KINDS, kind_of_action
 from app.modules.data_sources.models import DataSource
 from app.modules.data_sources.service import iso
 from app.modules.data_sources.sql import script_kind, split_statements, statement_kind, tables_in
+from app.modules.data_sources.sql_guard import read_is_safe
 from app.modules.explorer import service as X
 from app.modules.explorer.router import opened, usable
 from app.modules.forms.router import _natural
@@ -149,6 +150,8 @@ async def run_query(datasource_id: str, request: Request, principal: Principal =
     source = await usable(principal, datasource_id)
     sql = _one_statement(data["sql"])
     kind = statement_kind(sql)
+    if kind == "read" and not read_is_safe(source.engine, sql):
+        kind = "other"  # the engine would run more than a read: the change path's checks apply (B17, M7)
     params = data.get("params") or {}
     page, size = data.get("page") or 1, data.get("page_size") or 50
     engine = source.engine
@@ -240,7 +243,7 @@ async def export_query(datasource_id: str, request: Request, principal: Principa
     if len(statements) != 1:
         raise FrmError("FRM-DEST-1026", [{"field": "sql", "message": str(len(statements))}])
     sql = statements[0].text
-    if statement_kind(sql) != "read":
+    if statement_kind(sql) != "read" or not read_is_safe(source.engine, sql):
         raise FrmError("FRM-GEN-1002", [{"field": "sql", "message": "read_only"}])
     return ok(await exports.start(principal, source, {
         "mode": "query", "sql": sql, "params": data.get("params") or {}, "format": data["format"],

@@ -18,9 +18,9 @@ SHORT_ALPHABET = "abcdefghjkmnpqrstuvwxyz23456789"
 
 RESERVED_LINKS = frozenset({
     "admin", "ai", "analytics", "api", "api-service", "app", "audit", "auth", "billing", "dashboard", "data-sources",
-    "embed", "fill", "files", "form", "forms", "formalie", "help", "login", "logout", "manage", "new", "onboarding",
-    "option-sets", "profile", "public", "responses", "s", "settings", "signin", "signup", "static", "storage",
-    "support", "templates", "workspace-not-found", "www",
+    "email", "embed", "fill", "files", "folders", "form", "forms", "formalie", "help", "login", "logout", "manage", "new",
+    "no-access", "onboarding", "option-sets", "people", "profile", "public", "responses", "s", "settings", "signin",
+    "signup", "static", "storage", "support", "templates", "workspace-not-found", "www",
 })
 
 MAX_EMBED_DOMAINS = 20

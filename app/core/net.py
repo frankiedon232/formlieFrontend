@@ -60,3 +60,20 @@ def ip_in_cidr(ip: str, cidr: str) -> bool:
         return False
     shift = (32 if block[0] == 4 else 128) - block[2]
     return caller[1] >> shift == block[1] >> shift
+
+
+def ip_bucket(ip: str | None) -> str:
+    """The rate-limit key of a caller (B17 review M15): an IPv4 address as it is, an IPv6 address by its /64 (one
+    customer network holds 2^64 addresses, so counting single addresses lets a caller rotate past every limit).
+    IPv4-mapped IPv6 addresses count as their IPv4 address. Anything unreadable is kept as it came."""
+    text = (ip or "").strip()
+    if not text:
+        return "unknown"
+    parsed = parse_ip(text.split("%", 1)[0])  # a zone id (fe80::1%eth0) does not make a new network
+    if parsed is None:
+        return text[:64]
+    family, value = parsed
+    if family == 4:
+        return ".".join(str((value >> shift) & 0xFF) for shift in (24, 16, 8, 0))
+    network = value >> 64
+    return ":".join(f"{(network >> shift) & 0xFFFF:x}" for shift in (48, 32, 16, 0)) + "::/64"

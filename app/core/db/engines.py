@@ -43,6 +43,7 @@ def make_engine(url: str, settings: Settings, *, name: str, statement_timeout_ms
         pool_pre_ping=True,
         pool_recycle=1800,
         connect_args=connect_args,
+        hide_parameters=True,  # SQL errors in logged stack traces never carry bound values (B17 review L18)
     )
 
 
@@ -57,13 +58,23 @@ class Engines:
             for i, url in enumerate(self.settings.db_replica_urls)
         ]
         self._next_replica: Iterator[AsyncEngine] = itertools.cycle(self.replicas or [self.primary])
+        self._admin_api: AsyncEngine | None = None
+
+    def admin_api(self) -> AsyncEngine:
+        """The internal admin API's engine (formalie_admin_api, DB_ADMIN_API_URL), opened on first use."""
+        if self._admin_api is None:
+            if self.settings.db_admin_api_url is None:
+                raise RuntimeError("DB_ADMIN_API_URL is not set (see .env.example): the internal admin API needs it")
+            small = self.settings.model_copy(update={"db_pool_size": 2, "db_max_overflow": 2})
+            self._admin_api = make_engine(self.settings.db_admin_api_url.get_secret_value(), small, name="admin")
+        return self._admin_api
 
     def replica(self) -> AsyncEngine:
         """Round-robin over replicas; the primary when none is configured."""
         return next(self._next_replica)
 
     async def dispose(self) -> None:
-        for engine in (self.primary, *self.replicas):
+        for engine in (self.primary, *self.replicas, *([self._admin_api] if self._admin_api else [])):
             await engine.dispose()
 
 

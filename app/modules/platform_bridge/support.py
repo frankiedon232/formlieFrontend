@@ -8,7 +8,9 @@
   the staff member's browser redeems it on the workspace's address (`POST /auth/support/redeem`) and gets a support
   token. The session ends at the grant's end or after SUPPORT_SESSION_MINUTES, whichever is first.
 - In a session: what the Owner can see; read only unless both the grant and the session allow changes. Never the
-  staff member's own profile, the consent itself, privacy requests, single sign-on, or revealing secrets.
+  staff member's own profile, the consent itself, privacy requests, single sign-on, the sending address, or revealing
+  secrets; even in write mode, nothing that gives access beyond the consent (SUPPORT_NO_CHANGE: people, invitations,
+  roles, API tokens and keys, webhooks, connections, sign-in and security settings).
 - Everyone in the workspace sees a banner while a session is live (`GET /support-access/status`, also in `/me`).
 - Audit: the consent and its changes (`settings.updated`), requests and sessions issued (`workspace.updated`, as
   Formalie support), the session's start and end (`auth.login.succeeded`, `auth.logout`, `auth.session.revoked`),
@@ -43,9 +45,32 @@ MODES = ("read", "write")
 CACHE_MODULE = "support_access"
 TOUCH_EVERY_S = 60
 SUPPORT_TOKEN_MAX_S = 24 * 3600  # Fernet's own age limit for support tokens; the session's end decides first
-# Never in a support session, whatever the mode (paths without the /api/v1 prefix)
-SUPPORT_NEVER = re.compile(r"^/(me/|settings/security/support-access|privacy/|settings/sso)|/(reveal|secret)(/|$)")
+# Never in a support session, whatever the mode (paths without the /api/v1 prefix). The sending address too: its
+# own mail server would carry sign-in and reset codes (security review H3)
+SUPPORT_NEVER = re.compile(r"^/(me/|settings/security/support-access|privacy/|settings/sso|settings/emails/sending)"
+                           r"|/(reveal|secret)(/|$)")
+# Never changed in a support session, even in write mode: anything that would give access that outlives the consent
+# (security review M4): people, invitations and their links, the shared sign-up link and approvals, roles, API
+# tokens, keys, services and endpoints, webhooks, data source connections and destinations, sign-in and security
+# settings, the workspace's address and subdomain.
+SUPPORT_NO_CHANGE = re.compile(
+    r"^/(people|roles|api-tokens|api-service|api-services|api-endpoints|api-access-rules|webhooks|tenants"
+    r"|settings/(security|signin|address))(/|$)"
+    r"|^/(datasources|destinations)(/[^/]+)?/?$"
+    r"|^/(datasources|destinations)/[^/]+/duplicate/?$")
 READ_METHODS = {"GET", "HEAD", "OPTIONS"}
+
+
+def support_refusal(path: str, method: str, mode: str) -> str | None:
+    """Why a support session may not make this request (the error details' message), or None."""
+    if SUPPORT_NEVER.search(path):
+        return "not_in_support_sessions"
+    if method.upper() not in READ_METHODS:
+        if mode != "write":
+            return "read_only"
+        if SUPPORT_NO_CHANGE.search(path):
+            return "not_in_support_sessions"
+    return None
 _cache = RedisCache()
 
 
@@ -335,10 +360,9 @@ async def support_principal(request: Request, tenant: TenantInfo, payload: dict[
             mode = "write" if session.mode == "write" and grant.mode == "write" else "read"
     if error:
         raise FrmError(error, commit=True)
-    if SUPPORT_NEVER.search(path):
-        raise FrmError("FRM-PERM-1001", [{"field": "support", "message": "not_in_support_sessions"}])
-    if mode == "read" and request.method.upper() not in READ_METHODS:
-        raise FrmError("FRM-PERM-1001", [{"field": "support", "message": "read_only"}])
+    refused = support_refusal(path, request.method, mode)
+    if refused:
+        raise FrmError("FRM-PERM-1001", [{"field": "support", "message": refused}])
     ctx = get_context()
     if ctx is not None:
         ctx.user_id, ctx.session_id = user.id, session_id

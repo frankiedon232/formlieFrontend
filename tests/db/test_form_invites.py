@@ -29,7 +29,9 @@ async def test_invitations_and_passes(app) -> None:  # noqa: ANN001
         assert status == 201, reply
         assert reply["data"]["created"] == 2 and reply["data"]["skipped"] == []
         assert [i["status"] for i in reply["data"]["invitations"]] == ["invited", "invited"]
-        links = {link["email"]: link["url"] for link in reply["meta"]["dev_links"]}
+        # Links only in the emails: dev_links is for APP_ENV=development alone (security review M5)
+        assert "dev_links" not in reply["meta"]
+        links = {m["to"]: m["values"]["link"] for m in SENT[sent_before:]}
         assert links["ana@example.org"].startswith(f"https://{sub}.formalie.dev")
         assert f"/{form['public_key']}/fill?invite=" in links["ana@example.org"]
         mails = SENT[sent_before:]
@@ -47,7 +49,7 @@ async def test_invitations_and_passes(app) -> None:  # noqa: ANN001
 
         # Resend: a new link; revoke; resend refused; take it off the list
         _, reply = await owner.request("POST", f"/forms/{form['id']}/invites/{ana['id']}/resend", body={})
-        assert reply["meta"]["dev_links"][0]["url"] != links["ana@example.org"]
+        assert SENT[-1]["to"] == "ana@example.org" and SENT[-1]["values"]["link"] != links["ana@example.org"]
         _, reply = await owner.request("DELETE", f"/forms/{form['id']}/invites/{ana['id']}", query={"remove": "1"})
         assert reply["error"]["code"] == "FRM-FORM-1007"
         _, reply = await owner.request("DELETE", f"/forms/{form['id']}/invites/{ana['id']}")

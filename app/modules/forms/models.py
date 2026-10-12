@@ -57,6 +57,15 @@ class Form(UuidPkMixin, TenantMixin, AuditMixin, SoftDeleteMixin, RowVersionMixi
         Index("ix_forms_tenant_updated", "tenant_id", "updated_at"),
         Index("ix_forms_tenant_folder", "tenant_id", "folder_id"),
         Index("ix_forms_tenant_owner", "tenant_id", "owner_id"),
+        # Query review I8 (0037): the list's plain filters, the Trash sweep, tags, closing announcements
+        Index("ix_forms_live", "tenant_id", "status", text("updated_at DESC"),
+              postgresql_where=text("deleted_at IS NULL AND purged_at IS NULL")),
+        Index("ix_forms_trash", "tenant_id", "deleted_at",
+              postgresql_where=text("deleted_at IS NOT NULL AND purged_at IS NULL")),
+        Index("ix_forms_tags", "tags", postgresql_using="gin", postgresql_ops={"tags": "jsonb_path_ops"},
+              postgresql_where=text("purged_at IS NULL")),
+        Index("ix_forms_closing", "tenant_id", "closes_at",
+              postgresql_where=text("status = 'published' AND deleted_at IS NULL")),
     )
 
     folder_id: Mapped[uuid.UUID | None] = mapped_column(Uuid)

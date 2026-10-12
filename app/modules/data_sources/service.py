@@ -34,7 +34,7 @@ def open_secrets(sealed: str | None) -> dict[str, str]:
 
 
 def target_of(source: DataSource) -> Target:
-    return Target(source.engine, source.settings, open_secrets(source.secrets_enc))
+    return Target(source.engine, source.settings, open_secrets(source.secrets_enc), host_key=source.ssh_host_key)
 
 
 def json_safe(settings: dict[str, Any]) -> dict[str, Any]:
@@ -58,8 +58,10 @@ def test_view(test: DataSourceTest) -> dict[str, Any]:
 
 
 def new_test(tenant_id: uuid.UUID, organisation_id: uuid.UUID, user_id: uuid.UUID, datasource_id: uuid.UUID | None,
-             label: str, engine: str, settings: dict[str, Any], access: dict[str, Any], secrets: dict[str, str]) -> DataSourceTest:
-    config = {"engine": engine, "settings": json_safe(settings), "access": access, "secrets": secrets}
+             label: str, engine: str, settings: dict[str, Any], access: dict[str, Any], secrets: dict[str, str],
+             host_key: str | None = None) -> DataSourceTest:
+    config = {"engine": engine, "settings": json_safe(settings), "access": access, "secrets": secrets,
+              "host_key": host_key}
     return DataSourceTest(tenant_id=tenant_id, organisation_id=organisation_id, datasource_id=datasource_id, label=label[:300],
                           status="running", steps=[{"key": k, "status": "pending", "duration_ms": None, "error_code": None}
                                                    for k in TEST_STEPS],

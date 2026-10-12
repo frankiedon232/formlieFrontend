@@ -44,6 +44,7 @@ from app.core.errors import FrmError
 from app.core.errors.codes import ERROR_CODES
 from app.core.middleware.rate_limit import RateLimiterUnavailable, SlidingWindowLimiter
 from app.core.middleware.tenant import BLOCKED_STATUSES
+from app.core.net import ip_bucket
 from app.modules.api_service import access as A
 from app.modules.api_service import gateway_auth as AUTH
 from app.modules.api_service import traffic as TR
@@ -100,6 +101,7 @@ class Call:
     raw: bytes = b""
     too_big: bool | None = None  # None until the body is read (once: a raced retry reads it again from here)
     upload: bool = False  # a file upload: its body is the file, never kept in the log
+    token_address: bool = False  # POST /{apiKey}/token: client secret in, access token out, bodies never kept (M10)
     call_key: str | None = None
     names: dict[str, str] | None = None  # question key → API name, so details name what the app sent
     unknown: set[str] = field(default_factory=set)  # names the endpoint does not know, reported as sent
@@ -290,8 +292,9 @@ async def _log(request: Request, call: Call, status: int, body: Any, request_id:
         rule_id=call.rule_id, rate_limited=call.rate_limited, country=caller.country if caller else None,
         origin=request.headers.get("origin"), user_agent=(request.headers.get("user-agent") or "")[:200],
         headers=dict(request.headers.items()), secret_headers=call.secret_headers,
-        request_raw=call.raw[:KEPT_RAW].decode("utf-8", "replace") if call.raw and not call.upload else None,
-        response_body=body,
+        request_raw=call.raw[:KEPT_RAW].decode("utf-8", "replace")
+        if call.raw and not call.upload and not call.token_address else None,
+        response_body=None if call.token_address else body,
         personal=call.personal)
     try:
         async with db_session("write", tenant_id=tenant.id, organisation_id=tenant.organisation_id) as db:
@@ -347,6 +350,7 @@ async def _handle(request: Request, call: Call) -> tuple[int, Any]:
         # A file upload carries multipart/form-data, every other write a JSON object (1 MB at most)
         upload = record_ref == "files" and method == "POST"
         call.upload = upload
+        call.token_address = name == "token" and record_ref is None
         body: dict[str, Any] = {}
         too_big = False
         if method in ("POST", "PUT"):
@@ -368,7 +372,7 @@ async def _handle(request: Request, call: Call) -> tuple[int, Any]:
             decision = A.decide_access(rules, caller)
             if not decision["allowed"]:
                 raise GatewayError("FRM-API-1015", [{"field": decision["reason"], "message": (decision["rule"] or {}).get("value") or "no allow rule matched"}])
-            await rate_limit(call, "ip", f"{tenant.id}:ip:{caller.ip}", settings.rate_per_ip if settings else None)
+            await rate_limit(call, "ip", f"{tenant.id}:ip:{ip_bucket(caller.ip)}", settings.rate_per_ip if settings else None)
             try:
                 return 200, await AUTH.issue_access_token(db, tenant.id, request.headers, body)
             except AUTH.Refused as refused:
@@ -389,7 +393,7 @@ async def _handle(request: Request, call: Call) -> tuple[int, Any]:
             call.rule_id = uuid.UUID(decision["rule"]["id"])
         if not decision["allowed"]:
             raise GatewayError("FRM-API-1015", [{"field": decision["reason"], "message": (decision["rule"] or {}).get("value") or "no allow rule matched"}])
-        await rate_limit(call, "ip", f"{tenant.id}:ip:{caller.ip}", settings.rate_per_ip if settings else None)
+        await rate_limit(call, "ip", f"{tenant.id}:ip:{ip_bucket(caller.ip)}", settings.rate_per_ip if settings else None)
         try:
             token = await AUTH.caller_token(db, tenant.id, request.headers)
         except AUTH.Refused as refused:

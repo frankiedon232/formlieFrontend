@@ -24,7 +24,7 @@ celery_app = Celery(
              "app.modules.exports.tasks", "app.modules.responses.after",
              "app.modules.data_sources.tasks", "app.modules.destinations.tasks", "app.modules.webhooks.tasks",
              "app.modules.api_service.tasks", "app.modules.ai.tasks", "app.modules.privacy.tasks",
-             "app.modules.platform_bridge.tasks"],
+             "app.modules.platform_bridge.tasks", "app.modules.forms.tasks", "app.modules.notifications.tasks"],
 )
 
 celery_app.conf.update(
@@ -47,6 +47,7 @@ celery_app.conf.update(
     task_routes={
         "events.relay_outbox": {"queue": "scheduled"},
         "db.ensure_partitions": {"queue": "scheduled"},
+        "db.drop_expired_partitions": {"queue": "scheduled"},
         "logs.write_request_logs": {"queue": "logs"},
         "logs.update_geoip": {"queue": "scheduled"},
         "logs.ingest_error_files": {"queue": "scheduled"},
@@ -66,10 +67,14 @@ celery_app.conf.update(
         "privacy.apply_retention": {"queue": "scheduled"},
         "platform.expire_support_access": {"queue": "scheduled"},
         "platform.close_due_workspaces": {"queue": "scheduled"},
+        "forms.sweep_trash": {"queue": "scheduled"},
+        "notifications.announce_due": {"queue": "scheduled"},
+        "events.prune_processed": {"queue": "scheduled"},
     },
     beat_schedule={
         "relay-outbox": {"task": "events.relay_outbox", "schedule": 2.0},
         "ensure-partitions": {"task": "db.ensure_partitions", "schedule": 6 * 3600.0},
+        "request-log-retention": {"task": "db.drop_expired_partitions", "schedule": 24 * 3600.0},
         "update-geoip": {"task": "logs.update_geoip", "schedule": 7 * 24 * 3600.0},
         "ingest-error-files": {"task": "logs.ingest_error_files", "schedule": 30.0},
         "datasource-health": {"task": "datasources.health", "schedule": 5 * 60.0},
@@ -81,6 +86,9 @@ celery_app.conf.update(
         "response-retention": {"task": "privacy.apply_retention", "schedule": 24 * 3600.0},
         "support-access-expiry": {"task": "platform.expire_support_access", "schedule": 60.0},
         "close-due-workspaces": {"task": "platform.close_due_workspaces", "schedule": 10 * 60.0},
+        "forms-trash-sweep": {"task": "forms.sweep_trash", "schedule": 5 * 60.0},
+        "notifications-due": {"task": "notifications.announce_due", "schedule": 60.0},
+        "processed-events-prune": {"task": "events.prune_processed", "schedule": 24 * 3600.0},
     },
 )
 

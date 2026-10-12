@@ -97,6 +97,15 @@ async def render(db: AsyncSession, tenant_id: uuid.UUID, workspace_name: str, ke
 
 MASK = "••••••"
 KEEP_SENT = 200
+# Emails that let someone in (security review H3). They always leave through Formalie's relay (Formalie's address,
+# or the workspace's verified domain, which is also signed and sent by the relay), never the workspace's own mail
+# server: an admin running that server would read the Owner's reset or sign-in code. Sign-up and find-my-workspace
+# codes are Formalie's own emails (service.send) and never use a workspace route.
+RELAY_ONLY = frozenset({"signin_code", "password_reset", "invitation", "account_activation", "respondent_code",
+                        "resume_link"})
+# Of those, the ones for accounts are always in Formalie's wording, whatever the workspace saved for them (a custom
+# body could put {{code}} or {{link}} in an image address on the admin's server). A test send keeps the draft.
+FIXED_TEXT = frozenset({"signin_code", "password_reset", "invitation", "account_activation"})
 
 
 async def _plan(db: AsyncSession, tenant_id: uuid.UUID) -> str | None:
@@ -155,6 +164,8 @@ async def send(db: AsyncSession, tenant_id: uuid.UUID, workspace_name: str, *, t
 
     try:
         lang = await email_language(db, tenant_id, language)
+        if key in FIXED_TEXT and reason != "test":
+            text = defaults(lang)["templates"][key]  # Formalie's wording: no code or link hidden in an image address
         url = unsubscribe.page_url if unsubscribe is not None and unsubscribe.page_url else None
         message = await render(db, tenant_id, workspace_name, key, lang, values, text=text, answers=answers, footer=footer,
                                unsubscribe_url=url)
@@ -164,6 +175,8 @@ async def send(db: AsyncSession, tenant_id: uuid.UUID, workspace_name: str, *, t
             kept = await render(db, tenant_id, workspace_name, key, lang, masked, text=text, answers=answers,
                                 footer=footer, unsubscribe_url=url)
         route = await sending.route_for(db, tenant_id, await _plan(db, tenant_id))
+        if key in RELAY_ONLY and route and route.get("mode") == "smtp":
+            route = None  # never the workspace's own mail server: whoever runs it would read the code or link
         item = await log_sent(db, tenant_id, to=to, key=key, language=lang, reason=reason, message=kept)
         headers = {"headers": unsubscribe.headers} if url else {}
         emails.queue({"to": to, **message, **headers, **({"route": route} if route else {})}, key=key,

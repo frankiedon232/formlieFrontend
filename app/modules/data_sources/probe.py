@@ -11,7 +11,9 @@ from collections.abc import Awaitable, Callable
 from datetime import UTC, datetime
 from typing import Any
 
-from app.modules.data_sources.connect import Connection, ConnectError, Target, connect, reach, tunnel
+from app.modules.data_sources.connect import (
+    Connection, ConnectError, Target, connect, endpoint, first_hop, reach, tunnel,
+)
 from app.modules.data_sources.engines import default_schema_of, is_encrypted, operations_for, tables_schema_of
 
 TEST_STEPS = ("network", "ssh", "tls", "sign_in", "database", "permissions")
@@ -180,14 +182,8 @@ async def run_test(target: Target, access: dict[str, Any], report: Report) -> di
     by["network"]["status"] = "running"
     await report({"steps": steps, **result})
     try:
-        first_host, first_port = (str(s.get("ssh_host")), int(s.get("ssh_port") or 22)) if s.get("ssh") else \
-            (str(s.get("host") or ""), int(s.get("port") or 0))
-        if target.engine == "oracle" and s.get("connect_by") == "descriptor" and not s.get("ssh"):
-            from app.modules.data_sources.engines import address_of
-
-            address = address_of("oracle", s)
-            first_host, _, port_text = address.rpartition(":")
-            first_host, first_port = (first_host or address), int(port_text or 1521) if port_text.isdigit() else 1521
+        endpoint(target)  # an Oracle descriptor with more than one address (or a proxy, a wallet) stops here
+        first_host, first_port = first_hop(target)
         result["latency_ms"] = round(await reach(first_host, first_port, target.timeout))
         await mark("network", "passed", started)
     except ConnectError as error:

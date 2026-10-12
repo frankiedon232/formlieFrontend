@@ -22,7 +22,8 @@ from datetime import UTC, date, datetime, timedelta
 from typing import Any
 
 from fastapi import APIRouter, Depends, Request
-from sqlalchemy import select, update
+from sqlalchemy import case, cast, func, or_, select, true, update
+from sqlalchemy.dialects.postgresql import JSONB
 
 from app.core import zod as z
 from app.core.db.session import db_session
@@ -145,6 +146,77 @@ def filter_entries(entries: list[Entry], query: dict[str, str], search_answers: 
     return result
 
 
+_SORT_IN_PYTHON = "respondent"  # the title is read from the answers with the form's questions
+
+
+async def sql_page(db: Any, tenant_id: uuid.UUID, forms: list[Form], query: dict[str, str],
+                   search_answers: bool) -> tuple[list[Entry], dict[str, Any]] | None:
+    """filter_entries + _page in SQL (query review Q1) when every filter asked maps to a column: status, tag,
+    channel, form, flag, dates, and a sort by date, number, status or form. Only the page's responses are read, with
+    only their forms' questions. None when the list needs the answers (search, answer or empty filters, sort by
+    respondent): filter_entries then reads them all, as before. Same order: the sort, then newest first."""
+    if (query.get("q") or "").strip():
+        return None
+    if search_answers and any(name.startswith(f"filter[{ANSWER_FILTER_PREFIX}") or name == "filter[empty]"
+                              for name in query if query.get(name)):
+        return None
+    sort = query.get("sort") or "-submitted_at"
+    desc, key = sort.startswith("-"), sort.lstrip("-")
+    if key == _SORT_IN_PYTHON:
+        return None
+    status, tag, channel, wanted_forms = (_list(query, k) for k in ("status", "tag", "channel", "form"))
+    start, end = _day(query.get("from"), False), _day(query.get("to"), True)
+    by_id = {f.id: f for f in forms}
+    ids = list(by_id)
+    if wanted_forms:
+        asked = set()
+        for value in wanted_forms:
+            try:
+                parsed = uuid.UUID(value)
+            except ValueError:
+                continue
+            if str(parsed) == value:
+                asked.add(parsed)
+        ids = [i for i in ids if i in asked]
+    params = PageParams.from_query(query.get("page"), query.get("page_size"))
+    if not ids:
+        return [], params.meta(0).model_dump(exclude_none=True)
+    where: list[Any] = [Response.tenant_id == tenant_id, Response.form_id.in_(ids), Response.deleted_at.is_(None)]
+    if status:
+        where.append(Response.status.in_(status))
+    if tag:
+        where.append(or_(*[Response.tags.contains([t]) for t in tag]))
+    if channel:
+        where.append(Response.channel.in_(channel))
+    if query.get("filter[flag]") == "duplicate":
+        where += [func.jsonb_typeof(Response.possible_duplicate) == "object",
+                  Response.possible_duplicate != cast({}, JSONB), Response.duplicate_cleared.is_(False)]
+    if start:
+        where.append(Response.submitted_at >= start)
+    if end:
+        where.append(Response.submitted_at <= end)
+    if key == "number":
+        value: Any = Response.number
+    elif key == "status":
+        value = case(service.STATUS_ORDER, value=Response.status, else_=len(service.STATUS_ORDER))
+    elif key == "form":
+        names = sorted({f.name.lower() for f in forms})  # Python's order of names, not the database's collation
+        rank = {f.id: names.index(f.name.lower()) for f in forms}
+        value = case(rank, value=Response.form_id, else_=len(names))
+    else:
+        value = Response.submitted_at
+    order = (value.desc() if desc else value.asc(), Response.submitted_at.desc(), Response.id.desc())
+    total = (await db.execute(select(func.count()).select_from(Response).where(*where))).scalar_one()
+    rows = list((await db.execute(select(Response).where(*where).order_by(*order)
+                                  .offset(params.offset).limit(params.page_size))).scalars())
+    schemas: dict[uuid.UUID, Any] = {}
+    for form_id in dict.fromkeys(r.form_id for r in rows):
+        schemas[form_id] = await service.response_schema(db, by_id[form_id])
+    notes = await service.notes_counts(db, tenant_id, [r.id for r in rows])
+    return ([Entry(r, by_id[r.form_id], schemas[r.form_id], notes.get(r.id, 0)) for r in rows],
+            params.meta(total).model_dump(exclude_none=True))
+
+
 def _page(items: list[Any], query: dict[str, str]) -> tuple[list[Any], dict[str, Any]]:
     params = PageParams.from_query(query.get("page"), query.get("page_size"))
     return items[params.offset:params.offset + params.page_size], params.meta(len(items)).model_dump(exclude_none=True)
@@ -176,8 +248,9 @@ async def list_form_responses(form_id: str, request: Request, principal: Princip
     query = dict(request.query_params)
     async with db_session("read", **_scope(principal)) as db:
         form = await _form_for(db, await viewer_for(db, principal), form_id)
-        entries = await _entries(db, principal.tenant.id, [form])
-    page, meta = _page(filter_entries(entries, query, True), query)
+        fast = await sql_page(db, principal.tenant.id, [form], query, True)
+        entries = await _entries(db, principal.tenant.id, [form]) if fast is None else []
+    page, meta = fast if fast is not None else _page(filter_entries(entries, query, True), query)
     return ok([service.row_of(e, True) for e in page], meta)
 
 
@@ -185,11 +258,11 @@ async def list_form_responses(form_id: str, request: Request, principal: Princip
 async def form_response_tags(form_id: str, principal: Principal = Depends(require_auth)) -> Any:
     async with db_session("read", **_scope(principal)) as db:
         form = await _form_for(db, await viewer_for(db, principal), form_id)
-        responses = await service.responses_of(db, principal.tenant.id, [form.id])
-    counts: dict[str, int] = {}
-    for r in responses:
-        for t in r.tags or []:
-            counts[t] = counts.get(t, 0) + 1
+        tag = func.jsonb_array_elements_text(Response.tags).table_valued("value").alias("tag")
+        counts: dict[str, int] = dict((await db.execute(  # counted in SQL (query review Q1)
+            select(tag.c.value, func.count()).select_from(Response).join(tag, true()).where(
+                Response.tenant_id == principal.tenant.id, Response.form_id == form.id, Response.deleted_at.is_(None),
+                func.jsonb_typeof(Response.tags) == "array").group_by(tag.c.value))).all())
     return ok([{"value": v, "count": c} for v, c in sorted(counts.items(), key=lambda kv: (-kv[1], kv[0]))])
 
 
@@ -208,8 +281,10 @@ async def list_responses(request: Request, principal: Principal = Depends(requir
     query = dict(request.query_params)
     async with db_session("read", **_scope(principal)) as db:
         viewer = await viewer_for(db, principal)
-        entries = await _entries(db, principal.tenant.id, await _visible_forms(db, viewer, query))
-    page, meta = _page(filter_entries(entries, query, False), query)
+        forms = await _visible_forms(db, viewer, query)
+        fast = await sql_page(db, principal.tenant.id, forms, query, False)
+        entries = await _entries(db, principal.tenant.id, forms) if fast is None else []
+    page, meta = fast if fast is not None else _page(filter_entries(entries, query, False), query)
     return ok([service.row_of(e, False) for e in page], meta)
 
 
@@ -392,6 +467,7 @@ async def patch_response(response_id: str, request: Request, principal: Principa
                 r.duplicate_cleared = True
             if data.get("data"):
                 r.data, r.edited = {**current, **data["data"]}, True
+                service.sync_identity(r, entry.schema, data["data"])
             r.updated_at, r.updated_by, r.row_version = datetime.now(UTC), principal.user.id, r.row_version + 1
             await _history(db, principal, entry, changes)
             labels = {f"answer:{f['key']}": (f.get("label") or "").strip() or f["key"]

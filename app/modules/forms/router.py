@@ -11,7 +11,7 @@ from __future__ import annotations
 import copy
 import re
 import uuid
-from datetime import UTC, datetime, time
+from datetime import UTC, datetime, time, timedelta
 from typing import Any
 
 from fastapi import APIRouter, Depends, Request
@@ -26,7 +26,7 @@ from app.modules.audit.service import Actor, record
 from app.modules.auth.sessions import Principal, require_auth
 from app.modules.forms import access, service
 from app.modules.forms.access import Viewer, viewer_for
-from app.modules.forms.catalogues import FOLDER_COLOR_KEYS
+from app.modules.forms.catalogues import FOLDER_COLOR_KEYS, TRASH_RETENTION_DAYS
 from app.modules.destinations.service import FORMALIE_MARK, storage_marks
 from app.modules.forms.models import Folder, Form
 from app.modules.forms.schema import blank_schema, form_schema_v1
@@ -111,13 +111,15 @@ async def list_forms(request: Request, principal: Principal = Depends(require_au
     tag, template = _list(query, "tag"), _list(query, "template")
     trash = query.get("filter[trash]") == "1"
     start, end = _day(query.get("from"), False), _day(query.get("to"), True)
-    async with db_session("write", **_scope(principal)) as db:
-        await service.sweep_trash(db, principal.tenant.id)
+    # Only reads (query review Q11): Beat purges Trash (forms.sweep_trash); until it runs, a form past its 30 days
+    # is already left out, as if purged
+    purge_before = datetime.now(UTC) - timedelta(days=TRASH_RETENTION_DAYS)
+    async with db_session("read", **_scope(principal)) as db:
         viewer = await viewer_for(db, principal)
         names = await Names().load(db, principal.tenant.id)
         marks = await storage_marks(db, principal.tenant.id)
         forms = [f for f in await service.forms_of(db, principal.tenant.id) if access.can_see(f, viewer)
-                 and (f.deleted_at is not None) == trash
+                 and (f.deleted_at is not None) == trash and (f.deleted_at is None or f.deleted_at >= purge_before)
                  and (trash or (f.status in status if status else f.status != "archived"))
                  and (not folder or str(f.folder_id or "none") in folder)
                  and (not owner or str(f.owner_id) in owner)

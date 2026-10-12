@@ -23,6 +23,7 @@ from app.core import js, storage
 from app.core import zod as z
 from app.core.cache.redis import get_redis
 from app.core.config import get_settings
+from app.core.disposition import disposition
 from app.core.context import get_context
 from app.core.db.session import after_commit, db_session
 from app.core.errors import FrmError
@@ -217,19 +218,21 @@ async def download_table_export(token: str) -> Response:
     except (KeyError, ValueError):
         return PlainTextResponse(EXPIRED, status_code=410)
     ctx, host = get_context(), current_host_context()
-    local = host is not None and host.kind == "manage" and host.reason == "local"
+    # A localhost / bare-address host skips the same-workspace check in development and tests only (B17 L11)
+    local = host is not None and host.kind == "manage" and host.reason == "local" and get_settings().is_development
     if not local and (ctx is None or ctx.tenant is None or ctx.tenant.id != tenant_id):
         return PlainTextResponse(EXPIRED, status_code=410)
     try:  # one use
         first = bool(await get_redis().set(f"dexport:used:{link['n']}", "1", nx=True, ex=LINK_S))
-    except Exception:  # noqa: BLE001 (Redis down: the 5-minute signed link still stands)
-        first = True
+    except Exception:  # noqa: BLE001 (Redis down: single use can't be checked, so the link fails closed, B17 L11)
+        first = False
     if not first:
         return PlainTextResponse(EXPIRED, status_code=410)
     async with db_session("read", tenant_id=tenant_id, organisation_id=organisation_id) as db:
         job = await db.get(ExportJob, job_id)
     content = storage.get(job.file_key) if job is not None and job.file_key else None
-    if job is None or job.tenant_id != tenant_id or job.kind != KIND or content is None:
+    if job is None or job.tenant_id != tenant_id or job.kind != KIND or job.deleted_at is not None or content is None:
         return PlainTextResponse(EXPIRED, status_code=410)
     return Response(content, media_type=jobs.CONTENT_TYPES[job.format], headers={
-        "content-disposition": f'attachment; filename="{job.file_name}"', "cache-control": "no-store"})
+        "content-disposition": disposition(job.file_name), "cache-control": "no-store"})
+

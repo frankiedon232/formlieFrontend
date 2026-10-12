@@ -95,7 +95,7 @@ The setup script `scripts/wsl/setup-services.sh` was a one-time install. Don't r
 - `.env.example` is the committed template with `CHANGE_ME` placeholders. Never put real passwords in it.
 - A new setting goes into both: the real value in `.env`, a placeholder in `.env.example`.
 - Secret keys (references, tokens): `fmly\Scripts\python.exe scripts\gen_keys.py --write` adds any missing ones to `.env` and keeps existing ones.
-- Public form pages: `INTERNAL_TOKEN` (made by `gen_keys.py`) must have the same value as `NUXT_INTERNAL_TOKEN` in the frontend, so its server can read published forms through `/api/v1/internal/*`.
+- `INTERNAL_TOKEN` is retired (2026-10-12): the frontend is a static build and no longer reads `/api/v1/internal/*`; leave it empty (the two old routes then refuse everything).
 
 ## Common commands
 

@@ -93,7 +93,7 @@ async def opened(principal: Principal, source: DataSource, ops: int = 1) -> Asyn
             await c.limit(X.LIMIT_S)
             yield c
     except ConnectError as error:
-        raise FrmError(error.code) from None
+        raise FrmError(error.code, error.details()) from None
     async with db_session("write", **_scope(principal)) as db:
         await count_op(db, source, ops)
 

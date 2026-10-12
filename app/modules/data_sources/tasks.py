@@ -35,7 +35,7 @@ async def run_connection_test(test_id: uuid.UUID, tenant_id: uuid.UUID, organisa
         async with db_session("write", **scope) as db:
             await db.execute(update(DataSourceTest).where(DataSourceTest.id == test_id).values(steps=state["steps"]))
 
-    target = Target(config["engine"], config["settings"], config.get("secrets") or {})
+    target = Target(config["engine"], config["settings"], config.get("secrets") or {}, host_key=config.get("host_key"))
     try:
         result = await run_test(target, config["access"], report)
     except Exception:  # noqa: BLE001 (a test must always finish)
@@ -57,6 +57,13 @@ async def run_connection_test(test_id: uuid.UUID, tenant_id: uuid.UUID, organisa
         test.finished_at = datetime.now(UTC)
         test.config_enc = None  # the secrets it carried are gone
         source = await db.get(DataSource, test.datasource_id) if test.datasource_id else None
+        if test.status != "failed" and target.seen_host_key:
+            # SSH host key pinning: the first good test pins the server's key (B17, H1)
+            test.ssh_host_key = target.seen_host_key
+            same = source is not None and \
+                json.dumps(source.settings, sort_keys=True) == json.dumps(config["settings"], sort_keys=True)
+            if source is not None and same and source.ssh_host_key != target.seen_host_key:
+                source.ssh_host_key = target.seen_host_key
         if source is not None and source.last_test_id == test.id:
             from app.modules.data_sources.service import count_op
 

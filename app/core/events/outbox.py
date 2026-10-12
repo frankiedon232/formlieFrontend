@@ -61,7 +61,8 @@ class ProcessedEvent(Base):
     """One row per (consumer, event): a redelivered event is skipped."""
 
     __tablename__ = "processed_events"
-    __table_args__ = (PrimaryKeyConstraint("consumer", "event_id"),)
+    __table_args__ = (PrimaryKeyConstraint("consumer", "event_id"),
+                      Index("ix_processed_events_processed_at", "processed_at"))  # the daily prune (0037)
 
     consumer: Mapped[str] = mapped_column(String(100))
     event_id: Mapped[uuid.UUID] = mapped_column(Uuid)

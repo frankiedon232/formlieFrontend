@@ -121,7 +121,7 @@ async def test_query_editor_from_start_to_finish(app, owner_dsn, tests_run, jobs
             _, reply = await owner.request("POST", f"/explorer-exports/{export_id}/link")
             url = reply["data"]["url"]
             file = await http.get(url)
-            assert file.status_code == 200 and file.headers["content-disposition"] == f'attachment; filename="{people}.sql"'
+            assert file.status_code == 200 and file.headers["content-disposition"].startswith(f'attachment; filename="{people}.sql";')
             text = file.text
             assert text.startswith(f"-- public.{people}: 11 row(s)") and text.count("INSERT INTO") == 11 and text.rstrip().endswith("COMMIT;")
             assert (await http.get(url)).status_code == 410  # one use

@@ -69,7 +69,7 @@ def _iso(value: datetime | None) -> str | None:
 # ── Workspaces ───────────────────────────────────────────────────────────────────
 
 async def _tenant(tenant_id: uuid.UUID) -> dict[str, Any]:
-    async with db_session("write") as db:
+    async with db_session("admin") as db:
         row = (await db.execute(text("SELECT * FROM platform.admin_tenant(:id)"), {"id": tenant_id})).mappings().first()
     if row is None:
         raise FrmError("FRM-GEN-1004", [{"field": "tenant", "message": "not_found"}])
@@ -111,7 +111,7 @@ async def _set_status(call: PlatformCall, tenant_id: str, status: str, *, reason
         row = await _tenant(_uuid(tenant_id))
         if only_from is not None and row["status"] not in only_from:
             raise FrmError("FRM-GEN-1009", [{"field": "status", "message": row["status"]}])
-        async with db_session("write", **_scope(row)) as db:
+        async with db_session("admin", **_scope(row)) as db:
             before = (await db.execute(text("SELECT platform.admin_set_status(:s, :r, :c)"),
                                        {"s": status, "r": reason, "c": close_at})).scalar_one()
             changes = [{"field": "status", "before": before, "after": status}]
@@ -188,7 +188,7 @@ async def change_subdomain(tenant_id: str, call: PlatformCall = Depends(platform
             raise FrmError("FRM-TEN-1004", [{"field": "subdomain", "message": "reserved"}])
         if new == row["subdomain"]:
             return _tenant_view(row), row["id"]
-        async with db_session("write", **_scope(row)) as db:
+        async with db_session("admin", **_scope(row)) as db:
             try:
                 async with db.begin_nested():  # the old one keeps leading here for 90 days (03-DECISIONS F14 M7)
                     await db.execute(text("SELECT platform.change_subdomain(:new, :id)"), {"new": new, "id": uuid7()})
@@ -231,7 +231,7 @@ async def change_plan(tenant_id: str, call: PlatformCall = Depends(platform_call
         import json as _json
 
         row = await _tenant(_uuid(tenant_id))
-        async with db_session("write", **_scope(row)) as db:
+        async with db_session("admin", **_scope(row)) as db:
             before = (await db.execute(text("SELECT platform.admin_set_plan(:p, CAST(:l AS jsonb), :t, :sl, :st)"), {
                 "p": body.plan_id, "l": _json.dumps(body.limits) if body.limits is not None else None,
                 "t": body.trial_ends_at, "sl": "limits" in raw, "st": "trial_ends_at" in raw})).scalar_one()
@@ -258,7 +258,7 @@ async def export_workspace(tenant_id: str, call: PlatformCall = Depends(platform
 
     async def work() -> tuple[dict[str, Any], uuid.UUID | None]:
         row = await _tenant(_uuid(tenant_id))
-        async with db_session("write", **_scope(row)) as db:
+        async with db_session("admin", **_scope(row)) as db:
             stamp = datetime.now(UTC).strftime("%Y-%m-%d")
             job = await jobs.create(db, tenant_id=row["id"], organisation_id=row["organisation_id"], user_id=None,  # type: ignore[arg-type]
                                     kind=workspace_export.KIND, format="zip",
@@ -277,7 +277,7 @@ async def export_workspace(tenant_id: str, call: PlatformCall = Depends(platform
 # ── People's accounts ─────────────────────────────────────────────────────────────
 
 async def _user_scope(user_id: uuid.UUID) -> dict[str, Any]:
-    async with db_session("write") as db:
+    async with db_session("admin") as db:
         row = (await db.execute(text("SELECT tenant_id, organisation_id FROM platform.user_workspace(:id)"),
                                 {"id": user_id})).first()
     if row is None:
@@ -299,7 +299,7 @@ async def _account(call: PlatformCall, user_id: str, action: str) -> JSONRespons
     async def work() -> tuple[dict[str, Any], uuid.UUID | None]:
         wanted = _uuid(user_id)
         scope = await _user_scope(wanted)
-        async with db_session("write", **scope) as db:
+        async with db_session("admin", **scope) as db:
             user = await db.get(User, wanted)
             if user is None or user.deleted_at is not None or user.tenant_id != scope["tenant_id"]:
                 raise FrmError("FRM-GEN-1004", [{"field": "user", "message": "not_found"}])
@@ -399,7 +399,7 @@ async def request_support_access(call: PlatformCall = Depends(platform_call)) ->
 
     async def work() -> tuple[dict[str, Any], uuid.UUID | None]:
         row = await _tenant(body.tenant_id)
-        async with db_session("write", **_scope(row)) as db:
+        async with db_session("admin", **_scope(row)) as db:
             asked = SupportAccessRequest(
                 tenant_id=row["id"], organisation_id=row["organisation_id"], staff_id=call.staff_id or "",
                 staff_name=call.staff_name or "", reason=body.reason, mode=body.mode, hours=body.hours,
@@ -447,13 +447,13 @@ async def start_support_session(grant_id: str, call: PlatformCall = Depends(plat
 
     async def work() -> tuple[dict[str, Any], uuid.UUID | None]:
         wanted = _uuid(grant_id)
-        async with db_session("write") as db:
+        async with db_session("admin") as db:
             found = (await db.execute(text("SELECT tenant_id, organisation_id FROM platform.support_grant_workspace(:g)"),
                                       {"g": wanted})).first()
         if found is None:
             raise FrmError("FRM-GEN-1004", [{"field": "grant", "message": "not_found"}])
         row = await _tenant(found[0])
-        async with db_session("write", **_scope(row)) as db:
+        async with db_session("admin", **_scope(row)) as db:
             grant = await db.get(SupportAccessGrant, wanted)
             if grant is None or grant.revoked_at is not None or grant.expires_at <= datetime.now(UTC):
                 raise FrmError("FRM-PERM-1001", [{"field": "grant", "message": "not_active"}])
@@ -499,7 +499,7 @@ async def send_message(call: PlatformCall = Depends(platform_call)) -> JSONRespo
         raise FrmError("FRM-GEN-1002", [{"field": "body", "message": "too_long"}])
 
     async def work() -> tuple[dict[str, Any], uuid.UUID | None]:
-        async with db_session("write") as db:
+        async with db_session("admin") as db:
             rows = [dict(r) for r in (await db.execute(
                 text("SELECT * FROM platform.communication_workspaces(CAST(:p AS text[]), CAST(:t AS uuid[]))"),
                 {"p": body.plans, "t": body.tenant_ids})).mappings().all()]
@@ -525,7 +525,7 @@ async def _deliver(call: PlatformCall, body: MessageBody, row: dict[str, Any]) -
     from app.modules.users.models import User
 
     emails = notices = 0
-    async with db_session("write", tenant_id=row["id"], organisation_id=row["organisation_id"]) as db:
+    async with db_session("admin", tenant_id=row["id"], organisation_id=row["organisation_id"]) as db:
         roles = {r.id: r for r in await roles_of(db, row["id"])}
         people = [u for u in (await db.execute(select(User).where(
             User.tenant_id == row["id"], User.deleted_at.is_(None), User.status == "active"))).scalars()

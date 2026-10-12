@@ -22,6 +22,7 @@ from typing import Any
 from fastapi import APIRouter, Depends, Request
 from sqlalchemy import select
 
+from app.core import outbound
 from app.core import zod as z
 from app.core.config import get_settings
 from app.core.db.session import db_session
@@ -73,7 +74,7 @@ def _find(hooks: list[Webhook], raw: str | None) -> Webhook:
 async def _checked(db: Any, tenant_id: uuid.UUID, values: dict[str, Any]) -> dict[str, Any]:
     """The address checked like the portal does (http://localhost while developing) and the forms of this workspace."""
     settings = get_settings()
-    problem = check_webhook_url(values["url"], allow_local=settings.webhooks_allow_local and not settings.is_production)
+    problem = check_webhook_url(values["url"], allow_local=outbound.local_allowed(settings.webhooks_allow_local))
     if problem:
         raise FrmError("FRM-GEN-1002", [{"field": "url", "message": problem}])
     ids = [S.ref_uuid(i) for i in values["form_ids"]]

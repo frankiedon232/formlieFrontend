@@ -30,6 +30,7 @@ def worker_engine() -> Engine:
         pool_size=2,
         max_overflow=2,
         pool_pre_ping=True,
+        hide_parameters=True,  # SQL errors in logs never carry bound values (B17 review L18)
         connect_args={"application_name": "formalie-worker",
                       "options": f"-c statement_timeout=30000 -c search_path={settings.db_schema},platform"},
     )

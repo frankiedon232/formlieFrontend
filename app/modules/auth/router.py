@@ -10,6 +10,8 @@ from __future__ import annotations
 
 import hashlib
 import re
+import secrets
+import time
 import uuid
 from datetime import UTC, datetime, timedelta
 from typing import Any
@@ -19,7 +21,7 @@ import pyotp
 from fastapi import APIRouter, Depends, Request
 from fastapi.responses import JSONResponse, RedirectResponse
 from pydantic import BaseModel, Field, field_validator
-from sqlalchemy import select
+from sqlalchemy import select, update
 
 from app.core.context import TenantInfo, get_context
 from app.core.db.session import db_session
@@ -38,7 +40,7 @@ from app.modules.audit.service import Actor, record
 from app.modules.auth import challenges, oauth
 from app.modules.auth.sessions import (
     REFRESH_COOKIE, REFRESH_COOKIE_PATH, Principal, end_session, ip_allowed, refresh_cookie, require_auth,
-    rotate_refresh, start_session,
+    revoke_sessions, rotate_refresh, start_session,
 )
 from app.core.cache.redis import get_redis
 from app.modules.emails import service as emails
@@ -93,23 +95,39 @@ def _hash_recovery(code: str) -> str:
     return hashlib.sha256(re.sub(r"\s+", "", code.strip().lower()).encode()).hexdigest()
 
 
+TOTP_STEP_PREFIX = "fm:v1:auth:totp:"
+
+
+async def _totp_step_fresh(secret: str, user_id: uuid.UUID, code: str) -> bool:
+    """An authenticator code (30 s steps, one step either side), each step accepted once per person: a code seen
+    over someone's shoulder or replayed can't be used again within its window (security review L5)."""
+    totp = pyotp.TOTP(secret)
+    now = int(time.time())
+    for offset in (0, -1, 1):
+        step = (now + offset * totp.interval) // totp.interval
+        if secrets.compare_digest(totp.generate_otp(step), code):
+            return bool(await get_redis().set(f"{TOTP_STEP_PREFIX}{user_id}:{step}", "1", nx=True,
+                                              ex=totp.interval * 4))
+    return False
+
+
 async def _second_factor(db: Any, user_id: uuid.UUID, code: str) -> bool:
-    """An authenticator code (30 s steps, one step either side) or an unused recovery code (used once)."""
+    """An authenticator code (once per step) or an unused recovery code (used once, claimed atomically)."""
     two_step = (await db.execute(select(UserTwoStep).where(UserTwoStep.user_id == user_id,
                                                            UserTwoStep.deleted_at.is_(None)))).scalar_one_or_none()
     if two_step is not None and two_step.totp_secret_enc and two_step.totp_confirmed_at and re.fullmatch(r"\d{6}", code):
-        if pyotp.TOTP(decrypt_secret(two_step.totp_secret_enc)).verify(code, valid_window=1):
+        if await _totp_step_fresh(decrypt_secret(two_step.totp_secret_enc), user_id, code):
             return True
     if not re.fullmatch(r"[a-z0-9]{4}-?[a-z0-9]{4}", code.strip(), re.IGNORECASE):
         return False
     normal = code.strip() if "-" in code else f"{code.strip()[:4]}-{code.strip()[4:]}"
-    row = (await db.execute(select(UserRecoveryCode).where(
+    # UPDATE ... WHERE used_at IS NULL RETURNING: two parallel requests with the same code, only one wins (L5)
+    claimed = (await db.execute(update(UserRecoveryCode).where(
         UserRecoveryCode.user_id == user_id, UserRecoveryCode.code_hash == _hash_recovery(normal),
-        UserRecoveryCode.used_at.is_(None), UserRecoveryCode.deleted_at.is_(None)))).scalar_one_or_none()
-    if row is None:
-        return False
-    row.used_at = datetime.now(UTC)
-    return True
+        UserRecoveryCode.used_at.is_(None), UserRecoveryCode.deleted_at.is_(None))
+        .values(used_at=datetime.now(UTC)).returning(UserRecoveryCode.id)
+        .execution_options(synchronize_session=False))).first()
+    return claimed is not None
 
 
 async def _send_code(db: Any, tenant: TenantInfo | None, challenge: challenges.Challenge, code: str | None,
@@ -193,11 +211,14 @@ async def _admit(db: Any, tenant: TenantInfo, user: User, signin: dict[str, Any]
 
 async def _login_challenge(db: Any, tenant: TenantInfo, user: User, signin: dict[str, Any],
                            method: str) -> challenges.Challenge:
-    """The second step of every sign-in: the authenticator app when set up, else a 6-digit code by email."""
+    """The second step of every sign-in: the authenticator app when set up, else a 6-digit code by email.
+    With a confirmed authenticator app it is the app only (its recovery codes are the way in without the phone):
+    an email or text code would let anyone with the password and the mailbox skip it (security review M2)."""
     two_step = (await db.execute(select(UserTwoStep).where(UserTwoStep.user_id == user.id,
                                                            UserTwoStep.deleted_at.is_(None)))).scalar_one_or_none()
     has_app = bool(two_step and two_step.totp_secret_enc and two_step.totp_confirmed_at)
-    channels = (["totp"] if has_app else []) + ["email"] + (["sms"] if user.phone and signin["code"].get("sms") else [])
+    channels = ["totp"] if has_app else \
+        ["email"] + (["sms"] if user.phone and signin["code"].get("sms") else [])
     challenge, code = await challenges.create_challenge(
         purpose="login", email=user.email, channel="totp" if has_app else "email", channels=channels,
         tenant=_tenant_dict(tenant), user=user, code_rules=signin["code"], language=user.language, method=method)
@@ -234,8 +255,10 @@ async def login(body: LoginBody) -> Any:
                          reason="FRM-AUTH-1019", metadata={"method": "password", "cause": "sso_required"})
             raise FrmError("FRM-AUTH-1019", commit=True)
         user = await _find_user(db, email)
-        # The same work for an unknown address as for a known one (no account discovery by timing)
-        password_ok = verify_password(user.password_hash if user else DUMMY_HASH, body.password) and user is not None
+        # The same work for an unknown address, or an account without a password (Google or Facebook only), as for
+        # one with a password: no account discovery by timing (security review L2)
+        stored = user.password_hash if user is not None and user.password_hash else None
+        password_ok = verify_password(stored or DUMMY_HASH, body.password) and stored is not None
         if user is None or not password_ok:
             await _audit(db, tenant, "auth.login.failed", Actor.user(user) if user else Actor.anonymous(email),
                          outcome="failure", reason="FRM-AUTH-1002",
@@ -311,6 +334,13 @@ class ResendBody(BaseModel):
 
 @router.post("/auth/otp/resend", dependencies=[rate_limit("otp-resend", per_minute=10)])
 async def resend_otp(body: ResendBody) -> Any:
+    pending = await challenges.get_challenge(body.challenge_id)
+    if pending is not None and pending.tenant_id:
+        # Only on the workspace's own address: never re-sent in another workspace's look and mail route (L4)
+        ctx = get_context()
+        here = ctx.tenant if ctx else None
+        if here is None or str(here.id) != pending.tenant_id:
+            raise FrmError("FRM-AUTH-1003")
     challenge, code = await challenges.resend(body.challenge_id, body.channel)
     if challenge.tenant_id:
         tenant = require_tenant()
@@ -572,7 +602,12 @@ async def reset_password(body: ResetBody) -> Any:
             user.password_hash = hash_password(body.password)
             user.password_changed_at = datetime.now(UTC)
             user.must_change_password = False
-            await _audit(db, tenant, "auth.password.reset", Actor.user(user))
+            # Whoever may hold a session (a stolen refresh cookie is why people reset) signs in again (M3)
+            ended = await revoke_sessions(db, tenant.id, ids=None, keep=None, user_id=user.id, reason="password_reset")
+            await _audit(db, tenant, "auth.password.reset", Actor.user(user), metadata={"sessions_ended": str(len(ended))})
+            if ended:
+                await _audit(db, tenant, "auth.session.revoked", Actor.user(user),
+                             metadata={"sessions": str(len(ended)), "cause": "password_reset"})
     return ok({"reset": True})
 
 

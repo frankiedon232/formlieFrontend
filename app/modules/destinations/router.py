@@ -126,7 +126,7 @@ def _check_columns(columns: list[dict[str, Any]], fields: list[dict[str, Any]], 
 
 
 def _failed(error: ConnectError | WriteError) -> FrmError:
-    return FrmError(error.code)
+    return FrmError(error.code, error.details() if isinstance(error, ConnectError) else None)
 
 
 async def _detail(db: Any, principal: Principal, destination: ResponseDestination) -> dict[str, Any]:

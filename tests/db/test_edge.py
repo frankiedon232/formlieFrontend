@@ -11,6 +11,7 @@ from datetime import UTC, datetime, timedelta
 import pytest
 from pydantic import SecretStr
 
+from app.modules.links.urls import frame_ancestors
 from app.modules.platform_bridge.closing import close_due
 from tests.conftest import MemoryShipper, client_for
 from tests.db.test_auth_flows import seeded, sign_in  # noqa: F401  (fixtures)
@@ -69,9 +70,24 @@ async def test_form_preview_and_short_link_through_the_edge(app) -> None:  # noq
                 continue
             assert response.status_code == 200, response.text
             assert response.json() == {"title": "Volunteer sign-up", "description": None, "image_url": None,
-                                       "language": "en", "indexable": True, "site_name": "Settings Co"}
+                                       "language": "en", "indexable": True, "site_name": "Settings Co",
+                                       "embed_ancestors": "*"}
             assert response.headers["cache-control"] == "public, max-age=60"
             assert EDGE not in response.text and "x-formalie-edge" not in response.headers
+
+        # Websites allowed to embed the form: the embed page's frame-ancestors, as the public form gives them
+        async with client_for(app, host=f"{sub}.formalie.dev") as owner_http:
+            owner = SecureClient(owner_http)
+            await sign_in(owner, email, PASSWORD)
+            status, reply = await owner.request("PUT", f"/forms/{form['id']}/share",
+                                                body={"embed_domains": ["example.com", "localhost:3000"]})
+            assert status == 200, reply
+            _, page = await SecureClient(owner_http).request("GET", f"/public/forms/{key}")
+        response = await http.get(f"/api/v1/edge/forms/{key}/preview", headers=edge(f"{sub}.formalie.dev"))
+        ancestors = response.json()["embed_ancestors"]
+        assert ancestors == page["data"]["embed_ancestors"] == frame_ancestors(["example.com", "localhost:3000"],
+                                                                                  "formalie.dev")
+        assert "https://example.com" in ancestors and "http://localhost:3000" in ancestors
 
         # Unknown, private (members only) and never published forms look absent
         for missing in ("AbCdEfGhJk", private["public_key"], draft["public_key"]):

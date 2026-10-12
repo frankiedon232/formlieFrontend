@@ -80,7 +80,8 @@ async def serve_response_file(token: str, request: Request) -> Response:
     # Only on the workspace's own host (a link copied elsewhere doesn't open)
     ctx = get_context()
     host = current_host_context()
-    local = host is not None and host.kind == "manage" and host.reason == "local"
+    # A localhost / bare-address host skips the same-workspace check in development and tests only (B17 L11)
+    local = host is not None and host.kind == "manage" and host.reason == "local" and get_settings().is_development
     if not local and (ctx is None or ctx.tenant is None or ctx.tenant.id != tenant_id):
         return _gone()
     async with db_session("read", tenant_id=tenant_id, organisation_id=organisation_id) as db:
@@ -92,9 +93,11 @@ async def serve_response_file(token: str, request: Request) -> Response:
     if data is None:
         return PlainTextResponse("Not found", status_code=404)
     kind, name = str(link.get("k") or upload.content_type), str(link.get("n") or upload.file_name)
-    download = request.query_params.get("download") == "1"
+    # Inline only for types the viewer previews; anything else (text/html a respondent declared, ...) downloads, and
+    # nothing a file carries ever runs (B17 L10)
+    download = request.query_params.get("download") == "1" or not PREVIEWABLE.match(kind)
     headers = {"x-content-type-options": "nosniff", "cache-control": "private, no-store",
-               "content-disposition": f"{'attachment' if download else 'inline'}; filename=\"{quote(name)}\""}
-    if kind.startswith("image/svg"):  # never run anything a file carries
-        headers["content-security-policy"] = "default-src 'none'; style-src 'unsafe-inline'; sandbox"
+               "content-disposition": f"{'attachment' if download else 'inline'}; filename=\"{quote(name)}\"",
+               "content-security-policy": "default-src 'none'; img-src 'self'; media-src 'self'; "
+                                          "style-src 'unsafe-inline'; sandbox"}
     return Response(content=data, media_type=kind, headers=headers)

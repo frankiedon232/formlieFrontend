@@ -192,7 +192,8 @@ async def test_public_forms_from_start_to_finish(app, monkeypatch) -> None:  # n
             "data": {"email": "eve@example.org"}, "challenge": await solved(visitor, ckey)}, headers=session())
         assert reply["error"]["code"] == "FRM-RESP-1008"
         _, reply = await visitor.request("POST", f"/public/forms/{ckey}/verify", body={"email": "Eve@Example.org"})
-        code = reply["meta"]["dev_code"]
+        assert "dev_code" not in reply["meta"]  # APP_ENV=development only (security review M5)
+        code = next(m["values"]["code"] for m in reversed(SENT) if m["to"].lower() == "eve@example.org")
         assert reply["data"]["sent_to"] == "ev•••@example.org"
         _, reply = await visitor.request("POST", f"/public/forms/{ckey}/verify/confirm", body={"email": "eve@example.org", "code": "000000"})
         assert reply["error"]["code"] == "FRM-AUTH-1003"

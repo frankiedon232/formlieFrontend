@@ -22,7 +22,7 @@ from app.modules.forms.access import Viewer
 from app.modules.forms.models import Form, FormVersion
 from app.modules.forms.service import iso
 from app.modules.links.seo import published_schema
-from app.modules.public.rules import identity_of
+from app.modules.public.rules import identity_of, normalise_email
 from app.modules.public.submit import all_fields, is_input_field
 from app.modules.responses.answers import answer_text, keep_answered
 from app.modules.responses.models import Response, ResponseChange, ResponseNote
@@ -74,6 +74,14 @@ def _filled(value: Any) -> bool:
 
 
 # ── Who sent it, and what names it ──────────────────────────────────────────────
+
+def sync_identity(response: Response, schema: dict[str, Any] | None, changed: dict[str, Any]) -> None:
+    """An edited answer to the form's identity email keeps `identity_email` in step: the same / near email check on
+    submit reads that column (public/duplicates.py)."""
+    key = identity_of(schema)["email"] if schema else None
+    if key and key in changed:
+        response.identity_email = normalise_email((response.data or {}).get(key))
+
 
 def respondent_from(schema: dict[str, Any] | None, data: dict[str, Any], response: Response) -> dict[str, Any]:
     """An invitation or member when the form knows them, else the name and email the form asked for."""

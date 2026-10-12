@@ -30,6 +30,15 @@ def optional(size: int) -> z.Schema:
     return z.string().trim().max(size).nullable().transform(lambda value: value or None)
 
 
+_CONTROL = re.compile(r"[\x00-\x1f\x7f]")
+
+
+def single_line(size: int) -> z.Schema:
+    """optional() without control characters (line breaks, tabs, NUL): a value that goes into an email header or
+    one line of every email would otherwise make each one fail to send (security review L20)."""
+    return optional(size).refine(lambda value: not value or not _CONTROL.search(value), "single_line")
+
+
 def is_email(value: str) -> bool:
     return bool(ZOD_EMAIL.match(value))
 
@@ -161,9 +170,9 @@ email_text = z.obj(
 )
 
 emails = z.obj(
-    sender_name=optional(80),
-    reply_to=optional(200).refine(lambda v: not v or is_email(v), "email"),
-    footer=optional(300),
+    sender_name=single_line(80),
+    reply_to=single_line(200).refine(lambda v: not v or is_email(v), "email"),
+    footer=single_line(300),
     custom=z.partial_record(EMAIL_TEMPLATES, z.partial_record(APP_LOCALE_CODES, email_text)),
 )
 

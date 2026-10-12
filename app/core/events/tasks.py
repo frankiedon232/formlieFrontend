@@ -1,10 +1,11 @@
-"""Outbox relay: publishes committed events to RabbitMQ, oldest first, at least once."""
+"""Outbox relay: publishes committed events to RabbitMQ, oldest first, at least once. Once a day, consumers' dedup rows
+older than the replay window are pruned (prune_processed)."""
 
 from __future__ import annotations
 
 import logging
 
-from sqlalchemy import func, select, update
+from sqlalchemy import func, select, text, update
 from sqlalchemy.orm import Session
 
 from app.core.config import get_settings
@@ -51,3 +52,29 @@ def relay_outbox() -> int:
     if count:
         log.info("outbox relayed", extra={"count": count})
     return count
+
+
+PRUNE_AFTER_DAYS = 7  # the outbox replay window: an event older than this is never delivered again
+PRUNE_BATCH = 10_000
+
+
+def prune_processed() -> int:
+    """processed_events rows processed more than PRUNE_AFTER_DAYS ago (query review Q12), in batches, as
+    formalie_worker through platform.prune_processed_events (0037). A technical dedup table: no tenant data, so its
+    old rows are removed rather than marked (owner to confirm)."""
+    removed = 0
+    while True:
+        with Session(worker_engine()) as session, session.begin():
+            batch = session.execute(text("SELECT platform.prune_processed_events(:days, :limit)"),
+                                    {"days": PRUNE_AFTER_DAYS, "limit": PRUNE_BATCH}).scalar_one()
+        removed += batch
+        if batch < PRUNE_BATCH:
+            return removed
+
+
+@celery_app.task(name="events.prune_processed", ignore_result=True)
+def prune_processed_task() -> int:
+    removed = prune_processed()
+    if removed:
+        log.info("processed events pruned", extra={"count": removed})
+    return removed

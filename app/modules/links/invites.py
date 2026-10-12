@@ -77,7 +77,7 @@ def personal_link(principal: Principal, form: Form, token: str) -> str:
 
 def _dev(links: list[dict[str, str]]) -> dict[str, Any]:
     """Development shows the links so they can be copied; production only emails them."""
-    return {} if get_settings().is_production else {"dev_links": links}
+    return {"dev_links": links} if get_settings().dev_replies else {}  # exactly APP_ENV=development (M5)
 
 
 async def _send(db: Any, principal: Principal, form: Form, email: str, name: str | None, link: str) -> None:

@@ -76,18 +76,21 @@ class TrustedProxies:
                 return str(parsed)
         if not self.trusts(peer):
             return peer
-        cf = header(scope, "cf-connecting-ip")
-        if cf and _parse_ip(cf):
-            return str(_parse_ip(cf))
         forwarded = header(scope, "x-forwarded-for")
         if forwarded:
-            # Right to left: the first address that is not one of our proxies is the client.
+            # Right to left: the first address that is not one of our proxies is the client. The last hop is the
+            # one our own Nginx wrote (its $remote_addr after real_ip), so a client can't choose it (B17, M14).
             for hop in reversed([h for h in forwarded.split(",") if h.strip()]):
                 parsed = _parse_ip(hop)
                 if parsed is None:
                     break
                 if not self.trusts(str(parsed)):
                     return str(parsed)
+        # Without X-Forwarded-For only: CF-Connecting-IP, which Nginx overwrites with $remote_addr (DEPLOYMENT-GUIDE
+        # Part 6), so a value sent by the client never counts on its own
+        cf = header(scope, "cf-connecting-ip")
+        if cf and _parse_ip(cf) and not forwarded:
+            return str(_parse_ip(cf))
         return peer
 
     def host(self, peer: str | None, scope: Scope) -> str | None:

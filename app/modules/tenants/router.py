@@ -63,8 +63,7 @@ async def public_profile() -> Any:
 
         sso = await public_of(db, tenant)
         # B16: why Formalie suspended the workspace, written by the Formalie team (platform admin)
-        reason = (await db.execute(text("SELECT suspended_reason FROM platform.admin_tenant(:id)"),
-                                   {"id": tenant.id})).scalar_one_or_none() if tenant.status in ("suspended", "closed") else None
+        reason = (await db.execute(text("SELECT platform.current_suspended_reason()"))).scalar_one_or_none() if tenant.status in ("suspended", "closed") else None
     rules = security["password"]
     return ok({
         "mode": "tenant",

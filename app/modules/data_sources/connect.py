@@ -7,9 +7,22 @@
                                            needs the Oracle client and is not available yet
     every engine     an SSH tunnel (asyncssh) when switched on; a connect time-out
 
-The host check (no loopback, link-local, cloud metadata: engines.is_blocked_host) is repeated on every address the
-name resolves to, so a name can't point Formalie at itself. Development and tests may allow local addresses
-(DATASOURCES_ALLOW_LOCAL), which production refuses.
+Addresses (security review B17, H1):
+- The name check (engines.is_blocked_host, the same answers as the frontend) runs first, then every address the name
+  resolves to goes through Formalie's one blocklist (app.core.outbound.blocked: anything not globally routable, so
+  private networks, loopback, link-local, CGNAT, unique local, metadata, multicast). Private networks are reached
+  only through an SSH tunnel, whose server must itself be public.
+- The driver then connects to that checked address, never to the name again (no DNS rebinding); the name is kept
+  for TLS (SNI and the certificate's name check, drivers.NamedTLSContext).
+- Oracle descriptors are parsed: exactly one address, TCP or TCPS, a service name or SID, nothing else (no address
+  lists, proxies or wallet folders); Formalie writes the descriptor it connects with.
+- SSH host keys are pinned: the first successful test stores the server's key fingerprint, and a different key is
+  refused (FRM-DEST-1004, reason `host_key_changed`) until someone with data.edit changes the SSH settings.
+- Development and tests may allow local addresses (DATASOURCES_ALLOW_LOCAL, APP_ENV development or test only).
+
+The drivers' own client-side file features are off: aiomysql's LOCAL INFILE (drivers.install_mysql_guard) and
+multiple statements, asyncpg's password file (a password is always passed), Oracle's tnsnames and wallets (Formalie
+writes the whole descriptor), FreeTDS aliases (the server is always an address).
 
 Every error leaves as a ConnectError with its FRM-DEST code; driver messages are never shown to people (they can
 carry host names and accounts), only logged.
@@ -18,8 +31,8 @@ carry host names and accounts), only logged.
 from __future__ import annotations
 
 import asyncio
-import ipaddress
 import logging
+import re
 import socket
 import ssl
 import tempfile
@@ -29,16 +42,26 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, AsyncIterator
 
+from app.core import outbound
 from app.core.config import get_settings
+from app.modules.data_sources.drivers import install_mysql_guard, named_context
 from app.modules.data_sources.engines import database_name_of, is_blocked_host
 
 log = logging.getLogger("formalie.datasources")
+install_mysql_guard()  # at import: no MySQL connection is ever opened without it
 
 
 class ConnectError(Exception):
-    def __init__(self, code: str, step: str, detail: str = "") -> None:
+    """`reason`: a short machine word for the FRM error's details (e.g. host_key_changed), when there is one."""
+
+    def __init__(self, code: str, step: str, detail: str = "", reason: str | None = None) -> None:
         super().__init__(f"{code} at {step}: {detail[:300]}")
-        self.code, self.step, self.detail = code, step, detail
+        self.code, self.step, self.detail, self.reason = code, step, detail, reason
+
+    def details(self) -> list[dict[str, str]] | None:
+        if not self.reason:
+            return None
+        return [{"field": "ssh_host" if self.step == "ssh" else "host", "message": self.reason}]
 
 
 @dataclass
@@ -46,6 +69,8 @@ class Target:
     engine: str
     settings: dict[str, Any]
     secrets: dict[str, str] = field(default_factory=dict)
+    host_key: str | None = None  # the SSH server's pinned key, "host:port SHA256:...", None until the first test
+    seen_host_key: str | None = None  # the same for the key the SSH server showed this time
 
     @property
     def timeout(self) -> float:
@@ -57,28 +82,91 @@ class Target:
 
 # ── Addresses ───────────────────────────────────────────────────────────────────
 
-def _blocked_ip(ip: str) -> bool:
-    address = ipaddress.ip_address(ip.split("%")[0])
-    if isinstance(address, ipaddress.IPv6Address) and address.ipv4_mapped:
-        address = address.ipv4_mapped
-    return address.is_loopback or address.is_link_local or address.is_multicast or address.is_unspecified \
-        or address.is_reserved or (isinstance(address, ipaddress.IPv4Address) and address in ipaddress.ip_network("100.64.0.0/10"))
+def _allow_local() -> bool:
+    return outbound.local_allowed(get_settings().datasources_allow_local)
 
 
 async def resolve(host: str, port: int, step: str = "network") -> str:
-    """The address to connect to; refused when the name (or what it resolves to) is one Formalie never reaches."""
-    allow_local = get_settings().datasources_allow_local and not get_settings().is_production
+    """The checked address to connect to; refused when the name (or any address it resolves to) is one Formalie
+    never reaches (outbound.blocked: private networks included; those go through an SSH tunnel)."""
+    allow_local = _allow_local()
     name = host.strip().strip("[]").rstrip(".")
+    if not name:
+        raise ConnectError("FRM-DEST-1001", step, "no host")
     if is_blocked_host(name) and not allow_local:
         raise ConnectError("FRM-DEST-1001", step, "blocked host")
     try:
-        infos = await asyncio.get_running_loop().getaddrinfo(name, port, type=socket.SOCK_STREAM)
-    except socket.gaierror as error:
+        if outbound.resolver is not None:  # tests
+            addresses = list(await outbound.resolver(name, port))
+        else:
+            infos = await asyncio.get_running_loop().getaddrinfo(name, port, type=socket.SOCK_STREAM)
+            addresses = [str(info[4][0]) for info in infos]
+    except (socket.gaierror, OSError, UnicodeError) as error:
         raise ConnectError("FRM-DEST-1001", step, f"name not found: {error}") from None
-    addresses = [info[4][0] for info in infos]
-    if not allow_local and any(_blocked_ip(a) for a in addresses):
+    if not addresses:
+        raise ConnectError("FRM-DEST-1001", step, "name not found")
+    if not allow_local and any(outbound.blocked(a) for a in addresses):
         raise ConnectError("FRM-DEST-1001", step, "resolves to a blocked address")
-    return addresses[0]
+    return addresses[0].split("%")[0]
+
+
+# ── Oracle descriptors ──────────────────────────────────────────────────────────
+
+_ORACLE_NAME = re.compile(r"^[A-Za-z0-9_.$#-]{1,128}$")
+_DESCRIPTOR_KEYS = {"DESCRIPTION", "ADDRESS", "ADDRESS_LIST", "PROTOCOL", "HOST", "PORT", "CONNECT_DATA",
+                    "SERVICE_NAME", "SID", "SERVER", "INSTANCE_NAME", "RETRY_COUNT", "RETRY_DELAY",
+                    "CONNECT_TIMEOUT", "TRANSPORT_CONNECT_TIMEOUT"}
+
+
+def oracle_descriptor(descriptor: str) -> dict[str, Any]:
+    """{host, port, protocol, service_name | sid} from a pasted descriptor; refused (FRM-DEST-1001, reason
+    `descriptor`) when it has more than one address, a proxy, a wallet folder, a security section or anything else
+    Formalie doesn't write itself."""
+    text = descriptor.strip()
+    keys = [k.upper() for k in re.findall(r"\(\s*([A-Za-z_]+)\s*=", text)]
+    if not text.startswith("(") or not keys or any(k not in _DESCRIPTOR_KEYS for k in keys):
+        raise ConnectError("FRM-DEST-1001", "network", "descriptor option not allowed", "descriptor")
+    values: dict[str, list[str]] = {}
+    for key, value in re.findall(r"\(\s*([A-Za-z_]+)\s*=\s*([^()]*?)\s*\)", text):
+        values.setdefault(key.upper(), []).append(value)
+    hosts, ports, protocols = values.get("HOST", []), values.get("PORT", []), values.get("PROTOCOL", [])
+    if len(hosts) != 1 or len(ports) > 1 or len(protocols) > 1 or keys.count("ADDRESS") > 1 \
+            or keys.count("DESCRIPTION") > 1:
+        raise ConnectError("FRM-DEST-1001", "network", "one address only", "descriptor")
+    protocol = (protocols[0] if protocols else "tcp").lower()
+    if protocol not in ("tcp", "tcps"):
+        raise ConnectError("FRM-DEST-1001", "network", "protocol not allowed", "descriptor")
+    port = ports[0] if ports else "1521"
+    if not port.isdigit() or not 1 <= int(port) <= 65535:
+        raise ConnectError("FRM-DEST-1001", "network", "port", "descriptor")
+    service, sid = values.get("SERVICE_NAME", []), values.get("SID", [])
+    if len(service) + len(sid) != 1 or not _ORACLE_NAME.fullmatch((service or sid)[0]):
+        raise ConnectError("FRM-DEST-1005", "database", "service name", "descriptor")
+    return {"host": hosts[0], "port": int(port), "protocol": protocol,
+            **({"service_name": service[0]} if service else {"sid": sid[0]})}
+
+
+def endpoint(target: Target) -> tuple[str, int]:
+    """The database's own (host, port), as the customer typed it (descriptors parsed)."""
+    s = target.settings
+    if target.engine == "oracle" and s.get("connect_by") == "descriptor":
+        parsed = oracle_descriptor(str(s.get("descriptor") or ""))
+        return parsed["host"], parsed["port"]
+    try:
+        return str(s.get("host") or ""), int(s.get("port") or 0)
+    except (TypeError, ValueError):
+        raise ConnectError("FRM-DEST-1001", "network", "port") from None
+
+
+def first_hop(target: Target) -> tuple[str, int]:
+    """Where Formalie's server connects first: the SSH server, or the database."""
+    s = target.settings
+    if s.get("ssh"):
+        try:
+            return str(s.get("ssh_host") or ""), int(s.get("ssh_port") or 22)
+        except (TypeError, ValueError):
+            raise ConnectError("FRM-DEST-1004", "ssh", "port") from None
+    return endpoint(target)
 
 
 async def reach(host: str, port: int, timeout: float, step: str = "network") -> float:
@@ -101,28 +189,48 @@ async def reach(host: str, port: int, timeout: float, step: str = "network") -> 
 
 # ── SSH tunnel ──────────────────────────────────────────────────────────────────
 
+def host_key_of(connection: Any) -> str | None:
+    key = connection.get_server_host_key()
+    return key.get_fingerprint("sha256") if key is not None else None
+
+
+def check_host_key(target: Target, hop: str, seen: str | None) -> None:
+    """Pinned SSH host keys, kept as "host:port SHA256:...": a key other than the one pinned for this SSH server is
+    refused before anything else is sent. A pin for another server (the SSH settings changed) doesn't count; the
+    next successful test pins the new one."""
+    target.seen_host_key = f"{hop} {seen}" if seen else None
+    pinned = target.host_key or ""
+    if pinned.partition(" ")[0] == hop and pinned != target.seen_host_key:
+        raise ConnectError("FRM-DEST-1004", "ssh", "the SSH server's host key changed", "host_key_changed")
+
+
 @asynccontextmanager
 async def tunnel(target: Target) -> AsyncIterator[tuple[str, int]]:
-    """The (host, port) to connect the driver to: the database itself, or the local end of an SSH tunnel."""
+    """The (address, port) to connect the driver to: the database's checked address, or the local end of an SSH
+    tunnel (the SSH server's address is checked; the database behind it may be on the customer's private network)."""
     s = target.settings
+    host, port = endpoint(target)
     if not s.get("ssh"):
-        yield str(s.get("host") or ""), int(s.get("port") or 0)
+        yield await resolve(host, port), port
         return
     import asyncssh
 
-    ssh_host, ssh_port = str(s.get("ssh_host") or ""), int(s.get("ssh_port") or 22)
-    await resolve(ssh_host, ssh_port, "ssh")
+    ssh_host, ssh_port = first_hop(target)
+    address = await resolve(ssh_host, ssh_port, "ssh")
     try:
         key = asyncssh.import_private_key(target.secrets.get("ssh_private_key", ""), target.secrets.get("ssh_passphrase") or None)
+        # known_hosts=None: the key is checked against the pinned fingerprint right after the handshake, before any
+        # port is forwarded (a client key only signs this session, so nothing reusable has left yet)
         connection = await asyncio.wait_for(asyncssh.connect(
-            ssh_host, ssh_port, username=str(s.get("ssh_username") or ""), client_keys=[key],
-            known_hosts=None), target.timeout)  # host key pinning: see PROGRESS.md
+            address, ssh_port, username=str(s.get("ssh_username") or ""), client_keys=[key],
+            known_hosts=None, agent_path=None, config=None), target.timeout)
     except TimeoutError:
         raise ConnectError("FRM-DEST-1004", "ssh", "ssh timed out") from None
     except (asyncssh.Error, OSError, ValueError) as error:
         raise ConnectError("FRM-DEST-1004", "ssh", str(error)) from None
     try:
-        listener = await connection.forward_local_port("127.0.0.1", 0, str(s.get("host") or ""), int(s.get("port") or 0))
+        check_host_key(target, f"{ssh_host.strip().strip('[]').rstrip('.').lower()}:{ssh_port}", host_key_of(connection))
+        listener = await connection.forward_local_port("127.0.0.1", 0, host, port)
         try:
             yield "127.0.0.1", listener.get_port()
         finally:
@@ -135,8 +243,9 @@ async def tunnel(target: Target) -> AsyncIterator[tuple[str, int]]:
 
 def _tls_context(target: Target, verify: bool, check_name: bool) -> ssl.SSLContext:
     """A TLS context from the connection's certificates (they are written to a private temporary folder only
-    for as long as the context is built)."""
-    context = ssl.create_default_context()
+    for as long as the context is built), naming the database's host for SNI and the name check whatever address
+    the driver connects to."""
+    context = named_context(_tls_name(target))
     context.check_hostname = verify and check_name
     context.verify_mode = ssl.CERT_REQUIRED if verify else ssl.CERT_NONE
     ca = target.secrets.get("ca_certificate")
@@ -325,7 +434,19 @@ def _sign_in_code(error: Exception) -> str:
     return "FRM-DEST-1001"
 
 
+def _tls_name(target: Target) -> str | None:
+    try:
+        name = endpoint(target)[0].strip().strip("[]").rstrip(".")
+    except ConnectError:
+        return None
+    return name or None
+
+
+_INSTANCE = re.compile(r"^[A-Za-z0-9_$-]{1,32}$")
+
+
 async def _open(target: Target, host: str, port: int) -> Connection:
+    """`host` is always an address: the checked one, or the local end of the tunnel."""
     s, secrets, timeout = target.settings, target.secrets, target.timeout
     engine = target.engine
     if engine == "postgresql":
@@ -335,30 +456,35 @@ async def _open(target: Target, host: str, port: int) -> Connection:
         ssl_arg: Any = {"disable": False, "allow": "allow", "prefer": "prefer"}.get(mode)
         if mode in ("require", "verify-ca", "verify-full"):
             ssl_arg = _tls_context(target, verify=mode != "require", check_name=mode == "verify-full")
+        # A password is always passed (empty when none), so asyncpg never reads PGPASSWORD or a .pgpass file
         raw = await asyncpg.connect(host=host, port=port, user=str(s.get("username") or ""),
-                                    password=secrets.get("password"), database=database_name_of(engine, s),
+                                    password=secrets.get("password") or "", database=database_name_of(engine, s),
                                     ssl=ssl_arg, timeout=timeout, command_timeout=60,
                                     target_session_attrs=str(s.get("target_session_attrs") or "any"),
                                     server_settings={"application_name": "Formalie"})
         return _Postgres(raw)
     if engine in ("mysql", "mariadb"):
-        import aiomysql
+        from app.modules.data_sources.drivers import open_mysql
 
         mode = str(s.get("ssl_mode") or "required")
         context = None
         if mode not in ("disabled", "preferred"):
             context = _tls_context(target, verify=mode in ("verify_ca", "verify_identity"), check_name=mode == "verify_identity")
-        raw = await aiomysql.connect(host=host, port=port, user=str(s.get("username") or ""),
-                                     password=secrets.get("password") or "", db=database_name_of(engine, s),
-                                     charset=str(s.get("charset") or "utf8mb4"), ssl=context, connect_timeout=timeout,
-                                     autocommit=False, init_command=f"SET time_zone = '{_tz(s)}'")
+        # No LOCAL INFILE, no multiple statements per query (drivers.py)
+        raw = await open_mysql(host=host, port=port, user=str(s.get("username") or ""),
+                               password=secrets.get("password") or "", db=database_name_of(engine, s),
+                               charset=str(s.get("charset") or "utf8mb4"), ssl=context, connect_timeout=timeout,
+                               autocommit=False, init_command=f"SET time_zone = '{_tz(s)}'")
         return _MySQL(raw, engine)
     if engine == "sqlserver":
         if s.get("auth") not in (None, "", "sql"):
             raise ConnectError("FRM-DEST-1002", "sign_in", "Microsoft Entra sign-in is not available yet")
         import pymssql
 
-        server = host if not s.get("instance") or s.get("ssh") else f"{host}\\{s['instance']}"
+        instance = str(s.get("instance") or "")
+        if instance and not _INSTANCE.fullmatch(instance):
+            raise ConnectError("FRM-DEST-1001", "network", "instance name")
+        server = host if not instance or s.get("ssh") else f"{host}\\{instance}"
 
         def connect() -> Any:
             return pymssql.connect(server=server, port=str(port), user=str(s.get("username") or ""),
@@ -368,14 +494,26 @@ async def _open(target: Target, host: str, port: int) -> Connection:
     if engine == "oracle":
         import oracledb
 
-        protocol = "tcp" if s.get("protocol") == "tcp" and s.get("connect_by") != "descriptor" else "tcps"
-        if s.get("connect_by") == "descriptor" and not s.get("ssh"):
-            dsn = str(s.get("descriptor") or "")
+        # Formalie writes the whole descriptor: one address (the checked one), a service name or SID, nothing else
+        if s.get("connect_by") == "descriptor":
+            parsed = oracle_descriptor(str(s.get("descriptor") or ""))
+            protocol, by_sid = parsed["protocol"], "sid" in parsed
+            name = str(parsed.get("sid") if by_sid else parsed.get("service_name"))
         else:
-            service = f"(SID={s.get('sid')})" if s.get("connect_by") == "sid" else f"(SERVICE_NAME={database_name_of(engine, s)})"
-            dsn = f"(DESCRIPTION=(ADDRESS=(PROTOCOL={protocol})(HOST={host})(PORT={port}))(CONNECT_DATA={service}))"
-        params = oracledb.ConnectParams(tcp_connect_timeout=timeout,
-                                        ssl_server_dn_match=bool(s.get("ssl_server_dn_match", True)))
+            protocol = "tcp" if s.get("protocol") == "tcp" else "tcps"
+            by_sid = s.get("connect_by") == "sid"
+            name = str(s.get("sid") or "") if by_sid else database_name_of(engine, s)
+        if not _ORACLE_NAME.fullmatch(name):
+            raise ConnectError("FRM-DEST-1005", "database", "service name")
+        service = f"(SID={name})" if by_sid else f"(SERVICE_NAME={name})"
+        address = f"[{host}]" if ":" in host else host
+        dsn = f"(DESCRIPTION=(ADDRESS=(PROTOCOL={protocol})(HOST={address})(PORT={int(port)}))(CONNECT_DATA={service}))"
+        tls: dict[str, Any] = {}
+        if protocol == "tcps":
+            # The name check is the context's (on the host name, not on the address connected to)
+            tls = {"ssl_context": _tls_context(target, verify=True, check_name=bool(s.get("ssl_server_dn_match", True))),
+                   "ssl_server_dn_match": False}
+        params = oracledb.ConnectParams(tcp_connect_timeout=timeout, **tls)
         raw = await oracledb.connect_async(user=str(s.get("username") or ""), password=secrets.get("password") or "",
                                            dsn=dsn, params=params)
         return _Oracle(raw)
@@ -393,8 +531,6 @@ def _tz(settings: dict[str, Any]) -> str:
 async def connect(target: Target) -> AsyncIterator[Connection]:
     """A signed-in connection (through the tunnel when there is one), closed afterwards."""
     async with tunnel(target) as (host, port):
-        if not target.settings.get("ssh") and host:
-            await resolve(host, port)
         try:
             connection = await asyncio.wait_for(_open(target, host, port), target.timeout + 5)
         except ConnectError:
