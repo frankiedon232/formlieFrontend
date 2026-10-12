@@ -266,7 +266,8 @@ def test_request_log_retention_cutoff_and_task(monkeypatch: pytest.MonkeyPatch) 
     assert datetime.now(UTC) - calls[0]["before"] >= timedelta(days=30) - timedelta(minutes=1)
     from app.workers.celery_app import celery_app
 
-    assert any(e["task"] == "db.drop_expired_partitions" for e in celery_app.conf.beat_schedule.values())
+    # Off until the owner approves the hard delete (2026-10-12)
+    assert not any(e["task"] == "db.drop_expired_partitions" for e in celery_app.conf.beat_schedule.values())
 
 
 def test_engines_hide_bound_parameters(settings) -> None:  # noqa: ANN001

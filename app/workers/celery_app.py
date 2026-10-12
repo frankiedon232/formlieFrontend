@@ -74,7 +74,8 @@ celery_app.conf.update(
     beat_schedule={
         "relay-outbox": {"task": "events.relay_outbox", "schedule": 2.0},
         "ensure-partitions": {"task": "db.ensure_partitions", "schedule": 6 * 3600.0},
-        "request-log-retention": {"task": "db.drop_expired_partitions", "schedule": 24 * 3600.0},
+        # Off until the owner approves these two hard deletes (rule: no hard deletes; asked 2026-10-12):
+        # "request-log-retention": {"task": "db.drop_expired_partitions", "schedule": 24 * 3600.0},
         "update-geoip": {"task": "logs.update_geoip", "schedule": 7 * 24 * 3600.0},
         "ingest-error-files": {"task": "logs.ingest_error_files", "schedule": 30.0},
         "datasource-health": {"task": "datasources.health", "schedule": 5 * 60.0},
@@ -88,7 +89,7 @@ celery_app.conf.update(
         "close-due-workspaces": {"task": "platform.close_due_workspaces", "schedule": 10 * 60.0},
         "forms-trash-sweep": {"task": "forms.sweep_trash", "schedule": 5 * 60.0},
         "notifications-due": {"task": "notifications.announce_due", "schedule": 60.0},
-        "processed-events-prune": {"task": "events.prune_processed", "schedule": 24 * 3600.0},
+        # "processed-events-prune": {"task": "events.prune_processed", "schedule": 24 * 3600.0},  # off, see above
     },
 )
 
