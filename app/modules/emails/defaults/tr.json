@@ -88,7 +88,10 @@
     "answers": "Yanıtlar",
     "open": "Aç",
     "summary": "{{count}} × {{title}}",
-    "footer_form": "Bu e-postayı {{workspace}} tarafından gönderilen bir form nedeniyle alıyorsunuz."
+    "footer_form": "Bu e-postayı {{workspace}} tarafından gönderilen bir form nedeniyle alıyorsunuz.",
+    "via": "Formalie ile gönderildi",
+    "tagline": "Formlar, veriler ve erişim sizin kontrolünüzde.",
+    "privacy": "Gizlilik"
   },
   "reasons": {
     "ip_not_allowed": "ağ izin verilenler listesinde değil",

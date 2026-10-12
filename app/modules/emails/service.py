@@ -7,7 +7,6 @@ Workspaces' own wording, sending domains and SMTP servers arrive in B11; until t
 
 from __future__ import annotations
 
-import html
 import json
 import logging
 import re
@@ -24,6 +23,7 @@ from app.core.config import get_settings
 log = logging.getLogger("formalie.emails")
 
 DEFAULTS = Path(__file__).parent / "defaults"
+FORM_EMAILS = {"form_invitation", "respondent_code", "resume_link", "response_receipt"}
 _VAR = re.compile(r"\{\{\s*(\w+)\s*\}\}")
 SENT: list[dict[str, Any]] = []  # EMAIL_DELIVERY=memory (tests): what would have been sent
 
@@ -41,18 +41,24 @@ def _fill(template: str, values: dict[str, Any]) -> str:
 
 
 def render(key: str, language: str | None, values: dict[str, Any]) -> dict[str, str]:
-    """Subject, plain text and simple HTML of a default template in a language (English when missing)."""
-    catalogue = _catalogue(language or "en")
-    template = catalogue["templates"].get(key) or _catalogue("en")["templates"][key]
-    subject = _fill(template["subject"], values)
-    body = _fill(template["body"], values)
-    footer = _fill(catalogue.get("layout", {}).get("footer", ""), values)
-    text = f"{body}\n\n--\n{footer}" if footer else body
-    paragraphs = "".join(f"<p>{html.escape(p).replace(chr(10), '<br>')}</p>" for p in body.split("\n\n"))
-    html_body = (f'<div style="font-family:system-ui,sans-serif;font-size:15px;line-height:1.5;color:#111">{paragraphs}'
-                 f'<hr style="border:none;border-top:1px solid #ddd"><p style="color:#666;font-size:13px">'
-                 f"{html.escape(footer)}</p></div>")
-    return {"subject": subject, "text": text, "html": html_body}
+    """Subject, plain text and HTML of a default template in a language (English when missing), in the shared layout
+    (layout.py). Formalie's own emails (no workspace yet: sign-up, find workspace) carry the Field F mark."""
+    from app.modules.emails.layout import Look, page
+
+    lang = language or "en"
+    catalogue = _catalogue(lang)
+    english = _catalogue("en")
+    template = catalogue["templates"].get(key) or english["templates"][key]
+    texts = {**english.get("layout", {}), **catalogue.get("layout", {})}
+    workspace = str(values.get("workspace") or "Formalie")
+    every = {**values, "workspace": workspace}
+    subject = re.sub(r"\s+", " ", _fill(template["subject"], every)).strip()
+    body = _fill(template["body"], every)
+    # People writing to a form have no account: "because of a form from …"
+    footer = _fill(texts.get("footer_form" if key in FORM_EMAILS else "footer", ""), every)
+    look = Look(workspace=workspace, formalie=workspace == "Formalie", footer_lines=[footer] if footer else [],
+                texts=texts, language=lang)
+    return page(subject, body, every, look)
 
 
 def deliver(message: dict[str, str]) -> None:

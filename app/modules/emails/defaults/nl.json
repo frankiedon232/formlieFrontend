@@ -88,7 +88,10 @@
     "answers": "Antwoorden",
     "open": "Openen",
     "summary": "{{count}} × {{title}}",
-    "footer_form": "Je ontvangt deze e-mail vanwege een formulier van {{workspace}}."
+    "footer_form": "Je ontvangt deze e-mail vanwege een formulier van {{workspace}}.",
+    "via": "Verzonden met Formalie",
+    "tagline": "Formulieren, data en toegang: onder jouw regie.",
+    "privacy": "Privacy"
   },
   "reasons": {
     "ip_not_allowed": "het netwerk staat niet op de lijst met toegestane netwerken",

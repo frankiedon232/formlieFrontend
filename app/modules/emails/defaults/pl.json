@@ -88,7 +88,10 @@
     "answers": "Odpowiedzi",
     "open": "Otwórz",
     "summary": "{{count}} × {{title}}",
-    "footer_form": "Dostajesz ten e-mail z powodu formularza z {{workspace}}."
+    "footer_form": "Dostajesz ten e-mail z powodu formularza z {{workspace}}.",
+    "via": "Wysłano przez Formalie",
+    "tagline": "Formularze, dane i dostęp pod Twoją kontrolą.",
+    "privacy": "Prywatność"
   },
   "reasons": {
     "ip_not_allowed": "sieć nie znajduje się na liście dozwolonych",

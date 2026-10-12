@@ -86,6 +86,9 @@ class Settings(BaseSettings):
     # Where providers send people back (…/auth/oauth/{provider}/callback). Empty: https://manage.<root domain> with
     # the port the browser used (or the bare root domain when the API is called on it directly).
     oauth_redirect_base: str | None = None
+    # Where emails load the Formalie mark images (the portal's public/brand). Empty: https://manage.<root domain> with
+    # the port the browser used; set it when workers send (no browser port), e.g. https://manage.formalie.dev:2202.
+    email_assets_url: str | None = None
 
     # ── Files (development: a folder; object storage before going live) and exports ──
     storage_dir: Path = ROOT_DIR / "data" / "storage"
