@@ -17,7 +17,7 @@ htmlcov/
 *.db
 
 # Logs
-logs
+/logs/
 *.log
 
 # Misc
