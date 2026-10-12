@@ -391,3 +391,11 @@ The portal shows the mark as the icon `i-formalie-mark`, a custom Nuxt Icon coll
 - The onboarding website must be a web address (http or https). zod's `z.url()` in the mock also takes `javascript:` and `mailto:`, which a public page must never link to, so the backend answers `Invalid URL` for those.
 - The team step records the invitations (`users.invited`), as the mock does; sending them comes with People (B4).
 - Workspaces made by sign-up start onboarding at the first step; the seeded ones count as set up.
+
+**Single sign-on and the AI provider (owner 2026-10-12).**
+- **SAML:** single sign-on supports SAML as well as OIDC. The backend adds OneLogin's `python3-saml` with `xmlsec`, which has ready Windows packages. OIDC uses Authlib, already in the stack.
+- **AI assistant (B13):** uses **Anthropic Claude** through the `anthropic` SDK.
+  - The key is `ANTHROPIC_API_KEY`, on the backend only.
+  - The model is set by `ANTHROPIC_MODEL`, default `claude-opus-5-5`, the most capable. A lighter model can be set for quick tasks.
+  - A workspace's answers go to Anthropic only when the workspace allows it: AI settings, what the assistant may read.
+  - Requests and answers stay in Formalie's AI request history, removable as the mock allows.
