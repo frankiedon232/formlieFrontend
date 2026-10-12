@@ -42,12 +42,16 @@ export const FORM_KEY_PATTERN = /^[A-Za-z0-9]{10}$/
  */
 export const CUSTOM_LINK_PATTERN = /^[a-z0-9](?:[a-z0-9]|-(?=[a-z0-9])){2,59}$/
 
-/** Words a custom link can't be: portal pages and system paths on the same hosts. */
+/**
+ * Words a custom link can't be: portal pages and system paths on the same hosts. Every top-level
+ * folder and page in app/pages must be here (test/edge checks it): the Cloudflare Worker treats
+ * `/{word}/fill` as a form page only when the word is not reserved.
+ */
 export const RESERVED_LINKS = new Set([
-  'admin', 'ai', 'analytics', 'api', 'api-service', 'app', 'audit', 'auth', 'billing', 'dashboard', 'data-sources', 'embed',
-  'fill', 'files', 'form', 'forms', 'formalie', 'help', 'login', 'logout', 'manage', 'new', 'onboarding', 'option-sets',
-  'profile', 'public', 'responses', 's', 'settings', 'signin', 'signup', 'static', 'storage', 'support', 'templates',
-  'workspace-not-found', 'www',
+  'admin', 'ai', 'analytics', 'api', 'api-service', 'app', 'audit', 'auth', 'billing', 'dashboard', 'data-sources', 'email',
+  'embed', 'fill', 'files', 'folders', 'form', 'forms', 'formalie', 'help', 'login', 'logout', 'manage', 'new', 'no-access',
+  'onboarding', 'option-sets', 'people', 'profile', 'public', 'responses', 's', 'settings', 'signin', 'signup', 'static',
+  'storage', 'support', 'templates', 'workspace-not-found', 'www',
 ])
 
 /** Why a custom link can't be used (null = fine to check for availability). */

@@ -1,4 +1,5 @@
 /**
+ * DEVELOPMENT ONLY (the dev server and tests; never part of a production build).
  * Mock API entry (NUXT_PUBLIC_API_MOCK=true). Mounted at /api/** by nuxt.config.ts.
  * Shapes follow docs/API-CONTRACT.md exactly; add one file per domain in ./routes.
  */

@@ -1,7 +1,7 @@
 /**
+ * DEVELOPMENT ONLY (the dev server). In production the Cloudflare Worker (edge/worker.ts) proxies /api.
  * Dev proxy /api/** → FastAPI (NUXT_PUBLIC_API_MOCK=false).
  * Forwards the original host and the visitor's IP so the backend TenantMiddleware can read the subdomain.
- * In production Nginx routes /api before it ever reaches Nuxt.
  */
 export default defineEventHandler(event => {
   const { apiProxyTarget } = useRuntimeConfig(event)

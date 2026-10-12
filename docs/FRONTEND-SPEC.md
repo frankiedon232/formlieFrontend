@@ -94,7 +94,9 @@ Breadcrumbs (all segments clickable), search / command palette (`⌘K`/`Ctrl+K` 
 | `/audit`                                                                                                               | Audit trail: every action (who, what, when, where, before / after), filters, export, **early (F4)**                                                            |
 | `/users`, `/roles`, `/dashboard`                                                                                       | **Last**                                                                                                                                                        |
 
-Public (SSR, `layouts/public.vue`) on `forms.formalie.*` and workspace subdomains: `/[formKey]/fill` form renderer, `/[formKey]/embed` (chrome-less for iframe), `/s/[code]` short link redirect, closed/expired/not-found states.
+Public (`layouts/public.vue`) on `forms.formalie.*` and workspace subdomains: `/[formKey]/fill` form renderer, `/[formKey]/embed` (chrome-less for iframe), `/s/[code]` short link redirect, closed/expired/not-found states.
+
+**Rendering (owner 2026-10-12):** every page, portal and public alike, is client-rendered (`ssr: false`), in development and production. Production is a static build (`pnpm generate` → `.output/public`, SPA fallback to `index.html`) on Cloudflare with one Worker (`edge/worker.ts`) that proxies `/api/*` to the API, redirects `/s/{code}` and puts each form's title, description, image and `lang` into `/[formKey]/fill` and `/embed` for link previews (`robots noindex` when the form is not indexable and on every embed), plus the embed's `frame-ancestors`. Public pages read the form through `useApi` (`/public/forms/{key}`, `/public/short/{code}`) while the branded first-load screen shows; `/s/[code]` replaces itself with the destination (the fallback when the Worker didn't answer, and development). `server/` is development only. `pnpm release:check` stops a build that still holds a development address.
 
 ## 6. Form builder (`/forms/[id]/build`)
 

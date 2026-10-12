@@ -1,4 +1,4 @@
-<!-- Public form, full page: https://{forms | sub}.formalie.com/{formKey}/fill (server-rendered, F10). -->
+<!-- Public form, full page: https://{forms | sub}.formalie.com/{formKey}/fill (client-rendered; the Worker adds link-preview tags in production, F10). -->
 <script setup lang="ts">
 import { isFormAddress } from '#shared/utils/urls/public'
 

@@ -1,0 +1,16 @@
+{
+  // The Cloudflare Worker (edge/worker.ts) on its own: web platform types only, no Nuxt, no DOM.
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "lib": ["ES2023", "WebWorker"],
+    "types": [],
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "noUncheckedIndexedAccess": true
+  },
+  "include": ["./**/*.ts"]
+}

@@ -1,7 +1,9 @@
 <!--
-  Short link `https://forms.formalie.com/s/{code}` (F10 M3, server-rendered): sends people straight
-  on to the form's current link (custom link or key, on its own host) with a 302, so a link on a
-  poster keeps working when the form's address changes. Unknown or removed codes: a clear 404 page.
+  Short link `https://forms.formalie.com/s/{code}` (F10 M3): sends people straight on to the form's
+  current link (custom link or key, on its own host), so a link on a poster keeps working when the
+  form's address changes. In production the Cloudflare Worker answers it with a 302 before the app
+  loads; this page is the fallback (and development): it asks the public API and replaces itself
+  with the destination. Unknown or removed codes: a clear "not found" card.
 -->
 <script setup lang="ts">
 import { SHORT_CODE_PATTERN } from '#shared/utils/urls/public'
@@ -15,17 +17,9 @@ definePageMeta({
 const { t } = useI18n()
 const route = useRoute()
 const code = String(route.params.code)
-const config = useRuntimeConfig()
-const requestFetch = import.meta.server ? useRequestFetch() : null
-const host = import.meta.server ? useRequestURL().host : ''
 const api = useApi()
 
 const { data } = await useAsyncData(`short:${code}`, async () => {
-  if (import.meta.server && requestFetch)
-    return requestFetch<{ data?: { target: string }; error?: { code: string } }>(`/_ssr/short/${code}`, {
-      headers: { 'x-formalie-internal': String(config.internalToken ?? ''), 'x-forwarded-host': host },
-      ignoreResponseError: true,
-    })
   try {
     return { data: (await api.get<{ target: string }>(`/public/short/${code}`)).data }
   } catch (error) {
@@ -33,12 +27,18 @@ const { data } = await useAsyncData(`short:${code}`, async () => {
   }
 })
 
-const target = data.value?.data?.target
-if (target) await navigateTo(target, { external: true, redirectCode: 302 })
-else if (import.meta.server) {
-  const event = useRequestEvent()
-  if (event) setResponseStatus(event, data.value?.error?.code === 'FRM-FORM-1001' ? 404 : 503)
-}
+/** Only web addresses are followed (never `javascript:` or other schemes). */
+const target = (() => {
+  const value = data.value?.data?.target
+  if (!value) return null
+  try {
+    return ['https:', 'http:'].includes(new URL(value, location.href).protocol) ? value : null
+  } catch {
+    return null
+  }
+})()
+// replace: Back returns to where the person came from, not to this page.
+if (target) await navigateTo(target, { external: true, replace: true })
 useSeoMeta({ title: () => t('public.short.title'), robots: 'noindex, nofollow' })
 </script>
 

@@ -1,4 +1,5 @@
 /**
+ * DEVELOPMENT ONLY (the dev server; production is a static build with no server).
  * `https://api.formalie.dev:2202/{apiKey}/{endpoint}` in development (a hosts entry for
  * api.formalie.dev): the same addresses as production (F13).
  *   mock on  → answered by the mock public API

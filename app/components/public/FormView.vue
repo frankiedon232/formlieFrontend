@@ -1,8 +1,9 @@
 <!--
   A public form (F10), `/{formKey}/fill` (full page) and `/{formKey}/embed` (no page chrome, for
-  iframes). Server-rendered: the first response holds the whole form, its SEO tags and the right
-  status code. States: not found · not published yet · closed · open. The respondent's language:
-  `?lang=xx`, else the browser's language, when the form offers it, otherwise its main language,
+  iframes). Client-rendered like every page (the branded first-load screen shows meanwhile); in
+  production the Cloudflare Worker adds the form's title and link-preview tags to the first
+  response and the right status code. States: not found · not published yet · closed · open.
+  The respondent's language: `?lang=xx`, else the browser's language, when the form offers it, otherwise its main language,
   with a switcher when it has several (decisions 73 and 99, usePublicLanguage). Answers are
   sent once per fill-in session (usePublicSubmit).
 -->
@@ -73,7 +74,7 @@ const schema = computed(() => {
   return { ...value, theme: { ...theme, frame: { ...theme.frame, style: devFrame } } }
 })
 
-// ── State, status code, SEO ──────────────────────────────────────────────────────────
+// ── State, SEO ──────────────────────────────────────────────────────────────────────
 /** Arriving with a personal invitation link or a sign-in pass: "Opening…" until it is checked, never a locked page first. */
 const arriving = ref(!!(route.query.invite || route.query.pass))
 type View = 'open' | 'opening' | 'locked' | 'closed' | 'not_published' | 'expired' | 'scheduled' | 'limit_reached' | 'not_found' | 'error'
@@ -83,10 +84,6 @@ const view = computed<View>(() => {
   if (form.value.state === 'open' && form.value.locked) return arriving.value ? 'opening' : 'locked'
   return form.value.state
 })
-if (import.meta.server && ['not_found', 'error', 'expired'].includes(view.value)) {
-  const event = useRequestEvent()
-  if (event) setResponseStatus(event, view.value === 'not_found' ? 404 : view.value === 'expired' ? 410 : 503)
-}
 const { locale } = useI18n()
 const longDate = (iso: string | null | undefined) =>
   iso ? new Intl.DateTimeFormat(locale.value, { dateStyle: 'long', timeStyle: 'short' }).format(new Date(iso)) : ''
@@ -113,18 +110,9 @@ useSeoMeta({
   robots: () => (props.embed || view.value !== 'open' || form.value?.seo.noindex ? 'noindex, nofollow' : 'index, follow'),
 })
 
-// ── Embed: which websites may show it in a frame (Share settings → Embed, decision 94; the
-// portal and /fill pages may never be framed). Development has no full policy, so only this rule.
-if (import.meta.server && props.embed) {
-  const event = useRequestEvent()
-  const response = event?.node.res
-  if (response) {
-    const ancestors = `frame-ancestors ${form.value?.embed_ancestors ?? '*'}`
-    response.removeHeader('x-frame-options')
-    const policy = response.getHeader('content-security-policy')
-    response.setHeader('content-security-policy', typeof policy === 'string' ? policy.replace("frame-ancestors 'self'", ancestors) : ancestors)
-  }
-}
+// Embed: which websites may show it in a frame (Share settings → Embed, decision 94) is a response
+// header, set by the Cloudflare Worker in production (edge/worker.ts); the dev server only lifts
+// X-Frame-Options for /embed (server/middleware/embed-frame.ts).
 
 // ── Embed: tell the parent page how tall the form is (auto-resize). ──────────────────
 const root = useTemplateRef<HTMLElement>('root')

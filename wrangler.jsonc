@@ -1,0 +1,38 @@
+// Cloudflare Worker for the Formalie portal (production; docs/DEPLOYMENT-GUIDE.md).
+// Build first:   pnpm generate && pnpm release:check
+// Deploy:        npx wrangler@4 deploy
+// Secret (once): npx wrangler@4 secret put EDGE_SECRET   (the same value as the backend's EDGE_SECRET)
+//
+// Not served here: api.formalie.com (the customers' API service gateway) and services.formalie.com
+// (Formalie's API) go to the backend servers through Nginx, never to this Worker. A `*.formalie.com/*`
+// route also matches them, so in the Cloudflare dashboard (Workers Routes) add `api.formalie.com/*`
+// and `services.formalie.com/*` with Worker "None"; Cloudflare uses the most specific route. The
+// website (formalie.com, www) and the platform admin have their own, more specific routes too.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "formalie-portal",
+  "main": "edge/worker.ts",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    "directory": ".output/public",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    // `/forms` serves forms/index.html as it is (no redirect to `/forms/`), like the dev server.
+    "html_handling": "drop-trailing-slash",
+    // The Worker answers these itself; every other path is a static file (or index.html).
+    "run_worker_first": ["/api/*", "/s/*", "/*/fill", "/*/embed"],
+  },
+  "vars": {
+    "API_ORIGIN": "https://services.formalie.com",
+  },
+  // EDGE_SECRET is a secret, never written here: npx wrangler@4 secret put EDGE_SECRET
+  //
+  // Routes (switch on at go-live). Workspaces' verified own domains reach the Worker as Cloudflare
+  // for SaaS custom hostnames (see DEPLOYMENT-GUIDE); the backend maps each host to its workspace.
+  // "routes": [
+  //   { "pattern": "manage.formalie.com/*", "zone_name": "formalie.com" },
+  //   { "pattern": "forms.formalie.com/*", "zone_name": "formalie.com" },
+  //   { "pattern": "*.formalie.com/*", "zone_name": "formalie.com" }
+  // ],
+  "observability": { "enabled": true },
+}

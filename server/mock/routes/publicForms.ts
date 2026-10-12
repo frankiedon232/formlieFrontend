@@ -638,7 +638,7 @@ export function resolveShortLink(event: Parameters<typeof tenantOf>[0], code: st
   return formLink(publicHosts(useRuntimeConfig(event).public, port), form.custom_link || form.public_key, 'fill', tenant.subdomain ?? null)
 }
 
-/** GET /public/short/:code, `{ target }` (browser fallback; the server-rendered /s/{code} page redirects itself). */
+/** GET /public/short/:code, `{ target }` (the client-rendered /s/{code} page; in production the Worker redirects first). */
 /**
  * GET /public/forms/:key/options?field=&q=&values=&language= (F15 M3): a long list's options as people
  * type, from the published form (open forms only, with the same access as the page): `values` gives the

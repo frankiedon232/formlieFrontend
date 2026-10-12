@@ -1,21 +1,11 @@
 import type { PublicForm, PublicSubmitResult, RendererSubmitOutcome } from '#shared/types/public'
 
-/** Server-only header for the internal page route (server/routes/_ssr). */
-const INTERNAL_TOKEN_HEADER = 'x-formalie-internal'
-
 /**
- * A public form page's data (F10). While the page renders on the server it reads the published
- * form through the internal route (server-only token, browsers never see it), so the first
- * response already holds the whole form. In the browser (later visits within the app) it falls
- * back to the enveloped public API.
+ * A public form page's data (F10), read in the browser through the enveloped public API (every
+ * page is client-rendered; the Cloudflare Worker adds the link-preview tags in production).
+ * `channel`: the embed page asks as 'embed' (a form without that channel is not found there).
  */
-/** `channel`: the embed page asks as 'embed' (a form without that channel is not found there). */
 export async function usePublicForm(key: string, channel: 'link' | 'embed' = 'link') {
-  const config = useRuntimeConfig()
-  const requestFetch = import.meta.server ? useRequestFetch() : null
-  const host = import.meta.server ? useRequestURL().host : ''
-  // The visitor's cookies (an unlocked password form, F10 M3) go along to the internal route.
-  const cookie = import.meta.server ? (useRequestHeaders(['cookie']).cookie ?? '') : ''
   const api = useApi()
   // The renderer takes the workspace's logo and brand colour from the tenant profile.
   // (Composables first: after an await this function no longer has Nuxt's context.)
@@ -27,12 +17,6 @@ export async function usePublicForm(key: string, channel: 'link' | 'embed' = 'li
 
   // Not awaited yet: the watchers below are set up first, so they belong to the page (and stop with it).
   const loading = useAsyncData(`public-form:${channel}:${key}`, async () => {
-    if (import.meta.server && requestFetch) {
-      return requestFetch<{ data?: PublicForm; error?: { code: string } }>(`/_ssr/public-forms/${encodeURIComponent(key)}?channel=${channel}`, {
-        headers: { [INTERNAL_TOKEN_HEADER]: String(config.internalToken ?? ''), 'x-forwarded-host': host, cookie },
-        ignoreResponseError: true,
-      })
-    }
     try {
       return { data: (await api.get<PublicForm>(`/public/forms/${encodeURIComponent(key)}`, { channel })).data }
     } catch (error) {
@@ -84,8 +68,8 @@ export function usePublicSubmit(key: string, channel: 'link' | 'embed', resume?:
   const receiptKey = `formalie:sent:${key}`
   let memoryId: string | undefined
 
-  // The receipt is also a cookie, so the server-rendered page already says "you've filled this in"
-  // (no flash of the form first). SameSite=None: embeds run inside other websites.
+  // The receipt is also a cookie, read before the page first renders, so a return visit says
+  // "you've filled this in" without a flash of the form first. SameSite=None: embeds run inside other websites.
   const receipt = useCookie<string | null>(`formalie_sent_${key}`, { maxAge: 60 * 60 * 24 * 365, sameSite: 'none', secure: true, path: '/' })
   const alreadySent = ref(!!receipt.value)
   onMounted(() => {

@@ -217,8 +217,11 @@ Quality checks: `pnpm typecheck` · `pnpm lint` · `pnpm format` · `pnpm test`.
 
 ## Production equivalent
 
-Cloudflare wildcard DNS `*.formalie.com` → Nginx → Nuxt + FastAPI. Same subdomain logic as dev.
+Production has no Node server: the portal is a static build (`pnpm generate` → `.output/public`) on Cloudflare, with one Worker (`edge/worker.ts`, `wrangler.jsonc`) on every portal host. The Worker proxies `/api/*` to `https://services.formalie.com` (same origin for the browser, the backend finds the workspace from `X-Forwarded-Host`), answers short links `/s/{code}` with a redirect and adds each form's title and link-preview tags to `/{formKey}/fill` and `/embed`. Every page is client-rendered, in development too, so what you see on `:2202` is what production serves. Everything in `server/` (mock, dev proxy, `api-host`, `embed-frame`) is development only.
 
-## Server-only secrets (F10)
+## Building for production and the release check
 
-- `NUXT_INTERNAL_TOKEN`, shared between the Nuxt server and the API for the server-rendered public form pages (`/_ssr/public-forms/{key}` → API `/internal/public-forms/{key}`). Development makes a random one per start; production must set the same value on both sides. Never exposed to browsers.
+1. Production values at build time (they are baked into the static files; PRODUCTION-CHECKLIST section 3): `NUXT_PUBLIC_API_MOCK=false`, `NUXT_PUBLIC_API_BASE=/api/v1` (the Worker proxies it), `NUXT_PUBLIC_ROOT_DOMAIN=formalie.com`, `NUXT_PUBLIC_FORMS_HOST=forms.formalie.com`, `NUXT_PUBLIC_API_SERVICE_URL=https://api.formalie.com`. Put them in a `.env.production` (git-ignored) or in the build machine's environment.
+2. `pnpm generate --dotenv .env.production` (without `--dotenv`, Nuxt reads `.env`, which holds the development values). Output: `.output/public` with `index.html`, `200.html`, `404.html` and `_headers` (the security headers for Cloudflare).
+3. `pnpm release:check` searches `.output/public` (and `.output/edge`, the Worker bundle, if you made one with `npx wrangler@4 deploy --dry-run --outdir .output/edge`) for development addresses: `formalie.dev`, `:2202`, `:3033`, `:5004`, `:5005`, `localhost`, `127.0.0.1`, `mkcert`, `devcerts`. Any hit lists the file and exits 1; never deploy then. Fix the source (values belong in runtime config), not the check.
+4. Deploy with `npx wrangler@4 deploy` (DEPLOYMENT-GUIDE). The Worker's tests run with `pnpm test` (`test/edge/`), its types with `pnpm typecheck`.

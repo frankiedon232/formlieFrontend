@@ -1,4 +1,5 @@
 /**
+ * DEVELOPMENT ONLY (the dev server and tests; never part of a production build).
  * The public API in the mock (F13, docs/API-CONTRACT.md → API service → Calling an endpoint): what
  * apps and Postman call. Plain HTTPS + JSON, no portal envelope (SECURITY-PROTOCOL §9).
  *

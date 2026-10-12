@@ -1,44 +1,29 @@
-import { randomUUID } from 'node:crypto'
+import { writeFile } from 'node:fs/promises'
+import { join } from 'node:path'
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { APP_LOCALES, DEFAULT_LOCALE, LOCALE_COOKIE } from './shared/utils/i18n/locales'
 import { WEB_FONTS } from './shared/utils/forms/fonts'
 import pkg from './package.json'
+import { headersFile, securityHeaders } from './edge/security-headers'
 
 const isDev = process.env.NODE_ENV !== 'production'
 // Read at build/start time: switching mock ↔ real backend needs a dev-server restart.
 const apiMock = process.env.NUXT_PUBLIC_API_MOCK === 'true'
 
-const securityHeaders: Record<string, string> = {
-  'Strict-Transport-Security': 'max-age=31536000; includeSubDomains',
-  'X-Content-Type-Options': 'nosniff',
-  'Referrer-Policy': 'strict-origin-when-cross-origin',
-  'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), payment=(), usb=()',
-  'Cross-Origin-Opener-Policy': 'same-origin',
-  'X-Frame-Options': 'SAMEORIGIN',
-}
-
-// Vite HMR needs eval + websockets, so the CSP is production-only.
-// Embeds (/{formKey}/embed) get a per-form frame-ancestors from the server in F10.
-if (!isDev) {
-  securityHeaders['Content-Security-Policy'] = [
-    "default-src 'self'",
-    "script-src 'self' 'unsafe-inline'",
-    "style-src 'self' 'unsafe-inline'",
-    "img-src 'self' data: blob: https:",
-    "font-src 'self' data:",
-    "connect-src 'self'",
-    // The in-app browser on public forms shows https pages (website, terms, privacy) in a frame (F10).
-    "frame-src 'self' https:",
-    "frame-ancestors 'self'",
-    "base-uri 'self'",
-    "form-action 'self'",
-    "object-src 'none'",
-  ].join('; ')
-}
+// Same headers as production (edge/security-headers.ts); the CSP is production-only because Vite's HMR needs eval
+// and websockets. Production is a static build: the headers come from `_headers` (written below) and the Worker.
+const pageHeaders = securityHeaders(!isDev)
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
+
+  // Every page renders in the browser, in development and production alike (owner 2026-10-12): production is a
+  // static build (`pnpm generate` → .output/public) on Cloudflare, with a Worker (edge/worker.ts) for /api,
+  // short links and form link previews. Nothing in server/ runs in production.
+  ssr: false,
+  // Production builds (`pnpm generate`) use their own build folder, so they never disturb a running dev server's `.nuxt`.
+  buildDir: isDev ? '.nuxt' : 'node_modules/.cache/nuxt-build',
 
   modules: ['@nuxt/ui', '@nuxt/eslint', '@nuxtjs/i18n', '@vueuse/nuxt'],
 
@@ -69,12 +54,9 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
-    // Server-only: where the dev proxy forwards /api/** when the mock is off.
+    // Development only (dev server): where the dev proxy forwards /api/** when the mock is off.
     apiProxyTarget: 'https://formalie.dev:5004',
-    // Server-only: lets the Nuxt server read published forms for server-rendered pages (F10).
-    // Production sets NUXT_INTERNAL_TOKEN (shared with the API); development makes one per start.
-    internalToken: randomUUID(),
-    // Server-only (F24): the secret Payoneer signs its payment notifications with. Production: NUXT_PAYONEER_WEBHOOK_SECRET.
+    // Development only (mock, F24): the secret Payoneer signs its payment notifications with. Production: NUXT_PAYONEER_WEBHOOK_SECRET.
     // Empty outside development = every notification is refused (never trusted unsigned).
     payoneerWebhookSecret: '',
     public: {
@@ -91,6 +73,8 @@ export default defineNuxtConfig({
     },
   },
 
+  // Development only: the mock API, the dev proxy to the backend and the mock public API. A static build has no
+  // server; in production the Worker sends /api to https://services.formalie.com.
   serverHandlers: [
     { route: '/api/**', handler: apiMock ? '~~/server/mock/index.ts' : '~~/server/proxy/api.ts' },
     // The public API service in the mock (F13; Postman: https://localhost:2202/public-api/{apiKey}/{endpoint}).
@@ -98,11 +82,8 @@ export default defineNuxtConfig({
   ],
 
   routeRules: {
-    // Portal: client-rendered. Public forms (/{formKey}/fill · /embed) and short links: server-rendered for SEO.
-    '/**': { ssr: false, headers: securityHeaders },
-    '/*/fill': { ssr: true },
-    '/*/embed': { ssr: true },
-    '/s/**': { ssr: true },
+    // Every page is client-rendered (ssr: false above). Headers apply on the dev server; production uses `_headers`.
+    '/**': { headers: pageHeaders },
     // Destinations moved to the Data sources area (F12).
     '/integrations/destinations': { redirect: '/data-sources/destinations' },
     // Integrations moved to the API service area (owner, 2026-10-03).
@@ -112,6 +93,13 @@ export default defineNuxtConfig({
     '/integrations/api-keys': { redirect: '/api-service/auth' },
     '/api-service/api-keys': { redirect: '/api-service/auth' },
     '/api-service/apps': { redirect: '/api-service/webhooks' },
+  },
+
+  hooks: {
+    // The static build's security headers for Cloudflare (the Worker sets its own for the pages it answers).
+    'nitro:build:public-assets': async nitro => {
+      await writeFile(join(nitro.options.output.publicDir, '_headers'), headersFile())
+    },
   },
 
   devServer: {
