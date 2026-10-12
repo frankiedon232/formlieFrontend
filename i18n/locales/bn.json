@@ -9370,7 +9370,7 @@
       "customDomain": "কাস্টম ডোমেইন",
       "customEmail": "নিজস্ব পাঠানোর ঠিকানা ও মেইল সার্ভার",
       "dataResidency": "আপনার বেছে নেওয়া অঞ্চলে রাখা ডেটা",
-      "emailSignin": "ইমেল ও পাসওয়ার্ড",
+      "emailSignin": "ইমেল ও পাসওয়ার্ড, Google, Facebook",
       "sso": "সিঙ্গল সাইন-অন (Okta ও অন্যান্য)",
       "helpCentre": "সহায়তা কেন্দ্র ও সহকারী",
       "prioritySupport": "অগ্রাধিকার ইমেল সহায়তা",

@@ -9370,7 +9370,7 @@
       "customDomain": "自定义域名",
       "customEmail": "自有发件地址和邮件服务器",
       "dataResidency": "数据保存在您选择的区域",
-      "emailSignin": "邮箱和密码",
+      "emailSignin": "邮箱和密码、Google、Facebook",
       "sso": "单点登录（Okta 等）",
       "helpCentre": "帮助中心和助手",
       "prioritySupport": "优先邮件支持",

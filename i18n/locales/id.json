@@ -9370,7 +9370,7 @@
       "customDomain": "Domain khusus",
       "customEmail": "Alamat pengirim dan server email sendiri",
       "dataResidency": "Data disimpan di wilayah pilihan Anda",
-      "emailSignin": "Email dan kata sandi",
+      "emailSignin": "Email dan kata sandi, Google, Facebook",
       "sso": "Single sign-on (Okta dan lainnya)",
       "helpCentre": "Pusat bantuan dan asisten",
       "prioritySupport": "Dukungan email prioritas",

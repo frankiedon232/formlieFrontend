@@ -6,7 +6,7 @@
 import type { BillingPeriod, Plan, PlanFeature, PlanId, PlanLimits } from '#shared/types/billing'
 
 const EVERYONE: PlanFeature[] = ['analytics', 'templates', 'lists', 'themes', 'explorer', 'query', 'destinations', 'api', 'webhooks', 'apiDocs', 'ai', 'branding', 'subdomain', 'languages', 'visits', 'versions', 'folders', 'fillLater']
-const PAID: PlanFeature[] = [...EVERYONE, 'socialSignin', 'sso', 'customDomain', 'customEmail']
+const PAID: PlanFeature[] = [...EVERYONE, 'sso', 'customDomain', 'customEmail']
 
 export const PERIOD_MONTHS: Record<BillingPeriod, number> = { monthly: 1, quarterly: 3, annually: 12 }
 export const PERIOD_DISCOUNT: Record<BillingPeriod, number> = { monthly: 0, quarterly: 0.1, annually: 0.2 }

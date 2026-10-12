@@ -9370,7 +9370,7 @@
       "customDomain": "Власний домен",
       "customEmail": "Власна адреса відправника й поштовий сервер",
       "dataResidency": "Дані зберігаються у вибраному вами регіоні",
-      "emailSignin": "Email і пароль",
+      "emailSignin": "Пошта й пароль, Google, Facebook",
       "sso": "Єдиний вхід (Okta та інші)",
       "helpCentre": "Центр допомоги й асистент",
       "prioritySupport": "Пріоритетна підтримка електронною поштою",

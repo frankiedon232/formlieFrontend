@@ -9370,7 +9370,7 @@
       "customDomain": "Dominio personalizzato",
       "customEmail": "Indirizzo di invio e server di posta propri",
       "dataResidency": "Dati conservati nella regione che scegli",
-      "emailSignin": "Email e password",
+      "emailSignin": "Email e password, Google, Facebook",
       "sso": "Single sign-on (Okta e altri)",
       "helpCentre": "Centro assistenza e assistente",
       "prioritySupport": "Assistenza email prioritaria",

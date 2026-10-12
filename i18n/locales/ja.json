@@ -9370,7 +9370,7 @@
       "customDomain": "独自ドメイン",
       "customEmail": "独自の送信元アドレスとメールサーバー",
       "dataResidency": "選択したリージョンに保管されるデータ",
-      "emailSignin": "メールとパスワード",
+      "emailSignin": "メールとパスワード、Google、Facebook",
       "sso": "シングルサインオン (Okta など)",
       "helpCentre": "ヘルプセンターとアシスタント",
       "prioritySupport": "優先メールサポート",

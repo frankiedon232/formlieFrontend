@@ -9370,7 +9370,7 @@
       "customDomain": "Özel alan adı",
       "customEmail": "Kendi gönderen adresi ve posta sunucusu",
       "dataResidency": "Seçtiğiniz bölgede tutulan veriler",
-      "emailSignin": "E-posta ve şifre",
+      "emailSignin": "E-posta ve parola, Google, Facebook",
       "sso": "Çoklu oturum açma (Okta ve diğerleri)",
       "helpCentre": "Yardım merkezi ve asistan",
       "prioritySupport": "Öncelikli e-posta desteği",

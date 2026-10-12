@@ -48,7 +48,6 @@ export const PLAN_FEATURES = [
   'versions',
   'folders',
   'fillLater',
-  'socialSignin',
   'sso',
   'customDomain',
   'customEmail',
@@ -148,7 +147,7 @@ export interface Invoice {
 /** What would stop working after moving to a smaller plan. */
 export interface DowngradeImpact {
   plan: PlanId
-  over: { key: 'forms' | 'responses' | 'databases' | 'customDomain' | 'customEmail' | 'sso' | 'socialSignin'; current: number | string; allowed: number | string }[]
+  over: { key: 'forms' | 'responses' | 'databases' | 'customDomain' | 'customEmail' | 'sso'; current: number | string; allowed: number | string }[]
 }
 
 /** POST /billing/checkout → the processor's hosted checkout (the mock simulates it). */

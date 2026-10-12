@@ -9370,7 +9370,7 @@
       "customDomain": "사용자 지정 도메인",
       "customEmail": "자체 보내는 주소와 메일 서버",
       "dataResidency": "선택한 리전에 보관되는 데이터",
-      "emailSignin": "이메일과 비밀번호",
+      "emailSignin": "이메일과 비밀번호, Google, Facebook",
       "sso": "싱글 사인온(Okta 등)",
       "helpCentre": "도움말 센터와 어시스턴트",
       "prioritySupport": "우선 이메일 지원",

@@ -9370,7 +9370,7 @@
       "customDomain": "Tên miền riêng",
       "customEmail": "Địa chỉ gửi và máy chủ thư riêng",
       "dataResidency": "Dữ liệu được lưu tại khu vực bạn chọn",
-      "emailSignin": "Email và mật khẩu",
+      "emailSignin": "Email và mật khẩu, Google, Facebook",
       "sso": "Đăng nhập một lần (Okta và các loại khác)",
       "helpCentre": "Trung tâm trợ giúp và trợ lý",
       "prioritySupport": "Hỗ trợ email ưu tiên",
