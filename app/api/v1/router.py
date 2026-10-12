@@ -41,6 +41,10 @@ from app.modules.people.router import router as people_router
 from app.modules.platform.router import router as platform_router
 from app.modules.rbac.router import router as roles_router
 from app.modules.emails.router import router as emails_router
+from app.modules.emails.settings_router import router as email_settings_router
+from app.modules.address.router import router as address_router
+from app.modules.privacy.router import router as privacy_router
+from app.modules.sso.router import router as sso_router
 from app.modules.settings.router import router as settings_router
 from app.modules.tenants.router import router as tenants_router
 from app.modules.uploads.router import router as uploads_router
@@ -87,4 +91,8 @@ api_router.include_router(api_traffic_router)
 api_router.include_router(api_try_router)
 api_router.include_router(webhooks_router)
 api_router.include_router(emails_router)  # unsubscribe links (public)
+api_router.include_router(email_settings_router)  # B11: /settings/emails/templates, /sent, /sending
+api_router.include_router(sso_router)  # before settings: /settings/sso
+api_router.include_router(address_router)  # before settings: /settings/address
+api_router.include_router(privacy_router)  # before settings: /settings/data-region, /settings/privacy/…
 api_router.include_router(settings_router)  # after any module with its own /settings/{name} route (sso, B11)

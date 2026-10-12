@@ -72,13 +72,13 @@ Source: `server/mock/data/tenants.ts`, `addressStore.ts`, `shortCodeStore.ts`, `
 | --- | --- |
 | `tenants` | id, subdomain (unique, lowercase), name, status (`active`, `suspended`, plus `read_only`, `closing` for platform actions), suspended_reason, close_at, primary_organisation_id, data_region (default `default`; changed only by a platform migration), plan_id (mirror of the subscription), created_at, setup_completed_at, deleted_at |
 | `tenant_subdomain_history` | tenant_id, subdomain, until (the old one keeps working 90 days; unique while active) |
-| `tenant_domains` | tenant_id, domain (unique), status (`pending`, `verified`, `failed`), records jsonb (`DnsRecord[]`), verify_token, problem (`not_found`, `wrong_target`, `dns_error`), added_at, checked_at |
+| `custom_domains_directory` | domain (primary key, lower case), tenant_id, verified_at, released_at (null = answering). A verified own web domain → its workspace; one holder at a time (the one whose DNS records prove it, B11). Set-up and checks are the tenant table `custom_domains`. Reached through `platform.claim_domain()`, `release_domain()`, `resolve_domain()` (migration 0031) |
 | `public_form_routes` | public_key (10 chars, unique), custom_link (unique on the shared `forms.*` host), tenant_id, form_id. Lets `forms.*` find the workspace from a key |
 | `short_link_codes` | code (unique), tenant_id, form_id, retired_at. A retired code is never reused, even after the form is purged |
 | `api_keys_directory` | api_key (primary key, path part of `api.formalie.*/{apiKey}/…`), tenant_id, created_at, retired_at (null = current; set = answers until then). One row per handle a workspace ever had, so none is handed out twice. Reached through `platform.claim_api_key()`, `retire_api_key()`, `resolve_api_key()` (migration 0027) |
 | `signup_tickets` | ticket_hash, tenant_id, user_id, expires_at (2 min), used_at (cross-host sign-up and social sign-up tokens) |
 
-Access only through `platform.resolve_tenant()`, `platform.resolve_form_key()`, `platform.resolve_api_key()` and platform services; `formalie_app` cannot list tenants.
+Access only through `platform.resolve_tenant()`, `platform.resolve_form_key()`, `platform.resolve_api_key()`, `platform.resolve_domain()` and platform services; `formalie_app` cannot list tenants. For the current workspace only (B11, migration 0031): `platform.tenant_profile()` (subdomain, name, plan, data region), `platform.subdomain_history_of()` (old subdomains still answering), `platform.change_subdomain(new, id)` (the old one answers 90 days; the five latest are kept; another workspace's current or old subdomain is refused); `platform.retention_workspaces()` lists every live workspace for the daily retention job.
 
 ## Tenant tables (tenant_id + organisation_id + RLS)
 
@@ -253,10 +253,8 @@ Source: `shared/types/emails.ts`, `notifications.ts`, `server/mock/data/sendingS
 | Table | Key columns |
 | --- | --- |
 | `email_templates` | key, language, subject, body. Only the workspace's own text; defaults are `system_email_templates` |
-| `email_sending` | one per tenant: mode (`formalie`, `domain`, `smtp`), from_address |
-| `sending_domains` | address, domain, status (`pending`, `verified`, `failed`), records jsonb (TXT / CNAME / MX), token, problem, added_at, checked_at |
-| `smtp_servers` | host, port, security (`starttls`, `tls`, `none`), username, password_enc, from_address, status (`untested`, `working`, `failed`), problem, checked_at |
-| `sent_emails` | **partitioned monthly**; to, template, language, subject, reason (`response`, `response_outside`, `invite` …), html, text, status, provider_message_id, sent_at |
+| `email_sending` | one per tenant (B11): mode (`formalie`, `domain`, `smtp`), domain jsonb (`SendingDomain`: address, domain, status, records, added_at, checked_at, problem, plus the DKIM key part), smtp jsonb (`SmtpServer` without the password), smtp_password_enc (Fernet, write-only). The own domain and the own server live here (one each), not in separate tables |
+| `sent_emails` | the sent log (B11): sent_at, to_email, subject, template, language, reason (`login`, `reset`, `invitation`, `approval`, `form_invitation`, `respondent_code`, `resume_link`, `response`, `response_outside`, `receipt`, an event key, `daily_digest`, `test`), html, text. The last 200 per workspace; older entries are soft deleted with their bodies cleared on each new one. One-time codes and personal links are kept as dots. Not partitioned (200 live rows per workspace) |
 | `notifications` | user_id, event (`response_new`, `response_duplicate`, `form_limit`, `form_closing`, `export_ready`, `webhook_failing`, `security_alert`), params jsonb, link, created_at, read_at. Last 100 per person |
 | `notification_digest_lines` | email, name, line, created_at (daily digest queue); plus `notification_once` (key, at) for things announced once |
 
@@ -269,12 +267,14 @@ Source: `shared/types/settings.ts`, `privacy.ts`, `appearance.ts`, `sso.ts`, `on
 | Table | Key columns |
 | --- | --- |
 | `workspace_settings` | section (`company`, `branding`, `localisation`, `signin`, `security`, `notifications`, `emails`, `privacy`, `form_defaults`, `appearance`), value jsonb, row_version, updated_at, updated_by. Unique (tenant_id, section). Holds password policy, session limits, IP allow-list, sign-in methods and code rules, retention_days (0, 30, 90, 180, 365, 730, 1825), consent, form defaults, portal appearance |
-| `sso_connections` | one per tenant: provider (`okta`, `entra`, `google_workspace`, `onelogin`, `saml`, `oidc`), protocol, label, saml jsonb (metadata_url, entity_id, sso_url, certificate), oidc_issuer, oidc_client_id, oidc_client_secret_enc, domains text[], enforce, auto_create, default_role_id (never owner), status (`draft`, `tested`, `active`), tested_at, problem |
+| `sso_connections` | one per tenant (B11): provider (`okta`, `entra`, `google_workspace`, `onelogin`, `saml`, `oidc`), protocol, label, saml jsonb (metadata_url, entity_id, sso_url, certificate), oidc jsonb (issuer, client_id), client_secret_enc (Fernet, write-only), idp jsonb (what the last passing test read: SAML entity id, sign-in address and certificates, refreshed daily from a metadata address; OIDC endpoints), domains jsonb, enforce, auto_create, default_role (a built-in key or a role id, never owner), status (`draft`, `tested`, `active`), tested_at, problem. Removing it soft deletes the row and clears the secret |
+| `custom_domains` | one per tenant (B11): domain, status (`pending`, `verified`, `failed`), records jsonb (`DnsRecord[]`: CNAME → `custom.{root}`, TXT `_formalie.{domain}`), token, problem (`not_found`, `wrong_target`, `dns_error`), added_at, checked_at. Verified: claimed in `platform.custom_domains_directory` |
 | `onboarding` | one per tenant: status, current_step (`company`, `branding`, `localisation`, `team`, `first_form`), steps jsonb, invites jsonb, first_form jsonb, completed_at |
-| `retention_runs` | ran_at, retention_days, responses_removed, forms_affected |
 | `support_access_grants` | (required by FORMALIE-INTEGRATION §3, not yet in the portal) requested_by_staff, duration, write_allowed, status, approved_by, starts_at, ends_at |
 
 Data residency: `tenants.data_region` (read in Settings, Enterprise only, moved by a platform migration). Privacy requests (search, export, delete by email) leave only audit entries with the address masked.
+
+**Erasure without hard deletes (B11, 03-DECISIONS 2026-10-12):** a person's data request and retention erase responses in place: `data` becomes `{}`, the respondent's name and emails, IP, browser, device, country, fingerprint and tags are cleared, the response is deleted (`deleted_at`) and counted out of its form; its notes are emptied and deleted, the answers in `response_changes` cleared (the only UPDATE `formalie_app` has there: `before`, `after`), its respondent files removed from storage (the `uploads` rows stay, deleted, file name cleared), the bodies of webhook deliveries about it cleared. A person's saved drafts lose their answers and address; emails sent to them stay in the sent log as a line with the address masked. The rows, their numbers and the audit entries stay. Retention runs are recorded as `settings.retention_applied` audit entries (no separate table).
 
 ### Billing (Payoneer)
 
@@ -352,11 +352,11 @@ RLS lets a workspace read only its own `audit_logs`; `platform_reader` reads all
 
 | Table | Partition | Kept |
 | --- | --- | --- |
-| `responses` (+ notes, changes by FK) | monthly on `submitted_at` | per workspace `privacy.retention_days` (0 = forever); a nightly job deletes due rows and records `retention_runs` and `settings.retention_applied` |
+| `responses` (+ notes, changes by FK) | monthly on `submitted_at` | per form `settings.retention_days`, else the workspace's `privacy.retention_days` (0 = forever); applied when the setting is saved and daily (Beat `privacy.apply_retention`): due responses are erased in place (above) and `settings.retention_applied` recorded |
 | `audit_logs`, `request_logs`, `error_logs` | monthly | 12 months hot, then detached to cold storage |
 | `api_request_logs` | monthly | calls: 12 months like the other logs; bodies only `api_settings.log_days` (1, 7, 30), cleared hourly |
 | `form_fill_events` | daily | 90 days (rolled up into `form_analytics_daily` and `form_funnel_daily` first) |
-| `webhook_deliveries`, `sent_emails` | monthly | 90 days |
+| `webhook_deliveries` | monthly | 90 days |
 | `event_outbox` | monthly | 7 days after publish |
 
 Celery Beat creates the next 3 periods ahead and detaches expired ones. Other scheduled jobs: Trash purge (30 days); expired resume drafts, invites, OTP challenges, download tokens and idempotency keys (24 h); AI requests after `keep_days`; renewals and reminders; daily Payoneer reconciliation; destination and webhook retries; datasource health checks; domain and sending-domain checks; the daily digest.

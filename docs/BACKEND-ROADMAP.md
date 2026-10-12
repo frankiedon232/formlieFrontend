@@ -85,11 +85,11 @@ Then stop for the owner's review. Day-to-day status lives in `PROGRESS.md`.
 - ✅ Webhooks (moved from B9, built 2026-10-12 in step 2): response events to the organisation's address with its webhook token, retries after 1, 5, 15, 60 and 360 minutes, a pause after 20 failures in a row, delivery logs with personal answers masked, send again (`routes/webhooks.ts`).
 - ✅ The public gateway on `api.formalie.*` as its own service: the order of checks in ENDPOINTS.md, CORS preflights, idempotent POST, signing, rate limits, traffic logs (step 3, built 2026-10-12: `app/gateway.py`, `python -m app.gateway`; the main app forwards `api.<ROOT_DOMAIN>` to it).
 
-## B11, Settings, the rest ⬜ (F14)
+## B11, Settings, the rest ✅ (F14)
 
-- ⬜ Emails: templates, preview, test, sent log; sending as the Formalie address, an own domain (DNS checks) or SMTP.
-- ⬜ SSO (SAML / OIDC), address (subdomain change, own domain), appearance (light / dark colours, default mode), form defaults.
-- ⬜ Security (sessions, sign out everywhere, activity, IP allowlist, idle timeout), privacy (retention with preview, find / export / delete a person's data), data region.
+- ✅ Emails: templates, preview, test, sent log; sending as the Formalie address, an own domain (DNS checks) or SMTP (built 2026-10-12; every workspace email now goes through the workspace's look, wording, sending route and sent log).
+- ✅ SSO (SAML with python3-saml, OIDC with Authlib) with the usual second step at sign-in, address (subdomain change with the old one kept 90 days, own domain), appearance and form defaults (B3).
+- ✅ Security (B3), privacy (retention with preview and daily, find / export / erase a person's data in place), data region.
 
 ## B12, Analytics and dashboard ✅ (F18, F21)
 

@@ -30,3 +30,10 @@ PyMySQL==2.2.8
 pymssql==2.3.2
 oracledb==2.5.1
 asyncssh==2.19.0
+# Settings, the rest (B11, owner-approved 2026-10-12): SAML single sign-on (xmlsec signs and checks the XML; lxml must
+# use the same libxml2 as the xmlsec wheel), and DNS checks of workspaces' own sending domains and web addresses
+python3-saml==1.16.0
+xmlsec==1.3.17
+lxml==6.1.3
+isodate==0.7.2
+dnspython==2.9.0

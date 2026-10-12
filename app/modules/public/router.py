@@ -40,7 +40,7 @@ from app.core.security.limits import per_value, rate_limit
 from app.core.security.passwords import verify_password
 from app.core.security.refs import get_codec
 from app.modules.audit.service import Actor, record
-from app.modules.emails import service as emails
+from app.modules.emails import workspace as workspace_mail
 from app.modules.forms.answers import file_answers, max_file_bytes
 from app.modules.forms.models import Form, FormVersion
 from app.modules.links import directory, urls
@@ -233,8 +233,10 @@ async def send_verification(key: str, request: Request) -> Any:
         db.add(RespondentVerification(tenant_id=tenant.id, organisation_id=tenant.organisation_id, form_id=form.id,
                                       email_hash=_sha(email), code_hash=_sha(f"{form.id}:{email}:{code}"),
                                       expires_at=now + timedelta(seconds=VERIFY_TTL_S)))
-        emails.send(email, "respondent_code", rules.main_language(schema), {
-            "code": code, "minutes": VERIFY_TTL_S // 60, "form": form.name, "workspace": tenant.name})
+        await workspace_mail.send(db, tenant.id, tenant.name, to=email, key="respondent_code",
+                                  language=rules.main_language(schema), reason="respondent_code", footer="form",
+                                  values={"code": code, "minutes": VERIFY_TTL_S // 60, "form": form.name},
+                                  hidden=("code",))
         dev = {} if get_settings().is_production else {"dev_code": code}
         return ok({"sent_to": rules.mask_email(email), "expires_in": VERIFY_TTL_S}, dev)
 
@@ -304,9 +306,11 @@ def _resume_link(form: Form, tenant: Any, token: str) -> str:
     return f"{urls.form_link(tenant.subdomain, form.custom_link or form.public_key)}?resume={quote(token, safe='')}"
 
 
-def _send_resume(tenant: Any, form: Form, email: str, link: str, language: str) -> None:
-    emails.send(email, "resume_link", language, {"form": form.name, "link": link, "days": RESUME_DAYS,
-                                                  "workspace": tenant.name})
+async def _send_resume(db: Any, tenant: Any, form: Form, email: str, link: str, language: str) -> None:
+    # The workspace's look and wording, its sending address and sent log (the resume link shows as dots there)
+    await workspace_mail.send(db, tenant.id, tenant.name, to=email, key="resume_link", language=language,
+                              values={"form": form.name, "link": link, "days": RESUME_DAYS}, reason="resume_link",
+                              footer="form", hidden=("link",))
 
 
 @router.post("/public/forms/{key}/sessions", status_code=201, dependencies=[rate_limit("public-drafts", per_minute=30)])
@@ -323,7 +327,7 @@ async def start_draft(key: str, request: Request) -> Any:
         meta: dict[str, Any] = {}
         if data.get("email"):
             link = _resume_link(form, tenant, token)
-            _send_resume(tenant, form, data["email"], link, rules.main_language(form.draft_schema))
+            await _send_resume(db, tenant, form, data["email"], link, rules.main_language(form.draft_schema))
             meta = {} if get_settings().is_production else {"dev_resume_url": link}
         return ok({"resume_token": token, "expires_at": _iso(expires),
                    "sent_to": rules.mask_email(data["email"]) if data.get("email") else None}, meta)
@@ -344,7 +348,7 @@ async def save_draft(key: str, token: str, request: Request) -> Any:
         meta: dict[str, Any] = {}
         if data.get("email"):
             link = _resume_link(form, tenant, token)
-            _send_resume(tenant, form, data["email"], link, rules.main_language(form.draft_schema))
+            await _send_resume(db, tenant, form, data["email"], link, rules.main_language(form.draft_schema))
             meta = {} if get_settings().is_production else {"dev_resume_url": link}
         return ok({"saved_at": _iso(now), "expires_at": _iso(draft.expires_at),
                    "sent_to": rules.mask_email(data["email"]) if data.get("email") else None}, meta)

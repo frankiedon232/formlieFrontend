@@ -390,3 +390,15 @@ async def list_deliveries(db: AsyncSession, tenant_id: uuid.UUID, query: dict[st
     forms = await forms_named(db, tenant_id, {str(r.form_id) for r in rows.values() if r.form_id})
     return [delivery_view(rows[i], hooks.get(rows[i].webhook_id), forms.get(str(rows[i].form_id)))
             for i in ids if i in rows], total
+
+
+async def forget_response_bodies(db: AsyncSession, tenant_id: uuid.UUID, response_ids: list[uuid.UUID]) -> None:
+    """A person's data erased (Settings → Privacy, retention): the deliveries about these responses keep their times
+    and statuses, never their answers again (no more Send again for them)."""
+    from sqlalchemy import update
+
+    if not response_ids:
+        return
+    await db.execute(update(WebhookDelivery).where(WebhookDelivery.tenant_id == tenant_id,
+                                                   WebhookDelivery.response_id.in_(response_ids))
+                     .values(body_enc=None, logged_body="{}"))

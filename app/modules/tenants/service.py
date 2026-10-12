@@ -46,6 +46,18 @@ async def _load_by_subdomain(subdomain: str) -> dict[str, Any]:
     return {k: str(v) if isinstance(v, uuid.UUID) else v for k, v in row.items()}
 
 
+async def _load_by_domain(domain: str) -> dict[str, Any]:
+    async with db_session("read") as session:
+        result = await session.execute(
+            text("SELECT id, subdomain, name, status, organisation_id, plan_id FROM platform.resolve_domain(:domain)"),
+            {"domain": domain},
+        )
+        row = result.mappings().first()
+    if row is None:
+        return _MISSING
+    return {k: str(v) if isinstance(v, uuid.UUID) else v for k, v in row.items()}
+
+
 class TenantDirectory:
     def __init__(self, cache: RedisCache | None = None) -> None:
         settings = get_settings()
@@ -61,8 +73,23 @@ class TenantDirectory:
         return None if row.get("missing") else _to_info(row)
 
     async def by_domain(self, domain: str) -> TenantInfo | None:
-        """Own domains (Settings → Address) are verified in B11; until then no custom host maps to a workspace."""
-        return None
+        """A workspace's own verified domain (Settings → Address and domain), only while its plan includes one."""
+        from app.modules.billing.service import has_feature
+
+        key = f"domain:{domain.lower().rstrip('.')}"
+        row = self.l1.get(key)
+        if row is None:
+            row = await self.l2.get_or_set(None, CACHE_MODULE, key, lambda: _load_by_domain(key[7:]), ttl_seconds=300)
+            self.l1.set(key, row)
+        if row.get("missing"):
+            return None
+        tenant = _to_info(row)
+        return tenant if has_feature(tenant.plan_id, "custom_domain") else None
+
+    async def forget_domain(self, domain: str) -> None:
+        key = f"domain:{domain.lower().rstrip('.')}"
+        self.l1.delete(key)
+        await self.l2.delete(None, CACHE_MODULE, key)
 
     async def forget(self, subdomain: str) -> None:
         self.l1.delete(subdomain.lower())

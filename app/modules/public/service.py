@@ -247,3 +247,18 @@ def _iso(value: Any) -> str | None:
     from app.modules.forms.service import iso
 
     return iso(value)
+
+
+async def forget_drafts(db: AsyncSession, tenant_id: uuid.UUID, email: str, by: uuid.UUID | None) -> int:
+    """A person's data erased (Settings → Privacy): their saved drafts lose their answers and address and close."""
+    from datetime import UTC, datetime
+
+    from sqlalchemy import func, update
+
+    from app.modules.public.models import ResumeDraft
+
+    now = datetime.now(UTC)
+    result = await db.execute(update(ResumeDraft).where(
+        ResumeDraft.tenant_id == tenant_id, func.lower(ResumeDraft.email) == email.strip().lower()
+    ).values(data={}, email=None, closed_at=func.coalesce(ResumeDraft.closed_at, now), deleted_at=now, deleted_by=by))
+    return int(result.rowcount or 0)  # type: ignore[attr-defined]

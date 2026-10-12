@@ -1,8 +1,8 @@
 """Emails in a workspace's look (port of the mock's core/email.ts and data/outboxStore.ts sendEmail): its name, logo
 and colour, its own wording for a template when it has one (Settings → Emails), the answers of a response as a table,
-and the footer for people with an account or people writing to a form. Sent through the `notifications` queue.
-
-The log of sent emails and the workspace's own sending domain arrive with Settings → Emails (B11).
+and the footer for people with an account or people writing to a form. Sent through the `notifications` queue, by
+the way the workspace chose (Settings → Emails → Sending address, sending.py), and kept in its sent log
+(`sent_emails`, the last 200). One-time codes and personal links (`hidden`) show as dots in the log's copy.
 """
 
 from __future__ import annotations
@@ -13,6 +13,7 @@ from datetime import UTC, datetime
 from typing import Any
 from zoneinfo import ZoneInfo
 
+from sqlalchemy import select, text, update
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.modules.emails import service as emails
@@ -94,18 +95,91 @@ async def render(db: AsyncSession, tenant_id: uuid.UUID, workspace_name: str, ke
     return {**message, "from_name": sender, "reply_to": settings_emails.get("reply_to") or ""}
 
 
+MASK = "••••••"
+KEEP_SENT = 200
+
+
+async def _plan(db: AsyncSession, tenant_id: uuid.UUID) -> str | None:
+    from app.core.context import get_context
+
+    ctx = get_context()
+    if ctx is not None and ctx.tenant is not None and ctx.tenant.id == tenant_id:
+        return ctx.tenant.plan_id
+    row = (await db.execute(text("SELECT plan_id FROM platform.tenant_profile()"))).first()
+    return row[0] if row else None
+
+
+async def log_sent(db: AsyncSession, tenant_id: uuid.UUID, *, to: str, key: str, language: str, reason: str,
+                   message: dict[str, str]) -> dict[str, Any] | None:
+    """The sent log's entry (SentEmail without the bodies), or None when it couldn't be written (a read-only
+    session): the email still goes. Beyond the last 200, older entries are retired with their bodies cleared."""
+    from app.modules.emails.models import SentEmail
+
+    try:
+        async with db.begin_nested():
+            organisation = (await db.execute(text(
+                "SELECT nullif(current_setting('app.organisation_id', true), '')::uuid"))).scalar_one()
+            row = SentEmail(tenant_id=tenant_id, organisation_id=organisation, to_email=to.strip().lower()[:254],
+                            subject=message["subject"][:400], template=key, language=language, reason=reason[:40],
+                            html=message["html"], text_body=message["text"], sent_at=datetime.now(UTC))
+            db.add(row)
+            await db.flush()
+            await db.execute(update(SentEmail).where(
+                SentEmail.tenant_id == tenant_id, SentEmail.deleted_at.is_(None),
+                SentEmail.id.in_(select(SentEmail.id).where(SentEmail.tenant_id == tenant_id,
+                                                            SentEmail.deleted_at.is_(None))
+                                 .order_by(SentEmail.sent_at.desc(), SentEmail.id.desc()).offset(KEEP_SENT))
+            ).values(deleted_at=datetime.now(UTC), html="", text_body=""))
+        return sent_item(row)
+    except Exception:  # noqa: BLE001
+        emails.log.warning("sent log not written", extra={"template": key})
+        return None
+
+
+def sent_item(row: Any, with_bodies: bool = False) -> dict[str, Any]:
+    item = {"id": str(row.id), "at": row.sent_at.astimezone(UTC).isoformat(timespec="milliseconds").replace("+00:00", "Z"),
+            "to": row.to_email, "subject": row.subject, "template": row.template, "language": row.language,
+            "reason": row.reason}
+    return {**item, "html": row.html, "text": row.text_body} if with_bodies else item
+
+
 async def send(db: AsyncSession, tenant_id: uuid.UUID, workspace_name: str, *, to: str, key: str, values: dict[str, Any],
                reason: str, language: str | None = None, answers: list[dict[str, str]] | None = None,
-               text: dict[str, str] | None = None, footer: str = "account", unsubscribe: Any = None) -> None:
-    """Rendered in the workspace's look and queued. Never raises (an email never breaks what caused it).
-    `unsubscribe`: the Link from unsubscribe.prepare() for optional emails (footer link and List-Unsubscribe)."""
+               text: dict[str, str] | None = None, footer: str = "account", unsubscribe: Any = None,
+               hidden: tuple[str, ...] = ()) -> dict[str, Any] | None:
+    """Rendered in the workspace's look, written to its sent log and queued by its sending route. Never raises (an
+    email never breaks what caused it) → the sent log's entry, or None when nothing went.
+    `unsubscribe`: the Link from unsubscribe.prepare() for optional emails (footer link and List-Unsubscribe).
+    `hidden`: values never kept in the log (one-time codes, links that sign someone in)."""
+    from app.modules.emails import sending
+
     try:
         lang = await email_language(db, tenant_id, language)
         url = unsubscribe.page_url if unsubscribe is not None and unsubscribe.page_url else None
         message = await render(db, tenant_id, workspace_name, key, lang, values, text=text, answers=answers, footer=footer,
                                unsubscribe_url=url)
+        kept = message
+        if hidden:
+            masked = {**values, **{name: MASK for name in hidden if name in values}}
+            kept = await render(db, tenant_id, workspace_name, key, lang, masked, text=text, answers=answers,
+                                footer=footer, unsubscribe_url=url)
+        route = await sending.route_for(db, tenant_id, await _plan(db, tenant_id))
+        item = await log_sent(db, tenant_id, to=to, key=key, language=lang, reason=reason, message=kept)
         headers = {"headers": unsubscribe.headers} if url else {}
-        emails.queue({"to": to, **message, **headers}, key=key, values={**values, "reason": reason})
+        emails.queue({"to": to, **message, **headers, **({"route": route} if route else {})}, key=key,
+                     values={**values, "reason": reason})
+        return item or {"id": None}
     except Exception:  # noqa: BLE001
         emails.log.exception("workspace email could not be sent", extra={"template": key})
+        return None
 
+
+async def forget_address(db: AsyncSession, tenant_id: uuid.UUID, email: str, masked: str) -> int:
+    """A person's data erased (Settings → Privacy): emails sent to them stay in the log as a line (when, which
+    template), their address masked and the bodies and subject cleared."""
+    from app.modules.emails.models import SentEmail
+
+    result = await db.execute(update(SentEmail).where(
+        SentEmail.tenant_id == tenant_id, SentEmail.to_email == email.strip().lower()
+    ).values(to_email=masked.lower(), subject="", html="", text_body=""))
+    return int(result.rowcount or 0)  # type: ignore[attr-defined]

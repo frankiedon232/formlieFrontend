@@ -29,7 +29,7 @@ from app.core.errors import FrmError
 from app.core.responses import ok
 from app.core.security.limits import rate_limit
 from app.modules.auth.sessions import Principal, require_auth
-from app.modules.emails import service as emails
+from app.modules.emails import workspace as workspace_mail
 from app.modules.forms.access import viewer_for
 from app.modules.forms.models import Form
 from app.modules.forms.service import audit, find_form, iso
@@ -88,8 +88,10 @@ async def _send(db: Any, principal: Principal, form: Form, email: str, name: str
                                    kind="form_invitation")
     if link_out is None:
         return
-    emails.send(email, "form_invitation", language, {"name": name or email, "form": form.name,
-                                                      "workspace": tenant.name, "link": link}, unsubscribe=link_out)
+    # The workspace's look and wording, its sending address and sent log (the personal link shows as dots there)
+    await workspace_mail.send(db, tenant.id, tenant.name, to=email, key="form_invitation", language=language,
+                              values={"name": name or email, "form": form.name, "link": link}, reason="form_invitation",
+                              footer="form", unsubscribe=link_out, hidden=("link",))
 
 
 async def _form(db: Any, principal: Principal, form_id: str, action: str) -> Any:

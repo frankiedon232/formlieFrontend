@@ -33,6 +33,7 @@ Port each file to Python under the named module. For each one, write a test that
 | `billing/plans.ts` | Plans, prices per period, limits and features | `modules/billing` (seed + enforcement) |
 | `platform/regions.ts`, `platform/countries.ts`, `platform/forms.ts` | Data residency regions, countries, Formalie's own forms (support, enquiries) | platform seeds |
 | `settings/schemas.ts`, `settings/appearance-ink.ts` | Settings validation per section, appearance contrast | `modules/settings` |
+| `types/emails.ts` (`EMAIL_VARIABLES`), `types/sso.ts` (`SSO_PROVIDERS`, `SSO_PROTOCOL`), `platform/regions.ts` (`DATA_REGIONS`), `types/privacy.ts`, and the request schemas of the mock's `emails.ts`, `emailSending.ts`, `sso.ts`, `address.ts`, `dataPrivacy.ts` | Settings, the rest (B11): template placeholders, single sign-on providers, regions, the routes' validation | `modules/emails`, `modules/sso`, `modules/address`, `modules/privacy` (parity: `scripts/dump_settings_more_rules.py`, `tests/parity/test_settings_more_rules.py`) |
 | `dashboard/buckets.ts`, `dashboard/scope.ts` | Dashboard periods and folder / owner scope | `modules/dashboard` |
 | `templates/starters.ts`, `help/categories.ts`, `help/routes.ts`, `ai/kinds.ts` | Template starters, help categories, tour pages, AI kinds | matching modules |
 | `tenant/host.ts`, `urls/public.ts`, `urls/embed.ts`, `urls/embed-domains.ts` | Tenant from the host, public link building, embed rules | `core/middleware/tenant.py`, `modules/links/urls.py` (parity: `tests/parity/test_links_rules.py`) |

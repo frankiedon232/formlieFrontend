@@ -43,6 +43,7 @@ from app.core.cache.redis import get_redis
 from app.modules.emails import service as emails
 from app.modules.emails import workspace as workspace_mail
 from app.modules.settings.service import get_section
+from app.modules.sso import service as sso_service
 from app.modules.tenants.router import workspace_url, workspaces_for
 from app.modules.tenants.service import TenantDirectory
 from app.modules.tenants.workspace import Founder, create_workspace
@@ -115,10 +116,15 @@ async def _send_code(db: Any, tenant: TenantInfo | None, challenge: challenges.C
                      user: User | None, template: str = "signin_code") -> None:
     if code is None or challenge.channel != "email":
         return  # the authenticator app: nothing to send. Text messages: no SMS provider yet (B11)
-    language = await _language(db, tenant, user) if tenant is not None else None
-    emails.send(challenge.email, template, language, {
-        "workspace": tenant.name if tenant else "Formalie", "name": user.first_name if user else challenge.email.split("@")[0],
-        "code": code, "minutes": challenge.ttl_ms // 60_000})
+    name = user.first_name if user else challenge.email.split("@")[0]
+    if tenant is None:  # Formalie's own (no workspace yet)
+        emails.send(challenge.email, template, None, {"workspace": "Formalie", "name": name, "code": code,
+                                                      "minutes": challenge.ttl_ms // 60_000})
+        return
+    # The workspace's look and wording; the sent log shows the code as dots (the mock's '••••••')
+    await workspace_mail.send(db, tenant.id, tenant.name, to=challenge.email, key=template,
+                              values={"name": name, "code": code, "minutes": challenge.ttl_ms // 60_000},
+                              reason=challenge.purpose, language=await _language(db, tenant, user), hidden=("code",))
 
 
 PROVIDER_NAMES = {"google": "Google", "microsoft": "Microsoft", "facebook": "Facebook"}
@@ -223,6 +229,11 @@ async def login(body: LoginBody) -> Any:
                          reason="FRM-AUTH-1016", metadata={"method": "password", "cause": "ip_not_allowed"})
             await _security_alert(db, email, "ip_not_allowed")
             raise FrmError("FRM-AUTH-1016", commit=True)
+        # Settings → Sign-in → Single sign-on, required for these domains: the provider decides, never a password here
+        if await sso_service.required_for(db, tenant, email):
+            await _audit(db, tenant, "auth.login.blocked", Actor.anonymous(email), outcome="blocked", severity="notice",
+                         reason="FRM-AUTH-1019", metadata={"method": "password", "cause": "sso_required"})
+            raise FrmError("FRM-AUTH-1019", commit=True)
         user = await _find_user(db, email)
         # The same work for an unknown address as for a known one (no account discovery by timing)
         password_ok = verify_password(user.password_hash if user else DUMMY_HASH, body.password) and user is not None
@@ -659,6 +670,11 @@ async def _social_login(provider: str, profile: oauth.Profile, saved: oauth.OAut
                          reason="FRM-AUTH-1016", metadata={"method": provider, "cause": "ip_not_allowed"})
             await _security_alert(db, profile.email, "ip_not_allowed")
             raise FrmError("FRM-AUTH-1016", commit=True)
+        # Single sign-on required for this domain: no other way in (shared/types/sso.ts `enforce`)
+        if await sso_service.required_for(db, tenant, profile.email):
+            await _audit(db, tenant, "auth.login.blocked", Actor.anonymous(profile.email), outcome="blocked",
+                         severity="notice", reason="FRM-AUTH-1019", metadata={"method": provider, "cause": "sso_required"})
+            raise FrmError("FRM-AUTH-1019", commit=True)
         linked = (await db.execute(select(UserIdentity).where(
             UserIdentity.provider == provider, UserIdentity.provider_user_id == profile.subject,
             UserIdentity.deleted_at.is_(None)))).scalar_one_or_none()
@@ -677,12 +693,63 @@ async def _social_login(provider: str, profile: oauth.Profile, saved: oauth.OAut
         return await _login_challenge(db, tenant, user, signin, provider)
 
 
+async def sso_login(tenant: TenantInfo, profile: oauth.Profile, *, domains: list[str], auto_create: bool,
+                    default_role: str) -> challenges.Challenge:
+    """Back from the workspace's identity provider (app/modules/sso): the same checks as any sign-in (network, the
+    account's state, allowed domains), then the usual second step. The provider must vouch for an address of the
+    connection's domains; with `auto_create`, someone new from those domains gets an account with the default role."""
+    from app.modules.rbac.service import find_role
+
+    if tenant.status == "suspended":
+        raise FrmError("FRM-TEN-1002")
+    await per_value("login", profile.email, limit=10, window_seconds=600)
+    ctx = get_context()
+    async with db_session("write", **_scope(tenant)) as db:
+        signin = await get_section(db, tenant.id, "signin")
+        security = await get_section(db, tenant.id, "security")
+        if not ip_allowed(security, ctx.client_ip if ctx else None):
+            await _audit(db, tenant, "auth.login.blocked", Actor.anonymous(profile.email), outcome="blocked",
+                         reason="FRM-AUTH-1016", metadata={"method": "sso", "cause": "ip_not_allowed"})
+            await _security_alert(db, profile.email, "ip_not_allowed")
+            raise FrmError("FRM-AUTH-1016", commit=True)
+        if domains and not sso_service.domain_match(domains, profile.email):
+            await _audit(db, tenant, "auth.login.blocked", Actor.anonymous(profile.email), outcome="blocked",
+                         severity="notice", reason="FRM-AUTH-1014", metadata={"method": "sso", "cause": "sso_domain"})
+            raise FrmError("FRM-AUTH-1014", commit=True)
+        linked = (await db.execute(select(UserIdentity).where(
+            UserIdentity.tenant_id == tenant.id, UserIdentity.provider == "sso",
+            UserIdentity.provider_user_id == profile.subject, UserIdentity.deleted_at.is_(None)))).scalar_one_or_none()
+        user = await db.get(User, linked.user_id) if linked is not None else await _find_user(db, profile.email)
+        if user is not None and user.deleted_at is not None:
+            user = None
+        if user is None:
+            role = await find_role(db, tenant.id, default_role) if auto_create and domains else None
+            if role is None or role.built_in == "owner":
+                await _audit(db, tenant, "auth.login.failed", Actor.anonymous(profile.email), outcome="failure",
+                             reason="FRM-AUTH-1022", metadata={"method": "sso", "account": "not_found"})
+                raise FrmError("FRM-AUTH-1022", commit=True)
+            now = datetime.now(UTC)
+            user = User(tenant_id=tenant.id, organisation_id=tenant.organisation_id, email=profile.email,
+                        first_name=profile.first_name or profile.email.split("@")[0][:60], last_name=profile.last_name,
+                        status="active", role_id=role.id, joined_at=now)
+            db.add(user)
+            await db.flush()
+            await _audit(db, tenant, "users.joined", Actor.user(user), metadata={"via": "sso"},
+                         resource={"type": "user", "id": str(user.id), "name": f"{user.first_name} {user.last_name}".strip()})
+        await _admit(db, tenant, user, signin, "sso")
+        if linked is None:
+            db.add(UserIdentity(tenant_id=tenant.id, organisation_id=tenant.organisation_id, user_id=user.id,
+                                provider="sso", provider_user_id=profile.subject, email=profile.email,
+                                created_by=user.id))
+        return await _login_challenge(db, tenant, user, signin, "sso")
+
+
 @router.get("/auth/oauth/challenge", dependencies=[rate_limit("oauth-challenge", per_minute=20)])
 async def oauth_challenge(challenge_id: str) -> Any:
     """Back from the provider: the challenge the page carries, so the code screen (sign-in) or the workspace step
     (sign-up) can carry on. Only on the host it was made for."""
     challenge = await challenges.get_challenge(challenge_id)
-    if challenge is None or challenge.method not in oauth.PROVIDERS:
+    if challenge is None or (challenge.method not in oauth.PROVIDERS and challenge.method != "sso"):
         raise FrmError("FRM-AUTH-1003")
     host = current_host_context()
     if challenge.purpose == "signup":

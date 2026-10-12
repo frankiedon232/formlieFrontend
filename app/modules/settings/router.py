@@ -263,4 +263,9 @@ async def patch_section(section: str, request: Request, principal: Principal = D
             await record(db, tenant_id=tenant.id, organisation_id=tenant.organisation_id, action="settings.updated",
                          actor=Actor.user(principal.user), resource={"type": "setting", "id": None,
                                                                      "name": LABELS[section]}, changes=changes)
+        if section == "privacy":
+            # Retention runs when the setting is saved, then once a day (the mock's applyRetention)
+            from app.modules.privacy.service import apply_retention
+
+            await apply_retention(db, tenant.id, tenant.organisation_id, principal.user)
     return ok(saved)

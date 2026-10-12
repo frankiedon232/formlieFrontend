@@ -122,6 +122,13 @@ fmly\Scripts\celery.exe -A app.workers.celery_app flower --address=127.0.0.1 --p
 
 Without them requests are still logged; only the location fields stay empty. Local addresses (`127.0.0.1`, your LAN) never have a location.
 
+### Trying workspaces' own domains and single sign-on (B11)
+
+- After pulling B11, install the new packages: `fmly\Scripts\python.exe -m pip install -r requirements.txt` (python3-saml with `xmlsec`, which has a ready Windows wheel, and dnspython). Check with `fmly\Scripts\python.exe -c "import xmlsec"`.
+- DNS checks (own sending address, own web address) ask real DNS: they only pass for a domain whose records you can add.
+- A mail server or identity provider on this machine (Mailpit, a test IdP) needs `EMAIL_SMTP_ALLOW_LOCAL=true` / `SSO_ALLOW_LOCAL=true` in `.env` (development only). In Settings → Emails, Mailpit is host `127.0.0.1`, port 1025, security none.
+- An identity provider (Okta, Entra, Google Workspace test tenant) takes the addresses shown under Settings → Sign-in → Single sign-on (the workspace's ACS, entity id, metadata and redirect addresses on `https://{subdomain}.formalie.dev:2202`).
+
 ### 4. Replica on Windows (optional, later)
 
 As administrator, with the primary running: allow replication for `formalie_replicator` in `pg_hba.conf`, then

@@ -61,6 +61,9 @@ async def public_profile() -> Any:
         signin = await get_section(db, tenant.id, "signin")
         security = await get_section(db, tenant.id, "security")
         linked = await linked_providers(db, tenant.id)
+        from app.modules.sso.service import public_of
+
+        sso = await public_of(db, tenant)
     rules = security["password"]
     return ok({
         "mode": "tenant",
@@ -74,7 +77,7 @@ async def public_profile() -> Any:
         "website": company.get("website"),
         # Social methods while the plan has them, and always the ones people here already sign in with
         "auth_providers": offered_methods(signin, tenant.plan_id, linked),
-        "sso": None,  # single sign-on connections arrive in B11 (settings/sso)
+        "sso": sso,  # single sign-on while it is on and the plan has it (Settings → Sign-in)
         "password_policy": {k: rules[k] for k in ("min_length", "lower", "upper", "number", "symbol")},
         "status": tenant.status if tenant.status in ("active", "suspended") else "active",
     })

@@ -44,6 +44,10 @@ Generate fresh keys with `fmly\Scripts\python.exe scripts\gen_keys.py --write` o
 | `EMAIL_ASSETS_URL` | `https://manage.formalie.dev:2202` | ⬜ `https://manage.formalie.com` |
 | `OAUTH_*_CLIENT_ID` / `_SECRET` | development apps | ⬜ the same apps with production addresses added (section 5), or production apps |
 | `OAUTH_REDIRECT_BASE` | empty | ⬜ empty (it becomes `https://manage.formalie.com`) |
+| `EMAIL_SPF_INCLUDE`, `EMAIL_DKIM_DOMAIN`, `EMAIL_BOUNCES_HOST` (B11) | `spf.formalie.com`, `dkim.formalie.com`, `bounces.formalie.com` | ⬜ the same names, really published (section 6): what workspaces' own sending domains point their SPF, DKIM CNAMEs and bounce CNAME at |
+| `EMAIL_SMTP_ALLOW_LOCAL`, `SSO_ALLOW_LOCAL` (B11) | `false` (`true` only while trying a mail server or identity provider on this machine) | ⬜ `false` (never true in production; ignored there anyway) |
+| `SAML_SP_CERT`, `SAML_SP_KEY` (B11) | empty (SAML requests unsigned) | ⬜ a certificate and private key (PEM) made for Formalie's SAML service provider, e.g. `openssl req -x509 -newkey rsa:2048 -nodes -days 1095 -subj "/CN=formalie.com"`; renew before it expires (workspaces' identity providers then import the new metadata) |
+| `DNS_TIMEOUT_SECONDS` (B11) | `4` | ⬜ keep; the servers need a working DNS resolver (own domain and sending domain checks) |
 | `INTERNAL_TOKEN` | development value | ⬜ a new random value, the same as the frontend's `NUXT_INTERNAL_TOKEN` |
 | `LEGAL_TERMS_URL`, `LEGAL_PRIVACY_URL` | formalie.com pages | ⬜ check the pages exist on the website |
 | `STORAGE_DIR` | `data/storage` | ⬜ replaced by the object storage settings (to be added when storage is chosen) |
@@ -66,6 +70,8 @@ Also on the backend side:
 - ⬜ The development-only headers `X-Debug-Country` and `X-Debug-Network` are ignored when `APP_ENV=production` (nothing to set; check once with a call).
 - ⬜ Backups: continuous WAL archiving plus a daily full backup, encrypted, off-site, 30 days; a restore drill before launch and monthly after.
 - ⬜ Flower and the RabbitMQ management page: not public (VPN or SSH tunnel only).
+- ⬜ Celery Beat runs `privacy.apply_retention` once a day (response retention; nothing to set).
+- ⬜ The servers' Python has `xmlsec` working (python3-saml): `python -c "import xmlsec"`; on Linux the wheel needs `libxmlsec1` (`apt install libxmlsec1-openssl`) and `lxml` built against the same libxml2.
 
 ## 3. Frontend (formalieFrontend, the production build and its environment)
 
@@ -94,6 +100,8 @@ Also:
 - ⬜ HSTS, gzip / brotli, request size limits, the Content-Security-Policy from SECURITY-PROTOCOL (per-form `frame-ancestors` for embeds; Payoneer's frame hosts when connected).
 - ⬜ Cloudflare: proxy on, SSL "Full (strict)", WAF and rate limiting rules, cache static assets only (never `/api`).
 
+- ⬜ **Workspaces' own web domains (B11):** `custom.formalie.com` → Nginx (the CNAME target workspaces point their domain at), Nginx answers any host on it, and HTTPS certificates are issued per verified domain (Cloudflare for SaaS custom hostnames, or Caddy / certbot on demand, allowing only domains in `platform.custom_domains_directory` that are not released). The app maps the host to the workspace itself.
+
 ## 5. Sign-in providers (their consoles)
 
 The production return addresses (backend README, "The addresses to register"):
@@ -109,6 +117,7 @@ The production return addresses (backend README, "The addresses to register"):
 ## 6. Email deliverability
 
 - ⬜ SPF, DKIM and DMARC records for `formalie.com` (and for each workspace's own sending domain, B11).
+- ⬜ **Workspaces' own sending domains (B11):** publish `spf.formalie.com` (an SPF record with the relay's senders, which workspaces include), and for each verified workspace the DKIM keys at `fm1.{key}.dkim.formalie.com` and `fm2.{key}.dkim.formalie.com` (the `key` is in `email_sending.domain`); the relay (SES or the chosen provider) must sign mail from that domain with the selector `fm1` (rotate to `fm2`). `bounces.formalie.com` must receive bounces for `fm-bounces.{their domain}` (the envelope sender `bounces@fm-bounces.{domain}`) and the relay must allow those From and MAIL FROM addresses (for SES: verify each domain as an identity with custom MAIL FROM, or use the provider's own DKIM CNAMEs instead and change the records the portal lists).
 - ⬜ Unsubscribe headers (`List-Unsubscribe`, `List-Unsubscribe-Post`) on optional emails, required by Gmail and Yahoo for bulk senders (being built).
 - ⬜ Send a test of every template to Gmail, Outlook and Apple Mail and check the layout.
 

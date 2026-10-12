@@ -45,12 +45,14 @@ Total: 399 endpoints in the portal API, plus the public API service and the serv
 - **Guards:** `requireAdmin`, `requireFeature`
 - **Audit:** `settings.updated`
 
-- ⬜ `GET /api/v1/auth/sso/start` (`ssoStart`)
-- ⬜ `GET /api/v1/settings/sso` (`getSso`)
-- ⬜ `PUT /api/v1/settings/sso` (`saveSso`)
-- ⬜ `POST /api/v1/settings/sso/test` (`testSso`)
-- ⬜ `POST /api/v1/settings/sso/status` (`setSsoStatus`)
-- ⬜ `DELETE /api/v1/settings/sso` (`removeSso`)
+- ✅ `GET /api/v1/auth/sso/start` (`ssoStart`)
+- ✅ `GET /api/v1/settings/sso` (`getSso`)
+- ✅ `PUT /api/v1/settings/sso` (`saveSso`)
+- ✅ `POST /api/v1/settings/sso/test` (`testSso`)
+- ✅ `POST /api/v1/settings/sso/status` (`setSsoStatus`)
+- ✅ `DELETE /api/v1/settings/sso` (`removeSso`)
+
+Backend only (B11, plain browser routes, no envelope): `POST /auth/sso/saml/acs` (the identity provider's signed answer), `GET /auth/sso/saml/metadata` (Formalie's service provider metadata for the workspace), `GET /auth/sso/oidc/callback` (the provider's code), `GET /auth/sso/signout` (back to sign-in). A sign-in through the provider lands on `/auth/login?oauth_challenge=…&provider=sso`, picked up by `GET /auth/oauth/challenge` like social sign-in.
 
 ## `routes/forms.ts`
 
@@ -644,25 +646,25 @@ Built with B10 (moved from B9): a webhook sends a webhook token from the API ser
 
 - **Guards:** `requireAdmin`
 
-- ⬜ `GET /api/v1/settings/emails/templates/{key}` (`getTemplate`)
-- ⬜ `POST /api/v1/settings/emails/preview` (`previewEmail`)
-- ⬜ `POST /api/v1/settings/emails/test` (`testEmail`)
-- ⬜ `GET /api/v1/settings/emails/sent` (`listSent`)
-- ⬜ `GET /api/v1/settings/emails/sent/{id}` (`getSent`)
+- ✅ `GET /api/v1/settings/emails/templates/{key}` (`getTemplate`)
+- ✅ `POST /api/v1/settings/emails/preview` (`previewEmail`)
+- ✅ `POST /api/v1/settings/emails/test` (`testEmail`)
+- ✅ `GET /api/v1/settings/emails/sent` (`listSent`)
+- ✅ `GET /api/v1/settings/emails/sent/{id}` (`getSent`)
 
 ## `routes/emailSending.ts`
 
 - **Guards:** `requireAdmin`, `requireFeature`
 - **Audit:** `settings.updated`
 
-- ⬜ `GET /api/v1/settings/emails/sending` (`getSending`)
-- ⬜ `PUT /api/v1/settings/emails/sending/domain` (`addSendingDomain`)
-- ⬜ `POST /api/v1/settings/emails/sending/domain/check` (`checkSendingDomain`)
-- ⬜ `DELETE /api/v1/settings/emails/sending/domain` (`removeSendingDomain`)
-- ⬜ `PUT /api/v1/settings/emails/sending/smtp` (`saveSmtp`)
-- ⬜ `POST /api/v1/settings/emails/sending/smtp/test` (`testSmtp`)
-- ⬜ `DELETE /api/v1/settings/emails/sending/smtp` (`removeSmtp`)
-- ⬜ `POST /api/v1/settings/emails/sending/mode` (`setSendingMode`)
+- ✅ `GET /api/v1/settings/emails/sending` (`getSending`)
+- ✅ `PUT /api/v1/settings/emails/sending/domain` (`addSendingDomain`)
+- ✅ `POST /api/v1/settings/emails/sending/domain/check` (`checkSendingDomain`)
+- ✅ `DELETE /api/v1/settings/emails/sending/domain` (`removeSendingDomain`)
+- ✅ `PUT /api/v1/settings/emails/sending/smtp` (`saveSmtp`)
+- ✅ `POST /api/v1/settings/emails/sending/smtp/test` (`testSmtp`)
+- ✅ `DELETE /api/v1/settings/emails/sending/smtp` (`removeSmtp`)
+- ✅ `POST /api/v1/settings/emails/sending/mode` (`setSendingMode`)
 
 ## `routes/dashboard.ts`
 
@@ -725,27 +727,27 @@ Built with B10 (moved from B9): a webhook sends a webhook token from the API ser
 - **Guards:** `requireAdmin`, `requireFeature`
 - **Audit:** `settings.updated`
 
-- ⬜ `GET /api/v1/settings/address` (`getAddress`)
-- ⬜ `POST /api/v1/settings/address/subdomain` (`changeWorkspaceSubdomain`)
-- ⬜ `PUT /api/v1/settings/address/domain` (`addDomain`)
-- ⬜ `POST /api/v1/settings/address/domain/check` (`checkDomain`)
-- ⬜ `DELETE /api/v1/settings/address/domain` (`removeDomain`)
+- ✅ `GET /api/v1/settings/address` (`getAddress`)
+- ✅ `POST /api/v1/settings/address/subdomain` (`changeWorkspaceSubdomain`)
+- ✅ `PUT /api/v1/settings/address/domain` (`addDomain`)
+- ✅ `POST /api/v1/settings/address/domain/check` (`checkDomain`)
+- ✅ `DELETE /api/v1/settings/address/domain` (`removeDomain`)
 
 ## `routes/dataRegion.ts`
 
 - **Guards:** `requireAuth`
 
-- ⬜ `GET /api/v1/settings/data-region` (`getDataRegion`)
+- ✅ `GET /api/v1/settings/data-region` (`getDataRegion`)
 
 ## `routes/dataPrivacy.ts`
 
 - **Guards:** `requireAdmin`
 - **Audit:** `settings.data_deleted`, `settings.data_exported`
 
-- ⬜ `GET /api/v1/settings/privacy/retention-preview` (`retentionPreview`)
-- ⬜ `POST /api/v1/privacy/requests/search` (`searchRequest`)
-- ⬜ `POST /api/v1/privacy/requests/export` (`exportRequest`)
-- ⬜ `POST /api/v1/privacy/requests/delete` (`deleteRequest`)
+- ✅ `GET /api/v1/settings/privacy/retention-preview` (`retentionPreview`)
+- ✅ `POST /api/v1/privacy/requests/search` (`searchRequest`)
+- ✅ `POST /api/v1/privacy/requests/export` (`exportRequest`)
+- ✅ `POST /api/v1/privacy/requests/delete` (`deleteRequest`)
 
 ## `routes/onboarding.ts`
 

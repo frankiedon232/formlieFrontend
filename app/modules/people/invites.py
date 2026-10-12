@@ -40,7 +40,7 @@ from app.core.security.limits import rate_limit
 from app.core.security.passwords import hash_password
 from app.modules.audit.service import Actor, record
 from app.modules.auth.sessions import Principal, require_admin
-from app.modules.emails import service as emails
+from app.modules.emails import workspace as workspace_mail
 from app.modules.org import service as org
 from app.modules.people import service
 from app.modules.people.models import SignupLink, UserInvite
@@ -140,12 +140,15 @@ async def _mail(db: Any, principal: Principal, user: User, link: str) -> None:
     """A profile the organisation made: activate it; a sign-up link: the invitation email."""
     tenant, by = principal.tenant, service.name_of(principal.user)
     language = await _language(db, tenant.id)
+    # The workspace's look and wording, its sending address and sent log (the personal link shows as dots there)
     if user.status == "not_activated":
-        emails.send(user.email, "account_activation", language, {"name": user.first_name or user.email, "inviter": by,
-                                                                  "workspace": tenant.name, "link": link, "days": DAYS})
+        await workspace_mail.send(db, tenant.id, tenant.name, to=user.email, key="account_activation", language=language,
+                                  values={"name": user.first_name or user.email, "inviter": by, "link": link,
+                                          "days": DAYS}, reason="invitation", hidden=("link",))
     else:
-        emails.send(user.email, "invitation", language, {"name": user.first_name or user.email, "inviter": by,
-                                                         "workspace": tenant.name, "link": link})
+        await workspace_mail.send(db, tenant.id, tenant.name, to=user.email, key="invitation", language=language,
+                                  values={"name": user.first_name or user.email, "inviter": by, "link": link},
+                                  reason="invitation", hidden=("link",))
 
 
 async def _audit(db: Any, principal: Principal, action: str, user: User, metadata: dict[str, str] | None = None) -> None:
@@ -353,9 +356,10 @@ async def approve_person(person_id: str, request: Request, principal: Principal 
             await Manager(db, principal).set_manager(user, body["manager_id"])
         await _join_org(db, principal, user, body.get("department_ids") or [], body.get("job_title_ids") or [])
         ctx = get_context()
-        emails.send(user.email, "account_approved", await _language(db, tenant.id), {
-            "name": user.first_name or user.email, "inviter": service.name_of(principal.user), "workspace": tenant.name,
-            "link": f"https://{(ctx.host if ctx else '') or ''}/auth/login"})
+        await workspace_mail.send(db, tenant.id, tenant.name, to=user.email, key="account_approved",
+                                  language=await _language(db, tenant.id), reason="approval", values={
+                                      "name": user.first_name or user.email, "inviter": service.name_of(principal.user),
+                                      "link": f"https://{(ctx.host if ctx else '') or ''}/auth/login"})
         await _audit(db, principal, "users.approved", user, {"role": role_key(role)})
         await db.flush()
         return ok(await service.detail_of(db, tenant.id, user.id))
@@ -370,8 +374,9 @@ async def reject_person(person_id: str, request: Request, principal: Principal =
         user = await _pending(db, tenant.id, person_id)
         await _remove(db, principal, user)
         reason = body.get("reason")
-        emails.send(user.email, "account_rejected", await _language(db, tenant.id), {
-            "name": user.first_name or user.email, "workspace": tenant.name, "reason": reason or ""})
+        await workspace_mail.send(db, tenant.id, tenant.name, to=user.email, key="account_rejected",
+                                  language=await _language(db, tenant.id), reason="approval",
+                                  values={"name": user.first_name or user.email, "reason": reason or ""})
         await _audit(db, principal, "users.rejected", user, {"reason": reason} if reason else {})
         return ok({"id": str(user.id)})
 

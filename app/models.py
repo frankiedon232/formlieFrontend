@@ -5,6 +5,7 @@ from __future__ import annotations
 
 def import_all_models() -> None:
     import app.core.events.outbox  # noqa: F401
+    import app.modules.address.models  # noqa: F401
     import app.modules.api_service.models  # noqa: F401
     import app.modules.audit.models  # noqa: F401
     import app.modules.auth.models  # noqa: F401
@@ -24,6 +25,7 @@ def import_all_models() -> None:
     import app.modules.public.models  # noqa: F401
     import app.modules.responses.models  # noqa: F401
     import app.modules.settings.models  # noqa: F401
+    import app.modules.sso.models  # noqa: F401
     import app.modules.templates.models  # noqa: F401
     import app.modules.tenants.models  # noqa: F401
     import app.modules.uploads.models  # noqa: F401

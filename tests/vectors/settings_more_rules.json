@@ -1,0 +1,2503 @@
+{
+ "email_variables": {
+  "signin_code": [
+   "name",
+   "code",
+   "minutes",
+   "workspace"
+  ],
+  "password_reset": [
+   "name",
+   "code",
+   "minutes",
+   "workspace"
+  ],
+  "invitation": [
+   "name",
+   "inviter",
+   "workspace",
+   "link"
+  ],
+  "account_activation": [
+   "name",
+   "inviter",
+   "workspace",
+   "link",
+   "days"
+  ],
+  "account_approved": [
+   "name",
+   "inviter",
+   "workspace",
+   "link"
+  ],
+  "account_rejected": [
+   "name",
+   "workspace",
+   "reason"
+  ],
+  "response_notification": [
+   "form",
+   "number",
+   "date",
+   "answers",
+   "link",
+   "workspace"
+  ],
+  "response_receipt": [
+   "form",
+   "number",
+   "date",
+   "answers",
+   "workspace"
+  ],
+  "form_invitation": [
+   "name",
+   "form",
+   "workspace",
+   "link"
+  ],
+  "respondent_code": [
+   "code",
+   "minutes",
+   "form",
+   "workspace"
+  ],
+  "resume_link": [
+   "form",
+   "link",
+   "days",
+   "workspace"
+  ],
+  "notification": [
+   "title",
+   "message",
+   "link",
+   "workspace"
+  ],
+  "daily_digest": [
+   "name",
+   "summary",
+   "link",
+   "workspace"
+  ]
+ },
+ "sso_providers": [
+  "okta",
+  "entra",
+  "google_workspace",
+  "onelogin",
+  "saml",
+  "oidc"
+ ],
+ "sso_protocol": {
+  "okta": "oidc",
+  "entra": "oidc",
+  "google_workspace": "saml",
+  "onelogin": "saml",
+  "saml": "saml",
+  "oidc": "oidc"
+ },
+ "data_regions": [
+  "default",
+  "eu",
+  "uk",
+  "us",
+  "ca",
+  "au",
+  "in",
+  "sg",
+  "br"
+ ],
+ "retention_days": [
+  0,
+  30,
+  90,
+  180,
+  365,
+  730,
+  1825
+ ],
+ "schemas": {
+  "preview": [
+   {
+    "input": {
+     "key": "signin_code",
+     "language": "en",
+     "subject": "Your code",
+     "body": "It is {{code}}"
+    },
+    "ok": true,
+    "data": {
+     "subject": "Your code",
+     "body": "It is {{code}}",
+     "key": "signin_code",
+     "language": "en"
+    }
+   },
+   {
+    "input": {
+     "key": "signin_code",
+     "language": "en",
+     "subject": "  ",
+     "body": "It is {{code}}"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "subject",
+      "message": "subject"
+     }
+    ]
+   },
+   {
+    "input": {
+     "key": "signin_code",
+     "language": "en",
+     "subject": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+     "body": "It is {{code}}"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "subject",
+      "message": "Too big: expected string to have <=200 characters"
+     }
+    ]
+   },
+   {
+    "input": {
+     "key": "signin_code",
+     "language": "en",
+     "subject": "Your code",
+     "body": ""
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "body",
+      "message": "body"
+     }
+    ]
+   },
+   {
+    "input": {
+     "key": "nope",
+     "language": "en",
+     "subject": "Your code",
+     "body": "It is {{code}}"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "key",
+      "message": "Invalid option: expected one of \"signin_code\"|\"password_reset\"|\"invitation\"|\"account_activation\"|\"account_approved\"|\"account_rejected\"|\"response_notification\"|\"response_receipt\"|\"form_invitation\"|\"respondent_code\"|\"resume_link\"|\"notification\"|\"daily_digest\""
+     }
+    ]
+   },
+   {
+    "input": {
+     "key": "signin_code",
+     "language": "xxxxxxxxxxx",
+     "subject": "Your code",
+     "body": "It is {{code}}"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "language",
+      "message": "Too big: expected string to have <=10 characters"
+     }
+    ]
+   },
+   {
+    "input": {
+     "key": "signin_code",
+     "language": "en",
+     "subject": "  Trimmed  ",
+     "body": "It is {{code}}"
+    },
+    "ok": true,
+    "data": {
+     "subject": "Trimmed",
+     "body": "It is {{code}}",
+     "key": "signin_code",
+     "language": "en"
+    }
+   },
+   {
+    "input": {
+     "key": "signin_code",
+     "language": "en",
+     "subject": "Your code",
+     "body": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "body",
+      "message": "Too big: expected string to have <=10000 characters"
+     }
+    ]
+   },
+   {
+    "input": {
+     "language": "en",
+     "subject": "Your code",
+     "body": "It is {{code}}"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "key",
+      "message": "Invalid option: expected one of \"signin_code\"|\"password_reset\"|\"invitation\"|\"account_activation\"|\"account_approved\"|\"account_rejected\"|\"response_notification\"|\"response_receipt\"|\"form_invitation\"|\"respondent_code\"|\"resume_link\"|\"notification\"|\"daily_digest\""
+     }
+    ]
+   },
+   {
+    "input": {
+     "key": "signin_code",
+     "language": 5,
+     "subject": "Your code",
+     "body": "It is {{code}}"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "language",
+      "message": "Invalid input: expected string, received number"
+     }
+    ]
+   },
+   {
+    "input": "nonsense",
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received string"
+     }
+    ]
+   },
+   {
+    "input": null,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received null"
+     }
+    ]
+   },
+   {
+    "input": 42,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received number"
+     }
+    ]
+   },
+   {
+    "input": [],
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received array"
+     }
+    ]
+   },
+   {
+    "input": {},
+    "ok": false,
+    "issues": [
+     {
+      "path": "subject",
+      "message": "Invalid input: expected string, received undefined"
+     },
+     {
+      "path": "body",
+      "message": "Invalid input: expected string, received undefined"
+     },
+     {
+      "path": "key",
+      "message": "Invalid option: expected one of \"signin_code\"|\"password_reset\"|\"invitation\"|\"account_activation\"|\"account_approved\"|\"account_rejected\"|\"response_notification\"|\"response_receipt\"|\"form_invitation\"|\"respondent_code\"|\"resume_link\"|\"notification\"|\"daily_digest\""
+     },
+     {
+      "path": "language",
+      "message": "Invalid input: expected string, received undefined"
+     }
+    ]
+   }
+  ],
+  "address": [
+   {
+    "input": {
+     "address": "forms@acme.test"
+    },
+    "ok": true,
+    "data": {
+     "address": "forms@acme.test"
+    }
+   },
+   {
+    "input": {
+     "address": " Forms@Acme.TEST "
+    },
+    "ok": true,
+    "data": {
+     "address": "forms@acme.test"
+    }
+   },
+   {
+    "input": {
+     "address": "nope"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "address",
+      "message": "Invalid email address"
+     }
+    ]
+   },
+   {
+    "input": {
+     "address": ""
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "address",
+      "message": "Invalid email address"
+     }
+    ]
+   },
+   {
+    "input": {
+     "address": "a@b"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "address",
+      "message": "Invalid email address"
+     }
+    ]
+   },
+   {
+    "input": {
+     "address": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx@a.test"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "address",
+      "message": "Too big: expected string to have <=200 characters"
+     }
+    ]
+   },
+   {
+    "input": {
+     "address": 7
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "address",
+      "message": "Invalid input: expected string, received number"
+     }
+    ]
+   },
+   {
+    "input": "nonsense",
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received string"
+     }
+    ]
+   },
+   {
+    "input": null,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received null"
+     }
+    ]
+   },
+   {
+    "input": 42,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received number"
+     }
+    ]
+   },
+   {
+    "input": [],
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received array"
+     }
+    ]
+   },
+   {
+    "input": {},
+    "ok": false,
+    "issues": [
+     {
+      "path": "address",
+      "message": "Invalid input: expected string, received undefined"
+     }
+    ]
+   }
+  ],
+  "smtp": [
+   {
+    "input": {
+     "host": "smtp.acme.test",
+     "port": 587,
+     "security": "starttls",
+     "username": "mailer",
+     "password": "p",
+     "from_address": "team@acme.test"
+    },
+    "ok": true,
+    "data": {
+     "host": "smtp.acme.test",
+     "port": 587,
+     "security": "starttls",
+     "username": "mailer",
+     "password": "p",
+     "from_address": "team@acme.test"
+    }
+   },
+   {
+    "input": {
+     "host": "bad host!",
+     "port": 587,
+     "security": "starttls",
+     "username": "mailer",
+     "password": "p",
+     "from_address": "team@acme.test"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "host",
+      "message": "host"
+     }
+    ]
+   },
+   {
+    "input": {
+     "host": " SMTP.Acme.TEST ",
+     "port": 587,
+     "security": "starttls",
+     "username": "mailer",
+     "password": "p",
+     "from_address": "team@acme.test"
+    },
+    "ok": true,
+    "data": {
+     "host": "smtp.acme.test",
+     "port": 587,
+     "security": "starttls",
+     "username": "mailer",
+     "password": "p",
+     "from_address": "team@acme.test"
+    }
+   },
+   {
+    "input": {
+     "host": "",
+     "port": 587,
+     "security": "starttls",
+     "username": "mailer",
+     "password": "p",
+     "from_address": "team@acme.test"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "host",
+      "message": "host"
+     }
+    ]
+   },
+   {
+    "input": {
+     "host": "127.0.0.1",
+     "port": 587,
+     "security": "starttls",
+     "username": "mailer",
+     "password": "p",
+     "from_address": "team@acme.test"
+    },
+    "ok": true,
+    "data": {
+     "host": "127.0.0.1",
+     "port": 587,
+     "security": "starttls",
+     "username": "mailer",
+     "password": "p",
+     "from_address": "team@acme.test"
+    }
+   },
+   {
+    "input": {
+     "host": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.test",
+     "port": 587,
+     "security": "starttls",
+     "username": "mailer",
+     "password": "p",
+     "from_address": "team@acme.test"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "host",
+      "message": "host"
+     }
+    ]
+   },
+   {
+    "input": {
+     "host": "smtp.acme.test",
+     "port": 0,
+     "security": "starttls",
+     "username": "mailer",
+     "password": "p",
+     "from_address": "team@acme.test"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "port",
+      "message": "Too small: expected number to be >=1"
+     }
+    ]
+   },
+   {
+    "input": {
+     "host": "smtp.acme.test",
+     "port": 70000,
+     "security": "starttls",
+     "username": "mailer",
+     "password": "p",
+     "from_address": "team@acme.test"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "port",
+      "message": "Too big: expected number to be <=65535"
+     }
+    ]
+   },
+   {
+    "input": {
+     "host": "smtp.acme.test",
+     "port": 25.5,
+     "security": "starttls",
+     "username": "mailer",
+     "password": "p",
+     "from_address": "team@acme.test"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "port",
+      "message": "Invalid input: expected int, received number"
+     }
+    ]
+   },
+   {
+    "input": {
+     "host": "smtp.acme.test",
+     "port": "25",
+     "security": "starttls",
+     "username": "mailer",
+     "password": "p",
+     "from_address": "team@acme.test"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "port",
+      "message": "Invalid input: expected number, received string"
+     }
+    ]
+   },
+   {
+    "input": {
+     "host": "smtp.acme.test",
+     "port": 587,
+     "security": "ssl",
+     "username": "mailer",
+     "password": "p",
+     "from_address": "team@acme.test"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "security",
+      "message": "Invalid option: expected one of \"starttls\"|\"tls\"|\"none\""
+     }
+    ]
+   },
+   {
+    "input": {
+     "host": "smtp.acme.test",
+     "port": 587,
+     "security": "tls",
+     "username": "mailer",
+     "password": "p",
+     "from_address": "team@acme.test"
+    },
+    "ok": true,
+    "data": {
+     "host": "smtp.acme.test",
+     "port": 587,
+     "security": "tls",
+     "username": "mailer",
+     "password": "p",
+     "from_address": "team@acme.test"
+    }
+   },
+   {
+    "input": {
+     "host": "smtp.acme.test",
+     "port": 587,
+     "security": "starttls",
+     "username": "",
+     "password": "p",
+     "from_address": "team@acme.test"
+    },
+    "ok": true,
+    "data": {
+     "host": "smtp.acme.test",
+     "port": 587,
+     "security": "starttls",
+     "username": null,
+     "password": "p",
+     "from_address": "team@acme.test"
+    }
+   },
+   {
+    "input": {
+     "host": "smtp.acme.test",
+     "port": 587,
+     "security": "starttls",
+     "username": null,
+     "password": "p",
+     "from_address": "team@acme.test"
+    },
+    "ok": true,
+    "data": {
+     "host": "smtp.acme.test",
+     "port": 587,
+     "security": "starttls",
+     "username": null,
+     "password": "p",
+     "from_address": "team@acme.test"
+    }
+   },
+   {
+    "input": {
+     "host": "smtp.acme.test",
+     "port": 587,
+     "security": "starttls",
+     "username": "  mailer  ",
+     "password": "p",
+     "from_address": "team@acme.test"
+    },
+    "ok": true,
+    "data": {
+     "host": "smtp.acme.test",
+     "port": 587,
+     "security": "starttls",
+     "username": "mailer",
+     "password": "p",
+     "from_address": "team@acme.test"
+    }
+   },
+   {
+    "input": {
+     "host": "smtp.acme.test",
+     "port": 587,
+     "security": "starttls",
+     "username": "mailer",
+     "from_address": "team@acme.test"
+    },
+    "ok": true,
+    "data": {
+     "host": "smtp.acme.test",
+     "port": 587,
+     "security": "starttls",
+     "username": "mailer",
+     "from_address": "team@acme.test"
+    }
+   },
+   {
+    "input": {
+     "host": "smtp.acme.test",
+     "port": 587,
+     "security": "starttls",
+     "username": "mailer",
+     "password": null,
+     "from_address": "team@acme.test"
+    },
+    "ok": true,
+    "data": {
+     "host": "smtp.acme.test",
+     "port": 587,
+     "security": "starttls",
+     "username": "mailer",
+     "password": null,
+     "from_address": "team@acme.test"
+    }
+   },
+   {
+    "input": {
+     "host": "smtp.acme.test",
+     "port": 587,
+     "security": "starttls",
+     "username": "mailer",
+     "password": "",
+     "from_address": "team@acme.test"
+    },
+    "ok": true,
+    "data": {
+     "host": "smtp.acme.test",
+     "port": 587,
+     "security": "starttls",
+     "username": "mailer",
+     "password": "",
+     "from_address": "team@acme.test"
+    }
+   },
+   {
+    "input": {
+     "host": "smtp.acme.test",
+     "port": 587,
+     "security": "starttls",
+     "username": "mailer",
+     "password": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+     "from_address": "team@acme.test"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "password",
+      "message": "Too big: expected string to have <=500 characters"
+     }
+    ]
+   },
+   {
+    "input": {
+     "host": "smtp.acme.test",
+     "port": 587,
+     "security": "starttls",
+     "username": "mailer",
+     "password": "p",
+     "from_address": "nope"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "from_address",
+      "message": "Invalid email address"
+     }
+    ]
+   },
+   {
+    "input": {
+     "host": "smtp.acme.test",
+     "port": 587,
+     "security": "starttls",
+     "username": "mailer",
+     "password": "p",
+     "from_address": " A@Acme.TEST "
+    },
+    "ok": true,
+    "data": {
+     "host": "smtp.acme.test",
+     "port": 587,
+     "security": "starttls",
+     "username": "mailer",
+     "password": "p",
+     "from_address": "a@acme.test"
+    }
+   },
+   {
+    "input": {
+     "port": 587,
+     "security": "starttls",
+     "username": "mailer",
+     "password": "p",
+     "from_address": "team@acme.test"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "host",
+      "message": "Invalid input: expected string, received undefined"
+     }
+    ]
+   },
+   {
+    "input": {
+     "host": "smtp.acme.test",
+     "port": 587,
+     "security": "starttls",
+     "password": "p",
+     "from_address": "team@acme.test"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "username",
+      "message": "Invalid input: expected string, received undefined"
+     }
+    ]
+   },
+   {
+    "input": "nonsense",
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received string"
+     }
+    ]
+   },
+   {
+    "input": null,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received null"
+     }
+    ]
+   },
+   {
+    "input": 42,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received number"
+     }
+    ]
+   },
+   {
+    "input": [],
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received array"
+     }
+    ]
+   },
+   {
+    "input": {},
+    "ok": false,
+    "issues": [
+     {
+      "path": "host",
+      "message": "Invalid input: expected string, received undefined"
+     },
+     {
+      "path": "port",
+      "message": "Invalid input: expected number, received undefined"
+     },
+     {
+      "path": "security",
+      "message": "Invalid option: expected one of \"starttls\"|\"tls\"|\"none\""
+     },
+     {
+      "path": "username",
+      "message": "Invalid input: expected string, received undefined"
+     },
+     {
+      "path": "from_address",
+      "message": "Invalid input: expected string, received undefined"
+     }
+    ]
+   }
+  ],
+  "mode": [
+   {
+    "input": {
+     "mode": "domain"
+    },
+    "ok": true,
+    "data": {
+     "mode": "domain"
+    }
+   },
+   {
+    "input": {
+     "mode": "smtp"
+    },
+    "ok": true,
+    "data": {
+     "mode": "smtp"
+    }
+   },
+   {
+    "input": {
+     "mode": "formalie"
+    },
+    "ok": true,
+    "data": {
+     "mode": "formalie"
+    }
+   },
+   {
+    "input": {
+     "mode": "own"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "mode",
+      "message": "Invalid option: expected one of \"formalie\"|\"domain\"|\"smtp\""
+     }
+    ]
+   },
+   {
+    "input": {
+     "mode": null
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "mode",
+      "message": "Invalid option: expected one of \"formalie\"|\"domain\"|\"smtp\""
+     }
+    ]
+   },
+   {
+    "input": "nonsense",
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received string"
+     }
+    ]
+   },
+   {
+    "input": null,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received null"
+     }
+    ]
+   },
+   {
+    "input": 42,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received number"
+     }
+    ]
+   },
+   {
+    "input": [],
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received array"
+     }
+    ]
+   },
+   {
+    "input": {},
+    "ok": false,
+    "issues": [
+     {
+      "path": "mode",
+      "message": "Invalid option: expected one of \"formalie\"|\"domain\"|\"smtp\""
+     }
+    ]
+   }
+  ],
+  "sso": [
+   {
+    "input": {
+     "provider": "okta",
+     "label": "Okta",
+     "oidc": {
+      "issuer": "https://acme.okta.com",
+      "client_id": "c1",
+      "client_secret": "s"
+     },
+     "domains": [
+      "acme.test"
+     ],
+     "enforce": false,
+     "auto_create": false,
+     "default_role": "member"
+    },
+    "ok": true,
+    "data": {
+     "provider": "okta",
+     "label": "Okta",
+     "oidc": {
+      "issuer": "https://acme.okta.com",
+      "client_id": "c1",
+      "client_secret": "s"
+     },
+     "domains": [
+      "acme.test"
+     ],
+     "enforce": false,
+     "auto_create": false,
+     "default_role": "member"
+    }
+   },
+   {
+    "input": {
+     "provider": "auth0",
+     "label": "Okta",
+     "oidc": {
+      "issuer": "https://acme.okta.com",
+      "client_id": "c1",
+      "client_secret": "s"
+     },
+     "domains": [
+      "acme.test"
+     ],
+     "enforce": false,
+     "auto_create": false,
+     "default_role": "member"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "provider",
+      "message": "Invalid option: expected one of \"okta\"|\"entra\"|\"google_workspace\"|\"onelogin\"|\"saml\"|\"oidc\""
+     }
+    ]
+   },
+   {
+    "input": {
+     "provider": "okta",
+     "label": " ",
+     "oidc": {
+      "issuer": "https://acme.okta.com",
+      "client_id": "c1",
+      "client_secret": "s"
+     },
+     "domains": [
+      "acme.test"
+     ],
+     "enforce": false,
+     "auto_create": false,
+     "default_role": "member"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "label",
+      "message": "Too small: expected string to have >=1 characters"
+     }
+    ]
+   },
+   {
+    "input": {
+     "provider": "okta",
+     "label": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+     "oidc": {
+      "issuer": "https://acme.okta.com",
+      "client_id": "c1",
+      "client_secret": "s"
+     },
+     "domains": [
+      "acme.test"
+     ],
+     "enforce": false,
+     "auto_create": false,
+     "default_role": "member"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "label",
+      "message": "Too big: expected string to have <=40 characters"
+     }
+    ]
+   },
+   {
+    "input": {
+     "provider": "okta",
+     "label": "  Okta  ",
+     "oidc": {
+      "issuer": "https://acme.okta.com",
+      "client_id": "c1",
+      "client_secret": "s"
+     },
+     "domains": [
+      "acme.test"
+     ],
+     "enforce": false,
+     "auto_create": false,
+     "default_role": "member"
+    },
+    "ok": true,
+    "data": {
+     "provider": "okta",
+     "label": "Okta",
+     "oidc": {
+      "issuer": "https://acme.okta.com",
+      "client_id": "c1",
+      "client_secret": "s"
+     },
+     "domains": [
+      "acme.test"
+     ],
+     "enforce": false,
+     "auto_create": false,
+     "default_role": "member"
+    }
+   },
+   {
+    "input": {
+     "provider": "okta",
+     "label": "Okta",
+     "oidc": {
+      "issuer": "http://acme.okta.com",
+      "client_id": "c1",
+      "client_secret": "s"
+     },
+     "domains": [
+      "acme.test"
+     ],
+     "enforce": false,
+     "auto_create": false,
+     "default_role": "member"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "oidc.issuer",
+      "message": "https"
+     }
+    ]
+   },
+   {
+    "input": {
+     "provider": "okta",
+     "label": "Okta",
+     "oidc": {
+      "issuer": "",
+      "client_id": "c1",
+      "client_secret": "s"
+     },
+     "domains": [
+      "acme.test"
+     ],
+     "enforce": false,
+     "auto_create": false,
+     "default_role": "member"
+    },
+    "ok": true,
+    "data": {
+     "provider": "okta",
+     "label": "Okta",
+     "oidc": {
+      "issuer": null,
+      "client_id": "c1",
+      "client_secret": "s"
+     },
+     "domains": [
+      "acme.test"
+     ],
+     "enforce": false,
+     "auto_create": false,
+     "default_role": "member"
+    }
+   },
+   {
+    "input": {
+     "provider": "okta",
+     "label": "Okta",
+     "oidc": {
+      "issuer": null,
+      "client_id": "c1",
+      "client_secret": "s"
+     },
+     "domains": [
+      "acme.test"
+     ],
+     "enforce": false,
+     "auto_create": false,
+     "default_role": "member"
+    },
+    "ok": true,
+    "data": {
+     "provider": "okta",
+     "label": "Okta",
+     "oidc": {
+      "issuer": null,
+      "client_id": "c1",
+      "client_secret": "s"
+     },
+     "domains": [
+      "acme.test"
+     ],
+     "enforce": false,
+     "auto_create": false,
+     "default_role": "member"
+    }
+   },
+   {
+    "input": {
+     "provider": "okta",
+     "label": "Okta",
+     "oidc": {
+      "issuer": "https://acme.okta.com",
+      "client_id": "  ",
+      "client_secret": "s"
+     },
+     "domains": [
+      "acme.test"
+     ],
+     "enforce": false,
+     "auto_create": false,
+     "default_role": "member"
+    },
+    "ok": true,
+    "data": {
+     "provider": "okta",
+     "label": "Okta",
+     "oidc": {
+      "issuer": "https://acme.okta.com",
+      "client_id": null,
+      "client_secret": "s"
+     },
+     "domains": [
+      "acme.test"
+     ],
+     "enforce": false,
+     "auto_create": false,
+     "default_role": "member"
+    }
+   },
+   {
+    "input": {
+     "provider": "okta",
+     "label": "Okta",
+     "oidc": {
+      "issuer": "https://acme.okta.com",
+      "client_id": "c1"
+     },
+     "domains": [
+      "acme.test"
+     ],
+     "enforce": false,
+     "auto_create": false,
+     "default_role": "member"
+    },
+    "ok": true,
+    "data": {
+     "provider": "okta",
+     "label": "Okta",
+     "oidc": {
+      "issuer": "https://acme.okta.com",
+      "client_id": "c1"
+     },
+     "domains": [
+      "acme.test"
+     ],
+     "enforce": false,
+     "auto_create": false,
+     "default_role": "member"
+    }
+   },
+   {
+    "input": {
+     "provider": "okta",
+     "label": "Okta",
+     "oidc": {
+      "issuer": "https://acme.okta.com",
+      "client_id": "c1",
+      "client_secret": null
+     },
+     "domains": [
+      "acme.test"
+     ],
+     "enforce": false,
+     "auto_create": false,
+     "default_role": "member"
+    },
+    "ok": true,
+    "data": {
+     "provider": "okta",
+     "label": "Okta",
+     "oidc": {
+      "issuer": "https://acme.okta.com",
+      "client_id": "c1",
+      "client_secret": null
+     },
+     "domains": [
+      "acme.test"
+     ],
+     "enforce": false,
+     "auto_create": false,
+     "default_role": "member"
+    }
+   },
+   {
+    "input": {
+     "provider": "okta",
+     "label": "Okta",
+     "domains": [
+      "acme.test"
+     ],
+     "enforce": false,
+     "auto_create": false,
+     "default_role": "member"
+    },
+    "ok": true,
+    "data": {
+     "provider": "okta",
+     "label": "Okta",
+     "domains": [
+      "acme.test"
+     ],
+     "enforce": false,
+     "auto_create": false,
+     "default_role": "member"
+    }
+   },
+   {
+    "input": {
+     "provider": "okta",
+     "label": "Okta",
+     "oidc": {
+      "issuer": "https://acme.okta.com",
+      "client_id": "c1",
+      "client_secret": "s"
+     },
+     "domains": [
+      "@Acme.TEST",
+      "b.test"
+     ],
+     "enforce": false,
+     "auto_create": false,
+     "default_role": "member"
+    },
+    "ok": true,
+    "data": {
+     "provider": "okta",
+     "label": "Okta",
+     "oidc": {
+      "issuer": "https://acme.okta.com",
+      "client_id": "c1",
+      "client_secret": "s"
+     },
+     "domains": [
+      "acme.test",
+      "b.test"
+     ],
+     "enforce": false,
+     "auto_create": false,
+     "default_role": "member"
+    }
+   },
+   {
+    "input": {
+     "provider": "okta",
+     "label": "Okta",
+     "oidc": {
+      "issuer": "https://acme.okta.com",
+      "client_id": "c1",
+      "client_secret": "s"
+     },
+     "domains": [
+      "not a domain"
+     ],
+     "enforce": false,
+     "auto_create": false,
+     "default_role": "member"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "domains.0",
+      "message": "domain"
+     }
+    ]
+   },
+   {
+    "input": {
+     "provider": "okta",
+     "label": "Okta",
+     "oidc": {
+      "issuer": "https://acme.okta.com",
+      "client_id": "c1",
+      "client_secret": "s"
+     },
+     "domains": [],
+     "enforce": false,
+     "auto_create": false,
+     "default_role": "member"
+    },
+    "ok": true,
+    "data": {
+     "provider": "okta",
+     "label": "Okta",
+     "oidc": {
+      "issuer": "https://acme.okta.com",
+      "client_id": "c1",
+      "client_secret": "s"
+     },
+     "domains": [],
+     "enforce": false,
+     "auto_create": false,
+     "default_role": "member"
+    }
+   },
+   {
+    "input": {
+     "provider": "okta",
+     "label": "Okta",
+     "oidc": {
+      "issuer": "https://acme.okta.com",
+      "client_id": "c1",
+      "client_secret": "s"
+     },
+     "domains": [
+      "d0.test",
+      "d1.test",
+      "d2.test",
+      "d3.test",
+      "d4.test",
+      "d5.test",
+      "d6.test",
+      "d7.test",
+      "d8.test",
+      "d9.test",
+      "d10.test",
+      "d11.test",
+      "d12.test",
+      "d13.test",
+      "d14.test",
+      "d15.test",
+      "d16.test",
+      "d17.test",
+      "d18.test",
+      "d19.test",
+      "d20.test"
+     ],
+     "enforce": false,
+     "auto_create": false,
+     "default_role": "member"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "domains",
+      "message": "Too big: expected array to have <=20 items"
+     }
+    ]
+   },
+   {
+    "input": {
+     "provider": "okta",
+     "label": "Okta",
+     "oidc": {
+      "issuer": "https://acme.okta.com",
+      "client_id": "c1",
+      "client_secret": "s"
+     },
+     "domains": [
+      "acme.test"
+     ],
+     "enforce": "yes",
+     "auto_create": false,
+     "default_role": "member"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "enforce",
+      "message": "Invalid input: expected boolean, received string"
+     }
+    ]
+   },
+   {
+    "input": {
+     "provider": "okta",
+     "label": "Okta",
+     "oidc": {
+      "issuer": "https://acme.okta.com",
+      "client_id": "c1",
+      "client_secret": "s"
+     },
+     "domains": [
+      "acme.test"
+     ],
+     "enforce": false,
+     "auto_create": null,
+     "default_role": "member"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "auto_create",
+      "message": "Invalid input: expected boolean, received null"
+     }
+    ]
+   },
+   {
+    "input": {
+     "provider": "okta",
+     "label": "Okta",
+     "oidc": {
+      "issuer": "https://acme.okta.com",
+      "client_id": "c1",
+      "client_secret": "s"
+     },
+     "domains": [
+      "acme.test"
+     ],
+     "enforce": false,
+     "auto_create": false,
+     "default_role": ""
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "default_role",
+      "message": "Too small: expected string to have >=1 characters"
+     }
+    ]
+   },
+   {
+    "input": {
+     "provider": "okta",
+     "label": "Okta",
+     "oidc": {
+      "issuer": "https://acme.okta.com",
+      "client_id": "c1",
+      "client_secret": "s"
+     },
+     "domains": [
+      "acme.test"
+     ],
+     "enforce": false,
+     "auto_create": false,
+     "default_role": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "default_role",
+      "message": "Too big: expected string to have <=100 characters"
+     }
+    ]
+   },
+   {
+    "input": {
+     "provider": "okta",
+     "label": "Okta",
+     "oidc": {
+      "issuer": "https://acme.okta.com",
+      "client_id": "c1",
+      "client_secret": "s"
+     },
+     "domains": [
+      "acme.test"
+     ],
+     "enforce": false,
+     "auto_create": false,
+     "default_role": "member",
+     "saml": {
+      "metadata_url": "https://idp.test/meta"
+     }
+    },
+    "ok": true,
+    "data": {
+     "provider": "okta",
+     "label": "Okta",
+     "saml": {
+      "metadata_url": "https://idp.test/meta"
+     },
+     "oidc": {
+      "issuer": "https://acme.okta.com",
+      "client_id": "c1",
+      "client_secret": "s"
+     },
+     "domains": [
+      "acme.test"
+     ],
+     "enforce": false,
+     "auto_create": false,
+     "default_role": "member"
+    }
+   },
+   {
+    "input": {
+     "provider": "okta",
+     "label": "Okta",
+     "oidc": {
+      "issuer": "https://acme.okta.com",
+      "client_id": "c1",
+      "client_secret": "s"
+     },
+     "domains": [
+      "acme.test"
+     ],
+     "enforce": false,
+     "auto_create": false,
+     "default_role": "member",
+     "saml": {
+      "metadata_url": "ftp://idp.test"
+     }
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "saml.metadata_url",
+      "message": "https"
+     }
+    ]
+   },
+   {
+    "input": {
+     "provider": "okta",
+     "label": "Okta",
+     "oidc": {
+      "issuer": "https://acme.okta.com",
+      "client_id": "c1",
+      "client_secret": "s"
+     },
+     "domains": [
+      "acme.test"
+     ],
+     "enforce": false,
+     "auto_create": false,
+     "default_role": "member",
+     "saml": {
+      "entity_id": "  urn:idp  ",
+      "sso_url": "https://idp.test/sso",
+      "certificate": "  MIIB  "
+     }
+    },
+    "ok": true,
+    "data": {
+     "provider": "okta",
+     "label": "Okta",
+     "saml": {
+      "entity_id": "urn:idp",
+      "sso_url": "https://idp.test/sso",
+      "certificate": "MIIB"
+     },
+     "oidc": {
+      "issuer": "https://acme.okta.com",
+      "client_id": "c1",
+      "client_secret": "s"
+     },
+     "domains": [
+      "acme.test"
+     ],
+     "enforce": false,
+     "auto_create": false,
+     "default_role": "member"
+    }
+   },
+   {
+    "input": {
+     "provider": "okta",
+     "label": "Okta",
+     "oidc": {
+      "issuer": "https://acme.okta.com",
+      "client_id": "c1",
+      "client_secret": "s"
+     },
+     "domains": [
+      "acme.test"
+     ],
+     "enforce": false,
+     "auto_create": false,
+     "default_role": "member",
+     "saml": {
+      "entity_id": ""
+     }
+    },
+    "ok": true,
+    "data": {
+     "provider": "okta",
+     "label": "Okta",
+     "saml": {
+      "entity_id": null
+     },
+     "oidc": {
+      "issuer": "https://acme.okta.com",
+      "client_id": "c1",
+      "client_secret": "s"
+     },
+     "domains": [
+      "acme.test"
+     ],
+     "enforce": false,
+     "auto_create": false,
+     "default_role": "member"
+    }
+   },
+   {
+    "input": {
+     "provider": "okta",
+     "label": "Okta",
+     "oidc": {
+      "issuer": "https://acme.okta.com",
+      "client_id": "c1",
+      "client_secret": "s"
+     },
+     "domains": [
+      "acme.test"
+     ],
+     "enforce": false,
+     "auto_create": false,
+     "default_role": "member",
+     "saml": {}
+    },
+    "ok": true,
+    "data": {
+     "provider": "okta",
+     "label": "Okta",
+     "saml": {},
+     "oidc": {
+      "issuer": "https://acme.okta.com",
+      "client_id": "c1",
+      "client_secret": "s"
+     },
+     "domains": [
+      "acme.test"
+     ],
+     "enforce": false,
+     "auto_create": false,
+     "default_role": "member"
+    }
+   },
+   {
+    "input": {
+     "provider": "okta",
+     "label": "Okta",
+     "oidc": {
+      "issuer": "https://acme.okta.com",
+      "client_id": "c1",
+      "client_secret": "s"
+     },
+     "domains": [
+      "acme.test"
+     ],
+     "enforce": false,
+     "auto_create": false,
+     "default_role": "member",
+     "saml": null
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "saml",
+      "message": "Invalid input: expected object, received null"
+     }
+    ]
+   },
+   {
+    "input": {
+     "provider": "okta",
+     "label": "Okta",
+     "oidc": {
+      "issuer": "https://acme.okta.com",
+      "client_id": "c1",
+      "client_secret": "s"
+     },
+     "enforce": false,
+     "auto_create": false,
+     "default_role": "member"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "domains",
+      "message": "Invalid input: expected array, received undefined"
+     }
+    ]
+   },
+   {
+    "input": "nonsense",
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received string"
+     }
+    ]
+   },
+   {
+    "input": null,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received null"
+     }
+    ]
+   },
+   {
+    "input": 42,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received number"
+     }
+    ]
+   },
+   {
+    "input": [],
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received array"
+     }
+    ]
+   },
+   {
+    "input": {},
+    "ok": false,
+    "issues": [
+     {
+      "path": "provider",
+      "message": "Invalid option: expected one of \"okta\"|\"entra\"|\"google_workspace\"|\"onelogin\"|\"saml\"|\"oidc\""
+     },
+     {
+      "path": "label",
+      "message": "Invalid input: expected string, received undefined"
+     },
+     {
+      "path": "domains",
+      "message": "Invalid input: expected array, received undefined"
+     },
+     {
+      "path": "enforce",
+      "message": "Invalid input: expected boolean, received undefined"
+     },
+     {
+      "path": "auto_create",
+      "message": "Invalid input: expected boolean, received undefined"
+     },
+     {
+      "path": "default_role",
+      "message": "Invalid input: expected string, received undefined"
+     }
+    ]
+   }
+  ],
+  "status": [
+   {
+    "input": {
+     "active": true
+    },
+    "ok": true,
+    "data": {
+     "active": true
+    }
+   },
+   {
+    "input": {
+     "active": false
+    },
+    "ok": true,
+    "data": {
+     "active": false
+    }
+   },
+   {
+    "input": {
+     "active": "true"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "active",
+      "message": "Invalid input: expected boolean, received string"
+     }
+    ]
+   },
+   {
+    "input": {
+     "active": null
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "active",
+      "message": "Invalid input: expected boolean, received null"
+     }
+    ]
+   },
+   {
+    "input": "nonsense",
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received string"
+     }
+    ]
+   },
+   {
+    "input": null,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received null"
+     }
+    ]
+   },
+   {
+    "input": 42,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received number"
+     }
+    ]
+   },
+   {
+    "input": [],
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received array"
+     }
+    ]
+   },
+   {
+    "input": {},
+    "ok": false,
+    "issues": [
+     {
+      "path": "active",
+      "message": "Invalid input: expected boolean, received undefined"
+     }
+    ]
+   }
+  ],
+  "subdomain": [
+   {
+    "input": {
+     "subdomain": "acme",
+     "confirm": "acme"
+    },
+    "ok": true,
+    "data": {
+     "subdomain": "acme",
+     "confirm": "acme"
+    }
+   },
+   {
+    "input": {
+     "subdomain": " ACME ",
+     "confirm": "acme"
+    },
+    "ok": true,
+    "data": {
+     "subdomain": "acme",
+     "confirm": "acme"
+    }
+   },
+   {
+    "input": {
+     "subdomain": "ab",
+     "confirm": "acme"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "subdomain",
+      "message": "Too small: expected string to have >=3 characters"
+     }
+    ]
+   },
+   {
+    "input": {
+     "subdomain": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+     "confirm": "acme"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "subdomain",
+      "message": "Too big: expected string to have <=63 characters"
+     }
+    ]
+   },
+   {
+    "input": {
+     "subdomain": "acme",
+     "confirm": " Acme "
+    },
+    "ok": true,
+    "data": {
+     "subdomain": "acme",
+     "confirm": "acme"
+    }
+   },
+   {
+    "input": {
+     "subdomain": "acme"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "confirm",
+      "message": "Invalid input: expected string, received undefined"
+     }
+    ]
+   },
+   {
+    "input": {
+     "subdomain": 5,
+     "confirm": "acme"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "subdomain",
+      "message": "Invalid input: expected string, received number"
+     }
+    ]
+   },
+   {
+    "input": "nonsense",
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received string"
+     }
+    ]
+   },
+   {
+    "input": null,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received null"
+     }
+    ]
+   },
+   {
+    "input": 42,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received number"
+     }
+    ]
+   },
+   {
+    "input": [],
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received array"
+     }
+    ]
+   },
+   {
+    "input": {},
+    "ok": false,
+    "issues": [
+     {
+      "path": "subdomain",
+      "message": "Invalid input: expected string, received undefined"
+     },
+     {
+      "path": "confirm",
+      "message": "Invalid input: expected string, received undefined"
+     }
+    ]
+   }
+  ],
+  "domain": [
+   {
+    "input": {
+     "domain": "forms.acme.test"
+    },
+    "ok": true,
+    "data": {
+     "domain": "forms.acme.test"
+    }
+   },
+   {
+    "input": {
+     "domain": " HTTPS://Forms.Acme.TEST./path?x=1 "
+    },
+    "ok": true,
+    "data": {
+     "domain": "forms.acme.test"
+    }
+   },
+   {
+    "input": {
+     "domain": "http://a.b/"
+    },
+    "ok": true,
+    "data": {
+     "domain": "a.b"
+    }
+   },
+   {
+    "input": {
+     "domain": ""
+    },
+    "ok": true,
+    "data": {
+     "domain": ""
+    }
+   },
+   {
+    "input": {
+     "domain": "forms.acme.test."
+    },
+    "ok": true,
+    "data": {
+     "domain": "forms.acme.test"
+    }
+   },
+   {
+    "input": {
+     "domain": null
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "domain",
+      "message": "Invalid input: expected string, received null"
+     }
+    ]
+   },
+   {
+    "input": "nonsense",
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received string"
+     }
+    ]
+   },
+   {
+    "input": null,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received null"
+     }
+    ]
+   },
+   {
+    "input": 42,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received number"
+     }
+    ]
+   },
+   {
+    "input": [],
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received array"
+     }
+    ]
+   },
+   {
+    "input": {},
+    "ok": false,
+    "issues": [
+     {
+      "path": "domain",
+      "message": "Invalid input: expected string, received undefined"
+     }
+    ]
+   }
+  ],
+  "email": [
+   {
+    "input": {
+     "email": "ana@example.org"
+    },
+    "ok": true,
+    "data": {
+     "email": "ana@example.org"
+    }
+   },
+   {
+    "input": {
+     "email": " ana@example.org"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "email",
+      "message": "Invalid email address"
+     }
+    ]
+   },
+   {
+    "input": {
+     "email": "nope"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "email",
+      "message": "Invalid email address"
+     }
+    ]
+   },
+   {
+    "input": {
+     "email": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx@a.test"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "email",
+      "message": "Too big: expected string to have <=200 characters"
+     }
+    ]
+   },
+   {
+    "input": {
+     "email": "Ana@Example.ORG"
+    },
+    "ok": true,
+    "data": {
+     "email": "Ana@Example.ORG"
+    }
+   },
+   {
+    "input": {
+     "email": ""
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "email",
+      "message": "Invalid email address"
+     }
+    ]
+   },
+   {
+    "input": "nonsense",
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received string"
+     }
+    ]
+   },
+   {
+    "input": null,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received null"
+     }
+    ]
+   },
+   {
+    "input": 42,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received number"
+     }
+    ]
+   },
+   {
+    "input": [],
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received array"
+     }
+    ]
+   },
+   {
+    "input": {},
+    "ok": false,
+    "issues": [
+     {
+      "path": "email",
+      "message": "Invalid input: expected string, received undefined"
+     }
+    ]
+   }
+  ],
+  "delete": [
+   {
+    "input": {
+     "email": "ana@example.org",
+     "confirm": "ana@example.org"
+    },
+    "ok": true,
+    "data": {
+     "email": "ana@example.org",
+     "confirm": "ana@example.org"
+    }
+   },
+   {
+    "input": {
+     "email": "ana@example.org",
+     "confirm": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "confirm",
+      "message": "Too big: expected string to have <=200 characters"
+     }
+    ]
+   },
+   {
+    "input": {
+     "email": "ana@example.org"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "confirm",
+      "message": "Invalid input: expected string, received undefined"
+     }
+    ]
+   },
+   {
+    "input": {
+     "email": "nope",
+     "confirm": "ana@example.org"
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "email",
+      "message": "Invalid email address"
+     }
+    ]
+   },
+   {
+    "input": {
+     "email": "ana@example.org",
+     "confirm": 7
+    },
+    "ok": false,
+    "issues": [
+     {
+      "path": "confirm",
+      "message": "Invalid input: expected string, received number"
+     }
+    ]
+   },
+   {
+    "input": "nonsense",
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received string"
+     }
+    ]
+   },
+   {
+    "input": null,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received null"
+     }
+    ]
+   },
+   {
+    "input": 42,
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received number"
+     }
+    ]
+   },
+   {
+    "input": [],
+    "ok": false,
+    "issues": [
+     {
+      "path": "",
+      "message": "Invalid input: expected object, received array"
+     }
+    ]
+   },
+   {
+    "input": {},
+    "ok": false,
+    "issues": [
+     {
+      "path": "email",
+      "message": "Invalid input: expected string, received undefined"
+     },
+     {
+      "path": "confirm",
+      "message": "Invalid input: expected string, received undefined"
+     }
+    ]
+   }
+  ]
+ },
+ "about": "Recorded from the frontend by scripts/dump_settings_more_rules.py. Do not edit."
+}

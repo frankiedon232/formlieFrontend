@@ -75,6 +75,21 @@ class Settings(BaseSettings):
     smtp_security: Literal["none", "starttls", "tls"] = "none"
     smtp_username: str | None = None
     smtp_password: SecretStr | None = None
+    # Workspaces' own sending address (B11, Settings → Emails → Sending address): the DNS records they add point here.
+    # The outgoing relay must sign mail from a verified domain with the DKIM key published at
+    # fm1/fm2.{key}.{EMAIL_DKIM_DOMAIN} and take bounces for fm-bounces.{their domain} (PRODUCTION-CHECKLIST).
+    email_spf_include: str = "spf.formalie.com"
+    email_dkim_domain: str = "dkim.formalie.com"
+    email_bounces_host: str = "bounces.formalie.com"
+    # Development and tests only: workspaces' own mail servers and identity providers on this machine or a private
+    # network (Mailpit, a test IdP). Production always refuses them.
+    email_smtp_allow_local: bool = False
+    sso_allow_local: bool = False
+    dns_timeout_seconds: float = 4.0
+    # Single sign-on (B11): SAML requests are signed with this certificate and key (PEM) when both are set;
+    # identity providers then see it in the metadata. Empty: requests go unsigned (assertions are always checked).
+    saml_sp_cert: SecretStr | None = None
+    saml_sp_key: SecretStr | None = None
 
     # ── Social sign-in (Formalie's own app at each provider; empty = that button answers "unavailable") ──
     oauth_google_client_id: str | None = None

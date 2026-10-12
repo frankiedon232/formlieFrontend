@@ -18,7 +18,7 @@ Marks (as in the frontend's PROGRESS): ✅ done (built and verified) · 🟡 bui
 | B8 | Responses | ✅ **Done** (owner: "CONTINUE", 2026-10-11) | 23 / 23 |
 | B9 | Data sources and destinations | 🟡 **Built**; waiting for the owner's review. Webhooks moved to B10, the dashboard's Data sources view to B12 | 48 / 48 (webhooks 10 and the dashboard view 1 counted with B10 and B12) |
 | B10 | API service (management, webhooks, the public gateway) | ✅ **Built** (step 1 management, step 2 traffic and webhooks, step 3 the public gateway on `api.formalie.*` and Try it); waiting for the owner's review | 61 / 61 (53 portal + 8 public gateway) |
-| B11 | Settings, the rest (emails and sending, SSO, address, privacy, data region) | ⬜ Later | 0 / 29 |
+| B11 | Settings, the rest (emails and sending, SSO, address, privacy, data region) | ✅ **Built** (2026-10-12); waiting for the owner's review. SMS provider still ⏸ | 29 / 29 |
 | B12 | Analytics and dashboard | ✅ **Built** (2026-10-12); waiting for the owner's review | 7 / 7 |
 | B13 | AI assistant | ⬜ Later | 0 / 19 |
 | B14 | Help centre and tours | ⬜ Later | 0 / 9 |
@@ -26,7 +26,7 @@ Marks (as in the frontend's PROGRESS): ✅ done (built and verified) · 🟡 bui
 | B16 | Platform admin bridge | ⬜ Later | (PLATFORM-ADMIN-INTEGRATION §5) |
 | B17 | Hardening and switch-over | ⬜ Later; the frontend switch-over started 2026-10-12 (mock off, B0 to B9 being tested by the owner) | |
 
-Portal endpoints: 338 of 416 ticked in `ENDPOINTS.md` (2026-10-12: creating a form from a template and the two server-rendered page routes were built in B5 to B7 but not ticked; ticked after checking the routes and their tests; B10 step 1 added 36, step 2 added 16, step 3 added Try it; B12 added 7), plus the 8 public gateway endpoints. 78 left, all in B11 and B13 to B15.
+Portal endpoints: 367 of 416 ticked in `ENDPOINTS.md` (2026-10-12: creating a form from a template and the two server-rendered page routes were built in B5 to B7 but not ticked; ticked after checking the routes and their tests; B10 step 1 added 36, step 2 added 16, step 3 added Try it; B12 added 7; B11 added 29), plus the 8 public gateway endpoints and B11's 4 plain single sign-on routes. 49 left, all in B13 to B15.
 
 ## B0, Foundation ✅ (2026-10-10)
 
@@ -204,14 +204,24 @@ Decisions made in B10 step 3 (backend only; the frontend's answers are unchanged
 - **Files:** `POST …/files?field=` stores the file at once as a finished respondent file of that form and question (storage `responses/`), 25 MB at most within the question's own limit; a larger body is refused as `file_size`.
 - **The log of a Try it call** names the Docs console (mode test) without a token id, as the mock's log does; the request log's mode filter includes it.
 
-### B11, Settings, the rest (Later)
+### B11, Settings, the rest ✅ (built 2026-10-12)
 
-- ⬜ Email templates, preview, test, sent log. Endpoints: 5 · Frontend reference: `routes/emails.ts`, `data/emailDefaults/`
-- ⬜ Sending: Formalie address, own domain (DNS checks), SMTP. Endpoints: 8 · Frontend reference: `routes/emailSending.ts`
-- ⬜ Single sign-on (SAML / OIDC). Endpoints: 6 · Frontend reference: `routes/sso.ts`
-- ⬜ Address: subdomain change (old one kept 90 days), own domain. Endpoints: 5 · Frontend reference: `routes/address.ts`
-- ⬜ Privacy requests (find, export, delete a person's data) and retention preview; data region. Endpoints: 5 · Frontend reference: `routes/dataPrivacy.ts`, `routes/dataRegion.ts`
+- ✅ Email templates, preview, test, sent log. Endpoints: 5 · Frontend reference: `routes/emails.ts`, `data/emailDefaults/` · Where: `app/modules/emails/settings_router.py`, `workspace.py` (`log_sent`, the last 200 per workspace), `catalogue.py` (`EMAIL_VARIABLES`); table `sent_emails`. Every workspace email (codes, invitations, approvals, form invitations, respondent codes, resume links, response emails, notifications, digest) now goes through `workspace.send`: the workspace's look, own wording, sending route and sent log; codes and personal links show as dots in the log
+- ✅ Sending: Formalie address, own domain (DNS checks), SMTP. Endpoints: 8 · Frontend reference: `routes/emailSending.ts` · Where: `app/modules/emails/sending.py` (records, real DNS checks with dnspython through `app/core/dns.py`, the SMTP test, the route), `service.deliver` (Formalie's relay with the workspace's From and `bounces@fm-bounces.{domain}`, or the workspace's own server, only at public addresses: `app/core/outbound.py`); table `email_sending`, password Fernet-encrypted
+- ✅ Single sign-on (SAML / OIDC). Endpoints: 6 (and 4 plain browser routes: SAML ACS and metadata, OIDC callback, sign-out) · Frontend reference: `routes/sso.ts` · Where: `app/modules/sso/` (`router.py`; `service.py` settings, test, sign-in page; `flows.py` python3-saml and Authlib), `app/modules/auth/router.py` `sso_login` (FRM-AUTH-1019 on password and social sign-in for required domains); table `sso_connections`
+- ✅ Address: subdomain change (old one kept 90 days), own domain. Endpoints: 5 · Frontend reference: `routes/address.ts` · Where: `app/modules/address/router.py`, `app/modules/tenants/service.py` `by_domain`; table `custom_domains`, `platform.custom_domains_directory`, `platform.change_subdomain` and the other directory functions (migration 0031)
+- ✅ Privacy requests (find, export, erase a person's data) and retention preview; data region. Endpoints: 5 · Frontend reference: `routes/dataPrivacy.ts`, `routes/dataRegion.ts` · Where: `app/modules/privacy/` (`service.py`, `router.py`, `tasks.py` daily retention), `app/modules/responses/erase.py` (erasure in place); retention also runs when the privacy setting is saved
+- ✅ Parity: `scripts/dump_settings_more_rules.py` → `tests/vectors/settings_more_rules.json` (the catalogues and 150 cases of the mock routes' schemas), `tests/parity/test_settings_more_rules.py`. API, cross-tenant, DNS (injected resolver), SMTP (a fake server, `tests/smtp_fake.py`), SAML and OIDC (a fake identity provider, keys made in the test): `tests/db/test_email_settings.py`, `test_sso.py`, `test_address_privacy.py`
 - ⏸ SMS provider for text-message codes (Waiting (owner picks a provider))
+
+Decisions made in B11 (also in 03-DECISIONS, "Settings, the rest"; the shapes are the mock's unless said):
+- **Privacy erasure without hard deletes (the open question, resolved):** erased in place. Answers and personal fields cleared, the response deleted as in the portal, its notes emptied, the answers in its history cleared (`formalie_app` may update only `before` / `after` there), its files removed from storage, webhook delivery bodies about it cleared, the person's drafts emptied, sent emails to them kept as a masked line. Rows, numbers, relations and audit entries stay.
+- **The SMTP test signs in and checks MAIL FROM / RCPT TO (then RSET), sending nothing;** two new problems, `auth_failed` and `sender_refused` (contract changed; the frontend needs their words).
+- **Single sign-on:** the provider must vouch for an address of the connection's domains (`FRM-AUTH-1014`), the usual second step follows, back through `/auth/login?oauth_challenge=…&provider=sso`; `auto_create` only for those domains; social sign-in is refused for required domains too. SAML metadata from an address is read again once a day at sign-in (rotated certificates).
+- **The sent log hides codes and personal links** (activation, invitation, resume, form invitation links) as dots; the mock hides codes only.
+- **Own sending domain mail** leaves through Formalie's relay; DKIM signing and bounce handling are the relay's (PRODUCTION-CHECKLIST, section 6).
+- **Own web domain:** proven by its DNS records; the prover answers on it, whoever held it before; it stops when a check fails, it is removed, or the plan drops custom domains.
+- **Privacy export** is answered in the request (the page saves it), not as an export job.
 
 ### B12, Analytics and dashboard ✅ (built 2026-10-12)
 
@@ -264,7 +274,9 @@ Decisions made in B12 (backend only; the shapes are the mock's):
 
 - **Fill-in events for analytics (B12):** views, starts and where people stop are the mock's estimates around real completions, because nothing records the fill-in page's events. Record them (a `form_events` table, monthly partitions, one view and one start per session, the last question answered when someone leaves) so the numbers become real? It needs a migration and a small call from the fill-in page.
 - **Dashboard days (B12):** the backend counts days in the workspace's time zone; API-CONTRACT (shared with the frontend) says the buckets are UTC. Change the contract line in both copies to "the workspace's time zone", or count in UTC?
-- **Privacy erasure without hard deletes:** "delete a person's data" (Settings → Privacy, F14) and response retention must still remove personal data. Proposal: anonymise in place (overwrite answers and personal fields, keep the row, its relations and the audit entry). To decide before B11.
+- ~~**Privacy erasure without hard deletes.**~~ Done 2026-10-12 (B11): erased in place (03-DECISIONS, "Settings, the rest").
+- **Contract changes from B11 for the frontend's copy:** the SMTP test's two new problems `auth_failed` and `sender_refused` need words in the 20 languages (`settings.smtp.problem.*`) and in `shared/types/emails.ts`; API-CONTRACT, SECURITY-PROTOCOL (plain SSO routes) and 03-DECISIONS changed here.
+- **Trying own domains and single sign-on for real:** a domain you control (DNS records for a sending address or a web address), and an Okta / Entra / Google Workspace test tenant pointing at the workspace's service provider addresses.
 - ~~**Shared docs:** changed here, needed in the frontend too.~~ Done 2026-10-12: all eight shared docs are identical in both projects.
 - **Signed calls to the API service (B10 step 3):** the task asked for optional HMAC signing; 03-DECISIONS (2026-10-06) says signed calls are gone and FRM-API-1012 is retired. The gateway checks a signature only for a token with `signing` on, which nothing can set today, so it changes no answer. Keep it dormant (ready if signing comes back), or remove it?
 - **Postman on the frontend's port:** with the mock off, `https://api.formalie.dev:2202/…` is not forwarded to the backend (the frontend's `server/middleware/api-host.ts` only answers with the mock). Use the backend's port (`:5004`), or have the frontend forward that host to the backend when the mock is off (a frontend change).
@@ -282,6 +294,8 @@ Decisions made in B12 (backend only; the shapes are the mock's):
 - **CLAUDE.md layout** still names `api_keys/` and `option_sets/`; the product now has API tokens (`/api-tokens`) and option lists (`/option-lists`).
 
 ## Log
+
+- **2026-10-12:** B11: Settings, the rest. 29 endpoints (email templates, preview, test, the sent log; the sending address: own domain with real DNS checks, own mail server with a real test, the mode; single sign-on settings, test, status, remove and the start; address and own domain; privacy requests, retention preview, data region) and 4 plain SSO routes (SAML ACS and metadata, OIDC callback, sign-out). Every workspace email goes through the workspace's look, wording, sending route and sent log; SAML (python3-saml, xmlsec) and OIDC (Authlib) sign-in with the usual second step and FRM-AUTH-1019 for required domains; subdomain changes keep the old one 90 days; own web domains answer once verified; a person's data and retention erased in place (no hard deletes); daily retention on Beat. Migration 0031 (`sent_emails`, `email_sending`, `sso_connections`, `custom_domains`, `platform.custom_domains_directory`, `platform.tenant_profile` and the directory functions). New dependencies pinned: python3-saml, xmlsec, lxml, isodate, dnspython. B11 ✅, waiting for the owner's review. New tests: `tests/parity/test_settings_more_rules.py` (151), `tests/db/test_email_settings.py` (3), `test_sso.py` (3), `test_address_privacy.py` (3); 18,056 tests pass (1 skipped).
 
 - **2026-10-12:** B12: analytics and dashboard. 7 endpoints (`/analytics/overview`, `/analytics/forms`, `/analytics/forms/{id}/funnel`; `/dashboard`, `/dashboard/forms`, `/dashboard/data`, `/dashboard/api`) with the mock's shapes, counted in SQL on the read replica, days in the workspace's time zone, people's form access respected, no migration. The dashboard rules (`buckets.ts`, `scope.ts`, `periodFrom`) and the analytics rules (`periodOf`, `seeded`, `daysOf`, `totalsOf`, `funnelOf`) ported with parity (`scripts/dump_dashboard_rules.py`, `tests/vectors/dashboard_rules.json`, 29 tests). Views and starts stay the mock's estimates until fill-in events are recorded (open question). B12 ✅, waiting for the owner's review. New tests: `tests/parity/test_dashboard_rules.py` (29), `tests/db/test_dashboard.py` (2); 17,896 tests pass (1 skipped).
 

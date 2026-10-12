@@ -1,8 +1,10 @@
 """Emails: Formalie's default templates (app/modules/emails/defaults, synced from the frontend's mock) rendered in
 the person's language, then sent through the `notifications` Celery queue (CLAUDE.md rule 8).
 
-Workspaces' own wording, sending domains and SMTP servers arrive in B11; until then everything is sent as Formalie
-(EMAIL_FROM) through SMTP_* (Mailpit in development, http://127.0.0.1:8025). Codes are never logged.
+`send` is for Formalie's own emails (no workspace yet: sign-up, find my workspace). A workspace's emails go through
+app/modules/emails/workspace.py (its look, its own wording, the sent log) and carry a `route` (sending.py): Formalie's
+address, the workspace's verified domain (Formalie's relay, its From) or its own mail server. Formalie's relay is
+SMTP_* (Mailpit in development, http://127.0.0.1:8025). Codes are never logged.
 """
 
 from __future__ import annotations
@@ -61,34 +63,61 @@ def render(key: str, language: str | None, values: dict[str, Any], unsubscribe_u
     return page(subject, body, every, look)
 
 
-def deliver(message: dict[str, str]) -> None:
-    """SMTP delivery (the Celery task, or direct). Raises on failure so the task retries."""
-    settings = get_settings()
+def _message(message: dict[str, Any], from_address: str, default_name: str = "") -> EmailMessage:
     email = EmailMessage()
-    # A workspace's emails carry its name; the address stays Formalie's until its own domain is set up (B11)
-    email["From"] = formataddr((message["from_name"], parseaddr(settings.email_from)[1])) if message.get("from_name") \
-        else settings.email_from
+    name = message.get("from_name") or default_name
+    email["From"] = formataddr((name, from_address)) if name else from_address
     email["To"] = message["to"]
     if message.get("reply_to"):
         email["Reply-To"] = message["reply_to"]
     email["Subject"] = message["subject"]
     # Optional emails: List-Unsubscribe and List-Unsubscribe-Post (RFC 8058; Gmail and Yahoo ask bulk senders for them)
-    for name, value in (message.get("headers") or {}).items():
-        if name in ("List-Unsubscribe", "List-Unsubscribe-Post"):
-            email[name] = value
+    for header, value in (message.get("headers") or {}).items():
+        if header in ("List-Unsubscribe", "List-Unsubscribe-Post"):
+            email[header] = value
     email.set_content(message["text"])
     email.add_alternative(message["html"], subtype="html")
+    return email
+
+
+def _relay() -> smtplib.SMTP:
+    """Formalie's own outgoing server (SMTP_*)."""
+    settings = get_settings()
     if settings.smtp_security == "tls":
         client: smtplib.SMTP = smtplib.SMTP_SSL(settings.smtp_host, settings.smtp_port, timeout=15,
                                                 context=ssl.create_default_context())
     else:
         client = smtplib.SMTP(settings.smtp_host, settings.smtp_port, timeout=15)
-    with client:
-        if settings.smtp_security == "starttls":
-            client.starttls(context=ssl.create_default_context())
-        if settings.smtp_username and settings.smtp_password:
-            client.login(settings.smtp_username, settings.smtp_password.get_secret_value())
-        client.send_message(email)
+    if settings.smtp_security == "starttls":
+        client.starttls(context=ssl.create_default_context())
+    if settings.smtp_username and settings.smtp_password:
+        client.login(settings.smtp_username, settings.smtp_password.get_secret_value())
+    return client
+
+
+def deliver(message: dict[str, Any]) -> None:
+    """SMTP delivery (the Celery task, or direct). Raises on failure so the task retries.
+
+    The message's `route` (sending.route_for) picks the way out: none = Formalie's address through Formalie's relay;
+    `domain` = the workspace's verified address through Formalie's relay, bounces to fm-bounces.{domain}; `smtp` = the
+    workspace's own server, with its own From (only ever a public address, checked again here)."""
+    from app.modules.emails import sending
+
+    route = message.get("route") or {}
+    if route.get("mode") == "smtp":
+        address = sending.resolve_now(route["host"], int(route["port"]))
+        client = sending.open_server(address, route["host"], int(route["port"]), route["security"],
+                                     route.get("username"), sending.password_of(route.get("password_enc")), timeout=15)
+        with client:
+            client.send_message(_message(message, route["from_address"]))
+        return
+    if route.get("mode") == "domain":
+        with _relay() as client:
+            client.send_message(_message(message, route["address"]), from_addr=f"bounces@fm-bounces.{route['domain']}")
+        return
+    with _relay() as client:
+        name, address = parseaddr(get_settings().email_from)
+        client.send_message(_message(message, address, name))
 
 
 def send(to: str, key: str, language: str | None, values: dict[str, Any], unsubscribe: Any = None) -> None:
@@ -99,7 +128,7 @@ def send(to: str, key: str, language: str | None, values: dict[str, Any], unsubs
     queue({"to": to, **render(key, language, values, url), **headers}, key=key, values=values)
 
 
-def queue(message: dict[str, str], *, key: str, values: dict[str, Any]) -> None:
+def queue(message: dict[str, Any], *, key: str, values: dict[str, Any]) -> None:
     """One rendered email to the `notifications` queue (memory: kept in SENT; direct: sent now). Never raises."""
     mode = get_settings().email_delivery
     try:
