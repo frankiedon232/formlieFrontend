@@ -49,7 +49,9 @@ Add more lines as new test tenants are created.
 - Allow the subdomains in Vite: `vite.server.allowedHosts: ['.formalie.dev']`.
 - Proxy `/api` to the backend, preserving the original host so the backend can read the subdomain:
   `nitro.devProxy` / `routeRules: { '/api/**': { proxy: 'https://formalie.dev:5004/api/**' } }` with `X-Forwarded-Host` forwarded (implemented in Phase F0).
-- Node must trust the mkcert root when proxying: set `NODE_EXTRA_CA_CERTS` to the mkcert `rootCA.pem` (find it with `mkcert -CAROOT`).
+- Node must trust the mkcert root when proxying: set `NODE_EXTRA_CA_CERTS` to the mkcert `rootCA.pem` (find it with `mkcert -CAROOT`). Node reads it only when it starts, so it can't go in `.env`. Set it once as a Windows user variable: `setx NODE_EXTRA_CA_CERTS "C:\Users\<you>\AppData\Local\mkcert\rootCA.pem"`.
+  - **VS Code:** its terminals keep the settings VS Code started with, so close every VS Code window and open it again after `setx`. Or set it for one start: `$env:NODE_EXTRA_CA_CERTS="…\rootCA.pem"; pnpm dev …`.
+  - **Symptom when it's missing:** every `/api/**` call answers `502 Bad Gateway`, and the portal only shows the sign-in page (found 2026-10-12).
 
 ## Backend dev services (Phase B0)
 
