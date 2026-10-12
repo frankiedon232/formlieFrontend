@@ -11,6 +11,8 @@ WebCrypto-compatible, works in all modern browsers.
 3. Server generates its own ephemeral P-256 key pair, derives the shared secret, runs **HKDF-SHA256** (salt = random 32 bytes, info = `formalie-envelope-v1`) → 256-bit key. Stores `{key_id → key, tenant_host, expires_at}` in Redis (TTL 30 min, sliding).
 4. Response: `{ key_id, server_public_key, salt, expires_at }`. Client derives the same key and keeps it **in memory only** (never localStorage).
 5. When the key expires or the server returns `FRM-SEC-1004`, the client re-handshakes transparently and retries once.
+6. A key only works on the host it was made for (backend, 2026-10-11): an envelope sealed with it on another host answers `FRM-SEC-1004`, so the client simply makes a new one there.
+7. Test vectors: `tests/vectors/envelope.json` in the backend; `scripts/check_envelope_vectors.py` runs the frontend's own `envelope.ts` against them in both directions.
 
 Anonymous public-form respondents perform the same handshake (scoped to the form's tenant host).
 
@@ -43,7 +45,8 @@ Same structure (`kid, iv, ts, nonce, ct`), encrypted with the session key. Clien
 
 - File uploads: browser uploads directly to object storage via **pre-signed, expiring URLs** (TLS); the request that obtains the URL is enveloped. Files are encrypted at rest. Respondents' files (public forms) are checked by their bytes (real pictures for image questions, no programs for file questions), never served from a public address, and attached to exactly one response (03-DECISIONS → 88).
 - File downloads/exports: signed, short-lived URLs.
-- `/api/health` and the handshake endpoint.
+- `/api/v1/health` and the handshake endpoint.
+- Browser redirects (`/auth/oauth/{provider}/start` and its `/callback`, `/auth/sso/start`), upload bytes with a pre-signed single-use token (`/storage/{token}`), finished files by reference (`/files/{ref}`: logos and form images on pages), single-use download links (`/downloads/{token}`, `/response-exports/{token}`, `/response-files/{token}`, `/datasource-exports/{token}`), the processor's signed webhook (`/billing/webhooks/payoneer`) and service-to-service routes (`/internal/*`, never reachable through the public proxy). The backend's list is `plaintext_patterns()` in `app/core/middleware/envelope.py`; nothing else is plain.
 
 ## 5. Authentication tokens (Fernet)
 
@@ -53,12 +56,12 @@ Same structure (`kid, iv, ts, nonce, ct`), encrypted with the session key. Clien
 - An unknown or expired access token answers `FRM-AUTH-1001` (never `1010`), so the client always tries the refresh cookie before signing anyone out.
 - Fernet tokens include a timestamp and random IV, so **two tokens are never identical even for the same payload**.
 - Access tokens can be revoked early via a session (`sid`) deny-list in Redis (logout, password change, admin reset).
-- Browser storage: access token in memory; refresh token in an `HttpOnly; Secure; SameSite=Strict` cookie scoped to the tenant subdomain, path `/api/v1/auth/refresh`.
+- Browser storage: access token in memory; refresh token in the `formalie_rt` cookie, `HttpOnly; Secure; SameSite=Strict`, scoped to the tenant subdomain, path `/api/v1/auth` (refresh and logout both need it; as the mock does).
 - Keys: `FERNET_KEYS` list (MultiFernet) to allow key rotation.
 
 ## 6. CSRF
 
-- `GET /api/v1/auth/csrf` returns a CSRF token = Fernet token `{ sid, nonce, iat }`, **TTL 2 h**.
+- `GET /api/v1/auth/csrf` returns `{ csrf_token, expires_at }`: a Fernet token `{ kid, sid, nonce }` (its time is inside the Fernet token), **TTL 2 h**, stateless. Bound to the handshake key (`kid`) always and to the session (`sid`) once signed in.
 - Sent in header `X-CSRF-Token` on every state-changing request; must match the session; expired → `FRM-SEC-1006`.
 - Pre-login forms (login, signup, OTP, forgot password, public form submit) use a pre-session CSRF token bound to the handshake `kid`.
 - Client order: obtain the CSRF token **before** sealing a state-changing envelope (fetching it may re-handshake; the envelope must use the final key).
@@ -93,7 +96,8 @@ Applications call form endpoints at `https://api.formalie.com/{apiKey}/{endpoint
 
 - The API never sends a database id to a browser. Every id in every response (`id`, `*_id`, ids inside lists, file addresses such as `/files/{ref}`) is an **encrypted reference**: one AES-256 block of the id under a server-only key plus a 4-byte HMAC-SHA256 tag, base64url → 27 characters (`server/mock/core/ids.ts` is the reference implementation).
 - Stable: the same record always has the same reference, so bookmarks and shared portal links keep working. Opaque: a reference reveals nothing about the id, and without the key nobody can make one for another record.
-- Requests: references in route params, query and body are decrypted at the API edge; a reference with a wrong tag is rejected before any lookup; a raw id typed into an address is **never** accepted.
+- Requests: references in route params, query and body are decrypted at the API edge; a reference with a wrong tag is rejected before any lookup; a raw id typed into an address is **never** accepted (`404 FRM-GEN-1004`), nor in a query or body (`422 FRM-GEN-1002`: the backend only takes ids that arrived as references).
+- `error.trace_id` is not an id and stays readable, so support can find the request in the logs (the mock encodes it too; the frontend doesn't depend on either).
 - Public form links use a separate random `public_key` (decision 80), not an encrypted id.
 - Keys live only on the API (managed secret, versioned for rotation). Access checks still run on every request, references stop guessing and leaking ids; permissions decide access.
 - Not secret on purpose: catalogue names (`risk_assessment`, `sys_preset_soft`) and plain list options in the address bar (`?status=draft`, `?view=table`), they carry no record ids or personal data.

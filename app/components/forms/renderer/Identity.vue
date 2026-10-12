@@ -59,7 +59,7 @@ async function check(code = digits.value.join('')) {
     else digits.value = []
   })
 }
-const showDevCode = computed(() => import.meta.dev && !!devCode.value)
+const showDevCode = computed(() => import.meta.dev && useRuntimeConfig().public.apiMock && !!devCode.value)
 </script>
 
 <template>

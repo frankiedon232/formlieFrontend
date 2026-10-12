@@ -8,6 +8,8 @@ import type { MyProfile } from '#shared/types/profile'
 
 defineProps<{ profile: MyProfile }>()
 const emit = defineEmits<{ changed: [] }>()
+// Codes only appear on screen with the mock; the real backend sends them by email only
+const apiMock = useRuntimeConfig().public.apiMock
 const { t } = useI18n()
 const api = useApi()
 const toast = useToast()
@@ -52,7 +54,7 @@ async function sendPhone() {
   busy.value = true
   try {
     const result = await api.post<{ masked: string }>('/me/two-step/phone', { phone: phone.value.trim() })
-    sent.value = { masked: result.data.masked, dev: (result.meta as { dev_code?: string } | undefined)?.dev_code }
+    sent.value = { masked: result.data.masked, dev: apiMock ? (result.meta as { dev_code?: string } | undefined)?.dev_code : undefined }
   } catch (error) {
     handle(error)
   } finally {

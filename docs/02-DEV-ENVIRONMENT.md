@@ -7,8 +7,8 @@
 | Frontend project | `formalieFrontend` (Nuxt 4.5.2, @nuxt/ui 4.11.1, tailwindcss 4.3.3, vue 3.5.43, vue-router 5.3.1), pnpm                             |
 | Frontend URL     | `https://formalie.dev:2202/`                                                                                                        |
 | Frontend run     | `pnpm dev --host 0.0.0.0 --port 2202 --https --https.cert=C:\devcerts\formalie.pem --https.key=C:\devcerts\formalie-key.pem`        |
-| Backend project  | `formlyBackend`, Python 3.11.9, venv, `pip install fastapi[all]`                                                                  |
-| Backend run      | `uvicorn app.run:app --host 0.0.0.0 --port 5004 --ssl-certfile C:\devcerts\formalie.pem --ssl-keyfile C:\devcerts\formalie-key.pem` |
+| Backend project  | `formlyBackend`, Python 3.11.9, venv, `pip install fastapi[all]`                                                                    |
+| Backend run      | `uvicorn app.run:app --host 0.0.0.0 --port 5004 --no-proxy-headers --ssl-certfile C:\devcerts\formalie.pem --ssl-keyfile C:\devcerts\formalie-key.pem` (or `fmly\Scripts\python.exe -m app.run`). **`--no-proxy-headers` is required:** the app reads `X-Forwarded-*` itself, only from `TRUSTED_PROXIES`; uvicorn's own handling would hide the real proxy, and workspaces would no longer be found from `X-Forwarded-Host` |
 | API docs         | `https://formalie.dev:5004/docs`, `https://formalie.dev:5004/redoc`                                                                 |
 | Certificate      | mkcert: `formalie.dev *.formalie.dev localhost *.localhost 127.0.0.1 ::1 <LAN IP>` (see Access matrix)                              |
 
@@ -19,7 +19,7 @@
    ```powershell
    mkcert -cert-file C:\devcerts\formalie.pem -key-file C:\devcerts\formalie-key.pem formalie.dev "*.formalie.dev" localhost 127.0.0.1
    ```
-3. **Venv name.** It was created as `mdq` but activated as `fmly\scripts\activate.ps1`. Pick one name (suggest `fmly`) and use it consistently.
+3. **Venv name.** Done: the venv is `fmly` (`fmly\Scripts\Activate.ps1`).
 
 ## Hosts file (`C:\Windows\System32\drivers\etc\hosts`)
 
@@ -53,21 +53,91 @@ Add more lines as new test tenants are created.
 
 ## Backend dev services (Phase B0)
 
-Installed directly on the machine, **no Docker** (owner, 2026-10-10): PostgreSQL 16 (primary + 1 replica), PgBouncer, Redis 7 (Memurai or WSL on Windows), RabbitMQ 3 (management UI), MinIO (S3), Mailpit (catch OTP emails). Production runs on AWS or dedicated servers (decided per deployment); Docker only if a real need comes up.
+Installed directly on the machine, **no Docker** (owner, 2026-10-10). Production runs on AWS or dedicated servers (decided per deployment); Docker only if a real need comes up.
+
+| Service | Where (development) | Port | Notes |
+| --- | --- | --- | --- |
+| PostgreSQL **18** primary | Windows service `postgresql-x64-18` (already installed) | 5432 | Owner, 2026-10-10: develop on 18, write SQL that also runs on 16 (no PG 17/18-only features; UUIDv7 is made in the app) |
+| PostgreSQL 18 replica | Windows, second cluster (streaming replication) | 5433 | Optional until reports and lists need it; `DB_REPLICA_URLS` empty = reads go to the primary |
+| Redis 7 | WSL (Ubuntu) | 6379 | cache, rate limits, nonces, session keys |
+| RabbitMQ 3 + management UI | WSL | 5672, 15672 | Celery broker and the `formalie.events` exchange |
+| PgBouncer | WSL | 6432 | transaction pooling; then `DB_PGBOUNCER=true` |
+| Object storage (S3) | local folder in development | | uploads and exports: `STORAGE_DIR=data/storage` (git-ignored) in development; production uses the cloud provider's S3. MinIO's download server stopped serving its binary (410 Gone, 2026-10-11). |
+| Mailpit | WSL | 1025 (SMTP), 8025 (UI) | catches OTP and other emails (from B1) |
+
+### 1. PostgreSQL: roles and databases (once)
+
+1. Copy `.env.example` to `.env` and fill the four `DB_*_URL` lines: the `postgres` superuser password in `DB_SUPERUSER_URL`, and a password of your choice for `formalie_owner`, `formalie_app` and `formalie_worker` (the user names are fixed).
+2. `fmly\Scripts\python.exe scripts\db_bootstrap.py` creates the roles and the `formalie` and `formalie_test` databases (safe to run again; it updates passwords).
+3. `fmly\Scripts\alembic.exe upgrade head` and `fmly\Scripts\alembic.exe -x db=test upgrade head`.
+4. `fmly\Scripts\python.exe -m pytest` now also runs `tests/db` (RLS, cross-tenant, outbox).
+
+### 2. WSL services (when we reach them)
+
+1. PowerShell as administrator: `wsl --install -d Ubuntu-24.04`, restart, create the Linux user.
+2. Let Windows and WSL share `127.0.0.1`: create `%UserProfile%\.wslconfig` with
+   ```ini
+   [wsl2]
+   networkingMode=mirrored
+   ```
+   then `wsl --shutdown`. (Windows 11 22H2 or later. Without it, use the WSL address from `wsl hostname -I`.)
+3. In Ubuntu: `bash /mnt/c/UNETPROJECTS/formlyBackend/scripts/wsl/setup-services.sh` installs and starts Redis, RabbitMQ (with a `formalie` vhost and user), PgBouncer and Mailpit as systemd services. It prints the values to put in `.env`.
+4. Workers on Windows: Celery has no official Windows pool, so run them with `--pool=solo` (or `--pool=threads`):
+   `fmly\Scripts\celery.exe -A app.workers.celery_app worker -Q scheduled --pool=solo -l info` and `fmly\Scripts\celery.exe -A app.workers.celery_app beat -l info`.
+
+### After a restart (every day)
+
+The setup script runs once only. Everything else is in the README's "Every day" section:
+- `scripts\dev-up.ps1` starts the services, API, worker, Beat and Flower hidden, with no windows (`-NoApi`, `-NoApp`).
+- `scripts\dev-logs.ps1` follows their logs live in one terminal (`api`, `worker`, `beat`, `flower`, `-Errors`).
+- `scripts\dev-down.ps1` stops them.
+
+### Dashboards (development)
+
+| What | Address | Sign in |
+| --- | --- | --- |
+| RabbitMQ (queues, exchanges, messages) | http://127.0.0.1:15672 | user `formalie`, the password inside `RABBITMQ_URL` in `.env` (between `formalie:` and `@`) |
+| Celery (workers, tasks, failures): Flower | http://127.0.0.1:5555 | none (bound to 127.0.0.1 only) |
+| Emails caught in development: Mailpit | http://127.0.0.1:8025 | none |
+| Redis (keys, memory): Redis Insight desktop app (redis.io/insight) | connect to `127.0.0.1:6379` | none |
+
+Started by `scripts\dev-up.ps1` (hidden). By hand, each in its own terminal from the project folder:
+
+```powershell
+fmly\Scripts\celery.exe -A app.workers.celery_app worker -Q scheduled,logs,notifications --pool=solo -E -n worker1@%h -l info
+fmly\Scripts\celery.exe -A app.workers.celery_app beat -s logs/celerybeat-schedule -l info
+fmly\Scripts\celery.exe -A app.workers.celery_app flower --address=127.0.0.1 --port=5555
+```
+
+(`-E` sends task events, so Flower shows each task. Redis from Ubuntu without an app: `redis-cli --scan --pattern 'fm:v1:*'` lists Formalie's keys.)
+
+### 3. Locations for the request log (MaxMind GeoLite2)
+
+1. Create a free account at maxmind.com, then make a license key (GeoLite2).
+2. Put `MAXMIND_ACCOUNT_ID` and `MAXMIND_LICENSE_KEY` in `.env`.
+3. `fmly\Scripts\python.exe scripts\geoip_update.py` downloads City + ASN into `data/geoip/` (Celery Beat refreshes them weekly).
+
+Without them requests are still logged; only the location fields stay empty. Local addresses (`127.0.0.1`, your LAN) never have a location.
+
+### 4. Replica on Windows (optional, later)
+
+As administrator, with the primary running: allow replication for `formalie_replicator` in `pg_hba.conf`, then
+`"C:\Program Files\PostgreSQL\18\bin\pg_basebackup.exe" -h 127.0.0.1 -p 5432 -U formalie_replicator -D C:\pgdata\replica18 -R -X stream`,
+set `port = 5433` in `C:\pgdata\replica18\postgresql.conf`, register it with `pg_ctl register -N postgresql-x64-18-replica -D C:\pgdata\replica18`, start it, and add `postgresql://formalie_app:…@127.0.0.1:5433/formalie` to `DB_REPLICA_URLS`.
 
 ## Access matrix (verified 2026-10-02)
 
 Every way of opening the dev server must work. Host classification is one shared function, `resolveHostContext()` in `shared/utils/tenant/host.ts` (unit-tested), used by the tenant middleware, SSR and the mock API.
 
-| How you open it                                                                | Served                               | Trusted TLS                                                                                                                                             | Resolves to                                              |
-| ------------------------------------------------------------------------------ | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
-| `https://manage.formalie.dev:2202`                                             | ✅                                   | ✅                                                                                                                                                      | manage (default entry)                                   |
-| `https://formalie.dev:2202`                                                    | ✅                                   | ✅                                                                                                                                                      | manage (root)                                            |
-| `https://{sub}.formalie.dev:2202` (needs hosts line)                           | ✅                                   | ✅                                                                                                                                                      | tenant `{sub}`                                           |
-| `https://localhost:2202` / `https://127.0.0.1:2202`                            | ✅                                   | ✅                                                                                                                                                      | manage (local); `?tenant={sub}` in dev opens a tenant    |
-| `https://{sub}.localhost:2202` (no hosts line, Chrome/Edge/Firefox resolve it) | ✅                                   | ⚠ wildcards over single-label `localhost` are rejected by Windows/Chrome, add explicit names (`acme.localhost`) to mkcert, or use `{sub}.formalie.dev` | tenant `{sub}`                                           |
-| `https://192.168.x.x:2202` (phone on Wi-Fi)                                    | ✅                                   | ✅ (cert includes 192.168.0.180; phone needs the mkcert root CA)                                                                                        | manage; `?tenant={sub}` in dev                           |
-| `https://[::1]:2202`                                                           | ❌ with `--host 0.0.0.0` (IPv4 only) | ✅                                                                                                                                                      | manage, start with `--host ::` to listen on IPv4 + IPv6 |
+| How you open it                                                                | Served                               | Trusted TLS                                                                                                                                            | Resolves to                                             |
+| ------------------------------------------------------------------------------ | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------- |
+| `https://manage.formalie.dev:2202`                                             | ✅                                   | ✅                                                                                                                                                     | manage (default entry)                                  |
+| `https://formalie.dev:2202`                                                    | ✅                                   | ✅                                                                                                                                                     | manage (root)                                           |
+| `https://{sub}.formalie.dev:2202` (needs hosts line)                           | ✅                                   | ✅                                                                                                                                                     | tenant `{sub}`                                          |
+| `https://localhost:2202` / `https://127.0.0.1:2202`                            | ✅                                   | ✅                                                                                                                                                     | manage (local); `?tenant={sub}` in dev opens a tenant   |
+| `https://{sub}.localhost:2202` (no hosts line, Chrome/Edge/Firefox resolve it) | ✅                                   | ⚠ wildcards over single-label `localhost` are rejected by Windows/Chrome, add explicit names (`acme.localhost`) to mkcert, or use `{sub}.formalie.dev` | tenant `{sub}`                                          |
+| `https://192.168.x.x:2202` (phone on Wi-Fi)                                    | ✅                                   | ✅ (cert includes 192.168.0.180; phone needs the mkcert root CA)                                                                                       | manage; `?tenant={sub}` in dev                          |
+| `https://[::1]:2202`                                                           | ❌ with `--host 0.0.0.0` (IPv4 only) | ✅                                                                                                                                                     | manage, start with `--host ::` to listen on IPv4 + IPv6 |
 
 Current cert (regenerated 2026-10-02) covers all of the above; regenerate when your LAN IP changes:
 
@@ -85,16 +155,16 @@ Seeded in `server/mock/data/tenants.ts` (mock only, in memory): workspaces **rem
 
 Seeded workspaces have five connections in every state (connected read + write, connected read only, needs attention, failing, disabled). Nothing connects to a real database: a test's outcome comes from what you type, so every path can be tried.
 
-| To see | Type |
-| --- | --- |
-| Can't reach the server (`FRM-DEST-1001`) / time-out (`1011`) | a host containing `unreachable` / `timeout` |
-| SSH tunnel fails (`1004`) | an SSH server containing `unreachable` |
-| Certificate problem (`1003`) | a host containing `badcert` (with encryption on) |
-| Sign-in refused (`1002`) | password or client secret `wrong` |
-| Database not found (`1005`) | a database / service name containing `missing` |
-| Can't create Formalie's tables (`1012`, the test fails: required) | a user name containing `nocreate` |
-| Missing write on your other tables (needs attention) | a user name containing `readonly` |
-| Missing row counts (needs attention) | a user name containing `limited` |
+| To see                                                            | Type                                             |
+| ----------------------------------------------------------------- | ------------------------------------------------ |
+| Can't reach the server (`FRM-DEST-1001`) / time-out (`1011`)      | a host containing `unreachable` / `timeout`      |
+| SSH tunnel fails (`1004`)                                         | an SSH server containing `unreachable`           |
+| Certificate problem (`1003`)                                      | a host containing `badcert` (with encryption on) |
+| Sign-in refused (`1002`)                                          | password or client secret `wrong`                |
+| Database not found (`1005`)                                       | a database / service name containing `missing`   |
+| Can't create Formalie's tables (`1012`, the test fails: required) | a user name containing `nocreate`                |
+| Missing write on your other tables (needs attention)              | a user name containing `readonly`                |
+| Missing row counts (needs attention)                              | a user name containing `limited`                 |
 
 `localhost`, `127.*`, `169.254.*` and similar are refused as server addresses (by design).
 

@@ -1,6 +1,6 @@
 # Error Codes, Formalie
 
-Format: `FRM-<DOMAIN>-<NNNN>`. Ranges: 1000–1999 client/validation, 5000–5999 server. Each code has an HTTP status, default message (safe for users), and log level. Add new codes here first, then to `app/core/errors/codes.py` and the `error_codes` table seed.
+Format: `FRM-<DOMAIN>-<NNNN>`. Ranges: 1000–1999 client/validation, 5000–5999 server. Each code has an HTTP status, default message (safe for users), and log level. Add new codes here first, then to the frontend's `shared/utils/errors/codes.ts`; `scripts/gen_error_codes.py` builds `app/core/errors/codes.py` from both (status and message from `codes.ts`, level from this table) and `tests/parity/test_error_codes.py` checks they agree. Levels: `DEBUG`, `INFO`, `NOTICE` (between INFO and WARNING), `WARNING`, `ERROR`, `CRITICAL`.
 
 | Code          | HTTP | Message                                                           | Level    |
 | ------------- | ---- | ----------------------------------------------------------------- | -------- |
@@ -59,6 +59,11 @@ Format: `FRM-<DOMAIN>-<NNNN>`. Ranges: 1000–1999 client/validation, 5000–599
 | FRM-FORM-1012 | 409  | A template with this name already exists.                         | INFO     |
 | FRM-FORM-1013 | 409  | This folder still has forms. Move them to another folder first.   | INFO     |
 | FRM-FORM-1014 | 403  | System themes can’t be changed. Duplicate it to make your own.    | INFO     |
+| FRM-FORM-1015 | 410 | This form has expired. | INFO |
+| FRM-FORM-1016 | 403 | This form isn’t open yet. | INFO |
+| FRM-FORM-1017 | 403 | That password isn’t right. (form password) | INFO |
+| FRM-FORM-1018 | 403 | This invitation link isn’t valid any more. | INFO |
+| FRM-FORM-1019 | 403 | Your sign-in for this form has expired. Sign in again. | INFO |
 | FRM-FORM-1020 | 422  | Two options share the same value. Each value must be different.  | INFO     |
 | FRM-FORM-1021 | 422  | An option has no option above it. Choose where it belongs.       | INFO     |
 | FRM-USER-1001 | 410  | This invitation has expired. Ask the person who invited you for a new one. | INFO |
@@ -77,11 +82,41 @@ Format: `FRM-<DOMAIN>-<NNNN>`. Ranges: 1000–1999 client/validation, 5000–599
 | FRM-RESP-1001 | 422  | Submission is invalid.                                            | INFO     |
 | FRM-RESP-1002 | 400  | Verification failed. (captcha)                                    | WARNING  |
 | FRM-RESP-1003 | 409  | This form was already submitted from this session.                | WARNING  |
+| FRM-RESP-1004 | 409 | This form was already submitted from this browser. (device cookie) | INFO |
+| FRM-RESP-1005 | 409 | A response with exactly these answers was already submitted. (fingerprint) | INFO |
+| FRM-RESP-1006 | 409 | A response from this person was already submitted. (unique field / identity) | INFO |
+| FRM-RESP-1007 | 409 | This looks like a response that was already submitted. Confirm this is a different person. | INFO |
+| FRM-RESP-1008 | 403 | Verify your email to submit this form. | INFO |
+| FRM-RESP-1009 | 403 | We could not confirm this response was sent by a person. (proof of work / honeypot) | WARNING |
 | FRM-FILE-1001 | 400  | File type not allowed.                                            | INFO     |
 | FRM-FILE-1002 | 413  | File too large.                                                   | INFO     |
 | FRM-FILE-1003 | 400  | File failed security scan.                                        | WARNING  |
 | FRM-EXP-1001  | 404  | Export not found or expired.                                      | INFO     |
 | FRM-DEST-1001 | 400  | Could not connect to destination database.                        | WARNING  |
+| FRM-DEST-1002 | 400 | The database did not accept the user name or password. | INFO |
+| FRM-DEST-1003 | 400 | The encrypted connection could not be set up (certificate or TLS settings). | INFO |
+| FRM-DEST-1004 | 400 | Could not open the SSH tunnel. | INFO |
+| FRM-DEST-1005 | 400 | The database or schema was not found, or this account may not use it. | INFO |
+| FRM-DEST-1006 | 400 | Some permissions this connection needs are missing. | INFO |
+| FRM-DEST-1007 | 409 | A connection with this name already exists. | INFO |
+| FRM-DEST-1008 | 404 | This connection test is no longer available. Run it again. | INFO |
+| FRM-DEST-1009 | 409 | This connection is disabled. Enable it first. | INFO |
+| FRM-DEST-1010 | 409 | Forms still send their responses to this connection. | INFO |
+| FRM-DEST-1011 | 400 | The database took too long to answer. | WARNING |
+| FRM-DEST-1012 | 400 | This account can't create or use the response tables. | INFO |
+| FRM-DEST-1013 | 403 | Storing responses in a table of yours needs Full access on this connection. | INFO |
+| FRM-DEST-1014 | 409 | A table with this name already exists. | INFO |
+| FRM-DEST-1015 | 409 | This form already stores its responses in a database. | INFO |
+| FRM-DEST-1016 | 422 | The form and the table don't match yet. | INFO |
+| FRM-DEST-1017 | 409 | Earlier responses are already being sent. Wait until that finishes. | INFO |
+| FRM-DEST-1018 | 409 | A row with this key already exists. | INFO |
+| FRM-DEST-1019 | 403 | This table's rows can't be changed here. | INFO |
+| FRM-DEST-1022 | 409 | That name is already used. Choose another one. | INFO |
+| FRM-DEST-1023 | 409 | This statement changes data. Confirm to run it. | INFO |
+| FRM-DEST-1024 | 403 | This connection is read only here: only reading statements run. | INFO |
+| FRM-DEST-1025 | 400 | The database couldn't run this statement. | INFO |
+| FRM-DEST-1026 | 400 | Run one statement at a time: select it, or put the cursor in it. | INFO |
+| FRM-DEST-1027 | 403 | Only the person who saved this query can change it. | INFO |
 | FRM-API-1001  | 409  | This endpoint name is already used in your organisation.          | INFO     |
 | FRM-API-1002  | 422  | Publish the form before it can be an endpoint.                    | INFO     |
 | FRM-API-1003  | 409  | A service with this name already exists.                          | INFO     |
@@ -102,6 +137,10 @@ Format: `FRM-<DOMAIN>-<NNNN>`. Ranges: 1000–1999 client/validation, 5000–599
 | FRM-API-1019  | 422  | This form is not open to the API service (Share → Where people can answer). | INFO     |
 | FRM-API-1020  | 409  | This Formalie-Key was already used for a different request (within 24 hours). | INFO     |
 | FRM-API-1018  | 413  | The body is too large (1 MB at most; files via the upload step).  | INFO     |
+| FRM-AI-1001   | 403 | The AI assistant is switched off for this workspace. | INFO |
+| FRM-AI-1002   | 429 | This month's AI allowance has been used. It renews at the start of next month. | INFO |
+| FRM-AI-1003   | 403 | The AI assistant isn't allowed to read this part of the workspace. | INFO |
+| FRM-AI-1004   | 409 | This draft was already used or put aside. Ask the assistant again. | INFO |
 | FRM-ORG-1001  | 409  | An entry with this name already exists.                          | INFO     |
 | FRM-ORG-1002  | 409  | Forms still use it. Archive it, or merge it into another one.    | INFO     |
 | FRM-PLAN-1001 | 402  | Your plan limit has been reached. Upgrade to continue.            | INFO     |
@@ -109,8 +148,8 @@ Format: `FRM-<DOMAIN>-<NNNN>`. Ranges: 1000–1999 client/validation, 5000–599
 | FRM-BILL-1001 | 402  | The payment didn't go through (declined by the bank or processor). | INFO |
 | FRM-BILL-1002 | 410  | This checkout has expired. Start again.                            | INFO     |
 | FRM-BILL-1004 | 409  | Another billing change for this workspace is in progress (one at a time). | INFO |
-| FRM-BILL-1005 | 409  | This request key was already used for a different billing request (idempotency). | WARN |
-| FRM-BILL-1006 | 400  | A payment webhook failed verification (signature, age or format); nothing is changed. | WARN |
+| FRM-BILL-1005 | 409  | This request key was already used for a different billing request (idempotency). | WARNING |
+| FRM-BILL-1006 | 400  | A payment webhook failed verification (signature, age or format); nothing is changed. | WARNING |
 | FRM-SET-1001  | 409  | Verify or test this first (an email domain before sending from it, a mail server before using it). | INFO |
 
 ### Client-side codes (raised by the portal, never sent by the server)

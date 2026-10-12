@@ -1,6 +1,6 @@
 /**
  * Dev proxy /api/** → FastAPI (NUXT_PUBLIC_API_MOCK=false).
- * Forwards the original host so the backend TenantMiddleware can read the subdomain.
+ * Forwards the original host and the visitor's IP so the backend TenantMiddleware can read the subdomain.
  * In production Nginx routes /api before it ever reaches Nuxt.
  */
 export default defineEventHandler(event => {
@@ -11,6 +11,9 @@ export default defineEventHandler(event => {
     headers: {
       'x-forwarded-host': host,
       'x-forwarded-proto': getRequestProtocol(event),
+      // The visitor's address: without it every request reaches the backend as 127.0.0.1, so per-address
+      // rate limits, audit IPs and the request log would all see the proxy instead of the person.
+      'x-forwarded-for': getRequestIP(event, { xForwardedFor: true }) ?? '',
     },
   })
 })
