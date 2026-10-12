@@ -96,12 +96,16 @@ async def render(db: AsyncSession, tenant_id: uuid.UUID, workspace_name: str, ke
 
 async def send(db: AsyncSession, tenant_id: uuid.UUID, workspace_name: str, *, to: str, key: str, values: dict[str, Any],
                reason: str, language: str | None = None, answers: list[dict[str, str]] | None = None,
-               text: dict[str, str] | None = None, footer: str = "account") -> None:
-    """Rendered in the workspace's look and queued. Never raises (an email never breaks what caused it)."""
+               text: dict[str, str] | None = None, footer: str = "account", unsubscribe: Any = None) -> None:
+    """Rendered in the workspace's look and queued. Never raises (an email never breaks what caused it).
+    `unsubscribe`: the Link from unsubscribe.prepare() for optional emails (footer link and List-Unsubscribe)."""
     try:
         lang = await email_language(db, tenant_id, language)
-        message = await render(db, tenant_id, workspace_name, key, lang, values, text=text, answers=answers, footer=footer)
-        emails.queue({"to": to, **message}, key=key, values={**values, "reason": reason})
+        url = unsubscribe.page_url if unsubscribe is not None and unsubscribe.page_url else None
+        message = await render(db, tenant_id, workspace_name, key, lang, values, text=text, answers=answers, footer=footer,
+                               unsubscribe_url=url)
+        headers = {"headers": unsubscribe.headers} if url else {}
+        emails.queue({"to": to, **message, **headers}, key=key, values={**values, "reason": reason})
     except Exception:  # noqa: BLE001
         emails.log.exception("workspace email could not be sent", extra={"template": key})
 

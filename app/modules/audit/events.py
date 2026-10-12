@@ -60,6 +60,8 @@ AUDIT_EVENTS = {'auth.login.succeeded': {'area': 'auth', 'icon': 'i-lucide-log-i
  'responses.export_deleted': {'area': 'responses', 'icon': 'i-lucide-file-x'},
  'responses.deleted': {'area': 'responses', 'icon': 'i-lucide-trash'},
  'settings.updated': {'area': 'settings', 'icon': 'i-lucide-settings-2'},
+ 'settings.email_unsubscribed': {'area': 'settings', 'icon': 'i-lucide-mail-x'},
+ 'settings.email_resubscribed': {'area': 'settings', 'icon': 'i-lucide-mail-check'},
  'settings.org_created': {'area': 'settings', 'icon': 'i-lucide-network'},
  'settings.org_updated': {'area': 'settings', 'icon': 'i-lucide-pencil'},
  'settings.org_archived': {'area': 'settings', 'icon': 'i-lucide-archive'},

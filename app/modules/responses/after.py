@@ -17,6 +17,7 @@ from typing import Any
 
 from sqlalchemy import select
 
+from app.modules.emails import unsubscribe as unsub
 from app.core.db.session import db_session
 from app.modules.emails import workspace as mail
 from app.modules.forms.models import Form
@@ -75,16 +76,26 @@ async def _emails(db: Any, tenant: dict[str, Any], form: Form, schema: dict[str,
                                                   User.status != "disabled"))).scalars()
     for person in people:
         if str(person.id) in team:
+            # They used the Unsubscribe link for this form's new responses: skipped
+            link_out = await unsub.prepare(db, tenant_id=tenant_id, subdomain=tenant["subdomain"], email=person.email,
+                                           kind="response_notification", ref=str(form.id))
+            if link_out is None:
+                continue
             await mail.send(db, tenant_id, tenant["name"], to=person.email, key="response_notification", language=language,
-                            values={**await values(language), "link": link}, answers=answers(False), reason="response")
+                            values={**await values(language), "link": link}, answers=answers(False), reason="response",
+                            unsubscribe=link_out)
     if settings["others"]:
         text = await mail.template_text(db, tenant_id, "response_notification", language)
         without_link = {"subject": text["subject"],
                         "body": "\n".join(line for line in text["body"].split("\n") if "{{link}}" not in line)}
         for to in settings["others"]:
+            link_out = await unsub.prepare(db, tenant_id=tenant_id, subdomain=tenant["subdomain"], email=to,
+                                           kind="response_notification", ref=str(form.id))
+            if link_out is None:
+                continue
             await mail.send(db, tenant_id, tenant["name"], to=to, key="response_notification", language=language,
                             values=await values(language), answers=answers(not settings["others_personal"]),
-                            text=without_link, reason="response_outside", footer="form")
+                            text=without_link, reason="response_outside", footer="form", unsubscribe=link_out)
     receipt = settings["receipt_field"]
     to = str(data.get(receipt) or "").strip() if receipt else ""
     if _EMAIL.match(to):

@@ -21,6 +21,7 @@ from typing import Any
 from fastapi import APIRouter, Depends, Request
 from sqlalchemy import or_, select
 
+from app.modules.emails import unsubscribe as unsub
 from app.core import zod as z
 from app.core.config import get_settings
 from app.core.db.session import db_session
@@ -82,8 +83,13 @@ def _dev(links: list[dict[str, str]]) -> dict[str, Any]:
 async def _send(db: Any, principal: Principal, form: Form, email: str, name: str | None, link: str) -> None:
     tenant = principal.tenant
     language = (await get_section(db, tenant.id, "localisation")).get("language") or "en"
+    # They used the Unsubscribe link of an earlier invitation from this workspace: not sent again
+    link_out = await unsub.prepare(db, tenant_id=tenant.id, subdomain=tenant.subdomain, email=email,
+                                   kind="form_invitation")
+    if link_out is None:
+        return
     emails.send(email, "form_invitation", language, {"name": name or email, "form": form.name,
-                                                      "workspace": tenant.name, "link": link})
+                                                      "workspace": tenant.name, "link": link}, unsubscribe=link_out)
 
 
 async def _form(db: Any, principal: Principal, form_id: str, action: str) -> Any:

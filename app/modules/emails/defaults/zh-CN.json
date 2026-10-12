@@ -91,7 +91,8 @@
     "footer_form": "你收到这封邮件,是因为 {{workspace}} 的一个表单。",
     "via": "通过 Formalie 发送",
     "tagline": "表单、数据与权限，尽在掌控。",
-    "privacy": "隐私"
+    "privacy": "隐私",
+    "unsubscribe": "退订"
   },
   "reasons": {
     "ip_not_allowed": "该网络不在允许列表中",

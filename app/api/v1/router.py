@@ -37,6 +37,7 @@ from app.modules.people.me import router as me_router
 from app.modules.people.router import router as people_router
 from app.modules.platform.router import router as platform_router
 from app.modules.rbac.router import router as roles_router
+from app.modules.emails.router import router as emails_router
 from app.modules.settings.router import router as settings_router
 from app.modules.tenants.router import router as tenants_router
 from app.modules.uploads.router import router as uploads_router
@@ -79,4 +80,5 @@ api_router.include_router(api_tokens_router)
 api_router.include_router(api_access_router)
 api_router.include_router(api_traffic_router)
 api_router.include_router(webhooks_router)
+api_router.include_router(emails_router)  # unsubscribe links (public)
 api_router.include_router(settings_router)  # after any module with its own /settings/{name} route (sso, B11)

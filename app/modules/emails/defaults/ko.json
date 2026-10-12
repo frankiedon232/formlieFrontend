@@ -91,7 +91,8 @@
     "footer_form": "{{workspace}}의 양식 때문에 이 이메일을 받으셨습니다.",
     "via": "Formalie로 보냄",
     "tagline": "양식, 데이터, 접근 권한을 내 손안에.",
-    "privacy": "개인정보 보호"
+    "privacy": "개인정보 보호",
+    "unsubscribe": "수신 거부"
   },
   "reasons": {
     "ip_not_allowed": "네트워크가 허용 목록에 없습니다",

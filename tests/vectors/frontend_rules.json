@@ -3229,6 +3229,26 @@
   ],
   [
    "GET",
+   "/public/unsubscribe",
+   null
+  ],
+  [
+   "POST",
+   "/public/unsubscribe",
+   null
+  ],
+  [
+   "POST",
+   "/public/unsubscribe/undo",
+   null
+  ],
+  [
+   "POST",
+   "/email/one-click",
+   null
+  ],
+  [
+   "GET",
    "/folders/abc",
    null
   ],
@@ -14165,6 +14185,14 @@
   "settings.updated": {
    "area": "settings",
    "icon": "i-lucide-settings-2"
+  },
+  "settings.email_unsubscribed": {
+   "area": "settings",
+   "icon": "i-lucide-mail-x"
+  },
+  "settings.email_resubscribed": {
+   "area": "settings",
+   "icon": "i-lucide-mail-check"
   },
   "settings.org_created": {
    "area": "settings",

@@ -781,10 +781,10 @@ Built with B10 (moved from B9): a webhook sends a webhook token from the API ser
 
 - **Audit:** `settings.email_resubscribed`, `settings.email_unsubscribed`
 
-- ⬜ `GET /api/v1/public/unsubscribe` (`getUnsubscribe`)
-- ⬜ `POST /api/v1/public/unsubscribe` (`unsubscribe`)
-- ⬜ `POST /api/v1/public/unsubscribe/undo` (`resubscribe`)
-- ⬜ `POST /api/v1/email/one-click` (`oneClick`, plain: mail apps' List-Unsubscribe-Post)
+- ✅ `GET /api/v1/public/unsubscribe` (`getUnsubscribe`)
+- ✅ `POST /api/v1/public/unsubscribe` (`unsubscribe`)
+- ✅ `POST /api/v1/public/unsubscribe/undo` (`resubscribe`)
+- ✅ `POST /api/v1/email/one-click` (`oneClick`, plain: mail apps' List-Unsubscribe-Post)
 
 ## Public API service (`publicApi.ts`, host `api.formalie.dev`, no envelope, SECURITY-PROTOCOL §9)
 

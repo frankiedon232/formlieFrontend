@@ -26,7 +26,7 @@ Marks (as in the frontend's PROGRESS): ✅ done (built and verified) · 🟡 bui
 | B16 | Platform admin bridge | ⬜ Later | (PLATFORM-ADMIN-INTEGRATION §5) |
 | B17 | Hardening and switch-over | ⬜ Later; the frontend switch-over started 2026-10-12 (mock off, B0 to B9 being tested by the owner) | |
 
-Portal endpoints: 326 of 412 ticked in `ENDPOINTS.md` (2026-10-12: creating a form from a template and the two server-rendered page routes were built in B5 to B7 but not ticked; ticked after checking the routes and their tests; B10 step 1 added 36, step 2 added 16). 86 left, all in B10 to B15.
+Portal endpoints: 330 of 416 ticked in `ENDPOINTS.md` (2026-10-12: creating a form from a template and the two server-rendered page routes were built in B5 to B7 but not ticked; ticked after checking the routes and their tests; B10 step 1 added 36, step 2 added 16). 86 left, all in B10 to B15.
 
 ## B0, Foundation ✅ (2026-10-10)
 
@@ -253,6 +253,8 @@ Decisions made in B10 step 2 (backend only; the frontend's answers are unchanged
 - **CLAUDE.md layout** still names `api_keys/` and `option_sets/`; the product now has API tokens (`/api-tokens`) and option lists (`/option-lists`).
 
 ## Log
+
+- **2026-10-12:** Unsubscribe links (owner): optional emails (new responses per form, notifications per event except security alerts, the daily summary, form invitations) carry a signed link and the `List-Unsubscribe` / `List-Unsubscribe-Post` headers; `/public/unsubscribe` (view, stop, undo) and the plain `/email/one-click` (RFC 8058); sending skips stopped addresses; audit `settings.email_unsubscribed` / `email_resubscribed`; migration 0029 `email_unsubscribes` (soft-deleted on undo). The email layout (`app/modules/emails/layout.py`) for every email. 5 new tests; 17,860 pass.
 
 - **2026-10-12:** B10 step 2: API traffic and webhooks. 16 endpoints (the request log, its insights and settings, one call, analytics; webhooks, their insights, test ping, deliveries and Send again); migration 0028 (`api_request_logs` and `webhook_deliveries` in monthly partitions, `webhooks`, `platform.webhook_deliveries_due`, `platform.api_log_body_settings`, `platform.ensure_monthly_partitions_back`). The write path the gateway will call (`traffic.record_call`); step 1's zeros are real counts now (calls, errors, answer times, last calls, rule hits, refused and limited calls). Deliveries on the `webhooks` queue with the webhook token, retries after 1, 5, 15, 60 and 360 minutes, the pause after 20 failures (notification and audit), outgoing calls only to public addresses (`WEBHOOKS_ALLOW_LOCAL` for development, added to PRODUCTION-CHECKLIST). Webhook rules ported with parity (`scripts/dump_webhook_rules.py`, 138 cases); the seed adds sample traffic and the mock's sample webhooks. 17,851 tests pass (1 skipped).
 

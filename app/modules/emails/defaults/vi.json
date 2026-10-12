@@ -91,7 +91,8 @@
     "footer_form": "Bạn nhận email này vì một biểu mẫu từ {{workspace}}.",
     "via": "Gửi bằng Formalie",
     "tagline": "Biểu mẫu, dữ liệu và quyền truy cập trong tầm kiểm soát của bạn.",
-    "privacy": "Quyền riêng tư"
+    "privacy": "Quyền riêng tư",
+    "unsubscribe": "Hủy đăng ký"
   },
   "reasons": {
     "ip_not_allowed": "mạng không nằm trong danh sách cho phép",

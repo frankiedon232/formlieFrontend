@@ -40,7 +40,7 @@ def _fill(template: str, values: dict[str, Any]) -> str:
     return _VAR.sub(lambda m: str(values.get(m.group(1), "")), template)
 
 
-def render(key: str, language: str | None, values: dict[str, Any]) -> dict[str, str]:
+def render(key: str, language: str | None, values: dict[str, Any], unsubscribe_url: str | None = None) -> dict[str, str]:
     """Subject, plain text and HTML of a default template in a language (English when missing), in the shared layout
     (layout.py). Formalie's own emails (no workspace yet: sign-up, find workspace) carry the Field F mark."""
     from app.modules.emails.layout import Look, page
@@ -57,7 +57,7 @@ def render(key: str, language: str | None, values: dict[str, Any]) -> dict[str, 
     # People writing to a form have no account: "because of a form from …"
     footer = _fill(texts.get("footer_form" if key in FORM_EMAILS else "footer", ""), every)
     look = Look(workspace=workspace, formalie=workspace == "Formalie", footer_lines=[footer] if footer else [],
-                texts=texts, language=lang)
+                texts=texts, language=lang, unsubscribe_url=unsubscribe_url)
     return page(subject, body, every, look)
 
 
@@ -72,6 +72,10 @@ def deliver(message: dict[str, str]) -> None:
     if message.get("reply_to"):
         email["Reply-To"] = message["reply_to"]
     email["Subject"] = message["subject"]
+    # Optional emails: List-Unsubscribe and List-Unsubscribe-Post (RFC 8058; Gmail and Yahoo ask bulk senders for them)
+    for name, value in (message.get("headers") or {}).items():
+        if name in ("List-Unsubscribe", "List-Unsubscribe-Post"):
+            email[name] = value
     email.set_content(message["text"])
     email.add_alternative(message["html"], subtype="html")
     if settings.smtp_security == "tls":
@@ -87,9 +91,12 @@ def deliver(message: dict[str, str]) -> None:
         client.send_message(email)
 
 
-def send(to: str, key: str, language: str | None, values: dict[str, Any]) -> None:
-    """Queue one templated email. Never raises: a sending problem is logged (the person can ask for a resend)."""
-    queue({"to": to, **render(key, language, values)}, key=key, values=values)
+def send(to: str, key: str, language: str | None, values: dict[str, Any], unsubscribe: Any = None) -> None:
+    """Queue one templated email. Never raises: a sending problem is logged (the person can ask for a resend).
+    `unsubscribe`: the Link from unsubscribe.prepare() for optional emails (footer link and List-Unsubscribe)."""
+    url = unsubscribe.page_url if unsubscribe is not None and unsubscribe.page_url else None
+    headers = {"headers": unsubscribe.headers} if url else {}
+    queue({"to": to, **render(key, language, values, url), **headers}, key=key, values=values)
 
 
 def queue(message: dict[str, str], *, key: str, values: dict[str, Any]) -> None:

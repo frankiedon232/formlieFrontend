@@ -91,7 +91,8 @@
     "footer_form": "Anda menerima email ini karena sebuah formulir dari {{workspace}}.",
     "via": "Dikirim dengan Formalie",
     "tagline": "Formulir, data, dan akses dalam kendali Anda.",
-    "privacy": "Privasi"
+    "privacy": "Privasi",
+    "unsubscribe": "Berhenti berlangganan"
   },
   "reasons": {
     "ip_not_allowed": "jaringan tidak ada dalam daftar yang diizinkan",

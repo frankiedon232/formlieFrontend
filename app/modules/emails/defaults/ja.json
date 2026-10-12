@@ -91,7 +91,8 @@
     "footer_form": "このメールは、{{workspace}} のフォームに基づいて送信されています。",
     "via": "Formalie から送信",
     "tagline": "フォーム、データ、アクセスを思いのままに。",
-    "privacy": "プライバシー"
+    "privacy": "プライバシー",
+    "unsubscribe": "配信停止"
   },
   "reasons": {
     "ip_not_allowed": "ネットワークが許可リストにありません",

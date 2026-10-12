@@ -13,6 +13,7 @@ from typing import Any
 from sqlalchemy import func, select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.modules.emails import unsubscribe as unsub
 from app.core.config import get_settings
 from app.modules.emails import workspace as mail
 from app.modules.notifications.models import Notification, NotificationDigestLine, NotificationOnce
@@ -76,7 +77,12 @@ async def notify(db: AsyncSession, tenant_id: uuid.UUID, organisation_id: uuid.U
                     db.add(NotificationDigestLine(tenant_id=tenant_id, organisation_id=organisation_id, email=email,
                                                   name=name, line=title[:500]))
                 else:
+                    link_out = await unsub.prepare(db, tenant_id=tenant_id, subdomain=workspace["subdomain"], email=email,
+                                                   kind="notification", ref=event)
+                    if link_out is None:
+                        continue  # they turned this kind of notification off with its Unsubscribe link
                     await mail.send(db, tenant_id, workspace["name"], to=email, key="notification", reason=event,
+                                    unsubscribe=link_out,
                                     values={"title": title, "message": mail.fill_in(event_texts["message"], values),
                                             "link": workspace_url(workspace["subdomain"], link or "/")})
         await db.flush()
@@ -123,7 +129,12 @@ async def flush_digest(db: AsyncSession, tenant_id: uuid.UUID, organisation_id: 
             counts[title] = counts.get(title, 0) + 1
         summary = "\n".join(mail.fill_in(texts["layout"]["summary"], {"count": n, "title": t}) if n > 1 else t
                             for t, n in counts.items())
+        link_out = await unsub.prepare(db, tenant_id=tenant_id, subdomain=workspace["subdomain"], email=email,
+                                       kind="daily_digest")
+        if link_out is None:
+            continue
         await mail.send(db, tenant_id, workspace["name"], to=email, key="daily_digest", reason="daily_digest",
+                        unsubscribe=link_out,
                         values={"name": entry["name"], "summary": summary,
                                 "link": workspace_url(workspace["subdomain"], "/")})
         sent += 1

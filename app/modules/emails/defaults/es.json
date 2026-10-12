@@ -91,7 +91,8 @@
     "footer_form": "Recibes este correo por un formulario de {{workspace}}.",
     "via": "Enviado con Formalie",
     "tagline": "Formularios, datos y accesos, bajo tu control.",
-    "privacy": "Privacidad"
+    "privacy": "Privacidad",
+    "unsubscribe": "Darse de baja"
   },
   "reasons": {
     "ip_not_allowed": "la red no está en la lista de permitidas",
