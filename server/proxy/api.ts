@@ -15,5 +15,8 @@ export default defineEventHandler(event => {
       // rate limits, audit IPs and the request log would all see the proxy instead of the person.
       'x-forwarded-for': getRequestIP(event, { xForwardedFor: true }) ?? '',
     },
+    // Redirects go back to the browser (social sign-in sends it to Google, Microsoft or Facebook); following
+    // them here would load the provider's page under our address and break the sign-in.
+    fetchOptions: { redirect: 'manual' },
   })
 })
