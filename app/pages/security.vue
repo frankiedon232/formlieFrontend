@@ -4,7 +4,7 @@
 const { t, tm, rt } = useI18n()
 const localePath = useLocalePath()
 const root = useTemplateRef<HTMLElement>('root')
-const { still, paused } = useSectionMotion(root)
+const { paused, live } = useSectionMotion(root)
 
 const ICONS = [
   'i-lucide-lock',
@@ -91,7 +91,7 @@ usePageSeo({
                 class="motion-safe:animate-dash"
               />
               <path id="sec-line" d="M 0 150 L 300 150" fill="none" stroke="white" stroke-opacity="0.15" />
-              <g v-if="!still">
+              <g v-if="live">
                 <!-- Hidden until its turn: before it starts, a packet would sit in the corner -->
                 <rect v-for="i in 4" :key="i" width="22" height="10" rx="3" y="-5" fill="#a78bfa" opacity="0">
                   <set attributeName="opacity" to="0.9" :begin="`${(i - 1) * 1}s`" />

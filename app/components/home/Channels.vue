@@ -69,7 +69,7 @@ const icons = {
                 >
                   <UIcon name="i-lucide-qr-code" class="size-full text-highlighted" />
                   <span
-                    class="absolute inset-x-0 h-0.5 bg-violet-500 shadow-[0_0_8px_#8b5cf6] motion-safe:animate-scan"
+                    class="absolute inset-x-0 top-0 h-0.5 bg-violet-500 [--scan-to:2.1rem] shadow-[0_0_8px_#8b5cf6] motion-safe:animate-scan"
                   />
                 </span>
                 <span v-else class="flex flex-col gap-1 font-mono text-[10px]">

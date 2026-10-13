@@ -3,7 +3,7 @@
 // SVG lines with travelling points; still for reduced motion; paused off screen.
 const props = defineProps<{ templates: { icon: string; title: string }[]; destinations: string[] }>()
 const root = useTemplateRef<HTMLElement>('root')
-const { still, paused } = useSectionMotion(root)
+const { paused, live } = useSectionMotion(root)
 const uid = useId()
 
 const W = 480
@@ -70,7 +70,7 @@ const dests = computed(() => props.destinations.slice(0, 3))
           />
         </g>
         <circle :cx="HUB.x" :cy="HUB.y" r="46" fill="none" stroke="white" stroke-opacity="0.12" />
-        <template v-if="!still">
+        <template v-if="live">
           <g v-for="([from, to], i) in ROUTES" :key="`r${i}`">
             <circle r="7" fill="#a78bfa" opacity="0" :filter="`url(#${uid}-glow)`">
               <set attributeName="opacity" to="0.6" :begin="`${i * 1.2}s`" />
@@ -126,7 +126,7 @@ const dests = computed(() => props.destinations.slice(0, 3))
       >
         <UIcon :name="icon" class="size-4 sm:size-5" />
         <span
-          v-if="!still"
+          v-if="live"
           class="absolute inset-0 rounded-full ring-2 ring-white/40 motion-safe:animate-ping-soft"
           :style="{ animationDelay: `${i * 0.8}s` }"
         />

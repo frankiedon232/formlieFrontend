@@ -227,7 +227,7 @@
     "tabs": {
       "eyebrow": "Produkt",
       "title": "Jedno miejsce na formularze, odpowiedzi i dane",
-      "description": "Prawdziwe ekrany z Formalie. Każda karta to część produktu, z której możesz korzystać już dziś.",
+      "description": "Podgląd na żywo każdej części Formalie. Każda karta to coś, z czego możesz korzystać już dziś.",
       "seeHow": "Zobacz, jak to działa",
       "build": {
         "label": "Twórz",
@@ -288,6 +288,17 @@
           "Generowana dokumentacja z konsolą do testowania"
         ],
         "alt": "Przegląd usługi API: zapytania w czasie i punkty końcowe"
+      },
+      "dashboard": {
+        "label": "Pulpit",
+        "title": "Wszystko w jednym miejscu",
+        "text": "Odpowiedzi, ukończenia i wywołania API na żywo, dla całego obszaru roboczego lub jednego folderu.",
+        "points": [
+          "Karty KPI z trendami",
+          "Aktywność w czasie: dzień, tydzień, miesiąc lub rok",
+          "Najaktywniejsze formularze i to, co wymaga uwagi",
+          "Widoki formularzy, źródeł danych i usługi API"
+        ]
       }
     },
     "apart": {
@@ -407,7 +418,10 @@
           "q": "Czy macie API?",
           "a": "Tak. Każdy formularz może stać się bezpiecznymi punktami końcowymi API."
         }
-      ]
+      ],
+      "description": "Konkretne odpowiedzi o planach, Twoich danych, językach i API.",
+      "stillTitle": "Masz jeszcze pytanie?",
+      "stillText": "Osoba z zespołu Formalie odpowie w ciągu jednego dnia roboczego."
     },
     "cta": {
       "title": "Zacznij zbierać odpowiedzi w kilka minut.",
@@ -1430,5 +1444,64 @@
     "title": "Lista zmian",
     "description": "Nowości w Formalie, od najnowszych.",
     "empty": "Pierwsze informacje o wydaniach są już w drodze."
+  },
+  "demo": {
+    "logic": "Logika",
+    "publish": "Opublikuj",
+    "fields": "Pola",
+    "addField": "Dodaj pole",
+    "step": "Krok 1 z 3",
+    "form": "Podanie o pracę",
+    "types": {
+      "shortText": "Krótki tekst",
+      "email": "E-mail",
+      "phone": "Telefon",
+      "date": "Data",
+      "dropdown": "Lista rozwijana",
+      "rating": "Ocena"
+    },
+    "labels": {
+      "fullName": "Imię i nazwisko",
+      "email": "E-mail",
+      "phone": "Telefon",
+      "country": "Kraj zamieszkania",
+      "startDate": "Data rozpoczęcia"
+    },
+    "looks": {
+      "minimal": "Minimalny",
+      "bold": "Wyrazisty",
+      "soft": "Łagodny"
+    },
+    "feedbackForm": "Opinie klientów",
+    "send": "Wyślij",
+    "yourEmail": "Twój e-mail",
+    "responses": "Odpowiedzi",
+    "total": "Razem",
+    "respondent": "Respondent",
+    "submitted": "Wysłano",
+    "status": "Status",
+    "statuses": {
+      "new": "Nowa",
+      "reviewed": "Sprawdzona",
+      "approved": "Zatwierdzona"
+    },
+    "justNow": "Przed chwilą",
+    "minutesAgo": "{n} min temu",
+    "dataSources": "Źródła danych",
+    "connected": "Połączono",
+    "liveWrites": "Zapis na żywo",
+    "responseTime": "Czas odpowiedzi",
+    "apiService": "Usługa API",
+    "request": "Żądanie",
+    "response": "Odpowiedź",
+    "callsToday": "Wywołania dziś",
+    "endpoints": "Endpointy",
+    "activity": "Przegląd aktywności",
+    "completion": "Wskaźnik ukończenia",
+    "apiCalls": "Wywołania API",
+    "started": "Rozpoczęte",
+    "sent": "Wysłane",
+    "perDay": "dziennie średnio",
+    "realScreen": "Prawdziwy ekran w Formalie"
   }
 }

@@ -12,12 +12,17 @@ export interface Screenshot {
   dark: boolean
 }
 
+/** The animated product demos (components/demo). */
+export type DemoName = 'build' | 'design' | 'responses' | 'data' | 'api' | 'dashboard'
+
 export interface FeaturePage {
   slug: string
   icon: string
   /** A real screen, or a drawn visual for areas without one. */
   shot?: Screenshot
   visual?: 'ai' | 'languages'
+  /** An animated demo shown in the hero; the real screen then moves below the feature cards. */
+  demo?: DemoName
   cardIcons: string[]
   related: string[]
 }
@@ -32,6 +37,7 @@ const shot = (file: string, width: number, height: number, dark = false): Screen
 export const FEATURE_PAGES: FeaturePage[] = [
   {
     slug: 'form-builder',
+    demo: 'build',
     icon: 'i-lucide-layout-template',
     shot: shot('form-builder', 2320, 1800, true),
     cardIcons: [
@@ -46,6 +52,7 @@ export const FEATURE_PAGES: FeaturePage[] = [
   },
   {
     slug: 'design',
+    demo: 'design',
     icon: 'i-lucide-palette',
     shot: shot('form-design', 2320, 1800, true),
     cardIcons: [
@@ -67,6 +74,7 @@ export const FEATURE_PAGES: FeaturePage[] = [
   },
   {
     slug: 'responses',
+    demo: 'responses',
     icon: 'i-lucide-inbox',
     shot: shot('responses', 2320, 1180, true),
     cardIcons: [
@@ -81,6 +89,7 @@ export const FEATURE_PAGES: FeaturePage[] = [
   },
   {
     slug: 'analytics',
+    demo: 'dashboard',
     icon: 'i-lucide-chart-column',
     shot: shot('analytics', 1528, 1036, true),
     cardIcons: [
@@ -94,6 +103,7 @@ export const FEATURE_PAGES: FeaturePage[] = [
   },
   {
     slug: 'data-sources',
+    demo: 'data',
     icon: 'i-lucide-database',
     shot: shot('data-sources', 2320, 1300, true),
     cardIcons: [
@@ -108,6 +118,7 @@ export const FEATURE_PAGES: FeaturePage[] = [
   },
   {
     slug: 'api-service',
+    demo: 'api',
     icon: 'i-lucide-braces',
     shot: shot('api-service', 2320, 1300, true),
     cardIcons: [

@@ -227,7 +227,7 @@
     "tabs": {
       "eyebrow": "Das Produkt",
       "title": "Ein Ort für Formulare, Antworten und Daten",
-      "description": "Echte Ansichten aus Formalie. Jeder Tab zeigt einen Teil des Produkts, den Sie heute schon nutzen können.",
+      "description": "Ein Live-Einblick in jeden Bereich von Formalie. Jeder Tab zeigt etwas, das Sie heute schon nutzen können.",
       "seeHow": "So funktioniert es",
       "build": {
         "label": "Erstellen",
@@ -288,6 +288,17 @@
           "Generierte Dokumentation mit einer Konsole zum Ausprobieren"
         ],
         "alt": "Die Übersicht des API-Service: Anfragen im Zeitverlauf und die Endpunkte"
+      },
+      "dashboard": {
+        "label": "Dashboard",
+        "title": "Alles auf einen Blick",
+        "text": "Antworten, Abschlussrate und API-Aufrufe, live, für den ganzen Workspace oder einen Ordner.",
+        "points": [
+          "KPI-Karten mit Trends",
+          "Aktivität im Zeitverlauf, nach Tag, Woche, Monat oder Jahr",
+          "Die aktivsten Formulare und was Aufmerksamkeit braucht",
+          "Ansichten für Formulare, Datenquellen und den API-Service"
+        ]
       }
     },
     "apart": {
@@ -407,7 +418,10 @@
           "q": "Gibt es eine API?",
           "a": "Ja. Jedes Formular kann zu sicheren API-Endpunkten werden."
         }
-      ]
+      ],
+      "description": "Klare Antworten zu Plänen, Ihren Daten, Sprachen und der API.",
+      "stillTitle": "Noch eine Frage?",
+      "stillText": "Ein Mensch aus dem Formalie-Team antwortet innerhalb eines Werktags."
     },
     "cta": {
       "title": "In wenigen Minuten Antworten sammeln.",
@@ -1425,5 +1439,64 @@
     "title": "Änderungsprotokoll",
     "description": "Was es Neues in Formalie gibt, das Neueste zuerst.",
     "empty": "Die ersten Versionshinweise sind unterwegs."
+  },
+  "demo": {
+    "logic": "Logik",
+    "publish": "Veröffentlichen",
+    "fields": "Felder",
+    "addField": "Feld hinzufügen",
+    "step": "Schritt 1 von 3",
+    "form": "Bewerbung",
+    "types": {
+      "shortText": "Kurztext",
+      "email": "E-Mail",
+      "phone": "Telefon",
+      "date": "Datum",
+      "dropdown": "Dropdown",
+      "rating": "Bewertung"
+    },
+    "labels": {
+      "fullName": "Vollständiger Name",
+      "email": "E-Mail",
+      "phone": "Telefon",
+      "country": "Wohnsitzland",
+      "startDate": "Startdatum"
+    },
+    "looks": {
+      "minimal": "Minimal",
+      "bold": "Kräftig",
+      "soft": "Sanft"
+    },
+    "feedbackForm": "Kundenfeedback",
+    "send": "Senden",
+    "yourEmail": "Ihre E-Mail",
+    "responses": "Antworten",
+    "total": "Gesamt",
+    "respondent": "Teilnehmer",
+    "submitted": "Gesendet",
+    "status": "Status",
+    "statuses": {
+      "new": "Neu",
+      "reviewed": "Geprüft",
+      "approved": "Genehmigt"
+    },
+    "justNow": "Gerade eben",
+    "minutesAgo": "Vor {n} Min.",
+    "dataSources": "Datenquellen",
+    "connected": "Verbunden",
+    "liveWrites": "Live-Schreibvorgänge",
+    "responseTime": "Antwortzeit",
+    "apiService": "API-Service",
+    "request": "Anfrage",
+    "response": "Antwort",
+    "callsToday": "Aufrufe heute",
+    "endpoints": "Endpunkte",
+    "activity": "Aktivitätsübersicht",
+    "completion": "Abschlussrate",
+    "apiCalls": "API-Aufrufe",
+    "started": "Begonnen",
+    "sent": "Gesendet",
+    "perDay": "pro Tag im Schnitt",
+    "realScreen": "Die echte Ansicht in Formalie"
   }
 }

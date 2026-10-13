@@ -227,7 +227,7 @@
     "tabs": {
       "eyebrow": "Produk",
       "title": "Satu tempat untuk formulir, jawaban, dan data",
-      "description": "Tampilan asli dari Formalie. Setiap tab adalah bagian produk yang bisa Anda gunakan hari ini.",
+      "description": "Tampilan langsung setiap bagian Formalie. Setiap tab adalah fitur yang bisa Anda gunakan hari ini.",
       "seeHow": "Lihat cara kerjanya",
       "build": {
         "label": "Buat",
@@ -288,6 +288,17 @@
           "Dokumentasi otomatis dengan konsol untuk mencoba"
         ],
         "alt": "Ringkasan layanan API: permintaan dari waktu ke waktu dan daftar endpoint"
+      },
+      "dashboard": {
+        "label": "Dasbor",
+        "title": "Semua dalam sekilas",
+        "text": "Jawaban, penyelesaian, dan panggilan API, secara langsung, untuk seluruh ruang kerja atau satu folder.",
+        "points": [
+          "Kartu KPI dengan tren",
+          "Aktivitas dari waktu ke waktu, per hari, minggu, bulan, atau tahun",
+          "Formulir tersibuk dan hal yang perlu diperhatikan",
+          "Tampilan untuk formulir, sumber data, dan layanan API"
+        ]
       }
     },
     "apart": {
@@ -407,7 +418,10 @@
           "q": "Apakah ada API?",
           "a": "Ya. Formulir apa pun bisa menjadi endpoint API yang aman."
         }
-      ]
+      ],
+      "description": "Jawaban lugas tentang paket, data Anda, bahasa, dan API.",
+      "stillTitle": "Masih punya pertanyaan?",
+      "stillText": "Seseorang dari tim Formalie akan membalas dalam satu hari kerja."
     },
     "cta": {
       "title": "Mulai mengumpulkan dalam hitungan menit.",
@@ -1425,5 +1439,64 @@
     "title": "Catatan perubahan",
     "description": "Yang baru di Formalie, mulai dari yang terbaru.",
     "empty": "Catatan rilis pertama sedang disiapkan."
+  },
+  "demo": {
+    "logic": "Logika",
+    "publish": "Terbitkan",
+    "fields": "Kolom",
+    "addField": "Tambah kolom",
+    "step": "Langkah 1 dari 3",
+    "form": "Lamaran kerja",
+    "types": {
+      "shortText": "Teks pendek",
+      "email": "Email",
+      "phone": "Telepon",
+      "date": "Tanggal",
+      "dropdown": "Dropdown",
+      "rating": "Penilaian"
+    },
+    "labels": {
+      "fullName": "Nama lengkap",
+      "email": "Email",
+      "phone": "Telepon",
+      "country": "Negara tempat tinggal",
+      "startDate": "Tanggal mulai"
+    },
+    "looks": {
+      "minimal": "Minimal",
+      "bold": "Tegas",
+      "soft": "Lembut"
+    },
+    "feedbackForm": "Masukan pelanggan",
+    "send": "Kirim",
+    "yourEmail": "Email Anda",
+    "responses": "Jawaban",
+    "total": "Total",
+    "respondent": "Responden",
+    "submitted": "Dikirim",
+    "status": "Status",
+    "statuses": {
+      "new": "Baru",
+      "reviewed": "Ditinjau",
+      "approved": "Disetujui"
+    },
+    "justNow": "Baru saja",
+    "minutesAgo": "{n} mnt lalu",
+    "dataSources": "Sumber data",
+    "connected": "Terhubung",
+    "liveWrites": "Penulisan langsung",
+    "responseTime": "Waktu respons",
+    "apiService": "Layanan API",
+    "request": "Permintaan",
+    "response": "Respons",
+    "callsToday": "Panggilan hari ini",
+    "endpoints": "Endpoint",
+    "activity": "Ringkasan aktivitas",
+    "completion": "Tingkat penyelesaian",
+    "apiCalls": "Panggilan API",
+    "started": "Dimulai",
+    "sent": "Dikirim",
+    "perDay": "per hari rata-rata",
+    "realScreen": "Layar asli di Formalie"
   }
 }

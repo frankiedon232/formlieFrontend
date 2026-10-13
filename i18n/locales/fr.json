@@ -227,7 +227,7 @@
     "tabs": {
       "eyebrow": "Le produit",
       "title": "Un seul endroit pour les formulaires, les réponses et les données",
-      "description": "De vrais écrans de Formalie. Chaque onglet montre une partie du produit que vous pouvez utiliser dès aujourd'hui.",
+      "description": "Un aperçu en direct de chaque partie de Formalie. Chaque onglet est une fonction que vous pouvez utiliser dès aujourd'hui.",
       "seeHow": "Voir comment ça marche",
       "build": {
         "label": "Créer",
@@ -288,6 +288,17 @@
           "Une documentation générée avec une console pour essayer"
         ],
         "alt": "La vue d'ensemble du service API : les requêtes dans le temps et les points d'accès"
+      },
+      "dashboard": {
+        "label": "Tableau de bord",
+        "title": "Tout en un coup d'œil",
+        "text": "Réponses, complétion et appels API, en direct, pour tout l'espace de travail ou un seul dossier.",
+        "points": [
+          "Cartes KPI avec tendances",
+          "L'activité dans le temps, par jour, semaine, mois ou année",
+          "Les formulaires les plus actifs et ce qui demande votre attention",
+          "Des vues pour les formulaires, les sources de données et le service API"
+        ]
       }
     },
     "apart": {
@@ -407,7 +418,10 @@
           "q": "Proposez-vous une API ?",
           "a": "Oui. N'importe quel formulaire peut devenir des points d'accès API sécurisés."
         }
-      ]
+      ],
+      "description": "Des réponses claires sur les offres, vos données, les langues et l'API.",
+      "stillTitle": "Une autre question ?",
+      "stillText": "Une personne de l'équipe Formalie vous répond sous un jour ouvré."
     },
     "cta": {
       "title": "Commencez à recueillir des réponses en quelques minutes.",
@@ -1430,5 +1444,64 @@
     "title": "Journal des modifications",
     "description": "Les nouveautés de Formalie, des plus récentes aux plus anciennes.",
     "empty": "Les premières notes de version arrivent bientôt."
+  },
+  "demo": {
+    "logic": "Logique",
+    "publish": "Publier",
+    "fields": "Champs",
+    "addField": "Ajouter un champ",
+    "step": "Étape 1 sur 3",
+    "form": "Candidature",
+    "types": {
+      "shortText": "Texte court",
+      "email": "E-mail",
+      "phone": "Téléphone",
+      "date": "Date",
+      "dropdown": "Liste déroulante",
+      "rating": "Note"
+    },
+    "labels": {
+      "fullName": "Nom complet",
+      "email": "E-mail",
+      "phone": "Téléphone",
+      "country": "Pays de résidence",
+      "startDate": "Date de début"
+    },
+    "looks": {
+      "minimal": "Minimal",
+      "bold": "Audacieux",
+      "soft": "Doux"
+    },
+    "feedbackForm": "Avis clients",
+    "send": "Envoyer",
+    "yourEmail": "Votre e-mail",
+    "responses": "Réponses",
+    "total": "Total",
+    "respondent": "Répondant",
+    "submitted": "Envoyée le",
+    "status": "Statut",
+    "statuses": {
+      "new": "Nouvelle",
+      "reviewed": "Examinée",
+      "approved": "Approuvée"
+    },
+    "justNow": "À l'instant",
+    "minutesAgo": "Il y a {n} min",
+    "dataSources": "Sources de données",
+    "connected": "Connecté",
+    "liveWrites": "Écriture en direct",
+    "responseTime": "Temps de réponse",
+    "apiService": "Service API",
+    "request": "Requête",
+    "response": "Réponse",
+    "callsToday": "Appels aujourd'hui",
+    "endpoints": "Points de terminaison",
+    "activity": "Aperçu de l'activité",
+    "completion": "Taux de complétion",
+    "apiCalls": "Appels API",
+    "started": "Commencées",
+    "sent": "Envoyées",
+    "perDay": "par jour en moyenne",
+    "realScreen": "Le vrai écran dans Formalie"
   }
 }

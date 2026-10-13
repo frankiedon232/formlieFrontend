@@ -227,7 +227,7 @@
     "tabs": {
       "eyebrow": "Sản phẩm",
       "title": "Một nơi cho biểu mẫu, câu trả lời và dữ liệu",
-      "description": "Màn hình thật từ Formalie. Mỗi tab là một phần của sản phẩm bạn có thể dùng ngay hôm nay.",
+      "description": "Cái nhìn trực tiếp vào từng phần của Formalie. Mỗi tab là một tính năng bạn có thể dùng ngay hôm nay.",
       "seeHow": "Xem cách hoạt động",
       "build": {
         "label": "Tạo",
@@ -288,6 +288,17 @@
           "Tài liệu tự động tạo, có bảng điều khiển để thử ngay"
         ],
         "alt": "Tổng quan dịch vụ API: lượng yêu cầu theo thời gian và các endpoint"
+      },
+      "dashboard": {
+        "label": "Bảng điều khiển",
+        "title": "Mọi thứ trong một cái nhìn",
+        "text": "Câu trả lời, tỷ lệ hoàn thành và lượt gọi API, trực tiếp, cho cả không gian làm việc hoặc một thư mục.",
+        "points": [
+          "Thẻ KPI kèm xu hướng",
+          "Hoạt động theo thời gian, theo ngày, tuần, tháng hoặc năm",
+          "Các biểu mẫu sôi động nhất và những việc cần chú ý",
+          "Chế độ xem cho biểu mẫu, nguồn dữ liệu và dịch vụ API"
+        ]
       }
     },
     "apart": {
@@ -407,7 +418,10 @@
           "q": "Có API không?",
           "a": "Có. Mọi biểu mẫu đều có thể trở thành endpoint API an toàn."
         }
-      ]
+      ],
+      "description": "Câu trả lời rõ ràng về các gói, dữ liệu của bạn, ngôn ngữ và API.",
+      "stillTitle": "Bạn vẫn còn câu hỏi?",
+      "stillText": "Một thành viên của đội ngũ Formalie sẽ phản hồi trong vòng một ngày làm việc."
     },
     "cta": {
       "title": "Bắt đầu thu thập trong vài phút.",
@@ -1430,5 +1444,64 @@
     "title": "Nhật ký thay đổi",
     "description": "Những điểm mới trong Formalie, mới nhất ở trên cùng.",
     "empty": "Những ghi chú phát hành đầu tiên sắp ra mắt."
+  },
+  "demo": {
+    "logic": "Logic",
+    "publish": "Xuất bản",
+    "fields": "Trường",
+    "addField": "Thêm trường",
+    "step": "Bước 1/3",
+    "form": "Đơn ứng tuyển",
+    "types": {
+      "shortText": "Văn bản ngắn",
+      "email": "Email",
+      "phone": "Điện thoại",
+      "date": "Ngày",
+      "dropdown": "Danh sách thả xuống",
+      "rating": "Đánh giá"
+    },
+    "labels": {
+      "fullName": "Họ và tên",
+      "email": "Email",
+      "phone": "Điện thoại",
+      "country": "Quốc gia cư trú",
+      "startDate": "Ngày bắt đầu"
+    },
+    "looks": {
+      "minimal": "Tối giản",
+      "bold": "Nổi bật",
+      "soft": "Mềm mại"
+    },
+    "feedbackForm": "Phản hồi khách hàng",
+    "send": "Gửi",
+    "yourEmail": "Email của bạn",
+    "responses": "Câu trả lời",
+    "total": "Tổng",
+    "respondent": "Người trả lời",
+    "submitted": "Đã gửi",
+    "status": "Trạng thái",
+    "statuses": {
+      "new": "Mới",
+      "reviewed": "Đã xem xét",
+      "approved": "Đã duyệt"
+    },
+    "justNow": "Vừa xong",
+    "minutesAgo": "{n} phút trước",
+    "dataSources": "Nguồn dữ liệu",
+    "connected": "Đã kết nối",
+    "liveWrites": "Ghi trực tiếp",
+    "responseTime": "Thời gian phản hồi",
+    "apiService": "Dịch vụ API",
+    "request": "Yêu cầu",
+    "response": "Phản hồi",
+    "callsToday": "Lượt gọi hôm nay",
+    "endpoints": "Endpoint",
+    "activity": "Tổng quan hoạt động",
+    "completion": "Tỷ lệ hoàn thành",
+    "apiCalls": "Lượt gọi API",
+    "started": "Đã bắt đầu",
+    "sent": "Đã gửi",
+    "perDay": "mỗi ngày trung bình",
+    "realScreen": "Màn hình thật trong Formalie"
   }
 }

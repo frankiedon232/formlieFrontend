@@ -227,7 +227,7 @@
     "tabs": {
       "eyebrow": "The product",
       "title": "One place for forms, answers and data",
-      "description": "Real screens from Formalie. Every tab is a part of the product you can use today.",
+      "description": "A live look at each part of Formalie. Every tab is something you can use today.",
       "seeHow": "See how it works",
       "build": {
         "label": "Build",
@@ -288,6 +288,17 @@
           "Generated docs with a try-it console"
         ],
         "alt": "The API service overview: services, endpoints, calls, traffic over time and one endpoint in detail"
+      },
+      "dashboard": {
+        "label": "Dashboard",
+        "title": "Everything at a glance",
+        "text": "Responses, completion and API calls, live, for the whole workspace or one folder.",
+        "points": [
+          "KPI cards with trends",
+          "Activity over time, by day, week, month or year",
+          "Busiest forms and what needs attention",
+          "Views for forms, data sources and the API service"
+        ]
       }
     },
     "apart": {
@@ -407,7 +418,10 @@
           "q": "Do you have an API?",
           "a": "Yes. Any form can become secure API endpoints."
         }
-      ]
+      ],
+      "description": "Straight answers about plans, your data, languages and the API.",
+      "stillTitle": "Still have a question?",
+      "stillText": "A person from the Formalie team will answer within one business day."
     },
     "cta": {
       "title": "Start collecting in minutes.",
@@ -1425,5 +1439,64 @@
     "title": "Changelog",
     "description": "What is new in Formalie, newest first.",
     "empty": "The first release notes are on their way."
+  },
+  "demo": {
+    "logic": "Logic",
+    "publish": "Publish",
+    "fields": "Fields",
+    "addField": "Add field",
+    "step": "Step 1 of 3",
+    "form": "Job application",
+    "types": {
+      "shortText": "Short text",
+      "email": "Email",
+      "phone": "Phone",
+      "date": "Date",
+      "dropdown": "Dropdown",
+      "rating": "Rating"
+    },
+    "labels": {
+      "fullName": "Full name",
+      "email": "Email",
+      "phone": "Phone",
+      "country": "Country of residence",
+      "startDate": "Start date"
+    },
+    "looks": {
+      "minimal": "Minimal",
+      "bold": "Bold",
+      "soft": "Soft"
+    },
+    "feedbackForm": "Customer feedback",
+    "send": "Send",
+    "yourEmail": "Your email",
+    "responses": "Responses",
+    "total": "Total",
+    "respondent": "Respondent",
+    "submitted": "Submitted",
+    "status": "Status",
+    "statuses": {
+      "new": "New",
+      "reviewed": "Reviewed",
+      "approved": "Approved"
+    },
+    "justNow": "Just now",
+    "minutesAgo": "{n} min ago",
+    "dataSources": "Data sources",
+    "connected": "Connected",
+    "liveWrites": "Live writes",
+    "responseTime": "Response time",
+    "apiService": "API service",
+    "request": "Request",
+    "response": "Response",
+    "callsToday": "Calls today",
+    "endpoints": "Endpoints",
+    "activity": "Activity overview",
+    "completion": "Completion rate",
+    "apiCalls": "API calls",
+    "started": "Started",
+    "sent": "Sent",
+    "perDay": "a day on average",
+    "realScreen": "The real screen in Formalie"
   }
 }

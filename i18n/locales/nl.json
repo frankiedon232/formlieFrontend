@@ -227,7 +227,7 @@
     "tabs": {
       "eyebrow": "Het product",
       "title": "Eén plek voor formulieren, antwoorden en gegevens",
-      "description": "Echte schermen uit Formalie. Elk tabblad is een deel van het product dat je vandaag al kunt gebruiken.",
+      "description": "Een live kijkje in elk onderdeel van Formalie. Elk tabblad is iets wat je vandaag al kunt gebruiken.",
       "seeHow": "Bekijk hoe het werkt",
       "build": {
         "label": "Bouwen",
@@ -288,6 +288,17 @@
           "Gegenereerde documentatie met een console om te testen"
         ],
         "alt": "Het overzicht van de API-service: verzoeken in de tijd en de endpoints"
+      },
+      "dashboard": {
+        "label": "Dashboard",
+        "title": "Alles in één oogopslag",
+        "text": "Antwoorden, voltooiing en API-aanroepen, live, voor de hele werkruimte of één map.",
+        "points": [
+          "KPI-kaarten met trends",
+          "Activiteit door de tijd, per dag, week, maand of jaar",
+          "De drukste formulieren en wat aandacht nodig heeft",
+          "Weergaven voor formulieren, gegevensbronnen en de API-service"
+        ]
       }
     },
     "apart": {
@@ -407,7 +418,10 @@
           "q": "Hebben jullie een API?",
           "a": "Ja. Elk formulier kan veilige API-endpoints worden."
         }
-      ]
+      ],
+      "description": "Heldere antwoorden over abonnementen, je gegevens, talen en de API.",
+      "stillTitle": "Nog een vraag?",
+      "stillText": "Iemand van het Formalie-team antwoordt binnen één werkdag."
     },
     "cta": {
       "title": "Begin binnen enkele minuten met verzamelen.",
@@ -1430,5 +1444,64 @@
     "title": "Wijzigingslogboek",
     "description": "Wat er nieuw is in Formalie, het nieuwste eerst.",
     "empty": "De eerste releasenotes komen eraan."
+  },
+  "demo": {
+    "logic": "Logica",
+    "publish": "Publiceren",
+    "fields": "Velden",
+    "addField": "Veld toevoegen",
+    "step": "Stap 1 van 3",
+    "form": "Sollicitatie",
+    "types": {
+      "shortText": "Korte tekst",
+      "email": "E-mail",
+      "phone": "Telefoon",
+      "date": "Datum",
+      "dropdown": "Keuzelijst",
+      "rating": "Beoordeling"
+    },
+    "labels": {
+      "fullName": "Volledige naam",
+      "email": "E-mail",
+      "phone": "Telefoon",
+      "country": "Woonland",
+      "startDate": "Startdatum"
+    },
+    "looks": {
+      "minimal": "Minimaal",
+      "bold": "Krachtig",
+      "soft": "Zacht"
+    },
+    "feedbackForm": "Klantfeedback",
+    "send": "Versturen",
+    "yourEmail": "Je e-mailadres",
+    "responses": "Antwoorden",
+    "total": "Totaal",
+    "respondent": "Respondent",
+    "submitted": "Verzonden",
+    "status": "Status",
+    "statuses": {
+      "new": "Nieuw",
+      "reviewed": "Beoordeeld",
+      "approved": "Goedgekeurd"
+    },
+    "justNow": "Zojuist",
+    "minutesAgo": "{n} min geleden",
+    "dataSources": "Gegevensbronnen",
+    "connected": "Verbonden",
+    "liveWrites": "Live schrijven",
+    "responseTime": "Responstijd",
+    "apiService": "API-service",
+    "request": "Verzoek",
+    "response": "Antwoord",
+    "callsToday": "Aanroepen vandaag",
+    "endpoints": "Endpoints",
+    "activity": "Activiteitenoverzicht",
+    "completion": "Voltooiingspercentage",
+    "apiCalls": "API-aanroepen",
+    "started": "Gestart",
+    "sent": "Verzonden",
+    "perDay": "per dag gemiddeld",
+    "realScreen": "Het echte scherm in Formalie"
   }
 }

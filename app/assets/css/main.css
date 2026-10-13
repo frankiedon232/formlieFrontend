@@ -16,6 +16,8 @@
   --animate-float: float 7s ease-in-out infinite;
   --animate-float-delayed: float 7s ease-in-out 2.5s infinite;
   --animate-rise: rise 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  /* Demo entries: slide and brighten, never invisible, so a demo always reads even mid-animation. */
+  --animate-pop: pop 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) both;
   /* Response cards drift up and fade; dashes run along the lines. */
   --animate-drift: drift 8s ease-in-out infinite;
   --animate-dash: dash 1.6s linear infinite;
@@ -62,16 +64,17 @@
   }
 
   /* A field being filled in: the text appears, waits, then clears for the next answer. */
+  /* Clipped rather than resized, so the browser repaints without recalculating layout. */
   @keyframes type {
     0% {
-      max-width: 0;
+      clip-path: inset(0 100% 0 0);
     }
     50%,
     90% {
-      max-width: 100%;
+      clip-path: inset(0 0 0 0);
     }
     100% {
-      max-width: 0;
+      clip-path: inset(0 100% 0 0);
     }
   }
 
@@ -108,13 +111,14 @@
     }
   }
 
+  /* The scan line moves with transform (no layout); it starts at the top of its box. */
   @keyframes scan {
     0%,
     100% {
-      top: 8%;
+      transform: translateY(0.15rem);
     }
     50% {
-      top: 88%;
+      transform: translateY(var(--scan-to, 1.3rem));
     }
   }
 
@@ -153,6 +157,19 @@
     }
   }
 
+  @keyframes pop {
+    from {
+      opacity: 0.45;
+      translate: 0 8px;
+      scale: 0.98;
+    }
+    to {
+      opacity: 1;
+      translate: 0 0;
+      scale: 1;
+    }
+  }
+
   @keyframes rise {
     from {
       opacity: 0;
@@ -186,10 +203,12 @@
   --ui-text-highlighted: var(--color-white);
 }
 
-/* Animations stop while their section is off screen (FlowHero and others add .motion-paused). */
-.motion-paused,
-.motion-paused * {
-  animation-play-state: paused !important;
+/* Before the page is idle, and while a section is off screen, its animations are off (useSectionMotion adds
+   .motion-paused): everything shows in its still, fully visible state, and motion starts from there. Entrance
+   animations (rise) are left alone, so nothing blinks when motion starts. */
+.motion-paused:not([class*='animate-rise']),
+.motion-paused *:not([class*='animate-rise']) {
+  animation: none !important;
 }
 
 /* Arrows that mean "forward" point the other way in right-to-left languages (Arabic). */

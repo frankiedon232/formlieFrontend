@@ -9,7 +9,7 @@
 <script setup lang="ts">
 const { t, locale } = useI18n()
 const root = useTemplateRef<HTMLElement>('root')
-const { still, paused } = useSectionMotion(root)
+const { paused, live } = useSectionMotion(root)
 const uid = useId()
 
 // Desktop drawing space; cards and pills sit at the same points (in percent), so everything scales together.
@@ -89,7 +89,7 @@ const QR = ['1110101', '1010010', '1110111', '0001010', '1011101', '0100101', '1
 const counts = reactive({ responses: 12480, database: 9316, countries: 38 })
 const format = (value: number) => new Intl.NumberFormat(locale.value).format(value)
 useIntervalFn(() => {
-  if (still.value || paused.value) return
+  if (!live.value || paused.value) return
   const add = 1 + Math.floor(Math.random() * 3)
   counts.responses += add
   counts.database += Math.max(1, add - 1)
@@ -192,15 +192,7 @@ useIntervalFn(() => {
             stroke-dasharray="3 6"
           />
           <!-- A soft pulse each time an answer passes through the hub -->
-          <circle
-            v-if="!still"
-            :cx="HUB.x"
-            :cy="HUB.y"
-            r="48"
-            fill="none"
-            stroke="#ffffff"
-            stroke-width="1.5"
-          >
+          <circle v-if="live" :cx="HUB.x" :cy="HUB.y" r="48" fill="none" stroke="#ffffff" stroke-width="1.5">
             <animate attributeName="r" values="48;96" :dur="`${STAGGER}s`" repeatCount="indefinite" />
             <animate
               attributeName="stroke-opacity"
@@ -210,7 +202,7 @@ useIntervalFn(() => {
             />
           </circle>
 
-          <template v-if="!still">
+          <template v-if="live">
             <g v-for="(to, from) in ROUTES" :key="`dot-${from}`">
               <circle r="8" fill="#a78bfa" opacity="0" :filter="`url(#${uid}-glow)`">
                 <set attributeName="opacity" to="0.6" :begin="`${from * STAGGER}s`" />
@@ -338,7 +330,7 @@ useIntervalFn(() => {
                 />
               </template>
               <span
-                class="absolute inset-x-0 h-px bg-violet-500 shadow-[0_0_6px_#8b5cf6] motion-safe:animate-scan"
+                class="absolute inset-x-0 top-0 h-px bg-violet-500 shadow-[0_0_6px_#8b5cf6] motion-safe:animate-scan"
               />
             </span>
             <span class="h-1 flex-1 rounded-full bg-white/15" />
@@ -434,7 +426,7 @@ useIntervalFn(() => {
             />
           </g>
           <circle :cx="MHUB.x" :cy="MHUB.y" r="80" :fill="`url(#${uid}-halo)`" />
-          <template v-if="!still">
+          <template v-if="live">
             <g v-for="(to, from) in MROUTES" :key="`m-dot-${from}`">
               <circle r="7" fill="#a78bfa" opacity="0" :filter="`url(#${uid}-glow)`">
                 <set attributeName="opacity" to="0.6" :begin="`${from * M_STAGGER}s`" />

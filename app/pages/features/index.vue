@@ -100,7 +100,8 @@ usePageSeo({
       }"
       class="scroll-mt-20"
     >
-      <SiteScreenFrame v-if="page.shot" :shot="page.shot" :alt="t(`features.${page.slug}.alt`)" />
+      <DemoPick v-if="page.demo" :name="page.demo" />
+      <SiteScreenFrame v-else-if="page.shot" :shot="page.shot" :alt="t(`features.${page.slug}.alt`)" />
       <FeaturesVisualAi v-else-if="page.visual === 'ai'" />
       <FeaturesVisualLanguages v-else-if="page.visual === 'languages'" />
     </UPageSection>

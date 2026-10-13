@@ -92,8 +92,9 @@ usePageSeo({
           />
         </template>
 
+        <DemoPick v-if="page.demo" :name="page.demo" class="motion-safe:animate-rise" />
         <SiteScreenFrame
-          v-if="page.shot"
+          v-else-if="page.shot"
           :shot="page.shot"
           :alt="t(`${base}.alt`)"
           eager
@@ -126,6 +127,15 @@ usePageSeo({
           </template>
         </UPageCard>
       </UPageGrid>
+    </UPageSection>
+
+    <!-- The real, watermarked screen, below the animated demo -->
+    <UPageSection
+      v-if="page.demo && page.shot"
+      :title="t('demo.realScreen')"
+      :ui="{ container: 'lg:max-w-5xl' }"
+    >
+      <SiteScreenFrame :shot="page.shot" :alt="t(`${base}.alt`)" />
     </UPageSection>
 
     <LazyFeaturesSteps :steps="steps" hydrate-on-visible />

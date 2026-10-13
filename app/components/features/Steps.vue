@@ -3,7 +3,7 @@
 defineProps<{ steps: { title: string; text: string }[] }>()
 const { t } = useI18n()
 const root = useTemplateRef<HTMLElement>('root')
-const { still, paused } = useSectionMotion(root)
+const { paused, live } = useSectionMotion(root)
 </script>
 
 <template>
@@ -28,7 +28,7 @@ const { still, paused } = useSectionMotion(root)
           stroke-dasharray="2 10"
           class="motion-safe:animate-dash"
         />
-        <circle v-if="!still" r="4" cy="5" fill="#8b5cf6">
+        <circle v-if="live" r="4" cy="5" fill="#8b5cf6">
           <animate attributeName="cx" values="0;600" dur="4s" repeatCount="indefinite" />
           <animate
             attributeName="opacity"

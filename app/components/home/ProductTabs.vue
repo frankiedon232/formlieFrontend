@@ -1,59 +1,20 @@
 <script setup lang="ts">
 import type { TabsItem } from '@nuxt/ui'
 
-// Product tabs after reference 3: a tab per area, a big card with the story, four points, two buttons and a real
-// screenshot in a browser frame (SiteScreenFrame). Dark screens in dark mode where they exist.
+// Product tabs after reference 3: a tab per area, a big card with the story, four points, two buttons and an
+// animated demo of that part of the app (owner, 2026-10-13: "so it does not look like all images"). The real,
+// watermarked screens stay on the feature pages.
 const { t, tm, rt } = useI18n()
 const localePath = useLocalePath()
 const links = useSiteLinks()
 
 const TABS = [
-  {
-    key: 'build',
-    icon: 'i-lucide-layout-template',
-    shot: 'form-builder',
-    dark: true,
-    width: 2320,
-    height: 1800,
-    page: '/features/form-builder',
-  },
-  {
-    key: 'design',
-    icon: 'i-lucide-palette',
-    shot: 'form-design',
-    dark: true,
-    width: 2320,
-    height: 1800,
-    page: '/features/design',
-  },
-  {
-    key: 'responses',
-    icon: 'i-lucide-inbox',
-    shot: 'responses',
-    dark: true,
-    width: 2320,
-    height: 1180,
-    page: '/features/responses',
-  },
-  {
-    key: 'data',
-    icon: 'i-lucide-database',
-    shot: 'data-sources',
-    dark: true,
-    width: 2320,
-    height: 1300,
-    page: '/features/data-sources',
-  },
-  // api-service rather than api-docs: the docs shot shows a development API address (owner to confirm).
-  {
-    key: 'api',
-    icon: 'i-lucide-braces',
-    shot: 'api-service',
-    dark: true,
-    width: 2320,
-    height: 1300,
-    page: '/features/api-service',
-  },
+  { key: 'build', icon: 'i-lucide-layout-template', page: '/features/form-builder' },
+  { key: 'design', icon: 'i-lucide-palette', page: '/features/design' },
+  { key: 'responses', icon: 'i-lucide-inbox', page: '/features/responses' },
+  { key: 'data', icon: 'i-lucide-database', page: '/features/data-sources' },
+  { key: 'api', icon: 'i-lucide-braces', page: '/features/api-service' },
+  { key: 'dashboard', icon: 'i-lucide-layout-dashboard', page: '/features/analytics' },
 ] as const
 
 const items = computed<TabsItem[]>(() =>
@@ -82,7 +43,7 @@ const tabOf = (value: unknown) => TABS.find(tab => tab.key === value) ?? TABS[0]
       variant="pill"
       size="lg"
       :ui="{
-        list: 'mx-auto w-full max-w-3xl overflow-x-auto bg-elevated/60 ring-1 ring-default',
+        list: 'mx-auto w-full max-w-4xl overflow-x-auto bg-elevated/60 ring-1 ring-default',
         trigger: 'grow min-w-fit',
         content: 'mt-8',
       }"
@@ -121,10 +82,12 @@ const tabOf = (value: unknown) => TABS.find(tab => tab.key === value) ?? TABS[0]
             </div>
           </div>
 
-          <SiteScreenFrame
-            :shot="{ file: tab.shot, width: tab.width, height: tab.height, dark: tab.dark }"
-            :alt="t(`home.tabs.${tab.key}.alt`)"
-          />
+          <DemoBuild v-if="tab.key === 'build'" />
+          <DemoDesign v-else-if="tab.key === 'design'" />
+          <DemoResponses v-else-if="tab.key === 'responses'" />
+          <DemoData v-else-if="tab.key === 'data'" />
+          <DemoApi v-else-if="tab.key === 'api'" />
+          <DemoDashboard v-else />
         </div>
       </template>
     </UTabs>

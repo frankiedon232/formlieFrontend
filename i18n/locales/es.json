@@ -227,7 +227,7 @@
     "tabs": {
       "eyebrow": "El producto",
       "title": "Un solo lugar para formularios, respuestas y datos",
-      "description": "Pantallas reales de Formalie. Cada pestaña es una parte del producto que puedes usar hoy mismo.",
+      "description": "Un vistazo en vivo a cada parte de Formalie. Cada pestaña es algo que puedes usar hoy mismo.",
       "seeHow": "Mira cómo funciona",
       "build": {
         "label": "Crear",
@@ -288,6 +288,17 @@
           "Documentación generada con una consola para probar"
         ],
         "alt": "El resumen del servicio API: solicitudes a lo largo del tiempo y los endpoints"
+      },
+      "dashboard": {
+        "label": "Panel",
+        "title": "Todo de un vistazo",
+        "text": "Respuestas, finalización y llamadas a la API, en directo, para todo el espacio de trabajo o una carpeta.",
+        "points": [
+          "Tarjetas de KPI con tendencias",
+          "Actividad en el tiempo, por día, semana, mes o año",
+          "Los formularios más activos y lo que necesita atención",
+          "Vistas para formularios, fuentes de datos y el servicio API"
+        ]
       }
     },
     "apart": {
@@ -407,7 +418,10 @@
           "q": "¿Tenéis una API?",
           "a": "Sí. Cualquier formulario puede convertirse en endpoints de API seguros."
         }
-      ]
+      ],
+      "description": "Respuestas claras sobre planes, tus datos, idiomas y la API.",
+      "stillTitle": "¿Aún tienes alguna pregunta?",
+      "stillText": "Una persona del equipo de Formalie te responderá en un día hábil."
     },
     "cta": {
       "title": "Empieza a recoger respuestas en minutos.",
@@ -1430,5 +1444,64 @@
     "title": "Novedades",
     "description": "Lo nuevo en Formalie, de lo más reciente a lo más antiguo.",
     "empty": "Las primeras notas de versión están en camino."
+  },
+  "demo": {
+    "logic": "Lógica",
+    "publish": "Publicar",
+    "fields": "Campos",
+    "addField": "Añadir campo",
+    "step": "Paso 1 de 3",
+    "form": "Solicitud de empleo",
+    "types": {
+      "shortText": "Texto corto",
+      "email": "Correo electrónico",
+      "phone": "Teléfono",
+      "date": "Fecha",
+      "dropdown": "Desplegable",
+      "rating": "Valoración"
+    },
+    "labels": {
+      "fullName": "Nombre completo",
+      "email": "Correo electrónico",
+      "phone": "Teléfono",
+      "country": "País de residencia",
+      "startDate": "Fecha de inicio"
+    },
+    "looks": {
+      "minimal": "Minimalista",
+      "bold": "Llamativo",
+      "soft": "Suave"
+    },
+    "feedbackForm": "Opinión de clientes",
+    "send": "Enviar",
+    "yourEmail": "Tu correo electrónico",
+    "responses": "Respuestas",
+    "total": "Total",
+    "respondent": "Encuestado",
+    "submitted": "Enviada",
+    "status": "Estado",
+    "statuses": {
+      "new": "Nueva",
+      "reviewed": "Revisada",
+      "approved": "Aprobada"
+    },
+    "justNow": "Justo ahora",
+    "minutesAgo": "Hace {n} min",
+    "dataSources": "Fuentes de datos",
+    "connected": "Conectado",
+    "liveWrites": "Escritura en vivo",
+    "responseTime": "Tiempo de respuesta",
+    "apiService": "Servicio API",
+    "request": "Solicitud",
+    "response": "Respuesta",
+    "callsToday": "Llamadas hoy",
+    "endpoints": "Endpoints",
+    "activity": "Resumen de actividad",
+    "completion": "Tasa de finalización",
+    "apiCalls": "Llamadas a la API",
+    "started": "Iniciadas",
+    "sent": "Enviadas",
+    "perDay": "al día de media",
+    "realScreen": "La pantalla real en Formalie"
   }
 }

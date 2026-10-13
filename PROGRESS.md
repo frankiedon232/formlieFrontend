@@ -110,6 +110,10 @@
 | 2026-10-13 | Tighter spacing site-wide (hero closer to the header, less space between sections), nicer cards, and a richer "Built for teams in every sector" with movement | S2 to S4 | ✅ |
 | 2026-10-13 | Legal pages slicker and more premium | S5 | ✅ |
 | 2026-10-13 | Compact "On this page" on the legal pages | S5 | ✅ |
+| 2026-10-13 | Home pricing shows the same four plans and period switch as the pricing page | S4 | ✅ |
+| 2026-10-13 | FAQ redesigned: premium, animated | S2 | ✅ |
+| 2026-10-13 | Animated product demos instead of screenshots (like the AI assistant demo), for every product tab and a Dashboard tab | S2, S3 | ✅ |
+| 2026-10-13 | Bug: legal pages reached by a link showed only headings | S5 | ✅ fixed |
 | 2026-10-13 | Copy formlyBackend `docs/PRODUCTION-CHECKLIST.md` over this project's copy | Docs | ✅ (already identical; DEPLOYMENT-GUIDE synced too) |
 
 ## Progress log
@@ -129,3 +133,4 @@
 | 2026-10-13 | S5 | Legal pages redesigned (owner): hero band with status, dates, reading time and section count, navigator card with an ink pill and a questions card, numbered sections with ink tiles, one slim status strip, On this page with reading progress and back to top, document chips on phones, previous and next cards |
 | 2026-10-13 | S6 | `/enterprise` (hero visual, eight commitments, embedded enquiry with prefill), `/contact` (sales, support, help centre, embedded support form), `SiteFormEmbed`; copy in 20 languages; both pages in the sitemap. 60 tests |
 | 2026-10-13 | S7 | Security headers and CSP (`deploy/headers.ts`, `_headers`, `_redirects`), strict prerender (no broken links), Blog and Changelog pages, compact numbered legal TOC with progress, performance pass (entry-only preload, lazy hydration, legal text not re-parsed, component detection), Lighthouse: accessibility, best practices, SEO 100; performance 65 to 80 (lab). PRODUCTION-CHECKLIST section 7 rewritten in all five projects. 63 tests |
+| 2026-10-13 | Polish | Home pricing reuses the pricing page's plans (four plans, period switch). FAQ: sticky dark card with a live conversation and a contact prompt, numbered question cards that lift when open. Six animated product demos (`components/demo`: Build, Design, Responses, Data, API, Dashboard) in the home tabs (new Dashboard tab) and the feature heroes; the real screens stay below them. Motion starts when the page is idle; paused sections show their still state; layout-free keyframes; fewer Nuxt UI colours. Fix: legal text on pages reached by a link (only unchanged prerendered sections stay unhydrated). Lighthouse mobile: performance 71 to 75, accessibility, best practices, SEO 100 |

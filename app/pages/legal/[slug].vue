@@ -16,6 +16,16 @@ const slug = String(route.params.slug)
 if (!isLegalSlug(slug)) throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
 
 const { document, source, otherLanguage } = useLegal(slug)
+// The sections that arrived as prerendered or server-rendered HTML, by id. Only those may stay unhydrated: a page
+// reached by a link inside the site, or a section whose text changed after the API refresh, is rendered normally
+// (a never-hydrated component mounted in the browser would stay empty).
+const prerendered = new Map(
+  import.meta.server || useNuxtApp().isHydrating
+    ? document.value.sections.map(section => [section.id, section.body_markdown])
+    : [],
+)
+const fromServer = (section: { id: string; body_markdown: string }) =>
+  prerendered.get(section.id) === section.body_markdown
 const name = computed(() => t(`legal.${LEGAL_KEYS[slug]}`))
 const draft = computed(() => document.value.status === 'draft')
 const slugs = LEGAL_SLUGS
@@ -293,11 +303,9 @@ usePageSeo({
                 />
               </span>
             </h2>
-            <LazyLegalBody
-              :key="`${section.id}-${document.version}-${section.body_markdown.length}`"
-              :markdown="section.body_markdown"
-              hydrate-never
-            />
+            <!-- Prerendered text stays as it is (never re-parsed in the browser); anything else is rendered. -->
+            <LazyLegalBody v-if="fromServer(section)" :markdown="section.body_markdown" hydrate-never />
+            <LazyLegalBody v-else :markdown="section.body_markdown" />
           </section>
         </article>
 

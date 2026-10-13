@@ -3,7 +3,7 @@
 // in one by one. SVG and CSS only; still for reduced motion; paused off screen.
 const { t, tm, rt } = useI18n()
 const root = useTemplateRef<HTMLElement>('root')
-const { still, paused } = useSectionMotion(root)
+const { paused, live } = useSectionMotion(root)
 
 const checks = computed(() =>
   (tm('enterprisePage.visual.checks') as unknown[]).map(item => rt(item as string)),
@@ -55,7 +55,7 @@ const ICONS = ['i-lucide-key-round', 'i-lucide-activity', 'i-lucide-shield-check
           stroke-dasharray="2 10"
           class="motion-safe:animate-dash"
         />
-        <g v-if="!still">
+        <g v-if="live">
           <circle r="4" cy="10" fill="#ffffff">
             <animate attributeName="cx" values="0;200" dur="2.4s" repeatCount="indefinite" />
           </circle>

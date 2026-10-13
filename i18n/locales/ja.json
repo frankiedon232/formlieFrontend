@@ -227,7 +227,7 @@
     "tabs": {
       "eyebrow": "製品",
       "title": "フォーム、回答、データを 1 か所に",
-      "description": "Formalie の実際の画面です。どのタブも、今日から使える製品の機能です。",
+      "description": "Formalie の各機能をライブでご覧ください。どのタブも、今日から使える機能です。",
       "seeHow": "仕組みを見る",
       "build": {
         "label": "作成",
@@ -288,6 +288,17 @@
           "試せるコンソールつきの自動生成ドキュメント"
         ],
         "alt": "API サービスの概要：リクエストの推移とエンドポイント"
+      },
+      "dashboard": {
+        "label": "ダッシュボード",
+        "title": "すべてをひと目で",
+        "text": "回答、完了率、API 呼び出しをリアルタイムで。ワークスペース全体でも、1 つのフォルダでも。",
+        "points": [
+          "推移つきの KPI カード",
+          "日、週、月、年ごとのアクティビティ推移",
+          "よく使われるフォームと対応が必要な項目",
+          "フォーム、データソース、API サービスのビュー"
+        ]
       }
     },
     "apart": {
@@ -407,7 +418,10 @@
           "q": "API はありますか？",
           "a": "はい。どのフォームも安全な API エンドポイントにできます。"
         }
-      ]
+      ],
+      "description": "プラン、データ、言語、API についての明快な回答です。",
+      "stillTitle": "まだ質問がありますか？",
+      "stillText": "Formalie チームの担当者が 1 営業日以内にご返信します。"
     },
     "cta": {
       "title": "数分で回答の収集を始めましょう。",
@@ -1425,5 +1439,64 @@
     "title": "変更履歴",
     "description": "Formalie の新機能と変更点を新しい順に掲載します。",
     "empty": "最初のリリースノートを準備中です。"
+  },
+  "demo": {
+    "logic": "ロジック",
+    "publish": "公開",
+    "fields": "フィールド",
+    "addField": "フィールドを追加",
+    "step": "ステップ 1/3",
+    "form": "求人応募",
+    "types": {
+      "shortText": "短いテキスト",
+      "email": "メール",
+      "phone": "電話",
+      "date": "日付",
+      "dropdown": "ドロップダウン",
+      "rating": "評価"
+    },
+    "labels": {
+      "fullName": "氏名",
+      "email": "メールアドレス",
+      "phone": "電話番号",
+      "country": "居住国",
+      "startDate": "開始日"
+    },
+    "looks": {
+      "minimal": "ミニマル",
+      "bold": "ボールド",
+      "soft": "ソフト"
+    },
+    "feedbackForm": "お客様アンケート",
+    "send": "送信",
+    "yourEmail": "メールアドレス",
+    "responses": "回答",
+    "total": "合計",
+    "respondent": "回答者",
+    "submitted": "送信日時",
+    "status": "ステータス",
+    "statuses": {
+      "new": "新規",
+      "reviewed": "確認済み",
+      "approved": "承認済み"
+    },
+    "justNow": "たった今",
+    "minutesAgo": "{n} 分前",
+    "dataSources": "データソース",
+    "connected": "接続済み",
+    "liveWrites": "リアルタイム書き込み",
+    "responseTime": "応答時間",
+    "apiService": "API サービス",
+    "request": "リクエスト",
+    "response": "レスポンス",
+    "callsToday": "本日の呼び出し",
+    "endpoints": "エンドポイント",
+    "activity": "アクティビティ概要",
+    "completion": "完了率",
+    "apiCalls": "API 呼び出し",
+    "started": "開始",
+    "sent": "送信",
+    "perDay": "1 日平均",
+    "realScreen": "Formalie の実際の画面"
   }
 }

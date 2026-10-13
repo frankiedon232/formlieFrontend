@@ -36,6 +36,10 @@ The portal's sign-in panel shows a hub with sources on the left and destinations
 7. **Phones:** the panel stacks under the text, with three sources, the hub and three destinations, flowing top to bottom.
 8. **Built with SVG and CSS only** (animateMotion, CSS keyframes), no video and no library. Everything stands still with `prefers-reduced-motion`, and it pauses when off screen (`IntersectionObserver`).
 
+## Animated product demos (owner, 2026-10-13)
+
+The home product tabs and the feature heroes show **animated demos** of each area instead of still screenshots (`app/components/demo/`): Build (fields drop into a form), Design (one form restyles through three looks), Responses (rows arrive, statuses change), Data (live writes to the customer's database), API (a request and its 201 answer), Dashboard (counters and a line that draws itself). Each sits in `DemoWindow` (an app window in the site's tokens), loops with `useDemoLoop` (full picture when prerendered, for reduced motion and before the page is idle), uses sample data only, and is hidden from screen readers. The real, watermarked screens stay on the feature pages under "The real screen in Formalie".
+
 ## Using the screenshots
 
 - Show them **inside a device or card frame** (browser chrome with three dots, rounded, a soft shadow), slightly rotated or overlapped like the floating cards in reference 1, never full-bleed.

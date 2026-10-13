@@ -227,7 +227,7 @@
     "tabs": {
       "eyebrow": "产品",
       "title": "表单、回答和数据，集中一处",
-      "description": "以下均为 Formalie 的真实界面。每个标签页都是你今天就能使用的产品功能。",
+      "description": "实时一览 Formalie 的各个部分。每个标签页中的功能你今天就能使用。",
       "seeHow": "了解工作原理",
       "build": {
         "label": "构建",
@@ -288,6 +288,17 @@
           "自动生成的文档，附带在线调试控制台"
         ],
         "alt": "API 服务概览：请求趋势和端点列表"
+      },
+      "dashboard": {
+        "label": "仪表板",
+        "title": "一目了然",
+        "text": "回答、完成率和 API 调用实时呈现，覆盖整个工作区或单个文件夹。",
+        "points": [
+          "带趋势的 KPI 卡片",
+          "按日、周、月或年查看活动趋势",
+          "最活跃的表单以及需要关注的事项",
+          "表单、数据源和 API 服务的视图"
+        ]
       }
     },
     "apart": {
@@ -407,7 +418,10 @@
           "q": "你们提供 API 吗？",
           "a": "提供。任何表单都可以变成安全的 API 端点。"
         }
-      ]
+      ],
+      "description": "关于方案、您的数据、语言和 API 的直接解答。",
+      "stillTitle": "还有疑问？",
+      "stillText": "Formalie 团队成员会在一个工作日内回复您。"
     },
     "cta": {
       "title": "几分钟内开始收集。",
@@ -1420,5 +1434,64 @@
     "title": "更新日志",
     "description": "Formalie 的最新变化，按时间从新到旧排列。",
     "empty": "首批版本说明即将发布。"
+  },
+  "demo": {
+    "logic": "逻辑",
+    "publish": "发布",
+    "fields": "字段",
+    "addField": "添加字段",
+    "step": "第 1 步，共 3 步",
+    "form": "求职申请",
+    "types": {
+      "shortText": "短文本",
+      "email": "邮箱",
+      "phone": "电话",
+      "date": "日期",
+      "dropdown": "下拉菜单",
+      "rating": "评分"
+    },
+    "labels": {
+      "fullName": "姓名",
+      "email": "邮箱",
+      "phone": "电话",
+      "country": "居住国家",
+      "startDate": "入职日期"
+    },
+    "looks": {
+      "minimal": "简约",
+      "bold": "醒目",
+      "soft": "柔和"
+    },
+    "feedbackForm": "客户反馈",
+    "send": "提交",
+    "yourEmail": "你的邮箱",
+    "responses": "回答",
+    "total": "总计",
+    "respondent": "填写人",
+    "submitted": "提交时间",
+    "status": "状态",
+    "statuses": {
+      "new": "新",
+      "reviewed": "已审阅",
+      "approved": "已批准"
+    },
+    "justNow": "刚刚",
+    "minutesAgo": "{n} 分钟前",
+    "dataSources": "数据源",
+    "connected": "已连接",
+    "liveWrites": "实时写入",
+    "responseTime": "响应时间",
+    "apiService": "API 服务",
+    "request": "请求",
+    "response": "响应",
+    "callsToday": "今日调用",
+    "endpoints": "端点",
+    "activity": "活动概览",
+    "completion": "完成率",
+    "apiCalls": "API 调用",
+    "started": "已开始",
+    "sent": "已提交",
+    "perDay": "日均",
+    "realScreen": "Formalie 中的真实界面"
   }
 }

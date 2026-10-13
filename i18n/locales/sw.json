@@ -227,7 +227,7 @@
     "tabs": {
       "eyebrow": "Bidhaa",
       "title": "Sehemu moja kwa fomu, majibu na data",
-      "description": "Skrini halisi kutoka Formalie. Kila kichupo ni sehemu ya bidhaa unayoweza kutumia leo.",
+      "description": "Mtazamo wa moja kwa moja wa kila sehemu ya Formalie. Kila kichupo ni kitu unachoweza kutumia leo.",
       "seeHow": "Ona jinsi inavyofanya kazi",
       "build": {
         "label": "Unda",
@@ -288,6 +288,17 @@
           "Nyaraka zinazotengenezwa zenyewe, na kiweko cha kujaribu"
         ],
         "alt": "Muhtasari wa huduma ya API: maombi kwa muda na sehemu za API"
+      },
+      "dashboard": {
+        "label": "Dashibodi",
+        "title": "Kila kitu kwa mtazamo mmoja",
+        "text": "Majibu, ukamilishaji na miito ya API, moja kwa moja, kwa nafasi yote ya kazi au folda moja.",
+        "points": [
+          "Kadi za KPI zenye mwenendo",
+          "Shughuli kwa muda, kwa siku, wiki, mwezi au mwaka",
+          "Fomu zenye shughuli nyingi zaidi na yanayohitaji kushughulikiwa",
+          "Mionekano ya fomu, vyanzo vya data na huduma ya API"
+        ]
       }
     },
     "apart": {
@@ -407,7 +418,10 @@
           "q": "Je, mna API?",
           "a": "Ndiyo. Fomu yoyote inaweza kuwa sehemu salama za API."
         }
-      ]
+      ],
+      "description": "Majibu ya moja kwa moja kuhusu mipango, data yako, lugha na API.",
+      "stillTitle": "Bado una swali?",
+      "stillText": "Mtu kutoka timu ya Formalie atakujibu ndani ya siku moja ya kazi."
     },
     "cta": {
       "title": "Anza kukusanya kwa dakika chache.",
@@ -1425,5 +1439,64 @@
     "title": "Orodha ya mabadiliko",
     "description": "Mambo mapya katika Formalie, ya karibuni kwanza.",
     "empty": "Maelezo ya kwanza ya matoleo yako njiani."
+  },
+  "demo": {
+    "logic": "Mantiki",
+    "publish": "Chapisha",
+    "fields": "Sehemu",
+    "addField": "Ongeza sehemu",
+    "step": "Hatua 1 kati ya 3",
+    "form": "Ombi la kazi",
+    "types": {
+      "shortText": "Maandishi mafupi",
+      "email": "Barua pepe",
+      "phone": "Simu",
+      "date": "Tarehe",
+      "dropdown": "Orodha kunjuzi",
+      "rating": "Ukadiriaji"
+    },
+    "labels": {
+      "fullName": "Jina kamili",
+      "email": "Barua pepe",
+      "phone": "Simu",
+      "country": "Nchi unayoishi",
+      "startDate": "Tarehe ya kuanza"
+    },
+    "looks": {
+      "minimal": "Rahisi",
+      "bold": "Imara",
+      "soft": "Laini"
+    },
+    "feedbackForm": "Maoni ya wateja",
+    "send": "Tuma",
+    "yourEmail": "Barua pepe yako",
+    "responses": "Majibu",
+    "total": "Jumla",
+    "respondent": "Mjibuji",
+    "submitted": "Imetumwa",
+    "status": "Hali",
+    "statuses": {
+      "new": "Mpya",
+      "reviewed": "Imekaguliwa",
+      "approved": "Imeidhinishwa"
+    },
+    "justNow": "Sasa hivi",
+    "minutesAgo": "Dakika {n} zilizopita",
+    "dataSources": "Vyanzo vya data",
+    "connected": "Imeunganishwa",
+    "liveWrites": "Uandishi wa moja kwa moja",
+    "responseTime": "Muda wa kujibu",
+    "apiService": "Huduma ya API",
+    "request": "Ombi",
+    "response": "Jibu",
+    "callsToday": "Miito ya leo",
+    "endpoints": "Ncha",
+    "activity": "Muhtasari wa shughuli",
+    "completion": "Kiwango cha ukamilishaji",
+    "apiCalls": "Miito ya API",
+    "started": "Zilizoanzishwa",
+    "sent": "Zilizotumwa",
+    "perDay": "kwa siku kwa wastani",
+    "realScreen": "Skrini halisi ndani ya Formalie"
   }
 }

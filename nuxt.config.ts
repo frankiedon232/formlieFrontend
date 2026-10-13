@@ -29,6 +29,8 @@ export default defineNuxtConfig({
   ui: {
     // Styles only for the Nuxt UI components the site uses (a smaller stylesheet, a faster first paint; S7).
     experimental: { componentDetection: true },
+    // Only the colours the site uses (primary is the ink, app.config.ts): fewer generated variants, a smaller stylesheet.
+    theme: { colors: ['primary', 'neutral', 'success', 'warning'] },
   },
 
   // Formalie's brand icons and manifest (docs/brand/web, copied to public/ as they are).

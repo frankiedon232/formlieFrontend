@@ -227,7 +227,7 @@
     "tabs": {
       "eyebrow": "Ürün",
       "title": "Formlar, yanıtlar ve veriler için tek yer",
-      "description": "Formalie'den gerçek ekranlar. Her sekme, bugün kullanabileceğiniz bir ürün parçasını gösterir.",
+      "description": "Formalie'nin her bölümüne canlı bir bakış. Her sekme, bugün kullanabileceğiniz bir özelliği gösterir.",
       "seeHow": "Nasıl çalıştığını görün",
       "build": {
         "label": "Oluştur",
@@ -288,6 +288,17 @@
           "Deneme konsolu içeren otomatik belgeler"
         ],
         "alt": "API hizmetine genel bakış: zaman içindeki istekler ve uç noktalar"
+      },
+      "dashboard": {
+        "label": "Pano",
+        "title": "Her şey tek bakışta",
+        "text": "Yanıtlar, tamamlanma ve API çağrıları, canlı olarak, tüm çalışma alanı ya da tek bir klasör için.",
+        "points": [
+          "Eğilimleriyle KPI kartları",
+          "Gün, hafta, ay veya yıla göre zaman içindeki etkinlik",
+          "En yoğun formlar ve ilgi bekleyenler",
+          "Formlar, veri kaynakları ve API hizmeti için görünümler"
+        ]
       }
     },
     "apart": {
@@ -407,7 +418,10 @@
           "q": "API'niz var mı?",
           "a": "Evet. Her form güvenli API uç noktalarına dönüşebilir."
         }
-      ]
+      ],
+      "description": "Planlar, verileriniz, diller ve API hakkında net yanıtlar.",
+      "stillTitle": "Hâlâ bir sorunuz mu var?",
+      "stillText": "Formalie ekibinden biri bir iş günü içinde yanıt verir."
     },
     "cta": {
       "title": "Dakikalar içinde yanıt toplamaya başlayın.",
@@ -1425,5 +1439,64 @@
     "title": "Değişiklik günlüğü",
     "description": "Formalie'deki yenilikler, en yenisi en üstte.",
     "empty": "İlk sürüm notları yolda."
+  },
+  "demo": {
+    "logic": "Mantık",
+    "publish": "Yayınla",
+    "fields": "Alanlar",
+    "addField": "Alan ekle",
+    "step": "Adım 1 / 3",
+    "form": "İş başvurusu",
+    "types": {
+      "shortText": "Kısa metin",
+      "email": "E-posta",
+      "phone": "Telefon",
+      "date": "Tarih",
+      "dropdown": "Açılır liste",
+      "rating": "Puanlama"
+    },
+    "labels": {
+      "fullName": "Ad soyad",
+      "email": "E-posta",
+      "phone": "Telefon",
+      "country": "İkamet ülkesi",
+      "startDate": "Başlangıç tarihi"
+    },
+    "looks": {
+      "minimal": "Sade",
+      "bold": "Güçlü",
+      "soft": "Yumuşak"
+    },
+    "feedbackForm": "Müşteri geri bildirimi",
+    "send": "Gönder",
+    "yourEmail": "E-postanız",
+    "responses": "Yanıtlar",
+    "total": "Toplam",
+    "respondent": "Yanıtlayan",
+    "submitted": "Gönderilme",
+    "status": "Durum",
+    "statuses": {
+      "new": "Yeni",
+      "reviewed": "İncelendi",
+      "approved": "Onaylandı"
+    },
+    "justNow": "Az önce",
+    "minutesAgo": "{n} dk önce",
+    "dataSources": "Veri kaynakları",
+    "connected": "Bağlı",
+    "liveWrites": "Canlı yazma",
+    "responseTime": "Yanıt süresi",
+    "apiService": "API hizmeti",
+    "request": "İstek",
+    "response": "Yanıt",
+    "callsToday": "Bugünkü çağrılar",
+    "endpoints": "Uç noktalar",
+    "activity": "Etkinlik özeti",
+    "completion": "Tamamlanma oranı",
+    "apiCalls": "API çağrıları",
+    "started": "Başlatılan",
+    "sent": "Gönderilen",
+    "perDay": "günlük ortalama",
+    "realScreen": "Formalie'deki gerçek ekran"
   }
 }
