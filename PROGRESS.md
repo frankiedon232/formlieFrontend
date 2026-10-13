@@ -116,6 +116,7 @@
 | 2026-10-13 | Bug: legal pages reached by a link showed only headings | S5 | ✅ fixed |
 | 2026-10-13 | Embedded forms come later from the superadmin: show a write-to-us card until then | S6 | ✅ (card); ⏸ forms |
 | 2026-10-13 | Confirm everything comes from the backend: `/public/platform` was not read yet, now wired | S6 | ✅ |
+| 2026-10-13 | Owner answers: pricing opens on Monthly; keep the safe API screenshot; look names stay translated; production is `https://formalie.com/` | S4, Docs | ✅ |
 | 2026-10-13 | The project's git branch is `formalieWeb` | Docs | ✅ |
 | 2026-10-13 | Copy formlyBackend `docs/PRODUCTION-CHECKLIST.md` over this project's copy | Docs | ✅ (already identical; DEPLOYMENT-GUIDE synced too) |
 
@@ -139,3 +140,4 @@
 | 2026-10-13 | Polish | Home pricing reuses the pricing page's plans (four plans, period switch). FAQ: sticky dark card with a live conversation and a contact prompt, numbered question cards that lift when open. Six animated product demos (`components/demo`: Build, Design, Responses, Data, API, Dashboard) in the home tabs (new Dashboard tab) and the feature heroes; the real screens stay below them. Motion starts when the page is idle; paused sections show their still state; layout-free keyframes; fewer Nuxt UI colours. Fix: legal text on pages reached by a link (only unchanged prerendered sections stay unhydrated). Lighthouse mobile: performance 71 to 75, accessibility, best practices, SEO 100 |
 | 2026-10-13 | S6 | Owner answers: the forms come later, so `SiteFormEmbed` shows a "Write to us" card with the right address until `NUXT_PUBLIC_FORMS_LIVE=true` (copy in 20 languages); the branch is `formalieWeb` (CLAUDE.md, decisions). 63 tests, strict prerender 1534 routes |
 | 2026-10-13 | S6 | `usePlatform()` reads GET `/public/platform` (zod-checked, defaults when the API is down): support and sales addresses on Contact, Enterprise, the write-to-us card and the structured data; status link, social icons and legal entity in the footer once the owner sets them. Plans, legal and platform all come from the backend now. 65 tests |
+| 2026-10-13 | S4 | Pricing (page and home) opens on Monthly; decisions recorded (safe API screenshot, translated look names, production address confirmed) |

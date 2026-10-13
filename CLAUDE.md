@@ -20,7 +20,7 @@ Read `docs/00-OVERVIEW.md`, `docs/01-ARCHITECTURE.md`, `docs/SITEMAP.md`, `docs/
 - Ask before adding anything else.
 - **Rendering:** server-side rendered or prerendered for SEO, never client-only.
 
-**Addresses:** development `https://formalie.dev:3033/`, production `https://formalie.com/` (confirm with the owner).
+**Addresses:** development `https://formalie.dev:3033/`, production `https://formalie.com/` (confirmed by the owner, 2026-10-13).
 
 The app lives elsewhere:
 - portal sign-in: `https://manage.formalie.dev:2202/` in development, `https://manage.formalie.com/` in production;

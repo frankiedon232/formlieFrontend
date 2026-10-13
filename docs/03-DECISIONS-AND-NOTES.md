@@ -16,7 +16,10 @@
 - **Packages added in S0 beyond the CLAUDE.md list:** `@nuxt/image` (rule 8 requires `NuxtImg`) and `@iconify-json/lucide` (Nuxt UI's own icon set, bundled so icons render in prerendered pages without calling another site). The owner may still say no.
 - **Pure helpers live in `app/utils/`** (`locales.ts`, `links.ts`), not `shared/`: Nuxt 4.5's prerender build breaks on `shared/` imports from `nuxt.config.ts` (a wrong relative path), and the website has no server code to share with.
 - **Home page motion (owner, 2026-10-13):** every section draws on the reference screens and has clean, tech-style motion (data travelling, entries arriving, rings turning), monochrome with one violet glow, still for reduced motion and paused off screen. The hero counters are labelled "Example activity, not real figures".
-- **API tab screenshot:** `api-service` instead of `api-docs`, because the docs shot shows a development API address (`api.formalie.dev/…`); to confirm with the owner or recapture.
+- **API tab screenshot:** `api-service` instead of `api-docs`, because the docs shot shows a development API address (`api.formalie.dev/…`); owner, 2026-10-13: keep the safe shot, no secrets shown.
+- **Designer demo look names** (Minimal, Soft, Bold) stay translated in every language (owner, 2026-10-13: "the best is fine").
+- **Production address** `https://formalie.com/` confirmed (owner, 2026-10-13).
+- **Pricing** opens on Monthly (owner, 2026-10-13).
 - **Prerender:** every language's home page is listed; `failOnError` is off until all pages exist (S7 turns it back on).
 - **Git branch:** `formalieWeb` (owner, 2026-10-13).
 - **Embedded forms come later** (owner, 2026-10-13: they will be published from the superadmin). Until `NUXT_PUBLIC_FORMS_LIVE=true`, `/enterprise` and `/contact` show a write-to-us card with sales@ or support@ instead of the embed.

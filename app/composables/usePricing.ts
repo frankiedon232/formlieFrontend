@@ -9,7 +9,7 @@ export function usePricing() {
   const localePath = useLocalePath()
   const links = useSiteLinks()
   const { plans, source } = usePlans()
-  const period = useState<Period>('pricing-period', () => 'annually')
+  const period = useState<Period>('pricing-period', () => 'monthly')
 
   const money = (amount: number, currency: string) => formatPrice(amount, currency, locale.value)
 

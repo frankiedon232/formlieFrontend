@@ -6,7 +6,7 @@ The prices below are **samples the owner will adjust**. The real ones come from 
 
 - **Data:** `usePlans()` reads `GET {API}/public/plans` while the page is prerendered and again in the browser; when the API doesn't answer, the samples below (`app/data/plans.json`) show with a "Sample prices" notice.
 - **Maths:** `app/utils/pricing.ts` (unit-tested): price per month for a period, the saving against monthly, the comparison table from each plan's `limits` and `features` keys (`templates`, `lists`, `themes`, `versions`, `folders`, `fillLater`, `analytics`, `visits`, `ai`, `explorer`, `query`, `destinations`, `api`, `webhooks`, `apiDocs`, `branding`, `subdomain`, `prioritySupport`, `dedicatedSupport`, `securityReview`), so the table follows the platform admin.
-- **Page:** the period toggle opens on **Annually** (the saving shows on the toggle and the cards), four plan cards (two columns until 1280 px), the comparison table (Nuxt UI `UPricingTable`, one card per plan on phones), "Payments handled by Paddle" with the tax note, the pricing FAQ with links to Refunds and cancellation and the Terms, structured data (`SoftwareApplication` with one `Offer` per plan and period, `FAQPage`, breadcrumbs).
+- **Page:** the period toggle opens on **Monthly** (owner, 2026-10-13; the saving shows on the toggle and the cards), four plan cards (two columns until 1280 px), the comparison table (Nuxt UI `UPricingTable`, one card per plan on phones), "Payments handled by Paddle" with the tax note, the pricing FAQ with links to Refunds and cancellation and the Terms, structured data (`SoftwareApplication` with one `Offer` per plan and period, `FAQPage`, breadcrumbs).
 
 ## Periods
 
