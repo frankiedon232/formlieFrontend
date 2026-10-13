@@ -9460,13 +9460,8 @@
       "expires": "Wygasa {date}",
       "expiringSoon": "wkrótce wygasa",
       "none": "Brak zapisanej karty. Płatne plany wymagają jej do odnowień.",
-      "replace": "Zastąp",
-      "remove": "Usuń kartę",
-      "removeTitle": "Usunąć tę kartę?",
-      "removeDesc": "Możesz dodać kartę ponownie w dowolnej chwili.",
-      "removeRenewal": "Twój plan odnawia się {date}. Bez karty dodaj nową przed tą datą, inaczej odnowienia nie da się pobrać.",
-      "removed": "Karta usunięta",
-      "secure": "Dane karty przechowuje nasz dostawca płatności, Payoneer. Formalie nigdy nie widzi ani nie zapisuje numeru Twojej karty."
+      "secure": "Płatności obsługuje Paddle, nasz merchant of record, który przechowuje Twoją kartę. Formalie nigdy nie widzi ani nie przechowuje numeru Twojej karty.",
+      "update": "Zaktualizuj kartę"
     },
     "renewal": {
       "auto": "Odnawiaj automatycznie",
@@ -9500,7 +9495,11 @@
         "open": "Otwarta",
         "failed": "Nieudana",
         "refunded": "Zwrócona"
-      }
+      },
+      "pdf": "Pobierz PDF",
+      "pdfMissing": "PDF tej faktury nie jest jeszcze dostępny.",
+      "pdfReady": "Twoja faktura jest gotowa",
+      "pdfOpen": "Otwórz PDF"
     },
     "changeTitle": "Przejdź na {plan}",
     "changeDesc": "Sprawdź, co się zmieni, zanim potwierdzisz.",
@@ -9532,14 +9531,19 @@
     "checkout": {
       "title": "Płatność",
       "cardTitle": "Dodaj kartę",
-      "desc": "Bezpieczna płatność przez Payoneer.",
+      "desc": "Płatności obsługuje Paddle, nasz merchant of record.",
       "cardDesc": "Zapisz kartę do odnowień. Teraz nic nie jest pobierane.",
-      "testNote": "Tryb testowy: Payoneer nie jest jeszcze połączony, więc nie jest używana prawdziwa karta. Wybierz kartę testową, aby wypróbować płatność.",
+      "testNote": "Tryb testowy: Paddle nie jest tu podłączony, więc nie używa się prawdziwej karty. Wybierz kartę testową, aby wypróbować płatność.",
       "testCard": "Karta testowa",
       "pay": "Zapłać {amount}",
       "saveCard": "Zapisz kartę",
       "decline": "Wypróbuj odrzuconą płatność",
-      "secure": "Dane karty wpisujesz na bezpiecznej stronie Payoneer. Formalie zachowuje tylko markę karty, jej ostatnie cztery cyfry i datę ważności."
+      "secure": "Dane karty wpisujesz tylko w bezpiecznym oknie Paddle. Formalie przechowuje tylko rodzaj karty, cztery ostatnie cyfry i datę ważności.",
+      "confirming": "Potwierdzanie z Paddle…",
+      "confirmingDesc": "Paddle informuje nas, gdy płatność przejdzie. Trwa to kilka sekund.",
+      "pending": "Twoja płatność jest potwierdzana",
+      "pendingDesc": "Paddle jeszcze jej nie potwierdził. Odśwież tę stronę za minutę, aby zobaczyć swój plan.",
+      "unavailable": "Nie udało się otworzyć płatności Paddle. Sprawdź połączenie i spróbuj ponownie."
     },
     "enquiry": {
       "title": "Zapytanie Enterprise"

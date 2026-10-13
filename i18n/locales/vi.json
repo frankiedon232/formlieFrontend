@@ -9460,13 +9460,8 @@
       "expires": "Hết hạn {date}",
       "expiringSoon": "sắp hết hạn",
       "none": "Chưa có thẻ nào được lưu. Các gói trả phí cần thẻ để gia hạn.",
-      "replace": "Thay thế",
-      "remove": "Xóa thẻ",
-      "removeTitle": "Xóa thẻ này?",
-      "removeDesc": "Bạn có thể thêm thẻ lại bất cứ lúc nào.",
-      "removeRenewal": "Gói của bạn gia hạn vào {date}. Nếu không có thẻ, hãy thêm thẻ mới trước đó, nếu không sẽ không thu được tiền gia hạn.",
-      "removed": "Đã xóa thẻ",
-      "secure": "Thông tin thẻ được nhà cung cấp thanh toán Payoneer của chúng tôi lưu giữ. Formalie không bao giờ thấy hay lưu số thẻ của bạn."
+      "secure": "Thanh toán do Paddle, đơn vị bán hàng chính thức (merchant of record) của chúng tôi, xử lý và Paddle giữ thẻ của bạn. Formalie không bao giờ thấy hay lưu số thẻ của bạn.",
+      "update": "Cập nhật thẻ"
     },
     "renewal": {
       "auto": "Gia hạn tự động",
@@ -9500,7 +9495,11 @@
         "open": "Đang mở",
         "failed": "Thất bại",
         "refunded": "Đã hoàn tiền"
-      }
+      },
+      "pdf": "Tải PDF",
+      "pdfMissing": "PDF của hóa đơn này chưa có.",
+      "pdfReady": "Hóa đơn của bạn đã sẵn sàng",
+      "pdfOpen": "Mở PDF"
     },
     "changeTitle": "Chuyển sang {plan}",
     "changeDesc": "Xem những gì thay đổi trước khi xác nhận.",
@@ -9532,14 +9531,19 @@
     "checkout": {
       "title": "Thanh toán",
       "cardTitle": "Thêm thẻ",
-      "desc": "Thanh toán an toàn qua Payoneer.",
+      "desc": "Thanh toán do Paddle, đơn vị bán hàng chính thức (merchant of record) của chúng tôi, xử lý.",
       "cardDesc": "Lưu một thẻ để gia hạn. Hiện chưa tính phí gì.",
-      "testNote": "Chế độ thử: Payoneer chưa được kết nối nên không dùng thẻ thật. Hãy chọn một thẻ thử để thử thanh toán.",
+      "testNote": "Chế độ thử: Paddle chưa được kết nối ở đây nên không dùng thẻ thật. Chọn một thẻ thử để thử thanh toán.",
       "testCard": "Thẻ thử",
       "pay": "Thanh toán {amount}",
       "saveCard": "Lưu thẻ",
       "decline": "Thử một thanh toán bị từ chối",
-      "secure": "Bạn nhập thông tin thẻ trên trang bảo mật của Payoneer. Formalie chỉ giữ loại thẻ, bốn số cuối và ngày hết hạn."
+      "secure": "Bạn chỉ nhập thông tin thẻ trong cửa sổ bảo mật của Paddle. Formalie chỉ giữ loại thẻ, bốn số cuối và ngày hết hạn.",
+      "confirming": "Đang xác nhận với Paddle…",
+      "confirmingDesc": "Paddle báo cho chúng tôi khi thanh toán hoàn tất. Việc này mất vài giây.",
+      "pending": "Thanh toán của bạn đang được xác nhận",
+      "pendingDesc": "Paddle chưa xác nhận. Tải lại trang này sau một phút để thấy gói của bạn.",
+      "unavailable": "Không mở được trang thanh toán của Paddle. Kiểm tra kết nối rồi thử lại."
     },
     "enquiry": {
       "title": "Yêu cầu Enterprise"

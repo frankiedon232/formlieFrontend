@@ -5,14 +5,15 @@
  *   GET    /billing                         subscription, its plan, usage
  *   GET    /billing/plans                   the plans and prices
  *   GET    /billing/invoices                newest first
+ *   GET    /billing/invoices/:id/pdf        { url } Paddle's invoice (the mock: null, so the button is off)
  *   POST   /billing/preview                 { plan, period } → when it starts, what is due now, what goes over
  *   POST   /billing/change                  { plan, period } → changed now (upgrade with a card), scheduled
  *                                           (downgrade / shorter period at the end), or a checkout to pay first
  *   POST   /billing/cancel · /billing/resume · DELETE /billing/scheduled
  *   PATCH  /billing/settings                { auto_renew?, reminders? }
- *   DELETE /billing/payment-method          removes the card (renewal then needs a new one)
+ *   DELETE /billing/payment-method          409 FRM-GEN-1009 managed_by_provider: Paddle keeps the card, replace it instead
  *
- * Checkouts and the card (processor) live in billingCheckout.ts. Everything is audited.
+ * Checkouts and the card (Paddle) live in billingCheckout.ts. Everything is audited.
  */
 import type { H3Event } from 'h3'
 import { z } from 'zod'
@@ -224,14 +225,18 @@ export const patchBillingSettings = defineMockRoute(({ event, body }) => {
   return ok(overview(tenant))
 })
 
+/** DELETE /billing/payment-method: with Paddle the card can be replaced (a checkout with purpose add_card), never
+ *  removed (owner 2026-10-13, as the backend). */
 export const removePaymentMethod = defineMockRoute(({ event }) => {
-  const { tenant, user } = requireAuth(event)
-  const sub = billingOf(tenant).subscription
-  const before = cardLabel(sub)
-  if (before) {
-    sub.payment_method = null
-    saveBilling()
-    audit(event, tenant, user, 'payment_method', before, null)
-  }
-  return ok(overview(tenant))
+  requireAuth(event)
+  throw new MockError('FRM-GEN-1009', [{ field: 'payment_method', message: 'managed_by_provider' }])
+})
+
+/** GET /billing/invoices/:id/pdf: Paddle's invoice as a short-lived link. The mock has no Paddle: `url` is null and
+ *  the portal switches that invoice's Download PDF off. */
+export const getInvoicePdf = defineMockRoute(({ event }) => {
+  const { tenant } = requireAuth(event)
+  const invoice = advance(tenant).invoices.find(item => item.id === getRouterParam(event, 'id'))
+  if (!invoice) throw new MockError('FRM-GEN-1004')
+  return ok<{ url: string | null }>({ url: null })
 })

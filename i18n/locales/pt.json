@@ -9460,13 +9460,8 @@
       "expires": "Vence em {date}",
       "expiringSoon": "vence em breve",
       "none": "Nenhum cartão salvo. Planos pagos precisam de um para as renovações.",
-      "replace": "Substituir",
-      "remove": "Remover cartão",
-      "removeTitle": "Remover este cartão?",
-      "removeDesc": "Você pode adicionar um cartão novamente a qualquer momento.",
-      "removeRenewal": "Seu plano renova em {date}. Sem cartão, adicione um novo antes disso, ou a renovação não poderá ser cobrada.",
-      "removed": "Cartão removido",
-      "secure": "Os dados do cartão ficam com nosso provedor de pagamentos, o Payoneer. O Formalie nunca vê nem guarda o número do seu cartão."
+      "secure": "Os pagamentos são tratados pela Paddle, o nosso merchant of record, que guarda o seu cartão. A Formalie nunca vê nem guarda o número do seu cartão.",
+      "update": "Atualizar cartão"
     },
     "renewal": {
       "auto": "Renovar automaticamente",
@@ -9500,7 +9495,11 @@
         "open": "Em aberto",
         "failed": "Falhou",
         "refunded": "Reembolsada"
-      }
+      },
+      "pdf": "Transferir PDF",
+      "pdfMissing": "O PDF desta fatura ainda não está disponível.",
+      "pdfReady": "A sua fatura está pronta",
+      "pdfOpen": "Abrir PDF"
     },
     "changeTitle": "Mudar para {plan}",
     "changeDesc": "Veja o que muda antes de confirmar.",
@@ -9532,14 +9531,19 @@
     "checkout": {
       "title": "Pagamento",
       "cardTitle": "Adicionar um cartão",
-      "desc": "Pagamento seguro pelo Payoneer.",
+      "desc": "Os pagamentos são tratados pela Paddle, o nosso merchant of record.",
       "cardDesc": "Salve um cartão para as renovações. Nada é cobrado agora.",
-      "testNote": "Modo de teste: o Payoneer ainda não está conectado, então nenhum cartão real é usado. Escolha um cartão de teste para experimentar o pagamento.",
+      "testNote": "Modo de teste: a Paddle não está ligada aqui, por isso nenhum cartão real é usado. Escolha um cartão de teste para experimentar o pagamento.",
       "testCard": "Cartão de teste",
       "pay": "Pagar {amount}",
       "saveCard": "Salvar cartão",
       "decline": "Testar um pagamento recusado",
-      "secure": "Você digita os dados do cartão na página segura do Payoneer. O Formalie guarda apenas a bandeira do cartão, os quatro últimos dígitos e a validade."
+      "secure": "Escreve os dados do cartão apenas na janela segura da Paddle. A Formalie guarda apenas a marca, os quatro últimos dígitos e a data de validade.",
+      "confirming": "A confirmar com a Paddle…",
+      "confirmingDesc": "A Paddle avisa-nos quando o pagamento for concluído. Demora alguns segundos.",
+      "pending": "O seu pagamento está a ser confirmado",
+      "pendingDesc": "A Paddle ainda não o confirmou. Atualize esta página dentro de um minuto para ver o seu plano.",
+      "unavailable": "Não foi possível abrir o pagamento da Paddle. Verifique a ligação e tente novamente."
     },
     "enquiry": {
       "title": "Consulta Enterprise"

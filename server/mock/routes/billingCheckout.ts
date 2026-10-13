@@ -1,15 +1,17 @@
 /**
- * Paying and saving a card (F24). Card details never reach Formalie: the processor (Payoneer) takes them on
- * its hosted checkout and tells the backend the result (webhook). The mock has no processor yet, so the app
- * shows a test step and the mock "completes" the checkout with a test card (brand and last four only).
+ * Paying and saving a card (F24). Card details never reach Formalie: Paddle (our payment provider and merchant of
+ * record, owner 2026-10-13) takes them in its own checkout window and tells the backend the result (signed webhook).
+ * The mock has no Paddle: its sessions carry provider { name: 'paddle', environment: 'sandbox', transaction_id: null,
+ * client_token: null }, so the app shows a test step and the mock "completes" the checkout with a test card.
  *
  *   POST /billing/checkout                 { plan, period, request_key } (subscribe) or { purpose: 'add_card', request_key } → CheckoutSession
  *                                          (one open checkout per workspace: a new one cancels the one before)
  *   POST /billing/checkout/:id/complete    mock only: { outcome: paid | declined, brand } (the processor's webhook, simulated)
- *   GET  /billing/checkout/:id             the session (status after returning from the processor)
+ *   GET  /billing/checkout/:id             the session and its status (the portal asks after Paddle's window closes)
  */
 import { z } from 'zod'
 import { BILLING_PERIODS, PLAN_IDS, type CheckoutSession, type PaymentMethod } from '#shared/types/billing'
+import { checkoutStatusOf as statusOf } from '#shared/utils/billing/checkout'
 import { actorOf, recordAudit } from '../core/audit'
 import { requireAuth } from '../core/auth'
 import { MockError, ok } from '../core/respond'
@@ -34,7 +36,7 @@ export const startCheckout = defineMockRoute(({ event, body }) => {
       const billing = billingOf(tenant)
       const sub = billing.subscription
       let session: CheckoutSession
-      const base = { id: crypto.randomUUID(), url: null, expires_at: new Date(Date.now() + 30 * 60_000).toISOString() }
+      const base = { id: crypto.randomUUID(), url: null, expires_at: new Date(Date.now() + 30 * 60_000).toISOString(), status: 'open' as const, provider: { name: 'paddle' as const, environment: 'sandbox' as const, transaction_id: null, client_token: null } }
       if (input.purpose === 'add_card') session = { ...base, plan: sub.plan, period: sub.period, amount: 0, currency: 'USD', purpose: 'add_card' }
       else {
         const change = planChange(tenant, input.plan, input.period)
@@ -43,12 +45,14 @@ export const startCheckout = defineMockRoute(({ event, body }) => {
         // Written down before the processor sees it: the checkout's id is the payment's one reference
         recordPayment(tenant, { reference: `checkout:${session.id}`, kind: 'subscribe', plan: session.plan, period: session.period, amount: session.amount, currency: session.currency })
       }
-      // Earlier open checkouts are cancelled (their pending payments fail)
+      // Earlier open checkouts are cancelled (their pending payments fail); the last few stay readable
       for (const old of billing.checkouts) {
+        if (statusOf(old) !== 'open') continue
+        old.status = 'cancelled'
         const payment = billing.payments?.find(item => item.reference === `checkout:${old.id}` && item.status === 'pending')
         if (payment) settlePayment(payment, 'failed')
       }
-      billing.checkouts = [session]
+      billing.checkouts = [session, ...billing.checkouts].slice(0, 5)
       saveBilling()
       return session
     }),
@@ -70,9 +74,12 @@ export const completeCheckout = defineMockRoute(({ event, body }) => {
     once(tenant, 'complete', id, input, () => {
       const billing = billingOf(tenant)
       const session = billing.checkouts.find(item => item.id === id)
-      if (!session) throw new MockError('FRM-GEN-1004')
-      if (Date.parse(session.expires_at) < Date.now()) throw new MockError('FRM-BILL-1002')
-      billing.checkouts = billing.checkouts.filter(item => item.id !== id)
+      if (!session || statusOf(session) === 'cancelled' || statusOf(session) === 'completed') throw new MockError('FRM-GEN-1004')
+      if (statusOf(session) === 'expired') {
+        session.status = 'expired'
+        saveBilling()
+        throw new MockError('FRM-BILL-1002')
+      }
       const payment = billing.payments?.find(item => item.reference === `checkout:${session.id}`)
       if (input.outcome === 'declined') {
         if (payment) settlePayment(payment, 'failed')
@@ -80,6 +87,7 @@ export const completeCheckout = defineMockRoute(({ event, body }) => {
         recordAudit(event, tenant, { action: 'settings.updated', actor: actorOf(user), outcome: 'failure', reason: 'FRM-BILL-1001', resource: { type: 'setting', id: null, name: 'Subscription' } })
         throw new MockError('FRM-BILL-1001')
       }
+      session.status = 'completed'
       const sub = billing.subscription
       const before = cardLabel(sub)
       const now = new Date()
@@ -100,4 +108,13 @@ export const completeCheckout = defineMockRoute(({ event, body }) => {
       return { done: true }
     }),
   ).then(result => ok(result))
+})
+
+/** GET /billing/checkout/:id: the session and its status, read after Paddle's window closes (the portal waits for
+ *  `completed`, which only Paddle's notification sets in the backend; here the test step's complete does). */
+export const getCheckout = defineMockRoute(({ event }) => {
+  const { tenant } = requireAuth(event)
+  const session = billingOf(tenant).checkouts.find(item => item.id === getRouterParam(event, 'id'))
+  if (!session) throw new MockError('FRM-GEN-1004')
+  return ok<CheckoutSession>({ ...session, status: statusOf(session) })
 })

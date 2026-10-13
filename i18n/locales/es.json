@@ -9460,13 +9460,8 @@
       "expires": "Caduca el {date}",
       "expiringSoon": "caduca pronto",
       "none": "No hay ninguna tarjeta guardada. Los planes de pago necesitan una para las renovaciones.",
-      "replace": "Reemplazar",
-      "remove": "Quitar tarjeta",
-      "removeTitle": "¿Quitar esta tarjeta?",
-      "removeDesc": "Puedes añadir una tarjeta de nuevo en cualquier momento.",
-      "removeRenewal": "Tu plan se renueva el {date}. Sin tarjeta, añade una nueva antes de esa fecha o no se podrá cobrar la renovación.",
-      "removed": "Tarjeta quitada",
-      "secure": "Los datos de la tarjeta los guarda nuestro proveedor de pagos, Payoneer. Formalie nunca ve ni almacena el número de tu tarjeta."
+      "secure": "Los pagos los gestiona Paddle, nuestro merchant of record, que guarda tu tarjeta. Formalie nunca ve ni guarda el número de tu tarjeta.",
+      "update": "Actualizar tarjeta"
     },
     "renewal": {
       "auto": "Renovar automáticamente",
@@ -9500,7 +9495,11 @@
         "open": "Abierta",
         "failed": "Fallida",
         "refunded": "Reembolsada"
-      }
+      },
+      "pdf": "Descargar PDF",
+      "pdfMissing": "El PDF de esta factura aún no está disponible.",
+      "pdfReady": "Tu factura está lista",
+      "pdfOpen": "Abrir PDF"
     },
     "changeTitle": "Cambiar a {plan}",
     "changeDesc": "Revisa qué cambia antes de confirmar.",
@@ -9532,14 +9531,19 @@
     "checkout": {
       "title": "Pago",
       "cardTitle": "Añadir una tarjeta",
-      "desc": "Pago seguro con Payoneer.",
+      "desc": "Los pagos los gestiona Paddle, nuestro merchant of record.",
       "cardDesc": "Guarda una tarjeta para las renovaciones. Ahora no se cobra nada.",
-      "testNote": "Modo de prueba: Payoneer aún no está conectado, así que no se usa ninguna tarjeta real. Elige una tarjeta de prueba para probar el pago.",
+      "testNote": "Modo de prueba: Paddle no está conectado aquí, así que no se usa ninguna tarjeta real. Elige una tarjeta de prueba para probar el pago.",
       "testCard": "Tarjeta de prueba",
       "pay": "Pagar {amount}",
       "saveCard": "Guardar tarjeta",
       "decline": "Probar un pago rechazado",
-      "secure": "Escribes los datos de tu tarjeta en la página segura de Payoneer. Formalie solo guarda la marca de la tarjeta, sus últimos cuatro dígitos y su fecha de caducidad."
+      "secure": "Escribes los datos de tu tarjeta solo en la ventana segura de Paddle. Formalie solo guarda la marca, los cuatro últimos dígitos y la fecha de caducidad.",
+      "confirming": "Confirmando con Paddle…",
+      "confirmingDesc": "Paddle nos avisa cuando el pago se completa. Tarda unos segundos.",
+      "pending": "Se está confirmando tu pago",
+      "pendingDesc": "Paddle aún no lo ha confirmado. Actualiza esta página en un minuto para ver tu plan.",
+      "unavailable": "No se pudo abrir el pago de Paddle. Revisa tu conexión e inténtalo de nuevo."
     },
     "enquiry": {
       "title": "Consulta Enterprise"

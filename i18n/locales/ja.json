@@ -9460,13 +9460,8 @@
       "expires": "有効期限 {date}",
       "expiringSoon": "まもなく期限切れ",
       "none": "登録されたカードがありません。有料プランの更新にはカードが必要です。",
-      "replace": "置き換える",
-      "remove": "カードを削除",
-      "removeTitle": "このカードを削除しますか?",
-      "removeDesc": "カードはいつでも追加し直せます。",
-      "removeRenewal": "プランは {date} に更新されます。カードがない場合は、それまでに新しいカードを追加してください。追加しないと更新料金を請求できません。",
-      "removed": "カードを削除しました",
-      "secure": "カード情報は決済代行会社の Payoneer が保管します。Formalie がカード番号を見たり保存したりすることはありません。"
+      "secure": "お支払いは販売者(Merchant of Record)である Paddle が処理し、カードも Paddle が保管します。Formalie がカード番号を見たり保存したりすることはありません。",
+      "update": "カードを更新"
     },
     "renewal": {
       "auto": "自動で更新",
@@ -9500,7 +9495,11 @@
         "open": "未払い",
         "failed": "失敗",
         "refunded": "返金済み"
-      }
+      },
+      "pdf": "PDF をダウンロード",
+      "pdfMissing": "この請求書の PDF はまだ利用できません。",
+      "pdfReady": "請求書の準備ができました",
+      "pdfOpen": "PDF を開く"
     },
     "changeTitle": "{plan} に変更",
     "changeDesc": "確定する前に、何が変わるか確認してください。",
@@ -9532,14 +9531,19 @@
     "checkout": {
       "title": "お支払い",
       "cardTitle": "カードを追加",
-      "desc": "Payoneer による安全な決済です。",
+      "desc": "お支払いは販売者(Merchant of Record)である Paddle が処理します。",
       "cardDesc": "更新用のカードを保存してください。今は何も請求されません。",
-      "testNote": "テストモード: Payoneer はまだ接続されていないため、実際のカードは使われません。テストカードを選んで支払いを試せます。",
+      "testNote": "テストモード: ここでは Paddle に接続していないため、実際のカードは使われません。テストカードを選んでお支払いを試せます。",
       "testCard": "テストカード",
       "pay": "{amount} を支払う",
       "saveCard": "カードを保存",
       "decline": "拒否された支払いを試す",
-      "secure": "カード情報は Payoneer の安全なページで入力します。Formalie が保持するのは、カードのブランド、下 4 桁、有効期限だけです。"
+      "secure": "カード情報は Paddle の安全なウィンドウにのみ入力します。Formalie が保存するのはカードの種類、下 4 桁、有効期限だけです。",
+      "confirming": "Paddle で確認しています…",
+      "confirmingDesc": "お支払いが完了すると Paddle から通知が届きます。数秒かかります。",
+      "pending": "お支払いを確認しています",
+      "pendingDesc": "Paddle からの確認はまだです。1 分ほどしてからこのページを再読み込みすると、プランが表示されます。",
+      "unavailable": "Paddle のチェックアウトを開けませんでした。接続を確認して、もう一度お試しください。"
     },
     "enquiry": {
       "title": "Enterprise のお問い合わせ"

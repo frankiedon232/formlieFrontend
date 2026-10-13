@@ -9460,13 +9460,8 @@
       "expires": "Läuft ab am {date}",
       "expiringSoon": "läuft bald ab",
       "none": "Keine Karte hinterlegt. Kostenpflichtige Tarife brauchen eine für Verlängerungen.",
-      "replace": "Ersetzen",
-      "remove": "Karte entfernen",
-      "removeTitle": "Diese Karte entfernen?",
-      "removeDesc": "Sie können jederzeit wieder eine Karte hinzufügen.",
-      "removeRenewal": "Ihr Tarif verlängert sich am {date}. Fügen Sie ohne Karte vorher eine neue hinzu, sonst kann die Verlängerung nicht abgebucht werden.",
-      "removed": "Karte entfernt",
-      "secure": "Die Kartendaten verwahrt unser Zahlungsanbieter Payoneer. Formalie sieht oder speichert Ihre Kartennummer nie."
+      "secure": "Zahlungen wickelt Paddle ab, unser Merchant of Record, der Ihre Karte aufbewahrt. Formalie sieht und speichert Ihre Kartennummer nie.",
+      "update": "Karte aktualisieren"
     },
     "renewal": {
       "auto": "Automatisch verlängern",
@@ -9500,7 +9495,11 @@
         "open": "Offen",
         "failed": "Fehlgeschlagen",
         "refunded": "Erstattet"
-      }
+      },
+      "pdf": "PDF herunterladen",
+      "pdfMissing": "Das PDF dieser Rechnung ist noch nicht verfügbar.",
+      "pdfReady": "Ihre Rechnung ist bereit",
+      "pdfOpen": "PDF öffnen"
     },
     "changeTitle": "Zu {plan} wechseln",
     "changeDesc": "Prüfen Sie vor der Bestätigung, was sich ändert.",
@@ -9532,14 +9531,19 @@
     "checkout": {
       "title": "Zahlung",
       "cardTitle": "Karte hinzufügen",
-      "desc": "Sicherer Bezahlvorgang über Payoneer.",
+      "desc": "Zahlungen wickelt Paddle ab, unser Merchant of Record.",
       "cardDesc": "Speichern Sie eine Karte für Verlängerungen. Jetzt wird nichts abgebucht.",
-      "testNote": "Testmodus: Payoneer ist noch nicht verbunden, daher wird keine echte Karte verwendet. Wählen Sie eine Testkarte, um die Zahlung auszuprobieren.",
+      "testNote": "Testmodus: Paddle ist hier nicht verbunden, es wird keine echte Karte verwendet. Wählen Sie eine Testkarte, um die Zahlung auszuprobieren.",
       "testCard": "Testkarte",
       "pay": "{amount} bezahlen",
       "saveCard": "Karte speichern",
       "decline": "Abgelehnte Zahlung testen",
-      "secure": "Ihre Kartendaten geben Sie auf der sicheren Seite von Payoneer ein. Formalie speichert nur die Kartenmarke, die letzten vier Ziffern und das Ablaufdatum."
+      "secure": "Ihre Kartendaten geben Sie nur im sicheren Fenster von Paddle ein. Formalie speichert nur Kartentyp, die letzten vier Ziffern und das Ablaufdatum.",
+      "confirming": "Bestätigung durch Paddle…",
+      "confirmingDesc": "Paddle meldet uns, sobald die Zahlung durch ist. Das dauert ein paar Sekunden.",
+      "pending": "Ihre Zahlung wird bestätigt",
+      "pendingDesc": "Paddle hat sie noch nicht bestätigt. Laden Sie die Seite in einer Minute neu, um Ihren Tarif zu sehen.",
+      "unavailable": "Der Checkout von Paddle ließ sich nicht öffnen. Prüfen Sie Ihre Verbindung und versuchen Sie es erneut."
     },
     "enquiry": {
       "title": "Enterprise-Anfrage"

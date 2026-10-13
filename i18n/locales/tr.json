@@ -9460,13 +9460,8 @@
       "expires": "Son kullanma: {date}",
       "expiringSoon": "yakında sona eriyor",
       "none": "Kayıtlı kart yok. Ücretli planların yenilemeler için bir karta ihtiyacı var.",
-      "replace": "Değiştir",
-      "remove": "Kartı kaldır",
-      "removeTitle": "Bu kart kaldırılsın mı?",
-      "removeDesc": "İstediğiniz zaman yeniden kart ekleyebilirsiniz.",
-      "removeRenewal": "Planınız {date} tarihinde yenilenir. Kart olmadan, o tarihten önce yeni bir kart ekleyin, yoksa yenileme tahsil edilemez.",
-      "removed": "Kart kaldırıldı",
-      "secure": "Kart bilgilerini ödeme sağlayıcımız Payoneer saklar. Formalie kart numaranızı asla görmez veya saklamaz."
+      "secure": "Ödemeleri, kartınızı da saklayan resmi satıcımız (merchant of record) Paddle yürütür. Formalie kart numaranızı asla görmez ve saklamaz.",
+      "update": "Kartı güncelle"
     },
     "renewal": {
       "auto": "Otomatik yenile",
@@ -9500,7 +9495,11 @@
         "open": "Açık",
         "failed": "Başarısız",
         "refunded": "İade edildi"
-      }
+      },
+      "pdf": "PDF'yi indir",
+      "pdfMissing": "Bu faturanın PDF'si henüz hazır değil.",
+      "pdfReady": "Faturanız hazır",
+      "pdfOpen": "PDF'yi aç"
     },
     "changeTitle": "{plan} planına geç",
     "changeDesc": "Onaylamadan önce nelerin değiştiğine bakın.",
@@ -9532,14 +9531,19 @@
     "checkout": {
       "title": "Ödeme",
       "cardTitle": "Kart ekle",
-      "desc": "Payoneer ile güvenli ödeme.",
+      "desc": "Ödemeleri resmi satıcımız (merchant of record) Paddle yürütür.",
       "cardDesc": "Yenilemeler için bir kart kaydedin. Şimdi hiçbir şey tahsil edilmez.",
-      "testNote": "Test modu: Payoneer henüz bağlı değil, bu yüzden gerçek kart kullanılmıyor. Ödemeyi denemek için bir test kartı seçin.",
+      "testNote": "Test modu: Paddle burada bağlı değil, bu yüzden gerçek kart kullanılmaz. Ödemeyi denemek için bir test kartı seçin.",
       "testCard": "Test kartı",
       "pay": "{amount} öde",
       "saveCard": "Kartı kaydet",
       "decline": "Reddedilen bir ödemeyi dene",
-      "secure": "Kart bilgilerinizi Payoneer’in güvenli sayfasında girersiniz. Formalie yalnızca kart markasını, son dört hanesini ve son kullanma tarihini saklar."
+      "secure": "Kart bilgilerinizi yalnızca Paddle'ın güvenli penceresine yazarsınız. Formalie yalnızca kart türünü, son dört haneyi ve son kullanma tarihini saklar.",
+      "confirming": "Paddle ile onaylanıyor…",
+      "confirmingDesc": "Ödeme tamamlanınca Paddle bize bildirir. Birkaç saniye sürer.",
+      "pending": "Ödemeniz onaylanıyor",
+      "pendingDesc": "Paddle henüz onaylamadı. Planınızı görmek için bir dakika sonra bu sayfayı yenileyin.",
+      "unavailable": "Paddle ödeme penceresi açılamadı. Bağlantınızı kontrol edip tekrar deneyin."
     },
     "enquiry": {
       "title": "Enterprise talebi"

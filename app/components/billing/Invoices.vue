@@ -1,6 +1,8 @@
 <!--
   Invoices and receipts (F24), newest first: number, date, plan and period, amount, status and the card. A short
   list inside Settings → Subscription (the platform keeps them all), so a plain table rather than a list page.
+  Download PDF asks for Paddle's invoice (GET /billing/invoices/{id}/pdf, a short-lived link) and opens it in a new
+  tab; with no PDF yet (url null) that invoice's button is switched off.
 -->
 <script setup lang="ts">
 import type { Invoice } from '#shared/types/billing'
@@ -8,9 +10,35 @@ import type { Invoice } from '#shared/types/billing'
 const props = defineProps<{ invoices: Invoice[] | null }>()
 const { t } = useI18n()
 const { currency, date } = useFormat()
+const api = useApi()
+const toast = useToast()
+const { handle } = useErrorHandler()
 const STATUS_COLOR = { paid: 'success', open: 'warning', failed: 'error', refunded: 'neutral' } as const
 const shown = ref(6)
 const rows = computed(() => props.invoices?.slice(0, shown.value) ?? [])
+
+/** Invoices whose PDF isn't there yet, and the one being fetched (its button spins). */
+const missing = ref(new Set<string>())
+const fetching = ref<string | null>(null)
+async function downloadPdf(invoice: Invoice) {
+  fetching.value = invoice.id
+  try {
+    const { data } = await api.get<{ url: string | null }>(`/billing/invoices/${invoice.id}/pdf`)
+    if (!data.url || !/^https:\/\//i.test(data.url)) {
+      missing.value = new Set([...missing.value, invoice.id])
+      toast.add({ title: t('billing.invoice.pdfMissing'), color: 'neutral', icon: 'i-lucide-file-x' })
+      return
+    }
+    const url = data.url
+    // Pop-up blockers may stop a tab opened after a wait: then a button in the toast opens it with a fresh click
+    if (!window.open(url, '_blank', 'noopener,noreferrer'))
+      toast.add({ title: t('billing.invoice.pdfReady'), color: 'neutral', icon: 'i-lucide-file-text', actions: [{ label: t('billing.invoice.pdfOpen'), color: 'neutral', variant: 'outline', onClick: () => void window.open(url, '_blank', 'noopener,noreferrer') }] })
+  } catch (error) {
+    handle(error)
+  } finally {
+    fetching.value = null
+  }
+}
 </script>
 
 <template>
@@ -26,6 +54,7 @@ const rows = computed(() => props.invoices?.slice(0, shown.value) ?? [])
             <th class="px-3 py-2 text-start font-medium">{{ t('billing.invoice.plan') }}</th>
             <th class="px-3 py-2 text-end font-medium">{{ t('billing.invoice.amount') }}</th>
             <th class="px-3 py-2 text-start font-medium">{{ t('billing.invoice.status') }}</th>
+            <th class="px-3 py-2"><span class="sr-only">{{ t('billing.invoice.pdf') }}</span></th>
           </tr>
         </thead>
         <tbody class="divide-y divide-default">
@@ -40,6 +69,9 @@ const rows = computed(() => props.invoices?.slice(0, shown.value) ?? [])
             <td class="px-3 py-2">
               <UBadge :label="t(`billing.invoice.state.${invoice.status}`)" :color="STATUS_COLOR[invoice.status]" variant="subtle" size="sm" />
               <span v-if="invoice.card" class="block text-xs text-muted">{{ invoice.card }}</span>
+            </td>
+            <td class="px-3 py-2 text-end">
+              <UButton :label="t('billing.invoice.pdf')" icon="i-lucide-file-down" color="neutral" variant="ghost" size="xs" :loading="fetching === invoice.id" :disabled="missing.has(invoice.id) || (!!fetching && fetching !== invoice.id)" @click="downloadPdf(invoice)" />
             </td>
           </tr>
         </tbody>

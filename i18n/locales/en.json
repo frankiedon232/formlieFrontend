@@ -9460,13 +9460,8 @@
       "expires": "Expires {date}",
       "expiringSoon": "expiring soon",
       "none": "No card on file. Paid plans need one for renewals.",
-      "replace": "Replace",
-      "remove": "Remove card",
-      "removeTitle": "Remove this card?",
-      "removeDesc": "You can add a card again at any time.",
-      "removeRenewal": "Your plan renews on {date}. Without a card, add a new one before then or the renewal can't be charged.",
-      "removed": "Card removed",
-      "secure": "Card details are kept by our payment provider, Payoneer. Formalie never sees or stores your card number."
+      "secure": "Payments are handled by Paddle, our merchant of record, who keeps your card. Formalie never sees or stores your card number.",
+      "update": "Update card"
     },
     "renewal": {
       "auto": "Renew automatically",
@@ -9500,7 +9495,11 @@
         "open": "Open",
         "failed": "Failed",
         "refunded": "Refunded"
-      }
+      },
+      "pdf": "Download PDF",
+      "pdfMissing": "The PDF for this invoice isn't available yet.",
+      "pdfReady": "Your invoice is ready",
+      "pdfOpen": "Open PDF"
     },
     "changeTitle": "Move to {plan}",
     "changeDesc": "Check what changes before you confirm.",
@@ -9532,14 +9531,19 @@
     "checkout": {
       "title": "Payment",
       "cardTitle": "Add a card",
-      "desc": "Secure checkout by Payoneer.",
+      "desc": "Payments are handled by Paddle, our merchant of record.",
       "cardDesc": "Save a card for renewals. Nothing is charged now.",
-      "testNote": "Test mode: Payoneer isn't connected yet, so no real card is used. Pick a test card to try the payment.",
+      "testNote": "Test mode: Paddle isn't connected here, so no real card is used. Pick a test card to try the payment.",
       "testCard": "Test card",
       "pay": "Pay {amount}",
       "saveCard": "Save card",
       "decline": "Try a declined payment",
-      "secure": "You type your card details on Payoneer's secure page. Formalie only keeps the card brand, its last four digits and its expiry date."
+      "secure": "You type your card details only in Paddle's secure window. Formalie only keeps the card brand, its last four digits and its expiry date.",
+      "confirming": "Confirming with Paddle…",
+      "confirmingDesc": "Paddle tells us once the payment has gone through. This takes a few seconds.",
+      "pending": "Your payment is being confirmed",
+      "pendingDesc": "Paddle hasn't confirmed it yet. Refresh this page in a minute to see your plan.",
+      "unavailable": "Paddle's checkout couldn't open. Check your connection and try again."
     },
     "enquiry": {
       "title": "Enterprise enquiry"

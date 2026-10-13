@@ -9460,13 +9460,8 @@
       "expires": "Inaisha {date}",
       "expiringSoon": "inaisha hivi karibuni",
       "none": "Hakuna kadi iliyohifadhiwa. Mipango ya kulipia inahitaji moja kwa usasishaji.",
-      "replace": "Badilisha",
-      "remove": "Ondoa kadi",
-      "removeTitle": "Ondoa kadi hii?",
-      "removeDesc": "Unaweza kuongeza kadi tena wakati wowote.",
-      "removeRenewal": "Mpango wako husasishwa tarehe {date}. Bila kadi, ongeza mpya kabla ya hapo la sivyo usasishaji hautaweza kutozwa.",
-      "removed": "Kadi imeondolewa",
-      "secure": "Maelezo ya kadi huhifadhiwa na mtoa huduma wetu wa malipo, Payoneer. Formalie haioni wala kuhifadhi namba ya kadi yako."
+      "secure": "Malipo yanashughulikiwa na Paddle, muuzaji wetu rasmi (merchant of record), ambaye huhifadhi kadi yako. Formalie haioni wala haihifadhi namba ya kadi yako.",
+      "update": "Sasisha kadi"
     },
     "renewal": {
       "auto": "Sasisha kiotomatiki",
@@ -9500,7 +9495,11 @@
         "open": "Wazi",
         "failed": "Imeshindwa",
         "refunded": "Imerejeshewa"
-      }
+      },
+      "pdf": "Pakua PDF",
+      "pdfMissing": "PDF ya ankara hii bado haipatikani.",
+      "pdfReady": "Ankara yako iko tayari",
+      "pdfOpen": "Fungua PDF"
     },
     "changeTitle": "Hamia {plan}",
     "changeDesc": "Angalia kinachobadilika kabla ya kuthibitisha.",
@@ -9532,14 +9531,19 @@
     "checkout": {
       "title": "Malipo",
       "cardTitle": "Ongeza kadi",
-      "desc": "Malipo salama kupitia Payoneer.",
+      "desc": "Malipo yanashughulikiwa na Paddle, muuzaji wetu rasmi (merchant of record).",
       "cardDesc": "Hifadhi kadi kwa usasishaji. Hakuna kinachotozwa sasa.",
-      "testNote": "Hali ya majaribio: Payoneer bado haijaunganishwa, kwa hivyo hakuna kadi halisi inayotumika. Chagua kadi ya majaribio ili kujaribu malipo.",
+      "testNote": "Hali ya majaribio: Paddle haijaunganishwa hapa, kwa hiyo hakuna kadi halisi inayotumika. Chagua kadi ya majaribio ujaribu malipo.",
       "testCard": "Kadi ya majaribio",
       "pay": "Lipa {amount}",
       "saveCard": "Hifadhi kadi",
       "decline": "Jaribu malipo yaliyokataliwa",
-      "secure": "Unaandika maelezo ya kadi yako kwenye ukurasa salama wa Payoneer. Formalie huhifadhi tu chapa ya kadi, tarakimu zake nne za mwisho na tarehe ya kuisha muda."
+      "secure": "Unaandika taarifa za kadi kwenye dirisha salama la Paddle pekee. Formalie huhifadhi aina ya kadi, tarakimu nne za mwisho na tarehe ya kuisha tu.",
+      "confirming": "Inathibitisha na Paddle…",
+      "confirmingDesc": "Paddle hutujulisha malipo yakikamilika. Huchukua sekunde chache.",
+      "pending": "Malipo yako yanathibitishwa",
+      "pendingDesc": "Paddle bado haijayathibitisha. Onyesha upya ukurasa huu baada ya dakika moja uone mpango wako.",
+      "unavailable": "Malipo ya Paddle hayakuweza kufunguka. Kagua muunganisho wako ujaribu tena."
     },
     "enquiry": {
       "title": "Ombi la Enterprise"

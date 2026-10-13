@@ -9460,13 +9460,8 @@
       "expires": "{date} 到期",
       "expiringSoon": "即将到期",
       "none": "没有已保存的银行卡。付费套餐需要银行卡来续订。",
-      "replace": "更换",
-      "remove": "移除银行卡",
-      "removeTitle": "移除这张银行卡？",
-      "removeDesc": "您可以随时重新添加银行卡。",
-      "removeRenewal": "您的套餐将于 {date} 续订。如果没有银行卡，请在此之前添加新卡，否则无法扣除续订费用。",
-      "removed": "银行卡已移除",
-      "secure": "银行卡信息由我们的支付服务商 Payoneer 保管。Formalie 不会查看或存储您的卡号。"
+      "secure": "付款由我们的经销商（Merchant of Record）Paddle 处理，你的银行卡也由 Paddle 保管。Formalie 不会看到或保存你的卡号。",
+      "update": "更新银行卡"
     },
     "renewal": {
       "auto": "自动续订",
@@ -9500,7 +9495,11 @@
         "open": "未结清",
         "failed": "失败",
         "refunded": "已退款"
-      }
+      },
+      "pdf": "下载 PDF",
+      "pdfMissing": "此发票的 PDF 暂不可用。",
+      "pdfReady": "你的发票已准备好",
+      "pdfOpen": "打开 PDF"
     },
     "changeTitle": "切换到 {plan}",
     "changeDesc": "确认前，请查看有哪些变化。",
@@ -9532,14 +9531,19 @@
     "checkout": {
       "title": "付款",
       "cardTitle": "添加银行卡",
-      "desc": "由 Payoneer 提供的安全结账。",
+      "desc": "付款由我们的经销商（Merchant of Record）Paddle 处理。",
       "cardDesc": "保存一张银行卡用于续订。现在不会扣款。",
-      "testNote": "测试模式：Payoneer 尚未连接，因此不使用真实银行卡。请选择一张测试卡来试用付款。",
+      "testNote": "测试模式：此处未连接 Paddle，不会使用真实银行卡。选择一张测试卡即可试用付款。",
       "testCard": "测试卡",
       "pay": "支付 {amount}",
       "saveCard": "保存银行卡",
       "decline": "试用被拒绝的付款",
-      "secure": "您在 Payoneer 的安全页面输入银行卡信息。Formalie 只保留卡的品牌、后四位数字和有效期。"
+      "secure": "你只在 Paddle 的安全窗口中填写银行卡信息。Formalie 只保存卡的品牌、后四位和有效期。",
+      "confirming": "正在通过 Paddle 确认…",
+      "confirmingDesc": "付款完成后 Paddle 会通知我们，需要几秒钟。",
+      "pending": "正在确认你的付款",
+      "pendingDesc": "Paddle 尚未确认。请一分钟后刷新此页面查看你的套餐。",
+      "unavailable": "无法打开 Paddle 的付款窗口。请检查网络后重试。"
     },
     "enquiry": {
       "title": "Enterprise 咨询"

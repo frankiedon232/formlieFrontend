@@ -9460,13 +9460,8 @@
       "expires": "Kedaluwarsa {date}",
       "expiringSoon": "segera kedaluwarsa",
       "none": "Belum ada kartu tersimpan. Paket berbayar membutuhkannya untuk perpanjangan.",
-      "replace": "Ganti",
-      "remove": "Hapus kartu",
-      "removeTitle": "Hapus kartu ini?",
-      "removeDesc": "Anda dapat menambahkan kartu lagi kapan saja.",
-      "removeRenewal": "Paket Anda diperpanjang pada {date}. Tanpa kartu, tambahkan yang baru sebelum itu atau perpanjangan tidak dapat ditagih.",
-      "removed": "Kartu dihapus",
-      "secure": "Data kartu disimpan oleh penyedia pembayaran kami, Payoneer. Formalie tidak pernah melihat atau menyimpan nomor kartu Anda."
+      "secure": "Pembayaran ditangani oleh Paddle, merchant of record kami, yang menyimpan kartu Anda. Formalie tidak pernah melihat atau menyimpan nomor kartu Anda.",
+      "update": "Perbarui kartu"
     },
     "renewal": {
       "auto": "Perpanjang otomatis",
@@ -9500,7 +9495,11 @@
         "open": "Terbuka",
         "failed": "Gagal",
         "refunded": "Dikembalikan"
-      }
+      },
+      "pdf": "Unduh PDF",
+      "pdfMissing": "PDF untuk faktur ini belum tersedia.",
+      "pdfReady": "Faktur Anda siap",
+      "pdfOpen": "Buka PDF"
     },
     "changeTitle": "Pindah ke {plan}",
     "changeDesc": "Periksa apa yang berubah sebelum Anda konfirmasi.",
@@ -9532,14 +9531,19 @@
     "checkout": {
       "title": "Pembayaran",
       "cardTitle": "Tambah kartu",
-      "desc": "Pembayaran aman oleh Payoneer.",
+      "desc": "Pembayaran ditangani oleh Paddle, merchant of record kami.",
       "cardDesc": "Simpan kartu untuk perpanjangan. Tidak ada yang ditagih sekarang.",
-      "testNote": "Mode uji: Payoneer belum terhubung, jadi tidak ada kartu asli yang dipakai. Pilih kartu uji untuk mencoba pembayaran.",
+      "testNote": "Mode uji: Paddle tidak terhubung di sini, jadi tidak ada kartu asli yang dipakai. Pilih kartu uji untuk mencoba pembayaran.",
       "testCard": "Kartu uji",
       "pay": "Bayar {amount}",
       "saveCard": "Simpan kartu",
       "decline": "Coba pembayaran yang ditolak",
-      "secure": "Anda mengetik data kartu di halaman aman Payoneer. Formalie hanya menyimpan merek kartu, empat digit terakhir, dan tanggal kedaluwarsanya."
+      "secure": "Anda mengetik data kartu hanya di jendela aman Paddle. Formalie hanya menyimpan jenis kartu, empat digit terakhir, dan tanggal kedaluwarsanya.",
+      "confirming": "Mengonfirmasi dengan Paddle…",
+      "confirmingDesc": "Paddle memberi tahu kami setelah pembayaran berhasil. Ini butuh beberapa detik.",
+      "pending": "Pembayaran Anda sedang dikonfirmasi",
+      "pendingDesc": "Paddle belum mengonfirmasinya. Muat ulang halaman ini dalam satu menit untuk melihat paket Anda.",
+      "unavailable": "Checkout Paddle tidak dapat dibuka. Periksa koneksi Anda lalu coba lagi."
     },
     "enquiry": {
       "title": "Pertanyaan Enterprise"

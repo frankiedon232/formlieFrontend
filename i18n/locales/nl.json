@@ -9460,13 +9460,8 @@
       "expires": "Verloopt op {date}",
       "expiringSoon": "verloopt binnenkort",
       "none": "Geen kaart opgeslagen. Betaalde abonnementen hebben er een nodig voor verlengingen.",
-      "replace": "Vervangen",
-      "remove": "Kaart verwijderen",
-      "removeTitle": "Deze kaart verwijderen?",
-      "removeDesc": "Je kunt op elk moment weer een kaart toevoegen.",
-      "removeRenewal": "Je abonnement wordt verlengd op {date}. Voeg zonder kaart vóór die datum een nieuwe toe, anders kan de verlenging niet worden afgeschreven.",
-      "removed": "Kaart verwijderd",
-      "secure": "Kaartgegevens worden bewaard door onze betaalprovider, Payoneer. Formalie ziet of bewaart je kaartnummer nooit."
+      "secure": "Betalingen worden afgehandeld door Paddle, onze merchant of record, die uw kaart bewaart. Formalie ziet of bewaart uw kaartnummer nooit.",
+      "update": "Kaart bijwerken"
     },
     "renewal": {
       "auto": "Automatisch verlengen",
@@ -9500,7 +9495,11 @@
         "open": "Open",
         "failed": "Mislukt",
         "refunded": "Terugbetaald"
-      }
+      },
+      "pdf": "PDF downloaden",
+      "pdfMissing": "De pdf van deze factuur is nog niet beschikbaar.",
+      "pdfReady": "Uw factuur is klaar",
+      "pdfOpen": "PDF openen"
     },
     "changeTitle": "Overstappen naar {plan}",
     "changeDesc": "Bekijk wat er verandert voordat je bevestigt.",
@@ -9532,14 +9531,19 @@
     "checkout": {
       "title": "Betaling",
       "cardTitle": "Kaart toevoegen",
-      "desc": "Veilig afrekenen via Payoneer.",
+      "desc": "Betalingen worden afgehandeld door Paddle, onze merchant of record.",
       "cardDesc": "Sla een kaart op voor verlengingen. Er wordt nu niets afgeschreven.",
-      "testNote": "Testmodus: Payoneer is nog niet gekoppeld, dus er wordt geen echte kaart gebruikt. Kies een testkaart om de betaling te proberen.",
+      "testNote": "Testmodus: Paddle is hier niet gekoppeld, dus er wordt geen echte kaart gebruikt. Kies een testkaart om de betaling te proberen.",
       "testCard": "Testkaart",
       "pay": "{amount} betalen",
       "saveCard": "Kaart opslaan",
       "decline": "Een geweigerde betaling proberen",
-      "secure": "Je voert je kaartgegevens in op de beveiligde pagina van Payoneer. Formalie bewaart alleen het kaartmerk, de laatste vier cijfers en de vervaldatum."
+      "secure": "U typt uw kaartgegevens alleen in het beveiligde venster van Paddle. Formalie bewaart alleen het kaarttype, de laatste vier cijfers en de vervaldatum.",
+      "confirming": "Bevestigen met Paddle…",
+      "confirmingDesc": "Paddle laat het ons weten zodra de betaling rond is. Dat duurt een paar seconden.",
+      "pending": "Uw betaling wordt bevestigd",
+      "pendingDesc": "Paddle heeft het nog niet bevestigd. Vernieuw deze pagina over een minuut om uw abonnement te zien.",
+      "unavailable": "De betaalpagina van Paddle kon niet openen. Controleer uw verbinding en probeer het opnieuw."
     },
     "enquiry": {
       "title": "Enterprise-aanvraag"

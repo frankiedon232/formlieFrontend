@@ -1,8 +1,8 @@
 /**
  * Plans and subscriptions (F24, owner 2026-10-10; docs/API-CONTRACT.md → Billing). Prices and limits come
  * from Formalie's API (set in the platform admin); the catalogue in shared/utils/billing/plans.ts is the
- * starting set. Card details never reach Formalie: the processor (Payoneer) keeps them, Formalie keeps the
- * brand, the last four digits, the expiry and the processor's reference.
+ * starting set. Card details never reach Formalie: the payment provider (Paddle, our merchant of record, owner
+ * 2026-10-13) keeps them, Formalie keeps the brand, the last four digits, the expiry and Paddle's reference.
  */
 import type { DbEngine } from '#shared/utils/integrations/databases'
 
@@ -150,17 +150,33 @@ export interface DowngradeImpact {
   over: { key: 'forms' | 'responses' | 'databases' | 'customDomain' | 'customEmail' | 'sso'; current: number | string; allowed: number | string }[]
 }
 
-/** POST /billing/checkout → the processor's hosted checkout (the mock simulates it). */
+export const CHECKOUT_STATUSES = ['open', 'completed', 'cancelled', 'expired'] as const
+export type CheckoutStatus = (typeof CHECKOUT_STATUSES)[number]
+
+/** Where the checkout happens: Paddle's window, opened with Paddle.js (owner 2026-10-13). */
+export interface CheckoutProvider {
+  name: 'paddle'
+  environment: 'sandbox' | 'production'
+  /** The Paddle transaction to open; null in the mock. */
+  transaction_id: string | null
+  /** Paddle.js's client-side token; null in the mock, which then shows its test step. */
+  client_token: string | null
+}
+
+/** POST /billing/checkout → a Paddle checkout (the mock simulates it). GET /billing/checkout/{id} reads it back. */
 export interface CheckoutSession {
   id: string
-  /** Payoneer's hosted page; the mock leaves it null and the app shows its test step. */
+  /** Paddle's checkout link (the fallback when Paddle.js can't load); null in the mock. */
   url: string | null
   plan: PlanId
   period: BillingPeriod
   amount: number
   currency: string
-  /** add_card = only save a card for renewals. */
+  /** add_card = only save or replace the card renewals are charged to. */
   purpose: 'subscribe' | 'add_card'
   expires_at: string
+  /** Only Paddle's signed notification completes it (backend), never the browser. */
+  status: CheckoutStatus
+  provider: CheckoutProvider
 }
 
