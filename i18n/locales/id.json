@@ -1357,7 +1357,9 @@
     "thanksTitle": "Terima kasih",
     "thanksText": "Pesan Anda sudah diterima tim Formalie. Kami akan membalas lewat email.",
     "unavailable": "Formulir tidak dapat dimuat. Silakan kirim email ke {email}.",
-    "own": "Ini formulir milik Formalie sendiri: apa yang Anda kirim langsung sampai ke tim kami dan hanya digunakan untuk membalas Anda."
+    "own": "Ini formulir milik Formalie sendiri: apa yang Anda kirim langsung sampai ke tim kami dan hanya digunakan untuk membalas Anda.",
+    "soonTitle": "Tulis kepada kami",
+    "soonText": "Kirim pesan Anda ke {email}. Seseorang dari tim Formalie akan membalas dalam satu hari kerja."
   },
   "contactPage": {
     "title": "Bicara dengan kami",
@@ -1424,7 +1426,12 @@
     "visual": {
       "workspace": "Ruang kerja Anda",
       "region": "Wilayah Anda",
-      "checks": ["Single sign-on", "Perjanjian waktu aktif", "Tinjauan keamanan", "Tagihan lewat invoice"]
+      "checks": [
+        "Single sign-on",
+        "Perjanjian waktu aktif",
+        "Tinjauan keamanan",
+        "Tagihan lewat invoice"
+      ]
     },
     "formTitle": "Ceritakan tentang organisasi Anda",
     "formDescription": "Ceritakan sedikit tentang kebutuhan Anda. Kami membalas dalam satu hari kerja dengan langkah berikutnya."

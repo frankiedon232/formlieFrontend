@@ -1357,7 +1357,9 @@
     "thanksTitle": "Dziękujemy",
     "thanksText": "Twoja wiadomość dotarła do zespołu Formalie. Odpowiemy e-mailem.",
     "unavailable": "Nie udało się załadować formularza. Napisz zamiast tego na adres {email}.",
-    "own": "To własny formularz Formalie: to, co wysyłasz, trafia prosto do naszego zespołu i służy wyłącznie do udzielenia Ci odpowiedzi."
+    "own": "To własny formularz Formalie: to, co wysyłasz, trafia prosto do naszego zespołu i służy wyłącznie do udzielenia Ci odpowiedzi.",
+    "soonTitle": "Napisz do nas",
+    "soonText": "Wyślij wiadomość na adres {email}. Osoba z zespołu Formalie odpowie w ciągu jednego dnia roboczego."
   },
   "contactPage": {
     "title": "Porozmawiaj z nami",

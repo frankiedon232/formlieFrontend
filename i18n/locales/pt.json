@@ -1357,7 +1357,9 @@
     "thanksTitle": "Obrigado",
     "thanksText": "Sua mensagem chegou à equipe do Formalie. Vamos responder por e-mail.",
     "unavailable": "Não foi possível carregar o formulário. Escreva para {email}.",
-    "own": "Este é o formulário do próprio Formalie: o que você envia vai direto para a nossa equipe e é usado apenas para responder a você."
+    "own": "Este é o formulário do próprio Formalie: o que você envia vai direto para a nossa equipe e é usado apenas para responder a você.",
+    "soonTitle": "Escreva para nós",
+    "soonText": "Envie sua mensagem para {email}. Uma pessoa da equipe do Formalie vai responder em até um dia útil."
   },
   "contactPage": {
     "title": "Fale com a gente",
@@ -1424,7 +1426,12 @@
     "visual": {
       "workspace": "Seu espaço de trabalho",
       "region": "Sua região",
-      "checks": ["Login único", "Acordo de disponibilidade", "Revisão de segurança", "Pagamento por fatura"]
+      "checks": [
+        "Login único",
+        "Acordo de disponibilidade",
+        "Revisão de segurança",
+        "Pagamento por fatura"
+      ]
     },
     "formTitle": "Conte sobre sua organização",
     "formDescription": "Conte um pouco sobre o que você precisa. Respondemos em até um dia útil com os próximos passos."

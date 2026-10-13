@@ -1357,7 +1357,9 @@
     "thanksTitle": "Cảm ơn bạn",
     "thanksText": "Tin nhắn của bạn đã đến đội ngũ Formalie. Chúng tôi sẽ trả lời qua email.",
     "unavailable": "Không tải được biểu mẫu. Hãy viết thư đến {email}.",
-    "own": "Đây là biểu mẫu của chính Formalie: nội dung bạn gửi đến thẳng đội ngũ của chúng tôi và chỉ được dùng để trả lời bạn."
+    "own": "Đây là biểu mẫu của chính Formalie: nội dung bạn gửi đến thẳng đội ngũ của chúng tôi và chỉ được dùng để trả lời bạn.",
+    "soonTitle": "Viết cho chúng tôi",
+    "soonText": "Hãy gửi tin nhắn của bạn đến {email}. Một thành viên đội ngũ Formalie sẽ phản hồi trong vòng một ngày làm việc."
   },
   "contactPage": {
     "title": "Trò chuyện với chúng tôi",

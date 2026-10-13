@@ -1171,7 +1171,12 @@
     "contactUs": "联系我们",
     "enterpriseTagline": "包含 Business 的全部功能，围绕你的组织量身定制，并配备专属团队。",
     "enterpriseBilling": "按发票付款，条款灵活",
-    "enterpriseFeatures": ["数据存放在你选择的区域", "专属客户团队", "安全与合规审查", "定制限额和上手支持"],
+    "enterpriseFeatures": [
+      "数据存放在你选择的区域",
+      "专属客户团队",
+      "安全与合规审查",
+      "定制限额和上手支持"
+    ],
     "taxNote": "价格以美元计。在法律要求的地区，Paddle 会加收销售税或增值税，并在你付款前显示。",
     "sampleNote": "无法加载实时价格，因此显示示例价格。",
     "compare": {
@@ -1352,7 +1357,9 @@
     "thanksTitle": "谢谢",
     "thanksText": "你的消息已送达 Formalie 团队。我们会通过电子邮件回复你。",
     "unavailable": "表单无法加载。请改为发送邮件至 {email}。",
-    "own": "这是 Formalie 自己的表单：你提交的内容会直接发送给我们的团队，仅用于回复你。"
+    "own": "这是 Formalie 自己的表单：你提交的内容会直接发送给我们的团队，仅用于回复你。",
+    "soonTitle": "给我们写信",
+    "soonText": "请将你的消息发送至 {email}。Formalie 团队的工作人员会在一个工作日内回复你。"
   },
   "contactPage": {
     "title": "联系我们",
@@ -1419,7 +1426,12 @@
     "visual": {
       "workspace": "你的工作区",
       "region": "你的区域",
-      "checks": ["单点登录", "可用性协议", "安全审查", "发票结算"]
+      "checks": [
+        "单点登录",
+        "可用性协议",
+        "安全审查",
+        "发票结算"
+      ]
     },
     "formTitle": "介绍一下你的组织",
     "formDescription": "简单说说你的需求。我们会在一个工作日内回复，并告知后续步骤。"

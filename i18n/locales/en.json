@@ -1357,7 +1357,9 @@
     "thanksTitle": "Thank you",
     "thanksText": "Your message reached the Formalie team. We will reply by email.",
     "unavailable": "The form could not be loaded. Write to {email} instead.",
-    "own": "This is Formalie's own form: what you send goes straight to our team, and is used only to answer you."
+    "own": "This is Formalie's own form: what you send goes straight to our team, and is used only to answer you.",
+    "soonTitle": "Write to us",
+    "soonText": "Send your message to {email}. A person from the Formalie team will answer within one business day."
   },
   "contactPage": {
     "title": "Talk to us",

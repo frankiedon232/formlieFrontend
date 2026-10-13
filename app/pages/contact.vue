@@ -6,6 +6,7 @@ const formKey = FORM_KEYS.support
 const { t } = useI18n()
 const localePath = useLocalePath()
 const links = useSiteLinks()
+const formsLive = String(useRuntimeConfig().public.formsLive) === 'true'
 
 const TOPICS = ['question', 'problem', 'billing', 'account', 'idea', 'other']
 const prefill = computed(() => {
@@ -112,11 +113,16 @@ usePageSeo({
     <UPageSection
       id="support"
       :title="t('contactPage.formTitle')"
-      :description="t('contactPage.formDescription')"
+      :description="formsLive ? t('contactPage.formDescription') : undefined"
       class="scroll-mt-16"
       :ui="{ container: 'lg:max-w-3xl' }"
     >
-      <SiteFormEmbed :form-key="formKey" :name="t('contactPage.formTitle')" :prefill="prefill" />
+      <SiteFormEmbed
+        :form-key="formKey"
+        :name="t('contactPage.formTitle')"
+        :prefill="prefill"
+        email="support@formalie.com"
+      />
     </UPageSection>
   </div>
 </template>

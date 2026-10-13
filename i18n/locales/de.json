@@ -1357,7 +1357,9 @@
     "thanksTitle": "Vielen Dank",
     "thanksText": "Ihre Nachricht ist beim Formalie-Team angekommen. Wir antworten Ihnen per E-Mail.",
     "unavailable": "Das Formular konnte nicht geladen werden. Schreiben Sie stattdessen an {email}.",
-    "own": "Dies ist ein Formular von Formalie selbst: Was Sie senden, geht direkt an unser Team und wird nur verwendet, um Ihnen zu antworten."
+    "own": "Dies ist ein Formular von Formalie selbst: Was Sie senden, geht direkt an unser Team und wird nur verwendet, um Ihnen zu antworten.",
+    "soonTitle": "Schreiben Sie uns",
+    "soonText": "Senden Sie Ihre Nachricht an {email}. Eine Person aus dem Formalie-Team antwortet Ihnen innerhalb eines Werktags."
   },
   "contactPage": {
     "title": "Sprechen Sie mit uns",
@@ -1424,7 +1426,12 @@
     "visual": {
       "workspace": "Ihr Arbeitsbereich",
       "region": "Ihre Region",
-      "checks": ["Single Sign-on", "Verfügbarkeitsvereinbarung", "Sicherheitsprüfung", "Zahlung per Rechnung"]
+      "checks": [
+        "Single Sign-on",
+        "Verfügbarkeitsvereinbarung",
+        "Sicherheitsprüfung",
+        "Zahlung per Rechnung"
+      ]
     },
     "formTitle": "Erzählen Sie uns von Ihrer Organisation",
     "formDescription": "Beschreiben Sie kurz, was Sie brauchen. Wir antworten innerhalb eines Werktags mit den nächsten Schritten."

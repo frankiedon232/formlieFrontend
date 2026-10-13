@@ -1357,7 +1357,9 @@
     "thanksTitle": "Teşekkürler",
     "thanksText": "Mesajınız Formalie ekibine ulaştı. Size e-postayla yanıt vereceğiz.",
     "unavailable": "Form yüklenemedi. Bunun yerine {email} adresine yazın.",
-    "own": "Bu, Formalie'nin kendi formudur: gönderdikleriniz doğrudan ekibimize ulaşır ve yalnızca size yanıt vermek için kullanılır."
+    "own": "Bu, Formalie'nin kendi formudur: gönderdikleriniz doğrudan ekibimize ulaşır ve yalnızca size yanıt vermek için kullanılır.",
+    "soonTitle": "Bize yazın",
+    "soonText": "Mesajınızı {email} adresine gönderin. Formalie ekibinden biri bir iş günü içinde yanıt verecek."
   },
   "contactPage": {
     "title": "Bizimle konuşun",
@@ -1424,7 +1426,12 @@
     "visual": {
       "workspace": "Çalışma alanınız",
       "region": "Bölgeniz",
-      "checks": ["Çoklu oturum açma", "Çalışma süresi sözleşmesi", "Güvenlik incelemesi", "Faturayla ödeme"]
+      "checks": [
+        "Çoklu oturum açma",
+        "Çalışma süresi sözleşmesi",
+        "Güvenlik incelemesi",
+        "Faturayla ödeme"
+      ]
     },
     "formTitle": "Bize kuruluşunuzdan bahsedin",
     "formDescription": "İhtiyaçlarınızı kısaca anlatın. Bir iş günü içinde sonraki adımlarla yanıt veriyoruz."

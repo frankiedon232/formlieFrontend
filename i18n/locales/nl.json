@@ -1357,7 +1357,9 @@
     "thanksTitle": "Bedankt",
     "thanksText": "Je bericht is aangekomen bij het Formalie-team. We antwoorden per e-mail.",
     "unavailable": "Het formulier kon niet worden geladen. Schrijf in plaats daarvan naar {email}.",
-    "own": "Dit is een eigen formulier van Formalie: wat je verstuurt, gaat rechtstreeks naar ons team en wordt alleen gebruikt om je te antwoorden."
+    "own": "Dit is een eigen formulier van Formalie: wat je verstuurt, gaat rechtstreeks naar ons team en wordt alleen gebruikt om je te antwoorden.",
+    "soonTitle": "Schrijf ons",
+    "soonText": "Stuur je bericht naar {email}. Iemand van het Formalie-team antwoordt binnen één werkdag."
   },
   "contactPage": {
     "title": "Praat met ons",

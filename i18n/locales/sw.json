@@ -1357,7 +1357,9 @@
     "thanksTitle": "Asante",
     "thanksText": "Ujumbe wako umefika kwa timu ya Formalie. Tutakujibu kwa barua pepe.",
     "unavailable": "Fomu haikuweza kupakiwa. Badala yake, tuandikie kupitia {email}.",
-    "own": "Hii ni fomu ya Formalie yenyewe: unachotuma kinafika moja kwa moja kwa timu yetu, na kinatumika tu kukujibu."
+    "own": "Hii ni fomu ya Formalie yenyewe: unachotuma kinafika moja kwa moja kwa timu yetu, na kinatumika tu kukujibu.",
+    "soonTitle": "Tuandikie",
+    "soonText": "Tuma ujumbe wako kwa {email}. Mtu kutoka timu ya Formalie atakujibu ndani ya siku moja ya kazi."
   },
   "contactPage": {
     "title": "Zungumza nasi",
@@ -1424,7 +1426,12 @@
     "visual": {
       "workspace": "Eneo lako la kazi",
       "region": "Eneo lako",
-      "checks": ["Kuingia mara moja", "Makubaliano ya upatikanaji", "Ukaguzi wa usalama", "Malipo kwa ankara"]
+      "checks": [
+        "Kuingia mara moja",
+        "Makubaliano ya upatikanaji",
+        "Ukaguzi wa usalama",
+        "Malipo kwa ankara"
+      ]
     },
     "formTitle": "Tueleze kuhusu shirika lako",
     "formDescription": "Tueleze kidogo kuhusu mahitaji yako. Tunajibu ndani ya siku moja ya kazi pamoja na hatua zinazofuata."

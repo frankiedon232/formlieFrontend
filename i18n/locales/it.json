@@ -1357,7 +1357,9 @@
     "thanksTitle": "Grazie",
     "thanksText": "Il tuo messaggio è arrivato al team di Formalie. Ti risponderemo via email.",
     "unavailable": "Non è stato possibile caricare il modulo. Scrivi invece a {email}.",
-    "own": "Questo è un modulo di Formalie: ciò che invii arriva direttamente al nostro team e serve solo per risponderti."
+    "own": "Questo è un modulo di Formalie: ciò che invii arriva direttamente al nostro team e serve solo per risponderti.",
+    "soonTitle": "Scrivici",
+    "soonText": "Invia il tuo messaggio a {email}. Una persona del team di Formalie ti risponderà entro un giorno lavorativo."
   },
   "contactPage": {
     "title": "Parla con noi",

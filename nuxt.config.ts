@@ -52,6 +52,9 @@ export default defineNuxtConfig({
       siteUrl,
       portalUrl: 'https://manage.formalie.dev:2202',
       formsUrl: origins.forms,
+      // Formalie's own forms are embedded once the owner publishes them from the superadmin (owner, 2026-10-13).
+      // Until then /enterprise and /contact show a write-to-us card. Turn on with NUXT_PUBLIC_FORMS_LIVE=true.
+      formsLive: false,
       // Formalie's backend API (/public/plans, /public/legal, /public/platform). Production:
       // https://services.formalie.com/api/v1, never api.formalie.com (customers' own API service).
       apiUrl: origins.api,

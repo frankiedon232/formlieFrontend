@@ -70,7 +70,7 @@ public/      screenshots/ (`pnpm screenshots` from docs/screenshots, WebP) · og
 
 ## Git
 
-This project is the branch `formalieSite` of https://github.com/frankiedon232/formlieFrontend (one branch per project, like `formalieFrontend` and `formalieBackend`). Commit and push there after each verified milestone: `git push origin formalieSite`.
+This project is the branch `formalieWeb` of https://github.com/frankiedon232/formlieFrontend (one branch per project, like `formalieFrontend` and `formalieBackend`; owner, 2026-10-13). Commit and push there after each verified milestone: `git push origin formalieWeb`.
 
 ## Going live
 

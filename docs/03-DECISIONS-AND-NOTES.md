@@ -18,4 +18,5 @@
 - **Home page motion (owner, 2026-10-13):** every section draws on the reference screens and has clean, tech-style motion (data travelling, entries arriving, rings turning), monochrome with one violet glow, still for reduced motion and paused off screen. The hero counters are labelled "Example activity, not real figures".
 - **API tab screenshot:** `api-service` instead of `api-docs`, because the docs shot shows a development API address (`api.formalie.dev/…`); to confirm with the owner or recapture.
 - **Prerender:** every language's home page is listed; `failOnError` is off until all pages exist (S7 turns it back on).
-- **Git branch:** the work is on `formalieWeb` (the branch the owner pushed on 2026-10-13); CLAUDE.md still names `formalieSite`.
+- **Git branch:** `formalieWeb` (owner, 2026-10-13).
+- **Embedded forms come later** (owner, 2026-10-13: they will be published from the superadmin). Until `NUXT_PUBLIC_FORMS_LIVE=true`, `/enterprise` and `/contact` show a write-to-us card with sales@ or support@ instead of the embed.

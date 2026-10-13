@@ -115,7 +115,12 @@ usePageSeo({
       class="scroll-mt-16"
       :ui="{ container: 'lg:max-w-3xl' }"
     >
-      <SiteFormEmbed :form-key="formKey" :name="t('enterprisePage.formTitle')" :prefill="prefill" />
+      <SiteFormEmbed
+        :form-key="formKey"
+        :name="t('enterprisePage.formTitle')"
+        :prefill="prefill"
+        email="sales@formalie.com"
+      />
     </UPageSection>
   </div>
 </template>

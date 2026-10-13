@@ -81,7 +81,7 @@
 - ⏸ Newsletter form (when the owner creates it)
 - ✅ Portal links checked: `/auth/signup` and `/auth/find-workspace` answer; ⏸ the portal's sign-up does not read `plan` and `period` yet (app task F24, `docs/SIGNUP-FLOW.md`)
 - ⏸ The portal links back to the legal pages (privacy on every form, terms on sign-up): the backend's `LEGAL_TERMS_URL` / `LEGAL_PRIVACY_URL` already point at `/legal/terms` and `/legal/privacy`; to confirm in the portal
-- ⬜ Check the two embeds in a normal browser (the preview browser blocks `*.formalie.dev`)
+- ⏸ The two forms are not published yet (owner, 2026-10-13: "it will come from superadmin later"). Until then both places show a "Write to us" card (sales@ on Enterprise, support@ on Contact); set `NUXT_PUBLIC_FORMS_LIVE=true` once they exist, then check both embeds in a normal browser
 
 ## S7, Launch checks
 - ✅ SEO (`docs/SEO.md`): titles, descriptions, OG and Twitter, canonical, hreflang, breadcrumbs, structured data, sitemap, robots; Lighthouse SEO 100 on every page checked. ⬜ OG images per page (one shared image today), Search Console after launch
@@ -114,6 +114,8 @@
 | 2026-10-13 | FAQ redesigned: premium, animated | S2 | ✅ |
 | 2026-10-13 | Animated product demos instead of screenshots (like the AI assistant demo), for every product tab and a Dashboard tab | S2, S3 | ✅ |
 | 2026-10-13 | Bug: legal pages reached by a link showed only headings | S5 | ✅ fixed |
+| 2026-10-13 | Embedded forms come later from the superadmin: show a write-to-us card until then | S6 | ✅ (card); ⏸ forms |
+| 2026-10-13 | The project's git branch is `formalieWeb` | Docs | ✅ |
 | 2026-10-13 | Copy formlyBackend `docs/PRODUCTION-CHECKLIST.md` over this project's copy | Docs | ✅ (already identical; DEPLOYMENT-GUIDE synced too) |
 
 ## Progress log
@@ -134,3 +136,4 @@
 | 2026-10-13 | S6 | `/enterprise` (hero visual, eight commitments, embedded enquiry with prefill), `/contact` (sales, support, help centre, embedded support form), `SiteFormEmbed`; copy in 20 languages; both pages in the sitemap. 60 tests |
 | 2026-10-13 | S7 | Security headers and CSP (`deploy/headers.ts`, `_headers`, `_redirects`), strict prerender (no broken links), Blog and Changelog pages, compact numbered legal TOC with progress, performance pass (entry-only preload, lazy hydration, legal text not re-parsed, component detection), Lighthouse: accessibility, best practices, SEO 100; performance 65 to 80 (lab). PRODUCTION-CHECKLIST section 7 rewritten in all five projects. 63 tests |
 | 2026-10-13 | Polish | Home pricing reuses the pricing page's plans (four plans, period switch). FAQ: sticky dark card with a live conversation and a contact prompt, numbered question cards that lift when open. Six animated product demos (`components/demo`: Build, Design, Responses, Data, API, Dashboard) in the home tabs (new Dashboard tab) and the feature heroes; the real screens stay below them. Motion starts when the page is idle; paused sections show their still state; layout-free keyframes; fewer Nuxt UI colours. Fix: legal text on pages reached by a link (only unchanged prerendered sections stay unhydrated). Lighthouse mobile: performance 71 to 75, accessibility, best practices, SEO 100 |
+| 2026-10-13 | S6 | Owner answers: the forms come later, so `SiteFormEmbed` shows a "Write to us" card with the right address until `NUXT_PUBLIC_FORMS_LIVE=true` (copy in 20 languages); the branch is `formalieWeb` (CLAUDE.md, decisions). 63 tests, strict prerender 1534 routes |

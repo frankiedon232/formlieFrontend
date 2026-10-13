@@ -1357,7 +1357,9 @@
     "thanksTitle": "Merci",
     "thanksText": "Votre message est bien parvenu à l'équipe Formalie. Nous vous répondrons par e-mail.",
     "unavailable": "Le formulaire n'a pas pu être chargé. Écrivez plutôt à {email}.",
-    "own": "Ce formulaire est celui de Formalie : ce que vous envoyez arrive directement à notre équipe et sert uniquement à vous répondre."
+    "own": "Ce formulaire est celui de Formalie : ce que vous envoyez arrive directement à notre équipe et sert uniquement à vous répondre.",
+    "soonTitle": "Écrivez-nous",
+    "soonText": "Envoyez votre message à {email}. Une personne de l'équipe Formalie vous répondra sous un jour ouvré."
   },
   "contactPage": {
     "title": "Parlez-nous",
