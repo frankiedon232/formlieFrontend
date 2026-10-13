@@ -9,6 +9,7 @@ export const SITE_PATHS = [
   '/features',
   ...FEATURE_PAGES.map(page => `/features/${page.slug}`),
   ...SOLUTION_PAGES.map(page => `/solutions/${page.slug}`),
+  '/pricing',
   '/integrations',
   '/security',
   '/about',

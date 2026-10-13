@@ -1133,5 +1133,118 @@
       ],
       "data": "回答はフォームのルールで検証され、選んだ場所に保存され、署名つき Webhook で送られます。"
     }
+  },
+  "pricingPage": {
+    "metaDescription": "Starter で無料で始められます。Professional、Business、Enterprise の各プランは、月払い、四半期払い、年払いから選べます。すべての機能を比較できます。",
+    "eyebrow": "料金",
+    "title": "成長に合わせて選べる、シンプルなプラン",
+    "description": "Starter で無料で始めましょう。独自ドメイン、会社アカウントでのログイン、制限のない利用が必要になったらアップグレードできます。Enterprise は組織に合わせて設計します。",
+    "periodLabel": "請求期間",
+    "periods": {
+      "monthly": "月払い",
+      "quarterly": "四半期払い",
+      "annually": "年払い"
+    },
+    "save": "{percent}% お得",
+    "perMonth": "/ 月",
+    "billed": {
+      "monthly": "毎月請求",
+      "quarterly": "3 か月ごとに {amount} を請求",
+      "annually": "毎年 {amount} を請求"
+    },
+    "freeForever": "期間の制限なく無料",
+    "custom": "個別見積もり",
+    "contactUs": "お問い合わせ",
+    "enterpriseTagline": "Business のすべてを、組織に合わせて。専任チームがサポートします。",
+    "enterpriseBilling": "請求書払い、条件は柔軟に",
+    "enterpriseFeatures": [
+      "選択したリージョンにデータを保存",
+      "専任のアカウントチーム",
+      "セキュリティとコンプライアンスのレビュー",
+      "個別の上限と導入支援"
+    ],
+    "taxNote": "価格は米ドルです。法律で必要な場合、Paddle が売上税または付加価値税を加算し、お支払い前に表示します。",
+    "sampleNote": "最新の価格を読み込めなかったため、サンプル価格を表示しています。",
+    "compare": {
+      "title": "すべての機能を比較",
+      "description": "各プランに含まれる内容を並べて確認できます。",
+      "feature": "機能",
+      "included": "含まれる",
+      "notIncluded": "含まれない",
+      "unlimited": "無制限",
+      "groups": {
+        "forms": "フォームと回答",
+        "insight": "インサイト",
+        "data": "データ",
+        "api": "API サービス",
+        "brand": "ブランドとアドレス",
+        "signin": "ログイン",
+        "support": "サポート"
+      },
+      "rows": {
+        "forms": "フォーム",
+        "responses": "フォームごとの回答数",
+        "languages": "言語",
+        "templates": "テンプレートライブラリ",
+        "lists": "カスタムリスト",
+        "themes": "テーマとランディングページ",
+        "versions": "バージョン履歴",
+        "folders": "ワークスペースとフォルダー",
+        "fillLater": "あとで入力",
+        "analytics": "高度な分析",
+        "visits": "訪問と回答の分析",
+        "ai": "AI アシスタント",
+        "aiCredits": "毎月の AI クレジット",
+        "database": "独自の {engine} データベース",
+        "explorer": "データベースエクスプローラー",
+        "query": "ライブクエリエディター",
+        "destinations": "データの送信先",
+        "api": "API エンドポイント、トークン、アクセスルール",
+        "webhooks": "Webhook",
+        "apiDocs": "API ドキュメント",
+        "branding": "ブランディング",
+        "subdomain": "Formalie サブドメイン",
+        "customDomain": "カスタムドメイン",
+        "customEmail": "独自の送信元アドレスとメールサーバー",
+        "residency": "選択したリージョンでのデータ保存",
+        "password": "メールアドレスとパスワード",
+        "social": "Google と Facebook でログイン",
+        "sso": "シングルサインオン（Okta、Microsoft Entra ID、Google Workspace、OneLogin、SAML 2.0、OpenID Connect）",
+        "help": "ヘルプセンターとアシスタント",
+        "priority": "優先メールサポート",
+        "dedicated": "専任のアカウントチーム",
+        "review": "セキュリティとコンプライアンスのレビュー"
+      }
+    },
+    "faq": {
+      "title": "料金に関する質問",
+      "items": [
+        {
+          "q": "あとからプランを変更できますか？",
+          "a": "はい、いつでも変更できます。アップグレードはすぐに反映され、ダウングレードは支払い済み期間の終了時に反映されます。"
+        },
+        {
+          "q": "上限を超えるとどうなりますか？",
+          "a": "何も削除されません。アップグレードするまで追加ができなくなるだけです。"
+        },
+        {
+          "q": "非営利団体や教育機関向けの割引はありますか？",
+          "a": "お問い合わせのうえ、組織について教えてください。"
+        },
+        {
+          "q": "どの支払い方法を使えますか？",
+          "a": "お支払いは、正式な販売者（merchant of record）である Paddle が処理し、カードや Paddle が提供する各地域の支払い方法に対応しています。Enterprise は請求書払いも可能です。"
+        },
+        {
+          "q": "データは自分のものですか？",
+          "a": "はい。いつでもエクスポートできます。初日から自社のデータベースに保存することもできます。"
+        },
+        {
+          "q": "返金を受けられますか？",
+          "a": "返金とキャンセルのポリシーに、条件と手順を記載しています。返金はすべて Paddle が対応します。"
+        }
+      ],
+      "more": "詳しく見る"
+    }
   }
 }

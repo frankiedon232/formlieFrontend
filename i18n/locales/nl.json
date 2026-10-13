@@ -1133,5 +1133,118 @@
       ],
       "data": "Antwoorden worden gecontroleerd met de regels van het formulier, opgeslagen waar jij wilt en doorgestuurd met ondertekende webhooks."
     }
+  },
+  "pricingPage": {
+    "metaDescription": "Begin gratis met Starter. Abonnementen Professional, Business en Enterprise, per maand, kwartaal of jaar gefactureerd. Vergelijk alle functies.",
+    "eyebrow": "Prijzen",
+    "title": "Eenvoudige abonnementen die met je meegroeien",
+    "description": "Begin gratis met Starter. Stap over wanneer je je eigen domein, inloggen via je organisatie of geen limieten nodig hebt. Enterprise wordt afgestemd op je organisatie.",
+    "periodLabel": "Factuurperiode",
+    "periods": {
+      "monthly": "Maandelijks",
+      "quarterly": "Per kwartaal",
+      "annually": "Jaarlijks"
+    },
+    "save": "Bespaar {percent}%",
+    "perMonth": "/ maand",
+    "billed": {
+      "monthly": "Elke maand gefactureerd",
+      "quarterly": "{amount} elke 3 maanden gefactureerd",
+      "annually": "{amount} elk jaar gefactureerd"
+    },
+    "freeForever": "Gratis, zo lang als je wilt",
+    "custom": "Op maat",
+    "contactUs": "Neem contact op",
+    "enterpriseTagline": "Alles uit Business, afgestemd op je organisatie, met een eigen team.",
+    "enterpriseBilling": "Betalen op factuur, voorwaarden die passen",
+    "enterpriseFeatures": [
+      "Gegevens in de regio die je kiest",
+      "Eigen accountteam",
+      "Beoordeling van beveiliging en compliance",
+      "Limieten en onboarding op maat"
+    ],
+    "taxNote": "Prijzen in Amerikaanse dollars. Paddle rekent omzetbelasting of btw waar de wet dat vereist en toont die voordat je betaalt.",
+    "sampleNote": "De actuele prijzen konden niet worden geladen, daarom zie je voorbeeldprijzen.",
+    "compare": {
+      "title": "Vergelijk alle functies",
+      "description": "Alles wat elk abonnement bevat, naast elkaar.",
+      "feature": "Functie",
+      "included": "Inbegrepen",
+      "notIncluded": "Niet inbegrepen",
+      "unlimited": "Onbeperkt",
+      "groups": {
+        "forms": "Formulieren en antwoorden",
+        "insight": "Inzicht",
+        "data": "Je gegevens",
+        "api": "API-service",
+        "brand": "Merk en adres",
+        "signin": "Inloggen",
+        "support": "Ondersteuning"
+      },
+      "rows": {
+        "forms": "Formulieren",
+        "responses": "Antwoorden per formulier",
+        "languages": "Talen",
+        "templates": "Sjabloonbibliotheek",
+        "lists": "Eigen lijsten",
+        "themes": "Thema's en landingspagina's",
+        "versions": "Versiegeschiedenis",
+        "folders": "Werkruimte en mappen",
+        "fillLater": "Later invullen",
+        "analytics": "Uitgebreide analyses",
+        "visits": "Analyses van bezoeken en antwoorden",
+        "ai": "AI-assistent",
+        "aiCredits": "AI-tegoed per maand",
+        "database": "Je eigen {engine}-database",
+        "explorer": "Databaseverkenner",
+        "query": "Live query-editor",
+        "destinations": "Gegevensbestemmingen",
+        "api": "API-endpoints, tokens en toegangsregels",
+        "webhooks": "Webhooks",
+        "apiDocs": "API-documentatie",
+        "branding": "Eigen huisstijl",
+        "subdomain": "Formalie-subdomein",
+        "customDomain": "Eigen domeinen",
+        "customEmail": "Eigen afzenderadres en mailserver",
+        "residency": "Gegevens bewaard in de regio die je kiest",
+        "password": "E-mail en wachtwoord",
+        "social": "Inloggen met Google en Facebook",
+        "sso": "Single sign-on (Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0, OpenID Connect)",
+        "help": "Helpcentrum en assistent",
+        "priority": "Ondersteuning per e-mail met voorrang",
+        "dedicated": "Eigen accountteam",
+        "review": "Beoordeling van beveiliging en compliance"
+      }
+    },
+    "faq": {
+      "title": "Vragen over prijzen",
+      "items": [
+        {
+          "q": "Kan ik later van abonnement wisselen?",
+          "a": "Ja, op elk moment. Een upgrade gaat direct in; een downgrade aan het einde van de betaalde periode."
+        },
+        {
+          "q": "Wat gebeurt er als ik over een limiet ga?",
+          "a": "Er wordt niets verwijderd. Je kunt alleen niets meer toevoegen totdat je upgradet."
+        },
+        {
+          "q": "Bieden jullie korting voor non-profitorganisaties en onderwijs?",
+          "a": "Neem contact op en vertel ons over je organisatie."
+        },
+        {
+          "q": "Welke betaalmethoden kan ik gebruiken?",
+          "a": "Betalingen worden afgehandeld door Paddle, onze merchant of record, met kaarten en de lokale betaalmethoden die Paddle aanbiedt. Enterprise kan op factuur betalen."
+        },
+        {
+          "q": "Zijn mijn gegevens van mij?",
+          "a": "Ja. Exporteer ze wanneer je wilt, of bewaar ze vanaf dag één in je eigen database."
+        },
+        {
+          "q": "Kan ik mijn geld terugkrijgen?",
+          "a": "Ons beleid voor terugbetaling en opzegging legt uit wanneer en hoe. Paddle handelt elke terugbetaling af."
+        }
+      ],
+      "more": "Meer lezen"
+    }
   }
 }

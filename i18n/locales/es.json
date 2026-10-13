@@ -1133,5 +1133,118 @@
       ],
       "data": "Las respuestas se comprueban con las reglas del formulario, se guardan donde elijas y se reenvían con webhooks firmados."
     }
+  },
+  "pricingPage": {
+    "metaDescription": "Empieza gratis con Starter. Planes Professional, Business y Enterprise, con facturación mensual, trimestral o anual. Compara todas las funciones.",
+    "eyebrow": "Precios",
+    "title": "Planes sencillos que crecen contigo",
+    "description": "Empieza gratis con Starter. Cambia de plan cuando necesites tu propio dominio, el acceso de empresa o ningún límite. Enterprise se adapta a tu organización.",
+    "periodLabel": "Periodo de facturación",
+    "periods": {
+      "monthly": "Mensual",
+      "quarterly": "Trimestral",
+      "annually": "Anual"
+    },
+    "save": "Ahorra un {percent} %",
+    "perMonth": "/ mes",
+    "billed": {
+      "monthly": "Facturado cada mes",
+      "quarterly": "{amount} facturados cada 3 meses",
+      "annually": "{amount} facturados cada año"
+    },
+    "freeForever": "Gratis todo el tiempo que quieras",
+    "custom": "A medida",
+    "contactUs": "Contáctanos",
+    "enterpriseTagline": "Todo lo de Business, adaptado a tu organización y con un equipo dedicado.",
+    "enterpriseBilling": "Pago por factura, condiciones a tu medida",
+    "enterpriseFeatures": [
+      "Datos en la región que elijas",
+      "Equipo de cuenta dedicado",
+      "Revisión de seguridad y cumplimiento",
+      "Límites y puesta en marcha a medida"
+    ],
+    "taxNote": "Precios en dólares estadounidenses. Paddle añade el impuesto sobre las ventas o el IVA cuando la ley lo exige y lo muestra antes de que pagues.",
+    "sampleNote": "No se pudieron cargar los precios actuales, así que se muestran precios de ejemplo.",
+    "compare": {
+      "title": "Compara todas las funciones",
+      "description": "Todo lo que incluye cada plan, lado a lado.",
+      "feature": "Función",
+      "included": "Incluido",
+      "notIncluded": "No incluido",
+      "unlimited": "Ilimitado",
+      "groups": {
+        "forms": "Formularios y respuestas",
+        "insight": "Análisis",
+        "data": "Tus datos",
+        "api": "Servicio API",
+        "brand": "Marca y dirección",
+        "signin": "Inicio de sesión",
+        "support": "Soporte"
+      },
+      "rows": {
+        "forms": "Formularios",
+        "responses": "Respuestas por formulario",
+        "languages": "Idiomas",
+        "templates": "Biblioteca de plantillas",
+        "lists": "Listas personalizadas",
+        "themes": "Temas y páginas de destino",
+        "versions": "Historial de versiones",
+        "folders": "Espacio de trabajo y carpetas",
+        "fillLater": "Completar más tarde",
+        "analytics": "Analítica avanzada",
+        "visits": "Analítica de visitas y respuestas",
+        "ai": "Asistente de IA",
+        "aiCredits": "Créditos de IA al mes",
+        "database": "Tu propia base de datos {engine}",
+        "explorer": "Explorador de bases de datos",
+        "query": "Editor de consultas en vivo",
+        "destinations": "Destinos de datos",
+        "api": "Endpoints de API, tokens y reglas de acceso",
+        "webhooks": "Webhooks",
+        "apiDocs": "Documentación de la API",
+        "branding": "Marca propia",
+        "subdomain": "Subdominio de Formalie",
+        "customDomain": "Dominios personalizados",
+        "customEmail": "Dirección de envío y servidor de correo propios",
+        "residency": "Datos guardados en la región que elijas",
+        "password": "Correo electrónico y contraseña",
+        "social": "Inicio de sesión con Google y Facebook",
+        "sso": "Inicio de sesión único (Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0, OpenID Connect)",
+        "help": "Centro de ayuda y asistente",
+        "priority": "Soporte prioritario por correo electrónico",
+        "dedicated": "Equipo de cuenta dedicado",
+        "review": "Revisión de seguridad y cumplimiento"
+      }
+    },
+    "faq": {
+      "title": "Preguntas sobre precios",
+      "items": [
+        {
+          "q": "¿Puedo cambiar de plan más adelante?",
+          "a": "Sí, en cualquier momento. Las mejoras se aplican de inmediato; los cambios a un plan inferior se aplican al final del periodo pagado."
+        },
+        {
+          "q": "¿Qué pasa si supero un límite?",
+          "a": "No se borra nada. Simplemente no puedes añadir más hasta que mejores tu plan."
+        },
+        {
+          "q": "¿Hay descuentos para organizaciones sin ánimo de lucro y educación?",
+          "a": "Contáctanos y cuéntanos sobre tu organización."
+        },
+        {
+          "q": "¿Qué métodos de pago puedo usar?",
+          "a": "Los pagos los gestiona Paddle, nuestro revendedor oficial (merchant of record), con tarjetas y los métodos locales que ofrece Paddle. Enterprise puede pagar por factura."
+        },
+        {
+          "q": "¿Mis datos son míos?",
+          "a": "Sí. Expórtalos cuando quieras o guárdalos en tu propia base de datos desde el primer día."
+        },
+        {
+          "q": "¿Puedo obtener un reembolso?",
+          "a": "Nuestra política de reembolsos y cancelación explica cuándo y cómo. Paddle gestiona todos los reembolsos."
+        }
+      ],
+      "more": "Más información"
+    }
   }
 }

@@ -1133,5 +1133,118 @@
       ],
       "data": "Responses are checked against the form's rules, stored where you choose, and sent on by signed webhooks."
     }
+  },
+  "pricingPage": {
+    "metaDescription": "Start free with Starter. Professional, Business and Enterprise plans, billed monthly, quarterly or yearly. Compare every feature.",
+    "eyebrow": "Pricing",
+    "title": "Simple plans that grow with you",
+    "description": "Start free with Starter. Move up when you need your own domain, company sign-in or no limits. Enterprise is shaped around your organisation.",
+    "periodLabel": "Billing period",
+    "periods": {
+      "monthly": "Monthly",
+      "quarterly": "Quarterly",
+      "annually": "Annually"
+    },
+    "save": "Save {percent}%",
+    "perMonth": "/ month",
+    "billed": {
+      "monthly": "Billed every month",
+      "quarterly": "Billed {amount} every 3 months",
+      "annually": "Billed {amount} every year"
+    },
+    "freeForever": "Free for as long as you like",
+    "custom": "Custom",
+    "contactUs": "Contact us",
+    "enterpriseTagline": "Everything in Business, shaped around your organisation, with a dedicated team.",
+    "enterpriseBilling": "Pay by invoice, terms that fit",
+    "enterpriseFeatures": [
+      "Data in the region you choose",
+      "Dedicated account team",
+      "Security and compliance review",
+      "Custom limits and onboarding"
+    ],
+    "taxNote": "Prices in US dollars. Paddle adds sales tax or VAT where the law requires it and shows it before you pay.",
+    "sampleNote": "The live prices could not be loaded, so sample prices are shown.",
+    "compare": {
+      "title": "Compare every feature",
+      "description": "Everything each plan includes, side by side.",
+      "feature": "Feature",
+      "included": "Included",
+      "notIncluded": "Not included",
+      "unlimited": "Unlimited",
+      "groups": {
+        "forms": "Forms and responses",
+        "insight": "Insight",
+        "data": "Your data",
+        "api": "API service",
+        "brand": "Brand and address",
+        "signin": "Sign-in",
+        "support": "Support"
+      },
+      "rows": {
+        "forms": "Forms",
+        "responses": "Responses on each form",
+        "languages": "Languages",
+        "templates": "Template library",
+        "lists": "Custom lists",
+        "themes": "Themes and landing pages",
+        "versions": "Version history",
+        "folders": "Workspace and folders",
+        "fillLater": "Fill in later",
+        "analytics": "Advanced analytics",
+        "visits": "Visits and responses analytics",
+        "ai": "AI assistant",
+        "aiCredits": "AI credits a month",
+        "database": "Your own {engine} database",
+        "explorer": "Database explorer",
+        "query": "Live query editor",
+        "destinations": "Data destinations",
+        "api": "API endpoints, tokens and access rules",
+        "webhooks": "Webhooks",
+        "apiDocs": "API documentation",
+        "branding": "Branding",
+        "subdomain": "Formalie subdomain",
+        "customDomain": "Custom domains",
+        "customEmail": "Own sending address and mail server",
+        "residency": "Data kept in the region you choose",
+        "password": "Email and password",
+        "social": "Sign in with Google and Facebook",
+        "sso": "Single sign-on (Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0, OpenID Connect)",
+        "help": "Help centre and assistant",
+        "priority": "Priority email support",
+        "dedicated": "Dedicated account team",
+        "review": "Security and compliance review"
+      }
+    },
+    "faq": {
+      "title": "Pricing questions",
+      "items": [
+        {
+          "q": "Can I change plans later?",
+          "a": "Yes, at any time. Upgrades start at once; downgrades take effect at the end of the paid period."
+        },
+        {
+          "q": "What happens if I go over a limit?",
+          "a": "Nothing is deleted. You can't add more until you upgrade."
+        },
+        {
+          "q": "Do you offer discounts for non-profits and education?",
+          "a": "Contact us and tell us about your organisation."
+        },
+        {
+          "q": "Which payment methods can I use?",
+          "a": "Payments are handled by Paddle, our merchant of record, with cards and the local methods Paddle offers. Enterprise can pay by invoice."
+        },
+        {
+          "q": "Is my data mine?",
+          "a": "Yes. Export it any time, or keep it in your own database from day one."
+        },
+        {
+          "q": "Can I get a refund?",
+          "a": "Our refunds and cancellation policy explains when and how. Paddle handles every refund."
+        }
+      ],
+      "more": "Read more"
+    }
   }
 }

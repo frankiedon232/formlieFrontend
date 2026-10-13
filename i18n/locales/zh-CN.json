@@ -1133,5 +1133,113 @@
       ],
       "data": "回答按表单规则校验，存储在你选择的位置，并通过签名 Webhook 转发。"
     }
+  },
+  "pricingPage": {
+    "metaDescription": "使用 Starter 免费开始。Professional、Business 和 Enterprise 方案，可按月、按季度或按年付费。比较所有功能。",
+    "eyebrow": "价格",
+    "title": "简单的方案，随你一起成长",
+    "description": "使用 Starter 免费开始。当你需要自有域名、企业登录或不受限制时再升级。Enterprise 将围绕你的组织量身定制。",
+    "periodLabel": "计费周期",
+    "periods": {
+      "monthly": "按月",
+      "quarterly": "按季度",
+      "annually": "按年"
+    },
+    "save": "节省 {percent}%",
+    "perMonth": "/ 月",
+    "billed": {
+      "monthly": "每月计费",
+      "quarterly": "每 3 个月计费 {amount}",
+      "annually": "每年计费 {amount}"
+    },
+    "freeForever": "想用多久就免费用多久",
+    "custom": "定制",
+    "contactUs": "联系我们",
+    "enterpriseTagline": "包含 Business 的全部功能，围绕你的组织量身定制，并配备专属团队。",
+    "enterpriseBilling": "按发票付款，条款灵活",
+    "enterpriseFeatures": ["数据存放在你选择的区域", "专属客户团队", "安全与合规审查", "定制限额和上手支持"],
+    "taxNote": "价格以美元计。在法律要求的地区，Paddle 会加收销售税或增值税，并在你付款前显示。",
+    "sampleNote": "无法加载实时价格，因此显示示例价格。",
+    "compare": {
+      "title": "比较所有功能",
+      "description": "每个方案包含的全部内容，一目了然。",
+      "feature": "功能",
+      "included": "包含",
+      "notIncluded": "不包含",
+      "unlimited": "无限",
+      "groups": {
+        "forms": "表单与回答",
+        "insight": "洞察",
+        "data": "你的数据",
+        "api": "API 服务",
+        "brand": "品牌与地址",
+        "signin": "登录",
+        "support": "支持"
+      },
+      "rows": {
+        "forms": "表单",
+        "responses": "每个表单的回答数",
+        "languages": "语言",
+        "templates": "模板库",
+        "lists": "自定义列表",
+        "themes": "主题和落地页",
+        "versions": "版本历史",
+        "folders": "工作区和文件夹",
+        "fillLater": "稍后填写",
+        "analytics": "高级分析",
+        "visits": "访问和回答分析",
+        "ai": "AI 助手",
+        "aiCredits": "每月 AI 额度",
+        "database": "你自己的 {engine} 数据库",
+        "explorer": "数据库浏览器",
+        "query": "实时查询编辑器",
+        "destinations": "数据目的地",
+        "api": "API 端点、令牌和访问规则",
+        "webhooks": "Webhook",
+        "apiDocs": "API 文档",
+        "branding": "品牌定制",
+        "subdomain": "Formalie 子域名",
+        "customDomain": "自定义域名",
+        "customEmail": "自有发件地址和邮件服务器",
+        "residency": "数据存放在你选择的区域",
+        "password": "邮箱和密码",
+        "social": "使用 Google 和 Facebook 登录",
+        "sso": "单点登录（Okta、Microsoft Entra ID、Google Workspace、OneLogin、SAML 2.0、OpenID Connect）",
+        "help": "帮助中心和助手",
+        "priority": "优先邮件支持",
+        "dedicated": "专属客户团队",
+        "review": "安全与合规审查"
+      }
+    },
+    "faq": {
+      "title": "价格常见问题",
+      "items": [
+        {
+          "q": "之后可以更换方案吗？",
+          "a": "可以，随时都行。升级立即生效；降级在已付费周期结束时生效。"
+        },
+        {
+          "q": "超出限额会怎样？",
+          "a": "不会删除任何内容。只是在升级之前无法继续添加。"
+        },
+        {
+          "q": "非营利组织和教育机构有折扣吗？",
+          "a": "请联系我们，介绍一下你的组织。"
+        },
+        {
+          "q": "可以使用哪些付款方式？",
+          "a": "付款由我们的记录商户（merchant of record）Paddle 处理，支持银行卡以及 Paddle 提供的本地付款方式。Enterprise 可以按发票付款。"
+        },
+        {
+          "q": "我的数据归我所有吗？",
+          "a": "是的。你可以随时导出，也可以从第一天起就保存在你自己的数据库中。"
+        },
+        {
+          "q": "可以退款吗？",
+          "a": "我们的退款和取消政策说明了何时以及如何退款。所有退款均由 Paddle 处理。"
+        }
+      ],
+      "more": "了解更多"
+    }
   }
 }

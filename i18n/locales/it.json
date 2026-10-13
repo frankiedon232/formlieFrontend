@@ -1133,5 +1133,118 @@
       ],
       "data": "Le risposte vengono verificate con le regole del modulo, archiviate dove scegli e inoltrate con webhook firmati."
     }
+  },
+  "pricingPage": {
+    "metaDescription": "Inizia gratis con Starter. Piani Professional, Business ed Enterprise, con fatturazione mensile, trimestrale o annuale. Confronta tutte le funzionalità.",
+    "eyebrow": "Prezzi",
+    "title": "Piani semplici che crescono con te",
+    "description": "Inizia gratis con Starter. Passa a un piano superiore quando ti servono il tuo dominio, l'accesso aziendale o nessun limite. Enterprise si adatta alla tua organizzazione.",
+    "periodLabel": "Periodo di fatturazione",
+    "periods": {
+      "monthly": "Mensile",
+      "quarterly": "Trimestrale",
+      "annually": "Annuale"
+    },
+    "save": "Risparmi il {percent}%",
+    "perMonth": "/ mese",
+    "billed": {
+      "monthly": "Fatturato ogni mese",
+      "quarterly": "{amount} fatturati ogni 3 mesi",
+      "annually": "{amount} fatturati ogni anno"
+    },
+    "freeForever": "Gratis per tutto il tempo che vuoi",
+    "custom": "Su misura",
+    "contactUs": "Contattaci",
+    "enterpriseTagline": "Tutto ciò che offre Business, su misura per la tua organizzazione, con un team dedicato.",
+    "enterpriseBilling": "Pagamento con fattura, condizioni su misura",
+    "enterpriseFeatures": [
+      "Dati nella regione che scegli",
+      "Team dedicato al tuo account",
+      "Revisione di sicurezza e conformità",
+      "Limiti e avvio su misura"
+    ],
+    "taxNote": "Prezzi in dollari statunitensi. Paddle aggiunge l'imposta sulle vendite o l'IVA quando la legge lo richiede e la mostra prima del pagamento.",
+    "sampleNote": "Non è stato possibile caricare i prezzi attuali, quindi vengono mostrati prezzi di esempio.",
+    "compare": {
+      "title": "Confronta tutte le funzionalità",
+      "description": "Tutto ciò che include ogni piano, fianco a fianco.",
+      "feature": "Funzionalità",
+      "included": "Incluso",
+      "notIncluded": "Non incluso",
+      "unlimited": "Illimitato",
+      "groups": {
+        "forms": "Moduli e risposte",
+        "insight": "Analisi",
+        "data": "I tuoi dati",
+        "api": "Servizio API",
+        "brand": "Marchio e indirizzo",
+        "signin": "Accesso",
+        "support": "Assistenza"
+      },
+      "rows": {
+        "forms": "Moduli",
+        "responses": "Risposte per modulo",
+        "languages": "Lingue",
+        "templates": "Libreria di modelli",
+        "lists": "Elenchi personalizzati",
+        "themes": "Temi e pagine di presentazione",
+        "versions": "Cronologia delle versioni",
+        "folders": "Area di lavoro e cartelle",
+        "fillLater": "Compila più tardi",
+        "analytics": "Analisi avanzate",
+        "visits": "Analisi di visite e risposte",
+        "ai": "Assistente IA",
+        "aiCredits": "Crediti IA al mese",
+        "database": "Il tuo database {engine}",
+        "explorer": "Esplora database",
+        "query": "Editor di query in tempo reale",
+        "destinations": "Destinazioni dei dati",
+        "api": "Endpoint API, token e regole di accesso",
+        "webhooks": "Webhook",
+        "apiDocs": "Documentazione API",
+        "branding": "Branding",
+        "subdomain": "Sottodominio Formalie",
+        "customDomain": "Domini personalizzati",
+        "customEmail": "Indirizzo di invio e server di posta propri",
+        "residency": "Dati conservati nella regione che scegli",
+        "password": "Email e password",
+        "social": "Accesso con Google e Facebook",
+        "sso": "Single sign-on (Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0, OpenID Connect)",
+        "help": "Centro assistenza e assistente",
+        "priority": "Assistenza prioritaria via email",
+        "dedicated": "Team dedicato al tuo account",
+        "review": "Revisione di sicurezza e conformità"
+      }
+    },
+    "faq": {
+      "title": "Domande sui prezzi",
+      "items": [
+        {
+          "q": "Posso cambiare piano in seguito?",
+          "a": "Sì, in qualsiasi momento. Il passaggio a un piano superiore vale subito; quello a un piano inferiore alla fine del periodo pagato."
+        },
+        {
+          "q": "Cosa succede se supero un limite?",
+          "a": "Non viene eliminato nulla. Semplicemente non puoi aggiungere altro finché non passi a un piano superiore."
+        },
+        {
+          "q": "Offrite sconti per enti non profit e istruzione?",
+          "a": "Contattaci e parlaci della tua organizzazione."
+        },
+        {
+          "q": "Quali metodi di pagamento posso usare?",
+          "a": "I pagamenti sono gestiti da Paddle, il nostro rivenditore ufficiale (merchant of record), con carte e i metodi locali offerti da Paddle. Enterprise può pagare con fattura."
+        },
+        {
+          "q": "I miei dati sono miei?",
+          "a": "Sì. Esportali quando vuoi, oppure conservali nel tuo database fin dal primo giorno."
+        },
+        {
+          "q": "Posso ottenere un rimborso?",
+          "a": "La nostra politica di rimborso e cancellazione spiega quando e come. Paddle gestisce ogni rimborso."
+        }
+      ],
+      "more": "Scopri di più"
+    }
   }
 }

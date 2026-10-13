@@ -1133,5 +1133,118 @@
       ],
       "data": "Majibu hukaguliwa dhidi ya kanuni za fomu, huhifadhiwa unapochagua, na hutumwa mbele kupitia webhooks zilizotiwa sahihi."
     }
+  },
+  "pricingPage": {
+    "metaDescription": "Anza bila malipo ukitumia Starter. Mipango ya Professional, Business na Enterprise, inayolipiwa kila mwezi, kila robo mwaka au kila mwaka. Linganisha kila kipengele.",
+    "eyebrow": "Bei",
+    "title": "Mipango rahisi inayokua pamoja nawe",
+    "description": "Anza bila malipo ukitumia Starter. Panda daraja unapohitaji kikoa chako, kuingia kwa akaunti ya kampuni au kufanya kazi bila kikomo. Enterprise huandaliwa kulingana na shirika lako.",
+    "periodLabel": "Kipindi cha malipo",
+    "periods": {
+      "monthly": "Kila mwezi",
+      "quarterly": "Kila robo mwaka",
+      "annually": "Kila mwaka"
+    },
+    "save": "Okoa {percent}%",
+    "perMonth": "/ mwezi",
+    "billed": {
+      "monthly": "Hulipiwa kila mwezi",
+      "quarterly": "{amount} hulipiwa kila miezi 3",
+      "annually": "{amount} hulipiwa kila mwaka"
+    },
+    "freeForever": "Bila malipo kwa muda wote unaotaka",
+    "custom": "Maalum",
+    "contactUs": "Wasiliana nasi",
+    "enterpriseTagline": "Kila kitu kilicho kwenye Business, kilichoandaliwa kwa ajili ya shirika lako, pamoja na timu maalum.",
+    "enterpriseBilling": "Lipa kwa ankara, masharti yanayokufaa",
+    "enterpriseFeatures": [
+      "Data katika eneo unalochagua",
+      "Timu maalum ya akaunti",
+      "Ukaguzi wa usalama na uzingatiaji",
+      "Vikomo na mafunzo ya kuanza kulingana na mahitaji yako"
+    ],
+    "taxNote": "Bei ziko kwa dola za Marekani. Paddle huongeza kodi ya mauzo au VAT pale sheria inapohitaji na huionyesha kabla hujalipa.",
+    "sampleNote": "Bei za sasa hazikuweza kupakiwa, kwa hivyo bei za mfano zinaonyeshwa.",
+    "compare": {
+      "title": "Linganisha kila kipengele",
+      "description": "Kila kitu kilicho kwenye kila mpango, kando kwa kando.",
+      "feature": "Kipengele",
+      "included": "Kimejumuishwa",
+      "notIncluded": "Hakijajumuishwa",
+      "unlimited": "Bila kikomo",
+      "groups": {
+        "forms": "Fomu na majibu",
+        "insight": "Maarifa",
+        "data": "Data yako",
+        "api": "Huduma ya API",
+        "brand": "Chapa na anwani",
+        "signin": "Kuingia",
+        "support": "Usaidizi"
+      },
+      "rows": {
+        "forms": "Fomu",
+        "responses": "Majibu kwa kila fomu",
+        "languages": "Lugha",
+        "templates": "Maktaba ya violezo",
+        "lists": "Orodha maalum",
+        "themes": "Mandhari na kurasa za kutua",
+        "versions": "Historia ya matoleo",
+        "folders": "Eneo la kazi na folda",
+        "fillLater": "Jaza baadaye",
+        "analytics": "Takwimu za kina",
+        "visits": "Takwimu za ziara na majibu",
+        "ai": "Msaidizi wa AI",
+        "aiCredits": "Salio la AI kwa mwezi",
+        "database": "Hifadhidata yako ya {engine}",
+        "explorer": "Kivinjari cha hifadhidata",
+        "query": "Kihariri cha hoja cha moja kwa moja",
+        "destinations": "Mahali pa kupeleka data",
+        "api": "Sehemu za API, tokeni na sheria za ufikiaji",
+        "webhooks": "Webhooks",
+        "apiDocs": "Nyaraka za API",
+        "branding": "Chapa yako",
+        "subdomain": "Kikoa kidogo cha Formalie",
+        "customDomain": "Vikoa maalum",
+        "customEmail": "Anwani yako ya kutuma na seva yako ya barua",
+        "residency": "Data huhifadhiwa katika eneo unalochagua",
+        "password": "Barua pepe na nenosiri",
+        "social": "Ingia kwa Google na Facebook",
+        "sso": "Kuingia mara moja (Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0, OpenID Connect)",
+        "help": "Kituo cha usaidizi na msaidizi",
+        "priority": "Usaidizi wa kipaumbele kwa barua pepe",
+        "dedicated": "Timu maalum ya akaunti",
+        "review": "Ukaguzi wa usalama na uzingatiaji"
+      }
+    },
+    "faq": {
+      "title": "Maswali kuhusu bei",
+      "items": [
+        {
+          "q": "Je, ninaweza kubadilisha mpango baadaye?",
+          "a": "Ndiyo, wakati wowote. Kupanda daraja huanza mara moja; kushuka daraja huanza mwishoni mwa kipindi ulicholipia."
+        },
+        {
+          "q": "Nini hutokea nikivuka kikomo?",
+          "a": "Hakuna kinachofutwa. Hutaweza tu kuongeza zaidi hadi upande daraja."
+        },
+        {
+          "q": "Je, mna punguzo kwa mashirika yasiyo ya faida na elimu?",
+          "a": "Wasiliana nasi na utueleze kuhusu shirika lako."
+        },
+        {
+          "q": "Ninaweza kutumia njia gani za malipo?",
+          "a": "Malipo hushughulikiwa na Paddle, muuzaji wetu rasmi (merchant of record), kwa kadi na njia za malipo za kienyeji ambazo Paddle hutoa. Enterprise wanaweza kulipa kwa ankara."
+        },
+        {
+          "q": "Je, data yangu ni yangu?",
+          "a": "Ndiyo. Ihamishe wakati wowote, au iweke kwenye hifadhidata yako tangu siku ya kwanza."
+        },
+        {
+          "q": "Je, ninaweza kurejeshewa pesa?",
+          "a": "Sera yetu ya kurejesha pesa na kughairi inaeleza lini na jinsi gani. Paddle hushughulikia kila urejeshaji wa pesa."
+        }
+      ],
+      "more": "Soma zaidi"
+    }
   }
 }

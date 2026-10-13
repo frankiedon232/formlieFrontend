@@ -1,14 +1,14 @@
 # PROGRESS, formalieSite
 
-**Last updated:** 2026-10-13 (S3 done, waiting for the owner's review)
+**Last updated:** 2026-10-13 (S4 done, waiting for the owner's review)
 
 | Phase | What | Status | Done |
 |---|---|---|---|
 | S0 | Project set-up | ✅ | 100% |
 | S1 | Layout, header, footer, theme, languages | ✅ | 100% |
 | S2 | Home page with the data-flow hero | ✅ | 100% |
-| S3 | Features and solutions pages | ✅ (review) | 100% |
-| S4 | Pricing | ⬜ | 20% |
+| S3 | Features and solutions pages | ✅ | 100% |
+| S4 | Pricing | ✅ (review) | 100% |
 | S5 | Legal pages (documentation layout) and /trust | ⬜ | 0% |
 | S6 | Formalie forms, portal links, contact and enterprise | ⬜ | 0% |
 | S7 | SEO, performance, accessibility, launch checks | ⬜ | 30% |
@@ -61,10 +61,10 @@
 
 ## S4, Pricing
 - ✅ `usePlans()` reading `GET {API}/public/plans` (live at `https://formalie.dev:5004/api/v1`, `{ success, data, meta }`), with the fallback file (samples, `docs/PRICING.md`) when the API doesn't answer
-- ⬜ Period toggle (Monthly · Quarterly −10% · Annually −20%), four plan cards (Starter free, Professional and Business with three periods, Enterprise "Contact us"), "Most popular"
-- ⬜ "Payments handled by Paddle" near the prices (no logo yet); refunds FAQ links to `/legal/refunds`
-- ⬜ Full comparison table (grouped), pricing FAQ, structured data with offers
-- ⬜ Buttons lead to the portal sign-up with `plan` and `period`; Enterprise leads to the enquiry
+- ✅ Period toggle (Monthly · Quarterly · Annually, the saving read from the prices), four plan cards (Starter free, Professional and Business per period with the monthly price struck through, Enterprise "Custom" and "Contact us"), "Most popular"
+- ✅ "Payments handled by Paddle" near the prices (no logo yet) and the tax note; the FAQ links to Refunds and cancellation and the Terms
+- ✅ Full comparison table (grouped, from each plan's limits and features), pricing FAQ, structured data with one offer per plan and period, FAQPage, breadcrumbs
+- ✅ Buttons lead to the portal sign-up with `plan` and `period`; Enterprise leads to `/enterprise?plan=enterprise&period=…#enquiry`
 
 ## S5, Legal pages and trust
 - ⬜ `legal` layout: documents navigator, article, "On this page", last updated, version, print and PDF
@@ -105,6 +105,7 @@
 | 2026-10-13 | (S2 finding) The `api-docs` screenshot shows an `api.formalie.dev` address with a key-like string; the home page uses `api-service` instead until the owner confirms or a new shot is made | S2 | ⏸ |
 | 2026-10-13 | Sample names are English ("Emma Clarke"), nothing Nigeria-themed on marketing pages | S2 | ✅ |
 | 2026-10-13 | SEO built into every page as it is made: "this is the real central page, so it must be loaded with SEO" | S3 to S7 | ✅ (ongoing) |
+| 2026-10-13 | Tighter spacing site-wide (hero closer to the header, less space between sections), nicer cards, and a richer "Built for teams in every sector" with movement | S2 to S4 | ✅ |
 | 2026-10-13 | Copy formlyBackend `docs/PRODUCTION-CHECKLIST.md` over this project's copy | Docs | ✅ (already identical; DEPLOYMENT-GUIDE synced too) |
 
 ## Progress log
@@ -118,3 +119,5 @@
 | 2026-10-13 | S2 | Home page: hero with the data-flow panel, trust strip, channels, product tabs with real screens, six cards, dark security band with a live audit trail, integrations orbit, languages marquee, pricing teaser from the live API (`usePlans`, zod-checked, sample fallback), FAQ, call to action. Motion tokens in `main.css`, all still for reduced motion and paused off screen. 150 new strings in 20 languages. Prerender now lists every language and lets links to unbuilt pages through until S7. Checked at 375, 1280 and 1440 px, light and dark, Arabic. 51 tests |
 | 2026-10-13 | S2 | Sample names in English: Emma Clarke types in the hero, James W. in the audit trail |
 | 2026-10-13 | S3 | `/features` and 11 feature pages, 7 solution pages, `/integrations`, `/security`, `/about`; shared `SiteScreenFrame`, `SiteCta`, `FeaturesSteps`, `FeaturesRelated`, drawn visuals for the AI assistant and languages, a solution flow; `usePageSeo()` with breadcrumbs and structured data on every page, `sitemap.xml` (460 addresses: 23 pages in 20 languages) and `robots.txt`; RTL arrows mirrored. 362 new strings in 20 languages. Checked at 375 and 1280 px, light, Arabic |
+| 2026-10-13 | Polish | Global theme in `app.config.ts`: heroes closer to the header, one section rhythm, cards with 1rem radius and a soft lift, plan cards and table that never cut text; sector strip with 18 sectors in two gliding rows with live pulses |
+| 2026-10-13 | S4 | `/pricing`: period toggle (opens on Annually), four plans from the live API, comparison table (`UPricingTable`), Paddle and tax notes, pricing FAQ, structured data; `usePricing()`, `app/utils/pricing.ts` with tests (55); in the sitemap. Checked at 375 and 1280 px, light and dark |

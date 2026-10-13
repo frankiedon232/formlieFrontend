@@ -1133,5 +1133,118 @@
       ],
       "data": "Yanıtlar formun kurallarına göre doğrulanır, seçtiğiniz yerde saklanır ve imzalı webhook'larla iletilir."
     }
+  },
+  "pricingPage": {
+    "metaDescription": "Starter ile ücretsiz başlayın. Aylık, üç aylık veya yıllık faturalanan Professional, Business ve Enterprise planları. Tüm özellikleri karşılaştırın.",
+    "eyebrow": "Fiyatlar",
+    "title": "Sizinle birlikte büyüyen sade planlar",
+    "description": "Starter ile ücretsiz başlayın. Kendi alan adınıza, kurumsal girişe veya sınırsız kullanıma ihtiyaç duyduğunuzda yükseltin. Enterprise, kuruluşunuza göre şekillenir.",
+    "periodLabel": "Faturalama dönemi",
+    "periods": {
+      "monthly": "Aylık",
+      "quarterly": "Üç aylık",
+      "annually": "Yıllık"
+    },
+    "save": "%{percent} tasarruf",
+    "perMonth": "/ ay",
+    "billed": {
+      "monthly": "Her ay faturalanır",
+      "quarterly": "3 ayda bir {amount} faturalanır",
+      "annually": "Yılda bir {amount} faturalanır"
+    },
+    "freeForever": "İstediğiniz sürece ücretsiz",
+    "custom": "Size özel",
+    "contactUs": "Bize ulaşın",
+    "enterpriseTagline": "Business'taki her şey, kuruluşunuza göre şekillenir ve size özel bir ekip eşlik eder.",
+    "enterpriseBilling": "Faturayla ödeme, size uygun koşullar",
+    "enterpriseFeatures": [
+      "Verileriniz seçtiğiniz bölgede",
+      "Size özel hesap ekibi",
+      "Güvenlik ve uyumluluk incelemesi",
+      "Size özel limitler ve kurulum desteği"
+    ],
+    "taxNote": "Fiyatlar ABD doları cinsindendir. Paddle, yasaların gerektirdiği yerlerde satış vergisini veya KDV'yi ekler ve ödemeden önce gösterir.",
+    "sampleNote": "Güncel fiyatlar yüklenemedi, bu yüzden örnek fiyatlar gösteriliyor.",
+    "compare": {
+      "title": "Tüm özellikleri karşılaştırın",
+      "description": "Her planın içerdiği her şey, yan yana.",
+      "feature": "Özellik",
+      "included": "Dahil",
+      "notIncluded": "Dahil değil",
+      "unlimited": "Sınırsız",
+      "groups": {
+        "forms": "Formlar ve yanıtlar",
+        "insight": "Analizler",
+        "data": "Verileriniz",
+        "api": "API hizmeti",
+        "brand": "Marka ve adres",
+        "signin": "Giriş",
+        "support": "Destek"
+      },
+      "rows": {
+        "forms": "Formlar",
+        "responses": "Form başına yanıt",
+        "languages": "Diller",
+        "templates": "Şablon kitaplığı",
+        "lists": "Özel listeler",
+        "themes": "Temalar ve açılış sayfaları",
+        "versions": "Sürüm geçmişi",
+        "folders": "Çalışma alanı ve klasörler",
+        "fillLater": "Sonra doldur",
+        "analytics": "Gelişmiş analizler",
+        "visits": "Ziyaret ve yanıt analizleri",
+        "ai": "Yapay zekâ asistanı",
+        "aiCredits": "Aylık yapay zekâ kredisi",
+        "database": "Kendi {engine} veritabanınız",
+        "explorer": "Veritabanı gezgini",
+        "query": "Canlı sorgu düzenleyici",
+        "destinations": "Veri hedefleri",
+        "api": "API uç noktaları, belirteçler ve erişim kuralları",
+        "webhooks": "Webhook'lar",
+        "apiDocs": "API belgeleri",
+        "branding": "Marka kimliği",
+        "subdomain": "Formalie alt alan adı",
+        "customDomain": "Özel alan adları",
+        "customEmail": "Kendi gönderen adresiniz ve posta sunucunuz",
+        "residency": "Veriler seçtiğiniz bölgede tutulur",
+        "password": "E-posta ve parola",
+        "social": "Google ve Facebook ile giriş",
+        "sso": "Çoklu oturum açma (Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0, OpenID Connect)",
+        "help": "Yardım merkezi ve asistan",
+        "priority": "Öncelikli e-posta desteği",
+        "dedicated": "Size özel hesap ekibi",
+        "review": "Güvenlik ve uyumluluk incelemesi"
+      }
+    },
+    "faq": {
+      "title": "Fiyatlarla ilgili sorular",
+      "items": [
+        {
+          "q": "Planımı daha sonra değiştirebilir miyim?",
+          "a": "Evet, istediğiniz zaman. Yükseltmeler hemen geçerli olur; düşürmeler ödenen dönemin sonunda geçerli olur."
+        },
+        {
+          "q": "Bir limiti aşarsam ne olur?",
+          "a": "Hiçbir şey silinmez. Yalnızca planınızı yükseltene kadar yeni ekleme yapamazsınız."
+        },
+        {
+          "q": "Kâr amacı gütmeyen kuruluşlara ve eğitime indirim var mı?",
+          "a": "Bize ulaşın ve kuruluşunuzdan bahsedin."
+        },
+        {
+          "q": "Hangi ödeme yöntemlerini kullanabilirim?",
+          "a": "Ödemeler, resmi satıcımız (merchant of record) Paddle tarafından kartlarla ve Paddle'ın sunduğu yerel yöntemlerle işlenir. Enterprise faturayla ödeyebilir."
+        },
+        {
+          "q": "Verilerim bana mı ait?",
+          "a": "Evet. İstediğiniz zaman dışa aktarın ya da ilk günden itibaren kendi veritabanınızda tutun."
+        },
+        {
+          "q": "Para iadesi alabilir miyim?",
+          "a": "İade ve iptal politikamız ne zaman ve nasıl olduğunu açıklar. Tüm iadeleri Paddle yürütür."
+        }
+      ],
+      "more": "Devamını oku"
+    }
   }
 }

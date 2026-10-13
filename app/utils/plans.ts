@@ -8,6 +8,15 @@ import fallback from '~/data/plans.json'
 const ENGINES = ['mysql', 'postgresql', 'sqlserver', 'oracle', 'mariadb'] as const
 export type DatabaseEngine = (typeof ENGINES)[number]
 
+/** Database names as their makers write them. */
+export const ENGINE_NAMES: Record<DatabaseEngine, string> = {
+  mysql: 'MySQL',
+  postgresql: 'PostgreSQL',
+  mariadb: 'MariaDB',
+  sqlserver: 'SQL Server',
+  oracle: 'Oracle',
+}
+
 const planSchema = z.object({
   id: z.enum(['starter', 'professional', 'business', 'enterprise']),
   prices: z.object({ monthly: z.number(), quarterly: z.number(), annually: z.number() }).nullable(),

@@ -1133,5 +1133,118 @@
       ],
       "data": "Les réponses sont vérifiées selon les règles du formulaire, stockées où vous le souhaitez et transmises par des webhooks signés."
     }
+  },
+  "pricingPage": {
+    "metaDescription": "Commencez gratuitement avec Starter. Offres Professional, Business et Enterprise, facturées au mois, au trimestre ou à l'année. Comparez toutes les fonctionnalités.",
+    "eyebrow": "Tarifs",
+    "title": "Des offres simples qui évoluent avec vous",
+    "description": "Commencez gratuitement avec Starter. Passez à l'offre supérieure quand vous avez besoin de votre propre domaine, de la connexion d'entreprise ou d'aucune limite. Enterprise s'adapte à votre organisation.",
+    "periodLabel": "Période de facturation",
+    "periods": {
+      "monthly": "Mensuel",
+      "quarterly": "Trimestriel",
+      "annually": "Annuel"
+    },
+    "save": "{percent} % d'économie",
+    "perMonth": "/ mois",
+    "billed": {
+      "monthly": "Facturé chaque mois",
+      "quarterly": "{amount} facturés tous les 3 mois",
+      "annually": "{amount} facturés chaque année"
+    },
+    "freeForever": "Gratuit aussi longtemps que vous le souhaitez",
+    "custom": "Sur mesure",
+    "contactUs": "Nous contacter",
+    "enterpriseTagline": "Tout ce que propose Business, adapté à votre organisation, avec une équipe dédiée.",
+    "enterpriseBilling": "Paiement sur facture, conditions adaptées",
+    "enterpriseFeatures": [
+      "Données dans la région de votre choix",
+      "Équipe de compte dédiée",
+      "Revue de sécurité et de conformité",
+      "Limites et prise en main sur mesure"
+    ],
+    "taxNote": "Prix en dollars américains. Paddle ajoute la taxe de vente ou la TVA lorsque la loi l'exige et l'affiche avant le paiement.",
+    "sampleNote": "Les prix actuels n'ont pas pu être chargés, des prix d'exemple sont donc affichés.",
+    "compare": {
+      "title": "Comparez toutes les fonctionnalités",
+      "description": "Tout ce que comprend chaque offre, côte à côte.",
+      "feature": "Fonctionnalité",
+      "included": "Inclus",
+      "notIncluded": "Non inclus",
+      "unlimited": "Illimité",
+      "groups": {
+        "forms": "Formulaires et réponses",
+        "insight": "Analyses",
+        "data": "Vos données",
+        "api": "Service API",
+        "brand": "Marque et adresse",
+        "signin": "Connexion",
+        "support": "Assistance"
+      },
+      "rows": {
+        "forms": "Formulaires",
+        "responses": "Réponses par formulaire",
+        "languages": "Langues",
+        "templates": "Bibliothèque de modèles",
+        "lists": "Listes personnalisées",
+        "themes": "Thèmes et pages d'accueil",
+        "versions": "Historique des versions",
+        "folders": "Espace de travail et dossiers",
+        "fillLater": "Remplir plus tard",
+        "analytics": "Analyses avancées",
+        "visits": "Analyses des visites et des réponses",
+        "ai": "Assistant IA",
+        "aiCredits": "Crédits IA par mois",
+        "database": "Votre propre base de données {engine}",
+        "explorer": "Explorateur de base de données",
+        "query": "Éditeur de requêtes en direct",
+        "destinations": "Destinations des données",
+        "api": "Points d'accès API, jetons et règles d'accès",
+        "webhooks": "Webhooks",
+        "apiDocs": "Documentation de l'API",
+        "branding": "Image de marque",
+        "subdomain": "Sous-domaine Formalie",
+        "customDomain": "Domaines personnalisés",
+        "customEmail": "Adresse d'envoi et serveur de messagerie propres",
+        "residency": "Données conservées dans la région de votre choix",
+        "password": "E-mail et mot de passe",
+        "social": "Connexion avec Google et Facebook",
+        "sso": "Authentification unique (Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0, OpenID Connect)",
+        "help": "Centre d'aide et assistant",
+        "priority": "Assistance prioritaire par e-mail",
+        "dedicated": "Équipe de compte dédiée",
+        "review": "Revue de sécurité et de conformité"
+      }
+    },
+    "faq": {
+      "title": "Questions sur les tarifs",
+      "items": [
+        {
+          "q": "Puis-je changer d'offre plus tard ?",
+          "a": "Oui, à tout moment. Le passage à une offre supérieure prend effet immédiatement ; le passage à une offre inférieure prend effet à la fin de la période payée."
+        },
+        {
+          "q": "Que se passe-t-il si je dépasse une limite ?",
+          "a": "Rien n'est supprimé. Vous ne pouvez simplement plus rien ajouter tant que vous ne passez pas à une offre supérieure."
+        },
+        {
+          "q": "Proposez-vous des remises pour les associations et l'enseignement ?",
+          "a": "Contactez-nous et parlez-nous de votre organisation."
+        },
+        {
+          "q": "Quels moyens de paiement puis-je utiliser ?",
+          "a": "Les paiements sont gérés par Paddle, notre revendeur officiel (merchant of record), avec les cartes et les moyens de paiement locaux proposés par Paddle. Enterprise peut payer sur facture."
+        },
+        {
+          "q": "Mes données m'appartiennent-elles ?",
+          "a": "Oui. Exportez-les à tout moment, ou conservez-les dans votre propre base de données dès le premier jour."
+        },
+        {
+          "q": "Puis-je obtenir un remboursement ?",
+          "a": "Notre politique de remboursement et d'annulation explique quand et comment. Paddle traite chaque remboursement."
+        }
+      ],
+      "more": "En savoir plus"
+    }
   }
 }

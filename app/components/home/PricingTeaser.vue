@@ -8,14 +8,6 @@ const localePath = useLocalePath()
 const links = useSiteLinks()
 const { plans, source } = usePlans()
 
-const ENGINE_NAMES: Record<DatabaseEngine, string> = {
-  mysql: 'MySQL',
-  postgresql: 'PostgreSQL',
-  mariadb: 'MariaDB',
-  sqlserver: 'SQL Server',
-  oracle: 'Oracle',
-}
-
 const cards = computed<PricingPlanProps[]>(() =>
   plans.value
     .filter(plan => plan.id !== 'enterprise' && plan.prices)
@@ -47,8 +39,6 @@ const cards = computed<PricingPlanProps[]>(() =>
         highlight: plan.recommended,
         scale: plan.recommended,
         features,
-        // Database lists and long translations wrap rather than being cut off.
-        ui: { featureTitle: 'whitespace-normal overflow-visible' },
         button: {
           label: plan.id === 'starter' ? t('nav.startFree') : t('home.pricing.startWith', { plan: name }),
           to: links.signup(plan.id, 'monthly'),

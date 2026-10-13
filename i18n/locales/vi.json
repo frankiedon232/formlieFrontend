@@ -1133,5 +1133,118 @@
       ],
       "data": "Câu trả lời được kiểm tra theo quy tắc của biểu mẫu, lưu ở nơi bạn chọn và chuyển tiếp qua webhook có chữ ký."
     }
+  },
+  "pricingPage": {
+    "metaDescription": "Bắt đầu miễn phí với Starter. Các gói Professional, Business và Enterprise, thanh toán theo tháng, theo quý hoặc theo năm. So sánh mọi tính năng.",
+    "eyebrow": "Bảng giá",
+    "title": "Các gói đơn giản, lớn lên cùng bạn",
+    "description": "Bắt đầu miễn phí với Starter. Nâng cấp khi bạn cần tên miền riêng, đăng nhập bằng tài khoản công ty hoặc không giới hạn. Enterprise được thiết kế theo tổ chức của bạn.",
+    "periodLabel": "Chu kỳ thanh toán",
+    "periods": {
+      "monthly": "Hằng tháng",
+      "quarterly": "Hằng quý",
+      "annually": "Hằng năm"
+    },
+    "save": "Tiết kiệm {percent}%",
+    "perMonth": "/ tháng",
+    "billed": {
+      "monthly": "Thanh toán mỗi tháng",
+      "quarterly": "Thanh toán {amount} mỗi 3 tháng",
+      "annually": "Thanh toán {amount} mỗi năm"
+    },
+    "freeForever": "Miễn phí bao lâu tùy bạn",
+    "custom": "Tùy chỉnh",
+    "contactUs": "Liên hệ với chúng tôi",
+    "enterpriseTagline": "Mọi thứ trong Business, được thiết kế theo tổ chức của bạn, cùng một đội ngũ riêng.",
+    "enterpriseBilling": "Thanh toán theo hóa đơn, điều khoản phù hợp",
+    "enterpriseFeatures": [
+      "Dữ liệu ở khu vực bạn chọn",
+      "Đội ngũ phụ trách tài khoản riêng",
+      "Đánh giá bảo mật và tuân thủ",
+      "Giới hạn và hỗ trợ triển khai theo nhu cầu"
+    ],
+    "taxNote": "Giá tính bằng đô la Mỹ. Paddle cộng thuế bán hàng hoặc VAT khi pháp luật yêu cầu và hiển thị trước khi bạn thanh toán.",
+    "sampleNote": "Không tải được giá hiện tại, nên đang hiển thị giá mẫu.",
+    "compare": {
+      "title": "So sánh mọi tính năng",
+      "description": "Mọi thứ có trong từng gói, đặt cạnh nhau.",
+      "feature": "Tính năng",
+      "included": "Có",
+      "notIncluded": "Không có",
+      "unlimited": "Không giới hạn",
+      "groups": {
+        "forms": "Biểu mẫu và câu trả lời",
+        "insight": "Phân tích",
+        "data": "Dữ liệu của bạn",
+        "api": "Dịch vụ API",
+        "brand": "Thương hiệu và địa chỉ",
+        "signin": "Đăng nhập",
+        "support": "Hỗ trợ"
+      },
+      "rows": {
+        "forms": "Biểu mẫu",
+        "responses": "Câu trả lời cho mỗi biểu mẫu",
+        "languages": "Ngôn ngữ",
+        "templates": "Thư viện mẫu",
+        "lists": "Danh sách tùy chỉnh",
+        "themes": "Chủ đề và trang đích",
+        "versions": "Lịch sử phiên bản",
+        "folders": "Không gian làm việc và thư mục",
+        "fillLater": "Điền sau",
+        "analytics": "Phân tích nâng cao",
+        "visits": "Phân tích lượt truy cập và câu trả lời",
+        "ai": "Trợ lý AI",
+        "aiCredits": "Tín dụng AI mỗi tháng",
+        "database": "Cơ sở dữ liệu {engine} của riêng bạn",
+        "explorer": "Trình duyệt cơ sở dữ liệu",
+        "query": "Trình soạn truy vấn trực tiếp",
+        "destinations": "Đích đến của dữ liệu",
+        "api": "Endpoint API, token và quy tắc truy cập",
+        "webhooks": "Webhook",
+        "apiDocs": "Tài liệu API",
+        "branding": "Thương hiệu riêng",
+        "subdomain": "Tên miền phụ Formalie",
+        "customDomain": "Tên miền tùy chỉnh",
+        "customEmail": "Địa chỉ gửi và máy chủ thư riêng",
+        "residency": "Dữ liệu lưu ở khu vực bạn chọn",
+        "password": "Email và mật khẩu",
+        "social": "Đăng nhập bằng Google và Facebook",
+        "sso": "Đăng nhập một lần (Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0, OpenID Connect)",
+        "help": "Trung tâm trợ giúp và trợ lý",
+        "priority": "Hỗ trợ ưu tiên qua email",
+        "dedicated": "Đội ngũ phụ trách tài khoản riêng",
+        "review": "Đánh giá bảo mật và tuân thủ"
+      }
+    },
+    "faq": {
+      "title": "Câu hỏi về giá",
+      "items": [
+        {
+          "q": "Tôi có thể đổi gói sau này không?",
+          "a": "Có, bất cứ lúc nào. Nâng cấp có hiệu lực ngay; hạ cấp có hiệu lực vào cuối kỳ đã thanh toán."
+        },
+        {
+          "q": "Điều gì xảy ra nếu tôi vượt giới hạn?",
+          "a": "Không có gì bị xóa. Bạn chỉ không thể thêm mới cho đến khi nâng cấp."
+        },
+        {
+          "q": "Có giảm giá cho tổ chức phi lợi nhuận và giáo dục không?",
+          "a": "Hãy liên hệ và cho chúng tôi biết về tổ chức của bạn."
+        },
+        {
+          "q": "Tôi có thể dùng những phương thức thanh toán nào?",
+          "a": "Thanh toán do Paddle, đơn vị bán hàng chính thức (merchant of record) của chúng tôi, xử lý bằng thẻ và các phương thức địa phương mà Paddle cung cấp. Enterprise có thể thanh toán theo hóa đơn."
+        },
+        {
+          "q": "Dữ liệu có thuộc về tôi không?",
+          "a": "Có. Xuất dữ liệu bất cứ lúc nào, hoặc lưu trong cơ sở dữ liệu của riêng bạn ngay từ ngày đầu."
+        },
+        {
+          "q": "Tôi có được hoàn tiền không?",
+          "a": "Chính sách hoàn tiền và hủy của chúng tôi giải thích khi nào và như thế nào. Paddle xử lý mọi khoản hoàn tiền."
+        }
+      ],
+      "more": "Đọc thêm"
+    }
   }
 }

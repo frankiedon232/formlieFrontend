@@ -1133,5 +1133,118 @@
       ],
       "data": "Jawaban diperiksa dengan aturan formulir, disimpan di tempat pilihan Anda, dan diteruskan lewat webhook bertanda tangan."
     }
+  },
+  "pricingPage": {
+    "metaDescription": "Mulai gratis dengan Starter. Paket Professional, Business, dan Enterprise, ditagih bulanan, triwulanan, atau tahunan. Bandingkan semua fitur.",
+    "eyebrow": "Harga",
+    "title": "Paket sederhana yang tumbuh bersama Anda",
+    "description": "Mulai gratis dengan Starter. Tingkatkan paket saat Anda butuh domain sendiri, login perusahaan, atau tanpa batas. Enterprise disesuaikan dengan organisasi Anda.",
+    "periodLabel": "Periode penagihan",
+    "periods": {
+      "monthly": "Bulanan",
+      "quarterly": "Triwulanan",
+      "annually": "Tahunan"
+    },
+    "save": "Hemat {percent}%",
+    "perMonth": "/ bulan",
+    "billed": {
+      "monthly": "Ditagih setiap bulan",
+      "quarterly": "Ditagih {amount} setiap 3 bulan",
+      "annually": "Ditagih {amount} setiap tahun"
+    },
+    "freeForever": "Gratis selama yang Anda mau",
+    "custom": "Khusus",
+    "contactUs": "Hubungi kami",
+    "enterpriseTagline": "Semua yang ada di Business, disesuaikan dengan organisasi Anda, dengan tim khusus.",
+    "enterpriseBilling": "Bayar dengan invoice, ketentuan yang sesuai",
+    "enterpriseFeatures": [
+      "Data di wilayah pilihan Anda",
+      "Tim akun khusus",
+      "Tinjauan keamanan dan kepatuhan",
+      "Batas dan orientasi yang disesuaikan"
+    ],
+    "taxNote": "Harga dalam dolar AS. Paddle menambahkan pajak penjualan atau PPN jika diwajibkan hukum dan menampilkannya sebelum Anda membayar.",
+    "sampleNote": "Harga terkini tidak dapat dimuat, jadi harga contoh yang ditampilkan.",
+    "compare": {
+      "title": "Bandingkan semua fitur",
+      "description": "Semua yang termasuk di setiap paket, berdampingan.",
+      "feature": "Fitur",
+      "included": "Termasuk",
+      "notIncluded": "Tidak termasuk",
+      "unlimited": "Tanpa batas",
+      "groups": {
+        "forms": "Formulir dan jawaban",
+        "insight": "Wawasan",
+        "data": "Data Anda",
+        "api": "Layanan API",
+        "brand": "Merek dan alamat",
+        "signin": "Masuk",
+        "support": "Dukungan"
+      },
+      "rows": {
+        "forms": "Formulir",
+        "responses": "Jawaban per formulir",
+        "languages": "Bahasa",
+        "templates": "Pustaka templat",
+        "lists": "Daftar khusus",
+        "themes": "Tema dan halaman landing",
+        "versions": "Riwayat versi",
+        "folders": "Ruang kerja dan folder",
+        "fillLater": "Isi nanti",
+        "analytics": "Analitik lanjutan",
+        "visits": "Analitik kunjungan dan jawaban",
+        "ai": "Asisten AI",
+        "aiCredits": "Kredit AI per bulan",
+        "database": "Database {engine} milik Anda sendiri",
+        "explorer": "Penjelajah database",
+        "query": "Editor kueri langsung",
+        "destinations": "Tujuan data",
+        "api": "Endpoint API, token, dan aturan akses",
+        "webhooks": "Webhook",
+        "apiDocs": "Dokumentasi API",
+        "branding": "Branding",
+        "subdomain": "Subdomain Formalie",
+        "customDomain": "Domain khusus",
+        "customEmail": "Alamat pengirim dan server email sendiri",
+        "residency": "Data disimpan di wilayah pilihan Anda",
+        "password": "Email dan kata sandi",
+        "social": "Masuk dengan Google dan Facebook",
+        "sso": "Single sign-on (Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0, OpenID Connect)",
+        "help": "Pusat bantuan dan asisten",
+        "priority": "Dukungan email prioritas",
+        "dedicated": "Tim akun khusus",
+        "review": "Tinjauan keamanan dan kepatuhan"
+      }
+    },
+    "faq": {
+      "title": "Pertanyaan seputar harga",
+      "items": [
+        {
+          "q": "Bisakah saya mengganti paket nanti?",
+          "a": "Ya, kapan saja. Peningkatan paket langsung berlaku; penurunan paket berlaku di akhir periode yang sudah dibayar."
+        },
+        {
+          "q": "Apa yang terjadi jika saya melewati batas?",
+          "a": "Tidak ada yang dihapus. Anda hanya tidak bisa menambahkan lagi sampai Anda meningkatkan paket."
+        },
+        {
+          "q": "Apakah ada diskon untuk organisasi nirlaba dan pendidikan?",
+          "a": "Hubungi kami dan ceritakan tentang organisasi Anda."
+        },
+        {
+          "q": "Metode pembayaran apa saja yang bisa saya gunakan?",
+          "a": "Pembayaran ditangani oleh Paddle, merchant of record kami, dengan kartu dan metode lokal yang disediakan Paddle. Enterprise bisa membayar dengan invoice."
+        },
+        {
+          "q": "Apakah data saya milik saya?",
+          "a": "Ya. Ekspor kapan saja, atau simpan di database Anda sendiri sejak hari pertama."
+        },
+        {
+          "q": "Bisakah saya mendapatkan pengembalian dana?",
+          "a": "Kebijakan pengembalian dana dan pembatalan kami menjelaskan kapan dan bagaimana. Paddle menangani setiap pengembalian dana."
+        }
+      ],
+      "more": "Baca selengkapnya"
+    }
   }
 }

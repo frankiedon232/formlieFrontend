@@ -1133,5 +1133,118 @@
       ],
       "data": "Antworten werden nach den Regeln des Formulars geprüft, dort gespeichert, wo Sie es wünschen, und per signierten Webhooks weitergeleitet."
     }
+  },
+  "pricingPage": {
+    "metaDescription": "Starten Sie kostenlos mit Starter. Professional, Business und Enterprise, monatlich, vierteljährlich oder jährlich abgerechnet. Alle Funktionen im Vergleich.",
+    "eyebrow": "Preise",
+    "title": "Einfache Pläne, die mit Ihnen wachsen",
+    "description": "Starten Sie kostenlos mit Starter. Wechseln Sie, wenn Sie Ihre eigene Domain, die Firmenanmeldung oder keine Limits brauchen. Enterprise wird auf Ihre Organisation zugeschnitten.",
+    "periodLabel": "Abrechnungszeitraum",
+    "periods": {
+      "monthly": "Monatlich",
+      "quarterly": "Vierteljährlich",
+      "annually": "Jährlich"
+    },
+    "save": "{percent} % sparen",
+    "perMonth": "/ Monat",
+    "billed": {
+      "monthly": "Monatlich abgerechnet",
+      "quarterly": "{amount} alle 3 Monate abgerechnet",
+      "annually": "{amount} jährlich abgerechnet"
+    },
+    "freeForever": "Kostenlos, so lange Sie möchten",
+    "custom": "Individuell",
+    "contactUs": "Kontakt aufnehmen",
+    "enterpriseTagline": "Alles aus Business, zugeschnitten auf Ihre Organisation, mit einem eigenen Team.",
+    "enterpriseBilling": "Zahlung per Rechnung, passende Konditionen",
+    "enterpriseFeatures": [
+      "Daten in der Region Ihrer Wahl",
+      "Eigenes Account-Team",
+      "Sicherheits- und Compliance-Prüfung",
+      "Individuelle Limits und Einführung"
+    ],
+    "taxNote": "Preise in US-Dollar. Paddle schlägt Umsatzsteuer oder MwSt. auf, wo das Gesetz es verlangt, und zeigt sie vor der Zahlung an.",
+    "sampleNote": "Die aktuellen Preise konnten nicht geladen werden, daher werden Beispielpreise angezeigt.",
+    "compare": {
+      "title": "Alle Funktionen im Vergleich",
+      "description": "Was jeder Plan enthält, nebeneinander.",
+      "feature": "Funktion",
+      "included": "Enthalten",
+      "notIncluded": "Nicht enthalten",
+      "unlimited": "Unbegrenzt",
+      "groups": {
+        "forms": "Formulare und Antworten",
+        "insight": "Auswertung",
+        "data": "Ihre Daten",
+        "api": "API-Service",
+        "brand": "Marke und Adresse",
+        "signin": "Anmeldung",
+        "support": "Support"
+      },
+      "rows": {
+        "forms": "Formulare",
+        "responses": "Antworten pro Formular",
+        "languages": "Sprachen",
+        "templates": "Vorlagenbibliothek",
+        "lists": "Eigene Listen",
+        "themes": "Themes und Landingpages",
+        "versions": "Versionsverlauf",
+        "folders": "Arbeitsbereich und Ordner",
+        "fillLater": "Später ausfüllen",
+        "analytics": "Erweiterte Analysen",
+        "visits": "Analysen zu Besuchen und Antworten",
+        "ai": "KI-Assistent",
+        "aiCredits": "KI-Guthaben pro Monat",
+        "database": "Ihre eigene {engine}-Datenbank",
+        "explorer": "Datenbank-Explorer",
+        "query": "Live-Abfrage-Editor",
+        "destinations": "Datenziele",
+        "api": "API-Endpunkte, Tokens und Zugriffsregeln",
+        "webhooks": "Webhooks",
+        "apiDocs": "API-Dokumentation",
+        "branding": "Eigenes Branding",
+        "subdomain": "Formalie-Subdomain",
+        "customDomain": "Eigene Domains",
+        "customEmail": "Eigene Absenderadresse und eigener Mailserver",
+        "residency": "Daten in der Region Ihrer Wahl",
+        "password": "E-Mail und Passwort",
+        "social": "Anmeldung mit Google und Facebook",
+        "sso": "Single Sign-on (Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0, OpenID Connect)",
+        "help": "Hilfe-Center und Assistent",
+        "priority": "Bevorzugter E-Mail-Support",
+        "dedicated": "Eigenes Account-Team",
+        "review": "Sicherheits- und Compliance-Prüfung"
+      }
+    },
+    "faq": {
+      "title": "Fragen zu den Preisen",
+      "items": [
+        {
+          "q": "Kann ich den Plan später wechseln?",
+          "a": "Ja, jederzeit. Ein Upgrade gilt sofort, ein Downgrade zum Ende des bezahlten Zeitraums."
+        },
+        {
+          "q": "Was passiert, wenn ich ein Limit überschreite?",
+          "a": "Es wird nichts gelöscht. Sie können nur nichts mehr hinzufügen, bis Sie upgraden."
+        },
+        {
+          "q": "Gibt es Rabatte für gemeinnützige Organisationen und Bildung?",
+          "a": "Kontaktieren Sie uns und erzählen Sie uns von Ihrer Organisation."
+        },
+        {
+          "q": "Welche Zahlungsmethoden kann ich nutzen?",
+          "a": "Zahlungen wickelt Paddle ab, unser Merchant of Record, mit Karten und den lokalen Zahlungsmethoden, die Paddle anbietet. Enterprise kann per Rechnung zahlen."
+        },
+        {
+          "q": "Gehören meine Daten mir?",
+          "a": "Ja. Exportieren Sie sie jederzeit oder speichern Sie sie vom ersten Tag an in Ihrer eigenen Datenbank."
+        },
+        {
+          "q": "Kann ich eine Rückerstattung erhalten?",
+          "a": "Unsere Richtlinie zu Rückerstattung und Kündigung erklärt, wann und wie. Paddle wickelt jede Rückerstattung ab."
+        }
+      ],
+      "more": "Mehr erfahren"
+    }
   }
 }

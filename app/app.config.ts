@@ -38,6 +38,31 @@ export default defineAppConfig({
         description: 'text-sm/6 text-pretty text-muted',
       },
     },
+    // Plan cards: nothing is cut off (names, billing lines and features wrap), the billing line sits under the
+    // price, and the struck-through monthly price stays small.
+    pricingPlan: {
+      slots: {
+        root: 'relative grid rounded-2xl p-6 xl:p-7 gap-6',
+        titleWrapper: 'flex flex-wrap items-center gap-x-3 gap-y-1',
+        title: 'text-highlighted text-2xl text-pretty font-semibold tracking-tight',
+        description: 'text-muted text-sm text-pretty mt-2',
+        priceWrapper: 'flex flex-wrap items-baseline gap-x-2 gap-y-1',
+        price: 'text-highlighted text-4xl font-semibold tracking-tight',
+        discount: 'text-dimmed line-through text-lg',
+        billing: 'flex flex-col min-w-0 basis-full',
+        billingPeriod: 'text-toned text-xs font-medium',
+        billingCycle: 'text-muted text-xs font-medium',
+        feature: 'flex items-start gap-2 min-w-0',
+        featureTitle: 'text-muted text-sm text-pretty',
+      },
+    },
+    pricingTable: {
+      slots: {
+        tierPrice: 'text-highlighted text-2xl xl:text-3xl font-semibold tracking-tight',
+        tierDiscount: 'text-dimmed line-through text-base',
+        tierBillingCycle: 'text-muted text-xs font-medium whitespace-nowrap',
+      },
+    },
     pageCTA: {
       slots: {
         container: 'flex flex-col lg:grid px-6 py-12 sm:px-12 sm:py-16 lg:px-16 lg:py-20 gap-8 sm:gap-12',

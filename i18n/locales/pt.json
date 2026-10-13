@@ -1133,5 +1133,118 @@
       ],
       "data": "As respostas são validadas pelas regras do formulário, guardadas onde você escolher e repassadas por webhooks assinados."
     }
+  },
+  "pricingPage": {
+    "metaDescription": "Comece grátis com o Starter. Planos Professional, Business e Enterprise, com cobrança mensal, trimestral ou anual. Compare todos os recursos.",
+    "eyebrow": "Preços",
+    "title": "Planos simples que crescem com você",
+    "description": "Comece grátis com o Starter. Mude de plano quando precisar do seu próprio domínio, do login corporativo ou de nenhum limite. O Enterprise é moldado para a sua organização.",
+    "periodLabel": "Período de cobrança",
+    "periods": {
+      "monthly": "Mensal",
+      "quarterly": "Trimestral",
+      "annually": "Anual"
+    },
+    "save": "Economize {percent}%",
+    "perMonth": "/ mês",
+    "billed": {
+      "monthly": "Cobrado todo mês",
+      "quarterly": "{amount} cobrados a cada 3 meses",
+      "annually": "{amount} cobrados todo ano"
+    },
+    "freeForever": "Grátis por quanto tempo você quiser",
+    "custom": "Sob medida",
+    "contactUs": "Fale conosco",
+    "enterpriseTagline": "Tudo do Business, moldado para a sua organização, com uma equipe dedicada.",
+    "enterpriseBilling": "Pagamento por fatura, condições sob medida",
+    "enterpriseFeatures": [
+      "Dados na região que você escolher",
+      "Equipe de conta dedicada",
+      "Revisão de segurança e conformidade",
+      "Limites e implantação sob medida"
+    ],
+    "taxNote": "Preços em dólares americanos. A Paddle adiciona o imposto sobre vendas ou o IVA quando a lei exige e mostra o valor antes de você pagar.",
+    "sampleNote": "Não foi possível carregar os preços atuais, então mostramos preços de exemplo.",
+    "compare": {
+      "title": "Compare todos os recursos",
+      "description": "Tudo o que cada plano inclui, lado a lado.",
+      "feature": "Recurso",
+      "included": "Incluído",
+      "notIncluded": "Não incluído",
+      "unlimited": "Ilimitado",
+      "groups": {
+        "forms": "Formulários e respostas",
+        "insight": "Análises",
+        "data": "Seus dados",
+        "api": "Serviço de API",
+        "brand": "Marca e endereço",
+        "signin": "Login",
+        "support": "Suporte"
+      },
+      "rows": {
+        "forms": "Formulários",
+        "responses": "Respostas por formulário",
+        "languages": "Idiomas",
+        "templates": "Biblioteca de modelos",
+        "lists": "Listas personalizadas",
+        "themes": "Temas e páginas de destino",
+        "versions": "Histórico de versões",
+        "folders": "Espaço de trabalho e pastas",
+        "fillLater": "Preencher depois",
+        "analytics": "Análises avançadas",
+        "visits": "Análises de visitas e respostas",
+        "ai": "Assistente de IA",
+        "aiCredits": "Créditos de IA por mês",
+        "database": "Seu próprio banco de dados {engine}",
+        "explorer": "Explorador do banco de dados",
+        "query": "Editor de consultas ao vivo",
+        "destinations": "Destinos de dados",
+        "api": "Endpoints de API, tokens e regras de acesso",
+        "webhooks": "Webhooks",
+        "apiDocs": "Documentação da API",
+        "branding": "Marca própria",
+        "subdomain": "Subdomínio Formalie",
+        "customDomain": "Domínios personalizados",
+        "customEmail": "Endereço de envio e servidor de e-mail próprios",
+        "residency": "Dados mantidos na região que você escolher",
+        "password": "E-mail e senha",
+        "social": "Login com Google e Facebook",
+        "sso": "Login único (Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0, OpenID Connect)",
+        "help": "Central de ajuda e assistente",
+        "priority": "Suporte prioritário por e-mail",
+        "dedicated": "Equipe de conta dedicada",
+        "review": "Revisão de segurança e conformidade"
+      }
+    },
+    "faq": {
+      "title": "Perguntas sobre preços",
+      "items": [
+        {
+          "q": "Posso mudar de plano depois?",
+          "a": "Sim, a qualquer momento. Upgrades valem na hora; downgrades valem no fim do período pago."
+        },
+        {
+          "q": "O que acontece se eu passar de um limite?",
+          "a": "Nada é apagado. Você só não pode adicionar mais até fazer upgrade."
+        },
+        {
+          "q": "Vocês oferecem descontos para organizações sem fins lucrativos e educação?",
+          "a": "Fale conosco e conte sobre a sua organização."
+        },
+        {
+          "q": "Quais formas de pagamento posso usar?",
+          "a": "Os pagamentos são processados pela Paddle, nossa revendedora oficial (merchant of record), com cartões e os métodos locais que a Paddle oferece. O Enterprise pode pagar por fatura."
+        },
+        {
+          "q": "Meus dados são meus?",
+          "a": "Sim. Exporte quando quiser ou mantenha tudo no seu próprio banco de dados desde o primeiro dia."
+        },
+        {
+          "q": "Posso pedir reembolso?",
+          "a": "Nossa política de reembolso e cancelamento explica quando e como. A Paddle cuida de todos os reembolsos."
+        }
+      ],
+      "more": "Saiba mais"
+    }
   }
 }

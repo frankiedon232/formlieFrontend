@@ -1133,5 +1133,118 @@
       ],
       "data": "Odpowiedzi są sprawdzane regułami formularza, przechowywane tam, gdzie wybierzesz, i przekazywane dalej podpisanymi webhookami."
     }
+  },
+  "pricingPage": {
+    "metaDescription": "Zacznij za darmo z planem Starter. Plany Professional, Business i Enterprise z rozliczeniem miesięcznym, kwartalnym lub rocznym. Porównaj wszystkie funkcje.",
+    "eyebrow": "Cennik",
+    "title": "Proste plany, które rosną razem z Tobą",
+    "description": "Zacznij za darmo z planem Starter. Przejdź wyżej, gdy potrzebujesz własnej domeny, firmowego logowania albo braku limitów. Enterprise dopasowujemy do Twojej organizacji.",
+    "periodLabel": "Okres rozliczeniowy",
+    "periods": {
+      "monthly": "Miesięcznie",
+      "quarterly": "Kwartalnie",
+      "annually": "Rocznie"
+    },
+    "save": "Oszczędzasz {percent}%",
+    "perMonth": "/ miesiąc",
+    "billed": {
+      "monthly": "Płatne co miesiąc",
+      "quarterly": "{amount} płatne co 3 miesiące",
+      "annually": "{amount} płatne co roku"
+    },
+    "freeForever": "Za darmo, jak długo chcesz",
+    "custom": "Indywidualnie",
+    "contactUs": "Skontaktuj się z nami",
+    "enterpriseTagline": "Wszystko z planu Business, dopasowane do Twojej organizacji, z dedykowanym zespołem.",
+    "enterpriseBilling": "Płatność na fakturę, dopasowane warunki",
+    "enterpriseFeatures": [
+      "Dane w wybranym przez Ciebie regionie",
+      "Dedykowany zespół opiekunów",
+      "Przegląd bezpieczeństwa i zgodności",
+      "Indywidualne limity i wdrożenie"
+    ],
+    "taxNote": "Ceny w dolarach amerykańskich. Paddle dolicza podatek od sprzedaży lub VAT, gdy wymaga tego prawo, i pokazuje go przed płatnością.",
+    "sampleNote": "Nie udało się wczytać aktualnych cen, dlatego pokazujemy ceny przykładowe.",
+    "compare": {
+      "title": "Porównaj wszystkie funkcje",
+      "description": "Wszystko, co zawiera każdy plan, obok siebie.",
+      "feature": "Funkcja",
+      "included": "W planie",
+      "notIncluded": "Poza planem",
+      "unlimited": "Bez limitu",
+      "groups": {
+        "forms": "Formularze i odpowiedzi",
+        "insight": "Analizy",
+        "data": "Twoje dane",
+        "api": "Usługa API",
+        "brand": "Marka i adres",
+        "signin": "Logowanie",
+        "support": "Wsparcie"
+      },
+      "rows": {
+        "forms": "Formularze",
+        "responses": "Odpowiedzi na formularz",
+        "languages": "Języki",
+        "templates": "Biblioteka szablonów",
+        "lists": "Własne listy",
+        "themes": "Motywy i strony docelowe",
+        "versions": "Historia wersji",
+        "folders": "Obszar roboczy i foldery",
+        "fillLater": "Wypełnij później",
+        "analytics": "Zaawansowane analizy",
+        "visits": "Analizy odwiedzin i odpowiedzi",
+        "ai": "Asystent AI",
+        "aiCredits": "Kredyty AI na miesiąc",
+        "database": "Własna baza danych {engine}",
+        "explorer": "Eksplorator bazy danych",
+        "query": "Edytor zapytań na żywo",
+        "destinations": "Miejsca docelowe danych",
+        "api": "Punkty końcowe API, tokeny i reguły dostępu",
+        "webhooks": "Webhooki",
+        "apiDocs": "Dokumentacja API",
+        "branding": "Własna identyfikacja wizualna",
+        "subdomain": "Subdomena Formalie",
+        "customDomain": "Własne domeny",
+        "customEmail": "Własny adres nadawcy i serwer poczty",
+        "residency": "Dane przechowywane w wybranym regionie",
+        "password": "E-mail i hasło",
+        "social": "Logowanie przez Google i Facebook",
+        "sso": "Logowanie jednokrotne (Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0, OpenID Connect)",
+        "help": "Centrum pomocy i asystent",
+        "priority": "Priorytetowe wsparcie e-mailowe",
+        "dedicated": "Dedykowany zespół opiekunów",
+        "review": "Przegląd bezpieczeństwa i zgodności"
+      }
+    },
+    "faq": {
+      "title": "Pytania o ceny",
+      "items": [
+        {
+          "q": "Czy mogę później zmienić plan?",
+          "a": "Tak, w dowolnym momencie. Przejście na wyższy plan działa od razu, a na niższy od końca opłaconego okresu."
+        },
+        {
+          "q": "Co się stanie, jeśli przekroczę limit?",
+          "a": "Nic nie zostanie usunięte. Po prostu nie dodasz więcej, dopóki nie przejdziesz na wyższy plan."
+        },
+        {
+          "q": "Czy macie zniżki dla organizacji non-profit i edukacji?",
+          "a": "Skontaktuj się z nami i opowiedz o swojej organizacji."
+        },
+        {
+          "q": "Jakich metod płatności mogę użyć?",
+          "a": "Płatności obsługuje Paddle, nasz sprzedawca rozliczający (merchant of record), przy użyciu kart i lokalnych metod oferowanych przez Paddle. Enterprise może płacić na fakturę."
+        },
+        {
+          "q": "Czy moje dane należą do mnie?",
+          "a": "Tak. Eksportuj je w dowolnej chwili albo trzymaj we własnej bazie danych od pierwszego dnia."
+        },
+        {
+          "q": "Czy mogę otrzymać zwrot pieniędzy?",
+          "a": "Nasza polityka zwrotów i anulowania wyjaśnia, kiedy i jak. Każdy zwrot obsługuje Paddle."
+        }
+      ],
+      "more": "Czytaj więcej"
+    }
   }
 }
