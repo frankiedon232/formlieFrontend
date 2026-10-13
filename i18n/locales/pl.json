@@ -5,8 +5,138 @@
     "description": "Twórz dowolne formularze, zbieraj odpowiedzi przez link, osadzenie, kod QR lub API, przechowuj je we własnej bazie danych i decyduj, kto co widzi. Na start za darmo.",
     "skipToContent": "Przejdź do treści"
   },
+  "nav": {
+    "product": "Produkt",
+    "solutions": "Rozwiązania",
+    "pricing": "Cennik",
+    "integrations": "Integracje",
+    "resources": "Zasoby",
+    "contact": "Kontakt",
+    "signIn": "Zaloguj się",
+    "startFree": "Zacznij za darmo",
+    "home": "Strona główna Formalie"
+  },
+  "product": {
+    "formBuilder": {
+      "label": "Kreator formularzy",
+      "description": "Pytania, strony, reguły i obliczenia metodą przeciągnij i upuść."
+    },
+    "design": {
+      "label": "Wygląd i szablony",
+      "description": "Zacznij od stylu lub szablonu i dostosuj go do siebie."
+    },
+    "responses": {
+      "label": "Odpowiedzi i analizy",
+      "description": "Przeglądaj, oznaczaj, eksportuj i rozumiej każdą odpowiedź."
+    },
+    "dataSources": {
+      "label": "Źródła danych",
+      "description": "Wysyłaj każdą odpowiedź do własnej bazy danych od razu."
+    },
+    "apiService": {
+      "label": "Usługa API",
+      "description": "Zamień dowolny formularz w bezpieczne punkty końcowe API."
+    },
+    "access": {
+      "label": "Dostęp i bezpieczeństwo",
+      "description": "Role, logowanie jednokrotne, logowanie dwuetapowe i dziennik zdarzeń."
+    },
+    "ai": {
+      "label": "Asystent AI",
+      "description": "Twórz formularze, analizuj odpowiedzi i tłumacz."
+    },
+    "languages": {
+      "label": "Języki",
+      "description": "20 języków, także pisanych od prawej do lewej."
+    }
+  },
+  "solutions": {
+    "hr": {
+      "label": "Kadry i ludzie",
+      "description": "Aplikacje o pracę, wdrażanie i wnioski pracowników."
+    },
+    "customerFeedback": {
+      "label": "Opinie klientów",
+      "description": "Ankiety satysfakcji i wnioski o zwrot."
+    },
+    "events": {
+      "label": "Wydarzenia i rezerwacje",
+      "description": "Rejestracje, potwierdzenia udziału i rezerwacje."
+    },
+    "healthSafety": {
+      "label": "BHP",
+      "description": "Zgłoszenia incydentów i oceny ryzyka."
+    },
+    "education": {
+      "label": "Edukacja",
+      "description": "Zapisy i oceny kursów."
+    },
+    "operations": {
+      "label": "Operacje i zgodność",
+      "description": "Kontrole dostawców, audyty i rejestry."
+    },
+    "developers": {
+      "label": "Programiści",
+      "description": "Formularze jako punkty końcowe API, webhooki i dokumentacja."
+    }
+  },
+  "resources": {
+    "helpCentre": {
+      "label": "Centrum pomocy",
+      "description": "Artykuły, poradniki i asystent w 20 językach."
+    },
+    "blog": {
+      "label": "Blog",
+      "description": "Nowości i pomysły od zespołu Formalie."
+    },
+    "changelog": {
+      "label": "Lista zmian",
+      "description": "Co nowego w Formalie."
+    },
+    "apiDocs": {
+      "label": "Dokumentacja API",
+      "description": "Punkty końcowe, tokeny i webhooki dla programistów."
+    }
+  },
+  "company": {
+    "title": "Firma",
+    "about": "O nas",
+    "security": "Bezpieczeństwo",
+    "trust": "Zaufanie i bezpieczeństwo",
+    "enterprise": "Enterprise"
+  },
+  "legal": {
+    "privacy": "Polityka prywatności",
+    "terms": "Regulamin",
+    "dataProtection": "Ochrona danych",
+    "cookies": "Polityka plików cookie",
+    "acceptableUse": "Dopuszczalne użytkowanie",
+    "subprocessors": "Podmioty przetwarzające",
+    "refunds": "Zwroty i rezygnacja",
+    "title": "Informacje prawne"
+  },
+  "footer": {
+    "tagline": "Formalie: formularze, dane i dostęp pod Twoją kontrolą.",
+    "copyright": "© {year} Formalie"
+  },
+  "theme": {
+    "label": "Motyw",
+    "light": "Jasny",
+    "dark": "Ciemny",
+    "system": "Systemowy"
+  },
+  "language": {
+    "label": "Język"
+  },
+  "error": {
+    "notFoundTitle": "Nie znaleziono strony",
+    "notFoundText": "Strona, której szukasz, została przeniesiona lub nie istnieje.",
+    "title": "Coś poszło nie tak",
+    "text": "Spróbuj ponownie za chwilę.",
+    "home": "Wróć na stronę główną",
+    "help": "Odwiedź centrum pomocy"
+  },
   "placeholder": {
-    "building": "Strona Formalie jest w budowie.",
-    "home": "Przejdź do strony głównej"
+    "building": "Strona Formalie jest w budowie."
   }
 }

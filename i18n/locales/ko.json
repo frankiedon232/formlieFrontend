@@ -5,8 +5,138 @@
     "description": "어떤 양식이든 만들고, 링크, 임베드, QR 코드 또는 API로 응답을 모아 자체 데이터베이스에 보관하고, 누가 무엇을 볼지 정하세요. 무료로 시작하세요.",
     "skipToContent": "본문으로 건너뛰기"
   },
+  "nav": {
+    "product": "제품",
+    "solutions": "솔루션",
+    "pricing": "요금",
+    "integrations": "연동",
+    "resources": "리소스",
+    "contact": "문의",
+    "signIn": "로그인",
+    "startFree": "무료로 시작",
+    "home": "Formalie 홈"
+  },
+  "product": {
+    "formBuilder": {
+      "label": "양식 빌더",
+      "description": "드래그 앤 드롭으로 질문, 페이지, 규칙, 계산을 만드세요."
+    },
+    "design": {
+      "label": "디자인과 템플릿",
+      "description": "스타일이나 템플릿에서 시작해 나만의 양식으로 꾸미세요."
+    },
+    "responses": {
+      "label": "응답과 분석",
+      "description": "모든 응답을 검토하고 태그하고 내보내고 이해하세요."
+    },
+    "dataSources": {
+      "label": "데이터 소스",
+      "description": "응답이 들어오는 즉시 자체 데이터베이스로 보내세요."
+    },
+    "apiService": {
+      "label": "API 서비스",
+      "description": "어떤 양식이든 안전한 API 엔드포인트로 만드세요."
+    },
+    "access": {
+      "label": "접근 권한과 보안",
+      "description": "역할, 싱글 사인온, 2단계 로그인, 감사 기록."
+    },
+    "ai": {
+      "label": "AI 어시스턴트",
+      "description": "양식을 만들고 응답을 분석하고 번역하세요."
+    },
+    "languages": {
+      "label": "언어",
+      "description": "오른쪽에서 왼쪽으로 쓰는 언어를 포함한 20개 언어."
+    }
+  },
+  "solutions": {
+    "hr": {
+      "label": "인사",
+      "description": "입사 지원, 온보딩, 직원 요청."
+    },
+    "customerFeedback": {
+      "label": "고객 피드백",
+      "description": "만족도 조사와 반품 요청."
+    },
+    "events": {
+      "label": "행사와 예약",
+      "description": "등록, 참석 확인, 예약."
+    },
+    "healthSafety": {
+      "label": "안전 보건",
+      "description": "사고 보고와 위험성 평가."
+    },
+    "education": {
+      "label": "교육",
+      "description": "입학 신청과 강의 평가."
+    },
+    "operations": {
+      "label": "운영과 컴플라이언스",
+      "description": "공급업체 점검, 감사, 기록."
+    },
+    "developers": {
+      "label": "개발자",
+      "description": "API 엔드포인트로서의 양식, 웹훅, 문서."
+    }
+  },
+  "resources": {
+    "helpCentre": {
+      "label": "도움말 센터",
+      "description": "20개 언어로 된 문서, 가이드, 어시스턴트."
+    },
+    "blog": {
+      "label": "블로그",
+      "description": "Formalie 팀의 소식과 아이디어."
+    },
+    "changelog": {
+      "label": "변경 기록",
+      "description": "Formalie의 새로운 기능."
+    },
+    "apiDocs": {
+      "label": "API 문서",
+      "description": "개발자를 위한 엔드포인트, 토큰, 웹훅."
+    }
+  },
+  "company": {
+    "title": "회사",
+    "about": "소개",
+    "security": "보안",
+    "trust": "신뢰와 보안",
+    "enterprise": "Enterprise"
+  },
+  "legal": {
+    "privacy": "개인정보 처리방침",
+    "terms": "이용약관",
+    "dataProtection": "데이터 보호",
+    "cookies": "쿠키 정책",
+    "acceptableUse": "허용되는 사용",
+    "subprocessors": "하위 처리자",
+    "refunds": "환불과 해지",
+    "title": "법적 고지"
+  },
+  "footer": {
+    "tagline": "Formalie: 양식, 데이터, 접근 권한을 직접 관리하세요.",
+    "copyright": "© {year} Formalie"
+  },
+  "theme": {
+    "label": "테마",
+    "light": "라이트",
+    "dark": "다크",
+    "system": "시스템"
+  },
+  "language": {
+    "label": "언어"
+  },
+  "error": {
+    "notFoundTitle": "페이지를 찾을 수 없습니다",
+    "notFoundText": "찾으시는 페이지가 이동되었거나 존재하지 않습니다.",
+    "title": "문제가 발생했습니다",
+    "text": "잠시 후 다시 시도해 주세요.",
+    "home": "홈페이지로 돌아가기",
+    "help": "도움말 센터 방문"
+  },
   "placeholder": {
-    "building": "Formalie 웹사이트를 준비 중입니다.",
-    "home": "홈페이지로 이동"
+    "building": "Formalie 웹사이트를 준비 중입니다."
   }
 }

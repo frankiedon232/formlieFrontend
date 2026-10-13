@@ -5,7 +5,11 @@
 @source '../../../content';
 
 @theme static {
-  --font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+  /* Manrope first; the Noto faces only cover the scripts Manrope lacks (each loads only when its letters appear).
+     Chinese, Japanese and Korean use the system's own fonts. */
+  --font-sans:
+    'Manrope', 'Noto Sans Arabic', 'Noto Sans Devanagari', 'Noto Sans Bengali', ui-sans-serif, system-ui,
+    sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
   /* Motion tokens (the data-flow hero and page entrances). Used with motion-safe: only. */

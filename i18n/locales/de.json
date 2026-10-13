@@ -5,8 +5,138 @@
     "description": "Erstellen Sie jedes Formular, sammeln Sie Antworten per Link, Einbettung, QR-Code oder API, speichern Sie sie in Ihrer eigenen Datenbank und bestimmen Sie, wer was sieht. Kostenlos starten.",
     "skipToContent": "Zum Inhalt springen"
   },
+  "nav": {
+    "product": "Produkt",
+    "solutions": "Lösungen",
+    "pricing": "Preise",
+    "integrations": "Integrationen",
+    "resources": "Ressourcen",
+    "contact": "Kontakt",
+    "signIn": "Anmelden",
+    "startFree": "Kostenlos starten",
+    "home": "Formalie Startseite"
+  },
+  "product": {
+    "formBuilder": {
+      "label": "Formular-Builder",
+      "description": "Fragen, Seiten, Regeln und Berechnungen per Drag-and-drop."
+    },
+    "design": {
+      "label": "Design und Vorlagen",
+      "description": "Starten Sie mit einem Stil oder einer Vorlage und passen Sie sie an."
+    },
+    "responses": {
+      "label": "Antworten und Analysen",
+      "description": "Jede Antwort prüfen, markieren, exportieren und verstehen."
+    },
+    "dataSources": {
+      "label": "Datenquellen",
+      "description": "Jede Antwort sofort in Ihre eigene Datenbank senden."
+    },
+    "apiService": {
+      "label": "API-Service",
+      "description": "Jedes Formular wird zu sicheren API-Endpunkten."
+    },
+    "access": {
+      "label": "Zugriff und Sicherheit",
+      "description": "Rollen, Single Sign-on, Zwei-Schritt-Anmeldung und ein Audit-Protokoll."
+    },
+    "ai": {
+      "label": "KI-Assistent",
+      "description": "Formulare erstellen, Antworten analysieren und übersetzen."
+    },
+    "languages": {
+      "label": "Sprachen",
+      "description": "20 Sprachen, auch von rechts nach links."
+    }
+  },
+  "solutions": {
+    "hr": {
+      "label": "Personal und HR",
+      "description": "Bewerbungen, Onboarding und Mitarbeiteranfragen."
+    },
+    "customerFeedback": {
+      "label": "Kundenfeedback",
+      "description": "Zufriedenheitsumfragen und Rücksendeanfragen."
+    },
+    "events": {
+      "label": "Veranstaltungen und Buchungen",
+      "description": "Anmeldungen, Zusagen und Buchungen."
+    },
+    "healthSafety": {
+      "label": "Arbeitsschutz",
+      "description": "Vorfallmeldungen und Gefährdungsbeurteilungen."
+    },
+    "education": {
+      "label": "Bildung",
+      "description": "Einschreibungen und Kursbewertungen."
+    },
+    "operations": {
+      "label": "Betrieb und Compliance",
+      "description": "Lieferantenprüfungen, Audits und Nachweise."
+    },
+    "developers": {
+      "label": "Entwickler",
+      "description": "Formulare als API-Endpunkte, Webhooks und Dokumentation."
+    }
+  },
+  "resources": {
+    "helpCentre": {
+      "label": "Hilfe-Center",
+      "description": "Artikel, Anleitungen und ein Assistent in 20 Sprachen."
+    },
+    "blog": {
+      "label": "Blog",
+      "description": "Neuigkeiten und Ideen vom Formalie-Team."
+    },
+    "changelog": {
+      "label": "Änderungsprotokoll",
+      "description": "Was es Neues bei Formalie gibt."
+    },
+    "apiDocs": {
+      "label": "API-Dokumentation",
+      "description": "Endpunkte, Tokens und Webhooks für Entwickler."
+    }
+  },
+  "company": {
+    "title": "Unternehmen",
+    "about": "Über uns",
+    "security": "Sicherheit",
+    "trust": "Vertrauen und Sicherheit",
+    "enterprise": "Enterprise"
+  },
+  "legal": {
+    "privacy": "Datenschutzerklärung",
+    "terms": "Allgemeine Geschäftsbedingungen",
+    "dataProtection": "Datenschutz",
+    "cookies": "Cookie-Richtlinie",
+    "acceptableUse": "Zulässige Nutzung",
+    "subprocessors": "Unterauftragsverarbeiter",
+    "refunds": "Erstattungen und Kündigung",
+    "title": "Rechtliches"
+  },
+  "footer": {
+    "tagline": "Formalie: Formulare, Daten und Zugriffe unter Ihrer Kontrolle.",
+    "copyright": "© {year} Formalie"
+  },
+  "theme": {
+    "label": "Design",
+    "light": "Hell",
+    "dark": "Dunkel",
+    "system": "System"
+  },
+  "language": {
+    "label": "Sprache"
+  },
+  "error": {
+    "notFoundTitle": "Seite nicht gefunden",
+    "notFoundText": "Die gesuchte Seite wurde verschoben oder existiert nicht.",
+    "title": "Etwas ist schiefgelaufen",
+    "text": "Bitte versuchen Sie es gleich noch einmal.",
+    "home": "Zur Startseite",
+    "help": "Zum Hilfe-Center"
+  },
   "placeholder": {
-    "building": "Die Formalie-Website entsteht gerade.",
-    "home": "Zur Startseite"
+    "building": "Die Formalie-Website entsteht gerade."
   }
 }

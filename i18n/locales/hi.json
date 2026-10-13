@@ -5,8 +5,138 @@
     "description": "कोई भी फ़ॉर्म बनाएँ, लिंक, एम्बेड, QR कोड या API से जवाब जुटाएँ, उन्हें अपने डेटाबेस में रखें और तय करें कि कौन क्या देखे। मुफ़्त में शुरू करें।",
     "skipToContent": "सामग्री पर जाएँ"
   },
+  "nav": {
+    "product": "उत्पाद",
+    "solutions": "समाधान",
+    "pricing": "मूल्य",
+    "integrations": "इंटीग्रेशन",
+    "resources": "संसाधन",
+    "contact": "संपर्क",
+    "signIn": "साइन इन करें",
+    "startFree": "मुफ़्त शुरू करें",
+    "home": "Formalie होम"
+  },
+  "product": {
+    "formBuilder": {
+      "label": "फ़ॉर्म बिल्डर",
+      "description": "ड्रैग-एंड-ड्रॉप से प्रश्न, पेज, नियम और गणनाएँ।"
+    },
+    "design": {
+      "label": "डिज़ाइन और टेम्पलेट",
+      "description": "किसी लुक या टेम्पलेट से शुरू करें और उसे अपना बनाएँ।"
+    },
+    "responses": {
+      "label": "जवाब और एनालिटिक्स",
+      "description": "हर जवाब देखें, टैग करें, एक्सपोर्ट करें और समझें।"
+    },
+    "dataSources": {
+      "label": "डेटा स्रोत",
+      "description": "हर जवाब आते ही अपने डेटाबेस में भेजें।"
+    },
+    "apiService": {
+      "label": "API सेवा",
+      "description": "किसी भी फ़ॉर्म को सुरक्षित API एंडपॉइंट में बदलें।"
+    },
+    "access": {
+      "label": "एक्सेस और सुरक्षा",
+      "description": "भूमिकाएँ, सिंगल साइन-ऑन, दो-चरणीय साइन-इन और ऑडिट ट्रेल।"
+    },
+    "ai": {
+      "label": "AI सहायक",
+      "description": "फ़ॉर्म बनाएँ, जवाबों का विश्लेषण करें और अनुवाद करें।"
+    },
+    "languages": {
+      "label": "भाषाएँ",
+      "description": "20 भाषाएँ, दाएँ से बाएँ वाली भी।"
+    }
+  },
+  "solutions": {
+    "hr": {
+      "label": "HR और लोग",
+      "description": "नौकरी आवेदन, ऑनबोर्डिंग और कर्मचारी अनुरोध।"
+    },
+    "customerFeedback": {
+      "label": "ग्राहक प्रतिक्रिया",
+      "description": "संतुष्टि सर्वेक्षण और वापसी अनुरोध।"
+    },
+    "events": {
+      "label": "इवेंट और बुकिंग",
+      "description": "पंजीकरण, उपस्थिति पुष्टि और बुकिंग।"
+    },
+    "healthSafety": {
+      "label": "स्वास्थ्य और सुरक्षा",
+      "description": "घटना रिपोर्ट और जोखिम आकलन।"
+    },
+    "education": {
+      "label": "शिक्षा",
+      "description": "नामांकन और पाठ्यक्रम मूल्यांकन।"
+    },
+    "operations": {
+      "label": "संचालन और अनुपालन",
+      "description": "आपूर्तिकर्ता जाँच, ऑडिट और रिकॉर्ड।"
+    },
+    "developers": {
+      "label": "डेवलपर",
+      "description": "API एंडपॉइंट के रूप में फ़ॉर्म, वेबहुक और दस्तावेज़।"
+    }
+  },
+  "resources": {
+    "helpCentre": {
+      "label": "सहायता केंद्र",
+      "description": "20 भाषाओं में लेख, गाइड और एक सहायक।"
+    },
+    "blog": {
+      "label": "ब्लॉग",
+      "description": "Formalie टीम की खबरें और विचार।"
+    },
+    "changelog": {
+      "label": "बदलाव सूची",
+      "description": "Formalie में नया क्या है।"
+    },
+    "apiDocs": {
+      "label": "API दस्तावेज़",
+      "description": "डेवलपर के लिए एंडपॉइंट, टोकन और वेबहुक।"
+    }
+  },
+  "company": {
+    "title": "कंपनी",
+    "about": "हमारे बारे में",
+    "security": "सुरक्षा",
+    "trust": "भरोसा और सुरक्षा",
+    "enterprise": "Enterprise"
+  },
+  "legal": {
+    "privacy": "गोपनीयता नीति",
+    "terms": "नियम और शर्तें",
+    "dataProtection": "डेटा सुरक्षा",
+    "cookies": "कुकी नीति",
+    "acceptableUse": "स्वीकार्य उपयोग",
+    "subprocessors": "उप-प्रोसेसर",
+    "refunds": "रिफ़ंड और रद्दीकरण",
+    "title": "कानूनी"
+  },
+  "footer": {
+    "tagline": "Formalie: फ़ॉर्म, डेटा और एक्सेस आपके नियंत्रण में।",
+    "copyright": "© {year} Formalie"
+  },
+  "theme": {
+    "label": "थीम",
+    "light": "लाइट",
+    "dark": "डार्क",
+    "system": "सिस्टम"
+  },
+  "language": {
+    "label": "भाषा"
+  },
+  "error": {
+    "notFoundTitle": "पेज नहीं मिला",
+    "notFoundText": "आप जो पेज ढूँढ रहे हैं वह हटा दिया गया है या मौजूद नहीं है।",
+    "title": "कुछ गलत हो गया",
+    "text": "कृपया थोड़ी देर में फिर से कोशिश करें।",
+    "home": "होम पेज पर लौटें",
+    "help": "सहायता केंद्र देखें"
+  },
   "placeholder": {
-    "building": "Formalie की वेबसाइट बन रही है।",
-    "home": "होम पेज पर जाएँ"
+    "building": "Formalie की वेबसाइट बन रही है।"
   }
 }

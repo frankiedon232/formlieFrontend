@@ -5,8 +5,138 @@
     "description": "Buat formulir apa pun, kumpulkan jawaban lewat tautan, sematan, kode QR, atau API, simpan di database Anda sendiri, dan tentukan siapa melihat apa. Gratis untuk memulai.",
     "skipToContent": "Lewati ke konten"
   },
+  "nav": {
+    "product": "Produk",
+    "solutions": "Solusi",
+    "pricing": "Harga",
+    "integrations": "Integrasi",
+    "resources": "Sumber daya",
+    "contact": "Kontak",
+    "signIn": "Masuk",
+    "startFree": "Mulai gratis",
+    "home": "Beranda Formalie"
+  },
+  "product": {
+    "formBuilder": {
+      "label": "Pembuat formulir",
+      "description": "Pertanyaan, halaman, aturan, dan perhitungan dengan seret dan lepas."
+    },
+    "design": {
+      "label": "Desain dan templat",
+      "description": "Mulai dari tampilan atau templat lalu sesuaikan."
+    },
+    "responses": {
+      "label": "Jawaban dan analitik",
+      "description": "Tinjau, beri tag, ekspor, dan pahami setiap jawaban."
+    },
+    "dataSources": {
+      "label": "Sumber data",
+      "description": "Kirim setiap jawaban ke database Anda sendiri begitu masuk."
+    },
+    "apiService": {
+      "label": "Layanan API",
+      "description": "Ubah formulir apa pun menjadi endpoint API yang aman."
+    },
+    "access": {
+      "label": "Akses dan keamanan",
+      "description": "Peran, single sign-on, masuk dua langkah, dan jejak audit."
+    },
+    "ai": {
+      "label": "Asisten AI",
+      "description": "Buat formulir, analisis jawaban, dan terjemahkan."
+    },
+    "languages": {
+      "label": "Bahasa",
+      "description": "20 bahasa, termasuk dari kanan ke kiri."
+    }
+  },
+  "solutions": {
+    "hr": {
+      "label": "SDM dan karyawan",
+      "description": "Lamaran kerja, orientasi, dan permintaan karyawan."
+    },
+    "customerFeedback": {
+      "label": "Masukan pelanggan",
+      "description": "Survei kepuasan dan permintaan retur."
+    },
+    "events": {
+      "label": "Acara dan pemesanan",
+      "description": "Pendaftaran, konfirmasi kehadiran, dan pemesanan."
+    },
+    "healthSafety": {
+      "label": "Kesehatan dan keselamatan",
+      "description": "Laporan insiden dan penilaian risiko."
+    },
+    "education": {
+      "label": "Pendidikan",
+      "description": "Pendaftaran dan evaluasi kursus."
+    },
+    "operations": {
+      "label": "Operasional dan kepatuhan",
+      "description": "Pemeriksaan pemasok, audit, dan catatan."
+    },
+    "developers": {
+      "label": "Pengembang",
+      "description": "Formulir sebagai endpoint API, webhook, dan dokumentasi."
+    }
+  },
+  "resources": {
+    "helpCentre": {
+      "label": "Pusat bantuan",
+      "description": "Artikel, panduan, dan asisten dalam 20 bahasa."
+    },
+    "blog": {
+      "label": "Blog",
+      "description": "Berita dan ide dari tim Formalie."
+    },
+    "changelog": {
+      "label": "Catatan perubahan",
+      "description": "Yang baru di Formalie."
+    },
+    "apiDocs": {
+      "label": "Dokumentasi API",
+      "description": "Endpoint, token, dan webhook untuk pengembang."
+    }
+  },
+  "company": {
+    "title": "Perusahaan",
+    "about": "Tentang",
+    "security": "Keamanan",
+    "trust": "Kepercayaan dan keamanan",
+    "enterprise": "Enterprise"
+  },
+  "legal": {
+    "privacy": "Kebijakan privasi",
+    "terms": "Syarat dan ketentuan",
+    "dataProtection": "Perlindungan data",
+    "cookies": "Kebijakan cookie",
+    "acceptableUse": "Penggunaan yang dapat diterima",
+    "subprocessors": "Subprosesor",
+    "refunds": "Pengembalian dana dan pembatalan",
+    "title": "Hukum"
+  },
+  "footer": {
+    "tagline": "Formalie: formulir, data, dan akses dalam kendali Anda.",
+    "copyright": "© {year} Formalie"
+  },
+  "theme": {
+    "label": "Tema",
+    "light": "Terang",
+    "dark": "Gelap",
+    "system": "Sistem"
+  },
+  "language": {
+    "label": "Bahasa"
+  },
+  "error": {
+    "notFoundTitle": "Halaman tidak ditemukan",
+    "notFoundText": "Halaman yang Anda cari telah dipindahkan atau tidak ada.",
+    "title": "Terjadi kesalahan",
+    "text": "Silakan coba lagi sebentar lagi.",
+    "home": "Kembali ke beranda",
+    "help": "Kunjungi pusat bantuan"
+  },
   "placeholder": {
-    "building": "Situs web Formalie sedang dibangun.",
-    "home": "Ke beranda"
+    "building": "Situs web Formalie sedang dibangun."
   }
 }

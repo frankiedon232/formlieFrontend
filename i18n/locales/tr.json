@@ -5,8 +5,138 @@
     "description": "Her türlü formu oluşturun, yanıtları bağlantı, yerleştirme, QR kod veya API ile toplayın, kendi veritabanınızda saklayın ve kimin neyi göreceğine siz karar verin. Ücretsiz başlayın.",
     "skipToContent": "İçeriğe geç"
   },
+  "nav": {
+    "product": "Ürün",
+    "solutions": "Çözümler",
+    "pricing": "Fiyatlar",
+    "integrations": "Entegrasyonlar",
+    "resources": "Kaynaklar",
+    "contact": "İletişim",
+    "signIn": "Giriş yap",
+    "startFree": "Ücretsiz başla",
+    "home": "Formalie ana sayfa"
+  },
+  "product": {
+    "formBuilder": {
+      "label": "Form oluşturucu",
+      "description": "Sürükle bırak ile sorular, sayfalar, kurallar ve hesaplamalar."
+    },
+    "design": {
+      "label": "Tasarım ve şablonlar",
+      "description": "Bir görünüm ya da şablonla başlayın, size göre uyarlayın."
+    },
+    "responses": {
+      "label": "Yanıtlar ve analizler",
+      "description": "Her yanıtı inceleyin, etiketleyin, dışa aktarın ve anlayın."
+    },
+    "dataSources": {
+      "label": "Veri kaynakları",
+      "description": "Her yanıtı geldiği anda kendi veritabanınıza gönderin."
+    },
+    "apiService": {
+      "label": "API hizmeti",
+      "description": "Her formu güvenli API uç noktalarına dönüştürün."
+    },
+    "access": {
+      "label": "Erişim ve güvenlik",
+      "description": "Roller, çoklu oturum açma, iki adımlı giriş ve denetim kaydı."
+    },
+    "ai": {
+      "label": "Yapay zekâ asistanı",
+      "description": "Form oluşturun, yanıtları analiz edin ve çevirin."
+    },
+    "languages": {
+      "label": "Diller",
+      "description": "Sağdan sola diller dahil 20 dil."
+    }
+  },
+  "solutions": {
+    "hr": {
+      "label": "İK ve çalışanlar",
+      "description": "İş başvuruları, işe alıştırma ve personel talepleri."
+    },
+    "customerFeedback": {
+      "label": "Müşteri geri bildirimi",
+      "description": "Memnuniyet anketleri ve iade talepleri."
+    },
+    "events": {
+      "label": "Etkinlikler ve rezervasyonlar",
+      "description": "Kayıtlar, katılım yanıtları ve rezervasyonlar."
+    },
+    "healthSafety": {
+      "label": "İş sağlığı ve güvenliği",
+      "description": "Olay bildirimleri ve risk değerlendirmeleri."
+    },
+    "education": {
+      "label": "Eğitim",
+      "description": "Kayıtlar ve ders değerlendirmeleri."
+    },
+    "operations": {
+      "label": "Operasyon ve uyum",
+      "description": "Tedarikçi kontrolleri, denetimler ve kayıtlar."
+    },
+    "developers": {
+      "label": "Geliştiriciler",
+      "description": "API uç noktası olarak formlar, webhook'lar ve belgeler."
+    }
+  },
+  "resources": {
+    "helpCentre": {
+      "label": "Yardım merkezi",
+      "description": "20 dilde makaleler, rehberler ve bir asistan."
+    },
+    "blog": {
+      "label": "Blog",
+      "description": "Formalie ekibinden haberler ve fikirler."
+    },
+    "changelog": {
+      "label": "Değişiklik günlüğü",
+      "description": "Formalie'deki yenilikler."
+    },
+    "apiDocs": {
+      "label": "API belgeleri",
+      "description": "Geliştiriciler için uç noktalar, belirteçler ve webhook'lar."
+    }
+  },
+  "company": {
+    "title": "Şirket",
+    "about": "Hakkımızda",
+    "security": "Güvenlik",
+    "trust": "Güven ve güvenlik",
+    "enterprise": "Enterprise"
+  },
+  "legal": {
+    "privacy": "Gizlilik politikası",
+    "terms": "Şartlar ve koşullar",
+    "dataProtection": "Veri koruma",
+    "cookies": "Çerez politikası",
+    "acceptableUse": "Kabul edilebilir kullanım",
+    "subprocessors": "Alt işleyenler",
+    "refunds": "İade ve iptal",
+    "title": "Yasal"
+  },
+  "footer": {
+    "tagline": "Formalie: formlar, veriler ve erişim sizin kontrolünüzde.",
+    "copyright": "© {year} Formalie"
+  },
+  "theme": {
+    "label": "Tema",
+    "light": "Açık",
+    "dark": "Koyu",
+    "system": "Sistem"
+  },
+  "language": {
+    "label": "Dil"
+  },
+  "error": {
+    "notFoundTitle": "Sayfa bulunamadı",
+    "notFoundText": "Aradığınız sayfa taşınmış ya da hiç var olmamış.",
+    "title": "Bir şeyler ters gitti",
+    "text": "Lütfen birazdan yeniden deneyin.",
+    "home": "Ana sayfaya dön",
+    "help": "Yardım merkezine git"
+  },
   "placeholder": {
-    "building": "Formalie web sitesi hazırlanıyor.",
-    "home": "Ana sayfaya git"
+    "building": "Formalie web sitesi hazırlanıyor."
   }
 }

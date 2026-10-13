@@ -9,6 +9,8 @@ Every page exists in the 20 languages (`/fr/…`, `/ar/…`; English without a p
   - Product: a dropdown with icon tiles for Form builder, Design and templates, Responses and analytics, Data sources, API service, Access and security, AI assistant, and Languages.
   - Solutions: a dropdown with HR and people, Customer feedback, Events and bookings, Health and safety, Education, Operations and compliance, and Developers.
   - Pricing · Integrations · Resources (a dropdown: Help centre, Blog, Changelog, API documentation) · Contact.
+  - The Help centre is the portal's own (`{portal}/help`, people sign in to read it, opens in a new tab). API documentation links to `/features/api-service` until public API docs exist.
+  - The panels are two columns of ink icon tiles (one column for Resources). The full menu shows from 1280 px wide (longer languages need the room); below that, the slide-over.
 - **Right:**
   - language switch (a flag);
   - theme switch;
@@ -40,6 +42,7 @@ Every page exists in the 20 languages (`/fr/…`, `/ar/…`; English without a p
 ## Footer
 
 - Four columns: Product · Solutions · Resources · Company.
-- A legal row: Privacy policy · Terms and conditions · Data protection · Cookie policy · Acceptable use.
+- A legal row: Privacy policy · Terms and conditions · Data protection · Cookie policy · Acceptable use · Subprocessors · Refunds and cancellation.
+- The Company column: About · Security · Trust and security · Enterprise · Contact.
 - The language switch, "© 2026 Formalie" and a newsletter field (Formalie's own form, later).
 - Layout after reference 2: a clean white footer with muted links.

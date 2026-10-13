@@ -5,8 +5,138 @@
     "description": "Unda fomu yoyote, kusanya majibu kwa kiungo, upachikaji, msimbo wa QR au API, yahifadhi kwenye hifadhidata yako mwenyewe na uamue nani aone nini. Anza bila malipo.",
     "skipToContent": "Ruka hadi maudhui"
   },
+  "nav": {
+    "product": "Bidhaa",
+    "solutions": "Suluhisho",
+    "pricing": "Bei",
+    "integrations": "Miunganisho",
+    "resources": "Rasilimali",
+    "contact": "Wasiliana nasi",
+    "signIn": "Ingia",
+    "startFree": "Anza bila malipo",
+    "home": "Mwanzo wa Formalie"
+  },
+  "product": {
+    "formBuilder": {
+      "label": "Kiunda fomu",
+      "description": "Maswali, kurasa, kanuni na hesabu kwa kuburuta na kudondosha."
+    },
+    "design": {
+      "label": "Muundo na violezo",
+      "description": "Anza na mwonekano au kiolezo kisha ukifanye chako."
+    },
+    "responses": {
+      "label": "Majibu na takwimu",
+      "description": "Kagua, weka lebo, hamisha na uelewe kila jibu."
+    },
+    "dataSources": {
+      "label": "Vyanzo vya data",
+      "description": "Tuma kila jibu kwenye hifadhidata yako mara linapofika."
+    },
+    "apiService": {
+      "label": "Huduma ya API",
+      "description": "Geuza fomu yoyote kuwa sehemu salama za API."
+    },
+    "access": {
+      "label": "Ufikiaji na usalama",
+      "description": "Majukumu, kuingia mara moja, kuingia kwa hatua mbili na kumbukumbu za ukaguzi."
+    },
+    "ai": {
+      "label": "Msaidizi wa AI",
+      "description": "Unda fomu, chambua majibu na utafsiri."
+    },
+    "languages": {
+      "label": "Lugha",
+      "description": "Lugha 20, zikiwemo za kuandikwa kutoka kulia kwenda kushoto."
+    }
+  },
+  "solutions": {
+    "hr": {
+      "label": "Rasilimali watu",
+      "description": "Maombi ya kazi, mapokezi ya wafanyakazi na maombi yao."
+    },
+    "customerFeedback": {
+      "label": "Maoni ya wateja",
+      "description": "Tafiti za kuridhika na maombi ya kurejesha bidhaa."
+    },
+    "events": {
+      "label": "Matukio na uhifadhi",
+      "description": "Usajili, uthibitisho wa kuhudhuria na uhifadhi."
+    },
+    "healthSafety": {
+      "label": "Afya na usalama",
+      "description": "Ripoti za matukio na tathmini za hatari."
+    },
+    "education": {
+      "label": "Elimu",
+      "description": "Usajili wa wanafunzi na tathmini za kozi."
+    },
+    "operations": {
+      "label": "Uendeshaji na utiifu",
+      "description": "Ukaguzi wa wasambazaji, ukaguzi na kumbukumbu."
+    },
+    "developers": {
+      "label": "Wasanidi programu",
+      "description": "Fomu kama sehemu za API, webhooks na nyaraka."
+    }
+  },
+  "resources": {
+    "helpCentre": {
+      "label": "Kituo cha usaidizi",
+      "description": "Makala, miongozo na msaidizi kwa lugha 20."
+    },
+    "blog": {
+      "label": "Blogu",
+      "description": "Habari na mawazo kutoka timu ya Formalie."
+    },
+    "changelog": {
+      "label": "Orodha ya mabadiliko",
+      "description": "Mapya katika Formalie."
+    },
+    "apiDocs": {
+      "label": "Nyaraka za API",
+      "description": "Sehemu za API, tokeni na webhooks kwa wasanidi programu."
+    }
+  },
+  "company": {
+    "title": "Kampuni",
+    "about": "Kuhusu sisi",
+    "security": "Usalama",
+    "trust": "Uaminifu na usalama",
+    "enterprise": "Enterprise"
+  },
+  "legal": {
+    "privacy": "Sera ya faragha",
+    "terms": "Sheria na masharti",
+    "dataProtection": "Ulinzi wa data",
+    "cookies": "Sera ya vidakuzi",
+    "acceptableUse": "Matumizi yanayokubalika",
+    "subprocessors": "Wachakataji wadogo",
+    "refunds": "Kurejeshewa pesa na kughairi",
+    "title": "Kisheria"
+  },
+  "footer": {
+    "tagline": "Formalie: fomu, data na ufikiaji chini ya udhibiti wako.",
+    "copyright": "© {year} Formalie"
+  },
+  "theme": {
+    "label": "Mandhari",
+    "light": "Mwanga",
+    "dark": "Giza",
+    "system": "Mfumo"
+  },
+  "language": {
+    "label": "Lugha"
+  },
+  "error": {
+    "notFoundTitle": "Ukurasa haukupatikana",
+    "notFoundText": "Ukurasa unaoutafuta umehamishwa au haupo.",
+    "title": "Hitilafu imetokea",
+    "text": "Tafadhali jaribu tena baada ya muda mfupi.",
+    "home": "Rudi kwenye ukurasa wa mwanzo",
+    "help": "Tembelea kituo cha usaidizi"
+  },
   "placeholder": {
-    "building": "Tovuti ya Formalie inajengwa.",
-    "home": "Nenda kwenye ukurasa wa mwanzo"
+    "building": "Tovuti ya Formalie inajengwa."
   }
 }

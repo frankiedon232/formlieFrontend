@@ -5,8 +5,138 @@
     "description": "构建任何表单，通过链接、嵌入、二维码或 API 收集回答，将其保存在你自己的数据库中，并决定谁能看到什么。免费开始。",
     "skipToContent": "跳到内容"
   },
+  "nav": {
+    "product": "产品",
+    "solutions": "解决方案",
+    "pricing": "价格",
+    "integrations": "集成",
+    "resources": "资源",
+    "contact": "联系我们",
+    "signIn": "登录",
+    "startFree": "免费开始",
+    "home": "Formalie 首页"
+  },
+  "product": {
+    "formBuilder": {
+      "label": "表单构建器",
+      "description": "拖放式添加问题、页面、规则和计算。"
+    },
+    "design": {
+      "label": "设计与模板",
+      "description": "从一种外观或模板开始，打造你自己的风格。"
+    },
+    "responses": {
+      "label": "回答与分析",
+      "description": "查看、标记、导出并理解每一条回答。"
+    },
+    "dataSources": {
+      "label": "数据源",
+      "description": "每条回答一到达就发送到你自己的数据库。"
+    },
+    "apiService": {
+      "label": "API 服务",
+      "description": "将任何表单变成安全的 API 端点。"
+    },
+    "access": {
+      "label": "访问与安全",
+      "description": "角色、单点登录、两步登录和审计日志。"
+    },
+    "ai": {
+      "label": "AI 助手",
+      "description": "构建表单、分析回答并翻译。"
+    },
+    "languages": {
+      "label": "语言",
+      "description": "20 种语言，包括从右到左的语言。"
+    }
+  },
+  "solutions": {
+    "hr": {
+      "label": "人力资源",
+      "description": "职位申请、入职和员工请求。"
+    },
+    "customerFeedback": {
+      "label": "客户反馈",
+      "description": "满意度调查和退货申请。"
+    },
+    "events": {
+      "label": "活动与预订",
+      "description": "报名、出席确认和预订。"
+    },
+    "healthSafety": {
+      "label": "健康与安全",
+      "description": "事故报告和风险评估。"
+    },
+    "education": {
+      "label": "教育",
+      "description": "招生报名和课程评估。"
+    },
+    "operations": {
+      "label": "运营与合规",
+      "description": "供应商检查、审计和记录。"
+    },
+    "developers": {
+      "label": "开发者",
+      "description": "将表单作为 API 端点、Webhook 和文档。"
+    }
+  },
+  "resources": {
+    "helpCentre": {
+      "label": "帮助中心",
+      "description": "20 种语言的文章、指南和助手。"
+    },
+    "blog": {
+      "label": "博客",
+      "description": "来自 Formalie 团队的新闻和想法。"
+    },
+    "changelog": {
+      "label": "更新日志",
+      "description": "Formalie 的新功能。"
+    },
+    "apiDocs": {
+      "label": "API 文档",
+      "description": "面向开发者的端点、令牌和 Webhook。"
+    }
+  },
+  "company": {
+    "title": "公司",
+    "about": "关于我们",
+    "security": "安全",
+    "trust": "信任与安全",
+    "enterprise": "Enterprise"
+  },
+  "legal": {
+    "privacy": "隐私政策",
+    "terms": "条款和条件",
+    "dataProtection": "数据保护",
+    "cookies": "Cookie 政策",
+    "acceptableUse": "可接受使用",
+    "subprocessors": "子处理者",
+    "refunds": "退款和取消",
+    "title": "法律信息"
+  },
+  "footer": {
+    "tagline": "Formalie：表单、数据和访问权限，尽在你的掌控之中。",
+    "copyright": "© {year} Formalie"
+  },
+  "theme": {
+    "label": "主题",
+    "light": "浅色",
+    "dark": "深色",
+    "system": "跟随系统"
+  },
+  "language": {
+    "label": "语言"
+  },
+  "error": {
+    "notFoundTitle": "页面未找到",
+    "notFoundText": "你要找的页面已被移动或不存在。",
+    "title": "出错了",
+    "text": "请稍后再试。",
+    "home": "返回首页",
+    "help": "访问帮助中心"
+  },
   "placeholder": {
-    "building": "Formalie 网站正在建设中。",
-    "home": "前往首页"
+    "building": "Formalie 网站正在建设中。"
   }
 }

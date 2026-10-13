@@ -5,8 +5,138 @@
     "description": "Crie qualquer formulário, receba respostas por link, incorporação, QR code ou API, guarde-as no seu próprio banco de dados e decida quem vê o quê. Grátis para começar.",
     "skipToContent": "Pular para o conteúdo"
   },
+  "nav": {
+    "product": "Produto",
+    "solutions": "Soluções",
+    "pricing": "Preços",
+    "integrations": "Integrações",
+    "resources": "Recursos",
+    "contact": "Contato",
+    "signIn": "Entrar",
+    "startFree": "Comece grátis",
+    "home": "Página inicial da Formalie"
+  },
+  "product": {
+    "formBuilder": {
+      "label": "Criador de formulários",
+      "description": "Perguntas, páginas, regras e cálculos com arrastar e soltar."
+    },
+    "design": {
+      "label": "Design e modelos",
+      "description": "Comece com um estilo ou modelo e deixe do seu jeito."
+    },
+    "responses": {
+      "label": "Respostas e análises",
+      "description": "Revise, marque, exporte e entenda cada resposta."
+    },
+    "dataSources": {
+      "label": "Fontes de dados",
+      "description": "Envie cada resposta ao seu próprio banco de dados assim que chega."
+    },
+    "apiService": {
+      "label": "Serviço de API",
+      "description": "Transforme qualquer formulário em endpoints de API seguros."
+    },
+    "access": {
+      "label": "Acesso e segurança",
+      "description": "Funções, login único, verificação em duas etapas e trilha de auditoria."
+    },
+    "ai": {
+      "label": "Assistente de IA",
+      "description": "Crie formulários, analise respostas e traduza."
+    },
+    "languages": {
+      "label": "Idiomas",
+      "description": "20 idiomas, incluindo da direita para a esquerda."
+    }
+  },
+  "solutions": {
+    "hr": {
+      "label": "RH e pessoas",
+      "description": "Candidaturas, integração e solicitações da equipe."
+    },
+    "customerFeedback": {
+      "label": "Feedback de clientes",
+      "description": "Pesquisas de satisfação e pedidos de devolução."
+    },
+    "events": {
+      "label": "Eventos e reservas",
+      "description": "Inscrições, confirmações de presença e reservas."
+    },
+    "healthSafety": {
+      "label": "Saúde e segurança",
+      "description": "Relatos de incidentes e avaliações de risco."
+    },
+    "education": {
+      "label": "Educação",
+      "description": "Matrículas e avaliações de cursos."
+    },
+    "operations": {
+      "label": "Operações e conformidade",
+      "description": "Verificações de fornecedores, auditorias e registros."
+    },
+    "developers": {
+      "label": "Desenvolvedores",
+      "description": "Formulários como endpoints de API, webhooks e documentação."
+    }
+  },
+  "resources": {
+    "helpCentre": {
+      "label": "Central de ajuda",
+      "description": "Artigos, guias e um assistente em 20 idiomas."
+    },
+    "blog": {
+      "label": "Blog",
+      "description": "Novidades e ideias da equipe Formalie."
+    },
+    "changelog": {
+      "label": "Novidades do produto",
+      "description": "O que há de novo na Formalie."
+    },
+    "apiDocs": {
+      "label": "Documentação da API",
+      "description": "Endpoints, tokens e webhooks para desenvolvedores."
+    }
+  },
+  "company": {
+    "title": "Empresa",
+    "about": "Sobre",
+    "security": "Segurança",
+    "trust": "Confiança e segurança",
+    "enterprise": "Enterprise"
+  },
+  "legal": {
+    "privacy": "Política de privacidade",
+    "terms": "Termos e condições",
+    "dataProtection": "Proteção de dados",
+    "cookies": "Política de cookies",
+    "acceptableUse": "Uso aceitável",
+    "subprocessors": "Suboperadores",
+    "refunds": "Reembolsos e cancelamento",
+    "title": "Jurídico"
+  },
+  "footer": {
+    "tagline": "Formalie: formulários, dados e acessos sob o seu controle.",
+    "copyright": "© {year} Formalie"
+  },
+  "theme": {
+    "label": "Tema",
+    "light": "Claro",
+    "dark": "Escuro",
+    "system": "Sistema"
+  },
+  "language": {
+    "label": "Idioma"
+  },
+  "error": {
+    "notFoundTitle": "Página não encontrada",
+    "notFoundText": "A página que você procura mudou de lugar ou não existe.",
+    "title": "Algo deu errado",
+    "text": "Tente novamente em instantes.",
+    "home": "Voltar à página inicial",
+    "help": "Visitar a central de ajuda"
+  },
   "placeholder": {
-    "building": "O site da Formalie está em construção.",
-    "home": "Ir para a página inicial"
+    "building": "O site da Formalie está em construção."
   }
 }

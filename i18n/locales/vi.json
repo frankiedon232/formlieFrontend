@@ -5,8 +5,138 @@
     "description": "Tạo mọi biểu mẫu, thu thập câu trả lời qua liên kết, nhúng, mã QR hoặc API, lưu trong cơ sở dữ liệu của riêng bạn và quyết định ai xem được gì. Bắt đầu miễn phí.",
     "skipToContent": "Chuyển đến nội dung"
   },
+  "nav": {
+    "product": "Sản phẩm",
+    "solutions": "Giải pháp",
+    "pricing": "Bảng giá",
+    "integrations": "Tích hợp",
+    "resources": "Tài nguyên",
+    "contact": "Liên hệ",
+    "signIn": "Đăng nhập",
+    "startFree": "Bắt đầu miễn phí",
+    "home": "Trang chủ Formalie"
+  },
+  "product": {
+    "formBuilder": {
+      "label": "Trình tạo biểu mẫu",
+      "description": "Kéo thả câu hỏi, trang, quy tắc và phép tính."
+    },
+    "design": {
+      "label": "Thiết kế và mẫu",
+      "description": "Bắt đầu từ một giao diện hoặc mẫu rồi tùy chỉnh theo ý bạn."
+    },
+    "responses": {
+      "label": "Câu trả lời và phân tích",
+      "description": "Xem, gắn thẻ, xuất và hiểu mọi câu trả lời."
+    },
+    "dataSources": {
+      "label": "Nguồn dữ liệu",
+      "description": "Gửi từng câu trả lời vào cơ sở dữ liệu của bạn ngay khi đến."
+    },
+    "apiService": {
+      "label": "Dịch vụ API",
+      "description": "Biến mọi biểu mẫu thành endpoint API an toàn."
+    },
+    "access": {
+      "label": "Truy cập và bảo mật",
+      "description": "Vai trò, đăng nhập một lần, đăng nhập hai bước và nhật ký kiểm tra."
+    },
+    "ai": {
+      "label": "Trợ lý AI",
+      "description": "Tạo biểu mẫu, phân tích câu trả lời và dịch."
+    },
+    "languages": {
+      "label": "Ngôn ngữ",
+      "description": "20 ngôn ngữ, kể cả viết từ phải sang trái."
+    }
+  },
+  "solutions": {
+    "hr": {
+      "label": "Nhân sự",
+      "description": "Đơn ứng tuyển, hội nhập và yêu cầu của nhân viên."
+    },
+    "customerFeedback": {
+      "label": "Phản hồi khách hàng",
+      "description": "Khảo sát mức độ hài lòng và yêu cầu trả hàng."
+    },
+    "events": {
+      "label": "Sự kiện và đặt chỗ",
+      "description": "Đăng ký, xác nhận tham dự và đặt chỗ."
+    },
+    "healthSafety": {
+      "label": "An toàn và sức khỏe",
+      "description": "Báo cáo sự cố và đánh giá rủi ro."
+    },
+    "education": {
+      "label": "Giáo dục",
+      "description": "Tuyển sinh và đánh giá khóa học."
+    },
+    "operations": {
+      "label": "Vận hành và tuân thủ",
+      "description": "Kiểm tra nhà cung cấp, kiểm toán và hồ sơ."
+    },
+    "developers": {
+      "label": "Nhà phát triển",
+      "description": "Biểu mẫu dưới dạng endpoint API, webhook và tài liệu."
+    }
+  },
+  "resources": {
+    "helpCentre": {
+      "label": "Trung tâm trợ giúp",
+      "description": "Bài viết, hướng dẫn và trợ lý bằng 20 ngôn ngữ."
+    },
+    "blog": {
+      "label": "Blog",
+      "description": "Tin tức và ý tưởng từ đội ngũ Formalie."
+    },
+    "changelog": {
+      "label": "Nhật ký thay đổi",
+      "description": "Những điểm mới trong Formalie."
+    },
+    "apiDocs": {
+      "label": "Tài liệu API",
+      "description": "Endpoint, token và webhook cho nhà phát triển."
+    }
+  },
+  "company": {
+    "title": "Công ty",
+    "about": "Giới thiệu",
+    "security": "Bảo mật",
+    "trust": "Tin cậy và bảo mật",
+    "enterprise": "Enterprise"
+  },
+  "legal": {
+    "privacy": "Chính sách quyền riêng tư",
+    "terms": "Điều khoản và điều kiện",
+    "dataProtection": "Bảo vệ dữ liệu",
+    "cookies": "Chính sách cookie",
+    "acceptableUse": "Sử dụng được chấp nhận",
+    "subprocessors": "Bên xử lý phụ",
+    "refunds": "Hoàn tiền và hủy",
+    "title": "Pháp lý"
+  },
+  "footer": {
+    "tagline": "Formalie: biểu mẫu, dữ liệu và quyền truy cập trong tầm kiểm soát của bạn.",
+    "copyright": "© {year} Formalie"
+  },
+  "theme": {
+    "label": "Giao diện",
+    "light": "Sáng",
+    "dark": "Tối",
+    "system": "Hệ thống"
+  },
+  "language": {
+    "label": "Ngôn ngữ"
+  },
+  "error": {
+    "notFoundTitle": "Không tìm thấy trang",
+    "notFoundText": "Trang bạn tìm đã được chuyển đi hoặc không tồn tại.",
+    "title": "Đã xảy ra lỗi",
+    "text": "Vui lòng thử lại sau giây lát.",
+    "home": "Về trang chủ",
+    "help": "Đến trung tâm trợ giúp"
+  },
   "placeholder": {
-    "building": "Trang web Formalie đang được xây dựng.",
-    "home": "Về trang chủ"
+    "building": "Trang web Formalie đang được xây dựng."
   }
 }

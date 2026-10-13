@@ -5,8 +5,138 @@
     "description": "Créez n'importe quel formulaire, recueillez les réponses par lien, intégration, QR code ou API, gardez-les dans votre propre base de données et décidez qui voit quoi. Gratuit pour commencer.",
     "skipToContent": "Aller au contenu"
   },
+  "nav": {
+    "product": "Produit",
+    "solutions": "Solutions",
+    "pricing": "Tarifs",
+    "integrations": "Intégrations",
+    "resources": "Ressources",
+    "contact": "Contact",
+    "signIn": "Se connecter",
+    "startFree": "Commencer gratuitement",
+    "home": "Accueil Formalie"
+  },
+  "product": {
+    "formBuilder": {
+      "label": "Créateur de formulaires",
+      "description": "Questions, pages, règles et calculs par glisser-déposer."
+    },
+    "design": {
+      "label": "Design et modèles",
+      "description": "Partez d'un style ou d'un modèle et personnalisez-le."
+    },
+    "responses": {
+      "label": "Réponses et analyses",
+      "description": "Consultez, étiquetez, exportez et comprenez chaque réponse."
+    },
+    "dataSources": {
+      "label": "Sources de données",
+      "description": "Envoyez chaque réponse dans votre propre base de données dès son arrivée."
+    },
+    "apiService": {
+      "label": "Service API",
+      "description": "Transformez n'importe quel formulaire en points d'accès API sécurisés."
+    },
+    "access": {
+      "label": "Accès et sécurité",
+      "description": "Rôles, authentification unique, connexion en deux étapes et journal d'audit."
+    },
+    "ai": {
+      "label": "Assistant IA",
+      "description": "Créez des formulaires, analysez les réponses et traduisez."
+    },
+    "languages": {
+      "label": "Langues",
+      "description": "20 langues, y compris de droite à gauche."
+    }
+  },
+  "solutions": {
+    "hr": {
+      "label": "RH et personnel",
+      "description": "Candidatures, intégration et demandes du personnel."
+    },
+    "customerFeedback": {
+      "label": "Avis clients",
+      "description": "Enquêtes de satisfaction et demandes de retour."
+    },
+    "events": {
+      "label": "Événements et réservations",
+      "description": "Inscriptions, confirmations et réservations."
+    },
+    "healthSafety": {
+      "label": "Santé et sécurité",
+      "description": "Déclarations d'incident et évaluations des risques."
+    },
+    "education": {
+      "label": "Éducation",
+      "description": "Inscriptions et évaluations de cours."
+    },
+    "operations": {
+      "label": "Opérations et conformité",
+      "description": "Contrôles fournisseurs, audits et registres."
+    },
+    "developers": {
+      "label": "Développeurs",
+      "description": "Formulaires en points d'accès API, webhooks et documentation."
+    }
+  },
+  "resources": {
+    "helpCentre": {
+      "label": "Centre d'aide",
+      "description": "Articles, guides et un assistant en 20 langues."
+    },
+    "blog": {
+      "label": "Blog",
+      "description": "Actualités et idées de l'équipe Formalie."
+    },
+    "changelog": {
+      "label": "Journal des modifications",
+      "description": "Les nouveautés de Formalie."
+    },
+    "apiDocs": {
+      "label": "Documentation API",
+      "description": "Points d'accès, jetons et webhooks pour les développeurs."
+    }
+  },
+  "company": {
+    "title": "Entreprise",
+    "about": "À propos",
+    "security": "Sécurité",
+    "trust": "Confiance et sécurité",
+    "enterprise": "Enterprise"
+  },
+  "legal": {
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions générales",
+    "dataProtection": "Protection des données",
+    "cookies": "Politique relative aux cookies",
+    "acceptableUse": "Utilisation acceptable",
+    "subprocessors": "Sous-traitants",
+    "refunds": "Remboursements et résiliation",
+    "title": "Mentions légales"
+  },
+  "footer": {
+    "tagline": "Formalie : formulaires, données et accès sous votre contrôle.",
+    "copyright": "© {year} Formalie"
+  },
+  "theme": {
+    "label": "Thème",
+    "light": "Clair",
+    "dark": "Sombre",
+    "system": "Système"
+  },
+  "language": {
+    "label": "Langue"
+  },
+  "error": {
+    "notFoundTitle": "Page introuvable",
+    "notFoundText": "La page que vous cherchez a été déplacée ou n'existe pas.",
+    "title": "Une erreur est survenue",
+    "text": "Veuillez réessayer dans un instant.",
+    "home": "Retour à l'accueil",
+    "help": "Consulter le centre d'aide"
+  },
   "placeholder": {
-    "building": "Le site de Formalie est en construction.",
-    "home": "Aller à l'accueil"
+    "building": "Le site de Formalie est en construction."
   }
 }

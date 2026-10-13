@@ -5,8 +5,138 @@
     "description": "あらゆるフォームを作成し、リンク、埋め込み、QR コード、API で回答を集め、自社のデータベースに保存して、誰が何を見られるかを決められます。無料で始められます。",
     "skipToContent": "コンテンツへスキップ"
   },
+  "nav": {
+    "product": "製品",
+    "solutions": "ソリューション",
+    "pricing": "料金",
+    "integrations": "連携",
+    "resources": "リソース",
+    "contact": "お問い合わせ",
+    "signIn": "ログイン",
+    "startFree": "無料で始める",
+    "home": "Formalie ホーム"
+  },
+  "product": {
+    "formBuilder": {
+      "label": "フォームビルダー",
+      "description": "ドラッグ＆ドロップで質問、ページ、ルール、計算を作成。"
+    },
+    "design": {
+      "label": "デザインとテンプレート",
+      "description": "スタイルやテンプレートから始めて、自分らしく仕上げます。"
+    },
+    "responses": {
+      "label": "回答と分析",
+      "description": "すべての回答を確認、タグ付け、エクスポートし、理解できます。"
+    },
+    "dataSources": {
+      "label": "データソース",
+      "description": "回答が届くたびに自社のデータベースへ送信します。"
+    },
+    "apiService": {
+      "label": "API サービス",
+      "description": "どのフォームも安全な API エンドポイントにできます。"
+    },
+    "access": {
+      "label": "アクセスとセキュリティ",
+      "description": "ロール、シングルサインオン、2 段階ログイン、監査ログ。"
+    },
+    "ai": {
+      "label": "AI アシスタント",
+      "description": "フォームの作成、回答の分析、翻訳。"
+    },
+    "languages": {
+      "label": "言語",
+      "description": "右から左に書く言語を含む 20 言語。"
+    }
+  },
+  "solutions": {
+    "hr": {
+      "label": "人事",
+      "description": "応募、入社手続き、従業員からの申請。"
+    },
+    "customerFeedback": {
+      "label": "顧客フィードバック",
+      "description": "満足度調査と返品申請。"
+    },
+    "events": {
+      "label": "イベントと予約",
+      "description": "申し込み、出欠確認、予約。"
+    },
+    "healthSafety": {
+      "label": "安全衛生",
+      "description": "事故報告とリスク評価。"
+    },
+    "education": {
+      "label": "教育",
+      "description": "入学申し込みと授業評価。"
+    },
+    "operations": {
+      "label": "業務とコンプライアンス",
+      "description": "仕入先チェック、監査、記録。"
+    },
+    "developers": {
+      "label": "開発者",
+      "description": "API エンドポイントとしてのフォーム、Webhook、ドキュメント。"
+    }
+  },
+  "resources": {
+    "helpCentre": {
+      "label": "ヘルプセンター",
+      "description": "20 言語の記事、ガイド、アシスタント。"
+    },
+    "blog": {
+      "label": "ブログ",
+      "description": "Formalie チームからのニュースとアイデア。"
+    },
+    "changelog": {
+      "label": "変更履歴",
+      "description": "Formalie の新機能。"
+    },
+    "apiDocs": {
+      "label": "API ドキュメント",
+      "description": "開発者向けのエンドポイント、トークン、Webhook。"
+    }
+  },
+  "company": {
+    "title": "会社",
+    "about": "会社概要",
+    "security": "セキュリティ",
+    "trust": "信頼とセキュリティ",
+    "enterprise": "Enterprise"
+  },
+  "legal": {
+    "privacy": "プライバシーポリシー",
+    "terms": "利用規約",
+    "dataProtection": "データ保護",
+    "cookies": "Cookie ポリシー",
+    "acceptableUse": "利用ポリシー",
+    "subprocessors": "再委託先",
+    "refunds": "返金と解約",
+    "title": "法的情報"
+  },
+  "footer": {
+    "tagline": "Formalie：フォーム、データ、アクセスをあなたの管理下に。",
+    "copyright": "© {year} Formalie"
+  },
+  "theme": {
+    "label": "テーマ",
+    "light": "ライト",
+    "dark": "ダーク",
+    "system": "システム"
+  },
+  "language": {
+    "label": "言語"
+  },
+  "error": {
+    "notFoundTitle": "ページが見つかりません",
+    "notFoundText": "お探しのページは移動したか、存在しません。",
+    "title": "問題が発生しました",
+    "text": "しばらくしてからもう一度お試しください。",
+    "home": "ホームページに戻る",
+    "help": "ヘルプセンターを見る"
+  },
   "placeholder": {
-    "building": "Formalie のウェブサイトは準備中です。",
-    "home": "ホームページへ"
+    "building": "Formalie のウェブサイトは準備中です。"
   }
 }

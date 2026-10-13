@@ -98,6 +98,12 @@ export default defineNuxtConfig({
       weights: [300, 400, 500, 600, 700],
       subsets: ['latin', 'latin-ext', 'cyrillic', 'cyrillic-ext', 'greek', 'vietnamese'],
     },
+    // Fallbacks for Arabic, Hindi and Bengali (Manrope has no such letters), also self-hosted.
+    families: [
+      { name: 'Noto Sans Arabic', provider: 'google', subsets: ['arabic'] },
+      { name: 'Noto Sans Devanagari', provider: 'google', subsets: ['devanagari'] },
+      { name: 'Noto Sans Bengali', provider: 'google', subsets: ['bengali'] },
+    ],
   },
 
   // Icon sets: lucide (UI), circle-flags (languages), simple-icons (integration logos), formalie (the brand glyph).

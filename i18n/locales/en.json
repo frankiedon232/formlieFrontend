@@ -5,8 +5,138 @@
     "description": "Build any form, collect answers by link, embed, QR or API, keep them in your own database and control who sees what. Free to start.",
     "skipToContent": "Skip to content"
   },
+  "nav": {
+    "product": "Product",
+    "solutions": "Solutions",
+    "pricing": "Pricing",
+    "integrations": "Integrations",
+    "resources": "Resources",
+    "contact": "Contact",
+    "signIn": "Sign in",
+    "startFree": "Start free",
+    "home": "Formalie home"
+  },
+  "product": {
+    "formBuilder": {
+      "label": "Form builder",
+      "description": "Drag-and-drop questions, pages, rules and calculations."
+    },
+    "design": {
+      "label": "Design and templates",
+      "description": "Start from a look or a template and make it yours."
+    },
+    "responses": {
+      "label": "Responses and analytics",
+      "description": "Review, tag, export and understand every answer."
+    },
+    "dataSources": {
+      "label": "Data sources",
+      "description": "Send every answer to your own database as it arrives."
+    },
+    "apiService": {
+      "label": "API service",
+      "description": "Turn any form into secure API endpoints."
+    },
+    "access": {
+      "label": "Access and security",
+      "description": "Roles, single sign-on, two-step sign-in and an audit trail."
+    },
+    "ai": {
+      "label": "AI assistant",
+      "description": "Build forms, analyse answers and translate."
+    },
+    "languages": {
+      "label": "Languages",
+      "description": "20 languages, right to left included."
+    }
+  },
+  "solutions": {
+    "hr": {
+      "label": "HR and people",
+      "description": "Job applications, onboarding and staff requests."
+    },
+    "customerFeedback": {
+      "label": "Customer feedback",
+      "description": "Satisfaction surveys and return requests."
+    },
+    "events": {
+      "label": "Events and bookings",
+      "description": "Registrations, RSVPs and bookings."
+    },
+    "healthSafety": {
+      "label": "Health and safety",
+      "description": "Incident reports and risk assessments."
+    },
+    "education": {
+      "label": "Education",
+      "description": "Enrolment and course evaluations."
+    },
+    "operations": {
+      "label": "Operations and compliance",
+      "description": "Supplier checks, audits and records."
+    },
+    "developers": {
+      "label": "Developers",
+      "description": "Forms as API endpoints, webhooks and docs."
+    }
+  },
+  "resources": {
+    "helpCentre": {
+      "label": "Help centre",
+      "description": "Articles, guides and an assistant in 20 languages."
+    },
+    "blog": {
+      "label": "Blog",
+      "description": "News and ideas from the Formalie team."
+    },
+    "changelog": {
+      "label": "Changelog",
+      "description": "What is new in Formalie."
+    },
+    "apiDocs": {
+      "label": "API documentation",
+      "description": "Endpoints, tokens and webhooks for developers."
+    }
+  },
+  "company": {
+    "title": "Company",
+    "about": "About",
+    "security": "Security",
+    "trust": "Trust and security",
+    "enterprise": "Enterprise"
+  },
+  "legal": {
+    "privacy": "Privacy policy",
+    "terms": "Terms and conditions",
+    "dataProtection": "Data protection",
+    "cookies": "Cookie policy",
+    "acceptableUse": "Acceptable use",
+    "subprocessors": "Subprocessors",
+    "refunds": "Refunds and cancellation",
+    "title": "Legal"
+  },
+  "footer": {
+    "tagline": "Formalie: forms, data and access under your control.",
+    "copyright": "© {year} Formalie"
+  },
+  "theme": {
+    "label": "Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "language": {
+    "label": "Language"
+  },
+  "error": {
+    "notFoundTitle": "Page not found",
+    "notFoundText": "The page you are looking for has moved or does not exist.",
+    "title": "Something went wrong",
+    "text": "Please try again in a moment.",
+    "home": "Back to the home page",
+    "help": "Visit the help centre"
+  },
   "placeholder": {
-    "building": "The Formalie website is being built.",
-    "home": "Go to the home page"
+    "building": "The Formalie website is being built."
   }
 }

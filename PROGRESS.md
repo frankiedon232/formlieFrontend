@@ -1,11 +1,11 @@
 # PROGRESS, formalieSite
 
-**Last updated:** 2026-10-13 (S0 done, waiting for the owner's review; backend public endpoints, legal pages, /trust, security.txt and Paddle recorded)
+**Last updated:** 2026-10-13 (S1 done, waiting for the owner's review)
 
 | Phase | What | Status | Done |
 |---|---|---|---|
-| S0 | Project set-up | ✅ (review) | 100% |
-| S1 | Layout, header, footer, theme, languages | ⬜ | 0% |
+| S0 | Project set-up | ✅ | 100% |
+| S1 | Layout, header, footer, theme, languages | ✅ (review) | 100% |
 | S2 | Home page with the data-flow hero | ⬜ | 0% |
 | S3 | Features and solutions pages | ⬜ | 0% |
 | S4 | Pricing | ⬜ | 0% |
@@ -36,11 +36,11 @@
 - ✅ `pnpm generate` prerenders every language (static files, `.output/public`)
 
 ## S1, Layout
-- ⬜ Header (logo, Product and Solutions dropdowns, Pricing, Integrations, Resources, Contact, language, theme, Sign in, Start free); phone slide-over
-- ⬜ Footer (four columns, legal row with Refunds and cancellation, language, ©)
-- ⬜ Language switch (flags), right to left for Arabic, `hreflang`
-- ⬜ A self-hosted fallback font for the scripts Manrope lacks (Arabic, Devanagari, Bengali, CJK)
-- ⬜ 404 page
+- ✅ Header (logo, Product and Solutions panels with icon tiles, Pricing, Integrations, Resources, Contact, language, theme, Sign in, Start free); phone and tablet slide-over below 1280 px
+- ✅ Footer (four columns, legal row with Subprocessors and Refunds and cancellation, language, theme, ©)
+- ✅ Language switch (flags, remembers the choice), right to left for Arabic, `hreflang`
+- ✅ Self-hosted fallback fonts for the scripts Manrope lacks (Noto Sans Arabic, Devanagari, Bengali; CJK uses system fonts)
+- ✅ 404 and error page inside the site layout, in every language; skip-to-content link
 
 ## S2, Home
 - ⬜ Hero: headline, subline, two buttons, and the **data-flow animation, website version** (`docs/DESIGN.md`); the hub always shows Formalie
@@ -99,6 +99,7 @@
 | 2026-10-13 | `/trust` "Trust and security" page from `docs/legal/trust-and-security.md`, without "Independent checks (when ready)" | S5 | ⬜ |
 | 2026-10-13 | Serve formlyBackend `docs/legal/security.txt` at `/.well-known/security.txt` | S0 | ✅ |
 | 2026-10-13 | Pricing from `/public/plans`; "Payments handled by Paddle" near the prices, no logo yet | S4 | ⬜ |
+| 2026-10-13 | Every section draws on the reference screens, with clean, modern, tech-style "communication" animations (data moving between systems) | S2 to S6 | ⬜ |
 | 2026-10-13 | Copy formlyBackend `docs/PRODUCTION-CHECKLIST.md` over this project's copy | Docs | ✅ (already identical; DEPLOYMENT-GUIDE synced too) |
 
 ## Progress log
@@ -108,3 +109,4 @@
 | 2026-10-10 | Package | Docs, references, 25 screenshots (light and dark, cropped, watermarked, sample data) and the app's animation prepared from formalieFrontend |
 | 2026-10-13 | Docs | Backend hand-over recorded: API address (`services.formalie.com`, never `api.formalie.com`), Paddle instead of Payoneer, the `refunds` legal page, redirects, `/trust`, `security.txt`; PRODUCTION-CHECKLIST already identical to formlyBackend's, DEPLOYMENT-GUIDE synced |
 | 2026-10-13 | S0 | Nuxt 4.5.2, Nuxt UI 4.11, Tailwind 4, strict TypeScript, ESLint and Prettier (the app's settings), Vitest (47 tests: links, 20 locale files with every key and no em dashes); i18n with 20 languages (prefix strategy, Arabic right to left, `hreflang`); `@nuxt/content` (blog, changelog, legal collections); `@nuxt/image`; Manrope self-hosted; the app's theme tokens; `useSiteLinks()`; 25 screenshots as WebP; brand files; `security.txt`; dev server on `https://formalie.dev:3033`; `pnpm generate` prerenders all 20 languages |
+| 2026-10-13 | S1 | Header with Product, Solutions and Resources panels (ink icon tiles), Pricing, Integrations, Contact, language and theme switches, Sign in and Start free (portal links); slide-over below 1280 px; footer with four columns, the seven legal links, language, theme, ©; Noto fallbacks for Arabic, Hindi and Bengali; 404 and error page; skip link. 73 new strings in 20 languages. Checked on phone, 1024 and 1280 px, light and dark, Arabic right to left, keyboard, and the longest languages (no header overflow) |

@@ -5,8 +5,138 @@
     "description": "Crea qualsiasi modulo, raccogli risposte tramite link, incorporamento, codice QR o API, conservale nel tuo database e decidi chi vede cosa. Gratis per iniziare.",
     "skipToContent": "Vai al contenuto"
   },
+  "nav": {
+    "product": "Prodotto",
+    "solutions": "Soluzioni",
+    "pricing": "Prezzi",
+    "integrations": "Integrazioni",
+    "resources": "Risorse",
+    "contact": "Contatti",
+    "signIn": "Accedi",
+    "startFree": "Inizia gratis",
+    "home": "Home di Formalie"
+  },
+  "product": {
+    "formBuilder": {
+      "label": "Generatore di moduli",
+      "description": "Domande, pagine, regole e calcoli con il trascinamento."
+    },
+    "design": {
+      "label": "Design e modelli",
+      "description": "Parti da uno stile o da un modello e rendilo tuo."
+    },
+    "responses": {
+      "label": "Risposte e analisi",
+      "description": "Rivedi, etichetta, esporta e comprendi ogni risposta."
+    },
+    "dataSources": {
+      "label": "Origini dati",
+      "description": "Invia ogni risposta al tuo database appena arriva."
+    },
+    "apiService": {
+      "label": "Servizio API",
+      "description": "Trasforma qualsiasi modulo in endpoint API sicuri."
+    },
+    "access": {
+      "label": "Accesso e sicurezza",
+      "description": "Ruoli, single sign-on, accesso in due passaggi e registro di controllo."
+    },
+    "ai": {
+      "label": "Assistente IA",
+      "description": "Crea moduli, analizza le risposte e traduci."
+    },
+    "languages": {
+      "label": "Lingue",
+      "description": "20 lingue, anche da destra a sinistra."
+    }
+  },
+  "solutions": {
+    "hr": {
+      "label": "Risorse umane",
+      "description": "Candidature, inserimento e richieste del personale."
+    },
+    "customerFeedback": {
+      "label": "Feedback dei clienti",
+      "description": "Sondaggi di soddisfazione e richieste di reso."
+    },
+    "events": {
+      "label": "Eventi e prenotazioni",
+      "description": "Iscrizioni, conferme e prenotazioni."
+    },
+    "healthSafety": {
+      "label": "Salute e sicurezza",
+      "description": "Segnalazioni di incidenti e valutazioni dei rischi."
+    },
+    "education": {
+      "label": "Istruzione",
+      "description": "Iscrizioni e valutazioni dei corsi."
+    },
+    "operations": {
+      "label": "Operazioni e conformità",
+      "description": "Verifiche dei fornitori, audit e registri."
+    },
+    "developers": {
+      "label": "Sviluppatori",
+      "description": "Moduli come endpoint API, webhook e documentazione."
+    }
+  },
+  "resources": {
+    "helpCentre": {
+      "label": "Centro assistenza",
+      "description": "Articoli, guide e un assistente in 20 lingue."
+    },
+    "blog": {
+      "label": "Blog",
+      "description": "Notizie e idee dal team di Formalie."
+    },
+    "changelog": {
+      "label": "Novità",
+      "description": "Le novità di Formalie."
+    },
+    "apiDocs": {
+      "label": "Documentazione API",
+      "description": "Endpoint, token e webhook per sviluppatori."
+    }
+  },
+  "company": {
+    "title": "Azienda",
+    "about": "Chi siamo",
+    "security": "Sicurezza",
+    "trust": "Fiducia e sicurezza",
+    "enterprise": "Enterprise"
+  },
+  "legal": {
+    "privacy": "Informativa sulla privacy",
+    "terms": "Termini e condizioni",
+    "dataProtection": "Protezione dei dati",
+    "cookies": "Informativa sui cookie",
+    "acceptableUse": "Uso accettabile",
+    "subprocessors": "Sub-responsabili",
+    "refunds": "Rimborsi e disdetta",
+    "title": "Note legali"
+  },
+  "footer": {
+    "tagline": "Formalie: moduli, dati e accessi sotto il tuo controllo.",
+    "copyright": "© {year} Formalie"
+  },
+  "theme": {
+    "label": "Tema",
+    "light": "Chiaro",
+    "dark": "Scuro",
+    "system": "Sistema"
+  },
+  "language": {
+    "label": "Lingua"
+  },
+  "error": {
+    "notFoundTitle": "Pagina non trovata",
+    "notFoundText": "La pagina che cerchi è stata spostata o non esiste.",
+    "title": "Qualcosa è andato storto",
+    "text": "Riprova tra un momento.",
+    "home": "Torna alla home",
+    "help": "Visita il centro assistenza"
+  },
   "placeholder": {
-    "building": "Il sito di Formalie è in costruzione.",
-    "home": "Vai alla home page"
+    "building": "Il sito di Formalie è in costruzione."
   }
 }

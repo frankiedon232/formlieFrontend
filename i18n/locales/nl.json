@@ -5,8 +5,138 @@
     "description": "Bouw elk formulier, verzamel antwoorden via link, insluiting, QR-code of API, bewaar ze in je eigen database en bepaal wie wat ziet. Gratis om te beginnen.",
     "skipToContent": "Naar de inhoud"
   },
+  "nav": {
+    "product": "Product",
+    "solutions": "Oplossingen",
+    "pricing": "Prijzen",
+    "integrations": "Integraties",
+    "resources": "Bronnen",
+    "contact": "Contact",
+    "signIn": "Inloggen",
+    "startFree": "Gratis beginnen",
+    "home": "Formalie home"
+  },
+  "product": {
+    "formBuilder": {
+      "label": "Formulierbouwer",
+      "description": "Vragen, pagina's, regels en berekeningen met slepen en neerzetten."
+    },
+    "design": {
+      "label": "Ontwerp en sjablonen",
+      "description": "Begin met een stijl of sjabloon en maak het van jou."
+    },
+    "responses": {
+      "label": "Antwoorden en analyses",
+      "description": "Bekijk, label, exporteer en begrijp elk antwoord."
+    },
+    "dataSources": {
+      "label": "Gegevensbronnen",
+      "description": "Stuur elk antwoord direct naar je eigen database."
+    },
+    "apiService": {
+      "label": "API-service",
+      "description": "Maak van elk formulier veilige API-endpoints."
+    },
+    "access": {
+      "label": "Toegang en beveiliging",
+      "description": "Rollen, single sign-on, inloggen in twee stappen en een audittrail."
+    },
+    "ai": {
+      "label": "AI-assistent",
+      "description": "Bouw formulieren, analyseer antwoorden en vertaal."
+    },
+    "languages": {
+      "label": "Talen",
+      "description": "20 talen, ook van rechts naar links."
+    }
+  },
+  "solutions": {
+    "hr": {
+      "label": "HR en personeel",
+      "description": "Sollicitaties, onboarding en verzoeken van medewerkers."
+    },
+    "customerFeedback": {
+      "label": "Klantfeedback",
+      "description": "Tevredenheidsonderzoeken en retourverzoeken."
+    },
+    "events": {
+      "label": "Evenementen en boekingen",
+      "description": "Inschrijvingen, aanmeldingen en boekingen."
+    },
+    "healthSafety": {
+      "label": "Gezondheid en veiligheid",
+      "description": "Incidentmeldingen en risicobeoordelingen."
+    },
+    "education": {
+      "label": "Onderwijs",
+      "description": "Inschrijvingen en cursusevaluaties."
+    },
+    "operations": {
+      "label": "Bedrijfsvoering en naleving",
+      "description": "Leverancierscontroles, audits en registraties."
+    },
+    "developers": {
+      "label": "Ontwikkelaars",
+      "description": "Formulieren als API-endpoints, webhooks en documentatie."
+    }
+  },
+  "resources": {
+    "helpCentre": {
+      "label": "Helpcentrum",
+      "description": "Artikelen, handleidingen en een assistent in 20 talen."
+    },
+    "blog": {
+      "label": "Blog",
+      "description": "Nieuws en ideeën van het Formalie-team."
+    },
+    "changelog": {
+      "label": "Wijzigingslogboek",
+      "description": "Wat er nieuw is in Formalie."
+    },
+    "apiDocs": {
+      "label": "API-documentatie",
+      "description": "Endpoints, tokens en webhooks voor ontwikkelaars."
+    }
+  },
+  "company": {
+    "title": "Bedrijf",
+    "about": "Over ons",
+    "security": "Beveiliging",
+    "trust": "Vertrouwen en beveiliging",
+    "enterprise": "Enterprise"
+  },
+  "legal": {
+    "privacy": "Privacybeleid",
+    "terms": "Algemene voorwaarden",
+    "dataProtection": "Gegevensbescherming",
+    "cookies": "Cookiebeleid",
+    "acceptableUse": "Aanvaardbaar gebruik",
+    "subprocessors": "Subverwerkers",
+    "refunds": "Terugbetalingen en opzegging",
+    "title": "Juridisch"
+  },
+  "footer": {
+    "tagline": "Formalie: formulieren, gegevens en toegang onder jouw controle.",
+    "copyright": "© {year} Formalie"
+  },
+  "theme": {
+    "label": "Thema",
+    "light": "Licht",
+    "dark": "Donker",
+    "system": "Systeem"
+  },
+  "language": {
+    "label": "Taal"
+  },
+  "error": {
+    "notFoundTitle": "Pagina niet gevonden",
+    "notFoundText": "De pagina die je zoekt is verplaatst of bestaat niet.",
+    "title": "Er ging iets mis",
+    "text": "Probeer het zo meteen opnieuw.",
+    "home": "Terug naar de startpagina",
+    "help": "Naar het helpcentrum"
+  },
   "placeholder": {
-    "building": "De website van Formalie wordt gebouwd.",
-    "home": "Naar de startpagina"
+    "building": "De website van Formalie wordt gebouwd."
   }
 }
