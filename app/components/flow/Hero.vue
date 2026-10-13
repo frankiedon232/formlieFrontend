@@ -67,7 +67,7 @@ const M_STAGGER = CYCLE / MROUTES.length
 
 /** Faint response cards drifting up behind the hub (answers being collected). */
 const CARDS = [
-  { x: 262, y: 104, w: 88, delay: 0, initial: 'A' },
+  { x: 262, y: 104, w: 88, delay: 0, initial: 'E' },
   { x: 462, y: 128, w: 76, delay: 2.4, initial: 'K' },
   { x: 268, y: 380, w: 80, delay: 1.2, initial: 'M' },
   { x: 458, y: 364, w: 92, delay: 3.6, initial: 'S' },
@@ -310,7 +310,7 @@ useIntervalFn(() => {
             <span class="text-white/45">{{ t('home.flow.nameField') }}</span>
             <span class="inline-flex min-w-0 items-center">
               <span class="inline-block max-w-full overflow-hidden whitespace-nowrap motion-safe:animate-type"
-                >Amara Okafor</span
+                >Emma Clarke</span
               >
               <span class="ms-px inline-block h-2.5 w-px bg-white motion-safe:animate-caret" />
             </span>

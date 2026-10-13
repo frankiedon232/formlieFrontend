@@ -9,7 +9,7 @@ const points = computed(() => (tm('home.security.points') as unknown[]).map(poin
 
 // Sample entries: international names, a neutral IP from the documentation range (RFC 5737).
 const EVENTS = [
-  { key: 'sso', who: 'Amara O.', icon: 'i-lucide-log-in', where: '203.0.113.24' },
+  { key: 'sso', who: 'James W.', icon: 'i-lucide-log-in', where: '203.0.113.24' },
   { key: 'published', who: 'Kenji S.', icon: 'i-lucide-send', where: '203.0.113.8' },
   { key: 'role', who: 'Lucía M.', icon: 'i-lucide-user-cog', where: '203.0.113.51' },
   { key: 'token', who: 'Omar H.', icon: 'i-lucide-key-round', where: '203.0.113.17' },

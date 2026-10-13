@@ -26,7 +26,7 @@ The portal's sign-in panel shows a hub with sources on the left and destinations
 1. **Layout:** after reference 1. Headline on the left: "Forms, data and access, under your control." The subline and **Start free** and **Talk to sales** sit below it. On the right sits the animation, in a large dark panel with the grid and a glow.
 2. **Sources (left):**
    - Form link, Website embed, QR code, API, and one more, "Mobile app" (calls the API).
-   - Each is a small **live card** rather than a pill, showing a mini form field being filled ("Name: Amara O…" typing), an embed frame or a QR.
+   - Each is a small **live card** rather than a pill, showing a mini form field being filled ("Name: Emma Clarke" typing; sample names are English, never tied to one country, owner 2026-10-13), an embed frame or a QR.
 3. **The hub (centre):** **always the Formalie mark** (owner: the product's name never shrinks), with the lock and "Encrypted on the way". It gives a soft pulse each time data passes.
 4. **Destinations (right):**
    - Your database (with the five engine logos cycling), Webhooks, Dashboard (a tiny bar chart that grows a bar on each arrival), Email alerts, Formalie storage.
