@@ -11,6 +11,7 @@ const localePath = useLocalePath()
 const query = ref('')
 const results = computed(() => searchLegal(query.value).slice(0, 10))
 const searching = computed(() => query.value.trim().length > 1)
+const platform = usePlatform()
 </script>
 
 <template>
@@ -81,7 +82,7 @@ const searching = computed(() => query.value.trim().length > 1)
     </div>
 
     <!-- Who to ask -->
-    <div class="rounded-2xl bg-elevated/50 p-4 ring-1 ring-default">
+    <div v-if="platform.privacyEmail" class="rounded-2xl bg-elevated/50 p-4 ring-1 ring-default">
       <span class="flex size-8 items-center justify-center rounded-lg bg-inverted text-inverted">
         <UIcon name="i-lucide-message-circle-question" class="size-4" />
       </span>
@@ -89,9 +90,9 @@ const searching = computed(() => query.value.trim().length > 1)
       <i18n-t keypath="legalPage.questionsText" tag="p" class="mt-1 text-xs/5 text-muted" scope="global">
         <template #email>
           <a
-            href="mailto:privacy@formalie.com"
+            :href="`mailto:${platform.privacyEmail}`"
             class="font-medium text-highlighted underline underline-offset-4"
-            >privacy@formalie.com</a
+            >{{ platform.privacyEmail }}</a
           >
         </template>
       </i18n-t>

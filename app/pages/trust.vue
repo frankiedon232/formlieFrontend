@@ -4,6 +4,7 @@
 // section stays out until the owner adds it. Controls only, never certifications (CLAUDE.md rule 5).
 const { t, tm, rt } = useI18n()
 const localePath = useLocalePath()
+const platform = usePlatform()
 const root = useTemplateRef<HTMLElement>('root')
 const { paused } = useSectionMotion(root)
 
@@ -119,12 +120,14 @@ usePageSeo({
         <div class="rounded-3xl bg-inverted p-8 text-inverted sm:p-10">
           <h2 class="text-2xl font-semibold tracking-tight">{{ t('trustPage.reportTitle') }}</h2>
           <ul class="mt-5 space-y-4 text-sm opacity-90">
-            <li class="flex gap-3">
+            <li v-if="platform.securityEmail" class="flex gap-3">
               <UIcon name="i-lucide-bug" class="mt-0.5 size-5 shrink-0" />
               <i18n-t keypath="trustPage.reportSecurity" tag="span" scope="global">
                 <template #email>
-                  <a href="mailto:security@formalie.com" class="font-semibold underline underline-offset-4"
-                    >security@formalie.com</a
+                  <a
+                    :href="`mailto:${platform.securityEmail}`"
+                    class="font-semibold underline underline-offset-4"
+                    >{{ platform.securityEmail }}</a
                   >
                 </template>
                 <template #policy>
@@ -138,22 +141,26 @@ usePageSeo({
                 </template>
               </i18n-t>
             </li>
-            <li class="flex gap-3">
+            <li v-if="platform.abuseEmail" class="flex gap-3">
               <UIcon name="i-lucide-flag" class="mt-0.5 size-5 shrink-0" />
               <i18n-t keypath="trustPage.reportAbuse" tag="span" scope="global">
                 <template #email>
-                  <a href="mailto:abuse@formalie.com" class="font-semibold underline underline-offset-4"
-                    >abuse@formalie.com</a
+                  <a
+                    :href="`mailto:${platform.abuseEmail}`"
+                    class="font-semibold underline underline-offset-4"
+                    >{{ platform.abuseEmail }}</a
                   >
                 </template>
               </i18n-t>
             </li>
-            <li class="flex gap-3">
+            <li v-if="platform.privacyEmail" class="flex gap-3">
               <UIcon name="i-lucide-eye-off" class="mt-0.5 size-5 shrink-0" />
               <i18n-t keypath="trustPage.reportPrivacy" tag="span" scope="global">
                 <template #email>
-                  <a href="mailto:privacy@formalie.com" class="font-semibold underline underline-offset-4"
-                    >privacy@formalie.com</a
+                  <a
+                    :href="`mailto:${platform.privacyEmail}`"
+                    class="font-semibold underline underline-offset-4"
+                    >{{ platform.privacyEmail }}</a
                   >
                 </template>
               </i18n-t>

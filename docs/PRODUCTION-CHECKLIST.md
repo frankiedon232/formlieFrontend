@@ -61,7 +61,7 @@ Generate fresh keys with `fmly\Scripts\python.exe scripts\gen_keys.py --write` o
 | `DNS_TIMEOUT_SECONDS` (B11) | `4` | ⬜ keep; the servers need a working DNS resolver (own domain and sending domain checks) |
 | `INTERNAL_TOKEN` | development value | ⬜ **retired:** leave it empty. The frontend no longer uses it (static build, no Nuxt server, no `NUXT_INTERNAL_TOKEN`); its only remaining use is the two unused routes `GET /api/v1/internal/public-forms/{key}` and `GET /api/v1/internal/short/{code}` (the old server-rendered form and short-link reads, `app/modules/public/router.py`), which refuse everything while it is empty, and Nginx blocks `/api/v1/internal/` anyway (section 4) |
 | Website's API address (formalieSite `NUXT_PUBLIC_API_URL`) | `https://formalie.dev:5004/api/v1` | ⬜ `https://services.formalie.com/api/v1` (the `/public/plans`, `/public/legal`, `/public/platform` routes), never `api.formalie.com`, which is customers' own API |
-| `LEGAL_TERMS_URL`, `LEGAL_PRIVACY_URL` | `https://formalie.com/legal/terms`, `/legal/privacy` | ⬜ the website's legal pages (documentation style, `docs/legal/` drafts reviewed by a lawyer and filled in); check they open |
+| `LEGAL_TERMS_URL`, `LEGAL_PRIVACY_URL` | development `https://formalie.dev:3033/legal/terms`, `/legal/privacy` (the website's dev server) | ⬜ the website's legal pages (documentation style, `docs/legal/` drafts reviewed by a lawyer and filled in); check they open |
 | `SUPPORT_EMAIL`, `SUPPORT_URL` (B14) | `support@formalie.com`, empty | ⬜ the real support mailbox (it must receive mail) and, if there is one, the support page; shown on the help centre's home until the platform settings take over |
 | `STORAGE_DIR` | `data/storage` | ⬜ replaced by the object storage settings (to be added when storage is chosen) |
 | `DATASOURCES_ALLOW_LOCAL` | `false` | ⬜ `false` (never true in production) |
@@ -119,7 +119,7 @@ Also on the backend side:
 | `NUXT_PUBLIC_ROOT_DOMAIN` | `formalie.dev` | ⬜ `formalie.com` |
 | `NUXT_PUBLIC_FORMS_HOST` | `forms.formalie.dev` | ⬜ `forms.formalie.com` |
 | `NUXT_PUBLIC_API_SERVICE_URL` | `https://api.formalie.dev` | ⬜ `https://api.formalie.com` |
-| `NUXT_PUBLIC_LEGAL_*` | formalie.com pages | ⬜ check they exist |
+| `NUXT_PUBLIC_SITE_URL` (the website: legal pages `/legal/{slug}` on public forms and sign-up, the Enterprise enquiry) | `https://formalie.dev:3033` | ⬜ `https://formalie.com` |
 | `NUXT_PAYONEER_WEBHOOK_SECRET` | empty | ⏸ Payoneer's webhook secret |
 | `NODE_EXTRA_CA_CERTS`, `DEV_HTTPS_*` | mkcert | ⬜ not used |
 | Dev port `:2202` | in every development address | ⬜ gone (443 on Cloudflare) |

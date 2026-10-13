@@ -3,6 +3,7 @@
 // responsible disclosure contact, and links to the trust page and the legal documents.
 const { t, tm, rt } = useI18n()
 const localePath = useLocalePath()
+const platform = usePlatform()
 const root = useTemplateRef<HTMLElement>('root')
 const { paused, live } = useSectionMotion(root)
 
@@ -151,10 +152,18 @@ usePageSeo({
         <div class="rounded-3xl bg-inverted p-8 text-inverted sm:p-10">
           <UIcon name="i-lucide-bug" class="size-6" />
           <h2 class="mt-5 text-2xl font-semibold tracking-tight">{{ t('securityPage.disclosure.title') }}</h2>
-          <i18n-t keypath="securityPage.disclosure.text" tag="p" class="mt-3 opacity-80" scope="global">
+          <i18n-t
+            v-if="platform.securityEmail"
+            keypath="securityPage.disclosure.text"
+            tag="p"
+            class="mt-3 opacity-80"
+            scope="global"
+          >
             <template #email>
-              <a href="mailto:security@formalie.com" class="font-semibold underline underline-offset-4"
-                >security@formalie.com</a
+              <a
+                :href="`mailto:${platform.securityEmail}`"
+                class="font-semibold underline underline-offset-4"
+                >{{ platform.securityEmail }}</a
               >
             </template>
           </i18n-t>

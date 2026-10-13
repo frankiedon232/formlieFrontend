@@ -19,6 +19,10 @@ export const SOCIAL_META: Record<SocialNetwork, { name: string; icon: string }> 
 export interface Platform {
   supportEmail: string
   salesEmail: string
+  /** Null when the owner clears it in the platform admin: the place that shows it is then hidden. */
+  privacyEmail: string | null
+  securityEmail: string | null
+  abuseEmail: string | null
   statusUrl: string | null
   social: { network: SocialNetwork; url: string }[]
   legalEntity: { name: string | null; address: string | null }
@@ -27,9 +31,12 @@ export interface Platform {
 export const FALLBACK_PLATFORM: Platform = {
   supportEmail: 'support@formalie.com',
   salesEmail: 'sales@formalie.com',
+  privacyEmail: 'privacy@formalie.com',
+  securityEmail: 'security@formalie.com',
+  abuseEmail: 'abuse@formalie.com',
   statusUrl: null,
   social: [],
-  legalEntity: { name: null, address: null },
+  legalEntity: { name: 'UNET SYSTEM TECH LTD', address: null },
 }
 
 const httpsUrl = z
@@ -42,6 +49,16 @@ const schema = z.object({
   data: z.object({
     support_email: email.catch(FALLBACK_PLATFORM.supportEmail),
     sales_email: email.catch(FALLBACK_PLATFORM.salesEmail),
+    // Missing (an older backend) keeps the default; null hides it; a bad value keeps the default.
+    privacy_email: email
+      .nullable()
+      .default(FALLBACK_PLATFORM.privacyEmail)
+      .catch(FALLBACK_PLATFORM.privacyEmail),
+    security_email: email
+      .nullable()
+      .default(FALLBACK_PLATFORM.securityEmail)
+      .catch(FALLBACK_PLATFORM.securityEmail),
+    abuse_email: email.nullable().default(FALLBACK_PLATFORM.abuseEmail).catch(FALLBACK_PLATFORM.abuseEmail),
     status_url: httpsUrl.nullable().catch(null),
     social: z.record(z.string(), z.unknown()).catch({}),
     legal_entity: z
@@ -49,7 +66,7 @@ const schema = z.object({
         name: z.string().trim().min(1).nullable().catch(null),
         address: z.string().trim().min(1).nullable().catch(null),
       })
-      .catch({ name: null, address: null }),
+      .catch(FALLBACK_PLATFORM.legalEntity),
   }),
 })
 
@@ -61,6 +78,9 @@ export function parsePlatform(answer: unknown): Platform | null {
   return {
     supportEmail: data.support_email,
     salesEmail: data.sales_email,
+    privacyEmail: data.privacy_email,
+    securityEmail: data.security_email,
+    abuseEmail: data.abuse_email,
     statusUrl: data.status_url,
     social: SOCIAL_NETWORKS.flatMap(network => {
       const url = httpsUrl.safeParse(data.social[network])

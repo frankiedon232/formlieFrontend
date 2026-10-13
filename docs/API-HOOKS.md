@@ -38,8 +38,10 @@ GET {API}/public/legal/{slug}?lang=   → { slug, title, version, updated_at, su
 ## 3. Platform settings (contact details, social links)
 
 ```
-GET {API}/public/platform             → { support_email, sales_email, status_url, social: { linkedin?, x?, youtube?, github? }, legal_entity: { name, address } }
+GET {API}/public/platform             → { support_email, sales_email, privacy_email, security_email, abuse_email, status_url, social: { linkedin?, x?, youtube?, github? }, legal_entity: { name, address } }
 ```
+
+- **Used by** `usePlatform()`: support and sales on Contact, Enterprise and the structured data; privacy on the legal pages and `/trust`; security on `/security` and `/trust`; abuse on `/trust`; status, social and legal entity (default UNET SYSTEM TECH LTD) in the footer. A null address hides the place that shows it.
 
 - **Edited by:** the owner, in the platform admin (the same "platform settings" the portal reads).
 
