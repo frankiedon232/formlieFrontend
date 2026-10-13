@@ -2,7 +2,7 @@
 import type { TabsItem } from '@nuxt/ui'
 
 // Product tabs after reference 3: a tab per area, a big card with the story, four points, two buttons and a real
-// screenshot in a browser frame (docs/DESIGN.md "Using the screenshots"). Dark screens in dark mode where they exist.
+// screenshot in a browser frame (SiteScreenFrame). Dark screens in dark mode where they exist.
 const { t, tm, rt } = useI18n()
 const localePath = useLocalePath()
 const links = useSiteLinks()
@@ -121,39 +121,10 @@ const tabOf = (value: unknown) => TABS.find(tab => tab.key === value) ?? TABS[0]
             </div>
           </div>
 
-          <!-- The screenshot in a browser frame, slightly lifted -->
-          <div class="relative">
-            <div aria-hidden="true" class="absolute -inset-6 -z-0 rounded-[2rem] bg-violet-500/10 blur-2xl" />
-            <figure
-              class="relative overflow-hidden rounded-2xl bg-elevated shadow-2xl shadow-black/10 ring-1 ring-default"
-            >
-              <div class="flex items-center gap-1.5 border-b border-default px-3 py-2">
-                <span class="size-2.5 rounded-full bg-accented" />
-                <span class="size-2.5 rounded-full bg-accented" />
-                <span class="size-2.5 rounded-full bg-accented" />
-              </div>
-              <NuxtImg
-                :src="`/screenshots/${tab.shot}.webp`"
-                :alt="t(`home.tabs.${tab.key}.alt`)"
-                :width="tab.width"
-                :height="tab.height"
-                sizes="sm:100vw md:90vw lg:640px"
-                class="block h-auto w-full"
-                :class="{ 'dark:hidden': tab.dark }"
-                loading="lazy"
-              />
-              <NuxtImg
-                v-if="tab.dark"
-                :src="`/screenshots/${tab.shot}-dark.webp`"
-                :alt="t(`home.tabs.${tab.key}.alt`)"
-                :width="tab.width"
-                :height="tab.height"
-                sizes="sm:100vw md:90vw lg:640px"
-                class="hidden h-auto w-full dark:block"
-                loading="lazy"
-              />
-            </figure>
-          </div>
+          <SiteScreenFrame
+            :shot="{ file: tab.shot, width: tab.width, height: tab.height, dark: tab.dark }"
+            :alt="t(`home.tabs.${tab.key}.alt`)"
+          />
         </div>
       </template>
     </UTabs>

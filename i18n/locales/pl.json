@@ -400,5 +400,725 @@
       "title": "Zacznij zbierać odpowiedzi w kilka minut.",
       "description": "Darmowy plan, bez karty. Przejdź na wyższy plan, gdy się rozwiniesz."
     }
+  },
+  "common": {
+    "learnMore": "Dowiedz się więcej",
+    "related": "Powiązane funkcje",
+    "howItWorks": "Jak to działa",
+    "step": "Krok {n}",
+    "allFeatures": "Wszystkie funkcje",
+    "startFrom": "Formularze na start",
+    "whereDataGoes": "Dokąd trafiają dane",
+    "useTemplate": "Zacznij od tego szablonu"
+  },
+  "featuresIndex": {
+    "title": "Wszystko, co robi Formalie",
+    "description": "Twórz formularze, nadawaj im wygląd, udostępniaj je wszędzie, a potem przechowuj, analizuj i chroń każdą odpowiedź. Wszystko poniżej jest już w produkcie.",
+    "metaDescription": "Kreator formularzy, wygląd, szablony, odpowiedzi, analizy, własna baza danych, usługa API, kontrola dostępu, asystent AI i 20 języków na jednej bezpiecznej platformie."
+  },
+  "features": {
+    "form-builder": {
+      "label": "Kreator formularzy",
+      "title": "Zbuduj dowolny formularz bez kodu",
+      "description": "Przeciągaj pytania do wierszy i stron, dodawaj reguły i obliczenia, a gdy wszystko będzie gotowe, opublikuj. Ponad 40 typów pytań w 20 językach.",
+      "metaDescription": "Pytania, strony, logika i obliczenia metodą przeciągnij i upuść, w 20 językach, z wersjami i publikacją jednym kliknięciem.",
+      "alt": "Kreator formularzy: typy pytań po lewej, wielostronicowy formularz pośrodku, ustawienia po prawej",
+      "cards": [
+        {
+          "title": "Ponad 40 typów pytań",
+          "text": "Tekst, daty, wybór, oceny, macierz, przesyłanie plików, podpis, adres, kwota, IBAN i więcej."
+        },
+        {
+          "title": "Wiersze i strony",
+          "text": "Przeciągaj pytania do wierszy i stron, z alternatywą klawiaturową dla każdego przeciągnięcia."
+        },
+        {
+          "title": "Reguły",
+          "text": "Pokazuj, ukrywaj lub wymagaj pytań, przechodź do strony albo na koniec, zależnie od wcześniejszych odpowiedzi."
+        },
+        {
+          "title": "Obliczenia na żywo",
+          "text": "Sumy, punkty i ceny liczone w trakcie wypełniania, nawet na podstawie szczegółu wybranej opcji."
+        },
+        {
+          "title": "Duże listy wielokrotnego użytku",
+          "text": "Listy opcji z poziomami, do 200 000 opcji ładowanych w trakcie pisania, do użycia w każdym formularzu."
+        },
+        {
+          "title": "Wersje",
+          "text": "Najpierw szkic, potem publikacja. Edycja opublikowanego formularza otwiera nowy szkic, a każdą wersję można przywrócić."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Dodaj pytania",
+          "text": "Wybierz spośród ponad 40 typów lub zapisanych pytań."
+        },
+        {
+          "title": "Dodaj reguły",
+          "text": "Zdecyduj, co się pokazuje, kiedy i co jest obliczane."
+        },
+        {
+          "title": "Opublikuj",
+          "text": "Udostępnij przez link, osadzenie, kod QR lub API."
+        }
+      ]
+    },
+    "design": {
+      "label": "Wygląd i motywy",
+      "title": "Formularze w stylu Twojej marki",
+      "description": "Zacznij od gotowego stylu i zmień wszystko, co ważne: układ, tło, czcionki, kolory, przyciski, nagłówek, stopkę i stronę z podziękowaniem.",
+      "metaDescription": "Style startowe, 21 czcionek hostowanych u nas, kolory z podpowiedziami kontrastu, motywy i strony docelowe. Nadaj każdemu formularzowi styl swojej marki.",
+      "alt": "Edytor wyglądu: style startowe po lewej i podgląd formularza na żywo",
+      "cards": [
+        {
+          "title": "Style startowe",
+          "text": "Minimalny, Delikatny, Wyrazisty, Ciemny, Elegancki, Firmowy i inne, gotowe do dopasowania."
+        },
+        {
+          "title": "21 czcionek",
+          "text": "Czcionki hostowane u nas, więc nic nie ładuje się z innej witryny."
+        },
+        {
+          "title": "Kolory z podpowiedziami kontrastu",
+          "text": "Od razu widzisz, kiedy tekst byłby trudny do odczytania."
+        },
+        {
+          "title": "Motywy",
+          "text": "Zapisz wygląd jako motyw i zastosuj go w dowolnym formularzu."
+        },
+        {
+          "title": "Strony docelowe",
+          "text": "Pokaż formularz pod własnym linkiem, z projektem strony."
+        },
+        {
+          "title": "Motyw z jednego koloru",
+          "text": "Podaj asystentowi AI kolor marki i otrzymaj motyw."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Wybierz styl",
+          "text": "Zacznij od jednego ze stylów startowych."
+        },
+        {
+          "title": "Dopasuj do siebie",
+          "text": "Czcionki, kolory, nagłówek, stopka i przyciski."
+        },
+        {
+          "title": "Zapisz jako motyw",
+          "text": "Używaj go w każdym formularzu."
+        }
+      ]
+    },
+    "templates": {
+      "label": "Szablony",
+      "title": "Zacznij od gotowego formularza",
+      "description": "Biblioteka szablonów według kategorii, od aplikacji o pracę po zgłoszenia incydentów. Własne formularze też możesz zapisać jako szablony.",
+      "metaDescription": "Gotowe szablony formularzy dla firm, HR, wydarzeń, BHP, hotelarstwa i gastronomii oraz edukacji. Zapisuj własne formularze jako szablony.",
+      "alt": "Kategorie szablonów pokazane jako karty",
+      "cards": [
+        {
+          "title": "Według kategorii",
+          "text": "Firma i klienci, HR i miejsce pracy, wydarzenia i rezerwacje, BHP, hotelarstwo i gastronomia, edukacja i więcej."
+        },
+        {
+          "title": "Gotowe do zmian",
+          "text": "Każdy szablon to zwykły formularz: zmień dowolne pytanie, regułę lub wygląd."
+        },
+        {
+          "title": "Własne szablony",
+          "text": "Zapisz dowolny formularz jako szablon dla swojego zespołu."
+        },
+        {
+          "title": "Z opisu",
+          "text": "Albo opisz potrzebny formularz, a asystent AI przygotuje szkic."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Wybierz",
+          "text": "Przeglądaj bibliotekę według kategorii."
+        },
+        {
+          "title": "Dopasuj",
+          "text": "Zmień pytania, reguły i wygląd."
+        },
+        {
+          "title": "Opublikuj",
+          "text": "Zbieraj odpowiedzi w kilka minut."
+        }
+      ]
+    },
+    "responses": {
+      "label": "Odpowiedzi",
+      "title": "Każda odpowiedź przejrzana i uporządkowana",
+      "description": "Pracuj z odpowiedziami w tabeli lub na kartach, przeszukuj je, przeglądaj, oznaczaj tagami i eksportuj.",
+      "metaDescription": "Widok tabeli i kart, wyszukiwanie i filtry, statusy przeglądu, tagi, notatki, edycja z historią oraz eksport do formatu Excel, CSV lub PDF.",
+      "alt": "Lista odpowiedzi z wykresem statusów przeglądu",
+      "cards": [
+        {
+          "title": "Tabela i karty",
+          "text": "Przeszukuj odpowiedzi, filtruj, wybieraj kolumny, sortuj i ustaw zakres dat."
+        },
+        {
+          "title": "Statusy przeglądu",
+          "text": "Nowa, przejrzana, zatwierdzona lub odrzucona, więc każdy wie, co jest zrobione."
+        },
+        {
+          "title": "Tagi i notatki",
+          "text": "Oznaczaj odpowiedzi tagami i zostawiaj notatki w panelu szczegółów."
+        },
+        {
+          "title": "Edycja z historią",
+          "text": "Popraw odpowiedź i zachowaj zapis tego, co się zmieniło."
+        },
+        {
+          "title": "Eksport",
+          "text": "Excel, CSV lub PDF, z widocznym postępem."
+        },
+        {
+          "title": "Podsumowania AI",
+          "text": "Podsumowanie jednej odpowiedzi albo wnioski z wielu."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Odpowiedzi napływają",
+          "text": "Z każdego kanału na jedną listę."
+        },
+        {
+          "title": "Przeglądaj",
+          "text": "Ustaw status, dodaj tagi i notatki."
+        },
+        {
+          "title": "Eksportuj lub połącz",
+          "text": "Pobierz albo wyślij do swojej bazy danych."
+        }
+      ]
+    },
+    "analytics": {
+      "label": "Analizy",
+      "title": "Zobacz, jak radzi sobie każdy formularz",
+      "description": "Wizyty, rozpoczęcia i ukończenia, miejsca, w których ludzie rezygnują, oraz urządzenia, kanały i języki, z których korzystają.",
+      "metaDescription": "Analizy formularzy: wizyty, rozpoczęcia, ukończenia, rezygnacje według pytań, urządzenia, kanały i języki, a do tego pulpit dla całego obszaru roboczego.",
+      "alt": "Przegląd konwersji w analizach",
+      "cards": [
+        {
+          "title": "Konwersja",
+          "text": "Wizyty, rozpoczęcia i ukończenia dla każdego formularza."
+        },
+        {
+          "title": "Rezygnacje według pytań",
+          "text": "Zobacz dokładnie, gdzie ludzie przerywają."
+        },
+        {
+          "title": "Urządzenia, kanały, języki",
+          "text": "Wiedz, jak i skąd ludzie odpowiadają."
+        },
+        {
+          "title": "Pulpit obszaru roboczego",
+          "text": "Karty KPI z trendami, najaktywniejsze formularze i to, co wymaga uwagi."
+        },
+        {
+          "title": "Filtry i okresy",
+          "text": "Według folderu i właściciela, dnia, tygodnia, miesiąca lub roku."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Udostępnij",
+          "text": "Każda wizyta i odpowiedź jest liczona."
+        },
+        {
+          "title": "Wyłap",
+          "text": "Znajdź pytanie, przy którym ludzie odchodzą."
+        },
+        {
+          "title": "Popraw",
+          "text": "Zmień je i patrz, jak zmieniają się liczby."
+        }
+      ]
+    },
+    "data-sources": {
+      "label": "Źródła danych",
+      "title": "Twoja baza danych od pierwszej odpowiedzi",
+      "description": "Podłącz MySQL, MariaDB, PostgreSQL, SQL Server lub Oracle, a każda odpowiedź trafi tam zaraz po nadejściu. Możesz też trzymać wszystko w zaszyfrowanym magazynie Formalie.",
+      "metaDescription": "Wysyłaj każdą odpowiedź do MySQL, MariaDB, PostgreSQL, SQL Server lub Oracle zaraz po nadejściu albo trzymaj ją w zaszyfrowanym magazynie Formalie.",
+      "alt": "Przegląd źródeł danych: ruch w bazie danych i stan połączeń",
+      "cards": [
+        {
+          "title": "Pięć baz danych",
+          "text": "MySQL, MariaDB, PostgreSQL, SQL Server i Oracle."
+        },
+        {
+          "title": "Zapis zaraz po nadejściu",
+          "text": "Odpowiedzi trafiają do własnych tabel Formalie z prefiksem, z uzupełnianiem wcześniejszych danych i ponawianiem."
+        },
+        {
+          "title": "Stan połączenia",
+          "text": "Przetestuj połączenie, skorzystaj z przewodnika po uprawnieniach, obserwuj stan i czas odpowiedzi."
+        },
+        {
+          "title": "Eksplorator bazy danych",
+          "text": "Przeglądaj tabele, zmieniaj wiersze we własnych tabelach i eksportuj."
+        },
+        {
+          "title": "Edytor zapytań",
+          "text": "SQL z autouzupełnianiem, domyślnie tylko do odczytu, z historią i zapisanymi zapytaniami."
+        },
+        {
+          "title": "Wszystko w rejestrze",
+          "text": "Każde działanie na połączeniu trafia do dziennika zdarzeń."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Połącz",
+          "text": "Dodaj swoją bazę danych i ją przetestuj."
+        },
+        {
+          "title": "Wybierz formularze",
+          "text": "Wskaż, które formularze zapisują tam odpowiedzi."
+        },
+        {
+          "title": "Odpowiedzi napływają",
+          "text": "Każda nowa odpowiedź zapisana zaraz po nadejściu."
+        }
+      ]
+    },
+    "api-service": {
+      "label": "Usługa API",
+      "title": "Zamień dowolny formularz w bezpieczne punkty końcowe API",
+      "description": "Grupuj formularze w usługi, wybierz, co każdy punkt końcowy przyjmuje i zwraca, i chroń go tokenami, regułami dostępu oraz limitami zapytań.",
+      "metaDescription": "Zamień dowolny formularz w bezpieczne punkty końcowe API z tokenami, regułami dostępu, limitami zapytań, logami i generowaną dokumentacją.",
+      "alt": "Przegląd usługi API: usługi, punkty końcowe, wywołania i ruch w czasie",
+      "cards": [
+        {
+          "title": "Punkty końcowe z formularzy",
+          "text": "GET, POST, PUT i DELETE, z polami przyjmowanymi i zwracanymi wybieranymi dla każdego punktu końcowego."
+        },
+        {
+          "title": "Tokeny z zakresami",
+          "text": "Tokeny stałe lub krótkotrwałe, testowe i produkcyjne."
+        },
+        {
+          "title": "Podpisane żądania",
+          "text": "Wymagane nagłówki, podpisy i ochrona przed powtórzeniem."
+        },
+        {
+          "title": "Reguły dostępu",
+          "text": "Według IP, domeny, regionu i kraju, a także dozwolone witryny dla aplikacji w przeglądarce."
+        },
+        {
+          "title": "Limity zapytań",
+          "text": "Na token, na IP i na punkt końcowy."
+        },
+        {
+          "title": "Dokumentacja i logi",
+          "text": "Generowana dokumentacja z konsolą do testów, logi żądań, analizy i podpisane webhooki."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Wybierz formularz",
+          "text": "Jego pytania stają się polami."
+        },
+        {
+          "title": "Utwórz token",
+          "text": "Z zakresami, których potrzebuje Twoja aplikacja."
+        },
+        {
+          "title": "Wywołaj",
+          "text": "Z dowolnej aplikacji, z pomocą generowanej dokumentacji."
+        }
+      ]
+    },
+    "access-control": {
+      "label": "Dostęp i bezpieczeństwo",
+      "title": "Decyduj dokładnie, kto co widzi",
+      "description": "Role ze szczegółowymi uprawnieniami, dostęp do folderów, udostępnianie poszczególnych formularzy, firmowe logowanie i dziennik zdarzeń każdego działania.",
+      "metaDescription": "Role i uprawnienia, dostęp do folderów, udostępnianie poszczególnych formularzy, logowanie dwuetapowe, logowanie jednokrotne, kontrola sesji i dziennik zdarzeń każdego działania.",
+      "alt": "Role i dostęp: osoby według ról i rodzaje ról",
+      "cards": [
+        {
+          "title": "Role i uprawnienia",
+          "text": "Własne, udostępnione lub wszystkie, w każdym obszarze, oraz Twoje własne role."
+        },
+        {
+          "title": "Foldery i udostępnianie",
+          "text": "Dostęp do folderów, udostępnianie poszczególnych formularzy i jasna odpowiedź, kto może zobaczyć dany formularz."
+        },
+        {
+          "title": "Kto widzi każde pytanie",
+          "text": "Wszyscy albo wybrane działy, role lub osoby."
+        },
+        {
+          "title": "Firmowe logowanie",
+          "text": "Logowanie jednokrotne przez Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0 lub OpenID Connect."
+        },
+        {
+          "title": "Logowanie dwuetapowe",
+          "text": "Aplikacja uwierzytelniająca lub SMS, a do tego reguły haseł, dozwolone adresy IP i długość sesji."
+        },
+        {
+          "title": "Dziennik zdarzeń",
+          "text": "Każde działanie: kto, kiedy i skąd, z możliwością eksportu."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Zaproś",
+          "text": "Dodaj osoby z działami i przełożonymi."
+        },
+        {
+          "title": "Nadaj role",
+          "text": "Wybierz, co może każda rola."
+        },
+        {
+          "title": "Sprawdź",
+          "text": "Zobacz, kto widzi każdy formularz i dlaczego."
+        }
+      ]
+    },
+    "ai-assistant": {
+      "label": "Asystent AI",
+      "title": "Asystent, który tworzy, czyta i tłumaczy",
+      "description": "Opisz formularz lub prześlij dokument i otrzymaj szkic. Pytaj o swoje odpowiedzi prostymi słowami. Tłumacz formularze jednym kliknięciem.",
+      "metaDescription": "Formularze z opisu lub dokumentu, pomoc przy pytaniach i logice, analiza odpowiedzi, podsumowania i tłumaczenie, z kredytami AI w każdym planie.",
+      "prompt": "Aplikacja o pracę z danymi kontaktowymi, doświadczeniem i przesłaniem CV",
+      "drafted": "Szkic gotowy: 3 strony, 9 pytań",
+      "cards": [
+        {
+          "title": "Formularze z opisu",
+          "text": "Albo z dokumentu, z pomysłami na szablony."
+        },
+        {
+          "title": "Pomoc w kreatorze",
+          "text": "Przy pytaniach, regułach i sformułowaniach."
+        },
+        {
+          "title": "Analiza odpowiedzi",
+          "text": "Pytaj o swoje dane prostymi słowami i otrzymuj podsumowania."
+        },
+        {
+          "title": "Tłumaczenie",
+          "text": "Przetłumacz formularz na potrzebne języki."
+        },
+        {
+          "title": "Motyw z jednego koloru",
+          "text": "Podaj kolor marki, otrzymaj wygląd."
+        },
+        {
+          "title": "Kredyty w każdym planie",
+          "text": "Kredyty AI są w każdym planie."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Opisz",
+          "text": "Powiedz, czego potrzebujesz, albo prześlij dokument."
+        },
+        {
+          "title": "Sprawdź",
+          "text": "Przejrzyj szkic i go dopasuj."
+        },
+        {
+          "title": "Opublikuj",
+          "text": "I pytaj asystenta o odpowiedzi."
+        }
+      ]
+    },
+    "languages": {
+      "label": "Języki",
+      "title": "Każdy formularz w języku Twoich ludzi",
+      "description": "Aplikacja mówi w 20 językach, w tym po arabsku, od prawej do lewej. Formularz może mieć kilka języków, a każdy wybiera swój.",
+      "metaDescription": "Aplikacja w 20 językach, formularze w kilku językach z przełącznikiem języka oraz daty, liczby i waluty dopasowane do każdej osoby.",
+      "question": "Jak oceniasz swoją wizytę?",
+      "cards": [
+        {
+          "title": "20 języków",
+          "text": "Cała aplikacja, także od prawej do lewej."
+        },
+        {
+          "title": "Formularze w kilku językach",
+          "text": "Z przełącznikiem języka dla osób odpowiadających."
+        },
+        {
+          "title": "Pomoc w tłumaczeniu",
+          "text": "Asystent AI tłumaczy, a Ty sprawdzasz."
+        },
+        {
+          "title": "Lokalne formaty",
+          "text": "Daty, liczby i waluty zgodne z językiem i regionem każdej osoby."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Dodaj języki",
+          "text": "Wybierz języki, które oferuje formularz."
+        },
+        {
+          "title": "Przetłumacz",
+          "text": "Z pomocą asystenta."
+        },
+        {
+          "title": "Udostępnij raz",
+          "text": "Każdy odpowiada we własnym języku."
+        }
+      ]
+    },
+    "help-and-tours": {
+      "label": "Pomoc i przewodniki",
+      "title": "Pomoc na każdej stronie",
+      "description": "Centrum pomocy w 20 językach, przewodniki krok po kroku przy pierwszej wizycie i asystent, który odpowiada na podstawie artykułów.",
+      "metaDescription": "Centrum pomocy z artykułami, FAQ i słowniczkiem w 20 językach, przewodniki krok po kroku, pomoc w kontekście i kreator konfiguracji dla nowych obszarów roboczych.",
+      "alt": "Strona główna centrum pomocy",
+      "cards": [
+        {
+          "title": "Centrum pomocy",
+          "text": "Artykuły, FAQ i słowniczek w 20 językach."
+        },
+        {
+          "title": "Asystent",
+          "text": "Odpowiada na pytania na podstawie artykułów pomocy."
+        },
+        {
+          "title": "Pomoc w kontekście",
+          "text": "Znak zapytania na każdej stronie i przycisk Pokaż mi gdzie."
+        },
+        {
+          "title": "Przewodniki krok po kroku",
+          "text": "Proponowane przy pierwszej wizycie w każdym obszarze."
+        },
+        {
+          "title": "Kreator konfiguracji",
+          "text": "Nowe obszary robocze są gotowe w kilku krokach."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Zarejestruj się",
+          "text": "Kreator konfiguracji uruchamia obszar roboczy."
+        },
+        {
+          "title": "Skorzystaj z przewodnika",
+          "text": "Każdy obszar przedstawia się przy pierwszej wizycie."
+        },
+        {
+          "title": "Zapytaj",
+          "text": "Centrum pomocy i asystent są o jedno kliknięcie."
+        }
+      ]
+    }
+  },
+  "integrationsPage": {
+    "title": "Działa z systemami, które już masz",
+    "description": "Twoja własna baza danych, webhooki i API dla Twoich aplikacji oraz logowanie przez dostawcę tożsamości Twojej firmy.",
+    "metaDescription": "MySQL, MariaDB, PostgreSQL, SQL Server i Oracle, webhooki, usługa API, logowanie przez Google i Facebook oraz logowanie jednokrotne przez Okta, Microsoft Entra ID i innych dostawców.",
+    "databases": {
+      "title": "Bazy danych",
+      "text": "Każda odpowiedź zapisywana we własnej bazie danych zaraz po nadejściu."
+    },
+    "api": {
+      "title": "Usługa API i webhooki",
+      "text": "Punkty końcowe dla Twoich aplikacji i podpisane webhooki do Twoich usług, z ponawianiem."
+    },
+    "signin": {
+      "title": "Logowanie",
+      "text": "E-mail i hasło, Google lub Facebook w każdym planie; logowanie jednokrotne w planach płatnych."
+    },
+    "standards": {
+      "title": "Oparte na otwartych standardach",
+      "text": "SQL, REST i JSON, SAML 2.0 i OpenID Connect, więc nic Cię nie wiąże."
+    },
+    "alt": "Lista połączeń: bazy danych z ich stanem i dostępnością"
+  },
+  "securityPage": {
+    "title": "Bezpieczeństwo i prywatność w standardzie",
+    "description": "Mechanizmy kontroli, które Formalie daje każdemu obszarowi roboczemu, i sposób, w jaki chronimy zbierane przez Ciebie dane.",
+    "metaDescription": "Szyfrowanie, role i kontrola dostępu, dziennik zdarzeń każdego działania, logowanie dwuetapowe, logowanie jednokrotne i lokalizacja danych.",
+    "items": [
+      {
+        "title": "Szyfrowanie w transmisji i w spoczynku",
+        "text": "Cały ruch jest szyfrowany, a żądania samej aplikacji mają drugą warstwę szyfrowania. W przeglądarce nie są przechowywane żadne sekrety."
+      },
+      {
+        "title": "Role i kontrola dostępu",
+        "text": "Szczegółowe role, dostęp do folderów i udostępnianie poszczególnych formularzy, z jasną odpowiedzią, kto widzi każdy formularz."
+      },
+      {
+        "title": "Dziennik zdarzeń wszystkiego",
+        "text": "Kto, co, kiedy i skąd zrobił, łącznie z działaniami pracowników Formalie, z możliwością eksportu."
+      },
+      {
+        "title": "Logowanie dwuetapowe i jednokrotne",
+        "text": "Aplikacja uwierzytelniająca lub SMS oraz firmowe logowanie przez SAML 2.0 lub OpenID Connect."
+      },
+      {
+        "title": "Lokalizacja danych",
+        "text": "W planie Enterprise Twoje dane pozostają w wybranym regionie."
+      },
+      {
+        "title": "Testowane kopie zapasowe",
+        "text": "Zaszyfrowane kopie zapasowe z testowanym przywracaniem."
+      }
+    ],
+    "disclosure": {
+      "title": "Zgłoś podatność",
+      "text": "Znalazłeś problem z bezpieczeństwem? Napisz na {email}. Nie podejmiemy działań przeciwko badaniom prowadzonym w dobrej wierze zgodnie z naszymi zasadami dopuszczalnego użytkowania."
+    },
+    "linksTitle": "Czytaj więcej",
+    "trust": "Zaufanie i bezpieczeństwo"
+  },
+  "aboutPage": {
+    "title": "Formularze, dane i dostęp dla każdego",
+    "description": "Formalie to bezpieczna, elastyczna platforma do tworzenia formularzy, zbierania danych i zarządzania nimi, łączenia systemów i kontroli dostępu, dla organizacji każdej wielkości, na całym świecie.",
+    "metaDescription": "Formalie tworzy bezpieczną, elastyczną platformę do formularzy, danych i dostępu, dla organizacji każdej wielkości, na całym świecie.",
+    "mission": {
+      "title": "Nasza misja",
+      "text": "Zbieranie informacji powinno być proste, a ich ochrona powinna być standardem. Tworzymy narzędzia, które umożliwiają jedno i drugie, zarówno małemu zespołowi, jak i dużej organizacji."
+    },
+    "beliefsTitle": "W co wierzymy",
+    "beliefs": [
+      {
+        "title": "Prywatność przede wszystkim",
+        "text": "Bez reklam, bez sprzedaży danych, bez śledzących plików cookie."
+      },
+      {
+        "title": "Twoje dane należą do Ciebie",
+        "text": "Eksportuj je w dowolnej chwili albo trzymaj we własnej bazie danych od pierwszego dnia."
+      },
+      {
+        "title": "Prostota ponad spryt",
+        "text": "Proste słowa, przejrzyste ekrany i pomoc na każdej stronie."
+      }
+    ],
+    "global": {
+      "title": "Globalne z założenia",
+      "text": "20 języków, także od prawej do lewej, lokalne formaty i dane w wybranym przez Ciebie regionie."
+    }
+  },
+  "solutionPages": {
+    "problem": "Problem",
+    "hr": {
+      "title": "Formularze kadrowe bez papierologii",
+      "description": "Aplikacje o pracę, wdrażanie i wnioski pracowników w jednym miejscu, dostępne tylko dla osób, które powinny je widzieć.",
+      "metaDescription": "Aplikacje o pracę, wdrażanie pracowników i wnioski pracownicze, z rolami, udostępnianiem poszczególnych formularzy i własną bazą danych.",
+      "problem": "Formularze kadrowe zawierają dane osobowe, przychodzą e-mailem i w arkuszach, a widzi je więcej osób, niż powinno.",
+      "templates": [
+        {
+          "title": "Aplikacja o pracę",
+          "text": "Dane kontaktowe, doświadczenie i przesłanie CV."
+        },
+        {
+          "title": "Wdrożenie pracownika",
+          "text": "Dane osobowe, dokumenty i sprzęt."
+        }
+      ],
+      "data": "Odpowiedzi trafiają do Twojej bazy danych HR lub do zaszyfrowanego magazynu Formalie i widzą je tylko wybrane przez Ciebie role HR."
+    },
+    "customer-feedback": {
+      "title": "Słuchaj każdego klienta w jego języku",
+      "description": "Ankiety satysfakcji i wnioski o zwrot w 20 językach, z analizami, które pokazują, co poprawić.",
+      "metaDescription": "Ankiety satysfakcji klientów i wnioski o zwrot w 20 językach, z analizami, tagami i podsumowaniami AI.",
+      "problem": "Opinie są rozproszone po e-mailach, czacie i papierze, w wielu językach, i nikt nie widzi trendu.",
+      "templates": [
+        {
+          "title": "Satysfakcja klienta",
+          "text": "Oceny, wynik i otwarty komentarz."
+        },
+        {
+          "title": "Wniosek o zwrot",
+          "text": "Dane zamówienia, powód i zdjęcia."
+        }
+      ],
+      "data": "Odpowiedzi są tagowane i podsumowywane, widoczne na pulpicie i wysyłane do Twoich systemów przez webhook."
+    },
+    "events": {
+      "title": "Rejestracje i rezerwacje, które po prostu działają",
+      "description": "Formularze rejestracji i potwierdzenia udziału z limitami, datami otwarcia i zamknięcia oraz kodem QR przy wejściu.",
+      "metaDescription": "Formularze rejestracji na wydarzenia i potwierdzenia udziału z limitem odpowiedzi, datami otwarcia i zamknięcia, kodami QR i powiadomieniami e-mail.",
+      "problem": "Miejsca się kończą, terminy się zmieniają, a listy są w trzech różnych arkuszach.",
+      "templates": [
+        {
+          "title": "Rejestracja na wydarzenie",
+          "text": "Dane uczestników, sesje i wymagania dietetyczne."
+        },
+        {
+          "title": "Potwierdzenie udziału",
+          "text": "Tak, nie lub może, z osobą towarzyszącą."
+        }
+      ],
+      "data": "Każda rejestracja trafia na jedną listę, z powiadomieniami e-mail, i może trafić do Twojej własnej bazy danych."
+    },
+    "health-and-safety": {
+      "title": "Zgłaszaj incydenty na miejscu",
+      "description": "Zgłoszenia incydentów i oceny ryzyka wypełniane na telefonie, ze zdjęciami, podpisami i przejrzystym rejestrem.",
+      "metaDescription": "Zgłoszenia incydentów i oceny ryzyka na każdym telefonie, ze zdjęciami, podpisami, obliczanymi wskaźnikami ryzyka i dziennikiem zdarzeń.",
+      "problem": "Incydenty zgłasza się późno, na papierze, bez zdjęć, a rejestrowi trudno ufać.",
+      "templates": [
+        {
+          "title": "Zgłoszenie incydentu",
+          "text": "Co się stało, gdzie, zdjęcia i podpis."
+        },
+        {
+          "title": "Ocena ryzyka",
+          "text": "Zagrożenia, punkty i działania, liczone na żywo."
+        }
+      ],
+      "data": "Zgłoszenia od razu trafiają do właściwego zespołu, z dziennikiem zdarzeń każdej zmiany."
+    },
+    "education": {
+      "title": "Zapisy i ewaluacje, po prostu",
+      "description": "Formularze zapisów i ewaluacje kursów dla szkół, uczelni i zespołów szkoleniowych, w językach, którymi mówią rodziny.",
+      "metaDescription": "Formularze zapisów i ewaluacje kursów w 20 językach, z przesyłaniem plików, regułami i bezpiecznym przechowywaniem.",
+      "problem": "Zapisy wymagają dokumentów i zgód, rodziny mówią w wielu językach, a ewaluacje trudno porównać.",
+      "templates": [
+        {
+          "title": "Zapisy",
+          "text": "Dane ucznia, dokumenty i zgoda."
+        },
+        {
+          "title": "Ewaluacja kursu",
+          "text": "Oceny i komentarze dla każdego kursu."
+        }
+      ],
+      "data": "Zapisy trafiają do Twojego systemu obsługi uczniów lub bazy danych, a ewaluacje pojawiają się na pulpicie."
+    },
+    "operations": {
+      "title": "Kontrole i audyty, na których można polegać",
+      "description": "Kontrole dostawców, audyty i rejestry z obliczeniami, wymaganymi dowodami i pełną historią.",
+      "metaDescription": "Formularze kontroli dostawców i audytów z obliczeniami, przesyłaniem plików, statusami przeglądu, własną bazą danych i pełnym dziennikiem zdarzeń.",
+      "problem": "Listy kontrolne są przepisywane ręcznie, punkty źle sumowane, a nikt nie wie, która wersja jest aktualna.",
+      "templates": [
+        {
+          "title": "Kontrola dostawcy",
+          "text": "Dane firmy, certyfikaty i wynik."
+        },
+        {
+          "title": "Audyt",
+          "text": "Lista kontrolna, ustalenia i działania."
+        }
+      ],
+      "data": "Wyniki są przeglądane i zatwierdzane, zapisywane w Twojej bazie danych, a każda zmiana zostaje w rejestrze."
+    },
+    "developers": {
+      "title": "Formularze jako API dla Twoich aplikacji",
+      "description": "Zbuduj formularz raz i korzystaj z niego w swoich aplikacjach: bezpieczne punkty końcowe, tokeny, webhooki i generowana dokumentacja.",
+      "metaDescription": "Zamień formularze w bezpieczne punkty końcowe API z tokenami, regułami dostępu, limitami zapytań, podpisanymi webhookami i generowaną dokumentacją.",
+      "problem": "Każda aplikacja potrzebuje własnego zaplecza formularzy, walidacji i przechowywania, budowanych za każdym razem od nowa.",
+      "templates": [
+        {
+          "title": "Punkt końcowy rejestracji",
+          "text": "Formularz, do którego Twoja aplikacja wysyła dane, sprawdzane jego regułami."
+        },
+        {
+          "title": "Webhook do Twojej usługi",
+          "text": "Podpisane dostawy z ponawianiem."
+        }
+      ],
+      "data": "Odpowiedzi są sprawdzane regułami formularza, przechowywane tam, gdzie wybierzesz, i przekazywane dalej podpisanymi webhookami."
+    }
   }
 }

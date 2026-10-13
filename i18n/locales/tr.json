@@ -400,5 +400,725 @@
       "title": "Dakikalar içinde yanıt toplamaya başlayın.",
       "description": "Ücretsiz plan, kart gerekmez. Büyüdükçe yükseltin."
     }
+  },
+  "common": {
+    "learnMore": "Daha fazla bilgi",
+    "related": "İlgili özellikler",
+    "howItWorks": "Nasıl çalışır",
+    "step": "Adım {n}",
+    "allFeatures": "Tüm özellikler",
+    "startFrom": "Başlangıç için formlar",
+    "whereDataGoes": "Veriler nereye gider",
+    "useTemplate": "Bu şablonla başla"
+  },
+  "featuresIndex": {
+    "title": "Formalie'nin yaptığı her şey",
+    "description": "Formlar oluşturun, tasarlayın, her yerde paylaşın, sonra her yanıtı saklayın, analiz edin ve koruyun. Aşağıdaki her parça bugün üründe mevcut.",
+    "metaDescription": "Form oluşturucu, tasarım, şablonlar, yanıtlar, analizler, kendi veritabanınız, API hizmeti, erişim denetimi, yapay zekâ asistanı ve 20 dil, tek bir güvenli platformda."
+  },
+  "features": {
+    "form-builder": {
+      "label": "Form oluşturucu",
+      "title": "Kod yazmadan her türlü formu oluşturun",
+      "description": "Soruları sürükleyip satırlara ve sayfalara bırakın, kurallar ve hesaplamalar ekleyin, hazır olduğunda yayınlayın. 20 dilde 40'tan fazla soru türü.",
+      "metaDescription": "Sürükle bırak ile sorular, sayfalar, mantık ve hesaplamalar; 20 dilde, sürümler ve tek tıkla yayınlama ile.",
+      "alt": "Form oluşturucu: solda soru türleri, ortada çok sayfalı bir form, sağda ayarlar",
+      "cards": [
+        {
+          "title": "40'tan fazla soru türü",
+          "text": "Metin, tarih, seçenekler, puanlama, matris, dosya yükleme, imza, adres, para birimi, IBAN ve daha fazlası."
+        },
+        {
+          "title": "Satırlar ve sayfalar",
+          "text": "Soruları satırlara ve sayfalara sürükleyin. Her sürükleme için bir klavye alternatifi var."
+        },
+        {
+          "title": "Kurallar",
+          "text": "Önceki yanıtlara göre soruları gösterin, gizleyin veya zorunlu yapın, bir sayfaya geçin ya da sona atlayın."
+        },
+        {
+          "title": "Canlı hesaplamalar",
+          "text": "Toplamlar, puanlar ve fiyatlar kişi yanıtlarken hesaplanır, seçilen seçeneğin bir ayrıntısından bile."
+        },
+        {
+          "title": "Büyük ve yeniden kullanılabilir listeler",
+          "text": "Düzeyli seçenek listeleri, yazdıkça yüklenen 200.000'e kadar seçenek, her formda yeniden kullanılabilir."
+        },
+        {
+          "title": "Sürümler",
+          "text": "Önce taslak, sonra yayın. Yayındaki bir formu düzenlemek yeni bir taslak açar ve her sürüm geri yüklenebilir."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Soru ekleyin",
+          "text": "40'tan fazla türden veya kayıtlı sorularınızdan seçin."
+        },
+        {
+          "title": "Kural ekleyin",
+          "text": "Neyin, ne zaman görüneceğine ve neyin hesaplanacağına karar verin."
+        },
+        {
+          "title": "Yayınlayın",
+          "text": "Bağlantı, yerleştirme, QR kod veya API ile paylaşın."
+        }
+      ]
+    },
+    "design": {
+      "label": "Tasarım ve temalar",
+      "title": "Markanıza benzeyen formlar",
+      "description": "Bir görünümle başlayın ve önemli olan her şeyi değiştirin: düzen, arka plan, yazı tipleri, renkler, düğmeler, üst bilgi, alt bilgi ve teşekkür sayfası.",
+      "metaDescription": "Hazır görünümler, kendi sunucularımızda 21 yazı tipi, kontrast ipuçlu renkler, temalar ve açılış sayfaları. Her form markanıza benzesin.",
+      "alt": "Form tasarımcısı: solda hazır görünümler ve formun canlı önizlemesi",
+      "cards": [
+        {
+          "title": "Hazır görünümler",
+          "text": "Minimal, Yumuşak, Cesur, Koyu, Zarif, Kurumsal ve daha fazlası, düzenlemeye hazır."
+        },
+        {
+          "title": "21 yazı tipi",
+          "text": "Yazı tipleri bizde barındırılır, bu yüzden başka bir siteden hiçbir şey yüklenmez."
+        },
+        {
+          "title": "Kontrast ipuçlu renkler",
+          "text": "Bir metnin okunması zor olacaksa hemen görürsünüz."
+        },
+        {
+          "title": "Temalar",
+          "text": "Bir tasarımı tema olarak kaydedin ve istediğiniz forma uygulayın."
+        },
+        {
+          "title": "Açılış sayfaları",
+          "text": "Formu kendi bağlantısında, bir sayfa tasarımıyla çerçeveleyin."
+        },
+        {
+          "title": "Tek renkten tema",
+          "text": "Yapay zekâ asistanına marka renginizi verin, bir tema alın."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Bir görünüm seçin",
+          "text": "Hazır görünümlerden biriyle başlayın."
+        },
+        {
+          "title": "Size göre uyarlayın",
+          "text": "Yazı tipleri, renkler, üst bilgi, alt bilgi ve düğmeler."
+        },
+        {
+          "title": "Tema olarak kaydedin",
+          "text": "Her formda yeniden kullanın."
+        }
+      ]
+    },
+    "templates": {
+      "label": "Şablonlar",
+      "title": "Hazır bir formla başlayın",
+      "description": "İş başvurularından olay raporlarına kadar kategorilere ayrılmış bir şablon kütüphanesi. Kendi formlarınızı da şablon olarak kaydedebilirsiniz.",
+      "metaDescription": "İş dünyası, İK, etkinlikler, iş sağlığı ve güvenliği, konaklama ve eğitim için hazır form şablonları. Kendi formlarınızı şablon olarak kaydedin.",
+      "alt": "Kartlar halinde şablon kategorileri",
+      "cards": [
+        {
+          "title": "Kategoriye göre",
+          "text": "İş ve müşteriler, İK ve iş yeri, etkinlikler ve rezervasyonlar, iş sağlığı ve güvenliği, konaklama, eğitim ve daha fazlası."
+        },
+        {
+          "title": "Değiştirmeye hazır",
+          "text": "Her şablon normal bir formdur: istediğiniz soruyu, kuralı veya tasarımı değiştirin."
+        },
+        {
+          "title": "Kendi şablonlarınız",
+          "text": "Formlarınızdan herhangi birini ekibiniz için şablon olarak kaydedin."
+        },
+        {
+          "title": "Bir açıklamadan",
+          "text": "Ya da ihtiyacınız olan formu anlatın, yapay zekâ asistanı taslağını hazırlasın."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Seçin",
+          "text": "Kütüphaneye kategoriye göre göz atın."
+        },
+        {
+          "title": "Uyarlayın",
+          "text": "Soruları, kuralları ve tasarımı değiştirin."
+        },
+        {
+          "title": "Yayınlayın",
+          "text": "Dakikalar içinde yanıt toplayın."
+        }
+      ]
+    },
+    "responses": {
+      "label": "Yanıtlar",
+      "title": "Her yanıt incelenmiş ve düzenli",
+      "description": "Yanıtları tabloda veya kartlar halinde işleyin, yanıtlar arasında arayın, inceleyin, etiketleyin ve dışa aktarın.",
+      "metaDescription": "Tablo ve kart görünümleri, arama ve filtreler, inceleme durumları, etiketler, notlar, geçmişi tutulan düzenlemeler ve Excel, CSV veya PDF'e aktarma.",
+      "alt": "İnceleme durumları grafiğiyle birlikte yanıt listesi",
+      "cards": [
+        {
+          "title": "Tablo ve kartlar",
+          "text": "Yanıtlar arasında arayın, filtreleyin, sütunları seçin, sıralayın ve bir tarih aralığı belirleyin."
+        },
+        {
+          "title": "İnceleme durumları",
+          "text": "Yeni, incelendi, onaylandı veya reddedildi; böylece herkes neyin bittiğini bilir."
+        },
+        {
+          "title": "Etiketler ve notlar",
+          "text": "Yanıtları etiketleyin ve ayrıntı panelinde not bırakın."
+        },
+        {
+          "title": "Geçmişi tutulan düzenlemeler",
+          "text": "Bir yanıtı düzeltin, neyin değiştiğinin kaydı korunsun."
+        },
+        {
+          "title": "Dışa aktarma",
+          "text": "Excel, CSV veya PDF, ilerleme gösterilerek."
+        },
+        {
+          "title": "Yapay zekâ özetleri",
+          "text": "Tek bir yanıtın özeti ya da birçok yanıttan çıkarımlar."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Yanıtlar gelir",
+          "text": "Her kanaldan, tek bir listeye."
+        },
+        {
+          "title": "İnceleyin",
+          "text": "Durum belirleyin, etiketleyin ve not ekleyin."
+        },
+        {
+          "title": "Dışa aktarın veya bağlayın",
+          "text": "İndirin ya da veritabanınıza gönderin."
+        }
+      ]
+    },
+    "analytics": {
+      "label": "Analizler",
+      "title": "Her formun performansını görün",
+      "description": "Ziyaretler, başlangıçlar ve tamamlamalar, kişilerin nerede bıraktığı ve hangi cihaz, kanal ve dilleri kullandığı.",
+      "metaDescription": "Form analizleri: ziyaretler, başlangıçlar, tamamlamalar, soru bazında bırakma, cihazlar, kanallar ve diller, ayrıca tüm çalışma alanı için bir pano.",
+      "alt": "Analizlerde dönüşüm özeti",
+      "cards": [
+        {
+          "title": "Dönüşüm",
+          "text": "Her form için ziyaretler, başlangıçlar ve tamamlamalar."
+        },
+        {
+          "title": "Soru bazında bırakma",
+          "text": "Kişilerin tam olarak nerede durduğunu görün."
+        },
+        {
+          "title": "Cihazlar, kanallar, diller",
+          "text": "Kişilerin nasıl ve nereden yanıt verdiğini bilin."
+        },
+        {
+          "title": "Çalışma alanı panosu",
+          "text": "Eğilimleriyle KPI kartları, en yoğun formlar ve ilgi bekleyenler."
+        },
+        {
+          "title": "Filtreler ve dönemler",
+          "text": "Klasöre ve sahibine göre, gün, hafta, ay veya yıl bazında."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Paylaşın",
+          "text": "Her ziyaret ve her yanıt sayılır."
+        },
+        {
+          "title": "Fark edin",
+          "text": "Kişilerin ayrıldığı soruyu bulun."
+        },
+        {
+          "title": "İyileştirin",
+          "text": "Değiştirin ve rakamların değişimini izleyin."
+        }
+      ]
+    },
+    "data-sources": {
+      "label": "Veri kaynakları",
+      "title": "İlk yanıttan itibaren kendi veritabanınız",
+      "description": "MySQL, MariaDB, PostgreSQL, SQL Server veya Oracle bağlayın, her yanıt geldiği anda oraya yazılsın. Ya da her şeyi Formalie'nin şifreli depolamasında tutun.",
+      "metaDescription": "Her yanıtı geldiği anda MySQL, MariaDB, PostgreSQL, SQL Server veya Oracle'a gönderin ya da Formalie'nin şifreli depolamasında saklayın.",
+      "alt": "Veri kaynakları özeti: veritabanı trafiği ve bağlantı sağlığı",
+      "cards": [
+        {
+          "title": "Beş veritabanı",
+          "text": "MySQL, MariaDB, PostgreSQL, SQL Server ve Oracle."
+        },
+        {
+          "title": "Geldiği anda yazılır",
+          "text": "Yanıtlar Formalie'nin kendi önekli tablolarına gider; geçmiş yanıtları aktarma ve yeniden deneme dahil."
+        },
+        {
+          "title": "Bağlantı sağlığı",
+          "text": "Bağlantıyı test edin, izin rehberini izleyin, sağlığı ve yanıt süresini takip edin."
+        },
+        {
+          "title": "Veritabanı gezgini",
+          "text": "Tablolara göz atın, kendi tablolarınızdaki satırları değiştirin ve dışa aktarın."
+        },
+        {
+          "title": "Sorgu düzenleyici",
+          "text": "Otomatik tamamlamalı SQL, varsayılan olarak salt okunur, geçmiş ve kayıtlı sorgularla."
+        },
+        {
+          "title": "Kayıt altında",
+          "text": "Bir bağlantı üzerinde yapılan her şey denetim kaydında yer alır."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Bağlayın",
+          "text": "Veritabanınızı ekleyin ve test edin."
+        },
+        {
+          "title": "Formları seçin",
+          "text": "Hangi formların yanıtlarını orada saklayacağını seçin."
+        },
+        {
+          "title": "Yanıtlar akar",
+          "text": "Her yeni yanıt, geldiği anda yazılır."
+        }
+      ]
+    },
+    "api-service": {
+      "label": "API hizmeti",
+      "title": "Her formu güvenli API uç noktalarına dönüştürün",
+      "description": "Formları hizmetlerde gruplayın, her uç noktanın neyi kabul edip döndüreceğini seçin ve onu belirteçler, erişim kuralları ve hız sınırlarıyla koruyun.",
+      "metaDescription": "Her formu belirteçler, erişim kuralları, hız sınırları, günlükler ve otomatik oluşturulan belgelerle güvenli API uç noktalarına dönüştürün.",
+      "alt": "API hizmeti özeti: hizmetler, uç noktalar, çağrılar ve zaman içindeki trafik",
+      "cards": [
+        {
+          "title": "Formlardan uç noktalar",
+          "text": "GET, POST, PUT ve DELETE; kabul edilen ve döndürülen alanlar her uç nokta için ayrı seçilir."
+        },
+        {
+          "title": "Kapsamlı belirteçler",
+          "text": "Kalıcı veya kısa ömürlü belirteçler, test ve canlı."
+        },
+        {
+          "title": "İmzalı istekler",
+          "text": "Zorunlu başlıklar, imzalar ve tekrar koruması."
+        },
+        {
+          "title": "Erişim kuralları",
+          "text": "IP, alan adı, bölge ve ülkeye göre, ayrıca tarayıcı uygulamaları için izin verilen web siteleri."
+        },
+        {
+          "title": "Hız sınırları",
+          "text": "Belirteç, IP ve uç nokta başına."
+        },
+        {
+          "title": "Belgeler ve günlükler",
+          "text": "Deneme konsollu otomatik belgeler, istek günlükleri, analizler ve imzalı webhook'lar."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Bir form seçin",
+          "text": "Soruları alanlara dönüşür."
+        },
+        {
+          "title": "Belirteç oluşturun",
+          "text": "Uygulamanızın ihtiyaç duyduğu kapsamlarla."
+        },
+        {
+          "title": "Çağırın",
+          "text": "Herhangi bir uygulamadan, hazır belgelerle."
+        }
+      ]
+    },
+    "access-control": {
+      "label": "Erişim ve güvenlik",
+      "title": "Kimin neyi göreceğine tam olarak siz karar verin",
+      "description": "Ayrıntılı izinlere sahip roller, klasör erişimi, form bazında paylaşım, kurumsal giriş ve her işlemin denetim kaydı.",
+      "metaDescription": "Roller ve izinler, klasör erişimi, form bazında paylaşım, iki adımlı giriş, çoklu oturum açma, oturum denetimi ve her işlemin denetim kaydı.",
+      "alt": "Roller ve erişim: rol başına kişiler ve rol türleri",
+      "cards": [
+        {
+          "title": "Roller ve izinler",
+          "text": "Her alan için kendi, paylaşılan veya tüm kayıtlar, ayrıca kendi rolleriniz."
+        },
+        {
+          "title": "Klasörler ve paylaşım",
+          "text": "Klasör erişimi, form bazında paylaşım ve bu formu kimin görebileceğine net bir yanıt."
+        },
+        {
+          "title": "Her soruyu kim görür",
+          "text": "Herkes ya da seçilen departmanlar, roller veya kişiler."
+        },
+        {
+          "title": "Kurumsal giriş",
+          "text": "Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0 veya OpenID Connect ile çoklu oturum açma."
+        },
+        {
+          "title": "İki adımlı giriş",
+          "text": "Bir doğrulama uygulaması veya kısa mesaj, ayrıca parola kuralları, izin verilen IP'ler ve oturum süresi."
+        },
+        {
+          "title": "Denetim kaydı",
+          "text": "Her işlem; kim, ne zaman ve nereden, dışa aktarma ile."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Davet edin",
+          "text": "Kişileri departmanları ve yöneticileriyle ekleyin."
+        },
+        {
+          "title": "Rol verin",
+          "text": "Her rolün neler yapabileceğini seçin."
+        },
+        {
+          "title": "Kontrol edin",
+          "text": "Her formu kimin görebildiğini ve nedenini görün."
+        }
+      ]
+    },
+    "ai-assistant": {
+      "label": "Yapay zekâ asistanı",
+      "title": "Oluşturan, okuyan ve çeviren bir asistan",
+      "description": "Bir formu anlatın veya bir belge yükleyin, taslağı alın. Yanıtlarınız hakkında sade bir dille soru sorun. Formları tek tıkla çevirin.",
+      "metaDescription": "Bir açıklamadan veya belgeden formlar, sorular ve mantık için yardım, yanıt analizi, özetler ve çeviri; her planda yapay zekâ kredisiyle.",
+      "prompt": "İletişim bilgileri, deneyim ve özgeçmiş yüklemesi içeren bir iş başvurusu",
+      "drafted": "Taslak hazır: 3 sayfa, 9 soru",
+      "cards": [
+        {
+          "title": "Bir açıklamadan formlar",
+          "text": "Ya da bir belgeden, şablon önerileriyle."
+        },
+        {
+          "title": "Oluşturucuda yardım",
+          "text": "Sorular, kurallar ve ifadeler için."
+        },
+        {
+          "title": "Yanıt analizi",
+          "text": "Verileriniz hakkında sade bir dille sorun ve özetler alın."
+        },
+        {
+          "title": "Çeviri",
+          "text": "Bir formu ihtiyaç duyduğu dillere çevirin."
+        },
+        {
+          "title": "Tek renkten tema",
+          "text": "Marka renginizi verin, bir tasarım alın."
+        },
+        {
+          "title": "Her planda kredi",
+          "text": "Yapay zekâ kredileri her plana dahildir."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Anlatın",
+          "text": "Neye ihtiyacınız olduğunu söyleyin ya da bir belge yükleyin."
+        },
+        {
+          "title": "İnceleyin",
+          "text": "Taslağı kontrol edin ve uyarlayın."
+        },
+        {
+          "title": "Yayınlayın",
+          "text": "Ve yanıtlar hakkında asistana soru sorun."
+        }
+      ]
+    },
+    "languages": {
+      "label": "Diller",
+      "title": "Her form, kişilerinizin dilinde",
+      "description": "Uygulama, sağdan sola yazılan Arapça dahil 20 dil konuşur. Bir formun birden fazla dili olabilir ve herkes kendi dilini seçer.",
+      "metaDescription": "20 dilde uygulama, her biri dil seçicili çok dilli formlar ve her kişiye uyan tarihler, sayılar ve para birimleri.",
+      "question": "Ziyaretinizi nasıl değerlendirirsiniz?",
+      "cards": [
+        {
+          "title": "20 dil",
+          "text": "Uygulamanın tamamı, sağdan sola diller dahil."
+        },
+        {
+          "title": "Çok dilli formlar",
+          "text": "Yanıt veren kişiler için bir dil seçiciyle."
+        },
+        {
+          "title": "Çeviri yardımı",
+          "text": "Yapay zekâ asistanı çevirir, siz kontrol edersiniz."
+        },
+        {
+          "title": "Yerel biçimler",
+          "text": "Tarihler, sayılar ve para birimleri her kişinin diline ve bölgesine uyar."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Dil ekleyin",
+          "text": "Formun sunacağı dilleri seçin."
+        },
+        {
+          "title": "Çevirin",
+          "text": "Asistanın yardımıyla."
+        },
+        {
+          "title": "Bir kez paylaşın",
+          "text": "Herkes kendi dilinde yanıt verir."
+        }
+      ]
+    },
+    "help-and-tours": {
+      "label": "Yardım ve turlar",
+      "title": "Her sayfada yardım",
+      "description": "20 dilde bir yardım merkezi, ilk ziyarette rehberli turlar ve makalelerden yanıt veren bir asistan.",
+      "metaDescription": "20 dilde makaleler, SSS ve sözlük içeren bir yardım merkezi, rehberli turlar, bağlamsal yardım ve yeni çalışma alanları için bir kurulum sihirbazı.",
+      "alt": "Yardım merkezi ana sayfası",
+      "cards": [
+        {
+          "title": "Yardım merkezi",
+          "text": "20 dilde makaleler, SSS ve bir sözlük."
+        },
+        {
+          "title": "Bir asistan",
+          "text": "Soruları yardım makalelerine dayanarak yanıtlar."
+        },
+        {
+          "title": "Bağlamsal yardım",
+          "text": "Her sayfada bir soru işareti ve “Bana nerede olduğunu göster” düğmesi."
+        },
+        {
+          "title": "Rehberli turlar",
+          "text": "Her bölüme ilk girişte sunulur."
+        },
+        {
+          "title": "Kurulum sihirbazı",
+          "text": "Yeni çalışma alanları birkaç adımda hazır olur."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Kaydolun",
+          "text": "Kurulum sihirbazı çalışma alanını başlatır."
+        },
+        {
+          "title": "Tura katılın",
+          "text": "Her bölüm ilk seferde kendini tanıtır."
+        },
+        {
+          "title": "Sorun",
+          "text": "Yardım merkezi ve asistan bir tık uzağınızda."
+        }
+      ]
+    }
+  },
+  "integrationsPage": {
+    "title": "Zaten kullandığınız sistemlerle çalışır",
+    "description": "Kendi veritabanınız, webhook'lar ve uygulamalarınız için bir API, ayrıca şirketinizin kullandığı kimlik sağlayıcıyla giriş.",
+    "metaDescription": "MySQL, MariaDB, PostgreSQL, SQL Server ve Oracle, webhook'lar, API hizmeti, Google ve Facebook ile giriş ve Okta, Microsoft Entra ID ve diğerleriyle çoklu oturum açma.",
+    "databases": {
+      "title": "Veritabanları",
+      "text": "Her yanıt geldiği anda kendi veritabanınıza yazılır."
+    },
+    "api": {
+      "title": "API hizmeti ve webhook'lar",
+      "text": "Uygulamalarınız için uç noktalar ve hizmetlerinize yeniden denemeli imzalı webhook'lar."
+    },
+    "signin": {
+      "title": "Giriş",
+      "text": "Her planda e-posta ve parola, Google veya Facebook; ücretli planlarda çoklu oturum açma."
+    },
+    "standards": {
+      "title": "Açık standartlar üzerine kurulu",
+      "text": "SQL, REST ve JSON, SAML 2.0 ve OpenID Connect; böylece hiçbir şeye bağlı kalmazsınız."
+    },
+    "alt": "Bağlantı listesi: durumları ve çalışma süreleriyle veritabanları"
+  },
+  "securityPage": {
+    "title": "Yerleşik güvenlik ve gizlilik",
+    "description": "Formalie'nin her çalışma alanına sunduğu denetimler ve topladığınız verileri nasıl koruduğumuz.",
+    "metaDescription": "Şifreleme, roller ve erişim denetimi, her işlemin denetim kaydı, iki adımlı giriş, çoklu oturum açma ve veri konumu.",
+    "items": [
+      {
+        "title": "Aktarımda ve depolamada şifreli",
+        "text": "Tüm trafik şifrelenir ve uygulamanın kendi istekleri ikinci bir şifreleme katmanı taşır. Tarayıcıda hiçbir gizli bilgi tutulmaz."
+      },
+      {
+        "title": "Roller ve erişim denetimi",
+        "text": "Ayrıntılı roller, klasör erişimi ve form bazında paylaşım, ayrıca her formu kimin görebileceğine net bir yanıt."
+      },
+      {
+        "title": "Her şeyin denetim kaydı",
+        "text": "Kim neyi, ne zaman ve nereden yaptı; Formalie çalışanlarının yaptıkları dahil, dışa aktarma ile."
+      },
+      {
+        "title": "İki adımlı giriş ve çoklu oturum açma",
+        "text": "Bir doğrulama uygulaması veya kısa mesaj ve SAML 2.0 ya da OpenID Connect ile kurumsal giriş."
+      },
+      {
+        "title": "Veri konumu",
+        "text": "Enterprise planında verilerinizi seçtiğiniz bölgede tutun."
+      },
+      {
+        "title": "Test edilmiş yedekler",
+        "text": "Geri yüklemesi test edilen şifreli yedekler."
+      }
+    ],
+    "disclosure": {
+      "title": "Bir güvenlik açığı bildirin",
+      "text": "Bir güvenlik sorunu mu buldunuz? {email} adresine yazın. Kabul edilebilir kullanım politikamıza uyan iyi niyetli araştırmalara karşı işlem yapmayız."
+    },
+    "linksTitle": "Daha fazlasını okuyun",
+    "trust": "Güven ve güvenlik"
+  },
+  "aboutPage": {
+    "title": "Herkes için formlar, veriler ve erişim",
+    "description": "Formalie; form oluşturmak, veri toplamak ve yönetmek, sistemleri bağlamak ve erişimi denetlemek için güvenli ve esnek bir platformdur. Dünyanın her yerindeki her ölçekten kuruluş için.",
+    "metaDescription": "Formalie, dünyanın her yerindeki her ölçekten kuruluş için formlar, veriler ve erişim için güvenli ve esnek bir platform geliştirir.",
+    "mission": {
+      "title": "Misyonumuz",
+      "text": "Bilgi toplamak basit olmalı, onu güvende tutmak da varsayılan olmalı. Küçük bir ekip ya da büyük bir kuruluş için, ikisini de mümkün kılan araçlar geliştiriyoruz."
+    },
+    "beliefsTitle": "İnandıklarımız",
+    "beliefs": [
+      {
+        "title": "Önce gizlilik",
+        "text": "Reklam yok, veri satışı yok, izleme çerezi yok."
+      },
+      {
+        "title": "Verileriniz sizindir",
+        "text": "İstediğiniz zaman dışa aktarın ya da ilk günden kendi veritabanınızda tutun."
+      },
+      {
+        "title": "Basit olan kazanır",
+        "text": "Sade bir dil, net ekranlar ve her sayfada yardım."
+      }
+    ],
+    "global": {
+      "title": "Tasarımı gereği küresel",
+      "text": "Sağdan sola diller dahil 20 dil, yerel biçimler ve seçtiğiniz bölgede veri."
+    }
+  },
+  "solutionPages": {
+    "problem": "Sorun",
+    "hr": {
+      "title": "Evrak işi olmadan İK ve çalışan formları",
+      "description": "Başvurular, işe alıştırma ve personel talepleri tek bir yerde; yalnızca görmesi gereken kişilerin erişimiyle.",
+      "metaDescription": "İş başvuruları, çalışan işe alıştırma ve personel talepleri; roller, form bazında paylaşım ve kendi veritabanınızla.",
+      "problem": "İK formları kişisel veriler içerir, e-posta ve tablolarla gelir ve gerekenden fazla kişi tarafından görülür.",
+      "templates": [
+        {
+          "title": "İş başvurusu",
+          "text": "İletişim bilgileri, deneyim ve özgeçmiş yüklemesi."
+        },
+        {
+          "title": "Çalışan işe alıştırma",
+          "text": "Kişisel bilgiler, belgeler ve ekipman."
+        }
+      ],
+      "data": "Yanıtlar İK veritabanınıza veya Formalie'nin şifreli depolamasına gider ve yalnızca seçtiğiniz İK rolleri tarafından görülebilir."
+    },
+    "customer-feedback": {
+      "title": "Her müşteriyi kendi dilinde dinleyin",
+      "description": "20 dilde memnuniyet anketleri ve iade talepleri, neyin düzeltileceğini gösteren analizlerle.",
+      "metaDescription": "20 dilde müşteri memnuniyeti anketleri ve iade talepleri; analizler, etiketler ve yapay zekâ özetleriyle.",
+      "problem": "Geri bildirimler e-postaya, sohbete ve kâğıda dağılmış, birçok dilde, ve kimse eğilimi görmüyor.",
+      "templates": [
+        {
+          "title": "Müşteri memnuniyeti",
+          "text": "Puanlamalar, bir skor ve açık uçlu bir yorum."
+        },
+        {
+          "title": "İade talebi",
+          "text": "Sipariş bilgileri, neden ve fotoğraflar."
+        }
+      ],
+      "data": "Yanıtlar etiketlenir ve özetlenir, panoda gösterilir ve webhook ile sistemlerinize gönderilir."
+    },
+    "events": {
+      "title": "Sorunsuz çalışan kayıtlar ve rezervasyonlar",
+      "description": "Sınırlar, açılış ve kapanış tarihleri ve kapı için bir QR kod içeren kayıt ve katılım formları.",
+      "metaDescription": "Yanıt sınırları, açılış ve kapanış tarihleri, QR kodlar ve e-posta bildirimleriyle etkinlik kayıt ve katılım formları.",
+      "problem": "Yerler tükenir, tarihler değişir ve listeler üç farklı tabloda durur.",
+      "templates": [
+        {
+          "title": "Etkinlik kaydı",
+          "text": "Katılımcı bilgileri, oturumlar ve beslenme tercihleri."
+        },
+        {
+          "title": "Katılım yanıtı",
+          "text": "Evet, hayır veya belki, bir misafirle birlikte."
+        }
+      ],
+      "data": "Her kayıt e-posta bildirimleriyle tek bir listeye düşer ve kendi veritabanınıza gönderilebilir."
+    },
+    "health-and-safety": {
+      "title": "Olayları yerinde bildirin",
+      "description": "Telefondan doldurulabilen olay raporları ve risk değerlendirmeleri; fotoğraflar, imzalar ve net bir kayıtla.",
+      "metaDescription": "Her telefonda olay raporları ve risk değerlendirmeleri; fotoğraflar, imzalar, hesaplanan risk puanları ve denetim kaydıyla.",
+      "problem": "Olaylar geç, kâğıt üzerinde ve fotoğrafsız bildirilir, kayda güvenmek zordur.",
+      "templates": [
+        {
+          "title": "Olay raporu",
+          "text": "Ne oldu, nerede, fotoğraflar ve bir imza."
+        },
+        {
+          "title": "Risk değerlendirmesi",
+          "text": "Tehlikeler, puanlar ve önlemler, anında hesaplanır."
+        }
+      ],
+      "data": "Raporlar hemen doğru ekibe ulaşır, her değişiklik denetim kaydında yer alır."
+    },
+    "education": {
+      "title": "Kayıt ve değerlendirmeler, kolayca",
+      "description": "Okullar, kolejler ve eğitim ekipleri için ailelerin konuştuğu dillerde kayıt formları ve ders değerlendirmeleri.",
+      "metaDescription": "20 dilde kayıt formları ve ders değerlendirmeleri; dosya yükleme, kurallar ve güvenli depolamayla.",
+      "problem": "Kayıt belge ve onay gerektirir, aileler birçok dil konuşur ve değerlendirmeleri karşılaştırmak zordur.",
+      "templates": [
+        {
+          "title": "Kayıt",
+          "text": "Öğrenci bilgileri, belgeler ve onay."
+        },
+        {
+          "title": "Ders değerlendirmesi",
+          "text": "Ders başına puanlamalar ve yorumlar."
+        }
+      ],
+      "data": "Kayıtlar öğrenci sisteminize veya veritabanınıza gider, değerlendirmeler panoda görünür."
+    },
+    "operations": {
+      "title": "Güvenebileceğiniz kontroller ve denetimler",
+      "description": "Hesaplamalar, zorunlu kanıtlar ve eksiksiz bir iz ile tedarikçi kontrolleri, denetimler ve kayıtlar.",
+      "metaDescription": "Hesaplamalar, dosya yükleme, inceleme durumları, kendi veritabanınız ve eksiksiz bir denetim kaydıyla tedarikçi kontrolü ve denetim formları.",
+      "problem": "Kontrol listeleri elle kopyalanır, puanlar yanlış toplanır ve hangi sürümün güncel olduğunu kimse bilmez.",
+      "templates": [
+        {
+          "title": "Tedarikçi kontrolü",
+          "text": "Şirket bilgileri, sertifikalar ve bir puan."
+        },
+        {
+          "title": "Denetim",
+          "text": "Kontrol listesi, bulgular ve önlemler."
+        }
+      ],
+      "data": "Sonuçlar incelenir ve onaylanır, veritabanınıza yazılır ve her değişiklik kayıt altına alınır."
+    },
+    "developers": {
+      "title": "Kendi uygulamalarınız için API olarak formlar",
+      "description": "Formu bir kez oluşturun ve uygulamalarınızdan kullanın: güvenli uç noktalar, belirteçler, webhook'lar ve otomatik belgeler.",
+      "metaDescription": "Formları belirteçler, erişim kuralları, hız sınırları, imzalı webhook'lar ve otomatik oluşturulan belgelerle güvenli API uç noktalarına dönüştürün.",
+      "problem": "Her uygulamanın kendi form arka ucuna, doğrulamasına ve depolamasına ihtiyacı var ve bunlar her seferinde yeniden kurulur.",
+      "templates": [
+        {
+          "title": "Kayıt uç noktası",
+          "text": "Uygulamanızın veri gönderdiği, kurallarıyla doğrulanan bir form."
+        },
+        {
+          "title": "Hizmetinize webhook",
+          "text": "Yeniden denemeli imzalı teslimatlar."
+        }
+      ],
+      "data": "Yanıtlar formun kurallarına göre doğrulanır, seçtiğiniz yerde saklanır ve imzalı webhook'larla iletilir."
+    }
   }
 }

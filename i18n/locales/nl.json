@@ -400,5 +400,725 @@
       "title": "Begin binnen enkele minuten met verzamelen.",
       "description": "Gratis abonnement, geen creditcard nodig. Upgrade wanneer je groeit."
     }
+  },
+  "common": {
+    "learnMore": "Meer informatie",
+    "related": "Gerelateerde functies",
+    "howItWorks": "Zo werkt het",
+    "step": "Stap {n}",
+    "allFeatures": "Alle functies",
+    "startFrom": "Formulieren om mee te beginnen",
+    "whereDataGoes": "Waar de gegevens naartoe gaan",
+    "useTemplate": "Begin met dit sjabloon"
+  },
+  "featuresIndex": {
+    "title": "Alles wat Formalie doet",
+    "description": "Bouw formulieren, geef ze een ontwerp, deel ze overal en bewaar, analyseer en bescherm daarna elk antwoord. Alles hieronder zit nu al in het product.",
+    "metaDescription": "Formulierbouwer, ontwerp, sjablonen, antwoorden, analyses, je eigen database, API-service, toegangsbeheer, AI-assistent en 20 talen, in één veilig platform."
+  },
+  "features": {
+    "form-builder": {
+      "label": "Formulierbouwer",
+      "title": "Bouw elk formulier, zonder code",
+      "description": "Sleep vragen naar rijen en pagina's, voeg regels en berekeningen toe en publiceer als het klaar is. Meer dan 40 vraagtypen, in 20 talen.",
+      "metaDescription": "Vragen, pagina's, logica en berekeningen met slepen en neerzetten, in 20 talen, met versies en publiceren met één klik.",
+      "alt": "De formulierbouwer: vraagtypen links, een formulier met meerdere pagina's in het midden, instellingen rechts",
+      "cards": [
+        {
+          "title": "Meer dan 40 vraagtypen",
+          "text": "Tekst, datums, keuzes, beoordelingen, matrix, uploads, handtekening, adres, bedrag, IBAN en meer."
+        },
+        {
+          "title": "Rijen en pagina's",
+          "text": "Sleep vragen naar rijen en pagina's, met een toetsenbordalternatief voor elke sleepactie."
+        },
+        {
+          "title": "Regels",
+          "text": "Toon, verberg of verplicht vragen, ga naar een pagina of spring naar het einde, op basis van eerdere antwoorden."
+        },
+        {
+          "title": "Live berekeningen",
+          "text": "Totalen, scores en prijzen worden berekend terwijl mensen antwoorden, zelfs uit een detail van de gekozen optie."
+        },
+        {
+          "title": "Grote, herbruikbare lijsten",
+          "text": "Keuzelijsten met niveaus, tot 200.000 opties die laden terwijl mensen typen, herbruikbaar in elk formulier."
+        },
+        {
+          "title": "Versies",
+          "text": "Eerst een concept, dan publiceren. Een live formulier bewerken opent een nieuw concept, en elke versie is terug te zetten."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Voeg vragen toe",
+          "text": "Kies uit meer dan 40 typen of je opgeslagen vragen."
+        },
+        {
+          "title": "Voeg regels toe",
+          "text": "Bepaal wat er verschijnt, wanneer, en wat er berekend wordt."
+        },
+        {
+          "title": "Publiceer",
+          "text": "Deel het via een link, insluiting, QR-code of API."
+        }
+      ]
+    },
+    "design": {
+      "label": "Ontwerp en thema's",
+      "title": "Formulieren in de stijl van je merk",
+      "description": "Begin met een stijl en pas alles aan wat ertoe doet: indeling, achtergrond, lettertypen, kleuren, knoppen, koptekst, voettekst en de bedankpagina.",
+      "metaDescription": "Startstijlen, 21 zelf gehoste lettertypen, kleuren met contrasttips, thema's en landingspagina's. Geef elk formulier de stijl van je merk.",
+      "alt": "De formulierontwerper: startstijlen links en een live voorbeeld van het formulier",
+      "cards": [
+        {
+          "title": "Startstijlen",
+          "text": "Minimaal, Zacht, Krachtig, Donker, Elegant, Zakelijk en meer, klaar om aan te passen."
+        },
+        {
+          "title": "21 lettertypen",
+          "text": "Zelf gehoste lettertypen, dus niets wordt van een andere site geladen."
+        },
+        {
+          "title": "Kleuren met contrasttips",
+          "text": "Zie direct wanneer tekst slecht leesbaar zou worden."
+        },
+        {
+          "title": "Thema's",
+          "text": "Sla een ontwerp op als thema en pas het toe op elk formulier."
+        },
+        {
+          "title": "Landingspagina's",
+          "text": "Presenteer het formulier op een eigen link met een paginaontwerp."
+        },
+        {
+          "title": "Een thema uit een kleur",
+          "text": "Geef de AI-assistent je merkkleur en krijg een thema."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Kies een stijl",
+          "text": "Begin met een van de startstijlen."
+        },
+        {
+          "title": "Maak het van jou",
+          "text": "Lettertypen, kleuren, koptekst, voettekst en knoppen."
+        },
+        {
+          "title": "Sla op als thema",
+          "text": "Gebruik het opnieuw in elk formulier."
+        }
+      ]
+    },
+    "templates": {
+      "label": "Sjablonen",
+      "title": "Begin met een kant-en-klaar formulier",
+      "description": "Een bibliotheek met sjablonen per categorie, van sollicitaties tot incidentmeldingen. Je kunt ook je eigen formulieren als sjabloon opslaan.",
+      "metaDescription": "Kant-en-klare formuliersjablonen voor bedrijven, HR, evenementen, gezondheid en veiligheid, horeca en onderwijs. Sla je eigen formulieren op als sjabloon.",
+      "alt": "Sjablooncategorieën als kaarten",
+      "cards": [
+        {
+          "title": "Per categorie",
+          "text": "Bedrijf en klanten, HR en werkplek, evenementen en boekingen, gezondheid en veiligheid, horeca, onderwijs en meer."
+        },
+        {
+          "title": "Klaar om aan te passen",
+          "text": "Elk sjabloon is een gewoon formulier: pas elke vraag, regel of elk ontwerp aan."
+        },
+        {
+          "title": "Je eigen sjablonen",
+          "text": "Sla elk van je formulieren op als sjabloon voor je team."
+        },
+        {
+          "title": "Vanuit een beschrijving",
+          "text": "Of beschrijf het formulier dat je nodig hebt en de AI-assistent maakt een concept."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Kies",
+          "text": "Blader door de bibliotheek per categorie."
+        },
+        {
+          "title": "Pas aan",
+          "text": "Wijzig vragen, regels en ontwerp."
+        },
+        {
+          "title": "Publiceer",
+          "text": "Verzamel binnen enkele minuten antwoorden."
+        }
+      ]
+    },
+    "responses": {
+      "label": "Antwoorden",
+      "title": "Elk antwoord beoordeeld en op orde",
+      "description": "Werk antwoorden af in een tabel of als kaarten, doorzoek ze, beoordeel ze, label ze en exporteer ze.",
+      "metaDescription": "Tabel- en kaartweergave, zoeken en filters, beoordelingsstatussen, labels, notities, wijzigingen met geschiedenis en export naar Excel, CSV of PDF.",
+      "alt": "De lijst met antwoorden en de grafiek van beoordelingsstatussen",
+      "cards": [
+        {
+          "title": "Tabel en kaarten",
+          "text": "Doorzoek antwoorden, filter, kies kolommen, sorteer en kies een periode."
+        },
+        {
+          "title": "Beoordelingsstatussen",
+          "text": "Nieuw, beoordeeld, goedgekeurd of afgewezen, zodat iedereen weet wat klaar is."
+        },
+        {
+          "title": "Labels en notities",
+          "text": "Label antwoorden en laat notities achter in het detailpaneel."
+        },
+        {
+          "title": "Wijzigingen met geschiedenis",
+          "text": "Corrigeer een antwoord en houd bij wat er veranderd is."
+        },
+        {
+          "title": "Export",
+          "text": "Excel, CSV of PDF, met zichtbare voortgang."
+        },
+        {
+          "title": "AI-samenvattingen",
+          "text": "Een samenvatting van één antwoord, of inzichten uit veel antwoorden."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Antwoorden komen binnen",
+          "text": "Uit elk kanaal, in één lijst."
+        },
+        {
+          "title": "Beoordeel",
+          "text": "Stel een status in, label en voeg notities toe."
+        },
+        {
+          "title": "Exporteer of koppel",
+          "text": "Download, of stuur naar je database."
+        }
+      ]
+    },
+    "analytics": {
+      "label": "Analyses",
+      "title": "Zie hoe elk formulier presteert",
+      "description": "Bezoeken, starts en voltooiingen, waar mensen afhaken en welke apparaten, kanalen en talen ze gebruiken.",
+      "metaDescription": "Formulieranalyses: bezoeken, starts, voltooiingen, afhakers per vraag, apparaten, kanalen en talen, plus een dashboard voor de hele werkruimte.",
+      "alt": "Het conversieoverzicht van de analyses",
+      "cards": [
+        {
+          "title": "Conversie",
+          "text": "Bezoeken, starts en voltooiingen per formulier."
+        },
+        {
+          "title": "Afhakers per vraag",
+          "text": "Zie precies waar mensen stoppen."
+        },
+        {
+          "title": "Apparaten, kanalen, talen",
+          "text": "Weet hoe en waar mensen antwoorden."
+        },
+        {
+          "title": "Werkruimtedashboard",
+          "text": "KPI-kaarten met trends, de drukste formulieren en wat aandacht nodig heeft."
+        },
+        {
+          "title": "Filters en perioden",
+          "text": "Per map en eigenaar, per dag, week, maand of jaar."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Deel",
+          "text": "Elk bezoek en elk antwoord wordt geteld."
+        },
+        {
+          "title": "Ontdek",
+          "text": "Vind de vraag waar mensen afhaken."
+        },
+        {
+          "title": "Verbeter",
+          "text": "Pas haar aan en zie de cijfers veranderen."
+        }
+      ]
+    },
+    "data-sources": {
+      "label": "Gegevensbronnen",
+      "title": "Je eigen database, vanaf het eerste antwoord",
+      "description": "Koppel MySQL, MariaDB, PostgreSQL, SQL Server of Oracle, en elk antwoord wordt daar direct bij binnenkomst opgeslagen. Of bewaar alles in de versleutelde opslag van Formalie.",
+      "metaDescription": "Stuur elk antwoord direct naar MySQL, MariaDB, PostgreSQL, SQL Server of Oracle, of bewaar het in de versleutelde opslag van Formalie.",
+      "alt": "Het overzicht van gegevensbronnen: databaseverkeer en de status van koppelingen",
+      "cards": [
+        {
+          "title": "Vijf databases",
+          "text": "MySQL, MariaDB, PostgreSQL, SQL Server en Oracle."
+        },
+        {
+          "title": "Direct opgeslagen",
+          "text": "Antwoorden gaan naar eigen Formalie-tabellen met een voorvoegsel, met aanvullen van eerdere gegevens en nieuwe pogingen."
+        },
+        {
+          "title": "Status van de koppeling",
+          "text": "Test de koppeling, volg een handleiding voor rechten en houd status en reactietijd in de gaten."
+        },
+        {
+          "title": "Databaseverkenner",
+          "text": "Blader door tabellen, wijzig rijen in je eigen tabellen en exporteer."
+        },
+        {
+          "title": "Query-editor",
+          "text": "SQL met automatisch aanvullen, standaard alleen-lezen, met geschiedenis en opgeslagen query's."
+        },
+        {
+          "title": "Alles vastgelegd",
+          "text": "Alles wat er met een koppeling gebeurt, staat in de audittrail."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Koppel",
+          "text": "Voeg je database toe en test hem."
+        },
+        {
+          "title": "Kies formulieren",
+          "text": "Bepaal welke formulieren hun antwoorden daar opslaan."
+        },
+        {
+          "title": "Antwoorden stromen binnen",
+          "text": "Elk nieuw antwoord, direct opgeslagen."
+        }
+      ]
+    },
+    "api-service": {
+      "label": "API-service",
+      "title": "Maak van elk formulier veilige API-endpoints",
+      "description": "Groepeer formulieren in services, kies wat elk endpoint accepteert en teruggeeft, en beveilig het met tokens, toegangsregels en snelheidslimieten.",
+      "metaDescription": "Maak van elk formulier veilige API-endpoints met tokens, toegangsregels, snelheidslimieten, logs en automatisch gegenereerde documentatie.",
+      "alt": "Het overzicht van de API-service: services, endpoints, aanroepen en verkeer in de tijd",
+      "cards": [
+        {
+          "title": "Endpoints uit formulieren",
+          "text": "GET, POST, PUT en DELETE, met per endpoint gekozen velden die het accepteert en teruggeeft."
+        },
+        {
+          "title": "Tokens met bereik",
+          "text": "Vaste of kortlevende tokens, voor test en productie."
+        },
+        {
+          "title": "Ondertekende verzoeken",
+          "text": "Verplichte headers, handtekeningen en bescherming tegen herhaling."
+        },
+        {
+          "title": "Toegangsregels",
+          "text": "Op IP, domein, regio en land, plus toegestane websites voor browserapps."
+        },
+        {
+          "title": "Snelheidslimieten",
+          "text": "Per token, per IP en per endpoint."
+        },
+        {
+          "title": "Documentatie en logs",
+          "text": "Gegenereerde documentatie met een testconsole, verzoeklogs, analyses en ondertekende webhooks."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Kies een formulier",
+          "text": "De vragen worden de velden."
+        },
+        {
+          "title": "Maak een token",
+          "text": "Met het bereik dat je app nodig heeft."
+        },
+        {
+          "title": "Roep het aan",
+          "text": "Vanuit elke app, met de gegenereerde documentatie."
+        }
+      ]
+    },
+    "access-control": {
+      "label": "Toegang en beveiliging",
+      "title": "Bepaal precies wie wat ziet",
+      "description": "Rollen met gedetailleerde rechten, maptoegang, delen per formulier, inloggen via je organisatie en een audittrail van elke actie.",
+      "metaDescription": "Rollen en rechten, maptoegang, delen per formulier, inloggen in twee stappen, single sign-on, sessiebeheer en een audittrail van elke actie.",
+      "alt": "Rollen en toegang: mensen per rol en soorten rollen",
+      "cards": [
+        {
+          "title": "Rollen en rechten",
+          "text": "Eigen, gedeeld of alles, voor elk onderdeel, en je eigen rollen."
+        },
+        {
+          "title": "Mappen en delen",
+          "text": "Maptoegang, delen per formulier en een duidelijk antwoord op de vraag wie dit formulier kan zien."
+        },
+        {
+          "title": "Wie elke vraag ziet",
+          "text": "Iedereen, of gekozen afdelingen, rollen of personen."
+        },
+        {
+          "title": "Inloggen via je organisatie",
+          "text": "Single sign-on met Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0 of OpenID Connect."
+        },
+        {
+          "title": "Inloggen in twee stappen",
+          "text": "Een authenticator-app of sms, plus wachtwoordregels, toegestane IP's en sessieduur."
+        },
+        {
+          "title": "Audittrail",
+          "text": "Elke actie, met wie, wanneer en vanaf waar, en een export."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Nodig uit",
+          "text": "Voeg mensen toe met afdeling en leidinggevende."
+        },
+        {
+          "title": "Geef rollen",
+          "text": "Kies wat elke rol mag doen."
+        },
+        {
+          "title": "Controleer",
+          "text": "Zie wie elk formulier kan zien, en waarom."
+        }
+      ]
+    },
+    "ai-assistant": {
+      "label": "AI-assistent",
+      "title": "Een assistent die bouwt, leest en vertaalt",
+      "description": "Beschrijf een formulier of upload een document en krijg een concept. Stel in gewone woorden vragen over je antwoorden. Vertaal formulieren met één klik.",
+      "metaDescription": "Formulieren vanuit een beschrijving of document, hulp bij vragen en logica, analyse van antwoorden, samenvattingen en vertaling, met AI-tegoed in elk abonnement.",
+      "prompt": "Een sollicitatieformulier met contactgegevens, werkervaring en een cv-upload",
+      "drafted": "Concept klaar: 3 pagina's, 9 vragen",
+      "cards": [
+        {
+          "title": "Formulieren vanuit een beschrijving",
+          "text": "Of vanuit een document, met ideeën voor sjablonen."
+        },
+        {
+          "title": "Hulp in de bouwer",
+          "text": "Bij vragen, regels en formulering."
+        },
+        {
+          "title": "Analyse van antwoorden",
+          "text": "Stel in gewone woorden vragen over je gegevens en krijg samenvattingen."
+        },
+        {
+          "title": "Vertaling",
+          "text": "Vertaal een formulier naar de talen die nodig zijn."
+        },
+        {
+          "title": "Een thema uit een kleur",
+          "text": "Geef je merkkleur, krijg een ontwerp."
+        },
+        {
+          "title": "Tegoed per abonnement",
+          "text": "AI-tegoed zit in elk abonnement."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Beschrijf",
+          "text": "Zeg wat je nodig hebt, of upload een document."
+        },
+        {
+          "title": "Controleer",
+          "text": "Bekijk het concept en pas het aan."
+        },
+        {
+          "title": "Publiceer",
+          "text": "En vraag de assistent naar de antwoorden."
+        }
+      ]
+    },
+    "languages": {
+      "label": "Talen",
+      "title": "Elk formulier in de taal van je mensen",
+      "description": "De app spreekt 20 talen, inclusief Arabisch van rechts naar links. Een formulier kan meerdere talen hebben, en iedereen kiest zijn eigen taal.",
+      "metaDescription": "De app in 20 talen, meertalige formulieren met een taalkeuze, en datums, getallen en valuta die zich aanpassen aan elke persoon.",
+      "question": "Hoe beoordeel je je bezoek?",
+      "cards": [
+        {
+          "title": "20 talen",
+          "text": "De hele app, ook van rechts naar links."
+        },
+        {
+          "title": "Meertalige formulieren",
+          "text": "Met een taalkeuze voor wie antwoordt."
+        },
+        {
+          "title": "Hulp bij vertalen",
+          "text": "De AI-assistent vertaalt, jij controleert."
+        },
+        {
+          "title": "Lokale notaties",
+          "text": "Datums, getallen en valuta volgen de taal en regio van elke persoon."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Voeg talen toe",
+          "text": "Kies de talen die een formulier aanbiedt."
+        },
+        {
+          "title": "Vertaal",
+          "text": "Met hulp van de assistent."
+        },
+        {
+          "title": "Deel één keer",
+          "text": "Iedereen antwoordt in de eigen taal."
+        }
+      ]
+    },
+    "help-and-tours": {
+      "label": "Hulp en rondleidingen",
+      "title": "Hulp op elke pagina",
+      "description": "Een helpcentrum in 20 talen, rondleidingen bij het eerste bezoek en een assistent die antwoordt op basis van de artikelen.",
+      "metaDescription": "Een helpcentrum met artikelen, veelgestelde vragen en een woordenlijst in 20 talen, rondleidingen, hulp in context en een installatiewizard voor nieuwe werkruimtes.",
+      "alt": "De startpagina van het helpcentrum",
+      "cards": [
+        {
+          "title": "Helpcentrum",
+          "text": "Artikelen, veelgestelde vragen en een woordenlijst in 20 talen."
+        },
+        {
+          "title": "Een assistent",
+          "text": "Beantwoordt vragen op basis van de helpartikelen."
+        },
+        {
+          "title": "Hulp in context",
+          "text": "Een vraagteken op elke pagina, en de knop Laat me zien waar."
+        },
+        {
+          "title": "Rondleidingen",
+          "text": "Aangeboden bij het eerste bezoek aan elk onderdeel."
+        },
+        {
+          "title": "Installatiewizard",
+          "text": "Nieuwe werkruimtes zijn in een paar stappen klaar voor gebruik."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Meld je aan",
+          "text": "De installatiewizard zet de werkruimte op."
+        },
+        {
+          "title": "Volg een rondleiding",
+          "text": "Elk onderdeel stelt zich de eerste keer voor."
+        },
+        {
+          "title": "Vraag",
+          "text": "Het helpcentrum en de assistent zijn één klik verwijderd."
+        }
+      ]
+    }
+  },
+  "integrationsPage": {
+    "title": "Werkt met de systemen die je al hebt",
+    "description": "Je eigen database, webhooks en een API voor je apps, en inloggen met de identiteitsprovider van je organisatie.",
+    "metaDescription": "MySQL, MariaDB, PostgreSQL, SQL Server en Oracle, webhooks, de API-service, inloggen met Google en Facebook en single sign-on met Okta, Microsoft Entra ID en meer.",
+    "databases": {
+      "title": "Databases",
+      "text": "Elk antwoord direct opgeslagen in je eigen database."
+    },
+    "api": {
+      "title": "API-service en webhooks",
+      "text": "Endpoints voor je apps en ondertekende webhooks naar je diensten, met nieuwe pogingen."
+    },
+    "signin": {
+      "title": "Inloggen",
+      "text": "E-mail en wachtwoord, Google of Facebook in elk abonnement; single sign-on in betaalde abonnementen."
+    },
+    "standards": {
+      "title": "Gebouwd op open standaarden",
+      "text": "SQL, REST en JSON, SAML 2.0 en OpenID Connect, zodat je nergens aan vastzit."
+    },
+    "alt": "De lijst met koppelingen: databases met hun status en beschikbaarheid"
+  },
+  "securityPage": {
+    "title": "Beveiliging en privacy, ingebouwd",
+    "description": "De maatregelen die Formalie elke werkruimte biedt, en hoe we de gegevens beschermen die je verzamelt.",
+    "metaDescription": "Versleuteling, rollen en toegangsbeheer, een audittrail van elke actie, inloggen in twee stappen, single sign-on en gegevenslocatie.",
+    "items": [
+      {
+        "title": "Versleuteld tijdens transport en in opslag",
+        "text": "Al het verkeer is versleuteld, en de verzoeken van de app zelf hebben een tweede laag versleuteling. Er worden geen geheimen in de browser bewaard."
+      },
+      {
+        "title": "Rollen en toegangsbeheer",
+        "text": "Gedetailleerde rollen, maptoegang en delen per formulier, met een duidelijk antwoord op de vraag wie elk formulier kan zien."
+      },
+      {
+        "title": "Een audittrail van alles",
+        "text": "Wie wat deed, wanneer en vanaf waar, inclusief alles wat medewerkers van Formalie doen, met export."
+      },
+      {
+        "title": "Inloggen in twee stappen en single sign-on",
+        "text": "Een authenticator-app of sms, en inloggen via je organisatie met SAML 2.0 of OpenID Connect."
+      },
+      {
+        "title": "Gegevenslocatie",
+        "text": "Bewaar je gegevens met Enterprise in de regio die je kiest."
+      },
+      {
+        "title": "Geteste back-ups",
+        "text": "Versleutelde back-ups, met geteste herstelprocedures."
+      }
+    ],
+    "disclosure": {
+      "title": "Meld een kwetsbaarheid",
+      "text": "Een beveiligingsprobleem gevonden? Schrijf naar {email}. We ondernemen geen actie tegen onderzoek te goeder trouw dat ons beleid voor aanvaardbaar gebruik volgt."
+    },
+    "linksTitle": "Lees meer",
+    "trust": "Vertrouwen en beveiliging"
+  },
+  "aboutPage": {
+    "title": "Formulieren, gegevens en toegang, voor iedereen",
+    "description": "Formalie is een veilig, flexibel platform om formulieren te bouwen, gegevens te verzamelen en te beheren, systemen te koppelen en toegang te regelen, voor organisaties van elke omvang, overal ter wereld.",
+    "metaDescription": "Formalie bouwt een veilig, flexibel platform voor formulieren, gegevens en toegang, voor organisaties van elke omvang, overal ter wereld.",
+    "mission": {
+      "title": "Onze missie",
+      "text": "Informatie verzamelen moet eenvoudig zijn, en die informatie veilig bewaren moet vanzelfsprekend zijn. Wij bouwen de tools die allebei mogelijk maken, voor een klein team of een grote organisatie."
+    },
+    "beliefsTitle": "Waar we in geloven",
+    "beliefs": [
+      {
+        "title": "Privacy voorop",
+        "text": "Geen advertenties, geen verkoop van gegevens, geen trackingcookies."
+      },
+      {
+        "title": "Jouw gegevens zijn van jou",
+        "text": "Exporteer ze wanneer je wilt, of bewaar ze vanaf dag één in je eigen database."
+      },
+      {
+        "title": "Eenvoud wint van slimmigheid",
+        "text": "Gewone woorden, overzichtelijke schermen en hulp op elke pagina."
+      }
+    ],
+    "global": {
+      "title": "Wereldwijd van opzet",
+      "text": "20 talen, ook van rechts naar links, lokale notaties en gegevens in de regio die je kiest."
+    }
+  },
+  "solutionPages": {
+    "problem": "Het probleem",
+    "hr": {
+      "title": "HR-formulieren, zonder papierwerk",
+      "description": "Sollicitaties, onboarding en verzoeken van medewerkers op één plek, alleen toegankelijk voor wie ze mag zien.",
+      "metaDescription": "Sollicitaties, onboarding van medewerkers en personeelsverzoeken, met rollen, delen per formulier en je eigen database.",
+      "problem": "HR-formulieren bevatten persoonsgegevens, komen binnen via e-mail en spreadsheets en worden door meer mensen gezien dan zou moeten.",
+      "templates": [
+        {
+          "title": "Sollicitatie",
+          "text": "Contactgegevens, werkervaring en een cv-upload."
+        },
+        {
+          "title": "Onboarding van medewerkers",
+          "text": "Persoonlijke gegevens, documenten en uitrusting."
+        }
+      ],
+      "data": "Antwoorden gaan naar je HR-database of de versleutelde opslag van Formalie, alleen zichtbaar voor de HR-rollen die jij kiest."
+    },
+    "customer-feedback": {
+      "title": "Hoor elke klant, in de eigen taal",
+      "description": "Tevredenheidsonderzoeken en retourverzoeken in 20 talen, met analyses die laten zien wat er beter moet.",
+      "metaDescription": "Klanttevredenheidsonderzoeken en retourverzoeken in 20 talen, met analyses, labels en AI-samenvattingen.",
+      "problem": "Feedback is verspreid over e-mail, chat en papier, in veel talen, en niemand ziet de trend.",
+      "templates": [
+        {
+          "title": "Klanttevredenheid",
+          "text": "Beoordelingen, een score en een open opmerking."
+        },
+        {
+          "title": "Retourverzoek",
+          "text": "Bestelgegevens, reden en foto's."
+        }
+      ],
+      "data": "Antwoorden worden gelabeld en samengevat, op het dashboard getoond en via een webhook naar je systemen gestuurd."
+    },
+    "events": {
+      "title": "Inschrijvingen en boekingen die gewoon werken",
+      "description": "Inschrijf- en aanmeldformulieren met limieten, open- en sluitdatums en een QR-code voor de deur.",
+      "metaDescription": "Formulieren voor evenementinschrijvingen en aanmeldingen met antwoordlimieten, open- en sluitdatums, QR-codes en e-mailmeldingen.",
+      "problem": "Plekken raken op, datums veranderen en de lijsten staan in drie verschillende spreadsheets.",
+      "templates": [
+        {
+          "title": "Inschrijving voor een evenement",
+          "text": "Gegevens van deelnemers, sessies en dieetwensen."
+        },
+        {
+          "title": "Aanmelding",
+          "text": "Ja, nee of misschien, met een introducé."
+        }
+      ],
+      "data": "Elke inschrijving komt in één lijst terecht, met e-mailmeldingen, en kan naar je eigen database."
+    },
+    "health-and-safety": {
+      "title": "Meld incidenten ter plekke",
+      "description": "Incidentmeldingen en risicobeoordelingen die mensen op hun telefoon invullen, met foto's, handtekeningen en een duidelijk dossier.",
+      "metaDescription": "Incidentmeldingen en risicobeoordelingen op elke telefoon, met foto's, handtekeningen, berekende risicoscores en een audittrail.",
+      "problem": "Incidenten worden laat gemeld, op papier, zonder foto's, en het dossier is moeilijk te vertrouwen.",
+      "templates": [
+        {
+          "title": "Incidentmelding",
+          "text": "Wat er gebeurde, waar, foto's en een handtekening."
+        },
+        {
+          "title": "Risicobeoordeling",
+          "text": "Gevaren, scores en acties, live berekend."
+        }
+      ],
+      "data": "Meldingen komen direct bij het juiste team, met een audittrail van elke wijziging."
+    },
+    "education": {
+      "title": "Inschrijvingen en evaluaties, eenvoudig geregeld",
+      "description": "Inschrijfformulieren en cursusevaluaties voor scholen, hogescholen en opleidingsteams, in de talen die gezinnen spreken.",
+      "metaDescription": "Inschrijfformulieren en cursusevaluaties in 20 talen, met uploads, regels en veilige opslag.",
+      "problem": "Inschrijven vraagt om documenten en toestemming, gezinnen spreken veel talen en evaluaties zijn lastig te vergelijken.",
+      "templates": [
+        {
+          "title": "Inschrijving",
+          "text": "Gegevens van de leerling, documenten en toestemming."
+        },
+        {
+          "title": "Cursusevaluatie",
+          "text": "Beoordelingen en opmerkingen, per cursus."
+        }
+      ],
+      "data": "Inschrijvingen gaan naar je leerlingadministratie of database, evaluaties verschijnen op het dashboard."
+    },
+    "operations": {
+      "title": "Controles en audits waar je op kunt bouwen",
+      "description": "Leverancierscontroles, audits en registraties met berekeningen, verplicht bewijs en een volledig spoor.",
+      "metaDescription": "Formulieren voor leverancierscontroles en audits met berekeningen, uploads, beoordelingsstatussen, je eigen database en een volledige audittrail.",
+      "problem": "Checklists worden met de hand overgenomen, scores verkeerd opgeteld en niemand weet welke versie actueel is.",
+      "templates": [
+        {
+          "title": "Leverancierscontrole",
+          "text": "Bedrijfsgegevens, certificaten en een score."
+        },
+        {
+          "title": "Audit",
+          "text": "Checklist, bevindingen en acties."
+        }
+      ],
+      "data": "Resultaten worden beoordeeld en goedgekeurd, naar je database geschreven, en elke wijziging wordt vastgelegd."
+    },
+    "developers": {
+      "title": "Formulieren als API, voor je eigen apps",
+      "description": "Bouw het formulier één keer en gebruik het vanuit je apps: veilige endpoints, tokens, webhooks en gegenereerde documentatie.",
+      "metaDescription": "Maak van formulieren veilige API-endpoints met tokens, toegangsregels, snelheidslimieten, ondertekende webhooks en gegenereerde documentatie.",
+      "problem": "Elke app heeft een eigen formulier-backend, validatie en opslag nodig, die telkens opnieuw gebouwd worden.",
+      "templates": [
+        {
+          "title": "Aanmeld-endpoint",
+          "text": "Een formulier waar je app gegevens naartoe stuurt, gecontroleerd met de eigen regels."
+        },
+        {
+          "title": "Webhook naar je dienst",
+          "text": "Ondertekende leveringen met nieuwe pogingen."
+        }
+      ],
+      "data": "Antwoorden worden gecontroleerd met de regels van het formulier, opgeslagen waar jij wilt en doorgestuurd met ondertekende webhooks."
+    }
   }
 }

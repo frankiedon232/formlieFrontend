@@ -1,5 +1,15 @@
 # SEO
 
+## How it is built (owner, 2026-10-13: "this is the real central page, so it must be loaded with SEO")
+
+SEO is part of every page from the moment it is built, not a launch step:
+- **`usePageSeo()`** (`app/composables/usePageSeo.ts`) on every page: title "{Page} · Formalie", description, Open Graph (type, site name, 1200 × 630 image with size and alt), Twitter card, robots (`index, follow, max-image-preview:large`), a `BreadcrumbList`, and the page's own structured data.
+- **`useLocaleHead`** (app.vue): `<html lang dir>`, the canonical address, `hreflang` for the 20 languages plus `x-default`, `og:url`, `og:locale` and its alternates.
+- **Structured data today:** home: `Organization`, `WebSite`, `SoftwareApplication` with one `Offer` per plan and period (from `/public/plans`) and `FAQPage`; `/features`: `ItemList`; feature pages: `SoftwareApplication` with the feature list; solution pages: `WebPage`; About: `AboutPage`.
+- **`/sitemap.xml`** (`server/routes/sitemap.xml.ts`, prerendered): every built page in every language with its alternates. **Add each new page to `SITE_PATHS`.**
+- **`/robots.txt`** (`server/routes/robots.txt.ts`, prerendered): everything allowed and the sitemap named. `/_nuxt` is **not** blocked (a change from the first plan): search engines need the CSS and scripts to render the pages.
+- **Check before each commit:** the prerendered HTML in `.output/public` has the tags above and one `h1`.
+
 ## Every page
 
 - `useSeoMeta`:

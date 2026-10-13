@@ -1,5 +1,6 @@
 <script setup lang="ts">
-// Final call to action: a dark rounded panel (docs/DESIGN.md), with a quiet line of light running through it.
+// The closing call to action on every page: a dark rounded panel (docs/DESIGN.md), with a line of light running
+// through it.
 const { t } = useI18n()
 const localePath = useLocalePath()
 const links = useSiteLinks()

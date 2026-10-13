@@ -400,5 +400,725 @@
       "title": "Bắt đầu thu thập trong vài phút.",
       "description": "Gói miễn phí, không cần thẻ. Nâng cấp khi bạn phát triển."
     }
+  },
+  "common": {
+    "learnMore": "Tìm hiểu thêm",
+    "related": "Tính năng liên quan",
+    "howItWorks": "Cách hoạt động",
+    "step": "Bước {n}",
+    "allFeatures": "Tất cả tính năng",
+    "startFrom": "Biểu mẫu để bắt đầu",
+    "whereDataGoes": "Dữ liệu đi đâu",
+    "useTemplate": "Bắt đầu từ mẫu này"
+  },
+  "featuresIndex": {
+    "title": "Mọi điều Formalie làm được",
+    "description": "Tạo biểu mẫu, thiết kế, chia sẻ ở mọi nơi, rồi lưu giữ, phân tích và bảo vệ từng câu trả lời. Mỗi phần dưới đây đều đã có trong sản phẩm hôm nay.",
+    "metaDescription": "Trình tạo biểu mẫu, thiết kế, mẫu, câu trả lời, phân tích, cơ sở dữ liệu của riêng bạn, dịch vụ API, kiểm soát truy cập, trợ lý AI và 20 ngôn ngữ, trong một nền tảng an toàn."
+  },
+  "features": {
+    "form-builder": {
+      "label": "Trình tạo biểu mẫu",
+      "title": "Tạo mọi biểu mẫu, không cần viết mã",
+      "description": "Kéo thả câu hỏi vào hàng và trang, thêm quy tắc và phép tính, rồi xuất bản khi đã sẵn sàng. Hơn 40 loại câu hỏi, bằng 20 ngôn ngữ.",
+      "metaDescription": "Kéo thả câu hỏi, trang, logic và phép tính, bằng 20 ngôn ngữ, có phiên bản và xuất bản chỉ với một cú nhấp.",
+      "alt": "Trình tạo biểu mẫu: loại câu hỏi bên trái, biểu mẫu nhiều trang ở giữa, cài đặt bên phải",
+      "cards": [
+        {
+          "title": "Hơn 40 loại câu hỏi",
+          "text": "Văn bản, ngày tháng, lựa chọn, đánh giá, ma trận, tải lên, chữ ký, địa chỉ, tiền tệ, IBAN và nhiều loại khác."
+        },
+        {
+          "title": "Hàng và trang",
+          "text": "Kéo câu hỏi vào hàng và trang, với thao tác bàn phím thay thế cho mọi lần kéo."
+        },
+        {
+          "title": "Quy tắc",
+          "text": "Hiện, ẩn hoặc bắt buộc câu hỏi, chuyển đến một trang hoặc đến cuối, dựa trên các câu trả lời trước."
+        },
+        {
+          "title": "Tính toán trực tiếp",
+          "text": "Tổng, điểm và giá được tính ngay khi mọi người trả lời, kể cả từ một chi tiết của lựa chọn đã chọn."
+        },
+        {
+          "title": "Danh sách lớn, dùng lại được",
+          "text": "Danh sách lựa chọn nhiều cấp, tới 200.000 lựa chọn tải dần khi người dùng gõ, dùng lại được ở mọi biểu mẫu."
+        },
+        {
+          "title": "Phiên bản",
+          "text": "Soạn nháp rồi xuất bản. Sửa một biểu mẫu đang chạy sẽ mở bản nháp mới, và mọi phiên bản đều có thể khôi phục."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Thêm câu hỏi",
+          "text": "Chọn từ hơn 40 loại hoặc các câu hỏi bạn đã lưu."
+        },
+        {
+          "title": "Thêm quy tắc",
+          "text": "Quyết định hiện gì, khi nào và tính toán gì."
+        },
+        {
+          "title": "Xuất bản",
+          "text": "Chia sẻ bằng liên kết, nhúng, mã QR hoặc API."
+        }
+      ]
+    },
+    "design": {
+      "label": "Thiết kế và chủ đề",
+      "title": "Biểu mẫu mang dấu ấn thương hiệu của bạn",
+      "description": "Bắt đầu từ một giao diện và thay đổi mọi thứ quan trọng: bố cục, nền, phông chữ, màu sắc, nút, đầu trang, chân trang và trang cảm ơn.",
+      "metaDescription": "Giao diện khởi đầu, 21 phông chữ tự lưu trữ, màu sắc kèm gợi ý độ tương phản, chủ đề và trang đích. Mọi biểu mẫu đều mang dấu ấn thương hiệu của bạn.",
+      "alt": "Trình thiết kế biểu mẫu: giao diện khởi đầu bên trái và bản xem trước trực tiếp của biểu mẫu",
+      "cards": [
+        {
+          "title": "Giao diện khởi đầu",
+          "text": "Tối giản, Mềm mại, Đậm nét, Tối, Thanh lịch, Doanh nghiệp và nhiều hơn nữa, sẵn sàng để chỉnh."
+        },
+        {
+          "title": "21 phông chữ",
+          "text": "Phông chữ tự lưu trữ, nên không có gì được tải từ trang web khác."
+        },
+        {
+          "title": "Màu sắc kèm gợi ý độ tương phản",
+          "text": "Thấy ngay khi chữ có thể khó đọc."
+        },
+        {
+          "title": "Chủ đề",
+          "text": "Lưu một thiết kế thành chủ đề và áp dụng cho mọi biểu mẫu."
+        },
+        {
+          "title": "Trang đích",
+          "text": "Đặt biểu mẫu trong một thiết kế trang trên liên kết riêng của nó."
+        },
+        {
+          "title": "Chủ đề từ một màu",
+          "text": "Đưa màu thương hiệu cho trợ lý AI và nhận về một chủ đề."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Chọn giao diện",
+          "text": "Bắt đầu từ một trong các giao diện khởi đầu."
+        },
+        {
+          "title": "Tùy chỉnh theo ý bạn",
+          "text": "Phông chữ, màu sắc, đầu trang, chân trang và nút."
+        },
+        {
+          "title": "Lưu thành chủ đề",
+          "text": "Dùng lại cho mọi biểu mẫu."
+        }
+      ]
+    },
+    "templates": {
+      "label": "Mẫu",
+      "title": "Bắt đầu từ một biểu mẫu có sẵn",
+      "description": "Thư viện mẫu theo danh mục, từ đơn ứng tuyển đến báo cáo sự cố. Bạn cũng có thể lưu biểu mẫu của mình thành mẫu.",
+      "metaDescription": "Mẫu biểu mẫu có sẵn cho kinh doanh, nhân sự, sự kiện, an toàn và sức khỏe, nhà hàng khách sạn và giáo dục. Lưu biểu mẫu của bạn thành mẫu.",
+      "alt": "Các danh mục mẫu hiển thị dưới dạng thẻ",
+      "cards": [
+        {
+          "title": "Theo danh mục",
+          "text": "Kinh doanh và khách hàng, nhân sự và nơi làm việc, sự kiện và đặt chỗ, an toàn và sức khỏe, nhà hàng khách sạn, giáo dục và nhiều hơn nữa."
+        },
+        {
+          "title": "Sẵn sàng để sửa",
+          "text": "Mỗi mẫu là một biểu mẫu bình thường: sửa bất kỳ câu hỏi, quy tắc hay thiết kế nào."
+        },
+        {
+          "title": "Mẫu của riêng bạn",
+          "text": "Lưu bất kỳ biểu mẫu nào thành mẫu cho nhóm của bạn."
+        },
+        {
+          "title": "Từ một mô tả",
+          "text": "Hoặc mô tả biểu mẫu bạn cần và trợ lý AI sẽ soạn bản nháp."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Chọn",
+          "text": "Duyệt thư viện theo danh mục."
+        },
+        {
+          "title": "Điều chỉnh",
+          "text": "Sửa câu hỏi, quy tắc và thiết kế."
+        },
+        {
+          "title": "Xuất bản",
+          "text": "Thu thập câu trả lời trong vài phút."
+        }
+      ]
+    },
+    "responses": {
+      "label": "Câu trả lời",
+      "title": "Mọi câu trả lời, được xem xét và ngăn nắp",
+      "description": "Xử lý câu trả lời dạng bảng hoặc thẻ, tìm kiếm trong mọi câu trả lời, xem xét, gắn thẻ và xuất.",
+      "metaDescription": "Chế độ xem bảng và thẻ, tìm kiếm và bộ lọc, trạng thái xem xét, thẻ, ghi chú, chỉnh sửa có lịch sử và xuất ra Excel, CSV hoặc PDF.",
+      "alt": "Danh sách câu trả lời kèm biểu đồ trạng thái xem xét",
+      "cards": [
+        {
+          "title": "Bảng và thẻ",
+          "text": "Tìm kiếm trong các câu trả lời, lọc, chọn cột, sắp xếp và chọn khoảng thời gian."
+        },
+        {
+          "title": "Trạng thái xem xét",
+          "text": "Mới, đã xem xét, đã duyệt hoặc bị từ chối, để ai cũng biết việc gì đã xong."
+        },
+        {
+          "title": "Thẻ và ghi chú",
+          "text": "Gắn thẻ câu trả lời và để lại ghi chú trong bảng chi tiết."
+        },
+        {
+          "title": "Chỉnh sửa có lịch sử",
+          "text": "Sửa một câu trả lời mà vẫn giữ lại bản ghi những gì đã thay đổi."
+        },
+        {
+          "title": "Xuất dữ liệu",
+          "text": "Excel, CSV hoặc PDF, có hiển thị tiến độ."
+        },
+        {
+          "title": "Tóm tắt bằng AI",
+          "text": "Tóm tắt một câu trả lời, hoặc phân tích từ nhiều câu trả lời."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Câu trả lời đến",
+          "text": "Từ mọi kênh, về một danh sách."
+        },
+        {
+          "title": "Xem xét",
+          "text": "Đặt trạng thái, gắn thẻ và thêm ghi chú."
+        },
+        {
+          "title": "Xuất hoặc kết nối",
+          "text": "Tải xuống, hoặc gửi vào cơ sở dữ liệu của bạn."
+        }
+      ]
+    },
+    "analytics": {
+      "label": "Phân tích",
+      "title": "Xem hiệu quả của từng biểu mẫu",
+      "description": "Lượt truy cập, lượt bắt đầu và hoàn thành, nơi mọi người bỏ dở, cùng thiết bị, kênh và ngôn ngữ họ dùng.",
+      "metaDescription": "Phân tích biểu mẫu: lượt truy cập, bắt đầu, hoàn thành, tỷ lệ bỏ dở theo câu hỏi, thiết bị, kênh và ngôn ngữ, cùng bảng tổng quan cho toàn bộ không gian làm việc.",
+      "alt": "Tổng quan chuyển đổi trong phần phân tích",
+      "cards": [
+        {
+          "title": "Chuyển đổi",
+          "text": "Lượt truy cập, bắt đầu và hoàn thành của mỗi biểu mẫu."
+        },
+        {
+          "title": "Bỏ dở theo câu hỏi",
+          "text": "Thấy chính xác mọi người dừng lại ở đâu."
+        },
+        {
+          "title": "Thiết bị, kênh, ngôn ngữ",
+          "text": "Biết mọi người trả lời bằng cách nào và từ đâu."
+        },
+        {
+          "title": "Bảng tổng quan không gian làm việc",
+          "text": "Thẻ KPI kèm xu hướng, các biểu mẫu sôi động nhất và những việc cần chú ý."
+        },
+        {
+          "title": "Bộ lọc và khoảng thời gian",
+          "text": "Theo thư mục và người sở hữu, theo ngày, tuần, tháng hoặc năm."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Chia sẻ",
+          "text": "Mọi lượt truy cập và câu trả lời đều được tính."
+        },
+        {
+          "title": "Phát hiện",
+          "text": "Tìm câu hỏi khiến mọi người rời đi."
+        },
+        {
+          "title": "Cải thiện",
+          "text": "Sửa nó và xem các con số thay đổi."
+        }
+      ]
+    },
+    "data-sources": {
+      "label": "Nguồn dữ liệu",
+      "title": "Cơ sở dữ liệu của bạn, từ câu trả lời đầu tiên",
+      "description": "Kết nối MySQL, MariaDB, PostgreSQL, SQL Server hoặc Oracle, và mọi câu trả lời được ghi vào đó ngay khi đến. Hoặc lưu toàn bộ trong kho lưu trữ được mã hóa của Formalie.",
+      "metaDescription": "Gửi mọi câu trả lời vào MySQL, MariaDB, PostgreSQL, SQL Server hoặc Oracle ngay khi đến, hoặc lưu trong kho lưu trữ được mã hóa của Formalie.",
+      "alt": "Tổng quan nguồn dữ liệu: lưu lượng cơ sở dữ liệu và tình trạng kết nối",
+      "cards": [
+        {
+          "title": "Năm cơ sở dữ liệu",
+          "text": "MySQL, MariaDB, PostgreSQL, SQL Server và Oracle."
+        },
+        {
+          "title": "Ghi ngay khi đến",
+          "text": "Câu trả lời được ghi vào các bảng có tiền tố riêng của Formalie, có bổ sung dữ liệu cũ và thử lại."
+        },
+        {
+          "title": "Tình trạng kết nối",
+          "text": "Kiểm tra kết nối, làm theo hướng dẫn cấp quyền, theo dõi tình trạng và thời gian phản hồi."
+        },
+        {
+          "title": "Trình duyệt cơ sở dữ liệu",
+          "text": "Duyệt bảng, sửa hàng trong bảng của riêng bạn và xuất dữ liệu."
+        },
+        {
+          "title": "Trình soạn truy vấn",
+          "text": "SQL có tự động hoàn thành, mặc định chỉ đọc, có lịch sử và truy vấn đã lưu."
+        },
+        {
+          "title": "Được ghi lại",
+          "text": "Mọi thao tác trên một kết nối đều có trong nhật ký kiểm tra."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Kết nối",
+          "text": "Thêm cơ sở dữ liệu và kiểm tra."
+        },
+        {
+          "title": "Chọn biểu mẫu",
+          "text": "Chọn biểu mẫu nào lưu câu trả lời vào đó."
+        },
+        {
+          "title": "Câu trả lời đổ về",
+          "text": "Mọi câu trả lời mới, được ghi ngay khi đến."
+        }
+      ]
+    },
+    "api-service": {
+      "label": "Dịch vụ API",
+      "title": "Biến mọi biểu mẫu thành endpoint API an toàn",
+      "description": "Nhóm biểu mẫu thành dịch vụ, chọn những gì mỗi endpoint nhận và trả về, rồi bảo vệ bằng token, quy tắc truy cập và giới hạn tần suất.",
+      "metaDescription": "Biến mọi biểu mẫu thành endpoint API an toàn với token, quy tắc truy cập, giới hạn tần suất, nhật ký và tài liệu tự động tạo.",
+      "alt": "Tổng quan dịch vụ API: dịch vụ, endpoint, lượt gọi và lưu lượng theo thời gian",
+      "cards": [
+        {
+          "title": "Endpoint từ biểu mẫu",
+          "text": "GET, POST, PUT và DELETE, với các trường nhận và trả về được chọn cho từng endpoint."
+        },
+        {
+          "title": "Token có phạm vi",
+          "text": "Token cố định hoặc ngắn hạn, cho thử nghiệm và chính thức."
+        },
+        {
+          "title": "Yêu cầu có chữ ký",
+          "text": "Header bắt buộc, chữ ký và chống gửi lặp lại."
+        },
+        {
+          "title": "Quy tắc truy cập",
+          "text": "Theo IP, tên miền, khu vực và quốc gia, cùng các trang web được phép cho ứng dụng trên trình duyệt."
+        },
+        {
+          "title": "Giới hạn tần suất",
+          "text": "Theo token, theo IP và theo endpoint."
+        },
+        {
+          "title": "Tài liệu và nhật ký",
+          "text": "Tài liệu tự động tạo có bảng điều khiển để thử ngay, nhật ký yêu cầu, phân tích và webhook có chữ ký."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Chọn biểu mẫu",
+          "text": "Các câu hỏi của nó trở thành các trường."
+        },
+        {
+          "title": "Tạo token",
+          "text": "Với các phạm vi ứng dụng của bạn cần."
+        },
+        {
+          "title": "Gọi API",
+          "text": "Từ bất kỳ ứng dụng nào, theo tài liệu tự động tạo."
+        }
+      ]
+    },
+    "access-control": {
+      "label": "Truy cập và bảo mật",
+      "title": "Quyết định chính xác ai thấy gì",
+      "description": "Vai trò với quyền chi tiết, quyền truy cập thư mục, chia sẻ theo từng biểu mẫu, đăng nhập bằng tài khoản công ty và nhật ký kiểm tra cho mọi thao tác.",
+      "metaDescription": "Vai trò và quyền, truy cập thư mục, chia sẻ theo từng biểu mẫu, đăng nhập hai bước, đăng nhập một lần, kiểm soát phiên và nhật ký kiểm tra cho mọi thao tác.",
+      "alt": "Vai trò và truy cập: số người theo vai trò và các loại vai trò",
+      "cards": [
+        {
+          "title": "Vai trò và quyền",
+          "text": "Của mình, được chia sẻ hoặc tất cả, cho mọi khu vực, cùng các vai trò do bạn tạo."
+        },
+        {
+          "title": "Thư mục và chia sẻ",
+          "text": "Truy cập thư mục, chia sẻ theo từng biểu mẫu và câu trả lời rõ ràng cho câu hỏi ai xem được biểu mẫu này."
+        },
+        {
+          "title": "Ai thấy từng câu hỏi",
+          "text": "Mọi người, hoặc các phòng ban, vai trò hay người được chọn."
+        },
+        {
+          "title": "Đăng nhập bằng tài khoản công ty",
+          "text": "Đăng nhập một lần với Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0 hoặc OpenID Connect."
+        },
+        {
+          "title": "Đăng nhập hai bước",
+          "text": "Ứng dụng xác thực hoặc tin nhắn SMS, cùng quy tắc mật khẩu, IP được phép và thời lượng phiên."
+        },
+        {
+          "title": "Nhật ký kiểm tra",
+          "text": "Mọi thao tác, kèm ai, khi nào, từ đâu, và có thể xuất ra."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Mời",
+          "text": "Thêm người kèm phòng ban và người quản lý."
+        },
+        {
+          "title": "Gán vai trò",
+          "text": "Chọn những gì mỗi vai trò được làm."
+        },
+        {
+          "title": "Kiểm tra",
+          "text": "Xem ai xem được từng biểu mẫu, và vì sao."
+        }
+      ]
+    },
+    "ai-assistant": {
+      "label": "Trợ lý AI",
+      "title": "Trợ lý biết tạo, đọc hiểu và dịch",
+      "description": "Mô tả một biểu mẫu hoặc tải lên tài liệu để nhận bản nháp. Hỏi về các câu trả lời bằng lời lẽ đơn giản. Dịch biểu mẫu chỉ với một cú nhấp.",
+      "metaDescription": "Tạo biểu mẫu từ mô tả hoặc tài liệu, hỗ trợ câu hỏi và logic, phân tích câu trả lời, tóm tắt và dịch, kèm tín dụng AI trong mọi gói.",
+      "prompt": "Đơn ứng tuyển có thông tin liên hệ, kinh nghiệm và phần tải lên CV",
+      "drafted": "Bản nháp đã sẵn sàng: 3 trang, 9 câu hỏi",
+      "cards": [
+        {
+          "title": "Biểu mẫu từ mô tả",
+          "text": "Hoặc từ tài liệu, kèm gợi ý mẫu."
+        },
+        {
+          "title": "Hỗ trợ trong trình tạo",
+          "text": "Với câu hỏi, quy tắc và cách diễn đạt."
+        },
+        {
+          "title": "Phân tích câu trả lời",
+          "text": "Hỏi về dữ liệu bằng lời lẽ đơn giản và nhận bản tóm tắt."
+        },
+        {
+          "title": "Dịch",
+          "text": "Dịch biểu mẫu sang các ngôn ngữ cần thiết."
+        },
+        {
+          "title": "Chủ đề từ một màu",
+          "text": "Đưa màu thương hiệu, nhận về một thiết kế."
+        },
+        {
+          "title": "Tín dụng theo gói",
+          "text": "Mọi gói đều có sẵn tín dụng AI."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Mô tả",
+          "text": "Nói điều bạn cần, hoặc tải lên tài liệu."
+        },
+        {
+          "title": "Xem lại",
+          "text": "Kiểm tra bản nháp và điều chỉnh."
+        },
+        {
+          "title": "Xuất bản",
+          "text": "Rồi hỏi trợ lý về các câu trả lời."
+        }
+      ]
+    },
+    "languages": {
+      "label": "Ngôn ngữ",
+      "title": "Mọi biểu mẫu bằng ngôn ngữ của người dùng",
+      "description": "Ứng dụng có 20 ngôn ngữ, kể cả tiếng Ả Rập viết từ phải sang trái. Một biểu mẫu có thể có nhiều ngôn ngữ, và mọi người tự chọn ngôn ngữ của mình.",
+      "metaDescription": "Ứng dụng bằng 20 ngôn ngữ, biểu mẫu nhiều ngôn ngữ có nút chuyển ngôn ngữ, và ngày tháng, số, tiền tệ theo từng người.",
+      "question": "Bạn đánh giá chuyến ghé thăm này thế nào?",
+      "cards": [
+        {
+          "title": "20 ngôn ngữ",
+          "text": "Toàn bộ ứng dụng, kể cả viết từ phải sang trái."
+        },
+        {
+          "title": "Biểu mẫu nhiều ngôn ngữ",
+          "text": "Có nút chuyển ngôn ngữ cho người trả lời."
+        },
+        {
+          "title": "Hỗ trợ dịch",
+          "text": "Trợ lý AI dịch, bạn kiểm tra lại."
+        },
+        {
+          "title": "Định dạng địa phương",
+          "text": "Ngày tháng, số và tiền tệ theo ngôn ngữ và khu vực của từng người."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Thêm ngôn ngữ",
+          "text": "Chọn các ngôn ngữ biểu mẫu cung cấp."
+        },
+        {
+          "title": "Dịch",
+          "text": "Với sự hỗ trợ của trợ lý."
+        },
+        {
+          "title": "Chia sẻ một lần",
+          "text": "Mọi người trả lời bằng ngôn ngữ của mình."
+        }
+      ]
+    },
+    "help-and-tours": {
+      "label": "Trợ giúp và hướng dẫn",
+      "title": "Trợ giúp trên mọi trang",
+      "description": "Trung tâm trợ giúp bằng 20 ngôn ngữ, hướng dẫn từng bước trong lần truy cập đầu tiên và một trợ lý trả lời dựa trên các bài viết.",
+      "metaDescription": "Trung tâm trợ giúp với bài viết, câu hỏi thường gặp và bảng thuật ngữ bằng 20 ngôn ngữ, hướng dẫn từng bước, trợ giúp theo ngữ cảnh và trình thiết lập cho không gian làm việc mới.",
+      "alt": "Trang chủ trung tâm trợ giúp",
+      "cards": [
+        {
+          "title": "Trung tâm trợ giúp",
+          "text": "Bài viết, câu hỏi thường gặp và bảng thuật ngữ bằng 20 ngôn ngữ."
+        },
+        {
+          "title": "Trợ lý",
+          "text": "Trả lời câu hỏi dựa trên các bài viết trợ giúp."
+        },
+        {
+          "title": "Trợ giúp theo ngữ cảnh",
+          "text": "Dấu chấm hỏi trên mọi trang, và nút Chỉ cho tôi chỗ đó."
+        },
+        {
+          "title": "Hướng dẫn từng bước",
+          "text": "Xuất hiện trong lần đầu bạn vào mỗi khu vực."
+        },
+        {
+          "title": "Trình thiết lập",
+          "text": "Không gian làm việc mới bắt đầu chỉ sau vài bước."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Đăng ký",
+          "text": "Trình thiết lập khởi tạo không gian làm việc."
+        },
+        {
+          "title": "Xem hướng dẫn",
+          "text": "Mỗi khu vực tự giới thiệu trong lần đầu."
+        },
+        {
+          "title": "Đặt câu hỏi",
+          "text": "Trung tâm trợ giúp và trợ lý chỉ cách một cú nhấp."
+        }
+      ]
+    }
+  },
+  "integrationsPage": {
+    "title": "Hoạt động với các hệ thống bạn đang dùng",
+    "description": "Cơ sở dữ liệu của riêng bạn, webhook và API cho ứng dụng của bạn, cùng đăng nhập bằng nhà cung cấp danh tính công ty bạn sử dụng.",
+    "metaDescription": "MySQL, MariaDB, PostgreSQL, SQL Server và Oracle, webhook, dịch vụ API, đăng nhập bằng Google và Facebook, và đăng nhập một lần với Okta, Microsoft Entra ID và nhiều hơn nữa.",
+    "databases": {
+      "title": "Cơ sở dữ liệu",
+      "text": "Mọi câu trả lời được ghi vào cơ sở dữ liệu của riêng bạn ngay khi đến."
+    },
+    "api": {
+      "title": "Dịch vụ API và webhook",
+      "text": "Endpoint cho ứng dụng của bạn, và webhook có chữ ký đến dịch vụ của bạn, kèm thử lại."
+    },
+    "signin": {
+      "title": "Đăng nhập",
+      "text": "Email và mật khẩu, Google hoặc Facebook trên mọi gói; đăng nhập một lần trên các gói trả phí."
+    },
+    "standards": {
+      "title": "Xây dựng trên tiêu chuẩn mở",
+      "text": "SQL, REST và JSON, SAML 2.0 và OpenID Connect, nên bạn không bị ràng buộc."
+    },
+    "alt": "Danh sách kết nối: các cơ sở dữ liệu cùng trạng thái và thời gian hoạt động"
+  },
+  "securityPage": {
+    "title": "Bảo mật và quyền riêng tư, có sẵn từ đầu",
+    "description": "Các biện pháp kiểm soát Formalie cung cấp cho mọi không gian làm việc, và cách chúng tôi bảo vệ dữ liệu bạn thu thập.",
+    "metaDescription": "Mã hóa, vai trò và kiểm soát truy cập, nhật ký kiểm tra cho mọi thao tác, đăng nhập hai bước, đăng nhập một lần và lưu trữ dữ liệu theo khu vực.",
+    "items": [
+      {
+        "title": "Mã hóa khi truyền và khi lưu trữ",
+        "text": "Mọi lưu lượng đều được mã hóa, và các yêu cầu của chính ứng dụng có thêm một lớp mã hóa thứ hai. Không có bí mật nào được lưu trong trình duyệt."
+      },
+      {
+        "title": "Vai trò và kiểm soát truy cập",
+        "text": "Vai trò chi tiết, truy cập thư mục và chia sẻ theo từng biểu mẫu, cùng câu trả lời rõ ràng về việc ai xem được từng biểu mẫu."
+      },
+      {
+        "title": "Nhật ký kiểm tra cho mọi thứ",
+        "text": "Ai đã làm gì, khi nào và từ đâu, kể cả mọi việc nhân viên Formalie làm, và có thể xuất ra."
+      },
+      {
+        "title": "Đăng nhập hai bước và đăng nhập một lần",
+        "text": "Ứng dụng xác thực hoặc tin nhắn SMS, và đăng nhập bằng tài khoản công ty qua SAML 2.0 hoặc OpenID Connect."
+      },
+      {
+        "title": "Lưu trữ dữ liệu theo khu vực",
+        "text": "Lưu dữ liệu ở khu vực bạn chọn với gói Enterprise."
+      },
+      {
+        "title": "Sao lưu đã kiểm chứng",
+        "text": "Bản sao lưu được mã hóa, và việc khôi phục đã được kiểm tra."
+      }
+    ],
+    "disclosure": {
+      "title": "Báo cáo lỗ hổng",
+      "text": "Bạn phát hiện một vấn đề bảo mật? Hãy viết cho chúng tôi theo địa chỉ {email}. Chúng tôi sẽ không có hành động chống lại nghiên cứu thiện chí tuân theo chính sách sử dụng chấp nhận được của chúng tôi."
+    },
+    "linksTitle": "Đọc thêm",
+    "trust": "Tin cậy và bảo mật"
+  },
+  "aboutPage": {
+    "title": "Biểu mẫu, dữ liệu và quyền truy cập, cho tất cả mọi người",
+    "description": "Formalie là nền tảng an toàn, linh hoạt để tạo biểu mẫu, thu thập và quản lý dữ liệu, kết nối hệ thống và kiểm soát truy cập, cho các tổ chức thuộc mọi quy mô, ở bất kỳ đâu trên thế giới.",
+    "metaDescription": "Formalie xây dựng một nền tảng an toàn, linh hoạt cho biểu mẫu, dữ liệu và quyền truy cập, dành cho các tổ chức thuộc mọi quy mô, ở bất kỳ đâu trên thế giới.",
+    "mission": {
+      "title": "Sứ mệnh của chúng tôi",
+      "text": "Thu thập thông tin phải đơn giản, và giữ an toàn cho thông tin phải là điều mặc định. Chúng tôi xây dựng công cụ để biến cả hai thành hiện thực, cho một nhóm nhỏ hay một tổ chức lớn."
+    },
+    "beliefsTitle": "Điều chúng tôi tin tưởng",
+    "beliefs": [
+      {
+        "title": "Quyền riêng tư là trên hết",
+        "text": "Không quảng cáo, không bán dữ liệu, không cookie theo dõi."
+      },
+      {
+        "title": "Dữ liệu của bạn là của bạn",
+        "text": "Xuất ra bất cứ lúc nào, hoặc lưu trong cơ sở dữ liệu của riêng bạn ngay từ ngày đầu."
+      },
+      {
+        "title": "Đơn giản hơn cầu kỳ",
+        "text": "Lời lẽ dễ hiểu, màn hình rõ ràng và trợ giúp trên mọi trang."
+      }
+    ],
+    "global": {
+      "title": "Toàn cầu ngay từ thiết kế",
+      "text": "20 ngôn ngữ, kể cả viết từ phải sang trái, định dạng địa phương và dữ liệu ở khu vực bạn chọn."
+    }
+  },
+  "solutionPages": {
+    "problem": "Vấn đề",
+    "hr": {
+      "title": "Biểu mẫu nhân sự, không còn giấy tờ",
+      "description": "Đơn ứng tuyển, tiếp nhận nhân viên mới và yêu cầu của nhân viên ở cùng một nơi, chỉ những người cần xem mới truy cập được.",
+      "metaDescription": "Đơn ứng tuyển, tiếp nhận nhân viên mới và yêu cầu của nhân viên, với vai trò, chia sẻ theo từng biểu mẫu và cơ sở dữ liệu của riêng bạn.",
+      "problem": "Biểu mẫu nhân sự chứa dữ liệu cá nhân, đến qua email và bảng tính, và được nhiều người xem hơn mức cần thiết.",
+      "templates": [
+        {
+          "title": "Đơn ứng tuyển",
+          "text": "Thông tin liên hệ, kinh nghiệm và phần tải lên CV."
+        },
+        {
+          "title": "Tiếp nhận nhân viên mới",
+          "text": "Thông tin cá nhân, giấy tờ và thiết bị."
+        }
+      ],
+      "data": "Câu trả lời được lưu vào cơ sở dữ liệu nhân sự của bạn hoặc kho lưu trữ được mã hóa của Formalie, chỉ các vai trò nhân sự bạn chọn mới xem được."
+    },
+    "customer-feedback": {
+      "title": "Lắng nghe mọi khách hàng, bằng ngôn ngữ của họ",
+      "description": "Khảo sát mức độ hài lòng và yêu cầu đổi trả bằng 20 ngôn ngữ, với phân tích cho thấy cần cải thiện điều gì.",
+      "metaDescription": "Khảo sát mức độ hài lòng của khách hàng và yêu cầu đổi trả bằng 20 ngôn ngữ, với phân tích, thẻ và tóm tắt bằng AI.",
+      "problem": "Phản hồi nằm rải rác trong email, tin nhắn và giấy tờ, bằng nhiều ngôn ngữ, và không ai thấy được xu hướng.",
+      "templates": [
+        {
+          "title": "Mức độ hài lòng của khách hàng",
+          "text": "Đánh giá, điểm số và nhận xét tự do."
+        },
+        {
+          "title": "Yêu cầu đổi trả",
+          "text": "Thông tin đơn hàng, lý do và ảnh."
+        }
+      ],
+      "data": "Câu trả lời được gắn thẻ và tóm tắt, hiển thị trên bảng tổng quan và gửi đến hệ thống của bạn qua webhook."
+    },
+    "events": {
+      "title": "Đăng ký và đặt chỗ suôn sẻ",
+      "description": "Biểu mẫu đăng ký và xác nhận tham dự có giới hạn số lượng, ngày mở và đóng, cùng mã QR để vào cửa.",
+      "metaDescription": "Biểu mẫu đăng ký sự kiện và xác nhận tham dự có giới hạn số câu trả lời, ngày mở và đóng, mã QR và thông báo qua email.",
+      "problem": "Chỗ hết nhanh, ngày thay đổi, và danh sách nằm ở ba bảng tính khác nhau.",
+      "templates": [
+        {
+          "title": "Đăng ký sự kiện",
+          "text": "Thông tin người tham dự, phiên tham gia và nhu cầu ăn uống."
+        },
+        {
+          "title": "Xác nhận tham dự",
+          "text": "Có, không hoặc có thể, kèm một người đi cùng."
+        }
+      ],
+      "data": "Mọi lượt đăng ký về một danh sách, có thông báo qua email, và có thể gửi vào cơ sở dữ liệu của riêng bạn."
+    },
+    "health-and-safety": {
+      "title": "Báo cáo sự cố ngay tại chỗ",
+      "description": "Báo cáo sự cố và đánh giá rủi ro điền được trên điện thoại, có ảnh, chữ ký và hồ sơ rõ ràng.",
+      "metaDescription": "Báo cáo sự cố và đánh giá rủi ro trên mọi điện thoại, có ảnh, chữ ký, điểm rủi ro được tính tự động và nhật ký kiểm tra.",
+      "problem": "Sự cố được báo cáo muộn, trên giấy, không có ảnh, và hồ sơ khó tin cậy.",
+      "templates": [
+        {
+          "title": "Báo cáo sự cố",
+          "text": "Chuyện gì đã xảy ra, ở đâu, ảnh và chữ ký."
+        },
+        {
+          "title": "Đánh giá rủi ro",
+          "text": "Mối nguy, điểm số và biện pháp, được tính trực tiếp."
+        }
+      ],
+      "data": "Báo cáo đến ngay đúng nhóm phụ trách, với nhật ký kiểm tra cho mọi thay đổi."
+    },
+    "education": {
+      "title": "Tuyển sinh và đánh giá, thật đơn giản",
+      "description": "Biểu mẫu tuyển sinh và đánh giá khóa học cho trường phổ thông, cao đẳng, đại học và nhóm đào tạo, bằng ngôn ngữ các gia đình sử dụng.",
+      "metaDescription": "Biểu mẫu tuyển sinh và đánh giá khóa học bằng 20 ngôn ngữ, có tải lên tệp, quy tắc và lưu trữ an toàn.",
+      "problem": "Tuyển sinh cần giấy tờ và sự đồng ý, các gia đình nói nhiều ngôn ngữ, và kết quả đánh giá khó so sánh.",
+      "templates": [
+        {
+          "title": "Tuyển sinh",
+          "text": "Thông tin học sinh, giấy tờ và sự đồng ý."
+        },
+        {
+          "title": "Đánh giá khóa học",
+          "text": "Đánh giá và nhận xét cho từng khóa học."
+        }
+      ],
+      "data": "Hồ sơ tuyển sinh được gửi vào hệ thống quản lý học sinh hoặc cơ sở dữ liệu của bạn; kết quả đánh giá hiển thị trên bảng tổng quan."
+    },
+    "operations": {
+      "title": "Kiểm tra và kiểm toán đáng tin cậy",
+      "description": "Kiểm tra nhà cung cấp, kiểm toán và hồ sơ với phép tính, bằng chứng bắt buộc và dấu vết đầy đủ.",
+      "metaDescription": "Biểu mẫu kiểm tra nhà cung cấp và kiểm toán có phép tính, tải lên tệp, trạng thái xem xét, cơ sở dữ liệu của riêng bạn và nhật ký kiểm tra đầy đủ.",
+      "problem": "Danh sách kiểm tra được chép tay, điểm bị cộng sai, và không ai biết phiên bản nào là mới nhất.",
+      "templates": [
+        {
+          "title": "Kiểm tra nhà cung cấp",
+          "text": "Thông tin công ty, chứng chỉ và điểm số."
+        },
+        {
+          "title": "Kiểm toán",
+          "text": "Danh sách kiểm tra, phát hiện và biện pháp."
+        }
+      ],
+      "data": "Kết quả được xem xét và phê duyệt, ghi vào cơ sở dữ liệu của bạn, và mọi thay đổi đều được ghi lại."
+    },
+    "developers": {
+      "title": "Biểu mẫu dưới dạng API, cho ứng dụng của bạn",
+      "description": "Tạo biểu mẫu một lần và dùng từ các ứng dụng của bạn: endpoint an toàn, token, webhook và tài liệu tự động tạo.",
+      "metaDescription": "Biến biểu mẫu thành endpoint API an toàn với token, quy tắc truy cập, giới hạn tần suất, webhook có chữ ký và tài liệu tự động tạo.",
+      "problem": "Mỗi ứng dụng cần back end biểu mẫu, kiểm tra dữ liệu và lưu trữ riêng, lần nào cũng phải xây lại.",
+      "templates": [
+        {
+          "title": "Endpoint đăng ký",
+          "text": "Một biểu mẫu nhận dữ liệu từ ứng dụng của bạn, được kiểm tra theo quy tắc của nó."
+        },
+        {
+          "title": "Webhook đến dịch vụ của bạn",
+          "text": "Gửi có chữ ký, kèm thử lại."
+        }
+      ],
+      "data": "Câu trả lời được kiểm tra theo quy tắc của biểu mẫu, lưu ở nơi bạn chọn và chuyển tiếp qua webhook có chữ ký."
+    }
   }
 }

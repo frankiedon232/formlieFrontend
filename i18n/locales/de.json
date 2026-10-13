@@ -400,5 +400,725 @@
       "title": "In wenigen Minuten Antworten sammeln.",
       "description": "Kostenloser Plan, ohne Kreditkarte. Upgraden Sie, wenn Sie wachsen."
     }
+  },
+  "common": {
+    "learnMore": "Mehr erfahren",
+    "related": "Verwandte Funktionen",
+    "howItWorks": "So funktioniert es",
+    "step": "Schritt {n}",
+    "allFeatures": "Alle Funktionen",
+    "startFrom": "Formulare zum Start",
+    "whereDataGoes": "Wohin die Daten gehen",
+    "useTemplate": "Mit dieser Vorlage starten"
+  },
+  "featuresIndex": {
+    "title": "Alles, was Formalie kann",
+    "description": "Formulare erstellen, gestalten und überall teilen, dann jede Antwort speichern, auswerten und schützen. Alles hier ist schon heute im Produkt.",
+    "metaDescription": "Formular-Builder, Design, Vorlagen, Antworten, Analysen, Ihre eigene Datenbank, API-Service, Zugriffskontrolle, KI-Assistent und 20 Sprachen auf einer sicheren Plattform."
+  },
+  "features": {
+    "form-builder": {
+      "label": "Formular-Builder",
+      "title": "Jedes Formular, ganz ohne Code",
+      "description": "Ziehen Sie Fragen in Zeilen und Seiten, fügen Sie Regeln und Berechnungen hinzu und veröffentlichen Sie, wenn alles passt. Über 40 Fragetypen, in 20 Sprachen.",
+      "metaDescription": "Fragen, Seiten, Logik und Berechnungen per Drag-and-drop, in 20 Sprachen, mit Versionen und Veröffentlichung per Klick.",
+      "alt": "Der Formular-Builder: Fragetypen links, ein mehrseitiges Formular in der Mitte, Einstellungen rechts",
+      "cards": [
+        {
+          "title": "Über 40 Fragetypen",
+          "text": "Text, Datum, Auswahl, Bewertung, Matrix, Datei-Upload, Unterschrift, Adresse, Betrag, IBAN und mehr."
+        },
+        {
+          "title": "Zeilen und Seiten",
+          "text": "Ziehen Sie Fragen in Zeilen und Seiten, mit einer Tastaturalternative für jedes Ziehen."
+        },
+        {
+          "title": "Regeln",
+          "text": "Fragen ein- oder ausblenden oder zur Pflicht machen, zu einer Seite springen oder ans Ende, je nach früheren Antworten."
+        },
+        {
+          "title": "Live-Berechnungen",
+          "text": "Summen, Punktzahlen und Preise werden beim Ausfüllen berechnet, sogar aus einem Detail der gewählten Option."
+        },
+        {
+          "title": "Große, wiederverwendbare Listen",
+          "text": "Auswahllisten mit Ebenen, bis zu 200.000 Optionen, die beim Tippen laden, in jedem Formular wiederverwendbar."
+        },
+        {
+          "title": "Versionen",
+          "text": "Erst Entwurf, dann Veröffentlichung. Wer ein veröffentlichtes Formular bearbeitet, öffnet einen neuen Entwurf, und jede Version lässt sich wiederherstellen."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Fragen hinzufügen",
+          "text": "Aus über 40 Typen oder Ihren gespeicherten Fragen wählen."
+        },
+        {
+          "title": "Regeln hinzufügen",
+          "text": "Festlegen, was wann erscheint und was berechnet wird."
+        },
+        {
+          "title": "Veröffentlichen",
+          "text": "Per Link, Einbettung, QR-Code oder API teilen."
+        }
+      ]
+    },
+    "design": {
+      "label": "Design und Themes",
+      "title": "Formulare im Look Ihrer Marke",
+      "description": "Starten Sie mit einem Stil und ändern Sie alles, was zählt: Layout, Hintergrund, Schriften, Farben, Schaltflächen, Kopf- und Fußzeile sowie die Dankesseite.",
+      "metaDescription": "Startstile, 21 selbst gehostete Schriften, Farben mit Kontrasthinweisen, Themes und Landingpages. So sieht jedes Formular aus wie Ihre Marke.",
+      "alt": "Der Formular-Designer: Startstile links und eine Live-Vorschau des Formulars",
+      "cards": [
+        {
+          "title": "Startstile",
+          "text": "Minimal, Sanft, Kräftig, Dunkel, Elegant, Business und mehr, bereit zum Anpassen."
+        },
+        {
+          "title": "21 Schriften",
+          "text": "Selbst gehostete Schriften, nichts wird von einer anderen Website geladen."
+        },
+        {
+          "title": "Farben mit Kontrasthinweisen",
+          "text": "Sehen Sie sofort, wenn ein Text schwer lesbar wäre."
+        },
+        {
+          "title": "Themes",
+          "text": "Speichern Sie ein Design als Theme und wenden Sie es auf jedes Formular an."
+        },
+        {
+          "title": "Landingpages",
+          "text": "Präsentieren Sie das Formular unter einem eigenen Link mit eigenem Seitendesign."
+        },
+        {
+          "title": "Ein Theme aus einer Farbe",
+          "text": "Geben Sie dem KI-Assistenten Ihre Markenfarbe und erhalten Sie ein Theme."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Stil wählen",
+          "text": "Mit einem der Startstile beginnen."
+        },
+        {
+          "title": "Anpassen",
+          "text": "Schriften, Farben, Kopf- und Fußzeile, Schaltflächen."
+        },
+        {
+          "title": "Als Theme speichern",
+          "text": "Für jedes Formular wiederverwenden."
+        }
+      ]
+    },
+    "templates": {
+      "label": "Vorlagen",
+      "title": "Mit einem fertigen Formular starten",
+      "description": "Eine Vorlagenbibliothek nach Kategorien, von Bewerbungen bis zu Vorfallmeldungen. Eigene Formulare lassen sich ebenfalls als Vorlagen speichern.",
+      "metaDescription": "Fertige Formularvorlagen für Unternehmen, HR, Veranstaltungen, Arbeitsschutz, Gastgewerbe und Bildung. Speichern Sie eigene Formulare als Vorlagen.",
+      "alt": "Vorlagenkategorien als Karten",
+      "cards": [
+        {
+          "title": "Nach Kategorie",
+          "text": "Unternehmen und Kunden, HR und Arbeitsplatz, Veranstaltungen und Buchungen, Arbeitsschutz, Gastgewerbe, Bildung und mehr."
+        },
+        {
+          "title": "Bereit zum Anpassen",
+          "text": "Jede Vorlage ist ein normales Formular: Ändern Sie jede Frage, Regel und jedes Design."
+        },
+        {
+          "title": "Eigene Vorlagen",
+          "text": "Speichern Sie jedes Ihrer Formulare als Vorlage für Ihr Team."
+        },
+        {
+          "title": "Aus einer Beschreibung",
+          "text": "Oder beschreiben Sie das gewünschte Formular, und der KI-Assistent erstellt einen Entwurf."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Auswählen",
+          "text": "Die Bibliothek nach Kategorien durchsuchen."
+        },
+        {
+          "title": "Anpassen",
+          "text": "Fragen, Regeln und Design ändern."
+        },
+        {
+          "title": "Veröffentlichen",
+          "text": "In wenigen Minuten Antworten sammeln."
+        }
+      ]
+    },
+    "responses": {
+      "label": "Antworten",
+      "title": "Jede Antwort geprüft und geordnet",
+      "description": "Bearbeiten Sie Antworten in einer Tabelle oder als Karten, durchsuchen, prüfen, markieren und exportieren Sie sie.",
+      "metaDescription": "Tabellen- und Kartenansicht, Suche und Filter, Prüfstatus, Tags, Notizen, Änderungen mit Verlauf und Export nach Excel, CSV oder PDF.",
+      "alt": "Die Antwortliste mit dem Diagramm der Prüfstatus",
+      "cards": [
+        {
+          "title": "Tabelle und Karten",
+          "text": "Antworten durchsuchen, filtern, Spalten wählen, sortieren und einen Zeitraum festlegen."
+        },
+        {
+          "title": "Prüfstatus",
+          "text": "Neu, geprüft, genehmigt oder abgelehnt, damit alle wissen, was erledigt ist."
+        },
+        {
+          "title": "Tags und Notizen",
+          "text": "Antworten mit Tags versehen und Notizen im Detailbereich hinterlassen."
+        },
+        {
+          "title": "Änderungen mit Verlauf",
+          "text": "Eine Antwort korrigieren und nachvollziehen, was sich geändert hat."
+        },
+        {
+          "title": "Export",
+          "text": "Excel, CSV oder PDF, mit Fortschrittsanzeige."
+        },
+        {
+          "title": "KI-Zusammenfassungen",
+          "text": "Eine Zusammenfassung einer Antwort oder Erkenntnisse über viele."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Antworten kommen an",
+          "text": "Aus jedem Kanal in eine Liste."
+        },
+        {
+          "title": "Prüfen",
+          "text": "Status setzen, taggen und Notizen hinzufügen."
+        },
+        {
+          "title": "Exportieren oder verbinden",
+          "text": "Herunterladen oder an Ihre Datenbank senden."
+        }
+      ]
+    },
+    "analytics": {
+      "label": "Analysen",
+      "title": "Sehen Sie, wie jedes Formular abschneidet",
+      "description": "Aufrufe, Starts und Abschlüsse, wo Menschen abbrechen und welche Geräte, Kanäle und Sprachen sie nutzen.",
+      "metaDescription": "Formularanalysen: Aufrufe, Starts, Abschlüsse, Abbrüche pro Frage, Geräte, Kanäle und Sprachen, dazu ein Dashboard für den ganzen Workspace.",
+      "alt": "Die Konversionsübersicht der Analysen",
+      "cards": [
+        {
+          "title": "Konversion",
+          "text": "Aufrufe, Starts und Abschlüsse für jedes Formular."
+        },
+        {
+          "title": "Abbrüche pro Frage",
+          "text": "Sehen Sie genau, wo Menschen aufhören."
+        },
+        {
+          "title": "Geräte, Kanäle, Sprachen",
+          "text": "Wissen, wie und von wo geantwortet wird."
+        },
+        {
+          "title": "Workspace-Dashboard",
+          "text": "KPI-Karten mit Trends, die aktivsten Formulare und was Aufmerksamkeit braucht."
+        },
+        {
+          "title": "Filter und Zeiträume",
+          "text": "Nach Ordner und Eigentümer, nach Tag, Woche, Monat oder Jahr."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Teilen",
+          "text": "Jeder Aufruf und jede Antwort wird gezählt."
+        },
+        {
+          "title": "Erkennen",
+          "text": "Die Frage finden, an der Menschen abbrechen."
+        },
+        {
+          "title": "Verbessern",
+          "text": "Ändern und zusehen, wie sich die Zahlen bewegen."
+        }
+      ]
+    },
+    "data-sources": {
+      "label": "Datenquellen",
+      "title": "Ihre Datenbank, ab der ersten Antwort",
+      "description": "Verbinden Sie MySQL, MariaDB, PostgreSQL, SQL Server oder Oracle, und jede Antwort wird dort sofort beim Eingang gespeichert. Oder behalten Sie alles im verschlüsselten Formalie-Speicher.",
+      "metaDescription": "Jede Antwort sofort an MySQL, MariaDB, PostgreSQL, SQL Server oder Oracle senden oder im verschlüsselten Formalie-Speicher behalten.",
+      "alt": "Die Übersicht der Datenquellen: Datenbankverkehr und Zustand der Verbindungen",
+      "cards": [
+        {
+          "title": "Fünf Datenbanken",
+          "text": "MySQL, MariaDB, PostgreSQL, SQL Server und Oracle."
+        },
+        {
+          "title": "Sofort gespeichert",
+          "text": "Antworten landen in eigenen Formalie-Tabellen mit Präfix, mit Nachladen älterer Daten und Wiederholungsversuchen."
+        },
+        {
+          "title": "Verbindungszustand",
+          "text": "Verbindung testen, einer Anleitung für Berechtigungen folgen, Zustand und Antwortzeit im Blick behalten."
+        },
+        {
+          "title": "Datenbank-Explorer",
+          "text": "Tabellen durchsuchen, Zeilen in Ihren eigenen Tabellen ändern und exportieren."
+        },
+        {
+          "title": "Abfrage-Editor",
+          "text": "SQL mit Autovervollständigung, standardmäßig schreibgeschützt, mit Verlauf und gespeicherten Abfragen."
+        },
+        {
+          "title": "Alles protokolliert",
+          "text": "Alles, was an einer Verbindung geschieht, steht im Audit-Protokoll."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Verbinden",
+          "text": "Datenbank hinzufügen und testen."
+        },
+        {
+          "title": "Formulare wählen",
+          "text": "Festlegen, welche Formulare ihre Antworten dort speichern."
+        },
+        {
+          "title": "Antworten fließen ein",
+          "text": "Jede neue Antwort, sofort gespeichert."
+        }
+      ]
+    },
+    "api-service": {
+      "label": "API-Service",
+      "title": "Jedes Formular wird zu sicheren API-Endpunkten",
+      "description": "Fassen Sie Formulare zu Services zusammen, legen Sie fest, was jeder Endpunkt annimmt und zurückgibt, und schützen Sie ihn mit Tokens, Zugriffsregeln und Ratenlimits.",
+      "metaDescription": "Machen Sie jedes Formular zu sicheren API-Endpunkten, mit Tokens, Zugriffsregeln, Ratenlimits, Protokollen und automatisch erstellter Dokumentation.",
+      "alt": "Die Übersicht des API-Service: Services, Endpunkte, Aufrufe und Verkehr im Zeitverlauf",
+      "cards": [
+        {
+          "title": "Endpunkte aus Formularen",
+          "text": "GET, POST, PUT und DELETE, mit den angenommenen und zurückgegebenen Feldern pro Endpunkt."
+        },
+        {
+          "title": "Tokens mit Berechtigungen",
+          "text": "Feste oder kurzlebige Tokens, für Test und Produktion."
+        },
+        {
+          "title": "Signierte Anfragen",
+          "text": "Pflicht-Header, Signaturen und Schutz vor Wiederholungen."
+        },
+        {
+          "title": "Zugriffsregeln",
+          "text": "Nach IP, Domain, Region und Land, dazu erlaubte Websites für Browser-Apps."
+        },
+        {
+          "title": "Ratenlimits",
+          "text": "Pro Token, pro IP und pro Endpunkt."
+        },
+        {
+          "title": "Doku und Protokolle",
+          "text": "Automatisch erstellte Dokumentation mit Testkonsole, Anfrageprotokolle, Analysen und signierte Webhooks."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Formular wählen",
+          "text": "Seine Fragen werden zu den Feldern."
+        },
+        {
+          "title": "Token erstellen",
+          "text": "Mit den Berechtigungen, die Ihre App braucht."
+        },
+        {
+          "title": "Aufrufen",
+          "text": "Aus jeder App, mit der erstellten Dokumentation."
+        }
+      ]
+    },
+    "access-control": {
+      "label": "Zugriff und Sicherheit",
+      "title": "Bestimmen Sie genau, wer was sieht",
+      "description": "Rollen mit fein abgestuften Berechtigungen, Ordnerzugriff, Freigabe pro Formular, Firmenanmeldung und ein Audit-Protokoll jeder Aktion.",
+      "metaDescription": "Rollen und Berechtigungen, Ordnerzugriff, Freigabe pro Formular, Zwei-Schritt-Anmeldung, Single Sign-on, Sitzungskontrolle und ein Audit-Protokoll jeder Aktion.",
+      "alt": "Rollen und Zugriff: Personen pro Rolle und Arten von Rollen",
+      "cards": [
+        {
+          "title": "Rollen und Berechtigungen",
+          "text": "Eigene, geteilte oder alle, für jeden Bereich, und Ihre eigenen Rollen."
+        },
+        {
+          "title": "Ordner und Freigaben",
+          "text": "Ordnerzugriff, Freigabe pro Formular und eine klare Antwort darauf, wer dieses Formular sehen kann."
+        },
+        {
+          "title": "Wer jede Frage sieht",
+          "text": "Alle oder ausgewählte Abteilungen, Rollen oder Personen."
+        },
+        {
+          "title": "Firmenanmeldung",
+          "text": "Single Sign-on mit Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0 oder OpenID Connect."
+        },
+        {
+          "title": "Zwei-Schritt-Anmeldung",
+          "text": "Eine Authenticator-App oder SMS, dazu Passwortregeln, erlaubte IPs und Sitzungsdauer."
+        },
+        {
+          "title": "Audit-Protokoll",
+          "text": "Jede Aktion, mit wer, wann und von wo, und einem Export."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Einladen",
+          "text": "Personen mit Abteilung und Vorgesetzten hinzufügen."
+        },
+        {
+          "title": "Rollen vergeben",
+          "text": "Festlegen, was jede Rolle darf."
+        },
+        {
+          "title": "Prüfen",
+          "text": "Sehen, wer jedes Formular sehen kann und warum."
+        }
+      ]
+    },
+    "ai-assistant": {
+      "label": "KI-Assistent",
+      "title": "Ein Assistent, der erstellt, liest und übersetzt",
+      "description": "Beschreiben Sie ein Formular oder laden Sie ein Dokument hoch und erhalten Sie einen Entwurf. Stellen Sie Fragen zu Ihren Antworten in einfachen Worten. Übersetzen Sie Formulare mit einem Klick.",
+      "metaDescription": "Formulare aus einer Beschreibung oder einem Dokument, Hilfe bei Fragen und Logik, Antwortanalyse, Zusammenfassungen und Übersetzung, mit KI-Guthaben in jedem Plan.",
+      "prompt": "Eine Bewerbung mit Kontaktdaten, Berufserfahrung und Upload des Lebenslaufs",
+      "drafted": "Entwurf fertig: 3 Seiten, 9 Fragen",
+      "cards": [
+        {
+          "title": "Formulare aus einer Beschreibung",
+          "text": "Oder aus einem Dokument, mit Vorschlägen für Vorlagen."
+        },
+        {
+          "title": "Hilfe im Builder",
+          "text": "Bei Fragen, Regeln und Formulierungen."
+        },
+        {
+          "title": "Antwortanalyse",
+          "text": "Fragen Sie Ihre Daten in einfachen Worten und erhalten Sie Zusammenfassungen."
+        },
+        {
+          "title": "Übersetzung",
+          "text": "Übersetzen Sie ein Formular in die Sprachen, die es braucht."
+        },
+        {
+          "title": "Ein Theme aus einer Farbe",
+          "text": "Markenfarbe angeben, Design erhalten."
+        },
+        {
+          "title": "Guthaben in jedem Plan",
+          "text": "KI-Guthaben ist in jedem Plan enthalten."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Beschreiben",
+          "text": "Sagen Sie, was Sie brauchen, oder laden Sie ein Dokument hoch."
+        },
+        {
+          "title": "Prüfen",
+          "text": "Den Entwurf durchsehen und anpassen."
+        },
+        {
+          "title": "Veröffentlichen",
+          "text": "Und den Assistenten zu den Antworten befragen."
+        }
+      ]
+    },
+    "languages": {
+      "label": "Sprachen",
+      "title": "Jedes Formular in der Sprache Ihrer Zielgruppe",
+      "description": "Die App spricht 20 Sprachen, auch Arabisch von rechts nach links. Ein Formular kann mehrere Sprachen haben, und jede Person wählt ihre eigene.",
+      "metaDescription": "Die App in 20 Sprachen, mehrsprachige Formulare mit Sprachumschalter sowie Datums-, Zahlen- und Währungsformate passend zu jeder Person.",
+      "question": "Wie bewerten Sie Ihren Besuch?",
+      "cards": [
+        {
+          "title": "20 Sprachen",
+          "text": "Die ganze App, auch von rechts nach links."
+        },
+        {
+          "title": "Mehrsprachige Formulare",
+          "text": "Mit einem Sprachumschalter für alle, die antworten."
+        },
+        {
+          "title": "Hilfe beim Übersetzen",
+          "text": "Der KI-Assistent übersetzt, Sie prüfen."
+        },
+        {
+          "title": "Lokale Formate",
+          "text": "Datum, Zahlen und Währungen folgen Sprache und Region jeder Person."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Sprachen hinzufügen",
+          "text": "Festlegen, welche Sprachen ein Formular anbietet."
+        },
+        {
+          "title": "Übersetzen",
+          "text": "Mit Hilfe des Assistenten."
+        },
+        {
+          "title": "Einmal teilen",
+          "text": "Alle antworten in ihrer eigenen Sprache."
+        }
+      ]
+    },
+    "help-and-tours": {
+      "label": "Hilfe und Touren",
+      "title": "Hilfe auf jeder Seite",
+      "description": "Ein Hilfe-Center in 20 Sprachen, geführte Touren beim ersten Besuch und ein Assistent, der auf Basis der Artikel antwortet.",
+      "metaDescription": "Ein Hilfe-Center mit Artikeln, FAQ und Glossar in 20 Sprachen, geführte Touren, kontextbezogene Hilfe und ein Einrichtungsassistent für neue Workspaces.",
+      "alt": "Die Startseite des Hilfe-Centers",
+      "cards": [
+        {
+          "title": "Hilfe-Center",
+          "text": "Artikel, FAQ und Glossar in 20 Sprachen."
+        },
+        {
+          "title": "Ein Assistent",
+          "text": "Beantwortet Fragen auf Basis der Hilfeartikel."
+        },
+        {
+          "title": "Hilfe im Kontext",
+          "text": "Ein Fragezeichen auf jeder Seite und die Schaltfläche Zeig mir, wo."
+        },
+        {
+          "title": "Geführte Touren",
+          "text": "Beim ersten Besuch jedes Bereichs angeboten."
+        },
+        {
+          "title": "Einrichtungsassistent",
+          "text": "Neue Workspaces sind in wenigen Schritten startklar."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Registrieren",
+          "text": "Der Einrichtungsassistent richtet den Workspace ein."
+        },
+        {
+          "title": "Tour machen",
+          "text": "Jeder Bereich stellt sich beim ersten Mal vor."
+        },
+        {
+          "title": "Fragen",
+          "text": "Hilfe-Center und Assistent sind nur einen Klick entfernt."
+        }
+      ]
+    }
+  },
+  "integrationsPage": {
+    "title": "Funktioniert mit den Systemen, die Sie schon haben",
+    "description": "Ihre eigene Datenbank, Webhooks und eine API für Ihre Apps sowie die Anmeldung über den Identitätsanbieter Ihres Unternehmens.",
+    "metaDescription": "MySQL, MariaDB, PostgreSQL, SQL Server und Oracle, Webhooks, der API-Service, Anmeldung mit Google und Facebook sowie Single Sign-on mit Okta, Microsoft Entra ID und weiteren.",
+    "databases": {
+      "title": "Datenbanken",
+      "text": "Jede Antwort wird sofort in Ihre eigene Datenbank geschrieben."
+    },
+    "api": {
+      "title": "API-Service und Webhooks",
+      "text": "Endpunkte für Ihre Apps und signierte Webhooks an Ihre Dienste, mit Wiederholungsversuchen."
+    },
+    "signin": {
+      "title": "Anmeldung",
+      "text": "E-Mail und Passwort, Google oder Facebook in jedem Plan, Single Sign-on in den kostenpflichtigen Plänen."
+    },
+    "standards": {
+      "title": "Auf offenen Standards aufgebaut",
+      "text": "SQL, REST und JSON, SAML 2.0 und OpenID Connect, damit Sie nicht gebunden sind."
+    },
+    "alt": "Die Liste der Verbindungen: Datenbanken mit Status und Verfügbarkeit"
+  },
+  "securityPage": {
+    "title": "Sicherheit und Datenschutz, eingebaut",
+    "description": "Die Kontrollen, die Formalie jedem Workspace bietet, und wie wir die Daten schützen, die Sie erheben.",
+    "metaDescription": "Verschlüsselung, Rollen und Zugriffskontrolle, ein Audit-Protokoll jeder Aktion, Zwei-Schritt-Anmeldung, Single Sign-on und Datenresidenz.",
+    "items": [
+      {
+        "title": "Verschlüsselt bei Übertragung und Speicherung",
+        "text": "Der gesamte Datenverkehr ist verschlüsselt, und die Anfragen der App selbst haben eine zweite Verschlüsselungsebene. Im Browser werden keine Geheimnisse gespeichert."
+      },
+      {
+        "title": "Rollen und Zugriffskontrolle",
+        "text": "Fein abgestufte Rollen, Ordnerzugriff und Freigabe pro Formular, mit einer klaren Antwort darauf, wer jedes Formular sehen kann."
+      },
+      {
+        "title": "Ein Audit-Protokoll für alles",
+        "text": "Wer was wann und von wo getan hat, auch Aktionen von Formalie-Mitarbeitenden, mit Export."
+      },
+      {
+        "title": "Zwei-Schritt-Anmeldung und Single Sign-on",
+        "text": "Eine Authenticator-App oder SMS sowie Firmenanmeldung mit SAML 2.0 oder OpenID Connect."
+      },
+      {
+        "title": "Datenresidenz",
+        "text": "Mit Enterprise bleiben Ihre Daten in der Region, die Sie wählen."
+      },
+      {
+        "title": "Getestete Backups",
+        "text": "Verschlüsselte Backups, mit getesteten Wiederherstellungen."
+      }
+    ],
+    "disclosure": {
+      "title": "Schwachstelle melden",
+      "text": "Sie haben ein Sicherheitsproblem gefunden? Schreiben Sie an {email}. Gegen Forschung in gutem Glauben, die unsere Richtlinie zur zulässigen Nutzung einhält, gehen wir nicht vor."
+    },
+    "linksTitle": "Weiterlesen",
+    "trust": "Vertrauen und Sicherheit"
+  },
+  "aboutPage": {
+    "title": "Formulare, Daten und Zugriff, für alle",
+    "description": "Formalie ist eine sichere, flexible Plattform, um Formulare zu erstellen, Daten zu sammeln und zu verwalten, Systeme zu verbinden und Zugriffe zu steuern, für Organisationen jeder Größe, überall auf der Welt.",
+    "metaDescription": "Formalie entwickelt eine sichere, flexible Plattform für Formulare, Daten und Zugriff, für Organisationen jeder Größe, überall auf der Welt.",
+    "mission": {
+      "title": "Unsere Mission",
+      "text": "Informationen zu sammeln sollte einfach sein, und sie zu schützen sollte selbstverständlich sein. Wir bauen die Werkzeuge, die beides möglich machen, für ein kleines Team wie für eine große Organisation."
+    },
+    "beliefsTitle": "Woran wir glauben",
+    "beliefs": [
+      {
+        "title": "Datenschutz zuerst",
+        "text": "Keine Werbung, kein Verkauf von Daten, keine Tracking-Cookies."
+      },
+      {
+        "title": "Ihre Daten gehören Ihnen",
+        "text": "Exportieren Sie sie jederzeit oder speichern Sie sie vom ersten Tag an in Ihrer eigenen Datenbank."
+      },
+      {
+        "title": "Einfach schlägt raffiniert",
+        "text": "Klare Worte, übersichtliche Bildschirme und Hilfe auf jeder Seite."
+      }
+    ],
+    "global": {
+      "title": "Von Grund auf global",
+      "text": "20 Sprachen, auch von rechts nach links, lokale Formate und Daten in der Region Ihrer Wahl."
+    }
+  },
+  "solutionPages": {
+    "problem": "Das Problem",
+    "hr": {
+      "title": "Personalformulare ohne Papierkram",
+      "description": "Bewerbungen, Onboarding und Mitarbeiteranfragen an einem Ort, nur für die Menschen sichtbar, die sie sehen sollen.",
+      "metaDescription": "Bewerbungen, Onboarding neuer Mitarbeitender und Mitarbeiteranfragen, mit Rollen, Freigabe pro Formular und Ihrer eigenen Datenbank.",
+      "problem": "Personalformulare enthalten personenbezogene Daten, kommen per E-Mail und Tabelle und werden von mehr Menschen gesehen als nötig.",
+      "templates": [
+        {
+          "title": "Bewerbung",
+          "text": "Kontaktdaten, Berufserfahrung und Upload des Lebenslaufs."
+        },
+        {
+          "title": "Onboarding",
+          "text": "Persönliche Angaben, Dokumente und Ausstattung."
+        }
+      ],
+      "data": "Antworten gehen in Ihre HR-Datenbank oder in den verschlüsselten Formalie-Speicher und sind nur für die HR-Rollen sichtbar, die Sie wählen."
+    },
+    "customer-feedback": {
+      "title": "Allen Kunden zuhören, in ihrer Sprache",
+      "description": "Zufriedenheitsumfragen und Rücksendeanfragen in 20 Sprachen, mit Analysen, die zeigen, was zu verbessern ist.",
+      "metaDescription": "Kundenzufriedenheitsumfragen und Rücksendeanfragen in 20 Sprachen, mit Analysen, Tags und KI-Zusammenfassungen.",
+      "problem": "Feedback ist über E-Mail, Chat und Papier verstreut, in vielen Sprachen, und niemand erkennt den Trend.",
+      "templates": [
+        {
+          "title": "Kundenzufriedenheit",
+          "text": "Bewertungen, eine Punktzahl und ein freier Kommentar."
+        },
+        {
+          "title": "Rücksendeanfrage",
+          "text": "Bestelldaten, Grund und Fotos."
+        }
+      ],
+      "data": "Antworten werden getaggt und zusammengefasst, im Dashboard angezeigt und per Webhook an Ihre Systeme gesendet."
+    },
+    "events": {
+      "title": "Anmeldungen und Buchungen, die einfach funktionieren",
+      "description": "Anmelde- und Zusageformulare mit Limits, Start- und Enddatum und einem QR-Code für den Einlass.",
+      "metaDescription": "Formulare für Veranstaltungsanmeldungen und Zusagen mit Antwortlimits, Start- und Enddatum, QR-Codes und E-Mail-Benachrichtigungen.",
+      "problem": "Plätze sind schnell weg, Termine ändern sich, und die Listen liegen in drei verschiedenen Tabellen.",
+      "templates": [
+        {
+          "title": "Veranstaltungsanmeldung",
+          "text": "Teilnehmerdaten, Sessions und Ernährungswünsche."
+        },
+        {
+          "title": "Zusage",
+          "text": "Ja, nein oder vielleicht, mit Begleitperson."
+        }
+      ],
+      "data": "Jede Anmeldung landet in einer Liste, mit E-Mail-Benachrichtigungen, und kann in Ihre eigene Datenbank gehen."
+    },
+    "health-and-safety": {
+      "title": "Vorfälle direkt vor Ort melden",
+      "description": "Vorfallmeldungen und Gefährdungsbeurteilungen, die sich am Smartphone ausfüllen lassen, mit Fotos, Unterschriften und klarer Dokumentation.",
+      "metaDescription": "Vorfallmeldungen und Gefährdungsbeurteilungen auf jedem Smartphone, mit Fotos, Unterschriften, berechneten Risikowerten und Audit-Protokoll.",
+      "problem": "Vorfälle werden spät gemeldet, auf Papier, ohne Fotos, und der Dokumentation ist schwer zu trauen.",
+      "templates": [
+        {
+          "title": "Vorfallmeldung",
+          "text": "Was passiert ist, wo, Fotos und eine Unterschrift."
+        },
+        {
+          "title": "Gefährdungsbeurteilung",
+          "text": "Gefahren, Bewertungen und Maßnahmen, live berechnet."
+        }
+      ],
+      "data": "Meldungen erreichen sofort das richtige Team, mit einem Audit-Protokoll jeder Änderung."
+    },
+    "education": {
+      "title": "Einschreibungen und Bewertungen, ganz einfach",
+      "description": "Einschreibeformulare und Kursbewertungen für Schulen, Hochschulen und Schulungsteams, in den Sprachen der Familien.",
+      "metaDescription": "Einschreibeformulare und Kursbewertungen in 20 Sprachen, mit Datei-Uploads, Regeln und sicherer Speicherung.",
+      "problem": "Einschreibungen brauchen Dokumente und Einwilligungen, Familien sprechen viele Sprachen, und Bewertungen lassen sich schwer vergleichen.",
+      "templates": [
+        {
+          "title": "Einschreibung",
+          "text": "Angaben zur Person, Dokumente und Einwilligung."
+        },
+        {
+          "title": "Kursbewertung",
+          "text": "Bewertungen und Kommentare, pro Kurs."
+        }
+      ],
+      "data": "Einschreibungen gehen in Ihr Verwaltungssystem oder Ihre Datenbank, Bewertungen erscheinen im Dashboard."
+    },
+    "operations": {
+      "title": "Prüfungen und Audits, auf die Sie sich verlassen können",
+      "description": "Lieferantenprüfungen, Audits und Nachweise mit Berechnungen, Pflichtbelegen und lückenloser Nachverfolgung.",
+      "metaDescription": "Formulare für Lieferantenprüfungen und Audits mit Berechnungen, Datei-Uploads, Prüfstatus, Ihrer eigenen Datenbank und einem vollständigen Audit-Protokoll.",
+      "problem": "Checklisten werden von Hand abgeschrieben, Punkte falsch addiert, und niemand weiß, welche Version aktuell ist.",
+      "templates": [
+        {
+          "title": "Lieferantenprüfung",
+          "text": "Firmendaten, Zertifikate und eine Punktzahl."
+        },
+        {
+          "title": "Audit",
+          "text": "Checkliste, Feststellungen und Maßnahmen."
+        }
+      ],
+      "data": "Ergebnisse werden geprüft und genehmigt, in Ihre Datenbank geschrieben, und jede Änderung ist dokumentiert."
+    },
+    "developers": {
+      "title": "Formulare als API, für Ihre eigenen Apps",
+      "description": "Erstellen Sie das Formular einmal und nutzen Sie es aus Ihren Apps: sichere Endpunkte, Tokens, Webhooks und automatisch erstellte Doku.",
+      "metaDescription": "Machen Sie Formulare zu sicheren API-Endpunkten, mit Tokens, Zugriffsregeln, Ratenlimits, signierten Webhooks und automatisch erstellter Dokumentation.",
+      "problem": "Jede App braucht ihr eigenes Formular-Backend, ihre Validierung und Speicherung, jedes Mal neu gebaut.",
+      "templates": [
+        {
+          "title": "Registrierungs-Endpunkt",
+          "text": "Ein Formular, an das Ihre App Daten sendet, geprüft nach seinen Regeln."
+        },
+        {
+          "title": "Webhook an Ihren Dienst",
+          "text": "Signierte Zustellungen mit Wiederholungsversuchen."
+        }
+      ],
+      "data": "Antworten werden nach den Regeln des Formulars geprüft, dort gespeichert, wo Sie es wünschen, und per signierten Webhooks weitergeleitet."
+    }
   }
 }

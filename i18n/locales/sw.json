@@ -400,5 +400,725 @@
       "title": "Anza kukusanya kwa dakika chache.",
       "description": "Mpango wa bure, hakuna kadi inayohitajika. Panda daraja unapokua."
     }
+  },
+  "common": {
+    "learnMore": "Jifunze zaidi",
+    "related": "Vipengele vinavyohusiana",
+    "howItWorks": "Jinsi inavyofanya kazi",
+    "step": "Hatua {n}",
+    "allFeatures": "Vipengele vyote",
+    "startFrom": "Fomu za kuanzia",
+    "whereDataGoes": "Data inakokwenda",
+    "useTemplate": "Anza na kiolezo hiki"
+  },
+  "featuresIndex": {
+    "title": "Kila kitu Formalie hufanya",
+    "description": "Unda fomu, zipe muundo, zishiriki popote, kisha hifadhi, chambua na linda kila jibu. Kila sehemu iliyo hapa chini iko kwenye bidhaa leo.",
+    "metaDescription": "Kiunda fomu, muundo, violezo, majibu, takwimu, hifadhidata yako mwenyewe, huduma ya API, udhibiti wa ufikiaji, msaidizi wa AI na lugha 20, kwenye jukwaa moja salama."
+  },
+  "features": {
+    "form-builder": {
+      "label": "Kiunda fomu",
+      "title": "Unda fomu yoyote, bila kuandika msimbo",
+      "description": "Buruta na udondoshe maswali kwenye safu na kurasa, ongeza kanuni na hesabu, kisha chapisha ikiwa tayari. Aina zaidi ya 40 za maswali, kwa lugha 20.",
+      "metaDescription": "Maswali, kurasa, mantiki na hesabu kwa kuburuta na kudondosha, kwa lugha 20, pamoja na matoleo na uchapishaji kwa mbofyo mmoja.",
+      "alt": "Kiunda fomu: aina za maswali upande wa kushoto, fomu ya kurasa nyingi katikati, mipangilio upande wa kulia",
+      "cards": [
+        {
+          "title": "Aina zaidi ya 40 za maswali",
+          "text": "Maandishi, tarehe, chaguo, ukadiriaji, jedwali, upakiaji, sahihi, anwani, sarafu, IBAN na zaidi."
+        },
+        {
+          "title": "Safu na kurasa",
+          "text": "Buruta maswali kwenye safu na kurasa, na kila kuburuta kuna njia mbadala ya kibodi."
+        },
+        {
+          "title": "Kanuni",
+          "text": "Onyesha, ficha au lazimisha maswali, ruka hadi ukurasa fulani au hadi mwisho, kulingana na majibu ya awali."
+        },
+        {
+          "title": "Hesabu za papo hapo",
+          "text": "Jumla, alama na bei hukokotolewa watu wanapojibu, hata kutoka kwa maelezo ya chaguo lililochaguliwa."
+        },
+        {
+          "title": "Orodha kubwa zinazotumika tena",
+          "text": "Orodha za chaguo zenye ngazi, hadi chaguo 200,000 zinazopakiwa watu wanapoandika, zinazoweza kutumika kwenye fomu yoyote."
+        },
+        {
+          "title": "Matoleo",
+          "text": "Andaa rasimu, kisha chapisha. Kuhariri fomu iliyo hai hufungua rasimu mpya, na kila toleo linaweza kurejeshwa."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Ongeza maswali",
+          "text": "Chagua kati ya aina zaidi ya 40 au maswali uliyohifadhi."
+        },
+        {
+          "title": "Ongeza kanuni",
+          "text": "Amua kinachoonyeshwa, lini, na kinachokokotolewa."
+        },
+        {
+          "title": "Chapisha",
+          "text": "Ishiriki kwa kiungo, kupachika, msimbo wa QR au API."
+        }
+      ]
+    },
+    "design": {
+      "label": "Muundo na mandhari",
+      "title": "Fomu zinazofanana na chapa yako",
+      "description": "Anza na mwonekano na ubadilishe kila kitu muhimu: mpangilio, mandharinyuma, fonti, rangi, vitufe, kichwa, sehemu ya chini na ukurasa wa shukrani.",
+      "metaDescription": "Mionekano ya kuanzia, fonti 21 zinazohifadhiwa nasi, rangi zenye vidokezo vya utofautishaji, mandhari na kurasa za kutua. Fanya kila fomu ifanane na chapa yako.",
+      "alt": "Kibuni fomu: mionekano ya kuanzia upande wa kushoto na onyesho la moja kwa moja la fomu",
+      "cards": [
+        {
+          "title": "Mionekano ya kuanzia",
+          "text": "Rahisi, Laini, Imara, Giza, Maridadi, Rasmi na mingineyo, tayari kurekebishwa."
+        },
+        {
+          "title": "Fonti 21",
+          "text": "Fonti zinazohifadhiwa nasi, kwa hivyo hakuna kinachopakiwa kutoka tovuti nyingine."
+        },
+        {
+          "title": "Rangi zenye vidokezo vya utofautishaji",
+          "text": "Ona mara moja maandishi yanapokuwa magumu kusoma."
+        },
+        {
+          "title": "Mandhari",
+          "text": "Hifadhi muundo kama mandhari na uitumie kwenye fomu yoyote."
+        },
+        {
+          "title": "Kurasa za kutua",
+          "text": "Weka fomu ndani ya muundo wa ukurasa kwenye kiungo chake."
+        },
+        {
+          "title": "Mandhari kutoka kwa rangi moja",
+          "text": "Mpe msaidizi wa AI rangi ya chapa yako upate mandhari."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Chagua mwonekano",
+          "text": "Anza na mojawapo ya mionekano ya kuanzia."
+        },
+        {
+          "title": "Ifanye iwe yako",
+          "text": "Fonti, rangi, kichwa, sehemu ya chini na vitufe."
+        },
+        {
+          "title": "Hifadhi kama mandhari",
+          "text": "Itumie tena kwenye kila fomu."
+        }
+      ]
+    },
+    "templates": {
+      "label": "Violezo",
+      "title": "Anza na fomu iliyo tayari",
+      "description": "Maktaba ya violezo kwa kategoria, kuanzia maombi ya kazi hadi ripoti za matukio. Unaweza pia kuhifadhi fomu zako kama violezo.",
+      "metaDescription": "Violezo vya fomu vilivyo tayari kwa biashara, rasilimali watu, matukio, afya na usalama, ukarimu na elimu. Hifadhi fomu zako kama violezo.",
+      "alt": "Kategoria za violezo zikionyeshwa kama kadi",
+      "cards": [
+        {
+          "title": "Kwa kategoria",
+          "text": "Biashara na wateja, rasilimali watu na mahali pa kazi, matukio na uhifadhi, afya na usalama, ukarimu, elimu na zaidi."
+        },
+        {
+          "title": "Tayari kubadilishwa",
+          "text": "Kila kiolezo ni fomu ya kawaida: badilisha swali, kanuni au muundo wowote."
+        },
+        {
+          "title": "Violezo vyako mwenyewe",
+          "text": "Hifadhi fomu yako yoyote kama kiolezo kwa ajili ya timu yako."
+        },
+        {
+          "title": "Kutoka kwa maelezo",
+          "text": "Au eleza fomu unayohitaji na msaidizi wa AI ataandaa rasimu."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Chagua",
+          "text": "Vinjari maktaba kwa kategoria."
+        },
+        {
+          "title": "Rekebisha",
+          "text": "Badilisha maswali, kanuni na muundo."
+        },
+        {
+          "title": "Chapisha",
+          "text": "Kusanya majibu ndani ya dakika chache."
+        }
+      ]
+    },
+    "responses": {
+      "label": "Majibu",
+      "title": "Kila jibu, limekaguliwa na kupangwa",
+      "description": "Shughulikia majibu kwenye jedwali au kama kadi, tafuta ndani ya majibu yote, yakague, yawekee lebo na uyahamishe.",
+      "metaDescription": "Mionekano ya jedwali na kadi, utafutaji na vichujio, hali za ukaguzi, lebo, madokezo, uhariri wenye historia na kuhamisha kwenda Excel, CSV au PDF.",
+      "alt": "Orodha ya majibu pamoja na chati ya hali za ukaguzi",
+      "cards": [
+        {
+          "title": "Jedwali na kadi",
+          "text": "Tafuta ndani ya majibu, chuja, chagua safuwima, panga na uchague kipindi cha tarehe."
+        },
+        {
+          "title": "Hali za ukaguzi",
+          "text": "Jipya, limekaguliwa, limeidhinishwa au limekataliwa, ili kila mtu ajue kilichokamilika."
+        },
+        {
+          "title": "Lebo na madokezo",
+          "text": "Wekea majibu lebo na uache madokezo kwenye paneli ya maelezo."
+        },
+        {
+          "title": "Uhariri wenye historia",
+          "text": "Sahihisha jibu na ubaki na kumbukumbu ya kilichobadilika."
+        },
+        {
+          "title": "Kuhamisha",
+          "text": "Excel, CSV au PDF, huku maendeleo yakionyeshwa."
+        },
+        {
+          "title": "Muhtasari wa AI",
+          "text": "Muhtasari wa jibu moja, au maarifa kutoka kwa majibu mengi."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Majibu yanafika",
+          "text": "Kutoka kila njia, kwenye orodha moja."
+        },
+        {
+          "title": "Kagua",
+          "text": "Weka hali, lebo na ongeza madokezo."
+        },
+        {
+          "title": "Hamisha au unganisha",
+          "text": "Pakua, au tuma kwenye hifadhidata yako."
+        }
+      ]
+    },
+    "analytics": {
+      "label": "Takwimu",
+      "title": "Ona jinsi kila fomu inavyofanya",
+      "description": "Matembeleo, walioanza na waliokamilisha, mahali watu wanapoachia njiani, na vifaa, njia na lugha wanazotumia.",
+      "metaDescription": "Takwimu za fomu: matembeleo, walioanza, waliokamilisha, walioachia kwa kila swali, vifaa, njia na lugha, pamoja na dashibodi ya eneo lote la kazi.",
+      "alt": "Muhtasari wa ubadilishaji kwenye takwimu",
+      "cards": [
+        {
+          "title": "Ubadilishaji",
+          "text": "Matembeleo, walioanza na waliokamilisha kwa kila fomu."
+        },
+        {
+          "title": "Walioachia kwa kila swali",
+          "text": "Ona hasa mahali watu wanaposimama."
+        },
+        {
+          "title": "Vifaa, njia, lugha",
+          "text": "Jua jinsi na wapi watu wanajibu."
+        },
+        {
+          "title": "Dashibodi ya eneo la kazi",
+          "text": "Kadi za KPI zenye mwenendo, fomu zenye shughuli nyingi zaidi na yanayohitaji kushughulikiwa."
+        },
+        {
+          "title": "Vichujio na vipindi",
+          "text": "Kwa folda na mmiliki, kwa siku, wiki, mwezi au mwaka."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Shiriki",
+          "text": "Kila tembeleo na kila jibu linahesabiwa."
+        },
+        {
+          "title": "Gundua",
+          "text": "Tafuta swali ambalo watu wanaondokea."
+        },
+        {
+          "title": "Boresha",
+          "text": "Libadilishe na uone takwimu zikibadilika."
+        }
+      ]
+    },
+    "data-sources": {
+      "label": "Vyanzo vya data",
+      "title": "Hifadhidata yako, tangu jibu la kwanza",
+      "description": "Unganisha MySQL, MariaDB, PostgreSQL, SQL Server au Oracle, na kila jibu huandikwa humo mara linapofika. Au weka kila kitu kwenye hifadhi iliyosimbwa ya Formalie.",
+      "metaDescription": "Tuma kila jibu kwenye MySQL, MariaDB, PostgreSQL, SQL Server au Oracle mara linapofika, au liweke kwenye hifadhi iliyosimbwa ya Formalie.",
+      "alt": "Muhtasari wa vyanzo vya data: trafiki ya hifadhidata na hali ya muunganisho",
+      "cards": [
+        {
+          "title": "Hifadhidata tano",
+          "text": "MySQL, MariaDB, PostgreSQL, SQL Server na Oracle."
+        },
+        {
+          "title": "Huandikwa mara linapofika",
+          "text": "Majibu huingia kwenye majedwali ya Formalie yenye kiambishi maalum, pamoja na kujaza ya zamani na kujaribu tena."
+        },
+        {
+          "title": "Hali ya muunganisho",
+          "text": "Jaribu muunganisho, fuata mwongozo wa ruhusa, fuatilia hali na muda wa kujibu."
+        },
+        {
+          "title": "Kivinjari cha hifadhidata",
+          "text": "Vinjari majedwali, badilisha safu kwenye majedwali yako na uhamishe."
+        },
+        {
+          "title": "Kihariri cha hoja",
+          "text": "SQL yenye ukamilishaji otomatiki, ya kusoma tu kwa chaguo-msingi, pamoja na historia na hoja zilizohifadhiwa."
+        },
+        {
+          "title": "Kwenye kumbukumbu",
+          "text": "Kila kinachofanyika kwenye muunganisho kiko kwenye kumbukumbu za ukaguzi."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Unganisha",
+          "text": "Ongeza hifadhidata yako na uijaribu."
+        },
+        {
+          "title": "Chagua fomu",
+          "text": "Chagua fomu zipi zihifadhi majibu yake humo."
+        },
+        {
+          "title": "Majibu yanaingia",
+          "text": "Kila jibu jipya huandikwa mara linapofika."
+        }
+      ]
+    },
+    "api-service": {
+      "label": "Huduma ya API",
+      "title": "Geuza fomu yoyote kuwa sehemu salama za API",
+      "description": "Panga fomu katika huduma, chagua kila sehemu ya API inapokea nini na inarudisha nini, kisha uilinde kwa tokeni, kanuni za ufikiaji na vikomo vya maombi.",
+      "metaDescription": "Geuza fomu yoyote kuwa sehemu salama za API zenye tokeni, kanuni za ufikiaji, vikomo vya maombi, kumbukumbu na nyaraka zinazozalishwa kiotomatiki.",
+      "alt": "Muhtasari wa huduma ya API: huduma, sehemu za API, miito na trafiki kwa muda",
+      "cards": [
+        {
+          "title": "Sehemu za API kutoka kwa fomu",
+          "text": "GET, POST, PUT na DELETE, huku sehemu zinazopokelewa na kurudishwa zikichaguliwa kwa kila sehemu ya API."
+        },
+        {
+          "title": "Tokeni zenye mawanda",
+          "text": "Tokeni za kudumu au za muda mfupi, za majaribio na za uzalishaji."
+        },
+        {
+          "title": "Maombi yaliyotiwa sahihi",
+          "text": "Vichwa vinavyohitajika, sahihi na ulinzi dhidi ya kurudiwa."
+        },
+        {
+          "title": "Kanuni za ufikiaji",
+          "text": "Kwa IP, kikoa, eneo na nchi, pamoja na tovuti zinazoruhusiwa kwa programu za kivinjari."
+        },
+        {
+          "title": "Vikomo vya maombi",
+          "text": "Kwa kila tokeni, kila IP na kila sehemu ya API."
+        },
+        {
+          "title": "Nyaraka na kumbukumbu",
+          "text": "Nyaraka zinazozalishwa kiotomatiki zenye kiweko cha kujaribu, kumbukumbu za maombi, takwimu na webhooks zilizotiwa sahihi."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Chagua fomu",
+          "text": "Maswali yake yanakuwa sehemu za data."
+        },
+        {
+          "title": "Unda tokeni",
+          "text": "Yenye mawanda ambayo programu yako inahitaji."
+        },
+        {
+          "title": "Iite",
+          "text": "Kutoka programu yoyote, kwa kutumia nyaraka zilizozalishwa."
+        }
+      ]
+    },
+    "access-control": {
+      "label": "Ufikiaji na usalama",
+      "title": "Amua hasa nani anaona nini",
+      "description": "Majukumu yenye ruhusa za kina, ufikiaji wa folda, kushiriki kwa kila fomu, kuingia kwa akaunti ya kampuni na kumbukumbu za ukaguzi za kila kitendo.",
+      "metaDescription": "Majukumu na ruhusa, ufikiaji wa folda, kushiriki kwa kila fomu, kuingia kwa hatua mbili, kuingia mara moja, udhibiti wa vipindi na kumbukumbu za ukaguzi za kila kitendo.",
+      "alt": "Majukumu na ufikiaji: idadi ya watu kwa kila jukumu na aina za majukumu",
+      "cards": [
+        {
+          "title": "Majukumu na ruhusa",
+          "text": "Vyako, vilivyoshirikiwa au vyote, kwa kila eneo, pamoja na majukumu yako mwenyewe."
+        },
+        {
+          "title": "Folda na kushiriki",
+          "text": "Ufikiaji wa folda, kushiriki kwa kila fomu na jibu wazi kuhusu nani anaweza kuona fomu hii."
+        },
+        {
+          "title": "Nani anaona kila swali",
+          "text": "Kila mtu, au idara, majukumu au watu waliochaguliwa."
+        },
+        {
+          "title": "Kuingia kwa akaunti ya kampuni",
+          "text": "Kuingia mara moja kwa Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0 au OpenID Connect."
+        },
+        {
+          "title": "Kuingia kwa hatua mbili",
+          "text": "Programu ya uthibitishaji au ujumbe mfupi, pamoja na kanuni za nenosiri, IP zinazoruhusiwa na urefu wa kipindi."
+        },
+        {
+          "title": "Kumbukumbu za ukaguzi",
+          "text": "Kila kitendo, pamoja na nani, lini na kutoka wapi, na uwezo wa kuhamisha."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Alika",
+          "text": "Ongeza watu pamoja na idara na wasimamizi wao."
+        },
+        {
+          "title": "Toa majukumu",
+          "text": "Chagua kila jukumu linaruhusiwa kufanya nini."
+        },
+        {
+          "title": "Hakiki",
+          "text": "Ona nani anaweza kuona kila fomu, na kwa nini."
+        }
+      ]
+    },
+    "ai-assistant": {
+      "label": "Msaidizi wa AI",
+      "title": "Msaidizi anayeunda, anayesoma na anayetafsiri",
+      "description": "Eleza fomu au pakia hati upate rasimu. Uliza kuhusu majibu yako kwa maneno rahisi. Tafsiri fomu kwa mbofyo mmoja.",
+      "metaDescription": "Fomu kutoka kwa maelezo au hati, msaada wa maswali na mantiki, uchambuzi wa majibu, muhtasari na tafsiri, pamoja na salio la AI kwenye kila mpango.",
+      "prompt": "Ombi la kazi lenye mawasiliano, uzoefu na upakiaji wa CV",
+      "drafted": "Rasimu iko tayari: kurasa 3, maswali 9",
+      "cards": [
+        {
+          "title": "Fomu kutoka kwa maelezo",
+          "text": "Au kutoka kwa hati, pamoja na mawazo ya violezo."
+        },
+        {
+          "title": "Msaada ndani ya kiunda fomu",
+          "text": "Kwa maswali, kanuni na uchaguzi wa maneno."
+        },
+        {
+          "title": "Uchambuzi wa majibu",
+          "text": "Uliza kuhusu data yako kwa maneno rahisi upate muhtasari."
+        },
+        {
+          "title": "Tafsiri",
+          "text": "Tafsiri fomu kwa lugha zinazohitajika."
+        },
+        {
+          "title": "Mandhari kutoka kwa rangi moja",
+          "text": "Toa rangi ya chapa yako, upate muundo."
+        },
+        {
+          "title": "Salio kwa kila mpango",
+          "text": "Salio la AI limejumuishwa kwenye kila mpango."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Eleza",
+          "text": "Sema unachohitaji, au pakia hati."
+        },
+        {
+          "title": "Kagua",
+          "text": "Angalia rasimu na uirekebishe."
+        },
+        {
+          "title": "Chapisha",
+          "text": "Kisha muulize msaidizi kuhusu majibu."
+        }
+      ]
+    },
+    "languages": {
+      "label": "Lugha",
+      "title": "Kila fomu kwa lugha ya watu wako",
+      "description": "Programu inapatikana kwa lugha 20, ikiwemo Kiarabu kinachoandikwa kutoka kulia kwenda kushoto. Fomu moja inaweza kuwa na lugha kadhaa, na watu huchagua yao.",
+      "metaDescription": "Programu kwa lugha 20, fomu zenye lugha kadhaa kila moja ikiwa na kibadilisha lugha, na tarehe, namba na sarafu zinazofuata kila mtu.",
+      "question": "Ungekadiriaje ziara yako?",
+      "cards": [
+        {
+          "title": "Lugha 20",
+          "text": "Programu yote, zikiwemo za kuandikwa kutoka kulia kwenda kushoto."
+        },
+        {
+          "title": "Fomu zenye lugha kadhaa",
+          "text": "Pamoja na kibadilisha lugha kwa wanaojibu."
+        },
+        {
+          "title": "Msaada wa kutafsiri",
+          "text": "Msaidizi wa AI anatafsiri, nawe unahakiki."
+        },
+        {
+          "title": "Miundo ya kienyeji",
+          "text": "Tarehe, namba na sarafu hufuata lugha na eneo la kila mtu."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Ongeza lugha",
+          "text": "Chagua lugha ambazo fomu inatoa."
+        },
+        {
+          "title": "Tafsiri",
+          "text": "Kwa msaada wa msaidizi."
+        },
+        {
+          "title": "Shiriki mara moja",
+          "text": "Watu wanajibu kwa lugha yao wenyewe."
+        }
+      ]
+    },
+    "help-and-tours": {
+      "label": "Msaada na ziara",
+      "title": "Msaada kwenye kila ukurasa",
+      "description": "Kituo cha usaidizi kwa lugha 20, ziara za kuongozwa katika tembeleo la kwanza, na msaidizi anayejibu kutoka kwenye makala.",
+      "metaDescription": "Kituo cha usaidizi chenye makala, maswali yanayoulizwa mara kwa mara na faharasa kwa lugha 20, ziara za kuongozwa, msaada kulingana na muktadha na mchawi wa usanidi kwa maeneo mapya ya kazi.",
+      "alt": "Ukurasa wa mwanzo wa kituo cha usaidizi",
+      "cards": [
+        {
+          "title": "Kituo cha usaidizi",
+          "text": "Makala, maswali yanayoulizwa mara kwa mara na faharasa kwa lugha 20."
+        },
+        {
+          "title": "Msaidizi",
+          "text": "Anajibu maswali kutoka kwenye makala za usaidizi."
+        },
+        {
+          "title": "Msaada kulingana na muktadha",
+          "text": "Alama ya kuuliza kwenye kila ukurasa, na Nionyeshe mahali."
+        },
+        {
+          "title": "Ziara za kuongozwa",
+          "text": "Hutolewa unapotembelea kila eneo kwa mara ya kwanza."
+        },
+        {
+          "title": "Mchawi wa usanidi",
+          "text": "Maeneo mapya ya kazi yanaanza kwa hatua chache."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Jisajili",
+          "text": "Mchawi wa usanidi huanzisha eneo la kazi."
+        },
+        {
+          "title": "Fanya ziara",
+          "text": "Kila eneo hujitambulisha mara ya kwanza."
+        },
+        {
+          "title": "Uliza",
+          "text": "Kituo cha usaidizi na msaidizi viko umbali wa mbofyo mmoja."
+        }
+      ]
+    }
+  },
+  "integrationsPage": {
+    "title": "Inafanya kazi na mifumo uliyonayo tayari",
+    "description": "Hifadhidata yako mwenyewe, webhooks na API kwa programu zako, pamoja na kuingia kupitia mtoa utambulisho anayetumiwa na kampuni yako.",
+    "metaDescription": "MySQL, MariaDB, PostgreSQL, SQL Server na Oracle, webhooks, huduma ya API, kuingia kwa Google na Facebook na kuingia mara moja kwa Okta, Microsoft Entra ID na mingineyo.",
+    "databases": {
+      "title": "Hifadhidata",
+      "text": "Kila jibu huandikwa kwenye hifadhidata yako mwenyewe mara linapofika."
+    },
+    "api": {
+      "title": "Huduma ya API na webhooks",
+      "text": "Sehemu za API kwa programu zako, na webhooks zilizotiwa sahihi kwenda huduma zako, pamoja na kujaribu tena."
+    },
+    "signin": {
+      "title": "Kuingia",
+      "text": "Barua pepe na nenosiri, Google au Facebook kwenye kila mpango; kuingia mara moja kwenye mipango ya kulipia."
+    },
+    "standards": {
+      "title": "Imejengwa juu ya viwango huria",
+      "text": "SQL, REST na JSON, SAML 2.0 na OpenID Connect, kwa hivyo hufungiwi kwa mtoa huduma mmoja."
+    },
+    "alt": "Orodha ya miunganisho: hifadhidata pamoja na hali zao na muda wa kufanya kazi"
+  },
+  "securityPage": {
+    "title": "Usalama na faragha, vimejengwa ndani",
+    "description": "Vidhibiti ambavyo Formalie inampa kila eneo la kazi, na jinsi tunavyolinda data unayokusanya.",
+    "metaDescription": "Usimbaji fiche, majukumu na udhibiti wa ufikiaji, kumbukumbu za ukaguzi za kila kitendo, kuingia kwa hatua mbili, kuingia mara moja na makazi ya data.",
+    "items": [
+      {
+        "title": "Imesimbwa ikisafirishwa na ikihifadhiwa",
+        "text": "Trafiki yote imesimbwa, na maombi ya programu yenyewe yana safu ya pili ya usimbaji fiche. Hakuna siri zinazohifadhiwa kwenye kivinjari."
+      },
+      {
+        "title": "Majukumu na udhibiti wa ufikiaji",
+        "text": "Majukumu ya kina, ufikiaji wa folda na kushiriki kwa kila fomu, pamoja na jibu wazi kuhusu nani anaweza kuona kila fomu."
+      },
+      {
+        "title": "Kumbukumbu za ukaguzi za kila kitu",
+        "text": "Nani alifanya nini, lini na kutoka wapi, ikiwemo chochote kinachofanywa na wafanyakazi wa Formalie, pamoja na uwezo wa kuhamisha."
+      },
+      {
+        "title": "Kuingia kwa hatua mbili na kuingia mara moja",
+        "text": "Programu ya uthibitishaji au ujumbe mfupi, na kuingia kwa akaunti ya kampuni kupitia SAML 2.0 au OpenID Connect."
+      },
+      {
+        "title": "Makazi ya data",
+        "text": "Weka data yako katika eneo unalochagua kwenye Enterprise."
+      },
+      {
+        "title": "Nakala rudufu zilizojaribiwa",
+        "text": "Nakala rudufu zilizosimbwa, na urejeshaji wake umejaribiwa."
+      }
+    ],
+    "disclosure": {
+      "title": "Ripoti udhaifu",
+      "text": "Umegundua tatizo la usalama? Tuandikie kwa {email}. Hatutachukua hatua dhidi ya utafiti wa nia njema unaofuata sera yetu ya matumizi yanayokubalika."
+    },
+    "linksTitle": "Soma zaidi",
+    "trust": "Uaminifu na usalama"
+  },
+  "aboutPage": {
+    "title": "Fomu, data na ufikiaji, kwa kila mtu",
+    "description": "Formalie ni jukwaa salama na linalonyumbulika la kuunda fomu, kukusanya na kusimamia data, kuunganisha mifumo na kudhibiti ufikiaji, kwa mashirika ya ukubwa wowote, popote duniani.",
+    "metaDescription": "Formalie inajenga jukwaa salama na linalonyumbulika la fomu, data na ufikiaji, kwa mashirika ya ukubwa wowote, popote duniani.",
+    "mission": {
+      "title": "Dhamira yetu",
+      "text": "Kukusanya taarifa kunapaswa kuwa rahisi, na kuzilinda kunapaswa kuwa jambo la kawaida. Tunajenga zana zinazofanikisha yote mawili, kwa timu ndogo au shirika kubwa."
+    },
+    "beliefsTitle": "Tunachoamini",
+    "beliefs": [
+      {
+        "title": "Faragha kwanza",
+        "text": "Hakuna matangazo, hakuna kuuza data, hakuna vidakuzi vya kufuatilia."
+      },
+      {
+        "title": "Data yako ni yako",
+        "text": "Ihamishe wakati wowote, au iweke kwenye hifadhidata yako mwenyewe tangu siku ya kwanza."
+      },
+      {
+        "title": "Urahisi ni bora kuliko ujanja",
+        "text": "Maneno rahisi, skrini zilizo wazi na msaada kwenye kila ukurasa."
+      }
+    ],
+    "global": {
+      "title": "Kimataifa tangu mwanzo",
+      "text": "Lugha 20, zikiwemo za kuandikwa kutoka kulia kwenda kushoto, miundo ya kienyeji, na data katika eneo unalochagua."
+    }
+  },
+  "solutionPages": {
+    "problem": "Changamoto",
+    "hr": {
+      "title": "Fomu za rasilimali watu, bila makaratasi",
+      "description": "Maombi ya kazi, mapokezi ya wafanyakazi na maombi yao mahali pamoja, yakifikiwa tu na watu wanaopaswa kuyaona.",
+      "metaDescription": "Maombi ya kazi, mapokezi ya wafanyakazi wapya na maombi ya wafanyakazi, pamoja na majukumu, kushiriki kwa kila fomu na hifadhidata yako mwenyewe.",
+      "problem": "Fomu za rasilimali watu zina data binafsi, zinafika kwa barua pepe na lahajedwali, na zinaonwa na watu wengi kuliko inavyopaswa.",
+      "templates": [
+        {
+          "title": "Ombi la kazi",
+          "text": "Mawasiliano, uzoefu na upakiaji wa CV."
+        },
+        {
+          "title": "Mapokezi ya mfanyakazi mpya",
+          "text": "Taarifa binafsi, hati na vifaa."
+        }
+      ],
+      "data": "Majibu huenda kwenye hifadhidata yako ya rasilimali watu au hifadhi iliyosimbwa ya Formalie, yakionekana tu kwa majukumu ya rasilimali watu unayochagua."
+    },
+    "customer-feedback": {
+      "title": "Sikia kila mteja, kwa lugha yake",
+      "description": "Tafiti za kuridhika na maombi ya kurejesha bidhaa kwa lugha 20, pamoja na takwimu zinazoonyesha cha kurekebisha.",
+      "metaDescription": "Tafiti za kuridhika kwa wateja na maombi ya kurejesha bidhaa kwa lugha 20, pamoja na takwimu, lebo na muhtasari wa AI.",
+      "problem": "Maoni yametawanyika kwenye barua pepe, gumzo na karatasi, kwa lugha nyingi, na hakuna anayeona mwenendo.",
+      "templates": [
+        {
+          "title": "Kuridhika kwa wateja",
+          "text": "Ukadiriaji, alama na maoni ya wazi."
+        },
+        {
+          "title": "Ombi la kurejesha bidhaa",
+          "text": "Maelezo ya oda, sababu na picha."
+        }
+      ],
+      "data": "Majibu huwekewa lebo na kufupishwa, huonyeshwa kwenye dashibodi, na hutumwa kwenye mifumo yako kupitia webhook."
+    },
+    "events": {
+      "title": "Usajili na uhifadhi unaofanya kazi bila shida",
+      "description": "Fomu za usajili na uthibitisho wa kuhudhuria zenye vikomo, tarehe za kufungua na kufunga, na msimbo wa QR kwa ajili ya mlangoni.",
+      "metaDescription": "Fomu za usajili wa matukio na uthibitisho wa kuhudhuria zenye vikomo vya majibu, tarehe za kufungua na kufunga, misimbo ya QR na arifa za barua pepe.",
+      "problem": "Nafasi zinaisha, tarehe zinabadilika, na orodha ziko kwenye lahajedwali tatu tofauti.",
+      "templates": [
+        {
+          "title": "Usajili wa tukio",
+          "text": "Taarifa za mhudhuriaji, vipindi na mahitaji ya chakula."
+        },
+        {
+          "title": "Uthibitisho wa kuhudhuria",
+          "text": "Ndiyo, hapana au labda, pamoja na mgeni mmoja wa ziada."
+        }
+      ],
+      "data": "Kila usajili huingia kwenye orodha moja, pamoja na arifa za barua pepe, na unaweza kwenda kwenye hifadhidata yako mwenyewe."
+    },
+    "health-and-safety": {
+      "title": "Ripoti matukio papo hapo",
+      "description": "Ripoti za matukio na tathmini za hatari ambazo watu wanaweza kujaza kwa simu, pamoja na picha, sahihi na kumbukumbu iliyo wazi.",
+      "metaDescription": "Ripoti za matukio na tathmini za hatari kwenye simu yoyote, pamoja na picha, sahihi, alama za hatari zinazokokotolewa na kumbukumbu za ukaguzi.",
+      "problem": "Matukio huripotiwa kwa kuchelewa, kwenye karatasi, bila picha, na kumbukumbu ni ngumu kuaminika.",
+      "templates": [
+        {
+          "title": "Ripoti ya tukio",
+          "text": "Kilichotokea, wapi, picha na sahihi."
+        },
+        {
+          "title": "Tathmini ya hatari",
+          "text": "Hatari, alama na hatua, zikikokotolewa papo hapo."
+        }
+      ],
+      "data": "Ripoti zinafika kwa timu sahihi mara moja, pamoja na kumbukumbu za ukaguzi za kila badiliko."
+    },
+    "education": {
+      "title": "Usajili na tathmini, kwa urahisi",
+      "description": "Fomu za usajili na tathmini za kozi kwa shule, vyuo na timu za mafunzo, kwa lugha ambazo familia zinazungumza.",
+      "metaDescription": "Fomu za usajili na tathmini za kozi kwa lugha 20, pamoja na upakiaji, kanuni na uhifadhi salama.",
+      "problem": "Usajili unahitaji hati na idhini, familia zinazungumza lugha nyingi, na tathmini ni ngumu kulinganisha.",
+      "templates": [
+        {
+          "title": "Usajili",
+          "text": "Taarifa za mwanafunzi, hati na idhini."
+        },
+        {
+          "title": "Tathmini ya kozi",
+          "text": "Ukadiriaji na maoni, kwa kila kozi."
+        }
+      ],
+      "data": "Usajili huenda kwenye mfumo wako wa wanafunzi au hifadhidata; tathmini huonekana kwenye dashibodi."
+    },
+    "operations": {
+      "title": "Ukaguzi unaoweza kuutegemea",
+      "description": "Ukaguzi wa wasambazaji, ukaguzi na kumbukumbu zenye hesabu, ushahidi unaohitajika na historia kamili.",
+      "metaDescription": "Fomu za ukaguzi wa wasambazaji na ukaguzi zenye hesabu, upakiaji, hali za ukaguzi, hifadhidata yako mwenyewe na kumbukumbu kamili za ukaguzi.",
+      "problem": "Orodha hakiki zinanakiliwa kwa mkono, alama zinajumlishwa vibaya, na hakuna anayejua toleo lipi ni la sasa.",
+      "templates": [
+        {
+          "title": "Ukaguzi wa msambazaji",
+          "text": "Taarifa za kampuni, vyeti na alama."
+        },
+        {
+          "title": "Ukaguzi",
+          "text": "Orodha hakiki, matokeo na hatua."
+        }
+      ],
+      "data": "Matokeo hukaguliwa na kuidhinishwa, huandikwa kwenye hifadhidata yako, na kila badiliko liko kwenye kumbukumbu."
+    },
+    "developers": {
+      "title": "Fomu kama API, kwa programu zako",
+      "description": "Unda fomu mara moja na uitumie kutoka kwa programu zako: sehemu salama za API, tokeni, webhooks na nyaraka zinazozalishwa kiotomatiki.",
+      "metaDescription": "Geuza fomu kuwa sehemu salama za API zenye tokeni, kanuni za ufikiaji, vikomo vya maombi, webhooks zilizotiwa sahihi na nyaraka zinazozalishwa kiotomatiki.",
+      "problem": "Kila programu inahitaji upande wake wa nyuma wa fomu, uthibitishaji wa data na hifadhi, vinavyojengwa upya kila mara.",
+      "templates": [
+        {
+          "title": "Sehemu ya API ya kujisajili",
+          "text": "Fomu ambayo programu yako inatuma data kwake, ikikaguliwa kwa kanuni zake."
+        },
+        {
+          "title": "Webhook kwenda huduma yako",
+          "text": "Uwasilishaji uliotiwa sahihi, pamoja na kujaribu tena."
+        }
+      ],
+      "data": "Majibu hukaguliwa dhidi ya kanuni za fomu, huhifadhiwa unapochagua, na hutumwa mbele kupitia webhooks zilizotiwa sahihi."
+    }
   }
 }

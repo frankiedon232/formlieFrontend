@@ -1,17 +1,17 @@
 # PROGRESS, formalieSite
 
-**Last updated:** 2026-10-13 (S2 done, waiting for the owner's review)
+**Last updated:** 2026-10-13 (S3 done, waiting for the owner's review)
 
 | Phase | What | Status | Done |
 |---|---|---|---|
 | S0 | Project set-up | ✅ | 100% |
 | S1 | Layout, header, footer, theme, languages | ✅ | 100% |
-| S2 | Home page with the data-flow hero | ✅ (review) | 100% |
-| S3 | Features and solutions pages | ⬜ | 0% |
+| S2 | Home page with the data-flow hero | ✅ | 100% |
+| S3 | Features and solutions pages | ✅ (review) | 100% |
 | S4 | Pricing | ⬜ | 20% |
 | S5 | Legal pages (documentation layout) and /trust | ⬜ | 0% |
 | S6 | Formalie forms, portal links, contact and enterprise | ⬜ | 0% |
-| S7 | SEO, performance, accessibility, launch checks | ⬜ | 5% |
+| S7 | SEO, performance, accessibility, launch checks | ⬜ | 30% |
 
 **Every phase is only done when:**
 - phone, tablet and desktop are checked;
@@ -54,9 +54,10 @@
 - ✅ Pricing teaser (live plans, "Payments handled by Paddle", "Sample prices" badge on fallback) · FAQ (with FAQPage data) · final call to action
 
 ## S3, Features and solutions
-- ⬜ `/features` overview and the 11 feature pages (`docs/FEATURES.md`)
-- ⬜ The 7 solution pages, with the templates to start from
-- ⬜ `/integrations`, `/security`, `/about`
+- ✅ `/features` overview (alternating blocks with the real screens) and the 11 feature pages (`docs/FEATURES.md`): hero with the screen or a drawn visual (the AI assistant drafting a form; one question turning through seven languages), feature cards, "How it works" with a travelling point, related features, call to action
+- ✅ The 7 solution pages: the problem, the two templates to start from, where the data goes, a flow visual (templates → Formalie → destinations), the features used
+- ✅ `/integrations` (logo marquee, databases, API and webhooks, sign-in, open standards), `/security` (dark hero with packets crossing a shield, the controls, responsible disclosure, links), `/about` (mission, beliefs, global by design)
+- ✅ SEO on every page as it is built (owner 2026-10-13): `usePageSeo()`, breadcrumbs, structured data, `sitemap.xml` and `robots.txt`
 
 ## S4, Pricing
 - ✅ `usePlans()` reading `GET {API}/public/plans` (live at `https://formalie.dev:5004/api/v1`, `{ success, data, meta }`), with the fallback file (samples, `docs/PRICING.md`) when the API doesn't answer
@@ -81,7 +82,7 @@
 - ⬜ The portal links back to the legal pages (privacy on every form, terms on sign-up)
 
 ## S7, Launch checks
-- ⬜ SEO (`docs/SEO.md`): titles, descriptions, OG images, sitemap, robots, structured data
+- ⬜ SEO (`docs/SEO.md`): ✅ titles, descriptions, OG and Twitter, canonical, hreflang, breadcrumbs, structured data, sitemap, robots (S3); ⬜ OG images per page, Search Console
 - ⬜ Lighthouse 95+ on mobile, no layout shift, images sized
 - ⬜ Accessibility: keyboard, focus, headings, contrast, reduced motion
 - ⬜ Security headers and CSP (`docs/SECURITY.md`; `connect-src https://services.formalie.com`); ✅ `security.txt` (S0)
@@ -102,6 +103,8 @@
 | 2026-10-13 | Pricing from `/public/plans`; "Payments handled by Paddle" near the prices, no logo yet | S4 | ⬜ |
 | 2026-10-13 | Every section draws on the reference screens, with clean, modern, tech-style "communication" animations (data moving between systems) | S2 to S6 | ⬜ |
 | 2026-10-13 | (S2 finding) The `api-docs` screenshot shows an `api.formalie.dev` address with a key-like string; the home page uses `api-service` instead until the owner confirms or a new shot is made | S2 | ⏸ |
+| 2026-10-13 | Sample names are English ("Emma Clarke"), nothing Nigeria-themed on marketing pages | S2 | ✅ |
+| 2026-10-13 | SEO built into every page as it is made: "this is the real central page, so it must be loaded with SEO" | S3 to S7 | ✅ (ongoing) |
 | 2026-10-13 | Copy formlyBackend `docs/PRODUCTION-CHECKLIST.md` over this project's copy | Docs | ✅ (already identical; DEPLOYMENT-GUIDE synced too) |
 
 ## Progress log
@@ -113,3 +116,5 @@
 | 2026-10-13 | S0 | Nuxt 4.5.2, Nuxt UI 4.11, Tailwind 4, strict TypeScript, ESLint and Prettier (the app's settings), Vitest (47 tests: links, 20 locale files with every key and no em dashes); i18n with 20 languages (prefix strategy, Arabic right to left, `hreflang`); `@nuxt/content` (blog, changelog, legal collections); `@nuxt/image`; Manrope self-hosted; the app's theme tokens; `useSiteLinks()`; 25 screenshots as WebP; brand files; `security.txt`; dev server on `https://formalie.dev:3033`; `pnpm generate` prerenders all 20 languages |
 | 2026-10-13 | S1 | Header with Product, Solutions and Resources panels (ink icon tiles), Pricing, Integrations, Contact, language and theme switches, Sign in and Start free (portal links); slide-over below 1280 px; footer with four columns, the seven legal links, language, theme, ©; Noto fallbacks for Arabic, Hindi and Bengali; 404 and error page; skip link. 73 new strings in 20 languages. Checked on phone, 1024 and 1280 px, light and dark, Arabic right to left, keyboard, and the longest languages (no header overflow) |
 | 2026-10-13 | S2 | Home page: hero with the data-flow panel, trust strip, channels, product tabs with real screens, six cards, dark security band with a live audit trail, integrations orbit, languages marquee, pricing teaser from the live API (`usePlans`, zod-checked, sample fallback), FAQ, call to action. Motion tokens in `main.css`, all still for reduced motion and paused off screen. 150 new strings in 20 languages. Prerender now lists every language and lets links to unbuilt pages through until S7. Checked at 375, 1280 and 1440 px, light and dark, Arabic. 51 tests |
+| 2026-10-13 | S2 | Sample names in English: Emma Clarke types in the hero, James W. in the audit trail |
+| 2026-10-13 | S3 | `/features` and 11 feature pages, 7 solution pages, `/integrations`, `/security`, `/about`; shared `SiteScreenFrame`, `SiteCta`, `FeaturesSteps`, `FeaturesRelated`, drawn visuals for the AI assistant and languages, a solution flow; `usePageSeo()` with breadcrumbs and structured data on every page, `sitemap.xml` (460 addresses: 23 pages in 20 languages) and `robots.txt`; RTL arrows mirrored. 362 new strings in 20 languages. Checked at 375 and 1280 px, light, Arabic |

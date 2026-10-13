@@ -191,3 +191,8 @@
 .motion-paused * {
   animation-play-state: paused !important;
 }
+
+/* Arrows that mean "forward" point the other way in right-to-left languages (Arabic). */
+[dir='rtl'] .iconify.i-lucide\:arrow-right {
+  scale: -1 1;
+}

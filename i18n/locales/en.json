@@ -400,5 +400,725 @@
       "title": "Start collecting in minutes.",
       "description": "Free plan, no card needed. Upgrade when you grow."
     }
+  },
+  "common": {
+    "learnMore": "Learn more",
+    "related": "Related features",
+    "howItWorks": "How it works",
+    "step": "Step {n}",
+    "allFeatures": "All features",
+    "startFrom": "Forms to start from",
+    "whereDataGoes": "Where the data goes",
+    "useTemplate": "Start from this template"
+  },
+  "featuresIndex": {
+    "title": "Everything Formalie does",
+    "description": "Build forms, design them, share them everywhere, then keep, analyse and protect every answer. Each part below is in the product today.",
+    "metaDescription": "Form builder, design, templates, responses, analytics, your own database, API service, access control, AI assistant and 20 languages, in one secure platform."
+  },
+  "features": {
+    "form-builder": {
+      "label": "Form builder",
+      "title": "Build any form, without code",
+      "description": "Drag-and-drop questions into rows and pages, add rules and calculations, and publish when it is ready. Over 40 question types, in 20 languages.",
+      "metaDescription": "Drag-and-drop questions, pages, logic and calculations, in 20 languages, with versions and one-click publishing.",
+      "alt": "The form builder: question types on the left, a multi-page form in the middle, settings on the right",
+      "cards": [
+        {
+          "title": "Over 40 question types",
+          "text": "Text, dates, choices, ratings, matrix, uploads, signature, address, currency, IBAN and more."
+        },
+        {
+          "title": "Rows and pages",
+          "text": "Drag questions into rows and pages, with a keyboard alternative for every drag."
+        },
+        {
+          "title": "Rules",
+          "text": "Show, hide or require questions, jump to a page or skip to the end, based on earlier answers."
+        },
+        {
+          "title": "Live calculations",
+          "text": "Totals, scores and prices worked out as people answer, even from a detail of the chosen option."
+        },
+        {
+          "title": "Large and reusable lists",
+          "text": "Option lists with levels, up to 200,000 options that load as people type, reusable in any form."
+        },
+        {
+          "title": "Versions",
+          "text": "Draft, then publish. Editing a live form opens a new draft, and every version can be restored."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Add questions",
+          "text": "Pick from over 40 types or your saved questions."
+        },
+        {
+          "title": "Add rules",
+          "text": "Decide what shows, when, and what is worked out."
+        },
+        {
+          "title": "Publish",
+          "text": "Share it by link, embed, QR code or API."
+        }
+      ]
+    },
+    "design": {
+      "label": "Design and themes",
+      "title": "Forms that look like your brand",
+      "description": "Start from a look and change everything that matters: layout, background, fonts, colours, buttons, header, footer and the thank-you page.",
+      "metaDescription": "Starting looks, 21 self-hosted fonts, colours with contrast hints, themes and landing pages. Make every form look like your brand.",
+      "alt": "The form designer: starting looks on the left and a live preview of the form",
+      "cards": [
+        {
+          "title": "Starting looks",
+          "text": "Minimal, Soft, Bold, Dark, Elegant, Corporate and more, ready to adjust."
+        },
+        {
+          "title": "21 fonts",
+          "text": "Self-hosted fonts, so nothing loads from another site."
+        },
+        {
+          "title": "Colours with contrast hints",
+          "text": "See at once when text would be hard to read."
+        },
+        {
+          "title": "Themes",
+          "text": "Save a design as a theme and apply it to any form."
+        },
+        {
+          "title": "Landing pages",
+          "text": "Frame the form on its own link with a page design."
+        },
+        {
+          "title": "A theme from a colour",
+          "text": "Give the AI assistant your brand colour and get a theme."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Pick a look",
+          "text": "Start from one of the starting looks."
+        },
+        {
+          "title": "Make it yours",
+          "text": "Fonts, colours, header, footer and buttons."
+        },
+        {
+          "title": "Save as a theme",
+          "text": "Reuse it on every form."
+        }
+      ]
+    },
+    "templates": {
+      "label": "Templates",
+      "title": "Start from a ready-made form",
+      "description": "A library of templates by category, from job applications to incident reports. Save your own forms as templates, too.",
+      "metaDescription": "Ready-made form templates for business, HR, events, health and safety, hospitality and education. Save your own forms as templates.",
+      "alt": "Template categories shown as cards",
+      "cards": [
+        {
+          "title": "By category",
+          "text": "Business and customers, HR and workplace, events and bookings, health and safety, hospitality, education and more."
+        },
+        {
+          "title": "Ready to change",
+          "text": "Every template is a normal form: change any question, rule or design."
+        },
+        {
+          "title": "Your own templates",
+          "text": "Save any of your forms as a template for your team."
+        },
+        {
+          "title": "From a description",
+          "text": "Or describe the form you need and the AI assistant drafts it."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Choose",
+          "text": "Browse the library by category."
+        },
+        {
+          "title": "Adjust",
+          "text": "Change questions, rules and design."
+        },
+        {
+          "title": "Publish",
+          "text": "Collect answers in minutes."
+        }
+      ]
+    },
+    "responses": {
+      "label": "Responses",
+      "title": "Every answer, reviewed and in order",
+      "description": "Work through responses in a table or as cards, search across answers, review them, tag them and export them.",
+      "metaDescription": "Table and card views, search and filters, review statuses, tags, notes, edits with history, and exports to Excel, CSV or PDF.",
+      "alt": "The responses list with the chart of review statuses",
+      "cards": [
+        {
+          "title": "Table and cards",
+          "text": "Search across answers, filter, choose columns, sort and pick a date range."
+        },
+        {
+          "title": "Review statuses",
+          "text": "New, reviewed, approved or rejected, so everyone knows what is done."
+        },
+        {
+          "title": "Tags and notes",
+          "text": "Tag responses and leave notes in the detail panel."
+        },
+        {
+          "title": "Edits with history",
+          "text": "Correct an answer and keep the record of what changed."
+        },
+        {
+          "title": "Exports",
+          "text": "Excel, CSV or PDF, with progress shown."
+        },
+        {
+          "title": "AI summaries",
+          "text": "A summary of one response, or insights across many."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Answers arrive",
+          "text": "From every channel, into one list."
+        },
+        {
+          "title": "Review",
+          "text": "Set a status, tag and add notes."
+        },
+        {
+          "title": "Export or connect",
+          "text": "Download, or send to your database."
+        }
+      ]
+    },
+    "analytics": {
+      "label": "Analytics",
+      "title": "See how every form performs",
+      "description": "Visits, starts and completions, where people drop off, and which devices, channels and languages they use.",
+      "metaDescription": "Form analytics: visits, starts, completions, drop-off by question, devices, channels and languages, plus a dashboard for the whole workspace.",
+      "alt": "The analytics conversion overview",
+      "cards": [
+        {
+          "title": "Conversion",
+          "text": "Visits, starts and completions for every form."
+        },
+        {
+          "title": "Drop-off by question",
+          "text": "See exactly where people stop."
+        },
+        {
+          "title": "Devices, channels, languages",
+          "text": "Know how and where people answer."
+        },
+        {
+          "title": "Workspace dashboard",
+          "text": "KPI cards with trends, busiest forms and what needs attention."
+        },
+        {
+          "title": "Filters and periods",
+          "text": "By folder and owner, by day, week, month or year."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Share",
+          "text": "Every visit and answer is counted."
+        },
+        {
+          "title": "Spot",
+          "text": "Find the question where people leave."
+        },
+        {
+          "title": "Improve",
+          "text": "Change it and watch the numbers move."
+        }
+      ]
+    },
+    "data-sources": {
+      "label": "Data sources",
+      "title": "Your database, from the first answer",
+      "description": "Connect MySQL, MariaDB, PostgreSQL, SQL Server or Oracle, and every response is written there as it arrives. Or keep everything in Formalie's encrypted storage.",
+      "metaDescription": "Send every response to MySQL, MariaDB, PostgreSQL, SQL Server or Oracle as it arrives, or keep it in Formalie's encrypted storage.",
+      "alt": "The data sources overview: database traffic and connection health",
+      "cards": [
+        {
+          "title": "Five databases",
+          "text": "MySQL, MariaDB, PostgreSQL, SQL Server and Oracle."
+        },
+        {
+          "title": "Written as it arrives",
+          "text": "Responses go into Formalie's own prefixed tables, with backfill and retries."
+        },
+        {
+          "title": "Connection health",
+          "text": "Test the connection, follow a permissions guide, watch health and response time."
+        },
+        {
+          "title": "Database explorer",
+          "text": "Browse tables, change rows in your own tables and export."
+        },
+        {
+          "title": "Query editor",
+          "text": "SQL with autocomplete, read-only by default, with history and saved queries."
+        },
+        {
+          "title": "On the record",
+          "text": "Everything done on a connection is in the audit trail."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Connect",
+          "text": "Add your database and test it."
+        },
+        {
+          "title": "Choose forms",
+          "text": "Pick which forms store their answers there."
+        },
+        {
+          "title": "Answers flow in",
+          "text": "Every new response, written as it arrives."
+        }
+      ]
+    },
+    "api-service": {
+      "label": "API service",
+      "title": "Turn any form into secure API endpoints",
+      "description": "Group forms into services, choose what each endpoint accepts and returns, and protect it with tokens, access rules and rate limits.",
+      "metaDescription": "Turn any form into secure API endpoints with tokens, access rules, rate limits, logs and generated documentation.",
+      "alt": "The API service overview: services, endpoints, calls and traffic over time",
+      "cards": [
+        {
+          "title": "Endpoints from forms",
+          "text": "GET, POST, PUT and DELETE, with the fields accepted and returned chosen per endpoint."
+        },
+        {
+          "title": "Tokens with scopes",
+          "text": "Static or short-lived tokens, test and live."
+        },
+        {
+          "title": "Signed requests",
+          "text": "Required headers, signatures and repeat protection."
+        },
+        {
+          "title": "Access rules",
+          "text": "By IP, domain, region and country, plus allowed websites for browser apps."
+        },
+        {
+          "title": "Rate limits",
+          "text": "Per token, per IP and per endpoint."
+        },
+        {
+          "title": "Docs and logs",
+          "text": "Generated documentation with a try-it console, request logs, analytics and signed webhooks."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Pick a form",
+          "text": "Its questions become the fields."
+        },
+        {
+          "title": "Create a token",
+          "text": "With the scopes your app needs."
+        },
+        {
+          "title": "Call it",
+          "text": "From any app, with the generated docs."
+        }
+      ]
+    },
+    "access-control": {
+      "label": "Access and security",
+      "title": "Decide exactly who sees what",
+      "description": "Roles with fine-grained permissions, folder access, per-form sharing, company sign-in and an audit trail of every action.",
+      "metaDescription": "Roles and permissions, folder access, per-form sharing, two-step sign-in, single sign-on, session control and an audit trail of every action.",
+      "alt": "Roles and access: people per role and the kinds of roles",
+      "cards": [
+        {
+          "title": "Roles and permissions",
+          "text": "Own, shared or all, for every area, and your own roles."
+        },
+        {
+          "title": "Folders and sharing",
+          "text": "Folder access, per-form sharing and a clear answer to who can see this form."
+        },
+        {
+          "title": "Who sees each question",
+          "text": "Everyone, or chosen departments, roles or people."
+        },
+        {
+          "title": "Company sign-in",
+          "text": "Single sign-on with Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0 or OpenID Connect."
+        },
+        {
+          "title": "Two-step sign-in",
+          "text": "An authenticator app or a text message, plus password rules, allowed IPs and session length."
+        },
+        {
+          "title": "Audit trail",
+          "text": "Every action, with who, when and from where, and an export."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Invite",
+          "text": "Add people with departments and managers."
+        },
+        {
+          "title": "Give roles",
+          "text": "Choose what each role may do."
+        },
+        {
+          "title": "Check",
+          "text": "See who can see each form, and why."
+        }
+      ]
+    },
+    "ai-assistant": {
+      "label": "AI assistant",
+      "title": "An assistant that builds, reads and translates",
+      "description": "Describe a form or upload a document and get a draft. Ask questions about your answers in plain words. Translate forms in a click.",
+      "metaDescription": "Forms from a description or a document, help with questions and logic, response analysis, summaries and translation, with AI credits on every plan.",
+      "prompt": "A job application with contact details, experience and a CV upload",
+      "drafted": "Draft ready: 3 pages, 9 questions",
+      "cards": [
+        {
+          "title": "Forms from a description",
+          "text": "Or from a document, with template ideas."
+        },
+        {
+          "title": "Help in the builder",
+          "text": "With questions, rules and wording."
+        },
+        {
+          "title": "Response analysis",
+          "text": "Ask about your data in plain words and get summaries."
+        },
+        {
+          "title": "Translation",
+          "text": "Translate a form into the languages it needs."
+        },
+        {
+          "title": "A theme from a colour",
+          "text": "Give your brand colour, get a design."
+        },
+        {
+          "title": "Credits per plan",
+          "text": "AI credits are included on every plan."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Describe",
+          "text": "Say what you need, or upload a document."
+        },
+        {
+          "title": "Review",
+          "text": "Check the draft and adjust it."
+        },
+        {
+          "title": "Publish",
+          "text": "And ask the assistant about the answers."
+        }
+      ]
+    },
+    "languages": {
+      "label": "Languages",
+      "title": "Every form in your people's language",
+      "description": "The app speaks 20 languages, Arabic right to left included. A form can have several languages, and people choose theirs.",
+      "metaDescription": "The app in 20 languages, forms in several languages each with a language switch, and dates, numbers and currencies that follow each person.",
+      "question": "How would you rate your visit?",
+      "cards": [
+        {
+          "title": "20 languages",
+          "text": "The whole app, right to left included."
+        },
+        {
+          "title": "Forms in several languages",
+          "text": "With a language switch for the people answering."
+        },
+        {
+          "title": "Translation help",
+          "text": "The AI assistant translates, and you check."
+        },
+        {
+          "title": "Local formats",
+          "text": "Dates, numbers and currencies follow each person's language and region."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Add languages",
+          "text": "Choose the languages a form offers."
+        },
+        {
+          "title": "Translate",
+          "text": "With help from the assistant."
+        },
+        {
+          "title": "Share once",
+          "text": "People answer in their own language."
+        }
+      ]
+    },
+    "help-and-tours": {
+      "label": "Help and tours",
+      "title": "Help on every page",
+      "description": "A help centre in 20 languages, guided tours on the first visit, and an assistant that answers from the articles.",
+      "metaDescription": "A help centre with articles, FAQs and a glossary in 20 languages, guided tours, help in context and a set-up wizard for new workspaces.",
+      "alt": "The help centre home",
+      "cards": [
+        {
+          "title": "Help centre",
+          "text": "Articles, FAQs and a glossary in 20 languages."
+        },
+        {
+          "title": "An assistant",
+          "text": "Answers questions from the help articles."
+        },
+        {
+          "title": "Help in context",
+          "text": "A question mark on every page, and Show me where."
+        },
+        {
+          "title": "Guided tours",
+          "text": "Offered on the first visit to each area."
+        },
+        {
+          "title": "Set-up wizard",
+          "text": "New workspaces get going in a few steps."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Sign up",
+          "text": "The set-up wizard starts the workspace."
+        },
+        {
+          "title": "Take a tour",
+          "text": "Each area shows itself the first time."
+        },
+        {
+          "title": "Ask",
+          "text": "The help centre and assistant are one click away."
+        }
+      ]
+    }
+  },
+  "integrationsPage": {
+    "title": "Works with the systems you already have",
+    "description": "Your own database, webhooks and an API for your apps, and sign-in with the identity provider your company uses.",
+    "metaDescription": "MySQL, MariaDB, PostgreSQL, SQL Server and Oracle, webhooks, the API service, Google and Facebook sign-in and single sign-on with Okta, Microsoft Entra ID and more.",
+    "databases": {
+      "title": "Databases",
+      "text": "Every response written to your own database as it arrives."
+    },
+    "api": {
+      "title": "API service and webhooks",
+      "text": "Endpoints for your apps, and signed webhooks to your services, with retries."
+    },
+    "signin": {
+      "title": "Sign-in",
+      "text": "Email and password, Google or Facebook on every plan; single sign-on on paid plans."
+    },
+    "standards": {
+      "title": "Built on open standards",
+      "text": "SQL, REST and JSON, SAML 2.0 and OpenID Connect, so nothing locks you in."
+    },
+    "alt": "The connections list: databases with their status and uptime"
+  },
+  "securityPage": {
+    "title": "Security and privacy, built in",
+    "description": "The controls Formalie gives every workspace, and how we protect the data you collect.",
+    "metaDescription": "Encryption, roles and access control, an audit trail of every action, two-step sign-in, single sign-on and data residency.",
+    "items": [
+      {
+        "title": "Encrypted in transit and at rest",
+        "text": "All traffic is encrypted, and the app's own requests carry a second layer of encryption. No secrets are kept in the browser."
+      },
+      {
+        "title": "Roles and access control",
+        "text": "Fine-grained roles, folder access and per-form sharing, and a clear answer to who can see each form."
+      },
+      {
+        "title": "An audit trail of everything",
+        "text": "Who did what, when and from where, including anything Formalie staff do, with export."
+      },
+      {
+        "title": "Two-step sign-in and single sign-on",
+        "text": "An authenticator app or text message, and company sign-in with SAML 2.0 or OpenID Connect."
+      },
+      {
+        "title": "Data residency",
+        "text": "Keep your data in the region you choose on Enterprise."
+      },
+      {
+        "title": "Tested backups",
+        "text": "Encrypted backups, with restores tested."
+      }
+    ],
+    "disclosure": {
+      "title": "Report a weakness",
+      "text": "Found a security problem? Write to {email}. We won't take action against good-faith research that follows our acceptable use policy."
+    },
+    "linksTitle": "Read more",
+    "trust": "Trust and security"
+  },
+  "aboutPage": {
+    "title": "Forms, data and access, for everyone",
+    "description": "Formalie is a secure, flexible platform for building forms, collecting and managing data, connecting systems and controlling access, for organisations of any size, anywhere in the world.",
+    "metaDescription": "Formalie builds a secure, flexible platform for forms, data and access, for organisations of any size, anywhere in the world.",
+    "mission": {
+      "title": "Our mission",
+      "text": "Collecting information should be simple, and keeping it safe should be the default. We build the tools that make both true, for a small team or a large organisation."
+    },
+    "beliefsTitle": "What we believe",
+    "beliefs": [
+      {
+        "title": "Privacy first",
+        "text": "No advertising, no selling of data, no tracking cookies."
+      },
+      {
+        "title": "Your data is yours",
+        "text": "Export it any time, or keep it in your own database from day one."
+      },
+      {
+        "title": "Simple beats clever",
+        "text": "Plain words, clear screens and help on every page."
+      }
+    ],
+    "global": {
+      "title": "Global by design",
+      "text": "20 languages, right to left included, local formats, and data in the region you choose."
+    }
+  },
+  "solutionPages": {
+    "problem": "The problem",
+    "hr": {
+      "title": "HR and people forms, without the paperwork",
+      "description": "Applications, onboarding and staff requests in one place, with access only for the people who should see them.",
+      "metaDescription": "Job applications, employee onboarding and staff requests, with roles, per-form sharing and your own database.",
+      "problem": "HR forms hold personal data, arrive by email and spreadsheet, and are seen by more people than they should.",
+      "templates": [
+        {
+          "title": "Job application",
+          "text": "Contact details, experience and a CV upload."
+        },
+        {
+          "title": "Employee onboarding",
+          "text": "Personal details, documents and equipment."
+        }
+      ],
+      "data": "Answers go to your HR database or Formalie's encrypted storage, visible only to the HR roles you choose."
+    },
+    "customer-feedback": {
+      "title": "Hear every customer, in their language",
+      "description": "Satisfaction surveys and return requests in 20 languages, with analytics that show what to fix.",
+      "metaDescription": "Customer satisfaction surveys and return requests in 20 languages, with analytics, tags and AI summaries.",
+      "problem": "Feedback is spread over email, chat and paper, in many languages, and nobody sees the trend.",
+      "templates": [
+        {
+          "title": "Customer satisfaction",
+          "text": "Ratings, a score and an open comment."
+        },
+        {
+          "title": "Return request",
+          "text": "Order details, reason and photos."
+        }
+      ],
+      "data": "Answers are tagged and summarised, shown on the dashboard, and sent to your systems by webhook."
+    },
+    "events": {
+      "title": "Registrations and bookings that just work",
+      "description": "Registration and RSVP forms with limits, open and close dates, and a QR code for the door.",
+      "metaDescription": "Event registration and RSVP forms with response limits, open and close dates, QR codes and email alerts.",
+      "problem": "Places run out, dates change, and lists live in three different spreadsheets.",
+      "templates": [
+        {
+          "title": "Event registration",
+          "text": "Attendee details, sessions and dietary needs."
+        },
+        {
+          "title": "RSVP",
+          "text": "Yes, no or maybe, with a plus-one."
+        }
+      ],
+      "data": "Every registration lands in one list, with email alerts, and can go to your own database."
+    },
+    "health-and-safety": {
+      "title": "Report incidents on the spot",
+      "description": "Incident reports and risk assessments people can fill in from a phone, with photos, signatures and a clear record.",
+      "metaDescription": "Incident reports and risk assessments on any phone, with photos, signatures, calculated risk scores and an audit trail.",
+      "problem": "Incidents are reported late, on paper, without photos, and the record is hard to trust.",
+      "templates": [
+        {
+          "title": "Incident report",
+          "text": "What happened, where, photos and a signature."
+        },
+        {
+          "title": "Risk assessment",
+          "text": "Hazards, scores and actions, worked out live."
+        }
+      ],
+      "data": "Reports reach the right team at once, with an audit trail of every change."
+    },
+    "education": {
+      "title": "Enrolment and evaluations, simply",
+      "description": "Enrolment forms and course evaluations for schools, colleges and training teams, in the languages families speak.",
+      "metaDescription": "Enrolment forms and course evaluations in 20 languages, with uploads, rules and secure storage.",
+      "problem": "Enrolment needs documents and consent, families speak many languages, and evaluations are hard to compare.",
+      "templates": [
+        {
+          "title": "Enrolment",
+          "text": "Student details, documents and consent."
+        },
+        {
+          "title": "Course evaluation",
+          "text": "Ratings and comments, per course."
+        }
+      ],
+      "data": "Enrolments go to your student system or database; evaluations show up on the dashboard."
+    },
+    "operations": {
+      "title": "Checks and audits you can rely on",
+      "description": "Supplier checks, audits and records with calculations, required evidence and a full trail.",
+      "metaDescription": "Supplier checks and audit forms with calculations, uploads, review statuses, your own database and a full audit trail.",
+      "problem": "Checklists are copied by hand, scores are added up wrong, and nobody knows which version is current.",
+      "templates": [
+        {
+          "title": "Supplier check",
+          "text": "Company details, certificates and a score."
+        },
+        {
+          "title": "Audit",
+          "text": "Checklist, findings and actions."
+        }
+      ],
+      "data": "Results are reviewed and approved, written to your database, and every change is on record."
+    },
+    "developers": {
+      "title": "Forms as an API, for your own apps",
+      "description": "Build the form once and use it from your apps: secure endpoints, tokens, webhooks and generated docs.",
+      "metaDescription": "Turn forms into secure API endpoints with tokens, access rules, rate limits, signed webhooks and generated documentation.",
+      "problem": "Every app needs its own form back end, validation and storage, built again each time.",
+      "templates": [
+        {
+          "title": "Sign-up endpoint",
+          "text": "A form your app posts to, checked by its rules."
+        },
+        {
+          "title": "Webhook to your service",
+          "text": "Signed deliveries with retries."
+        }
+      ],
+      "data": "Responses are checked against the form's rules, stored where you choose, and sent on by signed webhooks."
+    }
   }
 }

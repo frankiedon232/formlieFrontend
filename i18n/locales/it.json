@@ -400,5 +400,725 @@
       "title": "Inizia a raccogliere risposte in pochi minuti.",
       "description": "Piano gratuito, senza carta. Passa a un piano superiore quando cresci."
     }
+  },
+  "common": {
+    "learnMore": "Scopri di più",
+    "related": "Funzionalità correlate",
+    "howItWorks": "Come funziona",
+    "step": "Passaggio {n}",
+    "allFeatures": "Tutte le funzionalità",
+    "startFrom": "Moduli da cui partire",
+    "whereDataGoes": "Dove vanno i dati",
+    "useTemplate": "Parti da questo modello"
+  },
+  "featuresIndex": {
+    "title": "Tutto ciò che fa Formalie",
+    "description": "Crea moduli, personalizzane l'aspetto, condividili ovunque, poi conserva, analizza e proteggi ogni risposta. Tutto quello che trovi qui è già nel prodotto.",
+    "metaDescription": "Generatore di moduli, design, modelli, risposte, analisi, il tuo database, servizio API, controllo degli accessi, assistente IA e 20 lingue, in un'unica piattaforma sicura."
+  },
+  "features": {
+    "form-builder": {
+      "label": "Generatore di moduli",
+      "title": "Crea qualsiasi modulo, senza codice",
+      "description": "Trascina le domande in righe e pagine, aggiungi regole e calcoli e pubblica quando è pronto. Oltre 40 tipi di domanda, in 20 lingue.",
+      "metaDescription": "Domande, pagine, logica e calcoli con il trascinamento, in 20 lingue, con versioni e pubblicazione in un clic.",
+      "alt": "Il generatore di moduli: tipi di domanda a sinistra, un modulo su più pagine al centro e le impostazioni a destra",
+      "cards": [
+        {
+          "title": "Oltre 40 tipi di domanda",
+          "text": "Testo, date, scelte, valutazioni, matrice, caricamenti, firma, indirizzo, valuta, IBAN e altro."
+        },
+        {
+          "title": "Righe e pagine",
+          "text": "Trascina le domande in righe e pagine, con un'alternativa da tastiera per ogni trascinamento."
+        },
+        {
+          "title": "Regole",
+          "text": "Mostra, nascondi o rendi obbligatorie le domande, vai a una pagina o salta alla fine, in base alle risposte precedenti."
+        },
+        {
+          "title": "Calcoli in tempo reale",
+          "text": "Totali, punteggi e prezzi calcolati mentre si risponde, anche da un dettaglio dell'opzione scelta."
+        },
+        {
+          "title": "Elenchi grandi e riutilizzabili",
+          "text": "Elenchi di opzioni su più livelli, fino a 200.000 opzioni caricate mentre si digita, riutilizzabili in qualsiasi modulo."
+        },
+        {
+          "title": "Versioni",
+          "text": "Prima la bozza, poi la pubblicazione. Modificare un modulo pubblicato apre una nuova bozza, e ogni versione si può ripristinare."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Aggiungi domande",
+          "text": "Scegli tra oltre 40 tipi o le tue domande salvate."
+        },
+        {
+          "title": "Aggiungi regole",
+          "text": "Decidi cosa appare, quando e cosa viene calcolato."
+        },
+        {
+          "title": "Pubblica",
+          "text": "Condividilo tramite link, incorporamento, codice QR o API."
+        }
+      ]
+    },
+    "design": {
+      "label": "Design e temi",
+      "title": "Moduli con lo stile del tuo marchio",
+      "description": "Parti da uno stile e cambia tutto ciò che conta: layout, sfondo, caratteri, colori, pulsanti, intestazione, piè di pagina e pagina di ringraziamento.",
+      "metaDescription": "Stili di partenza, 21 caratteri ospitati da noi, colori con suggerimenti sul contrasto, temi e pagine di destinazione. Dai a ogni modulo lo stile del tuo marchio.",
+      "alt": "L'editor di design: stili di partenza a sinistra e un'anteprima dal vivo del modulo",
+      "cards": [
+        {
+          "title": "Stili di partenza",
+          "text": "Minimal, Morbido, Deciso, Scuro, Elegante, Aziendale e altri, pronti da regolare."
+        },
+        {
+          "title": "21 caratteri",
+          "text": "Caratteri ospitati da noi, così nulla viene caricato da altri siti."
+        },
+        {
+          "title": "Colori con suggerimenti sul contrasto",
+          "text": "Vedi subito quando un testo sarebbe difficile da leggere."
+        },
+        {
+          "title": "Temi",
+          "text": "Salva un design come tema e applicalo a qualsiasi modulo."
+        },
+        {
+          "title": "Pagine di destinazione",
+          "text": "Presenta il modulo con un link dedicato e un design di pagina."
+        },
+        {
+          "title": "Un tema da un colore",
+          "text": "Dai all'assistente IA il colore del tuo marchio e ottieni un tema."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Scegli uno stile",
+          "text": "Parti da uno degli stili di partenza."
+        },
+        {
+          "title": "Rendilo tuo",
+          "text": "Caratteri, colori, intestazione, piè di pagina e pulsanti."
+        },
+        {
+          "title": "Salva come tema",
+          "text": "Riutilizzalo in ogni modulo."
+        }
+      ]
+    },
+    "templates": {
+      "label": "Modelli",
+      "title": "Parti da un modulo già pronto",
+      "description": "Una libreria di modelli per categoria, dalle candidature alle segnalazioni di incidenti. Puoi anche salvare i tuoi moduli come modelli.",
+      "metaDescription": "Modelli di moduli pronti per aziende, risorse umane, eventi, salute e sicurezza, ospitalità e istruzione. Salva i tuoi moduli come modelli.",
+      "alt": "Categorie di modelli mostrate come schede",
+      "cards": [
+        {
+          "title": "Per categoria",
+          "text": "Aziende e clienti, risorse umane e lavoro, eventi e prenotazioni, salute e sicurezza, ospitalità, istruzione e altro."
+        },
+        {
+          "title": "Pronti da modificare",
+          "text": "Ogni modello è un normale modulo: cambia qualsiasi domanda, regola o design."
+        },
+        {
+          "title": "I tuoi modelli",
+          "text": "Salva uno qualsiasi dei tuoi moduli come modello per il team."
+        },
+        {
+          "title": "Da una descrizione",
+          "text": "Oppure descrivi il modulo che ti serve e l'assistente IA prepara una bozza."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Scegli",
+          "text": "Sfoglia la libreria per categoria."
+        },
+        {
+          "title": "Adatta",
+          "text": "Cambia domande, regole e design."
+        },
+        {
+          "title": "Pubblica",
+          "text": "Raccogli risposte in pochi minuti."
+        }
+      ]
+    },
+    "responses": {
+      "label": "Risposte",
+      "title": "Ogni risposta, rivista e in ordine",
+      "description": "Gestisci le risposte in una tabella o come schede, cerca tra le risposte, rivedile, etichettale ed esportale.",
+      "metaDescription": "Viste a tabella e a schede, ricerca e filtri, stati di revisione, etichette, note, modifiche con cronologia ed esportazione in Excel, CSV o PDF.",
+      "alt": "L'elenco delle risposte con il grafico degli stati di revisione",
+      "cards": [
+        {
+          "title": "Tabella e schede",
+          "text": "Cerca tra le risposte, filtra, scegli le colonne, ordina e seleziona un intervallo di date."
+        },
+        {
+          "title": "Stati di revisione",
+          "text": "Nuova, rivista, approvata o rifiutata, così tutti sanno cosa è fatto."
+        },
+        {
+          "title": "Etichette e note",
+          "text": "Etichetta le risposte e lascia note nel pannello dei dettagli."
+        },
+        {
+          "title": "Modifiche con cronologia",
+          "text": "Correggi una risposta e conserva traccia di ciò che è cambiato."
+        },
+        {
+          "title": "Esportazione",
+          "text": "Excel, CSV o PDF, con l'avanzamento visibile."
+        },
+        {
+          "title": "Riepiloghi con IA",
+          "text": "Il riepilogo di una risposta o indicazioni su molte."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Arrivano le risposte",
+          "text": "Da ogni canale, in un unico elenco."
+        },
+        {
+          "title": "Rivedi",
+          "text": "Imposta uno stato, etichetta e aggiungi note."
+        },
+        {
+          "title": "Esporta o collega",
+          "text": "Scarica o invia al tuo database."
+        }
+      ]
+    },
+    "analytics": {
+      "label": "Analisi",
+      "title": "Scopri il rendimento di ogni modulo",
+      "description": "Visite, avvii e completamenti, dove le persone abbandonano e quali dispositivi, canali e lingue usano.",
+      "metaDescription": "Analisi dei moduli: visite, avvii, completamenti, abbandoni per domanda, dispositivi, canali e lingue, più una dashboard per tutto lo spazio di lavoro.",
+      "alt": "La panoramica delle conversioni nelle analisi",
+      "cards": [
+        {
+          "title": "Conversione",
+          "text": "Visite, avvii e completamenti per ogni modulo."
+        },
+        {
+          "title": "Abbandoni per domanda",
+          "text": "Vedi esattamente dove le persone si fermano."
+        },
+        {
+          "title": "Dispositivi, canali, lingue",
+          "text": "Scopri come e da dove rispondono le persone."
+        },
+        {
+          "title": "Dashboard dello spazio di lavoro",
+          "text": "Schede KPI con andamenti, i moduli più attivi e ciò che richiede attenzione."
+        },
+        {
+          "title": "Filtri e periodi",
+          "text": "Per cartella e proprietario, per giorno, settimana, mese o anno."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Condividi",
+          "text": "Ogni visita e ogni risposta vengono contate."
+        },
+        {
+          "title": "Individua",
+          "text": "Trova la domanda in cui le persone abbandonano."
+        },
+        {
+          "title": "Migliora",
+          "text": "Modificala e guarda i numeri cambiare."
+        }
+      ]
+    },
+    "data-sources": {
+      "label": "Origini dati",
+      "title": "Il tuo database, dalla prima risposta",
+      "description": "Collega MySQL, MariaDB, PostgreSQL, SQL Server o Oracle, e ogni risposta viene scritta lì appena arriva. Oppure conserva tutto nell'archivio cifrato di Formalie.",
+      "metaDescription": "Invia ogni risposta a MySQL, MariaDB, PostgreSQL, SQL Server o Oracle appena arriva, oppure conservala nell'archivio cifrato di Formalie.",
+      "alt": "La panoramica delle origini dati: traffico del database e stato delle connessioni",
+      "cards": [
+        {
+          "title": "Cinque database",
+          "text": "MySQL, MariaDB, PostgreSQL, SQL Server e Oracle."
+        },
+        {
+          "title": "Scritte appena arrivano",
+          "text": "Le risposte finiscono in tabelle di Formalie con prefisso, con recupero dei dati precedenti e nuovi tentativi."
+        },
+        {
+          "title": "Stato della connessione",
+          "text": "Testa la connessione, segui una guida ai permessi, tieni d'occhio lo stato e i tempi di risposta."
+        },
+        {
+          "title": "Esplora database",
+          "text": "Sfoglia le tabelle, modifica le righe nelle tue tabelle ed esporta."
+        },
+        {
+          "title": "Editor di query",
+          "text": "SQL con completamento automatico, in sola lettura per impostazione predefinita, con cronologia e query salvate."
+        },
+        {
+          "title": "Tutto registrato",
+          "text": "Ogni operazione su una connessione compare nel registro di controllo."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Collega",
+          "text": "Aggiungi il tuo database e testalo."
+        },
+        {
+          "title": "Scegli i moduli",
+          "text": "Decidi quali moduli salvano lì le risposte."
+        },
+        {
+          "title": "Le risposte arrivano",
+          "text": "Ogni nuova risposta, scritta appena arriva."
+        }
+      ]
+    },
+    "api-service": {
+      "label": "Servizio API",
+      "title": "Trasforma qualsiasi modulo in endpoint API sicuri",
+      "description": "Raggruppa i moduli in servizi, scegli cosa accetta e restituisce ogni endpoint e proteggilo con token, regole di accesso e limiti di frequenza.",
+      "metaDescription": "Trasforma qualsiasi modulo in endpoint API sicuri con token, regole di accesso, limiti di frequenza, log e documentazione generata.",
+      "alt": "La panoramica del servizio API: servizi, endpoint, chiamate e traffico nel tempo",
+      "cards": [
+        {
+          "title": "Endpoint dai moduli",
+          "text": "GET, POST, PUT e DELETE, con i campi accettati e restituiti scelti per ogni endpoint."
+        },
+        {
+          "title": "Token con ambiti",
+          "text": "Token statici o a breve scadenza, di test e di produzione."
+        },
+        {
+          "title": "Richieste firmate",
+          "text": "Intestazioni obbligatorie, firme e protezione dalle ripetizioni."
+        },
+        {
+          "title": "Regole di accesso",
+          "text": "Per IP, dominio, regione e paese, più i siti consentiti per le app nel browser."
+        },
+        {
+          "title": "Limiti di frequenza",
+          "text": "Per token, per IP e per endpoint."
+        },
+        {
+          "title": "Documentazione e log",
+          "text": "Documentazione generata con una console di prova, log delle richieste, analisi e webhook firmati."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Scegli un modulo",
+          "text": "Le sue domande diventano i campi."
+        },
+        {
+          "title": "Crea un token",
+          "text": "Con gli ambiti di cui ha bisogno la tua app."
+        },
+        {
+          "title": "Chiamalo",
+          "text": "Da qualsiasi app, con la documentazione generata."
+        }
+      ]
+    },
+    "access-control": {
+      "label": "Accesso e sicurezza",
+      "title": "Decidi esattamente chi vede cosa",
+      "description": "Ruoli con permessi dettagliati, accesso alle cartelle, condivisione per modulo, accesso aziendale e un registro di controllo di ogni azione.",
+      "metaDescription": "Ruoli e permessi, accesso alle cartelle, condivisione per modulo, accesso in due passaggi, single sign-on, controllo delle sessioni e un registro di controllo di ogni azione.",
+      "alt": "Ruoli e accesso: persone per ruolo e tipi di ruolo",
+      "cards": [
+        {
+          "title": "Ruoli e permessi",
+          "text": "Propri, condivisi o tutti, per ogni area, e i tuoi ruoli personalizzati."
+        },
+        {
+          "title": "Cartelle e condivisione",
+          "text": "Accesso alle cartelle, condivisione per modulo e una risposta chiara su chi può vedere questo modulo."
+        },
+        {
+          "title": "Chi vede ogni domanda",
+          "text": "Tutti, oppure reparti, ruoli o persone scelti."
+        },
+        {
+          "title": "Accesso aziendale",
+          "text": "Single sign-on con Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0 o OpenID Connect."
+        },
+        {
+          "title": "Accesso in due passaggi",
+          "text": "Un'app di autenticazione o un SMS, più regole per le password, IP consentiti e durata della sessione."
+        },
+        {
+          "title": "Registro di controllo",
+          "text": "Ogni azione, con chi, quando e da dove, ed esportazione."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Invita",
+          "text": "Aggiungi persone con reparto e responsabile."
+        },
+        {
+          "title": "Assegna i ruoli",
+          "text": "Scegli cosa può fare ogni ruolo."
+        },
+        {
+          "title": "Verifica",
+          "text": "Vedi chi può vedere ogni modulo, e perché."
+        }
+      ]
+    },
+    "ai-assistant": {
+      "label": "Assistente IA",
+      "title": "Un assistente che crea, legge e traduce",
+      "description": "Descrivi un modulo o carica un documento e ottieni una bozza. Fai domande sulle tue risposte con parole semplici. Traduci i moduli in un clic.",
+      "metaDescription": "Moduli da una descrizione o da un documento, aiuto con domande e logica, analisi delle risposte, riepiloghi e traduzione, con crediti IA in ogni piano.",
+      "prompt": "Una candidatura con dati di contatto, esperienza e caricamento del CV",
+      "drafted": "Bozza pronta: 3 pagine, 9 domande",
+      "cards": [
+        {
+          "title": "Moduli da una descrizione",
+          "text": "Oppure da un documento, con idee di modelli."
+        },
+        {
+          "title": "Aiuto nel generatore",
+          "text": "Con domande, regole e testi."
+        },
+        {
+          "title": "Analisi delle risposte",
+          "text": "Interroga i tuoi dati con parole semplici e ottieni riepiloghi."
+        },
+        {
+          "title": "Traduzione",
+          "text": "Traduci un modulo nelle lingue che servono."
+        },
+        {
+          "title": "Un tema da un colore",
+          "text": "Indica il colore del tuo marchio, ottieni un design."
+        },
+        {
+          "title": "Crediti in ogni piano",
+          "text": "I crediti IA sono inclusi in ogni piano."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Descrivi",
+          "text": "Di' cosa ti serve o carica un documento."
+        },
+        {
+          "title": "Rivedi",
+          "text": "Controlla la bozza e adattala."
+        },
+        {
+          "title": "Pubblica",
+          "text": "E chiedi all'assistente delle risposte."
+        }
+      ]
+    },
+    "languages": {
+      "label": "Lingue",
+      "title": "Ogni modulo nella lingua delle tue persone",
+      "description": "L'app parla 20 lingue, compreso l'arabo da destra a sinistra. Un modulo può avere più lingue, e ognuno sceglie la propria.",
+      "metaDescription": "L'app in 20 lingue, moduli in più lingue con selettore della lingua, e date, numeri e valute che seguono ogni persona.",
+      "question": "Come valuteresti la tua visita?",
+      "cards": [
+        {
+          "title": "20 lingue",
+          "text": "Tutta l'app, anche da destra a sinistra."
+        },
+        {
+          "title": "Moduli in più lingue",
+          "text": "Con un selettore della lingua per chi risponde."
+        },
+        {
+          "title": "Aiuto con la traduzione",
+          "text": "L'assistente IA traduce, tu controlli."
+        },
+        {
+          "title": "Formati locali",
+          "text": "Date, numeri e valute seguono la lingua e la regione di ciascuno."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Aggiungi lingue",
+          "text": "Scegli le lingue offerte da un modulo."
+        },
+        {
+          "title": "Traduci",
+          "text": "Con l'aiuto dell'assistente."
+        },
+        {
+          "title": "Condividi una volta",
+          "text": "Ognuno risponde nella propria lingua."
+        }
+      ]
+    },
+    "help-and-tours": {
+      "label": "Aiuto e tour",
+      "title": "Aiuto in ogni pagina",
+      "description": "Un centro assistenza in 20 lingue, tour guidati alla prima visita e un assistente che risponde partendo dagli articoli.",
+      "metaDescription": "Un centro assistenza con articoli, domande frequenti e glossario in 20 lingue, tour guidati, aiuto contestuale e una procedura guidata di configurazione per i nuovi spazi di lavoro.",
+      "alt": "La home del centro assistenza",
+      "cards": [
+        {
+          "title": "Centro assistenza",
+          "text": "Articoli, domande frequenti e glossario in 20 lingue."
+        },
+        {
+          "title": "Un assistente",
+          "text": "Risponde alle domande partendo dagli articoli di aiuto."
+        },
+        {
+          "title": "Aiuto contestuale",
+          "text": "Un punto interrogativo in ogni pagina e il pulsante Mostrami dove."
+        },
+        {
+          "title": "Tour guidati",
+          "text": "Proposti alla prima visita di ogni area."
+        },
+        {
+          "title": "Configurazione guidata",
+          "text": "I nuovi spazi di lavoro sono pronti in pochi passaggi."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Registrati",
+          "text": "La configurazione guidata avvia lo spazio di lavoro."
+        },
+        {
+          "title": "Fai un tour",
+          "text": "Ogni area si presenta la prima volta."
+        },
+        {
+          "title": "Chiedi",
+          "text": "Centro assistenza e assistente sono a un clic."
+        }
+      ]
+    }
+  },
+  "integrationsPage": {
+    "title": "Funziona con i sistemi che hai già",
+    "description": "Il tuo database, webhook e un'API per le tue app, più l'accesso con il provider di identità della tua azienda.",
+    "metaDescription": "MySQL, MariaDB, PostgreSQL, SQL Server e Oracle, webhook, il servizio API, accesso con Google e Facebook e single sign-on con Okta, Microsoft Entra ID e altri.",
+    "databases": {
+      "title": "Database",
+      "text": "Ogni risposta scritta nel tuo database appena arriva."
+    },
+    "api": {
+      "title": "Servizio API e webhook",
+      "text": "Endpoint per le tue app e webhook firmati verso i tuoi servizi, con nuovi tentativi."
+    },
+    "signin": {
+      "title": "Accesso",
+      "text": "Email e password, Google o Facebook in ogni piano; single sign-on nei piani a pagamento."
+    },
+    "standards": {
+      "title": "Basato su standard aperti",
+      "text": "SQL, REST e JSON, SAML 2.0 e OpenID Connect, così niente ti vincola."
+    },
+    "alt": "L'elenco delle connessioni: database con stato e disponibilità"
+  },
+  "securityPage": {
+    "title": "Sicurezza e privacy, integrate",
+    "description": "I controlli che Formalie offre a ogni spazio di lavoro e come proteggiamo i dati che raccogli.",
+    "metaDescription": "Cifratura, ruoli e controllo degli accessi, un registro di controllo di ogni azione, accesso in due passaggi, single sign-on e residenza dei dati.",
+    "items": [
+      {
+        "title": "Cifratura in transito e a riposo",
+        "text": "Tutto il traffico è cifrato, e le richieste dell'app hanno un secondo livello di cifratura. Nessun segreto viene conservato nel browser."
+      },
+      {
+        "title": "Ruoli e controllo degli accessi",
+        "text": "Ruoli dettagliati, accesso alle cartelle e condivisione per modulo, con una risposta chiara su chi può vedere ogni modulo."
+      },
+      {
+        "title": "Un registro di controllo di tutto",
+        "text": "Chi ha fatto cosa, quando e da dove, comprese le azioni del personale di Formalie, con esportazione."
+      },
+      {
+        "title": "Accesso in due passaggi e single sign-on",
+        "text": "Un'app di autenticazione o un SMS, e l'accesso aziendale con SAML 2.0 o OpenID Connect."
+      },
+      {
+        "title": "Residenza dei dati",
+        "text": "Con Enterprise conservi i dati nella regione che scegli."
+      },
+      {
+        "title": "Backup testati",
+        "text": "Backup cifrati, con ripristini testati."
+      }
+    ],
+    "disclosure": {
+      "title": "Segnala una vulnerabilità",
+      "text": "Hai trovato un problema di sicurezza? Scrivi a {email}. Non intraprenderemo azioni contro ricerche in buona fede che rispettano la nostra politica di utilizzo accettabile."
+    },
+    "linksTitle": "Per saperne di più",
+    "trust": "Fiducia e sicurezza"
+  },
+  "aboutPage": {
+    "title": "Moduli, dati e accessi, per tutti",
+    "description": "Formalie è una piattaforma sicura e flessibile per creare moduli, raccogliere e gestire dati, collegare sistemi e controllare gli accessi, per organizzazioni di ogni dimensione, in tutto il mondo.",
+    "metaDescription": "Formalie realizza una piattaforma sicura e flessibile per moduli, dati e accessi, per organizzazioni di ogni dimensione, in tutto il mondo.",
+    "mission": {
+      "title": "La nostra missione",
+      "text": "Raccogliere informazioni dovrebbe essere semplice, e proteggerle dovrebbe essere la norma. Creiamo gli strumenti che rendono possibili entrambe le cose, per un piccolo team come per una grande organizzazione."
+    },
+    "beliefsTitle": "In cosa crediamo",
+    "beliefs": [
+      {
+        "title": "Prima la privacy",
+        "text": "Niente pubblicità, nessuna vendita di dati, nessun cookie di tracciamento."
+      },
+      {
+        "title": "I tuoi dati sono tuoi",
+        "text": "Esportali quando vuoi o conservali nel tuo database fin dal primo giorno."
+      },
+      {
+        "title": "Meglio semplice che ingegnoso",
+        "text": "Parole chiare, schermate pulite e aiuto in ogni pagina."
+      }
+    ],
+    "global": {
+      "title": "Globale per natura",
+      "text": "20 lingue, anche da destra a sinistra, formati locali e dati nella regione che scegli."
+    }
+  },
+  "solutionPages": {
+    "problem": "Il problema",
+    "hr": {
+      "title": "Moduli per le risorse umane, senza scartoffie",
+      "description": "Candidature, inserimento e richieste del personale in un unico posto, visibili solo a chi deve vederle.",
+      "metaDescription": "Candidature, inserimento dei dipendenti e richieste del personale, con ruoli, condivisione per modulo e il tuo database.",
+      "problem": "I moduli delle risorse umane contengono dati personali, arrivano via email e fogli di calcolo e li vedono più persone del dovuto.",
+      "templates": [
+        {
+          "title": "Candidatura",
+          "text": "Dati di contatto, esperienza e caricamento del CV."
+        },
+        {
+          "title": "Inserimento dei dipendenti",
+          "text": "Dati personali, documenti e dotazioni."
+        }
+      ],
+      "data": "Le risposte vanno nel tuo database delle risorse umane o nell'archivio cifrato di Formalie, visibili solo ai ruoli HR che scegli."
+    },
+    "customer-feedback": {
+      "title": "Ascolta ogni cliente, nella sua lingua",
+      "description": "Sondaggi di soddisfazione e richieste di reso in 20 lingue, con analisi che mostrano cosa migliorare.",
+      "metaDescription": "Sondaggi di soddisfazione dei clienti e richieste di reso in 20 lingue, con analisi, etichette e riepiloghi con IA.",
+      "problem": "Il feedback è sparso tra email, chat e carta, in tante lingue, e nessuno vede la tendenza.",
+      "templates": [
+        {
+          "title": "Soddisfazione dei clienti",
+          "text": "Valutazioni, un punteggio e un commento libero."
+        },
+        {
+          "title": "Richiesta di reso",
+          "text": "Dati dell'ordine, motivo e foto."
+        }
+      ],
+      "data": "Le risposte vengono etichettate e riassunte, mostrate nella dashboard e inviate ai tuoi sistemi tramite webhook."
+    },
+    "events": {
+      "title": "Iscrizioni e prenotazioni che funzionano e basta",
+      "description": "Moduli di iscrizione e conferma di partecipazione con limiti, date di apertura e chiusura e un codice QR per l'ingresso.",
+      "metaDescription": "Moduli di iscrizione agli eventi e conferma di partecipazione con limiti di risposte, date di apertura e chiusura, codici QR e avvisi email.",
+      "problem": "I posti finiscono, le date cambiano e gli elenchi stanno in tre fogli di calcolo diversi.",
+      "templates": [
+        {
+          "title": "Iscrizione all'evento",
+          "text": "Dati dei partecipanti, sessioni ed esigenze alimentari."
+        },
+        {
+          "title": "Conferma di partecipazione",
+          "text": "Sì, no o forse, con accompagnatore."
+        }
+      ],
+      "data": "Ogni iscrizione arriva in un unico elenco, con avvisi email, e può andare nel tuo database."
+    },
+    "health-and-safety": {
+      "title": "Segnala gli incidenti sul posto",
+      "description": "Segnalazioni di incidenti e valutazioni dei rischi da compilare dal telefono, con foto, firme e una documentazione chiara.",
+      "metaDescription": "Segnalazioni di incidenti e valutazioni dei rischi da qualsiasi telefono, con foto, firme, punteggi di rischio calcolati e registro di controllo.",
+      "problem": "Gli incidenti vengono segnalati tardi, su carta, senza foto, ed è difficile fidarsi della documentazione.",
+      "templates": [
+        {
+          "title": "Segnalazione di incidente",
+          "text": "Cosa è successo, dove, foto e una firma."
+        },
+        {
+          "title": "Valutazione dei rischi",
+          "text": "Pericoli, punteggi e azioni, calcolati in tempo reale."
+        }
+      ],
+      "data": "Le segnalazioni arrivano subito al team giusto, con un registro di controllo di ogni modifica."
+    },
+    "education": {
+      "title": "Iscrizioni e valutazioni, in modo semplice",
+      "description": "Moduli di iscrizione e valutazioni dei corsi per scuole, università e team di formazione, nelle lingue delle famiglie.",
+      "metaDescription": "Moduli di iscrizione e valutazioni dei corsi in 20 lingue, con caricamenti, regole e archiviazione sicura.",
+      "problem": "L'iscrizione richiede documenti e consensi, le famiglie parlano tante lingue e le valutazioni sono difficili da confrontare.",
+      "templates": [
+        {
+          "title": "Iscrizione",
+          "text": "Dati dello studente, documenti e consenso."
+        },
+        {
+          "title": "Valutazione del corso",
+          "text": "Valutazioni e commenti, per corso."
+        }
+      ],
+      "data": "Le iscrizioni vanno nel tuo gestionale studenti o nel tuo database, le valutazioni compaiono nella dashboard."
+    },
+    "operations": {
+      "title": "Verifiche e audit di cui fidarsi",
+      "description": "Verifiche dei fornitori, audit e registri con calcoli, prove obbligatorie e una traccia completa.",
+      "metaDescription": "Moduli di verifica dei fornitori e di audit con calcoli, caricamenti, stati di revisione, il tuo database e un registro di controllo completo.",
+      "problem": "Le checklist vengono ricopiate a mano, i punteggi sommati male e nessuno sa quale versione sia quella attuale.",
+      "templates": [
+        {
+          "title": "Verifica del fornitore",
+          "text": "Dati aziendali, certificati e un punteggio."
+        },
+        {
+          "title": "Audit",
+          "text": "Checklist, rilievi e azioni."
+        }
+      ],
+      "data": "I risultati vengono rivisti e approvati, scritti nel tuo database, e ogni modifica resta registrata."
+    },
+    "developers": {
+      "title": "Moduli come API, per le tue app",
+      "description": "Crea il modulo una volta e usalo dalle tue app: endpoint sicuri, token, webhook e documentazione generata.",
+      "metaDescription": "Trasforma i moduli in endpoint API sicuri con token, regole di accesso, limiti di frequenza, webhook firmati e documentazione generata.",
+      "problem": "Ogni app ha bisogno del proprio back end per i moduli, della validazione e dell'archiviazione, rifatti ogni volta.",
+      "templates": [
+        {
+          "title": "Endpoint di registrazione",
+          "text": "Un modulo a cui la tua app invia i dati, verificati dalle sue regole."
+        },
+        {
+          "title": "Webhook verso il tuo servizio",
+          "text": "Invii firmati con nuovi tentativi."
+        }
+      ],
+      "data": "Le risposte vengono verificate con le regole del modulo, archiviate dove scegli e inoltrate con webhook firmati."
+    }
   }
 }

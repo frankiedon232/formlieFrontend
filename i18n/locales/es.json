@@ -400,5 +400,725 @@
       "title": "Empieza a recoger respuestas en minutos.",
       "description": "Plan gratuito, sin tarjeta. Cambia de plan cuando crezcas."
     }
+  },
+  "common": {
+    "learnMore": "Más información",
+    "related": "Funciones relacionadas",
+    "howItWorks": "Cómo funciona",
+    "step": "Paso {n}",
+    "allFeatures": "Todas las funciones",
+    "startFrom": "Formularios para empezar",
+    "whereDataGoes": "Adónde van los datos",
+    "useTemplate": "Empezar con esta plantilla"
+  },
+  "featuresIndex": {
+    "title": "Todo lo que hace Formalie",
+    "description": "Crea formularios, diséñalos, compártelos en todas partes y luego guarda, analiza y protege cada respuesta. Todo lo que ves aquí ya está en el producto.",
+    "metaDescription": "Creador de formularios, diseño, plantillas, respuestas, analítica, tu propia base de datos, servicio API, control de acceso, asistente de IA y 20 idiomas, en una sola plataforma segura."
+  },
+  "features": {
+    "form-builder": {
+      "label": "Creador de formularios",
+      "title": "Crea cualquier formulario, sin código",
+      "description": "Arrastra y suelta preguntas en filas y páginas, añade reglas y cálculos, y publica cuando esté listo. Más de 40 tipos de pregunta, en 20 idiomas.",
+      "metaDescription": "Preguntas, páginas, lógica y cálculos con arrastrar y soltar, en 20 idiomas, con versiones y publicación en un clic.",
+      "alt": "El creador de formularios: tipos de pregunta a la izquierda, un formulario de varias páginas en el centro y los ajustes a la derecha",
+      "cards": [
+        {
+          "title": "Más de 40 tipos de pregunta",
+          "text": "Texto, fechas, opciones, valoraciones, matriz, archivos, firma, dirección, importe, IBAN y más."
+        },
+        {
+          "title": "Filas y páginas",
+          "text": "Arrastra preguntas a filas y páginas, con una alternativa de teclado para cada arrastre."
+        },
+        {
+          "title": "Reglas",
+          "text": "Muestra, oculta o haz obligatorias las preguntas, salta a una página o al final, según las respuestas anteriores."
+        },
+        {
+          "title": "Cálculos en directo",
+          "text": "Totales, puntuaciones y precios calculados mientras se responde, incluso a partir de un detalle de la opción elegida."
+        },
+        {
+          "title": "Listas grandes y reutilizables",
+          "text": "Listas de opciones con niveles, hasta 200.000 opciones que se cargan mientras se escribe, reutilizables en cualquier formulario."
+        },
+        {
+          "title": "Versiones",
+          "text": "Borrador y después publicación. Editar un formulario publicado abre un nuevo borrador, y cualquier versión se puede restaurar."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Añade preguntas",
+          "text": "Elige entre más de 40 tipos o tus preguntas guardadas."
+        },
+        {
+          "title": "Añade reglas",
+          "text": "Decide qué se muestra, cuándo y qué se calcula."
+        },
+        {
+          "title": "Publica",
+          "text": "Compártelo por enlace, insertado en tu web, con código QR o por API."
+        }
+      ]
+    },
+    "design": {
+      "label": "Diseño y temas",
+      "title": "Formularios con la imagen de tu marca",
+      "description": "Parte de un estilo y cambia todo lo que importa: diseño, fondo, fuentes, colores, botones, encabezado, pie de página y la página de agradecimiento.",
+      "metaDescription": "Estilos iniciales, 21 fuentes alojadas por nosotros, colores con avisos de contraste, temas y páginas de destino. Da a cada formulario la imagen de tu marca.",
+      "alt": "El diseñador de formularios: estilos iniciales a la izquierda y una vista previa en directo del formulario",
+      "cards": [
+        {
+          "title": "Estilos iniciales",
+          "text": "Minimalista, Suave, Llamativo, Oscuro, Elegante, Corporativo y más, listos para ajustar."
+        },
+        {
+          "title": "21 fuentes",
+          "text": "Fuentes alojadas por nosotros, así nada se carga desde otro sitio."
+        },
+        {
+          "title": "Colores con avisos de contraste",
+          "text": "Ve al instante cuándo un texto sería difícil de leer."
+        },
+        {
+          "title": "Temas",
+          "text": "Guarda un diseño como tema y aplícalo a cualquier formulario."
+        },
+        {
+          "title": "Páginas de destino",
+          "text": "Presenta el formulario en su propio enlace con un diseño de página."
+        },
+        {
+          "title": "Un tema a partir de un color",
+          "text": "Dale al asistente de IA el color de tu marca y obtén un tema."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Elige un estilo",
+          "text": "Parte de uno de los estilos iniciales."
+        },
+        {
+          "title": "Hazlo tuyo",
+          "text": "Fuentes, colores, encabezado, pie de página y botones."
+        },
+        {
+          "title": "Guárdalo como tema",
+          "text": "Reutilízalo en todos los formularios."
+        }
+      ]
+    },
+    "templates": {
+      "label": "Plantillas",
+      "title": "Empieza con un formulario ya hecho",
+      "description": "Una biblioteca de plantillas por categoría, desde candidaturas hasta informes de incidentes. También puedes guardar tus formularios como plantillas.",
+      "metaDescription": "Plantillas de formularios listas para usar en empresa, RR. HH., eventos, salud y seguridad, hostelería y educación. Guarda tus propios formularios como plantillas.",
+      "alt": "Categorías de plantillas mostradas como tarjetas",
+      "cards": [
+        {
+          "title": "Por categoría",
+          "text": "Empresa y clientes, RR. HH. y trabajo, eventos y reservas, salud y seguridad, hostelería, educación y más."
+        },
+        {
+          "title": "Listas para cambiar",
+          "text": "Cada plantilla es un formulario normal: cambia cualquier pregunta, regla o diseño."
+        },
+        {
+          "title": "Tus propias plantillas",
+          "text": "Guarda cualquiera de tus formularios como plantilla para tu equipo."
+        },
+        {
+          "title": "A partir de una descripción",
+          "text": "O describe el formulario que necesitas y el asistente de IA prepara un borrador."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Elige",
+          "text": "Explora la biblioteca por categoría."
+        },
+        {
+          "title": "Ajusta",
+          "text": "Cambia preguntas, reglas y diseño."
+        },
+        {
+          "title": "Publica",
+          "text": "Recoge respuestas en minutos."
+        }
+      ]
+    },
+    "responses": {
+      "label": "Respuestas",
+      "title": "Cada respuesta, revisada y en orden",
+      "description": "Trabaja las respuestas en una tabla o como tarjetas, busca en ellas, revísalas, etiquétalas y expórtalas.",
+      "metaDescription": "Vistas de tabla y tarjetas, búsqueda y filtros, estados de revisión, etiquetas, notas, ediciones con historial y exportación a Excel, CSV o PDF.",
+      "alt": "La lista de respuestas con el gráfico de estados de revisión",
+      "cards": [
+        {
+          "title": "Tabla y tarjetas",
+          "text": "Busca en las respuestas, filtra, elige columnas, ordena y selecciona un rango de fechas."
+        },
+        {
+          "title": "Estados de revisión",
+          "text": "Nueva, revisada, aprobada o rechazada, para que todos sepan qué está hecho."
+        },
+        {
+          "title": "Etiquetas y notas",
+          "text": "Etiqueta respuestas y deja notas en el panel de detalle."
+        },
+        {
+          "title": "Ediciones con historial",
+          "text": "Corrige una respuesta y conserva el registro de lo que cambió."
+        },
+        {
+          "title": "Exportación",
+          "text": "Excel, CSV o PDF, con el progreso a la vista."
+        },
+        {
+          "title": "Resúmenes con IA",
+          "text": "Un resumen de una respuesta, o conclusiones sobre muchas."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Llegan las respuestas",
+          "text": "De todos los canales, a una sola lista."
+        },
+        {
+          "title": "Revisa",
+          "text": "Asigna un estado, etiqueta y añade notas."
+        },
+        {
+          "title": "Exporta o conecta",
+          "text": "Descárgalas o envíalas a tu base de datos."
+        }
+      ]
+    },
+    "analytics": {
+      "label": "Analítica",
+      "title": "Mira cómo funciona cada formulario",
+      "description": "Visitas, inicios y envíos completos, dónde abandona la gente, y qué dispositivos, canales e idiomas usa.",
+      "metaDescription": "Analítica de formularios: visitas, inicios, envíos completos, abandonos por pregunta, dispositivos, canales e idiomas, además de un panel para todo el espacio de trabajo.",
+      "alt": "El resumen de conversión de la analítica",
+      "cards": [
+        {
+          "title": "Conversión",
+          "text": "Visitas, inicios y envíos completos de cada formulario."
+        },
+        {
+          "title": "Abandonos por pregunta",
+          "text": "Ve exactamente dónde se detiene la gente."
+        },
+        {
+          "title": "Dispositivos, canales, idiomas",
+          "text": "Descubre cómo y desde dónde responde la gente."
+        },
+        {
+          "title": "Panel del espacio de trabajo",
+          "text": "Tarjetas de KPI con tendencias, los formularios más activos y lo que necesita atención."
+        },
+        {
+          "title": "Filtros y periodos",
+          "text": "Por carpeta y propietario, por día, semana, mes o año."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Comparte",
+          "text": "Cada visita y cada respuesta se cuentan."
+        },
+        {
+          "title": "Detecta",
+          "text": "Encuentra la pregunta en la que la gente se va."
+        },
+        {
+          "title": "Mejora",
+          "text": "Cámbiala y mira cómo se mueven los números."
+        }
+      ]
+    },
+    "data-sources": {
+      "label": "Fuentes de datos",
+      "title": "Tu base de datos, desde la primera respuesta",
+      "description": "Conecta MySQL, MariaDB, PostgreSQL, SQL Server u Oracle, y cada respuesta se escribe allí en cuanto llega. O guárdalo todo en el almacenamiento cifrado de Formalie.",
+      "metaDescription": "Envía cada respuesta a MySQL, MariaDB, PostgreSQL, SQL Server u Oracle en cuanto llega, o guárdala en el almacenamiento cifrado de Formalie.",
+      "alt": "El resumen de fuentes de datos: tráfico de la base de datos y estado de las conexiones",
+      "cards": [
+        {
+          "title": "Cinco bases de datos",
+          "text": "MySQL, MariaDB, PostgreSQL, SQL Server y Oracle."
+        },
+        {
+          "title": "Escritas en cuanto llegan",
+          "text": "Las respuestas van a tablas propias de Formalie con prefijo, con carga de datos anteriores y reintentos."
+        },
+        {
+          "title": "Estado de la conexión",
+          "text": "Prueba la conexión, sigue una guía de permisos y vigila el estado y el tiempo de respuesta."
+        },
+        {
+          "title": "Explorador de bases de datos",
+          "text": "Recorre las tablas, cambia filas en tus propias tablas y exporta."
+        },
+        {
+          "title": "Editor de consultas",
+          "text": "SQL con autocompletado, de solo lectura por defecto, con historial y consultas guardadas."
+        },
+        {
+          "title": "Todo queda registrado",
+          "text": "Todo lo que se hace en una conexión aparece en el registro de auditoría."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Conecta",
+          "text": "Añade tu base de datos y pruébala."
+        },
+        {
+          "title": "Elige formularios",
+          "text": "Decide qué formularios guardan allí sus respuestas."
+        },
+        {
+          "title": "Llegan las respuestas",
+          "text": "Cada respuesta nueva, escrita en cuanto llega."
+        }
+      ]
+    },
+    "api-service": {
+      "label": "Servicio API",
+      "title": "Convierte cualquier formulario en endpoints de API seguros",
+      "description": "Agrupa formularios en servicios, elige qué acepta y devuelve cada endpoint, y protégelo con tokens, reglas de acceso y límites de uso.",
+      "metaDescription": "Convierte cualquier formulario en endpoints de API seguros con tokens, reglas de acceso, límites de uso, registros y documentación generada.",
+      "alt": "El resumen del servicio API: servicios, endpoints, llamadas y tráfico en el tiempo",
+      "cards": [
+        {
+          "title": "Endpoints a partir de formularios",
+          "text": "GET, POST, PUT y DELETE, con los campos aceptados y devueltos elegidos para cada endpoint."
+        },
+        {
+          "title": "Tokens con permisos",
+          "text": "Tokens fijos o de corta duración, de prueba y de producción."
+        },
+        {
+          "title": "Peticiones firmadas",
+          "text": "Cabeceras obligatorias, firmas y protección contra repeticiones."
+        },
+        {
+          "title": "Reglas de acceso",
+          "text": "Por IP, dominio, región y país, además de sitios web permitidos para apps de navegador."
+        },
+        {
+          "title": "Límites de uso",
+          "text": "Por token, por IP y por endpoint."
+        },
+        {
+          "title": "Documentación y registros",
+          "text": "Documentación generada con una consola de pruebas, registros de peticiones, analítica y webhooks firmados."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Elige un formulario",
+          "text": "Sus preguntas se convierten en los campos."
+        },
+        {
+          "title": "Crea un token",
+          "text": "Con los permisos que necesita tu app."
+        },
+        {
+          "title": "Llámalo",
+          "text": "Desde cualquier app, con la documentación generada."
+        }
+      ]
+    },
+    "access-control": {
+      "label": "Acceso y seguridad",
+      "title": "Decide exactamente quién ve qué",
+      "description": "Roles con permisos detallados, acceso por carpetas, uso compartido por formulario, inicio de sesión de empresa y un registro de auditoría de cada acción.",
+      "metaDescription": "Roles y permisos, acceso por carpetas, uso compartido por formulario, verificación en dos pasos, inicio de sesión único, control de sesiones y un registro de auditoría de cada acción.",
+      "alt": "Roles y acceso: personas por rol y tipos de rol",
+      "cards": [
+        {
+          "title": "Roles y permisos",
+          "text": "Propios, compartidos o todos, en cada área, y tus propios roles."
+        },
+        {
+          "title": "Carpetas y uso compartido",
+          "text": "Acceso por carpetas, uso compartido por formulario y una respuesta clara a quién puede ver este formulario."
+        },
+        {
+          "title": "Quién ve cada pregunta",
+          "text": "Todo el mundo, o los departamentos, roles o personas que elijas."
+        },
+        {
+          "title": "Inicio de sesión de empresa",
+          "text": "Inicio de sesión único con Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0 u OpenID Connect."
+        },
+        {
+          "title": "Verificación en dos pasos",
+          "text": "Una app de autenticación o un SMS, además de reglas de contraseña, IP permitidas y duración de la sesión."
+        },
+        {
+          "title": "Registro de auditoría",
+          "text": "Cada acción, con quién, cuándo y desde dónde, y una exportación."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Invita",
+          "text": "Añade personas con sus departamentos y responsables."
+        },
+        {
+          "title": "Asigna roles",
+          "text": "Elige qué puede hacer cada rol."
+        },
+        {
+          "title": "Comprueba",
+          "text": "Mira quién puede ver cada formulario y por qué."
+        }
+      ]
+    },
+    "ai-assistant": {
+      "label": "Asistente de IA",
+      "title": "Un asistente que crea, lee y traduce",
+      "description": "Describe un formulario o sube un documento y obtén un borrador. Pregunta por tus respuestas con palabras sencillas. Traduce formularios con un clic.",
+      "metaDescription": "Formularios a partir de una descripción o un documento, ayuda con preguntas y lógica, análisis de respuestas, resúmenes y traducción, con créditos de IA en todos los planes.",
+      "prompt": "Una solicitud de empleo con datos de contacto, experiencia y subida del CV",
+      "drafted": "Borrador listo: 3 páginas, 9 preguntas",
+      "cards": [
+        {
+          "title": "Formularios a partir de una descripción",
+          "text": "O de un documento, con ideas de plantillas."
+        },
+        {
+          "title": "Ayuda en el creador",
+          "text": "Con preguntas, reglas y redacción."
+        },
+        {
+          "title": "Análisis de respuestas",
+          "text": "Pregunta por tus datos con palabras sencillas y obtén resúmenes."
+        },
+        {
+          "title": "Traducción",
+          "text": "Traduce un formulario a los idiomas que necesite."
+        },
+        {
+          "title": "Un tema a partir de un color",
+          "text": "Da el color de tu marca y obtén un diseño."
+        },
+        {
+          "title": "Créditos en cada plan",
+          "text": "Todos los planes incluyen créditos de IA."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Describe",
+          "text": "Di lo que necesitas o sube un documento."
+        },
+        {
+          "title": "Revisa",
+          "text": "Comprueba el borrador y ajústalo."
+        },
+        {
+          "title": "Publica",
+          "text": "Y pregunta al asistente por las respuestas."
+        }
+      ]
+    },
+    "languages": {
+      "label": "Idiomas",
+      "title": "Cada formulario en el idioma de tu gente",
+      "description": "La app habla 20 idiomas, incluido el árabe de derecha a izquierda. Un formulario puede tener varios idiomas y cada persona elige el suyo.",
+      "metaDescription": "La app en 20 idiomas, formularios en varios idiomas con selector de idioma, y fechas, números y monedas que se adaptan a cada persona.",
+      "question": "¿Cómo valorarías tu visita?",
+      "cards": [
+        {
+          "title": "20 idiomas",
+          "text": "Toda la app, incluidos los idiomas de derecha a izquierda."
+        },
+        {
+          "title": "Formularios en varios idiomas",
+          "text": "Con un selector de idioma para quienes responden."
+        },
+        {
+          "title": "Ayuda con la traducción",
+          "text": "El asistente de IA traduce y tú revisas."
+        },
+        {
+          "title": "Formatos locales",
+          "text": "Fechas, números y monedas siguen el idioma y la región de cada persona."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Añade idiomas",
+          "text": "Elige los idiomas que ofrece un formulario."
+        },
+        {
+          "title": "Traduce",
+          "text": "Con ayuda del asistente."
+        },
+        {
+          "title": "Comparte una vez",
+          "text": "Cada persona responde en su propio idioma."
+        }
+      ]
+    },
+    "help-and-tours": {
+      "label": "Ayuda y recorridos",
+      "title": "Ayuda en cada página",
+      "description": "Un centro de ayuda en 20 idiomas, recorridos guiados en la primera visita y un asistente que responde a partir de los artículos.",
+      "metaDescription": "Un centro de ayuda con artículos, preguntas frecuentes y glosario en 20 idiomas, recorridos guiados, ayuda en contexto y un asistente de configuración para espacios de trabajo nuevos.",
+      "alt": "La portada del centro de ayuda",
+      "cards": [
+        {
+          "title": "Centro de ayuda",
+          "text": "Artículos, preguntas frecuentes y glosario en 20 idiomas."
+        },
+        {
+          "title": "Un asistente",
+          "text": "Responde preguntas a partir de los artículos de ayuda."
+        },
+        {
+          "title": "Ayuda en contexto",
+          "text": "Un signo de interrogación en cada página y el botón Muéstrame dónde."
+        },
+        {
+          "title": "Recorridos guiados",
+          "text": "Se ofrecen en la primera visita a cada área."
+        },
+        {
+          "title": "Asistente de configuración",
+          "text": "Los espacios de trabajo nuevos se ponen en marcha en pocos pasos."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Regístrate",
+          "text": "El asistente de configuración pone en marcha el espacio de trabajo."
+        },
+        {
+          "title": "Haz un recorrido",
+          "text": "Cada área se presenta la primera vez."
+        },
+        {
+          "title": "Pregunta",
+          "text": "El centro de ayuda y el asistente están a un clic."
+        }
+      ]
+    }
+  },
+  "integrationsPage": {
+    "title": "Funciona con los sistemas que ya tienes",
+    "description": "Tu propia base de datos, webhooks y una API para tus apps, e inicio de sesión con el proveedor de identidad de tu empresa.",
+    "metaDescription": "MySQL, MariaDB, PostgreSQL, SQL Server y Oracle, webhooks, el servicio API, inicio de sesión con Google y Facebook e inicio de sesión único con Okta, Microsoft Entra ID y más.",
+    "databases": {
+      "title": "Bases de datos",
+      "text": "Cada respuesta se escribe en tu propia base de datos en cuanto llega."
+    },
+    "api": {
+      "title": "Servicio API y webhooks",
+      "text": "Endpoints para tus apps y webhooks firmados hacia tus servicios, con reintentos."
+    },
+    "signin": {
+      "title": "Inicio de sesión",
+      "text": "Correo y contraseña, Google o Facebook en todos los planes; inicio de sesión único en los planes de pago."
+    },
+    "standards": {
+      "title": "Basado en estándares abiertos",
+      "text": "SQL, REST y JSON, SAML 2.0 y OpenID Connect, para que nada te ate."
+    },
+    "alt": "La lista de conexiones: bases de datos con su estado y disponibilidad"
+  },
+  "securityPage": {
+    "title": "Seguridad y privacidad integradas",
+    "description": "Los controles que Formalie ofrece a cada espacio de trabajo y cómo protegemos los datos que recoges.",
+    "metaDescription": "Cifrado, roles y control de acceso, un registro de auditoría de cada acción, verificación en dos pasos, inicio de sesión único y residencia de datos.",
+    "items": [
+      {
+        "title": "Cifrado en tránsito y en reposo",
+        "text": "Todo el tráfico está cifrado, y las peticiones de la propia app llevan una segunda capa de cifrado. No se guardan secretos en el navegador."
+      },
+      {
+        "title": "Roles y control de acceso",
+        "text": "Roles detallados, acceso por carpetas y uso compartido por formulario, con una respuesta clara a quién puede ver cada formulario."
+      },
+      {
+        "title": "Un registro de auditoría de todo",
+        "text": "Quién hizo qué, cuándo y desde dónde, incluido lo que hace el personal de Formalie, con exportación."
+      },
+      {
+        "title": "Verificación en dos pasos e inicio de sesión único",
+        "text": "Una app de autenticación o un SMS, e inicio de sesión de empresa con SAML 2.0 u OpenID Connect."
+      },
+      {
+        "title": "Residencia de datos",
+        "text": "Guarda tus datos en la región que elijas con Enterprise."
+      },
+      {
+        "title": "Copias de seguridad probadas",
+        "text": "Copias de seguridad cifradas, con restauraciones probadas."
+      }
+    ],
+    "disclosure": {
+      "title": "Informa de una vulnerabilidad",
+      "text": "¿Has encontrado un problema de seguridad? Escribe a {email}. No emprenderemos acciones contra la investigación de buena fe que respete nuestra política de uso aceptable."
+    },
+    "linksTitle": "Más información",
+    "trust": "Confianza y seguridad"
+  },
+  "aboutPage": {
+    "title": "Formularios, datos y acceso, para todos",
+    "description": "Formalie es una plataforma segura y flexible para crear formularios, recoger y gestionar datos, conectar sistemas y controlar el acceso, para organizaciones de cualquier tamaño, en cualquier parte del mundo.",
+    "metaDescription": "Formalie crea una plataforma segura y flexible para formularios, datos y acceso, para organizaciones de cualquier tamaño, en cualquier parte del mundo.",
+    "mission": {
+      "title": "Nuestra misión",
+      "text": "Recoger información debería ser sencillo, y protegerla debería ser lo normal. Creamos las herramientas que hacen posible ambas cosas, para un equipo pequeño o una gran organización."
+    },
+    "beliefsTitle": "En qué creemos",
+    "beliefs": [
+      {
+        "title": "La privacidad primero",
+        "text": "Sin publicidad, sin venta de datos, sin cookies de seguimiento."
+      },
+      {
+        "title": "Tus datos son tuyos",
+        "text": "Expórtalos cuando quieras o guárdalos en tu propia base de datos desde el primer día."
+      },
+      {
+        "title": "Mejor sencillo que ingenioso",
+        "text": "Palabras claras, pantallas limpias y ayuda en cada página."
+      }
+    ],
+    "global": {
+      "title": "Global desde el diseño",
+      "text": "20 idiomas, incluidos los de derecha a izquierda, formatos locales y datos en la región que elijas."
+    }
+  },
+  "solutionPages": {
+    "problem": "El problema",
+    "hr": {
+      "title": "Formularios de RR. HH., sin papeleo",
+      "description": "Candidaturas, incorporación y solicitudes del personal en un solo lugar, con acceso solo para quienes deben verlas.",
+      "metaDescription": "Candidaturas, incorporación de empleados y solicitudes del personal, con roles, uso compartido por formulario y tu propia base de datos.",
+      "problem": "Los formularios de RR. HH. contienen datos personales, llegan por correo y hojas de cálculo, y los ve más gente de la que debería.",
+      "templates": [
+        {
+          "title": "Solicitud de empleo",
+          "text": "Datos de contacto, experiencia y subida del CV."
+        },
+        {
+          "title": "Incorporación de empleados",
+          "text": "Datos personales, documentos y equipo."
+        }
+      ],
+      "data": "Las respuestas van a tu base de datos de RR. HH. o al almacenamiento cifrado de Formalie, visibles solo para los roles de RR. HH. que elijas."
+    },
+    "customer-feedback": {
+      "title": "Escucha a cada cliente, en su idioma",
+      "description": "Encuestas de satisfacción y solicitudes de devolución en 20 idiomas, con analítica que muestra qué mejorar.",
+      "metaDescription": "Encuestas de satisfacción y solicitudes de devolución en 20 idiomas, con analítica, etiquetas y resúmenes con IA.",
+      "problem": "Las opiniones están repartidas entre correo, chat y papel, en muchos idiomas, y nadie ve la tendencia.",
+      "templates": [
+        {
+          "title": "Satisfacción del cliente",
+          "text": "Valoraciones, una puntuación y un comentario libre."
+        },
+        {
+          "title": "Solicitud de devolución",
+          "text": "Datos del pedido, motivo y fotos."
+        }
+      ],
+      "data": "Las respuestas se etiquetan y resumen, aparecen en el panel y se envían a tus sistemas por webhook."
+    },
+    "events": {
+      "title": "Inscripciones y reservas que simplemente funcionan",
+      "description": "Formularios de inscripción y confirmación de asistencia con límites, fechas de apertura y cierre, y un código QR para la entrada.",
+      "metaDescription": "Formularios de inscripción y confirmación de asistencia con límite de respuestas, fechas de apertura y cierre, códigos QR y avisos por correo.",
+      "problem": "Las plazas se agotan, las fechas cambian y las listas viven en tres hojas de cálculo distintas.",
+      "templates": [
+        {
+          "title": "Inscripción a un evento",
+          "text": "Datos de los asistentes, sesiones y necesidades alimentarias."
+        },
+        {
+          "title": "Confirmación de asistencia",
+          "text": "Sí, no o quizás, con acompañante."
+        }
+      ],
+      "data": "Cada inscripción llega a una sola lista, con avisos por correo, y puede ir a tu propia base de datos."
+    },
+    "health-and-safety": {
+      "title": "Informa de incidentes en el momento",
+      "description": "Informes de incidentes y evaluaciones de riesgos que se rellenan desde el móvil, con fotos, firmas y un registro claro.",
+      "metaDescription": "Informes de incidentes y evaluaciones de riesgos desde cualquier móvil, con fotos, firmas, puntuaciones de riesgo calculadas y registro de auditoría.",
+      "problem": "Los incidentes se notifican tarde, en papel y sin fotos, y es difícil fiarse del registro.",
+      "templates": [
+        {
+          "title": "Informe de incidente",
+          "text": "Qué pasó, dónde, fotos y una firma."
+        },
+        {
+          "title": "Evaluación de riesgos",
+          "text": "Peligros, puntuaciones y acciones, calculados en directo."
+        }
+      ],
+      "data": "Los informes llegan al momento al equipo adecuado, con un registro de auditoría de cada cambio."
+    },
+    "education": {
+      "title": "Matrículas y evaluaciones, sin complicaciones",
+      "description": "Formularios de matrícula y evaluaciones de cursos para colegios, universidades y equipos de formación, en los idiomas de las familias.",
+      "metaDescription": "Formularios de matrícula y evaluaciones de cursos en 20 idiomas, con subida de archivos, reglas y almacenamiento seguro.",
+      "problem": "La matrícula exige documentos y consentimientos, las familias hablan muchos idiomas y las evaluaciones son difíciles de comparar.",
+      "templates": [
+        {
+          "title": "Matrícula",
+          "text": "Datos del alumno, documentos y consentimiento."
+        },
+        {
+          "title": "Evaluación del curso",
+          "text": "Valoraciones y comentarios, por curso."
+        }
+      ],
+      "data": "Las matrículas van a tu sistema de gestión de alumnos o a tu base de datos, y las evaluaciones aparecen en el panel."
+    },
+    "operations": {
+      "title": "Controles y auditorías en los que confiar",
+      "description": "Controles de proveedores, auditorías y registros con cálculos, pruebas obligatorias y un historial completo.",
+      "metaDescription": "Formularios de control de proveedores y auditoría con cálculos, subida de archivos, estados de revisión, tu propia base de datos y un registro de auditoría completo.",
+      "problem": "Las listas de comprobación se copian a mano, las puntuaciones se suman mal y nadie sabe qué versión es la vigente.",
+      "templates": [
+        {
+          "title": "Control de proveedores",
+          "text": "Datos de la empresa, certificados y una puntuación."
+        },
+        {
+          "title": "Auditoría",
+          "text": "Lista de comprobación, hallazgos y acciones."
+        }
+      ],
+      "data": "Los resultados se revisan y aprueban, se escriben en tu base de datos y cada cambio queda registrado."
+    },
+    "developers": {
+      "title": "Formularios como API, para tus propias apps",
+      "description": "Crea el formulario una vez y úsalo desde tus apps: endpoints seguros, tokens, webhooks y documentación generada.",
+      "metaDescription": "Convierte formularios en endpoints de API seguros con tokens, reglas de acceso, límites de uso, webhooks firmados y documentación generada.",
+      "problem": "Cada app necesita su propio back-end de formularios, validación y almacenamiento, hechos de nuevo cada vez.",
+      "templates": [
+        {
+          "title": "Endpoint de registro",
+          "text": "Un formulario al que tu app envía datos, comprobados con sus reglas."
+        },
+        {
+          "title": "Webhook a tu servicio",
+          "text": "Envíos firmados con reintentos."
+        }
+      ],
+      "data": "Las respuestas se comprueban con las reglas del formulario, se guardan donde elijas y se reenvían con webhooks firmados."
+    }
   }
 }

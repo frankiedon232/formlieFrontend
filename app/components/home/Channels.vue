@@ -88,7 +88,7 @@ const icons = {
       <!-- They all land in one place -->
       <div aria-hidden="true" class="relative mx-auto mt-2 hidden h-16 max-w-4xl lg:block">
         <svg viewBox="0 0 800 64" class="absolute inset-0 size-full" preserveAspectRatio="none">
-          <g fill="none" stroke="currentColor" class="text-accented" stroke-width="1.2">
+          <g fill="none" stroke="var(--ui-border-accented)" stroke-width="1.2">
             <path v-for="x in [100, 300, 500, 700]" :key="x" :d="`M ${x} 0 C ${x} 36, 400 28, 400 64`" />
           </g>
           <g

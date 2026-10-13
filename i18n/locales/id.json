@@ -400,5 +400,725 @@
       "title": "Mulai mengumpulkan dalam hitungan menit.",
       "description": "Paket gratis, tanpa kartu. Tingkatkan saat Anda berkembang."
     }
+  },
+  "common": {
+    "learnMore": "Pelajari lebih lanjut",
+    "related": "Fitur terkait",
+    "howItWorks": "Cara kerjanya",
+    "step": "Langkah {n}",
+    "allFeatures": "Semua fitur",
+    "startFrom": "Formulir untuk memulai",
+    "whereDataGoes": "Ke mana data disimpan",
+    "useTemplate": "Mulai dari templat ini"
+  },
+  "featuresIndex": {
+    "title": "Semua yang dilakukan Formalie",
+    "description": "Buat formulir, desain, bagikan di mana saja, lalu simpan, analisis, dan lindungi setiap jawaban. Setiap bagian di bawah sudah ada di produk saat ini.",
+    "metaDescription": "Pembuat formulir, desain, templat, jawaban, analitik, database Anda sendiri, layanan API, kontrol akses, asisten AI, dan 20 bahasa dalam satu platform yang aman."
+  },
+  "features": {
+    "form-builder": {
+      "label": "Pembuat formulir",
+      "title": "Buat formulir apa pun, tanpa kode",
+      "description": "Seret dan lepas pertanyaan ke baris dan halaman, tambahkan aturan dan perhitungan, lalu terbitkan saat siap. Lebih dari 40 jenis pertanyaan, dalam 20 bahasa.",
+      "metaDescription": "Pertanyaan, halaman, logika, dan perhitungan dengan seret dan lepas, dalam 20 bahasa, dengan versi dan penerbitan sekali klik.",
+      "alt": "Pembuat formulir: jenis pertanyaan di kiri, formulir multihalaman di tengah, pengaturan di kanan",
+      "cards": [
+        {
+          "title": "Lebih dari 40 jenis pertanyaan",
+          "text": "Teks, tanggal, pilihan, penilaian, matriks, unggahan, tanda tangan, alamat, mata uang, IBAN, dan lainnya."
+        },
+        {
+          "title": "Baris dan halaman",
+          "text": "Seret pertanyaan ke baris dan halaman, dengan alternatif keyboard untuk setiap seretan."
+        },
+        {
+          "title": "Aturan",
+          "text": "Tampilkan, sembunyikan, atau wajibkan pertanyaan, lompat ke halaman lain atau langsung ke akhir, berdasarkan jawaban sebelumnya."
+        },
+        {
+          "title": "Perhitungan langsung",
+          "text": "Total, skor, dan harga dihitung saat orang menjawab, bahkan dari detail opsi yang dipilih."
+        },
+        {
+          "title": "Daftar besar yang bisa dipakai ulang",
+          "text": "Daftar opsi bertingkat, hingga 200.000 opsi yang dimuat saat orang mengetik, bisa dipakai di formulir mana pun."
+        },
+        {
+          "title": "Versi",
+          "text": "Buat draf, lalu terbitkan. Mengedit formulir yang aktif membuka draf baru, dan setiap versi bisa dipulihkan."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Tambahkan pertanyaan",
+          "text": "Pilih dari lebih dari 40 jenis atau pertanyaan yang Anda simpan."
+        },
+        {
+          "title": "Tambahkan aturan",
+          "text": "Tentukan apa yang tampil, kapan, dan apa yang dihitung."
+        },
+        {
+          "title": "Terbitkan",
+          "text": "Bagikan lewat tautan, sematan, kode QR, atau API."
+        }
+      ]
+    },
+    "design": {
+      "label": "Desain dan tema",
+      "title": "Formulir yang sesuai dengan merek Anda",
+      "description": "Mulai dari sebuah tampilan lalu ubah semua yang penting: tata letak, latar belakang, font, warna, tombol, header, footer, dan halaman terima kasih.",
+      "metaDescription": "Tampilan awal, 21 font yang di-host sendiri, warna dengan petunjuk kontras, tema, dan halaman landing. Buat setiap formulir sesuai dengan merek Anda.",
+      "alt": "Desainer formulir: tampilan awal di kiri dan pratinjau langsung formulir",
+      "cards": [
+        {
+          "title": "Tampilan awal",
+          "text": "Minimal, Lembut, Tegas, Gelap, Elegan, Korporat, dan lainnya, siap disesuaikan."
+        },
+        {
+          "title": "21 font",
+          "text": "Font yang di-host sendiri, jadi tidak ada yang dimuat dari situs lain."
+        },
+        {
+          "title": "Warna dengan petunjuk kontras",
+          "text": "Langsung terlihat saat teks akan sulit dibaca."
+        },
+        {
+          "title": "Tema",
+          "text": "Simpan desain sebagai tema dan terapkan ke formulir mana pun."
+        },
+        {
+          "title": "Halaman landing",
+          "text": "Bingkai formulir di tautannya sendiri dengan desain halaman."
+        },
+        {
+          "title": "Tema dari satu warna",
+          "text": "Berikan warna merek Anda kepada asisten AI dan dapatkan sebuah tema."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Pilih tampilan",
+          "text": "Mulai dari salah satu tampilan awal."
+        },
+        {
+          "title": "Jadikan milik Anda",
+          "text": "Font, warna, header, footer, dan tombol."
+        },
+        {
+          "title": "Simpan sebagai tema",
+          "text": "Gunakan lagi di setiap formulir."
+        }
+      ]
+    },
+    "templates": {
+      "label": "Templat",
+      "title": "Mulai dari formulir siap pakai",
+      "description": "Pustaka templat per kategori, dari lamaran kerja hingga laporan insiden. Anda juga bisa menyimpan formulir sendiri sebagai templat.",
+      "metaDescription": "Templat formulir siap pakai untuk bisnis, SDM, acara, kesehatan dan keselamatan, perhotelan, dan pendidikan. Simpan formulir Anda sendiri sebagai templat.",
+      "alt": "Kategori templat yang ditampilkan sebagai kartu",
+      "cards": [
+        {
+          "title": "Per kategori",
+          "text": "Bisnis dan pelanggan, SDM dan tempat kerja, acara dan pemesanan, kesehatan dan keselamatan, perhotelan, pendidikan, dan lainnya."
+        },
+        {
+          "title": "Siap diubah",
+          "text": "Setiap templat adalah formulir biasa: ubah pertanyaan, aturan, atau desain apa pun."
+        },
+        {
+          "title": "Templat Anda sendiri",
+          "text": "Simpan formulir apa pun sebagai templat untuk tim Anda."
+        },
+        {
+          "title": "Dari deskripsi",
+          "text": "Atau jelaskan formulir yang Anda butuhkan, dan asisten AI membuat drafnya."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Pilih",
+          "text": "Jelajahi pustaka per kategori."
+        },
+        {
+          "title": "Sesuaikan",
+          "text": "Ubah pertanyaan, aturan, dan desain."
+        },
+        {
+          "title": "Terbitkan",
+          "text": "Kumpulkan jawaban dalam hitungan menit."
+        }
+      ]
+    },
+    "responses": {
+      "label": "Jawaban",
+      "title": "Setiap jawaban, ditinjau dan tertata",
+      "description": "Kelola jawaban dalam tabel atau kartu, cari di seluruh jawaban, tinjau, beri tag, dan ekspor.",
+      "metaDescription": "Tampilan tabel dan kartu, pencarian dan filter, status tinjauan, tag, catatan, pengeditan dengan riwayat, dan ekspor ke Excel, CSV, atau PDF.",
+      "alt": "Daftar jawaban dengan grafik status tinjauan",
+      "cards": [
+        {
+          "title": "Tabel dan kartu",
+          "text": "Cari di seluruh jawaban, filter, pilih kolom, urutkan, dan pilih rentang tanggal."
+        },
+        {
+          "title": "Status tinjauan",
+          "text": "Baru, ditinjau, disetujui, atau ditolak, jadi semua orang tahu apa yang sudah selesai."
+        },
+        {
+          "title": "Tag dan catatan",
+          "text": "Beri tag pada jawaban dan tinggalkan catatan di panel detail."
+        },
+        {
+          "title": "Pengeditan dengan riwayat",
+          "text": "Koreksi jawaban dan tetap simpan catatan perubahannya."
+        },
+        {
+          "title": "Ekspor",
+          "text": "Excel, CSV, atau PDF, dengan progres yang ditampilkan."
+        },
+        {
+          "title": "Ringkasan AI",
+          "text": "Ringkasan satu jawaban, atau wawasan dari banyak jawaban."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Jawaban masuk",
+          "text": "Dari setiap saluran, ke satu daftar."
+        },
+        {
+          "title": "Tinjau",
+          "text": "Atur status, beri tag, dan tambahkan catatan."
+        },
+        {
+          "title": "Ekspor atau hubungkan",
+          "text": "Unduh, atau kirim ke database Anda."
+        }
+      ]
+    },
+    "analytics": {
+      "label": "Analitik",
+      "title": "Lihat kinerja setiap formulir",
+      "description": "Kunjungan, mulai, dan selesai, di mana orang berhenti, serta perangkat, saluran, dan bahasa yang mereka gunakan.",
+      "metaDescription": "Analitik formulir: kunjungan, mulai, selesai, titik berhenti per pertanyaan, perangkat, saluran, dan bahasa, plus dasbor untuk seluruh ruang kerja.",
+      "alt": "Ringkasan konversi di analitik",
+      "cards": [
+        {
+          "title": "Konversi",
+          "text": "Kunjungan, mulai, dan selesai untuk setiap formulir."
+        },
+        {
+          "title": "Titik berhenti per pertanyaan",
+          "text": "Lihat persis di mana orang berhenti."
+        },
+        {
+          "title": "Perangkat, saluran, bahasa",
+          "text": "Ketahui bagaimana dan dari mana orang menjawab."
+        },
+        {
+          "title": "Dasbor ruang kerja",
+          "text": "Kartu KPI dengan tren, formulir tersibuk, dan hal yang perlu diperhatikan."
+        },
+        {
+          "title": "Filter dan periode",
+          "text": "Per folder dan pemilik, per hari, minggu, bulan, atau tahun."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Bagikan",
+          "text": "Setiap kunjungan dan jawaban dihitung."
+        },
+        {
+          "title": "Temukan",
+          "text": "Cari pertanyaan tempat orang pergi."
+        },
+        {
+          "title": "Perbaiki",
+          "text": "Ubah, lalu lihat angkanya bergerak."
+        }
+      ]
+    },
+    "data-sources": {
+      "label": "Sumber data",
+      "title": "Database Anda, sejak jawaban pertama",
+      "description": "Hubungkan MySQL, MariaDB, PostgreSQL, SQL Server, atau Oracle, dan setiap jawaban ditulis ke sana begitu masuk. Atau simpan semuanya di penyimpanan terenkripsi Formalie.",
+      "metaDescription": "Kirim setiap jawaban ke MySQL, MariaDB, PostgreSQL, SQL Server, atau Oracle begitu masuk, atau simpan di penyimpanan terenkripsi Formalie.",
+      "alt": "Ringkasan sumber data: lalu lintas database dan kesehatan koneksi",
+      "cards": [
+        {
+          "title": "Lima database",
+          "text": "MySQL, MariaDB, PostgreSQL, SQL Server, dan Oracle."
+        },
+        {
+          "title": "Ditulis begitu masuk",
+          "text": "Jawaban masuk ke tabel milik Formalie dengan awalan khusus, dengan pengisian ulang dan percobaan ulang."
+        },
+        {
+          "title": "Kesehatan koneksi",
+          "text": "Uji koneksi, ikuti panduan izin, pantau kesehatan dan waktu respons."
+        },
+        {
+          "title": "Penjelajah database",
+          "text": "Telusuri tabel, ubah baris di tabel Anda sendiri, dan ekspor."
+        },
+        {
+          "title": "Editor kueri",
+          "text": "SQL dengan pelengkapan otomatis, hanya-baca secara default, dengan riwayat dan kueri tersimpan."
+        },
+        {
+          "title": "Tercatat",
+          "text": "Semua yang dilakukan pada koneksi ada di jejak audit."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Hubungkan",
+          "text": "Tambahkan database Anda dan uji."
+        },
+        {
+          "title": "Pilih formulir",
+          "text": "Pilih formulir mana yang menyimpan jawabannya di sana."
+        },
+        {
+          "title": "Jawaban mengalir",
+          "text": "Setiap jawaban baru, ditulis begitu masuk."
+        }
+      ]
+    },
+    "api-service": {
+      "label": "Layanan API",
+      "title": "Ubah formulir apa pun menjadi endpoint API yang aman",
+      "description": "Kelompokkan formulir ke dalam layanan, pilih apa yang diterima dan dikembalikan setiap endpoint, lalu lindungi dengan token, aturan akses, dan batas permintaan.",
+      "metaDescription": "Ubah formulir apa pun menjadi endpoint API yang aman dengan token, aturan akses, batas permintaan, log, dan dokumentasi otomatis.",
+      "alt": "Ringkasan layanan API: layanan, endpoint, panggilan, dan lalu lintas dari waktu ke waktu",
+      "cards": [
+        {
+          "title": "Endpoint dari formulir",
+          "text": "GET, POST, PUT, dan DELETE, dengan kolom yang diterima dan dikembalikan dipilih per endpoint."
+        },
+        {
+          "title": "Token dengan cakupan",
+          "text": "Token statis atau berumur pendek, untuk uji dan produksi."
+        },
+        {
+          "title": "Permintaan bertanda tangan",
+          "text": "Header wajib, tanda tangan, dan perlindungan dari pengulangan."
+        },
+        {
+          "title": "Aturan akses",
+          "text": "Berdasarkan IP, domain, wilayah, dan negara, plus situs web yang diizinkan untuk aplikasi browser."
+        },
+        {
+          "title": "Batas permintaan",
+          "text": "Per token, per IP, dan per endpoint."
+        },
+        {
+          "title": "Dokumentasi dan log",
+          "text": "Dokumentasi otomatis dengan konsol untuk mencoba, log permintaan, analitik, dan webhook bertanda tangan."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Pilih formulir",
+          "text": "Pertanyaannya menjadi kolom."
+        },
+        {
+          "title": "Buat token",
+          "text": "Dengan cakupan yang dibutuhkan aplikasi Anda."
+        },
+        {
+          "title": "Panggil",
+          "text": "Dari aplikasi mana pun, dengan dokumentasi otomatis."
+        }
+      ]
+    },
+    "access-control": {
+      "label": "Akses dan keamanan",
+      "title": "Tentukan dengan tepat siapa melihat apa",
+      "description": "Peran dengan izin terperinci, akses folder, berbagi per formulir, masuk dengan akun perusahaan, dan jejak audit untuk setiap tindakan.",
+      "metaDescription": "Peran dan izin, akses folder, berbagi per formulir, masuk dua langkah, single sign-on, kontrol sesi, dan jejak audit untuk setiap tindakan.",
+      "alt": "Peran dan akses: jumlah orang per peran dan jenis peran",
+      "cards": [
+        {
+          "title": "Peran dan izin",
+          "text": "Milik sendiri, dibagikan, atau semua, untuk setiap area, plus peran buatan Anda sendiri."
+        },
+        {
+          "title": "Folder dan berbagi",
+          "text": "Akses folder, berbagi per formulir, dan jawaban jelas tentang siapa yang bisa melihat formulir ini."
+        },
+        {
+          "title": "Siapa melihat tiap pertanyaan",
+          "text": "Semua orang, atau departemen, peran, atau orang yang dipilih."
+        },
+        {
+          "title": "Masuk dengan akun perusahaan",
+          "text": "Single sign-on dengan Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0, atau OpenID Connect."
+        },
+        {
+          "title": "Masuk dua langkah",
+          "text": "Aplikasi autentikator atau SMS, plus aturan kata sandi, IP yang diizinkan, dan durasi sesi."
+        },
+        {
+          "title": "Jejak audit",
+          "text": "Setiap tindakan, dengan siapa, kapan, dan dari mana, serta bisa diekspor."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Undang",
+          "text": "Tambahkan orang beserta departemen dan atasannya."
+        },
+        {
+          "title": "Beri peran",
+          "text": "Pilih apa yang boleh dilakukan setiap peran."
+        },
+        {
+          "title": "Periksa",
+          "text": "Lihat siapa yang bisa melihat setiap formulir, dan alasannya."
+        }
+      ]
+    },
+    "ai-assistant": {
+      "label": "Asisten AI",
+      "title": "Asisten yang membuat, membaca, dan menerjemahkan",
+      "description": "Jelaskan formulir atau unggah dokumen, lalu dapatkan draf. Tanyakan tentang jawaban Anda dengan bahasa sehari-hari. Terjemahkan formulir dengan sekali klik.",
+      "metaDescription": "Formulir dari deskripsi atau dokumen, bantuan untuk pertanyaan dan logika, analisis jawaban, ringkasan, dan terjemahan, dengan kredit AI di setiap paket.",
+      "prompt": "Lamaran kerja dengan data kontak, pengalaman, dan unggahan CV",
+      "drafted": "Draf siap: 3 halaman, 9 pertanyaan",
+      "cards": [
+        {
+          "title": "Formulir dari deskripsi",
+          "text": "Atau dari dokumen, dengan ide templat."
+        },
+        {
+          "title": "Bantuan di pembuat formulir",
+          "text": "Untuk pertanyaan, aturan, dan susunan kata."
+        },
+        {
+          "title": "Analisis jawaban",
+          "text": "Tanyakan tentang data Anda dengan bahasa sehari-hari dan dapatkan ringkasan."
+        },
+        {
+          "title": "Terjemahan",
+          "text": "Terjemahkan formulir ke bahasa yang dibutuhkan."
+        },
+        {
+          "title": "Tema dari satu warna",
+          "text": "Berikan warna merek Anda, dapatkan desainnya."
+        },
+        {
+          "title": "Kredit per paket",
+          "text": "Kredit AI sudah termasuk di setiap paket."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Jelaskan",
+          "text": "Sebutkan yang Anda butuhkan, atau unggah dokumen."
+        },
+        {
+          "title": "Tinjau",
+          "text": "Periksa draf dan sesuaikan."
+        },
+        {
+          "title": "Terbitkan",
+          "text": "Lalu tanyakan kepada asisten tentang jawabannya."
+        }
+      ]
+    },
+    "languages": {
+      "label": "Bahasa",
+      "title": "Setiap formulir dalam bahasa orang-orang Anda",
+      "description": "Aplikasi tersedia dalam 20 bahasa, termasuk bahasa Arab dari kanan ke kiri. Satu formulir bisa memiliki beberapa bahasa, dan orang memilih bahasanya sendiri.",
+      "metaDescription": "Aplikasi dalam 20 bahasa, formulir dalam beberapa bahasa dengan pengalih bahasa, serta tanggal, angka, dan mata uang yang mengikuti setiap orang.",
+      "question": "Bagaimana penilaian Anda atas kunjungan ini?",
+      "cards": [
+        {
+          "title": "20 bahasa",
+          "text": "Seluruh aplikasi, termasuk dari kanan ke kiri."
+        },
+        {
+          "title": "Formulir dalam beberapa bahasa",
+          "text": "Dengan pengalih bahasa bagi orang yang menjawab."
+        },
+        {
+          "title": "Bantuan terjemahan",
+          "text": "Asisten AI menerjemahkan, Anda yang memeriksa."
+        },
+        {
+          "title": "Format lokal",
+          "text": "Tanggal, angka, dan mata uang mengikuti bahasa dan wilayah setiap orang."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Tambahkan bahasa",
+          "text": "Pilih bahasa yang ditawarkan formulir."
+        },
+        {
+          "title": "Terjemahkan",
+          "text": "Dengan bantuan asisten."
+        },
+        {
+          "title": "Bagikan sekali",
+          "text": "Orang menjawab dalam bahasa mereka sendiri."
+        }
+      ]
+    },
+    "help-and-tours": {
+      "label": "Bantuan dan tur",
+      "title": "Bantuan di setiap halaman",
+      "description": "Pusat bantuan dalam 20 bahasa, tur terpandu pada kunjungan pertama, dan asisten yang menjawab berdasarkan artikel.",
+      "metaDescription": "Pusat bantuan dengan artikel, FAQ, dan glosarium dalam 20 bahasa, tur terpandu, bantuan sesuai konteks, dan wizard penyiapan untuk ruang kerja baru.",
+      "alt": "Beranda pusat bantuan",
+      "cards": [
+        {
+          "title": "Pusat bantuan",
+          "text": "Artikel, FAQ, dan glosarium dalam 20 bahasa."
+        },
+        {
+          "title": "Asisten",
+          "text": "Menjawab pertanyaan berdasarkan artikel bantuan."
+        },
+        {
+          "title": "Bantuan sesuai konteks",
+          "text": "Tanda tanya di setiap halaman, dan Tunjukkan lokasinya."
+        },
+        {
+          "title": "Tur terpandu",
+          "text": "Ditawarkan saat pertama kali membuka setiap area."
+        },
+        {
+          "title": "Wizard penyiapan",
+          "text": "Ruang kerja baru siap dipakai dalam beberapa langkah."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Daftar",
+          "text": "Wizard penyiapan memulai ruang kerja Anda."
+        },
+        {
+          "title": "Ikuti tur",
+          "text": "Setiap area memperkenalkan dirinya pada kali pertama."
+        },
+        {
+          "title": "Bertanya",
+          "text": "Pusat bantuan dan asisten hanya sejauh satu klik."
+        }
+      ]
+    }
+  },
+  "integrationsPage": {
+    "title": "Bekerja dengan sistem yang sudah Anda miliki",
+    "description": "Database Anda sendiri, webhook, dan API untuk aplikasi Anda, serta masuk dengan penyedia identitas yang dipakai perusahaan Anda.",
+    "metaDescription": "MySQL, MariaDB, PostgreSQL, SQL Server, dan Oracle, webhook, layanan API, masuk dengan Google dan Facebook, serta single sign-on dengan Okta, Microsoft Entra ID, dan lainnya.",
+    "databases": {
+      "title": "Database",
+      "text": "Setiap jawaban ditulis ke database Anda sendiri begitu masuk."
+    },
+    "api": {
+      "title": "Layanan API dan webhook",
+      "text": "Endpoint untuk aplikasi Anda, dan webhook bertanda tangan ke layanan Anda, dengan percobaan ulang."
+    },
+    "signin": {
+      "title": "Masuk",
+      "text": "Email dan kata sandi, Google, atau Facebook di setiap paket; single sign-on di paket berbayar."
+    },
+    "standards": {
+      "title": "Dibangun di atas standar terbuka",
+      "text": "SQL, REST, dan JSON, SAML 2.0, dan OpenID Connect, jadi Anda tidak terkunci."
+    },
+    "alt": "Daftar koneksi: database beserta status dan waktu aktifnya"
+  },
+  "securityPage": {
+    "title": "Keamanan dan privasi, sudah terpasang",
+    "description": "Kontrol yang diberikan Formalie untuk setiap ruang kerja, dan cara kami melindungi data yang Anda kumpulkan.",
+    "metaDescription": "Enkripsi, peran dan kontrol akses, jejak audit untuk setiap tindakan, masuk dua langkah, single sign-on, dan residensi data.",
+    "items": [
+      {
+        "title": "Terenkripsi saat dikirim dan saat disimpan",
+        "text": "Semua lalu lintas dienkripsi, dan permintaan dari aplikasi itu sendiri membawa lapisan enkripsi kedua. Tidak ada rahasia yang disimpan di browser."
+      },
+      {
+        "title": "Peran dan kontrol akses",
+        "text": "Peran terperinci, akses folder, dan berbagi per formulir, serta jawaban jelas tentang siapa yang bisa melihat setiap formulir."
+      },
+      {
+        "title": "Jejak audit untuk semuanya",
+        "text": "Siapa melakukan apa, kapan, dan dari mana, termasuk apa pun yang dilakukan staf Formalie, dan bisa diekspor."
+      },
+      {
+        "title": "Masuk dua langkah dan single sign-on",
+        "text": "Aplikasi autentikator atau SMS, dan masuk dengan akun perusahaan lewat SAML 2.0 atau OpenID Connect."
+      },
+      {
+        "title": "Residensi data",
+        "text": "Simpan data Anda di wilayah pilihan Anda dengan paket Enterprise."
+      },
+      {
+        "title": "Cadangan yang teruji",
+        "text": "Cadangan terenkripsi, dengan pemulihan yang sudah diuji."
+      }
+    ],
+    "disclosure": {
+      "title": "Laporkan celah keamanan",
+      "text": "Menemukan masalah keamanan? Kirim email ke {email}. Kami tidak akan mengambil tindakan terhadap riset dengan itikad baik yang mengikuti kebijakan penggunaan yang dapat diterima kami."
+    },
+    "linksTitle": "Baca selengkapnya",
+    "trust": "Kepercayaan dan keamanan"
+  },
+  "aboutPage": {
+    "title": "Formulir, data, dan akses, untuk semua",
+    "description": "Formalie adalah platform yang aman dan fleksibel untuk membuat formulir, mengumpulkan dan mengelola data, menghubungkan sistem, dan mengontrol akses, untuk organisasi dari semua ukuran, di mana pun di dunia.",
+    "metaDescription": "Formalie membangun platform yang aman dan fleksibel untuk formulir, data, dan akses, bagi organisasi dari semua ukuran, di mana pun di dunia.",
+    "mission": {
+      "title": "Misi kami",
+      "text": "Mengumpulkan informasi seharusnya mudah, dan menjaganya tetap aman seharusnya menjadi standar. Kami membangun alat yang mewujudkan keduanya, untuk tim kecil maupun organisasi besar."
+    },
+    "beliefsTitle": "Yang kami yakini",
+    "beliefs": [
+      {
+        "title": "Privasi lebih dulu",
+        "text": "Tanpa iklan, tanpa menjual data, tanpa cookie pelacak."
+      },
+      {
+        "title": "Data Anda milik Anda",
+        "text": "Ekspor kapan saja, atau simpan di database Anda sendiri sejak hari pertama."
+      },
+      {
+        "title": "Sederhana lebih baik daripada rumit",
+        "text": "Bahasa yang lugas, layar yang jelas, dan bantuan di setiap halaman."
+      }
+    ],
+    "global": {
+      "title": "Global sejak awal",
+      "text": "20 bahasa, termasuk dari kanan ke kiri, format lokal, dan data di wilayah pilihan Anda."
+    }
+  },
+  "solutionPages": {
+    "problem": "Masalahnya",
+    "hr": {
+      "title": "Formulir SDM dan karyawan, tanpa urusan kertas",
+      "description": "Lamaran, orientasi, dan permintaan karyawan di satu tempat, dengan akses hanya untuk orang yang berhak melihatnya.",
+      "metaDescription": "Lamaran kerja, orientasi karyawan, dan permintaan karyawan, dengan peran, berbagi per formulir, dan database Anda sendiri.",
+      "problem": "Formulir SDM berisi data pribadi, datang lewat email dan spreadsheet, dan dilihat lebih banyak orang daripada seharusnya.",
+      "templates": [
+        {
+          "title": "Lamaran kerja",
+          "text": "Data kontak, pengalaman, dan unggahan CV."
+        },
+        {
+          "title": "Orientasi karyawan",
+          "text": "Data pribadi, dokumen, dan perlengkapan."
+        }
+      ],
+      "data": "Jawaban masuk ke database SDM Anda atau penyimpanan terenkripsi Formalie, dan hanya bisa dilihat oleh peran SDM yang Anda pilih."
+    },
+    "customer-feedback": {
+      "title": "Dengarkan setiap pelanggan, dalam bahasa mereka",
+      "description": "Survei kepuasan dan permintaan retur dalam 20 bahasa, dengan analitik yang menunjukkan apa yang perlu diperbaiki.",
+      "metaDescription": "Survei kepuasan pelanggan dan permintaan retur dalam 20 bahasa, dengan analitik, tag, dan ringkasan AI.",
+      "problem": "Masukan tersebar di email, chat, dan kertas, dalam banyak bahasa, dan tidak ada yang melihat trennya.",
+      "templates": [
+        {
+          "title": "Kepuasan pelanggan",
+          "text": "Penilaian, skor, dan komentar terbuka."
+        },
+        {
+          "title": "Permintaan retur",
+          "text": "Detail pesanan, alasan, dan foto."
+        }
+      ],
+      "data": "Jawaban diberi tag dan diringkas, ditampilkan di dasbor, dan dikirim ke sistem Anda lewat webhook."
+    },
+    "events": {
+      "title": "Pendaftaran dan pemesanan yang lancar",
+      "description": "Formulir pendaftaran dan konfirmasi kehadiran dengan batas kuota, tanggal buka dan tutup, serta kode QR untuk pintu masuk.",
+      "metaDescription": "Formulir pendaftaran acara dan konfirmasi kehadiran dengan batas jawaban, tanggal buka dan tutup, kode QR, dan notifikasi email.",
+      "problem": "Tempat cepat habis, tanggal berubah, dan daftar tersebar di tiga spreadsheet berbeda.",
+      "templates": [
+        {
+          "title": "Pendaftaran acara",
+          "text": "Data peserta, sesi, dan kebutuhan makanan."
+        },
+        {
+          "title": "Konfirmasi kehadiran",
+          "text": "Ya, tidak, atau mungkin, dengan satu tamu tambahan."
+        }
+      ],
+      "data": "Setiap pendaftaran masuk ke satu daftar, dengan notifikasi email, dan bisa dikirim ke database Anda sendiri."
+    },
+    "health-and-safety": {
+      "title": "Laporkan insiden di tempat",
+      "description": "Laporan insiden dan penilaian risiko yang bisa diisi dari ponsel, dengan foto, tanda tangan, dan catatan yang jelas.",
+      "metaDescription": "Laporan insiden dan penilaian risiko di ponsel apa pun, dengan foto, tanda tangan, skor risiko yang dihitung otomatis, dan jejak audit.",
+      "problem": "Insiden dilaporkan terlambat, di atas kertas, tanpa foto, dan catatannya sulit dipercaya.",
+      "templates": [
+        {
+          "title": "Laporan insiden",
+          "text": "Apa yang terjadi, di mana, foto, dan tanda tangan."
+        },
+        {
+          "title": "Penilaian risiko",
+          "text": "Bahaya, skor, dan tindakan, dihitung secara langsung."
+        }
+      ],
+      "data": "Laporan langsung sampai ke tim yang tepat, dengan jejak audit untuk setiap perubahan."
+    },
+    "education": {
+      "title": "Pendaftaran dan evaluasi, dengan mudah",
+      "description": "Formulir pendaftaran dan evaluasi kursus untuk sekolah, perguruan tinggi, dan tim pelatihan, dalam bahasa yang digunakan keluarga.",
+      "metaDescription": "Formulir pendaftaran dan evaluasi kursus dalam 20 bahasa, dengan unggahan, aturan, dan penyimpanan yang aman.",
+      "problem": "Pendaftaran butuh dokumen dan persetujuan, keluarga berbicara dalam banyak bahasa, dan evaluasi sulit dibandingkan.",
+      "templates": [
+        {
+          "title": "Pendaftaran",
+          "text": "Data siswa, dokumen, dan persetujuan."
+        },
+        {
+          "title": "Evaluasi kursus",
+          "text": "Penilaian dan komentar, per kursus."
+        }
+      ],
+      "data": "Pendaftaran masuk ke sistem siswa atau database Anda; evaluasi tampil di dasbor."
+    },
+    "operations": {
+      "title": "Pemeriksaan dan audit yang bisa diandalkan",
+      "description": "Pemeriksaan pemasok, audit, dan catatan dengan perhitungan, bukti wajib, dan jejak lengkap.",
+      "metaDescription": "Formulir pemeriksaan pemasok dan audit dengan perhitungan, unggahan, status tinjauan, database Anda sendiri, dan jejak audit lengkap.",
+      "problem": "Daftar periksa disalin manual, skor dijumlahkan dengan salah, dan tidak ada yang tahu versi mana yang terbaru.",
+      "templates": [
+        {
+          "title": "Pemeriksaan pemasok",
+          "text": "Data perusahaan, sertifikat, dan skor."
+        },
+        {
+          "title": "Audit",
+          "text": "Daftar periksa, temuan, dan tindakan."
+        }
+      ],
+      "data": "Hasil ditinjau dan disetujui, ditulis ke database Anda, dan setiap perubahan tercatat."
+    },
+    "developers": {
+      "title": "Formulir sebagai API, untuk aplikasi Anda",
+      "description": "Buat formulir sekali dan gunakan dari aplikasi Anda: endpoint aman, token, webhook, dan dokumentasi otomatis.",
+      "metaDescription": "Ubah formulir menjadi endpoint API yang aman dengan token, aturan akses, batas permintaan, webhook bertanda tangan, dan dokumentasi otomatis.",
+      "problem": "Setiap aplikasi butuh back end formulir, validasi, dan penyimpanan sendiri, yang dibuat ulang setiap kali.",
+      "templates": [
+        {
+          "title": "Endpoint pendaftaran",
+          "text": "Formulir tujuan pengiriman data dari aplikasi Anda, diperiksa dengan aturannya."
+        },
+        {
+          "title": "Webhook ke layanan Anda",
+          "text": "Pengiriman bertanda tangan dengan percobaan ulang."
+        }
+      ],
+      "data": "Jawaban diperiksa dengan aturan formulir, disimpan di tempat pilihan Anda, dan diteruskan lewat webhook bertanda tangan."
+    }
   }
 }
