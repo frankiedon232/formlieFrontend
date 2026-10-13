@@ -65,16 +65,17 @@ usePageSeo({
 
 <template>
   <div>
+    <!-- Sections below the fold are in the HTML for everyone; their code loads only when they come into view. -->
     <HomeHero />
     <HomeTrust />
-    <HomeChannels />
-    <HomeProductTabs />
-    <HomeApart />
-    <HomeSecurity />
-    <HomeIntegrations />
-    <HomeLanguages />
-    <HomePricingTeaser />
-    <HomeFaq />
-    <SiteCta />
+    <LazyHomeChannels hydrate-on-visible />
+    <LazyHomeProductTabs hydrate-on-visible />
+    <LazyHomeApart hydrate-on-visible />
+    <LazyHomeSecurity hydrate-on-visible />
+    <LazyHomeIntegrations hydrate-on-visible />
+    <LazyHomeLanguages hydrate-on-visible />
+    <LazyHomePricingTeaser hydrate-on-visible />
+    <LazyHomeFaq hydrate-on-visible />
+    <LazySiteCta hydrate-on-visible />
   </div>
 </template>

@@ -1414,5 +1414,16 @@
     },
     "formTitle": "Erzählen Sie uns von Ihrer Organisation",
     "formDescription": "Beschreiben Sie kurz, was Sie brauchen. Wir antworten innerhalb eines Werktags mit den nächsten Schritten."
+  },
+  "blogPage": {
+    "title": "Blog",
+    "description": "Neuigkeiten, Anleitungen und Ideen vom Formalie-Team.",
+    "empty": "Die ersten Artikel sind unterwegs.",
+    "emptyText": "Sehen Sie sich in der Zwischenzeit an, was Formalie heute schon kann."
+  },
+  "changelogPage": {
+    "title": "Änderungsprotokoll",
+    "description": "Was es Neues in Formalie gibt, das Neueste zuerst.",
+    "empty": "Die ersten Versionshinweise sind unterwegs."
   }
 }

@@ -130,7 +130,8 @@ usePageSeo({
                 <template #policy>
                   <ULink
                     :to="`${localePath('/legal/acceptable-use')}#report`"
-                    class="font-semibold underline underline-offset-4"
+                    raw
+                    class="font-semibold text-inherit underline underline-offset-4"
                   >
                     {{ t('legal.acceptableUse') }}
                   </ULink>
@@ -171,6 +172,6 @@ usePageSeo({
       </div>
     </UPageSection>
 
-    <SiteCta />
+    <LazySiteCta hydrate-on-visible />
   </div>
 </template>

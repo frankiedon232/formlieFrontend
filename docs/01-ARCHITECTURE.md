@@ -24,6 +24,14 @@ See `API-HOOKS.md`: public plans, public legal documents, and Formalie's own pub
   - a CSP allowing `self`, the Formalie form origins for the embedded forms (`frame-src https://forms.formalie.com`) and `connect-src https://services.formalie.com` (the backend API; never `api.formalie.com`, which is customers' own API service).
 - **Images:** WebP or AVIF from `public/screenshots`, `NuxtImg` with explicit sizes.
 
+## Performance (S7, 2026-10-13)
+
+- Only the entry script is preloaded (`build:manifest` hook); other chunks load when needed.
+- Sections below the fold hydrate when visible (`hydrate-on-visible`); their HTML is prerendered for everyone.
+- Legal text is rendered from Markdown once, at build or by the server, and never re-parsed in the browser (`LazyLegalBody hydrate-never`).
+- Nuxt UI generates styles only for the components used (`ui.experimental.componentDetection`).
+- Lighthouse mobile (local static build, compressed): accessibility, best practices and SEO 100 on content pages; performance 65 to 80 in the lab (observed first paint about 0.6 s). The remaining gap is the framework's own JavaScript (Vue, Nuxt UI, i18n, about 260 KB compressed) under the simulated slow phone; measure again on Cloudflare after launch.
+
 ## Shared look with the app
 
 The website and the app must feel like one product: the same font (Manrope), the same monochrome ink with black or white actions, the same radius, borders and shadows, and the same data-flow animation family. `docs/reference/` holds the app's animation (`AuthFlow.vue`) and showcase (`AuthShowcase.vue`) to start from. The site's hero is a **larger, richer variant** (see `DESIGN.md`), not a copy of the sign-in panel.

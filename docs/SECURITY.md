@@ -24,6 +24,9 @@
 
 ## The site itself
 
+**Built in S7 (2026-10-13):** `deploy/headers.ts` holds the headers (unit-tested). The dev server sends them through `routeRules` (no CSP there: Vite needs eval); `pnpm generate` writes Cloudflare's `_headers` (with the CSP, built from `NUXT_PUBLIC_API_URL` and `NUXT_PUBLIC_FORMS_URL`) and `_redirects`. CSP: `default-src 'self'`; scripts and styles from the site only (`'unsafe-inline'` for Nuxt's payload and the JSON-LD); images and fonts from the site; `connect-src` the site and the backend API; `frame-src` only the Formalie forms host; `frame-ancestors 'none'`; `object-src 'none'`.
+
+
 - No secrets in the code or `.env` that reach the browser. Only `NUXT_PUBLIC_*` addresses.
 - **Security headers:**
   - HSTS, CSP (self; frames only from the Formalie forms origin; connect only to the Formalie API), `X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`;

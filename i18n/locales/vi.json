@@ -1419,5 +1419,16 @@
     },
     "formTitle": "Kể cho chúng tôi về tổ chức của bạn",
     "formDescription": "Chia sẻ đôi chút về nhu cầu của bạn. Chúng tôi phản hồi trong vòng một ngày làm việc kèm các bước tiếp theo."
+  },
+  "blogPage": {
+    "title": "Blog",
+    "description": "Tin tức, hướng dẫn và ý tưởng từ đội ngũ Formalie.",
+    "empty": "Những bài viết đầu tiên sắp ra mắt.",
+    "emptyText": "Trong lúc chờ đợi, hãy xem mọi điều Formalie làm được ngay hôm nay."
+  },
+  "changelogPage": {
+    "title": "Nhật ký thay đổi",
+    "description": "Những điểm mới trong Formalie, mới nhất ở trên cùng.",
+    "empty": "Những ghi chú phát hành đầu tiên sắp ra mắt."
   }
 }

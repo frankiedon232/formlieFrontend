@@ -139,6 +139,6 @@ usePageSeo({
       />
     </UPageSection>
 
-    <SiteCta />
+    <LazySiteCta hydrate-on-visible />
   </div>
 </template>

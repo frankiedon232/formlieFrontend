@@ -1414,5 +1414,16 @@
     },
     "formTitle": "Tell us about your organisation",
     "formDescription": "Share a little about your needs. We reply within one business day with next steps."
+  },
+  "blogPage": {
+    "title": "Blog",
+    "description": "News, guides and ideas from the Formalie team.",
+    "empty": "The first articles are on their way.",
+    "emptyText": "In the meantime, see everything Formalie does today."
+  },
+  "changelogPage": {
+    "title": "Changelog",
+    "description": "What is new in Formalie, newest first.",
+    "empty": "The first release notes are on their way."
   }
 }

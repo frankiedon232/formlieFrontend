@@ -1414,5 +1414,16 @@
     },
     "formTitle": "Ceritakan tentang organisasi Anda",
     "formDescription": "Ceritakan sedikit tentang kebutuhan Anda. Kami membalas dalam satu hari kerja dengan langkah berikutnya."
+  },
+  "blogPage": {
+    "title": "Blog",
+    "description": "Berita, panduan, dan ide dari tim Formalie.",
+    "empty": "Artikel pertama sedang disiapkan.",
+    "emptyText": "Sementara itu, lihat semua yang bisa dilakukan Formalie hari ini."
+  },
+  "changelogPage": {
+    "title": "Catatan perubahan",
+    "description": "Yang baru di Formalie, mulai dari yang terbaru.",
+    "empty": "Catatan rilis pertama sedang disiapkan."
   }
 }

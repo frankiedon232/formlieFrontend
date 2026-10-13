@@ -1414,5 +1414,16 @@
     },
     "formTitle": "組織について教えてください",
     "formDescription": "ご要望を簡単にお聞かせください。1 営業日以内に、次のステップをご連絡します。"
+  },
+  "blogPage": {
+    "title": "ブログ",
+    "description": "Formalie チームからのニュース、ガイド、アイデア。",
+    "empty": "最初の記事を準備中です。",
+    "emptyText": "それまでの間、Formalie で今できることをご覧ください。"
+  },
+  "changelogPage": {
+    "title": "変更履歴",
+    "description": "Formalie の新機能と変更点を新しい順に掲載します。",
+    "empty": "最初のリリースノートを準備中です。"
   }
 }

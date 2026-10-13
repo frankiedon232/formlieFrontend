@@ -1414,5 +1414,16 @@
     },
     "formTitle": "Conte sobre sua organização",
     "formDescription": "Conte um pouco sobre o que você precisa. Respondemos em até um dia útil com os próximos passos."
+  },
+  "blogPage": {
+    "title": "Blog",
+    "description": "Notícias, guias e ideias da equipe Formalie.",
+    "empty": "Os primeiros artigos estão a caminho.",
+    "emptyText": "Enquanto isso, veja tudo o que a Formalie já faz hoje."
+  },
+  "changelogPage": {
+    "title": "Novidades do produto",
+    "description": "O que há de novo na Formalie, do mais recente ao mais antigo.",
+    "empty": "As primeiras notas de versão estão a caminho."
   }
 }

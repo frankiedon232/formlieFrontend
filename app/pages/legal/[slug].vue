@@ -35,7 +35,6 @@ const minutes = computed(() => readingMinutes(document.value))
 const sections = computed(() =>
   document.value.sections.map(section => ({ ...section, ...splitHeading(section.heading) })),
 )
-const toc = computed(() => sections.value.map(section => ({ id: section.id, text: section.title, depth: 2 })))
 
 // Reading progress through the article (the bar in "On this page").
 const article = useTemplateRef<HTMLElement>('article')
@@ -58,7 +57,6 @@ async function copyLink(id?: string) {
   toast.add({ title: t('legalPage.copied'), icon: 'i-lucide-link', color: 'neutral' })
 }
 const print = () => window.print()
-const toTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 
 const index = LEGAL_SLUGS.indexOf(slug)
 const neighbours = computed(() =>
@@ -221,7 +219,7 @@ usePageSeo({
     </nav>
 
     <div
-      class="mt-8 grid gap-10 lg:grid-cols-[15rem_minmax(0,1fr)_14rem] xl:grid-cols-[16rem_minmax(0,1fr)_16rem]"
+      class="mt-8 grid gap-10 lg:grid-cols-[15rem_minmax(0,1fr)_13rem] xl:grid-cols-[16rem_minmax(0,1fr)_15rem]"
     >
       <aside class="hidden lg:block print:hidden">
         <div class="sticky top-24">
@@ -295,10 +293,10 @@ usePageSeo({
                 />
               </span>
             </h2>
-            <MDC
-              :value="section.body_markdown"
-              tag="div"
-              class="mt-5 text-[15px]/7 text-toned sm:ps-13 [&_a]:font-medium [&_a]:text-highlighted [&_strong]:text-highlighted"
+            <LazyLegalBody
+              :key="`${section.id}-${document.version}-${section.body_markdown.length}`"
+              :markdown="section.body_markdown"
+              hydrate-never
             />
           </section>
         </article>
@@ -331,45 +329,10 @@ usePageSeo({
         </div>
       </div>
 
-      <!-- On this page, with reading progress -->
+      <!-- On this page: compact, numbered, with reading progress -->
       <aside class="hidden lg:block print:hidden">
-        <div
-          class="sticky top-24 rounded-2xl bg-default/80 p-4 shadow-lg shadow-black/5 ring-1 ring-default backdrop-blur"
-        >
-          <div class="flex items-center justify-between gap-2">
-            <p class="text-sm font-semibold text-highlighted">{{ t('legalPage.onThisPage') }}</p>
-            <span class="text-xs text-muted tabular-nums">{{ progress }}%</span>
-          </div>
-          <div
-            class="mt-3 h-1 overflow-hidden rounded-full bg-elevated"
-            role="progressbar"
-            :aria-label="t('legalPage.progress')"
-            :aria-valuenow="progress"
-            aria-valuemin="0"
-            aria-valuemax="100"
-          >
-            <div
-              class="h-full rounded-full bg-inverted transition-[width] duration-200"
-              :style="{ width: `${progress}%` }"
-            />
-          </div>
-          <UContentToc
-            :links="toc"
-            :title="t('legalPage.onThisPage')"
-            highlight
-            color="neutral"
-            class="mt-2 max-h-[60vh] overflow-y-auto [&_[data-slot=trigger]]:hidden"
-            :ui="{ root: 'static', container: 'pt-1 pb-0 border-0', trigger: 'hidden', link: 'text-[13px]' }"
-          />
-          <UButton
-            :label="t('legalPage.backToTop')"
-            icon="i-lucide-arrow-up"
-            color="neutral"
-            variant="ghost"
-            size="sm"
-            class="mt-3 w-full justify-center"
-            @click="toTop"
-          />
+        <div class="sticky top-24">
+          <LegalToc :sections="sections" :progress="progress" />
         </div>
       </aside>
     </div>

@@ -1,6 +1,6 @@
 # PROGRESS, formalieSite
 
-**Last updated:** 2026-10-13 (S6 done, waiting for the owner's review; legal pages redesigned)
+**Last updated:** 2026-10-13 (S7 done, waiting for the owner's review)
 
 | Phase | What | Status | Done |
 |---|---|---|---|
@@ -10,8 +10,8 @@
 | S3 | Features and solutions pages | ✅ | 100% |
 | S4 | Pricing | ✅ | 100% |
 | S5 | Legal pages (documentation layout) and /trust | ✅ | 100% |
-| S6 | Formalie forms, portal links, contact and enterprise | ✅ (review) | 85% |
-| S7 | SEO, performance, accessibility, launch checks | ⬜ | 30% |
+| S6 | Formalie forms, portal links, contact and enterprise | ✅ | 85% |
+| S7 | SEO, performance, accessibility, launch checks | ✅ (review) | 85% |
 
 **Every phase is only done when:**
 - phone, tablet and desktop are checked;
@@ -84,12 +84,12 @@
 - ⬜ Check the two embeds in a normal browser (the preview browser blocks `*.formalie.dev`)
 
 ## S7, Launch checks
-- ⬜ SEO (`docs/SEO.md`): ✅ titles, descriptions, OG and Twitter, canonical, hreflang, breadcrumbs, structured data, sitemap, robots (S3); ⬜ OG images per page, Search Console
-- ⬜ Lighthouse 95+ on mobile, no layout shift, images sized
-- ⬜ Accessibility: keyboard, focus, headings, contrast, reduced motion
-- ⬜ Security headers and CSP (`docs/SECURITY.md`; `connect-src https://services.formalie.com`); ✅ `security.txt` (S0)
-- ⬜ Production build (`nuxt generate`) and deployment notes
-- ⬜ Prerender `failOnError: true` again in `nuxt.config.ts` (off since S2 while later pages don't exist), and no broken links
+- ✅ SEO (`docs/SEO.md`): titles, descriptions, OG and Twitter, canonical, hreflang, breadcrumbs, structured data, sitemap, robots; Lighthouse SEO 100 on every page checked. ⬜ OG images per page (one shared image today), Search Console after launch
+- ⏸ Lighthouse 95+ on mobile: accessibility, best practices and SEO 100; no layout shift (CLS 0 to 0.012); images sized. Performance 65 to 80 in the lab after S7's work (entry-only preload, lazy hydration, legal text not re-parsed, Nuxt UI component detection); the rest is framework JavaScript. To measure on Cloudflare and decide on a deeper pass
+- ✅ Accessibility: Lighthouse 100 on the pages checked (one contrast fix on /trust), keyboard and skip link, one h1 per page, reduced motion respected by every animation
+- ✅ Security headers and CSP (`deploy/headers.ts`, Cloudflare `_headers`, tested), `_redirects`; `security.txt` (S0)
+- ✅ Production build (`nuxt generate`) and deployment notes (PRODUCTION-CHECKLIST section 7, in all five projects)
+- ✅ Prerender `failOnError: true` again; no broken links (Blog and Changelog pages built, empty and noindex until the first entry)
 
 ---
 
@@ -109,6 +109,7 @@
 | 2026-10-13 | SEO built into every page as it is made: "this is the real central page, so it must be loaded with SEO" | S3 to S7 | ✅ (ongoing) |
 | 2026-10-13 | Tighter spacing site-wide (hero closer to the header, less space between sections), nicer cards, and a richer "Built for teams in every sector" with movement | S2 to S4 | ✅ |
 | 2026-10-13 | Legal pages slicker and more premium | S5 | ✅ |
+| 2026-10-13 | Compact "On this page" on the legal pages | S5 | ✅ |
 | 2026-10-13 | Copy formlyBackend `docs/PRODUCTION-CHECKLIST.md` over this project's copy | Docs | ✅ (already identical; DEPLOYMENT-GUIDE synced too) |
 
 ## Progress log
@@ -127,3 +128,4 @@
 | 2026-10-13 | S5 | Seven legal pages in the documentation layout from the live API (Draft badge, English notice, offline fallback from formlyBackend's drafts), search, print, copy links; `/trust`; redirects; legal and trust copy in 20 languages; plans and legal now refresh after hydration (`onNuxtReady`) and the dev server trusts the local certificate (`--use-system-ca`). Sitemap 640 addresses. 59 tests |
 | 2026-10-13 | S5 | Legal pages redesigned (owner): hero band with status, dates, reading time and section count, navigator card with an ink pill and a questions card, numbered sections with ink tiles, one slim status strip, On this page with reading progress and back to top, document chips on phones, previous and next cards |
 | 2026-10-13 | S6 | `/enterprise` (hero visual, eight commitments, embedded enquiry with prefill), `/contact` (sales, support, help centre, embedded support form), `SiteFormEmbed`; copy in 20 languages; both pages in the sitemap. 60 tests |
+| 2026-10-13 | S7 | Security headers and CSP (`deploy/headers.ts`, `_headers`, `_redirects`), strict prerender (no broken links), Blog and Changelog pages, compact numbered legal TOC with progress, performance pass (entry-only preload, lazy hydration, legal text not re-parsed, component detection), Lighthouse: accessibility, best practices, SEO 100; performance 65 to 80 (lab). PRODUCTION-CHECKLIST section 7 rewritten in all five projects. 63 tests |

@@ -1414,5 +1414,16 @@
     },
     "formTitle": "Bize kuruluşunuzdan bahsedin",
     "formDescription": "İhtiyaçlarınızı kısaca anlatın. Bir iş günü içinde sonraki adımlarla yanıt veriyoruz."
+  },
+  "blogPage": {
+    "title": "Blog",
+    "description": "Formalie ekibinden haberler, rehberler ve fikirler.",
+    "empty": "İlk yazılar yolda.",
+    "emptyText": "Bu arada Formalie'nin bugün neler yaptığına göz atın."
+  },
+  "changelogPage": {
+    "title": "Değişiklik günlüğü",
+    "description": "Formalie'deki yenilikler, en yenisi en üstte.",
+    "empty": "İlk sürüm notları yolda."
   }
 }

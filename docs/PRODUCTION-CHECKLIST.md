@@ -164,10 +164,16 @@ The production return addresses (backend README, "The addresses to register"). T
 ## 7. Website (formalieSite)
 
 - ⬜ Production address `https://formalie.com` (the site's CLAUDE.md lists development as `https://formalie.dev:3033`).
-- ⬜ Built as static files (`nuxt generate`) and deployed to Cloudflare; anything it calls points at `https://services.formalie.com`; no `:3033` or `formalie.dev` left in the build.
-- ⬜ Legal pages content from the platform admin; the links used by the portal and emails resolve.
-- ⬜ Sign-up links go to `https://manage.formalie.com/auth/signup`.
-- ⬜ SEO settings (sitemap, robots, canonical addresses on `.com`).
+- ⬜ **Build environment** (formalieSite, set before `NODE_ENV=production pnpm generate`; S7, 2026-10-13): `NUXT_PUBLIC_SITE_URL=https://formalie.com` (canonical addresses, hreflang, sitemap, Open Graph), `NUXT_PUBLIC_PORTAL_URL=https://manage.formalie.com`, `NUXT_PUBLIC_FORMS_URL=https://forms.formalie.com`, `NUXT_PUBLIC_API_URL=https://services.formalie.com/api/v1` (never `api.formalie.com`). The build writes them into the pages and into `_headers` (the CSP allows only that API and that forms host).
+- ⬜ Built as static files (`nuxt generate`, output `.output/public`) and deployed to Cloudflare; anything it calls points at `https://services.formalie.com`; no `:3033`, `:5004`, `:2202` or `formalie.dev` left in the build (search `.output/public`, `_headers` included).
+- ⬜ Cloudflare serves the build's `_headers` (HSTS, CSP with `frame-ancestors 'none'`, `X-Frame-Options: DENY`, `nosniff`, Referrer and Permissions policies, long caching for `/_nuxt/*` and `/_fonts/*`) and `_redirects` (`/terms`, `/privacy`, `/refunds`, `/legal` answered with 301). Brotli or gzip on.
+- ⬜ The backend answers `/public/plans`, `/public/legal`, `/public/legal/{slug}` and `/public/platform` on `services.formalie.com` with `Access-Control-Allow-Origin: *` (the website refreshes prices and legal text in the browser).
+- ⬜ Formalie's own forms `FormalieEn` and `FormalieHp` published, and allowed to be embedded on `https://formalie.com` (if their "allowed websites" list is set, add it).
+- ⬜ Legal pages content from the platform admin (each published version replaces the Draft note); `pnpm legal:sync` run once more so the site's offline copy matches; the links used by the portal and emails (`/legal/terms`, `/legal/privacy`, `/terms`, `/privacy`, `/refunds`) resolve.
+- ⬜ `public/.well-known/security.txt` (a copy of formlyBackend `docs/legal/security.txt`) renewed before its `Expires` date (2027-10-13); the mailboxes it and the trust page name exist (security@, privacy@, abuse@, support@, sales@).
+- ⬜ Sign-up links go to `https://manage.formalie.com/auth/signup` (with `plan` and `period` once the portal reads them, F24); Sign in to `/auth/find-workspace`.
+- ⬜ SEO settings (sitemap, robots, canonical addresses on `.com`): submit `https://formalie.com/sitemap.xml` to Google Search Console and Bing Webmaster Tools, and check a few pages with the Rich Results Test.
+- ⬜ Run Lighthouse (mobile) on the live site: home, pricing, a feature page, a legal page; note the scores in formalieSite PROGRESS.md.
 
 ## 8. Platform admin (formaliePlatformFront / formaliePlatformBack)
 

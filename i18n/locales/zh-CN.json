@@ -1409,5 +1409,16 @@
     },
     "formTitle": "介绍一下你的组织",
     "formDescription": "简单说说你的需求。我们会在一个工作日内回复，并告知后续步骤。"
+  },
+  "blogPage": {
+    "title": "博客",
+    "description": "来自 Formalie 团队的新闻、指南和想法。",
+    "empty": "首批文章即将发布。",
+    "emptyText": "在此之前，不妨看看 Formalie 现在能做的一切。"
+  },
+  "changelogPage": {
+    "title": "更新日志",
+    "description": "Formalie 的最新变化，按时间从新到旧排列。",
+    "empty": "首批版本说明即将发布。"
   }
 }

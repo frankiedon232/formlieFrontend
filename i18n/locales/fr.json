@@ -1419,5 +1419,16 @@
     },
     "formTitle": "Parlez-nous de votre organisation",
     "formDescription": "Dites-nous en quelques mots ce dont vous avez besoin. Nous répondons sous un jour ouvré avec les prochaines étapes."
+  },
+  "blogPage": {
+    "title": "Blog",
+    "description": "Actualités, guides et idées de l'équipe Formalie.",
+    "empty": "Les premiers articles arrivent bientôt.",
+    "emptyText": "En attendant, découvrez tout ce que Formalie fait aujourd'hui."
+  },
+  "changelogPage": {
+    "title": "Journal des modifications",
+    "description": "Les nouveautés de Formalie, des plus récentes aux plus anciennes.",
+    "empty": "Les premières notes de version arrivent bientôt."
   }
 }

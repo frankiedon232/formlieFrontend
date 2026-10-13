@@ -1414,5 +1414,16 @@
     },
     "formTitle": "Tueleze kuhusu shirika lako",
     "formDescription": "Tueleze kidogo kuhusu mahitaji yako. Tunajibu ndani ya siku moja ya kazi pamoja na hatua zinazofuata."
+  },
+  "blogPage": {
+    "title": "Blogu",
+    "description": "Habari, miongozo na mawazo kutoka kwa timu ya Formalie.",
+    "empty": "Makala za kwanza ziko njiani.",
+    "emptyText": "Wakati huo huo, tazama yote ambayo Formalie inafanya leo."
+  },
+  "changelogPage": {
+    "title": "Orodha ya mabadiliko",
+    "description": "Mambo mapya katika Formalie, ya karibuni kwanza.",
+    "empty": "Maelezo ya kwanza ya matoleo yako njiani."
   }
 }

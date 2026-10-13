@@ -1419,5 +1419,16 @@
     },
     "formTitle": "Vertel ons over je organisatie",
     "formDescription": "Vertel kort wat je nodig hebt. We antwoorden binnen één werkdag met de volgende stappen."
+  },
+  "blogPage": {
+    "title": "Blog",
+    "description": "Nieuws, handleidingen en ideeën van het Formalie-team.",
+    "empty": "De eerste artikelen komen eraan.",
+    "emptyText": "Bekijk in de tussentijd alles wat Formalie vandaag al doet."
+  },
+  "changelogPage": {
+    "title": "Wijzigingslogboek",
+    "description": "Wat er nieuw is in Formalie, het nieuwste eerst.",
+    "empty": "De eerste releasenotes komen eraan."
   }
 }

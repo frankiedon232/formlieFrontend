@@ -143,7 +143,7 @@ usePageSeo({
       </div>
     </UPageSection>
 
-    <FeaturesRelated :slugs="page.features" />
-    <SiteCta />
+    <LazyFeaturesRelated :slugs="page.features" hydrate-on-visible />
+    <LazySiteCta hydrate-on-visible />
   </div>
 </template>

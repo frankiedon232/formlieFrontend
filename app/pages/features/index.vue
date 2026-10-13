@@ -105,6 +105,6 @@ usePageSeo({
       <FeaturesVisualLanguages v-else-if="page.visual === 'languages'" />
     </UPageSection>
 
-    <SiteCta />
+    <LazySiteCta hydrate-on-visible />
   </div>
 </template>

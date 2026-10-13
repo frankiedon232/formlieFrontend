@@ -1,7 +1,16 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { writeFile } from 'node:fs/promises'
+import { join } from 'node:path'
 import { DEFAULT_LOCALE, LOCALE_COOKIE, SITE_LOCALES } from './app/utils/locales'
+import { headersFile, REDIRECTS, redirectsFile, securityHeaders } from './deploy/headers'
 
 const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'https://formalie.dev:3033'
+// The origins the CSP allows (docs/SECURITY.md): set NUXT_PUBLIC_API_URL and NUXT_PUBLIC_FORMS_URL before a
+// production build (docs/PRODUCTION-CHECKLIST.md, section 7), so `_headers` names the production hosts.
+const origins = {
+  api: process.env.NUXT_PUBLIC_API_URL || 'https://formalie.dev:5004/api/v1',
+  forms: process.env.NUXT_PUBLIC_FORMS_URL || 'https://forms.formalie.dev:2202',
+}
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
@@ -16,6 +25,11 @@ export default defineNuxtConfig({
   modules: ['@nuxt/ui', '@nuxt/eslint', '@nuxt/content', '@nuxt/image', '@nuxtjs/i18n', '@vueuse/nuxt'],
 
   css: ['~/assets/css/main.css'],
+
+  ui: {
+    // Styles only for the Nuxt UI components the site uses (a smaller stylesheet, a faster first paint; S7).
+    experimental: { componentDetection: true },
+  },
 
   // Formalie's brand icons and manifest (docs/brand/web, copied to public/ as they are).
   app: {
@@ -35,10 +49,10 @@ export default defineNuxtConfig({
       // Development values; production sets NUXT_PUBLIC_* (docs/PRODUCTION-CHECKLIST.md, section 7).
       siteUrl,
       portalUrl: 'https://manage.formalie.dev:2202',
-      formsUrl: 'https://forms.formalie.dev:2202',
+      formsUrl: origins.forms,
       // Formalie's backend API (/public/plans, /public/legal, /public/platform). Production:
       // https://services.formalie.com/api/v1, never api.formalie.com (customers' own API service).
-      apiUrl: 'https://formalie.dev:5004/api/v1',
+      apiUrl: origins.api,
     },
   },
 
@@ -82,12 +96,30 @@ export default defineNuxtConfig({
     },
   },
 
-  // Short addresses used in emails and older links (owner, 2026-10-13); prerendered as redirect pages.
   routeRules: {
-    '/terms': { redirect: '/legal/terms' },
-    '/privacy': { redirect: '/legal/privacy' },
-    '/refunds': { redirect: '/legal/refunds' },
-    '/legal': { redirect: '/legal/privacy' },
+    // The same security headers as production, without the CSP (Vite's dev server needs eval and websockets).
+    '/**': { headers: securityHeaders(origins, false) },
+    // Short addresses used in emails and older links (owner, 2026-10-13): prerendered redirect pages, and 301s from
+    // Cloudflare's `_redirects` in production.
+    ...Object.fromEntries(REDIRECTS.map(([from, to]) => [from, { redirect: to }])),
+  },
+
+  hooks: {
+    // Only the entry script is preloaded: dozens of preloaded chunks competed with the stylesheet for the first paint
+    // on slow phones (Lighthouse, S7). Other chunks load when a page or section needs them.
+    'build:manifest': manifest => {
+      for (const chunk of Object.values(manifest)) {
+        if (!chunk.isEntry) {
+          chunk.preload = false
+          chunk.prefetch = false
+        }
+      }
+    },
+    // The static build's headers and redirects for Cloudflare (deploy/headers.ts).
+    'nitro:build:public-assets': async nitro => {
+      await writeFile(join(nitro.options.output.publicDir, '_headers'), headersFile(origins))
+      await writeFile(join(nitro.options.output.publicDir, '_redirects'), redirectsFile())
+    },
   },
 
   nitro: {
@@ -101,9 +133,8 @@ export default defineNuxtConfig({
         '/refunds',
         '/robots.txt',
       ],
-      // Pages from later phases (features, pricing, legal …) don't exist yet, so links to them would stop the
-      // build. Set back to true in S7, once every page is built (PROGRESS.md).
-      failOnError: false,
+      // A broken link or a page that fails stops the build (every page exists since S7).
+      failOnError: true,
     },
   },
 

@@ -128,8 +128,8 @@ usePageSeo({
       </UPageGrid>
     </UPageSection>
 
-    <FeaturesSteps :steps="steps" />
-    <FeaturesRelated :slugs="page.related" />
-    <SiteCta />
+    <LazyFeaturesSteps :steps="steps" hydrate-on-visible />
+    <LazyFeaturesRelated :slugs="page.related" hydrate-on-visible />
+    <LazySiteCta hydrate-on-visible />
   </div>
 </template>
