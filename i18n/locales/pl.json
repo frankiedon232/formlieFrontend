@@ -877,7 +877,12 @@
       "oauthUnavailable": "Rejestracja przez {provider} nie jest jeszcze podłączona. Na razie użyj adresu e-mail.",
       "existingTitle": "Ten adres ma już przestrzeń roboczą: | Ten adres ma już przestrzenie robocze ({n}):",
       "existingOpen": "Otwórz",
-      "existingOr": "Albo utwórz poniżej kolejną przestrzeń roboczą."
+      "existingOr": "Albo utwórz poniżej kolejną przestrzeń roboczą.",
+      "planChosen": "Wybrano {plan} ({period})",
+      "planNext": "Najpierw utwórz obszar roboczy, a potem zapłać w bezpiecznym oknie Paddle. Do tego czasu działa w planie Starter.",
+      "agree": "Tworząc obszar roboczy, akceptujesz {terms} i {privacy} Formalie.",
+      "terms": "Warunki korzystania",
+      "privacy": "Politykę prywatności"
     },
     "find": {
       "title": "Znajdź swój obszar roboczy",
@@ -9552,7 +9557,13 @@
     "limitMember": "Zapytaj administratora przestrzeni roboczej o wyższy plan.",
     "seePlans": "Zobacz plany",
     "locked": "Od planu {plan}",
-    "lockedHint": "Twój plan tego nie zawiera. Przejdź na wyższy plan, aby z tego korzystać."
+    "lockedHint": "Twój plan tego nie zawiera. Przejdź na wyższy plan, aby z tego korzystać.",
+    "pending": {
+      "title": "Dokończ przejście na {plan}",
+      "desc": "Wybrano go przy rejestracji ({period}). Do czasu zapłaty obszar roboczy zostaje w planie Starter.",
+      "finish": "Przejdź do płatności",
+      "later": "Nie teraz"
+    }
   },
   "appBrowser": {
     "sent": "{name}: wysłano",

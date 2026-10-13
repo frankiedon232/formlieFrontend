@@ -5,6 +5,7 @@
   so the form stays.
 -->
 <script setup lang="ts">
+import { legalUrl } from '#shared/utils/urls/public'
 defineProps<{
   org: { name: string }
   year: number
@@ -12,12 +13,12 @@ defineProps<{
   slim?: boolean
 }>()
 const { t } = useI18n()
-// Platform settings (super admin) when the public page loaded them; the app's config otherwise.
-const config = useRuntimeConfig().public.legal
+// Platform settings (super admin) when the public page loaded them; the website's legal pages otherwise.
+const { siteUrl } = useRuntimeConfig().public
 const fromPlatform = useState<{ terms_url: string; privacy_url: string } | null>('public:legal', () => null)
 const legal = computed(() => ({
-  termsUrl: fromPlatform.value?.terms_url || config.termsUrl,
-  privacyUrl: fromPlatform.value?.privacy_url || config.privacyUrl,
+  termsUrl: fromPlatform.value?.terms_url || legalUrl(siteUrl, 'terms'),
+  privacyUrl: fromPlatform.value?.privacy_url || legalUrl(siteUrl, 'privacy'),
 }))
 // The organisation's own privacy notice (Settings → Privacy and data), beside Formalie's pages.
 const privacy = useState<{ notice_url: string | null; org: string } | null>('public:privacy', () => null)

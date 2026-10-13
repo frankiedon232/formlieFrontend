@@ -877,7 +877,12 @@
       "oauthUnavailable": "Đăng ký bằng {provider} chưa được kết nối. Tạm thời hãy dùng địa chỉ email.",
       "existingTitle": "Email này đã có một không gian làm việc: | Email này đã có {n} không gian làm việc:",
       "existingOpen": "Mở",
-      "existingOr": "Hoặc tạo thêm một không gian làm việc bên dưới."
+      "existingOr": "Hoặc tạo thêm một không gian làm việc bên dưới.",
+      "planChosen": "Bạn đã chọn {plan} ({period})",
+      "planNext": "Hãy tạo không gian làm việc trước, rồi thanh toán trong cửa sổ bảo mật của Paddle. Trước đó, nó bắt đầu với gói Starter.",
+      "agree": "Khi tạo không gian làm việc, bạn đồng ý với {terms} và {privacy} của Formalie.",
+      "terms": "Điều khoản dịch vụ",
+      "privacy": "Chính sách quyền riêng tư"
     },
     "find": {
       "title": "Tìm không gian làm việc",
@@ -9552,7 +9557,13 @@
     "limitMember": "Hãy hỏi quản trị viên không gian làm việc về gói cao hơn.",
     "seePlans": "Xem các gói",
     "locked": "Từ {plan} trở lên",
-    "lockedHint": "Gói của bạn không bao gồm tính năng này. Hãy nâng cấp để dùng."
+    "lockedHint": "Gói của bạn không bao gồm tính năng này. Hãy nâng cấp để dùng.",
+    "pending": {
+      "title": "Hoàn tất chuyển sang {plan}",
+      "desc": "Bạn đã chọn gói này khi đăng ký ({period}). Không gian làm việc vẫn ở gói Starter cho đến khi thanh toán.",
+      "finish": "Tiếp tục thanh toán",
+      "later": "Để sau"
+    }
   },
   "appBrowser": {
     "sent": "{name}: đã gửi",

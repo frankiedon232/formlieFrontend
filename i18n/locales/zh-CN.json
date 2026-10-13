@@ -877,7 +877,12 @@
       "oauthUnavailable": "使用 {provider} 注册尚未接通，请暂时使用电子邮箱地址。",
       "existingTitle": "此邮箱已有一个工作区： | 此邮箱已有 {n} 个工作区：",
       "existingOpen": "打开",
-      "existingOr": "或在下方创建另一个工作区。"
+      "existingOr": "或在下方创建另一个工作区。",
+      "planChosen": "你选择了 {plan}（{period}）",
+      "planNext": "请先创建工作区，然后在 Paddle 的安全窗口中付款。在此之前，它会以 Starter 套餐开始。",
+      "agree": "创建工作区即表示你同意 Formalie 的{terms}和{privacy}。",
+      "terms": "服务条款",
+      "privacy": "隐私政策"
     },
     "find": {
       "title": "找到您的工作区",
@@ -9552,7 +9557,13 @@
     "limitMember": "请向工作区管理员咨询更高的套餐。",
     "seePlans": "查看套餐",
     "locked": "{plan} 及以上",
-    "lockedHint": "您的套餐不包含此功能。升级后即可使用。"
+    "lockedHint": "您的套餐不包含此功能。升级后即可使用。",
+    "pending": {
+      "title": "完成升级到 {plan}",
+      "desc": "这是你注册时选择的套餐（{period}）。付款前，你的工作区仍使用 Starter。",
+      "finish": "继续付款",
+      "later": "暂不"
+    }
   },
   "appBrowser": {
     "sent": "{name}：已发送",

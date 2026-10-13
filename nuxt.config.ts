@@ -68,8 +68,9 @@ export default defineNuxtConfig({
       // Public links (docs/01-ARCHITECTURE.md → Public URLs). Production: forms.formalie.com / https://api.formalie.com
       formsHost: 'forms.formalie.dev',
       apiServiceUrl: 'https://api.formalie.dev',
-      // Formalie's legal pages, linked in the footer of every public form (owner, 2026-10-03).
-      legal: { termsUrl: 'https://formalie.com/terms', privacyUrl: 'https://formalie.com/privacy' },
+      // The website (formalieSite): its legal pages /legal/{slug} (public forms, sign-up) and the Enterprise enquiry.
+      // Production: NUXT_PUBLIC_SITE_URL=https://formalie.com (shared/utils/urls/public.ts → legalUrl).
+      siteUrl: 'https://formalie.dev:3033',
     },
   },
 

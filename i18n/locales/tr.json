@@ -877,7 +877,12 @@
       "oauthUnavailable": "{provider} ile kayıt henüz bağlı değil. Şimdilik e-posta adresinizi kullanın.",
       "existingTitle": "Bu e-postanın zaten bir çalışma alanı var: | Bu e-postanın zaten {n} çalışma alanı var:",
       "existingOpen": "Aç",
-      "existingOr": "Ya da aşağıda başka bir çalışma alanı oluşturun."
+      "existingOr": "Ya da aşağıda başka bir çalışma alanı oluşturun.",
+      "planChosen": "Seçtiğiniz plan: {plan} ({period})",
+      "planNext": "Önce çalışma alanınızı oluşturun, sonra Paddle'ın güvenli penceresinde ödeyin. O zamana kadar Starter ile başlar.",
+      "agree": "Çalışma alanı oluşturarak Formalie'nin {terms} ve {privacy} metnini kabul etmiş olursunuz.",
+      "terms": "Hizmet şartlarını",
+      "privacy": "Gizlilik politikası"
     },
     "find": {
       "title": "Çalışma alanınızı bulun",
@@ -9552,7 +9557,13 @@
     "limitMember": "Daha yüksek bir plan için çalışma alanı yöneticisine sorun.",
     "seePlans": "Planları gör",
     "locked": "{plan} ve üzeri",
-    "lockedHint": "Planınız bunu içermiyor. Kullanmak için yükseltin."
+    "lockedHint": "Planınız bunu içermiyor. Kullanmak için yükseltin.",
+    "pending": {
+      "title": "{plan} planına geçişi tamamlayın",
+      "desc": "Kaydolurken seçtiniz ({period}). Ödenene kadar çalışma alanınız Starter'da kalır.",
+      "finish": "Ödemeye devam et",
+      "later": "Şimdi değil"
+    }
   },
   "appBrowser": {
     "sent": "{name}: gönderildi",

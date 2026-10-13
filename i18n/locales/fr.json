@@ -877,7 +877,12 @@
       "oauthUnavailable": "L’inscription avec {provider} n’est pas encore connectée. Utilisez votre adresse e-mail pour le moment.",
       "existingTitle": "Cette adresse a déjà un espace de travail : | Cette adresse a déjà {n} espaces de travail :",
       "existingOpen": "Ouvrir",
-      "existingOr": "Ou créez un autre espace de travail ci-dessous."
+      "existingOr": "Ou créez un autre espace de travail ci-dessous.",
+      "planChosen": "Vous avez choisi {plan} ({period})",
+      "planNext": "Créez d'abord votre espace de travail, puis payez dans la fenêtre sécurisée de Paddle. D'ici là, il démarre sur Starter.",
+      "agree": "En créant un espace de travail, vous acceptez les {terms} et la {privacy} de Formalie.",
+      "terms": "Conditions d'utilisation",
+      "privacy": "Politique de confidentialité"
     },
     "find": {
       "title": "Retrouvez votre espace",
@@ -9552,7 +9557,13 @@
     "limitMember": "Demandez à un administrateur de l’espace de travail au sujet d’une offre supérieure.",
     "seePlans": "Voir les offres",
     "locked": "Dès {plan}",
-    "lockedHint": "Votre offre n’inclut pas cette fonction. Passez à une offre supérieure pour l’utiliser."
+    "lockedHint": "Votre offre n’inclut pas cette fonction. Passez à une offre supérieure pour l’utiliser.",
+    "pending": {
+      "title": "Terminer le passage à {plan}",
+      "desc": "Vous l'avez choisi à l'inscription ({period}). Votre espace reste sur Starter jusqu'au paiement.",
+      "finish": "Continuer vers le paiement",
+      "later": "Plus tard"
+    }
   },
   "appBrowser": {
     "sent": "{name} : envoyé",

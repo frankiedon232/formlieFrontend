@@ -119,7 +119,7 @@ Also on the backend side:
 | `NUXT_PUBLIC_ROOT_DOMAIN` | `formalie.dev` | ⬜ `formalie.com` |
 | `NUXT_PUBLIC_FORMS_HOST` | `forms.formalie.dev` | ⬜ `forms.formalie.com` |
 | `NUXT_PUBLIC_API_SERVICE_URL` | `https://api.formalie.dev` | ⬜ `https://api.formalie.com` |
-| `NUXT_PUBLIC_LEGAL_*` | formalie.com pages | ⬜ check they exist |
+| `NUXT_PUBLIC_SITE_URL` (the website: legal pages `/legal/{slug}` on public forms and sign-up, the Enterprise enquiry) | `https://formalie.dev:3033` | ⬜ `https://formalie.com` |
 | `NUXT_PAYONEER_WEBHOOK_SECRET` | empty | ⏸ Payoneer's webhook secret |
 | `NODE_EXTRA_CA_CERTS`, `DEV_HTTPS_*` | mkcert | ⬜ not used |
 | Dev port `:2202` | in every development address | ⬜ gone (443 on Cloudflare) |

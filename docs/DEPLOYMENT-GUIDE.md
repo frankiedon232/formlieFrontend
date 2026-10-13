@@ -286,6 +286,7 @@ All three are built on your own machine (or a CI job), never on a server. Each p
    NUXT_PUBLIC_ROOT_DOMAIN=formalie.com
    NUXT_PUBLIC_FORMS_HOST=forms.formalie.com
    NUXT_PUBLIC_API_SERVICE_URL=https://api.formalie.com
+   NUXT_PUBLIC_SITE_URL=https://formalie.com
    ```
    `NUXT_PUBLIC_API_BASE` stays `/api/v1`: the browser calls its own host and the Worker forwards it to `https://services.formalie.com`.
 3. ⬜ Build, check and deploy, in this order:

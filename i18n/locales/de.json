@@ -877,7 +877,12 @@
       "oauthUnavailable": "Die Registrierung mit {provider} ist noch nicht verbunden. Nutzen Sie vorerst Ihre E-Mail-Adresse.",
       "existingTitle": "Diese E-Mail hat bereits einen Workspace: | Diese E-Mail hat bereits {n} Workspaces:",
       "existingOpen": "Öffnen",
-      "existingOr": "Oder legen Sie unten einen weiteren Workspace an."
+      "existingOr": "Oder legen Sie unten einen weiteren Workspace an.",
+      "planChosen": "Ihre Wahl: {plan} ({period})",
+      "planNext": "Erstellen Sie zuerst Ihren Workspace und bezahlen Sie dann im sicheren Fenster von Paddle. Bis dahin startet er mit Starter.",
+      "agree": "Mit dem Erstellen eines Workspace stimmen Sie den {terms} und der {privacy} von Formalie zu.",
+      "terms": "Nutzungsbedingungen",
+      "privacy": "Datenschutzerklärung"
     },
     "find": {
       "title": "Arbeitsbereich finden",
@@ -9552,7 +9557,13 @@
     "limitMember": "Fragen Sie eine Administratorin oder einen Administrator des Arbeitsbereichs nach einem höheren Tarif.",
     "seePlans": "Tarife ansehen",
     "locked": "Ab {plan}",
-    "lockedHint": "Ihr Tarif enthält das nicht. Wechseln Sie zu einem höheren Tarif, um es zu nutzen."
+    "lockedHint": "Ihr Tarif enthält das nicht. Wechseln Sie zu einem höheren Tarif, um es zu nutzen.",
+    "pending": {
+      "title": "Wechsel zu {plan} abschließen",
+      "desc": "Sie haben ihn bei der Registrierung gewählt ({period}). Ihr Workspace bleibt bei Starter, bis bezahlt ist.",
+      "finish": "Weiter zur Zahlung",
+      "later": "Nicht jetzt"
+    }
   },
   "appBrowser": {
     "sent": "{name}: gesendet",

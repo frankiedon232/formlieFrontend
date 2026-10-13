@@ -877,7 +877,12 @@
       "oauthUnavailable": "Usajili kwa {provider} bado haujaunganishwa. Kwa sasa tumia anwani yako ya barua pepe.",
       "existingTitle": "Barua pepe hii tayari ina eneo la kazi: | Barua pepe hii tayari ina maeneo ya kazi {n}:",
       "existingOpen": "Fungua",
-      "existingOr": "Au unda eneo jingine la kazi hapa chini."
+      "existingOr": "Au unda eneo jingine la kazi hapa chini.",
+      "planChosen": "Umechagua {plan} ({period})",
+      "planNext": "Unda eneo lako la kazi kwanza, kisha ulipe kwenye dirisha salama la Paddle. Hadi hapo linaanza kwa Starter.",
+      "agree": "Kwa kuunda eneo la kazi unakubali {terms} na {privacy} za Formalie.",
+      "terms": "Masharti ya huduma",
+      "privacy": "Sera ya faragha"
     },
     "find": {
       "title": "Tafuta eneo lako la kazi",
@@ -9552,7 +9557,13 @@
     "limitMember": "Muulize msimamizi wa eneo la kazi kuhusu mpango wa juu zaidi.",
     "seePlans": "Tazama mipango",
     "locked": "Kwenye {plan} na kuendelea",
-    "lockedHint": "Mpango wako haujumuishi hiki. Boresha ili ukitumie."
+    "lockedHint": "Mpango wako haujumuishi hiki. Boresha ili ukitumie.",
+    "pending": {
+      "title": "Kamilisha kuhamia {plan}",
+      "desc": "Uliuchagua ulipojisajili ({period}). Eneo lako la kazi linabaki kwenye Starter hadi ulipwe.",
+      "finish": "Endelea kulipa",
+      "later": "Si sasa"
+    }
   },
   "appBrowser": {
     "sent": "{name}: imetumwa",

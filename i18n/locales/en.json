@@ -877,7 +877,12 @@
       "oauthUnavailable": "Sign-up with {provider} isn't connected yet. Use your email address for now.",
       "existingTitle": "This email already has a workspace: | This email already has {n} workspaces:",
       "existingOpen": "Open",
-      "existingOr": "Or create another workspace below."
+      "existingOr": "Or create another workspace below.",
+      "planChosen": "You picked {plan} ({period})",
+      "planNext": "Create your workspace first, then pay in Paddle's secure window. Until then it starts on Starter.",
+      "agree": "By creating a workspace you agree to Formalie's {terms} and {privacy}.",
+      "terms": "Terms of service",
+      "privacy": "Privacy policy"
     },
     "find": {
       "title": "Find your workspace",
@@ -9552,7 +9557,13 @@
     "limitMember": "Ask a workspace admin about a higher plan.",
     "seePlans": "See plans",
     "locked": "On {plan} and up",
-    "lockedHint": "Your plan doesn't include this. Upgrade to use it."
+    "lockedHint": "Your plan doesn't include this. Upgrade to use it.",
+    "pending": {
+      "title": "Finish moving to {plan}",
+      "desc": "You picked it when you signed up ({period}). Your workspace stays on Starter until it is paid.",
+      "finish": "Continue to payment",
+      "later": "Not now"
+    }
   },
   "appBrowser": {
     "sent": "{name}: sent",

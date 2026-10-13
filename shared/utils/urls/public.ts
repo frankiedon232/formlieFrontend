@@ -121,3 +121,16 @@ export function apiEndpointUrl(apiServiceUrl: string, apiKey: string, endpoint: 
 export function publicHosts(config: { formsHost: string; rootDomain: string }, currentPort = ''): PublicHosts {
   return { formsHost: config.formsHost, rootDomain: config.rootDomain, port: currentPort ? `:${currentPort}` : '' }
 }
+
+// ── The website (formalieSite) ─────────────────────────────────────────────────────────────────────────────────
+// Formalie's legal pages live on the website (2026-10-13): https://formalie.com/legal/{slug} in production,
+// https://formalie.dev:3033/legal/{slug} in development (`siteUrl`, NUXT_PUBLIC_SITE_URL).
+
+export const LEGAL_SLUGS = ['terms', 'privacy', 'data-protection', 'cookies', 'acceptable-use', 'subprocessors', 'refunds'] as const
+export type LegalSlug = (typeof LEGAL_SLUGS)[number]
+
+/** `https://formalie.com/legal/{slug}` on the website. */
+export const legalUrl = (siteUrl: string, slug: LegalSlug) => `${siteUrl.replace(/\/+$/, '')}/legal/${slug}`
+
+/** The website's Enterprise enquiry (Enterprise isn't signed up for in the portal). */
+export const enterpriseUrl = (siteUrl: string) => `${siteUrl.replace(/\/+$/, '')}/enterprise#enquiry`

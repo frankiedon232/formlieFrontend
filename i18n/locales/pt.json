@@ -877,7 +877,12 @@
       "oauthUnavailable": "O cadastro com {provider} ainda não está conectado. Use seu endereço de e-mail por enquanto.",
       "existingTitle": "Este e-mail já tem um espaço de trabalho: | Este e-mail já tem {n} espaços de trabalho:",
       "existingOpen": "Abrir",
-      "existingOr": "Ou crie outro espaço de trabalho abaixo."
+      "existingOr": "Ou crie outro espaço de trabalho abaixo.",
+      "planChosen": "Escolheu {plan} ({period})",
+      "planNext": "Crie primeiro o seu espaço de trabalho e depois pague na janela segura da Paddle. Até lá, começa no Starter.",
+      "agree": "Ao criar um espaço de trabalho, aceita os {terms} e a {privacy} da Formalie.",
+      "terms": "Termos de serviço",
+      "privacy": "Política de privacidade"
     },
     "find": {
       "title": "Encontre seu espaço",
@@ -9552,7 +9557,13 @@
     "limitMember": "Pergunte a um administrador do espaço de trabalho sobre um plano superior.",
     "seePlans": "Ver planos",
     "locked": "A partir do {plan}",
-    "lockedHint": "Seu plano não inclui isto. Faça upgrade para usar."
+    "lockedHint": "Seu plano não inclui isto. Faça upgrade para usar.",
+    "pending": {
+      "title": "Concluir a mudança para {plan}",
+      "desc": "Escolheu-o ao registar-se ({period}). O seu espaço de trabalho fica no Starter até ser pago.",
+      "finish": "Continuar para o pagamento",
+      "later": "Agora não"
+    }
   },
   "appBrowser": {
     "sent": "{name}: enviado",

@@ -3,10 +3,14 @@
   switch that changes every price (per month, the period's total and what it saves), the workspace's own plan
   marked, then every feature compared. Choosing a plan confirms the change (and pays through the processor
   when needed); Enterprise opens Formalie's enquiry form in the app's browser window.
+  Straight after sign-up with a paid plan picked on the website (`?plan=&period=`, from /auth/welcome): that plan's
+  change dialog opens on that period, so it is paid at once. Closing it leaves the workspace on Starter; the choice is
+  remembered here and a banner offers to finish until a paid plan is active or it is dismissed.
 -->
 <script setup lang="ts">
 import { BILLING_PERIODS, type PlanId } from '#shared/types/billing'
 import { PERIOD_DISCOUNT } from '#shared/utils/billing/plans'
+import { isPaidSignup, signupPlanFrom, type SignupPlan } from '#shared/utils/billing/signupPlan'
 
 definePageMeta({ breadcrumb: 'settings.nav.plans' })
 const { t } = useI18n()
@@ -24,6 +28,54 @@ function choose(plan: PlanId) {
   choosing.value = plan
   changeOpen.value = true
 }
+
+// ── A paid plan picked on the website, waiting to be paid ─────────────────────────────────────────────────────
+const route = useRoute()
+const PENDING_KEY = 'formalie:pending-plan'
+const pending = ref<SignupPlan | null>(null)
+function remember(value: SignupPlan | null) {
+  pending.value = value
+  try {
+    if (value) localStorage.setItem(PENDING_KEY, JSON.stringify(value))
+    else localStorage.removeItem(PENDING_KEY)
+  } catch {
+    // Storage refused (private window): the banner lasts while the page is open
+  }
+}
+function finishPending() {
+  if (!pending.value) return
+  period.value = pending.value.period
+  choose(pending.value.plan)
+}
+/** Arrived straight from sign-up: the payment opens by itself once; later visits only show the banner. */
+let fresh = false
+onMounted(() => {
+  if (route.query.plan !== undefined) {
+    const picked = signupPlanFrom(route.query)
+    if (isPaidSignup(picked)) {
+      remember(picked)
+      fresh = true
+    }
+    void navigateTo({ path: route.path }, { replace: true })
+  } else {
+    try {
+      const saved = localStorage.getItem(PENDING_KEY)
+      if (saved) pending.value = signupPlanFrom(JSON.parse(saved) as Record<string, unknown>)
+    } catch {
+      pending.value = null
+    }
+  }
+})
+// Once the subscription has loaded: open the payment for a fresh choice; forget it once a paid plan is active
+watch(sub, value => {
+  if (!value || !pending.value) return
+  if (value.plan !== 'starter') return remember(null)
+  if (fresh) {
+    fresh = false
+    finishPending()
+  }
+}, { immediate: true })
+const showPending = computed(() => !!pending.value && isPaidSignup(pending.value) && sub.value?.plan === 'starter' && !changeOpen.value)
 </script>
 
 <template>
@@ -37,6 +89,19 @@ function choose(plan: PlanId) {
       <div class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4"><USkeleton v-for="n in 4" :key="n" class="h-96 rounded-xl" /></div>
     </div>
     <div v-else class="flex flex-col gap-8">
+      <!-- The plan picked on the website, not paid yet -->
+      <div v-if="showPending && pending" class="flex flex-col items-start gap-3 rounded-xl border border-default p-4 sm:flex-row sm:items-center">
+        <UIcon name="i-lucide-sparkles" class="size-5 shrink-0 text-highlighted" />
+        <span class="flex min-w-0 flex-1 flex-col">
+          <span class="text-sm font-semibold text-highlighted">{{ t('billing.pending.title', { plan: t(`billing.plan.${pending.plan}.name`) }) }}</span>
+          <span class="text-xs text-muted">{{ t('billing.pending.desc', { period: t(`billing.periodName.${pending.period}`) }) }}</span>
+        </span>
+        <div class="flex gap-2">
+          <UButton :label="t('billing.pending.later')" color="neutral" variant="ghost" @click="remember(null)" />
+          <UButton :label="t('billing.pending.finish')" icon="i-lucide-lock" color="neutral" @click="finishPending" />
+        </div>
+      </div>
+
       <!-- The period switch: every price follows it -->
       <div class="flex flex-col items-center gap-2">
         <div class="inline-flex rounded-full bg-elevated p-1" role="radiogroup" :aria-label="t('billing.periodLabel')">

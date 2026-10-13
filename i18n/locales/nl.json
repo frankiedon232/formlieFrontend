@@ -877,7 +877,12 @@
       "oauthUnavailable": "Aanmelden met {provider} is nog niet gekoppeld. Gebruik voorlopig je e-mailadres.",
       "existingTitle": "Dit e-mailadres heeft al een werkruimte: | Dit e-mailadres heeft al {n} werkruimtes:",
       "existingOpen": "Openen",
-      "existingOr": "Of maak hieronder nog een werkruimte aan."
+      "existingOr": "Of maak hieronder nog een werkruimte aan.",
+      "planChosen": "U koos {plan} ({period})",
+      "planNext": "Maak eerst uw werkruimte aan en betaal daarna in het beveiligde venster van Paddle. Tot dan start die op Starter.",
+      "agree": "Door een werkruimte aan te maken gaat u akkoord met de {terms} en het {privacy} van Formalie.",
+      "terms": "Servicevoorwaarden",
+      "privacy": "Privacybeleid"
     },
     "find": {
       "title": "Vind je werkruimte",
@@ -9552,7 +9557,13 @@
     "limitMember": "Vraag een beheerder van de werkruimte naar een hoger abonnement.",
     "seePlans": "Abonnementen bekijken",
     "locked": "Vanaf {plan}",
-    "lockedHint": "Je abonnement bevat dit niet. Upgrade om het te gebruiken."
+    "lockedHint": "Je abonnement bevat dit niet. Upgrade om het te gebruiken.",
+    "pending": {
+      "title": "Overstap naar {plan} afronden",
+      "desc": "U koos dit bij het aanmelden ({period}). Uw werkruimte blijft op Starter tot er betaald is.",
+      "finish": "Doorgaan naar betalen",
+      "later": "Niet nu"
+    }
   },
   "appBrowser": {
     "sent": "{name}: verzonden",

@@ -877,7 +877,12 @@
       "oauthUnavailable": "Pendaftaran dengan {provider} belum terhubung. Untuk sementara gunakan alamat email Anda.",
       "existingTitle": "Email ini sudah memiliki ruang kerja: | Email ini sudah memiliki {n} ruang kerja:",
       "existingOpen": "Buka",
-      "existingOr": "Atau buat ruang kerja lain di bawah."
+      "existingOr": "Atau buat ruang kerja lain di bawah.",
+      "planChosen": "Anda memilih {plan} ({period})",
+      "planNext": "Buat ruang kerja Anda dulu, lalu bayar di jendela aman Paddle. Sampai saat itu, ruang kerja dimulai dengan Starter.",
+      "agree": "Dengan membuat ruang kerja, Anda menyetujui {terms} dan {privacy} Formalie.",
+      "terms": "Ketentuan layanan",
+      "privacy": "Kebijakan privasi"
     },
     "find": {
       "title": "Temukan ruang kerja Anda",
@@ -9552,7 +9557,13 @@
     "limitMember": "Tanyakan kepada admin ruang kerja tentang paket yang lebih tinggi.",
     "seePlans": "Lihat paket",
     "locked": "Di {plan} ke atas",
-    "lockedHint": "Paket Anda tidak mencakup ini. Tingkatkan untuk menggunakannya."
+    "lockedHint": "Paket Anda tidak mencakup ini. Tingkatkan untuk menggunakannya.",
+    "pending": {
+      "title": "Selesaikan pindah ke {plan}",
+      "desc": "Anda memilihnya saat mendaftar ({period}). Ruang kerja Anda tetap di Starter sampai dibayar.",
+      "finish": "Lanjut ke pembayaran",
+      "later": "Nanti saja"
+    }
   },
   "appBrowser": {
     "sent": "{name}: terkirim",

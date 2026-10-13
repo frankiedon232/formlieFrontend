@@ -1,5 +1,11 @@
-<!-- Landing on a new workspace after signup: exchange the one-time ticket for a session. -->
+<!--
+  Landing on a new workspace after signup: exchange the one-time ticket for a session. A paid plan picked on the
+  website rides along (`&plan=&period=`, formalieSite docs/SIGNUP-FLOW.md): Settings → Plans opens its payment
+  first; otherwise the set-up wizard (F5).
+-->
 <script setup lang="ts">
+import { isPaidSignup, signupPlanFrom } from '#shared/utils/billing/signupPlan'
+
 definePageMeta({ layout: 'auth', auth: false })
 
 const { t } = useI18n()
@@ -14,8 +20,10 @@ onMounted(async () => {
   try {
     if (!ticket) throw new ApiError('FRM-AUTH-1010', 'Invalid token.')
     await auth.exchangeTicket(ticket)
+    const choice = signupPlanFrom(route.query)
+    if (route.query.plan !== undefined && isPaidSignup(choice)) await navigateTo({ path: '/settings/plans', query: { plan: choice.plan, period: choice.period } }, { replace: true })
     // A brand-new workspace continues with the set-up wizard (F5).
-    await navigateTo('/onboarding', { replace: true })
+    else await navigateTo('/onboarding', { replace: true })
   } catch (error) {
     handle(error)
     failed.value = true
