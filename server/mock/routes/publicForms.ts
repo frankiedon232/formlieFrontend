@@ -50,6 +50,7 @@ import { platformLegal } from '../data/platformStore'
 import { settingsOf } from '../data/settingsStore'
 import { hashPassword } from './formShare'
 import { accessOf, inviteByToken, readPass, unlockCookieName, unlockValue, visitorOf, type Visitor } from '../data/formAccess'
+import { CODES_PER_ADDRESS_PER_DAY, underDailyCap } from '../core/dailyCap'
 
 const RESPONDENT = { type: 'user' as const, id: null, name: 'Respondent', email: null }
 
@@ -428,6 +429,8 @@ export const sendVerification = defineMockRoute(({ event, body }) => {
   // At most 5 codes an hour for one email on one form.
   const recent = (sentAt.get(slot(form.id, email)) ?? []).filter(at => at > Date.now() - 3_600_000)
   if (recent.length >= 5) throw new MockError('FRM-AUTH-1004')
+  // And at most 10 a day to one address across all forms (security review L19)
+  if (!underDailyCap('verify-codes', email, CODES_PER_ADDRESS_PER_DAY)) throw new MockError('FRM-AUTH-1004')
   sentAt.set(slot(form.id, email), [...recent, Date.now()])
   const code = String(Math.floor(100000 + Math.random() * 900000))
   verifications.set(slot(form.id, email), { formId: form.id, email, code, expiresAt: Date.now() + VERIFY_TTL, attempts: 0 })

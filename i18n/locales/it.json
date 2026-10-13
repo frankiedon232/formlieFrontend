@@ -4339,9 +4339,9 @@
       "signIn": "Come accede",
       "signInHelp": "Un token è l'uno o l'altro, mai entrambi. Un token Bearer si invia così com'è; ID client e segreto si scambiano su /token con un token di breve durata.",
       "kindRequired": "Scegli come accede questo token.",
-      "webhookScope": "Un token webhook non può chiamare l'API. Formalie lo invia come Authorization: Bearer a ogni chiamata ai webhook che lo usano, così il tuo ricevitore può verificare che la chiamata sia vera.",
+      "webhookScope": "Un token di webhook non può chiamare l'API. Formalie firma con esso ogni chiamata ai webhook che lo usano (Formalie-Signature) e lo invia come Authorization: Bearer, così il tuo ricevitore può verificare che la chiamata sia autentica.",
       "webhookShort": "Solo webhook",
-      "webhookUsage": "Il tuo ricevitore controlla ogni chiamata:\nAuthorization: Bearer {token}\nContent-Type: application/json\nFormalie-Key: dlv_…   (l'id di consegna, uguale a ogni nuovo tentativo)"
+      "webhookUsage": "Il tuo ricevitore controlla ogni chiamata:\nAuthorization: Bearer {token}\nContent-Type: application/json\nFormalie-Key: dlv_…   (l'id di consegna, uguale a ogni nuovo tentativo)\nFormalie-Timestamp: …   (questo tentativo, in secondi Unix: rifiuta se più vecchio di 5 minuti)\nFormalie-Signature: v1=…   (HMAC-SHA256 del timestamp, un punto e il corpo grezzo, con questo token come chiave)"
     },
     "rotate": {
       "title": "Ruota {name}",
@@ -7003,7 +7003,7 @@
       "noDeliveries": "Ancora nessuna consegna",
       "noDeliveriesDesc": "Le consegne compaiono qui man mano che accadono gli eventi. Invia un test per provare subito l'indirizzo.",
       "lastDelivery": "Ultima {when}",
-      "secretHint": "Tienilo solo sul tuo server. Rifiuta ogni chiamata il cui header Authorization non sia esattamente questo (vedi Verifica del token nel pannello del webhook).",
+      "secretHint": "Tienilo solo sul tuo server. Il tuo ricevitore lo usa per verificare la Formalie-Signature di ogni chiamata (vedi Verificare una consegna nel pannello del webhook).",
       "deleteTitle": "Eliminare questo webhook?",
       "deleteDesc": "{name} non riceve più chiamate e il suo registro delle consegne viene rimosso. Questa azione non può essere annullata.",
       "sendTest": "Invia un test",
@@ -7108,12 +7108,12 @@
         "resentFailed": "Inviato, ma non consegnato: vedi la consegna"
       },
       "verify": {
-        "title": "Verifica del token",
-        "text": "Ogni chiamata porta questi header. Rifiutala a meno che Authorization sia esattamente Bearer e il tuo token webhook (confronta in tempo costante). La Formalie-Key è l'id di consegna e resta uguale ai nuovi tentativi: salta quella già gestita.",
+        "title": "Verificare una consegna",
+        "text": "Ogni chiamata porta queste intestazioni. Verifica Formalie-Signature: calcola l'HMAC-SHA256 di Formalie-Timestamp, un punto e il corpo grezzo, con il token del webhook come chiave, e confrontalo in tempo costante. Rifiuta un timestamp più vecchio di 5 minuti (una ripetizione). Formalie-Key è l'id della consegna e resta uguale a ogni nuovo tentativo: salta quella già gestita. Puoi verificare anche l'intestazione Authorization (Bearer e il tuo token).",
         "answer": "Rispondi con uno stato 2xx entro 10 secondi e fai il lavoro vero dopo. Ogni altra risposta viene ritentata."
       },
       "token": "Token webhook",
-      "tokenHelp": "Formalie lo invia come Authorization: Bearer a ogni chiamata, con gli stessi header dell'API. I token webhook si creano e si gestiscono in Token e header.",
+      "tokenHelp": "Formalie firma ogni chiamata con esso (Formalie-Signature) e lo invia anche come Authorization: Bearer, le stesse intestazioni dell'API. I token dei webhook si creano e gestiscono in Token e intestazioni.",
       "tokenNew": "Nuovo token webhook: {name} · webhook",
       "tokenTitle": "Token webhook {name}",
       "tokenGone": "Il suo token è stato revocato, è scaduto o è stato eliminato: le consegne falliscono finché non ne scegli un altro.",
@@ -9805,14 +9805,15 @@
     "doneDesc": "{email} non riceverà più {what} da {workspace}. Hai cambiato idea? Annulla.",
     "stop": "Disiscriviti",
     "undo": "Annulla",
-    "kept": "Le email necessarie, come i codici di accesso e le copie delle tue risposte, continuano ad arrivare.",
+    "kept": "Le email necessarie, come i codici di accesso, continuano ad arrivare.",
     "what": {
       "responsesTo": "le email delle nuove risposte a {form}",
       "responses": "le email delle nuove risposte",
       "notification": "le email «{event}»",
       "updates": "questi aggiornamenti",
       "daily_digest": "il riepilogo giornaliero",
-      "form_invitation": "gli inviti ai moduli"
+      "form_invitation": "gli inviti ai moduli",
+      "response_receipt": "le copie delle tue risposte ai moduli"
     }
   },
   "support": {

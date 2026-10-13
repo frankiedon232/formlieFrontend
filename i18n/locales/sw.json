@@ -4339,9 +4339,9 @@
       "signIn": "Jinsi unavyoingia",
       "signInHelp": "Tokeni ni moja au nyingine, kamwe zote mbili. Tokeni ya Bearer hutumwa kama ilivyo; client id na secret hubadilishwa kwa /token kupata tokeni ya muda mfupi.",
       "kindRequired": "Chagua jinsi tokeni hii inavyoingia.",
-      "webhookScope": "Tokeni ya webhook haiwezi kuita API. Formalie huituma kama Authorization: Bearer kwa kila simu kwa webhook zinazoitumia, ili mpokeaji wako athibitishe kuwa simu ni halisi.",
+      "webhookScope": "Tokeni ya webhook haiwezi kuita API. Formalie hutia sahihi kila mwito kwa webhook zinazoitumia (Formalie-Signature) na kuituma kama Authorization: Bearer, ili mpokeaji wako akague kwamba mwito ni halisi.",
       "webhookShort": "Webhook pekee",
-      "webhookUsage": "Mpokeaji wako huangalia kila simu:\nAuthorization: Bearer {token}\nContent-Type: application/json\nFormalie-Key: dlv_…   (kitambulisho cha uwasilishaji, sawa kila jaribio jipya)"
+      "webhookUsage": "Mpokeaji wako huangalia kila simu:\nAuthorization: Bearer {token}\nContent-Type: application/json\nFormalie-Key: dlv_…   (kitambulisho cha uwasilishaji, sawa kila jaribio jipya)\nFormalie-Timestamp: …   (jaribio hili, kwa sekunde za Unix: kataa wenye zaidi ya dakika 5)\nFormalie-Signature: v1=…   (HMAC-SHA256 ya muhuri wa muda, nukta na mwili ghafi, ufunguo ukiwa tokeni hii)"
     },
     "rotate": {
       "title": "Zungusha {name}",
@@ -7003,7 +7003,7 @@
       "noDeliveries": "Bado hakuna uwasilishaji",
       "noDeliveriesDesc": "Uwasilishaji huonekana hapa matukio yanapotokea. Tuma jaribio ili ujaribu anwani sasa.",
       "lastDelivery": "Mwisho {when}",
-      "secretHint": "Iweke kwenye seva yako pekee. Kataa simu yoyote ambayo header ya Authorization si hii hasa (angalia Kuangalia tokeni katika paneli ya webhook).",
+      "secretHint": "Iweke kwenye seva yako pekee. Mpokeaji wako huitumia kukagua Formalie-Signature ya kila mwito (angalia Kukagua uwasilishaji kwenye paneli ya webhook).",
       "deleteTitle": "Kufuta webhook hii?",
       "deleteDesc": "{name} haitapokea simu tena na kumbukumbu ya uwasilishaji wake itaondolewa. Hili haliwezi kutenduliwa.",
       "sendTest": "Tuma jaribio",
@@ -7108,12 +7108,12 @@
         "resentFailed": "Imetumwa, lakini haijawasilishwa: tazama uwasilishaji"
       },
       "verify": {
-        "title": "Kuangalia tokeni",
-        "text": "Kila simu hubeba header hizi. Ikatae isipokuwa Authorization ni Bearer na tokeni ya webhook yako hasa (linganisha kwa muda uleule). Formalie-Key ni kitambulisho cha uwasilishaji na hubaki sawa kwenye majaribio mapya: ruka ile uliyoshughulikia tayari.",
+        "title": "Kukagua uwasilishaji",
+        "text": "Kila mwito una vichwa hivi. Kagua Formalie-Signature: kokotoa HMAC-SHA256 ya Formalie-Timestamp, nukta na mwili ghafi, ukitumia tokeni ya webhook yako kama ufunguo, kisha linganisha kwa muda usiobadilika. Kataa muhuri wa muda wenye zaidi ya dakika 5 (urudiaji). Formalie-Key ni kitambulisho cha uwasilishaji na hakibadiliki kwenye majaribio upya: ruka uliokwisha kushughulikia. Kichwa cha Authorization (Bearer na tokeni yako) kinaweza kukaguliwa pia.",
         "answer": "Jibu kwa hali yoyote ya 2xx ndani ya sekunde 10; fanya kazi halisi baadaye. Jibu lingine lolote hujaribiwa tena."
       },
       "token": "Tokeni ya webhook",
-      "tokenHelp": "Formalie huituma kama Authorization: Bearer kwa kila simu, kwa header zilezile za API. Tokeni za webhook hutengenezwa na kusimamiwa katika Tokeni na header.",
+      "tokenHelp": "Formalie hutia sahihi kila mwito kwa tokeni hii (Formalie-Signature) na pia huituma kama Authorization: Bearer, vichwa vilevile vya API. Tokeni za webhook huundwa na kusimamiwa katika Tokeni na vichwa.",
       "tokenNew": "Tokeni mpya ya webhook: {name} · webhook",
       "tokenTitle": "Tokeni ya webhook {name}",
       "tokenGone": "Tokeni yake imefutwa, imeisha muda au imeondolewa: uwasilishaji unashindwa hadi uchague nyingine.",
@@ -9805,14 +9805,15 @@
     "doneDesc": "{email} haitapokea tena {what} kutoka {workspace}. Umebadili nia? Tendua.",
     "stop": "Jiondoe",
     "undo": "Tendua",
-    "kept": "Barua pepe muhimu, kama misimbo ya kuingia na nakala za majibu yako, zitaendelea kufika.",
+    "kept": "Barua pepe unazohitaji, kama misimbo ya kuingia, bado zinafika.",
     "what": {
       "responsesTo": "barua pepe za majibu mapya ya {form}",
       "responses": "barua pepe za majibu mapya",
       "notification": "barua pepe za {event}",
       "updates": "taarifa hizi",
       "daily_digest": "muhtasari wa kila siku",
-      "form_invitation": "mialiko ya fomu"
+      "form_invitation": "mialiko ya fomu",
+      "response_receipt": "nakala za majibu yako kwenye fomu"
     }
   },
   "support": {

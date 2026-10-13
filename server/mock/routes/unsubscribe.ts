@@ -9,6 +9,7 @@
 import { z } from 'zod'
 import type { H3Event } from 'h3'
 import type { UnsubscribeView } from '#shared/types/emails'
+import { UNSUBSCRIBE_TOKEN_MAX } from '#shared/types/emails'
 import { maskEmail } from '#shared/utils/forms/identity'
 import { anonymousActor, recordAudit } from '../core/audit'
 import { MockError, ok } from '../core/respond'
@@ -19,7 +20,7 @@ import { MOCK_TENANTS } from '../data/tenants'
 import { isUnsubscribed, readUnsubscribeToken, setUnsubscribed, type UnsubscribeTarget } from '../data/unsubscribeStore'
 
 function resolve(token: unknown) {
-  const target = typeof token === 'string' ? readUnsubscribeToken(token) : null
+  const target = typeof token === 'string' && token.length <= UNSUBSCRIBE_TOKEN_MAX ? readUnsubscribeToken(token) : null
   const tenant = target ? MOCK_TENANTS.find(item => item.id === target.tenantId) : undefined
   if (!target || !tenant) throw new MockError('FRM-GEN-1004')
   return { target, tenant }
@@ -45,7 +46,8 @@ export const getUnsubscribe = defineMockRoute(({ query }) => {
   return ok(view(target, tenant))
 })
 
-const tokenBody = z.object({ t: z.string().min(10).max(600) })
+// Opaque, up to 800 characters (security review L22); the mock's own links are shorter
+const tokenBody = z.object({ t: z.string().min(10).max(UNSUBSCRIBE_TOKEN_MAX) })
 export const unsubscribe = defineMockRoute(({ event, body }) => ok(change(event, parseBody(tokenBody, body).t, true)))
 export const resubscribe = defineMockRoute(({ event, body }) => ok(change(event, parseBody(tokenBody, body).t, false)))
 

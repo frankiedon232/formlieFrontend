@@ -116,7 +116,7 @@ async function saved() {
   await refreshAll()
 }
 // Every delivery carries the same headers as an API call (owner, 2026-10-06)
-const usage = computed(() => [`Authorization: Bearer ${secret.value?.token?.secret ?? '<webhook token>'}`, 'Content-Type: application/json', 'Formalie-Key: dlv_…   (the delivery id, the same on every retry)'].join('\n'))
+const usage = computed(() => [`Authorization: Bearer ${secret.value?.token?.secret ?? '<webhook token>'}`, 'Content-Type: application/json', 'Formalie-Key: dlv_…   (the delivery id, the same on every retry)', 'Formalie-Timestamp: …   (this try, Unix seconds)', 'Formalie-Signature: v1=…   (HMAC-SHA256 of "{timestamp}.{raw body}" with this token)'].join('\n'))
 const busy = ref<string | null>(null)
 async function act(id: string, work: () => Promise<unknown>, success?: string) {
   if (busy.value) return false

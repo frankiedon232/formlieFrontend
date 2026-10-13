@@ -3,7 +3,8 @@
  *
  *   GET    /webhooks                         list (q, sort, filter[status|event]) · /insights · /:id
  *   POST   /webhooks                         { name, url, events, form_ids, token_id ('new' makes one), enabled? } → { webhook, token }
- *                                            Each delivery sends the webhook token (Tokens & headers) as Authorization: Bearer.
+ *                                            Each delivery sends the webhook token (Tokens & headers) as Authorization: Bearer, signed with it
+ *                                            (Formalie-Timestamp, Formalie-Signature; security review M16).
  *   PATCH  /webhooks/:id                     the same, or { enabled } alone · DELETE (its deliveries go too)
  *   POST   /webhooks/:id/test                a "ping" delivery now → the delivery with the receiver's answer
  *   GET    /webhook-deliveries               (from, to, q, sort, filter[webhook|status|event]) · /:id

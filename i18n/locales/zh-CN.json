@@ -4339,9 +4339,9 @@
       "signIn": "登录方式",
       "signInHelp": "一个令牌只能是其中一种,不能两者兼有。Bearer 令牌原样发送;客户端 ID 和密钥在 /token 换取短期令牌。",
       "kindRequired": "选择此令牌的登录方式。",
-      "webhookScope": "webhook 令牌不能调用 API。Formalie 会在每次调用使用它的 webhook 时,以 Authorization: Bearer 的形式发送它,让接收方确认调用是真的。",
+      "webhookScope": "Webhook 令牌不能调用 API。Formalie 用它为发往使用该令牌的 Webhook 的每次调用签名（Formalie-Signature），并以 Authorization: Bearer 发送，方便接收方确认调用是真实的。",
       "webhookShort": "仅限 webhook",
-      "webhookUsage": "你的接收方会检查每次调用:\nAuthorization: Bearer {token}\nContent-Type: application/json\nFormalie-Key: dlv_…   (投递 ID,每次重试都相同)"
+      "webhookUsage": "你的接收方会检查每次调用:\nAuthorization: Bearer {token}\nContent-Type: application/json\nFormalie-Key: dlv_…   (投递 ID,每次重试都相同)\nFormalie-Timestamp: …   (本次尝试，Unix 秒：超过 5 分钟则拒绝)\nFormalie-Signature: v1=…   (时间戳、点号和原始请求体的 HMAC-SHA256，密钥为此令牌)"
     },
     "rotate": {
       "title": "轮换 {name}",
@@ -7003,7 +7003,7 @@
       "noDeliveries": "还没有投递",
       "noDeliveriesDesc": "事件发生后，投递会显示在这里。发送一次测试，立即试试这个地址。",
       "lastDelivery": "最近 {when}",
-      "secretHint": "只保存在你的服务器上。拒绝任何 Authorization 请求头与此不完全一致的调用(见 webhook 面板中的校验令牌)。",
+      "secretHint": "仅保存在你的服务器上。接收方用它检查每次调用的 Formalie-Signature（参见 Webhook 面板中的“检查投递”）。",
       "deleteTitle": "删除此 Webhook？",
       "deleteDesc": "{name} 将不再收到调用，其投递日志也会被删除。此操作无法撤销。",
       "sendTest": "发送测试",
@@ -7108,12 +7108,12 @@
         "resentFailed": "已发送，但未送达：请查看投递详情"
       },
       "verify": {
-        "title": "校验令牌",
-        "text": "每次调用都带有这些请求头。除非 Authorization 恰好是 Bearer 加你的 webhook 令牌,否则请拒绝(用恒定时间比较)。Formalie-Key 是投递 ID,重试时保持不变:跳过已处理过的。",
+        "title": "检查投递",
+        "text": "每次调用都带有这些请求头。检查 Formalie-Signature：以你的 Webhook 令牌为密钥，计算 Formalie-Timestamp、一个点号和原始请求体的 HMAC-SHA256，并以恒定时间比较。拒绝超过 5 分钟的时间戳（重放）。Formalie-Key 是投递 ID，重试时保持不变：跳过已处理过的投递。也可以同时检查 Authorization 请求头（Bearer 和你的令牌）。",
         "answer": "请在 10 秒内返回任意 2xx 状态，真正的处理放在之后。其他响应都会重试。"
       },
       "token": "webhook 令牌",
-      "tokenHelp": "Formalie 每次调用都会以 Authorization: Bearer 的形式发送它,请求头与 API 相同。webhook 令牌在令牌和请求头中创建和管理。",
+      "tokenHelp": "Formalie 用它为每次调用签名（Formalie-Signature），并同时以 Authorization: Bearer 发送，与 API 使用相同的请求头。Webhook 令牌在“令牌与请求头”中创建和管理。",
       "tokenNew": "新的 webhook 令牌:{name} · webhook",
       "tokenTitle": "webhook 令牌 {name}",
       "tokenGone": "它的令牌已被吊销、过期或删除:在你选择另一个之前,投递会失败。",
@@ -9805,14 +9805,15 @@
     "doneDesc": "{email} 将不再收到来自 {workspace} 的{what}。改主意了？可以撤销。",
     "stop": "退订",
     "undo": "撤销",
-    "kept": "必要的邮件（如登录验证码和您自己回答的副本）仍会照常发送。",
+    "kept": "你需要的邮件（如登录验证码）仍会照常发送。",
     "what": {
       "responsesTo": "{form} 的新回复邮件",
       "responses": "新回复邮件",
       "notification": "“{event}”邮件",
       "updates": "这些通知",
       "daily_digest": "每日摘要",
-      "form_invitation": "表单邀请"
+      "form_invitation": "表单邀请",
+      "response_receipt": "你在表单中的回答副本"
     }
   },
   "support": {

@@ -148,18 +148,24 @@ export interface SmtpSaveRequest {
 }
 
 /**
- * Emails a person can stop with the Unsubscribe link (owner, 2026-10-12): optional updates only, never sign-in,
- * account or respondent emails. `ref` narrows it: the form (new responses) or the event (notifications).
+ * Emails a person can stop with the Unsubscribe link (owner, 2026-10-12): optional updates only, never sign-in or
+ * account emails. `ref` narrows it: the form (new responses) or the event (notifications). `response_receipt` is the
+ * respondent's copy of their answers, per workspace (security review L19, 2026-10-13: whoever fills in a form chooses
+ * the copy's address, so its owner can stop them).
  */
-export const UNSUBSCRIBE_KINDS = ['response_notification', 'notification', 'daily_digest', 'form_invitation'] as const
+export const UNSUBSCRIBE_KINDS = ['response_notification', 'notification', 'daily_digest', 'form_invitation', 'response_receipt'] as const
 export type UnsubscribeKind = (typeof UNSUBSCRIBE_KINDS)[number]
+
+/** An unsubscribe link's `t`: opaque (`u2.` and up to about 800 characters since 2026-10-13, security review L22; older
+ *  links in a different form work until 2027-01-11). Never parsed by the portal, only passed back. */
+export const UNSUBSCRIBE_TOKEN_MAX = 800
 
 /** GET /public/unsubscribe?t= : what the link stops, for whom (masked), and whether it is stopped now. */
 export interface UnsubscribeView {
   workspace: string
   email: string
   kind: UnsubscribeKind
-  /** The form's name (new responses) or the notification event key; null for the daily summary and invitations. */
+  /** The form's name (new responses) or the notification event key; null for the daily summary, invitations and copies of answers. */
   subject: string | null
   unsubscribed: boolean
 }

@@ -4339,9 +4339,9 @@
       "signIn": "Comment il se connecte",
       "signInHelp": "Un jeton est l'un ou l'autre, jamais les deux. Un jeton Bearer est envoyé tel quel ; un ID client et un secret sont échangés sur /token contre un jeton de courte durée.",
       "kindRequired": "Choisissez comment ce jeton se connecte.",
-      "webhookScope": "Un jeton de webhook ne peut pas appeler l'API. Formalie l'envoie en Authorization: Bearer à chaque appel des webhooks qui l'utilisent, pour que votre récepteur vérifie que l'appel est réel.",
+      "webhookScope": "Un jeton de webhook ne peut pas appeler l'API. Formalie signe avec lui chaque appel vers les webhooks qui l'utilisent (Formalie-Signature) et l'envoie comme Authorization: Bearer, pour que votre récepteur vérifie que l'appel est authentique.",
       "webhookShort": "Webhooks uniquement",
-      "webhookUsage": "Votre récepteur vérifie chaque appel :\nAuthorization: Bearer {token}\nContent-Type: application/json\nFormalie-Key: dlv_…   (l'id de livraison, identique à chaque nouvelle tentative)"
+      "webhookUsage": "Votre récepteur vérifie chaque appel :\nAuthorization: Bearer {token}\nContent-Type: application/json\nFormalie-Key: dlv_…   (l'id de livraison, identique à chaque nouvelle tentative)\nFormalie-Timestamp: …   (cette tentative, en secondes Unix : refusez au-delà de 5 minutes)\nFormalie-Signature: v1=…   (HMAC-SHA256 de l'horodatage, d'un point et du corps brut, avec ce jeton comme clé)"
     },
     "rotate": {
       "title": "Renouveler {name}",
@@ -7003,7 +7003,7 @@
       "noDeliveries": "Aucune livraison pour le moment",
       "noDeliveriesDesc": "Les livraisons apparaissent ici au fil des événements. Envoyez un test pour essayer l'adresse maintenant.",
       "lastDelivery": "Dernière {when}",
-      "secretHint": "Gardez-le uniquement sur votre serveur. Refusez tout appel dont l'en-tête Authorization n'est pas exactement celui-ci (voir Vérification du jeton dans le panneau du webhook).",
+      "secretHint": "Gardez-le uniquement sur votre serveur. Votre récepteur s'en sert pour vérifier la Formalie-Signature de chaque appel (voir Vérifier une livraison dans le panneau du webhook).",
       "deleteTitle": "Supprimer ce webhook ?",
       "deleteDesc": "{name} ne reçoit plus d'appels et son journal de livraisons est supprimé. Cette action est irréversible.",
       "sendTest": "Envoyer un test",
@@ -7108,12 +7108,12 @@
         "resentFailed": "Envoyé, mais non livré : voir la livraison"
       },
       "verify": {
-        "title": "Vérification du jeton",
-        "text": "Chaque appel porte ces en-têtes. Refusez-le sauf si Authorization est exactement Bearer suivi de votre jeton de webhook (comparez en temps constant). La Formalie-Key est l'id de livraison et reste la même lors des nouvelles tentatives : ignorez un appel déjà traité.",
+        "title": "Vérifier une livraison",
+        "text": "Chaque appel porte ces en-têtes. Vérifiez Formalie-Signature : calculez le HMAC-SHA256 de Formalie-Timestamp, d'un point et du corps brut, avec votre jeton de webhook comme clé, et comparez en temps constant. Refusez un horodatage de plus de 5 minutes (un rejeu). Formalie-Key est l'identifiant de la livraison et reste le même à chaque nouvelle tentative : ignorez celle que vous avez déjà traitée. L'en-tête Authorization (Bearer et votre jeton) peut aussi être vérifié.",
         "answer": "Répondez avec un statut 2xx en moins de 10 secondes et faites le vrai travail ensuite. Toute autre réponse est retentée."
       },
       "token": "Jeton de webhook",
-      "tokenHelp": "Formalie l'envoie en Authorization: Bearer à chaque appel, avec les mêmes en-têtes que l'API. Les jetons de webhook se créent et se gèrent dans Jetons & en-têtes.",
+      "tokenHelp": "Formalie signe chaque appel avec (Formalie-Signature) et l'envoie aussi comme Authorization: Bearer, les mêmes en-têtes que l'API. Les jetons de webhook se créent et se gèrent dans Jetons et en-têtes.",
       "tokenNew": "Nouveau jeton de webhook : {name} · webhook",
       "tokenTitle": "Jeton de webhook {name}",
       "tokenGone": "Son jeton a été révoqué, a expiré ou a été supprimé : les livraisons échouent tant que vous n'en choisissez pas un autre.",
@@ -9805,14 +9805,15 @@
     "doneDesc": "{email} ne recevra plus {what} de {workspace}. Vous changez d'avis ? Annulez.",
     "stop": "Se désabonner",
     "undo": "Annuler",
-    "kept": "Les e-mails nécessaires, comme les codes de connexion et les copies de vos réponses, continuent d'arriver.",
+    "kept": "Les e-mails dont vous avez besoin, comme les codes de connexion, continuent d'arriver.",
     "what": {
       "responsesTo": "les e-mails de nouvelles réponses pour {form}",
       "responses": "les e-mails de nouvelles réponses",
       "notification": "les e-mails « {event} »",
       "updates": "ces nouvelles",
       "daily_digest": "le résumé quotidien",
-      "form_invitation": "les invitations à des formulaires"
+      "form_invitation": "les invitations à des formulaires",
+      "response_receipt": "les copies de vos réponses aux formulaires"
     }
   },
   "support": {

@@ -16,6 +16,8 @@ import { workspaceUrl } from './notificationStore'
 import { peopleOf } from './orgStore'
 import { sendEmail } from './outboxStore'
 import type { MockTenant } from './tenants'
+import { isUnsubscribed } from './unsubscribeStore'
+import { RECEIPTS_PER_ADDRESS_PER_DAY, underDailyCap } from '../core/dailyCap'
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const mask = (text: string) => (text.length <= 2 ? '••' : `${text[0]}•••${text.slice(-1)}`)
@@ -48,11 +50,13 @@ export function emailResponse(event: H3Event | null, tenant: MockTenant, form: {
       for (const to of settings.others) sendEmail(tenant, { to, key: 'response_notification', language, vars: vars(language), answers: answers(!settings.others_personal), text: withoutLink, reason: 'response_outside', footer: 'form', unsubscribe: { kind: 'response_notification', ref: form.id } })
     }
 
-    // The respondent: their own answers, in their language
+    // The respondent: their own answers, in their language. With an Unsubscribe link (per workspace), and at most
+    // 5 a day to one address from all of Formalie (security review L19: the respondent chooses where the copy goes)
     const to = settings.receipt_field ? String(response.data[settings.receipt_field] ?? '').trim() : ''
-    if (EMAIL.test(to)) {
+    const receipt = { tenantId: tenant.id, email: to, kind: 'response_receipt' as const, ref: null }
+    if (EMAIL.test(to) && !isUnsubscribed(receipt) && underDailyCap('receipts', to, RECEIPTS_PER_ADDRESS_PER_DAY)) {
       const theirs = emailLanguage(tenant, response.language)
-      sendEmail(tenant, { to, key: 'response_receipt', language: theirs, vars: vars(theirs), answers: answers(false), reason: 'receipt', footer: 'form' })
+      sendEmail(tenant, { to, key: 'response_receipt', language: theirs, vars: vars(theirs), answers: answers(false), reason: 'receipt', footer: 'form', unsubscribe: { kind: 'response_receipt' } })
     }
   } catch (error) {
     console.error('[response-emails]', error)

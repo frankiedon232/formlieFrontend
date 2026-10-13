@@ -20,12 +20,13 @@ Marks: ⬜ to do · ✅ done in production · ⏸ waiting on a decision or an ac
   - The API service for customers stays `https://api.formalie.com/{apiKey}/{endpoint}` (the gateway).
   - One **Cloudflare Worker** per front end serves the static app. The portal's Worker also proxies `/api/*` to `services.formalie.com` (adding `X-Formalie-Edge` and `X-Forwarded-Host / -Proto / -For`), adds each form's title and preview image to `/{formKey}/fill` and `/{formKey}/embed` (link previews, from `GET /api/v1/edge/forms/{formKey}/preview`), and answers short links `/s/{code}` with a redirect (from `GET /api/v1/edge/links/{code}`).
 - ⬜ **Hosting for the back ends:** AWS or dedicated servers (decided per deployment, 02-DEV-ENVIRONMENT). Servers for: the API (`services.formalie.com`), the API service gateway (`api.formalie.com`), Celery workers and Beat, PostgreSQL (primary and replica), PgBouncer, Redis, RabbitMQ.
+- ⬜ **PostgreSQL extension `pg_trgm`** (owner 2026-10-13; migration 0040 creates it in the `platform` schema for the audit trail and API call log search): it ships with PostgreSQL (contrib) and is a trusted extension, so the migration role needs CREATE on the database; on a managed database (AWS RDS and similar) check it is on the allowed list.
 - ⬜ **Domain and DNS:** `formalie.com` on Cloudflare. Static front ends on Cloudflare: wildcard `*.formalie.com`, `manage.formalie.com` and `forms.formalie.com` (the portal build), `formalie.com` and `www` (the website build), the platform admin's own host (its build). To the servers through Nginx: `services.formalie.com` (the API) and `api.formalie.com` (the API service gateway).
 - ⬜ **TLS certificates:** real certificates (Cloudflare origin certificates or Let's Encrypt), wildcard included. The mkcert certificates (`C:\devcerts\…`) and `NODE_EXTRA_CA_CERTS` are development only.
 - ⬜ **Email sending provider:** Amazon SES or another SMTP service, with SPF, DKIM and DMARC on `formalie.com`. Development uses Mailpit.
 - ⬜ **Object storage:** the cloud provider's S3 for uploads and exports. Development keeps them in the `data/storage` folder.
 - ⏸ **Payments:** the owner's Payoneer account (F24): live keys and the webhook secret.
-- ⏸ **SMS provider** for text-message codes (for example Twilio or Vonage), when workspaces should be able to use them.
+- ⏸ **SMS provider** for text-message codes: Twilio or Vonage (the owner sets up the account; step by step in formlyBackend `docs/SMS-SETUP-GUIDE.md`). Production: billing on, the countries served allowed, sender registration where a country requires it (US A2P 10DLC).
 - ⬜ **AI provider: Anthropic Claude** (owner 2026-10-12) for the assistant (B13): a production API key at console.anthropic.com (`ANTHROPIC_API_KEY`, backend only, separate from any development key), the model (`ANTHROPIC_MODEL`), spending limits on the Anthropic account, and Anthropic's commercial terms / data processing agreement accepted.
 - ⬜ **MaxMind GeoLite2:** account ID and licence key for request locations.
 
@@ -35,7 +36,7 @@ Generate fresh keys with `fmly\Scripts\python.exe scripts\gen_keys.py --write` o
 
 | Setting | Development | Production |
 | --- | --- | --- |
-| `APP_ENV` | `development` | ⬜ `production`, always set explicitly (B17: unset means production; staging and production refuse to start without `FERNET_KEYS`, `ID_REF_*`, `DB_APP_URL`, broker and Redis credentials, or with any `*_ALLOW_LOCAL` on; `dev_*` helpers only with exactly `development`) |
+| `APP_ENV` | `development` | ⬜ `production`, always set explicitly (B17: unset means production; staging and production refuse to start without `FERNET_KEYS`, `SECRET_KEYS`, `ID_REF_*`, `DB_APP_URL`, broker and Redis credentials, or with any `*_ALLOW_LOCAL` on; `dev_*` helpers only with exactly `development`) |
 | `APP_RELEASE` | `0.0.0-dev` | ⬜ the release version |
 | `DOCS_ENABLED` | `true` | ⬜ `false` (no `/docs`, `/redoc`) |
 | `SSL_CERTFILE` / `SSL_KEYFILE` | mkcert files | ⬜ empty when Nginx ends TLS; otherwise the real certificate |
@@ -46,8 +47,10 @@ Generate fresh keys with `fmly\Scripts\python.exe scripts\gen_keys.py --write` o
 | `DB_PGBOUNCER` | `false` | ⬜ `true` when the API goes through PgBouncer |
 | `REDIS_URL`, `CELERY_RESULT_BACKEND`, `RABBITMQ_URL` | WSL on this machine | ⬜ production services, with passwords and TLS |
 | `ID_REF_ENC_KEY`, `ID_REF_MAC_KEY`, `FERNET_KEYS` | development keys | ⬜ new keys made on the server; keep a secure copy (losing them breaks every link and session) |
+| `SECRET_KEYS` (security review L17) | a development key | ⬜ a new key made on the server, never one of the `FERNET_KEYS`; keep a secure copy (losing it makes every stored credential and two-step secret unreadable). After setting it on a database that already holds secrets, run `scripts/reencrypt_secrets.py --apply` once |
 | `EMAIL_FROM` | `no-reply@formalie.dev` | ⬜ `Formalie <no-reply@formalie.com>` |
 | `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURITY`, `SMTP_USERNAME`, `SMTP_PASSWORD` | Mailpit `127.0.0.1:1025`, `none` | ⬜ the email provider, `starttls` or `tls`, its user and password |
+| Bounces and complaints (security review L19) | none | ⬜ once the email provider is chosen: its bounce and complaint notifications feed a do-not-email list, so a hard-bounced or complaining address gets no more mail (to build with the provider) |
 | `EMAIL_ASSETS_URL` | `https://manage.formalie.dev:2202` | ⬜ `https://manage.formalie.com` |
 | `OAUTH_*_CLIENT_ID` / `_SECRET` | development apps | ⬜ the same apps with production addresses added (section 5), or production apps |
 | `OAUTH_REDIRECT_BASE` | empty | ⬜ empty (it becomes `https://manage.formalie.com`) |
@@ -65,6 +68,7 @@ Generate fresh keys with `fmly\Scripts\python.exe scripts\gen_keys.py --write` o
 | `GATEWAY_PORT` | `5005` (`python -m app.gateway`; the main app on 5004 also answers `api.formalie.dev`) | ⬜ the port Nginx sends `api.formalie.com` to (its own process, `uvicorn app.gateway:app --no-proxy-headers`) |
 | `GATEWAY_IP_PER_MINUTE` | `6000` | ⬜ the ceiling per caller IP across all workspaces (keep 6000 or set from real traffic) |
 | `API_NETWORKS_DIR` | empty (`data/geoip/networks`, usually no lists) | ⬜ a folder with `vpn.txt`, `proxy.txt`, `tor.txt`, `hosting.txt` (an IP or range per line) kept up to date, so access rules on anonymous networks match; without them only hosting providers are known (by network number) |
+| `SMS_PROVIDER`, `TWILIO_*` or `VONAGE_*` | `none`, or a trial account's keys | ⏸ `twilio` or `vonage` with the production account's keys and sender (backend only; docs/SMS-SETUP-GUIDE.md) |
 | `ANTHROPIC_API_KEY` (B13) | empty (the built-in assistant answers) or a development key | ⬜ the production key from console.anthropic.com (backend only, never in the frontend or logs), with a monthly spending limit set on the Anthropic account |
 | `ANTHROPIC_MODEL`, `ANTHROPIC_FAST_MODEL` (B13) | `claude-opus-5-5`, `claude-haiku-5-5` | ⬜ keep, or the models the owner chooses (the fast one answers designs, reading answers, questions and summaries) |
 | `ANTHROPIC_TIMEOUT_SECONDS`, `ANTHROPIC_MAX_RETRIES`, `ANTHROPIC_FALLBACKS` (B13) | `90`, `2`, `true` | ⬜ keep; the API servers must reach `api.anthropic.com` (outgoing HTTPS) |
@@ -76,7 +80,7 @@ Generate fresh keys with `fmly\Scripts\python.exe scripts\gen_keys.py --write` o
 | `TEST_MYSQL_URL`, `DB_TEST_DATABASE` | test only | ⬜ not set in production |
 | `DB_PLATFORM_READER_URL`, `DB_PLATFORM_WRITER_URL` (B16) | empty (roles without LOGIN) | ⬜ long random passwords; reader on the read replica's address, writer on the primary. `scripts/db_bootstrap.py` gives the roles LOGIN with them; the same URLs go into the platform admin's backend (formaliePlatformBack) |
 | `DB_ADMIN_API_URL` (B17) | `formalie_admin_api` on the local database | ⬜ a long random password, on the primary; run `scripts/db_bootstrap.py` before `alembic upgrade head` (it creates the role, member of `formalie_app`, and gives it the platform admin functions, which the portal's role no longer has) |
-| `REQUEST_LOG_RETENTION_DAYS` (B17) | `30` | ⬜ the period the privacy policy states (30 by default; 7 at least); Beat drops older `request_logs` partitions daily |
+| `REQUEST_LOG_RETENTION_DAYS` (B17) | `30` | ⬜ keep `30`, the period the privacy policy states. The platform admin can change it (`log_retention` in platform settings: 0 keeps forever); Beat `logs.apply_retention` archives each older month (encrypted with `BACKUP_ENCRYPTION_KEY`, which must be set or nothing is removed) and then removes it; the archives live in the file store under `platform/log-archives/` and are downloaded from the platform admin |
 | `REQUEST_BODY_MAX_BYTES` (B17) | `2097152` (2 MB) | ⬜ keep; Nginx's `client_max_body_size` per location matches it (DEPLOYMENT-GUIDE Part 6), uploads have their own |
 | `PLATFORM_ADMIN_KEYS` (B16) | a development pair, also in the platform admin's settings (or empty: internal admin API refused) | ⬜ a new `key_id:secret` pair (secret 32+ random characters), the same in formaliePlatformBack; rotate by adding the new pair first, then removing the old |
 | `PLATFORM_ADMIN_REQUIRE_MTLS`, `PLATFORM_ADMIN_CERT_FINGERPRINTS` (B16) | `false`, empty | ⬜ `true` (the API refuses every internal admin call in production without it) and the platform's client certificate fingerprint as Nginx passes it (`$ssl_client_fingerprint`) |
@@ -92,7 +96,9 @@ Also on the backend side:
 - ⬜ Services: the API (several instances), the API service gateway (`app.gateway:app`, its own instances on `GATEWAY_PORT`), Celery workers per queue, Celery Beat, the outbox relay; restart on failure (systemd).
 - ⬜ The development-only headers `X-Debug-Country` and `X-Debug-Network` are ignored when `APP_ENV=production` (nothing to set; check once with a call).
 - ⬜ Backups: continuous WAL archiving plus a daily full backup, encrypted, off-site, 30 days; a restore drill before launch and monthly after.
+- ⬜ `BACKUP_ENCRYPTION_KEY` (32 bytes, base64; `scripts/gen_keys.py`): a new one for production, never the development key, with a copy kept apart from the backups (a password manager or the secret store). The drill is `scripts/backups.py restore` into a scratch database (formlyBackend README, "Backups and the restore drill"); it must say "Restore drill passed".
 - ⬜ Flower and the RabbitMQ management page: not public (VPN or SSH tunnel only).
+- ⬜ The platform admin's Operations page shows every health entry `ok` after deploying (Beat's heartbeat, the last backup, next month's partitions); monitoring and alerts are run there.
 - ⬜ Celery Beat runs `privacy.apply_retention` once a day (response retention; nothing to set).
 - ⬜ B17: Beat also runs `forms.sweep_trash` (every 5 minutes), `notifications.announce_due` (every minute), `events.prune_processed` and `db.drop_expired_partitions` (daily). Nothing to set.
 - ⬜ B17: the workers that connect to customers' databases (queue `destinations`, and the API for the explorer and the Query editor) run as a system user without `~/.pgpass`, `~/.postgresql/`, `~/.my.cnf` or `freetds.conf` aliases, and without `PG*`, `TDSDUMP` or `TNS_ADMIN` in their environment; ideally a separate worker user that can't read `.env` (review C1, point 3).

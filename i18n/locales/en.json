@@ -4339,9 +4339,9 @@
       "signIn": "How it signs in",
       "signInHelp": "A token is one or the other, never both. A bearer token is sent as it is; a client id and secret are traded at /token for a short-lived token.",
       "kindRequired": "Choose how this token signs in.",
-      "webhookScope": "A webhook token can not call the API. Formalie sends it as Authorization: Bearer with every call to the webhooks that use it, so your receiver can check the call is real.",
+      "webhookScope": "A webhook token can not call the API. Formalie signs every call to the webhooks that use it (Formalie-Signature) and sends it as Authorization: Bearer, so your receiver can check the call is real.",
       "webhookShort": "Webhooks only",
-      "webhookUsage": "Your receiver checks every call:\nAuthorization: Bearer {token}\nContent-Type: application/json\nFormalie-Key: dlv_…   (the delivery id, the same on every retry)"
+      "webhookUsage": "Your receiver checks every call:\nAuthorization: Bearer {token}\nContent-Type: application/json\nFormalie-Key: dlv_…   (the delivery id, the same on every retry)\nFormalie-Timestamp: …   (this try, in Unix seconds: refuse one more than 5 minutes old)\nFormalie-Signature: v1=…   (HMAC-SHA256 of the timestamp, a dot and the raw body, keyed with this token)"
     },
     "rotate": {
       "title": "Rotate {name}",
@@ -7003,7 +7003,7 @@
       "noDeliveries": "No deliveries yet",
       "noDeliveriesDesc": "Deliveries show up here as events happen. Send a test to try the address now.",
       "lastDelivery": "Last {when}",
-      "secretHint": "Keep it on your server only. Refuse any call whose Authorization header is not exactly this (see Checking the token in the webhook's panel).",
+      "secretHint": "Keep it on your server only. Your receiver uses it to check each call's Formalie-Signature (see Checking a delivery in the webhook's panel).",
       "deleteTitle": "Delete this webhook?",
       "deleteDesc": "{name} stops receiving calls and its delivery log is removed. This can not be undone.",
       "sendTest": "Send a test",
@@ -7108,12 +7108,12 @@
         "resentFailed": "Sent, but not delivered: see the delivery"
       },
       "verify": {
-        "title": "Checking the token",
-        "text": "Every call carries these headers. Refuse it unless Authorization is exactly Bearer and your webhook token (compare in constant time). The Formalie-Key is the delivery id and stays the same on retries: skip one you already handled.",
+        "title": "Checking a delivery",
+        "text": "Every call carries these headers. Check Formalie-Signature: work out HMAC-SHA256 of the Formalie-Timestamp, a dot and the raw body, with your webhook token as the key, and compare it in constant time. Refuse a timestamp more than 5 minutes old (a replay). The Formalie-Key is the delivery id and stays the same on retries: skip one you already handled. The Authorization header (Bearer and your token) can be checked as well.",
         "answer": "Answer with any 2xx status within 10 seconds; do the real work afterwards. Anything else is retried."
       },
       "token": "Webhook token",
-      "tokenHelp": "Formalie sends it as Authorization: Bearer with every call, the same headers as the API. Webhook tokens are made and managed in Tokens & headers.",
+      "tokenHelp": "Formalie signs every call with it (Formalie-Signature) and also sends it as Authorization: Bearer, the same headers as the API. Webhook tokens are made and managed in Tokens & headers.",
       "tokenNew": "A new webhook token: {name} · webhook",
       "tokenTitle": "Webhook token {name}",
       "tokenGone": "Its token was revoked, expired or deleted: deliveries fail until you pick another one.",
@@ -9805,14 +9805,15 @@
     "doneDesc": "{email} won't get {what} from {workspace} any more. Changed your mind? Undo it.",
     "stop": "Unsubscribe",
     "undo": "Undo",
-    "kept": "Emails you need, such as sign-in codes and copies of your own answers, still arrive.",
+    "kept": "Emails you need, such as sign-in codes, still arrive.",
     "what": {
       "responsesTo": "new-response emails for {form}",
       "responses": "new-response emails",
       "notification": "{event} emails",
       "updates": "these updates",
       "daily_digest": "the daily summary",
-      "form_invitation": "form invitations"
+      "form_invitation": "form invitations",
+      "response_receipt": "copies of your answers to forms"
     }
   },
   "support": {

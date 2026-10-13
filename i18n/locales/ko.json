@@ -4339,9 +4339,9 @@
       "signIn": "로그인 방식",
       "signInHelp": "토큰은 둘 중 하나이며 둘 다는 아닙니다. Bearer 토큰은 그대로 보내고, 클라이언트 ID와 시크릿은 /token에서 단기 토큰으로 교환합니다.",
       "kindRequired": "이 토큰의 로그인 방식을 선택하세요.",
-      "webhookScope": "웹훅 토큰으로는 API를 호출할 수 없습니다. Formalie는 이 토큰을 쓰는 웹훅을 호출할 때마다 Authorization: Bearer로 보내며, 수신 측이 호출이 진짜인지 확인할 수 있게 합니다.",
+      "webhookScope": "웹훅 토큰으로는 API를 호출할 수 없습니다. Formalie는 이 토큰을 쓰는 웹훅으로 가는 모든 호출에 서명하고(Formalie-Signature) Authorization: Bearer로 보내므로, 수신 측이 호출이 진짜인지 확인할 수 있습니다.",
       "webhookShort": "웹훅 전용",
-      "webhookUsage": "수신 측이 모든 호출을 확인합니다:\nAuthorization: Bearer {token}\nContent-Type: application/json\nFormalie-Key: dlv_…   (전송 ID, 재시도해도 동일)"
+      "webhookUsage": "수신 측이 모든 호출을 확인합니다:\nAuthorization: Bearer {token}\nContent-Type: application/json\nFormalie-Key: dlv_…   (전송 ID, 재시도해도 동일)\nFormalie-Timestamp: …   (이번 시도, Unix 초: 5분보다 오래되면 거부)\nFormalie-Signature: v1=…   (타임스탬프, 점, 받은 그대로의 본문의 HMAC-SHA256, 키는 이 토큰)"
     },
     "rotate": {
       "title": "{name} 교체",
@@ -7003,7 +7003,7 @@
       "noDeliveries": "아직 전송이 없습니다",
       "noDeliveriesDesc": "이벤트가 발생하면 전송 내역이 여기에 표시됩니다. 테스트를 보내 지금 주소를 시험해 보세요.",
       "lastDelivery": "마지막 {when}",
-      "secretHint": "서버에서만 보관하세요. Authorization 헤더가 이 값과 정확히 같지 않은 호출은 거부하세요(웹훅 패널의 토큰 확인 참고).",
+      "secretHint": "서버에만 보관하세요. 수신 측은 각 호출의 Formalie-Signature를 확인하는 데 사용합니다(웹훅 패널의 전송 확인 참고).",
       "deleteTitle": "이 웹훅을 삭제할까요?",
       "deleteDesc": "{name}은(는) 더 이상 호출을 받지 않으며 전송 로그도 삭제됩니다. 이 작업은 되돌릴 수 없습니다.",
       "sendTest": "테스트 보내기",
@@ -7108,12 +7108,12 @@
         "resentFailed": "보냈지만 전달되지 않았습니다: 전송 내역을 확인하세요"
       },
       "verify": {
-        "title": "토큰 확인",
-        "text": "모든 호출에 이 헤더가 붙습니다. Authorization이 정확히 Bearer와 웹훅 토큰이 아니면 거부하세요(일정한 시간으로 비교). Formalie-Key는 전송 ID이며 재시도해도 같습니다: 이미 처리한 것은 건너뛰세요.",
+        "title": "전송 확인",
+        "text": "모든 호출에 이 헤더가 포함됩니다. Formalie-Signature를 확인하세요: 웹훅 토큰을 키로 Formalie-Timestamp, 점, 받은 그대로의 본문의 HMAC-SHA256을 계산하고 일정 시간 비교로 대조합니다. 5분보다 오래된 타임스탬프는 거부하세요(재전송). Formalie-Key는 전송 ID이며 재시도에도 같습니다: 이미 처리한 것은 건너뛰세요. Authorization 헤더(Bearer와 토큰)도 함께 확인할 수 있습니다.",
         "answer": "10초 안에 아무 2xx 상태로 응답하고 실제 작업은 그 뒤에 하세요. 그 외의 응답은 재시도됩니다."
       },
       "token": "웹훅 토큰",
-      "tokenHelp": "Formalie는 호출할 때마다 Authorization: Bearer로 보내며, 헤더는 API와 같습니다. 웹훅 토큰은 토큰 & 헤더에서 만들고 관리합니다.",
+      "tokenHelp": "Formalie는 이것으로 모든 호출에 서명하고(Formalie-Signature) Authorization: Bearer로도 보냅니다. API와 같은 헤더입니다. 웹훅 토큰은 토큰 및 헤더에서 만들고 관리합니다.",
       "tokenNew": "새 웹훅 토큰: {name} · webhook",
       "tokenTitle": "웹훅 토큰 {name}",
       "tokenGone": "토큰이 취소되었거나 만료되었거나 삭제되었습니다: 다른 토큰을 고를 때까지 전송이 실패합니다.",
@@ -9805,14 +9805,15 @@
     "doneDesc": "{email}은(는) 이제 {workspace}의 {what}을(를) 받지 않습니다. 마음이 바뀌셨나요? 되돌리세요.",
     "stop": "수신 거부",
     "undo": "되돌리기",
-    "kept": "로그인 코드나 본인 답변 사본처럼 꼭 필요한 이메일은 계속 받습니다.",
+    "kept": "로그인 코드처럼 꼭 필요한 이메일은 계속 받습니다.",
     "what": {
       "responsesTo": "{form} 새 응답 이메일",
       "responses": "새 응답 이메일",
       "notification": "'{event}' 이메일",
       "updates": "이 소식",
       "daily_digest": "일일 요약",
-      "form_invitation": "양식 초대"
+      "form_invitation": "양식 초대",
+      "response_receipt": "양식에 제출한 답변 사본"
     }
   },
   "support": {

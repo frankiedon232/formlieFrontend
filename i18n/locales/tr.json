@@ -4339,9 +4339,9 @@
       "signIn": "Nasıl giriş yapar",
       "signInHelp": "Bir token ya biridir ya ötekidir, asla ikisi birden değil. Bearer token olduğu gibi gönderilir; istemci kimliği ve gizli anahtar /token'da kısa ömürlü bir token ile değiştirilir.",
       "kindRequired": "Bu token'ın nasıl giriş yapacağını seçin.",
-      "webhookScope": "Webhook token'ı API'yi çağıramaz. Formalie, onu kullanan webhook'lara yaptığı her çağrıda Authorization: Bearer olarak gönderir, böylece alıcınız çağrının gerçek olduğunu doğrulayabilir.",
+      "webhookScope": "Bir webhook belirteci API'yi çağıramaz. Formalie onu kullanan webhook'lara yapılan her çağrıyı onunla imzalar (Formalie-Signature) ve Authorization: Bearer olarak gönderir; böylece alıcınız çağrının gerçek olduğunu doğrulayabilir.",
       "webhookShort": "Yalnızca webhook'lar",
-      "webhookUsage": "Alıcınız her çağrıyı kontrol eder:\nAuthorization: Bearer {token}\nContent-Type: application/json\nFormalie-Key: dlv_…   (teslimat kimliği, her yeniden denemede aynı)"
+      "webhookUsage": "Alıcınız her çağrıyı kontrol eder:\nAuthorization: Bearer {token}\nContent-Type: application/json\nFormalie-Key: dlv_…   (teslimat kimliği, her yeniden denemede aynı)\nFormalie-Timestamp: …   (bu deneme, Unix saniyesi: 5 dakikadan eskiyse reddedin)\nFormalie-Signature: v1=…   (zaman damgası, bir nokta ve ham gövdenin HMAC-SHA256 değeri, anahtar bu belirteç)"
     },
     "rotate": {
       "title": "{name} yenile",
@@ -7003,7 +7003,7 @@
       "noDeliveries": "Henüz teslimat yok",
       "noDeliveriesDesc": "Olaylar gerçekleştikçe teslimatlar burada görünür. Adresi hemen denemek için bir test gönderin.",
       "lastDelivery": "Son: {when}",
-      "secretHint": "Yalnızca sunucunuzda saklayın. Authorization header'ı tam olarak bu olmayan her çağrıyı reddedin (webhook panelindeki Token'ı kontrol etme bölümüne bakın).",
+      "secretHint": "Yalnızca sunucunuzda saklayın. Alıcınız her çağrının Formalie-Signature değerini doğrulamak için onu kullanır (webhook panelinde Teslimatı doğrulama bölümüne bakın).",
       "deleteTitle": "Bu webhook silinsin mi?",
       "deleteDesc": "{name} artık çağrı almaz ve teslimat günlüğü silinir. Bu işlem geri alınamaz.",
       "sendTest": "Test gönder",
@@ -7108,12 +7108,12 @@
         "resentFailed": "Gönderildi ama teslim edilmedi: teslimata bakın"
       },
       "verify": {
-        "title": "Token'ı kontrol etme",
-        "text": "Her çağrı bu header'ları taşır. Authorization tam olarak Bearer ve webhook token'ınız değilse reddedin (sabit sürede karşılaştırın). Formalie-Key teslimat kimliğidir ve yeniden denemelerde aynı kalır: zaten işlediğinizi atlayın.",
+        "title": "Teslimatı doğrulama",
+        "text": "Her çağrı bu başlıkları taşır. Formalie-Signature değerini doğrulayın: webhook belirtecinizi anahtar olarak kullanıp Formalie-Timestamp, bir nokta ve ham gövdenin HMAC-SHA256 değerini hesaplayın ve sabit zamanda karşılaştırın. 5 dakikadan eski bir zaman damgasını reddedin (yeniden oynatma). Formalie-Key teslimat kimliğidir ve yeniden denemelerde aynı kalır: zaten işlediğinizi atlayın. Authorization başlığı (Bearer ve belirteciniz) de doğrulanabilir.",
         "answer": "10 saniye içinde herhangi bir 2xx durumuyla yanıt verin, asıl işi sonra yapın. Başka her yanıt yeniden denenir."
       },
       "token": "Webhook token'ı",
-      "tokenHelp": "Formalie bunu her çağrıda Authorization: Bearer olarak gönderir, API ile aynı header'lar. Webhook token'ları Token'lar & header'lar bölümünde oluşturulur ve yönetilir.",
+      "tokenHelp": "Formalie her çağrıyı onunla imzalar (Formalie-Signature) ve onu Authorization: Bearer olarak da gönderir, API ile aynı başlıklar. Webhook belirteçleri Belirteçler ve başlıklar bölümünde oluşturulur ve yönetilir.",
       "tokenNew": "Yeni webhook token'ı: {name} · webhook",
       "tokenTitle": "Webhook token'ı {name}",
       "tokenGone": "Token'ı iptal edildi, süresi doldu veya silindi: başka birini seçene kadar teslimatlar başarısız olur.",
@@ -9805,14 +9805,15 @@
     "doneDesc": "{email}, {workspace} kaynağından artık {what} almayacak. Fikrinizi mi değiştirdiniz? Geri alın.",
     "stop": "Abonelikten çık",
     "undo": "Geri al",
-    "kept": "Giriş kodları ve kendi yanıtlarınızın kopyaları gibi gerekli e-postalar gelmeye devam eder.",
+    "kept": "Giriş kodları gibi ihtiyacınız olan e-postalar gelmeye devam eder.",
     "what": {
       "responsesTo": "{form} için yeni yanıt e-postaları",
       "responses": "yeni yanıt e-postaları",
       "notification": "'{event}' e-postaları",
       "updates": "bu güncellemeler",
       "daily_digest": "günlük özet",
-      "form_invitation": "form davetleri"
+      "form_invitation": "form davetleri",
+      "response_receipt": "formlara verdiğiniz yanıtların kopyaları"
     }
   },
   "support": {

@@ -1,7 +1,8 @@
 /**
  * Webhooks in the mock (F13 M6), kept in `.data/mock/integrations.json`.
- * Webhooks really call their address: each response event becomes a delivery, signed with the
- * webhook's token (made in Tokens & headers, sent as Authorization: Bearer), retried after 1, 5, 15, 60 and 360 minutes (timers in this process; due retries
+ * Webhooks really call their address: each response event becomes a delivery, carrying the
+ * webhook's token (made in Tokens & headers, sent as Authorization: Bearer) and signed with it (Formalie-Signature over
+ * Formalie-Timestamp and the raw body, security review M16), retried after 1, 5, 15, 60 and 360 minutes (timers in this process; due retries
  * are also picked up whenever the lists are read), and a webhook pauses itself after 20 failures in a
  * row. Delivery logs show the body with personal answers masked; the body as sent is kept for
  * retries and Send again (the real backend keeps it encrypted, 30 days). A few samples are seeded.
@@ -22,6 +23,7 @@ import { apiOf, createToken, schemaOf } from './apiStore'
 import { endpointFieldsOf } from '#shared/utils/apiService/endpoints'
 import { secretPreview, tokenStatusOf } from '#shared/utils/apiService/tokens'
 import { MOCK_TENANTS, MOCK_USERS, type MockTenant } from './tenants'
+import { signedHeaders } from '../core/webhookSignature'
 
 export interface StoredWebhook {
   id: string
@@ -154,7 +156,7 @@ function sampleDelivery(webhook: StoredWebhook, event: WebhookEvent, form: Store
     next_retry_at: retrying ? iso(Math.max(Date.now() + 10 * 60_000, lastAt + WEBHOOK_RETRY_MINUTES[history.length - 1]! * 60_000)) : null,
     body: null,
     logged_body: body,
-    request_headers: deliveryHeaders(id, 'formalie_hook_live_…'),
+    request_headers: deliveryHeaders(id, 'formalie_hook_live_…', body, at),
     response: { headers: { 'content-type': ok ? 'application/json' : 'text/html' }, body: ok ? '{"received":true}' : null },
     history,
   }
@@ -231,9 +233,10 @@ function tokenOf(tenant: MockTenant, webhook: StoredWebhook) {
 }
 
 /** The same headers as an API call (owner, 2026-10-06): the token as Bearer, JSON, and the delivery id as the
- * Formalie-Key (the same on every retry of a delivery, so a receiver can skip one it already has). */
-function deliveryHeaders(id: string, bearer: string): Record<string, string> {
-  return { 'Authorization': `Bearer ${bearer}`, 'Content-Type': 'application/json', 'Formalie-Key': `dlv_${encodeId(id)}`, 'User-Agent': 'Formalie-Webhooks/1.0' }
+ * Formalie-Key (the same on every retry of a delivery, so a receiver can skip one it already has). Signed since
+ * 2026-10-13 (security review M16): Formalie-Timestamp (this try) and Formalie-Signature, keyed with the same token. */
+export function deliveryHeaders(id: string, bearer: string, body: string, now = Date.now()): Record<string, string> {
+  return { 'Authorization': `Bearer ${bearer}`, 'Content-Type': 'application/json', 'Formalie-Key': `dlv_${encodeId(id)}`, ...(bearer ? signedHeaders(bearer, body, now) : {}), 'User-Agent': 'Formalie-Webhooks/1.0' }
 }
 
 const timers = new Map<string, ReturnType<typeof setTimeout>>()
@@ -270,7 +273,7 @@ export async function attempt(tenant: MockTenant, delivery: StoredDelivery, even
   if (!webhook || !delivery.body) return delivery
   const token = webhook.token_id ? apiOf(tenant).tokens.find(item => item.id === webhook.token_id) : undefined
   const usable = token && token.secret && ['active', 'expiring'].includes(tokenStatusOf(token))
-  const headers = deliveryHeaders(delivery.id, usable ? token.secret! : '')
+  const headers = deliveryHeaders(delivery.id, usable ? token.secret! : '', delivery.body)
   const started = Date.now()
   let entry: WebhookAttempt
   // No token to send (deleted, revoked or expired): nothing goes out; it counts as a failure to fix

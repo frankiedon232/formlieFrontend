@@ -137,3 +137,12 @@ export const REGIONS: Record<string, string[]> = {
 }
 /** Rate limit choices (calls per minute; null = no limit). */
 export const RATE_LIMIT_CHOICES: (number | null)[] = [30, 60, 120, 300, 600, 1200, 3000, null]
+
+/** The blocks for every endpoint: the only rules checked before the caller's token (security review L21, 2026-10-13),
+ *  so a caller without a valid token learns nothing about endpoint names or the other rules. */
+export const blocksEverywhere = <T extends { scope: { type: string }; action: string }>(rules: T[]) =>
+  rules.filter(rule => rule.scope.type === 'all' && rule.action === 'block')
+
+/** What a caller is told when an access rule refuses (FRM-API-1015): which kind of refusal, never the rule's value
+ *  (security review L21). The workspace sees the rule itself in its own traffic log and the rule's hits. */
+export const refusalDetails = (decision: AccessDecision) => [{ field: decision.reason ?? 'not_allowed', message: 'not allowed' }]

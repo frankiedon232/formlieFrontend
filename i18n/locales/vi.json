@@ -4339,9 +4339,9 @@
       "signIn": "Cách đăng nhập",
       "signInHelp": "Một token là cái này hoặc cái kia, không bao giờ cả hai. Bearer token được gửi nguyên trạng; client id và secret được đổi tại /token lấy một token ngắn hạn.",
       "kindRequired": "Chọn cách token này đăng nhập.",
-      "webhookScope": "Token webhook không gọi được API. Formalie gửi nó dưới dạng Authorization: Bearer trong mỗi cuộc gọi tới các webhook dùng nó, để bên nhận kiểm tra cuộc gọi là thật.",
+      "webhookScope": "Token webhook không thể gọi API. Formalie ký bằng nó mỗi lệnh gọi tới các webhook dùng nó (Formalie-Signature) và gửi nó dưới dạng Authorization: Bearer, để bên nhận kiểm tra lệnh gọi là thật.",
       "webhookShort": "Chỉ cho webhook",
-      "webhookUsage": "Bên nhận của bạn kiểm tra mỗi cuộc gọi:\nAuthorization: Bearer {token}\nContent-Type: application/json\nFormalie-Key: dlv_…   (id giao, giống nhau ở mỗi lần thử lại)"
+      "webhookUsage": "Bên nhận của bạn kiểm tra mỗi cuộc gọi:\nAuthorization: Bearer {token}\nContent-Type: application/json\nFormalie-Key: dlv_…   (id giao, giống nhau ở mỗi lần thử lại)\nFormalie-Timestamp: …   (lần thử này, tính bằng giây Unix: từ chối nếu cũ hơn 5 phút)\nFormalie-Signature: v1=…   (HMAC-SHA256 của dấu thời gian, một dấu chấm và nội dung thô, khóa là token này)"
     },
     "rotate": {
       "title": "Xoay {name}",
@@ -7003,7 +7003,7 @@
       "noDeliveries": "Chưa có lượt gửi",
       "noDeliveriesDesc": "Các lượt gửi sẽ hiện ở đây khi có sự kiện. Hãy gửi thử để thử địa chỉ ngay.",
       "lastDelivery": "Gần nhất {when}",
-      "secretHint": "Chỉ giữ nó trên máy chủ của bạn. Từ chối mọi cuộc gọi có header Authorization không khớp chính xác với giá trị này (xem Kiểm tra token trong bảng của webhook).",
+      "secretHint": "Chỉ giữ nó trên máy chủ của bạn. Bên nhận dùng nó để kiểm tra Formalie-Signature của mỗi lệnh gọi (xem Kiểm tra lần gửi trong bảng của webhook).",
       "deleteTitle": "Xóa webhook này?",
       "deleteDesc": "{name} không còn nhận cuộc gọi và nhật ký lượt gửi bị xóa. Không thể hoàn tác thao tác này.",
       "sendTest": "Gửi thử",
@@ -7108,12 +7108,12 @@
         "resentFailed": "Đã gửi nhưng chưa tới nơi: xem lượt gửi"
       },
       "verify": {
-        "title": "Kiểm tra token",
-        "text": "Mỗi cuộc gọi mang các header này. Hãy từ chối nếu Authorization không đúng là Bearer và token webhook của bạn (so sánh trong thời gian không đổi). Formalie-Key là id giao và giữ nguyên khi thử lại: bỏ qua cuộc gọi bạn đã xử lý.",
+        "title": "Kiểm tra lần gửi",
+        "text": "Mỗi lệnh gọi đều có các header này. Kiểm tra Formalie-Signature: tính HMAC-SHA256 của Formalie-Timestamp, một dấu chấm và nội dung thô, với token webhook làm khóa, rồi so sánh trong thời gian không đổi. Từ chối dấu thời gian cũ hơn 5 phút (gửi lặp lại). Formalie-Key là id của lần gửi và giữ nguyên khi thử lại: bỏ qua lần bạn đã xử lý. Bạn cũng có thể kiểm tra header Authorization (Bearer và token của bạn).",
         "answer": "Trả lời bằng bất kỳ trạng thái 2xx nào trong 10 giây; làm việc thật sau đó. Mọi phản hồi khác sẽ được thử lại."
       },
       "token": "Token webhook",
-      "tokenHelp": "Formalie gửi nó dưới dạng Authorization: Bearer trong mỗi cuộc gọi, cùng header như API. Token webhook được tạo và quản lý trong Token & header.",
+      "tokenHelp": "Formalie ký mỗi lệnh gọi bằng nó (Formalie-Signature) và cũng gửi nó dưới dạng Authorization: Bearer, cùng các header như API. Token webhook được tạo và quản lý trong Token và header.",
       "tokenNew": "Token webhook mới: {name} · webhook",
       "tokenTitle": "Token webhook {name}",
       "tokenGone": "Token của nó đã bị thu hồi, hết hạn hoặc bị xóa: việc giao thất bại cho đến khi bạn chọn token khác.",
@@ -9805,14 +9805,15 @@
     "doneDesc": "{email} sẽ không nhận {what} từ {workspace} nữa. Đổi ý? Hoàn tác.",
     "stop": "Hủy đăng ký",
     "undo": "Hoàn tác",
-    "kept": "Các email cần thiết, như mã đăng nhập và bản sao câu trả lời của bạn, vẫn được gửi.",
+    "kept": "Các email bạn cần, như mã đăng nhập, vẫn được gửi.",
     "what": {
       "responsesTo": "email về câu trả lời mới cho {form}",
       "responses": "email về câu trả lời mới",
       "notification": "email \"{event}\"",
       "updates": "các cập nhật này",
       "daily_digest": "bản tóm tắt hằng ngày",
-      "form_invitation": "lời mời điền biểu mẫu"
+      "form_invitation": "lời mời điền biểu mẫu",
+      "response_receipt": "bản sao câu trả lời của bạn trong biểu mẫu"
     }
   },
   "support": {

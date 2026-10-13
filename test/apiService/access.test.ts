@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { checkRuleValue, decideAccess, ipInCidr, normaliseRuleValue, parseIp, REGIONS, regionOf, rulesFor } from '../../shared/utils/apiService/access'
+import { blocksEverywhere, checkRuleValue, decideAccess, ipInCidr, normaliseRuleValue, parseIp, refusalDetails, REGIONS, regionOf, rulesFor } from '../../shared/utils/apiService/access'
 import { COUNTRY_CODES } from '../../shared/utils/platform/countries'
 
 const caller = (ip: string, domain: string | null = null, country: string | null = null) => ({ ip, domain, country })
@@ -97,5 +97,20 @@ describe('anonymous networks', () => {
     expect(decideAccess(rules, { ip: '203.0.113.9', domain: null, country: 'GB', networks: ['vpn'] })).toMatchObject({ allowed: false, reason: 'blocked', rule: { value: 'vpn' } })
     expect(decideAccess(rules, { ip: '203.0.113.9', domain: null, country: 'GB', networks: ['hosting'] }).allowed).toBe(true)
     expect(decideAccess(rules, { ip: '203.0.113.9', domain: null, country: 'GB' }).allowed).toBe(true)
+  })
+})
+
+describe('the gateway order (security review L21)', () => {
+  const scoped = (id: string, action: 'allow' | 'block', type: 'all' | 'service' | 'endpoint') => ({ ...rule(id, action, 'ip', ['203.0.113.9']), scope: { type, id: type === 'all' ? null : 'x' } })
+  it('checks only the blocks for every endpoint before the token', () => {
+    const rules = [scoped('a', 'block', 'all'), scoped('b', 'allow', 'all'), scoped('c', 'block', 'service'), scoped('d', 'block', 'endpoint')]
+    expect(blocksEverywhere(rules).map(item => item.id)).toEqual(['a'])
+  })
+  it('never tells the caller the rule value', () => {
+    const blocked = decideAccess([rule('a', 'block', 'ip', ['203.0.113.9'])], caller('203.0.113.9'))
+    expect(refusalDetails(blocked)).toEqual([{ field: 'blocked', message: 'not allowed' }])
+    const notAllowed = decideAccess([rule('b', 'allow', 'country', ['FR'])], caller('203.0.113.9', null, 'GB'))
+    expect(refusalDetails(notAllowed)).toEqual([{ field: 'not_allowed', message: 'not allowed' }])
+    expect(JSON.stringify(refusalDetails(blocked))).not.toContain('203.0.113.9')
   })
 })

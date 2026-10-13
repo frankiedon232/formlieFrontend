@@ -4339,9 +4339,9 @@
       "signIn": "So meldet es sich an",
       "signInHelp": "Ein Token ist entweder das eine oder das andere, nie beides. Ein Bearer-Token wird unverändert gesendet; Client-ID und Secret werden bei /token gegen ein kurzlebiges Token getauscht.",
       "kindRequired": "Wähle, wie sich dieses Token anmeldet.",
-      "webhookScope": "Ein Webhook-Token kann die API nicht aufrufen. Formalie sendet ihn als Authorization: Bearer bei jedem Aufruf an die Webhooks, die ihn nutzen, damit Ihr Empfänger prüfen kann, ob der Aufruf echt ist.",
+      "webhookScope": "Ein Webhook-Token kann die API nicht aufrufen. Formalie signiert damit jeden Aufruf an die Webhooks, die es nutzen (Formalie-Signature), und sendet es als Authorization: Bearer, damit Ihr Empfänger prüfen kann, dass der Aufruf echt ist.",
       "webhookShort": "Nur für Webhooks",
-      "webhookUsage": "Ihr Empfänger prüft jeden Aufruf:\nAuthorization: Bearer {token}\nContent-Type: application/json\nFormalie-Key: dlv_…   (die Zustell-ID, bei jedem erneuten Versuch gleich)"
+      "webhookUsage": "Ihr Empfänger prüft jeden Aufruf:\nAuthorization: Bearer {token}\nContent-Type: application/json\nFormalie-Key: dlv_…   (die Zustell-ID, bei jedem erneuten Versuch gleich)\nFormalie-Timestamp: …   (dieser Versuch, in Unix-Sekunden: älter als 5 Minuten ablehnen)\nFormalie-Signature: v1=…   (HMAC-SHA256 aus Zeitstempel, Punkt und unverändertem Body, mit diesem Token als Schlüssel)"
     },
     "rotate": {
       "title": "{name} rotieren",
@@ -7003,7 +7003,7 @@
       "noDeliveries": "Noch keine Zustellungen",
       "noDeliveriesDesc": "Zustellungen erscheinen hier, sobald Ereignisse eintreten. Senden Sie jetzt einen Test an die Adresse.",
       "lastDelivery": "Zuletzt {when}",
-      "secretHint": "Bewahren Sie ihn nur auf Ihrem Server auf. Lehnen Sie jeden Aufruf ab, dessen Authorization-Header nicht genau diesem entspricht (siehe Token prüfen im Webhook-Panel).",
+      "secretHint": "Bewahren Sie es nur auf Ihrem Server auf. Ihr Empfänger prüft damit die Formalie-Signature jedes Aufrufs (siehe Zustellung prüfen im Bereich des Webhooks).",
       "deleteTitle": "Diesen Webhook löschen?",
       "deleteDesc": "{name} erhält keine Aufrufe mehr und das Zustellprotokoll wird entfernt. Das kann nicht rückgängig gemacht werden.",
       "sendTest": "Test senden",
@@ -7108,12 +7108,12 @@
         "resentFailed": "Gesendet, aber nicht zugestellt: siehe Zustellung"
       },
       "verify": {
-        "title": "Token prüfen",
-        "text": "Jeder Aufruf trägt diese Header. Lehnen Sie ihn ab, außer Authorization lautet genau Bearer und Ihr Webhook-Token (in konstanter Zeit vergleichen). Der Formalie-Key ist die Zustell-ID und bleibt bei Wiederholungen gleich: Überspringen Sie, was Sie schon verarbeitet haben.",
+        "title": "Zustellung prüfen",
+        "text": "Jeder Aufruf trägt diese Header. Prüfen Sie Formalie-Signature: Berechnen Sie HMAC-SHA256 aus Formalie-Timestamp, einem Punkt und dem unveränderten Body, mit Ihrem Webhook-Token als Schlüssel, und vergleichen Sie in konstanter Zeit. Lehnen Sie einen Zeitstempel ab, der älter als 5 Minuten ist (eine Wiederholung). Der Formalie-Key ist die Zustell-ID und bleibt bei erneuten Versuchen gleich: Überspringen Sie eine bereits verarbeitete. Den Authorization-Header (Bearer und Ihr Token) können Sie zusätzlich prüfen.",
         "answer": "Antworten Sie innerhalb von 10 Sekunden mit einem beliebigen 2xx-Status und erledigen Sie die eigentliche Arbeit danach. Alles andere wird wiederholt."
       },
       "token": "Webhook-Token",
-      "tokenHelp": "Formalie sendet ihn bei jedem Aufruf als Authorization: Bearer, mit denselben Headern wie die API. Webhook-Tokens werden unter Tokens & Header erstellt und verwaltet.",
+      "tokenHelp": "Formalie signiert damit jeden Aufruf (Formalie-Signature) und sendet es zusätzlich als Authorization: Bearer, mit denselben Headern wie die API. Webhook-Tokens werden unter Tokens & Header erstellt und verwaltet.",
       "tokenNew": "Neuer Webhook-Token: {name} · Webhook",
       "tokenTitle": "Webhook-Token {name}",
       "tokenGone": "Sein Token wurde widerrufen, ist abgelaufen oder wurde gelöscht: Zustellungen schlagen fehl, bis Sie einen anderen wählen.",
@@ -9805,14 +9805,15 @@
     "doneDesc": "{email} erhält keine {what} mehr von {workspace}. Doch nicht? Rückgängig machen.",
     "stop": "Abmelden",
     "undo": "Rückgängig",
-    "kept": "Wichtige E-Mails wie Anmeldecodes und Kopien Ihrer eigenen Antworten kommen weiterhin.",
+    "kept": "Wichtige E-Mails wie Anmeldecodes kommen weiterhin.",
     "what": {
       "responsesTo": "E-Mails zu neuen Antworten für {form}",
       "responses": "E-Mails zu neuen Antworten",
       "notification": "E-Mails zu „{event}“",
       "updates": "diese Benachrichtigungen",
       "daily_digest": "tägliche Zusammenfassung",
-      "form_invitation": "Formular-Einladungen"
+      "form_invitation": "Formular-Einladungen",
+      "response_receipt": "Kopien Ihrer Antworten auf Formulare"
     }
   },
   "support": {

@@ -12,9 +12,11 @@
  *   POST   /{apiKey}/{endpoint}/files?field=    one file (multipart/form-data, field "file") → its id for the JSON
  *
  * Reachable in development at `https://localhost:2202/public-api/…` and, with a hosts entry, at
- * `https://api.formalie.dev:2202/…` (server/middleware/api-host.ts). Order of checks: address key →
- * endpoint → access rules (IP, Origin domain, country) → rate limit per IP → token → rate limits per
- * token and endpoint → switched on → method → scope → required headers → signature → the form's rules.
+ * `https://api.formalie.dev:2202/…` (server/middleware/api-host.ts). Order of checks (security review L21,
+ * 2026-10-13: the token before anything that tells about endpoints): address key → rate limit per IP → access
+ * rules that block every endpoint → token → endpoint → the other access rules (IP, Origin domain, country) →
+ * rate limits per token and endpoint → switched on → method → scope → required headers → signature → the form's
+ * rules. An access-rule refusal says `blocked` or `not_allowed` and "not allowed", never the rule's value.
  * Mock only: `X-Forwarded-For` sets the caller's IP, `X-Debug-Country` its country and `X-Debug-Network`
  * its anonymous networks (vpn, proxy, tor, hosting), so rules can
  * be tried from Postman (the real service takes the connection's address and GeoIP).
@@ -39,7 +41,7 @@ import { attachRespondentFiles, respondentFile, storeApiFile } from './routes/up
 import { validateAnswer } from '#shared/utils/forms/validate'
 import { endpointFieldsOf, exampleRecord } from '#shared/utils/apiService/endpoints'
 import { canonicalJson, checkCallKey, scopeAllows, secretPreview, tokenPrefix, tokenStatusOf } from '#shared/utils/apiService/tokens'
-import { decideAccess, rulesFor, type AccessCaller } from '#shared/utils/apiService/access'
+import { blocksEverywhere, decideAccess, refusalDetails, rulesFor, type AccessCaller } from '#shared/utils/apiService/access'
 import { normaliseOrigin, originAllowed } from '#shared/utils/apiService/origins'
 import { ERROR_CODES, type ErrorCode } from '#shared/utils/errors/codes'
 import type { ApiMethod } from '#shared/utils/urls/public'
@@ -289,35 +291,36 @@ async function handle(event: H3Event, path: string, context: CallContext) {
         throw new PublicError('FRM-GEN-1001', [{ field: 'body', message: 'Send a JSON object.' }])
       }
     }
+    const api = apiOf(tenant)
+    // The caller's key first (security review L21): before it only the per-IP limit (guessing keys) and the blocks
+    // for every endpoint, so a caller without a valid token learns nothing about endpoint names or the other rules
+    const caller = callerOf(event)
+    context.caller = caller
+    rateLimit(tenant, `ip:${tenant.id}:${caller.ip}`, api.limits.per_ip)
+    // A rule's hit counts (the Access rules page), and a refusal says only which kind, never the rule's value
+    const enforce = (decision: ReturnType<typeof decideAccess>) => {
+      const decided = decision.rule ? api.rules.find(item => item.id === decision.rule!.id) : undefined
+      if (decided) {
+        decided.hits[today()] = (decided.hits[today()] ?? 0) + 1
+        decided.last_hit_at = new Date().toISOString()
+        saveApi()
+      }
+      if (!decision.allowed) throw new PublicError('FRM-API-1015', refusalDetails(decision))
+    }
     if (name === 'token' && !recordRef) {
       if (method !== 'POST') throw new PublicError('FRM-API-1008')
-      // The token address: only rules for everything apply, and the per-IP limit
-      const caller = callerOf(event)
-      const decision = decideAccess(apiOf(tenant).rules.filter(rule => rule.scope.type === 'all'), caller)
-      if (!decision.allowed) throw new PublicError('FRM-API-1015', [{ field: decision.reason!, message: decision.rule?.value ?? 'no allow rule matched' }])
-      rateLimit(tenant, `ip:${tenant.id}:${caller.ip}`, apiOf(tenant).limits.per_ip)
+      // The token address: only rules for everything apply
+      enforce(decideAccess(api.rules.filter(rule => rule.scope.type === 'all'), caller))
       return issueAccessToken(event, tenant, body)
     }
-
-    const api = apiOf(tenant)
+    enforce(decideAccess(blocksEverywhere(api.rules), caller))
+    const token = callerToken(event, tenant)
+    context.token = token
     const endpoint = api.endpoints.find(item => item.name === name)
     if (!endpoint) throw new PublicError('FRM-API-1006', [{ field: 'endpoint', message: 'unknown' }])
     context.endpoint = endpoint
-    // Access rules: a block refuses; when allow rules apply, one must match
-    const caller = callerOf(event)
-    context.caller = caller
-    const applies = rulesFor(api.rules, endpoint)
-    const decision = decideAccess(applies, caller)
-    const decided = decision.rule ? api.rules.find(item => item.id === decision.rule!.id) : undefined
-    if (decided) {
-      decided.hits[today()] = (decided.hits[today()] ?? 0) + 1
-      decided.last_hit_at = new Date().toISOString()
-      saveApi()
-    }
-    if (!decision.allowed) throw new PublicError('FRM-API-1015', [{ field: decision.reason!, message: decision.rule?.value ?? 'no allow rule matched' }])
-    rateLimit(tenant, `ip:${tenant.id}:${caller.ip}`, api.limits.per_ip)
-    const token = callerToken(event, tenant)
-    context.token = token
+    // The other access rules: a block refuses; when allow rules apply, one must match
+    enforce(decideAccess(rulesFor(api.rules, endpoint), caller))
     const left = rateLimit(tenant, `token:${token.id}`, api.limits.per_token)
     rateLimit(tenant, `endpoint:${endpoint.id}`, api.limits.per_endpoint)
     if (left) {

@@ -4339,9 +4339,9 @@
       "signIn": "Como ele entra",
       "signInHelp": "Um token é um ou outro, nunca os dois. Um token Bearer é enviado como está; um ID e segredo do cliente são trocados em /token por um token de curta duração.",
       "kindRequired": "Escolha como este token entra.",
-      "webhookScope": "Um token de webhook não pode chamar a API. A Formalie envia-o como Authorization: Bearer em cada chamada aos webhooks que o usam, para que o seu recetor confirme que a chamada é real.",
+      "webhookScope": "Um token de webhook não pode chamar a API. A Formalie assina com ele cada chamada para os webhooks que o usam (Formalie-Signature) e envia-o como Authorization: Bearer, para que o seu receptor verifique que a chamada é verdadeira.",
       "webhookShort": "Só webhooks",
-      "webhookUsage": "O seu recetor verifica cada chamada:\nAuthorization: Bearer {token}\nContent-Type: application/json\nFormalie-Key: dlv_…   (o id de entrega, igual em cada nova tentativa)"
+      "webhookUsage": "O seu recetor verifica cada chamada:\nAuthorization: Bearer {token}\nContent-Type: application/json\nFormalie-Key: dlv_…   (o id de entrega, igual em cada nova tentativa)\nFormalie-Timestamp: …   (esta tentativa, em segundos Unix: recuse se tiver mais de 5 minutos)\nFormalie-Signature: v1=…   (HMAC-SHA256 do carimbo de tempo, um ponto e o corpo bruto, com este token como chave)"
     },
     "rotate": {
       "title": "Rotacionar {name}",
@@ -7003,7 +7003,7 @@
       "noDeliveries": "Nenhuma entrega ainda",
       "noDeliveriesDesc": "As entregas aparecem aqui conforme os eventos acontecem. Envie um teste para experimentar o endereço agora.",
       "lastDelivery": "Última {when}",
-      "secretHint": "Guarde-o apenas no seu servidor. Recuse qualquer chamada cujo cabeçalho Authorization não seja exatamente este (veja Verificação do token no painel do webhook).",
+      "secretHint": "Guarde-o apenas no seu servidor. O seu receptor usa-o para verificar a Formalie-Signature de cada chamada (veja Verificar uma entrega no painel do webhook).",
       "deleteTitle": "Excluir este webhook?",
       "deleteDesc": "{name} deixa de receber chamadas e o registro de entregas é removido. Isso não pode ser desfeito.",
       "sendTest": "Enviar um teste",
@@ -7108,12 +7108,12 @@
         "resentFailed": "Enviado, mas não entregue: veja a entrega"
       },
       "verify": {
-        "title": "Verificação do token",
-        "text": "Cada chamada leva estes cabeçalhos. Recuse-a, a menos que Authorization seja exatamente Bearer e o seu token de webhook (compare em tempo constante). A Formalie-Key é o id de entrega e mantém-se igual nas novas tentativas: ignore a que já tratou.",
+        "title": "Verificar uma entrega",
+        "text": "Cada chamada traz estes cabeçalhos. Verifique Formalie-Signature: calcule o HMAC-SHA256 de Formalie-Timestamp, um ponto e o corpo bruto, com o token do webhook como chave, e compare em tempo constante. Recuse um carimbo de tempo com mais de 5 minutos (uma repetição). Formalie-Key é o id da entrega e não muda nas novas tentativas: ignore uma que já tratou. Também pode verificar o cabeçalho Authorization (Bearer e o seu token).",
         "answer": "Responda com qualquer status 2xx em até 10 segundos e faça o trabalho real depois. Qualquer outra resposta é tentada novamente."
       },
       "token": "Token de webhook",
-      "tokenHelp": "A Formalie envia-o como Authorization: Bearer em cada chamada, com os mesmos cabeçalhos da API. Os tokens de webhook são criados e geridos em Tokens e cabeçalhos.",
+      "tokenHelp": "A Formalie assina cada chamada com ele (Formalie-Signature) e também o envia como Authorization: Bearer, os mesmos cabeçalhos da API. Os tokens de webhook são criados e geridos em Tokens e cabeçalhos.",
       "tokenNew": "Novo token de webhook: {name} · webhook",
       "tokenTitle": "Token de webhook {name}",
       "tokenGone": "O token foi revogado, expirou ou foi eliminado: as entregas falham até escolher outro.",
@@ -9805,14 +9805,15 @@
     "doneDesc": "{email} não receberá mais {what} de {workspace}. Mudou de ideia? Desfaça.",
     "stop": "Cancelar inscrição",
     "undo": "Desfazer",
-    "kept": "E-mails necessários, como códigos de acesso e cópias das suas respostas, continuam chegando.",
+    "kept": "Os e-mails de que precisa, como os códigos de acesso, continuam a chegar.",
     "what": {
       "responsesTo": "e-mails de novas respostas de {form}",
       "responses": "e-mails de novas respostas",
       "notification": "e-mails de \"{event}\"",
       "updates": "estas novidades",
       "daily_digest": "o resumo diário",
-      "form_invitation": "convites para formulários"
+      "form_invitation": "convites para formulários",
+      "response_receipt": "cópias das suas respostas a formulários"
     }
   },
   "support": {

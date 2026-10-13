@@ -4339,9 +4339,9 @@
       "signIn": "Cara masuknya",
       "signInHelp": "Sebuah token adalah salah satunya, tidak pernah keduanya. Token Bearer dikirim apa adanya; ID klien dan secret ditukar di /token dengan token berumur pendek.",
       "kindRequired": "Pilih cara token ini masuk.",
-      "webhookScope": "Token webhook tidak bisa memanggil API. Formalie mengirimnya sebagai Authorization: Bearer di setiap panggilan ke webhook yang memakainya, agar penerima Anda bisa memeriksa bahwa panggilan itu asli.",
+      "webhookScope": "Token webhook tidak dapat memanggil API. Formalie menandatangani setiap panggilan ke webhook yang memakainya (Formalie-Signature) dan mengirimnya sebagai Authorization: Bearer, agar penerima Anda dapat memeriksa bahwa panggilan itu asli.",
       "webhookShort": "Hanya webhook",
-      "webhookUsage": "Penerima Anda memeriksa setiap panggilan:\nAuthorization: Bearer {token}\nContent-Type: application/json\nFormalie-Key: dlv_…   (id pengiriman, sama di setiap percobaan ulang)"
+      "webhookUsage": "Penerima Anda memeriksa setiap panggilan:\nAuthorization: Bearer {token}\nContent-Type: application/json\nFormalie-Key: dlv_…   (id pengiriman, sama di setiap percobaan ulang)\nFormalie-Timestamp: …   (percobaan ini, dalam detik Unix: tolak yang lebih dari 5 menit)\nFormalie-Signature: v1=…   (HMAC-SHA256 dari cap waktu, sebuah titik, dan body mentah, dengan token ini sebagai kunci)"
     },
     "rotate": {
       "title": "Rotasi {name}",
@@ -7003,7 +7003,7 @@
       "noDeliveries": "Belum ada pengiriman",
       "noDeliveriesDesc": "Pengiriman muncul di sini saat peristiwa terjadi. Kirim tes untuk langsung mencoba alamat.",
       "lastDelivery": "Terakhir {when}",
-      "secretHint": "Simpan hanya di server Anda. Tolak setiap panggilan yang header Authorization-nya tidak persis sama dengan ini (lihat Memeriksa token di panel webhook).",
+      "secretHint": "Simpan hanya di server Anda. Penerima Anda memakainya untuk memeriksa Formalie-Signature setiap panggilan (lihat Memeriksa pengiriman di panel webhook).",
       "deleteTitle": "Hapus webhook ini?",
       "deleteDesc": "{name} tidak lagi menerima panggilan dan log pengirimannya dihapus. Tindakan ini tidak dapat dibatalkan.",
       "sendTest": "Kirim tes",
@@ -7108,12 +7108,12 @@
         "resentFailed": "Terkirim, tetapi tidak sampai: lihat pengiriman"
       },
       "verify": {
-        "title": "Memeriksa token",
-        "text": "Setiap panggilan membawa header ini. Tolak kecuali Authorization persis Bearer dan token webhook Anda (bandingkan dalam waktu konstan). Formalie-Key adalah id pengiriman dan tetap sama saat dicoba ulang: lewati yang sudah Anda tangani.",
+        "title": "Memeriksa pengiriman",
+        "text": "Setiap panggilan membawa header ini. Periksa Formalie-Signature: hitung HMAC-SHA256 dari Formalie-Timestamp, sebuah titik, dan body mentah, dengan token webhook Anda sebagai kunci, lalu bandingkan dalam waktu konstan. Tolak cap waktu yang lebih dari 5 menit (pengulangan). Formalie-Key adalah id pengiriman dan tetap sama pada setiap percobaan ulang: lewati yang sudah Anda tangani. Header Authorization (Bearer dan token Anda) juga dapat diperiksa.",
         "answer": "Jawab dengan status 2xx apa pun dalam 10 detik; kerjakan pekerjaan sebenarnya setelahnya. Jawaban lain akan dicoba ulang."
       },
       "token": "Token webhook",
-      "tokenHelp": "Formalie mengirimnya sebagai Authorization: Bearer di setiap panggilan, dengan header yang sama seperti API. Token webhook dibuat dan dikelola di Token & header.",
+      "tokenHelp": "Formalie menandatangani setiap panggilan dengannya (Formalie-Signature) dan juga mengirimnya sebagai Authorization: Bearer, header yang sama dengan API. Token webhook dibuat dan dikelola di Token & header.",
       "tokenNew": "Token webhook baru: {name} · webhook",
       "tokenTitle": "Token webhook {name}",
       "tokenGone": "Tokennya dicabut, kedaluwarsa, atau dihapus: pengiriman gagal sampai Anda memilih yang lain.",
@@ -9805,14 +9805,15 @@
     "doneDesc": "{email} tidak akan menerima {what} dari {workspace} lagi. Berubah pikiran? Batalkan.",
     "stop": "Berhenti berlangganan",
     "undo": "Batalkan",
-    "kept": "Email yang Anda perlukan, seperti kode masuk dan salinan jawaban Anda sendiri, tetap dikirim.",
+    "kept": "Email yang Anda perlukan, seperti kode masuk, tetap dikirim.",
     "what": {
       "responsesTo": "email respons baru untuk {form}",
       "responses": "email respons baru",
       "notification": "email {event}",
       "updates": "pembaruan ini",
       "daily_digest": "ringkasan harian",
-      "form_invitation": "undangan formulir"
+      "form_invitation": "undangan formulir",
+      "response_receipt": "salinan jawaban Anda pada formulir"
     }
   },
   "support": {

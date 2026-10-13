@@ -4339,9 +4339,9 @@
       "signIn": "サインイン方法",
       "signInHelp": "トークンはどちらか一方で、両方にはなりません。Bearerトークンはそのまま送り、クライアントIDとシークレットは /token で短期トークンに交換します。",
       "kindRequired": "このトークンのサインイン方法を選んでください。",
-      "webhookScope": "Webhookトークンでは APIを呼び出せません。Formalieは、このトークンを使うWebhookへの呼び出しごとに Authorization: Bearer として送り、受信側が正規の呼び出しか確認できるようにします。",
+      "webhookScope": "Webhook トークンでは API を呼び出せません。Formalie はこれを使う Webhook への各呼び出しに署名し(Formalie-Signature)、Authorization: Bearer として送るので、受信側は呼び出しが本物か確認できます。",
       "webhookShort": "Webhook専用",
-      "webhookUsage": "受信側は呼び出しごとに確認します:\nAuthorization: Bearer {token}\nContent-Type: application/json\nFormalie-Key: dlv_…   (配信ID、再試行でも同じ)"
+      "webhookUsage": "受信側は呼び出しごとに確認します:\nAuthorization: Bearer {token}\nContent-Type: application/json\nFormalie-Key: dlv_…   (配信ID、再試行でも同じ)\nFormalie-Timestamp: …   (この試行、Unix 秒: 5 分より古ければ拒否)\nFormalie-Signature: v1=…   (タイムスタンプ、ドット、受信したままの本文の HMAC-SHA256、キーはこのトークン)"
     },
     "rotate": {
       "title": "{name} をローテーション",
@@ -7003,7 +7003,7 @@
       "noDeliveries": "配信はまだありません",
       "noDeliveriesDesc": "イベントが発生すると、ここに配信が表示されます。テストを送って今すぐアドレスを試せます。",
       "lastDelivery": "最終 {when}",
-      "secretHint": "サーバー内だけに保管してください。Authorizationヘッダーがこれと完全に一致しない呼び出しは拒否してください(Webhookのパネルのトークンの確認を参照)。",
+      "secretHint": "サーバーにのみ保管してください。受信側は各呼び出しの Formalie-Signature の確認に使います(Webhook のパネルの「配信の確認」を参照)。",
       "deleteTitle": "このWebhookを削除しますか？",
       "deleteDesc": "{name}は呼び出しを受け取らなくなり、配信ログも削除されます。この操作は元に戻せません。",
       "sendTest": "テストを送信",
@@ -7108,12 +7108,12 @@
         "resentFailed": "送信しましたが配信されませんでした。配信の詳細を確認してください"
       },
       "verify": {
-        "title": "トークンの確認",
-        "text": "どの呼び出しにもこれらのヘッダーが付きます。Authorizationが Bearer とWebhookトークンに完全一致しない場合は拒否してください(一定時間で比較)。Formalie-Keyは配信IDで、再試行でも同じです。処理済みのものはスキップしてください。",
+        "title": "配信の確認",
+        "text": "すべての呼び出しにこれらのヘッダーが付きます。Formalie-Signature を確認してください: Webhook トークンをキーとして、Formalie-Timestamp、ドット、受信したままの本文の HMAC-SHA256 を計算し、一定時間で比較します。5 分より古いタイムスタンプは拒否します(リプレイ)。Formalie-Key は配信 ID で、再試行でも同じです: 処理済みのものはスキップしてください。Authorization ヘッダー(Bearer とトークン)も確認できます。",
         "answer": "10秒以内にいずれかの2xxステータスで応答し、本来の処理はその後に行ってください。それ以外は再試行されます。"
       },
       "token": "Webhookトークン",
-      "tokenHelp": "Formalieは呼び出しごとに Authorization: Bearer として送ります。ヘッダーはAPIと同じです。Webhookトークンはトークンとヘッダーで作成・管理します。",
+      "tokenHelp": "Formalie はこれで各呼び出しに署名し(Formalie-Signature)、Authorization: Bearer としても送ります。API と同じヘッダーです。Webhook トークンは「トークンとヘッダー」で作成・管理します。",
       "tokenNew": "新しいWebhookトークン: {name} · webhook",
       "tokenTitle": "Webhookトークン {name}",
       "tokenGone": "トークンが取り消されたか、期限切れか、削除されました。別のものを選ぶまで配信は失敗します。",
@@ -9805,14 +9805,15 @@
     "doneDesc": "{email} は今後 {workspace} からの{what}を受け取りません。気が変わったら元に戻せます。",
     "stop": "配信停止",
     "undo": "元に戻す",
-    "kept": "サインインコードやご自身の回答のコピーなど、必要なメールは引き続き届きます。",
+    "kept": "サインインコードなど、必要なメールは引き続き届きます。",
     "what": {
       "responsesTo": "{form} の新しい回答メール",
       "responses": "新しい回答メール",
       "notification": "「{event}」のメール",
       "updates": "これらのお知らせ",
       "daily_digest": "毎日のまとめ",
-      "form_invitation": "フォームへの招待"
+      "form_invitation": "フォームへの招待",
+      "response_receipt": "フォームへの回答のコピー"
     }
   },
   "support": {

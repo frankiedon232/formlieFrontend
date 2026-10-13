@@ -4339,9 +4339,9 @@
       "signIn": "Jak się loguje",
       "signInHelp": "Token jest albo jednym, albo drugim, nigdy obydwoma. Token Bearer wysyła się bez zmian; ID klienta i sekret wymienia się w /token na krótkotrwały token.",
       "kindRequired": "Wybierz, jak ten token się loguje.",
-      "webhookScope": "Token webhooka nie może wywoływać API. Formalie wysyła go jako Authorization: Bearer z każdym wywołaniem webhooków, które go używają, aby Twój odbiorca mógł sprawdzić, że wywołanie jest prawdziwe.",
+      "webhookScope": "Token webhooka nie może wywoływać API. Formalie podpisuje nim każde wywołanie do webhooków, które go używają (Formalie-Signature), i wysyła go jako Authorization: Bearer, aby odbiorca mógł sprawdzić, że wywołanie jest prawdziwe.",
       "webhookShort": "Tylko webhooki",
-      "webhookUsage": "Twój odbiorca sprawdza każde wywołanie:\nAuthorization: Bearer {token}\nContent-Type: application/json\nFormalie-Key: dlv_…   (id dostarczenia, takie samo przy każdej ponownej próbie)"
+      "webhookUsage": "Twój odbiorca sprawdza każde wywołanie:\nAuthorization: Bearer {token}\nContent-Type: application/json\nFormalie-Key: dlv_…   (id dostarczenia, takie samo przy każdej ponownej próbie)\nFormalie-Timestamp: …   (ta próba, w sekundach Unix: odrzuć starszą niż 5 minut)\nFormalie-Signature: v1=…   (HMAC-SHA256 ze znacznika czasu, kropki i surowej treści, z tym tokenem jako kluczem)"
     },
     "rotate": {
       "title": "Rotuj {name}",
@@ -7003,7 +7003,7 @@
       "noDeliveries": "Brak dostaw",
       "noDeliveriesDesc": "Dostawy pojawiają się tutaj, gdy wystąpią zdarzenia. Wyślij test, aby od razu wypróbować adres.",
       "lastDelivery": "Ostatnia {when}",
-      "secretHint": "Trzymaj go tylko na swoim serwerze. Odrzucaj każde wywołanie, którego nagłówek Authorization nie jest dokładnie taki (zobacz Sprawdzanie tokenu w panelu webhooka).",
+      "secretHint": "Przechowuj go tylko na swoim serwerze. Odbiorca używa go do sprawdzania Formalie-Signature każdego wywołania (zobacz Sprawdzanie dostawy w panelu webhooka).",
       "deleteTitle": "Usunąć ten webhook?",
       "deleteDesc": "{name} przestaje otrzymywać wywołania, a jego dziennik dostaw zostaje usunięty. Tej operacji nie można cofnąć.",
       "sendTest": "Wyślij test",
@@ -7108,12 +7108,12 @@
         "resentFailed": "Wysłano, ale nie dostarczono: zobacz dostawę"
       },
       "verify": {
-        "title": "Sprawdzanie tokenu",
-        "text": "Każde wywołanie niesie te nagłówki. Odrzuć je, chyba że Authorization to dokładnie Bearer i token Twojego webhooka (porównuj w stałym czasie). Formalie-Key to id dostarczenia i przy ponownych próbach pozostaje takie samo: pomiń to, co już obsłużyłeś.",
+        "title": "Sprawdzanie dostawy",
+        "text": "Każde wywołanie ma te nagłówki. Sprawdź Formalie-Signature: oblicz HMAC-SHA256 z Formalie-Timestamp, kropki i surowej treści, z tokenem webhooka jako kluczem, i porównaj w stałym czasie. Odrzuć znacznik czasu starszy niż 5 minut (powtórka). Formalie-Key to identyfikator dostawy, taki sam przy każdej ponownej próbie: pomiń tę, którą już obsłużono. Można też sprawdzić nagłówek Authorization (Bearer i Twój token).",
         "answer": "Odpowiedz dowolnym statusem 2xx w ciągu 10 sekund, a właściwą pracę wykonaj potem. Każda inna odpowiedź jest ponawiana."
       },
       "token": "Token webhooka",
-      "tokenHelp": "Formalie wysyła go jako Authorization: Bearer z każdym wywołaniem, z tymi samymi nagłówkami co API. Tokeny webhooków tworzysz i zarządzasz nimi w Tokeny i nagłówki.",
+      "tokenHelp": "Formalie podpisuje nim każde wywołanie (Formalie-Signature) i wysyła go też jako Authorization: Bearer, z tymi samymi nagłówkami co API. Tokeny webhooków tworzy się i zarządza nimi w Tokenach i nagłówkach.",
       "tokenNew": "Nowy token webhooka: {name} · webhook",
       "tokenTitle": "Token webhooka {name}",
       "tokenGone": "Jego token został unieważniony, wygasł lub został usunięty: dostarczenia nie powiodą się, dopóki nie wybierzesz innego.",
@@ -9805,14 +9805,15 @@
     "doneDesc": "{email} nie będzie już otrzymywać: {what} od {workspace}. Zmiana zdania? Cofnij.",
     "stop": "Wypisz się",
     "undo": "Cofnij",
-    "kept": "Potrzebne wiadomości, np. kody logowania i kopie Twoich odpowiedzi, nadal będą przychodzić.",
+    "kept": "Potrzebne e-maile, takie jak kody logowania, nadal będą przychodzić.",
     "what": {
       "responsesTo": "e-maile o nowych odpowiedziach w {form}",
       "responses": "e-maile o nowych odpowiedziach",
       "notification": "e-maile „{event}”",
       "updates": "te powiadomienia",
       "daily_digest": "dzienne podsumowanie",
-      "form_invitation": "zaproszenia do formularzy"
+      "form_invitation": "zaproszenia do formularzy",
+      "response_receipt": "kopie Twoich odpowiedzi w formularzach"
     }
   },
   "support": {

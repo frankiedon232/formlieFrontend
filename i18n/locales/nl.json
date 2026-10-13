@@ -4339,9 +4339,9 @@
       "signIn": "Hoe het zich aanmeldt",
       "signInHelp": "Een token is het een of het ander, nooit beide. Een Bearer-token wordt ongewijzigd verstuurd; een client-id en geheim worden bij /token ingeruild voor een kortlevend token.",
       "kindRequired": "Kies hoe dit token zich aanmeldt.",
-      "webhookScope": "Een webhooktoken kan de API niet aanroepen. Formalie stuurt het als Authorization: Bearer mee met elke aanroep naar de webhooks die het gebruiken, zodat je ontvanger kan controleren of de aanroep echt is.",
+      "webhookScope": "Een webhooktoken kan de API niet aanroepen. Formalie ondertekent er elke aanroep naar de webhooks die het gebruiken mee (Formalie-Signature) en stuurt het als Authorization: Bearer, zodat uw ontvanger kan controleren dat de aanroep echt is.",
       "webhookShort": "Alleen webhooks",
-      "webhookUsage": "Je ontvanger controleert elke aanroep:\nAuthorization: Bearer {token}\nContent-Type: application/json\nFormalie-Key: dlv_…   (de bezorg-id, bij elke nieuwe poging hetzelfde)"
+      "webhookUsage": "Je ontvanger controleert elke aanroep:\nAuthorization: Bearer {token}\nContent-Type: application/json\nFormalie-Key: dlv_…   (de bezorg-id, bij elke nieuwe poging hetzelfde)\nFormalie-Timestamp: …   (deze poging, in Unix-seconden: weiger als ouder dan 5 minuten)\nFormalie-Signature: v1=…   (HMAC-SHA256 van het tijdstempel, een punt en de onbewerkte body, met dit token als sleutel)"
     },
     "rotate": {
       "title": "{name} roteren",
@@ -7003,7 +7003,7 @@
       "noDeliveries": "Nog geen leveringen",
       "noDeliveriesDesc": "Leveringen verschijnen hier zodra er gebeurtenissen plaatsvinden. Stuur nu een test om het adres uit te proberen.",
       "lastDelivery": "Laatste {when}",
-      "secretHint": "Bewaar het alleen op je server. Weiger elke aanroep waarvan de Authorization-header niet precies dit is (zie Het token controleren in het paneel van de webhook).",
+      "secretHint": "Bewaar het alleen op uw server. Uw ontvanger gebruikt het om de Formalie-Signature van elke aanroep te controleren (zie Een levering controleren in het paneel van de webhook).",
       "deleteTitle": "Deze webhook verwijderen?",
       "deleteDesc": "{name} ontvangt geen aanroepen meer en het leveringslogboek wordt verwijderd. Dit kan niet ongedaan worden gemaakt.",
       "sendTest": "Test versturen",
@@ -7108,12 +7108,12 @@
         "resentFailed": "Verzonden, maar niet afgeleverd: bekijk de levering"
       },
       "verify": {
-        "title": "Het token controleren",
-        "text": "Elke aanroep bevat deze headers. Weiger hem tenzij Authorization precies Bearer en je webhooktoken is (vergelijk in constante tijd). De Formalie-Key is de bezorg-id en blijft bij nieuwe pogingen hetzelfde: sla over wat je al hebt verwerkt.",
+        "title": "Een levering controleren",
+        "text": "Elke aanroep heeft deze headers. Controleer Formalie-Signature: bereken de HMAC-SHA256 van Formalie-Timestamp, een punt en de onbewerkte body, met uw webhooktoken als sleutel, en vergelijk in constante tijd. Weiger een tijdstempel ouder dan 5 minuten (een herhaling). De Formalie-Key is het leverings-id en blijft gelijk bij nieuwe pogingen: sla er een over die u al hebt verwerkt. De Authorization-header (Bearer en uw token) kunt u ook controleren.",
         "answer": "Antwoord binnen 10 seconden met een willekeurige 2xx-status en doe het echte werk daarna. Alles anders wordt opnieuw geprobeerd."
       },
       "token": "Webhooktoken",
-      "tokenHelp": "Formalie stuurt het mee als Authorization: Bearer bij elke aanroep, met dezelfde headers als de API. Webhooktokens maak en beheer je in Tokens & headers.",
+      "tokenHelp": "Formalie ondertekent elke aanroep ermee (Formalie-Signature) en stuurt het ook als Authorization: Bearer, dezelfde headers als de API. Webhooktokens maakt en beheert u in Tokens en headers.",
       "tokenNew": "Nieuw webhooktoken: {name} · webhook",
       "tokenTitle": "Webhooktoken {name}",
       "tokenGone": "Het token is ingetrokken, verlopen of verwijderd: bezorgingen mislukken tot je een ander kiest.",
@@ -9805,14 +9805,15 @@
     "doneDesc": "{email} krijgt geen {what} meer van {workspace}. Toch niet? Maak het ongedaan.",
     "stop": "Afmelden",
     "undo": "Ongedaan maken",
-    "kept": "E-mails die je nodig hebt, zoals aanmeldcodes en kopieën van je eigen antwoorden, blijven komen.",
+    "kept": "E-mails die u nodig hebt, zoals inlogcodes, komen nog steeds aan.",
     "what": {
       "responsesTo": "e-mails over nieuwe antwoorden op {form}",
       "responses": "e-mails over nieuwe antwoorden",
       "notification": "e-mails over ‘{event}’",
       "updates": "deze updates",
       "daily_digest": "de dagelijkse samenvatting",
-      "form_invitation": "formulieruitnodigingen"
+      "form_invitation": "formulieruitnodigingen",
+      "response_receipt": "kopieën van uw antwoorden op formulieren"
     }
   },
   "support": {
