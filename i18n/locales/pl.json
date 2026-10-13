@@ -1,0 +1,12 @@
+{
+  "site": {
+    "name": "Formalie",
+    "tagline": "Formularze, dane i dostęp pod Twoją kontrolą.",
+    "description": "Twórz dowolne formularze, zbieraj odpowiedzi przez link, osadzenie, kod QR lub API, przechowuj je we własnej bazie danych i decyduj, kto co widzi. Na start za darmo.",
+    "skipToContent": "Przejdź do treści"
+  },
+  "placeholder": {
+    "building": "Strona Formalie jest w budowie.",
+    "home": "Przejdź do strony głównej"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "site": {
+    "name": "Formalie",
+    "tagline": "Forms, data and access, under your control.",
+    "description": "Build any form, collect answers by link, embed, QR or API, keep them in your own database and control who sees what. Free to start.",
+    "skipToContent": "Skip to content"
+  },
+  "placeholder": {
+    "building": "The Formalie website is being built.",
+    "home": "Go to the home page"
+  }
+}

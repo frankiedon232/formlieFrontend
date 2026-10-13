@@ -1,6 +1,7 @@
 # Dependencies and builds
 node_modules/
 .nuxt/
+.nuxt-build/
 .output/
 dist/
 __pycache__/
@@ -18,3 +19,6 @@ venv/
 .idea/
 .DS_Store
 Thumbs.db
+# Claude Code local launch settings
+.claude/launch.json
+.data/

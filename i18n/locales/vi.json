@@ -1,0 +1,12 @@
+{
+  "site": {
+    "name": "Formalie",
+    "tagline": "Biểu mẫu, dữ liệu và quyền truy cập, trong tầm kiểm soát của bạn.",
+    "description": "Tạo mọi biểu mẫu, thu thập câu trả lời qua liên kết, nhúng, mã QR hoặc API, lưu trong cơ sở dữ liệu của riêng bạn và quyết định ai xem được gì. Bắt đầu miễn phí.",
+    "skipToContent": "Chuyển đến nội dung"
+  },
+  "placeholder": {
+    "building": "Trang web Formalie đang được xây dựng.",
+    "home": "Về trang chủ"
+  }
+}

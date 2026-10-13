@@ -1,0 +1,12 @@
+{
+  "site": {
+    "name": "Formalie",
+    "tagline": "양식, 데이터, 접근 권한을 직접 관리하세요.",
+    "description": "어떤 양식이든 만들고, 링크, 임베드, QR 코드 또는 API로 응답을 모아 자체 데이터베이스에 보관하고, 누가 무엇을 볼지 정하세요. 무료로 시작하세요.",
+    "skipToContent": "본문으로 건너뛰기"
+  },
+  "placeholder": {
+    "building": "Formalie 웹사이트를 준비 중입니다.",
+    "home": "홈페이지로 이동"
+  }
+}

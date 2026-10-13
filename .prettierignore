@@ -1,0 +1,10 @@
+.nuxt
+.output
+.data
+node_modules
+pnpm-lock.yaml
+docs
+public
+.nuxt-build
+*.md
+.claude

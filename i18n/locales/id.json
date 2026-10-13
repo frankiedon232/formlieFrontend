@@ -1,0 +1,12 @@
+{
+  "site": {
+    "name": "Formalie",
+    "tagline": "Formulir, data, dan akses, dalam kendali Anda.",
+    "description": "Buat formulir apa pun, kumpulkan jawaban lewat tautan, sematan, kode QR, atau API, simpan di database Anda sendiri, dan tentukan siapa melihat apa. Gratis untuk memulai.",
+    "skipToContent": "Lewati ke konten"
+  },
+  "placeholder": {
+    "building": "Situs web Formalie sedang dibangun.",
+    "home": "Ke beranda"
+  }
+}

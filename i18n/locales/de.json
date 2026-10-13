@@ -1,0 +1,12 @@
+{
+  "site": {
+    "name": "Formalie",
+    "tagline": "Formulare, Daten und Zugriffe, unter Ihrer Kontrolle.",
+    "description": "Erstellen Sie jedes Formular, sammeln Sie Antworten per Link, Einbettung, QR-Code oder API, speichern Sie sie in Ihrer eigenen Datenbank und bestimmen Sie, wer was sieht. Kostenlos starten.",
+    "skipToContent": "Zum Inhalt springen"
+  },
+  "placeholder": {
+    "building": "Die Formalie-Website entsteht gerade.",
+    "home": "Zur Startseite"
+  }
+}

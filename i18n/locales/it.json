@@ -1,0 +1,12 @@
+{
+  "site": {
+    "name": "Formalie",
+    "tagline": "Moduli, dati e accessi, sotto il tuo controllo.",
+    "description": "Crea qualsiasi modulo, raccogli risposte tramite link, incorporamento, codice QR o API, conservale nel tuo database e decidi chi vede cosa. Gratis per iniziare.",
+    "skipToContent": "Vai al contenuto"
+  },
+  "placeholder": {
+    "building": "Il sito di Formalie è in costruzione.",
+    "home": "Vai alla home page"
+  }
+}

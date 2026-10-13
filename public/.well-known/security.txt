@@ -1,0 +1,5 @@
+Contact: mailto:security@formalie.com
+Expires: 2027-10-13T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://formalie.com/.well-known/security.txt
+Policy: https://formalie.com/legal/acceptable-use#report

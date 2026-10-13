@@ -1,0 +1,12 @@
+{
+  "site": {
+    "name": "Formalie",
+    "tagline": "Formulieren, gegevens en toegang, onder jouw controle.",
+    "description": "Bouw elk formulier, verzamel antwoorden via link, insluiting, QR-code of API, bewaar ze in je eigen database en bepaal wie wat ziet. Gratis om te beginnen.",
+    "skipToContent": "Naar de inhoud"
+  },
+  "placeholder": {
+    "building": "De website van Formalie wordt gebouwd.",
+    "home": "Naar de startpagina"
+  }
+}

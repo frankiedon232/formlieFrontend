@@ -1,0 +1,12 @@
+{
+  "site": {
+    "name": "Formalie",
+    "tagline": "Fomu, data na ufikiaji, chini ya udhibiti wako.",
+    "description": "Unda fomu yoyote, kusanya majibu kwa kiungo, upachikaji, msimbo wa QR au API, yahifadhi kwenye hifadhidata yako mwenyewe na uamue nani aone nini. Anza bila malipo.",
+    "skipToContent": "Ruka hadi maudhui"
+  },
+  "placeholder": {
+    "building": "Tovuti ya Formalie inajengwa.",
+    "home": "Nenda kwenye ukurasa wa mwanzo"
+  }
+}

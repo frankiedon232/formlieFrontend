@@ -1,0 +1,12 @@
+{
+  "site": {
+    "name": "Formalie",
+    "tagline": "Formularios, datos y accesos, bajo tu control.",
+    "description": "Crea cualquier formulario, recoge respuestas por enlace, inserción, código QR o API, guárdalas en tu propia base de datos y decide quién ve qué. Gratis para empezar.",
+    "skipToContent": "Saltar al contenido"
+  },
+  "placeholder": {
+    "building": "El sitio web de Formalie está en construcción.",
+    "home": "Ir a la página de inicio"
+  }
+}

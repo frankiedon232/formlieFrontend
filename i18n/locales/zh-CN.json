@@ -1,0 +1,12 @@
+{
+  "site": {
+    "name": "Formalie",
+    "tagline": "表单、数据和访问权限，尽在你的掌控之中。",
+    "description": "构建任何表单，通过链接、嵌入、二维码或 API 收集回答，将其保存在你自己的数据库中，并决定谁能看到什么。免费开始。",
+    "skipToContent": "跳到内容"
+  },
+  "placeholder": {
+    "building": "Formalie 网站正在建设中。",
+    "home": "前往首页"
+  }
+}

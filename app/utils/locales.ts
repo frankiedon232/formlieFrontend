@@ -1,0 +1,59 @@
+/**
+ * The website's languages: the same 20 as the app (formalieFrontend shared/utils/i18n/locales.ts), in the same
+ * order, with the same flags. Used by nuxt.config.ts (i18n), the language switch and Nuxt UI's own strings.
+ *
+ * `uiLocale` is the key in `@nuxt/ui/locale`; where Nuxt UI has no translation, its own strings stay in English.
+ * `flag` is a circle-flags icon, because emoji flags don't render on Windows.
+ */
+export interface SiteLocale {
+  code: string
+  language: string
+  /** Native name, shown in the switch. */
+  name: string
+  /** English name, used for search. */
+  englishName: string
+  flag: string
+  dir: 'ltr' | 'rtl'
+  uiLocale: string
+}
+
+export const DEFAULT_LOCALE = 'en'
+
+export const LOCALE_COOKIE = 'formalie_locale'
+
+type Row = [code: string, language: string, name: string, englishName: string, flag: string, uiLocale: string]
+
+const ROWS: Row[] = [
+  ['en', 'en-US', 'English', 'English', 'us', 'en'],
+  ['fr', 'fr-FR', 'Français', 'French', 'fr', 'fr'],
+  ['es', 'es-ES', 'Español', 'Spanish', 'es', 'es'],
+  ['pt', 'pt-BR', 'Português', 'Portuguese', 'br', 'pt_br'],
+  ['de', 'de-DE', 'Deutsch', 'German', 'de', 'de'],
+  ['it', 'it-IT', 'Italiano', 'Italian', 'it', 'it'],
+  ['nl', 'nl-NL', 'Nederlands', 'Dutch', 'nl', 'nl'],
+  ['pl', 'pl-PL', 'Polski', 'Polish', 'pl', 'pl'],
+  ['ru', 'ru-RU', 'Русский', 'Russian', 'ru', 'ru'],
+  ['uk', 'uk-UA', 'Українська', 'Ukrainian', 'ua', 'uk'],
+  ['tr', 'tr-TR', 'Türkçe', 'Turkish', 'tr', 'tr'],
+  ['ar', 'ar-SA', 'العربية', 'Arabic', 'sa', 'ar'],
+  ['hi', 'hi-IN', 'हिन्दी', 'Hindi', 'in', 'hi'],
+  ['bn', 'bn-BD', 'বাংলা', 'Bengali', 'bd', 'bn'],
+  ['zh-CN', 'zh-CN', '简体中文', 'Chinese (Simplified)', 'cn', 'zh_cn'],
+  ['ja', 'ja-JP', '日本語', 'Japanese', 'jp', 'ja'],
+  ['ko', 'ko-KR', '한국어', 'Korean', 'kr', 'ko'],
+  ['id', 'id-ID', 'Bahasa Indonesia', 'Indonesian', 'id', 'id'],
+  ['vi', 'vi-VN', 'Tiếng Việt', 'Vietnamese', 'vn', 'vi'],
+  ['sw', 'sw-KE', 'Kiswahili', 'Swahili', 'ke', 'en'],
+]
+
+const RTL = new Set(['ar'])
+
+export const SITE_LOCALES: SiteLocale[] = ROWS.map(([code, language, name, englishName, flag, uiLocale]) => ({
+  code,
+  language,
+  name,
+  englishName,
+  flag: `i-circle-flags-${flag}`,
+  dir: RTL.has(code) ? 'rtl' : 'ltr',
+  uiLocale,
+}))

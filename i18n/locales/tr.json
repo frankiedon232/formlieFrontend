@@ -1,0 +1,12 @@
+{
+  "site": {
+    "name": "Formalie",
+    "tagline": "Formlar, veriler ve erişim, sizin kontrolünüzde.",
+    "description": "Her türlü formu oluşturun, yanıtları bağlantı, yerleştirme, QR kod veya API ile toplayın, kendi veritabanınızda saklayın ve kimin neyi göreceğine siz karar verin. Ücretsiz başlayın.",
+    "skipToContent": "İçeriğe geç"
+  },
+  "placeholder": {
+    "building": "Formalie web sitesi hazırlanıyor.",
+    "home": "Ana sayfaya git"
+  }
+}
