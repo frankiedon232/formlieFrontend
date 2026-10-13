@@ -1271,7 +1271,17 @@
       "acceptable-use": "Per cosa Formalie non può essere usato, come segnalare un abuso o una vulnerabilità di sicurezza e cosa facciamo quando le regole non vengono rispettate.",
       "subprocessors": "Le aziende che aiutano Formalie a gestire il servizio, cosa fa ciascuna e dove vengono trattati i dati.",
       "refunds": "Come funzionano fatturazione, rinnovi, disdette e rimborsi per i piani a pagamento di Formalie, gestiti da Paddle come rivenditore ufficiale."
-    }
+    },
+    "questionsTitle": "Domande su questi documenti?",
+    "questionsText": "Scrivi a {email}. Una persona del nostro team ti risponderà.",
+    "readingTime": "Lettura: {n} min",
+    "sectionCount": "Sezioni: {n}",
+    "copyPage": "Copia il link della pagina",
+    "backToTop": "Torna su",
+    "progress": "Avanzamento della lettura",
+    "published": "Pubblicato",
+    "previous": "Precedente",
+    "next": "Successivo"
   },
   "trustPage": {
     "title": "Fiducia e sicurezza",
@@ -1326,5 +1336,88 @@
     "reportSecurity": "Vulnerabilità di sicurezza: {email}. Non agiremo contro ricerche svolte in buona fede che rispettano la nostra {policy}.",
     "reportAbuse": "Abuso o modulo sospetto: {email}.",
     "reportPrivacy": "Domande sulla privacy: {email}."
+  },
+  "embed": {
+    "loading": "Caricamento del modulo",
+    "frameTitle": "{form}, un modulo Formalie",
+    "thanksTitle": "Grazie",
+    "thanksText": "Il tuo messaggio è arrivato al team di Formalie. Ti risponderemo via email.",
+    "unavailable": "Non è stato possibile caricare il modulo. Scrivi invece a {email}.",
+    "own": "Questo è un modulo di Formalie: ciò che invii arriva direttamente al nostro team e serve solo per risponderti."
+  },
+  "contactPage": {
+    "title": "Parla con noi",
+    "description": "Vendite, assistenza o una domanda veloce: scegli l'opzione giusta e una persona del team di Formalie ti risponderà.",
+    "metaDescription": "Contatta Formalie: parla con le vendite di Enterprise, ricevi aiuto per la tua area di lavoro o apri il centro assistenza. Risposta entro un giorno lavorativo.",
+    "sales": {
+      "title": "Vendite",
+      "text": "Team più grandi, dati nella tua regione, single sign-on, contratti e fatture.",
+      "button": "Parla con le vendite"
+    },
+    "support": {
+      "title": "Assistenza",
+      "text": "Domande o problemi con la tua area di lavoro, la fatturazione o il tuo account.",
+      "button": "Contatta l'assistenza"
+    },
+    "help": {
+      "title": "Centro assistenza",
+      "text": "Articoli, guide e un assistente in 20 lingue, all'interno del portale.",
+      "button": "Apri il centro assistenza"
+    },
+    "replies": "Rispondiamo entro un giorno lavorativo.",
+    "formTitle": "Contatta l'assistenza",
+    "formDescription": "Dicci di cosa hai bisogno e dove. Scegli un argomento, così se ne occupa la persona giusta."
+  },
+  "enterprisePage": {
+    "title": "Formalie, su misura per la tua organizzazione.",
+    "description": "Tutto ciò che offre Business, con l'infrastruttura, i contratti e l'assistenza di cui hanno bisogno le grandi organizzazioni e i settori regolamentati.",
+    "metaDescription": "Infrastruttura dedicata, dati nella regione che scegli, single sign-on, revisioni di sicurezza, limiti personalizzati, fatture e un team dedicato.",
+    "eyebrow": "Enterprise",
+    "points": [
+      {
+        "title": "Infrastruttura dedicata",
+        "text": "Risorse tutte tue, dimensionate sul tuo carico."
+      },
+      {
+        "title": "Dati nella regione che scegli",
+        "text": "Conserva i dati della tua area di lavoro dove le tue regole lo richiedono."
+      },
+      {
+        "title": "Single sign-on",
+        "text": "Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0 o OpenID Connect."
+      },
+      {
+        "title": "Un accordo sulla disponibilità",
+        "text": "Un livello di servizio scritto nel tuo contratto."
+      },
+      {
+        "title": "Revisione di sicurezza e conformità",
+        "text": "Risposte per i tuoi questionari e i tuoi revisori."
+      },
+      {
+        "title": "Limiti personalizzati",
+        "text": "Moduli, risposte, crediti IA e limiti API su misura."
+      },
+      {
+        "title": "Pagamento con fattura",
+        "text": "Condizioni e fatturazione adatte al tuo ufficio amministrativo."
+      },
+      {
+        "title": "Avvio e formazione",
+        "text": "Un team dedicato che aiuta le tue persone a partire."
+      }
+    ],
+    "visual": {
+      "workspace": "La tua area di lavoro",
+      "region": "La tua regione",
+      "checks": [
+        "Single sign-on",
+        "Accordo sulla disponibilità",
+        "Revisione di sicurezza",
+        "Pagamento con fattura"
+      ]
+    },
+    "formTitle": "Parlaci della tua organizzazione",
+    "formDescription": "Raccontaci in breve di cosa hai bisogno. Rispondiamo entro un giorno lavorativo con i prossimi passi."
   }
 }

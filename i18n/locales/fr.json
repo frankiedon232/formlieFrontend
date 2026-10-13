@@ -1271,7 +1271,17 @@
       "acceptable-use": "Ce pour quoi Formalie ne peut pas être utilisé, comment signaler un abus ou une faille de sécurité, et ce que nous faisons lorsque les règles ne sont pas respectées.",
       "subprocessors": "Les entreprises qui aident Formalie à faire fonctionner le service, le rôle de chacune et le lieu où les données sont traitées.",
       "refunds": "Comment fonctionnent la facturation, les renouvellements, les résiliations et les remboursements des offres payantes de Formalie, gérés par Paddle en tant que revendeur officiel."
-    }
+    },
+    "questionsTitle": "Des questions sur ces documents ?",
+    "questionsText": "Écrivez à {email}. Une personne de notre équipe vous répondra.",
+    "readingTime": "Lecture : {n} min",
+    "sectionCount": "Sections : {n}",
+    "copyPage": "Copier le lien de la page",
+    "backToTop": "Retour en haut",
+    "progress": "Progression de la lecture",
+    "published": "Publié",
+    "previous": "Précédent",
+    "next": "Suivant"
   },
   "trustPage": {
     "title": "Confiance et sécurité",
@@ -1326,5 +1336,88 @@
     "reportSecurity": "Faille de sécurité : {email}. Nous n'engagerons aucune action contre une recherche menée de bonne foi qui respecte notre {policy}.",
     "reportAbuse": "Abus ou formulaire suspect : {email}.",
     "reportPrivacy": "Questions sur la confidentialité : {email}."
+  },
+  "embed": {
+    "loading": "Chargement du formulaire",
+    "frameTitle": "{form}, un formulaire Formalie",
+    "thanksTitle": "Merci",
+    "thanksText": "Votre message est bien parvenu à l'équipe Formalie. Nous vous répondrons par e-mail.",
+    "unavailable": "Le formulaire n'a pas pu être chargé. Écrivez plutôt à {email}.",
+    "own": "Ce formulaire est celui de Formalie : ce que vous envoyez arrive directement à notre équipe et sert uniquement à vous répondre."
+  },
+  "contactPage": {
+    "title": "Parlez-nous",
+    "description": "Ventes, assistance ou simple question : choisissez ce qui vous convient et une personne de l'équipe Formalie vous répondra.",
+    "metaDescription": "Contactez Formalie : parlez d'Enterprise avec les ventes, obtenez de l'aide pour votre espace de travail ou ouvrez le centre d'aide. Réponse sous un jour ouvré.",
+    "sales": {
+      "title": "Ventes",
+      "text": "Grandes équipes, données dans votre région, authentification unique, contrats et factures.",
+      "button": "Contacter les ventes"
+    },
+    "support": {
+      "title": "Assistance",
+      "text": "Questions ou problèmes liés à votre espace de travail, à la facturation ou à votre compte.",
+      "button": "Contacter l'assistance"
+    },
+    "help": {
+      "title": "Centre d'aide",
+      "text": "Articles, guides et un assistant en 20 langues, dans le portail.",
+      "button": "Ouvrir le centre d'aide"
+    },
+    "replies": "Nous répondons sous un jour ouvré.",
+    "formTitle": "Contacter l'assistance",
+    "formDescription": "Dites-nous ce dont vous avez besoin et où. Choisissez un sujet pour que la bonne personne s'en charge."
+  },
+  "enterprisePage": {
+    "title": "Formalie, adapté à votre organisation.",
+    "description": "Tout ce qu'offre Business, avec l'infrastructure, les contrats et l'assistance dont les grandes organisations et les secteurs réglementés ont besoin.",
+    "metaDescription": "Infrastructure dédiée, données dans la région de votre choix, authentification unique, revues de sécurité, limites sur mesure, factures et une équipe dédiée.",
+    "eyebrow": "Enterprise",
+    "points": [
+      {
+        "title": "Infrastructure dédiée",
+        "text": "Vos propres ressources, dimensionnées pour votre charge."
+      },
+      {
+        "title": "Données dans la région de votre choix",
+        "text": "Gardez les données de votre espace de travail là où vos règles l'exigent."
+      },
+      {
+        "title": "Authentification unique",
+        "text": "Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0 ou OpenID Connect."
+      },
+      {
+        "title": "Un engagement de disponibilité",
+        "text": "Un niveau de service inscrit dans votre contrat."
+      },
+      {
+        "title": "Revue de sécurité et de conformité",
+        "text": "Des réponses pour vos questionnaires et vos auditeurs."
+      },
+      {
+        "title": "Limites sur mesure",
+        "text": "Formulaires, réponses, crédits IA et débits d'API adaptés à vos besoins."
+      },
+      {
+        "title": "Paiement sur facture",
+        "text": "Des conditions et une facturation qui conviennent à votre service financier."
+      },
+      {
+        "title": "Prise en main et formation",
+        "text": "Une équipe dédiée pour aider vos collaborateurs à bien démarrer."
+      }
+    ],
+    "visual": {
+      "workspace": "Votre espace de travail",
+      "region": "Votre région",
+      "checks": [
+        "Authentification unique",
+        "Engagement de disponibilité",
+        "Revue de sécurité",
+        "Paiement sur facture"
+      ]
+    },
+    "formTitle": "Parlez-nous de votre organisation",
+    "formDescription": "Dites-nous en quelques mots ce dont vous avez besoin. Nous répondons sous un jour ouvré avec les prochaines étapes."
   }
 }

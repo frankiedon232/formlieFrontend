@@ -1,6 +1,6 @@
 # PROGRESS, formalieSite
 
-**Last updated:** 2026-10-13 (S5 done, waiting for the owner's review)
+**Last updated:** 2026-10-13 (S6 done, waiting for the owner's review; legal pages redesigned)
 
 | Phase | What | Status | Done |
 |---|---|---|---|
@@ -9,8 +9,8 @@
 | S2 | Home page with the data-flow hero | ✅ | 100% |
 | S3 | Features and solutions pages | ✅ | 100% |
 | S4 | Pricing | ✅ | 100% |
-| S5 | Legal pages (documentation layout) and /trust | ✅ (review) | 100% |
-| S6 | Formalie forms, portal links, contact and enterprise | ⬜ | 0% |
+| S5 | Legal pages (documentation layout) and /trust | ✅ | 100% |
+| S6 | Formalie forms, portal links, contact and enterprise | ✅ (review) | 85% |
 | S7 | SEO, performance, accessibility, launch checks | ⬜ | 30% |
 
 **Every phase is only done when:**
@@ -75,11 +75,13 @@
 - ✅ `/trust` "Trust and security" from formlyBackend `docs/legal/trust-and-security.md`, without "Independent checks (when ready)", in 20 languages
 
 ## S6, Formalie forms and portal links (owner: "we will handle the linking to the portal forms later")
-- ⬜ Embedded Enterprise enquiry (`FormalieEn`) on `/enterprise` and from pricing, with prefill
-- ⬜ Embedded Contact support (`FormalieHp`) on `/contact`
-- ⬜ Newsletter form (when the owner creates it)
-- ⬜ Portal links checked (sign-up with plan and period, sign-in → find workspace)
-- ⬜ The portal links back to the legal pages (privacy on every form, terms on sign-up)
+- ✅ Embedded Enterprise enquiry (`FormalieEn`) on `/enterprise#enquiry`, prefilled from the address (`plan`, `period`, `needs`, `residency`, `company`, `email`), from pricing and every "Talk to sales"
+- ✅ Embedded Contact support (`FormalieHp`) on `/contact#support`, with `topic` and `subject` from the address
+- ✅ `SiteFormEmbed`: height from `formalie:resize`, thank-you on `formalie:submitted`, only messages from the forms origin, the visitor's language (`?lang=`), a skeleton while loading, an email fallback after 15 s
+- ⏸ Newsletter form (when the owner creates it)
+- ✅ Portal links checked: `/auth/signup` and `/auth/find-workspace` answer; ⏸ the portal's sign-up does not read `plan` and `period` yet (app task F24, `docs/SIGNUP-FLOW.md`)
+- ⏸ The portal links back to the legal pages (privacy on every form, terms on sign-up): the backend's `LEGAL_TERMS_URL` / `LEGAL_PRIVACY_URL` already point at `/legal/terms` and `/legal/privacy`; to confirm in the portal
+- ⬜ Check the two embeds in a normal browser (the preview browser blocks `*.formalie.dev`)
 
 ## S7, Launch checks
 - ⬜ SEO (`docs/SEO.md`): ✅ titles, descriptions, OG and Twitter, canonical, hreflang, breadcrumbs, structured data, sitemap, robots (S3); ⬜ OG images per page, Search Console
@@ -106,6 +108,7 @@
 | 2026-10-13 | Sample names are English ("Emma Clarke"), nothing Nigeria-themed on marketing pages | S2 | ✅ |
 | 2026-10-13 | SEO built into every page as it is made: "this is the real central page, so it must be loaded with SEO" | S3 to S7 | ✅ (ongoing) |
 | 2026-10-13 | Tighter spacing site-wide (hero closer to the header, less space between sections), nicer cards, and a richer "Built for teams in every sector" with movement | S2 to S4 | ✅ |
+| 2026-10-13 | Legal pages slicker and more premium | S5 | ✅ |
 | 2026-10-13 | Copy formlyBackend `docs/PRODUCTION-CHECKLIST.md` over this project's copy | Docs | ✅ (already identical; DEPLOYMENT-GUIDE synced too) |
 
 ## Progress log
@@ -122,3 +125,5 @@
 | 2026-10-13 | Polish | Global theme in `app.config.ts`: heroes closer to the header, one section rhythm, cards with 1rem radius and a soft lift, plan cards and table that never cut text; sector strip with 18 sectors in two gliding rows with live pulses |
 | 2026-10-13 | S4 | `/pricing`: period toggle (opens on Annually), four plans from the live API, comparison table (`UPricingTable`), Paddle and tax notes, pricing FAQ, structured data; `usePricing()`, `app/utils/pricing.ts` with tests (55); in the sitemap. Checked at 375 and 1280 px, light and dark |
 | 2026-10-13 | S5 | Seven legal pages in the documentation layout from the live API (Draft badge, English notice, offline fallback from formlyBackend's drafts), search, print, copy links; `/trust`; redirects; legal and trust copy in 20 languages; plans and legal now refresh after hydration (`onNuxtReady`) and the dev server trusts the local certificate (`--use-system-ca`). Sitemap 640 addresses. 59 tests |
+| 2026-10-13 | S5 | Legal pages redesigned (owner): hero band with status, dates, reading time and section count, navigator card with an ink pill and a questions card, numbered sections with ink tiles, one slim status strip, On this page with reading progress and back to top, document chips on phones, previous and next cards |
+| 2026-10-13 | S6 | `/enterprise` (hero visual, eight commitments, embedded enquiry with prefill), `/contact` (sales, support, help centre, embedded support form), `SiteFormEmbed`; copy in 20 languages; both pages in the sitemap. 60 tests |

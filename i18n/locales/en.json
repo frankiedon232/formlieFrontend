@@ -1271,7 +1271,17 @@
       "acceptable-use": "What Formalie may not be used for, how to report abuse or a security weakness, and what we do when the rules are broken.",
       "subprocessors": "The companies that help Formalie run the service, what each one does, and where the data is processed.",
       "refunds": "How billing, renewals, cancellations and refunds work for Formalie's paid plans, handled by Paddle as merchant of record."
-    }
+    },
+    "questionsTitle": "Questions about these documents?",
+    "questionsText": "Write to {email}. A person on our team will answer.",
+    "readingTime": "{n} min read",
+    "sectionCount": "{n} sections",
+    "copyPage": "Copy page link",
+    "backToTop": "Back to top",
+    "progress": "Reading progress",
+    "published": "Published",
+    "previous": "Previous",
+    "next": "Next"
   },
   "trustPage": {
     "title": "Trust and security",
@@ -1326,5 +1336,83 @@
     "reportSecurity": "Security weakness: {email}. We won't take action against good-faith research that follows our {policy}.",
     "reportAbuse": "Abuse or a suspicious form: {email}.",
     "reportPrivacy": "Privacy questions: {email}."
+  },
+  "embed": {
+    "loading": "Loading the form",
+    "frameTitle": "{form}, a Formalie form",
+    "thanksTitle": "Thank you",
+    "thanksText": "Your message reached the Formalie team. We will reply by email.",
+    "unavailable": "The form could not be loaded. Write to {email} instead.",
+    "own": "This is Formalie's own form: what you send goes straight to our team, and is used only to answer you."
+  },
+  "contactPage": {
+    "title": "Talk to us",
+    "description": "Sales, support or a quick question: pick what fits and a person from the Formalie team will answer.",
+    "metaDescription": "Contact Formalie: talk to sales about Enterprise, get help with your workspace, or open the help centre. Replies within one business day.",
+    "sales": {
+      "title": "Sales",
+      "text": "Larger teams, data in your region, single sign-on, contracts and invoices.",
+      "button": "Talk to sales"
+    },
+    "support": {
+      "title": "Support",
+      "text": "Questions or problems with your workspace, billing or account.",
+      "button": "Contact support"
+    },
+    "help": {
+      "title": "Help centre",
+      "text": "Articles, guides and an assistant in 20 languages, inside the portal.",
+      "button": "Open the help centre"
+    },
+    "replies": "We reply within one business day.",
+    "formTitle": "Contact support",
+    "formDescription": "Tell us what you need and where. Choose a topic so the right person picks it up."
+  },
+  "enterprisePage": {
+    "title": "Formalie, shaped around your organisation.",
+    "description": "Everything in Business, with the infrastructure, contracts and support large organisations and regulated sectors need.",
+    "metaDescription": "Dedicated infrastructure, data in the region you choose, single sign-on, security reviews, custom limits, invoices and a dedicated team.",
+    "eyebrow": "Enterprise",
+    "points": [
+      {
+        "title": "Dedicated infrastructure",
+        "text": "Your own resources, sized for your load."
+      },
+      {
+        "title": "Data in the region you choose",
+        "text": "Keep your workspace's data where your rules require."
+      },
+      {
+        "title": "Single sign-on",
+        "text": "Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0 or OpenID Connect."
+      },
+      {
+        "title": "An uptime agreement",
+        "text": "A service level written into your contract."
+      },
+      {
+        "title": "Security and compliance review",
+        "text": "Answers for your questionnaires and your auditors."
+      },
+      {
+        "title": "Custom limits",
+        "text": "Forms, responses, AI credits and API rates that fit."
+      },
+      {
+        "title": "Pay by invoice",
+        "text": "Terms and billing that suit your finance team."
+      },
+      {
+        "title": "Onboarding and training",
+        "text": "A dedicated team to help your people get going."
+      }
+    ],
+    "visual": {
+      "workspace": "Your workspace",
+      "region": "Your region",
+      "checks": ["Single sign-on", "Uptime agreement", "Security review", "Invoice billing"]
+    },
+    "formTitle": "Tell us about your organisation",
+    "formDescription": "Share a little about your needs. We reply within one business day with next steps."
   }
 }

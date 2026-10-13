@@ -1271,7 +1271,17 @@
       "acceptable-use": "Waarvoor Formalie niet mag worden gebruikt, hoe je misbruik of een beveiligingslek meldt en wat we doen als de regels worden overtreden.",
       "subprocessors": "De bedrijven die Formalie helpen de dienst te draaien, wat elk bedrijf doet en waar de gegevens worden verwerkt.",
       "refunds": "Hoe facturering, verlengingen, opzeggingen en terugbetalingen werken voor de betaalde abonnementen van Formalie, afgehandeld door Paddle als officiële verkoper."
-    }
+    },
+    "questionsTitle": "Vragen over deze documenten?",
+    "questionsText": "Schrijf naar {email}. Iemand uit ons team antwoordt je.",
+    "readingTime": "Leestijd: {n} min",
+    "sectionCount": "Secties: {n}",
+    "copyPage": "Link naar pagina kopiëren",
+    "backToTop": "Terug naar boven",
+    "progress": "Leesvoortgang",
+    "published": "Gepubliceerd",
+    "previous": "Vorige",
+    "next": "Volgende"
   },
   "trustPage": {
     "title": "Vertrouwen en beveiliging",
@@ -1326,5 +1336,88 @@
     "reportSecurity": "Beveiligingslek: {email}. We ondernemen geen stappen tegen onderzoek te goeder trouw dat ons {policy} volgt.",
     "reportAbuse": "Misbruik of een verdacht formulier: {email}.",
     "reportPrivacy": "Vragen over privacy: {email}."
+  },
+  "embed": {
+    "loading": "Formulier wordt geladen",
+    "frameTitle": "{form}, een formulier van Formalie",
+    "thanksTitle": "Bedankt",
+    "thanksText": "Je bericht is aangekomen bij het Formalie-team. We antwoorden per e-mail.",
+    "unavailable": "Het formulier kon niet worden geladen. Schrijf in plaats daarvan naar {email}.",
+    "own": "Dit is een eigen formulier van Formalie: wat je verstuurt, gaat rechtstreeks naar ons team en wordt alleen gebruikt om je te antwoorden."
+  },
+  "contactPage": {
+    "title": "Praat met ons",
+    "description": "Sales, support of een korte vraag: kies wat past en iemand van het Formalie-team antwoordt je.",
+    "metaDescription": "Neem contact op met Formalie: praat met sales over Enterprise, krijg hulp bij je werkruimte of open het helpcentrum. Antwoord binnen één werkdag.",
+    "sales": {
+      "title": "Sales",
+      "text": "Grotere teams, gegevens in je regio, single sign-on, contracten en facturen.",
+      "button": "Praat met sales"
+    },
+    "support": {
+      "title": "Support",
+      "text": "Vragen of problemen met je werkruimte, facturering of account.",
+      "button": "Neem contact op met support"
+    },
+    "help": {
+      "title": "Helpcentrum",
+      "text": "Artikelen, handleidingen en een assistent in 20 talen, in het portaal.",
+      "button": "Open het helpcentrum"
+    },
+    "replies": "We antwoorden binnen één werkdag.",
+    "formTitle": "Neem contact op met support",
+    "formDescription": "Vertel ons wat je nodig hebt en waar. Kies een onderwerp, zodat de juiste persoon het oppakt."
+  },
+  "enterprisePage": {
+    "title": "Formalie, afgestemd op je organisatie.",
+    "description": "Alles uit Business, met de infrastructuur, contracten en ondersteuning die grote organisaties en gereguleerde sectoren nodig hebben.",
+    "metaDescription": "Eigen infrastructuur, gegevens in de regio die je kiest, single sign-on, beveiligingsbeoordelingen, limieten op maat, facturen en een vast team.",
+    "eyebrow": "Enterprise",
+    "points": [
+      {
+        "title": "Eigen infrastructuur",
+        "text": "Je eigen resources, afgestemd op je belasting."
+      },
+      {
+        "title": "Gegevens in de regio die je kiest",
+        "text": "Bewaar de gegevens van je werkruimte waar je regels dat vereisen."
+      },
+      {
+        "title": "Single sign-on",
+        "text": "Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0 of OpenID Connect."
+      },
+      {
+        "title": "Een beschikbaarheidsafspraak",
+        "text": "Een serviceniveau vastgelegd in je contract."
+      },
+      {
+        "title": "Beveiligings- en compliancebeoordeling",
+        "text": "Antwoorden voor je vragenlijsten en je auditors."
+      },
+      {
+        "title": "Limieten op maat",
+        "text": "Formulieren, antwoorden, AI-tegoed en API-limieten die passen."
+      },
+      {
+        "title": "Betalen op factuur",
+        "text": "Voorwaarden en facturering die passen bij je financiële afdeling."
+      },
+      {
+        "title": "Onboarding en training",
+        "text": "Een vast team dat je mensen op weg helpt."
+      }
+    ],
+    "visual": {
+      "workspace": "Je werkruimte",
+      "region": "Je regio",
+      "checks": [
+        "Single sign-on",
+        "Beschikbaarheidsafspraak",
+        "Beveiligingsbeoordeling",
+        "Betalen op factuur"
+      ]
+    },
+    "formTitle": "Vertel ons over je organisatie",
+    "formDescription": "Vertel kort wat je nodig hebt. We antwoorden binnen één werkdag met de volgende stappen."
   }
 }

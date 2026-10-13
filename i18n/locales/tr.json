@@ -1271,7 +1271,17 @@
       "acceptable-use": "Formalie'nin hangi amaçlarla kullanılamayacağı, kötüye kullanımın veya bir güvenlik açığının nasıl bildirileceği ve kurallar çiğnendiğinde ne yaptığımız.",
       "subprocessors": "Formalie'nin hizmeti yürütmesine yardım eden şirketler, her birinin ne yaptığı ve verilerin nerede işlendiği.",
       "refunds": "Formalie'nin ücretli planlarında faturalandırma, yenileme, iptal ve iadelerin nasıl işlediği. Bunlar resmi satıcı olarak Paddle tarafından yürütülür."
-    }
+    },
+    "questionsTitle": "Bu belgelerle ilgili sorunuz mu var?",
+    "questionsText": "{email} adresine yazın. Ekibimizden biri size yanıt verecek.",
+    "readingTime": "{n} dk okuma",
+    "sectionCount": "Bölüm sayısı: {n}",
+    "copyPage": "Sayfa bağlantısını kopyala",
+    "backToTop": "Başa dön",
+    "progress": "Okuma ilerlemesi",
+    "published": "Yayımlandı",
+    "previous": "Önceki",
+    "next": "Sonraki"
   },
   "trustPage": {
     "title": "Güven ve güvenlik",
@@ -1326,5 +1336,83 @@
     "reportSecurity": "Güvenlik açığı: {email}. {policy} kapsamında iyi niyetle yapılan araştırmalara karşı herhangi bir işlem yapmayız.",
     "reportAbuse": "Kötüye kullanım veya şüpheli bir form: {email}.",
     "reportPrivacy": "Gizlilik soruları: {email}."
+  },
+  "embed": {
+    "loading": "Form yükleniyor",
+    "frameTitle": "{form}, bir Formalie formu",
+    "thanksTitle": "Teşekkürler",
+    "thanksText": "Mesajınız Formalie ekibine ulaştı. Size e-postayla yanıt vereceğiz.",
+    "unavailable": "Form yüklenemedi. Bunun yerine {email} adresine yazın.",
+    "own": "Bu, Formalie'nin kendi formudur: gönderdikleriniz doğrudan ekibimize ulaşır ve yalnızca size yanıt vermek için kullanılır."
+  },
+  "contactPage": {
+    "title": "Bizimle konuşun",
+    "description": "Satış, destek ya da kısa bir soru: size uyanı seçin, Formalie ekibinden biri yanıt versin.",
+    "metaDescription": "Formalie ile iletişime geçin: Enterprise için satış ekibiyle görüşün, çalışma alanınızla ilgili yardım alın ya da yardım merkezini açın. Bir iş günü içinde yanıt veriyoruz.",
+    "sales": {
+      "title": "Satış",
+      "text": "Daha büyük ekipler, bölgenizde veri, çoklu oturum açma, sözleşmeler ve faturalar.",
+      "button": "Satış ekibiyle görüşün"
+    },
+    "support": {
+      "title": "Destek",
+      "text": "Çalışma alanınız, faturalandırma ya da hesabınızla ilgili sorular veya sorunlar.",
+      "button": "Destekle iletişime geçin"
+    },
+    "help": {
+      "title": "Yardım merkezi",
+      "text": "Portalın içinde 20 dilde makaleler, rehberler ve bir asistan.",
+      "button": "Yardım merkezini açın"
+    },
+    "replies": "Bir iş günü içinde yanıt veriyoruz.",
+    "formTitle": "Destekle iletişime geçin",
+    "formDescription": "Neye ve nerede ihtiyacınız olduğunu anlatın. Doğru kişinin ilgilenmesi için bir konu seçin."
+  },
+  "enterprisePage": {
+    "title": "Kuruluşunuza göre şekillenen Formalie.",
+    "description": "Business'taki her şey, ayrıca büyük kuruluşların ve düzenlenen sektörlerin ihtiyaç duyduğu altyapı, sözleşmeler ve destek.",
+    "metaDescription": "Ayrılmış altyapı, seçtiğiniz bölgede veri, çoklu oturum açma, güvenlik incelemeleri, özel limitler, faturayla ödeme ve size ayrılmış bir ekip.",
+    "eyebrow": "Enterprise",
+    "points": [
+      {
+        "title": "Ayrılmış altyapı",
+        "text": "Yükünüze göre boyutlandırılmış, size ait kaynaklar."
+      },
+      {
+        "title": "Seçtiğiniz bölgede veri",
+        "text": "Çalışma alanınızın verilerini kurallarınızın gerektirdiği yerde tutun."
+      },
+      {
+        "title": "Çoklu oturum açma",
+        "text": "Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0 veya OpenID Connect."
+      },
+      {
+        "title": "Çalışma süresi sözleşmesi",
+        "text": "Sözleşmenize yazılmış bir hizmet düzeyi."
+      },
+      {
+        "title": "Güvenlik ve uyumluluk incelemesi",
+        "text": "Anketleriniz ve denetçileriniz için yanıtlar."
+      },
+      {
+        "title": "Özel limitler",
+        "text": "Size uygun form, yanıt, yapay zekâ kredisi ve API limitleri."
+      },
+      {
+        "title": "Faturayla ödeme",
+        "text": "Finans ekibinize uyan koşullar ve faturalandırma."
+      },
+      {
+        "title": "Başlangıç desteği ve eğitim",
+        "text": "Ekibinizin hızla başlamasına yardımcı olan size ayrılmış bir ekip."
+      }
+    ],
+    "visual": {
+      "workspace": "Çalışma alanınız",
+      "region": "Bölgeniz",
+      "checks": ["Çoklu oturum açma", "Çalışma süresi sözleşmesi", "Güvenlik incelemesi", "Faturayla ödeme"]
+    },
+    "formTitle": "Bize kuruluşunuzdan bahsedin",
+    "formDescription": "İhtiyaçlarınızı kısaca anlatın. Bir iş günü içinde sonraki adımlarla yanıt veriyoruz."
   }
 }

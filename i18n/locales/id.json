@@ -1271,7 +1271,17 @@
       "acceptable-use": "Hal yang tidak boleh dilakukan dengan Formalie, cara melaporkan penyalahgunaan atau celah keamanan, dan apa yang kami lakukan jika aturan dilanggar.",
       "subprocessors": "Perusahaan yang membantu Formalie menjalankan layanan, apa yang dilakukan masing-masing, dan di mana data diproses.",
       "refunds": "Cara kerja penagihan, perpanjangan, pembatalan, dan pengembalian dana untuk paket berbayar Formalie, yang ditangani oleh Paddle sebagai penjual resmi."
-    }
+    },
+    "questionsTitle": "Ada pertanyaan tentang dokumen ini?",
+    "questionsText": "Kirim email ke {email}. Seseorang dari tim kami akan menjawab.",
+    "readingTime": "Waktu baca {n} menit",
+    "sectionCount": "Bagian: {n}",
+    "copyPage": "Salin tautan halaman",
+    "backToTop": "Kembali ke atas",
+    "progress": "Progres membaca",
+    "published": "Diterbitkan",
+    "previous": "Sebelumnya",
+    "next": "Berikutnya"
   },
   "trustPage": {
     "title": "Kepercayaan dan keamanan",
@@ -1326,5 +1336,83 @@
     "reportSecurity": "Celah keamanan: {email}. Kami tidak akan mengambil tindakan terhadap penelitian dengan itikad baik yang mengikuti {policy} kami.",
     "reportAbuse": "Penyalahgunaan atau formulir mencurigakan: {email}.",
     "reportPrivacy": "Pertanyaan tentang privasi: {email}."
+  },
+  "embed": {
+    "loading": "Memuat formulir",
+    "frameTitle": "{form}, formulir Formalie",
+    "thanksTitle": "Terima kasih",
+    "thanksText": "Pesan Anda sudah diterima tim Formalie. Kami akan membalas lewat email.",
+    "unavailable": "Formulir tidak dapat dimuat. Silakan kirim email ke {email}.",
+    "own": "Ini formulir milik Formalie sendiri: apa yang Anda kirim langsung sampai ke tim kami dan hanya digunakan untuk membalas Anda."
+  },
+  "contactPage": {
+    "title": "Bicara dengan kami",
+    "description": "Penjualan, dukungan, atau pertanyaan singkat: pilih yang sesuai dan seseorang dari tim Formalie akan membalas.",
+    "metaDescription": "Hubungi Formalie: bicarakan Enterprise dengan tim penjualan, dapatkan bantuan untuk ruang kerja Anda, atau buka pusat bantuan. Kami membalas dalam satu hari kerja.",
+    "sales": {
+      "title": "Penjualan",
+      "text": "Tim yang lebih besar, data di wilayah Anda, single sign-on, kontrak, dan invoice.",
+      "button": "Hubungi tim penjualan"
+    },
+    "support": {
+      "title": "Dukungan",
+      "text": "Pertanyaan atau masalah terkait ruang kerja, tagihan, atau akun Anda.",
+      "button": "Hubungi dukungan"
+    },
+    "help": {
+      "title": "Pusat bantuan",
+      "text": "Artikel, panduan, dan asisten dalam 20 bahasa, langsung di portal.",
+      "button": "Buka pusat bantuan"
+    },
+    "replies": "Kami membalas dalam satu hari kerja.",
+    "formTitle": "Hubungi dukungan",
+    "formDescription": "Beri tahu kami apa yang Anda butuhkan dan di mana. Pilih topik agar ditangani oleh orang yang tepat."
+  },
+  "enterprisePage": {
+    "title": "Formalie, disesuaikan dengan organisasi Anda.",
+    "description": "Semua yang ada di Business, ditambah infrastruktur, kontrak, dan dukungan yang dibutuhkan organisasi besar dan sektor yang diatur.",
+    "metaDescription": "Infrastruktur khusus, data di wilayah pilihan Anda, single sign-on, tinjauan keamanan, batas khusus, invoice, dan tim khusus.",
+    "eyebrow": "Enterprise",
+    "points": [
+      {
+        "title": "Infrastruktur khusus",
+        "text": "Sumber daya milik Anda sendiri, disesuaikan dengan beban Anda."
+      },
+      {
+        "title": "Data di wilayah pilihan Anda",
+        "text": "Simpan data ruang kerja Anda di tempat yang diwajibkan aturan Anda."
+      },
+      {
+        "title": "Single sign-on",
+        "text": "Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0, atau OpenID Connect."
+      },
+      {
+        "title": "Perjanjian waktu aktif",
+        "text": "Tingkat layanan yang tertulis dalam kontrak Anda."
+      },
+      {
+        "title": "Tinjauan keamanan dan kepatuhan",
+        "text": "Jawaban untuk kuesioner dan auditor Anda."
+      },
+      {
+        "title": "Batas khusus",
+        "text": "Formulir, jawaban, kredit AI, dan batas API yang sesuai kebutuhan."
+      },
+      {
+        "title": "Bayar dengan invoice",
+        "text": "Ketentuan dan penagihan yang cocok untuk tim keuangan Anda."
+      },
+      {
+        "title": "Orientasi dan pelatihan",
+        "text": "Tim khusus yang membantu orang-orang Anda mulai bekerja."
+      }
+    ],
+    "visual": {
+      "workspace": "Ruang kerja Anda",
+      "region": "Wilayah Anda",
+      "checks": ["Single sign-on", "Perjanjian waktu aktif", "Tinjauan keamanan", "Tagihan lewat invoice"]
+    },
+    "formTitle": "Ceritakan tentang organisasi Anda",
+    "formDescription": "Ceritakan sedikit tentang kebutuhan Anda. Kami membalas dalam satu hari kerja dengan langkah berikutnya."
   }
 }

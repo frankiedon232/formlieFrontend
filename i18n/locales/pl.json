@@ -1271,7 +1271,17 @@
       "acceptable-use": "Do czego nie wolno używać Formalie, jak zgłosić nadużycie lub lukę w zabezpieczeniach i co robimy, gdy zasady zostaną złamane.",
       "subprocessors": "Firmy, które pomagają Formalie prowadzić usługę, czym zajmuje się każda z nich i gdzie przetwarzane są dane.",
       "refunds": "Jak działają rozliczenia, odnowienia, rezygnacje i zwroty w płatnych planach Formalie, obsługiwane przez Paddle jako oficjalnego sprzedawcę."
-    }
+    },
+    "questionsTitle": "Masz pytania dotyczące tych dokumentów?",
+    "questionsText": "Napisz na {email}. Odpowie Ci osoba z naszego zespołu.",
+    "readingTime": "Czas czytania: {n} min",
+    "sectionCount": "Sekcje: {n}",
+    "copyPage": "Kopiuj link do strony",
+    "backToTop": "Wróć na górę",
+    "progress": "Postęp czytania",
+    "published": "Opublikowano",
+    "previous": "Poprzedni",
+    "next": "Następny"
   },
   "trustPage": {
     "title": "Zaufanie i bezpieczeństwo",
@@ -1326,5 +1336,88 @@
     "reportSecurity": "Luka w zabezpieczeniach: {email}. Nie podejmiemy działań przeciwko badaniom prowadzonym w dobrej wierze zgodnie z naszą zasadą: {policy}.",
     "reportAbuse": "Nadużycie lub podejrzany formularz: {email}.",
     "reportPrivacy": "Pytania o prywatność: {email}."
+  },
+  "embed": {
+    "loading": "Ładowanie formularza",
+    "frameTitle": "{form}, formularz Formalie",
+    "thanksTitle": "Dziękujemy",
+    "thanksText": "Twoja wiadomość dotarła do zespołu Formalie. Odpowiemy e-mailem.",
+    "unavailable": "Nie udało się załadować formularza. Napisz zamiast tego na adres {email}.",
+    "own": "To własny formularz Formalie: to, co wysyłasz, trafia prosto do naszego zespołu i służy wyłącznie do udzielenia Ci odpowiedzi."
+  },
+  "contactPage": {
+    "title": "Porozmawiaj z nami",
+    "description": "Sprzedaż, wsparcie albo krótkie pytanie: wybierz, co pasuje, a odpowie Ci osoba z zespołu Formalie.",
+    "metaDescription": "Skontaktuj się z Formalie: porozmawiaj z działem sprzedaży o planie Enterprise, uzyskaj pomoc z obszarem roboczym lub otwórz centrum pomocy. Odpowiadamy w ciągu jednego dnia roboczego.",
+    "sales": {
+      "title": "Sprzedaż",
+      "text": "Większe zespoły, dane w Twoim regionie, logowanie jednokrotne, umowy i faktury.",
+      "button": "Porozmawiaj z działem sprzedaży"
+    },
+    "support": {
+      "title": "Wsparcie",
+      "text": "Pytania lub problemy dotyczące obszaru roboczego, rozliczeń lub konta.",
+      "button": "Skontaktuj się ze wsparciem"
+    },
+    "help": {
+      "title": "Centrum pomocy",
+      "text": "Artykuły, poradniki i asystent w 20 językach, w portalu.",
+      "button": "Otwórz centrum pomocy"
+    },
+    "replies": "Odpowiadamy w ciągu jednego dnia roboczego.",
+    "formTitle": "Skontaktuj się ze wsparciem",
+    "formDescription": "Napisz, czego potrzebujesz i gdzie. Wybierz temat, aby sprawą zajęła się właściwa osoba."
+  },
+  "enterprisePage": {
+    "title": "Formalie dopasowane do Twojej organizacji.",
+    "description": "Wszystko, co w planie Business, plus infrastruktura, umowy i wsparcie, których potrzebują duże organizacje i sektory regulowane.",
+    "metaDescription": "Dedykowana infrastruktura, dane w wybranym przez Ciebie regionie, logowanie jednokrotne, przeglądy bezpieczeństwa, indywidualne limity, faktury i dedykowany zespół.",
+    "eyebrow": "Enterprise",
+    "points": [
+      {
+        "title": "Dedykowana infrastruktura",
+        "text": "Własne zasoby, dopasowane do Twojego obciążenia."
+      },
+      {
+        "title": "Dane w wybranym przez Ciebie regionie",
+        "text": "Przechowuj dane obszaru roboczego tam, gdzie wymagają tego Twoje zasady."
+      },
+      {
+        "title": "Logowanie jednokrotne",
+        "text": "Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0 lub OpenID Connect."
+      },
+      {
+        "title": "Umowa o dostępności",
+        "text": "Poziom usług zapisany w Twojej umowie."
+      },
+      {
+        "title": "Przegląd bezpieczeństwa i zgodności",
+        "text": "Odpowiedzi do Twoich kwestionariuszy i dla Twoich audytorów."
+      },
+      {
+        "title": "Indywidualne limity",
+        "text": "Formularze, odpowiedzi, kredyty AI i limity API dopasowane do potrzeb."
+      },
+      {
+        "title": "Płatność na fakturę",
+        "text": "Warunki i rozliczenia odpowiednie dla Twojego działu finansów."
+      },
+      {
+        "title": "Wdrożenie i szkolenia",
+        "text": "Dedykowany zespół, który pomoże Twoim ludziom zacząć."
+      }
+    ],
+    "visual": {
+      "workspace": "Twój obszar roboczy",
+      "region": "Twój region",
+      "checks": [
+        "Logowanie jednokrotne",
+        "Umowa o dostępności",
+        "Przegląd bezpieczeństwa",
+        "Płatność na fakturę"
+      ]
+    },
+    "formTitle": "Opowiedz nam o swojej organizacji",
+    "formDescription": "Napisz krótko, czego potrzebujesz. Odpowiemy w ciągu jednego dnia roboczego i zaproponujemy kolejne kroki."
   }
 }

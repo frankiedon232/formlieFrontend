@@ -1271,7 +1271,17 @@
       "acceptable-use": "Những việc không được dùng Formalie để làm, cách báo cáo lạm dụng hoặc lỗ hổng bảo mật, và chúng tôi làm gì khi quy tắc bị vi phạm.",
       "subprocessors": "Các công ty giúp Formalie vận hành dịch vụ, vai trò của từng công ty và nơi dữ liệu được xử lý.",
       "refunds": "Cách hoạt động của thanh toán, gia hạn, hủy và hoàn tiền cho các gói trả phí của Formalie, do Paddle xử lý với tư cách là đơn vị bán hàng chính thức."
-    }
+    },
+    "questionsTitle": "Bạn có câu hỏi về các tài liệu này?",
+    "questionsText": "Hãy viết cho chúng tôi qua {email}. Một thành viên trong nhóm sẽ trả lời bạn.",
+    "readingTime": "Thời gian đọc: {n} phút",
+    "sectionCount": "Số phần: {n}",
+    "copyPage": "Sao chép liên kết trang",
+    "backToTop": "Lên đầu trang",
+    "progress": "Tiến độ đọc",
+    "published": "Đã công bố",
+    "previous": "Trước",
+    "next": "Tiếp theo"
   },
   "trustPage": {
     "title": "Tin cậy và bảo mật",
@@ -1326,5 +1336,88 @@
     "reportSecurity": "Lỗ hổng bảo mật: {email}. Chúng tôi sẽ không có hành động nào chống lại nghiên cứu thiện chí tuân theo {policy} của chúng tôi.",
     "reportAbuse": "Lạm dụng hoặc biểu mẫu đáng ngờ: {email}.",
     "reportPrivacy": "Câu hỏi về quyền riêng tư: {email}."
+  },
+  "embed": {
+    "loading": "Đang tải biểu mẫu",
+    "frameTitle": "{form}, một biểu mẫu của Formalie",
+    "thanksTitle": "Cảm ơn bạn",
+    "thanksText": "Tin nhắn của bạn đã đến đội ngũ Formalie. Chúng tôi sẽ trả lời qua email.",
+    "unavailable": "Không tải được biểu mẫu. Hãy viết thư đến {email}.",
+    "own": "Đây là biểu mẫu của chính Formalie: nội dung bạn gửi đến thẳng đội ngũ của chúng tôi và chỉ được dùng để trả lời bạn."
+  },
+  "contactPage": {
+    "title": "Trò chuyện với chúng tôi",
+    "description": "Bán hàng, hỗ trợ hay một câu hỏi nhanh: chọn mục phù hợp và một người trong đội ngũ Formalie sẽ trả lời bạn.",
+    "metaDescription": "Liên hệ Formalie: trao đổi với bộ phận bán hàng về Enterprise, nhận trợ giúp về không gian làm việc hoặc mở trung tâm trợ giúp. Phản hồi trong vòng một ngày làm việc.",
+    "sales": {
+      "title": "Bán hàng",
+      "text": "Nhóm lớn hơn, dữ liệu trong khu vực của bạn, đăng nhập một lần, hợp đồng và hóa đơn.",
+      "button": "Liên hệ bộ phận bán hàng"
+    },
+    "support": {
+      "title": "Hỗ trợ",
+      "text": "Câu hỏi hoặc sự cố về không gian làm việc, thanh toán hay tài khoản của bạn.",
+      "button": "Liên hệ bộ phận hỗ trợ"
+    },
+    "help": {
+      "title": "Trung tâm trợ giúp",
+      "text": "Bài viết, hướng dẫn và trợ lý bằng 20 ngôn ngữ, ngay trong cổng thông tin.",
+      "button": "Mở trung tâm trợ giúp"
+    },
+    "replies": "Chúng tôi phản hồi trong vòng một ngày làm việc.",
+    "formTitle": "Liên hệ bộ phận hỗ trợ",
+    "formDescription": "Cho chúng tôi biết bạn cần gì và ở đâu. Chọn một chủ đề để đúng người tiếp nhận."
+  },
+  "enterprisePage": {
+    "title": "Formalie, thiết kế theo tổ chức của bạn.",
+    "description": "Mọi thứ trong gói Business, cùng hạ tầng, hợp đồng và hỗ trợ mà các tổ chức lớn và ngành chịu quản lý cần.",
+    "metaDescription": "Hạ tầng riêng, dữ liệu ở khu vực bạn chọn, đăng nhập một lần, đánh giá bảo mật, giới hạn tùy chỉnh, hóa đơn và đội ngũ riêng.",
+    "eyebrow": "Enterprise",
+    "points": [
+      {
+        "title": "Hạ tầng riêng",
+        "text": "Tài nguyên của riêng bạn, theo đúng tải của bạn."
+      },
+      {
+        "title": "Dữ liệu ở khu vực bạn chọn",
+        "text": "Lưu dữ liệu của không gian làm việc ở nơi quy định của bạn yêu cầu."
+      },
+      {
+        "title": "Đăng nhập một lần",
+        "text": "Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0 hoặc OpenID Connect."
+      },
+      {
+        "title": "Cam kết thời gian hoạt động",
+        "text": "Mức dịch vụ được ghi trong hợp đồng của bạn."
+      },
+      {
+        "title": "Đánh giá bảo mật và tuân thủ",
+        "text": "Câu trả lời cho bảng câu hỏi và kiểm toán viên của bạn."
+      },
+      {
+        "title": "Giới hạn tùy chỉnh",
+        "text": "Biểu mẫu, câu trả lời, tín dụng AI và giới hạn API phù hợp với bạn."
+      },
+      {
+        "title": "Thanh toán theo hóa đơn",
+        "text": "Điều khoản và cách tính phí phù hợp với bộ phận tài chính của bạn."
+      },
+      {
+        "title": "Hướng dẫn bắt đầu và đào tạo",
+        "text": "Đội ngũ riêng giúp mọi người trong tổ chức bắt đầu dễ dàng."
+      }
+    ],
+    "visual": {
+      "workspace": "Không gian làm việc của bạn",
+      "region": "Khu vực của bạn",
+      "checks": [
+        "Đăng nhập một lần",
+        "Cam kết thời gian hoạt động",
+        "Đánh giá bảo mật",
+        "Thanh toán theo hóa đơn"
+      ]
+    },
+    "formTitle": "Kể cho chúng tôi về tổ chức của bạn",
+    "formDescription": "Chia sẻ đôi chút về nhu cầu của bạn. Chúng tôi phản hồi trong vòng một ngày làm việc kèm các bước tiếp theo."
   }
 }

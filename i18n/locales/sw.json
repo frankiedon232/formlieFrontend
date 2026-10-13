@@ -1271,7 +1271,17 @@
       "acceptable-use": "Mambo ambayo Formalie haiwezi kutumiwa kufanya, jinsi ya kuripoti matumizi mabaya au udhaifu wa usalama, na tunachofanya sheria zinapovunjwa.",
       "subprocessors": "Kampuni zinazosaidia Formalie kuendesha huduma, kazi ya kila moja, na mahali data inapochakatwa.",
       "refunds": "Jinsi malipo, usasishaji, kughairi na kurejeshewa pesa vinavyofanya kazi kwa mipango ya kulipia ya Formalie, vinavyoshughulikiwa na Paddle kama muuzaji rasmi."
-    }
+    },
+    "questionsTitle": "Una maswali kuhusu hati hizi?",
+    "questionsText": "Tuandikie kupitia {email}. Mtu kutoka timu yetu atakujibu.",
+    "readingTime": "Muda wa kusoma: dakika {n}",
+    "sectionCount": "Sehemu: {n}",
+    "copyPage": "Nakili kiungo cha ukurasa",
+    "backToTop": "Rudi juu",
+    "progress": "Maendeleo ya kusoma",
+    "published": "Imechapishwa",
+    "previous": "Iliyotangulia",
+    "next": "Inayofuata"
   },
   "trustPage": {
     "title": "Uaminifu na usalama",
@@ -1326,5 +1336,83 @@
     "reportSecurity": "Udhaifu wa usalama: {email}. Hatutachukua hatua dhidi ya utafiti wa nia njema unaofuata {policy} yetu.",
     "reportAbuse": "Matumizi mabaya au fomu inayotiliwa shaka: {email}.",
     "reportPrivacy": "Maswali kuhusu faragha: {email}."
+  },
+  "embed": {
+    "loading": "Inapakia fomu",
+    "frameTitle": "{form}, fomu ya Formalie",
+    "thanksTitle": "Asante",
+    "thanksText": "Ujumbe wako umefika kwa timu ya Formalie. Tutakujibu kwa barua pepe.",
+    "unavailable": "Fomu haikuweza kupakiwa. Badala yake, tuandikie kupitia {email}.",
+    "own": "Hii ni fomu ya Formalie yenyewe: unachotuma kinafika moja kwa moja kwa timu yetu, na kinatumika tu kukujibu."
+  },
+  "contactPage": {
+    "title": "Zungumza nasi",
+    "description": "Mauzo, usaidizi au swali fupi: chagua kinachokufaa na mtu kutoka timu ya Formalie atakujibu.",
+    "metaDescription": "Wasiliana na Formalie: zungumza na mauzo kuhusu Enterprise, pata msaada kuhusu eneo lako la kazi, au fungua kituo cha usaidizi. Tunajibu ndani ya siku moja ya kazi.",
+    "sales": {
+      "title": "Mauzo",
+      "text": "Timu kubwa zaidi, data katika eneo lako, kuingia mara moja, mikataba na ankara.",
+      "button": "Zungumza na mauzo"
+    },
+    "support": {
+      "title": "Usaidizi",
+      "text": "Maswali au matatizo kuhusu eneo lako la kazi, malipo au akaunti yako.",
+      "button": "Wasiliana na usaidizi"
+    },
+    "help": {
+      "title": "Kituo cha usaidizi",
+      "text": "Makala, miongozo na msaidizi katika lugha 20, ndani ya lango.",
+      "button": "Fungua kituo cha usaidizi"
+    },
+    "replies": "Tunajibu ndani ya siku moja ya kazi.",
+    "formTitle": "Wasiliana na usaidizi",
+    "formDescription": "Tueleze unachohitaji na mahali gani. Chagua mada ili mtu sahihi aishughulikie."
+  },
+  "enterprisePage": {
+    "title": "Formalie, inayoundwa kulingana na shirika lako.",
+    "description": "Kila kitu kilicho kwenye Business, pamoja na miundombinu, mikataba na usaidizi ambavyo mashirika makubwa na sekta zinazodhibitiwa zinahitaji.",
+    "metaDescription": "Miundombinu maalum, data katika eneo unalochagua, kuingia mara moja, ukaguzi wa usalama, vikomo maalum, ankara na timu maalum.",
+    "eyebrow": "Enterprise",
+    "points": [
+      {
+        "title": "Miundombinu maalum",
+        "text": "Rasilimali zako mwenyewe, zilizopimwa kulingana na mzigo wako."
+      },
+      {
+        "title": "Data katika eneo unalochagua",
+        "text": "Weka data ya eneo lako la kazi mahali ambapo kanuni zako zinataka."
+      },
+      {
+        "title": "Kuingia mara moja",
+        "text": "Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0 au OpenID Connect."
+      },
+      {
+        "title": "Makubaliano ya upatikanaji",
+        "text": "Kiwango cha huduma kilichoandikwa kwenye mkataba wako."
+      },
+      {
+        "title": "Ukaguzi wa usalama na utiifu",
+        "text": "Majibu kwa hojaji zako na kwa wakaguzi wako."
+      },
+      {
+        "title": "Vikomo maalum",
+        "text": "Fomu, majibu, salio la AI na viwango vya API vinavyokufaa."
+      },
+      {
+        "title": "Lipa kwa ankara",
+        "text": "Masharti na malipo yanayofaa timu yako ya fedha."
+      },
+      {
+        "title": "Kuanza na mafunzo",
+        "text": "Timu maalum ya kuwasaidia watu wako kuanza."
+      }
+    ],
+    "visual": {
+      "workspace": "Eneo lako la kazi",
+      "region": "Eneo lako",
+      "checks": ["Kuingia mara moja", "Makubaliano ya upatikanaji", "Ukaguzi wa usalama", "Malipo kwa ankara"]
+    },
+    "formTitle": "Tueleze kuhusu shirika lako",
+    "formDescription": "Tueleze kidogo kuhusu mahitaji yako. Tunajibu ndani ya siku moja ya kazi pamoja na hatua zinazofuata."
   }
 }

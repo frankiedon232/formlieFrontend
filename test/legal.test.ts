@@ -1,5 +1,13 @@
 import { describe, expect, it } from 'vitest'
-import { fallbackLegal, isLegalSlug, LEGAL_SLUGS, parseLegal, searchLegal } from '../app/utils/legal'
+import {
+  fallbackLegal,
+  isLegalSlug,
+  LEGAL_SLUGS,
+  parseLegal,
+  readingMinutes,
+  searchLegal,
+  splitHeading,
+} from '../app/utils/legal'
 
 describe('legal documents (docs/LEGAL-PAGES.md)', () => {
   it('has seven documents, refunds after subprocessors', () => {
@@ -32,5 +40,13 @@ describe('legal documents (docs/LEGAL-PAGES.md)', () => {
     expect(hits.length).toBeGreaterThan(0)
     expect(hits.some(hit => hit.slug === 'refunds')).toBe(true)
     expect(searchLegal('a')).toEqual([])
+  })
+
+  it('splits numbered headings and estimates reading time', () => {
+    expect(splitHeading('3. What we collect')).toEqual({ number: '03', title: 'What we collect' })
+    expect(splitHeading('12. Contact')).toEqual({ number: '12', title: 'Contact' })
+    expect(splitHeading('Contact')).toEqual({ number: null, title: 'Contact' })
+    expect(readingMinutes(fallbackLegal('terms'))).toBeGreaterThan(1)
+    expect(readingMinutes({ sections: [{ body_markdown: 'short' }] })).toBe(1)
   })
 })

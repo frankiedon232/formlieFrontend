@@ -29,6 +29,32 @@ export const LEGAL_KEYS: Record<LegalSlug, string> = {
   refunds: 'refunds',
 }
 
+/** One icon per document, the same in the navigator and the hero. */
+export const LEGAL_ICONS: Record<LegalSlug, string> = {
+  privacy: 'i-lucide-eye-off',
+  terms: 'i-lucide-file-text',
+  'data-protection': 'i-lucide-file-lock',
+  cookies: 'i-lucide-cookie',
+  'acceptable-use': 'i-lucide-scale',
+  subprocessors: 'i-lucide-network',
+  refunds: 'i-lucide-receipt',
+}
+
+/** Minutes to read a document (about 220 words a minute), at least one. */
+export function readingMinutes(document: { sections: { body_markdown: string }[] }): number {
+  const words = document.sections.reduce(
+    (total, section) => total + section.body_markdown.split(/\s+/).filter(Boolean).length,
+    0,
+  )
+  return Math.max(1, Math.round(words / 220))
+}
+
+/** "3. Who we are" → { number: '03', title: 'Who we are' }; headings without a number keep their text. */
+export function splitHeading(heading: string): { number: string | null; title: string } {
+  const match = heading.match(/^(\d+)\.\s*(.+)$/)
+  return match ? { number: match[1]!.padStart(2, '0'), title: match[2]! } : { number: null, title: heading }
+}
+
 const documentSchema = z.object({
   slug: z.string(),
   title: z.string(),

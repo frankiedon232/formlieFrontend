@@ -1266,7 +1266,17 @@
       "acceptable-use": "Formalie 不得用于哪些用途，如何举报滥用或安全漏洞，以及违反规则时我们会采取的措施。",
       "subprocessors": "帮助 Formalie 运行服务的公司、各自的职责，以及数据在何处处理。",
       "refunds": "Formalie 付费套餐的计费、续订、取消和退款如何运作，由 Paddle 作为记录商户负责处理。"
-    }
+    },
+    "questionsTitle": "对这些文件有疑问？",
+    "questionsText": "请发送邮件至 {email}，我们团队的工作人员会回复您。",
+    "readingTime": "阅读时间 {n} 分钟",
+    "sectionCount": "章节数：{n}",
+    "copyPage": "复制页面链接",
+    "backToTop": "返回顶部",
+    "progress": "阅读进度",
+    "published": "已发布",
+    "previous": "上一篇",
+    "next": "下一篇"
   },
   "trustPage": {
     "title": "信任与安全",
@@ -1321,5 +1331,83 @@
     "reportSecurity": "安全漏洞：{email}。对于遵循我们的{policy}、出于善意开展的研究，我们不会采取任何行动。",
     "reportAbuse": "滥用或可疑表单：{email}。",
     "reportPrivacy": "隐私问题：{email}。"
+  },
+  "embed": {
+    "loading": "正在加载表单",
+    "frameTitle": "{form}，一个 Formalie 表单",
+    "thanksTitle": "谢谢",
+    "thanksText": "你的消息已送达 Formalie 团队。我们会通过电子邮件回复你。",
+    "unavailable": "表单无法加载。请改为发送邮件至 {email}。",
+    "own": "这是 Formalie 自己的表单：你提交的内容会直接发送给我们的团队，仅用于回复你。"
+  },
+  "contactPage": {
+    "title": "联系我们",
+    "description": "销售、支持或简单的问题：选择合适的选项，Formalie 团队会有专人回复你。",
+    "metaDescription": "联系 Formalie：与销售洽谈 Enterprise、获取工作区相关帮助，或打开帮助中心。我们会在一个工作日内回复。",
+    "sales": {
+      "title": "销售",
+      "text": "更大的团队、数据存放在你所在的区域、单点登录、合同和发票。",
+      "button": "联系销售"
+    },
+    "support": {
+      "title": "支持",
+      "text": "关于工作区、账单或账户的问题。",
+      "button": "联系支持"
+    },
+    "help": {
+      "title": "帮助中心",
+      "text": "门户内提供 20 种语言的文章、指南和助手。",
+      "button": "打开帮助中心"
+    },
+    "replies": "我们会在一个工作日内回复。",
+    "formTitle": "联系支持",
+    "formDescription": "告诉我们你需要什么，以及在哪里需要。选择一个主题，让合适的人来处理。"
+  },
+  "enterprisePage": {
+    "title": "Formalie，为你的组织量身打造。",
+    "description": "包含 Business 的全部功能，并提供大型组织和受监管行业所需的基础设施、合同和支持。",
+    "metaDescription": "专用基础设施、数据存放在你选择的区域、单点登录、安全审查、自定义限额、发票付款和专属团队。",
+    "eyebrow": "Enterprise",
+    "points": [
+      {
+        "title": "专用基础设施",
+        "text": "专属于你的资源，按你的负载配置。"
+      },
+      {
+        "title": "数据存放在你选择的区域",
+        "text": "将工作区数据保存在你的规则要求的地方。"
+      },
+      {
+        "title": "单点登录",
+        "text": "Okta、Microsoft Entra ID、Google Workspace、OneLogin、SAML 2.0 或 OpenID Connect。"
+      },
+      {
+        "title": "可用性协议",
+        "text": "写入合同的服务水平。"
+      },
+      {
+        "title": "安全与合规审查",
+        "text": "为你的问卷和审计人员提供答复。"
+      },
+      {
+        "title": "自定义限额",
+        "text": "按需设定表单、回答、AI 额度和 API 速率。"
+      },
+      {
+        "title": "按发票付款",
+        "text": "适合你财务团队的条款和结算方式。"
+      },
+      {
+        "title": "上手指导与培训",
+        "text": "专属团队帮助你的成员快速上手。"
+      }
+    ],
+    "visual": {
+      "workspace": "你的工作区",
+      "region": "你的区域",
+      "checks": ["单点登录", "可用性协议", "安全审查", "发票结算"]
+    },
+    "formTitle": "介绍一下你的组织",
+    "formDescription": "简单说说你的需求。我们会在一个工作日内回复，并告知后续步骤。"
   }
 }

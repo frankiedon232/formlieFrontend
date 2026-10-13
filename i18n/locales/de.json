@@ -1271,7 +1271,17 @@
       "acceptable-use": "Wofür Formalie nicht genutzt werden darf, wie Sie Missbrauch oder eine Sicherheitslücke melden und was wir tun, wenn gegen die Regeln verstoßen wird.",
       "subprocessors": "Die Unternehmen, die Formalie beim Betrieb des Dienstes helfen, was jedes davon tut und wo die Daten verarbeitet werden.",
       "refunds": "Wie Abrechnung, Verlängerungen, Kündigungen und Erstattungen für die kostenpflichtigen Tarife von Formalie funktionieren, abgewickelt von Paddle als offiziellem Händler."
-    }
+    },
+    "questionsTitle": "Fragen zu diesen Dokumenten?",
+    "questionsText": "Schreiben Sie an {email}. Eine Person aus unserem Team antwortet Ihnen.",
+    "readingTime": "Lesezeit: {n} Min.",
+    "sectionCount": "Abschnitte: {n}",
+    "copyPage": "Link zur Seite kopieren",
+    "backToTop": "Nach oben",
+    "progress": "Lesefortschritt",
+    "published": "Veröffentlicht",
+    "previous": "Zurück",
+    "next": "Weiter"
   },
   "trustPage": {
     "title": "Vertrauen und Sicherheit",
@@ -1326,5 +1336,83 @@
     "reportSecurity": "Sicherheitslücke: {email}. Gegen Forschung in gutem Glauben, die unserer {policy} folgt, gehen wir nicht vor.",
     "reportAbuse": "Missbrauch oder ein verdächtiges Formular: {email}.",
     "reportPrivacy": "Fragen zum Datenschutz: {email}."
+  },
+  "embed": {
+    "loading": "Formular wird geladen",
+    "frameTitle": "{form}, ein Formalie-Formular",
+    "thanksTitle": "Vielen Dank",
+    "thanksText": "Ihre Nachricht ist beim Formalie-Team angekommen. Wir antworten Ihnen per E-Mail.",
+    "unavailable": "Das Formular konnte nicht geladen werden. Schreiben Sie stattdessen an {email}.",
+    "own": "Dies ist ein Formular von Formalie selbst: Was Sie senden, geht direkt an unser Team und wird nur verwendet, um Ihnen zu antworten."
+  },
+  "contactPage": {
+    "title": "Sprechen Sie mit uns",
+    "description": "Vertrieb, Support oder eine kurze Frage: Wählen Sie, was passt, und eine Person aus dem Formalie-Team antwortet Ihnen.",
+    "metaDescription": "Kontakt zu Formalie: Sprechen Sie mit dem Vertrieb über Enterprise, erhalten Sie Hilfe zu Ihrem Arbeitsbereich oder öffnen Sie das Hilfe-Center. Antwort innerhalb eines Werktags.",
+    "sales": {
+      "title": "Vertrieb",
+      "text": "Größere Teams, Daten in Ihrer Region, Single Sign-on, Verträge und Rechnungen.",
+      "button": "Vertrieb kontaktieren"
+    },
+    "support": {
+      "title": "Support",
+      "text": "Fragen oder Probleme mit Ihrem Arbeitsbereich, der Abrechnung oder Ihrem Konto.",
+      "button": "Support kontaktieren"
+    },
+    "help": {
+      "title": "Hilfe-Center",
+      "text": "Artikel, Anleitungen und ein Assistent in 20 Sprachen, direkt im Portal.",
+      "button": "Hilfe-Center öffnen"
+    },
+    "replies": "Wir antworten innerhalb eines Werktags.",
+    "formTitle": "Support kontaktieren",
+    "formDescription": "Sagen Sie uns, was Sie brauchen und wo. Wählen Sie ein Thema, damit sich die richtige Person darum kümmert."
+  },
+  "enterprisePage": {
+    "title": "Formalie, zugeschnitten auf Ihre Organisation.",
+    "description": "Alles aus Business, dazu die Infrastruktur, Verträge und Betreuung, die große Organisationen und regulierte Branchen brauchen.",
+    "metaDescription": "Dedizierte Infrastruktur, Daten in der Region Ihrer Wahl, Single Sign-on, Sicherheitsprüfungen, individuelle Limits, Rechnungen und ein eigenes Team.",
+    "eyebrow": "Enterprise",
+    "points": [
+      {
+        "title": "Dedizierte Infrastruktur",
+        "text": "Eigene Ressourcen, ausgelegt auf Ihre Last."
+      },
+      {
+        "title": "Daten in der Region Ihrer Wahl",
+        "text": "Speichern Sie die Daten Ihres Arbeitsbereichs dort, wo Ihre Vorgaben es verlangen."
+      },
+      {
+        "title": "Single Sign-on",
+        "text": "Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0 oder OpenID Connect."
+      },
+      {
+        "title": "Eine Verfügbarkeitsvereinbarung",
+        "text": "Ein Service-Level, festgehalten in Ihrem Vertrag."
+      },
+      {
+        "title": "Sicherheits- und Compliance-Prüfung",
+        "text": "Antworten für Ihre Fragebögen und Ihre Prüfer."
+      },
+      {
+        "title": "Individuelle Limits",
+        "text": "Formulare, Antworten, KI-Guthaben und API-Limits, die zu Ihnen passen."
+      },
+      {
+        "title": "Zahlung per Rechnung",
+        "text": "Konditionen und Abrechnung, die zu Ihrer Finanzabteilung passen."
+      },
+      {
+        "title": "Einführung und Schulung",
+        "text": "Ein eigenes Team, das Ihren Leuten den Einstieg erleichtert."
+      }
+    ],
+    "visual": {
+      "workspace": "Ihr Arbeitsbereich",
+      "region": "Ihre Region",
+      "checks": ["Single Sign-on", "Verfügbarkeitsvereinbarung", "Sicherheitsprüfung", "Zahlung per Rechnung"]
+    },
+    "formTitle": "Erzählen Sie uns von Ihrer Organisation",
+    "formDescription": "Beschreiben Sie kurz, was Sie brauchen. Wir antworten innerhalb eines Werktags mit den nächsten Schritten."
   }
 }

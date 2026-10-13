@@ -4,7 +4,7 @@ import { FEATURE_PAGES, SOLUTION_PAGES } from '../../app/utils/catalog'
 import { LEGAL_SLUGS } from '../../app/utils/legal'
 import { DEFAULT_LOCALE, SITE_LOCALES } from '../../app/utils/locales'
 
-/** The pages that exist (later phases add contact, enterprise …). */
+/** Every page of the site. Add new pages here. */
 export const SITE_PATHS = [
   '/',
   '/features',
@@ -15,6 +15,8 @@ export const SITE_PATHS = [
   '/security',
   '/about',
   '/trust',
+  '/enterprise',
+  '/contact',
   ...LEGAL_SLUGS.map(slug => `/legal/${slug}`),
 ]
 

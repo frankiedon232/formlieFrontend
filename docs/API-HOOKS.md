@@ -54,7 +54,7 @@ The website never builds its own forms. Contact, sales and newsletter are **publ
 | Newsletter (footer, later) | to be created by the owner | `…/{key}/embed` | `email`, `language` |
 
 - The keys are defined in the app at `shared/utils/platform/forms.ts`. Production uses `https://forms.formalie.com/{key}/embed`.
-- The embed sends `formalie:resize` (height) and `formalie:submitted` messages to the page. Listen for them to size the frame and show a thank-you toast.
+- The embed sends `formalie:resize` (`{ type, key, height }`), `formalie:typing` and `formalie:submitted` (`{ type, key }`) to the page. `SiteFormEmbed` reads only messages from the forms origin about its own form, sizes the frame, and shows a thank-you toast. It adds `?lang={locale}` so the form opens in the visitor's language, and only the prefill fields listed above.
 - **Answers:** they arrive as normal responses in Formalie's workspace and show in the platform admin. The owner said "we will handle the linking to the portal forms later", so wire the frames in phase S6 (`PROGRESS.md`).
 
 ## 5. Sign-up and sign-in links
