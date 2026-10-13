@@ -186,8 +186,21 @@
         "education": "Éducation",
         "events": "Événements",
         "finance": "Finance",
-        "operations": "Opérations"
-      }
+        "operations": "Opérations",
+        "government": "Secteur public",
+        "nonprofit": "Associations",
+        "retail": "Commerce",
+        "hospitality": "Hôtellerie",
+        "construction": "Construction",
+        "logistics": "Logistique",
+        "legal": "Juridique",
+        "realEstate": "Immobilier",
+        "manufacturing": "Industrie",
+        "technology": "Technologie",
+        "research": "Recherche",
+        "insurance": "Assurance"
+      },
+      "description": "D'une personne seule aux grandes organisations, des équipes partout collectent avec Formalie."
     },
     "channels": {
       "eyebrow": "Tous les canaux",

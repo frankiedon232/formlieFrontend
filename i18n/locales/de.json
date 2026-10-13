@@ -186,8 +186,21 @@
         "education": "Bildung",
         "events": "Veranstaltungen",
         "finance": "Finanzen",
-        "operations": "Betrieb"
-      }
+        "operations": "Betrieb",
+        "government": "Öffentlicher Sektor",
+        "nonprofit": "Gemeinnützige",
+        "retail": "Handel",
+        "hospitality": "Gastgewerbe",
+        "construction": "Bauwesen",
+        "logistics": "Logistik",
+        "legal": "Recht",
+        "realEstate": "Immobilien",
+        "manufacturing": "Fertigung",
+        "technology": "Technologie",
+        "research": "Forschung",
+        "insurance": "Versicherungen"
+      },
+      "description": "Von Einzelpersonen bis zu großen Organisationen: Teams überall sammeln mit Formalie."
     },
     "channels": {
       "eyebrow": "Jeder Kanal",

@@ -160,8 +160,8 @@
         "customDomain",
         "customEmail",
         "prioritySupport",
-        "residency",
-        "dedicatedTeam",
+        "dataResidency",
+        "dedicatedSupport",
         "securityReview"
       ]
     }

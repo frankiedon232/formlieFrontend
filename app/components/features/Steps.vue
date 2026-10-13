@@ -7,7 +7,7 @@ const { still, paused } = useSectionMotion(root)
 </script>
 
 <template>
-  <UPageSection :title="t('common.howItWorks')" :ui="{ container: 'py-16 sm:py-20' }">
+  <UPageSection :title="t('common.howItWorks')">
     <div ref="root" class="relative" :class="{ 'motion-paused': paused }">
       <!-- The line between the steps (desktop), with a travelling point -->
       <svg

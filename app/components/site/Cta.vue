@@ -26,7 +26,7 @@ const actions = computed(() => [
 </script>
 
 <template>
-  <UPageSection :ui="{ container: 'py-12 sm:py-16 lg:py-20' }">
+  <UPageSection>
     <UPageCTA
       :title="t('home.cta.title')"
       :description="t('home.cta.description')"

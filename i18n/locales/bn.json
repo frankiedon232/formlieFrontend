@@ -186,8 +186,21 @@
         "education": "শিক্ষা",
         "events": "ইভেন্ট",
         "finance": "ফাইন্যান্স",
-        "operations": "অপারেশন"
-      }
+        "operations": "অপারেশন",
+        "government": "সরকারি খাত",
+        "nonprofit": "অলাভজনক প্রতিষ্ঠান",
+        "retail": "খুচরা বিক্রয়",
+        "hospitality": "আতিথেয়তা",
+        "construction": "নির্মাণ",
+        "logistics": "লজিস্টিকস",
+        "legal": "আইন",
+        "realEstate": "রিয়েল এস্টেট",
+        "manufacturing": "উৎপাদন",
+        "technology": "প্রযুক্তি",
+        "research": "গবেষণা",
+        "insurance": "বিমা"
+      },
+      "description": "একজন মানুষ থেকে বড় প্রতিষ্ঠান পর্যন্ত, সব জায়গার দল Formalie দিয়ে তথ্য সংগ্রহ করে।"
     },
     "channels": {
       "eyebrow": "প্রতিটি চ্যানেল",

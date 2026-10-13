@@ -186,8 +186,21 @@
         "education": "Pendidikan",
         "events": "Acara",
         "finance": "Keuangan",
-        "operations": "Operasional"
-      }
+        "operations": "Operasional",
+        "government": "Sektor publik",
+        "nonprofit": "Nirlaba",
+        "retail": "Ritel",
+        "hospitality": "Perhotelan",
+        "construction": "Konstruksi",
+        "logistics": "Logistik",
+        "legal": "Hukum",
+        "realEstate": "Properti",
+        "manufacturing": "Manufaktur",
+        "technology": "Teknologi",
+        "research": "Riset",
+        "insurance": "Asuransi"
+      },
+      "description": "Dari satu orang hingga organisasi besar, tim di mana saja mengumpulkan data dengan Formalie."
     },
     "channels": {
       "eyebrow": "Semua saluran",

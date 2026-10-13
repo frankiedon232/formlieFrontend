@@ -186,8 +186,21 @@
         "education": "Education",
         "events": "Events",
         "finance": "Finance",
-        "operations": "Operations"
-      }
+        "operations": "Operations",
+        "government": "Public sector",
+        "nonprofit": "Non-profits",
+        "retail": "Retail",
+        "hospitality": "Hospitality",
+        "construction": "Construction",
+        "logistics": "Logistics",
+        "legal": "Legal",
+        "realEstate": "Real estate",
+        "manufacturing": "Manufacturing",
+        "technology": "Technology",
+        "research": "Research",
+        "insurance": "Insurance"
+      },
+      "description": "From one person to large organisations, teams everywhere collect with Formalie."
     },
     "channels": {
       "eyebrow": "Every channel",

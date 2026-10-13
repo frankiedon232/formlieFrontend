@@ -186,8 +186,21 @@
         "education": "Onderwijs",
         "events": "Evenementen",
         "finance": "Financiën",
-        "operations": "Operations"
-      }
+        "operations": "Operations",
+        "government": "Overheid",
+        "nonprofit": "Non-profit",
+        "retail": "Retail",
+        "hospitality": "Horeca",
+        "construction": "Bouw",
+        "logistics": "Logistiek",
+        "legal": "Juridisch",
+        "realEstate": "Vastgoed",
+        "manufacturing": "Productie",
+        "technology": "Technologie",
+        "research": "Onderzoek",
+        "insurance": "Verzekeringen"
+      },
+      "description": "Van één persoon tot grote organisaties: teams overal verzamelen met Formalie."
     },
     "channels": {
       "eyebrow": "Elk kanaal",

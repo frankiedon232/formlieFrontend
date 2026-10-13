@@ -32,7 +32,7 @@ const place = (index: number, count: number, radius: number, offset = 0) => {
 </script>
 
 <template>
-  <UPageSection :ui="{ container: 'py-16 sm:py-24 lg:py-28' }">
+  <UPageSection>
     <div
       ref="root"
       class="relative mx-auto aspect-square w-full max-w-2xl"

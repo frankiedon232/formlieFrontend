@@ -186,8 +186,21 @@
         "education": "교육",
         "events": "행사",
         "finance": "금융",
-        "operations": "운영"
-      }
+        "operations": "운영",
+        "government": "공공 부문",
+        "nonprofit": "비영리 단체",
+        "retail": "소매",
+        "hospitality": "호스피탈리티",
+        "construction": "건설",
+        "logistics": "물류",
+        "legal": "법률",
+        "realEstate": "부동산",
+        "manufacturing": "제조",
+        "technology": "기술",
+        "research": "연구",
+        "insurance": "보험"
+      },
+      "description": "개인부터 대규모 조직까지, 곳곳의 팀이 Formalie로 데이터를 모읍니다."
     },
     "channels": {
       "eyebrow": "모든 채널",

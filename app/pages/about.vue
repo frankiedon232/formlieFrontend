@@ -38,7 +38,7 @@ usePageSeo({
       <UPageHero
         :title="t('aboutPage.title')"
         :description="t('aboutPage.description')"
-        :ui="{ title: 'text-4xl sm:text-6xl font-semibold tracking-tight text-balance' }"
+        :ui="{ title: 'text-balance' }"
       >
         <template #headline>
           <img
@@ -52,7 +52,7 @@ usePageSeo({
       </UPageHero>
     </div>
 
-    <UPageSection :ui="{ container: 'py-10 sm:py-14 lg:max-w-4xl' }">
+    <UPageSection :ui="{ container: 'py-6 sm:py-8 lg:py-10 lg:max-w-4xl' }">
       <div class="rounded-3xl bg-inverted p-8 text-center text-inverted sm:p-12">
         <h2 class="text-sm font-semibold opacity-70">{{ t('aboutPage.mission.title') }}</h2>
         <p class="mt-4 text-2xl font-semibold tracking-tight text-pretty sm:text-3xl">
@@ -61,7 +61,7 @@ usePageSeo({
       </div>
     </UPageSection>
 
-    <UPageSection :title="t('aboutPage.beliefsTitle')" :ui="{ container: 'py-16 sm:py-20' }">
+    <UPageSection :title="t('aboutPage.beliefsTitle')">
       <UPageGrid>
         <UPageCard
           v-for="item in beliefs"
@@ -81,11 +81,7 @@ usePageSeo({
       </UPageGrid>
     </UPageSection>
 
-    <UPageSection
-      :title="t('aboutPage.global.title')"
-      :description="t('aboutPage.global.text')"
-      :ui="{ container: 'py-16 sm:py-20' }"
-    >
+    <UPageSection :title="t('aboutPage.global.title')" :description="t('aboutPage.global.text')">
       <ul class="mx-auto flex max-w-4xl flex-wrap justify-center gap-2">
         <li
           v-for="(item, i) in locales"

@@ -186,8 +186,21 @@
         "education": "Eğitim",
         "events": "Etkinlikler",
         "finance": "Finans",
-        "operations": "Operasyon"
-      }
+        "operations": "Operasyon",
+        "government": "Kamu sektörü",
+        "nonprofit": "Kâr amacı gütmeyen kuruluşlar",
+        "retail": "Perakende",
+        "hospitality": "Konaklama",
+        "construction": "İnşaat",
+        "logistics": "Lojistik",
+        "legal": "Hukuk",
+        "realEstate": "Gayrimenkul",
+        "manufacturing": "Üretim",
+        "technology": "Teknoloji",
+        "research": "Araştırma",
+        "insurance": "Sigorta"
+      },
+      "description": "Tek kişiden büyük kuruluşlara, her yerde ekipler Formalie ile veri topluyor."
     },
     "channels": {
       "eyebrow": "Her kanal",

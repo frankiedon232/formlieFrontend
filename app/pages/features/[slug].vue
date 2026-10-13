@@ -77,8 +77,7 @@ usePageSeo({
         :description="t(`${base}.description`)"
         :links="actions"
         :ui="{
-          container: 'lg:grid-cols-[1fr_1.2fr] py-16 sm:py-20 lg:py-24 gap-12',
-          title: 'text-4xl sm:text-5xl font-semibold tracking-tight text-pretty',
+          container: 'lg:grid-cols-[1fr_1.2fr] gap-12',
           description: 'text-base sm:text-lg',
         }"
       >
@@ -106,7 +105,7 @@ usePageSeo({
       </UPageHero>
     </div>
 
-    <UPageSection :ui="{ container: 'py-12 sm:py-16' }">
+    <UPageSection>
       <UPageGrid>
         <UPageCard
           v-for="card in cards"

@@ -186,8 +186,21 @@
         "education": "Образование",
         "events": "Мероприятия",
         "finance": "Финансы",
-        "operations": "Операции"
-      }
+        "operations": "Операции",
+        "government": "Госсектор",
+        "nonprofit": "НКО",
+        "retail": "Розничная торговля",
+        "hospitality": "Гостеприимство",
+        "construction": "Строительство",
+        "logistics": "Логистика",
+        "legal": "Юриспруденция",
+        "realEstate": "Недвижимость",
+        "manufacturing": "Производство",
+        "technology": "Технологии",
+        "research": "Исследования",
+        "insurance": "Страхование"
+      },
+      "description": "От одного человека до крупных организаций: команды по всему миру собирают данные с Formalie."
     },
     "channels": {
       "eyebrow": "Все каналы",

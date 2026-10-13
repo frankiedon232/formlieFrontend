@@ -186,8 +186,21 @@
         "education": "Giáo dục",
         "events": "Sự kiện",
         "finance": "Tài chính",
-        "operations": "Vận hành"
-      }
+        "operations": "Vận hành",
+        "government": "Khu vực công",
+        "nonprofit": "Tổ chức phi lợi nhuận",
+        "retail": "Bán lẻ",
+        "hospitality": "Khách sạn và du lịch",
+        "construction": "Xây dựng",
+        "logistics": "Hậu cần",
+        "legal": "Pháp lý",
+        "realEstate": "Bất động sản",
+        "manufacturing": "Sản xuất",
+        "technology": "Công nghệ",
+        "research": "Nghiên cứu",
+        "insurance": "Bảo hiểm"
+      },
+      "description": "Từ một người đến tổ chức lớn, các nhóm ở khắp nơi thu thập dữ liệu với Formalie."
     },
     "channels": {
       "eyebrow": "Mọi kênh",

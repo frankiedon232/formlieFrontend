@@ -124,7 +124,7 @@ usePageSeo({
       </div>
     </section>
 
-    <UPageSection :ui="{ container: 'py-16 sm:py-20' }">
+    <UPageSection>
       <UPageGrid>
         <UPageCard
           v-for="item in items"
@@ -146,7 +146,7 @@ usePageSeo({
       </UPageGrid>
     </UPageSection>
 
-    <UPageSection :ui="{ container: 'pb-16 sm:pb-20 pt-0 sm:pt-0 lg:pt-0' }">
+    <UPageSection :ui="{ container: 'pt-0 sm:pt-0 lg:pt-0' }">
       <div class="grid gap-6 lg:grid-cols-2">
         <div class="rounded-3xl bg-inverted p-8 text-inverted sm:p-10">
           <UIcon name="i-lucide-bug" class="size-6" />

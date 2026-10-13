@@ -186,8 +186,21 @@
         "education": "Освіта",
         "events": "Заходи",
         "finance": "Фінанси",
-        "operations": "Операції"
-      }
+        "operations": "Операції",
+        "government": "Держсектор",
+        "nonprofit": "Неприбуткові організації",
+        "retail": "Роздрібна торгівля",
+        "hospitality": "Гостинність",
+        "construction": "Будівництво",
+        "logistics": "Логістика",
+        "legal": "Право",
+        "realEstate": "Нерухомість",
+        "manufacturing": "Виробництво",
+        "technology": "Технології",
+        "research": "Дослідження",
+        "insurance": "Страхування"
+      },
+      "description": "Від однієї людини до великих організацій: команди по всьому світу збирають дані з Formalie."
     },
     "channels": {
       "eyebrow": "Усі канали",

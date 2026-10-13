@@ -5,11 +5,7 @@ const locales = SITE_LOCALES
 </script>
 
 <template>
-  <UPageSection
-    :title="t('home.languages.title')"
-    :description="t('home.languages.description')"
-    :ui="{ container: 'py-16 sm:py-20' }"
-  >
+  <UPageSection :title="t('home.languages.title')" :description="t('home.languages.description')">
     <UMarquee pause-on-hover :overlay="true" :ui="{ root: '[--duration:50s] [--gap:--spacing(3)]' }">
       <span
         v-for="item in locales"

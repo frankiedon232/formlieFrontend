@@ -48,7 +48,7 @@ usePageSeo({
             trailingIcon: 'i-lucide-arrow-right',
           },
         ]"
-        :ui="{ title: 'text-4xl sm:text-6xl font-semibold tracking-tight' }"
+        :ui="{ title: 'text-balance' }"
       >
         <template #headline>
           <UBadge
@@ -96,7 +96,6 @@ usePageSeo({
       orientation="horizontal"
       :reverse="i % 2 === 1"
       :ui="{
-        container: 'py-14 sm:py-20 lg:py-24',
         title: 'text-2xl sm:text-3xl lg:text-4xl',
       }"
       class="scroll-mt-20"

@@ -8,7 +8,7 @@ const pages = computed(() => props.slugs.map(slug => featurePage(slug)).filter(p
 </script>
 
 <template>
-  <UPageSection :title="title ?? t('common.related')" :ui="{ container: 'py-16 sm:py-20' }">
+  <UPageSection :title="title ?? t('common.related')">
     <UPageGrid>
       <UPageCard
         v-for="page in pages"

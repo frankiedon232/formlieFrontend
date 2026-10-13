@@ -186,8 +186,21 @@
         "education": "Educação",
         "events": "Eventos",
         "finance": "Finanças",
-        "operations": "Operações"
-      }
+        "operations": "Operações",
+        "government": "Setor público",
+        "nonprofit": "ONGs",
+        "retail": "Varejo",
+        "hospitality": "Hotelaria",
+        "construction": "Construção",
+        "logistics": "Logística",
+        "legal": "Jurídico",
+        "realEstate": "Imobiliário",
+        "manufacturing": "Indústria",
+        "technology": "Tecnologia",
+        "research": "Pesquisa",
+        "insurance": "Seguros"
+      },
+      "description": "De uma pessoa a grandes organizações, equipes em todo lugar coletam com a Formalie."
     },
     "channels": {
       "eyebrow": "Todos os canais",

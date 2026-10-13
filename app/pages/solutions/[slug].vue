@@ -64,8 +64,7 @@ usePageSeo({
         :description="t(`${base}.description`)"
         :links="actions"
         :ui="{
-          container: 'lg:grid-cols-[1fr_1.1fr] py-16 sm:py-20 lg:py-24 gap-12',
-          title: 'text-4xl sm:text-5xl font-semibold tracking-tight text-pretty',
+          container: 'lg:grid-cols-[1fr_1.1fr] gap-12',
           description: 'text-base sm:text-lg',
         }"
       >
@@ -88,7 +87,7 @@ usePageSeo({
     </div>
 
     <!-- The problem, then the forms to start from -->
-    <UPageSection :ui="{ container: 'py-12 sm:py-16' }">
+    <UPageSection>
       <div class="grid gap-6 lg:grid-cols-3">
         <div class="rounded-2xl bg-elevated/60 p-6 ring-1 ring-default sm:p-8">
           <span

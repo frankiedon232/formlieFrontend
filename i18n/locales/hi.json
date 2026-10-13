@@ -186,8 +186,21 @@
         "education": "शिक्षा",
         "events": "इवेंट",
         "finance": "वित्त",
-        "operations": "संचालन"
-      }
+        "operations": "संचालन",
+        "government": "सरकारी क्षेत्र",
+        "nonprofit": "गैर-लाभकारी संस्थाएँ",
+        "retail": "खुदरा",
+        "hospitality": "आतिथ्य",
+        "construction": "निर्माण",
+        "logistics": "लॉजिस्टिक्स",
+        "legal": "कानूनी",
+        "realEstate": "रियल एस्टेट",
+        "manufacturing": "विनिर्माण",
+        "technology": "प्रौद्योगिकी",
+        "research": "शोध",
+        "insurance": "बीमा"
+      },
+      "description": "एक व्यक्ति से लेकर बड़े संगठनों तक, हर जगह टीमें Formalie से डेटा जुटाती हैं।"
     },
     "channels": {
       "eyebrow": "हर चैनल",

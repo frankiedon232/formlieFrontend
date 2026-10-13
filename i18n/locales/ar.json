@@ -186,8 +186,21 @@
         "education": "التعليم",
         "events": "الفعاليات",
         "finance": "المالية",
-        "operations": "العمليات"
-      }
+        "operations": "العمليات",
+        "government": "القطاع العام",
+        "nonprofit": "المنظمات غير الربحية",
+        "retail": "التجزئة",
+        "hospitality": "الضيافة",
+        "construction": "البناء",
+        "logistics": "الخدمات اللوجستية",
+        "legal": "القانون",
+        "realEstate": "العقارات",
+        "manufacturing": "التصنيع",
+        "technology": "التقنية",
+        "research": "البحث العلمي",
+        "insurance": "التأمين"
+      },
+      "description": "من شخص واحد إلى المؤسسات الكبيرة، تجمع الفرق في كل مكان بياناتها مع Formalie."
     },
     "channels": {
       "eyebrow": "كل القنوات",

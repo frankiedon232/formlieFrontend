@@ -186,8 +186,21 @@
         "education": "教育",
         "events": "イベント",
         "finance": "金融",
-        "operations": "業務運営"
-      }
+        "operations": "業務運営",
+        "government": "公共機関",
+        "nonprofit": "非営利団体",
+        "retail": "小売",
+        "hospitality": "ホスピタリティ",
+        "construction": "建設",
+        "logistics": "物流",
+        "legal": "法務",
+        "realEstate": "不動産",
+        "manufacturing": "製造",
+        "technology": "テクノロジー",
+        "research": "研究",
+        "insurance": "保険"
+      },
+      "description": "個人から大きな組織まで、世界中のチームが Formalie でデータを集めています。"
     },
     "channels": {
       "eyebrow": "すべてのチャネル",

@@ -51,7 +51,7 @@ usePageSeo({
         :description="t('integrationsPage.description')"
         :ui="{
           container: 'pb-6 sm:pb-8 lg:pb-10',
-          title: 'text-4xl sm:text-6xl font-semibold tracking-tight text-balance',
+          title: 'text-balance',
         }"
       >
         <template #headline>
@@ -78,7 +78,7 @@ usePageSeo({
       </UPageHero>
     </div>
 
-    <UPageSection :ui="{ container: 'py-8 sm:py-12 gap-6 sm:gap-6 lg:gap-6' }">
+    <UPageSection :ui="{ container: 'pt-0 sm:pt-0 lg:pt-0 gap-6 sm:gap-6 lg:gap-6' }">
       <div
         v-for="group in groups"
         :key="group.key"
@@ -119,7 +119,6 @@ usePageSeo({
       :title="t('integrationsPage.standards.title')"
       :description="t('integrationsPage.standards.text')"
       orientation="horizontal"
-      :ui="{ container: 'py-16 sm:py-20' }"
     >
       <template #links>
         <ul class="flex flex-wrap gap-2">

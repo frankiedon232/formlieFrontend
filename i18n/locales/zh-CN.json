@@ -186,8 +186,21 @@
         "education": "教育",
         "events": "活动",
         "finance": "金融",
-        "operations": "运营"
-      }
+        "operations": "运营",
+        "government": "公共部门",
+        "nonprofit": "非营利组织",
+        "retail": "零售",
+        "hospitality": "酒店业",
+        "construction": "建筑",
+        "logistics": "物流",
+        "legal": "法律",
+        "realEstate": "房地产",
+        "manufacturing": "制造业",
+        "technology": "科技",
+        "research": "科研",
+        "insurance": "保险"
+      },
+      "description": "从个人到大型组织，各地的团队都在用 Formalie 收集数据。"
     },
     "channels": {
       "eyebrow": "全渠道",

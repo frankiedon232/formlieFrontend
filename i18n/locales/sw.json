@@ -186,8 +186,21 @@
         "education": "Elimu",
         "events": "Matukio",
         "finance": "Fedha",
-        "operations": "Uendeshaji"
-      }
+        "operations": "Uendeshaji",
+        "government": "Sekta ya umma",
+        "nonprofit": "Mashirika yasiyo ya faida",
+        "retail": "Rejareja",
+        "hospitality": "Ukarimu",
+        "construction": "Ujenzi",
+        "logistics": "Usafirishaji",
+        "legal": "Sheria",
+        "realEstate": "Majengo",
+        "manufacturing": "Viwanda",
+        "technology": "Teknolojia",
+        "research": "Utafiti",
+        "insurance": "Bima"
+      },
+      "description": "Kuanzia mtu mmoja hadi mashirika makubwa, timu kila mahali hukusanya data kwa Formalie."
     },
     "channels": {
       "eyebrow": "Kila njia",
