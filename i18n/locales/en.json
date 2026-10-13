@@ -136,7 +136,269 @@
     "home": "Back to the home page",
     "help": "Visit the help centre"
   },
-  "placeholder": {
-    "building": "The Formalie website is being built."
+  "home": {
+    "meta": {
+      "title": "Formalie · Forms, data and access under your control"
+    },
+    "hero": {
+      "eyebrow": "Forms · Data · Access",
+      "description": "Build any form, collect answers by link, website, QR code or API, keep them in your own database and decide who sees what. For organisations of any size, anywhere in the world.",
+      "talkToSales": "Talk to sales",
+      "proof": {
+        "free": "Free plan, no card needed",
+        "languages": "20 languages",
+        "data": "Your data, your database"
+      }
+    },
+    "flow": {
+      "label": "Answers travel from form links, website embeds, QR codes, the API and mobile apps through Formalie, encrypted on the way, to your database, webhooks, dashboard, email alerts and Formalie storage.",
+      "hub": "Encrypted on the way",
+      "sources": {
+        "link": "Form link",
+        "embed": "Website embed",
+        "qr": "QR code",
+        "api": "API",
+        "app": "Mobile app"
+      },
+      "nameField": "Name",
+      "viaApi": "Calls the API",
+      "targets": {
+        "database": "Your database",
+        "webhooks": "Webhooks",
+        "dashboard": "Dashboard",
+        "email": "Email alerts",
+        "storage": "Formalie storage"
+      },
+      "newResponse": "New response",
+      "encrypted": "Encrypted",
+      "counters": {
+        "responses": "Responses collected",
+        "database": "Sent to your database",
+        "countries": "Countries answering",
+        "note": "Example activity, not real figures"
+      }
+    },
+    "trust": {
+      "title": "Built for teams in every sector",
+      "sectors": {
+        "hr": "HR",
+        "healthcare": "Healthcare",
+        "education": "Education",
+        "events": "Events",
+        "finance": "Finance",
+        "operations": "Operations"
+      }
+    },
+    "channels": {
+      "eyebrow": "Every channel",
+      "title": "Answers from everywhere",
+      "description": "One form, every channel. Share a link, embed it on your website, print a QR code or let your apps send answers through the API. Everything lands in one place.",
+      "link": {
+        "title": "Form link",
+        "text": "A short, custom address you can share anywhere."
+      },
+      "embed": {
+        "title": "Website embed",
+        "text": "Your form inside your own pages, only on the websites you allow."
+      },
+      "qr": {
+        "title": "QR code",
+        "text": "Print it on posters, tickets or receipts and collect on the spot."
+      },
+      "api": {
+        "title": "API",
+        "text": "Your apps send answers straight in, signed and checked."
+      },
+      "inbox": "All in one place"
+    },
+    "tabs": {
+      "eyebrow": "The product",
+      "title": "One place for forms, answers and data",
+      "description": "Real screens from Formalie. Every tab is a part of the product you can use today.",
+      "seeHow": "See how it works",
+      "build": {
+        "label": "Build",
+        "title": "Build any form",
+        "text": "Drag-and-drop questions, pages, rules and calculations. Over 40 question types.",
+        "points": [
+          "Rows, pages and a keyboard alternative to every drag",
+          "Rules that show, hide and require questions",
+          "Totals, scores and prices worked out live",
+          "Draft, publish and restore any version"
+        ],
+        "alt": "The form builder: question types on the left, a multi-page form in the middle, settings on the right"
+      },
+      "design": {
+        "label": "Design",
+        "title": "Make it look like you",
+        "text": "Start from a look and make it yours: fonts, colours, header, footer, thank-you page.",
+        "points": [
+          "Starting looks and a template library",
+          "21 self-hosted fonts, with contrast hints",
+          "Themes you save and apply to any form",
+          "Landing pages that frame the form on its link"
+        ],
+        "alt": "The form designer: starting looks on the left and a live preview of the form"
+      },
+      "responses": {
+        "label": "Responses",
+        "title": "Every answer, under control",
+        "text": "Review, tag, export and summarise every answer.",
+        "points": [
+          "Table and card views with search and filters",
+          "Review statuses, tags and notes",
+          "Export to Excel, CSV or PDF",
+          "AI summaries and insights across responses"
+        ],
+        "alt": "The responses list with the chart of review statuses"
+      },
+      "data": {
+        "label": "Data",
+        "title": "Your database, from day one",
+        "text": "Send every answer to MySQL, MariaDB, PostgreSQL, SQL Server or Oracle as it arrives.",
+        "points": [
+          "Connection test, health and response time",
+          "Backfill and retries, so no answer is lost",
+          "A database explorer and a query editor",
+          "Every action on a connection in the audit trail"
+        ],
+        "alt": "The data sources overview: database traffic and connection health"
+      },
+      "api": {
+        "label": "API",
+        "title": "Forms as secure API endpoints",
+        "text": "Turn any form into secure API endpoints, with docs your developers will like.",
+        "points": [
+          "GET, POST, PUT and DELETE, chosen per endpoint",
+          "Test and live tokens with scopes",
+          "Access rules by IP, domain and country, plus rate limits",
+          "Generated docs with a try-it console"
+        ],
+        "alt": "The API service overview: services, endpoints, calls, traffic over time and one endpoint in detail"
+      }
+    },
+    "apart": {
+      "eyebrow": "Why Formalie",
+      "title": "What sets Formalie apart",
+      "description": "Built around the questions organisations ask before they trust a tool with their data.",
+      "data": {
+        "title": "Your data, your database",
+        "text": "Keep answers in Formalie's encrypted storage or your own database from day one."
+      },
+      "access": {
+        "title": "Access you can explain",
+        "text": "Roles, folders and sharing, and a clear answer to who can see each form."
+      },
+      "channels": {
+        "title": "Every channel",
+        "text": "Link, embed, QR code and API, all into one place."
+      },
+      "languages": {
+        "title": "20 languages",
+        "text": "The app and your forms speak your people's language, right to left included."
+      },
+      "audit": {
+        "title": "An audit trail of everything",
+        "text": "Who did what, when and from where."
+      },
+      "help": {
+        "title": "Help on every page",
+        "text": "Guided tours, a help centre and an assistant."
+      }
+    },
+    "security": {
+      "eyebrow": "Security",
+      "title": "Security you can show your auditors.",
+      "description": "Clear controls you can see, explain and check, built into every workspace.",
+      "points": [
+        "Encrypted in transit and at rest",
+        "Two-step sign-in and single sign-on",
+        "Roles and permissions",
+        "An audit trail of every action",
+        "Data in the region you choose (Enterprise)"
+      ],
+      "link": "Read about security",
+      "trail": "Audit trail",
+      "live": "Live",
+      "events": {
+        "published": "Form published",
+        "role": "Role updated",
+        "export": "Responses exported",
+        "sso": "Signed in with single sign-on",
+        "token": "API token created"
+      }
+    },
+    "integrations": {
+      "eyebrow": "Integrations",
+      "title": "Works with the systems you already have.",
+      "description": "Five databases, webhooks, the API service, sign-in with Google or Facebook, and single sign-on with your identity provider.",
+      "link": "See all integrations"
+    },
+    "languages": {
+      "title": "20 languages, right to left included",
+      "description": "The app and your forms speak your people's language."
+    },
+    "pricing": {
+      "eyebrow": "Pricing",
+      "title": "Start free, grow when you need to",
+      "description": "Simple plans for organisations of every size.",
+      "perMonth": "per month",
+      "free": "Free",
+      "mostPopular": "Most popular",
+      "startWith": "Start with {plan}",
+      "compare": "Compare all plans",
+      "enterprise": "Need more? Enterprise is shaped around your organisation.",
+      "paddle": "Payments handled by Paddle",
+      "sample": "Sample prices",
+      "plans": {
+        "starter": "Starter",
+        "professional": "Professional",
+        "business": "Business",
+        "enterprise": "Enterprise"
+      },
+      "taglines": {
+        "starter": "Every core feature, free for as long as you like.",
+        "professional": "Everything in Starter, plus your own domain, sending address and company sign-in.",
+        "business": "Everything in Professional, with no limits on forms, responses or databases."
+      },
+      "limits": {
+        "forms": "{count} forms",
+        "formsUnlimited": "Unlimited forms",
+        "responses": "{count} responses on each form",
+        "responsesUnlimited": "Unlimited responses",
+        "databases": "Your own database: {list}",
+        "sso": "Single sign-on",
+        "languages": "20 languages"
+      }
+    },
+    "faq": {
+      "title": "Questions, answered",
+      "items": [
+        {
+          "q": "Is there a free plan?",
+          "a": "Yes. Starter is free for as long as you like."
+        },
+        {
+          "q": "Can I use my own database?",
+          "a": "Yes: MySQL on every plan, PostgreSQL and MariaDB on Professional, and all five on Business."
+        },
+        {
+          "q": "Where is my data stored?",
+          "a": "In Formalie's default region, or in a region you choose on Enterprise."
+        },
+        {
+          "q": "Can people fill in forms in their language?",
+          "a": "Yes. A form can have several languages, and people choose theirs."
+        },
+        {
+          "q": "Do you have an API?",
+          "a": "Yes. Any form can become secure API endpoints."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Start collecting in minutes.",
+      "description": "Free plan, no card needed. Upgrade when you grow."
+    }
   }
 }

@@ -136,7 +136,269 @@
     "home": "Retour à l'accueil",
     "help": "Consulter le centre d'aide"
   },
-  "placeholder": {
-    "building": "Le site de Formalie est en construction."
+  "home": {
+    "meta": {
+      "title": "Formalie · Formulaires, données et accès sous votre contrôle"
+    },
+    "hero": {
+      "eyebrow": "Formulaires · Données · Accès",
+      "description": "Créez n'importe quel formulaire, recueillez les réponses par lien, site web, QR code ou API, gardez-les dans votre propre base de données et décidez qui voit quoi. Pour les organisations de toute taille, partout dans le monde.",
+      "talkToSales": "Contacter les ventes",
+      "proof": {
+        "free": "Offre gratuite, sans carte bancaire",
+        "languages": "20 langues",
+        "data": "Vos données, votre base de données"
+      }
+    },
+    "flow": {
+      "label": "Les réponses partent des liens de formulaire, des intégrations sur site web, des QR codes, de l'API et des applications mobiles, passent par Formalie, chiffrées en chemin, et arrivent dans votre base de données, vos webhooks, votre tableau de bord, vos alertes e-mail et le stockage Formalie.",
+      "hub": "Chiffrées en chemin",
+      "sources": {
+        "link": "Lien du formulaire",
+        "embed": "Intégration sur site",
+        "qr": "QR code",
+        "api": "API",
+        "app": "Application mobile"
+      },
+      "nameField": "Nom",
+      "viaApi": "Appelle l'API",
+      "targets": {
+        "database": "Votre base de données",
+        "webhooks": "Webhooks",
+        "dashboard": "Tableau de bord",
+        "email": "Alertes e-mail",
+        "storage": "Stockage Formalie"
+      },
+      "newResponse": "Nouvelle réponse",
+      "encrypted": "Chiffrée",
+      "counters": {
+        "responses": "Réponses recueillies",
+        "database": "Envoyées à votre base de données",
+        "countries": "Pays participants",
+        "note": "Activité d'exemple, pas de chiffres réels"
+      }
+    },
+    "trust": {
+      "title": "Conçu pour les équipes de tous les secteurs",
+      "sectors": {
+        "hr": "RH",
+        "healthcare": "Santé",
+        "education": "Éducation",
+        "events": "Événements",
+        "finance": "Finance",
+        "operations": "Opérations"
+      }
+    },
+    "channels": {
+      "eyebrow": "Tous les canaux",
+      "title": "Des réponses de partout",
+      "description": "Un formulaire, tous les canaux. Partagez un lien, intégrez-le à votre site, imprimez un QR code ou laissez vos applications envoyer les réponses via l'API. Tout arrive au même endroit.",
+      "link": {
+        "title": "Lien du formulaire",
+        "text": "Une adresse courte et personnalisée, à partager partout."
+      },
+      "embed": {
+        "title": "Intégration sur site",
+        "text": "Votre formulaire dans vos propres pages, uniquement sur les sites que vous autorisez."
+      },
+      "qr": {
+        "title": "QR code",
+        "text": "Imprimez-le sur des affiches, des billets ou des reçus et recueillez les réponses sur place."
+      },
+      "api": {
+        "title": "API",
+        "text": "Vos applications envoient les réponses directement, signées et vérifiées."
+      },
+      "inbox": "Tout au même endroit"
+    },
+    "tabs": {
+      "eyebrow": "Le produit",
+      "title": "Un seul endroit pour les formulaires, les réponses et les données",
+      "description": "De vrais écrans de Formalie. Chaque onglet montre une partie du produit que vous pouvez utiliser dès aujourd'hui.",
+      "seeHow": "Voir comment ça marche",
+      "build": {
+        "label": "Créer",
+        "title": "Créez n'importe quel formulaire",
+        "text": "Questions, pages, règles et calculs par glisser-déposer. Plus de 40 types de questions.",
+        "points": [
+          "Lignes, pages et une alternative au clavier pour chaque glisser-déposer",
+          "Des règles pour afficher, masquer et rendre obligatoires les questions",
+          "Totaux, scores et prix calculés en direct",
+          "Brouillon, publication et restauration de n'importe quelle version"
+        ],
+        "alt": "Le créateur de formulaires : les types de questions à gauche, un formulaire de plusieurs pages au centre, les réglages à droite"
+      },
+      "design": {
+        "label": "Design",
+        "title": "À votre image",
+        "text": "Partez d'un style et personnalisez-le : polices, couleurs, en-tête, pied de page, page de remerciement.",
+        "points": [
+          "Des styles de départ et une bibliothèque de modèles",
+          "21 polices hébergées par Formalie, avec des conseils de contraste",
+          "Des thèmes à enregistrer et à appliquer à n'importe quel formulaire",
+          "Des pages d'accueil qui mettent en valeur le formulaire sur son lien"
+        ],
+        "alt": "L'éditeur de design : les styles de départ à gauche et un aperçu en direct du formulaire"
+      },
+      "responses": {
+        "label": "Réponses",
+        "title": "Chaque réponse, sous contrôle",
+        "text": "Consultez, étiquetez, exportez et résumez chaque réponse.",
+        "points": [
+          "Vues en tableau et en cartes, avec recherche et filtres",
+          "Statuts de révision, étiquettes et notes",
+          "Export vers Excel, CSV ou PDF",
+          "Résumés et analyses par IA sur l'ensemble des réponses"
+        ],
+        "alt": "La liste des réponses avec le graphique des statuts de révision"
+      },
+      "data": {
+        "label": "Données",
+        "title": "Votre base de données, dès le premier jour",
+        "text": "Envoyez chaque réponse vers MySQL, MariaDB, PostgreSQL, SQL Server ou Oracle dès son arrivée.",
+        "points": [
+          "Test de connexion, état et temps de réponse",
+          "Rattrapage et nouvelles tentatives, pour ne perdre aucune réponse",
+          "Un explorateur de base de données et un éditeur de requêtes",
+          "Chaque action sur une connexion inscrite au journal d'audit"
+        ],
+        "alt": "La vue d'ensemble des sources de données : trafic de la base de données et état des connexions"
+      },
+      "api": {
+        "label": "API",
+        "title": "Des formulaires devenus points d'accès API sécurisés",
+        "text": "Transformez n'importe quel formulaire en points d'accès API sécurisés, avec une documentation que vos développeurs apprécieront.",
+        "points": [
+          "GET, POST, PUT et DELETE, au choix pour chaque point d'accès",
+          "Jetons de test et de production, avec des portées",
+          "Règles d'accès par IP, domaine et pays, plus des limites de débit",
+          "Une documentation générée avec une console pour essayer"
+        ],
+        "alt": "La vue d'ensemble du service API : les requêtes dans le temps et les points d'accès"
+      }
+    },
+    "apart": {
+      "eyebrow": "Pourquoi Formalie",
+      "title": "Ce qui distingue Formalie",
+      "description": "Pensé autour des questions que se posent les organisations avant de confier leurs données à un outil.",
+      "data": {
+        "title": "Vos données, votre base de données",
+        "text": "Gardez les réponses dans le stockage chiffré de Formalie ou dans votre propre base de données dès le premier jour."
+      },
+      "access": {
+        "title": "Des accès faciles à expliquer",
+        "text": "Rôles, dossiers et partage, et une réponse claire à la question : qui peut voir chaque formulaire."
+      },
+      "channels": {
+        "title": "Tous les canaux",
+        "text": "Lien, intégration, QR code et API, le tout au même endroit."
+      },
+      "languages": {
+        "title": "20 langues",
+        "text": "L'application et vos formulaires parlent la langue de vos utilisateurs, y compris de droite à gauche."
+      },
+      "audit": {
+        "title": "Un journal d'audit complet",
+        "text": "Qui a fait quoi, quand et depuis où."
+      },
+      "help": {
+        "title": "De l'aide sur chaque page",
+        "text": "Visites guidées, un centre d'aide et un assistant."
+      }
+    },
+    "security": {
+      "eyebrow": "Sécurité",
+      "title": "Une sécurité que vous pouvez montrer à vos auditeurs.",
+      "description": "Des contrôles clairs, que vous pouvez voir, expliquer et vérifier, intégrés à chaque espace de travail.",
+      "points": [
+        "Chiffrement en transit et au repos",
+        "Connexion en deux étapes et authentification unique",
+        "Rôles et autorisations",
+        "Un journal d'audit de chaque action",
+        "Données dans la région de votre choix (Enterprise)"
+      ],
+      "link": "En savoir plus sur la sécurité",
+      "trail": "Journal d'audit",
+      "live": "En direct",
+      "events": {
+        "published": "Formulaire publié",
+        "role": "Rôle modifié",
+        "export": "Réponses exportées",
+        "sso": "Connexion par authentification unique",
+        "token": "Jeton API créé"
+      }
+    },
+    "integrations": {
+      "eyebrow": "Intégrations",
+      "title": "Compatible avec les systèmes que vous utilisez déjà.",
+      "description": "Cinq bases de données, des webhooks, le service API, la connexion avec Google ou Facebook et l'authentification unique avec votre fournisseur d'identité.",
+      "link": "Voir toutes les intégrations"
+    },
+    "languages": {
+      "title": "20 langues, y compris de droite à gauche",
+      "description": "L'application et vos formulaires parlent la langue de vos utilisateurs."
+    },
+    "pricing": {
+      "eyebrow": "Tarifs",
+      "title": "Commencez gratuitement, évoluez quand vous le souhaitez",
+      "description": "Des offres simples pour les organisations de toute taille.",
+      "perMonth": "par mois",
+      "free": "Gratuit",
+      "mostPopular": "Le plus populaire",
+      "startWith": "Commencer avec {plan}",
+      "compare": "Comparer toutes les offres",
+      "enterprise": "Besoin de plus ? L'offre Enterprise s'adapte à votre organisation.",
+      "paddle": "Paiements gérés par Paddle",
+      "sample": "Prix indicatifs",
+      "plans": {
+        "starter": "Starter",
+        "professional": "Professional",
+        "business": "Business",
+        "enterprise": "Enterprise"
+      },
+      "taglines": {
+        "starter": "Toutes les fonctionnalités essentielles, gratuites aussi longtemps que vous le souhaitez.",
+        "professional": "Tout ce que propose Starter, plus votre propre domaine, votre adresse d'envoi et la connexion d'entreprise.",
+        "business": "Tout ce que propose Professional, sans limite de formulaires, de réponses ni de bases de données."
+      },
+      "limits": {
+        "forms": "{count} formulaires",
+        "formsUnlimited": "Formulaires illimités",
+        "responses": "{count} réponses par formulaire",
+        "responsesUnlimited": "Réponses illimitées",
+        "databases": "Votre propre base de données : {list}",
+        "sso": "Authentification unique",
+        "languages": "20 langues"
+      }
+    },
+    "faq": {
+      "title": "Vos questions, nos réponses",
+      "items": [
+        {
+          "q": "Existe-t-il une offre gratuite ?",
+          "a": "Oui. Starter est gratuit aussi longtemps que vous le souhaitez."
+        },
+        {
+          "q": "Puis-je utiliser ma propre base de données ?",
+          "a": "Oui : MySQL avec toutes les offres, PostgreSQL et MariaDB avec Professional, et les cinq avec Business."
+        },
+        {
+          "q": "Où sont stockées mes données ?",
+          "a": "Dans la région par défaut de Formalie, ou dans la région de votre choix avec Enterprise."
+        },
+        {
+          "q": "Les gens peuvent-ils remplir les formulaires dans leur langue ?",
+          "a": "Oui. Un formulaire peut avoir plusieurs langues, et chacun choisit la sienne."
+        },
+        {
+          "q": "Proposez-vous une API ?",
+          "a": "Oui. N'importe quel formulaire peut devenir des points d'accès API sécurisés."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Commencez à recueillir des réponses en quelques minutes.",
+      "description": "Offre gratuite, sans carte bancaire. Passez à l'offre supérieure quand vous grandissez."
+    }
   }
 }

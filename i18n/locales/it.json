@@ -136,7 +136,269 @@
     "home": "Torna alla home",
     "help": "Visita il centro assistenza"
   },
-  "placeholder": {
-    "building": "Il sito di Formalie è in costruzione."
+  "home": {
+    "meta": {
+      "title": "Formalie · Moduli, dati e accessi sotto il tuo controllo"
+    },
+    "hero": {
+      "eyebrow": "Moduli · Dati · Accessi",
+      "description": "Crea qualsiasi modulo, raccogli risposte tramite link, sito web, codice QR o API, conservale nel tuo database e decidi chi vede cosa. Per organizzazioni di ogni dimensione, in tutto il mondo.",
+      "talkToSales": "Parla con le vendite",
+      "proof": {
+        "free": "Piano gratuito, senza carta",
+        "languages": "20 lingue",
+        "data": "I tuoi dati, il tuo database"
+      }
+    },
+    "flow": {
+      "label": "Le risposte partono da link ai moduli, moduli incorporati nei siti web, codici QR, API e app mobili, passano da Formalie, cifrate lungo il percorso, e arrivano al tuo database, ai webhook, alla dashboard, agli avvisi email e all'archivio di Formalie.",
+      "hub": "Cifrate lungo il percorso",
+      "sources": {
+        "link": "Link al modulo",
+        "embed": "Incorporamento nel sito",
+        "qr": "Codice QR",
+        "api": "API",
+        "app": "App mobile"
+      },
+      "nameField": "Nome",
+      "viaApi": "Chiama l'API",
+      "targets": {
+        "database": "Il tuo database",
+        "webhooks": "Webhook",
+        "dashboard": "Dashboard",
+        "email": "Avvisi email",
+        "storage": "Archivio Formalie"
+      },
+      "newResponse": "Nuova risposta",
+      "encrypted": "Cifrata",
+      "counters": {
+        "responses": "Risposte raccolte",
+        "database": "Inviate al tuo database",
+        "countries": "Paesi che rispondono",
+        "note": "Attività di esempio, non dati reali"
+      }
+    },
+    "trust": {
+      "title": "Pensato per i team di ogni settore",
+      "sectors": {
+        "hr": "Risorse umane",
+        "healthcare": "Sanità",
+        "education": "Istruzione",
+        "events": "Eventi",
+        "finance": "Finanza",
+        "operations": "Operazioni"
+      }
+    },
+    "channels": {
+      "eyebrow": "Ogni canale",
+      "title": "Risposte da ovunque",
+      "description": "Un modulo, ogni canale. Condividi un link, incorporalo nel tuo sito, stampa un codice QR o lascia che le tue app inviino le risposte tramite API. Tutto arriva in un unico posto.",
+      "link": {
+        "title": "Link al modulo",
+        "text": "Un indirizzo breve e personalizzato da condividere ovunque."
+      },
+      "embed": {
+        "title": "Incorporamento nel sito",
+        "text": "Il tuo modulo dentro le tue pagine, solo sui siti web che autorizzi."
+      },
+      "qr": {
+        "title": "Codice QR",
+        "text": "Stampalo su locandine, biglietti o ricevute e raccogli risposte sul posto."
+      },
+      "api": {
+        "title": "API",
+        "text": "Le tue app inviano le risposte direttamente, firmate e verificate."
+      },
+      "inbox": "Tutto in un unico posto"
+    },
+    "tabs": {
+      "eyebrow": "Il prodotto",
+      "title": "Un unico posto per moduli, risposte e dati",
+      "description": "Schermate reali di Formalie. Ogni scheda è una parte del prodotto che puoi usare già oggi.",
+      "seeHow": "Scopri come funziona",
+      "build": {
+        "label": "Crea",
+        "title": "Crea qualsiasi modulo",
+        "text": "Domande, pagine, regole e calcoli con il trascinamento. Oltre 40 tipi di domanda.",
+        "points": [
+          "Righe, pagine e un'alternativa da tastiera a ogni trascinamento",
+          "Regole che mostrano, nascondono e rendono obbligatorie le domande",
+          "Totali, punteggi e prezzi calcolati in tempo reale",
+          "Bozze, pubblicazione e ripristino di qualsiasi versione"
+        ],
+        "alt": "Il generatore di moduli: tipi di domanda a sinistra, un modulo su più pagine al centro e le impostazioni a destra"
+      },
+      "design": {
+        "label": "Design",
+        "title": "Con il tuo stile",
+        "text": "Parti da uno stile e rendilo tuo: caratteri, colori, intestazione, piè di pagina e pagina di ringraziamento.",
+        "points": [
+          "Stili di partenza e una libreria di modelli",
+          "21 caratteri ospitati da Formalie, con suggerimenti sul contrasto",
+          "Temi da salvare e applicare a qualsiasi modulo",
+          "Pagine di presentazione che incorniciano il modulo nel suo link"
+        ],
+        "alt": "L'editor di design: stili di partenza a sinistra e un'anteprima dal vivo del modulo"
+      },
+      "responses": {
+        "label": "Risposte",
+        "title": "Ogni risposta sotto controllo",
+        "text": "Rivedi, etichetta, esporta e riassumi ogni risposta.",
+        "points": [
+          "Viste a tabella e a schede con ricerca e filtri",
+          "Stati di revisione, etichette e note",
+          "Esportazione in Excel, CSV o PDF",
+          "Riepiloghi e approfondimenti con l'IA su tutte le risposte"
+        ],
+        "alt": "L'elenco delle risposte con il grafico degli stati di revisione"
+      },
+      "data": {
+        "label": "Dati",
+        "title": "Il tuo database, dal primo giorno",
+        "text": "Invia ogni risposta a MySQL, MariaDB, PostgreSQL, SQL Server o Oracle appena arriva.",
+        "points": [
+          "Test di connessione, stato e tempo di risposta",
+          "Recupero e nuovi tentativi, così nessuna risposta va persa",
+          "Un esploratore di database e un editor di query",
+          "Ogni azione su una connessione nel registro di controllo"
+        ],
+        "alt": "La panoramica delle origini dati: traffico del database e stato della connessione"
+      },
+      "api": {
+        "label": "API",
+        "title": "Moduli come endpoint API sicuri",
+        "text": "Trasforma qualsiasi modulo in endpoint API sicuri, con una documentazione che piacerà ai tuoi sviluppatori.",
+        "points": [
+          "GET, POST, PUT e DELETE, da scegliere per ogni endpoint",
+          "Token di test e di produzione con ambiti definiti",
+          "Regole di accesso per IP, dominio e paese, più limiti di frequenza",
+          "Documentazione generata con una console per provare"
+        ],
+        "alt": "La panoramica del servizio API: richieste nel tempo e gli endpoint"
+      }
+    },
+    "apart": {
+      "eyebrow": "Perché Formalie",
+      "title": "Cosa distingue Formalie",
+      "description": "Pensato attorno alle domande che le organizzazioni si pongono prima di affidare i propri dati a uno strumento.",
+      "data": {
+        "title": "I tuoi dati, il tuo database",
+        "text": "Conserva le risposte nell'archivio cifrato di Formalie o nel tuo database fin dal primo giorno."
+      },
+      "access": {
+        "title": "Accessi facili da spiegare",
+        "text": "Ruoli, cartelle e condivisione, con una risposta chiara su chi può vedere ogni modulo."
+      },
+      "channels": {
+        "title": "Ogni canale",
+        "text": "Link, incorporamento, codice QR e API, tutto in un unico posto."
+      },
+      "languages": {
+        "title": "20 lingue",
+        "text": "L'app e i tuoi moduli parlano la lingua delle tue persone, anche da destra a sinistra."
+      },
+      "audit": {
+        "title": "Un registro di controllo di tutto",
+        "text": "Chi ha fatto cosa, quando e da dove."
+      },
+      "help": {
+        "title": "Aiuto in ogni pagina",
+        "text": "Tour guidati, un centro assistenza e un assistente."
+      }
+    },
+    "security": {
+      "eyebrow": "Sicurezza",
+      "title": "Una sicurezza che puoi mostrare ai tuoi revisori.",
+      "description": "Controlli chiari che puoi vedere, spiegare e verificare, integrati in ogni area di lavoro.",
+      "points": [
+        "Cifratura in transito e a riposo",
+        "Accesso in due passaggi e single sign-on",
+        "Ruoli e autorizzazioni",
+        "Un registro di controllo di ogni azione",
+        "Dati nella regione che scegli (Enterprise)"
+      ],
+      "link": "Scopri la sicurezza",
+      "trail": "Registro di controllo",
+      "live": "In tempo reale",
+      "events": {
+        "published": "Modulo pubblicato",
+        "role": "Ruolo aggiornato",
+        "export": "Risposte esportate",
+        "sso": "Accesso con single sign-on",
+        "token": "Token API creato"
+      }
+    },
+    "integrations": {
+      "eyebrow": "Integrazioni",
+      "title": "Funziona con i sistemi che usi già.",
+      "description": "Cinque database, webhook, il servizio API, accesso con Google o Facebook e single sign-on con il tuo provider di identità.",
+      "link": "Vedi tutte le integrazioni"
+    },
+    "languages": {
+      "title": "20 lingue, anche da destra a sinistra",
+      "description": "L'app e i tuoi moduli parlano la lingua delle tue persone."
+    },
+    "pricing": {
+      "eyebrow": "Prezzi",
+      "title": "Inizia gratis, cresci quando ti serve",
+      "description": "Piani semplici per organizzazioni di ogni dimensione.",
+      "perMonth": "al mese",
+      "free": "Gratis",
+      "mostPopular": "Il più scelto",
+      "startWith": "Inizia con {plan}",
+      "compare": "Confronta tutti i piani",
+      "enterprise": "Ti serve di più? Enterprise si adatta alla tua organizzazione.",
+      "paddle": "Pagamenti gestiti da Paddle",
+      "sample": "Prezzi di esempio",
+      "plans": {
+        "starter": "Starter",
+        "professional": "Professional",
+        "business": "Business",
+        "enterprise": "Enterprise"
+      },
+      "taglines": {
+        "starter": "Tutte le funzioni principali, gratis per tutto il tempo che vuoi.",
+        "professional": "Tutto ciò che offre Starter, più il tuo dominio, il tuo indirizzo di invio e l'accesso aziendale.",
+        "business": "Tutto ciò che offre Professional, senza limiti di moduli, risposte o database."
+      },
+      "limits": {
+        "forms": "{count} moduli",
+        "formsUnlimited": "Moduli illimitati",
+        "responses": "{count} risposte per modulo",
+        "responsesUnlimited": "Risposte illimitate",
+        "databases": "Il tuo database: {list}",
+        "sso": "Single sign-on",
+        "languages": "20 lingue"
+      }
+    },
+    "faq": {
+      "title": "Domande e risposte",
+      "items": [
+        {
+          "q": "C'è un piano gratuito?",
+          "a": "Sì. Starter è gratis per tutto il tempo che vuoi."
+        },
+        {
+          "q": "Posso usare il mio database?",
+          "a": "Sì: MySQL con ogni piano, PostgreSQL e MariaDB con Professional e tutti e cinque con Business."
+        },
+        {
+          "q": "Dove vengono conservati i miei dati?",
+          "a": "Nella regione predefinita di Formalie oppure, con Enterprise, in una regione a tua scelta."
+        },
+        {
+          "q": "Le persone possono compilare i moduli nella loro lingua?",
+          "a": "Sì. Un modulo può avere più lingue e ognuno sceglie la propria."
+        },
+        {
+          "q": "Avete un'API?",
+          "a": "Sì. Qualsiasi modulo può diventare un insieme di endpoint API sicuri."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Inizia a raccogliere risposte in pochi minuti.",
+      "description": "Piano gratuito, senza carta. Passa a un piano superiore quando cresci."
+    }
   }
 }

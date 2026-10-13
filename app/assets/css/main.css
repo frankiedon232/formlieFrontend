@@ -19,6 +19,16 @@
   /* Response cards drift up and fade; dashes run along the lines. */
   --animate-drift: drift 8s ease-in-out infinite;
   --animate-dash: dash 1.6s linear infinite;
+  /* The website's data-flow hero and section animations. */
+  --animate-type: type 5s steps(12, end) infinite;
+  --animate-caret: caret 1s steps(1, end) infinite;
+  --animate-bar: bar 5s ease-out infinite;
+  --animate-cycle: cycle 10s ease-in-out infinite;
+  --animate-scan: scan 2.4s ease-in-out infinite;
+  --animate-orbit: orbit 60s linear infinite;
+  --animate-orbit-reverse: orbit 60s linear infinite reverse;
+  --animate-feed: feed 8s ease-in-out infinite;
+  --animate-ping-soft: ping-soft 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
 
   @keyframes float {
     0%,
@@ -48,6 +58,98 @@
   @keyframes dash {
     to {
       stroke-dashoffset: -24;
+    }
+  }
+
+  /* A field being filled in: the text appears, waits, then clears for the next answer. */
+  @keyframes type {
+    0% {
+      max-width: 0;
+    }
+    50%,
+    90% {
+      max-width: 100%;
+    }
+    100% {
+      max-width: 0;
+    }
+  }
+
+  @keyframes caret {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  /* A dashboard bar grows when an answer arrives (at 90% of the 5 s cycle), then resets. */
+  @keyframes bar {
+    0%,
+    86% {
+      transform: scaleY(0.25);
+    }
+    94%,
+    100% {
+      transform: scaleY(1);
+    }
+  }
+
+  /* Five items take turns (each visible for a fifth of the cycle). */
+  @keyframes cycle {
+    0%,
+    16% {
+      opacity: 1;
+    }
+    20%,
+    96% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes scan {
+    0%,
+    100% {
+      top: 8%;
+    }
+    50% {
+      top: 88%;
+    }
+  }
+
+  @keyframes orbit {
+    to {
+      rotate: 360deg;
+    }
+  }
+
+  /* An audit trail entry slides in, stays, and leaves. */
+  @keyframes feed {
+    0% {
+      opacity: 0;
+      translate: 0 10px;
+    }
+    8%,
+    80% {
+      opacity: 1;
+      translate: 0 0;
+    }
+    92%,
+    100% {
+      opacity: 0;
+      translate: 0 -6px;
+    }
+  }
+
+  @keyframes ping-soft {
+    0% {
+      scale: 1;
+      opacity: 0.5;
+    }
+    100% {
+      scale: 2.2;
+      opacity: 0;
     }
   }
 
@@ -82,4 +184,10 @@
   --ui-text-toned: var(--ui-color-neutral-200);
   --ui-text: var(--ui-color-neutral-100);
   --ui-text-highlighted: var(--color-white);
+}
+
+/* Animations stop while their section is off screen (FlowHero and others add .motion-paused). */
+.motion-paused,
+.motion-paused * {
+  animation-play-state: paused !important;
 }

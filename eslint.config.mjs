@@ -17,5 +17,7 @@ export default withNuxt({
       },
     ],
     'vue/multi-word-component-names': 'off',
+    // Formatting is Prettier's job (it writes void elements as <img />).
+    'vue/html-self-closing': 'off',
   },
 })

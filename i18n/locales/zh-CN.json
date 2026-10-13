@@ -136,7 +136,269 @@
     "home": "返回首页",
     "help": "访问帮助中心"
   },
-  "placeholder": {
-    "building": "Formalie 网站正在建设中。"
+  "home": {
+    "meta": {
+      "title": "Formalie · 表单、数据和访问，尽在你的掌控"
+    },
+    "hero": {
+      "eyebrow": "表单 · 数据 · 访问",
+      "description": "构建任何表单，通过链接、网站、二维码或 API 收集回答，将其保存在你自己的数据库中，并决定谁能看到什么。适用于全球任何规模的组织。",
+      "talkToSales": "联系销售",
+      "proof": {
+        "free": "免费方案，无需银行卡",
+        "languages": "20 种语言",
+        "data": "你的数据，你的数据库"
+      }
+    },
+    "flow": {
+      "label": "回答来自表单链接、网站嵌入、二维码、API 和移动应用，经过 Formalie 加密传输，送达你的数据库、Webhook、仪表板、邮件提醒和 Formalie 存储。",
+      "hub": "传输全程加密",
+      "sources": {
+        "link": "表单链接",
+        "embed": "网站嵌入",
+        "qr": "二维码",
+        "api": "API",
+        "app": "移动应用"
+      },
+      "nameField": "姓名",
+      "viaApi": "调用 API",
+      "targets": {
+        "database": "你的数据库",
+        "webhooks": "Webhook",
+        "dashboard": "仪表板",
+        "email": "邮件提醒",
+        "storage": "Formalie 存储"
+      },
+      "newResponse": "新回答",
+      "encrypted": "已加密",
+      "counters": {
+        "responses": "已收集回答",
+        "database": "已发送到你的数据库",
+        "countries": "回答来自的国家",
+        "note": "示例活动，并非真实数据"
+      }
+    },
+    "trust": {
+      "title": "为各行各业的团队打造",
+      "sectors": {
+        "hr": "人力资源",
+        "healthcare": "医疗健康",
+        "education": "教育",
+        "events": "活动",
+        "finance": "金融",
+        "operations": "运营"
+      }
+    },
+    "channels": {
+      "eyebrow": "全渠道",
+      "title": "回答来自四面八方",
+      "description": "一个表单，覆盖所有渠道。分享链接、嵌入网站、打印二维码，或让你的应用通过 API 发送回答。所有内容汇集到一处。",
+      "link": {
+        "title": "表单链接",
+        "text": "简短的自定义地址，随处都能分享。"
+      },
+      "embed": {
+        "title": "网站嵌入",
+        "text": "表单直接嵌在你自己的页面中，只在你允许的网站上显示。"
+      },
+      "qr": {
+        "title": "二维码",
+        "text": "印在海报、门票或收据上，现场即可收集。"
+      },
+      "api": {
+        "title": "API",
+        "text": "你的应用直接发送回答，经过签名和校验。"
+      },
+      "inbox": "全部汇集一处"
+    },
+    "tabs": {
+      "eyebrow": "产品",
+      "title": "表单、回答和数据，集中一处",
+      "description": "以下均为 Formalie 的真实界面。每个标签页都是你今天就能使用的产品功能。",
+      "seeHow": "了解工作原理",
+      "build": {
+        "label": "构建",
+        "title": "构建任何表单",
+        "text": "拖放式添加问题、页面、规则和计算。提供 40 多种问题类型。",
+        "points": [
+          "支持行和页面，每次拖动都有键盘替代操作",
+          "用规则显示、隐藏问题或设为必填",
+          "实时计算总计、分数和价格",
+          "草稿、发布，并可恢复任意版本"
+        ],
+        "alt": "表单构建器：左侧是问题类型，中间是多页表单，右侧是设置"
+      },
+      "design": {
+        "label": "设计",
+        "title": "打造你的专属风格",
+        "text": "从一种外观开始，打造你自己的风格：字体、颜色、页眉、页脚和感谢页。",
+        "points": [
+          "起始外观和模板库",
+          "21 种自托管字体，附带对比度提示",
+          "保存主题，并应用到任何表单",
+          "落地页，在表单链接上为表单增添背景介绍"
+        ],
+        "alt": "表单设计器：左侧是起始外观，右侧是表单的实时预览"
+      },
+      "responses": {
+        "label": "回答",
+        "title": "每一条回答，尽在掌控",
+        "text": "查看、标记、导出并总结每一条回答。",
+        "points": [
+          "表格和卡片视图，支持搜索和筛选",
+          "审核状态、标签和备注",
+          "导出为 Excel、CSV 或 PDF",
+          "基于所有回答的 AI 摘要和洞察"
+        ],
+        "alt": "回答列表及审核状态图表"
+      },
+      "data": {
+        "label": "数据",
+        "title": "从第一天起就用你自己的数据库",
+        "text": "每条回答一到达，就发送到 MySQL、MariaDB、PostgreSQL、SQL Server 或 Oracle。",
+        "points": [
+          "连接测试、健康状态和响应时间",
+          "补发和重试，不丢失任何回答",
+          "数据库浏览器和查询编辑器",
+          "连接上的每项操作都记录在审计日志中"
+        ],
+        "alt": "数据源概览：数据库流量和连接健康状态"
+      },
+      "api": {
+        "label": "API",
+        "title": "将表单变成安全的 API 端点",
+        "text": "将任何表单变成安全的 API 端点，并附带开发者喜欢的文档。",
+        "points": [
+          "按端点选择 GET、POST、PUT 和 DELETE",
+          "带权限范围的测试令牌和正式令牌",
+          "按 IP、域名和国家设置访问规则，并限制请求频率",
+          "自动生成的文档，附带在线调试控制台"
+        ],
+        "alt": "API 服务概览：请求趋势和端点列表"
+      }
+    },
+    "apart": {
+      "eyebrow": "为什么选择 Formalie",
+      "title": "Formalie 的与众不同",
+      "description": "围绕组织在把数据交给工具之前最关心的问题而打造。",
+      "data": {
+        "title": "你的数据，你的数据库",
+        "text": "从第一天起，就可以把回答保存在 Formalie 的加密存储或你自己的数据库中。"
+      },
+      "access": {
+        "title": "说得清的访问权限",
+        "text": "角色、文件夹和共享，清楚回答谁能看到每个表单。"
+      },
+      "channels": {
+        "title": "全渠道",
+        "text": "链接、嵌入、二维码和 API，全部汇集一处。"
+      },
+      "languages": {
+        "title": "20 种语言",
+        "text": "应用和你的表单都使用用户的语言，包括从右到左的语言。"
+      },
+      "audit": {
+        "title": "一切操作都有审计日志",
+        "text": "谁在何时、何地做了什么。"
+      },
+      "help": {
+        "title": "每个页面都有帮助",
+        "text": "引导式导览、帮助中心和助手。"
+      }
+    },
+    "security": {
+      "eyebrow": "安全",
+      "title": "经得起审计的安全。",
+      "description": "清晰的控制措施，看得见、讲得清、可核查，内置于每个工作区。",
+      "points": [
+        "传输和存储全程加密",
+        "两步登录和单点登录",
+        "角色和权限",
+        "每项操作都有审计日志",
+        "数据存放在你选择的区域（Enterprise）"
+      ],
+      "link": "了解安全",
+      "trail": "审计日志",
+      "live": "实时",
+      "events": {
+        "published": "表单已发布",
+        "role": "角色已更新",
+        "export": "回答已导出",
+        "sso": "已通过单点登录登录",
+        "token": "API 令牌已创建"
+      }
+    },
+    "integrations": {
+      "eyebrow": "集成",
+      "title": "与你现有的系统协同工作。",
+      "description": "五种数据库、Webhook、API 服务、使用 Google 或 Facebook 登录，以及通过你的身份提供商实现单点登录。",
+      "link": "查看所有集成"
+    },
+    "languages": {
+      "title": "20 种语言，包括从右到左的语言",
+      "description": "应用和你的表单都使用用户的语言。"
+    },
+    "pricing": {
+      "eyebrow": "价格",
+      "title": "免费开始，按需升级",
+      "description": "简单的方案，适合各种规模的组织。",
+      "perMonth": "每月",
+      "free": "免费",
+      "mostPopular": "最受欢迎",
+      "startWith": "从 {plan} 开始",
+      "compare": "比较所有方案",
+      "enterprise": "需要更多？Enterprise 围绕你的组织量身定制。",
+      "paddle": "付款由 Paddle 处理",
+      "sample": "示例价格",
+      "plans": {
+        "starter": "Starter",
+        "professional": "Professional",
+        "business": "Business",
+        "enterprise": "Enterprise"
+      },
+      "taglines": {
+        "starter": "所有核心功能，永久免费使用。",
+        "professional": "包含 Starter 的全部功能，另加自有域名、发件地址和企业登录。",
+        "business": "包含 Professional 的全部功能，表单、回答和数据库均无限制。"
+      },
+      "limits": {
+        "forms": "{count} 个表单",
+        "formsUnlimited": "无限表单",
+        "responses": "每个表单 {count} 条回答",
+        "responsesUnlimited": "无限回答",
+        "databases": "你自己的数据库：{list}",
+        "sso": "单点登录",
+        "languages": "20 种语言"
+      }
+    },
+    "faq": {
+      "title": "常见问题解答",
+      "items": [
+        {
+          "q": "有免费方案吗？",
+          "a": "有。Starter 永久免费使用。"
+        },
+        {
+          "q": "可以使用自己的数据库吗？",
+          "a": "可以：所有方案都支持 MySQL，Professional 支持 PostgreSQL 和 MariaDB，Business 支持全部五种。"
+        },
+        {
+          "q": "我的数据存储在哪里？",
+          "a": "存储在 Formalie 的默认区域，或在 Enterprise 方案中由你选择的区域。"
+        },
+        {
+          "q": "人们可以用自己的语言填写表单吗？",
+          "a": "可以。一个表单可以有多种语言，填写者可自行选择。"
+        },
+        {
+          "q": "你们提供 API 吗？",
+          "a": "提供。任何表单都可以变成安全的 API 端点。"
+        }
+      ]
+    },
+    "cta": {
+      "title": "几分钟内开始收集。",
+      "description": "免费方案，无需银行卡。成长时再升级。"
+    }
   }
 }

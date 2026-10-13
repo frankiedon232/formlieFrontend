@@ -136,7 +136,269 @@
     "home": "Ana sayfaya dön",
     "help": "Yardım merkezine git"
   },
-  "placeholder": {
-    "building": "Formalie web sitesi hazırlanıyor."
+  "home": {
+    "meta": {
+      "title": "Formalie · Formlar, veriler ve erişim sizin kontrolünüzde"
+    },
+    "hero": {
+      "eyebrow": "Formlar · Veriler · Erişim",
+      "description": "Her türlü formu oluşturun, yanıtları bağlantı, web sitesi, QR kod veya API ile toplayın, kendi veritabanınızda saklayın ve kimin neyi göreceğine siz karar verin. Dünyanın her yerindeki her ölçekten kuruluş için.",
+      "talkToSales": "Satış ekibiyle görüşün",
+      "proof": {
+        "free": "Ücretsiz plan, kart gerekmez",
+        "languages": "20 dil",
+        "data": "Verileriniz, veritabanınız"
+      }
+    },
+    "flow": {
+      "label": "Yanıtlar form bağlantılarından, web sitesi yerleştirmelerinden, QR kodlardan, API'den ve mobil uygulamalardan Formalie üzerinden, yol boyunca şifrelenerek veritabanınıza, webhook'lara, panoya, e-posta bildirimlerine ve Formalie depolamasına ulaşır.",
+      "hub": "Yol boyunca şifreli",
+      "sources": {
+        "link": "Form bağlantısı",
+        "embed": "Web sitesine yerleştirme",
+        "qr": "QR kod",
+        "api": "API",
+        "app": "Mobil uygulama"
+      },
+      "nameField": "Ad",
+      "viaApi": "API'yi çağırır",
+      "targets": {
+        "database": "Veritabanınız",
+        "webhooks": "Webhook'lar",
+        "dashboard": "Pano",
+        "email": "E-posta bildirimleri",
+        "storage": "Formalie depolaması"
+      },
+      "newResponse": "Yeni yanıt",
+      "encrypted": "Şifreli",
+      "counters": {
+        "responses": "Toplanan yanıt",
+        "database": "Veritabanınıza gönderilen",
+        "countries": "Yanıt veren ülke",
+        "note": "Örnek etkinlik, gerçek rakamlar değildir"
+      }
+    },
+    "trust": {
+      "title": "Her sektördeki ekipler için",
+      "sectors": {
+        "hr": "İK",
+        "healthcare": "Sağlık",
+        "education": "Eğitim",
+        "events": "Etkinlikler",
+        "finance": "Finans",
+        "operations": "Operasyon"
+      }
+    },
+    "channels": {
+      "eyebrow": "Her kanal",
+      "title": "Her yerden yanıtlar",
+      "description": "Tek form, her kanal. Bir bağlantı paylaşın, formu web sitenize yerleştirin, bir QR kod basın ya da uygulamalarınızın yanıtları API ile göndermesine izin verin. Hepsi tek bir yerde toplanır.",
+      "link": {
+        "title": "Form bağlantısı",
+        "text": "Her yerde paylaşabileceğiniz kısa ve özel bir adres."
+      },
+      "embed": {
+        "title": "Web sitesine yerleştirme",
+        "text": "Formunuz kendi sayfalarınızda, yalnızca izin verdiğiniz web sitelerinde."
+      },
+      "qr": {
+        "title": "QR kod",
+        "text": "Afişlere, biletlere veya fişlere basın, yanıtları yerinde toplayın."
+      },
+      "api": {
+        "title": "API",
+        "text": "Uygulamalarınız yanıtları doğrudan, imzalı ve doğrulanmış olarak gönderir."
+      },
+      "inbox": "Hepsi tek yerde"
+    },
+    "tabs": {
+      "eyebrow": "Ürün",
+      "title": "Formlar, yanıtlar ve veriler için tek yer",
+      "description": "Formalie'den gerçek ekranlar. Her sekme, bugün kullanabileceğiniz bir ürün parçasını gösterir.",
+      "seeHow": "Nasıl çalıştığını görün",
+      "build": {
+        "label": "Oluştur",
+        "title": "Her türlü formu oluşturun",
+        "text": "Sürükle bırak ile sorular, sayfalar, kurallar ve hesaplamalar. 40'tan fazla soru türü.",
+        "points": [
+          "Satırlar, sayfalar ve her sürüklemenin klavye alternatifi",
+          "Soruları gösteren, gizleyen ve zorunlu kılan kurallar",
+          "Toplamlar, puanlar ve fiyatlar anında hesaplanır",
+          "Taslak, yayınlama ve her sürümü geri yükleme"
+        ],
+        "alt": "Form oluşturucu: solda soru türleri, ortada çok sayfalı bir form, sağda ayarlar"
+      },
+      "design": {
+        "label": "Tasarım",
+        "title": "Size benzesin",
+        "text": "Bir görünümle başlayın ve kendinize göre uyarlayın: yazı tipleri, renkler, üst bilgi, alt bilgi, teşekkür sayfası.",
+        "points": [
+          "Başlangıç görünümleri ve şablon kitaplığı",
+          "Kendi sunucularımızda barındırılan 21 yazı tipi, kontrast ipuçlarıyla",
+          "Kaydedip her forma uygulayabileceğiniz temalar",
+          "Formu bağlantısında çerçeveleyen açılış sayfaları"
+        ],
+        "alt": "Form tasarımcısı: solda başlangıç görünümleri ve formun canlı önizlemesi"
+      },
+      "responses": {
+        "label": "Yanıtlar",
+        "title": "Her yanıt kontrol altında",
+        "text": "Her yanıtı inceleyin, etiketleyin, dışa aktarın ve özetleyin.",
+        "points": [
+          "Arama ve filtrelerle tablo ve kart görünümleri",
+          "İnceleme durumları, etiketler ve notlar",
+          "Excel, CSV veya PDF olarak dışa aktarma",
+          "Yanıtlar genelinde yapay zekâ özetleri ve içgörüler"
+        ],
+        "alt": "İnceleme durumları grafiğiyle birlikte yanıt listesi"
+      },
+      "data": {
+        "label": "Veri",
+        "title": "İlk günden kendi veritabanınız",
+        "text": "Her yanıtı geldiği anda MySQL, MariaDB, PostgreSQL, SQL Server veya Oracle'a gönderin.",
+        "points": [
+          "Bağlantı testi, sağlık durumu ve yanıt süresi",
+          "Geriye dönük doldurma ve yeniden denemeler, hiçbir yanıt kaybolmaz",
+          "Veritabanı gezgini ve sorgu düzenleyicisi",
+          "Bir bağlantıdaki her işlem denetim kaydında"
+        ],
+        "alt": "Veri kaynaklarına genel bakış: veritabanı trafiği ve bağlantı sağlığı"
+      },
+      "api": {
+        "label": "API",
+        "title": "Güvenli API uç noktaları olarak formlar",
+        "text": "Her formu, geliştiricilerinizin seveceği belgelerle güvenli API uç noktalarına dönüştürün.",
+        "points": [
+          "Her uç nokta için seçilen GET, POST, PUT ve DELETE",
+          "Kapsamlı test ve canlı belirteçler",
+          "IP, alan adı ve ülkeye göre erişim kuralları ve hız sınırları",
+          "Deneme konsolu içeren otomatik belgeler"
+        ],
+        "alt": "API hizmetine genel bakış: zaman içindeki istekler ve uç noktalar"
+      }
+    },
+    "apart": {
+      "eyebrow": "Neden Formalie",
+      "title": "Formalie'yi farklı kılan ne",
+      "description": "Kuruluşların verilerini bir araca emanet etmeden önce sorduğu sorular etrafında tasarlandı.",
+      "data": {
+        "title": "Verileriniz, veritabanınız",
+        "text": "Yanıtları ilk günden Formalie'nin şifreli depolamasında ya da kendi veritabanınızda tutun."
+      },
+      "access": {
+        "title": "Açıklayabileceğiniz erişim",
+        "text": "Roller, klasörler ve paylaşım, ayrıca her formu kimin görebildiğine net bir yanıt."
+      },
+      "channels": {
+        "title": "Her kanal",
+        "text": "Bağlantı, yerleştirme, QR kod ve API, hepsi tek bir yerde."
+      },
+      "languages": {
+        "title": "20 dil",
+        "text": "Uygulama ve formlarınız, sağdan sola diller dahil, insanlarınızın dilini konuşur."
+      },
+      "audit": {
+        "title": "Her şeyin denetim kaydı",
+        "text": "Kim neyi, ne zaman ve nereden yaptı."
+      },
+      "help": {
+        "title": "Her sayfada yardım",
+        "text": "Rehberli turlar, bir yardım merkezi ve bir asistan."
+      }
+    },
+    "security": {
+      "eyebrow": "Güvenlik",
+      "title": "Denetçilerinize gösterebileceğiniz güvenlik.",
+      "description": "Görebileceğiniz, açıklayabileceğiniz ve kontrol edebileceğiniz net denetimler, her çalışma alanına yerleşik.",
+      "points": [
+        "Aktarımda ve depolamada şifreleme",
+        "İki adımlı giriş ve çoklu oturum açma",
+        "Roller ve izinler",
+        "Her işlemin denetim kaydı",
+        "Seçtiğiniz bölgede veri (Enterprise)"
+      ],
+      "link": "Güvenlik hakkında okuyun",
+      "trail": "Denetim kaydı",
+      "live": "Canlı",
+      "events": {
+        "published": "Form yayınlandı",
+        "role": "Rol güncellendi",
+        "export": "Yanıtlar dışa aktarıldı",
+        "sso": "Çoklu oturum açma ile giriş yapıldı",
+        "token": "API belirteci oluşturuldu"
+      }
+    },
+    "integrations": {
+      "eyebrow": "Entegrasyonlar",
+      "title": "Zaten kullandığınız sistemlerle çalışır.",
+      "description": "Beş veritabanı, webhook'lar, API hizmeti, Google veya Facebook ile giriş ve kimlik sağlayıcınızla çoklu oturum açma.",
+      "link": "Tüm entegrasyonları görün"
+    },
+    "languages": {
+      "title": "Sağdan sola diller dahil 20 dil",
+      "description": "Uygulama ve formlarınız insanlarınızın dilini konuşur."
+    },
+    "pricing": {
+      "eyebrow": "Fiyatlar",
+      "title": "Ücretsiz başlayın, gerektiğinde büyüyün",
+      "description": "Her ölçekten kuruluş için basit planlar.",
+      "perMonth": "aylık",
+      "free": "Ücretsiz",
+      "mostPopular": "En popüler",
+      "startWith": "{plan} ile başlayın",
+      "compare": "Tüm planları karşılaştırın",
+      "enterprise": "Daha fazlası mı gerekiyor? Enterprise, kuruluşunuza göre şekillenir.",
+      "paddle": "Ödemeler Paddle tarafından işlenir",
+      "sample": "Örnek fiyatlar",
+      "plans": {
+        "starter": "Starter",
+        "professional": "Professional",
+        "business": "Business",
+        "enterprise": "Enterprise"
+      },
+      "taglines": {
+        "starter": "Tüm temel özellikler, dilediğiniz sürece ücretsiz.",
+        "professional": "Starter'daki her şey, ayrıca kendi alan adınız, gönderen adresiniz ve kurumsal giriş.",
+        "business": "Professional'daki her şey, form, yanıt ve veritabanı sınırı olmadan."
+      },
+      "limits": {
+        "forms": "{count} form",
+        "formsUnlimited": "Sınırsız form",
+        "responses": "Her formda {count} yanıt",
+        "responsesUnlimited": "Sınırsız yanıt",
+        "databases": "Kendi veritabanınız: {list}",
+        "sso": "Çoklu oturum açma",
+        "languages": "20 dil"
+      }
+    },
+    "faq": {
+      "title": "Sorular ve yanıtlar",
+      "items": [
+        {
+          "q": "Ücretsiz plan var mı?",
+          "a": "Evet. Starter, dilediğiniz sürece ücretsizdir."
+        },
+        {
+          "q": "Kendi veritabanımı kullanabilir miyim?",
+          "a": "Evet: MySQL her planda, PostgreSQL ve MariaDB Professional'da, beşi birden Business'ta."
+        },
+        {
+          "q": "Verilerim nerede saklanıyor?",
+          "a": "Formalie'nin varsayılan bölgesinde ya da Enterprise'da seçtiğiniz bir bölgede."
+        },
+        {
+          "q": "İnsanlar formları kendi dillerinde doldurabilir mi?",
+          "a": "Evet. Bir formun birden çok dili olabilir ve herkes kendi dilini seçer."
+        },
+        {
+          "q": "API'niz var mı?",
+          "a": "Evet. Her form güvenli API uç noktalarına dönüşebilir."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Dakikalar içinde yanıt toplamaya başlayın.",
+      "description": "Ücretsiz plan, kart gerekmez. Büyüdükçe yükseltin."
+    }
   }
 }

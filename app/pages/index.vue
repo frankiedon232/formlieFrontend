@@ -1,24 +1,46 @@
 <script setup lang="ts">
-// S0 placeholder: proves the stack (Nuxt UI, the theme, Manrope, the 20 languages). The home page arrives in S2.
+// The home page (docs/SITEMAP.md, docs/CONTENT.md).
 const { t } = useI18n()
+const links = useSiteLinks()
 
 useSeoMeta({
-  title: () => `${t('site.name')} · ${t('site.tagline')}`,
+  title: () => t('home.meta.title'),
   description: () => t('site.description'),
+  ogTitle: () => t('home.meta.title'),
+  ogDescription: () => t('site.description'),
+  ogImage: `${links.site}/og-image.png`,
+  twitterCard: 'summary_large_image',
+})
+
+useHead({
+  script: [
+    {
+      key: 'org-schema',
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        name: 'Formalie',
+        url: links.site,
+        logo: `${links.site}/icon-512.png`,
+      }),
+    },
+  ],
 })
 </script>
 
 <template>
-  <UPageHero :title="t('site.tagline')" :description="t('site.description')">
-    <template #top>
-      <div class="flex justify-center pt-16">
-        <span class="flex size-12 items-center justify-center rounded-xl bg-inverted text-inverted">
-          <UIcon name="i-formalie-mark" class="size-6" />
-        </span>
-      </div>
-    </template>
-    <template #footer>
-      <p class="text-center text-sm text-muted">{{ t('placeholder.building') }}</p>
-    </template>
-  </UPageHero>
+  <div>
+    <HomeHero />
+    <HomeTrust />
+    <HomeChannels />
+    <HomeProductTabs />
+    <HomeApart />
+    <HomeSecurity />
+    <HomeIntegrations />
+    <HomeLanguages />
+    <HomePricingTeaser />
+    <HomeFaq />
+    <HomeCta />
+  </div>
 </template>

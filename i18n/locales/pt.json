@@ -136,7 +136,269 @@
     "home": "Voltar à página inicial",
     "help": "Visitar a central de ajuda"
   },
-  "placeholder": {
-    "building": "O site da Formalie está em construção."
+  "home": {
+    "meta": {
+      "title": "Formalie · Formulários, dados e acessos sob o seu controle"
+    },
+    "hero": {
+      "eyebrow": "Formulários · Dados · Acessos",
+      "description": "Crie qualquer formulário, receba respostas por link, site, QR code ou API, guarde-as no seu próprio banco de dados e decida quem vê o quê. Para organizações de qualquer tamanho, em qualquer lugar do mundo.",
+      "talkToSales": "Fale com vendas",
+      "proof": {
+        "free": "Plano grátis, sem cartão",
+        "languages": "20 idiomas",
+        "data": "Seus dados, seu banco de dados"
+      }
+    },
+    "flow": {
+      "label": "As respostas saem de links de formulário, incorporações em sites, QR codes, da API e de apps móveis, passam pelo Formalie, criptografadas no caminho, e chegam ao seu banco de dados, webhooks, painel, alertas por e-mail e armazenamento do Formalie.",
+      "hub": "Criptografadas no caminho",
+      "sources": {
+        "link": "Link do formulário",
+        "embed": "Incorporação no site",
+        "qr": "QR code",
+        "api": "API",
+        "app": "App móvel"
+      },
+      "nameField": "Nome",
+      "viaApi": "Chama a API",
+      "targets": {
+        "database": "Seu banco de dados",
+        "webhooks": "Webhooks",
+        "dashboard": "Painel",
+        "email": "Alertas por e-mail",
+        "storage": "Armazenamento do Formalie"
+      },
+      "newResponse": "Nova resposta",
+      "encrypted": "Criptografada",
+      "counters": {
+        "responses": "Respostas recebidas",
+        "database": "Enviadas ao seu banco de dados",
+        "countries": "Países respondendo",
+        "note": "Atividade de exemplo, não são números reais"
+      }
+    },
+    "trust": {
+      "title": "Feito para equipes de todos os setores",
+      "sectors": {
+        "hr": "RH",
+        "healthcare": "Saúde",
+        "education": "Educação",
+        "events": "Eventos",
+        "finance": "Finanças",
+        "operations": "Operações"
+      }
+    },
+    "channels": {
+      "eyebrow": "Todos os canais",
+      "title": "Respostas de qualquer lugar",
+      "description": "Um formulário, todos os canais. Compartilhe um link, incorpore no seu site, imprima um QR code ou deixe seus apps enviarem respostas pela API. Tudo chega a um só lugar.",
+      "link": {
+        "title": "Link do formulário",
+        "text": "Um endereço curto e personalizado para compartilhar onde quiser."
+      },
+      "embed": {
+        "title": "Incorporação no site",
+        "text": "Seu formulário dentro das suas próprias páginas, só nos sites que você permitir."
+      },
+      "qr": {
+        "title": "QR code",
+        "text": "Imprima em cartazes, ingressos ou recibos e receba respostas na hora."
+      },
+      "api": {
+        "title": "API",
+        "text": "Seus apps enviam respostas diretamente, assinadas e verificadas."
+      },
+      "inbox": "Tudo em um só lugar"
+    },
+    "tabs": {
+      "eyebrow": "O produto",
+      "title": "Um só lugar para formulários, respostas e dados",
+      "description": "Telas reais do Formalie. Cada aba é uma parte do produto que você já pode usar hoje.",
+      "seeHow": "Veja como funciona",
+      "build": {
+        "label": "Criar",
+        "title": "Crie qualquer formulário",
+        "text": "Perguntas, páginas, regras e cálculos com arrastar e soltar. Mais de 40 tipos de pergunta.",
+        "points": [
+          "Linhas, páginas e uma alternativa pelo teclado para cada arraste",
+          "Regras que mostram, ocultam e tornam perguntas obrigatórias",
+          "Totais, pontuações e preços calculados na hora",
+          "Rascunho, publicação e restauração de qualquer versão"
+        ],
+        "alt": "O criador de formulários: tipos de pergunta à esquerda, um formulário com várias páginas no centro e as configurações à direita"
+      },
+      "design": {
+        "label": "Design",
+        "title": "Do seu jeito",
+        "text": "Comece com um estilo e deixe com a sua cara: fontes, cores, cabeçalho, rodapé e página de agradecimento.",
+        "points": [
+          "Estilos iniciais e uma biblioteca de modelos",
+          "21 fontes hospedadas pelo Formalie, com dicas de contraste",
+          "Temas que você salva e aplica a qualquer formulário",
+          "Páginas de apresentação que emolduram o formulário no seu link"
+        ],
+        "alt": "O editor de design: estilos iniciais à esquerda e uma prévia ao vivo do formulário"
+      },
+      "responses": {
+        "label": "Respostas",
+        "title": "Cada resposta sob controle",
+        "text": "Revise, marque, exporte e resuma cada resposta.",
+        "points": [
+          "Visualizações em tabela e em cartões, com busca e filtros",
+          "Status de revisão, etiquetas e notas",
+          "Exportação para Excel, CSV ou PDF",
+          "Resumos e insights com IA sobre todas as respostas"
+        ],
+        "alt": "A lista de respostas com o gráfico dos status de revisão"
+      },
+      "data": {
+        "label": "Dados",
+        "title": "Seu banco de dados desde o primeiro dia",
+        "text": "Envie cada resposta para MySQL, MariaDB, PostgreSQL, SQL Server ou Oracle assim que ela chega.",
+        "points": [
+          "Teste de conexão, saúde e tempo de resposta",
+          "Reprocessamento e novas tentativas, para nenhuma resposta se perder",
+          "Um explorador de banco de dados e um editor de consultas",
+          "Cada ação em uma conexão registrada na trilha de auditoria"
+        ],
+        "alt": "A visão geral das fontes de dados: tráfego do banco de dados e saúde da conexão"
+      },
+      "api": {
+        "label": "API",
+        "title": "Formulários como endpoints de API seguros",
+        "text": "Transforme qualquer formulário em endpoints de API seguros, com uma documentação que seus desenvolvedores vão gostar.",
+        "points": [
+          "GET, POST, PUT e DELETE, escolhidos por endpoint",
+          "Tokens de teste e de produção com escopos",
+          "Regras de acesso por IP, domínio e país, além de limites de requisições",
+          "Documentação gerada com um console para testar"
+        ],
+        "alt": "A visão geral do serviço de API: requisições ao longo do tempo e os endpoints"
+      }
+    },
+    "apart": {
+      "eyebrow": "Por que Formalie",
+      "title": "O que torna o Formalie diferente",
+      "description": "Pensado a partir das perguntas que as organizações fazem antes de confiar seus dados a uma ferramenta.",
+      "data": {
+        "title": "Seus dados, seu banco de dados",
+        "text": "Guarde as respostas no armazenamento criptografado do Formalie ou no seu próprio banco de dados desde o primeiro dia."
+      },
+      "access": {
+        "title": "Acessos fáceis de explicar",
+        "text": "Funções, pastas e compartilhamento, e uma resposta clara sobre quem pode ver cada formulário."
+      },
+      "channels": {
+        "title": "Todos os canais",
+        "text": "Link, incorporação, QR code e API, tudo em um só lugar."
+      },
+      "languages": {
+        "title": "20 idiomas",
+        "text": "O app e seus formulários falam o idioma do seu público, incluindo os da direita para a esquerda."
+      },
+      "audit": {
+        "title": "Uma trilha de auditoria de tudo",
+        "text": "Quem fez o quê, quando e de onde."
+      },
+      "help": {
+        "title": "Ajuda em todas as páginas",
+        "text": "Tours guiados, uma central de ajuda e um assistente."
+      }
+    },
+    "security": {
+      "eyebrow": "Segurança",
+      "title": "Segurança que você pode mostrar aos seus auditores.",
+      "description": "Controles claros que você pode ver, explicar e verificar, presentes em cada espaço de trabalho.",
+      "points": [
+        "Criptografia em trânsito e em repouso",
+        "Verificação em duas etapas e login único",
+        "Funções e permissões",
+        "Uma trilha de auditoria de cada ação",
+        "Dados na região que você escolher (Enterprise)"
+      ],
+      "link": "Saiba mais sobre segurança",
+      "trail": "Trilha de auditoria",
+      "live": "Ao vivo",
+      "events": {
+        "published": "Formulário publicado",
+        "role": "Função atualizada",
+        "export": "Respostas exportadas",
+        "sso": "Entrou com login único",
+        "token": "Token de API criado"
+      }
+    },
+    "integrations": {
+      "eyebrow": "Integrações",
+      "title": "Funciona com os sistemas que você já usa.",
+      "description": "Cinco bancos de dados, webhooks, o serviço de API, login com Google ou Facebook e login único com o seu provedor de identidade.",
+      "link": "Ver todas as integrações"
+    },
+    "languages": {
+      "title": "20 idiomas, incluindo da direita para a esquerda",
+      "description": "O app e seus formulários falam o idioma do seu público."
+    },
+    "pricing": {
+      "eyebrow": "Preços",
+      "title": "Comece grátis e cresça quando precisar",
+      "description": "Planos simples para organizações de qualquer tamanho.",
+      "perMonth": "por mês",
+      "free": "Grátis",
+      "mostPopular": "Mais popular",
+      "startWith": "Comece com {plan}",
+      "compare": "Compare todos os planos",
+      "enterprise": "Precisa de mais? O Enterprise é moldado para a sua organização.",
+      "paddle": "Pagamentos processados pela Paddle",
+      "sample": "Preços de exemplo",
+      "plans": {
+        "starter": "Starter",
+        "professional": "Professional",
+        "business": "Business",
+        "enterprise": "Enterprise"
+      },
+      "taglines": {
+        "starter": "Todos os recursos essenciais, grátis por quanto tempo quiser.",
+        "professional": "Tudo do Starter, mais seu próprio domínio, endereço de envio e login corporativo.",
+        "business": "Tudo do Professional, sem limites de formulários, respostas ou bancos de dados."
+      },
+      "limits": {
+        "forms": "{count} formulários",
+        "formsUnlimited": "Formulários ilimitados",
+        "responses": "{count} respostas por formulário",
+        "responsesUnlimited": "Respostas ilimitadas",
+        "databases": "Seu próprio banco de dados: {list}",
+        "sso": "Login único",
+        "languages": "20 idiomas"
+      }
+    },
+    "faq": {
+      "title": "Perguntas respondidas",
+      "items": [
+        {
+          "q": "Existe um plano grátis?",
+          "a": "Sim. O Starter é grátis por quanto tempo você quiser."
+        },
+        {
+          "q": "Posso usar meu próprio banco de dados?",
+          "a": "Sim: MySQL em todos os planos, PostgreSQL e MariaDB no Professional e os cinco no Business."
+        },
+        {
+          "q": "Onde meus dados ficam armazenados?",
+          "a": "Na região padrão do Formalie ou, no Enterprise, na região que você escolher."
+        },
+        {
+          "q": "As pessoas podem preencher formulários no idioma delas?",
+          "a": "Sim. Um formulário pode ter vários idiomas, e cada pessoa escolhe o seu."
+        },
+        {
+          "q": "Vocês têm uma API?",
+          "a": "Sim. Qualquer formulário pode virar endpoints de API seguros."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Comece a receber respostas em minutos.",
+      "description": "Plano grátis, sem cartão. Faça upgrade quando crescer."
+    }
   }
 }

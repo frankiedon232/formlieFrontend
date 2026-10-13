@@ -136,7 +136,269 @@
     "home": "Kembali ke beranda",
     "help": "Kunjungi pusat bantuan"
   },
-  "placeholder": {
-    "building": "Situs web Formalie sedang dibangun."
+  "home": {
+    "meta": {
+      "title": "Formalie · Formulir, data, dan akses dalam kendali Anda"
+    },
+    "hero": {
+      "eyebrow": "Formulir · Data · Akses",
+      "description": "Buat formulir apa pun, kumpulkan jawaban lewat tautan, situs web, kode QR, atau API, simpan di database Anda sendiri, dan tentukan siapa melihat apa. Untuk organisasi dari semua ukuran, di mana pun di dunia.",
+      "talkToSales": "Hubungi tim penjualan",
+      "proof": {
+        "free": "Paket gratis, tanpa kartu",
+        "languages": "20 bahasa",
+        "data": "Data Anda, database Anda"
+      }
+    },
+    "flow": {
+      "label": "Jawaban mengalir dari tautan formulir, sematan situs web, kode QR, API, dan aplikasi seluler melalui Formalie, terenkripsi selama perjalanan, menuju database, webhook, dasbor, notifikasi email, dan penyimpanan Formalie Anda.",
+      "hub": "Terenkripsi selama perjalanan",
+      "sources": {
+        "link": "Tautan formulir",
+        "embed": "Sematan situs web",
+        "qr": "Kode QR",
+        "api": "API",
+        "app": "Aplikasi seluler"
+      },
+      "nameField": "Nama",
+      "viaApi": "Memanggil API",
+      "targets": {
+        "database": "Database Anda",
+        "webhooks": "Webhook",
+        "dashboard": "Dasbor",
+        "email": "Notifikasi email",
+        "storage": "Penyimpanan Formalie"
+      },
+      "newResponse": "Jawaban baru",
+      "encrypted": "Terenkripsi",
+      "counters": {
+        "responses": "Jawaban terkumpul",
+        "database": "Terkirim ke database Anda",
+        "countries": "Negara yang menjawab",
+        "note": "Contoh aktivitas, bukan angka sebenarnya"
+      }
+    },
+    "trust": {
+      "title": "Dibuat untuk tim di setiap sektor",
+      "sectors": {
+        "hr": "SDM",
+        "healthcare": "Kesehatan",
+        "education": "Pendidikan",
+        "events": "Acara",
+        "finance": "Keuangan",
+        "operations": "Operasional"
+      }
+    },
+    "channels": {
+      "eyebrow": "Semua saluran",
+      "title": "Jawaban dari mana saja",
+      "description": "Satu formulir, semua saluran. Bagikan tautan, sematkan di situs web Anda, cetak kode QR, atau biarkan aplikasi Anda mengirim jawaban lewat API. Semuanya masuk ke satu tempat.",
+      "link": {
+        "title": "Tautan formulir",
+        "text": "Alamat pendek dan khusus yang bisa dibagikan di mana saja."
+      },
+      "embed": {
+        "title": "Sematan situs web",
+        "text": "Formulir Anda di dalam halaman Anda sendiri, hanya di situs web yang Anda izinkan."
+      },
+      "qr": {
+        "title": "Kode QR",
+        "text": "Cetak di poster, tiket, atau struk, lalu kumpulkan jawaban di tempat."
+      },
+      "api": {
+        "title": "API",
+        "text": "Aplikasi Anda mengirim jawaban langsung, ditandatangani dan diperiksa."
+      },
+      "inbox": "Semua di satu tempat"
+    },
+    "tabs": {
+      "eyebrow": "Produk",
+      "title": "Satu tempat untuk formulir, jawaban, dan data",
+      "description": "Tampilan asli dari Formalie. Setiap tab adalah bagian produk yang bisa Anda gunakan hari ini.",
+      "seeHow": "Lihat cara kerjanya",
+      "build": {
+        "label": "Buat",
+        "title": "Buat formulir apa pun",
+        "text": "Pertanyaan, halaman, aturan, dan perhitungan dengan seret dan lepas. Lebih dari 40 jenis pertanyaan.",
+        "points": [
+          "Baris, halaman, dan alternatif keyboard untuk setiap seretan",
+          "Aturan untuk menampilkan, menyembunyikan, dan mewajibkan pertanyaan",
+          "Total, skor, dan harga dihitung secara langsung",
+          "Draf, terbitkan, dan pulihkan versi mana pun"
+        ],
+        "alt": "Pembuat formulir: jenis pertanyaan di kiri, formulir multihalaman di tengah, pengaturan di kanan"
+      },
+      "design": {
+        "label": "Desain",
+        "title": "Buat tampilannya khas Anda",
+        "text": "Mulai dari sebuah tampilan lalu sesuaikan: font, warna, header, footer, halaman terima kasih.",
+        "points": [
+          "Tampilan awal dan pustaka templat",
+          "21 font yang di-host sendiri, dengan petunjuk kontras",
+          "Tema yang bisa disimpan dan diterapkan ke formulir mana pun",
+          "Halaman landing yang membingkai formulir di tautannya"
+        ],
+        "alt": "Desainer formulir: tampilan awal di kiri dan pratinjau langsung formulir"
+      },
+      "responses": {
+        "label": "Jawaban",
+        "title": "Setiap jawaban, dalam kendali",
+        "text": "Tinjau, beri tag, ekspor, dan ringkas setiap jawaban.",
+        "points": [
+          "Tampilan tabel dan kartu dengan pencarian dan filter",
+          "Status tinjauan, tag, dan catatan",
+          "Ekspor ke Excel, CSV, atau PDF",
+          "Ringkasan dan wawasan AI dari seluruh jawaban"
+        ],
+        "alt": "Daftar jawaban dengan grafik status tinjauan"
+      },
+      "data": {
+        "label": "Data",
+        "title": "Database Anda, sejak hari pertama",
+        "text": "Kirim setiap jawaban ke MySQL, MariaDB, PostgreSQL, SQL Server, atau Oracle begitu masuk.",
+        "points": [
+          "Uji koneksi, kesehatan, dan waktu respons",
+          "Pengisian ulang dan percobaan ulang, jadi tidak ada jawaban yang hilang",
+          "Penjelajah database dan editor kueri",
+          "Setiap tindakan pada koneksi tercatat di jejak audit"
+        ],
+        "alt": "Ringkasan sumber data: lalu lintas database dan kesehatan koneksi"
+      },
+      "api": {
+        "label": "API",
+        "title": "Formulir sebagai endpoint API yang aman",
+        "text": "Ubah formulir apa pun menjadi endpoint API yang aman, dengan dokumentasi yang disukai pengembang Anda.",
+        "points": [
+          "GET, POST, PUT, dan DELETE, dipilih per endpoint",
+          "Token uji dan token produksi dengan cakupan",
+          "Aturan akses berdasarkan IP, domain, dan negara, plus batas permintaan",
+          "Dokumentasi otomatis dengan konsol untuk mencoba"
+        ],
+        "alt": "Ringkasan layanan API: permintaan dari waktu ke waktu dan daftar endpoint"
+      }
+    },
+    "apart": {
+      "eyebrow": "Mengapa Formalie",
+      "title": "Yang membedakan Formalie",
+      "description": "Dibangun dari pertanyaan yang diajukan organisasi sebelum memercayakan datanya pada sebuah alat.",
+      "data": {
+        "title": "Data Anda, database Anda",
+        "text": "Simpan jawaban di penyimpanan terenkripsi Formalie atau di database Anda sendiri sejak hari pertama."
+      },
+      "access": {
+        "title": "Akses yang bisa Anda jelaskan",
+        "text": "Peran, folder, dan berbagi, serta jawaban jelas tentang siapa yang bisa melihat setiap formulir."
+      },
+      "channels": {
+        "title": "Semua saluran",
+        "text": "Tautan, sematan, kode QR, dan API, semuanya ke satu tempat."
+      },
+      "languages": {
+        "title": "20 bahasa",
+        "text": "Aplikasi dan formulir Anda berbicara dalam bahasa orang-orang Anda, termasuk dari kanan ke kiri."
+      },
+      "audit": {
+        "title": "Jejak audit untuk segalanya",
+        "text": "Siapa melakukan apa, kapan, dan dari mana."
+      },
+      "help": {
+        "title": "Bantuan di setiap halaman",
+        "text": "Tur terpandu, pusat bantuan, dan asisten."
+      }
+    },
+    "security": {
+      "eyebrow": "Keamanan",
+      "title": "Keamanan yang bisa Anda tunjukkan kepada auditor.",
+      "description": "Kontrol yang jelas, yang bisa Anda lihat, jelaskan, dan periksa, tersedia di setiap ruang kerja.",
+      "points": [
+        "Terenkripsi saat dikirim dan saat disimpan",
+        "Masuk dua langkah dan single sign-on",
+        "Peran dan izin",
+        "Jejak audit untuk setiap tindakan",
+        "Data di wilayah pilihan Anda (Enterprise)"
+      ],
+      "link": "Baca tentang keamanan",
+      "trail": "Jejak audit",
+      "live": "Langsung",
+      "events": {
+        "published": "Formulir diterbitkan",
+        "role": "Peran diperbarui",
+        "export": "Jawaban diekspor",
+        "sso": "Masuk dengan single sign-on",
+        "token": "Token API dibuat"
+      }
+    },
+    "integrations": {
+      "eyebrow": "Integrasi",
+      "title": "Bekerja dengan sistem yang sudah Anda miliki.",
+      "description": "Lima database, webhook, layanan API, masuk dengan Google atau Facebook, dan single sign-on dengan penyedia identitas Anda.",
+      "link": "Lihat semua integrasi"
+    },
+    "languages": {
+      "title": "20 bahasa, termasuk dari kanan ke kiri",
+      "description": "Aplikasi dan formulir Anda berbicara dalam bahasa orang-orang Anda."
+    },
+    "pricing": {
+      "eyebrow": "Harga",
+      "title": "Mulai gratis, berkembang saat dibutuhkan",
+      "description": "Paket sederhana untuk organisasi dari semua ukuran.",
+      "perMonth": "per bulan",
+      "free": "Gratis",
+      "mostPopular": "Paling populer",
+      "startWith": "Mulai dengan {plan}",
+      "compare": "Bandingkan semua paket",
+      "enterprise": "Butuh lebih? Enterprise disesuaikan dengan organisasi Anda.",
+      "paddle": "Pembayaran diproses oleh Paddle",
+      "sample": "Contoh harga",
+      "plans": {
+        "starter": "Starter",
+        "professional": "Professional",
+        "business": "Business",
+        "enterprise": "Enterprise"
+      },
+      "taglines": {
+        "starter": "Semua fitur inti, gratis selama yang Anda mau.",
+        "professional": "Semua yang ada di Starter, plus domain sendiri, alamat pengirim, dan login perusahaan.",
+        "business": "Semua yang ada di Professional, tanpa batas formulir, jawaban, atau database."
+      },
+      "limits": {
+        "forms": "{count} formulir",
+        "formsUnlimited": "Formulir tanpa batas",
+        "responses": "{count} jawaban per formulir",
+        "responsesUnlimited": "Jawaban tanpa batas",
+        "databases": "Database Anda sendiri: {list}",
+        "sso": "Single sign-on",
+        "languages": "20 bahasa"
+      }
+    },
+    "faq": {
+      "title": "Pertanyaan yang sering diajukan",
+      "items": [
+        {
+          "q": "Apakah ada paket gratis?",
+          "a": "Ya. Starter gratis selama yang Anda mau."
+        },
+        {
+          "q": "Bisakah saya memakai database sendiri?",
+          "a": "Ya: MySQL di semua paket, PostgreSQL dan MariaDB di Professional, dan kelimanya di Business."
+        },
+        {
+          "q": "Di mana data saya disimpan?",
+          "a": "Di wilayah default Formalie, atau di wilayah pilihan Anda pada paket Enterprise."
+        },
+        {
+          "q": "Bisakah orang mengisi formulir dalam bahasa mereka?",
+          "a": "Ya. Satu formulir bisa memiliki beberapa bahasa, dan orang memilih bahasanya sendiri."
+        },
+        {
+          "q": "Apakah ada API?",
+          "a": "Ya. Formulir apa pun bisa menjadi endpoint API yang aman."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Mulai mengumpulkan dalam hitungan menit.",
+      "description": "Paket gratis, tanpa kartu. Tingkatkan saat Anda berkembang."
+    }
   }
 }

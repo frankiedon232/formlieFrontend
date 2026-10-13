@@ -136,7 +136,269 @@
     "home": "Terug naar de startpagina",
     "help": "Naar het helpcentrum"
   },
-  "placeholder": {
-    "building": "De website van Formalie wordt gebouwd."
+  "home": {
+    "meta": {
+      "title": "Formalie · Formulieren, gegevens en toegang onder jouw controle"
+    },
+    "hero": {
+      "eyebrow": "Formulieren · Gegevens · Toegang",
+      "description": "Bouw elk formulier, verzamel antwoorden via link, website, QR-code of API, bewaar ze in je eigen database en bepaal wie wat ziet. Voor organisaties van elke omvang, overal ter wereld.",
+      "talkToSales": "Praat met sales",
+      "proof": {
+        "free": "Gratis abonnement, geen creditcard nodig",
+        "languages": "20 talen",
+        "data": "Jouw gegevens, jouw database"
+      }
+    },
+    "flow": {
+      "label": "Antwoorden komen binnen via formulierlinks, ingesloten formulieren op websites, QR-codes, de API en mobiele apps, gaan versleuteld door Formalie en komen aan in je database, webhooks, dashboard, e-mailmeldingen en Formalie-opslag.",
+      "hub": "Versleuteld onderweg",
+      "sources": {
+        "link": "Formulierlink",
+        "embed": "Insluiting op website",
+        "qr": "QR-code",
+        "api": "API",
+        "app": "Mobiele app"
+      },
+      "nameField": "Naam",
+      "viaApi": "Roept de API aan",
+      "targets": {
+        "database": "Jouw database",
+        "webhooks": "Webhooks",
+        "dashboard": "Dashboard",
+        "email": "E-mailmeldingen",
+        "storage": "Formalie-opslag"
+      },
+      "newResponse": "Nieuw antwoord",
+      "encrypted": "Versleuteld",
+      "counters": {
+        "responses": "Verzamelde antwoorden",
+        "database": "Naar je database gestuurd",
+        "countries": "Landen die antwoorden",
+        "note": "Voorbeeldactiviteit, geen echte cijfers"
+      }
+    },
+    "trust": {
+      "title": "Gemaakt voor teams in elke sector",
+      "sectors": {
+        "hr": "HR",
+        "healthcare": "Zorg",
+        "education": "Onderwijs",
+        "events": "Evenementen",
+        "finance": "Financiën",
+        "operations": "Operations"
+      }
+    },
+    "channels": {
+      "eyebrow": "Elk kanaal",
+      "title": "Antwoorden van overal",
+      "description": "Eén formulier, elk kanaal. Deel een link, sluit het in op je website, print een QR-code of laat je apps antwoorden sturen via de API. Alles komt op één plek samen.",
+      "link": {
+        "title": "Formulierlink",
+        "text": "Een kort, eigen adres dat je overal kunt delen."
+      },
+      "embed": {
+        "title": "Insluiting op website",
+        "text": "Je formulier in je eigen pagina's, alleen op de websites die je toestaat."
+      },
+      "qr": {
+        "title": "QR-code",
+        "text": "Print hem op posters, tickets of bonnen en verzamel antwoorden ter plekke."
+      },
+      "api": {
+        "title": "API",
+        "text": "Je apps sturen antwoorden direct door, ondertekend en gecontroleerd."
+      },
+      "inbox": "Alles op één plek"
+    },
+    "tabs": {
+      "eyebrow": "Het product",
+      "title": "Eén plek voor formulieren, antwoorden en gegevens",
+      "description": "Echte schermen uit Formalie. Elk tabblad is een deel van het product dat je vandaag al kunt gebruiken.",
+      "seeHow": "Bekijk hoe het werkt",
+      "build": {
+        "label": "Bouwen",
+        "title": "Bouw elk formulier",
+        "text": "Vragen, pagina's, regels en berekeningen met slepen en neerzetten. Meer dan 40 vraagtypen.",
+        "points": [
+          "Rijen, pagina's en een toetsenbordalternatief voor elke sleepactie",
+          "Regels die vragen tonen, verbergen en verplicht maken",
+          "Totalen, scores en prijzen live berekend",
+          "Concept, publiceren en elke versie terugzetten"
+        ],
+        "alt": "De formulierbouwer: vraagtypen links, een formulier met meerdere pagina's in het midden, instellingen rechts"
+      },
+      "design": {
+        "label": "Ontwerp",
+        "title": "Helemaal in jouw stijl",
+        "text": "Begin met een stijl en maak hem van jou: lettertypen, kleuren, kop, voettekst en bedankpagina.",
+        "points": [
+          "Startstijlen en een sjabloonbibliotheek",
+          "21 zelf gehoste lettertypen, met contrasttips",
+          "Thema's die je opslaat en op elk formulier toepast",
+          "Landingspagina's die het formulier op zijn link omlijsten"
+        ],
+        "alt": "De formulierontwerper: startstijlen links en een live voorbeeld van het formulier"
+      },
+      "responses": {
+        "label": "Antwoorden",
+        "title": "Elk antwoord onder controle",
+        "text": "Bekijk, label, exporteer en vat elk antwoord samen.",
+        "points": [
+          "Tabel- en kaartweergave met zoeken en filters",
+          "Beoordelingsstatussen, labels en notities",
+          "Exporteren naar Excel, CSV of PDF",
+          "AI-samenvattingen en inzichten over alle antwoorden"
+        ],
+        "alt": "De lijst met antwoorden met de grafiek van beoordelingsstatussen"
+      },
+      "data": {
+        "label": "Gegevens",
+        "title": "Je eigen database, vanaf dag één",
+        "text": "Stuur elk antwoord direct bij binnenkomst naar MySQL, MariaDB, PostgreSQL, SQL Server of Oracle.",
+        "points": [
+          "Verbindingstest, status en responstijd",
+          "Aanvullen en opnieuw proberen, zodat er geen antwoord verloren gaat",
+          "Een database-verkenner en een query-editor",
+          "Elke actie op een verbinding in de audittrail"
+        ],
+        "alt": "Het overzicht van gegevensbronnen: databaseverkeer en verbindingsstatus"
+      },
+      "api": {
+        "label": "API",
+        "title": "Formulieren als veilige API-endpoints",
+        "text": "Maak van elk formulier veilige API-endpoints, met documentatie waar je ontwikkelaars blij van worden.",
+        "points": [
+          "GET, POST, PUT en DELETE, per endpoint te kiezen",
+          "Test- en live-tokens met scopes",
+          "Toegangsregels op IP, domein en land, plus rate limits",
+          "Gegenereerde documentatie met een console om te testen"
+        ],
+        "alt": "Het overzicht van de API-service: verzoeken in de tijd en de endpoints"
+      }
+    },
+    "apart": {
+      "eyebrow": "Waarom Formalie",
+      "title": "Wat Formalie anders maakt",
+      "description": "Gebouwd rond de vragen die organisaties stellen voordat ze een tool hun gegevens toevertrouwen.",
+      "data": {
+        "title": "Jouw gegevens, jouw database",
+        "text": "Bewaar antwoorden vanaf dag één in de versleutelde opslag van Formalie of in je eigen database."
+      },
+      "access": {
+        "title": "Toegang die je kunt uitleggen",
+        "text": "Rollen, mappen en delen, en een helder antwoord op de vraag wie elk formulier kan zien."
+      },
+      "channels": {
+        "title": "Elk kanaal",
+        "text": "Link, insluiting, QR-code en API, alles op één plek."
+      },
+      "languages": {
+        "title": "20 talen",
+        "text": "De app en je formulieren spreken de taal van je mensen, ook van rechts naar links."
+      },
+      "audit": {
+        "title": "Een audittrail van alles",
+        "text": "Wie deed wat, wanneer en vanaf waar."
+      },
+      "help": {
+        "title": "Hulp op elke pagina",
+        "text": "Rondleidingen, een helpcentrum en een assistent."
+      }
+    },
+    "security": {
+      "eyebrow": "Beveiliging",
+      "title": "Beveiliging die je aan je auditors kunt laten zien.",
+      "description": "Heldere controles die je kunt zien, uitleggen en nagaan, ingebouwd in elke werkruimte.",
+      "points": [
+        "Versleuteld tijdens verzending en in opslag",
+        "Inloggen in twee stappen en single sign-on",
+        "Rollen en rechten",
+        "Een audittrail van elke actie",
+        "Gegevens in de regio die je kiest (Enterprise)"
+      ],
+      "link": "Lees over beveiliging",
+      "trail": "Audittrail",
+      "live": "Live",
+      "events": {
+        "published": "Formulier gepubliceerd",
+        "role": "Rol bijgewerkt",
+        "export": "Antwoorden geëxporteerd",
+        "sso": "Ingelogd met single sign-on",
+        "token": "API-token aangemaakt"
+      }
+    },
+    "integrations": {
+      "eyebrow": "Integraties",
+      "title": "Werkt met de systemen die je al hebt.",
+      "description": "Vijf databases, webhooks, de API-service, inloggen met Google of Facebook en single sign-on met je identiteitsprovider.",
+      "link": "Bekijk alle integraties"
+    },
+    "languages": {
+      "title": "20 talen, ook van rechts naar links",
+      "description": "De app en je formulieren spreken de taal van je mensen."
+    },
+    "pricing": {
+      "eyebrow": "Prijzen",
+      "title": "Begin gratis, groei wanneer het nodig is",
+      "description": "Eenvoudige abonnementen voor organisaties van elke omvang.",
+      "perMonth": "per maand",
+      "free": "Gratis",
+      "mostPopular": "Meest gekozen",
+      "startWith": "Begin met {plan}",
+      "compare": "Vergelijk alle abonnementen",
+      "enterprise": "Meer nodig? Enterprise wordt afgestemd op jouw organisatie.",
+      "paddle": "Betalingen verwerkt door Paddle",
+      "sample": "Voorbeeldprijzen",
+      "plans": {
+        "starter": "Starter",
+        "professional": "Professional",
+        "business": "Business",
+        "enterprise": "Enterprise"
+      },
+      "taglines": {
+        "starter": "Alle kernfuncties, gratis zolang je wilt.",
+        "professional": "Alles uit Starter, plus je eigen domein, afzenderadres en bedrijfslogin.",
+        "business": "Alles uit Professional, zonder limieten op formulieren, antwoorden of databases."
+      },
+      "limits": {
+        "forms": "{count} formulieren",
+        "formsUnlimited": "Onbeperkt formulieren",
+        "responses": "{count} antwoorden per formulier",
+        "responsesUnlimited": "Onbeperkt antwoorden",
+        "databases": "Je eigen database: {list}",
+        "sso": "Single sign-on",
+        "languages": "20 talen"
+      }
+    },
+    "faq": {
+      "title": "Vragen, beantwoord",
+      "items": [
+        {
+          "q": "Is er een gratis abonnement?",
+          "a": "Ja. Starter is gratis zolang je wilt."
+        },
+        {
+          "q": "Kan ik mijn eigen database gebruiken?",
+          "a": "Ja: MySQL in elk abonnement, PostgreSQL en MariaDB in Professional en alle vijf in Business."
+        },
+        {
+          "q": "Waar worden mijn gegevens opgeslagen?",
+          "a": "In de standaardregio van Formalie, of met Enterprise in een regio die je zelf kiest."
+        },
+        {
+          "q": "Kunnen mensen formulieren in hun eigen taal invullen?",
+          "a": "Ja. Een formulier kan meerdere talen hebben en iedereen kiest zijn eigen taal."
+        },
+        {
+          "q": "Hebben jullie een API?",
+          "a": "Ja. Elk formulier kan veilige API-endpoints worden."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Begin binnen enkele minuten met verzamelen.",
+      "description": "Gratis abonnement, geen creditcard nodig. Upgrade wanneer je groeit."
+    }
   }
 }

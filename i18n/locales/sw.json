@@ -136,7 +136,269 @@
     "home": "Rudi kwenye ukurasa wa mwanzo",
     "help": "Tembelea kituo cha usaidizi"
   },
-  "placeholder": {
-    "building": "Tovuti ya Formalie inajengwa."
+  "home": {
+    "meta": {
+      "title": "Formalie · Fomu, data na ufikiaji chini ya udhibiti wako"
+    },
+    "hero": {
+      "eyebrow": "Fomu · Data · Ufikiaji",
+      "description": "Unda fomu yoyote, kusanya majibu kwa kiungo, tovuti, msimbo wa QR au API, yahifadhi kwenye hifadhidata yako mwenyewe na uamue nani aone nini. Kwa mashirika ya ukubwa wowote, popote duniani.",
+      "talkToSales": "Zungumza na mauzo",
+      "proof": {
+        "free": "Mpango wa bure, hakuna kadi inayohitajika",
+        "languages": "Lugha 20",
+        "data": "Data yako, hifadhidata yako"
+      }
+    },
+    "flow": {
+      "label": "Majibu husafiri kutoka viungo vya fomu, upachikaji kwenye tovuti, misimbo ya QR, API na programu za simu kupitia Formalie, yakiwa yamesimbwa njiani, hadi kwenye hifadhidata yako, webhooks, dashibodi, arifa za barua pepe na hifadhi ya Formalie.",
+      "hub": "Yamesimbwa njiani",
+      "sources": {
+        "link": "Kiungo cha fomu",
+        "embed": "Upachikaji kwenye tovuti",
+        "qr": "Msimbo wa QR",
+        "api": "API",
+        "app": "Programu ya simu"
+      },
+      "nameField": "Jina",
+      "viaApi": "Inaita API",
+      "targets": {
+        "database": "Hifadhidata yako",
+        "webhooks": "Webhooks",
+        "dashboard": "Dashibodi",
+        "email": "Arifa za barua pepe",
+        "storage": "Hifadhi ya Formalie"
+      },
+      "newResponse": "Jibu jipya",
+      "encrypted": "Limesimbwa",
+      "counters": {
+        "responses": "Majibu yaliyokusanywa",
+        "database": "Yaliyotumwa kwenye hifadhidata yako",
+        "countries": "Nchi zinazojibu",
+        "note": "Mfano wa shughuli, si takwimu halisi"
+      }
+    },
+    "trust": {
+      "title": "Imeundwa kwa timu za kila sekta",
+      "sectors": {
+        "hr": "Rasilimali watu",
+        "healthcare": "Afya",
+        "education": "Elimu",
+        "events": "Matukio",
+        "finance": "Fedha",
+        "operations": "Uendeshaji"
+      }
+    },
+    "channels": {
+      "eyebrow": "Kila njia",
+      "title": "Majibu kutoka kila mahali",
+      "description": "Fomu moja, kila njia. Shiriki kiungo, ipachike kwenye tovuti yako, chapisha msimbo wa QR au acha programu zako zitume majibu kupitia API. Kila kitu kinafika sehemu moja.",
+      "link": {
+        "title": "Kiungo cha fomu",
+        "text": "Anwani fupi na maalum unayoweza kushiriki popote."
+      },
+      "embed": {
+        "title": "Upachikaji kwenye tovuti",
+        "text": "Fomu yako ndani ya kurasa zako, kwenye tovuti unazoruhusu pekee."
+      },
+      "qr": {
+        "title": "Msimbo wa QR",
+        "text": "Uchapishe kwenye mabango, tiketi au risiti na ukusanye papo hapo."
+      },
+      "api": {
+        "title": "API",
+        "text": "Programu zako hutuma majibu moja kwa moja, yakiwa yamesainiwa na kukaguliwa."
+      },
+      "inbox": "Yote sehemu moja"
+    },
+    "tabs": {
+      "eyebrow": "Bidhaa",
+      "title": "Sehemu moja kwa fomu, majibu na data",
+      "description": "Skrini halisi kutoka Formalie. Kila kichupo ni sehemu ya bidhaa unayoweza kutumia leo.",
+      "seeHow": "Ona jinsi inavyofanya kazi",
+      "build": {
+        "label": "Unda",
+        "title": "Unda fomu yoyote",
+        "text": "Maswali, kurasa, kanuni na hesabu kwa kuburuta na kudondosha. Zaidi ya aina 40 za maswali.",
+        "points": [
+          "Safu, kurasa na mbadala wa kibodi kwa kila kuburuta",
+          "Kanuni zinazoonyesha, kuficha na kulazimisha maswali",
+          "Jumla, alama na bei zinazokokotolewa papo hapo",
+          "Rasimu, chapisha na urejeshe toleo lolote"
+        ],
+        "alt": "Kiunda fomu: aina za maswali upande wa kushoto, fomu ya kurasa nyingi katikati, mipangilio upande wa kulia"
+      },
+      "design": {
+        "label": "Muundo",
+        "title": "Ifanye ionekane kama wewe",
+        "text": "Anza na mwonekano kisha ukifanye chako: fonti, rangi, kichwa, kijachini, ukurasa wa shukrani.",
+        "points": [
+          "Mionekano ya kuanzia na maktaba ya violezo",
+          "Fonti 21 zinazopangishwa na sisi, pamoja na vidokezo vya utofautishaji",
+          "Mandhari unazohifadhi na kutumia kwenye fomu yoyote",
+          "Kurasa za kutua zinazoitambulisha fomu kwenye kiungo chake"
+        ],
+        "alt": "Kibunifu cha fomu: mionekano ya kuanzia upande wa kushoto na onyesho la moja kwa moja la fomu"
+      },
+      "responses": {
+        "label": "Majibu",
+        "title": "Kila jibu, chini ya udhibiti",
+        "text": "Kagua, weka lebo, hamisha na ufupishe kila jibu.",
+        "points": [
+          "Mwonekano wa jedwali na kadi, wenye utafutaji na vichujio",
+          "Hali za ukaguzi, lebo na maelezo",
+          "Hamisha kwenda Excel, CSV au PDF",
+          "Muhtasari na maarifa ya AI kutoka kwa majibu yote"
+        ],
+        "alt": "Orodha ya majibu pamoja na chati ya hali za ukaguzi"
+      },
+      "data": {
+        "label": "Data",
+        "title": "Hifadhidata yako, tangu siku ya kwanza",
+        "text": "Tuma kila jibu kwenye MySQL, MariaDB, PostgreSQL, SQL Server au Oracle mara linapofika.",
+        "points": [
+          "Jaribio la muunganisho, hali na muda wa kujibu",
+          "Kujaza nyuma na kujaribu tena, ili hakuna jibu linalopotea",
+          "Kivinjari cha hifadhidata na kihariri cha hoja",
+          "Kila kitendo kwenye muunganisho kiko kwenye kumbukumbu za ukaguzi"
+        ],
+        "alt": "Muhtasari wa vyanzo vya data: trafiki ya hifadhidata na hali ya muunganisho"
+      },
+      "api": {
+        "label": "API",
+        "title": "Fomu kama sehemu salama za API",
+        "text": "Geuza fomu yoyote kuwa sehemu salama za API, pamoja na nyaraka ambazo wasanidi wako watazipenda.",
+        "points": [
+          "GET, POST, PUT na DELETE, zinazochaguliwa kwa kila sehemu",
+          "Tokeni za majaribio na za moja kwa moja zenye mawanda",
+          "Kanuni za ufikiaji kwa IP, kikoa na nchi, pamoja na vikomo vya maombi",
+          "Nyaraka zinazotengenezwa zenyewe, na kiweko cha kujaribu"
+        ],
+        "alt": "Muhtasari wa huduma ya API: maombi kwa muda na sehemu za API"
+      }
+    },
+    "apart": {
+      "eyebrow": "Kwa nini Formalie",
+      "title": "Kinachoitofautisha Formalie",
+      "description": "Imejengwa kuzunguka maswali ambayo mashirika huuliza kabla ya kukabidhi data yao kwa zana.",
+      "data": {
+        "title": "Data yako, hifadhidata yako",
+        "text": "Hifadhi majibu kwenye hifadhi iliyosimbwa ya Formalie au kwenye hifadhidata yako mwenyewe tangu siku ya kwanza."
+      },
+      "access": {
+        "title": "Ufikiaji unaoweza kuueleza",
+        "text": "Majukumu, folda na kushiriki, pamoja na jibu wazi kuhusu nani anaweza kuona kila fomu."
+      },
+      "channels": {
+        "title": "Kila njia",
+        "text": "Kiungo, upachikaji, msimbo wa QR na API, vyote sehemu moja."
+      },
+      "languages": {
+        "title": "Lugha 20",
+        "text": "Programu na fomu zako huzungumza lugha ya watu wako, zikiwemo za kulia kwenda kushoto."
+      },
+      "audit": {
+        "title": "Kumbukumbu za ukaguzi za kila kitu",
+        "text": "Nani alifanya nini, lini na kutoka wapi."
+      },
+      "help": {
+        "title": "Msaada kwenye kila ukurasa",
+        "text": "Ziara za kuongozwa, kituo cha usaidizi na msaidizi."
+      }
+    },
+    "security": {
+      "eyebrow": "Usalama",
+      "title": "Usalama unaoweza kuwaonyesha wakaguzi wako.",
+      "description": "Vidhibiti wazi unavyoweza kuona, kueleza na kukagua, vilivyojengwa ndani ya kila eneo la kazi.",
+      "points": [
+        "Imesimbwa wakati wa kusafirishwa na ikiwa imehifadhiwa",
+        "Kuingia kwa hatua mbili na kuingia mara moja",
+        "Majukumu na ruhusa",
+        "Kumbukumbu za ukaguzi za kila kitendo",
+        "Data katika eneo unalochagua (Enterprise)"
+      ],
+      "link": "Soma kuhusu usalama",
+      "trail": "Kumbukumbu za ukaguzi",
+      "live": "Moja kwa moja",
+      "events": {
+        "published": "Fomu imechapishwa",
+        "role": "Jukumu limesasishwa",
+        "export": "Majibu yamehamishwa",
+        "sso": "Ameingia kwa kuingia mara moja",
+        "token": "Tokeni ya API imeundwa"
+      }
+    },
+    "integrations": {
+      "eyebrow": "Miunganisho",
+      "title": "Inafanya kazi na mifumo uliyonayo tayari.",
+      "description": "Hifadhidata tano, webhooks, huduma ya API, kuingia kwa Google au Facebook, na kuingia mara moja kupitia mtoa huduma wako wa utambulisho.",
+      "link": "Ona miunganisho yote"
+    },
+    "languages": {
+      "title": "Lugha 20, zikiwemo za kulia kwenda kushoto",
+      "description": "Programu na fomu zako huzungumza lugha ya watu wako."
+    },
+    "pricing": {
+      "eyebrow": "Bei",
+      "title": "Anza bila malipo, kua unapohitaji",
+      "description": "Mipango rahisi kwa mashirika ya kila ukubwa.",
+      "perMonth": "kwa mwezi",
+      "free": "Bure",
+      "mostPopular": "Maarufu zaidi",
+      "startWith": "Anza na {plan}",
+      "compare": "Linganisha mipango yote",
+      "enterprise": "Unahitaji zaidi? Enterprise huundwa kulingana na shirika lako.",
+      "paddle": "Malipo yanashughulikiwa na Paddle",
+      "sample": "Mfano wa bei",
+      "plans": {
+        "starter": "Starter",
+        "professional": "Professional",
+        "business": "Business",
+        "enterprise": "Enterprise"
+      },
+      "taglines": {
+        "starter": "Kila kipengele cha msingi, bure kwa muda wowote unaotaka.",
+        "professional": "Kila kitu kilicho kwenye Starter, pamoja na kikoa chako, anwani ya kutuma na kuingia kwa akaunti ya kampuni.",
+        "business": "Kila kitu kilicho kwenye Professional, bila vikomo vya fomu, majibu au hifadhidata."
+      },
+      "limits": {
+        "forms": "Fomu {count}",
+        "formsUnlimited": "Fomu bila kikomo",
+        "responses": "Majibu {count} kwa kila fomu",
+        "responsesUnlimited": "Majibu bila kikomo",
+        "databases": "Hifadhidata yako mwenyewe: {list}",
+        "sso": "Kuingia mara moja",
+        "languages": "Lugha 20"
+      }
+    },
+    "faq": {
+      "title": "Maswali, yamejibiwa",
+      "items": [
+        {
+          "q": "Je, kuna mpango wa bure?",
+          "a": "Ndiyo. Starter ni bure kwa muda wowote unaotaka."
+        },
+        {
+          "q": "Je, ninaweza kutumia hifadhidata yangu mwenyewe?",
+          "a": "Ndiyo: MySQL kwenye kila mpango, PostgreSQL na MariaDB kwenye Professional, na zote tano kwenye Business."
+        },
+        {
+          "q": "Data yangu inahifadhiwa wapi?",
+          "a": "Katika eneo la msingi la Formalie, au katika eneo unalochagua kwenye Enterprise."
+        },
+        {
+          "q": "Je, watu wanaweza kujaza fomu kwa lugha yao?",
+          "a": "Ndiyo. Fomu inaweza kuwa na lugha kadhaa, na watu huchagua yao."
+        },
+        {
+          "q": "Je, mna API?",
+          "a": "Ndiyo. Fomu yoyote inaweza kuwa sehemu salama za API."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Anza kukusanya kwa dakika chache.",
+      "description": "Mpango wa bure, hakuna kadi inayohitajika. Panda daraja unapokua."
+    }
   }
 }

@@ -136,7 +136,269 @@
     "home": "Zur Startseite",
     "help": "Zum Hilfe-Center"
   },
-  "placeholder": {
-    "building": "Die Formalie-Website entsteht gerade."
+  "home": {
+    "meta": {
+      "title": "Formalie · Formulare, Daten und Zugriffe unter Ihrer Kontrolle"
+    },
+    "hero": {
+      "eyebrow": "Formulare · Daten · Zugriff",
+      "description": "Erstellen Sie jedes Formular, sammeln Sie Antworten per Link, Website, QR-Code oder API, speichern Sie sie in Ihrer eigenen Datenbank und bestimmen Sie, wer was sieht. Für Organisationen jeder Größe, überall auf der Welt.",
+      "talkToSales": "Vertrieb kontaktieren",
+      "proof": {
+        "free": "Kostenloser Plan, ohne Kreditkarte",
+        "languages": "20 Sprachen",
+        "data": "Ihre Daten, Ihre Datenbank"
+      }
+    },
+    "flow": {
+      "label": "Antworten kommen über Formular-Links, Website-Einbettungen, QR-Codes, die API und mobile Apps zu Formalie, werden unterwegs verschlüsselt und gelangen in Ihre Datenbank, Webhooks, Ihr Dashboard, E-Mail-Benachrichtigungen und den Formalie-Speicher.",
+      "hub": "Unterwegs verschlüsselt",
+      "sources": {
+        "link": "Formular-Link",
+        "embed": "Website-Einbettung",
+        "qr": "QR-Code",
+        "api": "API",
+        "app": "Mobile App"
+      },
+      "nameField": "Name",
+      "viaApi": "Ruft die API auf",
+      "targets": {
+        "database": "Ihre Datenbank",
+        "webhooks": "Webhooks",
+        "dashboard": "Dashboard",
+        "email": "E-Mail-Benachrichtigungen",
+        "storage": "Formalie-Speicher"
+      },
+      "newResponse": "Neue Antwort",
+      "encrypted": "Verschlüsselt",
+      "counters": {
+        "responses": "Gesammelte Antworten",
+        "database": "An Ihre Datenbank gesendet",
+        "countries": "Länder mit Antworten",
+        "note": "Beispielaktivität, keine echten Zahlen"
+      }
+    },
+    "trust": {
+      "title": "Für Teams in jeder Branche",
+      "sectors": {
+        "hr": "Personal",
+        "healthcare": "Gesundheitswesen",
+        "education": "Bildung",
+        "events": "Veranstaltungen",
+        "finance": "Finanzen",
+        "operations": "Betrieb"
+      }
+    },
+    "channels": {
+      "eyebrow": "Jeder Kanal",
+      "title": "Antworten von überall",
+      "description": "Ein Formular, jeder Kanal. Teilen Sie einen Link, betten Sie es in Ihre Website ein, drucken Sie einen QR-Code oder lassen Sie Ihre Apps Antworten über die API senden. Alles landet an einem Ort.",
+      "link": {
+        "title": "Formular-Link",
+        "text": "Eine kurze, eigene Adresse, die Sie überall teilen können."
+      },
+      "embed": {
+        "title": "Website-Einbettung",
+        "text": "Ihr Formular in Ihren eigenen Seiten, nur auf den Websites, die Sie zulassen."
+      },
+      "qr": {
+        "title": "QR-Code",
+        "text": "Drucken Sie ihn auf Plakate, Tickets oder Belege und sammeln Sie Antworten direkt vor Ort."
+      },
+      "api": {
+        "title": "API",
+        "text": "Ihre Apps senden Antworten direkt, signiert und geprüft."
+      },
+      "inbox": "Alles an einem Ort"
+    },
+    "tabs": {
+      "eyebrow": "Das Produkt",
+      "title": "Ein Ort für Formulare, Antworten und Daten",
+      "description": "Echte Ansichten aus Formalie. Jeder Tab zeigt einen Teil des Produkts, den Sie heute schon nutzen können.",
+      "seeHow": "So funktioniert es",
+      "build": {
+        "label": "Erstellen",
+        "title": "Jedes Formular erstellen",
+        "text": "Fragen, Seiten, Regeln und Berechnungen per Drag-and-drop. Über 40 Fragetypen.",
+        "points": [
+          "Zeilen, Seiten und eine Tastatur-Alternative zu jedem Ziehen",
+          "Regeln, die Fragen ein- und ausblenden oder zur Pflicht machen",
+          "Summen, Punktzahlen und Preise live berechnet",
+          "Entwürfe, Veröffentlichung und Wiederherstellung jeder Version"
+        ],
+        "alt": "Der Formular-Builder: Fragetypen links, ein mehrseitiges Formular in der Mitte, Einstellungen rechts"
+      },
+      "design": {
+        "label": "Design",
+        "title": "Ganz in Ihrem Stil",
+        "text": "Starten Sie mit einem Stil und machen Sie ihn zu Ihrem: Schriften, Farben, Kopfzeile, Fußzeile, Dankesseite.",
+        "points": [
+          "Startstile und eine Vorlagenbibliothek",
+          "21 selbst gehostete Schriften, mit Kontrasthinweisen",
+          "Designs, die Sie speichern und auf jedes Formular anwenden",
+          "Landingpages, die das Formular unter seinem Link einrahmen"
+        ],
+        "alt": "Der Formular-Designer: Startstile links und eine Live-Vorschau des Formulars"
+      },
+      "responses": {
+        "label": "Antworten",
+        "title": "Jede Antwort im Griff",
+        "text": "Jede Antwort prüfen, markieren, exportieren und zusammenfassen.",
+        "points": [
+          "Tabellen- und Kartenansicht mit Suche und Filtern",
+          "Prüfstatus, Tags und Notizen",
+          "Export nach Excel, CSV oder PDF",
+          "KI-Zusammenfassungen und Erkenntnisse über alle Antworten"
+        ],
+        "alt": "Die Antwortliste mit dem Diagramm der Prüfstatus"
+      },
+      "data": {
+        "label": "Daten",
+        "title": "Ihre Datenbank, vom ersten Tag an",
+        "text": "Senden Sie jede Antwort sofort an MySQL, MariaDB, PostgreSQL, SQL Server oder Oracle.",
+        "points": [
+          "Verbindungstest, Zustand und Antwortzeit",
+          "Nachträgliche Übertragung und Wiederholungen, damit keine Antwort verloren geht",
+          "Ein Datenbank-Explorer und ein Abfrage-Editor",
+          "Jede Aktion an einer Verbindung im Audit-Protokoll"
+        ],
+        "alt": "Die Übersicht der Datenquellen: Datenbankverkehr und Verbindungszustand"
+      },
+      "api": {
+        "label": "API",
+        "title": "Formulare als sichere API-Endpunkte",
+        "text": "Machen Sie jedes Formular zu sicheren API-Endpunkten, mit einer Dokumentation, die Ihre Entwickler mögen werden.",
+        "points": [
+          "GET, POST, PUT und DELETE, für jeden Endpunkt wählbar",
+          "Test- und Live-Tokens mit Berechtigungsumfang",
+          "Zugriffsregeln nach IP, Domain und Land, dazu Ratenbegrenzungen",
+          "Generierte Dokumentation mit einer Konsole zum Ausprobieren"
+        ],
+        "alt": "Die Übersicht des API-Service: Anfragen im Zeitverlauf und die Endpunkte"
+      }
+    },
+    "apart": {
+      "eyebrow": "Warum Formalie",
+      "title": "Was Formalie auszeichnet",
+      "description": "Entwickelt rund um die Fragen, die Organisationen stellen, bevor sie einem Tool ihre Daten anvertrauen.",
+      "data": {
+        "title": "Ihre Daten, Ihre Datenbank",
+        "text": "Bewahren Sie Antworten vom ersten Tag an im verschlüsselten Formalie-Speicher oder in Ihrer eigenen Datenbank auf."
+      },
+      "access": {
+        "title": "Zugriff, den Sie erklären können",
+        "text": "Rollen, Ordner und Freigaben, dazu eine klare Antwort darauf, wer welches Formular sehen kann."
+      },
+      "channels": {
+        "title": "Jeder Kanal",
+        "text": "Link, Einbettung, QR-Code und API, alles an einem Ort."
+      },
+      "languages": {
+        "title": "20 Sprachen",
+        "text": "Die App und Ihre Formulare sprechen die Sprache Ihrer Leute, auch von rechts nach links."
+      },
+      "audit": {
+        "title": "Ein Audit-Protokoll für alles",
+        "text": "Wer hat was getan, wann und von wo."
+      },
+      "help": {
+        "title": "Hilfe auf jeder Seite",
+        "text": "Geführte Touren, ein Hilfe-Center und ein Assistent."
+      }
+    },
+    "security": {
+      "eyebrow": "Sicherheit",
+      "title": "Sicherheit, die Sie Ihren Prüfern zeigen können.",
+      "description": "Klare Kontrollen, die Sie sehen, erklären und prüfen können, in jedem Arbeitsbereich eingebaut.",
+      "points": [
+        "Verschlüsselt bei der Übertragung und im Ruhezustand",
+        "Zwei-Schritt-Anmeldung und Single Sign-on",
+        "Rollen und Berechtigungen",
+        "Ein Audit-Protokoll jeder Aktion",
+        "Daten in der Region Ihrer Wahl (Enterprise)"
+      ],
+      "link": "Mehr zur Sicherheit",
+      "trail": "Audit-Protokoll",
+      "live": "Live",
+      "events": {
+        "published": "Formular veröffentlicht",
+        "role": "Rolle aktualisiert",
+        "export": "Antworten exportiert",
+        "sso": "Per Single Sign-on angemeldet",
+        "token": "API-Token erstellt"
+      }
+    },
+    "integrations": {
+      "eyebrow": "Integrationen",
+      "title": "Funktioniert mit den Systemen, die Sie schon haben.",
+      "description": "Fünf Datenbanken, Webhooks, der API-Service, Anmeldung mit Google oder Facebook und Single Sign-on mit Ihrem Identitätsanbieter.",
+      "link": "Alle Integrationen ansehen"
+    },
+    "languages": {
+      "title": "20 Sprachen, auch von rechts nach links",
+      "description": "Die App und Ihre Formulare sprechen die Sprache Ihrer Leute."
+    },
+    "pricing": {
+      "eyebrow": "Preise",
+      "title": "Kostenlos starten, wachsen, wenn Sie es brauchen",
+      "description": "Einfache Pläne für Organisationen jeder Größe.",
+      "perMonth": "pro Monat",
+      "free": "Kostenlos",
+      "mostPopular": "Am beliebtesten",
+      "startWith": "Mit {plan} starten",
+      "compare": "Alle Pläne vergleichen",
+      "enterprise": "Sie brauchen mehr? Enterprise wird auf Ihre Organisation zugeschnitten.",
+      "paddle": "Zahlungsabwicklung durch Paddle",
+      "sample": "Beispielpreise",
+      "plans": {
+        "starter": "Starter",
+        "professional": "Professional",
+        "business": "Business",
+        "enterprise": "Enterprise"
+      },
+      "taglines": {
+        "starter": "Alle Kernfunktionen, kostenlos, so lange Sie möchten.",
+        "professional": "Alles aus Starter, dazu Ihre eigene Domain, Absenderadresse und Unternehmensanmeldung.",
+        "business": "Alles aus Professional, ohne Limits bei Formularen, Antworten oder Datenbanken."
+      },
+      "limits": {
+        "forms": "{count} Formulare",
+        "formsUnlimited": "Unbegrenzte Formulare",
+        "responses": "{count} Antworten pro Formular",
+        "responsesUnlimited": "Unbegrenzte Antworten",
+        "databases": "Ihre eigene Datenbank: {list}",
+        "sso": "Single Sign-on",
+        "languages": "20 Sprachen"
+      }
+    },
+    "faq": {
+      "title": "Fragen und Antworten",
+      "items": [
+        {
+          "q": "Gibt es einen kostenlosen Plan?",
+          "a": "Ja. Starter ist kostenlos, so lange Sie möchten."
+        },
+        {
+          "q": "Kann ich meine eigene Datenbank nutzen?",
+          "a": "Ja: MySQL in jedem Plan, PostgreSQL und MariaDB in Professional und alle fünf in Business."
+        },
+        {
+          "q": "Wo werden meine Daten gespeichert?",
+          "a": "In der Standardregion von Formalie oder, mit Enterprise, in einer Region Ihrer Wahl."
+        },
+        {
+          "q": "Können Menschen Formulare in ihrer Sprache ausfüllen?",
+          "a": "Ja. Ein Formular kann mehrere Sprachen haben, und jeder wählt seine eigene."
+        },
+        {
+          "q": "Gibt es eine API?",
+          "a": "Ja. Jedes Formular kann zu sicheren API-Endpunkten werden."
+        }
+      ]
+    },
+    "cta": {
+      "title": "In wenigen Minuten Antworten sammeln.",
+      "description": "Kostenloser Plan, ohne Kreditkarte. Upgraden Sie, wenn Sie wachsen."
+    }
   }
 }

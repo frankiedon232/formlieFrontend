@@ -136,7 +136,269 @@
     "home": "Về trang chủ",
     "help": "Đến trung tâm trợ giúp"
   },
-  "placeholder": {
-    "building": "Trang web Formalie đang được xây dựng."
+  "home": {
+    "meta": {
+      "title": "Formalie · Biểu mẫu, dữ liệu và quyền truy cập trong tầm kiểm soát của bạn"
+    },
+    "hero": {
+      "eyebrow": "Biểu mẫu · Dữ liệu · Truy cập",
+      "description": "Tạo mọi biểu mẫu, thu thập câu trả lời qua liên kết, trang web, mã QR hoặc API, lưu trong cơ sở dữ liệu của riêng bạn và quyết định ai xem được gì. Dành cho tổ chức mọi quy mô, ở bất kỳ đâu trên thế giới.",
+      "talkToSales": "Liên hệ bộ phận bán hàng",
+      "proof": {
+        "free": "Gói miễn phí, không cần thẻ",
+        "languages": "20 ngôn ngữ",
+        "data": "Dữ liệu của bạn, cơ sở dữ liệu của bạn"
+      }
+    },
+    "flow": {
+      "label": "Câu trả lời đi từ liên kết biểu mẫu, biểu mẫu nhúng trên trang web, mã QR, API và ứng dụng di động qua Formalie, được mã hóa trên đường truyền, đến cơ sở dữ liệu, webhook, bảng điều khiển, cảnh báo email và kho lưu trữ Formalie.",
+      "hub": "Mã hóa trên đường truyền",
+      "sources": {
+        "link": "Liên kết biểu mẫu",
+        "embed": "Nhúng vào trang web",
+        "qr": "Mã QR",
+        "api": "API",
+        "app": "Ứng dụng di động"
+      },
+      "nameField": "Họ tên",
+      "viaApi": "Gọi API",
+      "targets": {
+        "database": "Cơ sở dữ liệu của bạn",
+        "webhooks": "Webhook",
+        "dashboard": "Bảng điều khiển",
+        "email": "Cảnh báo email",
+        "storage": "Kho lưu trữ Formalie"
+      },
+      "newResponse": "Câu trả lời mới",
+      "encrypted": "Đã mã hóa",
+      "counters": {
+        "responses": "Câu trả lời đã thu thập",
+        "database": "Đã gửi vào cơ sở dữ liệu của bạn",
+        "countries": "Quốc gia trả lời",
+        "note": "Hoạt động minh họa, không phải số liệu thật"
+      }
+    },
+    "trust": {
+      "title": "Xây dựng cho đội ngũ ở mọi lĩnh vực",
+      "sectors": {
+        "hr": "Nhân sự",
+        "healthcare": "Y tế",
+        "education": "Giáo dục",
+        "events": "Sự kiện",
+        "finance": "Tài chính",
+        "operations": "Vận hành"
+      }
+    },
+    "channels": {
+      "eyebrow": "Mọi kênh",
+      "title": "Câu trả lời từ khắp nơi",
+      "description": "Một biểu mẫu, mọi kênh. Chia sẻ liên kết, nhúng vào trang web, in mã QR hoặc để ứng dụng của bạn gửi câu trả lời qua API. Mọi thứ về cùng một nơi.",
+      "link": {
+        "title": "Liên kết biểu mẫu",
+        "text": "Địa chỉ ngắn, tùy chỉnh, chia sẻ ở bất kỳ đâu."
+      },
+      "embed": {
+        "title": "Nhúng vào trang web",
+        "text": "Biểu mẫu nằm ngay trong trang của bạn, chỉ trên những trang web bạn cho phép."
+      },
+      "qr": {
+        "title": "Mã QR",
+        "text": "In lên áp phích, vé hoặc hóa đơn và thu thập ngay tại chỗ."
+      },
+      "api": {
+        "title": "API",
+        "text": "Ứng dụng của bạn gửi câu trả lời trực tiếp, có ký và kiểm tra."
+      },
+      "inbox": "Tất cả ở một nơi"
+    },
+    "tabs": {
+      "eyebrow": "Sản phẩm",
+      "title": "Một nơi cho biểu mẫu, câu trả lời và dữ liệu",
+      "description": "Màn hình thật từ Formalie. Mỗi tab là một phần của sản phẩm bạn có thể dùng ngay hôm nay.",
+      "seeHow": "Xem cách hoạt động",
+      "build": {
+        "label": "Tạo",
+        "title": "Tạo mọi biểu mẫu",
+        "text": "Kéo thả câu hỏi, trang, quy tắc và phép tính. Hơn 40 loại câu hỏi.",
+        "points": [
+          "Hàng, trang và thao tác bàn phím thay cho mọi lần kéo",
+          "Quy tắc để hiện, ẩn và bắt buộc câu hỏi",
+          "Tổng, điểm và giá được tính trực tiếp",
+          "Bản nháp, xuất bản và khôi phục mọi phiên bản"
+        ],
+        "alt": "Trình tạo biểu mẫu: loại câu hỏi bên trái, biểu mẫu nhiều trang ở giữa, cài đặt bên phải"
+      },
+      "design": {
+        "label": "Thiết kế",
+        "title": "Mang dấu ấn của bạn",
+        "text": "Bắt đầu từ một giao diện rồi tùy chỉnh theo ý bạn: phông chữ, màu sắc, đầu trang, chân trang, trang cảm ơn.",
+        "points": [
+          "Giao diện khởi đầu và thư viện mẫu",
+          "21 phông chữ tự lưu trữ, kèm gợi ý độ tương phản",
+          "Chủ đề lưu lại và áp dụng cho mọi biểu mẫu",
+          "Trang đích giới thiệu biểu mẫu ngay trên liên kết của nó"
+        ],
+        "alt": "Trình thiết kế biểu mẫu: giao diện khởi đầu bên trái và bản xem trước trực tiếp của biểu mẫu"
+      },
+      "responses": {
+        "label": "Câu trả lời",
+        "title": "Mọi câu trả lời, trong tầm kiểm soát",
+        "text": "Xem xét, gắn thẻ, xuất và tóm tắt mọi câu trả lời.",
+        "points": [
+          "Chế độ xem bảng và thẻ, có tìm kiếm và bộ lọc",
+          "Trạng thái xem xét, thẻ và ghi chú",
+          "Xuất ra Excel, CSV hoặc PDF",
+          "Tóm tắt và phân tích bằng AI trên toàn bộ câu trả lời"
+        ],
+        "alt": "Danh sách câu trả lời kèm biểu đồ trạng thái xem xét"
+      },
+      "data": {
+        "label": "Dữ liệu",
+        "title": "Cơ sở dữ liệu của bạn, ngay từ ngày đầu",
+        "text": "Gửi từng câu trả lời vào MySQL, MariaDB, PostgreSQL, SQL Server hoặc Oracle ngay khi đến.",
+        "points": [
+          "Kiểm tra kết nối, tình trạng và thời gian phản hồi",
+          "Bổ sung dữ liệu cũ và thử lại, không mất câu trả lời nào",
+          "Trình duyệt cơ sở dữ liệu và trình soạn truy vấn",
+          "Mọi thao tác trên kết nối đều có trong nhật ký kiểm tra"
+        ],
+        "alt": "Tổng quan nguồn dữ liệu: lưu lượng cơ sở dữ liệu và tình trạng kết nối"
+      },
+      "api": {
+        "label": "API",
+        "title": "Biểu mẫu thành endpoint API an toàn",
+        "text": "Biến mọi biểu mẫu thành endpoint API an toàn, kèm tài liệu mà nhà phát triển của bạn sẽ thích.",
+        "points": [
+          "GET, POST, PUT và DELETE, chọn cho từng endpoint",
+          "Token thử nghiệm và token chính thức có phạm vi",
+          "Quy tắc truy cập theo IP, tên miền và quốc gia, kèm giới hạn tần suất",
+          "Tài liệu tự động tạo, có bảng điều khiển để thử ngay"
+        ],
+        "alt": "Tổng quan dịch vụ API: lượng yêu cầu theo thời gian và các endpoint"
+      }
+    },
+    "apart": {
+      "eyebrow": "Vì sao chọn Formalie",
+      "title": "Điều làm Formalie khác biệt",
+      "description": "Xây dựng xoay quanh những câu hỏi mà tổ chức đặt ra trước khi giao dữ liệu cho một công cụ.",
+      "data": {
+        "title": "Dữ liệu của bạn, cơ sở dữ liệu của bạn",
+        "text": "Lưu câu trả lời trong kho lưu trữ mã hóa của Formalie hoặc cơ sở dữ liệu của riêng bạn ngay từ ngày đầu."
+      },
+      "access": {
+        "title": "Quyền truy cập bạn có thể giải thích",
+        "text": "Vai trò, thư mục và chia sẻ, cùng câu trả lời rõ ràng về việc ai xem được từng biểu mẫu."
+      },
+      "channels": {
+        "title": "Mọi kênh",
+        "text": "Liên kết, nhúng, mã QR và API, tất cả về một nơi."
+      },
+      "languages": {
+        "title": "20 ngôn ngữ",
+        "text": "Ứng dụng và biểu mẫu nói ngôn ngữ của người dùng, kể cả ngôn ngữ viết từ phải sang trái."
+      },
+      "audit": {
+        "title": "Nhật ký kiểm tra cho mọi thứ",
+        "text": "Ai đã làm gì, khi nào và từ đâu."
+      },
+      "help": {
+        "title": "Trợ giúp trên mọi trang",
+        "text": "Hướng dẫn từng bước, trung tâm trợ giúp và trợ lý."
+      }
+    },
+    "security": {
+      "eyebrow": "Bảo mật",
+      "title": "Bảo mật bạn có thể trình bày với kiểm toán viên.",
+      "description": "Các biện pháp kiểm soát rõ ràng mà bạn có thể xem, giải thích và kiểm tra, có sẵn trong mọi không gian làm việc.",
+      "points": [
+        "Mã hóa khi truyền và khi lưu trữ",
+        "Đăng nhập hai bước và đăng nhập một lần",
+        "Vai trò và quyền",
+        "Nhật ký kiểm tra cho mọi thao tác",
+        "Dữ liệu ở khu vực bạn chọn (Enterprise)"
+      ],
+      "link": "Tìm hiểu về bảo mật",
+      "trail": "Nhật ký kiểm tra",
+      "live": "Trực tiếp",
+      "events": {
+        "published": "Đã xuất bản biểu mẫu",
+        "role": "Đã cập nhật vai trò",
+        "export": "Đã xuất câu trả lời",
+        "sso": "Đã đăng nhập bằng đăng nhập một lần",
+        "token": "Đã tạo token API"
+      }
+    },
+    "integrations": {
+      "eyebrow": "Tích hợp",
+      "title": "Hoạt động với các hệ thống bạn đang dùng.",
+      "description": "Năm cơ sở dữ liệu, webhook, dịch vụ API, đăng nhập bằng Google hoặc Facebook, và đăng nhập một lần với nhà cung cấp danh tính của bạn.",
+      "link": "Xem tất cả tích hợp"
+    },
+    "languages": {
+      "title": "20 ngôn ngữ, kể cả viết từ phải sang trái",
+      "description": "Ứng dụng và biểu mẫu nói ngôn ngữ của người dùng."
+    },
+    "pricing": {
+      "eyebrow": "Bảng giá",
+      "title": "Bắt đầu miễn phí, nâng cấp khi cần",
+      "description": "Các gói đơn giản cho tổ chức mọi quy mô.",
+      "perMonth": "mỗi tháng",
+      "free": "Miễn phí",
+      "mostPopular": "Phổ biến nhất",
+      "startWith": "Bắt đầu với {plan}",
+      "compare": "So sánh tất cả các gói",
+      "enterprise": "Cần nhiều hơn? Enterprise được thiết kế theo tổ chức của bạn.",
+      "paddle": "Thanh toán do Paddle xử lý",
+      "sample": "Giá minh họa",
+      "plans": {
+        "starter": "Starter",
+        "professional": "Professional",
+        "business": "Business",
+        "enterprise": "Enterprise"
+      },
+      "taglines": {
+        "starter": "Mọi tính năng cốt lõi, miễn phí bao lâu tùy bạn.",
+        "professional": "Mọi thứ trong Starter, cùng tên miền riêng, địa chỉ gửi thư và đăng nhập doanh nghiệp.",
+        "business": "Mọi thứ trong Professional, không giới hạn biểu mẫu, câu trả lời hay cơ sở dữ liệu."
+      },
+      "limits": {
+        "forms": "{count} biểu mẫu",
+        "formsUnlimited": "Không giới hạn biểu mẫu",
+        "responses": "{count} câu trả lời cho mỗi biểu mẫu",
+        "responsesUnlimited": "Không giới hạn câu trả lời",
+        "databases": "Cơ sở dữ liệu của riêng bạn: {list}",
+        "sso": "Đăng nhập một lần",
+        "languages": "20 ngôn ngữ"
+      }
+    },
+    "faq": {
+      "title": "Câu hỏi thường gặp",
+      "items": [
+        {
+          "q": "Có gói miễn phí không?",
+          "a": "Có. Starter miễn phí bao lâu tùy bạn."
+        },
+        {
+          "q": "Tôi có thể dùng cơ sở dữ liệu của riêng mình không?",
+          "a": "Có: MySQL trên mọi gói, PostgreSQL và MariaDB trên Professional, và cả năm loại trên Business."
+        },
+        {
+          "q": "Dữ liệu của tôi được lưu ở đâu?",
+          "a": "Ở khu vực mặc định của Formalie, hoặc ở khu vực bạn chọn với gói Enterprise."
+        },
+        {
+          "q": "Mọi người có thể điền biểu mẫu bằng ngôn ngữ của họ không?",
+          "a": "Có. Một biểu mẫu có thể có nhiều ngôn ngữ, và người điền tự chọn ngôn ngữ của mình."
+        },
+        {
+          "q": "Có API không?",
+          "a": "Có. Mọi biểu mẫu đều có thể trở thành endpoint API an toàn."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Bắt đầu thu thập trong vài phút.",
+      "description": "Gói miễn phí, không cần thẻ. Nâng cấp khi bạn phát triển."
+    }
   }
 }

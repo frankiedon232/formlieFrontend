@@ -1,14 +1,14 @@
 # PROGRESS, formalieSite
 
-**Last updated:** 2026-10-13 (S1 done, waiting for the owner's review)
+**Last updated:** 2026-10-13 (S2 done, waiting for the owner's review)
 
 | Phase | What | Status | Done |
 |---|---|---|---|
 | S0 | Project set-up | ✅ | 100% |
-| S1 | Layout, header, footer, theme, languages | ✅ (review) | 100% |
-| S2 | Home page with the data-flow hero | ⬜ | 0% |
+| S1 | Layout, header, footer, theme, languages | ✅ | 100% |
+| S2 | Home page with the data-flow hero | ✅ (review) | 100% |
 | S3 | Features and solutions pages | ⬜ | 0% |
-| S4 | Pricing | ⬜ | 0% |
+| S4 | Pricing | ⬜ | 20% |
 | S5 | Legal pages (documentation layout) and /trust | ⬜ | 0% |
 | S6 | Formalie forms, portal links, contact and enterprise | ⬜ | 0% |
 | S7 | SEO, performance, accessibility, launch checks | ⬜ | 5% |
@@ -43,15 +43,15 @@
 - ✅ 404 and error page inside the site layout, in every language; skip-to-content link
 
 ## S2, Home
-- ⬜ Hero: headline, subline, two buttons, and the **data-flow animation, website version** (`docs/DESIGN.md`); the hub always shows Formalie
-- ⬜ Trust strip (sectors, until real logos)
-- ⬜ Answers from everywhere (four cards)
-- ⬜ Product tabs (Build, Design, Responses, Data, API) with screenshots
-- ⬜ What sets Formalie apart (six cards)
-- ⬜ Security band (dark)
-- ⬜ Integrations orbit
-- ⬜ Languages strip
-- ⬜ Pricing teaser · FAQ · final call to action
+- ✅ Hero: headline, subline, two buttons, and the **data-flow animation, website version** (`docs/DESIGN.md`, `components/flow/Hero.vue`): five live source cards (a field typing, an embed frame, a QR being scanned, an API call, a mobile app), the Formalie hub (inverse mark, lock, "Encrypted on the way", a pulse per answer), five destinations that light up (the database cycles its engine logos, the dashboard grows a bar), drifting response cards, illustrative counters; phones stack top to bottom; still for reduced motion, paused off screen (`useSectionMotion`)
+- ✅ Trust strip (sectors, until real logos)
+- ✅ Answers from everywhere (four cards, each with a small live picture, lines into "All in one place")
+- ✅ Product tabs (Build, Design, Responses, Data, API) with screenshots in a browser frame (dark screens in dark mode)
+- ✅ What sets Formalie apart (six cards with ink icon tiles)
+- ✅ Security band (dark, with a live audit trail of sample entries)
+- ✅ Integrations orbit (two counter-rotating rings of database and sign-in logos)
+- ✅ Languages strip (`UMarquee`, the 20 names in their own scripts)
+- ✅ Pricing teaser (live plans, "Payments handled by Paddle", "Sample prices" badge on fallback) · FAQ (with FAQPage data) · final call to action
 
 ## S3, Features and solutions
 - ⬜ `/features` overview and the 11 feature pages (`docs/FEATURES.md`)
@@ -59,7 +59,7 @@
 - ⬜ `/integrations`, `/security`, `/about`
 
 ## S4, Pricing
-- ⬜ `usePlans()` reading `GET {API}/public/plans` (live at `https://formalie.dev:5004/api/v1`, `{ success, data, meta }`), with the fallback file (samples, `docs/PRICING.md`) when the API doesn't answer
+- ✅ `usePlans()` reading `GET {API}/public/plans` (live at `https://formalie.dev:5004/api/v1`, `{ success, data, meta }`), with the fallback file (samples, `docs/PRICING.md`) when the API doesn't answer
 - ⬜ Period toggle (Monthly · Quarterly −10% · Annually −20%), four plan cards (Starter free, Professional and Business with three periods, Enterprise "Contact us"), "Most popular"
 - ⬜ "Payments handled by Paddle" near the prices (no logo yet); refunds FAQ links to `/legal/refunds`
 - ⬜ Full comparison table (grouped), pricing FAQ, structured data with offers
@@ -86,6 +86,7 @@
 - ⬜ Accessibility: keyboard, focus, headings, contrast, reduced motion
 - ⬜ Security headers and CSP (`docs/SECURITY.md`; `connect-src https://services.formalie.com`); ✅ `security.txt` (S0)
 - ⬜ Production build (`nuxt generate`) and deployment notes
+- ⬜ Prerender `failOnError: true` again in `nuxt.config.ts` (off since S2 while later pages don't exist), and no broken links
 
 ---
 
@@ -100,6 +101,7 @@
 | 2026-10-13 | Serve formlyBackend `docs/legal/security.txt` at `/.well-known/security.txt` | S0 | ✅ |
 | 2026-10-13 | Pricing from `/public/plans`; "Payments handled by Paddle" near the prices, no logo yet | S4 | ⬜ |
 | 2026-10-13 | Every section draws on the reference screens, with clean, modern, tech-style "communication" animations (data moving between systems) | S2 to S6 | ⬜ |
+| 2026-10-13 | (S2 finding) The `api-docs` screenshot shows an `api.formalie.dev` address with a key-like string; the home page uses `api-service` instead until the owner confirms or a new shot is made | S2 | ⏸ |
 | 2026-10-13 | Copy formlyBackend `docs/PRODUCTION-CHECKLIST.md` over this project's copy | Docs | ✅ (already identical; DEPLOYMENT-GUIDE synced too) |
 
 ## Progress log
@@ -110,3 +112,4 @@
 | 2026-10-13 | Docs | Backend hand-over recorded: API address (`services.formalie.com`, never `api.formalie.com`), Paddle instead of Payoneer, the `refunds` legal page, redirects, `/trust`, `security.txt`; PRODUCTION-CHECKLIST already identical to formlyBackend's, DEPLOYMENT-GUIDE synced |
 | 2026-10-13 | S0 | Nuxt 4.5.2, Nuxt UI 4.11, Tailwind 4, strict TypeScript, ESLint and Prettier (the app's settings), Vitest (47 tests: links, 20 locale files with every key and no em dashes); i18n with 20 languages (prefix strategy, Arabic right to left, `hreflang`); `@nuxt/content` (blog, changelog, legal collections); `@nuxt/image`; Manrope self-hosted; the app's theme tokens; `useSiteLinks()`; 25 screenshots as WebP; brand files; `security.txt`; dev server on `https://formalie.dev:3033`; `pnpm generate` prerenders all 20 languages |
 | 2026-10-13 | S1 | Header with Product, Solutions and Resources panels (ink icon tiles), Pricing, Integrations, Contact, language and theme switches, Sign in and Start free (portal links); slide-over below 1280 px; footer with four columns, the seven legal links, language, theme, ©; Noto fallbacks for Arabic, Hindi and Bengali; 404 and error page; skip link. 73 new strings in 20 languages. Checked on phone, 1024 and 1280 px, light and dark, Arabic right to left, keyboard, and the longest languages (no header overflow) |
+| 2026-10-13 | S2 | Home page: hero with the data-flow panel, trust strip, channels, product tabs with real screens, six cards, dark security band with a live audit trail, integrations orbit, languages marquee, pricing teaser from the live API (`usePlans`, zod-checked, sample fallback), FAQ, call to action. Motion tokens in `main.css`, all still for reduced motion and paused off screen. 150 new strings in 20 languages. Prerender now lists every language and lets links to unbuilt pages through until S7. Checked at 375, 1280 and 1440 px, light and dark, Arabic. 51 tests |
