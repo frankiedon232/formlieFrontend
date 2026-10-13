@@ -11,6 +11,8 @@ const props = defineProps<{
   searchPlaceholder?: string
   sortOptions?: { label: string; value: string }[]
   dateRange?: boolean
+  /** What no date range means on this page (label and hint), e.g. the audit trail's last 90 days. */
+  dateRangeEmpty?: { label: string; hint: string }
   views?: boolean
 }>()
 
@@ -161,6 +163,8 @@ const viewItems = computed(() => [
         v-if="dateRange"
         :from="state.query.value.from"
         :to="state.query.value.to"
+        :empty-label="dateRangeEmpty?.label"
+        :empty-hint="dateRangeEmpty?.hint"
         @change="(from, to) => state.setRange(from, to)"
       />
       <UDropdownMenu v-if="sortItems.length" :items="sortItems" :content="{ align: 'end' }">

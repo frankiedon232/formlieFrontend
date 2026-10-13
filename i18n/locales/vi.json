@@ -1228,13 +1228,19 @@
       "csv": "CSV (.csv)",
       "csvDesc": "Văn bản thuần, cho các công cụ khác và nhập dữ liệu.",
       "applied": "Đang áp dụng {count} bộ lọc | Đang áp dụng {count} bộ lọc",
-      "none": "Tất cả sự kiện (không có bộ lọc)",
+      "none": "Không có bộ lọc",
       "start": "Bắt đầu xuất",
       "preparing": "Đang chuẩn bị tệp…",
       "rows": "{n} sự kiện | {n} sự kiện",
       "ready": "Tệp của bạn đã sẵn sàng",
       "download": "Tải xuống",
-      "expires": "Liên kết tải xuống chỉ dùng được một lần và hết hạn {time}."
+      "expires": "Liên kết tải xuống chỉ dùng được một lần và hết hạn {time}.",
+      "periodDefault": "Bao gồm 90 ngày qua. Chọn ngày bắt đầu trên trang để xuất các mục cũ hơn.",
+      "period": "Bao gồm từ {from} đến {to}."
+    },
+    "period": {
+      "last90": "90 ngày qua",
+      "hint": "Khi không chọn ngày bắt đầu, nhật ký kiểm tra hiển thị 90 ngày qua. Chọn ngày bắt đầu để xem các mục cũ hơn."
     }
   },
   "onboarding": {

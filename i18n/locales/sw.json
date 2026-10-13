@@ -1228,13 +1228,19 @@
       "csv": "CSV (.csv)",
       "csvDesc": "Maandishi matupu, kwa zana nyingine na uingizaji.",
       "applied": "Kichujio {count} kimetumika | Vichujio {count} vimetumika",
-      "none": "Matukio yote (hakuna kichujio)",
+      "none": "Hakuna vichujio",
       "start": "Anza kuhamisha",
       "preparing": "Tunaandaa faili lako…",
       "rows": "Tukio {n} | Matukio {n}",
       "ready": "Faili lako liko tayari",
       "download": "Pakua",
-      "expires": "Kiungo cha kupakua hufanya kazi mara moja na kitaisha muda {time}."
+      "expires": "Kiungo cha kupakua hufanya kazi mara moja na kitaisha muda {time}.",
+      "periodDefault": "Inahusu siku 90 zilizopita. Chagua tarehe ya kuanza kwenye ukurasa ili kuhamisha maingizo ya zamani zaidi.",
+      "period": "Inahusu {from} hadi {to}."
+    },
+    "period": {
+      "last90": "Siku 90 zilizopita",
+      "hint": "Bila tarehe ya kuanza, kumbukumbu za ukaguzi zinaonyesha siku 90 zilizopita. Chagua tarehe ya kuanza kuona maingizo ya zamani zaidi."
     }
   },
   "onboarding": {

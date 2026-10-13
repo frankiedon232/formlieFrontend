@@ -1228,13 +1228,19 @@
       "csv": "CSV (.csv)",
       "csvDesc": "Texte brut, pour d’autres outils et imports.",
       "applied": "{count} filtre appliqué | {count} filtres appliqués",
-      "none": "Tous les événements (aucun filtre)",
+      "none": "Aucun filtre",
       "start": "Lancer l’export",
       "preparing": "Préparation de votre fichier…",
       "rows": "{n} événement | {n} événements",
       "ready": "Votre fichier est prêt",
       "download": "Télécharger",
-      "expires": "Le lien de téléchargement ne fonctionne qu’une fois et expire {time}."
+      "expires": "Le lien de téléchargement ne fonctionne qu’une fois et expire {time}.",
+      "periodDefault": "Couvre les 90 derniers jours. Choisissez une date de début sur la page pour exporter des entrées plus anciennes.",
+      "period": "Couvre du {from} au {to}."
+    },
+    "period": {
+      "last90": "90 derniers jours",
+      "hint": "Sans date de début, le journal d'audit affiche les 90 derniers jours. Choisissez une date de début pour voir les entrées plus anciennes."
     }
   },
   "onboarding": {

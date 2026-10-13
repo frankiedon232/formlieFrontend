@@ -1228,13 +1228,19 @@
       "csv": "CSV (.csv)",
       "csvDesc": "Teks biasa, untuk alat lain dan impor.",
       "applied": "{count} filter diterapkan | {count} filter diterapkan",
-      "none": "Semua peristiwa (tanpa filter)",
+      "none": "Tanpa filter",
       "start": "Mulai ekspor",
       "preparing": "Menyiapkan file Anda…",
       "rows": "{n} peristiwa | {n} peristiwa",
       "ready": "File Anda siap",
       "download": "Unduh",
-      "expires": "Tautan unduhan hanya berfungsi sekali dan kedaluwarsa {time}."
+      "expires": "Tautan unduhan hanya berfungsi sekali dan kedaluwarsa {time}.",
+      "periodDefault": "Mencakup 90 hari terakhir. Pilih tanggal mulai di halaman untuk mengekspor entri yang lebih lama.",
+      "period": "Mencakup {from} sampai {to}."
+    },
+    "period": {
+      "last90": "90 hari terakhir",
+      "hint": "Tanpa tanggal mulai, jejak audit menampilkan 90 hari terakhir. Pilih tanggal mulai untuk melihat entri yang lebih lama."
     }
   },
   "onboarding": {

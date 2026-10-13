@@ -16,6 +16,8 @@ const props = withDefaults(
     defaultSort?: string
     defaultView?: DataViewMode
     dateRange?: boolean
+    /** What no date range means on this page (label and hint), e.g. the audit trail's last 90 days. */
+    dateRangeEmpty?: { label: string; hint: string }
     searchPlaceholder?: string
     selectable?: boolean
     rowKey?: string
@@ -45,6 +47,7 @@ const props = withDefaults(
     sortOptions: () => [],
     defaultSort: undefined,
     defaultView: 'table',
+    dateRangeEmpty: undefined,
     searchPlaceholder: undefined,
     rowKey: 'id',
     rowActions: undefined,
@@ -268,6 +271,7 @@ defineExpose({ refresh: state.refresh, state, shownColumns: () => orderedColumns
       :search-placeholder="searchPlaceholder"
       :sort-options="sortOptions"
       :date-range="dateRange"
+      :date-range-empty="dateRangeEmpty"
       :views="!tableOnly"
     >
       <template v-if="slots['toolbar-start']" #start>

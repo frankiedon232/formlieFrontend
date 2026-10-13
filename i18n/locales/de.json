@@ -1228,13 +1228,19 @@
       "csv": "CSV (.csv)",
       "csvDesc": "Reiner Text, für andere Tools und Importe.",
       "applied": "{count} Filter angewendet | {count} Filter angewendet",
-      "none": "Alle Ereignisse (keine Filter)",
+      "none": "Keine Filter",
       "start": "Export starten",
       "preparing": "Ihre Datei wird vorbereitet…",
       "rows": "{n} Ereignis | {n} Ereignisse",
       "ready": "Ihre Datei ist bereit",
       "download": "Herunterladen",
-      "expires": "Der Download-Link funktioniert einmal und läuft {time} ab."
+      "expires": "Der Download-Link funktioniert einmal und läuft {time} ab.",
+      "periodDefault": "Umfasst die letzten 90 Tage. Wählen Sie auf der Seite ein Startdatum, um ältere Einträge zu exportieren.",
+      "period": "Umfasst {from} bis {to}."
+    },
+    "period": {
+      "last90": "Letzte 90 Tage",
+      "hint": "Ohne Startdatum zeigt das Audit-Protokoll die letzten 90 Tage. Wählen Sie ein Startdatum, um ältere Einträge zu sehen."
     }
   },
   "onboarding": {

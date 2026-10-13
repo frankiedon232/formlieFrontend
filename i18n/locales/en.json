@@ -1228,13 +1228,19 @@
       "csv": "CSV (.csv)",
       "csvDesc": "Plain text, for other tools and imports.",
       "applied": "{count} filter applied | {count} filters applied",
-      "none": "All events (no filters applied)",
+      "none": "No filters applied",
       "start": "Start export",
       "preparing": "Preparing your file…",
       "rows": "{n} event | {n} events",
       "ready": "Your file is ready",
       "download": "Download",
-      "expires": "The download link works once and expires {time}."
+      "expires": "The download link works once and expires {time}.",
+      "periodDefault": "Covers the last 90 days. Pick a start date on the page to export older entries.",
+      "period": "Covers {from} to {to}."
+    },
+    "period": {
+      "last90": "Last 90 days",
+      "hint": "Without a start date the audit trail shows the last 90 days. Pick a start date to see older entries."
     }
   },
   "onboarding": {

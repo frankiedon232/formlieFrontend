@@ -1228,13 +1228,19 @@
       "csv": "CSV (.csv)",
       "csvDesc": "Düz metin; diğer araçlar ve içe aktarmalar için.",
       "applied": "{count} filtre uygulandı | {count} filtre uygulandı",
-      "none": "Tüm olaylar (filtre yok)",
+      "none": "Filtre yok",
       "start": "Dışa aktarmayı başlat",
       "preparing": "Dosyanız hazırlanıyor…",
       "rows": "{n} olay | {n} olay",
       "ready": "Dosyanız hazır",
       "download": "İndir",
-      "expires": "İndirme bağlantısı bir kez çalışır ve {time} süresi dolar."
+      "expires": "İndirme bağlantısı bir kez çalışır ve {time} süresi dolar.",
+      "periodDefault": "Son 90 günü kapsar. Daha eski kayıtları dışa aktarmak için sayfada bir başlangıç tarihi seçin.",
+      "period": "{from} ile {to} arasını kapsar."
+    },
+    "period": {
+      "last90": "Son 90 gün",
+      "hint": "Başlangıç tarihi seçilmezse denetim kaydı son 90 günü gösterir. Daha eski kayıtları görmek için bir başlangıç tarihi seçin."
     }
   },
   "onboarding": {

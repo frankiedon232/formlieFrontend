@@ -1,6 +1,7 @@
 <!--
   Export the audit trail with the page's current search, filters and date range:
-  choose a format → background job with progress → one-time download link.
+  choose a format → background job with progress → one-time download link. It covers the period the page shows:
+  the last 90 days unless a start date is picked (owner 2026-10-13, as the backend).
 -->
 <script setup lang="ts">
 import type { ExportFormat, ExportJob } from '#shared/types/audit'
@@ -12,12 +13,19 @@ const { t } = useI18n()
 const api = useApi()
 const { handle } = useErrorHandler()
 const { busy, run } = useBusy()
-const { number, relative } = useFormat()
+const { date, number, relative } = useFormat()
 
 const format = ref<ExportFormat>('xlsx')
 const job = ref<ExportJob | null>(null)
 const polling = ref(false)
 let timer: ReturnType<typeof setTimeout> | null = null
+
+/** The period the file covers: the picked dates, else the last 90 days (shared/utils/audit/period.ts). */
+const period = computed(() =>
+  props.filters.from
+    ? t('audit.export.period', { from: date(props.filters.from), to: date(props.filters.to || new Date()) })
+    : t('audit.export.periodDefault'),
+)
 
 const formats = computed(() => [
   { value: 'xlsx', label: t('audit.export.xlsx'), description: t('audit.export.xlsxDesc') },
@@ -80,6 +88,10 @@ const ready = computed(() => job.value?.status === 'done' && !!job.value.downloa
         <UFormField :label="t('audit.export.format')">
           <URadioGroup v-model="format" :items="formats" variant="card" color="neutral" class="w-full" />
         </UFormField>
+        <p class="flex items-start gap-2 text-sm text-muted">
+          <UIcon name="i-lucide-calendar-range" class="mt-0.5 size-4 shrink-0" />
+          {{ period }}
+        </p>
         <p class="flex items-center gap-2 text-sm text-muted">
           <UIcon name="i-lucide-list-filter" class="size-4 shrink-0" />
           {{

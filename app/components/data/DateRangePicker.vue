@@ -13,7 +13,8 @@ import {
   today,
 } from '@internationalized/date'
 
-const props = defineProps<{ from: string; to: string }>()
+/** `emptyLabel` / `emptyHint`: what no range means on this page (the audit trail: the last 90 days, not every date). */
+const props = defineProps<{ from: string; to: string; emptyLabel?: string; emptyHint?: string }>()
 const emit = defineEmits<{ change: [from: string, to: string] }>()
 
 const { t } = useI18n()
@@ -42,7 +43,7 @@ watch(
 )
 
 const label = computed(() => {
-  if (!props.from && !props.to) return t('dataView.anyTime')
+  if (!props.from && !props.to) return props.emptyLabel ?? t('dataView.anyTime')
   if (props.from === props.to) return date(props.from)
   return `${props.from ? date(props.from) : '…'}, ${props.to ? date(props.to) : '…'}`
 })
@@ -96,13 +97,14 @@ function onCalendar(value: unknown) {
             @click="apply(preset.start, preset.end)"
           />
           <UButton
-            :label="t('dataView.anyTime')"
+            :label="emptyLabel ?? t('dataView.anyTime')"
             color="neutral"
             variant="ghost"
             size="sm"
             class="justify-start"
             @click="apply()"
           />
+          <p v-if="emptyHint" class="max-w-48 px-2.5 py-1.5 text-xs text-muted">{{ emptyHint }}</p>
         </div>
         <UCalendar
           :model-value="range"

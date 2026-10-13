@@ -1228,13 +1228,19 @@
       "csv": "CSV (.csv)",
       "csvDesc": "Testo semplice, per altri strumenti e importazioni.",
       "applied": "{count} filtro applicato | {count} filtri applicati",
-      "none": "Tutti gli eventi (nessun filtro)",
+      "none": "Nessun filtro",
       "start": "Avvia esportazione",
       "preparing": "Preparazione del file…",
       "rows": "{n} evento | {n} eventi",
       "ready": "Il tuo file è pronto",
       "download": "Scarica",
-      "expires": "Il link di download funziona una sola volta e scade {time}."
+      "expires": "Il link di download funziona una sola volta e scade {time}.",
+      "periodDefault": "Copre gli ultimi 90 giorni. Scegli una data di inizio nella pagina per esportare le voci più vecchie.",
+      "period": "Copre dal {from} al {to}."
+    },
+    "period": {
+      "last90": "Ultimi 90 giorni",
+      "hint": "Senza una data di inizio il registro di audit mostra gli ultimi 90 giorni. Scegli una data di inizio per vedere le voci più vecchie."
     }
   },
   "onboarding": {

@@ -1228,13 +1228,19 @@
       "csv": "CSV (.csv)",
       "csvDesc": "Zwykły tekst, dla innych narzędzi i importów.",
       "applied": "Zastosowane filtry: {count} | Zastosowane filtry: {count}",
-      "none": "Wszystkie zdarzenia (bez filtrów)",
+      "none": "Brak filtrów",
       "start": "Rozpocznij eksport",
       "preparing": "Przygotowywanie pliku…",
       "rows": "Zdarzenia: {n} | Zdarzenia: {n}",
       "ready": "Plik jest gotowy",
       "download": "Pobierz",
-      "expires": "Link do pobrania działa raz i wygasa {time}."
+      "expires": "Link do pobrania działa raz i wygasa {time}.",
+      "periodDefault": "Obejmuje ostatnie 90 dni. Wybierz datę początkową na stronie, aby wyeksportować starsze wpisy.",
+      "period": "Obejmuje okres od {from} do {to}."
+    },
+    "period": {
+      "last90": "Ostatnie 90 dni",
+      "hint": "Bez daty początkowej dziennik audytu pokazuje ostatnie 90 dni. Wybierz datę początkową, aby zobaczyć starsze wpisy."
     }
   },
   "onboarding": {

@@ -1228,13 +1228,19 @@
       "csv": "CSV (.csv)",
       "csvDesc": "Texto simples, para outras ferramentas e importações.",
       "applied": "{count} filtro aplicado | {count} filtros aplicados",
-      "none": "Todos os eventos (sem filtros)",
+      "none": "Sem filtros",
       "start": "Iniciar exportação",
       "preparing": "Preparando seu arquivo…",
       "rows": "{n} evento | {n} eventos",
       "ready": "Seu arquivo está pronto",
       "download": "Baixar",
-      "expires": "O link de download funciona uma vez e expira {time}."
+      "expires": "O link de download funciona uma vez e expira {time}.",
+      "periodDefault": "Abrange os últimos 90 dias. Escolha uma data de início na página para exportar entradas mais antigas.",
+      "period": "Abrange de {from} a {to}."
+    },
+    "period": {
+      "last90": "Últimos 90 dias",
+      "hint": "Sem data de início, o registo de auditoria mostra os últimos 90 dias. Escolha uma data de início para ver entradas mais antigas."
     }
   },
   "onboarding": {

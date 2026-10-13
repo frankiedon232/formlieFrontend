@@ -1228,13 +1228,19 @@
       "csv": "CSV (.csv)",
       "csvDesc": "Platte tekst, voor andere tools en imports.",
       "applied": "{count} filter toegepast | {count} filters toegepast",
-      "none": "Alle gebeurtenissen (geen filters)",
+      "none": "Geen filters",
       "start": "Export starten",
       "preparing": "Je bestand wordt voorbereid…",
       "rows": "{n} gebeurtenis | {n} gebeurtenissen",
       "ready": "Je bestand is klaar",
       "download": "Downloaden",
-      "expires": "De downloadlink werkt één keer en verloopt {time}."
+      "expires": "De downloadlink werkt één keer en verloopt {time}.",
+      "periodDefault": "Omvat de afgelopen 90 dagen. Kies op de pagina een startdatum om oudere items te exporteren.",
+      "period": "Omvat {from} tot en met {to}."
+    },
+    "period": {
+      "last90": "Afgelopen 90 dagen",
+      "hint": "Zonder startdatum toont het auditlogboek de afgelopen 90 dagen. Kies een startdatum om oudere items te zien."
     }
   },
   "onboarding": {

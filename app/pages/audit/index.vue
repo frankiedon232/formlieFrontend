@@ -218,6 +218,7 @@ defineShortcuts({ e: () => canView.value && (exportOpen.value = true) })
       :sort-options="sortOptions"
       default-sort="-occurred_at"
       date-range
+      :date-range-empty="{ label: t('audit.period.last90'), hint: t('audit.period.hint') }"
       :row-actions="rowActions"
       :search-placeholder="t('audit.searchPlaceholder')"
       empty-icon="i-lucide-scroll-text"
