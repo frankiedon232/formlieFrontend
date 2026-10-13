@@ -1176,7 +1176,21 @@
       "ai_request_deleted": "已从历史记录中删除 AI 请求",
       "ai_applied": "已应用 AI 草稿",
       "settings_email_unsubscribed": "已退订邮件",
-      "settings_email_resubscribed": "已重新订阅邮件"
+      "settings_email_resubscribed": "已重新订阅邮件",
+      "workspace_suspended": "Formalie 暂停了工作区",
+      "workspace_restored": "Formalie 恢复了工作区",
+      "workspace_read_only": "Formalie 将工作区设为只读",
+      "workspace_closing": "Formalie 安排了工作区关闭日期",
+      "workspace_close_cancelled": "Formalie 取消了计划中的关闭",
+      "workspace_closed": "工作区已关闭",
+      "workspace_plan_changed": "Formalie 更改了套餐",
+      "workspace_subdomain_changed": "Formalie 更改了工作区地址",
+      "workspace_message_sent": "来自 Formalie 的消息",
+      "support_access_requested": "Formalie 支持团队请求访问",
+      "support_access_granted": "已向 Formalie 支持团队授予访问权限",
+      "support_access_revoked": "Formalie 支持团队的访问已结束",
+      "support_session_started": "Formalie 支持会话已开始",
+      "support_session_ended": "Formalie 支持会话已结束"
     },
     "detail": {
       "who": "谁",

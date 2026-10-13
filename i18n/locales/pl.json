@@ -1176,7 +1176,21 @@
       "ai_request_deleted": "Usunięto zapytanie AI z historii",
       "ai_applied": "Zastosowano szkic AI",
       "settings_email_unsubscribed": "Wypisanie z e-maili",
-      "settings_email_resubscribed": "Ponowny zapis na e-maile"
+      "settings_email_resubscribed": "Ponowny zapis na e-maile",
+      "workspace_suspended": "Formalie zawiesiło obszar roboczy",
+      "workspace_restored": "Formalie przywróciło obszar roboczy",
+      "workspace_read_only": "Formalie ustawiło obszar roboczy tylko do odczytu",
+      "workspace_closing": "Formalie zaplanowało zamknięcie obszaru roboczego",
+      "workspace_close_cancelled": "Formalie anulowało zaplanowane zamknięcie",
+      "workspace_closed": "Obszar roboczy zamknięty",
+      "workspace_plan_changed": "Formalie zmieniło plan",
+      "workspace_subdomain_changed": "Formalie zmieniło adres obszaru roboczego",
+      "workspace_message_sent": "Wiadomość od Formalie",
+      "support_access_requested": "Wsparcie Formalie poprosiło o dostęp",
+      "support_access_granted": "Przyznano dostęp wsparciu Formalie",
+      "support_access_revoked": "Dostęp wsparcia Formalie zakończony",
+      "support_session_started": "Rozpoczęto sesję wsparcia Formalie",
+      "support_session_ended": "Zakończono sesję wsparcia Formalie"
     },
     "detail": {
       "who": "Kto",

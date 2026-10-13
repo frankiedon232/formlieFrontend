@@ -1176,7 +1176,21 @@
       "ai_request_deleted": "Запит до ШІ видалено з історії",
       "ai_applied": "Чернетку ШІ застосовано",
       "settings_email_unsubscribed": "Відписка від листів",
-      "settings_email_resubscribed": "Повторна підписка на листи"
+      "settings_email_resubscribed": "Повторна підписка на листи",
+      "workspace_suspended": "Formalie призупинила робочий простір",
+      "workspace_restored": "Formalie відновила робочий простір",
+      "workspace_read_only": "Formalie перевела робочий простір у режим лише читання",
+      "workspace_closing": "Formalie запланувала закриття робочого простору",
+      "workspace_close_cancelled": "Formalie скасувала заплановане закриття",
+      "workspace_closed": "Робочий простір закрито",
+      "workspace_plan_changed": "Formalie змінила тариф",
+      "workspace_subdomain_changed": "Formalie змінила адресу робочого простору",
+      "workspace_message_sent": "Повідомлення від Formalie",
+      "support_access_requested": "Підтримка Formalie попросила доступ",
+      "support_access_granted": "Підтримці Formalie надано доступ",
+      "support_access_revoked": "Доступ підтримки Formalie завершено",
+      "support_session_started": "Сеанс підтримки Formalie розпочато",
+      "support_session_ended": "Сеанс підтримки Formalie завершено"
     },
     "detail": {
       "who": "Хто",

@@ -1176,7 +1176,21 @@
       "ai_request_deleted": "AIリクエストを履歴から削除しました",
       "ai_applied": "AI の下書きを適用しました",
       "settings_email_unsubscribed": "メールの配信を停止",
-      "settings_email_resubscribed": "メールの配信を再開"
+      "settings_email_resubscribed": "メールの配信を再開",
+      "workspace_suspended": "Formalie がワークスペースを停止",
+      "workspace_restored": "Formalie がワークスペースを復元",
+      "workspace_read_only": "Formalie がワークスペースを読み取り専用に変更",
+      "workspace_closing": "Formalie がワークスペースの閉鎖日を設定",
+      "workspace_close_cancelled": "Formalie が予定された閉鎖を取り消し",
+      "workspace_closed": "ワークスペースを閉鎖",
+      "workspace_plan_changed": "Formalie がプランを変更",
+      "workspace_subdomain_changed": "Formalie がワークスペースのアドレスを変更",
+      "workspace_message_sent": "Formalie からのメッセージ",
+      "support_access_requested": "Formalie サポートがアクセスを依頼",
+      "support_access_granted": "Formalie サポートにアクセスを許可",
+      "support_access_revoked": "Formalie サポートのアクセスを終了",
+      "support_session_started": "Formalie サポートのセッションを開始",
+      "support_session_ended": "Formalie サポートのセッションを終了"
     },
     "detail": {
       "who": "誰が",

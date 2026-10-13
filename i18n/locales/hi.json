@@ -1176,7 +1176,21 @@
       "ai_request_deleted": "AI अनुरोध इतिहास से हटाया गया",
       "ai_applied": "AI ड्राफ़्ट लागू किया गया",
       "settings_email_unsubscribed": "ईमेल की सदस्यता छोड़ी",
-      "settings_email_resubscribed": "ईमेल की सदस्यता फिर से ली"
+      "settings_email_resubscribed": "ईमेल की सदस्यता फिर से ली",
+      "workspace_suspended": "Formalie ने वर्कस्पेस निलंबित किया",
+      "workspace_restored": "Formalie ने वर्कस्पेस बहाल किया",
+      "workspace_read_only": "Formalie ने वर्कस्पेस केवल-पठन किया",
+      "workspace_closing": "Formalie ने वर्कस्पेस बंद करने की तारीख तय की",
+      "workspace_close_cancelled": "Formalie ने तय बंदी रद्द की",
+      "workspace_closed": "वर्कस्पेस बंद हुआ",
+      "workspace_plan_changed": "Formalie ने प्लान बदला",
+      "workspace_subdomain_changed": "Formalie ने वर्कस्पेस का पता बदला",
+      "workspace_message_sent": "Formalie से संदेश",
+      "support_access_requested": "Formalie सपोर्ट ने पहुँच माँगी",
+      "support_access_granted": "Formalie सपोर्ट को पहुँच दी गई",
+      "support_access_revoked": "Formalie सपोर्ट की पहुँच समाप्त",
+      "support_session_started": "Formalie सपोर्ट सत्र शुरू हुआ",
+      "support_session_ended": "Formalie सपोर्ट सत्र समाप्त हुआ"
     },
     "detail": {
       "who": "किसने",

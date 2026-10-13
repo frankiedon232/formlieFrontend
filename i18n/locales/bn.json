@@ -1176,7 +1176,21 @@
       "ai_request_deleted": "AI অনুরোধ ইতিহাস থেকে মুছে ফেলা হয়েছে",
       "ai_applied": "AI খসড়া প্রয়োগ করা হয়েছে",
       "settings_email_unsubscribed": "ইমেলের সদস্যতা বাতিল",
-      "settings_email_resubscribed": "আবার ইমেলের সদস্যতা"
+      "settings_email_resubscribed": "আবার ইমেলের সদস্যতা",
+      "workspace_suspended": "Formalie ওয়ার্কস্পেস স্থগিত করেছে",
+      "workspace_restored": "Formalie ওয়ার্কস্পেস পুনরায় চালু করেছে",
+      "workspace_read_only": "Formalie ওয়ার্কস্পেস শুধু-পঠনযোগ্য করেছে",
+      "workspace_closing": "Formalie ওয়ার্কস্পেস বন্ধের তারিখ ঠিক করেছে",
+      "workspace_close_cancelled": "Formalie নির্ধারিত বন্ধ বাতিল করেছে",
+      "workspace_closed": "ওয়ার্কস্পেস বন্ধ হয়েছে",
+      "workspace_plan_changed": "Formalie প্ল্যান পরিবর্তন করেছে",
+      "workspace_subdomain_changed": "Formalie ওয়ার্কস্পেসের ঠিকানা পরিবর্তন করেছে",
+      "workspace_message_sent": "Formalie থেকে বার্তা",
+      "support_access_requested": "Formalie সাপোর্ট অ্যাক্সেস চেয়েছে",
+      "support_access_granted": "Formalie সাপোর্টকে অ্যাক্সেস দেওয়া হয়েছে",
+      "support_access_revoked": "Formalie সাপোর্টের অ্যাক্সেস শেষ হয়েছে",
+      "support_session_started": "Formalie সাপোর্ট সেশন শুরু হয়েছে",
+      "support_session_ended": "Formalie সাপোর্ট সেশন শেষ হয়েছে"
     },
     "detail": {
       "who": "কে",

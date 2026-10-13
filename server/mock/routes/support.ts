@@ -11,7 +11,9 @@
  *
  * There is no platform admin in the mock: every workspace starts with one pending request from Formalie
  * (and its notice for the admins), and turning access on prints a one-time support link in the Nuxt
- * terminal, as the platform admin would hand it to a staff member.
+ * terminal, as the platform admin would hand it to a staff member. The audit trail names each step
+ * (support.access_requested / _granted / _revoked, support.session_started / _ended); Formalie's own
+ * steps show the staff member as a `system` actor with metadata.via = 'platform_admin', as the backend does.
  */
 import type { H3Event } from 'h3'
 import { z } from 'zod'
@@ -49,21 +51,26 @@ const stores = new Map<string, TenantSupport>(Object.entries(loadPersisted<Recor
 const save = () => savePersisted('support', () => Object.fromEntries(stores))
 const iso = (ms: number) => new Date(ms).toISOString()
 
+/** Formalie staff as the audit trail shows them: the backend sends platform support as `system` with the staff name. */
+const staffActor = (name: string) => ({ type: 'system' as const, id: null, name, email: null })
+const RESOURCE = { type: 'setting', id: null, name: 'Formalie support access' }
+
 function adminsOf(tenant: MockTenant): MockUser[] {
   return MOCK_USERS.filter(user => user.tenant_id === tenant.id && !user.disabled && can(user, 'settings.manage'))
 }
 
-function storeOf(tenant: MockTenant): TenantSupport {
+function storeOf(tenant: MockTenant, event?: H3Event): TenantSupport {
   let store = stores.get(tenant.id)
   if (!store) {
     store = { grants: [], requests: [], sessions: [], seeded: false }
     stores.set(tenant.id, store)
   }
-  if (!store.seeded) {
+  if (!store.seeded && event) {
     // One request from Formalie to try Approve / Decline with, and its notice for the admins
     store.seeded = true
     const request: SupportRequest = { id: crypto.randomUUID(), staff_name: 'Alex Morgan', reason: 'You asked why some responses are missing from the export. We would like to look at the form and its export settings.', mode: 'read', hours: 24, status: 'pending', created_at: iso(Date.now()), expires_at: iso(Date.now() + 7 * 86_400_000), decided_at: null, decided_by_name: null }
     store.requests.unshift(request)
+    recordAudit(event, tenant, { action: 'support.access_requested', actor: staffActor(request.staff_name), resource: RESOURCE, metadata: { via: 'platform_admin', staff_reason: request.reason, mode: request.mode, hours: String(request.hours) } })
     const feed = notificationsOf(tenant)
     for (const admin of adminsOf(tenant)) feed.items.unshift({ id: crypto.randomUUID(), user_id: admin.id, event: 'support_request', params: { staff: request.staff_name, mode: request.mode, hours: request.hours, request_id: request.id }, link: '/settings/security', created_at: request.created_at, read_at: null })
     save()
@@ -74,8 +81,8 @@ function storeOf(tenant: MockTenant): TenantSupport {
 const activeGrant = (store: TenantSupport) => store.grants.find(grant => !grant.revoked_at && Date.parse(grant.expires_at) > Date.now()) ?? null
 const isLive = (session: StoredSession) => !!session.started_at && !session.ended_at && Date.parse(session.ends_at) > Date.now()
 
-function stateOf(tenant: MockTenant): SupportAccessState {
-  const store = storeOf(tenant)
+function stateOf(tenant: MockTenant, event?: H3Event): SupportAccessState {
+  const store = storeOf(tenant, event)
   const now = Date.now()
   for (const request of store.requests) if (request.status === 'pending' && Date.parse(request.expires_at) <= now) request.status = 'expired'
   const grant = activeGrant(store)
@@ -109,12 +116,12 @@ function issueTicket(event: H3Event, tenant: MockTenant, store: TenantSupport, g
 
 const allowSchema = z.object({ hours: z.union([z.literal(1), z.literal(24), z.literal(168)]), mode: z.enum(SUPPORT_MODES).default('read'), request_id: z.string().max(64).optional() })
 
-export const getSupportAccess = defineMockRoute(({ event }) => ok(stateOf(requireAdmin(event).tenant)))
+export const getSupportAccess = defineMockRoute(({ event }) => ok(stateOf(requireAdmin(event).tenant, event)))
 
 export const allowSupportAccess = defineMockRoute(({ event, body }) => {
   const { tenant, user } = requireAdmin(event)
   const input = parseBody(allowSchema, body)
-  const store = storeOf(tenant)
+  const store = storeOf(tenant, event)
   const asked = input.request_id ? store.requests.find(request => request.id === input.request_id) : null
   if (input.request_id && !asked) throw new MockError('FRM-GEN-1004')
   if (asked && (asked.status !== 'pending' || Date.parse(asked.expires_at) <= Date.now())) throw new MockError('FRM-GEN-1009', [{ field: 'request_id', message: asked.status }])
@@ -128,7 +135,7 @@ export const allowSupportAccess = defineMockRoute(({ event, body }) => {
     store.grants.unshift(grant)
   }
   if (asked) Object.assign(asked, { status: 'approved', decided_at: iso(Date.now()), decided_by_name: name })
-  recordAudit(event, tenant, { action: 'settings.updated', actor: actorOf(user), resource: { type: 'setting', id: null, name: 'Formalie support access' }, changes: [{ field: 'support_access', before, after: `${grant.mode} until ${grant.expires_at}` }], metadata: { mode: input.mode, hours: String(input.hours) } })
+  recordAudit(event, tenant, { action: 'support.access_granted', actor: actorOf(user), resource: RESOURCE, changes: [{ field: 'support_access', before, after: `${grant.mode} until ${grant.expires_at}` }], metadata: { mode: input.mode, hours: String(input.hours), ...(asked ? { request_id: asked.id } : {}) } })
   issueTicket(event, tenant, store, grant, asked?.staff_name ?? 'Alex Morgan')
   save()
   return ok(stateOf(tenant))
@@ -136,12 +143,12 @@ export const allowSupportAccess = defineMockRoute(({ event, body }) => {
 
 export const revokeSupportAccess = defineMockRoute(({ event }) => {
   const { tenant, user } = requireAdmin(event)
-  const store = storeOf(tenant)
+  const store = storeOf(tenant, event)
   const grant = activeGrant(store)
   const ended = endSessions(tenant, store, 'access_ended')
   if (grant) {
     grant.revoked_at = iso(Date.now())
-    recordAudit(event, tenant, { action: 'settings.updated', actor: actorOf(user), resource: { type: 'setting', id: null, name: 'Formalie support access' }, changes: [{ field: 'support_access', before: `${grant.mode} until ${grant.expires_at}`, after: null }], metadata: { sessions_ended: String(ended) } })
+    recordAudit(event, tenant, { action: 'support.access_revoked', actor: actorOf(user), resource: RESOURCE, changes: [{ field: 'support_access', before: `${grant.mode} until ${grant.expires_at}`, after: null }], metadata: { sessions_ended: String(ended) } })
   }
   save()
   return ok(stateOf(tenant))
@@ -149,12 +156,12 @@ export const revokeSupportAccess = defineMockRoute(({ event }) => {
 
 export const declineSupportRequest = defineMockRoute(({ event }) => {
   const { tenant, user } = requireAdmin(event)
-  const store = storeOf(tenant)
+  const store = storeOf(tenant, event)
   const asked = store.requests.find(request => request.id === getRouterParam(event, 'id'))
   if (!asked) throw new MockError('FRM-GEN-1004')
   if (asked.status !== 'pending') throw new MockError('FRM-GEN-1009', [{ field: 'request_id', message: asked.status }])
   Object.assign(asked, { status: 'declined', decided_at: iso(Date.now()), decided_by_name: `${user.first_name} ${user.last_name}`.trim() })
-  recordAudit(event, tenant, { action: 'settings.updated', actor: actorOf(user), resource: { type: 'setting', id: null, name: 'Formalie support access' }, changes: [{ field: 'support_access_request', before: 'pending', after: 'declined' }] })
+  recordAudit(event, tenant, { action: 'settings.updated', actor: actorOf(user), resource: RESOURCE, changes: [{ field: 'support_access_request', before: 'pending', after: 'declined' }] })
   save()
   return ok(stateOf(tenant))
 })
@@ -181,7 +188,7 @@ const ticketSchema = z.object({ ticket: z.string().min(20).max(100) })
 export const redeemSupportTicket = defineMockRoute(({ event, body }) => {
   const tenant = requireTenant(event)
   const { ticket } = parseBody(ticketSchema, body)
-  const store = storeOf(tenant)
+  const store = storeOf(tenant, event)
   const session = store.sessions.find(item => item.ticket === ticket)
   const grant = session ? store.grants.find(item => item.id === session.grant_id) : undefined
   if (!session || session.started_at || session.ended_at || session.ticket_expires_at <= Date.now() || !grant || grant.revoked_at || Date.parse(grant.expires_at) <= Date.now()) throw new MockError('FRM-AUTH-1010')
@@ -192,6 +199,8 @@ export const redeemSupportTicket = defineMockRoute(({ event, body }) => {
   const { sessionId, tokens } = startSupportSession(event, acting, tenant, Date.parse(session.ends_at))
   Object.assign(session, { started_at: iso(Date.now()), ticket: null, auth_session: sessionId, mode })
   recordAudit(event, tenant, { action: 'auth.login.succeeded', actor: actorOf(acting), metadata: { method: 'support', mode } })
+  const reason = store.requests.find(item => item.id === grant.request_id)?.reason
+  recordAudit(event, tenant, { action: 'support.session_started', actor: staffActor(session.staff_name), resource: RESOURCE, metadata: { via: 'platform_admin', mode, ends_at: session.ends_at, ...(reason ? { staff_reason: reason } : {}) } })
   save()
   return ok<SupportRedeemResult>({ ...tokens, user: { ...tokens.user, support: true }, support: { session_id: session.id, mode, staff_name: session.staff_name, ends_at: session.ends_at } })
 })
@@ -199,10 +208,11 @@ export const redeemSupportTicket = defineMockRoute(({ event, body }) => {
 export const endSupportSession = defineMockRoute(({ event }) => {
   const tenant = requireTenant(event)
   const sid = bearerSessionId(event)
-  const store = storeOf(tenant)
+  const store = storeOf(tenant, event)
   const session = sid ? store.sessions.find(item => item.auth_session === sid && !item.ended_at) : undefined
   if (!session) return ok({ signed_out: false })
   Object.assign(session, { ended_at: iso(Date.now()), ended_reason: 'signed_out' })
+  recordAudit(event, tenant, { action: 'support.session_ended', actor: staffActor(session.staff_name), resource: RESOURCE, metadata: { via: 'platform_admin', ended_reason: 'signed_out' } })
   revokeSessions(tenant, { ids: [sid!] })
   save()
   return ok({ signed_out: true })

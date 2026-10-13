@@ -1176,7 +1176,21 @@
       "ai_request_deleted": "Запрос к ИИ удалён из истории",
       "ai_applied": "Черновик ИИ применён",
       "settings_email_unsubscribed": "Отписка от писем",
-      "settings_email_resubscribed": "Повторная подписка на письма"
+      "settings_email_resubscribed": "Повторная подписка на письма",
+      "workspace_suspended": "Formalie приостановила рабочее пространство",
+      "workspace_restored": "Formalie восстановила рабочее пространство",
+      "workspace_read_only": "Formalie перевела рабочее пространство в режим только чтения",
+      "workspace_closing": "Formalie запланировала закрытие рабочего пространства",
+      "workspace_close_cancelled": "Formalie отменила запланированное закрытие",
+      "workspace_closed": "Рабочее пространство закрыто",
+      "workspace_plan_changed": "Formalie изменила тариф",
+      "workspace_subdomain_changed": "Formalie изменила адрес рабочего пространства",
+      "workspace_message_sent": "Сообщение от Formalie",
+      "support_access_requested": "Поддержка Formalie запросила доступ",
+      "support_access_granted": "Поддержке Formalie предоставлен доступ",
+      "support_access_revoked": "Доступ поддержки Formalie завершён",
+      "support_session_started": "Сеанс поддержки Formalie начат",
+      "support_session_ended": "Сеанс поддержки Formalie завершён"
     },
     "detail": {
       "who": "Кто",

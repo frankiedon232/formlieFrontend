@@ -1176,7 +1176,21 @@
       "ai_request_deleted": "Permintaan AI dihapus dari riwayat",
       "ai_applied": "Draf AI diterapkan",
       "settings_email_unsubscribed": "Berhenti berlangganan email",
-      "settings_email_resubscribed": "Berlangganan email lagi"
+      "settings_email_resubscribed": "Berlangganan email lagi",
+      "workspace_suspended": "Ruang kerja ditangguhkan oleh Formalie",
+      "workspace_restored": "Ruang kerja dipulihkan oleh Formalie",
+      "workspace_read_only": "Ruang kerja dijadikan hanya-baca oleh Formalie",
+      "workspace_closing": "Penutupan ruang kerja dijadwalkan oleh Formalie",
+      "workspace_close_cancelled": "Penutupan terjadwal dibatalkan oleh Formalie",
+      "workspace_closed": "Ruang kerja ditutup",
+      "workspace_plan_changed": "Paket diubah oleh Formalie",
+      "workspace_subdomain_changed": "Alamat ruang kerja diubah oleh Formalie",
+      "workspace_message_sent": "Pesan dari Formalie",
+      "support_access_requested": "Dukungan Formalie meminta akses",
+      "support_access_granted": "Akses diberikan ke dukungan Formalie",
+      "support_access_revoked": "Akses dukungan Formalie berakhir",
+      "support_session_started": "Sesi dukungan Formalie dimulai",
+      "support_session_ended": "Sesi dukungan Formalie berakhir"
     },
     "detail": {
       "who": "Siapa",

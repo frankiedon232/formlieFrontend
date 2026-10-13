@@ -1176,7 +1176,21 @@
       "ai_request_deleted": "KI-Anfrage aus dem Verlauf gelöscht",
       "ai_applied": "KI-Entwurf übernommen",
       "settings_email_unsubscribed": "Von E-Mails abgemeldet",
-      "settings_email_resubscribed": "E-Mails wieder angemeldet"
+      "settings_email_resubscribed": "E-Mails wieder angemeldet",
+      "workspace_suspended": "Workspace von Formalie gesperrt",
+      "workspace_restored": "Workspace von Formalie wiederhergestellt",
+      "workspace_read_only": "Workspace von Formalie schreibgeschützt",
+      "workspace_closing": "Schließung des Workspace von Formalie geplant",
+      "workspace_close_cancelled": "Geplante Schließung von Formalie aufgehoben",
+      "workspace_closed": "Workspace geschlossen",
+      "workspace_plan_changed": "Tarif von Formalie geändert",
+      "workspace_subdomain_changed": "Workspace-Adresse von Formalie geändert",
+      "workspace_message_sent": "Nachricht von Formalie",
+      "support_access_requested": "Formalie-Support hat Zugriff angefragt",
+      "support_access_granted": "Zugriff für Formalie-Support erteilt",
+      "support_access_revoked": "Zugriff für Formalie-Support beendet",
+      "support_session_started": "Formalie-Support-Sitzung gestartet",
+      "support_session_ended": "Formalie-Support-Sitzung beendet"
     },
     "detail": {
       "who": "Wer",

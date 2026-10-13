@@ -1176,7 +1176,21 @@
       "ai_request_deleted": "Yapay zeka isteği geçmişten silindi",
       "ai_applied": "Yapay zekâ taslağı uygulandı",
       "settings_email_unsubscribed": "E-posta aboneliğinden çıkıldı",
-      "settings_email_resubscribed": "E-postalara yeniden abone olundu"
+      "settings_email_resubscribed": "E-postalara yeniden abone olundu",
+      "workspace_suspended": "Çalışma alanı Formalie tarafından askıya alındı",
+      "workspace_restored": "Çalışma alanı Formalie tarafından geri açıldı",
+      "workspace_read_only": "Çalışma alanı Formalie tarafından salt okunur yapıldı",
+      "workspace_closing": "Çalışma alanının kapanışı Formalie tarafından planlandı",
+      "workspace_close_cancelled": "Planlanan kapanış Formalie tarafından iptal edildi",
+      "workspace_closed": "Çalışma alanı kapandı",
+      "workspace_plan_changed": "Plan Formalie tarafından değiştirildi",
+      "workspace_subdomain_changed": "Çalışma alanı adresi Formalie tarafından değiştirildi",
+      "workspace_message_sent": "Formalie'den mesaj",
+      "support_access_requested": "Formalie destek ekibi erişim istedi",
+      "support_access_granted": "Formalie destek ekibine erişim verildi",
+      "support_access_revoked": "Formalie destek erişimi sona erdi",
+      "support_session_started": "Formalie destek oturumu başladı",
+      "support_session_ended": "Formalie destek oturumu sona erdi"
     },
     "detail": {
       "who": "Kim",

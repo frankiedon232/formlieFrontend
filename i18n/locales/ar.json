@@ -1176,7 +1176,21 @@
       "ai_request_deleted": "تم حذف طلب الذكاء الاصطناعي من السجل",
       "ai_applied": "تم تطبيق مسودة الذكاء الاصطناعي",
       "settings_email_unsubscribed": "إلغاء الاشتراك في الرسائل",
-      "settings_email_resubscribed": "إعادة الاشتراك في الرسائل"
+      "settings_email_resubscribed": "إعادة الاشتراك في الرسائل",
+      "workspace_suspended": "علّقت Formalie مساحة العمل",
+      "workspace_restored": "أعادت Formalie تفعيل مساحة العمل",
+      "workspace_read_only": "جعلت Formalie مساحة العمل للقراءة فقط",
+      "workspace_closing": "جدولت Formalie إغلاق مساحة العمل",
+      "workspace_close_cancelled": "ألغت Formalie إغلاق مساحة العمل المجدول",
+      "workspace_closed": "أُغلقت مساحة العمل",
+      "workspace_plan_changed": "غيّرت Formalie الخطة",
+      "workspace_subdomain_changed": "غيّرت Formalie عنوان مساحة العمل",
+      "workspace_message_sent": "رسالة من Formalie",
+      "support_access_requested": "طلب دعم Formalie الوصول",
+      "support_access_granted": "مُنح دعم Formalie الوصول",
+      "support_access_revoked": "انتهى وصول دعم Formalie",
+      "support_session_started": "بدأت جلسة دعم Formalie",
+      "support_session_ended": "انتهت جلسة دعم Formalie"
     },
     "detail": {
       "who": "من",

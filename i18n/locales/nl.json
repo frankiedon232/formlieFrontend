@@ -1176,7 +1176,21 @@
       "ai_request_deleted": "AI-verzoek verwijderd uit de geschiedenis",
       "ai_applied": "AI-concept toegepast",
       "settings_email_unsubscribed": "Afgemeld voor e-mails",
-      "settings_email_resubscribed": "Weer aangemeld voor e-mails"
+      "settings_email_resubscribed": "Weer aangemeld voor e-mails",
+      "workspace_suspended": "Werkruimte opgeschort door Formalie",
+      "workspace_restored": "Werkruimte hersteld door Formalie",
+      "workspace_read_only": "Werkruimte alleen-lezen gemaakt door Formalie",
+      "workspace_closing": "Sluiting van werkruimte gepland door Formalie",
+      "workspace_close_cancelled": "Geplande sluiting geannuleerd door Formalie",
+      "workspace_closed": "Werkruimte gesloten",
+      "workspace_plan_changed": "Abonnement gewijzigd door Formalie",
+      "workspace_subdomain_changed": "Adres van werkruimte gewijzigd door Formalie",
+      "workspace_message_sent": "Bericht van Formalie",
+      "support_access_requested": "Formalie-support vroeg om toegang",
+      "support_access_granted": "Toegang verleend aan Formalie-support",
+      "support_access_revoked": "Toegang van Formalie-support beëindigd",
+      "support_session_started": "Sessie van Formalie-support gestart",
+      "support_session_ended": "Sessie van Formalie-support beëindigd"
     },
     "detail": {
       "who": "Wie",

@@ -45,6 +45,17 @@ export const AUDIT_EVENTS = {
   'workspace.created': { area: 'workspace', icon: 'i-lucide-building-2' },
   'workspace.updated': { area: 'workspace', icon: 'i-lucide-building' },
   'workspace.setup_completed': { area: 'workspace', icon: 'i-lucide-party-popper' },
+  // Changes the Formalie team makes through the platform admin (backend B16); actor = the staff member, metadata.via = 'platform_admin'
+  'workspace.suspended': { area: 'workspace', icon: 'i-lucide-ban' },
+  'workspace.restored': { area: 'workspace', icon: 'i-lucide-rotate-ccw' },
+  'workspace.read_only': { area: 'workspace', icon: 'i-lucide-lock' },
+  'workspace.closing': { area: 'workspace', icon: 'i-lucide-calendar-clock' },
+  'workspace.close_cancelled': { area: 'workspace', icon: 'i-lucide-calendar-check' },
+  // Done automatically on the closing date; nothing is deleted
+  'workspace.closed': { area: 'workspace', icon: 'i-lucide-door-closed' },
+  'workspace.plan_changed': { area: 'workspace', icon: 'i-lucide-credit-card' },
+  'workspace.subdomain_changed': { area: 'workspace', icon: 'i-lucide-globe' },
+  'workspace.message_sent': { area: 'workspace', icon: 'i-lucide-megaphone' },
   // Forms
   'forms.created': { area: 'forms', icon: 'i-lucide-file-plus' },
   'forms.updated': { area: 'forms', icon: 'i-lucide-file-pen' },
@@ -90,6 +101,12 @@ export const AUDIT_EVENTS = {
   // Someone used an email's Unsubscribe link, or undid it (owner, 2026-10-12)
   'settings.email_unsubscribed': { area: 'settings', icon: 'i-lucide-mail-x' },
   'settings.email_resubscribed': { area: 'settings', icon: 'i-lucide-mail-check' },
+  // Formalie support access (B16). Filed under Settings, where the consent lives, though the keys start with `support.`
+  'support.access_requested': { area: 'settings', icon: 'i-lucide-life-buoy' },
+  'support.access_granted': { area: 'settings', icon: 'i-lucide-key-round' },
+  'support.access_revoked': { area: 'settings', icon: 'i-lucide-shield-off' },
+  'support.session_started': { area: 'settings', icon: 'i-lucide-log-in' },
+  'support.session_ended': { area: 'settings', icon: 'i-lucide-log-out' },
   'settings.org_created': { area: 'settings', icon: 'i-lucide-network' },
   'settings.org_updated': { area: 'settings', icon: 'i-lucide-pencil' },
   'settings.org_archived': { area: 'settings', icon: 'i-lucide-archive' },

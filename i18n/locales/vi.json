@@ -1176,7 +1176,21 @@
       "ai_request_deleted": "Đã xóa yêu cầu AI khỏi lịch sử",
       "ai_applied": "Đã áp dụng bản nháp AI",
       "settings_email_unsubscribed": "Đã hủy đăng ký email",
-      "settings_email_resubscribed": "Đã đăng ký lại email"
+      "settings_email_resubscribed": "Đã đăng ký lại email",
+      "workspace_suspended": "Formalie đã tạm ngưng không gian làm việc",
+      "workspace_restored": "Formalie đã khôi phục không gian làm việc",
+      "workspace_read_only": "Formalie đã đặt không gian làm việc ở chế độ chỉ đọc",
+      "workspace_closing": "Formalie đã lên lịch đóng không gian làm việc",
+      "workspace_close_cancelled": "Formalie đã hủy lịch đóng",
+      "workspace_closed": "Không gian làm việc đã đóng",
+      "workspace_plan_changed": "Formalie đã đổi gói",
+      "workspace_subdomain_changed": "Formalie đã đổi địa chỉ không gian làm việc",
+      "workspace_message_sent": "Tin nhắn từ Formalie",
+      "support_access_requested": "Bộ phận hỗ trợ Formalie đã xin quyền truy cập",
+      "support_access_granted": "Đã cấp quyền truy cập cho hỗ trợ Formalie",
+      "support_access_revoked": "Quyền truy cập của hỗ trợ Formalie đã kết thúc",
+      "support_session_started": "Phiên hỗ trợ Formalie đã bắt đầu",
+      "support_session_ended": "Phiên hỗ trợ Formalie đã kết thúc"
     },
     "detail": {
       "who": "Ai",

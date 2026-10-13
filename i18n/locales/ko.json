@@ -1176,7 +1176,21 @@
       "ai_request_deleted": "AI 요청을 기록에서 삭제했습니다",
       "ai_applied": "AI 초안이 적용되었습니다",
       "settings_email_unsubscribed": "이메일 수신 거부",
-      "settings_email_resubscribed": "이메일 다시 수신"
+      "settings_email_resubscribed": "이메일 다시 수신",
+      "workspace_suspended": "Formalie가 워크스페이스를 정지함",
+      "workspace_restored": "Formalie가 워크스페이스를 복원함",
+      "workspace_read_only": "Formalie가 워크스페이스를 읽기 전용으로 변경함",
+      "workspace_closing": "Formalie가 워크스페이스 종료를 예약함",
+      "workspace_close_cancelled": "Formalie가 예약된 종료를 취소함",
+      "workspace_closed": "워크스페이스 종료됨",
+      "workspace_plan_changed": "Formalie가 요금제를 변경함",
+      "workspace_subdomain_changed": "Formalie가 워크스페이스 주소를 변경함",
+      "workspace_message_sent": "Formalie의 메시지",
+      "support_access_requested": "Formalie 지원팀이 접근을 요청함",
+      "support_access_granted": "Formalie 지원팀 접근 허용",
+      "support_access_revoked": "Formalie 지원팀 접근 종료",
+      "support_session_started": "Formalie 지원 세션 시작",
+      "support_session_ended": "Formalie 지원 세션 종료"
     },
     "detail": {
       "who": "누가",

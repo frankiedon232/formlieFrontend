@@ -1176,7 +1176,21 @@
       "ai_request_deleted": "Ombi la AI limefutwa kwenye historia",
       "ai_applied": "Rasimu ya AI imetumika",
       "settings_email_unsubscribed": "Amejiondoa kwenye barua pepe",
-      "settings_email_resubscribed": "Amejiunga tena na barua pepe"
+      "settings_email_resubscribed": "Amejiunga tena na barua pepe",
+      "workspace_suspended": "Formalie imesimamisha eneo la kazi",
+      "workspace_restored": "Formalie imerejesha eneo la kazi",
+      "workspace_read_only": "Formalie imefanya eneo la kazi kuwa la kusoma tu",
+      "workspace_closing": "Formalie imepanga kufunga eneo la kazi",
+      "workspace_close_cancelled": "Formalie imeghairi kufunga kulikopangwa",
+      "workspace_closed": "Eneo la kazi limefungwa",
+      "workspace_plan_changed": "Formalie imebadilisha mpango",
+      "workspace_subdomain_changed": "Formalie imebadilisha anwani ya eneo la kazi",
+      "workspace_message_sent": "Ujumbe kutoka Formalie",
+      "support_access_requested": "Usaidizi wa Formalie umeomba ufikiaji",
+      "support_access_granted": "Usaidizi wa Formalie umepewa ufikiaji",
+      "support_access_revoked": "Ufikiaji wa usaidizi wa Formalie umeisha",
+      "support_session_started": "Kipindi cha usaidizi wa Formalie kimeanza",
+      "support_session_ended": "Kipindi cha usaidizi wa Formalie kimeisha"
     },
     "detail": {
       "who": "Nani",
