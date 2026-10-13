@@ -372,7 +372,7 @@ Do these in a private browser window; tick each.
 ## Part 13. Running it day to day
 
 - ⬜ **Monitoring:** an uptime check on `https://services.formalie.com/api/v1/health` and `https://manage.formalie.com` (for example Cloudflare Health Checks or UptimeRobot), alerts by email.
-- ⬜ **Alerts:** `ALERT_EMAILS` receives the backend's error alerts; watch RabbitMQ queue depth and dead letters (the platform admin's Operations page shows them, `/internal/admin/v1/health/services`).
+- ⬜ **Alerts:** `ALERT_EMAILS` receives the backend's CRITICAL errors. Monitoring and alerts are the platform admin's Operations page, fed by `/internal/admin/v1/health/services` (services, queues and dead letters, Beat's heartbeat, the last backup, partitions, connections, replica lag, disk, certificate).
 - ⬜ **Backups:** a monthly restore drill.
 - ⬜ **Updates:** Ubuntu security updates are automatic; once a month, `pip list --outdated` and `pnpm outdated` reviewed with Claude.
 - ⬜ **Keys:** rotate the platform admin keys and the SAML certificate before they expire (PRODUCTION-CHECKLIST section 2).
