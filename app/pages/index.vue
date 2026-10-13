@@ -3,6 +3,7 @@
 // Organization, WebSite and SoftwareApplication with one Offer per plan and period from GET /public/plans.
 const { t, locale } = useI18n()
 const links = useSiteLinks()
+const platform = usePlatform()
 const localePath = useLocalePath()
 const { plans } = usePlans()
 
@@ -33,9 +34,11 @@ usePageSeo({
       url: links.site,
       logo: `${links.site}/icon-512.png`,
       slogan: t('site.tagline'),
+      ...(platform.value.legalEntity.name ? { legalName: platform.value.legalEntity.name } : {}),
+      ...(platform.value.social.length ? { sameAs: platform.value.social.map(item => item.url) } : {}),
       contactPoint: [
-        { '@type': 'ContactPoint', contactType: 'customer support', email: 'support@formalie.com' },
-        { '@type': 'ContactPoint', contactType: 'sales', email: 'sales@formalie.com' },
+        { '@type': 'ContactPoint', contactType: 'customer support', email: platform.value.supportEmail },
+        { '@type': 'ContactPoint', contactType: 'sales', email: platform.value.salesEmail },
       ],
     },
     {

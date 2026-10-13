@@ -6,6 +6,7 @@ const formKey = FORM_KEYS.support
 const { t } = useI18n()
 const localePath = useLocalePath()
 const links = useSiteLinks()
+const platform = usePlatform()
 const formsLive = String(useRuntimeConfig().public.formsLive) === 'true'
 
 const TOPICS = ['question', 'problem', 'billing', 'account', 'idea', 'other']
@@ -41,8 +42,8 @@ usePageSeo({
         '@type': 'Organization',
         name: 'Formalie',
         contactPoint: [
-          { '@type': 'ContactPoint', contactType: 'customer support', email: 'support@formalie.com' },
-          { '@type': 'ContactPoint', contactType: 'sales', email: 'sales@formalie.com' },
+          { '@type': 'ContactPoint', contactType: 'customer support', email: platform.value.supportEmail },
+          { '@type': 'ContactPoint', contactType: 'sales', email: platform.value.salesEmail },
         ],
       },
     },
@@ -121,7 +122,7 @@ usePageSeo({
         :form-key="formKey"
         :name="t('contactPage.formTitle')"
         :prefill="prefill"
-        email="support@formalie.com"
+        :email="platform.supportEmail"
       />
     </UPageSection>
   </div>

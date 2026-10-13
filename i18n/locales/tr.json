@@ -117,7 +117,8 @@
   },
   "footer": {
     "tagline": "Formalie: formlar, veriler ve erişim sizin kontrolünüzde.",
-    "copyright": "© {year} Formalie"
+    "copyright": "© {year} Formalie",
+    "status": "Sistem durumu"
   },
   "theme": {
     "label": "Tema",

@@ -117,7 +117,8 @@
   },
   "footer": {
     "tagline": "Formalie: формы, данные и доступ под вашим контролем.",
-    "copyright": "© {year} Formalie"
+    "copyright": "© {year} Formalie",
+    "status": "Статус системы"
   },
   "theme": {
     "label": "Тема",

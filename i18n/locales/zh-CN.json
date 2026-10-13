@@ -117,7 +117,8 @@
   },
   "footer": {
     "tagline": "Formalie：表单、数据和访问权限，尽在你的掌控之中。",
-    "copyright": "© {year} Formalie"
+    "copyright": "© {year} Formalie",
+    "status": "系统状态"
   },
   "theme": {
     "label": "主题",

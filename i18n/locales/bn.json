@@ -117,7 +117,8 @@
   },
   "footer": {
     "tagline": "Formalie: ফর্ম, ডেটা ও অ্যাক্সেস আপনার নিয়ন্ত্রণে।",
-    "copyright": "© {year} Formalie"
+    "copyright": "© {year} Formalie",
+    "status": "সিস্টেমের অবস্থা"
   },
   "theme": {
     "label": "থিম",

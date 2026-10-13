@@ -117,7 +117,8 @@
   },
   "footer": {
     "tagline": "Formalie: formulieren, gegevens en toegang onder jouw controle.",
-    "copyright": "© {year} Formalie"
+    "copyright": "© {year} Formalie",
+    "status": "Systeemstatus"
   },
   "theme": {
     "label": "Thema",

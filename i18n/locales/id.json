@@ -117,7 +117,8 @@
   },
   "footer": {
     "tagline": "Formalie: formulir, data, dan akses dalam kendali Anda.",
-    "copyright": "© {year} Formalie"
+    "copyright": "© {year} Formalie",
+    "status": "Status sistem"
   },
   "theme": {
     "label": "Tema",

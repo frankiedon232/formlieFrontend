@@ -110,9 +110,7 @@ onMounted(() => {
         <template #description>
           <i18n-t keypath="embed.unavailable" tag="span" scope="global">
             <template #email>
-              <a href="mailto:support@formalie.com" class="font-semibold underline underline-offset-4"
-                >support@formalie.com</a
-              >
+              <a :href="`mailto:${email}`" class="font-semibold underline underline-offset-4">{{ email }}</a>
             </template>
           </i18n-t>
         </template>

@@ -117,7 +117,8 @@
   },
   "footer": {
     "tagline": "Formalie: 양식, 데이터, 접근 권한을 직접 관리하세요.",
-    "copyright": "© {year} Formalie"
+    "copyright": "© {year} Formalie",
+    "status": "시스템 상태"
   },
   "theme": {
     "label": "테마",

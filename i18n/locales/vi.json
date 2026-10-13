@@ -117,7 +117,8 @@
   },
   "footer": {
     "tagline": "Formalie: biểu mẫu, dữ liệu và quyền truy cập trong tầm kiểm soát của bạn.",
-    "copyright": "© {year} Formalie"
+    "copyright": "© {year} Formalie",
+    "status": "Trạng thái hệ thống"
   },
   "theme": {
     "label": "Giao diện",

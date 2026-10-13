@@ -117,7 +117,8 @@
   },
   "footer": {
     "tagline": "Formalie: Formulare, Daten und Zugriffe unter Ihrer Kontrolle.",
-    "copyright": "© {year} Formalie"
+    "copyright": "© {year} Formalie",
+    "status": "Systemstatus"
   },
   "theme": {
     "label": "Design",

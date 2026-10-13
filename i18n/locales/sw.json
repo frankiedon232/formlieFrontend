@@ -117,7 +117,8 @@
   },
   "footer": {
     "tagline": "Formalie: fomu, data na ufikiaji chini ya udhibiti wako.",
-    "copyright": "© {year} Formalie"
+    "copyright": "© {year} Formalie",
+    "status": "Hali ya mfumo"
   },
   "theme": {
     "label": "Mandhari",

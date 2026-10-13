@@ -117,7 +117,8 @@
   },
   "footer": {
     "tagline": "Formalie：フォーム、データ、アクセスをあなたの管理下に。",
-    "copyright": "© {year} Formalie"
+    "copyright": "© {year} Formalie",
+    "status": "システムステータス"
   },
   "theme": {
     "label": "テーマ",

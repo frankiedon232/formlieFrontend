@@ -5,6 +5,9 @@ import type { FooterColumn } from '@nuxt/ui'
 const { t } = useI18n()
 const localePath = useLocalePath()
 const { product, solutions, resources, company, legal } = useSiteNav()
+// Status page, social profiles and legal entity from the platform admin, each shown only once it is set.
+const platform = usePlatform()
+const social = computed(() => platform.value.social.map(item => ({ ...item, ...SOCIAL_META[item.network] })))
 
 const plain = (items: { label?: string; to?: unknown; target?: unknown }[]) =>
   items.map(({ label, to, target }) => ({ label, to, target })) as FooterColumn['children']
@@ -38,7 +41,22 @@ const year = new Date().getFullYear()
 
     <UFooter :ui="{ root: 'border-t border-default', top: 'py-0 lg:py-0' }">
       <template #left>
-        <p class="text-sm text-muted">{{ t('footer.copyright', { year }) }}</p>
+        <div class="flex flex-col gap-1 text-sm text-muted">
+          <p class="flex flex-wrap items-center gap-x-3 gap-y-1">
+            <span>{{ t('footer.copyright', { year }) }}</span>
+            <ULink
+              v-if="platform.statusUrl"
+              :to="platform.statusUrl"
+              target="_blank"
+              class="inline-flex items-center gap-1.5 text-muted hover:text-highlighted"
+            >
+              <span class="size-1.5 rounded-full bg-emerald-500" />{{ t('footer.status') }}
+            </ULink>
+          </p>
+          <p v-if="platform.legalEntity.name" class="text-xs text-dimmed">
+            {{ [platform.legalEntity.name, platform.legalEntity.address].filter(Boolean).join(', ') }}
+          </p>
+        </div>
       </template>
 
       <nav :aria-label="t('legal.title')">
@@ -50,6 +68,17 @@ const year = new Date().getFullYear()
       </nav>
 
       <template #right>
+        <UButton
+          v-for="item in social"
+          :key="item.network"
+          :to="item.url"
+          target="_blank"
+          rel="noopener me"
+          :icon="item.icon"
+          :aria-label="item.name"
+          color="neutral"
+          variant="ghost"
+        />
         <SiteLanguageSwitch show-name />
         <SiteThemeSwitch />
       </template>

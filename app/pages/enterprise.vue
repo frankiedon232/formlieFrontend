@@ -5,6 +5,7 @@
 const route = useRoute()
 const formKey = FORM_KEYS.enterprise
 const { t, tm, rt } = useI18n()
+const platform = usePlatform()
 
 const ICONS = [
   'i-lucide-server',
@@ -119,7 +120,7 @@ usePageSeo({
         :form-key="formKey"
         :name="t('enterprisePage.formTitle')"
         :prefill="prefill"
-        email="sales@formalie.com"
+        :email="platform.salesEmail"
       />
     </UPageSection>
   </div>

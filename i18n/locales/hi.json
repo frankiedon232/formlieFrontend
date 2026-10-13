@@ -117,7 +117,8 @@
   },
   "footer": {
     "tagline": "Formalie: फ़ॉर्म, डेटा और एक्सेस आपके नियंत्रण में।",
-    "copyright": "© {year} Formalie"
+    "copyright": "© {year} Formalie",
+    "status": "सिस्टम स्थिति"
   },
   "theme": {
     "label": "थीम",

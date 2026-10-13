@@ -117,7 +117,8 @@
   },
   "footer": {
     "tagline": "Formalie: moduli, dati e accessi sotto il tuo controllo.",
-    "copyright": "© {year} Formalie"
+    "copyright": "© {year} Formalie",
+    "status": "Stato del sistema"
   },
   "theme": {
     "label": "Tema",

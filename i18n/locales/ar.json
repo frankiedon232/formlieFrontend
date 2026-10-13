@@ -117,7 +117,8 @@
   },
   "footer": {
     "tagline": "Formalie: النماذج والبيانات والصلاحيات تحت سيطرتك.",
-    "copyright": "© {year} Formalie"
+    "copyright": "© {year} Formalie",
+    "status": "حالة النظام"
   },
   "theme": {
     "label": "المظهر",
