@@ -14,7 +14,7 @@ The website presents the product and leads people into it:
 | Website | `https://formalie.dev:3033/` | `https://formalie.com/` (confirm) |
 | Portal (sign-in, sign-up) | `https://manage.formalie.dev:2202/` | `https://manage.formalie.com/` |
 | Public form links | `https://forms.formalie.dev:2202/` | `https://forms.formalie.com/` |
-| API | `https://api.formalie.dev/` | `https://api.formalie.com/` |
+| Backend API (public plans, legal, platform) | `https://formalie.dev:5004/api/v1` | `https://services.formalie.com/api/v1` |
 
 ## Start
 

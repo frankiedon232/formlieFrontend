@@ -15,8 +15,9 @@ pnpm dev --host 0.0.0.0 --port 3033 --https --https.cert=C:\devcerts\formalie.pe
 NUXT_PUBLIC_SITE_URL=https://formalie.dev:3033
 NUXT_PUBLIC_PORTAL_URL=https://manage.formalie.dev:2202
 NUXT_PUBLIC_FORMS_URL=https://forms.formalie.dev:2202
-NUXT_PUBLIC_API_URL=https://api.formalie.dev
+NUXT_PUBLIC_API_URL=https://formalie.dev:5004/api/v1
 ```
 
-- **Production values:** `https://formalie.com`, `https://manage.formalie.com`, `https://forms.formalie.com` and `https://api.formalie.com`.
-- **Running beside the app:** while the app's mock API is used, the plans and legal endpoints the site needs (`API-HOOKS.md`) come from the app's dev server on 2202. Run both dev servers, one each, never two of the same project.
+- **Production values:** `https://formalie.com`, `https://manage.formalie.com`, `https://forms.formalie.com` and `https://services.formalie.com/api/v1` (never `api.formalie.com`, which is customers' own API service).
+- **The backend:** the public endpoints the site reads (`API-HOOKS.md`) are live on formlyBackend in development (`https://formalie.dev:5004/api/v1`). When it doesn't answer, the site uses its fallback data. Run one dev server per project, never two of the same project.
+- **Certificate in `.env`:** `DEV_HTTPS_CERT` and `DEV_HTTPS_KEY` point at the certificate files, so `pnpm dev` alone serves `https://formalie.dev:3033` (see `.env.example`).

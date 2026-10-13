@@ -1,6 +1,8 @@
 # What the website reads from Formalie
 
-The website has **no backend of its own**. It reads a few public endpoints of the Formalie API and shows Formalie's own published forms. Everything is public, read only and cacheable. No tokens or secrets live in the site.
+The website has **no backend of its own**. It reads a few public endpoints of the Formalie API and shows Formalie's own published forms.
+
+**`{API}`** is `NUXT_PUBLIC_API_URL`: `https://formalie.dev:5004/api/v1` in development, `https://services.formalie.com/api/v1` in production (never `api.formalie.com`, which is customers' own API service). The public routes are live in development since 2026-10-13 (formlyBackend `docs/API-CONTRACT.md`). Every answer is plain JSON `{ success, data, meta }` (no encryption envelope), served on any host with `Access-Control-Allow-Origin: *`. Read `data`. Everything is public, read only and cacheable. No tokens or secrets live in the site.
 
 ## 1. Plans and prices
 
@@ -20,13 +22,15 @@ interface Plan {
 ```
 
 - **Edited by:** the owner, in the platform admin.
-- **Today:** the portal's mock serves `GET /billing/plans` behind sign-in. **The backend adds the public `/public/plans`.** Until then, the site uses a copy of `docs/PRICING.md` as a fallback file (`app/data/plans.json`), clearly marked as samples.
+- **Live** (published by the platform admin, else the backend's catalogue). `features` uses the backend's keys (`analytics`, `templates`, `lists`, `themes`, `explorer`, `query`, `destinations`, `api`, `webhooks`, `apiDocs`, `ai`, `branding`, `subdomain`, `languages`, `visits`, `versions`, `folders`, `fillLater`, `sso`, `customDomain`, `customEmail`, `prioritySupport` and more); unknown keys are ignored. `limits.social_signin` may be missing (it is on every plan).
+- **Fallback:** when the API doesn't answer, the site uses a copy of `docs/PRICING.md` (`app/data/plans.json`), clearly marked as samples.
+- **Payments:** Paddle, the merchant of record. The site never takes payments: "Payments handled by Paddle" near the prices.
 
 ## 2. Legal documents
 
 ```
-GET {API}/public/legal                → [{ slug, title, version, updated_at, languages[] }]
-GET {API}/public/legal/{slug}?lang=   → { slug, title, version, updated_at, summary_of_changes, sections[{ id, heading, body_markdown }] }
+GET {API}/public/legal                → [{ slug, title, version, updated_at, languages[], status: 'published' | 'draft' }]
+GET {API}/public/legal/{slug}?lang=   → { slug, title, version, updated_at, summary_of_changes, language, status, sections[{ id, heading, body_markdown }] }   (unknown slug: 404 FRM-GEN-1004)
 ```
 
 - **Edited by:** the owner, in the platform admin. See `LEGAL-PAGES.md`.

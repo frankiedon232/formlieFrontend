@@ -1,6 +1,6 @@
 # Pricing
 
-The prices below are **samples the owner will adjust**. The real ones come from the platform admin through the public plans endpoint (`API-HOOKS.md`), so the site never hard-codes them. Show them in USD; other currencies come later with the payment processor (Payoneer).
+The prices below are **samples the owner will adjust**. The real ones come from the platform admin through the public plans endpoint (`API-HOOKS.md`), so the site never hard-codes them. Show them in USD. Payments are handled by **Paddle**, the merchant of record (owner, 2026-10-13): the pricing page says "Payments handled by Paddle" near the prices, with no Paddle logo yet.
 
 ## Periods
 
@@ -61,5 +61,6 @@ The big number on each card is the **price per month** for the chosen period, an
 - Can I change plans later? Yes, any time: upgrades start at once, downgrades at the end of the paid period.
 - What happens over a limit? Nothing is deleted. You can't add more until you upgrade.
 - Do you offer discounts for non-profits and education? Contact us.
-- Which payment methods? Cards and local methods through Payoneer. Enterprise can pay by invoice.
+- Which payment methods? Payments are handled by Paddle, our merchant of record, with cards and the local methods Paddle offers. Enterprise can pay by invoice.
+- Can I get a refund? See [Refunds and cancellation](/legal/refunds).
 - Is my data mine? Yes. Export it any time, or keep it in your own database from day one.

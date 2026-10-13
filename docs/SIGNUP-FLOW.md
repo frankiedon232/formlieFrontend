@@ -15,7 +15,7 @@ Build the links with a `useSiteLinks()` composable reading `NUXT_PUBLIC_PORTAL_U
 
 1. Sign-up: account, then email code, then the workspace, as today.
 2. Starter, or no plan: the workspace opens on Starter.
-3. Professional or Business: after the workspace is created, Settings → Plans opens the checkout for that plan and period (Payoneer). If they close it, the workspace stays on Starter, and a banner offers to finish.
+3. Professional or Business: after the workspace is created, Settings → Plans opens the checkout for that plan and period (Paddle, the merchant of record). If they close it, the workspace stays on Starter, and a banner offers to finish.
 4. The website shows the same plan names, prices and periods as the portal: both read the platform's plans.
 
 ## The sign-in page look

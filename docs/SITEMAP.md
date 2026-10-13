@@ -32,7 +32,9 @@ Every page exists in the 20 languages (`/fr/…`, `/ar/…`; English without a p
 | `/about` | Company | Mission, what Formalie believes in (privacy, ownership of data, simplicity), global by design |
 | `/blog`, `/blog/[slug]` | Articles | From `@nuxt/content` |
 | `/changelog` | Releases | From `@nuxt/content`, newest first |
-| `/legal/[slug]` | Legal | `privacy`, `terms`, `data-protection`, `cookies`, `acceptable-use`, `subprocessors`: documentation layout (`LEGAL-PAGES.md`) |
+| `/legal/[slug]` | Legal | `privacy`, `terms`, `data-protection`, `cookies`, `acceptable-use`, `subprocessors`, `refunds`: documentation layout (`LEGAL-PAGES.md`). `/terms`, `/privacy` and `/refunds` redirect here |
+| `/trust` | Trust and security | From formlyBackend `docs/legal/trust-and-security.md`: how Formalie protects data, your rights and our commitments, report a problem. The "Independent checks (when ready)" section stays out until the owner adds it |
+| `/.well-known/security.txt` | Security contact | formlyBackend `docs/legal/security.txt`, renewed before its Expires date |
 | `/404` | Not found | A friendly message, search for help, a link home |
 
 ## Footer

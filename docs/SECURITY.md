@@ -31,4 +31,4 @@
 - No cookies except the language and theme choice. No third-party trackers or fonts from other sites: fonts are self-hosted, as in the app (`@nuxt/fonts`).
 - Forms are Formalie's own embedded forms (`API-HOOKS.md`), protected by the portal's own checks (rate limits, bot checks, encrypted submission).
 - **Legal and compliance wording** promises *controls* ("privacy and compliance controls", "encrypted in transit and at rest"), never certifications Formalie doesn't hold.
-- A `/.well-known/security.txt` file names the security contact (from the platform settings).
+- A `/.well-known/security.txt` file names the security contact: a copy of formlyBackend's `docs/legal/security.txt` (`public/.well-known/security.txt`), renewed before its `Expires` date.

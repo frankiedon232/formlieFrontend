@@ -24,7 +24,7 @@ Read `docs/00-OVERVIEW.md`, `docs/01-ARCHITECTURE.md`, `docs/SITEMAP.md`, `docs/
 
 The app lives elsewhere:
 - portal sign-in: `https://manage.formalie.dev:2202/` in development, `https://manage.formalie.com/` in production;
-- API: `https://api.formalie.dev/` in development, `https://api.formalie.com/` in production.
+- Formalie's backend API (the website reads `/public/plans`, `/public/legal`, `/public/platform`): `https://formalie.dev:5004/api/v1` in development, `https://services.formalie.com/api/v1` in production. Never `api.formalie.com`: that is customers' own API service (owner, 2026-10-13).
 
 ## Hard rules
 
@@ -58,12 +58,13 @@ The app lives elsewhere:
 app/
   app.vue  app.config.ts  assets/css/main.css (Tailwind + Nuxt UI + @theme tokens only)
   layouts/   default.vue (header + footer) · legal.vue (docs layout)
-  pages/     index · features/[slug] · solutions/[slug] · pricing · integrations · security · enterprise · contact · about · blog/ · legal/[slug] · changelog
+  pages/     index · features/[slug] · solutions/[slug] · pricing · integrations · security · enterprise · contact · about · trust · blog/ · legal/[slug] · changelog
   components/ site/ (Header, Footer, LanguageSwitch) · home/ · features/ · pricing/ · legal/ · flow/ (the data-flow hero)
   composables/ usePlans · useLegal · useSiteLinks
+  utils/     locales (the 20 languages) · links (portal, forms, API addresses), pure and unit-tested
 content/     (nuxt/content: blog, changelog, fallback legal placeholders)
 i18n/        locales/{20 codes}.json
-public/      screenshots/ (copied from docs/screenshots, WebP) · og/ · favicon
+public/      screenshots/ (`pnpm screenshots` from docs/screenshots, WebP) · og/ · favicon · .well-known/security.txt
 ```
 
 ## Git

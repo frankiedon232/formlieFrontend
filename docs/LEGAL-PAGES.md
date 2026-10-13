@@ -1,6 +1,6 @@
 # Legal pages
 
-Privacy policy, Terms and conditions, Data protection, Cookie policy, Acceptable use policy and Subprocessors are on the website at `/legal/{slug}` in every language.
+Privacy policy, Terms and conditions, Data protection, Cookie policy, Acceptable use policy, Subprocessors and Refunds and cancellation are on the website at `/legal/{slug}` in every language.
 
 ## Look: documentation, not a marketing page (owner)
 
@@ -13,6 +13,7 @@ Privacy policy, Terms and conditions, Data protection, Cookie policy, Acceptable
 │  ▸ Cookie policy         │ 1. Who we are                        │               │
 │  ▸ Acceptable use        │ …                                    │               │
 │  ▸ Subprocessors         │ 2. What we collect                   │               │
+│  ▸ Refunds and cancel…   │ …                                    │               │
 │                          │ …                                    │               │
 │  (search the legal text) │ ◂ Previous · Next ▸                  │               │
 └──────────────────────────┴──────────────────────────────────────┴───────────────┘
@@ -38,15 +39,20 @@ GET {API}/public/legal/{slug}?lang=fr        → { slug, title, version, updated
 ```
 
 The fields are:
-- `slug`: `privacy` · `terms` · `data-protection` · `cookies` · `acceptable-use` · `subprocessors`;
+- `slug`: `privacy` · `terms` · `data-protection` · `cookies` · `acceptable-use` · `subprocessors` · `refunds` ("Refunds and cancellation", added 2026-10-13, after subprocessors in the navigation; Paddle is the merchant of record);
+- `status`: `draft` until the owner publishes the document from the platform admin, then `published`. While it is a draft, the page shows a small "Draft" note;
+- `language`: the language actually served (English when the requested one is missing);
 - `body_markdown`: plain Markdown (headings, lists, tables and links only). Render it with `@nuxt/content`'s Markdown renderer or `MDC`, never `v-html` on raw HTML.
 
 When a language is missing, show the English version with a notice in the reader's language ("This document is shown in English").
 
-**Until the endpoint exists:**
-- Put placeholder files in `content/legal/{slug}.md` with section headings only.
-- Mark each one clearly: "This text is a placeholder. The final policy will be published here."
+**The endpoint is live (2026-10-13)** at `{API}`: `https://formalie.dev:5004/api/v1` (development) or `https://services.formalie.com/api/v1` (production). Answers are plain `{ success, data, meta }` (no encryption envelope), on any host, with `Access-Control-Allow-Origin: *`. The first version of the text is formlyBackend's `docs/legal/` (drafts for a lawyer's review).
+
+**When the API doesn't answer:**
+- The site falls back to its own copy in `content/legal/{slug}.md`, taken from formlyBackend's `docs/legal/` (same sections and anchors), shown with the "Draft" note while the backend's copy is a draft.
 - Never invent legal wording.
+
+**Short addresses:** `/terms`, `/privacy` and `/refunds` redirect to `/legal/terms`, `/legal/privacy` and `/legal/refunds` (emails and older links use them).
 
 ## Links
 

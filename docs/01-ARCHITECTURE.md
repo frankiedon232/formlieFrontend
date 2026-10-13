@@ -21,7 +21,7 @@ See `API-HOOKS.md`: public plans, public legal documents, and Formalie's own pub
 - **Static output** (`.output/public`) behind the same reverse proxy as the app, on `formalie.com` (production) or `formalie.dev:3033` (development).
 - **Security headers:**
   - HSTS, `X-Content-Type-Options`, `Referrer-Policy strict-origin-when-cross-origin`, `Permissions-Policy`;
-  - a CSP allowing `self`, the Formalie form origins for the embedded forms (`frame-src https://forms.formalie.com`) and `connect-src https://api.formalie.com`.
+  - a CSP allowing `self`, the Formalie form origins for the embedded forms (`frame-src https://forms.formalie.com`) and `connect-src https://services.formalie.com` (the backend API; never `api.formalie.com`, which is customers' own API service).
 - **Images:** WebP or AVIF from `public/screenshots`, `NuxtImg` with explicit sizes.
 
 ## Shared look with the app
