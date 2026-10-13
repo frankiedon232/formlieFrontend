@@ -1,8 +1,8 @@
 import { defineCollection, defineContentConfig } from '@nuxt/content'
 import { z } from 'zod'
 
-// Long copy kept in the repository (docs/01-ARCHITECTURE.md): the blog, the changelog, and the legal pages'
-// fallback copy for when the backend API doesn't answer (docs/LEGAL-PAGES.md).
+// Long copy kept in the repository (docs/01-ARCHITECTURE.md): the blog and the changelog. The legal pages' fallback
+// copy is app/data/legal.json (pnpm legal:sync), in the API's own shape.
 export default defineContentConfig({
   collections: {
     blog: defineCollection({
@@ -19,16 +19,6 @@ export default defineContentConfig({
       schema: z.object({
         date: z.string(),
         version: z.string().optional(),
-      }),
-    }),
-    legal: defineCollection({
-      type: 'page',
-      source: 'legal/*.md',
-      schema: z.object({
-        slug: z.string(),
-        version: z.number(),
-        updated_at: z.string().nullable(),
-        summary_of_changes: z.string().optional(),
       }),
     }),
   },

@@ -1246,5 +1246,85 @@
       ],
       "more": "Soma zaidi"
     }
+  },
+  "legalPage": {
+    "documents": "Nyaraka za kisheria",
+    "search": "Tafuta katika maandishi ya kisheria",
+    "noResults": "Hakuna kilichopatikana",
+    "onThisPage": "Kwenye ukurasa huu",
+    "lastUpdated": "Ilisasishwa mwisho {date}",
+    "notPublished": "Bado haijachapishwa",
+    "version": "Toleo {n}",
+    "draft": "Rasimu",
+    "draftNote": "Hati hii ni rasimu. Inaweza kubadilika kabla ya kuchapishwa.",
+    "whatChanged": "Kilichobadilika",
+    "print": "Chapisha au hifadhi kama PDF",
+    "shownInEnglish": "Hati hii inaonyeshwa kwa Kiingereza.",
+    "copyLink": "Nakili kiungo cha sehemu hii",
+    "copied": "Kiungo kimenakiliwa",
+    "offline": "Maandishi ya karibuni hayakuweza kupakiwa, kwa hiyo nakala iliyohifadhiwa kwenye tovuti hii inaonyeshwa.",
+    "descriptions": {
+      "privacy": "Jinsi Formalie inavyokusanya, kutumia na kulinda data binafsi, nani anaichakata, inahifadhiwa kwa muda gani na haki ulizo nazo.",
+      "terms": "Makubaliano ya kutumia Formalie: akaunti, mipango na malipo kupitia Paddle, data yako, matumizi yanayokubalika, dhima na jinsi masharti yanavyobadilika.",
+      "data-protection": "Makubaliano ya uchakataji wa data ya Formalie: jinsi tunavyochakata data kwenye fomu zako kwa niaba yako, usalama, wachakataji wadogo na taarifa ya uvunjaji.",
+      "cookies": "Vidakuzi vinavyotumiwa na Formalie: ni vile tu vinavyohitajika kwa kuingia, usalama na chaguo zako, bila vidakuzi vya ufuatiliaji wala matangazo.",
+      "acceptable-use": "Mambo ambayo Formalie haiwezi kutumiwa kufanya, jinsi ya kuripoti matumizi mabaya au udhaifu wa usalama, na tunachofanya sheria zinapovunjwa.",
+      "subprocessors": "Kampuni zinazosaidia Formalie kuendesha huduma, kazi ya kila moja, na mahali data inapochakatwa.",
+      "refunds": "Jinsi malipo, usasishaji, kughairi na kurejeshewa pesa vinavyofanya kazi kwa mipango ya kulipia ya Formalie, vinavyoshughulikiwa na Paddle kama muuzaji rasmi."
+    }
+  },
+  "trustPage": {
+    "title": "Uaminifu na usalama",
+    "description": "Jinsi Formalie inavyolinda data yako: udhibiti uliopo leo, haki zako na ahadi zetu, na jinsi ya kuripoti tatizo.",
+    "metaDescription": "Maeneo ya kazi yaliyotenganishwa ndani ya hifadhidata, usimbaji fiche kila mahali, majukumu na kuingia mara moja, kumbukumbu za ukaguzi, nakala rudufu zilizojaribiwa na faragha kwa chaguo-msingi.",
+    "protectTitle": "Jinsi Formalie inavyolinda data yako",
+    "items": [
+      {
+        "title": "Kila eneo la kazi limetenganishwa, ndani ya hifadhidata yenyewe",
+        "text": "Data ya kila eneo la kazi inatenganishwa na sheria ndani ya hifadhidata (usalama wa kiwango cha safu kwenye kila jedwali), si kwa programu pekee, na majaribio ya kiotomatiki huikagua kila kunapokuwa na mabadiliko."
+      },
+      {
+        "title": "Usimbaji fiche kila mahali",
+        "text": "Trafiki yote imesimbwa kwa njia fiche. Maombi ya programu yenyewe yana safu ya pili ya usimbaji fiche juu yake. Vitambulisho vilivyohifadhiwa, siri za kuingia kwa hatua mbili na nakala rudufu husimbwa kwa funguo zinazohifadhiwa kando kando."
+      },
+      {
+        "title": "Wewe unaamua nani anaona nini",
+        "text": "Majukumu yenye kushiriki kwa kila fomu, kuingia kwa hatua mbili, kuingia mara moja (Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0, OpenID Connect), mitandao inayoruhusiwa na mipaka ya vipindi kwa kila eneo la kazi."
+      },
+      {
+        "title": "Kila mabadiliko yanarekodiwa",
+        "text": "Kila eneo la kazi lina kumbukumbu za ukaguzi zinazoonyesha nani alibadilisha nini, lini na kutoka wapi, pamoja na chochote kinachofanywa na wafanyakazi wa Formalie."
+      },
+      {
+        "title": "Wafanyakazi wa Formalie wanahitaji ruhusa yako",
+        "text": "Timu ya usaidizi inaweza kufungua eneo lako la kazi tu msimamizi anapoliruhusu, kwa saa 1, saa 24 au siku 7, kwa kusoma tu isipokuwa uruhusu mabadiliko, na unaweza kusitisha wakati wowote."
+      },
+      {
+        "title": "Data yako, hifadhidata yako",
+        "text": "Hifadhi majibu ndani ya Formalie, au yaandikwe moja kwa moja kwenye hifadhidata yako mwenyewe ya PostgreSQL, MySQL, MariaDB, SQL Server au Oracle."
+      },
+      {
+        "title": "Nakala rudufu zinazojaribiwa",
+        "text": "Nakala rudufu zilizosimbwa kwa njia fiche, na urejeshaji uliojaribiwa kabla ya uzinduzi na kila mwezi baada ya hapo."
+      },
+      {
+        "title": "Matumizi mabaya yanazuiwa",
+        "text": "Mipaka kwenye majaribio ya kuingia na kwenye kila ombi, ukaguzi dhidi ya utumaji wa fomu wa kiotomatiki, na kikomo cha barua pepe zinazotumwa kwa anwani moja."
+      },
+      {
+        "title": "Malipo bila maelezo ya kadi",
+        "text": "Maelezo ya kadi huwekwa kwa mtoa huduma wetu wa malipo na hayafiki kamwe kwa Formalie."
+      },
+      {
+        "title": "Faragha kwa chaguo-msingi",
+        "text": "Hakuna matangazo, hakuna kuuza data, hakuna vidakuzi vya ufuatiliaji, na kumbukumbu za maombi huhifadhiwa siku 30 kwenye huduma inayotumika."
+      }
+    ],
+    "rightsTitle": "Haki zako na ahadi zetu",
+    "laws": "Sheria za ulinzi wa data tunazofuata: Nigeria Data Protection Act 2023, GDPR ya Umoja wa Ulaya na Uingereza, na sheria za maeneo walipo wateja wetu.",
+    "reportTitle": "Ripoti tatizo",
+    "reportSecurity": "Udhaifu wa usalama: {email}. Hatutachukua hatua dhidi ya utafiti wa nia njema unaofuata {policy} yetu.",
+    "reportAbuse": "Matumizi mabaya au fomu inayotiliwa shaka: {email}.",
+    "reportPrivacy": "Maswali kuhusu faragha: {email}."
   }
 }

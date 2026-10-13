@@ -54,6 +54,14 @@ When a language is missing, show the English version with a notice in the reader
 
 **Short addresses:** `/terms`, `/privacy` and `/refunds` redirect to `/legal/terms`, `/legal/privacy` and `/legal/refunds` (emails and older links use them).
 
+## How it is built (S5, 2026-10-13)
+
+- **Data:** `useLegal(slug)` reads `GET {API}/public/legal/{slug}?lang={locale}` while the page is prerendered and again in the browser after it loads (`onNuxtReady`), checked with zod (`app/utils/legal.ts`). When the API doesn't answer, `app/data/legal.json` is shown with a small notice. That file is a copy of formlyBackend's `docs/legal/*.md` in the API's shape: refresh it with `pnpm legal:sync` whenever the backend's drafts change.
+- **Page:** `app/pages/legal/[slug].vue` in `layouts/legal.vue` (the site's header and footer, hidden when printing). Start side: `LegalNav` (the seven documents and a search across the text that jumps to a section); a drawer on phones. Centre: title, the Draft badge and note, last updated (or "Not published yet"), version, "What changed", "This document is shown in English" when the page's language has no translation, numbered sections with anchors and a copy-link button, the text rendered from Markdown with `MDC` (never `v-html`), previous and next. End side: `UContentToc` "On this page".
+- **Print or save as PDF:** one button (the browser's print, which also saves as PDF); only the document prints.
+- **Redirects:** `/terms`, `/privacy`, `/refunds` and `/legal` (to the privacy policy), in `nuxt.config.ts` `routeRules`, prerendered.
+- **SEO:** a description per document (translated), `WebPage` with the version and `dateModified` once published, breadcrumbs; every document in the sitemap.
+
 ## Links
 
 - The portal and the public form pages link here: the privacy link on every form, and the terms on sign-up. Those links are set later, when the owner connects the portal (`PROGRESS.md` phase S6).

@@ -1246,5 +1246,85 @@
       ],
       "more": "Devamını oku"
     }
+  },
+  "legalPage": {
+    "documents": "Yasal belgeler",
+    "search": "Yasal metinlerde ara",
+    "noResults": "Hiçbir şey bulunamadı",
+    "onThisPage": "Bu sayfada",
+    "lastUpdated": "Son güncelleme: {date}",
+    "notPublished": "Henüz yayımlanmadı",
+    "version": "Sürüm {n}",
+    "draft": "Taslak",
+    "draftNote": "Bu belge bir taslaktır. Yayımlanmadan önce değişebilir.",
+    "whatChanged": "Neler değişti",
+    "print": "Yazdır veya PDF olarak kaydet",
+    "shownInEnglish": "Bu belge İngilizce olarak gösteriliyor.",
+    "copyLink": "Bu bölümün bağlantısını kopyala",
+    "copied": "Bağlantı kopyalandı",
+    "offline": "En güncel metin yüklenemedi, bu yüzden bu web sitesinde saklanan kopya gösteriliyor.",
+    "descriptions": {
+      "privacy": "Formalie'nin kişisel verileri nasıl topladığı, kullandığı ve koruduğu, bu verileri kimin işlediği, ne kadar süre saklandığı ve sahip olduğunuz haklar.",
+      "terms": "Formalie'yi kullanma sözleşmesi: hesaplar, planlar ve Paddle üzerinden ödemeler, verileriniz, kabul edilebilir kullanım, sorumluluk ve şartların nasıl değiştiği.",
+      "data-protection": "Formalie'nin veri işleme sözleşmesi: formlarınızdaki verileri sizin adınıza nasıl işlediğimiz, güvenlik, alt işleyenler ve ihlal bildirimi.",
+      "cookies": "Formalie'nin kullandığı çerezler: yalnızca giriş, güvenlik ve tercihleriniz için gerekenler. İzleme veya reklam çerezi yok.",
+      "acceptable-use": "Formalie'nin hangi amaçlarla kullanılamayacağı, kötüye kullanımın veya bir güvenlik açığının nasıl bildirileceği ve kurallar çiğnendiğinde ne yaptığımız.",
+      "subprocessors": "Formalie'nin hizmeti yürütmesine yardım eden şirketler, her birinin ne yaptığı ve verilerin nerede işlendiği.",
+      "refunds": "Formalie'nin ücretli planlarında faturalandırma, yenileme, iptal ve iadelerin nasıl işlediği. Bunlar resmi satıcı olarak Paddle tarafından yürütülür."
+    }
+  },
+  "trustPage": {
+    "title": "Güven ve güvenlik",
+    "description": "Formalie verilerinizi nasıl korur: bugün yürürlükte olan kontroller, haklarınız ve taahhütlerimiz, ayrıca bir sorunu nasıl bildireceğiniz.",
+    "metaDescription": "Veritabanında birbirinden ayrılmış çalışma alanları, her yerde şifreleme, roller ve çoklu oturum açma, denetim kaydı, test edilmiş yedekler ve varsayılan olarak gizlilik.",
+    "protectTitle": "Formalie verilerinizi nasıl korur",
+    "items": [
+      {
+        "title": "Her çalışma alanı, veritabanının kendisinde ayrı tutulur",
+        "text": "Her çalışma alanının verileri yalnızca uygulama tarafından değil, veritabanının içindeki kurallarla da ayrılır (her tabloda satır düzeyinde güvenlik) ve otomatik testler bunu her değişiklikte kontrol eder."
+      },
+      {
+        "title": "Her yerde şifreleme",
+        "text": "Tüm trafik şifrelenir. Uygulamanın kendi istekleri bunun üzerine ikinci bir şifreleme katmanı taşır. Saklanan kimlik bilgileri, iki adımlı giriş sırları ve yedekler, birbirinden ayrı tutulan anahtarlarla şifrelenir."
+      },
+      {
+        "title": "Kimin neyi göreceğine siz karar verirsiniz",
+        "text": "Form bazında paylaşımlı roller, iki adımlı giriş, çoklu oturum açma (Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0, OpenID Connect), izin verilen ağlar ve her çalışma alanı için oturum sınırları."
+      },
+      {
+        "title": "Her değişiklik kayıt altında",
+        "text": "Her çalışma alanında, Formalie çalışanlarının yaptıkları da dahil olmak üzere, kimin neyi, ne zaman ve nereden değiştirdiğini gösteren bir denetim kaydı bulunur."
+      },
+      {
+        "title": "Formalie çalışanlarının izninize ihtiyacı var",
+        "text": "Destek ekibi çalışma alanınızı yalnızca bir yönetici izin verdiğinde, 1 saat, 24 saat veya 7 gün için açabilir. Değişikliklere izin vermediğiniz sürece erişim salt okunurdur ve erişimi istediğiniz zaman sonlandırabilirsiniz."
+      },
+      {
+        "title": "Verileriniz, veritabanınız",
+        "text": "Yanıtları Formalie'de tutun ya da doğrudan kendi PostgreSQL, MySQL, MariaDB, SQL Server veya Oracle veritabanınıza yazılmasını sağlayın."
+      },
+      {
+        "title": "Test edilen yedekler",
+        "text": "Şifreli yedekler. Geri yüklemeler kullanıma açılmadan önce ve sonrasında her ay test edilir."
+      },
+      {
+        "title": "Kötüye kullanıma karşı koruma",
+        "text": "Giriş denemelerinde ve her istekte sınırlar, otomatik form gönderimlerine karşı kontroller ve aynı adrese gönderilen e-postalarda üst sınırlar."
+      },
+      {
+        "title": "Kart bilgisi olmadan ödemeler",
+        "text": "Kart bilgileri ödeme sağlayıcımıza girilir ve hiçbir zaman Formalie'ye ulaşmaz."
+      },
+      {
+        "title": "Varsayılan olarak gizlilik",
+        "text": "Reklam yok, veri satışı yok, izleme çerezi yok. Canlı hizmette istek kayıtları 30 gün saklanır."
+      }
+    ],
+    "rightsTitle": "Haklarınız ve taahhütlerimiz",
+    "laws": "Uyduğumuz veri koruma yasaları: Nigeria Data Protection Act 2023, AB ve Birleşik Krallık GDPR'ı ve müşterilerimizin bulunduğu yerlerin yasaları.",
+    "reportTitle": "Bir sorun bildirin",
+    "reportSecurity": "Güvenlik açığı: {email}. {policy} kapsamında iyi niyetle yapılan araştırmalara karşı herhangi bir işlem yapmayız.",
+    "reportAbuse": "Kötüye kullanım veya şüpheli bir form: {email}.",
+    "reportPrivacy": "Gizlilik soruları: {email}."
   }
 }

@@ -1246,5 +1246,85 @@
       ],
       "more": "Baca selengkapnya"
     }
+  },
+  "legalPage": {
+    "documents": "Dokumen hukum",
+    "search": "Cari di teks hukum",
+    "noResults": "Tidak ada yang ditemukan",
+    "onThisPage": "Di halaman ini",
+    "lastUpdated": "Terakhir diperbarui {date}",
+    "notPublished": "Belum diterbitkan",
+    "version": "Versi {n}",
+    "draft": "Draf",
+    "draftNote": "Dokumen ini masih draf. Isinya bisa berubah sebelum diterbitkan.",
+    "whatChanged": "Apa yang berubah",
+    "print": "Cetak atau simpan sebagai PDF",
+    "shownInEnglish": "Dokumen ini ditampilkan dalam bahasa Inggris.",
+    "copyLink": "Salin tautan ke bagian ini",
+    "copied": "Tautan disalin",
+    "offline": "Teks terbaru tidak dapat dimuat, jadi salinan yang disimpan di situs web ini yang ditampilkan.",
+    "descriptions": {
+      "privacy": "Cara Formalie mengumpulkan, menggunakan, dan melindungi data pribadi, siapa yang memprosesnya, berapa lama data disimpan, dan hak yang Anda miliki.",
+      "terms": "Perjanjian penggunaan Formalie: akun, paket, dan pembayaran melalui Paddle, data Anda, penggunaan yang dapat diterima, tanggung jawab, dan cara ketentuan berubah.",
+      "data-protection": "Perjanjian pemrosesan data Formalie: cara kami memproses data di formulir Anda atas nama Anda, keamanan, subprosesor, dan pemberitahuan pelanggaran.",
+      "cookies": "Cookie yang digunakan Formalie: hanya yang diperlukan untuk masuk, keamanan, dan pilihan Anda, tanpa cookie pelacakan atau iklan.",
+      "acceptable-use": "Hal yang tidak boleh dilakukan dengan Formalie, cara melaporkan penyalahgunaan atau celah keamanan, dan apa yang kami lakukan jika aturan dilanggar.",
+      "subprocessors": "Perusahaan yang membantu Formalie menjalankan layanan, apa yang dilakukan masing-masing, dan di mana data diproses.",
+      "refunds": "Cara kerja penagihan, perpanjangan, pembatalan, dan pengembalian dana untuk paket berbayar Formalie, yang ditangani oleh Paddle sebagai penjual resmi."
+    }
+  },
+  "trustPage": {
+    "title": "Kepercayaan dan keamanan",
+    "description": "Cara Formalie melindungi data Anda: kontrol yang berlaku saat ini, hak Anda dan komitmen kami, serta cara melaporkan masalah.",
+    "metaDescription": "Ruang kerja dipisahkan di dalam database, enkripsi di semua tempat, peran dan single sign-on, jejak audit, cadangan yang diuji, dan privasi sebagai bawaan.",
+    "protectTitle": "Cara Formalie melindungi data Anda",
+    "items": [
+      {
+        "title": "Setiap ruang kerja terpisah, langsung di database",
+        "text": "Data setiap ruang kerja dipisahkan oleh aturan di dalam database (keamanan tingkat baris di setiap tabel), bukan hanya oleh aplikasi, dan pengujian otomatis memeriksanya di setiap perubahan."
+      },
+      {
+        "title": "Terenkripsi di mana saja",
+        "text": "Semua lalu lintas dienkripsi. Permintaan dari aplikasi itu sendiri membawa lapisan enkripsi kedua di atasnya. Kredensial yang disimpan, rahasia masuk dua langkah, dan cadangan dienkripsi dengan kunci yang disimpan terpisah satu sama lain."
+      },
+      {
+        "title": "Anda yang mengatur siapa melihat apa",
+        "text": "Peran dengan berbagi per formulir, masuk dua langkah, single sign-on (Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0, OpenID Connect), jaringan yang diizinkan, dan batas sesi untuk setiap ruang kerja."
+      },
+      {
+        "title": "Setiap perubahan tercatat",
+        "text": "Setiap ruang kerja memiliki jejak audit tentang siapa mengubah apa, kapan, dan dari mana, termasuk semua yang dilakukan staf Formalie."
+      },
+      {
+        "title": "Staf Formalie memerlukan izin Anda",
+        "text": "Tim dukungan hanya dapat membuka ruang kerja Anda jika admin mengizinkannya, selama 1 jam, 24 jam, atau 7 hari, hanya baca kecuali Anda mengizinkan perubahan, dan Anda dapat mengakhirinya kapan saja."
+      },
+      {
+        "title": "Data Anda, database Anda",
+        "text": "Simpan respons di Formalie, atau tulis langsung ke database PostgreSQL, MySQL, MariaDB, SQL Server, atau Oracle milik Anda sendiri."
+      },
+      {
+        "title": "Cadangan yang diuji",
+        "text": "Cadangan terenkripsi, dengan pemulihan yang diuji sebelum peluncuran dan setiap bulan setelahnya."
+      },
+      {
+        "title": "Penyalahgunaan dicegah",
+        "text": "Batas pada percobaan masuk dan pada setiap permintaan, pemeriksaan terhadap pengiriman formulir otomatis, dan batas jumlah email yang dikirim ke satu alamat."
+      },
+      {
+        "title": "Pembayaran tanpa detail kartu",
+        "text": "Detail kartu dimasukkan di penyedia pembayaran kami dan tidak pernah sampai ke Formalie."
+      },
+      {
+        "title": "Privasi sebagai bawaan",
+        "text": "Tanpa iklan, tanpa penjualan data, tanpa cookie pelacakan, dan log permintaan disimpan 30 hari di layanan yang berjalan."
+      }
+    ],
+    "rightsTitle": "Hak Anda dan komitmen kami",
+    "laws": "Undang-undang perlindungan data yang kami ikuti: Nigeria Data Protection Act 2023, GDPR Uni Eropa dan Inggris, serta hukum di tempat pelanggan kami berada.",
+    "reportTitle": "Laporkan masalah",
+    "reportSecurity": "Celah keamanan: {email}. Kami tidak akan mengambil tindakan terhadap penelitian dengan itikad baik yang mengikuti {policy} kami.",
+    "reportAbuse": "Penyalahgunaan atau formulir mencurigakan: {email}.",
+    "reportPrivacy": "Pertanyaan tentang privasi: {email}."
   }
 }

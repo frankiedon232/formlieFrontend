@@ -22,7 +22,8 @@ export function usePlans() {
   )
 
   // Fresh prices in the browser (the API allows any origin and caches for 5 minutes).
-  onMounted(() => refresh())
+  // After hydration: during it, refresh() would return the prerendered copy from the payload instead of fetching.
+  onNuxtReady(() => refresh())
 
   const plans = computed(() => data.value.plans)
   const source = computed(() => data.value.source)

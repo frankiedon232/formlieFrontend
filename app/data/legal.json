@@ -1,0 +1,422 @@
+{
+  "_note": "Copied from formlyBackend docs/legal by pnpm legal:sync. Fallback only: the live text comes from GET /public/legal.",
+  "documents": [
+    {
+      "slug": "privacy",
+      "title": "Privacy policy",
+      "version": 1,
+      "updated_at": null,
+      "summary_of_changes": "First version.",
+      "language": "en",
+      "status": "draft",
+      "sections": [
+        {
+          "id": "who-we-are",
+          "heading": "1. Who we are",
+          "body_markdown": "**UNET SYSTEM TECH LTD** (\"Formalie\", \"we\", \"us\"), the company registered in Nigeria that owns and runs Formalie. Questions about this policy or your data: **privacy@formalie.com**.\n"
+        },
+        {
+          "id": "roles",
+          "heading": "2. Two kinds of data, two roles",
+          "body_markdown": "- **Data about our customers** (people who use Formalie in a workspace, and visitors to our website): account, sign-in, billing and usage data. For this, Formalie decides how it is used: we are the **controller**.\n- **Data in our customers' forms** (the answers and files people send when they fill in a form): our customer decides what to collect and why, and Formalie processes it on their behalf: we are the **processor**. If you filled in a form made with Formalie, the organisation that owns the form is responsible for your data. Its privacy notice is linked at the foot of the form; please contact it first. How we handle this data is set out in [Data protection](/legal/data-protection).\n"
+        },
+        {
+          "id": "what-we-collect",
+          "heading": "3. What we collect about customers",
+          "body_markdown": "| Data | Why | Legal basis |\n| --- | --- | --- |\n| Name, email, password (kept only as a secure hash), job title, department, photo, language and time zone you add | Your account and workspace | Contract |\n| Sign-in details: one-time codes, two-step settings, phone number for codes by text if you add one, sign-in with Google, Microsoft or Facebook, or your organisation's single sign-on | Signing you in securely | Contract, legitimate interest (security) |\n| Billing contact and plan; card brand, last four digits and expiry (never the full card number) | Paid plans, sold through Paddle, our merchant of record (Paddle handles the payment itself under its own privacy notice) | Contract, legal obligation (tax records) |\n| An audit trail of changes in the workspace (who, what, when, from which address and device) | Security, and showing your workspace its own history | Legitimate interest, contract |\n| Technical request logs: address, approximate location worked out from it, browser and device, pages and API calls | Security, preventing abuse, fixing problems | Legitimate interest |\n| What you send to support | Answering you | Contract, legitimate interest |\n\nWe don't sell personal data, we don't use it for advertising, and we don't use it to train AI models.\n"
+        },
+        {
+          "id": "how-we-use",
+          "heading": "4. How we use customer data",
+          "body_markdown": "To provide the Service; to keep it secure (sign-in checks, limits on attempts, abuse detection); to bill paid plans; to send service emails (sign-in codes, notifications you choose, billing notices, important changes); to answer support; and to meet legal obligations. Optional emails can be turned off with the unsubscribe link in each one.\n"
+        },
+        {
+          "id": "processors",
+          "heading": "5. Who else processes data",
+          "body_markdown": "We use carefully chosen providers under contracts that limit their use of the data to the service they provide to us. The current list, what each does and where, is on [Subprocessors](/legal/subprocessors). We tell workspace owners before adding a new one.\n\nLocations are worked out on our own servers from a downloaded database; addresses are not sent to a location service.\n"
+        },
+        {
+          "id": "where",
+          "heading": "6. Where data is stored and international transfers",
+          "body_markdown": "Every workspace's data is stored in Formalie's main region, **[hosting region]**. Enterprise customers can have their workspace kept in another region we offer. When data moves between countries (for example to a provider on the subprocessor list), we use the safeguards the applicable law requires, such as standard contractual clauses.\n"
+        },
+        {
+          "id": "security",
+          "heading": "7. How we protect data",
+          "body_markdown": "- All traffic between your browser and Formalie is encrypted, with an extra layer of encryption on the application's own requests.\n- Passwords are kept only as secure hashes; stored credentials (database connections, mail servers, single sign-on settings, two-step secrets) are encrypted with keys kept apart from other keys.\n- Each workspace's data is kept apart inside the database itself, not only by the application.\n- Role-based access with per-form sharing, two-step sign-in, single sign-on, allowed networks and session controls for each workspace.\n- An audit trail of changes, limits on sign-in attempts and monitoring for abuse.\n- Encrypted backups, with restores tested.\n- Formalie staff open a workspace only with its admins' consent, for the time they choose, and every session is recorded.\n\nNo system is perfectly secure. If a breach affects your personal data, we tell you and the authorities as the law requires.\n"
+        },
+        {
+          "id": "retention",
+          "heading": "8. How long we keep data",
+          "body_markdown": "- **Account data:** while the account exists, then as long as the law requires (for example invoices for tax records).\n- **Form answers:** as the customer sets it (until deleted, or a period from 30 days to 5 years).\n- **Request logs:** 30 days, then archived in encrypted form for security and legal needs and removed from the live service.\n- **Audit trail:** for the life of the workspace, so the customer keeps its full history.\n- **Backups:** kept for a limited period and then overwritten.\n"
+        },
+        {
+          "id": "your-rights",
+          "heading": "9. Your rights",
+          "body_markdown": "Depending on where you live, you may have the right to access your data, get a copy of it, correct it, have it deleted, restrict or object to how it is used, and withdraw consent where we rely on it.\n\n- **Customers:** much of this is in the app (your profile, workspace exports and the privacy tools). For anything else, write to **privacy@formalie.com**. We answer within one month.\n- **People who filled in a form:** contact the organisation that owns the form; we help it answer you.\n\nYou can also complain to a data protection authority:\n- in Nigeria, the **Nigeria Data Protection Commission (NDPC)**;\n- in the European Union, the authority in your country; in the United Kingdom, the **Information Commissioner's Office (ICO)**;\n- elsewhere, the authority where you live.\n\n**California residents:** we don't sell or share personal information for cross-context advertising. You may ask what we hold about you and ask us to delete or correct it.\n"
+        },
+        {
+          "id": "children",
+          "heading": "10. Children",
+          "body_markdown": "Formalie is a service for organisations; account holders must be 18 or older. Customers who collect data from children through their forms are responsible for the consents the law requires.\n"
+        },
+        {
+          "id": "cookies",
+          "heading": "11. Cookies",
+          "body_markdown": "The Formalie app and its forms use only the cookies they need to work and keep you signed in securely; our website uses none beyond your language and theme. Details: [Cookie policy](/legal/cookies).\n"
+        },
+        {
+          "id": "changes",
+          "heading": "12. Changes to this policy",
+          "body_markdown": "We publish each new version here with its date and what changed, and tell workspace owners about important changes before they apply.\n"
+        },
+        {
+          "id": "contact",
+          "heading": "13. Contact",
+          "body_markdown": "**UNET SYSTEM TECH LTD**, Nigeria. Reach us by email or the live chat on formalie.com.\nPrivacy: **privacy@formalie.com**\n"
+        }
+      ]
+    },
+    {
+      "slug": "terms",
+      "title": "Terms and conditions",
+      "version": 1,
+      "updated_at": null,
+      "summary_of_changes": "First version.",
+      "language": "en",
+      "status": "draft",
+      "sections": [
+        {
+          "id": "about",
+          "heading": "1. Who we are and what these terms cover",
+          "body_markdown": "These terms are an agreement between **UNET SYSTEM TECH LTD**, the company registered in Nigeria that owns and runs Formalie (\"Formalie\", \"we\", \"us\"), and the organisation or person that creates a Formalie workspace (\"you\", \"the customer\").\n\nThey cover the Formalie service: the web application, the public forms it publishes, its API, webhooks and connections (\"the Service\"). The [Privacy policy](/legal/privacy), [Data protection](/legal/data-protection), [Acceptable use](/legal/acceptable-use), [Cookie policy](/legal/cookies), [Subprocessors](/legal/subprocessors) and [Refunds and cancellation](/legal/refunds) pages are part of these terms.\n\nBy creating a workspace or using the Service you accept these terms. If you accept them for an organisation, you confirm you may bind it.\n"
+        },
+        {
+          "id": "the-service",
+          "heading": "2. The Service",
+          "body_markdown": "Formalie lets organisations build forms, publish them, collect and manage responses, keep them in Formalie or in their own databases, and connect them to other systems through the API, webhooks and data sources. What each plan includes is on the pricing page.\n\nWe improve the Service over time. We may change or retire a feature; when that takes away something a paid plan relies on, we tell workspace owners at least **30 days** before.\n"
+        },
+        {
+          "id": "accounts",
+          "heading": "3. Accounts and workspaces",
+          "body_markdown": "- Account holders must be at least **18** years old and give accurate information.\n- You are responsible for the people you invite, the roles and access you give them, and for keeping sign-in details safe. Use the security settings the Service offers (two-step sign-in, single sign-on, allowed networks, session limits) as your organisation needs.\n- Tell us at once at **support@formalie.com** if you think your workspace was accessed without permission.\n"
+        },
+        {
+          "id": "your-data",
+          "heading": "4. Your content and your respondents' data",
+          "body_markdown": "- **You own your content:** your forms, the responses you collect and the files people upload (\"Customer Data\").\n- You allow us to host, process and show Customer Data **only to provide, secure and support the Service for you**.\n- For personal data in responses, **you decide what is collected and why**, and we process it on your behalf following your instructions, as set out in [Data protection](/legal/data-protection). You are responsible for having a lawful basis to collect it and for telling your respondents how you use it (every form can link your own privacy notice and ask for consent).\n- When you store responses in your own database, or send them to your systems by webhooks or the API, what happens to the data there is your responsibility.\n- We don't sell Customer Data, use it for advertising, or use it to train AI models.\n"
+        },
+        {
+          "id": "acceptable-use",
+          "heading": "5. Acceptable use",
+          "body_markdown": "You use the Service in line with the [Acceptable use policy](/legal/acceptable-use). We may suspend a form, a feature or a workspace that breaks it, and we tell you why unless the law or the safety of others prevents it.\n"
+        },
+        {
+          "id": "billing",
+          "heading": "6. Plans, payment and renewal",
+          "body_markdown": "- Plans, their limits and prices are on the pricing page. The free Starter plan has the limits shown there.\n- Paid plans are paid **in advance**, monthly, quarterly or yearly, and **renew automatically** until cancelled.\n- Our order process is conducted by our online reseller **Paddle.com**. Paddle.com is the **Merchant of Record** for all our orders: Paddle takes the payment, charges renewals, collects any sales tax or VAT, issues the receipts and invoices, and handles refunds and payment questions. Paddle's [buyer terms](https://www.paddle.com/legal/checkout-buyer-terms) apply to the purchase itself. Formalie never sees or stores full card numbers.\n- Upgrades start at once, with the unused time of the current plan credited. Downgrades and cancellations take effect at the end of the paid period.\n- If a renewal can't be charged, the workspace has **7 days** to pay; after that it moves to the free Starter plan. Nothing is deleted.\n- Prices may change. A new price applies from your next renewal after we tell you, at least **30 days** before.\n- Refunds follow the [Refunds and cancellation](/legal/refunds) page.\n- Prices exclude taxes; Paddle adds the sales tax or VAT where the law requires and shows it before you pay.\n"
+        },
+        {
+          "id": "availability",
+          "heading": "7. Availability, backups and support",
+          "body_markdown": "We work to keep the Service available and secure. We back up Customer Data and test that backups can be restored. Planned maintenance is announced in advance where possible. We don't promise that the Service will never be interrupted. Support: **support@formalie.com**.\n"
+        },
+        {
+          "id": "security",
+          "heading": "8. Security",
+          "body_markdown": "We protect Customer Data with technical and organisational controls described in [Data protection](/legal/data-protection), including encryption of all traffic, encryption of stored credentials, workspaces kept apart inside the database, role-based access, an audit trail, and staff access to a workspace only with that workspace's consent, for the time it chooses.\n"
+        },
+        {
+          "id": "support-access",
+          "heading": "9. Formalie support access",
+          "body_markdown": "Formalie staff can't open your workspace unless an admin of the workspace allows it, in Settings, for 1 hour, 24 hours or 7 days, read only unless you allow changes. Every session is recorded in your audit trail and can be ended by you at any time.\n"
+        },
+        {
+          "id": "ai",
+          "heading": "10. AI features",
+          "body_markdown": "AI features run only when someone in your workspace uses them. The text needed for that task is sent to our AI provider ([Subprocessors](/legal/subprocessors)) to produce the answer; it is not used to train their models. Check what AI suggests before you rely on it.\n"
+        },
+        {
+          "id": "third-parties",
+          "heading": "11. Services you connect",
+          "body_markdown": "The Service can connect to services you choose: your databases, sign-in providers, webhooks, your own email server, payment providers for form payments. Your use of them is governed by their own terms, and we are not responsible for them.\n"
+        },
+        {
+          "id": "ending",
+          "heading": "12. Ending the agreement",
+          "body_markdown": "- You can stop using the Service and cancel your plan at any time.\n- We may suspend or end the Service for you if you seriously or repeatedly break these terms, or don't pay after the grace period. Where we can, we give notice first.\n- When a workspace closes, it first becomes read only until its closing date, so you can export your data. After closing it is kept restorable; data is removed later only as described in the [Privacy policy](/legal/privacy).\n"
+        },
+        {
+          "id": "liability",
+          "heading": "13. Liability",
+          "body_markdown": "- The Service is provided as offered at the time. To the extent the law allows, we are not liable for indirect or consequential loss, or for loss of profits, revenue or data that the Service's own controls (exports, connections to your database) could have prevented.\n- To the extent the law allows, our total liability for all claims is limited to the amount you paid us in the **12 months** before the claim.\n- Nothing in these terms limits liability that the law does not allow to be limited, or the rights consumers have where they live.\n"
+        },
+        {
+          "id": "changes",
+          "heading": "14. Changes to these terms",
+          "body_markdown": "We may update these terms. We tell workspace owners about important changes at least **30 days** before they apply, and each version shows its date and what changed. Using the Service after that means you accept the new version.\n"
+        },
+        {
+          "id": "law",
+          "heading": "15. Law and disputes",
+          "body_markdown": "These terms are governed by the laws of the **Federal Republic of Nigeria**. Disputes go to the courts of **Nigeria**, unless the law where you live gives you the right to bring a claim there. Before going to court, please contact us: most problems are settled quickly.\n"
+        },
+        {
+          "id": "contact",
+          "heading": "16. Contact",
+          "body_markdown": "**UNET SYSTEM TECH LTD**, Nigeria. Reach us by email or the live chat on formalie.com.\nSupport: **support@formalie.com** · Billing: **billing@formalie.com** · Privacy: **privacy@formalie.com**\n"
+        }
+      ]
+    },
+    {
+      "slug": "data-protection",
+      "title": "Data protection",
+      "version": 1,
+      "updated_at": null,
+      "summary_of_changes": "First version.",
+      "language": "en",
+      "status": "draft",
+      "sections": [
+        {
+          "id": "scope",
+          "heading": "1. What this page covers",
+          "body_markdown": "When you (the customer) collect personal data through Formalie forms, you are the **controller** and Formalie is your **processor**. This page sets out how we process that data (\"Customer Personal Data\"), in line with the Nigeria Data Protection Act 2023, the EU and UK General Data Protection Regulation, and similar laws where they apply.\n"
+        },
+        {
+          "id": "processing",
+          "heading": "2. What we process",
+          "body_markdown": "- **Subject matter:** hosting and processing form responses, uploaded files and related records to provide the Service.\n- **Duration:** while you use the Service, then as set out in section 9.\n- **People concerned:** whoever fills in your forms, and anyone whose details you enter.\n- **Kinds of data:** whatever your forms ask for. You choose the questions; avoid asking for more than you need.\n- **Purpose:** only to provide, secure and support the Service for you.\n"
+        },
+        {
+          "id": "instructions",
+          "heading": "3. Your instructions",
+          "body_markdown": "We process Customer Personal Data only on your documented instructions: these terms, your settings in the Service, and what you do in it. If we believe an instruction breaks the law, we tell you. If the law requires us to process data otherwise, we tell you first unless the law forbids it.\n"
+        },
+        {
+          "id": "confidentiality",
+          "heading": "4. Confidentiality",
+          "body_markdown": "Everyone at Formalie who can reach Customer Personal Data is bound to keep it confidential. Staff open a workspace only with its admins' consent, for the time they choose, and every session is recorded in the workspace's audit trail.\n"
+        },
+        {
+          "id": "security",
+          "heading": "5. Security measures",
+          "body_markdown": "- **Isolation:** each workspace's data is kept apart inside the database (row-level security enforced for every query), checked by automated tests.\n- **Encryption:** all traffic is encrypted; requests to the application carry an extra encryption layer; stored credentials and secrets are encrypted with dedicated keys; backups are encrypted.\n- **Access control:** roles and per-form sharing, two-step sign-in, single sign-on, allowed networks and session limits for each workspace.\n- **Accountability:** an audit trail of changes in each workspace; Formalie's own access recorded the same way.\n- **Resilience:** backups with tested restores; monitoring of the service's health.\n- **Abuse protection:** limits on sign-in attempts and on every endpoint; checks against automated submissions.\n- **Least data:** request logs kept 30 days in the live service; answers never put in logs or emails sent outside your team unless you choose.\n\nWe review these measures as the Service and the risks change.\n"
+        },
+        {
+          "id": "subprocessors",
+          "heading": "6. Subprocessors",
+          "body_markdown": "You allow us to use the providers listed on [Subprocessors](/legal/subprocessors). Each is bound by terms that protect the data at least as much as this page. We tell workspace owners at least **30 days** before adding or replacing one, so you can object; if we can't address a reasonable objection, you can end the affected service.\n"
+        },
+        {
+          "id": "requests",
+          "heading": "7. Helping you with people's requests",
+          "body_markdown": "The Service lets you find, export, correct and erase one person's data across your forms. If someone contacts us directly about data in your forms, we send them to you. We help with data protection impact assessments and consultations with authorities where reasonable.\n"
+        },
+        {
+          "id": "breaches",
+          "heading": "8. Personal data breaches",
+          "body_markdown": "If we become aware of a breach affecting Customer Personal Data, we tell you **without undue delay, and within 48 hours**, with what we know and what we are doing, and update you as we learn more, so you can meet your own duty to notify.\n"
+        },
+        {
+          "id": "deletion",
+          "heading": "9. When the service ends",
+          "body_markdown": "You can export your data at any time. When a workspace closes, it is read only until its closing date so you can export, then kept restorable for a limited period, after which Customer Personal Data is deleted or anonymised, except where the law requires us to keep it. Backups are overwritten on their normal cycle.\n"
+        },
+        {
+          "id": "transfers",
+          "heading": "10. International transfers",
+          "body_markdown": "Data is stored in Formalie's main region, or in the region agreed for an Enterprise workspace. Where data moves to a country without equivalent protection, we use the safeguards the law requires (such as standard contractual clauses, or the NDPC's approved mechanisms for data leaving Nigeria).\n"
+        },
+        {
+          "id": "audits",
+          "heading": "11. Audits",
+          "body_markdown": "We answer reasonable written questions about our measures and give you the information needed to show compliance with this page. On-site audits are possible by agreement, with notice and at your cost, without access to other customers' data.\n"
+        },
+        {
+          "id": "contact",
+          "heading": "12. Contact",
+          "body_markdown": "**privacy@formalie.com** · UNET SYSTEM TECH LTD, Nigeria · or the live chat on formalie.com\n"
+        }
+      ]
+    },
+    {
+      "slug": "cookies",
+      "title": "Cookie policy",
+      "version": 1,
+      "updated_at": null,
+      "summary_of_changes": "First version.",
+      "language": "en",
+      "status": "draft",
+      "sections": [
+        {
+          "id": "approach",
+          "heading": "1. Our approach",
+          "body_markdown": "Formalie uses only the cookies and browser storage it needs to work and to keep accounts secure. We use **no advertising cookies, no tracking across sites, and no third-party analytics cookies**. Because every cookie below is necessary for a service you asked for, no cookie banner is shown.\n"
+        },
+        {
+          "id": "app",
+          "heading": "2. Cookies in the Formalie app",
+          "body_markdown": "| Name | What it does | How long |\n| --- | --- | --- |\n| `formalie_rt` | Keeps you signed in securely (a single-use sign-in renewal token, only readable by our servers, only sent to the sign-in address) | 7 days, renewed while you use the app |\n\nThe app also keeps a short-lived encryption key for your session and your language and theme choice in your browser's own storage. These never leave your device except as part of encrypted requests to Formalie.\n"
+        },
+        {
+          "id": "forms",
+          "heading": "3. Cookies on public forms",
+          "body_markdown": "| Name | What it does | How long |\n| --- | --- | --- |\n| `formalie_device` | A random identifier, so a form owner's \"one response per device\" setting and duplicate checks work, and to stop abuse | 1 year |\n| `formalie_unlock_{form}` | Remembers that you entered a protected form's password or link, so you aren't asked again while you fill it in | 12 hours |\n\nThese cookies are set by Formalie on the form's address. They don't identify you by name and are not used for anything else.\n"
+        },
+        {
+          "id": "payments",
+          "heading": "4. Paying for a plan",
+          "body_markdown": "When you pay for a plan, Paddle (our merchant of record) opens its secure checkout in a window on the page. That window is Paddle's: it may use its own cookies to take the payment and prevent fraud, under Paddle's own cookie and privacy notices. Formalie can't read them.\n"
+        },
+        {
+          "id": "website",
+          "heading": "5. Our website",
+          "body_markdown": "The website remembers only your language and theme choice in your browser. If we ever add visitor analytics, it will be cookie-free, and this page will say so before it starts.\n"
+        },
+        {
+          "id": "managing",
+          "heading": "6. Managing cookies",
+          "body_markdown": "You can delete cookies in your browser's settings. If you block the cookies above, signing in to the app and some form settings (one response per device, protected forms) won't work.\n"
+        },
+        {
+          "id": "contact",
+          "heading": "7. Contact",
+          "body_markdown": "**privacy@formalie.com**\n"
+        }
+      ]
+    },
+    {
+      "slug": "acceptable-use",
+      "title": "Acceptable use policy",
+      "version": 1,
+      "updated_at": null,
+      "summary_of_changes": "First version.",
+      "language": "en",
+      "status": "draft",
+      "sections": [
+        {
+          "id": "why",
+          "heading": "1. Why this policy exists",
+          "body_markdown": "Formalie forms reach people who trust the organisation that sent them. This policy keeps that trust, for our customers, their respondents and everyone else. It is part of the [Terms and conditions](/legal/terms).\n"
+        },
+        {
+          "id": "deception",
+          "heading": "2. Forms must not deceive or harvest secrets",
+          "body_markdown": "Do not use Formalie to:\n- impersonate another person, company or authority, or copy another organisation's look to mislead people (phishing);\n- ask for passwords, sign-in codes or recovery codes for other services;\n- ask for full payment card numbers or bank passwords in form questions (use the payment field, which sends card details straight to the payment provider);\n- collect government identity numbers or health, financial or other sensitive data without a lawful reason, a clear explanation and the protection the law requires.\n"
+        },
+        {
+          "id": "law",
+          "heading": "3. Respect people and the law",
+          "body_markdown": "Do not use Formalie to:\n- break any law, or the rights of others, including privacy, intellectual property and consumer rights;\n- collect data from people who didn't agree to give it, or use it for purposes you didn't tell them about;\n- harass, threaten or discriminate against anyone, or publish hateful content, content that promotes violence, or any sexual content involving minors;\n- run unlawful gambling, schemes or sales.\n"
+        },
+        {
+          "id": "spam",
+          "heading": "4. No spam or abuse of email and text messages",
+          "body_markdown": "Do not send form invitations, receipts or messages to people who didn't ask for them, buy or rent email lists, or use the respondent-copy and verification features to send mail to others. Formalie limits how many emails one address receives and honours unsubscribes; working around those limits is not allowed.\n"
+        },
+        {
+          "id": "security",
+          "heading": "5. Keep the Service safe",
+          "body_markdown": "Do not:\n- upload malware, or links meant to harm people's devices;\n- probe, scan or test the Service's security without our written permission (report weaknesses to **security@formalie.com**; see section 7);\n- get around limits, access rules, plan limits or the separation between workspaces;\n- overload the Service, or use the API beyond its published limits;\n- resell or rebrand the Service without our written agreement.\n"
+        },
+        {
+          "id": "enforcement",
+          "heading": "6. What we do",
+          "body_markdown": "If we find or are told about use that breaks this policy, we may remove or switch off the form, limit a feature, or suspend the workspace, and report illegal content where the law requires. We tell you why unless the law or the safety of others prevents it, and you can reply at **support@formalie.com**. Serious or repeated breaches end the agreement.\n"
+        },
+        {
+          "id": "report",
+          "heading": "7. Reporting abuse or a security issue",
+          "body_markdown": "- A form that looks fraudulent or abusive: **abuse@formalie.com**, with the form's link.\n- A security weakness: **security@formalie.com**. Please give us reasonable time to fix it before telling others; we won't take action against good-faith research that follows this policy.\n"
+        }
+      ]
+    },
+    {
+      "slug": "subprocessors",
+      "title": "Subprocessors",
+      "version": 1,
+      "updated_at": null,
+      "summary_of_changes": "First version.",
+      "language": "en",
+      "status": "draft",
+      "sections": [
+        {
+          "id": "about",
+          "heading": "1. What this list is",
+          "body_markdown": "These are the companies that process personal data for Formalie, to provide the Service. Each is bound by terms that protect the data at least as much as our [Data protection](/legal/data-protection) commitments. We tell workspace owners at least **30 days** before adding or replacing one.\n"
+        },
+        {
+          "id": "core",
+          "heading": "2. Always used",
+          "body_markdown": "| Company | What it does for Formalie | Data | Location |\n| --- | --- | --- | --- |\n| Amazon Web Services *(to confirm at launch)* | Servers, databases, file storage, backups | All Service data | [hosting region] |\n| Amazon Web Services (Simple Email Service) *(to confirm at launch)* | Sending Formalie's emails (sign-in codes, notifications, form emails) | Email addresses and the email's content | [email region] |\n| Cloudflare | Delivering the website and app, protection against attacks | Traffic passing through, visitor addresses | Global network |\n"
+        },
+        {
+          "id": "features",
+          "heading": "3. Used for specific features",
+          "body_markdown": "| Company | When it is used | Data | Location |\n| --- | --- | --- | --- |\n| Paddle (Paddle.com Market Limited) | Paid plans: Paddle is our merchant of record and sells the subscription (payment, tax, invoices, refunds) | Billing contact and payment details, entered with Paddle and never stored by Formalie; Paddle is responsible for them as the seller | United Kingdom, and its own providers |\n| Anthropic | Only when someone in a workspace uses an AI feature | The text needed for that task | United States |\n| Twilio or Vonage *(the one chosen at launch)* | Only when a workspace turns on sign-in codes by text message | Phone number and the code | [region] |\n| Google, Microsoft, Facebook (Meta) | Only when a person chooses to sign in with them | Name, email address, the provider's account identifier | Their own regions |\n"
+        },
+        {
+          "id": "not-subprocessors",
+          "heading": "4. Not subprocessors",
+          "body_markdown": "- **Services you connect yourself** (your databases, webhooks, your own email server, single sign-on with your organisation's provider, payment providers for form payments) act for you, under your agreements with them.\n- **Location lookups** are done on Formalie's own servers from a downloaded database; no addresses are sent to a location service.\n"
+        },
+        {
+          "id": "changes",
+          "heading": "5. Changes",
+          "body_markdown": "Each change to this list gets a new version of this page, with its date and what changed, and workspace owners are told by email.\n"
+        }
+      ]
+    },
+    {
+      "slug": "refunds",
+      "title": "Refunds and cancellation",
+      "version": 1,
+      "updated_at": null,
+      "summary_of_changes": "First version.",
+      "language": "en",
+      "status": "draft",
+      "sections": [
+        {
+          "id": "billing",
+          "heading": "1. How billing works",
+          "body_markdown": "- Formalie has a free plan (Starter) and paid plans (Professional and Business); Enterprise plans are agreed separately. Plans and prices are on the pricing page.\n- Paid plans are billed **in advance**, monthly, quarterly or yearly, as you choose; quarterly and yearly billing have the discount shown on the pricing page.\n- Prices are in US dollars unless stated otherwise. Paddle adds the sales tax or VAT where the law requires and shows it before you pay.\n- Our order process is conducted by our online reseller **Paddle.com**. Paddle.com is the **Merchant of Record** for all our orders: Paddle takes the payment, charges renewals, collects any sales tax or VAT, issues the receipts and invoices, and handles refunds and payment questions. Paddle's [buyer terms](https://www.paddle.com/legal/checkout-buyer-terms) apply to the purchase itself. Formalie never sees or stores your full card number; we keep only the card brand, the last four digits, the expiry date and Paddle's reference.\n"
+        },
+        {
+          "id": "renewal",
+          "heading": "2. Automatic renewal",
+          "body_markdown": "- Paid plans **renew automatically** at the end of each billing period, for the same period, at the price then shown for your plan, unless you cancel before the renewal date.\n- We email the workspace's billing contacts **7 days and 1 day before** a renewal, when a payment fails, and when the saved card is about to expire.\n- If a renewal payment fails, or there is no card on file, the workspace has **7 days** to pay. After that it moves to the free Starter plan. Nothing is deleted (section 5).\n"
+        },
+        {
+          "id": "cancelling",
+          "heading": "3. Cancelling",
+          "body_markdown": "- Cancel at any time in **Settings → Billing** (people allowed to manage the workspace's settings can do this).\n- Your plan **stays active until the end of the period you paid for** and does not renew. The workspace then moves to the free Starter plan.\n- Cancelling does not delete your account, forms or responses.\n"
+        },
+        {
+          "id": "changing",
+          "heading": "4. Changing plans",
+          "body_markdown": "- **Upgrading** starts at once. We charge the new plan's price now, minus a credit for the unused time of your current plan.\n- **Downgrading** takes effect at the end of the current paid period, with no charge and no refund for the change.\n- Moving between monthly, quarterly and yearly follows the same rules: a longer or higher plan starts now with the unused time credited; a shorter or lower one starts at the end of the period.\n"
+        },
+        {
+          "id": "data",
+          "heading": "5. Data on a smaller plan",
+          "body_markdown": "Moving to a smaller plan never deletes anything. Forms and responses over the new plan's limits stay, but can't grow until you upgrade again, and features the plan doesn't include switch off until then.\n"
+        },
+        {
+          "id": "refunds",
+          "heading": "6. Refunds",
+          "body_markdown": "- **14-day money-back on your first payment.** If you are not happy, write to **billing@formalie.com** within **14 days** of a workspace's first payment for a paid plan, and we refund it in full. This applies once per workspace.\n- **Duplicate or mistaken charges are refunded in full.** Our system is built so one purchase can't be charged twice; if it happens, or you were charged an amount you didn't agree to, tell us within **60 days** and we refund it.\n- **Otherwise, unused time is not refunded.** When you cancel or downgrade, your plan continues to the end of the period you paid for.\n- **Your legal rights are not affected.** Where the law where you live gives you a right to cancel or a refund (for example a cooling-off period for consumers), that right applies as well.\n- Refunds are issued through Paddle, to the card or payment method used. How long they take to appear depends on your bank. You can also ask Paddle directly from the link in your receipt.\n"
+        },
+        {
+          "id": "disputes",
+          "heading": "7. Disputes and chargebacks",
+          "body_markdown": "Please contact us before disputing a charge with your bank; most billing questions are settled quickly.\n"
+        },
+        {
+          "id": "contact",
+          "heading": "8. Contact",
+          "body_markdown": "Billing: **billing@formalie.com** · or the live chat on formalie.com · UNET SYSTEM TECH LTD, Nigeria\n"
+        }
+      ]
+    }
+  ]
+}

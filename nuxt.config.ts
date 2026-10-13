@@ -82,12 +82,23 @@ export default defineNuxtConfig({
     },
   },
 
+  // Short addresses used in emails and older links (owner, 2026-10-13); prerendered as redirect pages.
+  routeRules: {
+    '/terms': { redirect: '/legal/terms' },
+    '/privacy': { redirect: '/legal/privacy' },
+    '/refunds': { redirect: '/legal/refunds' },
+    '/legal': { redirect: '/legal/privacy' },
+  },
+
   nitro: {
     prerender: {
       // Every language's home page; the crawler finds the rest from their links.
       routes: [
         ...SITE_LOCALES.map(({ code }) => (code === DEFAULT_LOCALE ? '/' : `/${code}`)),
         '/sitemap.xml',
+        '/terms',
+        '/privacy',
+        '/refunds',
         '/robots.txt',
       ],
       // Pages from later phases (features, pricing, legal …) don't exist yet, so links to them would stop the

@@ -20,4 +20,5 @@ NUXT_PUBLIC_API_URL=https://formalie.dev:5004/api/v1
 
 - **Production values:** `https://formalie.com`, `https://manage.formalie.com`, `https://forms.formalie.com` and `https://services.formalie.com/api/v1` (never `api.formalie.com`, which is customers' own API service).
 - **The backend:** the public endpoints the site reads (`API-HOOKS.md`) are live on formlyBackend in development (`https://formalie.dev:5004/api/v1`). When it doesn't answer, the site uses its fallback data. Run one dev server per project, never two of the same project.
+- **`pnpm dev` starts Node with `--use-system-ca`**, so the dev server trusts the mkcert root that Windows already trusts and server-rendered pages get the live plans and legal text from the local backend.
 - **Certificate in `.env`:** `DEV_HTTPS_CERT` and `DEV_HTTPS_KEY` point at the certificate files, so `pnpm dev` alone serves `https://formalie.dev:3033` (see `.env.example`).

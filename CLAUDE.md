@@ -62,7 +62,8 @@ app/
   components/ site/ (Header, Footer, LanguageSwitch) · home/ · features/ · pricing/ · legal/ · flow/ (the data-flow hero)
   composables/ usePlans · useLegal · useSiteLinks
   utils/     locales (the 20 languages) · links (portal, forms, API addresses), pure and unit-tested
-content/     (nuxt/content: blog, changelog, fallback legal placeholders)
+content/     (nuxt/content: blog, changelog)
+app/data/    plans.json (sample plans) · legal.json (copy of formlyBackend docs/legal, `pnpm legal:sync`)
 i18n/        locales/{20 codes}.json
 public/      screenshots/ (`pnpm screenshots` from docs/screenshots, WebP) · og/ · favicon · .well-known/security.txt
 ```

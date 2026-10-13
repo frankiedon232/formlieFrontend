@@ -1246,5 +1246,85 @@
       ],
       "more": "Đọc thêm"
     }
+  },
+  "legalPage": {
+    "documents": "Tài liệu pháp lý",
+    "search": "Tìm trong văn bản pháp lý",
+    "noResults": "Không tìm thấy gì",
+    "onThisPage": "Trên trang này",
+    "lastUpdated": "Cập nhật lần cuối: {date}",
+    "notPublished": "Chưa được công bố",
+    "version": "Phiên bản {n}",
+    "draft": "Bản nháp",
+    "draftNote": "Tài liệu này là bản nháp. Nội dung có thể thay đổi trước khi công bố.",
+    "whatChanged": "Những gì đã thay đổi",
+    "print": "In hoặc lưu dưới dạng PDF",
+    "shownInEnglish": "Tài liệu này được hiển thị bằng tiếng Anh.",
+    "copyLink": "Sao chép liên kết đến phần này",
+    "copied": "Đã sao chép liên kết",
+    "offline": "Không tải được văn bản mới nhất, vì vậy bản sao lưu trên trang web này đang được hiển thị.",
+    "descriptions": {
+      "privacy": "Cách Formalie thu thập, sử dụng và bảo vệ dữ liệu cá nhân, ai xử lý dữ liệu, dữ liệu được lưu bao lâu và bạn có những quyền gì.",
+      "terms": "Thỏa thuận sử dụng Formalie: tài khoản, gói dịch vụ và thanh toán qua Paddle, dữ liệu của bạn, sử dụng được chấp nhận, trách nhiệm pháp lý và cách điều khoản thay đổi.",
+      "data-protection": "Thỏa thuận xử lý dữ liệu của Formalie: cách chúng tôi thay mặt bạn xử lý dữ liệu trong biểu mẫu, bảo mật, bên xử lý phụ và thông báo vi phạm.",
+      "cookies": "Các cookie Formalie sử dụng: chỉ những cookie cần cho việc đăng nhập, bảo mật và lựa chọn của bạn, không có cookie theo dõi hay quảng cáo.",
+      "acceptable-use": "Những việc không được dùng Formalie để làm, cách báo cáo lạm dụng hoặc lỗ hổng bảo mật, và chúng tôi làm gì khi quy tắc bị vi phạm.",
+      "subprocessors": "Các công ty giúp Formalie vận hành dịch vụ, vai trò của từng công ty và nơi dữ liệu được xử lý.",
+      "refunds": "Cách hoạt động của thanh toán, gia hạn, hủy và hoàn tiền cho các gói trả phí của Formalie, do Paddle xử lý với tư cách là đơn vị bán hàng chính thức."
+    }
+  },
+  "trustPage": {
+    "title": "Tin cậy và bảo mật",
+    "description": "Cách Formalie bảo vệ dữ liệu của bạn: các biện pháp kiểm soát đang áp dụng hôm nay, quyền của bạn và cam kết của chúng tôi, cùng cách báo cáo sự cố.",
+    "metaDescription": "Không gian làm việc được tách biệt ngay trong cơ sở dữ liệu, mã hóa ở mọi nơi, vai trò và đăng nhập một lần, nhật ký kiểm tra, bản sao lưu được kiểm thử và quyền riêng tư mặc định.",
+    "protectTitle": "Cách Formalie bảo vệ dữ liệu của bạn",
+    "items": [
+      {
+        "title": "Mỗi không gian làm việc được tách biệt, ngay trong cơ sở dữ liệu",
+        "text": "Dữ liệu của từng không gian làm việc được tách biệt bằng các quy tắc bên trong cơ sở dữ liệu (bảo mật cấp hàng trên mọi bảng), không chỉ bằng ứng dụng, và các bài kiểm thử tự động kiểm tra điều này sau mỗi thay đổi."
+      },
+      {
+        "title": "Mã hóa ở mọi nơi",
+        "text": "Toàn bộ lưu lượng đều được mã hóa. Các yêu cầu của chính ứng dụng còn có thêm một lớp mã hóa thứ hai. Thông tin xác thực được lưu, mã bí mật đăng nhập hai bước và bản sao lưu được mã hóa bằng các khóa được giữ tách biệt với nhau."
+      },
+      {
+        "title": "Bạn kiểm soát ai thấy gì",
+        "text": "Vai trò với chia sẻ theo từng biểu mẫu, đăng nhập hai bước, đăng nhập một lần (Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0, OpenID Connect), mạng được phép và giới hạn phiên cho từng không gian làm việc."
+      },
+      {
+        "title": "Mọi thay đổi đều được ghi lại",
+        "text": "Mỗi không gian làm việc có nhật ký kiểm tra cho biết ai đã thay đổi gì, khi nào và từ đâu, bao gồm cả mọi việc nhân viên Formalie làm."
+      },
+      {
+        "title": "Nhân viên Formalie cần bạn cho phép",
+        "text": "Bộ phận hỗ trợ chỉ có thể mở không gian làm việc của bạn khi quản trị viên cho phép, trong 1 giờ, 24 giờ hoặc 7 ngày, chỉ được xem trừ khi bạn cho phép thay đổi, và bạn có thể kết thúc bất cứ lúc nào."
+      },
+      {
+        "title": "Dữ liệu của bạn, cơ sở dữ liệu của bạn",
+        "text": "Lưu câu trả lời trong Formalie, hoặc cho ghi thẳng vào cơ sở dữ liệu PostgreSQL, MySQL, MariaDB, SQL Server hoặc Oracle của riêng bạn."
+      },
+      {
+        "title": "Bản sao lưu được kiểm thử",
+        "text": "Bản sao lưu được mã hóa, việc khôi phục được kiểm thử trước khi ra mắt và hằng tháng sau đó."
+      },
+      {
+        "title": "Ngăn chặn lạm dụng",
+        "text": "Giới hạn số lần thử đăng nhập và mọi yêu cầu, kiểm tra chống gửi biểu mẫu tự động, và giới hạn số email gửi đến cùng một địa chỉ."
+      },
+      {
+        "title": "Thanh toán không cần thông tin thẻ",
+        "text": "Thông tin thẻ được nhập tại nhà cung cấp dịch vụ thanh toán của chúng tôi và không bao giờ đến được Formalie."
+      },
+      {
+        "title": "Quyền riêng tư mặc định",
+        "text": "Không quảng cáo, không bán dữ liệu, không cookie theo dõi, và nhật ký yêu cầu được lưu 30 ngày trên dịch vụ đang hoạt động."
+      }
+    ],
+    "rightsTitle": "Quyền của bạn và cam kết của chúng tôi",
+    "laws": "Các luật bảo vệ dữ liệu chúng tôi tuân theo: Nigeria Data Protection Act 2023, GDPR của EU và Vương quốc Anh, cùng luật tại nơi khách hàng của chúng tôi hoạt động.",
+    "reportTitle": "Báo cáo sự cố",
+    "reportSecurity": "Lỗ hổng bảo mật: {email}. Chúng tôi sẽ không có hành động nào chống lại nghiên cứu thiện chí tuân theo {policy} của chúng tôi.",
+    "reportAbuse": "Lạm dụng hoặc biểu mẫu đáng ngờ: {email}.",
+    "reportPrivacy": "Câu hỏi về quyền riêng tư: {email}."
   }
 }

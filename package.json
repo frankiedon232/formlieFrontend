@@ -4,7 +4,7 @@
   "private": true,
   "version": "0.1.0",
   "scripts": {
-    "dev": "nuxt dev",
+    "dev": "node --use-system-ca node_modules/nuxt/bin/nuxt.mjs dev",
     "build": "nuxt build",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
@@ -16,7 +16,8 @@
     "format:check": "prettier --check .",
     "test": "vitest run",
     "test:watch": "vitest",
-    "screenshots": "node scripts/screenshots.mjs"
+    "screenshots": "node scripts/screenshots.mjs",
+    "legal:sync": "node scripts/legal-sync.mjs"
   },
   "dependencies": {
     "@iconify-json/circle-flags": "^1.2.12",

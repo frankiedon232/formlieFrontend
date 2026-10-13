@@ -1,6 +1,6 @@
 # PROGRESS, formalieSite
 
-**Last updated:** 2026-10-13 (S4 done, waiting for the owner's review)
+**Last updated:** 2026-10-13 (S5 done, waiting for the owner's review)
 
 | Phase | What | Status | Done |
 |---|---|---|---|
@@ -8,8 +8,8 @@
 | S1 | Layout, header, footer, theme, languages | ✅ | 100% |
 | S2 | Home page with the data-flow hero | ✅ | 100% |
 | S3 | Features and solutions pages | ✅ | 100% |
-| S4 | Pricing | ✅ (review) | 100% |
-| S5 | Legal pages (documentation layout) and /trust | ⬜ | 0% |
+| S4 | Pricing | ✅ | 100% |
+| S5 | Legal pages (documentation layout) and /trust | ✅ (review) | 100% |
 | S6 | Formalie forms, portal links, contact and enterprise | ⬜ | 0% |
 | S7 | SEO, performance, accessibility, launch checks | ⬜ | 30% |
 
@@ -67,12 +67,12 @@
 - ✅ Buttons lead to the portal sign-up with `plan` and `period`; Enterprise leads to `/enterprise?plan=enterprise&period=…#enquiry`
 
 ## S5, Legal pages and trust
-- ⬜ `legal` layout: documents navigator, article, "On this page", last updated, version, print and PDF
-- ⬜ `useLegal()` reading `GET {API}/public/legal…` (`docs/LEGAL-PAGES.md`), English fallback with a notice; a small "Draft" note while `status` is `draft`
-- ⬜ Fallback copy in `content/legal/` from formlyBackend `docs/legal/` for when the API doesn't answer (no invented wording)
-- ⬜ Privacy policy · Terms and conditions · Data protection · Cookie policy · Acceptable use · Subprocessors · Refunds and cancellation (7th, after subprocessors)
-- ⬜ Redirects `/terms`, `/privacy`, `/refunds` → `/legal/terms`, `/legal/privacy`, `/legal/refunds`
-- ⬜ `/trust` "Trust and security" from formlyBackend `docs/legal/trust-and-security.md`, without "Independent checks (when ready)"
+- ✅ `legal` layout: documents navigator with search across the text, the article (numbered sections, anchors, copy link), "On this page", last updated, version, "What changed", print or save as PDF, previous and next; a drawer on phones
+- ✅ `useLegal()` reading `GET {API}/public/legal/{slug}?lang=` (`docs/LEGAL-PAGES.md`), refreshed after load; "This document is shown in English" for other languages; a "Draft" badge and note while `status` is `draft`
+- ✅ Fallback copy `app/data/legal.json` from formlyBackend `docs/legal/` (`pnpm legal:sync`), in the API's shape (no invented wording)
+- ✅ Privacy policy · Terms and conditions · Data protection · Cookie policy · Acceptable use · Subprocessors · Refunds and cancellation (7th, after subprocessors)
+- ✅ Redirects `/terms`, `/privacy`, `/refunds` (and `/legal`) → `/legal/…`
+- ✅ `/trust` "Trust and security" from formlyBackend `docs/legal/trust-and-security.md`, without "Independent checks (when ready)", in 20 languages
 
 ## S6, Formalie forms and portal links (owner: "we will handle the linking to the portal forms later")
 - ⬜ Embedded Enterprise enquiry (`FormalieEn`) on `/enterprise` and from pricing, with prefill
@@ -121,3 +121,4 @@
 | 2026-10-13 | S3 | `/features` and 11 feature pages, 7 solution pages, `/integrations`, `/security`, `/about`; shared `SiteScreenFrame`, `SiteCta`, `FeaturesSteps`, `FeaturesRelated`, drawn visuals for the AI assistant and languages, a solution flow; `usePageSeo()` with breadcrumbs and structured data on every page, `sitemap.xml` (460 addresses: 23 pages in 20 languages) and `robots.txt`; RTL arrows mirrored. 362 new strings in 20 languages. Checked at 375 and 1280 px, light, Arabic |
 | 2026-10-13 | Polish | Global theme in `app.config.ts`: heroes closer to the header, one section rhythm, cards with 1rem radius and a soft lift, plan cards and table that never cut text; sector strip with 18 sectors in two gliding rows with live pulses |
 | 2026-10-13 | S4 | `/pricing`: period toggle (opens on Annually), four plans from the live API, comparison table (`UPricingTable`), Paddle and tax notes, pricing FAQ, structured data; `usePricing()`, `app/utils/pricing.ts` with tests (55); in the sitemap. Checked at 375 and 1280 px, light and dark |
+| 2026-10-13 | S5 | Seven legal pages in the documentation layout from the live API (Draft badge, English notice, offline fallback from formlyBackend's drafts), search, print, copy links; `/trust`; redirects; legal and trust copy in 20 languages; plans and legal now refresh after hydration (`onNuxtReady`) and the dev server trusts the local certificate (`--use-system-ca`). Sitemap 640 addresses. 59 tests |

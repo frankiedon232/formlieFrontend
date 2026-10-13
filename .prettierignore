@@ -8,3 +8,4 @@ public
 .nuxt-build
 *.md
 .claude
+app/data/legal.json

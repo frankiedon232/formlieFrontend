@@ -1246,5 +1246,85 @@
       ],
       "more": "Czytaj więcej"
     }
+  },
+  "legalPage": {
+    "documents": "Dokumenty prawne",
+    "search": "Szukaj w tekstach prawnych",
+    "noResults": "Nic nie znaleziono",
+    "onThisPage": "Na tej stronie",
+    "lastUpdated": "Ostatnia aktualizacja: {date}",
+    "notPublished": "Jeszcze nieopublikowany",
+    "version": "Wersja {n}",
+    "draft": "Wersja robocza",
+    "draftNote": "Ten dokument jest wersją roboczą. Może się zmienić przed publikacją.",
+    "whatChanged": "Co się zmieniło",
+    "print": "Drukuj lub zapisz jako PDF",
+    "shownInEnglish": "Ten dokument jest wyświetlany po angielsku.",
+    "copyLink": "Kopiuj link do tej sekcji",
+    "copied": "Link skopiowany",
+    "offline": "Nie udało się wczytać najnowszego tekstu, dlatego wyświetlana jest kopia przechowywana na tej stronie.",
+    "descriptions": {
+      "privacy": "Jak Formalie zbiera, wykorzystuje i chroni dane osobowe, kto je przetwarza, jak długo są przechowywane i jakie masz prawa.",
+      "terms": "Umowa dotycząca korzystania z Formalie: konta, plany i płatności przez Paddle, Twoje dane, dopuszczalne użytkowanie, odpowiedzialność i sposób zmiany warunków.",
+      "data-protection": "Umowa powierzenia przetwarzania danych Formalie: jak przetwarzamy w Twoim imieniu dane z Twoich formularzy, bezpieczeństwo, podmioty przetwarzające i zgłaszanie naruszeń.",
+      "cookies": "Pliki cookie używane przez Formalie: tylko te potrzebne do logowania, bezpieczeństwa i Twoich wyborów, bez plików cookie śledzących ani reklamowych.",
+      "acceptable-use": "Do czego nie wolno używać Formalie, jak zgłosić nadużycie lub lukę w zabezpieczeniach i co robimy, gdy zasady zostaną złamane.",
+      "subprocessors": "Firmy, które pomagają Formalie prowadzić usługę, czym zajmuje się każda z nich i gdzie przetwarzane są dane.",
+      "refunds": "Jak działają rozliczenia, odnowienia, rezygnacje i zwroty w płatnych planach Formalie, obsługiwane przez Paddle jako oficjalnego sprzedawcę."
+    }
+  },
+  "trustPage": {
+    "title": "Zaufanie i bezpieczeństwo",
+    "description": "Jak Formalie chroni Twoje dane: zabezpieczenia działające już dziś, Twoje prawa i nasze zobowiązania oraz sposób zgłaszania problemów.",
+    "metaDescription": "Obszary robocze oddzielone w samej bazie danych, szyfrowanie wszędzie, role i logowanie jednokrotne, dziennik zdarzeń, testowane kopie zapasowe i prywatność domyślnie.",
+    "protectTitle": "Jak Formalie chroni Twoje dane",
+    "items": [
+      {
+        "title": "Każdy obszar roboczy oddzielony w samej bazie danych",
+        "text": "Dane każdego obszaru roboczego są oddzielone regułami wewnątrz bazy danych (zabezpieczenia na poziomie wierszy w każdej tabeli), a nie tylko przez aplikację, a testy automatyczne sprawdzają to przy każdej zmianie."
+      },
+      {
+        "title": "Szyfrowanie wszędzie",
+        "text": "Cały ruch jest szyfrowany. Żądania samej aplikacji mają dodatkowo drugą warstwę szyfrowania. Zapisane dane logowania, sekrety logowania dwuetapowego i kopie zapasowe są szyfrowane kluczami przechowywanymi oddzielnie od siebie."
+      },
+      {
+        "title": "Ty decydujesz, kto co widzi",
+        "text": "Role z udostępnianiem poszczególnych formularzy, logowanie dwuetapowe, logowanie jednokrotne (Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0, OpenID Connect), dozwolone sieci i limity sesji dla każdego obszaru roboczego."
+      },
+      {
+        "title": "Każda zmiana zapisana",
+        "text": "Każdy obszar roboczy ma dziennik zdarzeń pokazujący, kto co zmienił, kiedy i skąd, w tym wszystko, co robią pracownicy Formalie."
+      },
+      {
+        "title": "Pracownicy Formalie potrzebują Twojej zgody",
+        "text": "Wsparcie może otworzyć Twój obszar roboczy tylko wtedy, gdy pozwoli na to administrator, na 1 godzinę, 24 godziny lub 7 dni, tylko do odczytu, chyba że zezwolisz na zmiany. Dostęp możesz zakończyć w każdej chwili."
+      },
+      {
+        "title": "Twoje dane, Twoja baza danych",
+        "text": "Przechowuj odpowiedzi w Formalie albo zapisuj je bezpośrednio we własnej bazie danych PostgreSQL, MySQL, MariaDB, SQL Server lub Oracle."
+      },
+      {
+        "title": "Testowane kopie zapasowe",
+        "text": "Szyfrowane kopie zapasowe, z przywracaniem przetestowanym przed uruchomieniem i potem co miesiąc."
+      },
+      {
+        "title": "Ochrona przed nadużyciami",
+        "text": "Limity prób logowania i każdego żądania, kontrole przeciw automatycznemu wysyłaniu formularzy oraz limity e-maili wysyłanych na jeden adres."
+      },
+      {
+        "title": "Płatności bez danych karty",
+        "text": "Dane karty są wpisywane u naszego dostawcy płatności i nigdy nie trafiają do Formalie."
+      },
+      {
+        "title": "Prywatność domyślnie",
+        "text": "Bez reklam, bez sprzedaży danych, bez plików cookie śledzących, a dzienniki żądań są przechowywane przez 30 dni w działającej usłudze."
+      }
+    ],
+    "rightsTitle": "Twoje prawa i nasze zobowiązania",
+    "laws": "Przepisy o ochronie danych, zgodnie z którymi działamy: Nigeria Data Protection Act 2023, RODO w UE i Wielkiej Brytanii oraz przepisy krajów, w których są nasi klienci.",
+    "reportTitle": "Zgłoś problem",
+    "reportSecurity": "Luka w zabezpieczeniach: {email}. Nie podejmiemy działań przeciwko badaniom prowadzonym w dobrej wierze zgodnie z naszą zasadą: {policy}.",
+    "reportAbuse": "Nadużycie lub podejrzany formularz: {email}.",
+    "reportPrivacy": "Pytania o prywatność: {email}."
   }
 }

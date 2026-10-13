@@ -1246,5 +1246,85 @@
       ],
       "more": "Scopri di più"
     }
+  },
+  "legalPage": {
+    "documents": "Documenti legali",
+    "search": "Cerca nei testi legali",
+    "noResults": "Nessun risultato",
+    "onThisPage": "In questa pagina",
+    "lastUpdated": "Ultimo aggiornamento: {date}",
+    "notPublished": "Non ancora pubblicato",
+    "version": "Versione {n}",
+    "draft": "Bozza",
+    "draftNote": "Questo documento è una bozza. Potrebbe cambiare prima della pubblicazione.",
+    "whatChanged": "Cosa è cambiato",
+    "print": "Stampa o salva come PDF",
+    "shownInEnglish": "Questo documento è mostrato in inglese.",
+    "copyLink": "Copia il link a questa sezione",
+    "copied": "Link copiato",
+    "offline": "Non è stato possibile caricare il testo più recente, quindi viene mostrata la copia conservata su questo sito.",
+    "descriptions": {
+      "privacy": "Come Formalie raccoglie, usa e protegge i dati personali, chi li tratta, per quanto tempo vengono conservati e quali diritti hai.",
+      "terms": "L'accordo per usare Formalie: account, piani e pagamenti tramite Paddle, i tuoi dati, uso accettabile, responsabilità e come cambiano i termini.",
+      "data-protection": "L'accordo sul trattamento dei dati di Formalie: come trattiamo per tuo conto i dati dei tuoi moduli, sicurezza, sub-responsabili e notifica delle violazioni.",
+      "cookies": "I cookie usati da Formalie: solo quelli necessari per l'accesso, la sicurezza e le tue scelte, senza cookie di tracciamento o pubblicitari.",
+      "acceptable-use": "Per cosa Formalie non può essere usato, come segnalare un abuso o una vulnerabilità di sicurezza e cosa facciamo quando le regole non vengono rispettate.",
+      "subprocessors": "Le aziende che aiutano Formalie a gestire il servizio, cosa fa ciascuna e dove vengono trattati i dati.",
+      "refunds": "Come funzionano fatturazione, rinnovi, disdette e rimborsi per i piani a pagamento di Formalie, gestiti da Paddle come rivenditore ufficiale."
+    }
+  },
+  "trustPage": {
+    "title": "Fiducia e sicurezza",
+    "description": "Come Formalie protegge i tuoi dati: i controlli attivi oggi, i tuoi diritti e i nostri impegni, e come segnalare un problema.",
+    "metaDescription": "Spazi di lavoro separati nel database, crittografia ovunque, ruoli e single sign-on, un registro di controllo, backup testati e privacy predefinita.",
+    "protectTitle": "Come Formalie protegge i tuoi dati",
+    "items": [
+      {
+        "title": "Ogni spazio di lavoro separato, nel database stesso",
+        "text": "I dati di ogni spazio di lavoro sono separati da regole all'interno del database (sicurezza a livello di riga su ogni tabella), non solo dall'applicazione, e test automatici lo verificano a ogni modifica."
+      },
+      {
+        "title": "Crittografia ovunque",
+        "text": "Tutto il traffico è crittografato. Le richieste dell'app stessa aggiungono un secondo livello di crittografia. Credenziali salvate, segreti per l'accesso in due passaggi e backup sono crittografati con chiavi conservate separatamente l'una dall'altra."
+      },
+      {
+        "title": "Decidi tu chi vede cosa",
+        "text": "Ruoli con condivisione per singolo modulo, accesso in due passaggi, single sign-on (Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0, OpenID Connect), reti consentite e limiti di sessione per ogni spazio di lavoro."
+      },
+      {
+        "title": "Ogni modifica registrata",
+        "text": "Ogni spazio di lavoro ha un registro di controllo che indica chi ha modificato cosa, quando e da dove, comprese le azioni del personale di Formalie."
+      },
+      {
+        "title": "Il personale di Formalie ha bisogno del tuo permesso",
+        "text": "Il supporto può aprire il tuo spazio di lavoro solo se un amministratore lo consente, per 1 ora, 24 ore o 7 giorni, in sola lettura a meno che tu non consenta modifiche, e puoi interrompere l'accesso in qualsiasi momento."
+      },
+      {
+        "title": "I tuoi dati, il tuo database",
+        "text": "Conserva le risposte in Formalie oppure falle scrivere direttamente nel tuo database PostgreSQL, MySQL, MariaDB, SQL Server o Oracle."
+      },
+      {
+        "title": "Backup testati",
+        "text": "Backup crittografati, con ripristini testati prima del lancio e poi ogni mese."
+      },
+      {
+        "title": "Abusi tenuti fuori",
+        "text": "Limiti ai tentativi di accesso e a ogni richiesta, controlli contro gli invii automatici dei moduli e tetti alle email inviate a uno stesso indirizzo."
+      },
+      {
+        "title": "Pagamenti senza dati della carta",
+        "text": "I dati della carta vengono inseriti presso il nostro fornitore di pagamenti e non arrivano mai a Formalie."
+      },
+      {
+        "title": "Privacy predefinita",
+        "text": "Niente pubblicità, nessuna vendita di dati, nessun cookie di tracciamento, e log delle richieste conservati 30 giorni nel servizio in produzione."
+      }
+    ],
+    "rightsTitle": "I tuoi diritti e i nostri impegni",
+    "laws": "Le leggi sulla protezione dei dati che rispettiamo: il Nigeria Data Protection Act 2023, il GDPR dell'UE e del Regno Unito e le leggi dei luoghi in cui si trovano i nostri clienti.",
+    "reportTitle": "Segnala un problema",
+    "reportSecurity": "Vulnerabilità di sicurezza: {email}. Non agiremo contro ricerche svolte in buona fede che rispettano la nostra {policy}.",
+    "reportAbuse": "Abuso o modulo sospetto: {email}.",
+    "reportPrivacy": "Domande sulla privacy: {email}."
   }
 }

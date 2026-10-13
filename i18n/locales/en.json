@@ -1246,5 +1246,85 @@
       ],
       "more": "Read more"
     }
+  },
+  "legalPage": {
+    "documents": "Legal documents",
+    "search": "Search the legal text",
+    "noResults": "Nothing found",
+    "onThisPage": "On this page",
+    "lastUpdated": "Last updated {date}",
+    "notPublished": "Not published yet",
+    "version": "Version {n}",
+    "draft": "Draft",
+    "draftNote": "This document is a draft. It may change before it is published.",
+    "whatChanged": "What changed",
+    "print": "Print or save as PDF",
+    "shownInEnglish": "This document is shown in English.",
+    "copyLink": "Copy the link to this section",
+    "copied": "Link copied",
+    "offline": "The latest text could not be loaded, so the copy kept on this website is shown.",
+    "descriptions": {
+      "privacy": "How Formalie collects, uses and protects personal data, who processes it, how long it is kept and the rights you have.",
+      "terms": "The agreement for using Formalie: accounts, plans and payments through Paddle, your data, acceptable use, liability and how the terms change.",
+      "data-protection": "Formalie's data processing agreement: how we process the data in your forms on your behalf, security, subprocessors and breach notice.",
+      "cookies": "The cookies Formalie uses: only the ones needed for sign-in, security and your choices, with no tracking or advertising cookies.",
+      "acceptable-use": "What Formalie may not be used for, how to report abuse or a security weakness, and what we do when the rules are broken.",
+      "subprocessors": "The companies that help Formalie run the service, what each one does, and where the data is processed.",
+      "refunds": "How billing, renewals, cancellations and refunds work for Formalie's paid plans, handled by Paddle as merchant of record."
+    }
+  },
+  "trustPage": {
+    "title": "Trust and security",
+    "description": "How Formalie protects your data: the controls in place today, your rights and our commitments, and how to report a problem.",
+    "metaDescription": "Workspaces kept apart in the database, encryption everywhere, roles and single sign-on, an audit trail, tested backups and privacy by default.",
+    "protectTitle": "How Formalie protects your data",
+    "items": [
+      {
+        "title": "Every workspace kept apart, in the database itself",
+        "text": "Each workspace's data is separated by rules inside the database (row-level security on every table), not only by the application, and automated tests check it on every change."
+      },
+      {
+        "title": "Encrypted everywhere",
+        "text": "All traffic is encrypted. The app's own requests carry a second layer of encryption on top. Stored credentials, two-step secrets and backups are encrypted with keys kept apart from each other."
+      },
+      {
+        "title": "You control who sees what",
+        "text": "Roles with per-form sharing, two-step sign-in, single sign-on (Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0, OpenID Connect), allowed networks and session limits for each workspace."
+      },
+      {
+        "title": "Every change on record",
+        "text": "Each workspace has an audit trail of who changed what, when and from where, including anything Formalie staff do."
+      },
+      {
+        "title": "Formalie staff need your permission",
+        "text": "Support can open your workspace only when an admin allows it, for 1 hour, 24 hours or 7 days, read only unless you allow changes, and you can end it at any time."
+      },
+      {
+        "title": "Your data, your database",
+        "text": "Keep responses in Formalie, or have them written straight into your own PostgreSQL, MySQL, MariaDB, SQL Server or Oracle database."
+      },
+      {
+        "title": "Backups that are tested",
+        "text": "Encrypted backups, with restores tested before launch and every month after."
+      },
+      {
+        "title": "Abuse kept out",
+        "text": "Limits on sign-in attempts and on every request, checks against automated form submissions, and caps on emails sent to any one address."
+      },
+      {
+        "title": "Payments without card details",
+        "text": "Card details are entered with our payment provider and never reach Formalie."
+      },
+      {
+        "title": "Privacy by default",
+        "text": "No advertising, no selling of data, no tracking cookies, and request logs kept 30 days in the live service."
+      }
+    ],
+    "rightsTitle": "Your rights and our commitments",
+    "laws": "Data protection laws we work under: the Nigeria Data Protection Act 2023, the EU and UK GDPR, and the laws where our customers are.",
+    "reportTitle": "Report a problem",
+    "reportSecurity": "Security weakness: {email}. We won't take action against good-faith research that follows our {policy}.",
+    "reportAbuse": "Abuse or a suspicious form: {email}.",
+    "reportPrivacy": "Privacy questions: {email}."
   }
 }

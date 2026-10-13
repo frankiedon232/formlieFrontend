@@ -1246,5 +1246,85 @@
       ],
       "more": "Mehr erfahren"
     }
+  },
+  "legalPage": {
+    "documents": "Rechtliche Dokumente",
+    "search": "Rechtstexte durchsuchen",
+    "noResults": "Nichts gefunden",
+    "onThisPage": "Auf dieser Seite",
+    "lastUpdated": "Zuletzt aktualisiert: {date}",
+    "notPublished": "Noch nicht veröffentlicht",
+    "version": "Version {n}",
+    "draft": "Entwurf",
+    "draftNote": "Dieses Dokument ist ein Entwurf. Es kann sich vor der Veröffentlichung noch ändern.",
+    "whatChanged": "Was sich geändert hat",
+    "print": "Drucken oder als PDF speichern",
+    "shownInEnglish": "Dieses Dokument wird auf Englisch angezeigt.",
+    "copyLink": "Link zu diesem Abschnitt kopieren",
+    "copied": "Link kopiert",
+    "offline": "Der neueste Text konnte nicht geladen werden. Deshalb wird die auf dieser Website gespeicherte Fassung angezeigt.",
+    "descriptions": {
+      "privacy": "Wie Formalie personenbezogene Daten erhebt, nutzt und schützt, wer sie verarbeitet, wie lange sie gespeichert werden und welche Rechte Sie haben.",
+      "terms": "Die Vereinbarung zur Nutzung von Formalie: Konten, Tarife und Zahlungen über Paddle, Ihre Daten, zulässige Nutzung, Haftung und wie sich die Bedingungen ändern.",
+      "data-protection": "Der Auftragsverarbeitungsvertrag von Formalie: wie wir die Daten in Ihren Formularen in Ihrem Auftrag verarbeiten, Sicherheit, Unterauftragsverarbeiter und Meldung von Datenschutzverletzungen.",
+      "cookies": "Die Cookies, die Formalie verwendet: nur die für Anmeldung, Sicherheit und Ihre Einstellungen nötigen, ohne Tracking- oder Werbe-Cookies.",
+      "acceptable-use": "Wofür Formalie nicht genutzt werden darf, wie Sie Missbrauch oder eine Sicherheitslücke melden und was wir tun, wenn gegen die Regeln verstoßen wird.",
+      "subprocessors": "Die Unternehmen, die Formalie beim Betrieb des Dienstes helfen, was jedes davon tut und wo die Daten verarbeitet werden.",
+      "refunds": "Wie Abrechnung, Verlängerungen, Kündigungen und Erstattungen für die kostenpflichtigen Tarife von Formalie funktionieren, abgewickelt von Paddle als offiziellem Händler."
+    }
+  },
+  "trustPage": {
+    "title": "Vertrauen und Sicherheit",
+    "description": "Wie Formalie Ihre Daten schützt: die Maßnahmen, die heute greifen, Ihre Rechte und unsere Zusagen, und wie Sie ein Problem melden.",
+    "metaDescription": "Workspaces in der Datenbank voneinander getrennt, Verschlüsselung überall, Rollen und Single Sign-on, ein Audit-Protokoll, getestete Backups und Datenschutz als Standard.",
+    "protectTitle": "Wie Formalie Ihre Daten schützt",
+    "items": [
+      {
+        "title": "Jeder Workspace getrennt, direkt in der Datenbank",
+        "text": "Die Daten jedes Workspace sind durch Regeln in der Datenbank selbst getrennt (Sicherheit auf Zeilenebene in jeder Tabelle), nicht nur durch die Anwendung, und automatisierte Tests prüfen das bei jeder Änderung."
+      },
+      {
+        "title": "Überall verschlüsselt",
+        "text": "Der gesamte Datenverkehr ist verschlüsselt. Die Anfragen der App selbst tragen zusätzlich eine zweite Verschlüsselungsebene. Gespeicherte Zugangsdaten, Geheimnisse für die Zwei-Schritt-Anmeldung und Backups werden mit Schlüsseln verschlüsselt, die getrennt voneinander aufbewahrt werden."
+      },
+      {
+        "title": "Sie bestimmen, wer was sieht",
+        "text": "Rollen mit Freigabe pro Formular, Zwei-Schritt-Anmeldung, Single Sign-on (Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0, OpenID Connect), zugelassene Netzwerke und Sitzungslimits für jeden Workspace."
+      },
+      {
+        "title": "Jede Änderung dokumentiert",
+        "text": "Jeder Workspace hat ein Audit-Protokoll darüber, wer was wann und von wo geändert hat, einschließlich allem, was Mitarbeitende von Formalie tun."
+      },
+      {
+        "title": "Mitarbeitende von Formalie brauchen Ihre Erlaubnis",
+        "text": "Der Support kann Ihren Workspace nur öffnen, wenn ein Admin es erlaubt, für 1 Stunde, 24 Stunden oder 7 Tage, nur lesend, sofern Sie keine Änderungen erlauben, und Sie können den Zugriff jederzeit beenden."
+      },
+      {
+        "title": "Ihre Daten, Ihre Datenbank",
+        "text": "Behalten Sie die Antworten in Formalie oder lassen Sie sie direkt in Ihre eigene PostgreSQL-, MySQL-, MariaDB-, SQL Server- oder Oracle-Datenbank schreiben."
+      },
+      {
+        "title": "Getestete Backups",
+        "text": "Verschlüsselte Backups, deren Wiederherstellung vor dem Start und danach jeden Monat getestet wird."
+      },
+      {
+        "title": "Missbrauch wird abgewehrt",
+        "text": "Limits für Anmeldeversuche und für jede Anfrage, Prüfungen gegen automatisierte Formularübermittlungen und Obergrenzen für E-Mails an dieselbe Adresse."
+      },
+      {
+        "title": "Zahlungen ohne Kartendaten",
+        "text": "Kartendaten werden bei unserem Zahlungsanbieter eingegeben und erreichen Formalie nie."
+      },
+      {
+        "title": "Datenschutz als Standard",
+        "text": "Keine Werbung, kein Verkauf von Daten, keine Tracking-Cookies, und Anfrageprotokolle werden im Live-Betrieb 30 Tage aufbewahrt."
+      }
+    ],
+    "rightsTitle": "Ihre Rechte und unsere Zusagen",
+    "laws": "Datenschutzgesetze, nach denen wir arbeiten: der Nigeria Data Protection Act 2023, die DSGVO der EU und des Vereinigten Königreichs sowie die Gesetze an den Standorten unserer Kunden.",
+    "reportTitle": "Ein Problem melden",
+    "reportSecurity": "Sicherheitslücke: {email}. Gegen Forschung in gutem Glauben, die unserer {policy} folgt, gehen wir nicht vor.",
+    "reportAbuse": "Missbrauch oder ein verdächtiges Formular: {email}.",
+    "reportPrivacy": "Fragen zum Datenschutz: {email}."
   }
 }

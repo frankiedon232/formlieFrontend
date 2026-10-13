@@ -1241,5 +1241,85 @@
       ],
       "more": "了解更多"
     }
+  },
+  "legalPage": {
+    "documents": "法律文件",
+    "search": "搜索法律文本",
+    "noResults": "未找到结果",
+    "onThisPage": "本页内容",
+    "lastUpdated": "最后更新：{date}",
+    "notPublished": "尚未发布",
+    "version": "版本 {n}",
+    "draft": "草稿",
+    "draftNote": "本文件为草稿，发布前可能会有变动。",
+    "whatChanged": "变更内容",
+    "print": "打印或保存为 PDF",
+    "shownInEnglish": "本文件以英文显示。",
+    "copyLink": "复制本节链接",
+    "copied": "链接已复制",
+    "offline": "无法加载最新文本，因此显示本网站保存的副本。",
+    "descriptions": {
+      "privacy": "Formalie 如何收集、使用和保护个人数据，谁处理这些数据，数据保存多久，以及您享有哪些权利。",
+      "terms": "使用 Formalie 的协议：账户、套餐及通过 Paddle 付款，您的数据，可接受使用，责任，以及条款如何变更。",
+      "data-protection": "Formalie 的数据处理协议：我们如何代表您处理表单中的数据，安全措施，子处理者，以及数据泄露通知。",
+      "cookies": "Formalie 使用的 Cookie：仅限登录、安全和保存您的选择所必需的 Cookie，不使用跟踪或广告 Cookie。",
+      "acceptable-use": "Formalie 不得用于哪些用途，如何举报滥用或安全漏洞，以及违反规则时我们会采取的措施。",
+      "subprocessors": "帮助 Formalie 运行服务的公司、各自的职责，以及数据在何处处理。",
+      "refunds": "Formalie 付费套餐的计费、续订、取消和退款如何运作，由 Paddle 作为记录商户负责处理。"
+    }
+  },
+  "trustPage": {
+    "title": "信任与安全",
+    "description": "Formalie 如何保护您的数据：目前已有的控制措施、您的权利与我们的承诺，以及如何报告问题。",
+    "metaDescription": "工作区在数据库中相互隔离，全程加密，角色与单点登录，审计日志，经过测试的备份，默认保护隐私。",
+    "protectTitle": "Formalie 如何保护您的数据",
+    "items": [
+      {
+        "title": "每个工作区都相互隔离，就在数据库本身",
+        "text": "每个工作区的数据由数据库内部的规则隔离（每张表都启用行级安全），而不仅仅依靠应用程序，并且每次变更都会由自动化测试进行检查。"
+      },
+      {
+        "title": "全程加密",
+        "text": "所有流量均经过加密。应用自身的请求还额外加有第二层加密。存储的凭据、两步登录密钥和备份均使用彼此分开保管的密钥加密。"
+      },
+      {
+        "title": "由您决定谁能看到什么",
+        "text": "支持按表单共享的角色、两步登录、单点登录（Okta、Microsoft Entra ID、Google Workspace、OneLogin、SAML 2.0、OpenID Connect）、允许的网络，以及每个工作区的会话限制。"
+      },
+      {
+        "title": "每次变更都有记录",
+        "text": "每个工作区都有审计日志，记录谁在何时、从何处更改了什么，包括 Formalie 员工的所有操作。"
+      },
+      {
+        "title": "Formalie 员工需要您的许可",
+        "text": "只有在管理员允许时，支持人员才能打开您的工作区，期限为 1 小时、24 小时或 7 天，除非您允许更改，否则为只读，您也可以随时结束访问。"
+      },
+      {
+        "title": "您的数据，您的数据库",
+        "text": "可以将回复保存在 Formalie 中，也可以直接写入您自己的 PostgreSQL、MySQL、MariaDB、SQL Server 或 Oracle 数据库。"
+      },
+      {
+        "title": "经过测试的备份",
+        "text": "加密备份，恢复流程在上线前测试，之后每月测试一次。"
+      },
+      {
+        "title": "防范滥用",
+        "text": "限制登录尝试次数和每个请求，检测自动提交表单，并限制发往同一地址的邮件数量。"
+      },
+      {
+        "title": "付款无需提供卡信息",
+        "text": "卡信息在我们的支付服务商处填写，绝不会传到 Formalie。"
+      },
+      {
+        "title": "默认保护隐私",
+        "text": "没有广告，不出售数据，不使用跟踪 Cookie，线上服务的请求日志保存 30 天。"
+      }
+    ],
+    "rightsTitle": "您的权利与我们的承诺",
+    "laws": "我们遵循的数据保护法律：Nigeria Data Protection Act 2023、欧盟和英国的 GDPR，以及客户所在地的法律。",
+    "reportTitle": "报告问题",
+    "reportSecurity": "安全漏洞：{email}。对于遵循我们的{policy}、出于善意开展的研究，我们不会采取任何行动。",
+    "reportAbuse": "滥用或可疑表单：{email}。",
+    "reportPrivacy": "隐私问题：{email}。"
   }
 }

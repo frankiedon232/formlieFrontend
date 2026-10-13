@@ -1,9 +1,10 @@
 // sitemap.xml (docs/SEO.md): every built page in every language, each with its hreflang alternates and
 // x-default (English). Prerendered with the site (nuxt.config.ts). Add new pages to SITE_PATHS.
 import { FEATURE_PAGES, SOLUTION_PAGES } from '../../app/utils/catalog'
+import { LEGAL_SLUGS } from '../../app/utils/legal'
 import { DEFAULT_LOCALE, SITE_LOCALES } from '../../app/utils/locales'
 
-/** The pages that exist (later phases add pricing, legal, contact …). */
+/** The pages that exist (later phases add contact, enterprise …). */
 export const SITE_PATHS = [
   '/',
   '/features',
@@ -13,13 +14,15 @@ export const SITE_PATHS = [
   '/integrations',
   '/security',
   '/about',
+  '/trust',
+  ...LEGAL_SLUGS.map(slug => `/legal/${slug}`),
 ]
 
 const localised = (code: string, path: string) =>
   code === DEFAULT_LOCALE ? path : `/${code}${path === '/' ? '' : path}`
 
 export default defineEventHandler(event => {
-  const site = useRuntimeConfig().public.siteUrl.replace(/\/$/, '')
+  const site = String((useRuntimeConfig().public as Record<string, unknown>).siteUrl).replace(/\/$/, '')
   const today = new Date().toISOString().slice(0, 10)
 
   const urls = SITE_PATHS.flatMap(path =>

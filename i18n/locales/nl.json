@@ -1246,5 +1246,85 @@
       ],
       "more": "Meer lezen"
     }
+  },
+  "legalPage": {
+    "documents": "Juridische documenten",
+    "search": "Zoeken in de juridische tekst",
+    "noResults": "Niets gevonden",
+    "onThisPage": "Op deze pagina",
+    "lastUpdated": "Laatst bijgewerkt: {date}",
+    "notPublished": "Nog niet gepubliceerd",
+    "version": "Versie {n}",
+    "draft": "Concept",
+    "draftNote": "Dit document is een concept. Het kan nog veranderen voordat het wordt gepubliceerd.",
+    "whatChanged": "Wat er is veranderd",
+    "print": "Afdrukken of opslaan als PDF",
+    "shownInEnglish": "Dit document wordt in het Engels getoond.",
+    "copyLink": "Link naar deze sectie kopiëren",
+    "copied": "Link gekopieerd",
+    "offline": "De nieuwste tekst kon niet worden geladen, daarom wordt de kopie getoond die op deze website is bewaard.",
+    "descriptions": {
+      "privacy": "Hoe Formalie persoonsgegevens verzamelt, gebruikt en beschermt, wie ze verwerkt, hoe lang ze worden bewaard en welke rechten je hebt.",
+      "terms": "De overeenkomst voor het gebruik van Formalie: accounts, abonnementen en betalingen via Paddle, je gegevens, aanvaardbaar gebruik, aansprakelijkheid en hoe de voorwaarden veranderen.",
+      "data-protection": "De verwerkersovereenkomst van Formalie: hoe we de gegevens in je formulieren namens jou verwerken, beveiliging, subverwerkers en melding van datalekken.",
+      "cookies": "De cookies die Formalie gebruikt: alleen die nodig zijn voor inloggen, beveiliging en je keuzes, zonder tracking- of advertentiecookies.",
+      "acceptable-use": "Waarvoor Formalie niet mag worden gebruikt, hoe je misbruik of een beveiligingslek meldt en wat we doen als de regels worden overtreden.",
+      "subprocessors": "De bedrijven die Formalie helpen de dienst te draaien, wat elk bedrijf doet en waar de gegevens worden verwerkt.",
+      "refunds": "Hoe facturering, verlengingen, opzeggingen en terugbetalingen werken voor de betaalde abonnementen van Formalie, afgehandeld door Paddle als officiële verkoper."
+    }
+  },
+  "trustPage": {
+    "title": "Vertrouwen en beveiliging",
+    "description": "Hoe Formalie je gegevens beschermt: de maatregelen die er vandaag zijn, je rechten en onze toezeggingen, en hoe je een probleem meldt.",
+    "metaDescription": "Werkruimtes gescheiden in de database, overal versleuteling, rollen en single sign-on, een audittrail, geteste back-ups en standaard privacy.",
+    "protectTitle": "Hoe Formalie je gegevens beschermt",
+    "items": [
+      {
+        "title": "Elke werkruimte gescheiden, in de database zelf",
+        "text": "De gegevens van elke werkruimte worden gescheiden door regels in de database (beveiliging op rijniveau in elke tabel), niet alleen door de applicatie, en geautomatiseerde tests controleren dit bij elke wijziging."
+      },
+      {
+        "title": "Overal versleuteld",
+        "text": "Al het verkeer is versleuteld. De verzoeken van de app zelf krijgen daarbovenop een tweede laag versleuteling. Opgeslagen inloggegevens, geheimen voor inloggen in twee stappen en back-ups worden versleuteld met sleutels die los van elkaar worden bewaard."
+      },
+      {
+        "title": "Jij bepaalt wie wat ziet",
+        "text": "Rollen met delen per formulier, inloggen in twee stappen, single sign-on (Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0, OpenID Connect), toegestane netwerken en sessielimieten voor elke werkruimte."
+      },
+      {
+        "title": "Elke wijziging vastgelegd",
+        "text": "Elke werkruimte heeft een audittrail van wie wat heeft gewijzigd, wanneer en vanaf waar, inclusief alles wat medewerkers van Formalie doen."
+      },
+      {
+        "title": "Medewerkers van Formalie hebben jouw toestemming nodig",
+        "text": "Support kan je werkruimte alleen openen als een beheerder dat toestaat, voor 1 uur, 24 uur of 7 dagen, alleen-lezen tenzij je wijzigingen toestaat, en je kunt de toegang op elk moment beëindigen."
+      },
+      {
+        "title": "Jouw gegevens, jouw database",
+        "text": "Bewaar antwoorden in Formalie of laat ze rechtstreeks wegschrijven naar je eigen PostgreSQL-, MySQL-, MariaDB-, SQL Server- of Oracle-database."
+      },
+      {
+        "title": "Back-ups die getest worden",
+        "text": "Versleutelde back-ups, waarvan het terugzetten vóór de lancering is getest en daarna elke maand."
+      },
+      {
+        "title": "Misbruik buiten de deur",
+        "text": "Limieten op inlogpogingen en op elk verzoek, controles tegen geautomatiseerde formulierinzendingen en maxima voor e-mails naar hetzelfde adres."
+      },
+      {
+        "title": "Betalingen zonder kaartgegevens",
+        "text": "Kaartgegevens worden ingevoerd bij onze betaalprovider en bereiken Formalie nooit."
+      },
+      {
+        "title": "Standaard privacy",
+        "text": "Geen advertenties, geen verkoop van gegevens, geen trackingcookies, en verzoeklogs worden 30 dagen bewaard in de live dienst."
+      }
+    ],
+    "rightsTitle": "Jouw rechten en onze toezeggingen",
+    "laws": "Wetten voor gegevensbescherming waaronder we werken: de Nigeria Data Protection Act 2023, de AVG van de EU en het VK, en de wetten van de landen waar onze klanten zitten.",
+    "reportTitle": "Een probleem melden",
+    "reportSecurity": "Beveiligingslek: {email}. We ondernemen geen stappen tegen onderzoek te goeder trouw dat ons {policy} volgt.",
+    "reportAbuse": "Misbruik of een verdacht formulier: {email}.",
+    "reportPrivacy": "Vragen over privacy: {email}."
   }
 }
