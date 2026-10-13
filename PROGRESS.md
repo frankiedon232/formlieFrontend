@@ -1,6 +1,6 @@
 # PROGRESS, formalieSite
 
-**Last updated:** 2026-10-13 (S7 done, waiting for the owner's review)
+**Last updated:** 2026-10-13 (S0 to S7 done and waiting for the owner's review; the open items wait on the owner or the app: Formalie's forms, the newsletter form, platform settings, final legal text, sign-up reading the plan)
 
 | Phase | What | Status | Done |
 |---|---|---|---|
@@ -97,14 +97,14 @@
 
 | Date | Request | Phase | Status |
 |---|---|---|---|
-| 2026-10-10 | Website after the owner's three reference screens; the hero grows from the sign-in data-flow animation in its own way; legal pages look like documentation; legal text comes from the platform admin later; links to the portal forms later; only cropped, watermarked screens of the app | S0 to S6 | ⬜ |
-| 2026-10-13 | Backend ready: read `/public/plans`, `/public/legal`, `/public/legal/{slug}?lang=`, `/public/platform` at `NUXT_PUBLIC_API_URL` (`https://formalie.dev:5004/api/v1`; production `https://services.formalie.com/api/v1`, never `api.formalie.com`), plain `{ success, data, meta }`; keep fallback data | S4, S5 | ⬜ |
-| 2026-10-13 | Legal pages from formlyBackend `docs/legal/`; a 7th slug `refunds` after subprocessors; "Draft" note while a document is a draft; Paddle is the merchant of record; redirect `/terms`, `/privacy`, `/refunds` | S5 | ⬜ |
-| 2026-10-13 | `/trust` "Trust and security" page from `docs/legal/trust-and-security.md`, without "Independent checks (when ready)" | S5 | ⬜ |
+| 2026-10-10 | Website after the owner's three reference screens; the hero grows from the sign-in data-flow animation in its own way; legal pages look like documentation; legal text comes from the platform admin later; links to the portal forms later; only cropped, watermarked screens of the app | S0 to S6 | ✅ |
+| 2026-10-13 | Backend ready: read `/public/plans`, `/public/legal`, `/public/legal/{slug}?lang=`, `/public/platform` at `NUXT_PUBLIC_API_URL` (`https://formalie.dev:5004/api/v1`; production `https://services.formalie.com/api/v1`, never `api.formalie.com`), plain `{ success, data, meta }`; keep fallback data | S4, S5 | ✅ |
+| 2026-10-13 | Legal pages from formlyBackend `docs/legal/`; a 7th slug `refunds` after subprocessors; "Draft" note while a document is a draft; Paddle is the merchant of record; redirect `/terms`, `/privacy`, `/refunds` | S5 | ✅ |
+| 2026-10-13 | `/trust` "Trust and security" page from `docs/legal/trust-and-security.md`, without "Independent checks (when ready)" | S5 | ✅ |
 | 2026-10-13 | Serve formlyBackend `docs/legal/security.txt` at `/.well-known/security.txt` | S0 | ✅ |
-| 2026-10-13 | Pricing from `/public/plans`; "Payments handled by Paddle" near the prices, no logo yet | S4 | ⬜ |
-| 2026-10-13 | Every section draws on the reference screens, with clean, modern, tech-style "communication" animations (data moving between systems) | S2 to S6 | ⬜ |
-| 2026-10-13 | (S2 finding) The `api-docs` screenshot shows an `api.formalie.dev` address with a key-like string; the home page uses `api-service` instead until the owner confirms or a new shot is made | S2 | ⏸ |
+| 2026-10-13 | Pricing from `/public/plans`; "Payments handled by Paddle" near the prices, no logo yet | S4 | ✅ |
+| 2026-10-13 | Every section draws on the reference screens, with clean, modern, tech-style "communication" animations (data moving between systems) | S2 to S6 | ✅ |
+| 2026-10-13 | (S2 finding) The `api-docs` screenshot shows an `api.formalie.dev` address with a key-like string; the home page uses `api-service` instead (owner, 2026-10-13: keep the safe shot) | S2 | ✅ |
 | 2026-10-13 | Sample names are English ("Emma Clarke"), nothing Nigeria-themed on marketing pages | S2 | ✅ |
 | 2026-10-13 | SEO built into every page as it is made: "this is the real central page, so it must be loaded with SEO" | S3 to S7 | ✅ (ongoing) |
 | 2026-10-13 | Tighter spacing site-wide (hero closer to the header, less space between sections), nicer cards, and a richer "Built for teams in every sector" with movement | S2 to S4 | ✅ |
