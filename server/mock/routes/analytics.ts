@@ -42,12 +42,13 @@ function periodOf(query: Record<string, unknown>): Period {
 const before = (period: Period): Period => ({ from: period.from - period.days * DAY, to: period.from - DAY, days: period.days })
 const iso = (time: number) => new Date(time).toISOString().slice(0, 10)
 
-/** The form's events whose (UTC) day falls in the period. */
-const eventsIn = (events: FillEvent[], period: Period) => {
+/** The form's events whose day, in the workspace's time zone, falls in the period: the same day visitsPerDay counts
+ *  them on, so the totals and the daily rows always agree (as the backend does). */
+const eventsIn = (events: FillEvent[], period: Period, timeZone?: string) => {
   const first = iso(period.from)
   const last = iso(period.to)
   return events.filter(event => {
-    const day = event.at.slice(0, 10)
+    const day = iso(dayOf(Date.parse(event.at), timeZone))
     return day >= first && day <= last
   })
 }
@@ -62,7 +63,7 @@ interface Days {
 }
 function daysOf(entries: IndexedResponse[], all: FillEvent[], period: Period, timeZone?: string): Days {
   const dates = Array.from({ length: period.days }, (_, i) => iso(period.from + i * DAY))
-  const events = eventsIn(all, period)
+  const events = eventsIn(all, period, timeZone)
   // Days are the workspace's (its time zone, owner 2026-10-15)
   const daily: AnalyticsDay[] = visitsPerDay(events, dates, timeZone).map(day => ({ ...day, completions: 0 }))
   const within: IndexedResponse[] = []

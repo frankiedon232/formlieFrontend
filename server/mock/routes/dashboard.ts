@@ -81,26 +81,30 @@ export const workspaceDashboard = defineMockRoute(({ event, query }) => {
     for (const visit of formFillEvents(tenant, form).events) {
       if (visit.kind !== 'start') continue
       const time = Date.parse(visit.at)
-      if (time >= from && time <= end) {
+      const day = dayOf(time, calendar.timeZone)
+      if (day >= from && day <= to) {
         startedNow.add(visit.session)
         const i = index.get(iso(bucketStart(time, group, calendar)))
         if (i !== undefined) startedIn[i]!.add(visit.session)
-      } else if (time >= prevFrom && time < from) startedBefore.add(visit.session)
+      } else if (day >= prevFrom && day < from) startedBefore.add(visit.session)
     }
     const trend = buckets.map(() => 0)
     let own = 0
     let ownPrev = 0
     let ownNew = 0
+    // A response or a visit belongs to the period by its day in the workspace's time zone, the same day its bucket
+    // uses, so the totals and the chart always agree (as the backend does)
     for (const entry of entries) {
       if (entry.status === 'new') ownNew++
-      if (entry.at >= from && entry.at <= end) {
+      const day = dayOf(entry.at, calendar.timeZone)
+      if (day >= from && day <= to) {
         own++
         const i = index.get(iso(bucketStart(entry.at, group, calendar)))
         if (i !== undefined) {
           series[i]!.responses++
           trend[i]!++
         }
-      } else if (entry.at >= prevFrom && entry.at < from) ownPrev++
+      } else if (day >= prevFrom && day < from) ownPrev++
     }
     responses += own
     previous += ownPrev
