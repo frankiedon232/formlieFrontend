@@ -98,7 +98,7 @@ On each server:
    - Fresh keys: `fmly/bin/python scripts/gen_keys.py --write` **on the server** (never copy development keys).
    - Email (SES), Google, Facebook, Anthropic, MaxMind, the platform admin keys, `SUPPORT_EMAIL`, `SUPPORT_URL`, `EMAIL_ASSETS_URL=https://manage.formalie.com`.
    - `STORAGE_BACKEND=r2` with the `R2_*` settings (Cloudflare R2, owner 2026-10-15; formlyBackend `docs/FILE-STORAGE-GUIDE.md`): every server reaches the same bucket, so no shared volume is needed.
-   - `LOG_DIR=/srv/formalie/shared/logs`, `ALERT_EMAILS` = your address.
+   - `LOG_DIR=/srv/formalie/shared/logs`.
 4. ⬜ Create roles and the database: `fmly/bin/python scripts/db_bootstrap.py` (uses `DB_SUPERUSER_URL` once; afterwards remove that line from `.env`).
    - (B17) Set `DB_ADMIN_API_URL` first: the bootstrap creates `formalie_admin_api`, the only role allowed to run the platform admin functions, and must run before `alembic upgrade head` reaches migration 0036 (if it runs after, it applies the same grants itself).
 5. ⬜ Build the schema: `fmly/bin/alembic upgrade head`. The migrations also fill the global tables (plans, email templates, templates, themes, help centre). **Never run `scripts/seed_dev.py` in production.**
@@ -372,7 +372,7 @@ Do these in a private browser window; tick each.
 ## Part 13. Running it day to day
 
 - ⬜ **Monitoring:** an uptime check on `https://services.formalie.com/api/v1/health` and `https://manage.formalie.com` (for example Cloudflare Health Checks or UptimeRobot), alerts by email.
-- ⬜ **Alerts:** `ALERT_EMAILS` receives the backend's CRITICAL errors. Monitoring and alerts are the platform admin's Operations page, fed by `/internal/admin/v1/health/services` (services, queues and dead letters, Beat's heartbeat, the last backup, partitions, connections, replica lag, disk, certificate).
+- ⬜ **Alerts:** the platform admin's (owner, 2026-10-15: the backend sends none; it reports CRITICAL errors in `formaly.error_logs` for the portal). Monitoring and alerts are the platform admin's Operations page, fed by `/internal/admin/v1/health/services` (services, queues and dead letters, Beat's heartbeat, the last backup, partitions, connections, replica lag, disk, certificate).
 - ⬜ **Backups:** a monthly restore drill.
 - ⬜ **Updates:** Ubuntu security updates are automatic; once a month, `pip list --outdated` and `pnpm outdated` reviewed with Claude.
 - ⬜ **Keys:** rotate the platform admin keys and the SAML certificate before they expire (PRODUCTION-CHECKLIST section 2).

@@ -78,7 +78,6 @@ Generate fresh keys with `fmly\Scripts\python.exe scripts\gen_keys.py --write` o
 | `ANTHROPIC_MODEL`, `ANTHROPIC_FAST_MODEL` (B13) | `claude-opus-5-5`, `claude-haiku-5-5` | ⬜ keep, or the models the owner chooses (the fast one answers designs, reading answers, questions and summaries) |
 | `ANTHROPIC_TIMEOUT_SECONDS`, `ANTHROPIC_MAX_RETRIES`, `ANTHROPIC_FALLBACKS` (B13) | `90`, `2`, `true` | ⬜ keep; the API servers must reach `api.anthropic.com` (outgoing HTTPS) |
 | `RATE_LIMIT_ENABLED`, `RATE_LIMIT_FAIL_OPEN` | `true`, `true` | ⬜ `true`; decide fail open or closed when Redis is down |
-| `ALERT_EMAILS` | empty | ⬜ the team's address for CRITICAL errors |
 | `LOG_CONSOLE_FORMAT` | pretty | ⬜ `json` |
 | `REQUEST_LOG_SINK` | `database` | ⬜ `celery` (the `logs` queue) at volume |
 | `MAXMIND_ACCOUNT_ID`, `MAXMIND_LICENSE_KEY` | maybe empty | ⬜ set; Beat refreshes the databases weekly |
