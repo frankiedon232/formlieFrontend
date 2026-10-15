@@ -53,9 +53,19 @@ Open **Settings → Sign-in → Single sign-on** in the workspace and pick **Mic
 - **Step 3, "Who signs in this way":**
   - **Button text:** what the sign-in page shows, "Continue with {text}" (for example `Microsoft` or `Okta`).
   - **Email domains:** the domain(s) of the provider's people (Parts 3 to 5 tell you which). A list of domains, not of people: nobody needs adding in advance. Only addresses of these domains (subdomains too) can sign in this way (anyone else is refused, FRM-AUTH-1014), and people typing such an address on the sign-in page are sent straight to the provider.
-  - **Required for these domains:** leave **off** for the first test. On means those people can only sign in through the provider (their password stops working in this workspace).
-  - **Create accounts on first sign-in:** **on** for this test (anyone the provider lets in gets an account). Off means only people already in People can sign in.
-  - **Role for new accounts:** Member.
+  - **Required for these domains:** leave **off** for the first test. On means those people can only sign in through the provider (their password, Google and Facebook sign-in stop working in this workspace, FRM-AUTH-1019). It needs at least one domain.
+  - **Create accounts on first sign-in:** **on** for this test, with **Role for new accounts** Member.
+    - **On:** someone new from the listed domains whom the provider lets in gets an account straight away, with that role.
+    - **Off:** someone new from the listed domains **asks for access**: they appear in **People** as a pending request ("via single sign-on"), the admins are notified (Settings → Notifications, "Someone asks to join"), and the person sees "Your account is waiting for an admin's approval". An admin **approves** them with a role (they get an email and their next sign-in through the provider works) or **rejects** them (they are refused from then on, until an admin adds them in People).
+  - **What each combination does:**
+
+    | Email domains | Create accounts on first sign-in | Someone already in People | Someone new whom the provider lets in |
+    | --- | --- | --- | --- |
+    | **none listed** | (no effect) | signs in through the provider, whatever their address | **refused** (FRM-AUTH-1022, "ask an admin to invite you"): with no domains nobody new can join or ask, since anyone the provider knows could. The sign-in page doesn't send anyone to the provider by their address, people press "Continue with {text}". "Required" can't be turned on. |
+    | listed | off | signs in, if their address is in the domains | **asks for access**, an admin approves or rejects |
+    | listed | on | signs in, if their address is in the domains | **account created** with the role for new accounts |
+
+    In every case the provider decides first (only people it lets into the app get back to Formalie), and Formalie's own rules still apply: a suspended person, a request still waiting, or a network the workspace doesn't allow is refused, and everyone confirms the usual sign-in code.
 
 Then: **Save** → **Test** ("The test passed. You can turn it on.") → **Turn on**. The status reads "On", and the workspace's sign-in page shows "Continue with {text}".
 
@@ -179,6 +189,7 @@ For each workspace, in a **private window** (so your own session doesn't get in 
 2. ⬜ **By the button:** press **Continue with {text}** → the provider's page → sign in as a test person → back in Formalie, signed in, on the dashboard.
 3. ⬜ **By email:** sign out, type a test person's email (in the SSO domain) into the email field and continue: Formalie sends them straight to the provider.
 4. ⬜ **In the owner's window:** **People** lists the new person with the role Member; **Audit trail** shows their sign-in through single sign-on.
+4b. ⬜ **Asking for access:** turn **Create accounts on first sign-in** off (Save; the connection stays on). In the private window, sign in through the provider as another test person who isn't in People yet: Formalie says the account is waiting for an admin's approval. In the owner's window the bell (and the email, if Settings → Notifications sends it) says someone asks to join; **People → Pending** shows them "via single sign-on". **Approve** with a role, then sign in again as that person: it works. Try a third person and **Reject** them: their next attempt is refused.
 5. ⬜ **Required:** in Settings → Sign-in → Single sign-on, turn on **Required for these domains** (Formalie warns if your own address is in the domain). In the private window, that person's password sign-in is now refused; only the provider works.
 6. ⬜ **Turn off:** Turn off → the button disappears from the sign-in page; accounts stay.
 7. ⬜ **Someone not allowed:** in the provider, remove a person's access to the app (Entra: Enterprise applications → Formalie → Properties → Assignment required on, then leave them out of Users and groups; Google: user access off; Okta: unassign; OneLogin: remove the app), then try: the provider itself refuses them, Formalie never signs them in.
@@ -196,6 +207,8 @@ For each workspace, in a **private window** (so your own session doesn't get in 
 | Formalie: "Single sign-on didn't finish" (FRM-AUTH-1023) | the secret is wrong, the certificate changed, or the computer's clock is off by minutes | check the secret / certificate, run Test again, check the Windows clock |
 | Google: "app_not_configured_for_user" | the app isn't on for that person yet | User access → ON, wait a few minutes |
 | OneLogin: no redirect back | the ACS URL Validator pattern doesn't match | escape every `.` and `/` as in Part 5c |
+| Formalie: "Your account is waiting for an admin's approval" (FRM-USER-1010) | Create accounts on first sign-in is off, so the person asked for access | an admin approves them in People → Pending |
+| Formalie: "There's no account with this email address in this workspace" (FRM-AUTH-1022) | no email domains are listed (nobody new can join), or an admin rejected this person's request | list the domain (and turn on Create accounts, or approve the request), or add the person in People |
 | Can't get back in as owner | "Required" is on for your own domain | sign in through the provider, or ask Claude to turn it off in the development database |
 
 Logs while testing: `powershell -ExecutionPolicy Bypass -File scripts\dev-logs.ps1` in formlyBackend shows each sign-in attempt and why it was refused (secrets and tokens are never written to the logs).
