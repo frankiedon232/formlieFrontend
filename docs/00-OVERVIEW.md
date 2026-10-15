@@ -70,7 +70,7 @@ Company profile, branding, subdomain, sign-in (email/password, Google and Facebo
 
 **Two kinds of sign-in besides email and password** (owner, 2026-10-11):
 - **Social sign-in** (Google, Facebook) is Formalie's own, shared by every workspace. It serves sign-up on `manage.` (the new workspace's Owner) and every workspace's sign-in page (anyone with an account there), in every plan (owner, 2026-10-12). Microsoft accounts come in through the workspace's single sign-on (Entra ID), not as a social button.
-- **Single sign-on** (SAML 2.0 / OpenID Connect: Okta, Microsoft Entra ID, Google Workspace …) is the workspace's own corporate sign-in. Its admins connect their identity provider, and can make it required for their email domains.
+- **Single sign-on** (three choices: Microsoft Entra ID, Google Workspace, or SAML 2.0 for any other provider such as Okta, OneLogin, JumpCloud or ADFS) is the workspace's own corporate sign-in. Its admins connect their identity provider, and can make it required for their email domains.
 
 ### 10. Users, roles, access (RBAC)
 
