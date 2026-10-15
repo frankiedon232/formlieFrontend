@@ -6,7 +6,7 @@
 -->
 <script setup lang="ts">
 import { z } from 'zod'
-import { SSO_ICONS, SSO_NAMES, SSO_PROTOCOL, type SsoConnection, type SsoProvider, type SsoServiceProvider, type SsoSettings } from '#shared/types/sso'
+import { SAML_PROVIDERS_EXAMPLES, SSO_ICONS, SSO_NAMES, SSO_PROTOCOL, type SsoConnection, type SsoProvider, type SsoServiceProvider, type SsoSettings } from '#shared/types/sso'
 import { isEmailDomain } from '#shared/utils/settings/schemas'
 
 const props = defineProps<{ provider: SsoProvider; connection: SsoConnection | null; serviceProvider: SsoServiceProvider }>()
@@ -100,7 +100,7 @@ async function save() {
     <!-- 1. Into the provider -->
     <section class="flex flex-col gap-3">
       <h3 class="text-xs font-medium text-highlighted">{{ t('settings.sso.step1', { provider: SSO_NAMES[provider] }) }}</h3>
-      <p class="text-xs text-muted">{{ t(`settings.sso.how.${provider}`) }}</p>
+      <p class="text-xs text-muted">{{ t(`settings.sso.how.${provider}`, { providers: SAML_PROVIDERS_EXAMPLES.join(', ') }) }}</p>
       <div class="grid grid-cols-1 gap-3 lg:grid-cols-2">
         <AppCopyField v-for="item in copyValues" :key="item.label" :label="item.label" :value="item.value" monospace />
       </div>
@@ -111,7 +111,7 @@ async function save() {
       <h3 class="text-xs font-medium text-highlighted">{{ t('settings.sso.step2', { provider: SSO_NAMES[provider] }) }}</h3>
       <template v-if="protocol === 'oidc'">
         <UFormField name="issuer" :label="t('settings.sso.issuer')" :help="t('settings.sso.issuerHelp')">
-          <UInput v-model="state.issuer" placeholder="https://example.okta.com" icon="i-lucide-globe" class="w-full" autocomplete="off" />
+          <UInput v-model="state.issuer" placeholder="https://login.microsoftonline.com/…/v2.0" icon="i-lucide-globe" class="w-full" autocomplete="off" />
         </UFormField>
         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <UFormField :label="t('settings.sso.clientId')">

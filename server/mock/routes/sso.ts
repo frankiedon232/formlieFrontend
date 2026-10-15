@@ -14,8 +14,8 @@
 import { requireFeature } from '../core/plan'
 import type { H3Event } from 'h3'
 import { z } from 'zod'
-import { SSO_PROTOCOL, SSO_PROVIDERS, type SsoProblem, type SsoServiceProvider, type SsoSettings } from '#shared/types/sso'
-import { isEmailDomain } from '#shared/utils/settings/schemas'
+import { SSO_PROTOCOL, type SsoProblem, type SsoServiceProvider, type SsoSettings } from '#shared/types/sso'
+import { ssoSaveSchema } from '../core/ssoSchema'
 import { actorOf, recordAudit } from '../core/audit'
 import { requireAdmin } from '../core/auth'
 import { MockError, ok } from '../core/respond'
@@ -40,35 +40,10 @@ const audit = (event: H3Event, tenant: MockTenant, user: MockUser, field: string
 
 export const getSso = defineMockRoute(({ event }) => ok(view(event, requireAdmin(event).tenant)))
 
-const url = z
-  .string()
-  .trim()
-  .max(500)
-  .nullable()
-  .transform(value => value || null)
-  .refine(value => !value || /^https:\/\/[^\s]+$/i.test(value), 'https')
-const text = (max: number) =>
-  z
-    .string()
-    .trim()
-    .max(max)
-    .nullable()
-    .transform(value => value || null)
-const saveSchema = z.object({
-  provider: z.enum(SSO_PROVIDERS),
-  label: z.string().trim().min(1).max(40),
-  saml: z.object({ metadata_url: url, entity_id: text(500), sso_url: url, certificate: text(10_000) }).partial().optional(),
-  oidc: z.object({ issuer: url, client_id: text(300), client_secret: z.string().max(1000).nullable().optional() }).optional(),
-  domains: z.array(z.string().trim().toLowerCase().transform(value => value.replace(/^@/, '')).refine(isEmailDomain, 'domain')).max(20),
-  enforce: z.boolean(),
-  auto_create: z.boolean(),
-  default_role: z.string().min(1).max(100),
-})
-
 export const saveSso = defineMockRoute(({ event, body }) => {
   const { tenant, user } = requireAdmin(event)
   requireFeature(tenant, 'sso')
-  const input = parseBody(saveSchema, body)
+  const input = parseBody(ssoSaveSchema, body)
   if (input.default_role === 'owner' || !rolesOf(tenant).some(role => role.id === input.default_role)) throw new MockError('FRM-GEN-1002', [{ field: 'default_role', message: 'role' }])
   if (input.enforce && !input.domains.length) throw new MockError('FRM-GEN-1002', [{ field: 'domains', message: 'required' }])
   const current = ssoOf(tenant)

@@ -1,12 +1,13 @@
 <!--
   Settings → Sign-in → Single sign-on (owner 2026-10-10): one connection to the company's identity provider
-  (Okta, Microsoft Entra ID, Google Workspace, OneLogin or any SAML 2.0 / OpenID Connect provider). Pick the
+  in three choices (owner 2026-10-15): Microsoft Entra ID, Google Workspace, or SAML 2.0 for any other provider
+  (Okta, OneLogin, JumpCloud, ADFS, Ping, Auth0, Keycloak and others, named under the choices). Pick the
   provider, copy Formalie's values into it, paste its values here, test, then switch it on. On the sign-in page
   people see "Continue with …", and addresses of the chosen domains go straight to the provider (required, if set).
   Saves on its own, apart from the page's Save.
 -->
 <script setup lang="ts">
-import { SSO_ICONS, SSO_NAMES, SSO_PROVIDERS, type SsoProvider, type SsoSettings } from '#shared/types/sso'
+import { SAML_PROVIDERS_EXAMPLES, SSO_ICONS, SSO_NAMES, SSO_PROVIDERS, type SsoProvider, type SsoSettings } from '#shared/types/sso'
 
 const { t } = useI18n()
 const api = useApi()
@@ -103,5 +104,6 @@ const STATUS_COLOR = { draft: 'warning', tested: 'neutral', active: 'success' } 
     <div class="grid grid-cols-2 gap-2 sm:grid-cols-3">
       <UButton v-for="provider in SSO_PROVIDERS" :key="provider" :label="SSO_NAMES[provider]" :icon="SSO_ICONS[provider]" color="neutral" variant="outline" class="justify-start" :ui="{ label: 'truncate' }" @click="editing = provider" />
     </div>
+    <p class="flex items-start gap-1.5 text-xs text-muted"><UIcon name="i-lucide-info" class="mt-0.5 size-3.5 shrink-0" />{{ t('settings.sso.samlAny', { providers: SAML_PROVIDERS_EXAMPLES.join(', ') }) }}</p>
   </div>
 </template>

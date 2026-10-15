@@ -1,6 +1,6 @@
 <!--
-  Settings → Sign-in (F14 M3): single sign-on with the company's identity provider (Okta, Microsoft Entra ID, Google
-  Workspace, OneLogin, SAML 2.0, OpenID Connect; saves on its own). The workspace doesn't choose its other ways in: the
+  Settings → Sign-in (F14 M3): single sign-on with the company's identity provider (Microsoft Entra ID, Google
+  Workspace, or SAML 2.0 for any other such as Okta; saves on its own). The workspace doesn't choose its other ways in: the
   sign-in page always offers email and password, Google and Facebook, and single sign-on once it is on (owner, 2026-10-12);
   the one-time code every sign-in asks for (by email; text message optional), how long it lasts, how many tries, and the email
   domains allowed to sign in. A live miniature of the sign-in page sits beside it. The server refuses a

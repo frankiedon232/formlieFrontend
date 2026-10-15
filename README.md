@@ -91,21 +91,23 @@ Workspaces created through signup live until the dev server restarts.
 3. As the owner, **People → Roles & access**: make a role (or edit one) and tick what it may view, create, edit, delete, export or manage per area; picking an action ticks the view it needs. Give it to yourself (your panel → **Edit** → Role).
 4. Sign out, sign in as yourself: the rail, menus, pages and buttons follow the role; an address the role doesn't open shows **No access**, and the API refuses it too.
 
-## Single sign-on for a workspace (Okta, Microsoft Entra ID, Google Workspace, OneLogin, SAML 2.0, OpenID Connect)
+## Single sign-on for a workspace (Microsoft Entra ID, Google Workspace, SAML 2.0)
 
 A workspace's admin connects the company's identity provider in **Settings → Sign-in → Single sign-on**; its people then press "Continue with …" on `https://{workspace}.formalie.dev:2202/auth/login` (production: `https://{workspace}.formalie.com`). Single sign-on needs a plan with it (Professional, Business, Enterprise).
 
-**The full step-by-step for every provider is in [`docs/SSO-SETUP-GUIDE.md`](docs/SSO-SETUP-GUIDE.md)**: free test accounts, where to click in each provider's console, what to copy into Formalie, the sign-in test and a troubleshooting table.
+Three choices (owner, 2026-10-15): **Microsoft Entra ID** (OpenID Connect), **Google Workspace** (SAML 2.0) and **SAML 2.0** for every other identity provider. Okta, OneLogin, JumpCloud, ADFS, Ping, Auth0, Keycloak and the rest are all set up as SAML 2.0.
+
+**The full step-by-step for each choice is in [`docs/SSO-SETUP-GUIDE.md`](docs/SSO-SETUP-GUIDE.md)**: free test accounts, where to click in each provider's console, what to copy into Formalie, the sign-in test and a troubleshooting table.
 
 In short, for a development test:
 1. Add the workspace to the Windows hosts file (`127.0.0.1   {workspace}.formalie.dev`).
 2. Sign up the workspace at `https://manage.formalie.dev:2202/auth/signup` with your own email (outside the SSO domain).
-3. Give it a plan with single sign-on (payments aren't connected yet), in `C:NETPROJECTSORMLYBACKEND`:
+3. Give it a plan with single sign-on (payments aren't connected yet), in `C:\UNETPROJECTS\formlyBackend`:
    ```
    fmly\Scripts\python.exe scripts\dev_set_plan.py {workspace}
    ```
-4. In the provider, add Formalie with the addresses the Formalie screen shows (OIDC: the sign-in redirect address; SAML: the reply (ACS) address and entity ID).
-5. Paste the provider's values into Formalie (OIDC: issuer, client ID, client secret; SAML: metadata address, or entity ID, sign-on address and certificate), add the email domains, then **Save → Test → Turn on**.
+4. In the provider, add Formalie with the addresses the Formalie screen shows (Entra ID: the sign-in redirect address; Google Workspace and SAML 2.0: the reply (ACS) address and entity ID).
+5. Paste the provider's values into Formalie (Entra ID: issuer, client ID, client secret; SAML: metadata address, or entity ID, sign-on address and certificate), add the email domains, then **Save → Test → Turn on**.
 6. Sign in as one of the provider's people in a private window.
 
 ## API service: test cases (F13)

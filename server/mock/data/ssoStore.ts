@@ -3,7 +3,7 @@
  * one per workspace. The client secret stays here only (the backend keeps it encrypted).
  */
 import { hasFeature } from '../core/plan'
-import type { SsoConnection, SsoPublic } from '#shared/types/sso'
+import { SSO_PROVIDERS, type SsoConnection, type SsoPublic } from '#shared/types/sso'
 import { loadPersisted, savePersisted } from '../core/persist'
 import type { MockTenant } from './tenants'
 
@@ -12,7 +12,12 @@ export type StoredSso = SsoConnection & { client_secret: string | null }
 const stores = new Map<string, StoredSso>(Object.entries(loadPersisted<Record<string, StoredSso>>('sso', {})))
 const save = () => savePersisted('sso', () => Object.fromEntries(stores))
 
-export const ssoOf = (tenant: MockTenant): StoredSso | null => stores.get(tenant.id) ?? null
+/** A connection saved before the choices became three (Okta, OneLogin, OpenID Connect, owner 2026-10-15) is set up
+ *  again as SAML 2.0, so the mock reads it as none. */
+export function ssoOf(tenant: MockTenant): StoredSso | null {
+  const stored = stores.get(tenant.id) ?? null
+  return stored && (SSO_PROVIDERS as readonly string[]).includes(stored.provider) ? stored : null
+}
 
 export function setSso(tenant: MockTenant, connection: StoredSso | null) {
   if (connection) stores.set(tenant.id, connection)
