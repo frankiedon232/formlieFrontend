@@ -6,7 +6,7 @@ This file is shared and identical in all five projects: formalieFrontend, formly
 
 Marks: ⬜ to do · ✅ done · ⏸ waiting. Tick a step only once it is done on the real servers.
 
-**Before you start, ask Claude to walk you through it.** The steps marked **(after B17)** depend on switch-over work that is still open in B17 (object storage, how workspaces' own domains are added). Built on 2026-10-12: the portal's static build with every page client-rendered, its Cloudflare Worker (`/api/*` proxied from every portal host to `services.formalie.com` with the edge secret, form link previews, `/s/` short links) and the release check (`pnpm release:check`); the API trusts the Worker's forwarded headers only with that secret. Claude goes through this guide with you, line by line.
+**Before you start, ask Claude to walk you through it.** The steps marked **(after B17)** depend on switch-over work that is still open in B17 (how workspaces' own domains are added; file storage is chosen and built: Cloudflare R2, 2026-10-15). Built on 2026-10-12: the portal's static build with every page client-rendered, its Cloudflare Worker (`/api/*` proxied from every portal host to `services.formalie.com` with the edge secret, form link previews, `/s/` short links) and the release check (`pnpm release:check`); the API trusts the Worker's forwarded headers only with that secret. Claude goes through this guide with you, line by line.
 
 ---
 
@@ -97,7 +97,7 @@ On each server:
    - `INTERNAL_TOKEN` stays **empty** (retired: the frontend no longer has a server; it only guards the old server-rendered reads `/api/v1/internal/public-forms/{key}` and `/api/v1/internal/short/{code}`, which then refuse everything).
    - Fresh keys: `fmly/bin/python scripts/gen_keys.py --write` **on the server** (never copy development keys).
    - Email (SES), Google, Facebook, Anthropic, MaxMind, the platform admin keys, `SUPPORT_EMAIL`, `SUPPORT_URL`, `EMAIL_ASSETS_URL=https://manage.formalie.com`.
-   - `STORAGE_DIR=/srv/formalie/shared/data/storage` on a disk both app-1 and worker-1 reach (a shared volume), until object storage (S3) is added in B17.
+   - `STORAGE_BACKEND=r2` with the `R2_*` settings (Cloudflare R2, owner 2026-10-15; formlyBackend `docs/FILE-STORAGE-GUIDE.md`): every server reaches the same bucket, so no shared volume is needed.
    - `LOG_DIR=/srv/formalie/shared/logs`, `ALERT_EMAILS` = your address.
 4. ⬜ Create roles and the database: `fmly/bin/python scripts/db_bootstrap.py` (uses `DB_SUPERUSER_URL` once; afterwards remove that line from `.env`).
    - (B17) Set `DB_ADMIN_API_URL` first: the bootstrap creates `formalie_admin_api`, the only role allowed to run the platform admin functions, and must run before `alembic upgrade head` reaches migration 0036 (if it runs after, it applies the same grants itself).

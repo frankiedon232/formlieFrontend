@@ -24,7 +24,7 @@ Marks: ⬜ to do · ✅ done in production · ⏸ waiting on a decision or an ac
 - ⬜ **Domain and DNS:** `formalie.com` on Cloudflare. Static front ends on Cloudflare: wildcard `*.formalie.com`, `manage.formalie.com` and `forms.formalie.com` (the portal build), `formalie.com` and `www` (the website build), the platform admin's own host (its build). To the servers through Nginx: `services.formalie.com` (the API) and `api.formalie.com` (the API service gateway).
 - ⬜ **TLS certificates:** real certificates (Cloudflare origin certificates or Let's Encrypt), wildcard included. The mkcert certificates (`C:\devcerts\…`) and `NODE_EXTRA_CA_CERTS` are development only.
 - ⬜ **Email sending providers (owner, 2026-10-15): two.** **Amazon SES** as the primary and **Postmark** as the backup, used automatically whenever SES fails (sign-in codes depend on email). Both verified on `formalie.com` with DKIM, SES with the custom MAIL FROM `mail.formalie.com`, Postmark with the Return-Path `pm-bounces.formalie.com`, and DMARC; SES out of its sandbox, Postmark's account approved. Step by step in formlyBackend `docs/EMAIL-SETUP-GUIDE.md`. Development uses Mailpit.
-- ⬜ **Object storage:** the cloud provider's S3 for uploads and exports. Development keeps them in the `data/storage` folder.
+- ⬜ **File storage: Cloudflare R2** (owner, 2026-10-15): one private bucket `formalie-files`, an R2 API token with Object Read & Write on that bucket only (formlyBackend `docs/FILE-STORAGE-GUIDE.md`). Development keeps files in the `data/storage` folder. The server refuses to start in staging or production without R2. Stored files are not in `scripts/backups.py`'s backup (R2 keeps them); a second copy (another bucket) can come later.
 - ⬜ **Payments: Paddle** (primary, merchant of record; owner 2026-10-13; formlyBackend docs/PADDLE-SETUP-GUIDE.md): the live account approved, `PADDLE_ENVIRONMENT=production`, a live `PADDLE_API_KEY` (permissions as in the guide), a live `PADDLE_CLIENT_TOKEN`, the notification destination at `https://services.formalie.com/api/v1/billing/webhooks/paddle` and its `PADDLE_WEBHOOK_SECRET`, `scripts/paddle_catalog.py --apply` run with the live key, the default payment link `https://manage.formalie.com/settings/billing`, then one real small purchase and refund.
 - ⏸ **Payments: Payoneer** (second option, later): live keys and the webhook secret when it is connected.
 - ⏸ **SMS provider** for text-message codes: **Twilio** (owner, 2026-10-15; Vonage can be added later as a backup with `SMS_FALLBACK_PROVIDER`; the owner sets up the account; step by step in formlyBackend `docs/SMS-SETUP-GUIDE.md`). Production: billing on, the countries served allowed, sender registration where a country requires it (US A2P 10DLC).
@@ -39,7 +39,7 @@ Generate fresh keys with `fmly\Scripts\python.exe scripts\gen_keys.py --write` o
 | --- | --- | --- |
 | `APP_ENV` | `development` | ⬜ `production`, always set explicitly (B17: unset means production; staging and production refuse to start without `FERNET_KEYS`, `SECRET_KEYS`, `ID_REF_*`, `DB_APP_URL`, broker and Redis credentials, or with any `*_ALLOW_LOCAL` on; `dev_*` helpers only with exactly `development`) |
 | `APP_RELEASE` | `0.0.0-dev` | ⬜ the release version |
-| `DOCS_ENABLED` | `true` | ⬜ `false` (no `/docs`, `/redoc`) |
+| `DOCS_ENABLED`, `DOCS_PATH` | `true`, a hidden prefix such as `/k7q2-x9m4x1` (docs at `{DOCS_PATH}/docs` and `/redoc`) | ⬜ `false` and empty (no docs at all; the server never serves them in staging or production anyway) |
 | `SSL_CERTFILE` / `SSL_KEYFILE` | mkcert files | ⬜ empty when Nginx ends TLS; otherwise the real certificate |
 | `ROOT_DOMAIN` | `formalie.dev` | ⬜ `formalie.com` |
 | `TRUSTED_PROXIES` | `127.0.0.1/32,::1/128` | ⬜ the Nginx servers' addresses (and Cloudflare's ranges if Nginx doesn't rewrite them) |
@@ -64,7 +64,8 @@ Generate fresh keys with `fmly\Scripts\python.exe scripts\gen_keys.py --write` o
 | Website's API address (formalieSite `NUXT_PUBLIC_API_URL`) | `https://formalie.dev:5004/api/v1` | ⬜ `https://services.formalie.com/api/v1` (the `/public/plans`, `/public/legal`, `/public/platform` routes), never `api.formalie.com`, which is customers' own API |
 | `LEGAL_TERMS_URL`, `LEGAL_PRIVACY_URL` | development `https://formalie.dev:3033/legal/terms`, `/legal/privacy` (the website's dev server) | ⬜ the website's legal pages (documentation style, `docs/legal/` drafts reviewed by a lawyer and filled in); check they open |
 | `SUPPORT_EMAIL`, `SUPPORT_URL` (B14) | `support@formalie.com`, empty | ⬜ the real support mailbox (it must receive mail) and, if there is one, the support page; shown on the help centre's home until the platform settings take over |
-| `STORAGE_DIR` | `data/storage` | ⬜ replaced by the object storage settings (to be added when storage is chosen) |
+| `STORAGE_BACKEND`, `STORAGE_DIR` | `folder`, `data/storage` | ⬜ `r2` (`STORAGE_DIR` unused) |
+| `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET`, `R2_ENDPOINT` | empty | ⬜ the Cloudflare account ID, the R2 API token's key pair, `formalie-files`, empty (or the `.eu.` address for an EU-jurisdiction bucket) |
 | `DATASOURCES_ALLOW_LOCAL` | `false` | ⬜ `false` (never true in production) |
 | `WEBHOOKS_ALLOW_LOCAL` | `false` (`true` while trying a receiver on this machine) | ⬜ `false` (never true in production; ignored there anyway) |
 | `EGRESS_IPS` | empty | ⬜ Formalie's fixed outgoing addresses, shown to customers for their database firewall |

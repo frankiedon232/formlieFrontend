@@ -9,7 +9,7 @@
 | Frontend run     | `pnpm dev --host 0.0.0.0 --port 2202 --https --https.cert=C:\devcerts\formalie.pem --https.key=C:\devcerts\formalie-key.pem`        |
 | Backend project  | `formlyBackend`, Python 3.11.9, venv, `pip install fastapi[all]`                                                                    |
 | Backend run      | `uvicorn app.run:app --host 0.0.0.0 --port 5004 --no-proxy-headers --ssl-certfile C:\devcerts\formalie.pem --ssl-keyfile C:\devcerts\formalie-key.pem` (or `fmly\Scripts\python.exe -m app.run`). **`--no-proxy-headers` is required:** the app reads `X-Forwarded-*` itself, only from `TRUSTED_PROXIES`; uvicorn's own handling would hide the real proxy, and workspaces would no longer be found from `X-Forwarded-Host` |
-| API docs         | `https://formalie.dev:5004/docs`, `https://formalie.dev:5004/redoc`                                                                 |
+| API docs         | `https://formalie.dev:5004{DOCS_PATH}/docs` and `{DOCS_PATH}/redoc`, the hidden prefix in the backend's `.env` (2026-10-15)         |
 | API service run  | Nothing extra: the backend on 5004 answers `https://api.formalie.dev:5004/{apiKey}/{endpoint}` itself (it hands every request for `api.formalie.dev` to the API service's app). As its own process, like production: `fmly\Scripts\python.exe -m app.gateway` (or `uvicorn app.gateway:app --host 0.0.0.0 --port 5005 --no-proxy-headers --ssl-certfile C:\devcerts\formalie.pem --ssl-keyfile C:\devcerts\formalie-key.pem`) → `https://api.formalie.dev:5005/…`. Needs the hosts line `127.0.0.1 api.formalie.dev` |
 | Certificate      | mkcert: `formalie.dev *.formalie.dev localhost *.localhost 127.0.0.1 ::1 <LAN IP>` (see Access matrix)                              |
 
@@ -65,7 +65,7 @@ Installed directly on the machine, **no Docker** (owner, 2026-10-10). Production
 | Redis 7 | WSL (Ubuntu) | 6379 | cache, rate limits, nonces, session keys |
 | RabbitMQ 3 + management UI | WSL | 5672, 15672 | Celery broker and the `formalie.events` exchange |
 | PgBouncer | WSL | 6432 | transaction pooling; then `DB_PGBOUNCER=true` |
-| Object storage (S3) | local folder in development | | uploads and exports: `STORAGE_DIR=data/storage` (git-ignored) in development; production uses the cloud provider's S3. MinIO's download server stopped serving its binary (410 Gone, 2026-10-11). |
+| File storage | local folder in development | | uploads and exports: `STORAGE_BACKEND=folder`, `STORAGE_DIR=data/storage` (git-ignored) in development; production uses Cloudflare R2 (`STORAGE_BACKEND=r2`, owner 2026-10-15; formlyBackend `docs/FILE-STORAGE-GUIDE.md`). |
 | Mailpit | WSL | 1025 (SMTP), 8025 (UI) | catches OTP and other emails (from B1) |
 
 ### 1. PostgreSQL: roles and databases (once)
