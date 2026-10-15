@@ -7567,12 +7567,14 @@
       "group": {
         "responses": "Responses",
         "forms": "Forms and exports",
-        "problems": "Problems and security"
+        "problems": "Problems and security",
+        "people": "People"
       },
       "groupHint": {
         "responses": "When people answer your forms.",
         "forms": "When a form fills up or closes, and when a file is ready.",
-        "problems": "Things someone should look at soon."
+        "problems": "Things someone should look at soon.",
+        "people": "When someone new wants to join the workspace."
       },
       "name": {
         "response_new": "New response",
@@ -7581,7 +7583,8 @@
         "form_closing": "Form closes within a day",
         "export_ready": "Export ready",
         "webhook_failing": "Webhook failing",
-        "security_alert": "Sign-in blocked"
+        "security_alert": "Sign-in blocked",
+        "access_requested": "Someone asks to join"
       },
       "hint": {
         "response_new": "Every response to any form.",
@@ -7590,7 +7593,8 @@
         "form_closing": "A form stops taking responses within 24 hours.",
         "export_ready": "A file someone asked for can be downloaded.",
         "webhook_failing": "A webhook was paused after failing again and again.",
-        "security_alert": "A blocked network, email domain or account, or too many wrong codes."
+        "security_alert": "A blocked network, email domain or account, or too many wrong codes.",
+        "access_requested": "A new person is waiting for approval in People."
       },
       "digest": "Daily summary",
       "digestHint": "Fewer emails: one a day instead of one each time.",
@@ -8055,12 +8059,13 @@
       "buttonShows": "The sign-in page shows \"Continue with {label}\".",
       "domains": "Email domains",
       "domainsHelp": "People with these addresses are sent straight to your provider.",
+      "domainsNone": "With no domains, only people already in People can sign in this way.",
       "badDomain": "Check the domains, for example example.com",
       "domainsForRequired": "Add at least one domain to make single sign-on required.",
       "enforce": "Required for these domains",
       "enforceHint": "Their password and other sign-in options stop working here. Your provider decides who gets in.",
       "autoCreate": "Create accounts on first sign-in",
-      "autoCreateHint": "Anyone your provider lets in gets an account. Off: only people you added can sign in.",
+      "autoCreateHint": "On: anyone your provider lets in from these domains gets an account. Off: they ask to join and an admin approves them in People.",
       "defaultRole": "Role for new accounts",
       "lockOut": "You sign in with {domain} too",
       "lockOutDesc": "Once this is on, you'll sign in through your provider as well. Test it first so nobody is locked out.",
@@ -8142,6 +8147,10 @@
       "platform_message": {
         "title": "{title}",
         "message": "{message}"
+      },
+      "access_requested": {
+        "title": "Someone asks to join",
+        "message": "{name} ({email}) asks to join the workspace."
       }
     },
     "reason": {
@@ -8586,7 +8595,8 @@
       "rejected": "Request from {name} rejected",
       "waiting": "Waiting for approval",
       "viaLink": "Signed up with the workspace's link {when}.",
-      "viaInvite": "Signed up with a personal link {when}."
+      "viaInvite": "Signed up with a personal link {when}.",
+      "viaSso": "Asked to join through single sign-on {when}."
     },
     "links": {
       "button": "Sign-up links",

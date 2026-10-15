@@ -81,6 +81,10 @@
     "security_alert": {
       "title": "Login diblokir di {{workspace}}",
       "message": "Login oleh {{email}} diblokir: {{reason}}."
+    },
+    "access_requested": {
+      "title": "{{name}} ingin bergabung ke {{workspace}}",
+      "message": "{{name}} ({{email}}) ingin bergabung ke {{workspace}}. Setujui atau tolak permintaan di Orang."
     }
   },
   "layout": {

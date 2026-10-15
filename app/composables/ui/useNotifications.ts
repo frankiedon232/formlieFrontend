@@ -16,6 +16,7 @@ export const NOTIFICATION_ICONS: Record<FeedEvent, string> = {
   export_ready: 'i-lucide-file-down',
   webhook_failing: 'i-lucide-webhook',
   security_alert: 'i-lucide-shield-alert',
+  access_requested: 'i-lucide-user-plus',
   support_request: 'i-lucide-life-buoy',
   platform_message: 'i-lucide-megaphone',
 }

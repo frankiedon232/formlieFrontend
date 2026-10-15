@@ -81,6 +81,10 @@
     "security_alert": {
       "title": "Accesso bloccato in {{workspace}}",
       "message": "Un accesso di {{email}} è stato bloccato: {{reason}}."
+    },
+    "access_requested": {
+      "title": "{{name}} chiede di unirsi a {{workspace}}",
+      "message": "{{name}} ({{email}}) chiede di unirsi a {{workspace}}. Approva o rifiuta la richiesta in Persone."
     }
   },
   "layout": {

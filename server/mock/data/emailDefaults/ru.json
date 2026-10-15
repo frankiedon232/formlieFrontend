@@ -81,6 +81,10 @@
     "security_alert": {
       "title": "Вход заблокирован в {{workspace}}",
       "message": "Вход пользователя {{email}} заблокирован: {{reason}}."
+    },
+    "access_requested": {
+      "title": "{{name}} просит доступ к {{workspace}}",
+      "message": "{{name}} ({{email}}) просит доступ к {{workspace}}. Одобрите или отклоните запрос в разделе «Люди»."
     }
   },
   "layout": {

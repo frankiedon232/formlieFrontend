@@ -81,6 +81,10 @@
     "security_alert": {
       "title": "{{workspace}} içinde giriş engellendi",
       "message": "{{email}} tarafından yapılan bir giriş engellendi: {{reason}}."
+    },
+    "access_requested": {
+      "title": "{{name}}, {{workspace}} çalışma alanına katılmak istiyor",
+      "message": "{{name}} ({{email}}), {{workspace}} çalışma alanına katılmak istiyor. İsteği Kişiler'de onaylayın veya reddedin."
     }
   },
   "layout": {

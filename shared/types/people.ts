@@ -48,7 +48,8 @@ export interface PersonRow {
   /** An invitation not yet accepted (F16 M2): when it ends and who sent it. */
   invite: { kind: 'invite' | 'activation'; expires_at: string; sent_at: string; invited_by: string; expired: boolean } | null
   /** Signed up with a link and waiting for approval: how (personal link or the workspace's link) and when. */
-  request: { via: 'invite' | 'link'; at: string } | null
+  /** How they asked to join: the workspace's sign-up link, a personal sign-up link, or single sign-on (2026-10-15). */
+  request: { via: 'invite' | 'link' | 'sso'; at: string } | null
 }
 
 /** POST /people/invites */

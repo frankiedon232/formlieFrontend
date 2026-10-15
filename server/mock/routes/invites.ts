@@ -27,6 +27,8 @@ import { requireAdmin, tenantOf } from '../core/auth'
 import { MockError, ok } from '../core/respond'
 import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
+import { accessRequestNotice } from '../data/accessRequest'
+import { notify } from '../data/notificationStore'
 import { sendEmail } from '../data/outboxStore'
 import { orgOf, saveOrg } from '../data/orgStore'
 import { peopleStoreOf, personDetail, savePeople, type StoredPerson } from '../data/peopleStore'
@@ -317,5 +319,8 @@ export const acceptInvite = defineMockRoute(({ event, body }) => {
   delete person.invite
   savePeople()
   recordAudit(event, tenant, { action: activation ? 'users.joined' : 'users.requested', actor: actorOf(account), resource: { type: 'user', id: person.id, name: nameOf(account) }, metadata: { via: found.kind } })
+  // A request to join waits for an admin: tell them (the workspace's rule for access_requested, 2026-10-15)
+  const notice = accessRequestNotice(found.kind, nameOf(account), person.email)
+  if (notice) notify(event, tenant, 'access_requested', notice.params, notice.link)
   return ok({ email: person.email, status: person.status })
 })

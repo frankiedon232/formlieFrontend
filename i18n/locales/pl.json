@@ -7567,12 +7567,14 @@
       "group": {
         "responses": "Odpowiedzi",
         "forms": "Formularze i eksporty",
-        "problems": "Problemy i bezpieczeństwo"
+        "problems": "Problemy i bezpieczeństwo",
+        "people": "Osoby"
       },
       "groupHint": {
         "responses": "Gdy ktoś odpowiada na Twoje formularze.",
         "forms": "Gdy formularz się zapełni lub zamknie oraz gdy plik jest gotowy.",
-        "problems": "Rzeczy, które ktoś powinien wkrótce sprawdzić."
+        "problems": "Rzeczy, które ktoś powinien wkrótce sprawdzić.",
+        "people": "Gdy ktoś nowy chce dołączyć do obszaru roboczego."
       },
       "name": {
         "response_new": "Nowa odpowiedź",
@@ -7581,7 +7583,8 @@
         "form_closing": "Formularz zamyka się w ciągu doby",
         "export_ready": "Eksport gotowy",
         "webhook_failing": "Webhook nie działa",
-        "security_alert": "Logowanie zablokowane"
+        "security_alert": "Logowanie zablokowane",
+        "access_requested": "Ktoś prosi o dołączenie"
       },
       "hint": {
         "response_new": "Każda odpowiedź w każdym formularzu.",
@@ -7590,7 +7593,8 @@
         "form_closing": "Formularz przestanie przyjmować odpowiedzi w ciągu 24 godzin.",
         "export_ready": "Zamówiony plik można pobrać.",
         "webhook_failing": "Webhook wstrzymano po wielokrotnych błędach.",
-        "security_alert": "Zablokowana sieć, domena e-mail lub konto albo zbyt wiele błędnych kodów."
+        "security_alert": "Zablokowana sieć, domena e-mail lub konto albo zbyt wiele błędnych kodów.",
+        "access_requested": "Nowa osoba czeka na zatwierdzenie w Osobach."
       },
       "digest": "Codzienne podsumowanie",
       "digestHint": "Mniej e-maili: jeden dziennie zamiast jednego za każdym razem.",
@@ -8055,12 +8059,13 @@
       "buttonShows": "Strona logowania pokazuje \"Kontynuuj z {label}\".",
       "domains": "Domeny e-mail",
       "domainsHelp": "Osoby z tymi adresami trafiają od razu do Twojego dostawcy.",
+      "domainsNone": "Bez domen tą drogą mogą się logować tylko osoby, które już są w Osobach.",
       "badDomain": "Sprawdź domeny, na przykład example.com",
       "domainsForRequired": "Dodaj co najmniej jedną domenę, aby jednokrotne logowanie było wymagane.",
       "enforce": "Wymagane dla tych domen",
       "enforceHint": "Hasło i inne opcje logowania przestaną tu działać. O dostępie decyduje Twój dostawca.",
       "autoCreate": "Twórz konta przy pierwszym logowaniu",
-      "autoCreateHint": "Każda osoba wpuszczona przez dostawcę dostaje konto. Wyłączone: logować się mogą tylko dodane przez Ciebie osoby.",
+      "autoCreateHint": "Wł.: każdy z tych domen, kogo wpuści Twój dostawca, dostaje konto. Wył.: prosi o dołączenie, a administrator zatwierdza go w Osobach.",
       "defaultRole": "Rola nowych kont",
       "lockOut": "Ty też logujesz się przez {domain}",
       "lockOutDesc": "Po włączeniu Ty również będziesz logować się przez dostawcę. Najpierw przetestuj, aby nikt nie został zablokowany.",
@@ -8142,6 +8147,10 @@
       "platform_message": {
         "title": "{title}",
         "message": "{message}"
+      },
+      "access_requested": {
+        "title": "Ktoś prosi o dołączenie",
+        "message": "{name} ({email}) prosi o dołączenie do obszaru roboczego."
       }
     },
     "reason": {
@@ -8586,7 +8595,8 @@
       "rejected": "Odrzucono prośbę: {name}",
       "waiting": "Oczekuje na zatwierdzenie",
       "viaLink": "Zarejestrowano przez link przestrzeni roboczej {when}.",
-      "viaInvite": "Zarejestrowano przez link osobisty {when}."
+      "viaInvite": "Zarejestrowano przez link osobisty {when}.",
+      "viaSso": "Poprosił(a) o dołączenie przez logowanie jednokrotne {when}."
     },
     "links": {
       "button": "Linki rejestracyjne",

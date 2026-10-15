@@ -7567,12 +7567,14 @@
       "group": {
         "responses": "Respuestas",
         "forms": "Formularios y exportaciones",
-        "problems": "Problemas y seguridad"
+        "problems": "Problemas y seguridad",
+        "people": "Personas"
       },
       "groupHint": {
         "responses": "Cuando alguien responde a tus formularios.",
         "forms": "Cuando un formulario se llena o cierra, y cuando un archivo está listo.",
-        "problems": "Cosas que alguien debería revisar pronto."
+        "problems": "Cosas que alguien debería revisar pronto.",
+        "people": "Cuando alguien nuevo quiere unirse al espacio de trabajo."
       },
       "name": {
         "response_new": "Nueva respuesta",
@@ -7581,7 +7583,8 @@
         "form_closing": "Formulario cierra en un día",
         "export_ready": "Exportación lista",
         "webhook_failing": "Webhook fallando",
-        "security_alert": "Inicio de sesión bloqueado"
+        "security_alert": "Inicio de sesión bloqueado",
+        "access_requested": "Alguien pide unirse"
       },
       "hint": {
         "response_new": "Cada respuesta a cualquier formulario.",
@@ -7590,7 +7593,8 @@
         "form_closing": "Un formulario dejará de aceptar respuestas en 24 horas.",
         "export_ready": "Un archivo solicitado ya se puede descargar.",
         "webhook_failing": "Un webhook se pausó tras fallar una y otra vez.",
-        "security_alert": "Una red, dominio de correo o cuenta bloqueados, o demasiados códigos incorrectos."
+        "security_alert": "Una red, dominio de correo o cuenta bloqueados, o demasiados códigos incorrectos.",
+        "access_requested": "Una persona nueva espera aprobación en Personas."
       },
       "digest": "Resumen diario",
       "digestHint": "Menos correos: uno al día en lugar de uno cada vez.",
@@ -8055,12 +8059,13 @@
       "buttonShows": "La página de inicio de sesión muestra \"Continuar con {label}\".",
       "domains": "Dominios de correo",
       "domainsHelp": "Las personas con estas direcciones van directamente a tu proveedor.",
+      "domainsNone": "Sin dominios, solo las personas que ya están en Personas pueden iniciar sesión así.",
       "badDomain": "Revisa los dominios, por ejemplo example.com",
       "domainsForRequired": "Añade al menos un dominio para hacer obligatorio el inicio de sesión único.",
       "enforce": "Obligatorio para estos dominios",
       "enforceHint": "Su contraseña y otras opciones de inicio de sesión dejan de funcionar aquí. Tu proveedor decide quién entra.",
       "autoCreate": "Crear cuentas en el primer inicio de sesión",
-      "autoCreateHint": "Cualquiera a quien tu proveedor deje entrar recibe una cuenta. Desactivado: solo pueden iniciar sesión las personas que añadiste.",
+      "autoCreateHint": "Activado: cualquiera de estos dominios a quien tu proveedor deje entrar obtiene una cuenta. Desactivado: piden unirse y un administrador los aprueba en Personas.",
       "defaultRole": "Rol para cuentas nuevas",
       "lockOut": "Tú también inicias sesión con {domain}",
       "lockOutDesc": "Una vez activado, tú también iniciarás sesión con tu proveedor. Pruébalo antes para que nadie se quede fuera.",
@@ -8142,6 +8147,10 @@
       "platform_message": {
         "title": "{title}",
         "message": "{message}"
+      },
+      "access_requested": {
+        "title": "Alguien pide unirse",
+        "message": "{name} ({email}) pide unirse al espacio de trabajo."
       }
     },
     "reason": {
@@ -8586,7 +8595,8 @@
       "rejected": "Solicitud de {name} rechazada",
       "waiting": "Esperando aprobación",
       "viaLink": "Se registró con el enlace del espacio de trabajo {when}.",
-      "viaInvite": "Se registró con un enlace personal {when}."
+      "viaInvite": "Se registró con un enlace personal {when}.",
+      "viaSso": "Pidió unirse mediante el inicio de sesión único {when}."
     },
     "links": {
       "button": "Enlaces de registro",

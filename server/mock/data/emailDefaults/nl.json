@@ -81,6 +81,10 @@
     "security_alert": {
       "title": "Inloggen geblokkeerd in {{workspace}}",
       "message": "Een inlogpoging van {{email}} is geblokkeerd: {{reason}}."
+    },
+    "access_requested": {
+      "title": "{{name}} wil lid worden van {{workspace}}",
+      "message": "{{name}} ({{email}}) wil lid worden van {{workspace}}. Keur het verzoek goed of wijs het af in Mensen."
     }
   },
   "layout": {

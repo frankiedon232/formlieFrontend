@@ -7567,12 +7567,14 @@
       "group": {
         "responses": "Phản hồi",
         "forms": "Biểu mẫu và bản xuất",
-        "problems": "Sự cố và bảo mật"
+        "problems": "Sự cố và bảo mật",
+        "people": "Mọi người"
       },
       "groupHint": {
         "responses": "Khi mọi người trả lời biểu mẫu của bạn.",
         "forms": "Khi biểu mẫu đầy hoặc đóng, và khi tệp đã sẵn sàng.",
-        "problems": "Những việc ai đó nên xem sớm."
+        "problems": "Những việc ai đó nên xem sớm.",
+        "people": "Khi có người mới muốn tham gia không gian làm việc."
       },
       "name": {
         "response_new": "Phản hồi mới",
@@ -7581,7 +7583,8 @@
         "form_closing": "Biểu mẫu đóng trong một ngày",
         "export_ready": "Bản xuất sẵn sàng",
         "webhook_failing": "Webhook đang lỗi",
-        "security_alert": "Đăng nhập bị chặn"
+        "security_alert": "Đăng nhập bị chặn",
+        "access_requested": "Có người xin tham gia"
       },
       "hint": {
         "response_new": "Mọi phản hồi cho mọi biểu mẫu.",
@@ -7590,7 +7593,8 @@
         "form_closing": "Một biểu mẫu sẽ ngừng nhận phản hồi trong 24 giờ.",
         "export_ready": "Một tệp được yêu cầu có thể tải xuống.",
         "webhook_failing": "Một webhook bị tạm dừng sau nhiều lần thất bại.",
-        "security_alert": "Mạng, tên miền email hoặc tài khoản bị chặn, hoặc quá nhiều mã sai."
+        "security_alert": "Mạng, tên miền email hoặc tài khoản bị chặn, hoặc quá nhiều mã sai.",
+        "access_requested": "Một người mới đang chờ duyệt trong mục Mọi người."
       },
       "digest": "Tóm tắt hằng ngày",
       "digestHint": "Ít email hơn: một email mỗi ngày thay vì mỗi lần một email.",
@@ -8055,12 +8059,13 @@
       "buttonShows": "Trang đăng nhập hiển thị \"Tiếp tục với {label}\".",
       "domains": "Tên miền email",
       "domainsHelp": "Người dùng các địa chỉ này được chuyển thẳng đến nhà cung cấp của bạn.",
+      "domainsNone": "Khi không có tên miền, chỉ những người đã có trong Mọi người mới đăng nhập được bằng cách này.",
       "badDomain": "Hãy kiểm tra các tên miền, ví dụ example.com",
       "domainsForRequired": "Thêm ít nhất một tên miền để bắt buộc đăng nhập một lần.",
       "enforce": "Bắt buộc cho các tên miền này",
       "enforceHint": "Mật khẩu và các tùy chọn đăng nhập khác của họ sẽ ngừng hoạt động ở đây. Nhà cung cấp của bạn quyết định ai được vào.",
       "autoCreate": "Tạo tài khoản ở lần đăng nhập đầu tiên",
-      "autoCreateHint": "Ai được nhà cung cấp cho vào đều có tài khoản. Tắt: chỉ những người bạn đã thêm mới đăng nhập được.",
+      "autoCreateHint": "Bật: bất kỳ ai từ các tên miền này được nhà cung cấp cho vào đều có tài khoản. Tắt: họ xin tham gia và quản trị viên duyệt trong mục Mọi người.",
       "defaultRole": "Vai trò cho tài khoản mới",
       "lockOut": "Bạn cũng đăng nhập bằng {domain}",
       "lockOutDesc": "Khi bật, bạn cũng sẽ đăng nhập qua nhà cung cấp. Hãy kiểm tra trước để không ai bị khóa.",
@@ -8142,6 +8147,10 @@
       "platform_message": {
         "title": "{title}",
         "message": "{message}"
+      },
+      "access_requested": {
+        "title": "Có người xin tham gia",
+        "message": "{name} ({email}) xin tham gia không gian làm việc."
       }
     },
     "reason": {
@@ -8586,7 +8595,8 @@
       "rejected": "Đã từ chối yêu cầu của {name}",
       "waiting": "Chờ phê duyệt",
       "viaLink": "Đã đăng ký bằng liên kết của không gian làm việc {when}.",
-      "viaInvite": "Đã đăng ký bằng liên kết cá nhân {when}."
+      "viaInvite": "Đã đăng ký bằng liên kết cá nhân {when}.",
+      "viaSso": "Đã xin tham gia qua đăng nhập một lần {when}."
     },
     "links": {
       "button": "Liên kết đăng ký",

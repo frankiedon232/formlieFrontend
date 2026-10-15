@@ -3,7 +3,7 @@
  * with company, branding and localisation. Onboarding reads and writes the same record, and the
  * workspace's public profile (sign-in page, public forms) is built from it.
  */
-import type { NotificationSettings } from '#shared/types/notifications'
+import { DEFAULT_NOTIFICATION_RULES, NOTIFICATION_EVENTS, withNotificationDefaults, type NotificationSettings } from '#shared/types/notifications'
 import type { FormDefaults, PrivacySettings } from '#shared/types/privacy'
 import type { SecuritySettings, SettingsChange, SettingsSection, SigninSettings, WorkspaceSettings } from '#shared/types/settings'
 import { FORMALIE_APPEARANCE } from '#shared/types/appearance'
@@ -24,21 +24,7 @@ const seedSecurity = (): SecuritySettings => ({
 })
 
 /** Notifications (F14 M4): responses in the app for everyone, problems also by email to admins. */
-const seedNotifications = (): NotificationSettings => {
-  const rule = (in_app: boolean, email: boolean, to: 'admins' | 'everyone' = 'admins') => ({ in_app, email, to, people: [] })
-  return {
-    events: {
-      response_new: rule(true, false, 'everyone'),
-      response_duplicate: rule(true, false),
-      form_limit: rule(true, true),
-      form_closing: rule(true, true),
-      export_ready: rule(true, false),
-      webhook_failing: rule(true, true),
-      security_alert: rule(true, true),
-    },
-    digest: { enabled: false, hour: 8 },
-  }
-}
+const seedNotifications = (): NotificationSettings => ({ events: structuredClone(DEFAULT_NOTIFICATION_RULES), digest: { enabled: false, hour: 8 } })
 
 /** Privacy and form defaults (F14 M5): keep responses, no notice or consent line until set; forms as they start today. */
 const seedPrivacy = (): PrivacySettings => ({ retention_days: 0, notice_url: null, consent: false, consent_text: null })
@@ -95,6 +81,8 @@ export function settingsOf(tenant: MockTenant): WorkspaceSettings {
     settings.updated.notifications ??= null
     saveSettings()
   }
+  // Events added since the section was saved (access_requested, 2026-10-15) read with their default rule
+  if (NOTIFICATION_EVENTS.some(key => !settings!.notifications.events[key])) settings.notifications = withNotificationDefaults(settings.notifications)
   // Workspaces no longer choose their ways in (owner, 2026-10-12): drop the old list
   if (settings.signin && 'methods' in settings.signin) {
     delete (settings.signin as SigninSettings & { methods?: unknown }).methods

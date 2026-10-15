@@ -7567,12 +7567,14 @@
       "group": {
         "responses": "응답",
         "forms": "양식 및 내보내기",
-        "problems": "문제 및 보안"
+        "problems": "문제 및 보안",
+        "people": "구성원"
       },
       "groupHint": {
         "responses": "사람들이 양식에 응답할 때.",
         "forms": "양식이 가득 차거나 마감될 때, 파일이 준비되었을 때.",
-        "problems": "곧 누군가 확인해야 할 일."
+        "problems": "곧 누군가 확인해야 할 일.",
+        "people": "새로운 사람이 워크스페이스에 참여하려 할 때."
       },
       "name": {
         "response_new": "새 응답",
@@ -7581,7 +7583,8 @@
         "form_closing": "양식이 하루 안에 마감",
         "export_ready": "내보내기 완료",
         "webhook_failing": "웹훅 실패",
-        "security_alert": "로그인 차단"
+        "security_alert": "로그인 차단",
+        "access_requested": "누군가 참여를 요청함"
       },
       "hint": {
         "response_new": "모든 양식에 대한 모든 응답.",
@@ -7590,7 +7593,8 @@
         "form_closing": "양식이 24시간 안에 응답 접수를 중단합니다.",
         "export_ready": "요청한 파일을 다운로드할 수 있습니다.",
         "webhook_failing": "웹훅이 계속 실패해 일시 중지되었습니다.",
-        "security_alert": "차단된 네트워크, 이메일 도메인, 계정 또는 잘못된 코드가 너무 많은 경우."
+        "security_alert": "차단된 네트워크, 이메일 도메인, 계정 또는 잘못된 코드가 너무 많은 경우.",
+        "access_requested": "새 구성원이 구성원 메뉴에서 승인을 기다리고 있습니다."
       },
       "digest": "일일 요약",
       "digestHint": "이메일 줄이기: 매번 한 통 대신 하루에 한 통.",
@@ -8055,12 +8059,13 @@
       "buttonShows": "로그인 페이지에 \"{label}(으)로 계속\"이 표시됩니다.",
       "domains": "이메일 도메인",
       "domainsHelp": "이 주소를 쓰는 사람은 바로 공급자로 이동합니다.",
+      "domainsNone": "도메인이 없으면 이미 구성원에 있는 사람만 이 방법으로 로그인할 수 있습니다.",
       "badDomain": "도메인을 확인하세요. 예: example.com",
       "domainsForRequired": "싱글 사인온을 필수로 하려면 도메인을 하나 이상 추가하세요.",
       "enforce": "이 도메인에 필수",
       "enforceHint": "이들의 비밀번호와 다른 로그인 옵션은 여기서 작동하지 않습니다. 공급자가 누가 들어올지 결정합니다.",
       "autoCreate": "첫 로그인 시 계정 만들기",
-      "autoCreateHint": "공급자가 허용한 사람은 누구나 계정을 받습니다. 끄면 추가한 사람만 로그인할 수 있습니다.",
+      "autoCreateHint": "켬: 이 도메인에서 공급자가 허용한 사람은 누구나 계정을 받습니다. 끔: 참여를 요청하고 관리자가 구성원 메뉴에서 승인합니다.",
       "defaultRole": "새 계정의 역할",
       "lockOut": "나도 {domain}(으)로 로그인합니다",
       "lockOutDesc": "켜면 나도 공급자를 통해 로그인하게 됩니다. 아무도 잠기지 않도록 먼저 테스트하세요.",
@@ -8142,6 +8147,10 @@
       "platform_message": {
         "title": "{title}",
         "message": "{message}"
+      },
+      "access_requested": {
+        "title": "누군가 참여를 요청함",
+        "message": "{name}({email}) 님이 워크스페이스 참여를 요청했습니다."
       }
     },
     "reason": {
@@ -8586,7 +8595,8 @@
       "rejected": "{name}의 요청을 거절함",
       "waiting": "승인 대기 중",
       "viaLink": "워크스페이스 링크로 가입함 {when}.",
-      "viaInvite": "개인 링크로 가입함 {when}."
+      "viaInvite": "개인 링크로 가입함 {when}.",
+      "viaSso": "{when} 싱글 사인온으로 참여를 요청했습니다."
     },
     "links": {
       "button": "가입 링크",

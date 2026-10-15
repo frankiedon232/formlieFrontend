@@ -81,6 +81,10 @@
     "security_alert": {
       "title": "{{workspace}}에서 로그인이 차단되었습니다",
       "message": "{{email}}의 로그인이 차단되었습니다: {{reason}}."
+    },
+    "access_requested": {
+      "title": "{{name}} 님이 {{workspace}} 참여를 요청했습니다",
+      "message": "{{name}}({{email}}) 님이 {{workspace}} 참여를 요청했습니다. 구성원 메뉴에서 요청을 승인하거나 거절하세요."
     }
   },
   "layout": {

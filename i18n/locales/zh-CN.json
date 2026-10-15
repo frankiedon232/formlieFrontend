@@ -7567,12 +7567,14 @@
       "group": {
         "responses": "回复",
         "forms": "表单和导出",
-        "problems": "问题和安全"
+        "problems": "问题和安全",
+        "people": "成员"
       },
       "groupHint": {
         "responses": "有人回复你的表单时。",
         "forms": "表单已满或关闭时，以及文件就绪时。",
-        "problems": "需要有人尽快查看的事项。"
+        "problems": "需要有人尽快查看的事项。",
+        "people": "有新成员想加入工作区时。"
       },
       "name": {
         "response_new": "新回复",
@@ -7581,7 +7583,8 @@
         "form_closing": "表单一天内关闭",
         "export_ready": "导出就绪",
         "webhook_failing": "Webhook 失败",
-        "security_alert": "登录被阻止"
+        "security_alert": "登录被阻止",
+        "access_requested": "有人申请加入"
       },
       "hint": {
         "response_new": "任何表单的每条回复。",
@@ -7590,7 +7593,8 @@
         "form_closing": "表单将在 24 小时内停止接收回复。",
         "export_ready": "请求的文件可以下载。",
         "webhook_failing": "Webhook 多次失败后被暂停。",
-        "security_alert": "被阻止的网络、邮箱域名或账号，或错误验证码过多。"
+        "security_alert": "被阻止的网络、邮箱域名或账号，或错误验证码过多。",
+        "access_requested": "有新成员在“成员”中等待审批。"
       },
       "digest": "每日摘要",
       "digestHint": "减少邮件：每天一封，而不是每次一封。",
@@ -8055,12 +8059,13 @@
       "buttonShows": "登录页面显示“使用 {label} 继续”。",
       "domains": "邮箱域名",
       "domainsHelp": "使用这些地址的用户会直接转到您的提供商。",
+      "domainsNone": "没有域名时，只有已在“成员”中的人才能用这种方式登录。",
       "badDomain": "请检查域名，例如 example.com",
       "domainsForRequired": "请至少添加一个域名，才能将单点登录设为必需。",
       "enforce": "这些域名必需使用",
       "enforceHint": "他们的密码和其他登录方式在此将失效。谁能进入由您的提供商决定。",
       "autoCreate": "首次登录时创建账户",
-      "autoCreateHint": "您的提供商放行的任何人都会获得账户。关闭：只有您添加的用户才能登录。",
+      "autoCreateHint": "开启：你的身份提供商允许的这些域名下的任何人都会获得账号。关闭：他们会申请加入，由管理员在“成员”中审批。",
       "defaultRole": "新账户的角色",
       "lockOut": "您也使用 {domain} 登录",
       "lockOutDesc": "开启后，您也将通过提供商登录。请先测试，以免有人被锁在外面。",
@@ -8142,6 +8147,10 @@
       "platform_message": {
         "title": "{title}",
         "message": "{message}"
+      },
+      "access_requested": {
+        "title": "有人申请加入",
+        "message": "{name}（{email}）申请加入工作区。"
       }
     },
     "reason": {
@@ -8586,7 +8595,8 @@
       "rejected": "已拒绝 {name} 的申请",
       "waiting": "等待批准",
       "viaLink": "通过工作区链接注册，时间：{when}。",
-      "viaInvite": "通过个人链接注册，时间：{when}。"
+      "viaInvite": "通过个人链接注册，时间：{when}。",
+      "viaSso": "{when}通过单点登录申请加入。"
     },
     "links": {
       "button": "注册链接",

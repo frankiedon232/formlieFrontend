@@ -7567,12 +7567,14 @@
       "group": {
         "responses": "Antworten",
         "forms": "Formulare und Exporte",
-        "problems": "Probleme und Sicherheit"
+        "problems": "Probleme und Sicherheit",
+        "people": "Personen"
       },
       "groupHint": {
         "responses": "Wenn Personen Ihre Formulare beantworten.",
         "forms": "Wenn ein Formular voll ist oder schließt und wenn eine Datei fertig ist.",
-        "problems": "Dinge, die sich bald jemand ansehen sollte."
+        "problems": "Dinge, die sich bald jemand ansehen sollte.",
+        "people": "Wenn jemand Neues dem Workspace beitreten möchte."
       },
       "name": {
         "response_new": "Neue Antwort",
@@ -7581,7 +7583,8 @@
         "form_closing": "Formular schließt innerhalb eines Tages",
         "export_ready": "Export fertig",
         "webhook_failing": "Webhook schlägt fehl",
-        "security_alert": "Anmeldung blockiert"
+        "security_alert": "Anmeldung blockiert",
+        "access_requested": "Jemand möchte beitreten"
       },
       "hint": {
         "response_new": "Jede Antwort auf jedes Formular.",
@@ -7590,7 +7593,8 @@
         "form_closing": "Ein Formular nimmt innerhalb von 24 Stunden keine Antworten mehr an.",
         "export_ready": "Eine angeforderte Datei kann heruntergeladen werden.",
         "webhook_failing": "Ein Webhook wurde nach wiederholtem Fehlschlagen pausiert.",
-        "security_alert": "Ein blockiertes Netzwerk, eine blockierte E-Mail-Domain oder ein blockiertes Konto, oder zu viele falsche Codes."
+        "security_alert": "Ein blockiertes Netzwerk, eine blockierte E-Mail-Domain oder ein blockiertes Konto, oder zu viele falsche Codes.",
+        "access_requested": "Eine neue Person wartet unter Personen auf Freigabe."
       },
       "digest": "Tägliche Zusammenfassung",
       "digestHint": "Weniger E-Mails: eine pro Tag statt eine pro Ereignis.",
@@ -8055,12 +8059,13 @@
       "buttonShows": "Die Anmeldeseite zeigt \"Weiter mit {label}\".",
       "domains": "E-Mail-Domains",
       "domainsHelp": "Personen mit diesen Adressen werden direkt zu Ihrem Anbieter geleitet.",
+      "domainsNone": "Ohne Domains können sich nur Personen, die bereits unter Personen stehen, so anmelden.",
       "badDomain": "Prüfen Sie die Domains, zum Beispiel example.com",
       "domainsForRequired": "Fügen Sie mindestens eine Domain hinzu, um Single Sign-on verpflichtend zu machen.",
       "enforce": "Für diese Domains verpflichtend",
       "enforceHint": "Passwort und andere Anmeldeoptionen funktionieren hier dann nicht mehr. Ihr Anbieter entscheidet, wer hineinkommt.",
       "autoCreate": "Konten bei der ersten Anmeldung erstellen",
-      "autoCreateHint": "Jeder, den Ihr Anbieter zulässt, erhält ein Konto. Aus: Nur Personen, die Sie hinzugefügt haben, können sich anmelden.",
+      "autoCreateHint": "An: Jeder aus diesen Domains, den Ihr Anbieter einlässt, erhält ein Konto. Aus: Sie bitten um Beitritt und ein Admin gibt sie unter Personen frei.",
       "defaultRole": "Rolle für neue Konten",
       "lockOut": "Sie melden sich auch mit {domain} an",
       "lockOutDesc": "Sobald dies eingeschaltet ist, melden Sie sich ebenfalls über Ihren Anbieter an. Testen Sie es zuerst, damit niemand ausgesperrt wird.",
@@ -8142,6 +8147,10 @@
       "platform_message": {
         "title": "{title}",
         "message": "{message}"
+      },
+      "access_requested": {
+        "title": "Jemand möchte beitreten",
+        "message": "{name} ({email}) möchte dem Workspace beitreten."
       }
     },
     "reason": {
@@ -8586,7 +8595,8 @@
       "rejected": "Anfrage von {name} abgelehnt",
       "waiting": "Wartet auf Freigabe",
       "viaLink": "Über den Link des Arbeitsbereichs registriert {when}.",
-      "viaInvite": "Über einen persönlichen Link registriert {when}."
+      "viaInvite": "Über einen persönlichen Link registriert {when}.",
+      "viaSso": "Hat {when} über Single Sign-on um Beitritt gebeten."
     },
     "links": {
       "button": "Registrierungslinks",

@@ -81,6 +81,10 @@
     "security_alert": {
       "title": "Connexion bloquée dans {{workspace}}",
       "message": "Une connexion de {{email}} a été bloquée : {{reason}}."
+    },
+    "access_requested": {
+      "title": "{{name}} demande à rejoindre {{workspace}}",
+      "message": "{{name}} ({{email}}) demande à rejoindre {{workspace}}. Acceptez ou refusez la demande dans Personnes."
     }
   },
   "layout": {

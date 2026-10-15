@@ -81,6 +81,10 @@
     "security_alert": {
       "title": "Sign-in blocked in {{workspace}}",
       "message": "A sign-in by {{email}} was blocked: {{reason}}."
+    },
+    "access_requested": {
+      "title": "{{name}} asks to join {{workspace}}",
+      "message": "{{name}} ({{email}}) asks to join {{workspace}}. Approve or decline the request in People."
     }
   },
   "layout": {

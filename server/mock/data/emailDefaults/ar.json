@@ -81,6 +81,10 @@
     "security_alert": {
       "title": "حُظر تسجيل دخول في {{workspace}}",
       "message": "حُظر تسجيل دخول من {{email}}: {{reason}}."
+    },
+    "access_requested": {
+      "title": "{{name}} يطلب الانضمام إلى {{workspace}}",
+      "message": "{{name}} ({{email}}) يطلب الانضمام إلى {{workspace}}. وافق على الطلب أو ارفضه في الأشخاص."
     }
   },
   "layout": {

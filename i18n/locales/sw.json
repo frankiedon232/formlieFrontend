@@ -7567,12 +7567,14 @@
       "group": {
         "responses": "Majibu",
         "forms": "Fomu na uhamishaji",
-        "problems": "Matatizo na usalama"
+        "problems": "Matatizo na usalama",
+        "people": "Watu"
       },
       "groupHint": {
         "responses": "Watu wanapojibu fomu zako.",
         "forms": "Fomu inapojaa au kufungwa, na faili inapokuwa tayari.",
-        "problems": "Mambo ambayo mtu anapaswa kuyaangalia hivi karibuni."
+        "problems": "Mambo ambayo mtu anapaswa kuyaangalia hivi karibuni.",
+        "people": "Mtu mpya anapotaka kujiunga na eneo la kazi."
       },
       "name": {
         "response_new": "Jibu jipya",
@@ -7581,7 +7583,8 @@
         "form_closing": "Fomu inafungwa ndani ya siku moja",
         "export_ready": "Uhamishaji uko tayari",
         "webhook_failing": "Webhook inashindwa",
-        "security_alert": "Kuingia kumezuiwa"
+        "security_alert": "Kuingia kumezuiwa",
+        "access_requested": "Mtu anaomba kujiunga"
       },
       "hint": {
         "response_new": "Kila jibu kwa fomu yoyote.",
@@ -7590,7 +7593,8 @@
         "form_closing": "Fomu itaacha kupokea majibu ndani ya saa 24.",
         "export_ready": "Faili iliyoombwa inaweza kupakuliwa.",
         "webhook_failing": "Webhook ilisitishwa baada ya kushindwa mara kwa mara.",
-        "security_alert": "Mtandao, kikoa cha barua pepe au akaunti iliyozuiwa, au misimbo mingi isiyo sahihi."
+        "security_alert": "Mtandao, kikoa cha barua pepe au akaunti iliyozuiwa, au misimbo mingi isiyo sahihi.",
+        "access_requested": "Mtu mpya anasubiri idhini kwenye Watu."
       },
       "digest": "Muhtasari wa kila siku",
       "digestHint": "Barua pepe chache: moja kwa siku badala ya moja kila mara.",
@@ -8055,12 +8059,13 @@
       "buttonShows": "Ukurasa wa kuingia unaonyesha \"Endelea na {label}\".",
       "domains": "Vikoa vya barua pepe",
       "domainsHelp": "Watu wenye anwani hizi hupelekwa moja kwa moja kwa mtoa huduma wako.",
+      "domainsNone": "Bila vikoa, ni watu waliopo tayari kwenye Watu pekee wanaoweza kuingia kwa njia hii.",
       "badDomain": "Kagua vikoa, kwa mfano example.com",
       "domainsForRequired": "Ongeza angalau kikoa kimoja ili kufanya kuingia mara moja kuwe lazima.",
       "enforce": "Ni lazima kwa vikoa hivi",
       "enforceHint": "Nenosiri lao na njia nyingine za kuingia zitaacha kufanya kazi hapa. Mtoa huduma wako ndiye anayeamua nani anaingia.",
       "autoCreate": "Tengeneza akaunti wakati wa kuingia kwa mara ya kwanza",
-      "autoCreateHint": "Yeyote anayeruhusiwa na mtoa huduma wako hupata akaunti. Imezimwa: ni watu uliowaongeza tu wanaoweza kuingia.",
+      "autoCreateHint": "Imewashwa: yeyote kutoka vikoa hivi ambaye mtoa huduma wako anamruhusu hupata akaunti. Imezimwa: wanaomba kujiunga na msimamizi anawaidhinisha kwenye Watu.",
       "defaultRole": "Jukumu la akaunti mpya",
       "lockOut": "Wewe pia unaingia kwa {domain}",
       "lockOutDesc": "Likiwashwa, wewe pia utaingia kupitia mtoa huduma wako. Jaribu kwanza ili mtu yeyote asifungiwe nje.",
@@ -8142,6 +8147,10 @@
       "platform_message": {
         "title": "{title}",
         "message": "{message}"
+      },
+      "access_requested": {
+        "title": "Mtu anaomba kujiunga",
+        "message": "{name} ({email}) anaomba kujiunga na eneo la kazi."
       }
     },
     "reason": {
@@ -8586,7 +8595,8 @@
       "rejected": "Ombi la {name} limekataliwa",
       "waiting": "Inasubiri idhini",
       "viaLink": "Alijisajili kwa kiungo cha eneo la kazi {when}.",
-      "viaInvite": "Alijisajili kwa kiungo cha kibinafsi {when}."
+      "viaInvite": "Alijisajili kwa kiungo cha kibinafsi {when}.",
+      "viaSso": "Aliomba kujiunga kupitia kuingia mara moja {when}."
     },
     "links": {
       "button": "Viungo vya kujisajili",

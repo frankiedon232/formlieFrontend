@@ -7567,12 +7567,14 @@
       "group": {
         "responses": "Réponses",
         "forms": "Formulaires et exports",
-        "problems": "Problèmes et sécurité"
+        "problems": "Problèmes et sécurité",
+        "people": "Personnes"
       },
       "groupHint": {
         "responses": "Quand des personnes répondent à vos formulaires.",
         "forms": "Quand un formulaire est complet ou ferme, et quand un fichier est prêt.",
-        "problems": "Des points que quelqu'un devrait vérifier bientôt."
+        "problems": "Des points que quelqu'un devrait vérifier bientôt.",
+        "people": "Quand quelqu'un de nouveau veut rejoindre l'espace de travail."
       },
       "name": {
         "response_new": "Nouvelle réponse",
@@ -7581,7 +7583,8 @@
         "form_closing": "Formulaire fermant d'ici un jour",
         "export_ready": "Export prêt",
         "webhook_failing": "Webhook en échec",
-        "security_alert": "Connexion bloquée"
+        "security_alert": "Connexion bloquée",
+        "access_requested": "Quelqu'un demande à rejoindre"
       },
       "hint": {
         "response_new": "Chaque réponse à chaque formulaire.",
@@ -7590,7 +7593,8 @@
         "form_closing": "Un formulaire n'accepte plus de réponses d'ici 24 heures.",
         "export_ready": "Un fichier demandé peut être téléchargé.",
         "webhook_failing": "Un webhook a été mis en pause après des échecs répétés.",
-        "security_alert": "Un réseau, un domaine d'e-mail ou un compte bloqué, ou trop de codes erronés."
+        "security_alert": "Un réseau, un domaine d'e-mail ou un compte bloqué, ou trop de codes erronés.",
+        "access_requested": "Une nouvelle personne attend une validation dans Personnes."
       },
       "digest": "Résumé quotidien",
       "digestHint": "Moins d'e-mails : un par jour au lieu d'un à chaque fois.",
@@ -8055,12 +8059,13 @@
       "buttonShows": "La page de connexion affiche \"Continuer avec {label}\".",
       "domains": "Domaines e-mail",
       "domainsHelp": "Les personnes avec ces adresses sont envoyées directement vers votre fournisseur.",
+      "domainsNone": "Sans domaine, seules les personnes déjà présentes dans Personnes peuvent se connecter ainsi.",
       "badDomain": "Vérifiez les domaines, par exemple example.com",
       "domainsForRequired": "Ajoutez au moins un domaine pour rendre l’authentification unique obligatoire.",
       "enforce": "Obligatoire pour ces domaines",
       "enforceHint": "Leur mot de passe et les autres options de connexion ne fonctionnent plus ici. Votre fournisseur décide qui entre.",
       "autoCreate": "Créer les comptes à la première connexion",
-      "autoCreateHint": "Toute personne que votre fournisseur laisse entrer obtient un compte. Désactivé : seules les personnes que vous avez ajoutées peuvent se connecter.",
+      "autoCreateHint": "Activé : toute personne de ces domaines que votre fournisseur laisse entrer obtient un compte. Désactivé : elle demande à rejoindre et un administrateur la valide dans Personnes.",
       "defaultRole": "Rôle des nouveaux comptes",
       "lockOut": "Vous vous connectez aussi avec {domain}",
       "lockOutDesc": "Une fois activé, vous vous connecterez aussi via votre fournisseur. Testez d’abord pour que personne ne soit bloqué.",
@@ -8142,6 +8147,10 @@
       "platform_message": {
         "title": "{title}",
         "message": "{message}"
+      },
+      "access_requested": {
+        "title": "Quelqu'un demande à rejoindre",
+        "message": "{name} ({email}) demande à rejoindre l'espace de travail."
       }
     },
     "reason": {
@@ -8586,7 +8595,8 @@
       "rejected": "Demande de {name} refusée",
       "waiting": "En attente d'approbation",
       "viaLink": "Inscrit avec le lien de l'espace de travail {when}.",
-      "viaInvite": "Inscrit avec un lien personnel {when}."
+      "viaInvite": "Inscrit avec un lien personnel {when}.",
+      "viaSso": "A demandé à rejoindre via l'authentification unique {when}."
     },
     "links": {
       "button": "Liens d'inscription",

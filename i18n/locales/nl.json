@@ -7567,12 +7567,14 @@
       "group": {
         "responses": "Reacties",
         "forms": "Formulieren en exports",
-        "problems": "Problemen en beveiliging"
+        "problems": "Problemen en beveiliging",
+        "people": "Mensen"
       },
       "groupHint": {
         "responses": "Wanneer mensen je formulieren invullen.",
         "forms": "Wanneer een formulier vol raakt of sluit, en wanneer een bestand klaar is.",
-        "problems": "Dingen die iemand snel moet bekijken."
+        "problems": "Dingen die iemand snel moet bekijken.",
+        "people": "Als iemand nieuw lid wil worden van de werkruimte."
       },
       "name": {
         "response_new": "Nieuwe reactie",
@@ -7581,7 +7583,8 @@
         "form_closing": "Formulier sluit binnen een dag",
         "export_ready": "Export klaar",
         "webhook_failing": "Webhook mislukt",
-        "security_alert": "Inloggen geblokkeerd"
+        "security_alert": "Inloggen geblokkeerd",
+        "access_requested": "Iemand wil lid worden"
       },
       "hint": {
         "response_new": "Elke reactie op elk formulier.",
@@ -7590,7 +7593,8 @@
         "form_closing": "Een formulier neemt binnen 24 uur geen reacties meer aan.",
         "export_ready": "Een aangevraagd bestand kan worden gedownload.",
         "webhook_failing": "Een webhook is gepauzeerd na herhaald mislukken.",
-        "security_alert": "Een geblokkeerd netwerk, e-maildomein of account, of te veel foute codes."
+        "security_alert": "Een geblokkeerd netwerk, e-maildomein of account, of te veel foute codes.",
+        "access_requested": "Een nieuwe persoon wacht op goedkeuring in Mensen."
       },
       "digest": "Dagelijks overzicht",
       "digestHint": "Minder e-mails: één per dag in plaats van één per keer.",
@@ -8055,12 +8059,13 @@
       "buttonShows": "De inlogpagina toont \"Doorgaan met {label}\".",
       "domains": "E-maildomeinen",
       "domainsHelp": "Mensen met deze adressen worden direct naar je provider gestuurd.",
+      "domainsNone": "Zonder domeinen kunnen alleen mensen die al in Mensen staan zo aanmelden.",
       "badDomain": "Controleer de domeinen, bijvoorbeeld example.com",
       "domainsForRequired": "Voeg minstens één domein toe om single sign-on verplicht te maken.",
       "enforce": "Verplicht voor deze domeinen",
       "enforceHint": "Hun wachtwoord en andere inlogopties werken hier dan niet meer. Je provider bepaalt wie binnenkomt.",
       "autoCreate": "Accounts aanmaken bij de eerste keer inloggen",
-      "autoCreateHint": "Iedereen die je provider binnenlaat krijgt een account. Uit: alleen mensen die je hebt toegevoegd kunnen inloggen.",
+      "autoCreateHint": "Aan: iedereen uit deze domeinen die uw provider binnenlaat, krijgt een account. Uit: ze vragen toegang en een beheerder keurt ze goed in Mensen.",
       "defaultRole": "Rol voor nieuwe accounts",
       "lockOut": "Jij logt ook in met {domain}",
       "lockOutDesc": "Als dit aan staat, log jij ook in via je provider. Test het eerst zodat niemand buitengesloten wordt.",
@@ -8142,6 +8147,10 @@
       "platform_message": {
         "title": "{title}",
         "message": "{message}"
+      },
+      "access_requested": {
+        "title": "Iemand wil lid worden",
+        "message": "{name} ({email}) wil lid worden van de werkruimte."
       }
     },
     "reason": {
@@ -8586,7 +8595,8 @@
       "rejected": "Verzoek van {name} afgewezen",
       "waiting": "Wacht op goedkeuring",
       "viaLink": "Aangemeld via de link van de werkruimte {when}.",
-      "viaInvite": "Aangemeld via een persoonlijke link {when}."
+      "viaInvite": "Aangemeld via een persoonlijke link {when}.",
+      "viaSso": "Vroeg {when} toegang via single sign-on."
     },
     "links": {
       "button": "Aanmeldlinks",

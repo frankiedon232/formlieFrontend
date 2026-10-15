@@ -7567,12 +7567,14 @@
       "group": {
         "responses": "Risposte",
         "forms": "Moduli ed esportazioni",
-        "problems": "Problemi e sicurezza"
+        "problems": "Problemi e sicurezza",
+        "people": "Persone"
       },
       "groupHint": {
         "responses": "Quando le persone rispondono ai tuoi moduli.",
         "forms": "Quando un modulo si riempie o chiude, e quando un file è pronto.",
-        "problems": "Cose che qualcuno dovrebbe controllare presto."
+        "problems": "Cose che qualcuno dovrebbe controllare presto.",
+        "people": "Quando qualcuno di nuovo vuole unirsi al workspace."
       },
       "name": {
         "response_new": "Nuova risposta",
@@ -7581,7 +7583,8 @@
         "form_closing": "Il modulo chiude entro un giorno",
         "export_ready": "Esportazione pronta",
         "webhook_failing": "Webhook in errore",
-        "security_alert": "Accesso bloccato"
+        "security_alert": "Accesso bloccato",
+        "access_requested": "Qualcuno chiede di unirsi"
       },
       "hint": {
         "response_new": "Ogni risposta a qualsiasi modulo.",
@@ -7590,7 +7593,8 @@
         "form_closing": "Un modulo smette di accettare risposte entro 24 ore.",
         "export_ready": "Un file richiesto può essere scaricato.",
         "webhook_failing": "Un webhook è stato messo in pausa dopo ripetuti errori.",
-        "security_alert": "Una rete, un dominio e-mail o un account bloccato, o troppi codici errati."
+        "security_alert": "Una rete, un dominio e-mail o un account bloccato, o troppi codici errati.",
+        "access_requested": "Una nuova persona attende l'approvazione in Persone."
       },
       "digest": "Riepilogo giornaliero",
       "digestHint": "Meno e-mail: una al giorno invece di una ogni volta.",
@@ -8055,12 +8059,13 @@
       "buttonShows": "La pagina di accesso mostra \"Continua con {label}\".",
       "domains": "Domini email",
       "domainsHelp": "Le persone con questi indirizzi vengono mandate direttamente al tuo provider.",
+      "domainsNone": "Senza domini, solo le persone già presenti in Persone possono accedere così.",
       "badDomain": "Controlla i domini, per esempio example.com",
       "domainsForRequired": "Aggiungi almeno un dominio per rendere obbligatorio il single sign-on.",
       "enforce": "Obbligatorio per questi domini",
       "enforceHint": "La loro password e le altre opzioni di accesso non funzionano più qui. Il tuo provider decide chi entra.",
       "autoCreate": "Crea account al primo accesso",
-      "autoCreateHint": "Chiunque il tuo provider faccia entrare riceve un account. Disattivato: possono accedere solo le persone che hai aggiunto.",
+      "autoCreateHint": "Attivo: chiunque da questi domini il tuo provider faccia entrare riceve un account. Disattivo: chiede di unirsi e un amministratore lo approva in Persone.",
       "defaultRole": "Ruolo per i nuovi account",
       "lockOut": "Accedi anche tu con {domain}",
       "lockOutDesc": "Una volta attivato, accederai anche tu tramite il tuo provider. Provalo prima, così nessuno resta fuori.",
@@ -8142,6 +8147,10 @@
       "platform_message": {
         "title": "{title}",
         "message": "{message}"
+      },
+      "access_requested": {
+        "title": "Qualcuno chiede di unirsi",
+        "message": "{name} ({email}) chiede di unirsi al workspace."
       }
     },
     "reason": {
@@ -8586,7 +8595,8 @@
       "rejected": "Richiesta di {name} rifiutata",
       "waiting": "In attesa di approvazione",
       "viaLink": "Registrato con il link dello spazio di lavoro {when}.",
-      "viaInvite": "Registrato con un link personale {when}."
+      "viaInvite": "Registrato con un link personale {when}.",
+      "viaSso": "Ha chiesto di unirsi tramite single sign-on {when}."
     },
     "links": {
       "button": "Link di registrazione",

@@ -4,7 +4,9 @@
  * `kind` + `params`; nothing personal from responses is put in them.
  */
 
-export const NOTIFICATION_EVENTS = ['response_new', 'response_duplicate', 'form_limit', 'form_closing', 'export_ready', 'webhook_failing', 'security_alert'] as const
+/** `access_requested` (owner 2026-10-15): someone asks to join, through the workspace's sign-up link, a personal sign-up
+ *  link or single sign-on (domains listed, new accounts off); params { name, email, via: link | invite | sso }. */
+export const NOTIFICATION_EVENTS = ['response_new', 'response_duplicate', 'form_limit', 'form_closing', 'export_ready', 'webhook_failing', 'security_alert', 'access_requested'] as const
 export type NotificationEvent = (typeof NOTIFICATION_EVENTS)[number]
 /**
  * Events from the Formalie team (B16), in the feed only (not in Settings → Notifications): a request for
@@ -28,6 +30,28 @@ export interface NotificationSettings {
   events: Record<NotificationEvent, NotificationRule>
   /** One summary email a day instead of an email each time (in-app stays instant). */
   digest: { enabled: boolean; hour: number }
+}
+
+const rule = (in_app: boolean, email: boolean, to: NotificationAudience = 'admins'): NotificationRule => ({ in_app, email, to, people: [] })
+
+/** Each event's rule until the workspace changes it: responses in the app for everyone, problems and requests to join
+ *  also by email to admins. The backend ports these (parity). */
+export const DEFAULT_NOTIFICATION_RULES: Record<NotificationEvent, NotificationRule> = {
+  response_new: rule(true, false, 'everyone'),
+  response_duplicate: rule(true, false),
+  form_limit: rule(true, true),
+  form_closing: rule(true, true),
+  export_ready: rule(true, false),
+  webhook_failing: rule(true, true),
+  security_alert: rule(true, true),
+  access_requested: rule(true, true),
+}
+
+/** A saved section from before an event existed reads that event with its default rule (as the backend does). */
+export function withNotificationDefaults(settings: NotificationSettings): NotificationSettings {
+  const events = { ...settings.events }
+  for (const key of NOTIFICATION_EVENTS) events[key] ??= structuredClone(DEFAULT_NOTIFICATION_RULES[key])
+  return { ...settings, events }
 }
 
 /** One item in a person's feed. */

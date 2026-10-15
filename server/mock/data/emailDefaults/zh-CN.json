@@ -81,6 +81,10 @@
     "security_alert": {
       "title": "{{workspace}} 中的登录已被拦截",
       "message": "{{email}} 的一次登录已被拦截:{{reason}}。"
+    },
+    "access_requested": {
+      "title": "{{name}} 申请加入 {{workspace}}",
+      "message": "{{name}}（{{email}}）申请加入 {{workspace}}。请在“成员”中批准或拒绝该申请。"
     }
   },
   "layout": {

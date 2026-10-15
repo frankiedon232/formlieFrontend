@@ -81,6 +81,10 @@
     "security_alert": {
       "title": "Login bloqueado em {{workspace}}",
       "message": "Um login de {{email}} foi bloqueado: {{reason}}."
+    },
+    "access_requested": {
+      "title": "{{name}} pede para entrar em {{workspace}}",
+      "message": "{{name}} ({{email}}) pede para entrar em {{workspace}}. Aprove ou recuse o pedido em Pessoas."
     }
   },
   "layout": {

@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { appearanceSchema, brandingSchema, companySchema, emailsSchema, formDefaultsSchema, localisationSchema, notificationsSchema, privacySchema, securitySchema, signinSchema } from '../../shared/utils/settings/schemas'
 import { APPEARANCE_PRESETS, FORMALIE_APPEARANCE } from '../../shared/types/appearance'
 import { isTimeZone } from '../../shared/utils/forms/catalogues'
+import { NOTIFICATION_EVENTS } from '../../shared/types/notifications'
 
 const company = {
   legal_name: 'Northwind Trading Ltd.',
@@ -109,7 +110,8 @@ describe('security settings', () => {
 
 describe('notification settings', () => {
   const rule = { in_app: true, email: false, to: 'admins', people: [] }
-  const events = Object.fromEntries(['response_new', 'response_duplicate', 'form_limit', 'form_closing', 'export_ready', 'webhook_failing', 'security_alert'].map(key => [key, rule]))
+  // Every event in the catalogue (access_requested joined it on 2026-10-15)
+  const events = Object.fromEntries(NOTIFICATION_EVENTS.map(key => [key, rule]))
 
   it('take a rule for every event and a summary hour', () => {
     expect(notificationsSchema.safeParse({ events, digest: { enabled: true, hour: 8 } }).success).toBe(true)

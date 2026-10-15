@@ -45,7 +45,7 @@ export interface StoredPerson {
   /** An open invitation (F16 M2): only a hash of the link's token is kept. */
   invite?: { kind?: 'invite' | 'activation'; token_hash: string; expires_at: string; sent_at: string; invited_by: { id: string; name: string }; message: string | null }
   /** Signed up with a link, waiting for approval (R3 / R4). */
-  request?: { via: 'invite' | 'link'; at: string }
+  request?: { via: 'invite' | 'link' | 'sso'; at: string }
 }
 
 const stores = new Map<string, StoredPerson[]>(Object.entries(loadPersisted<Record<string, StoredPerson[]>>('people', {})))

@@ -7567,12 +7567,14 @@
       "group": {
         "responses": "Respons",
         "forms": "Formulir dan ekspor",
-        "problems": "Masalah dan keamanan"
+        "problems": "Masalah dan keamanan",
+        "people": "Orang"
       },
       "groupHint": {
         "responses": "Saat orang menjawab formulir Anda.",
         "forms": "Saat formulir penuh atau ditutup, dan saat file sudah siap.",
-        "problems": "Hal yang perlu segera diperiksa seseorang."
+        "problems": "Hal yang perlu segera diperiksa seseorang.",
+        "people": "Saat seseorang yang baru ingin bergabung ke ruang kerja."
       },
       "name": {
         "response_new": "Respons baru",
@@ -7581,7 +7583,8 @@
         "form_closing": "Formulir ditutup dalam sehari",
         "export_ready": "Ekspor siap",
         "webhook_failing": "Webhook gagal",
-        "security_alert": "Masuk diblokir"
+        "security_alert": "Masuk diblokir",
+        "access_requested": "Seseorang ingin bergabung"
       },
       "hint": {
         "response_new": "Setiap respons ke formulir apa pun.",
@@ -7590,7 +7593,8 @@
         "form_closing": "Formulir berhenti menerima respons dalam 24 jam.",
         "export_ready": "File yang diminta bisa diunduh.",
         "webhook_failing": "Webhook dijeda setelah gagal berulang kali.",
-        "security_alert": "Jaringan, domain email, atau akun yang diblokir, atau terlalu banyak kode salah."
+        "security_alert": "Jaringan, domain email, atau akun yang diblokir, atau terlalu banyak kode salah.",
+        "access_requested": "Orang baru menunggu persetujuan di Orang."
       },
       "digest": "Ringkasan harian",
       "digestHint": "Lebih sedikit email: satu per hari, bukan satu setiap kali.",
@@ -8055,12 +8059,13 @@
       "buttonShows": "Halaman masuk menampilkan \"Lanjutkan dengan {label}\".",
       "domains": "Domain email",
       "domainsHelp": "Orang dengan alamat ini langsung diarahkan ke penyedia Anda.",
+      "domainsNone": "Tanpa domain, hanya orang yang sudah ada di Orang yang bisa masuk dengan cara ini.",
       "badDomain": "Periksa domainnya, misalnya example.com",
       "domainsForRequired": "Tambahkan setidaknya satu domain untuk mewajibkan single sign-on.",
       "enforce": "Wajib untuk domain ini",
       "enforceHint": "Kata sandi dan opsi masuk lainnya tidak berfungsi lagi di sini. Penyedia Anda yang menentukan siapa yang masuk.",
       "autoCreate": "Buat akun saat masuk pertama kali",
-      "autoCreateHint": "Siapa pun yang diizinkan penyedia Anda mendapat akun. Nonaktif: hanya orang yang Anda tambahkan yang dapat masuk.",
+      "autoCreateHint": "Aktif: siapa pun dari domain ini yang diizinkan penyedia Anda mendapat akun. Nonaktif: mereka meminta bergabung dan admin menyetujuinya di Orang.",
       "defaultRole": "Peran untuk akun baru",
       "lockOut": "Anda juga masuk dengan {domain}",
       "lockOutDesc": "Setelah diaktifkan, Anda juga akan masuk melalui penyedia Anda. Uji dulu agar tidak ada yang terkunci.",
@@ -8142,6 +8147,10 @@
       "platform_message": {
         "title": "{title}",
         "message": "{message}"
+      },
+      "access_requested": {
+        "title": "Seseorang ingin bergabung",
+        "message": "{name} ({email}) ingin bergabung ke ruang kerja."
       }
     },
     "reason": {
@@ -8586,7 +8595,8 @@
       "rejected": "Permintaan {name} ditolak",
       "waiting": "Menunggu persetujuan",
       "viaLink": "Mendaftar dengan tautan ruang kerja {when}.",
-      "viaInvite": "Mendaftar dengan tautan pribadi {when}."
+      "viaInvite": "Mendaftar dengan tautan pribadi {when}.",
+      "viaSso": "Meminta bergabung melalui single sign-on {when}."
     },
     "links": {
       "button": "Tautan pendaftaran",

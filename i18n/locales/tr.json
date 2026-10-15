@@ -7567,12 +7567,14 @@
       "group": {
         "responses": "Yanıtlar",
         "forms": "Formlar ve dışa aktarmalar",
-        "problems": "Sorunlar ve güvenlik"
+        "problems": "Sorunlar ve güvenlik",
+        "people": "Kişiler"
       },
       "groupHint": {
         "responses": "İnsanlar formlarını yanıtladığında.",
         "forms": "Bir form dolduğunda ya da kapandığında ve bir dosya hazır olduğunda.",
-        "problems": "Birinin yakında bakması gereken şeyler."
+        "problems": "Birinin yakında bakması gereken şeyler.",
+        "people": "Yeni biri çalışma alanına katılmak istediğinde."
       },
       "name": {
         "response_new": "Yeni yanıt",
@@ -7581,7 +7583,8 @@
         "form_closing": "Form bir gün içinde kapanıyor",
         "export_ready": "Dışa aktarma hazır",
         "webhook_failing": "Webhook başarısız",
-        "security_alert": "Giriş engellendi"
+        "security_alert": "Giriş engellendi",
+        "access_requested": "Biri katılmak istiyor"
       },
       "hint": {
         "response_new": "Her forma gelen her yanıt.",
@@ -7590,7 +7593,8 @@
         "form_closing": "Bir form 24 saat içinde yanıt almayı durduruyor.",
         "export_ready": "İstenen bir dosya indirilebilir.",
         "webhook_failing": "Bir webhook defalarca başarısız olduktan sonra durduruldu.",
-        "security_alert": "Engellenen bir ağ, e-posta alan adı veya hesap ya da çok fazla yanlış kod."
+        "security_alert": "Engellenen bir ağ, e-posta alan adı veya hesap ya da çok fazla yanlış kod.",
+        "access_requested": "Yeni bir kişi Kişiler'de onay bekliyor."
       },
       "digest": "Günlük özet",
       "digestHint": "Daha az e-posta: her seferinde bir tane yerine günde bir.",
@@ -8055,12 +8059,13 @@
       "buttonShows": "Giriş sayfasında \"{label} ile devam et\" görünür.",
       "domains": "E-posta alan adları",
       "domainsHelp": "Bu adreslere sahip kişiler doğrudan sağlayıcınıza yönlendirilir.",
+      "domainsNone": "Alan adı yoksa bu yolla yalnızca Kişiler'de zaten olanlar giriş yapabilir.",
       "badDomain": "Alan adlarını kontrol edin, örneğin example.com",
       "domainsForRequired": "Çoklu oturum açmayı zorunlu yapmak için en az bir alan adı ekleyin.",
       "enforce": "Bu alan adları için zorunlu",
       "enforceHint": "Bu kişilerin şifresi ve diğer giriş seçenekleri burada çalışmaz. Kimin gireceğine sağlayıcınız karar verir.",
       "autoCreate": "İlk girişte hesap oluştur",
-      "autoCreateHint": "Sağlayıcınızın içeri aldığı herkes bir hesap alır. Kapalı: yalnızca sizin eklediğiniz kişiler giriş yapabilir.",
+      "autoCreateHint": "Açık: sağlayıcınızın bu alan adlarından içeri aldığı herkes bir hesap alır. Kapalı: katılma isteği gönderirler ve bir yönetici onları Kişiler'de onaylar.",
       "defaultRole": "Yeni hesaplar için rol",
       "lockOut": "Siz de {domain} ile giriş yapıyorsunuz",
       "lockOutDesc": "Bu açıldığında siz de sağlayıcınız üzerinden giriş yapacaksınız. Kimse dışarıda kalmasın diye önce test edin.",
@@ -8142,6 +8147,10 @@
       "platform_message": {
         "title": "{title}",
         "message": "{message}"
+      },
+      "access_requested": {
+        "title": "Biri katılmak istiyor",
+        "message": "{name} ({email}) çalışma alanına katılmak istiyor."
       }
     },
     "reason": {
@@ -8586,7 +8595,8 @@
       "rejected": "{name} isteği reddedildi",
       "waiting": "Onay bekliyor",
       "viaLink": "Çalışma alanının bağlantısıyla kayıt oldu: {when}.",
-      "viaInvite": "Kişisel bağlantıyla kayıt oldu: {when}."
+      "viaInvite": "Kişisel bağlantıyla kayıt oldu: {when}.",
+      "viaSso": "{when} tek oturum açma ile katılma isteği gönderdi."
     },
     "links": {
       "button": "Kayıt bağlantıları",

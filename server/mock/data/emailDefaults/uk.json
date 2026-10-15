@@ -81,6 +81,10 @@
     "security_alert": {
       "title": "Вхід заблоковано в {{workspace}}",
       "message": "Вхід користувача {{email}} заблоковано: {{reason}}."
+    },
+    "access_requested": {
+      "title": "{{name}} просить доступ до {{workspace}}",
+      "message": "{{name}} ({{email}}) просить доступ до {{workspace}}. Схваліть або відхиліть запит у розділі «Люди»."
     }
   },
   "layout": {

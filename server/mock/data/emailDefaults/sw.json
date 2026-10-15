@@ -81,6 +81,10 @@
     "security_alert": {
       "title": "Kuingia kumezuiwa katika {{workspace}}",
       "message": "Kuingia kwa {{email}} kumezuiwa: {{reason}}."
+    },
+    "access_requested": {
+      "title": "{{name}} anaomba kujiunga na {{workspace}}",
+      "message": "{{name}} ({{email}}) anaomba kujiunga na {{workspace}}. Idhinisha au kataa ombi kwenye Watu."
     }
   },
   "layout": {

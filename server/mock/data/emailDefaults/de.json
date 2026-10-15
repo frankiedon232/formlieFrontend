@@ -81,6 +81,10 @@
     "security_alert": {
       "title": "Anmeldung in {{workspace}} blockiert",
       "message": "Eine Anmeldung von {{email}} wurde blockiert: {{reason}}."
+    },
+    "access_requested": {
+      "title": "{{name}} möchte {{workspace}} beitreten",
+      "message": "{{name}} ({{email}}) möchte {{workspace}} beitreten. Genehmigen oder lehnen Sie die Anfrage unter Personen ab."
     }
   },
   "layout": {

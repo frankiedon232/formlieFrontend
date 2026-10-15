@@ -153,7 +153,7 @@ async function save() {
       <UFormField name="label" :label="t('settings.sso.label')" :help="t('settings.sso.buttonShows', { label: state.label || SSO_NAMES[provider] })">
         <UInput v-model="state.label" :maxlength="40" class="w-full sm:max-w-xs" />
       </UFormField>
-      <UFormField name="domains" :label="t('settings.sso.domains')" :help="t('settings.sso.domainsHelp')">
+      <UFormField name="domains" :label="t('settings.sso.domains')" :help="state.domains.length ? t('settings.sso.domainsHelp') : t('settings.sso.domainsNone')">
         <UInputTags v-model="domains" :placeholder="t('settings.signin.domainPlaceholder')" icon="i-lucide-at-sign" class="w-full" :add-on-blur="true" :add-on-paste="true" />
       </UFormField>
       <div class="flex flex-col divide-y divide-default rounded-lg border border-default">

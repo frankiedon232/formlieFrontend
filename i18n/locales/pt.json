@@ -7567,12 +7567,14 @@
       "group": {
         "responses": "Respostas",
         "forms": "Formulários e exportações",
-        "problems": "Problemas e segurança"
+        "problems": "Problemas e segurança",
+        "people": "Pessoas"
       },
       "groupHint": {
         "responses": "Quando as pessoas respondem aos seus formulários.",
         "forms": "Quando um formulário enche ou fecha, e quando um arquivo está pronto.",
-        "problems": "Coisas que alguém deve verificar em breve."
+        "problems": "Coisas que alguém deve verificar em breve.",
+        "people": "Quando alguém novo quer entrar no espaço de trabalho."
       },
       "name": {
         "response_new": "Nova resposta",
@@ -7581,7 +7583,8 @@
         "form_closing": "Formulário fecha em um dia",
         "export_ready": "Exportação pronta",
         "webhook_failing": "Webhook falhando",
-        "security_alert": "Login bloqueado"
+        "security_alert": "Login bloqueado",
+        "access_requested": "Alguém pede para entrar"
       },
       "hint": {
         "response_new": "Toda resposta a qualquer formulário.",
@@ -7590,7 +7593,8 @@
         "form_closing": "Um formulário para de aceitar respostas em 24 horas.",
         "export_ready": "Um arquivo pedido já pode ser baixado.",
         "webhook_failing": "Um webhook foi pausado após falhar repetidamente.",
-        "security_alert": "Uma rede, domínio de e-mail ou conta bloqueados, ou muitos códigos errados."
+        "security_alert": "Uma rede, domínio de e-mail ou conta bloqueados, ou muitos códigos errados.",
+        "access_requested": "Uma pessoa nova aguarda aprovação em Pessoas."
       },
       "digest": "Resumo diário",
       "digestHint": "Menos e-mails: um por dia em vez de um a cada vez.",
@@ -8055,12 +8059,13 @@
       "buttonShows": "A página de login mostra \"Continuar com {label}\".",
       "domains": "Domínios de e-mail",
       "domainsHelp": "Pessoas com esses endereços vão direto para o seu provedor.",
+      "domainsNone": "Sem domínios, só as pessoas que já estão em Pessoas podem entrar desta forma.",
       "badDomain": "Confira os domínios, por exemplo example.com",
       "domainsForRequired": "Adicione pelo menos um domínio para tornar o login único obrigatório.",
       "enforce": "Obrigatório para estes domínios",
       "enforceHint": "A senha e as outras opções de login deixam de funcionar aqui. Seu provedor decide quem entra.",
       "autoCreate": "Criar contas no primeiro login",
-      "autoCreateHint": "Qualquer pessoa que seu provedor deixar entrar recebe uma conta. Desativado: só entram as pessoas que você adicionou.",
+      "autoCreateHint": "Ativado: qualquer pessoa destes domínios que o seu fornecedor deixe entrar recebe uma conta. Desativado: pedem para entrar e um administrador aprova-os em Pessoas.",
       "defaultRole": "Função das novas contas",
       "lockOut": "Você também entra com {domain}",
       "lockOutDesc": "Depois de ativado, você também entrará pelo seu provedor. Teste antes para ninguém ficar de fora.",
@@ -8142,6 +8147,10 @@
       "platform_message": {
         "title": "{title}",
         "message": "{message}"
+      },
+      "access_requested": {
+        "title": "Alguém pede para entrar",
+        "message": "{name} ({email}) pede para entrar no espaço de trabalho."
       }
     },
     "reason": {
@@ -8586,7 +8595,8 @@
       "rejected": "Pedido de {name} rejeitado",
       "waiting": "Aguardando aprovação",
       "viaLink": "Registou-se com o link do espaço de trabalho {when}.",
-      "viaInvite": "Registou-se com um link pessoal {when}."
+      "viaInvite": "Registou-se com um link pessoal {when}.",
+      "viaSso": "Pediu para entrar através do início de sessão único {when}."
     },
     "links": {
       "button": "Links de registo",

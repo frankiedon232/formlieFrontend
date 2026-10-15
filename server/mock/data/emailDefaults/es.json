@@ -81,6 +81,10 @@
     "security_alert": {
       "title": "Inicio de sesión bloqueado en {{workspace}}",
       "message": "Se bloqueó un inicio de sesión de {{email}}: {{reason}}."
+    },
+    "access_requested": {
+      "title": "{{name}} pide unirse a {{workspace}}",
+      "message": "{{name}} ({{email}}) pide unirse a {{workspace}}. Aprueba o rechaza la solicitud en Personas."
     }
   },
   "layout": {

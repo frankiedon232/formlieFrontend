@@ -81,6 +81,10 @@
     "security_alert": {
       "title": "{{workspace}} में साइन-इन रोका गया",
       "message": "{{email}} का एक साइन-इन रोका गया: {{reason}}।"
+    },
+    "access_requested": {
+      "title": "{{name}} {{workspace}} से जुड़ना चाहते हैं",
+      "message": "{{name}} ({{email}}) {{workspace}} से जुड़ना चाहते हैं। लोग में अनुरोध को मंज़ूर या अस्वीकार करें।"
     }
   },
   "layout": {

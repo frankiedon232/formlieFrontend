@@ -15,6 +15,8 @@ const { t } = useI18n()
 const { roleName } = useBuiltInNames()
 const api = useApi()
 const { number, relative, date, dateTime, percent } = useFormat()
+/** How a waiting person asked to join (single sign-on since 2026-10-15). */
+const REQUEST_VIA = { link: 'people.approve.viaLink', invite: 'people.approve.viaInvite', sso: 'people.approve.viaSso' } as const
 
 const person = ref<PersonDetail | null>(null)
 const failed = ref(false)
@@ -115,7 +117,7 @@ const place = computed(() => {
       <AppEmpty v-if="failed && !person" icon="i-lucide-cloud-alert" :title="t('dataView.errorTitle')" :actions="[{ label: t('common.retry'), color: 'neutral', variant: 'outline', onClick: () => id && load(id) }]" />
       <div v-else-if="!person" class="grid grid-cols-2 gap-2 sm:grid-cols-3"><USkeleton v-for="n in 6" :key="n" class="h-14 rounded-lg" /></div>
       <template v-else>
-        <UAlert v-if="person.request" icon="i-lucide-hourglass" color="neutral" variant="subtle" :title="t('people.approve.waiting')" :description="t(person.request.via === 'link' ? 'people.approve.viaLink' : 'people.approve.viaInvite', { when: relative(person.request.at) })" />
+        <UAlert v-if="person.request" icon="i-lucide-hourglass" color="neutral" variant="subtle" :title="t('people.approve.waiting')" :description="t(REQUEST_VIA[person.request.via], { when: relative(person.request.at) })" />
         <UAlert v-if="person.invite" :icon="person.invite.expired ? 'i-lucide-clock-alert' : 'i-lucide-mail'" :color="person.invite.expired ? 'warning' : 'neutral'" variant="subtle" :title="person.invite.expired ? t('people.invite.expiredOn', { date: dateTime(person.invite.expires_at) }) : t('people.invite.waiting', { date: dateTime(person.invite.expires_at) })" :description="t('people.invite.sentBy', { name: person.invite.invited_by, when: relative(person.invite.sent_at) })" />
         <UAlert v-if="person.privileged && !person.two_step && person.status === 'active'" icon="i-lucide-flag" color="error" variant="subtle" :title="t('people.flagTwoStep')" :description="t('people.flagTwoStepDesc')" />
         <div class="grid grid-cols-2 gap-2 sm:grid-cols-3">

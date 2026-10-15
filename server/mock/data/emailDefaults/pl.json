@@ -81,6 +81,10 @@
     "security_alert": {
       "title": "Zablokowano logowanie w {{workspace}}",
       "message": "Logowanie użytkownika {{email}} zostało zablokowane: {{reason}}."
+    },
+    "access_requested": {
+      "title": "{{name}} prosi o dołączenie do {{workspace}}",
+      "message": "{{name}} ({{email}}) prosi o dołączenie do {{workspace}}. Zatwierdź lub odrzuć prośbę w Osobach."
     }
   },
   "layout": {

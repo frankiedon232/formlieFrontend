@@ -28,6 +28,8 @@ onMounted(async () => {
 const GROUPS: { key: string; events: NotificationEvent[] }[] = [
   { key: 'responses', events: ['response_new', 'response_duplicate'] },
   { key: 'forms', events: ['form_limit', 'form_closing', 'export_ready'] },
+  // Someone asks to join (sign-up links, single sign-on); an admin approves them in People
+  { key: 'people', events: ['access_requested'] },
   { key: 'problems', events: ['webhook_failing', 'security_alert'] },
 ]
 const audiences = computed(() => (['admins', 'everyone', 'people'] as const).map(value => ({ value, label: t(`settings.notifications.to.${value}`) })))

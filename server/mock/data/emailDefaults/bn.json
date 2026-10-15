@@ -81,6 +81,10 @@
     "security_alert": {
       "title": "{{workspace}}-এ সাইন-ইন আটকানো হয়েছে",
       "message": "{{email}}-এর একটি সাইন-ইন আটকানো হয়েছে: {{reason}}।"
+    },
+    "access_requested": {
+      "title": "{{name}} {{workspace}}-এ যোগ দিতে চায়",
+      "message": "{{name}} ({{email}}) {{workspace}}-এ যোগ দিতে চায়। People-এ অনুরোধটি অনুমোদন বা প্রত্যাখ্যান করুন।"
     }
   },
   "layout": {

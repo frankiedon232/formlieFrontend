@@ -81,6 +81,10 @@
     "security_alert": {
       "title": "Đăng nhập bị chặn trong {{workspace}}",
       "message": "Một lần đăng nhập của {{email}} đã bị chặn: {{reason}}."
+    },
+    "access_requested": {
+      "title": "{{name}} xin tham gia {{workspace}}",
+      "message": "{{name}} ({{email}}) xin tham gia {{workspace}}. Hãy duyệt hoặc từ chối yêu cầu trong mục Mọi người."
     }
   },
   "layout": {

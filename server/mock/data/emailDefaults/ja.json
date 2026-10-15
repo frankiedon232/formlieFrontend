@@ -81,6 +81,10 @@
     "security_alert": {
       "title": "{{workspace}} でログインがブロックされました",
       "message": "{{email}} のログインがブロックされました: {{reason}}。"
+    },
+    "access_requested": {
+      "title": "{{name}} さんが {{workspace}} への参加を希望しています",
+      "message": "{{name}}({{email}})さんが {{workspace}} への参加を希望しています。「メンバー」でリクエストを承認または拒否してください。"
     }
   },
   "layout": {
