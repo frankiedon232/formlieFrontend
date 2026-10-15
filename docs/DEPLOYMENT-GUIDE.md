@@ -40,7 +40,7 @@ Marks: ⬜ to do · ✅ done · ⏸ waiting. Tick a step only once it is done on
 
 - ⬜ **Cloudflare:** an account with `formalie.com` added as a zone (the registrar's name servers changed to Cloudflare's). Plan: Free works to start; Pro adds better WAF rules. Workers: the free plan allows 100,000 requests a day, Workers Paid ($5 a month) removes that limit; take Paid before launch.
 - ⬜ **Hosting for the back ends:** AWS or dedicated servers (Part 2 lists both). Pick one region close to most customers.
-- ⬜ **Email:** Amazon SES (or another SMTP relay), production access requested (SES starts in a sandbox that only sends to verified addresses; asking to leave it takes about a day).
+- ⬜ **Email:** Amazon SES (primary) and Postmark (backup), owner 2026-10-15: SES production access requested (SES starts in a sandbox that only sends to verified addresses; asking to leave it takes about a day) and Postmark's account approved. formlyBackend `docs/EMAIL-SETUP-GUIDE.md`.
 - ⬜ **Google** and **Facebook** developer apps for sign-in (already made for development; Part 9).
 - ⬜ **Anthropic:** a production API key and spending limits (console.anthropic.com).
 - ⬜ **MaxMind GeoLite2:** account ID and licence key.
@@ -265,7 +265,7 @@ Check: `systemctl status formalie-*` all "active (running)"; `journalctl -u form
    | `api` | A | app-1's public address |
    | `*` | AAAA | `100::` (placeholder: the Workers answer, nothing reaches it) |
    | `@` (formalie.com), `www` | AAAA | `100::` (the website's Worker) |
-   | mail records | TXT / CNAME / MX | SPF, DKIM, DMARC and SES's records (Part 9), DNS only |
+   | mail records | TXT / CNAME / MX | DKIM, MAIL FROM / Return-Path and DMARC for SES and Postmark (Part 9), DNS only |
 
 2. ⬜ **SSL/TLS:** mode **Full (strict)**; Edge Certificates: Always Use HTTPS on, HSTS on (after the first checks pass), minimum TLS 1.2.
 3. ⬜ **Security:** WAF managed rules on; a rate limiting rule on `/api/v1/auth/*` of the portal hosts (`*.formalie.com/api/v1/auth/*`, where browsers call it); Bot Fight Mode on.
@@ -324,7 +324,7 @@ All three are built on your own machine (or a CI job), never on a server. Each p
 
 ## Part 9. Outside services (once)
 
-1. ⬜ **Email (SES):** verify `formalie.com` as an identity, publish its DKIM CNAMEs, SPF (`v=spf1 include:amazonses.com ~all`), DMARC (`v=DMARC1; p=quarantine; rua=mailto:dmarc@formalie.com`), and a custom MAIL FROM. Leave the sandbox. Workspaces' own sending domains: PRODUCTION-CHECKLIST section 6.
+1. ⬜ **Email (SES, then Postmark as the backup):** formlyBackend `docs/EMAIL-SETUP-GUIDE.md`. SES: verify `formalie.com` as an identity, publish its DKIM CNAMEs and the custom MAIL FROM `mail.formalie.com` (MX and SPF `v=spf1 include:amazonses.com ~all` on that name), leave the sandbox. Postmark: verify the domain (DKIM TXT, Return-Path CNAME `pm-bounces`), get the account approved. DMARC once for both (`p=none` for the first weeks, then `v=DMARC1; p=quarantine; rua=mailto:dmarc@formalie.com`). Workspaces' own sending domains: PRODUCTION-CHECKLIST section 6.
 2. ⬜ **Google:** in Google Cloud → Credentials → the OAuth client, add the production return address (PRODUCTION-CHECKLIST section 5), then publish the app and finish the consent screen check.
 3. ⬜ **Facebook:** add the production return address and `formalie.com` under App domains, switch the app to Live.
 4. ⬜ **Anthropic:** production key in `.env`, monthly limit set in the console.
