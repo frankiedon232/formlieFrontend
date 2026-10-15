@@ -5926,7 +5926,8 @@
       "groups": "Yanıt grupları",
       "nothingHere": "Burada gösterilecek bir şey yok",
       "notDuplicate": "Kopya değil",
-      "rejectDuplicate": "Kopya olarak reddet"
+      "rejectDuplicate": "Kopya olarak reddet",
+      "ip": "IP adresi"
     },
     "device": {
       "desktop": "Bilgisayar",
@@ -7752,7 +7753,16 @@
       "regionPick": "Bir bölge seçin",
       "regionAsk": "Bu bölgeyi talep edin",
       "regionMove": "Başka bir bölgeye taşıma sizinle planlanır ve Formalie ekibi tarafından yapılır; verileriniz önce kopyalanır ve kontrol edilir.",
-      "regionFailed": "Verilerinizin nerede saklandığı yüklenemedi"
+      "regionFailed": "Verilerinizin nerede saklandığı yüklenemedi",
+      "ip": {
+        "title": "Yanıtlayanların IP adresleri",
+        "hint": "Ekibinizin yanıtlarda ve dışa aktarmalarda gördükleri. Formalie her durumda güvenlik için tam adresi saklar.",
+        "hidden": "Gizli",
+        "masked": "Kısmen gizli",
+        "full": "Tam",
+        "example": "Yanıtlarda ve dışa aktarmalarda {ip} olarak görünür.",
+        "hiddenExample": "Yanıtlar ve dışa aktarmalar IP adresi göstermez."
+      }
     },
     "formDefaults": {
       "note": "Yeni formlar bu ayarlarla başlar. Mevcut formlar kendi ayarlarını korur ve her form bunları yine değiştirebilir.",

@@ -5926,7 +5926,8 @@
       "groups": "Antwoordgroepen",
       "nothingHere": "Niets te tonen",
       "notDuplicate": "Geen duplicaat",
-      "rejectDuplicate": "Afwijzen als duplicaat"
+      "rejectDuplicate": "Afwijzen als duplicaat",
+      "ip": "IP-adres"
     },
     "device": {
       "desktop": "Computer",
@@ -7752,7 +7753,16 @@
       "regionPick": "Kies een regio",
       "regionAsk": "Deze regio aanvragen",
       "regionMove": "Een verhuizing naar een andere regio wordt met je gepland en uitgevoerd door het Formalie-team, waarbij je gegevens eerst worden gekopieerd en gecontroleerd.",
-      "regionFailed": "Kon niet laden waar je gegevens worden opgeslagen"
+      "regionFailed": "Kon niet laden waar je gegevens worden opgeslagen",
+      "ip": {
+        "title": "IP-adressen van invullers",
+        "hint": "Wat uw team ziet in antwoorden en exports. Formalie bewaart het volledige adres hoe dan ook voor de veiligheid.",
+        "hidden": "Verborgen",
+        "masked": "Deels verborgen",
+        "full": "Volledig",
+        "example": "Getoond als {ip} in antwoorden en exports.",
+        "hiddenExample": "Antwoorden en exports tonen geen IP-adres."
+      }
     },
     "formDefaults": {
       "note": "Nieuwe formulieren starten hiermee. Bestaande formulieren houden hun eigen instellingen, en elk formulier kan ze nog aanpassen.",

@@ -15,14 +15,14 @@ import { checksOf, dataSourcesOf, statusOf } from '../data/dataSourceStore'
 import { deliveriesOf, destinationsOf } from '../data/destinationStore'
 import { formsOf } from '../data/formStore'
 import { permissionsOf } from '../data/rolesStore'
-import { periodFrom } from './dashboard'
+import { calendarOf, periodFrom } from './dashboard'
 
 const iso = (time: number) => new Date(time).toISOString().slice(0, 10)
 
 export const dataDashboard = defineMockRoute(({ event, query }) => {
   const { tenant, user } = requireAuth(event)
   if (!permissionsOf(user, tenant).has('data.view')) throw new MockError('FRM-PERM-1001')
-  const { from, to, group, prevFrom, end, buckets } = periodFrom(query)
+  const { from, to, group, prevFrom, end, buckets, calendar } = periodFrom(query, calendarOf(tenant))
   const index = new Map(buckets.map((start, i) => [start, i]))
   const series = buckets.map(start => ({ start, operations: 0, deliveries: 0 }))
   const sources = dataSourcesOf(tenant)
@@ -38,7 +38,7 @@ export const dataDashboard = defineMockRoute(({ event, query }) => {
       const time = Date.parse(day)
       if (time >= from && time <= end) {
         own += count
-        const i = index.get(iso(bucketStart(time, group)))
+        const i = index.get(iso(bucketStart(time, group, calendar)))
         if (i !== undefined) series[i]!.operations += count
       } else if (time >= prevFrom && time < from) operationsBefore += count
     }
@@ -63,7 +63,7 @@ export const dataDashboard = defineMockRoute(({ event, query }) => {
       const time = Date.parse(delivery.at)
       if (time >= from && time <= end) {
         storage.sent++
-        const i = index.get(iso(bucketStart(time, group)))
+        const i = index.get(iso(bucketStart(time, group, calendar)))
         if (i !== undefined) series[i]!.deliveries++
       } else if (time >= prevFrom && time < from) deliveriesBefore++
     }

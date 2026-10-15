@@ -1,6 +1,7 @@
 <!--
   Response facts as tiles (F11 panel): when it was sent, time taken, how it came in, language,
-  device, form version. Icon in a soft square, the label small, the value clear.
+  device, form version, and the respondent's IP address when the workspace's Privacy setting shows it (partly
+  hidden or full, owner 2026-10-15). Icon in a soft square, the label small, the value clear.
 -->
 <script setup lang="ts">
 import type { ResponseDetail } from '#shared/types/responses'
@@ -22,6 +23,7 @@ const tiles = computed(() => {
     { icon: locale?.flag ?? 'i-lucide-languages', label: t('responses.detail.language'), value: locale?.name ?? r.language, hint: null },
     { icon: device === 'phone' ? 'i-lucide-smartphone' : device === 'tablet' ? 'i-lucide-tablet' : 'i-lucide-monitor', label: t('responses.detail.device'), value: t(`responses.device.${device}`), hint: null },
     { icon: 'i-lucide-history', label: t('responses.detail.version'), value: r.form_version ? `v${r.form_version}` : '-', hint: null },
+    ...(r.ip ? [{ icon: 'i-lucide-network', label: t('responses.detail.ip'), value: r.ip, hint: null, mono: true }] : []),
   ]
 })
 </script>
@@ -35,7 +37,7 @@ const tiles = computed(() => {
       <div class="flex min-w-0 flex-col">
         <span class="truncate text-[11px] text-muted">{{ tile.label }}</span>
         <UTooltip v-if="tile.hint" :text="tile.hint"><span class="truncate text-sm font-medium text-highlighted">{{ tile.value }}</span></UTooltip>
-        <span v-else class="truncate text-sm font-medium text-highlighted">{{ tile.value }}</span>
+        <span v-else class="truncate text-sm font-medium text-highlighted" :class="'mono' in tile && tile.mono ? 'font-mono' : ''" :dir="'mono' in tile && tile.mono ? 'ltr' : undefined">{{ tile.value }}</span>
       </div>
     </li>
   </ul>

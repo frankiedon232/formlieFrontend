@@ -105,6 +105,19 @@ describe('views and starts', () => {
       { date: '2026-10-03', views: 0, starts: 0 },
     ])
   })
+
+  it('counts each visit on the workspace’s own day (its time zone)', () => {
+    // 23:30 UTC on 1 October is already 2 October in Lagos (UTC+1)
+    const late = [ev(A, 'view', '2026-10-01T23:30:00.000Z'), ev(A, 'start', '2026-10-01T23:31:00.000Z')]
+    expect(visitsPerDay(late, ['2026-10-01', '2026-10-02'])).toEqual([
+      { date: '2026-10-01', views: 1, starts: 1 },
+      { date: '2026-10-02', views: 0, starts: 0 },
+    ])
+    expect(visitsPerDay(late, ['2026-10-01', '2026-10-02'], 'Africa/Lagos')).toEqual([
+      { date: '2026-10-01', views: 0, starts: 0 },
+      { date: '2026-10-02', views: 1, starts: 1 },
+    ])
+  })
   it('are distinct visits in total', () => {
     expect(visitCounts(events)).toEqual({ views: 3, starts: 2 })
   })

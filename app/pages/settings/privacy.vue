@@ -3,10 +3,13 @@
   shorter limit would remove now is shown, and saving asks first), the organisation's privacy notice and
   a consent line on every public form (with a live sample), and data requests (find, export, delete one
   person's responses), and where data is stored (the region; another one on Enterprise, leftovers L7).
+  Respondent IP addresses (owner 2026-10-15): hidden (default), partly hidden or full in responses and exports;
+  Formalie keeps the full address for security either way.
 -->
 <script setup lang="ts">
 import { RETENTION_DAYS, type RetentionPreview } from '#shared/types/privacy'
 import { privacySchema } from '#shared/utils/settings/schemas'
+import { maskIp, RESPONDENT_IP_MODES } from '#shared/utils/privacy/ip'
 
 definePageMeta({ breadcrumb: 'settings.nav.privacy' })
 const { t } = useI18n()
@@ -45,6 +48,13 @@ async function confirmRemoval(): Promise<boolean> {
   const removing: number = preview.value && draft.value?.retention_days !== form.saved.value?.retention_days ? preview.value.responses : 0
   return !removing || (await confirm({ title: t('settings.privacy.confirmTitle', { n: number(removing) }, removing), description: t('settings.privacy.confirmDesc'), confirmLabel: t('settings.privacy.confirm'), danger: true }))
 }
+// What people see of a respondent's address, with an example of each choice
+const SAMPLE_IP = '203.0.113.45'
+const ipModes = computed(() => RESPONDENT_IP_MODES.map(value => ({ value, label: t(`settings.privacy.ip.${value}`) })))
+const ipExample = computed(() => {
+  const mode = draft.value?.respondent_ip ?? 'hidden'
+  return mode === 'hidden' ? t('settings.privacy.ip.hiddenExample') : t('settings.privacy.ip.example', { ip: mode === 'masked' ? maskIp(SAMPLE_IP) : SAMPLE_IP })
+})
 const consentLine = computed(() => draft.value?.consent_text || t('renderer.consentLine', { org: org.value }))
 </script>
 
@@ -80,6 +90,11 @@ const consentLine = computed(() => draft.value?.consent_text || t('renderer.cons
             <UButton :label="t('renderer.submit')" color="neutral" size="sm" class="w-fit" tabindex="-1" aria-hidden="true" />
           </div>
         </template>
+      </SettingsBlock>
+
+      <SettingsBlock :title="t('settings.privacy.ip.title')" :description="t('settings.privacy.ip.hint')" icon="i-lucide-network">
+        <UTabs v-model="draft.respondent_ip" :items="ipModes" :content="false" color="neutral" size="sm" :ui="SEGMENTED_UI" class="w-fit max-w-full overflow-x-auto" :aria-label="t('settings.privacy.ip.title')" />
+        <p class="flex items-start gap-1.5 text-xs text-muted"><UIcon name="i-lucide-info" class="mt-0.5 size-3.5 shrink-0" /><span>{{ ipExample }}</span></p>
       </SettingsBlock>
 
       <SettingsBlock :title="t('settings.privacy.requests')" :description="t('settings.privacy.requestsHint')" icon="i-lucide-user-search">

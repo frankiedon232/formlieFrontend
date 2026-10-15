@@ -14,7 +14,7 @@ import { canSee, responsesAllowed } from '../data/formPermissions'
 import { formsOf } from '../data/formStore'
 import { formResponses } from '../data/responseData'
 import { scopeFrom } from '#shared/utils/dashboard/scope'
-import { periodFrom } from './dashboard'
+import { calendarOf, periodFrom } from './dashboard'
 
 const DAY = 86_400_000
 const iso = (time: number) => new Date(time).toISOString().slice(0, 10)
@@ -22,7 +22,7 @@ type Work = FormsDashboard['work'][number]
 
 export const formsDashboard = defineMockRoute(({ event, query }) => {
   const { tenant, user } = requireAuth(event)
-  const { from, to, group, prevFrom, end, buckets } = periodFrom(query)
+  const { from, to, group, prevFrom, end, buckets, calendar } = periodFrom(query, calendarOf(tenant))
   const index = new Map(buckets.map((start, i) => [start, i]))
   const scope = scopeFrom(query)
   const forms = formsOf(tenant).forms.filter(form => !form.deleted_at && canSee(form, user) && scope.matches(form))
@@ -46,7 +46,7 @@ export const formsDashboard = defineMockRoute(({ event, query }) => {
     const made = Date.parse(form.created_at)
     if (made >= from && made <= end) {
       createdNow++
-      const i = index.get(iso(bucketStart(made, group)))
+      const i = index.get(iso(bucketStart(made, group, calendar)))
       if (i !== undefined) created[i]!.count++
     } else if (made >= prevFrom && made < from) createdBefore++
 

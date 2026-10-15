@@ -145,6 +145,11 @@ Edit this file whenever a decision changes.
 - **Upkeep moved off reads:** the Trash sweep and due-date announcements run from Beat (every 5 minutes and every minute), so `GET /forms` and `GET /notifications` are plain reads.
 - **Kept for the owner:** webhook signing (M16, it changes the 2026-10-06 decision), `pg_trgm` (trigram search indexes), the per-purpose Fernet keyrings (L17) and the rest of the review's open list.
 
+**Fill-in analytics, calendar and respondent IP addresses (owner, 2026-10-15).**
+- **Real fill-in analytics.** The public form page (link and embed, never previews) records one visit's `view`, `start`, `answer` (per question, first time) and `page` events under a random visit id (sessionStorage, no personal data, no IP) through `POST /public/forms/{key}/events`; the submit carries the same id as `session`. Views, starts, funnel and drop-off are counted from these; the old estimates are gone. Rules in `shared/utils/analytics/`, ported by the backend.
+- **The workspace's calendar.** Dashboard and analytics days are in the workspace's time zone and weeks start on its `week_start` (Monday by default), since Formalie serves organisations everywhere (`shared/utils/dashboard/buckets.ts`).
+- **Respondent IP addresses are a privacy setting.** `privacy.respondent_ip`: hidden (default, as before), masked (IPv4 ends in 0, IPv6 keeps four groups) or full, in the response detail and exports. Formalie keeps the full address for security either way (`shared/utils/privacy/ip.ts`).
+
 ## Corrections to the dev setup
 
 - Hosts use `*.medique.dev` but the app runs on `formalie.dev` → switch to `*.formalie.dev` (see 02-DEV-ENVIRONMENT.md).

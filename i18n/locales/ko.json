@@ -5926,7 +5926,8 @@
       "groups": "답변 그룹",
       "nothingHere": "표시할 내용이 없습니다",
       "notDuplicate": "중복 아님",
-      "rejectDuplicate": "중복으로 거절"
+      "rejectDuplicate": "중복으로 거절",
+      "ip": "IP 주소"
     },
     "device": {
       "desktop": "컴퓨터",
@@ -7752,7 +7753,16 @@
       "regionPick": "리전 선택",
       "regionAsk": "이 리전 요청",
       "regionMove": "다른 리전으로의 이전은 고객과 함께 계획하고 Formalie 팀이 진행하며, 데이터를 먼저 복사하고 확인합니다.",
-      "regionFailed": "데이터가 저장된 위치를 불러오지 못했습니다"
+      "regionFailed": "데이터가 저장된 위치를 불러오지 못했습니다",
+      "ip": {
+        "title": "응답자 IP 주소",
+        "hint": "응답과 내보내기에서 팀이 보는 내용입니다. Formalie는 어떤 경우에도 보안을 위해 전체 주소를 보관합니다.",
+        "hidden": "숨김",
+        "masked": "일부 숨김",
+        "full": "전체",
+        "example": "응답과 내보내기에 {ip}(으)로 표시됩니다.",
+        "hiddenExample": "응답과 내보내기에 IP 주소가 표시되지 않습니다."
+      }
     },
     "formDefaults": {
       "note": "새 양식은 이 설정으로 시작합니다. 이미 있는 양식은 자체 설정을 유지하며, 모든 양식에서 변경할 수 있습니다.",

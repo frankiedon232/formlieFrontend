@@ -5926,7 +5926,8 @@
       "groups": "Groupes de réponses",
       "nothingHere": "Rien à afficher ici",
       "notDuplicate": "Pas un doublon",
-      "rejectDuplicate": "Rejeter comme doublon"
+      "rejectDuplicate": "Rejeter comme doublon",
+      "ip": "Adresse IP"
     },
     "device": {
       "desktop": "Ordinateur",
@@ -7752,7 +7753,16 @@
       "regionPick": "Choisir une région",
       "regionAsk": "Demander cette région",
       "regionMove": "Un transfert vers une autre région est planifié avec vous et réalisé par l’équipe Formalie, vos données étant d’abord copiées et vérifiées.",
-      "regionFailed": "Impossible de charger l’emplacement de vos données"
+      "regionFailed": "Impossible de charger l’emplacement de vos données",
+      "ip": {
+        "title": "Adresses IP des répondants",
+        "hint": "Ce que votre équipe voit dans les réponses et les exports. Formalie conserve l'adresse complète pour la sécurité dans tous les cas.",
+        "hidden": "Masquée",
+        "masked": "Partiellement masquée",
+        "full": "Complète",
+        "example": "Affichée sous la forme {ip} dans les réponses et les exports.",
+        "hiddenExample": "Les réponses et les exports n'affichent aucune adresse IP."
+      }
     },
     "formDefaults": {
       "note": "Les nouveaux formulaires démarrent avec ces réglages. Vos formulaires existants gardent les leurs, et chaque formulaire peut toujours les modifier.",

@@ -44,6 +44,9 @@ export interface ResponseRow {
   edited: boolean
   /** Flagged as perhaps the same person as an earlier response (F10 identity). */
   possible_duplicate: { of: string; reason: string } | null
+  /** The respondent's IP address as the workspace's privacy setting shows it (masked or full); null when hidden or
+   *  unknown (owner 2026-10-15). */
+  ip: string | null
 }
 
 export interface ResponseNote {

@@ -19,7 +19,8 @@ import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
 import { formsOf } from '../data/formStore'
 import { responsesAllowed } from '../data/formPermissions'
-import { answersOf, formResponses, titleOf } from '../data/responseData'
+import { answersOf, formResponses, rawIpOf, titleOf } from '../data/responseData'
+import { respondentIp } from '#shared/utils/privacy/ip'
 import { responseReport } from '../data/responseReport'
 import { settingsOf } from '../data/settingsStore'
 import type { MockTenant, MockUser } from '../data/tenants'
@@ -90,12 +91,16 @@ export const exportFormResponses = defineMockRoute(({ event, body: raw }) => {
   const byKey = new Map(questions.map(field => [field.key, field]))
   const fields = input.columns.length ? input.columns.map(key => byKey.get(key)).filter(field => !!field) : questions
   // Only what the form collected (owner 2026-10-09): name and email come as the form's own questions
-  const head = ['Number', 'Submitted (UTC)', ...(input.details ? ['Status', 'Tags', 'Came in', 'Language', 'Time taken (s)', 'Notes'] : []), ...fields.map(field => field.label?.trim() || field.key)]
+  // Respondents' addresses as the workspace's Privacy setting shows them (owner 2026-10-15): a column unless hidden
+  const ipMode = settingsOf(tenant).privacy.respondent_ip ?? 'hidden'
+  const withIp = ipMode !== 'hidden'
+  const head = ['Number', 'Submitted (UTC)', ...(withIp ? ['IP address'] : []), ...(input.details ? ['Status', 'Tags', 'Came in', 'Language', 'Time taken (s)', 'Notes'] : []), ...fields.map(field => field.label?.trim() || field.key)]
   const rows = picked.map(({ entry }) => {
     const data = answersOf(form, entry)
     return [
       entry.number,
       new Date(entry.at).toISOString(),
+      ...(withIp ? [respondentIp(rawIpOf(entry), ipMode) ?? ''] : []),
       ...(input.details ? [entry.status, entry.tags.join('; '), entry.channel, entry.language, entry.duration_seconds ?? '', entry.notes_count] : []),
       ...fields.map(field => answerText(field, data[field.key])),
     ]
@@ -133,7 +138,7 @@ export const exportFormResponses = defineMockRoute(({ event, body: raw }) => {
           status: entry.status,
           channel: entry.channel,
           tags: input.details ? entry.tags : [],
-          answers: fields.map(field => ({ question: field.label?.trim() || field.key, answer: answerText(field, data[field.key]) })),
+          answers: [...(withIp ? [{ question: 'IP address', answer: respondentIp(rawIpOf(entry), ipMode) ?? '' }] : []), ...fields.map(field => ({ question: field.label?.trim() || field.key, answer: answerText(field, data[field.key]) }))],
         }
       }),
     })

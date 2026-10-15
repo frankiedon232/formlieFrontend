@@ -5926,7 +5926,8 @@
       "groups": "Grup jawaban",
       "nothingHere": "Tidak ada yang ditampilkan",
       "notDuplicate": "Bukan duplikat",
-      "rejectDuplicate": "Tolak sebagai duplikat"
+      "rejectDuplicate": "Tolak sebagai duplikat",
+      "ip": "Alamat IP"
     },
     "device": {
       "desktop": "Komputer",
@@ -7752,7 +7753,16 @@
       "regionPick": "Pilih wilayah",
       "regionAsk": "Minta wilayah ini",
       "regionMove": "Pemindahan ke wilayah lain direncanakan bersama Anda dan dilakukan oleh tim Formalie, dengan data Anda disalin dan diperiksa terlebih dahulu.",
-      "regionFailed": "Tidak dapat memuat lokasi penyimpanan data Anda"
+      "regionFailed": "Tidak dapat memuat lokasi penyimpanan data Anda",
+      "ip": {
+        "title": "Alamat IP responden",
+        "hint": "Yang dilihat tim Anda di respons dan ekspor. Formalie tetap menyimpan alamat lengkap untuk keamanan.",
+        "hidden": "Disembunyikan",
+        "masked": "Sebagian disembunyikan",
+        "full": "Lengkap",
+        "example": "Ditampilkan sebagai {ip} di respons dan ekspor.",
+        "hiddenExample": "Respons dan ekspor tidak menampilkan alamat IP."
+      }
     },
     "formDefaults": {
       "note": "Formulir baru dimulai dengan pengaturan ini. Formulir yang sudah ada tetap memakai pengaturannya sendiri, dan setiap formulir tetap bisa mengubahnya.",

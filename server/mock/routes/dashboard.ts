@@ -8,7 +8,9 @@
  *     forms counted, M5) → WorkspaceDashboard
  */
 import { DASHBOARD_GROUPS, type AttentionItem, type DashboardGroup, type DashboardPoint, type TimelineItem, type WorkspaceDashboard } from '#shared/types/dashboard'
-import { bucketStart, bucketsOf, groupFor } from '#shared/utils/dashboard/buckets'
+import { bucketStart, bucketsOf, dayOf, groupFor, type BucketCalendar } from '#shared/utils/dashboard/buckets'
+import { settingsOf } from '../data/settingsStore'
+import type { MockTenant } from '../data/tenants'
 import { scopeFrom } from '#shared/utils/dashboard/scope'
 import { requireAuth } from '../core/auth'
 import { ok } from '../core/respond'
@@ -24,27 +26,36 @@ import { apiOf } from '../data/apiStore'
 import { logsOf } from '../data/apiTraffic'
 import { permissionsOf } from '../data/rolesStore'
 import { formResponses } from '../data/responseData'
+import { formFillEvents } from '../data/fillEventStore'
+import { completionRate } from '#shared/utils/analytics/events'
 
 const DAY = 86_400_000
 const iso = (time: number) => new Date(time).toISOString().slice(0, 10)
 const parseDay = (value: unknown) => (typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value) ? Date.parse(value) : NaN)
 
-/** The period asked for (default the last 30 days), the one before it, and its buckets. */
-export function periodFrom(query: Record<string, unknown>) {
-  const today = Date.parse(iso(Date.now()))
+/** The workspace's calendar for charts: its time zone and the day its weeks start (owner 2026-10-15). */
+export function calendarOf(tenant: MockTenant): BucketCalendar {
+  const { timezone, week_start } = settingsOf(tenant).localisation
+  return { timeZone: timezone, weekStart: week_start }
+}
+
+/** The period asked for (default the last 30 days, ending today in the workspace's time zone), the one before it, and
+ *  its buckets on the workspace's calendar. */
+export function periodFrom(query: Record<string, unknown>, calendar: BucketCalendar = {}) {
+  const today = dayOf(Date.now(), calendar.timeZone)
   let to = parseDay(query.to)
   let from = parseDay(query.from)
   if (!Number.isFinite(to)) to = today
   if (!Number.isFinite(from) || from > to) from = to - 29 * DAY
   const days = Math.round((to - from) / DAY) + 1
   const group: DashboardGroup = DASHBOARD_GROUPS.includes(query.group as DashboardGroup) ? (query.group as DashboardGroup) : groupFor(days)
-  return { from, to, days, group, prevFrom: from - days * DAY, end: to + DAY - 1, buckets: bucketsOf(from, to, group) }
+  return { from, to, days, group, prevFrom: from - days * DAY, end: to + DAY - 1, buckets: bucketsOf(from, to, group, calendar), calendar }
 }
 
 export const workspaceDashboard = defineMockRoute(({ event, query }) => {
   const { tenant, user } = requireAuth(event)
   const can = permissionsOf(user, tenant)
-  const { from, to, group, prevFrom, end, buckets } = periodFrom(query)
+  const { from, to, group, prevFrom, end, buckets, calendar } = periodFrom(query, calendarOf(tenant))
   const index = new Map(buckets.map((start, i) => [start, i]))
   const series: DashboardPoint[] = buckets.map(start => ({ start, responses: 0, starts: 0, api_calls: 0 }))
 
@@ -62,8 +73,20 @@ export const workspaceDashboard = defineMockRoute(({ event, query }) => {
   let prevActive = 0
   const top: WorkspaceDashboard['top_forms'] = []
   for (const form of withResponses) {
-    const rate = Math.min(0.95, Math.max(0.2, (form.completion_rate || 68) / 100))
     const entries = formResponses(tenant, form)
+    // Starts are recorded visits (owner 2026-10-15): distinct visits that started, per period and per bucket
+    const startedNow = new Set<string>()
+    const startedBefore = new Set<string>()
+    const startedIn = buckets.map(() => new Set<string>())
+    for (const visit of formFillEvents(tenant, form).events) {
+      if (visit.kind !== 'start') continue
+      const time = Date.parse(visit.at)
+      if (time >= from && time <= end) {
+        startedNow.add(visit.session)
+        const i = index.get(iso(bucketStart(time, group, calendar)))
+        if (i !== undefined) startedIn[i]!.add(visit.session)
+      } else if (time >= prevFrom && time < from) startedBefore.add(visit.session)
+    }
     const trend = buckets.map(() => 0)
     let own = 0
     let ownPrev = 0
@@ -72,7 +95,7 @@ export const workspaceDashboard = defineMockRoute(({ event, query }) => {
       if (entry.status === 'new') ownNew++
       if (entry.at >= from && entry.at <= end) {
         own++
-        const i = index.get(iso(bucketStart(entry.at, group)))
+        const i = index.get(iso(bucketStart(entry.at, group, calendar)))
         if (i !== undefined) {
           series[i]!.responses++
           trend[i]!++
@@ -81,16 +104,15 @@ export const workspaceDashboard = defineMockRoute(({ event, query }) => {
     }
     responses += own
     previous += ownPrev
-    starts += Math.round(own / rate)
-    prevStarts += Math.round(ownPrev / rate)
+    starts += startedNow.size
+    prevStarts += startedBefore.size
     toReview += ownNew
     if (own) active++
     if (ownPrev) prevActive++
-    for (let i = 0; i < series.length; i++) series[i]!.starts += Math.round(trend[i]! / rate)
-    if (own || ownNew) top.push({ id: form.id, name: form.name, status: form.status, responses: own, previous: ownPrev, completion_rate: Math.round(rate * 1000) / 10, to_review: ownNew, trend })
+    for (let i = 0; i < series.length; i++) series[i]!.starts += startedIn[i]!.size
+    if (own || ownNew) top.push({ id: form.id, name: form.name, status: form.status, responses: own, previous: ownPrev, completion_rate: completionRate(own, startedNow.size), to_review: ownNew, trend })
   }
   top.sort((a, b) => b.responses - a.responses || b.to_review - a.to_review)
-  const rate = (sent: number, began: number) => (began ? Math.round((sent / began) * 1000) / 10 : 0)
 
   // What needs attention, most urgent first
   const attention: AttentionItem[] = []
@@ -150,7 +172,7 @@ export const workspaceDashboard = defineMockRoute(({ event, query }) => {
       if (time >= from) {
         calls++
         if (log.status >= 400) errors++
-        const i = index.get(iso(bucketStart(time, group)))
+        const i = index.get(iso(bucketStart(time, group, calendar)))
         if (i !== undefined) series[i]!.api_calls++
       } else before++
     }
@@ -165,7 +187,7 @@ export const workspaceDashboard = defineMockRoute(({ event, query }) => {
     new_workspace: !visible.length && !scope.filtered,
     kpis: {
       responses: { value: responses, previous },
-      completion_rate: { value: rate(responses, starts), previous: prevStarts ? rate(previous, prevStarts) : null },
+      completion_rate: { value: completionRate(responses, starts), previous: prevStarts ? completionRate(previous, prevStarts) : null },
       active_forms: { value: active, previous: prevActive },
       to_review: { value: toReview, previous: null },
       attention: { value: attention.filter(item => item.kind !== 'to_review').length, previous: null },

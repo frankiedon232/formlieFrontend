@@ -13,6 +13,7 @@ import { PASSWORD_LENGTH_RANGE } from '../auth/password'
 import { APP_LOCALES } from '../i18n/locales'
 import { CURRENCY_CODES, isCountryCode } from '../platform/countries'
 import { isTimeZone } from '../forms/catalogues'
+import { RESPONDENT_IP_MODES } from '../privacy/ip'
 
 /** Optional text: trimmed, '' → null, at most `max` characters. */
 const optional = (max: number) =>
@@ -160,6 +161,8 @@ export const privacySchema = z.object({
   notice_url: optional(300).refine(value => !value || /^https:\/\/[^\s.]+\.[^\s]+$/i.test(value), 'https'),
   consent: z.boolean(),
   consent_text: optional(400),
+  // Respondents' IP addresses as the workspace's people see them (owner 2026-10-15); older saved settings: hidden
+  respondent_ip: z.enum(RESPONDENT_IP_MODES).default('hidden'),
 })
 
 /** A website for embeds: a host name, optionally `*.` for its subdomains. */

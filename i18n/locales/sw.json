@@ -5926,7 +5926,8 @@
       "groups": "Makundi ya majibu",
       "nothingHere": "Hakuna cha kuonyesha hapa",
       "notDuplicate": "Si nakala",
-      "rejectDuplicate": "Kataa kama nakala"
+      "rejectDuplicate": "Kataa kama nakala",
+      "ip": "Anwani ya IP"
     },
     "device": {
       "desktop": "Kompyuta",
@@ -7752,7 +7753,16 @@
       "regionPick": "Chagua eneo",
       "regionAsk": "Omba eneo hili",
       "regionMove": "Kuhamia eneo lingine hupangwa nawe na kufanywa na timu ya Formalie, data yako ikinakiliwa na kukaguliwa kwanza.",
-      "regionFailed": "Imeshindwa kupakia mahali data yako inapohifadhiwa"
+      "regionFailed": "Imeshindwa kupakia mahali data yako inapohifadhiwa",
+      "ip": {
+        "title": "Anwani za IP za wajibuji",
+        "hint": "Kile timu yako inaona kwenye majibu na uhamishaji. Formalie huhifadhi anwani kamili kwa usalama hata hivyo.",
+        "hidden": "Imefichwa",
+        "masked": "Imefichwa kiasi",
+        "full": "Kamili",
+        "example": "Inaonyeshwa kama {ip} kwenye majibu na uhamishaji.",
+        "hiddenExample": "Majibu na uhamishaji havionyeshi anwani ya IP."
+      }
     },
     "formDefaults": {
       "note": "Fomu mpya huanza na mipangilio hii. Fomu ulizo nazo tayari zinabaki na zake, na kila fomu bado inaweza kuibadilisha.",

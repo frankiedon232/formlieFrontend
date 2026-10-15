@@ -5926,7 +5926,8 @@
       "groups": "Grupy odpowiedzi",
       "nothingHere": "Nic tu nie ma",
       "notDuplicate": "To nie duplikat",
-      "rejectDuplicate": "Odrzuć jako duplikat"
+      "rejectDuplicate": "Odrzuć jako duplikat",
+      "ip": "Adres IP"
     },
     "device": {
       "desktop": "Komputer",
@@ -7752,7 +7753,16 @@
       "regionPick": "Wybierz region",
       "regionAsk": "Poproś o ten region",
       "regionMove": "Przeniesienie do innego regionu jest planowane z Tobą i wykonywane przez zespół Formalie, a Twoje dane są wcześniej kopiowane i sprawdzane.",
-      "regionFailed": "Nie udało się załadować miejsca przechowywania danych"
+      "regionFailed": "Nie udało się załadować miejsca przechowywania danych",
+      "ip": {
+        "title": "Adresy IP respondentów",
+        "hint": "Co Twój zespół widzi w odpowiedziach i eksportach. Formalie i tak przechowuje pełny adres ze względów bezpieczeństwa.",
+        "hidden": "Ukryte",
+        "masked": "Częściowo ukryte",
+        "full": "Pełne",
+        "example": "Widoczne jako {ip} w odpowiedziach i eksportach.",
+        "hiddenExample": "Odpowiedzi i eksporty nie pokazują adresu IP."
+      }
     },
     "formDefaults": {
       "note": "Nowe formularze zaczynają z tymi ustawieniami. Istniejące formularze zachowują własne, a każdy formularz nadal może je zmienić.",

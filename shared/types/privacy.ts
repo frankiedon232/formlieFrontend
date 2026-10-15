@@ -3,6 +3,8 @@
  * responses older than its limit for good; data requests find, export or delete one person's responses.
  */
 
+import type { RespondentIpMode } from '../utils/privacy/ip'
+
 /** Keep responses for N days; 0 = keep them until someone deletes them. */
 export const RETENTION_DAYS = [0, 30, 90, 180, 365, 730, 1825] as const
 export type RetentionDays = (typeof RETENTION_DAYS)[number]
@@ -15,6 +17,9 @@ export interface PrivacySettings {
   consent: boolean
   /** The workspace's own consent line; empty = Formalie's text in the respondent's language. */
   consent_text: string | null
+  /** What the workspace's people see of respondents' IP addresses (owner 2026-10-15; Formalie keeps the full address
+   *  for security either way): hidden (default), masked (partly hidden) or full. */
+  respondent_ip: RespondentIpMode
 }
 
 export interface FormDefaults {

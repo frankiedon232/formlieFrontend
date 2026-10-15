@@ -27,7 +27,7 @@ const seedSecurity = (): SecuritySettings => ({
 const seedNotifications = (): NotificationSettings => ({ events: structuredClone(DEFAULT_NOTIFICATION_RULES), digest: { enabled: false, hour: 8 } })
 
 /** Privacy and form defaults (F14 M5): keep responses, no notice or consent line until set; forms as they start today. */
-const seedPrivacy = (): PrivacySettings => ({ retention_days: 0, notice_url: null, consent: false, consent_text: null })
+const seedPrivacy = (): PrivacySettings => ({ retention_days: 0, notice_url: null, consent: false, consent_text: null, respondent_ip: 'hidden' })
 const seedFormDefaults = (): FormDefaults => ({ settings: { progress_bar: true, save_resume: false, field_icons: true, label_position: 'top' }, theme_id: null, thank_you: { title: null, message: null }, team_emails: [], embed_domains: [] })
 
 function seed(tenant: MockTenant): WorkspaceSettings {
@@ -81,6 +81,8 @@ export function settingsOf(tenant: MockTenant): WorkspaceSettings {
     settings.updated.notifications ??= null
     saveSettings()
   }
+  // Saved before respondents' IP addresses were a setting (2026-10-15): hidden, as before
+  settings.privacy.respondent_ip ??= 'hidden'
   // Events added since the section was saved (access_requested, 2026-10-15) read with their default rule
   if (NOTIFICATION_EVENTS.some(key => !settings!.notifications.events[key])) settings.notifications = withNotificationDefaults(settings.notifications)
   // Workspaces no longer choose their ways in (owner, 2026-10-12): drop the old list

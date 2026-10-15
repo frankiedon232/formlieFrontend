@@ -14,7 +14,9 @@ import type { AnalyticsDay, AnalyticsOverview, AnalyticsTotals, FormAnalyticsRow
 import { completionRate, visitCounts, visitFunnel, visitsPerDay, type FillEvent } from '#shared/utils/analytics/events'
 import { funnelQuestions } from '#shared/utils/analytics/questions'
 import { allFields } from '#shared/utils/forms/build'
+import { dayOf } from '#shared/utils/dashboard/buckets'
 import { requireAuth } from '../core/auth'
+import { calendarOf } from './dashboard'
 import { MockError, ok, paginate } from '../core/respond'
 import { defineMockRoute } from '../core/route'
 import { formResponses, responseSchema, type IndexedResponse } from '../data/responseData'
@@ -58,13 +60,14 @@ interface Days {
   visits: { views: number; starts: number }
   events: FillEvent[]
 }
-function daysOf(entries: IndexedResponse[], all: FillEvent[], period: Period): Days {
+function daysOf(entries: IndexedResponse[], all: FillEvent[], period: Period, timeZone?: string): Days {
   const dates = Array.from({ length: period.days }, (_, i) => iso(period.from + i * DAY))
   const events = eventsIn(all, period)
-  const daily: AnalyticsDay[] = visitsPerDay(events, dates).map(day => ({ ...day, completions: 0 }))
+  // Days are the workspace's (its time zone, owner 2026-10-15)
+  const daily: AnalyticsDay[] = visitsPerDay(events, dates, timeZone).map(day => ({ ...day, completions: 0 }))
   const within: IndexedResponse[] = []
   for (const entry of entries) {
-    const index = Math.floor((entry.at - period.from) / DAY)
+    const index = timeZone ? dates.indexOf(iso(dayOf(entry.at, timeZone))) : Math.floor((entry.at - period.from) / DAY)
     if (index < 0 || index >= period.days) continue
     daily[index]!.completions++
     within.push(entry)
@@ -117,7 +120,7 @@ export const analyticsOverview = defineMockRoute(({ event, query }) => {
     const visits = { views: 0, starts: 0 }
     let active = 0
     for (const source of sources) {
-      const result = daysOf(source.entries, source.events, target)
+      const result = daysOf(source.entries, source.events, target, calendarOf(tenant).timeZone)
       result.daily.forEach((day, i) => {
         daily[i]!.views += day.views
         daily[i]!.starts += day.starts
@@ -153,10 +156,10 @@ export const analyticsForms = defineMockRoute(({ event, query }) => {
   for (const form of visibleForms(tenant, user)) {
     const entries = formResponses(tenant, form)
     const { events, submitted } = formFillEvents(tenant, form)
-    const now = daysOf(entries, events, period)
+    const now = daysOf(entries, events, period, calendarOf(tenant).timeZone)
     const totals = totalsOf(now)
     if (form.status === 'draft' && !totals.views) continue
-    const then = daysOf(entries, events, before(period))
+    const then = daysOf(entries, events, before(period), calendarOf(tenant).timeZone)
     const previous = then.daily.reduce((sum, day) => sum + day.completions, 0)
     const { pages, fields } = funnelOf(form, now.events, submitted)
     const worst = fields.reduce<FunnelField | null>((top, field) => (!top || field.left > top.left ? field : top), null)
@@ -189,7 +192,7 @@ export const formFunnel = defineMockRoute(({ event, query }) => {
   if (!form) throw new MockError('FRM-GEN-1004')
   requireLevel(form, user, 'responses')
   const { events, submitted } = formFillEvents(tenant, form)
-  const now = daysOf(formResponses(tenant, form), events, periodOf(query))
+  const now = daysOf(formResponses(tenant, form), events, periodOf(query), calendarOf(tenant).timeZone)
   const funnel: FormFunnel = { form: { id: form.id, name: form.name, status: form.status }, totals: totalsOf(now), ...funnelOf(form, now.events, submitted) }
   return ok(funnel)
 })

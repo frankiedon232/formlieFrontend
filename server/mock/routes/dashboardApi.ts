@@ -13,14 +13,14 @@ import { apiOf } from '../data/apiStore'
 import { logsOf } from '../data/apiTraffic'
 import { integrationsOf } from '../data/integrationStore'
 import { permissionsOf } from '../data/rolesStore'
-import { periodFrom } from './dashboard'
+import { calendarOf, periodFrom } from './dashboard'
 
 const iso = (time: number) => new Date(time).toISOString().slice(0, 10)
 
 export const apiDashboard = defineMockRoute(({ event, query }) => {
   const { tenant, user } = requireAuth(event)
   if (!permissionsOf(user, tenant).has('api.view')) throw new MockError('FRM-PERM-1001')
-  const { from, to, group, prevFrom, end, buckets } = periodFrom(query)
+  const { from, to, group, prevFrom, end, buckets, calendar } = periodFrom(query, calendarOf(tenant))
   const index = new Map(buckets.map((start, i) => [start, i]))
   const series = buckets.map(start => ({ start, calls: 0, errors: 0 }))
 
@@ -50,7 +50,7 @@ export const apiDashboard = defineMockRoute(({ event, query }) => {
     if (log.status >= 500) statuses.server++
     else if (bad) statuses.client++
     else statuses.ok++
-    const i = index.get(iso(bucketStart(time, group)))
+    const i = index.get(iso(bucketStart(time, group, calendar)))
     if (i !== undefined) {
       series[i]!.calls++
       if (bad) series[i]!.errors++

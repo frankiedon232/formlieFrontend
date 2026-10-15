@@ -11,13 +11,15 @@
  * `session`, so the visits that finished are known.
  *
  * Counting rules (pure; the backend ports them with parity tests):
- *   views / starts      distinct visits with a view / start (per day: the UTC day of the event)
+ *   views / starts      distinct visits with a view / start (per day: the event's day in the workspace's time zone)
  *   funnel per page     started visits that reached the page (page 0: every started visit);
  *                       left = started visits that never submitted whose furthest page it was
  *   drop-off per field  started visits that never submitted whose last answered question, in
  *                       form order, is this one
  *   no events           zeros everywhere
  */
+
+import { dayOf } from '../dashboard/buckets'
 
 export const FILL_EVENT_KINDS = ['view', 'start', 'answer', 'page'] as const
 export type FillEventKind = (typeof FILL_EVENT_KINDS)[number]
@@ -100,7 +102,8 @@ export function dedupeFillEvents<T extends { session: string; kind: FillEventKin
   })
 }
 
-const dayOfEvent = (event: FillEvent) => event.at.slice(0, 10)
+/** The event's day: in the workspace's time zone when given (owner 2026-10-15, days are the workspace's), else UTC. */
+const dayOfEvent = (event: FillEvent, timeZone?: string) => (timeZone ? new Date(dayOf(Date.parse(event.at), timeZone)).toISOString().slice(0, 10) : event.at.slice(0, 10))
 
 /** Distinct visits with a view and with a start. */
 export function visitCounts(events: readonly FillEvent[]): { views: number; starts: number } {
@@ -114,13 +117,13 @@ export function visitCounts(events: readonly FillEvent[]): { views: number; star
 }
 
 /** Views and starts per day (`dates` as YYYY-MM-DD, UTC): distinct visits with a view / start that day. */
-export function visitsPerDay(events: readonly FillEvent[], dates: readonly string[]): { date: string; views: number; starts: number }[] {
+export function visitsPerDay(events: readonly FillEvent[], dates: readonly string[], timeZone?: string): { date: string; views: number; starts: number }[] {
   const views = new Map<string, Set<string>>()
   const starts = new Map<string, Set<string>>()
   for (const event of events) {
     const target = event.kind === 'view' ? views : event.kind === 'start' ? starts : null
     if (!target) continue
-    const day = dayOfEvent(event)
+    const day = dayOfEvent(event, timeZone)
     let set = target.get(day)
     if (!set) target.set(day, (set = new Set()))
     set.add(event.session)

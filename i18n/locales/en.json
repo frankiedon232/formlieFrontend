@@ -5926,7 +5926,8 @@
       "groups": "Answer groups",
       "nothingHere": "Nothing to show here",
       "notDuplicate": "Not a duplicate",
-      "rejectDuplicate": "Reject as duplicate"
+      "rejectDuplicate": "Reject as duplicate",
+      "ip": "IP address"
     },
     "device": {
       "desktop": "Desktop",
@@ -7752,7 +7753,16 @@
       "regionPick": "Choose a region",
       "regionAsk": "Request this region",
       "regionMove": "A move to another region is planned with you and done by the Formalie team, with your data copied over and checked first.",
-      "regionFailed": "Couldn't load where your data is stored"
+      "regionFailed": "Couldn't load where your data is stored",
+      "ip": {
+        "title": "Respondent IP addresses",
+        "hint": "What your people see in responses and exports. Formalie keeps the full address for security either way.",
+        "hidden": "Hidden",
+        "masked": "Partly hidden",
+        "full": "Full",
+        "example": "Shown as {ip} in responses and exports.",
+        "hiddenExample": "Responses and exports show no IP address."
+      }
     },
     "formDefaults": {
       "note": "New forms start with these. Forms you already have keep their own settings, and every form can still change them.",

@@ -5926,7 +5926,8 @@
       "groups": "Nhóm câu trả lời",
       "nothingHere": "Không có gì ở đây",
       "notDuplicate": "Không phải trùng lặp",
-      "rejectDuplicate": "Từ chối vì trùng lặp"
+      "rejectDuplicate": "Từ chối vì trùng lặp",
+      "ip": "Địa chỉ IP"
     },
     "device": {
       "desktop": "Máy tính",
@@ -7752,7 +7753,16 @@
       "regionPick": "Chọn một khu vực",
       "regionAsk": "Yêu cầu khu vực này",
       "regionMove": "Việc chuyển sang khu vực khác được lên kế hoạch cùng bạn và do đội ngũ Formalie thực hiện, dữ liệu của bạn được sao chép và kiểm tra trước.",
-      "regionFailed": "Không tải được nơi lưu trữ dữ liệu của bạn"
+      "regionFailed": "Không tải được nơi lưu trữ dữ liệu của bạn",
+      "ip": {
+        "title": "Địa chỉ IP của người trả lời",
+        "hint": "Những gì nhóm của bạn thấy trong câu trả lời và bản xuất. Formalie vẫn lưu địa chỉ đầy đủ để bảo mật.",
+        "hidden": "Ẩn",
+        "masked": "Ẩn một phần",
+        "full": "Đầy đủ",
+        "example": "Hiển thị là {ip} trong câu trả lời và bản xuất.",
+        "hiddenExample": "Câu trả lời và bản xuất không hiển thị địa chỉ IP."
+      }
     },
     "formDefaults": {
       "note": "Biểu mẫu mới bắt đầu với các cài đặt này. Biểu mẫu bạn đã có giữ cài đặt riêng, và mỗi biểu mẫu vẫn có thể thay đổi.",

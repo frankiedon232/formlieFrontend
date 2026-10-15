@@ -21,7 +21,9 @@ import { parseBody } from '../core/validate'
 import { requireResponses, responseActionsOf, responsesAllowed } from '../data/formPermissions'
 import type { ResponseAction } from '#shared/types/forms'
 import { formsOf, type StoredForm } from '../data/formStore'
-import { answersOf, findResponse, formResponses, respondentOf, responseSchema, titleOf, workspaceResponses, type IndexedResponse } from '../data/responseData'
+import { answersOf, findResponse, formResponses, rawIpOf, respondentOf, responseSchema, titleOf, workspaceResponses, type IndexedResponse } from '../data/responseData'
+import { respondentIp, type RespondentIpMode } from '#shared/utils/privacy/ip'
+import { settingsOf } from '../data/settingsStore'
 import { keepAnswered } from '../data/largeLists'
 import { insightsOf } from '../data/responseInsights'
 import { reviewOf, updateReview } from '../data/responseReview'
@@ -50,7 +52,10 @@ export const questionsOf = (form: StoredForm) =>
   allFields(responseSchema(form) ?? { schema_version: 1, pages: [] }).filter(field => isInputField(field.type) && !['hidden', 'calculated', 'payment'].includes(field.type))
 const filled = (value: unknown) => value != null && value !== '' && value !== false && !(Array.isArray(value) && !value.length)
 
-function rowOf(form: StoredForm, entry: IndexedResponse, withAnswers: boolean): ResponseRow {
+/** What the workspace's people see of respondents' addresses (Settings → Privacy, owner 2026-10-15). */
+const ipModeOf = (tenant: MockTenant): RespondentIpMode => settingsOf(tenant).privacy.respondent_ip ?? 'hidden'
+
+function rowOf(form: StoredForm, entry: IndexedResponse, withAnswers: boolean, ipMode: RespondentIpMode): ResponseRow {
   const data = answersOf(form, entry)
   const questions = questionsOf(form)
   return {
@@ -71,6 +76,7 @@ function rowOf(form: StoredForm, entry: IndexedResponse, withAnswers: boolean): 
     files_count: questions.filter(field => isFileField(field.type)).reduce((sum, field) => sum + (Array.isArray(data[field.key]) ? (data[field.key] as unknown[]).length : 0), 0),
     edited: entry.edited,
     possible_duplicate: entry.possible_duplicate,
+    ip: respondentIp(rawIpOf(entry), ipMode),
   }
 }
 
@@ -142,7 +148,7 @@ export const listFormResponses = defineMockRoute(({ event, query }) => {
   const { tenant, user } = requireAuth(event)
   const form = formFor(tenant, user, getRouterParam(event, 'id'))
   const { data, meta } = pageOf(formResponses(tenant, form).map(entry => ({ form, entry })), query, true)
-  return ok(data.map(({ entry }) => rowOf(form, entry, true)), meta)
+  return ok(data.map(({ entry }) => rowOf(form, entry, true, ipModeOf(tenant))), meta)
 })
 
 /** GET /forms/:id/responses/tags, the tags used on this form's responses, most used first (the Tags filter). */
@@ -169,7 +175,7 @@ export const listResponses = defineMockRoute(({ event, query }) => {
   const owner = list(query, 'owner_id')
   const wanted = (form: StoredForm) => (!folder || folder.includes(form.folder?.id ?? 'none')) && (!owner || owner.includes(form.owner.id))
   const { data, meta } = pageOf(workspaceResponses(tenant, form => wanted(form) && responsesAllowed(form, user, 'view', tenant)), query, false)
-  return ok(data.map(({ form, entry }) => rowOf(form, entry, false)), meta)
+  return ok(data.map(({ form, entry }) => rowOf(form, entry, false, ipModeOf(tenant))), meta)
 })
 
 /**
@@ -254,7 +260,7 @@ export function responseFor(tenant: MockTenant, user: MockUser, id: string | und
 
 const schemaOf = (form: StoredForm, entry: IndexedResponse) => form.versions?.find(item => item.number === entry.form_version)?.schema ?? responseSchema(form)!
 
-function detailOf(form: StoredForm, entry: IndexedResponse, user: MockUser): ResponseDetail {
+function detailOf(form: StoredForm, entry: IndexedResponse, user: MockUser, tenant: MockTenant): ResponseDetail {
   const schema = schemaOf(form, entry)
   const stored = entry.source.kind === 'real' ? entry.source.stored : null
   const ua = stored?.meta.user_agent ?? ''
@@ -262,7 +268,7 @@ function detailOf(form: StoredForm, entry: IndexedResponse, user: MockUser): Res
   const review = reviewOf(entry.id)
   const actions = responseActionsOf(form, user)
   return {
-    ...rowOf(form, entry, false),
+    ...rowOf(form, entry, false, ipModeOf(tenant)),
     data: answersOf(form, entry),
     form_version: entry.form_version,
     schema: keepAnswered(schema, [answersOf(form, entry)]),
@@ -278,7 +284,7 @@ function detailOf(form: StoredForm, entry: IndexedResponse, user: MockUser): Res
 export const getResponse = defineMockRoute(({ event }) => {
   const { tenant, user } = requireAuth(event)
   const { form, entry } = responseFor(tenant, user, getRouterParam(event, 'id'), 'view')
-  return ok(detailOf(form, entry, user))
+  return ok(detailOf(form, entry, user, tenant))
 })
 
 function audit(event: H3Event, tenant: MockTenant, user: MockUser, action: 'responses.updated' | 'responses.deleted', form: StoredForm, entry: IndexedResponse, changes: { field: string; before: unknown; after: unknown }[] = []) {
@@ -351,7 +357,7 @@ export const patchResponse = defineMockRoute(({ event, body: raw }) => {
     if (changes.some(change => change.field.startsWith('answer:'))) emitResponse(event, tenant, 'response.updated', form, entry.id)
   }
   const updated = findResponse(tenant, entry.id)!
-  return ok(detailOf(updated.form, updated.entry, user))
+  return ok(detailOf(updated.form, updated.entry, user, tenant))
 })
 
 const noteBody = z.object({ text: z.string().trim().min(1).max(2000) })
@@ -366,7 +372,7 @@ export const addNote = defineMockRoute(({ event, body: raw }) => {
   })
   audit(event, tenant, user, 'responses.updated', form, entry, [{ field: 'note', before: null, after: 'added' }])
   const updated = findResponse(tenant, entry.id)!
-  return ok(detailOf(updated.form, updated.entry, user))
+  return ok(detailOf(updated.form, updated.entry, user, tenant))
 })
 
 /** DELETE /responses/:id, removed for good (editors only). */

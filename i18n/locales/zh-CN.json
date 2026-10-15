@@ -5926,7 +5926,8 @@
       "groups": "答案分组",
       "nothingHere": "这里没有内容",
       "notDuplicate": "不是重复",
-      "rejectDuplicate": "作为重复拒绝"
+      "rejectDuplicate": "作为重复拒绝",
+      "ip": "IP 地址"
     },
     "device": {
       "desktop": "电脑",
@@ -7752,7 +7753,16 @@
       "regionPick": "选择区域",
       "regionAsk": "申请此区域",
       "regionMove": "迁移到其他区域会与您一起规划，并由 Formalie 团队完成，先复制并核对您的数据。",
-      "regionFailed": "无法加载您的数据存储位置"
+      "regionFailed": "无法加载您的数据存储位置",
+      "ip": {
+        "title": "填写者的 IP 地址",
+        "hint": "团队在回复和导出中看到的内容。无论如何，Formalie 都会出于安全保留完整地址。",
+        "hidden": "隐藏",
+        "masked": "部分隐藏",
+        "full": "完整",
+        "example": "在回复和导出中显示为 {ip}。",
+        "hiddenExample": "回复和导出中不显示 IP 地址。"
+      }
     },
     "formDefaults": {
       "note": "新表单将以这些设置开始。已有的表单保留自己的设置,每个表单仍可修改。",
