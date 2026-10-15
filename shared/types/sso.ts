@@ -101,3 +101,43 @@ export function ssoSamlByHand(provider: SsoProvider, saved: Pick<SsoConnection, 
   if (saved && saved.provider === provider) return !saved.saml.metadata_url && !!saved.saml.entity_id
   return provider === 'google_workspace'
 }
+
+/** The form's fields, as typed (empty = not given). */
+export interface SsoFormValues {
+  label: string
+  metadata_url: string
+  entity_id: string
+  sso_url: string
+  certificate: string
+  issuer: string
+  client_id: string
+  /** Typed only to replace the stored one; empty keeps it. */
+  client_secret: string
+  domains: string[]
+  enforce: boolean
+  auto_create: boolean
+  default_role: string
+}
+
+/**
+ * PUT /settings/sso from the form: only the chosen protocol's part, and for SAML only the active tab's values (the
+ * metadata address alone, or entity ID, sign-on address and certificate). Values on the other tab are never sent.
+ */
+export function ssoSaveRequest(provider: SsoProvider, samlByHand: boolean, values: SsoFormValues): SsoSaveRequest {
+  const protocol = SSO_PROTOCOL[provider]
+  return {
+    provider,
+    label: values.label.trim(),
+    saml:
+      protocol === 'saml'
+        ? samlByHand
+          ? { metadata_url: null, entity_id: values.entity_id, sso_url: values.sso_url, certificate: values.certificate }
+          : { metadata_url: values.metadata_url, entity_id: null, sso_url: null, certificate: null }
+        : undefined,
+    oidc: protocol === 'oidc' ? { issuer: values.issuer, client_id: values.client_id, ...(values.client_secret ? { client_secret: values.client_secret } : {}) } : undefined,
+    domains: values.domains,
+    enforce: values.enforce,
+    auto_create: values.auto_create,
+    default_role: values.default_role,
+  }
+}

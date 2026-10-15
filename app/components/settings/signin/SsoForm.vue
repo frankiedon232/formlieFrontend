@@ -7,7 +7,7 @@
 -->
 <script setup lang="ts">
 import { z } from 'zod'
-import { SAML_PROVIDERS_EXAMPLES, SSO_ICONS, SSO_NAMES, SSO_PROTOCOL, ssoSamlByHand, type SsoConnection, type SsoProvider, type SsoServiceProvider, type SsoSettings } from '#shared/types/sso'
+import { SAML_PROVIDERS_EXAMPLES, SSO_ICONS, SSO_NAMES, SSO_PROTOCOL, ssoSamlByHand, ssoSaveRequest, type SsoConnection, type SsoFormValues, type SsoProvider, type SsoServiceProvider, type SsoSettings } from '#shared/types/sso'
 import { isEmailDomain } from '#shared/utils/settings/schemas'
 
 const props = defineProps<{ provider: SsoProvider; connection: SsoConnection | null; serviceProvider: SsoServiceProvider }>()
@@ -22,7 +22,7 @@ onMounted(() => refresh())
 const protocol = computed(() => SSO_PROTOCOL[props.provider])
 const saved = props.connection
 const ownDomain = session.user.value?.email.split('@').pop()?.toLowerCase() ?? ''
-const state = reactive({
+const state = reactive<SsoFormValues>({
   label: saved?.label ?? SSO_NAMES[props.provider],
   metadata_url: saved?.saml.metadata_url ?? '',
   entity_id: saved?.saml.entity_id ?? '',
@@ -48,13 +48,15 @@ const samlTab = computed({
   set: value => (samlByHand.value = value === 'manual'),
 })
 
-const https = (message: string) => z.string().trim().refine(value => !value || /^https:\/\/\S+$/i.test(value), message)
+// Only the fields that will be sent are checked: the active SAML tab, or OpenID Connect's issuer. A wrong value left on
+// the other tab is never sent, so it never blocks saving from a field nobody can see.
+const https = (message: string, checked: () => boolean) => z.string().trim().refine(value => !checked() || !value || /^https:\/\/\S+$/i.test(value), message)
 const schema = computed(() =>
   z.object({
     label: z.string().trim().min(1, t('settings.sso.labelRequired')).max(40),
-    metadata_url: https(t('settings.sso.httpsOnly')),
-    sso_url: https(t('settings.sso.httpsOnly')),
-    issuer: https(t('settings.sso.httpsOnly')),
+    metadata_url: https(t('settings.sso.httpsOnly'), () => protocol.value === 'saml' && !samlByHand.value),
+    sso_url: https(t('settings.sso.httpsOnly'), () => protocol.value === 'saml' && samlByHand.value),
+    issuer: https(t('settings.sso.httpsOnly'), () => protocol.value === 'oidc'),
     domains: z.array(z.string()).refine(list => list.every(isEmailDomain), t('settings.sso.badDomain')).refine(list => !state.enforce || list.length > 0, t('settings.sso.domainsForRequired')),
   }),
 )
@@ -83,16 +85,8 @@ const copyValues = computed(() =>
 
 const { busy, run } = useBusy()
 async function save() {
-  const body = {
-    provider: props.provider,
-    label: state.label.trim(),
-    saml: protocol.value === 'saml' ? (samlByHand.value ? { metadata_url: null, entity_id: state.entity_id, sso_url: state.sso_url, certificate: state.certificate } : { metadata_url: state.metadata_url, entity_id: null, sso_url: null, certificate: null }) : undefined,
-    oidc: protocol.value === 'oidc' ? { issuer: state.issuer, client_id: state.client_id, ...(state.client_secret ? { client_secret: state.client_secret } : {}) } : undefined,
-    domains: state.domains,
-    enforce: state.enforce,
-    auto_create: state.auto_create,
-    default_role: state.default_role,
-  }
+  // Only the active tab's values (shared/types/sso.ts, tested)
+  const body = ssoSaveRequest(props.provider, samlByHand.value, state)
   await run(async () => {
     emit('saved', (await api.put<SsoSettings>('/settings/sso', body)).data)
     toast.add({ title: t('settings.sso.saved'), description: t('settings.sso.savedNext'), color: 'success', icon: 'i-lucide-circle-check' })

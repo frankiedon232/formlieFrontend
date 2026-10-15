@@ -1,7 +1,7 @@
 import { readdirSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
-import { SAML_PROVIDERS_EXAMPLES, SSO_ICONS, SSO_NAMES, SSO_PROTOCOL, SSO_PROVIDERS, ssoSamlByHand } from '../../shared/types/sso'
+import { SAML_PROVIDERS_EXAMPLES, SSO_ICONS, SSO_NAMES, SSO_PROTOCOL, SSO_PROVIDERS, ssoSamlByHand, ssoSaveRequest, type SsoFormValues } from '../../shared/types/sso'
 import { ssoSaveSchema } from '../../server/mock/core/ssoSchema'
 import { parseBody } from '../../server/mock/core/validate'
 import { MockError } from '../../server/mock/core/respond'
@@ -38,6 +38,42 @@ describe('the SAML tabs: Metadata address or Enter by hand (owner 2026-10-15)', 
   it('start a different choice on its own default, not the saved one', () => {
     const savedSaml = { provider: 'saml' as const, saml: saml('https://idp.example.com/metadata', null) }
     expect(ssoSamlByHand('google_workspace', savedSaml)).toBe(true)
+  })
+})
+
+describe('what Save sends (only the chosen protocol, and for SAML only the active tab)', () => {
+  // Every field filled, as if someone typed on both tabs before choosing
+  const values: SsoFormValues = {
+    label: ' Acme ', metadata_url: 'https://idp.example.com/metadata', entity_id: 'https://idp.example.com/entity', sso_url: 'https://idp.example.com/sso',
+    certificate: '-----BEGIN CERTIFICATE-----\nMIIC\n-----END CERTIFICATE-----', issuer: 'https://login.microsoftonline.com/tenant/v2.0', client_id: 'app-id', client_secret: '',
+    domains: ['example.com'], enforce: false, auto_create: true, default_role: 'member',
+  }
+  it('sends only the metadata address from the Metadata address tab', () => {
+    const body = ssoSaveRequest('saml', false, values)
+    expect(body.saml).toEqual({ metadata_url: 'https://idp.example.com/metadata', entity_id: null, sso_url: null, certificate: null })
+    expect(body.oidc).toBeUndefined()
+    expect(body.label).toBe('Acme')
+  })
+  it('sends only entity ID, sign-on address and certificate from Enter by hand', () => {
+    const body = ssoSaveRequest('google_workspace', true, values)
+    expect(body.saml).toEqual({ metadata_url: null, entity_id: values.entity_id, sso_url: values.sso_url, certificate: values.certificate })
+    expect(body.oidc).toBeUndefined()
+  })
+  it('sends Entra ID\'s issuer and client ID, and a secret only when one is typed', () => {
+    const kept = ssoSaveRequest('entra', true, values)
+    expect(kept.saml).toBeUndefined()
+    expect(kept.oidc).toEqual({ issuer: values.issuer, client_id: 'app-id' })
+    expect(ssoSaveRequest('entra', false, { ...values, client_secret: 'new-secret' }).oidc).toEqual({ issuer: values.issuer, client_id: 'app-id', client_secret: 'new-secret' })
+  })
+  it('passes the save rules (the mock mirrors the backend) for every choice and tab', () => {
+    for (const provider of SSO_PROVIDERS) for (const byHand of [false, true]) {
+      const parsed = ssoSaveSchema.safeParse(ssoSaveRequest(provider, byHand, values))
+      expect(parsed.success, `${provider} byHand=${byHand}`).toBe(true)
+    }
+  })
+  it('leaves an empty field empty, which the server reads as not given', () => {
+    const parsed = ssoSaveSchema.safeParse(ssoSaveRequest('saml', true, { ...values, sso_url: '', certificate: '' }))
+    expect(parsed.success && parsed.data.saml).toMatchObject({ metadata_url: null, sso_url: null, certificate: null })
   })
 })
 
