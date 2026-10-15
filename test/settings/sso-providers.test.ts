@@ -1,7 +1,7 @@
 import { readdirSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
-import { SAML_PROVIDERS_EXAMPLES, SSO_ICONS, SSO_NAMES, SSO_PROTOCOL, SSO_PROVIDERS } from '../../shared/types/sso'
+import { SAML_PROVIDERS_EXAMPLES, SSO_ICONS, SSO_NAMES, SSO_PROTOCOL, SSO_PROVIDERS, ssoSamlByHand } from '../../shared/types/sso'
 import { ssoSaveSchema } from '../../server/mock/core/ssoSchema'
 import { parseBody } from '../../server/mock/core/validate'
 import { MockError } from '../../server/mock/core/respond'
@@ -24,6 +24,23 @@ describe('single sign-on choices (owner 2026-10-15)', () => {
   })
 })
 
+describe('the SAML tabs: Metadata address or Enter by hand (owner 2026-10-15)', () => {
+  const saml = (metadata_url: string | null, entity_id: string | null) => ({ metadata_url, entity_id, sso_url: null, certificate: null })
+  it('open a new Google Workspace connection on Enter by hand, a new SAML 2.0 one on the metadata address', () => {
+    expect(ssoSamlByHand('google_workspace', null)).toBe(true)
+    expect(ssoSamlByHand('saml', null)).toBe(false)
+  })
+  it('open a saved connection on the way it was saved', () => {
+    expect(ssoSamlByHand('google_workspace', { provider: 'google_workspace', saml: saml('https://idp.example.com/metadata', null) })).toBe(false)
+    expect(ssoSamlByHand('saml', { provider: 'saml', saml: saml(null, 'https://idp.example.com/entity') })).toBe(true)
+    expect(ssoSamlByHand('saml', { provider: 'saml', saml: saml(null, null) })).toBe(false)
+  })
+  it('start a different choice on its own default, not the saved one', () => {
+    const savedSaml = { provider: 'saml' as const, saml: saml('https://idp.example.com/metadata', null) }
+    expect(ssoSamlByHand('google_workspace', savedSaml)).toBe(true)
+  })
+})
+
 describe('the Single sign-on form texts, in all 20 languages', () => {
   const dir = join(__dirname, '../../i18n/locales')
   const files = readdirSync(dir).filter(file => file.endsWith('.json'))
@@ -35,6 +52,10 @@ describe('the Single sign-on form texts, in all 20 languages', () => {
       // The SAML 2.0 steps and the line under the choices list the common providers
       expect(sso.how.saml, file).toContain('{providers}')
       expect(sso.samlAny, file).toContain('{providers}')
+      // The two SAML tabs replace the link; the old link texts are gone
+      for (const key of ['tabMetadata', 'tabByHand', 'googleByHand', 'idpSsoUrlHelp']) expect(sso[key], `${file} ${key}`).toBeTruthy()
+      expect(sso.byHand, file).toBeUndefined()
+      expect(sso.useMetadata, file).toBeUndefined()
     }
   })
   it('no longer offer Okta, OneLogin or OpenID Connect as choices of their own', () => {

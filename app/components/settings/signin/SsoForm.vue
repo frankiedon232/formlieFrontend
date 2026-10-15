@@ -1,12 +1,13 @@
 <!--
   Setting up single sign-on with one provider, in three short steps: (1) copy Formalie's values into the provider,
-  (2) paste the provider's values here (OIDC: issuer, client ID and secret; SAML: the metadata address, or the
-  values by hand), (3) who uses it (button text, email domains, required, new accounts and their role).
+  (2) paste the provider's values here (OIDC: issuer, client ID and secret; SAML: two tabs, Metadata address or Enter
+  by hand, owner 2026-10-15; Google Workspace opens on Enter by hand, as Google gives no metadata address), (3) who uses
+  it (button text, email domains, required, new accounts and their role). The active tab decides what is saved.
   The client secret is write-only: a saved one shows as set, typing replaces it.
 -->
 <script setup lang="ts">
 import { z } from 'zod'
-import { SAML_PROVIDERS_EXAMPLES, SSO_ICONS, SSO_NAMES, SSO_PROTOCOL, type SsoConnection, type SsoProvider, type SsoServiceProvider, type SsoSettings } from '#shared/types/sso'
+import { SAML_PROVIDERS_EXAMPLES, SSO_ICONS, SSO_NAMES, SSO_PROTOCOL, ssoSamlByHand, type SsoConnection, type SsoProvider, type SsoServiceProvider, type SsoSettings } from '#shared/types/sso'
 import { isEmailDomain } from '#shared/utils/settings/schemas'
 
 const props = defineProps<{ provider: SsoProvider; connection: SsoConnection | null; serviceProvider: SsoServiceProvider }>()
@@ -35,7 +36,17 @@ const state = reactive({
   auto_create: saved?.auto_create ?? false,
   default_role: saved?.default_role ?? 'member',
 })
-const samlByHand = ref(!!saved && !saved.saml.metadata_url && !!saved.saml.entity_id)
+// SAML: the metadata address or the values by hand, as two tabs; a different choice before saving starts on its own default
+const samlByHand = ref(ssoSamlByHand(props.provider, saved))
+watch(() => props.provider, provider => (samlByHand.value = ssoSamlByHand(provider, props.connection)))
+const samlTabs = computed(() => [
+  { value: 'metadata', label: t('settings.sso.tabMetadata'), icon: 'i-lucide-link' },
+  { value: 'manual', label: t('settings.sso.tabByHand'), icon: 'i-lucide-pencil-line' },
+])
+const samlTab = computed({
+  get: () => (samlByHand.value ? 'manual' : 'metadata'),
+  set: value => (samlByHand.value = value === 'manual'),
+})
 
 const https = (message: string) => z.string().trim().refine(value => !value || /^https:\/\/\S+$/i.test(value), message)
 const schema = computed(() =>
@@ -123,21 +134,22 @@ async function save() {
         </div>
       </template>
       <template v-else>
+        <UTabs v-model="samlTab" :items="samlTabs" :content="false" color="neutral" size="sm" :ui="SEGMENTED_UI" class="w-fit max-w-full" :aria-label="t('settings.sso.step2', { provider: SSO_NAMES[provider] })" />
         <UFormField v-if="!samlByHand" name="metadata_url" :label="t('settings.sso.metadataUrl')" :help="t('settings.sso.metadataHelp')">
           <UInput v-model="state.metadata_url" placeholder="https://idp.example.com/metadata.xml" icon="i-lucide-link" class="w-full" autocomplete="off" />
         </UFormField>
         <template v-else>
+          <p v-if="provider === 'google_workspace'" class="flex items-start gap-1.5 text-xs text-muted"><UIcon name="i-simple-icons-google" class="mt-0.5 size-3.5 shrink-0" />{{ t('settings.sso.googleByHand') }}</p>
           <UFormField :label="t('settings.sso.idpEntityId')">
             <UInput v-model="state.entity_id" class="w-full font-mono" autocomplete="off" />
           </UFormField>
-          <UFormField name="sso_url" :label="t('settings.sso.idpSsoUrl')">
+          <UFormField name="sso_url" :label="t('settings.sso.idpSsoUrl')" :help="t('settings.sso.idpSsoUrlHelp')">
             <UInput v-model="state.sso_url" placeholder="https://idp.example.com/sso/saml" class="w-full" autocomplete="off" />
           </UFormField>
           <UFormField :label="t('settings.sso.certificate')" :help="t('settings.sso.certificateHelp')">
             <UTextarea v-model="state.certificate" :rows="4" placeholder="-----BEGIN CERTIFICATE-----" class="w-full font-mono text-xs" />
           </UFormField>
         </template>
-        <UButton :label="samlByHand ? t('settings.sso.useMetadata') : t('settings.sso.byHand')" color="neutral" variant="link" size="xs" class="self-start px-0" @click="samlByHand = !samlByHand" />
       </template>
     </section>
 

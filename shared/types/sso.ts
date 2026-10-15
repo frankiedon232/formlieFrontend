@@ -91,3 +91,13 @@ export const SSO_NAMES: Record<SsoProvider, string> = { entra: 'Microsoft Entra 
 export const SSO_ICONS: Record<SsoProvider, string> = { entra: 'i-simple-icons-microsoft', google_workspace: 'i-simple-icons-google', saml: 'i-lucide-file-badge' }
 /** Common identity providers set up as SAML 2.0 (named under that choice so an Okta customer knows to pick it). */
 export const SAML_PROVIDERS_EXAMPLES = ['Okta', 'OneLogin', 'JumpCloud', 'ADFS', 'Ping', 'Auth0', 'Keycloak'] as const
+
+/**
+ * Which SAML tab the form opens on (owner 2026-10-15): a saved connection on the way it was saved (an entity ID without
+ * a metadata address = by hand); a new one on its choice's default. Google Workspace gives no metadata address (only
+ * values and a download), so by hand; any other SAML 2.0 provider, the metadata address.
+ */
+export function ssoSamlByHand(provider: SsoProvider, saved: Pick<SsoConnection, 'provider' | 'saml'> | null): boolean {
+  if (saved && saved.provider === provider) return !saved.saml.metadata_url && !!saved.saml.entity_id
+  return provider === 'google_workspace'
+}
