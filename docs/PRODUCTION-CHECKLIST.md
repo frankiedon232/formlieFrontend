@@ -64,6 +64,7 @@ Generate fresh keys with `fmly\Scripts\python.exe scripts\gen_keys.py --write` o
 | Website's API address (formalieSite `NUXT_PUBLIC_API_URL`) | `https://formalie.dev:5004/api/v1` | ⬜ `https://services.formalie.com/api/v1` (the `/public/plans`, `/public/legal`, `/public/platform` routes), never `api.formalie.com`, which is customers' own API |
 | `LEGAL_TERMS_URL`, `LEGAL_PRIVACY_URL` | development `https://formalie.dev:3033/legal/terms`, `/legal/privacy` (the website's dev server) | ⬜ the website's legal pages (documentation style, `docs/legal/` drafts reviewed by a lawyer and filled in); check they open |
 | `SUPPORT_EMAIL`, `SUPPORT_URL` (B14) | `support@formalie.com`, empty | ⬜ the real support mailbox (it must receive mail) and, if there is one, the support page; shown on the help centre's home until the platform settings take over |
+| `FONTS_DIR` | `data/fonts` | ⬜ the same folder on every server that builds exports, filled by `scripts/get_fonts.py` (PDF fonts for every script, owner 2026-10-15) |
 | `STORAGE_BACKEND`, `STORAGE_DIR` | `folder`, `data/storage` | ⬜ `r2` (`STORAGE_DIR` unused) |
 | `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET`, `R2_ENDPOINT` | empty | ⬜ the Cloudflare account ID, the R2 API token's key pair, `formalie-files`, empty (or the `.eu.` address for an EU-jurisdiction bucket) |
 | `DATASOURCES_ALLOW_LOCAL` | `false` | ⬜ `false` (never true in production) |
