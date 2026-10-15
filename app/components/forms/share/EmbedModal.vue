@@ -30,6 +30,16 @@ const views = computed(() => [
 const frame = useTemplateRef<HTMLIFrameElement>('frame')
 const previewHeight = ref(480)
 const previewLoading = ref(true)
+/** The preview here is not a visit: `?preview` keeps it out of the form's analytics. */
+const previewUrl = computed(() => {
+  try {
+    const address = new URL(props.url)
+    address.searchParams.set('preview', '1')
+    return address.toString()
+  } catch {
+    return props.url
+  }
+})
 const origin = computed(() => {
   try {
     return new URL(props.url).origin
@@ -68,7 +78,7 @@ function copyCode() {
             <div v-if="previewLoading" class="absolute inset-2 flex items-center justify-center"><USkeleton class="h-64 w-full" /></div>
             <iframe
               ref="frame"
-              :src="url"
+              :src="previewUrl"
               :title="formName"
               class="w-full rounded border-0 bg-default"
               :style="{ height: `${mode === 'auto' ? previewHeight : clampEmbedHeight(height)}px` }"

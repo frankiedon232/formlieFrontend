@@ -58,9 +58,15 @@ export async function usePublicForm(key: string, channel: 'link' | 'embed' = 'li
  *   - this browser remembers it has sent the form (localStorage receipt, not personal data) so a
  *     return visit says so; a new response from the same browser only "for someone else";
  *   - refusals become outcomes the form can show: already sent · exact duplicate · answer taken;
- *   - spam check (decision 89): a proof-of-work challenge solved in the background + a hidden trap field.
+ *   - spam check (decision 89): a proof-of-work challenge solved in the background + a hidden trap field;
+ *   - analytics: the fill-in visit id goes along as `session` (usePublicAnalytics), a sent visit ends there.
  */
-export function usePublicSubmit(key: string, channel: 'link' | 'embed', resume?: { token: Ref<string | null>; finished: () => void }) {
+export function usePublicSubmit(
+  key: string,
+  channel: 'link' | 'embed',
+  resume?: { token: Ref<string | null>; finished: () => void },
+  visit?: { session: () => string | undefined; finished: () => void },
+) {
   const api = useApi()
   const { locale } = useI18n()
   const { handle } = useErrorHandler()
@@ -143,6 +149,7 @@ export function usePublicSubmit(key: string, channel: 'link' | 'embed', resume?:
         resume_token: resume?.token.value ?? undefined,
         challenge: solved ? { token: solved.token, nonce: solved.nonce } : undefined,
         trap: trap || undefined,
+        session: visit?.session(),
       },
       { headers: { 'Formalie-Key': submissionId() } },
     )
@@ -158,6 +165,7 @@ export function usePublicSubmit(key: string, channel: 'link' | 'embed', resume?:
       })
       prepareProof()
       newSession() // A next fill-in is a new session.
+      visit?.finished()
       resume?.finished()
       forSomeoneElse.value = false
       confirmedDifferent.value = false

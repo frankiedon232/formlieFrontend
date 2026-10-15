@@ -22,12 +22,20 @@ const url = useRequestURL()
 const { form, errorCode, refresh } = await usePublicForm(props.formKey, props.embed ? 'embed' : 'link')
 const resumeOn = computed(() => !!form.value?.schema?.settings?.save_resume)
 const resume = usePublicResume(props.formKey, resumeOn)
-const { submit: send, alreadySent, another, confirmDifferent, sendCode, confirmCode, prepareProof } = usePublicSubmit(props.formKey, props.embed ? 'embed' : 'link', resume)
+// Fill-in analytics (view, start, answers, pages; never in previews), sent quietly in the background
+const analytics = usePublicAnalytics(props.formKey, props.embed ? 'embed' : 'link')
+const { submit: send, alreadySent, another, confirmDifferent, sendCode, confirmCode, prepareProof } = usePublicSubmit(props.formKey, props.embed ? 'embed' : 'link', resume, analytics)
 /** Sends; an embedded form tells the page around it (e.g. the app's browser window) that it was sent. */
 const submit: typeof send = async (...args) => {
   const outcome = await send(...args)
   if (outcome.done && import.meta.client && window.parent !== window) window.parent.postMessage({ type: 'formalie:submitted', key: props.formKey }, '*')
   return outcome
+}
+// The first input in the open form starts the visit (analytics; not a password or the language switch before it)
+if (import.meta.client) {
+  const started = () => view.value === 'open' && analytics.start()
+  useEventListener(document, 'input', started, { capture: true, passive: true })
+  useEventListener(document, 'change', started, { capture: true, passive: true })
 }
 // An embedded form tells the page around it once something is typed (so closing it can ask first)
 if (import.meta.client && window.parent !== window) {
@@ -52,6 +60,7 @@ const respondent = computed(() => ({
     (await api.get<{ items: { value: string; label: string }[]; total: number }>(`/public/forms/${encodeURIComponent(props.formKey)}/options`, { field: field.key, q, ...(values?.length ? { values: values.join(',') } : {}), ...(parents ? { parents: parents.join(',') } : {}), language: language.value, channel: props.embed ? 'embed' : 'link' }, { background: true })).data,
   another,
   confirmDifferent,
+  track: { page: analytics.page, answer: analytics.answer },
   sendCode,
   confirmCode,
   resume: resumeOn.value
@@ -84,6 +93,12 @@ const view = computed<View>(() => {
   if (form.value.state === 'open' && form.value.locked) return arriving.value ? 'opening' : 'locked'
   return form.value.state
 })
+// The form is on screen: one view per visit (analytics)
+watch(
+  () => view.value === 'open' && !!schema.value,
+  shown => shown && import.meta.client && analytics.view(),
+  { immediate: true },
+)
 const { locale } = useI18n()
 const longDate = (iso: string | null | undefined) =>
   iso ? new Intl.DateTimeFormat(locale.value, { dateStyle: 'long', timeStyle: 'short' }).format(new Date(iso)) : ''

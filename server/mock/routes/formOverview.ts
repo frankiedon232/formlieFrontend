@@ -1,8 +1,8 @@
 /**
  * Mock form overview (docs/API-CONTRACT.md → Forms): statistics, a 30-day response trend,
  * structure, latest versions and the template the form came from. Responses, the trend and the
- * last response come from the response data (F11, decision 100); views and time to fill in are
- * estimates stable per form until analytics (F18).
+ * last response come from the response data (F11, decision 100); views, starts and the completion
+ * rate from the fill-in page's recorded events (owner decision 2026-10-15; zeros without events).
  */
 import type { FormOverview } from '#shared/types/forms'
 import { previewLabels, schemaStats, systemTemplate } from '#shared/templates'
@@ -14,17 +14,8 @@ import { requireLevel } from '../data/formPermissions'
 import { findWorkspaceTemplate } from '../data/templateStore'
 import { ensureSchema } from './formDraft'
 import { formResponses } from '../data/responseData'
-
-/** Small seeded generator so a form always shows the same numbers. */
-function seeded(text: string) {
-  let h = 2166136261
-  for (const char of text) h = Math.imul(h ^ char.charCodeAt(0), 16777619)
-  return () => {
-    h = Math.imul(h ^ (h >>> 15), 2246822507)
-    h = Math.imul(h ^ (h >>> 13), 3266489909)
-    return ((h ^= h >>> 16) >>> 0) / 4294967296
-  }
-}
+import { formFillEvents } from '../data/fillEventStore'
+import { completionRate, visitCounts } from '#shared/utils/analytics/events'
 
 const DAY = 86_400_000
 const medianSeconds = (entries: { duration_seconds: number | null }[]) => {
@@ -40,11 +31,9 @@ export const getFormOverview = defineMockRoute(({ event }) => {
   if (form) requireLevel(form, user, 'responses')
   if (!form) throw new MockError('FRM-GEN-1004')
   const schema = ensureSchema(form, tenant)
-  const random = seeded(form.id)
   // Responses, trend and last response from the real response data (decision 100), so a new
   // submission shows here at once and agrees with the Responses page.
   const entries = formResponses(tenant, form)
-  const live = entries.length > 0
   const today = Date.parse(new Date().toISOString().slice(0, 10))
   const daily = Array.from({ length: 30 }, (_, i) => ({ date: new Date(today - (29 - i) * DAY).toISOString().slice(0, 10), count: 0 }))
   for (const entry of entries) {
@@ -52,8 +41,8 @@ export const getFormOverview = defineMockRoute(({ event }) => {
     if (index >= 0 && index < 30) daily[index]!.count++
   }
 
-  const completion = form.completion_rate || 100
-  const starts = live ? Math.round(entries.length / Math.max(0.05, completion / 100)) : 0
+  // Every visit the form has had (distinct visit ids with a view / start).
+  const { views, starts } = visitCounts(formFillEvents(tenant, form).events)
   const stats = schemaStats(schema)
   const templateName = form.template_key
     ? (systemTemplate(form.template_key)?.name ?? findWorkspaceTemplate(tenant, form.template_key)?.name ?? null)
@@ -61,10 +50,10 @@ export const getFormOverview = defineMockRoute(({ event }) => {
 
   const overview: FormOverview = {
     stats: {
-      views: live ? Math.round(starts * (1.3 + random() * 0.9)) : 0,
+      views,
       starts,
       responses: entries.length,
-      completion_rate: live ? completion : 0,
+      completion_rate: completionRate(entries.length, starts),
       // Median time to fill in, from the responses (the Responses page shows the same).
       avg_seconds: medianSeconds(entries),
       last_response_at: entries[0] ? new Date(entries[0].at).toISOString() : null,

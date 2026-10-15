@@ -37,6 +37,7 @@ import * as savedQueries from './routes/savedQueries'
 import * as dataActivity from './routes/dataActivity'
 import * as responseFiles from './routes/responseFiles'
 import * as publicForms from './routes/publicForms'
+import * as fillEvents from './routes/fillEvents'
 import * as templates from './routes/templates'
 import * as auth from './routes/auth'
 import * as formDraft from './routes/formDraft'
@@ -369,6 +370,7 @@ const router = createRouter()
   .get('/public/forms/:key', publicForms.getPublicForm)
   .get('/public/forms/:key/options', publicForms.lookupOptions)
   .post('/public/forms/:key/submit', publicForms.submitPublicForm)
+  .post('/public/forms/:key/events', fillEvents.recordEvent)
   .post('/public/forms/:key/verify', publicForms.sendVerification)
   .post('/public/forms/:key/sessions', publicForms.startDraft)
   .put('/public/forms/:key/sessions/:token', publicForms.saveDraft)

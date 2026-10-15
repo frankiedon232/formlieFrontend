@@ -13,6 +13,7 @@ import { reviewOf } from '../data/responseReview'
 import { createHmac, randomBytes, timingSafeEqual } from 'node:crypto'
 import { emitResponse } from '../data/integrationStore'
 import { z } from 'zod'
+import { isVisitId } from '#shared/utils/analytics/events'
 import { availabilityOf } from '#shared/utils/forms/availability'
 import { identityOf, maskEmail, matchIdentity, normaliseEmail } from '#shared/utils/forms/identity'
 import type { FileAnswer, PublicForm, PublicFormState, PublicSubmitResult } from '#shared/types/public'
@@ -107,7 +108,7 @@ function stateOf(tenant: MockTenant, form: StoredForm, { ignoreLimit = false } =
 
 // ── Who may open the form (F10 M3, data/formAccess.ts) ────────────────────────────────────
 /** The form takes responses from this visitor right now: open and unlocked for them, or the reason why not. */
-function takingResponses(event: Parameters<typeof tenantOf>[0], key: string, { ignoreLimit = false, channel }: { ignoreLimit?: boolean; channel?: 'link' | 'embed' } = {}) {
+export function takingResponses(event: Parameters<typeof tenantOf>[0], key: string, { ignoreLimit = false, channel }: { ignoreLimit?: boolean; channel?: 'link' | 'embed' } = {}) {
   const { tenant, form } = locate(event, key, channel)
   const state = stateOf(tenant, form, { ignoreLimit })
   const schema = state === 'open' ? publishedSchema(tenant, form) : null
@@ -263,6 +264,8 @@ const submitBody = z.object({
   challenge: z.object({ token: z.string().max(300), nonce: z.number().int().min(0) }).optional(),
   /** A field people never see; bots fill it in. */
   trap: z.string().max(500).optional(),
+  /** The fill-in visit id (analytics): marks the visit as finished. A malformed one is left out, never refused. */
+  session: z.string().max(100).optional(),
 })
 const SUBMISSION_ID = /^[A-Za-z0-9-]{16,64}$/
 
@@ -360,6 +363,7 @@ export const submitPublicForm = defineMockRoute(async ({ event, body }) => {
     language: input.language && formLanguages(schema).includes(input.language) ? input.language : offered(schema),
     data: answers,
     submission_id: submissionId,
+    ...(isVisitId(input.session) ? { session: input.session } : {}),
     device_id: deviceId,
     fingerprint,
     ...(possibleDuplicate ? { possible_duplicate: possibleDuplicate } : {}),

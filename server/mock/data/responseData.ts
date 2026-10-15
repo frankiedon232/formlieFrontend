@@ -284,3 +284,11 @@ export function workspaceResponses(tenant: MockTenant, visible: (form: StoredFor
     .flatMap(form => formResponses(tenant, form).map(entry => ({ form, entry })))
     .sort((a, b) => b.entry.at - a.entry.at)
 }
+
+/** The address a response came from, as recorded (real ones: the request's; samples: documentation ranges, so the
+ *  Privacy setting has something to show). What people see depends on that setting (respondentIp). */
+export function rawIpOf(entry: IndexedResponse): string | null {
+  if (entry.source.kind === 'real') return entry.source.stored.meta?.ip && entry.source.stored.meta.ip !== 'unknown' ? entry.source.stored.meta.ip : null
+  const n = entry.number
+  return n % 5 === 0 ? `2001:db8:${(n % 200).toString(16)}:${((n * 7) % 4096).toString(16)}:1a2b:3c4d:5e6f:${(n % 65535).toString(16)}` : `${n % 2 ? '203.0.113' : '198.51.100'}.${((n * 37) % 253) + 1}`
+}

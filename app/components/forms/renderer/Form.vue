@@ -64,6 +64,14 @@ watch(
   () => props.showThankYou,
   value => (done.value = !!value),
 )
+// Public page analytics: pages shown and questions answered (previews have no `track`)
+const tracking = useRendererTracking({
+  schema: () => props.schema,
+  answers,
+  index,
+  done,
+  track: () => (props.preview ? undefined : props.respondent?.track),
+})
 
 // Logic, set values and calculated fields follow the answers live. A level of a list with levels that has
 // nothing under the choice above stays closed, like a hidden field (F15 M2).
@@ -214,6 +222,7 @@ watch(
     answers.value = { ...defaults(), ...saved.data }
     index.value = Math.min(Math.max(0, saved.page), props.schema.pages.length - 1)
     trail.value = []
+    tracking.rebase()
   },
   { immediate: true },
 )
@@ -257,6 +266,7 @@ function restart() {
   errorParts.value = {}
   attempted.value = false
   done.value = false
+  tracking.rebase()
 }
 </script>
 

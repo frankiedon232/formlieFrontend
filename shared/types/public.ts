@@ -119,6 +119,8 @@ export interface RendererRespondent {
   another: () => void
   /** "Yes, I'm a different person" (a similar earlier response exists). */
   confirmDifferent: () => void
+  /** Fill-in analytics (public link and embed only): a page shown, a question answered the first time. */
+  track?: { page: (index: number) => void; answer: (field: string) => void }
   /** Email code step (forms that verify the respondent's email). */
   sendCode: (email: string) => Promise<{ sentTo: string; devCode: string | null } | null>
   confirmCode: (email: string, code: string) => Promise<boolean>
