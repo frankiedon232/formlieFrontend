@@ -97,6 +97,7 @@ On each server:
    - `INTERNAL_TOKEN` stays **empty** (retired: the frontend no longer has a server; it only guards the old server-rendered reads `/api/v1/internal/public-forms/{key}` and `/api/v1/internal/short/{code}`, which then refuse everything).
    - Fresh keys: `fmly/bin/python scripts/gen_keys.py --write` **on the server** (never copy development keys).
    - Email (SES), Google, Facebook, Anthropic, MaxMind, the platform admin keys, `SUPPORT_EMAIL`, `SUPPORT_URL`, `EMAIL_ASSETS_URL=https://manage.formalie.com`.
+   - The PDF fonts: run `python scripts/get_fonts.py` once on each server that runs workers (exports are built there); it checks every file's fingerprint. Without them, exports in non-Latin scripts show "?".
    - `STORAGE_BACKEND=r2` with the `R2_*` settings (Cloudflare R2, owner 2026-10-15; formlyBackend `docs/FILE-STORAGE-GUIDE.md`): every server reaches the same bucket, so no shared volume is needed.
    - `LOG_DIR=/srv/formalie/shared/logs`.
 4. ⬜ Create roles and the database: `fmly/bin/python scripts/db_bootstrap.py` (uses `DB_SUPERUSER_URL` once; afterwards remove that line from `.env`).
