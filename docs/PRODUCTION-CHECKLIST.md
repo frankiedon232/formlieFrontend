@@ -23,11 +23,10 @@ Marks: ⬜ to do · ✅ done in production · ⏸ waiting on a decision or an ac
 - ⬜ **PostgreSQL extension `pg_trgm`** (owner 2026-10-13; migration 0040 creates it in the `platform` schema for the audit trail and API call log search): it ships with PostgreSQL (contrib) and is a trusted extension, so the migration role needs CREATE on the database; on a managed database (AWS RDS and similar) check it is on the allowed list.
 - ⬜ **Domain and DNS:** `formalie.com` on Cloudflare. Static front ends on Cloudflare: wildcard `*.formalie.com`, `manage.formalie.com` and `forms.formalie.com` (the portal build), `formalie.com` and `www` (the website build), the platform admin's own host (its build). To the servers through Nginx: `services.formalie.com` (the API) and `api.formalie.com` (the API service gateway).
 - ⬜ **TLS certificates:** real certificates (Cloudflare origin certificates or Let's Encrypt), wildcard included. The mkcert certificates (`C:\devcerts\…`) and `NODE_EXTRA_CA_CERTS` are development only.
-- ⬜ **Email sending providers (owner, 2026-10-15): two.** **Amazon SES** as the primary and **Postmark** as the backup, used automatically whenever SES fails (sign-in codes depend on email). Both verified on `formalie.com` with DKIM, SES with the custom MAIL FROM `mail.formalie.com`, Postmark with the Return-Path `pm-bounces.formalie.com`, and DMARC; SES out of its sandbox, Postmark's account approved. Step by step in formlyBackend `docs/EMAIL-SETUP-GUIDE.md`. Development uses Mailpit.
+- ⬜ **Email sending: Amazon SES** (owner, 2026-10-19), verified on `formalie.com` with DKIM, the custom MAIL FROM `mail.formalie.com` and DMARC, out of its sandbox; SES SMTP credentials of the same region. Step by step in formlyBackend `docs/EMAIL-SETUP-GUIDE.md`. Development uses Mailpit.
 - ⬜ **File storage: Cloudflare R2** (owner, 2026-10-15): one private bucket `formalie-files`, an R2 API token with Object Read & Write on that bucket only (formlyBackend `docs/FILE-STORAGE-GUIDE.md`). Development keeps files in the `data/storage` folder. The server refuses to start in staging or production without R2. Stored files are not in `scripts/backups.py`'s backup (R2 keeps them); a second copy (another bucket) can come later.
 - ⬜ **Payments: Paddle** (primary, merchant of record; owner 2026-10-13; formlyBackend docs/PADDLE-SETUP-GUIDE.md): the live account approved, `PADDLE_ENVIRONMENT=production`, a live `PADDLE_API_KEY` (permissions as in the guide), a live `PADDLE_CLIENT_TOKEN`, the notification destination at `https://services.formalie.com/api/v1/billing/webhooks/paddle` and its `PADDLE_WEBHOOK_SECRET`, `scripts/paddle_catalog.py --apply` run with the live key, the default payment link `https://manage.formalie.com/settings/billing`, then one real small purchase and refund.
-- ⏸ **Payments: Payoneer** (second option, later): live keys and the webhook secret when it is connected.
-- ⏸ **SMS provider** for text-message codes: **Twilio** (owner, 2026-10-15; Vonage can be added later as a backup with `SMS_FALLBACK_PROVIDER`; the owner sets up the account; step by step in formlyBackend `docs/SMS-SETUP-GUIDE.md`). Production: billing on, the countries served allowed, sender registration where a country requires it (US A2P 10DLC).
+- ⬜ **SMS: Twilio** (owner, 2026-10-19) for text-message codes: production account, billing on, the countries served allowed (Geo permissions), sender registration where a country requires it (US A2P 10DLC); step by step in formlyBackend `docs/SMS-SETUP-GUIDE.md`.
 - ⬜ **AI provider: Anthropic Claude** (owner 2026-10-12) for the assistant (B13): a production API key at console.anthropic.com (`ANTHROPIC_API_KEY`, backend only, separate from any development key), the model (`ANTHROPIC_MODEL`), spending limits on the Anthropic account, and Anthropic's commercial terms / data processing agreement accepted.
 - ⬜ **MaxMind GeoLite2:** account ID and licence key for request locations.
 
@@ -50,8 +49,7 @@ Generate fresh keys with `fmly\Scripts\python.exe scripts\gen_keys.py --write` o
 | `ID_REF_ENC_KEY`, `ID_REF_MAC_KEY`, `FERNET_KEYS` | development keys | ⬜ new keys made on the server; keep a secure copy (losing them breaks every link and session) |
 | `SECRET_KEYS` (security review L17) | a development key | ⬜ a new key made on the server, never one of the `FERNET_KEYS`; keep a secure copy (losing it makes every stored credential and two-step secret unreadable). After setting it on a database that already holds secrets, run `scripts/reencrypt_secrets.py --apply` once |
 | `EMAIL_FROM` | `no-reply@formalie.dev` | ⬜ `Formalie <no-reply@formalie.com>` |
-| `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURITY`, `SMTP_USERNAME`, `SMTP_PASSWORD` | Mailpit `127.0.0.1:1025`, `none` | ⬜ Amazon SES: `email-smtp.{region}.amazonaws.com`, `587`, `starttls`, the SES SMTP credentials |
-| `SMTP_FALLBACK_HOST`, `SMTP_FALLBACK_PORT`, `SMTP_FALLBACK_SECURITY`, `SMTP_FALLBACK_USERNAME`, `SMTP_FALLBACK_PASSWORD` | empty (no backup) | ⬜ Postmark: `smtp.postmarkapp.com`, `587`, `starttls`, the Server API token as both user name and password |
+| `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURITY`, `SMTP_USERNAME`, `SMTP_PASSWORD` | Mailpit `127.0.0.1:1025`, `none` | ⬜ Amazon SES: `email-smtp.{region}.amazonaws.com`, `465` with `tls` (or `587` / `2587` with `starttls`), the SES SMTP credentials of that region |
 | Bounces and complaints (security review L19) | none | ⬜ once the email provider is chosen: its bounce and complaint notifications feed a do-not-email list, so a hard-bounced or complaining address gets no more mail (to build with the provider) |
 | `EMAIL_ASSETS_URL` | `https://manage.formalie.dev:2202` | ⬜ `https://manage.formalie.com` |
 | `OAUTH_*_CLIENT_ID` / `_SECRET` | development apps | ⬜ the same apps with production addresses added (section 5), or production apps |
@@ -73,8 +71,7 @@ Generate fresh keys with `fmly\Scripts\python.exe scripts\gen_keys.py --write` o
 | `GATEWAY_PORT` | `5005` (`python -m app.gateway`; the main app on 5004 also answers `api.formalie.dev`) | ⬜ the port Nginx sends `api.formalie.com` to (its own process, `uvicorn app.gateway:app --no-proxy-headers`) |
 | `GATEWAY_IP_PER_MINUTE` | `6000` | ⬜ the ceiling per caller IP across all workspaces (keep 6000 or set from real traffic) |
 | `API_NETWORKS_DIR` | empty (`data/geoip/networks`, usually no lists) | ⬜ a folder with `vpn.txt`, `proxy.txt`, `tor.txt`, `hosting.txt` (an IP or range per line) kept up to date, so access rules on anonymous networks match; without them only hosting providers are known (by network number) |
-| `SMS_PROVIDER`, `TWILIO_*` or `VONAGE_*` | `none`, or a trial account's keys | ⏸ `twilio` with the production account's keys and sender (backend only; docs/SMS-SETUP-GUIDE.md) |
-| `SMS_FALLBACK_PROVIDER` | `none` | ⏸ `none`, or `vonage` with `VONAGE_*` once a backup account exists |
+| `SMS_PROVIDER`, `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN`, `TWILIO_FROM` or `TWILIO_MESSAGING_SERVICE_SID` | `none`, or a trial account's keys | ⬜ `twilio` with the production account's keys and sender (backend only; docs/SMS-SETUP-GUIDE.md) |
 | `ANTHROPIC_API_KEY` (B13) | empty (the built-in assistant answers) or a development key | ⬜ the production key from console.anthropic.com (backend only, never in the frontend or logs), with a monthly spending limit set on the Anthropic account |
 | `ANTHROPIC_MODEL`, `ANTHROPIC_FAST_MODEL` (B13) | `claude-opus-5-5`, `claude-haiku-5-5` | ⬜ keep, or the models the owner chooses (the fast one answers designs, reading answers, questions and summaries) |
 | `ANTHROPIC_TIMEOUT_SECONDS`, `ANTHROPIC_MAX_RETRIES`, `ANTHROPIC_FALLBACKS` (B13) | `90`, `2`, `true` | ⬜ keep; the API servers must reach `api.anthropic.com` (outgoing HTTPS) |
@@ -123,7 +120,6 @@ Also on the backend side:
 | `NUXT_PUBLIC_FORMS_HOST` | `forms.formalie.dev` | ⬜ `forms.formalie.com` |
 | `NUXT_PUBLIC_API_SERVICE_URL` | `https://api.formalie.dev` | ⬜ `https://api.formalie.com` |
 | `NUXT_PUBLIC_SITE_URL` (the website: legal pages `/legal/{slug}` on public forms and sign-up, the Enterprise enquiry) | `https://formalie.dev:3033` | ⬜ `https://formalie.com` |
-| `NUXT_PAYONEER_WEBHOOK_SECRET` | empty | ⏸ Payoneer's webhook secret |
 | `NODE_EXTRA_CA_CERTS`, `DEV_HTTPS_*` | mkcert | ⬜ not used |
 | Dev port `:2202` | in every development address | ⬜ gone (443 on Cloudflare) |
 
@@ -141,9 +137,8 @@ Also:
 - ⬜ Visitor address and location headers (security review M14; DEPLOYMENT-GUIDE Part 6): `real_ip` from Cloudflare's ranges, then `CF-Connecting-IP` overwritten with `$remote_addr` and Cloudflare's location headers (`CF-IPCountry` and the other `CF-IP*` / `CF-Region*` / `CF-Postal-Code` / `CF-Timezone`) cleared unless the peer is Cloudflare; `X-Client-Verify` and `X-Client-Cert-Fingerprint` cleared on the public listeners; Cloudflare Authenticated Origin Pulls on.
 - ⬜ `location /api/v1/internal/ { return 404; }` and `location /internal/ { return 404; }` on the public server blocks (review L15).
 - ⬜ `client_max_body_size` per location, sized to what each route needs (review M12 and I6; the `api.` block needs its own for gateway uploads).
-- ⬜ HSTS, gzip / brotli, request size limits, the Content-Security-Policy from SECURITY-PROTOCOL (per-form `frame-ancestors` for embeds; Payoneer's frame hosts when connected).
+- ⬜ HSTS, gzip / brotli, request size limits, the Content-Security-Policy from SECURITY-PROTOCOL (per-form `frame-ancestors` for embeds; Paddle's hosts when connected).
 - ⬜ Cloudflare: proxy on, SSL "Full (strict)", WAF and rate limiting rules, cache static assets only (never `/api`).
-
 - ⬜ **Workspaces' own web domains (B11):** Cloudflare for SaaS on the zone with the fallback origin `custom.formalie.com` (the CNAME target workspaces point their domain at); each verified domain (only domains in `platform.custom_domains_directory` that are not released) is a custom hostname with its own certificate from Cloudflare, and the portal's Worker answers it like a workspace subdomain: the static app, and `/api/*` forwarded to `services.formalie.com` with `X-Forwarded-Host` = that domain, which the API maps to the workspace (DEPLOYMENT-GUIDE 8d). Nginx is not involved.
 
 ## 5. Sign-in providers (their consoles)
@@ -151,7 +146,6 @@ Also:
 The production return addresses (backend README, "The addresses to register"). They stay on `manage.formalie.com`: the browser comes back to the portal host and its Worker forwards the call to the API (2026-10-12):
 - `https://manage.formalie.com/api/v1/auth/oauth/google/callback`
 - `https://manage.formalie.com/api/v1/auth/oauth/facebook/callback`
-
 - ⬜ **Google:** add the production address under Authorised redirect URIs; publish the app (out of Testing) and complete Google's verification of the consent screen.
 - ⬜ **Facebook:** add the production address under Valid OAuth Redirect URIs and `formalie.com` under App domains; switch the app to Live; complete Business verification if asked.
 - ⬜ Remove development-only addresses you no longer need (the `:2202` ones can stay on a separate development app).
