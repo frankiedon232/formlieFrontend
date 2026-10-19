@@ -1,7 +1,7 @@
 <!-- Text-like fields: short / long text, IP address, domain, MAC address, IBAN, BIC, percentage, email, phone, URL, number, currency, calculated, hidden. -->
 <script setup lang="ts">
 import type { FormField } from '#shared/utils/forms/build'
-import { maskIp, maskMac, type IpVersion } from '#shared/utils/forms/masks'
+import { maskIpInput, maskMac, type IpVersion } from '#shared/utils/forms/masks'
 
 const props = defineProps<{ id: string; field: FormField; mode: 'builder' | 'live' }>()
 const value = defineModel<unknown>()
@@ -13,7 +13,7 @@ const { current } = useAppLocale()
 const props_ = computed(() => (props.field.props ?? {}) as Record<string, unknown>)
 /** Typing masks for technical fields (shared/utils/forms/masks.ts); the validator still decides. */
 function masked(next: string) {
-  if (props.field.type === 'ip_address') return maskIp(next, (props_.value.ip_version as IpVersion | undefined) ?? 'any')
+  if (props.field.type === 'ip_address') return maskIpInput(next, (props_.value.ip_version as IpVersion | undefined) ?? 'any')
   if (props.field.type === 'mac_address') return maskMac(next)
   return next
 }

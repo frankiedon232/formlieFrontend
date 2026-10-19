@@ -67,10 +67,11 @@ function maskIpv6Groups(value: string): string {
 }
 
 /**
+ * The IP address question as it is typed (named apart from privacy/ip.ts maskIp, which hides part of an address).
  * "any": IPv6 as soon as a colon or a hex letter appears, IPv4 once a dot is typed; plain digits
  * stay as typed until then ("2001" may become either).
  */
-export function maskIp(raw: string, version: IpVersion = 'any'): string {
+export function maskIpInput(raw: string, version: IpVersion = 'any'): string {
   if (version === 'v4') return maskIpv4(raw)
   if (version === 'v6') return maskIpv6(raw)
   if (/[:a-f]/i.test(raw)) return maskIpv6(raw)

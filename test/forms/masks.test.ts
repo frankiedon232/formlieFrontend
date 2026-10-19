@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { maskIp, maskIpv4, maskIpv6, maskMac } from '../../shared/utils/forms/masks'
+import { maskIpInput, maskIpv4, maskIpv6, maskMac } from '../../shared/utils/forms/masks'
 
 describe('IP masks', () => {
   it('shapes IPv4 while typing', () => {
@@ -24,12 +24,12 @@ describe('IP masks', () => {
   })
 
   it('picks the version for "any"', () => {
-    expect(maskIp('2001', 'any')).toBe('2001')
-    expect(maskIp('20x01', 'any')).toBe('2001')
-    expect(maskIp('19202', 'any')).toBe('192.0.2')
-    expect(maskIp('192.02', 'any')).toBe('192.0.2')
-    expect(maskIp('fe80::1', 'any')).toBe('fe80::1')
-    expect(maskIp('2001db8', 'v4')).toBe('200.18')
+    expect(maskIpInput('2001', 'any')).toBe('2001')
+    expect(maskIpInput('20x01', 'any')).toBe('2001')
+    expect(maskIpInput('19202', 'any')).toBe('192.0.2')
+    expect(maskIpInput('192.02', 'any')).toBe('192.0.2')
+    expect(maskIpInput('fe80::1', 'any')).toBe('fe80::1')
+    expect(maskIpInput('2001db8', 'v4')).toBe('200.18')
   })
 })
 
