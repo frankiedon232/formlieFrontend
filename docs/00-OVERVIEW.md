@@ -86,7 +86,7 @@ Built in F21 (2026-10-10): Workspace, Forms, Data sources and API service views 
 
 ### 13. Subscription
 
-Plans and pricing live on the product website; upgrade/renewal also available inside the portal for free-tier users. Plans Starter (free), Professional, Business and Enterprise (contact us), billed Monthly, Quarterly or Annually through **Payoneer** (F24). Plan limits enforced in the backend (forms, responses/month, seats, own-database destination, custom branding, data residency, etc.). No custom CSS in any plan (owner, 2026-10-10).
+Plans and pricing live on the product website; upgrade/renewal also available inside the portal for free-tier users. Plans Starter (free), Professional, Business and Enterprise (contact us), billed Monthly, Quarterly or Annually through **Paddle**, the merchant of record (F24; owner 2026-10-13, the only provider since 2026-10-19). Plan limits enforced in the backend (forms, responses/month, seats, own-database destination, custom branding, data residency, etc.). No custom CSS in any plan (owner, 2026-10-10).
 
 ## Non-negotiables (summary)
 
