@@ -56,9 +56,6 @@ export default defineNuxtConfig({
   runtimeConfig: {
     // Development only (dev server): where the dev proxy forwards /api/** when the mock is off.
     apiProxyTarget: 'https://formalie.dev:5004',
-    // Development only (mock, F24): the secret Payoneer signs its payment notifications with. Production: NUXT_PAYONEER_WEBHOOK_SECRET.
-    // Empty outside development = every notification is refused (never trusted unsigned).
-    payoneerWebhookSecret: '',
     public: {
       apiBase: '/api/v1',
       appVersion: pkg.version,

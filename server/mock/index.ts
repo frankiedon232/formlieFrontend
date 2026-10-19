@@ -61,7 +61,6 @@ import { formsDashboard } from './routes/dashboardForms'
 import { dataDashboard } from './routes/dashboardData'
 import { apiDashboard } from './routes/dashboardApi'
 import * as billingCheckout from './routes/billingCheckout'
-import { payoneerWebhook } from './billing/webhook'
 import * as notifications from './routes/notifications'
 import * as optionLists from './routes/optionLists'
 import * as privacy from './routes/dataPrivacy'
@@ -456,7 +455,6 @@ const router = createRouter()
   .post('/billing/checkout', billingCheckout.startCheckout)
   .post('/billing/checkout/:id/complete', billingCheckout.completeCheckout)
   .get('/billing/checkout/:id', billingCheckout.getCheckout)
-  .post('/billing/webhooks/payoneer', payoneerWebhook)
   .get('/settings/sso', sso.getSso)
   .put('/settings/sso', sso.saveSso)
   .post('/settings/sso/test', sso.testSso)

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { canMove, checkIdempotency, pruneIdempotency, renewalReference, requestHash, signWebhook, verifyWebhook, type IdempotencyRecord } from '../../server/mock/billing/safety'
+import { canMove, checkIdempotency, pruneIdempotency, renewalReference, requestHash, type IdempotencyRecord } from '../../server/mock/billing/safety'
 
 describe('money safety', () => {
   it('answers a repeated request key with the first result and refuses it for another request', () => {
@@ -23,16 +23,6 @@ describe('money safety', () => {
     expect(renewalReference('ws1', '2026-11-30T23:59:00.000Z')).toBe(renewalReference('ws1', '2026-11-30T00:00:00.000Z'))
   })
 
-  it('accepts only signed, fresh webhooks', () => {
-    const body = JSON.stringify({ id: 'evt_1', type: 'payment.succeeded' })
-    const now = Math.floor(Date.now() / 1000)
-    const header = signWebhook('secret', body, now)
-    expect(verifyWebhook('secret', body, header, now)).toBe('ok')
-    expect(verifyWebhook('other', body, header, now)).toBe('bad_signature')
-    expect(verifyWebhook('secret', body + ' ', header, now)).toBe('bad_signature')
-    expect(verifyWebhook('secret', body, header, now + 301)).toBe('stale')
-    expect(verifyWebhook('secret', body, null, now)).toBe('missing')
-  })
 
   it('only moves payments forward', () => {
     expect(canMove('pending', 'paid')).toBe(true)

@@ -6,14 +6,13 @@
  *     The same key with the same request returns the first result (never a second charge); the same key with a
  *     different request is refused. Keys are remembered for 24 hours.
  *   - Payment references: every charge has one unique reference (a checkout, an upgrade, or `renew:{workspace}:{period end}`)
- *     sent to the processor, so a retried renewal or upgrade can't be charged twice on either side.
- *   - Webhooks: signed with the shared secret over `{timestamp}.{body}` (HMAC-SHA256), at most 5 minutes old, and
- *     each event handled once. The processor's real format replaces the placeholder when Payoneer's docs are in.
+ *     sent to Paddle, so a retried renewal or upgrade can't be charged twice on either side.
+ *   - Only Paddle's signed notification confirms a payment (backend, SECURITY-PROTOCOL → Payments). The mock has no
+ *     Paddle: its checkout's test step stands in for that notification.
  */
-import { createHash, createHmac, timingSafeEqual } from 'node:crypto'
+import { createHash } from 'node:crypto'
 
 export const IDEMPOTENCY_HOURS = 24
-export const WEBHOOK_TOLERANCE_SECONDS = 300
 
 export interface IdempotencyRecord<T = unknown> {
   key: string
@@ -45,24 +44,6 @@ export const pruneIdempotency = <T>(records: IdempotencyRecord<T>[], now = Date.
 /** The one reference of a renewal charge: the same period can only ever be charged once. */
 export const renewalReference = (workspaceId: string, periodEnd: string) => `renew:${workspaceId}:${periodEnd.slice(0, 10)}`
 
-/** `t=…,v1=…` signature over `{t}.{body}`. */
-export function signWebhook(secret: string, body: string, timestamp = Math.floor(Date.now() / 1000)) {
-  return `t=${timestamp},v1=${createHmac('sha256', secret).update(`${timestamp}.${body}`).digest('hex')}`
-}
-
-export type WebhookCheck = 'ok' | 'missing' | 'stale' | 'bad_signature'
-
-/** Checks a webhook's signature (constant time) and age. */
-export function verifyWebhook(secret: string, body: string, header: string | null | undefined, now = Math.floor(Date.now() / 1000)): WebhookCheck {
-  if (!header) return 'missing'
-  const parts = Object.fromEntries(header.split(',').map(part => part.trim().split('=') as [string, string]))
-  const timestamp = Number(parts.t)
-  if (!parts.v1 || !Number.isFinite(timestamp)) return 'missing'
-  if (Math.abs(now - timestamp) > WEBHOOK_TOLERANCE_SECONDS) return 'stale'
-  const expected = Buffer.from(createHmac('sha256', secret).update(`${timestamp}.${body}`).digest('hex'))
-  const given = Buffer.from(parts.v1)
-  return expected.length === given.length && timingSafeEqual(expected, given) ? 'ok' : 'bad_signature'
-}
 
 export type PaymentStatus = 'pending' | 'paid' | 'failed' | 'refunded'
 /** Payments only move forward: a late or repeated event never undoes a later state. */
