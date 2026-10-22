@@ -118,6 +118,7 @@
 | 2026-10-13 | Confirm everything comes from the backend: `/public/platform` was not read yet, now wired | S6 | ✅ |
 | 2026-10-13 | Owner answers: pricing opens on Monthly; keep the safe API screenshot; look names stay translated; production is `https://formalie.com/` | S4, Docs | ✅ |
 | 2026-10-13 | Backend reply: use `privacy_email`, `security_email`, `abuse_email` from `/public/platform`; legal entity UNET SYSTEM TECH LTD; legal texts updated | S5, S6 | ✅ |
+| 2026-10-22 | Cookie consent banner? Owner chose none: only the language cookie and theme storage, no tracking (matches the Cookie policy) | S7 | ✅ (decision) |
 | 2026-10-13 | The project's git branch is `formalieWeb` | Docs | ✅ |
 | 2026-10-13 | Copy formlyBackend `docs/PRODUCTION-CHECKLIST.md` over this project's copy | Docs | ✅ (already identical; DEPLOYMENT-GUIDE synced too) |
 
@@ -143,3 +144,4 @@
 | 2026-10-13 | S6 | `usePlatform()` reads GET `/public/platform` (zod-checked, defaults when the API is down): support and sales addresses on Contact, Enterprise, the write-to-us card and the structured data; status link, social icons and legal entity in the footer once the owner sets them. Plans, legal and platform all come from the backend now. 65 tests |
 | 2026-10-13 | S4 | Pricing (page and home) opens on Monthly; decisions recorded (safe API screenshot, translated look names, production address confirmed) |
 | 2026-10-13 | S6 | Every Formalie email address on the site now comes from `/public/platform` (privacy on legal pages and trust, security on security and trust, abuse on trust; hidden when cleared); the footer shows UNET SYSTEM TECH LTD; legal fallback re-synced from formlyBackend. 65 tests |
+| 2026-10-22 | S7 | Cookie banner question answered: none needed (no tracking, only language and theme); recorded in the decisions doc |

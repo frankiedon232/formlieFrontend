@@ -23,3 +23,4 @@
 - **Prerender:** every language's home page is listed; `failOnError` is off until all pages exist (S7 turns it back on).
 - **Git branch:** `formalieWeb` (owner, 2026-10-13).
 - **Embedded forms come later** (owner, 2026-10-13: they will be published from the superadmin). Until `NUXT_PUBLIC_FORMS_LIVE=true`, `/enterprise` and `/contact` show a write-to-us card with sales@ or support@ instead of the embed.
+- **No cookie banner** (owner, 2026-10-22): the website stores only the visitor's language (`formalie_locale` cookie) and theme (browser storage), with no tracking, ads or analytics, so no consent is needed and the Cookie policy says "no cookie banner is shown". If analytics or marketing tools are ever added, revisit this first: they must be cookie-free, or a consent manager comes with them.
